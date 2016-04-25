@@ -3,8 +3,8 @@
    description="このページでは、Azure SQL Database の一般的な制限事項および相互運用性とサポートの領域について説明します。"
    services="sql-database"
    documentationCenter="na"
-   authors="rothja"
-   manager="jeffreyg"
+   authors="carlrabeler"
+   manager="jhubbard"
    editor="monicar" />
 <tags
    ms.service="sql-database"
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="01/15/2016"
-   ms.author="jroth" />
+   ms.date="04/11/2016"
+   ms.author="carlrab" />
 
 # Azure SQL Database の一般的な制限事項とガイドライン
 
@@ -59,8 +59,8 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 
 - セキュリティ関連のガイドラインについては、「[Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md)」を参照してください。
 
-- 他に関連する領域には、Azure SQL Database とオンプレミスの SQL Server バージョン (SQL Server 2014 など) との互換性があります。Azure SQL Database の最新の V12 バージョンでは、この領域におけるさまざまな機能強化を図っています。詳細については、「[SQL Database V12 の新機能](sql-database-v12-whats-new.md)」を参照してください。
+- 他に関連する領域には、Azure SQL Database とオンプレミスの SQL Server バージョン (SQL Server 2014、SQL Server 2016 など) との互換性があります。Azure SQL Database の最新の V12 バージョンでは、この領域におけるさまざまな機能強化を図っています。詳細については、「[SQL Database V12 の新機能](sql-database-v12-whats-new.md)」を参照してください。
 
 - SQL Database の利用可能なドライバーとサポートの詳細については、「[SQL Database および SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

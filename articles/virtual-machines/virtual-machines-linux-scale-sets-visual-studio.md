@@ -19,8 +19,8 @@
 
 # Visual Studio で仮想マシン スケール セット テンプレートをデプロイする
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-create-windows-powershell-service-manager.md)。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-windows-classic-create-powershell.md)。
 
 [AZURE.INCLUDE [virtual-machines-common-scale-sets-visual-studio](../../includes/virtual-machines-common-scale-sets-visual-studio.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

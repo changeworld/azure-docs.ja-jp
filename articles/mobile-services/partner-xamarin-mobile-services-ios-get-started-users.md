@@ -36,7 +36,7 @@
 
 このチュートリアルは、Mobile Services のクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。
 
-このチュートリアルを実施するには、[Xamarin.iOS]、XCode 6.0、および iOS 7.0 以降のバージョンが必要です。
+このチュートリアルを実行するには、[Xamarin Studio]、XCode 6.0、および iOS 7.0 以降のバージョンが必要です。
 
 ##<a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
 
@@ -153,6 +153,6 @@
 [Get started with push notifications]: /develop/mobile/tutorials/-get-started-with-push-xamarin-ios
 [スクリプトを使用したユーザーの認証]: /develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
-[Xamarin.iOS]: http://xamarin.com/download
+[Xamarin Studio]: http://xamarin.com/download
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

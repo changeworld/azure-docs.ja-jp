@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="04/01/2016"
+    ms.date="04/11/2016"
     ms.author="sstein"/>
 
 # C&#x23 によるエラスティック データベース プールの管理とサイズ設定
@@ -34,7 +34,6 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
 ここで示す例では、[SQL Database Library for .NET](https://msdn.microsoft.com/library/azure/mt349017.aspx) を使用するため、このライブラリをインストールする必要があります。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行します。
 
     PM> Install-Package Microsoft.Azure.Management.Sql –Pre
-
 
 
 ## プールを更新する
@@ -124,18 +123,21 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
         Console.WriteLine("  Database {0}", db.Name);
     }
 
+## エラスティック プール操作の待機時間
 
+- 通常、データベースあたりに保証される eDTU (databaseDtuMin) またはデータベースあたりの最大 eDTU (databaseDtuMax) の変更は、5 分以内で完了します。
+- プールの eDTU や記憶域の上限 (storageMB) の変更は、プール内のすべてのデータベースで使用される領域の合計に依存します。変更の平均時間は、100 GB あたり 90 分以下です。たとえば、プール内のすべてのデータベースで使用される領域の合計が 200 GB の場合、プールの eDTU や記憶域上限の変更にかかる想定待機時間は、3 時間以下になります。
 
 
 ## プールを管理する (C&#x23; の例)
 
-この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行します。
+この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]**) から次のコマンドを実行します。
 
     PM> Install-Package Microsoft.Azure.Management.Sql –Pre
     PM> Install-Package Microsoft.Azure.Management.Resources –Pre
     PM> Install-Package Microsoft.Azure.Common.Authentication –Pre
 
-コンソール アプリを作成し、Program.cs の内容を次の内容に置き換えます。必要なクライアント ID と関連する値を取得する方法については、「[コードから SQL Database に接続するためのクライアント ID とキーを取得する](sql-database-client-id-keys.md)」をご覧ください。
+コンソール アプリを作成し、Program.cs の内容を次の内容に置き換えます。必要なクライアント ID と関連する値を取得するには、[アプリの登録と、アプリを SQL Database に接続するために必要なクライアント値の取得](sql-database-client-id-keys.md)に関するページをご覧ください。
 
     using Microsoft.Azure;
     using Microsoft.Azure.Management.Resources;
@@ -458,4 +460,4 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
 - [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 - [エラスティック データベース プールのリファレンス](sql-database-elastic-pool-reference.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

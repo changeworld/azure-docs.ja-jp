@@ -1,22 +1,22 @@
-<properties 
-	pageTitle="Stream Analytics の Power BI ダッシュ ボード | Microsoft Azure" 
-	description="リアルタイム ストリーミング Power BI ダッシュ ボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。" 
-	keywords="分析ダッシュボード、リアルタイム ダッシュボード"	
-	services="stream-analytics" 
-	documentationCenter="" 
-	authors="jeffstokes72" 
-	manager="paulettm" 
+<properties
+	pageTitle="Stream Analytics の Power BI ダッシュ ボード | Microsoft Azure"
+	description="リアルタイム ストリーミング Power BI ダッシュ ボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。"
+	keywords="分析ダッシュボード、リアルタイム ダッシュボード"
+	services="stream-analytics"
+	documentationCenter=""
+	authors="jeffstokes72"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="stream-analytics" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.workload="data-services" 
-	ms.date="03/18/2016" 
+<tags
+	ms.service="stream-analytics"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="data-services"
+	ms.date="03/18/2016"
 	ms.author="jeffstok"/>
-	
+
 #  Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード
 
 Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの 1 つである、Microsoft Power BI を利用することができます。ここでは、Azure Stream Analytics を使用して、大量のストリーミング データを分析し、リアルタイム Power BI 分析ダッシュボードで確認する方法を説明します。
@@ -161,7 +161,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 
 このチュートリアルでは、データセットに 1 種類のグラフを作成する方法を示しましたが、Power BI は、組織の他の顧客のビジネス インテリジェンス ツールを作成するのに役立ちます。Power BI ダッシュボードの別の例については、[Power BI の概要](https://youtu.be/L-Z_6P56aas?t=1m58s)ビデオをご覧ください。
 
-Power BI 出力の構成と Power BI グループの利用の詳細については、「[Stream Analytics 出力について](stream-analytics-define-outputs.md "Stream Analytics 出力について")」の「[Power BI](stream-analytics-define-outputs.md#power-bi)」セクションを参照してください。Power BI を使用したダッシュボードの作成の詳細については、その他の役立つリソースとして、[Power BI プレビューのダッシュボード](http://support.powerbi.com/knowledgebase/articles/424868-dashboards-in-power-bi-preview)に関する記事をご覧ください。
+Power BI 出力の構成と Power BI グループの利用の詳細については、「[Stream Analytics 出力について](stream-analytics-define-outputs.md "Stream Analytics 出力について")」の「[Power BI](stream-analytics-define-outputs.md#power-bi)」セクションを参照してください。Power BI を使用したダッシュボードの作成の詳細については、その他の役立つリソースとして、[Power BI プレビューのダッシュボード](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)に関する記事をご覧ください。
 
 ## 制限事項とベスト プラクティス
 
@@ -232,4 +232,4 @@ Power BI 出力のあるすべてのジョブについて、90 日おきに認�
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

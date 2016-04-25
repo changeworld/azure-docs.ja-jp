@@ -21,7 +21,7 @@
 **Microsoft Power BI Embedded プレビュー** を利用して、Web アプリケーションやモバイル アプリケーションに Power BI レポートを統合することができますので、ユーザーのためにデータを視覚化するカスタム ソリューションを作成する必要はありません。次のリソースは、アプリへの Power BI レポートの統合を開始するのに役立ちます。
 
  -	[Sample dashboard web app](http://go.microsoft.com/fwlink/?LinkId=761493)
- -	[Power BI Embedded API reference](https://msdn.microsoft.com/library/mt711493.aspx)
+ -	[Power BI Embedded API reference](https://msdn.microsoft.com/library/mt712303.aspx)
  -	[Power BI Embedded .NET SDK (NuGet から入手可能)](http://go.microsoft.com/fwlink/?LinkId=746472)
 
 この記事では、**Power BI Embedded** の使用を開始するためのサンプルについて説明します。サンプル Web アプリを実行できるように、サンプル アプリの構成を始めましょう。
@@ -52,7 +52,7 @@
 
     ![](media\powerbi-embedded-get-started-sample\workspace-id.png)
 
-8. PBIX ファイルを**ワークスペース**にインポートするには、オプション **[6.Import PBIX Desktop file into an existing workspace]** を選択します。PBIX ファイルを取得していない場合は、[Analyzing Sales Data PBIX sample](http://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix) をダウンロードします。
+8. PBIX ファイルを**ワークスペース**にインポートするには、オプション **[6.Import PBIX Desktop file into an existing workspace]** を選択します。PBIX ファイルがない場合は、[Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をダウンロードできます。
 
 9. メッセージが表示されたら、分かりやすい**データセット**の名前を入力します。
 
@@ -86,7 +86,7 @@ Checking import state... Succeeded
     ```
 3. **EmbedSample** Web アプリケーションを実行します。
 
-**EmbedSample** Web アプリケーションを実行すると、左側のナビゲーション パネルに**[レポート]** メニューが表示されます。インポートしたレポートを表示するには、**[レポート]** を展開して、レポートをクリックします。[Analyzing Sales Data PBIX sample](http://download.microsoft.com/download/1/4/E/14EDED28-6C58-4055-A65C-23B4DA81C4DE/Analyzing_Sales_Data.pbix) をインポートした場合は、サンプル Web アプリは次のように表示されます。
+**EmbedSample** Web アプリケーションを実行すると、左側のナビゲーション パネルに**[レポート]** メニューが表示されます。インポートしたレポートを表示するには、**[レポート]** を展開して、レポートをクリックします。[Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をインポートした場合、サンプル Web アプリは次のように表示されます。
 
 ![](media\powerbi-embedded-get-started-sample\power-bi-embedded-sample-left-nav.png)
 
@@ -221,6 +221,20 @@ Task<ActionResult> Report(string reportId)
 
 ![](media\powerbi-embedded-get-started-sample\power-bi-embedded-iframe-code.png)
 
+
+### アプリケーションに埋め込まれたレポートのフィルター
+
+URL 構文を使用して、埋め込みレポートをフィルター処理できます。そのためには、フィルターを指定して iFrame src url にクエリ文字列パラメーターを追加します。フィルター クエリ構文を次に示します。
+
+```
+https://app.powerbi.com/reportEmbed
+?reportId=d2a0ea38-0694-4c70-9673-ee9655d54a4a&
+$filter={tableName/fieldName} eq '{fieldValue}'
+```
+
+> [AZURE.NOTE] {tableName/fieldName} には、スペースや特殊文字を含めることはできません。{fieldValue} は単一のカテゴリ値を受け入れます。
+
+
 ## 関連項目
 
 - [Microsoft Power BI Embedded とは](power-bi-embedded-what-is-power-bi-embedded.md)
@@ -228,4 +242,4 @@ Task<ActionResult> Report(string reportId)
 - [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューの使用を開始する)](power-bi-embedded-get-started.md)
 - [About app token flow in Power BI Embedded (Power BI Embedded のアプリ トークン フローについて)](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

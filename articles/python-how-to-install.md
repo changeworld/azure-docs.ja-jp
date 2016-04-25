@@ -195,7 +195,7 @@ Azure Websites を開発して公開する詳細については、「[Creating W
 [Microsoft Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?LinkID=516990
 [Setting up a Linux VM via the Azure portal]: create-and-configure-opensuse-vm-in-portal.md
 [How to use the Azure Command-Line Interface]: crossplat-cmd-tools.md
-[Linux を実行する仮想マシンの作成]: virtual-machines-linux-cli-create.md
+[Linux を実行する仮想マシンの作成]: virtual-machines-linux-quick-create-cli.md
 [Creating Websites with Django (Django を使った Websites の作成)]: web-sites-python-create-deploy-django-app.md
 [Creating Websites with Bottle (Bottle を使った Websites の作成)]: web-sites-python-create-deploy-bottle-app.md
 [Flask を使った Websites の作成]: web-sites-python-create-deploy-flask-app.md
@@ -204,4 +204,4 @@ Azure Websites を開発して公開する詳細については、「[Creating W
 [キュー ストレージ]: storage-python-how-to-use-queue-storage.md
 [BLOB ストレージ]: storage-python-how-to-use-blob-storage.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

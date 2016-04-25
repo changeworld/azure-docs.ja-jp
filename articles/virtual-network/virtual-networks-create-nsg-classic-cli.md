@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Azure CLI を使用してクラシック モードで NSG を作成する方法 | Microsoft Azure"
    description="Azure CLI を使用してクラシック モードで NSG を作成してデプロイする方法について"
    services="virtual-network"
@@ -8,7 +8,7 @@
    editor="tysonn"
    tags="azure-service-management"
 />
-<tags 
+<tags
    ms.service="virtual-network"
    ms.devlang="na"
    ms.topic="article"
@@ -32,7 +32,7 @@
 ## フロントエンドのサブネットの NSG を作成する方法
 上記のシナリオに基づいて **NSG-FrontEnd** という名前の NSG を作成するには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 
 2. 次に示すように、**`azure config mode`** コマンドを実行してクラシック モードに切り替えます。
 
@@ -109,7 +109,7 @@
 	- **-f (または --source-address-prefix)**。CIDR または既定のタグを使用する発信元アドレスのプレフィックス。
 	- **-o (または --source-port-range)**。発信元ポート、またはポート範囲です。
 	- **-e (または --destination-address-prefix)**。CIDR または既定のタグを使用する接続先アドレスのプレフィックス。
-	- **-u (または --destination-port-range)**。接続先ポート、またはポート範囲です。	
+	- **-u (または --destination-port-range)**。接続先ポート、またはポート範囲です。
 
 5. **`azure network nsg rule create`** コマンドを実行して、インターネットからポート 80 (HTTP) へのアクセスを許可する規則を作成します。
 
@@ -134,7 +134,7 @@
 
 6. **`azure network nsg subnet add`** コマンドを実行して、NSG をフロントエンドのサブネットにリンクします。
 
-		azure network nsg subnet add -a NSG-FrontEnd --vnet-name TestVNet --subnet-name FrontEnd 
+		azure network nsg subnet add -a NSG-FrontEnd --vnet-name TestVNet --subnet-name FrontEnd
 
 	予想される出力:
 
@@ -228,7 +228,7 @@
 
 6. **`azure network nsg subnet add`** コマンドを実行して、NSG をバックエンドのサブネットにリンクします。
 
-		azure network nsg subnet add -a NSG-BackEnd --vnet-name TestVNet --subnet-name BackEnd 
+		azure network nsg subnet add -a NSG-BackEnd --vnet-name TestVNet --subnet-name BackEnd
 
 	予想される出力:
 
@@ -239,4 +239,4 @@
 		info:    Creating a network security group "NSG-BackEndX"
 		info:    network nsg subnet add command OK
 
-<!----HONumber=AcomDC_0211_2016-->
+<!----HONumber=AcomDC_0413_2016-->

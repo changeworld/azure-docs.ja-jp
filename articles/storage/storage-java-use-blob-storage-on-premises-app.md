@@ -5,7 +5,7 @@
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe"/>
+	editor=""/>
 
 <tags
 	ms.service="storage"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="04/08/2016"
 	ms.author="rmcmurray"/>
 
 # BLOB ストレージを使用するオンプレミスのアプリケーション
@@ -360,4 +360,4 @@
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

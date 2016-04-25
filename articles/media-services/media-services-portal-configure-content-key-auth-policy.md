@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
+ 	ms.date="04/07/2016"  
 	ms.author="juliako"/>
 
 
@@ -24,14 +24,16 @@
 
 ##概要
 
-Microsoft Azure Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と PlayReady DRM を使用して動的に暗号化したコンテンツを配信できます。Media Services は、クライアントがキーまたはライセンスを取得して暗号化されたコンテンツを再生する **Key\\License 配信サービス**も提供しています。
+Microsoft Azure Media Services を使用すると、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) または [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) で保護された MPEG DASH、Smooth Streaming、HTTP ライブ ストリーミング (HLS) のストリームを配信できます。AMS では、Widevine DRM で暗号化された DASH ストリームを配信することもできます。PlayReady と Widevine はいずれも共通暗号化 (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。
+
+Media Services では、クライアントが暗号化されたコンテンツを再生するために AES キーまたは PlayReady/Widevine ライセンスを取得できる**キー/ライセンス配信サービス**も提供します。
 
 このトピックでは、**Azure クラシック ポータル**を使用して、コンテンツ キー承認ポリシーを構成する方法について説明します。キーは、動的にコンテンツを暗号化するために、後で使用できます。現時点で暗号化できるストリーミング形式は、HLS、MPEG DASH、およびスムーズ ストリーミングであることに注意してください。HDS 形式のストリーミングやプログレッシブ ダウンロードは暗号化できません。
  
-プレーヤーが動的に暗号化するように設定されたストリームを要求すると、Media Services は、AES または PlayReady 暗号化で構成済みのキーを使用してコンテンツを暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
+プレーヤーが動的に暗号化するように設定されたストリームを要求すると、Media Services は構成済みのキーを使用して、AES または DRM 暗号化によってコンテンツを動的に暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
 
-複数のコンテンツ キーを設定する、または Media Services のキー配信サービス以外の **Key\\License 配信サービス** URL を指定する場合は、Media Services .NET SDK または REST API を使用します。
+複数のコンテンツ キーを使用する場合や、Media Services キー配信サービス以外の**キー/ライセンス配信サービス** の URL を指定する場合は、Media Services .NET SDK または REST API を使用します。
 
 [Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成](media-services-dotnet-configure-content-key-auth-policy.md)
 
@@ -103,4 +105,4 @@ Media Services では、**Secure Token Service** は提供されません。ト�
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/17/2015"
+	ms.date="04/01/2016"
 	ms.author="josephd"/>
 
 # Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ
@@ -94,12 +94,10 @@
 
 この構成の開発/テスト環境または概念実証環境を構築する場合は、「[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)」を参照してください。
 
-SharePoint と SQL Server AlwaysOn 可用性グループの追加情報については、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」を参照してください。
-
-> [AZURE.NOTE] Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](https://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
+SharePoint と SQL Server AlwaysOn 可用性グループの追加情報については、[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)を参照してください。
 
 ## 次のステップ
 
 - [フェーズ 1](virtual-machines-windows-ps-sp-intranet-ph1.md) を使用して、このワークロードの構成を開始します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

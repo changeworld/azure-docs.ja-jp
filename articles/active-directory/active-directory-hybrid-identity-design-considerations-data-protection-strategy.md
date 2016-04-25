@@ -12,7 +12,7 @@
 	ms.devlang="na"
 	ms.topic="article"
     ms.tgt_pltfrm="na"
-    ms.workload="identity" 
+    ms.workload="identity"
 	ms.date="03/18/2016"
 	ms.author="yuridio"/>
 
@@ -21,7 +21,7 @@
 
 このタスクでは、次のトピックで定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。
 
-- [データ保護要件の決定](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md) 
+- [データ保護要件の決定](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
 - [コンテンツ管理要件の決定](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
 - [アクセス制御要件の決定](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
 - [インシデント対応要件の決定](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
@@ -104,11 +104,11 @@ Azure AD を使用してユーザーが認証されたら、そのユーザー�
 
 図 X に示した個々のやり取りは、Azure AD で対応できる 1 つのアクセス制御シナリオを表しています。各シナリオの説明を以下に示します。
 
-1. オンプレミスでホストされるアプリケーションへの条件付きアクセス: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。オンプレミスの条件付きアクセスを設定する方法の詳細については、「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-conditional-access-on-premises-setup.md)」を参照してください。 
+1. オンプレミスでホストされるアプリケーションへの条件付きアクセス: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。オンプレミスの条件付きアクセスを設定する方法の詳細については、「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-conditional-access-on-premises-setup.md)」を参照してください。
 2. Azure 管理ポータルに対する Access Control: Azure には、RBAC (ロールベースの Access Control) を使用して管理ポータルへのアクセスを制御する機能もあります。この方法により、ユーザーが Azure 管理ポータルにアクセスした時点で実行できる操作の量を会社が制限できます。RBAC を使用してポータルへのアクセスを制御することで、IT 管理者は、次のアクセスの管理方法を使用してアクセスを委任できます。
 
  - グループベースのロールの割り当て: ローカルの Active Directory から同期できる Azure AD グループにアクセスを割り当てることができます。これにより、グループ管理用のツールとプロセスに組織が費やした既存の投資を活用できます。また、Azure AD Premium の委任されたグループ管理機能も使用できます。
- - Azure の組み込みロールの活用: 所有者、共同作業者、閲覧者の 3 つのロールを使用して、ジョブの実行に必要なタスクのみを実行する権限をユーザーとグループに付与できます。 
+ - Azure の組み込みロールの活用: 所有者、共同作業者、閲覧者の 3 つのロールを使用して、ジョブの実行に必要なタスクのみを実行する権限をユーザーとグループに付与できます。
  - リソースへのきめ細かなアクセス: 特定のサブスクリプションのユーザーとグループ、リソース グループ、Web サイトやデータベースなどの個々の Azure リソースにロールを割り当てることができます。このように、ユーザーが必要なすべてのリソースにアクセスし、管理する必要のないリソースには一切アクセスできないようにすることができます。
 
  >[AZURE.NOTE]
@@ -123,8 +123,8 @@ Azure AD を使用してユーザーが認証されたら、そのユーザー�
 ## インシデント対応オプションの定義
 Azure AD は、ユーザーのアクティビティを監視することによって、IT 部門が環境内の潜在的なセキュリティ リスクを識別できるよう支援します。IT 部門は、Azure AD のアクセスおよび使用状況レポート機能を活用することで、組織のディレクトリの完全性とセキュリティを視覚的に確認できます。IT 管理者は、この情報を使用して、潜在的なセキュリティ リスクがある箇所をより的確に特定でき、リスクを軽減するための計画を適切に作成できます。[Azure AD Premium サブスクリプション](active-directory-get-started-premium.md)には一連のセキュリティ レポートがあります。IT 部門は、これらのレポートからセキュリティに関する情報を取得できます。[Azure AD のレポート](active-directory-view-access-usage-reports.md)は、次のように分類されます。
 
-- **異常レポート**: 異常と考えられるサインイン イベントが含まれます。この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。 
-- **統合アプリケーション レポート**: 組織内のクラウド アプリケーションの使用状況を明らかにします。Azure Active Directory は、何千ものクラウド アプリケーションとの統合を提供します。 
+- **異常レポート**: 異常と考えられるサインイン イベントが含まれます。この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。
+- **統合アプリケーション レポート**: 組織内のクラウド アプリケーションの使用状況を明らかにします。Azure Active Directory は、何千ものクラウド アプリケーションとの統合を提供します。
 - **エラー レポート**: 外部アプリケーションにアカウントをプロビジョニングするときに発生することがあるエラーを示します。
 - **ユーザー固有レポート**: 特定のユーザーのデバイス/サインイン アクティビティ データを示します。
 - **アクティビティ ログ**: 過去 24 時間、過去 7 日間、または過去 30 日間のすべての監査イベントの記録、グループのアクティビティの変更、およびパスワードのリセットと登録のアクティビティが含まれます。
@@ -150,10 +150,10 @@ Azure AD Premium で提供され、インシデント対応調査時に使用で
 インシデント対応のオプションでは複数層のアプローチを使用しているため、オプションを比較することはこのタスクには適しません。必ず、会社のインシデント対応プロセスの一部として Azure AD のレポート機能を使用する必要があるシナリオごとに使用可能なすべてのオプションを使用してください。
 
 ## 次のステップ
-[ハイブリッド ID 管理タスクの決定](active-directory-hybrid-identity-design-considerations-hybridId-management-tasks.md)
+[ハイブリッド ID 管理タスクの決定](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
 
 
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -3,8 +3,8 @@
 	description="このトピックでは、SQL Database のアクティブ geo レプリケーションとその使用方法について説明します。"
 	services="sql-database"
 	documentationCenter="na"
-	authors="rothja"
-	manager="jeffreyg"
+	authors="stevestein"
+	manager="jhubbard"
 	editor="monicar" />
 
 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
 	ms.date="03/07/2016"
-	ms.author="jroth" />
+	ms.author="sstein" />
 
 # Azure SQL Database のアクティブ geo レプリケーション
 
@@ -46,7 +46,7 @@
 
 >[AZURE.NOTE] セカンダリがプライマリから受け取るスキーマの更新がある場合、セカンダリ データベース上にスキーマ ロックが必要であるため、セカンダリでのログの再生は遅延します。
 
-- ** エラスティック プール データベースのアクティブ geo レプリケーション**: Premium Elastic Database プールでは、任意のデータベースに対して、アクティブ geo レプリケーションを構成することができます。セカンダリ データベースは、別の Premium Elastic Database プールで指定できます。通常のデータベースの場合、サービス階層が同じであれば、セカンダリが Elastic Database プールになったり、その逆になったりすることができます。エラスティック プールでの geo レプリケーションの構成の詳細については、「[Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-transact-sql.md)」と「[PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-powershell.md)」を参照してください。  
+- **エラスティック プール データベースのアクティブ geo レプリケーション**: Premium Elastic Database プールでは、任意のデータベースに対して、アクティブ geo レプリケーションを構成することができます。セカンダリ データベースは、別の Premium Elastic Database プールで指定できます。通常のデータベースの場合、サービス階層が同じであれば、セカンダリが Elastic Database プールになったり、その逆になったりすることができます。エラスティック プールでの geo レプリケーションの構成の詳細については、「[Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-transact-sql.md)」と「[PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-powershell.md)」を参照してください。  
 
 - **セカンダリ データベースの構成可能なパフォーマンス レベル**: セカンダリ データベースは、プライマリよりも下位のパフォーマンス レベルで作成することができます。プライマリとセカンダリ、両方のデータベースが同じサービス階層を持つ必要があります。このオプションは、データベース書き込みアクティビティが高いアプリケーションにはお勧めできません。結果的にレプリケーション遅延が増大する可能性があり、したがって、フェールオーバー後に深刻なデータ損失のリスクが高くなるためです。さらに、フェールオーバー後に、新しいプライマリがより高いパフォーマンス レベルにアップグレードされるまで、アプリケーションのパフォーマンスに影響が生じます。Azure ポータル上のログ IO の割合グラフを使用すると、レプリケーションの負荷を維持するために必要なセカンダリの最小パフォーマンス レベルを適切に見積もれます。たとえば、プライマリ データベースが P6 (1000 DTU) で、ログ IO の割合が 50% の場合、セカンダリは P4 (500 DTU) 以上である必要があります。ログ IO データは、[sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) または [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) データベース ビューを使用しても取得できます。SQL データベースのパフォーマンス レベルの詳細については、「[SQL Database のオプションとパフォーマンス](sql-database-service-tiers.md)」を参照してください。セカンダリ データベース例のパフォーマンス レベルの構成の詳細については、「[Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-transact-sql.md)」と「[PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-powershell.md)」を参照してください。
 
@@ -66,4 +66,4 @@
 ## 次のステップ
 SQL Database のビジネス継続性機能の詳細については、[ビジネス継続性の概要に関するページ](sql-database-business-continuity.md)を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

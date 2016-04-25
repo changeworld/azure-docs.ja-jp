@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/01/2016"
+   ms.date="04/07/2016"
    ms.author="alkohli"/>
 
 # StorSimple Virtual Array のデプロイ - ファイル サーバーとしてセットアップする
@@ -128,7 +128,7 @@ StorSimple 仮想デバイスをセットアップして構成するには、次
 
     1.  StorSimple Virtual Array の「[手順 2: サービス登録キーを取得する](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」で取得した**サービス登録キー**を入力します。
 
-    2.  デバイスがこのサービスに登録する最初のデバイスでない場合は、**サービス データ暗号化キー**を指定する必要があります。このキーは、StorSimple Manager サービスに追加のデバイスを登録する際にサービス登録キーと共に必要になります。詳しくは、ローカル Web UI の「[サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)」を参照してください。
+    2.  これがこのサービスに登録する最初のデバイスの場合は、この手順をスキップして、次の手順に進みます。デバイスがこのサービスに登録する最初のデバイスでない場合は、**サービス データ暗号化キー**を指定する必要があります。このキーは、StorSimple Manager サービスに追加のデバイスを登録する際にサービス登録キーと共に必要になります。詳しくは、ローカル Web UI の「[サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)」を参照してください。
 
     3.  **[登録]** をクリックします。これにより、デバイスが再起動します。デバイスが正常に登録されるまでに、2 ～ 3 分間待機する必要がある場合があります。デバイスが再起動したら、サインイン ページが表示されます。
 
@@ -232,4 +232,4 @@ StorSimple Virtual Array をファイル サーバーとして構成、登録す
 
 ローカル Web UI を使用して [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法の詳細を確認します。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

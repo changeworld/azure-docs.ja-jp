@@ -1,6 +1,6 @@
 <properties
 	pageTitle="VM タスクに対応する Azure CLI コマンド | Microsoft Azure"
-	description="Azure リソース マネージャー モードと Azure サービス管理モードで Azure VM を作成および管理するための同等の Azure CLI コマンドを紹介します。"
+	description="Resource Manager モードとサービス管理モードで Azure VM を作成および管理するための同等の Azure CLI コマンド"
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="dlepow"
@@ -24,4 +24,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-cli-manage](../../includes/virtual-machines-common-cli-manage.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

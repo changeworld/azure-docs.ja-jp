@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/05/2016" 
+	ms.date="04/10/2016" 
 	ms.author="arramac"/>
 
 # Azure DocumentDB でのパーティション分割とスケーリング
@@ -210,7 +210,7 @@ Azure DocumentDB に、[REST API バージョン 2015-12-16](https://msdn.micros
     // Read document. Needs the partition key and the ID to be specified
     Document result = await client.ReadDocumentAsync(
       UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      new RequestOptions { PartitionKey = new object[] { "XMS-0001" }});
+      new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 
     DeviceReading reading = (DeviceReading)(dynamic)result;
 
@@ -225,7 +225,7 @@ Azure DocumentDB に、[REST API バージョン 2015-12-16](https://msdn.micros
     // Delete document. Needs partition key
     await client.DeleteDocumentAsync(
       UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-      new RequestOptions { PartitionKey = new object[] { "XMS-0001" } });
+      new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 
 
 
@@ -261,12 +261,10 @@ Azure DocumentDB に、[REST API バージョン 2015-12-16](https://msdn.micros
 ### 単一パーティション コレクションからパーティション分割コレクションへの移行
 単一パーティション コレクションを使用するアプリケーションのスループットを増やす必要がある場合 (> 10,000 RU/s)、またはデータ ストレージの容量を増やす必要がある場合 (> 10 GB) は、[DocumentDB データ移行ツール](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)を使用して、単一パーティション コレクションからパーティション分割コレクションにデータを移行できます。
 
-さらに、パーティション キーを指定できるのはコレクションの作成中のみであるため、パーティション分割コレクションを作成するには、[DocumentDB データ移行ツール](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)を使用して、 データをエクスポートしてから再びインポートする必要があります。
-
 単一パーティション コレクションからパーティション分割コレクションへの移行方法
 
-1. 単一パーティション コレクションから JSON にデータをエクスポートします。詳細については、「[JSON ファイルへのエクスポート](documentdb-import-data.md#export-to-json-file)」をご覧ください。
-2. 次の例で示すように、パーティション キーの定義、および 1 秒あたり 10,000 要求ユニットを超えるスループットを指定して作成されたパーティション分割コレクションにデータをインポートします。詳細については、「[DocumentDB へのインポート](documentdb-import-data.md#DocumentDBSeqTarget)」をご覧ください。
+1. 単一パーティション コレクションから JSON にデータをエクスポートします。詳細については、「[JSON ファイルへのエクスポート](documentdb-import-data.md#export-to-json-file)」を参照してください。
+2. 次の例で示すように、パーティション キーの定義、および 1 秒あたり 10,000 要求ユニットを超えるスループットを指定して作成されたパーティション分割コレクションにデータをインポートします。詳細については、「[DocumentDB へのインポート](documentdb-import-data.md#DocumentDBSeqTarget)」を参照してください。
 
 ![DocumentDB のパーティション分割コレクションへのデータの移行][3]
 
@@ -278,7 +276,7 @@ Azure DocumentDB に、[REST API バージョン 2015-12-16](https://msdn.micros
 パーティション キーの選択は、設計時に行う必要のある重要な決定事項の 1 つです。このセクションでは、コレクションのパーティション キーの選択に関わるトレードオフについていくつか説明します。
 
 ### トランザクション境界としてのパーティション キー
-選択したパーティション キーは複数のパーティションにエンティティを分散するための要件に対しトランザクションの使用を可能にして、スケーラブルなソリューションを確保するため、必要性のバランスを取る必要があります。極端な例として、すべてのエンティティを 1 つのパーティションに格納することも可能ですが、この場合、ソリューションのスケーラビリティが制限される可能性があります。別の極端な例として、パーティション キーごとに 1 つのドキュメントを格納できますが、これは高い拡張性を実現するものの、ストアド プロシージャやトリガーを介したクロス ドキュメント トランザクションを使用できない可能性があります。理想的なパーティション キーとは、効率的なクエリを使用することができ、スケーラブルなソリューションを確保できるパーティションを持つものを指します。
+パーティション キーを選ぶ際は、トランザクションを使用できるようにすると同時に、ソリューションのスケーラビリティ確保のためにエンティティを複数のパーティション キーに分散させることができるような、バランスの取れた条件にする必要があります。極端な例を挙げると、すべてのドキュメントに同じパーティション キーを設定することは可能ですが、この場合はソリューションのスケーラビリティが制限される可能性があります。その一方で、各ドキュメントに対して固有のパーティション キーを割り当てることもできますが、この場合、スケーラビリティは向上するものの、ストアド プロシージャやトリガーを介したクロス ドキュメント トランザクションを使用できなくなる可能性があります。理想的なパーティション キーとは、効率的なクエリの使用を可能にし、かつソリューションのスケーラビリティを確保するために十分な基数を持つものを指します。
 
 ### ストレージとパフォーマンスのボトルネックの回避 
 また、書き込みが多くの個々の値全体に分散されるようにするプロパティを選択することが重要です。同じパーティション キーに対する要求は、単一のパーティションのスループットを超えることはできず、超えた場合は調整されます。そのため、アプリケーション内の **"ホット スポット"** にならないパーティション キーを選択することが重要です。また、同じパーティション キーを持つドキュメントのストレージ サイズの合計は、容量 10 GB を超えてはなりません。
@@ -311,9 +309,9 @@ DocumentDB を使用したマルチテナント アプリケーションを実�
 ## 次のステップ
 この記事では、Azure DocumentDB でのパーティション分割のしくみ、パーティション分割コレクションの作成方法、またアプリケーションに最適なパーティション キーの選択方法を説明しました。
 
--   [SDK](documentdb-sdk-dotnet.md) または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使ってコーディングを開始しましょう。
--   [DocumentDB でのプロビジョニング済みスループット](documentdb-performance-levels.md)に関するページをご覧ください。
--   アプリケーションでのパーティション分割の実行方法をカスタマイズする必要がある場合は、独自のクライアント側のパーティション分割の実装を採用できます。[クライアント側のパーティション分割のサポート](documentdb-sharding.md)に関するページをご覧ください。
+-   [SDK](documentdb-sdk-dotnet.md) または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使ってコーディングを開始する
+-   [DocumentDB でのプロビジョニング済みスループット](documentdb-performance-levels.md)について確認する
+-   アプリケーションでのパーティション分割の実行方法をカスタマイズする必要がある場合は、独自のクライアント側のパーティション分割の実装を採用できます。[クライアント側のパーティション分割のサポート](documentdb-sharding.md)に関するページを参照してください。
 
 [1]: ./media/documentdb-partition-data/partitioning.png
 [2]: ./media/documentdb-partition-data/single-and-partitioned.png
@@ -321,4 +319,4 @@ DocumentDB を使用したマルチテナント アプリケーションを実�
 
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

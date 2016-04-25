@@ -1,5 +1,5 @@
 <properties
-	pageTitle="チュートリアル: Azure Active Directory と Novatus の統合 | Microsoft Azure"
+	pageTitle="チュートリアル: Azure Active Directory と HackerOne の統合 | Microsoft Azure"
 	description="Azure Active Directory と HackerOne の間でシングル サインオンを構成する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="04/06/2016"
 	ms.author="jeedes"/>
 
 
@@ -33,7 +33,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 Azure AD と HackerOne の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
+- Azure サブスクリプション
 - HackerOne でのシングル サインオンが有効なサブスクリプション
 
 
@@ -86,43 +86,65 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
 
 次に、クラシック ポータルで Azure AD のシングル サインオンを有効にして、HackerOne アプリケーションでシングル サインオンを構成します。
 
+この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (バイナリ証明書をテキスト ファイルに変換する方法)」をご覧ください。
+
 **HackerOne で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **HackerOne** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][6] <br>
+1. Azure クラシック ポータルの **HackerOne** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
 
-2. **[ユーザーの HackerOne へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![シングル サインオンの構成](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_03.png) <br>
+2. **[ユーザーの HackerOne へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_03.png) <br>
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_04.png) <br>
-
-
-    a.[サインオン URL] ボックスに、ユーザーが HackerOne アプリケーションへのサインオンに使用する URL を入力します。その際、"**https://hackerone.com/companyname/authentication**" パターンを使用します。一般名を参照する際は、この "**companyname**" を実際の名前に置き換える必要があります。<br>
-
-	b.[識別子] ボックスに、テナントの URL を入力します。テナントの URL を入手するには、HackerOne サポート チーム (support@hackerone.com) にお問い合わせください。
-
-	c.**[次へ]** をクリックします。
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_04.png) <br>
 
 
-4. **[HackerOne シングル サインオン パラメーターの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_05.png) <br>
+    a.**[サインオン URL]** ボックスに、ユーザーが HackerOne アプリケーションへのサインオンに使用する URL を入力します。その際、**"https://hackerone.com/<企業名>/authentication"** パターンを使用します。
+
+    b.テナントの URL がわからない場合は、HackerOne サポート チーム ([support@hackerone.com](mailto:support@hackerone.com)) にお問い合わせください。
+
+	c.**[識別子]** ボックスに、テナントの URL を入力します。
+
+	d.**[次へ]** をクリックします。
+
+
+4. **[HackerOne シングル サインオン パラメーターの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_05.png) <br>
 
     a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
     b.**[次へ]** をクリックします。
 
 
-5. お使いのアプリケーション用に構成された SSO を取得するには、HackerOne テナントに管理ユーザーでサインインします。
+1. HackerOne テナントに管理者としてサインオンします。
+
+1. 上部のメニューで **[Settings]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_001.png)<br>
+
+1. **[Authentication]** に移動し、**[Add SAML settings]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_003.png) <br>
+
+
+1. **[SAML Settings]** ページで、次の手順を実行します。 <br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_004.png) <br><br>
+
+    a.登録されているドメインを **[Email Domain]** ボックスに入力します。
+
+	b.Azure クラシック ポータルで、**[シングル サインオン サービス URL]** をコピーし、[Single Sign On URL] ボックスに貼り付けます。
+
+    c.ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
+
+       >[AZURE.TIP] 詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 	
-	a.ダッシュボードに移動し、ページの右上隅にある **[Settings]** をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_001.png) <br>
+    d.base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X509 Certificate]** ボックスに貼り付けます。
 
-	b.**[Authentication]** に移動し、**[Add SAML settings]** ボタンをクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_003.png) <br>
-
-	c.**[SAML Settings]** フォームを入力します。<br><br>![シングル サインオンの構成](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_004.png) <br><br> c1.登録されているドメインを **[Email Domain]** ボックスに入力します。HackerOne でドメインを登録するには、support@hackerone.com. にお問い合わせください。<br><br> c2.シングル サインオン サービスの URL を Azure AD から HackerOne の **[Single Sign On URL]** にコピーします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_006.png) <br> c3.ダウンロードした証明書を base64 ファイルに変換し、メモ帳で開いてコピーし HackerOne の **[X509 Certificate]** ボックスに貼り付けます。<br>
-
-	d.**[Save]** ボタンをクリックします。<br><br> e.**[Run test]** ボタンをクリックし、テストが機能することを確認します。機能しない場合は、SAML 設定のレビューを HackerOne サポート チーム (support@hackerone.com) に依頼します。サポート チームにより設定が承認されます。<br><br>![シングル サインオンの構成](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_005.png) <br><br>
+    e.**[Save]** をクリックします。
 
 
-6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD のシングル サインオン][10]<br>
+1. [Authentication Settings] ダイアログで、次の手順を実行します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_005.png)<br><br>
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。 <br>![Azure AD のシングル サインオン][11]
+    a.**[Run test]** をクリックします。
+
+    b.**[Status]** フィールドの値が **[Last test status: created]** と同じ場合は、HackerOne サポート チーム ([support@hackerone.com](mailto:support@hackerone.com)) に構成のレビューをご依頼ください。
+
+
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD Single Sign-On][10]<br>
+
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。 <br>![Azure AD Single Sign-On][11]
 
 
 
@@ -188,7 +210,7 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。 <br><br>![ユーザーの割り当て][201] <br>
 
-2. アプリケーションの一覧で **[HackerOne]** を選択します。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_50.png) <br>
+2. アプリケーションの一覧で **[HackerOne]** を選択します。 <br><br>![Configure Single Sign-On](./media/active-directory-saas-hackerone-tutorial/tutorial_hackerone_50.png) <br>
 
 1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
 
@@ -227,4 +249,4 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
 [204]: ./media/active-directory-saas-hackerone-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-hackerone-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

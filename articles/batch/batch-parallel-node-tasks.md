@@ -6,7 +6,7 @@
 	authors="mmacy"
 	manager="timlt"
 	editor="" />
-	
+
 <tags
 	ms.service="batch"
 	ms.devlang="multiple"
@@ -15,7 +15,7 @@
 	ms.workload="big-compute"
 	ms.date="01/22/2016"
 	ms.author="marsma" />
-	
+
 # 同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする
 
 この記事では、Azure Batch プール内の各計算ノードで同時に複数のタスクを実行する方法について説明します。プールのコンピューティング ノードでの同時実行タスクの実行を有効にすると、プール内のより少ないノードでリソース使用率を最大化できます。一部のワークロードでは、これによって時間とコストの両方を節約できます。
@@ -38,7 +38,7 @@
 
 ## 並列タスク実行を有効にする
 
-並列タスク実行のための Batch ソリューション内のコンピューティング ノードの構成は、プール レベルで行います。Batch .NET ライブラリを使用する場合は、プールを作成するときに [CloudPool.MaxTasksPerComputeNode][maxtasks_net] プロパティを設定します。Batch REST API を使用する場合は、プール作成時の要求本文に [maxTasksPerNode][maxtasks_rest] 要素を設定します。
+並列タスク実行のための Batch ソリューション内のコンピューティング ノードの構成は、プール レベルで行います。Batch .NET ライブラリを使用する場合は、プールを作成するときに [CloudPool.MaxTasksPerComputeNode][maxtasks_net] プロパティを設定します。Batch REST API を使用する場合は、プール作成時の要求本文に [maxTasksPerNode][rest_addpool] 要素を設定します。
 
 Azure Batch では、ノードあたりの最大タスク数を、ノード コアの数の最大 4 倍まで設定できます。たとえば、プールをノード サイズ "Large" (4 コア) で構成した場合、`maxTasksPerNode` は 16 に設定できます。各ノード サイズのコア数の詳細については、「[Cloud Services のサイズ](./../cloud-services/cloud-services-sizes-specs.md)」を参照してください。サービスの制限の詳細については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
@@ -56,27 +56,37 @@ Azure Batch では、ノードあたりの最大タスク数を、ノード コ�
 
 次の [Batch .NET][api_net] API コード スニペットには、ノードごとの最大タスク数が 4 である 4 個の大きいノードを含むプールの作成要求を示します。ここでは、1 つのノードがタスクでいっぱいになってからプール内の別のノードにタスクを割り当てるタスク スケジュール ポリシーが指定されています。Batch .NET API を使用したプールの追加方法の詳細については、「[BatchClient.PoolOperations.CreatePool][poolcreate_net]」を参照してください。
 
-        CloudPool pool = batchClient.PoolOperations.CreatePool(poolId: "mypool",
-        													osFamily: "2",
-        													virtualMachineSize: "large",
-        													targetDedicated: 4);
-        pool.MaxTasksPerComputeNode = 4;
-        pool.TaskSchedulingPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
-        pool.Commit();
+```
+CloudPool pool =
+    batchClient.PoolOperations.CreatePool(
+        poolId: "mypool",
+		targetDedicated: 4
+		virtualMachineSize: "large",
+		cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
+
+pool.MaxTasksPerComputeNode = 4;
+pool.TaskSchedulingPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
+pool.Commit();
+```
 
 ## Batch REST の例
 
-次の [Batch REST][api_rest] API スニペットには、ノードごとの最大タスク数が 4 である 2 個の大きいノードを含むプールの作成要求を示します。REST API を使用したプールの追加方法の詳細については、「[アカウントにプールを追加する][maxtasks_rest]」を参照してください。
+次の [Batch REST][api_rest] API スニペットには、ノードごとの最大タスク数が 4 である 2 個の大きいノードを含むプールの作成要求を示します。REST API を使用したプールの追加方法の詳細については、「[アカウントにプールを追加する][rest_addpool]」を参照してください。
 
-        {
-          "id": "mypool",
-          "vmSize": "Large",
-          "osFamily": "2",
-          "targetOSVersion": "*",
-          "targetDedicated": 2,
-          "enableInterNodeCommunication": false,
-          "maxTasksPerNode": 4
-        }
+```
+{
+  "odata.metadata":"https://myaccount.myregion.batch.azure.com/$metadata#pools/@Element",
+  "id":"mypool",
+  "vmSize":"large",
+  "cloudServiceConfiguration": {
+    "osFamily":"4",
+    "targetOSVersion":"*",
+  }
+  "targetDedicated":2,
+  "maxTasksPerNode":4,
+  "enableInterNodeCommunication":true,
+}
+```
 
 > [AZURE.NOTE] `maxTasksPerNode` 要素および [MaxTasksPerComputeNode][maxtasks_net] プロパティは、プール作成時にのみ設定できます。これらは、プール作成後に変更することはできません。
 
@@ -124,11 +134,11 @@ Azure Batch の[サンプル アプリケーション][github_samples]の 1 つ�
 [fill_type]: https://msdn.microsoft.com/library/microsoft.azure.batch.common.computenodefilltype.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [maxtasks_net]: http://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.maxtaskspercomputenode.aspx
-[maxtasks_rest]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[rest_addpool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 [parallel_tasks_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks
 [poolcreate_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx
 [task_schedule]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudpool.taskschedulingpolicy.aspx
 
 [1]: ./media/batch-parallel-node-tasks\heat_map.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

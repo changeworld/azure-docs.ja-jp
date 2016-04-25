@@ -4,7 +4,7 @@
 	services="cache" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="04/06/2016" 
 	ms.author="sdanie"/>
 
 # Azure Managed Cache Service の使用方法
 
 このガイドでは、**Azure Managed Cache Service** の基本的な使用方法について説明します。サンプルは C# コードで記述され、.NET API を利用しています。紹介するシナリオは、**キャッシュの作成と構成**、**キャッシュ クライアントの構成**、**キャッシュでのオブジェクトの追加と削除、キャッシュへの ASP.NET セッション状態の格納**、**キャッシュの使用による ASP.NET ページ出力キャッシュの有効化**などです。Azure Cache の使用方法の詳細については、「[次のステップ][]」を参照してください。
 
->[AZURE.IMPORTANT]Azure Managed Cache Service と Azure In-Role Cache は、2016 年 11 月 30 日に提供を終了する予定です。提供終了に備えて、Azure Redis Cache に移行することをお勧めします。日付と移行のガイドラインの詳細については、「[どの Azure Cache を利用すればよいですか](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)」を参照してください。
+>[AZURE.IMPORTANT]昨年[お知らせ](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)したとおり、Azure Managed Cache Service と Azure In-Role Cache サービスは 2016 年 11 月 30 日で提供が終了します。そのため、[Azure Redis Cache](https://azure.microsoft.com/services/cache/) を使用することをお勧めします。移行については、「[Managed Cache Service から Azure Redis Cache への移行](../redis-cache/cache-migrate-to-redis.md)」を参照してください。
 
 <a name="what-is"></a>
 ## Azure Managed Cache Service とは
@@ -485,4 +485,4 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

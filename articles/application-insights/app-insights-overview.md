@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="03/31/2016" 
 	ms.author="awills"/>
  
 # Application Insights とは何か?
@@ -22,6 +22,8 @@ Application Insights は、実行中のアプリケーションを監視する�
 ![ユーザー アクティビティの統計をグラフ化したり、特定のイベントをドリルダウンしたりすることができます。](./media/app-insights-overview/00-sample.png)
 
 さまざまなプラットフォーム上の Web アプリやスタンドアロン アプリ (オンプレミスまたはクラウドでホストされた .NET または J2EE など) と連携します。
+
+[紹介用アニメーションをご覧ください](https://www.youtube.com/watch?v=fX2NtGrh-Y0)。
 
 Application Insights は、開発チームを支援することを目的としています。Application Insights では、次のことを行えます。
 
@@ -119,7 +121,7 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 * バグ:
  * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
 * ご提案:
- * [ユーザーの声](http://visualstudio.uservoice.com/forums/121579-visual-studio/category/77108-application-insights)
+ * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
 
 
 ## ビデオ
@@ -130,6 +132,8 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 > [AZURE.VIDEO usage-monitoring-application-insights]
 
 > [AZURE.VIDEO performance-monitoring-application-insights]
+
+> [紹介用アニメーション](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
 
 
 <!--Link references-->
@@ -151,4 +155,4 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

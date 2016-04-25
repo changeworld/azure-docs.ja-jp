@@ -79,6 +79,5 @@ v2.0 エンドポイントで使われている各種トークンの詳細につ
 - OAuth 2.0 On Behalf Of Flow を使用して Web API でトークンを取得する (近日公開予定)
 
 <!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) --> 
-<!-- [Call the Azure AD Graph API using the OAuth 2.0 Client Credentials Flow](active-directory-reference-graph.md) -->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

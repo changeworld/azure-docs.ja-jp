@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="04/07/2016"
    ms.author="sahajs;barbkess;sonyama"/>
 
 
@@ -51,7 +51,7 @@ SQL Data Warehouse ではコンピューティングとストレージが分離�
 
 ### データベースの復元
 
-データベースの復元は、以前の任意の時点にデータベースが復元されるように設計されます。Azure SQL Data Warehouse サービスは、少なくとも 8 時間ごとにストレージのスナップショットを自動的に取得し、それらを 7 日間保持して復元ポイントの個別セットを用意することで、すべてのデータベースを保護します。これらのバックアップは RA-GRS Azure Storage に保存されるため、規定で地理冗長になります。自動のバックアップと復元の機能は追加料金なしで使用でき、偶発的な破損や削除からデータベースをコストや管理不要で保護できます。データベースの復元の詳細については、「[SQL Data Warehouse でのデータベースのユーザー エラーからの復旧][]」を参照してください。
+データベースの復元は、以前の任意の時点にデータベースが復元されるように設計されます。Azure SQL Data Warehouse サービスは、少なくとも 8 時間ごとにストレージのスナップショットを自動的に取得し、それらを 7 日間保持して復元ポイントの個別セットを用意することで、すべてのデータベースを保護します。これらのバックアップは RA-GRS Azure Storage に保存されるため、規定で地理冗長になります。自動のバックアップと復元の機能は追加料金なしで使用でき、偶発的な破損や削除からデータベースをコストや管理不要で保護できます。データベースの復元の詳細については、[スナップショットからの復元][]に関するページをご覧ください。
 
 ### geo リストア
 
@@ -68,7 +68,7 @@ geo リストアは、破壊的なイベントが原因でデータベースを�
 [Finalize a recovered database]: ../sql-database/sql-database-recovered-finalize.md
 [Azure storage redundancy options (Azure ストレージ冗長オプション)]: ../storage/storage-redundancy.md#read-access-geo-redundant-storage
 [ビジネス継続性の概要]: ../sql-database/sql-database-business-continuity.md
-[SQL Data Warehouse でのデータベースのユーザー エラーからの復旧]: sql-data-warehouse-business-continuity-recover-from-user-error.md
+[スナップショットからの復元]: sql-data-warehouse-backup-and-restore-from-snapshot.md
 
 <!--MSDN references-->
 [Create database restore request]: http://msdn.microsoft.com/library/azure/dn509571.aspx
@@ -78,4 +78,4 @@ geo リストアは、破壊的なイベントが原因でデータベースを�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

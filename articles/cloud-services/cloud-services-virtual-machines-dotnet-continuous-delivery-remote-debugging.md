@@ -39,41 +39,41 @@
 1. Azure 仮想マシンを作成します。「[Windows Server を実行する仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」または「[Visual Studio での Azure Virtual Machines の作成と管理](../virtual-machines/virtual-machines-windows-classic-manage-visual-studio.md)」を参照してください。
 2. [Azure クラシック ポータル ページ](http://go.microsoft.com/fwlink/p/?LinkID=269851)で、仮想マシンのダッシュボードを表示し、仮想マシンの **RDP 証明書の拇印**を確認します。この値は、拡張機能構成の `ServerThumbprint` の値に使用されます。
 3. 「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」の説明に従って、クライアント証明書を作成します (.pfx および RDP 証明書の拇印を保持)。
-4. 「[Azure PowerShell のインストールおよび構成方法](/powershell-install-configure.md)」の説明に従って、Azure PowerShell (バージョン 0.7.4 以降) をインストールします。
+4. 「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」の説明に従って、Azure PowerShell (バージョン 0.7.4 以降) をインストールします。
 5. 次のスクリプトを実行して RemoteDebug 拡張機能を有効にします。パスおよび個人用データを自分自身のサブスクリプション名、サービス名、サムプリントなどで置き換えます。
 
 	>[AZURE.NOTE] このスクリプトは Visual Studio 2015 用に構成されています。Visual Studio 2013 を使用している場合は、`RemoteDebugVS2013` (`RemoteDebugVS2015` ではなく) を使用するように次の `$referenceName` および `$extensionName` 割り当てを変更します。
 
 	<pre>
 	Add-AzureAccount
-
+	
 	Select-AzureSubscription "My Microsoft Subscription"
-
+	
 	$vm = Get-AzureVM -ServiceName "mytestvm1" -Name "mytestvm1"
-
+	
 	$endpoints = @(
 	,@{Name="RDConnVS2013"; PublicPort=30400; PrivatePort=30398}
 	,@{Name="RDFwdrVS2013"; PublicPort=31400; PrivatePort=31398}
 	)
-
+	
 	foreach($endpoint in $endpoints)
 	{
 	Add-AzureEndpoint -VM $vm -Name $endpoint.Name -Protocol tcp -PublicPort $endpoint.PublicPort -LocalPort $endpoint.PrivatePort
 	}
-
+	
 	$referenceName = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug.RemoteDebugVS2015"
 	$publisher = "Microsoft.VisualStudio.WindowsAzure.RemoteDebug"
 	$extensionName = "RemoteDebugVS2015"
 	$version = "1.*"
 	$publicConfiguration = "<PublicConfig><Connector.Enabled>true</Connector.Enabled><ClientThumbprint>56D7D1B25B472268E332F7FC0C87286458BFB6B2</ClientThumbprint><ServerThumbprint>E7DCB00CB916C468CC3228261D6E4EE45C8ED3C6</ServerThumbprint><ConnectorPort>30398</ConnectorPort><ForwarderPort>31398</ForwarderPort></PublicConfig>"
-
+	
 	$vm | Set-AzureVMExtension `
 	-ReferenceName $referenceName `
 	-Publisher $publisher `
 	-ExtensionName $extensionName `
 	-Version $version `
 	-PublicConfiguration $publicConfiguration
-
+	
 	foreach($extension in $vm.VM.ResourceExtensionReferences)
 	{
 	if(($extension.ReferenceName -eq $referenceName) `
@@ -85,10 +85,10 @@
 	break
 	{
 	{
-
+	
 	$vm | Update-AzureVM
 	</pre>
 
 6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx) をインポートします。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

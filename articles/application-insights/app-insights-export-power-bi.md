@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Stream Analytics を利用し、Application Insights のデータを Power BI にエクスポートする" 
-	description="Stream Analytics を利用し、エクスポートしたデータを処理する方法について説明します。" 
+	pageTitle="Application Insights から Power BI へのエクスポート" 
+	description="記事" 
 	services="application-insights" 
     documentationCenter=""
 	authors="noamben" 
@@ -12,46 +12,50 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/25/2015" 
+	ms.date="04/05/2016" 
 	ms.author="awills"/>
- 
-# Stream Analytics を利用し、Application Insights のデータを Power BI に入力する
 
-この記事では、[Visual Studio Application Insights](app-insights-overview.md) から[エクスポート](app-insights-export-telemetry.md)されたデータを、[Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して処理する方法を説明します。ターゲットの例として、[Microsoft Power BI](https://powerbi.microsoft.com/) にデータを送信します。
+# Application Insights のデータを Power BI に入力する
 
+[Power BI](http://www.powerbi.com/) は、データを分析し、洞察を共有する一連のビジネス分析ツールです。あらゆるデバイスで機能豊富なダッシュボードを利用できます。[Visual Studio Application Insights](app-insights-overview.md) など、さまざまなソースのデータを組み合わせることができます。
 
-> [AZURE.NOTE] Application Insights から Power BI にデータを入力する簡単な方法は[アダプターを利用する](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-application-insights/)ことです。このアダプターは Power BI Gallery の [サービス] にあります。この記事で説明する方法は、現在のところ、より多面的なものですが、Application Insights で Stream Analytics を利用する方法を紹介するものでもあります。
+作業を開始するには、[Power BI での Application Insights のデータの表示](https://powerbi.microsoft.com/documentation/powerbi-content-pack-application-insights/)に関するページをご覧ください。
 
-[Microsoft Power BI](https://powerbi.microsoft.com/) では、機能豊富で多様なビジュアルでデータが表示されます。複数のソースから情報をまとめる機能も備わっています。
+最初のダッシュボードを入手したら、Application Insights のグラフを他のソースのグラフと組み合わせてカスタマイズできます。さらに多くのグラフを入手できるビジュアル ギャラリーがあり、各グラフにはユーザーが設定できるパラメーターがあります。
 
-
-![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-power-bi/010.png)
-
-[Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) はアダプターとして機能する Azure サービスであり、Application Insights からエクスポートされたデータを継続的に処理します。
-
-![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-power-bi/020.png)
+![](./media/app-insights-export-power-bi/010.png)
 
 
+最初のインポート後は、ダッシュボードとレポートが毎日更新されます。データセットの更新スケジュールを管理できます。
 
 
-## ビデオ
+**サンプリング。** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。これは、SDK または取り込みでサンプリングを手動で設定した場合にも当てはまります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
 
-Noam Ben Zeev で、この記事で説明する内容を確認できます。
+## Application Insights のデータを表示する別の方法
 
-> [AZURE.VIDEO export-to-power-bi-from-application-insights]
+* Azure 以外のデータを表示する必要がない場合は、[Application Insights のグラフが含まれた Azure ダッシュボード](app-insights-dashboards.md)をより適切に設定することができます。たとえば、いくつかの Azure サービス モニターと共に、システムのさまざまなコンポーネントを監視する Application Insights のグラフのダッシュボードを設定する場合、Azure ダッシュボードが最適です。Azure ダッシュボードは既定でより頻繁に更新されます。 
+* [連続エクスポート](app-insights-export-telemetry.md)では、受信データが Azure Storage にコピーされます。コピーされたデータは、Azure Storage から移動して自由に処理できます。
+* [Analytics](app-insights-analytics.md) を使用すると、Application Insights で保持されている生データに対して複雑なクエリを実行できます。
 
 
-**サンプリング** アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。[サンプリングの詳細については、こちらを参照してください。](app-insights-sampling.md)
+## Stream Analytics を使用した独自の Power BI アダプターの作成
 
-## Application Insights によるアプリの監視
+Application Insights 用 Power BI コンテンツ パックでは、ユーザーのニーズを満たすと考えられるアプリケーションのテレメトリの便利なサブセットが表示されます。ただし、提供されるものよりもさらに広範なテレメトリを取得する場合や、生のテレメトリの一部のデータを計算する場合は、Azure Stream Analytics サービスを使用して独自のアダプターを作成できます。
 
-まだ試していないなら、今からはじめましょう。Application Insights では、さまざまなプラットフォーム (Windows、iOS、Android、J2EE など) のすべてのデバイスまたは Web アプリを監視できます。[使用を開始するには、こちらを参照してください](app-insights-overview.md)。
+ここでは、Application Insights から Azure Storage にデータをエクスポートします。[Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) はそこからデータをプルし、一部のフィールドの名前を変更して処理した後、Power BI にパイプ処理します。Stream Analytics は、データの継続的なストリームに対して、フィルター、集計、計算を実行できるサービスです。
 
-## Azure でのストレージの作成
+![SA を介した PBI へのエクスポートのブロック図](./media/app-insights-export-power-bi/020.png)
+
+
+>[AZURE.TIP] Power BI で Application Insights のデータを表示するために、(Stream Analytics を使用する) **この記事の以降の手順に従う必要はありません**。さらに簡単な方法があります (代わりに、[無料のアダプターを使用](https://powerbi.microsoft.com/documentation/powerbi-content-pack-application-insights/)します)。無料のアダプターで必要なデータがすべて提供されるわけではない場合や、データに対して独自の集計や関数を定義する場合にのみ、この記事の以降の手順に従ってください。
+
+### Azure でのストレージの作成
 
 連続エクスポートでは、常に Azure のストレージ アカウントにデータが出力されるため、まずストレージを作成する必要があります。
 
-1. [Azure ポータル](https://portal.azure.com)で、サブスクリプションの "クラシック" ストレージ アカウントを作成します。
+1. [Power BI 用 Application Insights コンテンツ パック](https://powerbi.microsoft.com/documentation/powerbi-content-pack-application-insights/)を使ってみましたか。 このコンテンツ パックがニーズを満たしている場合は、この記事の以降の手順は不要です。
+
+2.  [Azure ポータル](https://portal.azure.com)で、サブスクリプションの "クラシック" ストレージ アカウントを作成します。
 
     ![Azure ポータルで、[新規]、[データ]、[Storage] の順に選択します](./media/app-insights-export-power-bi/030.png)
 
@@ -65,7 +69,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
     ![ストレージで、[設定]、[キー] の順に開き、プライマリ アクセス キーのコピーを取ります](./media/app-insights-export-power-bi/045.png)
 
-## Azure Storage への連続エクスポートの開始
+### Azure Storage への連続エクスポートの開始
 
 [連続エクスポート](app-insights-export-telemetry.md)は、Application Insights から Azure のストレージにデータを移動します。
 
@@ -98,7 +102,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 イベントが JSON 形式で BLOB ファイルに書き込まれます。各ファイルに 1 つ以上のイベントが含まれる場合があります。このため、イベント データを読み取って必要なフィールドをフィルター処理します。データの処理に関して実行できることは多数ありますが、今日の計画は、Stream Analytics を使用してデータを Power BI に移動することです。
 
-## Azure Stream Analytics インスタンスの作成
+### Azure Stream Analytics インスタンスの作成
 
 [従来の Azure ポータル](https://manage.windowsazure.com/)で、Azure Stream Analytics サービスを選択し、新しい Stream Analytics ジョブを作成します。
 
@@ -154,7 +158,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 > [AZURE.TIP] サンプルのコマンドを使用し、データをダウンロードします。クエリをデバッグするために、それをテスト サンプルとして保存します。
 
-## 出力の設定
+### 出力の設定
 
 では、ジョブを選択し、出力を設定しましょう。
 
@@ -164,7 +168,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 ![3 つの名前を作成します。](./media/app-insights-export-power-bi/170.png)
 
-## クエリの設定
+### クエリの設定
 
 クエリでは、入力から出力への変換を制御します。
 
@@ -237,7 +241,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 * このクエリは、次元配列の固定インデックスにある特定のディメンションに依存せず、ディメンション プロパティの値を追加します。
 
-## ジョブを実行する
+### ジョブを実行する
 
 ジョブを開始する過去の日付を選択できます。
 
@@ -245,7 +249,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 ジョブが実行されるまで待ちます。
 
-## Power BI で結果を確認します。
+### Power BI で結果を確認します。
 
 職場または学校のアカウントで Power BI を開き、Stream Analytics ジョブの出力として定義したデータセットとテーブルを選択します。
 
@@ -256,7 +260,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 ![Power BI で、データセットとフィールドを選択します。](./media/app-insights-export-power-bi/210.png)
 
-## ビデオ
+### ビデオ
 
 Noam Ben Zeev で、Power BI にエクスポートする方法を確認できます。
 
@@ -268,5 +272,6 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 * [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](app-insights-export-data-model.md)
 * [Application Insights](app-insights-overview.md)
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
+ 
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

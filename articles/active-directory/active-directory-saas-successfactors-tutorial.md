@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と SuccessFactors の統合 | Microsoft Azure"
     description="Azure Active Directory で SuccessFactors を使用してシングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,13 +11,12 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="04/06/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と SuccessFactors の統合
   
-このチュートリアルでは、Azure と SuccessFactors を **サービス プロバイダー (SP) によって開始されたシングル サインオン モード**で統合する方法について説明します。  
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と SuccessFactors を **サービス プロバイダー (SP) によって開始されたシングル サインオン モード**で統合する方法について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   SP によって開始されたモードで SuccessFactors でのシングル サインオンが有効なサブスクリプション
@@ -83,15 +82,12 @@
 
 3.  **[アプリケーション URL の構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-successfactors-tutorial/IC791140.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-successfactors-tutorial/IC791140.png "アプリケーション URL の構成")
 
     1.  **[サインオン URL]** テキスト ボックスに、ユーザーが SuccessFactors アプリにサインオンするために使用する URL を入力します (例: "*https://performancemanager4.successfactors.com/sf/home?company=CompanyName&loginMethod=SSO*")。
     2.  **[SuccessFactors 応答 URL]** テキスト ボックスに、「**https://performancemanager4.successfactors.com/saml2/SAMLAssertionConsumer?company=CompanyName**」と入力します。
 
-        >[AZURE.NOTE]この値は一時的なプレースホルダーです。  
-        >実際の値は、SuccessFactors サポート チームから取得します。  
-        >このチュートリアルの中に、SuccessFactors サポート チームに連絡することを指示する手順があります。  
-        >サポート チームから、実際の SuccessFactors 応答 URL を取得できます。
+        >[AZURE.NOTE] この値は一時的なプレースホルダーです。実際の値は、SuccessFactors サポート チームから取得します。このチュートリアルの中に、SuccessFactors サポート チームに連絡することを指示する手順があります。サポート チームから、実際の SuccessFactors 応答 URL を取得できます。
 
 4.  **[SuccessFactors でのシングル サインオンの構成]** ページで、証明書をダウンロードするために **[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
@@ -103,7 +99,7 @@
     2.  リモート ログイン URL
     3.  リモート ログアウト URL
 
-    >[AZURE.IMPORTANT]SuccessFactors サポート チームに、NameId Format パラメーターを *[Unspecified]* に設定するように依頼します。
+    >[AZURE.IMPORTANT] SuccessFactors サポート チームに、NameId Format パラメーターを *[Unspecified]* に設定するように依頼します。
 
     Successfactors サポート チームから、**[アプリケーション URL の構成]** ダイアログで必要な、適切な **Successfactors 応答 URL** が送信されます。
 
@@ -113,8 +109,7 @@
 
 ##ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが SuccessFactors にログインできるようにするには、ユーザーを SuccessFactors にプロビジョニングする必要があります。  
-SuccessFactors の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが SuccessFactors にログインできるようにするには、ユーザーを SuccessFactors にプロビジョニングする必要があります。SuccessFactors の場合、プロビジョニングは手動で行います。
   
 SuccessFactors でユーザーを作成するには、SuccessFactors のサポート チームに連絡する必要があります。
 
@@ -136,4 +131,4 @@ SuccessFactors でユーザーを作成するには、SuccessFactors のサポ�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!-----HONumber=AcomDC_0114_2016-->
+<!----HONumber=AcomDC_0413_2016-->

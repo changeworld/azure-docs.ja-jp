@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="03/18/2016"
+ms.date="04/12/2016"
 ms.author="larryfr"/>
 
 #SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする
@@ -161,9 +161,9 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 クラスターが確立したら、次の手順で、Ambari Web からサービス Web UI にアクセスできることを確認します。
 
-1. ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスします。この CLUSTERNAME は実際の HDInsight クラスター名に置き換えます。
-
-	プロンプトが表示されたら、クラスターの管理者ユーザー名 (admin) とパスワードを入力します。Ambari Web UI からもう一度入力を求められることがあります。その場合は、情報を再入力します。
+1. ブラウザーで http://headnodehost:8080 に移動します。この `headnodehost` アドレスはトンネル経由でクラスターに送信され、Ambari が実行されているヘッド ノードに解決されます。プロンプトが表示されたら、クラスターの管理者ユーザー名 (admin) とパスワードを入力します。Ambari Web UI からもう一度入力を求められることがあります。その場合は、情報を再入力します。
+    
+    > [AZURE.NOTE] http://headnodehost:8080 アドレスを使用してクラスターに接続すると、HTTP を使用して、Ambari が実行されているヘッド ノードにトンネル経由で直接接続され、通信は SSH トンネルを使用して保護されます。トンネルを使用せずにインターネット経由で接続すると、通信は HTTPS を使用して保護されます。HTTPS を使用してインターネット経由で接続するには、https://CLUSTERNAME.azurehdinsight.net を使用します。__CLUSTERNAME__ はクラスターの名前です。
 
 2. Ambari Web UI でページの左側にある一覧から [YARN] を選択します。
 
@@ -174,15 +174,14 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 	![QuickLinks メニューが展開された画像](./media/hdinsight-linux-ambari-ssh-tunnel/yarnquicklinks.png)
 
 	> [AZURE.NOTE] インターネット接続が低速な場合、またはヘッド ノードの負荷が高い場合は、__[Quick Links]__ を選択したときにメニューではなく待機インジケーターが表示されることがあります。その場合は、サーバーからデータが取得されるまで 1 ～ 2 分待ってから、改めて一覧を表示してみてください。
-
-
-	> [AZURE.TIP] モニターの解像度が低い場合、またはブラウザー ウィンドウが最大化されていない場合は、__[Quick Links]__ メニューの一部のエントリが画面の右側で切れて表示されることがあります。その場合は、マウスを使用してメニューを拡大するか、右矢印キーを使用して画面を右にスクロールして、メニューの残りを表示します。
+    >
+	> モニターの解像度が低い場合、またはブラウザー ウィンドウが最大化されていない場合は、__[Quick Links]__ メニューの一部のエントリが画面の右側で切れて表示されることがあります。その場合は、マウスを使用してメニューを拡大するか、右矢印キーを使用して画面を右にスクロールして、メニューの残りを表示します。
 
 4. 次のようなページが表示されます。
 
 	![YARN ResourceManager の UI の画像](./media/hdinsight-linux-ambari-ssh-tunnel/yarnresourcemanager.png)
 
-	> [AZURE.TIP] このページの URL は、\_\___http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster__ のようになります。この URL は、ノードの内部の完全修飾ドメイン名 (FQDN) を使用しているので、アクセスするには SSH トンネルを使用する必要があります。
+	> [AZURE.NOTE] このページの URL は、\_\___http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster__ のようになります。この URL は、ノードの内部の完全修飾ドメイン名 (FQDN) を使用しているので、アクセスするには SSH トンネルを使用する必要があります。
 
 ##次のステップ
 
@@ -196,4 +195,4 @@ HDInsight での SSH の使用方法の詳細については、以下の記事�
 
 * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

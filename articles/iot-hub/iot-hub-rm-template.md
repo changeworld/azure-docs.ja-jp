@@ -115,7 +115,7 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
 
 3. ソリューション エクスプローラーで、目的のプロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。**parameters.json** という新しい JSON ファイルをプロジェクトに追加します。
 
-4. **parameters.json** の内容を次のパラメーター情報 (新しい IoT Hub の名前を **mynewiothub** に設定) で置き換えます。
+4. **parameters.json** の内容を次のパラメーター情報 (新しい IoT Hub の名前を **mynewiothub** に設定) に置き換えます (この名前はグローバルに一意であることが必要です)。
 
     ```
     {
@@ -215,4 +215,4 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 [lnk-storage-account]: ../storage/storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

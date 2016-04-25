@@ -14,39 +14,31 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/29/2015"
+	ms.date="04/08/2015"
 	ms.author="danlep"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続
 
-Azure CLI は、Azure プラットフォームで使用できるオープン ソース、クロスプラットフォームのコマンド群です。この記事では、すべての CLI コマンドを使用できるように、Azure CLI から Azure サブスクリプションに接続する方法について説明します。CLI をまだインストールしていない場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
-
-
+Azure CLI は、Azure プラットフォームで使用できるオープン ソース、クロスプラットフォームのコマンド群です。この記事では、Azure サブスクリプションに Azure CLI を接続するための Azure アカウント資格情報を入力する方法について説明します。CLI をまだインストールしていない場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。Azure サブスクリプションがない場合は、[無料アカウント](http://azure.microsoft.com/free/)を数分で作成することができます。
 
 Azure CLI からサブスクリプションに接続する方法には、次の 2 つがあります。
 
-* **職場または学校のアカウント ID か、Microsoft アカウント ID を使用して Azure にログインする** - この方法では、どちらかの種類のアカウント ID を使用して認証を行います。最新の CLI では、多要素認証が有効になっているアカウントの対話型認証もサポートしています。対話形式でログインした後は、リソース マネージャーを使用することも、従来の (サービス管理) コマンドを使用することもできます。
+* **職場または学校のアカウントまたは Microsoft アカウントID を使用して Azure にログインする** - アカウント ID のいずれかのタイプを使用して、CLI バージョン 0.9.10 以降で `azure login` コマンドを実行し、Azure Active Directory を通じて認証します。CLI (バージョン 0.9.9 以降) では、Multi-Factor Authentication が有効になっているアカウントの Web ポータルを通じた対話型認証もサポートしています。また、`azure login` コマンドを実行し、Azure Active Directory アプリケーションのサービス プリンシパルを認証します。これは自動化されたサービスの実行に便利です。サポートされているアカウント ID でログインした後は、Azure Resource Manager モードまたは Azure Service Management モード コマンドのいずれかを実行できます。
 
-* **発行設定ファイルをダウンロードして使用する** - この方法では、管理タスクを実行できるようにするための証明書がローカル コンピューターにインストールされます。ただし、サブスクリプションと証明書が有効であることが必要です。この方法では、従来の (サービス管理) コマンドしか使用できません。
+* **発行設定ファイルをダウンロードして使用する** - この方法では、管理タスクを実行できるようにするための証明書がローカル コンピューターにインストールされます。ただし、サブスクリプションと証明書が有効であることが必要です。この方法では、Azure Service Management モード コマンドしか使用できません。
 
-認証とサブスクリプション管理の詳細については、「[What's the difference between account-based authentication and certificate-based authentication (アカウント ベースの認証と証明書ベースの認証の違い)][authandsub]」を参照してください。
+>[AZURE.NOTE] バージョン 0.9.10 より前のバージョンの Azure CLI を使用している場合、`azure login` コマンドは職場または学校のアカウントでのみ使用できます。Microsoft アカウント ID は機能しません。ただし、必要に応じて、[ Microsoft アカウント ID から職場または学校の ID を作成](virtual-machines/virtual-machines-windows-create-aad-work-id.md)できます。
 
-Azure アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][free-trial]を参照してください。
+異なるアカウント ID と Azure サブスクリプションに関する背景については、「[How Azure subscriptions are associated with Azure Active Directory (Azure サブスクリプションを Azure Active Directory に関連付ける方法)](./active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
->[AZURE.NOTE] バージョン 0.9.10 より前のバージョンの Azure CLI を使用している場合、`azure login` コマンドは職場または学校のアカウント ID でのみ使用できます。Microsoft アカウント ID は機能しません。ただし、Azure CLI バージョン 0.9.10 以降では、対話型の `azure login` コマンドを使用して、任意の ID でアカウントにログインできます。
->
-CLI バージョン 0.9.9 以降は、多要素認証をサポートしています。
-
-
-
-## 対話型のログイン方法の使用
+## Azure ログインを使用して、Web ポータルを通じて対話型認証を行う
 
 引数なしで `azure login` コマンドを使用して、次のいずれかによる対話型認証を行います。
 
-- 多要素認証を必要とする職場または学校のアカウント ID
-- Microsoft アカウント ID (リソース マネージャー デプロイ モード機能にアクセスする場合)
+- Multi-Factor Authentication を必要とする職場または学校のアカウント ID (*組織アカウント*とも呼ばれる)
+- Microsoft アカウント ID (Resource Manager モード コマンドにアクセスする場合)
 
-> [AZURE.NOTE]  どちらの場合も、認証と承認は Azure Active Directory を使用して行われます。Microsoft アカウントの ID を使用する場合、ログ プロセスは Azure Active Directory の既定のドメインにアクセスします(無料試用版にサインアップした場合は、Azure Active Directory によってアカウントの既定のドメインが作成されていることに気づかないことがあります)。
+> [AZURE.NOTE]  どちらの場合も、認証と承認は Azure Active Directory を使用して行われます。Microsoft アカウントの ID を使用する場合、ログ プロセスは Azure Active Directory の既定のドメインにアクセスします(無料 Azure アカウントにサインアップした場合は、Azure Active Directory によってアカウントの既定のドメインが作成されていることに気づかないことがあります)。
 
 対話型ログインは簡単です。「`azure login`」と入力し、次に示すように画面の指示に従います。
 
@@ -62,10 +54,10 @@ CLI バージョン 0.9.9 以降は、多要素認証をサポートしていま
 	+
 	info:    login command OK
 
-## 職場または学校のアカウントでの非対話型ログインの使用
+## 組織アカウントのユーザー名とパスワードによる Azure ログインの使用
 
 
-非対話型のログイン方法は、職場または学校のアカウント (*組織アカウント*とも呼ばれます) でのみ機能します。このアカウントは組織によって管理され、組織の Azure Active Directory で定義されます。[組織アカウントを作成](#create-an-organizational-account)することも (組織アカウントがない場合)、[Microsoft アカウント ID から職場または学校の ID を作成](./virtual-machines/virtual-machines-windows-create-aad-work-id.md)することもできます。そのためには、次のように `azure login` コマンドにユーザー名、またはユーザー名とパスワードを指定する必要があります。
+Multi-Factor Authentication を必要としない職場または学校のアカウントを使用する場合は、ユーザー名パラメーターまたはユーザー名とパスワードの両方を持つ `azure login` コマンドを使用して認証します。次の例では、組織アカウントのユーザー名が渡されます。
 
 	azure login -u ahmet@contoso.onmicrosoft.com
 	info:    Executing command login
@@ -76,34 +68,33 @@ CLI バージョン 0.9.9 以降は、多要素認証をサポートしていま
 
 パスワードを求められたら、入力します。
 
-	If this is your first time logging in with these credentials, you are asked to verify that you wish to cache an authentication token. This prompt also occurs if you have previously used the `azure logout` command (described below). To bypass this prompt for automation scenarios, run `azure login` with the `-q` parameter.
+初めてこれらの資格情報を使用してログインする場合は、認証トークンをキャッシュするかどうかの確認を求められます。このプロンプトは、`azure logout` コマンド (この記事の後半で説明) を以前に使用したことがある場合にも表示されます。自動化のシナリオでこのプロンプトが表示されないようにするには、`azure login` に `-q` パラメーターを付けて実行します。
 
-* **ログアウト**するには、次のコマンドを使用します。
+   
 
-		azure logout -u <username>
+## サービス プリンシパルによる Azure ログインの使用
 
-	アカウントに関連付けられたサブスクリプションが Active Directory のみを使用して認証された場合は、ログアウトするとローカル プロファイルからサブスクリプション情報が削除されます。ただし、サブスクリプション用に発行設定ファイルもインポートされている場合は、ログアウトするとローカル プロファイルから Active Directory 関連の情報のみが削除されます。
+Active Directory アプリケーションのサービス プリンシパルを作成し、サービス プリンシパルにサブスクリプションに対するアクセス許可がある場合は、`azure login` コマンドを実行してサービス プリンシパルを認証できます。シナリオによっては、`azure login` コマンドの明示的なパラメーターとして、または CLI スクリプトまたはアプリケーション コードを通じてサービス プリンシパルの資格情報を入力できます。証明書を使用して、Automation のシナリオで非対話的にサービス プリンシパルを認証することもできます。詳細と例については、「[Authenticating a service principal with Azure Resource Manager (Azure Resource Manager でのサービス プリンシパルの認証)](resource-group-authenticate-service-principal.md)」を参照してください。
 
 ## 発行設定ファイルによる方法の使用
 
-従来の (サービス管理) CLI コマンドを使用するだけで十分である場合は、発行設定ファイルを使用して接続できます。
+Azure Service Management モード CLI コマンドを使用するだけで十分である場合は、発行設定ファイルを使用して接続できます。
 
-* アカウントの**発行設定ファイルをダウンロード**するには、次のコマンドを使用します。
+* アカウントの**発行設定ファイルをダウンロード**するには、次のコマンドを使用します (Service Management モードでのみ使用可能)。
 
 		azure account download
 
-これにより、既定のブラウザーが開き、[Azure クラシック ポータル][portal]にサインインするよう求められます。サインインした後、`.publishsettings` ファイルがダウンロードされます。ファイルを保存した場所をメモしておきます。
+    これにより、既定のブラウザーが開き、[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインするよう求められます。サインインした後、`.publishsettings` ファイルがダウンロードされます。ファイルを保存した場所をメモしておきます。
 
-> [AZURE.NOTE] アカウントが複数の Azure Active Directory テナントに関連付けられている場合は、発行の設定ファイルのダウンロード対象となる Active Directory を選択するよう促されることがあります。
->
-> ダウンロード ページを使用して選択するか、Azure クラシック ポータルにアクセスして選択すると、選択した Active Directory が、クラシック ポータルおよびダウンロード ページで既定として使用されようになります。既定を確定した後、'__click here to return to the selection page (選択ページに戻るにはここをクリックしてください)__' というテキストが、ダウンロード ページの上部に表示されます。選択されたページに戻るには、用意されているリンクを使用します。
+    > [AZURE.NOTE] アカウントが複数の Azure Active Directory テナントに関連付けられている場合は、発行の設定ファイルのダウンロード対象となる Active Directory を選択するよう促されることがあります。
+
+    ダウンロード ページを使用して選択するか、Azure クラシック ポータルにアクセスして選択すると、選択した Active Directory が、クラシック ポータルおよびダウンロード ページで既定として使用されようになります。既定を確定した後、'__click here to return to the selection page (選択ページに戻るにはここをクリックしてください)__' というテキストが、ダウンロード ページの上部に表示されます。選択されたページに戻るには、用意されているリンクを使用します。
 
 * **発行設定ファイルをインポートするには**、次のコマンドを実行します。
 
 		azure account import <path to your .publishsettings file>
 
-	発行設定をインポートしたら、`.publishsettings` ファイルを削除します。このファイルは Azure CLI では不要であり、第三者によってサブスクリプションヘのアクセスに使用されるセキュリティ上のリスクがあるためです。
-
+	>[AZURE.IMPORTANT]発行設定をインポートした後は、`.publishsettings` ファイルを削除する必要があります。このファイルは Azure CLI では不要であり、第三者によってサブスクリプションヘのアクセスに使用されるセキュリティ上のリスクがあるためです。
 
 ## 複数のサブスクリプション
 
@@ -125,35 +116,41 @@ CLI バージョン 0.9.9 以降は、多要素認証をサポートしていま
 
 Azure CLI で既定以外のサブスクリプションを使用して、既定のサブスクリプションを変更しないようにするには、コマンドで `--subscription` オプションを使用して、その操作に使用するサブスクリプションの名前を指定します。
 
-Azure サブスクリプションに接続すると、その Azure CLI コマンドの使用を開始することができます。
+Azure サブスクリプションに接続すると、その Azure CLI コマンドの使用を開始し、Azure リソースを操作することができます。
+
+## CLI コマンド モード
+
+Azure CLI には、異なるコマンド セットを使用して、Azure リソースを操作するための次の 2 つのコマンド モードが用意されています。
+
+* **Azure Resource Manager モード** - Resource Manager デプロイ モデルでの Azure リソースを操作するため。このモードを設定するには、`azure config mode arm` を実行します。
+
+* **Azure Service Management モード** - クラシック デプロイ モデルでの Azure リソースを操作するため。このモードを設定するには、`azure config mode asm` を実行します。
+
+最初にインストールされた場合、CLI は Service Management モードです。
+
+>[AZURE.NOTE]Azure リソース マネージャー モードと Azure サービス管理モードは互いに排他的です。つまり、どちらか一方のモードで作成されたリソースは、他方のモードは管理できません。
 
 ## CLI 設定の格納
 
-職場または学校のアカウントを使用してログインするか、発行設定をインポートすると、CLI プロファイルとログが、`user` ディレクトリの `.azure` ディレクトリに格納されます。`user` ディレクトリはオペレーティング システムによって保護されますが、追加の作業を行って `user` ディレクトリを暗号化することをお勧めします。そのためには、次の操作を行います。
+`azure login` コマンドを使用してログインするか、発行設定をインポートすると、CLI プロファイルとログが、`user` ディレクトリの `.azure` ディレクトリに格納されます。`user` ディレクトリはオペレーティング システムによって保護されますが、追加の作業を行って `user` ディレクトリを暗号化することをお勧めします。そのためには、次の操作を行います。
 
 * Windows の場合、ディレクトリ プロパティを変更するか、または BitLocker を使用します。
 * Mac の場合、ディレクトリに対して FileVault を有効にします。
 * Ubuntu の場合、Encrypted Home ディレクトリ機能を使用します。その他の Linux ディストリビューションにも同様の機能が用意されています。
 
-## その他のリソース
+## ログアウト
 
-* [Azure CLI でのサービス管理 (クラシック) コマンドの使用][cliasm]
+ログアウトするには、次のコマンドを使用します。
 
-* [Azure CLI でのリソース マネージャー コマンドの使用][cliarm]
+	azure logout -u <username>
+
+アカウントに関連付けられたサブスクリプションが Active Directory のみを使用して認証された場合は、ログアウトするとローカル プロファイルからサブスクリプション情報が削除されます。ただし、サブスクリプション用に発行設定ファイルもインポートされている場合は、ログアウトするとローカル プロファイルから Active Directory 関連の情報のみが削除されます。
+## 次のステップ
+
+* Azure CLI コマンドを使用するには、「[Azure CLI commands in Azure Resource Manager mode (Azure Resource Manager モードでの Azure CLI コマンド)](./virtual-machines/azure-cli-arm-commands.md)」および「 [Azure CLI commands in Azure Service Management mode (Azure Service Management モードでの Azure CLI コマンド)](virtual-machines-command-line-tools.md)」を参照してください。
 
 * Azure CLI の詳細、ソース コードのダウンロード、問題のレポート、プロジェクトへの協力については、[GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli) のページを参照してください。
 
 * Azure CLI、または Azure を利用していて問題が発生した場合は、[Azure のフォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home)をご覧ください。
 
-
-
-
-
-[authandsub]: http://msdn.microsoft.com/library/windowsazure/hh531793.aspx#BKMK_AccountVCert
-[free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[portal]: https://manage.windowsazure.com
-[signuporg]: http://azure.microsoft.com/documentation/articles/sign-up-organization/
-[cliasm]: virtual-machines/virtual-machines-command-line-tools.md
-[cliarm]: xplat-cli-azure-resource-manager.md
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

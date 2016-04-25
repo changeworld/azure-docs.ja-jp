@@ -34,7 +34,7 @@
 + アクティブな Google アカウント。
 + [Google Cloud Messaging のクライアント コンポーネント]。このコンポーネントは、チュートリアル中に追加します。
 
-[Xamarin.Android] コンポーネントと [Azure Mobile Services][Azure Mobile Services Component] コンポーネントは、[Mobile Services の使用]を実行していれば、それ以降はプロジェクトにインストールされているはずです。
+Xamarin.Android コンポーネントと [Azure Mobile Services][Azure Mobile Services Component] コンポーネントは、「[Mobile Services の使用]」のチュートリアルを完了していれば、プロジェクトに既にインストールされています。
 
 ##<a id="register"></a>Google Cloud Messaging を有効にする
 
@@ -68,10 +68,7 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 <!-- URLs. -->
 [Mobile Services の使用]: mobile-services-dotnet-backend-xamarin-android-get-started.md
-
-
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
-[Xamarin.Android]: http://xamarin.com/download/
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

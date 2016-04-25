@@ -79,7 +79,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 4.	ポータルで [設定]、[Administrators] の順に選択します。[追加] を選択し、共同管理者として新しいユーザーを追加します。これにより、組織のアカウントで Azure サブスクリプションを管理できるようになります。
 5.	最後に、Azure ポータルからログアウトし、新しい組織のアカウントを使用してログインし直します。初めてこのアカウントを使用してログインする場合は、パスワードを変更するように求められます。
 
-Microsoft Azure での組織アカウントの使用の詳細については、「[Microsoft Azure への組織としてのサインアップ](sign-up-organization.md)」をご覧ください。
+Microsoft Azure での組織アカウントの使用の詳細については、「[Microsoft Azure への組織としてのサインアップ](../active-directory/sign-up-organization.md)」をご覧ください。
 
 複数のサブスクリプションがあり、特定の 1 つのサブスクリプションを指定して Azure Key Vault を使用する場合は、次のように入力して自分のアカウントのサブスクリプションを表示します。
 
@@ -134,13 +134,13 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
 
     azure keyvault key import --vaultName 'ContosoKeyVault' --key-name 'ContosoFirstKey' --pem-file './softkey.pem' --password 'PaSSWORD' --destination software
 
-作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定バージョンを取得するには ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
+作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定バージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
 
 資格情報コンテナーにシークレットを追加するには (SQLPassword という名前のパスワードで、Azure Key Vault に Pa$$w0rd 値を設定)、次のように入力します。
 
     azure keyvault secret set --vault-name 'ContosoKeyVault' --secret-name 'SQLPassword' --value 'Pa$$w0rd'
 
-Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。常に現在のバージョンを取得するには ****https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用し、この特定バージョンを取得するには ****https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
+Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用し、この特定バージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
 
 作成したキーやシークレットを表示してみましょう。
 
@@ -256,4 +256,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

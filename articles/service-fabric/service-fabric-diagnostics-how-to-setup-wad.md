@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/30/2016"
+   ms.date="04/08/2016"
    ms.author="toddabel"/>
 
 
@@ -41,11 +41,12 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 ログ収集の最初の手順は、Service Fabric クラスター内の各 VM に診断拡張機能をデプロイすることです。診断拡張機能を使用すると、各 VM のログが収集され、指定したストレージ アカウントにアップロードされます。Azure ポータルを使用するか Azure リソース マネージャーを使用するかによって、またクラスター作成の一環としてのデプロイか、既に存在するクラスターの場合かによって、一部の手順が変わります。各シナリオの手順を見てみましょう。
 
 ### ポータルを使用してクラスター作成の一環で診断拡張機能をデプロイする
-クラスター作成の一環でクラスター内の VM に診断をデプロイするには、下図の [診断設定] パネルを使用します。*[サポート ログ]* は既定で **[有効]** です。*[アプリケーション診断]* は既定で **[無効]** です。クラスターの作成後、これらの設定をポータルで変更することはできません。
+クラスター作成の一環としてクラスター内の VM に診断拡張機能をデプロイするには、下図の [診断設定] パネルを使用します。アクターまたは Reliable Service イベントの収集を有効にするには、[診断] が既定の **[オン]** に設定されていることを確認してください。クラスターの作成後、これらの設定をポータルで変更することはできません。
 
-![ポータルでのクラスター作成のための Azure 診断設定](./media/service-fabric-diagnostics-how-to-setup-wad-operational-insights/portal-cluster-creation-diagnostics-setting.png)
+![ポータルでのクラスター作成のための Azure 診断設定](./media/service-fabric-diagnostics-how-to-setup-wad/portal-cluster-creation-diagnostics-setting.png)
 
-サポート要求の登録後、Azure サポート チームがそれを解決するためにサポート ログが**必要**になります。これらのログはリアルタイムで収集され、現在のリソース グループで作成されたストレージ アカウントに保存されます。アプリケーション診断では、[アクター](service-fabric-reliable-actors-diagnostics.md) イベントや [Reliable Service](service-fabric-reliable-services-diagnostics.md) イベントなどのアプリケーション レベル イベントと一部のシステム レベルの Service Fabric イベントを Azure Storage に保存します。[Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品や独自のプロセスでストレージ アカウントからイベントを選択できます。現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。テーブルからイベントを削除するプロセスが実装されていない場合、テーブルは増加を続けます。ポータルを利用してクラスターを作成する場合、デプロイの完了後にテンプレートをエクスポートすることが推奨されます。テンプレートは次の方法でポータルからエクスポートできます。
+サポート要求の登録後、Azure サポート チームがそれを解決するためにサポート ログが**必要**になります。これらのログはリアルタイムで収集され、リソース グループで作成されたストレージ アカウントの 1 つに保存されます。診断設定により、[アクター](service-fabric-reliable-actors-diagnostics.md) イベントや [Reliable Service](service-fabric-reliable-services-diagnostics.md) イベントなどのアプリケーション レベル イベントと一部のシステム レベルの Service Fabric イベントは、Azure Storage に保存されるよう構成されます。[Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品や独自のプロセスでストレージ アカウントからイベントを選択できます。現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。テーブルからイベントを削除するプロセスが実装されていない場合、テーブルは増加を続けます。ポータルを利用してクラスターを作成する場合、デプロイの完了後にテンプレートをエクスポートすることが推奨されます。テンプレートは次の方法でポータルからエクスポートできます。
+
 1. リソース グループを開きます。
 2. [設定] を選択し、[設定] パネルを表示します。
 3. [デプロイ] を選択し、[デプロイ履歴] パネルを表示します。
@@ -56,9 +57,9 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 ファイルのエクスポート後、変更が必要になります。**parameters.json** ファイルを編集し、**adminPassword** 要素を削除します。これでデプロイ スクリプトの実行時にパスワードが要求されます。
 
 ### Azure リソース マネージャー を使用してクラスター作成の一環で診断拡張機能をデプロイする
-リソース マネージャーを使用してクラスターを作成するには、診断の構成 JSON を完全なクラスターのリソース マネージャー テンプレートに追加してから、クラスターを作成します。ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。このサンプルは、Azure サンプル ギャラリーの「[Five-node cluster with Diagnostics Resource Manager template sample](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)」で参照できます。リソース マネージャー テンプレートの診断設定を確認するには、**azuredeploy.json** ファイルを開き、**IaaSDiagnostics** を検索します。このテンプレートを使用してクラスターを作成するには、上のリンクにある **[Azure にデプロイ]** ボタンをクリックしてください。
+リソース マネージャーを使用してクラスターを作成するには、診断の構成 JSON を完全なクラスターのリソース マネージャー テンプレートに追加してから、クラスターを作成します。ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。このサンプルは、Azure サンプル ギャラリーの「[Five-node cluster with Diagnostics Resource Manager template sample](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)」で参照できます。Resource Manager テンプレートの診断設定を確認するには、**azuredeploy.json** ファイルを開き、**IaaSDiagnostics** を検索します。このテンプレートを使用してクラスターを作成するには、上のリンクにある **[Azure にデプロイ]** ボタンをクリックしてください。
 
-または、リソース マネージャー サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzureResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。コマンドで渡す必要があるパラメーターについては、後述します。PowerShell を利用してリソース グループをデプロイする方法については、「[Azure リソース マネージャーのテンプレートを使用したリソース グループのデプロイ](../resource-group-template-deploy.md)」という記事を参照してください。
+または、リソース マネージャー サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzureResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。コマンドで渡す必要があるパラメーターについては、後述します。PowerShell を利用してリソース グループをデプロイする方法については、「[Azure Resource Manager のテンプレートを使用したリソース グループのデプロイ](../resource-group-template-deploy.md)」を参照してください。
 
 ```powershell
 
@@ -87,7 +88,7 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
 },
 ```
 
- 次に、ストレージ アカウント定義の直後の、"supportLogStorageAccountName" と "vmNodeType0Name" の間でパラメーター セクションを増やします。プレースホルダー テキストの *storage account name goes here* を任意のストレージ アカウントの名前に置換します。
+ 次に、ストレージ アカウント定義の直後の、"supportLogStorageAccountName" と "vmNodeType0Name" の間でパラメーター セクションを増やします。プレースホルダー テキストの *storage account name goes here* を任意のストレージ アカウントの名前に置き換えます。
 
 ##### parameters セクションを更新する
 ```json
@@ -110,7 +111,7 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
       }
     },
 ```
-"extensions" 配列内で次を追加し、**template.json** の *VirtualMachineProfile* セクションを更新します。挿入箇所に合わせ、始めまたは終わりにコンマを追加します。
+"extensions" 配列内に次のコードを追加し、**template.json** の *VirtualMachineProfile* セクションを更新します。挿入箇所に合わせ、始めまたは終わりにコンマを追加します。
 
 ##### VirtualMachineProfile の拡張子配列を増やす
 ```json
@@ -168,7 +169,7 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
 }
 ```
 
-説明に基づいて **template.json** ファイルを変更したら、ARM テンプレートを再発行します。テンプレートのエクスポート後、**deploy.ps1** ファイルを実行すると、テンプレートが再発行されます。デプロイ後、*[ProvisioningState]* が *[成功]* になります。
+説明したように **template.json** ファイルを変更したら、ARM テンプレートを再発行します。テンプレートのエクスポート後、**deploy.ps1** ファイルを実行すると、テンプレートが再発行されます。デプロイ後、*[ProvisioningState]* が *[成功]* になります。
 
 
 ## 新しい EventSource チャネルのログを収集およびアップロードするように診断を更新する
@@ -178,4 +179,4 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
 ## 次のステップ
 問題を解決する際に確認する必要があるイベントの詳細については、[Reliable Actors](service-fabric-reliable-actors-diagnostics.md) と [Reliable Services](service-fabric-reliable-services-diagnostics.md) で生成される診断イベントを参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

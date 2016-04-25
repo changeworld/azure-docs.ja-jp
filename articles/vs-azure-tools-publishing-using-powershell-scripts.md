@@ -37,7 +37,7 @@ Azure 開発のために、Visual Studio で PowerShell を使用するための
 
 ## 発行スクリプトの生成
 
-[こちらの手順](virtual-machines/virtual-machines-windows-classic-web-app-visual-studio.md)に従って新しいプロジェクトを作成するときに、Web サイトをホストする仮想マシンの発行スクリプトを生成できます。[Azure App Service の Web アプリの発行スクリプトを生成](/app-service-web/web-sites-dotnet-get-started.md)することもできます。
+[こちらの手順](./virtual-machines/virtual-machines-windows-classic-web-app-visual-studio.md)に従って新しいプロジェクトを作成するときに、Web サイトをホストする仮想マシンの発行スクリプトを生成できます。[Azure App Service の Web アプリの発行スクリプトを生成](./app-service-web/web-sites-dotnet-get-started.md)することもできます。
 
 ## Visual Studio によって生成されるスクリプト
 
@@ -149,7 +149,7 @@ JSON ファイルは **[構成]** フォルダーに作成されます。この�
 
 JSON 構成を編集して、発行スクリプトの実行時の動作を変更できます。`cloudService` セクションと `virtualMachine` セクションは必須ですが、`databases` セクションは不要であれば削除できます。Visual Studio によって生成される既定の構成ファイルに含まれる空のプロパティは省略可能です。既定の構成ファイルで値が指定されているプロパティは必須です。
 
-Azure に運用サイトが 1 つだけ存在するのでなく、複数のデプロイ環境 (スロット) を持つ Web サイトがある場合は、JSON 構成ファイルの Web サイト名にスロット名を含めることができます。たとえば、**mysite** という名前の Web サイトがあり、そのスロットが **test** という名前の場合、URI は mysite-test.cloudapp.net になります。ただし、構成ファイルで使用する正しい名前は mysite(test) です。これが可能なのは、サブスクリプションに Web サイトとスロットが既に存在している場合に限られます。存在していない場合は、スロットを指定せずにスクリプトを実行して Web サイトを作成し、Azure 管理ポータルでスロットを作成してから、変更した Web サイト名でスクリプトを実行します。Web アプリのデプロイ スロットの詳細については、「[Azure App Service の Web アプリのステージング環境を設定する](/app-service-web/web-sites-staged-publishing.md)」をご覧ください。
+Azure に運用サイトが 1 つだけ存在するのでなく、複数のデプロイ環境 (スロット) を持つ Web サイトがある場合は、JSON 構成ファイルの Web サイト名にスロット名を含めることができます。たとえば、**mysite** という名前の Web サイトがあり、そのスロットが **test** という名前の場合、URI は mysite-test.cloudapp.net になります。ただし、構成ファイルで使用する正しい名前は mysite(test) です。これが可能なのは、サブスクリプションに Web サイトとスロットが既に存在している場合に限られます。存在していない場合は、スロットを指定せずにスクリプトを実行して Web サイトを作成し、Azure 管理ポータルでスロットを作成してから、変更した Web サイト名でスクリプトを実行します。Web アプリのデプロイメント スロットの詳細については、「[Azure App Service の Web アプリのステージング環境を設定する](./app-service-web/web-sites-staged-publishing.md)」をご覧ください。
 
 ## 発行スクリプトの実行方法
 
@@ -351,4 +351,4 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 
 PowerShell スクリプトの詳細については、「[Windows PowerShell を使用したスクリプト](https://technet.microsoft.com/library/bb978526.aspx)」をお読みください。また、「[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)」で他の Azure PowerShell スクリプトもご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

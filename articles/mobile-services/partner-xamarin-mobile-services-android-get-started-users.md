@@ -35,7 +35,7 @@
 
 このチュートリアルは、Mobile Services のクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。
 
-このチュートリアルを完了するには、Xamarin.Android および Android SDK 4.2 以降のバージョンが必要です。
+このチュートリアルを実行するには、Visual Studio と Xamarin (Windows) または Xamarin Studio (Mac OS X) が必要です。インストールの詳しい手順については、「[セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx)」をご覧ください。
 
 ##<a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
 
@@ -143,4 +143,4 @@
 [スクリプトを使用したユーザーの認証]: mobile-services-javascript-backend-service-side-authorization.md
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

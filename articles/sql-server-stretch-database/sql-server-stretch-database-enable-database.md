@@ -69,7 +69,7 @@ GO
     USE <database>
     GO
 
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD='<password>'
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD ='<password>'
     ```
 
 4.  Stretch Database のデータベースを設定するとき、オンプレミス SQL Server とリモート Azure サーバーの間で通信するための Stretch Database の資格情報を入力する必要があります。2 つのオプションがあります。
@@ -102,13 +102,13 @@ GO
 
     1.  SERVER 引数の場合、既存の Azure サーバーの名前を指定します。名前の `.database.windows.net` 部分も含まれます。たとえば、`MyStretchDatabaseServer.database.windows.net` のようになります。
 
-    2.  CREDENTIAL 引数で既存の管理者資格情報を指定するか、FEDERATED\_SERVICE\_ACCOUNT \\= ON を指定します。次の例では、既存の資格情報が指定されています。
+    2.  CREDENTIAL 引数で既存の管理者資格情報を指定するか、FEDERATED\_SERVICE\_ACCOUNT = ON を指定します。次の例では、既存の資格情報が指定されています。
 
     ```tsql
     ALTER DATABASE <database name>
         SET REMOTE_DATA_ARCHIVE = ON
             (
-                SERVER = <server_name> ,
+                SERVER = '<server_name>',
                 CREDENTIAL = <db_scoped_credential_name>
             ) ;
     GO;
@@ -133,4 +133,4 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 
 [ALTER DATABASE SET のオプション (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

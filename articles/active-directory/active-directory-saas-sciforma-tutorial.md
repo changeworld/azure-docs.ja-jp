@@ -1,8 +1,8 @@
 <properties 
-    pageTitle="チュートリアル: Azure AD と Sciforma の統合 | Microsoft Azure" 
+    pageTitle="チュートリアル: Azure Active Directory と Sciforma の統合 | Microsoft Azure" 
     description="Azure Active Directory で Sciforma を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="04/06/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure AD と Sciforma の統合
   
@@ -70,11 +70,11 @@
 
 1.  Azure AD ポータルの **Sciforma** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-sciforma-tutorial/IC777372.png "シングル サインオンの構成")
+    ![シングル サインオンの構成](./media/active-directory-saas-sciforma-tutorial/IC777372.png "Configure single sign-on")
 
 2.  **[ユーザーの Sciforma へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-sciforma-tutorial/IC777373.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-sciforma-tutorial/IC777373.png "Configure single sign-on")
 
 3.  **[アプリ URL の構成]** ページで、**[Sciforma サインイン URL]** テキストボックスに、"*https://\<tenant-name>.Sciforma.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
@@ -82,13 +82,13 @@
 
 4.  **[Sciforma でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、データ ファイルを **c:\\SciformaMetaData.xml** としてローカルに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-sciforma-tutorial/IC777375.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-sciforma-tutorial/IC777375.png "Configure single sign-on")
 
 5.  メタデータ ファイルを Sciforma サポート チームに転送します。サポート チームは、シングル サインオンを構成する必要があります。
 
-6.  シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  [シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-sciforma-tutorial/IC777376.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-sciforma-tutorial/IC777376.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
   
 Sciforma へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当て済みユーザーがアクセス パネルを使用して Sciforma にログインしようとすると、そのユーザーが存在するかどうかが Sciforma によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは Sciforma により自動的に作成されます。
@@ -106,8 +106,8 @@ Sciforma へのユーザー プロビジョニングの構成にあたって必�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-sciforma-tutorial/IC767830.png "Yes")
+    ![Yes](./media/active-directory-saas-sciforma-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0413_2016-->

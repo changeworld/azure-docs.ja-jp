@@ -167,6 +167,12 @@ Application Insights をインストールしているとき、またはログ �
 
 [依存関係のテレメトリ](app-insights-asp-net-dependencies.md)と[例外のテレメトリ](app-insights-asp-net-exceptions.md)を参照してください。
 
+## パフォーマンス データが表示されない
+
+パフォーマンス データ (CPU、IO レートなど) の対象となるのは、[Java Web サービス](app-insights-java-collectd.md)、[Windows デスクトップ アプリ](app-insights-windows-desktop.md)、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](app-insights-monitor-performance-live-website-now.md)、[Azure Cloud Services](app-insights-azure.md) であり、[設定]、[サーバー] の順に移動すると確認できます。
+
+Azure Web サイトのパフォーマンス データは表示されません。
+
 ## サーバーにアプリを発行して以来、(サーバー) データが得られない
 
 + すべての Microsoft.ApplicationInsights DLL が Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll と一緒にサーバーにコピーされたことを確認します。
@@ -183,7 +189,7 @@ Application Insights をインストールしているとき、またはログ �
 
 ## 予期しているデータがすべて表示されません
 
-アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET Version 2.0.0-beta3 以降を使用している場合は、[アダプティブ サンプリング](app-insights-sampling.md)機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。
+アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、[アダプティブ サンプリング](app-insights-sampling.md)機能が動作して、一定の割合のテレメトリのみが送信される可能性があります。
 
 その機能を無効にすることもできますがお勧めしません。サンプリングは、関連するテレメトリが診断用途で正しく送信されるように設計されています。
 
@@ -193,10 +199,10 @@ Application Insights をインストールしているとき、またはログ �
 
 ## Azure Cloud Services で実行する際の例外「メソッドが見つかりません」
 
-.NET 4.6 でビルドした場合 4.6 は Azure Cloud Services のロールでは自動的にサポートされていません。アプリを実行する前に[各ロールに 4.6 をインストールします](../cloud-services/cloud-services-dotnet-install-dotnet.md)。
+.NET 4.6 でビルドした場合 4.6 は Azure Cloud Services のロールでは自動的にサポートされていません。アプリを実行する前に、[各ロールに 4.6 をインストールしてください](../cloud-services/cloud-services-dotnet-install-dotnet.md)。
 
 ## 問題が解決しない場合
 
 * [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-JP/home?forum=ApplicationInsights)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

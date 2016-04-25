@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="サービス正常性を追跡する" 
-	description="Azure でパフォーマンスの低下やサービスの中断がいつ発生したかを検出します。" 
-	authors="stepsic-microsoft-com" 
-	manager="kamrani" 
-	editor="" 
-	services="azure-portal" 
+<properties
+	pageTitle="サービス正常性を追跡する"
+	description="Azure でパフォーマンスの低下やサービスの中断がいつ発生したかを検出します。"
+	authors="stepsic-microsoft-com"
+	manager="kamrani"
+	editor=""
+	services="azure-portal"
 	documentationCenter="na"/>
 
-<tags 
-	ms.service="azure-portal" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/08/2015" 
+<tags
+	ms.service="azure-portal"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2015"
 	ms.author="stepsic"/>
 
 # サービス正常性を追跡する
@@ -45,12 +45,11 @@ Azure は、サービスの中断やパフォーマンスの低下があるた�
 7. これでサブスクリプションに影響が与えたサービス正常性イベントがすべて表示されます。![リソース グループ](./media/insights-service-health/Insights_HealthEvent.png)
 
 8. そこから詳細ブレードに移動すると、イベントの詳細を確認できます。
-   
+
 ## 次のステップ
 
 * イベントが発生するたびに[アラート通知を受信](insights-receive-alert-notifications.md)します。
 * [サービス メトリックスを監視](insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
-* Application Insights で [Web ページの可用性と応答性を監視](../app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
- 
+* Application Insights で [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

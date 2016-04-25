@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="Azure RemoteApp で SQL Server Management Studio を使用して SQL Database に接続する | Microsoft Azure" 
+<properties
+	pageTitle="Azure RemoteApp で SQL Server Management Studio を使用して SQL Database に接続する | Microsoft Azure"
 	description="このチュートリアルでは、Azure RemoteApp で SQL Server Management Studio を使用して、SQL Database に接続するときにセキュリティとパフォーマンスを確保する方法について説明します。"
-	services="sql-database" 
+	services="sql-database"
 	documentationCenter=""
-	authors="adhurwit" 
+	authors="adhurwit"
 	manager=""/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article" 
-	ms.date="01/20/2016" 
+	ms.topic="article"
+	ms.date="04/12/2016"
 	ms.author="adhurwit"/>
 
 # Azure RemoteApp で SQL Server Management Studio を使用して SQL Database に接続する
@@ -24,7 +24,7 @@
 
 ## Azure RemoteApp での SSMS
 
-Azure RemoteApp は、アプリケーションを配布する Azure の RDS サービスです。詳細については、「[Azure RemoteApp とは](../remoteapp-whatis.md)」をご覧ください。
+Azure RemoteApp は、アプリケーションを配布する Azure の RDS サービスです。詳細については、「[Azure RemoteApp とは](../remoteapp/remoteapp-whatis.md)」をご覧ください。
 
 Azure RemoteApp で SSMS を実行すると、ローカルで実行した SSMS と同じエクスペリエンスが提供されます。
 
@@ -37,7 +37,7 @@ Azure RemoteApp で SSMS を実行すると、ローカルで実行した SSMS �
 Azure RemoteApp で SSMS を使用すると、次のような多くのメリットがあります。
 
 - Azure SQL Server のポート 1433 を外部 (Azure の外部) に公開する必要がありません。
-- IP アドレスの追加と削除を Azure SQL Server ファイアウォールの内側だけにする必要がありません。 
+- IP アドレスの追加と削除を Azure SQL Server ファイアウォールの内側だけにする必要がありません。
 - Azure RemoteApp のすべての接続は、暗号化されたリモート デスクトップ プロトコルを使用して、ポート 443 の HTTPS 経由で行われます。
 - マルチ ユーザー対応であり、拡張可能です。
 - SQL Database と同じリージョンに SSMS がある場合よりパフォーマンスが向上します。
@@ -158,4 +158,4 @@ SQL Database に接続する方法の詳細については、「[SQL Server Mana
 [5]: ./media/sql-database-ssms-remoteapp/publish.png
 [6]: ./media/sql-database-ssms-remoteapp/user.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

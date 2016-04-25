@@ -16,7 +16,7 @@
    ms.date="02/10/2016"
    ms.author="stepsic"/>
 
-# Azure リソース コネクタの使用開始とロジック アプリへの追加 
+# Azure リソース コネクタの使用開始とロジック アプリへの追加
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
 Azure リソース コネクタを使用して、Logic App 内の Azure リソースを簡単に管理できます。
@@ -32,18 +32,18 @@ David Ebbo の[ブログ記事](http://blog.davidebbo.com/2014/12/azure-service-
 ### トリガー
 Azure リソース コネクタでは、2 つのトリガーがサポートされています。
 
-名前 | 説明 
----- | ----------- 
-Event occurs | ご利用のサブスクリプション内のリソースに対してイベントが発生したときに作用するトリガーです。 
+名前 | 説明
+---- | -----------
+Event occurs | ご利用のサブスクリプション内のリソースに対してイベントが発生したときに作用するトリガーです。
 Metric crosses threshold | メトリックが特定のしきい値を満たしたときに作用するトリガーです。
 
 ### アクション
 
 同様に、ご利用の Azure サブスクリプション内で多数のアクションを指定することができます。
- 
+
 **リソース グループ**に関しては、次のアクションを実行できます。
 
-名前 | 説明 
+名前 | 説明
 ---- | -----------
 List resource groups | サブスクリプションに含まれているすべてのリソース グループをリストします。
 Get resource group | リソース グループをその ID で取得します。
@@ -52,7 +52,7 @@ Delete resource group | リソース グループを削除します。
 
 **リソース**に関しては、次のアクションを実行できます。
 
-名前 | 説明 
+名前 | 説明
 ---- | -----------
 List resources | サブスクリプションに含まれているリソースを各種フィルターでリストします。
 Get resource | 単一のリソースをそのリソース ID で取得します。
@@ -62,13 +62,13 @@ Delete resource | リソースを削除します。
 
 **リソース プロバイダー**に関しては、次のアクションを実行できます。
 
-名前 | 説明 
+名前 | 説明
 ---- | -----------
 List resource providers | サブスクリプション内の利用可能なリソース プロバイダーをすべてリストします。
 
 **リソース グループ デプロイ**に関しては、次のアクションを実行できます。
 
-名前 | 説明 
+名前 | 説明
 ---- | -----------
 List deployments | リソース グループに含まれているデプロイをすべてリストします。
 Get deployment | テンプレート デプロイをその ID で取得します。
@@ -93,11 +93,9 @@ Get metrics | リソース ID のメトリックを取得します。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
-パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。「[API アプリとコネクタの管理と監視](../app-service-api/app-service-api-manage-in-portal.md)」を参照してください。
-
 <!--References -->
 
 <!--Links -->
 [Creating a Logic App]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/24/2016" 
+	ms.date="04/11/2016" 
 	ms.author="billmath"/>
 
 # クラウドでの Azure Multi-factor Authentication によるユーザー設定の管理
@@ -22,7 +22,7 @@
 
 - [選択したユーザーについて連絡方法の再指定を必須にする](#require-selected-users-to-provide-contact-methods-again)
 - [ユーザーの既存のアプリ パスワードを削除する](#delete-users-existing-app-passwords)
-- [Restore MFA on all suspended devices for a user (パブリック プレビュー)](#restore-mfa-on-all-suspended-devices-for-a-user)
+- [ユーザーのすべての停止中のデバイスで MFA を復元する](#restore-mfa-on-all-suspended-devices-for-a-user)
 
 
 
@@ -86,4 +86,4 @@
 9. [保存] をクリックします。
 10. [閉じる] をクリックします。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

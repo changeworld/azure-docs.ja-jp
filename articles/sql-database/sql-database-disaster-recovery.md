@@ -4,7 +4,7 @@
    services="sql-database" 
    documentationCenter="" 
    authors="elfisher" 
-   manager="jeffreyg" 
+   manager="jhubbard" 
    editor="monicar"/>
 
 <tags
@@ -137,11 +137,11 @@ REST を使用して、プログラムでデータベースの復旧を実行し
   + 復旧されたデータベースがソース データベース名と異なる名前を使用している。
   + 復旧されたデータベースがソース データベースと異なるサーバー上にある。
 
-データベースのアラート ルールの詳細については、「[アラート通知の受信](insights-receive-alert-notifications.md)」および「[サービス正常性を追跡する](insights-service-health.md)」を参照してください。
+データベースのアラート ルールの詳細については、「[アラート通知の受信](../azure-portal/insights-receive-alert-notifications.md)」および「[サービス正常性を追跡する](../azure-portal/insights-service-health.md)」を参照してください。
 
 
 ### 監査を有効にする
 
 データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。クライアント アプリケーションで *.database.secure.windows.net パターンのセキュリティで保護された接続文字列を使用している場合は、監査が必要であることを表しています。詳細については、「[SQL Database 監査の使用](sql-database-auditing-get-started.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

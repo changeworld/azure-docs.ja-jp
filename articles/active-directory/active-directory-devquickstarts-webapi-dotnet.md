@@ -23,7 +23,9 @@
 
 保護されているリソースにアクセスするアプリケーションを構築する場合、認められていないアクセスからこれらのリソースを保護する方法を習得する必要があります。Azure AD を使用すると、OAuth Bearer 2.0 アクセス トークンを使用し、わずか数行のコードを追加するだけで、Web API を簡単に保護することができます。
 
-ASP.NET Web アプリでは、.NET Framework 4.5 に含まれるコミュニティ駆動の OWIN ミドルウェアの Microsoft 実装を使用することにより、これを達成できます。ここでは、OWIN を使用して、次の機能を持つ "To Do List" Web API を構築します。この Web API には、保護対象の API を指定する機能、および Web API 呼び出しが有効なアクセス トークンを含んでいることを検証する機能が含まれます。
+ASP.NET Web アプリでは、.NET Framework 4.5 に含まれるコミュニティ駆動の OWIN ミドルウェアの Microsoft 実装を使用することにより、これを達成できます。ここでは、OWIN を使用して、次の処理を実行する "To Do List" Web API を構築します。
+-	保護対象の API を指定する。
+-	Web API 呼び出しに有効なアクセス トークンが含まれているかどうかを検証する。
 
 これを行うには、次の手順を実行する必要があります。
 
@@ -134,10 +136,8 @@ Todo List Service の動作を確認できるようにするには、Todo List C
 
 最後に、各プロジェクトをクリーンアップし、ビルドして、実行します。 *.onmicrosoft.com ドメインを使用して、テナントに新しいユーザーを作成します (作成していない場合)。そのユーザーとして To Do List クライアントにサインインし、いくつかのタスクを To Do List に追加します。
 
-完全なサンプル (構成値を除く) を取得するには、[ここ](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip)をクリックしてください。ここからは、さらなる ID シナリオに進むことができます。次の機能を試してみてください。
-
-[Build a .NET Native Client with Azure AD (Azure AD の使用による .NET ネイティブ クライアントの構築)](../active-directory-devquickstarts-native-dotnet.md)
+完全なサンプル (構成値を除く) を取得するには、[ここ](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip)をクリックしてください。ここからは、さらに詳細な ID シナリオに進むことができます。
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

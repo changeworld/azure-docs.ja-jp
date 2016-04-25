@@ -4,15 +4,15 @@
 	keywords=""
 	services="sql-database"
 	documentationCenter=""
-	authors="jeffgoll"
-	manager="jeffreyg"
+	authors="sidneyh"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
 	ms.date="04/01/2016"
-	ms.author="jeffreyg"
+	ms.author="sidneyh"
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
@@ -125,11 +125,10 @@
 
 ## その他のリソース
 
-- [エラスティック データベースのリファレンス](sql-database-elastic-pool-reference.md)
 - [SQL Database エラスティック プール](sql-database-elastic-pool.md)
 - [ポータルを使用したエラスティック データベース プールの作成](sql-database-elastic-pool-create-csharp.md)
 - [PowerShell を使用したエラスティック データベース プールの作成](sql-database-elastic-pool-create-powershell.md)
 - [C# を使用したエラスティック データベース プールの作成](sql-database-elastic-pool-create-csharp.md)
 - [エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

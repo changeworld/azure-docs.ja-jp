@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="Azure モバイル エンゲージメント ユーザー インターフェイス - 監視" 
-   description="Azure モバイル エンゲージメントを使用してアプリケーションに関するデータをリアルタイムに監視する方法を説明します。" 
-   services="mobile-engagement" 
-   documentationCenter="" 
-   authors="piyushjo" 
-   manager="dwrede" 
+<properties
+   pageTitle="Azure モバイル エンゲージメント ユーザー インターフェイス - 監視"
+   description="Azure モバイル エンゲージメントを使用してアプリケーションに関するデータをリアルタイムに監視する方法を説明します。"
+   services="mobile-engagement"
+   documentationCenter=""
+   authors="piyushjo"
+   manager="dwrede"
    editor=""/>
 
 <tags
@@ -12,23 +12,23 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
-   ms.workload="mobile" 
+   ms.workload="mobile"
    ms.date="11/29/2015"
    ms.author="piyushjo"/>
 
 # アプリケーションに関するデータをリアルタイムに監視する方法
 
-この記事では、**Mobile Engagement** ポータルの**[モニター]** ページについて説明します。**Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。ポータルを使い始めるには、最初に **Azure Mobile Engagement** アカウントを作成する必要があることに注意してください。詳細については、「[Azure Mobile Engagement アカウントの作成](mobile-engagement-create-account.md)」を参照してください。
+この記事では、**Mobile Engagement** ポータルの**[モニター]** ページについて説明します。**Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。ポータルを使い始めるには、最初に **Azure Mobile Engagement** アカウントを作成する必要があることに注意してください。
 
 
 UI の [監視] セクションは、リアルタイムの分析情報を提供します。ここでは、しきい値がこれまで UI の [[分析]](mobile-engagement-user-interface-analytics.md) セクションで取得したのとほぼ同じ値に達したときに通知するように設定できます。「[概念](http://go.microsoft.com/fwlink/?LinkId=525555)」トピックの「**用語集**」セクションでは、次のような、分析と監視で使用される用語と省略形を定義しています。アクティブ ユーザー、新しいユーザー、リテンション ユーザー、セッション、ユーザー パス グラフ、ユーザー マップ、URL の追跡、傾向、アクティビティ、イベント、ジョブ、エラー、追加情報、クラッシュ、アプリ情報。
 
->[AZURE.NOTE]**Mobile Engagement** ポータル UI の多くのセクションには、**[ヘルプの表示]** ボタンが含まれています。このボタンを押すと、セクションに関する文脈上の情報が表示されます。
+>[AZURE.NOTE] **Mobile Engagement** ポータル UI の多くのセクションには、**[ヘルプの表示]** ボタンが含まれています。このボタンを押すと、セクションに関する文脈上の情報が表示されます。
 
 ## 監視 - セッション、ジョブ、イベント、エラー、クラッシュ
 
 セッション中のユーザー数、特定の画面上のユーザー数、特定の操作を行っているユーザー数を確認できます。ユーザー アクティビティを、セッション、ジョブ、イベント、エラー、クラッシュに分割して表示できます。現在の情報を確認し、過去の時間、日付、週の情報を表示できます。各カテゴリの情報をすべて表示し、特定のセッション、ジョブ、イベント、エラー、クラッシュごとに並べ替えることができます。ライブ監視は、プッシュ通知などのイベント中に使用すると、プッシュ通知の送信直後にアクションの増加があるかどうかを確認できるので便利です。
- 
+
 ![Monitor1][14]
 
 ## 「監視 - イベント - 詳細」によるトラブルシューティング
@@ -49,7 +49,7 @@ UI の [監視] セクションは、リアルタイムの分析情報を提供�
 
 ## 監視 - アラート
 メールやインスタント メッセージから自動的に送信されるようにアラートの条件を指定することもできます。(Google の GTalk や Apple の iChat などの XMPP 対応サービスがサポートされています)。 アラートは、秒、分、時間あたりのセッション、ジョブ、イベント、エラー、クラッシュの特定の数値が事前に定義した検出しきい値より大きい (>) か、小さい (<) かに基づいています。アラートは、指定された種類のアクティビティをすべて監視することも、ジョブ、イベント、エラーの特定のアクティビティのみを監視することもできます。[Minimum Detection Rate (最小検出率)] を指定することもできます。これは、同じアラートを 2 つの通知に分割する最小時間で、アラートがトリガーされたときに、この間隔 (分) ごとに 2 つ以上の通知を受信しないようにします。
- 
+
 ![Monitor4][17]
 
 
@@ -152,6 +152,5 @@ UI の [監視] セクションは、リアルタイムの分析情報を提供�
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
- 
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0413_2016-->

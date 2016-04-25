@@ -50,7 +50,7 @@ BizTalk X12 コネクタを使用するには、まず、BizTalk X12 コネク�
 
 ### アクション
 - 右側のウィンドウの [X12 コネクタ] をクリックします。![アクションの設定][7]
-- -> (右矢印) をクリックします。![アクションの一覧][8]
+- [->] (右矢印) をクリックします。![アクションの一覧][8]
 - X12 コネクタは、多くのアクションをサポートしています。*[エンコード]* を選択します。![入力のエンコード][9]
 - アクションの入力を設定して構成します。![エンコードの構成][10]
 
@@ -69,7 +69,7 @@ BizTalk X12 コネクタを使用するには、まず、BizTalk X12 コネク�
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
-パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。「[API アプリとコネクタの管理と監視](../app-service-api/app-service-api-manage-in-portal.md)」を参照してください。
+ 
 
 
 <!--References -->
@@ -85,4 +85,4 @@ BizTalk X12 コネクタを使用するには、まず、BizTalk X12 コネク�
 [10]: ./media/app-service-logic-connector-x12/EncodeConfigured.PNG
 [11]: ./media/app-service-logic-connector-x12/TriggerSettings.PNG
 
-<!---HONumber=AcomDC_0224_2016-->
+<!----HONumber=AcomDC_0413_2016-->

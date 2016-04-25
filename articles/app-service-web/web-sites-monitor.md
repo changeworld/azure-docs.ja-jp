@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/13/2016"
+	ms.date="04/04/2016"
 	ms.author="byvinyal"/>
 
 #<a name="howtomonitor"></a>Azure App Service での Web Apps の監視
@@ -144,7 +144,7 @@ Web アプリの診断を有効にしたら、[**構成**] 管理ページの下
 
 - アプリケーション ログを保存する場所。Web ルートを基準にして指定します。
 
-- 既定値: ..\\..\\LogFiles\\Application
+- Default value: ..\\..\\LogFiles\\Application
 
 **DIAGNOSTICS\_TEXTTRACEMAXBUFFERSIZEBYTES**
 
@@ -201,7 +201,7 @@ Web アプリの診断を有効にしたら、[**構成**] 管理ページの下
 
 これは、コマンドが実行されたコマンド プロンプト、PowerShell、bash、またはターミナル セッションにログ情報を表示します。
 
-> [AZURE.NOTE] **azure** コマンドがインストールされていない場合は、「[How to use the Azure CLI (Azure CLI の使用方法)](../virtual-machines/virtual-machines-command-line-tools.md)」をご覧になって、インストールと構成を実行してください。
+> [AZURE.NOTE] **azure** コマンドがインストールされていない場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」を参照して、インストールと構成を実行してください。
 
 ### ログ ファイルの読み込み ###
 
@@ -286,6 +286,5 @@ Web アプリのエンドポイントの監視の詳細については、次の�
 
 [fzilla]: http://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]: http://go.microsoft.com/fwlink/?LinkID=309169
- 
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0413_2016-->

@@ -31,7 +31,7 @@
 
  	>[AZURE.NOTE] ドキュメント エクスプローラーは、データベース ブレードとコレクション ブレードにも表示されます。
 
-    **[ドキュメント エクスプローラー]** ブレードの **[データベース]** と **[コレクション]** の各ドロップダウン リストには、ドキュメント エクスプローラーを起動したコンテキストに応じて値が設定されています。
+    **[ドキュメント エクスプローラー]** ブレードの **[データベース]** と **[コレクション]** の各ドロップダウン リストには、ドキュメント エクスプローラーを起動したコンテキストに応じて値が設定されます。
 
 	![Screenshot of the Document Explorer blade](./media/documentdb-view-JSON-document-explorer/documentexplorerinitial.png)
 
@@ -158,4 +158,4 @@ Azure ポータルのドキュメント エクスプローラーは、DocumentDB
 
 [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)も、DocumentDB の詳細を理解できるようにする際に便利なリソースです。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -10,15 +10,15 @@ articles/sql-database/sql-database-get-started-tutorial.md
 ## Connecting to the Azure Portal with a subscription
 
 -->
-## Connecting to the Azure Portal with a subscription
+## サブスクリプションでの Azure ポータルへの接続
 
-If you have an existing subscription to Microsoft Azure, follow the steps below to connect to the Azure portal. If you do not have an existing Microsoft Azure account, follow one of the links below to obtain an account and then follow the steps below to connect to the Azure portal.
+Microsoft Azure への既存のサブスクリプションがある場合は、次の手順に従って Azure ポータルに接続します。Microsoft Azure アカウントがまだない場合は、次のいずれかのリンク先でアカウントを入手し、次の手順に従って Azure ポータルに接続します。
 
-1. Open your browser of choice and connect to the [Azure portal](https://portal.azure.com/) at http://portal.azure.com/.
+1. 任意のブラウザーを開き、http://portal.azure.com/ で [Azure ポータル](https://portal.azure.com/)に接続します。
 
-1. Log in to the [Azure portal](https://portal.azure.com/) at http://portal.azure.com/.
+1. http://portal.azure.com/ で [Azure ポータル](https://portal.azure.com/)にログインします。
 
-2. When the sign in page appear, provide the credentials for your subscription
+2. サインイン ページが表示されたら、サブスクリプションの資格情報を入力します。
 
    ![login][1]
 
@@ -32,3 +32,5 @@ If you have an existing subscription to Microsoft Azure, follow the steps below 
 <!--
 
 -->
+
+<!---HONumber=AcomDC_0413_2016-->

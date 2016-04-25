@@ -20,8 +20,6 @@
 
 IoT Hub により、デバイスはポート 8883 で [MQTT v3.1.1][lnk-mqtt-org] プロトコルを使用し、IoT Hub デバイス エンドポイントと通信することができます。IoT Hub では、すべてのデバイス通信を TLS/SSL で保護する必要があります。
 
-詳細については、Azure IoT Hub 開発者ガイドの「[MQTT サポートに関する留意事項][lnk-mqtt-devguide]」をご覧ください。
-
 ## IoT Hub への接続
 
 MQTT プロトコルを使用してデバイスを IoT Hub に接続するには、[Microsoft Azure IoT SDK][lnk-device-sdks] のライブラリを使用するか、または MQTT プロトコルを直接使用します。
@@ -61,9 +59,9 @@ MQTT プロトコルをサポートする[デバイス クライアント SDK][l
     3. **[SASTokenForm]** の **[DeviceID]** ドロップダウンでデバイスを選択します。**[TTL]** を設定します。
     4. **[生成]** をクリックしてトークンを作成します。
     
-    次のような SAS トークンが生成されます: `HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fMyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
+    次のような SAS トークンが生成されます。`HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fMyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
 
-    MQTT を使用して接続するために、この SAS トークンの一部を **Password** フィールドとして使用できます: `SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`
+    MQTT を使用して接続するために、この SAS トークンの一部を **Password** フィールドとして使用できます。`SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`.
 
 MQTT の接続パケットおよび切断パケットの場合、IoT Hub は**操作の監視**チャネルでイベントを発行します。
 
@@ -77,13 +75,15 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 > [AZURE.NOTE] これは、HTTP プロトコルでクエリ文字列に使用したのと同じエンコーディングです。
 
-また、デバイス クライアント アプリケーションは、`devices/{did}/messages/events/{property_bag}` を **Will トピック名**として使用することで、*Will メッセージ*をテレメトリ メッセージとして転送されるように定義することもできます。
+デバイス クライアント アプリケーションはまた、`devices/{did}/messages/events/{property_bag}` を **Will トピック名**として使用することにより、*Will メッセージ*をテレメトリ メッセージとして転送されるように定義することができます。
 
 ### メッセージの受信
 
-IoT Hub からメッセージを受信するには、デバイスで、`devices/{did}/messages/devicebound/#”` を**トピック フィルター**として使用してサブスクライブする必要があります。IoT Hub はメッセージを**トピック名** `devices/{did}/messages/devicebound/` または `devices/{did}/messages/devicebound/{property_bag}` (プロパティがある場合) で送信します。`{property_bag}` には、メッセージ プロパティの URL エンコードされたキー/値ペアが入ります。プロパティ バッグに含められるのは、アプリケーション プロパティとユーザーが設定可能なシステム プロパティ (**messageId**、**correlationId** など) のみです。システム プロパティの名前にはプレフィックス **$** が付きます。アプリケーション プロパティでは、プレフィックスのない元々のプロパティ名が使用されます。
+IoT Hub からメッセージを受信するには、デバイスで、`devices/{did}/messages/devicebound/#”` を**トピック フィルター**として使用してサブスクライブする必要があります。IoT Hub はメッセージを**トピック名** `devices/{did}/messages/devicebound/` または `devices/{did}/messages/devicebound/{property_bag}` (プロパティがある場合) で送信します。`{property_bag}` には、メッセージ プロパティの URL エンコードされたキー/値ペアが入ります。プロパティ バッグに含められるのは、アプリケーション プロパティとユーザーが設定可能なシステム プロパティ ( **messageId** または **correlationId** など) のみです。システム プロパティの名前にはプレフィックス **$** が付きます。アプリケーション プロパティでは、プレフィックスのない元々のプロパティ名が使用されます。
 
 ## 次のステップ
+
+IoT デバイス SDK を使用した MQTT サポートの詳細については、「Azure IoT Hub 開発者ガイド」の「[MQTT サポートに関する留意事項][lnk-mqtt-devguide]」を参照してください。
 
 デバイス クライアント SDK を使用して IoT Hub と通信する方法の詳細については、[Azure IoT Hub の使用][lnk-iot-get-stated]に関する記事をご覧ください。
 
@@ -102,4 +102,4 @@ MQTT プロトコルの詳細については、[MQTT のドキュメント][lnk-
 [lnk-sas-tokens]: iot-hub-sas-tokens.md
 [lnk-mqtt-devguide]: iot-hub-devguide.md#mqtt-support
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

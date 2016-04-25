@@ -22,7 +22,7 @@
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-デスクトップ アプリケーションを開発する場合、Azure AD を使用すると、Active Directory アカウントを使用してユーザーの認証処理を容易に行うことができます。また、Office 365 API や Azure API などの Azure AD によって保護された任意の Web API をアプリケーションで安全に使用することもできます。
+デスクトップ アプリケーションを開発する場合、Azure AD を使用すると、Active Directory アカウントを使ってユーザーの認証処理を容易に行うことができます。また、Office 365 API や Azure API などの Azure AD によって保護された任意の Web API をアプリケーションで安全に使用することもできます。
 
 保護されたリソースにアクセスする必要がある Android クライアントに対しては、Azure AD は Active Directory 認証ライブラリ (ADAL) を提供します。ADAL の唯一の目的は、アプリがアクセス トークンを容易に取得できるようにすることです。それがどれほど簡単であるかを示すために、ここで、次を実行する Android To-Do List アプリケーションを作成します。
 
@@ -270,7 +270,7 @@ Maven リポジトリから jar ファイルを取得して、プロジェクト
      mContext.acquireTokenSilent(resource, clientid, userId, callback );
     ```
 
-11. **ブローカー**: 
+11. **ブローカー**:
 Microsoft Intune の企業ポータル アプリは、ブローカー コンポーネントを提供します。この認証システムで作成された 1 つのユーザー アカウントがあり、開発者がそれをスキップしないことを選択すると、ADAL はブローカー アカウントを使用します。開発者は、次のように指定してブローカー ユーザーをスキップすることができます。
 
     ```java
@@ -457,4 +457,4 @@ ADAL バージョン 1.1.0 は、WebViewClient からの onReceivedHttpAuthReque
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0413_2016-->

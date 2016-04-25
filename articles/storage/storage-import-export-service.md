@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="04/06/2016"
 	ms.author="renash"/>
 
 
@@ -58,7 +58,7 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 4.	**BLOB ストレージ ターゲット:** データは、ブロック blob およびページ blob との間で、アップロードまたはダウンロードが可能です。
 5.	**ジョブの数:** お客様は、ストレージ アカウントごとに 20 個までのアクティブなジョブを使用できます。
 6.	**ジョブの最大サイズ:** ジョブのサイズは、使用するハード ドライブの容量と、ストレージ アカウントに格納できるデータの最大量によって決まります。各ジョブは、10 台までのハード ドライブを含むことができます。
-7.  **サポートされる 64 ビット オペレーティング システム:** Azure に配布する前に Azure Import/Export ツールを使用してハード ドライブを準備するには、Windows 7、Windows 8、Windows 8.1、Windows 10*、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 のいずれかのオペレーティング システムを使用することができます。  
+7.  **サポートされる 64 ビット オペレーティング システム:** Azure に配布する前に Azure Import/Export ツールを使用してハード ドライブを準備するには、Windows 7 Enterprise、Windows 7 Ultimate、Windows 8 Pro、Windows 8 Enterprise、Windows 8.1 Pro、Windows 8.1 Enterprise、Windows 10*、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 のいずれかのオペレーティング システムを使用することができます。このすべてのオペレーティング システムが BitLocker ドライブ暗号化をサポートしています。  
 
   > [AZURE.IMPORTANT]
   >  
@@ -288,4 +288,4 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 [export-job-03]: ./media/storage-import-export-service/export-job-03.png
 [export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

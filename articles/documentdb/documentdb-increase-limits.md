@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="04/07/2016"
 	ms.author="anhoh"/>
 
 # DocumentDB アカウント制限の引き上げを要求する
@@ -25,9 +25,9 @@
 -	Azure サポートに問い合わせて調整できるのは、どの DocumentDB アカウント クォータか。
 -	DocumentDB アカウント クォータの調整を要求するにはどうすればよいか。
 
-##<a id="AdjustableQuotas"></a> 調整可能な DocumentDB アカウント クォータ
+##<a id="Quotas"></a> DocumentDB アカウント クォータ
 
-Azure サポートに問い合わせて調整できる DocumentDB クォータは、次の表のとおりです。
+次の表で、DocumentDB クォータについて説明します。アスタリスク (*) が付いているクォータを調整する場合は、Azure サポートまでお問い合わせください。
 
 [AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
 
@@ -63,4 +63,4 @@ Azure サポートに問い合わせて調整できる DocumentDB クォータ�
 ##<a name="NextSteps"></a>次のステップ
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

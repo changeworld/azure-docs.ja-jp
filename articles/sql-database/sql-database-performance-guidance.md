@@ -3,9 +3,9 @@
 	description="このトピックでは、お使いのアプリケーションに最適なサービス層を決める際の指針と Azure SQL Database を最大限活用するためにアプリケーションを調整する際の推奨事項について説明します。"
 	services="sql-database"
 	documentationCenter="na"
-	authors="rothja"
-	manager="jeffreyg"
-	editor="monicar" />
+	authors="carlrabeler"
+	manager="jhubbard"
+	editor="" />
 
 
 <tags
@@ -14,8 +14,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="11/03/2015"
-	ms.author="jroth" />
+	ms.date="04/11/2016"
+	ms.author="carlrab" />
 
 # データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス
 
@@ -23,7 +23,7 @@
 
 Microsoft Azure SQL Database には 3 つの[サービス層](sql-database-service-tiers.md)があります。Basic、Standard、Premium です。すべてのサービス層で、Azure SQL Database に与えられたリソースが厳密に分離され、パフォーマンスが予測可能になります。データベースに保証されるスループットは、Premium、Standard、Basic の順に高くなります。
 
->[AZURE.NOTE] Business サービス層と Web サービス層は 2015 年 9 月に終了となります。詳細については、「[Web および Business エディションの終了に関する FAQ](https://msdn.microsoft.com/library/azure/dn741330.aspx)」を参照してください。既存の Web データベースと Business データベースを新しいサービス層にアップグレードする方法については、「[SQL Database の Web/Business データベースを新しいサービス層にアップグレードする](sql-database-upgrade-new-service-tiers.md)」を参照してください。
+>[AZURE.NOTE] Business サービス層と Web サービス層は 2015 年 9 月に終了となります。詳細については、「[Web および Business エディションの終了に関する FAQ](https://msdn.microsoft.com/library/azure/dn741330.aspx)」を参照してください。既存の Web データベースと Business データベースを新しいサービス層にアップグレードする方法については、「[SQL Database の Web/Business データベースを新しいサービス層にアップグレードする](sql-database-upgrade-server-portal.md)」を参照してください。
 
 この文書では、お使いのアプリケーションに最適なサービス層を決める際の指針と Azure SQL Database を最大限活用するためにアプリケーションを調整する際の推奨事項について説明します。
 
@@ -324,7 +324,7 @@ OLTP データベースのパフォーマンスの一般的問題は物理的な
 
 Azure SQL Database には、データベース管理者が一般的なインデックス不足状態を発見し、修正するときに役立つ機能があります。Azure SQL Database に組み込まれている動的管理ビュー (DMV) には、クエリ コンパイルが表示されます。クエリを実行するために見積もられたコストをクエリで大幅に削減できる場合があります。クエリの実行中、各クエリ プランが実行される頻度と、実行クエリ プランとそのインデックスが存在した想定クエリ プランの間で見積もられるギャップが追跡記録されます。それにより、データベース管理者は、所与のデータベースとその実際の作業負荷に対して、全体的な作業負荷コストを改善できる可能性がある物理的データベース設計変更をすばやく推測できます。
 
->[AZURE.NOTE] DMV を利用してインディクスの不足を見つける前に、「[Query Performance Insight と Index Advisor](query-performance-insight-and-index-advisor.md)」のセクションを参照してください。
+>[AZURE.NOTE] DMV を利用してインディクスの不足を見つける前に、「[Query Performance Insight と Index Advisor](#query-performance-insight-and-index-advisor)」のセクションを参照してください。
 
 次のクエリは潜在的なインデックス不足の評価に使用できます。
 
@@ -491,4 +491,4 @@ Azure SQL Database 内で使用されるスケールアウト アーキテクチ
 
 Azure SQL Database のサービス層を利用すると、クラウドに構築する各種アプリケーションの水準を上げることができます。さらにアプリケーションの調整も頻繁に行うことで、アプリケーションのパフォーマンスが強力かつ予測可能となります。このドキュメントでは、特定のパフォーマンス レベルに問題なく適合するようにデータベースのリソース利用を最適化するための推奨手法について説明します。クラウド モデルにおいては調整は継続的に実施するものであり、それにより、各種のサービス層とそのパフォーマンス レベルにおいて、管理者はパフォーマンスを最大限に引き出し、同時に Microsoft Azure Platform のコストを最小限に抑えることができます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

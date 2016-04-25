@@ -35,7 +35,7 @@ IoT Hub では、次の 4 つのカテゴリのイベントを監視します。
 
     ![][1]
 
-3. 監視する監視カテゴリを選択し、**[保存]** をクリックします。イベントは、**[監視の設定]** に一覧された Event Hub 対応のエンドポイントから読み取ることができます。
+3. 監視する監視カテゴリを選択し、**[保存]** をクリックします。イベントは、**[監視の設定]** に一覧された Event Hub 対応のエンドポイントから読み取ることができます。IoT Hub エンドポイントの名前は `messages/operationsmonitoringevents` です。
 
     ![][2]
 
@@ -139,4 +139,4 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつデバイス�
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

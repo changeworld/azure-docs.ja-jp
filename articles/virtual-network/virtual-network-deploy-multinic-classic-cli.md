@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="クラシック デプロイメント モデルで Azure CLI を使用して複数 NIC の VM をデプロイする | Microsoft Azure"
    description="クラシック デプロイメント モデルで Azure CLI を使用して複数の NIC の VM をデプロイする方法を説明します"
    services="virtual-network"
@@ -27,7 +27,7 @@
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-この時点では、単一の NIC を含む VM と複数の NIC を含む VM を同じクラウド サービス内で保持できないため、バックエンド サーバーを特定のクラウド サービスに実装したら、シナリオ内の他のすべてのコンポーネントは別のクラウド サービスに実装します。以下の手順では、メイン リソースに *IaaSStory* という名前のクラウド サービスを使用し、バックエンド サーバーに *IaaSStory-BackEnd* を使用します。
+現時点では、NIC が 1 つの VM と、NIC が複数ある VM を、同じクラウド サービスに含めることはできません。したがって、このシナリオでは、バックエンド サーバーは、他のすべてのコンポーネントと異なるクラウド サービスで実装する必要があります。以下の手順では、メイン リソースに *IaaSStory* という名前のクラウド サービスを使用し、バックエンド サーバーに *IaaSStory-BackEnd* を使用します。
 
 ## 前提条件
 
@@ -41,7 +41,7 @@
 
 - **データ ディスクのストレージ アカウント**。パフォーマンスを高めるために、データベース サーバー上のデータ ディスクはソリッド ステート ドライブ (SSD) テクノロジーを使用します。これには、Premium Storage アカウントが必要です。デプロイする Azure の場所が Premium Storage をサポートすることを確認してください。
 - **NIC**。各 VM には 2 つの NIC があり、1 つはデータベース アクセス用で、もう 1 つは管理用です。
-- **可用性セット**。メンテナンス中に少なくとも 1 つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。 
+- **可用性セット**。メンテナンス中に少なくとも 1 つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。
 
 ### 手順 1 - スクリプトの開始
 
@@ -81,7 +81,7 @@
 
 		azure storage account create $prmStorageAccountName \
 		    --location $location \
-		    --type PLRS 
+		    --type PLRS
 
 ### 手順 3 - 複数 NIC を持つ VM の作成
 
@@ -95,7 +95,7 @@
 		    nic1Name=$vmNamePrefix$suffixNumber-DA
 		    x=$((suffixNumber+3))
 		    ipAddress1=$ipAddressPrefix$x
-		
+
 		    nic2Name=$vmNamePrefix$suffixNumber-RA
 		    x=$((suffixNumber+53))
 		    ipAddress2=$ipAddressPrefix$x
@@ -117,7 +117,7 @@
 		    azure vm disk attach-new $vmNamePrefix$suffixNumber \
 		        $diskSize \
 		        vhds/$dataDiskPrefix$suffixNumber$dataDiskName-1.vhd
-		
+
 		    azure vm disk attach-new $vmNamePrefix$suffixNumber \
 		        $diskSize \
 		        vhds/$dataDiskPrefix$suffixNumber$dataDiskName-2.vhd
@@ -174,4 +174,4 @@
 		info:    Adding Data-Disk
 		info:    vm disk attach-new command OK
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

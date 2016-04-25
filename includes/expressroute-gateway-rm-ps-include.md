@@ -1,5 +1,3 @@
-## 構成の概要
-
 このタスクの手順では、以下の値に基づいて VNet を使用します。その他の設定と名前についても、一覧で概要を説明します。ここでは、この一覧内の値に基づいて変数を追加しますが、どの手順でもこの一覧を直接使用しません。参照として使用する一覧をコピーし、値を独自の値で置き換えることができます。
 
 構成参照一覧:
@@ -9,13 +7,13 @@
 - リソース グループ = "TestRG"
 - Subnet1 名 = "FrontEnd" 
 - Subnet1 アドレス空間 = "192.168.0.0/16"
-- ゲートウェイ サブネット名: "GatewaySubnet"。ゲートウェイ サブネットには、常に *GatewaySubnet* と名前を付ける必要があります。
+- ゲートウェイ サブネット名: "GatewaySubnet"。ゲートウェイ サブネットには、常に *GatewaySubnet* という名前を付ける必要があります。
 - ゲートウェイ サブネットのアドレス空間 = "192.168.200.0/26"
 - リージョン = "米国東部"
 - ゲートウェイ名 = "GW"
 - ゲートウェイの IP 名 = "GWIP"
 - ゲートウェイの IP 構成名 = "gwipconf"
-- VPN の種類 = "ExpressRoute"。ExpressRoute 構成の場合、この VPN の種類が必要です。
+-  種類 = "ExpressRoute"。ExpressRoute 構成には、この種類が必須です。
 - ゲートウェイのパブリック IP 名 = "gwpip"
 
 
@@ -63,6 +61,25 @@
 
 9. ゲートウェイを作成します。この手順では、**-GatewayType** が特に重要です。値 **ExpressRoute** を使用する必要があります。これらのコマンドレットを実行してからゲートウェイが作成されるまでに 20 分以上かかる可能性があります。
 
-		New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute
+		New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
 
-<!---HONumber=AcomDC_0309_2016-->
+## ゲートウェイが作成されていることの確認
+
+次のコマンドを使用して、ゲートウェイが作成されていることを確認します。
+
+	Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG
+
+## ゲートウェイのサイズを変更する
+
+3 つの[ゲートウェイ SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md) があります。次のコマンドを使用して、ゲートウェイ SKU をいつでも変更できます。
+
+	$gw = Get-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
+	Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+
+## ゲートウェイを削除する
+
+ゲートウェイを削除するには、次のコマンドを使用します。
+
+	Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG  
+
+<!---HONumber=AcomDC_0413_2016-->

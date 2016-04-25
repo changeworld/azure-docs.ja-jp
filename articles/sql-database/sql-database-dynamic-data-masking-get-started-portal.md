@@ -4,8 +4,8 @@
    services="sql-database"
    documentationCenter=""
    authors="ronitr"
-   manager="jeffreyg"
-   editor="jeffreyg"/>
+   manager="jhubbard"
+   editor=""/>
 
 <tags
    ms.service="sql-database"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="12/01/2015"
+   ms.date="04/11/2016"
    ms.author="ronitr; ronmat; v-romcal; sstein"/>
 
 # SQL Database 動的データ マスクの使用 (Azure クラシック ポータル)
@@ -100,4 +100,4 @@ Azure クラシック ポータルの [監視とセキュリティ] タブでデ
 
 「[Azure SQL Database の操作](https://msdn.microsoft.com/library/dn505719.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,4 +1,4 @@
-<properties pageTitle="Azure 上の Linux での Cassandra の実行 | Microsoft Azure" description="Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法" services="virtual-machines-linux" documentationCenter="nodejs" authors="rmcmurray" manager="wpickett" editor="" azure-service-management"/>
+<properties pageTitle="Azure 上の Linux での Cassandra の実行 | Microsoft Azure" description="Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法" services="virtual-machines-linux" documentationCenter="nodejs" authors="hanuk" manager="wpickett" editor="" azure-service-management"/>
 
 <tags 
 	ms.service="virtual-machines-linux" 
@@ -6,8 +6,8 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/04/2016" 
-	ms.author="robmcm"/>
+	ms.date="04/12/2016" 
+	ms.author="hanuk;robmcm"/>
 
 # Azure 上の Linux で Cassandra を実行して Node.js からアクセス 
 
@@ -457,7 +457,7 @@ VM にログインし、次の処理を行います。
 完了した単一リージョン デプロイを利用して、同じ処理を繰り返し、2 番目のリージョンをインストールします。単一リージョン デプロイと複数リージョン デプロイの主な違いは、リージョン間通信のための VPN トンネルのセットアップです。ここでは、最初にネットワーク インストールを実行してから、VM をプロビジョニングし、Cassandra を構成します。
 
 ###手順 1. 2 つ目のリージョンでの Virtual Network の作成
-Azure クラシック ポータルにログインし、次の表に記載の属性で Virtual Network を作成します。プロセスの詳細な手順については、「[Azure クラシック ポータルでのクラウド専用の Virtual Network の構成](../virtual-network/virtual-networks-create-vnet.md)」を参照してください。
+Azure クラシック ポータルにログインし、次の表に記載の属性で Virtual Network を作成します。プロセスの詳細な手順については、「[Azure クラシック ポータルでのクラウド専用の Virtual Network の構成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。
 
 <table>
 <tr><th>属性名    </th><th>値	</th><th>解説</th></tr>
@@ -697,4 +697,4 @@ Microsoft Azure は、この演習でもわかるように、オープン ソー
 - [http://www.datastax.com](http://www.datastax.com) 
 - [http://www.nodejs.org](http://www.nodejs.org) 
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

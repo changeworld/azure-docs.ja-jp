@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="復旧計画への Azure Automation Runbook の追加 | Microsoft Azure" 
-   description="この記事では、Azure Site Recovery において、Azure Automation を使用して復旧計画を拡張し、Azure への復旧中に複雑なタスクを実行可能にする方法について説明します。" 
-   services="site-recovery" 
-   documentationCenter="" 
-   authors="ruturaj" 
-   manager="mkjain" 
+<properties
+   pageTitle="復旧計画への Azure Automation Runbook の追加 | Microsoft Azure"
+   description="この記事では、Azure Site Recovery において、Azure Automation を使用して復旧計画を拡張し、Azure への復旧中に複雑なタスクを実行可能にする方法について説明します。"
+   services="site-recovery"
+   documentationCenter=""
+   authors="ruturaj"
+   manager="mkjain"
    editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
    ms.devlang="powershell"
    ms.tgt_pltfrm="na"
    ms.topic="article"
-   ms.workload="required" 
+   ms.workload="required"
    ms.date="12/14/2015"
    ms.author="ruturajd@microsoft.com"/>
 
@@ -103,7 +103,7 @@ Azure Automation は Azure PowerShell を使用して、サブスクリプショ
 
 ![](media/site-recovery-runbook-automation/11.png)
 
-Powershell を使用してサブスクリプションに接続する方法の詳細については、[ここ](../install-configure-powershell.md)を参照してください。
+Powershell を使用してサブスクリプションに接続する方法の詳細については、[ここ](../powershell-install-configure.md)を参照してください。
 
 次に Azure Automation で、フェールオーバー後にフロントエンドの仮想マシンのエンドポイントを追加できる Runbook を作成します。
 
@@ -137,11 +137,11 @@ ASR は、コンテキスト変数を Runbook に渡して、確定的なスク�
 **変数名** | **説明**
 ---|---
 RecoveryPlanName | 実行される計画の名前です。同じスクリプトを使用して名前を基にアクションを実行するのに役に立ちます。
-FailoverType | テスト用のフェールオーバーか、計画されたフェールオーバーか、それとも計画外のフェールオーバーかを指定します。 
+FailoverType | テスト用のフェールオーバーか、計画されたフェールオーバーか、それとも計画外のフェールオーバーかを指定します。
 FailoverDirection | プライマリへの復旧か、それともセカンダリへの復旧かを指定します。
 GroupID | 復旧計画が実行される場合に、その計画内のグループ番号を識別します。
 VmMap | グループ内のすべての仮想マシンの配列です。
-VMMap キー | VM ごとの一意のキー (GUID) です。これは、該当する仮想マシンの VMM ID と同じです。 
+VMMap キー | VM ごとの一意のキー (GUID) です。これは、該当する仮想マシンの VMM ID と同じです。
 RoleName | 復元される Azure VM の名前 です。
 CloudServiceName | 仮想マシンが作成される Azure Cloud Service の名前です。
 
@@ -161,7 +161,7 @@ CloudServiceName | 仮想マシンが作成される Azure Cloud Service の名�
 2.  Runbook の [作成者] ビューに移動し、ドラフト モードに移行します。
 
 3.  まず、復旧計画のコンテキストとして使用する変数を指定します。
-  
+
 	```
 		param (
 			[Object]$RecoveryPlanContext
@@ -173,7 +173,7 @@ CloudServiceName | 仮想マシンが作成される Azure Cloud Service の名�
 
 	```
 		$Cred = Get-AutomationPSCredential -Name 'AzureCredential'
-	
+
 		# Connect to Azure
 		$AzureAccount = Add-AzureAccount -Credential $Cred
 		$AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
@@ -229,7 +229,7 @@ CloudServiceName | 仮想マシンが作成される Azure Cloud Service の名�
 	)
 
 	$Cred = Get-AutomationPSCredential -Name 'AzureCredential'
-	
+
 	# Connect to Azure
 	$AzureAccount = Add-AzureAccount -Credential $Cred
 	$AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
@@ -241,7 +241,7 @@ CloudServiceName | 仮想マシンが作成される Azure Cloud Service の名�
 	$AEPublicPort = 80
 	$AEName = "Port 80 for HTTP"
 	$VMGUID = "7a1069c6-c1d6-49c5-8c5d-33bfce8dd183"
-	
+
 	#Read the VM GUID from the context
 	$VM = $RecoveryPlanContext.VmMap.$VMGUID
 
@@ -308,6 +308,4 @@ Runbook を計画に追加したら、テスト フェールオーバーを開�
 
 [Sample Azure Automation Scripts (サンプルの Azure Automation スクリプト)](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=User&f[0].Value=SC%20Automation%20Product%20Team&f[0].Text=SC%20Automation%20Product%20Team "サンプルの Azure Automation スクリプト")
 
- 
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -57,9 +57,9 @@ Azure HDInsight は、ビッグ データのクラウド サービスを Standar
 
 次の表に、HDInsight クラスターの種類と HDInsight Premium のサポート状況を示します。
 
-| クラスターの種類 | Standard | Premium |
+| クラスターの種類 | Standard | プレミアム |
 |--------------|---------------|--------------|
-| Hadoop | あり | あり |
+| Hadoop は、 | あり | あり |
 | Spark | あり | あり |
 | HBase | あり | いいえ |
 | Storm | あり | いいえ |
@@ -248,7 +248,11 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 
 追加コンポーネントをインストールするか、作成中にスクリプトを使用してクラスターの構成をカスタマイズできます。このようなスクリプトは、**スクリプト アクション**によって呼び出されます。これは、ポータル、HDInsight Windows PowerShell コマンドレット、または HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
 
+Mahout や Cascading などの一部のネイティブ Java コンポーネントは、JAR ファイルとしてクラスター上で実行できます。これらの JAR ファイルは、Azure BLOB ストレージに分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。詳細については、[プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)に関するページを参照してください。
 
+>[AZURE.NOTE] HDInsight クラスターへの JAR ファイルのデプロイ、または HDInsight クラスターでの JAR ファイルの呼び出しに関する問題がある場合は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
+
+> Cascading は HDInsight ではサポートされておらず、Microsoft サポートの対象でもありません。サポートされているコンポーネントの一覧については、「[HDInsight によって提供されるクラスター バージョンの新機能](hdinsight-component-versioning.md)」を参照してください。
 
 ## クラスターの作成方法
 
@@ -264,4 +268,4 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 | [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 | [ARM テンプレート](hdinsight-hadoop-create-linux-clusters-arm-templates.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

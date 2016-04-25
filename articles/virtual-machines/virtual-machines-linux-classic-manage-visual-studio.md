@@ -1,6 +1,6 @@
 <properties
    pageTitle="Visual Studio での Linux VM の作成と管理 | Microsoft Azure"
-   description="Visual Studio での Azure VM の作成と管理"
+   description="Visual Studio を使用して、Linux を実行する Azure VM の作成および管理する方法"
    services="visual-studio-online,virtual-machines-linux"
    documentationCenter="na"
    authors="TomArcher"
@@ -21,4 +21,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-classic-manage-visual-studio](../../includes/virtual-machines-common-classic-manage-visual-studio.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

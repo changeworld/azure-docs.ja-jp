@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="04/08/2016"
 	ms.author="larryfr"/>
 
 #HDInsight で Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する
@@ -60,55 +60,24 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 * __類似性のリコメンデーション__: Joe は、この例の最初の 3 作品を好きな映画として選びました。Mahout では、嗜好が似ている他のユーザーが好きな映画の中で、Joe がまだ観ていない映画を調べます (好み/順位)。この場合、Mahout では、「_The Phantom Menace (ファントム メナス_)」、「_Attack of the Clones (クローンの攻撃)_」、「_Revenge of the Sith (シスの復讐)_」を推薦します。
 
-###データを読み込む
+###データの説明
 
-[GroupLens Research][movielens] では利便性を高めるために、Mahout と互換性のある形式で映画の評価データを提供します。
+[GroupLens Research][movielens] では利便性を高めるために、Mahout と互換性のある形式で映画の評価データを提供します。このデータは、クラスターの既定のストレージ (`/HdiSamples/MahoutMovieData`) にあります。
 
-1. [MovieLens 100k][100k] アーカイブをダウンロードします。これには、1,700 本の映画に対する 1,000 人のユーザーによる評価 100,000 件が含まれています。
+2 つのファイル `moviedb.txt` (映画に関する情報) と `user-ratings.txt` があります。user-ratings.txt ファイルは分析中に使用されます。moviedb.txt は、分析の結果を表示する際に、わかりやすいテキスト情報を提供するために使用されます。
 
-2. アーカイブを展開します。これには、名前の前に __u.__ が付いた多数のデータ ファイルを格納した __ml-100k__ ディレクトリが含まれています。Mahout により分析されるファイルは __u.data__ です。このファイルのデータ構造は、`userID`、`movieID`、`userRating`、`timestamp` です。次にデータの例を示します。
-
-
-		196	242	3	881250949
-		186	302	3	891717742
-		22	377	1	878887116
-		244	51	2	880606923
-		166	346	1	886397596
+user-ratings.txt に含まれているデータは、`userID`、`movieID`、`userRating`、`timestamp` で構成されており、各ユーザーが映画をどれだけ高く評価したかを示します。次にデータの例を示します。
 
 
-3. __u.data__ ファイルを、HDInsight クラスターの __example/data/u.data__ にアップロードします。次のコマンドでは、PowerShell を使用してデータをアップロードします。ファイルをアップロードするその他の方法については、「[データを HDInsight にアップロードする方法][upload]」を参照してください。
-
-        # Put your cluster name below
-        $clusterName="Your HDInsight cluster name"
-        # Put the path to the u.data file below
-        $fileToUpload="The path to the u.data file"
-        
-        #Get the cluster info so we can get the resource group, storage, etc.
-        $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-        $resourceGroup = $clusterInfo.ResourceGroup
-        $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
-        $container=$clusterInfo.DefaultStorageContainer
-        $storageAccountKey=Get-AzureRmStorageAccountKey `
-            -Name $storageAccountName `
-            -ResourceGroupName $resourceGroup `
-            | %{ $_.Key1 }
-        
-        #Create a storage content and upload the file
-        $context = New-AzureStorageContext `
-            -StorageAccountName $storageAccountName `
-            -StorageAccountKey $storageAccountKey
-            
-        Set-AzureStorageBlobContent `
-            -File $fileToUpload `
-            -Blob "example/data/u.data" `
-            -Container $container `
-            -Context $context
-    
-    これは、使用するクラスターの既定のストレージ内の __example/data/u.data__ に __u.data__ ファイルをアップロードします。これで、HDInsight ジョブから \_\___wasb:///example/data/u.data__ URI を使用してこのデータにアクセスできるようになります。
+    196	242	3	881250949
+    186	302	3	891717742
+    22	377	1	878887116
+    244	51	2	880606923
+    166	346	1	886397596
 
 ###ジョブを実行する
 
-次の Windows PowerShell スクリプトを使用し、前にアップロードした __u.data__ ファイルを含む Mahout リコメンデーション エンジンを使用してジョブを実行します。
+次の Windows PowerShell スクリプトを使用して、映画データで Mahout リコメンデーション エンジンを使用するジョブを実行します。
 
 	# The HDInsight cluster name.
 	$clusterName = "the cluster name"
@@ -130,9 +99,9 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
         -StorageAccountName $storageAccountName `
         -StorageAccountKey $storageAccountKey
             
-	# NOTE: The version number portion of the file path
+	# NOTE: The version number in the file path
 	# may change in future versions of HDInsight.
-	$jarFile =  "file:///C:/apps/dist/mahout-0.9.0.2.2.7.1-37/examples/target/mahout-examples-0.9.0.2.2.7.1-37-job.jar"
+	$jarFile =  "file:///C:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar"
     #
 	# If you are using an earlier version of HDInsight,
 	# set $jarFile to the jar file you
@@ -146,7 +115,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 	# * tempDir - the directory for temp files
 	$jobArguments = "--similarityClassname", "recommenditembased", `
                     "-s", "SIMILARITY_COOCCURRENCE", `
-	                "--input", "wasb:///example/data/u.data",
+	                "--input", "wasb:///HdiSamples/MahoutMovieData/user-ratings.txt",
 	                "--output", "wasb:///example/out",
 	                "--tempDir", "wasb:///example/temp"
 
@@ -201,7 +170,35 @@ Mahout ジョブは出力を STDOUT に返しません。代わりに、指定�
 
 ###出力を表示する
 
-生成された出力はアプリケーションで使用できるものですが、人間が判読するのは困難です。以前に __ml-100k__ フォルダーに抽出されたその他のファイルの一部を使用して、`movieId` を映画名に解決できます。次の PowerShell スクリプトでこれを実行します。
+生成された出力はアプリケーションで使用できるものですが、人間が判読するのは困難です。サーバーの `moviedb.txt` を使用して `movieId` を映画名に解決できますが、次のスクリプトを使用して、このファイルと評価ファイルをサーバーからダウンロードしておく必要があります。
+
+    # The HDInsight cluster name.
+	$clusterName = "the cluster name"
+    
+    #Get the cluster info so we can get the resource group, storage, etc.
+    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+    $resourceGroup = $clusterInfo.ResourceGroup
+    $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+    $container=$clusterInfo.DefaultStorageContainer
+    $storageAccountKey=Get-AzureRmStorageAccountKey `
+        -Name $storageAccountName `
+        -ResourceGroupName $resourceGroup `
+        | %{ $_.Key1 }
+    #Create a storage content and upload the file
+    $context = New-AzureStorageContext `
+        -StorageAccountName $storageAccountName `
+        -StorageAccountKey $storageAccountKey
+    #Download the files
+    Get-AzureStorageBlobContent -blob "HdiSamples/MahoutMovieData/moviedb.txt" `
+    -Container $container `
+    -Destination moviedb.txt `
+    -Context $context
+    Get-AzureStorageBlobContent -blob "HdiSamples/MahoutMovieData/user-ratings.txt" `
+    -Container $container `
+    -Destination user-ratings.txt `
+    -Context $context
+
+ファイルをダウンロードしたら、次の PowerShell スクリプトを使用して映画名でリコメンデーションを表示します。
 
 	<#
 	.SYNOPSIS
@@ -211,8 +208,8 @@ Mahout ジョブは出力を STDOUT に返しません。代わりに、指定�
 	    with HDInsight example in a human readable format.
 	.EXAMPLE
 	    .\Show-Recommendation -userId 4
-	        -userDataFile "u.data"
-	        -movieFile "u.item"
+	        -userDataFile "user-ratings.txt"
+	        -movieFile "moviedb.txt"
 	        -recommendationFile "output.txt"
 	#>
 
@@ -285,9 +282,9 @@ Mahout ジョブは出力を STDOUT に返しません。代わりに、指定�
 	                        @{Expression={$_.Value};Label="Score"}
 	$recommendations | format-table $recommendationFormat
 
-このスクリプトを使用するには、事前に __ml-100k__ フォルダーを抽出しておく必要があります。スクリプトを実行する例を次に示します。
+スクリプトを実行する例を次に示します。
 
-	PS C:\> show-recommendation.ps1 -userId 4 -userDataFile .\ml-100k\u.data -movieFile .\ml-100k\u.item -recommendationFile .\output.txt
+	PS C:\> show-recommendation.ps1 -userId 4 -userDataFile .\user-ratings.txt -movieFile .\moviedb.txt -recommendationFile .\output.txt
 
 出力は次のようになります。
 
@@ -370,19 +367,19 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 
 3. 次のコマンドを使用し、Mahout を使用するファイル記述子 (__KDDTrain+.info__) を生成します。
 
-		hadoop jar "c:/apps/dist/mahout-0.9.0.2.2.7.1-37/examples/target/mahout-examples-0.9.0.2.2.7.1-37-job.jar" org.apache.mahout.classifier.df.tools.Describe -p "wasb:///example/data/KDDTrain+.arff" -f "wasb:///example/data/KDDTrain+.info" -d N 3 C 2 N C 4 N C 8 N 2 C 19 N L
+		hadoop jar "c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar" org.apache.mahout.classifier.df.tools.Describe -p "wasb:///example/data/KDDTrain+.arff" -f "wasb:///example/data/KDDTrain+.info" -d N 3 C 2 N C 4 N C 8 N 2 C 19 N L
 
 	`N 3 C 2 N C 4 N C 8 N 2 C 19 N L` は、ファイル内のデータの属性を示します。たとえば、L はラベルを示します。
 
 4. 次のコマンドを使用してデシジョン ツリーのフォレストをビルドします。
 
-		hadoop jar c:/apps/dist/mahout-0.9.0.2.2.7.1-37/examples/target/mahout-examples-0.9.0.2.2.7.1-37-job.jar org.apache.mahout.classifier.df.mapreduce.BuildForest -Dmapred.max.split.size=1874231 -d wasb:///example/data/KDDTrain+.arff -ds wasb:///example/data/KDDTrain+.info -sl 5 -p -t 100 -o nsl-forest
+		hadoop jar c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar org.apache.mahout.classifier.df.mapreduce.BuildForest -Dmapred.max.split.size=1874231 -d wasb:///example/data/KDDTrain+.arff -ds wasb:///example/data/KDDTrain+.info -sl 5 -p -t 100 -o nsl-forest
 
     この操作の出力は、HDInsight クラスターのストレージにある __nsl-forest__ ディレクトリに格納されます (\_\___wasb://user/&lt;username>/nsl-forest/nsl-forest.seq)。&lt;username> は、リモート デスクトップ セッションに使用されるユーザー名です。これは、人間が判読できないファイルです。
 
 5. __KDDTest+.arff__ データセットを分類してフォレストをテストします。次のコマンドを使用します。
 
-    	hadoop jar c:/apps/dist/mahout-0.9.0.2.2.7.1-37/examples/target/mahout-examples-0.9.0.2.2.7.1-37-job.jar org.apache.mahout.classifier.df.mapreduce.TestForest -i wasb:///example/data/KDDTest+.arff -ds wasb:///example/data/KDDTrain+.info -m nsl-forest -a -mr -o wasb:///example/data/predictions
+    	hadoop jar c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar org.apache.mahout.classifier.df.mapreduce.TestForest -i wasb:///example/data/KDDTest+.arff -ds wasb:///example/data/KDDTrain+.info -m nsl-forest -a -mr -o wasb:///example/data/predictions
 
     このコマンドは、次のような分類プロセスの概要情報を返します。
 
@@ -530,4 +527,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

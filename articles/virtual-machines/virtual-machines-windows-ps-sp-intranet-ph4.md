@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/11/2015"
+	ms.date="04/01/2016"
 	ms.author="josephd"/>
 
 # SharePoint イントラネット ファーム ワークロードのフェーズ 4: SharePoint サーバーの構成
@@ -205,4 +205,4 @@ Azure PowerShell コマンドの次のブロックを使用して、4 つの Sha
 
 - [フェーズ 5](virtual-machines-windows-ps-sp-intranet-ph5.md) を使用して、このワークロードを引き続き構成します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

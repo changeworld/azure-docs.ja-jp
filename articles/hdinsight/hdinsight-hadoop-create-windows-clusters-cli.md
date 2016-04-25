@@ -40,7 +40,7 @@ Azure CLI を使用して HDInsight クラスターを作成する方法につ�
 	azure login
 
 職場か学校のアカウントを使用した認証の詳細については、「[Azure CLI から Azure サブスクリプションへの接続する](../xplat-cli-connect.md)」をご覧ください。
-	
+
 次のコマンドを使用して、ARM モードに切り替えます。
 
 	azure config mode arm
@@ -48,19 +48,19 @@ Azure CLI を使用して HDInsight クラスターを作成する方法につ�
 ヘルプを取得するには、**-h** スイッチを使用します。次に例を示します。
 
 	azure hdinsight cluster create -h
-	
+
 ##クラスターの作成
 
 HDInsight クラスターを作成するには、Azure リソース マネージャー (ARM)、および Azure BLOB ストレージ アカウントが必要です。HDInsight クラスターを作成するには、以下を指定する必要があります。
 
-- **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。Azure リソース マネージャーを使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 
+- **Azure リソース グループ**: Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。Azure リソース マネージャーを使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。
 
 	サブスクリプションのリソース グループをリストするには:
-	
-		azure group list 
-	
+
+		azure group list
+
 	新しいリソース グループを作成するには:
-	
+
 		azure group create -n "<Resource Group Name>" -l "<Azure Location>"
 
 - **HDInsight クラスター名**
@@ -70,15 +70,15 @@ HDInsight クラスターを作成するには、Azure リソース マネージ
 - **既定のストレージ アカウント**: HDInsight は、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには Azure ストレージ アカウントが必要です。
 
 	新しい Azure ストレージ アカウントを作成するには:
-	
+
 		azure storage account create "<Azure Storage Account Name>" -g "<Resource Group Name>" -l "<Azure Location>" --type LRS
 
 	> [AZURE.NOTE] ストレージ アカウントは、HDInsight と共にデータ センターに配置する必要があります。ZRS ではテーブルがサポートされないため、ストレージ アカウントの種類を ZRS にすることはできません。
 
 	Azure ポータルを使った Azure ストレージ アカウントの作成については、「ストレージ アカウントの作成、管理、削除」 [azure-create-storageaccount] を参照してください。
-	
+
 	既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
-	
+
 		-- Lists Storage accounts
 		azure storage account list
 		-- Shows a Storage account
@@ -86,7 +86,7 @@ HDInsight クラスターを作成するには、Azure リソース マネージ
 		-- Lists the keys for a Storage account
 		azure storage account keys list "<Storage Account Name>" -g "<Resource Group Name>"
 
-	Azure ポータルを使用して情報を取得する方法の詳細については、「ストレージ アカウントの作成、管理、削除」 [azure-create-storageaccount] に関するページの「ストレージ アクセス キーを表示、コピー、再生成する」 セクションを参照してください。
+	Azure ポータルを使用して情報を取得する方法の詳細については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account#manage-your-storage-account)」のストレージ アカウントの管理に関するセクションをご覧ください。
 
 - **(省略可能) 既定の BLOB コンテナー**: **azure hdinsight cluster create** コマンドは、コンテナーが存在しない場合、コンテナーを作成します。コンテナーを事前に作成する場合は、次のコマンドを使用できます。
 
@@ -94,7 +94,7 @@ HDInsight クラスターを作成するには、Azure リソース マネージ
 
 ストレージ アカウントを用意したら、クラスターを作成する準備は整いました。
 
-    
+
     azure hdinsight cluster create -g <Resource Group Name> -c <HDInsight Cluster Name> -l <Location> --osType <Windows | Linux> --version <Cluster Version> --clusterType <Hadoop | HBase | Spark | Storm> --workerNodeCount 2 --headNodeSize Large --workerNodeSize Large --defaultStorageAccountName <Azure Storage Account Name>.blob.core.windows.net --defaultStorageAccountKey "<Default Storage Account Key>" --defaultStorageContainer <Default Blob Storage Container> --userName admin --password "<HTTP User Password>" --rdpUserName <RDP Username> --rdpPassword "<RDP User Password" --rdpAccessExpiry "03/01/2016"
 
 
@@ -121,8 +121,8 @@ HDInsight クラスターを作成するには、Azure リソース マネージ
 スクリプト アクションを使用したクラスターの作成
 
 	azure hdinsight cluster create -g myarmgroup01 -l westus -y Windows --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
-	
-	
+
+
 スクリプト アクションの一般情報については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。
 
 
@@ -135,6 +135,6 @@ CLI を使用して、ARM テンプレートを呼び出すことによってク
 - [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md) - HDInsight クラスターの使用方法について説明しています。
 - [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md) - プログラムを使用して HDInsight にジョブを送信する方法について説明しています。
 - [Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)
-- [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](../virtual-machines/virtual-machines-command-line-tools.md)
+- [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](../virtual-machines-command-line-tools.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

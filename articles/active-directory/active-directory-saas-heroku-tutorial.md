@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/05/2016"
+	ms.date="04/07/2016"
 	ms.author="jeedes"/>
 
 
@@ -66,7 +66,8 @@ Azure AD への Heroku の統合を構成するには、ギャラリーから管
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
 6. 検索ボックスに、「**Box**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_01.png)<br>
-7. 結果ウィンドウで **[Heroku]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>
+7. 結果ウィンドウで **[Heroku]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_02.png)<br>
+
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Heroku で Azure AD のシングル サインオンを構成し、テストします。
@@ -90,14 +91,18 @@ Heroku で Azure AD のシングル サインオンを構成してテストす�
 
 1. クラシック ポータルの **Heroku** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
 
-2. **[ユーザーの Heroku へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_03.png)<br>
+2. **[ユーザーの Heroku へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_03.png) <br>
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_04.png) <br>
 
+    > [AZURE.NOTE] サインオン URL と識別子 URL の適切な値がわからない場合、値を取得する方法については、「[Heroku で SSO を有効にするには、次の手順に従います](#x123)」をご覧ください。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Heroku アプリケーションへのサインオンに使用する URL を入力します。"**https://sso.heroku.com/saml/<企業名>/init**"。
 
-    b.**[次へ]** をクリックします。
+    a.**[サインオン URL]** ボックスには、**"https://sso.heroku.com/saml/<企業名>/init"** の形式で、ユーザーが Heroku アプリケーションへのサインオンに使用する URL を入力します。
+
+    b.**[識別子]** ボックスに、"**https://sso.heroku.com/saml/\<企業名>**" の形式で URL を入力します。
+
+    c.**[次へ]** をクリックします。
 
 
 4. **[Heroku でのシングル サインオンの構成]** ページで、次の手順を実行します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_05.png) <br>
@@ -111,7 +116,7 @@ Heroku で Azure AD のシングル サインオンを構成してテストす�
  
     a.Heroku アカウントに管理者としてログインします。
 
-    b.**[Settings]** タブをクリックします。
+    b.**[設定]** タブをクリックします。
 
     c.**[Single Sign On Page]** で、**[Upload Metadata]** をクリックします。
  
@@ -119,7 +124,8 @@ Heroku で Azure AD のシングル サインオンを構成してテストす�
 
     e.セットアップが成功すると、管理者に確認のダイアログ ボックスと、エンドユーザー用の SSO ログインの URL が表示されます。
 
-    f.**Heroku のログイン URL** をコピーして、Azure AD クラシック ポータルの **[アプリケーション設定の構成]** ページに戻り、値を **[サインオン URL]** ボックスに貼り付けます。
+    f.<a name="x123"></a>**Heroku のログイン URL** と **Heroku エンティティ ID** をコピーして、Azure AD クラシック ポータルの **[アプリケーション設定の構成]** ページに戻り、関連するテキスト ボックスに値を貼り付けます。
+
   
     <br>![Configure Single Sign-On](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_52.png) <br><br>
 
@@ -186,7 +192,7 @@ Heroku で Azure AD のシングル サインオンを構成してテストす�
 
 ### Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Heroku へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。<br><br>![ユーザーの割り当て][200]<br>
+このセクションでは、Britta Simon に Heroku へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。<br><br>![ユーザーの割り当て][200] <br>
 
 **Heroku に Britta Simon を割り当てるには、次の手順に従います。**
 
@@ -232,4 +238,4 @@ Heroku で Azure AD のシングル サインオンを構成してテストす�
 [204]: ./media/active-directory-saas-heroku-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-heroku-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

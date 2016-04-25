@@ -3,7 +3,7 @@
    description="DMV を利用してワークロードを監視するについて説明します。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sonyama"
+   authors="sonyam"
    manager="barbkess"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/29/2016"
+   ms.date="04/12/2016"
    ms.author="sonyama;barbkess;sahajs"/>
 
 # DMV を利用してワークロードを監視する
@@ -132,6 +132,17 @@ WHERE request_id = 'QID33209' AND step_index = 2;
 - *total\_elapsed\_time* 列で、特定の配布で他の配布よりデータ移動に大幅に時間がかかっていないか確認します。
 - 実行時間の長い配布に対して、*rows\_processed* 列で、その配布から移動された行の数が他の配布より大幅に大きいか確認します。大きい場合は、基になるデータの傾斜を示している可能性があります。
 
+クエリが現在実行中の場合、[DBCC PDW\_SHOWEXECUTIONPLAN][] を使用して、特定の配布について現在実行中の DMS 手順の SQL Server 実行プランを取得できます。
+
+```sql
+-- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
+-- Replace distribution_id and spid with values from previous query.
+
+DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
+
+```
+
+
 ## データ傾斜を調査する
 
 [DBCC PDW\_SHOWSPACEUSED][] を使用して、テーブルによって使用される領域を調べます。
@@ -143,17 +154,20 @@ DBCC PDW_SHOWSPACEUSED("dbo.FactInternetSales");
 
 このクエリの結果は、データベースの 60 の分散のそれぞれに保存されているテーブル行の数を示します。パフォーマンスを最適化するには、分散テーブルの行を配布全体で均等に広げる必要があります。
 
-詳細については、「[テーブル設計][]」をご覧ください。
+詳細については、[分散テーブルのデータ スキューの管理][]または[テーブル デザイン][]に関するページをご覧ください。
 
 ## 次のステップ
-Transact-SQL と動的管理ビュー (DMV) の詳細については、[参照][]に関するページを参照してください。SQL Data Warehouse の管理のヒントについては、[管理][]に関するページを参照してください。
+Transact-SQL と動的管理ビュー (DMV) の詳細については、[参照先の概要][]に関するページをご覧ください。また、SQL Data Warehouse の管理のヒントについては、[管理の概要][]に関するページをご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[管理]: sql-data-warehouse-overview-manage.md
-[テーブル設計]: sql-data-warehouse-develop-table-design.md
-[参照]: sql-data-warehouse-overview-reference.md
+[管理の概要]: sql-data-warehouse-overview-manage.md
+[テーブル デザイン]: sql-data-warehouse-develop-table-design.md
+[参照先の概要]: sql-data-warehouse-overview-reference.md
+[分散テーブルのデータ スキューの管理]: sql-data-warehouse-manage-distributed-data-skew.md
+
+<!--MSDN references-->
 [sys.dm\_pdw\_dms\_workers]: http://msdn.microsoft.com/library/mt203878.aspx
 [sys.dm\_pdw\_exec\_requests]: http://msdn.microsoft.com/library/mt203887.aspx
 [sys.dm\_pdw\_exec\_sessions]: http://msdn.microsoft.com/library/mt203883.aspx
@@ -162,6 +176,4 @@ Transact-SQL と動的管理ビュー (DMV) の詳細については、[参照][
 [DBCC PDW\_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
 [DBCC PDW\_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
 
-<!--MSDN references-->
-
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

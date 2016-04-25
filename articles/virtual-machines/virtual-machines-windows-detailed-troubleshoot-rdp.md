@@ -3,7 +3,7 @@
 	description="Windows を実行する Azure 仮想マシンへの RDP 接続に関する詳細なトラブルシューティングの手順について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="iainfoulds"
 	manager="timlt"
 	editor=""
 	tags="top-support-issue,azure-service-management,azure-resource-manager"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/08/2016"
-	ms.author="dkshir"/>
+	ms.date="04/06/2016"
+	ms.author="iainfou"/>
 
 # Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関する詳細なトラブルシューティング
 
@@ -195,4 +195,4 @@ Azure VM のリモート デスクトップのエンドポイントでも、内�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

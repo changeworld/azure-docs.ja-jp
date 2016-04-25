@@ -21,13 +21,13 @@ ms.author="deonhe"/>
 
 Slack はチーム コミュニケーション ツールです。チームのすべてのコミュニケーションが 1 個所にまとめられ、どこにいてもすぐに検索、使用できるようになります。
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [Slack](../app-service-logic/app-service-logic-connector-Slack.md) をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
 Slack コネクタでは、次の操作を実行できます。
 
 * ロジック アプリを構築できます
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
 
 ## トリガーとアクション
 
@@ -59,7 +59,7 @@ Slack API を使用するには、最初に**接続**を作成し、以下のプ
 7. アプリケーションを承認するために、Slack 資格情報を入力してサインインします。![Slack の構成][3]  
 8. 組織のログイン ページにリダイレクトされます。Slack がロジック アプリと対話することを**承認**します。![Slack の構成][5] 
 9. 承認が完了すると、ロジック アプリにリダイレクトされます。**[Slack - すべてのメッセージを取得]** セクションを構成して、ロジック アプリを完成させます。必要な他のトリガーやアクションを追加します。![Slack の構成][6]
-10. 上部のメニュー バーの **[保存]** をクリックして、作業内容を保存します。
+10. メニュー バー上の **[保存]** を選択して、作業内容を保存します。
 
 
 >[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
@@ -365,7 +365,7 @@ NewsResultModel の必須プロパティ:
 
 
 
- **SpellResultModel**: Bing の候補の検索結果
+ **SpellResultModel**: Bing の検索候補の結果
 
 SpellResultModel の必須プロパティ:
 
@@ -481,4 +481,4 @@ MessageItem の必須のプロパティ:
 [5]: ./media/connectors-create-api-slack/connectionconfig5.png
 [6]: ./media/connectors-create-api-slack/connectionconfig6.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

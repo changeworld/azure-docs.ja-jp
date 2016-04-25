@@ -198,10 +198,11 @@ Batch アカウントに含まれているアプリケーションを表示す�
 ```csharp
 // Create the unbound CloudPool
 CloudPool myCloudPool =
-    batchClient.PoolOperations.CreatePool(poolId: "myPool",
-                                          osFamily: "4",
-                                          virtualMachineSize: "small",
-                                          targetDedicated: "1");
+    batchClient.PoolOperations.CreatePool(
+        poolId: "myPool",
+        targetDedicated: "1",
+        virtualMachineSize: "small",
+        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
 
 // Specify the application and version to install on the compute nodes
 myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
@@ -316,4 +317,4 @@ foreach (ApplicationSummary app in applications)
 [12]: ./media/batch-application-packages/app_pkg_12.png "Delete package confirmation dialog in Azure portal"
 [13]: ./media/batch-application-packages/app_pkg_13.png "Metadata file selection detail"
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

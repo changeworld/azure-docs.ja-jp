@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/13/2016"
+   ms.date="04/07/2016"
    ms.author="alkohli" />
 
-# StorSimple Virtual Array への更新プログラムと修正プログラムの適用 (プレビュー)
+# StorSimple Virtual Array への更新プログラムと修正プログラムの適用
 
 ## 概要
 
@@ -39,4 +39,4 @@ StorSimple Virtual Array を最新の状態に保つために、ソフトウェ�
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

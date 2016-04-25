@@ -61,7 +61,7 @@
     using Newtonsoft.Json;
     ```
     
-7. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。**リソース グループ名**は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。**IoT Hub 名**は、作成する IoT Hub の名前です (**MyIoTHub** など)。**デプロイ名**は、デプロイの名前です (**Deployment\_01** など)。
+7. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。**リソース グループ名**は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。**IoT Hub 名**は、**MyIoTHub** など、作成する IoT Hub の名前です (この名前はグローバルに一意であることが必要です)。**デプロイ名**は、デプロイの名前です (**Deployment\_01** など)。
 
     ```
     static string applicationId = "{Your ApplicationId}";
@@ -183,4 +183,4 @@
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

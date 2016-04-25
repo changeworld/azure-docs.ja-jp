@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="リソース マネージャーでの Azure CLI を使用した複数の NIC VM のデプロイ | Microsoft Azure"
    description="リソース マネージャーで Azure CLI を使用して、複数の NIC を持つ VM をデプロイする方法を学習します"
    services="virtual-network"
@@ -27,7 +27,7 @@
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-この時点では、単一の NIC を含む VM と複数の NIC を含む VM を同じリソース グループ内で保持できないため、バックエンド サーバーを他のすべてのコンポーネントとは異なるリソース グループに実装します。以下の手順では、メイン リソース グループとして *IaaSStory* という名前のリソース グループを使用し、バックエンド サーバーとして *IaaSStory-BackEnd* を使用します。
+現時点では、NIC が 1 つの VM と、NIC が複数ある VM を、同じリソース グループに含めることはできません。したがって、バックエンド サーバーは、他のすべてのコンポーネントと異なるリソース グループで実装する必要があります。以下の手順では、メイン リソース グループとして *IaaSStory* という名前のリソース グループを使用し、バックエンド サーバーとして *IaaSStory-BackEnd* を使用します。
 
 ## 前提条件
 
@@ -47,7 +47,7 @@
 
 - **データ ディスクのストレージ アカウント**。パフォーマンスを高めるために、データベース サーバー上のデータ ディスクはソリッド ステート ドライブ (SSD) テクノロジーを使用します。これには、Premium Storage アカウントが必要です。デプロイする Azure の場所が Premium Storage をサポートすることを確認してください。
 - **NIC**。各 VM には 2 つの NIC があり、1 つはデータベース アクセス用で、もう 1 つは管理用です。
-- **可用性セット**。メンテナンス中に少なくとも 1 つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。 
+- **可用性セット**。メンテナンス中に少なくとも 1 つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。
 
 ### 手順 1 - スクリプトの開始
 
@@ -60,7 +60,7 @@
 		vnetName="WTestVNet"
 		backendSubnetName="BackEnd"
 		remoteAccessNSGName="NSG-RemoteAccess"
-		
+
 2. バックエンド デプロイメントに使用する値に基づいて、以下の変数の値を変更します。
 
 		backendRGName="IaaSStory-Backend"
@@ -107,7 +107,7 @@
 		azure storage account create $prmStorageAccountName \
 		    --resource-group $backendRGName \
 		    --location $location \
-			--type PLRS 
+			--type PLRS
 
 3. VM 用の可用性セットの作成
 
@@ -171,7 +171,7 @@
 		        --vhd-name $dataDiskName$suffixNumber-1.vhd \
 		        --size-in-gb $diskSize \
 		        --lun 0
-		
+
 		    azure vm disk attach-new --resource-group $backendRGName \
 		        --vm-name $vmNamePrefix$suffixNumber \        
 		        --storage-account-name $prmStorageAccountName \
@@ -330,4 +330,4 @@
 		info:    Updating VM "DB2"
 		info:    vm disk attach-new command OK
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

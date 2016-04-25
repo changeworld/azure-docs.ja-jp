@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/12/2016"
+	ms.date="04/06/2016"
 	ms.author="jahogg"/>
 
 # Microsoft Azure Storage の監視、診断、およびトラブルシューティング
@@ -25,6 +25,8 @@
 クラウド環境でホストされる分散型アプリケーションの問題の診断およびトラブルシューティングは、従来の環境よりも複雑になる可能性があります。アプリケーションは、PaaS や IaaS インフラストラクチャ、オンプレミス、モバイル デバイス、これらを組み合わせたものにデプロイできます。一般に、アプリケーションのネットワーク トラフィックは公衆ネットワークと専用ネットワークを経由する可能性があり、アプリケーションでは、Microsoft Azure Storage のテーブル、BLOB、キュー、ファイルのほか、リレーショナル データベースやドキュメント データベースといった他のデータ ストアなどの複数のストレージ技術を使用している可能性があります。
 
 このようなアプリケーションを適切に管理するためには、アプリケーションをプロアクティブに監視し、アプリケーションおよびアプリケーションが依存する技術をあらゆる側面から診断およびトラブルシューティングする方法を理解する必要があります。Azure Storage サービスのユーザーは、(応答時間が通常より長いなどの) 予期しない動作変化を捉えるために、アプリケーションで使用している Storage サービスを継続して監視し、ログを使用して詳細なデータを収集し、問題を徹底的に分析する必要があります。監視とログの両方から得られた診断情報を基に、アプリケーションで発生した問題の根本原因を特定できます。そして、問題をトラブルシューティングし、問題を解決するための適切な手順を決定できます。Azure Storage は Azure の中核サービスであり、顧客が Azure インフラストラクチャにデプロイするソリューションのほとんどでは、Azure Storage が重要な役割を担っています。Azure Storage には、クラウド ベース アプリケーションのストレージの問題を簡単に監視、診断、およびトラブルシューティングできる機能が組み込まれています。
+
+> [AZURE.NOTE] 現時点では、レプリケーションの種類がゾーン冗長ストレージ (ZRS) のストレージ アカウントでは、メトリックまたはログ機能が有効になっていません。
 
 Azure のストレージ アプリケーションにおけるエンド ツー エンドのトラブルシューティングするための実践的なガイドについては、「[Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング](../storage-e2e-troubleshooting/)」を参照してください。
 
@@ -560,7 +562,7 @@ e2d06d78-... | 再試行ポリシーは再試行を許可しませんでした�
 
 この例では、クライアントが **CreateIfNotExists** メソッドからの要求 (要求 ID e2d06d78…) と **UploadFromStream** メソッドからの要求 (de8b1c3c-...) を交互に処理していることがログに示されています。これは、クライアント アプリケーションがこれらのメソッドを非同期的に呼び出しているために生じています。必ず、コンテナーを作成してからそのコンテナーの BLOB にデータをアップロードするように、クライアントの非同期コードを変更する必要があります。すべてのコンテナーをあらかじめ作成しておくことをお勧めします。
 
-#### <a name="SAS-authorization-issue"></a>共有アクセス署名 (SAS) 認証の問題
+#### <a name="SAS-authorization-issue"></a>Shared Access Signature (SAS) 認証の問題
 
 クライアント アプリケーションが、操作のために必要なアクセス許可が含まれていない SAS キーを使用しようとすると、Storage サービスは HTTP 404 (未検出) メッセージをクライアントに返します。同時に、メトリックの **SASAuthorizationError** に 0 以外の値が示されます。
 
@@ -668,7 +670,10 @@ JavaScript クライアントを使用していて Storage サービスから HT
 
 **PercentSuccess** メトリックは、操作の HTTP 状態コードに基づいて、成功した操作の割合をキャプチャします。2XX の状態コードを持つ操作は、成功としてカウントされます。一方、3XX、4XX、および 5XX の範囲の状態コードを持つ操作は失敗としてカウントされ、**PercentSucess** メトリック値を下げます。サーバー側のストレージ ログ ファイルには、これらの操作が **ClientOtherErrors** のトランザクション状態で記録されます。
 
-これらの操作は正常に実行されているため、可用性などの他のメトリックに影響することはないことに留意してください。正常に実行されても失敗の HTTP 状態コードが返される可能性のある操作の例を以下に示します。- **ResourceNotFound** (未検出 404)。存在しない BLOB への GET 要求など。- **ResouceAlreadyExists** (競合 409)。リソースが既に存在している場合の **CreateIfNotExist** 操作など。- **ConditionNotMet** (変更なし 304)。最後の操作より後にイメージが更新された場合にのみ、クライアントが **ETag** 値および HTTP **If-None-Match** ヘッダーを送信してそのイメージを要求するなどの条件付き操作。
+これらの操作は正常に実行されているため、可用性などの他のメトリックに影響することはないことに留意してください。正常に実行されても失敗の HTTP 状態コードを返される可能性のある操作の例を以下に示します。
+- **ResourceNotFound** (未検出 404)。存在しない BLOB への GET 要求など。
+- **ResouceAlreadyExists** (競合 409)。リソースが既に存在している場合の **CreateIfNotExist** 操作など。
+- **ConditionNotMet** (変更なし 304)。最後の操作より後にイメージが更新された場合にのみ、クライアントが **ETag** 値および HTTP **If-None-Match** ヘッダーを送信してそのイメージを要求するなどの条件付き操作。
 
 「<a href="http://msdn.microsoft.com/library/azure/dd179357.aspx" target="_blank">REST API の一般的なエラー コード</a>」に、Storage サービスが返す一般的な REST API エラー コードの一覧を記載しています。
 
@@ -858,7 +863,7 @@ Blob Storage からダウンロードしたストレージ ログ データを E
 [サービス正常性の問題]: #service-health-issues
 [パフォーマンスの問題]: #performance-issues
 [エラーの診断]: #diagnosing-errors
-[ストレージ エミュレーターの問題]: #storage-emulator-issues
+[Storage エミュレーターの問題]: #storage-emulator-issues
 [ストレージ ログ ツール]: #storage-logging-tools
 [ネットワーク ログ ツールの使用]: #using-network-logging-tools
 
@@ -891,7 +896,7 @@ Blob Storage からダウンロードしたストレージ ログ データを E
 
 [メトリックの示す PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある]: #metrics-show-low-percent-success
 [ストレージ使用量の予期しない増加が容量メトリックに示される]: #capacity-metrics-show-an-unexpected-increase
-[多数の VHD が接続されている仮想マシンが予期せず再起動する]: #you-are-experiencing-unexpected-reboots
+[多数の VHD が接続されている Virtual Machines が予期せず再起動する]: #you-are-experiencing-unexpected-reboots
 [開発またはテストでのストレージ エミュレーターの使用に起因する問題]: #your-issue-arises-from-using-the-storage-emulator
 [機能 "X" がストレージ エミュレーターで機能しない]: #feature-X-is-not-working
 [ストレージ エミュレーターを使用するとエラー "HTTP ヘッダーのいずれかの値の形式が正しくありません" が発生する]: #error-HTTP-header-not-correct-format
@@ -917,4 +922,4 @@ Blob Storage からダウンロードしたストレージ ログ データを E
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

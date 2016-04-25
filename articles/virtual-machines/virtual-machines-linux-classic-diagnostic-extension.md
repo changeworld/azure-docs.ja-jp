@@ -49,7 +49,7 @@ Azure ポータルから直接、システム データおよびパフォーマ�
 
 ## 前提条件
 - Microsoft Azure Linux エージェント バージョン 2.0.6 またはそれ以降。大部分の Azure VM Linux ギャラリー イメージにはバージョン 2.0.6 以降が含まれています。**WAAgent -version** を実行して、VM にインストールされているバージョンを確認できます。VM が 2.0.6 より前のバージョンを実行している場合は、[こちらの説明](https://github.com/Azure/WALinuxAgent "説明")に従って更新できます。
-- [Azure CLI](./xplat-cli-install.md)。[このガイダンス](./xplat-cli-install.md)に従って、コンピューターに Azure CLI 環境をセットアップしてください。Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、Command プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。たとえば、詳細な使用法を確認するには **azure vm extension set --help** を、Azure にログインするには **azure login** を、Azure にあるすべての仮想マシンを一覧表示するには **azure vm list** を実行します。
+- [Azure CLI](../xplat-cli-install.md)。[このガイダンス](../xplat-cli-install.md)に従って、コンピューターに Azure CLI 環境をセットアップしてください。Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、Command プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。たとえば、詳細な使用法を確認するには **azure vm extension set --help** を、Azure にログインするには **azure login** を、Azure にあるすべての仮想マシンを一覧表示するには **azure vm list** を実行します。
 - データを格納するためのストレージ アカウント。データをストレージにアップロードするには、事前にストレージ アカウント名とアクセス キーを作成しておく必要があります。
 
 
@@ -127,7 +127,7 @@ Rsyslog データは既定で常に収集されます。
 
 
 ## データを確認する
-パフォーマンスと診断のデータが Azure Storage テーブルに保存されます。[この記事](storage-ruby-how-to-use-table-storage.md)を確認して、Azure CLI スクリプトを使用してストレージ テーブル内のデータにアクセスする方法を学習します。
+パフォーマンスと診断のデータが Azure Storage テーブルに保存されます。[この記事](../storage/storage-ruby-how-to-use-table-storage.md)を確認して、Azure CLI スクリプトを使用してストレージ テーブル内のデータにアクセスする方法を学習します。
 
 さらに、次の UI ツールを使用してデータにアクセスすることもできます。
 
@@ -143,4 +143,4 @@ Rsyslog データは既定で常に収集されます。
 ## 既知の問題
 - バージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

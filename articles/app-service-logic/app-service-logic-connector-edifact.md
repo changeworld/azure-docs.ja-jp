@@ -76,7 +76,7 @@ Segment Terminator Suffix|文字列|セグメント終端記号のサフィッ�
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
-パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。「[API アプリとコネクタの管理と監視](../app-service-api/app-service-api-manage-in-portal.md)」を参照してください。
+ 
 
 
 <!--References -->
@@ -91,4 +91,4 @@ Segment Terminator Suffix|文字列|セグメント終端記号のサフィッ�
 [9]: ./media/app-service-logic-connector-edifact/EncodeInput.PNG
 [10]: ./media/app-service-logic-connector-edifact/EncodeConfigured.PNG
 
-<!---HONumber=AcomDC_0224_2016-->
+<!----HONumber=AcomDC_0413_2016-->

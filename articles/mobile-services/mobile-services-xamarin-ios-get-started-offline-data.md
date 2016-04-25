@@ -46,9 +46,10 @@
 
 このチュートリアルには、次のものが必要です。
 
-* [Xamarin 拡張機能]付きの Visual Studio **または** OS X 用 [Xamarin Studio]
-* XCode 4.5 および iOS 6.0 (またはそれ以降のバージョン)
-* チュートリアル「[Mobile Services の使用]」を完了していること
+* Visual Studio と Xamarin。手順については、「[セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx)」をご覧ください。 
+* Xcode v7.0 以降と Xamarin Studio Community がインストールされた Mac。「[セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx)」および「[Mac ユーザー向けのセットアップ、インストール、および検証](https://msdn.microsoft.com/library/mt488770.aspx)」(MSDN) をご覧ください。
+* チュートリアル「[Mobile Services の使用]」を完了していること。
+
 
 ## <a name="review-offline"></a>Mobile Services 同期コードのレビュー
 
@@ -181,9 +182,6 @@
 [Mobile Services の使用]: mobile-services-ios-get-started.md
 [Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法]: partner-xamarin-mobile-services-how-to-use-client-library.md
 [論理的な削除]: mobile-services-using-soft-delete.md
-
-[Xamarin Studio]: http://xamarin.com/download
-[Xamarin 拡張機能]: http://xamarin.com/visual-studio
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

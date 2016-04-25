@@ -173,7 +173,7 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 
 ### Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード
 
-**Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード**は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/virtual-machines-windows-classic-migrate-sql.md)」を参照してください。
+**Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード**は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/virtual-machines-windows-migrate-sql.md)」を参照してください。
 
 ### <a name="export-flat-file"></a>フラット ファイルへのエクスポート
 
@@ -217,11 +217,11 @@ SQL Server は以下のものをサポートします。
 
 ## リソース
 
-[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/virtual-machines-windows-classic-migrate-sql.md)
+[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/virtual-machines-windows-migrate-sql.md)
 
-[Azure Virtual Machines における SQL Server の概要](../virtual-machines/virtual-machines-windows-classic-sql-overview.md)
+[Azure Virtual Machines における SQL Server の概要](../virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md)
 
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

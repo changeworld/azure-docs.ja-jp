@@ -28,9 +28,9 @@
 7. **[アプリにアクセスするにはユーザー割り当てが必要]** を [はい] に変更します。
 8. 画面の下部にある **[保存]** をクリックします。
 
-ここで、アプリケーションにユーザーやグループを割り当てる必要があります。「[アプリケーションへのユーザーの割り当て](active-directory-guiding-developers-assigning-users.md)」と「[アプリケーションへのグループの割り当て](active-directory-guiding-developers-assigning-groups.md)」を参照してください。
+ここで、アプリケーションにユーザーやグループを割り当てる必要があります。「[アプリケーションへのユーザーの割り当て](active-directory-applications-guiding-developers-assigning-users.md)」と「[アプリケーションへのグループの割り当て](active-directory-applications-guiding-developers-assigning-groups.md)」を参照してください。
 
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

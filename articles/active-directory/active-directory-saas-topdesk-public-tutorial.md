@@ -2,7 +2,7 @@
     pageTitle="チュートリアル: Azure Active Directory と TOPdesk - Public の統合 | Microsoft Azure" 
     description="Azure Active Directory で TOPdesk - Public を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
     manager="stevenpo"/>
 <tags 
@@ -11,8 +11,8 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="04/06/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と TOPdesk - Public の統合
 
@@ -109,7 +109,7 @@ TOPdesk - Public のシングル サインオンを構成するには、ロゴ�
 
 9.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "アプリケーション URL の構成")
 
     1.  **[TOPdesk - Public サインオン URL]** テキストボックスに、ユーザーが TOPdesk - Public アプリケーションへのサインオンに使用する URL (例: *https://qssolutions.topdesk.net*) を入力します。
     2.  **[TOPdesk – Public 応答 URL]** テキストボックスに、**TOPdesk - Public AssertionConsumerService URL** (例: *https://qssolutions.topdesk.net/tas/public/login/saml*) を貼り付けます。
@@ -181,7 +181,7 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
     3.  アカウントの **[Site]** を選択します。
     4.  **[保存]** をクリックします。
 
->[AZURE.NOTE]他の TOPdesk - Public ユーザー アカウントの作成ツールまたは TOPdesk - Public から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] 他の TOPdesk - Public ユーザー アカウントの作成ツールまたは TOPdesk - Public から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -197,8 +197,8 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-topdesk-public-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-topdesk-public-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!----HONumber=AcomDC_0413_2016-->

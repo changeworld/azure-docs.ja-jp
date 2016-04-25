@@ -28,12 +28,6 @@
 
 オフラインの同期機能の詳細については、トピック「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
 
-## 必要条件
-
-* Visual Studio 2013
-* Visual Studio の [Xamarin 拡張機能]**または** [Xamarin Studio]
-* チュートリアル「[Xamarin Android アプリの作成]」を完了していること。このチュートリアルはそのチュートリアルでカバーされている完成したアプリを使用します。
-
 ## クライアント同期コードの確認
 
 チュートリアル「[Xamarin Android アプリの作成]」を完了した際にダウンロードした Xamarin クライアント プロジェクトには、ローカルの SQLite データベースを使用したオフライン同期をサポートするコードが既に含まれてます。チュートリアルのコードにすでに含まれているものの概要を示します。機能の概念的な概要については、「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
@@ -73,7 +67,9 @@
     提供されたコードでは、リモートの `TodoItem` テーブルのすべてのレコードはクエリされますが、クエリ ID やクエリを `PushAsync` に渡すことでレコードをフィルター処理することも可能です。詳細は、「[ Azure Mobile Apps でのオフライン データ同期]」の「*増分同期*」セクションを参照してください。
 
 	<!-- Need updated conflict handling info : `InitializeAsync` uses the default conflict handler, which fails whenever there is a conflict. To provide a custom conflict handler, see the tutorial [Handling conflicts with offline support for Mobile Services].
-	-->	
+	-->
+
+
 		// ToDoActivity.cs
         private async Task SyncAsync()
         {
@@ -172,8 +168,8 @@
 [How to use the Xamarin Component client for Azure Mobile Services]: ../partner-xamarin-mobile-services-how-to-use-client-library.md
 
 [Xamarin Studio]: http://xamarin.com/download
-[Xamarin 拡張機能]: http://xamarin.com/visual-studio
+[Xamarin extension]: http://xamarin.com/visual-studio
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

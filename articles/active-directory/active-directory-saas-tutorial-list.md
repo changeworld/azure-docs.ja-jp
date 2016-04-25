@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="03/25/2016"
+    ms.date="04/11/2016"
     ms.author="markvi"/>
 
 #SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧
@@ -94,8 +94,9 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Gigya.jpg)| [Gigya](https://go.microsoft.com/fwLink/?LinkID=403245&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_GoogleApps.jpg)| [Google Apps](https://go.microsoft.com/fwLink/?LinkID=309577&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Greenhouse.jpg)| [Greenhouse](https://go.microsoft.com/fwLink/?LinkID=403252&clcid=0x409)|
-| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_HackerOne.png)| [HackerOne](https://go.microsoft.com/fwLink/?LinkID=785097&clcid=0x409)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_HackerOne.jpg)| [HackerOne](https://go.microsoft.com/fwLink/?LinkID=708668&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Halogen_Software.jpg)| [Halogen Software](https://go.microsoft.com/fwLink/?LinkID=530241&clcid=0x409)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Heroku.jpg)| [Heroku](https://go.microsoft.com/fwLink/?LinkID=733446&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_HPESaaS.jpg)| [HPE SaaS](https://go.microsoft.com/fwLink/?LinkID=708663&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_HR2day.jpg)| [HR2day by Merces](https://go.microsoft.com/fwLink/?LinkID=708684&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Huddle.jpg)| [Huddle](https://go.microsoft.com/fwLink/?LinkID=403227&clcid=0x409)|
@@ -144,6 +145,7 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_PagerDuty.jpg)| [Pagerduty](https://go.microsoft.com/fwLink/?LinkID=510244&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Panopto.jpg)| [Panopto](https://go.microsoft.com/fwLink/?LinkID=512739&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Panorama9.jpg)| [Panorama9](https://go.microsoft.com/fwLink/?LinkID=510253&clcid=0x409)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_People.jpg)| [ユーザー](https://go.microsoft.com/fwLink/?LinkID=733461&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_PerformanceCentre.jpg)| [PerformanceCentre](http://go.microsoft.com/fwlink/?LinkId=691855)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Picturepark.jpg)| [Picturepark](https://go.microsoft.com/fwLink/?LinkID=512722&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Plurasight.jpg)| [Pluralsight](http://go.microsoft.com/fwlink/?LinkID=733453&clcid=0x409)|
@@ -184,6 +186,7 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_SumoLogic.jpg)| [SumoLogic](https://go.microsoft.com/fwLink/?LinkID=403259&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Syncplicity.jpg)| [Syncplicity](https://go.microsoft.com/fwLink/?LinkID=403237&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_TalentLMS.jpg)| [TalentLMS](https://go.microsoft.com/fwLink/?LinkID=512727&clcid=0x409)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Tangoe.jpg)| [Tangoe Command Premium Mobile](https://go.microsoft.com/fwLink/?LinkID=733462&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_TargetProcess.jpg)| [TargetProcess](https://go.microsoft.com/fwLink/?LinkID=691862&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_TeamSeer.jpg)| [TeamSeer](https://go.microsoft.com/fwLink/?LinkID=510248&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Thirdlight.png)| [Thirdlight](https://go.microsoft.com/fwLink/?LinkID=512741&clcid=0x409)|
@@ -218,10 +221,9 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 
 
 
-
 ##関連記事
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->
