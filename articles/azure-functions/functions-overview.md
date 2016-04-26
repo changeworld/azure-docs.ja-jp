@@ -72,4 +72,4 @@ Azure Functions の実行方法には、動的 App Service プランを使用す
 
 [AZURE.INCLUDE [問題の報告](../../includes/functions-reporting-issues.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

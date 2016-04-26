@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Backup を使用して ARM VM を保護する | Microsoft Azure"
-	description="Azure Backup サービスを使用して ARM VM を保護します。ARM VM のバックアップを使用してデータを保護します。Recovery Services コンテナーを作成および登録します。Azure で VM の登録、ポリシーの作成、VM の保護を行います。"
+	description="Azure Backup サービスを使用して ARM VM を保護します。ARM VM と Premium Storage VM のバックアップを使用してデータを保護します。Recovery Services コンテナーを作成および登録します。Azure で VM の登録、ポリシーの作成、VM の保護を行います。"
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
@@ -24,7 +24,14 @@
 - [ARM VM のバックアップ](backup-azure-vms-first-look-arm.md)
 - [クラシック モード VM のバックアップ](backup-azure-vms-first-look.md)
 
-このチュートリアルでは、Recovery Services コンテナーの作成と Azure 仮想マシン (VM) のバックアップの一連の手順について説明します。このチュートリアルは、IaaS v.2 または Azure Resource Manager (ARM) ベースの VM の保護に使用できる Recovery Services コンテナーを使用するためのものです。
+このチュートリアルでは、Recovery Services コンテナーの作成と Azure 仮想マシン (VM) のバックアップの手順について説明します。Recovery Services コンテナーの保護:
+
+- Azure Resource Manager (ARM) VM
+- クラシック VM
+- Standard Storage VM
+- Premium Storage VM
+
+Premium Storage VM の保護の詳細については、[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#back-up-and-restore-premium-storage-vms)のセクションを参照してください。
 
 >[AZURE.NOTE] このチュートリアルでは、既に Azure サブスクリプション内に VM があることと、バックアップ サービスが VM にアクセスできるようにしてあることを前提としています。Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager デプロイ モデルとクラシック デプロイ モデル](../resource-manager-deployment-model.md)です。この記事は、Resource Manager と ARM ベースの VM を使用するためのものです。
 
@@ -61,7 +68,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
     ![Create Recovery Services vault step 5](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
 
-4. **[名前]** ボックスに、コンテナーを識別するための表示名を入力します。名前は Azure サブスクリプションに対して一意である必要があります。2 ～ 50 文字の名前を入力します。名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
+4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。名前は Azure サブスクリプションに対して一意である必要があります。2 ～ 50 文字の名前を入力します。名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
 
 5. **[サブスクリプション]** をクリックして、使用可能なサブスクリプションの一覧を表示します。どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
 
@@ -99,7 +106,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Open vault blade](./media/backup-azure-vms-first-look-arm/vault-settings.png)
 
-2. コンテナーのダッシュボード メニューで、**[バックアップ]** をクリックして、[バックアップ] ブレードを開きます。
+2. コンテナーのダッシュボード メニューで、**[Backup]** をクリックして、[Backup] ブレードを開きます。
 
     ![Open Backup blade](./media/backup-azure-vms-first-look-arm/backup-button.png)
 
@@ -107,7 +114,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Discover VMs](./media/backup-azure-vms-first-look-arm/discovering-new-vms.png)
 
-3. [バックアップ] ブレードで、**[シナリオ]** をクリックして [シナリオ] ブレードを開きます。
+3. [Backup] ブレードで、**[シナリオ]** をクリックして [シナリオ] ブレードを開きます。
 
     ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-scenario-one.png)
 
@@ -117,7 +124,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     [シナリオ] ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
 
-5. [バックアップ] ブレードで、コンテナーに適用するバックアップ ポリシーを選択し、**[OK]** をクリックします。
+5. [Backup] ブレードで、コンテナーに適用するバックアップ ポリシーを選択し、**[OK]** をクリックします。
 
     ![Select backup policy](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy.png)
 
@@ -129,7 +136,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     目的の VM が一覧に表示されない場合は、**[更新]** をクリックします。それでも目的の VM が表示されない場合は、Recovery Services コンテナーと同じ Azure の場所にその VM が存在することを確認します。
 
-7. コンテナーの設定すべてを定義したところで、[バックアップ] ブレードで、ページの下部にある **[バックアップの有効化]** をクリックします。これにより、ポリシーがコンテナーと VM にデプロイされます。
+7. コンテナーの設定すべてを定義したところで、[Backup] ブレードで、ページの下部にある **[バックアップの有効化]** をクリックします。これにより、ポリシーがコンテナーと VM にデプロイされます。
 
     ![Enable Backup](./media/backup-azure-vms-first-look-arm/enable-backup-settings.png)
 
@@ -144,7 +151,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
 **[今すぐバックアップ]** を実行するには、次の手順に従います。
 
-1. コンテナー ダッシュボードの **[バックアップ]** タイルで、**[Azure 仮想マシン]** をクリックします。<br/> ![Settings icon](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
+1. コンテナー ダッシュボードの **[Backup]** タイルで、**[Azure Virtual Machines]** をクリックします。<br/> ![Settings icon](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
 
     **[バックアップ項目]** ブレードが開きます。
 
@@ -156,7 +163,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Backup job triggered](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
 
-3. 初回バックアップが完了したことを確認するには、コンテナー ダッシュボードの **[バックアップ ジョブ]** タイルで **[Azure 仮想マシン]** をクリックします。
+3. 初回バックアップが完了したことを確認するには、コンテナー ダッシュボードの **[バックアップ ジョブ]** タイルで **[Azure Virtual Machines]** をクリックします。
 
     ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
 
@@ -172,7 +179,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
 ## バックアップ ポリシーの定義
 
-バックアップ ポリシーは、データのスナップショットをいつ取得し、それらのスナップショットをいつまで保持するかのマトリックスを定義します。VM をバックアップするためのポリシーを定義するときに、バックアップ ジョブを *1 日に 1 回*トリガーできます。新しポリシーを作成すると、コンテナーに適用されます。バックアップ ポリシーのインターフェイスは、次のようになります。
+バックアップ ポリシーは、データのスナップショットをいつ取得し、それらのスナップショットをいつまで保持するかのマトリックスを定義します。VM をバックアップするためのポリシーを定義するときに、バックアップ ジョブを *1 日に 1 回*トリガーできます。新しいポリシーを作成すると、コンテナーに適用されます。バックアップ ポリシーのインターフェイスは、次のようになります。
 
 ![Backup policy](./media/backup-azure-vms-first-look-arm/backup-policy-daily-raw.png)
 
@@ -196,9 +203,9 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     対応するコントロールで、使用する間隔を指定します。月および年単位の保持期間では、週単位または日単位の増分に基づいてスナップショットを指定できます。
 
-4. ポリシーのすべてのオプションを設定した後、ブレードの下部にある **[OK]** をクリックします。
+4. ポリシーのすべてのオプションを設定したら、ブレードの下部にある **[OK]** をクリックします。
 
-    Recovery Services コンテナーの設定が完了した後、新しいポリシーがコンテナーに適用されるように設定されます。「[手順 2. シナリオの選択、ポリシーの設定、保護する項目の定義を行う](backup-azure-vms-first-look-arm.md#step-2---select-scenario-set-policy-and-define-items-to-protect)」セクションの手順 6. に戻ります。
+    Recovery Services コンテナーの設定が完了した後、新しいポリシーがコンテナーに適用されるように設定されます。「[シナリオの選択、ポリシーの設定、保護する項目の定義を行う](backup-azure-vms-first-look-arm.md#step-2---select-scenario-set-policy-and-define-items-to-protect)」セクションの手順 6 に戻ります。
 
 ## 仮想マシンに VM エージェントをインストールする
 
@@ -221,8 +228,6 @@ VM エージェントが仮想マシンにインストールされると、Azure
 
 バックアップ拡張機能は、VM が実行されているかどうかにかかわらず、Backup サービスによってインストールされます。VM が実行されている場合は、アプリケーション整合性復旧ポイントを取得できる可能性が最も高くなります。Azure Backup サービスは、VM がオフになっている場合でも VM のバックアップを続行しますが、拡張機能はインストールされない可能性があります。これはオフライン VM と呼ばれます。この場合、復旧ポイントは、*クラッシュ整合性*復旧ポイントになります。
 
-
-
 ## トラブルシューティング情報
 この記事のタスクを行っていて問題が発生した場合は、[トラブルシューティング ガイダンス](backup-azure-vms-troubleshoot.md)を参照してください。
 
@@ -230,4 +235,4 @@ VM エージェントが仮想マシンにインストールされると、Azure
 ## 疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

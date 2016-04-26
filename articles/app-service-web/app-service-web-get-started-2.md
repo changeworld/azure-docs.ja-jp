@@ -20,7 +20,7 @@
 
 # Azure App Service の使用 - 第 2 部
 
-「[Azure App Service の使用](app-service-web-get-started.md)」では、Azure App Service に Web アプリをデプロイしました。すべての要素がセットアップされているため、更新を短時間で簡単に実行できます。この記事では、デプロイしたアプリにいくつかの重要な機能をわずかな操作で追加して、スムーズに機能させます。この操作を通じて、App Service が Web サイト ホストよりもはるかに高機能であることがおわかりいただけると思います。App Service によってエンタープライズクラスの機能がアプリに組み込まれるため、開発者はセキュリティ、スケーラビリティ、パフォーマンス、管理といった実環境の要求を満たすことではなく、アプリでユーザーの満足度を高めることに創造的エネルギーを集中することができます。
+「[Azure App Service の使用](app-service-web-get-started.md)」では、Azure App Service に Web アプリをデプロイしました。この記事では、デプロイしたアプリにいくつかの重要な機能をわずかな操作で追加します。App Service は優れたアプリにエンタープライズ級の機能をもたらし、セキュリティ、拡張性、性能、管理などの面で実世界の需要を満たします。
 
 数回のクリックで次の内容を行う方法を学習します。
 
@@ -46,7 +46,7 @@
 
     変更が正常に完了すると、通知ベルが緑色に変わり、わかりやすいメッセージが表示されます。
 
-7. アプリのポータル ブレードに戻り、**[URL]** リンク (またはメニュー バーの **[参照]**) をクリックします。このリンクは HTTP アドレスになっています。![Authenticate - browse to URL](./media/app-service-web-get-started/aad-login-browse-click.png) ただし、URL をクリックして新しいタブでアプリが開くと、数回のリダイレクトを経て、最終的には HTTPS アドレスでアプリが開かれます。結果として、Azure サブスクリプションのある Microsoft アカウントにログイン済みの状態になり、そのアカウントを使用してアプリに自動的にログインされます。![Authenticate - logged in](./media/app-service-web-get-started/aad-login-browse-http-postclick.png) そのため、認証されていないセッションを別のブラウザーで開いた場合、同じ URL に移動すると、ログイン画面が表示されます。 ![Authenticate - login page](./media/app-service-web-get-started/aad-login-browse.png) Azure Active Directory で何も実行していない場合は、既定のディレクトリに Azure AD ユーザーが含まれていない可能性があります。その場合、既定のディレクトリに含まれているのは、Azure サブスクリプションのある Microsoft アカウントのみになります。同一のブラウザーでアプリに自動的にログインされる場合があるのは、このためです。その同じ Microsoft アカウントを使用して、このログイン ページにもログインできます。
+7. アプリのポータル ブレードに戻り、**[URL]** リンク (またはメニュー バーの **[参照]**) をクリックします。このリンクは HTTP アドレスになっています。![Authenticate - browse to URL](./media/app-service-web-get-started/aad-login-browse-click.png) ただし、URL をクリックして新しいタブでアプリが開くと、数回のリダイレクトを経て、最終的には HTTPS アドレスでアプリが開かれます。結果として、Azure サブスクリプションにログインした状態になり、アプリで自動的に認証されます。![Authenticate - logged in](./media/app-service-web-get-started/aad-login-browse-http-postclick.png) そのため、認証されていないセッションを別のブラウザーで開いた場合、同じ URL に移動すると、ログイン画面が表示されます。 ![Authenticate - login page](./media/app-service-web-get-started/aad-login-browse.png) Azure Active Directory で何も実行していない場合は、既定のディレクトリに Azure AD ユーザーが含まれていない可能性があります。その場合、既定のディレクトリに含まれているのは、Azure サブスクリプションのある Microsoft アカウントのみになります。同一のブラウザーでアプリに自動的にログインされる場合があるのは、このためです。その同じ Microsoft アカウントを使用して、このログイン ページにもログインできます。
 
 これで、サイトへのすべてのトラフィックが認証されます。
 
@@ -62,7 +62,7 @@ App Service には一般的な認証のニーズの一部に対応した設定�
 
 次に、アプリのスケーリングについて見てみましょう。App Service アプリをスケールする方法は 2 つあります。
 
-- [スケールアップ](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): App Service アプリをスケールアップするには、アプリが属する App Service プランの価格レベルを変更します。スケールアップすると、CPU、メモリ、およびディスク領域が増えるほか、専用の VM インスタンス、自動スケール、99.95% の SLA、カスタム ドメイン、カスタム SSL 証明書、デプロイ スロット、バックアップ、復元などの追加機能が利用できるようになります。レベルが上がるほど、App Service アプリで利用できる機能も増えます。  
+- [スケールアップ](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): App Service アプリをスケールアップするには、アプリが属する App Service プランの価格レベルを変更します。拡張により、CPU、メモリ、ディスク領域が追加されます。専用 VM、自動スケール、99.95% の可用性、カスタムとドメインの証明書、デプロイ スロット、バックアップなどの追加機能も与えられます。レベルが上がるほど、App Service アプリで利用できる機能も増えます。  
 - [スケールアウト](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): App Service アプリをスケールアウトするには、対象のアプリ (または同じ App Service プラン内の他のアプリ) が実行される VM インスタンスの数を変更します。Standard レベル以上では、パフォーマンス メトリックに基づく VM インスタンスの自動スケールを有効にすることができます。 
 
 前置きはこのくらいにして、アプリの自動スケールを設定しましょう。
@@ -77,7 +77,7 @@ App Service には一般的な認証のニーズの一部に対応した設定�
     
 3. 次に、自動スケールを構成します。アプリのポータル ブレードで、**[設定]**、**[スケール アウト (App Service プラン)]** の順にクリックします。 ![Scale out - settings blade](./media/app-service-web-get-started/scale-out-settings.png)
 
-4. **[スケールの基準]** を **[CPU の割合]** に変更します。ドロップダウン リストの下にあるスライダーをそれぞれ変更します。次に、**[インスタンス]** の範囲を **1** ～ **2** に、**[対象範囲]** を **40** ～ **80** に定義します。これらの値を定義するには、ボックスに入力するか、スライダーを動かします。 ![Scale out - configure autoscaling](./media/app-service-web-get-started/scale-out-configure.png)
+4. **[スケールの基準]** を **[CPU の割合]** に変更します。ドロップダウン リストの下にあるスライダーが適宜更新されます。次に、**[インスタンス]** の範囲を **1** ～ **2** に、**[対象範囲]** を **40** ～ **80** に定義します。これらの値を定義するには、ボックスに入力するか、スライダーを動かします。 ![Scale out - configure autoscaling](./media/app-service-web-get-started/scale-out-configure.png)
     
     アプリは、この構成に基づいて、CPU 使用率が 80% を超えると自動的にスケールアウトされ、CPU 使用率が 40% を下回るとスケールされます。
     
@@ -127,4 +127,4 @@ App Service には一般的な認証のニーズの一部に対応した設定�
 - [Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする](web-sites-hybrid-connection-get-started.md)
 - [App Service の特長](../app-service/app-service-how-works-readme.md) 
 
-<!---HONumber=AcomDC_0323_2016---->
+<!---HONumber=AcomDC_0420_2016-->

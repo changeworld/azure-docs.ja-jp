@@ -159,7 +159,6 @@ Status Monitor が動作するように、サーバーのファイアウォー�
  -	`login.live.com:443`
 + インストール
  +	`packages.nuget.org:443`
- +	`appinsightsstatusmonitor.blob.core.windows.net:80`
 
 この一覧は時々変更される場合があります。
 
@@ -302,4 +301,4 @@ Web アプリが Azure に存在するとき、Azure Resource Manager テンプ�
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="04/18/2016"
    ms.author="sahajs;barbkess;jrj;sonyama"/>
 
 
@@ -72,7 +72,7 @@
 
 BLOB サービス エンドポイントを検索するには:
 
-1. Azure クラシック ポータルで、**[参照]**、**[ストレージ アカウント]** の順に選択します。
+1. Azure ポータルで、**[参照]**、**[ストレージ アカウント]** の順に選択します。
 2. 使用するストレージ アカウントをクリックします。
 3. ストレージ アカウントのブレードで、BLOB をクリックします。
 
@@ -86,7 +86,7 @@ BLOB サービス エンドポイントを検索するには:
 
 Azure ストレージ キーを検索するには:
 
-1. ホーム画面で、**[参照]**、**[ストレージ アカウント]** の順に選択します。
+1. Azure ポータルで、**[参照]**、**[ストレージ アカウント]** の順に選択します。
 2. 使用するストレージ アカウントをクリックします。
 3. **[すべての設定]**、**[アクセス キー]** の順に選択します。
 4. いずれかのアクセス キーをクリップボードにコピーするために、コピー ボックスをクリックします。
@@ -128,7 +128,7 @@ Blob Storage にアップロードしたファイルを表示するには:
 
 このセクションでは、サンプル データを定義する外部テーブルを作成します。
 
-PolyBase では、外部テーブルを使用して、Azure Blob Storage または Hadoop 内のデータにアクセスします。データは SQL Data Warehouse 内に保存されないため、PolyBase は、データベース スコープの資格情報を使用して、外部データへの認証を処理します。
+PolyBase では、外部テーブルを使用して、Azure Blob Storage 内のデータにアクセスします。データは SQL Data Warehouse 内に保存されないため、PolyBase は、データベース スコープの資格情報を使用して、外部データへの認証を処理します。
 
 この手順の例では、以下の Transact-SQL ステートメントを使用して、外部テーブルを作成します。
 
@@ -162,6 +162,7 @@ WITH
 
 
 -- C: Create an external data source
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure blob storage.
 -- LOCATION: Provide Azure storage account name and blob container name.
 -- CREDENTIAL: Provide the credential created in the previous step.
 
@@ -286,4 +287,4 @@ PolyBase を使用するソリューションを開発する際に知ってお�
 [Create Database Scoped Credential (Transact-SQL)]: https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

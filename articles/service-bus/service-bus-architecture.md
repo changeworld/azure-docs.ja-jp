@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Service Bus のアーキテクチャ | Microsoft Azure"
-   description="Azure Service Bus のメッセージ処理アーキテクチャについて説明します。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Service Bus のアーキテクチャ | Microsoft Azure"
+    description="Azure Service Bus のメッセージ処理アーキテクチャについて説明します。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="tysonn" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="03/09/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="04/19/2016"
+    ms.author="sethm" />
 
 # Service Bus のアーキテクチャ
 
@@ -29,13 +29,9 @@ Service Bus の名前空間は、スケール ユニットにマップされま�
 
 - **メッセージング ブローカー ノード。** メッセージング ブローカー ノードは、メッセージング エンティティに関する要求を処理します。
 
-- **通知ノードのセット。** 通知ノードは、すべての登録済みデバイスにプッシュ通知を送信します。
-
 - **1 つのゲートウェイ ストア。** ゲートウェイ ストアは、このスケール ユニット内に定義されているすべてのエンティティのデータを保持します。ゲートウェイ ストアは、SQL Azure データベース上に実装されます。
 
-- **多数のメッセージング ストア。** メッセージング ストアは、このスケール ユニット内に定義されているすべてのキュー、トピック、およびサブスクリプションのメッセージを保持します。また、すべてのサブスクリプション データも含まれています。[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)が有効でない限り、1 つのキューまたはトピックが 1 つのメッセージング ストアにマップされます。サブスクリプションは、その親トピックと同じメッセージング ストアに格納されます。Service Bus [Premium メッセージング](service-bus-premium-messaging.md)を除き、メッセージング ストアは、SQL Azure データベース上に実装されます。
-
-- **複数の登録ストア。** 登録ストアには、このスケール ユニット内に定義されているすべての通知ハブに対するデバイス登録が含まれています。登録ストアは、SQL Azure データベース上に実装されます。
+- **複数のメッセージング ストア。** メッセージング ストアは、このスケール ユニット内に定義されているすべてのキュー、トピック、およびサブスクリプションのメッセージを保持します。また、すべてのサブスクリプション データも含まれています。[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)が有効でない限り、1 つのキューまたはトピックが 1 つのメッセージング ストアにマップされます。サブスクリプションは、その親トピックと同じメッセージング ストアに格納されます。Service Bus [Premium メッセージング](service-bus-premium-messaging.md)を除き、メッセージング ストアは、SQL Azure データベース上に実装されます。
 
 ## コンテナー
 
@@ -55,12 +51,6 @@ Service Bus の名前空間は、スケール ユニットにマップされま�
 
 ![受信リレー要求の処理](./media/service-bus-architecture/IC690645.png)
 
-## 通知ハブの受信要求の処理
-
-クライアントが Service Bus に要求を送信すると、その要求が Azure Load Balancer によってゲートウェイ ノードのいずれかにルーティングされます。要求が既存の通知ハブに対するデバイス登録である場合、ゲートウェイ ノードは、登録を登録ストアに書き込み、呼び出し元のデバイスに返信を送信します。要求が通知メッセージである場合は、ゲートウェイ ノードが通知キューにメッセージを登録します。通知ノードの 1 つは、通知キューからメッセージを削除し、登録ストアに登録されているすべてのデバイスにメッセージを送信します。メッセージが多数のデバイスで受信される場合は、複数の通知ノードがデバイスへのメッセージの送信に関与します。
-
-![通知ハブの受信要求の処理](./media/service-bus-architecture/IC690646.png)
-
 ## 次のステップ
 
 ここまで、Service Bus のしくみの概要を説明しました。使用を開始するには、次のリンクを参照してください。
@@ -69,4 +59,4 @@ Service Bus の名前空間は、スケール ユニットにマップされま�
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus キューを使用するキューに格納されたメッセージング ソリューション](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

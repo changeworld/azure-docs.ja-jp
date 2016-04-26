@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/06/2016"
+	ms.date="04/13/2016"
 	ms.author="jimpark; trinadhk"/>
 
 # Azure Backup とは
@@ -69,8 +69,7 @@ Backup はハイブリッド バックアップ ソリューションなので�
 | Microsoft SQL Server | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Microsoft SharePoint | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Microsoft Exchange | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
-| Azure IaaS VM (Windows) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) | 
-| Azure IaaS VM (Linux) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
+| Azure IaaS VM (Windows) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) | | Azure IaaS VM (Linux) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
 
 ## ARM と Linux のサポート
 
@@ -82,6 +81,30 @@ Backup はハイブリッド バックアップ ソリューションなので�
 | Azure IaaS VM のバックアップ | パブリック プレビュー中 | パブリック プレビュー中 - Resource Manager デプロイ モデルでの Linux VM <br>(ファイル システム レベルの整合性)<br><br>あり - クラシック デプロイ モデルでの Linux VM |
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+
+
+## Premium Storage VM のバックアップと復元
+
+Azure Backup サービスで、Premium Storage VM が保護されるようになりました。
+
+### Premium Storage VM のバックアップ
+
+Premium Storage VM をバックアップすると、Backup サービスによって、Premium ストレージ アカウントの一時的なステージング場所が作成されます。"AzureBackup-" というステージングの場所は、VM にアタッチされている Premium ディスクの合計データ サイズと同じです。
+
+>[AZURE.NOTE] ステージングの場所は変更または編集できません。
+
+バックアップ ジョブが完了したら、ステージングの場所は削除されます。ステージングの場所に使用されるストレージの価格は、すべての [Premium Storage の価格](../storage/storage-premium-storage.md#pricing-and-billing)に準じます。
+
+### Premium Storage VM の復元
+
+Premium Storage VM の復旧ポイントを Premium Storage に復元する方法が、復元の一般的なプロセスです。ただし、Premium Storage VM の復旧ポイント Standard Storage に復元する方がコスト効率が良い場合があります。このような復元は、VM の一部のファイルのみが必要な場合に利用できます。
+
+Premium Storage VM の復旧ポイントを Premium Storage に復元する手順は次のとおりです。
+
+1. [VM の復旧ポイントを Standard Storage に復元します。](backup-azure-restore-vms.md)
+2. [Premium Storage にディスクをコピーします。](../storage/storage-use-azcopy.md)
+3. [Azure IaaS VM を作成します。](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+
 
 ## 機能
 以下の 5 つの表では、各コンポーネントにおける Backup の機能の処理方法をまとめます。
@@ -211,4 +234,4 @@ Azure Backup は、オンプレミスのデータまたはクラウド内のデ�
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -56,11 +56,13 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
     using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
 
+### 接続文字列を解析する
+
 [AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### Table サービス クライアントを作成する
 
-**CloudTableClient** クラスを使用すると、Table Storage に格納されているテーブルとエンティティを取得できます。次のコードを **Main()** メソッドに追加します。
+**CloudTableClient** クラスを使用すると、Table Storage に格納されているテーブルとエンティティを取得できます。サービス クライアントを作成する方法の 1 つを次に示します。
 
 	// Create the table client.
 	CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
@@ -461,4 +463,4 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -2,6 +2,6 @@
 ---------|-------|-----------
 ランタイム | スクリプト ホスト、トリガー、バインド、言語のサポート | [問題のファイリング](https://github.com/Azure/azure-webjobs-sdk-script/issues)
 テンプレート | 作成テンプレートに関するコードの問題 | [問題のファイリング](https://github.com/Azure/azure-webjobs-sdk-templates/issues)
-ポータル | ユーザー インターフェイスまたはエクスペリエンスの問題 | [問題のファイリング](https://github.com/ProjectKudu/WebJobsPortal/issues)
+ポータル | ユーザー インターフェイスまたはエクスペリエンスの問題 | [問題のファイリング](https://github.com/ProjectKudu/AzureFunctionsPortal/issues)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

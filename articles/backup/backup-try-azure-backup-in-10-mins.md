@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="hero-article"
-   ms.date="04/09/2016"
+   ms.date="04/14/2016"
    ms.author="jimpark;"/>
 
 # 最初に: Windows Server または Windows クライアントから Azure にファイルとフォルダーをバックアップする
@@ -142,4 +142,4 @@ Backup エージェントがまだ開いていない場合は、コンピュー�
 - ファイルとフォルダーをバックアップしたので、[コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
 - バックアップを復元する必要がある場合は、「[Windows Server または Windows クライアント コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

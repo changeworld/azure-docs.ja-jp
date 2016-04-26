@@ -33,7 +33,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 1.  Azure アカウント資格情報を使用して [azureiotsuite.com][lnk-azureiotsuite] にログオンし、**[+]** をクリックして新しいソリューションを作成します。
 
-    > [AZURE.NOTE] ソリューションのプロビジョニングに必要なアクセス許可でお困りの場合は、詳細について「[azureiotsuite.com サイトでのアクセス許可](iot-suite-permissions.md)」を参照してください。
+    > [AZURE.NOTE] ソリューションのプロビジョニングに必要なアクセス許可に問題がある場合は、詳細について「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」を参照してください。
 
 2.  **[リモート監視]** タイルで **[選択]** タイルを選択します。
 
@@ -53,7 +53,9 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 4. タイルをクリックし、右側のウィンドウでソリューションの詳細を確認します。
 
-ソリューションの一覧に予測どおりに表示されない詳細がありますか? [ユーザーの声](https://feedback.azure.com/forums/321918-azure-iot)で機能に関する提案をご確認ください。
+> [AZURE.NOTE] 構成済みソリューションのデプロイの問題が発生している場合は、「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」と「[IoT スイートに関してよく寄せられる質問][lnk-faq]」を参照してください。それでも問題が解決しない場合は、[ポータル][lnk-portal]でサービス チケットを作成してください。
+
+ソリューションの一覧に予測どおりに表示されない詳細がありますか? [ユーザーの声](https://feedback.azure.com/forums/321918-azure-iot)で機能に関する提案をお寄せください。
 
 ## リモート監視ソリューションのダッシュボードの表示
 
@@ -66,6 +68,12 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 2.  既定では、ソリューション ポータルに*ソリューション ダッシュボード*が表示されます。左側のメニューを使用して、他のビューを選択できます。
 
     ![][img-dashboard]
+
+ダッシュボードには次の情報が表示されます。
+
+- マップには、ソリューションに接続されている各デバイスの場所が表示されます。初めてサンプルを実行すると、シミュレートされた 4 つのデバイスがあります。シミュレートされたデバイスは、Azure WebJobs として実装されています。ソリューションは Bing Maps API を使用して、マップに情報をプロットします。
+- **[テレメトリ履歴]** パネルは、ほぼリアルタイムで、選択したデバイスから湿度と温度のテレメトリをプロットして、最大、最小、および平均湿度などの集計データを表示します。
+- **[アラーム履歴]** パネルは、テレメトリ値がしきい値を超えたときに最新のアラーム イベントを表示します。構成済みソリューションによって作成された例に加えて、独自のアラームを定義することもできます。
 
 ## ソリューションのデバイス一覧の表示
 
@@ -81,9 +89,15 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
     ![][img-devicedetails]
 
+**[デバイスの詳細]** パネルには、3 つのセクションが含まれています。
+
+- **[アクション]** セクションには、デバイスに対して実行できるアクションが一覧表示されます。デバイスを無効にした場合、そのデバイスのテレメトリの送信やコマンドの受信ができなくなります。デバイスを無効にした場合は、再度有効にすることができます。テレメトリ値がしきい値を超えた場合にアラームをトリガーする、デバイスに関連付けられたルールを追加することができます。デバイスにコマンドを送信することもできます。デバイスは初めてソリューションに接続したときに、それが応答できるコマンドをソリューションに伝えます。
+- **[デバイスのプロパティ]** セクションには、デバイス メタデータが一覧表示されます。このメタデータにはデバイス自体から生成されたもの (製造元など) と、ソリューションによって生成されたもの (作成日時など) があります。ここからデバイスのメタデータを編集できます。
+- **[認証キー]** セクションには、デバイスがソリューションで認証に使用できるキーが一覧表示されます。
+
 ## デバイスへのコマンドの送信
 
-デバイスの詳細ペインには、デバイスがサポートしているすべてのコマンドが表示されます。また、特定のデバイスにコマンドを送信することもできます。
+デバイスの詳細ペインには、特定のデバイスがサポートしているすべてのコマンドが表示されます。また、デバイスにコマンドを送信することもできます。デバイスは初めて起動したときに、ソリューションに対してサポートしているコマンドに関する情報を送信します。
 
 1.  選択したデバイスの [デバイスの詳細] ペインで **[コマンド]** をクリックします。
 
@@ -97,6 +111,8 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
     ![][img-pingcommand]
 
+ソリューションは、送信した各コマンドの状態を追跡します。最初の結果は **[保留中]** です。デバイスがコマンドを正常に実行したことを報告すると、結果が **[成功]** に設定されます。
+
 ## 新しいシミュレートされたデバイスの追加
 
 1.  デバイス一覧に戻ります。
@@ -108,6 +124,8 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 3.  **[シミュレートされたデバイス]** タイルで **[新規追加]** をクリックします。
 
     ![][img-addnew]
+    
+    新しいシミュレートされたデバイスを作成することに加えて、**[カスタム デバイス]** を作成することを選択した場合、物理デバイスを追加することもできます。この詳細については、「[デバイスを IoT Suite リモート監視構成済みソリューションに接続する][lnk-connecting-devices]」を参照してください。
 
 4.  **[自分で自分のデバイス ID を定義する]** を選択し、**mydevice\_01** など一意のデバイス ID 名を追加します。
 
@@ -117,45 +135,83 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 6. **[シミュレートされたデバイスの追加]** の手順 3. で **[完了]** をクリックすると、デバイス一覧に戻ります。
 
-7.  デバイス一覧でデバイスが **[実行中]** であることを確認できます。
+7. デバイス一覧でデバイスが **[実行中]** であることを確認できます。
 
     ![][img-runningnew]
 
-## 新しい物理デバイスの追加
+8. 新しいデバイスからシミュレートされたテレメトリをダッシュボードに表示することもできます。
 
-新しい物理デバイスをソリューションに追加するには、「[デバイスを IoT Suite リモート監視構成済みソリューションに接続する][lnk-connecting-devices]」を参照してください。
+    ![][img-runningnew-2]
 
-## ソリューションの規則の表示と編集
+## デバイス メタデータの編集
 
-この構成済みソリューションでは、SampleDevice001 の 2 つの規則がプロビジョニングされます。規則により、温度または湿度がしきい値を超えると、ダッシュボードの **[アラーム履歴]** タイルに通知が表示されます。
+1.  デバイス一覧に戻ります。
 
-1.  ソリューション ダッシュボードに戻り、**[アラーム履歴]** タイルを表示します。
+2.  **[デバイスの一覧]** で新しいデバイスを選択し、**[編集]** をクリックして、**[デバイスのプロパティ]** を編集します。
 
-    ![][img-alarmhistory]
+    ![][img-editdevice]
 
-2.  これらのアラームは、規則 **AlarmTemp** によってトリガーされます。
+3. 下へスクロールし、緯度と経度の値を変更します。**[デバイスのレジストリに変更を保存]** をクリックします。
 
-3.  左側のメニューで **[規則]** をクリックすると、このソリューションの規則が表示されます。
+    ![][img-editdevice2]
+
+4. ダッシュボードに戻ると、マップのデバイスの場所が変更されています。
+
+    ![][img-editdevice3]
+
+## 新しいデバイスのルールの追加
+
+追加した新しいデバイスにはルールがありません。このセクションでは、新しいデバイスによって報告された温度が 47 度を超えるとアラームをトリガーするルールを追加します。始める前に、ダッシュボードで新しいデバイスのテレメトリ履歴に、デバイスの温度が 45 度を超えたことがないと示されていることに注意します。
+
+1.  デバイス一覧に戻ります。
+
+2.  **[デバイスの一覧]** で新しいデバイスを選択し、**[ルールの追加]** をクリックして、デバイスの新しいルールを追加します。
+
+3. データ フィールドとして **[温度]** を使用し、温度が 47 度を超えたときの出力として **[AlarmTemp]** を使用するルールを作成します。
+
+    ![][img-adddevicerule]
+
+4. **[ルールの保存と表示]** をクリックして変更を保存します。
+
+5.  新しいデバイスの [デバイスの詳細] ペインで **[コマンド]** をクリックします。
+
+    ![][img-adddevicerule2]
+
+6.  コマンド リストから **[ChangeSetPointTemp]** を選択し、**[SetPointTemp]** を 45 に設定します。**[コマンドの送信]** をクリックします。
+
+    ![][img-adddevicerule3]
+
+7.  ソリューションのダッシュボードに戻ります。しばらくして、新しいデバイスによって報告される温度が 47 度のしきい値を超えると、**[アラーム履歴]** ペインに新しいエントリが表示されます。
+
+    ![][img-adddevicerule4]
+
+8. ダッシュボードの **[ルール]** ページですべてのルールを確認して編集できます。
 
     ![][img-rules]
 
-5.  規則の一覧で規則 **Temperature** をクリックすると、規則のプロパティが表示されます。
+9. ダッシュボードの **[アクション]** ページで、ルールへの対応として実行可能なすべてのアクションを確認して、編集できます。
 
-6.  規則を変更するには、規則のプロパティ ペインで **[編集]** をクリックします。
+    ![][img-actions]
 
-    ![][img-displayrule]
+> [AZURE.NOTE] ルールへの対応として電子メール メッセージや SMS を送信したり、[ロジック アプリ][lnk-logic-apps]経由で基幹業務システムに統合したりするアクションを定義できます。
 
-7.  **[しきい値]** を 30 に変更して、その他のすべてのプロパティは同じままにします。
+## バックグラウンド処理
 
-8.  **[規則の保存と表示]** をクリックします。
+事前構成済みソリューションをデプロイすると、デプロイ プロセスにより、選択した Azure サブスクリプションに複数のリソースが作成されます。これらのリソースを Azure [ポータル][lnk-portal]で表示できます。デプロイ プロセスにより、事前構成済みソリューションに選択した名前に基づいた名前で、**リソース グループ**が作成されます。
 
-    ![][img-editrule]
+![][img-portal]
 
-9.  **ソリューション ダッシュボード**の **[アラーム履歴]** テーブルに戻り、規則を更新したことで動作が変更されていることを確認します。
+各リソースの設定を表示するには、リソース グループ内のリソースのリストでそれを選択します。上のスクリーン ショットには、事前構成済みソリューションで使用される IoT hub の設定を示しています。
 
-    ![][img-newhistory]
-    
-完了したら、[azureiotsuite.com][lnk-azureiotsuite] サイト上の Azure サブスクリプションから事前構成済みソリューションを削除してください。こうすることで、事前構成済みソリューションの作成時にプロビジョニングしたすべてのリソースを簡単に削除できます。
+また、事前構成済みソリューションのソース コードを表示することもできます。リモート監視の事前構成済みソリューションのソース コードは、[azure-iot-remote-monitoring][lnk-rmgithub] にあります。
+
+- **DeviceAdministration** フォルダーには、ダッシュボードのソース コードが格納されています。
+- **Simulator** フォルダーには、シミュレートされたデバイスのソース コードが格納されています。
+- **EventProcessor** フォルダーには、受信テレメトリを処理するバックエンド プロセスのソース コードが格納されています。
+
+完了したら、[azureiotsuite.com][lnk-azureiotsuite] サイト上の Azure サブスクリプションから事前構成済みソリューションを削除できます。こうすることで、事前構成済みソリューションの作成時にプロビジョニングされたすべてのリソースを簡単に削除できます。
+
+> [AZURE.NOTE] 事前構成済みソリューションに関連したすべてのものを確実に削除するには、ポータルでリソース グループを単に削除するだけではなく、[azureiotsuite.com][lnk-azureiotsuite] ポータルからそれを削除します。
 
 ## 次のステップ
 
@@ -174,11 +230,17 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 [img-addnew]: media/iot-suite-getstarted-preconfigured-solutions/addnew.png
 [img-definedevice]: media/iot-suite-getstarted-preconfigured-solutions/definedevice.png
 [img-runningnew]: media/iot-suite-getstarted-preconfigured-solutions/runningnew.png
-[img-alarmhistory]: media/iot-suite-getstarted-preconfigured-solutions/alarmhistory.png
+[img-runningnew-2]: media/iot-suite-getstarted-preconfigured-solutions/runningnew2.png
 [img-rules]: media/iot-suite-getstarted-preconfigured-solutions/rules.png
-[img-displayrule]: media/iot-suite-getstarted-preconfigured-solutions/displayrule.png
-[img-editrule]: media/iot-suite-getstarted-preconfigured-solutions/editrule.png
-[img-newhistory]: media/iot-suite-getstarted-preconfigured-solutions/newhistory.png
+[img-editdevice]: media/iot-suite-getstarted-preconfigured-solutions/editdevice.png
+[img-editdevice2]: media/iot-suite-getstarted-preconfigured-solutions/editdevice2.png
+[img-editdevice3]: media/iot-suite-getstarted-preconfigured-solutions/editdevice3.png
+[img-adddevicerule]: media/iot-suite-getstarted-preconfigured-solutions/addrule.png
+[img-adddevicerule2]: media/iot-suite-getstarted-preconfigured-solutions/addrule2.png
+[img-adddevicerule3]: media/iot-suite-getstarted-preconfigured-solutions/addrule3.png
+[img-adddevicerule4]: media/iot-suite-getstarted-preconfigured-solutions/addrule4.png
+[img-actions]: media/iot-suite-getstarted-preconfigured-solutions/actions.png
+[img-portal]: media/iot-suite-getstarted-preconfigured-solutions/portal.png
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
@@ -186,5 +248,10 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 [lnk-predictive]: iot-suite-predictive-overview.md
 [lnk-connecting-devices]: iot-suite-connecting-devices.md
+[lnk-permissions]: https://azure.microsoft.com/documentation/articles/iot-suite-permissions/
+[lnk-logic-apps]: https://azure.microsoft.com/documentation/services/app-service/logic/
+[lnk-portal]: http://portal.azure.com/
+[lnk-rmgithub]: https://github.com/Azure/azure-iot-remote-monitoring
+[lnk-faq]: https://azure.microsoft.com/documentation/articles/iot-suite-faq/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

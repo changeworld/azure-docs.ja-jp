@@ -35,7 +35,9 @@
 
 または
 
-* [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md)
+* [Azure CLI](../xplat-cli-install.md)。
+
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ##SSH とは
 
@@ -243,4 +245,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

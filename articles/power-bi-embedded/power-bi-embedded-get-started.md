@@ -1,6 +1,6 @@
 <properties
    pageTitle="Microsoft Power BI Embedded プレビューを使ってみる"
-   description="Microsoft Power BI Embedded プレビューを使ってみる"
+   description="Power BI Embedded、対話型の Power BI レポートをビジネス インテリジェンス アプリケーションに追加する"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="03/29/2016"
+   ms.date="04/18/2016"
    ms.author="derrickv"/>
 
 # Microsoft Power BI Embedded プレビューを使ってみる
@@ -58,7 +58,7 @@ Power BI Embedded の詳細については、「[What is Microsoft Power BI Embe
 <a name="view-access-keys"/>
 ## Power BI API のアクセス キーの表示
 
-Power BI REST API を呼び出すために必要な最も重要な情報の 1 つが**アクセス キー**です。アクセス キーは、API 要求の認証に使用される**アプリ トークン**を生成するために使用します。**アクセス キー**を表示するには、**[設定] ブレード**の **[アクセス キー]** をクリックします。**アプリ トークン**の詳細については、「[How does app token flow work (アプリ トークンのフローの動作)](power-bi-embedded-get-started-sample.md#key-flow)」を参照してください。
+Power BI REST API を呼び出すために必要な最も重要な情報の 1 つが**アクセス キー**です。アクセス キーは、API 要求の認証に使用される**アプリ トークン**を生成するために使用します。**アクセス キー**を表示するには、**[設定] ブレード**の **[アクセス キー]** をクリックします。**アプリ トークン**の詳細については、「[How does app token flow work? (アプリ トークンのフローの動作)](power-bi-embedded-app-token-flow.md)」をご覧ください。
 
    ![](media\power-bi-embedded-get-started\access-keys.png)
 
@@ -74,7 +74,7 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 
 ## アプリに埋め込む Power BI データセットとレポートの作成
 
-アプリケーション用の Power BI のインスタンスと**アクセス キー**が準備できたら、埋め込む Power BI データセットとレポートを作成する必要があります。データセットとレポートは、**Power BI Desktop** を使用して作成できます。[Power BI Desktop は無料で](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)ダウンロードできます。あるいは、[Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をダウンロードしてすぐに開始できます。**Power BI Desktop** の使用方法については、「[Getting Started with Power BI Desktop (Power BI Desktop の概要)](https://powerbi.microsoft.com/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop)」を参照してください。
+アプリケーション用の Power BI のインスタンスと**アクセス キー**が準備できたら、埋め込む Power BI データセットとレポートを作成する必要があります。データセットとレポートは、**Power BI Desktop** を使用して作成できます。[Power BI Desktop は無料で](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)ダウンロードできます。あるいは、[Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をダウンロードしてすぐに開始できます。**Power BI Desktop** の使用方法については、「[Getting Started with Power BI Desktop (Power BI Desktop の概要)](https://powerbi.microsoft.com/ja-JP/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop)」を参照してください。
 
 **Power BI Desktop** でデータ ソースに接続するには、データのコピーを **Power BI Desktop** にインポートする方法と、**DirectQuery** を使ってデータ ソースに直接接続する方法があります。
 
@@ -107,4 +107,4 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 - [Power BI Embedded の価格](http://go.microsoft.com/fwlink/?LinkID=760527)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -1,6 +1,6 @@
 <properties
-	 pageTitle="Azure の Content Delivery Network (CDN) を有効にする方法"
-	 description="このトピックでは、Azure の Content Delivery Network (CDN) を有効にする方法を説明します。"
+	 pageTitle="Azure CDN を使用する方法"
+	 description="このトピックでは、Azure の Content Delivery Network (CDN) を有効にする方法を説明します。このチュートリアルでは、新しい CDN プロファイルとエンドポイントの作成手順について説明します。"
 	 services="cdn"
 	 documentationCenter=""
 	 authors="camsoper"
@@ -12,14 +12,14 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="02/25/2016" 
+	 ms.date="04/15/2016" 
 	 ms.author="casoper"/>
 
+# Azure CDN を使用する方法  
 
+[Azure ポータル](https://portal.azure.com)で、CDN を有効にすることができます。Web Apps、BLOB ストレージ、Cloud Services など多数の種類の統合された Azure 送信元がサポートされています。Azure Media Services ストリーミング エンドポイントに対して CDN を有効にすることもできます。配信元がこれらの Azure サービスのいずれでもない場合、または Azure 外の場所でホストされている場合は、カスタムの配信元を作成することができます。配信元の CDN エンドポイントを有効にすると、パブリックにアクセスできるオブジェクトはすべて CDN エッジ キャッシュの対象になります。
 
-#Azure の Content Delivery Network (CDN) を有効にする方法  
-
-Azure 管理ポータルを使用して送信元の CDN を有効にできます。Web Apps、BLOB ストレージ、Cloud Services など多数の種類の統合された Azure 送信元がサポートされています。Azure Media Services ストリーミング エンドポイントに対して CDN を有効にすることもできます。配信元がこれらの Azure サービスのいずれでもない場合、または Azure 外の場所でホストされている場合は、カスタムの配信元を作成することもできます。配信元の CDN エンドポイントを有効にすると、パブリックにアクセスできるオブジェクトはすべて CDN エッジ キャッシュの対象になります。
+>[AZURE.NOTE] CDN の機能の概要と、機能の一覧については、「[CDN の概要](./cdn-overview.md)」を参照してください。
 
 ## 新しい CDN プロファイルを作成する
 
@@ -32,7 +32,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
 **新しい CDN プロファイルを作成するには**
 
-1. [Azure 管理ポータル](https://portal.azure.com)の左上の **[新規]** をクリックします。**[新規]** ブレードで、**[メディア + CDN]**、**[CDN]** の順に選択します。
+1. [Azure ポータル](https://portal.azure.com)の左上の **[新規]** をクリックします。**[新規]** ブレードで、**[メディア + CDN]**、**[CDN]** の順に選択します。
 
     新しい CDN プロファイル ブレードが表示されます。
 
@@ -54,7 +54,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
 **ストレージ アカウントに対する新しい CDN エンドポイントを作成するには**
 
-1. [Microsoft Azure 管理ポータル](https://portal.azure.com)で CDN プロファイルに移動します。これは、前の手順でダッシュボードにピン留めしている可能性があります。ピン留めしていない場合は、**[参照]**、**[CDN プロファイル]** の順にクリックし、エンドポイントの追加先のプロファイルをクリックします。
+1. [Azure ポータル](https://portal.azure.com)で、CDN プロファイルに移動します。これは、前の手順でダッシュボードにピン留めしている可能性があります。ピン留めしていない場合は、**[参照]**、**[CDN プロファイル]** の順にクリックし、エンドポイントの追加先のプロファイルをクリックします。
 
     CDN プロファイル ブレードが表示されます。
 
@@ -68,7 +68,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
     ![[エンドポイントの追加] ブレード][cdn-add-endpoint]
 
-3. この CDN エンドポイントの**名前**を入力します。この名前は、ドメイン `<EndpointName>.azureedge.net` でキャッシュされたリソースにアクセスする際に使用します。
+3. この CDN エンドポイントの**名前**を入力します。この名前は、ドメイン `<endpointname>.azureedge.net` でキャッシュされたリソースにアクセスする際に使用します。
 
 4. **[配信元の種類]** ドロップダウンで、配信元の種類を選択します。
 
@@ -81,6 +81,11 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 7. **[配信元のホスト ヘッダー]** で、CDN の各要求で送信するホスト ヘッダーを入力するか、既定値をそのまま使用します。
 
 8. **[プロトコル]** と **[配信元ポート]** に、配信元のリソースへのアクセスに使用するプロトコルとポートを指定します。クライアントは CDN 上のリソースにアクセスするときに、引き続きこれらの同じプロトコルとポートを使用します。少なくとも 1 つのプロトコル (HTTP または HTTPS) を選択する必要があります。
+	
+	> [AZURE.TIP] HTTPS を使用して CDN コンテンツにアクセスする場合、次の制約があります。
+	> 
+	> - CDN によって提供される SSL 証明書を使用する必要がある。サード パーティの証明書はサポートされません。
+	> - CDN から提供されたドメイン (`<identifier>.azureedge.net`) を使用して、HTTPS コンテンツにアクセスする必要があります。現時点では CDN がカスタム証明書をサポートしていないために、HTTPS サポートではカスタム ドメイン名 (CNAME) を使用できません。
 
 9. **[追加]** ボタンをクリックして、新しいエンドポイントを作成します。
 
@@ -91,7 +96,9 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
     > [AZURE.NOTE] エンドポイントはすぐには使用できません。登録が CDN ネットワークに反映されるまでに最大で 90 分かかる場合があります。CDN ドメイン名を直ちに使用しようとするユーザーは、CDN を経由してコンテンツを取得できるようになるまでは状態コード 404 を受け取る場合があります。
 
 ##関連項目
-- [カスタム ドメインに Content Delivery Network (CDN) コンテンツをマップする方法](cdn-map-content-to-custom-domain.md)
+- [クエリ文字列による要求のキャッシュ動作の制御](cdn-query-string.md)
+- [CDN コンテンツをカスタム ドメインにマッピングする方法](cdn-map-content-to-custom-domain.md)
+- [Azure CDN エンドポイント上のアセットを事前に読み込む](cdn-preload-endpoint.md)
 - [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 
 [new-cdn-profile]: ./media/cdn-create-new-endpoint/cdn-new-profile.png
@@ -100,4 +107,4 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->
