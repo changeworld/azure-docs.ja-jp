@@ -31,15 +31,12 @@
 
 名前 | 説明
 --- | ---
-[Azure HDInsight](app-service-logic-connector-hdinsight.md) | Azure で Hadoop クラスターを作成し、別の Hadoop ジョブを送信するには、このコネクタを使用します。
 [Azure の Service Bus](app-service-logic-connector-azureservicebus.md) | Service Bus キューとトピックからメッセージを送信したり、Service Bus キューとサブスクリプションからメッセージを受信したりできます。
 [Bing 翻訳ツール](https://azure.microsoft.com/marketplace/partners/microsoft_com/bingtranslator) | Bing を使用して、テキストを別の言語に翻訳します。
-[Chatter](app-service-logic-connector-chatter.md) | Chatter に接続して、メッセージの投稿と検索を実行できます。新しいメッセージを取得することもできます。
 [HTTP](app-service-logic-connector-http.md) | HTTP リスナーは、HTTP サーバーとして機能するエンドポイントを開き、着信 HTTP または HTTPS 要求をリッスンします。HTTP アクションに API アプリは必要ありません。HTTP アクションは Logic Apps 内でネイティブにサポートされます。
 [Microsoft Office 365](app-service-logic-connector-office365.md) | Office 365 コネクタを使用すると、電子メールの送受信、予定表の管理などの操作を実行できます。さらに、Office 365 アカウントを使用して連絡先を管理することができます。
 [QuickBooks](app-service-logic-connector-quickbooks.md) | このコネクタを使用すると、Intuit QuickBooks のさまざまなエンティティ (顧客、項目、請求書など) の作成、更新、クエリなどの操作を実行できます。
 [Slack](app-service-logic-connector-slack.md) | Slack に接続し、Slack チャネルにメッセージを投稿します。
-[SugarCRM](app-service-logic-connector-sugarcrm.md) | SugarCRM Online に接続して、さまざまな種類のモジュール (アカウント、連絡先など) の作成、更新、読み取りなどの操作を実行できます。
 [待機](app-service-logic-connector-wait.md) | このコネクタを使用して、アプリの実行を遅らせることができます。アプリの実行を、指定した時間分遅らせることも、特定の時点まで遅らせることもできます。
 
 
@@ -83,4 +80,4 @@ MQ | Windows オペレーティング システムを実行している Azure �
 ## コネクタと API Apps の詳細
 [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md) [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md) [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

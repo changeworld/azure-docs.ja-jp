@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Azure Event Hubs のプログラミング ガイド |Microsoft Azure"
-   description="Azure .NET SDK を使用し、Azure Event Hubs でプログラミングする方法について説明します。"
-   services="event-hubs"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" />
+    pageTitle="Azure Event Hubs のプログラミング ガイド |Microsoft Azure"
+    description="Azure .NET SDK を使用し、Azure Event Hubs でプログラミングする方法について説明します。"
+    services="event-hubs"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="event-hubs"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="tbd"
-   ms.date="01/26/2016"
-   ms.author="sethm" />
+    ms.service="event-hubs"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="tbd"
+    ms.date="04/15/2016"
+    ms.author="sethm" />
 
 # Event Hubs のプログラミング ガイド
 
@@ -50,7 +50,7 @@ var description = manager.CreateEventHubIfNotExists("MyEventHub");
 
 [CreateEventHubIfNotExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createeventhubifnotexists.aspx) など、すべての Event Hub 作成操作で、該当する名前空間の**管理**アクセス許可が必要になります。発行元またはコンシューマー アプリケーションのアクセス許可を制限する場合、アクセス許可を制限して資格情報を利用するとき、運用コードでこれらの作成操作呼び出しを回避できます。
 
-[EventHubDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubdescription.aspx) クラスには、承認規則、メッセージのリテンション期間、パーティション ID、状態、パスなど、Event Hub の詳細が含まれています。このクラスを使用して、Event Hub でメタデータを更新できます。
+[EventHubDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubdescription.aspx) クラスには、承認規則、メッセージの保有期間、パーティション ID、状態、パスなど、Event Hub の詳細が含まれています。このクラスを使用し、Event Hub でメタデータを更新できます。
 
 ## Event Hub クライアントの作成
 
@@ -117,7 +117,7 @@ Event Hub にイベントを非同期送信することもできます。非同�
 var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[0]);
 ```
 
-[CreatePartitionedSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.createpartitionedsender.aspx) は [EventHubSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubsender.aspx) オブジェクトを返します。このオブジェクトを使用して、特定の Event Hub パーティションにイベントを発行できます。
+[CreatePartitionedSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.createpartitionedsender.aspx) は [EventHubSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubsender.aspx) オブジェクトを返します。このオブジェクトを使用し、特定の Event Hub パーティションにイベントを発行できます。
 
 ## イベント コンシューマー
 
@@ -185,4 +185,4 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 - [Event Hubs コード サンプル](http://code.msdn.microsoft.com/site/search?query=event hub&f[0].Value=event hub&f[0].Type=SearchText&ac=5)
 - [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

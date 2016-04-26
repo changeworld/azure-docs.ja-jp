@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/08/2016"
+	ms.date="04/14/2016"
 	ms.author="nitinme"/>
 
 
-# 概要: Azure HDInsight (Linux) の Apache Spark クラスターの作成と Spark SQL を使用した対話型クエリの実行
+# 概要: HDInsight Linux の Apache Spark クラスターの作成と Spark SQL を使用した対話型クエリの実行 (プレビュー)
 
 HDInsight で Apache Spark クラスターを作成し、Spark クラスターで [Jupyter](https://jupyter.org) Notebook を使用して Spark SQL の対話型クエリを実行する方法について説明します。
 
@@ -45,7 +45,7 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 
 1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。         
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-spark-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-spark-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
     ARM テンプレートは、次のパブリック BLOB コンテナー内にあります。**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-spark-cluster-in-hdinsight.json*
    
@@ -79,7 +79,7 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 
 ## Jupyter Notebook を使用して Spark SQL クエリを実行する
 
-このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。既定では、Jupyter Notebook には **Python2** カーネルが付属しています。HDInsight の Spark クラスターには、Jupyter Notebook で使用できる 2 つの追加のカーネルが用意されています。次のとおりです。
+このセクションでは、Jupyter Notebook を使用して、Spark クラスターに対して Spark SQL クエリを実行します。HDInsight の Spark クラスターには、Jupyter Notebook で使用できる 2 つのカーネルが用意されています。次のとおりです。
 
 * **PySpark** (Python で記述されたアプリケーション用)
 * **Spark** (Scala で記述されたアプリケーション用)
@@ -100,7 +100,7 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 	>
 	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-2. 新しい Notebook を作成します。**[新規]** をクリックし、**[PySpark]** をクリックします。
+2. 新しい Notebook を作成します。**[新規]**、**[PySpark]** の順にクリックします。
 
 	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook を作成します")
 
@@ -108,7 +108,7 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 
 	![Notebook の名前を指定します](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定します")
 
-4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark と Hive コンテキストが自動的に作成されます。このシナリオに必要な種類をインポートすることから始めることができます。このためには、次のコード スニペットをセルに貼り付けて、**Shift + Enter** キーを押します。
+4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。このシナリオに必要な種類をインポートすることから始めることができます。このためには、次のコード スニペットをセルに貼り付けて、**Shift + Enter** キーを押します。
 
 		from pyspark.sql.types import *
 		
@@ -206,4 +206,4 @@ HDInsight で Apache Spark クラスターを作成し、Spark クラスター�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

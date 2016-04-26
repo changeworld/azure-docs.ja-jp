@@ -54,11 +54,13 @@ Azure Queue Storage は、クラウド内のメッセージ キューを提供�
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
     using Microsoft.WindowsAzure.Storage.Queue; // Namespace for Queue storage types
 
+### 接続文字列を解析する
+
 [AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### Queue サービス クライアントを作成する
 
-**CloudQueueClient** クラスを使用すると、Queue Storage に格納されているキューを取得できます。次のコードを **Main()** メソッドに追加します。
+**CloudQueueClient** クラスを使用すると、Queue Storage に格納されているキューを取得できます。サービス クライアントを作成する方法の 1 つを次に示します。
 
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
@@ -273,4 +275,4 @@ Azure Queue Storage は、クラウド内のメッセージ キューを提供�
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -1,3 +1,3 @@
 ![サービス階層とパフォーマンス レベル](./media/sql-database-service-tiers-table/sql-database-service-tiers-table.png)
 
-<!---HONumber=Nov15_HO2-->
+<!---HONumber=AcomDC_0420_2016-->

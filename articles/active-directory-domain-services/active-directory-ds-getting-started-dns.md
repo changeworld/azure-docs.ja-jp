@@ -1,4 +1,11 @@
-<properties pageTitle="Azure Active Directory ドメイン サービス プレビュー: 作業の開始 | Microsoft Azure" description="Azure Active Directory ドメイン サービスの概要" services="active-directory-ds" documentationCenter="" authors="mahesh-unnikrishnan" manager="stevenpo editor="curtand"/>
+<properties
+	pageTitle="Azure Active Directory ドメイン サービスのプレビュー: 作業の開始 | Microsoft Azure"
+	description="Azure Active Directory ドメイン サービスの概要"
+	services="active-directory-ds"
+	documentationCenter=""
+	authors="mahesh-unnikrishnan"
+	manager="stevenpo"
+	editor="curtand"/>
 
 <tags
 	ms.service="active-directory-ds"
@@ -6,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/26/2016"
+	ms.date="04/11/2016"
 	ms.author="maheshu"/>
 
 # Azure AD ドメイン サービス *(プレビュー)* - 作業の開始
@@ -21,7 +28,7 @@ Azure AD ドメイン サービスを有効にした仮想ネットワークの 
 1. **Azure 管理ポータル** ([https://manage.windowsazure.com](https://manage.windowsazure.com)) に移動します。
 2. 左側のウィンドウで、**[ネットワーク]** ノードを選択します。
 
-    ![Virtual networks node](./media/active-directory-domain-services-getting-started/virtual-network-select.png)
+    ![[Virtual Networks] ノード](./media/active-directory-domain-services-getting-started/virtual-network-select.png)
 
 3. **[Virtual Networks]** タブで、Azure AD ドメイン サービスを有効にした仮想ネットワークを選択してプロパティを表示します。
 4. **[構成]** タブをクリックします。
@@ -39,4 +46,4 @@ Azure AD ドメイン サービスを有効にした仮想ネットワークの 
 ---
 [**次のステップ - Azure AD ドメイン サービスに対してパスワード同期を有効にします。**](active-directory-ds-getting-started-password-sync.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

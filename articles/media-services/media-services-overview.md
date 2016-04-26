@@ -3,8 +3,8 @@
 	description="このトピックでは、Azure Media Services の概要を説明します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="Juliako,anilmur" 
-	manager="dwrede" 
+	authors="Juliako" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
-	ms.date="02/02/2016"
-	ms.author="juliako"/>
+ 	ms.date="04/18/2016"
+	ms.author="juliako;anilmur"/>
 
 #Azure Media Services の概要と一般的なシナリオ
 
@@ -57,7 +57,7 @@ Azure Media Services を使用するには、次が必要です。
 2. Azure Media Services アカウントを作成します。Azure Media Services アカウントを作成するには、Azure クラシック ポータル、.NET、REST API を使用します。詳細については、「[アカウントの作成](media-services-create-account.md)」を参照してください。
 3. (省略可能) 開発環境をセットアップします。開発環境の .NET または REST API を選択します。詳細については、「[環境を設定する](media-services-dotnet-how-to-use.md)」を参照してください。 
 
-	また、プログラミングによる[接続](media-services-dotnet-connect_programmatically.md)方法についても確認してください
+	また、プログラミングによる[接続](media-services-dotnet-connect-programmatically.md)方法についても確認してください
 4. (推奨) 1 つまたは複数のスケール単位を割り当てます。実稼働環境でのアプリケーションの 1 つ以上のスケール単位を割り当てることをお勧めします。詳細については、「[ストリーミング エンドポイントの管理](media-services-manage-origins.md)」を参照してください。
 
 ##概念と概要
@@ -236,4 +236,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

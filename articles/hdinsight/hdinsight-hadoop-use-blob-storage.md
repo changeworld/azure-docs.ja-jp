@@ -103,6 +103,8 @@ BLOB を使用するには、まず、[Azure ストレージ アカウント][az
 
 ###Azure CLI の使用
 
+[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+
 [Azure CLI のインストールと構成](../xplat-cli-install.md)が完了している場合は、次のコマンドを使用して、ストレージ アカウントとコンテナーを作成できます。
 
 	azure storage account create <storageaccountname> --type LRS
@@ -300,4 +302,4 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 [img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
 [img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

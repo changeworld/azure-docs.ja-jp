@@ -3,7 +3,7 @@
    description="SQL Data Warehouse に接続して、クエリを実行する"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="twounder"
+   authors="sonyama"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="03/23/2016"
-   ms.author="mausher;barbkess;sonyama"/>
+   ms.author="sonyama;barbkess"/>
 
 # Visual Studio を使用した接続とクエリ
 
@@ -34,7 +34,7 @@
 
 ## 完全修飾 Azure SQL サーバー名を取得します。
 
-データベースに接続するには、接続先のデータベースを含むサーバーの完全名が必要です ( ***servername**.database.windows.net* )。
+データベースに接続するには、接続先のデータベースを含むサーバーの完全名が必要です (***servername**.database.windows.net*)。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. 接続先のデータベースを探します。
@@ -91,4 +91,4 @@
 [3]: ./media/sql-data-warehouse-get-started-connect-query/connection-dialog.png
 [4]: ./media/sql-data-warehouse-get-started-connect-query/new-query.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

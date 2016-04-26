@@ -23,13 +23,13 @@ Microsoft Azure アカウントがまだない場合は、次のいずれかの�
 
 [既存のサブスクリプション](https://account.windowsazure.com/Home/Index)を使用する場合は、次の手順に従って Azure ポータルに接続します。
 
-1. 任意のブラウザーを開き、http://portal.azure.com/ で [Azure ポータル](https://portal.azure.com/)に接続します。
+1. 任意のブラウザーを開き、[Azure ポータル](https://portal.azure.com/)に接続します。
 
-1. http://portal.azure.com/ で [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 
 1. サインイン ページが表示されたら、サブスクリプションの資格情報を入力します。
 
    ![sign in](./media/azure-getting-started-portal-login/login.png)
    
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

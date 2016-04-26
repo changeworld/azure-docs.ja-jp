@@ -13,14 +13,14 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="03/25/2016"
+	ms.date="04/18/2016"
 	ms.author="kgremban"/>
 
 
 # Azure RBAC のカスタム ロール
 
 
-組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) でカスタム ロールを作成できます。カスタム ロールは、Azure PowerShell、Azure コマンドライン ツール (CLI)、および REST API で作成することができます。組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。
+組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) でカスタム ロールを作成できます。カスタム ロールは、[Azure PowerShell](role-based-access-control-manage-access-powershell.md)、[Azure コマンドライン インターフェイス (CLI)](role-based-access-control-manage-access-azure-cli.md)、および [REST API](role-based-access-control-manage-access-rest.md) で作成することができます。組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。
 
 以下は、仮想マシンの監視と再起動を行うためのカスタム ロールの例です。
 
@@ -92,11 +92,11 @@ Azure リソース プロバイダーの操作を一覧表示するには、`Get
 - カスタム ロールを表示できるユーザー: Azure RBAC の組み込みロールについてはいずれも、割り当て可能なロールの表示対象として許可されています。特定のスコープで `Microsoft.Authorization/roleDefinition/read` 操作を実行できるユーザーが、そのスコープで割り当て可能な RBAC ロールを表示できます。
 
 ## 関連項目
-- Azure ポータルでの [Azure のロールベースのアクセス制御](role-based-access-control-configure.md)の基本
+- [ロール ベースのアクセス制御](role-based-access-control-configure.md): Azure ポータルでの RBAC の基本。
 - 次の要素を使用したアクセス管理方法の詳細
 	- [PowerShell](role-based-access-control-manage-access-powershell.md)
 	- [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 	- [REST API](role-based-access-control-manage-access-rest.md)
-- [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md)
+- [組み込みのロール](role-based-access-built-in-roles.md): RBAC の標準ロールの詳細。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -52,9 +52,9 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 
 最後の手順として、[IoT Hub] ブレードの **[設定]** をクリックし、**[設定]** ブレードの **[メッセージング]** をクリックします。**[メッセージング]** ブレードで、**[イベント ハブと互換性のある名前]** と **[イベント ハブと互換性のあるエンドポイント]** をメモします。この値は **read-d2c-messages** アプリケーションを作成するときに必要になります。
 
-    ![][6]
+![][6]
 
-これで IoT Hub が作成され、このチュートリアルの残りを完了するために必要な IoT Hub ホスト名、IoT Hub 接続文字列、イベント ハブと互換性のある名前、イベント ハブと互換性のあるエンドポイントの値が与えられました。
+これで IoT Hub が作成され、このチュートリアルの残りを完了するために必要な IoT Hub ホスト名、IoT Hub 接続文字列、Event Hub 対応名、Event Hub 対応エンドポイント値が与えられました。
 
 [AZURE.INCLUDE [iot-hub-get-started-cloud-node](../../includes/iot-hub-get-started-cloud-node.md)]
 
@@ -65,7 +65,7 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 
 これで、アプリケーションを実行する準備が整いました。
 
-1. **readdevicetocloudmessages** フォルダーで、コマンド プロンプトで次のコマンドを実行し、IoT Hub の監視を開始します。
+1. コマンドプロンプトで、**readdevicetocloudmessages** フォルダー内で、次のコマンドを実行し、IoT Hub の監視を開始します。
 
     ```
     node ReadDeviceToCloudMessages.js 
@@ -73,7 +73,7 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 
     ![][7]
 
-2. **simulateddevice** フォルダーで、コマンド プロンプトで次のコマンドを実行し、IoT Hub へのテレメトリ データの送信を開始します。
+2. コマンドプロンプトで、**simulateddevice** フォルダー内で、次のコマンドを実行し、IoT Hub へのテレメトリ データの送信を開始します。
 
     ```
     node SimulatedDevice.js
@@ -109,4 +109,4 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

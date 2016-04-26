@@ -4,7 +4,7 @@
 	keywords="機械の概要、予測モデリング、機械学習とは"
 	services="machine-learning"
 	documentationCenter=""
-	authors="pablissima"
+	authors="garyericson"
 	manager="paulettm"
 	editor="cgronlun"/>
 
@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/25/2016"
-	ms.author="paulettm"/>
+	ms.date="04/18/2016"
+	ms.author="garye"/>
 
 # Azure Machine Learning に関してよく寄せられる質問 (FAQ): 課金、機能、制限、サポート
 
-この FAQ では、Web サービスを使用して予測モデリングとソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についての疑問に答えます。サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。
+この FAQ では、Web サービスを使用して予測モデルの作成とソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についての疑問に答えます。サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。
 
 ## 一般的な質問
 
@@ -38,7 +38,7 @@ Machine Learning Studio の詳細については、「[Machine Learning Studio �
 
 **Machine Learning API サービスとは**
 
-Machine Learning API サービスでは、Machine Learning Studio に組み込まれた予測モデルを、拡張性の高い、フォールト トレランスに優れた Web サービスとしてデプロイできます。Machine Learning API サービスによって作成された Web サービスが REST API です。REST API は、外部アプリケーションと予測分析モデルの間の通信インターフェイスを提供します。
+Machine Learning API サービスでは、Machine Learning Studio に組み込まれた予測モデルなどを、拡張性の高い、フォールト トレランスに優れた Web サービスとしてデプロイできます。Machine Learning API サービスによって作成された Web サービスが REST API です。REST API は、外部アプリケーションと予測分析モデルの間の通信インターフェイスを提供します。
 
 詳細については、「[Machine Learning Web サービスへの接続](machine-learning-connect-to-azure-machine-learning-web-service.md)」をご覧ください。
 
@@ -56,14 +56,16 @@ Machine Learning API サービスでは、Machine Learning Studio に組み込�
 ## Machine Learning Studio に関する質問
 
 ### 実験の作成
+
 **実験グラフ用のバージョン管理や Git 統合はありますか。**
 
-いいえ、実験を行うたびにグラフのバージョンが保存されるため、他のユーザーが変更することはできません。
+いいえ。ただし、Machine Learning Studio は、他のユーザーによって変更できない実験の各イテレーションを保持します。詳細については、「[Machine Learning Studio での実験イテレーションの管理](machine-learning-manage-experiment-iterations.md)」をご覧ください。
 
 ### Machine Learning 用データのインポートとエクスポート
+
 **Machine Learning はどのようなデータ ソースをサポートしていますか。**
 
-データは、ローカル ファイルをデータセットとしてアップロードする方法、またはデータをインポートするリーダー モジュールを使用する方法のいずれかの方法で Machine Learning Studio に読み込むことができます。ローカル ファイルは、Machine Learning Studio に新しいデータセットを追加することでアップロードできます。サポートされているファイル形式の詳細については、「[Import training data into Machine Learning Studio (Machine Learning Studio へのトレーニング データのインポート)](machine-learning-data-science-import-data.md)」をご覧ください。
+Machine Learning Studio の実験にデータを読み込むには、3 種類の方法があります。データセットとしてのローカル ファイルのアップロード、モジュールを使用したクラウド データ サービスからのデータのインポート、または別の実験から保存されたデータセットのインポートです。サポートされているファイル形式の詳細については、「[Import training data into Machine Learning Studio (Machine Learning Studio へのトレーニング データのインポート)](machine-learning-data-science-import-data.md)」をご覧ください。
 
 
 #### <a id="ModuleLimit"></a>モジュールのデータ セットの大きさはどの程度まで許容されますか。
@@ -100,18 +102,18 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **組み込みイメージの入力機能はありますか。**
 
-イメージの入力機能については、「[イメージ リーダー][image-reader]」をご覧ください。
+イメージの入力機能については、「[Import Images (イメージをインポートする)][image-reader]」をご覧ください。
 
 ### モジュール
 
-**探しているアルゴリズム、データ ソース、データ形式、データ変換操作が Azure ML Studio で見つかりません。どうすればいいでしょうか。**
+**探しているアルゴリズム、データ ソース、データ形式、データ変換操作が Azure Machine Learning Studio で見つかりません。どうすればいいでしょうか?**
 
 [ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)にアクセスすると、追跡中の機能の要求を参照できます。探している機能が既に要求されている場合は、その要求に投票を追加できます。探している機能が存在しない場合は、新しい要求を作成します。このフォーラムでの要求の状態も参照できます。この一覧はこまめに追跡され、機能の提供状況は頻繁に更新されます。さらに、R と Python の組み込みのサポートを使用して、必要に応じてカスタム変換を作成できます。
 
 
-**既存のコードを ML Studio に取り込むことはできますか。**
+**既存のコードを Machine Learning Studio に取り込むことはできますか?**
 
-はい。ML Studio に既存の R コードを取り込み、それを Azure Machine Learning で提供される学習ツールと同じ実験で実行し、Azure Machine Learning 経由で Web サービスとしてデプロイすることができます。「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」をご覧ください。
+はい。Machine Learning Studio に既存の R コードまたは Python コードを取り込み、それを Azure Machine Learning の学習ツールと同じ実験で実行し、Azure Machine Learning 経由で Web サービスとしてソリューションをデプロイすることができます。詳細については、「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」および「[Azure Machine Learning Studio での Python Machine Learning スクリプトの実行](machine-learning-execute-python-scripts.md)」をご覧ください。
 
 **[PMML](http://en.wikipedia.org/wiki/Predictive_Model_Markup_Language) などを使用してモデルを定義することはできますか。**
 
@@ -130,7 +132,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **ブラウザーで結果やデータをプレビューするときに、行数と列数が制限されているのはなぜですか。**
 
-データがブラウザーに送信されると大きくなる可能性があるため、ML Studio のパフォーマンスが低下しないように、データ サイズが制限されています。データ全体を表示するには、データや結果をダウンロードし、Excel などのツールを使用することをお勧めします。
+データがブラウザーに送信されると大きくなる可能性があるため、Machine Learning Studio のパフォーマンスが低下しないように、データ サイズが制限されています。すべてのデータ/結果を表示するには、データをダウンロードし、Excel などのツールを使用することをお勧めします。
 
 ### アルゴリズム
 
@@ -182,21 +184,25 @@ Machine Learning Studio では現在、400 を超える CRAN R パッケージ�
 
 **カスタム Python モジュールを構築することはできますか。**
 
-現在はできませんが、標準の Python モジュールまたはそれらのセットを使用して同じ結果を実現できます。
+現在はできません。ただし、1 つまたは複数の [Python スクリプトの実行][python]モジュールを使用して、同じ結果を得ることができます。
 
 **Python 用の REPL 環境はありますか。**
 
-Machine Learning Studio では Jupyter Notebooks を使用できます。詳細については、「[Introducing Jupyter Notebooks in Azure ML Studio (Azure ML Studio に Jupyter Notebooks を導入する)](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)」を参照してください。
+Machine Learning Studio では Jupyter Notebooks を使用できます。詳細については、「[Introducing Jupyter Notebooks in Azure Machine Learning Studio (Azure Machine Learning Studio に Jupyter Notebooks を導入する)](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)」を参照してください。
 
 ## Web サービス
 
 ###モデルをプログラムによって再トレーニングする
 
-**AzureML モデルをプログラムによって再トレーニングする方法はありますか。** 再トレーニング API を使用します。サンプル コードは[こちら](https://azuremlretrain.codeplex.com/)で入手できます。
+**プログラムで Machine Learning のモデルを再トレーニングするにはどうすればよいですか?**
+
+再トレーニング API を使用します。詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」をご覧ください。サンプル コードは、「[Microsoft Azure Maching Learning Retraining Demo (Microsoft Azure Maching Learning 再トレーニング デモ)](https://azuremlretrain.codeplex.com/)」にもあります。
 
 ### 作成
 
-**ローカルまたはインターネットに接続していないアプリケーションでモデルをデプロイすることはできますか。** 番号
+**ローカルまたはインターネットに接続していないアプリケーションでモデルをデプロイすることはできますか。**
+
+番号
 
 
 **すべての Web サービスで予測される基本的な遅延はありますか。**
@@ -211,27 +217,31 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。詳細�
 
 **Web サービスにデプロイされたモデルはどのように更新できますか。**
 
-既にデプロイされたサービスの予測モデルの更新は、トレーニング済みのモデルの作成および保存に使用される実験の変更および再実行と同じくらい簡単です。新しいバージョンのトレーニング済みのモデルが使用できるようになると、ML Studio はステージング環境の Web サービスを更新するかどうかをたずねます。ステージング環境の Web サービスに更新が適用された後に、同じ更新を運用環境の Web サービスにも適用できるようになります。デプロイされた Web サービスを更新する方法の詳細については、「[Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
+既にデプロイされたサービスの予測モデルの更新は、トレーニング済みのモデルの作成および保存に使用される実験の変更および再実行と同じくらい簡単です。新しいバージョンのトレーニング済みのモデルが使用できるようになると、Machine Learning Studio は Web サービスを更新するかどうかをたずねます。デプロイされた Web サービスを更新する方法の詳細については、「[Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
 
-Retraining API を使用することもできます。サンプル コードは[こちら](https://azuremlretrain.codeplex.com/)で入手できます。
+Retraining API を使用することもできます。詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」をご覧ください。サンプル コードは、「[Microsoft Azure Maching Learning Retraining Demo (Microsoft Azure Maching Learning 再トレーニング デモ)](https://azuremlretrain.codeplex.com/)」にもあります。
 
-**運用環境にデプロイされた Web サービスはどのように監視できますか。**
+**運用環境にデプロイされた Web サービスはどのように監視できますか?**
 
-予測モデルが運用環境にデプロイされると、Azure クラシック ポータルから監視できます。デプロイされた各サービスには専用のダッシュボードがあり、ここでそのサービスについての監視情報を参照できます。
+予測モデルがデプロイされると、Azure クラシック ポータルから監視できます。デプロイされた各サービスには専用のダッシュボードがあり、ここでそのサービスについての監視情報を参照できます。
 
 **RRS/BES の出力を確認できまる場所はありますか。**
 
-RRS の場合は通常、Web サービスの応答に結果が表示されます。BLOB に書き込むこともできます。BES の場合、既定では BLOB に出力が書き込まれます。また、ライター モジュールを使用してデータベースやテーブルに出力を書き込むこともできます。
+RRS の場合は通常、Web サービスの応答に結果が表示されます。また、Azure Blob Storage に書き込むこともできます。BES の場合、既定では BLOB に出力が書き込まれます。また、[データのエクスポート][writer] モジュールを使用してデータベースやテーブルに出力を書き込むこともできます。
 
- **Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
+**Web サービスを作成できるのは Machine Learning Studio で作成されたモデルからのみですか?**
 
- **エラー コードの詳細はどこで入手できますか。 エラー コードの詳細は[こちら](https://msdn.microsoft.com/library/azure/dn905910.aspx)をご覧ください。
+いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
+
+**エラー コードの詳細はどこで入手できますか?**
+
+エラー コードと説明の一覧は、「[Machine Learning Module Error Codes (Machine Learning モジュールのエラー コード)](https://msdn.microsoft.com/library/azure/dn905910.aspx)」をご覧ください。
 
 ## 拡張性
 
 **Web サービスのスケーラビリティはどれくらいですか。**
 
-現時点では、既定のエンドポイントは 1 つのエンドポイントにつき 20 件の同時 RRS 要求でプロビジョニングされます。エンドポイントごとの同時要求数を 200 件まで拡張でき、「[API エンドポイントのスケーリング](machine-learning-scaling-endpoints.md)」で説明されているように Web サービスごとのエンドポイント数を 10,000 まで拡張できます。BES の場合、各エンドポイントは一度に 40 件の要求を処理でき、40 件を超えた要求はキューに登録されます。これらのキューに登録された要求は、キューから放出されると自動的に実行されます。
+現時点では、既定のエンドポイントは 1 つのエンドポイントにつき 20 件の同時 RRS 要求でプロビジョニングされます。これは、エンドポイントごとに 200 同時要求まで拡張でき、「[API エンドポイントのスケーリング](machine-learning-scaling-endpoints.md)」で説明されているように Web サービスごとのエンドポイント数を 10,000 まで拡張できます。BES の場合、各エンドポイントは一度に 40 件の要求を処理でき、40 件を超えた要求はキューに登録されます。これらのキューに登録された要求は、キューから放出されると自動的に実行されます。
 
 
 **R のジョブはノード間に分散されますか。**
@@ -239,9 +249,9 @@ RRS の場合は通常、Web サービスの応答に結果が表示されます
 番号
 
 
-**どれくらいのデータ量をトレーニングできますか。**
+**トレーニングに使用できるデータの量はどれくらいですか?**
 
-Machine Learning Studio のモジュールは、一般的に、最大 10 GB の高密度数値データのデータセットをサポートしています。モジュールが 1 つ以上の入力を受け取る場合は、10 GB はすべての入力サイズの合計です。インジェストの前に、Hive または Azure SQL Database のクエリ経由で、またはカウントによる学習の前処理によって、より大きなデータセットをサンプリングすることもできます。
+Machine Learning Studio のモジュールは、一般的に、最大 10 GB の高密度数値データのデータセットをサポートしています。モジュールが 1 つ以上の入力を受け取る場合、10 GB はすべての入力の合計です。インジェストの前に、Hive または Azure SQL Database のクエリ経由で、または[カウントを使用した学習][counts]モジュールで前処理することにより、さらに大きなデータセットをサンプリングすることもできます。
 
 次の種類のデータは、特徴の正規化の際により大きなデータセットに展開でき、10 GB 未満に制限されています。
 
@@ -256,7 +266,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 - SMOTE モジュール
 - スクリプト モジュール: R、Python、SQL
 - 出力データ サイズが入力データ サイズを超えるモジュール ("結合"、"特徴ハッシュ" など)。
-- イテレーションの数が非常に大きい場合のクロス検証、パラメーターの掃引、順序回帰、一対全多クラス。
+- イテレーションの数が非常に大きい場合のクロス検証、調整モデル ハイパーパラメーター、順序回帰、一対全多クラス。
 
 数 GB を超えるデータセットの場合は、ローカル ファイルから直接アップロードするのではなく、Azure Storage または Azure SQL Database にデータをアップロードするか、HDInsight を使用する必要があります。
 
@@ -265,38 +275,40 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 行と列は、それぞれ .NET 制限の相互作用数の上限 2,147,483,647 に制限されています。
 
-**これを実行する VM のサイズを調整することはできますか。**
+**Web サービスの実行に使用されている仮想マシンのサイズを調整することができますか?**
 
 番号
 
 ## セキュリティと可用性
 
-**既定で運用環境にデプロイされている Web サービスの http エンドポイントにはだれがアクセスできますか。 エンドポイントへのアクセスはどのようにして制限できますか。**
+**既定で Web サービスの http エンドポイントにはだれがアクセスできますか? エンドポイントへのアクセスはどのようにして制限できますか?**
 
-Web サービスがデプロイされた後に、そのサービスに対して既定のエンドポイントが作成されます。既定のエンドポイントは運用環境にデプロイされ、API キーを使用して呼び出すことができます。追加のエンドポイントは、独自のキーを使用して Azure クラシック ポータルから、または Web Service Management API を使用してプログラムにより追加することができます。運用環境およびステージング環境で Web サービスを呼び出すには、アクセス キーが必要です。詳細については、「[Machine Learning Web サービスへの接続](machine-learning-connect-to-azure-machine-learning-web-service.md)」をご覧ください。
+Web サービスがデプロイされた後に、そのサービスに対して既定のエンドポイントが作成されます。既定のエンドポイントは、その API キーを使用して呼び出すことができます。追加のエンドポイントは、独自のキーを使用して Azure クラシック ポータルから、または Web Service Management API を使用してプログラムにより追加することができます。Web サービスを呼び出すには、アクセス キーが必要です。詳細については、「[Machine Learning Web サービスへの接続](machine-learning-connect-to-azure-machine-learning-web-service.md)」をご覧ください。
 
 
-**ストレージ アカウントが見つからない場合はどうなりますか。**
+**Azure ストレージ アカウントが見つからない場合はどうなりますか?**
 
 Machine Learning Studio は、ワークフローを実行する際に中間データを保存する、ユーザーが指定した Azure ストレージ アカウントに依存しています。このストレージ アカウントは、ワークスペースの作成時に Machine Learning Studio に提供されます。ワークスペースの作成後にストレージ アカウントが削除され、見つけることができない場合は、ワークスペースが機能しなくなり、そのワークスペースのすべての実験が失敗します。
 
-誤ってストレージ アカウントを削除した場合に回復する唯一の方法は、削除されたストレージ アカウンと同じリージョンに同じ名前のストレージ アカウントを再作成することです。その後、アクセス キーを再同期してください。
+誤ってストレージ アカウントを削除した場合に回復する唯一の方法は、削除されたストレージ アカウンと同じリージョンに同じ名前のストレージ アカウントを再作成することです。その後、アクセス キーを再同期します。
 
 
-**ストレージ アカウントのアクセス キーの同期が失われてしまった場合はどうなりますか。** Machine Learning Studio は、ワークフローを実行する際に中間データを保存する、ユーザーが指定した Azure ストレージ アカウントに依存しています。このストレージ アカウントは、ワークスペースの作成時に Machine Learning Studio に提供され、アクセス キーは、そのワークスペースに関連付けられます。ワークスペースの作成後にアクセス キーが変更され、ワークスペースがストレージ アカウントにアクセスできない場合は、ワークスペースが機能しなくなり、そのワークスペースのすべての実験が失敗します。
+**ストレージ アカウントのアクセス キーの同期が失われてしまった場合はどうなりますか?**
 
-ストレージ アカウントのアクセス キーを変更した場合は、Azure クラシック ポータルのワークスペースの設定でアクセス キーを再同期をご確認ください。
+Machine Learning Studio は、ワークフローを実行する際に中間データを保存する、ユーザーが指定した Azure ストレージ アカウントに依存しています。このストレージ アカウントは、ワークスペースの作成時に Machine Learning Studio に提供され、アクセス キーは、そのワークスペースに関連付けられます。ワークスペースの作成後にアクセス キーが変更され、ワークスペースがストレージ アカウントにアクセスできない場合は、ワークスペースが機能しなくなり、そのワークスペースのすべての実験が失敗します。
+
+ストレージ アカウントのアクセス キーを変更した場合は、Azure クラシック ポータルを使用してワークスペースの設定でアクセス キーを再同期します。
 
 
 ## Azure Marketplace
 
-「[Machine Learning Marketplace でのアプリの公開と使用に関する FAQ](machine-learning-marketplace-faq.md)」をご覧ください
+「[Machine Learning Marketplace でのアプリの公開と使用に関する FAQ](machine-learning-marketplace-faq.md)」を参照してください。
 
 ## サポートとトレーニング
 
-**どこで Azure ML のトレーニングを受講できますか。**
+**どこで Azure Machine Learning のトレーニングを受講できますか?**
 
-[Azure Machine Learning ドキュメント センター](https://azure.microsoft.com/services/machine-learning/)に、ハウツー ガイドやビデオ チュートリアルが用意されています。順を追ったハウツー ガイドでは、サービスの概要に加え、データのインポートから、データのクリーニング、予測モデルの構築、Azure ML を使用した運用環境へのデプロイまで、データ技術のライフ サイクルをひととおり説明します。
+[Azure Machine Learning ドキュメント センター](https://azure.microsoft.com/services/machine-learning/)に、ハウツー ガイドやビデオ チュートリアルが用意されています。順を追ったハウツー ガイドでは、サービスの概要に加え、データのインポートから、データのクリーニング、予測モデルの構築、Azure Machine Learning を使用した運用環境へのデプロイまで、データ技術のライフ サイクルを説明します。
 
 Machine Learning Center には継続的に新しい資料が追加されます。Machine Learning Center に追加の教材が必要な場合は、[ユーザー フィードバック フォーラム](https://windowsazure.uservoice.com/forums/257792-machine-learning)で要求を送信できます。
 
@@ -306,7 +318,7 @@ Machine Learning Center には継続的に新しい資料が追加されます�
 
 Azure Machine Learning のテクニカル サポートを受けるには、[[Azure サポート]](/support/options/) に進み、**[Machine Learning]** を選択します。
 
-Azure Machine Learning については、MSDN にコミュニティ フォーラムがあり、ここで、Azure ML に関連する質問をすることができます。このフォーラムは Azure ML チームが監視しています。[Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)にアクセスしてください。
+Azure Machine Learning については、MSDN にコミュニティ フォーラムがあり、ここで、Azure Machine Learning に関連する質問をすることができます。このフォーラムは Azure Machine Learning チームが監視しています。[Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)にアクセスしてください。
 
 
 <!-- Module References -->
@@ -315,6 +327,9 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [machine-learning-modules]: https://msdn.microsoft.com/library/azure/6d9e2516-1343-4859-a3dc-9673ccec9edc/
 [partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[writer]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
+[python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
+[counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

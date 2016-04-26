@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/26/2016"
+   ms.date="04/18/2016"
    ms.author="seanmck"/>
 
 # 開発環境を準備する
@@ -27,6 +27,8 @@
 - Windows 8/Windows 8.1
 - Windows Server 2012 R2
 - Windows 10
+
+>[AZURE.NOTE] Windows 7 には、既定では Windows PowerShell 2.0 のみが含まれます。Service Fabric PowerShell コマンドレットを使うには、PowerShell 3.0 以降をインストールする必要があります。Microsoft Download Center から [Windows PowerShell 5.0 をダウンロード][powershell5-download]できます。
 
 ## ランタイム、SDK、およびツールのインストール
 
@@ -60,5 +62,6 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 [full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI link"
 [full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI link"
 [core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK "Core SDK WebPI link"
+[powershell5-download]: https://www.microsoft.com/ja-JP/download/details.aspx?id=50395
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

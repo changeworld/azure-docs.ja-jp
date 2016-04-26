@@ -1,4 +1,11 @@
-<properties pageTitle="Azure Active Directory B2C プレビュー: iOS アプリケーションからの Web API の呼び出し | Microsoft Azure" description="この記事では、OAuth 2.0 ベアラー トークンを使用して Node.js Web API を呼び出す iOS の "To-Do List" アプリを作成する方法について説明します。iOS アプリと Web API は、どちらも Azure Active Directory B2C を使用してユーザー ID を管理し、ユーザーを認証します。" services="active-directory-b2c" documentationCenter="ios" authors="brandwe" manager="mbaldwin" editor=""/>
+<properties
+	pageTitle="Azure Active Directory B2C プレビュー: iOS アプリケーションから Web API を呼び出す | Microsoft Azure"
+	description="この記事では、OAuth 2.0 ベアラー トークンを使用して Node.js Web API を呼び出す iOS の ";To-Do List"; アプリを作成する方法を示します。iOS アプリと Web API は、どちらも Azure Active Directory B2C を使用してユーザー ID を管理し、ユーザーを認証します。"
+	services="active-directory-b2c"
+	documentationCenter="ios"
+	authors="brandwe"
+	manager="mbaldwin"
+	editor=""/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -54,7 +61,7 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[ポ�
 
 ## コードのダウンロード
 
-このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS) で管理されています。[スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/skeleton.zip)し、手順に従ってサンプルを構築できます。スケルトンを複製することもできます。
+このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS) で管理されています。手順に従ってサンプルを構築するには、[スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/skeleton.zip)します。スケルトンを複製することもできます。
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS.git
@@ -111,7 +118,7 @@ iOS タスク アプリが Azure AD B2C と通信できるようにするため�
 
 ## アクセス トークンの取得とタスク API の呼び出し
 
-このセクションでは、Microsoft のライブラリとフレームワークを使用して、Web アプリで OAuth 2.0 トークンの交換を完了する方法について説明します。認証コードとアクセス トークンについて詳しくない場合は、「[Azure AD B2C プレビュー: 認証プロトコル](active-directory-b2c-reference-protocols.md)」に目を通すことをお勧めします。
+このセクションでは、Microsoft のライブラリとフレームワークを使用して、Web アプリで OAuth 2.0 トークンの交換を完了する方法について説明します。認証コードとアクセス トークンについて詳しくない場合は、「[Azure AD B2C プレビュー: 認証プロトコル](active-directory-b2c-reference-protocols.md)」に詳しい説明が記載されています。
 
 ### メソッドを使用してヘッダー ファイルを作成する
 
@@ -623,4 +630,4 @@ API でタスクがユーザーごとに保存されたことを確認します�
 
 [B2C アプリの UX のカスタマイズ]()
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

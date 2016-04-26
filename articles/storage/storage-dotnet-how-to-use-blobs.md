@@ -55,11 +55,13 @@ Azure Blob Storage は、クラウドにファイル データを格納するサ
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
     using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 
+### 接続文字列を解析する
+
 [AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### BLOB サービス クライアントの作成
 
-**CloudBlobClient** クラスを使用すると、Blob Storage 内に格納されているコンテナーと BLOB を取得できます。次のコードを **Main()** メソッドに追加します。
+**CloudBlobClient** クラスを使用すると、Blob Storage 内に格納されているコンテナーと BLOB を取得できます。サービス クライアントを作成する方法の 1 つを次に示します。
 
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
@@ -363,7 +365,6 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
 - [.NET 用の File Storage の概要](storage-dotnet-how-to-use-files.md)
 - [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
 - [Web ジョブ SDK で Azure Blob Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
-- [.NET (c#) からの SQL Database 使用](../sql-database/sql-database-dotnet-how-to-use.md)
 
   [Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-blobs/blob6.png
@@ -376,4 +377,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

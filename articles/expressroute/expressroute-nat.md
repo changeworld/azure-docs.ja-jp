@@ -4,7 +4,7 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags
    ms.service="expressroute"
@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/16/2016"
+   ms.date="04/18/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute NAT の要件
@@ -33,7 +33,7 @@ Azure パブリック ピアリング パスを利用すれば、パブリック
  
 このピアリングでアドバタイズされる NAT IP プレフィックスの長さには制約がありません。NAT プールを監視し、NAT セッションが不足していないことを確認する必要があります。
 
->[AZURE.IMPORTANT]Microsoft にアドバタイズされる NAT IP プールはインターネットにアドバタイズしないでください。他の Microsoft サービスへの接続が切断されます。
+>[AZURE.IMPORTANT] Microsoft にアドバタイズされる NAT IP プールはインターネットにアドバタイズしないでください。他の Microsoft サービスへの接続が切断されます。
 
 ## Microsoft ピアリングの NAT 要件
 
@@ -48,7 +48,7 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 
 - Azure パブリック ピアリング セットアップと他の ExpressRoute 回線に使用する IP アドレスは BGP セッションで Microsoft にアドバタイズしないでください。このピアリングでアドバタイズされる NAT IP プレフィックスの長さには制約がありません。
 
-	>[AZURE.IMPORTANT]Microsoft にアドバタイズされる NAT IP プールはインターネットにアドバタイズしないでください。他の Microsoft サービスへの接続が切断されます。
+	>[AZURE.IMPORTANT] Microsoft にアドバタイズされる NAT IP プールはインターネットにアドバタイズしないでください。他の Microsoft サービスへの接続が切断されます。
 
 #### Microsoft からあなたのネットワークに送信されるトラフィック
 
@@ -66,4 +66,4 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0420_2016-->

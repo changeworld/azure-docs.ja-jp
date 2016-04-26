@@ -44,9 +44,29 @@ Stretch を有効にするテーブルを選択します。
 |**名前**|テーブルの列の名前を指定します。|
 |(タイトルなし)|この列の記号は、一般的に、ブロック問題に起因し、選択したテーブルの Stretch を有効にできないことを示します。非対応のデータ型をテーブルで使用していることが原因の可能性があります。記号の上にマウス カーソルを合わせると、ヒント形式で詳細が表示されます。詳細については、「[Stretch Database のセキュリティ制約とブロック問題](sql-server-stretch-database-limitations.md)」を参照してください。|
 |**ストレッチ済み**|テーブルが既に有効になっているかどうかを示します。|
+|**移行**|RC3 では、テーブル全体を移行することも (**[テーブル全体]**)、ウィザードで日付に基づくフィルター述語を指定することもできます。移行する行を選択するフィルター述語を変更する場合は、ウィザードを終了した後、ALTER TABLE ステートメントを実行してフィルター述語を指定します。フィルター述語の詳細については、「[移行する行の選択にフィルター述語を使用する (Stretch Database)](sql-server-stretch-database-predicate-function.md)」を参照してください。述語の適用方法の詳細については、「[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」または「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」を参照してください。|
 |**行**|テーブルの行数を指定します。|
 |**サイズ (KB)**|テーブルのサイズを KB 単位で指定します。|
-|**移行**|CTP 3.1 ～ RC2 では、ウィザードを使用してテーブル全体を移行することだけが可能です。行を選択する述語を指定し、履歴データと現行データの両方を含むテーブルから移行する場合、ALTER TABLE ステートメントを実行し、ウィザードの終了後に述語を指定します。詳細については、「[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」または「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」を参照してください。|
+
+## <a name="Filter"></a>必要に応じて日付に基づくフィルター述語を指定する
+
+日付に基づくフィルター述語を指定して移行する行を選択する場合は、**[テーブルの選択]** ページで次のようにします。
+
+1.  **[ストレッチするテーブルの選択]** ボックスの一覧で、テーブルの行の **[テーブル全体]** をクリックします。**[ストレッチする行の選択**] ダイアログ ボックスが表示されます。
+
+    ![日付に基づくフィルター述語を定義する][StretchWizardImage2a]
+
+2.  **[ストレッチする行の選択]** ダイアログ ボックスで、**[行の選択]** を選択します。
+
+3.  **[名前]** フィールドに、フィルター述語の名前を入力します。
+
+4.  **[Where]** 句で、テーブルの日付列を選択し、演算子を選択して、日付の値を指定します。
+
+5. **[確認]** をクリックして述語をテストします。述語がテーブルから結果を返す場合、つまり条件を満たす移行する行がある場合は、テストで **[成功]** と表示されます。
+
+6.  [完了] をクリックして **[テーブルの選択]** ページに戻ります。
+
+    ![フィルター述語を定義した後の [テーブルの選択] ページ][StretchWizardImage2b]
 
 ## <a name="Configure"></a>Azure デプロイを構成する
 
@@ -118,7 +138,7 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 
 -   [テーブルの Stretch Database を有効にして](sql-server-stretch-database-enable-table.md)追加テーブルを有効にします。
 
--   [Stretch Database を監視して](sql-server-stretch-database-monitor.md)データ移行の状態を確認します。
+-   [Stretch Database を監視して](sql-server-stretch-database-monitor.md)データベース移行の状態を確認します。
 
 -   [Stretch Database を一時停止し、再開します。](sql-server-stretch-database-pause.md)
 
@@ -134,6 +154,8 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 
 [StretchWizardImage1]: ./media/sql-server-stretch-database-wizard/stretchwiz1.png
 [StretchWizardImage2]: ./media/sql-server-stretch-database-wizard/stretchwiz2.png
+[StretchWizardImage2a]: ./media/sql-server-stretch-database-wizard/stretchwiz2a.png
+[StretchWizardImage2b]: ./media/sql-server-stretch-database-wizard/stretchwiz2b.png
 [StretchWizardImage3]: ./media/sql-server-stretch-database-wizard/stretchwiz3.png
 [StretchWizardImage4]: ./media/sql-server-stretch-database-wizard/stretchwiz4.png
 [StretchWizardImage5]: ./media/sql-server-stretch-database-wizard/stretchwiz5.png
@@ -141,4 +163,4 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 [StretchWizardImage7]: ./media/sql-server-stretch-database-wizard/stretchwiz7.png
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->
