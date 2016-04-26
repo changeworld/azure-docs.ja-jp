@@ -633,7 +633,7 @@ HTTPS のプライベート ポートを 443 以外で構成した場合は、�
 
 		http://localhost/Reports
 
-- ローカル コンピューターから、VM 上の**リモート** レポート マネージャーを参照します。必要に応じて、次の例の DNS 名を更新します。パスワードの入力を求められたら、VM をプロビジョニングしたときに作成した管理者資格情報を使用します。ユーザー名は、[ドメイン]\[ユーザー名] の形式で指定します。ドメインは VM のコンピューター名です。たとえば、「ssrsnativecloud\\testuser」のように指定します。HTTP**S** を使用していない場合は、URL の **s** を削除します。VM で追加のユーザーを作成する方法については、次のセクションをご覧ください。
+- ローカル コンピューターから、VM 上の**リモート** レポート マネージャーを参照します。必要に応じて、次の例の DNS 名を更新します。パスワードの入力を求められたら、VM をプロビジョニングしたときに作成した管理者資格情報を使用します。ユーザー名は、[ドメイン]\\[ユーザー名] の形式で指定します。ドメインは VM のコンピューター名です。たとえば、「ssrsnativecloud\\testuser」のように指定します。HTTP**S** を使用していない場合は、URL の **s** を削除します。VM で追加のユーザーを作成する方法については、次のセクションをご覧ください。
 
 		https://ssrsnativecloud.cloudapp.net/Reports
 
@@ -703,6 +703,6 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 ### Azure VM の SQL Server に関するその他のリソースへのリンク
 
-[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-classic-sql-overview.md)
+[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

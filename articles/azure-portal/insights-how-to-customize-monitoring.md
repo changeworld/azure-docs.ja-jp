@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="サービス メトリックの監視" 
-	description="Azure でグラフの監視をカスタマイズする方法について説明します。" 
-	authors="stepsic-microsoft-com" 
-	manager="ronmart" 
-	editor="" 
+<properties
+	pageTitle="サービス メトリックの監視"
+	description="Azure でグラフの監視をカスタマイズする方法について説明します。"
+	authors="stepsic-microsoft-com"
+	manager="ronmart"
+	editor=""
 	services="azure-portal"
 documentationCenter=""/>
 
-<tags 
-	ms.service="azure-portal" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/08/2015" 
+<tags
+	ms.service="azure-portal"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2015"
 	ms.author="stepsic"/>
 
 # サービス メトリックの監視
@@ -22,7 +22,7 @@ documentationCenter=""/>
 
 サービスによっては、メトリックを表示するために診断を有効にする必要がある場合があります。また、Virtual Machines などのサービスでは、基本的なメトリック セットを利用できますが、使用頻度の高いメトリックをすべて有効にする必要もあります。詳細については、「[監視と診断の有効化](insights-how-to-use-diagnostics.md)」を参照してください。
 
-## 監視グラフの使用 
+## 監視グラフの使用
 
 選択した任意の期間における任意のメトリックのグラフを作成できます。
 
@@ -51,7 +51,7 @@ documentationCenter=""/>
 
 1. ブレードの上部にある **[...]** メニューで、**[タイルの追加]** をクリックします。![Add Menu](./media/insights-how-to-customize-monitoring/Insights_AddMenu.png)
 2. 次に、画面の右側にある **[ギャラリー]** からグラフを選択できます。![ギャラリー](./media/insights-how-to-customize-monitoring/Insights_Gallery.png)
-3. 必要なメトリックが表示されない場合は、いつでも、事前設定されたメトリックの 1 つを追加し、**[編集]** でグラフを編集して必要なメトリックを表示できます。 
+3. 必要なメトリックが表示されない場合は、いつでも、事前設定されたメトリックの 1 つを追加し、**[編集]** でグラフを編集して必要なメトリックを表示できます。
 
 ## 使用量クォータの監視
 
@@ -69,8 +69,7 @@ documentationCenter=""/>
 * [監視と診断を有効](insights-how-to-use-diagnostics.md)にしてサービスに関する詳細な頻度の高いメトリックを収集します。
 * [インスタンス数を自動的にスケール変更](insights-how-to-scale.md)して、サービスの可用性と応答性を確実にします。
 * コードがクラウドで実行される方法を正確に理解するには、[アプリケーションのパフォーマンスを監視](insights-perf-analytics.md)します。
-* [JavaScript のアプリや Web ページに Application Insights](../app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーに関するクライアント分析を取得します。
-* Application Insights で [Web ページの可用性と応答性を監視](../app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
- 
+* [JavaScript のアプリや Web ページに Application Insights](../application-insights/app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーに関するクライアント分析を取得します。
+* Application Insights で [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0413_2016-->

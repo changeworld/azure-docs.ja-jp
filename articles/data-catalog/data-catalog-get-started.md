@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/03/2016"
+   ms.date="04/15/2016"
    ms.author="derrickv"/>
 
 # Azure Data Catalog の概要
@@ -27,6 +27,8 @@
 - **Azure サブスクリプション** - サブスクリプションがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、「[1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 - **Azure Active Directory** - Azure Data Catalog では、ID およびアクセス管理に [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) を使用します。
 - **データ ソース** - Azure Data Catalog には、データ ソースを検出する機能があります。このチュートリアルでは、Adventure Works サンプル データベースを使用しますが、馴染みがあり、自分のロールに関連するデータを操作したいと考える場合は、任意のサポートされているデータ ソースも使用できます。サポートされているデータ ソースの一覧については、「[Azure Data Catalog でサポートされるデータ ソース](data-catalog-dsr.md)」を参照してください。
+
+> [AZURE.NOTE] Azure サブスクリプションと Azure Active Directory の詳細については、「[Azure Data Catalog の前提条件](data-catalog-prerequisites.md)」を参照してください。
 
 それでは、Adventure Works サンプル データベースのインストールを開始しましょう。
 
@@ -258,4 +260,4 @@ T-SQL スクリプトを実行する代わりに、SQL Server Management Studio 
 
 このチュートリアルでは、**Azure Data Catalog** のエンタープライズ データ ソースの登録、注釈、検出、および管理を含む重要な機能について学習しました。これでチュートリアルは完了したので、使用を開始できます。自分やチームが依存するデータ ソースを登録し、カタログを使用する同僚を招待することによって、今すぐ始めることができます。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

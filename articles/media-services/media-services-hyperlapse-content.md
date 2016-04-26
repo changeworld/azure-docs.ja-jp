@@ -21,14 +21,11 @@
 
 Azure Media Hyperlapse は、最初のユーザーまたはアクション カメラのコンテンツから滑らかな低速度撮影ビデオを作成するメディア プロセッサ (MP) です。[Microsoft Research のデスクトップ版 Hyperlapse Pro および電話ベースの Hyperlapse Mobile](http://aka.ms/hyperlapse) とはクラウド ベースの兄弟である、Azure Media Services 向けの Microsoft Hyperlapse では大規模な Azure Media Services メディア処理プラットフォームを利用して、Hyperlapse の一括処理を水平方向にスケーリングし、並列化します。
 
->[AZURE.IMPORTANT] Azure Media Services 向けの Microsoft Hyperlapse は、無料のパブリック プレビュー段階です。ジョブは、入力資産の最初の 10,000 フレームに制限されます。
-
-
-> Microsoft Hyperlapse は、移動カメラを使用する最初のユーザー コンテンツで最適に機能するように設計されています。静止カメラの映像は引き続き動作しますが、Azure Media Hyperlapse メディア プロセッサのパフォーマンスと品質は他の種類のコンテンツに対して保証できません。Azure Media Services 向けの Microsoft Hyperlapse に関する詳細といくつかのビデオ例については、パブリック プレビューの[概要のブログ投稿](http://aka.ms/azurehyperlapseblog)を確認してください。
+>[AZURE.IMPORTANT]Microsoft Hyperlapse は、移動カメラを使用する最初のユーザー コンテンツで最適に機能するように設計されています。静止カメラの映像は引き続き動作しますが、Azure Media Hyperlapse メディア プロセッサのパフォーマンスと品質は他の種類のコンテンツに対して保証できません。Azure Media Services 向けの Microsoft Hyperlapse に関する詳細といくつかのビデオ例については、パブリック プレビューの[概要のブログ投稿](http://aka.ms/azurehyperlapseblog)を確認してください。
 
 Azure Media Hyperlapse ジョブでは、低速度撮影のビデオ フレームとその速度 (たとえば、最初の 10,000 フレームは 2 倍速) を指定する構成ファイルと共に、MP4、MOV、または WMV ファイルを入力として使用します。出力は、入力ビデオの安定した低速度撮影画像となります。
 
-最新の Azure Media Hyperlapse の更新プログラムについては、[Media Services のブログ](https://azure.microsoft.com/blog/topics/media-services/)を参照してください。
+Azure Media Hyperlapse の最新の更新プログラムについては、[Media Services のブログ](https://azure.microsoft.com/blog/topics/media-services/)をご覧ください。
 
 ## Hyperlapse における資産
 
@@ -212,13 +209,8 @@ XML と JSON で準拠する構成ファイルの例を以下に示します。
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
+##関連リンク
 
+[Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-
-<!-- Anchors. -->
-
-<!-- Images. -->
-
-<!-- URLs. -->
-
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

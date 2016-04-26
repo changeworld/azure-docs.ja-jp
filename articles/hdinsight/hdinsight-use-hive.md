@@ -70,11 +70,11 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 Azure BLOB ストレージが HDInsight の既定のストレージであるため、HiveQL から **/example/data/sample.log** を使用してファイルにアクセスすることもできます。
 
-> [AZURE.NOTE] 上の構文 ****wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、****wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log** のように指定します。
+> [AZURE.NOTE] 上の構文 **wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、**wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log** のように指定します。
 
 ##<a id="job"></a>サンプル ジョブ: 区切られたデータへの列の投影
 
-次の HiveQL ステートメントは、****wasb:///example/data** ディレクトリに格納されている区切りデータに列を投影します。
+次の HiveQL ステートメントは、**wasb:///example/data** ディレクトリに格納されている区切りデータに列を投影します。
 
 	DROP TABLE log4jLogs;
     CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -161,7 +161,9 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 
 - [HDInsight へのデータのアップロード][hdinsight-upload-data]
-- [HDInsight での Pig の使用][hdinsight-use-pig]
+- [HDInsight の Hadoop での Pig の使用][hdinsight-use-pig]
+- [HDInsight での Sqoop の使用](hdinsight-use-sqoop.md)
+- [HDInsight での Oozie の使用](hdinsight-use-oozie.md)
 - [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
 
 [check]: ./media/hdinsight-use-hive/hdi.checkmark.png
@@ -194,7 +196,7 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]: hdinsight-get-started.md
 
-[Powershell-install-configure]: ../install-configure-powershell.md
+[Powershell-install-configure]: ../powershell-install-configure.md
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
 [image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
@@ -204,4 +206,4 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

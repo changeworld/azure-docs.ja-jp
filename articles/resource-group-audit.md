@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="tfitzmac"
 	manager="timlt"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="azure-resource-manager"
@@ -64,19 +64,21 @@ Azure ポータル、Azure PowerShell、Azure CLI、Insights REST API、また�
 
 1. ログ エントリを取得するには、**Get-AzureRmLog** コマンドを実行します。パラメーターを追加し、エントリの一覧を絞り込むことができます。開始時間と終了時間を指定しない場合は、過去 1 時間のエントリが返されます。たとえば、過去 1 時間のリソース グループの操作を取得するには、次を実行します。
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup
+        Get-AzureRmLog -ResourceGroup ExampleGroup
 
     次の例は、監査ログを利用し、指定した時間に行われた操作を調査する方法を示しています。開始日と終了日は、日付の形式で指定されます。
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00
+        Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00
 
     または、日付関数を使用して、最後の 14 日など、日付の範囲を指定することができます。
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
+        Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
 
-2. 指定した開始時刻によっては、前のコマンドを実行したときに、そのリソース グループの操作が長い一覧で返されることがあります。検索基準を指定すると、探しものの結果を絞り込むことができます。たとえば、Web アプリが停止した理由を調査する場合、次のコマンドを実行して、someone@contoso.com が停止アクションを実行したことを確認できます。
+2. 指定した開始時刻によっては、前のコマンドを実行したときに、そのリソース グループの操作が長い一覧で返されることがあります。検索基準を指定すると、探しものの結果を絞り込むことができます。たとえば、Web アプリが停止した理由を調査する場合は、次のコマンドを実行します。
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
+        Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
+        
+    この例では、これは someone@contoso.com によって停止アクションが実行されたことを示しています。
         
         Authorization     :
         Scope     : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
@@ -96,7 +98,7 @@ Azure ポータル、Azure PowerShell、Azure CLI、Insights REST API、また�
 
 3. 存在しなくなったリソース グループであっても、特定のユーザーが行ったアクションを検索できます。
 
-        PS C:\> Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
+        Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
 
 ## 監査ログを表示する Azure CLI
 
@@ -118,9 +120,9 @@ Azure ポータル、Azure PowerShell、Azure CLI、Insights REST API、また�
 
 ## 次のステップ
 
-- Azure 監査ログは、サブスクリプション内のアクションに関してさらに洞察を得るために、Power BI で使用できます。「[Power BI などにおける Azure 監査ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)」を参照してください。
+- Azure 監査ログは、サブスクリプション内のアクションに関してさらに洞察を得るために、Power BI で使用できます。「[View and analyze Azure Audit Logs in Power BI and more (Power BI などでの Azure 監査ログの表示と分析)](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)」をご覧ください。
 - セキュリティ ポリシーを設定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
-- デプロイのトラブルシューティングに使用するコマンドについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
-- すべてのユーザーのリソースに対する削除を回避する方法については、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
+- デプロイのトラブルシューティングに使用するコマンドについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)」をご覧ください。
+- すべてのユーザーのリソースに対する削除を回避する方法については、「[Azure Resource Manager によるリソースのロック](resource-group-lock-resources.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

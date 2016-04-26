@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Media Services Extension での CDN キャッシュ ポリシー" 
-	description="このトピックでは、Media Services Extension での CDM キャッシュ ポリシーの概要について説明します。" 
-	services="cdn" 
-	documentationCenter=".NET" 
-	authors="juliako" 
-	manager="dwrede" 
+<properties
+	pageTitle="Media Services Extension での CDN キャッシュ ポリシー"
+	description="このトピックでは、Media Services Extension での CDM キャッシュ ポリシーの概要について説明します。"
+	services="cdn"
+	documentationCenter=".NET"
+	authors="juliako"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="cdn" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/01/2016" 
+<tags
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/01/2016"
 	ms.author="juliako"/>
 
 #Media Services Extension での CDN キャッシュ ポリシー
@@ -32,7 +32,7 @@ Azure Media services は、ストリーミング エンドポイントに対し�
 
 Azure 管理ポータルまたは Azure Media Services API を使用して、キャッシュ ヘッダーの値を構成できます。
 
-1. 管理ポータルを使用してキャッシュ ヘッダーを構成する方法については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](../media-services-manage-origins.md)」の「ストリーミング エンドポイントの構成」セクションを参照してください。
+1. 管理ポータルを使用してキャッシュ ヘッダーを構成する方法については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](../media-services/media-services-manage-origins.md)」の「ストリーミング エンドポイントの構成」セクションを参照してください。
 2. Azure Media Services REST API の「[StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx#StreamingEndpointCacheControl)」。
 3. Azure Media Services .NET SDK の「[StreamingEndpointCacheControl プロパティ](http://go.microsoft.com/fwlink/?LinkId=615302)」。
 
@@ -41,6 +41,5 @@ Azure 管理ポータルまたは Azure Media Services API を使用して、キ
 1. Azure Media Services で構成されたキャッシュ値は、既定値を上書きします。
 2. 手動による構成がない場合は既定値が適用されます。
 3. 既定では、Azure Media または Azure Storage の構成に関係なく 2 秒のキャッシュ ヘッダーがライブ ストリーミング マニフェスト (プレイリスト) に適用され、この値の上書きは使用できません。
- 
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/16/2015" 
+	ms.date="04/04/2016" 
 	ms.author="tomfitz"/>
 
 # テンプレートを使用したロジック アプリと API アプリの作成
@@ -22,7 +22,7 @@
 
 デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-ロジック アプリのプロパティの詳細については、[ロジック アプリ ワークフローの管理 API](https://msdn.microsoft.com/library/azure/dn948513.aspx) に関するページを参照してください。
+ロジック アプリのプロパティの詳細については、[ロジック アプリ ワークフローの管理 API](https://msdn.microsoft.com/library/azure/mt643788.aspx) に関するページを参照してください。
 
 定義自体の例については、「[ロジック アプリの定義の作成](app-service-logic-author-definitions.md)」を参照してください。
 
@@ -39,7 +39,7 @@
 
 デプロイを自動的に実行するには、次のボタンを選択します。
 
-[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-api-app-create%2Fazuredeploy.json)
+[![Azure へのデプロイ](media/app-service-logic-arm-with-api-app-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-api-app-create%2Fazuredeploy.json)
 
 ## パラメーター
 
@@ -396,4 +396,4 @@ App Service プランを作成します。
 
  
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0413_2016-->

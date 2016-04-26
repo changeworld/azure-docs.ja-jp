@@ -1,6 +1,6 @@
 ## シミュレーション済みデバイスからの対話型メッセージの送信
 
-このセクションでは、デバイスからクラウドへの対話式メッセージが IoT Hub に送信されるように、「[IoT Hub の概要]」チュートリアルで作成したシミュレーション済みデバイス アプリケーションを変更します。
+このセクションでは、[IoT Hub の使用方法]のチュートリアルで作成したシミュレーション済みデバイス アプリケーションを変更して、デバイスからクラウドへの対話型メッセージが IoT Hub に送信されるようにします。
 
 1. Visual Studio の **SimulatedDevice** プロジェクトで、次のメソッドを **Program** クラスに追加します。
 
@@ -17,7 +17,7 @@
         await deviceClient.SendEventAsync(interactiveMessage);
         Console.WriteLine("{0} > Sending interactive message: {1}", DateTime.Now, interactiveMessageString);
 
-        Thread.Sleep(10000);
+        Task.Delay(10000).Wait();
       }
     }
     ```
@@ -36,6 +36,6 @@
 
 <!-- Links -->
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh675232.aspx
-[IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
+[IoT Hub の使用方法]: ../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

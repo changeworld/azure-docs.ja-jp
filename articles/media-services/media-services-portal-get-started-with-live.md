@@ -3,16 +3,16 @@
 	description="このチュートリアルでは、チャネルがオンプレミスのライブ エンコーダーからマルチ ビットレートのライブ ストリームを受信する基本的な Media Services のライブ ストリーミング アプリケーションを実装する手順について説明します。"
 	services="media-services"
 	documentationCenter=""
-	authors="Juliako,cenkdin" 
-	manager="dwrede" 
+	authors="Juliako,cenkdin"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="ne" 
-	ms.topic="article" 
+<tags
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="ne"
+	ms.topic="article"
 	ms.date="01/31/2016"  
 	ms.author="juliako"/>
 
@@ -37,7 +37,7 @@
 ## 前提条件
 チュートリアルを完了するには次のものが必要です。
 
-- このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。 
+- このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
 - Media Services アカウント。Media Services アカウントを作成するには、「[アカウントの作成](media-services-create-account.md)」を参照してください。
 - マルチ ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
 
@@ -88,7 +88,7 @@ Azure クラシック ポータルで、**[チャネル]** ページを選択し
 
 ![ingesturls](./media/media-services-portal-get-started-with-live/media-services-ingest-urls.png)
 
-取り込み URL に関する詳細は、「[オンプレミスのエンコーダーを使用して、マルチ ビットレートのライブ ストリームをチャネルに送信する](media-services-channels-overview.md)」を参照してください。
+取り込み URL に関する詳細は、「[オンプレミスのエンコーダーを使用して、マルチ ビットレートのライブ ストリームをチャネルに送信する](media-services-manage-channels-overview.md)」を参照してください。
 
 ## ライブ エンコーダーの構成、およびライブ ストリームの取り込み
 
@@ -212,4 +212,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 <!-- Images -->
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

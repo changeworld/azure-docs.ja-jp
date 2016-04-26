@@ -45,10 +45,10 @@ HDInsight Tools for Visual Studio を使用して HDInsight クラスターに�
 
 HDInsight Tools for Visual Studio と Microsoft Hive ODBC ドライバーは、Microsoft Azure SDK for .NET バージョン 2.5.1 以降に付属しています。または、[Web Platform Installer](http://go.microsoft.com/fwlink/?LinkId=255386) を使用してインストールすることもできます。お使いの Visual Studio バージョンに対応するものを選択する必要があります。Visual Studio がインストールされていない場合は、[Web Platform Installer](http://go.microsoft.com/fwlink/?LinkId=255386) または次のリンクを使用して、最新の Visual Studio Community と Azure SDK をインストールできます。
 
-- [Visual Studio Community 2015 と Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2015CommunityAzurePack.appids) 
-- [Visual Studio Community 2013 と Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2013CommunityAzurePack.appids) 
-- [Microsoft Azure SDK for .NET (VS 2015)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids) 
-- [Microsoft Azure SDK for .NET (VS 2013)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2013AzurePack.appids) 
+- [Visual Studio Community 2015 と Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2015CommunityAzurePack.appids)
+- [Visual Studio Community 2013 と Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2013CommunityAzurePack.appids)
+- [Microsoft Azure SDK for .NET (VS 2015)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids)
+- [Microsoft Azure SDK for .NET (VS 2013)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2013AzurePack.appids)
 
 ![Hadoop ツール: HDinsight Tools for Visual Studio Web Platform installer][1]
 
@@ -182,14 +182,14 @@ Hive ジョブのジョブ クエリ、ジョブ出力、ジョブのログ、Ya
 
 >[AZURE.NOTE] この機能は、HDInsight クラスター バージョン 3.2 以降のみで動作します。
 
-HDInsight Tools は以前、WebHCat (Templeton とも呼ばれます) を介して Hive ジョブを送信していました。そのためジョブの詳細やエラー情報を返すのに長い時間がかかっていました。このようなパフォーマンスの問題を解決するために、HDInsight Tools では、HiveServer2 を通して直接クラスターで Hive ジョブを実行することにより RDP/SSH をバイパスすることができるようになりました。パフォーマンスが向上するだけでなく、ユーザーは、Hive on Tez のグラフやタスクの詳細を表示することもできます。
+HDInsight Tools は以前、[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (Templeton とも呼ばれます) を介して Hive ジョブを送信していました。そのためジョブの詳細やエラー情報を返すのに長い時間がかかっていました。このようなパフォーマンスの問題を解決するために、HDInsight Tools では、HiveServer2 を通して直接クラスターで Hive ジョブを実行することにより RDP/SSH をバイパスすることができるようになりました。パフォーマンスが向上するだけでなく、ユーザーは、Hive on Tez のグラフやタスクの詳細を表示することもできます。
 
 HDInsight クラスター バージョン 3.2 以降では、**[HiveServer2 から実行]** ボタンが表示されます。
 
 ![hdinsight visual studio tools execute via hiveserver2](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.execute.via.hiveserver2.png)
 
 ログがリアルタイムでストリームバックしていることを確認できます。また、Hive クエリが Tez で実行されている場合はジョブ グラフも確認できます。
- 
+
 ![hdinsight visual studio tools fast path hive execution](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.fast.path.hive.execution.png)
 
 **HiveServer2 を使用したクエリの実行と WebHCat を使用したクエリの送信の違い**
@@ -208,7 +208,7 @@ HiveServer2 を使用してクエリを実行した場合、パフォーマン�
 
 HDInsight Tools for Visual Studio は Tez 実行エンジンで実行された Hive ジョブのパフォーマンス グラフの表示をサポートしています。Tez を有効にする方法については、[HDInsight での Hive の使用][hdinsight.hive]に関するページを参照してください。Visual Studio で Hive ジョブを送信した後、ジョブが完了すると、Visual Studio にグラフが表示されます。最新のジョブの状態を取得するには、**[更新]**ボタンをクリックする必要があります。
 
-> [AZURE.NOTE] この機能はバージョン 3.2.4.593 以上の HDInsight クラスターでのみ使用でき、完了したジョブでのみ有効です。これは、Windows ベースと Linux ベースの両方のクラスターで機能します。
+> [AZURE.NOTE] この機能は、3.2.4.593 以上のバージョンの HDInsight クラスターでのみ使用でき、完了したジョブに対してのみ機能します (WebHCat を使用してジョブを送信した場合。このグラフは HiveServer2 を使用してクエリを実行した場合に表示されます)。これは、Windows ベースと Linux ベースの両方のクラスターで機能します。
 
 ![hadoop hive tez パフォーマンス グラフ](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.hive.tez.performance.graph.png)
 
@@ -223,6 +223,14 @@ Hive on Tez ジョブのタスク実行ビューは、Hive ジョブの構造化
 ## Pig のスクリプトを実行する
 
 HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsight クラスターへの送信をサポートしています。ユーザーは、テンプレートから Pig プロジェクトを作成して、HDInsight クラスターにスクリプトを送信できます。
+
+## フィードバックと既知の問題
+
+- 現在 HiveServer2 の結果は、ピュア テキスト形式で表示され、これは最適とは言えません。Microsoft では、この問題の解決に取り組んでいます。
+
+- 結果が NULL 値で始まっている場合、現在その結果は表示されません。この問題は修正されており、この問題で支障が出ている場合は、電子メールでお知らせいただくか、サポート チームにお問い合わせください。
+
+ご提案やフィードバックがある場合、またはこのツールを使用していて問題が発生した場合は、hdivstool@microsoft.com に電子メールをお送りください。
 
 ## 次のステップ
 この記事では、Hadoop ツール パッケージを使用して Visual Studio から HDInsight クラスターに接続し、Hive クエリを実行する方法を説明しました。詳細については、次を参照してください。
@@ -267,4 +275,4 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

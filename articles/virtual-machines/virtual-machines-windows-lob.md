@@ -14,13 +14,12 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/17/2015" 
+	ms.date="04/01/2016" 
 	ms.author="josephd"/>
 
 # Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 
 Microsoft Azure で、最初または次の、Web ベースでイントラネット専用の基幹業務アプリケーションを設定し、簡単に構成できる機能と、新機能を追加するためにアプリケーションを迅速に拡張する機能を活用します。
  
@@ -36,11 +35,11 @@ Azure Virtual Network は、すべての名前とトラフィック ルーティ
 
 ## Azure でホストされる開発/テスト基幹業務アプリケーションの作成
 
-クロスプレミス仮想ネットワークは、サイト間 VPN または ExpressRoute 接続を使用して、オンプレミス ネットワークに接続されています。最終的な構成に似せた開発/テスト環境を作成し、VPN 接続でアプリケーションへのアクセスとリモート管理の実行を実験する場合は、「[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)」を参照してください。
+クロスプレミス仮想ネットワークは、サイト間 VPN または ExpressRoute 接続を使用して、オンプレミス ネットワークに接続されています。最終的な構成に似せた開発/テスト環境を作成し、VPN 接続でアプリケーションへのアクセスとリモート管理の実行を実験する場合は、「[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md)」を参照してください。
 
 ![](./media/virtual-machines-windows-lob/CreateLOBAppHybridCloud_3.png)
  
-[MSDN サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)または [Azure 試用サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)を持っている場合、このような開発/テスト環境を無料で作成できます。
+[MSDN サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)または Azure サブスクリプションを持っている場合、このような開発/テスト環境を無料で作成できます。
 
 次の手順では、Azure で高可用な基幹業務アプリケーションを作成します。
 
@@ -86,4 +85,4 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 
 - 構成を開始する前に、実稼働ワークロードの[概要](virtual-machines-windows-lob-overview.md)を入手します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

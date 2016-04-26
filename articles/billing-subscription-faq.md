@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/24/2016"
+	ms.date="04/07/2016"
 	ms.author="genli"/>
 
 #  Azure の課金とサブスクリプションに関する FAQ
@@ -44,6 +44,8 @@
 - [Azure サービス レベル アグリーメントは、現在のオンプレミスのマイクロソフト ライセンス契約にどのように関係しますか。](#how-will-azure-service-level-agreements-work-with-current-on-premises-microsoft-licensing-agreements)
 
 **サブスクリプション**
+
+- [Azure ポータルにログインできません](#i-am-unable-to-log-in-to-the-azure-portal)
 
 - [Azure サポートの購入方法は?](#how-do-i-purchase-azure-support)
 
@@ -143,7 +145,15 @@ Azure SLA クレジットは、サブスクリプションごとに、SLA が履
 
 Azure サービス レベル アグリーメントは、オンプレミスのマイクロソフト ライセンス契約から独立したものです。Azure の SLA では、クラウドでご利用いただくサービスの月間アップタイム保証と、保証を履行できなかった場合に請求に対して適用される SLA クレジットを提供しています。
 
-## サブスクリプション
+## 契約
+
+### Azure ポータルにログインできません
+
+次の記事は、ログインの問題のよくあるいくつかの原因のトラブルシューティングに役立ちます。
+
+[Azure サブスクリプションにログインして管理することができない](billing-cannot-login-subscription.md)
+
+**注:** 適切な管理者としてログインしていることを確認してください。アカウント管理者は[アカウント センター](https://account.windowsazure.com/)だけにアクセスできるのに対し、サービス管理者 (SA) と共同管理者 (CA) がアクセスできるのは [Azure ポータル](https://portal.azure.com/)または [Azure クラシック ポータル](https://manage.windowsazure.com/)だけです。
 
 ### Azure サポートの購入方法は?
 Azure サポート プランは、オンラインで、またはエンタープライズ契約を介してご購入いただけます。オンラインでは、[Azure サポート プラン](https://azure.microsoft.com/support/plans/)のページから Developer、Standard、Professional Direct の各サポート プランを購入できます。サポート プランを購入するには、Microsoft Azure アカウントの所有者である必要があります。
@@ -160,7 +170,7 @@ Microsoft Azure のアカウントには、[Azure アカウント センター](
 
 ### Azure サポート プランを上位プランにアップグレードするには?
 
-上位プランにアップグレードするには、[サポート要求を送信し](billing-how-to-create-billing-support-ticket.md)、"サブスクリプション管理" を選択してください。元の Azure サポート プランに対する残りの料金は請求されず、初期コミットメントで定められた期間の残り月数には、上位プランの料金が課金されます。
+上位プランにアップグレードするには、[サポート要求を送信し](billing-how-to-create-billing-support-ticket.md)、[サブスクリプション管理] を選択してください。元の Azure サポート プランに対する残りの料金は請求されず、初期コミットメントで定められた期間の残り月数には、上位プランの料金が課金されます。
 
 ### Azure サポートはいつ課金されますか?
 
@@ -258,4 +268,4 @@ Azure は、世界の 140 を超える国で購入でき、課金は多数の通
 
 現在、Azure または SQL Database を SPLA で提供する計画はありません。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

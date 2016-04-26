@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/01/2016"
+	ms.date="04/07/2016"
 	ms.author="cabailey"/>
 #Azure Key Vault の HSM 保護キーを生成し、転送する方法
 
@@ -99,17 +99,65 @@ Azure PowerShell ウィンドウを閉じないでください。
 
 ###手順 1.3: Azure Key Vault の BYOK ツールセットをダウンロードする
 
-Microsoft ダウンロード センターにアクセスし、自分の地域リージョンまたは Azure のインスタンスの [Azure Key Vault BYOK ツールセットをダウンロード](http://www.microsoft.com/download/details.aspx?id=45345)します。
+Microsoft ダウンロード センターにアクセスし、自分の地域リージョンまたは Azure のインスタンスの [Azure Key Vault BYOK ツールセットをダウンロード](http://www.microsoft.com/download/details.aspx?id=45345)します。以下の情報を利用して、ダウンロードするパッケージの名前とそれに対応する SHA-256 パッケージ ハッシュを特定してください。
 
-|地域リージョンまたは Azure のインスタンス|パッケージ名|SHA-256 パッケージ ハッシュ|
-|---|---|---|
-|北米|KeyVault-BYOK-Tools-UnitedStates.zip|D9FDA9F5A34E1388CD6C9138E5B75B7051FB7D6B11F087AFE0553DC85CCF0E36|
-|ヨーロッパ|KeyVault-BYOK-Tools-Europe.zip|881DCA798305B8408C06BAE7B3EFBC1E9EA6113A8D6EC443464F3744896F32C3|
-|アジア|KeyVault-BYOK-Tools-AsiaPacific.zip|0C76967B3AC76687E4EA47EB96174EE6B25AB24E3114E28A90D9B93A2E6ABF6E|
-|ラテン アメリカ|KeyVault-BYOK-Tools-LatinAmerica.zip|B38015990D4D1E522B8367FF78E78E0234BF9592663470426088C44C3CAAAF48|
-|日本|KeyVault-BYOK-Tools-Japan.zip|DB512CD9472FDE2FD610522847DF05E4D7CD49A296EE4A2DD74D43626624A113|
-|オーストラリア|KeyVault-BYOK-Tools-Australia.zip|8EBC69E58E809A67C036B50BB4F1130411AD87A7464E0D61A9E993C797915967|
-|[Azure Government](../../../../features/gov/)|KeyVault-BYOK-Tools-USGovCloud.zip|4DE9B33990099E4197ED67D786316F628E5218FC1EB0C24DCAD8A1851FD345B8|
+---
+
+**北米:**
+
+KeyVault-BYOK-Tools-UnitedStates.zip
+
+D9FDA9F5A34E1388CD6C9138E5B75B7051FB7D6B11F087AFE0553DC85CCF0E36
+
+---
+
+**ヨーロッパ:**
+
+KeyVault-BYOK-Tools-Europe.zip
+
+81DCA798305B8408C06BAE7B3EFBC1E9EA6113A8D6EC443464F3744896F32C3
+
+---
+
+**アジア:**
+
+KeyVault-BYOK-Tools-AsiaPacific.zip
+
+0C76967B3AC76687E4EA47EB96174EE6B25AB24E3114E28A90D9B93A2E6ABF6E
+
+---
+
+**ラテン アメリカ:**
+
+KeyVault-BYOK-Tools-LatinAmerica.zip
+	
+B38015990D4D1E522B8367FF78E78E0234BF9592663470426088C44C3CAAAF48
+
+---
+
+**日本:**
+
+KeyVault-BYOK-Tools-Japan.zip
+
+DB512CD9472FDE2FD610522847DF05E4D7CD49A296EE4A2DD74D43626624A113
+
+---
+
+**オーストラリア:**
+
+KeyVault-BYOK-Tools-Australia.zip
+
+8EBC69E58E809A67C036B50BB4F1130411AD87A7464E0D61A9E993C797915967
+
+---
+
+[**Azure 政府機関:**](../../../../features/gov/)
+
+KeyVault-BYOK-Tools-USGovCloud.zip
+
+4DE9B33990099E4197ED67D786316F628E5218FC1EB0C24DCAD8A1851FD345B8
+
+---
 
 ダウンロードした BYOK ツールセットの整合性を検証するには、Azure PowerShell セッションから、[Get FileHash](https://technet.microsoft.com/library/dn520872.aspx) コマンドレットを使用します。
 
@@ -195,7 +243,7 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 	- オーストラリア:
 
 			python verifykeypackage.py -k BYOK-KEK-pkg-AUS-1 -w BYOK-SecurityWorld-pkg-AUS-1
-	- [Azure 政府機関向け](../../../../features/gov/)の場合、Azure の米国政府インスタンスを使用します。
+	- [Azure 政府機関](../../../../features/gov/)向けの場合は、Azure の米国政府インスタンスを使用します。
 
 			python verifykeypackage.py -k BYOK-KEK-pkg-USGOV-1 -w BYOK-SecurityWorld-pkg-USGOV-1
 
@@ -217,7 +265,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 このコマンドを実行するとき、次の指示に従います。
 
-- パラメーター *protect* は、次のように **module** に設定する必要があります。module に設定すると、モジュールで保護されたキーが作成されます。BYOK ツールセットは、OCS で保護されたキーをサポートしていません。
+- *protect* パラメーターの値は、コマンドに示したように **module** に設定する必要があります。module に設定すると、モジュールで保護されたキーが作成されます。BYOK ツールセットは、OCS で保護されたキーをサポートしていません。
 
 - **ident** と **plainname** の *contosokey* の値を文字列値に置換します。管理費を最小限に抑え、エラーを犯す可能性を減らすために、両方に同じ値を使用することをお勧めします。**Ident** 値には数字、ダッシュ、小文字のみを使用できます。
 
@@ -257,7 +305,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 - オーストラリア:
 
 		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1
-- [Azure 政府機関向け](../../../../features/gov/)の場合、Azure の米国政府インスタンスを使用します。
+- [Azure 政府機関](../../../../features/gov/)向けの場合は、Azure の米国政府インスタンスを使用します。
 
 		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1
 
@@ -301,7 +349,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 - オーストラリア:
 
 		KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-- [Azure 政府機関向け](../../../../features/gov/)の場合、Azure の米国政府インスタンスを使用します。
+- [Azure 政府機関](../../../../features/gov/)向けの場合は、Azure の米国政府インスタンスを使用します。
 
 		KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 
@@ -332,4 +380,4 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 これでこの HSM 保護キーを Key Vault で使用できます。詳細については、[Azure Key Vault の概要](key-vault-get-started.md)のチュートリアルの「**ハードウェア セキュリティ モジュール (HSM) を使用する場合**」セクションを参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -13,8 +13,8 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="02/03/2016"
+	ms.topic="article"
+	ms.date="04/01/2016"
 	ms.author="josephd"/>
 
 # SharePoint サーバー ファームの作成
@@ -51,6 +51,8 @@ Microsoft Azure ポータル Marketplace では、事前に構成された Share
 3. **[SharePoint 2013 HA ファーム]** ウィンドウで、**[作成]** をクリックします。
 4. **[SharePoint 2013 HA ファームの作成]** ウィンドウの 7 つの手順で設定を指定して、**[作成]** をクリックします。
 
+> [AZURE.NOTE] Azure 無料試用版では **SharePoint 2013 非 HA ファーム**または **SharePoint 2013 HA ファーム**を作成することはできません。
+
 ## SharePoint ファームの管理
 
 これらのファームのサーバーはリモート デスクトップ接続を通じて管理できます。詳細については、「[仮想マシンへのログオン](virtual-machines-windows-hero-tutorial.md#log-on-to-the-virtual-machine)」を参照してください。
@@ -61,6 +63,7 @@ SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint �
 
 ## 次のステップ
 
+- Azure インフラストラクチャ サービスで、[SharePoint 2013 イントラネット ファーム](virtual-machines-windows-sp-intranet-overview.md)を実稼働ワークロードとしてデプロイします。
 - Azure インフラストラクチャ サービスで、追加の [SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) 構成を検出します。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

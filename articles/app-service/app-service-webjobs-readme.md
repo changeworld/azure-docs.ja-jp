@@ -18,7 +18,7 @@
 
 # Azure App Service での Web ジョブの使用
 
-このトピックでは、Azure Web ジョブと Azure Web ジョブ SDK の使用方法に関するドキュメント リソースへのリンクを掲載しています。Azure Web ジョブは、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) でバック グラウンド プロセスとしてスクリプトやプログラムを実行する簡単な方法を提供します。cmd、bat、exe (.NET)、ps1、sh、php、py、js、jar などの実行可能ファイルをアップロードして、実行できます。これらのプログラムは、スケジュールに従って (cron)、または継続的に Web ジョブとして実行されます。
+この記事では、Azure Web ジョブと Azure Web ジョブ SDK の使用方法に関するドキュメント リソースへのリンクを掲載しています。Azure Web ジョブは、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) でバック グラウンド プロセスとしてスクリプトやプログラムを実行する簡単な方法を提供します。cmd、bat、exe (.NET)、ps1、sh、php、py、js、jar などの実行可能ファイルをアップロードして、実行できます。これらのプログラムは、スケジュールに従って (cron)、または継続的に Web ジョブとして実行されます。
 
 Web ジョブ SDK を使用すると、簡単に Azure Storage を使用できます。Web ジョブ SDK には、Microsoft Azure Storage の BLOB、キュー、テーブルおよび Service Bus のキューと共に動作するバインドおよびトリガー システムがあります。
 
@@ -28,4 +28,4 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 
 [AZURE.INCLUDE [app-service-blueprint-webjobs](../../includes/app-service-blueprint-webjobs.md)]
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0413_2016-->

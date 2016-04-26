@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/13/2016"
+	ms.date="04/14/2016"
 	ms.author="andkjell;billmath"/>
 
 # オンプレミス ID と Azure Active Directory の統合
@@ -84,7 +84,7 @@ Azure AD Connect は [Microsoft ダウンロード センター]( http://go.micr
 | 運用計画 | [Azure AD Connect Sync: 操作タスクおよび考慮事項](active-directory-aadconnectsync-operations.md) |
 | ユーザーのサインイン オプション | [Azure AD Connect ユーザーのサインイン オプション](active-directory-aadconnect-user-signin.md) |
 
-## 機能の構成
+## 同期機能を構成する
 Azure AD Connect には、必要に応じて有効にすることができる機能や、既定で有効になっている機能があります。一部の機能については、シナリオやトポロジに応じて追加の構成が必要になることがあります。
 
 [フィルター処理](active-directory-aadconnectsync-configure-filtering.md)は、Azure AD に同期するオブジェクトを制限する場合に使用します。既定では、すべてのユーザー、連絡先、グループ、Windows 10 コンピューターが同期されますが、ドメイン、OU、または属性に基づいて制限することができます。
@@ -99,7 +99,7 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 
 [自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)は、簡単設定を使用したインストールでは既定で有効になっており、Azure AD Connect が最新のリリースで常に最新の状態になるようにします。
 
-### 機能を構成する次のステップ
+### 同期機能を構成する次のステップ
 
 | トピック | |
 | --------- | --------- |
@@ -130,12 +130,25 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 | 宣言型のプロビジョニング | [Azure AD Connect Sync: 宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
 | 既定の構成の変更 | [既定の構成の変更するためのベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) |
 
+## フェデレーション機能を構成する
+ADFS は[複数のドメイン](active-directory-aadconnect-multiple-domains.md)をサポートするように構成できます。たとえば、フェデレーションに利用する複数の上位ドメインが必要になることがあります。
+
+Azure AD から証明書を自動更新するように ADFS サーバーを更新していない場合、あるいは非 ADFS ソリューションを使用している場合、[証明書の更新](active-directory-aadconnect-o365-certs.md)が必要になったときに通知されます。
+
+### フェデレーション機能を構成する次のステップ
+
+| トピック | |
+| --------- | --------- |
+| サブドメインで ADFS を構成する | [Azure AD とのフェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md) |
+| フェデレーション証明書を手動で更新する | [Office 365 および Azure AD 用のフェデレーション証明書の更新](active-directory-aadconnect-o365-certs.md) |
+
 ## 詳細情報とリファレンス
 
 | トピック | |
 | --------- | --------- |
 | バージョン履歴 | [バージョン履歴](active-directory-aadconnect-version-history.md) |
 | DirSync、Azure ADSync、Azure AD Connect の比較 | [ディレクトリ統合ツールの比較](active-directory-hybrid-identity-design-considerations-tools-comparison.md) |
+| Azure AD の非 ADFS 互換性リスト | [Azure AD のフェデレーション互換性リスト](active-directory-aadconnect-federation-compatibility.md) |
 | 同期される属性 | [同期される属性](active-directory-aadconnectsync-attributes-synchronized.md) |
 | Azure AD Connect Health を使用した監視 | [Azure AD Connect Health](active-directory-aadconnect-health.md) |
 | よく寄せられる質問 | [Azure AD Connect の FAQ](active-directory-aadconnect-faq.md) |
@@ -148,4 +161,4 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 
 [AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

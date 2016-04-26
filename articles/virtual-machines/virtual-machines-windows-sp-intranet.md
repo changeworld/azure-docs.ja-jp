@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/17/2015"
+	ms.date="04/01/2016"
 	ms.author="josephd"/>
 
 # Azure インフラストラクチャ サービスのワークロード: イントラネット SharePoint ファーム
@@ -35,8 +35,6 @@ Azure インフラストラクチャ サービスでイントラネット ShareP
 
 次の手順は、Azure でホストされている開発/テスト イントラネット SharePoint ファームのセットアップです。
 
-> [AZURE.NOTE] Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](https://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
-
 ## Azure でホストされている開発/テスト イントラネット SharePoint ファームを作成する
 
 Azure でホストされている SharePoint の開発/テスト環境を作成するには、2 つの選択肢があります。
@@ -44,7 +42,7 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 - クラウド専用仮想ネットワーク
 - クロスプレミス仮想ネットワーク
 
-[Visual Studio サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)または [Azure 試用サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)を持っている場合、このような開発/テスト環境を無料で作成できます。
+[Visual Studio サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/)または Azure サブスクリプションを持っている場合、このような開発/テスト環境を作成できます。
 
 ### クラウド専用仮想ネットワーク
 
@@ -54,7 +52,7 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 ### クロスプレミス仮想ネットワーク
 
-クロスプレミス仮想ネットワークは、サイト間 VPN または ExpressRoute 接続を使用して、オンプレミス ネットワークに接続されています。最終的な構成に似せた開発/テスト環境を作成し、VPN 接続で SharePoint サーバーへのアクセスとリモート管理の実行を実験する場合は、「[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)」を参照してください。
+クロスプレミス仮想ネットワークは、サイト間 VPN または ExpressRoute 接続を使用して、オンプレミス ネットワークに接続されています。最終的な構成に似せた開発/テスト環境を作成し、VPN 接続で SharePoint サーバーへのアクセスとリモート管理の実行を実験する場合は、「[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](virtual-machines-windows-ps-hybrid-cloud-test-env-sp.md)」を参照してください。
 
 ![](./media/virtual-machines-windows-sp-intranet/CreateSPFarmHybridCloud.png)
 
@@ -102,4 +100,4 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 - 構成を開始する前に、実稼働ワークロードの[概要](virtual-machines-windows-sp-intranet-overview.md)を入手します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

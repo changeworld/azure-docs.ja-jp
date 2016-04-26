@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/03/2016" 
+	ms.date="03/28/2016" 
 	ms.author="josephd"/>
 
 # シミュレートされたテスト用ハイブリッド クラウド環境のセットアップ (クラシック デプロイ モード)
@@ -79,7 +79,7 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 	- TestSubnet の **[CIDR (アドレス数)]** 列で、**[/24 (256)]** をクリックします。
 7.	[完了] アイコンをクリックします。仮想ネットワークが作成されるまで待ってから、次に進みます。
 
-次に、「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」に記載されている手順に従って、ローカル コンピューターに Azure PowerShell をインストールします
+次に、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」に記載されている手順に従って、ローカル コンピューターに Azure PowerShell をインストールします
 
 次に、TestVNET 仮想ネットワークの新しいクラウド サービスを作成します。一意の名前を選ぶ必要があります。たとえば、**TestVNET-***UniqueSequence* という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに **TestVNET-Tailspin** という名前を付けることができます。
 
@@ -225,7 +225,7 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 ## <a id="costs"></a>この環境の継続的な費用を最小限に抑える
 
-この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに TestLab と Test\_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンすることができます。詳細については、[Azure Automation の使用](../automation-create-runbook-from-samples.md)に関するページを参照してください。企業ネットワーク サブネット上の仮想マシンを再度起動する場合は、最初に DC1 を起動します。
+この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに TestLab と Test\_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンすることができます。企業ネットワーク サブネット上の仮想マシンを再度起動する場合は、最初に DC1 を起動します。
 
 Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実装されており、継続的な費用が発生します。詳細については、[Virtual Network 料金](https://azure.microsoft.com/pricing/details/virtual-network/)に関するページを参照してください。2 つの VPN Gateway (それぞれ TestLab 用と TestVNET 用) の費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行うか、次の手順でゲートウェイを削除します。
  
@@ -261,4 +261,4 @@ Azure VPN Gateway は、2 台 1 組みの Azure の仮想マシンとして実�
 
 次に、Azure の管理ポータルの [ネットワーク] ページで、**TestLab** 仮想ネットワークをクリックし、タスク バーの **[接続]** をクリックします。TestLab 仮想ネットワークが TestVNET ローカル ネットワークに接続された状態になるまで待ちます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

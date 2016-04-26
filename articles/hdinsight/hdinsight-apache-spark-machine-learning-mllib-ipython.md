@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/17/2016" 
+	ms.date="04/08/2016" 
 	ms.author="nitinme"/>
 
 
@@ -49,7 +49,7 @@
 
 ## この記事の目的
 
-Spark を使用して、[シカゴ市のデータ ポータル](https://data.cityofchicago.org/)から取得した食品検査データ (**Food\_Inspections1.csv**) に対していくつかの予測分析を実行します。このデータセットには、シカゴで実施された食品検査に関する情報が含まれており、検査された各食品施設に関する情報、見つかった違反 (存在する場合)、検査結果についての情報が含まれています。
+Spark を使用して、[シカゴ市のデータ ポータル](https://data.cityofchicago.org/)から取得した食品検査データ (**Food\_Inspections1.csv**) に対していくつかの予測分析を実行します。このデータセットには、シカゴで実施された食品検査に関する情報が含まれており、検査された各食品施設に関する情報、見つかった違反 (存在する場合)、検査結果についての情報が含まれています。CSV データ ファイルは、クラスターに関連付けられたストレージ アカウントの **/HdiSamples/HdiSamples/FoodInspectionData/Food\_Inspections1.csv** に既に用意されています。
 
 次の手順で、食品検査に合格または不合格になる理由を示すモデルを作成します。
 
@@ -71,7 +71,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
 	![Notebook の名前を指定します](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/hdispark.note.jupyter.notebook.name.png "Notebook の名前を指定します")
 
-3. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark、SQL、および Hive コンテキストが自動的に作成されます。Machine Learning アプリケーションの作成を始めるには、このシナリオに必要な種類をインポートします。これを行うには、セルにカーソルを置き、**SHIFT + ENTER** キーを押します。
+3. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。Machine Learning アプリケーションの作成を始めるには、このシナリオに必要な種類をインポートします。これを行うには、セルにカーソルを置き、**SHIFT + ENTER** キーを押します。
 
 
 		from pyspark.ml import Pipeline
@@ -83,7 +83,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
 ## 入力データフレームを作成する
 
-構造化データに対して変換を実行するために使用できる SQLContext が既にあります。最初のタスクは、サンプル データ ((**Food\_Inspections1.csv**))を Spark SQL *データフレーム*に読み込むことです。次のスニペットは、Spark クラスターに関連付けられている既定のストレージ コンテナーにデータがアップロードされていることを前提としています。
+`sqlContext` を使用すると、構造化データに対して変換を実行できます。最初のタスクは、サンプル データ ((**Food\_Inspections1.csv**))を Spark SQL *データフレーム*に読み込むことです。
 
 1. 生のデータが CSV 形式であるため、Spark コンテキストを使用して、ファイルのすべての行を非構造化テキストとしてメモリにプルする必要があります。次に、Python の CSV ライブラリを使用して、各行を個別に解析します。 
 
@@ -194,13 +194,13 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 		%%sql -o countResultsdf
 		SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
 
-	`%%sql` マジックの後に `-o countResultsdf` と続けて、クエリの出力を Jupyter サーバー (通常はクラスターのヘッドノード) にローカルに保持します。出力は、[Pandas](http://pandas.pydata.org/) データフレームとして、**countResultsdf** という名前を指定して保存します。
+	`%%sql` マジックの後に `-o countResultsdf` と入力して、クエリの出力が Jupyter サーバー (通常はクラスターのヘッドノード) にローカルに保持されるようにします。出力は、指定された **countResultsdf** という名前で [Pandas](http://pandas.pydata.org/) データフレームとして保存されます。
 	
 	出力は次のように表示されます。
 	
 	![SQL クエリ出力](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/query.output.png "SQL クエリ出力")
 
-	`%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、「[HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)」を参照してください。
+	`%%sql` マジックと、PySpark カーネルで使用できるその他のマジックの詳細については、「[HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)」をご覧ください。
 
 3. データの視覚効果の構築に使用するライブラリ、Matplotlib を使用して、プロットを作成することもできます。プロットはローカルに保存された **countResultsdf** データフレームから作成する必要があるため、コード スニペットは `%%local` マジックで始める必要があります。これにより、コードは Jupyter サーバーでローカルに実行されます。
 
@@ -280,7 +280,7 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 
 前に作成したモデルを使用し、どのくらい違反が観察されたかに基づいて、新しい検査結果を*予測*できます。データセット **Food\_Inspections1.csv** でこのモデルをトレーニングしました。2 つ目のデータセット **Food\_Inspections2.csv** を使用して、新しいデータでこのモデルの強度を*評価*します。この 2 つ目のデータ セット (**Food\_Inspections2.csv**) は、クラスターに関連付けられている既定のストレージ コンテナーに既に存在している必要があります。
 
-1. 次のスニペットでは、モデルによって生成された予測を含む、新しいデータフレーム **predictionsDf** を作成します。スニペットは、データフレームに基づいた一時テーブル **Predictions** も作成します。
+1. 次のスニペットでは、モデルによって生成された予測を含む、新しいデータフレーム **predictionsDf** を作成します。このスニペットでは、データフレームに基づいた一時テーブル **Predictions** も作成します。
 
 
 		testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
@@ -339,39 +339,32 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 
 ## 予測を視覚化する
 
-最終的なグラフを作成すると、このテスト結果についての理解に役立ちます。
+このテスト結果の理解に役立つ最終的なグラフを作成します。
 
-1. 先ほど作成した一時テーブル **Predictions** のさまざまな予測や結果を抽出することから始めます。
+1. まず、先ほど作成した一時テーブル **Predictions** からさまざまな予測や結果を抽出します。次のクエリでは、出力を *true\_positive*、*false\_positive*、*true\_negative*、*false\_negative* に分けています。このクエリでは、`-q` を使用して視覚化を無効にし、`%%local` マジックで使用できるデータフレームとして出力を保存 (`-o` を使用) します。 
 
-		%%sql -o predictionstable
-		SELECT prediction, results FROM Predictions
+		%%sql -q -o true_positive
+		SELECT count(*) AS cnt FROM Predictions WHERE prediction = 0 AND results = 'Fail'
 
-2. 上のスニペット **predictionstable** は、SQL クエリの出力を保持する Jupyter サーバー上のローカル データフレームです。ここで、`%%local` マジックを使用して、ローカルに保持されたデータフレームに対して後続のコード スニペットを実行します。
+		%%sql -q -o false_positive
+		SELECT count(*) AS cnt FROM Predictions WHERE prediction = 0 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
 
-		%%local
-		failSuccess = predictionstable[(predictionstable.prediction == 0) & (predictionstable.results == 'Fail')]['prediction'].count()
-		failFailure = predictionstable[(predictionstable.prediction == 0) & (predictionstable.results <> 'Fail')]['prediction'].count()
-		passSuccess = predictionstable[(predictionstable.prediction == 1) & (predictionstable.results <> 'Fail')]['prediction'].count()
-		passFailure = predictionstable[(predictionstable.prediction == 1) & (predictionstable.results == 'Fail')]['prediction'].count()
-		failSuccess,failFailure,passSuccess,passFailure
+		%%sql -q -o true_negative
+		SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND results = 'Fail'
 
-	出力は次のようになります。
-	
-		# -----------------
-		# THIS IS AN OUTPUT
-		# -----------------
-	
-		(276, 46, 1917, 261)
+		%%sql -q -o false_negative
+		SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions') 
 
-3. 最後に、次のスニペットを使用してプロットを生成します。
+2. 最後に、次のスニペットを使用して、**Matplotlib** を使ってプロットを生成します。
 
 		%%local
 		%matplotlib inline
 		import matplotlib.pyplot as plt
 		
 		labels = ['True positive', 'False positive', 'True negative', 'False negative']
-		sizes = [failSuccess, failFailure, passSuccess, passFailure]
-		plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+		sizes = [true_positive['cnt'], false_positive['cnt'], false_negative['cnt'], true_negative['cnt']]
+		colors = ['turquoise', 'seagreen', 'mediumslateblue', 'palegreen', 'coral']
+		plt.pie(sizes, labels=labels, autopct='%1.1f%%', colors=colors)
 		plt.axis('equal')
 	
 	次の出力が表示されます。
@@ -419,4 +412,4 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

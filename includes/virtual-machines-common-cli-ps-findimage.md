@@ -176,11 +176,6 @@ Azure リソース マネージャーを使用して新しい仮想マシンを�
 
 この一覧から選択した SKU の名前をコピーすれば、**Set-AzureVMSourceImage** PowerShell コマンドレットに必要なすべての情報や、イメージの発行元、プラン、SKU を指定する必要のあるリソース グループ テンプレート ファイルに必要なすべての情報が得られます。
 
-### ビデオ チュートリアル
-
-このビデオでは、PowerShell を使用した上記の手順を説明します。
-
-[AZURE.VIDEO virtual-machines-linux-cli-ps-findimage-posh]
 
 
 <!--Image references-->
@@ -194,4 +189,4 @@ Azure リソース マネージャーを使用して新しい仮想マシンを�
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

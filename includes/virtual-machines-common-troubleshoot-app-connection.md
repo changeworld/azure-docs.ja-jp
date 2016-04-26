@@ -3,7 +3,7 @@
 
 この記事では、Azure 仮想マシンで実行されているアプリケーションにアクセスできない場合にその原因を特定し、問題を解決するための系統的アプローチについて説明します。
 
-> [AZURE.NOTE]  Azure 仮想マシンへの接続に関する詳細は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)」または「[Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md)」参照してください。
+> [AZURE.NOTE]  Azure 仮想マシンへの接続に関する詳細は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)」または「[Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)」参照してください。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
 
@@ -65,10 +65,10 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 アプリケーションにアクセスできない場合は、次の点を確認してください。
 
-- クラシック デプロイ モデルを使用して作成された VM の場合、VM のエンドポイント構成で、受信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうか。詳細については、「[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
-- クラシック デプロイ モデルを使用して作成された VM の場合、エンドポイント上のアクセス制御リスト (ACL) によって、インターネットからの着信トラフィックが遮断されていないかどうか。詳細については、「[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
+- クラシック デプロイ モデルを使用して作成された VM の場合、VM のエンドポイント構成で、受信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうか。詳細については、「[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
+- クラシック デプロイ モデルを使用して作成された VM の場合、エンドポイント上のアクセス制御リスト (ACL) によって、インターネットからの着信トラフィックが遮断されていないかどうか。詳細については、「[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
 - リソース マネージャー デプロイ モデルを使用して作成された VM の場合、VM の受信 NAT ルール構成で、受信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうか。
-- ネットワーク セキュリティ グループで、リクエスト受信と応答送信のトラフィックが許可されているかどうか。詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)」を参照してください。
+- ネットワーク セキュリティ グループで、リクエスト受信と応答送信のトラフィックが許可されているかどうか。詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../articles/virtual-network/virtual-networks-nsg.md)」を参照してください。
 
 仮想マシンまたはエンドポイントが負荷分散セットのメンバーである場合:
 
@@ -98,8 +98,8 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 ## その他のリソース
 
-[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)
+[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)
 
-[Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md)
+[Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

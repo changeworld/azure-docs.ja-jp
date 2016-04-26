@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/26/2016"
+   ms.date="04/12/2016"
    ms.author="seanmck"/>
 
 # ローカル クラスターでアプリケーションのデプロイおよびアップグレードを開始する
@@ -84,7 +84,7 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
 
     ![アプリケーションをローカル クラスターにデプロイする][deploy-app-to-local-cluster]
 
-7. アプリケーションの動作を確認するには、ブラウザーを起動し、[http://localhost:8081/wordcount/index](http://localhost:8081/wordcount/index) に移動します。次のような結果が表示されます。
+7. アプリケーションの動作を確認するには、ブラウザーを起動し、[http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html) に移動します。次のような結果が表示されます。
 
     ![デプロイされたアプリケーション UI][deployed-app-ui]
 
@@ -148,11 +148,11 @@ Service Fabric では、クラスター全体にロールアウトされると�
 
     ![PowerShell でのアップグレードの進行状況][ps-appupgradeprogress]
 
-3. アップグレードの進行中は、Service Fabric Explorer でその状態を監視するのが簡単な場合もあります。ブラウザー ウィンドウを起動して、[http://localhost:19080/Explorer](http://localhost:19080/Explorer) に移動します。左側のツリーで **[アプリケーション]** をクリックし、**[アップグレード進行中]** を選択します。
+3. アップグレードの進行中は、Service Fabric Explorer でその状態を監視するのが簡単な場合もあります。ブラウザー ウィンドウを起動して、[http://localhost:19080/Explorer](http://localhost:19080/Explorer) に移動します。左側のツリーで **[アプリケーション]** を展開し、**[WordCount]** を選択して、最後に **[fabric:/WordCount]** を選択します。[基本] タブには、クラスターのアップグレード ドメインごとにアップグレードの進行状況が表示されます。
 
     ![Service Fabric Explorer でのアップグレードの進行状況][sfx-upgradeprogress]
 
-    アップグレード進行状況インジケーターは、クラスターのアップグレード ドメインでのアップグレードの状態を表します。各ドメインでのアップグレードが進行すると、正常性チェックが行われ、アプリケーションが正常に動作していることが確認されます。
+    各ドメインでのアップグレードが進行すると、正常性チェックが行われ、アプリケーションが正常に動作していることが確認されます。
 
 4. fabric:/WordCount アプリケーションに含まれるサービス セットに対する以前のクエリを再実行した場合、WordCountService のバージョンは変化しているが、WordCountWebService のバージョンは変化していないことがわかります。
 
@@ -190,4 +190,4 @@ Service Fabric では、クラスター全体にロールアウトされると�
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

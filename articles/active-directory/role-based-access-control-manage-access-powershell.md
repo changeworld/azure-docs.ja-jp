@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure PowerShell を使用したロールベースのアクセス制御 (RBAC) の管理 |Microsoft Azure"
-	description="Azure PowerShell を使用して、ロールの表示、ロールの割り当て、ロールの割り当ての削除などを行って RBAC を管理する方法。"
+	description="Azure PowerShell を使用して RBAC を管理する方法 (ロールの表示、ロールの割り当て、ロール割り当ての削除など)。"
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="02/29/2016"
+	ms.date="04/12/2016"
 	ms.author="kgremban"/>
 
 # Azure PowerShell を使用したロールベースのアクセス制御の管理
@@ -24,9 +24,15 @@
 - [REST API](role-based-access-control-manage-access-rest.md)
 
 
-## ロールベースのアクセス制御 (RBAC) ロールの一覧
+Azure ポータルと Azure リソース管理 API のロールベースのアクセス制御 (RBAC) を使用すると、サブスクリプションへのアクセスを詳細に管理できます。この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
 
->[AZURE.IMPORTANT] この記事のコマンドレットを使用するには、PowerShell に [Azure Resource Manager のコマンドレットをインストール](https://msdn.microsoft.com/library/mt125356.aspx)しておく必要があります。
+PowerShell を使って RBAC を管理するには、以下を用意しておく必要があります。
+
+- Azure PowerShell バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](../powershell-install-configure.md)」をご覧ください。
+
+- Azure Resource Manager コマンドレット。PowerShell で [Azure Resource Manager コマンドレット](https://msdn.microsoft.com/library/mt125356.aspx)をインストールします。
+
+## ロールの一覧表示
 
 ### 使用可能なすべてのロールの表示
 割り当てることができる RBAC のロールを表示したり、アクセス権が付与されている操作を調べたりするには、次のコマンドを使用します。
@@ -42,23 +48,22 @@
 
 ![RBAC PowerShell - 特定のロールの Get-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/1-get-azure-rm-role-definition2.png)
 
-## アクセス権の表示
-### 選択したサブスクリプションのすべてのロールの割り当ての表示
-指定したサブスクリプション、リソース、またはリソース グループで有効な RBAC のアクセス権の割り当てを表示するには、次のコマンドを使用します。
+## アクセスできるユーザーの確認
+RBAC のアクセス権の割り当てを表示するには、次のコマンドを使用します。
 
     Get-AzureRmRoleAssignment
 
-###	リソース グループに対して有効なロールの割り当ての表示
-リソース グループのアクセス権の割り当てを表示するには、次のコマンドを使用します。
+###	特定のスコープでのロールの割り当ての表示
+指定したサブスクリプション、リソース グループ、またはリソースに対するすべてのアクセス権の割り当てを表示できます。たとえば、リソース グループのすべてのアクティブな割り当てを表示するには、次のコマンドを使用します。
 
     Get-AzureRmRoleAssignment -ResourceGroupName <resource group name>
 
 ![RBAC PowerShell - リソース グループの Get-AzureRmRoleAssignment - スクリーンショット](./media/role-based-access-control-manage-access-powershell/4-get-azure-rm-role-assignment1.png)
 
-### ユーザーへのロールの割り当て (ユーザー グループに割り当てられているロールを含む) の表示
-指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを表示するには、次のコマンドを使用します。
+### ユーザーに割り当てられたロールの表示
+指定したユーザーに割り当てられたすべてのロール (そのユーザーのグループに割り当てられたロールを含む) を表示するには、次のコマンドを使用します。
 
-    Get-AzureRmRoleAssignment -ExpandPrincipalGroups
+    Get-AzureRmRoleAssignment -SignInName <User email> -ExpandPrincipalGroups
 
 ![RBAC PowerShell - ユーザーの Get-AzureRmRoleAssignment - スクリーンショット](./media/role-based-access-control-manage-access-powershell/4-get-azure-rm-role-assignment2.png)
 
@@ -69,29 +74,22 @@
 
 ## アクセス権の付与
 ### オブジェクト ID の検索
-以下のコマンド シーケンスを使用するには、オブジェクト ID を検索しておく必要があります。使用するサブスクリプション ID が既にわかっていることを前提としています。それ以外の場合は、MSDN の「[Get-AzureSubscription](https://msdn.microsoft.com/library/dn495302.aspx)」をご覧ください。
+ロールを割り当てるには、オブジェクト (ユーザー、グループ、またはアプリケーション) とスコープの両方を特定する必要があります。
 
-#### Azure AD グループのオブジェクト ID の検索
+サブスクリプション ID がわからない場合は、Azure ポータルの **[サブスクリプション]** ブレードで、その ID を見つけることができます。または、MSDN で [Get-AzureSubscription](https://msdn.microsoft.com/library/dn495302.aspx) を使って ID のクエリを実行する方法を確認してください。
+
 Azure AD グループのオブジェクト ID を取得するには、次のコマンドを使用します。
 
     Get-AzureRmADGroup -SearchString <group name in quotes>
 
-#### Azure AD サービス プリンシパルのオブジェクト ID の検索
-Azure AD サービス プリンシパル使用のオブジェクト ID の検索
+Azure AD サービス プリンシパル、つまりアプリケーションのオブジェクト ID を取得するには、次のコマンドを使用します。
 
     Get-AzureRmADServicePrincipal -SearchString <service name in quotes>
-
-### サブスクリプションのスコープでのグループへのロールの割り当て
-サブスクリプションのスコープでグループにアクセス権を付与するには、次のコマンドを使用します。
-
-    New-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name in quotes> -Scope <scope such as subscription/subscription id>
-
-![RBAC PowerShell - New-AzureRmRoleAssignment - スクリーンショット](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment1.png)
 
 ### サブスクリプションのスコープでのアプリケーションへのロールの割り当て
 サブスクリプションのスコープでアプリケーションにアクセス権を付与するには、次のコマンドを使用します。
 
-    New-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name in quotes> -Scope <scope such as subscription/subscription id>
+    New-AzureRmRoleAssignment -ObjectId <application id> -RoleDefinitionName <role name in quotes> -Scope <subscription id>
 
 ![RBAC PowerShell - New-AzureRmRoleAssignment - スクリーンショット](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment2.png)
 
@@ -112,7 +110,7 @@ Azure AD サービス プリンシパル使用のオブジェクト ID の検索
 ## アクセス権の削除
 ユーザー、グループ、アプリケーションのアクセス権を削除するには、次のコマンドを使用します。
 
-    Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription/subscription id>
+    Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription id>
 
 ![RBAC PowerShell - Remove-AzureRmRoleAssignment - スクリーンショット](./media/role-based-access-control-manage-access-powershell/3-remove-azure-rm-role-assignment.png)
 
@@ -153,7 +151,7 @@ Azure AD サービス プリンシパル使用のオブジェクト ID の検索
 
 ![RBAC PowerShell - Get-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/5-get-azurermroledefinition2.png)
 
-## RBAC のトピック
-[AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+## 関連項目
+- [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)[AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0413_2016-->

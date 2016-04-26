@@ -158,7 +158,7 @@ BLOB コンテナーへのアクセスを制御するには、**[アクセス制
 	![][20]
 
 ## 次のステップ
-「[Microsoft Azure Storage の概要](/storage/storage-introduction.md)」の記事を読んで、Azure Storage サービスの機能をご確認ください。
+「[Microsoft Azure Storage の概要](./storage/storage-introduction.md)」の記事を読んで、Azure Storage サービスの機能をご確認ください。
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AddAccount1c.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AddAccount2c.png
@@ -182,4 +182,4 @@ BLOB コンテナーへのアクセスを制御するには、**[アクセス制
 [19]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS3c.png
 [20]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS4c.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

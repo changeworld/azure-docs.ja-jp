@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Mobile Services アプリケーション へのプッシュ通知の追加 (Windows Phone) | Microsoft Azure" 
-	description="Azure Mobile Services と Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する方法について説明します。" 
-	services="mobile-services,notification-hubs" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Mobile Services アプリケーション へのプッシュ通知の追加 (Windows Phone) | Microsoft Azure"
+	description="Azure Mobile Services と Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する方法について説明します。"
+	services="mobile-services,notification-hubs"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="12/07/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-phone"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="12/07/2015"
 	ms.author="glenga"/>
 
 
@@ -27,7 +27,7 @@
 
 このチュートリアルは、TodoList サンプル アプリケーションに基づいています。このチュートリアルを開始する前に、「[既存のアプリケーションへの Mobile Services の追加]」を完了してプロジェクトをモバイル サービスに接続している必要があります。モバイル サービスが接続されていない場合は、プッシュ通知の追加ウィザードによってこの接続を作成できます。
 
->[AZURE.NOTE]Windows Phone 8.1 ストア アプリにプッシュ通知を送信するには、チュートリアル「[Windows ストア アプリ](../mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)」に従ってください。
+>[AZURE.NOTE] Windows Phone 8.1 ストア アプリにプッシュ通知を送信するには、チュートリアル「[Windows ストア アプリ](mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md)」に従ってください。
 
 ##<a id="update-app"></a>アプリケーションを更新して通知に登録する
 
@@ -38,7 +38,7 @@
         using Microsoft.Phone.Notification;
 
 3. 次のコードを App.xaml.cs に追加します。
-	
+
         public static HttpNotificationChannel CurrentChannel { get; private set; }
 
         private void AcquirePushChannel()
@@ -73,7 +73,7 @@
 	これにより、ページが読み込まれるたびに登録が要求されるようになります。アプリケーションでは、この登録が常に最新の状態となるように、定期的な登録のみ行うことができます。
 
 5. **F5** キーを押してアプリケーションを実行します。登録キーを示すポップアップ ダイアログが表示されます。
-  
+
 6.	ソリューション エクスプローラーで、[**プロパティ**] を展開して WMAppManifest.xml ファイルを開き、[**機能**] タブをクリックして、**ID\_\_\_CAP\_\_\_PUSH\_NOTIFICATION** 機能がオンであることを確認します。
 
    	![VS で通知を有効にする](./media/mobile-services-javascript-backend-windows-phone-get-started-push/mobile-app-enable-push-wp8.png)
@@ -84,7 +84,7 @@
 
 最後に、通知を送信するためには、TodoItem テーブルの挿入操作に登録されているスクリプトを更新する必要があります。
 
-1. **[TodoItem]** をクリックし、**[スクリプト]** タブをクリックして、**[挿入]** を選択します。 
+1. **[TodoItem]** をクリックし、**[スクリプト]** タブをクリックして、**[挿入]** を選択します。
 
 2. insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
@@ -92,9 +92,9 @@
 		// Define a payload for the Windows Phone toast notification.
 		var payload = '<?xml version="1.0" encoding="utf-8"?>' +
 		    '<wp:Notification xmlns:wp="WPNotification"><wp:Toast>' +
-		    '<wp:Text1>New Item</wp:Text1><wp:Text2>' + item.text + 
+		    '<wp:Text1>New Item</wp:Text1><wp:Text2>' + item.text +
 		    '</wp:Text2></wp:Toast></wp:Notification>';
-		
+
 		request.execute({
 		    success: function() {
 		        // If the insert succeeds, send a notification.
@@ -124,7 +124,7 @@
 
 1. Visual Studio で、F5 キーを押してアプリケーションを実行します。
 
-    >[AZURE.NOTE]Windows Phone エミュレーターでテストする場合、401 認証エラー "RegistrationAuthorizationException" が発生する場合があります。これは、Windows Phone エミュレーターのホスト PC の時計との同期方法によって `RegisterNativeAsync()` 呼び出し中に発生します。セキュリティ トークンで拒否される場合があります。これを解決するには、テストする前にエミュレーターの時計を手動で設定します。
+    >[AZURE.NOTE] Windows Phone エミュレーターでテストする場合、401 認証エラー "RegistrationAuthorizationException" が発生する場合があります。これは、Windows Phone エミュレーターのホスト PC の時計との同期方法によって `RegisterNativeAsync()` 呼び出し中に発生します。セキュリティ トークンで拒否される場合があります。これを解決するには、テストする前にエミュレーターの時計を手動で設定します。
 
 5. アプリケーションのテキストボックスに「hello push」と入力して、**[保存]** をクリックし、すぐに [開始] ボタンまたは [戻る] ボタンを押してアプリケーションを閉じます。
 
@@ -140,14 +140,14 @@
 
 このチュートリアルでは、Windows ストア アプリで Mobile Services および Notification Hubs を使用してプッシュ通知を送信できるようにするための基本について説明しました。次に、次のチュートリアルのいずれかを完了します。
 
-+ [登録者へのブロードキャスト通知の送信](../notification-hubs-windows-phone-send-breaking-news.md) <br/>ユーザーが興味のあるカテゴリに関してプッシュ通知を登録して、プッシュ通知を受信できるようにする方法について説明します。
++ [登録者へのブロードキャスト通知の送信](../notification-hubs/notification-hubs-windows-phone-send-breaking-news.md) <br/>ユーザーが興味のあるカテゴリに関してプッシュ通知を登録して、プッシュ通知を受信できるようにする方法について説明します。
 
-+ [登録者へのプラットフォーム固有の通知の送信](../notification-hubs-aspnet-cross-platform-notify-users.md) <br/>テンプレートを使用して、バックエンドでプラットフォームに固有のペイロードを作成する必要なくモバイル サービスからプッシュ通知を送信する方法について説明します。
++ [登録者へのプラットフォーム固有の通知の送信](../notification-hubs/notification-hubs-aspnet-cross-platform-notify-users.md) <br/>テンプレートを使用して、バックエンドでプラットフォームに固有のペイロードを作成する必要なくモバイル サービスからプッシュ通知を送信する方法について説明します。
 
 
 Mobile Services と Notification Hubs については次のトピックを参照してください。
 
-* [Azure Notification Hubs - 診断ガイドライン](../notification-hubs-diagnosing.md) <br/>プッシュ通知の問題をトラブルシューティングする方法について説明します。
+* [Azure Notification Hubs - 診断ガイドライン](../notification-hubs/notification-hubs-diagnosing.md) <br/>プッシュ通知の問題をトラブルシューティングする方法について説明します。
 
 * [認証の使用] <br/>Mobile Services を使用して別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
 
@@ -174,8 +174,6 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Mobile Services のサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 
-[Notification Hubs とは]: ../notification-hubs-overview.md
+[Notification Hubs とは]: ../notification-hubs/notification-hubs-overview.md
 
- 
-
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0413_2016-->

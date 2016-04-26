@@ -26,4 +26,8 @@
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+## 次のステップ
+
+クラシック ポータルを使用して、[Linux を実行するカスタム仮想マシンを作成](virtual-machines-linux-classic-createportal.md)することもできます
+
+<!---HONumber=AcomDC_0413_2016-->

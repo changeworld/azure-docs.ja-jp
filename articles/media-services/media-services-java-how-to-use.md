@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
- 	ms.date="03/10/2016"  
+ 	ms.date="04/18/2016"  
 	ms.author="robmcm"/>
 
 #方法: Java で Media Services を使用する
@@ -142,7 +142,7 @@ Media Services アカウントを設定するには、Azure クラシック ポ�
 			// Create the Blob Writer using the Locator
 			uploader = mediaService.createBlobWriter(uploadLocator);
 			
-			File file = new File("BigBuckBunny.mp4");//(ConnectToAMSView.class.getClassLoader().getResource("").getPath() + fileName);
+			File file = new File("BigBuckBunny.mp4"); 
 			
 			// The local file that will be uploaded to your Media Services account
 			InputStream input = new FileInputStream(file);
@@ -276,4 +276,4 @@ Media Services に関する Javadoc ドキュメントについては、[Azure L
 
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

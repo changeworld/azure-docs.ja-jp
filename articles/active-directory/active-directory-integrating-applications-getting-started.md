@@ -62,15 +62,13 @@
 各アプリケーションにさまざまな認証の要件が存在する可能性があります。Azure AD では、証明書の署名に、パスワードによるシングル サインオンだけでなく、SAML 2.0、WS-Federation、OpenID Connect プロトコルを使用するアプリケーションを使用することができます。Azure AD で使用するアプリケーション認証の種類の詳細については、「[Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](active-directory-sso-certs.md)」と[パスワード ベースのシングル サインオン](active-directory-appssoaccess-whatis.md)に関するページを参照してください。
 
 ### Azure AD アプリケーション プロキシを使用した SSO の有効化
-Microsoft Azure AD アプリケーション プロキシを使用すると、プライベート ネットワーク内に置かれたアプリケーションへの、任意の場所および任意のデバイスからのアクセスを安全に許可することができます。アプリケーション プロキシ コネクタは、環境内にインストールすると、Azure AD で簡単に構成することができます。詳細については、[Azure AD アプリケーション プロキシを使用した SSO の有効化](active-directory-appssoaccess-enable-hybrid-access.md)に関するページと [Azure AD アプリケーション プロキシ経由の新しいアプリケーションの発行](active-directory-application-proxy-configure.md)に関するページを参照してください。
+Microsoft Azure AD アプリケーション プロキシを使用すると、プライベート ネットワーク内に置かれたアプリケーションへの、任意の場所および任意のデバイスからのアクセスを安全に許可することができます。アプリケーション プロキシ コネクタは、環境内にインストールすると、Azure AD で簡単に構成することができます。
 
 ### Azure AD とアプリケーションの統合
 次の記事では、アプリケーションを Azure AD と統合するさまざまな方法について説明し、ガイダンスをいくつか示します。
 
 - [使用する Active Directory の決定](active-directory-administer.md)
-- [既存のアプリケーションとの統合](active-directory-sso-integrate-existing-apps.md)
-- [Azure AD アプリケーション プロキシ経由の新しいアプリケーションの発行](active-directory-application-proxy-configure.md)
-- [Azure アプリケーション ギャラリーのアプリケーションの使用](active-directory-appssoaccess-whatis.md/#get-started-with-the-azure-ad-application-gallery.md)
+- [Azure アプリケーション ギャラリーのアプリケーションの使用](active-directory-appssoaccess-whatis.md)
 - [SaaS アプリケーションのチュートリアルの一覧の統合](active-directory-saas-tutorial-list.md)
 
 ## アプリケーションへのアクセスの管理
@@ -91,4 +89,4 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、プ
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

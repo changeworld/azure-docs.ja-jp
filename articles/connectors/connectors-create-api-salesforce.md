@@ -29,7 +29,7 @@ Salesforce に接続し、オブジェクトの作成、オブジェクトの取
 
 &nbsp;
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[Salesforce コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-salesforce.md)」をご覧ください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
 Salesforce では、次の操作を実行できます。
 
@@ -266,4 +266,4 @@ Salesforce のオブジェクトが変更されたときにフローをトリガ
 [7]: ./media/connectors-create-api-salesforce/salesforce-create-app.png
 [8]: ./media/connectors-create-api-salesforce/salesforce-new-app.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

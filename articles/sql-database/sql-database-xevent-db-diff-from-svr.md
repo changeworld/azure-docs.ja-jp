@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="SQL Database の拡張イベント | Microsoft Azure" 
-	description="Azure SQL Database での拡張イベント (XEvents) について、またイベント セッションが Microsoft SQL Server におけるイベント セッションと若干異なる点について説明します。" 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="MightyPen" 
-	manager="jhubbard" 
-	editor="" 
+<properties
+	pageTitle="SQL Database の拡張イベント | Microsoft Azure"
+	description="Azure SQL Database での拡張イベント (XEvents) について、またイベント セッションが Microsoft SQL Server におけるイベント セッションと若干異なる点について説明します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="MightyPen"
+	manager="jhubbard"
+	editor=""
 	tags=""/>
 
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/05/2016" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/05/2016"
 	ms.author="genemi"/>
 
 
@@ -27,14 +27,14 @@
 
 - SQL Database V12 では 2015 年の後半に拡張イベント機能が追加されました。
 - SQL Server には 2008 年から拡張イベント機能があります。
-- SQL Database での拡張イベントの機能セットは SQL Server における機能の堅牢なサブセットです。 
+- SQL Database での拡張イベントの機能セットは SQL Server における機能の堅牢なサブセットです。
 
 
 *XEvents* は「拡張イベント」の非公式のニックネームで、ブログや他の非公式な場所で使われます。
 
 
 > [AZURE.NOTE] 2015 年 10 月より、Azure SQL Database において拡張イベント セッション機能がプレビュー レベルでアクティブ化します。完全一般公開 (GA) の日付はまだ設定されていません。
-> 
+>
 > GA のお知らせの際は、Azure の[サービス更新](https://azure.microsoft.com/updates/?service=sql-database)ページに投稿されます。
 
 
@@ -58,7 +58,7 @@
 
 
 - PowerShell
- - [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
+ - [Azure Storage での Azure PowerShell の使用](../storage/storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
 
 
 ## コード サンプル
@@ -244,12 +244,12 @@ Azure Storage BLOB にデータを保持する際に、**イベント ファイ�
 ## 関連リンク
 
 
-- [Azure Storage における Azure PowerShell の使用](storage-powershell-guide-full.md)。
+- [Azure Storage における Azure PowerShell の使用](../storage/storage-powershell-guide-full.md)。
 - [Azure Storage コマンドレット](http://msdn.microsoft.com/library/dn806401.aspx)
 
 
-- [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
-- [.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)
+- [Azure Storage での Azure PowerShell の使用](../storage/storage-powershell-guide-full.md) - PowerShell および Azure Storage サービスに関する包括的な情報を提供します。
+- [.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)
 
 
 - [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
@@ -269,4 +269,4 @@ Azure Storage BLOB にデータを保持する際に、**イベント ファイ�
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

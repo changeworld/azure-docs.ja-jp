@@ -32,12 +32,12 @@ Azure では、VHD 形式の仮想ハード ディスク (固定型) のみを�
 多くの点で "第 1 世代" の Hyper-V VM と似ていますが、まったく同じというわけではありません。いずれのタイプも仮想化されたハードウェアを提供し、VHD 形式の仮想ハードディスクと互換性があります。つまり、Hyper-V と Azure の間で移動させることができます。HYPER-V ユーザーに驚かれることの多い主な違いは次の 3 点です。
 
 - Azure では、仮想マシンにアクセスするためのコンソールが提供されません。起動が完了するまで、VM にアクセスする方法はありません。
-- ほとんどの[サイズ](virtual-machines-linux-sizes.md)の Azure VM では、仮想ネットワーク アダプターが 1 つしかないため、外部 IP アドレスも 1 つしか使用できません。(A8 サイズと A9 サイズでは、インスタンス間でのアプリケーション通信に 2 つ目のネットワーク アダプターが使用される場合があります。)
+- ほとんどの[サイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md)の Azure VM では、仮想ネットワーク アダプターが 1 つしかないため、外部 IP アドレスも 1 つしか使用できません。(A8 サイズと A9 サイズでは、インスタンス間でのアプリケーション通信に 2 つ目のネットワーク アダプターが使用される場合があります。)
 - Azure Vm では、第 2 世代の HYPER-V VM の機能はサポートされていません。これらの機能の詳細については、「[Virtual Machine Specifications for Hyper-V (Hyper-V の仮想マシンの仕様)](http://technet.microsoft.com/library/dn592184.aspx)」および「[第 2 世代仮想マシンの概要](https://technet.microsoft.com/library/dn282285.aspx)」を参照してください。
 
 ## これらの仮想マシンで、既存のオンプレミス ネットワーク インフラストラクチャを使用することはできますですか。
 
-クラシック デプロイ モデルで作成された仮想マシンの場合は、Azure Virtual Network を使用して既存のインフラストラクチャを拡張できます。このアプローチは、ブランチ オフィスのセットアップに似ています。Azure 上で仮想プライベート ネットワーク (VPN) をプロビジョニングして管理できるだけでなく、それらの VPN をオンプレミスの IT インフラストラクチャにセキュアに接続することもできます。詳細については、「[仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
+クラシック デプロイ モデルで作成された仮想マシンの場合は、Azure Virtual Network を使用して既存のインフラストラクチャを拡張できます。このアプローチは、ブランチ オフィスのセットアップに似ています。Azure 上で仮想プライベート ネットワーク (VPN) をプロビジョニングして管理できるだけでなく、それらの VPN をオンプレミスの IT インフラストラクチャにセキュアに接続することもできます。詳細については、「[仮想ネットワークの概要](../articles/virtual-network/virtual-networks-overview.md)」を参照してください。
 
 仮想マシンを作成する際には、仮想マシンの参加先となるネットワークを指定する必要があります。既存の仮想マシンを仮想ネットワークに参加させることはできません。ただし、仮想ハードディスク (VHD) を既存の仮想マシンからデタッチし、それを使用して、目的のネットワーク構成で新しい仮想マシンを作成することにより、この問題を回避することは可能です。
 
@@ -72,7 +72,7 @@ Windows 仮想マシンでは、ページ ファイルを移動してドライ�
 アップグレードという言葉は一般に、オペレーティング システムを現在のハードウェアのままで新しいリリースに移行することを指します。Azure VM の場合、新しいリリースに移行するプロセスは Windows や Linux の場合と異なります。
 
 - Linux VM の場合、配布には適切なパッケージ管理ツールと手順を使用してください。
-- Windows 仮想マシンの場合、Windows Server 移行ツールのようなものを使用してサーバーを移行する必要があります。ゲスト OS が Azure 上に存在する状態でアップグレードを行うことは避けてください。仮想マシンへのアクセスが失われる恐れがあるため、この操作はサポートされていません。アップグレード中に問題が発生すると、リモート デスクトップ セッションを開始できなくなり、問題のトラブルシューティングができなくなる可能性があります。 
+- Windows 仮想マシンの場合、Windows Server 移行ツールのようなものを使用してサーバーを移行する必要があります。ゲスト OS が Azure 上に存在する状態でアップグレードを行うことは避けてください。仮想マシンへのアクセスが失われる恐れがあるため、この操作はサポートされていません。アップグレード中に問題が発生すると、リモート デスクトップ セッションを開始できなくなり、問題のトラブルシューティングができなくなる可能性があります。
 
 Windows Server の移行に関するツールとプロセスの詳細については、「[Windows Server への役割と機能の移行](http://go.microsoft.com/fwlink/p/?LinkId=396940)」を参照してください。
 
@@ -128,14 +128,14 @@ Azure では、Azure データ センターでの定期的な計画メンテナ�
 
 計画メンテナンスのために再起動が発生した場合、利用者は Azure クラシック ポータルまたは Azure PowerShell を使用して再起動のログを確認できます。詳細については、「[Viewing VM Reboot Logs (VM の再起動ログの確認)](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/)」を参照してください。
 
-冗長性を確保する必要がある場合は、同様に構成された VM を同じ可用性セット内に 2 つ以上配置してください。そうすることで、計画メンテナンスや計画外メンテナンスの際にも、最低 1 つの VM を利用できるようになります。Azure では、この構成について一定レベルの VM 可用性を保証しています。詳細については、「[仮想マシンの可用性管理](virtual-machines-windows-manage-availability.md)」を参照してください。
+冗長性を確保する必要がある場合は、同様に構成された VM を同じ可用性セット内に 2 つ以上配置してください。そうすることで、計画メンテナンスや計画外メンテナンスの際にも、最低 1 つの VM を利用できるようになります。Azure では、この構成について一定レベルの VM 可用性を保証しています。詳細については、「[仮想マシンの可用性管理](../articles/virtual-machines/virtual-machines-windows-manage-availability.md)」を参照してください。
 
 ## その他のリソース
 
-[Azure の Virtual Machines について](virtual-machines-linux-about.md)
+[Azure の Virtual Machines について](../articles/virtual-machines/virtual-machines-linux-about.md)
 
-[Linux 仮想マシンを作成するさまざまな方法](virtual-machines-linux-creation-choices.md)
+[Linux 仮想マシンを作成するさまざまな方法](../articles/virtual-machines/virtual-machines-linux-creation-choices.md)
 
-[Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-creation-choices.md)
+[Windows 仮想マシンを作成するさまざまな方法](../articles/virtual-machines/virtual-machines-windows-creation-choices.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

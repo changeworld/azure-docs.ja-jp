@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Python を使用して Azure BLOB ストレージ間でデータを移動する | Microsoft Azure" 
-	description="Python を使用して Azure BLOB ストレージ間でデータを移動する" 
-	services="machine-learning,storage" 
-	documentationCenter="" 
-	authors="bradsev" 
-	manager="paulettm" 
+<properties
+	pageTitle="Python を使用して Azure BLOB ストレージ間でデータを移動する | Microsoft Azure"
+	description="Python を使用して Azure BLOB ストレージ間でデータを移動する"
+	services="machine-learning,storage"
+	documentationCenter=""
+	authors="bradsev"
+	manager="paulettm"
 	editor="cgronlun" />
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="03/04/2016" 
+<tags
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/04/2016"
 	ms.author="bradsev" />
 
 # Python を使用して Azure BLOB ストレージ間でデータを移動する
@@ -29,7 +29,7 @@ Azure SDK で提供される Python API を使用して、以下のことを行�
 - コンテナー内の BLOB を一覧表示する
 - BLOB を削除する
 
-Python API を使用する方法の詳細については、「[Python から Azure BLOB ストレージを使用する方法](../storage-python-how-to-use-blob-storage.md)」を参照してください。
+Python API を使用する方法の詳細については、「[Python から Azure BLOB ストレージを使用する方法](../storage/storage-python-how-to-use-blob-storage.md)」を参照してください。
 
 以下のリンクから、Azure Blob ストレージとの間でデータを移動するために使用するテクノロジについてのガイダンスを参照してください。
 
@@ -38,14 +38,14 @@ Python API を使用する方法の詳細については、「[Python から Azu
 
 > [AZURE.NOTE] [Azure のデータ サイエンス用仮想マシン](machine-learning-data-science-virtual-machines.md)によって提供されるスクリプトを使用してセットアップされた VM を使用している場合、AzCopy は既に VM にインストールされています。
 
-> [AZURE.NOTE] Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
+> [AZURE.NOTE] Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage/storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
 
 ## 前提条件
 
 このドキュメントは、Azure サブスクリプション、ストレージ アカウント、そのアカウントに対応するストレージ キーがあることを前提としています。データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。
 
 - Azure サブスクリプションを設定するには、「[1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
-- ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「[Azure ストレージ アカウントについて](../storage-create-storage-account.md)」を参照してください。
+- ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
 ## BLOB へのデータのアップロード
 
@@ -54,18 +54,18 @@ Python API を使用する方法の詳細については、「[Python から Azu
 	from azure.storage.blob import BlobService
 
 **BlobService** オブジェクトを使用して、コンテナーおよび BLOB を操作できます。次のコードは、ストレージ アカウントの名前とアカウント キーを使用して、BlobService オブジェクトを作成します。アカウント名とアカウント キーは実際のアカウントとキーに置き換えてください。
-	
+
 	blob_service = BlobService(account_name="<your_account_name>", account_key="<your_account_key>")
 
 データを BLOB にアップロードするには、次のメソッドを使用します。
- 
+
 1. put\_block\_blob\_from\_path (指定されたパスからファイルの内容をアップロードします)
 2. put\_block\_blob\_from\_file (既に開かれているファイル/ストリームから内容をアップロードします)
 3. put\_block\_blob\_from\_bytes (バイトの配列をアップロードします)
 4. put\_block\_blob\_from\_text (指定されたエンコーディングを使用して、指定されたテキスト値をアップロードします)
- 
+
 次のサンプル コードではコンテナーにローカル ファイルをアップロードします。
-	
+
 	blob_service.put_block_blob_from_path("<your_container_name>", "<your_blob_name>", "<your_local_file_name>")
 
 次のサンプル コードでは、ローカル ディレクトリのすべてのファイル (ディレクトリを除く) を BLOB ストレージにアップロードします。
@@ -73,17 +73,17 @@ Python API を使用する方法の詳細については、「[Python から Azu
 	from azure.storage.blob import BlobService
 	from os import listdir
 	from os.path import isfile, join
-	
+
 	# Set parameters here
 	ACCOUNT_NAME = "<your_account_name>"
 	ACCOUNT_KEY = "<your_account_key>"
 	CONTAINER_NAME = "<your_container_name>"
 	LOCAL_DIRECT = "<your_local_directory>"		
-	
+
 	blob_service = BlobService(account_name=ACCOUNT_NAME, account_key=ACCOUNT_KEY)
 	# find all files in the LOCAL_DIRECT (excluding directory)
 	local_file_list = [f for f in listdir(LOCAL_DIRECT) if isfile(join(LOCAL_DIRECT, f))]
-	
+
 	file_num = len(local_file_list)
 	for i in range(file_num):
 	    local_file = join(LOCAL_DIRECT, local_file_list[i])
@@ -99,7 +99,7 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 1. get\_blob\_to\_path
 2. get\_blob\_to\_file
 3. get\_blob\_to\_bytes
-4. get\_blob\_to\_text 
+4. get\_blob\_to\_text
 
 これらのメソッドは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行します。
 
@@ -111,15 +111,15 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 
 	from azure.storage.blob import BlobService
 	from os.path import join
-	
+
 	# Set parameters here
 	ACCOUNT_NAME = "<your_account_name>"
 	ACCOUNT_KEY = "<your_account_key>"
 	CONTAINER_NAME = "<your_container_name>"
 	LOCAL_DIRECT = "<your_local_directory>"		
-	
+
 	blob_service = BlobService(account_name=ACCOUNT_NAME, account_key=ACCOUNT_KEY)
-	
+
 	# List all blobs and download them one by one
 	blobs = blob_service.list_blobs(CONTAINER_NAME)
 	for blob in blobs:
@@ -129,4 +129,4 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 	    except:
 	        print "something wrong happened when downloading the data %s"%blob.name
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

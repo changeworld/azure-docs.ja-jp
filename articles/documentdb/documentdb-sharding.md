@@ -1,6 +1,6 @@
 <properties 
-	pageTitle=".NET SDK を使用して DocumentDB 内のデータをパーティション分割する方法 | Microsoft Azure" 
-	description="Azure DocumentDB .NET SDK を使用して、データをパーティション分割 (シャード) したり、複数のコレクションに要求をルーティングしたりする方法について説明します。" 
+	pageTitle="SDK を使用してクライアント側のパーティション分割を実装する方法 |Microsoft Azure" 
+	description="Azure DocumentDB SDK を使用して、データをパーティション分割 (シャード) したり、複数のコレクションに要求をルーティングしたりする方法について説明します。" 
 	services="documentdb" 
 	authors="arramac" 
 	manager="jhubbard" 
@@ -13,26 +13,28 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="04/10/2016" 
 	ms.author="arramac"/>
 
 # .NET SDK を使用して DocumentDB 内のデータをパーティション分割する方法
 
 Azure DocumentDB では、コレクションを[大容量のストレージとスループット](documentdb-partition-data.md)にスケールアップすることができます。ただし、パーティション分割の動作を細かく制御することにメリットがあるケースもあります。パーティション分割タスクに必要なボイラー プレート コードの量を減らすために、複数のコレクションにまたがってスケール アウトされるアプリケーションを構築しやすくする機能を .NET、Node.js、Java SDK に追加しました。
 
-この記事では、.NET SDK のクラスとインターフェイスについて確認し、それらを使用してパーティション分割されたアプリケーションを開発する方法を見ていきます。
+この記事では、.NET SDK のクラスとインターフェイスについて確認し、それらを使用してパーティション分割されたアプリケーションを開発する方法を見ていきます。Java、Node.js、Python などの他の SDK では、クライアント側のパーティション分割用の類似するメソッドとインターフェイスをサポートしています。
 
 ## DocumentDB SDK を使用したパーティション分割
 
-パーティション分割を詳しく見る前に、パーティション分割に関連する基本的な DocumentDB の概念を確認しましょう。各 Azure DocumentDB データベース アカウントは、一連のデータベースで構成されます。それぞれのデータベースには複数のコレクションが含まれ、それぞれのコレクションにはストアド プロシージャ、トリガー、UDF、ドキュメント、および関連する添付ファイルが含まれています。コレクションは DocumentDB 内でパーティションとして扱うことができ、次のような性質を備えています。
+パーティション分割を詳しく見る前に、パーティション分割に関連する基本的な DocumentDB の概念を確認しましょう。各 Azure DocumentDB データベース アカウントは、一連のデータベースで構成されます。それぞれのデータベースには複数のコレクションが含まれ、それぞれのコレクションにはストアド プロシージャ、トリガー、UDF、ドキュメント、および関連する添付ファイルが含まれています。コレクションは、単一パーティションの場合もあれば、コレクション自体がパーティション分割されている場合もあります。コレクションには、次のプロパティがあります。
 
 - コレクションではパフォーマンスを分離することができます。そのため、同一コレクション内の類似したドキュメントを照合することには、パフォーマンス上のメリットがあります。たとえば、時系列データの場合、頻繁に照会する前月のデータはプロビジョニング済みの高スループットのコレクション内に配置し、古いデータはプロビジョニング済みの低スループットのコレクション内に配置することができます。
 - ACID トランザクション (ストアド プロシージャやトリガー) は、コレクションをまたがることはできません。トランザクションのスコープは、コレクション内の単一のパーティション キー値内に設定されます。
 - コレクションではスキーマを適用しないため、同じ種類だけでなく、異なる種類の複数の JSON ドキュメントに対しても使用できます。
 
-[Azure DocumentDB .NET SDK のバージョン 1.1.0](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 以降では、ドキュメントの操作をデータベースに対して直接実行できます。内部では、ユーザーがデータベースに指定した PartitionResolver を使用して、[DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) が適切なコレクションに要求をルーティングします。
+[Azure DocumentDB SDK のバージョン 1.5.x](documentdb-sdk-dotnet.md) 以降では、ドキュメントの操作をデータベースに対して直接実行できます。内部では、ユーザーがデータベースに指定した PartitionResolver を使用して、[DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) が適切なコレクションに要求をルーティングします。
 
-各 PartitionResolver クラスは、[GetPartitionKey](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.getpartitionkey.aspx)、[ResolveForCreate](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.resolveforcreate.aspx)、[ResolveForRead](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.resolveforread.aspx) の 3 つのメソッドを持つ [IPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.aspx) インターフェイスの具体的な実装です。LINQ クエリと ReadFeed 反復子では、ResolveForRead メソッドを内部的に使用して、要求のパーティション キーと一致するすべてのコレクションを反復処理します。同様に、作成操作では、ResolveForCreate メソッドを使用して、適切なパーティションに作成をルーティングします。置換、削除、および読み取りでは、使用するドキュメント内に当該コレクションへの参照が既に含まれているため、必要な変更はありません。
+>[AZURE.NOTE] [Server-side partitioning]REST API 2015-12-16 および SDK 1.6.0 以上で導入された (documentdb-partition-data.md) では、単純なユース ケースでのクライアント側パーティション リゾルバーのアプローチは廃止されています。ただし、クライアント側のパーティション分割の柔軟性が向上しており、パーティション キー全体でのパフォーマンスの分離の制御、複数のパーティションから結果を読み取る際の並列処理次数の制御、ハッシュに対する範囲/空間パーティション分割アプローチの使用が可能になっています。
+
+たとえば、.NET では、各 PartitionResolver クラスは、[GetPartitionKey](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.getpartitionkey.aspx)、[ResolveForCreate](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.resolveforcreate.aspx)、[ResolveForRead](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.resolveforread.aspx) の 3 つのメソッドを持つ [IPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.aspx) インターフェイスの具体的な実装です。LINQ クエリと ReadFeed 反復子では、ResolveForRead メソッドを内部的に使用して、要求のパーティション キーと一致するすべてのコレクションを反復処理します。同様に、作成操作では、ResolveForCreate メソッドを使用して、適切なパーティションに作成をルーティングします。置換、削除、および読み取りでは、使用するドキュメント内に当該コレクションへの参照が既に含まれているため、必要な変更はありません。
 
 SDK には、正規のパーティション分割手法であるハッシュ参照と範囲参照をそれぞれサポートする [HashPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx) と [RangePartitionResolver](https://msdn.microsoft.com/library/azure/mt126047.aspx) の 2 つのクラスも含まれています。これらのクラスを使用すれば、パーティション分割ロジックをアプリケーションに簡単に追加できます。
 
@@ -96,7 +98,7 @@ foreach (UserProfile activeUser in query)
 ```
 
 ## ハッシュ パーティション リゾルバー
-ハッシュ パーティション分割では、ハッシュ関数の値に基づいてパーティションが割り当てられるため、要求やデータを複数のパーティションに均等に分配できます。このアプローチは一般的に、多種多様なクライアントによって生成または消費されるデータのパーティション分割に使用され、ユーザー プロファイル、カタログ項目、IoT (Internet of Things: モノのインターネット) テレメトリ データなどを格納するのに役立ちます。
+ハッシュ パーティション分割では、ハッシュ関数の値に基づいてパーティションが割り当てられるため、要求やデータを複数のパーティションに均等に分配できます。このアプローチは一般的に、多種多様なクライアントによって生成または消費されるデータのパーティション分割に使用され、ユーザー プロファイル、カタログ項目、IoT (Internet of Things: モノのインターネット) テレメトリ データなどを格納するのに役立ちます。ハッシュ パーティション分割は、コレクション内での DocumentDB のサーバー側のパーティション分割のサポートでも使用されます。
 
 **ハッシュ パーティション分割:** ![ハッシュ パーティション分割で要求が複数のパーティションに均等に分配されることを示す図](media/documentdb-sharding/partition-hash.png)
 
@@ -120,21 +122,21 @@ foreach (UserProfile activeUser in query)
 
 ## サンプル 
 
-[DocumentDB パーティション分割のサンプル GitHub プロジェクト](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning)をご覧ください。このプロジェクトには、ここで説明した PartitionResolver を使用する方法と、これらを拡張し、以下のような特定のユース ケースに合わせて独自のリゾルバーを実装する方法について、コード スニペットが記載されています。
+[DocumentDB パーティション分割のサンプル GitHub プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning)をご覧ください。このプロジェクトには、ここで説明した PartitionResolver を使用する方法と、これらを拡張し、以下のような特定のユース ケースに合わせて独自のリゾルバーを実装する方法について、コード スニペットが記載されています。
 
 * GetPartitionKey に任意のラムダ式を指定し、これを使用して複合パーティション キーを実装したり、複数の種類のオブジェクトをそれぞれ異なる方法でパーティション分割したりする方法。
-* 手動で作成したルックアップ テーブルを使用してパーティション分割を実行するシンプルな [LookupPartitionResolver](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning/Partitioners/LookupPartitionResolver.cs) を作成する方法。このパターンは一般的に、リージョン、テナント ID、アプリケーション名などの離散値に基づくパーティション分割に使用されます。
-* テンプレートに基づいて自動的にコレクションを作成する [ManagedPartitionResolver](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning/Partitioners/ManagedHashPartitionResolver.cs) を作成する方法。テンプレートでは、新しいコレクションに対して登録する必要がある名前付けスキーム、IndexingPolicy、およびストアド プロシージャを定義します。
-* 古いコレクションがいっぱいになったときにのみ新しいコレクションを作成する、スキームのない [SpilloverPartitionResolver](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning/Partitioners/SpilloverPartitionResolver.cs) を作成する方法。
+* 手動で作成したルックアップ テーブルを使用してパーティション分割を実行するシンプルな [LookupPartitionResolver](https://github.com/Azure/azure-documentdb-dotnet/blob/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning/Partitioners/LookupPartitionResolver.cs) を作成する方法。このパターンは一般的に、リージョン、テナント ID、アプリケーション名などの離散値に基づくパーティション分割に使用されます。
+* テンプレートに基づいて自動的にコレクションを作成する [ManagedPartitionResolver](https://github.com/Azure/azure-documentdb-dotnet/blob/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning/Partitioners/ManagedHashPartitionResolver.cs) を作成する方法。テンプレートでは、新しいコレクションに対して登録する必要がある名前付けスキーム、IndexingPolicy、およびストアド プロシージャを定義します。
+* 古いコレクションがいっぱいになったときにのみ新しいコレクションを作成する、スキームのない [SpilloverPartitionResolver](https://github.com/Azure/azure-documentdb-dotnet/blob/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning/Partitioners/SpilloverPartitionResolver.cs) を作成する方法。
 * PartitionResolver の状態を JSON としてシリアル化および逆シリアル化する方法。これにより、状態をプロセス間で共有したり、シャットダウンをまたいで維持したりできます。状態は、構成ファイルだけでなく、DocumentDB コレクションにも保持できます。
-* コンシステント ハッシュに基づいてパーティション分割されたデータベースに対してパーティションの動的な追加や削除を実行するための [DocumentClientHashPartitioningManager](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning/Util/DocumentClientHashPartitioningManager.cs) クラス。内部的には [TransitionHashPartitionResolver](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning/Partitioners/TransitionHashPartitionResolver.cs) を使用し、移行時に 4 つのモードのいずれかを使用して読み取りや書き込みをルーティングします。4 つのモードとは、古いパーティション スキームからの読み取り (ReadCurrent)、新しいパーティション スキームからの読み取り (ReadNext)、両方の結果の結合 (ReadBoth)、移行中は使用不可 (None) です。
+* コンシステント ハッシュに基づいてパーティション分割されたデータベースに対してパーティションの動的な追加や削除を実行するための [DocumentClientHashPartitioningManager](https://github.com/Azure/azure-documentdb-dotnet/blob/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning/Util/DocumentClientHashPartitioningManager.cs) クラス。内部的には [TransitionHashPartitionResolver](https://github.com/Azure/azure-documentdb-dotnet/blob/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning/Partitioners/TransitionHashPartitionResolver.cs) を使用し、移行時に 4 つのモードのいずれかを使用して読み取りや書き込みをルーティングします。4 つのモードとは、古いパーティション スキームからの読み取り (ReadCurrent)、新しいパーティション スキームからの読み取り (ReadNext)、両方の結果の結合 (ReadBoth)、移行中は使用不可 (None) です。
 
 サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。
 
 >[AZURE.NOTE] コレクションの作成は DocumentDB によって速度が制限されているため、ここに示したサンプル メソッドの一部では、処理が完了するまでに数分かかる場合があります。
 
 ##FAQ
-** DocumentDB はサーバー側のパーティション分割をサポートしていますか。**
+**DocumentDB はサーバー側のパーティション分割をサポートしていますか。**
 
 はい、DocumentDB は[サーバー側のパーティション分割](documentdb-partition-data.md)をサポートしています。より高度なユース ケースとしては、クライアント側のパーティション リゾルバーを介したクライアント側のパーティション分割もサポートしています。
 
@@ -153,13 +155,13 @@ foreach (UserProfile activeUser in query)
 複数の PartitionResolver を連結するには、1 つ以上の既存のリゾルバーを内部で使用する独自の IPartitionResolver を実装します。この例については、サンプル プロジェクト内の TransitionHashPartitionResolver を参照してください。
 
 ##参照
-* [DocumentDB を使用したデータのパーティション分割](documentdb-partition-data.md)
+* [DocumentDB でのサーバー側のパーティション分割](documentdb-partition-data.md)
 * [DocumentDB のコレクションとパフォーマンス レベル](documentdb-performance-levels.md)
-* [GitHub のパーティション分割のコード サンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Partitioning)
+* [GitHub のパーティション分割のコード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/287acafef76ad223577759b0170c8f08adb45755/samples/code-samples/Partitioning)
 * [MSDN の DocumentDB .NET SDK に関するドキュメント](https://msdn.microsoft.com/library/azure/dn948556.aspx)
 * [DocumentDB .NET のサンプル](https://github.com/Azure/azure-documentdb-net)
 * [DocumentDB の制限](documentdb-limits.md)
 * [パフォーマンスに関するヒントについての DocumentDB ブログ](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

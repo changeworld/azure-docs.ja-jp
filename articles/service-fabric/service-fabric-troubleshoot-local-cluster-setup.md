@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/08/2016"
+   ms.date="04/06/2016"
    ms.author="seanmck"/>
 
 # ローカル開発クラスターのセットアップをトラブルシューティングする
@@ -50,6 +50,8 @@ Azure PowerShell ウィンドウで `Connect-ServiceFabricCluster` などの Ser
 #### 解決策
 
 Service Fabric コマンドレットは常に Windows PowerShell から直接実行します。
+
+>[AZURE.NOTE] Azure PowerShell の最新バージョンでは特別なショートカットが作成されないため、このエラーは発生しなくなります。
 
 ### 型の初期化で例外が発生する
 
@@ -96,4 +98,4 @@ Visual Studio を使用してデバッグしている際に、FabricConnectionDe
 - [システム正常性レポートでクラスターを理解してトラブルシューティングする](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0413_2016-->

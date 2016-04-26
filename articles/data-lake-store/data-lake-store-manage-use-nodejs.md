@@ -3,7 +3,7 @@
    description="Data Lake Store アカウントとファイル システムを管理する方法について説明します。" 
    services="data-lake-store" 
    documentationCenter="" 
-   authors="mumian" 
+   authors="nitinme" 
    manager="paulettm" 
    editor="cgronlun"/>
  
@@ -13,18 +13,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="12/11/2015"
-   ms.author="jgao"/>
+   ms.date="04/07/2016"
+   ms.author="nitinme"/>
 
 # Azure SDK for Node.js を使用して Azure Data Lake Store を管理する
 
 > [AZURE.SELECTOR]
-- [Using Portal](data-lake-store-get-started-portal.md)
-- [Using PowerShell](data-lake-store-get-started-powershell.md)
-- [Using .NET SDK](data-lake-store-get-started-net-sdk.md)
-- [Using Azure CLI](data-lake-store-get-started-cli.md)
-- [Using Node.js](data-lake-store-manage-use-nodejs.md)
-
+- [ポータル](data-lake-store-get-started-portal.md)
+- [PowerShell](data-lake-store-get-started-powershell.md)
+- [.NET SDK](data-lake-store-get-started-net-sdk.md)
+- [Java SDK](data-lake-store-get-started-java-sdk.md)
+- [REST API](data-lake-store-get-started-rest-api.md)
+- [Azure CLI](data-lake-store-get-started-cli.md)
+- [Node.JS](data-lake-store-manage-use-nodejs.md)
 
 Azure ADK for Node.js を使用して、Azure Data Lake Store アカウントとファイル システムを管理できます。
 
@@ -37,7 +38,7 @@ Azure ADK for Node.js を使用して、Azure Data Lake Store アカウントと
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 - **Azure Data Lake Store アカウント**。「[Azure ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してアカウントを作成します。
-- **Data Lake Analytics アカウントへのアクセス許可を持つサービス プリンシパル**。「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
+- **Data Lake Analytics アカウントへのアクセス許可を持つサービス プリンシパル**。「[Azure リソース マネージャーでのサービス プリンシパルの認証](../resource-group-authenticate-service-principal.md)」を参照してください。
 
 ## SDK のインストール
 
@@ -110,6 +111,6 @@ Azure ADK for Node.js を使用して、Azure Data Lake Store アカウントと
 ##関連項目 
 
 - [Azure SDK for Node.js](http://azure.github.io/azure-sdk-for-node/)
-- [Node.js を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-use-nodejs.md)
+- [Node.js を使用して Azure Data Lake Analytics を管理する](../data-lake-analytics/data-lake-analytics-manage-use-nodejs.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0413_2016-->

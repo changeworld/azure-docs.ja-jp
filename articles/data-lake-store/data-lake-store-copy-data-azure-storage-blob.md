@@ -1,18 +1,18 @@
-<properties 
+<properties
    pageTitle="Azure Storage Blob のデータを Data Lake Store にコピーする | Microsoft Azure"
-   description="AdlCopy ツールを使用して Azure Storage Blob のデータを Data Lake Store にコピーします" 
-   services="data-lake-store" 
-   documentationCenter="" 
-   authors="nitinme" 
-   manager="paulettm" 
+   description="AdlCopy ツールを使用して Azure Storage Blob のデータを Data Lake Store にコピーします"
+   services="data-lake-store"
+   documentationCenter=""
+   authors="nitinme"
+   manager="paulettm"
    editor="cgronlun"/>
- 
+
 <tags
    ms.service="data-lake-store"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="big-data" 
+   ms.workload="big-data"
    ms.date="01/05/2016"
    ms.author="nitinme"/>
 
@@ -30,9 +30,9 @@ AdlCopy ツールには 2 つの使用方法があります。
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。 
+- Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
 - データが含まれる **Azure Storage Blobs** コンテナー。
-- **Azure Data Lake Analytics アカウント (省略可能)** - Data Lake Store アカウントの作成手順については、「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics/data-lake-analytics-get-started-portal.md)」を参照してください。
+- **Azure Data Lake Analytics アカウント (省略可能)** - Data Lake Store アカウントの作成手順については、「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)」を参照してください。
 - **AdlCopy ツール**。[http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy) の AdlCopy ツールをインストールします。
 
 ## AdlCopy ツールの構文
@@ -63,7 +63,7 @@ AdlCopy ツールを操作するには、次の構文を使用します。
 
 	次に例を示します。
 
-		AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== 
+		AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
 	Data Lake Store アカウントがある Azure サブスクリプションの資格情報を入力するように求められます。次のような出力が表示されます。
 
@@ -84,15 +84,15 @@ AdlCopy ツールを操作するには、次の構文を使用します。
 
 	次に例を示します。
 
-		AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== 
+		AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
-	
+
 
 ## Data Lake Analytics アカウントで AdlCopy を使用する
 
 Data Lake Analytics アカウントを使用して、AdlCopy ジョブを実行し、Azure Storage Blob のデータを Data Lake Store にコピーすることもできます。通常、このオプションを使用するのは、移動対象のデータが GB および TB の範囲で、パフォーマンスのスループットを向上し、予測可能にする場合です。
 
-Data Lake Analytics アカウントと AdlCopy を使用するには、ソース (Azure Storage Blob) と コピー先 (Azure Data Lake Store) の両方を Data Lake Analytics アカウントのデータ ソースとして追加する必要があります。データ ソースを Data Lake Analytics アカウントに追加する手順については、[Data Lake Analytics の「アカウント データ ソースの管理」](data-lake-analytics/data-lake-analytics-manage-use-portal.md#manage-account-data-sources)を参照してください。
+Data Lake Analytics アカウントと AdlCopy を使用するには、ソース (Azure Storage Blob) と コピー先 (Azure Data Lake Store) の両方を Data Lake Analytics アカウントのデータ ソースとして追加する必要があります。データ ソースを Data Lake Analytics アカウントに追加する手順については、[Data Lake Analytics の「アカウント データ ソースの管理」](..//data-lake-analytics/data-lake-analytics-manage-use-portal.md#manage-account-data-sources)を参照してください。
 
 次のコマンドを実行します。
 
@@ -100,7 +100,7 @@ Data Lake Analytics アカウントと AdlCopy を使用するには、ソース
 
 次に例を示します。
 
-	AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Account mydatalakeaccount /Units 2 
+	AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Account mydatalakeaccount /Units 2
 
 ## 課金
 
@@ -115,7 +115,7 @@ Data Lake Analytics アカウントと AdlCopy を使用するには、ソース
 ## 次のステップ
 
 - [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
-- [Data Lake Store で Azure Data Lake Analytics を使用する](data-lake-analytics-get-started-portal.md)
+- [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0413_2016-->

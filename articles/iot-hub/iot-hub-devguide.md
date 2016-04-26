@@ -48,7 +48,7 @@ Azure IoT Hub はマルチテナント サービスで、さまざまなアク�
     - *D2C メッセージの送信*。このエンドポイントを使用して、D2C メッセージを送信します。詳細については、「[D2C メッセージング](#d2c)」を参照してください。
     - *C2D メッセージの受信*。デバイスは、このエンドポイントを使用して、そのデバイスが宛先となっている C2D メッセージを受信します。詳細については、「[C2D メッセージング](#c2d)」を参照してください。
 
-    これらのエンドポイントは、HTTP、[MQTT][lnk-mqtt]、および [AMQP][lnk-amqp] プロトコルを使用して公開されます。なお、AMQP は、ポート 443 で [WebSocket][lnk-websockets] 経由で使用することもできます。
+    これらのエンドポイントは、HTTP 1.1、[MQTT v3.1.1][lnk-mqtt]、および [AMQP 1.0][lnk-amqp] の各プロトコルを使用して公開されます。なお、AMQP は、ポート 443 で [WebSocket][lnk-websockets] 経由で使用することもできます。
 * **サービス エンドポイント**: 各 IoT Hub は、アプリケーション バックエンドがデバイスとの通信に使用できる一連のエンドポイントを公開します。これらのエンドポイントは、現在 [AMQP][lnk-amqp] プロトコルのみを使用して公開されています。
     - *D2C メッセージの受信*。このエンドポイントは [Azure Event Hubs][lnk-event-hubs] と互換性があるため、バックエンド サービスはこのエンドポイントを使用して、デバイスから送信された D2C メッセージをすべて読み取ることができます。詳細については、「[D2C メッセージング](#d2c)」を参照してください。
     - *C2D メッセージの送信と、配信の確認メッセージの受信*。これらのエンドポイントにより、アプリケーション バックエンドは、信頼性の高い C2D メッセージを送信し、対応する配信または有効期限の確認メッセージを受信できます。詳細については、「[C2D メッセージング](#c2d)」を参照してください。
@@ -68,7 +68,7 @@ IoT Hub を認識しない SDK (または製品の統合) を使用する場合�
 
     ![][img-eventhubcompatible]
 
-> [AZURE.NOTE] SDK は、**ホスト名**または**名前空間**の値を必要とする場合があります。この場合、**[イベント ハブと互換性のあるエンドポイント]** からスキームを削除します。たとえば、Event Hub 互換のエンドポイントが **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** の場合、**Hostname** は **iothub-ns-myiothub-1234.servicebus.windows.net**、**Namespace** は **iothub-ns-myiothub-1234** です。
+> [AZURE.NOTE] SDK で **Hostname** または **Namespace** の値が必要な場合は、**[Event Hub-compatible endpoint]** (イベント ハブと互換性のあるエンドポイント) からスキームを削除します。たとえば、Event Hub 互換のエンドポイントが **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** の場合、**Hostname** は **iothub-ns-myiothub-1234.servicebus.windows.net**、**Namespace** は **iothub-ns-myiothub-1234** です。
 
 この場合、指定したイベント ハブに接続するための **ServiceConnect** のアクセス許可を持つ、共有アクセスのセキュリティ ポリシーを使用できます。
 
@@ -338,7 +338,7 @@ IoT Hub には、通信を行うためのメッセージング プリミティ�
 
 IoT Hub のメッセージング機能の中心となる特性は、メッセージの信頼性と持続性です。これにより、デバイス側では断続的な接続に対する復元性を、クラウド側ではイベント処理の負荷の急増に対する復元性を実現できます。IoT Hub は、D2C および C2D メッセージングの両方について、*少なくとも 1 回*の配信保証を実装しています。
 
-IoT Hub では、(AMQP や HTTP/1 などの) デバイス用のプロトコルが複数サポートされています。プロトコル間でのシームレスな相互運用性をサポートするために、IoT Hub では、すべてのデバイス用プロトコルでサポートされる共通のメッセージ形式が定義されます。
+IoT Hub では、(MQTT、AMQP、HTTP などの) デバイス用のプロトコルが複数サポートされています。プロトコル間でのシームレスな相互運用性をサポートするために、IoT Hub では、すべてのデバイス用プロトコルでサポートされる共通のメッセージ形式が定義されます。
 
 ### メッセージの形式<a id="messageformat"></a>
 
@@ -640,4 +640,4 @@ IoT Hub の開発の概要については以上です。詳細については、
 [lnk-eventhub-partitions]: ../event-hubs/event-hubs-overview.md#partitions
 [lnk-manage]: iot-hub-manage-through-portal.md
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

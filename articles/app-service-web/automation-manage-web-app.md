@@ -40,7 +40,6 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure Web App を管理する方法について説明しました。Azure Automation の詳細については、これらのリンクをご覧ください。
 
-* [Azure Automation の使用](../automation-intro.md) (Azure Automation の作業開始のチュートリアル)
- 
+* [Azure Automation の使用](../automation/automation-intro.md) (Azure Automation の作業開始のチュートリアル)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0413_2016-->

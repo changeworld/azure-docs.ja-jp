@@ -32,9 +32,6 @@ PowerShell コマンドレットを使用して、[エラスティック デー�
 
 Azure PowerShell 1.0 以降を実行している必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
-
-
-
 ## プールに新しいエラスティック データベースを作成する
 
 プール内に直接新しいデータベースを作成するには、[New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx) コマンドレットを使用して **ElasticPoolName** パラメーターを設定します。
@@ -132,6 +129,12 @@ CSV ファイルにエクスポートします。
     foreach($e in $table) { Export-csv -Path c:\temp\metrics.csv -input $e -Append -NoTypeInformation}
 
 
+## エラスティック プール操作の待機時間
+
+- 通常、データベースあたりに保証される eDTU (DatabaseDtuMin) またはデータベースあたりの最大 eDTU (DatabaseDtuMax) の変更は、5 分以内で完了します。
+- プールの eDTU や記憶域の上限 (Dtu) の変更は、プール内のすべてのデータベースで使用される領域の合計に依存します。変更の平均時間は、100 GB あたり 90 分以下です。たとえば、プール内のすべてのデータベースで使用される領域の合計が 200 GB の場合、プールの eDTU や記憶域上限の変更にかかる想定待機時間は、3 時間以下になります。
+
+
 ## プールを監視し、管理する (PowerShell の例)
 
 
@@ -173,9 +176,4 @@ CSV ファイルにエクスポートします。
 
 - [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブを使用すると、プール内にある任意の数のデータベースに対して T-SQL スクリプトを実行できます。
 
-
-## エラスティック データベースのリファレンス
-
-API とエラーの詳細を含む弾力性データベースと弾力性データベース プールの詳細については、「[弾力性データベースのリファレンス](sql-database-elastic-pool-reference.md)」をご覧ください。
-
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

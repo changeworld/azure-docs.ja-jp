@@ -21,13 +21,13 @@ ms.author="deonhe"/>
 
 Azure Service Bus に接続して、メッセージを送受信します。キューに送信、トピックに送信、キューから受信、サブスクリプションから受信などのアクションを実行できます。
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、「[Azure Service Bus コネクタの使用開始とロジック アプリへの追加](../app-service-logic/app-service-logic-connector-azureservicebus.md)」をご覧ください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
 Azure Service Bus では、次の操作を実行できます。
 
 * ロジック アプリの構築  
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+ロジック アプリに操作を追加する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
 
 ## トリガーとアクション
 
@@ -165,4 +165,4 @@ ContentTransferEncoding
 [5]: ./media/connectors-create-api-servicebus/connectionconfig5.png
 [6]: ./media/connectors-create-api-servicebus/connectionconfig6.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

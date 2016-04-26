@@ -29,34 +29,26 @@ Stretch Database は、ポイントインタイム リストアに完全対応�
 
 1.  バックアップからデータベースを復元します。
 
-2.  Stretch 対応データベースのデータベース マスター キーを作成します。詳細については、「[CREATE MASTER KEY (Transact-SQL)](https://msdn.microsoft.com/library/ms174382.aspx)」を参照してください。
+2.  ストアド プロシージャ [sys.sp\_rda\_reauthorize\_db (Transact-SQL)](https://msdn.microsoft.com/library/mt131016.aspx) を実行し、Stretch を有効にしたローカル データベースを Azure に再接続します。
 
-3.  Stretch 対応データベースのデータベース スコープ資格情報を作成します。詳細については、「[CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/mt270260.aspx)」を参照してください。
+    -   既存のデータベース スコープ資格情報を sysname または varchar(128) 値として指定します。(varchar(max) は使用しないでください。) 資格情報の名前は、**sys.database\_scoped\_credentials** ビューで調べることができます。
 
-4.  ストアド プロシージャ [sys.sp\_rda\_reauthorize\_db (Transact-SQL)](https://msdn.microsoft.com/library/mt131016.aspx) を実行し、Stretch を有効にしたローカル データベースを Azure に再接続します。sysname または varchar(128) 値として前の手順で作成したデータベース スコープ資格情報を指定します。(varchar(max) は使用しないでください。)
+	-   リモート データのコピーを作成して、そのコピーに接続するかどうかを指定します。
 
     ```tsql
     Declare @credentialName nvarchar(128);
-    SET @credentialName = N’<database_scoped_credential_name_created_previously>’;
-    EXEC sp_rda_reauthorize_db @credentialName;
+    SET @credentialName = N'<database_scoped_credential_name_created_previously>';
+    EXEC sp_rda_reauthorize_db @credential = @credentialName, @with_copy = 0;
     ```
 
 ## <a name="MoreInfo"></a>バックアップとリストアの詳細
 Stretch データベースが有効になっているデータベースのバックアップには、バックアップ実行時のローカル データと有資格データのみが含まれています。これらのバックアップには、データベースのリモート データが置かれているリモート エンドポイントに関する情報も含まれています。これは "shallow backup (浅いバックアップ)" と呼ばれています。ローカル データベースとリモート データベースの両方の全データが含まれる deep backup (深いバックアップ) には対応していません。
 
-![Stretch Database バックアップの図][StretchBackupImage1]
-
 Stretch Database が有効になっているデータベースのバックアップを復元すると、ローカル データと有資格データがデータベースに予想どおりに復元されます。(有資格データとは、まだ移されていないが、テーブルの Stretch Database 構成に基づき、Azure に移されるデータのことです。) 復元を実行すると、バックアップの実行時点からのローカル データと有資格データがデータベースに含まれますが、リモート エンドポイントに接続するために必要な資格情報とアーティファクトは含まれていません。
 
-![バックアップ後の Stretch Database][StretchBackupImage2]
-
-ローカル データベースとそのリモート エンドポイントの間の接続を再確立するには、ストアド プロシージャ **sys.sp\_rda\_reauthorize\_db** を実行する必要があります。db\_owner だけがこの操作を実行できます。このストアド プロシージャは、リモート エンドポイントの管理者のユーザー名とパスワードも必要とします。つまり、ターゲット Azure サーバーの管理者のログインとパスワードを指定する必要があります。
-
-![バックアップ後の Stretch Database][StretchBackupImage3]
+ローカル データベースとそのリモート エンドポイントの間の接続を再確立するには、ストアド プロシージャ **sys.sp\_rda\_reauthorize\_db** を実行する必要があります。db\_owner だけがこの操作を実行できます。このストアド プロシージャには、ターゲット Azure サーバーの管理者のログインとパスワードも必要です。
 
 接続を再確立すると、Stretch Database はリモート エンドポイントのリモート データをコピーし、それをローカル データベースとリンクさせることでローカル データベースの有資格データとリモート データの一致を試行します。このプロセスは自動であり、ユーザーの介入を必要としません。この照合の実行後、ローカル データベースとリモート エンドポイントが一致している状態になります。
-
-![バックアップ後の Stretch Database][StretchBackupImage4]
 
 ## 関連項目
 
@@ -66,10 +58,4 @@ Stretch Database が有効になっているデータベースのバックアッ
 
 [SQL Server データベースのバックアップと復元](https://msdn.microsoft.com/library/ms187048.aspx)
 
-<!--Image references-->
-[StretchBackupImage1]: ./media/sql-server-stretch-database-backup/StretchDBBackup1.png
-[StretchBackupImage2]: ./media/sql-server-stretch-database-backup/StretchDBBackup2.png
-[StretchBackupImage3]: ./media/sql-server-stretch-database-backup/StretchDBBackup3.png
-[StretchBackupImage4]: ./media/sql-server-stretch-database-backup/StretchDBBackup4.png
-
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -25,8 +25,6 @@
 Linux を実行する Azure 仮想マシン (VM) は簡単に作成できます。このチュートリアルでは、Azure ポータルを使用して仮想マシンを簡単に作成する方法について説明し、`~/.ssh/id_rsa.pub` 公開キー ファイルを使用して、VM への **SSH** 接続をセキュリティで保護します。また、[独自のイメージをテンプレートとして](virtual-machines-linux-classic-create-upload-vhd.md)使用して、Linux VM を作成することもできます。
 
 
-[AZURE.NOTE] このチュートリアルでは、Azure リソース グループ API で管理される Azure 仮想マシンを作成します。詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
-
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
 ## イメージの選択
@@ -128,4 +126,4 @@ Azure 上の Linux の詳細については、次の内容を参照してくだ�
 
 - [Azure の Linux 用 Docker 仮想マシン拡張機能](virtual-machines-linux-dockerextension.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

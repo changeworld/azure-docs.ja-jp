@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Reporting API の概要"
+   pageTitle="Azure AD Reporting API の概要 | Microsoft Azure"
    description="Azure Active Directory Reporting API の概要について説明します。"
    services="active-directory"
    documentationCenter=""
@@ -13,32 +13,32 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/07/2016"
+   ms.date="04/07/2016"
    ms.author="dhanyahk"/>
 
 
-# Azure AD Reporting API の概要
+# Azure Active Directory Reporting API の概要
 
 *このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
-Azure Active Directory には、アクティビティ、セキュリティ、監査に関するさまざまなレポートがあります。このデータは、Azure ポータルで使用できますが、SIEM システム、監査、ビジネス インテリジェンス ツールなど、他の多くのアプリケーションでも非常に役に立ちます。
+Azure Active Directory (AD) には、アクティビティ、セキュリティ、監査に関するさまざまなレポートがあります。このデータは、Azure クラシック ポータルで使用できますが、SIEM システム、監査、ビジネス インテリジェンス ツールなど、他の多くのアプリケーションでも非常に役に立ちます。
 
-Azure AD Reporting API を使用すると、さまざまなプログラミング言語とツールから呼び出すことができる REST ベースの API セットにより、これらのデータにプログラムからアクセスできます。
+[Azure AD Reporting API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) を使用すると、さまざまなプログラミング言語とツールから呼び出すことができる REST ベースの API セットにより、これらのデータにプログラムからアクセスできます。
 
 この記事では、PowerShell を使用して Azure AD Reporting API を呼び出す手順について説明します。必要に応じて、サンプルの PowerShell スクリプトを変更し、使用可能な任意のレポートから、JSON、XML、またはテキストの形式でデータにアクセスできます。
 
-このサンプルを使用するには、[Azure Active Directory](active-directory-whatis.md) が必要です。
+このサンプルを使用するには、[Azure Active Directory](active-directory-whatis.md) テナントが必要です。
 
 ## API にアクセスする Azure AD アプリケーションの作成
 
-Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) を使用して Web API へのアクセスを承認します。ディレクトリから情報にアクセスするには、Active Directory でアプリケーションを作成し、AAD データにアクセスするための適切なアクセス許可を付与する必要があります。
+Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) を使用して Web API へのアクセスを承認します。ディレクトリから情報にアクセスするには、Azure AD テナントでアプリケーションを作成し、Azure AD データにアクセスするための適切なアクセス許可を付与する必要があります。
 
 
 ### アプリケーションの作成
 - [Azure クラシック ポータル](https://manage.windowsazure.com/)に移動します。
-- ディレクトリに移動します。
-- アプリケーションに移動します。
-- 下のバーで [追加] をクリックします。
+- Azure AD テナントに移動します。
+- **[アプリケーション]** タブに移動します。
+- 下のバーで **[追加]** をクリックします。
 	- [組織で開発中のアプリケーションを追加] をクリックします。
 	- **名前**: どのような名前でもかまいません。「Reporting API アプリケーション」のような名前をお勧めします。
 	- **種類**: [Web アプリケーションや Web API] を選択します。
@@ -48,7 +48,7 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 	- チェック マークをクリックして、アプリケーションの追加を完了します。
 
 ### API を使用するためのアクセス許可をアプリケーションに付与します。
-- [アプリケーション] タブに移動します。
+- **[アプリケーション]** タブに移動します。
 - 新しく作成したアプリケーションに移動します。
 - **[構成]** タブをクリックします。
 - [その他のアプリケーションに対するアクセス許可] セクションで、次の手順に従って設定します。
@@ -61,7 +61,7 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 以下の手順では、アプリケーションのクライアント ID とクライアント シークレットを取得する方法を説明します。また、テナントの名前を知る必要があります。これは、*.onmicrosoft.com またはカスタム ドメイン名です。これらを別の場所にコピーします。スクリプトを変更するときに使用します。
 
 #### アプリケーション クライアント ID
-- [アプリケーション] タブに移動します。
+- **[アプリケーション]** タブに移動します。
 - 新しく作成したアプリケーションに移動します。
 - **[構成]** タブに移動します。
 - アプリケーションのクライアント ID が、**[クライアント ID]** フィールドに一覧表示されます。
@@ -182,17 +182,17 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 ## スクリプトの実行
 スクリプトの編集が完了したら、実行して、AuditEvents レポートから予期したデータが返されることを確認します。
 
-スクリプトは、使用可能なすべてのレポートの一覧、および AccountProvisioningEvents レポートからの出力を、PowerShell ウィンドウに JSON 形式で返します。また、同じ出力を JSON、テキスト、XML でファイルに作成します。他のレポートからデータを返すようにスクリプトを変更してテストしたり、必要のない出力形式をコメント化したりできます。
+スクリプトは、使用可能なすべてのレポートの一覧、および AccountProvisioningEvents レポートからの出力を、PowerShell ウィンドウに JSON 形式で表示します。また、同じ出力を JSON、テキスト、XML でファイルに作成します。他のレポートからデータを返すようにスクリプトを変更してテストしたり、必要のない出力形式をコメント化したりできます。
 
 ## メモ
 
 - Azure AD Reporting API によって (OData 改ページ調整を使用) 返されるイベントの数に制限はありません。　
-	- レポート データの保持制限については、[レポートの保持ポリシー](active-directory-reporting-retention.md)を参照してください。
+- レポート データの保持制限については、[レポートの保持ポリシー](active-directory-reporting-retention.md)を参照してください。
 
 
 ## 次のステップ
 - 使用可能なセキュリティ、監査、およびアクティビティ レポートに興味がある場合は、 「[View your access and usage reports (アクセスおよび使用状況のレポートの表示)](active-directory-view-access-usage-reports.md)」を参照してください
 - 監査レポートの詳細については、「[Azure Active Directory 監査レポートのイベント](active-directory-reporting-audit-events.md)」を参照してください
-- Graph API REST サービスの詳細については、「[Azure AD Reports and Events (Preview) (Azure AD のレポートとイベント (プレビュー))](https://msdn.microsoft.com/library/azure/mt126081.aspx)」を参照してください
+- Azure AD Graph API REST サービスの詳細については、「[Azure AD Reports and Events (Preview) (Azure AD のレポートとイベント (プレビュー))](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview)」を参照してください
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

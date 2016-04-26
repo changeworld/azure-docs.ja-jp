@@ -46,9 +46,9 @@
 
 このチュートリアルには、次のものが必要です。
 
-* Visual Studio と [Xamarin 拡張機能]**または** [Xamarin Studio]
-* チュートリアル「[Mobile Services の使用]」を完了していること
-
+* Visual Studio と Xamarin (Windows) または Xamarin Studio (Mac OS X)。インストールの詳しい手順については、「[セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx)」をご覧ください。
+* チュートリアル「[Mobile Services の使用]」を完了していること。
+ 
 ## <a name="review-offline"></a>Mobile Services 同期コードのレビュー
 
 ネットワークにアクセスできない場合、エンドユーザーは Azure Mobile Services のオフライン同期により、ローカル データベースとやり取りできるようになります。アプリケーションでこれらの機能を使用するには、`MobileServiceClient.SyncContext` をローカル ストアに初期化します。その後、`IMobileServiceSyncTable` インターフェイスを使用してテーブルを参照します。このセクションでは、`ToDoActivity.cs` のオフライン同期に関連するコードについて説明します。
@@ -172,9 +172,6 @@
 
 [Mobile Services SDK Nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.0
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
-[Xamarin Studio]: http://xamarin.com/download
-[Xamarin 拡張機能]: http://xamarin.com/visual-studio
-[NuGet Addin for Xamarin]: https://github.com/mrward/monodevelop-nuget-addin
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

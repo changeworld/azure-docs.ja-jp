@@ -1,25 +1,27 @@
-You must create a VNet and a gateway subnet first, before working on the following tasks. See the article [Configure a Virtual Network using the classic portal](../articles/expressroute/expressroute-howto-vnet-portal-classic.md) for more information.   
+以下の作業を行う前に、VNet とゲートウェイ サブネットを作成しておく必要があります。詳細については、[クラシック ポータルを使用した Virtual Network の構成](../articles/expressroute/expressroute-howto-vnet-portal-classic.md)に関する記事をご覧ください。
 
-## Add a gateway
+## ゲートウェイを追加する
 
-Use the command below to create a gateway. Be sure to substitute any values for your own.
+ゲートウェイを作成するには、次のコマンドを使用します。必ず、独自の値に置き換えてください。
 
 	New-AzureVirtualNetworkGateway -VNetName "MyAzureVNET" -GatewayName "ERGateway" -GatewayType DynamicRouting -GatewaySKU  Standard
 
-## Verify the gateway was created
+## ゲートウェイが作成されていることの確認
 
-Use the command below to verify that the gateway has been created. This command also retrieves the gateway ID, which you need for other operations.
+次のコマンドを使用して、ゲートウェイが作成されていることを確認します。このコマンドは、他の操作に必要なゲートウェイ ID も取得します。
 
 	Get-AzureVirtualNetworkGateway
 
-## Resize a gateway
+## ゲートウェイのサイズを変更する
 
-There are three [Gateway SKUs](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md). You can use the following command to change the Gateway SKU at any time.
+3 つの[ゲートウェイ SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md) があります。次のコマンドを使用して、ゲートウェイ SKU をいつでも変更できます。
 
 	Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 
-## Remove a gateway
+## ゲートウェイを削除する
 
-Use the command below to remove a gateway
+ゲートウェイを削除するには、次のコマンドを使用します。
 
 	Remove-AzureVirtualNetworkGateway -GatewayId <Gateway ID>
+
+<!---HONumber=AcomDC_0413_2016-->

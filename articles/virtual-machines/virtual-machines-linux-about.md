@@ -28,18 +28,14 @@ Azure Virtual Machine は、仮想マシンを実行する物理的なハード�
 
 この表では、Azureが提供するさまざまなオプションを比較することができます。
 
+[AZURE.INCLUDE [compute-table](../../includes/compute-options-table.md)]
+
 [AZURE.INCLUDE [virtual-machines-choose-me-content](../../includes/virtual-machines-choose-me-content.md)]
 
 ## 次のステップ
 
-単純な仮想マシンをすばやく作成して、仮想マシンを試してみてください。手順については、「[開発用とテスト用の Linux VM を Azure CLI から作成する](virtual-machines-linux-quick-create-cli.md)」を参照してください。
+単純な仮想マシンをすばやく作成して、仮想マシンを試してみてください。手順については、[Linux を実行する仮想マシンの作成](virtual-machines-linux-quick-create-cli.md)に関するページをご覧ください。
 
-これらのチュートリアルには、仮想マシンをすばやく作成できるよう、仮想マシンを作成するときに使用できる多くのツールを取り上げるのではなく、仮想マシン作成の方法をひとつだけ重点的に紹介しています。これらのツールの概要と手順へのリンクについては、「[Linux 仮想マシンを作成するさまざまな方法](virtual-machines-linux-creation-choices.md)」を参照してください。
+これらのチュートリアルには、仮想マシンをすばやく作成できるよう、仮想マシンを作成するときに使用できる多くのツールを取り上げるのではなく、仮想マシン作成の方法をひとつだけ重点的に紹介しています。これらのツールの概要と手順へのリンクについては、[Linux 仮想マシンを作成するための各種方法](virtual-machines-linux-creation-choices.md)に関するページをご覧ください。
 
-
-<!--links-->
-[App Service]: app-service-choose-me.md
-[Virtual Machines]: #tellmevm
-[Cloud Services]: cloud-services-choose-me.md
-
-<!------HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

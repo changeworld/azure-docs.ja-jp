@@ -64,7 +64,7 @@
 | 19 | [Mac OS X (Yosemite) での Ruby を使用した SQL Database への接続](sql-database-develop-ruby-simple-mac-osx.md) | Mac OS X (Yosemite) で実行して Azure SQL Database に接続できる Ruby コード サンプルを提供します。 |
 | 20 | [Ubuntu Linux 上の Ruby を使用した SQL Database への接続](sql-database-develop-ruby-simple-linux.md) | Azure SQL Database に接続するために、Ubuntu Linux クライアントとして実行できる Ruby のコード サンプルを提供します。 |
 | 21 | [Windows 上で Ruby を使用して SQL Database に接続する](sql-database-develop-ruby-simple-windows.md) | Windows で実行して Azure SQL Database に接続できる Ruby コード サンプルを提供します。 |
-| 22 | [C# で SQL Database を作成し、管理する](sql-database-client-library.md) | この記事では、C# で Azure SQL Database Library for .NET を使用して、Azure SQL Database を作成および管理する方法を説明します。 |
+| 22 | [C# で SQL Database を作成し、管理する](sql-database-get-started-csharp.md) | この記事では、C# で Azure SQL Database Library for .NET を使用して、Azure SQL Database を作成および管理する方法を説明します。 |
 | 23 | [Ports beyond 1433 for ADO.NET 4.5, and SQL Database V12 (ADO.NET 4.5、SQL Database V12 における 1433 以外のポート)](sql-database-develop-direct-route-ports-adonet-v12.md) | ADO.NET から Azure SQL Database V12 へのクライアント接続では、プロキシを使用せずに、データベースと直接やり取りする場合があります。1433 以外のポートが重要になります。 |
 | 24 | [SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md) | よくあるデータベース接続エラー、データベース コピーの問題、一般エラーなど、SQL Database クライアント アプリケーションの SQL エラー コードについて説明します。 |
 | 25 | [「サーバー上のデータベースは現在使用できません。後で再試行してください」などの接続エラーのトラブルシューティング](sql-database-troubleshoot-connection.md) | Azure SQL Database の接続エラーを特定して解決する手順。 |
@@ -327,7 +327,7 @@
 | 163 | [Azure SQL Database のリソース制限](sql-database-resource-limits.md) | このページでは、Azure SQL Database に対するいくつかの一般的なリソース制限について説明します。 |
 | 164 | [Azure SQL Database の Transact-SQL の相違点](sql-database-transact-sql-information.md) | Azure SQL Database では完全にサポートされない Transact-SQL ステートメント |
 | 165 | [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md) | クライアント プログラムが Azure SQL Database または Microsoft SQL Server に接続する際に使用できる各ドライバーの最小バージョン番号を示します。Microsoft ではなくコミュニティからリリースされているドライバーに関するバージョン情報へのリンクが用意されています。 |
-| 166 | [フィルターを使用した検索](https://azure.microsoft.com/ja-JP/documentation/articles/?service=sql-database) | Azure SQL Database に関するドキュメント記事のフィルターを使用して検索します。 |
+| 166 | [フィルターを使用した検索](https://azure.microsoft.com/documentation/articles/?service=sql-database) | Azure SQL Database に関するドキュメント記事のフィルターを使用して検索します。 |
 
 
 ## その他
@@ -354,4 +354,4 @@
 
 - ラーニング パスの図: [sql-database-elastic-scale](http://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

@@ -3,7 +3,7 @@
 
 ## シミュレート済みデバイスへの Azure BLOB URI の送信
 
-このセクションでは、「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信]」で作成した **SendCloudtoDevice** コンソール アプリケーションを変更して、共有アクセス署名と共に Azure BLOB URI が含まれるようにします。これにより、クラウド バックエンドは、クラウドからデバイスへのメッセージの受信者のみに BLOB へのアクセス権を付与できます。
+このセクションでは、「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信]」で作成した **SendCloudtoDevice** コンソール アプリケーションを変更して、共有アクセス署名と共に Azure BLOB URI が含まれるようにします。これにより、クラウド バックエンドは、クラウドからデバイスへのメッセージの受信者にのみ BLOB への書き込みアクセス権を付与できます。
 
 1. Visual Studio で **SendCloudtoDevice** プロジェクトを右クリックし、**[NuGet パッケージの管理...]** をクリックします。 
 
@@ -63,11 +63,11 @@
 
 [Azure ストレージについて]: ../storage/storage-create-storage-account.md#create-a-storage-account
 
-[IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
+[IoT Hub Developer Guide - C2D]: ../articles/iot-hub/iot-hub-devguide.md#c2d
 [Azure IoT - Service SDK NuGet package]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Get started with IoT Hub]: iot-hub-csharp-csharp-getstarted.md
+[Get started with IoT Hub]: ../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md
 
 <!-- Images -->
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

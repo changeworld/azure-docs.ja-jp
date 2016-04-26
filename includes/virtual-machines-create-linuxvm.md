@@ -1,3 +1,4 @@
+
 1. 「[Azure CLI から Azure に接続する](../articles/xplat-cli-connect.md)」で示されている手順を使用して、Azure サブスクリプションにサインインします。
 
 2. 以下を使用してサービス管理モードであることを確認します。
@@ -8,7 +9,7 @@
 
         azure vm image list | grep "Linux"
 
-   Windows コマンド プロンプト ウィンドウでは、grep ではなく find を使用します。
+   Windows コマンド プロンプト ウィンドウでは、grep ではなく **find** を使用します。
 
 4. `azure vm create` を使用して、上記のリストの Linux イメージで新しい仮想マシンを作成します。この手順では、新しいクラウド サービスだけでなく新しいストレージ アカウントも作成されます。`-c` オプションを使用して、この仮想マシンを既存のクラウド サービスに接続することもできます。`-e` オプションを使用すると、Linux 仮想マシンにログインするための SSH エンドポイントも作成されます。
 
@@ -41,4 +42,4 @@
 
 これらすべての Azure CLI 仮想マシン コマンドの詳細については、「[サービス管理 API での Azure CLI の使用](../articles/virtual-machines-command-line-tools.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

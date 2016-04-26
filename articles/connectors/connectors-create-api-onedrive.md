@@ -30,7 +30,7 @@ OneDrive に接続して、ファイルのアップロード、取得、削除�
 
 &nbsp;
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、こちらの [OneDrive API](../app-service-logic/app-service-logic-connector-onedrive.md) をクリックしてください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
 OneDrive では、次の操作を実行できます。
 
@@ -312,4 +312,4 @@ OneDrive にフォルダーを抽出します。```POST: /datasets/default/extra
 [6]: ./media/connectors-create-api-onedrive/onedrive-new-app.png
 [7]: ./media/connectors-create-api-onedrive/onedrive-app-api-settings.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

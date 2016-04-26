@@ -89,7 +89,7 @@
 
 **type** に対して指定する値には、リソース プロバイダーとリソースの種類の両方が含まれます。可用性セットの場合、リソース プロバイダーは **Microsoft.Compute**、リソースの種類は **availabilitySets** です。使用可能なリソース プロバイダーの一覧を取得するには、次の PowerShell コマンドを実行してください。
 
-    PS C:\> Get-AzureRmResourceProvider -ListAvailable
+    Get-AzureRmResourceProvider -ListAvailable
 
 Azure CLI を使用している場合は、次のコマンドを使用できます。
 
@@ -103,7 +103,7 @@ Azure CLI を使用している場合は、次のコマンドを使用できま�
 
 特定のプロバイダーのリソースの種類を表示するには、次の PowerShell コマンドを実行します。
 
-    PS C:\> (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
+    (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
 
 Azure CLI を使用している場合は、次のコマンドを実行すると、使用可能な種類が JSON 形式で返され、ファイルに保存されます。
 
@@ -133,7 +133,7 @@ Azure CLI を使用している場合は、次のコマンドを実行すると�
 
 次に、**apiVersion** の特定方法を確認しましょう。指定する値は、単純に、リソースの作成時に使用する REST API のバージョンに一致します。そのため、そのリソースの種類については、REST API のドキュメントで確認できます。特定の種類については、次の PowerShell コマンドを実行して確認することもできます。
 
-    PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Network).ResourceTypes | Where-Object ResourceTypeName -eq publicIPAddresses).ApiVersions
+    ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Network).ResourceTypes | Where-Object ResourceTypeName -eq publicIPAddresses).ApiVersions
 
 返される値は次のとおりです。
 
@@ -503,4 +503,4 @@ variables セクションでは、テンプレート内の複数の場所で使�
 - テンプレートの構造の詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイする方法の詳細については、「[Azure Resource Manager のテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0420_2016-->

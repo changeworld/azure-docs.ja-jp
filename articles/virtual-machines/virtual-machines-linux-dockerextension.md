@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure の Linux 用 Docker 仮想マシン拡張機能"
-	description="Azure V仮想マシン拡張機能である Docker とコンテナーについて説明し、Azure CLI およびポータルで Docker コンテナーを作成するためのリソースを紹介します。"
+	description="Azure Virtual Machines の拡張機能である Docker とコンテナーについて説明し、Azure CLI および Azure ポータルで Docker コンテナーを作成するためのリソースを紹介します。"
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="squillace"
@@ -22,4 +22,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-dockerextension](../../includes/virtual-machines-common-dockerextension.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

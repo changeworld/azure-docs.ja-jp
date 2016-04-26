@@ -14,46 +14,45 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/04/2016"
+	ms.date="04/12/2016"
 	ms.author="v-livech"/>
 
 # Azure の Linux VM と Mac for Linux VM に SSH キーを作成する
 
-パスワードで保護された SSH 公開キーと秘密キーを作成するには、[Azure CLI](../xplat-cli-install.md) を Resource Manager モードにする必要があります (`azure config mode arm`)。
+パスワードで保護された SSH の公開キーと秘密キーを作成するには、ワークステーションでターミナルを開く必要があります。SSH キーを作成した後は、既定でそのキーを使用して新しい VM を作成したり、Azure CLI と Azure テンプレートの両方を使用して既存の VM に公開キーを追加したりできます。
 
 ## 基本コマンド一覧
 
 以下のコマンド例の &lt; と &gt; で囲まれた値は、実際の環境の値に置き換えてください。
 
 ```bash
-[chrisL@fedora ~]$ ssh-keygen -t rsa -b 2048 -C "<your_user@yourdomain.com>"
+[ahmet@fedora ~]$ ssh-keygen -t rsa -b 2048 -C "<your_user@yourdomain.com>"
 
 #Enter the name of the file that will be saved in the `~/.ssh/` directory.
-azure_fedora_id_rsa
+<azure_fedora_id_rsa>
 
-#Enter (twice) a [secure](https://www.xkcd.com/936/) password for the SSH key.
-
-#Enter passphrase for github_id_rsa:
-correct horse battery staple
+#Enter passphrase for azure_fedora_id_rsa:
+<correct horse battery staple>
 
 #Add the newly created key to `ssh-agent` on Linux and Mac (also added to OSX Keychain).
-[chrisL@fedora ~]$ eval "$(ssh-agent -s)"
-[chrisL@fedora ~]$ ssh-add ~/.ssh/azure_fedora_id_rsa
+[ahmet@fedora ~]$ eval "$(ssh-agent -s)"
+[ahmet@fedora ~]$ ssh-add ~/.ssh/azure_fedora_id_rsa
 
 #Copy the SSH public key to your Linux Server.
-[chrisL@fedora ~]$ ssh-copy-id -i ~/.ssh/azure_fedora_id_rsa.pub <youruser@yourserver.com>
+[ahmet@fedora ~]$ ssh-copy-id -i ~/.ssh/azure_fedora_id_rsa.pub <youruser@yourserver.com>
 
 #Test the login using keys instead of a password.
-[chrisL@fedora ~]$ ssh -i ~/.ssh/azure_fedora_id_rsa <youruser@yourserver.com>
+[ahmet@fedora ~]$ ssh -o PreferredAuthentications=publickey -o PubkeyAuthentication=yes -i ~/.ssh/azure_fedora_id_rsa <youruser@yourserver.com>
 
-Last login: Tue Dec 29 07:07:09 2015 from 66.215.21.201
-[chrisL@fedora ~]$
+Last login: Tue April 12 07:07:09 2016 from 66.215.22.201
+[ahmet@fedora ~]$
 
 ```
 
 ## はじめに
 
-SSH 公開キーと秘密キーを使用することは、Linux サーバーにログインするための最も安全**かつ**簡単な方法ですが、[公開キー暗号化](https://en.wikipedia.org/wiki/Public-key_cryptography)を併せて利用することで、パスワードを使うよりもはるかに安全に Azure の Linux VM または BSD VM にログインできるようになります。パスワードはブルート フォース攻撃を受けやすくなっています。公開キーはだれとでも共有できますが、秘密キーを所有するのは自分 (またはローカル セキュリティ インフラストラクチャ) だけです。
+SSH 公開キーと秘密キーを使用することは、Linux サーバーにログインするための最も簡単な方法ですが、[公開キー暗号化](https://en.wikipedia.org/wiki/Public-key_cryptography)を併せて利用することで、パスワードを使うよりもはるかに安全に Azure の Linux VM または BSD VM にログインできるようになります。パスワードはブルート フォース攻撃を受けやすくなっています。公開キーはだれとでも共有できますが、秘密キーを所有するのは自分 (またはローカル セキュリティ インフラストラクチャ) だけです。作成した SSH 秘密キーにはそれを保護するための[セキュリティ保護されたパスワード](https://www.xkcd.com/936/)がありますが、このパスワードは SSH 秘密キーにアクセスするためだけのものであり、ユーザー アカウントのパスワードでは**ありません**。パスワードなしの秘密キーを所有しているすべてのユーザーは、公開キーがインストールされているすべてのサーバーにアクセスできます。パスワードがない場合、秘密キーは使用できません。
+
 
 この記事では、*ssh-rsa* 形式のキー ファイルを作成します。このファイルは、Resource Manager へのデプロイに推奨されており、クラシック デプロイと Resource Manager デプロイの両方の[ポータル](https://portal.azure.com)で必須となっています。
 
@@ -64,10 +63,10 @@ Azure では、長さ 2,048 ビット以上の ssh-rsa 形式の公開キーと�
 
 ### `ssh-keygen` の使用
 
-次に示すのは、2,048 ビット RSA を使用して SSH キー ペアを作成するコマンドです。識別しやすいようにコメントを付けています。
+次に示すのは、2,048 ビット RSA を使用してパスワードで保護された SSH キー ペアを作成するコマンドです。識別しやすいようにコメントを付けています。
 
 ```
-chrisL@fedora$ ssh-keygen -t rsa -b 2048 -C "username@fedoraVMAzure"
+ahmet@fedora$ ssh-keygen -t rsa -b 2048 -C "ahmet@fedoraVMAzure"
 ```
 
 ##### コマンドの説明
@@ -78,22 +77,22 @@ chrisL@fedora$ ssh-keygen -t rsa -b 2048 -C "username@fedoraVMAzure"
 
 `-b 2048` = キーのビット数。
 
-`-C "username@fedoraVMAzure"` = 識別しやすいようにするためのキーのコメント。コメントは、公開キー ファイルの最後に追記されます。一般に、コメントとしては電子メール アドレスが使用されますが、この記事では複数の SSH キーの使用に対応するために汎用的なコメントを記載しています。
+`-C "ahmet@fedoraVMAzure"` = 識別しやすいように公開キー ファイルの最後に追記されたコメント。通常は電子メール アドレスがコメントとして使用されますが、インフラストラクチャに最適な他のものを使用してもかまいません。
 
 #### `ssh-keygen` のチュートリアル
 
 ```bash
-chrisL@fedora$ ssh-keygen -t rsa -b 2048 -C "username@fedoraVMAzure"
+ahmet@fedora$ ssh-keygen -t rsa -b 2048 -C "ahmet@fedoraVMAzure"
 Generating public/private rsa key pair.
-Enter file in which to save the key (/Users/steve/.ssh/id_rsa): azure_fedora_id_rsa
+Enter file in which to save the key (/home/ahmet/.ssh/id_rsa): azure_fedora_id_rsa
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 Your identification has been saved in azure_fedora_id_rsa.
 Your public key has been saved in azure_fedora_id_rsa.pub.
 The key fingerprint is:
-14:a3:cb:3e:79:ad:25:cc:65:e9:0c:07:e5:d1:a9:08 username@fedoraVMAzure
+14:a3:cb:3e:78:ad:25:cc:55:e9:0c:08:e5:d1:a9:08 ahmet@fedoraVMAzure
 The key's randomart image is:
-+--[ RSA 4096]----+
++--[ RSA 2048]----+
 |        o o. .   |
 |      E. = .o    |
 |      ..o...     |
@@ -105,16 +104,30 @@ The key's randomart image is:
 |        .        |
 +-----------------+
 
-chrisL@fedora$ ls -al ~/.ssh
--rw------- 1 username staff  1675 Aug 25 18:04 azure_fedora_id_rsa
--rw-r--r-- 1 username staff   410 Aug 25 18:04 azure_fedora_id_rsa.pub
+ahmet@fedora$ ls -al ~/.ssh
+-rw------- 1 ahmet staff  1675 Aug 25 18:04 azure_fedora_id_rsa
+-rw-r--r-- 1 ahmet staff   410 Aug 25 18:04 azure_fedora_id_rsa.pub
 ```
 
-`Enter file in which to save the key (/Users/steve/.ssh/id_rsa): azure_fedora_id_rsa` この記事で使用するキー ペアの名前。既定では、キー ペアの名前に **id\_rsa** が割り当てられます。秘密キーのファイル名として **id\_rsa** を想定しているツールもあるため、そのようにすることをお勧めします (`~/.ssh/` は、通常、すべての SSH キー ペアと SSH 構成ファイルの既定の場所です)。
+`Enter file in which to save the key (/home/ahmet/.ssh/id_rsa): azure_fedora_id_rsa` この記事で使用するキー ペアの名前。既定では、キー ペアの名前に **id\_rsa** が割り当てられます。秘密キーのファイル名として **id\_rsa** を想定しているツールもあるため、そのようにすることをお勧めします (`~/.ssh/` は、通常、すべての SSH キー ペアと SSH 構成ファイルの既定の場所です)。
 
-`Enter passphrase (empty for no passphrase):` キー ペアにはパスワード (`ssh-keygen` では、これを "パスフレーズ" といいます) を追加するよう強くお勧めします。キー ペアを保護するパスワードがないと、秘密キー ファイルのコピーがあればだれでも、そのファイルを使用して、対応する公開キーのある (あなたの) サーバーにログインすることができます。パスワードを追加すれば、第三者に秘密キー ファイルへのアクセスを許してしまった場合でも、認証用のキーを変更する時間ができるので保護のレベルが上がります。
+`Enter passphrase (empty for no passphrase):` キー ペアにはパスワード (`ssh-keygen` では、これを "パスフレーズ" と呼びます) を追加するよう強くお勧めします。キー ペアを保護するパスワードがないと、秘密キー ファイルのコピーがあればだれでも、そのファイルを使用して、対応する公開キーのある (あなたの) サーバーにログインすることができます。パスワードを追加すれば、第三者に秘密キー ファイルへのアクセスを許してしまった場合でも、認証用のキーを変更する時間ができるので保護のレベルが上がります。
 
-`chrisL@fedora$ ls -al ~/.ssh` これは、新しいキー ペアとそのアクセス許可を示しています。`ssh-keygen` は、`~/.ssh` ディレクトリを作成 (存在しない場合) し、適切な所有権とファイル モードを設定します。
+`ahmet@fedora$ ls -al ~/.ssh` これは、新しいキー ペアとそのアクセス許可を示しています。`ssh-keygen` は、`~/.ssh` ディレクトリを作成 (存在しない場合) し、適切な所有権とファイル モードを設定します。
+
+## ssh-agent を使用して秘密キーのパスワードを格納する
+
+SSH ログインのたびに秘密キー ファイルのパスワードを入力しなくて済むように、`ssh-agent` を使用して秘密キー ファイルのパスワードをキャッシュし、Linux VM に迅速かつ安全にログインできます。OSX を使用している場合、`ssh-agent` を呼び出すと、秘密キーのパスワードは Keychain によって安全に保存されます。
+
+最初に、`ssh-agent` が動いていることを確認します。
+
+`[ahmet@fedora ~]$ eval "$(ssh-agent -s)"`
+
+`ssh-add` コマンドを使用して秘密キーを `ssh-agent` に追加します。OSX で Keychain が起動されて、資格情報が格納されます。
+
+`[ahmet@fedora ~]$ ssh-add ~/.ssh/azure_fedora_id_rsa`
+
+秘密キーのパスワードが保存されたので、SSH でログインするたびにキーのパスワードを入力する必要はありません。
 
 ## SSH 構成ファイルの作成と構成
 
@@ -125,32 +138,32 @@ Linux VM を稼働させるために必須というわけではありません�
 ### ファイルの作成
 
 ```bash
-chrisL@fedora$ touch ~/.ssh/config
+ahmet@fedora$ touch ~/.ssh/config
 ```
 
 ### ファイルを編集して新しい SSH 構成を追加する
 
 ```bash
-chrisL@fedora$ vim ~/.ssh/config
+ahmet@fedora$ vim ~/.ssh/config
 
 #Azure Keys
 Host fedora22
   Hostname 102.160.203.241
-  User username
+  User ahmet
   PubkeyAuthentication yes
-  IdentityFile /Users/steve/.ssh/azure_fedora_id_rsa
+  IdentityFile /home/ahmet/.ssh/azure_fedora_id_rsa
 # ./Azure Keys
 # GitHub keys
 Host github.com
   Hostname github.com
   User git
   PubKeyAuthentication yes
-  IdentityFile /Users/steve/.ssh/github_id_rsa
+  IdentityFile /home/ahmet/.ssh/azure_fedora_id_rsa
 Host github.private
   Hostname github.com
   User git
   PubKeyAuthentication yes
-  IdentityFile /Users/steve/.ssh/private_repo_github_id_rsa
+  IdentityFile /home/ahmet/.ssh/private_repo_azure_fedora_id_rsa
 # ./Github Keys
 # Default Settings
 Host *
@@ -159,10 +172,10 @@ Host *
   ServerAliveInterval=60
   ServerAliveCountMax=30
   ControlMaster auto
-  ControlPath /Users/steve/.ssh/Connections/ssh-%r@%h:%p
+  ControlPath /home/ahmet/.ssh/Connections/ssh-%r@%h:%p
   ControlPersist 4h
   StrictHostKeyChecking=no
-  IdentityFile /Users/steve/.ssh/id_rsa
+  IdentityFile /home/ahmet/.ssh/id_rsa
   UseRoaming=no
 ```
 
@@ -179,21 +192,25 @@ Host *
 
 `PubKeyAuthentication yes` = SSH キーを使ってログインしたいという意思を SSH に伝えています。
 
-`IdentityFile /Users/steve/.ssh/azure_fedora_id_rsa` = ログインを認証するサーバーにどのキー ペアを提示するかを SSH に伝えています。
+`IdentityFile /home/ahmet/.ssh/azure_fedora_id_rsa` = ログインを認証するサーバーにどのキー ペアを提示するかを SSH に伝えています。
 
 
 ## パスワードを使わずに SSH で Linux VM にログインする
 
 SSH キー ペアを作成し、SSH 構成ファイルに必要な変更を加えたら、すばやく安全に Linux VM にログインすることができます。SSH キーを使用して初めてサーバーにログインするとき、キー ファイルのパスフレーズを入力するよう求められます。
 
-`chrisL@fedora$ ssh fedora22`
+`ahmet@fedora$ ssh fedora22`
 
 ##### コマンドの説明
 
-`chrisL@fedora$ ssh fedora22` が実行されると SSH はまず、`Host fedora22` ブロックの設定を見つけて読み込んだ後、最後のブロック `Host *` から残りの設定をすべて読み込みます。
+`ahmet@fedora$ ssh fedora22` が実行されると SSH はまず、`Host fedora22` ブロックの設定を見つけて読み込んだ後、最後のブロック `Host *` から残りの設定をすべて読み込みます。
 
 ## 次のステップ
 
-実際にキー ファイルを使ってみましょう。[テンプレートを使用して安全な Linux VM を Azure 内に作成](virtual-machines-linux-create-ssh-secured-vm-from-template.md)します。
+SSH キー ファイルを使用して次のことができます。
 
-<!---HONumber=AcomDC_0406_2016-->
+- [Azure テンプレートを使用して安全な Linux VM を作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
+- [Azure ポータルを使用して安全な Linux VM を作成する](virtual-machines-linux-quick-create-portal.md)
+- [Azure CLI を使用して安全な Linux VM を作成する](virtual-machines-linux-quick-create-cli.md)
+
+<!---HONumber=AcomDC_0420_2016-->

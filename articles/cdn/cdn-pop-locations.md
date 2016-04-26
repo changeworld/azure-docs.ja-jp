@@ -13,19 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="02/25/2016" 
+	ms.date="04/15/2016" 
 	ms.author="casoper"/>
 
 
-#Azure コンテンツ配信ネットワーク (CDN) の POP の場所
+# Azure コンテンツ配信ネットワーク (CDN) の POP の場所
 
 このトピックでは、Microsoft Azure CDN の現在の POP の場所を示します。
 
-
 ![CDN の POP の場所](./media/cdn-pop-locations/CDN_POP_locations_update.png)
 
-
-##北米
+## 北米
 
 - アトランタ
 - シカゴ
@@ -39,12 +37,15 @@
 - ワシントン DC
 - ボストン
 
-##南アメリカ
+## 南アメリカ
 
 - サンパウロ
 - キト
+- メデジン
+- ブエノス アイレス
 
-##ヨーロッパ
+
+## ヨーロッパ
 
 - アムステルダム
 - コペンハーゲン
@@ -58,7 +59,7 @@
 - ウィーン
 - ワルシャワ
 
-##アジア
+## アジア
 
 - バタム
 - 香港
@@ -72,10 +73,15 @@
 - チェンナイ
 - デリー
 - ムンバイ
+- マスカット
 
-##オーストラリア
+## オーストラリア
 
 - メルボルン
 - シドニー
 
-<!---HONumber=AcomDC_0316_2016-->
+## 近日対応予定
+
+Microsoft は、[Akamai とパートナー関係を結びました](https://azure.microsoft.com/blog/microsoft-and-akamai-bring-cdn-to-azure-customers/)。このパートナー関係を利用し、これから数か月間をかけて Azure CDN のサービス提供範囲を世界中に広げる予定です。
+
+<!---HONumber=AcomDC_0420_2016-->

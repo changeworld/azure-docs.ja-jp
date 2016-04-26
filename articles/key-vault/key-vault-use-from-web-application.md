@@ -1,12 +1,12 @@
 <properties pageTitle="Web アプリケーションからの Azure Key Vault の使用 | Microsoft Azure" description="このチュートリアルを使用すると、Web アプリケーションから Azure Key Vault を使用する方法について学習できます。" services="key-vault" documentationCenter="" authors="adamhurwitz" manager="" tags="azure-resource-manager"//>
 
-<tags 
-	ms.service="key-vault" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="01/29/2016" 
+<tags
+	ms.service="key-vault"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="01/29/2016"
 	ms.author="adhurwit"/>
 
 # Web アプリケーションからの Azure Key Vault の使用 #
@@ -19,19 +19,19 @@
 
 Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault-whatis.md)」をご覧ください。
 
-## 前提条件 
+## 前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
 - Azure Key Vault のシークレットへの URI
 - Key Vault にアクセスできる Azure Active Directory に登録された Web アプリケーションのクライアント ID とクライアント シークレット
-- Web アプリケーション。Web アプリとして Azure にデプロイされた ASP.NET MVC アプリケーションの手順について説明します。 
+- Web アプリケーション。Web アプリとして Azure にデプロイされた ASP.NET MVC アプリケーションの手順について説明します。
 
 > [AZURE.NOTE]  このチュートリアルでは、[Azure Key Vault の概要](key-vault-get-started.md)に関するページに記載されている手順を完了している必要があります。これにより、シークレットへの URI と、Web アプリケーションのクライアント ID およびクライアント シークレットを入手できます。
 
 Key Vault にアクセスする Web アプリケーションは、Azure Active Directory に登録されていて、Key Vault へのアクセス権が付与されているアプリケーションです。そうでない場合は、概要のチュートリアルにあるアプリケーションの登録に関するトピックに戻り、記載されている手順を繰り返します。
 
-このチュートリアルは、Azure 上での Web アプリケーション作成の基本を理解している Web 開発者向けに設計されています。Azure Web Apps の詳細については、[Web Apps の概要](../app-service-web-overview.md)に関するページを参照してください。
+このチュートリアルは、Azure 上での Web アプリケーション作成の基本を理解している Web 開発者向けに設計されています。Azure Web Apps の詳細については、[Web Apps の概要](../app-service-web/app-service-web-overview.md)に関するページを参照してください。
 
 
 
@@ -47,7 +47,7 @@ Web アプリケーションでインストールしておく必要のあるパ�
 	// this is currently the latest stable version of ADAL
 	Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
 
-	Install-Package Microsoft.Azure.KeyVault 
+	Install-Package Microsoft.Azure.KeyVault
 
 
 ## <a id="webconfig"></a>web.config の変更 ##
@@ -72,7 +72,7 @@ Azure Active Directory からアクセス トークンを取得するコード�
 	//add these using statements
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
 	using System.Web.Configuration;
-	
+
 	//this is an optional property to hold the secret after it is retrieved
 	public static string EncryptSecret { get; set; }
 
@@ -83,10 +83,10 @@ Azure Active Directory からアクセス トークンを取得するコード�
 	    ClientCredential clientCred = new ClientCredential(WebConfigurationManager.AppSettings["ClientId"],
                     WebConfigurationManager.AppSettings["ClientSecret"]);
 	    AuthenticationResult result = await authContext.AcquireTokenAsync(resource, clientCred);
-	    
+
 	    if (result == null)
 	    	throw new InvalidOperationException("Failed to obtain the JWT token");
-	    
+
 	    return result.AccessToken;
     }
 
@@ -101,12 +101,12 @@ Azure Active Directory からアクセス トークンを取得するコード�
 	using Microsoft.Azure.KeyVault;
 	using System.Web.Configuration;
 
-	// I put my GetToken method in a Utils class. Change for wherever you placed your method. 
+	// I put my GetToken method in a Utils class. Change for wherever you placed your method.
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
 
 	var sec = kv.GetSecretAsync(WebConfigurationManager.AppSettings["SecretUri"]).Result.Value;
-	
-	//I put a variable in a Utils class to hold the secret for general  application use. 
+
+	//I put a variable in a Utils class to hold the secret for general  application use.
     Utils.EncryptSecret = sec;
 
 
@@ -117,7 +117,7 @@ Azure の Web アプリがある場合は、Azure ポータルでアプリ設定
 ![Azure ポータルに表示されるアプリケーションの設定][1]
 
 
-## クライアント シークレットではなく、証明書を使用して認証する 
+## クライアント シークレットではなく、証明書を使用して認証する
 Azure AD アプリケーションを認証する別の方法は、クライアント ID とクライアント シークレットではなく、クライアント ID と証明書を使用する方法です。Azure の Web アプリで証明書を使用する手順を次に示します。
 
 1. 証明書を取得または作成する
@@ -139,22 +139,22 @@ Azure AD アプリケーションを認証する別の方法は、クライア�
 **証明書を Azure AD アプリケーションに関連付ける** 証明書を作成したので、それを Azure AD アプリケーションに関連付ける必要があります。ただし、現在 Microsoft Azure 管理ポータルではサポートされていません。代わりに Powershell を使用する必要があります。実行する必要のあるコマンドを次に示します。
 
 	$x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-	
+
 	PS C:\> $x509.Import("C:\data\KVWebApp.cer")
-	
+
 	PS C:\> $credValue = [System.Convert]::ToBase64String($x509.GetRawCertData())
-	
+
 	PS C:\> $now = [System.DateTime]::Now
-	
+
 	# this is where the end date from the cert above is used
-	PS C:\> $yearfromnow = [System.DateTime]::Parse("2016-07-31") 
-	
+	PS C:\> $yearfromnow = [System.DateTime]::Parse("2016-07-31")
+
 	PS C:\> $adapp = New-AzureADApplication -DisplayName "KVWebApp" -HomePage "http://kvwebapp" -IdentifierUris "http://kvwebapp" -KeyValue $credValue -KeyType "AsymmetricX509Cert" -KeyUsage "Verify" -StartDate $now -EndDate $yearfromnow
-	
+
 	PS C:\> $sp = New-AzureADServicePrincipal -ApplicationId $adapp.ApplicationId
-	
+
 	PS C:\> Set-AzureKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName $sp.ServicePrincipalName -PermissionsToKeys all -ResourceGroupName 'contosorg'
-	
+
 	# get the thumbprint to use in your app settings
 	PS C:\>$x509.Thumbprint
 
@@ -176,7 +176,7 @@ Azure AD アプリケーションのオブジェクトと ServicePrincipal オ�
             try
             {
                 store.Open(OpenFlags.ReadOnly);
-                X509Certificate2Collection col = store.Certificates.Find(X509FindType.FindByThumbprint, 
+                X509Certificate2Collection col = store.Certificates.Find(X509FindType.FindByThumbprint,
                     findValue, false); // Don't validate certs, since the test root isn't installed.
                 if (col == null || col.Count == 0)
                     return null;
@@ -241,6 +241,5 @@ Web アプリに証明書を追加する方法の詳細については、[Azure 
 <!--Image references-->
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png
 [2]: ./media/key-vault-use-from-web-application/PortalAddCertificate.png
- 
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0413_2016-->

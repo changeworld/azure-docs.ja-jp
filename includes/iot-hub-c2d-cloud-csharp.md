@@ -18,7 +18,7 @@
 
 		using Microsoft.Azure.Devices;
 
-5. **Program** クラスに次のフィールドを追加し、[IoT Hub の概要]から、IoT ハブの名前と IoT ハブの接続文字列を値に代入します。
+5. **Program** クラスに次のフィールドを追加し、[IoT Hub の概要]から、IoT ハブの接続文字列を値に代入します。
 
 		static ServiceClient serviceClient;
         static string connectionString = "{iot hub connection string}";
@@ -92,7 +92,7 @@
 
 <!-- Links -->
 
-[IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
+[IoT Hub Developer Guide - C2D]: ../articles/iot-hub/iot-hub-devguide.md#c2d
 [Azure IoT - サービス SDK NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [一時的な障害処理]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
@@ -102,4 +102,4 @@
 [21]: ./media/iot-hub-c2d-cloud-csharp/sendc2d1.png
 [22]: ./media/iot-hub-c2d-cloud-csharp/sendc2d2.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0413_2016-->

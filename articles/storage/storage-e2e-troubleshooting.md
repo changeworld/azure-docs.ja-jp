@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/14/2016"
+	ms.date="04/06/2016"
 	ms.author="robinsh"/>
 
 # Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
@@ -36,11 +36,13 @@ Microsoft Azure Storage を使用してクライアント アプリケーショ�
 
 	- **ストレージ ログ**は、Azure Storage サービスへの各要求をサーバー側のログに記録します。このログは、実行された操作、操作のステータス、遅延情報などを含む各要求の詳細データを追跡します。Storage Analytics がログに書き込む要求および応答データの詳細については、「[Storage Analytics のログの形式](http://msdn.microsoft.com/library/azure/hh343259.aspx)」を参照してください。
 
+> [AZURE.NOTE] 現時点では、レプリケーションの種類がゾーン冗長ストレージ (ZRS) のストレージ アカウントでは、メトリックまたはログ機能が有効になっていません。
+
 - **Azure ポータル**。[Azure ポータル](https://portal.azure.com)では、ストレージ アカウントのメトリックとログを構成することができます。アプリケーションの経時的な動作を表すチャートやグラフを表示できるほか、指定したメトリックに関してアプリケーションが予期しない動作をした場合に通知するよう、アラートを構成することもできます。
 
-	Azure ポータルでの監視の構成については、「[Azure ポータルでのストレージ アカウントの監視](storage-monitor-storage-account.md)」を参照してください。
+	Azure ポータルでの監視の構成については、「[Azure ポータルでのストレージ アカウントの監視](storage-monitor-storage-account.md)」をご覧ください。
 
-- **AzCopy**Azure Storage のサーバー ログは BLOB として格納されているので、AzCopy を使用してログ BLOB をローカル ディレクトリにコピーし、Microsoft Message Analyzer による分析に使用することができます。AzCopy の詳細については、「[ AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
+- **AzCopy**Azure Storage のサーバー ログは BLOB として格納されているので、AzCopy を使用してログ BLOB をローカル ディレクトリにコピーし、Microsoft Message Analyzer による分析に使用することができます。AzCopy の詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」をご覧ください。
 
 - **Microsoft Message Analyzer**。Message Analyzer はログ ファイルを使用してログ データを画像形式で表示するツールです。これにより、ログ データのフィルター処理や検索のほか、エラーやパフォーマンス問題の分析に使用できる有用なデータ セットへのグループ化が容易になります。Message Analyzer の詳細については、[Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)を参照してください。
 
@@ -130,7 +132,7 @@ Azure の PowerShell を使用するには、[Azure PowerShell のインスト�
 
 ### .NET のクライアント側のログを構成する
 
-.NET アプリケーションのクライアント側のログを構成するには、アプリケーションの構成ファイル (web.config または app.config) 内で .NET 診断を有効にします。詳細については、MSDN の「[.NET ストレージ クライアント ライブラリによるクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782839.aspx)」および「[Microsoft Azure Storage SDK for Java によるクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782844.aspx)」を参照してください。
+.NET アプリケーションのクライアント側のログを構成するには、アプリケーションの構成ファイル (web.config または app.config) 内で .NET 診断を有効にします。詳細については、MSDN の「[.NET ストレージ クライアント ライブラリと、クライアント側のログ記録](http://msdn.microsoft.com/library/azure/dn782839.aspx)」および「[Microsoft Azure Storage SDK for Java によるクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782844.aspx)」をご覧ください。
 
 クライアント側のログには、クライアントが要求を準備し、応答を受信して処理する方法についての詳細情報が含まれます。
 
@@ -184,9 +186,9 @@ AzCopy コマンドライン ツールを使用して、これらのサーバー
 
 	AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
 
-AzCopy は、[Azure ダウンロード](https://azure.microsoft.com/downloads/)のページからダウンロードできます。AzCopy の使用の詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
+AzCopy は、[Azure ダウンロード](https://azure.microsoft.com/downloads/)のページからダウンロードできます。AzCopy の使用の詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」をご覧ください。
 
-サーバー側のログのダウンロードの詳細については、「[Download Storage Logging log data (ストレージ ログのログ データのダウンロード)](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)」を参照してください。
+サーバー側のログのダウンロードの詳細については、「[ストレージ ログのログ データのダウンロード](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)」をご覧ください。
 
 ## Microsoft Message Analyzer を使用してログ データを分析する
 
@@ -363,4 +365,4 @@ Azure Storage におけるエンド ツー エンド シナリオのトラブル
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 - [Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0413_2016-->

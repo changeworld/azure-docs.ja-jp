@@ -4,8 +4,8 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -163,7 +163,7 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 
 使用可能なすべてのリソース プロバイダーを取得する例を次に示します。
 
-    PS C:\> Get-AzureRmResourceProvider -ListAvailable
+    Get-AzureRmResourceProvider -ListAvailable
     
 次のように出力されます。
 
@@ -175,7 +175,7 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 
 次の例では、特定のリソース プロバイダーのリソースの種類を取得しています。
 
-    PS C:\> (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes
+    (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes
     
 次のように出力されます。
 
@@ -187,7 +187,7 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
     
 リソース プロバイダーを登録するには、名前空間を指定します。
 
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ApiManagement
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ApiManagement
 
 ### Azure CLI
 
@@ -228,7 +228,7 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 
 次の例では、Web サイトでサポートされるリージョンを取得する方法を示します。
 
-    PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
+    ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
     
 次のように出力されます。
 
@@ -304,4 +304,4 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 - リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 - リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0413_2016-->

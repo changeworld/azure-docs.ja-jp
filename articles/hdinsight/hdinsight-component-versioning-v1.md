@@ -105,7 +105,14 @@ HDInsight プラットフォームの重要な機能には、次のようなも�
 * ヘッド ノードを 2 つ備えた可用性の高いクラスターは、HDInsight 2.1 以降では既定でデプロイされています。HDInsight 1.6 クラスターでは利用できません。
 * 特定のバージョンのサポート期限が切れると、Azure クラシック ポータルから利用できなくなる可能性があります。次の表に、Azure クラシック ポータルで利用できるバージョンを示します。クラスター バージョンは、非推奨となるまでは、Windows PowerShell [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) コマンドの `Version` パラメーターと .NET SDK で利用できます。
 
-<table border="1"> <tr><th>HDInsight のバージョン</th><th>HDP のバージョン</a><th>高可用性</th></th><th>リリース日</th><th>Azure クラシック ポータルで利用可能</th><th>サポート有効期限</th><th>非推奨となる日</th></tr> <tr><td>HDI 3.2</td><td>HDP 2.2</td><td>あり</td><td>2015 年 2 月 18 日</td><td>あり</td><td></td><td></td></tr> <tr><td>HDI 3.1</td><td>HDP 2.1</td><td>あり</td><td>2014 年 6 月 24 日</td><td>あり</td><td></td><td></td></tr> <tr><td>HDI 3.0</td><td>HDP 2.0</td><td>あり</td><td>2014 年 2 月 11 日</td><td>あり</td><td>2014 年 9 月 17 日</td><td>2015 年 6 月 30 日</td></tr> <tr><td>HDI 2.1</td><td>HDP 1.3</td><td>あり</td><td>2013 年 10 月 28 日</td><td>なし</td><td>2014 年 5 月 12 日</td><td>2015 年 5 月 31 日</td></tr> <tr><td>HDI 1.6</td><td>HDP 1.1</td><td>なし</td><td>2013 年 10 月 28 日</td><td>なし</td><td>2014 年 4 月 26 日</td><td>2015 年 5 月 31 日</td></tr> </table><br>
+<table border="1">
+<tr><th>HDInsight のバージョン</th><th>HDP のバージョン</a><th>高可用性</th></th><th>リリース日</th><th>Azure クラシック ポータルでの利用</th><th>サポート有効期限</th><th>非推奨となる日</th></tr>
+<tr><td>HDI 3.2</td><td>HDP 2.2</td><td>あり</td><td>2015 年 2 月 18 日</td><td>あり</td><td></td><td></td></tr>
+<tr><td>HDI 3.1</td><td>HDP 2.1</td><td>あり</td><td>2014 年 6 月 24 日</td><td>あり</td><td></td><td></td></tr>
+<tr><td>HDI 3.0</td><td>HDP 2.0</td><td>あり</td><td>02/11/2014</td><td>あり</td><td>09/17/2014</td><td>06/30/2015</td></tr>
+<tr><td>HDI 2.1</td><td>HDP 1.3</td><td>あり</td><td>10/28/2013</td><td>いいえ</td><td>05/12/2014</td><td>05/31/2015</td></tr>
+<tr><td>HDI 1.6</td><td>HDP 1.1</td><td>いいえ</td><td>10/28/2013</td><td>いいえ</td><td>04/26/2014</td><td>05/31/2015</td></tr>
+</table><br>
 
 **既定以外のクラスターのデプロイメント**
 
@@ -120,7 +127,7 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 **非推奨となる日**は、それ以降 HDInsight でそのクラスター バージョンが作成できなくなる日付です。
 
-> [AZURE.NOTE] HDInsight 2.1 と 3.0 クラスターはともに、64 ビット版 Windows Server 2012 R2 を使用し、.NET Framework 4.0、4.5、4.5.1 をサポートする Azure ゲスト OS [ファミリ 4](../cloud-services-guestos-update-matrix.md) で実行されます。
+> [AZURE.NOTE] HDInsight 2.1 と 3.0 クラスターはともに、64 ビット版 Windows Server 2012 R2 を使用し、.NET Framework 4.0、4.5、4.5.1 をサポートする Azure ゲスト OS [ファミリ 4](../cloud-services/cloud-services-guestos-update-matrix.md) で実行されます。
 
 ## HDInsight バージョンに対応する Hortonworks リリース ノート##
 
@@ -160,4 +167,4 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

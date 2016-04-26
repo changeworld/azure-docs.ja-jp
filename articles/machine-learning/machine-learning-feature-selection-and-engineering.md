@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Machine Learning での特徴エンジニアリングと特徴選択 | Microsoft Azure" 
+	pageTitle="Azure Machine Learning での特徴エンジニアリングと特徴選択 | Microsoft Azure"
 	description="特徴選択と特徴エンジニアリングの目的について説明し、機械学習のデータ強化プロセスにおけるこれらの役割の例を示します。"
 	services="machine-learning"
 	documentationCenter=""
@@ -51,7 +51,7 @@
 
 まず Azure Machine Learning から始めると、Studio で提供されているサンプルを使用して最も簡単にこのプロセスを具体的に把握できます。次に、2 つの例を示します。
 
-* ターゲット値が既知の場合の教師あり実験における、[レンタル自転車の数の予測](../machine-learning-sample-prediction-of-number-of-bike-rentals.md)の回帰の例
+* ターゲット値が既知の場合の教師あり実験における、[レンタル自転車の数の予測](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4)の回帰の例
 * [特徴ハッシュ][feature-hashing]を使用したテキスト マイニングの分類例
 
 ### 例 1: 回帰モデルに時間的な特徴を追加する ###
@@ -133,6 +133,5 @@ Azure Machine Learning Studio には、特徴選択に提供されるモジュ�
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
- 
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0413_2016-->

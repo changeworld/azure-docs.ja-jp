@@ -5,7 +5,7 @@
    services="sql-database"
    documentationCenter=""
    authors="carlrabeler"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -40,7 +40,9 @@
 
 4. エクスポート ウィザードで、BACPAC ファイルがローカル ディスクまたは Azure BLOB に保存されるようにエクスポートを構成します。エクスポートされた BACPAC には、常にデータベース スキーマ全体が含まれ、既定ではすべてのテーブルのデータが含まれます。一部またはすべてのテーブルからデータを除外する場合は、[詳細設定] タブを使用してください。たとえば、すべてのテーブルではなく参照テーブルのデータのみをエクスポートするように選択できます。
 
-	![設定のエクスポート](./media/sql-database-cloud-migrate/MigrateUsingBACPAC02.png)
+***重要*** BACPAC を Azure Blob Storage にエクスポートする場合は、Standard Storage を使用します。Premium Storage からの BACPAC のインポートはサポートされていません。
+
+	![Export settings](./media/sql-database-cloud-migrate/MigrateUsingBACPAC02.png)
 
 ## 次のステップ: BACPAC ファイルから SQL Database にインポートする
 
@@ -49,4 +51,4 @@
 - [Azure ポータル](sql-database-import.md)
 - [PowerShell](sql-database-import-powershell.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

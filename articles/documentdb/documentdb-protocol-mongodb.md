@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="MongoDB 向けの DocumentDB プロトコル サポート | Microsoft Azure" 
 	description="現在、プレビューでご利用いただける MongoDB 向けの DocumentDB プロトコルについて紹介します。" 
-	keywords="MongoDB プロトコル, MongoDB"
+	keywords="MongoDB プロトコル, MongoDB, Mongo データベース"
 	services="documentdb" 
 	authors="stephbaron" 
 	manager="jhubbard" 
@@ -13,7 +13,7 @@
 	ms.workload="data-services" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="get-started-article" 
+	ms.topic="article" 
 	ms.date="03/31/2016" 
 	ms.author="stbaro"/>
 
@@ -36,11 +36,11 @@ Microsoft Azure DocumentDB データベースは、MongoDB 向けに作成され
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. **[新規]**、**[データ + ストレージ]**、**[すべて表示]**、**[さらに表示]**、**[DocumentDB - MongoDB のプロトコル サポート]** の順にクリックします。
 
-	![Screen shot of the Marketplace and Data + Storage blades, highlighting DocumentDB - Protocol Support for MongoDB](./media/documentdb-protocol-mongodb/marketplacegallery1.png)
+	![Screen shot of the Marketplace and Data + Storage blades, highlighting DocumentDB - Protocol Support for MongoDB, Mongo database](./media/documentdb-protocol-mongodb/marketplacegallery1.png)
 
 3. 代わりに、**[データ + ストレージ]** カテゴリ内を "DocumentDB プロトコル" で検索してもかまいません。
 
-	![Screen shot of the Marketplace and Data + Storage search blades, highlighting DocumentDB - Protocol Support for MongoDB](./media/documentdb-protocol-mongodb/marketplacegallery2.png)
+	![Screen shot of the Marketplace and Data + Storage search blades, highlighting DocumentDB - Protocol Support for MongoDB, Mongo database](./media/documentdb-protocol-mongodb/marketplacegallery2.png)
 
 4. **[作成]** をクリックしてプレビューのサインアップ プロセスを開始します。
 
@@ -56,4 +56,4 @@ Microsoft Azure DocumentDB データベースは、MongoDB 向けに作成され
 
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

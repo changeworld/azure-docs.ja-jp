@@ -1,9 +1,9 @@
 <properties
 	pageTitle="Python Tools 2.2 for Visual Studio による Python Web ロールと Python worker ロール | Microsoft Azure"
 	description="Azure クラウド サービス (Web ロール、worker ロールを含む) を Python Tools for Visual Studio で作成する方法の概要"
-	services=""
+	services="cloud-services"
 	documentationCenter="python"
-	authors="huguesv"
+	authors="thraka"
 	manager="wpickett"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="python"
 	ms.topic="hero-article"
 	ms.date="08/30/2015"
-	ms.author="huvalo"/>
+	ms.author="adegeo"/>
 
 
 
@@ -38,7 +38,7 @@ Azure にはアプリケーションを実行するためのコンピューテ�
 
 詳細については、「[What is a Cloud Service? (クラウド サービスとは)]」を参照してください。
 
-> [AZURE.NOTE]*単純な Web サイトを構築する場合* シナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、Azure App Service の軽量の Web Apps 機能を使用することを検討してください。Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。Azure App Service の Web Apps 機能の開発に関する記事については、<a href="/develop/python/">Python デベロッパー センター</a>を参照してください。<br />
+> [AZURE.NOTE] *単純な Web サイトを構築する場合* シナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、Azure App Service の軽量の Web Apps 機能を使用することを検討してください。Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。Azure App Service の Web Apps 機能の開発に関する記事については、<a href="/develop/python/">Python デベロッパー センター</a>を参照してください。<br />
 
 
 ## プロジェクトの作成
@@ -114,17 +114,17 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 
 <!--Link references-->
 
-[What is a Cloud Service? (クラウド サービスとは)]: /manage/services/cloud-services/what-is-a-cloud-service/
-[execution model-web sites]: fundamentals-application-models.md#WebSites
-[execution model-vms]: fundamentals-application-models.md#VMachine
-[execution model-cloud services]: fundamentals-application-models.md#CloudServices
+[What is a Cloud Service? (クラウド サービスとは)]: ./cloud-services/cloud-services-choose-me.md
+[execution model-web sites]: ./app-service-web/app-service-web-overview.md
+[execution model-vms]: ./virtual-machines/virtual-machines-windows-about.md
+[execution model-cloud services]: ./cloud-services/cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/
 
-[BLOB サービス]: storage-python-how-to-use-blob-storage.md
-[キュー サービス]: storage-python-how-to-use-queue-storage.md
-[テーブル サービス]: storage-python-how-to-use-table-storage.md
-[Service Bus キュー]: service-bus-python-how-to-use-queues.md
-[Service Bus トピック]: service-bus-python-how-to-use-topics-subscriptions.md
+[BLOB サービス]: ./storage/storage-python-how-to-use-blob-storage.md
+[キュー サービス]: ./storage/storage-python-how-to-use-queue-storage.md
+[テーブル サービス]: ./storage/storage-python-how-to-use-table-storage.md
+[Service Bus キュー]: ./service-bus/service-bus-python-how-to-use-queues.md
+[Service Bus トピック]: ./service-bus/service-bus-python-how-to-use-topics-subscriptions.md
 
 
 <!--External Link references-->
@@ -138,4 +138,4 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 [Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190
 [Python 3.4 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517191
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0420_2016-->

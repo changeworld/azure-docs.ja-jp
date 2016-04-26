@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/14/2016"
+    ms.date="04/07/2016"
     ms.author="markusvi"/>
 
 
@@ -84,13 +84,13 @@ Azure AD について理解を深めていただけるよう、豊富なオン�
 
 - [Azure AD Connect によるディレクトリのハイブリッド管理を有効にする](active-directory-aadconnect.md)
 
-- [多要素認証とは](multi-factor-authentication.md)
+- [多要素認証とは](../multi-factor-authentication/multi-factor-authentication.md)
 
 - [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
 
 - [Azure AD レポートの概要](active-directory-reporting-getting-started.md)
 
-- [任意の場所からのパスワードの管理](articles/active-directory-passwords.md)
+- [任意の場所からのパスワードの管理](active-directory-passwords.md)
 
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
@@ -104,4 +104,4 @@ Azure AD について理解を深めていただけるよう、豊富なオン�
 
 - [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0413_2016-->

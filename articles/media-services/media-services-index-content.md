@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/18/2016"   
+	ms.date="04/08/2016"   
 	ms.author="adsolank;juliako;johndeu"/>
 
 
@@ -69,7 +69,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 	    IJob job = _context.Jobs.Create("My Indexing Job");
 
 	    // Get a reference to the Azure Media Indexer.
-	    string MediaProcessorName = "Azure Media Indexer",
+	    string MediaProcessorName = "Azure Media Indexer";
 	    IMediaProcessor processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
 	    // Read configuration from file if specified.
@@ -290,15 +290,12 @@ __features__ <br /><br /> バージョン 1.2 で追加現時点でサポート�
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
-
 ## 関連リンク
+
+[Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
 [AIB ファイルを Azure Media Indexer および SQL Server で使用する](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/)
 
-<!-- Anchors. -->
+[Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成](media-services-process-content-with-indexer2.md)
 
-<!-- Images. -->
-
-<!-- URLs. -->
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0413_2016-->

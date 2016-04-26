@@ -277,7 +277,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 	-   **[更新のスケジュール設定]** セクションを展開します。[データを最新の状態に保つ] を有効にします。
 
-	-   必要に応じて更新をスケジュールします。詳細については、「[Power BI でのデータの更新](https://support.powerbi.com/knowledgebase/articles/474669-data-refresh-in-power-bi)」を参照してください。
+	-   必要に応じて更新をスケジュールします。詳細については、「[Power BI でのデータの更新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)」をご覧ください。
 
 
 ## **コスト見積もりツール**
@@ -288,4 +288,4 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 -   [Microsoft Azure 料金計算ツール (デスクトップ)](http://www.microsoft.com/download/details.aspx?id=43376)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0413_2016-->

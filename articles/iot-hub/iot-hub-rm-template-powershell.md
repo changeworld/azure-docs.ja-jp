@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="02/12/2016"
+     ms.date="04/07/2016"
      ms.author="dobett"/>
 
 # PowerShell を使用した IoT Hub の作成
@@ -58,7 +58,7 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 
 JSON テンプレートを使用して、リソース グループに新しい IoT Hub を作成します。また、テンプレートを使用して、既存の IoT Hub に変更を加えることもできます。
 
-1. テキスト エディターを使用して、**template.json** という ARM テンプレートを作成し、標準的な IoT Hub を新規作成するリソース定義 (以下) を記述します。この例では、**米国東部**リージョンに IoT Hub を追加します。API バージョンには **2016-02-03** を使用しています。また、このテンプレートでは、**hubName** というパラメーターに IoT Hub の名前を指定する必要があります。
+1. テキスト エディターを使用して、**template.json** という ARM テンプレートを作成し、標準的な IoT Hub を新規作成するリソース定義 (以下) を記述します。この例では、IoT Hub を**米国東部**リージョンに追加し、イベント ハブと互換性のあるエンドポイントに 2 つのコンシューマー グループ (**cg1** と **cg2**) を作成して、**2016-02-03** API バージョンを使用します。また、このテンプレートでは、**hubName** というパラメーターに IoT Hub の名前を指定する必要があります。
 
     ```
     {
@@ -83,6 +83,22 @@ JSON テンプレートを使用して、リソース グループに新しい I
         "properties": {
           "location": "East US"
         }
+      },
+      {
+        "apiVersion": "2016-02-03",
+        "type": "Microsoft.Devices/IotHubs/eventhubEndpoints/ConsumerGroups",
+        "name": "[concat(parameters('hubName'), '/events/cg1')]",
+        "dependsOn": [
+          "[concat('Microsoft.Devices/Iothubs/', parameters('hubName'))]"
+        ]
+      },
+      {
+        "apiVersion": "2016-02-03",
+        "type": "Microsoft.Devices/IotHubs/eventhubEndpoints/ConsumerGroups",
+        "name": "[concat(parameters('hubName'), '/events/cg2')]",
+        "dependsOn": [
+          "[concat('Microsoft.Devices/Iothubs/', parameters('hubName'))]"
+        ]
       }
       ],
       "outputs": {
@@ -96,7 +112,7 @@ JSON テンプレートを使用して、リソース グループに新しい I
 
 2. このテンプレート ファイルをローカル コンピューターに保存します。この例では、**c:\\templates** フォルダーに保存することを前提としています。
 
-3. 次のコマンドを実行して、新しい IoT Hub をデプロイします。実際の IoT Hub の名前をパラメーターで指定してください。この例では、IoT Hub の名前を **myiothub** としています。
+3. 次のコマンドを実行して、新しい IoT Hub をデプロイします。実際の IoT Hub の名前をパラメーターで指定してください。この例では、IoT Hub 名を **myiothub** としています (この名前はグローバルに一意であることが必要です)。
 
     ```
     New-AzureRmResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName myiothub
@@ -123,4 +139,4 @@ JSON テンプレートを使用して、リソース グループに新しい I
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 [lnk-powershell-arm]: ../powershell-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->

@@ -1,9 +1,9 @@
-Azure Resource Manager に Compute、Network、Storage の機能が追加されたことによって、IaaS 上で動作する複雑なアプリケーションのデプロイと管理が大幅に単純化されます。多くのアプリケーションは、仮想ネットワーク、ストレージ アカウント、仮想マシン、ネットワーク インターフェイスなど、リソースの組み合わせを必要とします。Azure リソース マネージャーには、そうしたリソースをすべてひとまとめにして単一のアプリケーションとしてデプロイし、管理する JSON テンプレートを作成する機能が用意されています。
 
 
-## Azure リソース マネージャー下に Compute、Network、Strage を統合する利点
 
-Azure リソース マネージャーでは、既製のアプリケーション テンプレートを容易に活用できます。また、Azure に Compute、Network、Strage の各リソースをデプロイして管理するためのアプリケーション テンプレートを新たに作成することもできます。このセクションでは、Azure リソース マネージャーを使用してリソースをデプロイする利点について説明します。
+## Azure Resource Manager デプロイ モデルに Compute、Network、および Storage を統合する利点
+
+Azure Resource Manager デプロイ モデルでは、既製のアプリケーション テンプレートを容易に活用できます。また、Azure にコンピューティング、ネットワーク、ストレージの各リソースをデプロイして管理するためのアプリケーション テンプレートを新たに作成することもできます。このセクションでは、Azure Resource Manager デプロイ モデルを使用してリソースをデプロイする利点について説明します。
 
 -	複雑な作業を単純化 -- 共有可能なテンプレート ファイルからあらゆる Azure リソース (Websites、SQL Database、Virtual Machines、Virtual Network など) を含んだ複合的なアプリケーションを構築、統合し、共同作業を行うことができます。
 -	同じテンプレート ファイルを使用することで、開発、DevOps、システム管理者向けに、柔軟性に優れたデプロイを反復的に行うことができます。
@@ -83,7 +83,7 @@ Azure コマンドライン インターフェイス (Azure CLI) には、**Azur
 
 **Virtual Machines、Virtual Network、ストレージ アカウントなどをプロビジョニングするための独自の自動スクリプトは、新しい Azure リソース マネージャー API で引き続き使用できますか。**
 
-これまでに作成したオートメーションやスクリプトはすべて、Azure サービス管理モードで作成された既存の Virtual Machines、Virtual Network にも使用できます。ただし、新しい Azure リソース マネージャー モードで同じリソースを作成するためには、新しいスキーマを使用するようにスクリプトを更新する必要があります。Azure CLI スクリプトを変更する方法の詳細については、[こちら](../articles/virtual-machines/virtual-machines-linux-cli-manage.md)を参照してください。
+これまでに作成したオートメーションやスクリプトはすべて、Azure サービス管理モードで作成された既存の Virtual Machines、Virtual Network にも使用できます。ただし、新しい Azure リソース マネージャー モードで同じリソースを作成するためには、新しいスキーマを使用するようにスクリプトを更新する必要があります。
 
 **新しい Azure リソース マネージャー API で作成した Virtual Network を Express Route 回線に接続することはできますか。**
 
@@ -93,4 +93,4 @@ Azure コマンドライン インターフェイス (Azure CLI) には、**Azur
 
 広範囲にわたるスターター テンプレートを「[Azure リソース マネージャー クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で見つけることができます。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

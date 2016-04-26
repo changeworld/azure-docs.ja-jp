@@ -65,13 +65,13 @@ Azure App Service に Web アプリをデプロイしましょう。
     
     画面の指示に従い、Azure サブスクリプションのある Microsoft アカウントを使用してブラウザーでログイン操作を進めます。
 
-4. 次のコマンドを使用し、一意のアプリ名で Azure に App Service アプリ リソースを作成します。Web アプリの URL は http://&lt;app_name>.azurewebsites.net になります。
+4. 次のコマンドを使用し、一意のアプリ名で Azure に App Service アプリ リソースを作成します。
 
         azure site create --git <app_name>
       
     >[AZURE.NOTE] Azure サブスクリプションのデプロイ資格情報がまだ設定されていない場合は、それらを作成するように求められます。これらの資格情報 (Azure アカウント資格情報ではありません) は App Service で Git のデプロイと FTP のログインのみに使用されます。
     
-    これで、アプリが Azure に作成されるだけでなく、現在のディレクトリが Git として初期化され、この新しい App Service アプリに Git リモートとして接続されています。アプリの URL を参照すると既定の美しい HTML ページが表示されますが、ここでは用意したコードを実際に使用しましょう。
+    これでアプリが Azure で作成されました。また、現在のディレクトリが Git として初期化され、この新しい App Service アプリに Git リモートとして接続されています。アプリの URL (http://&lt;app_name>.azurewebsites.net) を参照すると既定の美しい HTML ページが表示されますが、ここでは用意したコードを実際に使用しましょう。
 
 4. Git でコードをプッシュする場合と同じように、サンプル コードを新しい App Service アプリにデプロイします。
 
@@ -109,7 +109,7 @@ Azure ポータルにアクセスして、作成したアプリを確認しま�
 
 2. 左側のバーで **[App Services]** をクリックします。
 
-3. 作成した App Service アプリをクリックして、ポータルでアプリのブレードを開きます。操作がしやすいように、既定で **[設定]** ブレードが開きます。
+3. 作成した App Service アプリをクリックして、ポータルでそのページを開きます ([ブレード](../azure-portal-overview.md)と呼ばれています)。既定で **[設定]** ブレードが開くので便利です。
 
     ![Portal view of first app in Azure App Service](./media/app-service-web-get-started/portal-view.png)
 
@@ -139,4 +139,4 @@ App Service アプリのポータル ブレードには、アプリの構成、�
 - [モバイル アプリの作成](/documentation/learning-paths/appservice-mobileapps/)
 - [API アプリの作成](../app-service-api/app-service-api-apps-why-best-platform.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

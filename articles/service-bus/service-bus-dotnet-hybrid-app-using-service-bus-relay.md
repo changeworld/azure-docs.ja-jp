@@ -402,7 +402,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 ## アプリケーションを AZURE にデプロイする準備を完了する
 
-アプリケーションは、Azure クラウド サービスまたは Azure の Web サイトにデプロイできます。Web サイトとクラウド サービスの違いについては、「[Azure Execution Models (Azure 実行モデル)][executionmodels]」を参照してください。Azure の Web サイトにアプリケーションをデプロイする方法については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)](https://azure.microsoft.com/develop/net/tutorials/get-started/)」を参照してください。このセクションには、アプリケーションを Azure クラウド サービスにデプロイする詳細な手順が記載されています。
+アプリケーションは、Azure [クラウド サービス][executionmodels]または [Azure の Web サイト][azureweb]にデプロイできます。Azure の Web サイトにアプリケーションをデプロイする方法については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)](https://azure.microsoft.com/develop/net/tutorials/get-started/)」を参照してください。このセクションには、アプリケーションを Azure クラウド サービスにデプロイする詳細な手順が記載されています。
 
 アプリケーションをクラウド サービスにデプロイするには、クラウド サービス プロジェクトのデプロイメント プロジェクトをソリューションに追加します。このデプロイメント プロジェクトには、アプリケーションをクラウドで適切に実行するために必要な構成情報が含まれています。
 
@@ -531,8 +531,6 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
     ![][37]
 
-Web サイトとクラウド サービスの違いについては、「[Azure Execution Models (Azure 実行モデル)][executionmodels]」を参照してください。
-
 ## アプリケーションの停止と削除
 
 アプリケーションのデプロイ後に、無料サーバー時間である 750 時間/月 (31 日/月) の範囲内で他のアプリケーションを作成してデプロイするには、そのアプリケーションを無効にする必要があります。
@@ -608,6 +606,7 @@ Service Bus の詳細については、次のリソースを参照してくだ�
 
   [sbwacom]: /documentation/services/service-bus/
   [sbwacomqhowto]: service-bus-dotnet-how-to-use-queues.md
-  [executionmodels]: ../cloud-services/fundamentals-application-models.md
+  [executionmodels]: ../cloud-services/cloud-services-choose-me.md
+  [azureweb]: ../app-service-web/app-service-web-overview.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

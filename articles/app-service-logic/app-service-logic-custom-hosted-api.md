@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Logic Apps でのカスタム API の呼び出し" 
-	description="App Service でホストされたカスタム API のロジック アプリでの使用" 
-	authors="stepsic-microsoft-com" 
-	manager="dwrede" 
-	editor="" 
-	services="app-service\logic" 
+<properties
+	pageTitle="Logic Apps でのカスタム API の呼び出し"
+	description="App Service でホストされたカスタム API のロジック アプリでの使用"
+	authors="stepsic-microsoft-com"
+	manager="dwrede"
+	editor=""
+	services="app-service\logic"
 	documentationCenter=""/>
 
 <tags
 	ms.service="app-service-logic"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
-	ms.devlang="na"	
+	ms.devlang="na"
 	ms.topic="article"
 	ms.date="02/23/2016"
 	ms.author="stepsic"/>
-	
+
 # App Service でホストされたカスタム API のロジック アプリでの使用
 
 Logic Apps には、さまざまなサービス用に 40 個以上のコネクタの豊富なセットがありますが、独自のカスタム API を呼び出して独自のコードを実行することもできます。独自のカスタム Web API をホストする最も簡単かつスケーラブルな方法の 1 つは、App Service を使用することです。この記事では、App Service の API アプリ、Web アプリ、またはモバイル アプリでホストされる任意の Web API を呼び出す方法について説明します。
@@ -37,7 +37,7 @@ API をセキュリティで保護する場合は、他にもいくつかの方�
 1. コードの変更が不要 - Azure Active Directory を使用すると、コードの変更や再デプロイを必要とせずに API を保護できます。
 1. API のコードで基本認証、AAD 認証、または証明書認証を適用します。
 
-## コード変更を伴わない API の呼び出しのセキュリティ保護 
+## コード変更を伴わない API の呼び出しのセキュリティ保護
 
 このセクションでは、ロジック アプリ用と Web アプリ用の 2 つの Azure Active Directory アプリケーションを作成します。Web アプリの呼び出しの認証は、ロジック アプリの AAD アプリケーションに関連付けられたサービス プリンシパル (クライアント ID とシークレット) を使用して行います。最後に、ロジック アプリの定義にアプリケーション ID を追加します。
 
@@ -71,12 +71,12 @@ Web アプリが既にデプロイされている場合、ポータルでその�
 #### Azure ポータルで承認を有効にする
 
 1. Web アプリに移動し、コマンド バーで **[設定]** クリックします。
-2. **[承認/認証]** をクリックします。 
+2. **[承認/認証]** をクリックします。
 3. この部分を **[オン]** にします。
 
 この時点で、アプリケーションが自動的に作成されます。このアプリケーションのクライアント ID は、パート 3 で必要となるため、次の手順を実行する必要があります。
 
-1. [Azure クラシック ポータルの Active Directory](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) に移動してディレクトリを選択します。 
+1. [Azure クラシック ポータルの Active Directory](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) に移動してディレクトリを選択します。
 2. 検索ボックスでアプリを検索します。
 3. 一覧からアプリをクリックします。
 4. **[構成]** タブをクリックします。
@@ -110,7 +110,9 @@ Web アプリが既にデプロイされている場合、ポータルでその�
 ]
 ```
 
-デプロイを自動的に実行して、AAD を使用する空の Web アプリとロジック アプリを一緒にデプロイするには、次のボタンをクリックします。[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
+デプロイを自動的に実行して、AAD を使用する空の Web アプリとロジック アプリを一緒にデプロイするには、次のボタンをクリックします。
+
+[![Azure へのデプロイ](./media/app-service-logic-custom-hosted-api/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
 完全なテンプレートについては、[ロジック アプリによる、App Service でホストされ AAD によって保護されたカスタム API の呼び出し](https://github.com/Azure/azure-quickstart-templates/blob/master/201-logic-app-custom-api/azuredeploy.json)に関するページを参照してください。
 
@@ -125,7 +127,7 @@ Web アプリが既にデプロイされている場合、ポータルでその�
 | テナント | AD テナントを識別するためのテナント識別子。 |
 | 対象となる読者 | 必須。接続するリソース。 |
 | clientID | Azure AD アプリケーションのクライアント識別子。 |
-| secret | 必須。トークンを要求しているクライアントのシークレット。 | 
+| secret | 必須。トークンを要求しているクライアントのシークレット。 |
 
 これは、上記のテンプレートで既に設定されていますが、直接ロジック アプリを作成する場合は、承認セクション全体を追加する必要があります。
 
@@ -154,7 +156,7 @@ Web アプリが既にデプロイされている場合、ポータルでその�
 | type | 必須。認証の種類。基本認証の場合、値には Basic を使用する必要があります。 |
 | ユーザー名 | 必須。認証するユーザー名。 |
 | パスワード | 必須。認証するパスワード。 |
- 
+
 ### コード内での AAD 認証の処理
 
 既定では、ポータルで有効にする Azure Active Directory 認証では、きめ細かい承認は実行されません。たとえば、この認証では、API が特定のユーザーまたはアプリにはロックされず、特定のテナントのみにロックされます。
@@ -165,4 +167,4 @@ Web アプリが既にデプロイされている場合、ポータルでその�
 
 ただし、ロジック アプリのアプリケーション ID を作成して API の呼び出しに使用する場合は、このページの手順に従う必要があります。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0413_2016-->

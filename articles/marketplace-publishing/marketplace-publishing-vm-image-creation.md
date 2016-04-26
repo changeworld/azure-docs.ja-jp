@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="03/07/2016"
+   ms.date="04/13/2016"
    ms.author="hascipio; v-divte"/>
 
 # Azure Marketplace 向け仮想マシン イメージ作成ガイド
@@ -45,96 +45,13 @@ SKU は、VM イメージの取引名です。VM イメージには、1 個の�
 
 1. **SKU を追加します。** SKU には ID が必要です。これは、URL で使用します。ID は、発行プロファイル内で一意である必要がありますが、他の発行元との ID の競合が発生するリスクはありません。
 
-> [AZURE.NOTE] プランと SKU の ID は、Marketplace でプランの URL に表示されます。
+    > [AZURE.NOTE] プランと SKU の ID は、Marketplace でプランの URL に表示されます。
 
 2. **SKU の概要説明を追加します。** 概要説明は顧客に表示されるので、読みやすくする必要があります。この情報は、"ステージングにプッシュ" フェーズまでロックする必要はありません。それまでは、自由に編集できます。
 3. Windows ベースの SKU を使用する場合、表示されたリンクに従って、Windows Server の承認されたバージョンを取得します。
 
 ## 2\.Azure と互換性のある VHD の作成 (Linux ベース)
-このセクションでは、Azure Marketplace 用 Linux ベースの VM イメージを作成するためのベスト プラクティスについて説明します。詳細な手順については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード][link-azure-vm-1]」を参照してください。
-
-> [AZURE.TIP] 次の手順の多く (例: エージェントのインストール、カーネルのブート パラメーター) は既に、Microsoft Azure イメージ ギャラリーから使用できる Linux イメージ対応になっています。したがって、ベースとしてこれらのイメージのいずれかを使用して始めれば、Azure 対応ではない Linux イメージを構成する場合と比較して、時間を節約できます。
-
-### 2\.1 適切な VHD サイズの選択
-発行済み SKU (VM イメージ) は、SKU に対してディスクをサポートしたあらゆる VM サイズに対応するよう設計する必要があります。推奨サイズに関するガイダンスを提供できますが、これらは強制ではなく、推奨事項として取り扱ってください。
-
-1. Linux オペレーティング システム VHD: VM イメージ内の Linux オペレーティング システム VHD は、30 ～ 50 GB の固定形式 VHD として作成する必要があります。30 GB を下回らないようにしてください。物理サイズが VHD サイズより小さいと、VHD が疎になります。ケースバイケースで、Linux VHD を 50 GB より大きくすることも検討します。別の形式で VHD を既に設定している場合は、[Convert-VHD PowerShell コマンドレットを使用して形式を変更できます][link-technet-1]。
-2. データ ディスク VHD: データ ディスクは 1 TB にすることができます。データ ディスク VHD は固定形式の VHD として作成する必要があります。また、疎にする必要もあります。ディスク サイズを決めるとき、顧客はイメージ内の VHD をサイズ変更できないことに注意してください。
-
-### 2\.2 最新の Azure Linux エージェントがインストールされていることの確認
-オペレーティング システム VHD を準備するときは、[Azure Linux エージェント][link-azure-vm-2]がインストールされていることを確認します。RPM または Deb パッケージを使用します。パッケージの名前は通常は walinuxagent または WALinuxAgent ですが、ディストリビューションを確認してください。エージェントには、Azure で Linux IaaS をデプロイメントするための主要な機能 (VM プロビジョニング、ネットワーク機能など) が用意されています。
-
-エージェントはさまざまな方法で構成できますが、互換性を最大化するために一般的なエージェント構成方法を使用することをお勧めします。エージェントは手動でインストールできますが、ディストリビューションに事前構成されたパッケージが含まれる場合はそれを使うことを強くお勧めします。
-
-[GitHub リポジトリ][link-github-waagent]からエージェントを手動でインストールすることを選択した場合、まず Waagent ファイルを /usr/sbin にコピーし、次のコマンドをルート ディレクトリで実行します。
-
-    # chmod 755 /usr/sbin/waagent
-    # /usr/sbin/waagent -install
-
-エージェントの構成ファイルが /etc/waagent.conf に配置されます。
-
-### 2\.3 必要なライブラリが含まれていることを確認
-Azure Linux エージェントのほか、次のライブラリが含まれている必要があります。
-
-1. [Linux Integration Services][link-intsvc] 3.0 以降がカーネルで有効になっている必要があります。「[Linux カーネルの要件](./virtual-machines-linux-create-upload-vhd-generic/#linux-kernel-requirements)」を参照してください。
-2. Azure I/O 安定性向上のための[カーネル パッチ](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c) (最新のカーネルには必要ないと思いますが、確認してください)
-3. [Python][link-python] 2.6 以降
-4. Python pyasn1 パッケージ (まだインストールされていない場合)
-5. [OpenSSL][link-openssl] (v1.0 以降を推奨)
-
-### 2\.4 ディスク パーティションの設定
-Logical Volume Manager を使用しないことをお勧めします。オペレーティング システム ディスクの単一のルート パーティションを作成します。オペレーティング システム ディスクまたはデータ ディスクでスワップ パーティションを使用しないでください。/etc/fstab にマウントされていない場合でも、スワップ パーティションを削除することをお勧めします。必要に応じて、Linux エージェントによりローカル リソース ディスク (/dev/sdb) にスワップ パーティションを作成することもできます。
-
-### 2\.5 カーネル ブート ライン パラメーターの追加
-また、次のパラメーターをカーネル ブート ラインに追加する必要があります。
-
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
-
-これにより、Azure サポートで必要に応じてお客様にシリアル コンソール出力を提供できます。また、クラウド ストレージからのオペレーティング システム ディスクのマウントに対して適切なタイムアウトを指定できます。SKU で顧客の仮想マシンへのダイレクト SSHing をブロックする場合でも、シリアル コンソール出力を有効にする必要があります。
-
-### 2\.6 既定で SSH Server を含める
-顧客に対して SSH を有効にすることを強くお勧めします。SSH Server を有効にした場合、**ClientAliveInterval 180** オプションを使って、SSH キープアライブを sshd 構成に追加してください。180 が推奨されますが、許可される範囲は 30 ～ 235 です。すべてのアプリケーションについて、顧客に仮想マシンへのダイレクト SSH を許可する必要はありません。SSH を明示的にブロックした場合は、**ClientAliveInterval** オプションを設定する必要はありません。
-
-### 2\.7 ネットワークの要件を満たす
-Azure と互換性のある Linux VM イメージのネットワーク要件は次のとおりです。
-
-- 通常は、NetworkManager を無効にするのが最善です。例外の 1 つは CentOS 7.x に基づくシステム (および派生物) で、NetworkManager を有効にしておく必要があります。
-- ネットワーク構成は **ifup** および **ifdown** スクリプトから制御できる必要があります。Linux エージェントは、これらのコマンドを使ってプロビジョニング中にネットワークを再起動することがあります。
-- カスタム ネットワーク構成は使用しないでください。最後の手順として、Resolv.conf ファイルを削除する必要があります。通常、これはプロビジョニング解除の一部として行います (「[Azure Linux エージェント ユーザー ガイド](./virtual-machines-linux-agent-user-guide/)」を参照)。このステップは、次のコマンドを使って手動で実行することもできます。
-
-        rm /etc/resolv.conf
-
-- ネットワーク デバイスをスタートアップ時に起動して、DHCP を使用する必要があります。
-- IPv6 は、Azure ではサポートされていません。このプロパティを有効にしても機能しません。
-
-### 2\.8 セキュリティのベスト プラクティスを実装していることの確認
-Azure Marketplace の SKU がセキュリティにおけるベスト プラクティスを順守していることが重要です。コーディネートは次のとおりです。
-
-- ディストリビューションのすべてのセキュリティ パッチをインストールします。
-- ディストリビューションのセキュリティ ガイドラインに従います。
-- 既定のアカウントを作成しないようにします (プロビジョニング インスタンス全体で同じものを使用するなど)。
-- bash の履歴エントリを消去します。
-- iptables (ファイアウォール) ソフトウェアを組み込みますが、ルールを有効にはしません。これにより、お客様にシームレスな既定の操作性が提供されます。追加の構成として VM ファイアウォールを使用する必要があるお客様は、各社固有のニーズを満たすために iptables ルールを構成することもできます。
-
-### 2\.9 イメージの汎用化
-Azure Marketplace 内のすべてのイメージは汎用的な方法で再利用できる必要があります。つまり、特定の構成からそれらを抜き取る必要があります。これを Linux で実現するには、オペレーティング システム VHD をプロビジョニング解除する必要があります。
-
-プロビジョニング解除用の Linux コマンドは次のとおりです。
-
-        # waagent -deprovision
-
-このコマンドは自動的に次のことを行います。
-
-- /etc/resolv.conf でネーム サーバー構成を削除します。
-- キャッシュされた DHCP クライアント リースを削除します。
-- ホスト名を localhost.localdomain にリセットします。
-
-次の操作も確実に実行されるよう構成ファイル (/etc/waagent.conf) を設定することもお勧めします。
-
-- 構成ファイル内の Provisioning.RegenerateSshHostKeyPair を "y" に設定して、すべての SSH ホスト キーを削除します
-- 構成ファイル内の Provisioning.DeleteRootPassword を "y" に設定して、/etc/shadow からルート パスワードを削除します。構成ファイルの内容のドキュメントについては、エージェントの Github リポジトリ ページの README ファイルの「CONFIGURATION」セクションを参照してください ([https://github.com/Azure/WALinuxAgent](https://github.com/Azure/WALinuxAgent) で下にスクロール)。  
-
-これで、Linux VM の汎用化は完了です。Azure ポータル、コマンド ライン、または VM 内から VM をオフにします。VM がオフのときは、手順 3.4 から続行します。
+このセクションでは、Azure Marketplace 用 Linux ベースの VM イメージを作成するためのベスト プラクティスについて説明します。詳細な手順については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md)」を参照してください。
 
 ## 3\.Azure と互換性のある VHD の作成 (Windows ベース)
 このセクションでは、Azure Marketplace 用の Windows Server に基づいて SKU を作成するためのステップについて説明します。
@@ -177,7 +94,7 @@ Microsoft Azure ポータルから承認された基本イメージに基づい�
 
 5. プロパティを設定します。
 
-    a.迅速にデプロイメントするには、**[オプションの構成]** と **[リソース グループ]** のプロパティの既定値をそのまま使用します。
+    a.迅速にデプロイするには、**[オプションの構成]** と **[リソース グループ]** のプロパティの既定値をそのまま使用します。
 
     b.必要に応じて、**[ストレージ アカウント]** でオペレーティング システム VHD を格納するストレージのアカウントを選択できます。
 
@@ -252,7 +169,7 @@ Azure Marketplace のすべてのイメージは汎用的な方法で再利用�
 
         sysprep.exe /generalize /oobe /shutdown
 
-  OS を sysprep する方法のガイダンスについては、MSDN 記事「[Windows Server VHD の作成と Azure へのアップロード](./virtual-machines-create-upload-vhd-windows-server/)」の手順を参照してください。
+  OS を sysprep する方法のガイダンスについては、MSDN 記事「[Windows Server VHD の作成と Azure へのアップロード](../virtual-machines/virtual-machines-windows-classic-createupload-vhd.md)」の手順を参照してください。
 
 ## 4\.VHD からの VM のデプロイ
 VHD (汎用化されたオペレーティング システム VHD および 0 個以上のデータ ディスク VHD) を Azure ストレージ アカウントにアップロードした後、これらをユーザー VM イメージとして登録できます。その後、そのイメージをテストできます。オペレーティング システム VHD は汎用化されるため、VHD URL を指定して VM を直接デプロイすることはできません。
@@ -594,7 +511,7 @@ Shared Access Signature URI を作成するには、「[共有アクセス署名
     ![図](media/marketplace-publishing-vm-image-creation/vm-image-pubportal-skus-3.png)
 
 ## 次のステップ
-SKU の詳細を完了したら、「[Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging]」に進むことができます。発行プロセスのそのステップでは、**ステップ 3: ステージングでの VM プランのテスト**の前に必要なマーケティング コンテンツ、価格、その他の情報を提供します。ステップ 3 では、プランを Azure Marketplace にデプロイして一般に公開して購入できるようにする前にさまざまなユース ケース シナリオをテストします。
+SKU の詳細について入力が完了したら、[Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging]のページに進むことができます。発行プロセスのそのステップでは、**ステップ 3: ステージングでの VM プランのテスト**の前に必要なマーケティング コンテンツ、価格、その他の情報を提供します。ステップ 3 では、プランを Azure Marketplace にデプロイして一般に公開して購入できるようにする前にさまざまなユース ケース シナリオをテストします。
 
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
@@ -644,11 +561,10 @@ SKU の詳細を完了したら、「[Azure Marketplace のマーケティング
 [link-datactr-2012]: http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/
 [link-datactr-2008-r2]: http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/
 [link-acct-creation]: marketplace-publishing-accounts-creation-registration.md
-[link-azure-vm-1]: ./virtual-machines-linux-create-upload-vhd/
 [link-technet-1]: https://technet.microsoft.com/library/hh848454.aspx
 [link-azure-vm-2]: ./virtual-machines-linux-agent-user-guide/
 [link-openssl]: https://www.openssl.org/
 [link-intsvc]: http://www.microsoft.com/download/details.aspx?id=41554
 [link-python]: https://www.python.org/
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0413_2016-->
