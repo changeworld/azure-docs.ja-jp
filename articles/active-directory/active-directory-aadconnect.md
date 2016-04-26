@@ -22,7 +22,7 @@ Azure AD Connect は、Windows Server Active Directory などのオンプレミ�
 
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
-> [AZURE.IMPORTANT] [Azure AD Connect is the best way to connect your on-premises directory with Azure AD and Office 365. This is a great time to upgrade to Azure AD Connect from Windows Azure Active Directory Sync (DirSync) or Azure AD Sync as these tools are now deprecated and will reach end of support on April 13, 2017.](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM)
+> [AZURE.IMPORTANT] [Azure AD Connect is the best way to connect your on-premises directory with Azure AD and Office 365. This is a great time to upgrade to Azure AD Connect from Windows Azure Active Directory Sync (DirSync) or Azure AD Sync as these tools are now deprecated and will reach end of support on April 13, 2017.]( https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM)
 
 ![Azure AD Connect とは](./media/active-directory-aadconnect/arch.png)
 
@@ -48,7 +48,7 @@ Azure Active Directory Connect は 3 つの主要な部分で構成されます�
 
 ## Azure AD Connect のインストール
 
-Azure AD Connect は [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=615771)からダウンロードできます。
+Azure AD Connect は [Microsoft ダウンロード センター]( http://go.microsoft.com/fwlink/?LinkId=615771)からダウンロードできます。
 
 
 | 解決策 | シナリオ |
@@ -66,7 +66,7 @@ Azure AD Connect は [Microsoft ダウンロード センター](http://go.micro
 
 | トピック | |
 | --------- | --------- |
-| Azure AD Connect のダウンロード | [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771) |
+| Azure AD Connect のダウンロード | [Azure AD Connect のダウンロード]( http://go.microsoft.com/fwlink/?LinkId=615771) |
 | Express 設定を使用したインストール | [Azure AD Connect の高速インストール](active-directory-aadconnect-get-started-express.md) |
 | カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md) |
 | DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md) |

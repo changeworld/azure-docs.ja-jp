@@ -130,11 +130,11 @@ Node.js コマンド ラインを使用して次のコマンドを実行しま�
 
     このコマンドを実行すると、Node.js HTTP サーバーが起動し、API のサービスが開始されます。
 
-1. ****http://localhost:8000/contacts** を参照すると、contact 一覧の JSON 出力が表示されます (ブラウザーによっては、ダウンロードするように求められます)。
+1. **http://localhost:8000/contacts** を参照すると、contact 一覧の JSON 出力が表示されます (ブラウザーによっては、ダウンロードするように求められます)。
 
     ![すべての Contacts API の呼び出し](media/app-service-api-nodejs-api-app/all-contacts-api-call.png)
 
-1. ****http://localhost:8000/contacts/2** を参照すると、その ID 値が示す contact が表示されます。
+1. **http://localhost:8000/contacts/2** を参照すると、その ID 値が示す contact が表示されます。
 
     ![特定の Contact API の呼び出し](media/app-service-api-nodejs-api-app/specific-contact-api-call.png)
 

@@ -40,7 +40,7 @@ Azure ポータルにログインし、新規を選択し、**Azure コンテナ
 - サブスクリプション: Azure サブスクリプションを選択します。
 - リソース グループ: 既存のリソース グループを選択するか、新しいリソース グループを作成します。
 - 場所: Azure コンテナー サービスのデプロイの Azure リージョンを選択します。
-- SSH 公開キー: Azure コンテナー サービスの Virtual Machines に対する認証に使用する公開キーを追加します。このキーには改行を含めないでください。また、先頭に 'ssh-rsa'、末尾に 'username@domain' を付ける必要があります。たとえば、"**ssh-rsa AAAAB3Nz...SNIPPEDCONTENT...UcyupgH azureuser@linuxvm**" のようになります。SSH キーの作成方法については、[Linux の記事](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/) と [Windows の記事](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/)を参照してください。
+- SSH 公開キー: Azure コンテナー サービスの Virtual Machines に対する認証に使用する公開キーを追加します。このキーには改行を含めないでください。また、先頭に 'ssh-rsa'、末尾に 'username@domain' を付ける必要があります。たとえば、"**ssh-rsa AAAAB3Nz...SNIPPEDCONTENT...UcyupgH azureuser@linuxvm**" のようになります。SSH キーの作成方法については、[Linux の記事]( https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/) と [Windows の記事]( https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/)を参照してください。
 
 準備が完了したら、**[OK]** をクリックします。
 
@@ -86,8 +86,8 @@ Azure ポータルにログインし、新規を選択し、**Azure コンテナ
 
 DC/OS または Docker Swarm クラスターをデプロイするには、GitHub から次のテンプレートのいずれかを選択します。既定のオーケストレーターの選択を除き、これらのテンプレートは同じです。
 
-* [DC/OS テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
-* [Swarm テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+* [DC/OS テンプレート]( https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
+* [Swarm テンプレート]( https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
 
 次に、Azure CLI が Azure サブスクリプションに接続されたことを確認します。この処理には、次のコマンドを使用できます。
 
@@ -142,12 +142,12 @@ azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMP
 
 ## PowerShell を使用してサービスを作成する
 
-PowerShell を使用して Azure コンテナー サービス クラスターをデプロイすることもできます。このドキュメントはバージョン 1.0 の [Azure PowerShell モジュール](https://azure.microsoft.com/blog/azps-1-0/)に基づいています。
+PowerShell を使用して Azure コンテナー サービス クラスターをデプロイすることもできます。このドキュメントはバージョン 1.0 の [Azure PowerShell モジュール]( https://azure.microsoft.com/blog/azps-1-0/)に基づいています。
 
 DC/OS または Docker Swarm クラスターをデプロイするには、次のテンプレートのいずれかを選択します。既定のオーケストレーターの選択を除き、これらのテンプレートは同じです。
 
-* [DC/OS テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
-* [Swarm テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+* [DC/OS テンプレート]( https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
+* [Swarm テンプレート]( https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
 
 Azure サブスクリプションでクラスターを作成する前に、PowerShell セッションが Azure にサインインしていることを確認します。そのためには、`Get-AzureRMSubscription` コマンドを使用します。
 
