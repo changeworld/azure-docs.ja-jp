@@ -170,7 +170,7 @@ Twilio は、Node.js ライブラリを提供します。このライブラリ�
 
 アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、client.InitiateOutboundCall メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。「方法: 発信通話する」の例では、Twilio から提供される URL http://twimlets.com/message を使用して応答を返します。
 
-> [AZURE.NOTE] TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、[twimlet\_message\_url](http://twimlets.com/message) をクリックすると、空の <Response> 要素が表示されます。もう 1 つの例として、[twimlet\_message\_url\_hello\_world](http://twimlets.com/message?Message%5B0%5D=Hello%20World) をクリックすると、&lt;Say&gt; 要素を格納している &lt;Response&gt; 要素が表示されます。
+> [AZURE.NOTE] TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、[twimlet\_message\_url](http://twimlets.com/message) をクリックすると、空の &lt;Response&gt; 要素が表示されます。もう 1 つの例として、[twimlet\_message\_url\_hello\_world](http://twimlets.com/message?Message%5B0%5D=Hello%20World) をクリックすると、&lt;Say&gt; 要素を格納している &lt;Response&gt; 要素が表示されます。
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自の URL サイトを作成できます。HTTP 応答を返すサイトは、任意の言語で作成できます。このトピックでは、ASP.NET 汎用ハンドラーから URL をホストすることを想定しています。
 
