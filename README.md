@@ -18,12 +18,7 @@ Azure ドキュメントにご興味をお持ちくださり、ありがとう�
 
 ## 作成協力の方法
 
-[Azure ドキュメント](http://azure.microsoft.com/documentation/)の作成にご協力いただく方法は複数あります。
-
-* [フォーラムのディスカッション](http://social.msdn.microsoft.com/Forums/windowsazure/home)に投稿する。
-* 記事の下部にある DISQUS からコメントを送信する。
-* GitHub ユーザー インターフェイスからも技術記事の作成に簡単にご協力いただけます。目的の記事をこのリポジトリで見つけるか、[http://azure.microsoft.com/documentation](http://azure.microsoft.com/documentation) で記事にアクセスして、GitHub 内のソースにアクセスするためのリンクをクリックしてください。
-* 既存の記事に大幅な変更を加える場合、画像を追加または変更する場合、新しい記事を投稿する場合は、このリポジトリのフォーク、Git Bash と Markdown Pad のインストール、いくつかの Git コマンドの習得が必要になります。
+GitHub ユーザー インターフェイスからも技術記事の作成に簡単にご協力いただけます。目的の記事をこのリポジトリで見つけるか、[http://azure.microsoft.com/documentation](http://azure.microsoft.com/documentation) で記事にアクセスして、GitHub 内のソースにアクセスするためのリンクをクリックしてください。
 
 ##Azure コンテンツの作成協力について
 
@@ -104,4 +99,4 @@ Git Bash をインストールしてローカルで作業する場合は、ロ�
 
 すべてのガイダンス トピックについては、[こちらの作成協力者ガイドのインデックス](./contributor-guide/contributor-guide-index.md)をご覧ください。
 
-<!---HONumber=AcomDC_0307_2016-->
+<!----HONumber=AcomDC_0307_2016-->
