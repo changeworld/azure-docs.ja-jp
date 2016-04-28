@@ -78,7 +78,7 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-teamseer-tutorial/IC789628.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページで、**[サインイン URL]** テキスト ボックスに、"**http://www.teamseer.com/companyid*" というパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、**[サインイン URL]** テキスト ボックスに、"**http://www.teamseer.com/companyid**" というパターンで URL を入力し、**[次へ]** をクリックします。
 
     ![Configure App URL](./media/active-directory-saas-teamseer-tutorial/IC789629.png "アプリケーション URL の構成")
 
