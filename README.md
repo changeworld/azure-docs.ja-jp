@@ -48,7 +48,7 @@ azure-content リポジトリ内のコンテンツは、[Azure.Microsoft.com](ht
 
 このルート ディレクトリ内の記事は、Azure.Microsoft.com に *http://azure.microsoft.com/documentation/articles/{article-name-without-md}/* のパスで発行されています。
 
-* **記事のファイル名:** [ファイルの名前付けに関するこちらのガイダンス](./contributor-guide/file-names-and-locations.md)をご覧ください。
+* **記事のファイル名:** [ファイルの名前付けに関するこちらのガイダンス](https://github.com/Azure/azure-content/blob/master/contributor-guide/file-names-and-locations.md)をご覧ください。
 
 サービス別のフォルダーに格納されている記事は、Azure.Microsoft.com に 
 *http://azure.microsoft.com/documentation/articles/service-folder/{article-name-without-md}/* のパスで発行されています。
@@ -57,7 +57,7 @@ azure-content リポジトリ内のコンテンツは、[Azure.Microsoft.com](ht
 
 ### \includes
 
-繰り返し使用できるコンテンツ セクションを作成して、1 つ以上の記事に含めることができます。詳細については、[技術コンテンツで使用されるカスタム拡張](./contributor-guide/custom-markdown-extensions.md)に関するトピックをご覧ください。
+繰り返し使用できるコンテンツ セクションを作成して、1 つ以上の記事に含めることができます。詳細については、[技術コンテンツで使用されるカスタム拡張](https://github.com/Azure/azure-content/blob/master/contributor-guide/custom-markdown-extensions.md)に関するトピックをご覧ください。
 
 ### \markdown templates
 
@@ -69,9 +69,9 @@ azure-content リポジトリ内のコンテンツは、[Azure.Microsoft.com](ht
 
 ## GitHub、Git、およびこのリポジトリの使い方
 
-作成に協力する方法、GitHub の UI を使用して軽微な変更を投稿する方法、より大規模な投稿のためにリポジトリのフォークとクローンを行う方法については、[GitHub の記事作成用ツールをインストールしてセットアップする方法](./contributor-guide/tools-and-setup.md)に関するトピックをご覧ください。
+作成に協力する方法、GitHub の UI を使用して軽微な変更を投稿する方法、より大規模な投稿のためにリポジトリのフォークとクローンを行う方法については、[GitHub の記事作成用ツールをインストールしてセットアップする方法](https://github.com/Azure/azure-content/blob/master/contributor-guide/tools-and-setup.md)に関するトピックをご覧ください。
 
-Git Bash をインストールしてローカルで作業する場合は、ローカルの作業ブランチを新たに作成し、変更を加え、その変更をメイン ブランチに送信する手順が、[記事の新規作成または既存の記事の更新のための Git コマンド](./contributor-guide/git-commands-for-master.md)に関するトピックに記載されておりますので、ご覧ください。
+Git Bash をインストールしてローカルで作業する場合は、ローカルの作業ブランチを新たに作成し、変更を加え、その変更をメイン ブランチに送信する手順が、[記事の新規作成または既存の記事の更新のための Git コマンド](https://github.com/Azure/azure-content/blob/master/contributor-guide/git-commands-for-master.md)に関するトピックに記載されておりますので、ご覧ください。
 
 ### Branches
 
@@ -87,16 +87,16 @@ Git Bash をインストールしてローカルで作業する場合は、ロ�
 
 - [マークダウンの基本](https://help.github.com/articles/markdown-basics/)
 
-- [印刷可能なマークダウンの一覧](./contributor-guide/media/documents/markdown-cheatsheet.pdf?raw=true)
+- [印刷可能なマークダウンの一覧](https://github.com/Azure/azure-content/blob/master/contributor-guide/media/documents/markdown-cheatsheet.pdf?raw=true)
 
-- マークダウン エディターの一覧については、[ツールとセットアップに関するトピック](./contributor-guide/tools-and-setup.md#install-a-markdown-editor)をご覧ください。
+- マークダウン エディターの一覧については、[ツールとセットアップに関するトピック](https://github.com/Azure/azure-content/blob/master/contributor-guide/tools-and-setup.md#install-a-markdown-editor)をご覧ください。
 
 ## 記事のメタデータ
 
-記事のメタデータを使用すると、作者の属性、作成協力者の属性、階層リンク、記事の説明、SEO 最適化など、azure.microsoft.com Web サイトが備える機能や、Microsoft がコンテンツのパフォーマンスを評価するために使用しているレポート機能を利用できます。このように、メタデータは重要性の高い要素です。 [こちらのリンクから、メタデータを正しく活用するためのガイダンスにアクセスできます](./contributor-guide/article-metadata.md)。
+記事のメタデータを使用すると、作者の属性、作成協力者の属性、階層リンク、記事の説明、SEO 最適化など、azure.microsoft.com Web サイトが備える機能や、Microsoft がコンテンツのパフォーマンスを評価するために使用しているレポート機能を利用できます。このように、メタデータは重要性の高い要素です。 [こちらのリンクから、メタデータを正しく活用するためのガイダンスにアクセスできます](https://github.com/Azure/azure-content/blob/master/contributor-guide/article-metadata.md)。
 
 ## その他のリソース
 
-すべてのガイダンス トピックについては、[こちらの作成協力者ガイドのインデックス](./contributor-guide/contributor-guide-index.md)をご覧ください。
+すべてのガイダンス トピックについては、[こちらの作成協力者ガイドのインデックス](https://github.com/Azure/azure-content/blob/master/contributor-guide/contributor-guide-index.md)をご覧ください。
 
 <!----HONumber=AcomDC_0307_2016-->
