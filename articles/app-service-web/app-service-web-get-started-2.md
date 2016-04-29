@@ -127,4 +127,4 @@ App Service には一般的な認証のニーズの一部に対応した設定�
 - [Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする](web-sites-hybrid-connection-get-started.md)
 - [App Service の特長](../app-service/app-service-how-works-readme.md) 
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0420_2016---->
