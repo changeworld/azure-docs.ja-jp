@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure Mobile Engagement Android SDK の統合" 
+<properties
+	pageTitle="Azure Mobile Engagement Android SDK の統合"
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="02/29/2016" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="04/18/2016"
 	ms.author="piyushjo" />
 
 #Engagement Reach を Android に統合する方法
@@ -145,7 +145,7 @@ Amazon と Google Play の両方のデバイスを対象とするコードは、
 			    Log.d("tmp", "String data push message received: " + body);
 			    return true;
 			  }
-			
+
 			  @Override
 			  protected Boolean onDataPushBase64Received(Context context, String category, byte[] decodedBody, String encodedBody)
 			  {
@@ -218,15 +218,15 @@ Android の **include** ステートメントにより、既存のレイアウ�
 			  android:orientation="vertical"
 			  android:layout_width="fill_parent"
 			  android:layout_height="fill_parent">
-			
+
 			  <ListView
 			    android:id="@android:id/list"
 			    android:layout_width="fill_parent"
 			    android:layout_height="fill_parent"
 			    android:layout_weight="1" />
-			
+
 			  <include layout="@layout/engagement_notification_area" />
-			
+
 			</LinearLayout>
 
 この例では、元のレイアウトのトップ レベル要素としてリスト ビューが使用されていたため、親コンテナーを追加しました。また、`android:layout_height="fill_parent"` で構成されたリスト ビューの下にビューを追加できるように、`android:layout_weight="1"` も追加しました。
@@ -292,27 +292,27 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 ##### アプリ内通知
 
 特定のカテゴリに対して代替のレイアウトを使用するには、次の例のようにこれを実装します。
-			
+
 			public class MyNotifier extends EngagementDefaultNotifier
 			{
 			  public MyNotifier(Context context)
 			  {
 			    super(context);
 			  }
-			
+
 			  @Override
 			  protected int getOverlayLayoutId(String category)
 			  {
 			    return R.layout.my_notification_overlay;
 			  }
-			
-			
+
+
 			  @Override
 			  public Integer getOverlayViewId(String category)
 			  {
 			    return R.id.my_notification_overlay;
 			  }
-			
+
 			  @Override
 			  public Integer getInAppAreaId(String category)
 			  {
@@ -328,9 +328,9 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 			  android:id="@+id/my_notification_overlay"
 			  android:layout_width="fill_parent"
 			  android:layout_height="fill_parent">
-			
+
 			  <include layout="@layout/my_notification_area" />
-			
+
 			</RelativeLayout>
 
 オーバーレイのビュー識別子が標準のものとは異なることがわかります。オーバーレイでは、各レイアウトで固有の識別子を使用することが重要です。
@@ -342,25 +342,25 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 			  xmlns:android="http://schemas.android.com/apk/res/android"
 			  android:layout_width="fill_parent"
 			  android:layout_height="fill_parent">
-			
+
 			  <RelativeLayout
 			    android:id="@+id/my_notification_area"
 			    android:layout_width="fill_parent"
 			    android:layout_height="64dp"
 			    android:layout_alignParentTop="true"
 			    android:background="#B000">
-			
+
 			    <LinearLayout
 			      android:orientation="horizontal"
 			      android:layout_width="fill_parent"
 			      android:layout_height="fill_parent"
 			      android:gravity="center_vertical">
-			
+
 			      <ImageView
 			        android:id="@+id/engagement_notification_icon"
 			        android:layout_width="48dp"
 			        android:layout_height="48dp" />
-			
+
 			      <LinearLayout
 			        android:id="@+id/engagement_notification_text"
 			        android:orientation="vertical"
@@ -368,7 +368,7 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 			        android:layout_height="fill_parent"
 			        android:layout_weight="1"
 			        android:gravity="center_vertical">
-			
+
 			        <TextView
 			          android:id="@+id/engagement_notification_title"
 			          android:layout_width="fill_parent"
@@ -376,7 +376,7 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 			          android:singleLine="true"
 			          android:ellipsize="end"
 			          android:textAppearance="@android:style/TextAppearance.Medium" />
-			
+
 			        <TextView
 			          android:id="@+id/engagement_notification_message"
 			          android:layout_width="fill_parent"
@@ -384,15 +384,15 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 			          android:maxLines="2"
 			          android:ellipsize="end"
 			          android:textAppearance="@android:style/TextAppearance.Small" />
-			
+
 			      </LinearLayout>
-			
+
 			      <ImageView
 			        android:id="@+id/engagement_notification_image"
 			        android:layout_width="wrap_content"
 			        android:layout_height="fill_parent"
 			        android:adjustViewBounds="true" />
-			
+
 			      <ImageButton
 			        android:id="@+id/engagement_notification_close_area"
 			        android:visibility="invisible"
@@ -400,9 +400,9 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 			        android:layout_height="fill_parent"
 			        android:src="@android:drawable/btn_dialog"
 			        android:background="#0F00" />
-			
+
 			    </LinearLayout>
-			
+
 			    <ImageButton
 			      android:id="@+id/engagement_notification_close"
 			      android:layout_width="wrap_content"
@@ -410,9 +410,9 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 			      android:layout_alignParentRight="true"
 			      android:src="@android:drawable/btn_dialog"
 			      android:background="#0F00" />
-			
+
 			  </RelativeLayout>
-			
+
 			</merge>
 
 通知領域のビュー識別子が標準のものとは異なることがわかります。通知領域では、各レイアウトで固有の識別子を使用することが重要です。
@@ -450,19 +450,19 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 			    .setSmallIcon(notification.icon)              // icon is mandatory
 			    .setContentIntent(notification.contentIntent) // keep content intent
 			    .setDeleteIntent(notification.deleteIntent);  // keep delete intent
-			
+
 			  /* Your customization */
 			  // builder.set...
-			
+
 			  /* Dismiss option can be managed only after build */
 			  Notification myNotification = builder.build();
 			  if (!content.isNotificationCloseable())
 			    myNotification.flags |= Notification.FLAG_NO_CLEAR;
-			
+
 			  /* Notify here instead of super class */
 			  NotificationManager manager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 			  manager.notify(getNotificationId(content), myNotification); // notice the call to get the right identifier
-			
+
 			  /* Return false, we notify ourselves */
 			  return false;
 			}
@@ -472,7 +472,7 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 通知のみのアナウンスに対するクリックは、`EngagementDefaultNotifier.onNotifAnnouncementIntentPrepared` をオーバーライドして用意された `Intent` を修正することで管理方法をカスタマイズできます。このメソッドを使用すると、フラグを簡単にチューニングできます。
 
 `SINGLE_TOP` フラグを追加する例は次のとおりです。
-			
+
 			@Override
 			protected Intent onNotifAnnouncementIntentPrepared(EngagementNotifAnnouncement notifAnnouncement,
 			  Intent intent)
@@ -521,7 +521,7 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 
 			<activity android:name="com.your_company.MyCustomTextAnnouncementActivity">
 			  <intent-filter>
-			    <action android:name="com.microsoft.azure.engagement.intent.action.ANNOUNCEMENT"/>
+			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT"/>
 			    <category android:name="my_category" />
 			    <data android:mimeType="text/plain" />
 			  </intent-filter>
@@ -550,7 +550,7 @@ Web アナウンスの場合、`AndroidManifest.xml` で次の例のように `E
 
 			<activity android:name="com.your_company.MyCustomWebAnnouncementActivity">
 			  <intent-filter>
-			    <action android:name="com.microsoft.azure.engagement.intent.action.ANNOUNCEMENT"/>
+			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT"/>
 			    <category android:name="my_category" />
 			    <data android:mimeType="text/html" />    <!-- only difference with text announcements in the intent is the data mime type -->
 			  </intent-filter>
@@ -560,11 +560,11 @@ Web アナウンスの場合、`AndroidManifest.xml` で次の例のように `E
 
 			<activity android:name="com.your_company.MyCustomPollActivity">
 			  <intent-filter>
-			    <action android:name="com.microsoft.azure.engagement.intent.action.POLL"/>
+			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.POLL"/>
 			    <category android:name="my_category" />
 			  </intent-filter>
 			</activity>
-			
+
 ##### 一から実装する
 
 Reach SDK に用意された `Engagement*Activity` を拡張することなく、アナウンス (および投票) のアクティビティにカテゴリを実装できます。これは、標準のレイアウトと異なるビューを使用するレイアウトを定義する場合などに便利です。
@@ -578,12 +578,12 @@ Web サイトのキャンペーンを作成する際に指定したフィール�
 			public class MyCustomTextAnnouncement extends EngagementActivity
 			{
 			  private EngagementAnnouncement mContent;
-			
+
 			  @Override
 			  protected void onCreate(Bundle savedInstanceState)
 			  {
 			    super.onCreate(savedInstanceState);
-			
+
 			    /* Get content */
 			    mContent = EngagementReachAgent.getInstance(this).getContent(getIntent());
 			    if (mContent == null)
@@ -592,16 +592,16 @@ Web サイトのキャンペーンを作成する際に指定したフィール�
 			      finish();
 			      return;
 			    }
-			
+
 			    setContentView(R.layout.my_text_announcement);
-			
+
 			    /* Configure views by querying fields on mContent */
 			    // ...
 			  }
 			}
 
 統計情報については、`onResume` イベントに表示されるコンテンツのレポートを作成してください。
-			
+
 			@Override
 			protected void onResume()
 			{
@@ -623,7 +623,7 @@ Web サイトのキャンペーンを作成する際に指定したフィール�
 			{
 			  finish();
 			}
-			
+
 			@Override
 			protected void onPause()
 			{
@@ -643,6 +643,5 @@ Web サイトのキャンペーンを作成する際に指定したフィール�
 [こちら]: http://developer.android.com/tools/extras/support-library.html#Downloading
 [Google Cloud Messaging]: http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]: https://developer.amazon.com/sdk/adm.html
- 
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

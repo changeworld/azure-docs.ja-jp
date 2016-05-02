@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="04/14/2016"
 	ms.author="andkjell"/>
 
 # Azure AD Connect での接続に関する問題のトラブルシューティング
@@ -37,7 +37,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 | URL | ポート | 説明 |
 | ---- | ---- | ---- |
 | mscrl.microsoft.com | HTTP/80 | CRL リストのダウンロードに使用します。 |
-| **.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。 |
+| *.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。 |
 | *.trust.com | HTTP/80 | MFA の CRL リストのダウンロードに使用します。 |
 | *.windows.net | HTTPS/443 | Azure AD へのサインインに使用します。 |
 | secure.aadcdn.microsoftonline-p.com | HTTPS/443 | MFA に使用します。 |
@@ -55,7 +55,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 - 正しいようであれば、「[プロキシ接続を検証する](#verify-proxy-connectivity)」の手順に従って、ウィザード外部でも同じように問題が発生するかどうかを確認してください。
 
 ### MFA エンドポイントに到達できない
-このエラーは、エンドポイント ****https://secure.aadcdn.microsoftonline-p.com** に到達できず、グローバル管理者が MFA を有効にしている場合に表示されます。 ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
+このエラーは、エンドポイント **https://secure.aadcdn.microsoftonline-p.com** に到達できず、グローバル管理者が MFA を有効にしている場合に表示されます。 ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
 
 - これが表示された場合は、エンドポイント secure.aadcdn.microsoftonline-p.com がプロキシに追加されていることを確認します。
 
@@ -140,4 +140,4 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

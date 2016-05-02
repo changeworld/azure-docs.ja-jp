@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="02/10/2016"
+   ms.date="04/20/2016"
    ms.author="rajram"/>
 
 # BizTalk 取引先管理の使用開始とロジック アプリへの追加
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
+
 
 BizTalk 取引先管理 (TPM) サービスにより、パートナーや契約などの企業間の関係を、スキーマや証明書などの関連する成果物と共に定義して保持することができます。これらの関係は、AS2、EDIFACT、および X12 などの関連する API サービスによって適用できます。
 
@@ -41,4 +43,4 @@ TPM API アプリは、AS2 コネクタ、X12 API アプリ、または EDIFACT 
 <!--References-->
 [1]: app-service-logic-create-a-trading-partner-agreement.md
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

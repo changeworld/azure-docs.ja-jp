@@ -11,7 +11,7 @@
 
 <tags
 	ms.service="virtual-machines-linux"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
@@ -20,7 +20,7 @@
 
 # Linux VM へのディスクの追加
 
-この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。ディスクを追加するには、[Azure CLI](../xplat-cli-install.md) を Resource Manager モードにする必要があります (`azure config mode arm`)。
+この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。ディスクを追加するには、Resource Manager モードで構成された [Azure CLI](../xplat-cli-install.md) が必要です (`azure config mode arm`)。
 
 ## クイック コマンド
 
@@ -32,7 +32,7 @@ rick@ubuntu$ azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size
 
 ## ディスクの接続
 
-新しいディスクには簡単に接続できます。「`azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>`」と入力するだけで、VM に新しい GB のディスクが作成され、接続されます。これは、次のようになります。
+新しいディスクには簡単に接続できます。「`azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>`」と入力するだけで、VM に新しい GB のディスクが作成され、接続されます。ストレージ アカウントを明示的に特定しない場合、作成するディスクは、OS ディスクと同じストレージ アカウントに配置されます。これは、次のようになります。
 
 	azure vm disk attach-new myuniquegroupname myuniquevmname 5
 	info:    Executing command vm disk attach-new
@@ -177,4 +177,4 @@ Linux VM から使用できるように新しいディスクのパーティシ�
 - 「[Azure での Linux VM の最適化](virtual-machines-linux-optimization.md)」の推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
 - ディスクを追加してストレージ容量を拡大し、[RAID を構成](virtual-machines-linux-configure-raid.md)してパフォーマンスを強化します。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

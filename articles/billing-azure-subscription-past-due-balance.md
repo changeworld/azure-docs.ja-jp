@@ -15,16 +15,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="04/17/2016"
 	ms.author="genli"/>
 
 # Azure サブスクリプションに支払期限を過ぎた未払い額があるという通知を受信する理由
-Azure サブスクリプションのアカウント管理者で、期限までに料金を支払っていない場合、支払期限を過ぎた未払い額についての電子メール通知を受信したり、http://accounts.windowsazure.com または http://portal.azure.comにアラートが表示されたりすることがあります。
+Azure サブスクリプションのアカウント管理者で、期限までに料金を支払っていない場合、支払期限を過ぎた未払い額についての電子メール通知が届いたり、[https://account.windowsazure.com](https://account.windowsazure.com) または [https://portal.azure.com](https://portal.azure.com) にアラートが表示されたりします。
 
-### 支払い忘れた場合
+## 支払い忘れた場合
 サービスが取り消され、リソースは使用できなくなります。サービスが停止されてから 90 日後にすべてのデータが削除されます。
 
-### この問題を解決する方法
+## この問題を解決する方法
 
 未払いの残高を全額支払います。
 
@@ -35,4 +35,4 @@ Azure サブスクリプションのアカウント管理者で、期限まで�
 
 **シナリオ 3**: アカウント管理者が会社を辞めたり、役職が変わったりしたために、支払いに関する通知が届かなかった場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)に問い合わせて問題を解決してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

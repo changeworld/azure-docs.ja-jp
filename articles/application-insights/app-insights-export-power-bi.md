@@ -133,7 +133,7 @@ Application Insights 用 Power BI コンテンツ パックでは、ユーザー
 ![](./media/app-insights-export-power-bi/140.png)
 
 
-日付の書式は YYYY-MM-DD (ダッシュ付き) に設定してください。
+**日付の書式は YYYY-MM-DD (ダッシュ付き) に設定してください。**
 
 パスのプレフィックス パターンは、Stream Analytics がストレージ内の入力ファイルを検索する場所を指定します。連続エクスポートによるデータ格納方法と一致するように設定する必要があります。次のように設定します。
 
@@ -260,6 +260,12 @@ Application Insights 用 Power BI コンテンツ パックでは、ユーザー
 
 ![Power BI で、データセットとフィールドを選択します。](./media/app-insights-export-power-bi/210.png)
 
+
+### データが表示されない場合
+
+* [日付の書式が YYYY-MM-DD (ダッシュ付き) に正しく設定されている](#set-path-prefix-pattern)ことを確認してください。
+
+
 ### ビデオ
 
 Noam Ben Zeev で、Power BI にエクスポートする方法を確認できます。
@@ -274,4 +280,4 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

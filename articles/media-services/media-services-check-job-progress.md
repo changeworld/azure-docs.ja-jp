@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/03/2016"    
+	ms.date="04/18/2016"    
 	ms.author="juliako"/>
 
 #方法: ジョブの進行状況をチェックする
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-portal-check-job-progress.md)
+- [ポータル](media-services-portal-check-job-progress.md)
 - [.NET](media-services-check-job-progress.md)
-- [REST](media-services-rest-check-job-progress.md)
+- [REST ()](media-services-rest-check-job-progress.md)
 
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。進行状況は [StateChanged イベント ハンドラーを定義する](#statechange_event_handler)か、[Azure キュー ストレージを使用して Media Services ジョブ通知を監視する](#check_progress_with_queues)ことにより確認できます。このトピックでは両方の方法を説明します。
 
@@ -436,4 +436,4 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

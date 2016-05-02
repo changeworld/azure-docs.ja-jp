@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/13/2016"
+	ms.date="04/20/2016"
 	ms.author="andkjell"/>
 
 
@@ -53,12 +53,16 @@ DirSync から Azure AD Connect へのインプレース アップグレード�
 [Azure Active Directory Connect: 従来のツールからのインプレース アップグレード](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-in-place-upgrade-from-legacy-tools) ![インプレース アップグレード](./media/active-directory-aadconnect-dirsync-deprecated/inplaceupgrade.png)
 
 ## FAQ
+**Q: Azure チームからの電子メール通知や Office 365 メッセージ センターからのメッセージが届きましたが、現在は Connect を使用しています。** ビルド番号が 1.0.*.0 (1.1 リリースより前) の Azure AD Connect を使用しているお客様にも通知が送信されています。Microsoft ではお客様に、常に最新の Azure AD Connect リリースを使用することをお勧めしています。1.1 には[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)機能が搭載されているため、常に最新バージョンの Azure AD Connect がインストールされている状態を簡単に維持できます。
+
 **Q: DirSync と Azure AD Sync は、2017 年 4 月 13 日に動作しなくなりますか。** いいえ。これらのツールが Azure AD と通信できなくなる日付については、後日発表されます。この情報が利用できるようになったら、このトピックで確認できます。
 
-**Q: FIM または MIM の Azure AD コネクタはどうなりますか。** FIM または MIM の Azure AD コネクタは、廃止と発表されて**いません**。このコネクタは**機能凍結**状態であり、新しい機能が追加されず、バグの修正プログラムを受信しません。Microsoft は、このコネクタから Azure AD Connect への移行を計画することをお勧めします。このコネクタを使用して新しいデプロイメントを開始しないことを強くお勧めします。このコネクタは、将来廃止が発表される予定です。
+**Q: DirSync のどのバージョンからアップグレードできますか。** 現在使用されているどの DirSync リリースからでもアップグレードできます。
+
+**Q: FIM または MIM の Azure AD コネクタはどうなりますか。** FIM または MIM の Azure AD コネクタは、**廃止とは発表されていません**。このコネクタは**機能凍結**状態で、新しい機能が追加されず、バグの修正プログラムも受信しません。Microsoft は、このコネクタから Azure AD Connect への移行を計画することをお勧めします。このコネクタを使用して新しいデプロイメントを開始しないことを強くお勧めします。このコネクタは、将来廃止が発表される予定です。
 
 ## その他のリソース
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

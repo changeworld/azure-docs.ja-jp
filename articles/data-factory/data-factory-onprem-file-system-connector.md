@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="04/18/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する
@@ -439,7 +439,7 @@ type | type プロパティは、**OnPremisesFileServer** に設定されます�
 host | サーバーのホスト名。次の例のように '\\' をエスケープ文字として使用します: 共有が \\servername である場合、\\\servername を指定します。<br/><br/>ファイル システムが、ゲートウェイ コンピューターに対してローカルである場合は、Local または localhost を使用します。ファイル システムがゲートウェイ コンピューターとは異なるサーバー上にある場合は、\\\servername を使用します。 | あり
 userid | サーバーにアクセスするユーザーの ID を指定します | No (encryptedCredential を選択する場合)
 パスワード | ユーザー (userid) のパスワードを指定します | いいえ (encryptedCredential を選択する場合) 
-encryptedCredential | New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します<br/><br/>**注: ** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります。 | いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合)
+encryptedCredential | New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します<br/><br/>**注:** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります。 | いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合)
 gatewayName | Data Factory サービスが、オンプレミスのファイル サーバーへの接続に使用するゲートウェイの名前 | はい
 
 オンプレミスのファイル システム データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
@@ -599,7 +599,8 @@ false | mergeFiles | ソース フォルダ Folder1 が次のような構造の�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-
+## パフォーマンスとチューニング  
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
 
 
@@ -608,4 +609,4 @@ false | mergeFiles | ソース フォルダ Folder1 が次のような構造の�
 
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

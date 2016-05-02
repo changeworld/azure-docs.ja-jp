@@ -18,7 +18,7 @@
 	ms.author="nitinme"/>
 
 
-# Azure HDInsight クラスター上の Spark ジョブ サーバー (Windows)
+# Azure HDInsight Windows クラスターの Spark ジョブ サーバー (プレビュー)
 
 > [AZURE.NOTE] HDInsight は Linux 上に Spark クラスターを提供するようになりました。ここでは、Livy を使用して Spark クラスターにジョブをリモートで送信します。Linux 上の HDInsight Spark で Livy を使用する方法の詳細については、「[HDInsight の Spark クラスターで Livy を使用して Spark ジョブをリモートで送信する (Linux)](hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。
 
@@ -84,4 +84,4 @@ mypostdata.txt ではアプリケーションが定義されています。
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

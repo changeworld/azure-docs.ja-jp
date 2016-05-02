@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="03/16/2016"
+   ms.date="04/20/2016"
    ms.author="andkjell"/>
 
 # Lotus Domino Connector のテクニカル リファレンス
@@ -112,7 +112,7 @@ Lotus Notes は、コネクタのインストール**前に**、サーバーに�
 
 ![Notes2](./media/active-directory-aadconnectsync-connector-domino/notes2.png)
 
-**注:** Lotus Notes は、一度はコネクタのサービス アカウントとして使用するアカウントと同じサーバーにあるユーザーが開始する必要があります。
+**注:** Lotus Notes は、一度はコネクタのサービス アカウントとして使用するアカウントと同じサーバーにあるユーザーが開始する必要があります。また、サーバー上の Lotus Notes クライアントは必ず終了してください。クライアントが実行されているときに、コネクタが Domino サーバーに接続することはできません。
 
 ### コネクタの作成
 
@@ -539,4 +539,4 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 
 -	コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「[How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

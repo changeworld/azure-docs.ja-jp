@@ -67,7 +67,7 @@ MQTT の接続パケットおよび切断パケットの場合、IoT Hub は**�
 
 ### IoT Hub へのメッセージの送信
 
-接続に成功すると、デバイスは `devices/{did}/messages/events/` または `devices/{did}/messages/events/{property_bag}` を**トピック名**として使用して IoT Hub にメッセージを送信できるようになります。`{property_bag}` 要素を使用すると、デバイスは追加のプロパティ付きのメッセージを URL エンコード形式で送信できるようになります。次に例を示します。
+接続に成功すると、デバイスは `devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を**トピック名**として使用して IoT Hub にメッセージを送信できるようになります。`{property_bag}` 要素を使用すると、デバイスは追加のプロパティ付きのメッセージを URL エンコード形式で送信できるようになります。次に例を示します。
 
 ```
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -75,11 +75,11 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 > [AZURE.NOTE] これは、HTTP プロトコルでクエリ文字列に使用したのと同じエンコーディングです。
 
-デバイス クライアント アプリケーションはまた、`devices/{did}/messages/events/{property_bag}` を **Will トピック名**として使用することにより、*Will メッセージ*をテレメトリ メッセージとして転送されるように定義することができます。
+また、デバイス クライアント アプリケーションは、`devices/{device_id}/messages/events/{property_bag}` を **Will トピック名**として使用することにより、*Will メッセージ*をテレメトリ メッセージとして転送されるように定義することもできます。
 
 ### メッセージの受信
 
-IoT Hub からメッセージを受信するには、デバイスで、`devices/{did}/messages/devicebound/#”` を**トピック フィルター**として使用してサブスクライブする必要があります。IoT Hub はメッセージを**トピック名** `devices/{did}/messages/devicebound/` または `devices/{did}/messages/devicebound/{property_bag}` (プロパティがある場合) で送信します。`{property_bag}` には、メッセージ プロパティの URL エンコードされたキー/値ペアが入ります。プロパティ バッグに含められるのは、アプリケーション プロパティとユーザーが設定可能なシステム プロパティ ( **messageId** または **correlationId** など) のみです。システム プロパティの名前にはプレフィックス **$** が付きます。アプリケーション プロパティでは、プレフィックスのない元々のプロパティ名が使用されます。
+IoT Hub からメッセージを受信するには、デバイスで、`devices/{device_id}/messages/devicebound/#”` を**トピック フィルター**として使用してサブスクライブする必要があります。IoT Hub はメッセージを**トピック名** `devices/{device_id}/messages/devicebound/` または `devices/{device_id}/messages/devicebound/{property_bag}` (メッセージ プロパティがある場合) で送信します。`{property_bag}` には、メッセージ プロパティの URL エンコードされたキー/値ペアが入ります。プロパティ バッグに含められるのは、アプリケーション プロパティとユーザーが設定可能なシステム プロパティ ( **messageId** または **correlationId** など) のみです。システム プロパティの名前にはプレフィックス **$** が付きます。アプリケーション プロパティでは、プレフィックスのない元々のプロパティ名が使用されます。
 
 ## 次のステップ
 
@@ -102,4 +102,4 @@ MQTT プロトコルの詳細については、[MQTT のドキュメント][lnk-
 [lnk-sas-tokens]: iot-hub-sas-tokens.md
 [lnk-mqtt-devguide]: iot-hub-devguide.md#mqtt-support
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

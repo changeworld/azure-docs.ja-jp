@@ -5,7 +5,7 @@
 	documentationCenter="" 
 	authors="Juliako" 
 	writer="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
+	ms.date="04/18/2016"
 	ms.author="juliako"/>
 
 
 #<a id="managemediaservicesorigins"></a>Media Services アカウントでストリーミング エンドポイントを管理する方法
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-manage-origins.md)
+- [ポータル](media-services-manage-origins.md)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 
 
@@ -68,10 +68,9 @@ Azure クラシック ポータルを使用してストリーミング エンド
 	新しいストリーミング ユニットの割り当ては完了するまでに約 20 分かかります。
 
 	 
->[AZURE.NOTE] 現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
+	>[AZURE.NOTE] 現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
 
-</br>
->[AZURE.NOTE] コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+	>[AZURE.NOTE] コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 	
 ##<a id="configure_streaming_endpoints"></a>ストリーミング エンドポイントの構成
 
@@ -151,4 +150,4 @@ CDN 統合は、すべての Azure データ センター (米国西部、米国
 [configure-origin-configure-custom-host-names]: ./media/media-services-manage-origins/media-services-configure-custom-host-names.png
  
 
-<!-----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

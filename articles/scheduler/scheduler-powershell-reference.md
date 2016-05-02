@@ -1,6 +1,6 @@
 <properties
  pageTitle="Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)"
- description=""
+ description="Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)"
  services="scheduler"
  documentationCenter=".NET"
  authors="krisragh"
@@ -54,4 +54,4 @@
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

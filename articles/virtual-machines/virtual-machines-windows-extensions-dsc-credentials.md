@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="01/25/2016"
+   ms.date="04/18/2016"
    ms.author="zachal"/>
 
 # 資格情報を Azure DSC 拡張機能ハンドラーに渡す #
@@ -89,4 +89,4 @@ PowerShell DSC の詳細については、[PowerShell ドキュメント セン�
 
 PowerShell DSC で管理できる追加機能については、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)で DSC リソースを検索してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

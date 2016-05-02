@@ -3,7 +3,7 @@
 	description="NoSQL データベースでの JSON ドキュメントに対する CRUD 操作など、DocumentDB の一般的なタスクの Node.js サンプルを github で検索します。" 
 	keywords="node.js のサンプル"
 	services="documentdb" 
-	authors="mimig1" 
+	authors="aliuy" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter="nodejs"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/22/2016" 
-	ms.author="ryancraw"/>
+	ms.date="04/18/2016" 
+	ms.author="andrl"/>
 
 
 # DocumentDB Node.js のサンプル
@@ -120,4 +120,4 @@ DocumentDB のリソースで CRUD 操作などの一般的な操作を実行す
 
 DocumentDB でのデータのパーティション分割の詳細については、「[DocumentDB のデータのパーティション分割と拡大縮小](documentdb-partition-data.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

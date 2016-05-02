@@ -1,7 +1,7 @@
 <properties
-	pageTitle="Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする| Microsoft Azure"
-	description="Azure Automation によるアラートの監視に応じて仮想マシンを垂直方向にスケーリングする方法"
-	services="virtual-machines"
+	pageTitle="Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする | Microsoft Azure"
+	description="Azure Automation で監視アラートに応じて Linux 仮想マシンを垂直方向にスケーリングする方法"
+	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="singhkay"
 	manager="drewm"
@@ -9,9 +9,9 @@
 	tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines"
+	ms.service="virtual-machines-linux"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-multiple"
+	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="03/29/2016"
@@ -53,27 +53,9 @@
 
 ## Azure Automation をセットアップして、Virtual Machines にアクセスする
 
-このセクションでは、次のタスクを実行します。
+最初に、VM スケール セットのインスタンスをスケーリングするために使用する runbook をホストする、Azure Automation アカウントを作成する必要があります。最近、Automation サービスでは、ユーザーの代わりに非常に簡単に Runbook を自動的に実行するためのサービス プリンシパルをセットアップする "アカウントとして実行" 機能が導入されました。詳しくは、次の記事を参照してください。
 
-* Active Directory でユーザーを作成します
-* ユーザーのログイン情報を含む、AutomationPSCredential を作成します
-* ユーザーがサブスクリプション内のリソースにアクセスできるようにセットアップします
-
-サブスクリプションで Azure Automation Runbook の実行を開始するには、Azure Automation にサブスクリプションへのアクセス許可が必要です。これは、Active Directory で別のユーザーを作成することで行います。次に、ユーザーが Azure に対する認証を行えるようにする AutomationPSCredential を作成して、仮想マシンのサイズを変更する PowerShell コマンドを実行する必要があります。
-
-ユーザーと、AutomationPSCredential を作成するチュートリアルは、次の記事を参照してください。
-
-* [Azure Automation の構成](../automation/automation-configuring.md)
-
-ユーザーを作成したら、そのユーザーを従来のリソースの共同管理者にし、Azure Resource Manager のリソースに対する "所有者" 役割を与えます。
-
-従来のリソースにアクセスできるように、クラシック ポータルでユーザーを共同管理者として追加する必要があります。
-
-![古いポータルの共同管理者](./media/virtual-machines-vertical-scaling-automation/old-portal-automation-user.png)
-
-ユーザーが Azure Resource Manager の Virtual Machines にアクセスできるように、Azure ポータルを使用する必要があります。
-
-![新しいポータルの管理者](./media/virtual-machines-vertical-scaling-automation/new-portal-automation-user.png)
+* [Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)
 
 ## サブスクリプションに Azure Automation の垂直スケールの Runbook をインポートする
 
@@ -108,4 +90,4 @@ Webhook のダイアログを閉じる前に、Webhook をコピーしてくだ�
 
 ![アラートを仮想マシン 2 に追加](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -22,6 +22,26 @@
 
 SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
 
+##3\.3.0 から 3.4.0 に移行
+
+### テスト ログ
+
+SDK によって生成されるコンソール ログを有効化/無効化/フィルター処理できるようになりました。これをカスタマイズするには、次の例のように `EngagementAgent.Instance.TestLogEnabled` プロパティを `EngagementTestLogLevel` 列挙型の使用可能な値の 1 つに更新します。
+
+			EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
+			EngagementAgent.Instance.Init();
+
+### Resources
+
+Reach オーバーレイの機能を強化しました。これは SDK NuGet パッケージのリソースの一部です。
+
+新しいバージョンの SDK にアップグレードする際、リソースのオーバーレイ フォルダーにある既存ファイルを保持するかどうかを選択できます。
+
+* 以前のオーバーレイが機能している、または `WebView` 要素を手動で統合している場合、既存ファイルを保持することで、引き続き使用することができます。 
+* 新しいオーバーレイに更新する場合、リソースの `overlay` フォルダー全体を SDK パッケージの新しいフォルダーに置き換えます (UWP アプリ: アップグレード後に %USERPROFILE%\\.nuget\\packages\\MicrosoftAzure.MobileEngagement\\3.4.0\\content\\win81\\Resources から新しいオーバーレイ フォルダーを取得できます)。
+
+> [AZURE.WARNING] 新しいオーバーレイを使用すると、以前のバージョンに対して行ったすべてのカスタマイズが上書きされます。
+
 ##3\.2.0 から 3.3.0 に移行
 
 ### リソース
@@ -294,4 +314,4 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

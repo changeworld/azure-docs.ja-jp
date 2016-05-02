@@ -2,7 +2,7 @@
 	pageTitle="Widevine ライセンス テンプレートの概要" 
 	description="このトピックでは、Widevine ライセンスの構成に使用する Widevine ライセンス テンプレートの概要を示します。" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
 	documentationCenter=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016"  
 	ms.author="juliako"/>
 
 #Widevine ライセンス テンプレートの概要
@@ -210,4 +210,4 @@ Media Services が提供する .NET API を使用して、Widevine ライセン�
 
 [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

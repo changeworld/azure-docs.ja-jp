@@ -14,7 +14,7 @@ ms.workload="big-data"
 ms.tgt_pltfrm="na"
 ms.devlang="na"
 ms.topic="article"
-ms.date="02/01/2016"
+ms.date="04/19/2016"
 ms.author="larryfr"/>
 
 #Use Maven to build Java applications that use HBase with HDInsight (Hadoop) (HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築)
@@ -629,4 +629,4 @@ __hdinsightclustername__ を、使用する HDInsight クラスターの名前�
 
 `-showErr` パラメーターを使用して、ジョブの実行中に生成された標準エラー (STDERR) を表示します。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -13,11 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="02/18/2016"
+   ms.date="04/20/2016"
    ms.author="rajram"/>
 
 # AS2 コネクタの使用開始とロジック アプリへの追加
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 AS2 コネクタを使って、AS2 (Applicability Statement 2) トランスポート プロトコルにより企業間通信でメッセージの送受信を行います。データはインターネット経由で安全かつ確実に転送されます。セキュリティはデジタル証明書と暗号化を使用して実現されています。
 
@@ -103,7 +104,7 @@ AS2 の宛先 | 文字列 | AS2 メッセージの受信側の AS2 の ID。こ�
 
 ロジック アプリの詳細については、「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE] Azure アカウントにはサインアップせずに Azure Logic Apps を体験することもできます。「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」にアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップせずに Azure Logic Apps を体験したい場合は、[Logic Apps の試用](https://tryappservice.azure.com/?appservice=logic)に関するページをご覧ください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -121,4 +122,4 @@ AS2 の宛先 | 文字列 | AS2 メッセージの受信側の AS2 の ID。こ�
 [9]: ./media/app-service-logic-connector-as2/EncodeAndSendInput.PNG
 [10]: ./media/app-service-logic-connector-as2/EncodeAndSendConfigured.PNG
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

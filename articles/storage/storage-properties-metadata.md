@@ -1,22 +1,21 @@
 
-<properties 
-  pageTitle="Azure Storage のオブジェクトのプロパティおよびメタデータの設定と取得 | Microsoft Azure" 
-  description="Azure Storage のオブジェクトにカスタム メタデータを格納して、システムのプロパティを設定、取得します。" 
-  services="storage" 
-  documentationCenter="" 
-  authors="tamram" 
-  manager="carmonm" 
+<properties
+  pageTitle="Azure Storage のオブジェクトのプロパティおよびメタデータの設定と取得 | Microsoft Azure"
+  description="Azure Storage のオブジェクトにカスタム メタデータを格納して、システムのプロパティを設定、取得します。"
+  services="storage"
+  documentationCenter=""
+  authors="tamram"
+  manager="carmonm"
   editor="tysonn"/>
 
-<tags 
-  ms.service="storage" 
-  ms.workload="storage" 
-  ms.tgt_pltfrm="na" 
-  ms.devlang="na" 
-  ms.topic="article" 
-  ms.date="02/20/2016" 
+<tags
+  ms.service="storage"
+  ms.workload="storage"
+  ms.tgt_pltfrm="na"
+  ms.devlang="na"
+  ms.topic="article"
+  ms.date="02/20/2016"
   ms.author="tamram"/>
-
 
 # プロパティおよびメタデータの設定と取得 #
 
@@ -99,4 +98,4 @@ Azure Storage のオブジェクトは、含まれるデータのほかにもシ
 - [.NET 用 Azure Storage クライアント ライブラリ リファレンス](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
 - [.NET 用 Azure Storage クライアント ライブラリ パッケージ](https://www.nuget.org/packages/WindowsAzure.Storage/) 
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

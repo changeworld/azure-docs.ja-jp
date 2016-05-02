@@ -7,7 +7,6 @@
 Azure リソース マネージャー テンプレートでは、リソース間の依存関係を定義することで、JSON 言語で Azure IaaS インフラストラクチャを宣言によって指定できます。Azure リソース マネージャー テンプレートの概要については、次の記事をご覧ください。
 
 - [リソース グループの概要](../articles/resource-group-overview.md)
-- [Azure CLI を使用したテンプレートのデプロイ](../articles/virtual-machines/virtual-machines-linux-cli-manage.md)
 - [Azure Powershell を使用したテンプレートのデプロイ](../articles/virtual-machines/virtual-machines-windows-ps-manage.md)
 
 ### 前提条件
@@ -22,4 +21,4 @@ Azure リソース マネージャー テンプレートでは、リソース間
 
 テンプレートを使用したデプロイでは、Azure サービス管理 API で使用できるバージョンと同じバージョンのカスタム スクリプト拡張機能を使用します。拡張機能では、同じパラメーターとシナリオ (Azure ストレージ アカウントまたは Github へのファイルのアップロードなど) をサポートします。テンプレートで使用する際の重要な違いは、拡張機能のバージョンを majorversion.* 形式で指定するのではなく、正確なバージョンを指定する必要があることです。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

@@ -6,7 +6,7 @@
 	authors="huguesv" 
 	manager="wpickett" 
 	editor=""
-	tags=“azure-resource-manager"/>
+	tags="azure-resource-manager"/>
 
 <tags 
 	ms.service="virtual-machines-linux" 
@@ -129,4 +129,4 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 
 このチュートリアルが終了したら、新しく作成した Azure の仮想マシンをシャットダウンまたは削除して、他のチュートリアル用にリソースを解放し、Azure に対する利用料金の発生を回避します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

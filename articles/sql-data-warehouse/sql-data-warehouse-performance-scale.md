@@ -3,7 +3,7 @@
    description="コンピューティング リソースをスケールアップおよびスケールダウンするために Data Warehouse ユニットを使用した SQL Data Warehouse の柔軟性を理解します。コード例が提供されています。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="TwoUnder"
+   authors="barbkess"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="03/29/2016"
-   ms.author="nicw;jrj;mausher;barbkess;sonyama"/>
+   ms.author="barbkess;sonyama"/>
 
 # SQL Data Warehouse を使用した弾力的なパフォーマンスとスケール
 コンピューティング機能を弾力的に増減するために必要なことは、SQL Data Warehouse に割り当てられた Data Warehouse ユニット (DWU) の数を調整することのみです。Data Warehouse ユニットとは、SQL Data Warehouse によって生じた新しい概念であり、この調整を簡単かつ効率的に管理できます。このトピックでは Data Warehouse ユニットを紹介し、これを使用してコンピューティング機能を弾力的に調整する方法を説明します。この記事には、環境に適した DWU 値を設定する方法に関するいくつかの基本ガイダンスも含まれています。
@@ -98,4 +98,4 @@ Azure PowerShell の使用方法の詳細については、「[SQL Data Warehous
 
 [Azure クラシック ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

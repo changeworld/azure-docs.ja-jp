@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/05/2016"
+   ms.date="04/13/2016"
    ms.author="nitinme"/>
 
 # Azure Storage BLOB から Data Lake Store へのデータのコピー
@@ -118,4 +118,4 @@ Data Lake Analytics アカウントと AdlCopy を使用するには、ソース
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

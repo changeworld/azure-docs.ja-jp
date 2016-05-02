@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/29/2016"
+   ms.date="04/14/2016"
    ms.author="SubramaR"/>
 
 # Linux 上の Service Fabric
@@ -38,4 +38,4 @@ Linux 上の Service Fabric は、Windows 上で利用できるものと概念�
 
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) および [Reliable Services](service-fabric-reliable-services-introduction.md) プログラミング フレームワークを理解します。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -32,11 +32,10 @@
 
 ##リリース ノート
 
-###3\.2.0 (01/22/2016)
-*MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.3.0** の一部
+###3\.3.0 (04/19/2016)
+*MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.4.0** の一部
 
--   アクション url で カスタム スキームと ms appx および ms appdata を使用できるようになりました。
--   安定性が向上しました。
+-   SDK によって出力されるコンソール ログを有効化/無効化/フィルター処理するために "TestLogLevel" API を追加しました。
 
 以前のバージョンについては、「[完全リリース ノート](mobile-engagement-windows-phone-release-notes.md)」をご覧ください。
 
@@ -46,13 +45,18 @@
 
 SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。完全な[アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure/)を参照してください。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
 
-###2\.0.0 から 3.0.0 に移行
+###2\.0.0 から 3.3.0 に移行
 
-ありません。
+####テスト ログ
+
+SDK によって生成されるコンソール ログを有効化/無効化/フィルター処理できるようになりました。これをカスタマイズするには、次の例のように `EngagementAgent.Instance.TestLogEnabled` プロパティを `EngagementTestLogLevel` 列挙型の使用可能な値の 1 つに更新します。
+
+			EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
+			EngagementAgent.Instance.Init();
 
 ### 古いバージョンからのアップグレード
 
 [アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure/)をご覧ください
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

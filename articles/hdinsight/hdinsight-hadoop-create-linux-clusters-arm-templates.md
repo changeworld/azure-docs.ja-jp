@@ -30,13 +30,15 @@ Azure リソース マネージャー (ARM) テンプレートを使用して HD
 この記事の手順を開始する前に、次の項目を用意する必要があります。
 
 - [Azure サブスクリプション](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-- [Azure PowerShell](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)/[Azure CLI](../xplat-cli-install.md)。 
+- [Azure PowerShell](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)/[Azure CLI](../xplat-cli-install.md)。
+
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ## ARM テンプレート
 
 ARM テンプレートでは、アプリケーションの HDInsight クラスター、その依存リソース (既定のストレージ アカウントなど)、および他のリソース (Apache Sqoop を使用する Azure SQL Database など) の作成が 1 回の連携した操作で容易になります。テンプレートでは、アプリケーションのために必要なリソースを定義してさまざまな環境の値を入力するデプロイのパラメーターを指定します。テンプレートは、JSON、およびデプロイの値を構築する際の式で構成されます。
 
-HDInsight クラスターと依存 Azure Storage アカウントを作成するための ARM テンプレートについては、「[付録 A](#appx-a-arm-template)」を参照してください。クロスプラットフォームの [VSCode](https://code.visualstudio.com/#alt-downloads) と [ARM の拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)またはテキスト エディターを併用して、テンプレートをワークステーションのファイルに保存してください。テンプレートを呼び出すさまざまな方法について説明します。
+HDInsight クラスターと依存 Azure ストレージ アカウントを作成するための ARM テンプレートについては、「[付録 A](#appx-a-arm-template)」を参照してください。クロスプラットフォームの [VSCode](https://code.visualstudio.com/#alt-downloads) と [ARM の拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)またはテキスト エディターを併用して、テンプレートをワークステーションのファイルに保存してください。テンプレートを呼び出すさまざまな方法について説明します。
 
 ARM テンプレートについて詳しくは、以下を参照してください。
 
@@ -102,7 +104,7 @@ ARM テンプレートについて詳しくは、以下を参照してくださ�
         # List cluster
         Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName 
 
-	この PowerShell スクリプトは、クラスター名のみを構成します。ストレージ アカウント名はテンプレートにハードコーディングされています。クラスターのユーザー パスワード (デフォルトのユーザー名は *admin*)、および SSH ユーザー パスワード (デフォルトの SSH ユーザー名は*sshuser*) の入力が求められます。
+	この PowerShell スクリプトは、クラスター名のみを構成します。ストレージ アカウント名はテンプレートにハードコーディングされています。クラスターのユーザー パスワード (既定のユーザー名は *admin*)、および SSH ユーザー パスワード (既定の SSH ユーザー名は *sshuser*) の入力が求められます。
 	
 詳細については、「[PowerShell でデプロイする](../resource-group-template-deploy.md#deploy-with-powershell)」を参照してください。
 
@@ -115,7 +117,7 @@ ARM テンプレートについて詳しくは、以下を参照してくださ�
     azure group create -n hdi1229rg -l "East US"
     azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "C:\HDITutorials-ARM\hdinsight-arm-template.json"
     
-クラスター名、クラスターのユーザー パスワード (デフォルトのユーザー名は *admin*)、および SSH ユーザー パスワード (デフォルトの SSH ユーザー名は*sshuser*) の入力が求められます。次のようにインライン パラメーターで指定します。
+クラスター名、クラスターのユーザー パスワード (既定のユーザー名は *admin*)、および SSH ユーザー パスワード (既定の SSH ユーザー名は *sshuser*) の入力が求められます。次のようにインライン パラメーターで指定します。
 
     azure group deployment create --resource-group "hdi1229rg" --name "hdi1229" --template-file "c:\Tutorials\HDInsightARM\create-linux-based-hadoop-cluster-in-hdinsight.json" --parameters '{"clusterName":{"value":"hdi1229"},"clusterLoginPassword":{"value":"Pass@word1"},"sshPassword":{"value":"Pass@word1"}}'
 
@@ -132,11 +134,11 @@ Visual Studio とリソース グループの使用の概要については、�
 ##次のステップ
 この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
-- .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](../virtual-machines/virtual-machines-windows-csharp-template.md)」を参照してください。
-- アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](../app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
+- .NET クライアント ライブラリを使用したリソースのデプロイの例については、[.NET ライブラリとテンプレートを使用したリソースのデプロイ](../virtual-machines/virtual-machines-windows-csharp-template.md)に関する記事を参照してください。
+- アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにプロビジョニングしてデプロイする](../app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
 - ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](../solution-dev-test-environments.md)」を参照してください。
-- Azure Resource Manager のテンプレートのセクションについては、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
-- Azure Resource Manager のテンプレートで使用できる関数の一覧については、「[Azure リソース マネージャーのテンプレートの関数](../resource-group-template-functions.md)」を参照してください。
+- Azure Resource Manager のテンプレートのセクションについては、[テンプレートの作成](../resource-group-authoring-templates.md)に関する記事を参照してください。
+- Azure Resource Manager のテンプレートで使用できる関数の一覧については、[テンプレートの関数](../resource-group-template-functions.md)に関する記事を参照してください。
 
 ##付録 A: ARM テンプレート
 
@@ -311,4 +313,4 @@ Visual Studio とリソース グループの使用の概要については、�
     }
     }
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -35,7 +35,7 @@ Azure Multi-Factor Authentication を使えば、シンプルなサインイン 
 Azure Multi-Factor Authentication の概要については、次のビデオをご覧ください。
 
 
-<center>[AZURE.VIDEO multi-factor-authentication-overview]</center>
+> [AZURE.VIDEO multi-factor-authentication-overview]
 
 ##Azure Multi-Factor Authentication を使う理由
 
@@ -54,7 +54,7 @@ Azure Multi-Factor Authentication は、認証手段の多層化によってユ�
 
 Azure Multi-Factor Authentication を使う理由について、さらに詳しい情報については、次のビデオをご覧ください。
 
-<center>[AZURE.VIDEO windows-azure-multi-factor-authentication]</center>
+> [AZURE.VIDEO windows-azure-multi-factor-authentication]
 
 
 ## Azure Multi-Factor Authentication のしくみ
@@ -75,7 +75,7 @@ Azure Multi-Factor Authentication を使えば、シンプルなサインイン 
 
 しくみの詳細については、次のビデオをご覧ください。
 
-[AZURE.VIDEO multi-factor-authentication-deep-dive-securing-access-on-premises]
+> [AZURE.VIDEO multi-factor-authentication-deep-dive-securing-access-on-premises]
 
 ## Multi-Factor Authentication で使用可能な方法
 ユーザーがサインインしようとすると、追加の確認がユーザーに対して行われます。この 2 番目の確認のために使用できる方法の一覧を次に示します。
@@ -209,4 +209,4 @@ MFA レポート | ● | ●
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

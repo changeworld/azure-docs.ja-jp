@@ -1,30 +1,31 @@
 <properties 
-   pageTitle="ExpressRoute 回線への仮想ネットワークのリンク |Microsoft Azure"
-   description="このドキュメントでは、ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要を示します。"
+   pageTitle="PowerShell を使用した ExpressRoute 回線への仮想ネットワークのリンク | Microsoft Azure"
+   description="このドキュメントでは、Resource Manager デプロイ モデルと PowerShell を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。"
    services="expressroute"
    documentationCenter="na"
    authors="ganesr"
-   manager="carolz"
+   manager="carmonm"
    editor=""
-   tags="azure-service-management"/>
+   tags="azure-resource-manager"/>
 <tags 
    ms.service="expressroute"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/16/2016"
+   ms.date="04/14/2016"
    ms.author="ganesr" />
 
 # ExpressRoute 回線への仮想ネットワークのリンク
 
 > [AZURE.SELECTOR]
-- [PowerShell - クラシック](expressroute-howto-linkvnet-classic.md)
+- [Azure ポータル - Resource Manager](expressroute-howto-linkvnet-portal-resource-manager.md)
 - [PowerShell - Resource Manager](expressroute-howto-linkvnet-arm.md)
-- [テンプレート - リソース マネージャー](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)
+- [PowerShell - クラシック](expressroute-howto-linkvnet-classic.md)
 
-この記事では、ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要を示します。仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。この記事は、リソース マネージャー デプロイ モデルを使用してデプロイされた VNet に適用されます。クラシック デプロイ モデルを使用してデプロイされた仮想ネットワークをリンクする場合は、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-classic.md)」をご覧ください。
 
+
+この記事では、Resource Manager デプロイ モデルと PowerShell を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。
 
 **Azure のデプロイ モデルについて**
 
@@ -32,17 +33,17 @@
 
 ## 構成の前提条件
 
-- Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) が必要です。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。 
-- 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
+- Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) が必要です。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。 
+- 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページ、および[ワークフロー](expressroute-workflows.md) ページを確認してください。
 - アクティブな ExpressRoute 回線が必要です。 
 	- 手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md)し、接続プロバイダー経由で回線を有効にしてください。 
 	- 回線用に Azure プライベート ピアリングが構成されていることを確認してください。ルーティング手順については、[ルーティングの構成](expressroute-howto-routing-arm.md)に関する記事を参照してください。 
 	- Azure プライベート ピアリングを構成する必要があります。また、ネットワークと Microsoft 間の BGP ピアリングを起動して、エンド ツー エンド接続を有効にする必要があります。
-	- 仮想ネットワークと仮想ネットワーク ゲートウェイを作成して完全にプロビジョニングする必要があります。[VPN ゲートウェイ](../articles/vpn-gateway-create-site-to-site-rm-powershell.md)を作成する手順に従いますが、必ず `-GatewayType ExpressRoute` を使用してください。
+	- 仮想ネットワークと仮想ネットワーク ゲートウェイを作成して完全にプロビジョニングする必要があります。[VPN ゲートウェイ](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)を作成する手順に従いますが、必ず `-GatewayType ExpressRoute` を使用してください。
 
 最大 10 個の仮想ネットワークを ExpressRoute 回線に接続できます。ExpressRoute 回線はすべて同じ地理的リージョンにある必要があります。ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線に多数の仮想ネットワークをリンクできます。Premium アドオンの詳細については、[FAQ](expressroute-faqs.md) を確認してください。
 
-## 同じ Azure サブスクリプションの VNet を ExpressRoute 回線に接続する
+## 同じサブスクリプション内の VNet を回線に接続する
 
 次のコマンドレットを使用して、ExpressRoute 回線に仮想ネットワーク ゲートウェイを接続できます。コマンドレットを実行する前に、仮想ネットワーク ゲートウェイが作成されており、リンクの準備ができていることを確認してください。
 
@@ -50,9 +51,11 @@
 	$gw = Get-AzureRmVirtualNetworkGateway -Name "ExpressRouteGw" -ResourceGroupName "MyRG"
 	$connection = New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName "MyRG" -Location "East US" -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute
 
-## 異なる Azure サブスクリプションの仮想ネットワークを ExpressRoute 回線に接続する
+## 異なるサブスクリプション内の VNet を回線に接続する
 
-複数のサブスクリプションで ExpressRoute 回線を共有することができます。下図に、複数のサブスクリプションで ExpressRoute 回線を共有するしくみについて概略を示します。大規模クラウド内のそれぞれの小規模クラウドは、組織内のさまざまな部門に属するサブスクリプションを表すために使用されています。組織内の各部門はサービスのデプロイ用に固有のサブスクリプションを使用できますが、1 つの ExpressRoute 回線を共有することで、オンプレミス ネットワークに接続し直すことができます。1 つの部門 (この例では IT) で ExpressRoute 回線を所有できます。組織内の他のサブスクリプションも ExpressRoute 回線を使用できます。
+複数のサブスクリプションで ExpressRoute 回線を共有することができます。下図に、複数のサブスクリプションで ExpressRoute 回線を共有するしくみについて概略を示します。
+
+大規模クラウド内のそれぞれの小規模クラウドは、組織内のさまざまな部門に属するサブスクリプションを表すために使用されています。組織内の各部門はサービスのデプロイ用に固有のサブスクリプションを使用できますが、1 つの ExpressRoute 回線を共有することで、オンプレミス ネットワークに接続し直すことができます。1 つの部門 (この例では IT) で ExpressRoute 回線を所有できます。組織内の他のサブスクリプションも ExpressRoute 回線を使用できます。
 
 >[AZURE.NOTE] 専用回線の接続と帯域幅の料金は、ExpressRoute 回線の所有者が負担することになります。すべての仮想ネットワークが同じ帯域幅を共有します。
 
@@ -72,21 +75,21 @@
 
 次のコマンドレット スニペットは、承認を作成する方法を示しています。
 
-		Add-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization1"
-		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
-		$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
+	Add-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization1"
+	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
+	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 
-		$auth1 = Get-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization1"
+	$auth1 = Get-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization1"
 		
 
 このコマンドレットの応答に、承認キーと状態が含まれます。
 
-		Name                   : MyAuthorization1
-		Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
-		Etag                   : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 
-		AuthorizationKey       : ####################################
-		AuthorizationUseStatus : Available
-		ProvisioningState      : Succeeded
+	Name                   : MyAuthorization1
+	Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
+	Etag                   : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 
+	AuthorizationKey       : ####################################
+	AuthorizationUseStatus : Available
+	ProvisioningState      : Succeeded
 
 		
 
@@ -139,4 +142,4 @@ ExpressRoute 回線を仮想ネットワークにリンクしている接続を�
 
 ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

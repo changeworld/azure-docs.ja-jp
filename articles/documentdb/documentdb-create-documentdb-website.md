@@ -2,7 +2,7 @@
 	pageTitle="Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ | Microsoft Azure" 
 	description="Azure リソース マネージャーのテンプレートを使用して DocumentDB アカウント、Azure App Service Web Apps、サンプルの Web アプリケーションをデプロイする方法を説明します。" 
 	services="documentdb, app-service\web" 
-	authors="ryancrawcour" 
+	authors="stephbaron" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
@@ -14,9 +14,9 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="02/01/2016" 
-	ms.author="ryancraw"/>
+	ms.author="stbaro"/>
 
-# Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ #
+# Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ
 
 このチュートリアルでは、Azure リソース マネージャーのテンプレートを使用して [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプルの Web アプリケーションをデプロイおよび統合する方法を示します。
 
@@ -26,7 +26,7 @@
 -	Azure リソース マネージャーのテンプレートを使用して、DocumentDB アカウント、App Service Web Apps の Web アプリ、Web デプロイ アプリケーションをデプロイおよび統合する方法
 
 <a id="Prerequisites"></a>
-## 前提条件 ##
+## 前提条件
 > [AZURE.TIP] このチュートリアルは、Azure リソース マネージャーのテンプレート、JSON、Azure PowerShell を使用した経験があるユーザーを対象にしているわけではありませんが、参照するテンプレートやデプロイメント オプションに変更を加える場合は、これらの領域に関する知識が必要になります。
 
 このチュートリアルの手順を実行する前に、次のものを備えておく必要があります。
@@ -47,7 +47,7 @@
 ![[ブロックの解除] ボタンを強調表示した [プロパティ] ウィンドウのスクリーン ショット](./media/documentdb-create-documentdb-website/image1.png)
 
 <a id="Build"></a>
-##手順 2: Document アカウント、App Service の Web アプリ、デモ アプリケーション サンプルのデプロイ ##
+##手順 2: Document アカウント、App Service の Web アプリ、デモ アプリケーション サンプルのデプロイ
 
 では、最初のテンプレートをデプロイしましょう。
 
@@ -147,7 +147,7 @@
 12. DocumentDB ポータルの操作やサンプル Todo アプリケーションの変更を自由に試してみてください。準備ができたら、別のテンプレートをデプロイしましょう。
 	
 <a id="Build"></a>
-## 手順 3: Document アカウントと Web アプリのサンプルのデプロイ ##
+## 手順 3: Document アカウントと Web アプリのサンプルのデプロイ
 
 では、2 番目のテンプレートをデプロイしましょう。
 
@@ -210,4 +210,4 @@
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

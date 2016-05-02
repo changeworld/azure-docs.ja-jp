@@ -8,7 +8,7 @@
 リソース マネージャー API 読み取り数|1 時間あたり 15000|1 時間あたり 15000
 リソース マネージャー API 書き込み数|1 時間あたり 1200|1 時間あたり 1200
 リソース マネージャー API 要求のサイズ|4194304 バイト|4194304 バイト
-サブスクリプションあたりの[クラウド サービス](../articles/cloud-services/fundamentals-application-models.md#tellmecs)数|非推奨<sup>3</sup>|非推奨<sup>3</sup>
+サブスクリプションあたりの[クラウド サービス](../articles/cloud-services/cloud-services-choose-me.md)数|非推奨<sup>3</sup>|非推奨<sup>3</sup>
 サブスクリプションあたりの[アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md)数|非推奨<sup>3</sup>|非推奨<sup>3</sup>
 
 <sup>1</sup>既定の制限は、無料試用版や従量課金制などプラン カテゴリの種類によって異なります。
@@ -17,4 +17,4 @@
 
 <sup>3</sup>これらの機能は、Azure リソース グループと Azure リソース マネージャーでは必要なくなりました。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

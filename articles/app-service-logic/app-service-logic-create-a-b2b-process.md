@@ -4,7 +4,7 @@
    services="app-service\logic" 
    documentationCenter=".net,nodejs,java" 
    authors="rajram" 
-   manager="dwrede" 
+   manager="erikre" 
    editor=""/>
 
 <tags
@@ -13,12 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="02/18/2016"
+   ms.date="04/20/2016"
    ms.author="rajram"/>
 
 # B2B プロセスを作成する
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
+
 
 ## ビジネス シナリオ 
 Contoso 社と Northwind 社は、ビジネス パートナーの関係にあります。Northwind (供給業者) には、Contoso (小売業者) から注文書が送付されます。このとき使用しているのは、AS2 などの業界水準の通信プロトコルです。Northwind は受信する注文書をすべて、自社のクラウド ストレージに保存します。両社の間では、注文書が XML メッセージとしてやり取りされています。メッセージが Northwind のクラウド ストレージに保存された後は、Northwind 社内のプロセスがその注文書を処理していきます。
@@ -69,4 +70,4 @@ Contoso 社と Northwind 社は、ビジネス パートナーの関係にあり
 [2]: ./media/app-service-logic-create-a-b2b-process/Tracking.png
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

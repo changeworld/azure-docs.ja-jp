@@ -2,7 +2,7 @@
 	pageTitle="DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み" 
 	description="このトピックでは、DASH.js を使用した HTML5 アプリケーションに MPEG-DASH アダプティブ ストリーミング ビデオを埋め込む方法を説明します。" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
 	documentationCenter=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016"  
 	ms.author="juliako"/>
 
 
@@ -114,4 +114,4 @@ MediaPlayer に MPD ファイルの URL を渡して、再生予定のビデオ�
 
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

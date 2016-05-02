@@ -3,7 +3,7 @@
    description="SQL Data Warehouse データベース監査の使用"
    services="sql-data-warehouse"
    documentationCenter=""
-   authors="twounder"
+   authors="ronortloff"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.date="03/03/2016" 
-   ms.author="mausher;barbkess;sonyama"/>
+   ms.author="rortloff;barbkess;sonyama"/>
 
 # SQL Data Warehouse データベース監査の使用
 Azure SQL Data Warehouse 監査は、データベース イベントを追跡し、監査したイベントを Azure Storage アカウントの監査ログに書き込みます
@@ -141,4 +141,4 @@ Azure リソース マネージャー モードを実行中に、`Get-Command *A
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

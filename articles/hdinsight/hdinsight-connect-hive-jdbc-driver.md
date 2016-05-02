@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="03/04/2016"
+ ms.date="04/20/2016"
  ms.author="larryfr"/>
 
 #Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続します。
@@ -151,6 +151,28 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
 Java クライアントを使用して HDInsight の Hive をクエリする例は、[https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) にあります。リポジトリの指示に従い、サンプルを作成して実行します。
 
+##トラブルシューティング
+
+### SQL 接続を開こうとしたときに予期しないエラーが発生しました。
+
+__症状__: バージョン 3.3 または 3.4 の HDInsight クラスターに接続するときに、予期しないエラーが発生したというエラーが表示される場合があります。このエラーのスタック トレースは、次の行で始まります。
+
+    java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.<init>(I)V
+    at java.util.concurrent.FutureTas...(FutureTask.java:122)
+    at java.util.concurrent.FutureTask.get(FutureTask.java:206)
+
+__原因__: このエラーの原因は、SQuirreL で使用される common-codec.jar ファイルと、HDInsight クラスターからダウンロードした Hive JDBC コンポーネントで必要な common-codec.jar ファイルのバージョンの不一致です。
+
+__解決策__: このエラーを解決するには、次の手順を使用します。
+
+1. HDInsight クラスターから common-codec jar ファイルをダウンロードします。
+
+        scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/common-codec*.jar ./common-codec.jar
+
+2. SQuirreL を終了し、SQuirreL がインストールされているシステム上のディレクトリに移動します。SquirreL ディレクトリ内の `lib` ディレクトリにある既存の common-codec jar を、HDInsight クラスターからダウンロードしたファイルに置き換えます。
+
+3. SQuirreL を再起動します。これで、HDInsight の Hive に接続するときにエラーが発生しなくなります。
+
 ##次のステップ
 
 これで、JDBC を使用して Hive を操作する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
@@ -160,4 +182,4 @@ Java クライアントを使用して HDInsight の Hive をクエリする例�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -310,27 +310,31 @@ Engagement API では、Engagement の高度な機能をすべて利用できま
 
 ##高度な構成 (AndroidManifest.xml 内)
 
+### ウェイク ロック
+
 WIFI を使っているとき、または画面がオフのときにに統計がリアルタイムで送信されることを保証する場合は、次のオプションのアクセス権限を追加します。
 
 			<uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+### クラッシュ レポート
 
 クラッシュ レポートを無効にする場合は、以下を (`<application>` タグと `</application>` タグの間) に追加します。
 
 			<meta-data android:name="engagement:reportCrash" android:value="false"/>
 
+### バーストのしきい値
+
 既定では、エンゲージメント サービスはログをリアルタイムで報告します。アプリケーションがログを送信する回数が非常に多い場合は、ログをバッファーに格納して、一定時間ごとにまとめて報告することをお勧めします (これは "バースト モード" と呼ばれます) 。これを行うには、以下を (`<application>` タグと `</application>` タグの間に) 追加します。
 
-			<meta-data android:name="engagement:burstThreshold" android:value="<interval between too bursts (in milliseconds)>"/>
+			<meta-data android:name="engagement:burstThreshold" android:value="{interval between too bursts (in milliseconds)}"/>
 
 バースト モードではわずかにバッテリーの寿命が延びますが、エンゲージメントの監視に影響を与えます。すべてのセッションとジョブの実行時間は、バーストのしきい値に丸められます (つまり、バーストのしきい値よりも短いセッションとジョブは、認識されない場合があります)。バーストのしきい値は、30000 (30 秒) よりも長くしないことをお勧めします。
 
-既定では、Engagement サービスは、ネットワークが使用可能になると、すぐにサーバーとの接続を確立します。この接続を延期する場合は、以下を (`<application>` タグと `</application>` タグの間) に追加します。
-
-			<meta-data android:name="engagement:connection:delay" android:value="<delay (in milliseconds)>"/>
+### セッションのタイムアウト
 
 既定では、セッションは最後のアクティビティが終了した後、10 秒経過した時点で終了します (アクティビティの終了は、通常は、[ホーム] または [戻る] キーを押す、電話をアイドル状態に設定する、または他のアプリケーションに移動することで発生します)。これは、ユーザーがアプリケーションを終了した後、非常に短時間で戻ってくるたびにセッションが分割されることを避けるためです (このユーザーの行動は、画像の選択や通知の確認などを行うときに発生する可能性があります)。このパラメーターを変更することができます。これを行うには、以下を (`<application>` タグと `</application>` タグの間に) 追加します。
 
-			<meta-data android:name="engagement:sessionTimeout" android:value="<session timeout (in milliseconds)>"/>
+			<meta-data android:name="engagement:sessionTimeout" android:value="{session timeout (in milliseconds)}"/>
 
 ##ログ レポートの無効化
 
@@ -380,4 +384,4 @@ Engagement では、この設定を管理するために設定ファイル内で
 <!-- URLs. -->
 [Device API]: http://go.microsoft.com/?linkid=9876094
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

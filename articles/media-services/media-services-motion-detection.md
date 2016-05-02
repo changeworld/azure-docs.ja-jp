@@ -13,9 +13,9 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/08/2016"   
+	ms.date="04/14/2016"   
 	ms.author="milanga;juliako;"/>
-
+ 
 # Azure Media Analytics で動作を検出する
 
 ##概要
@@ -349,4 +349,6 @@ RegionID|前述のように、このバージョンではこの値は常に 0 �
 
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+
+<!---HONumber=AcomDC_0420_2016-->

@@ -31,7 +31,9 @@ Azure CLI を使用して HDInsight クラスターを作成する方法につ�
 この記事の手順を開始する前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- **Azure CLI** - インストールと構成に関する情報は、[Azure CLI のインストールと構成](../xplat-cli-install.md)に関するページを参照してください。
+- **Azure CLI**。
+
+	[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 ##Connect to Azure
 
@@ -86,7 +88,7 @@ HDInsight クラスターを作成するには、Azure リソース マネージ
 		-- Lists the keys for a Storage account
 		azure storage account keys list "<Storage Account Name>" -g "<Resource Group Name>"
 
-	Azure ポータルを使用して情報を取得する方法の詳細については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account#manage-your-storage-account)」のストレージ アカウントの管理に関するセクションをご覧ください。
+	Azure ポータルを使用して情報を取得する方法の詳細については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account#manage-your-storage-account)」の「ストレージ アカウントの管理」セクションを参照してください。
 
 - **(省略可能) 既定の BLOB コンテナー**: **azure hdinsight cluster create** コマンドは、コンテナーが存在しない場合、コンテナーを作成します。コンテナーを事前に作成する場合は、次のコマンドを使用できます。
 
@@ -137,4 +139,4 @@ CLI を使用して、ARM テンプレートを呼び出すことによってク
 - [Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)
 - [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](../virtual-machines-command-line-tools.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

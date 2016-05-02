@@ -1,6 +1,6 @@
 <properties
 	pageTitle="MySQL を実行する VM の作成 | Microsoft Azure"
-	description="Windows Server 2012 R2 を実行するクラシック デプロイモデルで作成された Azure 仮想マシンを作成し、そこで MySQL データベースのインストールと構成を行います。"
+	description="クラシック デプロイ モデルを使用して、Windows Server 2012 R2 および MySQL データベースを実行する Azure 仮想マシンを作成します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="cynthn"
@@ -14,29 +14,19 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/09/2015"
+	ms.date="04/15/2016"
 	ms.author="cynthn"/>
 
 
 # Windows Server 2012 R2 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする
 
+[MySQL](http://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。このチュートリアルでは、Windows Server 2012 R2 を実行している仮想マシン上の MySQL Server として MySQL 5.6.23 の Community バージョンをインストールして実行する方法について説明します。Linux 上で MySQL をインストールする方法の詳細については、「[MySQL を Azure でインストールする方法](virtual-machines-linux-mysql-install.md)」をご覧ください。
+
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
+## Windows Server 2012 R2 を実行する仮想マシンの作成
 
-[MySQL](http://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。[Azure クラシック ポータル](http://manage.windowsazure.com)では、Windows Server 2012 R2 を実行する仮想マシンをイメージ ギャラリーから作成できます。次に、MySQL Server としてこれをインストールと構成できます。
-
-Linux 上で MySQL をインストールする方法の詳細については、「[MySQL を Azure でインストールする方法](virtual-machines-linux-mysql-install.md)」をご覧ください。
-
-このチュートリアルでは、次の操作方法について説明します。
-
-- Azure クラシック ポータルを使用して Windows Server 2012 R2 を実行する仮想マシンを作成します。
-
-- MySQL 5.6.23 の Community バージョンを MySQL Server としてこの仮想マシン上にインストールと実行します。
-
-
-## Windows Server を実行する仮想マシンの作成
-
-[AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
+Windows Server 2012 R2 を実行している VM がまだない場合は、この[チュートリアル](virtual-machines-windows-classic-tutorial.md)を使用して、仮想マシンを作成できます。
 
 ## データ ディスクの接続
 
@@ -46,9 +36,7 @@ Linux 上で MySQL をインストールする方法の詳細については、�
 
 ## 仮想マシンへのログオン
 
-次に、MySQL をインストールするために、仮想マシンにログオンします。
-
-[AZURE.INCLUDE [virtual-machines-log-on-win-server](../../includes/virtual-machines-log-on-win-server.md)]
+次に、MySQL をインストールするために、[仮想マシンにログオン](virtual-machines-windows-classic-connect-logon.md)します。
 
 ##仮想マシンに MySQL Community Server をインストールして実行する
 
@@ -134,8 +122,8 @@ Azure 仮想マシンで実行する MySQL Server サービスへのリモート
 		mysql -u dbadmin3 -p -h testmysql.cloudapp.net
 
 
-## その他のリソース
+## 次のステップ
 
-MySQL の詳細については、[MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
+MySQL の実行の詳細については、[MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

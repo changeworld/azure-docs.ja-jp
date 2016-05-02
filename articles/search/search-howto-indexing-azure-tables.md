@@ -71,11 +71,11 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 テーブル行には複合キーがあるため、Azure Search では、パーティション キーと行キーの値が連結された `Key` と呼ばれる合成フィールドが生成されます。たとえば、行の PartitionKey が `PK1` で、RowKey が `RK1` の場合、`Key` フィールドの値は `PK1RK1` になります。
 
-> AZURE.NOTE `Key` 値には、ドキュメント キーでは無効な文字、たとえば破線を含めることができます。無効な文字は、インデクサーのプロパティで `base64EncodeKeys` オプションを有効にすることによって処理することができます。その場合、API 呼び出し (Lookup など) にドキュメント キーを渡すとき、必ずエンコードしてください (たとえば、.NET であれば [UrlTokenEncode メソッド](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx)を利用できます)。
+> [AZURE.NOTE] `Key` 値には、ドキュメント キーでは無効な文字、たとえばダッシュを含めることができます。無効な文字は、インデクサーのプロパティで `base64EncodeKeys` オプションを有効にすることによって処理することができます。その場合、API 呼び出し (Lookup など) にドキュメント キーを渡すとき、必ずエンコードしてください (たとえば、.NET であれば [UrlTokenEncode メソッド](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx)を利用できます)。
 
 ## さまざまなフィールド名の操作
 
-既存のインデックス内のフィールド名が、テーブルのプロパティ名と異なることは少なくありません。テーブルのプロパティ名は、**フィールドのマッピング**を使用して、検索インデックス内のフィールド名に対応付けることができます。フィールド マッピングの詳細については、「[Azure Search Indexer のカスタマイズ](search-indexers-customization.md)」をご覧ください。
+既存のインデックス内のフィールド名が、テーブルのプロパティ名と異なることは少なくありません。テーブルのプロパティ名は、**フィールド マッピング**を使用して、検索インデックス内のフィールド名に対応付けることができます。フィールド マッピングの詳細については、「[Azure Search Indexer のカスタマイズ](search-indexers-customization.md)」を参照してください。
 
 ## インデックスの増分作成と削除の検出
  
@@ -100,4 +100,4 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

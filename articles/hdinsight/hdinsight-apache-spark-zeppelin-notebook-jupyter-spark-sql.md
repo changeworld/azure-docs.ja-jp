@@ -18,7 +18,7 @@
 	ms.author="nitinme"/>
 
 
-# 概要: Azure HDInsight での Apache Spark の作成と Spark SQL を使用した対話型クエリの実行
+# 概要: HDInsight Windows の Apache Spark の作成と Spark SQL を使用した対話型クエリの実行 (プレビュー)
 
 > [AZURE.NOTE] HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Linux 上で Spark クラスターを開始する方法については、「[概要: Azure HDInsight での Apache Spark の作成 (Linux) ](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
 
@@ -296,4 +296,4 @@
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

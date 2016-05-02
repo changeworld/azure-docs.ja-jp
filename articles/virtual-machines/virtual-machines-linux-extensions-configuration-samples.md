@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="09/01/2015"
+   ms.date="03/29/2016"
    ms.author="kundanap"/>
 
 # Linux VM 拡張機能の構成のサンプル
@@ -51,11 +51,34 @@
       "publisher": "Publisher Namespace",
       "type": "extension Name",
       "typeHandlerVersion": "extension version",
+      "autoUpgradeMinorVersion":true,
       "settings": {
       // Extension specific configuration goes in here.
       }
       }
       }
+
+## VM スケール セットによる VM 拡張機能のサンプル テンプレート スニペット。
+
+          {
+           "type":"Microsoft.Compute/virtualMachineScaleSets",
+          ....
+                 "extensionProfile":{
+                 "extensions":[
+                   {
+                     "name":"extension Name",
+                     "properties":{
+                       "publisher":"Publisher Namespace",
+                       "type":"extension Name",
+                       "typeHandlerVersion":"extension version",
+                       "autoUpgradeMinorVersion":true,
+                       "settings":{
+                       // Extension specific configuration goes in here.
+                       }
+                     }
+                    }
+                  }
+                }
 
 拡張機能をデプロイする前に、拡張機能の最新バージョンを確認し、"typeHandlerVersion" を最新のバージョンに置き換えてください。
 
@@ -197,4 +220,4 @@
 
 [Linux VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

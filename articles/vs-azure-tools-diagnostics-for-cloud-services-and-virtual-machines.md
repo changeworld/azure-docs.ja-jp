@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="01/30/2016"
+   ms.date="04/19/2016"
    ms.author="tarcher" />
 
 # Azure クラウド サービスおよび仮想マシン用の診断の構成
@@ -357,4 +357,4 @@ RoleEntryPoint のメソッドは、IIS ではなく WAIISHost.exe のコンテ�
 
 Azure の診断ログの詳細については、[Azure のクラウド サービスおよび仮想マシンの診断機能](./cloud-services/cloud-services-dotnet-diagnostics.md)に関するページと「[Azure App Service の Web アプリの診断ログの有効化](./app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

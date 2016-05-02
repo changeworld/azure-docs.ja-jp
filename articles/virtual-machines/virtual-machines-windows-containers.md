@@ -12,7 +12,7 @@
 <tags
 	ms.service="virtual-machines-windows"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="infrastructure"
 	ms.date="12/14/2015"
@@ -26,4 +26,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-and-containers](../../includes/virtual-machines-common-containers.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

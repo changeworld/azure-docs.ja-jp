@@ -3,7 +3,7 @@
 	description="NoSQL データベースの JSON ドキュメントに対する CRUD 操作など、DocumentDB の一般的なタスクの C# .NET サンプルを github で検索します。" 
 	keywords="NoSQL のサンプル"
 	services="documentdb" 
-	authors="mimig1" 
+	authors="aliuy" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=".net"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/22/2016" 
-	ms.author="ryancraw"/>
+	ms.date="04/18/2016" 
+	ms.author="andrl"/>
 
 
 # DocumentDB .NET のサンプル
@@ -179,4 +179,4 @@ DatabaseManagement プロジェクトのサンプルの [RunDatabaseDemo](https:
 [コレクションまたはドキュメントのアクセス許可の設定](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L85) | [DocumentClient.CreatePermissionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createpermissionasync.aspx)
 [ユーザーのアクセス許可の一覧の取得](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L218) | [DocumentClient.ReadUserAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readuserasync.aspx)<br>[DocumentClient.ReadPermissionFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpermissionfeedasync.aspx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

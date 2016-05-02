@@ -50,15 +50,14 @@
 
 	Login-AzureRmAccount
 
-次のコマンドを使用して、サブスクリプション名を取得します。
+次のコマンドを使用して、利用可能なサブスクリプションを取得します。
 
 	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
 
-Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+現在のセッション用の Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
 	$subscr="<subscription name>"
-	Select-AzureSubscription -SubscriptionName $subscr –Current
-
+	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
 
 ## 手順 3: リソースを作成する
 
@@ -393,4 +392,4 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

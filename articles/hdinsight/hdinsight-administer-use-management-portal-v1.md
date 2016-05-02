@@ -31,6 +31,8 @@ Azure クラシック ポータル以外にも、HDInsight を管理するツー
 
 - Azure CLI を使用して HDInsight を管理する方法の詳細については、[Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)に関するページを参照してください。
 
+> [AZURE.WARNING] Azure PowerShell または Azure CLI の最新バージョンでは、既定で Azure Resource Manager を使用します。このモードを使用して作成された HDInsight クラスターを Azure クラシック ポータルを使用して管理することはできません。
+
 ##前提条件
 
 この記事を読み始める前に、次の項目を用意する必要があります。
@@ -198,4 +200,4 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal-v1/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
 [image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal-v1/hdi.clustercreate.uploadcert.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

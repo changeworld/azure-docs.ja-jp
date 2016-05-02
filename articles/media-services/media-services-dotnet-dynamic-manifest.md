@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede,cenkdin" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-  ms.date="02/03/2016"
-	ms.author="juliako"/>
+	ms.date="04/18/2016"
+	ms.author="juliako;cenkdin"/>
 
 
 #Azure Media Services .NET SDK を使用したフィルターの作成
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-dotnet-dynamic-manifest.md)
-- [REST](media-services-rest-dynamic-manifest.md)
+- [REST ()](media-services-rest-dynamic-manifest.md)
 
 Media Services のリリース 2.11 以降では、資産にフィルターを定義できます。これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (資産に関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。この資産のフィルター処理は**動的マニフェスト**によって実行されます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
 
@@ -148,4 +148,4 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 [動的マニフェストの概要](media-services-dynamic-manifest-overview.md)
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

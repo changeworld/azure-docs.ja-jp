@@ -439,7 +439,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 | baseUri | あり | ベース URI 文字列。
 | relativeUri | あり | ベース URI 文字列に追加する相対 URI 文字列。
 
-**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。たとえば、baseUri パラメーターとして ****http://contoso.com/resources/azuredeploy.json** を渡すと、****http://contoso.com/resources/** というベース URI が作成されます。
+**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。たとえば、baseUri パラメーターとして **http://contoso.com/resources/azuredeploy.json** を渡すと、**http://contoso.com/resources/** というベース URI が作成されます。
 
 次の例は、親テンプレートの値に基づいて、入れ子になったテンプレートへのリンクを作成する方法を示しています。
 
@@ -611,7 +611,7 @@ listKeys 操作をサポートする任意の種類のリソースのキーを�
 | providerNamespace | あり | プロバイダーの名前空間
 | resourceType | いいえ | 指定した名前空間内にあるリソースの種類。
 
-サポートされている各種類は、次の形式で返されます。
+サポートされている種類は、それぞれ次の形式で返されます。ただし、配列の順序が維持されるとは限りません。
 
     {
         "resourceType": "",
@@ -807,4 +807,4 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="04/18/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して PostgreSQL からデータを移動する
@@ -179,7 +179,7 @@ Data Management Gateway で PostgreSQL Databases に接続するには、[Postgr
 	                "typeProperties": {
 	                    "source": {
 	                        "type": "RelationalSource",
-	                        "query": "select * from public.usstates"
+	                        "query": "select * from "public"."usstates""
 	                    },
 	                    "sink": {
 	                        "type": "BlobSink"
@@ -221,7 +221,7 @@ Data Management Gateway で PostgreSQL Databases に接続するには、[Postgr
 type | type プロパティを **OnPremisesPostgreSql** に設定する必要があります | はい
 server | PostgreSQL サーバーの名前です。 | はい 
 database | PostgreSQL データベースの名前です。 | はい 
-schema | データベース内のスキーマの名前です。 | いいえ 
+schema | データベース内のスキーマの名前です。スキーマ名は、大文字と小文字を区別します。 | いいえ 
 authenticationType | PostgreSQL データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい 
 username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ 
 パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ 
@@ -237,7 +237,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-tableName | リンクされたサービスが参照する PostgreSQL Databases インスタンスのテーブルの名前です。 | いいえ ( **RelationalSource** の **クエリ** が指定されている場合) 
+tableName | リンクされたサービスが参照する PostgreSQL Databases インスタンスのテーブルの名前です。tableName は、大文字と小文字を区別します。 | いいえ ( **RelationalSource** の **クエリ** が指定されている場合) 
 
 ## PostgreSQL のコピー アクティビティの type プロパティ
 
@@ -249,7 +249,13 @@ tableName | リンクされたサービスが参照する PostgreSQL Databases �
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | いいえ (**データセット**の **tableName** が指定されている場合)
+query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: "query": "select * from "MySchema"."MyTable"" | いいえ (**データセット**の **tableName** が指定されている場合)
+
+> [AZURE.NOTE] スキーマとテーブルの名前は、大文字と小文字を区別します。クエリ内では、"" (二重引用符) で囲む必要があります。
+
+**例:**
+
+ "query": "select * from "MySchema"."MyTable""
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -310,4 +316,7 @@ text | | String
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+## パフォーマンスとチューニング  
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
+
+<!---HONumber=AcomDC_0420_2016-->

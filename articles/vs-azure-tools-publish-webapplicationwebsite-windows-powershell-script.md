@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="12/17/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Publish-WebApplicationWebSite (Windows PowerShell スクリプト)
@@ -129,4 +129,4 @@ JSON 構成ファイルは、デプロイ対象を変更するように編集で
 
 詳細については、「[Publish-WebApplicationVM (Windows PowerShell スクリプト)](vs-azure-tools-publish-webapplicationvm.md)」を参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0420_2016-->

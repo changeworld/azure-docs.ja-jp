@@ -4,7 +4,7 @@
    services="sql-database" 
    documentationCenter="" 
    authors="mihaelablendea" 
-   manager="jeffreyg" 
+   manager="jhubbard" 
    editor="monicar"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="11/16/2015"
+   ms.date="04/18/2016"
    ms.author="mihaelab"/>
 
 #障害復旧訓練の実行
@@ -63,4 +63,4 @@ geo レプリケーションを使用して保護されたデータベースの�
 
 - 復旧後に、アプリケーションの整合性を検証して訓練を完了します (接続文字列、ログイン、基本的な機能のテスト、その他の標準的なアプリケーションのサインオフのプロシージャの検証など)。
 
-<!---HONumber=Nov15_HO4-->
+<!---HONumber=AcomDC_0420_2016-->

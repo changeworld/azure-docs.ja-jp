@@ -13,16 +13,16 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="01/21/2016"
+	ms.date="04/18/2016"
 	ms.author="kgremban"/>
 
 #RBAC: 組み込みのロール
 
 ## 組み込みのロール
 
-Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが用意されています。組み込みのロールの定義は変更できません。Azure RBAC の今後のリリースでは、Azure リソースに対して実行できるアクションのリストからアクションのセットを構成して、カスタムのロールを定義できるようになります。
+Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが用意されています。組み込みのロールの定義は変更できません。ただし、組織の具体的なニーズに合うように [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)を作成することができます。
 
-以下のリンクをクリックし、ロール定義の **actions** と **not actions** プロパティを確認してください。**actions** プロパティは、Azure リソースに対して許可するアクションを指定します。アクションの文字列にワイルドカード文字を使用できます。ロール定義の **not actions** プロパティは、許可されているアクションから除外しなければならないアクションを指定します。
+次の表には、組み込みのロールについての簡単な説明を示します。ロール名をクリックすると、そのロールの **actions** と **not actions** の詳細な一覧を確認できます。**actions** プロパティは、Azure リソースに対して許可するアクションを指定します。アクションの文字列にワイルドカード文字を使用できます。**not actions** プロパティは、許可するアクションから除外されるアクションを指定します。
 
 
 | ロール名 | 説明 |
@@ -51,11 +51,11 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [従来のストレージ アカウントの共同作業者](#classic-storage-account-contributor) | 従来のストレージ アカウントを管理できます |
 | [ストレージ アカウントの共同作業者](#storage-account-contributor) | ストレージ アカウントを管理できます |
 | [ユーザーアクセスの管理者](#user-access-administrator) | Azure リソースに対するユーザー アクセスを管理できます |
-| [従来の仮想マシンの共同作業者](#classic-virtual-machine-contributor) | 接続している仮想ネットワークやストレージ アカウント以外の従来の仮想マシンを管理できます |
-| [仮想マシンの共同作業者](#virtual-machine-contributor) | 接続している仮想ネットワークやストレージ アカウント以外の仮想マシンを管理できます |
+| [従来の仮想マシンの共同作業者](#classic-virtual-machine-contributor) | クラシック仮想マシンを管理できますが、その接続先の仮想ネットワークやストレージ アカウントは管理できません |
+| [仮想マシンの共同作業者](#virtual-machine-contributor) | 仮想マシンを管理できますが、その接続先の仮想ネットワークやストレージ アカウントは管理できません |
 | [従来のネットワークの共同作業者](#classic-network-contributor) | 従来の仮想ネットワークと予約済み IP を管理できます |
 | [Web プランの共同作業者](#web-plan-contributor) | Web プランを管理できます |
-| [Web サイトの共同作業者](#website-contributor) | Web サイトを管理できますが、接続されている Web プランは管理できません |
+| [Web サイトの共同作業者](#website-contributor) | Web サイトを管理できますが、その接続先の Web プランは管理できません |
 
 ### API Management サービスの共同作業者
 API Management サービスを管理できます
@@ -134,7 +134,7 @@ ClearDB MySQL データベースを管理できます
 | ------- | ------ |
 | * | あらゆる種類のリソースの作成と管理 |
 
-| **not actions** | |
+| **not actions** ||
 | ------- | ------ |
 | Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません |
 | Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
@@ -304,7 +304,7 @@ SQL データベースを管理できますが、そのセキュリティ関連�
 | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
-| **not actions** | |
+| **not actions** ||
 | ------- | ------ |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | 監査ポリシーを編集することはできません |
 | Microsoft.Sql/servers/databases/connectionPolicies/* | 接続ポリシーを編集することはできません |
@@ -346,7 +346,7 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
-| **not actions** | |
+| **not actions** ||
 | ------- | ------ |
 | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーは編集できません |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL サーバー データベース監査ポリシーは編集できません |
@@ -387,8 +387,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 
 | **アクション** ||
 | ------- | ------ |
-| */read | 機密データを除くあらゆる種類のリソースの読み取り | 
-| Microsoft.Authorization/* | 承認の読み取り |
+| */read | 機密データを除くあらゆる種類のリソースの読み取り | | Microsoft.Authorization/* | 承認の読み取り |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### 従来の仮想マシンの共同作業者
@@ -486,7 +485,10 @@ Web サイトを管理できますが、接続されている Web プランは�
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 | Microsoft.Insights/components/* | Insights コンポーネントの作成と管理 |
 
-## RBAC のトピック
-[AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+## 関連項目
+- [ロールベースのアクセス制御](role-based-access-control-configure.md): Azure ポータルでの RBAC の基本について説明します。
+- [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md): アクセスのニーズに合わせてカスタム ロールを作成する方法について説明します。
+- [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
+- [ロールベースのアクセス制御のトラブルシューティング](role-based-access-control-troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->
