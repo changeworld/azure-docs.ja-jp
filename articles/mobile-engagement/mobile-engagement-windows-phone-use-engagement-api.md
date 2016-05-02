@@ -378,5 +378,12 @@ SendAppInfo() 関数を使用して追跡情報 (またはその他のアプリ�
 
 			{"subscription":"2013-12-07","premium":"true"}
  
+##ログの記録
+###ログの有効化
 
-<!---HONumber=AcomDC_0302_2016-->
+IDE コンソールにテスト ログを生成するように SDK を構成できます。このテスト ログは既定では有効になっていません。これをカスタマイズするには、次の例のように `EngagementAgent.Instance.TestLogEnabled` プロパティを `EngagementTestLogLevel` 列挙型の使用可能な値の 1 つに更新します。
+
+			EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
+			EngagementAgent.Instance.Init();
+
+<!---HONumber=AcomDC_0420_2016-->

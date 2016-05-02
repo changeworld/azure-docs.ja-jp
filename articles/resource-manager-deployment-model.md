@@ -36,24 +36,24 @@ Resource Manager で作成したリソースには次の特性があります。
 
   - [Azure ポータル](https://portal.azure.com/)。
 
-   ![Azure ポータル](./media/resource-manager-deployment-model/preview-portal.png)
+        ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-   Compute、Storage、Networking のリソースについては、Resource Manager と従来のデプロイのどちらかを使用できます。**[リソース マネージャー]** を選択します。
+        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
 
-   ![Resource Manager のデプロイ](./media/resource-manager-deployment-model/select-resource-manager.png)
+        ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
   - Azure PowerShell では、Resource Manager 版のコマンドを使用してください。これらのコマンドは、次に示すように *Verb-AzureRmNoun* 形式となります。
 
             Get-AzureRmResourceGroupDeployment
 
-  - [Azure リソース マネージャー REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx) (REST 操作の場合)。
+  - [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx) (REST 操作の場合)。
   - Azure CLI コマンドは **arm** モードで実行されます。
 
             azure config mode arm
 
 - リソース タイプの名前には **(classic)** は含まれません。下の画像ではタイプとして "**ストレージ アカウント**" が表示されています。
 
-   ![Web アプリ](./media/resource-manager-deployment-model/resource-manager-type.png)
+    ![Web アプリ](./media/resource-manager-deployment-model/resource-manager-type.png)
 
 次の図のアプリケーションは、Resource Manager でデプロイしたリソースを 1 つのリソース グループに含める方法を示しています。
 
@@ -83,11 +83,11 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
 
   - [クラシック ポータル](https://manage.windowsazure.com)
 
-   ![クラシック ポータル](./media/resource-manager-deployment-model/azure-portal.png)
+        ![Classic portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-   または、Azure ポータルを使い、**従来**のデプロイを指定 (Compute、Storage、Networking)。
+        Or, the Azure portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
 
-   ![従来のデプロイ](./media/resource-manager-deployment-model/select-classic.png)
+        ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
   - Azure PowerShell では、サービス管理版のコマンドを使用してください。これらのコマンド名は、次に示すように *Verb-AzureNoun* 形式となります。
 
@@ -97,7 +97,7 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
   - Azure CLI コマンドは **asm** または既定のモードで実行されます。
 - リソース タイプの名前に **(classic)** が含まれます。下の画像ではタイプとして "**ストレージ アカウント (クラシック)**" が表示されています。
 
-   ![従来のタイプ](./media/resource-manager-deployment-model/classic-type.png)
+    ![従来のタイプ](./media/resource-manager-deployment-model/classic-type.png)
 
 Azure ポータルを利用し、従来のデプロイで作成されたリソースを引き続き管理できます。
 
@@ -127,7 +127,7 @@ Resource Manager の導入前は、従来のデプロイで作成されたリソ
 
 タグを利用すれば、リソースを論理的に整理できます。Resource Manager で作成したリソースだけがタグに対応しています。従来のリソースにタグを適用することはできません。
 
-リソース マネージャーのタグの利用に関する詳細については、「[タグを利用して Azure リソースを整理する](resource-group-using-tags.md)」を参照してください。
+Resource Manager のタグの利用に関する詳細については、「[タグを利用して Azure リソースを整理する](resource-group-using-tags.md)」を参照してください。
 
 ## デプロイ モデルで対応している操作
 
@@ -145,7 +145,7 @@ Resource Manager の導入前は、従来のデプロイで作成されたリソ
      ExampleResourceVM    Microsoft.Compute/virtualMachines             eastus
     ...
 
-ただし、**Get-AzureRmVM** コマンドを実行した場合:
+しかしながら、**Get AzureRmVM** コマンドを実行した場合:
 
     Get-AzureRmVM -ResourceGroupName ExampleGroup
 
@@ -167,9 +167,7 @@ Virtual Machines を使用するときには、重要な考慮事項がいくつ
 - Resource Manager のデプロイ モデルでデプロイされた仮想マシンは仮想ネットワークに含める必要があります。
 - 従来のデプロイ モデルでデプロイされた仮想マシンは仮想ネットワークに含める必要がありません。
 
-Virtual Machines のダウンロードに十分な時間を費やすことができる場合は、クラシック デプロイから [ASM2ARM PowerShell スクリプト](https://github.com/fullscale180/asm2arm)を使用するリソース マネージャーに移行できます。
-
-従来のデプロイからリソース マネージャーに移行するときの同等の Azure CLI コマンドの一覧については、「[VM 操作のためのリソース マネージャーとサービス管理の同等コマンド](./virtual-machines/virtual-machines-linux-cli-manage.md)」を参照してください。
+Virtual Machines のダウンロードに十分な時間を費やすことができる場合は、クラシック デプロイから [ASM2ARM PowerShell スクリプト](https://github.com/fullscale180/asm2arm)を使用する Resource Manager に移行できます。
 
 Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-windows-compare-deployment-models.md)」を参照してください。
 
@@ -177,8 +175,8 @@ Compute、Storage、Networking のリソースの移行に関する詳細につ�
 
 ## 次のステップ
 
-- 仮想マシン、ストレージ アカウント、仮想ネットワークを定義するテンプレートの作成に関するチュートリアルは、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」をご覧ください。
-- Resource Manager のテンプレートの構造について詳しくは、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
+- 仮想マシン、ストレージ アカウント、仮想ネットワークを定義するテンプレートの作成に関するチュートリアルは、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」を参照してください。
+- Resource Manager のテンプレートの構造について詳しくは、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

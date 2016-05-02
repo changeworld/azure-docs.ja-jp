@@ -45,7 +45,9 @@
 -	Visual Studio 2013 と BLOB 管理 GUI 用 [Azure SDK](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
 -	[Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409) (「[ASP.NET アプリケーションから CDN エンドポイントへのコンテンツのアップロードを自動化する](#upload)」で使用)
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。+ [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。
+> + [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。
+> + [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。
 
 <a name="static"></a>
 ## Azure CDN エンドポイントから静的コンテンツを配信する ##
@@ -256,7 +258,9 @@ Azure CDN と Azure App Service または Azure Cloud Services の統合には�
 - JQuery や Bootstrap のバージョンなど、CDN によって配信される NuGet パッケージを簡単にアップグレード 
 - Web アプリケーションと CDN によって配信されるコンテンツを同じ Visual Studio インターフェイスから管理
 
-関連するチュートリアルは、次の項目を参照してください。 - [Azure App Service で Azure CDN を使用する](../app-service-web/cdn-websites-with-cdn.md) - [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
+関連するチュートリアルは、次の項目を参照してください。
+- [Azure App Service で Azure CDN を使用する](../app-service-web/cdn-websites-with-cdn.md)
+- [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
 
 Azure App Service Web Apps または Azure Cloud Services と統合しなくても、Azure CDN をスクリプト バンドルに使用することはできますが、次の点に注意してください。
 
@@ -270,7 +274,7 @@ Azure App Service Web Apps または Azure Cloud Services と統合しなくて�
 - [Azure App Service で Azure CDN を使用する](../app-service-web/cdn-websites-with-cdn.md)
 - [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
 - [カスタム ドメインに Content Delivery Network (CDN) コンテンツをマップする方法](http://msdn.microsoft.com/library/azure/gg680307.aspx)
-- [Azure 用 CDN の使用](cdn-how-to-use-cdn.md)
+- [Azure CDN の使用](cdn-create-new-endpoint.md)
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

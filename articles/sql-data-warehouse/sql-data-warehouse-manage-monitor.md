@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/12/2016"
+   ms.date="04/14/2016"
    ms.author="sonyama;barbkess;sahajs"/>
 
 # DMV を利用してワークロードを監視する
@@ -142,30 +142,16 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 
 ```
 
-
-## データ傾斜を調査する
-
-[DBCC PDW\_SHOWSPACEUSED][] を使用して、テーブルによって使用される領域を調べます。
-
-```sql
--- Find data skew for a distributed table
-DBCC PDW_SHOWSPACEUSED("dbo.FactInternetSales");
-```
-
-このクエリの結果は、データベースの 60 の分散のそれぞれに保存されているテーブル行の数を示します。パフォーマンスを最適化するには、分散テーブルの行を配布全体で均等に広げる必要があります。
-
-詳細については、[分散テーブルのデータ スキューの管理][]または[テーブル デザイン][]に関するページをご覧ください。
-
 ## 次のステップ
-Transact-SQL と動的管理ビュー (DMV) の詳細については、[参照先の概要][]に関するページをご覧ください。また、SQL Data Warehouse の管理のヒントについては、[管理の概要][]に関するページをご覧ください。
+Transact-SQL と動的管理ビュー (DMV) の詳細については、[参照先の概要][]に関するページを参照してください。また、SQL Data Warehouse の管理のヒントについては、[管理の概要][]に関するページを参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
 [管理の概要]: sql-data-warehouse-overview-manage.md
-[テーブル デザイン]: sql-data-warehouse-develop-table-design.md
+[table design]: sql-data-warehouse-develop-table-design.md
 [参照先の概要]: sql-data-warehouse-overview-reference.md
-[分散テーブルのデータ スキューの管理]: sql-data-warehouse-manage-distributed-data-skew.md
+[manage data skew for distributed tables]: sql-data-warehouse-manage-distributed-data-skew.md
 
 <!--MSDN references-->
 [sys.dm\_pdw\_dms\_workers]: http://msdn.microsoft.com/library/mt203878.aspx
@@ -174,6 +160,6 @@ Transact-SQL と動的管理ビュー (DMV) の詳細については、[参照�
 [sys.dm\_pdw\_request\_steps]: http://msdn.microsoft.com/library/mt203913.aspx
 [sys.dm\_pdw\_sql\_requests]: http://msdn.microsoft.com/library/mt203889.aspx
 [DBCC PDW\_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
-[DBCC PDW\_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
+[DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

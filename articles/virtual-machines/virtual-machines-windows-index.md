@@ -11,7 +11,7 @@
 <tags
    ms.service="virtual-machines-windows"
    ms.devlang="na"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
    ms.date="02/24/2016"
@@ -37,9 +37,6 @@
 [Azure Resource Manager の概要](../resource-group-overview.md)
 
 [Virtual Machines とコンテナーが Azure にもたらすメリット](virtual-machines-windows-containers.md)
-
-[仮想マシン スケール セットの概要](virtual-machines-windows-scale-sets-overview.md)
-
 
 
 ### 環境のセットアップ
@@ -115,8 +112,6 @@
 [Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-sql-automated-backup.md)
 
 [Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-classic-sql-automated-patching.md)
-
-[仮想マシン スケール セットでのマシンの自動スケール](virtual-machines-windows-ps-vmss-create.md)
 
 
 
@@ -329,8 +324,6 @@
 
 [Visual Studio での Web アプリケーション用仮想マシンの作成](virtual-machines-windows-classic-web-app-visual-studio.md)
 
-[Azure の仮想マシンで多くのコンピューティング処理を要する .NET タスクを実行する方法](virtual-machines-windows-classic-run-compute-intensive-task.md)
-
 [仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法](virtual-machines-windows-classic-java-run-compute-intensive-task.md)
 
 [Windows Server VM での Django Hello World Web アプリケーション](virtual-machines-windows-classic-python-django-web-app.md)
@@ -375,4 +368,4 @@
 
 [Azure で VM を作成、再起動、またはサイズ変更するときの割り当てエラーのトラブルシューティング](virtual-machines-windows-allocation-failure.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

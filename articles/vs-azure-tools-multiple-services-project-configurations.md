@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/30/2016"
+   ms.date="04/19/2016"
    ms.author="tarcher" />
 
 # 複数のサービス構成を使用した Azure プロジェクトの構成
@@ -110,4 +110,4 @@ Azure クラウド サービス プロジェクト全体に適用される設定
 |開発|このページでは、ビルド構成の手順や、ビルド後イベントを実行する条件を指定できます。|
 |Web|このページでは、Web サーバーに関連する設定を構成できます。|
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

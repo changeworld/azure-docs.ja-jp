@@ -4,7 +4,7 @@
 	keywords="拒否されたSSH 接続,SSH エラー,Azure SSH,失敗した SSH 接続"
 	services="virtual-machines-linux"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="iainfoulds"
 	manager="timlt"
 	editor=""
 	tags="top-support-issue,azure-service-management,azure-resource-manager"/>
@@ -14,9 +14,9 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="01/22/2016"
-	ms.author="dkshir"/>
+	ms.topic="support-article"
+	ms.date="04/12/2016"
+	ms.author="iainfou"/>
 
 # Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング
 
@@ -24,9 +24,7 @@ Linux ベースの Azure 仮想マシンに接続しようとしたときに発�
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-この記事は、Linux を実行する Azure 仮想マシンにのみ適用されます。Windows を実行する Azure Virtual Machines の場合は、「[Azure VM へのリモート デスクトップ接続のトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)」を参照してください。
-
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](http://azure.microsoft.com/support/faq/)」を参照してください。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
 
 
 ## 一般的な SSH エラーの修正
@@ -56,19 +54,14 @@ Linux ベースの Azure 仮想マシンに接続しようとしたときに発�
 
 リソース マネージャーのデプロイ モデルを使用して作成された仮想マシンの一般的な SSH の問題を解決するには、次の手順を試してください。
 
-1. Azure CLI または Azure PowerShell のいずれかを使用し、コマンド ラインで Linux VM への _SSH 接続をリセット_します。[Microsoft Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)のバージョン 2.0.5 以降がインストールされていることを確認します。
+#### SSH 接続をリセットする
+Azure CLI を使用して、[Microsoft Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)のバージョン 2.0.5 以降がインストールされていることを確認します。
 
-**Azure CLI の使用**:
-
-a.まだインストールしていない場合は、[Azure CLI をインストールし](../xplat-cli-install.md)、`azure login` コマンドを使用して Azure サブスクリプションに接続します。
-
-b.リソース マネージャー モードになっていることを確認します。最新バージョンの Azure CLI は、既定でリソース マネージャー モードになっています。
-
-	```
+まだインストールしていない場合は、[Azure CLI をインストールして Azure サブスクリプションに接続](../xplat-cli-install.md)し、`azure login` コマンドを使用してログインします。Resource Manager モードになっていることを確認します。```
 	azure config mode arm
 	```
 
-c.次の方法のいずれかを使用して SSH 接続をリセットします。
+次のいずれかの方法を使用して、SSH 接続をリセットします。
 
 * 次の例のように、`vm reset-access` コマンドを使用します。
 
@@ -92,23 +85,7 @@ c.次の方法のいずれかを使用して SSH 接続をリセットします�
 	azure vm extension set "YourResourceGroupName" "YourVirtualMachineName" VMAccessForLinux Microsoft.OSTCExtensions "1.2" --private-config-path PrivateConf.json
 	```
 
-**Azure PowerShell の使用**:
-
-a.まだインストールしていない場合は、[Azure PowerShell をインストールし、Azure AD メソッドを使用して Azure サブスクリプションに接続します](../powershell-install-configure.md)。Azure PowerShell の 1.0.x より前のバージョンでは、_Switch-AzureMode_ を使用して、明示的にリソース マネージャー モードに切り替える必要があります。
-
-b.次の例のように、`VMAccessForLinux` 拡張機能を実行して SSH 接続をリセットします。以前のバージョンでは、コマンドは _Set-AzureVMExtension_ です。
-
-	```
-	Set-AzureRmVMExtension -ResourceGroupName "yourRG" -VMName "yourVM" -Location "West US" -Name "VMAccessForLinux" -Publisher "Microsoft.OSTCExtensions" -ExtensionType "VMAccessForLinux" -TypeHandlerVersion "1.2" -SettingString "{}" -ProtectedSettingString '{"reset_ssh":true}'
-	```
-
-2. [Azure ポータル](https://portal.azure.com)から Linux VM を再起動します。<br> **[参照]**、**[仮想マシン]**、ご使用の Linux 仮想マシン、**[再起動]** の順にクリックします。
-
-3. Azure CLI または Azure PowerShell のいずれかを使用し、コマンド ラインで Linux VM の _パスワードまたは SSH キーをリセット_します。次の例のように、_sudo_ 権限を持つ新しいユーザー名とパスワードを作成することもできます。
-
-**Azure CLI の使用**:
-
-既に説明したように Azure CLI をインストールして構成します。必要に応じてリソース マネージャー モードに切り替えてから、次のいずれかの方法で拡張機能を実行します。
+#### SSH 資格情報をリセットする
 
 * `vm reset-access` コマンドを実行して任意の SSH 資格情報を設定します。
 
@@ -135,29 +112,6 @@ b.次の例のように、`VMAccessForLinux` 拡張機能を実行して SSH 接
 「[Linux 仮想マシンのパスワードまたは SSH をリセットする方法](virtual-machines-linux-classic-reset-access.md)」と同様の手順に従って、他のバリエーションを試すこともできます。必ずリソース マネージャー モード用に Azure CLI の命令を変更してください。
 
 
-**Azure PowerShell の使用**:
-
-既に説明したように Azure PowerShell をインストールして構成します。リソース マネージャー モードに切り替えてから、次のように拡張機能を実行します。
-
-	```
-	$RGName = 'testRG'
-	$VmName = 'testVM'
-	$Location = 'West US'
-
-	$ExtensionName = 'VMAccessForLinux'
-	$Publisher = 'Microsoft.OSTCExtensions'
-	$Version = '1.2'
-
-	$PublicConf = '{}'
-	$PrivateConf = '{"username":"NewUsername", "password":"NewPassword", "ssh_key":"", "reset_ssh":false, "remove_user":""}'
-
-	Set-AzureRmVMExtension -ResourceGroupName $RGName -VMName $VmName -Location $Location -Name $ExtensionName -Publisher $Publisher -ExtensionType $ExtensionName -TypeHandlerVersion $Version -SettingString $PublicConf -ProtectedSettingString $PrivateConf
-	```
-
-必ず $RGName、$VmName、$Location、SSH 資格情報の値を、インストールに固有の値で置き換えてください。
-
-
-
 ## SSH エラーの詳細なトラブルシューティング
 
 それでも SSH クライアントが仮想マシン上の SSH サービスに到達できない場合は、いくつかの理由が考えられます。関連のあるコンポーネントを次に示します。
@@ -170,7 +124,7 @@ b.次の例のように、`VMAccessForLinux` 拡張機能を実行して SSH 接
 
 まず、ポータルで仮想マシンの状態を確認します。
 
-[Azure クラシック ポータル](https://manage.windowsazure.com)で、クラシック デプロイ モデルの仮想マシンについて、次の手順を実行します。
+[Azure クラシック ポータル](https://manage.windowsazure.com)で、クラシック デプロイメント モデルの仮想マシンについて、次の手順を実行します。
 
 1. **[仮想マシン]** > *VM 名*をクリックします。
 2. VM の**ダッシュボード**をクリックし、その状態を確認します。
@@ -247,7 +201,7 @@ b.次の例のように、`VMAccessForLinux` 拡張機能を実行して SSH 接
 
 同じ仮想ネットワーク内にある VM に対して SSH 接続を作成できる場合は、次の点を確認します。
 
-- ターゲットの VM での SSH トラフィック向けエンドポイントの構成。エンドポイントのプライベート TCP ポートは、VM 上の SSH サービスがリッスンする TCP ポートと一致する必要があります (既定値は 22 です)。リソース マネージャーのデプロイ モデルでテンプレートを使用して作成した VM の場合は、Azure ポータルで **[参照]**、**[仮想マシン (v2)]**、*VM 名*、**[設定]**、**[エンドポイント]** の順に選択して、SSH TCP ポート番号を確認します。
+- ターゲットの VM での SSH トラフィック向けエンドポイントの構成。エンドポイントのプライベート TCP ポートは、VM 上の SSH サービスがリッスンする TCP ポートと一致する必要があります (既定値は 22 です)。リソース マネージャーのデプロイメント モデルでテンプレートを使用して作成した VM の場合は、Azure ポータルで **[参照]**、**[仮想マシン (v2)]**、*VM 名*、**[設定]**、**[エンドポイント]** の順に選択して、SSH TCP ポート番号を確認します。
 - ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの ACL。ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。ACL が正しく構成されていないと、そのエンドポイントへの SSH 受信トラフィックを受け取れない場合があります。ご利用になっているプロキシのパブリック IP アドレスからの受信トラフィック、または他のエッジ サーバーからの受信トラフィックが許可されているかを ACL で確認してください。詳細については、[ネットワーク アクセス制御リスト (ACL) の概要](../virtual-network/virtual-networks-acl.md)に関するページを参照してください。
 
 問題の原因であるエンドポイントを排除するには、現在のエンドポイントを削除し、新しいエンドポイントを作成して、**SSH** 名を指定します (パブリックとプライベートのポート番号には TCP ポート 22)。詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](virtual-machines-windows-classic-setup-endpoints.md)」をご覧ください
@@ -281,4 +235,4 @@ b.次の例のように、`VMAccessForLinux` 拡張機能を実行して SSH 接
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

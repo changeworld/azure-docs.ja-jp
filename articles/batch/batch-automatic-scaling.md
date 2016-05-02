@@ -13,20 +13,20 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="multiple"
-	ms.date="01/08/2016"
+	ms.date="04/18/2016"
 	ms.author="marsma"/>
 
 # Azure Batch プール内のコンピューティング ノードの自動スケール
 
-Azure Batch では、自動スケールを使用してジョブの実行中に Batch プール内のコンピューティング ノードを動的に追加または削除し、アプリケーションに必要な処理能力を自動的に調整することができます。この自動調整によって、時間と費用を節約できます。
+自動スケールを使用すると、Azure Batch サービスによって、定義したパラメーターに基づいてプール内の計算ノードが動的に追加または削除されます。これにより、アプリケーションで使用されるコンピューティング リソースの量が自動的に調整され、時間と費用の節約になる可能性があります。
 
-自動スケールをコンピューティング ノードのプールに対して有効にするには、*自動スケールの数式*をプールに関連付けます。たとえば、[Batch .NET](batch-dotnet-get-started.md) ライブラリ内の [PoolOperations.EnableAutoScale][net_enableautoscale] メソッドを使用します。Batch サービスでは、この数式を使用して、ワークロードを実行するために必要なコンピューティング ノードの数を決定します。プール内のコンピューティング ノードの数が、定期的に収集されるサービスのメトリック データのサンプルに従い、関連付けられている数式に基づいて構成可能な間隔で調整されます。
+自動スケールをコンピューティング ノードのプールに対して有効にするには、定義した*自動スケールの数式* ([Batch .NET](batch-dotnet-get-started.md) ライブラリ内の [PoolOperations.EnableAutoScale][net_enableautoscale] メソッドの数式など) をプールに関連付けます。Batch サービスでは、この数式を使用して、ワークロードを実行するために必要なコンピューティング ノードの数を決定します。Batch は定期的に収集されるサービスのメトリック データのサンプルに従い、プール内のコンピューティング ノードの数が、関連付けられている数式に基づいて構成可能な間隔で調整されます。
 
 自動スケールは、プールの作成時のほか、既存のプールに対して有効化することができます。また、"自動スケール" が有効なプールに対し、既存の数式を変更することもできます。Batch では、数式をプールに割り当てる前に数式の評価を行うことができるほか、自動スケールの実行状態を監視することができます。
 
 ## 自動スケールの数式
 
-自動スケールの数式は、1 つまたは複数のステートメントを含む文字列値であり、この文字列値は、プールの [autoScaleFormula][rest_autoscaleformula] 要素 (Batch REST API) または [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] プロパティ (Batch .NET API) に割り当てられます。これらの数式を定義してプールに割り当てると、次の処理間隔にプールから利用できるコンピューティング ノードの数が、その数式によって求められます (間隔については後で詳しく説明します)。この数式はサイズが 8 KB 以下の文字列で、最大 100 個のステートメントをセミコロンで区切って指定できます。また、改行やコメントを使用することもできます。
+自動スケールの数式は、1 つまたは複数のステートメントを含む、ユーザーが定義する文字列値であり、この文字列値は、プールの [autoScaleFormula][rest_autoscaleformula] 要素 (Batch REST) または [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] プロパティ (Batch .NET) に割り当てられます。Batch サービスをプールに割り当てると、Batch サービスによって、次の処理期間 (およびそれ以降の処理期間) にプールで使用可能なコンピューティング ノードの数の決定に数式が使用されます。この数式はサイズが 8 KB 以下の文字列で、最大 100 個のステートメントをセミコロンで区切って指定できます。また、改行やコメントを使用することもできます。
 
 自動スケールの数式は、Batch 自動スケール "言語" を使用することと考えることができます。 数式のステートメントは自由形式の式です。この式には、システム定義の変数、ユーザー定義の変数、および定数を含めることができます。組み込みの型、演算子、関数を使用して、これらの値に対する各種の操作を実行できます。たとえば、ステートメントは次の形式を使用する場合があります。
 
@@ -39,7 +39,7 @@ VAR₀ = Expression₀(system-defined variables);
 VAR₁ = Expression₁(system-defined variables, VAR₀);
 ```
 
-数式の中でそれらのステートメントを使用することによって、プールのコンピューティング ノード数をどこまでスケールするか、つまり**専用ノード**の**目標**数を得ることが必要となります。この数は、現在のプール内のノード数より多くなることも、少なくなることも、同じになることもあります。プールの自動スケールの数式は、Batch によって一定間隔で評価されます ([自動スケールの間隔](#interval)については以降で説明します)。その後、プール内の目標ノード数が、評価時に自動スケールの数式によって割り出されたノード数と一致するように調整されます。
+数式の中でそれらのステートメントを使用することによって、プールのコンピューティング ノード数をどこまでスケールするか、つまり**専用ノード**の**目標**数を得ることが必要となります。この数は、現在のプール内のノード数より多くなることも、少なくなることも、同じになることもあります。プールの自動スケールの数式は、Batch によって一定間隔で評価されます ([自動スケールの間隔](#automatic-scaling-interval)については以降で説明します)。その後、プール内の目標ノード数が、評価時に自動スケールの数式によって割り出されたノード数と一致するように調整されます。
 
 以下にごく単純な例を紹介します。この 2 つの行から成る自動スケールの数式は、コンピューティング ノードの最大数を 10 とし、アクティブなタスクの数に基づいてノードの数を調整する必要があることを示しています。
 
@@ -50,7 +50,7 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
 
 以降いくつかのセクションで、変数、演算子、操作、関数など、自動スケールの数式を構成するさまざまな要素について説明します。Batch に存在する各種コンピューティング リソースとタスクについて、そのメトリックを取得する方法についても取り上げます。これらのメトリックを使用すると、リソースの使用状況やタスクの状態に応じて、プールのノード数をインテリジェントに調整することができます。その後、数式を作成する方法や、Batch の REST API と .NET API を使用してプールの自動スケールを有効にする方法について説明した後、最後に数式の例をいくつか紹介します。
 
-> [AZURE.NOTE] 各 Azure Batch アカウントは、処理のために使用できる最大コンピューティング ノード数に制限されています。Batch サービスで作成されるノード数には上限があります。そのため、数式から求められる目標数には届かない場合もあります。アカウントのクォータを表示する方法および増やす方法については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
+> [AZURE.IMPORTANT] 各 Azure Batch アカウントは、処理のために使用できる最大コンピューティング ノード数に制限されています。Batch サービスで作成されるノード数には上限があります。そのため、数式から求められる目標数には届かない場合もあります。アカウントのクォータを表示する方法および増やす方法については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
 ## <a name="variables"></a>変数
 
@@ -186,166 +186,37 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
 
 上に挙げた型に対しては、次の**操作**を実行できます。
 
-<table>
-  <tr>
-    <th>操作</th>
-    <th>使用可能な演算子</th>
-  </tr>
-  <tr>
-    <td>double &lt;演算子> double => double</td>
-    <td>+, -, *, /</td>
-  </tr>
-  <tr>
-    <td>double &lt;演算子> timeinterval => timeinterval</td>
-    <td>*</td>
-  </tr>
-  <tr>
-    <td>doubleVec &lt;演算子> double => doubleVec</td>
-    <td>+, -, *, /</td>
-  </tr>
-  <tr>
-    <td>doubleVec &lt;演算子> doubleVec => doubleVec</td>
-    <td>+, -, *, /</td>
-  </tr>
-  <tr>
-    <td>timeinterval &lt;演算子> double => timeinterval</td>
-    <td>*, /</td>
-  </tr>
-  <tr>
-    <td>timeinterval &lt;演算子> timeinterval => timeinterval</td>
-    <td>+, -</td>
-  </tr>
-  <tr>
-    <td>timeinterval &lt;演算子> timestamp => timestamp</td>
-    <td>+</td>
-  </tr>
-  <tr>
-    <td>timestamp &lt;演算子> timeinterval => timestamp</td>
-    <td>+</td>
-  </tr>
-  <tr>
-    <td>timestamp &lt;演算子> timestamp => timeinterval</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td>&lt;演算子>double => double</td>
-    <td>-, !</td>
-  </tr>
-  <tr>
-    <td>&lt;演算子>timeinterval => timeinterval</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td>double &lt;演算子> double => double</td>
-    <td>&lt;, &lt;=, ==, >=, >, !=</td>
-  </tr>
-  <tr>
-    <td>string &lt;演算子> string => double</td>
-    <td>&lt;, &lt;=, ==, >=, >, !=</td>
-  </tr>
-  <tr>
-    <td>timestamp &lt;演算子> timestamp => double</td>
-    <td>&lt;, &lt;=, ==, >=, >, !=</td>
-  </tr>
-  <tr>
-    <td>timeinterval &lt;演算子> timeinterval => double</td>
-    <td>&lt;, &lt;=, ==, >=, >, !=</td>
-  </tr>
-  <tr>
-    <td>double &lt;演算子> double => double</td>
-    <td>&amp;&amp;, ||</td>
-  </tr>
-  <tr>
-    <td>double 型のみテストする (ゼロ以外は true、ゼロは false)</td>
-    <td>? :</td>
-  </tr>
-</table>
+| 操作 | サポートされている演算子 | 結果の種類 |
+| ------------------------------------- | --------------------- | ------------- |
+| double *operator* double | +, -, *, / | double | | double *operator* timeinterval | * | timeinterval | | doubleVec *operator* double | +, -, *, / | doubleVec | | doubleVec *operator* doubleVec | +, -, *, / | doubleVec | | timeinterval *operator* double | *, / | timeinterval | | timeinterval *operator* timeinterval | +, - | timeinterval | | timeinterval *operator* timestamp | + | timestamp | | timestamp *operator* timeinterval | + | timestamp | | timestamp *operator* timestamp | - | timeinterval | | *operator*double | -, ! | double | | *operator*timeinterval | - | timeinterval | | double *operator* double | <, <=, ==, >=, >, != | double | | string *operator* string | <, <=, ==, >=, >, != | double | | timestamp *operator* timestamp | <, <=, ==, >=, >, != | double | | timeinterval *operator* timeinterval | <, <=, ==, >=, >, != | double | | double *operator* double | &&, || | double |
+
+3 項演算子で double 型の値をテストするときに (`double ? statement1 : statement2`)、0 以外の値は **true**、0 は **false** となります。
 
 ## 関数
 
 次の事前定義された**関数**は、自動スケールの数式の定義に使用できます。
 
-<table>
-  <tr>
-    <th>関数</th>
-    <th>説明</th>
-  </tr>
-  <tr>
-    <td>double <b>avg</b>(doubleVecList)</td>
-    <td>doubleVecList のすべての値の平均値を返します。</td>
-  </tr>
-  <tr>
-    <td>double <b>len</b>(doubleVecList)</td>
-    <td>doubleVecList から作成されたベクター長を返します。</td>
-  <tr>
-    <td>double <b>lg</b>(double)</td>
-    <td>2 を底とする double の対数を返します。</td>
-  </tr>
-  <tr>
-    <td>doubleVec <b>lg</b>(doubleVecList)</td>
-    <td>2 を底とする doubleVecList の成分ごとの対数を返します。この単一の double パラメーターには明示的に vec(double) を渡す必要があります。そのようにしないと、double lg(double) として解釈されます。</td>
-  </tr>
-  <tr>
-    <td>double <b>ln</b>(double)</td>
-    <td>double の自然対数を返します。</td>
-  </tr>
-  <tr>
-    <td>doubleVec <b>ln</b>(doubleVecList)</td>
-    <td>2 を底とする doubleVecList の成分ごとの対数を返します。この単一の double パラメーターには明示的に vec(double) を渡す必要があります。そのようにしないと、double lg(double) として解釈されます。</td>
-  </tr>
-  <tr>
-    <td>double <b>log</b>(double)</td>
-    <td>10 を底とする double の対数を返します。</td>
-  </tr>
-  <tr>
-    <td>doubleVec <b>log</b>(doubleVecList)</td>
-    <td>10 を底とする doubleVecList の成分ごとの対数を返します。この単一の double パラメーターには明示的に vec(double) を渡す必要があります。そのようにしないと、double log(double) として解釈されます。</td>
-  </tr>
-  <tr>
-    <td>double <b>max</b>(doubleVecList)</td>
-    <td>doubleVecList の最大値を返します。</td>
-  </tr>
-  <tr>
-    <td>double <b>min</b>(doubleVecList)</td>
-    <td>doubleVecList の最小値を返します。</td>
-  </tr>
-  <tr>
-    <td>double <b>norm</b>(doubleVecList)</td>
-    <td>doubleVecList から作成されたベクトルの 2 ノルムを返します。
-  </tr>
-  <tr>
-    <td>double <b>percentile</b>(doubleVec v, double p)</td>
-    <td>ベクトル v の百分位要素を返します。</td>
-  </tr>
-  <tr>
-    <td>double <b>rand</b>()</td>
-    <td>0.0 ～ 1.0 のランダムな値を返します。</td>
-  </tr>
-  <tr>
-    <td>double <b>range</b>(doubleVecList)</td>
-    <td>doubleVecList の最小値と最大値の差を返します。</td>
-  </tr>
-  <tr>
-    <td>double <b>std</b>(doubleVecList)</td>
-    <td>doubleVecList の値のサンプルの標準偏差を返します。</td>
-  </tr>
-  <tr>
-    <td><b>stop</b>()</td>
-    <td>自動スケール式の評価を停止します。</td>
-  </tr>
-  <tr>
-    <td>double <b>sum</b>(doubleVecList)</td>
-    <td>doubleVecList のすべての成分の合計を返します。</td>
-  </tr>
-  <tr>
-    <td>timestamp <b>time</b>(string dateTime="")</td>
-    <td>パラメーターが渡されない場合は現在の時刻のタイムスタンプ、渡された場合は dateTime 文字列のタイムスタンプを返します。サポートされている dateTime 形式は、W3C-DTF と RFC 1123 です。</td>
-  </tr>
-  <tr>
-    <td>double <b>val</b>(doubleVec v, double i)</td>
-    <td>開始インデックス 0 のベクター v の位置 i にある要素の値を返します。</td>
-  </tr>
-</table>
+| 関数 | 戻り値の型 | 説明
+| --------------------------------- | ------------- | --------- |
+| avg(doubleVecList) | double | doubleVecList のすべての値の平均値を返します。
+| len(doubleVecList) | double | doubleVecList から作成されたベクター長を返します。
+| lg (double) | double | 2 を底とする double の対数を返します。
+| lg(doubleVecList) | doubleVec | 2 を底とする doubleVecList の成分ごとの対数を返します。このパラメーターには明示的に vec(double) を渡す必要があります。そのようにしないと、double lg(double) として解釈されます。
+| ln(double) | double | double の自然対数を返します。
+| ln(doubleVecList) | doubleVec | 2 を底とする doubleVecList の成分ごとの対数を返します。このパラメーターには明示的に vec(double) を渡す必要があります。そのようにしないと、double lg(double) として解釈されます。
+| log(double) | double | 10 を底とする double の対数を返します。
+| log(doubleVecList) | doubleVec | 10 を底とする doubleVecList の成分ごとの対数を返します。この単一の double パラメーターには明示的に vec(double) を渡す必要があります。そのようにしないと、double log(double) として解釈されます。
+| max(doubleVecList) | double | doubleVecList の最大値を返します。
+| min(doubleVecList) | double | doubleVecList の最小値を返します。
+| norm(doubleVecList) | double | doubleVecList から作成されたベクトルの 2 ノルムを返します。
+| percentile(doubleVec v, double p) | double | ベクトル v の百分位要素を返します。
+| rand() | double | 0\.0 ～ 1.0 のランダムな値を返します。
+| range(doubleVecList) | double | doubleVecList の最小値と最大値の差を返します。
+| std(doubleVecList) | double | doubleVecList の値のサンプルの標準偏差を返します。
+| stop() | | 自動スケール式の評価を停止します。
+| sum(doubleVecList) | double | doubleVecList のすべての成分の合計を返します。
+| time(string dateTime="") | timestamp | パラメーターが渡されない場合は現在の時刻のタイムスタンプ、渡された場合は dateTime 文字列のタイムスタンプを返します。サポートされている dateTime 形式は、W3C-DTF と RFC 1123 です。
+| val(doubleVec v, double i) | double | 開始インデックス 0 のベクター v の位置 i にある要素の値を返します。
 
 上記の表に示した一部の関数は、リストを引数として受け入れることができます。コンマ区切りのリストは、*double* と *doubleVec* の任意の組み合わせです。次に例を示します。
 
@@ -430,9 +301,9 @@ Batch サービスでは、タスクおよびリソースのメトリックの*�
 
 `runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * TimeInterval_Second, 75);`
 
-また、前述したようにサンプルの可用性には遅延があるため、時間範囲を指定する際には、常に、開始時間を 1 分より長く遡って指定することが重要です。サンプルがシステムを介して伝達されるまで約 1 分かかるので、範囲 `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` 内のサンプルは使用できないことがよくあるのです。繰り返しになりますが、`GetSample()` の割合パラメーターを使用することで、サンプルの割合に関する特定の要件を強制的に指定することができます。
+また、前述したようにサンプルの可用性には遅延があるため、時間範囲を指定する際には、常に、開始時間を 1 分より長く遡って指定することが重要です。サンプルがシステムを介して伝達されるまで約 1 分かかるため、範囲 `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` 内のサンプルは使用できないことが頻繁にあります。ここでも、`GetSample()` の割合パラメーターを使用することで、サンプルの割合に関する特定の要件を強制的に指定することができます。
 
-> [AZURE.IMPORTANT] 自動スケールの数式で、**`GetSample(1)` に*のみ*依存するのは避けるようにすることを**強く推奨します****。なぜかというと、`GetSample(1)` は基本的に Batch サービスに対して、"どれほど前に取得したのかに関係なく、最後に取得したサンプルを渡しなさい" と指示するものであるからです。 それは単一のサンプルであり、また以前のサンプルであるため、最近のタスクまたはリソースの状態を表す情報として十分でない可能性があります。`GetSample(1)` を使用する場合は、より大きなステートメントの一部であり、数式が依存する唯一のデータ ポイントになっていないことを確認してください。
+> [AZURE.IMPORTANT] 自動スケールの数式で、**`GetSample(1)` に*のみ*依存するのは避けるようにすることを**強く推奨します****。これは、`GetSample(1)` は基本的に Batch サービスに対して、"どれほど前に取得したのかに関係なく、最後に取得したサンプルを渡すように" 指示するものであるためです。 それは単一のサンプルであり、また以前のサンプルであるため、最近のタスクまたはリソースの状態を表す情報として十分でない可能性があります。`GetSample(1)` を使用する場合は、より大きなステートメントの一部であり、数式が依存する唯一のデータ ポイントになっていないことを確認してください。
 
 ## メトリック
 
@@ -517,7 +388,7 @@ $TargetDedicated = min(400, $TotalNodes)
 
 > [AZURE.IMPORTANT] 前述した手法のいずれかを使用して自動スケール対応のプールを作成する場合は、プールの *targetDedicated* パラメーターを指定**しないでください**。また、自動スケール対応のプールのサイズを手動で変更する場合 ([BatchClient.PoolOperations.ResizePool][net_poolops_resizepool] など)、最初にプールで自動スケールを**無効**にしてから、そのプールのサイズを変更する必要があります。
 
-次のコード スニペットでは、自動スケール対応のプール ([CloudPool][net_cloudpool]) を [Batch .NET][net_api] ライブラリを使用して作成しています。このプールでは、自動スケールの数式によって、目標ノード数を月曜日は 5 に、それ以外の日は 1 に設定しています。さらに、自動スケールの間隔を 30 分に設定します (後述の「[自動スケールの間隔](#interval)」を参照)。次に示す C# スニペットまたはこの記事で示すその他の C# スニペットにおいて、"myBatchClient" は適切に初期化された、[BatchClient][net_batchclient] のインスタンスです。
+次のコード スニペットでは、自動スケール対応のプール ([CloudPool][net_cloudpool]) を [Batch .NET][net_api] ライブラリを使用して作成しています。このプールでは、自動スケールの数式によって、目標ノード数を月曜日は 5 に、それ以外の日は 1 に設定しています。さらに、自動スケールの間隔を 30 分に設定します (後述の「[自動スケールの間隔](#automatic-scaling-interval)」を参照)。次に示す C# スニペットまたはこの記事で示すその他の C# スニペットにおいて、"myBatchClient" は適切に初期化された [BatchClient][net_batchclient] のインスタンスです。
 
 ```
 CloudPool pool = myBatchClient.PoolOperations.CreatePool("mypool", "3", "small");
@@ -527,7 +398,7 @@ pool.AutoScaleEvaluationInterval = TimeSpan.FromMinutes(30);
 pool.Commit();
 ```
 
-### <a name="interval"></a>自動スケールの間隔
+### 自動スケールの間隔
 
 Batch サービスは既定では、自動スケールの数式に従って **15 分**ごとにプールのサイズを調整します。ただし、この間隔は、次のプール プロパティを使用して構成することができます。
 
@@ -703,16 +574,9 @@ string formula = string.Format(@"
 
 ## 次のステップ
 
-1. アプリケーションの効率を完全に評価するには、コンピューティング ノードにアクセスする必要がある場合があります。リモート アクセスを利用するには、アクセスするノードにユーザー アカウントを追加し、そのノードのリモート デスクトップ プロトコル (RDP) ファイルを取得する必要があります。
-    - 次のいずれかの方法でユーザー アカウントを追加します。
-        * [New-AzureBatchVMUser](https://msdn.microsoft.com/library/mt149846.aspx) – この PowerShell コマンドレットには、プール名、コンピューティング ノード名、アカウント名、パスワードがパラメーターとして必要です。
-        * [BatchClient.PoolOperations.CreateComputeNodeUser](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createcomputenodeuser.aspx) – この .NET メソッドは、アカウント名とパスワードをコンピューティング ノードに対して設定できる [ComputeNodeUser](https://msdn.microsoft.com/library/microsoft.azure.batch.computenodeuser.aspx) クラスのインスタンスを作成します。その後、[ComputeNodeUser.Commit](https://msdn.microsoft.com/library/microsoft.azure.batch.computenodeuser.commit.aspx) はそのノードのユーザーを作成するインスタンスで呼び出されます。
-        * [ユーザー アカウントをノードに追加する](https://msdn.microsoft.com/library/dn820137.aspx) – プール名とコンピューティング ノード名は URI で指定され、アカウント名とパスワードはこの REST API 要求の要求本文の一部としてノードに送信されます。
-    - RDP ファイルを取得する
-        * [BatchClient.PoolOperations.GetRDPFile](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getrdpfile.aspx) – この .NET メソッドには、プールの ID、ノード ID、および作成する RDP ファイルの名前が必要です。
-        * [ノードからリモート デスクトップ プロトコル ファイルを取得する](https://msdn.microsoft.com/library/dn820120.aspx) – この REST API 要求では、プール名とコンピューティング ノード名が必要です。応答に RDP ファイルの内容が含まれています。
-        * [Get-AzureBatchRDPFile](https://msdn.microsoft.com/library/mt149851.aspx) – この PowerShell コマンドレットは、指定したコンピューティング ノードから RDP ファイルを取得し、指定したファイルの場所やストリームに保存します。
-2.	一部のアプリケーションは、処理するのに困難な大量のデータを生成します。これを解決する 1 つの方法は、[効率的なリスト クエリ](batch-efficient-list-queries.md)を使用することです。
+* 「[同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする](batch-parallel-node-tasks.md)」では、プール内のコンピューティング ノードで複数のタスクを同時に実行する方法の詳細が説明されています。自動スケール以外にも、この機能は一部のワークロードのジョブの実行時間短縮に役立つことがあり、費用の節約になります。
+
+* 他にも、効率を上げるために、Batch アプリケーションによって、最適な方法で Batch サービスが照会されていることを確認してください。「[効率的な Azure Batch サービスのクエリ](batch-efficient-list-queries.md)」では、数千に上る可能性のあるコンピューティング ノードやタスクの状態を照会するときに、送信されるデータの量を制限する方法について説明します。
 
 [net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [net_batchclient]: http://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
@@ -728,4 +592,4 @@ string formula = string.Format(@"
 [rest_autoscaleinterval]: https://msdn.microsoft.com/ja-JP/library/azure/dn820173.aspx
 [rest_enableautoscale]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -2,7 +2,7 @@
 	pageTitle="ビデオ プレーヤー アプリケーションの開発" 
 	description="このトピックでは、Media Services からのストリーミング メディアを使用する独自のクライアント アプリケーションの開発に使用できるプレーヤー フレームワークとプラグインへのリンクを提供します。" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
 	documentationCenter=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-  ms.date="02/03/2016"
+	ms.date="04/18/2016"
 	ms.author="juliako"/>
 
 
@@ -81,4 +81,4 @@ Azure Media Services では、Windows メディア プラットフォームの�
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

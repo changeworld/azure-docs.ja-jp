@@ -2,7 +2,7 @@
 	pageTitle="Media Services PlayReady ライセンス テンプレートの概要" 
 	description="このトピックでは、PlayReady ライセンスの設定に使用する PlayReady ライセンス テンプレートの概要を示します。" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
 	documentationCenter=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016"  
 	ms.author="juliako"/>
 
 #Media Services PlayReady ライセンス テンプレートの概要
@@ -48,7 +48,7 @@ Media Services を使用して PlayReady ライセンスを設定するには、
 
 XML は、PlayReady ライセンス テンプレートの XML スキーマのセクションで定義されたPlayReady ライセンス テンプレート XML スキーマに準拠しています。
 
-Media Services は、XML へのシリアル化および XML からの逆シリアル化に使用できる一連の .NET クラスも定義します。主要なクラスについては、ライセンス テンプレートの構成に使用する [Media Services の .NET クラス](media-services-playready-license-template-overview.md#classes) を参照してください。
+Media Services は、XML へのシリアル化および XML からの逆シリアル化に使用できる一連の .NET クラスも定義します。主要なクラスについては、「ライセンス テンプレートの構成に使用する Media Services の .NET クラス」(media-services-playready-license-template-overview.md#classes) を参照してください。
 
 エンドツーエンドでの .NET クラスを使用した PlayReady ライセンス テンプレートの構成例については、「[PlayReady 動的暗号化とライセンス提供サービスの使用](https://msdn.microsoft.com/library/azure/dn783467.aspx)」を参照してください。
 
@@ -311,4 +311,4 @@ Silverlight でサポートされる保護レベルの例については、「[S
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="infrastructure-services"
- ms.date="12/08/2015"
+ ms.date="03/29/2016"
  ms.author="rasquill"/>
 
 #仮想マシンの拡張機能とその機能について
@@ -22,4 +22,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-extensions-features](../../includes/virtual-machines-common-extensions-features.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="Microsoft Power BI Embedded - データ ソースへの接続"
-   description="Microsoft Power BI Embedded - データ ソースへの接続"
+   description="Power BI Embedded、データ ソースへの接続"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -55,4 +55,4 @@
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 - [Power BI Desktop の概要](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

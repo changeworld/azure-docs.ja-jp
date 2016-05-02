@@ -3,7 +3,7 @@
    description="SQL Data Warehouse のパフォーマンスおよびスケール機能の紹介。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="TwoUnder"
+   authors="barbkess"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="03/03/2016"
-   ms.author="mausher;barbkess;jrj;nicw;sonyama"/>
+   ms.author="barbkess;sonyama"/>
 
 # パフォーマンスとスケールの概要
 データ ウェアハウスをクラウドに置くことにより、低レベルのハードウェア問題に対処する必要はなくなりました。データ ウェアハウスで優れたパフォーマンスを実現するために必要なストレージのタイプ、メモリ量、およびプロセッサのタイプを調査する必要があったのは遠い過去のことになりました。その代わりに、SQL Data Warehouse ではデータをどの程度高速に分析する必要があるかということが検討事項になります。
@@ -83,4 +83,4 @@ SQL Data Warehouse ソリューションの作成に関するガイダンスに�
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

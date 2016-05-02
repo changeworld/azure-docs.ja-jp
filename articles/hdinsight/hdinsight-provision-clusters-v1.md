@@ -20,9 +20,9 @@
 
 HDInsight クラスターのプロビジョニングを計画する方法について説明します。
 
-[AZURE.INCLUDE [hdinsight-azure-portal](../../includes/hdinsight-azure-portal.md)]
-
-* [HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md) 
+> [AZURE.WARNING] このドキュメントの手順では、Azure クラシック ポータルのほかに、以前のバージョンの Azure PowerShell と Azure CLI を使用します。これらの手順を使用しないことをお勧めします。代わりに、Azure ポータルおよび最新バージョンの Azure PowerShell と Azure CLI を使用してください。Azure ポータルおよび最新バージョンの Azure PowerShell と Azure CLI を使用するバージョンのこのドキュメントについては、[HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)に関する記事を参照してください。
+>
+> Azure ポータルの利点の詳細については、「[Microsoft Azure ポータル](https://azure.microsoft.com/features/azure-portal/)」を参照してください。
 
 **前提条件:**
 
@@ -48,8 +48,8 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 - **オペレーティング システム**
 
 	次の 2 つのオペレーティング システムのいずれかで HDInsight クラスターをプロビジョニングすることができます。
-	- **Windows 上の HDInsight (Windows Server 2012 R2 Datacenter)**:
-	- **Linux 上の HDInsight (Ubuntu 12.04 LTS for Linux)**: HDInsight には、Azure で Linux クラスターを構成するオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。 
+	- **Windows (Windows Server 2012 R2 Datacenter) 上の HDInsight**:
+	- **Linux (Ubuntu 12.04 LTS for Linux) 上の HDInsight**: HDInsight には、Azure で Linux クラスターを構成するオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。 
 
 
 - **HDInsight のバージョン**
@@ -442,12 +442,9 @@ Azure アカウント資格情報の入力を求められます。
 
 > [AZURE.NOTE] 2014 年 8 月 29 日の時点では、クラスターと Azure 仮想ネットワーク間の関連付けに Azure CLI を使用することはできません。
 
-HDInsight クラスターをプロビジョニングするもう 1 つの方法は、Azure CLI を使用する方法です。Azure CLI は Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。CLI は、次の場所からインストールできます。
+HDInsight クラスターをプロビジョニングするもう 1 つの方法は、Azure CLI を使用する方法です。Azure CLI は Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。
 
-- **Node.js SDK** - <a href="https://www.npmjs.com/package/azure-mgmt-hdinsight" target="_blank">https://www.npmjs.com/package/azure-mgmt-hdinsight</a>
-- **Azure CLI** - <a href="https://github.com/azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz" target="_blank">https://github.com/azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz</a>  
-
-Azure CLI の一般的な使用方法については、[Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md) に関するページを参照してください。
+Azure CLI の使い方に関する一般的なガイドについては、[Azure CLI](../xplat-cli-install.md) に関するページを参照してください。
 
 ここでは、Azure CLI を Linux および Windows にインストールする手順と、コマンド ラインを使用してクラスターをプロビジョニングする手順について説明します。
 
@@ -817,4 +814,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -30,7 +30,7 @@
 
 ##<a name="setup"></a>セットアップと前提条件
 
-テーブルを 1 つ含むモバイル アプリ バックエンド プロジェクトを既に作成して発行してあるものとします。このトピックで使用するコードでは、テーブルの名前は `TodoItem` であり、`Id`、`Text`、および `Complete` という列があります。これは、[Azure Mobile Apps クイックスタート]で作成したものと同じテーブルです。
+テーブルを少なくとも 1 つ含むモバイル アプリ バックエンド プロジェクトを既に作成して発行してあるものとします。このトピックで使用するコードでは、テーブルの名前は `TodoItem` であり、`Id`、`Text`、および `Complete` という列があります。これは、[Azure Mobile Apps クイックスタート]で作成したものと同じテーブルです。
 
 これに対応する型指定されたクライアント側 C# 型を次に示します。
 
@@ -83,8 +83,7 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利
 
 バックエンド テーブルのデータにアクセスする、またはデータを変更するすべてのコードは、`MobileServiceTable` オブジェクトに対して関数を呼び出します。次のように、`MobileServiceClient` のインスタンスで [GetTable] メソッドを呼び出して、テーブルへの参照を取得します。
 
-    IMobileServiceTable<TodoItem> todoTable =
-    	client.GetTable<TodoItem>();
+    IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
 
 これは、型指定されたシリアル化モデルです。型指定されていないシリアル化モデルもサポートされます。次のコードは、[型指定されていないテーブルへの参照を作成します]。
 
@@ -128,8 +127,7 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利
 
 	// This query filters out completed TodoItems where Text isn't null
 	List<TodoItem> items = await todoTable
-	   .Where(todoItem => todoItem.Complete == false 
-	   	&& todoItem.Text != null)
+	   .Where(todoItem => todoItem.Complete == false && todoItem.Text != null)
 	   .ToListAsync();
 
 Server SDK によって次のように SQL クエリに変換されます。
@@ -442,7 +440,7 @@ _サーバー フロー_と_クライアント フロー_という 2 つの認�
 いずれの場合でも、アプリケーションを ID プロバイダーに登録する必要があります。ID プロバイダーは、クライアント ID とクライアント シークレットを提示します。その後、ID プロバイダーが提示したクライアント ID とクライアント シークレットで、Azure App Service 認証/承認を構成する必要があります。詳細については、「[Windows アプリに認証を追加する]」の詳しい説明に従ってください。
 
 ###<a name="serverflow"></a>サーバー フロー
-ID プロバイダーを登録した後は、プロバイダーの [MobileServiceAuthenticationProvider] 値で MobileServiceCleint.[LoginAsync メソッド] を呼び出します。たとえば、次のコードは、Facebook を使用してサーバー フローのサインインを開始します。
+ID プロバイダーを登録した後は、プロバイダーの [MobileServiceAuthenticationProvider] 値で MobileServiceClient.[LoginAsync メソッド] を呼び出します。たとえば、次のコードは、Facebook を使用してサーバー フローのサインインを開始します。
 
 	private MobileServiceUser user;
 	private async System.Threading.Tasks.Task Authenticate()
@@ -607,7 +605,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 
 3. ご使用のプラットフォームに応じて、以下のコードをアプリケーションに追加します。それぞれで、次の置換を行います。
 
-* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は https://login.windows.net/contoso.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル](https://manage.windowsazure.com/) の Azure Active Directory の [ドメイン] タブからコピーできます。
+* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は https://login.windows.net/contoso.onmicrosoft.com である必要があります。この値は、[[Azure クラシック ポータル]] の Azure Active Directory の [ドメイン] タブからコピーできます。
 
 * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。これは、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
 
@@ -891,7 +889,7 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 [UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Where]: https://msdn.microsoft.com/ja-JP/library/azure/dn250579(v=azure.10).aspx
 [Azure ポータル]: https://portal.azure.com/
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[[Azure クラシック ポータル]]: https://manage.windowsazure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/ja-JP/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
@@ -913,4 +911,4 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 [SymbolSource]: http://www.symbolsource.org/
 [SymbolSource の説明]: http://www.symbolsource.org/Public/Wiki/Using
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

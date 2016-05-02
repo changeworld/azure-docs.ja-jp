@@ -14,12 +14,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="04/11/2016"
+	ms.date="04/19/2016"
 	ms.author="carlrab" />
 
 # データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス
 
-## 概要 
+## 概要
 
 Microsoft Azure SQL Database には 3 つの[サービス層](sql-database-service-tiers.md)があります。Basic、Standard、Premium です。すべてのサービス層で、Azure SQL Database に与えられたリソースが厳密に分離され、パフォーマンスが予測可能になります。データベースに保証されるスループットは、Premium、Standard、Basic の順に高くなります。
 
@@ -39,10 +39,10 @@ Basic、Standard、Premium サービス層が Azure SQL Database サービスを
 
 Microsoft はまた、自動 HA や組み込み管理など、さまざまな自動管理機能を Azure SQL Database に追加しています。
 
-### 自動高可用性 (HA) 
+### 自動高可用性 (HA)
  Azure SQL Database はユーザー データベースごとに最低 3 台のレプリカを維持し、レプリカのクォーラムに合わせ、各々の変化を自動的にコミットするロジックを備えています。それにより、1 台のコンピューターが壊れても、データを失うことがありません。さらに、各レプリカは異なるハードウェア ラックに配置され、電力またはネットワーク スイッチを失ってもデータベースは影響を受けません。最後になりますが、コンピューターが失われた場合、レプリカを自動的に再構築するロジックを備えています。コンピューターが正常でなくなった場合でも、好ましい状態のプロパティが自動的に保持されています。こうしたメカニズムにより、今日の高可用性ソリューションの設置と構成に必要な時間のかかるプロセスを回避できます。事前構成済み HA ソリューションをデータに与えることで、従来の手法では難しかったミッションクリティカル データベース ソリューションの構築から悩みの種がまた 1 つ取り除かれます。
 
-### 組み込み管理 
+### 組み込み管理
  Azure SQL Database はサービスとして実行されます。つまり、データベースごとにアップタイムの目標が定義されており、保守管理のための長期にわたるダウンタイム枠が回避されます。Microsoft はこのサービスにシングルベンダー ソリューションを提供します。つまり、問題が発生した場合、連絡先は 1 社だけになります。Microsoft はまた、継続的にサービスを更新し、機能と容量を追加し、より簡単に更新するための方法を模索しています。更新プログラムは透過的かつダウンタイム枠なしで行われます。つまり、通常の HA フェールオーバー メカニズムに統合されています。それにより、新しい機能が発表された直後にそれを活用できます。一定のダウンタイム枠の間、サーバーのアップグレードを待つ必要がありません。
 
 以上の機能はすべて、あらゆるサービス層で利用できます。自己所有のサーバーを購入し、実行するよりはるかに安く、非常に小規模なプロジェクトでも大金を使わずに Azure の機能を活用できます。
@@ -123,12 +123,12 @@ Standard と Premium のパフォーマンス レベル設定では、必要と�
 
 **最大同時要求数**は、データベースで同時に実行される同時ユーザー/アプリケーション要求の最大数です。同時要求の数を確認するには、SQL データベースで次の Transact-SQL クエリを実行します。
 
-	SELECT COUNT(*) AS [Concurrent_Requests] 
+	SELECT COUNT(*) AS [Concurrent_Requests]
 	FROM sys.dm_exec_requests R
 
 オンプレミス SQL Server データベースの作業負荷を分析している場合、分析している特定のデータベースでフィルター処理するようにこのクエリを変更してください。たとえば、「MyDatabase」という名前のオンプレミス データベースがある場合、次の Transact-SQL クエリはそのデータベースの同時要求数を返します。
 
-	SELECT COUNT(*) AS [Concurrent_Requests] 
+	SELECT COUNT(*) AS [Concurrent_Requests]
 	FROM sys.dm_exec_requests R
 	INNER JOIN sys.databases D ON D.database_id = R.database_id
 	AND D.name = 'MyDatabase'
@@ -176,14 +176,14 @@ SQL データベースのリソース使用をそのサービス層との関連�
 このビューにはリソース使用率が詳細に表示されるので、現状の分析やトラブルシューティングの場合、最初に「sys.dm\_db\_resource\_stats」を利用してください。たとえば、次のクエリは、この 1 時間の現在のデータベースの平均リソース使用率と最大リソース使用率を表示します。
 
 	SELECT  
-	    AVG(avg_cpu_percent) AS 'Average CPU Utilization In Percent', 
-	    MAX(avg_cpu_percent) AS 'Maximum CPU Utilization In Percent', 
-	    AVG(avg_data_io_percent) AS 'Average Data IO In Percent', 
-	    MAX(avg_data_io_percent) AS 'Maximum Data IO In Percent', 
-	    AVG(avg_log_write_percent) AS 'Average Log Write Utilization In Percent', 
-	    MAX(avg_log_write_percent) AS 'Maximum Log Write Utilization In Percent', 
-	    AVG(avg_memory_usage_percent) AS 'Average Memory Usage In Percent', 
-	    MAX(avg_memory_usage_percent) AS 'Maximum Memory Usage In Percent' 
+	    AVG(avg_cpu_percent) AS 'Average CPU Utilization In Percent',
+	    MAX(avg_cpu_percent) AS 'Maximum CPU Utilization In Percent',
+	    AVG(avg_data_io_percent) AS 'Average Data IO In Percent',
+	    MAX(avg_data_io_percent) AS 'Maximum Data IO In Percent',
+	    AVG(avg_log_write_percent) AS 'Average Log Write Utilization In Percent',
+	    MAX(avg_log_write_percent) AS 'Maximum Log Write Utilization In Percent',
+	    AVG(avg_memory_usage_percent) AS 'Average Memory Usage In Percent',
+	    MAX(avg_memory_usage_percent) AS 'Maximum Memory Usage In Percent'
 	FROM sys.dm_db_resource_stats;  
 
 その他のクエリについては、[sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) の例を参照してください。
@@ -206,9 +206,9 @@ Azure SQL Database では、各サーバーの**マスター** データベー�
 
 次の例は、このビューのデータが公開されるしくみを示しています。
 
-	SELECT TOP 10 * 
-	FROM sys.resource_stats 
-	WHERE database_name = 'resource1' 
+	SELECT TOP 10 *
+	FROM sys.resource_stats
+	WHERE database_name = 'resource1'
 	ORDER BY start_time DESC
 
 ![システム リソース統計](./media/sql-database-performance-guidance/sys_resource_stats.png)
@@ -218,16 +218,16 @@ Azure SQL Database では、各サーバーの**マスター** データベー�
 >[AZURE.NOTE] **sys.resource\_stats** の列の一部は現在の V12 データベースで変更されています。そのため、次の例のサンプル クエリはエラーを生成することがあります。このトピックの今後の更新では、この問題に対処する新しいバージョンのクエリを紹介します。
 
 1. たとえば、「userdb1」という名前のデータベースの先週のリソース利用率を調べる場合、次のクエリを実行できます。
-	
-		SELECT * 
-		FROM sys.resource_stats 
-		WHERE database_name = 'userdb1' AND 
+
+		SELECT *
+		FROM sys.resource_stats
+		WHERE database_name = 'userdb1' AND
 		      start_time > DATEADD(day, -7, GETDATE())
 		ORDER BY start_time DESC;
-	
+
 2. 作業負荷がパフォーマンス レベルに適合する様子を評価するために、さまざまなリソース指標 (CPU、読み取り、書き込み、ワーカー数、セッション数) で分析する必要があります。次は sys.resource\_stats を利用したクエリを修正したものです。平均とリソース指標の最大値を報告します。
-	
-		SELECT 
+
+		SELECT
 		    avg(avg_cpu_percent) AS 'Average CPU Utilization In Percent',
 		    max(avg_cpu_percent) AS 'Maximum CPU Utilization In Percent',
 		    avg(avg_physical_data_read_percent) AS 'Average Physical Data Read Utilization In Percent',
@@ -238,41 +238,41 @@ Azure SQL Database では、各サーバーの**マスター** データベー�
 		    max(active_session_count) AS 'Maximum # of Sessions',
 		    avg(active_worker_count) AS 'Average # of Workers',
 		    max(active_worker_count) AS 'Maximum # of Workers'
-		FROM sys.resource_stats 
+		FROM sys.resource_stats
 		WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-	
+
 3. 各リソース指標の平均と最大値に関する上記の情報があれば、選択したパフォーマンス レベルに作業負荷が適合する様子を評価できます。ほとんどの場合、sys.resource\_stats からの平均値が目標サイズに対する有効な基準となります。これを主要なものさしとしてください。たとえば、S2 パフォーマンス レベルで Standard サービス層を使用しているとき、CPU、読み取り、書き込みの平均利用率が 40% を下回り、ワーカーの平均数が 50 を下回り、セッションの平均数が 200 を下回る場合、作業負荷は S1 パフォーマンス レベルが最適かもしれません。データベースがワーカーとセッションの制限内に収まるかどうかが簡単にわかります。CPU、読み取り、書き込みに関して、データベースが下位のパフォーマンス レベルに適合するかどうかを確認するには、下位パフォーマンス レベルの DTU 数を現在のパフォーマンス レベルの DTU 数で割り、その計算結果に 100 を掛けます。
-	
+
 	**S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40**
-	
+
 	この結果は、2 つのパフォーマンス レベルの間の相対的パフォーマンス差異を百分率で表したものになります。利用率がこの割合を超えていない場合、その作業負荷には下位のパフォーマンス レベルが適しているかもしれません。ただし、リソース利用率の値を全範囲で見て、割合の観点で、どのくらいの頻度でデータベースの作業負荷が下位のパフォーマンス レベルに適合するかを判断する必要もあります。次のクエリは、上で計算された 40% のしきい値に基づき、リソース次元別の適合率を出力します。
-	
-		SELECT 
+
+		SELECT
 		    (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU Fit Percent'
 		    ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log Write Fit Percent'
 		    ,(COUNT(database_name) - SUM(CASE WHEN avg_physical_data_read_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical Data Read Fit Percent'
 		FROM sys.resource_stats
 		WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-	
+
 	データベースのサービス レベル目標 (SLO) に基づき、作業負荷が下位のパフォーマンス レベルに適合するかどうかを判断できます。データベース作業負荷 SLO が 99.9% で、上のクエリが 3 つすべてのリソース次元に対して 99.9 以上の値を返す場合、その作業負荷はおそらく下位のパフォーマンス レベルに適合します。
-	
+
 	適合率を見ると、SLO を満たすために上位のパフォーマンス レベルに移るべきかどうかもわかります。たとえば、「userdb1」は先週の次の使用率を示しています。
-	
+
 	| 平均 CPU パーセント | 最大 CPU パーセント |
 	|---|---|
 	| 24\.5 | 100\.00 |
-	
+
 	平均 CPU はパフォーマンス レベルの上限の約 4 分の 1 になり、データベースのパフォーマンス レベルにうまく適合でしょう。ただし、最大値はデータベースがパフォーマンス レベルの上限に到達することを示します。次に上位のパフォーマンス レベルに移動する必要がありますか。 この場合も、作業負荷が 100% に到達する回数を見て、それをデータベース作業負荷 SLO と比較する必要があります。
-	
-		SELECT 
+
+		SELECT
 		(COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU Fit Percent'
 		,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log Write Fit Percent’
 		,(COUNT(database_name) - SUM(CASE WHEN avg_physical_data_read_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical Data Read Fit Percent'
 		FROM sys.resource_stats
 		WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
-	
+
 	上記のクエリが 3 つのリソース次元のいずれにも 99.9% 未満の値を返す場合、次に上位のパフォーマンス レベルに移動するか、アプリケーションの調整手法を利用し、Azure SQL Database の負荷を減らすことを検討してください。
-	
+
 4. 上の演習では、将来的に予測される作業負荷の増加も考慮する必要があります。
 
 ## アプリケーションの調整
@@ -316,8 +316,8 @@ OLTP データベースのパフォーマンスの一般的問題は物理的な
 	END
 	COMMIT TRANSACTION;
 	GO
-	SELECT m1.col1 
-	FROM dbo.missingindex m1 INNER JOIN dbo.missingindex m2 ON(m1.col1=m2.col1) 
+	SELECT m1.col1
+	FROM dbo.missingindex m1 INNER JOIN dbo.missingindex m2 ON(m1.col1=m2.col1)
 	WHERE m1.col2 = 4;
 
 ![インデックス不足のクエリ プラン](./media/sql-database-performance-guidance/query_plan_missing_indexes.png)
@@ -328,25 +328,25 @@ Azure SQL Database には、データベース管理者が一般的なインデ�
 
 次のクエリは潜在的なインデックス不足の評価に使用できます。
 
-	SELECT CONVERT (varchar, getdate(), 126) AS runtime, 
-	    mig.index_group_handle, mid.index_handle, 
-	    CONVERT (decimal (28,1), migs.avg_total_user_cost * migs.avg_user_impact * 
-	            (migs.user_seeks + migs.user_scans)) AS improvement_measure, 
-	    'CREATE INDEX missing_index_' + CONVERT (varchar, mig.index_group_handle) + '_' + 
-	              CONVERT (varchar, mid.index_handle) + ' ON ' + mid.statement + ' 
-	              (' + ISNULL (mid.equality_columns,'') 
-	              + CASE WHEN mid.equality_columns IS NOT NULL 
-	                          AND mid.inequality_columns IS NOT NULL 
+	SELECT CONVERT (varchar, getdate(), 126) AS runtime,
+	    mig.index_group_handle, mid.index_handle,
+	    CONVERT (decimal (28,1), migs.avg_total_user_cost * migs.avg_user_impact *
+	            (migs.user_seeks + migs.user_scans)) AS improvement_measure,
+	    'CREATE INDEX missing_index_' + CONVERT (varchar, mig.index_group_handle) + '_' +
+	              CONVERT (varchar, mid.index_handle) + ' ON ' + mid.statement + '
+	              (' + ISNULL (mid.equality_columns,'')
+	              + CASE WHEN mid.equality_columns IS NOT NULL
+	                          AND mid.inequality_columns IS NOT NULL
 	                     THEN ',' ELSE '' END + ISNULL (mid.inequality_columns, '')
-	              + ')' 
-	              + ISNULL (' INCLUDE (' + mid.included_columns + ')', '') AS create_index_statement, 
-	    migs.*, 
-	    mid.database_id, 
+	              + ')'
+	              + ISNULL (' INCLUDE (' + mid.included_columns + ')', '') AS create_index_statement,
+	    migs.*,
+	    mid.database_id,
 	    mid.[object_id]
 	FROM sys.dm_db_missing_index_groups AS mig
-	INNER JOIN sys.dm_db_missing_index_group_stats AS migs 
+	INNER JOIN sys.dm_db_missing_index_group_stats AS migs
 	    ON migs.group_handle = mig.index_group_handle
-	INNER JOIN sys.dm_db_missing_index_details AS mid 
+	INNER JOIN sys.dm_db_missing_index_details AS mid
 	    ON mig.index_handle = mid.index_handle
 	ORDER BY migs.avg_total_user_cost * migs.avg_user_impact * (migs.user_seeks + migs.user_scans) DESC
 
@@ -371,7 +371,7 @@ SQL Server で観察される共通例で、Azure SQL Database にも適用で�
 
 	DROP TABLE psptest1;
 	CREATE TABLE psptest1(col1 int primary key identity, col2 int, col3 binary(200));
-	
+
 	DECLARE @a int = 0;
 	SET NOCOUNT ON;
 	BEGIN TRANSACTION
@@ -384,16 +384,16 @@ SQL Server で観察される共通例で、Azure SQL Database にも適用で�
 	COMMIT TRANSACTION
 	CREATE INDEX i1 on psptest1(col2);
 	GO
-	
+
 	CREATE PROCEDURE psp1 (@param1 int)
 	AS
 	BEGIN
-	    INSERT INTO t1 SELECT * FROM psptest1 
+	    INSERT INTO t1 SELECT * FROM psptest1
 	    WHERE col2 = @param1
 	    ORDER BY col2;
 	END
 	GO
-	
+
 	CREATE PROCEDURE psp2 (@param2 int)
 	AS
 	BEGIN
@@ -402,7 +402,7 @@ SQL Server で観察される共通例で、Azure SQL Database にも適用で�
 	    OPTION (OPTIMIZE FOR (@param2 UNKNOWN))
 	END
 	GO
-	
+
 	CREATE TABLE t1 (col1 int primary key, col2 int, col3 binary(200));
 	GO
 
@@ -413,7 +413,7 @@ SQL Server で観察される共通例で、Azure SQL Database にも適用で�
 	-- Prime Procedure Cache with scan plan
 	EXEC psp1 @param1=1;
 	TRUNCATE TABLE t1;
-	
+
 	-- Iterate multiple times to show the performance difference
 	DECLARE @i int = 0;
 	WHILE @i < 1000
@@ -427,7 +427,7 @@ SQL Server で観察される共通例で、Azure SQL Database にも適用で�
 
 	EXEC psp2 @param2=1;
 	TRUNCATE TABLE t1;
-	
+
 	DECLARE @i int = 0;
 	WHILE @i < 1000
 	BEGIN
@@ -452,9 +452,9 @@ SQL Server で観察される共通例で、Azure SQL Database にも適用で�
 
 この影響は **sys.resource\_stats** テーブルを調べることでわかります (注記: テストを実行してからデータがテーブルに入力されるまでの間に遅延があります)。この例の場合、パート 1 は 22:25:00 の時間枠で実行され、パート 2 は 22:35:00 の時間枠で実行されます。早いほうの時間枠で遅いほうの時間枠に比べてその時間枠のリソースがより多く使用されることに注意してください (プランの効率性改善に起因)。
 
-	SELECT TOP 1000 * 
-	FROM sys.resource_stats 
-	WHERE database_name = 'resource1' 
+	SELECT TOP 1000 *
+	FROM sys.resource_stats
+	WHERE database_name = 'resource1'
 	ORDER BY start_time DESC
 
 ![クエリ調整](./media/sql-database-performance-guidance/query_tuning_4.png)
@@ -491,4 +491,4 @@ Azure SQL Database 内で使用されるスケールアウト アーキテクチ
 
 Azure SQL Database のサービス層を利用すると、クラウドに構築する各種アプリケーションの水準を上げることができます。さらにアプリケーションの調整も頻繁に行うことで、アプリケーションのパフォーマンスが強力かつ予測可能となります。このドキュメントでは、特定のパフォーマンス レベルに問題なく適合するようにデータベースのリソース利用を最適化するための推奨手法について説明します。クラウド モデルにおいては調整は継続的に実施するものであり、それにより、各種のサービス層とそのパフォーマンス レベルにおいて、管理者はパフォーマンスを最大限に引き出し、同時に Microsoft Azure Platform のコストを最小限に抑えることができます。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

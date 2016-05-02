@@ -3,7 +3,7 @@
    description="ソリューション開発のための Azure SQL Data Warehouse へのデータの移行に関するヒント"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="barbkess"
+   authors="lodipalm"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="03/03/2016"
-   ms.author="barbkess;sonyama"/>
+   ms.author="lodipalm;barbkess;sonyama"/>
 
 # データの移行
 データを移行する主な目的は、SQLDW データベースにデータを取り込むことです。このプロセスは、さまざまな方法で実行できます。ADF コピー、SSIS、bcp はすべて、この目的を果たすために使用できます。ただし、データ量が増えると、データ移行プロセスを複数のステップに分割することを検討する必要が生じます。これにより、パフォーマンスと復元性の両面で各ステップを最適化し、スムーズなデータ移行を実行できる可能性が高まります。
@@ -194,4 +194,4 @@ PolyBase を使用したデータ ロードの詳細については、「[PolyBa
 [ADO NET 変換先エディター]: https://msdn.microsoft.com/library/bb934041.aspx
 [SSIS のドキュメント]: https://msdn.microsoft.com/library/ms141026.aspx
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

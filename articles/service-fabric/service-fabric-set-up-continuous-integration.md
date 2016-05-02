@@ -196,7 +196,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
 1.	agent.zip をダウンロードします。これを行うには、次の手順を実行します。
 
-    a.* **https://[your-VSTS-account-name].visualstudio.com** などチーム プロジェクトにサインインします。
+    a.****https://[your-VSTS-account-name].visualstudio.com** などチーム プロジェクトにサインインします。
 
     b.画面の右上隅にある歯車アイコンを選択します。
 
@@ -246,11 +246,22 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
 >[AZURE.NOTE] 次の手順で作成するビルド定義は、別々のコンピューター上であっても、複数の同時実行ビルドをサポートしません。これは、各ビルドが同じリソース グループまたはクラスターに対して実行されるためです。複数のビルド エージェントを実行する場合は、次の手順/スクリプトを変更して前述制限を解消する必要があります。
 
-### アプリケーションのソース管理のために、継続的インテグレーション スクリプトを追加する
+### Service Fabric Azure Resource Manager テンプレートをアプリケーションに追加する
 
-1.	[ServiceFabricContinuousIntegrationScripts.zip](https://gallery.technet.microsoft.com/Set-up-continuous-f8b251f6) をコンピューター上の任意のフォルダーに展開します。`Powershell\Automation` の内容をソース管理内の任意のフォルダーにコピーします。
+1. [こちらのサンプル](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)から `azuredeploy.json` と `azuredeploy.parameters.json` をダウンロードします。
 
-2.	抽出されたファイルをチェックインします。
+2. `azuredeploy.parameters.json` を開いて次のパラメーターを編集します。
+
+    |パラメーター|値|
+    |---|---|
+    |clusterLocation|Key Vault の場所と一致する必要があります。例: `westus`|
+    |clusterName|証明書の DNS 名に合わせる必要があります。たとえば証明書の DNS 名が `mycluster.westus.cloudapp.net` である場合、`clusterName` は `mycluster` にする必要があります。|
+    |adminPassword|8 個から 123 個までの文字で、そのうちの少なくとも 3 個が大文字、小文字、数字、特殊文字です。|
+    |certificateThumbprint|`CreateAndUpload-Certificate.ps1` の出力から|
+    |sourceVaultValue|`CreateAndUpload-Certificate.ps1` の出力から|
+    |certificateUrlvalue|`CreateAndUpload-Certificate.ps1` の出力から|
+
+3. ソース管理に新しいファイルを追加し、VSTS にプッシュします。
 
 ### ビルド定義を作成する
 
@@ -273,22 +284,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
     |変数|値|シークレット|キュー時の使用|
     |---|---|---|---|
     |BuildConfiguration|リリース||○|
-    |BuildPlatform|x64|||
-    |ServicePrincipalPassword|サービス プリンシパルを作成したときに使用したパスワードです。|○||
-    |ServicePrincipalId|サービス プリンシパルの作成に使用したスクリプトの出力からの値です。|||
-    |ServicePrincipalTenantId|サービス プリンシパルの作成に使用したスクリプトの出力からの値です。|||
-    |ServicePrincipalSubscriptionId|サービス プリンシパルの作成に使用したスクリプトの出力からの値です。|||
-    |ServiceFabricCertificateThumbprint|CreateAndUpload-Certificate.ps1 の出力から|||
-    |ServiceFabricKeyVaultId|CreateAndUpload-Certificate.ps1 の出力から|||
-    |ServiceFabricCertificateSecretId|CreateAndUpload-Certificate.ps1 の出力から|||
-    |ServiceFabricClusterName|証明書の DNS 名に一致する必要があります。|||
-    |ServiceFabricClusterResourceGroupName|任意の名前。|||
-    |ServiceFabricClusterLocation|Key Vault の場所と一致する必要があります。|||
-    |ServiceFabricClusterAdminPassword|8 個から 123 個までの文字で、そのうちの少なくとも 3 個が大文字、小文字、数字、特殊文字です。|○||
-    |ServiceFabricClusterResourceGroupTemplateFilePath|`<path/to/extracted/automation/scripts/ArmTemplate-Full-3xVM-Secure.json>`|||
-    |ServiceFabricPublishProfilePath|`<path/to/your/publish/profiles/MyPublishProfile.xml>`発行プロファイル内の接続のエンドポイントは無視されます。一時クラスター用の接続エンドポイントが使用されます。|||
-    |ServiceFabricDeploymentScriptPath|`<path/to/Deploy-FabricApplication.ps1>`|||
-    |ServiceFabricApplicationProjectPath|`<path/to/your/fabric/application/project/folder>` これは .sfproj ファイルを含むフォルダーである必要があります。||||
+    |BuildPlatform|x64||||
 
 3.  ビルド定義を保存して、名前を付けます後で必要に応じてこの名前を変更できます。
 
@@ -312,15 +308,15 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
 3.	ビルド ステップの名前のそばにある鉛筆アイコンを選択し、その名前を「**ビルド**」に変更します。
 
-4.	**[ソリューション]** フィールドの横にある **[...]** ボタンを選択し、.sln ファイルを選択します。
+4. これらの値を選択します。
 
-5.	**[プラットフォーム]** に対して「`$(BuildPlatform)`」を入力します。
+    |設定の名前|値|
+    |---|---|
+    |解決策|**[…]** ボタンをクリックし、目的のソリューションの `.sln` ファイルを選択します。|
+    |プラットフォーム|`$(BuildPlatform)`|
+    |構成|`$(BuildConfiguration)`|
 
-6.	「**構成**」に対して、「`$(BuildConfiguration)`」を入力します。
-
-7.	**[NuGet パッケージの復元]** チェック ボックスをオフにします (すでにオンになっていない場合)。
-
-8.	ビルド定義を保存します。
+5.	ビルド定義を保存します。
 
 ### "パッケージ" ステップを追加する
 
@@ -330,17 +326,16 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
 3.	ビルド ステップの名前の横にある鉛筆アイコンを選択し、その名前を「**パッケージ**」に変更します。
 
-4.	**[ソリューション]** フィールドの横にある **[...]** ボタンを選択し、アプリケーション プロジェクトの .sfproj ファイルを選択します。
+4. これらの値を選択します。
 
-5.	**[プラットフォーム]** に対して「`$(BuildPlatform)`」を入力します。
+    |設定の名前|値|
+    |---|---|
+    |解決策|**[…]** ボタンをクリックし、アプリケーション プロジェクトの `.sfproj` ファイルを選択します。|
+    |プラットフォーム|`$(BuildPlatform)`|
+    |構成|`$(BuildConfiguration)`|
+    |MSBuild 引数|`/t:Package`|
 
-6.	「**構成**」に対して、「`$(BuildConfiguration)`」を入力します。
-
-7.	**[MSBuild 引数]** に対して「`/t:Package`」を入力します。
-
-8.	**[NuGet パッケージの復元]** チェック ボックスをオフにします (オフにされていない場合)。
-
-9.	ビルド定義を保存します。
+5.	ビルド定義を保存します。
 
 ### "クラスター リソース グループの削除" ステップを追加する
 
@@ -348,66 +343,74 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
 1.	**[ビルド]** タブで、**[ビルド ステップの追加...]** コマンドを選択します。
 
-2.	**[ユーティリティ]**、**[PowerShell]** の順に選択します。
+2.	**[配置]**、**[Azure リソース グループの配置]** の順に選択します。
 
 3.	ビルド ステップの名前の横にある鉛筆アイコンを選択し、その名前を「**クラスター リソース グループの削除**」に変更します。
 
-4.	**[スクリプト ファイル名]** の横にある **[...]** コマンドを選択します。自動化スクリプトを展開した場所に移動し、**Remove-ClusterResourceGroup.ps1** を選択します。
+4. これらの値を選択します。
 
-5.	**[引数]** に対して、「`-ServicePrincipalPassword "$(ServicePrincipalPassword)"`」を入力します。
+    |設定の名前|値|
+    |---|---|
+    |AzureConnectionType|**Azure リソース マネージャー**|
+    |Azure RM サブスクリプション|「**サービス プリンシパルの作成**」セクションで作成した接続エンドポイントを選択します。|
+    |アクション|**リソース グループの削除**|
+    |リソース グループ|任意の未使用の名前を入力します。次の手順で、同じ名前を使用する必要があります。|
 
-6.	ビルド定義を保存します。
+5.	ビルド定義を保存します。
 
-### "プロビジョニングして、セキュリティで保護されたクラスターにデプロイする" ステップを追加する
+### "セキュリティで保護されたクラスターをプロビジョニングする" ステップの追加
+
+1.	**[ビルド]** タブで、**[ビルド ステップの追加...]** コマンドを選択します。
+
+2.	**[配置]**、**[Azure リソース グループの配置]** の順に選択します。
+
+3.	ビルド ステップの名前の横にある鉛筆アイコンを選択し、その名前を「**セキュリティで保護されたクラスターをプロビジョニングする**」に変更します。
+
+4. これらの値を選択します。
+
+    |設定の名前|値|
+    |---|---|
+    |AzureConnectionType|**Azure リソース マネージャー**|
+    |Azure RM サブスクリプション|「**サービス プリンシパルの作成**」セクションで作成した接続エンドポイントを選択します。|
+    |アクション|**リソース グループの作成または更新**|
+    |リソース グループ|前のステップで使用した名前に合わせてください。|
+    |Location (場所)|Key Vault の場所と一致する必要があります。|
+    |テンプレート|**[…]** ボタンをクリックし、`azuredeploy.json` を選択します。|
+    |テンプレート パラメーター|**[…]** ボタンをクリックし、`azuredeploy.parameters.json` を選択します。|
+
+5.	ビルド定義を保存します。
+
+### "デプロイ" ステップの追加
 
 1.	**[ビルド]** タブで、**[ビルド ステップの追加...]** コマンドを選択します。
 
 2.	**[ユーティリティ]**、**[PowerShell]** の順に選択します。
 
-3.	ビルド ステップの名前の横にある鉛筆アイコンを選択し、その名前を「**プロビジョニングして、セキュリティで保護されたクラスターにデプロイする**」に変更します。
+3.	ビルド ステップの名前の横にある鉛筆アイコンを選択し、その名前を「**デプロイ**」に変更します。
 
-4.	**[スクリプト ファイル名]** の横にある **[...]** ボタンを選択します。自動化スクリプトを展開した場所に移動し、**ProvisionAndDeploy-SecureCluster.ps1** を選択します。
+4. これらの値を選択します。
 
-5.	**[引数]** に対して、「`-ServicePrincipalPassword "$(ServicePrincipalPassword)" -ServiceFabricClusterAdminPassword "$(ServiceFabricClusterAdminPassword)"`」を入力します。
+    |設定の名前|値|
+    |---|---|
+    |型|**ファイル パス**|
+    |スクリプトのファイル名|**[…]** ボタンをクリックし、アプリケーション プロジェクト内の **[スクリプト]** ディレクトリに移動します。`Deploy-FabricApplication.ps1` を選択します。|
+    |引数|`-PublishProfileFile path/to/MySolution/MyApplicationProject/PublishProfiles/MyPublishProfile.xml -ApplicationPackagePath path/to/MySolution/MyApplicationProject/pkg/$(BuildConfiguration)`|
 
-6.	ビルド定義を保存します。
-
-### "クラスター リソース グループの削除" ステップを追加する
-
-これで一時クラスターでの作業が終了したので、それをクリーンアップする必要があります。クリーンアップを行わないと、一時クラスターに対して引き続き料金がかかります。この手順ではリソース グループを削除します。これによって、クラスターと、グループ内の他のすべてのリソースが削除されます。
-
->[AZURE.NOTE] このステップと、前の "クラスター リソース グループの削除" ステップには違いが 1 つあります。このステップでは、**[常に実行する]** チェック ボックスをオンにしておく必要があります。
-
-1.	**[ビルド]** タブで、**[ビルド ステップの追加...]** コマンドを選択します。
-
-2.	**[ユーティリティ]**、**[PowerShell]** の順に選択します。
-
-3.	ビルド ステップの名前の横にある鉛筆アイコンを選択し、その名前を「**クラスター リソース グループの削除**」に変更します。
-
-4.	**[スクリプト ファイル名]** の横にある **[...]** ボタンを選択します。自動化スクリプトを展開した場所に移動し、**RemoveClusterResourceGroup.ps1** を選択します。
-
-5.	**[引数]** に対して、「`-ServicePrincipalPassword "$(ServicePrincipalPassword)`」を入力します。
-
-6.	**[コントロール オプション]** の **[常に実行する]** チェック ボックスをオンにします。
-
-7.	ビルド定義を保存します。
+5.	ビルド定義を保存します。
 
 ### 試してみる
 
 **[キュー ビルド]** を選択してビルドを開始します。ビルドは、プッシュ時またはチェックイン時にもトリガーされます。
 
-
 ## 代替ソリューション
 
 上記手順は、ビルドごとに新しいクラスターを作成し、ビルドの最後にそれを削除するというものです。各ビルドでアプリケーションのアップグレード (既存のクラスターに対して) を行う場合は、次の手順を実行します。
 
-1.	Azure ポータルまたは Azure PowerShell を使用して手動でテスト クラスターを作成します。`ProvisionAndDeploy-SecureCluster.ps1` スクリプトを参照することができます。
+1.	Azure ポータルまたは Azure PowerShell を使用して手動でテスト クラスターを作成します。[こちらの手順](service-fabric-cluster-creation-via-portal.md)に従ってください。
 
 2.	アプリケーションのアップグレードをサポートするように発行プロファイルを構成します。[こちらの手順](service-fabric-visualstudio-configure-upgrade.md)を参照してください。
 
-3.	**プロビジョニングして、セキュリティで保護されたクラスターにデプロイする**ステップを、Deploy-FabricApplication.ps1 を直接呼び出すステップに置換します (そして、それを発行プロファイルに渡します)。
-
-4.	ビルド定義から **クラスター リソース グループの削除** ビルド ステップを両方とも削除します。
+4.	ビルド定義から**クラスター リソース グループの削除** ビルド ステップと**クラスターのプロビジョニング** ビルド ステップを削除します。
 
 ## 次のステップ
 
@@ -417,4 +420,4 @@ Service Fabric アプリケーションの継続的インテグレーション�
  - [ビルド エージェントのデプロイ](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)
  - [ビルド定義の作成と構成](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

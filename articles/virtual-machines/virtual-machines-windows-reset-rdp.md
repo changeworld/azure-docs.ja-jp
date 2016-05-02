@@ -3,7 +3,7 @@
 	description="リソース マネージャーのデプロイ モデルで作成された Windows VM で管理者のパスワードまたはリモート デスクトップ サービスをリセットします。"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="iainfoulds"
 	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/17/2016"
-	ms.author="dkshir"/>
+	ms.date="04/12/2016"
+	ms.author="iainfou"/>
 
 # Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法
 
@@ -27,7 +27,7 @@
 仮想マシンのデプロイ モデルに応じて、Azure ポータルを使用するか、Azure PowerShell で VM Access 拡張機能を使用できます。PowerShell を使用する場合は、最新の PowerShell を作業コンピューターにインストールし、Azure サブスクリプションにサインインするようにします。詳細な手順については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 
-> [AZURE.TIP] インストールされている PowerShell のバージョンを確認するには、`Get-Module azure | format-table version` コマンドを使用します。
+> [AZURE.TIP] インストールされている PowerShell のバージョンを確認するには、`Import-Module Azure; Get-Module Azure | Format-Table Version` を使用します。
 
 
 ## クラシック デプロイ モデルにおける Windows VM
@@ -140,4 +140,4 @@ VM へのリモート アクセスをリセットするには、次のように 
 
 [Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

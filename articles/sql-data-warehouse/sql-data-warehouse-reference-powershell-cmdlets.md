@@ -3,7 +3,7 @@
    description="データベースの一時停止と再開など、Azure SQL Data Warehouse でよく使用される PowerShell コマンドレットを紹介します。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="barbkess"
+   authors="sonyama"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="04/02/2016"
-   ms.author="barbkess;mausher;sonyama"/>
+   ms.author="sonyama;barbkess;mausher"/>
 
 # SQL Data Warehouse の PowerShell コマンドレットと REST API
 
@@ -121,4 +121,4 @@ $resultDatabase = $database | Resume-AzureRmSqlDatabase
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

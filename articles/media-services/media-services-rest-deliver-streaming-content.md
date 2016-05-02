@@ -2,7 +2,7 @@
 	pageTitle="Media Services からストリーミング コンテンツを配信する方法" 
 	description="ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。コードは REST API を使用しています。" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
 	documentationCenter=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016"  
 	ms.author="juliako"/>
 
 
@@ -21,8 +21,8 @@
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-deliver-streaming-content.md)
-- [REST](media-services-rest-deliver-streaming-content.md)
-- [Portal](media-services-manage-content.md#publish)
+- [REST ()](media-services-rest-deliver-streaming-content.md)
+- [ポータル](media-services-manage-content.md#publish)
 
 ##概要
 
@@ -191,4 +191,4 @@ URL: **Path** + アセット ファイル mp4 名
 
 [資産配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

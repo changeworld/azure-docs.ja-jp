@@ -1,6 +1,6 @@
 <properties
- pageTitle="Azure Content Delivery Network (CDN) でクラウド サービスのコンテンツの有効期限を管理する方法"
- description=""
+ pageTitle="Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法 | Microsoft Azure"
+ description="Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法について説明します"
  services="cdn"
  documentationCenter=".NET"
  authors="camsoper"
@@ -12,10 +12,10 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="02/25/2016" 
+ ms.date="02/25/2016"
  ms.author="casoper"/>
 
-#Azure Content Delivery Network (CDN) でクラウド サービスのコンテンツの有効期限を管理する方法
+# Azure Content Delivery Network (CDN) でクラウド サービスのコンテンツの有効期限を管理する方法
 
 有効期限 (TTL) の期間中に頻繁にアクセスされるオブジェクトでは、Azure CDN のキャッシュを最大限に活用できます。オブジェクトは、TTL の期間中キャッシュ内に保持され、その期間が経過した後、クラウド サービスによって更新されます。このプロセスが繰り返されます。
 
@@ -50,4 +50,4 @@
 
 [Azure Content Delivery Network (CDN) で BLOB コンテンツの有効期限を管理する方法](./cdn-manage-expiration-of-blob-content.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

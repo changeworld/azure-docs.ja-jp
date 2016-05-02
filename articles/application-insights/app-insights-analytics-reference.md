@@ -19,9 +19,32 @@
 
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
-*ここではブラウザー検索を使用して、言語要素を見つけます。その場合、クエリ、集計およびスカラーの各ページの内容が結合されます。*
 
 [AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
+
+
+| | | | | 
+|---|---|---|---|---
+|[ago](#ago)|[dayofweek](#dayofweek)|[let 句](#let-clause)|[range](#range)|[summarize 演算子](#summarize-operator)
+|[任意](#any)|[dcount](#dcount)|[limit 演算子](#limit-operator)|[range 演算子](#range-operator)|[take 演算子](#take-operator)
+|[argmax](#argmax)|[let 句の動的オブジェクト](#dynamic-objects-in-let-clauses)|[makelist](#makelist)|[reduce 演算子](#reduce-operator)|[todatetime](#todatetime)
+|[argmin](#argmin)|[extend 演算子](#extend-operator)|[makeset](#makeset)|[render ディレクティブ](#render-directive)|[todouble](#todouble)
+|[算術演算子](#arithmetic-operators)|[extract](#extract)|[max](#max)|[replace](#replace)|[todynamic](#todynamic)
+|[配列とオブジェクトのリテラル](#array-and-object-literals)|[extractjson](#extractjson)|[min](#min)|[スカラーの比較](#scalar-comparisons)|[toint](#toint)
+|[arraylength](#arraylength)|[floor](#floor)|[mvexpand 演算子](#mvexpand-operator)|[sort 演算子](#sort-operator)|[tolong](#tolong)
+|[avg](#avg)|[getmonth](#getmonth)|[notempty](#notempty)|[split](#split)|[tolower](#tolower)
+|[bin](#bin)|[gettype](#gettype)|[notnull](#notnull)|[sqrt](#sqrt)|[top 演算子](#top-operator)
+|[ブール型リテラル](#boolean-literals)|[getyear](#getyear)|[now](#now)|[startofmonth](#startofmonth)|[totimespan](#totimespan)
+|[ブール演算子](#boolean-operators)|[hash](#hash)|[数値リテラル](#numeric-literals)|[startofyear](#startofyear)|[toupper](#toupper)
+|[buildschema](#buildschema)|[iff](#iff)|[難読化された文字列リテラル](#obfuscated-string-literals)|[stdev](#stdev)|[treepath](#treepath)
+|[キャスト](#casts)|[isempty](#isempty)|[parse 演算子](#parse-operator)|[strcat](#strcat)|[union 演算子](#union-operator)
+|[count](#count)|[isnotempty](#isnotempty)|[parsejson](#parsejson)|[文字列の比較](#string-comparisons)|[variance](#variance)
+|[count 演算子](#count-operator)|[isnotnull](#isnotnull)|[percentile](#percentile)|[文字列リテラル](#string-literals)|[where 演算子](#where-operator)
+|[countof](#countof)|[isnull](#isnull)|[percentiles](#percentiles)|[strlen](#strlen)
+|[日付と時刻の式](#date-and-time-expressions)|[join 演算子](#join-operator)|[project 演算子](#project-operator)|[substring](#substring)
+|[日付と時刻のリテラル](#date-and-time-literals)|[JSON パス式](#json-path-expressions)|[rand](#rand)|[sum](#sum)
+
+
 
 
 
@@ -36,7 +59,7 @@ requests
 | count
 ```
     
-パイプ文字 `|` が先頭に配置された各フィルターは、いくつかのパラメーターが設定される*演算子*のインスタンスです。この演算子への入力は、前のパイプラインの結果であるテーブルです。ほとんどの場合、パラメーターは入力の列に対する[スカラー式](##scalars)ですが、まれに、入力列の名前である場合や、2 つ目のテーブルである場合もあります。列と行が 1 つずつしかなくても、クエリの結果は常にテーブルです。
+パイプ文字 `|` が先頭に配置された各フィルターは、いくつかのパラメーターが設定される*演算子*のインスタンスです。この演算子への入力は、前のパイプラインの結果であるテーブルです。ほとんどの場合、パラメーターは入力の列に対する[スカラー式](##scalars)です。まれに、入力列の名前である場合や、2 つ目のテーブルである場合もあります。列と行が 1 つずつしかなくても、クエリの結果は常にテーブルです。
 
 クエリの前には 1 つ以上の [let 句](#let-clause)が配置されることがあります。これは、クエリ内で使用できるスカラー、テーブル、関数を定義するものです。
 
@@ -356,15 +379,15 @@ let 句は、名前を表形式の結果、スカラー値、または関数に�
 
 `parse` 演算子を使えば、同じ `string` 式に対して複数の `extract` アプリケーションを使えるため、テーブルの `extend` を合理的に行えます。これが最も役に立つのは、個別の列 (開発者のトレース ("`printf`"/"`Console.WriteLine`") ステートメントによって生成された列など) に分割したい複数の値が格納された `string` 列がテーブルに存在する場合です。
 
-以下の例では、テーブル `StormEvents` の列 `EventNarrative` に `{0} at {1} crested at {2} feet around {3} on {4} {5}` という形式の文字列が含まれているものとします。以下の操作では、2 つの列 (`SwathSize` と `FellLocation`) でテーブルを拡張します。
+以下の例では、テーブル `StormEvents` の列 `EventNarrative` に `{0} at {1} crested at {2} feet around {3} on {4} {5}` という形式の文字列が含まれているものとします。以下の操作では、2 つの列 (`SwathSize` と `FellLocation`) を持つテーブルを展開します。
 
 
 |EventNarrative|
 |---|
-|The Green River (Brownsville) は December 12 の 0930EST 頃に最高水位 (18.8 フィート) に達しました。(The Green River at Brownsville crested at 18.8 feet around 0930EST on December 12.) Brownsville の洪水位は 18 フィートです。(Flood stage at Brownsville is 18 feet.) 小規模な氾濫がこのレベルで発生します。(Minor flooding occurs at this level.) 閘門壁と一部の堤防下部に加えて、農業用の低地の一部に河川の越流が起こります。(The river overflows lock walls and some of the lower banks, along with some agricultural bottom land.)|
-|The Rolling Fork River (Boston) は December 12 の 1700EST 頃に最高水位 (39.3 フィート) に達しました。(The Rolling Fork River at Boston crested at 39.3 feet around 1700EST on December 12.) Boston の洪水位は 35 フィートです。(Flood stage at Boston is 35 feet.) 小規模な氾濫がこのレベルで発生し、農業用の低地の一部が冠水します。(Minor flooding occurs at this level, with some agricultural bottom land covered.)|
-|The Green River (Woodbury) は December 16 の 0600EST 頃に最高水位 (36.7 フィート) に達しました。(The Green River at Woodbury crested at 36.7 feet around 0600EST on December 16.) Woodbury の洪水位は 33 フィートです。(Flood stage at Woodbury is 33 feet.) 小規模な氾濫がこのレベルで発生し、Woodbury の町周辺の低地が冠水します。(Minor flooding occurs at this level, with some lowlands around the town of Woodbury covered with water.)|
-|The Ohio River (Tell City) は December 18 の 7 AM EST 頃に最高水位 (39.0 フィート) に達しました。(The Ohio River at Tell City crested at 39.0 feet around 7 AM EST on December 18.) Tell City の洪水位は 38 フィートです。(Flood stage at Tell City is 38 feet.) このレベルに達すると、量水標を超えて土手に河川の越流が起こります。(At this level, the river begins to overflow its banks above the gage.) インディアナ州道 66 号線はロームとダービー間で氾濫が発生します。(Indiana Highway 66 floods between Rome and Derby.)|
+|The Green River (Brownsville) は December 12 の 0930EST 頃に最高水位 (18.8 フィート) に達しました。(The Green River at Brownsville crested at 18.8 feet around 0930EST on December 12.)Brownsville の洪水位は 18 フィートです。(Flood stage at Brownsville is 18 feet.)小規模な氾濫がこのレベルで発生します。(Minor flooding occurs at this level.)閘門壁と一部の堤防下部に加えて、農業用の低地の一部に河川の越流が起こります。(The river overflows lock walls and some of the lower banks, along with some agricultural bottom land.)|
+|The Rolling Fork River (Boston) は December 12 の 1700EST 頃に最高水位 (39.3 フィート) に達しました。(The Rolling Fork River at Boston crested at 39.3 feet around 1700EST on December 12.)Boston の洪水位は 35 フィートです。(Flood stage at Boston is 35 feet.)小規模な氾濫がこのレベルで発生し、農業用の低地の一部が冠水します。(Minor flooding occurs at this level, with some agricultural bottom land covered.)|
+|The Green River (Woodbury) は December 16 の 0600EST 頃に最高水位 (36.7 フィート) に達しました。(The Green River at Woodbury crested at 36.7 feet around 0600EST on December 16.)Woodbury の洪水位は 33 フィートです。(Flood stage at Woodbury is 33 feet.)小規模な氾濫がこのレベルで発生し、Woodbury の町周辺の低地が冠水します。(Minor flooding occurs at this level, with some lowlands around the town of Woodbury covered with water.)|
+|The Ohio River (Tell City) は December 18 の 7 AM EST 頃に最高水位 (39.0 フィート) に達しました。(The Ohio River at Tell City crested at 39.0 feet around 7 AM EST on December 18.)Tell City の洪水位は 38 フィートです。(Flood stage at Tell City is 38 feet.)このレベルに達すると、量水標を超えて土手に河川の越流が起こります。(At this level, the river begins to overflow its banks above the gage.)インディアナ州道 66 号線はロームとダービー間で氾濫が発生します。(Indiana Highway 66 floods between Rome and Derby.)|
 
 ```AIQL
 
@@ -436,7 +459,7 @@ StormEvents
 
 **例**
 
-次の例は、`project` 演算子を使って実行できる何種類かの操作を示しています。入力テーブル `T` には、`int` 型の列が 3 つ (`A`、`B`、`C`) あります。
+次の例は、`project` 演算子を使って実行できる何種類かの操作を示しています。入力テーブル `T` には、`int` 型の列が 3 つあります (`A`、`B`、`C`)。
 
 ```AIQL
 T
@@ -472,14 +495,14 @@ T
 
 * *ColumnName:* 出力テーブル内の 1 つの列の名前。
 * *Start:* 出力の最小値。
-* *Stop:* 出力で生成される最高値 (*step* でこの値をステップ オーバーする場合は、最高値へのバインド)。
+* *Stop:* 出力で生成される最高値 (*step* でこの値をステップオーバーする場合は、最高値へのバインド)。
 * *Step:* 2 つの連続する値の差異。 
 
 この引数は、数値、日付、または期間の値である必要があります。テーブルの列を参照することはできません(入力テーブルに基づいて範囲を計算する場合は、[range *関数*](#range)を使います。その際は、[mvexpand 演算子](#mvexpand-operator)も組み合わせて使うことになると思われます)。
 
 **戻り値**
 
-*ColumnName* という 1 つの列を持つテーブルです。その列の値は、*Start*、*Start* + *Step* のように続き、*Stop* までとなります。
+*ColumnName* という 1 つの列を持つテーブルです。その列の値は、*Start*、*Start* + *Step* というぐあいに続き、*Stop* までとなります。
 
 **例**
 
@@ -644,7 +667,7 @@ Traces
 
 * *NumberOfRows:* 返す *T* の行の数。
 * *Sort\_expression:* 行の並べ替えに使用する式。通常は単なる列名です。複数の sort\_expression を指定できます。
-* 選択が実際には範囲の "下限" からのものか "上限" からのものかを制御するため、`asc` または `desc` (既定値) が表示される場合があります。
+* 選択が実際に範囲の "下限" からのものか "上限" からのものかを制御するために、`asc` または `desc` (既定値) が表示される場合があります。
 
 
 **ヒント**
@@ -735,7 +758,7 @@ exceptions
 
 パフォーマンスを最大限高めるためのヒントを示します。
 
-* 列名と定数の**シンプルな比較を使う** ("定数" とは、テーブルに対する定数です。`now()` と `ago()` は適切で、[`let` 句](#let-clause)を使って割り当てられるスカラー値です)。
+* 列名と定数の**シンプルな比較を使う** ("定数" とは、テーブルに対する定数です。`now()` と `ago()` は適切で、[`let` 句](#let-clause)を使って割り当てられるスカラー値も同様です)。
 
     たとえば、`where floor(Timestamp, 1d) == ago(1d)` よりも `where Timestamp >= ago(1d)` の方が適切です。
 
@@ -918,12 +941,12 @@ traces
 
     dcount( Expression [ ,  Accuracy ])
 
-グループ内にある*式*の個別の値の概数を返します (個別の値のリストを表示するには、[`makeset`](#makeset) を使用します)。
+グループ内にある*式*の個別の値の概数を返します(個別の値のリストを表示するには、[`makeset`](#makeset) を使用します)。
 
-*精度*を指定した場合は、速度と精度のバランスが制御されます。
+*Accuracy* を指定した場合は、速度と精度のバランスが制御されます。
 
  * `0` = 精度は最も低くなりますが、計算速度は最高になります。
- * `1` = 既定値です。精度と計算時間のバランスを取ります。エラー率は約 0.8% です。
+ * `1` = 既定値です。精度と計算時間のバランスをとります。エラー率は約 0.8% です。
  * `2` = 精度は最も高くなりますが、計算速度は最低になります。エラー率は約 0.4% です。
 
 **例**
@@ -958,7 +981,7 @@ traces
 
 ![](./media/app-insights-analytics-aggregations/makeset.png)
 
-逆関数に関する「[`mvexpand` 演算子](#mvexpand-operator)」も参照してください。
+逆の処理について [`mvexpand` 演算子](#mvexpand-operator)も参照してください。
 
 
 ### max、min
@@ -1031,19 +1054,19 @@ traces
 
      stdev(Expr)
 
-グループ全体の*式*の標準偏差を返します。
+グループに対する*式*の標準偏差を返します。
 
 ### variance
 
     variance(Expr)
 
-グループ全体の*式*の分散を返します。
+グループに対する*式*の分散を返します。
 
 ### sum
 
     sum(Expr)
 
-グループ全体の*式*の合計を返します。
+グループに対する*式*の合計を返します。
 
 
 ## スカラー
@@ -1057,7 +1080,7 @@ traces
 | `bool` | `boolean` | `System.Boolean` |
 | `datetime`| `date` | `System.DateTime` |
 | `dynamic` | | `System.Object` |
-| `guid` | `uuid`、`uniqueid` | `System.Guid` |
+| `guid` | `uuid`, `uniqueid` | `System.Guid` |
 | `int` | | `System.Int32` |
 | `long` | | `System.Int64` |
 | `double` | `real` | `System.Double` |
@@ -1098,7 +1121,7 @@ traces
 
 **戻り値**
 
-単一の引数の基になるストレージ型を表す文字列。これは、`dynamic` のような値がある場合に特に便利です。この場合、`gettype()` は値がどのようにエンコードされているかを示します。
+単一の引数の基になるストレージ型を表す文字列。これは、`dynamic` のような値がある場合に、特に便利です。この場合、`gettype()` は値がどのようにエンコードされているかを示します。
 
 **例**
 
@@ -1240,17 +1263,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 || |
 |---|-------------|
 | + | [追加] のいずれかを |
-| - | 減算 |
-| * | 乗算 |
-| / | 除算 |
-| % | 剰余 |
-||
-|`<` |小さい
-|`<=`|小さいか等しい
-|`>` |大きい
-|`>=`|大きいか等しい
-|`<>`|等しくない
-|`!=`|等しくない
+| - | 減算 | | * | 乗算 | | / | 除算 | | % | 剰余 | || |`<` |小さい |`<=`|小さいか等しい |`>` |大きい |`>=`|大きいか等しい |`<>`|等しくない |`!=`|等しくない
 
 
 
@@ -1272,7 +1285,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 **戻り値**
 
-*value* 未満で、*roundTo* の最も近い倍数。
+*value* 以下で、*roundTo* の最も近い倍数。
  
     (toint((value/roundTo)-0.5)) * roundTo
 
@@ -1924,14 +1937,14 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 
 ### 配列とオブジェクトのリテラル
 
-動的リテラルを作成するには、次のように、JSON 文字列引数を指定した `parsejson` (エイリアス `todynamic`) を使用します。
+動的リテラルを作成するには、次のように、JSON 文字列引数を指定した `parsejson` (エイリアスは `todynamic`) を使用します。
 
 * `parsejson('[43, 21, 65]')` - 数値の配列
 * `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')` 
 * `parsejson('21')` - 数値を含む、動的な型の単一の値
 * `parsejson('"21"')` - 文字列を含む、動的な型の単一の値
 
-JavaScript とは異なり、JSON では文字列の前後で二重引用符 (`"`) の使用が必須であることに注意してください。そのため、一般的に、JSON 形式でエンコードされた文字列リテラルを単一引用符 (`'`) で囲むことは簡単です。
+JavaScript とは異なり、JSON では文字列の前後で二重引用符 (`"`) の使用が必須であることに注意してください。そのため、一般的に、JSON 形式でエンコードされた文字列リテラルを単一引用符 (`'`) で囲む方がより簡単です。
 
 この例では、動的な値を作成した後、そのフィールドを使用します。
 
@@ -1943,7 +1956,7 @@ T
 ```
 
 
-### 動的な型に対する演算子と関数
+## 動的オブジェクトの関数
 
 |||
 |---|---|
@@ -1955,7 +1968,7 @@ T
 |[`range(`from,to,step`)`](#range)| 値の配列。
 |[`mvexpand` listColumn](app-analytics-queries.md#mvexpand-operator) | リスト内の指定されたセルの各値に対して、行を複製します。
 |[`summarize buildschema(`column`)`](app-analytics-queries.md#summarize-operator) |列の内容から型スキーマを推測します。
-|[`summarize makelist(`column`)` ](app-analytics-queries.md#summarize-operator)| 行のグループをフラット化し、列の値を配列に格納します。
+|[`summarize makelist(`column`)`](app-analytics-queries.md#summarize-operator)| 行のグループをフラット化し、列の値を配列に格納します。
 |[`summarize makeset(`column`)`](app-analytics-queries.md#summarize-operator) | 行のグループをフラット化し、列の値を重複しないように配列に格納します。
 
 ### let 句の動的オブジェクト
@@ -2088,7 +2101,7 @@ T
 
 
 
-#### range
+### range
 
 `range()` 関数 (`range` 演算子と混同しないようにしてください) は、一連の等間隔の値を保持する動的配列を生成します。
 
@@ -2148,6 +2161,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0330_2016------>
-
-
+<!---HONumber=AcomDC_0420_2016-->

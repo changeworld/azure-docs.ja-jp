@@ -36,7 +36,9 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- __Azure CLI__。CLI のインストール方法については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
+- __Azure CLI__。
+
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 ##Azure サブスクリプションへのログイン
 
@@ -122,4 +124,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

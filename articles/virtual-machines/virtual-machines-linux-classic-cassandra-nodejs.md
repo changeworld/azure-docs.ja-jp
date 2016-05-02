@@ -1,4 +1,12 @@
-<properties pageTitle="Azure 上の Linux での Cassandra の実行 | Microsoft Azure" description="Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法" services="virtual-machines-linux" documentationCenter="nodejs" authors="hanuk" manager="wpickett" editor="" azure-service-management"/>
+<properties 
+	pageTitle="Azure 上の Linux での Cassandra の実行 | Microsoft Azure" 
+	description="Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法" 
+	services="virtual-machines-linux" 
+	documentationCenter="nodejs" 
+	authors="hanuk" 
+	manager="wpickett" 
+	editor=""
+	tags="azure-service-management"/>
 
 <tags 
 	ms.service="virtual-machines-linux" 
@@ -37,7 +45,7 @@ Cassandra は、単一の Azure リージョンにデプロイすることも、
 
 **高可用性:** 図 1 の Cassandra ノードは 2 つの可用性セットにデプロイされており、ノードが複数の障害ドメインに分散されて高可用性が確保されるようになっています。各可用性セットが注釈として付与された VM は、2 つの障害ドメインにマップされています。Microsoft Azure では、予期しないダウンタイム (ハードウェアやソフトウェアの障害など) の管理には障害ドメインの概念を使用し、スケジュール設定されたダウンタイム (ホスト OS またはゲスト OS への修正プログラムの適用またはアップグレード、アプリケーションのアップグレードなど) の管理にはアップグレード ドメインの概念を使用しています。高可用性を実現する上での障害ドメインおよびアップグレード ドメインの役割については、「[Azure アプリケーションの障害復旧と高可用性](http://msdn.microsoft.com/library/dn251004.aspx)」を参照してください。
 
-![単一リージョン デプロイ](./media/virtual-machines-linux-classic-cassandra-nodejs/cassandra-linux1.png)
+![単一リージョン デプロイメント](./media/virtual-machines-linux-classic-cassandra-nodejs/cassandra-linux1.png)
 
 図 1: 単一リージョン デプロイ
 
@@ -59,13 +67,13 @@ Cassandra では、"一貫性" と "結果的な一貫性" の 2 種類のデー
 | ----------------- | ----- | ------- |
 | ノード の数 (N) | 8 | クラスター内のノードの合計数 |
 | レプリケーション係数 (RF) | 3 |	行のレプリカの数 |
-| 一貫性レベル (書き込み) | QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 |
-| 一貫性レベル (読み取り) | QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。 |
+| 一貫性レベル (書き込み) | QUORUM [(RF/2) +1= 2] (数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 |
+| 一貫性レベル (読み取り) | QUORUM [(RF/2) +1= 2] (数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。 |
 | レプリケーションの方法 | NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「[Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)」を参照してください) | デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
 | スニッチ | GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「[Snitches (スニッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html)」を参照してください) | NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。この場合、クラスターはゴシップを使用して情報を伝達します。このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
 
 
-**Cassandra クラスターに関する Azure での考慮事項:** Microsoft Azure Virtual Machines では、ディスクの永続性を実現するために Azure Blob Storage を使用してします。Azure Storage は、高い耐久性を確保するために、各ディスクのレプリカを 3 つ保存します。つまり、Cassandra のテーブルに挿入されたデータの各行は、3 つのレプリカに格納されており、そのためレプリケーション係数 (RF) が 1 の場合でも、データの一貫性を確保するための処理が行われていることになります。レプリケーション係数が 1 の場合の主な問題は、1 つの Cassandra ノードのみで障害が発生した場合でも、アプリケーションにダウンタイムが発生することです。ただし、Azure ファブリック コントローラーによって認識される問題 (ハードウェア、システム ソフトウェアの障害など) によってノードがダウンした場合は、同じストレージ ドライブを使用して、代わりの新しいノードが準備されます。古いノードを置き換えるための新しいノードのプロビジョニングには、数分間かかる場合があります。同様に、ゲスト OS の変更、Cassandra のアップグレード、アプリケーションの変更といった計画済みのメンテナンス アクティビティの場合も、Azure ファブリック コントローラーは、クラスター内のノードのローリング アップグレードを実行します。ローリング アップグレードの実行時にも、一度にいくつかのノードがダウンする場合があり、そのため、クラスターで、いくつかのパーティションのダウンタイムが短時間発生する可能性があります。ただし、Azure Storage に冗長性が組み込まれているため、データが失われることはありません。
+**Cassandra クラスターに関する Azure での考慮事項:** Microsoft Azure Virtual Machines では、ディスクの永続性を実現するために Azure Blob ストレージを使用してします。Azure Storage は、高い耐久性を確保するために、各ディスクのレプリカを 3 つ保存します。つまり、Cassandra のテーブルに挿入されたデータの各行は、3 つのレプリカに格納されており、そのためレプリケーション係数 (RF) が 1 の場合でも、データの一貫性を確保するための処理が行われていることになります。レプリケーション係数が 1 の場合の主な問題は、1 つの Cassandra ノードのみで障害が発生した場合でも、アプリケーションにダウンタイムが発生することです。ただし、Azure ファブリック コントローラーによって認識される問題 (ハードウェア、システム ソフトウェアの障害など) によってノードがダウンした場合は、同じストレージ ドライブを使用して、代わりの新しいノードが準備されます。古いノードを置き換えるための新しいノードのプロビジョニングには、数分間かかる場合があります。同様に、ゲスト OS の変更、Cassandra のアップグレード、アプリケーションの変更といった計画済みのメンテナンス アクティビティの場合も、Azure ファブリック コントローラーは、クラスター内のノードのローリング アップグレードを実行します。ローリング アップグレードの実行時にも、一度にいくつかのノードがダウンする場合があり、そのため、クラスターで、いくつかのパーティションのダウンタイムが短時間発生する可能性があります。ただし、Azure Storage に冗長性が組み込まれているため、データが失われることはありません。
 
 Azure にデプロイされたシステムのうち高い可用性(例: 99.9 は、およそ 8.76 時間/年に相当します。詳細については、[高可用性](http://en.wikipedia.org/wiki/High_availability)に関する Wikipedia のページを参照してください) を必要としないものに関しては、RF = 1、一貫性レベル = ONE で実行できます。高い可用性を必要とするアプリケーションでは、RF = 3 および一貫性レベル = QUORUM を指定すると、レプリカのうちの 1 つにあるノードのうちの 1 つのダウンタイムを許容します。従来型のデプロイ (例: オンプレミス) では、ディスク障害などでデータ損失が生じる可能性があるため、RF = 1 は使用できません。
 
@@ -697,4 +705,4 @@ Microsoft Azure は、この演習でもわかるように、オープン ソー
 - [http://www.datastax.com](http://www.datastax.com) 
 - [http://www.nodejs.org](http://www.nodejs.org) 
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/03/2016" 
+	ms.date="04/19/2016" 
 	ms.author="larryfr"/>
 
 #HDInsight での Hive を使用したフライト遅延データの分析
@@ -34,6 +34,8 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
 - __Azure SQL Database__。保存先データ ストアとして Azure SQL Database を使用します。SQL Database がない場合は、[SQL Database チュートリアル: サンプル データと Azure ポータルを使用して分単位で SQL Database を作成する](../sql-database/sql-database-get-started.md)」を参照してください。
 
 - __Azure CLI__。Azure CLI をインストールしていない場合、詳しい手順については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
+
+	[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 
 ##フライト データのダウンロード
@@ -304,4 +306,4 @@ Azure SQL Database を作成するには、次の手順に従います。これ�
 
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

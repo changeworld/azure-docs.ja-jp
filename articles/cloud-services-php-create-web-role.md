@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="01/08/2016"
+	ms.date="04/08/2016"
 	ms.author="robmcm"/>
 
 #PHP Web ロールと worker ロールを作成する方法
@@ -26,7 +26,7 @@
 
 Azure にはアプリケーションを実行するためのコンピューティング モデルとして、Azure App Service、Azure Virtual Machines、および Azure Cloud Services の 3 種類があります。これら 3 つのモデルはすべて、PHP をサポートしています。Web ロールと worker ロールを含む Cloud Services は、*サービスとしてのプラットフォーム (PaaS)* を提供します。クラウド サービス内で、Web ロールはフロントエンド Web アプリケーションをホストする専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。worker ロールは、ユーザーの操作や入力とは関係なく、非同期タスク、長時間かかるタスク、または常駐タスクを実行できます。
 
-これらのオプションの詳細については、「[Azure が提供する Compute ホスティング オプション](./cloud-services/fundamentals-application-models.md)」を参照してください。
+これらのオプションの詳細については、「[Azure が提供する Compute ホスティング オプション](./cloud-services/cloud-services-choose-me.md)」を参照してください。
 
 ## Azure SDK for PHP をダウンロードする
 
@@ -211,4 +211,4 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64 インストーラー]: http://go.microsoft.com/fwlink/?LinkID=239648
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

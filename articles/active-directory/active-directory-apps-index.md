@@ -197,7 +197,7 @@ Azure AD アクセス パネルでは、エンド ユーザーがアプリを起
 
 | 記事の紹介 | |
 | :---: | --- |
-| シングル サインオン アプリをユーザーにデプロイするために使用できるさまざまなオプションの比較 | [Azure AD 統合アプリケーションをユーザーにデプロイする](active-directory-appssoaccess-whatis/#deploying-azure-ad-integrated-applications-to-users) |
+| シングル サインオン アプリをユーザーにデプロイするために使用できるさまざまなオプションの比較 | [Azure AD 統合アプリケーションをユーザーにデプロイする](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) |
 | アクセス パネルとそのモバイル版である MyApps の概要 | [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)<br />- [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />- [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Office 365 Web サイトから Azure AD アプリにアクセスする方法 | [Office 365 アプリ起動ツールの概要](https://support.office.com/ja-JP/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
 | Intune Managed Browser モバイル アプリから Azure AD アプリにアクセスする方法 | [Microsoft Intune と Managed Browser のポリシーを使用したインターネット アクセスの管理](https://technet.microsoft.com/ja-JP/library/dn878029.aspx)<br />- [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />- [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
@@ -228,4 +228,4 @@ Azure Active Directory の各エディションに付属のレポートを確認
 
 [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

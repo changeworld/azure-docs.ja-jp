@@ -1,6 +1,6 @@
 <properties
-	pageTitle="R Server がインストールされた HDInsight クラスターに RStudio をインストールする | Microsoft Azure"
-	description="HDInsight クラスターの R Server に RStudio をインストールする方法。"
+	pageTitle="HDInsight の R Server (プレビュー) に RStudio をインストールする | Microsoft Azure"
+	description="HDInsight の R Server (プレビュー) に RStudio をインストールする方法。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -17,16 +17,18 @@
    ms.author="jeffstok"/>
 
 
-# R Server を使用して RStudio を HDInsight クラスターにインストールする
+# HDInsight の R Server (プレビュー) に RStudio をインストールする
 
 現在、R に使用できる統合開発環境 (IDE) は複数あります。たとえば、Microsoft から最近発表された [R Tools for Visual Studio](https://www.visualstudio.com/ja-JP/features/rtvs-vs.aspx) (RTVS) は、[RStudio](https://www.rstudio.com/products/rstudio-server/) のデスクトップおよびサーバー ツールのファミリです。また、Walware の Eclipse ベースの [StatET](http://www.walware.de/goto/statet) などがあります。Linux で最もよく使用されているのは、[RStudio Server](https://www.rstudio.com/products/rstudio-server/) です。RStudio Server には、リモート クライアントに使用するブラウザーベースの IDE があります。HDInsight Premium クラスターのエッジ ノードに RStudio Server をインストールすると、クラスターの R Server を使用した R スクリプトの開発と実行に IDE の機能をフルに活用できるようになり、既定の R コンソールを使用した場合よりも生産性が大幅に向上します。
 
 この記事では、カスタム スクリプトを使用して、クラスターのエッジ ノードにコミュニティ (無料) バージョンの RStudio Server をインストールする方法について説明します。商用ライセンスが提供される Pro バージョンの RStudio Server の方がよい場合は、[RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) のインストール手順に従って操作してください。
 
+> [AZURE.NOTE] このドキュメントの手順には、HDInsight の R Server クラスターが必要です。[R インストール スクリプト アクション](hdinsight-hadoop-r-scripts-linux.md)を使用して R をインストールした HDInsight クラスターを使用している場合は、この手順は正しく機能しません。
+
 ## 前提条件
 
-* R Server がインストールされた Azure HDInsight クラスター。手順については、[HDInsight クラスター上の R Server の概要](hdinsight-hadoop-r-server-get-started.mdulet)のページを参照してください。
-* SSH クライアント。Linux および UNIX のディストリビューション、または Macintosh OS X の場合、オペレーティング システムに `ssh`コマンドが用意されています。Windows の場合は [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をお勧めします。 
+* R Server がインストールされた Azure HDInsight クラスター。手順については、[HDInsight の R Server クラスターの概要](hdinsight-hadoop-r-server-get-started.mdulet)に関するページを参照してください。
+* SSH クライアント。Linux および UNIX のディストリビューション、または Macintosh OS X の場合、オペレーティング システムに `ssh`コマンドが用意されています。Windows の場合は、[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をお勧めします。 
 
 
 ## カスタム スクリプトを使用してクラスターに RStudio をインストールする
@@ -39,7 +41,7 @@
 3. 上記の命名パターンを使用して、クラスターのエッジ ノードに SSH でログインします。
  
 	* Linux クライアントから接続する場合は、「[Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)」を参照してください。
-	* Windows クライアントから接続する場合は、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)」を参照してください。
+	* Windows クライアントから接続する場合は、[PuTTY を使用した Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)に関する記事を参照してください。
 
 2. 接続したら、クラスターのルート ユーザーになります。SSH セッションでは、次のコマンドを使用します。
 
@@ -80,15 +82,15 @@
 	* Windows クライアントで、SSH トンネル用の PuTTY を作成します。
 
 		1.  PuTTY を開き、接続情報を入力します。HDInsight で PuTTY を使用する方法については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」を参照してください。
-		2.  ダイアログの左にある **[Category]** セクションで、**[Connection]**、**[SSH]** の順に展開し、**[Tunnels]** を選択します。
-		3.  **[Options controlling SSH port forwarding]** フォームに次の情報を入力します。
+		2.  ダイアログの左にある **[カテゴリ]** セクションで、**[接続]**、**[SSH]** の順に展開し、**[トンネル]** を選択します。
+		3.  **[SSH ポートの転送を管理するオプション]** フォームに次の情報を入力します。
 
-			* **[Source port]** - 転送するクライアント上のポート。たとえば、「**8787**」と入力します。
-			* **[Destination]** - ローカル クライアント コンピューターにマッピングする宛先。たとえば、「**localhost:8787**」と入力します。
+			* **[ソース ポート]** - 転送するクライアント上のポートたとえば、「**8787**」と入力します。
+			* **[Destination]** (宛先) - ローカル クライアント コンピューターにマッピングする宛先。たとえば、「**localhost:8787**」と入力します。
 
 			![SSH トンネルを作成する](./media/hdinsight-hadoop-r-server-install-r-studio/createsshtunnel.png "SSH トンネルを作成する")
 
-		4. **[Add]** をクリックして設定を追加し、**[Open]** をクリックして SSH 接続を開きます。
+		4. **[追加]** をクリックして設定を追加し、**[開く]** をクリックして SSH 接続を開きます。
 		5. プロンプトが表示されたら、サーバーにログインします。これにより、SSH セッションが確立され、トンネルが有効になります。
 
 7. Web ブラウザーを開き、トンネルに入力したポートに基づいて次の URL を入力します。
@@ -109,7 +111,7 @@
 
 			wget http://mrsactionscripts.blob.core.windows.net/rstudio-server-community-v01/testhdi_spark.r
 
-10. RStudio に、ダウンロードしたテスト スクリプトが表示されます。ファイルをダブルクリックして開き、ファイルの内容を選択して **[Run]** をクリックします。**[Console]** ウィンドウに出力が表示されます。
+10. RStudio に、ダウンロードしたテスト スクリプトが表示されます。ファイルをダブルクリックして開き、ファイルの内容を選択して **[Run]** (実行) をクリックします。**[Console]** (コンソール) ウィンドウに出力が表示されます。
  
 	![インストールをテストする](./media/hdinsight-hadoop-r-server-install-r-studio/test-r-script.png "インストールをテストする")
 
@@ -122,4 +124,4 @@
 
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

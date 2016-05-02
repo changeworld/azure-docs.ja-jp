@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="04/14/2016" 
 	ms.author="nitinme"/>
 
 
-# Machine learning: HDInsight の Spark (Linux) を持つ MLlib を使用した食品検査データの予測分析
+# Machine Learning: HDInsight Linux での Spark と MLlib を使用した食品検査データの予測分析 (プレビュー)
 
 > [AZURE.TIP] このチュートリアルは、HDInsight で作成する Spark (Linux) クラスター上の Jupyter Notebook としても利用できます。Notebook エクスペリエンスにより、Notebook 自体から Python のスニペットを実行することができます。Notebook からチュートリアルを実行するには、Spark クラスターを作成し、Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`) を起動し、Notebook の **Python** フォルダーにある**Spark Machine Learning - Predictive analysis on food inspection data using MLLib.ipynb (Machine learning: MLLib.ipynb を使用した食品検査データの予測分析)** を実行します。
 
@@ -402,7 +402,7 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -412,4 +412,4 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

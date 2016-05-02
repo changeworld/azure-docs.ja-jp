@@ -13,7 +13,7 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="support-article"
 	ms.date="04/06/2016"
 	ms.author="iainfou"/>
 
@@ -195,4 +195,4 @@ Azure VM のリモート デスクトップのエンドポイントでも、内�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

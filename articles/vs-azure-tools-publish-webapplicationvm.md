@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="01/05/2016"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Publish-WebApplicationVM (Windows PowerShell スクリプト)
@@ -189,4 +189,4 @@ JSON 構成ファイルではデプロイ対象の詳細が指定されます。
 
 プロビジョニング対象が変更されるように JSON 構成ファイルを編集できます。仮想マシンとクラウド サービスは必須ですが、データベースのセクションは省略可能です。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0420_2016-->

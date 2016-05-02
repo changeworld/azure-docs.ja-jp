@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/08/2016"
+	ms.date="04/18/2016"
 	ms.author="jeedes"/>
 
 
@@ -84,7 +84,7 @@ Azure AD への Keylight の統合を構成するには、ギャラリーから�
 
 7. 結果ウィンドウで **[Keylight]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_02.png)
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Keylight で Azure AD のシングル サインオンを構成し、テストします。
@@ -93,7 +93,7 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Keylight のテスト ユーザーの作成](#creating-a-Keylight-test-user)** - Keylight で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Keylight のテスト ユーザーの作成](#creating-a-keylight-test-user)** - Keylight で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -118,7 +118,7 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
 	![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_04.png)
 
 
-    a.[サインオン URL] ボックスに、ユーザーが Keylight アプリケーションへのサインオンに使用する URL を **"https://<企業名>.keylightgrc.com/Login.aspx?saml=1”** の形式で入力します。
+    a.[サインオン URL] ボックスに、ユーザーが Keylight アプリケーションへのサインオンに使用する URL を **"https://<企業名>.keylightgrc.com/Login.aspx?saml=1"** の形式で入力します。
 
 
 4. **[Keylight でのシングル サインオンの構成]** ページで、次の手順に従います。
@@ -173,11 +173,11 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
    
     j.**[セキュリティ構成の自動プロビジョニング]** として**[標準ユーザー構成]** を選択します。
    
-    k.[電子メール属性] テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
+    k.[電子メール属性] テキストボックスに、「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
 
-    l.**[名属性]** テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
+    l.**[名属性]** テキストボックスに、「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
 
-    m.**[姓属性]** テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
+    m.**[姓属性]** テキストボックスに、「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
 
     n.**[保存]** をクリックします。
    
@@ -264,7 +264,7 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
 
 このセクションでは、Keylight で Britta Simon というユーザーを作成します。Keylight では、Just-In-Time プロビジョニングがサポートされています。この設定は既定で有効になっています。
 
-このセクションでは、ユーザー側で必要な操作はありません。ユーザーがまだ存在しない場合は、Keylight へのアクセス時に新しいユーザーが作成されます。[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)
+このセクションでは、ユーザー側で必要な操作はありません。ユーザーがまだ存在しない場合は、Keylight へのアクセス時に新しいユーザーが作成されます。
 
 > [AZURE.NOTE] ユーザーを手動で作成する必要がある場合は、Keylight のサポート チームにお問い合わせください。
 
@@ -329,4 +329,4 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
 [204]: ./media/active-directory-saas-keylight-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-keylight-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

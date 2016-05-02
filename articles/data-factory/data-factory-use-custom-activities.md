@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="04/18/2016"
 	ms.author="spelluru"/>
 
 # Azure Data Factory パイプラインでカスタム アクティビティを使用する
@@ -563,7 +563,7 @@ mycontainer\\output フォルダーには、1 行または複数行 (入力フ�
 
 ### カスタム アクティビティを使用するパイプラインの作成と実行
 
-1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] \(省略記号)** をクリックすると表示されます。
+1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] (省略記号)** をクリックすると表示されます。
 2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。 
 
 		{
@@ -823,6 +823,15 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 	  }
 	}
 
+## 例
+
+| サンプル | カスタム アクティビティの動作| 
+| ------ | ----------- | 
+| [HTTP データ ダウンローダー](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample)。 | Data Factory のカスタム C# アクティビティを使用して、HTTP エンドポイントから Azure Blob Storage にデータをダウンロードします。 |
+| [Twitter センチメント分析のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) | Azure ML モデルを呼び出し、センチメント分析、スコア付け、予測などを行います。 |
+| [R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)。 | 既に R がインストールされている HDInsight クラスターで RScript.exe を実行し、R スクリプトを呼び出します。 | 
+| [クロス AppDomain .NET アクティビティ](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) | Data Factory 起動ツールによって使用されているアセンブリ バージョンとは別のバージョンを使用します (たとえば、WindowsAzure.Storage v4.3.0、Newtonsoft.Json v6.0.x など)。
+ 
 
 ## 関連項目
 
@@ -863,4 +872,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

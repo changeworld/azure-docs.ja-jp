@@ -1,4 +1,10 @@
-<properties pageTitle="Analytics for windows store C++ apps" description="Analyze usage and performance of your C++ Windows Store app." services="application-insights" documentationCenter="cpp" authors="alancameronwills" manager="douge""/>
+<properties 
+    pageTitle="Windows ストア C++ アプリの分析" 
+    description="C++ Windows ストア アプリの使用状況とパフォーマンスを分析します。" 
+    services="application-insights" 
+    documentationCenter="cpp"
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
     ms.service="application-insights" 
@@ -30,4 +36,4 @@
 
 [この変更の詳細については、こちらをご覧ください](https://azure.microsoft.com/blog/transitioning-mobile-apps-from-application-insights-to-hockeyapp/)。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

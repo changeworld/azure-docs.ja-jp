@@ -1,5 +1,13 @@
-<properties pageTitle="PowerShell を使用した VPN ゲートウェイの強制トンネリングの構成 | Microsoft Azure" description="クロスプレミスの VPN ゲートウェイを含むクラシック デプロイ モデルの仮想ネットワークでは、インターネットへのすべてのトラフィックをオンプレミスの場所にリダイレクトするか "強制的" に戻すことができます。" services="vpn-gateway" documentationCenter="na" authors="cherylmc" manager="carmonm" editor="" tags="azure-service-management"/>
-<tags  
+<properties 
+   pageTitle="PowerShell を使用して VPN Gateway の強制トンネリングを構成する | Microsoft Azure"
+   description="クラシック デプロイ モデルの仮想ネットワークとクロスプレミスの VPN Gateway が存在する場合、インターネットに向かうすべてのトラフィックをオンプレミスのロケーションにリダイレクトする (強制的に戻す) ことができます。"
+   services="vpn-gateway"
+   documentationCenter="na"
+   authors="cherylmc"
+   manager="carmonm"
+   editor=""
+   tags="azure-service-management"/>
+<tags 
    ms.service="vpn-gateway"
    ms.devlang="na"
    ms.topic="article"
@@ -63,7 +71,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 構成を開始する前に、以下がそろっていることを確認します。
 
-- Azure サブスクリプション。Azure サブスクリプションがまだない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+- Azure サブスクリプション。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
 - 構成済みの仮想ネットワーク。
 
@@ -167,4 +175,4 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 	Remove-AzureVnetGatewayDefaultSites -VNetName <virtualNetworkName>
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

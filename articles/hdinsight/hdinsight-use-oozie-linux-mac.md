@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="04/07/2016"
 	ms.author="larryfr"/>
 
 
@@ -35,6 +35,8 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 - **Azure サブスクリプション**: [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 
 - **Azure CLI**: 「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
+	
+	[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 - **HDInsight クラスター**: [Linux での HDInsight の使用](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 
@@ -392,7 +394,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		<name>oozie.base.url</name>
 		<value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
 
-	**http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie** の部分が Oozie コマンドで使用する URL です。
+	****http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie** の部分が Oozie コマンドで使用する URL です。
 
 2. 次のコマンドを使用して、URL の環境変数を作成します。すべてのコマンドでこれを入力する必要があるわけではありません。
 
@@ -720,4 +722,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

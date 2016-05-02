@@ -1,6 +1,6 @@
 <properties
  pageTitle="Scheduler 送信認証"
- description=""
+ description="Scheduler 送信認証"
  services="scheduler"
  documentationCenter=".NET"
  authors="krisragh"
@@ -120,4 +120,4 @@ Azure AD テナントのテナント ID は、Azure PowerShell で `Get-AzureAcc
 
  [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

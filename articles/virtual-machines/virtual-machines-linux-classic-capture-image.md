@@ -3,7 +3,7 @@
 	description="クラシック デプロイ モデルで作成された Linux ベースの Azure の仮想マシン (VM) のイメージをキャプチャする方法について説明します。"
 	services="virtual-machines-linux"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="iainfoulds"
 	manager="timlt"
 	editor="tysonn"
 	tags="azure-service-management"/>
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
-	ms.author="dkshir"/>
+	ms.date="04/12/2016"
+	ms.author="iainfou"/>
 
 
 # 従来の Linux 仮想マシンをイメージとしてキャプチャする方法
@@ -87,7 +87,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 
 
 ## 次のステップ
-イメージを使用して仮想マシンを作成する準備ができました。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、「[Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](../virtual-machines-command-line-tools.md)」を参照してください。または、[Azure クラシック ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、「[カスタム仮想マシンの作成方法][]」を参照してください。
+イメージを使用して仮想マシンを作成する準備ができました。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、「[Azure サービス管理での Azure CLI の使用](../virtual-machines-command-line-tools.md)」を参照してください。または、[Azure クラシック ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、「[カスタム仮想マシンの作成方法][]」を参照してください。
 
 **関連項目:** [Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)
 
@@ -98,4 +98,4 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 [How to Attach a Data Disk to a Virtual Machine]: virtual-machines-windows-classic-attach-disk.md
 [カスタム Linux VM を作成する方法]: virtual-machines-linux-classic-create-custom.md
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

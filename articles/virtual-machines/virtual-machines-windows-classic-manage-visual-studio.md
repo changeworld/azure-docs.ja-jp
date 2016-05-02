@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="01/30/2016"
+   ms.date="04/19/2016"
    ms.author="tarcher" />
 
 # Visual Studio で Windows 仮想マシンを作成して管理する
@@ -21,4 +21,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-classic-manage-visual-studio](../../includes/virtual-machines-common-classic-manage-visual-studio.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

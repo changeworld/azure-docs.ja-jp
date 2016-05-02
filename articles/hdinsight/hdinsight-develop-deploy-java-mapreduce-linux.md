@@ -33,7 +33,9 @@
 
 - **Azure サブスクリプション**
 
-- **Azure CLI**: 詳細については、[Azure CLI のインストールおよび構成](../xplat-cli-install.md)に関するページをご覧ください。
+- **Azure CLI**
+
+	[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 ##環境変数を構成する
 
@@ -288,4 +290,4 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 [powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Azure Redis Cache の FAQ" 
+	pageTitle="Azure Redis Cache の FAQ | Microsoft Azure" 
 	description="Azure Redis Cache についてよく寄せられる質問の回答、パターンとベスト プラクティスについて説明します。" 
 	services="redis-cache" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/17/2016" 
+	ms.date="04/18/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -49,19 +49,19 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 
 | [価格レベル] | サイズ | 使用可能な帯域幅 | 1 KB のキーのサイズ |
 |----------------------|--------|----------------------------|--------------------------------|
-| **Standard のキャッシュ サイズ** | &nbsp; |**メガビット/秒 (Mbps)** | **1 秒あたりの要求数 (RPS)** |
-| C0 | 250 MB | 5 | 600 |
-| C1 | 1 GB | 100 | 12200 |
-| C2 | 2\.5 GB | 200 | 24000 |
-| C3 | 6 GB | 400 | 49000 |
-| C4 | 13 GB | 500 | 61000 |
-| C5 | 26 GB | 1,000 | 115000 |
-| C6 | 53 GB | 2000 | 150000 |
+| **Standard のキャッシュ サイズ** | &nbsp; |**メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** | **1 秒あたりの要求数 (RPS)** |
+| C0 | 250 MB | 5 / 0.625 | 600 |
+| C1 | 1 GB | 100 / 12.5 | 12200 |
+| C2 | 2\.5 GB | 200 / 25 | 24000 |
+| C3 | 6 GB | 400 / 50 | 49000 |
+| C4 | 13 GB | 500 / 62.5 | 61000 |
+| C5 | 26 GB | 1000 / 125 | 115000 |
+| C6 | 53 GB | 2000 / 250 | 150000 |
 | **Premium のキャッシュ サイズ** | &nbsp; | &nbsp; | **1 秒あたりの要求数 (RPS)、シャードあたり** |
-| P1 | 6 GB | 1,000 | 140000 |
-| P2 | 13 GB | 2000 | 220000 |
-| P3 | 26 GB | 2000 | 220000 |
-| P4 | 53 GB | 4000 | 250000 |
+| P1 | 6 GB | 1000 / 125 | 140000 |
+| P2 | 13 GB | 2000 / 250 | 220000 |
+| P3 | 26 GB | 2000 / 250 | 220000 |
+| P4 | 53 GB | 4000 / 500 | 250000 |
 
 
 `redis-benchmark.exe` などの Redis ツールのダウンロードの詳細については、「[Redis コマンドの実行方法](#cache-commands)」セクションを参照してください。
@@ -264,25 +264,7 @@ Microsoft Azure Redis Cache は、広く普及しているオープン ソース
 
 ## どの Azure Cache を利用すればよいですか。
 
->[AZURE.IMPORTANT] すべての新規の開発に Azure Redis Cache を使用することをお勧めします。
-
-現在、Azure Cache には 3 つのサービスがあります。
-
--	Azure Redis Cache
--	Azure Managed Cache Service
--	Azure In-Role Cache
-
->[AZURE.IMPORTANT]Azure Managed Cache Service と Azure In-Role Cache は、2016 年 11 月 30 日に提供を終了する予定です。提供終了に備えて、Azure Redis Cache に移行することをお勧めします。
->
->Azure Redis Cache は一般公開され、中国と米国政府を含むすべての Azure リージョンで使用できるようになったため、推奨されるキャッシュ ソリューションになりました。この一般公開により、Managed Cache Service と In-Role Cache サービスは提供が終了されます。
->
->今回のお知らせ (2015 年 11 月 30 日) から最長 12 か月間、Managed Cache Service と In-Role Cache サービスの既存のユーザーは引き続きサービスを利用できます。両サービスの提供終了日は、2016 年 11 月 30 日です。その後は、Managed Cache Service はシャットダウンされ、In-Role Cache サービスはサポートされなくなります。
->
->最初の Azure SDK リリースで In-Role Cache を新規作成する処理のサポートは削除されます (2016 年 2 月 1 日以降の予定)。In-Role Cache を含む既存のプロジェクトを開くことはできます。
->
->この期間中は、既存の Managed Cache Service と In-Role Cache サービス ユーザーをすべて Azure Redis Cache に移行することをお勧めします。Azure Redis Cache は旧サービスよりも機能数が多く、全体的に優れたサービスです。移行の詳細については、「[Managed Cache Service から Azure Redis Cache への移行](cache-migrate-to-redis.md)」ドキュメント Web ページを参照してください。
->
->不明な点については、[お問い合わせください](https://azure.microsoft.com/support/options/?WT.mc_id=azurebg_email_Trans_933)。
+>[AZURE.IMPORTANT]昨年[お知らせ](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)したとおり、Azure Managed Cache Service と Azure In-Role Cache サービスは 2016 年 11 月 30 日で提供が終了します。そのため、[Azure Redis Cache](https://azure.microsoft.com/services/cache/) を使用することをお勧めします。移行については、「[Managed Cache Service から Azure Redis Cache への移行](cache-migrate-to-redis.md)」を参照してください。
 
 ### Azure Redis Cache
 Azure Redis Cache は、最大 53 GB で一般公開されています。可用性の SLA は 99.9% です。新しい [Premium 階層](cache-premium-tier-intro.md)は、最大 530 GB のサイズを提供し、クラスタリング、VNET、および永続化を 99.9% の SLA でサポートします。
@@ -296,11 +278,11 @@ Redis が正常に動作するために重要な点は、Redis を中心とし�
 Azure Redis Cache の使用方法については、「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と [Azure Redis Cache のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/redis-cache/)を参照してください。
 
 ### Managed Cache Service
-Managed Cache サービスは 2016 年 11 月 30 日に終了となります。
+[Managed Cache サービスは 2016 年 11 月 30 日に終了となります。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
 ### In-Role Cache
-In-Role Cache は 2016 年 11 月 30 日に終了となります。
+[In-Role Cache は 2016 年 11 月 30 日に終了となります。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
 ["minIoThreads" 構成設定]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

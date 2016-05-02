@@ -3,8 +3,8 @@
 	description="ADO.NET や PHP などのテクノロジから Azure SQL Database に接続するクライアント プログラムのリンクとベスト プラクティスの推奨事項を集めた、開始点となるトピック。" 
 	services="sql-database" 
 	documentationCenter="" 
-	authors="MightyPen" 
-	manager="jeffreyg" 
+	authors="annemill" 
+	manager="jhubbard" 
 	editor=""/>
 
 
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="01/07/2016" 
-	ms.author="genemi"/>
+	ms.author="annemill"/>
 
 
 # SQL Database への接続: ベスト プラクティスと設計のガイドライン
@@ -53,9 +53,9 @@
 
 SQL Database へのユーザー追加には、以下の選択肢があります。
 
-- **マスター**データベースに *ログイン* とパスワードを追加し、それから同じサーバーの 1 つ以上の他のデータベースに対応する *ユーザー* を追加する。
+- **マスター**データベースに*ログイン*とパスワードを追加し、それから同じサーバーの 1 つ以上の他のデータベースに対応する*ユーザー*を追加する。
 
-- 1 つ以上のデータベースに *包含ユーザー* とパスワードを追加し、**マスター**へのいかなる *ログイン* にもリンクしないようにする。
+- 1 つ以上のデータベースに*包含ユーザー*とパスワードを追加し、**マスター**へのいかなる*ログイン*にもリンクしないようにする。
 
 
 包含ユーザーのアプローチには以下のような長所と短所があります。
@@ -85,7 +85,7 @@ SQL Database へのユーザー追加には、以下の選択肢があります�
 - クライアントが Azure 仮想マシン (VM) で実行されるとき、クライアント プログラムが SQL Database V12 に接続する場合、VM でポート範囲の 11000-11999 と 14000-14999 を開く必要があります。詳細については、[ここ](sql-database-develop-direct-route-ports-adonet-v12.md)をクリックしてください。
 
 
-- *一時的エラー* を処理するには、Azure SQL Database と対話するクライアントのプログラムに[ *再試行* ロジック](#TransientFaultsAndRetryLogicGm)を追加してください。
+- *一時的エラー*を処理するには、Azure SQL Database と対話するクライアントのプログラムに[*再試行*ロジック](#TransientFaultsAndRetryLogicGm)を追加してください。
 
 
 ### 接続プール
@@ -119,13 +119,13 @@ Azure SQL Database V12 へのクライアント接続はプロキシを使用せ
 
 Azure システムには、SQL Database サービス内で負荷の大きいワークロードが生じた場合に、サーバーを動的に再構成する機能があります。
 
-ただし、再構成をすることでクライアントのプログラム側では SQL Database への接続が失われます。このエラーを *一時障害* と呼びます。
+ただし、再構成をすることでクライアントのプログラム側では SQL Database への接続が失われます。このエラーを*一時障害*と呼びます。
 
 クライアント プログラムに再試行ロジックが含まれる場合、一時障害に自動的に修復する時間を与えた後、接続の再確立を試行できます。
 
 最初に再試行する前に、5 秒間待つことをお勧めします。5 秒未満で再試行すると、クラウド サービスに過度の負荷がかかるおそれがあります。再試行するたびに、待ち時間を比例して、最大 60 秒まで長くする必要があります。
 
-ADO.NET を使用するクライアントの *ブロック期間* については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
+ADO.NET を使用するクライアントの*ブロック期間*については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
 
 
 再試行ロジックを示すコード サンプルについては、次の記事をご覧ください。
@@ -141,7 +141,7 @@ SQL Database でエラーが発生した場合、[SqlException](http://msdn.micr
 
 - [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md#bkmk_connection_errors)
  - このメッセージの **Transient Errors, Connection-Loss Errors** セクションには、自動再試行が必ず実行される一時エラーのリストが示されています。
- - たとえば、「<br/> *サーバー 'theserver' 上のデータベース 'mydatabase' は現在使用できません。* 」などのような番号 40613 のエラーが発生した場合、再試行されます。
+ - たとえば、「<br/>*サーバー 'theserver' 上のデータベース 'mydatabase' は現在使用できません。*」などのような番号 40613 のエラーが発生した場合、再試行されます。
 
 
 詳細については、以下を参照してください。
@@ -177,4 +177,4 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
 - [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
-<!----HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0420_2016-->

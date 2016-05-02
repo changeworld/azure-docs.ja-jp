@@ -36,9 +36,9 @@ Azure REST API を使用すると、Azure プラットフォームでホスト�
 
 - __Azure CLI__。Azure CLI を使用してサービス プリンシパルを作成し、Azure REST API に対する要求用の認証トークンを生成します。
 
-    CLI のインストール方法については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-- __cURL__。このユーティリティは、パッケージ管理システムを通じてまたは [http://curl.haxx.se/](http://curl.haxx.se/) からダウンロードして使用できます。
+- __cURL__。このユーティリティは、パッケージ管理システムを通じて、または [http://curl.haxx.se/](http://curl.haxx.se/) からダウンロードして使用できます。
 
     > [AZURE.NOTE] このドキュメントのコマンドを実行するのに PowerShell を使用する場合は、既定で作成される `curl` エイリアスをまず削除する必要があります。PowerShell プロンプトの `curl` コマンドを使用した場合、このエイリアスは cURL ではなく PowerShell コマンドレット Invoke-WebRequest を使用して、このドキュメントで使用する多くのコマンドのエラーを返します。
     > 
@@ -358,4 +358,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

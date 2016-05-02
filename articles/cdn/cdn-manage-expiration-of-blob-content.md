@@ -1,6 +1,6 @@
 <properties
  pageTitle="Azure Content Delivery Network (CDN) で BLOB コンテンツの有効期限を管理する方法"
- description=""
+ description="Azure CDN キャッシュで BLOB の有効期限を制御するオプションについて説明します。"
  services="cdn"
  documentationCenter=".NET"
  authors="camsoper"
@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="02/25/2016" 
+ ms.date="02/25/2016"
  ms.author="casoper"/>
 
 
@@ -96,4 +96,4 @@ BLOB が CDN 固有の URL を介して利用できることをテストしま�
 
 [Azure Content Delivery Network (CDN) でクラウド サービスのコンテンツの有効期限を管理する方法](./cdn-manage-expiration-of-cloud-service-content.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

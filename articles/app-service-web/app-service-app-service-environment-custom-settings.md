@@ -1,29 +1,29 @@
-<properties 
-	pageTitle="App Service Environment のカスタム設定" 
-	description="App Service Environment のカスタム構成設定" 
-	services="app-service" 
-	documentationCenter="" 
-	authors="stefsch" 
-	manager="nirma" 
+<properties
+	pageTitle="App Service Environment のカスタム設定"
+	description="App Service Environment のカスタム構成設定"
+	services="app-service"
+	documentationCenter=""
+	authors="stefsch"
+	manager="nirma"
 	editor=""/>
 
-<tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/08/2016" 
+<tags
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/08/2016"
 	ms.author="stefsch"/>
 
 # App Service Environment のカスタム構成設定
 
 ## 概要 ##
-App Service Environment は単一の顧客に分離されるため、App Service Environment にのみ適用できる特定の構成設定があります。この記事では、使用可能な App Service Environment 固有のさまざまなカスタマイズについて説明します。
+App Service Environment は単一の顧客に分離されるため、App Service Environment にのみ適用できる特定の構成設定があります。この記事では、App Service Environment で使用可能な、固有の各種カスタマイズについて説明します。
 
-App Service Environment のカスタマイズ内容は、*hostingEnvironments* ARM エンティティの "Properties" ディクショナリにある新しい "clusterSettings" 属性で、配列を使用して保存されます。
+App Service Environment のカスタマイズは、新しい **clusterSettings** 属性の配列を使って保存できます。この属性は、Azure Resource Manager の *hostingEnvironments* エンティティの "Properties" ディクショナリにあります。
 
-省略形の ARM テンプレート スニペット (下記参照) は "clusterSettings"属性を示しています。
+次の簡略化された Resource Manager テンプレートのスニペットに、その **clusterSettings** 属性が示されています。
 
 
     "resources": [
@@ -44,20 +44,29 @@ App Service Environment のカスタマイズ内容は、*hostingEnvironments* A
        }
     }
 
-ARM テンプレートに "clusterSettings"属性を含めて、App Service Environment を更新することができます。
+Resource Manager テンプレートに **clusterSettings** 属性を含めて、App Service Environment を更新することができます。
 
-[Azure リソース エクスプローラー](https://resources.azure.com)を使用して属性値を更新することもできます。Azure リソース エクスプローラーで、App Service Environment のノードに移動 (サブスクリプション --> resourceGroups --> プロバイダー --> hostingEnvironments) し、更新する特定の App Service Environment をクリックします。
+## Azure リソース エクスプローラーを使った App Service Environment の更新
+App Service Environment は、[Azure リソース エクスプローラー](https://resources.azure.com)を使って更新することもできます。
 
-右側のブラウザー ウィンドウで、上部のツールバーの [読み取り/書き込み] をクリックし、リソース エクスプローラーでの対話型の編集を許可します。青色の [編集] ボタンをクリックし、ARM テンプレートを編集可能にします。右側のブラウザー ウィンドウの下部までスクロールします。"clusterSettings"属性が一番下に表示されます。ここで、値の入力または更新ができます。
+1. リソース エクスプローラーで、App Service Environment のノードに移動します (**subscriptions**、**resourceGroups**、**providers**、**Micrososft.Web**、**hostingEnvironments** の順に移動)。次に、更新する App Service Environment をクリックします。
 
-"clusterSettings"属性で、必要な構成値の配列を入力します (またはコピーして貼り付けます)。右側のブラウザー ウィンドウの上部にある緑色の [PUT] ボタンをクリックし、App Service Environment に変更をコミットします。
+2. 右側のペインで、上部のツールバーの **[読み取り/書き込み]** をクリックし、リソース エクスプローラーでの対話型の編集を許可します。
 
-App Service Environment を更新するために選択した方法に関係なく、変更を送信すると、変更が有効になるまで大まかに言って、30 分に App Service Environment のフロント エンドの数を掛けた時間がかかります。たとえば、App Service Environment に 4 つのフロント エンドがある場合、構成の更新が完了するまで約 2 時間がかかります。構成の変更がロールアウトされている間は、App Service Environment で他のスケーリング操作や構成の変更操作はできません。
+3. 青色の **[編集]** ボタンをクリックし、Resource Manager テンプレートを編集可能にします。
+
+4. 右側のペインの一番下までスクロールします。**clusterSettings** 属性は一番下にあります。ここで、値の入力または更新ができます。
+
+5. **clusterSettings** 属性に、必要な構成値の配列を入力します (またはコピーして貼り付けます)。
+
+6. 右側のペインの上部にある緑色の **[PUT]** ボタンをクリックし、App Service Environment に変更をコミットします。
+
+ただし、変更を送信してから反映されるまでに、App Service Environment 内のフロント エンドの数に 30 分をかけた程度の時間がかかります。たとえば、App Service Environment に 4 つのフロント エンドがある場合、構成の更新が完了するまでに約 2 時間かかります。構成の変更がロールアウトされている間は、App Service Environment で他のスケーリング操作や構成の変更操作は実行できません。
 
 ## TLS 1.0 の無効化 ##
-お客様の中でも特に PCI 準拠の監査に対処するお客様から定期的に聞かれる質問は、アプリで TLS 1.0 を明示的に無効にする機能についてです。
+お客様 (特に PCI 準拠の監査に対応しているお客様) から繰り返したずねられるのは、アプリで TLS 1.0 を明示的に無効にする方法についてです。
 
-TLS 1.0 は、次の *clusterSettings* エントリで無効にすることができます。
+TLS 1.0 は、次の **clusterSettings** エントリで無効にすることができます。
 
         "clusterSettings": [
             {
@@ -68,13 +77,12 @@ TLS 1.0 は、次の *clusterSettings* エントリで無効にすることが�
 
 
 
-## 使用の開始
-Azure クイック スタート ARM テンプレートのサイトには、[App Service Environment の作成](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)の基本定義を含むテンプレートが含まれています。
+## 作業開始
+Azure クイック スタート Resource Manager テンプレートのサイトには、[App Service Environment を作成](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)するための基本定義を含むテンプレートが用意されています。
 
 
 <!-- LINKS -->
 
 <!-- IMAGES -->
- 
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

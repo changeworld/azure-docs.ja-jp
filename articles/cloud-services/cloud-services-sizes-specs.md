@@ -19,7 +19,7 @@
 
 このトピックでは、クラウド サービスのロール インスタンス (Web ロールと worker ロール) で使用できるサイズとオプションについて説明します。また、これらのリソースの使用を計画するときに注意するデプロイメントに関する考慮事項も示します。
 
-Azure Virtual Machines と Cloud Services は、Azure が提供する数種類のコンピューティング リソースの中の 2 つです。詳細については、[Azure が提供するコンピューティング ホスティング オプション](fundamentals-application-models.md)に関するページを参照してください。
+Cloud Services は、Azure が提供する数種類のコンピューティング リソースの 1 つです。Cloud Services の詳細については、[こちら](cloud-services-choose-me.md)を参照してください。
 
 > [AZURE.NOTE]関連する Azure の制限については、[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)に関するページを参照してください。
 
@@ -41,7 +41,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 * A8/A10 と A9/A11 の仮想マシンのサイズは、同じ容量です。A8 と A9 の仮想マシンのインスタンスには、仮想マシン間の高速通信用のリモート ダイレクト メモリ アクセス (RDMA) ネットワークに接続された追加のネットワーク アダプターが含まれています。A8 と A9 のインスタンスは、実行中にノード間で持続的で待ち時間の少ない通信を必要とする高パフォーマンス コンピューティング アプリケーション (Message Passing Interface (MPI) を使用するアプリケーションなど) 向けに設計されています。A10 と A11 の仮想マシン インスタンスには、追加のネットワーク アダプターが含まれていません。A10 と A11 のインスタンスは、ノード間で一定した待ち時間の少ない通信を必要としない高パフォーマンス コンピューティング アプリケーション (パラメトリックまたは Embarrassingly Parallel アプリケーションとも呼ばれる) 向けに設計されています。
 
-    >[AZURE.NOTE] A8 ～ A11 のサイズを検討している場合は、[こちら](..\virtual-machines\virtual-machines-windows-a8-a9-a10-a11-specs.md)の情報をお読みください。
+    >[AZURE.NOTE] A8 ～ A11 のサイズを検討している場合は、[こちら](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)の情報をお読みください。
 
 >[AZURE.NOTE] すべてのマシン サイズで**アプリケーション ディスク**が 1 つ提供され、ここにクラウド サービス パッケージから全ファイルが格納されます。このサイズはおよそ 1.5 GB です。
 
@@ -156,4 +156,4 @@ Web ロール インスタンスのロール サイズを [Standard\_D2](#genera
 </WebRole>
 ```
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

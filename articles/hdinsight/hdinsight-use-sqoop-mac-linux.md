@@ -34,6 +34,8 @@ Linux ベースの HDInsight クラスターと Azure SQL Database または SQL
 - **ワークステーション**: SSH クライアントを使用しているコンピューター。
 - **Azure CLI**: 詳細については、[Azure CLI のインストールおよび構成](../xplat-cli-install.md)に関するページを参照してください。
 
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+
 ##Sqoop のエクスポート
 
 2. 次のコマンドを使用して、Sqoop lib ディレクトリから、SQL Server JDBC ドライバーへのリンクを作成します。これにより、Sqoop がこのドライバーを使用して SQL Database と対話できます。
@@ -50,7 +52,7 @@ Linux ベースの HDInsight クラスターと Azure SQL Database または SQL
 
         sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --export-dir 'wasb:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
 
-    これにより、SQL Database と **sqooptest** データベースに接続して **wasb:///hive/warehouse/hivesampletable** (*hivesampletable* の物理ファイル) から **mobiledata** テーブルにデータをエクスポートするよう Sqoop に指示します。
+    これにより、SQL Database と **sqooptest** データベースに接続して ****wasb:///hive/warehouse/hivesampletable** (*hivesampletable* の物理ファイル) から **mobiledata** テーブルにデータをエクスポートするよう Sqoop に指示します。
 
 5. コマンドが完了したら、次を使用して、TSQL によってデータベースに接続します。
 
@@ -65,7 +67,7 @@ Linux ベースの HDInsight クラスターと Azure SQL Database または SQL
 
 ##Sqoop のインポート
 
-1. 次を使用して、SQL Database の **mobiledata** テーブルから HDInsight の **wasb:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
+1. 次を使用して、SQL Database の **mobiledata** テーブルから HDInsight の ****wasb:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
 
         sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
 
@@ -142,4 +144,4 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

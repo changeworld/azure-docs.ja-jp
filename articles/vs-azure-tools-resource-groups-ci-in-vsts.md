@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="01/26/2016"
+	ms.date="04/19/2016"
 	ms.author="tarcher" />
 
 # Azure リソース グループのデプロイメント プロジェクトを使用した Visual Studio Team Services での継続的インテグレーション
@@ -160,4 +160,4 @@ Azure リソース マネージャーと Azure リソース グループの詳�
 [10]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough11b.png
 [11]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough12.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

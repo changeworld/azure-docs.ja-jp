@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/30/2016"
+	ms.date="04/19/2016"
 	ms.author="tarcher"/>
 
 # Visual Studio Team Services と Git を使用した Azure への継続的な配信
@@ -27,7 +27,7 @@ Visual Studio 2013 および Azure SDK をインストールする必要があ�
 
 Visual Studio Team Services を使用してクラウド サービスを自動的にビルドして Azure にデプロイするようにセットアップするには、次の手順に従います。
 
-## 手順 1. Git リポジトリを作成する
+## 1: Git リポジトリを作成する
 
 1. Visual Studio Team Services アカウントをまだ持っていない場合は、[ここ](http://go.microsoft.com/fwlink/?LinkId=397665)で取得できます。チーム プロジェクトを作成するときに、ソース管理システムとして Git を選択します。指示に従い、Visual Studio をチーム プロジェクトに接続します。
 
@@ -37,7 +37,7 @@ Visual Studio Team Services を使用してクラウド サービスを自動的
 
 3. ローカル コピーの場所を指定し、**[複製]** をクリックします。
 
-## 手順 2. プロジェクトを作成してリポジトリにコミットする
+## 2: プロジェクトを作成してリポジトリにコミットする
 
 1. **チーム エクスプローラー**の **[ソリューション]** セクションで、**[新規作成]** リンクを選択して新しいプロジェクトをローカル リポジトリに作成します。
 
@@ -57,7 +57,7 @@ Visual Studio Team Services を使用してクラウド サービスを自動的
 
 6. これで、リポジトリのローカル コピーに変更をコミットできました。次に、**[同期]** リンクを選択してこれらの変更をサーバーと同期させます。
 
-## 手順 3: プロジェクトを Azure に接続する
+## 3: プロジェクトを Azure に接続する
 
 1. ソース コードを含む Git リポジトリが Visual Studio Team Services に保持され、Git リポジトリを Azure に接続する準備が整いました。[Azure クラシック ポータル](http://manage.windowsazure.com)で、クラウド サービスまたは Web アプリを選択するか、新たに作成します。作成するには、左下にある [+] アイコンを選択し、**[クラウド サービス]** または **[Web アプリ]** を選択して、**[簡易作成]** を選択します。
 
@@ -81,7 +81,7 @@ Visual Studio Team Services を使用してクラウド サービスを自動的
 
 	次にコミットをリポジトリにプッシュするときに、Visual Studio Team Services はプロジェクトをビルドして Azure にデプロイします。
 
-## 手順 4: リビルドをトリガーし、プロジェクトを再デプロイする
+## 4: リビルドをトリガーし、プロジェクトを再デプロイする
 
 1. Visual Studio で、ファイルを開き、変更します。たとえば、MVC Web ロールの Views\\Shared フォルダーにある `_Layout.cshtml` ファイルを変更します。
 
@@ -170,19 +170,19 @@ Visual Studio Team Services を使用してクラウド サービスを自動的
 
 	![][33]
 
-## 手順 5. 以前のビルドを再デプロイする
+## 5: 以前のビルドを再デプロイする
 
 この手順は省略可能です。Azure クラシック ポータルで以前のデプロイを選択し、**[再デプロイ]** をクリックしてサイトを以前のチェックインに戻します。これによって、TFS で新しいビルドが開始され、デプロイ履歴に新しいエントリが作成されます。
 
 ![][34]
 
-## 手順 6. 運用デプロイを変更する
+## 6: 運用デプロイを変更する
 
 準備が整ったら、Azure クラシック ポータルで **[スワップ]** を選択してステージング環境を運用環境へ昇格できます。新たにデプロイされたステージング環境は運用に昇格され、以前の運用環境がある場合、運用環境はステージング環境になります。運用環境とステージング環境でアクティブなデプロイメントは異なることはありますが、最近のビルドのデプロイメント履歴は環境にかかわらず同じです。
 
 ![][35]
 
-## 手順 7. working 分岐からデプロイする
+## 6: working 分岐からデプロイする
 
 Git を使用する場合は、通常、working 分岐で変更を行い、開発が完了状態に到達したときに master 分岐に統合します。プロジェクトの開発フェーズの間に、この working 分岐をビルドして Azure にデプロイします。
 
@@ -272,4 +272,4 @@ Visual Studio Team Services で Git を使用する場合のその他のヒン�
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

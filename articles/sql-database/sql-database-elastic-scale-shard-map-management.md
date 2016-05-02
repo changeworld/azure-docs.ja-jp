@@ -3,7 +3,7 @@
 	description="Elastic Database クライアント ライブラリの ShardMapManager の使用方法" 
 	services="sql-database" 
 	documentationCenter="" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="ddove" 
 	editor=""/>
 
@@ -19,6 +19,8 @@
 # シャード マップの管理
 
 シャード化データベース環境では、アプリケーションが**シャーディング キー**の値に基づいて適切なデータベースに接続するための情報が[**シャード マップ**](sql-database-elastic-scale-glossary.md)に保持されます。これらのマップの構造を理解することは、シャード マップ管理に不可欠です。Azure SQL Database に対して、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)内で見つかった [ShardMapManager クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)を使用して、 シャード マップを管理します。
+
+既存のデータベースのセットを変換するには、「[既存のデータベースをエラスティック データベース ツールを使用するように変換する](sql-database-elastic-convert-to-use-elastic-tools.md)」を参照してください。
  
 
 ## シャード マップとシャードのマッピング
@@ -77,7 +79,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 
 ## ShardMapManager の作成
 
-[ファクトリ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx)パターンを使用して **ShardMapManager** オブジェクトが作成されます。**[ShardMapManagerFactory.GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)** メソッドは、(サーバー名と、GSM を保持しているデータベースの名前を含む) **ConnectionString** 形式の資格情報を受け取り、**ShardMapManager** のインスタンスを返します。
+**ShardMapManager** オブジェクトは、[ファクトリ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx) パターンを使用して作成されます。**[ShardMapManagerFactory.GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)** メソッドは、(サーバー名と、GSM を保持しているデータベースの名前を含む) **ConnectionString** 形式の資格情報を受け取り、**ShardMapManager** のインスタンスを返します。
 
 **注意:** **ShardMapManager** は、アプリケーションの初期化コード内でアプリケーション ドメインごとに 1 回だけインスタンス化する必要があります。同じアプリケーション ドメインで ShardMapManager の追加のインスタンスを作成すると、アプリケーションのメモリ使用率と CPU 使用率が増加します。**ShardMapManager** には、任意の数のシャード マップを含めることができます。多くのアプリケーションでは、シャード マップは 1 つあれば十分です。ただし、異なるスキーマ用や一意性を確保する目的のためにデータベースの異なるセットを使用する場合は、複数のシャード マップを使用することをお勧めします。
 
@@ -112,11 +114,40 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
  
 別の方法として、Powershell を使用して新しいシャード マップ マネージャーを作成できます。[こちら](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)の例を利用できます。
 
+## RangeShardMap または ListShardMap の取得
+
+シャード マップ マネージャーを作成した後に、[TryGetRangeShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)、[TryGetListShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx)、または [GetShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx) メソッドを使用して [RangeShardMap](https://msdn.microsoft.com/library/azure/dn807318.aspx) または [ListShardMap](https://msdn.microsoft.com/library/azure/dn807370.aspx) を取得できます。
+
+	/// <summary>
+    /// Creates a new Range Shard Map with the specified name, or gets the Range Shard Map if it already exists.
+    /// </summary>
+    public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shardMapManager, string shardMapName)
+    {
+        // Try to get a reference to the Shard Map.
+        RangeShardMap<T> shardMap;
+        bool shardMapExists = shardMapManager.TryGetRangeShardMap(shardMapName, out shardMap);
+
+        if (shardMapExists)
+        {
+            ConsoleUtils.WriteInfo("Shard Map {0} already exists", shardMap.Name);
+        }
+        else
+        {
+            // The Shard Map does not exist, so create it
+            shardMap = shardMapManager.CreateRangeShardMap<T>(shardMapName);
+            ConsoleUtils.WriteInfo("Created Shard Map {0}", shardMap.Name);
+        }
+
+        return shardMap;
+    } 
+
 ### シャード マップ管理資格情報
 
-通常、シャード マップを管理と操作するアプリケーションは、シャード マップを使用して接続をルーティングするアプリケーションとは異なります。
+シャード マップを管理、操作するアプリケーションは、シャード マップを使用して接続をルーティングするアプリケーションとは異なります。
 
-シャード マップを管理 (シャード、シャード マップ、シャード マッピングの追加または変更など) するアプリケーションでは、**ShardMapManager** をインスタンス化する必要があります。そのためには、**GSM データベースとシャードとして機能する各データベースに対する読み取り/書き込み特権を持つ**資格情報を使用します。この資格情報により、新しいシャードに LSM テーブルが作成されるときだけでなく、シャード マップ情報が入力または変更されたときに GSM と LSM の両方のテーブルに対する書き込みが許可される必要があります。
+シャード マップの管理 (シャード、シャード マップ、シャード マッピングの追加または変更など) を実行するには、**ShardMapManager** をインスタンス化する必要があります。そのためには、**GSM データベースとシャードとして機能する各データベースに対する読み取り/書き込み特権を持つ資格情報**を使用します。この資格情報により、新しいシャードに LSM テーブルが作成されるときだけでなく、シャード マップ情報が入力または変更されたときに GSM と LSM の両方のテーブルに対する書き込みが許可される必要があります。
+
+「[Elastic Database クライアント ライブラリへのアクセスに使用する資格情報](sql-database-elastic-scale-manage-credentials.md)」を参照してください。
 
 ### 影響を受けるのはメタデータのみ 
 
@@ -130,7 +161,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 2. 2 つの異なるシャードのメタデータがシャード マップに追加されます。 
 3. さまざまなキー範囲マッピングが追加され、シャード マップ全体の内容が表示されます。 
 
-このコードは、エラーが発生した場合にメソッドを再実行できるように記述されています。各要求は、シャードまたはマッピングを作成しようとする前に、それらが既に存在するかどうかをテストします。このコードでは、**sample\_shard\_0**、**sample\_shard\_1**、**sample\_shard\_2** という名前のデータベースが文字列 **shardServer** によって参照されるサーバーに既に作成されているものと想定しています。
+このコードは、エラーが発生した場合にメソッドを再実行できるように記述されています。各要求は、シャードまたはマッピングを作成しようとする前に、それらが既に存在するかどうかをテストします。次のコードでは、**sample\_shard\_0**、**sample\_shard\_1**、**sample\_shard\_2** という名前のデータベースが、文字列 **shardServer** によって参照されるサーバーに既に作成されていることを想定しています。
 
     public void CreatePopulatedRangeMap(ShardMapManager smm, string mapName) 
         {            
@@ -237,7 +268,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 
 シャード マップ マネージャーは、ほとんどの場合、アプリに固有のデータ操作を実行するためのデータベース接続を必要とするアプリケーションで使用されます。これらの接続は、正しいデータベースに関連付けられている必要があります。これを**データ依存ルーティング**といいます。このようなアプリケーションの場合は、GSM データベースに対する読み取り専用アクセス権限を持つ資格情報を使用してファクトリからシャード マップ マネージャー オブジェクトをインスタンス化します。後で個々の接続要求により、適切なシャード データベースに接続するために必要な資格情報が提供されます。
 
-(読み取り専用の資格情報を使用して開かれた **ShardMapManager** を使用する) これらのアプリケーションは、マップまたはマッピングを変更できないことに注意してください。このような操作を行うには、既に説明したように、高度な特権の資格情報を提供する管理操作専用のアプリケーションまたは PowerShell スクリプトを作成します。「[Elastic Database クライアント ライブラリへのアクセスに使用する資格情報](sql-database-elastic-scale-manage-credentials.md)」をご覧ください。
+(読み取り専用の資格情報を使用して開かれた **ShardMapManager** を使用する) これらのアプリケーションはマップまたはマッピングを変更できないことに注意してください。このような操作を行うには、既に説明したように、高度な特権の資格情報を提供する管理操作専用のアプリケーションまたは PowerShell スクリプトを作成します。「[Elastic Database クライアント ライブラリへのアクセスに使用する資格情報](sql-database-elastic-scale-manage-credentials.md)」を参照してください。
 
 詳細については、「[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください。
 
@@ -282,4 +313,4 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

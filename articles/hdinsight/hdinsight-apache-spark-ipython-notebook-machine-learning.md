@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="04/14/2016" 
 	ms.author="nitinme"/>
 
 
-# Azure HDInsight での Apache Spark を使用した Machine Learning アプリケーションの構築 (Linux)
+# HDInsight Linux の Apache Spark で実行する Machine Learning アプリケーションの構築 (プレビュー)
 
 HDInsight の Apache Spark クラスターを使用して Machine Learning アプリケーションを作成する方法を説明します。この記事では、クラスターで使用できる Jupyter Notebook を使用してアプリケーションを作成およびテストする方法を説明します。このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。
 
@@ -230,7 +230,7 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -254,4 +254,4 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="サンプルを使ってみます。"
-   description="サンプルを使ってみます。"
+   pageTitle="Power BI Embedded サンプル"
+   description="Power BI Embedded サンプル"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -32,6 +32,6 @@
 ## 関連項目
 
 - [What is Microsoft Power BI Embedded (Microsoft Power BI Embedded とは)](power-bi-embedded-what-is-power-bi-embedded.md)
-- [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューを使ってみる)](power-bi-embedded-get-started.md)
+- [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューの使用を開始する)](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

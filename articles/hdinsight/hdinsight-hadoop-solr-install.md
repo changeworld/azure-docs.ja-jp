@@ -41,10 +41,6 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 
 ## ポータルを使用して Solr をインストールする
 
-[AZURE.INCLUDE [hdinsight-azure-preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
-
-* [HDInsight クラスターでの Solr のインストール](hdinsight-hadoop-solr-install-v1.md)
-
 1. 「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md#portal)」の説明に基づき、**CUSTOM CREATE** オプションを使用してクラスターの作成を開始します。
 2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
@@ -200,4 +196,4 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

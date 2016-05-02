@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="04/13/2016" 
 	ms.author="awills"/>
 
 
@@ -47,7 +47,7 @@
 
 ### アプリが IIS サーバーで実行されている場合
 
-Web アプリが .NET 4.6 以降で実行される場合、アプリに [Application Insights SDK をインストール](app-insights-asp-net.md)すれば、依存関係が自動的に追跡されます。他に必要なものはありません。
+Web アプリが .NET 4.6 以降で実行されている場合は、アプリに [Application Insights SDK をインストール](app-insights-asp-net.md)するか、Application Insights Status Monitor をインストールすることができます。両方をインストールする必要はありません。
 
 それ以外の場合、サーバーに Application Insights Status Monitor をインストールしてください。
 
@@ -170,11 +170,17 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) の DependencyTrackingTelemetryModule への参照を削除します。
 
+## トラブルシューティング
+
+*依存関係の成功を示すフラグは、常に true と false のいずれかを示します。*
+
+* 最新バージョンの SDK にアップグレードしてください。.NET のバージョンが 4.6 より前の場合は、[Status Monitor](app-insights-monitor-performance-live-website-now.md) をインストールしてください。
+
 ## 次のステップ
 
-- [Exceptions](../article/application-insights/app-insights-asp-net-exception-mvc.md#selector1)
-- [ユーザーとページのデータ](../article/application-insights/app-insights-asp-net-client.md#selector1)
-- [可用性](../article/application-insights/app-insights-monitor-web-app-availability.md#selector1)
+- [Exceptions](app-insights-asp-net-exception-mvc.md#selector1)
+- [ユーザーとページのデータ](app-insights-asp-net-client.md#selector1)
+- [可用性](app-insights-monitor-web-app-availability.md#selector1)
 
 
 
@@ -196,4 +202,4 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

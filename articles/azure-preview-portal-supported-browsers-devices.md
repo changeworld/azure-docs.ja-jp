@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="サポートされているブラウザーとデバイス" 
-	description="" 
-	services="" 
-	documentationCenter="" 
-	authors="flanakin" 
-	writer="flanakin" 
-	manager="lwelicki" 
+<properties
+	pageTitle="サポートされているブラウザーとデバイス"
+	description="Azure ポータルを利用できるブラウザーとデバイスについて説明します。" 
+	services=""
+	documentationCenter=""
+	authors="flanakin"
+	writer="flanakin"
+	manager="lwelicki"
 	editor=""/>
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/23/2015" 
+<tags
+	ms.service="multiple"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/23/2015"
 	ms.author="micflan"/>
 
 #サポートされているブラウザーとデバイス
@@ -32,4 +32,4 @@ Microsoft Azure ポータルは、最新の主要なデスクトップ デバイ
 - Chrome (最新バージョン)
 - Firefox (最新バージョン)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0420_2016-->

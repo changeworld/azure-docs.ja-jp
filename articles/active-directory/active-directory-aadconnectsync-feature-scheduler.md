@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/26/2016"
+   ms.date="04/20/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect 同期: スケジューラ
@@ -48,7 +48,13 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 - **MaintenanceEnabled**。メンテナンス処理が有効になっているかどうかを示します。メンテナンス処理では、証明書/キーの更新と、操作ログの消去が行われます。
 - **IsStagingModeEnabled**。[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)が有効になっているかどうかを示します。
 
-`Set-ADSyncScheduler` で、これらのすべての設定を変更できます。パラメーター IsStagingModeEnabled は、インストール ウィザードだけで設定できます。
+これらの設定のいくつかは、`Set-ADSyncScheduler` を使用して変更できます。次のパラメーターに変更を加えることができます。
+
+- CustomizedSyncCycleInterval
+- NextSyncCyclePolicyType
+- PurgeRunHistoryInterval
+- SyncCycleEnabled
+- MaintenanceEnabled
 
 スケジューラの構成は Azure AD に保存されます。ステージング サーバーがある場合、プライマリ サーバーでの変更 (IsStagingModeEnabled を除く) はステージング サーバーにも影響します。
 
@@ -90,6 +96,44 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
 スケジューラはアクティブなままで、次の機会に再度開始されます。
 
+## カスタム スケジューラ
+このセクションに記載されているコマンドレットは、[1\.1.130.0](active-directory-aadconnect-version-history.md#111300) 以降でのみ利用できます。
+
+組み込みのスケジューラで自社の要件を満たすことができない場合は、PowerShell を使用してコネクタをスケジュールすることができます。
+
+### Invoke-ADSyncRunProfile
+次の方法でコネクタのプロファイルを開始できます。
+
+```
+Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name of profile"
+```
+
+[コネクタ名](active-directory-aadconnectsync-service-manager-ui-connectors.md)と[実行プロファイル名](active-directory-aadconnectsync-service-manager-ui-connectors.md#configure-run-profiles)に使用する名前は、[Synchronization Service Manager UI](active-directory-aadconnectsync-service-manager-ui.md) で確認できます。
+
+![Invoke Run Profile](./media/active-directory-aadconnectsync-feature-scheduler/invokerunprofile.png)
+
+`Invoke-ADSyncRunProfile` コマンドレットは同期的なコマンドレットです。つまり、コネクタが操作に成功するかエラーが発生することで操作を終えるまで制御を返しません。
+
+コネクタをスケジュールする際は、次の順序でスケジュールすることをお勧めします。
+
+1. (完全/差分) Active Directory などのオンプレミスのディレクトリからインポートする
+2. (完全/差分) Azure AD からインポートする
+3. (完全/差分) Active Directory などのオンプレミスのディレクトリから同期する
+4. (完全/差分) Azure AD から同期する
+5. Azure AD にエクスポートする
+6. Active Directory などのオンプレミスのディレクトリにエクスポートする
+
+組み込みのスケジューラの場合も、コネクタはこの順序で実行されます。
+
+### Get-ADSyncConnectorRunStatus
+同期エンジンがビジー状態かアイドル状態かを監視することができます。同期エンジンがアイドル状態で、コネクタが実行されていない場合、このコマンドレットは空の結果を返します。コネクタが実行されている場合は、コネクタの名前を返します。
+
+```
+Get-ADSyncConnectorRunStatus
+```
+
+![Connector Run Status](./media/active-directory-aadconnectsync-feature-scheduler/getconnectorrunstatus.png) 上の図の 1 行目は、同期エンジンがアイドル状態であることを示しています。2 行目は、Azure AD コネクタが実行されていることを示しています。
+
 ## スケジューラとインストール ウィザード
 インストール ウィザードを開始すると、スケジューラは一時的に中断されます。これは、構成が変更されても、同期エンジンがアクティブに実行されていると適用できないためです。このようなしくみになっているので、インストール ウィザードを開いたままにしないでください。開いたままにすると、同期エンジンが同期操作を実行できません。
 
@@ -98,4 +142,4 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -17,7 +17,7 @@
 	ms.date="12/22/2015" 
 	ms.author="nitinme"/>
 
-# 概要: Azure HDInsight での Apache Spark (Windows)
+# 概要: HDInsight Windows での Apache Spark (プレビュー)
  
 > [AZURE.NOTE] HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Spark が Linux 上で提供する機能については、「[概要: Azure HDInsight での Apache Spark (Linux)](hdinsight-apache-spark-overview.md)」を参照してください。
 
@@ -98,4 +98,4 @@ HDInsight の Spark では、Microsoft Power BI や Tableau などの BI ツー�
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="01/12/2016"
+   ms.date="04/14/2016"
    ms.author="cawaMS" />
 
 # Visual Studio での Service Fabric アプリケーションのアップグレードの構成
@@ -94,4 +94,4 @@ Service Fabric アプリケーションの各サービスでは、既定値を�
 ## 次のステップ
 アプリケーションのデプロイの詳細については、「[Azure Service Fabric への既存のアプリケーションのデプロイ](service-fabric-deploy-existing-app.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0420_2016-->

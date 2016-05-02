@@ -49,7 +49,7 @@ App Service プランは 1 つのリソース グループに複数割り当て�
 
 ## App Service プランを作成する
 
-空の **App Service プラン**は、**App Service プラン**の参照機能で作成するか、またはアプリ作成の一環として作成することができます。
+空の **App Service プラン**は、**App Service プラン**の参照機能で作成するか、アプリ作成の一環として作成することができます。
 
 これを [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で実行するには、**[新規]** をクリックし、**[Web + モバイル]** を選択して、**[Web Apps]**、**[Mobile Apps]**、**[Logic Apps]**、または **[API Apps]** を選択します。![][createWebApp]
 
@@ -107,4 +107,4 @@ App Service プランは、アプリ間で共有できる一連の機能と容�
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
 [appclone]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/app-clone.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

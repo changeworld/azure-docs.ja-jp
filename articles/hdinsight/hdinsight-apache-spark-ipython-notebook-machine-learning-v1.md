@@ -18,7 +18,7 @@
 	ms.author="nitinme"/>
 
 
-# Azure HDInsight の Apache Spark を使用した Machine Learning アプリケーションの構築 (Windows)
+# HDInsight Windows の Apache Spark を使用した Machine Learning アプリケーションの構築 (プレビュー)
 
 > [AZURE.NOTE] HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Spark Linux クラスターで機械学習アプリケーションを作成する方法については、「[Azure HDInsight での Apache Spark を使用した Machine Learning アプリケーションの構築 (Linux)](hdinsight-apache-spark-ipython-notebook-machine-learning.md)」を参照してください。
 
@@ -245,4 +245,4 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

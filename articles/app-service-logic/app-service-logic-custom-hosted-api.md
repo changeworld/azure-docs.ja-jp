@@ -20,13 +20,15 @@
 
 Logic Apps には、さまざまなサービス用に 40 個以上のコネクタの豊富なセットがありますが、独自のカスタム API を呼び出して独自のコードを実行することもできます。独自のカスタム Web API をホストする最も簡単かつスケーラブルな方法の 1 つは、App Service を使用することです。この記事では、App Service の API アプリ、Web アプリ、またはモバイル アプリでホストされる任意の Web API を呼び出す方法について説明します。
 
+Logic Apps 内のトリガーまたはアクションとして API を構築する方法の詳細については、[この記事](app-service-logic-create-api-app.md)をご覧ください。
+
 ## Web アプリのデプロイ
 
-最初に、App Service で Web アプリとして API をデプロイする必要があります。「[Azure App Service での ASP.NET Web アプリの作成](../app-service-web/web-sites-dotnet-get-started.md)」に、基本的なデプロイの手順が説明されています。Logic Apps から任意の API を呼び出すことができますが、最適の結果を得るには、Logic Apps アクションと簡単に統合するために Swagger メタデータを追加することをお勧めします。詳しくは、[Swagger の追加に関するセクション](../app-service-api/app-service-api-dotnet-get-started.md/#use-swagger-metadata-and-ui)をご覧ください。
+最初に、App Service で Web アプリとして API をデプロイする必要があります。「[Azure App Service での ASP.NET Web アプリの作成](../app-service-web/web-sites-dotnet-get-started.md)」に、基本的なデプロイの手順が説明されています。Logic Apps から任意の API を呼び出すことができますが、最適の結果を得るには、Logic Apps アクションと簡単に統合するために Swagger メタデータを追加することをお勧めします。[Swagger の追加](../app-service-api/app-service-api-dotnet-get-started.md/#use-swagger-metadata-and-ui)に関する詳細を確認できます。
 
 ### API 設定
 
-Logic Apps デザイナーで Swagger を解析するには、CORS を有効にし、Web アプリの APIDefinition プロパティを設定することが重要です。これは、Azure ポータル内で簡単に設定できます。Web アプリの設定ブレードを開いて、API セクションで "API の定義" を swagger.json ファイルの URL (通常 https://{name}.azurewebsites.net/swagger/docs/v1)) に設定し、'*' で Logic Apps デザイナーからの要求を許可する CORS ポリシーを追加するだけです。
+Logic Apps デザイナーで Swagger を解析するには、CORS を有効にし、Web アプリの APIDefinition プロパティを設定することが重要です。これは、Azure ポータル内で簡単に設定できます。Web アプリの設定ブレードを開いて、API セクションで "API の定義" を swagger.json ファイルの URL (通常は https://{name}.azurewebsites.net/swagger/docs/v1)) に設定し、"*" で Logic Apps デザイナーからの要求を許可する CORS ポリシーを追加するだけです。
 
 ## API の呼び出し
 
@@ -43,7 +45,7 @@ API をセキュリティで保護する場合は、他にもいくつかの方�
 
 ### パート 1: ロジック アプリのアプリケーション ID の設定
 
-これは、ロジック アプリが Active Directory に対する認証に使用する ID です。ID の設定が必要なのは、ディレクトリに対して 1 回だけです。たとえば、必要に応じてロジック アプリごとに一意の ID を作成することもできますが、すべてのロジック アプリに同じ ID を使用できます。この操作は UI で、または PowerShell を使用して実行できます。
+これは、ロジック アプリが Active Directory に対する認証に使用する ID です。ID の設定は、ディレクトリに対して 1 回だけ行えば済みます。たとえば、必要に応じてロジック アプリごとに一意の ID を作成することもできますが、すべてのロジック アプリに同じ ID を使用できます。この操作は UI で、または PowerShell を使用して実行できます。
 
 #### Azure クラシック ポータルを使用してアプリケーション ID を作成する
 
@@ -167,4 +169,4 @@ Web アプリが既にデプロイされている場合、ポータルでその�
 
 ただし、ロジック アプリのアプリケーション ID を作成して API の呼び出しに使用する場合は、このページの手順に従う必要があります。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

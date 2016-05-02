@@ -2,7 +2,7 @@
 	pageTitle="PowerShell を使用して Azure Media Services アカウントを管理する" 
 	description="PowerShell コマンドレットを使用して Azure Media Services アカウントを管理する方法を説明します。" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
 	documentationCenter=""/>
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
+	ms.date="04/18/2016"
 	ms.author="juliako"/>
 
 
 #PowerShell を使用して Azure Media Services アカウントを管理する
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-create-account.md)
+- [ポータル](media-services-create-account.md)
 - [PowerShell](media-services-manage-with-powershell.md)
-- [REST](http://msdn.microsoft.com/library/azure/dn194267.aspx)
+- [REST ()](http://msdn.microsoft.com/library/azure/dn194267.aspx)
 
 > [AZURE.NOTE] Azure Media Services アカウントを作成するには、Azure アカウントが必要です。アカウントがない場合は、無料試用アカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」をご覧ください。
 
@@ -122,4 +122,4 @@ Azure Media Services を削除する準備ができたら、[Remove-AzureMediaSe
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

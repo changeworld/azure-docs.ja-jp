@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/19/2016" 
+	ms.date="04/13/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して ODBC データ ストアからデータを移動する
@@ -327,4 +327,34 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+## GE Historian ストア
+次の例で示すように、[GE Proficy Historian (現在は GE Historian)](http://www.geautomation.com/products/proficy-historian) データ ストアを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
+
+	{
+	    "name": "HistorianLinkedService",
+	    "properties":
+	    {
+	        "type": "OnPremisesOdbc",
+	        "typeProperties":
+	        {
+			    "connectionString": "DSN=<name of the GE Historian store>",
+			    "gatewayName": "<gateway name>",
+			    "authenticationType": "Basic",
+			    "userName": "<user name>",
+			    "password": "<password>"
+	        }
+	    }
+	}
+
+オンプレミス コンピューターに Data Management Gateway をインストールし、ゲートウェイをポータルに登録する必要があります。オンプレミス コンピューターにインストールされているゲートウェイは、GE Historian データ ストアに接続するために GE Historian 用の ODBC ドライバーを使用します。そのため、ゲートウェイ コンピューターにまだドライバーがインストールされていない場合は、インストールしてください。詳細については、「[接続を有効にする](#enabling-connectivity)」セクションを参照してください。
+
+Data Factory ソリューションで GE Historian ストアを使用する前に、ゲートウェイが次のセクションの手順を使用してデータ ストアに接続できるかどうかを確認します。
+
+コピー操作で ODBC データ ストアをソース データ ストアとして使用する方法の詳細については、記事を最初からお読みください。
+
+[AZURE.INCLUDE [data-factory-troubleshoot-connectivity](../../includes/data-factory-troubleshoot-connectivity.md)]
+
+## パフォーマンスとチューニング  
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
+
+<!---HONumber=AcomDC_0420_2016-->

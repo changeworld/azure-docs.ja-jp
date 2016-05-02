@@ -27,12 +27,15 @@ Linux ベースの Azure HDInsight クラスターは、Azure クラウドで実
 
 * [cURL](https://curl.haxx.se/) - Web ベースのサービスとの通信に使用します
 * [jq](https://stedolan.github.io/jq/) - JSON ドキュメントの解析に使用します
+* [Azure CLI](../xplat-cli-install.md) - Azure サービスをリモート管理するために使用します
+
+	[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ## ドメイン名
 
 インターネットからクラスターへの接続時に使用する完全修飾ドメイン名 (FQDN) は、**<clustername>.azurehdinsight.net** または (SSH のみ) **<clustername-ssh>.azurehdinsight.net** です。
 
-内部的には、クラスターの各ノードに、クラスターの構成時に割り当てられた名前が与えられます。クラスター名を見つけるには、Ambari Web UI の __[ホスト]__ ページにアクセスするか、次の方法で Ambari REST API からホストの一覧を返します。
+内部的には、クラスターの各ノードに、クラスターの構成時に割り当てられた名前が与えられます。クラスター名を見つけるには、Ambari Web UI の __[Hosts]__ (ホスト) ページにアクセスするか、次の方法で Ambari REST API からホストの一覧を返します。
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
@@ -95,7 +98,7 @@ HDInsight の既定の保管場所であるため、通常は何もしなくて�
 
 	hadoop fs -ls /example/data
 
-一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして **WASB://** を付けることができます。
+一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして ****WASB://** を付けることができます。
 
 HDInsight では、クラスターに複数の BLOB ストレージ アカウントを関連付けることもできます。既定以外の BLOB ストレージ アカウントのデータにアクセスするには、**WASB://&lt;container-name>@<account-name>.blob.core.windows.net/** という形式を使用できます。たとえば、次のコマンドは、指定したコンテナーと BLOB ストレージ アカウントについて、**/example/data** ディレクトリの内容を表示します。
 
@@ -115,7 +118,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
         wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net
 
-1. ストレージ アカウントのリソース グループを取得し、[Azure CLI](../xplat-cli-install.md) を使用します。次のコマンドで、__ACCOUNTNAME__ を、Ambari から取得したストレージ アカウント名に置き換えてください。
+1. ストレージ アカウントのリソース グループを取得し、[Azure CLI](../xplat-cli-install.md) を使用します。次のコマンドで、__ACCOUNTNAME__ を、Ambari から取得したストレージ アカウント名に置き換えます。
 
         azure storage account list --json | jq '.[] | select(.name=="ACCOUNTNAME").resourceGroup'
     
@@ -254,4 +257,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

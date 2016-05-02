@@ -1,5 +1,5 @@
 <properties
-	pageTitle="CDN を使用する方法 | Microsoft Azure"
+	pageTitle="Azure CDN の使用"
 	description="Azure Content Delivery Network (CDN) を使用して、BLOB と静的コンテンツをキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。"
 	services="cdn"
 	documentationCenter=".net"
@@ -12,12 +12,12 @@
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="03/18/2016"
+	ms.topic="article"
+	ms.date="04/15/2016"
 	ms.author="casoper"/>
 
 
-# Azure 用 CDN の使用
+# Azure CDN の使用
 
 Azure Content Delivery Network (CDN) は、Azure で任意の HTTP/HTTPS アプリケーションを拡張するための基本的要素です。CDN は、Azure のお客様にグローバル ソリューションを提供するもので、エンド ユーザーに近い場所にコンテンツをキャッシュして配信します。そのため、ユーザーからの要求は、毎回オリジンを参照する代わりに、最適な応答時間が得られる CDN エッジ ノード (POP、つまりポイント オブ プレゼンス) にインテリジェントにルーティングされます。これにより、パフォーマンスとユーザー エクスペリエンスが大幅に向上します。現在の CDN ノードの場所の一覧については、「[Azure Content Delivery Network (CDN) POP 場所](cdn-pop-locations.md)」を参照してください。
 
@@ -128,7 +128,6 @@ HTTPS を使用して CDN コンテンツにアクセスする場合、次の制
 - CDN によって提供される証明書を使用する必要がある。サード パーティの証明書はサポートされません。
 - CDN ドメインを使用して、コンテンツにアクセスする必要がある。現時点では CDN がカスタム証明書をサポートしていないために、HTTPS サポートではカスタム ドメイン名 (CNAME) を使用できません。
 
-CDN コンテンツに対して HTTPS を有効にする方法の詳細については、「[Azure の Content Delivery Network (CDN) を有効にする方法](cdn-create-new-endpoint.md)」を参照してください。
 
 
 ## カスタム ドメインを使用したキャッシュされたコンテンツへのアクセス
@@ -149,4 +148,4 @@ Microsoft Azure CDN は、[CDN リソース プロバイダーの REST API](http
 - [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 - [CDN リソース プロバイダーの REST API](https://msdn.microsoft.com/library/mt634456.aspx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

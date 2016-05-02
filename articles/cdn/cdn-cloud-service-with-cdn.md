@@ -337,7 +337,7 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 
 	![](media/cdn-cloud-service-with-cdn/cdn-7-configureview.PNG)
 
-4. 新しい *Views\MemeGenerator\Index.cshtml* を開き、その内容を、ジョークを送信するための次の単純な HTML で置き換えます。
+4. 新しい *Views\\MemeGenerator\\Index.cshtml* を開き、その内容を、ジョークを送信するための次の単純な HTML で置き換えます。
 
 		<h2>Meme Generator</h2>
 
@@ -626,7 +626,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 ## 詳細情報 ##
 - [Azure Content Delivery Network (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
-- [Azure 用 CDN の使用](cdn-how-to-use-cdn.md)
+- [Azure CDN の使用](cdn-create-new-endpoint.md)
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
 
 
@@ -637,4 +637,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 [cdn-add-endpoint]: ./media/cdn-cloud-service-with-cdn/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-cloud-service-with-cdn/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

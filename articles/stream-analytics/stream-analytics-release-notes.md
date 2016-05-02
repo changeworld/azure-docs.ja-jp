@@ -13,10 +13,18 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="03/18/2016" 
+	ms.date="04/15/2016" 
 	ms.author="jeffstok"/>
 
 #Stream Analytics のリリース ノート
+
+## Stream Analytics の 2016 年 4 月 15 日付けリリースに関するノート ##
+
+このリリースには、次の更新プログラムが含まれています。
+
+タイトル | 説明
+---|---
+Power BI 出力の一般提供 | [Power BI 出力](stream-analytics-power-bi-dashboard.md)の一般提供が開始しました。Power BI の 90 日間の承認有効期限は削除されました。承認の更新が必要となるシナリオの詳細については、Power BI ダッシュボードの作成に関するページの「[承認の更新](stream-analytics-power-bi-dashboard.md#Renew-authorization)」セクションを参照してください。
 
 ## Stream Analytics の 2016 年 3 月 3 日付リリースに関するノート ##
 
@@ -24,7 +32,7 @@
 
 タイトル | 説明
 ---|---
-新しい Stream Analytics クエリ言語項目 | SAQL には [GetType](https://msdn.microsoft.com/library/azure/mt643890.aspx "GetType の MSDN ページ")、[TRY\_CAST](https://msdn.microsoft.com/library/azure/mt643735.aspx "TRY_CAST MSDN ページ")、[REGEXMATCH](https://msdn.microsoft.com/library/azure/mt643891.aspx "REGEXMATCH MSDN ページ") があります。
+新しい Stream Analytics クエリ言語項目 | 現在、SAQL には [GetType](https://msdn.microsoft.com/library/azure/mt643890.aspx "GetType の MSDN ページ")、[TRY\_CAST](https://msdn.microsoft.com/library/azure/mt643735.aspx "TRY_CAST MSDN ページ")、[REGEXMATCH](https://msdn.microsoft.com/library/azure/mt643891.aspx "REGEXMATCH MSDN ページ") があります。
 
 ## Stream Analytics の 2015 年 12 月 10 日付けリリースに関するノート ##
 
@@ -33,7 +41,7 @@
 タイトル | 説明
 ---|---
 REST API バージョン更新 | REST API バージョンが 2015-10-01 に更新されました。詳細については、MSDN の [Stream Analytics の管理 REST API リファレンスに関する記事](https://msdn.microsoft.com/library/azure/dn835031.aspx)、および「[Stream Analytics への Machine Learning の統合](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)」を参照してください。
-Azure Machine Learning 統合 | このリリースで、Azure Machine Learning ユーザー定義関数のサポートが付きます。詳細については「[チュートリアル](stream-analytics-machine-learning-integration-tutorial.md)」と、「[汎用的なブログのアナウンス](http://blogs.technet.com/b/machinelearning/archive/2015/12/10/apply-azure-ml-as-a-function-in-azure-stream-analytics.aspx)」を参照してください。
+Azure Machine Learning 統合 | このリリースで、Azure Machine Learning ユーザー定義関数のサポートが付きます。詳細については、[チュートリアル](stream-analytics-machine-learning-integration-tutorial.md)と、[ブログでの全般的なお知らせ](http://blogs.technet.com/b/machinelearning/archive/2015/12/10/apply-azure-ml-as-a-function-in-azure-stream-analytics.aspx)を参照してください。
 
 ## Stream Analytics の 2015 年 11 月 12 日付けリリースに関するノート ##
 
@@ -62,7 +70,7 @@ Added OFFSET for Tumbling and Hopping windows (タンブリング ウィンド�
 タイトル | 説明
 ---|---
 Azure IoT Suite のパブリック プレビュー | Stream Analytics は、Azure IoT Suite のパブリック プレビューに含まれています。
-Azure ポータルの統合 | Microsoft Azure 管理ポータルで引き続き使用されている Stream Analytics が、[Azure ポータル](https://azure.microsoft.com/overview/preview-portal/)にも統合されました。現在、プレビュー ポータルの Stream Analytics 機能は Microsoft Azure 管理ポータルで提供されている機能のサブセットであり、ブラウザ内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。
+Azure ポータルの統合 | Microsoft Azure 管理ポータルで引き続き提供されている Stream Analytics が、[Azure ポータル](https://azure.microsoft.com/overview/preview-portal/)にも統合されました。現在、プレビュー ポータルの Stream Analytics 機能は Microsoft Azure 管理ポータルで提供されている機能のサブセットであり、ブラウザ内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。
 DocumentDB 出力のサポート | Stream Analytics のジョブを [DocumentDB](https://azure.microsoft.com/services/documentdb/) に出力できるようになりました。
 IoT Hub 入力に対するサポート | Stream Analytics ジョブで、IoT Hub からデータを取り込めるようになりました。
 多様なイベントに対する TIMESTAMP BY | 単一のデータ ストリームに、異なるフィールドにタイムスタンプを持つ複数のイベント タイプが含まれている場合、式と共に [TIMESTAMP BY](http://msdn.microsoft.com/library/mt573293.aspx) を使用してケースごとに異なるタイムスタンプ フィールドを指定できるようになりました。
@@ -141,4 +149,4 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Stream Analytics 管理 REST API 参照](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

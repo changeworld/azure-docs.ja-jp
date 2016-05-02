@@ -24,7 +24,13 @@
 
 フィルター述語を指定しない場合、テーブル全体が移行されます。
 
-CTP 3.1 ～ RC2 では、[Stretch Database を有効にする] ウィザードに述語を指定するオプションがありません。このオプションで Stretch Database を設定するには、ALTER TABLE ステートメントを使用する必要があります。詳細については、「[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」および「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」を参照してください。
+RC3 では、[Stretch Database を有効にする] ウィザードを実行するときに、テーブル全体を移行することも、ウィザードで日付に基づく単純なフィルター述語を指定することもできます。別のフィルター述語を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
+
+-   ウィザードを終了し、ALTER TABLE ステートメントを実行してテーブルの Stretch を有効にし、述語を指定します。
+
+-   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、述語を指定します。
+
+述語を追加するための ALTER TABLE 構文については、このトピックの後の方で説明しています。
 
 ## インライン テーブル値関数の基本要件
 Stretch Database フィルター述語に必要なインライン テーブル値関数は次の例のようになります。
@@ -151,7 +157,7 @@ ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
 テーブルでそのフィルター述語として関数が使用されている限り、インライン テーブル値関数は削除できません。
 
 ## 日付で行をフィルター処理する
-次の例は、**date** 列に 2016 年 1 月 1 日より前の値を含む列が移行されます。
+次の例では、**date** 列に 2016 年 1 月 1 日より前の値を含む列が移行されます。
 
 ```tsql
 -- Filter by date
@@ -212,7 +218,7 @@ SET (
 
 スライディング ウィンドウを更新するには、次のようにします。
 
-1.  新しいスライディング ウィンドウを指定する新しい関数を作成します。次の例では、2016 年 1 月 1 日ではなく、2106 年 1 月 2日より前の日付を選択します。
+1.  新しいスライディング ウィンドウを指定する新しい関数を作成します。次の例では、2016 年 1 月 1 日ではなく、2016 年 1 月 2 日より前の日付を選択します。
 
 2.  次の例に示すように、ALTER TABLE を呼び出して、以前のフィルター述語を新しい述語に置き換えます。
 
@@ -502,4 +508,4 @@ ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

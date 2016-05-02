@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="04/15/2016"
 	ms.author="ryanwi"/>
 
 # PowerShell を使用したアプリケーション ライフサイクルの自動化
 
-[Service Fabric アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)のさまざまな要素を自動化することができます。この記事では、PowerShell を使用して、Azure Service Fabric アプリケーションのデプロイ、アップグレード、削除、およびテストの一般的なタスクを自動化する方法を説明します。
+[Service Fabric アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)のさまざまな要素を自動化することができます。この記事では、PowerShell を使用して、Azure Service Fabric アプリケーションのデプロイ、アップグレード、削除、およびテストの一般的なタスクを自動化する方法を説明します。アプリ管理用のマネージ API と HTTP API も利用できます。詳細については、[アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)に関するページを参照してください。
 
 ## 前提条件
 この記事に記載されているタスクを進めていく前に、次の作業を行ってください。
@@ -101,7 +101,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/WordCount -Applic
 アプリケーション名は、以前にデプロイされた v1.0.0 のアプリケーション名 (fabric:/WordCount) と同じであることに注意してください。Service Fabric はこの名前を使用して、アップグレードが実行されるアプリケーションを識別します。タイムアウトを短く設定しすぎている場合、問題を示すタイムアウトのエラー メッセージが表示されることがあります。「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」を参照するか、タイムアウトの値を増加してください。
 
 ### 手順 4: アップグレードの進行状況の確認
-[Service Fabric エクスプローラー](service-fabric-visualizing-your-cluster.md)、または [**Get-ServiceFabricApplicationUpgrade**](https://msdn.microsoft.com/library/azure/mt125988.aspx) コマンドレットを使用して、アプリケーションのアップグレードの進行状況を監視できます。
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)、または [**Get-ServiceFabricApplicationUpgrade**](https://msdn.microsoft.com/library/azure/mt125988.aspx) コマンドレットを使用して、アプリケーションのアップグレードの進行状況を監視できます。
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/WordCount
@@ -172,4 +172,4 @@ Remove-ServiceFabricApplicationPackage -ImageStoreConnectionString file:C:\SfDev
 
 [Azure Service Fabric Testability コマンドレット](https://msdn.microsoft.com/library/azure/mt125844.aspx)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

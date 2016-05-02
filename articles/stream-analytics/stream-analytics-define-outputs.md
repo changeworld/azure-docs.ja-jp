@@ -5,7 +5,7 @@
 	services="stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage"
 	documentationCenter="" 
 	authors="jeffstokes72"
-	manager="paulettm"
+	manager="paulettm" 
 	editor="cgronlun"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="03/16/2016"
+	ms.date="04/15/2016"
 	ms.author="jeffstok"/>
 
 # 分析ツールとデータ ストレージ オプションをターゲットにした Stream Analytics データ変換出力
@@ -169,8 +169,6 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 
 Stream Analytics ジョブの出力として [Power BI](https://powerbi.microsoft.com/) を使用し、分析結果の豊富な視覚化エクスペリエンスを提供できます。この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
 
-> [AZURE.NOTE] 現時点では、Power BI 出力の作成と構成は Azure クラシック ポータルでのみサポートされています。
-
 ### Power BI アカウントを承認する
 
 1.	Power BI を Microsoft Azure 管理ポータルで出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
@@ -200,7 +198,7 @@ Power BI 出力およびダッシュボードの構成のチュートリアル�
 
 ### Power BI の承認を更新する
 
-Power BI 出力のあるすべてのジョブについて、90 日おきに認証トークンを手動で更新する必要があるという一時的な制限事項があります。また、ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要もあります。この問題の症状として、ジョブ出力が返されないことや、操作ログで "ユーザーの認証エラー" が発生することが挙げられます。
+ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要があります。Azure Active Directory (AAD) テナント上で Multi-Factor Authentication (MFA) が構成されている場合は、Power BI の承認を 2 週間ごとに更新することも必要になります。この問題の症状として、ジョブ出力が返されないことや、操作ログで "ユーザーの認証エラー" が発生することが挙げられます。
 
   ![Power BI refresh token error](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)
 
@@ -318,4 +316,4 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

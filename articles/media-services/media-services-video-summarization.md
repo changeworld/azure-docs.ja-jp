@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/18/2016"   
+	ms.date="04/14/2016"   
 	ms.author="milanga;juliako;"/>
 
 #Azure Media Video Thumbnails を使用してビデオ要約を作成する
@@ -271,4 +271,6 @@ maxMotionThumbnailDurationInSecs|結果ビデオ全体の長さを指定する�
 
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+
+<!---HONumber=AcomDC_0420_2016-->

@@ -18,7 +18,7 @@
 	ms.author="nitinme"/>
 
 
-# Spark ストリーミング: Azure Event Hubs からのイベントを HDInsight で Apache Spark を使用して処理する (Windows)
+# Spark ストリーミング: Azure Event Hubs からのイベントを HDInsight Windows で Apache Spark を使用して処理する (プレビュー)
 
 > [AZURE.NOTE] HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Spark Linux クラスターでストリーミング アプリケーションを実行する方法については、「[Spark ストリーミング: Azure Event Hubs からのイベントを HDInsight で Apache Spark を使用して処理する (Linux)](hdinsight-apache-spark-eventhub-streaming.md)」参照してください。
 
@@ -196,4 +196,4 @@ Zeppelin を使用して HDInsight の Spark クラスターでストリーミ�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

@@ -1,12 +1,14 @@
-## Troubleshoot connectivity issues
-Use the **Diagnostics** tab of **Data Management Gateway Configuration Manager** to troubleshoot connection issues. 
+## 接続の問題のトラブルシューティング
+接続の問題をトラブルシューティングするには、**Data Management Gateway 構成マネージャー**の **[診断]** タブを使用します。
 
-1. Launch **Data Management Gateway Configuration Manager**. You can either run "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe" directly (or) search for **Gateway** to find a link to **Microsoft Data Management Gateway** application as shown in the following image. 
+1. **Data Management Gateway 構成マネージャー**を起動します。"C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared\\ConfigManager.exe" を直接実行することも、次の図で示されているように、**Gateway** を検索し、**Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。 
 
 	![Search gateway](./media/data-factory-troubleshoot-connectivity/search-gateway.png)
-2. Switch to the **Diagnostics** tab.
+2. **[診断]** タブに切り替えます。
 
 	![Gateway diagnostics](./media/data-factory-troubleshoot-connectivity/data-factory-gateway-diagnostics.png) 
-3. Select the **type** of data store (linked service). 
-4. Specify **authentication** and enter **credentials** (or) enter **connection string** to connect to the data store. 
-5. Click **Test connection** to test the connection to the data store. 
+3. データ ストアの**種類** (リンクされたサービス) を選択します。 
+4. **[認証]** を指定し、**資格情報**を入力します。または、**接続文字列**を入力して、データ ストアに接続します。 
+5. **[接続テスト]** をクリックして、データ ストアへの接続をテストします。 
+
+<!---HONumber=AcomDC_0420_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="04/01/2016" 
 	ms.author="spelluru"/>
 
 # Data Factory から MapReduce プログラムを起動する
@@ -208,6 +208,9 @@ linkedServiceName | 前に作成した HDInsight のリンクされたサービ�
 	    }
 	}
 
+## Spark プログラムの実行
+MapReduce アクティビティを使用して、HDInsight Spark クラスターで Spark プログラムを実行することができます。詳細については、「[Invoke Spark programs from Azure Data Factory (Azure Data Factory から Spark プログラムを呼び出す)](data-factory-spark.md)」を参照してください。
+
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
 
@@ -217,7 +220,13 @@ linkedServiceName | 前に作成した HDInsight のリンクされたサービ�
 [adftutorial]: data-factory-tutorial.md
 
 [Developer Reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[Azure Classic Portal]: http://portal.azure.com
+[Azure Portal]: http://portal.azure.com
  
+## 関連項目
+- [Hive アクティビティ](data-factory-hive-activity.md)
+- [Pig アクティビティ](data-factory-pig-activity.md)
+- [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
+- [Spark プログラムを呼び出す](data-factory-spark.md)
+- [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

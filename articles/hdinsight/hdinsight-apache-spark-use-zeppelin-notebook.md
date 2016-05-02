@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="04/14/2016" 
 	ms.author="nitinme"/>
 
 
-# HDInsight (Linux) の Spark クラスターで Zeppelin Notebook を使用する
+# HDInsight Linux の Spark クラスターで Zeppelin Notebook を使用する (プレビュー)
 
 Spark クラスターに Zeppelin Notebook をインストールする方法と、Zeppelin Notebook を使用する方法について説明します。
 
@@ -332,4 +332,4 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

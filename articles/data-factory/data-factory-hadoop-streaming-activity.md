@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="04/18/2016" 
 	ms.author="spelluru"/>
 
 # Hadoop ストリーミング アクティビティ
@@ -192,4 +192,11 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 	    }
 	}
 
-<!---HONumber=AcomDC_0204_2016-->
+## 関連項目
+- [Hive アクティビティ](data-factory-hive-activity.md)
+- [Pig アクティビティ](data-factory-pig-activity.md)
+- [MapReduce アクティビティ](data-factory-map-reduce.md)
+- [Spark プログラムを呼び出す](data-factory-spark.md)
+- [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+
+<!---HONumber=AcomDC_0420_2016-->

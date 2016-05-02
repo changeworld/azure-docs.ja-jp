@@ -13,7 +13,7 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="support-article"
 	ms.date="03/17/2016"
 	ms.author="dkshir"/>
 
@@ -23,4 +23,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-troubleshoot-app-connection](../../includes/virtual-machines-common-troubleshoot-app-connection.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -1,6 +1,6 @@
 <properties
  pageTitle="HPC Pack クラスターへのバースト ノードの追加 |Microsoft Azure"
- description="クラウド サービスで実行されている worker ロール インスタンスを必要に応じてコンピューティング リソースとして Azure の HPC Pack ヘッド ノードに追加する方法について説明します。"
+ description="クラウド サービスで実行される worker ロール インスタンスを追加して、HPC Pack クラスターの容量をオンデマンドで拡張する方法について説明します"
  services="virtual-machines-windows"
  documentationCenter=""
  authors="dlepow"
@@ -13,15 +13,16 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="big-compute"
- ms.date="01/08/2016"
+ ms.date="04/13/2016"
  ms.author="danlep"/>
 
 # オンデマンド「バースト」ノード (worker ロール インスタンス) をコンピューティング リソースとして Azure の HPC Pack クラスターに追加する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
 この記事では、Azure の「バースト」ノード (クラウド サービスで実行されている worker ロール インスタンス) を必要に応じてコンピューティング リソースとして Azure の既存 HPC Pack ヘッド ノードに追加する方法について説明します。これにより、事前構成された一連のコンピューティング ノード VMを保持しなくても、Azure の HPC クラスターの処理能力をオンデマンドでスケールアップできます。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 ![ノードをバーストする][burst]
 
@@ -33,7 +34,7 @@ A8 または A9 のコンピューティング集中型インスタンス サイ
 
 ## 前提条件
 
-* **Azure VM にデプロイされた HPC Pack ヘッド ノード** - 従来 (サービス管理) のデプロイ モデルでクラスター ヘッド ノードを作成する手順については、「[Azure VM に HPC Pack ヘッド ノートをデプロイする](virtual-machines-windows-hpcpack-cluster-headnode.md)」を参照してください。
+* **Azure VM にデプロイされた HPC Pack ヘッド ノード** - クラシック デプロイ モデルでクラスター ヘッド ノードを作成する手順については、「[Azure VM に HPC Pack ヘッド ノートをデプロイする](virtual-machines-windows-hpcpack-cluster-headnode.md)」を参照してください。
 
 * **Azure サブスクリプション** - Azure ノードを追加するには、ヘッド ノード VM をデプロイするための同じサブスクリプションを選択するか、別のサブスクリプションを選択します。
 
@@ -46,13 +47,13 @@ Azure クラシック ポータルまたは同様のツールを利用し、次�
 * 新しい Azure クラウド サービス
 * 新しい Azure ストレージ アカウント
 
->[AZURE.NOTE] サブスクリプションでは既存のクラウド サービスを再利用しないでください。また、このクラウド サービスには別個のカスタム クラウド サービス パッケージをデプロイしないでください。Azure ノードを起動 (プロビジョニング) すると、HPC Pack は自動的にクラウド サービス パッケージをデプロイします。
+>[AZURE.NOTE] サブスクリプションでは既存のクラウド サービスを再利用しないでください。
 
 **考慮事項**
 
 * 作成する予定の Azure ノード テンプレートごとに別個のクラウド サービスを構成します。ただし、複数のノード テンプレートに同じストレージ アカウントを使用できます。
 
-* 通常、デプロイのクラウド サービスとストレージ アカウントが同じリージョンにあるはずです。
+* 通常、デプロイのクラウド サービスとストレージ アカウントが同じ Azure リージョンにあるはずです。
 
 
 
@@ -79,13 +80,13 @@ Azure ノードをコンピューティング リソースとして追加する�
 
 ノードを追加し、起動したら、ノードを利用してクラスター ジョブを実行できます。
 
-Azure ノードのデプロイで問題が発生した場合、[Microsoft HPC Pack で Azure ノードをデプロイするときのトラブルシューティング を参照してください ](http://technet.microsoft.com/library/jj159097(v=ws.10).aspx)。
+Azure ノードのデプロイで問題が発生した場合は、「[Troubleshoot Deployments of Azure Nodes with Microsoft HPC Pack (Microsoft HPC Pack で Azure ノードをデプロイするときのトラブルシューティング)](http://technet.microsoft.com/library/jj159097.aspx)」を参照してください。
 
 ## 次のステップ
 
-* クラスターのジョブやタスクの現在のワークロードに合わせて、Azure コンピューティング リソースを自動的に拡大縮小する方法については、「[クラスター ワークロードに合わせ、HPC Pack クラスターで Azure コンピューティング リソースを自動的に拡大縮小する](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md)」をご覧ください。
+* クラスターのジョブやタスクの現在のワークロードに合わせて、Azure コンピューティング リソースを自動的に拡大縮小する方法については、[HPC Pack クラスターでの Azure コンピューティング リソースの自動的な拡大縮小](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md)に関する記事をご覧ください。
 
 <!--Image references-->
 [burst]: ./media/virtual-machines-windows-classic-hpcpack-cluster-node-burst/burst.png
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

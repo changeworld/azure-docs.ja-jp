@@ -17,7 +17,7 @@
     ms.date="12/08/2015"
     ms.author="nitinme"/>
 
-# カスタム オプションを使用した HDInsight での Apache Spark クラスターの作成 (Windows)
+# カスタム オプションを使用した HDInsight Windows での Apache Spark クラスターの作成 (プレビュー)
 
 > [AZURE.NOTE] HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Linux で Spark クラスターをカスタム作成する方法については、「[HDInsight での Linux ベース クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
@@ -183,7 +183,7 @@ HDInsight 上の Spark クラスターは、既定のファイル システム�
 	* **クラスター ダッシュボード**: クラスター ダッシュボード、Zeppelin Notebook、Jupyter Notebook を起動できる場所から [クラスター ダッシュボード] ブレードを起動します。
 
 
-##<a id="powershell"></a>Azure PowerShell の使用
+##<a id="powershell">Azure PowerShell の使用</a>
 
 「[HDInsight クラスターの作成](hdinsight-provision-clusters.md#create-using-azure-powershell)」を参照してください。
 
@@ -242,4 +242,4 @@ Spark クラスターの種類を指定します。
 
 [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

@@ -1,7 +1,7 @@
 ##Azure ポータルと Azure プレビュー ポータル
 
-> [AZURE.IMPORTANT] このドキュメントの手順では、Azure ポータルを使用します。新しいサービスを作成する際は、Azure プレビュー ポータルを使用することをお勧めします。プレビュー ポータルの利点については、「[DevOps は最高](https://azure.microsoft.com/overview/preview-portal/)」を参照してください。
+> [AZURE.IMPORTANT] このドキュメントの手順では、Azure クラシック ポータルを使用します。新しいサービスを作成する際は、クラシック ポータルを使用しないことをお勧めします。Azure ポータルの利点の詳細については、「[Microsoft Azure ポータル](https://azure.microsoft.com/features/azure-portal/)」を参照してください。
 
-このドキュメントの Azure プレビュー ポータルを使用するバージョンについては、次のリンクを参照してください。
+このドキュメントの Azure ポータルを使用するバージョンについては、次のリンクを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

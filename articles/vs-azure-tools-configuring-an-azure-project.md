@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="01/05/2016"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Visual Studio で Azure クラウド サービス プロジェクトを構成するには
@@ -47,7 +47,7 @@ Azure クラウド サービス プロジェクトは、そのプロジェクト
 
 1. クラウド サービスをローカルで実行またはデバッグする際に、使用するサービス構成を選択するには、**サービス構成**のリストでサービス構成を選択します。
 
-  >[AZURE.NOTE]使用するサービス構成を作成する場合は、「サービス構成とプロファイルを管理する方法」を参照してください。ロールのサービス構成を変更する場合は、「[Visual Studio で Azure クラウド サービスのロールを構成する](vs-azure-tools-configure-roles-for-cloud-service.md)」を参照してください。
+  >[AZURE.NOTE] 使用するサービス構成を作成する場合は、「サービス構成とプロファイルを管理する方法」を参照してください。ロールのサービス構成を変更する場合は、「[Visual Studio で Azure クラウド サービスのロールを構成する](vs-azure-tools-configure-roles-for-cloud-service.md)」を参照してください。
 
 1. クラウド サービスをローカルで実行またはデバッグするときに、Azure ストレージ エミュレーターを開始するには、[**Start Azure storage emulator (Azure ストレージ エミュレーターの起動)**] で **True** を選択してください。
 
@@ -61,4 +61,4 @@ Azure クラウド サービス プロジェクトは、そのプロジェクト
 
 Visual Studio で Azure のクラウド サービス プロジェクトを構成する方法の詳細については、「[複数のサービス構成を使用した Azure プロジェクトの構成](vs-azure-tools-multiple-services-project-configurations.md)」を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0420_2016-->

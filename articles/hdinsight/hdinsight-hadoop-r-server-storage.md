@@ -1,6 +1,6 @@
 <properties
-   pageTitle="HDInsight Premium での R Server の Azure Storage オプション | Azure"
-   description="HDInsight Premium での R Server でユーザーが利用できるさまざまなストレージ オプションを紹介します。"
+   pageTitle="HDInsight の R Server (プレビュー) の Azure Storage オプション | Azure"
+   description="HDInsight の R Server (プレビュー) でユーザーが利用できるさまざまなストレージ オプションを紹介します。"
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
@@ -18,9 +18,9 @@
    ms.author="jeffstok"
 />
 
-# HDInsight Premium での R Server の Azure Storage オプション
+# HDInsight の R Server (プレビュー) の Azure Storage オプション
 
-HDI クラスター上の R Server は、データ、コード、分析の結果オブジェクトなどを保持するための手段として、Azure BLOB と (間もなく) Azure Data Lake ストレージの両方にアクセスできます。
+HDInsight の R Server (プレビュー) は、データ、コード、分析の結果オブジェクトなどを保持するための手段として、Azure BLOB と (間もなく) Azure Data Lake ストレージの両方にアクセスできます。
 
 HDInsight で Hadoop クラスターを作成するときに、Azure Storage アカウントを指定します。そのアカウントの特定の Blob Storage コンテナーが、作成したクラスターのファイル システム (つまり、Hadoop 分散ファイル システム (HDFS)) を保持するように指定されます。パフォーマンス上の理由から、HDInsight クラスターは、指定したプライマリ ストレージ アカウントと同じデータ センターに作成されます。詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md "HDInsight での Azure BLOB ストレージの使用")」をご覧ください。
 
@@ -110,4 +110,4 @@ R コードで、名前ノード参照を "storage2" ストレージ アカウ�
 - [HDInsight Premium への RStudio Server の追加](hdinsight-hadoop-r-server-install-r-studio.md)
 - [HDInsight Premium での R Server のコンピューティング コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

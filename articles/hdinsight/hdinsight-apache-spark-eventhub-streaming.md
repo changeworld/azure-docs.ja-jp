@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="04/14/2016" 
 	ms.author="nitinme"/>
 
 
-# Spark ストリーミング: HDInsight での Apache Spark による Azure Event Hubs からのイベントの処理 (Linux)
+# Spark ストリーミング: Azure Event Hubs からイベントを HDInsight Linux で Apache Spark を使用して処理する (プレビュー)
 
 Spark ストリーミングは、コア Spark API を拡張して、スケーラビリティ、高スループット、フォールト トレランスを備えたストリーム処理アプリケーションを構築します。多くのソースからデータを取り込むことができます。この記事では、Azure Event Hubs を使用してデータを取り込みます。Event Hubs は、スケーラブルなインジェスト システムであり、1 秒間に数百万件のイベントを取り込むことができます。
 
@@ -353,7 +353,7 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -374,4 +374,4 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

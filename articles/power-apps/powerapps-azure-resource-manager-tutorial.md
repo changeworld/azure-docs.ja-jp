@@ -12,7 +12,7 @@
    ms.service="powerapps"
    ms.devlang="na"
    ms.topic="article"
-   ms.tgt_pltfrm="na"s
+   ms.tgt_pltfrm="na"
    ms.workload="na" 
    ms.date="04/12/2016"
    ms.author="mandia"/>
@@ -87,4 +87,4 @@ PowerApps と Logic Flows の作成方法の詳細については、以下をご
 [7]: https://manage.windowsazure.com
 [8]: http://pwrappssamples.blob.core.windows.net/samples/AzureResourceManager.json
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="12/17/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 
@@ -80,7 +80,7 @@ Visual Studio からクラウド サービスを発行すると、サービス�
 
 Visual Studio でのパフォーマンスのプロファイルの詳細については、「[パフォーマンス プロファイルの初心者向けガイド](https://msdn.microsoft.com/library/azure/ms182372.aspx)」および「[プロファイル ツールを使用したアプリケーション パフォーマンスの分析](https://msdn.microsoft.com/library/azure/z9z62c29.aspx)」を参照してください。
 
->[AZURE.NOTE]クラウド サービスを発行するときに、IntelliTrace またはプロファイルを有効にすることができます。両方を有効にすることはできません。
+>[AZURE.NOTE] クラウド サービスを発行するときに、IntelliTrace またはプロファイルを有効にすることができます。両方を有効にすることはできません。
 
 ###プロファイラーの収集メソッド
 
@@ -102,7 +102,7 @@ Visual Studio でのパフォーマンスのプロファイルの詳細につい
 
 ![Configure Profiling Settings](./media/vs-azure-tools-performance-profiling-cloud-services/IC526984.png)
 
->[AZURE.NOTE]**[プロファイルを有効にする]** チェック ボックスを有効にするには、クラウド サービスの発行に使用しているローカル コンピューターにプロファイラーがインストールされている必要があります。既定では、プロファイラーは Visual Studio のインストール時にインストールされます。
+>[AZURE.NOTE] **[プロファイルを有効にする]** チェック ボックスを有効にするには、クラウド サービスの発行に使用しているローカル コンピューターにプロファイラーがインストールされている必要があります。既定では、プロファイラーは Visual Studio のインストール時にインストールされます。
 
 ### プロファイル設定を構成するには
 
@@ -146,4 +146,4 @@ Visual Studio でのパフォーマンスのプロファイルの詳細につい
 
 [Visual Studio から Azure クラウド サービスへの発行](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0420_2016-->

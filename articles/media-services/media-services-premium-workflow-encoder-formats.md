@@ -3,8 +3,8 @@
 	description="このトピックでは、メディア エンコーダー プレミアム ワークフローの形式とコーデックについて説明します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,anilmur" 
-	manager="dwrede" 
+	authors="juliako" 
+	manager="erik43" 
 	editor=""/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/03/2016"  
-	ms.author="juliako"/>
+ 	ms.date="04/18/2016"    
+	ms.author="juliako;anilmur"/>
 
 #メディア エンコーダー プレミアム ワークフローの形式とコーデック
 
@@ -138,4 +138,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

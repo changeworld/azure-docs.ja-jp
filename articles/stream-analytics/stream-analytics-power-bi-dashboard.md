@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="03/18/2016"
+	ms.date="04/15/2016"
 	ms.author="jeffstok"/>
 
 #  Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード
@@ -25,7 +25,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使用して独自のカスタム ビジネス インテリジェンス ツールを作成し、リアルタイム ダッシュボードを活用する方法について説明します。
 
-> [AZURE.NOTE] Power BI 出力は Azure Stream Analytics のプレビュー機能です。現時点では、Power BI 出力の作成および構成は Azure ポータルではサポートされず、Azure クラシック ポータルでのみサポートされます。
+> [AZURE.NOTE] 現時点では、Power BI 出力の作成および構成は Azure ポータルではサポートされず、Azure クラシック ポータルでのみサポートされます。
 
 ## 前提条件
 
@@ -98,12 +98,13 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 * **[出力のエイリアス]** - 簡単に参照できるように出力のエイリアスを設定できます。この出力のエイリアスは、ジョブに複数出力を設定する場合に特に便利です。その場合は、クエリ内でこの出力を参照する必要があります。たとえば、出力のエイリアス値として "OutPbi" を使用します。
 * **[データセット名]** - Power BI 出力に設定するデータセット名を入力します。たとえば、"pbidemo" を使用します。
 *	**[テーブル名]** - Power BI 出力のデータセットの下にテーブル名を入力します。たとえば、"pbidemo" という名前にします。現在、Stream Analytics ジョブからの Power BI 出力では、1 つのデータセット内に 1 つのテーブルのみを保持できます。
+*	**[ワークスペース]** – データセットを作成する Power BI テナント内のワークスペースを選択します。
 
->	[AZURE.NOTE] お使いの Power BI アカウントでこのデータセットとテーブルを明示的に作成しないでください。これらは、Stream Analytics ジョブを開始し、そのジョブによって出力が Power BI に流し込まれるときに自動的に作成されます。ジョブ クエリから結果が返されない場合、データセットとテーブルは作成されません。
+>	[AZURE.NOTE] You should not explicitly create this dataset and table in your Power BI account. They will be automatically created when you start your Stream Analytics job and the job starts pumping output into Power BI. If your job query doesn’t return any results, the dataset and table will not be created.
 
 *	**[OK]**、**[接続のテスト]** の順にクリックします。これで、出力の構成は完了です。
 
->	[AZURE.WARNING] また、この Stream Analytics ジョブで提供したものと同じ名前のデータセットとテーブルが Power BI に既に存在する場合は、既存のデータが上書きされますので注意してください。
+>	[AZURE.WARNING] Also be aware that if Power BI already had a dataset and table with the same name as the one you provided in this Stream Analytics job, the existing data will be overwritten.
 
 
 ## クエリの記述
@@ -123,8 +124,8 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
     	TUMBLINGWINDOW(ss,1),
     	dspl
 
-    
-    
+
+
 ジョブを開始します。イベント ハブがイベントを受け取り、クエリによって予期された結果が生成されることを確認します。クエリによって行が出力されない場合、Power BI データセットとテーブルは自動的に作成されません。
 
 ## Power BI でのダッシュボードの作成
@@ -161,20 +162,20 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 
 このチュートリアルでは、データセットに 1 種類のグラフを作成する方法を示しましたが、Power BI は、組織の他の顧客のビジネス インテリジェンス ツールを作成するのに役立ちます。Power BI ダッシュボードの別の例については、[Power BI の概要](https://youtu.be/L-Z_6P56aas?t=1m58s)ビデオをご覧ください。
 
-Power BI 出力の構成と Power BI グループの利用の詳細については、「[Stream Analytics 出力について](stream-analytics-define-outputs.md "Stream Analytics 出力について")」の「[Power BI](stream-analytics-define-outputs.md#power-bi)」セクションを参照してください。Power BI を使用したダッシュボードの作成の詳細については、その他の役立つリソースとして、[Power BI プレビューのダッシュボード](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)に関する記事をご覧ください。
+Power BI 出力の構成と Power BI グループの利用の詳細については、「[Stream Analytics 出力について](stream-analytics-define-outputs.md "Stream Analytics 出力について")」の「[Power BI](stream-analytics-define-outputs.md#power-bi)」セクションを参照してください。Power BI を使用したダッシュボードの作成の詳細については、その他の役立つリソースとして、「[Power BI のダッシュボード](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)」を参照してください。
 
 ## 制限事項とベスト プラクティス
 
 Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing "Power BI の価格") で説明するように、同時実行性とスループットの制約の両方を採用しています。
 
 そのため必然的に、Power BI は、Azure Stream Analytics で大幅なデータ負荷の低減が見られるケースへと落ち着きます。データ プッシュが最大 1 プッシュ/秒になり、クエリがスループット要件の範囲内に収まるようにするために、TumblingWindow または HoppingWindow を使用することをお勧めします。次の式を使用して、現在のウィンドウに設定する値 (秒単位) を計算できます。
-  
+
 ![式 1](./media/stream-analytics-power-bi-dashboard/equation1.png)
-  
+
 たとえば、1 秒ごとにデータを送信する 1,000 台のデバイスがあるとします。1,000,000 行/時に対応する Power BI Pro SKU を使用しており、Power BI でデバイスごとの平均データを取得する場合、1 台のデバイスにつき最大 4 秒ごとに 1 回プッシュできます (次の式を参照)。
-  
+
 ![式 2](./media/stream-analytics-power-bi-dashboard/equation2.png)
-  
+
 つまり、元のクエリが次のように変更されます。
 
     SELECT
@@ -198,7 +199,7 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 
 ### 承認の更新
 
-Power BI 出力のあるすべてのジョブについて、90 日おきに認証トークンを手動で更新する必要があるという一時的な制限事項があります。また、ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要もあります。この問題の症状として、ジョブ出力が返されなかったり、操作ログで "ユーザーの認証エラー" が発生することが挙げられます。
+ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要があります。Azure Active Directory (AAD) テナント上で Multi-Factor Authentication (MFA) が構成されている場合は、Power BI の承認を 2 週間ごとに更新することも必要になります。この問題の症状として、ジョブ出力が返されないことや、操作ログで "ユーザーの認証エラー" が発生することが挙げられます。
 
 ![図 12][graphic12]
 
@@ -232,4 +233,4 @@ Power BI 出力のあるすべてのジョブについて、90 日おきに認�
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -13,12 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/08/2016"   
+	ms.date="04/14/2016"   
 	ms.author="adsolank;juliako;"/>
 
 
 # Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成
-
 
 ##概要
 
@@ -91,7 +90,7 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 
 ## サンプル コード
 
-次のプログラムは、以下を実行する方法を示しています。
+このプログラムでは次の方法を示します。
 
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
 1. 次の JSON プリセットを含む構成ファイルに基づくインデックス作成タスクを持つジョブを作成します。
@@ -288,4 +287,6 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+
+<!---HONumber=AcomDC_0420_2016-->
