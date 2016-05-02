@@ -196,7 +196,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
 1.	agent.zip をダウンロードします。これを行うには、次の手順を実行します。
 
-    a.****https://[your-VSTS-account-name].visualstudio.com** などチーム プロジェクトにサインインします。
+    a.**https://[your-VSTS-account-name].visualstudio.com** などチーム プロジェクトにサインインします。
 
     b.画面の右上隅にある歯車アイコンを選択します。
 

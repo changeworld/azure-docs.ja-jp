@@ -67,7 +67,7 @@
 「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](resource-group-create-service-principal-portal.md)」では、アプリケーションのセットアップに必要なすべての手順が示されています。次の特性を持つアプリケーションを作成するときは、このトピックをご覧ください。
 
 - **CloudSense** という名前の Web アプリケーションである
-- サインイン URL とアプリケーション ID URI が ****http://{domain_name_of_your_directory}/{name_of_the_app}** 形式である
+- サインイン URL とアプリケーション ID URI が **http://{domain_name_of_your_directory}/{name_of_the_app}** 形式である
 - アプリケーションへのサインインに認証キーを使用する
 - **Azure Service Management API** の委任されたアクセス許可として **Access Azure Service Management** を追加する**Azure Active Directory** の、**シングル サインオンを有効にし、ユーザーのプロファイルを読み取る**という既定の設定をそのまま使用する
 - マルチテナント アプリケーションである

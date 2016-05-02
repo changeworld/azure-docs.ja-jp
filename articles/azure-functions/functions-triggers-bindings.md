@@ -290,7 +290,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
 `connection` を空にすると、トリガーまたはバインドは、関数アプリ用に既定のストレージ アカウントを使用します。トリガーまたはバインドで別のストレージ アカウントを使用するには、使用するストレージ アカウントをポイントする関数アプリにアプリ設定を作成し、`connection` をアプリ設定名に設定します。アプリ設定を追加するには、次の手順を実行します。
 
-1. Azure ポータルの **[関数アプリ]** ブレードで、**[Function App Settings] (関数アプリの設定)、[Go to App Service Settings] (App Service の設定に移動)** の順にクリックします。
+1. Azure ポータルの **[関数アプリ]** ブレードで、**[Function App Settings] \(関数アプリの設定)、[Go to App Service Settings] \(App Service の設定に移動)** の順にクリックします。
 
 2. **[設定]** ブレードで、**[アプリケーション設定]** をクリックします。
 
@@ -820,7 +820,7 @@ function.json ファイルは、DocumentDB 入力バインドで使用するた�
 - `databaseName` : ドキュメントを含むデータベース。
 - `collectionName` : ドキュメントを含むコレクション。
 - `id` : 取得するドキュメントの ID。このプロパティは、"{queueTrigger}" と同類のバインドをサポートします。ここでは、ドキュメント ID としてキュー メッセージの文字列値を使用します。
-- `connection` : この文字列は、DocumentDB アカウントのエンドポイントに設定されたアプリケーション設定である必要があります。[Integrate] (統合) タブからアカウントを選択した場合、新しいアプリ設定が yourAccount\_DOCUMENTDB という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;.
+- `connection` : この文字列は、DocumentDB アカウントのエンドポイントに設定されたアプリケーション設定である必要があります。[Integrate] \(統合) タブからアカウントを選択した場合、新しいアプリ設定が yourAccount\_DOCUMENTDB という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;.
 - `direction : *"in"* に設定する必要があります。
 
 function.json の例:
@@ -1126,7 +1126,7 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 
 *DefaultFullSharedAccessSignature* の接続文字列を通知ハブに追加して、既存のハブの接続文字列を手動で追加することもできます。この接続文字列により、通知メッセージを送信するための関数アクセス権限が付与されます。*DefaultFullSharedAccessSignature* 接続文字列の値には、Azure ポータルの通知ハブ リソースのメイン ブレード内の **[keys]** (キー) ボタンからアクセスできます。ハブの接続文字列を手動で追加するには、次の手順を実行します。
 
-1. Azure ポータルの **[関数アプリ]** ブレードで、**[Function App Settings] (関数アプリの設定)、[Go to App Service Settings] (App Service の設定に移動)** の順にクリックします。
+1. Azure ポータルの **[関数アプリ]** ブレードで、**[Function App Settings] \(関数アプリの設定)、[Go to App Service Settings] \(App Service の設定に移動)** の順にクリックします。
 
 2. **[設定]** ブレードで、**[アプリケーション設定]** をクリックします。
 

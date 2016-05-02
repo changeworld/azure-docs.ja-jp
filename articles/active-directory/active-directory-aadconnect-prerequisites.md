@@ -50,7 +50,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 - カスタム設定のインストール パスを使用する場合は、[Active Directory 内のアカウント](active-directory-aadconnect-accounts-permissions.md)。
 
 ### Azure AD Connect サーバーの構成
-- グローバル管理者が MFA を有効にしている場合は、URL ****https://secure.aadcdn.microsoftonline-p.com** が信頼済みサイトの一覧に追加されている必要があります。追加されていない場合は、MFA チャレンジを求められる前に、この URL を信頼済みサイトの一覧に追加するように促されます。信頼済みサイトへの追加には、Internet Explorer を使用できます。
+- グローバル管理者が MFA を有効にしている場合は、URL **https://secure.aadcdn.microsoftonline-p.com** が信頼済みサイトの一覧に追加されている必要があります。追加されていない場合は、MFA チャレンジを求められる前に、この URL を信頼済みサイトの一覧に追加するように促されます。信頼済みサイトへの追加には、Internet Explorer を使用できます。
 
 ### 接続
 - Azure AD Connect サーバーには、イントラネット用とインターネット用の両方の DNS 解決が必要です。DNS サーバーは、オンプレミス Active Directory と Azure AD エンドポイントの両方の名前を解決できる必要があります。

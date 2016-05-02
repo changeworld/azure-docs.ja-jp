@@ -39,13 +39,13 @@ Spark クラスターに Zeppelin Notebook をインストールする方法と�
 
 ## クラスター作成の一部としての Zeppelin のインストール
 
-Zeppelin は、スクリプト アクションを使用して Spark クラスターにインストールできます。スクリプト アクションは、既定で使用できないクラスターにコンポーネントをインストールするためにカスタム スクリプトを使用します。Spark クラスターに Zeppelin をインストールするカスタム スクリプトは、****https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** で入手できます。
+Zeppelin は、スクリプト アクションを使用して Spark クラスターにインストールできます。スクリプト アクションは、既定で使用できないクラスターにコンポーネントをインストールするためにカスタム スクリプトを使用します。Spark クラスターに Zeppelin をインストールするカスタム スクリプトは、**https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** で入手できます。
 
 ### Azure ポータルの使用
 
 Zeppelin をインストールするスクリプト アクションを実行するために HDInsight .NET SDK を使用する方法については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-from-the-azure-portal)」を参照してください。その記事の手順は、いくつか変更する必要があります。
 
-* Zeppelin をインストールするために、スクリプトを使用する必要があります。使用するスクリプトは、****https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** です。
+* Zeppelin をインストールするために、スクリプトを使用する必要があります。使用するスクリプトは、**https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** です。
 
 * スクリプト アクションは、ヘッドノードでのみ実行する必要があります。
 
@@ -55,7 +55,7 @@ Zeppelin をインストールするスクリプト アクションを実行す�
 
 Zeppelin をインストールするスクリプト アクションを実行するために HDInsight .NET SDK を使用する方法については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-from-the-hdinsight-net-sdk)」を参照してください。その記事の手順は、いくつか変更する必要があります。
 
-* Zeppelin をインストールするために、スクリプトを使用する必要があります。使用するスクリプトは、****https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** です。
+* Zeppelin をインストールするために、スクリプトを使用する必要があります。使用するスクリプトは、**https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** です。
 
 * スクリプトにパラメーターは必要ありません。
 
@@ -191,7 +191,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	* **[パターン名]** - **zeppelinnotebook** - パターンのフレンドリ名です。
 
-	* **URL パターン** - ***hn0*** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン **hn0** を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
+	* **URL パターン** - **\*hn0*\** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン **hn0** を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
 
 		![foxyproxy のパターン](./media/hdinsight-apache-spark-use-zeppelin-notebook/foxypattern.png)
 
@@ -313,7 +313,7 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 
 ### ツールと拡張機能
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 

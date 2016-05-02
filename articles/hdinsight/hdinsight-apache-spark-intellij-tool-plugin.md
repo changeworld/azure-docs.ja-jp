@@ -40,7 +40,7 @@
 
 ## IntelliJ IDEA 用の HDInsight Tools プラグインのインストール
 
-1. IntelliJ IDEA の [Welcome] (ようこそ) 画面が表示されたら、**[Configure]** (構成) をクリックし、**[Plugins]** (プラグイン) をクリックします。
+1. IntelliJ IDEA の [Welcome] \(ようこそ) 画面が表示されたら、**[Configure]** (構成) をクリックし、**[Plugins]** (プラグイン) をクリックします。
 
 2. 次の画面の左下隅にある **[Browse Repositories]** (リポジトリの参照) をクリックします。**[Browse Repositories]** (リポジトリの参照) ダイアログ ボックスが開いたら、**HDInsight** を検索し、**[Microsoft Azure HDInsight Tools for IntelliJ (Preview)]** (Microsoft Azure HDInsight Tools for IntelliJ (プレビュー)) を選択して、**[Install]** (インストール) をクリックします。プラグインは、Scala プラグインに依存しています。そのため、Scala プラグインがインストールされていない場合は、Scala プラグインもインストールするように求められます。
 
@@ -80,7 +80,7 @@
 
 		![JAR の作成](./media/hdinsight-apache-spark-intellij-tool-plugin/create-jar-1.png)
 
-	3. JAR ファイルの名前を入力します (例: **MyClusterApp**)。[Available Elements] (使用可能な要素) ウィンドウで、**['MyClusterApp' compile output]** ('MyClusterApp' コンパイル出力) を右クリックし、**[Put into Output Root]** (出力ルートに入れる) をクリックします。
+	3. JAR ファイルの名前を入力します (例: **MyClusterApp**)。[Available Elements] \(使用可能な要素) ウィンドウで、**['MyClusterApp' compile output]** ('MyClusterApp' コンパイル出力) を右クリックし、**[Put into Output Root]** (出力ルートに入れる) をクリックします。
 
 		![JAR の作成](./media/hdinsight-apache-spark-intellij-tool-plugin/create-jar-2.png)
 

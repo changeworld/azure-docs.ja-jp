@@ -173,11 +173,11 @@ Keylight で Azure AD のシングル サインオンを構成してテストす
    
     j.**[セキュリティ構成の自動プロビジョニング]** として**[標準ユーザー構成]** を選択します。
    
-    k.[電子メール属性] テキストボックスに、「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
+    k.[電子メール属性] テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
 
-    l.**[名属性]** テキストボックスに、「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
+    l.**[名属性]** テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
 
-    m.**[姓属性]** テキストボックスに、「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
+    m.**[姓属性]** テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
 
     n.**[保存]** をクリックします。
    

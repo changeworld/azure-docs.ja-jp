@@ -55,7 +55,7 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 2. [Media Encoder Standard エンコーダーを使用して、H.264 MP4 アダプティブ ビットレート セットを生成します](media-services-dotnet-encode-with-media-encoder-standard.md)。
 3. [コンテンツをストリーミングします](media-services-deliver-content-overview.md)。
 
-- または -
+-または-
  
 1. 事前にエンコードされた MP4 ファイルをアップロードします。 
 

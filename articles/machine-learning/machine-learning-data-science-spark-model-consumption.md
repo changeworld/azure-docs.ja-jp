@@ -538,7 +538,7 @@ BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression\_2016-04-1917\_24\_
 
 Spark には、Livy と呼ばれるコンポーネントを使用して、REST インターフェイス経由でバッチ ジョブや対話型クエリをリモートから送信できるメカニズムが備えられています。HDInsight Spark クラスターでは Livy が既定で有効になっています。Livy の詳細については、「[Livy を使用して Spark ジョブをリモートで送信する](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。
 
-Livy を使用して、Azure BLOB に格納されているファイルをバッチ処理でスコア付けし、結果を別の BLOB に書き込むジョブをリモートから送信できます。それには、[Github](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。**Microsoft Azure ストレージ エクスプローラー**や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。この例では、スクリプトを ******wasb:///example/python/ConsumeGBNYCReg.py*** にアップロードしています。
+Livy を使用して、Azure BLOB に格納されているファイルをバッチ処理でスコア付けし、結果を別の BLOB に書き込むジョブをリモートから送信できます。それには、[Github](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。**Microsoft Azure ストレージ エクスプローラー**や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。この例では、スクリプトを ***wasb:///example/python/ConsumeGBNYCReg.py*** にアップロードしています。
 
 >AZURE.NOTE: 必要なアクセス キーは、Spark クラスターに関連付けられているストレージ アカウント用のポータルで見つけることができます。
 
