@@ -21,6 +21,11 @@
 
 # Azure での仮想マシンの復元
 
+> [AZURE.SELECTOR]
+- [Azure ポータルでの VM の復元](backup-azure-arm-restore-vms.md)
+- [クラシック ポータルでの VM の復元](backup-azure-restore-vms.md)
+
+
 Azure Backup コンテナーに格納されているバックアップから新しい VM に仮想マシンを復元するには、以下の手順を実行します。
 
 ## ワークフローの復元
@@ -57,7 +62,7 @@ Azure Backup コンテナーに格納されているバックアップから新�
 
 1. **[Select restore instance]** 画面で、仮想マシンを復元する場所の詳細を指定します。
 
-  - 仮想マシン名を指定する: 特定のクラウド サービスでは、仮想マシンの名前を一意にする必要があります。既存の仮想マシンを同じ名前に置き換える場合は、まず既存の仮想マシンとデータ ディスクを削除し、次に Azure バックアップからデータを復元します。
+  - 仮想マシン名を指定する: 特定のクラウド サービスでは、仮想マシンの名前を一意にする必要があります。既存の仮想マシンを同じ名前に置き換える場合は、まず既存の仮想マシンとデータ ディスクを削除し、次に Azure Backup からデータを復元します。
   - 仮想マシンのクラウド サービスを選択する: これは仮想マシンを作成するために必須です。既存のクラウド サービスを使用するか、新しいクラウド サービスを作成するかを選択できます。
 
         クラウド サービス名はどのようなものであれグローバルに一意である必要があります。クラウド サービス名は通常、[cloudservice].cloudapp.net の形式で公開される URL に紐付けられます。Azure では、名前がすでに使用されている場合は新しいクラウド サービスを作成できません。新しいクラウド サービスの選択でクラウド サービスを作成する場合、仮想マシンと同じ名前になります。ここで選択された VM 名は関連するクラウド サービスに使うことができる、一意のものである必要があります。
@@ -135,7 +140,7 @@ PowerShell には仮想マシンを作成する機能はなく、バックアッ
 
 2. PowerShell コマンドレットを使用して、ロード バランサー、複数の NIC、複数の予約済み IP に必要な VM 構成を作成し、その構成を使用して、目的の構成の VM を作成します。
 	- [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用してクラウド サービスに VM を作成する
-	- [インターネットに接続するロード バランサー](https://azure.microsoft.com/ja-JP/documentation/articles/load-balancer-internet-getstarted/)に接続する VM を作成する
+	- [インターネットに接続するロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/)に接続する VM を作成する
 	- [NIC が複数](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/)ある VM を作成する
 	- [予約済み IP が複数](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/)ある VM を作成する
 
@@ -144,4 +149,4 @@ PowerShell には仮想マシンを作成する機能はなく、バックアッ
 - [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
 - [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

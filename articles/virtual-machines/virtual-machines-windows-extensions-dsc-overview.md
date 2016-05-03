@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="01/25/2016"
+   ms.date="04/18/2016"
    ms.author="zachal"/>
 
 # Azure Desired State Configuration 拡張機能ハンドラーの概要 #
@@ -144,4 +144,4 @@ PowerShell DSC で管理できる追加機能については、[PowerShell ギ�
 
 機微なパラメーターを構成に渡す方法の詳細については、「[Passing credentials to the Azure DSC extension handler (資格情報を Azure DSC 拡張機能ハンドラーに渡す)](virtual-machines-windows-extensions-dsc-credentials.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

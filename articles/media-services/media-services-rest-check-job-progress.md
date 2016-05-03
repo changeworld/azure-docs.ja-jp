@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016"    
 	ms.author="juliako"/>
 
 #方法: ジョブの進行状況をチェックする
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-portal-check-job-progress.md)
+- [ポータル](media-services-portal-check-job-progress.md)
 - [.NET](media-services-check-job-progress.md)
-- [REST](media-services-rest-check-job-progress.md)
+- [REST ()](media-services-rest-check-job-progress.md)
 
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。ジョブの状態プロパティを使用して、ジョブの状態を調べることができます。状態プロパティの詳細については、[Job Entity Properties (Job エンティティのプロパティ)](https://msdn.microsoft.com/library/azure/5100ddd7-92ff-4c37-84d2-4f84fee250a7#job_entity_properties)をご覧ください。
 
@@ -64,4 +64,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

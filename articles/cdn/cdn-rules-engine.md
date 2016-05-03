@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="04/15/2016" 
 	ms.author="casoper"/>
 
 # 規則エンジンを使用して既定の HTTP 動作をオーバーライドする
 
 ## 概要
 
-規則エンジンでは、特定の種類のコンテンツの配信のブロック、キャッシュ ポリシーの定義、HTTP ヘッダーの変更など、HTTP 要求の処理方法をカスタマイズできます。このチュートリアルでは、CDN 資産のキャッシュ動作を変更するルールの作成について説明します。
+規則エンジンでは、特定の種類のコンテンツの配信のブロック、キャッシュ ポリシーの定義、HTTP ヘッダーの変更など、HTTP 要求の処理方法をカスタマイズできます。このチュートリアルでは、CDN 資産のキャッシュ動作を変更するルールの作成について説明します。また、「[関連項目](#see-also)」セクションではビデオ コンテンツもご覧いただけます。
 
 > [AZURE.NOTE] 規則エンジンは、Premium CDN 層の機能です。Standard CDN と Premium CDN の機能の比較については、「[Azure CDN の概要](cdn-overview.md)」を参照してください。
 
@@ -63,10 +63,7 @@
 - 複数の規則が表示される順序は、これらの規則の処理方法に影響します。前の規則で指定したアクションは、後続の規則でオーバーライドされます。
 
 ## 関連項目
+* [Azure Friday: Azure CDN に新しく追加された強力な Premium 機能](../../videos/azure-cdns-powerful-new-premium-features/) (ビデオ)
 * [ルール エンジンの一致条件と機能詳細](cdn-rules-engine-details.md)
-* [Azure CDN の概要](cdn-overview.md)
-* [Microsoft Azure CDN でのリアルタイム統計情報](cdn-real-time-stats.md)
-* [詳細な HTTP レポート](cdn-advanced-http-reports.md)
-* [Edge のパフォーマンスの分析](cdn-edge-performance.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

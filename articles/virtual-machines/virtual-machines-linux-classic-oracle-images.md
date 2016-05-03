@@ -1,13 +1,21 @@
-<properties" pageTitle="title="Oracle VM イメージの一覧 | Microsoft Azure" description="Azure Gallery の Oracle イメージの一覧を取得し、Oracle 仮想マシンを作成する方法を習得します。" services="virtual-machines-linux" documentationCenter="" authors="vturecek" manager="" editor="" tags="azure-service-management, azure-resource-manager"/>
+<properties
+  pageTitle="Oracle VM イメージの一覧 |Microsoft Azure"
+  description="Azure ギャラリーで Oracle イメージの一覧を取得し、Oracle 仮想マシンを作成する方法について説明します。"
+  services="virtual-machines-linux"
+  documentationCenter=""
+  authors="bbenz"
+  manager=""
+  editor=""
+  tags="azure-service-management, azure-resource-manager"/>
 
 <tags
-ms.service="virtual-machines-linux"
-ms.devlang="na"
-ms.topic="article"
-ms.tgt_pltfrm="vm-linux"
-ms.workload="infrastructure-services"
-ms.date="06/22/2015"
-ms.author="vturecek" />
+  ms.service="virtual-machines-linux"
+  ms.devlang="na"
+  ms.topic="article"
+  ms.tgt_pltfrm="vm-linux"
+  ms.workload="infrastructure-services"
+  ms.date="06/22/2015"
+  ms.author="bbenz" />
 
 #Oracle 仮想マシン イメージの一覧
 
@@ -15,4 +23,4 @@ ms.author="vturecek" />
 
 [AZURE.INCLUDE [virtual-machines-common-classic-oracle-images](../../includes/virtual-machines-common-classic-oracle-images.md)]
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

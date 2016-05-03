@@ -40,6 +40,7 @@
 ## 南アメリカ
 
 - サンパウロ
+- リオデジャネイロ
 - キト
 - メデジン
 - ブエノス アイレス
@@ -84,4 +85,4 @@
 
 Microsoft は、[Akamai とパートナー関係を結びました](https://azure.microsoft.com/blog/microsoft-and-akamai-bring-cdn-to-azure-customers/)。このパートナー関係を利用し、これから数か月間をかけて Azure CDN のサービス提供範囲を世界中に広げる予定です。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

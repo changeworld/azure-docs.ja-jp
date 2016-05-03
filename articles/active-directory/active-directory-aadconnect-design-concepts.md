@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="Identity"
-   ms.date="02/16/2016"
+   ms.date="04/20/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: 設計概念
@@ -36,6 +36,7 @@ sourceAnchor 属性は、*オブジェクトの有効期間中に変更できな
 属性の値は、次の規則に従う必要があります。
 
 - 60 文字未満であること
+    - a ～ z、A ～ Z、0 ～ 9 のいずれでもない文字はエンコードされ、3 文字としてカウントされます。
 - 次の特殊文字が含まれていないこと: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ \_
 - グローバルに一意であること
 - 文字列、整数、バイナリのいずれかであること
@@ -67,4 +68,4 @@ Azure AD でオブジェクトを作成して、ID を同期した後に、sourc
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

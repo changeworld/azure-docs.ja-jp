@@ -1,22 +1,37 @@
-<properties pageTitle="リソース マネージャーを使用して VPN Gateway の強制トンネリングを構成する | Microsoft Azure" description="仮想ネットワークにクロスプレミス VPN Gateway を使用していればリダイレクトしたり、インターネット宛てのすべてのトラフィックをオンプレミスの場所に戻るように "強制" したりできます。この記事は、リソース マネージャー デプロイメント モデルを対象としています。" services="vpn-gateway" documentationCenter="na" authors="cherylmc" manager="carolz" editor="" tags="azure-resource-manager"/>
-<tags  
+<properties 
+   pageTitle="Resource Manager を使用して VPN Gateway の強制トンネリングを構成する | Microsoft Azure"
+   description="仮想ネットワークとクロスプレミスの VPN Gateway が存在する場合、インターネットに向かうすべてのトラフィックをオンプレミスのロケーションにリダイレクトする (強制的に戻す) ことができます。この記事は、リソース マネージャーのデプロイ モデルに適用されます。"
+   services="vpn-gateway"
+   documentationCenter="na"
+   authors="cherylmc"
+   manager="carmonm"
+   editor=""
+   tags="azure-resource-manager"/>
+<tags 
    ms.service="vpn-gateway"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="11/17/2015"
+   ms.date="04/12/2016"
    ms.author="cherylmc" />
 
 # PowerShell および Azure リソース マネージャーを使用した強制トンネリングの構成
 
 > [AZURE.SELECTOR]
-- [PowerShell - Service Management](vpn-gateway-about-forced-tunneling.md)
+- [PowerShell - サービス管理](vpn-gateway-about-forced-tunneling.md)
 - [PowerShell - Resource Manager](vpn-gateway-forced-tunneling-rm.md)
 
-この記事は、Azure リソース マネージャー デプロイメント モデルを使用して作成された VNet および VPN ゲートウェイを対象としています。サービス管理 (別名、クラシック デプロイメント モデル) を利用して作成された VNet の強制トンネリングを構成する場合、「[強制トンネリングの構成](vpn-gateway-about-forced-tunneling.md)」を参照してください。
+この記事は、Azure リソース マネージャー デプロイメント モデルを使用して作成された VNet および VPN ゲートウェイを対象としています。
 
-[AZURE.INCLUDE [vpn-gateway-sm-rm](../../includes/vpn-gateway-sm-rm-include.md)]
+**Azure のデプロイ モデルについて**
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+**強制トンネリングに使用されるデプロイ モデルとツール**
+
+[AZURE.INCLUDE [vpn-gateway-table-forced-tunneling](../../includes/vpn-gateway-table-forcedtunnel-include.md)]
+
 
 ## 強制トンネリングについて
 
@@ -52,16 +67,17 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 次の手順は、リソース グループと VNet の作成に役立ちます。その後、VPN Gateway を作成し、強制トンネリングを構成します。
 
-この例では、仮想ネットワークである ”MultiTier-VNet” には、*Frontend*、*Midtier*、および*Backend* の 3 つのサブネットがあり、 *DefaultSiteHQ*、および 3 つの*Branch* の計 4 つのクロス プレミス接続があります。以下の手順で *DefaultSiteHQ* を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように *Midtier* と *Backend* を構成します。
+この例では、仮想ネットワークである "MultiTier-VNet" には、*Frontend*、*Midtier*、*Backend* の 3 つのサブネットがあり、 *DefaultSiteHQ*、および 3 つの *Branch* の計 4 つのクロス プレミス接続があります。以下の手順で *DefaultSiteHQ* を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように *Midtier* と *Backend* を構成します。
 
 	
 ### 作業を開始する前に
 
 構成を開始する前に、以下がそろっていることを確認します。
 
-- Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+- Azure サブスクリプション。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-- Azure PowerShell コマンドレット (1.0 以上)。この構成に必要なコマンドレットは、1.0 より前のバージョンにはありません。このバージョンは、[ダウンロード ページ](https://azure.microsoft.com/downloads/)の「Windows PowerShell」セクションからダウンロードしてインストールできます。PowerShell のインストールと構成の詳細については、[Microsoft Azure PowerShell のインストールおよび構成の方法](../powershell-install-configure.md)に関するページを参照してください。
+- Azure Resource Manager PowerShell コマンドレット (1.0 以降) の最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+
 
 ### 構成の手順
 
@@ -75,7 +91,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 2. 使用するサブスクリプションを指定します。
 
-		Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+		Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 		
 3. リソース グループを作成します。
 
@@ -134,4 +150,4 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 		Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
 		
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

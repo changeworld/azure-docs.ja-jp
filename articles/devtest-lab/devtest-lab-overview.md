@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/30/2016"
+	ms.date="04/19/2016"
 	ms.author="tarcher"/>
 
 #DevTest ラボとは
@@ -66,4 +66,4 @@ DevTest Lab を使用することで、チームがアプリケーションの�
 
 DevTest ラボの使用を開始するには、次の「 [Azure DevTest ラボの作成](devtest-lab-create-lab.md)」のステップ バイ ステップ チュートリアルに従います。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -3,7 +3,7 @@
 	description="エラスティック データベース クライアント ライブラリを使用して複数のシャードを対象にクエリを実行します。" 
 	services="sql-database" 
 	documentationCenter="" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="torsteng" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
-	ms.author="torsteng;sidneyh"/>
+	ms.date="04/12/2016" 
+	ms.author="torsteng"/>
 
 # マルチシャード クエリ実行
 
@@ -24,16 +24,12 @@
 
 ## 概要
 
-[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用してシャードを管理できます。ライブラリには、1 つのクエリと結果を使用して複数のシャードを照会する機能を提供する、**Microsoft.Azure.SqlDatabase.ElasticScale.Query** と呼ばれる新しい名前空間が採用されています。この名前空間により、シャードのコレクションに対するクエリ抽象化が提供されます。また、多数のシャードを照会したときのエラーを処理するための代替実行ポリシー (具体的には、部分的な結果) も提供されます。
-
-マルチシャード クエリ実行へのメインのエントリ ポイントは、**MultiShardConnection** クラスです。データ依存ルーティングと同様に、API は、****[System.Data.SqlClient](http://msdn.microsoft.com/library/System.Data.SqlClient(v=vs.110).aspx)** のクラスとメソッドの慣れ親しんだ操作法を継承しています。**SqlClient** ライブラリの場合、最初に **SqlConnection** を作成し、接続の **SqlCommand** を作成します。次に、**Execute** メソッドのいずれかを使用してコマンドを実行します。最後に、**SqlDataReader** で、コマンドの実行から返された結果セットを反復処理します。複数シャード クエリ API を操作するには、次の手順に従います。
-
-1. **MultiShardConnection** を作成する。
-2. **MultiShardConnection** の **MultiShardCommand** を作成する。
-3. コマンドを実行する。
-4. **MultiShardDataReader** を介して結果を使用する。 
-
-主な相違点は、マルチシャード接続の構築です。**SqlConnection** が単一のデータベースに作用する一方、**MultiShardConnection** は入力として***シャードのコレクション***を受け取ります。シャードのコレクションは、シャード マップから設定できます。次に、**UNION ALL** セマンティクスを使用してシャードのコレクションに対するクエリを実行して、単一の全体的な結果を生成します。必要に応じて、コマンドの **ExecutionOptions** プロパティを使用して、行の元になっているシャードの名前を出力に追加できます。
+1. [**TryGetRangeShardMap**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)、[**TryGetListShardMap**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx)、または [**GetShardMap**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx) メソッドを使用して、[**RangeShardMap**](https://msdn.microsoft.com/library/azure/dn807318.aspx) または [**ListShardMap**](https://msdn.microsoft.com/library/azure/dn807370.aspx) を取得する。「[**ShardMapManager の作成**](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager)」と「[**RangeShardMap または ListShardMap の取得**](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap)」を参照してください。
+2. **[MultiShardConnection](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection.aspx)** オブジェクトを作成する。
+2. **[MultiShardCommand](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.aspx)** を作成する。 
+3. **[CommandText プロパティ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.commandtext.aspx#P:Microsoft.Azure.SqlDatabase.ElasticScale.Query.MultiShardCommand.CommandText)**に T-SQL コマンドを設定する。
+3. **[ExecuteReader メソッド](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.executereader.aspx)**を呼び出してコマンドを実行する。
+4. **[MultiShardDataReader クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader.aspx)**を使用して結果を表示する。 
 
 ## 例
 
@@ -62,7 +58,9 @@
              	} 
            } 
     } 
+
  
+主な相違点は、マルチシャード接続の構築です。**SqlConnection** が単一のデータベースに作用する一方、**MultiShardConnection** は入力として***シャードのコレクション***を受け取ります。シャードのコレクションは、シャード マップから設定します。次に、**UNION ALL** セマンティクスを使用してシャードのコレクションに対するクエリを実行して、単一の全体的な結果を生成します。必要に応じて、コマンドの **ExecutionOptions** プロパティを使用して、行の元になっているシャードの名前を出力に追加できます。
 
 ここで、**myShardMap.GetShards()** の呼び出しに注目してください。このメソッドは、シャード マップからすべてのシャードを取得し、すべての関連データベースを対象にクエリを実行する簡単な方法を提供します。マルチシャード クエリのためのシャードのコレクションは、**myShardMap.GetShards()** 呼び出しから返されたコレクションに対して LINQ クエリを実行することによって、さらに絞り込むことができます。部分的な結果のポリシーとの組み合わせにおいて、マルチシャード クエリ実行の現在の機能は、数十から最大で数百のシャードで適切に動作するように設計されています。
 
@@ -70,9 +68,16 @@
 
 ## マルチシャード クエリと分割/マージ操作
 
-マルチシャード クエリでは、照会されたデータベース上のシャードレットが進行中の分割/マージ操作に参加しているかどうかは確認されません。(「[Elastic Database 分割/マージ ツールを使用したスケーリング](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください。) そのため、同じマルチシャード クエリ内で複数のデータベースに対して同じシャードレットの行が表示される不整合が発生する可能性があります。これらの制限を考慮したうえで、マルチシャード クエリを実行するときは、進行中の分割/マージ操作とシャード マップへの変更をドレインすることを検討してください。
+マルチシャード クエリでは、照会されたデータベース上のシャードレットが進行中の分割/マージ操作に参加しているかどうかは確認されません。(「[Elastic Database 分割/マージ ツールを使用したスケーリング](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください)。 そのため、同じマルチシャード クエリ内で複数のデータベースに対して同じシャードレットの行が表示される不整合が発生する可能性があります。これらの制限を考慮したうえで、マルチシャード クエリを実行するときは、進行中の分割/マージ操作とシャード マップへの変更をドレインすることを検討してください。
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+
+## 関連項目
+**[System.Data.SqlClient](http://msdn.microsoft.com/library/System.Data.SqlClient.aspx)** のクラスとメソッド。
+
+
+[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用してシャードを管理します。ライブラリには、[Microsoft.Azure.SqlDatabase.ElasticScale.Query](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.aspx) と呼ばれる名前空間があり、これを使用すると、1 つのクエリと結果を使用して複数のシャードを照会できます。この名前空間により、シャードのコレクションに対するクエリ抽象化が提供されます。また、多数のシャードを照会したときのエラーを処理するための代替実行ポリシー (具体的には、部分的な結果) も提供されます。
+
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

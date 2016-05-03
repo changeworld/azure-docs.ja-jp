@@ -18,7 +18,7 @@
 	ms.author="nitinme"/>
 
 
-# Azure HDInsight での BI ツールと Apache Spark の使用 (Windows)
+# HDInsight Windows での BI ツールと Apache Spark の使用 (プレビュー)
 
 > [AZURE.NOTE] HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Linux 上の Spark クラスターで BI ツールを使用する方法については、「[Azure HDInsight (Linux) での BI ツールと Apache Spark の使用 (Linux)](hdinsight-apache-spark-use-bi-tools.md)」を参照してください。
 
@@ -214,4 +214,4 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

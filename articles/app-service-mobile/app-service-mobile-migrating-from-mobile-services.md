@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/11/2016"
+	ms.date="04/14/2016"
 	ms.author="adrianhall"/>
 
 # <a name="article-top"></a>既存の Azure Mobile Service を Azure App Service に移行する
@@ -38,44 +38,20 @@ Microsoft では、次のような Azure App Service の機能を最大限に活
 
 Azure App Service の利点の詳細については、[Mobile Services と App Service の比較]に関するトピックを参照してください。
 
-## <a name="why-not-migrate"></a>サイトを移行しない理由
-
-次のような場合、Azure Mobile Services を今すぐ移行するべきではありません。
-
-  *  現在、忙しい時期にあり、現時点ではサイトを再起動する余裕がない。
-  *  移行プロセスをテストする前に本稼動サイトを変更することを望まない。
-  *  Free または Basic 価格レベルのサイトを複数所有しているとき、すべてのサイトを同時に移行することを望まない。
-
-忙しい時期であれば、保守管理の予定期間中に移行を計画してください。移行プロセスの一環としてサイトが再起動します。一時的にサイトが利用できなくなる可能性があります。
-
-この一覧のほとんどの項目には回避策があります。詳細については、「[開始する前に](#before-you-begin)」セクションを参照してください。
-
 ## <a name="before-you-begin"></a>開始する前に
 
-サイトを移行する前に次の手順を行ってください。
+サイトに対する大規模な作業に着手する前に、SQL データベースと[モバイル サービス スクリプトをバックアップする]必要があります。
 
-  *  [モバイル サービス スクリプトをバックアップし]、SQL データベースをバックアップする
-  *  (省略可能) モバイル サービス層を Standard に格上げする
-
-本稼動サイトを移行する前に移行プロセスをテストする場合、本稼動の Azure Mobile Service を複製し (データ ソースのコピーを含む完全な複製)、新しい URL に対して移行をテストします。また、移行されたサイトを適切にテストするには、テスト サイトを指すテスト クライアント実装が必要になります。
-
-### <a name="opt-raise-service-tier"></a>(省略可能) モバイル サービス層を Standard に格上げする
-
-ホスティング プランを共有するすべての Mobile Services サイトは同時に移行されます。Free または Basic 価格レベルの Mobile Services は、価格レベルと [Azure リージョン]が同じ他のサービスとホスティング プランを共有します。モバイル サービスが Standard 価格レベルで動作している場合、それは独自のホスティング プランに配置されています。Free または Basic 価格レベルのサイトを個別に移行する場合、モバイル サービスの価格レベルを一時的に Standard にアップグレードします。これはモバイル サービスの [スケール] メニューで設定できます。
-
-  1.  [Azure クラシック ポータル]にログオンします。
-  2.  モバイル サービスを選択します。
-  3.  **[スケール アップ]** タブを選択します。
-  4.  **[モバイル サービス層]** で **[STANDARD]** 層をクリックします。ページの下部にある **[保存]** アイコンをクリックします。
-
-移行後、価格レベルを適切な設定に必ず戻してください。
+実稼働サイトを移行する前に移行プロセスをテストする場合、新しい [Azure リージョン]で実稼働の Azure モバイル サービスを複製し (データ ソースのコピーを含む完全な複製)、新しい URL に対して移行をテストします。また、移行されたサイトを適切にテストするには、テスト サイトを指すテスト クライアント実装が必要になります。
 
 ## <a name="migrating-site"></a>サイトを移行する
+
+この移行プロセスでは、単一の Azure リージョン内のすべてのサイトを移行します。
 
 サイトを移行するには:
 
   1.  [Azure クラシック ポータル]にログオンします。
-  2.  モバイル サービスを選択します。
+  2.  移行するリージョン内のモバイル サービスを選択します。
   3.  **[App Service に移行する]** ボタンをクリックします。
 
     ![[移行] ボタン][0]
@@ -84,9 +60,7 @@ Azure App Service の利点の詳細については、[Mobile Services と App S
   5.  ボックスにモバイル サービスの名前を入力します。たとえば、ドメイン名が「contoso.azure-mobile.net」の場合、ボックスに「_contoso_」と入力します。
   6.  チェック マーク ボタンをクリックします。
 
-Free または Basic 価格レベルのモバイル サービスを移行すると、その価格レベルのすべてのモバイル サービスが同時に移行されます。移行の間、Standard に[モバイルサービスを格上げする](#opt-raise-service-tier)ことでこれを回避できます。
-
-利用状況モニターで移行の状態を監視できます。サイトは Azure クラシック ポータルに「 *移行中* 」として一覧表示されます。
+利用状況モニターで移行の状態を監視できます。サイトは Azure クラシック ポータルに「*移行中*」として一覧表示されます。
 
   ![移行アクティビティ モニター][1]
 
@@ -247,7 +221,7 @@ Mobile Services の _[API]_ タブは Azure ポータルでは _[API の簡単�
 
   1. [Azure ポータル]にログインします。
   2. **[参照]** を選択し、_[フィルター]_ ボックスに「**Schedule**」と入力し、**[Scheduler コレクション]** を選択します。
-  3. サイトのジョブ コレクションを選択します。ジョブ コレクションには、_サイト名_-Jobs という名前が付けられています。
+  3. サイトのジョブ コレクションを選択します。ジョブ コレクションには、_サイト名_-Jobs という名前が付けられます。
   4. **[設定]** をクリックします。
   5. [管理] の **[スケジューラ ジョブ]** をクリックします。
 
@@ -274,14 +248,20 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 通知ハブは [Azure ポータル]経由で管理されます。Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
 
   1. [Azure ポータル]にログインします。
-  2. **[参照]** > **\[Notification Hubs]** の順に選択します。
+  2. **[参照]** > \[Notification Hubs] の順に選択します。
   3. モバイル サービスに関連付けられている通知ハブの名前をクリックします。
 
 > [AZURE.NOTE] 「Mixed」タイプの場合、通知ハブは表示されません。「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。[Mixed 名前空間を変換する]必要があります。変換が完了すると、通知ハブが [Azure ポータル]に表示されます。
 
 詳細については、[Notification Hubs] ドキュメントを確認してください。
 
-> [AZURE.TIP] "[Azure ポータル]"の Notification Hubs 管理機能はまだプレビュー段階です。 [Azure クラシック ポータル]で引き続きすべての Notification Hubs を管理できます。
+> [AZURE.TIP] [Azure ポータル]の Notification Hubs 管理機能はまだプレビュー段階です。 [Azure クラシック ポータル]で引き続きすべての Notification Hubs を管理できます。
+
+### <a name="legacy-push"></a>従来のプッシュ設定
+
+Notification Hubs での導入前にモバイル サービスでプッシュを構成した場合、使われているのは_従来のプッシュ_です。プッシュを使用しており、構成に通知ハブが表示されていない場合は、_従来のプッシュ_が使われているものと思われます。この機能は、その他すべての機能と共に移行されますが、引き続き利用できます。ただし、移行の完了後すぐに Notification Hubs にアップグレードすることをお勧めします。
+
+それまでの間、従来のプッシュ設定はすべて [アプリ設定] で利用できます (大きな例外は APNs 証明書)。APNs 証明書は、サイトで適切なファイルを置き換えることで置き換え可能です。それには、Azure App Service 向けのいずれかのデプロイ オプションを使います。
 
 ### <a name="app-settings"></a>その他のアプリ設定
 
@@ -396,9 +376,9 @@ Azure PowerShell を使用して、移行したモバイル サービスを複�
 [Notification Hubs]: ../notification-hubs/notification-hubs-overview.md
 [パフォーマンス監視]: ../app-service-web/web-sites-monitor.md
 [Postman]: http://www.getpostman.com/
-[モバイル サービス スクリプトをバックアップし]: ../mobile-services/mobile-services-disaster-recovery.md
+[モバイル サービス スクリプトをバックアップする]: ../mobile-services/mobile-services-disaster-recovery.md
 [ステージング スロット]: ../app-service-web/web-sites-staged-publishing.md
 [VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

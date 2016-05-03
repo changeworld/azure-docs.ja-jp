@@ -3,7 +3,7 @@
    description="Azure PowerShell を使用して、Data Lake Store アカウントを作成し、U-SQL を使用して Data Lake Analytics ジョブを作成してから、ジョブを送信する方法について説明します。" 
    services="data-lake-analytics" 
    documentationCenter="" 
-   authors="mumian" 
+   authors="edmacauley" 
    manager="paulettm" 
    editor="cgronlun"/>
  
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="12/01/2015"
-   ms.author="jgao"/>
+   ms.date="04/21/2016"
+   ms.author="edmaca"/>
 
 # チュートリアル: Azure PowerShell で Azure Data Lake Analytics の使用を開始する
 
@@ -24,22 +24,14 @@ Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを�
 
 このチュートリアルでは、タブ区切り値 (TSV) ファイルを読み取り、それをコンマ区切り値 (CSV) ファイルに変換するジョブを開発します。サポートされている他のツールを使用する同じチュートリアルを読み進めるには、このセクションの上部にあるタブをクリックします。
 
-**基本的な Data Lake Analytics のプロセス:**
+[AZURE.INCLUDE [basic-process-include](../../includes/data-lake-analytics-basic-process.md)]
 
-![Azure Data Lake Analytics プロセスのフロー図](./media/data-lake-analytics-get-started-portal/data-lake-analytics-process.png)
-
-1. Data Lake Analytics アカウントを作成します。
-2. ソース データを準備します。Data Lake Analytic ジョブでは、Azure Data Lake Store アカウントまたは Azure Blob Storage アカウントからデータを読み取ることができます。   
-3. U-SQL スクリプトを開発します。
-4. ジョブ (U-SQL スクリプト) を Data Lake Analytics アカウントに送信します。ジョブはソース データから読み取り、U-SQL スクリプトで指示されたとおりにデータを処理して、Data Lake Store アカウントまたは BLOB ストレージ アカウントに出力を保存します。
-
-
-**前提条件**
+##前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- **Azure PowerShell を実行できるワークステーション**。「[Azure リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager.md#prerequisites)」の「前提条件」セクションを参照してください。
+- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 	
 ##Data Lake Analytics アカウントを作成する
 
@@ -217,4 +209,4 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0427_2016-->

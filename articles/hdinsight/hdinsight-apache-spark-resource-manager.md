@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="04/14/2016" 
 	ms.author="nitinme"/>
 
 
-# Azure HDInsight (Linux) での Apache Spark クラスターのリソースの管理
+# HDInsight Linux での Apache Spark クラスターのリソースの管理 (プレビュー)
 
 Azure HDInsight (Linux) の Spark には、クラスター リソースの管理とクラスターの正常性の監視を行うための Ambari Web UI が用意されています。クラスターで実行したアプリケーションを追跡するために、Spark History Server を使用することもできます。クラスターで現在実行されているアプリケーションを監視するには、YARN UI を使用することができます。この記事では、これらの UI にアクセスする手順と、これらのインターフェイスを使用して基本的なリソース管理タスクを実行する手順について説明します。
 
@@ -138,4 +138,4 @@ Spark クラスターで現在実行されているアプリケーションを�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

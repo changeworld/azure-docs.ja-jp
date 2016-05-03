@@ -25,6 +25,8 @@
 
 この記事では、HDInsight での Azure CLI の使用についてのみ説明します。Azure CLI の使用方法に関する一般的なガイドについては、「[Azure CLI のインストールと構成][azure-command-line-tools]」を参照してください。
 
+[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+
 ##前提条件
 
 この記事を読み始める前に、次の項目を用意する必要があります。
@@ -47,7 +49,7 @@
 	
 ##クラスターの作成
 
-「[Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)」をご覧ください。
+「[Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)」を参照してください。
 
 ##クラスターの一覧と詳細の表示
 クラスターの一覧と詳細を表示するには、次のコマンドを使用します。
@@ -106,4 +108,4 @@ Hadoop クラスターのサイズを変更するには:
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="09/01/2015"
+   ms.date="03/29/2016"
    ms.author="kundanap"/>
 
 # Windows VM 拡張機能を使用した Azure Resource Manager テンプレートの作成
@@ -52,4 +52,4 @@ VM の拡張機能を使用して完成したテンプレートを取得する�
 
 テンプレートを作成したら、Azure PowerShell を使用してそのテンプレートをデプロイできます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

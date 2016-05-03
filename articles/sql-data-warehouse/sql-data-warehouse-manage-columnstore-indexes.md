@@ -123,7 +123,7 @@ WHERE	[table_name] = 'FactInternetSales'
 | [OPEN\_rowgroup\_rows\_MIN] | 開いているグループは、テーブルに読み込まれたデータが少量であることか、以前の読み込みで残りの行がこの行グループにあふれたことを示します。MIN、MAX、AVG の各列を使用して、開いている行グループに含まれるデータ量を確認します。テーブルが小さい場合は、100% になることもあります。 この場合は、ALTER INDEX REBUILD でデータを列ストアに強制的に移動します。 |
 | [OPEN\_rowgroup\_rows\_MAX] | 上記と同じ。 |
 | [OPEN\_rowgroup\_rows\_AVG] | 上記と同じ。 |
-| [CLOSED\_rowgroup\_rows] | サニティ チェックとして、終了した行グループの行を確認します。If there |
+| [CLOSED\_rowgroup\_rows] | サニティ チェックとして、終了した行グループの行を確認します。 |
 | [CLOSED\_rowgroup\_count] | 終了した行グループの数は少なくします (値が示されている場合)。終了した行グループを圧縮行グループに変換するには、ALTER INDEX ...REORGANISE コマンドを使用します。ただし、通常、これは必要ありません。終了したグループを自動的に列ストアの行グループに変換するには、バックグラウンドの "組ムーバー" プロセスを使用します。 |
 | [CLOSED\_rowgroup\_rows\_MIN] | 終了した行グループのフィル レートは非常に高くなります。終了した行グループのフィル レートが低い場合は、列ストアをさらに分析する必要があります。 |
 | [CLOSED\_rowgroup\_rows\_MAX] | 上記と同じ。 |
@@ -259,4 +259,4 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

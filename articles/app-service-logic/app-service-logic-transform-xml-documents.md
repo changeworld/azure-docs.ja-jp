@@ -2,7 +2,7 @@
 	pageTitle="Azure App Service のロジック アプリでの BizTalk 変換の使用 | Microsoft Azure" 
 	description="あるスキーマから別のスキーマへ XML ドキュメントを変換する方法について説明します" 
 	authors="anuragdalmia" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="app-service\logic" 
 	documentationCenter=""/>
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/18/2016"
+	ms.date="04/20/2016"
 	ms.author="anuragdalmia"/>
 
 # BizTalk 変換
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 ## 概要
 BizTalk Transform API は、データの形式を変換します。たとえば、注文書から出荷先住所と請求先住所を取得して、請求書ドキュメントに挿入する場合などです。または、受信メッセージに *YearMonthDay* 形式で現在の日付が含まれる場合、*MonthDayYear* 形式に日付の書式設定を変更する必要があります。
@@ -117,4 +117,4 @@ API Apps の概要ページから、SQL、SAP、SharePoint などのコネクタ
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -4,7 +4,7 @@
    services=""
    documentationCenter="Azure"
    authors="erihur"
-   manager="kareni"
+   manager="stevenpo"
    editor=""
    tags="billing"/>
 
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/22/2016"
+   ms.date="04/13/2016"
    ms.author="erihur"/>
 
 
@@ -33,32 +33,17 @@ Microsoft Azure サブスクリプションの課金額は、料金プランに�
 
 <!-- *NOTE: The **csv1** link refers to the column header names for csv version 1 and **csv2** link refers to the new column header names for csv version 2.  These files are updated monthly.*-->
 
-<!-- Below section commented out as a new "right nav" floating bar is created for each article and is no longer necessary to have this section.
-
-## Content:
-
-This topic helps you with the following tasks when reading your bill.
-
--  View or Download a Bill for Azure
--  Customer Information
--  Understand the Invoice Summary
--  Understand the Current Charges
--  Footer Information
--  Understand the Additional Information
--  Understand Detailed Usage Charges
--  Analyze Daily Usage Data -->
-
 ### Microsoft Azure の課金内容の表示またはダウンロード:
 
-[使用量と課金ポータル](https://account.windowsazure.com/subscriptions)では、現在の課金情報を確認したり、過去の課金情報をダウンロードできます。
+[Azure アカウント ポータル](https://account.windowsazure.com/subscriptions)では、現在の課金情報を確認したり、過去の課金情報をダウンロードしたりできます。
 
 課金内容を表示またはダウンロードするには:
 
-1. Microsoft アカウント ID か、職場または学校のアカウント ID 使用して[使用量と課金ポータル](https://account.windowsazure.com/subscriptions)にサインインします。
+1. Microsoft アカウント ID か、職場または学校アカウントの ID を使用して[アカウント ポータル](https://account.windowsazure.com/subscriptions)にサインインします。
 
 2. 詳細と使用状況を表示するサブスクリプションをクリックします。
 
-3. **請求**履歴をクリックします。
+3. **[請求履歴]** をクリックします。
 
     ![概要 - 請求履歴 1](./media/billing-understand-your-bill/ContentViewaBillforMA1.png)
 
@@ -90,9 +75,9 @@ Microsoft Azure で使用できる 2 つのプランのステートメント例�
 
 
 
-## ヘッダー - 顧客情報
+## アカウント情報
 
-「顧客情報」セクションでは、使用状況とプロファイルの関連情報を特定します。![ヘッダー](./media/billing-understand-your-bill/Header.png)
+アカウント情報のセクションでは、使用状況とプロファイルの関連情報を確認できます。 ![ヘッダー](./media/billing-understand-your-bill/Header.png)
 
 ### 請求書番号
 追跡を目的とする一意の請求書の識別子。
@@ -104,25 +89,25 @@ Microsoft Azure で使用できる 2 つのプランのステートメント例�
 請求書が作成された日付。
 
 ### 支払い方法
-アカウントで使用される支払いの種類 (つまり、請求書またはクレジットカード)。
+アカウントで使用される支払いの種類 (つまり、請求書またはクレジット カード)。
 
 ### 請求先
 Microsoft Azure の支払いをする住所。
 
 ### サブスクリプション プラン
-購入したサブスクリプション プランの種類 (つまり、従量課金制、MSDN - Visual Studio Enterprise など)。
+購入したサブスクリプション プランの種類 (つまり、従量課金制、BizSpark Plus、Azure Pass など)。
 
 ### アカウント所有者メール アドレス
 Microsoft Azure アカウントが登録されたアカウントのメール アドレス。
 
 
 
-## 請求書の概要について
-請求書の「請求書の概要」セクションでは、前回の請求以降の明細および現在の使用料金が要約されています。
+## 請求書の要約について
+請求書の **[請求書の要約]** セクションでは、前回の請求以降の明細と現在の使用料金が要約されています。
 
 ![請求書の概要](./media/billing-understand-your-bill/InvoiceSummary.png)
 
-請求書の残高、支払い、およびその他のクレジットのセクションでは、前回の請求書以降の明細が要約されています。
+請求書の繰越残高、入金額、および未払い残高のセクションでは、前回の請求書以降の明細が要約されています。
 
 ### 繰越残高
 繰越残高は、前回の請求書の合計請求額です。
@@ -134,7 +119,7 @@ Microsoft Azure アカウントが登録されたアカウントのメール ア
 請求書の調整 (クレジットまたは残高) はすべて、前回の請求以降のアカウントに適用されます。
 
 
-## 現在の課金内容について
+## 現在の料金について
 請求書の「現在の料金セクション」には、月々の料金の詳細が表示されます。各リンクは、次のサブセクションに分かれています。
 
 ### 利用料金
@@ -155,7 +140,7 @@ Microsoft Azure アカウントが登録されたアカウントのメール ア
 ![追加情報](./media/billing-understand-your-bill/AdditionalInformation.png)
 
 ### 詳細な使用状況
-「詳細な使用状況」の説明のリンクから、Azure の使用量と課金ポータルに移動します。ここで、このサブスクリプションの詳細な使用状況を表示できます。現在、ダウンロードできるバージョンは 2 種類です。**.csv version 1** には、古い命名規則と使用状況のフィールドが含まれ、**.csv version 2** には、各カテゴリのユーザーにわかりやすい名前と、Microsoft Azure で使用しているサービス内容を理解できるその他のフィールドが含まれています。
+**[詳細な使用状況]** の説明のリンクから、アカウント ポータルに移動します。ここで、このサブスクリプションの詳細な使用状況を確認できます。現在、ダウンロードできるバージョンは 2 種類です。**.csv version 1** には、古い命名規則と使用状況のフィールドが含まれ、**.csv version 2** には、各カテゴリのユーザーにわかりやすい名前と、Microsoft Azure で使用しているサービス内容を理解できるその他のフィールドが含まれています。.csv version 1 には Azure Resource Manager の詳細がないことに注意してください。Azure Resource Manager の情報は .csv version 2 に含まれています。
 
 ### 追加情報と役立つリソース
 このセクションには、コンピューティング インスタンスのサイズに関する簡単な質問、SQL DB 料金へのリンク、および詳細な質問に答えるための役立つリンクがあります。
@@ -163,7 +148,7 @@ Microsoft Azure アカウントが登録されたアカウントのメール ア
 ### 販売先
 ここには、アカウントのプロファイル住所があらかじめ入力されています。
 
-### 支払指示
+### 支払い指示
 このセクションは、小切手の送信先、電信送金、または支払方法が請求書の場合のオーバーナイト チェックに関する支払いの指示のセクションです。
 
 ## 詳細な使用料金について
@@ -267,4 +252,4 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

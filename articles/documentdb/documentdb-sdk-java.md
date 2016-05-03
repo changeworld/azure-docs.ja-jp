@@ -3,7 +3,7 @@
 	description="リリース日、提供終了日、DocumentDB Java SDK の各バージョン間の変更など、Java SDK に関するあらゆる詳細を提供します。" 
 	services="documentdb" 
 	documentationCenter="java" 
-	authors="ryancrawcour" 
+	authors="aliuy" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
-	ms.author="ryancraw"/>
+	ms.date="04/18/2016" 
+	ms.author="andrl"/>
 
 # DocumentDB SDK
 
@@ -77,9 +77,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
-| [1.6.0](#1.6.0) | 2016 年 3 月 29 日 |---
-| [1.5.1](#1.5.1) | 2015 年 12 月 31 日 |---
-| [1\.5.0](#1.5.0) | 2015 年 12 月 4 日 |---
+| [1\.6.0](#1.6.0) | 2016 年 3 月 29 日 |---
+| [1\.5.1](#1.5.1) | 2015 年 12 月 31 日 |---
+| [1\.5.0](#1.5.0) | 2015 年 12 月 04 日 |---
 | [1\.4.0](#1.4.0) | 2015 年 10 月 05 日 |---
 | [1\.3.0](#1.3.0) | 2015 年 10 月 05 日 |---
 | [1\.2.0](#1.2.0) | 2015 年 8 月 05 日 |---
@@ -100,4 +100,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

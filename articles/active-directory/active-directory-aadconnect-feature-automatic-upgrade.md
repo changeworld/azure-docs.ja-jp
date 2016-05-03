@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/16/2016"
+   ms.date="04/15/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: 自動アップグレード
@@ -43,7 +43,44 @@ Azure AD Connect のインストールを常に最新の状態に保つことは
 
 **Synchronization Service Manager** UI がサーバーで実行されている場合は、UI が閉じられるまで、アップグレードが中断されます。
 
+## トラブルシューティング
+インストール済みの Connect が想定されているとおりに自動的にアップグレードしない場合は、次の手順を実行して問題の原因を特定してください。
+
+注意点として、自動アップグレードは新しいバージョンがリリースされた当日に試行されるわけではありません。アップグレードを試行する前に意図的にランダムな時間をおくため、アップグレードがすぐに実行されなくても心配する必要はありません。
+
+問題が生じていると思われる場合は、最初に `Get-ADSyncAutoUpgrade` を実行して、自動アップグレードが有効になっていることを確認してください。
+
+イベントログを起動し、**アプリケーション** イベントログを確認します。ソースとして **[Azure AD Connect Upgrade]** (Azure AD Connect のアップグレード) を選択し、イベント ID 範囲に「**300-399**」を指定したイベントログ フィルターを追加します。![自動アップグレードのイベントログ フィルター](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogfilter.png)
+
+これで、自動アップグレードの状態に関連するイベントログが表示されます。![自動アップグレードのイベントログ フィルター](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogresult.png)
+
+表示された結果の前半が、状態の概要を示しています。
+
+| 結果のプレフィックス | 説明 |
+| --- | --- |
+| 成功 | 正常にアップグレードしました。 |
+| UpgradeAborted | 一時的な状況により、アップグレードが停止しました。もう一度試行すると、成功すると考えられます。 |
+| UpgradeNotSupported | システム内に、自動アップグレードをブロックしている構成があります。状態が変更中であるかどうかを確認するためにもう一度試行されますが、システムを手動でアップグレードする必要があると考えられます。 |
+
+特によく表示されるメッセージの一覧を次に示します。これですべてではありませんが、結果メッセージを見ると、何が問題となっているかが把握しやすくなります。
+
+| 結果メッセージ | 説明 |
+| --- | --- |
+| **UpgradeAborted** | |
+| UpgradeAbortedSyncExeInUse | サーバーで [Sychronization Service Manager UI](active-directory-aadconnectsync-service-manager-ui.md) が開いています。
+| UpgradeAbortedInsufficientDiskSpace | アップグレードをサポートするのに十分なディスク領域がありません。 |
+| UpgradeAbortedSyncCycleDisabled | [スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)の SyncCycle オプションが無効になっています。 |
+| UpgradeAbortedSyncOrConfigurationInProgress | インストール ウィザードが実行されているか、同期がスケジューラ以外の場所でスケジュールされました。 |
+| **UpgradeNotSupported** | |
+| UpgradeNotSupportedCustomizedSyncRules | ユーザーが構成に独自のカスタム ルールを追加しました。 |
+| UpgradeNotSupportedDeviceWritebackEnabled | ユーザーが[デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)機能を有効にしました。 |
+| UpgradeNotSupportedGroupWritebackEnabled | ユーザーが[グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback)機能を有効にしました。 |
+| UpgradeNotSupportedMetaverseSizeExceeeded | メタバース内のオブジェクトが 100,000 を超えています。 |
+| UpgradeNotSupportedMultiForestSetup | 現在、複数のフォレストに接続しています。高速セットアップで接続するフォレストは 1 つのみです。 |
+| UpgradeNotSupportedNonMsolAccount | [AD コネクタ アカウント](active-directory-aadconnect-accounts-permissions.md#active-directory-account)は、既定の MSOL\_ アカウントではなくなりました。
+| UpgradeNotSupportedStagingModeEnabled | サーバーが[ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)に設定されています。 |
+
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

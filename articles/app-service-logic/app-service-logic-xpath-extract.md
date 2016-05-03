@@ -4,7 +4,7 @@
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
    authors="rajram"
-   manager="dwrede"
+   manager="erikre"
    editor=""/>
 
 <tags
@@ -13,12 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="02/18/2016"
+   ms.date="04/20/2016"
    ms.author="rajram"/>
 
 # BizTalk XPath Extractor
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
+
 
 BizTalk XPath Extract コネクタは、指定された XPath に基づいて XML コンテンツからデータを検索して抽出します。
 
@@ -28,11 +29,11 @@ BizTalk XPath Extract コネクタは、指定された XPath に基づいて XM
 	>[AZURE.NOTE] BizTalk Xpath Extractor に関連付けられた構成設定はありません。
 2. [新しいロジック アプリを作成します]。作成したロジック アプリの中で [トリガーとアクション] を開くことで Logic Apps デザイナーを開き、フローを構成します。
 3. デザイナーの右側のウィンドウに、フローを構成するために使用できる API Apps が表示されます。"BizTalk XPath Extractor" を検索します。これを選択すると、フローに Xpath Extractor が追加され、そのインスタンスがプロビジョニングされます。
-4. プロビジョニングが終わると、デザイナーに BizTalk XPath Extractor API アプリに関連付けられたアクションが表示されます。![BizTalk XPath Extractor のアクション選択][1]
+4. プロビジョニングが終わると、デザイナーに BizTalk XPath Extractor API アプリに関連付けられたアクションが表示されます。
+	![BizTalk XPath Extractor のアクション選択][1]
 
-5. [XPath を使用して抽出] を選択します。
-[XPath を使用して抽出] は、指定された入力 XML で入力 XPath 式を評価します。
-![BizTalk XPath Extractor の入力][2]
+5. [XPath を使用して抽出] を選択します。[XPath を使用して抽出] は、指定された入力 XML で入力 XPath 式を評価します。
+	![BizTalk XPath Extractor の入力][2]
 
 	パラメーター|型|パラメーターの説明
 ---|---|---
@@ -48,4 +49,4 @@ XPath|string|XMl 内部のクエリ パスです。
 <!-- Links -->
 [新しいロジック アプリを作成します]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

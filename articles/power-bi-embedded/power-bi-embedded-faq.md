@@ -1,6 +1,6 @@
 <properties
    pageTitle="FAQ"
-   description="FAQ"
+   description="Power BI Embedded FAQ"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -116,4 +116,4 @@
 - [Microsoft Power BI Embedded とは](power-bi-embedded-what-is-power-bi-embedded.md)
 - [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューの使用を開始する)](power-bi-embedded-get-started.md)
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

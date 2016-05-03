@@ -13,9 +13,9 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/08/2016"   
+	ms.date="04/14/2016"   
 	ms.author="milanga;juliako;"/>
-
+ 
 #Azure Media Analytics での顔と感情の検出
 
 ##概要
@@ -30,7 +30,7 @@
 
 - **感情検出**
 	
-	感情検出は Face Detection メディア プロセッサのオプションのコンポーネントであり、喜び、悲しみ、恐怖、怒りなど、検出された顔から複数の感情的属性の分析を返します。このデータは、顔単位またはグループ値として取得でき、カスタマイズ可能な時間枠および間隔で集計できます。
+	感情検出は Face Detection メディア プロセッサのオプションのコンポーネントであり、喜び、悲しみ、恐怖、怒りなど、検出された顔から複数の感情的属性の分析を返します。
 
 **Azure Media Face Detector** MP は現在プレビュー段階です。
 
@@ -164,18 +164,22 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 	}
 
 
+####属性の説明
+
 属性名|説明
 ---|---
 Mode|Faces: 顔検出のみ<br/>AggregateEmotion: フレーム内のすべての顔の平均的感情値を返します。
 AggregateEmotionWindowMs|AggregateEmotion モードが選択されている場合に使用します。各集計結果を生成するために使用するビデオの長さを指定します (ミリ秒単位)。
 AggregateEmotionIntervalMs|AggregateEmotion モードが選択されている場合に使用します。集計結果を生成する頻度を指定します。
 
-次に示す集計の既定値は、集計時間枠と間隔の設定の推奨される値です。時間枠は間隔より長くする必要があります。
+####集計の既定値
+
+以下は、集計時間枠と間隔の設定に対して推奨される値です。AggregateEmotionWindowMs は AggregateEmotionIntervalMs より長くする必要があります。
 
  |既定値 (秒)|最大 (秒)|最小 (秒)
 ---|---|---|---
-時間枠の長さ|2|3|1
-間隔|0\.5|1|0\.25
+AggregateEmotionWindowMs|0\.5|2|0\.25
+AggregateEmotionIntervalMs|0\.5|1|0\.25
 
 ###JSON 出力
 
@@ -531,4 +535,6 @@ AggregateEmotionIntervalMs|AggregateEmotion モードが選択されている場
 
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+
+<!---HONumber=AcomDC_0420_2016-->

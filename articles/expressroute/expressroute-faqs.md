@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/09/2016"
+   ms.date="04/12/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute の FAQ
@@ -86,8 +86,11 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 ### ExpressRoute リンクのいずれかに障害が発生すると接続できなくなりますか。
 クロス接続の一方に障害が発生しても、接続が失われることはありません。ネットワークの負荷に対応できる冗長接続が用意されています。さらに、耐障害性を実現するために、複数の回線を別のピアリング場所に作成することもできます。
 
-### このサービスを機能させるには、両方のリンクを構成する必要がありますか。
-レイヤー 3 サービスを提供するパートナー経由で接続している場合は、そのパートナーがお客様に代わって冗長リンクを構成します。ただし、クラウド エクスチェンジ プロバイダーと同じ場所にいる場合は、クラウド エクスチェンジ プラットフォームへの 2 本の LAN リンクを構成する必要があります。プライベート データセンターから単一の WAN リンク経由でクラウド プロバイダーに接続する場合は、独自のルーターの WAN リンクを終結させてから、クラウド エクスチェンジ プラットフォームへの 2 本の LAN リンクを構成する必要があります。
+### クラウド エクスチェンジで併置しておらず、サービス プロバイダーがポイント ツー ポイント接続を提供している場合は、オンプレミス ネットワークと Microsoft 間の物理接続を 2 つ注文する必要がありますか。 
+いいえ、サービス プロバイダーが物理接続経由で 2 つのイーサネット仮想回線を確立できる場合は、必要な物理接続は 1 つだけです。物理接続 (光ファイバーなど) は、レイヤー 1 (L1) デバイスで終端します (下図を参照)。2 つのイーサネット仮想回線は、異なる VLAN ID (プライマリ回線とセカンダリ回線の VLAN ID) でタグ付けされます。これらの VLAN ID は、外部 802.1Q イーサネット ヘッダーに含まれます。内部 802.1Q イーサネット ヘッダー (ここでは示されていません) は、特定の [ExpressRoute ルーティング ドメイン](expressroute-circuit-peerings.md)にマップされます。
+
+![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
+
 
 ### 自社の VLAN を、ExpressRoute を使用して Azure に拡張することはできますか。
 いいえ。Azure へのレイヤー 2 接続の拡張はサポートされません。
@@ -225,12 +228,15 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 
 >[AZURE.IMPORTANT] Office 365 サービスおよび CRM Online への接続を構成するときは、ExpressRoute Premium アドオンを有効にしていることを確認します。
 
+### Office 365 サービスと CRM Online に接続するには、Azure パブリック ピアリングを有効にする必要がありますか。
+いいえ、有効にする必要があるのは Microsoft ピアリングだけです。Azure AD への認証トラフィックは Microsoft ピアリングを介して送信されます。
+
 ### 既存の ExpressRoute 回線が Office 365 サービスおよび CRM Online への接続をサポートするようにできますか。
 はい。既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。Office 365 サービスに接続するための十分な容量があり、Premium アドオンを有効にしていることを確認します。[Office 365 のネットワーク プランニングとパフォーマンス チューニング](http://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。「[ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
 
 ### ExpressRoute 接続経由でアクセスできる Office 365 のサービスはどれですか。
 
-ExpressRoute でサポートされているサービスの最新の状態の一覧については、「[Office 365 の URL と IP アドレスの範囲](http://aka.ms/o365endpoints)」をご覧ください。
+ExpressRoute でサポートされているサービスの最新の状態の一覧については、「[Office 365 URL および IP アドレス範囲](http://aka.ms/o365endpoints)」を参照してください。
 
 ### Office 365 サービスおよび CRM Online に対応した ExpressRoute の料金はいくらですか。
 Office 365 サービス および CRM Online では、Premium アドオンを有効にする必要があります。ExpressRoute の料金の詳細については、[料金の詳細](https://azure.microsoft.com/pricing/details/expressroute/)に関するページを参照してください。
@@ -241,4 +247,4 @@ ExpressRoute がサポートされているパートナーと地域の一覧に�
 ### 自社で ExpressRoute が構成されている場合でも、インターネット経由で Office 365 にアクセスできますか。
 はい。自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

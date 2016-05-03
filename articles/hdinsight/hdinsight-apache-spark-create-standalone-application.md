@@ -14,20 +14,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/05/2016"
+	ms.date="04/14/2016"
 	ms.author="nitinme"/>
 
 
-# スタンドアロン Scala アプリケーションを作成して HDInsight Spark クラスターで実行する (Linux)
+# スタンドアロン Scala アプリケーションを作成して HDInsight Spark Linux クラスターで実行する (プレビュー)
 
-この記事では、IntelliJ IDEA を使用して、スタンドアロン Spark アプリケーションを Scala で開発する手順を説明します。この記事では、ビルド システムとして Apache Maven を使用し、IntelliJ IDEA で提供されている Scala 用の既存の Maven アーキタイプから始めます。大まかには、IntelliJ IDEA で Scala アプリケーションを作成するには、次の手順が必要です。
+この記事では、Maven と IntelliJ IDEA を使用して、スタンドアロン Spark アプリケーションを Scala で開発する手順を説明します。この記事では、ビルド システムとして Apache Maven を使用し、IntelliJ IDEA で提供されている Scala 用の既存の Maven アーキタイプから始めます。大まかには、IntelliJ IDEA で Scala アプリケーションを作成するには、次の手順が必要です。
 
 
 * ビルド システムとして Maven を使用します。
 * プロジェクト オブジェクト モデル (POM) ファイルを更新して、Spark モジュールの依存関係を解決します。
 * Scala でアプリケーションを作成します。
 * HDInsight Spark クラスターに送信できる jar ファイルを生成します。
-* Spark クラスターで spark-submit を使用して、アプリケーションを実行します。
+* Livy を使用して Spark クラスターでアプリケーションを実行します。
+
+>[AZURE.NOTE] HDInsight には、アプリケーションを作成して Linux の HDInsight Spark クラスターに送信するプロセスを容易にする IntelliJ IDEA プラグイン ツールも用意されています。詳細については、「[IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)」を参照してください。
+
 
 **前提条件**
 
@@ -79,7 +82,7 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 	![自動ダウンロードのための Maven の構成](./media/hdinsight-apache-spark-create-standalone-application/configure-maven.png)
 
 	1. **[File (ファイル)]** メニューの **[Settings (設定)]** をクリックします。
-	2. **[Settings (設定)]** ダイアログ ボックスで、**[Build, Execution, Deployment (ビルド、実行、デプロイメント)]** > **[Build Tools (構築ツール)]** > **[Maven]** > **[Importing (インポート)]** の順に移動します。
+	2. **[Settings (設定)]** ダイアログ ボックスで、**[Build, Execution, Deployment (ビルド、実行、デプロイ)]** > **[Build Tools (構築ツール)]** > **[Maven]** > **[Importing (インポート)]** の順に移動します。
 	3. **[Import Maven projects automaticallyMaven (Maven プロジェクトを自動的にインポートする)]** オプションを選択します。
 	4. **[Apply (適用)]** をクリックし、**[OK]** をクリックします。
 
@@ -196,4 +199,4 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

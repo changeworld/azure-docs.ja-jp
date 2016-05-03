@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="09/01/2015"
+   ms.date="03/29/2016"
    ms.author="kundanap"/>
 
 # Azure Windows VM 拡張機能の構成サンプル
@@ -39,7 +39,7 @@
 
 この記事では、一部の Windows 拡張機能について、予測される構成値の一覧を示します。
 
-## VM 拡張機能のサンプル テンプレート スニペット
+## IaaS VM による VM 拡張機能のサンプル テンプレート スニペット。
 拡張機能をデプロイするためのテンプレート スニペットは次のようになります。
 
       {
@@ -53,11 +53,34 @@
       "publisher": "Publisher Namespace",
       "type": "extension Name",
       "typeHandlerVersion": "extension version",
+      "autoUpgradeMinorVersion":true,
       "settings": {
       // Extension specific configuration goes in here.
       }
       }
       }
+
+## VM スケール セットによる VM 拡張機能のサンプル テンプレート スニペット。
+
+    {
+     "type":"Microsoft.Compute/virtualMachineScaleSets",
+    ....
+           "extensionProfile":{
+           "extensions":[
+             {
+               "name":"extension Name",
+               "properties":{
+                 "publisher":"Publisher Namespace",
+                 "type":"extension Name",
+                 "typeHandlerVersion":"extension version",
+                 "autoUpgradeMinorVersion":true,
+                 "settings":{
+                 // Extension specific configuration goes in here.
+                 }
+               }
+              }
+            }
+          }
 
 拡張機能をデプロイする前に、拡張機能の最新バージョンを確認し、"typeHandlerVersion" を最新のバージョンに置き換えてください。
 
@@ -65,18 +88,50 @@
 
 拡張機能をデプロイする前に、拡張機能の最新バージョンを確認し、"typeHandlerVersion" を最新のバージョンに置き換えてください。
 
-### CustomScript 拡張機能
-    {
-        "publisher": "Microsoft.Compute",
-        "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.4",
-        "settings": {
-            "fileUris": [
-                "http: //Yourstorageaccount.blob.core.windows.net/customscriptfiles/start.ps1"
-            ],
-            "commandToExecute": "powershell.exe-ExecutionPolicyUnrestricted-Filestart.ps1"
+### CustomScript 拡張機能 1.4
+      {
+          "publisher": "Microsoft.Compute",
+          "type": "CustomScriptExtension",
+          "typeHandlerVersion": "1.4",
+          "settings": {
+              "fileUris": [
+                  "http: //Yourstorageaccount.blob.core.windows.net/customscriptfiles/start.ps1"
+              ],
+              "commandToExecute": "powershell.exe-ExecutionPolicyUnrestricted -start.ps1"
+          },
+          "protectedSettings": {
+            "storageAccountName": "yourStorageAccountName",
+            "storageAccountKey": "yourStorageAccountKey"
+          }
+      }
+
+#### パラメーターの説明:
+
+- fileUris: 拡張機能によって VM にダウンロードされるファイルの URL のコンマ区切りリスト。何も指定しない場合、ファイルはダウンロードされません。ファイルが Azure Storage にある場合、fileURLs はプライベートとしてマークされ、これらのファイルにアクセスするために、対応する storageAccountName と storageAccountKey がプライベート パラメーターとして渡されます。
+- commandToExecute: [必須パラメーター]: 拡張機能によって実行されるコマンド。
+- storageAccountName: [省略可能なパラメーター]: fileURLs がプライベートとしてマークされている場合は、fileURLs にアクセスするためのストレージ アカウント名。
+- storageAccountKey: [省略可能なパラメーター]: fileURLs がプライベートとしてマークされている場合は、fileURLs にアクセスするためのストレージ アカウント キー。
+
+### CustomScript 拡張機能 1.7
+
+パラメーターの説明については、CustomScript バージョン 1.4 を参照してください。バージョン 1.7 では、スクリプト パラメーター (commandToExecute) を protectedSettings として送信する機能がサポートされるようになりました。その場合、パラメーターは送信前に暗号化されます。"commandToExecute" パラメーターは、settings または protectedSettings で指定できますが、両方に指定することはできません。
+
+        {
+            "publisher": "Microsoft.Compute",
+            "type": "CustomScriptExtension",
+            "typeHandlerVersion": "1.7",
+            "settings": {
+                "fileUris": [
+                    "http: //Yourstorageaccount.blob.core.windows.net/customscriptfiles/start.ps1"
+                ],
+                "commandToExecute": "powershell.exe-ExecutionPolicyUnrestricted -start.ps1"
+            },
+            "protectedSettings": {
+              "commandToExecute": "powershell.exe-ExecutionPolicyUnrestricted -start.ps1",
+              "storageAccountName": "yourStorageAccountName",
+              "storageAccountKey": "yourStorageAccountKey"
+            }
         }
-    }
 
 ### VMAccess 拡張機能
 
@@ -316,4 +371,4 @@
 
 [Windows VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

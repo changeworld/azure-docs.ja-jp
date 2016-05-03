@@ -13,12 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="02/11/2016"
+   ms.date="04/19/2016"
    ms.author="prkumar"/>
 
 
 # HTTP リスナーと HTTP アクションの使用を開始し、ロジック アプリにこれらを追加する
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
+> [AZURE.NOTE] このコネクタのサポートは終了します。現在、その機能は、新しいロジック アプリの作成時に既定で**手動のトリガー**として組み込まれるようになっているためです。このコネクタを使用しているすべてのロジック アプリをアップグレードすることをお勧めします。本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
 HTTP リソースに直接接続して、HTTP 要求をリッスンし、HTTP Web 要求を構成します。次のような一部のシナリオで、直接の HTTP 接続が必要になる場合があります。
 
@@ -74,7 +75,7 @@ HTTP アクションの出力は、ヘッダーと本文です。これらは、
 
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
 
-> [AZURE.NOTE] Azure アカウントにはサインアップせずに Azure Logic Apps を体験することもできます。「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」にアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> [AZURE.NOTE] Azure アカウントにサインアップせずに Azure Logic Apps を体験したい場合は、[Logic Apps の試用](https://tryappservice.azure.com/?appservice=logic)に関するページにアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <!--Image references-->
 [1]: ./media/app-service-logic-connector-http/1.png
@@ -88,4 +89,4 @@ HTTP アクションの出力は、ヘッダーと本文です。これらは、
 [9]: ./media/app-service-logic-connector-http/9.png
 [10]: ./media/app-service-logic-connector-http/10.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

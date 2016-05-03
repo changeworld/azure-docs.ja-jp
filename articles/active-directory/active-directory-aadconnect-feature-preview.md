@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="02/16/2016"
+   ms.date="04/14/2016"
    ms.author="andkjell;billmath"/>
 
 # プレビュー段階の機能の詳細
@@ -51,4 +51,4 @@ Office 365 グループの詳細とその使い方については、[こちら](
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

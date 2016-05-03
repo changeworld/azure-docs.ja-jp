@@ -28,9 +28,9 @@
 
 ### /html フォルダー
 
-- `EngagementNotification.html` : `Notification` Web ビュー html デザイン。
+- `EngagementNotification.html`: アプリ内バナー用の `Notification` Web ビュー html デザイン。
 
-- `EngagementAnnouncement.html` : `Announcement` Web ビュー html デザイン。
+- `EngagementAnnouncement.html`: アプリ内スポット ビュー用の `Announcement` Web ビュー html デザイン。
 
 ### /images フォルダー
 
@@ -44,17 +44,7 @@
 
 ### /overlay フォルダー
 
-- `EngagementBaseOverlay.cs`: `Announcement` および `Notification` オーバーレイに使用される基本コード。
-
-- `EngagementOverlayAnnouncement.xaml` : `Announcement` xaml デザイン。
-
-- `EngagementOverlayAnnouncement.xaml.cs` : `EngagementOverlayAnnouncement.xaml` リンク コード。
- 
-- `EngagementOverlayNotification.xaml` : `Notification` xaml デザイン。
- 
-- `EngagementOverlayNotification.xaml.cs` : `EngagementOverlayNotification.xaml` リンク コード。
- 
-- `EngagementPageOverlay.cs` : `Overlay` アナウンスと通知の表示コード。
+- `EngagementPageOverlay.cs`: Engagement Reach アプリ内 UI を子に追加するためのオーバーレイ ページ。
   
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

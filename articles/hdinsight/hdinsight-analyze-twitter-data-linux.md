@@ -37,8 +37,6 @@
 
 - __Python__ と [pip](https://pypi.python.org/pypi/pip)。
 
-- __Azure CLI__。詳細については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
-
 ##Twitter Feed の取得
 
 Twitter では、REST API を使用して、JavaScript Object Notation (JSON) ドキュメントとして[各ツイートのデータ](https://dev.twitter.com/docs/platform-objects/tweets)を取得できます。API の認証に [OAuth](http://oauth.net) が必要です。また、API へのアクセスに使用する設定を含む _Twitter アプリケーション_を作成する必要があります。
@@ -319,4 +317,4 @@ WASB (HDInsight で使用される分散ファイル システム) にデータ�
 [twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

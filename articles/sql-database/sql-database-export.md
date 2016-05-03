@@ -87,9 +87,8 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 
 ## 次のステップ
 
-- [Azure SQL Database のインポート][5]
-
-
+- [Azure SQL データベースへの BACPAC のインポート](sql-database-import.md)
+- [SQL Server データベースへの BACPAC のインポート](https://msdn.microsoft.com/library/hh710052.aspx)
 
 ## その他のリソース
 
@@ -105,4 +104,4 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 [4]: ./media/sql-database-export/export-history.png
 [5]: ./media/sql-database-export/bacpac-archive.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

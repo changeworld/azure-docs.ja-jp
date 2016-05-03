@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="04/18/2016" 
 	ms.author="spelluru"/>
 
 # チュートリアル: Data Factory を使用したログ ファイルの移動と処理 (PowerShell)
@@ -108,7 +108,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 		![MarketingCampaignPipeline][image-data-factory-tutorial-analyze-marketing-campaign-pipeline]
 
 
-6. [パイプラインとデータ スライスを監視します](#monitor-pipelines)。この手順では、Azure クラシック ポータルを使用して、パイプライン、テーブル、データ スライスを監視します。
+6. [パイプラインとデータ スライスを監視します](#monitor-pipelines)。この手順では、Azure ポータルを使用して、パイプライン、テーブル、およびデータ スライスを監視します。
 
 ## サンプル データとスクリプトのアップロード
 この手順では、すべてのサンプル データ (すべてのログと参照データを含む) とワークフローによって呼び出される Hive/Pig スクリプトをアップロードします。実行するスクリプトは、"**MarketingCampaigns**" という名前の Azure SQL Database、テーブル、ユーザー定義型、およびストアド プロシージャの作成も行います。
@@ -129,7 +129,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	
 	または、C:\\ADFWalkthrough\\Scripts フォルダーにあるファイルを使用して pig/hive スクリプトおよびサンプル ファイルを BLOB ストレージ内の adfwalkthrough コンテナーにアップロードし、Azure SQL データベースである MarketingCamapaigns 内に MarketingCampaignEffectiveness テーブルを作成することも可能です。
    
-2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、[Azure クラシック ポータル](http://manage.windowsazure.com)、またはマスター データベース上の **sp\_set\_firewall\_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
+2. ローカル コンピューターに Azure SQL Database へのアクセス権があることを確認してください。アクセスを有効にするには、[Azure ポータル](http://manage.windowsazure.com)、またはマスター データベース上の **sp\_set\_firewall\_rule** を使用して、コンピューターの IP アドレスに対するファイアウォール規則を作成します。この変更が有効になるまで最大で 5 分かかる場合があります。[Azure SQL のファイアウォール規則の設定][azure-sql-firewall]に関するページを参照してください。
 4. Azure PowerShell で、サンプルを展開した場所に移動します (例: **C:\\ADFWalkthrough**)。
 5. **uploadSampleDataAndScripts.ps1** を実行します。 
 6. スクリプトが正常に実行されると、以下が表示されます。
@@ -250,7 +250,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
  
 上の図は、中央の列がパイプラインを、上と下の列がテーブルを表しています。
 
-Azure クラシック ポータルはデータ セットとテーブルの作成をまだサポートしていないため、このリリースでは Azure PowerShell を使用してテーブルを作成する必要があります。
+Azure ポータルはデータ セットとテーブルの作成をまだサポートしていないため、今回のリリースでは Azure PowerShell を使用してテーブルを作成する必要があります。
 
 ### テーブルを作成するには
 
@@ -504,4 +504,4 @@ Azure クラシック ポータルはデータ セットとテーブルの作成
 
 [image-data-factory-new-datafactory-menu]: ./media/data-factory-tutorial-using-powershell/NewDataFactoryMenu.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

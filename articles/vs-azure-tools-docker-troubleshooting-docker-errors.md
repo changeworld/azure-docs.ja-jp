@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="12/18/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Docker エラーのトラブルシューティング
@@ -100,4 +100,4 @@ A: 1 つの方法は、サーバーで OpenSSL を使用して、CA、サーバ�
 
 別のオプションは、Windows 用の OpenSSL をダウンロードして、必要な証明書とキーを生成してから、CA、サーバーの証明書、およびキーを Linux コンピューターにアップロードすることです。Docker へのセキュリティで保護された接続の確立の詳細については、[HTTPS による Docker デーモン ソケットの保護](https://docs.docker.com/articles/https/)に関するページを参照してください。
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0420_2016-->

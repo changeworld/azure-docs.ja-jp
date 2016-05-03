@@ -3,8 +3,8 @@
 	description="ADO.NET や PHP などのテクノロジから Azure SQL Database に接続するクライアント プログラムのリンクとベスト プラクティスの推奨事項を集めた、開始点となるトピック。" 
 	services="sql-database" 
 	documentationCenter="" 
-	authors="MightyPen" 
-	manager="jeffreyg" 
+	authors="annemill" 
+	manager="jhubbard" 
 	editor=""/>
 
 
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="01/07/2016" 
-	ms.author="genemi"/>
+	ms.author="annemill"/>
 
 
 # SQL Database への接続: ベスト プラクティスと設計のガイドライン
@@ -177,4 +177,4 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
 - [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
-<!----HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0420_2016-->

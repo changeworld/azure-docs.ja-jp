@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="12/17/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # クラウド エクスプローラーを使用した Azure リソースの管理
@@ -95,4 +95,4 @@ Azure アカウントのサブスクリプションで特定の名前のリソ�
 
 検索ボックスに文字を入力すると、その文字に一致するリソースのみがリソース ツリーに表示されます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

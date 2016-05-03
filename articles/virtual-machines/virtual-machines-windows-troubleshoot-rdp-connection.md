@@ -4,7 +4,7 @@
 	keywords="リモート デスクトップ エラー,リモート デスクトップ接続エラー,VM に接続できない,リモート デスクトップのトラブルシューティング"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="iainfoulds"
 	manager="timlt"
 	editor=""
 	tags="top-support-issue,azure-service-management,azure-resource-manager"/>
@@ -14,9 +14,9 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="01/25/2016"
-	ms.author="dkshir"/>
+	ms.topic="support-article"
+	ms.date="04/12/2016"
+	ms.author="iainfou"/>
 
 # Windows を実行する Azure 仮想マシンへの Remote Desktop 接続に関するトラブルシューティング
 
@@ -50,7 +50,7 @@ VM 上のリモート デスクトップ サービス、ネットワーク接続
 
 - プラットフォームの問題の有無について VM のリソースの状態を確認します。<br> **[参照]**、**[仮想マシン (クラシック)]**、ご使用の Windows 仮想マシン、**[設定]**、**[正常性の確認]** の順にクリックします。
 
-## リソース マネージャー デプロイ モデルを使用して作成した仮想マシン
+### リソース マネージャー デプロイ モデルを使用して作成した仮想マシン
 
 リソース マネージャー デプロイ モデルを使用して作成された Azure 仮想マシンのリモート デスクトップ接続に関する一般的なエラーの大半は、次の手順で解決できる可能性があります。各手順を実行した後、VM に再接続してみてください。
 
@@ -173,4 +173,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

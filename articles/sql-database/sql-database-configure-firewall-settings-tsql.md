@@ -1,10 +1,10 @@
 <properties
-	pageTitle="方法: ファイアウォール設定を構成する | Microsoft Azure"
+	pageTitle="方法: SQL Database ファイアウォールの構成 | Microsoft Azure"
 	description="Azure SQL データベースにアクセスする IP アドレス用のファイアウォールの構成方法を説明します。"
 	services="sql-database"
 	documentationCenter=""
 	authors="BYHAM"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 
@@ -18,11 +18,11 @@
 	ms.author="rickbyh"/>
 
 
-# 方法: TSQL を使用してファイアウォール設定を構成する (SQL Database)
+# 方法: TSQL を使用して Azure SQL Database ファイアウォールを構成する
 
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-database-configure-firewall-settings.md)
+- [Azure ポータル](sql-database-configure-firewall-settings.md)
 - [TSQL](sql-database-configure-firewall-settings-tsql.md)
 - [PowerShell](sql-database-configure-firewall-settings-powershell.md)
 - [REST API](sql-database-configure-firewall-settings-rest.md)
@@ -70,4 +70,4 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 
 データベース作成のチュートリアルについては、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照してください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、「[プログラムで Azure SQL Database に接続するためのガイドライン](https://msdn.microsoft.com/library/azure/ee336282.aspx)」を参照してください。データベースに移動する方法の詳細については、「[Azure SQL Database におけるデータベース、ログインの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

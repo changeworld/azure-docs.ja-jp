@@ -3,8 +3,8 @@
 	description="この記事は、ストレージ アクセス キーをローリングした後に Media Services を更新する際のガイダンスについて説明します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="Juliako,milangada,cenkdin" 
-	manager="dwrede" 
+	authors="Juliako"
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
-	ms.author="juliako"/>
+ 	ms.date="04/18/2016" 
+	ms.author="milangada;cenkdin;juliako"/>
 
 #方法: ストレージ アクセス キーをローリングした後に Media Services を更新する
 
@@ -159,4 +159,4 @@ SAS ロケーターを更新 (または再作成) するときに、URL は常�
 
 この文書の作成に協力してくれた Cenk Dingiloglu、Milan Gada、 Seva Titov に感謝します。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

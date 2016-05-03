@@ -1,4 +1,11 @@
-<properties pageTitle="Traffic Manager を使用する Azure App Service Web アプリのカスタム ドメイン名の構成"wpickett"負荷分散のための Traffic Manager を含む Azure App Service Web アプリのカスタム ドメイン名の使用" description="負荷分散のための Traffic Manager を含む Azure App Service Web アプリのカスタム ドメイン名を使用します。" services="app-service\\web" documentationCenter="" authors="rmcmurray" manager="wpickett" editor=""/>
+<properties
+	pageTitle="負荷分散に Traffic Manager を使用する Azure App Service Web アプリのカスタム ドメイン名を構成します。"
+    description="負荷分散のための Traffic Manager を含む Azure App Service Web アプリのカスタム ドメイン名の使用"
+	services="app-service\web"
+	documentationCenter=""
+	authors="rmcmurray"
+	manager="wpickett"
+	editor=""/>
 
 <tags
 	ms.service="app-service-web"
@@ -59,4 +66,4 @@
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

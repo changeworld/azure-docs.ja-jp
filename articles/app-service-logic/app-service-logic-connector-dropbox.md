@@ -13,18 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-    ms.date="04/11/2016"
+    ms.date="04/19/2016"
     ms.author="deonhe"/>
 
 # Dropbox コネクタが強化されました 
 
-このコネクタは、新しい [Logic Apps スキーマ バージョン 2015-08-01-preview](./app-service-logic-schema-2015-08-01.md) 以降でのみサポートされます。
+Logic Apps バージョン 2014-12-01-preview を対象とするコンテンツはこのページから削除されました。このコネクタはアップグレードされ、現在は新しい [Logic Apps スキーマ バージョン 2015-08-01-preview](./app-service-logic-schema-2015-08-01.md) 以降でのみサポートされているためです。
 
 
 ## 次のステップ    
 
 - [この新しいコネクタに関する詳細情報](../connectors/connectors-create-api-dropbox.md)
-- 新しい Logic Apps スキーマ バージョン 2015-08-01-preview に[古いコネクタを移行を移行する](../connectors/connectors-schema-migration.md)
-- 新しい Logic Apps スキーマ バージョン 2015-08-01-preview で実行されるコネクタの[一覧](../connectors/apis-list.md)を確認する  
+- 新しい Logic Apps スキーマ バージョン 2015-08-01-preview で動作するすべてのコネクタが列挙された[リスト](../connectors/apis-list.md)をご確認ください。  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

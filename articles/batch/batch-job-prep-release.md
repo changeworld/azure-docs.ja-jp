@@ -6,7 +6,7 @@
 	authors="mmacy"
 	manager="timlt"
 	editor="" />
-	
+
 <tags
 	ms.service="batch"
 	ms.devlang="multiple"
@@ -15,7 +15,7 @@
 	ms.workload="big-compute"
 	ms.date="01/22/2016"
 	ms.author="marsma" />
-	
+
 # Azure Batch コンピューティング ノードでのジョブ準備タスクとジョブ完了タスクの実行
 
 Azure Batch ジョブでは、実行前に何らかのセットアップが必要になることがよくあります。同様に、ジョブのタスクが完了した後に何らかのジョブ実行後のメンテナンスが必要になることもよくあります。Batch では、この準備と保守のメカニズムが、オプションの*ジョブ準備*タスクおよび*ジョブ解放*タスクの形式で提供されています。
@@ -78,7 +78,7 @@ Batch ジョブでは、ジョブのタスクに対する入力として共通�
 
 		await myJob.CommitAsync();
 
-前述のように、解放タスクはジョブが終了または削除されたときに実行されます。Batch .NET API でジョブを終了するには、[PoolOperations.TerminateJobAsync][net_job_terminate] を呼び出します。ジョブを削除するには、[PoolOperations.DeleteJobAsync][net_job_delete] を呼び出します。通常、どちらの操作も、ジョブのタスクが完了したときか、定義したタイムアウトに達したときに実行されます。
+前述のように、解放タスクはジョブが終了または削除されたときに実行されます。Batch .NET API でジョブを終了するには、[JobOperations.TerminateJobAsync][net_job_terminate] を呼び出します。ジョブを削除するには、[JobOperations.DeleteJobAsync][net_job_delete] を呼び出します。通常、どちらの操作も、ジョブのタスクが完了したときか、定義したタイムアウトに達したときに実行されます。
 
 		// Terminate the job to mark it as Completed; this will initiate the Job Release Task on any node
 		// that executed job tasks. Note that the Job Release Task is also executed when a job is deleted,
@@ -187,4 +187,4 @@ Sample complete, hit ENTER to exit...
 [1]: ./media/batch-job-prep-release/batchexplorer-01.png
 [2]: ./media/batch-job-prep-release/batchexplorer-02.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

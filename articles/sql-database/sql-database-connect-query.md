@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="02/05/2016"
-	ms.author="genemi"/>
+	ms.date="04/25/2016"
+	ms.author="annemill"/>
 
 
 # SQL Database へのクエリおよび接続を実行するプログラムを C&#x23; で作成する
@@ -43,7 +43,7 @@ C# クエリ コード サンプルを実行するには、以下のものが必
  - [デモ データベースの作成](sql-database-get-started.md)は数分で完了します。
 
 
-- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を*無料*で提供しています。
+- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を *無料* で提供しています。
  - [Visual Studio Community のダウンロード](http://www.visualstudio.com/products/visual-studio-community-vs)
  - [その他の無料版 Visual Studio の選択肢](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
  - または、このトピックで後述する[手順](#InstallVSForFree)に従い、[Azure ポータル](https://portal.azure.com/)のガイドを利用して Visual Studio をインストールすることができます。
@@ -359,4 +359,4 @@ IP アドレスは、[Azure ポータル](https://portal.azure.com/)から追加
 
 [50-VSCopyToOutputDirectoryProperty]: ./media/sql-database-connect-query/connqry-vs-appconfig-copytoputputdir-h.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0427_2016-->

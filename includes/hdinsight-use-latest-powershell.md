@@ -1,3 +1,5 @@
-> [AZURE.IMPORTANT] The steps in this document were tested with the latest version of the Azure PowerShell. If you are using an older version, the steps may not work or may return errors.
+> [AZURE.IMPORTANT] このドキュメントの PowerShell サンプルは、Azure PowerShell の最新バージョンでテスト済みです。以前のバージョンを使用している場合、サンプルが動作しないか、エラーが返されることがあります。
 >
-> To install the latest version, use the steps in [Install and configure Azure PowerShell](../articles/powershell-install-configure.md) to install the latest version.
+> 最新バージョンをインストールするには、[Azure PowerShell のインストールと構成](../articles/powershell-install-configure.md)に関する記事の手順を使用して、最新バージョンをインストールします。
+
+<!---HONumber=AcomDC_0427_2016-->

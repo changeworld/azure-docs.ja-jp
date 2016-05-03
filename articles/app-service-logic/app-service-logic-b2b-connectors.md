@@ -13,11 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/11/2016" 
+	ms.date="04/20/2016" 
 	ms.author="mandia"/>
 
 # Microsoft Azure App Service の企業間コネクタと API Apps
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 Microsoft Azure App Service (略称: App Service) には、統合環境に不可欠な数多くの BizTalk API Apps が含まれています。これらの API Apps は、BizTalk Server 内で使用される概念およびツールに基づいていますが、Azure App Service の一部として利用できるようになりました。
 
@@ -193,7 +194,7 @@ Microsoft Azure App Service では、これらの B2B API Apps を使用でき�
 
 4. **[OK]** を選択して変更を保存します。
 
->[AZURE.NOTE] Azure アカウントにはサインアップせずに Azure Logic Apps を体験することもできます。「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」にアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップせずに Azure Logic Apps を体験したい場合は、[Logic Apps の試用](https://tryappservice.azure.com/?appservice=logic)に関するページをご覧ください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 他の B2B リソース
 
@@ -208,4 +209,4 @@ Microsoft Azure App Service では、これらの B2B API Apps を使用でき�
 
 [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -1,6 +1,6 @@
 <properties
  pageTitle="Azure Scheduler で複雑なスケジュールと高度な繰り返しを構築する方法"
- description=""
+ description="Azure Scheduler で複雑なスケジュールと高度な繰り返しを構築する方法"
  services="scheduler"
  documentationCenter=".NET"
  authors="krisragh"
@@ -197,4 +197,4 @@ _schedule_ の要素を次の表に示します。
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

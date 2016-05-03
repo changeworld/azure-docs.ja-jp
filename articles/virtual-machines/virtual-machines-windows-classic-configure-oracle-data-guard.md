@@ -631,4 +631,4 @@ SQL * Plus コマンド プロンプト ウィンドウを開き、プライマ�
 ##その他のリソース
 [Azure の Oracle 仮想マシン イメージ](virtual-machines-windows-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!----HONumber=AcomDC_0413_2016-->

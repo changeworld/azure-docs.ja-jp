@@ -324,7 +324,7 @@ Blob Storage は、BLOB 名に基づいて自動的にパーティション分�
 
 単一のブロック (ブロック BLOB) またはページ (ページ BLOB) を書き込む操作はアトミックですが、複数のブロック、ページ、または BLOB にまたがる操作はアトミックではありません。複数のブロック、ページ、または BLOB にまたがる書き込み操作の実行中に一貫性を確保するには、BLOB リースを使用して書き込みロックを取得する必要があります。
 
-Azure Blob Storage は、最大 60 MB/秒の転送速度、または各 BLOB に対して最大 500/秒の要求をサポートします。これらの制限を超えることが予想され、BLOB データが比較的静的である場合、Azure Content Delivery Network を使用して BLOB をレプリケートすることを検討します。詳細については、Microsoft Web サイトの Azure 用 Delivery Content Network の使用に関するページを参照してください。その他のガイダンスおよび考慮事項については、「[Azure 用 CDN の使用]」を参照してください。
+Azure Blob Storage は、最大 60 MB/秒の転送速度、または各 BLOB に対して最大 500/秒の要求をサポートします。これらの制限を超えることが予想され、BLOB データが比較的静的である場合、Azure Content Delivery Network を使用して BLOB をレプリケートすることを検討します。詳細については、Microsoft Web サイトの Azure 用 Delivery Content Network の使用に関するページを参照してください。その他のガイダンスと考慮事項については、Azure 用の Content Delivery Network の使用に関する記事を参照してください。
 
 ## Azure ストレージ キューのパーティション分割
 
@@ -512,9 +512,9 @@ _図 10: 顧客の注文とそれらの詳細情報を記録するために Redi
 - Microsoft Web サイトの「[Sharding Pattern (シャーディング パターン)]」では、データをシャーディングするための一般的な戦略の概要が説明されています。
 - Microsoft Web サイトの「[Index Table Pattern (インデックス テーブル パターン)]」では、データに対してセカンダリ インデックスを作成する方法が説明されています。この手法を使用すると、アプリケーションは、コレクションのプライマリ キーを参照しないクエリで、データをすばやく取得できます。
 - Microsoft Web サイトの「[Materialized View Pattern (具体化されたビュー パターン)]」では、高速なクエリ操作をサポートするために、データを要約し、かつデータが事前に取り込まれているビューを生成する方法が説明されています。この手法は、要約対象のデータを含むパーティションが複数のサイトにまたがって分散されている場合に、パーティション分割されたデータ ストアで役立つ可能性があります。
-- Microsoft Web サイトの「[Azure 用 CDN の使用]」の記事では、Azure で Content Delivery Network を構成および使用するための詳細なガイダンスが提供されています。
+- Microsoft Web サイトの [Azure Content Delivery Network の使用]に関する記事では、Azure で Content Delivery Network を構成および使用するための詳細なガイダンスが提供されています。
 
-## 詳細
+## 詳細情報
 
 - Microsoft Web サイトの「[SQL Database とは SQL Database の概要]」のページでは、SQL データベースを作成および使用する方法が詳細に説明されています。
 - Microsoft Web サイトの「[Elastic Database 機能の概要]」ページでは、Elastic Database が包括的に説明されています。
@@ -522,7 +522,7 @@ _図 10: 顧客の注文とそれらの詳細情報を記録するために Redi
 - Microsoft Web サイトの「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](https://msdn.microsoft.com/library/azure/dn249410.aspx)」ページでは、Azure Storage のサイズとスループットに関する現在の制限が説明されています。
 - Microsoft Web サイトの「[エンティティ グループ トランザクションの実行]」ページでは、Azure Table Storage に格納されているエンティティを対象にするトランザクション操作を実装する方法が、詳細に説明されています。
 - Microsoft Web サイトの「[Azure Table Storage の設計ガイド]」の記事では、Azure Table Storage でデータをパーティション分割する方法が詳細に説明されています。
-- Microsoft Web サイトの「[Azure 用 CDN の使用]」のページでは、Azure Content Delivery Network を使用して、Azure Blob Storage に保持されているデータをレプリケートする方法が説明されています。
+- Microsoft Web サイトの [Azure Content Delivery Network の使用]に関するページでは、Azure Content Delivery Network を使用して、Azure Blob Storage に保持されているデータをレプリケートする方法が説明されています。
 - Microsoft Web サイトの [DocumentDB の容量のニーズの管理]に関するページでは、Azure DocumentDB データベースがリソースを割り当てる方法が説明されています。
 - Microsoft Web サイトの「[Azure Search とは]」ページでは、Azure Search で利用できる機能が詳細に説明されています。
 - Microsoft Web サイトの「[Azure Search サービスの制限]」のページでは、Azure Search の各インスタンスの容量が説明されています。
@@ -557,7 +557,7 @@ _図 10: 顧客の注文とそれらの詳細情報を記録するために Redi
 [Redis cluster tutorial (Redis クラスター チュートリアル)]: http://redis.io/topics/cluster-tutorial
 [Running Redis on a CentOS Linux VM in Microsoft Azure (Microsoft Azure の CentOS Linux VM 上での Redis の実行)]: http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx
 [Elastic Database 分割/マージ ツールを使用したスケーリング]: sql-database/sql-database-elastic-scale-overview-split-and-merge.md
-[Azure 用 CDN の使用]: cdn/cdn-how-to-use-cdn.md
+[Azure Content Delivery Network の使用]: cdn/cdn-create-new-endpoint.md
 [Service Bus クォータ]: service-bus/service-bus-quotas.md
 [Azure Search サービスの制限]: search/search-limits-quotas-capacity.md
 [Sharding Pattern (シャーディング パターン)]: http://aka.ms/Sharding-Pattern
@@ -567,4 +567,4 @@ _図 10: 顧客の注文とそれらの詳細情報を記録するために Redi
 [SQL Database とは]: sql-database/sql-database-technical-overview.md
 [SQL Database とは SQL Database の概要]: sql-database/sql-database-technical-overview.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -4,7 +4,7 @@
     services="automation"
     documentationCenter=""
     authors="mgoedtel"
-    manager="stevenka"
+    manager="jwhit"
     editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="02/23/2016"
+    ms.date="04/21/2016"
     ms.author="magoedte;bwren"/>
 
 # 最初の PowerShell Workflow Runbook
@@ -26,10 +26,9 @@
 
 このチュートリアルを最後まで行うには、以下のものが必要です。
 
--	Azure サブスクリプション。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-trial/" target="_blank">[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/)してください。
--	Runbook を保持するための [Automation アカウント](automation-configuring.md)。
+-	として機能します。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-account/" target="_blank">[無料アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+-	[Automation アカウント](automation-security-overview.md)。Runbook の保存と Azure リソースの認証に使用します。このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
 -	Azure 仮想マシン。マシンを停止して起動するので、運用環境のものは使用しないでください。
--	Azure リソースに対する認証に使用する [Azure Active Directory のユーザーと Automation の資格情報資産](automation-configuring.md)。このユーザーには、仮想マシンを開始および停止するアクセス許可が必要です。
 
 ## 手順 1 - 新しい Runbook を作成する
 
@@ -117,4 +116,4 @@ Runbook をテストして発行しましたが、これまでのところ役に
 -	[初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 -	[初めての PowerShell Runbook](automation-first-runbook-textual-PowerShell.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0427_2016-->

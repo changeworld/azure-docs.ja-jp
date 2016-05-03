@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="media" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
- 	ms.date="03/01/2016"
+ 	ms.date="04/18/2016"
 	ms.author="juliako"/>
 
 
@@ -25,6 +25,7 @@
 
 - [現在の既知の問題](#issues)
 - [REST API バージョン履歴](#rest_version_history)
+- [2016 年 4 月のリリース](#apr_changes16)
 - [2016 年 2 月のリリース](#feb_changes16)
 - [2016 年 1 月のリリース](#jan_changes_16)
 - [2015 年 12 月のリリース](#dec_changes_15)
@@ -79,6 +80,10 @@ SDK 内の Media Services オブジェクトをシリアル化できず、その
 ##<a id="rest_version_history"></a>REST API バージョン履歴
 
 Media Services REST API バージョン履歴の詳細については、「[Azure モバイル サービス REST API リファレンス]」を参照してください。
+
+##<a id="apr_changes16"></a>2016 年 4 月のリリース
+
+このリリースでは、Azure Media Servces に強力なビデオ インテリジェンスとして Azure Media Analytics を導入しています。詳細については、「(Azure Media Services Analytics の概要)[media-services-analytics-overview.md]」を参照してください。
 
 ##<a id="feb_changes16"></a>2016 年 2 月のリリース
 
@@ -659,4 +664,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

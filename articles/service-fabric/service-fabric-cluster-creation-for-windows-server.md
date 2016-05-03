@@ -23,9 +23,9 @@ Azure Service Fabric クラスターは、Windows Server を実行するあら�
 
 この記事では、Service Fabric のスタンドアロン パッケージを使用して、オンプレミスにクラスターを作成する手順について説明していますが、他の環境 (他のクラウドなど) にも簡単に応用することができます。
 
-## Service Fabric スタンドアロン パッケージ
+## Service Fabric スタンドアロン パッケージのダウンロード
 
-Service Fabric for Windows Server 2012 R2 のデプロイに使用されるスタンドアロン パッケージの名前は *Microsoft.Azure.ServiceFabric.WindowsServer.&lt;version&gt;.zip* で、[こちら](http://go.microsoft.com/fwlink/?LinkId=730690)からダウンロードできます。
+[Service Fabric for Windows Server 2012 R2 用のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)してください。*Microsoft.Azure.ServiceFabric.WindowsServer.&lt;version&gt;.zip* という名前です。
 
 ダウンロード パッケージには、次のファイルが含まれています。
 
@@ -114,4 +114,4 @@ JSON ファイル内のクラスター構成に変更を加え、すべてのノ
 Azure クラスターとスタンドアロン クラスターについて詳しく知る:
 - [スタンドアロン クラスター作成機能の概要および Azure によって管理されたクラスターとの比較](service-fabric-deploy-anywhere.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

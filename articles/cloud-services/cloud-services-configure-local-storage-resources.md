@@ -1,6 +1,6 @@
 <properties
-pageTitle="Azure Cloud Services でローカル ストレージ リソースを構成する"
-description=""
+pageTitle="Azure Cloud Services でローカル ストレージ リソースを構成する | Microsoft Azure"
+description="Azure Cloud Services でローカル ストレージ リソースを構成する方法について説明します"
 services="cloud-services"
 documentationCenter=""
 authors="cristy"
@@ -56,7 +56,7 @@ ms.author="cristyg"/>
 
 サービス定義ファイルの詳細については、「[Azure サービスの定義スキーマ (.csdef ファイル)](https://msdn.microsoft.com/library/azure/ee758711.aspx)」を参照してください。
 
-> [AZURE.NOTE]Azure Tools for Microsoft Visual Studio を使用している場合、ロールの **[プロパティ]** ページ内でローカル ストレージ リソースを定義できます。詳細については、[Visual Studio を使用した Azure アプリケーションの構成](https://msdn.microsoft.com/library/ee405486.aspx)に関するページを参照してください。
+> [AZURE.NOTE] Azure Tools for Microsoft Visual Studio を使用している場合、ロールの **[プロパティ]** ページ内でローカル ストレージ リソースを定義できます。詳細については、[Visual Studio を使用した Azure アプリケーションの構成](https://msdn.microsoft.com/library/ee405486.aspx)に関するページを参照してください。
 
 ## プログラムによるローカル ストレージ リソースへのアクセス
 
@@ -104,4 +104,4 @@ Azure マネージ ライブラリには、ロール インスタンスで実行
 
 - [Azure のクラウド サービスのセットアップ](https://msdn.microsoft.com/library/azure/hh124108.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0420_2016-->

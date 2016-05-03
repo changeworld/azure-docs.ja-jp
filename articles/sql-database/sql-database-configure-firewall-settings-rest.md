@@ -1,10 +1,10 @@
 <properties
-	pageTitle="方法: ファイアウォール設定を構成する | Microsoft Azure"
+	pageTitle="方法: Azure SQL Database ファイアウォールの構成 | Microsoft Azure"
 	description="Azure SQL データベースにアクセスする IP アドレス用のファイアウォールの構成方法を説明します。"
 	services="sql-database"
 	documentationCenter=""
 	authors="BYHAM"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 
@@ -18,11 +18,11 @@
 	ms.author="rickbyh"/>
 
 
-# 方法: REST API を使用してファイアウォール設定を構成する (SQL Database)
+# 方法: REST API を使用して Azure SQL Database ファイアウォールを構成する
 
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-database-configure-firewall-settings.md)
+- [Azure ポータル](sql-database-configure-firewall-settings.md)
 - [TSQL](sql-database-configure-firewall-settings-tsql.md)
 - [PowerShell](sql-database-configure-firewall-settings-powershell.md)
 - [REST API](sql-database-configure-firewall-settings-rest.md)
@@ -71,4 +71,6 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 [2]: ./media/sql-database-configure-firewall-settings/AzurePortalFirewallSettings.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0211_2016-->
+ 
+
+<!---HONumber=AcomDC_0420_2016-->

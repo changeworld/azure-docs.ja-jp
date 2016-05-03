@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="willzhan"  
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/02/2016"  
+	ms.date="04/18/2016"     
 	ms.author="willzhan;kilroyh;yanmf;juliako"/>
 
 #CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装
@@ -522,4 +522,4 @@ X509 証明書で非対称キーを使用する場合 (Microsoft の最新のブ
 
 William Zhang、Mingfei Yan、Roland Le Franc、Kilroy Hughes、Julia Kornich
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

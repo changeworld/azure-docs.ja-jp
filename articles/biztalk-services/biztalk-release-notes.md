@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure BizTalk Services のリリース ノート | Microsoft Azure BizTalk Services" 
-	description="" 
-	services="biztalk-services" 
-	documentationCenter="" 
-	authors="msftman" 
-	manager="erikre" 
+<properties
+	pageTitle="Azure BizTalk Services のリリース ノート | Microsoft Azure BizTalk Services"
+	description="Azure BizTalk Services の既知の問題を一覧にまとめています" 
+	services="biztalk-services"
+	documentationCenter=""
+	authors="msftman"
+	manager="erikre"
 	editor=""/>
 
-<tags 
-	ms.service="biztalk-services" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/29/2016" 
+<tags
+	ms.service="biztalk-services"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/29/2016"
 	ms.author="deonhe"/>
 
 # Azure BizTalk Services のリリース ノート
@@ -195,6 +195,4 @@ BizTalk Services プレビュー サブスクリプションに XML ブリッジ
 
 [BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)
 
-<!---HONumber=AcomDC_0302_2016-->
-
-
+<!---HONumber=AcomDC_0420_2016-->

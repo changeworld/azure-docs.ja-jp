@@ -30,10 +30,6 @@ HDInsight 概要ギャラリーでは、HDInsight でサンプル アプリケ�
 	- Web サイト ログの分析
 	- Mahout 映画のリコメンデーション
 
-[AZURE.INCLUDE [hdinsight-azure-preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
-
-* [HDInsight の概要ギャラリーを使用して、Hadoop について説明します。](hdinsight-learn-hadoop-use-sample-gallery-v1.md)
-
 ![HDInsight Hadoop、Storm、HBase 概要ギャラリー ソリューション (サンプル データ付き)。][hdinsight.sample.gallery]
 
 次のビデオでは、Twitter の傾向分析サンプルを実行する方法を示しています。
@@ -68,4 +64,4 @@ HDInsight に関するその他の資料。
 [hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
 [azure.portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -106,7 +106,7 @@ Ultipro で Azure AD のシングル サインオンを構成してテストす�
     b.**[次へ]** をクリックします。
 
 
-5. アプリケーション用に構成された SSO を入手するには、[ultiproinfo@ultimatesoftware.com](mailto:ultiproinfo@ultimatesoftware.com) を介して Ultipro サポート チームに連絡し、次の情報を提供してください。
+5. アプリケーション用に構成された SSO を入手するには、UltiPro アカウント マネージャーに連絡し、次のものを情報として提供してください。
 
     - ダウンロードした証明書ファイル
 
@@ -221,4 +221,4 @@ Ultipro で Azure AD のシングル サインオンを構成してテストす�
 [204]: ./media/active-directory-saas-ultipro-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-ultipro-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

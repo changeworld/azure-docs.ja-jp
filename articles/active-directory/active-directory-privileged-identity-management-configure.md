@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure AD Privileged Identity Management"
-	description="Azure AD Privileged Identity Management とは何か、およびその構成方法について説明します。"
+	pageTitle="Azure AD Privileged Identity Management |Microsoft Azure"
+	description="Azure AD Privileged Identity Management (PIM) の機能と、PIM を使用してクラウド セキュリティを向上させる方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
@@ -13,23 +13,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="04/15/2016"
 	ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management
 
-Azure Active Directory (AD) Privileged Identity Management を使用すると、特権 ID と、Azure AD および他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへの特権 ID のアクセスを管理、制御、監視できます。
+Azure Active Directory (AD) Privileged Identity Management (PIM) を使用すると、特権 ID と、Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへのアクセスを管理、制御、監視できます。
 
-ユーザーが特権操作を実行できるよう、組織は多くのユーザーに Azure AD、Azure や Office 365 のリソース、他の SaaS アプリへの永続的な特権アクセスを付与することが必要になる場合がよくあります。多くの顧客にとって、これは、このようなユーザーが管理者特権で行っていることを十分に監視できないため、クラウドでホストされるリソースに対するセキュリティ リスクの増大になります。さらに、特権アクセス権を持つユーザー アカウントが侵害されると、全体的なクラウド セキュリティに影響を与える可能性があります。Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。
+ユーザーは、Azure や Office 365 のリソース、または他の SaaS アプリで、特権操作を実行することが必要になる場合があります。通常は、組織がユーザーに Azure AD で永続的な特権アクセスを付与する必要があります。しかし、この措置では、ユーザーが管理者特権を使用して実行している内容を組織が十分に監視できないため、クラウドでホストされているリソースのセキュリティ リスクが増大します。また、特権アクセスを持つユーザー アカウントが侵害された場合に、その 1 つの侵害がクラウド セキュリティ全体に影響を与える可能性もあります。Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。
 
 Azure AD Privileged Identity Management では、次のことが可能です。
 
-- Azure AD の管理者であるユーザーを検出する
-- ディレクトリ リソースへのオンデマンド "ジャスト イン タイム" 管理アクセスを有効にする
-- 管理者のアクセス履歴および管理者の割り当ての変更に関するレポートを取得する
+- Azure AD の管理者であるユーザーを特定する
+- Office 365 や Intune などの Microsoft Online Services へのオンデマンドの "ジャスト イン タイム" な管理アクセスを可能にする
+- 管理者のアクセス履歴と管理者の割り当ての変更に関するレポートを取得する
 - 特権ロールへのアクセスに関するアラートを受け取る
 
-Azure AD Privileged Identity Management では、次の組み込み Azure Active Directory 組織ロールを管理できます。
+Azure AD Privileged Identity Management では、次のような組み込みの Azure AD 組織ロールを管理できます。
 
 - グローバル管理者
 - 課金管理者
@@ -39,17 +39,24 @@ Azure AD Privileged Identity Management では、次の組み込み Azure Active
 
 ## ジャスト イン タイム管理者アクセス
 
-従来、管理者ロールへのユーザーの割り当てには、Azure 管理ポータルまたは Windows PowerShell が使用されています。その結果、そのユーザーは**永続的な管理者**になり、割り当てられたロールが常に有効になっています。このプレビューでは、**一時的な管理者**のサポートが追加されています。これは、割り当てられたロールに対するアクティブ化プロセスを完了する必要があるユーザーです。アクティブ化プロセスにより、Azure AD でのロールへのユーザーの割り当てが非アクティブからアクティブに変わります。
+これまで、管理ロールへのユーザーの割り当てには、Azure 管理ポータルか Windows PowerShell を使用できました。これらの方法では、ユーザーはそのロールの**永続的な管理者**になり、割り当てられたロールが常に有効になります。Azure AD Privileged Identity Management には、ロールの**一時的な管理者**という概念が導入されています。一時的な管理者となるユーザーは、割り当てられたロールのアクティブ化プロセスを完了する必要があります。このアクティブ化プロセスによって、Azure AD におけるユーザーへのロールの割り当てが、8 時間などの指定された期間だけ、非アクティブからアクティブに変更されます。
 
-## ディレクトリの Privileged Identity Management の有効化
+## ディレクトリで Privileged Identity Management を有効にする
 
-[Azure ポータル](https://portal.azure.com/)にアクセスすることで、Azure AD Privileged Identity Management の使用を開始できます。現在、Azure AD Privileged Identity Management は Azure ポータルのみに表示されます。クラシック ポータルには表示されません。ディレクトリの Azure AD Privileged Identity Management の有効化は、グローバル管理者が行う必要があります。
+[Azure ポータル](https://portal.azure.com/)にアクセスすることで、Azure AD Privileged Identity Management の使用を開始できます。Azure AD Privileged Identity Management は、以前のクラシック ポータルには表示されません。
 
-![Azure ポータル - 特権 ID の検索 - スクリーンショット][1]
+>[AZURE.NOTE] ディレクトリで Azure AD Privileged Identity Management を有効にする操作は、Microsoft アカウントではなく組織アカウントを持つグローバル管理者が行う必要があります。
 
-[拡張機能を初期化した](active-directory-privileged-identity-management-getting-started.md)ユーザーは、自動的にディレクトリの最初の**セキュリティ管理者**になります。セキュリティ管理者だけが、この拡張機能にアクセスして他の管理者のアクセスを管理できます。
+1. ディレクトリのグローバル管理者として [Azure ポータル](https://portal.azure.com/)にサインインします。
+2. 組織に複数のディレクトリがある場合は、Azure ポータルの右上隅に表示されているユーザー名をクリックし、Azure AD Privileged Identity Management を使用するディレクトリを選択します。
+3. 左側のナビゲーションの **[新規]** アイコンをクリックします。
+4. **[セキュリティ + ID]** を選択します。
+5. **[Azure AD Privileged Identity Management]** を選択します。
+6. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** ボタンをクリックします。Privileged Identity Management ダッシュボードが開きます。
 
-初期化中に、Azure AD Privileged Identity Management のタイルが Azure ポータルのスタート画面に追加されます。
+ディレクトリ内で Azure AD Privileged Identity Management を使用する最初のユーザーには、[セキュリティ ウィザード](active-directory-privileged-identity-management-security-wizard.md)に最初の割り当て操作の手順が表示されます。手順を完了すると、ディレクトリの最初の**セキュリティ管理者**に自動的に設定されます。
+
+PIM アプリを使用して他の管理者のアクセスを管理できるのは、セキュリティ管理者のみです。セキュリティ管理者は [PIM で管理する権限を他のユーザーに付与する](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)ことができます。
 
 ## Privileged Identity Management ダッシュボード
 
@@ -57,9 +64,9 @@ Azure AD Privileged Identity Manager には、次のような重要な情報を�
 
 - 各特権ロールに割り当てられているユーザーの数  
 - 一時的管理者および永続的管理者の数
-- 管理者のアクセスの履歴
+- 各管理者のアクセス履歴
 
-![PIM ダッシュボード - スクリーンショット][2]
+![PIM dashboard - screenshot][2]
 
 ## 特権ロールの管理
 
@@ -85,7 +92,7 @@ Azure AD Privileged Identity Management では、各ロールに永続的また�
 
 任意の種類の管理者が、Azure AD Privileged Identity Management を使用して自分のロールをアクティブ化できます。
 
-ロールのアクティブ化には時間制限があります。ロール アクティブ化の設定では、アクティブ化の期間だけでなく、ロールをアクティブ化するために管理者が指定する必要がある情報を構成できます。
+ロールのアクティブ化には時間制限があります。ロールのアクティブ化の設定では、アクティブ化の期間だけでなく、ロールをアクティブ化するために管理者が指定する必要がある情報を設定できます。
 
 ![PIM 管理者のロール アクティブ化要求 - スクリーン ショット][5]
 
@@ -99,11 +106,11 @@ Azure AD Privileged Identity Management を使用すると、特権ロールの�
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
 <!--Image references-->
-[1]: ./media/active-directory-privileged-identity-management-configure/Search_PIM.png
+
 [2]: ./media/active-directory-privileged-identity-management-configure/PIM_Dash.png
 [3]: ./media/active-directory-privileged-identity-management-configure/PIM_AddRemove.png
 [4]: ./media/active-directory-privileged-identity-management-configure/PIM_RoleActivationSettings.png
 [5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

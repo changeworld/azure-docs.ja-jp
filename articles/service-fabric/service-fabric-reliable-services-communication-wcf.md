@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="11/17/2015"
-   ms.author="bharatn@microsoft.com"/>
+   ms.date="03/28/2016"
+   ms.author="bharatn"/>
 
 # Reliable Services の WCF ベースの通信スタック
 Reliable Services フレームワークにより、サービスの作成者はサービスに使用する通信スタックを選択できます。[CreateServiceReplicaListeners または CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) メソッドから返された **ICommunicationListener** を介し、選択した通信スタックをプラグインできます。フレームワークでは、Windows Communication Foundation (WCF) ベースの通信を使用したいと考えるサービス作成者に、WCF に基づいた通信スタックの実装を提供します。
@@ -122,4 +122,4 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 
 * [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

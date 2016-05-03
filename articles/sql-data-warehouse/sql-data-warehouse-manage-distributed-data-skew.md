@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/07/2016"
+   ms.date="04/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse での分散テーブルのデータ傾斜を管理する
@@ -27,6 +27,18 @@
 - データ傾斜をいつ解決するか判断するためのヒントを確認する
 - テーブルを再作成して、データ傾斜を解決する
 
+## DBCC PDW\_SHOWSPACEUSED
+
+データ傾斜を特定する 1 つの方法として、[DBCC PDW\_SHOWSPACEUSED()][] を使用します。
+
+```sql
+-- Find data skew for a distributed table
+DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
+```
+
+これは、データベースの 60 の配布それぞれに格納されるテーブル行の数を確認するには非常に簡単な方法です。最もバランスの取れたパフォーマンスを実現するには、分散テーブルの行を配布全体で均等に広げる必要があることに注意してください。
+
+ただし、Azure SQL Data Warehouse 動的管理ビュー (DMV) を照会する場合は、さらに詳細な分析を実行できます。この記事の残りの部分では、この方法について説明します。
 
 ## 手順 1: データ傾斜を検索するビューを作成する
 
@@ -147,7 +159,7 @@ ORDER BY [row_count] DESC
 
 ### 方法 1: 他の分散列を含むテーブルを再作成する
 
-データ傾斜を解決する一般的な方法は、他の分散列を含むテーブルを再作成することです。ハッシュ分散列の選択に関するガイダンスについては、「[Hash distribution (ハッシュ分散)][]」を参照してください。この例では、[CTAS][] を使用して、他の分散列を含むテーブルを再作成します。
+データ傾斜を解決する一般的な方法は、他の分散列を含むテーブルを再作成することです。ハッシュ分散列の選択に関するガイダンスについては、[ハッシュ分散][]に関するページを参照してください。この例では、[CTAS][] を使用して、他の分散列を含むテーブルを再作成します。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey] 
@@ -215,11 +227,11 @@ RENAME OBJECT [dbo].[FactInternetSales_ROUND_ROBIN] TO [FactInternetSales];
 
 <!--Article references-->
 [テーブル設計]: sql-data-warehouse-develop-table-design.md
-[Hash distribution (ハッシュ分散)]: sql-data-warehouse-develop-hash-distribution-key.md
 [ハッシュ分散]: sql-data-warehouse-develop-hash-distribution-key.md
 
 <!--MSDN references-->
+[DBCC PDW\_SHOWSPACEUSED()]: https://msdn.microsoft.com/ja-JP/library/mt204028.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

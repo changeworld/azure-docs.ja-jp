@@ -1,6 +1,6 @@
 <properties
-   pageTitle="HDInsight での R Server の使用に関する記事| Azure"
-   description="R Server を含む HDInsight (Hadoop) クラスターで Apache Spark を作成し、クラスタで R スクリプトを送信する方法について説明します。"
+   pageTitle="HDInsight の R Server (プレビュー) の使用開始 | Azure"
+   description="R Server を含む HDInsight の Apache Spark (プレビュー) クラスターを作成し、クラスターで R スクリプトを送信する方法について説明します。"
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
@@ -17,9 +17,9 @@
    ms.date="03/25/2016"
    ms.author="jeffstok"/>
 
-# HDInsight での R Server の概要
+#HDInsight の R Server (プレビュー) の使用開始
 
-HDInsight の Premium レベル サービスには、HDInsight クラスタの一部として R Server が含まれています。これにより、R スクリプトで MapReduce と Spark を使用して、分散計算を実行することができます。このドキュメントでは、HDInsight で新しい R Server を作成し、分散 R 計算の Spark の使用方法を示す R スクリプトを実行する方法を学習します。
+HDInsight の Premium レベル サービスには、HDInsight の R Server (プレビュー) が含まれています。これにより、R スクリプトで MapReduce と Spark を使用して、分散計算を実行することができます。このドキュメントでは、HDInsight で新しい R Server を作成し、分散 R 計算の Spark の使用方法を示す R スクリプトを実行する方法を学習します。
 
 ![このドキュメントのワークフロー図](./media/hdinsight-getting-started-with-r/rgettingstarted.png)
 
@@ -322,4 +322,4 @@ Azure Resource Manager テンプレートを使用して HDInsight で R Server 
 
 ARM テンプレートの使用方法の一般的な情報については、「[ARM テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

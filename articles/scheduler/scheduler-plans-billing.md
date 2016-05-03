@@ -1,6 +1,6 @@
 <properties
  pageTitle="Azure Scheduler のプランと課金"
- description=""
+ description="Azure Scheduler のプランと課金"
  services="scheduler"
  documentationCenter=".NET"
  authors="krisragh"
@@ -85,4 +85,4 @@ Premium 課金単位には、最大 10,000 個の Premium ジョブ コレクシ
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

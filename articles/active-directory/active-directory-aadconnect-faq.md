@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="04/20/2016"
 	ms.author="billmath"/>
 
 # Azure AD Connect の FAQ
@@ -46,10 +46,12 @@
 - [Office 365、Azure、Intune などの組織アカウントのユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない ](https://support.microsoft.com/ja-JP/kb/2523192)
 - [オンプレミス ユーザー アカウントの UPN を SSO が有効な異なるドメイン サフィックスに更新した後、Azure Active Directory に変更が同期されない](https://support.microsoft.com/ja-JP/kb/2669550)
 
+また、「[Azure AD Connect sync service features (Azure AD Connect 同期サービス機能)](active-directory-aadconnectsyncservice-features.md)」に記載された手順に従って、同期エンジンによる userPrincipalName の更新が許可されるように Azure AD を構成することもできます。
+
 ## カスタム構成
 **Q: Azure AD Connect 用の PowerShell コマンドレットのドキュメントはどこにありますか。** このサイトに記載されているコマンドレットを除き、Azure AD Connect で使用されている PowerShell コマンドレットは、ユーザーによる使用をサポートしていません。
 
-**Q: *Synchronization Service Manager* の [サーバーのエクスポート/インポート] を使用して、サーバー間で構成を移動できますか。** いいえ。このオプションはすべての構成設定を取得しないため、使用すべきではありません。代わりに、2 台目のサーバーでウィザードを使用して基本構成を作成し、同期ルール エディターを使用して PowerShell スクリプトを生成し、サーバー間でカスタム ルールを移動してください。「[Move custom configuration from active to staging server](active-directory-aadconnect-upgrade-previous-version.md#move-custom-configuration-from-active-to-staging-server)」をご覧ください。
+**Q: *Synchronization Service Manager* の [サーバーのエクスポート/インポート] を使用して、サーバー間で構成を移動できますか。** いいえ。このオプションはすべての構成設定を取得しないため、使用すべきではありません。代わりに、2 台目のサーバーでウィザードを使用して基本構成を作成し、同期ルール エディターを使用して PowerShell スクリプトを生成し、サーバー間でカスタム ルールを移動してください。詳細については、「[カスタム構成をアクティブ サーバーからステージング サーバーに移動する](active-directory-aadconnect-upgrade-previous-version.md#move-custom-configuration-from-active-to-staging-server)」をご覧ください。
 
 ## トラブルシューティング
 **Q: Azure AD Connect に関するヘルプを参照する方法を教えてください。**
@@ -66,4 +68,4 @@
 
 - このリンクを使用して、Azure ポータルからサポートを受けることができます。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->
