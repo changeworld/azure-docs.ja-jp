@@ -17,7 +17,7 @@
      ms.date="03/02/2016"
      ms.author="dobett"/>
 
-# チュートリアル: IoT 事前構成済みソリューションの使用
+# チュートリアル: 事前構成済みソリューションの使用
 
 ## はじめに
 
@@ -33,7 +33,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 1.  Azure アカウント資格情報を使用して [azureiotsuite.com][lnk-azureiotsuite] にログオンし、**[+]** をクリックして新しいソリューションを作成します。
 
-    > [AZURE.NOTE] ソリューションのプロビジョニングに必要なアクセス許可に問題がある場合は、詳細について「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」を参照してください。
+    > [AZURE.NOTE] ソリューションのプロビジョニングに必要なアクセス許可でお困りの場合は、詳細について「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」を参照してください。
 
 2.  **[リモート監視]** タイルで **[選択]** タイルを選択します。
 
@@ -53,7 +53,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 4. タイルをクリックし、右側のウィンドウでソリューションの詳細を確認します。
 
-> [AZURE.NOTE] 構成済みソリューションのデプロイの問題が発生している場合は、「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」と「[IoT スイートに関してよく寄せられる質問][lnk-faq]」を参照してください。それでも問題が解決しない場合は、[ポータル][lnk-portal]でサービス チケットを作成してください。
+> [AZURE.NOTE] 構成済みソリューションのデプロイの問題が発生している場合は、「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」と [FAQ][lnk-faq] を参照してください。それでも問題が解決しない場合は、[ポータル][lnk-portal]でサービス チケットを作成してください。
 
 ソリューションの一覧に予測どおりに表示されない詳細がありますか? [ユーザーの声](https://feedback.azure.com/forums/321918-azure-iot)で機能に関する提案をお寄せください。
 
@@ -248,10 +248,10 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 [lnk-predictive]: iot-suite-predictive-overview.md
 [lnk-connecting-devices]: iot-suite-connecting-devices.md
-[lnk-permissions]: https://azure.microsoft.com/documentation/articles/iot-suite-permissions/
+[lnk-permissions]: iot-suite-permissions.md
 [lnk-logic-apps]: https://azure.microsoft.com/documentation/services/app-service/logic/
 [lnk-portal]: http://portal.azure.com/
 [lnk-rmgithub]: https://github.com/Azure/azure-iot-remote-monitoring
-[lnk-faq]: https://azure.microsoft.com/documentation/articles/iot-suite-faq/
+[lnk-faq]: iot-suite-faq.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

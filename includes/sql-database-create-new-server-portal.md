@@ -44,4 +44,4 @@ articles/sql-database/sql-database-get-started-tutorial.md
 
        ![新しい論理サーバー](./media/sql-database-create-new-server-portal/sql-database-create-new-server-portal-6.png)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

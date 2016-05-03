@@ -13,31 +13,31 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="04/08/2016"
+   ms.date="04/27/2016"
    ms.author="v-livech"/>
 
 
 # CLI を使用した Azure での Linux VM の作成
 
-この記事では、Azure CLI の `azure vm quick-create` コマンドを使用して、Azure に Linux 仮想マシンをすばやく作成する方法を説明します。`quick-create` コマンドは、短い時間で概念のプロトタイピングやテストを行うために使用できる基本的なインフラストラクチャで VM を作成します。Linux bash シェルの最も簡単な方法です。この記事では、Azure アカウント ([無料試用版の入手](https://azure.microsoft.com/pricing/free-trial/)) と、Resource Manager モードの [Azure CLI](../xplat-cli-install.md) (`azure config mode arm`) が必要です。
+この記事では、Azure CLI の `azure vm quick-create` コマンドを使用して、Azure に Linux 仮想マシンをすばやくデプロイする方法を説明します。`quick-create` コマンドを使用すると、VM が基本的なインフラストラクチャと共にデプロイされます。この VM を使用して、概念のプロトタイピングやテストを短時間で行うことができます。Linux bash シェルの最も簡単な方法です。この記事では、Azure アカウント ([無料試用版の入手](https://azure.microsoft.com/pricing/free-trial/)) と、[Azure CLI](../xplat-cli-install.md) へのログイン (`azure login`) および Resource Manager モードの有効化(`azure config mode arm`) が必要です。[Azure ポータル](virtual-machines-linux-quick-create-portal.md)を使用して Linux VM を短時間でデプロイすることもできます。
 
 ## クイック コマンドの概要
 
 ```
-# One command to quickly the VM that prompts for arguments
+# One command to deploy the VM and attach your SSH key
 ahmet@fedora$ azure vm quick-create -M ~/.ssh/azure_id_rsa.pub
 ```
 
-## 詳しいチュートリアル
+## Linux VM のデプロイ
 
-## Linux VM の作成
+この記事では、上記のコマンドを使用した場合のプロンプトと、それぞれで想定される出力を示します。
 
-次のコマンドでは任意のイメージを使用できますが、この例では、`canonical:ubuntuserver:14.04.2-LTS:latest` を使用して VM をすばやく作成します (Marketplace でイメージを探すには、[イメージを検索](virtual-machines-linux-cli-ps-findimage.md)するか、[独自のカスタム イメージをアップロード](virtual-machines-linux-create-upload-generic.md)することもできます)。 次のようになります。
+ImageURN については、`canonical:ubuntuserver:14.04.2-LTS:latest` を使用して、Ubuntu 14.04 VM をデプロイします (Marketplace で[イメージを検索](virtual-machines-linux-cli-ps-findimage.md)して見つけるか、[独自のカスタム イメージをアップロード](virtual-machines-linux-create-upload-generic.md)できます)。
 
-以下のコマンド チュートリアルでは、プロンプトを実際の環境の値に置き換えてください。この記事で使用する値は "例" です。
+以下のコマンド チュートリアルでは、プロンプトを実際の環境の値に置き換えてください。ここでは、"サンプル" の値を使用します。出力は次のような出力ブロックになります。
 
 ```bash
-# Create the Linux VM using prompts
+# Follow the prompts and enter your own names
 ahmet@fedora$ azure vm quick-create -M ~/.ssh/azure_id_rsa.pub
 info:    Executing command vm quick-create
 Resource group name: exampleRGname
@@ -48,6 +48,10 @@ ImageURN (in the format of "publisherName:offer:skus:version") or a VHD link to 
 User name: ahmet
 Password: ************************************************
 Confirm password: ************************************************
+```
+
+```bash
+########### expected output ###########
 + Looking up the VM "exampleVMname"
 info:    Verifying the public key SSH file: /home/ahmet/.ssh/azure_id_rsa.pub
 info:    Using the VM Size "Standard_D1"
@@ -123,30 +127,22 @@ data:      Diagnostics Instance View:
 info:    vm quick-create command OK
 ```
 
-既定の SSH ポート 22 と、上記の出力に示されているパブリック IP アドレスを使用して、VM に SSH 接続できます。
+既定の SSH ポート 22 と、上記の出力に示されているパブリック IP アドレス (または完全修飾ドメイン名 (FQDN)) を使用して、VM に SSH 接続できます。
 
 ```
 ahmet@fedora$ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.88.22.244
 ```
 
-`azure vm quick-create` は、bash シェルにログインして作業できるように VM をすばやく作成する方法です。ただし、`vm quick-create` を使用すると複雑な環境のメリットはないので、環境をカスタマイズする必要がある場合は、[Azure Resource Manager テンプレートを使用して特定のデプロイをすばやく作成する](virtual-machines-linux-cli-deploy-templates.md)か、[Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-cli-deploy-templates.md)ことができます。
-
-上の例では次のものが作成されます。
-
-- Azure リソース グループにより VM が以下にデプロイされます。
-- VM イメージの .vhd ファイルを保持するための Azure ストレージ アカウント
-- VM に接続するための Azure Virtual Network とサブネット
-- VM とネットワークを関連付けるための仮想ネットワーク インターフェイス カード (NIC)
-- 外部使用のためのインターネット アドレスを提供するパブリック IP アドレスとサブドメイン プレフィックス。その後、その環境内に Linux VM が作成されます。
-
 ## 次のステップ
 
-テストまたはデモンストレーション用の Linux VM を迅速に作成しました。インフラストラクチャに合わせてカスタマイズした Linux VM を作成する方法については、次の記事を参照してください。
+`azure vm quick-create` を使用すると、VM を短時間でデプロイして、bash シェルにログインして作業できます。`vm quick-create` を使用しても、複雑な環境が備えているようなメリットは得られません。インフラストラクチャに合わせてカスタマイズした Linux VM をデプロイする方法については、次の記事を参照してください。
 
+- [Azure Resource Manager テンプレートを使用して特定のデプロイを作成する](virtual-machines-linux-cli-deploy-templates.md)
+- [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-cli-deploy-templates.md)
 - [テンプレートを使用して Azure に Linux VM を作成する](virtual-machines-linux-cli-deploy-templates.md)
 - [Azure テンプレートを使用して安全な Linux VM を作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
 - [Azure CLI を使用して新しく Linux VM を作成する](virtual-machines-linux-create-cli-complete.md)
 
 これらの記事を読むと、Azure インフラストラクチャの構築を始めることができ、独自またはオープン ソースのインフラストラクチャ デプロイ、構成、オーケストレーション ツールを使用できます。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

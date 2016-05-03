@@ -12,9 +12,9 @@
    ms.workload="identity"
    ms.tgt_pltfrm="na"
    ms.devlang="na"
-   ms.topic="article"
-   ms.date="03/16/2016"
-   ms.author="shoatman;billmath"/>
+   ms.topic="get-started-article"
+   ms.date="04/25/2016"
+   ms.author="andkjell;shoatman;billmath"/>
 
 # Azure AD Connect: Windows Azure Active Directory 同期 (DirSync) のアップグレード
 
@@ -199,4 +199,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

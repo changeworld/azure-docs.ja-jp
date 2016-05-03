@@ -1,6 +1,6 @@
 <properties
-	pageTitle="ASP.NET と Azure App Service を使用する | Microsoft Azure"
-	description="Visual Studio で ASP.NET Web プロジェクトを作成し、Azure App Service の新しい Web アプリにデプロイする方法について説明します。"
+	pageTitle="Azure App Service と ASP.NET の使用 | Microsoft Azure"
+	description="Visual Studio を使用して ASP.NET Web プロジェクトを Azure App Service の新しい Web アプリにデプロイする方法について説明します。"
 	services="app-service\web"
 	documentationCenter=".net"
 	authors="tdykstra"
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="03/02/2016"
+	ms.date="04/22/2016"
 	ms.author="tdykstra"/>
 
-# Visual Studio を使用した Azure App Service での ASP.NET Web アプリの使用
+# ASP.NET と Visual Studio を使用した Azure App Service での Web アプリの使用
 
 > [AZURE.SELECTOR]
 - [.NET](web-sites-dotnet-get-started.md)
@@ -293,4 +293,4 @@ ASP.NET Web アプリが Azure App Service で動作するようになったら�
 
 	Azure では、このチュートリアルで示したように App Service Web Apps で、または Cloud Services や Virtual Machines で、Web アプリケーションを実行することができます。詳細については、「[Azure App Service、Cloud Services、Virtual Machines、および Service Fabric の比較](/manage/services/web-sites/choose-web-app-service/)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

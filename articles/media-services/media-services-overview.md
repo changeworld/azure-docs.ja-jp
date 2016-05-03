@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
- 	ms.date="04/18/2016"
+ 	ms.date="04/26/2016"
 	ms.author="juliako;anilmur"/>
 
 #Azure Media Services の概要と一般的なシナリオ
@@ -70,7 +70,7 @@ Azure Media Services のすべての主要コンポーネントを紹介する�
 
 このセクションでは、一般的なシナリオと関連するトピックへのリンクを提供します。次の図は、コンテンツのオンデマンド配信に関連する Media Services プラットフォームの主要な部分を示しています。
 
-![VoD ワークフロー][vod-overview]
+![VoD ワークフロー](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
 
 ###ストレージのコンテンツを保護し、ストリーミング メディアを平文 (暗号化されていない) で配信する
@@ -105,14 +105,19 @@ Azure Media Services のすべての主要コンポーネントを紹介する�
 1. OnDemand ロケーターを作成して資産を発行します。
 1. 公開済みコンテンツをストリーミングします。 
 
-###コンテンツのインデックス作成
+###Media Analytics を使用して、ビデオから実用的な洞察を得る 
+
+Media Analytics は音声および視覚コンポーネントの集合体であり、組織や企業がこれを活用することで、ビデオ ファイルから実用的な洞察を簡単に引き出すことができます。詳細については、「[Azure Media Services Analytics の概要](media-services-analytics-overview.md)」を参照してください。
 
 1. 高品質な中間ファイルを資産にアップロードします。
-1. コンテンツのインデックスを作成します。
-
-	インデックス作成ジョブは、ビデオの再生でクローズド キャプション (CC) として使用できるファイルを生成します。また、ビデオ内を検索したり、正確なビデオの位置へ移動したりできるようにするファイルを生成します。
-
-1. インデックス付けされたコンテンツを使用します。
+2. 以下の Media Analytics サービスを使用してビデオを処理します。
+	
+	- **Indexer** - [Azure Media Indexer 2 でビデオを処理する](media-services-process-content-with-indexer2.md)
+	- **Hyperlapse** - [Azure Media Hyperlapse を使用する Hyperlapse メディア ファイル](media-services-hyperlapse-content.md)
+	- **動作の検出** - [Azure Media Analytics での動作検出](media-services-motion-detection.md)
+	- **顔の検出と顔の感情** - [Azure Media Analytics での顔および感情の検出](media-services-face-and-emotion-detection.md)
+	- **ビデオ要約** - [Azure Media Video Thumbnails を使用してビデオ要約を作成する](media-services-video-summarization.md)
+3. Media Analytics のメディア プロセッサによって MP4 ファイルまたは JSON ファイルが生成されます。メディア プロセッサによって MP4 ファイルが生成された場合は、そのファイルのプログレッシブ ダウンロードが可能です。メディア プロセッサによって JSON ファイルが生成された場合は、そのファイルを Azure Blob Storage からダウンロードできます。 
 
 
 ###プログレッシブ ダウンロードの提供 
@@ -133,7 +138,7 @@ Azure Media Services のすべての主要コンポーネントを紹介する�
 - [メディア プロセッサの取得方法](media-services-get-media-processor.md)
 - [コンテンツのエンコード方法](media-services-manage-content.md#encode)
 - [ジョブの監視方法](media-services-portal-check-job-progress.md)
-- [コンテンツのインデックス方法](media-services-manage-content.md#index)
+- [Media Analytics の使用方法](media-services-analytics-overview.md)
 - [コンテンツの保護方法](media-services-manage-content.md#encrypt)
 - [公開の保護方法](media-services-manage-content.md#publish)
 - [エンコードの規模の設定方法](media-services-portal-encoding-units.md)
@@ -200,7 +205,7 @@ Media Services では、Azure CDN との統合をサポートしています。A
 
 ##Media Services アカウントのスケーリング
 
-**Media Services** は、アカウントのプロビジョニングに使用する **[ストリーミング予約ユニット]** と **[エンコード予約ユニット]** の数を指定することで規模を設定できます。
+**Media Services** は、アカウントのプロビジョニングに使用する **[ストリーミング占有ユニット]** と **[エンコード占有ユニット]** の数を指定することで規模を設定できます。
 
 ストレージ アカウントを追加して、Media Services アカウントの規模を設定することもできます。各ストレージ アカウントの上限は 500 TB (テラバイト) です。既定の上限を超えるストレージ容量を設定するために、複数のストレージ アカウントを単一の Media Services アカウントにアタッチすることを選択できます。
 
@@ -209,11 +214,6 @@ Media Services では、Azure CDN との統合をサポートしています。A
 ##サポート
 
 [Azure サポート](https://azure.microsoft.com/support/options/)では、Media Services を含む Azure のオプションについてサポートを提供しています。
-
-##パターンとプラクティスのガイダンス
-
-[パターンとプラクティスのガイダンス](https://wamsg.codeplex.com/) [オンライン ドキュメント](https://msdn.microsoft.com/library/dn735912.aspx) [ダウンロード可能な電子ブック](https://www.microsoft.com/download/details.aspx?id=42629)
-
 
 ##フィードバックの提供
 
@@ -236,4 +236,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -1,12 +1,12 @@
 <properties
 	pageTitle="Azure AD Connect: オンプレミス ID と Azure Active Directory の統合 | Microsoft Azure"
-	description="Azure AD Connect は、Windows Server Active Directory などのオンプレミス ID システムを Azure Active Directory と統合し、ユーザーを Office 365、Azure、数千の SaaS アプリケーションに接続するツールです。このトピックでは、Azure AD Connect の機能について説明し、Azure AD Connect の動作、インストール方法、構成、カスタマイズに関する情報を提供します。"
+	description="Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。Office 365、Azure、SaaS など Azure AD と連動するアプリケーションの ID を共通化することができます。"
     keywords="Azure AD Connect の紹介, Azure AD Connect の概要, Azure AD Connect とは, Active Directory のインストール"
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
 	manager="stevenpo"
-	editor="curtand"/>
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
@@ -14,20 +14,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/14/2016"
+	ms.date="04/20/2016"
 	ms.author="andkjell;billmath"/>
 
 # オンプレミス ID と Azure Active Directory の統合
-Azure AD Connect は、Windows Server Active Directory などのオンプレミス ID システムを Azure Active Directory と統合し、ユーザーを Office 365、Azure、数千の Saas アプリケーションに接続するツールです。このトピックでは、エンド ユーザーが既存の会社アプリへのアクセスに使っているのと同じ ID でクラウド サービスにアクセスできるようにするうえで必要なコンポーネントを準備およびデプロイする方法を包括的に示します。
+Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。このトピックでは、計画、デプロイ、運用の各手順を紹介しています。関連するトピックのリンク集としてご利用ください。
 
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
-> [AZURE.IMPORTANT] [Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Office 365 を接続するための最適な方法です。 Windows Azure Active Directory Sync (DirSync) および Azure AD Sync は廃止となり、2017 年 4 月 13 日でサポートが終了するため、Azure AD Connect へアップグレードする絶好の機会です。]( https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM)
+> [AZURE.IMPORTANT] [Azure AD Connect is the best way to connect your on-premises directory with Azure AD and Office 365. This is a great time to upgrade to Azure AD Connect from Windows Azure Active Directory Sync (DirSync) or Azure AD Sync as these tools are now deprecated and will reach end of support on April 13, 2017.](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM)
 
 ![Azure AD Connect とは](./media/active-directory-aadconnect/arch.png)
 
 ## Azure AD Connect を使用する理由
-オンプレミスのディレクトリと Azure AD を統合すると、クラウドとオンプレミス両方のリソースにアクセスするための共通の ID が提供されるため、ユーザーの生産性が向上します。この統合によって、ユーザーや組織には次の利点があります。
+オンプレミスのディレクトリと Azure AD を統合すると、クラウドとオンプレミス両方のリソースにアクセスするための共通の ID が提供されるため、ユーザーの生産性が向上します。ユーザーや組織にとっては次の利点があります。
 
 - ユーザーは、単一の ID を使ってオンプレミスのアプリケーションとクラウド サービス (Office 365 など) にアクセスできます。
 
@@ -37,24 +37,23 @@ Azure AD Connect は、Windows Server Active Directory などのオンプレミ�
 
 
 ### Azure AD Connect の動作
-
-Azure Active Directory Connect は 3 つの主要な部分で構成されます。この 3 つの部分とは、同期サービス、オプションの Active Directory フェデレーション サービス、および [Azure AD Connect Health](active-directory-aadconnect-health.md) を使用して行う監視です。
+Azure Active Directory Connect は、同期サービスと Active Directory フェデレーション サービス コンポーネント (オプション)、監視コンポーネント ([Azure AD Connect Health](active-directory-aadconnect-health.md)) という主に 3 つのコンポーネントで構成されています。
 
 <center>![Azure AD Connect スタック](./media/active-directory-aadconnect-how-it-works/AADConnectStack2.png) </center>
 
-- 同期 - この部分は、以前 [Dirsync および Azure AD Sync](active-directory-hybrid-identity-design-considerations-tools-comparison.md) としてリリースされたコンポーネントと機能で構成されます。これは、ユーザーとグループの作成を担当している部分です。オンプレミス環境のユーザーとグループに関する情報とクラウド内の情報が一致することも保証します。
-- AD FS - これは Azure AD Connect のオプションの部分であり、オンプレミスの AD FS インフラストラクチャを使用して、ハイブリッド環境をセットアップするために使用できます。この部分は、組織で、ドメイン参加 SSO、AD サインイン ポリシーの適用、スマート カードやサード パーティの MFA などを含む複雑なデプロイメントに対応するために使用できます。
+- 同期 - ユーザーやグループなどのオブジェクトを作成するためのコンポーネントです。さらに、オンプレミス ユーザーやオンプレミス グループの ID 情報をクラウド側と一致させる働きをします。
+- AD FS - Azure AD Connect のオプション コンポーネントです。オンプレミスの AD FS インフラストラクチャと組み合わせることでハイブリッド環境を構成できます。ドメイン参加による SSO や AD サインイン ポリシーの適用、スマート カードやサード パーティの MFA など、複雑なデプロイに対応する組織で利用できます。
 - 正常性の監視 - Azure AD Connect Health により、強力に監視し、Azure ポータルでこのアクティビティを一元的に表示できます。詳細については、「[Azure Active Directory Connect Health](active-directory-aadconnect-health.md)」を参照してください。
 
 ## Azure AD Connect のインストール
 
-Azure AD Connect は [Microsoft ダウンロード センター]( http://go.microsoft.com/fwlink/?LinkId=615771)からダウンロードできます。
+Azure AD Connect は [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=615771)からダウンロードできます。
 
 
 | 解決策 | シナリオ |
 | ----- | ----- |
 | 開始する前に - [ハードウェアと前提条件](active-directory-aadconnect-prerequisites.md) | <li>Azure AD Connect のインストールを開始する前に実行する手順です。</li> |
-| [簡単設定](active-directory-aadconnect-get-started-express.md) | <li>単一のフォレスト AD がある場合に推奨される既定のオプションです。</li> <li>ユーザーは、パスワード同期により、同じパスワードを使ってサインインします。</li>
+| [簡単設定](active-directory-aadconnect-get-started-express.md) | <li>シングル フォレストの AD が存在する場合、この方法をお勧めします。</li> <li>ユーザーは、パスワード同期により、同じパスワードを使ってサインインします。</li>
 | [カスタマイズした設定](active-directory-aadconnect-get-started-custom.md) | <li>複数のフォレストがある場合に使用されます。多くのオンプレミス [トポロジ](active-directory-aadconnect-topologies.md)がサポートされます。</li> <li>フェデレーション用の ADFS などのサインイン オプションをカスタマイズするか、サード パーティの ID プロバイダーを使います。</li> <li>フィルター処理やライトバックなどの同期機能をカスタマイズします。</li>
 | [DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md) | <li>既存の DirSync サーバーが既に実行されている場合に使用します。</li>
 | [Azure AD Sync または Azure AD Connect からのアップグレード](active-directory-aadconnect-upgrade-previous-version.md)| <li>複数の方法から自由に選択できます。</li>
@@ -66,7 +65,7 @@ Azure AD Connect は [Microsoft ダウンロード センター]( http://go.micr
 
 | トピック | |
 | --------- | --------- |
-| Azure AD Connect のダウンロード | [Azure AD Connect のダウンロード]( http://go.microsoft.com/fwlink/?LinkId=615771) |
+| Azure AD Connect のダウンロード | [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771) |
 | Express 設定を使用したインストール | [Azure AD Connect の高速インストール](active-directory-aadconnect-get-started-express.md) |
 | カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md) |
 | DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md) |
@@ -85,17 +84,17 @@ Azure AD Connect は [Microsoft ダウンロード センター]( http://go.micr
 | ユーザーのサインイン オプション | [Azure AD Connect ユーザーのサインイン オプション](active-directory-aadconnect-user-signin.md) |
 
 ## 同期機能を構成する
-Azure AD Connect には、必要に応じて有効にすることができる機能や、既定で有効になっている機能があります。一部の機能については、シナリオやトポロジに応じて追加の構成が必要になることがあります。
+Azure AD Connect には、必要に応じて有効にすることができる機能や、既定で有効になっている機能があります。ただし一部の機能は、特定のシナリオやトポロジを実現するために、特別な構成が必要となります。
 
-[フィルター処理](active-directory-aadconnectsync-configure-filtering.md)は、Azure AD に同期するオブジェクトを制限する場合に使用します。既定では、すべてのユーザー、連絡先、グループ、Windows 10 コンピューターが同期されますが、ドメイン、OU、または属性に基づいて制限することができます。
+[フィルター処理](active-directory-aadconnectsync-configure-filtering.md)は、Azure AD に同期するオブジェクトを制限する場合に使用します。既定では、すべてのユーザー、連絡先、グループ、Windows 10 コンピューターが同期の対象となります。フィルター処理は、ドメインや OU、属性に基づいて変更することができます。
 
-[パスワード同期](active-directory-aadconnectsync-implement-password-synchronization.md)では、Active Directory のパスワード ハッシュを Azure AD に同期します。これにより、ユーザーは、同じパスワードをオンプレミスとクラウドで使用できるようになります。しかも、それを 1 か所で管理できます。オンプレミスの Active Directory が使用されるため、独自のパスワード ポリシーを使用することができます。
+[パスワード同期](active-directory-aadconnectsync-implement-password-synchronization.md)は、Active Directory のパスワード ハッシュを Azure AD と同期させる機能です。エンド ユーザーがオンプレミスとクラウドで同じパスワードを使用でき、しかもそれを 1 か所で管理することができます。オンプレミスの Active Directory が認証機関として使用されているため、独自のパスワード ポリシーを使用することもできます。
 
 [パスワード ライトバック](active-directory-passwords-getting-started.md)により、ユーザーはクラウドでパスワードを変更およびリセットし、オンプレミスのパスワード ポリシーを適用できます。
 
 [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)により、Azure AD に登録されているデバイスをオンプレミスの Active Directory にライトバックできます。これにより、そのデバイスを条件付きアクセスに使用できるようになります。
 
-[誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)機能は既定で有効になっており、多数のクラウド ディレクトリが同時に削除されるのを防ぐことができます。既定では実行ごとに 500 件の削除が許可されていますが、組織のサイズに応じて変更できます。
+[誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)機能は既定で有効になっており、多数のクラウド ディレクトリが同時に削除されるのを防ぐことができます。1 回の実行で削除できるディレクトリは、既定では 500 個です。この設定は、組織の規模に応じて変更できます。
 
 [自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)は、簡単設定を使用したインストールでは既定で有効になっており、Azure AD Connect が最新のリリースで常に最新の状態になるようにします。
 
@@ -140,6 +139,7 @@ Azure AD から証明書を自動更新するように ADFS サーバーを更�
 | トピック | |
 | --------- | --------- |
 | サブドメインで ADFS を構成する | [Azure AD とのフェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md) |
+| AD FS ファームを管理する | [AD FS management and customizaton with Azure AD Connect (Azure AD Connect を使用した AD FS の管理とカスタマイズ)](active-directory-aadconnect-federation-management.md) |
 | フェデレーション証明書を手動で更新する | [Office 365 および Azure AD 用のフェデレーション証明書の更新](active-directory-aadconnect-o365-certs.md) |
 
 ## 詳細情報とリファレンス
@@ -159,6 +159,6 @@ Azure AD から証明書を自動更新するように ADFS サーバーを更�
 
 オンプレミスのディレクトリのクラウドへの拡張に関する 2015 年のプレゼンテーションをご覧ください。
 
-[AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
+>[AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

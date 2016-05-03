@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/15/2016"
+   ms.date="04/25/2016"
    ms.author="cherylmc" />
 
 # サイト間 VPN Gateway 接続の VPN デバイスについて
@@ -58,6 +58,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Juniper | ISG | ScreenOS 6.3 (ポリシー ベースおよびルート ベース) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |
 | Juniper | SSG | ScreenOS 6.2 (ポリシー ベースおよびルート ベース) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
 | Microsoft | ルーティングとリモート アクセス サービス | Windows Server 2012 | 互換性なし | [Microsoft のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
+| Open Systems AG | Mission Control Security Gateway | 該当なし | [インストール ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) | [インストール ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |
 | Openswan | Openswan | 2\.6.32 | (近日対応予定) | 互換性なし |
 | Palo Alto Networks | PAN-OS 5.0 またはそれ以上を実行しているすべてのデバイス | PAN-OS 5x またはそれ以上 | [Palo Alto Networks](https://support.paloaltonetworks.com/) | 互換性なし |
 | Watchguard | すべて | Fireware XTM v11.x | [構成の手順](http://customers.watchguard.com/articles/Article/Configure-a-VPN-connection-to-a-Windows-Azure-virtual-network/) | 互換性なし |
@@ -116,10 +117,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | IKE のバージョン | IKEv1 | IKEv2 |
 | ハッシュ アルゴリズム | SHA1(SHA128) | SHA1(SHA128) |
 | フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (時間) | 3,600 秒 | 3,600 秒 |
-| フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (スループット) | 102,400,000 KB | - |
-| IPsec SA 暗号化および認証のプラン (優先度順) | 1.ESP-AES256 2.ESP-AES128 3.ESP-3DES 4.該当なし | *ルート ベース ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン* (下記) を参照 |
-| Perfect Forward Secrecy (PFS) | なし | あり (DH Group1、2、5、14、24) |
-| Dead Peer Detection | サポートなし | サポートあり |
+| フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (スループット) | 102,400,000 KB | - | | IPsec SA 暗号化および認証のプラン (優先度順) | 1.ESP-AES256 2.ESP-AES128 3.ESP-3DES 4.該当なし | *ルート ベース ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン* (下記) を参照 | | Perfect Forward Secrecy (PFS) | なし | あり (DH Group1、2、5、14、24) | | Dead Peer Detection | サポートなし | サポートあり |
 
 ### ルート ベース ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン
 
@@ -143,12 +141,11 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | 14 | AH MD5 (ESP DES null HMAC)、有効期間の提示なし | AH MD5 (ESP DES MD5)、有効期間なし |
 | 15 | AH SHA1 ( ESP DES SHA1)、有効期間なし | ESP SHA、有効期間なし |
 | 16 | AH MD5 (ESP DES MD5)、有効期間なし | ESP MD5、有効期間なし |
-| 17 | - | AH SHA、有効期間なし |
-| 18 | - | AH MD5、有効期間なし |
+| 17 | - | AH SHA、有効期間なし | | 18 | - | AH MD5、有効期間なし |
 
 
 - ルート ベースおよび高性能 VPN ゲートウェイで IPsec ESP NULL 暗号化を指定することができます。Null ベースの暗号化では、転送中のデータ保護は提供されません。そのため、最大のスループットおよび最小の待機時間が必要な場合にのみ使用する必要があります。クライアントは、VNet 間の通信シナリオ、または暗号化がソリューションの他の場所に適用されている場合に、この暗号化の使用を選択することができます。
 
 - インターネット経由のクロスプレミス接続では、重要な通信のセキュリティを確保するため、上記の表にある暗号化およびハッシュ アルゴリズムによる既定の Azure VPN Gateway 設定を使用してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

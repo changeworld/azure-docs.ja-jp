@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="12/11/2015"
+   ms.date="04/21/2016"
    ms.author="jgao"/>
 
 # Azure SDK for Node.js を使用して Azure Data Lake Analytics を管理する
@@ -21,88 +21,126 @@
 
 [AZURE.INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Azure ADK for Node.js を使用して、Azure Data Lake Analytics アカウント、ジョブ、およびカタログを管理できます。他のツールを使用する管理のトピックを表示するには、上のタブ セレクターをクリックします。
+Azure SDK for Node.js を使用して、Azure Data Lake Analytics アカウント、ジョブ、およびカタログを管理できます。他のツールを使用する管理のトピックを表示するには、上のタブ セレクターをクリックします。
 
-**前提条件**
+現時点では、以下がサポートされています。
 
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+  *  **Node.js のバージョン: 0.10.0 以降**
+  *  **アカウント用の REST API のバージョン: 2015-10-01-preview**
+  *  **カタログ用の REST API のバージョン: 2015-10-01-preview**
+  *  **ジョブ用の REST API のバージョン: 2016-03-20-preview**
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- **Azure Data Lake Analytics アカウント**。「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」を参照してアカウントを作成します。
-- **Data Lake Analytics アカウントへのアクセス許可を持つサービス プリンシパル**。「[Azure リソース マネージャーでのサービス プリンシパルの認証](../resource-group-authenticate-service-principal.md)」を参照してください。
+## 特徴
 
-## SDK のインストール
+- アカウント管理: 作成、取得、一覧表示、更新、および削除。
+- ジョブ管理: 送信、取得、一覧表示、取り消し。
+- カタログ管理: 取得、一覧表示、作成 (シークレット)、更新 (シークレット)、削除 (シークレット)。
 
-次のコマンドを使用して SDK をインストールします。
+## インストール方法
 
-1. [Node.js](https://nodejs.org/) をインストールします。
-2. コマンド プロンプト、terminal または bash ウィンドウで次のコマンドを実行します。
+```bash
+npm install azure-arm-datalake-analytics
+```
 
-		npm install async
-		npm install adal-node
-		npm install azure-common
-		npm install azure-arm-datalake-analytics
+## Azure Active Directory を使用して認証する
 
-## Node.js のサンプル
+ ```javascript
+ var msrestAzure = require('ms-rest-azure');
+ //user authentication
+ var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
+ //service principal authentication
+ var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
+ ```
 
-次の例では、指定した Azure Data Lake Analytics アカウントのジョブの一覧を取得します。
+## Data Lake Analytics クライアントを作成する
 
-	var async = require('async');
-	var adalNode = require('adal-node');
-	var azureCommon = require('azure-common');
-	var azureDataLakeAnalytics = require('azure-arm-datalake-analytics');
+```javascript
+var adlaManagement = require("azure-arm-datalake-analytics");
+var acccountClient = new adlaManagement.DataLakeAnalyticsAccountClient(credentials, 'your-subscription-id');
+var jobClient = new adlaManagement.DataLakeAnalyticsJobClient(credentials, 'azuredatalakeanalytics.net');
+var catalogClient = new adlaManagement.DataLakeAnalyticsCatalogClient(credentials, 'azuredatalakeanalytics.net');
+```
 
-	var resourceUri = 'https://management.core.windows.net/';
-	var loginUri = 'https://login.windows.net/'
+## Data Lake Analytics アカウントを作成する
 
-	var clientId = 'application_id_(guid)';
-	var clientSecret = 'application_password';
+```javascript
+var util = require('util');
+var resourceGroupName = 'testrg';
+var accountName = 'testadlaacct';
+var location = 'eastus2';
 
-	var tenantId = 'aad_tenant_id';
-	var subscriptionId = 'azure_subscription_id';
-	var resourceGroup = 'adla_resourcegroup_name';
+// A Data Lake Store account must already have been created to create
+// a Data Lake Analytics account. See the Data Lake Store readme for
+// information on doing so. For now, we assume one exists already.
+var datalakeStoreAccountName = 'existingadlsaccount';
 
-	var accountName = 'adla_account_name';
+// account object to create
+var accountToCreate = {
+  tags: {
+    testtag1: 'testvalue1',
+    testtag2: 'testvalue2'
+  },
+  name: accountName,
+  location: location,
+  properties: {
+    defaultDataLakeStoreAccount: datalakeStoreAccountName,
+    dataLakeStoreAccounts: [
+      {
+        name: datalakeStoreAccountName
+      }
+    ]
+  }
+};
 
-	var context = new adalNode.AuthenticationContext(loginUri+tenantId);
+client.account.create(resourceGroupName, accountName, accountToCreate, function (err, result, request, response) {
+  if (err) {
+    console.log(err);
+    /*err has reference to the actual request and response, so you can see what was sent and received on the wire.
+      The structure of err looks like this:
+      err: {
+        code: 'Error Code',
+        message: 'Error Message',
+        body: 'The response body if any',
+        request: reference to a stripped version of http request
+        response: reference to a stripped version of the response
+      }
+    */
+  } else {
+    console.log('result is: ' + util.inspect(result, {depth: null}));
+  }
+});
+```
 
-	var client;
-	var response;
+## ジョブの一覧を取得する
 
-	async.series([
-		function (next) {
-			context.acquireTokenWithClientCredentials(resourceUri, clientId, clientSecret, function(err, result){
-				if (err) throw err;
-				response = result;
-				next();
-			});
-		},
-		function (next) {
-			var credentials = new azureCommon.TokenCloudCredentials({
-				subscriptionId : subscriptionId,
-				authorizationScheme : response.tokenType,
-				token : response.accessToken
-			});
+```javascript
+var util = require('util');
+var accountName = 'testadlaacct';
+jobClient.job.list(accountName, function (err, result, request, response) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('result is: ' + util.inspect(result, {depth: null}));
+  }
+});
+```
 
-			client = azureDataLakeAnalytics.createDataLakeAnalyticsJobManagementClient(credentials, 'azuredatalakeanalytics.net');
+## Data Lake Analytics カタログ内のデータベースの一覧を取得する
+```javascript
+var util = require('util');
+var accountName = 'testadlaacct';
+catalogClient.catalog.listDatabases(accountName, function (err, result, request, response) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('result is: ' + util.inspect(result, {depth: null}));
+  }
+});
+```
 
-			next();
-		},
-		function (next) {
-			client.jobs.list(resourceGroup, accountName, function(err, result){
-				if (err) throw err;
-				console.log(result);
-			});
-		}
-	]);
+## 関連項目
 
+- [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
+- [Microsoft Azure SDK for Node.js - Data Lake Store の管理](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
 
-##関連項目
-
-- [Azure SDK for Node.js](http://azure.github.io/azure-sdk-for-node/)
-- [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-- [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
-- [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
-- [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

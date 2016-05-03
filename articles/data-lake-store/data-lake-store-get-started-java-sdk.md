@@ -181,7 +181,6 @@ Azure Data Lake Store Java SDK を使用して、Azure Data Lake アカウント
                 _adlsFileSystemClient = new DataLakeStoreFileSystemManagementClientImpl(creds);
         
                 _adlsClient.setSubscriptionId(_subId);
-                _adlsFileSystemClient.setSubscriptionId(_subId);
             }
         
             // Helper function to show status and wait for user input
@@ -214,46 +213,46 @@ Azure Data Lake Store Java SDK を使用して、Azure Data Lake アカウント
         
             // Create file
             public static void CreateFile(String path) throws IOException, CloudException {
-                _adlsFileSystemClient.getFileSystemOperations().create(path, _adlsAccountName);
+                _adlsFileSystemClient.getFileSystemOperations().create(_adlsAccountName, path);
             }
         
             // Create file with contents
             public static void CreateFile(String path, String contents, boolean force) throws IOException, CloudException {
                 byte[] bytesContents = contents.getBytes();
         
-                _adlsFileSystemClient.getFileSystemOperations().create(path, _adlsAccountName, bytesContents, force);
+                _adlsFileSystemClient.getFileSystemOperations().create(_adlsAccountName, path, bytesContents, force);
             }
         
             // Append to file
             public static void AppendToFile(String path, String contents) throws IOException, CloudException {
                 byte[] bytesContents = contents.getBytes();
         
-                _adlsFileSystemClient.getFileSystemOperations().append(path, _adlsAccountName, bytesContents);
+                _adlsFileSystemClient.getFileSystemOperations().append(_adlsAccountName, path, bytesContents);
             }
         
             // Concatenate files
             public static void ConcatenateFiles(List<String> srcFilePaths, String destFilePath) throws IOException, CloudException {
-                _adlsFileSystemClient.getFileSystemOperations().concat(destFilePath, _adlsAccountName, srcFilePaths);
+                _adlsFileSystemClient.getFileSystemOperations().concat(_adlsAccountName, destFilePath, srcFilePaths);
             }
         
             // Delete concatenated file
             public static void DeleteFile(String filePath) throws IOException, CloudException {
-                _adlsFileSystemClient.getFileSystemOperations().delete(filePath, _adlsAccountName);
+                _adlsFileSystemClient.getFileSystemOperations().delete(_adlsAccountName, filePath);
             }
         
             // Get file or directory info
             public static FileStatusProperties GetItemInfo(String path) throws IOException, CloudException {
-                return _adlsFileSystemClient.getFileSystemOperations().getFileStatus(path, _adlsAccountName).getBody().getFileStatus();
+                return _adlsFileSystemClient.getFileSystemOperations().getFileStatus(_adlsAccountName, path).getBody().getFileStatus();
             }
         
             // List files and directories
             public static List<FileStatusProperties> ListItems(String directoryPath) throws IOException, CloudException {
-                return _adlsFileSystemClient.getFileSystemOperations().listFileStatus(directoryPath, _adlsAccountName).getBody().getFileStatuses().getFileStatus();
+                return _adlsFileSystemClient.getFileSystemOperations().listFileStatus(_adlsAccountName, directoryPath).getBody().getFileStatuses().getFileStatus();
             }
         
             // Download file
             public static void DownloadFile(String srcPath, String destPath) throws IOException, CloudException {
-                InputStream stream = _adlsFileSystemClient.getFileSystemOperations().open(srcPath, _adlsAccountName).getBody();
+                InputStream stream = _adlsFileSystemClient.getFileSystemOperations().open(_adlsAccountName, srcPath).getBody();
         
                 PrintWriter pWriter = new PrintWriter(destPath, Charset.defaultCharset().name());
         
@@ -294,4 +293,4 @@ Azure Data Lake Store Java SDK を使用して、Azure Data Lake アカウント
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

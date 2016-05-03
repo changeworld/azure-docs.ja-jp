@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="02/05/2016"
-	ms.author="genemi"/>
+	ms.date="04/25/2016"
+	ms.author="annemill"/>
 
 
 # SQL Database へのクエリおよび接続を実行するプログラムを C&#x23; で作成する
@@ -324,8 +324,7 @@ IP アドレスは、[Azure ポータル](https://portal.azure.com/)から追加
 
 
 
-詳細については、<br/>
-「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+詳細については、<br/>「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 
 
@@ -359,4 +358,4 @@ IP アドレスは、[Azure ポータル](https://portal.azure.com/)から追加
 
 [50-VSCopyToOutputDirectoryProperty]: ./media/sql-database-connect-query/connqry-vs-appconfig-copytoputputdir-h.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0427_2016-->

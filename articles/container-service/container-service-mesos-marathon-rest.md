@@ -47,7 +47,7 @@ curl localhost/marathon/v2/apps
 
 ## Docker 形式のコンテナーのデプロイ
 
-Docker 形式のコンテナーは、意図するデプロイについて記述した JSON ファイルを利用して、Marathon 経由でデプロイします。次のサンプルでは Nginx コンテナーがデプロイされます。DC/OS エージェントのポート 80 をコンテナーのポート 80 に関連付けます。
+Docker 形式のコンテナーは、意図するデプロイについて記述した JSON ファイルを利用して、Marathon 経由でデプロイします。次のサンプルでは Nginx コンテナーがデプロイされます。DC/OS エージェントのポート 80 をコンテナーのポート 80 に関連付けます。また、"acceptedResourceRoles" プロパティが "slave\_public" に設定されることにも注意してください。この設定により、パブリックに公開されたエージェント スケール セット内のエージェントにコンテナーがデプロイされます。
 
 ```json
 {
@@ -55,6 +55,9 @@ Docker 形式のコンテナーは、意図するデプロイについて記述�
   "cpus": 0.1,
   "mem": 16.0,
   "instances": 1,
+    "acceptedResourceRoles": [
+    "slave_public"
+  ],
   "container": {
     "type": "DOCKER",
     "docker": {
@@ -171,4 +174,4 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 [Meso HTTP エンドポイントの詳細](http://mesos.apache.org/documentation/latest/endpoints/)。[Marathon REST API の詳細](https://mesosphere.github.io/marathon/docs/rest-api.html)。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

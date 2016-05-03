@@ -20,7 +20,7 @@
 # Azure App Service とは
 Azure App Service は、任意のプラットフォームおよびデバイス向けに迅速かつ容易に Web アプリやモバイル アプリを構築するのに必要なすべてを統合する唯一のクラウド サービスです。開発者向けに構築された App Service は、完全に管理されたプラットフォームで、組み込み DevOps、Visual Studio Team Services や GitHub との継続的インテグレーション、ステージング環境と運用環境のサポート、修正プログラム適用の自動化などの強力な機能を備えています。
 
-Azure App Service は、Azure Websites、Azure Mobile Services、Azure Biztalk Services の既存の機能をすべて含み、さらに新しい機能を追加した単一のサービスです。これらの既存のサービスと App Service の関連の詳細については、[こちらを参照してください](https://azure.microsoft.com/documentation/services/app-service/)。
+Azure App Service は、Azure Websites、Azure Mobile Services、Azure Biztalk Services の機能をすべて含んだ単一のサービスです。App Service には、Azure Functions など、次世代のアプリケーションを支える機能強化が絶えず行われています。
 
 ## App Service を使用する理由
 ビジネス プロセスの自動化だけでなく、Web アプリやモバイル アプリの迅速な開発にも重点を置いている Azure App Service は、単一の開発エクスペリエンスと管理エクスペリエンスを通じてエンタープライズ機能の統合セットを提供しており、次のような利点があります。
@@ -35,7 +35,6 @@ Azure App Service は、Azure Websites、Azure Mobile Services、Azure Biztalk S
 
 - **エンタープライズ対応** - エンタープライズ レベルのセキュリティと管理により、安心して使用できます。委任されたロール ベースの管理を提供します。モバイル アプリに送られるデータを簡単にセキュリティ保護して管理し、組み込みのバックアップと復元の機能を使用して資産を保護します。App Service が PCI 準拠であることがわかっているため、信頼感があります。専用環境と、パブリック クラウドおよびプライベート クラウド全体にデプロイする機能を使用してコントロールします。25 年を超える Microsoft の経験とエンタープライズ サービス レベル アグリーメントの恩恵を受けられます。
 
-
 ##App Service の概念
 以下の高レベルの概念は、App Service を使用して実現できることについて説明します。
 
@@ -45,6 +44,7 @@ App Service を使用すると、単一の開発エクスペリエンスで次�
 - [**Web Apps**](../app-service-web-overview) - ビジネスに合わせて拡張できるミッション クリティカルな Web アプリをすばやく作成してデプロイします。
 - [**Mobile Apps**](../app-service-mobile-value-prop-preview) - あらゆるデバイスを使用する従業員、パートナー、顧客といつでもつながります。
 - [**API Apps**](../app-service-api-apps-why-best-platform) - 簡単な操作でクラウド API を作成し、使用します。
+- [**Function Apps**](../functions-overview) - Azure、オンプレミス、SaaS プロバイダー上のイベントに応答する軽量の関数を作成します。
 - [**Logic Apps**](../app-service-logic-what-are-logic-apps) - コードを記述することなく、クラウド全体のデータへのアクセスと使用を自動化します。
 
 App Service は単一の統合サービスとして、上に挙げた種類のアプリを作成して単一のソリューションにすることを簡単にします。これにより、同じバックエンドを使用して Web クライアントとモバイル クライアントの両方を対象とするアプリを簡単に構築し、Office 365 や salesforce.com などの一般的なサービスと同様に、オンプレミスのシステムとも統合します。
@@ -60,4 +60,4 @@ Azure App Service なら、言語の選択と同じくらい簡単に使用で�
 無料ですぐに[新しいアプリを作成できます](http://go.microsoft.com/fwlink/?LinkId=523751)。クレジット カードもコミットメントも不要です。面倒なことはありません。
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0427_2016-->

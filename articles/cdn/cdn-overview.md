@@ -75,4 +75,6 @@ CDN の概要については、「[Azure の Content Delivery Network (CDN) を�
 
 既存の CDN 顧客は、[Microsoft Azure ポータル](https://portal.azure.com)から CDN エンドポイントを管理できるようになりました。
 
-<!---HONumber=AcomDC_0420_2016-->
+実際の CDN の効果については、[Build 2016 セッションのビデオ](../../videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/)をご覧ください。
+
+<!---HONumber=AcomDC_0427_2016-->

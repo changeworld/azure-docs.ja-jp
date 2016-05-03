@@ -44,7 +44,7 @@ Azure AD Connect Health for AD FS では、Windows Server 2008 R2 の AD FS 2.0 
 
 次のビデオでは、Azure AD Connect Health for AD FS の概要について説明します。
 
-[AZURE.VIDEO azure-ad-connect-health--monitor-you-identity-bridge]
+>[AZURE.VIDEO azure-ad-connect-health--monitor-you-identity-bridge]
 
 ## [Azure AD Connect Health for Sync](active-directory-aadconnect-health-sync.md)
 Azure AD Connect Health for Sync は、オンプレミスの Active Directory と Azure Active Directory の間で実行された同期を監視し、情報を提供します。Azure AD Connect Health for Sync の主な機能は次のとおりです。
@@ -106,4 +106,4 @@ Azure AD Connect Health ポータルを使用すると、アラート、パフ�
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

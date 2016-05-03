@@ -12,14 +12,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/06/2016"
+   ms.date="04/19/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
 
 この記事の表では、ExpressRoute 接続プロバイダー、ExpressRoute の地理的範囲、ExpressRoute でサポートされる Microsoft クラウド サービス、ExpressRoute システム インテグレーター (SI) に関する情報を提供します。
 
-## ExpressRoute 接続プロバイダー
+## <a name="partners"></a>ExpressRoute 接続プロバイダー
 
 ExpressRoute は、すべての Azure のリージョンと場所でサポートされています。次のマップは Azure のリージョンと ExpressRoute の場所を一覧しています。ExpressRoute の場所は、Microsoft がいくつかのサービス プロバイダーと接続している場所を示します。
 
@@ -118,7 +118,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **e-shelter** | 近日対応予定 | サポートされていません | ベルリン+|
 | **Interxion** | サポートされています | サポートされていません | フランクフルト|
 
-## 一覧にないサービス プロバイダー経由の接続
+## <a name="nonpartners"></a>一覧にないサービス プロバイダー経由の接続
 
 接続プロバイダーが上記のセクションの一覧にない場合でも、接続を作成できます。
 
@@ -157,4 +157,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

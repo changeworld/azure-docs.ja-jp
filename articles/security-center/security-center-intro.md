@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/11/2016"
+   ms.date="04/22/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center 入門
@@ -79,7 +79,7 @@ Azure サブスクリプションとリソース グループのポリシーは�
 
 **[継承]** (上図参照) では、リソース グループを次のどちらにするかを定義できます。
 
-- [継承] \(既定値) を選択すると、このリソース グループに対するセキュリティ ポリシーはすべて、サブスクリプション レベルから継承されます。
+- [継承] (既定値) を選択すると、このリソース グループに対するセキュリティ ポリシーはすべて、サブスクリプション レベルから継承されます。
 - [一意] を選択すると、このリソース グループは独自のセキュリティ ポリシーを持つことになります。**[推奨事項の表示]** の下で変更を行う必要があります。
 
 > [AZURE.NOTE] サブスクリプション レベルのポリシーとリソース グループ レベルのポリシーとの間に競合がある場合は、リソース グループ レベルのポリシーが優先されます。
@@ -145,6 +145,7 @@ Azure サブスクリプションとリソース グループのポリシーは�
 - 「[Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
 - 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
 - 「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティの警告の管理および対応について説明しています。
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 - 「[Azure セキュリティ センターのよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
@@ -159,4 +160,4 @@ Azure サブスクリプションとリソース グループのポリシーは�
 [8]: ./media/security-center-intro/security-alert-detail.png
 [9]: ./media/security-center-intro/partner-solutions.png
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->
