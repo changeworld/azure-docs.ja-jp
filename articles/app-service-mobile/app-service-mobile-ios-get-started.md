@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="03/09/2016"
+	ms.date="04/19/2016"
 	ms.author="krisragh"/>
 
 #iOS アプリの作成
@@ -22,40 +22,25 @@
 
 ## 概要
 
-このチュートリアルでは、iOS モバイル アプリに対してクラウド ベースのバックエンド サービス ([Azure Mobile Apps](app-service-mobile-value-prop.md)) を使用する方法を説明します。新しいモバイル アプリ バックエンドを作成し、アプリのデータを Azure に格納する簡単な _Todo list_ iOS アプリを使用します。
+このチュートリアルでは、[Azure Mobile Apps](app-service-mobile-value-prop.md) (クラウドのバックエンド サービス) を iOS アプリに追加する方法について説明します。まず、新しいモバイル バックエンドを作成します。その後 _Todo list_ という単純な iOS アプリを使用して Azure にデータを格納します。
 
 ## 前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
 * [アクティブな Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
+* [Visual Studio Community 2013] 以降がインストールされている PC 
+* Xcode 7.3 以降がインストールされている Mac
 
-* [Visual Studio Community 2013] 以降のバージョンがインストールされた PC
-
-* Xcode v7.0 以降がインストールされた Mac
-
-* [Azure Mobile iOS フレームワーク](https://go.microsoft.com/fwLink/?LinkID=529823)。ダウンロードされるクイックスタート プロジェクトの一部として自動的に追加されます。
-
-## 新しい Azure モバイル アプリ バックエンドを作成する
-
-新しいモバイル アプリ バックエンドを作成するには、次の手順に従います。
+## 手順 I: 新しい Azure Mobile App バックエンドの作成
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-これで、モバイル クライアント アプリケーションで使用できる Azure モバイル アプリ バックエンドのプロビジョニングが完了しました。次は、簡単な "todo list" バックエンドのサーバー プロジェクトをダウンロードして、それを Azure に発行します。
-
-## サーバー プロジェクトのダウンロード
-
-1. お使いの PC で [Azure ポータル]にアクセスします。**[すべて参照]**、**[Mobile Apps]** の順にクリックし、作成したモバイル アプリ バックエンドをクリックします。
-
-2. Mobile App ブレードで **[設定]** をクリックし、**[Mobile App]** の下で **[クイック スタート]**、**[iOS (Objective-C)]** の順にクリックします。Swift を使用する場合は、**[クイック スタート]**、**[iOS (Swift)]** の順にクリックします。
-
-## サーバー プロジェクトの構成
+## 手順 II: バックエンド プロジェクトの構成
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-
-## iOS アプリのダウンロードと実行
+## 手順 III: iOS アプリのダウンロードと実行
 
 [AZURE.INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
 
@@ -63,8 +48,8 @@
 <!-- Images. -->
 
 <!-- URLs -->
-[Azure ポータル]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0427_2016-->

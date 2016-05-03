@@ -30,7 +30,7 @@
 
 ##<a name="setup"></a>セットアップと前提条件
 
-テーブルを 1 つ含むモバイル アプリ バックエンド プロジェクトを既に作成して発行してあるものとします。このトピックで使用するコードでは、テーブルの名前は `TodoItem` であり、`Id`、`Text`、および `Complete` という列があります。これは、[Azure Mobile Apps クイックスタート]で作成したものと同じテーブルです。
+テーブルを少なくとも 1 つ含むモバイル アプリ バックエンド プロジェクトを既に作成して発行してあるものとします。このトピックで使用するコードでは、テーブルの名前は `TodoItem` であり、`Id`、`Text`、および `Complete` という列があります。これは、[Azure Mobile Apps クイックスタート]で作成したものと同じテーブルです。
 
 これに対応する型指定されたクライアント側 C# 型を次に示します。
 
@@ -442,7 +442,7 @@ _サーバー フロー_と_クライアント フロー_という 2 つの認�
 いずれの場合でも、アプリケーションを ID プロバイダーに登録する必要があります。ID プロバイダーは、クライアント ID とクライアント シークレットを提示します。その後、ID プロバイダーが提示したクライアント ID とクライアント シークレットで、Azure App Service 認証/承認を構成する必要があります。詳細については、「[Windows アプリに認証を追加する]」の詳しい説明に従ってください。
 
 ###<a name="serverflow"></a>サーバー フロー
-ID プロバイダーを登録した後は、プロバイダーの [MobileServiceAuthenticationProvider] 値で MobileServiceCleint.[LoginAsync メソッド] を呼び出します。たとえば、次のコードは、Facebook を使用してサーバー フローのサインインを開始します。
+ID プロバイダーを登録した後は、プロバイダーの [MobileServiceAuthenticationProvider] 値で MobileServiceClient.[LoginAsync メソッド] を呼び出します。たとえば、次のコードは、Facebook を使用してサーバー フローのサインインを開始します。
 
 	private MobileServiceUser user;
 	private async System.Threading.Tasks.Task Authenticate()
@@ -913,4 +913,4 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 [SymbolSource]: http://www.symbolsource.org/
 [SymbolSource の説明]: http://www.symbolsource.org/Public/Wiki/Using
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

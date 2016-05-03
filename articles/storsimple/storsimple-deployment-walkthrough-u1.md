@@ -9,10 +9,10 @@
 <tags 
    ms.service="storsimple"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/16/2016"
+   ms.date="04/20/2016"
    ms.author="alkohli" />
 
 # オンプレミスの StorSimple デバイス (Update 1) のデプロイ
@@ -33,7 +33,7 @@ Microsoft Azure StorSimple デバイスのデプロイへようこそ。これ�
 
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。開始する前に、構成チェック リストを確認することをお勧めします。デプロイと構成のプロセスは、完了するまでに時間がかかることがあります。
 
-> [AZURE.NOTE] Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。5000 および 7000 シリーズ デバイスの詳細については、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) を参照してください。5000 および 7000 シリーズのデプロイについては、『[StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。
+> [AZURE.NOTE] Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。5000 および 7000 シリーズ デバイスの詳細については、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) を参照してください。5000 および 7000 シリーズのデプロイについては、『[StorSimple System Quick Start Guide](http://onlinehelp.storsimple.com/111_Appliance/)』 (StorSimple システム クイック スタート ガイド) を参照してください。
 
 ## デプロイの手順
 
@@ -290,4 +290,4 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 - [StorSimple Manager サービス](storsimple-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -1,4 +1,11 @@
-<properties pageTitle="PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする | Microsoft Azure" services="virtual-machines-windows" documentationCenter="" description="PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする方法について説明します" authors="sbtron" manager="" editor="""/>
+<properties
+	pageTitle="PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする | Microsoft Azure"
+	services="virtual-machines-windows"
+	documentationCenter=""
+	description="PowerShell を使用して、Windows を実行している仮想マシンで Azure 診断を有効にする方法について説明します"
+	authors="sbtron"
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="virtual-machines-windows"
@@ -18,9 +25,9 @@ Azure 診断は、デプロイされたアプリケーションで診断デー�
 
 ## リソース マネージャー デプロイ モデルを使用している場合の診断拡張機能の有効化
 
-Azure リソース マネージャー デプロイ モデルを使用して Windows VM を作成するときに、リソース マネージャー テンプレートに拡張機能構成を追加することで、診断拡張機能を有効にすることができます。「[Azure リソース マネージャー テンプレートを使用して監視および診断機能を有効にした Windows 仮想マシンを作成する](virtual-machines-windows-extensions-diagnostics-template.md)」をご覧ください。
+Azure リソース マネージャー デプロイ モデルを使用して Windows VM を作成するときに、リソース マネージャー テンプレートに拡張機能構成を追加することで、診断拡張機能を有効にすることができます。「[Azure Resource Manager テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](virtual-machines-windows-extensions-diagnostics-template.md)」を参照してください。
 
-リソース マネージャー デプロイ モデルを使用して作成された既存の VM で診断拡張機能を有効にするには、次のように [Set-AzureRMVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt603499.aspx) PowerShell コマンドレットを使用します。
+Resource Manager デプロイ モデルを使用して作成された既存の VM で診断拡張機能を有効にするには、次のように [Set-AzureRMVMDiagnosticsExtension](https://msdn.microsoft.com/library/mt603499.aspx) PowerShell コマンドレットを使用します。
 
 
 	$vm_resourcegroup = "myvmresourcegroup"
@@ -30,7 +37,7 @@ Azure リソース マネージャー デプロイ モデルを使用して Wind
 	Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
 
 
-*$diagnosticsconfig\_path* は、後の[サンプル](#sample-diagnostics-configuration)で説明するように、XML に診断構成が含まれたファイルのパスです。
+*$diagnosticsconfig\_path* は、後の[サンプル](#sample-diagnostics-configuration)で説明するように、XML での診断構成が含まれているファイルへのパスです。
 
 診断構成ファイルでストレージ アカウント名を設定した **StorageAccount** 要素を指定すると、*Set-AzureRMVMDiagnosticsExtension* スクリプトによって、そのストレージ アカウントに診断データを送信するように診断拡張機能が自動的に設定されます。これを機能させるには、ストレージ アカウントが VM と同じサブスクリプションに属している必要があります。
 
@@ -82,7 +89,7 @@ VM で診断拡張機能を有効にしたら、[Get-AzureRMVmDiagnosticsExtensi
 		<Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
 		```
 
-	- パフォーマンス カウンターとメトリックの構成に基づいてメトリックが生成されるしくみの詳細については、「[ストレージの WADMetrics テーブル](virtual-machines-windows-extensions-diagnostics-template.md#wadmetrics-tables-in-storage)」をご覧ください。
+	- パフォーマンス カウンターとメトリックの構成に基づいてメトリックが生成されるしくみの詳細については、[ストレージの Azure 診断メトリック テーブル](virtual-machines-windows-extensions-diagnostics-template.md#wadmetrics-tables-in-storage)に関する記事を参照してください。
 
 - 診断ストレージ アカウントの名前を使用して、**StorageAccount** 要素を更新する必要があります。
 
@@ -191,7 +198,7 @@ VM で診断拡張機能を有効にしたら、[Get-AzureRMVmDiagnosticsExtensi
 	```
 
 ## 次のステップ
-- Azure 診断機能と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、「[Azure Cloud Services および Virtual Machines での診断の有効化](../cloud-services/cloud-services-dotnet-diagnostics.md)」をご覧ください。
+- Azure 診断機能と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、[Azure Cloud Services および Virtual Machines での診断の有効化](../cloud-services/cloud-services-dotnet-diagnostics.md)に関する記事を参照してください。
 - 「[Azure 診断構成スキーマ](https://msdn.microsoft.com/library/azure/mt634524.aspx)」では、診断拡張機能の各種 XML 構成オプションについて説明しています。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

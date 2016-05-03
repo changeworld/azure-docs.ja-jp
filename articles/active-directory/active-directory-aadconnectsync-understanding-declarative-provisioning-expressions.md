@@ -13,12 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="04/14/2016"
 	ms.author="markusvi;andkjell"/>
 
 
 # Azure AD Connect Sync: 宣言型のプロビジョニングの式について
-
 Azure AD Connect Sync は、Forefront Identity Manager 2010 で初めて導入された宣言型のプロビジョニングを基盤としています。これは、コンパイルされたコードを記述することなく完全な ID 統合ビジネス ロジックを実装できるようにするためのものです。
 
 宣言型のプロビジョニングの不可欠な要素は、属性フローに使用される式言語です。使用される言語は、Microsoft ® Visual Basic ® for Applications (VBA) のサブセットです。この言語は、Microsoft Office で使用され、VBScript の経験を持つユーザーも理解できます。宣言型のプロビジョニングの式言語は、関数を使用するだけであり、構造化言語ではありません。メソッドやステートメントはありません。代わりに、関数を入れ子にして、プログラム フローを記述します。
@@ -113,13 +112,13 @@ Active Directory の一部の属性は、Active Directory ユーザーとコン�
 
 ### ImportedValue
 
-ImportedValues 関数は、属性名を角かっこではなく引用符で囲む必要がある点で、他のすべての関数とは異なっています。たとえば、ImportedValue("proxyAddresses") などです。
+ImportedValue 関数は、属性名を角かっこではなく引用符で囲む必要がある点で、他のすべての関数とは異なっています。たとえば、ImportedValue("proxyAddresses") のようにします。
 
 通常、同期する際は、まだエクスポートされていない場合であっても、エクスポート中にエラーが発生した場合であっても、属性では予想される値を使用します ("top of the tower")。受信同期では、接続されたディレクトリにまだ届いていない属性も最終的には届くと見なされます。また、接続されたディレクトリで確認されている値のみを同期することが重要な場合もあり、この場合は ImportedValue 関数が使用されます ("hologram and delta import tower")。
 
 この場合の例は、標準の同期ルールである Exchange の In from AD – User Common で確認できます。そこでは、Exchange ハイブリッドにおいて、Exchange Online で追加された値を、その値が正常にエクスポートされたことが確認された場合にのみ同期する必要があります。
 
-`proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValues("proxyAddresses")))`
+`proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
 
 全関数の一覧については、「[Azure AD Connect Sync: 関数参照](active-directory-aadconnectsync-functions-reference.md)」を参照してください。
 
@@ -131,4 +130,4 @@ ImportedValues 関数は、属性名を角かっこではなく引用符で囲�
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

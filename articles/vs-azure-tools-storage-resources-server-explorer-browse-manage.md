@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/27/2016"
+   ms.date="04/19/2016"
    ms.author="tarcher" />
 
 # サーバー エクスプローラーを使用したストレージ リソースの参照と管理
@@ -314,4 +314,4 @@ Azure Table Storage サービスは、大量の構造化データを格納しま
 
 Azure ストレージ サービスの使用方法の詳細については、「[Azure ストレージ サービスへのアクセス](https://msdn.microsoft.com/library/azure/ee405490.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

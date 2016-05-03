@@ -5,7 +5,7 @@
 	documentationCenter="na"
 	authors="ravbhatnagar"
 	manager="ryjones"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="02/26/2016"
+	ms.date="04/18/2016"
 	ms.author="gauravbh;tomfitz"/>
 
 # ポリシーを使用したリソース管理とアクセス制御
@@ -23,8 +23,6 @@ Azure リソース マネージャーで、カスタム ポリシーを使用し
 ポリシー定義を作成し、行為やリソースを具体的に否認します。サブスクリプション、リソース グループ、個別リソースなど、任意の範囲でポリシー定義を割り当てます。
 
 この記事では、ポリシーの作成で使用する、ポリシー定義言語の基本構造について説明します。その後、これらのポリシーをさまざまなスコープに適用する方法と、最後に REST API を使用してこれを実現する方法の例をいくつか紹介します。
-
-現在、ポリシーはプレビューとして利用できます。
 
 ## RBAC との違いは何か。
 
@@ -56,10 +54,10 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
 
     {
       "if" : {
-        <condition> | <logical operator>
+          <condition> | <logical operator>
       },
       "then" : {
-        "effect" : "deny | audit"
+          "effect" : "deny | audit | append"
       }
     }
     
@@ -67,7 +65,7 @@ RBAC は、**ユーザー**がさまざまな範囲で実行できるアクシ�
 
 HTTP PUT を使用してリソースの作成やテンプレートのデプロイメントが行われると、ポリシーが評価されます。テンプレートのデプロイメントの場合、ポリシーはテンプレート内の各リソースの作成時に評価されます。
 
-注: Microsoft.Resources/deployments など、タグ、種別、場所をサポートしていないリソースの種類は、ポリシーによって評価されません。このサポートは将来、追加される予定です。下位互換性の問題を避けるために、ポリシーの作成時に種類を明示的に指定することを勧めします。たとえば、将来、リソースの種類が評価に追加されたときにタグをサポートしない入れ子になったリソースがある場合、種類を指定しないタグのポリシーがすべての種類に適用され、テンプレートのデプロイメントが失敗する可能性があります。
+> [AZURE.NOTE] 現時点では、タグ、種類、場所をサポートしていない、Microsoft.Resources/deployments のようなリソースの種類は、ポリシーによる評価の対象となりません。このサポートは、今後追加される予定です。下位互換性の問題を回避するためには、ポリシーの作成時に種類を明示的に指定する必要があります。たとえば、種類が指定されていないタグ ポリシーは、すべての種類に適用されます。そのような場合、タグをサポートしていない入れ子になったリソースがあり、デプロイ リソースの種類がポリシーの評価に追加されていると、今後テンプレートのデプロイに失敗する可能性があります。
 
 ## 論理演算子
 
@@ -93,47 +91,80 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
 | [ | "in" : [ "&lt;value1&gt;","&lt;value2&gt;" ]|
 | ContainsKey | "containsKey" : "&lt;keyName&gt;" |
 
-## フィールドおよびソース
+### フィールドおよびソース
 
 条件は、フィールドおよびソースを使用して構成します。フィールドは、リソースの状態の記述に使用されるリソース要求ペイロード内のプロパティを表します。ソースは、要求自体の特性を表します。
 
 次のフィールドおよびソースがサポートされています。
 
-フィールド: **name**、**kind**、**type**、**location**、**tags**、**tags.***、**property alias**
+フィールド: **name**、**kind**、**type**、**location**、**tags**、**tags.***、**property alias**。
 
 ソース: **action**
 
+### プロパティのエイリアス 
 プロパティのエイリアスは、設定や SKU など、リソースの種類固有のプロパティにアクセスするためにポリシー定義で使用できる名前です。プロパティが存在するすべての API バージョンで機能します。エイリアスは、次の REST API を使用して取得できます (今後、Powershell のサポートが追加される予定です)。
 
     GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015-11-01
 	
-エイリアスの定義は次のようになります。ご覧のように、プロパティ名が変更された場合も、エイリアスではさまざまな API バージョンでのパスを定義します。
+エイリアスの定義を次に示します。ご覧のように、プロパティ名が変更された場合も、エイリアスはさまざまな API バージョンでのパスを定義します。
 
-    "aliases": [
-      {
-        "name": "Microsoft.Storage/storageAccounts/sku.name",
-        "paths": [
-          {
-            "path": "Properties.AccountType",
-            "apiVersions": [ "2015-06-15", "2015-05-01-preview" ]
-          }
-        ]
-      }
-    ]
+	"aliases": [
+	    {
+	      "name": "Microsoft.Storage/storageAccounts/sku.name",
+	      "paths": [
+	        {
+	          "path": "properties.accountType",
+	          "apiVersions": [
+	            "2015-06-15",
+	            "2015-05-01-preview"
+	          ]
+	        },
+	        {
+	          "path": "sku.name",
+	          "apiVersions": [
+	            "2016-01-01"
+	          ]
+	        }
+	      ]
+	    }
+	]
 
 現在サポートされているエイリアスは次のとおりです。
 
 | エイリアス名 | 説明 |
 | ---------- | ----------- |
-| {resourceType}/sku.name | サポートされているリソースの種類: Microsoft.Storage/storageAccounts、<br />Microsoft.Scheduler/jobcollections、<br />Microsoft.DocumentDB/databaseAccounts、<br />Microsoft.Cache/Redis、<br />Microsoft..CDN/profiles |
+| {resourceType}/sku.name | サポートされているリソースの種類: Microsoft.Compute/virtualMachines、<br />Microsoft.Storage/storageAccounts、<br />Microsoft.Scheduler/jobcollections、<br />Microsoft.DocumentDB/databaseAccounts、<br />Microsoft.Cache/Redis、<br />Microsoft..CDN/profiles |
 | {resourceType}/sku.family | サポートされているリソースの種類: Microsoft.Cache/Redis |
 | {resourceType}/sku.capacity | サポートされているリソースの種類: Microsoft.Cache/Redis |
+| Microsoft.Compute/virtualMachines/imagePublisher | |
+| Microsoft.Compute/virtualMachines/imageOffer | |
+| Microsoft.Compute/virtualMachines/imageSku | |
+| Microsoft.Compute/virtualMachines/imageVersion | |
 | Microsoft.Cache/Redis/enableNonSslPort | |
 | Microsoft.Cache/Redis/shardCount | |
 
 
 アクションの詳細については、「[RBAC - 組み込みのロール](active-directory/role-based-access-built-in-roles.md)」を参照してください。現時点では、ポリシーは、PUT 要求でのみ機能します。
 
+## 効果
+ポリシーでは、**deny**、**audit**、**append** の 3 種類の効果がサポートされています。
+
+- deny は監査ログでイベントを生成し、要求は失敗します
+- audit は監査ログでイベントを生成しますが、要求は失敗しません
+- append は定義済みのフィールド セットを要求に追加します 
+
+**append** の場合、次のように詳細を指定する必要があります。
+
+    ....
+    "effect": "append",
+    "details": [
+      {
+        "field": "field name",
+        "value": "value of the field"
+      }
+    ]
+
+値には文字列または JSON 形式オブジェクトを指定できます。
 
 ## ポリシー定義の例
 
@@ -154,6 +185,51 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
         "effect" : "deny"
       }
     }
+
+次のポリシーは、タグが存在しない場合に定義済みの値を持つ costCenter タグを追加します。
+
+	{
+	  "if": {
+	    "field": "tags",
+	    "exists": "false"
+	  },
+	  "then": {
+	    "effect": "append",
+	    "details": [
+	      {
+	        "field": "tags",
+	        "value": {"costCenter":"myDepartment" }
+	      }
+	    ]
+	  }
+	}
+	
+次のポリシーは、他のタグが存在する場合に定義済みの値を持つ costCenter タグを追加します。
+
+	{
+	  "if": {
+	    "allOf": [
+	      {
+	        "field": "tags",
+	        "exists": "true"
+	      },
+	      {
+	        "field": "tags.costCenter",
+	        "exists": "false"
+	      }
+	    ]
+	
+	  },
+	  "then": {
+	    "effect": "append",
+	    "details": [
+	      {
+	        "field": "tags.costCenter",
+	        "value": "myDepartment"
+	      }
+	    ]
+	  }
+	}
 
 
 ### 地理的準拠: リソースの場所を確認
@@ -311,24 +387,25 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
     }
 
 
-ポリシー定義は、前述の例のいずれかとして定義できます。api-version には、*2015-10-01-preview* を使用します。例と詳細については、[ポリシー定義用 REST API](https://msdn.microsoft.com/library/azure/mt588471.aspx) のページを参照してください。
+ポリシー定義は、前述の例のいずれかとして定義できます。api-version には、*2016-04-01* を使用します。例と詳細については、[ポリシー定義用 REST API](https://msdn.microsoft.com/library/azure/mt588471.aspx) のページを参照してください。
 
 ### PowerShell を使用したポリシー定義の作成
 
 以下に示されているように、New-AzureRmPolicyDefinition コマンドレットを使用して新しいポリシー定義を作成できます。以下の例では、リソースを北ヨーロッパと西ヨーロッパに限定できるポリシーを作成します。
 
-    $policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation onlyin certain regions" -Policy '{	"if" : {
-    	    			    "not" : {
-    	      			    	"field" : "location",
-    	      			    		"in" : ["northeurope" , "westeurope"]
-    	    			    	}
-    	    		          },
-    	      		    		"then" : {
-    	    			    		"effect" : "deny"
-    	      			    		}
-    	    		    	}'    		
+    $policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy '{	
+      "if" : {
+        "not" : {
+          "field" : "location",
+          "in" : ["northeurope" , "westeurope"]
+    	}
+      },
+      "then" : {
+        "effect" : "deny"
+      }
+    }'    		
 
-実行の出力は後でポリシーを割り当てるときに使用できるように、$policy オブジェクトに保存されます。ポリシー パラメーターの場合、以下に示されているように、ポリシー インラインを指定するのではなく、ポリシーが含まれている .json ファイルへのパスを提供することもできます。
+実行時の出力は $policy オブジェクトに保存され、後でポリシーを割り当てるときに使用できます。ポリシー パラメーターの場合、以下に示されているように、ポリシー インラインを指定するのではなく、ポリシーが含まれている .json ファイルへのパスを提供することもできます。
 
     New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain 	regions" -Policy "path-to-policy-json-on-disk"
 
@@ -343,7 +420,7 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
 
     PUT https://management.azure.com /subscriptions/{subscription-id}/providers/Microsoft.authorization/policyassignments/{policyAssignmentName}?api-version={api-version}
 
-ポリシー割り当ての名前は、{policy-assignment} です。api-version には、*2015-10-01-preview* を使用します。
+ポリシー割り当ての名前は、{policy-assignment} です。api-version には、*2016-04-01* を使用します。
 
 要求の本文は次のようになります。
 
@@ -380,11 +457,11 @@ Get-AzureRmPolicyDefinition、Set-AzureRmPolicyDefinition、および Remove-Azu
 
 拒否効果に関連するすべてのイベントを表示するには、次のコマンドを使用できます。
 
-    Get-AzureRmLog | where {$_.subStatus -eq "Forbidden"}     
+    Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/deny/action"} 
 
 監査効果に関連するすべてのイベントを表示するには、次のコマンドを使用できます。
 
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

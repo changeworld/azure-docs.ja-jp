@@ -58,7 +58,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
     * **-u**: 要求の認証に使用するユーザー名とパスワード
     * **-G**: GET 要求であることを示します。
 
-    URL の先頭は ****https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。次のコマンドを使用して、Hive のバージョンを要求することもできます。
+    URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。次のコマンドを使用して、Hive のバージョンを要求することもできます。
 
         curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
 
@@ -114,9 +114,9 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
 
     > [AZURE.NOTE] この Curl 要求では、ジョブに関する情報が記載された JavaScript Object Notation (JSON) ドキュメントが返されます。状態値のみを取得するには jq を使用します。
 
-4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、****wasb:///example/curl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
+4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、**wasb:///example/curl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
 
-    これらのファイルは [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md) を使用して一覧表示し、ダウンロードできます。たとえば、**example/curl** 内のファイルを一覧表示するには、次のコマンドを使用します。
+    これらのファイルを一覧表示およびダウンロードするには [Azure CLI](../xplat-cli-install.md) を使用します。たとえば、**example/curl** 内のファイルを一覧表示するには、次のコマンドを使用します。
 
 		azure storage blob list <container-name> example/curl
 
@@ -192,4 +192,4 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

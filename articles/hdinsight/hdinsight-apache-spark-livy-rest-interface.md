@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/05/2016"
+	ms.date="04/14/2016"
 	ms.author="nitinme"/>
 
 
-# HDInsight (Linux) の Spark クラスターで Livy を使用して Spark ジョブをリモートで送信する
+# Livy を使用した Linux での HDInsight Spark クラスターへの Spark ジョブのリモート送信 (プレビュー)
 
 Azure HDInsight の Apache Spark クラスターには、Livy が含まれています。これは、任意の場所から Spark クラスターにリモートでジョブを送信するための REST インターフェイスです。詳細なドキュメントについては、[Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server) に関するページを参照してください。
 
@@ -189,4 +189,4 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

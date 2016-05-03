@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="mobile"
-   ms.date="12/16/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Visual Studio 接続済みサービスを使用した Azure ストレージの追加
@@ -94,4 +94,4 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
      - [Storage のドキュメント (azure.microsoft.com)](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

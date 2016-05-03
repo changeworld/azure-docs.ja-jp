@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/24/2016" 
+	ms.date="04/18/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure テーブルとの間でのデータの移動
@@ -402,7 +402,7 @@ Azure テーブルの列が datetime 型の場合:
 azureTableDefaultPartitionKeyValue | シンクで使用できる既定のパーティション キー値です。 | 文字列の値。 | いいえ 
 azureTablePartitionKeyName | ユーザーが指定した列名です。列の値がパーティション キーとして使用されます。指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 | 列の名前。 | いいえ |
 azureTableRowKeyName | ユーザーが指定した列名です。列の値が行キーとして使用されます。指定しない場合、各行に GUID を使用します。 | 列の名前。 | いいえ  
-azureTableInsertType | Azure テーブルにデータを挿入する方法です。 | merge<br/>replace | いいえ 
+azureTableInsertType | Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行が、値を置換またはマージさせるかどうかを制御します。<br/><br/>これらの設定 (マージと置換) のしくみについては、「[エンティティの挿入または統合](https://msdn.microsoft.com/library/azure/hh452241.aspx)」と「[エンティティの挿入または置換](https://msdn.microsoft.com/library/azure/hh452242.aspx)」を参照してください。<br/><br> この設定は、テーブル レベルではなく、行レベルで適用されることに注意してください。どちらのオプションも、出力テーブル内の、入力内に存在しない行を削除しません。 | merge (既定)<br/>replace | いいえ 
 writeBatchSize | writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 | 1 ～ 100 の整数 (単位 = 行数) | いいえ (既定値 = 100) 
 writeBatchTimeout | writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 | (単位 = 時間)例: "00:20:00" (20 分) | No (既定値はストレージ クライアントの既定のタイムアウト値の 90 秒)
 
@@ -526,4 +526,7 @@ lastlogindate | Edm.DateTime
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+## パフォーマンスとチューニング  
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
+
+<!---HONumber=AcomDC_0420_2016-->

@@ -14,18 +14,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="04/18/2016" 
 	ms.author="nitinme"/>
 
 
-# Azure HDInsight での BI ツールと Apache Spark の使用 (Linux)
+# HDInsight Linux での BI ツールと Apache Spark の使用 (プレビュー)
 
 Azure HDInsight の Apache Spark を使用して以下のことを行う方法を説明します。
 
 * 生のサンプル データを取得し、Hive テーブルとして保存します
 * Power BI や Tableau などの BI ツールを使用して、データを分析および視覚化します
 
-> [AZURE.TIP] このチュートリアルは、HDInsight で作成する Spark (Linux) クラスター上の Jupyter Notebook としても利用できます。Notebook エクスペリエンスにより、Notebook 自体から Python のスニペットを実行することができます。Notebook からチュートリアルを実行するには、Spark クラスターを作成し、Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`) を起動し、**Python** フォルダーにある**Use BI tools with Apache Spark on HDInsight.ipynb (HDInsight.ipynb に対して BI ツールと Apache Spark を使用する)** Notebook を実行します。
+> [AZURE.NOTE] このチュートリアルは、Azure HDInsight で作成された Spark 1.5.2 クラスターにのみ適用できます。
+
+このチュートリアルは、HDInsight で作成する Spark (Linux) クラスター上の Jupyter Notebook としても利用できます。Notebook エクスペリエンスにより、Notebook 自体から Python のスニペットを実行することができます。Notebook からチュートリアルを実行するには、Spark クラスターを作成し、Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`) を起動し、**Python** フォルダーにある**Use BI tools with Apache Spark on HDInsight.ipynb (HDInsight.ipynb に対して BI ツールと Apache Spark を使用する)** Notebook を実行します。
 
 **前提条件:**
 
@@ -79,12 +81,12 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 		hvac = hvacParts.map(lambda p: Entry(str(p[0]), str(p[1]), int(p[2]), int(p[3]), int(p[6])))
 		
 		# Infer the schema and create a table       
-		hvacTable = hiveContext.createDataFrame(hvac)
+		hvacTable = sqlContext.createDataFrame(hvac)
 		hvacTable.registerTempTable('hvactemptable')
 		dfw = DataFrameWriter(hvacTable)
 		dfw.saveAsTable('hvac')
 
-5. テーブルが正常に作成されたことを確認します。`%%sql` マジックを使用して、Hive クエリを直接実行できます。`%%sql` マジックと、PySpark カーネルで使用できるその他のマジックの詳細については、「[HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)」をご覧ください。
+5. テーブルが正常に作成されたことを確認します。`%%sql` マジックを使用して、Hive クエリを直接実行できます。`%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)に関する記事を参照してください。
 
 		%%sql
 		SHOW TABLES
@@ -231,4 +233,4 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -14,17 +14,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="04/14/2016" 
 	ms.author="nitinme"/>
 
-# Azure HDInsight (Linux) の Apache Spark の既知の問題
+# HDInsight Linux の Apache Spark の既知の問題 (プレビュー)
 
 このドキュメントでは、HDInsight Spark パブリック プレビューのすべての既知の問題を追跡します。
 
 ##Livy が対話型セッションをリークする
  
-**症状:**
-
 対話型セッションがまだ有効な状態で Livy が再起動されると (Ambari から、またはヘッドノード 0 仮想マシンの再起動のため)、対話型ジョブ セッションがリークされます。このため、新しいジョブは受け付け済み状態のままになり、起動できません。
 
 **対応策:**
@@ -46,8 +44,6 @@
 
 ##Spark History Server が開始されない 
 
-**症状:**
- 
 クラスターの作成後、Spark History Server は自動的には開始されません。
 
 **対応策:**
@@ -56,8 +52,6 @@ Ambari から履歴サーバーを手動で開始します。
 
 ## Spark ログ ディレクトリでアクセス許可の問題が発生する 
 
-**症状:**
- 
 hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundException: /var/log/spark/sparkdriver\_hdiuser.log (アクセス許可が拒否されました) というエラーになり、ドライバー ログは書き込まれません。
 
 **対応策:**
@@ -71,38 +65,42 @@ hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundEx
 
 Jupyter Notebook に関連する既知の問題を以下に示します。
 
+### .ipynb 形式で Jupyter Notebook をダウンロードできない
+
+HDInsight Spark 向けの Jupyter Notebook の最新バージョンを実行中に、Jupyter Notebook のユーザー インターフェイスから Notebook のコピーを **.ipynb** ファイルとしてダウンロードしようとすると、内部サーバー エラーが発生することがあります。
+
+**対応策:**
+
+1.	.ipynb 以外の形式 (.txt など) で Notebook をダウンロードすると成功します。  
+2.	.ipynb ファイルが必要な場合は、ストレージ アカウントのクラスター コンテナーである **/HdiNotebooks** からダウンロードできます。この方法は、ストレージ アカウントでの Notebook のバックアップがサポートされている HDInsight 向けの Jupyter Notebook の最新バージョンでのみ利用できます。ただし、HDInsight Spark 向けの Jupyter Notebook の以前のバージョンでは、この問題は発生しません。
+
+
 ### ファイル名での非 ASCII 文字の使用
 
 Spark HDInsight クラスターで使用できる Jupyter Notebook では、ファイル名に非 ASCII 文字を使用することはできません。Jupyter UI を使用して、ファイル名に非 ASCII 文字が含まれたファイルをアップロードしようとすると、通知されずに失敗します (つまり、Jupyter でファイルのアップロード操作ができないわけではありませんが、明確なエラーがスローされるわけでもありません)。
 
 ### 大きなサイズの Notebook の読み込み中のエラー
 
-**症状:**
-
-大きなサイズの Notebook の読み込み中にエラー **`Error loading notebook`** が表示される場合があります。
+大きなサイズの Notebook の読み込み中にエラー **`Error loading notebook`** が発生する場合があります。
 
 **対応策:**
 
-このエラーが発生した場合、データが壊れたり失われたりしているわけではありません。Notebook はディスク上の `/var/lib/jupyter` に残っているので、クラスターに SSH 接続し、Notebook にアクセスすることができます。バックアップとしてクラスターの Notebook をローカル コンピューター (SCP または WinSCP を使用) にコピーすることで、Notebook 内の重要なデータが失われるのを防ぐことができます。ポート 8001 のヘッドノードへの SSH トンネルを使用すると、ゲートウェイを経由せずに Jupyter にアクセスできます。そこでは、Notebook の出力をクリアしてから再度保存して、Notebook のサイズを最小限に縮小できます。
+このエラーが発生した場合、データが壊れたり失われたりしているわけではありません。Notebook はディスク上の `/var/lib/jupyter` に残っているため、クラスターに SSH 接続し、Notebook にアクセスすることができます。バックアップとしてクラスターの Notebook をローカル コンピューター (SCP または WinSCP を使用) にコピーすることで、Notebook 内の重要なデータが失われるのを防ぐことができます。ポート 8001 のヘッドノードへの SSH トンネルを使用すると、ゲートウェイを経由せずに Jupyter にアクセスできます。そこでは、Notebook の出力をクリアしてから再度保存して、Notebook のサイズを最小限に縮小できます。
 
 今後このエラーが発生しないようにするには、次のベスト プラクティスを実行する必要があります。
 
-* Notebook のサイズを小さく保つことが重要です。Jupyter に返送される、Spark ジョブからの出力は Notebook に保持されます。Jupyter でのベスト プラクティスとしては一般に次のとおりです。大規模な RDD またはデータフレームに対して `.collect()` を実行することは避けます。RDD の内容を参照する場合は、出力が大きくなり過ぎないように `.take()` または `.sample()` の実行を検討します。
+* Notebook のサイズを小さく保つことが重要です。Jupyter に返送される、Spark ジョブからの出力は Notebook に保持されます。Jupyter でのベスト プラクティスは一般に次のとおりです。大規模な RDD またはデータフレームに対して `.collect()` を実行することは避けます。RDD の内容を参照する場合は、出力が大きくなり過ぎないように `.take()` または `.sample()` の実行を検討します。
 * また、Notebook を保存する場合は、出力セルをすべてクリアしてサイズを縮小します。
 
 ### Notebook の初期スタートアップに予想より時間がかかる 
 
-**症状:**
-
-Spark Magic を使用した Jupyter Notebook の最初のステートメントは、1 分以上かかる場合があります。
+Spark マジックを使用した Jupyter Notebook の最初のコード ステートメントには、1 分以上かかる場合があります。
 
 **説明:**
  
 これは、最初のコード セルが実行されるタイミングのために発生します。バック グラウンドで、これにより、セッション構成が開始され、Spark、SQL、および Hive コンテキストが設定されます。これらのコンテキストが設定された後に、最初のステートメントが実行されるので、ステートメントの完了までに時間がかかるような印象を受けます。
 
 ### Jupyter Notebook がセッションの作成中にタイムアウトする
-
-**症状:**
 
 Spark クラスターがリソース不足になると、Jupyter Notebook の Spark カーネルと Pyspark カーネルは、セッションを作成する試行をタイムアウトにします。
 
@@ -124,4 +122,4 @@ Spark クラスターがリソース不足になると、Jupyter Notebook の Sp
 - [概要: Azure HDInsight (Linux) での Apache Spark](hdinsight-apache-spark-overview.md)
 - [概要: Azure HDInsight (Linux) の Apache Spark のプロビジョニングと Spark SQL を使用した対話型クエリの実行](hdinsight-apache-spark-jupyter-spark-sql.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

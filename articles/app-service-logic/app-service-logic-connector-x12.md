@@ -13,11 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="02/10/2016"
+   ms.date="04/20/2016"
    ms.author="rajram"/>
 
 # BizTalk X12 API アプリの使用開始とロジック アプリへの追加
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+
+
+[AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
 BizTalk X12 サービスを使用して、X12 プロトコルに従って企業間通信のメッセージを送受信します。X12 は、一般に ASC X12 (Accredited Standards Committee X12) とも呼ばれており、さまざまな業界で広く使用されています。
 
@@ -50,7 +52,7 @@ BizTalk X12 コネクタを使用するには、まず、BizTalk X12 コネク�
 
 ### アクション
 - 右側のウィンドウの [X12 コネクタ] をクリックします。![アクションの設定][7]
-- [->] (右矢印) をクリックします。![アクションの一覧][8]
+- -> (右矢印) をクリックします。![アクションの一覧][8]
 - X12 コネクタは、多くのアクションをサポートしています。*[エンコード]* を選択します。![入力のエンコード][9]
 - アクションの入力を設定して構成します。![エンコードの構成][10]
 
@@ -85,4 +87,4 @@ BizTalk X12 コネクタを使用するには、まず、BizTalk X12 コネク�
 [10]: ./media/app-service-logic-connector-x12/EncodeConfigured.PNG
 [11]: ./media/app-service-logic-connector-x12/TriggerSettings.PNG
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

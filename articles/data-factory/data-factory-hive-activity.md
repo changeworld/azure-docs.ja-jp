@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="04/18/2016" 
 	ms.author="spelluru"/>
 
 # Hive アクティビティ
@@ -214,4 +214,12 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
 			SUM(Duration)
 		FROM HiveSampleIn Group by ProfileID
 
-<!---HONumber=AcomDC_0302_2016-->
+
+## 関連項目
+- [Pig アクティビティ](data-factory-pig-activity.md)
+- [MapReduce アクティビティ](data-factory-map-reduce.md)
+- [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
+- [Spark プログラムを呼び出す](data-factory-spark.md)
+- [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+
+<!---HONumber=AcomDC_0420_2016-->

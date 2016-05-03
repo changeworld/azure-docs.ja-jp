@@ -3,8 +3,8 @@
 	description="このトピックでは、Microsoft Azure 仮想マシンに保存されたレポートを表示する Visual Studio ReportViewer コントロールを使用して、Microsoft Azure Web サイトを作成する方法を説明します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
-	authors="rothja"
-	manager="jeffreyg"
+	authors="guyinacube"
+	manager="jhubbard"
 	editor="monicar" 
 	tags="azure-service-management" />
 <tags 
@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="12/11/2015"
-	ms.author="jroth" />
+	ms.date="04/14/2016"
+	ms.author="asaxton" />
 
 # Azure でホストされる Web サイトで ReportViewer を使用する
 
@@ -109,4 +109,4 @@ ASP.NET Web アプリケーションを Azure に発行する手順について�
 
 [Reporting Services のレポート ビューアー制御と Microsoft Azure 仮想マシン ベースのレポート サーバー](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

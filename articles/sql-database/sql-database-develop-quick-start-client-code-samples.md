@@ -3,8 +3,8 @@
 	description="Linux での Node.js、Mac OS での Python、Java、Windows、Enterprise Library など、Azure SQL Database クライアント向けのコード サンプルとドライバーを提供します。"
 	services="sql-database" 
 	documentationCenter="" 
-	authors="MightyPen" 
-	manager="jeffreyg" 
+	authors="annemill" 
+	manager="jhubbard" 
 	editor=""/>
 
 
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="01/10/2016" 
-	ms.author="genemi"/>
+	ms.author="annemill"/>
 
 
 # SQL Database のクライアント クイック スタート コード サンプル
@@ -94,4 +94,4 @@
 - [Create your first Azure SQL Database (最初の Azure SQL Database を作成する)](sql-database-get-started.md)
 - [Entity Framework 6 here, EF 7 on GitHub (Entity Framework 6、GitHub における EF7)](http://entityframework.codeplex.com/)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

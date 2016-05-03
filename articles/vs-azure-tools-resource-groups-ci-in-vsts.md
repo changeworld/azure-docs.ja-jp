@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="01/26/2016"
+	ms.date="04/19/2016"
 	ms.author="tarcher" />
 
 # Azure リソース グループのデプロイメント プロジェクトを使用した Visual Studio Team Services での継続的インテグレーション
@@ -121,7 +121,7 @@ VS Team Services で PowerShell スクリプトを呼び出すには、ビルド
 
     | パラメーター | 説明|
     |---|---|
-    | -ResourceGroupLocation | **eastus** や **'East US'** など、リソース グループが配置される geo ロケーションの値です。(名前にスペースが含まれる場合は、一重引用符を追加します)。 詳細については、「[Azure のリージョン](https://azure.microsoft.com/ja-JP/regions/)」を参照してください。| |
+    | -ResourceGroupLocation | **eastus** や **'East US'** など、リソース グループが配置される geo ロケーションの値です。(名前にスペースが含まれる場合は、一重引用符を追加します)。 詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。| |
     | -ResourceGroupName | このデプロイメントに使用するリソース グループの名前。| |
     | -UploadArtifacts | このパラメーターは、存在する場合、アーティファクトがローカル システムから Azure にアップロードする必要があることを指定します。テンプレート デプロイメントに、PowerShell スクリプト (構成スクリプトや入れ子になったテンプレートなど) を使用してステージングする追加のアーティファクトが必要な場合にのみ、このスイッチを設定する必要があります。 |
     | -StorageAccountName | このデプロイメントのアーティファクトをステージングするためのストレージ アカウントの名前。Azure にアーティファクトをコピーしている場合にのみ、このパラメーターが必要です。このストレージ アカウントはデプロイメントで自動的に作成されることはありません。既に存在している必要があります。| |
@@ -160,4 +160,4 @@ Azure リソース マネージャーと Azure リソース グループの詳�
 [10]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough11b.png
 [11]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough12.png
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

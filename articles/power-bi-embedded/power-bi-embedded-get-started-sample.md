@@ -1,6 +1,6 @@
 <properties
    pageTitle="Get started with sample (サンプルの使用を開始する)"
-   description="Get started with sample (サンプルの使用を開始する)"
+   description="Power BI Embedded、SDK を使用して対話型の Power BI レポートをビジネス インテリジェンス アプリケーションに追加する"
    services="power-bi-embedded"
    documentationCenter=""
    authors="dvana"
@@ -21,7 +21,7 @@
 **Microsoft Power BI Embedded プレビュー** を利用して、Web アプリケーションやモバイル アプリケーションに Power BI レポートを統合することができますので、ユーザーのためにデータを視覚化するカスタム ソリューションを作成する必要はありません。次のリソースは、アプリへの Power BI レポートの統合を開始するのに役立ちます。
 
  -	[Sample dashboard web app](http://go.microsoft.com/fwlink/?LinkId=761493)
- -	[Power BI Embedded API reference](https://msdn.microsoft.com/library/mt712303.aspx)
+ -	[Power BI Embedded API reference](https://msdn.microsoft.com/library/mt711493.aspx)
  -	[Power BI Embedded .NET SDK (NuGet から入手可能)](http://go.microsoft.com/fwlink/?LinkId=746472)
 
 この記事では、**Power BI Embedded** の使用を開始するためのサンプルについて説明します。サンプル Web アプリを実行できるように、サンプル アプリの構成を始めましょう。
@@ -242,4 +242,4 @@ $filter={tableName/fieldName} eq '{fieldValue}'
 - [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューの使用を開始する)](power-bi-embedded-get-started.md)
 - [About app token flow in Power BI Embedded (Power BI Embedded のアプリ トークン フローについて)](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

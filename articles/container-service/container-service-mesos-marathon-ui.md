@@ -57,6 +57,18 @@ ID | nginx
 
 ![](media/dcos/dcos6.png)
 
+コンテナー ポートをエージェントのポートに静的にマップする場合は、この操作を "JSON モード" で行う必要があります。そのためには、[New Application (新しいアプリケーション)] ウィザードをトグルで JSON モードに切り替え、アプリケーション定義の 'portMappings' セクションの下に次の情報を入力します。この例は、コンテナーのポート 80 を DC/OS エージェントのポート 80 にバインドします。この変更を行った後は、このウィザードを JSON モードから切り替えることができます。
+
+```none
+“hostPort”: 80,
+```
+
+![](media/dcos/dcos13.png)
+
+DC/OS クラスターは、プライベート エージェントおよびパブリック エージェントのセットと共にデプロイされます。インターネットからアプリケーションにアクセスするには、これらをパブリック エージェントにデプロイする必要があります。そのためには、[New Application (新しいアプリケーション)] ウィザードの [optional (オプション)] タブを選択し、[Accepted Resource Roles (承認されたリソース ロール)] に「slave\_public」と入力します。
+
+![](media/dcos/dcos14.png)
+
 Marathon メイン ページに戻ると、コンテナーのデプロイの状態を確認できます。
 
 ![](media/dcos/dcos7.png)
@@ -85,4 +97,4 @@ Marathon UI では、コンテナーのインスタンス数を増減するこ�
 
 [DC/OS と Marathon API の使用](./container-service-mesos-marathon-rest.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -3,7 +3,7 @@
 	description="このトピックでは、オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの設定方法について説明します。次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH、HDS のいずれかを使用してクライアントの再生アプリケーションに送信できます。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="cenkdin,Juliako" 
+	authors="Juliako" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
- 	ms.date="02/03/2016"  
-	ms.author="juliako"/>
+	ms.date="04/18/2016"
+	ms.author="cenkdin;juliako"/>
 
 #オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
 
@@ -269,4 +269,4 @@ SCTE-35|広告の挿入のキューには、デジタル信号システムが使
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

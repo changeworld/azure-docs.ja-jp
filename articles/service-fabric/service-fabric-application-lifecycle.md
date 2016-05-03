@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/20/2016"
+   ms.date="04/14/2016"
    ms.author="ryanwi"/>
 
 
@@ -57,32 +57,34 @@
 例については、「[Deploy an application (アプリケーションをデプロイする)](service-fabric-deploy-remove-applications.md)」を参照してください。
 
 ## テスト
-1. ローカル開発クラスターまたはテスト クラスターにデプロイした後、*サービス開発者*は [**FailoverTestScenarioParameters**](https://msdn.microsoft.com/library/azure/system.fabric.testability.scenario.failovertestscenarioparameters.aspx)、[**FailoverTestScenario**](https://msdn.microsoft.com/library/azure/system.fabric.testability.scenario.failovertestscenario.aspx) クラス、[**Invoke-ServiceFabricFailoverTestScenario** コマンドレット](https://msdn.microsoft.com/library/azure/mt125935.aspx)を使用して、組み込みのフェールオーバー テスト シナリオを実行します。フェールオーバー テスト シナリオで、重要な切り替えとフェールオーバーを通して指定したサービスを実行して、引き続き利用可能で動作していることを確認します。
+1. ローカル開発クラスターまたはテスト クラスターにデプロイした後、*サービス開発者*は [**FailoverTestScenarioParameters**](https://msdn.microsoft.com/library/azure/system.fabric.testability.scenario.failovertestscenarioparameters.aspx)、[**FailoverTestScenario**](https://msdn.microsoft.com/library/azure/system.fabric.testability.scenario.failovertestscenario.aspx) クラス、[**Invoke-ServiceFabricFailoverTestScenario** コマンドレット](https://msdn.microsoft.com/library/azure/mt644783.aspx)を使用して、組み込みのフェールオーバー テスト シナリオを実行します。フェールオーバー テスト シナリオで、重要な切り替えとフェールオーバーを通して指定したサービスを実行して、引き続き利用可能で動作していることを確認します。
 
-2. 次に、*サービス開発者*は、[**ChaosTestScenarioParameters**](https://msdn.microsoft.com/library/azure/system.fabric.testability.scenario.chaostestscenarioparameters.aspx) と [**ChaosTestScenario**](https://msdn.microsoft.com/library/azure/system.fabric.testability.scenario.chaostestscenario.aspx) クラスまたは [**Invoke-ServiceFabricChaosTestScenario** コマンドレット](https://msdn.microsoft.com/library/azure/mt126036.aspx)を使用して、組み込みの chaos テスト シナリオを実行します。chaos テスト シナリオは、複数のノード、コード パッケージ、レプリカのエラーをクラスターにランダムに誘導します。
+2. 次に、*サービス開発者*は、[**ChaosTestScenarioParameters**](https://msdn.microsoft.com/library/azure/system.fabric.testability.scenario.chaostestscenarioparameters.aspx) と [**ChaosTestScenario**](https://msdn.microsoft.com/library/azure/system.fabric.testability.scenario.chaostestscenario.aspx) クラスまたは [**Invoke-ServiceFabricChaosTestScenario** コマンドレット](https://msdn.microsoft.com/library/azure/mt644774.aspx)を使用して、組み込みの chaos テスト シナリオを実行します。chaos テスト シナリオは、複数のノード、コード パッケージ、レプリカのエラーをクラスターにランダムに誘導します。
 
-例については、「[Testability scenarios (シナリオのテストの容易性)](service-fabric-testability-scenarios.md)」を参照してください。
+3. *サービス開発者*は、クラスターの周囲にプライマリ レプリカを移動するテスト シナリオを作成し、[サービス対サービスの通信をテスト](service-fabric-testability-scenarios-service-communication.md)します。
+
+詳細については、「[Introduction to the Fault Analysis Service (Fault Analysis サービスの概要)](service-fabric-testability-overview.md)」を参照してください。
 
 ## アップグレード
 1. *サービス開発者*は、インスタンス化されたアプリケーションの構成サービスの更新、バグの修正を行い、サービス マニフェストの新しいバージョンを提供します。
 
-2. *アプリケーション開発者*は、一貫性のあるサービスの構成とデプロイ設定をオーバーライドしてパラメーター化し、新しいバージョンのアプリケーション マニフェストを提供します。アプリケーション開発者は、アプリケーションに新しいバージョンのサービス マニフェストを組み込み、更新されたアプリケーション パッケージで新しいバージョンのアプリケーションの種類を提供します。
+2. *アプリケーション開発者*は、一貫性のあるサービスの構成とデプロイメント設定をオーバーライドしてパラメーター化し、新しいバージョンのアプリケーション マニフェストを提供します。アプリケーション開発者は、アプリケーションに新しいバージョンのサービス マニフェストを組み込み、更新されたアプリケーション パッケージで新しいバージョンのアプリケーションの種類を提供します。
 
 3. *アプリケーション管理者*は、適切なパラメーターを更新して、対象のアプリケーションに新しいバージョンのアプリケーションの種類を組み込みます。
 
-4. *オペレーター*は、[**CopyApplicationPackage** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage.aspx)または [**Copy-ServiceFabricApplicationPackage** コマンドレット](https://msdn.microsoft.com/library/azure/mt125905.aspx)を使用して、クラスター イメージ ストアに更新されたアプリケーション パッケージをアップロードします。アプリケーション パッケージには、アプリケーション マニフェストとサービス パッケージのコレクションが含まれています。
+5. *オペレーター*は、[**CopyApplicationPackage** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage.aspx)または [**Copy-ServiceFabricApplicationPackage** コマンドレット](https://msdn.microsoft.com/library/azure/mt125905.aspx)を使用して、クラスター イメージ ストアに更新されたアプリケーション パッケージをアップロードします。アプリケーション パッケージには、アプリケーション マニフェストとサービス パッケージのコレクションが含まれています。
 
-5. *オペレーター*は、[**ProvisionApplicationAsync** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync.aspx)、[**Register-ServiceFabricApplicationType** コマンドレット](https://msdn.microsoft.com/library/azure/mt125958.aspx)、[**Provision an Application** REST 操作](https://msdn.microsoft.com/library/azure/dn707672.aspx)を使用して、対象のクラスターで新しいバージョンのアプリケーションをプロビジョニングします。
+6. *オペレーター*は、[**ProvisionApplicationAsync** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync.aspx)、[**Register-ServiceFabricApplicationType** コマンドレット](https://msdn.microsoft.com/library/azure/mt125958.aspx)、[**Provision an Application** REST 操作](https://msdn.microsoft.com/library/azure/dn707672.aspx)を使用して、対象のクラスターで新しいバージョンのアプリケーションをプロビジョニングします。
 
-6. *オペレーター*は、[**UpgradeApplicationAsync** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.upgradeapplicationasync.aspx)、[**Start-ServiceFabricApplicationUpgrade** コマンドレット](https://msdn.microsoft.com/library/azure/mt125975.aspx)、[**Upgrade Application** REST 操作](https://msdn.microsoft.com/library/azure/dn707633.aspx)を使用して、対象のアプリケーションを新しいバージョンにアップグレードします。
+7. *オペレーター*は、[**UpgradeApplicationAsync** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.upgradeapplicationasync.aspx)、[**Start-ServiceFabricApplicationUpgrade** コマンドレット](https://msdn.microsoft.com/library/azure/mt125975.aspx)、[**Upgrade Application** REST 操作](https://msdn.microsoft.com/library/azure/dn707633.aspx)を使用して、対象のアプリケーションを新しいバージョンにアップグレードします。
 
-7. *オペレーター*は、[**GetApplicationUpgradeProgressAsync** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.getapplicationupgradeprogressasync.aspx)、[**Get-ServiceFabricApplicationUpgrade** コマンドレット](https://msdn.microsoft.com/library/azure/mt125988.aspx)、[**Get Application Upgrade Progress** REST 操作](https://msdn.microsoft.com/library/azure/dn707631.aspx)を使用して、アップグレードの進行状況を確認します。
+8. *オペレーター*は、[**GetApplicationUpgradeProgressAsync** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.getapplicationupgradeprogressasync.aspx)、[**Get-ServiceFabricApplicationUpgrade** コマンドレット](https://msdn.microsoft.com/library/azure/mt125988.aspx)、[**Get Application Upgrade Progress** REST 操作](https://msdn.microsoft.com/library/azure/dn707631.aspx)を使用して、アップグレードの進行状況を確認します。
 
-8. 必要に応じて、*オペレーター* は、[**UpdateApplicationUpgradeAsync** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.updateapplicationupgradeasync.aspx)、[**Update-ServiceFabricApplicationUpgrade** コマンドレット](https://msdn.microsoft.com/library/azure/mt126030.aspx)、[**Update Application Upgrade** REST 操作](https://msdn.microsoft.com/library/azure/mt628489.aspx)を使用して、現在のアプリケーション アップグレードのパラメーターを変更して再適用します。
+9. 必要に応じて、*オペレーター* は、[**UpdateApplicationUpgradeAsync** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.updateapplicationupgradeasync.aspx)、[**Update-ServiceFabricApplicationUpgrade** コマンドレット](https://msdn.microsoft.com/library/azure/mt126030.aspx)、[**Update Application Upgrade** REST 操作](https://msdn.microsoft.com/library/azure/mt628489.aspx)を使用して、現在のアプリケーション アップグレードのパラメーターを変更して再適用します。
 
-9. 必要に応じて、*オペレーター*は、[**RollbackApplicationUpgradeAsync** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.rollbackapplicationupgradeasync.aspx)、[**Start-ServiceFabricApplicationRollback** コマンドレット](https://msdn.microsoft.com/library/azure/mt125833.aspx)、[**Rollback Application Upgrade** REST 操作](https://msdn.microsoft.com/library/azure/mt628494.aspx)を使用して、現在のアプリケーション アップグレードをロールバックします。
+10. 必要に応じて、*オペレーター*は、[**RollbackApplicationUpgradeAsync** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.rollbackapplicationupgradeasync.aspx)、[**Start-ServiceFabricApplicationRollback** コマンドレット](https://msdn.microsoft.com/library/azure/mt125833.aspx)、[**Rollback Application Upgrade** REST 操作](https://msdn.microsoft.com/library/azure/mt628494.aspx)を使用して、現在のアプリケーション アップグレードをロールバックします。
 
-10. Service Fabric はその構成サービスのいずれかの可用性を失うことなく、クラスター内で実行されている対象アプリケーションをアップグレードします。
+11. Service Fabric はその構成サービスのいずれかの可用性を失うことなく、クラスター内で実行されている対象アプリケーションをアップグレードします。
 
 例については、「[アプリケーション アップグレードのチュートリアル](service-fabric-application-upgrade-tutorial.md)」を参照してください。
 
@@ -112,11 +114,11 @@
 
 Service Fabric アプリケーションとサービスの開発、テスト、管理に関する詳細については、以下を参照してください。
 
-- [Reliable Actors](service-fabric-reliable-actors-introduction.md)
+- [Reliable Actor](service-fabric-reliable-actors-introduction.md)
 - [Reliable Service](service-fabric-reliable-services-introduction.md)
 - [アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)
 - [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 - [Testability の概要](service-fabric-testability-overview.md)
 - [REST ベース アプリケーション ライフサイクルのサンプル](service-fabric-rest-based-application-lifecycle-sample.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

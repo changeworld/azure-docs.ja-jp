@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/22/2016"
+	ms.date="04/15/2016"
 	ms.author="danlep"/>
 
 
@@ -23,11 +23,11 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-linux-classic-capture-image.md)。
 
 
-この記事では、Linux を実行する Azure 仮想マシンを Azure コマンド ライン インターフェイス (CLI) を使用してキャプチャし、それを Azure リソース マネージャー テンプレートとして使用して他の仮想マシンを作成する方法を示します。このテンプレートでは、仮想マシンに接続された OS ディスクやデータ ディスクが指定されています。このテンプレートには、Azure リソース マネージャー VM を作成する際に必要な仮想ネットワーク リソースは含まれていないので、ほとんどの場合は、テンプレートを使用して別の仮想マシンを作成する前に、目的の仮想ネットワーク リソースを別途セットアップする必要があります。
+Linux を実行する Azure 仮想マシンを Azure コマンド ライン インターフェイス (CLI) を使用してキャプチャし、それを Azure Resource Manager テンプレートとして使用して他の仮想マシンを作成します。このテンプレートでは、仮想マシンに接続された OS ディスクやデータ ディスクが指定されています。このテンプレートには、Azure リソース マネージャー VM を作成する際に必要な仮想ネットワーク リソースは含まれていないので、ほとんどの場合は、テンプレートを使用して別の仮想マシンを作成する前に、目的の仮想ネットワーク リソースを別途セットアップする必要があります。
 
 ## 開始する前に
 
-これらの手順では、既に Azure リソース マネージャー デプロイ モデルによって Azure 仮想マシンが作成され、データ ディスクの接続やその他のカスタマイズ (たとえば、アプリケーションのインストールなど) を含むオペレーティング システムの構成が完了していると仮定します。この作業をまだ完了していない場合は、Azure CLI を Azure リソース マネージャー モードで使用するための次の手順を参照してください。
+これらの手順では、既に Azure リソース マネージャー デプロイ モデルによって Azure 仮想マシンが作成され、データ ディスクの接続やその他のカスタマイズ (たとえば、アプリケーションのインストールなど) を含むオペレーティング システムの構成が完了していると仮定します。この操作を行う方法は、いくつかあります。たとえば、Azure CLI を使用する方法などです。この作業をまだ完了していない場合は、Azure CLI を Azure リソース マネージャー モードで使用するための次の手順を参照してください。
 
 - [Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-linux-cli-deploy-templates.md)
 
@@ -83,7 +83,7 @@ VM をプロビジョニングし実行したら、データ ディスクを接�
 
 	このコマンドは、VM ディスクに対して指定された VHD 名のプレフィックスを使用して、汎用化された OS イメージを作成します。イメージ VHD ファイルは、既定では、元の VM が使用していたのと同じストレージ アカウントに作成されます。**-t** オプションを指定すると、イメージから新しい VM を作成する際に使用できるローカル JSON ファイル テンプレートが作成されます。
 
->[AZURE.TIP] イメージの場所を見つけるには、JSON ファイル テンプレートを開きます。**storageProfile** で、**システム** コンテナー内に位置する**イメージ**の **uri** を見つけます。たとえば、OS ディスク イメージの uri は `https://clixxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/your-prefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` のようになります。
+>[AZURE.TIP] イメージの場所を見つけるには、JSON ファイル テンプレートを開きます。**storageProfile** で、**システム** コンテナー内に位置する**イメージ**の **uri** を見つけます。たとえば、OS ディスク イメージの uri は `https://xxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/<your-image-prefix>-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` のようになります。
 
 ## キャプチャしたイメージから新しい VM をデプロイする
 ここで、イメージとテンプレートを使用して、新しい Linux VM を作成します。次の手順では、Azure CLI と、`azure vm capture` コマンドで作成した JSON ファイル テンプレートを使用して、新しい仮想ネットワークに VM を作成する方法を説明します。
@@ -178,7 +178,7 @@ VM をプロビジョニングし実行したら、データ ディスクを接�
 
 ## azure vm create コマンドを使用する
 
-一般には、リソース マネージャー テンプレートを使用して、イメージから VM を作成します。ただし、**azure vm create** コマンドと **--os-disk-vhd** (**-d**) パラメーターを組み合わせて使用して VM を_強制的に_作成することができます。
+一般には、リソース マネージャー テンプレートを使用して、イメージから VM を作成します。ただし、**azure vm create** コマンドと **-Q** (**--image-urn**) パラメーターを組み合わせて使用して VM を_強制的に_作成することができます。新しい VM の OS .vhd ファイルの場所を指定するために、**-d** (**--os-disk-vhd**) パラメーターも渡します。これは、イメージ VHD ファイルが格納されているストレージ アカウントの vhds コンテナー内でなければなりません。このコマンドは、新しい VM の VHD を自動的に vhds コンテナーにコピーします。
 
 イメージで **azure vm create** を実行する前に次の操作を行います。
 
@@ -186,11 +186,10 @@ VM をプロビジョニングし実行したら、データ ディスクを接�
 
 2.	新しい VM 用のパブリック IP アドレス リソースと NIC リソースを作成します。CLI を使用して仮想ネットワーク、パブリック IP アドレス、および NIC を作成する手順については、この記事の前の方を参照してください (**azure vm create** で新しい NIC を作成することもできますが、仮想ネットワークとサブネットの追加のパラメーターを渡す必要があります)。
 
-3.	フォルダー (仮想ディレクトリ) が存在しない BLOB コンテナーの場所にイメージ VHD を必ずコピーします。既定では、キャプチャしたイメージは、ストレージ BLOB コンテナー内の入れ子のフォルダーに格納されます (URI は`https://clixxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/your-prefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` のようになります)。**azure vm create** コマンドは、現時点では、BLOB コンテナーの最上位に格納された OS ディスク VHD からのみ VM を作成できます。たとえば、イメージ VHD を `https://yourstorage.blob.core.windows.net/vhds/your-prefix-OsDisk.vhd` にコピーします。
 
-次のようなコマンドを実行します。
+次に、以下のようなコマンドを実行し、新しい OS VHD ファイルと既存のイメージの両方に URI を渡します。
 
-	azure vm create <your-resource-group-name> <your-new-vm-name> eastus Linux -o <your-storage-account-name> -d "https://yourstorage.blob.core.windows.net/vhds/your-prefix-OsDisk.vhd" -z Standard_A1 -u <your-admin-name> -p <your-admin-password> -f <your-nic-name>
+	azure vm create <your-resource-group-name> <your-new-vm-name> eastus Linux -d "https://xxxxxxxxxxxxxx.blob.core.windows.net/vhds/<your-new-VM-prefix>.vhd" -Q "https://xxxxxxxxxxxxxx.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/<your-image-prefix>-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd" -z Standard_A1 -u <your-admin-name> -p <your-admin-password> -f <your-nic-name>
 
 追加のコマンド オプションについては、`azure help vm create` を実行してください。
 
@@ -198,4 +197,4 @@ VM をプロビジョニングし実行したら、データ ディスクを接�
 
 CLI を使用して VM を管理するには、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-linux-cli-deploy-templates.md)」に記載のタスクを参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

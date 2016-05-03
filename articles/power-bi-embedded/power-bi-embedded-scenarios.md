@@ -33,4 +33,4 @@
 - [サンプルを使ってみる](power-bi-embedded-get-started.md)
 - [カスタム ビジュアルで Power BI をさらにパワーアップ](https://powerbi.microsoft.com/custom-visuals/)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->

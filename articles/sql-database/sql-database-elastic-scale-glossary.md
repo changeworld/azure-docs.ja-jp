@@ -3,7 +3,7 @@
     description="エラスティック データベース ツールで使用される用語の説明" 
     services="sql-database" 
     documentationCenter="" 
-    manager="jeffreyg" 
+    manager="jhubbard" 
     authors="ddove" 
     editor=""/>
 
@@ -34,6 +34,14 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 **ローカル シャード マップ**: ローカル シャード マップは、シャードに格納され、シャードに存在するシャードレットのマッピングを含みます。
 
 **マルチシャード クエリ**: 複数のシャードに対してクエリを発行する機能。結果セットは、UNION ALL セマンティクス ("ファンアウト クエリ" とも呼ばれます) を使用して返されます。**データ依存ルーティング**も参照。
+
+**マルチテナント**と**シングルテナント**: これは、シングルテナント データベースとマルチテナント データベースを示します。
+
+![Single and multi-tenant databases](./media/sql-database-elastic-scale-glossary/multi-single-simple.png)
+
+次に、**シャード化された**シングルテナント データベースとマルチテナント データベースを示します。
+
+![Single and multi-tenant databases](./media/sql-database-elastic-scale-glossary/shards-single-multi.png)
 
 **範囲シャード マップ**: 連続値の複数の範囲に基づくシャード分散戦略を持つシャード マップ。
 
@@ -82,4 +90,4 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

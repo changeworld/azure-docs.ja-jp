@@ -17,7 +17,7 @@
 	ms.author="nitinme"/>
 
 
-# クイック スタート: Azure HDInsight での Apache Spark の作成と Spark SQL を使用した対話型クエリの実行 (Windows)
+# クイック スタート: HDInsight Windows の Apache Spark の作成と Spark SQL を使用した対話型クエリの実行 (プレビュー)
 
 [AZURE.INCLUDE [hdinsight-azure-portal](../../includes/hdinsight-azure-portal.md)]
 
@@ -262,4 +262,4 @@ HDInsight で HDInsight クラスターを作成するときに、Azure Storage 
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

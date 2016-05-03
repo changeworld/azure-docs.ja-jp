@@ -13,21 +13,21 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="big-compute"
- ms.date="01/08/2016"
+ ms.date="04/18/2016"
  ms.author="danlep"/>
 
 # Azure の HPC Pack クラスターのコンピューティング ノードの数と可用性を管理する
 
+Azure VM で HPC Pack クラスターを作成した場合、クラスターにたくさんのコンピューティング ノード VM を簡単に追加し、開始し (プロビジョニング)、停止 (プロビジョニング解除) できる方法があれば便利です。そのような作業を行うには、ヘッド ノード VM にインストールされている Azure PowerShell スクリプトを実行します。これらのスクリプトを利用すれば、HPC Pack クラスター リソースの数と可用性を制御し、コストを管理できます。
+
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
-Azure VM で HPC Pack クラスターを作成した場合、クラスターにたくさんのコンピューティング ノード VM を簡単に追加し、開始し (プロビジョニング)、停止 (プロビジョニング解除) できる方法があれば便利です。そのような作業を行うには、ヘッド ノード VM にインストールされている Azure PowerShell スクリプトを実行します (HPC Pack 2012 R2 更新プログラム 1 以降)。これらのスクリプトを利用すれば、HPC Pack クラスター リソースの数と可用性を制御し、コストを管理できます。
-
->[AZURE.NOTE] スクリプトはヘッド ノードの %CCP\_HOME%bin フォルダーにあります。各スクリプトは管理者として実行する必要があります。
-
 ## 前提条件
 
-* **Azure VM の HPC Pack クラスター** - HPC Pack 2012 R2 更新プログラム 1 以降を利用し、従来 (サービス管理) のデプロイ モデルで HPC Pack クラスターを作成します。たとえば、Azure Marketplace の HPC Pack VM イメージや Azure PowerShell スクリプトを利用し、デプロイを自動化できます。詳細と前提条件については、「[HPC Pack IaaS デプロイ スクリプトを使用した HPC クラスターの作成](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md)」を参照してください。
+* **Azure VM の HPC Pack クラスター** - HPC Pack 2012 R2 更新プログラム 1 以降を利用し、クラシック デプロイ モデルで HPC Pack クラスターを作成します。たとえば、Azure Marketplace の現在の HPC Pack VM イメージや Azure PowerShell スクリプトを利用し、デプロイを自動化できます。詳細と前提条件については、「[HPC Pack IaaS デプロイ スクリプトを使用した HPC クラスターの作成](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md)」を参照してください。
+
+    デプロイ後、ヘッド ノードの %CCP\_HOME%bin フォルダーで、ノード管理スクリプトを探します。各スクリプトは管理者として実行する必要があります。
 
 * **Azure 発行設定ファイルまたは管理証明書** - ヘッド ノードで次のいずれかを行う必要があります。
 
@@ -177,6 +177,6 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 
 ## 次のステップ
 
-* クラスターのジョブやタスクの現在のワークロードに合わせて、クラスター ノードを自動的に拡大縮小する方法については、「[クラスター ワークロードに合わせ、HPC Pack クラスターで Azure コンピューティング リソースを自動的に拡大縮小する](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md)」をご覧ください。
+* クラスターのジョブやタスクの現在のワークロードに合わせて、クラスター ノードを自動的に拡大縮小する方法については、「[クラスターのワークロードに合わせ、Azure で HPC Pack クラスター リソースを自動的に拡大縮小する](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

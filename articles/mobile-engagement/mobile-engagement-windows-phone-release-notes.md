@@ -18,6 +18,12 @@
 
 #Windows Phone Silverlight SDK リリース ノート
 
+
+##3\.3.0 (04/19/2016)
+*MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.4.0** の一部
+
+-   SDK によって出力されるコンソール ログを有効化/無効化/フィルター処理するために "TestLogLevel" API を追加しました。
+
 ##3\.2.0 (01/22/2016)
 *MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.3.0** の一部
 
@@ -43,4 +49,4 @@
 -   セキュリティの強化。
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

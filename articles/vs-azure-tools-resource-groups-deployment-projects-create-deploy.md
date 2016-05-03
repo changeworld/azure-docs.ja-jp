@@ -196,4 +196,4 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
 - ポータルを使用したリソース管理の詳細については、「[Azure ポータルを使用した Azure リソースの管理](./azure-portal/resource-group-portal.md)」を参照してください。
 - テンプレートの詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

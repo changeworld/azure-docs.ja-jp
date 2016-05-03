@@ -1,6 +1,6 @@
 <properties
-   pageTitle="HDI Premium での R Server のコンピューティング コンテキスト オプション| Azure"
-   description="HDInsight Premium での R Server でユーザーが使用できるさまざまなコンピューティング コンテキスト オプションを説明します。"
+   pageTitle="HDInsight の R Server (プレビュー) のコンピューティング コンテキストのオプション | Azure"
+   description="HDInsight の R Server (プレビュー) でユーザーが使用できるさまざまなコンピューティング コンテキスト オプションについて説明します。"
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
@@ -18,9 +18,9 @@
    ms.author="jeffstok"
 />
 
-# HDInsight Premium での R Server のコンピューティング コンテキストのオプション
+#HDInsight の R Server (プレビュー) のコンピューティング コンテキストのオプション
 
-R Server on HDI Spark には、[Azure BLOB](../storage/storage-introduction.md "Azure BLOB ストレージ") ストレージ アカウントまたはローカルの Linux ファイル システム上のコンテナーにある HDFS に格納されたデータを使用して R ベースの分析を行うための最新の機能があります。R Server はオープン ソースの R を基盤としているため、自社で構築する R ベースのアプリケーションでは 8000 を超えるオープン ソースの R パッケージのほか、[R Server](http://www.revolutionanalytics.com/revolution-r-enterprise-scaler "Revolution Analytics ScaleR") に付属する Microsoft のビッグ データ分析パッケージ ScaleR のルーチンを活用できます。Premium クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利なランディング ゾーンを提供します。エッジ ノードでは、エッジ ノード サーバーのコア間で、またはクラスターのノード間で ScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、ScaleR の並列化された分散関数を実行できます。
+HDInsight の R Server (プレビュー) は、[Azure BLOB](../storage/storage-introduction.md "Azure BLOB ストレージ") ストレージ アカウントまたはローカルの Linux ファイル システム上のコンテナーにある HDFS に格納されたデータを使用して R ベースの分析を行うための最新の機能を備えています。R Server はオープン ソースの R を基盤としているため、自社で構築する R ベースのアプリケーションでは 8000 を超えるオープン ソースの R パッケージのほか、[R Server](http://www.revolutionanalytics.com/revolution-r-enterprise-scaler "Revolution Analytics ScaleR") に付属する Microsoft のビッグ データ分析パッケージ ScaleR のルーチンを活用できます。Premium クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利なランディング ゾーンを提供します。エッジ ノードでは、エッジ ノード サーバーのコア間で、またはクラスターのノード間で ScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、ScaleR の並列化された分散関数を実行できます。
 
 ## エッジ ノードに対するコンピューティング コンテキスト
 
@@ -79,4 +79,4 @@ ScaleR コンピューティング コンテキストの詳細および例につ
 - [Add RStudio Server to HDInsight premium (HDInsight Premium への RStudio Server の追加)](hdinsight-hadoop-r-server-install-r-studio.md)
 - [Azure Storage options for R Server on HDInsight Premium (HDInsight Premium での R Server の Azure Storage オプション)](hdinsight-hadoop-r-server-storage.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

@@ -3,8 +3,8 @@
 	description="このトピックでは、.NET を使用し、Media Encoder Standard で資産をエンコードする方法について紹介します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,anilmur" 
-	manager="dwrede" 
+	authors="juliako" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-  ms.date="02/03/2016"
-	ms.author="juliako"/>
+ 	ms.date="04/18/2016"
+	ms.author="juliako;anilmur"/>
 
 
 #Media Encoder Standard を使用して資産をエンコードする方法
@@ -147,4 +147,4 @@ Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618
 
 [Media Encoder Standard と .NET を使用してサムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md) [Media Services でのエンコーディングの概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

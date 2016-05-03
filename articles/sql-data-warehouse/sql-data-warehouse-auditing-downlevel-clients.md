@@ -3,7 +3,7 @@
    description="データ監査のための SQL Data Warehouse のダウンレベル クライアントのサポートについて説明します"
    services="sql-data-warehouse"
    documentationCenter=""
-   authors="twounder"
+   authors="ronortloff"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.date="03/03/2016" 
-   ms.author="mausher;barbkess;sonyama"/>
+   ms.author="rortloff;barbkess;sonyama"/>
 
 # SQL Data Warehouse - 監査と動的データ マスキングのためのダウンレベル クライアントのサポート
 
@@ -38,4 +38,4 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 
 **注記:** 上のサーバー FDQN 変更は SQL サーバー レベル監査ポリシーの適用にも役に立ちます。データベースごとの構成が必要ありません (一時的な軽減)。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

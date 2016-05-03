@@ -18,7 +18,7 @@
 	ms.author="nitinme"/>
 
 
-# Azure HDInsight での Apache Spark クラスターのリソースの管理 (Windows)
+# HDInsight Windows での Apache Spark クラスターのリソースの管理 (プレビュー)
 
 > [AZURE.NOTE] HDInsight は Linux 上に Spark クラスターを提供するようになりました。HDInsight Linux 上の Spark クラスターのリソースを管理する方法については、「[Azure HDInsight での Apache Spark クラスターのリソースの管理 (Linux)](hdinsight-apache-spark-resource-manager.md)」を参照してください。
 
@@ -84,4 +84,4 @@ Thrift サーバーのコア数と Thrift サーバーの実行プログラム �
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

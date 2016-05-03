@@ -3,8 +3,8 @@
 	description="このページでは、Azure SQL Database に対するいくつかの一般的なリソース制限について説明します。"
 	services="sql-database"
 	documentationCenter="na"
-	authors="rothja"
-	manager="jeffreyg"
+	authors="carlrabeler"
+	manager="jhubbard"
 	editor="monicar" />
 
 
@@ -14,8 +14,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="03/02/2016"
-	ms.author="jroth" />
+	ms.date="04/19/2016"
+	ms.author="carlrab" />
 
 
 # Azure SQL Database のリソース制限
@@ -60,8 +60,12 @@ Basic、Standard、および Premium サービス プランの設計目標の 1 
 | 領域 | 制限 | 説明 |
 |---|---|---|
 | サブスクリプションあたりの自動エクスポートを使用するデータベース | 10 | 自動エクスポートを使用すると、カスタム スケジュールを作成して、SQL Database をバックアップできます。詳細については、「[SQL Database: 自動 SQL Databaseエクスポートのサポート](http://weblogs.asp.net/scottgu/windows-azure-july-updates-sql-database-traffic-manager-autoscale-virtual-machines)」を参照してください。|
+| サーバーあたりのデータベース | 最大 5000 | V12 サーバーでは、サーバーあたり最大 5000 個のデータベースが許可されています。サーバー上のすべてのデータベースに対するログイン アクティビティと master データベース内のシステム ビューに対するクエリの使用状況に応じて、実際には適用される上限は低くなる場合があります。サーバー上のデータベースの数を大幅に増加する場合は、問題が発生していないかどうかについてデータベース接続を監視することをお勧めします。 |  
+| サーバーあたりの DTU | 45000 | データベース、エラスティック プール、データ ウェアハウスをプロビジョニングする場合、V12 サーバーではサーバーあたり 45000 DTU を使用できます。 |
 
-## リソース
+
+
+## Resources
 
 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)
 
@@ -69,4 +73,4 @@ Basic、Standard、および Premium サービス プランの設計目標の 1 
 
 [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

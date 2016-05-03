@@ -44,7 +44,7 @@ __CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き�
 
 ##Azure CLI
 
-> [AZURE.NOTE] Azure CLI をインストールおよび構成していない場合は、[Azure CLI のインストールと構成](../xplat-cli-install.md)に関するドキュメントの手順を実行してください。
+[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 クラスターを削除するには、プロンプトで次のコマンドを実行します。
 
@@ -52,4 +52,4 @@ __CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き�
     
 __CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き換えます。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

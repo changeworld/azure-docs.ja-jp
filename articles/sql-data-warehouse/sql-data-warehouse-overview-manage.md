@@ -3,7 +3,7 @@
    description="SQL Data Warehouse の管理ツールの紹介。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="HappyNicolle"
+   authors="barbkess"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="03/03/2016"
-   ms.author="mausher;nicw;barbkess;jrj;sonyama;"/>
+   ms.author="barbkess;sonyama;"/>
 
 # SQL Data Warehouse の管理ツール
 このトピックでは、SQL Data Warehouse を管理するためのツールやオプションを説明して比較し、ニーズに合ったツールを選択できるようにします。適切なツールを選択するには、管理対象のデータベースの数、タスク、タスクの実行頻度を考慮します。
@@ -25,11 +25,11 @@
 ポータルには、現在と過去のパフォーマンス DWU 設定、使用中のストレージ量、成功および失敗した SQL 接続、およびインスタンスで実行されているクエリやそれらの詳細を把握できる視覚化情報とデータのセットが網羅されたメトリックが含まれています。
 
 ## Visual Studio での SQL Server Data Tools
-Visual Studio の [SQL Server Data Tools][] (SSDT) は、コンピューター上で実行し、クラウドでデータベースに対する接続、管理、および開発を行うことができるクライアント ツールです。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
+Visual Studio の [SQL Server Data Tools][] \(SSDT) は、コンピューター上で実行し、クラウドでデータベースに対する接続、管理、および開発を行うことができるクライアント ツールです。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
 
 SSDT には SQL Server Explorer が含まれており、これを使用して SQL Data Warehouse データベースに対する視覚化、接続、およびスクリプトを実行できます。SQL Data Warehouse にすばやく接続するには、Azure クラシック ポータルにデータベース詳細が表示されているときに、コマンド バーで [**Visual Studio で開く**] ボタンをクリックするだけです。
 
-SQL Data Warehouse に対するサポートが含まれた [SQL Server Data Tools][] (SSDT) の最新バージョンをダウンロードできます。
+SQL Data Warehouse に対するサポートが含まれた [SQL Server Data Tools][] \(SSDT) の最新バージョンをダウンロードできます。
 
 ## コマンド ライン ツール
 オプションとして、PowerShell または sqlcmd コマンド ライン ツールを使用して SQL Data Warehouse を管理したり、Azure リソース開発を自動化したりすることができます。多数の論理サーバーを管理したり、運用環境でリソースの変更をデプロイしたりする場合は、タスクをスクリプト化した後、自動化する必要があるため、これらのツールを使用することをお勧めします。
@@ -48,4 +48,4 @@ SQL Data Warehouse に対するサポートが含まれた [SQL Server Data Tool
 <!--Other web references-->
 [Azure クラシック ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

@@ -3,7 +3,7 @@
 	description="この記事では、PlayReady と Widevine DRM の両方を使用して AMS で動的に暗号化されたストリームを、Azure Media Services (AMS) を使用して配信する方法について説明します。PlayReady ライセンスは Media Services PlayReady サーバーから取得し、Widevine ライセンスは Axinom ライセンス サーバーから取得します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="willzhan,Mingfeiy,rajputam,Juliako" 
+	authors="willzhan" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/03/2016"  
-	ms.author="juliako"/>
+	ms.date="04/18/2016"   
+	ms.author="willzhan;Mingfeiy;rajputam;Juliako"/>
 
 #Axinom を使用して Azure Media Services に Widevine ライセンスを配信する  
 
@@ -209,4 +209,4 @@ Widevine ライセンス取得 URL|DASH ストリーミングの資産配信ポ�
 
 この文書の作成に協力してくださった Axinom 社の Kristjan Jõgi、Mingfei Yan、Amit Rajput に感謝します。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

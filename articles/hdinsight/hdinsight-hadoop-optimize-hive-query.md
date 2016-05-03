@@ -22,12 +22,6 @@
 
 既定では、Hadoop クラスターのパフォーマンスは最適化されていません。この記事では、クエリに適用できる最も一般的な Hive パフォーマンス最適化の方法について説明します。
 
-
-[AZURE.INCLUDE [preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
-
-
-* [HDInsight の Hadoop に対する Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query-v1.md)。
-
 ##ワーカー ノードのスケール アウト
 
 クラスター内のノードのワーカーの数を増やすことで、より多くの mapper と reducer を同時に実行できるようになります。HDInsight でのスケール アウトを向上させる方法が 2 つあります。
@@ -226,4 +220,4 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0420_2016-->

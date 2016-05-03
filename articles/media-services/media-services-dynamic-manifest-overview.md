@@ -3,8 +3,8 @@
 	description="このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="cenkdin,Juliako" 
-	manager="dwrede" 
+	authors="cenkdin" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="01/28/2016" 
-	ms.author="juliako"/>
+ 	ms.date="04/18/2016" 
+	ms.author="cenkdin;juliako"/>
 
 #フィルターと動的マニフェスト
 
@@ -236,4 +236,4 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

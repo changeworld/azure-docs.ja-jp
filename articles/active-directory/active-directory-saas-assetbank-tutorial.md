@@ -85,6 +85,7 @@ Azure AD への Asset Bank の統合を構成するには、ギャラリーか�
 
 7. 結果ウィンドウで **[Asset Bank]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-assetbank-tutorial/tutorial_assetbank_02.png)
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Asset Bank で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -170,11 +171,11 @@ Asset Bank で Azure AD のシングル サインオンを構成してテスト�
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-assetbank-tutorial/create_aaduser_03.png)
 
-4. **[ユーザーの追加]** ダイアログを開くには、下部にあるツール バーで **[ユーザーの追加]** をクリックします。
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-assetbank-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-assetbank-tutorial/create_aaduser_05.png)
 
@@ -280,4 +281,4 @@ Asset Bank で Azure AD のシングル サインオンを構成してテスト�
 [204]: ./media/active-directory-saas-assetbank-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-assetbank-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

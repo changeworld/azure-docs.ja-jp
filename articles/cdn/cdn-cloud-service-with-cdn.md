@@ -90,7 +90,7 @@
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-8-publish-finalize.png)
 
-	>[AZURE.NOTE] クラウド サービスの発行には時間がかかります。[すべてのロールの Web のデプロイを有効にする] オプションを使用すると、Web ロールに対する高速な (ただし一時的な) 更新を提供することでクラウド サービスのデバッグが高速化されます。このオプションの詳細については、「[Azure Tools を使用したクラウド サービスの発行](http://msdn.microsoft.com/library/ff683672.aspx)」を参照してください。
+	>[AZURE.NOTE]クラウド サービスの発行には時間がかかります。[すべてのロールの Web のデプロイを有効にする] オプションを使用すると、Web ロールに対する高速な (ただし一時的な) 更新を提供することでクラウド サービスのデバッグが高速化されます。このオプションの詳細については、「[Azure Tools を使用したクラウド サービスの発行](http://msdn.microsoft.com/library/ff683672.aspx)」を参照してください。
 
 	[**Microsoft Azure のアクティビティ ログ**] に発行状態が [**完了**] と表示されたら、このクラウド サービスと統合される CDN エンドポイントを作成します。
 
@@ -162,29 +162,29 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
 	http://camservice.azureedge.net/Content/bootstrap.css
 
-この URL は、CDN エンドポイントの次のオリジン URL に対応します。
+	この URL は、CDN エンドポイントの次のオリジン URL に対応します。
 
 	http://camcdnservice.cloudapp.net/Content/bootstrap.css
 
 **http://*&lt;cdnName>*.azureedge.net/Content/bootstrap.css** に移動すると、発行された Web アプリケーションから bootstrap.css をダウンロードまたは開くよう求められます。
 
-![](media/cdn-cloud-service-with-cdn/cdn-1-browser-access.PNG)
+	![](media/cdn-cloud-service-with-cdn/cdn-1-browser-access.PNG)
 
 同様に、CDN エンドポイントから、**http://*&lt;serviceName>*.cloudapp.net/** のパブリックにアクセスできる任意の URL にアクセスできます。次に例を示します。
 
 -	/Script パスの .js ファイル
 -	/Content パスの任意のコンテンツ ファイル
--	任意のコントローラー/アクション
+-	任意のコントローラー/アクション 
 -	CDN エンドポイントでクエリ文字列が有効になっている場合、クエリ文字列を含む任意の URL
 
-実際、上記の構成の場合、**http://*&lt;cdnName>*.azureedge.net/** からのクラウド サービス全体をホストできます。****http://camservice.azureedge.net/** に移動すると、Home/Index からのアクション結果が得られます。
+実際、上記の構成の場合、**http://*&lt;cdnName>*.azureedge.net/** からのクラウド サービス全体をホストできます。**http://camservice.azureedge.net/** に移動すると、Home/Index からのアクション結果が得られます。
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 
 ただし、これが、Azure CDN を介してクラウド サービス全体を提供するのが常に適切なやり方 (または一般的に適切なやり方) であることにはなりません。いくつかの注意点があります。
 
 -	現時点で、Azure CDN ではプライベートなコンテンツを配信できないため、この方法ではサイト全体をパブリックにする必要があります。
--	予定されたメンテナンスであろうとユーザー エラーであろうと、CDN エンドポイントが何かの理由でオフラインになると、顧客をオリジン URL **http://*&lt;serviceName>*.cloudapp.net/** にリダイレクトできる場合を除き、クラウド サービス全体がオフラインになります。
+-	予定されたメンテナンスであろうとユーザー エラーであろうと、CDN エンドポイントが何かの理由でオフラインになると、顧客をオリジン URL **http://*&lt;serviceName>*.cloudapp.net/** にリダイレクトできる場合を除き、クラウド サービス全体がオフラインになります。 
 -	カスタムの Cache-Control 設定 (「[クラウド サービスの静的ファイルのキャッシュ オプションを構成する](#caching)」を参照してください) を使用した場合でも、CDN エンドポイントによって高度に動的なコンテンツのパフォーマンスが向上するわけではありません。上に示すように CDN エンドポイントからホーム ページを読み込もうとした場合、非常に単純な既定のホーム ページを初めて読み込むときに 5 秒以上かかります。このページに毎分更新する必要がある動的コンテンツが含まれていたとしたら、クライアント エクスペリエンスはどうなるでしょうか。動的コンテンツを CDN エンドポイントから配信するにはキャッシュの有効期限が短く設定されている必要があります。これは、CDN エンドポイントで頻繁にキャッシュ ミスが発生することになります。その結果、クラウド サービスのパフォーマンスが低下し、CDN の目的が果たせなくなります。
 
 また、クラウド サービスで Azure CDN から配信するコンテンツをケースバイケースで決定する方法もあります。CDN エンドポイントから個々のコンテンツ ファイルにアクセスする方法については既に説明しました。CDN エンドポイントを介して特定のコントローラー アクションを配信する方法については、「[Azure CDN を介してコントローラー アクションからコンテンツを配信する](#controller)」で説明します。
@@ -337,7 +337,7 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 
 	![](media/cdn-cloud-service-with-cdn/cdn-7-configureview.PNG)
 
-4. 新しい *Views\MemeGenerator\Index.cshtml* を開き、その内容を、ジョークを送信するための次の単純な HTML で置き換えます。
+4. 新しい *Views\\MemeGenerator\\Index.cshtml* を開き、その内容を、ジョークを送信するための次の単純な HTML で置き換えます。
 
 		<h2>Meme Generator</h2>
 
@@ -626,7 +626,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 ## 詳細情報 ##
 - [Azure Content Delivery Network (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
-- [Azure 用 CDN の使用](cdn-how-to-use-cdn.md)
+- [Azure CDN の使用](cdn-create-new-endpoint.md)
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
 
 
@@ -637,4 +637,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 [cdn-add-endpoint]: ./media/cdn-cloud-service-with-cdn/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-cloud-service-with-cdn/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

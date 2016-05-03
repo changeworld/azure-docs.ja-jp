@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="multiple"
 	ms.topic="article" 
-	ms.date="02/19/2016"
+	ms.date="04/08/2016"
 	ms.author="awills"/>
 
 # Application Insights による利用状況分析
@@ -248,11 +248,11 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 すべての新しい TelemetryClients が自動的にコンテキストを使用できるように、汎用の初期化子を設定できます。
 
     // Telemetry initializer class
-    public class MyTelemetryInitializer : IContextInitializer
+    public class MyTelemetryInitializer : ITelemetryInitializer
     {
-        public void Initialize (TelemetryContext context)
+        public void Initialize (ITelemetry telemetry)
         {
-            context.Properties["AppVersion"] = "v2.1";
+            telemetry.Properties["AppVersion"] = "v2.1";
         }
     }
 
@@ -261,7 +261,7 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
     protected void Application_Start()
     {
         // ...
-        TelemetryConfiguration.Active.ContextInitializers
+        TelemetryConfiguration.Active.TelemetryInitializers
         .Add(new MyTelemetryInitializer());
     }
 
@@ -288,4 +288,4 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0420_2016-->

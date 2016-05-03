@@ -13,11 +13,37 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/30/2016" 
+	ms.date="04/18/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory - .NET API の変更ログ 
 この記事では、特定のバージョンの Azure Data Factory SDK の変更に関する情報を提供します。Azure Data Factory の最新の Nuget パッケージについては、[こちら](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)をご覧ください。
+
+## バージョン 4.6.0
+リリース日: 2016.04.14
+
+### 機能の追加
+
+- 次のプロパティが [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx) に追加されました。
+	- [PipelineMode](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.pipelinemode.aspx)
+	- [ExpirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
+	- [データセット](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
+- 次のプロパティが [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx) に追加されました。
+	- [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
+- JSON 形式のデータを持つデータセットを定義するために、新しい [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) 型の [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) 型が追加されました。 
+
+## バージョン 4.5.0
+リリース日: 2016.02.24
+
+### 機能の追加
+* [アクティビティ ウィンドウの一覧操作](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.activitywindowoperationsextensions.aspx)が追加されました。
+    * エンティティ型 (つまり、データ ファクトリ、データセット、パイプライン、およびアクティビティ) に基づくフィルターを使用してアクティビティ ウィンドウを取得するメソッドが追加されました。
+* 次のリンクされたサービスの種類が追加されています。 
+    * [ODataLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odatalinkedservice.aspx)、[WebLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.weblinkedservice.aspx)
+* 次のデータセットの型が追加されています。 
+    * [ODataResourceDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odataresourcedataset.aspx)、[WebTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.webtabledataset.aspx)
+* 次のコピー ソースの種類が追加されています。 	
+    * [WebSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
 
 ## バージョン 4.4.0
 リリース日: 2016 年 1 月 28 日
@@ -25,7 +51,7 @@
 ### 機能の追加
 
 - 次のリンクされたサービスの種類が、コピー アクティビティのデータ ソースおよびシンクとして追加されています。
-	- [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx)。概念情報と例については、「[Azure Storage SAS Linked Service (Azure Storage SAS のリンクされたサービス)](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service)」を参照してください。 
+	- [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx).概念情報と例については、「[Azure Storage SAS Linked Service (Azure Storage SAS のリンクされたサービス)](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service)」を参照してください。 
 
 ## バージョン 4.3.0
 リリース日: 2015 年 11 月 25 日
@@ -123,4 +149,4 @@ SqlServerDataset | [SqlServerTableDataset](https://msdn.microsoft.com/library/mi
 
 - コピー アクティビティの一環として、Azure SQL Database ソースと Azure SQL Data Warehouse ソースに対するストアド プロシージャの実行がサポートされるようになりました。[SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) クラスと [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) クラスには、これをサポートするプロパティとして、**SqlReaderStoredProcedureName** と **StoredProcedureParameters** があります。これらのプロパティの詳細については、Azure.com の [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) と [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

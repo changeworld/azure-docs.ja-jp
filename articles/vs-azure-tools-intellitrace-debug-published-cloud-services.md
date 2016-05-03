@@ -12,10 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="12/17/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
-
-
 
 # IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ
 
@@ -23,9 +21,9 @@
 
 IntelliTrace を使用すると、ロール インスタンスを Azure で実行する際に広範なデバッグ情報を記録できます。問題の原因を調べる必要がある場合は、IntelliTrace ログを使用して、コードが Azure で実行されているかのように Visual Studio から調査することができます。実際には、IntelliTrace は Azure アプリケーションが Azure のクラウド サービスとして実行されている際にキー コードの実行および環境データを記録し、その記録されたデータを Visual Studio で再生できるようにします。代わりに、リモート デバッグを使用して、Azure で実行されているクラウド サービスに直接接続することができます。「[クラウド サービスのデバッグ](http://go.microsoft.com/fwlink/p/?LinkId=623041)」を参照してください。
 
->[AZURE.IMPORTANT]IntelliTrace は、デバッグ シナリオのみを対象としており、運用環境のデプロイには使用できません。
+>[AZURE.IMPORTANT] IntelliTrace は、デバッグ シナリオのみを対象としており、運用環境のデプロイには使用できません。
 
->[AZURE.NOTE]Visual Studio Enterprise がインストールされており、Azure アプリケーションが .NET Framework 4 以降のバージョンを対象としている場合に IntelliTrace を使用することができます。IntelliTrace は、Azure ロールの情報を収集します。これらのロールの仮想マシンは、常に 64 ビット オペレーティング システムを実行します。
+>[AZURE.NOTE] Visual Studio Enterprise がインストールされており、Azure アプリケーションが .NET Framework 4 以降のバージョンを対象としている場合に IntelliTrace を使用することができます。IntelliTrace は、Azure ロールの情報を収集します。これらのロールの仮想マシンは、常に 64 ビット オペレーティング システムを実行します。
 
 ## IntelliTrace の Azure アプリケーションを構成するには
 
@@ -39,7 +37,7 @@ IntelliTrace を Azure アプリケーションで有効にするには、Visual
 
 1. クラウドへの発行時にアプリケーションの IntelliTrace ログを収集するには、**[IntelliTrace を有効にする]** チェック ボックスをオンにします。
 
-    >[AZURE.NOTE]Azure アプリケーションを発行するときに、IntelliTrace またはプロファイルを有効にすることができます。両方を有効にすることはできません。
+    >[AZURE.NOTE] Azure アプリケーションを発行するときに、IntelliTrace またはプロファイルを有効にすることができます。両方を有効にすることはできません。
 
 1. 基本の IntelliTrace 構成をカスタマイズするには、**[設定]** ハイパーリンクを選択します。
 
@@ -63,10 +61,10 @@ Azure のアプリケーションが Azure に発行されると、次の図の�
 
 IntelliTrace ログのダウンロード中も、Visual Studio での作業を続行することができます。ログのダウンロードが完了すると、ログが Visual Studio で自動的に開きます。
 
->[AZURE.NOTE]IntelliTrace ログには、フレームワークが生成し、後から処理する例外が含まれる場合があります。内部のフレームワーク コードでは、このような例外がロールの起動時の正常な処理として生成されるため、無視しても問題ありません。
+>[AZURE.NOTE] IntelliTrace ログには、フレームワークが生成し、後から処理する例外が含まれる場合があります。内部のフレームワーク コードでは、このような例外がロールの起動時の正常な処理として生成されるため、無視しても問題ありません。
 
 ## 関連項目
 
 [クラウド サービスのデバッグ](https://msdn.microsoft.com/library/ee405479.aspx)
 
-<!---HONumber=AcomDC_1223_2015-->
+<!---HONumber=AcomDC_0420_2016-->

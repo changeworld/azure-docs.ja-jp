@@ -39,19 +39,21 @@
 
 1. ログ エントリを取得するには、**Get-AzureRmLog** コマンドを実行します。**ResourceGroup** と **Status** パラメーターを使用して、単一のリソース グループの失敗したイベントのみを返すことができます。開始時間と終了時間を指定しない場合は、過去 1 時間のエントリが返されます。たとえば、過去 1 時間に失敗した操作を取得するには、次を実行します。
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
+        Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
 
     特定の期間を指定できます。次の例では、過去 14 日間に失敗したアクションを検索します。
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) -Status Failed
+        Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) -Status Failed
       
     または、失敗したアクションに対して、正確な開始時間と終了時間を設定できます。
 
-        PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00 -Status Failed
+        Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00 -Status Failed
 
 2. このコマンドで返されるエントリとプロパティの数が多すぎる場合、**Properties** プロパティを取得することで監査に集中できます。エラー メッセージを表示するには、**DetailedOutput** パラメーターも追加します。
 
-        PS C:\> (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties
+        (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties
+        
+    これにより、次の形式でログ エントリのプロパティが返されます。
         
         Content
         -------
@@ -61,7 +63,9 @@
 
 3. 特定の 1 つのエントリのステータス メッセージを確認して、結果をさらに絞り込むことができます。
 
-        PS C:\> (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json
+        (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json
+        
+    これにより、次の形式でステータス メッセージが返されます。
         
         Code       : Conflict
         Message    : Website with given name mysite already exists.
@@ -72,9 +76,11 @@
 
 ## デプロイ操作を使用してトラブルシューティングを行う
 
-1. **Get-AzureRmResourceGroupDeployment** コマンドを使用すると、デプロイ全体の状態を取得できます。失敗したデプロイのみの結果をフィルター処理することができます。
+1. **Get-AzureRmResourceGroupDeployment** コマンドを使用すると、デプロイ全体のステータスを取得できます。失敗したデプロイのみの結果をフィルター処理することができます。
 
-        PS C:\> Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
+        Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
+        
+    これにより、次の形式で失敗したデプロイが返されます。
         
         DeploymentName    : ExampleDeployment
         ResourceGroupName : ExampleGroup
@@ -95,7 +101,9 @@
 
 2. 通常、各デプロイメントは、それぞれの操作がデプロイメント処理の 1 手順を示す、複数の操作で構成されています。デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。操作の状態は、**Get-AzureRmResourceGroupDeploymentOperation** で確認できます。
 
-        PS C:\> Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment | Format-List
+        Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment | Format-List
+        
+    これにより、次の形式で操作が返されます。
         
         Id          : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/ExampleDeployment/operations/8518B32868A437C8
         OperationId : 8518B32868A437C8
@@ -105,7 +113,9 @@
 
 3. 操作に関する詳細を取得するには、**Properties** オブジェクトを取得します。
 
-        PS C:\> (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties
+        (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties
+        
+    これにより、次の形式で操作のプロパティが返されます。
         
         ProvisioningOperation : Create
         ProvisioningState     : Failed
@@ -120,7 +130,9 @@
 
 4. 失敗した操作のステータス メッセージに注目するには、次のコマンドを使用します。
 
-        PS C:\> ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage
+        ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage
+        
+    これにより、次の形式でステータス メッセージが返されます。
         
         Code       : Conflict
         Message    : Website with given name mysite already exists.
@@ -130,7 +142,7 @@
 
 ## 次のステップ
 
-- 他の種類のアクションを監視するために監査ログを使用する方法については、「[リソース マネージャーの監査操作](resource-group-audit.md)」を参照してください。
-- デプロイを実行する前に検証するには、「[Azure リソース マネージャーのテンプレートを使用してリソース グループをデプロイ](resource-group-template-deploy.md)」を参照してください。
+- 他の種類のアクションを監視するために監査ログを使用する方法については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
+- デプロイを実行する前に検証するには、「[Azure Resource Manager のテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

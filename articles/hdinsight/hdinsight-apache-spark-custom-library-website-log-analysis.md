@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="04/14/2016" 
 	ms.author="nitinme"/>
 
-# カスタム ライブラリを使用した HDInsight Spark でのログの分析 (Linux)
+# Linux で HDInsight Spark とカスタム ライブラリを使用して Web サイト ログを分析する (プレビュー)
 
 この Notebook では、HDInsight の Spark でカスタム ライブラリを使用してログ データを分析する方法を示します。使用するカスタム ライブラリは、**iislogparser.py** と呼ばれる Python ライブラリです。
 
@@ -244,4 +244,4 @@
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

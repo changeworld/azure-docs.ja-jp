@@ -14,17 +14,15 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="04/15/2016"
 	ms.author="cynthn"/>
 
 # Windows Server VHD の作成と Azure へのアップロード
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
-
-
 この記事では、イメージを使用してそのイメージを基にした仮想マシンを作成するための、オペレーティング システムの仮想ハード ディスク (VHD) をアップロードする方法について説明します。Microsoft Azure でのディスクと VHD の詳細については、「[Virtual Machines 用のディスクと VHD について](virtual-machines-linux-about-disks-vhds.md)」を参照してください。
 
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。Resource Manager モデルを使用して、仮想マシンを[キャプチャ](virtual-machines-windows-capture-image.md)および[アップロード](virtual-machines-windows-upload-image.md)することもできます。
 
 ## 前提条件
 
@@ -152,8 +150,8 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
 	各値の説明:
 	- **BlobStorageURL** は、ストレージ アカウントの URL です。
-	- **YourImagesFolder** は、イメージを格納する BLOB ストレージ内のコンテナーです。
-	- **VHDName** は、Azure クラシック ポータルに表示する仮想ハード ディスクを特定するための名前です。
+	- **YourImagesFolder** は、イメージを格納する Blob Storage 内のコンテナーです。
+	- **VHDName** は、Azure クラシック ポータルに表示する、仮想ハード ディスクを特定するための名前です。
 	- **PathToVHDFile** は、.vhd ファイルの完全なパスと名前です。
 
 	![PowerShell Add-AzureVHD](./media/virtual-machines-windows-classic-createupload-vhd/powershell_upload_vhd.png)
@@ -205,4 +203,4 @@ Add-AzureVhd コマンドレットの詳細については、[Add-AzureVhd に�
 [Step 3: Prepare the connection to Azure]: #prepAzure
 [Step 4: Upload the .vhd file]: #upload
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

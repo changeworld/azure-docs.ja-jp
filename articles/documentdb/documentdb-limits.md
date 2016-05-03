@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="04/18/2016" 
 	ms.author="arramac"/>
 
 
@@ -26,4 +26,4 @@
 
 アスタリスク (*) 付きで表示されているクォータは、[Azure サポートに問い合わせて調整できます](documentdb-increase-limits.md)。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

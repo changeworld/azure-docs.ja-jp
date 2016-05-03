@@ -3,7 +3,7 @@
 	description="リリース日、提供終了日、DocumentDB .NET SDK の各バージョン間の変更など、.NET SDK に関するあらゆる詳細を提供します。" 
 	services="documentdb" 
 	documentationCenter=".net" 
-	authors="ryancrawcour" 
+	authors="aliuy" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="04/18/2016" 
 	ms.author="rnagpal"/>
 
 # DocumentDB SDK
@@ -107,8 +107,7 @@
 - GA SDK
 
 > [AZURE.NOTE]
-プレビューと GA の間で NuGet パッケージ名の変更がありました。**Microsoft.Azure.Documents.Client** が **Microsoft.Azure.DocumentDB** になりました。
-<br/>
+プレビューと GA の間で NuGet パッケージ名の変更がありました。**Microsoft.Azure.Documents.Client** が **Microsoft.Azure.DocumentDB** になりました。 <br/>
 
 
 ### <a name="0.9.x-preview"/>[0\.9.x-preview](https://www.nuget.org/packages/Microsoft.Azure.Documents.Client)
@@ -142,7 +141,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | [1\.0.0](#1.0.0) | 2015 年 4 月 08 日 |---
 | [0\.9.3-prelease](#0.9.x-preview) | 2015 年 3 月 12 日 | 2016 年 2 月 29 日
 | [0\.9.2-prelease](#0.9.x-preview) | 2015 年 1 月 | 2016 年 2 月 29 日
-| [0\.9.1-prelease](#0.9.x-preview) | 2014 年 10 月 13 日| 2016 年 2 月 29 日
+| [0\.9.1-prelease](#0.9.x-preview) | 2014 年 10 月 13 日 | 2016 年 2 月 29 日
 | [0\.9.0-prelease](#0.9.x-preview) | 2014 年 8 月 21 日 | 2016 年 2 月 29 日|
 
 ## FAQ
@@ -152,4 +151,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

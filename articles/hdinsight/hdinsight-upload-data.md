@@ -62,6 +62,8 @@ Microsoft では、Azure BLOB ストレージを操作する次のユーティ�
 
 Azure CLI は、Azure サービスを管理できるクロスプラットフォーム ツールです。次の手順を使用して、Azure Blob ストレージにデータをアップロードします。
 
+[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+
 1. [Mac、Linux、Windows 用の Azure CLI をインストールして構成する](../xplat-cli-install.md)
 
 2. コマンド プロンプト、bash、その他のシェルを開き、次を使用して、Azure サブスクリプションを認証します。
@@ -103,6 +105,8 @@ Azure CLI は、Azure サービスを管理できるクロスプラットフォ�
 ###<a id="powershell"></a>Azure PowerShell
 
 Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できるスクリプティング環境です。ワークステーションを構成して Azure PowerShell を実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。
+
+[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
 
 **ローカル ファイルを Azure BLOB ストレージにアップロードするには**
 
@@ -278,4 +282,4 @@ Azure SDK のインストールの詳細については、[Azure のダウンロ
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

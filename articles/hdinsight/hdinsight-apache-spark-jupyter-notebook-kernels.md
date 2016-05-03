@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="04/14/2016" 
 	ms.author="nitinme"/>
 
 
-# HDInsight (Linux) の Spark クラスターと Jupyter Notebook で使用可能なカーネル
+# HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル (プレビュー)
 
-HDInsight (Linux) の Apache Spark クラスターには、アプリケーションのテストに使用できる Jupyter Notebook が含まれています。既定では、Jupyter Notebook には **Python2** カーネルが付属しています。カーネルは、コードを実行し、解釈するプログラムです。HDInsight の Spark クラスターには、Jupyter Notebook で使用できる 2 つの追加のカーネルが用意されています。次のとおりです。
+HDInsight (Linux) の Apache Spark クラスターには、アプリケーションのテストに使用できる Jupyter Notebook が含まれています。カーネルは、コードを実行し、解釈するプログラムです。HDInsight の Spark クラスターには、Jupyter Notebook で使用できる 2 つのカーネルが用意されています。次のとおりです。
 
 1. **PySpark** (Python で記述されたアプリケーション用)
 2. **Spark** (Scala で記述されたアプリケーション用)
@@ -50,11 +50,11 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 
 3. 選択したカーネルで、新しい Notebook が開かれます。
 
-## 新しいカーネルを使用する理由
+## PySpark または Spark カーネルを使用する理由
 
 新しいカーネルを使用すると、いくつかの利点があります。
 
-1. **コンテキストのプリセット**。Jupyter Notebook で利用できる既定の **Python2** カーネルでは、開発しているアプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要があります。新しいカーネル (**PySpark** または **Spark**) を使用する場合は、これらのコンテキストが既定で利用可能です。各コンテキストは次のとおりです。
+1. **コンテキストのプリセット**。Jupyter Notebook で提供される **PySpark** または **Spark** カーネルでは、開発しているアプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。これらのカーネルは、既定で利用できます。各コンテキストは次のとおりです。
 
 	* **sc**: Spark コンテキスト用
 	* **sqlContext**: Hive コンテキスト用
@@ -70,7 +70,7 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 
 	代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
 	
-2. **セル マジック**。PySpark カーネルには、"魔法"、つまり、`%%` で呼び出せる特別なコマンドがいくつか事前定義されています (`%%MAGIC` <args> など)。このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。魔法の単語はセルの最初の単語にする必要があります。その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。マジックの詳細については、[こちら](http://ipython.readthedocs.org/en/stable/interactive/magics.html)をご覧ください。
+2. **セル マジック**。PySpark カーネルには、"マジック"、つまり、`%%` で呼び出すことができる特別なコマンドがいくつか事前定義されています (`%%MAGIC` <args> など)。このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。魔法の単語はセルの最初の単語にする必要があります。その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。マジックの詳細については、[こちら](http://ipython.readthedocs.org/en/stable/interactive/magics.html)を参照してください。
 
 	次の表は、カーネルで使用できるさまざまなマジックを一覧にしたものです。
 
@@ -78,7 +78,7 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 	|-----------|---------------------------------|--------------|
 	| help | `%%help` | 利用できるすべてのマジック、その例と説明から構成されるテーブルを生成します。 |
 	| info | `%%info` | 現在の Livy エンドポイントのセッション情報を出力します。 |
-	| configure | `%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} | セッションを作成するためのパラメーターを構成します。セッションが既に作成されているとき、セッションが削除され、再作成される場合、強制フラグ (-f) は必須です。有効なパラメーターの一覧は、「[Livy の POST /セッション要求本文](https://github.com/cloudera/livy#request-body)」にあります。例の列で示されているように、パラメーターは JSON 文字列として渡し、マジックの後の次の行に置く必要があります。 |
+	| configure | `%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} | セッションを作成するためのパラメーターを構成します。セッションが既に作成されているとき、セッションが削除され、再作成される場合、強制フラグ (-f) は必須です。有効なパラメーターの一覧については、[Livy の「POST /sessions」の「Request Body (要求本文)」](https://github.com/cloudera/livy#request-body)を参照してください。例の列で示されているように、パラメーターは JSON 文字列として渡し、マジックの後の次の行に置く必要があります。 |
 	| sql | `%%sql -o <variable name>`<br> `SHOW TABLES` | sqlContext に対して Hive クエリを実行します。`-o` パラメーターが渡される場合、クエリの結果は、[Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化されます。 |
 	| local | `%%local`<br>`a=1` | 後続行のすべてのコードがローカルで実行されます。コードは有効な Python コードにする必要があります。 |
 	| ログ | `%%logs` | 現在の Livy セッションのログを出力します。 |
@@ -94,9 +94,9 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 | パラメーター | 例 | 説明 |
 |-----------|---------------------------------|--------------|
 | -o | `-o <VARIABLE NAME>` | クエリの結果を [Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化するには、このパラメーターを使用します。データ フレーム変数の名前は、指定した変数の名前です。 |
-| パラメーター | `-q` | セルの視覚化をオフにするには、これを使用します。セルのコンテンツを自動的に視覚化せず、単にデータ フレームとしてキャプチャする場合は、`-q -o <VARIABLE>` を使用します。結果をキャプチャせずに、視覚化をオフにする必要がある場合 (たとえば `CREATE TABLE` ステートメントのような、副次的作用のある SQL クエリを実行するため)、 `-o` 引数を指定せずに `-q` を使用します。 |
+| パラメーター | `-q` | セルの視覚化をオフにするには、これを使用します。セルのコンテンツを自動的に視覚化せず、単にデータ フレームとしてキャプチャする場合は、`-q -o <VARIABLE>` を使用します。(たとえば、`CREATE TABLE` ステートメントのような、副次的作用のある SQL クエリを実行するために) 結果をキャプチャせずに、視覚化をオフにする必要がある場合、`-o` 引数を指定せずに `-q` を使用します。 |
 | -m | `-m <METHOD>` | ここで **METHOD** は **take** または **sample** です (既定値は **take**)。メソッドが **take** の場合、カーネルによって、MAXROWS (この表で後述) で指定された結果のデータ セットの先頭から要素が取得されます。メソッドが **sample** の場合、カーネルによって、この表の次に説明する `-r` パラメーターに従って、データ セットの要素がランダムにサンプリングされます。 |
-| -r | `-r <FRACTION>` | ここで **FRACTION** は、0.0 ~ 1.0 の浮動小数点数です。SQL クエリのサンプル メソッドが `sample` の場合、カーネルによって、設定された結果セットの要素の指定された比率がランダムにサンプリングされます。たとえば、引数 `-m sample -r 0.01` を使用して SQL クエリを実行する場合、結果の行の 1% がランダムにサンプリングされます。 |
+| -r | `-r <FRACTION>` | ここで **FRACTION** は、0.0 ～ 1.0 の浮動小数点数です。SQL クエリのサンプル メソッドが `sample` の場合、カーネルによって、結果セットの要素の指定された比率がランダムにサンプリングされます。たとえば、引数 `-m sample -r 0.01` を使用して SQL クエリを実行した場合、結果の行の 1% がランダムにサンプリングされます。 |
 | -n | `-n <MAXROWS>` | **MAXROWS** は整数値です。カーネルによって、出力行の数が **MAXROWS** に制限されます。**MAXROWS** が **-1** など、負の数の場合は、結果セット内の行数は制限されません。 |
 
 **例:**
@@ -108,15 +108,13 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 
 * **hivesampletable** からすべてのレコードを選択します。
 * -q を使用しているため、自動視覚化をオフにします。
-* `-m sample -r 0.1 -n 500` を使用しているため、hivesampletable 内の行の 10% をランダムにサンプリングし、結果セットのサイズを 500 行に制限します。
-* 最後に、`-o query2` を使用しているため、**query2** と呼ばれるデータフレームにも、その出力を保存します。
+* `-m sample -r 0.1 -n 500` を使用しているため、hivesampletable 内の行の 10% がランダムにサンプリングされ、結果セットのサイズが 500 行に制限されます。
+* 最後に、`-o query2` を使用しているため、**query2** という名前のデータフレームにも、その出力が保存されます。
 	
 
 ## 新しいカーネルを使用する場合の考慮事項
 
-使用するカーネルが Python2、PySpark、Spark のいずれであっても、Notebook を実行したままにしておくと、クラスターのリソースが消費されます。Python2 Notebook では、コンテキストを明示的に作成するため、アプリケーションの終了時にコンテキストも強制終了させることができます。
-
-しかし、PySpark と Spark カーネルでは、コンテキストが事前設定されているため、コンテキストを明示的に終了させることができません。そのため、Notebook を単に終了しただけでは、コンテキストが実行され続け、クラスター リソースも使用されたままになります。PySpark および Spark カーネルでは、Notebook の **[ファイル]** メニューで **[閉じて停止]** オプションを使用することをお勧めします。これにより、コンテキストが強制終了され、Notebook が終了されます。
+使用するカーネルが PySpark と Spark のどちらであっても、Notebook を実行したままにしておくと、クラスターのリソースが消費されます。これらのカーネルでは、コンテキストがプリセットされているため、Notebook を終了するだけではコンテキストは強制終了されません。そのため、クラスターのリソースは消費され続けます。PySpark および Spark カーネルでは、Notebook の **[ファイル]** メニューで **[閉じて停止]** オプションを使用することをお勧めします。これにより、コンテキストが強制終了され、Notebook が終了されます。
 
 
 ## いくつかの例
@@ -130,7 +128,7 @@ Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つの�
 
 ## Notebook の格納場所
 
-Jupyter Notebook は、**/HdiNotebooks** フォルダー下にあるクラスターに関連付けられたストレージ アカウントに保存されます。Notebook、テキスト ファイル、および Jupyter 内から作成したフォルダーには、WASB からアクセスできます。たとえば、Jupyter を使用してフォルダー **myfolder** と Notebook **myfolder/mynotebook.ipynb** を作成する場合、`wasb:///HdiNotebooks/myfolder/mynotebook.ipynb` でその Notebook にアクセスできます。逆の場合も同様です。つまり、Notebook を `/HdiNotebooks/mynotebook1.ipynb` にある自分のストレージ アカウントに直接アップロードする場合、Jupyter からも Notebook を表示することができます。Notebook は、クラスターが削除された後でも、ストレージ アカウントに保持されます。
+Jupyter Notebook は、クラスターに関連付けられたストレージ アカウントの **/HdiNotebooks** フォルダーに保存されます。Notebook、テキスト ファイル、および Jupyter 内から作成したフォルダーには、WASB からアクセスできます。たとえば、Jupyter を使用してフォルダー **myfolder** と Notebook **myfolder/mynotebook.ipynb** を作成した場合、`wasb:///HdiNotebooks/myfolder/mynotebook.ipynb` でその Notebook にアクセスできます。逆の場合も同様です。つまり、Notebook を自分のストレージ アカウントの `/HdiNotebooks/mynotebook1.ipynb` に直接アップロードした場合、Jupyter からもその Notebook を表示することができます。Notebook は、クラスターが削除された後でも、ストレージ アカウントに保持されます。
 
 Notebook がストレージ アカウントに保存される方法は、HDFS と互換性があります。そのため、クラスターに SSH で接続すると、次のようなファイル管理コマンドを使用できます。
 
@@ -139,7 +137,7 @@ Notebook がストレージ アカウントに保存される方法は、HDFS �
 	hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
 
-クラスターのストレージ アカウントへのアクセスに問題がある場合のために、Notebook はヘッドノード `/var/lib/jupyter` にも保存されます。
+クラスターのストレージ アカウントへのアクセスに問題がある場合のために、Notebook はヘッド ノード `/var/lib/jupyter` にも保存されます。
 
 ## サポートされているブラウザー
 HDInsight の Spark クラスターに対して実行される Jupyter Notebook は、Google Chrome でのみサポートされます。
@@ -182,4 +180,4 @@ HDInsight の Spark クラスターに対して実行される Jupyter Notebook 
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

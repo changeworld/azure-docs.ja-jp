@@ -36,12 +36,9 @@ Linux または OS X で SSH トンネルを作成するにはまず、負荷分
 
 **PORT** は、公開するエンドポイントのポートです。Swarm の場合は 2375 です。DC/OS の場合、ポート 80 を使用します。**USERNAME** は、クラスターのデプロイ時に指定したユーザー名です。**DNSPREFIX** は、クラスターのデプロイ時に指定した DNS 接頭辞です。**REGION** は、リソース グループが置かれているリージョンです。
 
-> SSH 接続ポートは、標準の 22 ではなく 2200 です。
-
 ```bash
 # ssh sample
-
-ssh -L PORT:localhost:PORT -N [USERNAME]@[DNSPREFIX]man.[REGION].cloudapp.azure.com -p 2200
+ssh -L PORT:localhost:PORT -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
 ```
 
 ### DC/OS トンネル
@@ -84,11 +81,11 @@ Windows では、さまざまな方法で SSH トンネルを作成できます�
 
 Windows システムに PuTTY をダウンロードし、実行します。
 
-ホスト名を入力します。ホスト名は、クラスター管理者のユーザー名とクラスターの第 1 マスターのパブリック DNS 名で構成されます。**ホスト名**は `adminuser@PublicDNS` のようになります。**ポート**に 2200 を入力します。
+ホスト名を入力します。ホスト名は、クラスター管理者のユーザー名とクラスターの第 1 マスターのパブリック DNS 名で構成されます。**ホスト名**は `adminuser@PublicDNS` のようになります。**[ポート]**に「2200」と入力します。
 
 ![PuTTY configuration 1](media/putty1.png)
 
-`SSH` と `Authentication` を選択し、認証のためにプライベート キー ファイルを追加します。
+`SSH` と `Authentication` を選択します。認証のためにプライベート キー ファイルを追加します。
 
 ![PuTTY configuration 2](media/putty2.png)
 
@@ -120,4 +117,4 @@ Docker Swarm のトンネルを構成したら、Docker CLI から Swarm クラ�
 
 [REST API を使用したコンテナー管理](./container-service-mesos-marathon-rest.md) [Working with the Azure Container Service and Docker Swarm (Azure コンテナー サービスと Docker Swarm の使用)](./container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

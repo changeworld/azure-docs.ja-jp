@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="01/30/2016"
+   ms.date="04/19/2016"
    ms.author="tarcher" />
 
 # 方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行
@@ -45,7 +45,7 @@ Visual Studio から Azure に Web アプリケーションを移行および発
 
     - MVC 2、MVC 3、MVC 4、Silverlight の各ビジネス アプリケーションに必要なアセンブリの **[ローカルにコピー]** プロパティが true に設定されます。これにより、デプロイメントに使用されるサービス パッケージにこれらのアセンブリが追加されます。
 
-  >[AZURE.IMPORTANT] この Web アプリケーションに必要な他のアセンブリまたはファイルがある場合は、それらのファイルのプロパティを手動で設定する必要があります。これらのプロパティを設定する方法については、この記事で後述する「**サービス パッケージにファイルを含める**」を参照してください。
+  >[AZURE.IMPORTANT]この Web アプリケーションに必要な他のアセンブリまたはファイルがある場合は、それらのファイルのプロパティを手動で設定する必要があります。これらのプロパティを設定する方法については、この記事で後述する「**サービス パッケージにファイルを含める**」を参照してください。  
 
   >[AZURE.NOTE] 特定の Web プロジェクトの Web ロールがソリューションの Azure プロジェクトに既に存在する場合、この Web プロジェクトのショートカット メニューに **[変換]** - **[Microsoft Azure クラウド サービス プロジェクトに変換]** は表示されません。
 
@@ -208,4 +208,4 @@ Azure に Web アプリケーションを発行するには、次の表に記載
 ## 次のステップ
 発行の詳細については、「[Visual Studio からの Azure アプリケーションの発行またはデプロイの準備](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)」を参照してください。また、「[名前付き認証資格情報の設定](vs-azure-tools-setting-up-named-authentication-credentials.md)」も確認してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

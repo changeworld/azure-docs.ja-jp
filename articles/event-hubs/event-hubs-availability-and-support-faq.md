@@ -1,45 +1,45 @@
 <properties 
-   pageTitle="Event Hubs の可用性とサポート | Microsoft Azure"
-   description="Event Hubs の可用性とサポートに関する FAQ"
-   services="event-hubs"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" />
+    pageTitle="Event Hubs の可用性とサポート | Microsoft Azure"
+    description="Event Hubs の可用性とサポートに関する FAQ"
+    services="event-hubs"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="event-hubs"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="01/26/2016"
-   ms.author="sethm" />
+    ms.service="event-hubs"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="04/14/2016"
+    ms.author="sethm" />
 
 # Event Hubs の可用性とサポートに関する FAQ
 
-Event Hubs は、高スループット データ ソースや百万単位のデバイスからのデータ イベントの大規模な取り込み、保存、および処理を実行します。Service Bus キューおよびトピックと組み合わせると、Event Hubs は、あらゆるものをインターネット化するための持続的なコマンドと制御をデプロイできます。
+Event Hubs は、高スループット データ ソースや百万単位のデバイスからのデータ イベントの大規模な取り込み、保存、および処理を実行します。Event Hubs を Service Bus キューおよびトピックと組み合わせると、[モノのインターネット (IoT)](https://azure.microsoft.com/services/iot-hub/) のシナリオ向けの持続的なコマンドと制御のデプロイが可能になります。
 
-この記事では、可用性の情報について説明し、いくつかのよく寄せられる質問に回答します。
+この記事では、Event Hubs の可用性の情報について説明し、いくつかのよく寄せられる質問に回答します。
 
 ## 料金情報
 
 Event Hubs 料金の詳細については、「[Event Hubs 料金](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
-## Event Hubs のイングレス イベントはどのように計算されますか。
+## Event Hubs の受信イベントはどのように計算されますか。
 
-Event Hubs に送信されたイベントは、それぞれが課金対象メッセージとしてカウントされます。1 つの*イングレス イベント*は 64 KB 以下の単位のデータと定義されます。サイズが 64 KB 以下のイベントは、1 つの課金対象イベントとみなされます。イベントが 64 KB よりも大きい場合、課金対象イベントの数はイベント サイズに従って計算され、64 KB の倍数になります。たとえば、Event Hub に送信された 8 KB のイベントは 1 つのイベントとして課金されますが、Event Hub に送信された 96 KB のメッセージは 2 つのイベントとして課金されます。
+Event Hubs に送信されたイベントは、それぞれが課金対象メッセージとしてカウントされます。1 つの*受信イベント*は 64 KB 以下の単位のデータと定義されます。サイズが 64 KB 以下のイベントは、1 つの課金対象イベントとみなされます。イベントが 64 KB よりも大きい場合、課金対象イベントの数はイベント サイズに従って計算され、64 KB の倍数になります。たとえば、Event Hub に送信された 8 KB のイベントは 1 つのイベントとして課金されますが、Event Hub に送信された 96 KB のメッセージは 2 つのイベントとして課金されます。
 
-Event Hub や管理操作、チェックポイントなどの制御呼び出しで使用されるイベントは、課金対象イングレス イベントとしてはカウントされませんが、スループット単位の上限まで蓄積されます。
+Event Hub や管理操作、チェックポイントなどの制御呼び出しで使用されるイベントは、課金対象受信イベントとしてはカウントされませんが、スループット単位の上限まで蓄積されます。
 
 ## Event Hubs のスループット単位とは何ですか。
 
 Event Hubs のスループット単位は、Azure クラシック ポータルまたは Event Hubs 管理 API によってユーザーが明示的に選択します。スループット単位は Service Bus 名前空間のすべての Event Hubs に適用され、それぞれのスループット単位はその名前空間に次の使用許可を与えます。
 
-- 最大 1 MB/秒のイングレスイベント (Event Hub に送信されるイベント)。ただし、1 秒あたり 1000 個未満の受信イベント、管理操作、または制御 API 呼び出し。
+- 最大 1 MB/秒の受信イベント (Event Hub に送信されるイベント)。ただし、1 秒あたり 1000 個未満の受信イベント、管理操作、または制御 API 呼び出し。
 
 - 最大 2 MB/秒の送信イベント (Event Hub から使用されるイベント)。
 
-- 最大 84 GB のイベント ストレージ (既定の 24 時間のリテンション期間に対応できる十分なストレージ)。
+- 最大 84 GB のイベント ストレージ (既定の 24 時間の保持期間に対応できる十分なストレージ)。
 
 Event Hubs のスループット単位は、特定の時間に選択された単位の最大数に基づいて時間単位で課金されます。
 
@@ -65,7 +65,7 @@ Event Hubs Standard レベルでは、現在最大 7 日間のリテンション
 
 ## Event Hubs のストレージ サイズはどのように計算され、課金されますか。
 
-保存されたすべてのイベントの合計サイズは、すべての Event Hubs のイベント ヘッダーまたはディスク ストレージ構造の内部オーバーヘッドを含めて、1 日中測定されます。1 日の終わりに、ピーク ストレージ サイズが計算されます。1 日あたりのストレージの上限は、その日に選択されたスループット単位の最小数に基づいて計算されます (それぞれのスループット単位には 84 GB の上限が与えらえます)。合計サイズが計算された 1 日あたりのストレージの上限を超過した場合は、超過したストレージが、Azure Blob ストレージ レート (**ローカル冗長ストレージ (LRS)**) を使用して課金されます。
+保存されたすべてのイベントの合計サイズは、すべての Event Hubs のイベント ヘッダーまたはディスク ストレージ構造の内部オーバーヘッドを含めて、1 日中測定されます。1 日の終わりに、ピーク ストレージ サイズが計算されます。1 日あたりのストレージの上限は、その日に選択されたスループット単位の最小数に基づいて計算されます (それぞれのスループット単位には 84 GB の上限が与えらえます)。合計サイズが計算された 1 日あたりのストレージの上限を超過した場合は、超過したストレージが、Azure Blob ストレージ レート (**Locally Redundant Storage (LRS)**) を使用して課金されます。
 
 ## 単一の AMQP 接続を使用して、Event Hubs と Service Bus のキュー/トピック間で送受信を実行できますか。
 
@@ -73,13 +73,13 @@ Event Hubs Standard レベルでは、現在最大 7 日間のリテンション
 
 ## 仲介型接続料金は Event Hubs に適用されますか。
 
-送信側では、接続料金は AMQP プロトコルが使用される場合にのみ適用されます。送信側システムまたはデバイスの数に関係なく、HTTP を使用したベントの送信には接続料金は発生しません。AMQP を使用する場合 (たとえば、イベント ストリーミングの効率を高めたり、あらゆるものをインターネット化するためのコマンドや制御を行うための双方向通信を可能にする場合) は、「[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)」ページの仲介型接続の構成とその測定方法に関する情報を参照してください。
+送信側では、接続料金は AMQP プロトコルが使用される場合にのみ適用されます。送信側システムまたはデバイスの数に関係なく、HTTP を使用したベントの送信には接続料金は発生しません。AMQP を使用する場合 (たとえば、イベント ストリーミングの効率を高めたり、IoT のコマンドと制御のシナリオで双方向通信を可能にする場合) は、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」ページの仲介型接続の構成とその測定方法に関する情報を参照してください。
 
 ## Event Hubs の Basic レベルと Standard レベルは何が違いますか。
 
-Event Hubs の Standard レベルは、Basic レベルはもちろん、いくつかの競合システムよりも多くの機能を提供します。これらの機能には、24 時間を超えるリテンション期間と単一の AMQP 接続を使用する機能が含まれ、AMQP 接続では、1 秒未満の遅延時間で多数のデバイスにコマンドを送信でき、デバイスから Event Hubs にテレメトリを送信できます。機能の一覧については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
+Event Hubs の Standard レベルは、Basic レベルはもちろん、いくつかの競合システムよりも多くの機能を提供します。これらの機能には、24 時間を超えるリテンション期間と単一の AMQP 接続を使用する機能が含まれ、AMQP 接続では、1 秒未満の遅延時間で多数のデバイスにコマンドを送信でき、デバイスから Event Hubs にテレメトリを送信できます。機能の一覧については、[Event Hubs の価格の詳細](https://azure.microsoft.com/pricing/details/event-hubs/)を参照してください。
 
-## 地理的な可用性
+## ご利用可能な地域
 
 Event Hubs は、次のリージョンで利用できます。
 
@@ -102,12 +102,12 @@ SLA の詳細については、「[サービス レベル アグリーメント]
 
 Event Hubs の詳細については、次の記事を参照してください。
 
-- [Event Hubs の概要]
-- [Event Hubs を使用する完全なサンプル アプリケーション]
-- Service Bus キューを使用する[キューに格納されたメッセージング ソリューション]
+- [Event Hubs の概要][]
+- [Event Hubs を使用する完全なサンプル アプリケーション][]
+- Service Bus キューを使用する[キューに格納されたメッセージング ソリューション][]
 
 [Event Hubs の概要]: event-hubs-overview.md
 [Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

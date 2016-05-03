@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/16/2015"
+	ms.date="04/15/2016"
 	ms.author="cynthn"/>
 
-# クラシック デプロイ モデルで作成された Azure Virtual Machines についてよく寄せられる質問
+# クラシック デプロイ モデルで作成された Azure 仮想マシンについてよく寄せられる質問
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 [AZURE.INCLUDE [virtual-machines-common-classic-faq](../../includes/virtual-machines-common-classic-faq.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

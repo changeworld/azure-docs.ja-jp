@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="visual-studio-online"
-   ms.date="12/16/2015"
+   ms.date="04/18/2016"
    ms.author="tarcher" />
 
 # Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する 
@@ -79,4 +79,4 @@ Azure Active Directory (Azure AD) を使用し、ASP.NET MVC Web アプリケー
 
  - [ブログの投稿: Azure AD の概要](http://blogs.msdn.com/b/brunoterkaly/archive/2014/03/03/introduction-to-windows-azure-active-directory.aspx)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0420_2016-->

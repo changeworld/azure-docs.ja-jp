@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/29/2016"
+   ms.date="04/19/2016"
    ms.author="larryfr"/>
 
 #Ambari REST API を使用した HDInsight クラスターの管理
@@ -29,6 +29,9 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 
 * [cURL](http://curl.haxx.se/): cURL は、コマンドラインから REST API を操作するためのクロスプラットフォーム ユーティリティです。このドキュメントでは、Ambari REST API との通信にこれを使用しています。
 * [jq](https://stedolan.github.io/jq/): jq は、JSON ドキュメントを操作するためのクロスプラットフォームのコマンドライン ユーティリティです。このドキュメントでは、Ambari REST API から返される JSON ドキュメントの解析にこれを使用しています。
+* [Azure CLI](../xplat-cli-install.md): Azure サービスを操作するためのクロスプラットフォームのコマンドライン ユーティリティです。
+
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ##<a id="whatis"></a>Ambari とは
 
@@ -111,7 +114,7 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
 
     wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net
 
-この情報を [Azure CLI](../xplat-cli-install.md) で使用して、コンテナーとの間でデータのアップロードまたはダウンロードを行うことができます。次に例を示します。
+この情報を [Azure CLI](../xplat-cli-install.md) で使用して、コンテナーとの間でデータのアップロードまたはダウンロードを行うことができます。
 
 1. ストレージ アカウントのリソース グループを取得します。__ACCOUNTNAME__ を、Ambari から取得したストレージ アカウント名に置き換えてください。
 
@@ -171,7 +174,7 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
     
     * 文字列 "version" と __newtag__ に保存されている日付を含む一意の値が作成されます。
     * 新しい望ましい構成のルート ドキュメントが作成されます。
-    * .items array のコンテンツが取得され、__desired\_config__ 要素の下でそれが追加されます。
+    * .items 配列のコンテンツが取得され、__desired\_config__ 要素の下に追加されます。
     * 新しい構成の送信で必要ないため、__href__、__version__、__Config__ 要素が削除されます。
     * 新しい __tag__ 要素が追加され、その値が __version#################__ に設定されます。数値部分は現在の日付に基づきます。構成ごとに一意のタグを与える必要があります。
     
@@ -206,7 +209,7 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
 
 ###例: サービス コンポーネントの再起動
 
-この時点で Ambari Web UI に、新しい構成を有効にするには Spark サービスを再起動する必要がある旨が表示されます。次の手順でサービスを再起動します。注意深く見ると、次の指示があります。
+この時点で Ambari Web UI に、新しい構成を有効にするには Spark サービスを再起動する必要がある旨が表示されます。次の手順でサービスを再起動します。
 
 1. 次を利用し、Spark サービスのメンテナンス モードを有効にします。
 
@@ -236,7 +239,7 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
     
         curl -u admin:PASSWORD -H "X-Requested-By: ambari" "https://CLUSTERNAME/api/v1/clusters/CLUSTERNAME/requests/29" | jq .Requests.request_status
     
-    この値が `"COMPLETED"` を返す場合、要求は完了しています。
+    この値が `"COMPLETED"` を返した場合、要求は完了しています。
 
 4. 前の要求が完了したら、次を利用し、サービスを開始します。
 
@@ -254,4 +257,4 @@ REST API の完全なリファレンスについては、「[Ambari API リフ�
 
 > [AZURE.NOTE] HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています (クラスターに対するホストの追加や削除、新規サービスの追加など)。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

@@ -19,7 +19,7 @@
 
 # Azure ポータルで Windows VM にデータ ディスクを接続する方法
 
-この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。[Azure ポータルで Linux VM にデータ ディスクを接続する](virtual-machines-linux-attach-disk-portal.md)こともできます。接続する前に、次のヒントを確認してください。
+この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Windows 仮想マシンに接続する方法について示します。[Azure ポータルで Linux VM にデータ ディスクを接続する](virtual-machines-linux-attach-disk-portal.md)こともできます。接続する前に、次のヒントを確認してください。
 
 - 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。詳細については、「[仮想マシンのサイズ](virtual-machines-windows-sizes.md)」を参照してください。
 - Premium Storage を使用するには、DS シリーズまたは GS シリーズの仮想マシンが必要です。これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。Premium Storage は特定のリージョンで使用できます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
@@ -31,7 +31,7 @@
 
 ## <a id="initializeinWS"></a>方法: Windows Server で新しいデータ ディスクを初期化する
 
-1. 仮想マシンへの接続詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-windows-log-on.md)」を参照してください。
+1. 仮想マシンへの接続手順については、「[Windows Server が実行されている Azure 仮想マシンに接続してログオンする方法](virtual-machines-windows-connect-logon.md)」を参照してください。
 
 2. 仮想マシンにログオンした後、**サーバー マネージャー**を開きます。左側のウィンドウで、**[ファイル サービスと記憶域サービス]** を選択します。
 
@@ -55,4 +55,4 @@
 
 アプリケーションで D: ドライブを使用してデータを保存する必要がある場合は、[Windows 一時ディスクのドライブ文字を変更](virtual-machines-windows-classic-change-drive-letter.md)できます。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

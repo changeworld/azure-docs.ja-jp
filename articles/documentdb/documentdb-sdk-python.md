@@ -3,7 +3,7 @@
 	description="リリース日、提供終了日、DocumentDB Python SDK の各バージョン間の変更など、Python SDK に関するあらゆる詳細を提供します。" 
 	services="documentdb" 
 	documentationCenter="python" 
-	authors="ryancrawcour" 
+	authors="aliuy" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="04/18/2016" 
 	ms.author="rnagpal"/>
 
 # DocumentDB SDK
@@ -75,7 +75,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| バージョン | リリース日 | 提供終了日
+| バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
 | [1\.6.1](#1.6.1) | 2016 年 4 月 08 日 |---
 | [1\.6.0](#1.6.0) | 2016 年 3 月 29 日 |---
@@ -99,4 +99,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

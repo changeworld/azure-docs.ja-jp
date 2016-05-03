@@ -1,7 +1,7 @@
 <properties
    pageTitle="Azure Service Fabric のエンティティの正常性の集計を確認する方法 | Microsoft Azure"
    description="正常性クエリと一般クエリを通じて、Azure Service Fabric のエンティティの正常性の集計をクエリ、表示、評価する方法について説明します。"
-   services="service-fabric"HealthManager
+   services="service-fabric"
    documentationCenter=".net"
    authors="oanapl"
    manager="timlt"
@@ -1132,4 +1132,4 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

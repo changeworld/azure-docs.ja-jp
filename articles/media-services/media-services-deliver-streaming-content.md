@@ -2,7 +2,7 @@
 	pageTitle="Media Services からストリーミング コンテンツを配信する方法" 
 	description="ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
 	documentationCenter=""/>
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-  ms.date="02/03/2016"
+	ms.date="04/18/2016"
 	ms.author="juliako"/>
 
 
 #方法: ストリーミング コンテンツを配信する
  
 > [AZURE.SELECTOR]
-- [REST](media-services-rest-deliver-streaming-content.md)
+- [REST ()](media-services-rest-deliver-streaming-content.md)
 - [.NET](media-services-deliver-streaming-content.md)
-- [Portal](media-services-manage-content.md#publish)
+- [ポータル](media-services-manage-content.md#publish)
 
 ##概要
 
@@ -171,4 +171,4 @@
 
 [資産をダウンロードする](media-services-deliver-asset-download.md)[資産配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0420_2016-->

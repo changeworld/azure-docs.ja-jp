@@ -4,7 +4,7 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags
    ms.service="expressroute"
@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/16/2016"
+   ms.date="04/18/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute QoS の要件
@@ -21,7 +21,7 @@ Skype for Business には、特化した QoS 処理を必要とするさまざ�
 
 ![](./media/expressroute-qos/expressroute-qos.png)
 
-**注記:** QoS 要件は Microsoft ピアリングにのみ適用されます。
+>[AZURE.NOTE] QoS 要件は Microsoft ピアリングにのみ適用されます。
 
 次の表は、Skype for Business で使用される DSCP マーキングを一覧にしたものです。詳細については、「[Skype for Business の QoS の管理](https://technet.microsoft.com/library/gg405409.aspx)」を参照してください。
 
@@ -50,4 +50,4 @@ Skype for Business には、特化した QoS 処理を必要とするさまざ�
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0427_2016-->

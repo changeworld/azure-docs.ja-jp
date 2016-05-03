@@ -82,7 +82,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
           /* Engagement configuration. */
           EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
 
-          /* Connection string for my Windows Store App. */
+          /* Set the Engagement connection string. */
           engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
 
           /* Initialize Engagement angent with above configuration. */
@@ -283,4 +283,4 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 [NuGet website]: http://docs.nuget.org/docs/start-here/overview
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0420_2016-->

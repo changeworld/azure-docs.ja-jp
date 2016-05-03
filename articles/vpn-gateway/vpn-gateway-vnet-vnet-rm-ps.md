@@ -453,7 +453,7 @@ Azure ポータルで VPN 接続を確認するには、**[仮想ネットワー
 
 		$vnet5     = Get-AzureRmVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5
 		$subnet5   = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet5
-		$gwipconf5 = New-AzureRmVirtualNetworkGatewayIpConfig 
+		$gwipconf5 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName5 -Subnet $subnet5 -PublicIpAddress $gwpip5
 
 8. TestVNet5 ゲートウェイを作成する
 
@@ -530,4 +530,4 @@ Azure ポータルで VPN 接続を確認するには、**[仮想ネットワー
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

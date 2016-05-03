@@ -12,63 +12,55 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/16/2016"
+   ms.date="04/19/2016"
    ms.author="cherylmc"/>
 
 
-# ExpressRoute の前提条件   
+# ExpressRoute の前提条件とチェック リスト  
 
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、以下のセクションにある前提条件を満たしていることを確認する必要があります。
 
-## アカウントの要件
+## Azure アカウント
 
 - 有効でアクティブな Microsoft Azure アカウント。これは ExpressRoute 回線のセットアップに必要です。ExpressRoute 回線は Azure サブスクリプション内のリソースです。Azure サブスクリプションは、Office 365 や CRM Online など、非 Azure Microsoft クラウド サービスに接続が制限される場合でも、要件となります。
 - アクティブな Office 365 サブスクリプション (Office 365 サービスを利用する場合)。詳細については、この記事の「[Office 365 固有の要件](#office-365-specific-requirements)」セクションを参照してください。
 
-## 接続プロバイダーの関係
+## 接続プロバイダー
+- [ExpressRoute 接続パートナー](expressroute-locations.md#partners)と連携して Microsoft クラウドに接続することができます。[3 とおりの方法](expressroute-introduction.md#howtoconnect)でオンプレミス ネットワークと Microsoft の間に接続をセットアップできます。 
+- プロバイダーが ExpressRoute 接続パートナーではない場合でも、[クラウド エクスチェンジ プロバイダー](expressroute-locations.md#nonpartners)を通じて Microsoft クラウドに接続できます。
 
-- サポート対象一覧に記載されている接続プロバイダーとの関係。この接続プロバイダーによる接続を円滑にする必要があります。接続プロバイダーとの間にビジネス関係が存在する必要があります。その接続プロバイダーにより与えられるサービスが ExpressRoute に対応していることを確認する必要があります。
-- サポート対象一覧にない接続プロバイダーを使用する場合でも、Exchange を利用して Microsoft クラウド サービスへの接続を作成できます。
-	- その接続プロバイダーがサポート対象一覧の Exchange の場所に存在するかどうかを確認します。
-	- 選択した Exchange の場所までネットワークを拡張するように接続プロバイダーに依頼します。
-	- 接続プロバイダーとしてその Exchange で ExpressRoute 回線を要求します。
+## ネットワークの要件
+- **接続の冗長性**: プロバイダーとの物理接続に対する冗長性の要件はありません。Microsoft の要件では、[クラウド エクスチェンジへの物理接続が 1 つ](expressroute-faqs.md#onep2plink)しかない場合でも、Microsoft のルーターとピアリング ルーターの間に冗長 BGP セッションを設定することが必要です。 
+- **ルーティング**: Microsoft Cloud への接続方法に応じて、自社またはプロバイダーで[ルーティング ドメイン](expressroute-circuit-peerings.md)用の BGP セッションを設定および管理する必要があります。一部のイーサネット接続プロバイダーまたはクラウド エクスチェンジ プロバイダーでは、BGP 管理を付加価値サービスとして提供している場合があります。
+- **NAT**: Microsoft では、パブリック IP アドレスのみを Microsoft ピアリング経由で受け入れます。オンプレミス ネットワークでプライベート IP アドレスを使用している場合、自社またはプロバイダーで [NAT を使用して](expressroute-nat.md)プライベート IP アドレスをパブリック IP アドレスに変換する必要があります。
+- **QoS**: Skype for Business にはさまざまなサービス (音声、ビデオ、テキストなど) があり、それぞれに特化した QoS 処理を必要とします。自社またはプロバイダーで [QoS 要件](expressroute-qos.md)に従うことが必要です。
+- **ネットワーク セキュリティ**: ExpressRoute を介して Microsoft Cloud に接続する場合は、[ネットワーク セキュリティ](../best-practices-network-security.md)について考慮する必要があります。
+ 
+## Office 365
 
-## ネットワークと接続プロバイダーの間の物理接続
+ExpressRoute で Office 365 を有効にする予定がある場合は、以下のドキュメントで Office 365 の要件の詳細について確認してください。
 
-接続モデルの詳細については、接続モデルのセクションを参照してください。お客様はオンプレミスのインフラストラクチャがその説明にあるモデルの 1 つを介してサービス プロバイダー インフラストラクチャに物理的に接続されていることを確認する必要があります。
 
-## 接続の冗長性要件
+- [Office 365 向け ExpressRoute の概要](https://support.office.com/ja-JP/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
+- [Office 365 向け ExpressRoute を使用したルーティング](https://support.office.com/ja-JP/article/Routing-with-ExpressRoute-for-Office-365-e1da26c6-2d39-4379-af6f-4da213218408)
+- [Office 365 URL および IP アドレス範囲](https://support.office.com/ja-JP/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
+- [Office 365 のネットワーク計画とパフォーマンスのチューニング](https://support.office.com/ja-JP/article/Network-planning-and-performance-tuning-for-Office-365-e5f1228c-da3c-4654-bf16-d163daee8848)
+- [ネットワーク帯域幅の計算ツールと各種ツール](https://support.office.com/ja-JP/article/Network-and-migration-planning-for-Office-365-f5ee6c33-bcd7-4b0b-b0f8-dc1d9fb8d132)
+- [Office 365 とオンプレミス環境との統合](https://support.office.com/ja-JP/article/Office-365-integration-with-on-premises-environments-263faf8d-aa21-428b-aed3-2021837a4b65)
 
-お客様のインフラストラクチャとサービス プロバイダー インフラストラクチャの間に物理的接続の冗長性要件はありません。Microsoft はレイヤー 3 の冗長性を必要とします。Microsoft は、各ピアリングを有効にするために、サービス プロバイダーを介して、Microsoft のエッジとお客様のネットワークの間に冗長性ルーティングを構築することを必要とします。ルーティング セッションが冗長的に構成されていない場合、サービス可用性 SLA は無効になります。
+## CRM Online 
+ExpressRoute で CRM Online を有効にする予定がある場合は、以下のドキュメントで CRM Online の詳細について確認してください。
 
-## IP アドレスとルーティングに関する考慮事項
-
-お客様/接続プロバイダーは、Microsoft エッジ インフラストラクチャと冗長 BGM セッションを構築しなければなりません。IP VPN 経由の接続を選択するお客様は、通常、ルーティング構成の管理を接続プロバイダーに任せます。Exchange と併置される、あるいはポイントツーポイントのイーサネット プロバイダー経由で Microsoft に接続するお客様は、可用性 SLA 要件を満たすために、ピアリングごとに冗長 BGP セッションを構成する必要があります。接続プロバイダーはこれを付加価値サービスとして提供することがあります。上限に関する詳細については、「[ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」という記事のルーティング ドメイン表を参照してください。
-
-## セキュリティとファイアウォール
-
-セキュリティとファイアウォールについては、このドキュメントの「[Microsoft Cloud Services とネットワーク セキュリティ](../best-practices-network-security.md)」を参照してください。
-
-## Azure パブリックと Microsoft ピアリングの NAT 構成
-
-要件と構成に関する詳細については、「[ExpressRoute NAT の要件](expressroute-nat.md)」を参照してください。NAT の構成と管理をあなたの代わりに行うかどうかについて接続プロバイダーにご確認ください。一般的に、レイヤー 3 接続プロバイダーはあなたの代わりに NAT を管理します。
-
-## Office 365 固有の要件
-
-Office 365 の要件の詳細については、次のリソースを確認します。
-
-- [Office 365 のネットワーク計画とパフォーマンスのチューニング](http://aka.ms/tune)
-- [Office 365 ネットワーク トラフィック管理](https://support.office.com/article/Office-365-network-traffic-management-e1da26c6-2d39-4379-af6f-4da213218408)
-- QoS の要件と構成については、[ExpressRoute サービス品質 (QoS) 要求](expressroute-qos.md)に関する記事を参照してください。あなたの VPN にサービスのクラスを複数提供するかどうかを接続プロバイダーにお問い合わせください。 
+- [CRM Online URL](https://support.microsoft.com/kb/2655102) と [IP アドレス範囲](https://support.microsoft.com/kb/2728473)
 
 ## 次のステップ
 
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
-- サービス プロバイダーを検索します。「[ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」を参照してください。
+- ExpressRoute 接続プロバイダーを探します。「[ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」を参照してください。
 - [ルーティング](expressroute-routing.md)、[NAT](expressroute-nat.md)、[QoS](expressroute-qos.md) の要件を参照してください。
 - ExpressRoute 接続を構成します。
 	- [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

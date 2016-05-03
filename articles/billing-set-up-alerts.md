@@ -1,11 +1,4 @@
-<properties
-	pageTitle="Microsoft Azure サブスクリプションの請求の通知を設定する | Microsoft Azure"
-	description="予想外の課金を回避するために Azure の請求に関する通知を設定する方法について説明します。"
-	services=""
-	documentationCenter=""
-	authors="vikdesai"
-	manager="msmbaldwin"
-	editor=""/>
+<properties pageTitle="Microsoft Azure サブスクリプションの請求の通知を設定する | Microsoft Azure" description="予想外の請求を回避できるように Azure の請求の通知を設定する方法について説明します。" services="billing" documentationCenter="" authors="vikdesai" manager="msmbaldwin" editor=""/ tags="billing" />
 
 <tags
 	ms.service="multiple"
@@ -13,7 +6,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="11/17/2015" 
+	ms.date="04/17/2016"
 	ms.author="vikdesai"/>
 
 # Microsoft Azure サブスクリプションの請求の通知を設定する
@@ -46,4 +39,4 @@ Azure は、任意の電子メール アドレスをサポートしています�
 [Image2]: ./media/azure-billing-set-up-alerts/billingalert2.png
 [Image3]: ./media/azure-billing-set-up-alerts/billingalerts3.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0420_2016-->

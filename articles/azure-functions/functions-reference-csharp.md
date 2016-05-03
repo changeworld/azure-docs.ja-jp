@@ -1,0 +1,261 @@
+<properties
+	pageTitle="Azure Functions 開発者向けリファレンス | Microsoft Azure"
+	description="C# を使用して Azure Functions を開発する方法について説明します。"
+	services="functions"
+	documentationCenter="na"
+	authors="christopheranderson"
+	manager="erikre"
+	editor=""
+	tags=""
+	keywords="Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
+
+<tags
+	ms.service="functions"
+	ms.devlang="dotnet"
+	ms.topic="reference"
+	ms.tgt_pltfrm="multiple"
+	ms.workload="na"
+	ms.date="04/14/2016"
+	ms.author="chrande"/>
+
+# Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
+
+Azure Functions の C# エクスペリエンスは、Azure WebJobs SDK に基づいています。データは、メソッドの引数を使用して C# 関数に渡されます。引数名は `function.json` で指定され、関数のロガーやキャンセル トークンなどにアクセスするための定義済みの名前があります。
+
+この記事では、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
+
+## .csx のしくみ
+
+`.csx` の形式では、 "定型" の記述が少なく、C# 関数のみの記述に重点が置かれています。Azure Functions の場合、通常通りに上部に表示する任意のアセンブリ参照と名前空間を含め、すべてを名前空間とクラスにラッピングする代わりに、`Run` メソッドの定義だけを行います。POCO オブジェクトを定義する場合など、クラスを含める必要がある場合は、同じファイル内にクラスを含めることができます。
+
+## 引数へのバインド
+
+*function.json* 構成の `name` プロパティから、さまざまなバインドが C# 関数にバインドされます。各バインドには、バンドごとに記述される、独自のサポートされている型があります。たとえば、blob のトリガーでは、文字列、POCO、その他いくつかの型がサポートされます。ニーズに合わせて最適な型を使用できます。
+
+```csharp
+public static void Run(string myBlob, out MyClass myQueueItem)
+{
+    log.Verbose($"C# Blob trigger function processed: {myBlob}");
+    myQueueItem = new MyClass() { Id = "myid" };
+}
+
+public class MyClass
+{
+    public string Id { get; set; }
+}
+```
+
+## ログの記録
+
+ストリーミング ログを C# にログ出力するために、`TraceWriter` 型の引数を含めることができます。これの名前を `log` とすることをお勧めします。Azure Functions では `Console.Write` を回避することをお勧めします。
+
+```csharp
+public static void Run(string myBlob, TraceWriter log)
+{
+    log.Verbose($"C# Blob trigger function processed: {myBlob}");
+}
+```
+
+## 非同期
+
+関数を非同期にするには、`async` キーワードを使用して `Task` オブジェクトを返します。
+
+```csharp
+public async static Task ProcessQueueMessageAsync(
+        string blobName, 
+        Stream blobInput,
+        Stream blobOutput)
+    {
+        await blobInput.CopyToAsync(blobOutput, 4096, token);
+    }
+```
+
+## キャンセル トークン
+
+場合によっては、シャット ダウンに影響を受ける操作があります。クラッシュに対応するコードを記述するのが最善の方法ですが、グレースフル シャットダウンの要求を処理する場合は、[`CancellationToken`](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) 型の引数を定義します。ホストのシャットダウンがトリガーされると、`CancellationToken` が提供されます。
+
+```csharp
+public async static Task ProcessQueueMessageAsyncCancellationToken(
+        string blobName, 
+        Stream blobInput,
+        Stream blobOutput,
+        CancellationToken token)
+    {
+        await blobInput.CopyToAsync(blobOutput, 4096, token);
+    }
+```
+
+## 名前空間のインポート
+
+名前空間をインポートする必要がある場合は、`using` 句を使用して、通常どおりにインポートできます。
+
+```csharp
+using System.Net;
+using System.Threading.Tasks;
+
+public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+```
+
+次の名前空間は自動的にインポートされるため、オプションとなります。
+
+* `System`
+* `System.Collections.Generic`
+* `System.Linq`
+* `System.Net.Http`
+* `Microsoft.Azure.WebJobs`
+* `Microsoft.Azure.WebJobs.Host`
+
+## 外部アセンブリの参照
+
+フレームワークのアセンブリには、`#r "AssemblyName"` ディレクティブを使用して参照を追加します。
+
+```csharp
+#r "System.Web.Http"
+
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+```
+
+次のアセンブリは、Azure Functions をホストしている環境によって自動的に追加されます。
+
+* `mscorlib`
+* `System`
+* `System.Core`
+* `System.Xml`
+* `System.Net.Http`
+* `Microsoft.Azure.WebJobs`
+* `Microsoft.Azure.WebJobs.Host`
+* `Microsoft.Azure.WebJobs.Extensions`
+* `System.Web.Http`
+* `System.Net.Http.Formatting`
+
+さらに、次のアセンブリは特別扱いされ、simplename によって参照される場合があります (例: `#r "AssemblyName"`)。
+
+* `Newtonsoft.Json`
+* `Microsoft.AspNet.WebHooks.Receivers`
+* `Microsoft.AspNEt.WebHooks.Common`
+
+プライベート アセンブリを参照する必要がある場合、アセンブリ ファイルを関数に関連する `bin` フォルダーにアップロードし、ファイル名 (例: `#r "MyAssembly.dll"`) を使用して参照できます。
+
+## パッケージの管理
+
+NuGet パッケージを C# 関数で使用するには、*project.json* ファイルを関数アプリのファイル システムにある関数のフォルダーにアップロードします。Microsoft.ProjectOxford.Face バージョン 1.1.0 に参照を追加する *project.json* ファイルの例を次に示します。
+
+```json
+{
+  "frameworks": {
+    "net46":{
+      "dependencies": {
+        "Microsoft.ProjectOxford.Face": "1.1.0"
+      }
+    }
+   }
+}
+```
+
+*project.json* ファイルをアップロードすると、ランタイムによってパッケージが取得され、パッケージ アセンブリに参照が自動的に追加されます。`#r "AssemblyName"` ディレクティブを追加する必要はありません。NuGet パッケージで定義されている型を使用するには、必要な `using` ステートメントを *run.csx* ファイルに追加するだけです。
+
+### Project.json ファイルをアップロードする方法
+
+Azure ポータルで関数を開き、関数アプリが実行中であることを確認して開始します。これにより、パッケージのインストール出力が表示されるストリーミング ログへのアクセス権が付与されます。
+
+関数アプリは App Service 上で構築されるため、[標準 Web アプリで利用できるデプロイ オプション](../app-service-web/web-sites-deploy.md)はすべて、関数アプリでも利用できます。ここでは、いくつかのメソッドを使用することができます。
+
+#### Visual Studio Online (Monaco) を使用して project.json にアップロードするには
+
+1. Azure Functions ポータルで、**[Function app settings]** (関数アプリの設定) をクリックします。
+
+2. **[詳細設定]** セクションで、**[Go to App Service Settings]** (App Service の設定に移動) をクリックします。
+
+3. **[ツール]** をクリックします。
+
+4. **[開発]** で、**[Visual Studio Online]** をクリックします。
+
+5. Visual Studio Online が有効になっていない場合は**オン**にして、**[Go]** をクリックします。
+
+6. Visual Studio Online がロードされたら、*project.json* ファイルを関数のフォルダー (関数の名前が付けられたフォルダー) にドラッグ アンド ドロップします。
+
+#### 関数アプリの SCM (Kudu) エンドポイントを使用して project.json をアップロードするには
+
+1. *https://<function_app_name>.scm.azurewebsites.net* に移動します。
+
+2. **[デバッグ コンソール] > [CMD] **の順にクリックします。
+
+3. *D:\\home\\site\\wwwroot<関数名>* に移動します。
+
+4. *project.json* ファイルを (ファイル グリッド上の) フォルダーにドラッグ アンド ドロップします。
+
+#### FTP を使用して project.json をアップロードするには
+
+1. [ここ](../app-service-web/web-sites-deploy.md#ftp)の指示に従って、FTP を構成します。
+
+2. 関数アプリのサイトに接続したら、*project.json* ファイルを */site/wwwroot/<function_name>* にコピーします。
+
+#### パッケージのインストール ログ 
+
+*project.json* ファイルがアップロードされた後、関数のストリーミング ログには次の例のような出力があります。
+
+```
+2016-04-04T19:02:48.745 Restoring packages.
+2016-04-04T19:02:48.745 Starting NuGet restore
+2016-04-04T19:02:50.183 MSBuild auto-detection: using msbuild version '14.0' from 'D:\Program Files (x86)\MSBuild\14.0\bin'.
+2016-04-04T19:02:50.261 Feeds used:
+2016-04-04T19:02:50.261 C:\DWASFiles\Sites\facavalfunctest\LocalAppData\NuGet\Cache
+2016-04-04T19:02:50.261 https://api.nuget.org/v3/index.json
+2016-04-04T19:02:50.261 
+2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\Project.json...
+2016-04-04T19:02:52.800 Installing Newtonsoft.Json 6.0.8.
+2016-04-04T19:02:52.800 Installing Microsoft.ProjectOxford.Face 1.1.0.
+2016-04-04T19:02:57.095 All packages are compatible with .NETFramework,Version=v4.6.
+2016-04-04T19:02:57.189 
+2016-04-04T19:02:57.189 
+2016-04-04T19:02:57.455 Packages restored.
+```
+
+## .csx コードの再利用
+
+他の *.csx* ファイルで定義されたクラスとメソッドを、*run.csx* ファイルで使用できます。そのためには、次の例に示すように `#load` ディレクティブを *run.csx* ファイルで使用します。
+
+*run.csx* の例:
+
+```csharp
+#load "mylogger.csx"
+
+public static void Run(TimerInfo myTimer, TraceWriter log)
+{
+    log.Verbose($"Log by run.csx: {DateTime.Now}"); 
+    MyLogger(log, $"Log by MyLogger: {DateTime.Now}");
+}
+```
+
+*mylogger.csx* の例:
+
+```csharp
+public static void MyLogger(TraceWriter log, string logtext)
+{
+    log.Verbose(logtext); 
+}
+```
+
+`#load` ディレクティブで相対パスを使用できます。
+
+* `#load "mylogger.csx"` によって、関数フォルダーにあるファイルが読み込まれます。
+
+* `#load "loadedfiles\mylogger.csx"` によって、関数フォルダーのフォルダーにあるファイルが読み込まれます。
+
+* `#load "..\shared\mylogger.csx"` によって、関数フォルダーと同じレベル (*wwwroot* の直下) にあるフォルダーのファイルが読み込まれます。
+ 
+`#load` ディレクティブは、*.csx* (C# スクリプト) ファイルでのみ機能し、*.cs* ファイルでは機能しません。
+
+## 次のステップ
+
+詳細については、次のリソースを参照してください。
+
+* [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)
+* [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
+* [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
+
+<!---HONumber=AcomDC_0420_2016-->

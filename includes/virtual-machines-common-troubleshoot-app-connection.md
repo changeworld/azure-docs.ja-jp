@@ -25,7 +25,7 @@ Azure 仮想マシンで実行されているアプリケーションへのア�
 
 ![](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
 
-たとえば、アプリケーションが Web サーバーである場合は、VM でブラウザーを実行し、VM でホストされている Web ページへのアクセスを試行します。
+たとえば、アプリケーションが Web サーバーである場合は、VM でブラウザーを開き、VM でホストされている Web ページへのアクセスを試行します。
 
 アプリケーションにアクセスできる場合は、 [手順 2](#step2) に進んでください。
 
@@ -102,4 +102,4 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

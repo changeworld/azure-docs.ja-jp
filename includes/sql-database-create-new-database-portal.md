@@ -8,7 +8,7 @@ As of circa 2016-04-11, the following topics might include this include:
 articles/sql-database/sql-database-get-started-tutorial.md
 
 -->
-## 新しい Azure SQL Database を作成する
+## 新しい Azure SQL データベースを作成します。
 
 次の手順に従って、Azure ポータルで新規または既存の Azure SQL Database 論理サーバーに新しい Azure SQL Database を作成します。
 
@@ -47,4 +47,4 @@ articles/sql-database/sql-database-get-started-tutorial.md
 
      ![新規データベース](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

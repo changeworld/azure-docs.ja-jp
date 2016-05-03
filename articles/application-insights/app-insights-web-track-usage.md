@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/25/2015" 
+	ms.date="04/08/2016" 
 	ms.author="awills"/>
  
 # Application Insights による Web アプリケーションの利用状況の分析
@@ -319,12 +319,13 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
 ```C#
 
+
     // Telemetry initializer class
-    public class MyTelemetryInitializer : IContextInitializer
+    public class MyTelemetryInitializer : ITelemetryInitializer
     {
-        public void Initialize (TelemetryContext context)
+        public void Initialize (ITelemetry telemetry)
         {
-            context.Properties["AppVersion"] = "v2.1";
+            telemetry.Properties["AppVersion"] = "v2.1";
         }
     }
 ```
@@ -336,7 +337,7 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
     protected void Application_Start()
     {
         // ...
-        TelemetryConfiguration.Active.ContextInitializers
+        TelemetryConfiguration.Active.TelemetryInitializers
         .Add(new MyTelemetryInitializer());
     }
 ```
@@ -347,7 +348,7 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 分析は、単に問題の解決に役立つだけのものではなく、開発サイクルの重要な部分を構成します。いくつかのヒントを次に示します。
 
 * アプリケーションの主なメトリックを決定する。できるだけ多くのユーザーにプレイしてもらいたいのか、それとも、少数のユーザーに十分満足してもらえればいいのか。 アクセス数と売り上げのどちらを最重要視するのか、を検討します。
-* 各ストーリーの評価を計画する。新しいユーザー ストーリーや機能の概要を作成する場合、または既存のユーザー ストーリーや機能の更新を計画する場合は、変更の成功を評価する方法について必ず検討してください。コーディングの開始前に、"成功した場合に、メトリックにどのような影響があるか。新しいイベントを追跡する必要があるか」 を考えます。 当然ながら、機能が実装されたら、分析に目を向け、その結果に基づいて行動するようにしてください。 
+* 各ストーリーの評価を計画する。新しいユーザー ストーリーや機能の概要を作成する場合、または既存のユーザー ストーリーや機能の更新を計画する場合は、変更の成功を評価する方法について必ず検討してください。コーディングの開始前に、"成功した場合に、メトリックにどのような影響があるか。 新しいイベントを追跡する必要があるか」 を考えます。 当然ながら、機能が実装されたら、分析に目を向け、その結果に基づいて行動するようにしてください。 
 * 他のメトリックを重要なメトリックに関連付ける。たとえば、"お気に入り" 機能を追加した場合は、ユーザーがお気に入りを追加する頻度を知りたくなります。しかし、ユーザーがお気に入りに再びアクセスする頻度を知る方が、おそらくより興味深い結果が得られるでしょう。さらに、最も重要なのは、お気に入りを使用する顧客が最終的により多くの製品を購入してくれるかどうかです。
 * カナリア テストを実行する。新しい機能を一部のユーザーのみに表示できるようにする機能スイッチをセットアップします。Application Insights を使用して、その新しい機能が予想どおりに使用されているかどうかを確認してください。調整後に、対象ユーザーの範囲を広げてリリースします。
 * ユーザーと会話をする。 分析は、それだけでは不十分ですが、良好な顧客関係を保つための補完的役割を果たします。
@@ -375,6 +376,6 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 [portal]: http://portal.azure.com/
 [windows]: app-insights-windows-get-started.md
 
-<!---HONumber=AcomDC_1203_2015-->
-
  
+
+<!---HONumber=AcomDC_0420_2016-->

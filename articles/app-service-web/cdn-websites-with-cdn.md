@@ -519,15 +519,13 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 4. もう一度 Azure Web アプリに発行し、ホーム ページにアクセスします。
 5. ページの HTML コードを表示します。次のようなスクリプトが挿入されていることを確認できます。    
 	
-	```
-	...
-<link href="http://az673227.azureedge.net/Content/css?v=1.0.0.25474" rel="stylesheet"/>
+	``` ... <link href="http://az673227.azureedge.net/Content/css?v=1.0.0.25474" rel="stylesheet"/>
 <script>(function() {
                 var loadFallback,
                     len = document.styleSheets.length;
                 for (var i = 0; i < len; i++) {
                     var sheet = document.styleSheets[i];
- if (sheet.href.indexOf('http://az673227.azureedge.net/Content/css?v=1.0.0.25474') !== -1) {
+                    if (sheet.href.indexOf('http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474') !== -1) {
                         var meta = document.createElement('meta');
                         meta.className = 'sr-only';
                         document.head.appendChild(meta);
@@ -569,10 +567,10 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 - [Web アプリケーションで Azure CDN からコンテンツを配信する](../cdn/cdn-serve-content-from-cdn-in-your-web-application.md)
 - [クラウド サービスと Azure CDN との統合](../cdn/cdn-cloud-service-with-cdn.md)
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
-- [Azure 用 CDN の使用](../cdn/cdn-how-to-use-cdn.md)
+- [Azure CDN の使用](../cdn/cdn-create-new-endpoint.md)
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0420_2016-->

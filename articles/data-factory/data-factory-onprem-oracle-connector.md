@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="04/18/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してオンプレミスの Oracle からデータを移動する 
@@ -292,7 +292,7 @@ XML | String
 
 ## トラブルシューティングのヒント
 
-****問題: ** 次の**エラー メッセージ**が表示される: コピー アクティビティに次の無効なパラメーターがあります: 'UnknownParameterName'、詳細メッセージ: 要求された .Net Framework Data Provider が見つかりません。インストールされていない可能性があります。
+**問題:** 次の**エラー メッセージ**が表示される: コピー アクティビティに次の無効なパラメーターがあります: 'UnknownParameterName'、詳細メッセージ: 要求された .Net Framework Data Provider が見つかりません。インストールされていない可能性があります。
 
 **考えられる原因**
 
@@ -312,4 +312,8 @@ XML | String
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+
+## パフォーマンスとチューニング  
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
+
+<!---HONumber=AcomDC_0420_2016-->

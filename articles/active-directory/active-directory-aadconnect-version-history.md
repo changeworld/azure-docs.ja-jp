@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/12/2016"
+   ms.date="04/20/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -22,19 +22,22 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 この記事は、リリースされたバージョンを追跡し、最新バージョンに更新する必要があるかどうかを判断できるようにするためのものです。
 
-関連リンク:
+以下は、関連トピックの一覧です。
 
-- Azure AD Connect の[以前のバージョンから最新リリースにアップグレード](active-directory-aadconnect-upgrade-previous-version.md)するさまざまな方法
-- 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。
-- [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
+| トピック | |
+| --------- | --------- |
+| Azure AD Connect からのアップグレード手順 | Azure AD Connect の[以前のバージョンから最新バージョンにアップグレード](active-directory-aadconnect-upgrade-previous-version.md)するさまざまな方法を説明しています。 |
+| 必要なアクセス許可 | 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。 |
+| ダウンロード| [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771) |
 
 ## 1\.1.130.0
 リリース日: 2016 年 4 月
 
 **新機能:**
 
-- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)に複数値の属性のサポートを追加しました。
-- アップグレードの対象として考慮する必要がある[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)に対して、詳細な構成バリエーションのサポートを追加しました。
+- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)に、複数の値を持つ属性のサポートが追加されました。
+- アップグレードの対象と見なされる[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)の構成バリエーションが増えました。
+- [カスタム スケジューラ](active-directory-aadconnectsync-feature-scheduler.md#custom-scheduler)にコマンドレットがいくつか追加されました。
 
 ## 1\.1.119.0
 リリース日: 2016 年 3
@@ -66,16 +69,16 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
     - MFA を正しく動作させるには、信頼済みサイトの一覧に https://secure.aadcdn.microsoftonline-p.com を追加する必要があります。
 - 初期インストール後のユーザーのサインイン方法の変更を許可。
 - インストール ウィザードでの[ドメインと OU のフィルター処理](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)を許可。これによって、一部のドメインは使用できないフォレストへの接続も許可されます。
-- 同期エンジンに組み込まれた [Scheduler](active-directory-aadconnectsync-feature-scheduler.md)。
+- 同期エンジンに組み込まれた[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)。
 
 **プレビューから GA に昇格した機能:**
 
-- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)。
-- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)。
+- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)
+- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)
 
 **新しいプレビュー機能:**
 
-- 新しい既定の同期サイクル間隔は 30 分です。以前のすべてのリリースでは、3 時間でした。[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)動作の変更のサポートを追加しました。
+- 新しい既定の同期サイクル間隔は 30 分です。以前のすべてのリリースでは、3 時間でした。[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)の動作の変更がサポートされるようになりました。
 
 **修正された問題:**
 
@@ -265,4 +268,4 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0420_2016-->

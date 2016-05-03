@@ -3,7 +3,7 @@
    description="SQL Data Warehouse での Transparent Data Encryption (TDE) の概要"
    services="sql-data-warehouse"
    documentationCenter=""
-   authors="twounder"
+   authors="ronortloff"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.date="03/03/2016" 
-   ms.author="mausher;barbkess;sonyama"/>
+   ms.author="rortloff;barbkess;sonyama"/>
 
 # SQL Data Warehouse での Transparent Data Encryption (TDE) の概要
 > [AZURE.SELECTOR]
@@ -61,4 +61,4 @@ SQL Data Warehouse の TDE を無効にするには、次の手順を実行し�
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0420_2016-->

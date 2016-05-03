@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/01/2016"
+   ms.date="04/19/2016"
    ms.author="larryfr"/>
 
 #HDInsight での Python を使用した Apache Storm トポロジの開発
@@ -347,4 +347,4 @@ Linux ベースの HDInsight クラスターが作成されたら、次の手順
 * [HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)
 * [HDInsight における Python と Hive および Pig の使用](hdinsight-python.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0420_2016-->

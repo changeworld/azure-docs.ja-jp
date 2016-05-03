@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/19/2016" 
+	ms.date="04/05/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した変換と分析
@@ -33,6 +33,9 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 [Data Lake Analytics U-SQL](data-factory-usql-activity.md) | Azure Data Lake Analytics 
 [DotNet](data-factory-use-custom-activities.md) | HDInsight [Hadoop] または Azure Batch
    
+> [AZURE.NOTE] 
+MapReduce アクティビティを使用して、HDInsight Spark クラスターで Spark プログラムを実行することができます。詳細については、「[Invoke Spark programs from Azure Data Factory (Azure Data Factory から Spark プログラムを呼び出す)](data-factory-spark.md)」を参照してください。カスタム アクティビティを作成して、R がインストールされている HDInsight クラスターで R スクリプトを実行することができます。[Azure Data Factory を使用した R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)に関するトピックを参照してください。
+ 
 
 変換アクティビティを定義するときには、コンピューティング環境のリンクされたサービスを作成したうえで、そのサービスを使用する必要があります。Data Factory でサポートされているコンピューティング環境は 2 種類あります。
 
@@ -41,4 +44,4 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 
 Data Factory でサポートされている Compute がリンクされたサービスについては、[Compute がリンクされたサービス](data-factory-compute-linked-services.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0420_2016-->

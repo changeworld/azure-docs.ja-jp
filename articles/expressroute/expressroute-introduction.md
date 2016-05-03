@@ -12,7 +12,7 @@
    ms.topic="get-started-article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="01/16/2016"
+   ms.date="04/19/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute の技術概要
@@ -33,17 +33,27 @@ Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提
 
 詳細については、[ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。
 
-## ExpressRoute でネットワークを Microsoft に接続するにはどうすればよいですか。
+## <a name="howtoconnect"></a>ExpressRoute でネットワークを Microsoft に接続するにはどうすればよいですか。
 
 次の 3 つの方法でオンプレミス ネットワークと Microsoft クラウドの間に接続を構築できます。
 
-1. **クラウドの Exchange で同一場所配置** クラウドの Exchange がある施設に同一場所配置している場合、併置プロバイダーのイーサネット交換経由で Microsoft クラウドに仮想交差接続を要請できます。併置プロバイダーは、共有施設のインフラストラクチャと Microsoft クラウドの間に、レイヤー 2 交差接続と管理レイヤー 3 交差接続のいずれかを提供します。
-2.	**ポイント ツー ポイントのイーサネット接続。** オンプレミス データセンター/オフィスと Microsoft クラウドをポイント ツー ポイントのイーサネット リンクで接続できます。ポイント ツー ポイントのイーサネットのプロバイダーは、サイトと Microsoft クラウドの間にレイヤー 2 接続と管理レイヤー 3 接続のいずれかを提供できます。
-3.	**任意の環境間 (IPVPN) ネットワーク。** WAN と Microsoft クラウドを統合できます。IPVPN プロバイダー (通常、MPLS VPN) は、ブランチ オフィスとデータセンターの間に任意の環境間の接続を提供できます。Microsoft クラウドを WAN に相互接続し、ブランチ オフィスのように見せることができます。通常、WAN プロバイダーは管理レイヤー 3 接続を提供します。
+### クラウド エクスチェンジで共用施設に配置
+
+クラウドの Exchange がある施設に同一場所配置している場合、併置プロバイダーのイーサネット交換経由で Microsoft クラウドに仮想交差接続を要請できます。併置プロバイダーは、共有施設のインフラストラクチャと Microsoft クラウドの間に、レイヤー 2 交差接続と管理レイヤー 3 交差接続のいずれかを提供します。
+
+### ポイント ツー ポイントのイーサネット接続 
+
+オンプレミス データセンター/オフィスと Microsoft クラウドをポイント ツー ポイントのイーサネット リンクで接続できます。ポイント ツー ポイントのイーサネットのプロバイダーは、サイトと Microsoft クラウドの間にレイヤー 2 接続と管理レイヤー 3 接続のいずれかを提供できます。
+
+### 任意の環境間 (IPVPN) ネットワーク
+
+WAN と Microsoft クラウドを統合できます。IPVPN プロバイダー (通常、MPLS VPN) は、ブランチ オフィスとデータセンターの間に任意の環境間の接続を提供できます。Microsoft クラウドを WAN に相互接続し、ブランチ オフィスのように見せることができます。通常、WAN プロバイダーは管理レイヤー 3 接続を提供します。ExpressRoute の機能は上記の接続モデルのすべてに共通しています。
+
+接続プロバイダーでは、1 つ以上の接続モデルを提供できます。最適なモデルは接続プロバイダーに相談の上でお選びください。
 
 ![](./media/expressroute-introduction/expressroute-connectivitymodels.png)
 
-ExpressRoute の機能は上記の接続モデルのすべてに共通しています。接続プロバイダーでは、上記のリストから 1 つまたは複数の接続モデルを提供できます。最適なモデルは接続プロバイダーに相談の上でお選びください。
+
 
 ## ExpressRoute の機能
 
@@ -59,7 +69,7 @@ Microsoft は業界標準の動的ルーティング プロトコル (BGP) を�
 
 ### Microsoft クラウド サービスへの接続
 
-ExpressRoute 接続は次のサービスへのアクセスを有効にします。
+ExpressRoute 接続によって、次のようなサービスにアクセスできます。
 
 - Microsoft Azure サービス
 - Microsoft Office 365 サービス
@@ -124,4 +134,4 @@ Microsoft は特殊な地政学的領域と顧客区分のために隔離され�
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0427_2016-->

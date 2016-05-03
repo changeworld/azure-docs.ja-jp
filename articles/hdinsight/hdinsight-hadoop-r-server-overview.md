@@ -1,6 +1,6 @@
 <properties
-	pageTitle="HDInsight での R とは何ですか? HDInsight での R Server の概要 |Microsoft Azure"
-	description="HDInsight での R の概要と、R を使用してビッグ データ分析用のアプリケーションを作成する方法について説明します。"
+	pageTitle="HDInsight での R とは何ですか? HDInsight の R Server (プレビュー) の概要 | Microsoft Azure"
+	description="HDInsight での R Server (プレビュー) の概要と、R を使用してビッグ データ分析用のアプリケーションを作成する方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -17,7 +17,7 @@
    ms.author="jeffstok"/>
 
 
-# 概要: HDInsight での R Server
+#概要: HDInsight の R Server (プレビュー)
 
 HDInsight Premium では、Azure で HDInsight クラスターを作成する際に R Server をオプションとして使用できるようになりました。この新しい機能により、データ サイエンティスト、統計学者、R プログラマは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。クラスターは手元のプロジェクトやタスクに応じてサイズを調整し、不要になれば破棄できます。Azure HDInsight の一部であるこれらのクラスターは、エンタープライズ レベルの 24 時間 365 日のサポートや稼働時間 99.9% の SLA を実現し、Azure エコシステムの他のコンポーネントとも柔軟に統合します。
 
@@ -109,4 +109,4 @@ HDInsight クラスターで R Server を使用する方法の詳細について
 
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

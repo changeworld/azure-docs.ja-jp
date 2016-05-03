@@ -123,7 +123,7 @@ Concatenate メソッドと String.Concat が実行時間の大部分を占め�
 
 ![][14]
 
-## 5: 変更を行ってパフォーマンスを比較する
+## 4: 変更を加えてパフォーマンスを比較する
 
 コードを変更する前後でパフォーマンスを比較することもできます。実行中のプロセスを停止します。コードを編集して、文字列連結操作を StringBuilder の使用に置き換えます。
 
@@ -186,4 +186,4 @@ Visual Studio プロファイラーでは、エミュレーター内の Azure �
 [17]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0420_2016-->

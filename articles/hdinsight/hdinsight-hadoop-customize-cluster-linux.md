@@ -477,6 +477,8 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 次に進む前に、Azure CLI をインストールして構成したことを確認します。詳細については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
 
+	[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)] 
+
 1. シェル セッション、ターミナル、コマンド プロンプト、またはシステムのその他のコマンド ラインを開き、次のコマンドを使用して Azure Resource Manager モードに切り替えます。
 
         azure config mode arm
@@ -489,9 +491,9 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
         azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
 
-    このコマンドのパラメーターを省略した場合は、それを要求するメッセージが表示されます。`-u` で指定したスクリプトでパラメーターが受け取られた場合、`-p` パラメーターを使用してそれらを指定できます。
+    このコマンドのパラメーターを省略した場合は、それを要求するメッセージが表示されます。`-u` で指定したスクリプトがパラメーターを受け取る場合は、`-p` パラメーターを使用してそれらを指定できます。
 
-    有効な __nodetype__ は __headnode__、__workernode__、および __zookeeper__ です。スクリプトを複数のノード タイプに適用する必要がある場合、タイプを ; で区切って指定します。たとえば、「`-n headnode;workernode`」のように入力します。
+    有効な __nodetype__ は、__headnode__、__workernode__、および __zookeeper__ です。スクリプトを複数のノード タイプに適用する必要がある場合、タイプを ; で区切って指定します。たとえば、「`-n headnode;workernode`」のように入力します。
 
     スクリプトを保存するには、`--persistOnSuccess` を追加します。スクリプトを後日保存するには、`azure hdinsight script-action persisted set` を使用します。
     
@@ -519,7 +521,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
     ![Settings icon](./media/hdinsight-hadoop-customize-cluster-linux/settingsicon.png)
 
-3. [設定] ブレードで、__[スクリプト アクション]__ を選択します。
+3. [設定] ブレードで、__[スクリプト操作]__ を選択します。
 
     ![Script Actions link](./media/hdinsight-hadoop-customize-cluster-linux/settings.png)
 
@@ -531,7 +533,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
     ![Script actions properties blade](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionproperties.png)
 
-6. [スクリプト アクション] ブレードのエントリの右側にある __[...]__ を使用して、再実行、保存、(保存済みアクションに対する) 削除などのアクションを実行することもできます。
+6. [スクリプト操作] ブレードのエントリの右側にある __[...]__ を使用して、再実行、保存、(保存済みアクションに対する) 削除などのアクションを実行することもできます。
 
     ![Script actions ... usage](./media/hdinsight-hadoop-customize-cluster-linux/deletepromoted.png)
 
@@ -544,7 +546,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 | Set-AzureRmHDInsightPersistedScriptAction | アドホック スクリプト アクションを保存済みスクリプト アクションに昇格します |
 | Remove-AzureRmHDInsightPersistedScriptAction | 保存済みスクリプト アクションをアドホック アクションに降格します |
 
-> [AZURE.IMPORTANT] `Remove-AzureRmHDInsightPersistedScriptAction` を使用しても、スクリプトによって実行されたアクションは元に戻されません。クラスターに追加された新しい worker ノードに対してスクリプトが実行されないように、保存済みフラグが削除されるだけです。
+> [AZURE.IMPORTANT] `Remove-AzureRmHDInsightPersistedScriptAction` を使用しても、スクリプトによって実行されたアクションは元に戻りません。クラスターに追加された新しい worker ノードに対してスクリプトが実行されないように、保存済みフラグが削除されるだけです。
 
 次のスクリプトの例では、昇格のコマンドレットを使用してから、スクリプトを降格しています。
 
@@ -575,7 +577,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 | `azure hdinsight script action persisted set <clustername> <scriptexecutionid>` | アドホック スクリプト アクションを保存済みスクリプト アクションに昇格します |
 | `azure hdinsight script-action persisted delete <clustername> <scriptname>` | 保存済みスクリプト アクションをアドホック アクションに降格します |
 
-> [AZURE.IMPORTANT] `azure hdinsight script-action persisted delete` を使用しても、スクリプトによって実行されたアクションは元に戻されません。クラスターに追加された新しい worker ノードに対してスクリプトが実行されないように、保存済みフラグが削除されるだけです。
+> [AZURE.IMPORTANT] `azure hdinsight script-action persisted delete` を使用しても、スクリプトによって実行されたアクションは元に戻りません。クラスターに追加された新しい worker ノードに対してスクリプトが実行されないように、保存済みフラグが削除されるだけです。
 
 ### HDInsight .NET SDK を使用する場合
 
@@ -678,4 +680,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター作成時の段階"
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0420_2016-->
