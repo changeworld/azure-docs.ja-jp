@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Microsoft Azure セキュリティの概要 | Microsoft Azure"
+   pageTitle="Azure Security Center クイック スタート ガイド | Microsoft Azure"
    description="このドキュメントでは、Azure セキュリティ センターのセキュリティ監視およびポリシー管理コンポーネントの概要と、次のステップへの展開について説明します。"
    services="security-center"
    documentationCenter="na"
@@ -13,10 +13,10 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/11/2016"
+   ms.date="04/26/2016"
    ms.author="terrylan"/>
 
-# Azure セキュリティ センターの概要
+# Azure Security Center クイック スタート ガイド
 
 このドキュメントでは、Azure セキュリティ センターのセキュリティ監視およびポリシー管理コンポーネントの概要と、次のステップへの展開について説明します。
 
@@ -86,22 +86,14 @@ Azure サブスクリプションとリソース グループのセキュリテ�
 
 3. パートナー ソリューションを選択します。この例では、**[F5-WAF2]** ソリューションを選択します。パートナー ソリューションの状態およびソリューションの関連付けられたリソースを示すブレードが開きます。このソリューションのパートナー管理経験を開くには、**[ソリューション コンソール]** を選択します。![パートナー ソリューションの詳細][10]
 
-パートナー ソリューションの **[状態]** は次のいずれかになります。
-
-- [正常] \(緑) - 正常性の問題はありません
-- [異常] \(赤) - 早急に処置が必要な正常性の問題があります
-- [レポート停止] \(オレンジ) - ソリューションが正常性の報告を停止しています
-- [不明] \(オレンジ) - この時点でのソリューションの正常性は、新しいリソースを既存のソリューションに追加するプロセスが失敗したため、不明です
-- [レポートなし] \(灰色) - ソリューションがまだ何も報告していないか、接続されたばかりでデプロイ中の場合に、ソリューションの状態が報告されていない可能性があります
-
-
 ## 次のステップ
 このドキュメントでは、セキュリティ センターのセキュリティ監視およびポリシー管理コンポーネントについて説明しました。詳細については、次の記事を参照してください。
 
-- 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループに対するセキュリティ ポリシーの構成方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティの警告の管理および対応について説明しています。
+- 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 -- Azure サブスクリプションとリソース グループに対するセキュリティ ポリシーの構成方法について説明しています。
+- 「[Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
+- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
+- 「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理と対応の方法について説明しています。
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 - 「[Azure セキュリティ センターのよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
@@ -117,4 +109,4 @@ Azure サブスクリプションとリソース グループのセキュリテ�
 [9]: ./media/security-center-get-started/partner-solutions.png
 [10]: ./media/security-center-get-started/partner-solutions-detail.png
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

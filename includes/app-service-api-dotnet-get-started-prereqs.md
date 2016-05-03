@@ -1,3 +1,7 @@
+### ASP.NET Web API
+
+このチュートリアルは、Visual Studio で ASP.NET [Web API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) を操作する基本的な方法を理解していることを前提としています。
+
 ### Azure アカウント
 
 このチュートリアルを完了するには、Azure アカウントが必要です。そのための方法は次のとおりです。
@@ -15,8 +19,4 @@ Visual Studio 2013 を持っていて、それを使用する場合は、[最新
 
 >[AZURE.NOTE] マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。
 
-### ASP.NET Web API
-
-このチュートリアルは、Visual Studio で ASP.NET [Web API 2](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) を操作する基本的な方法を理解していることを前提としています。
-
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0427_2016-->

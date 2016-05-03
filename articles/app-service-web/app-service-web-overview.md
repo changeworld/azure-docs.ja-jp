@@ -49,8 +49,8 @@ Azure App Service Web Apps は、エンタープライズ レベルの Web ア�
 - **Web ジョブ** - Web Apps VM でプログラムまたはスクリプトを実行します。複数の VM で実行するため、継続的に、またはスケジュールやスケールに基づきジョブを実行します。Azure [Web ジョブ SDK][Webjobs] を使用して Azure Storage または Service Bus と統合します。
 - **ハイブリッド接続** - [ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md) と [VNET](../app-service-web/web-sites-integrate-with-vnet.md) を使用してオンプレミスのデータにアクセスします。
 
-## 始めに ##
-Web Apps を使用するには、[ASP.NET Web アプリを作成する方法][create]のチュートリアルに従ってください。
+## はじめに ##
+Web Apps の基本操作については、「[Azure App Service での Web アプリの使用][create]」のチュートリアルに従ってください。
 
 Azure App Service プラットフォームの詳細については、[Azure App Service][appservice] に関するページを参照してください。
 
@@ -60,10 +60,10 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 [appservice]: ../app-service/app-service-value-prop-what-is.md
-[create]: web-sites-dotnet-get-started.md
+[create]: app-service-web-get-started.md
 [Webjobs]: websites-dotnet-webjobs-sdk-get-started.md
 [Slots]: web-sites-staged-publishing.md
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

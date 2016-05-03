@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/11/2016"
+	ms.date="04/26/2016"
 	ms.author="curtand"/>
 
 # Azure サブスクリプションを Azure Active Directory に関連付ける方法
@@ -139,4 +139,4 @@ Azure クラシック ポータルで両方のディレクトリを管理する�
 [2]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_OrgAccountSubscription.png
 [3]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_SignInDisambiguation.PNG
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0427_2016-->

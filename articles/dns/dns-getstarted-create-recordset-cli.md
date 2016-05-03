@@ -3,8 +3,8 @@
    description="Azure DNS のホスト レコードを作成する方法。CLI を使用したレコード セットとレコードの設定"
    services="dns"
    documentationCenter="na"
-   authors="joaoma"
-   manager="Adinah"
+   authors="cherylmc"
+   manager="carmonm"
    editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="01/20/2016"
-   ms.author="joaoma"/>
+   ms.author="cherylmc"/>
 
 
 # CLI を使用して DNS レコードを作成する
@@ -121,4 +121,4 @@ nslookup や他の DNS ツールを使用して、新しいレコード セッ�
 [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0427_2016-->

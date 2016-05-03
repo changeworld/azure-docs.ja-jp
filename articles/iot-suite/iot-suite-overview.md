@@ -17,7 +17,7 @@
      ms.date="02/19/2016"
      ms.author="dobett"/>
 
-# Azure IoT Suite の概要
+# Azure IoT Suite とは
 
 Azure IoT (モノのインターネット) サービスには、さまざまな機能が用意されています。このエンタープライズ クラスのサービスを使用すると、次の操作を実行できます。
 
@@ -74,4 +74,4 @@ IoT Suite には構成済みソリューションが含まれており、その�
 [lnk-preconfig-start]: iot-suite-getstarted-preconfigured-solutions.md
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0427_2016-->

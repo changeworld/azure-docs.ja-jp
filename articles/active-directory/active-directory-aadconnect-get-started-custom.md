@@ -147,6 +147,10 @@ Azure AD Connect との AD FS の構成は、わずか数クリックで簡単�
 - Web アプリケーション プロキシ サーバー用の Windows Server 2012 R2 サーバー (リモート管理を有効に設定)
 - 使用する予定のフェデレーション サービス名の SSL 証明書 (sts.contoso.com など)
 
+### AD FS の構成の前提条件
+
+Azure AD Connect を使用して AD FS ファームを正しく構成するには、リモート サーバー上で WinRM が有効になっている必要があります。加えて、「[表 3 - Azure AD Connect とフェデレーション サーバー/WAP](active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-federation-serverswap)」に記載されているポート要件も確認してください。
+
 ### 新しい AD FS ファームの作成または既存の AD FS ファームの使用
 既存の AD FS ファームを使用することも、新しい AD FS ファームを作成することもできます。新しく作成する場合は、SSL 証明書を提供する必要があります。SSL 証明書がパスワードで保護されている場合は、パスワードを入力するように求められます。
 
@@ -240,4 +244,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

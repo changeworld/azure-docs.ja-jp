@@ -9,10 +9,10 @@
 <tags 
    ms.service="storsimple"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/12/2016"
+   ms.date="04/20/2016"
    ms.author="alkohli" />
 
 # Azure での StorSimple 仮想デバイスのデプロイと管理 (Update 2)
@@ -282,4 +282,4 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
  
 - [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法を理解します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->
