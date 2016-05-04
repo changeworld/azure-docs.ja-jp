@@ -188,7 +188,22 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
 
 | 操作 | サポートされている演算子 | 結果の種類 |
 | ------------------------------------- | --------------------- | ------------- |
-| double *operator* double | +, -, *, / | double | | double *operator* timeinterval | * | timeinterval | | doubleVec *operator* double | +, -, *, / | doubleVec | | doubleVec *operator* doubleVec | +, -, *, / | doubleVec | | timeinterval *operator* double | *, / | timeinterval | | timeinterval *operator* timeinterval | +, - | timeinterval | | timeinterval *operator* timestamp | + | timestamp | | timestamp *operator* timeinterval | + | timestamp | | timestamp *operator* timestamp | - | timeinterval | | *operator*double | -, ! | double | | *operator*timeinterval | - | timeinterval | | double *operator* double | <, <=, ==, >=, >, != | double | | string *operator* string | <, <=, ==, >=, >, != | double | | timestamp *operator* timestamp | <, <=, ==, >=, >, != | double | | timeinterval *operator* timeinterval | <, <=, ==, >=, >, != | double | | double *operator* double | &&, || | double |
+| double *operator* double 				| +, -, *, /            | double		    |
+| double *operator* timeinterval 		| *                     | timeinterval	    |
+| doubleVec *operator* double 			| +, -, *, /            | doubleVec		    |
+| doubleVec *operator* doubleVec 		| +, -, *, /            | doubleVec		    |
+| timeinterval *operator* double 		| *, /                  | timeinterval	    |
+| timeinterval *operator* timeinterval 	| +, -                  | timeinterval	    |
+| timeinterval *operator* timestamp 	| +                     | timestamp		    |
+| timestamp *operator* timeinterval 	| +                     | timestamp		    |
+| timestamp *operator* timestamp 		| -                     | timeinterval	    |
+| *operator*double 						| -, !                  | double		    |
+| *operator*timeinterval 				| -                     | timeinterval	    |
+| double *operator* double 				| <, <=, ==, >=, >, !=  | double		    |
+| string *operator* string 				| <, <=, ==, >=, >, !=  | double		    |
+| timestamp *operator* timestamp 		| <, <=, ==, >=, >, !=  | double		    |
+| timeinterval *operator* timeinterval 	| <, <=, ==, >=, >, !=  | double		    |
+| double *operator* double 				| &&, &#124;&#124;      | double		    |
 
 3 項演算子で double 型の値をテストするときに (`double ? statement1 : statement2`)、0 以外の値は **true**、0 は **false** となります。
 
