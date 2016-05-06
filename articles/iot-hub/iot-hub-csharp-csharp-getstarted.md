@@ -96,4 +96,4 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---Testing linkHONumber=AcomDC_0413_2016-->
