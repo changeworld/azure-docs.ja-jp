@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="12/02/2015"
+   ms.date="04/18/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用した StorSimple デバイスの接続と管理
@@ -51,7 +51,7 @@ StorSimple Snapshot Manager の **[スコープ]** ウィンドウのノード�
 - デバイスの構成の削除 
 - デバイスのパスワードの変更
 
->[AZURE.NOTE]これらの操作は、**[操作]** ウィンドウでも使用できます。
+>[AZURE.NOTE] これらの操作は、**[操作]** ウィンドウでも使用できます。
  
 このチュートリアルでは、StorSimple Snapshot Manager を使用してデバイスの接続および管理を行い、次のタスクを実行する方法について説明します。
 
@@ -65,7 +65,7 @@ StorSimple Snapshot Manager の **[スコープ]** ウィンドウのノード�
 - 有効期限が切れたデバイス パスワードの変更
 - 障害が発生したデバイスの置き換え
 
->[AZURE.NOTE]StorSimple Snapshot Manager のインターフェイスの使用に関する一般的な情報については、「[StorSimple Snapshot Manager ユーザー インターフェイス](storsimple-use-snapshot-manager.md)」をご確認ください。
+>[AZURE.NOTE] StorSimple Snapshot Manager のインターフェイスの使用に関する一般的な情報については、「[StorSimple Snapshot Manager ユーザー インターフェイス](storsimple-use-snapshot-manager.md)」をご確認ください。
 
 
 ## デバイスの追加または置き換え
@@ -222,9 +222,9 @@ StorSimple device に障害が発生し、スタンバイ (フェールオーバ
 
 #### フェールオーバー後に新しいデバイスに接続するには
 
-1. 新しいデバイスへの iSCSI 接続を再構成します。手順については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」にある「手順 7: ボリュームをマウント、初期化、フォーマットする」をご覧ください。 
+1. 新しいデバイスへの iSCSI 接続を再構成します。手順については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)」にある「手順 7: ボリュームをマウント、初期化、フォーマットする」をご覧ください。 
 
->[AZURE.NOTE]新しい StorSimple デバイスの IP アドレスが古いものと同じ IP アドレスである場合は、古い構成を接続できる可能性があります。
+>[AZURE.NOTE] 新しい StorSimple デバイスの IP アドレスが古いものと同じ IP アドレスである場合は、古い構成を接続できる可能性があります。
 
 2. Microsoft StorSimple Management Service を停止します。
 
@@ -263,4 +263,4 @@ StorSimple device に障害が発生し、スタンバイ (フェールオーバ
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
 - [StorSimple Snapshot Manager を使用したボリュームの表示と管理方法](storsimple-snapshot-manager-manage-volumes.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0427_2016-->

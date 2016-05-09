@@ -252,8 +252,8 @@ Azure DocumentDB に、[REST API バージョン 2015-12-16](https://msdn.micros
 
     await client.ExecuteStoredProcedureAsync<DeviceReading>(
         UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
-        "XMS-001-FE24C",
-        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") });
+        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") },
+        "XMS-001-FE24C");
 
 次のセクションでは、単一パーティション コレクションからパーティション分割コレクションへの移動方法について説明します。
 
@@ -319,4 +319,4 @@ DocumentDB を使用したマルチテナント アプリケーションを実�
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

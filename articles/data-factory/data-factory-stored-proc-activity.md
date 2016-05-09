@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/19/2016" 
+	ms.date="04/05/2016" 
 	ms.author="spelluru"/>
 
 # SQL Server ストアド プロシージャ アクティビティ
@@ -134,7 +134,7 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 ### SqlServerStoredProcedure アクティビティでパイプラインを作成する
 今度は、SqlServerStoredProcedure アクティビティでパイプラインを作成しましょう。
  
-9. コマンド バーの **[...] (省略記号)** をクリックし、**[新しいパイプライン]** をクリックします。 
+9. コマンド バーの **[...] \(省略記号)** をクリックし、**[新しいパイプライン]** をクリックします。 
 9. 次の JSON スニペットをコピーして貼り付けます。**storedProcedureName** は **sp\_sample** に設定します。パラメーター **DateTime** の名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義と一致させる必要があります。  
 
 		{
@@ -207,4 +207,4 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 		}
 	}
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

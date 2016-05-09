@@ -6,19 +6,19 @@
 	authors="mmacy"
 	manager="timlt"
 	editor="" />
-	
+
 <tags
 	ms.service="batch"
 	ms.devlang="multiple"
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="01/22/2016"
+	ms.date="04/21/2016"
 	ms.author="marsma" />
-	
+
 # 効率的な Azure Batch サービスのクエリ
 
-この記事では、[Batch .NET][api_net] ライブラリを使用する Batch サービスをクエリしたときに返されるデータの量を減らすことによって、Azure Batch アプリケーションのパフォーマンスを強化する方法を説明します。
+ここでは、[Batch .NET][api_net] ライブラリを使用する Batch サービスをクエリしたときに返されるデータの量を減らすことによって、Azure Batch アプリケーションのパフォーマンスを強化する方法を説明します。
 
 Azure Batch は大規模なコンピューティングの機能を提供します。運用環境では、ジョブ、タスク、コンピューティング ノードのようなエンティティは数千単位になることがあります。そのため、そのような項目に関する情報の取得では、サービスからアプリケーションに転送する必要がある大量のデータがクエリごとに生成される可能性があります。クエリごとに返される情報の項目数と種類を制限することで、クエリの時間を短縮し、それによってアプリケーションのパフォーマンスを向上させることができます。
 
@@ -26,14 +26,14 @@ Azure Batch を使用するほぼすべてのアプリケーションは、Batch
 
 次の [Batch .NET][api_net] API コード スニペットは、ジョブに関連付けられているすべてのタスクを、タスクの*すべての*プロパティと共に取得します。
 
-```
+```csharp
 // Get a collection of all of the tasks and all of their properties for job-001
 IPagedEnumerable<CloudTask> allTasks = batchClient.JobOperations.ListTasks("job-001");
 ```
 
 ただし、はるかに効率的なリスト クエリを実行できます。これは、[ODATADetailLevel][odata] オブジェクトを [JobOperations.ListTasks][net_list_tasks] メソッドに指定します。次のスニペットでは、完了したタスクの ID、コマンド ライン、コンピューティング ノード情報のプロパティだけが返されます。
 
-```
+```csharp
 // Configure an ODATADetailLevel specifying a subset of tasks and their properties to return
 ODATADetailLevel detailLevel = new ODATADetailLevel();
 detailLevel.FilterClause = "state eq 'completed'";
@@ -43,7 +43,7 @@ detailLevel.SelectClause = "id,commandLine,nodeInfo";
 IPagedEnumerable<CloudTask> completedTasks = batchClient.JobOperations.ListTasks("job-001", detailLevel);
 ```
 
-上記の例のシナリオでジョブに何千ものタスクがある場合、通常は 2 つ目のクエリの結果は最初のものより速く返されます。Batch .NET API を使って項目をリストするときの ODATADetailLevel の使い方については、後半で詳しく説明しています。
+上記の例のシナリオでジョブに何千ものタスクがある場合、通常は 2 つ目のクエリの結果は最初のものより速く返されます。Batch .NET API を使って項目をリストするときの ODATADetailLevel の使い方については、[以下](#efficient-querying-in-batch-net)で詳しく説明しています。
 
 > [AZURE.IMPORTANT]
 アプリケーションの最大限の効率とパフォーマンスを確保するために、.NET API リスト呼び出しには*常に* ODATADetailLevel オブジェクトを指定することを強くお勧めします。詳細レベルを指定することによって、Batch サービスの応答時間の短縮、ネットワーク使用率の改善、クライアント アプリケーションによるメモリ使用量の最小化といった効果が期待できます。
@@ -89,13 +89,13 @@ expand 文字列は、特定の情報を取得するために必要な API 呼�
 
 [Batch .NET][api_net] API 内で、[ODATADetailLevel][odata] クラスを使用して、リスト操作に対して filter、select、および expand 文字列を指定します。ODataDetailLevel クラスには、3 つのパブリック文字列プロパティがあり、それらをコンストラクターで指定するか、オブジェクトに直接設定できます。そのうえで、[ListPools][net_list_pools]、[ListJobs][net_list_jobs]、[ListTasks][net_list_tasks] などのリスト操作のパラメーターとして、ODataDetailLevel オブジェクトを渡します。
 
-- [ODATADetailLevel.FilterClause][odata_filter]\: 返される項目の数を制限します。
-- [ODATADetailLevel.SelectClause][odata_select]\: 各項目で返されるプロパティ値を指定します。
-- [ODATADetailLevel.ExpandClause][odata_expand]\: 項目ごとに個別の呼び出しではなく、1 つの API 呼び出しですべての項目のデータを取得します。
+- [ODATADetailLevel][odata].[FilterClause][odata_filter]\: 返される項目の数を制限します。
+- [ODATADetailLevel][odata].[SelectClause][odata_select]\: 各項目で返されるプロパティ値を指定します。
+- [ODATADetailLevel][odata].[ExpandClause][odata_expand]\: 項目ごとに個別の呼び出しではなく、1 つの API 呼び出しですべての項目のデータを取得します。
 
 次のコード スニペットでは Batch .NET API を使用して、特定のプール セットの統計値を Batch サービスに効率的に問い合わせます。このシナリオでは、Batch ユーザーにはテスト プールと運用プールの両方が与えられています。テスト プールの ID 接頭辞は "test" であり、運用プールの ID 接頭辞は "prod" です。このスニペットで、*myBatchClient* は [BatchClient](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient) クラスの適切に初期化されたインスタンスです。
 
-```
+```csharp
 // First we need an ODATADetailLevel instance on which to set the expand, filter, and select
 // clause strings
 ODATADetailLevel detailLevel = new ODATADetailLevel();
@@ -126,8 +126,8 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 
 ### filter 文字列のマッピング
 
-- **.NET リスト メソッド** - この列の .NET API メソッドは、[ODATADetailLevel][odata] オブジェクトをパラメーターとして受け入れます。
-- **REST リスト要求** - この列のリンク先となる REST API ページには、*filter* 文字列で許可されるプロパティと操作を指定する表が含まれています。[ODATADetailLevel.FilterClause][odata_filter] 文字列を組み立てる際には、これらのプロパティ名と操作を使用します。
+- **.NET リスト メソッド**: この列の .NET API メソッドは、[ODATADetailLevel][odata] オブジェクトをパラメーターとして受け入れます。
+- **REST リスト要求**: この列のリンク先となる REST API ページには、*filter* 文字列で許可されるプロパティと操作を指定する表が含まれています。[ODATADetailLevel.FilterClause][odata_filter] 文字列を組み立てる際には、これらのプロパティ名と操作を使用します。
 
 | .NET リスト メソッド | REST リスト要求 |
 |---|---|
@@ -144,8 +144,8 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 
 ### select 文字列のマッピング
 
-- **Batch .NET タイプ**--Batch .NET API の種類です。
-- **REST API エンティティ** - この列の各ページには、各種類の REST API のプロパティ名をリストする 1 つ以上の表が含まれます。*select* 文字列を組み立てる際に、これらのプロパティ名が使用されます。[ODATADetailLevel.SelectClause][odata_select] 文字列を組み立てる際には、これらと同じプロパティ名を使用します。
+- **Batch .NET タイプ**: Batch .NET API の種類です。
+- **REST API エンティティ**: この列の各ページには、各種類の REST API のプロパティ名をリストする 1 つ以上の表が含まれます。*select* 文字列を組み立てる際に、これらのプロパティ名が使用されます。[ODATADetailLevel.SelectClause][odata_select] 文字列を組み立てる際には、これらと同じプロパティ名を使用します。
 
 | Batch .NET の種類 | REST API のエンティティ |
 |---|---|
@@ -158,7 +158,7 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 
 ### 例: filter 文字列の構築
 
-[ODATADetailLevel.FilterClause][odata_filter] の filter 文字列を組み立てる場合は、「filter 文字列のマッピング」に示した表を参照して、実行するリスト操作に対応する REST API のドキュメント ページを見つけます。そのページの最初の複数行の表に、フィルター可能なプロパティとサポートされている演算子が表示されます。たとえば、終了コードがゼロ以外のタスクをすべて取得する場合は、「[ジョブに関連付けられているタスクを一覧表示する][rest_list_tasks]」の次の行に、適用可能なプロパティと許可される演算子が示されています。
+[ODATADetailLevel.FilterClause][odata_filter] の filter 文字列を組み立てる場合は、「filter 文字列のマッピング」に示した表を参照して、実行するリスト操作に対応する REST API のドキュメント ページを見つけます。そのページの最初の複数行の表に、フィルター可能なプロパティとサポートされている演算子が表示されます。たとえば、終了コードがゼロ以外のタスクをすべて取得する場合は、「[ジョブに関連付けられているタスクを一覧表示する][rest_list_tasks]」のこの行で、適用可能なプロパティと許可される演算子を指定します。
 
 | プロパティ | 許可される操作 | 型 |
 | :--- | :--- | :--- |
@@ -183,6 +183,8 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 
 ## 次のステップ
 
+### 効率的なリスト クエリ コードのサンプル
+
 GitHub の [EfficientListQueries][efficient_query_sample] サンプル プロジェクトで、効率的なリスト クエリがアプリケーションのパフォーマンスに及ぼす影響を確認します。この C# コンソール アプリケーションは、大量のタスクを作成してジョブに追加します。その後、[JobOperations.ListTasks][net_list_tasks] メソッドを何度か呼び出します。その際に渡す [ODATADetailLevel][odata] オブジェクトの各種プロパティの値を設定で変更することによって、取得するデータ量を変化させています。次のような出力が表示されます。
 
 		Adding 5000 tasks to job jobEffQuery...
@@ -199,10 +201,16 @@ GitHub の [EfficientListQueries][efficient_query_sample] サンプル プロジ
 
 経過時間情報に示すように、プロパティと返される項目の数を制限することで、クエリの応答時間を大幅に短縮できます。このサンプル プロジェクトと他のサンプル プロジェクトは、GitHub の [azure-batch-samples][github_samples] リポジトリにあります。
 
+### Batch フォーラム
+
+MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッションやサービスに関する質問を行うことができる優れた場所です。役立つ "sticky" 投稿を参照したり、Batch ソリューションの構築中に湧いた質問を投稿したりできます。
+
+
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
 [efficient_query_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries
+[forum]: https://social.msdn.microsoft.com/forums/azure/ja-JP/home?forum=azurebatch
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [odata]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.aspx
 [odata_ctor]: https://msdn.microsoft.com/library/azure/dn866178.aspx
@@ -246,4 +254,4 @@ GitHub の [EfficientListQueries][efficient_query_sample] サンプル プロジ
 [net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
 [net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

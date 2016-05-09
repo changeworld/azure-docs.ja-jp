@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="04/19/2016"
 	ms.author="jolevy"/>
 
 
@@ -45,4 +45,4 @@ Virtual Machines は、[Azure PowerShell](https://msdn.microsoft.com/library/azu
 - [初めての Runbook](../automation/automation-first-runbook-graphical.md)
 - [Azure Automation の学習マップ](https://azure.microsoft.com/documentation/learning-paths/automation/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="04/19/2016"
+	ms.date="04/20/2016"
 	ms.author="carlrab" />
 
 
@@ -73,4 +73,4 @@ Basic、Standard、および Premium サービス プランの設計目標の 1 
 
 [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

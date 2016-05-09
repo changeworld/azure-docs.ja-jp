@@ -190,10 +190,10 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 ## ASP.NET のセッション状態と出力キャッシュを Azure Redis Cache に移行する
 
-Azure Redis Cache には、ASP.NET セッション状態とページ出力キャッシュの両方に対するプロバイダーがあります。これらのプロバイダーの Managed Cache Service バージョンを使用するアプリケーションを移行するには、まず web.config から既存のセクションを削除した後、Azure Redis Cache バージョンのプロバイダーを構成します。Azure Redis Cache ASP.NET プロバイダーの使用方法については、「[Azure Redis Cache の ASP.NET セッション状態プロバイダー](cache-asp.net-session-state-provider.md)」および「[Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー](cache-asp.net-output-cache-provider.md)」をご覧ください。
+Azure Redis Cache には、ASP.NET セッション状態とページ出力キャッシュの両方に対するプロバイダーがあります。これらのプロバイダーの Managed Cache Service バージョンを使用するアプリケーションを移行するには、まず web.config から既存のセクションを削除した後、Azure Redis Cache バージョンのプロバイダーを構成します。Azure Redis Cache ASP.NET プロバイダーの使用方法については、「[Azure Redis Cache の ASP.NET セッション状態プロバイダー](cache-aspnet-session-state-provider.md)」および「[Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)」をご覧ください。
 
 ## 次のステップ
 
 [Azure Redis Cache ドキュメント](https://azure.microsoft.com/documentation/services/cache/)のチュートリアル、サンプル、ビデオ、その他をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

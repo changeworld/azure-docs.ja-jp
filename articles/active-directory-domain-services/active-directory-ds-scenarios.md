@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/26/2016"
+	ms.date="04/11/2016"
 	ms.author="maheshu"/>
 
 
@@ -62,4 +62,4 @@ Azure RemoteApp は、ドメイン参加コレクションを作成する Contos
 
 このデプロイメント シナリオの詳細については、「[Lift-and-shift your workloads with Azure RemoteApp and Azure AD Domain Services (Azure RemoteApp と Azure AD ドメイン サービスを使用したワークロードのリフト アンド シフト)](http://blogs.msdn.com/b/rds/archive/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services.aspx)」というタイトルのリモート デスクトップ サービスのブログを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

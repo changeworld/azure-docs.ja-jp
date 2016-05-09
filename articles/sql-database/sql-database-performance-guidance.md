@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="04/19/2016"
+	ms.date="04/20/2016"
 	ms.author="carlrab" />
 
 # データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス
@@ -352,7 +352,7 @@ Azure SQL Database には、データベース管理者が一般的なインデ�
 
 この例では、次のインデックスが提案されました。
 
-	CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] \([col2])  
+	CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] ([col2])  
 
 作成後、その同じ SELECT ステートメントが今度は、スキャンの代わりに、シークを使用する別の計画を選択します。次のクエリ プランのように、より効率的に実行されます。
 
@@ -491,4 +491,4 @@ Azure SQL Database 内で使用されるスケールアウト アーキテクチ
 
 Azure SQL Database のサービス層を利用すると、クラウドに構築する各種アプリケーションの水準を上げることができます。さらにアプリケーションの調整も頻繁に行うことで、アプリケーションのパフォーマンスが強力かつ予測可能となります。このドキュメントでは、特定のパフォーマンス レベルに問題なく適合するようにデータベースのリソース利用を最適化するための推奨手法について説明します。クラウド モデルにおいては調整は継続的に実施するものであり、それにより、各種のサービス層とそのパフォーマンス レベルにおいて、管理者はパフォーマンスを最大限に引き出し、同時に Microsoft Azure Platform のコストを最小限に抑えることができます。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/27/2016"    
+	ms.date="04/24/2016"    
 	ms.author="juliako"/>
 
 
@@ -31,6 +31,7 @@
 - [音声が入力されない場合、無音オーディオ トラックを挿入する](media-services-custom-mes-presets-with-dotnet.md#silent_audio)
 - [自動インターレース解除を無効にする](media-services-custom-mes-presets-with-dotnet.md#deinterlacing)
 - [オーディオのみのプリセット](media-services-custom-mes-presets-with-dotnet.md#audio_only)
+- [複数のビデオ ファイルを連結する](media-services-custom-mes-presets-with-dotnet.md#concatenate)
 
 ##<a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
 
@@ -40,8 +41,8 @@
 - Media Encoder Standard エンコーダーの参照を取得します。
 - カスタム XML または JSON プリセットを読み込みます。XML または JSON (例: [XML](media-services-custom-mes-presets-with-dotnet.md#xml)、[JSON](media-services-custom-mes-presets-with-dotnet.md#json)) をファイルに保存し、次のコードを使用してファイルを読み込むことができます。
 
-			// Load the XML (or JSON) from the local file.
-		    string configuration = File.ReadAllText(fileName);  
+		// Load the XML (or JSON) from the local file.
+	    string configuration = File.ReadAllText(fileName);  
 - エンコード タスクをジョブに追加します。 
 - エンコードする入力資産を指定します。
 - エンコードされた資産が含まれる出力資産を作成します。
@@ -445,7 +446,7 @@
 
 このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。エンコーダーを使用して、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングすることもできます。詳細については、[このブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)をご覧ください。
 
-動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照)。StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。次の例では、入力ビデオの開始タイムスタンプは 0 であると想定しています。**Sources** 要素はスキーマの先頭に配置する必要があります。
+動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照)。StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。次の例では、入力ビデオの開始タイムスタンプは 0 であると想定しています。**[ソース]** はプリセットの先頭に配置する必要があります。
  
 ###<a id="json"></a>JSON プリセット
 	
@@ -698,7 +699,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 >
 >オーバーレイの不透明設定には対応していません。
 >
->ソース動画ファイルとオーバーレイ ファイルは、同じ資産内にある必要があります。
+>ソース ビデオ ファイルとオーバーレイ画像ファイルを同じ資産に格納する必要があります。また、ビデオ ファイルをその資産でプライマリ ファイルとして設定する必要があります。
 
 ###JSON プリセット
 	
@@ -747,7 +748,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 	      "KeyFrameInterval": "00:00:02",
 	      "H264Layers": [
 	        {
-	          "Profile": "Baseline",
+	          "Profile": "Auto",
 	          "Level": "auto",
 	          "Bitrate": 1045,
 	          "MaxBitrate": 1045,
@@ -756,8 +757,8 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 	          "EntropyMode": "Cavlc",
 	          "AdaptiveBFrame": true,
 	          "Type": "H264Layer",
-	          "Width": "400",
-	          "Height": "400",
+	          "Width": "640",
+	          "Height": "360",
 	          "FrameRate": "0/1"
 	        }
 	      ],
@@ -776,6 +777,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 	    }
 	  ]
 	}
+
 
 ###XML プリセット
 	
@@ -816,10 +818,10 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 	      <H264Layers>
 	        <H264Layer>
 	          <Bitrate>1045</Bitrate>
-	          <Width>400</Width>
-	          <Height>400</Height>
+	          <Width>640</Width>
+	          <Height>360</Height>
 	          <FrameRate>0/1</FrameRate>
-	          <Profile>Baseline</Profile>
+	          <Profile>Auto</Profile>
 	          <Level>auto</Level>
 	          <BFrames>0</BFrames>
 	          <ReferenceFrames>3</ReferenceFrames>
@@ -840,7 +842,8 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 	  </Outputs>
 	</Preset>
 
-##<a id="silent_audio"></a>入力に音声が含まれていないときに無音オーディオ トラックを挿入する
+
+##<a id="silent_audio"></a>音声が入力されない場合、無音オーディオ トラックを挿入する
 
 既定では、映像のみで音声の入っていないエンコーダーに入力を送信すると、映像データのみが含まれるファイルが出力資産に含まれます。プレーヤーによっては、このような出力ストリームを処理できないことがあります。そのような場合、この設定を利用すれば、無音のオーディオ トラックを出力に追加するようにエンコーダーに強制できます。
 
@@ -947,6 +950,116 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 	  ]
 	}
 
+##<a id="concatenate"></a>複数のビデオ ファイルを連結する
+
+複数のビデオ ファイルを連結するプリセットを生成する方法の例を次に示します。最も一般的なシナリオは、ヘッダーまたはトレーラーをメイン ビデオに追加する場合です。主な用途は、編集対象のすべてのビデオ ファイルが同じプロパティ (ビデオの解像度、フレーム レート、オーディオ トラック数など) を共有している場合です。フレーム レートやオーディオ トラック数が異なるビデオを混在させないように注意してください。
+
+###要件と考慮事項
+
+- 入力ビデオのオーディオ トラック数の上限は 1 つです。
+- 入力ビデオはすべて同じフレーム レートである必要があります。
+- ビデオを別の資産にアップロードし、各資産でプライマリ ファイルとしてビデオを設定する必要があります。
+- ビデオの再生時間を把握している必要があります。
+- 次のプリセット例では、すべての入力ビデオがゼロのタイムスタンプで始まると想定されています。ビデオの開始タイムスタンプが異なる場合、通常のライブ アーカイブの場合と同様に、StartTime 値を変更する必要があります。
+- JSON プリセットは、入力資産の AssetID 値の明示的な参照を作成します。
+- サンプル コードでは、JSON プリセットがローカル ファイル ("C:\\supportFiles\\preset.json" など) に保存されていると想定されています。また、2 つの資産が 2 つのビデオ ファイルをアップロードして作成されたこと、結果の AssetID 値を知っていることも想定されています。
+- このコード スニペットと JSON プリセットは、2 つのビデオ ファイルを連結する例です。次の方法で、複数のビデオに拡張することができます。
+
+	1. task.InputAssets.Add() を繰り返し呼び出して複数のビデオを順に追加する。
+	2. 同じ順序でエントリを追加して、JSON の対応する "Sources" 要素を編集する。 
+
+
+###.NET コード
+
+	
+	IAsset asset1 = _context.Assets.Where(asset => asset.Id == "nb:cid:UUID:606db602-efd7-4436-97b4-c0b867ba195b").FirstOrDefault();
+	IAsset asset2 = _context.Assets.Where(asset => asset.Id == "nb:cid:UUID:a7e2b90f-0565-4a94-87fe-0a9fa07b9c7e").FirstOrDefault();
+	
+	// Declare a new job.
+	IJob job = _context.Jobs.Create("Media Encoder Standard Job for Concatenating Videos");
+	// Get a media processor reference, and pass to it the name of the 
+	// processor to use for the specific task.
+	IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
+	
+	// Load the XML (or JSON) from the local file.
+	string configuration = File.ReadAllText(@"c:\supportFiles\preset.json");
+	
+	// Create a task
+	ITask task = job.Tasks.AddNew("Media Encoder Standard encoding task",
+	    processor,
+	    configuration,
+	    TaskOptions.None);
+	
+	// Specify the input videos to be concatenated (in order).
+	task.InputAssets.Add(asset1);
+	task.InputAssets.Add(asset2);
+	// Add an output asset to contain the results of the job. 
+	// This output is specified as AssetCreationOptions.None, which 
+	// means the output asset is not encrypted. 
+	task.OutputAssets.AddNew("Output asset",
+	    AssetCreationOptions.None);
+	
+	job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
+	job.Submit();
+	job.GetExecutionProgressTask(CancellationToken.None).Wait();
+
+###JSON プリセット
+
+連結する資産の ID と、各ビデオの適切な時間セグメントを使用して、カスタム プリセットを更新します。
+
+	{
+	  "Version": 1.0,
+	  "Sources": [
+	    {
+	      "AssetID": "606db602-efd7-4436-97b4-c0b867ba195b",
+	      "StartTime": "00:00:01",
+	      "Duration": "00:00:15"
+	    },
+	    {
+	      "AssetID": "a7e2b90f-0565-4a94-87fe-0a9fa07b9c7e",
+	      "StartTime": "00:00:02",
+	      "Duration": "00:00:05"
+	    }
+	  ],
+	  "Codecs": [
+	    {
+	      "KeyFrameInterval": "00:00:02",
+	      "SceneChangeDetection": true,
+	      "H264Layers": [
+	        {
+	          "Level": "auto",
+	          "Bitrate": 1800,
+	          "MaxBitrate": 1800,
+	          "BufferWindow": "00:00:05",
+	          "BFrames": 3,
+	          "ReferenceFrames": 3,
+	          "AdaptiveBFrame": true,
+	          "Type": "H264Layer",
+	          "Width": "640",
+	          "Height": "360",
+	          "FrameRate": "0/1"
+	        }
+	      ],
+	      "Type": "H264Video"
+	    },
+	    {
+	      "Channels": 2,
+	      "SamplingRate": 48000,
+	      "Bitrate": 128,
+	      "Type": "AACAudio"
+	    }
+	  ],
+	  "Outputs": [
+	    {
+	      "FileName": "{Basename}_{Width}x{Height}_{VideoBitrate}.mp4",
+	      "Format": {
+	        "Type": "MP4Format"
+	      }
+	    }
+	  ]
+	}
+	
+
 ##Media Services のラーニング パス
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -959,4 +1072,4 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0427_2016-->

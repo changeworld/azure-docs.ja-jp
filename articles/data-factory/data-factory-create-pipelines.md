@@ -226,18 +226,19 @@ Azure Data Factory でパイプラインを作成する一般的な手順は次�
 
 タグ | 説明 | 必須
 --- | ----------- | --------
-name | アクティビティまたはパイプラインの名前です。アクティビティまたはパイプラインが実行するように構成されているアクションを表す名前を指定します<br/><ul><li>最大文字数: 260</li><li>文字、数字、またはアンダースコア (\_) で始める必要があります</li><li>次の文字は使用できません: “.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\\”</li></ul> | ○
-description | アクティビティまたはパイプラインの用途を説明するテキスト | ○
-type | アクティビティの種類を指定します。アクティビティの種類については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」および「[データ変換アクティビティ](data-factory-data-transformation-activities.md)」を参照してください。 | ○
-inputs | アクティビティによって使用される入力テーブル<br/><br/>// 1 つの入力テーブル<br/>"inputs": [ { "name": "inputtable1" } ],<br/><br/>// 2 つの入力テーブル<br/>"inputs": [ { "name": "inputtable1" }, { "name": "inputtable2" } ], | ○
+name | アクティビティまたはパイプラインの名前です。アクティビティまたはパイプラインが実行するように構成されているアクションを表す名前を指定します<br/><ul><li>最大文字数: 260</li><li>文字、数字、またはアンダースコア (\_) で始める必要があります</li><li>次の文字は使用できません: “.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\\”</li></ul> | ○ 
+description | アクティビティまたはパイプラインの用途を説明するテキスト | ○ 
+type | アクティビティの種類を指定します。アクティビティの種類については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」および「[データ変換アクティビティ](data-factory-data-transformation-activities.md)」を参照してください。 | ○ 
+inputs | アクティビティによって使用される入力テーブル<br/><br/>// 1 つの入力テーブル<br/>"inputs": [ { "name": "inputtable1" } ],<br/><br/>// 2 つの入力テーブル<br/>"inputs": [ { "name": "inputtable1" }, { "name": "inputtable2" } ], | ○ 
 outputs | アクティビティによって使用される出力テーブル。// 1 つの出力テーブル<br/>"outputs": [ { "name": "outputtable1" } ],<br/><br/>// 2 つの出力テーブル<br/>"outputs": [ { "name": "outputtable1" }, { "name": "outputtable2" } ], | ○ 
-linkedServiceName | アクティビティで使用されるリンクされたサービスの名前。<br/><br/>アクティビティでは、必要なコンピューティング環境にリンクするリンクされたサービスの指定が必要な場合があります。 | ○: HDInsight アクティビティおよび Azure Machine Learning バッチ スコアリング アクティビティの場合<br/><br/>×: 他のすべての場合 typeProperties | 
-typeProperties セクションのプロパティは、アクティビティの種類に依存します。詳細については、各個別アクティビティの記事を参照してください | 
-× policy | アクティビティの実行時の動作に影響を与えるポリシー。指定されていない場合は、既定のポリシーが使用されます。詳細については後で説明します | × 
+linkedServiceName | アクティビティで使用されるリンクされたサービスの名前。<br/><br/>アクティビティでは、必要なコンピューティング環境にリンクするリンクされたサービスの指定が必要な場合があります。 | ○: HDInsight アクティビティおよび Azure Machine Learning バッチ スコアリング アクティビティの場合<br/><br/>×: 他のすべての場合 
+typeProperties | typeProperties セクションのプロパティは、アクティビティの種類に依存します。詳細については、各個別アクティビティの記事を参照してください | × 
+policy | アクティビティの実行時の動作に影響を与えるポリシー。指定されていない場合は、既定のポリシーが使用されます。詳細については後で説明します | × 
 start | パイプラインの開始日時。[ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)にする必要があります。(例: 2014-10-14T16:32:41Z)。<br/><br/>東部標準時などの現地時間を指定できます (例: 東部標準時の午前 6 時の場合、"2016-02-27T06:00:00**-05:00**")。<br/><br/>start プロパティと end プロパティで、パイプラインの有効期間を指定します。出力スライスは、この有効期間にのみ生成されます。 | ×<br/><br/>end プロパティの値を指定する場合、start プロパティの値も指定する必要があります。<br/><br/>パイプラインを作成するには、開始時間と終了時間の両方が空でもかまいませんが、パイプラインを実行できる有効期間を設定するには、両方の時間を指定する必要があります。パイプラインの作成時に開始時間と終了時間を指定しない場合、後で Set-AzureRmDataFactoryPipelineActivePeriod コマンドレットを使用して設定できます。 
 end | パイプラインの終了日時。ISO 形式で指定する必要があります。(例: 2014-10-14T17:32:41Z) <br/><br/>東部標準時などの現地時間を指定できます (例: 東部標準時の午前 6 時の場合、"2016-02-27T06:00:00**-05:00**")。<br/><br/>無期限でパイプラインを実行するには、end プロパティの値として 9999-09-09 を指定します。| × <br/><br/>start プロパティの値を指定する場合、end プロパティの値も指定する必要があります。<br/><br/>**start** プロパティの注意事項を参照してください。 
 isPaused | true に設定すると、パイプラインは実行されません。既定値 = false。このプロパティを使用して有効または無効にできます。 | × 
-scheduler | アクティビティのスケジュールを定義します。サブプロパティは、[データセットの availability プロパティ](data-factory-create-datasets.md#Availability)と同じです。| × | 
+scheduler | アクティビティのスケジュールを定義します。サブプロパティは、[データセットの availability プロパティ](data-factory-create-datasets.md#Availability)にあるサブプロパティと同じです。| いいえ | | pipelineMode | パイプラインの実行のスケジューリングを行うためのメソッドです。使用可能な値: "Scheduled" (既定)、"Onetime"。<br/><br/>"Scheduled" は、パイプラインがアクティブな期間 (開始時刻と終了時刻) に応じて、指定された間隔で実行されることを意味します。"Onetime" はパイプラインが 1回だけ実行されることを意味します。現時点では、作成された Onetime パイプラインを変更または更新することはできません。Onetime パイプラインの設定について詳しくは、「[Onetime パイプライン](data-factory-scheduling-and-execution.md#onetime-pipeline)」を参照してください。 |いいえ | |expirationTime |パイプラインの作成後に、パイプラインが有効であり、プロビジョニングされた状態である必要がある時間。パイプラインは、アクティブ、エラー、または保留中の実行がない限り、有効期限に達すると自動的に削除されます。 | いいえ | | datasets | パイプラインで定義されたアクティビティで使用されるデータセットの一覧。これは、このパイプラインに固有の、Data Factory 内で定義されていないデータセットを定義するために使用できます。このパイプライン内で定義されているデータセットは、このパイプラインでのみ使用でき、共有することはできません。詳細については、「[範囲指定されたデータセット](data-factory-create-datasets.md#scoped-datasets)」を参照してください。 | いいえ | 
+ 
 
 ### アクティビティの種類
 Azure Data Factory には、[データ移動](data-factory-data-movement-activities.md)および[データ変換](data-factory-data-transformation-activities.md)のための広範なアクティビティがあります。
@@ -320,7 +321,7 @@ Azure PowerShell を使用して、Azure Data Factory にパイプラインを�
 
 	New-AzureRmDataFactoryPipeline -ResourceGroupName ADF -Name DPWikisample -DataFactoryName wikiADF -File c:\DPWikisample.json
 
-パイプラインを備えた Data Factory を作成するためのエンド ツー エンド チュートリアルについては、「[Azure PowerShell を使用した初めての Azure Data Factory パイプラインの作成](data-factory-build-your-first-pipeline-using-powershell.md)」を参照してください。
+パイプラインを備えた Data Factory を作成するためのエンド ツー エンド チュートリアルについては、「[Azure PowerShell を使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-powershell.md)」を参照してください。
 
 ### .NET SDK の使用
 .NET SDK を使用してパイプラインを作成およびデプロイすることもできます。このメカニズムを利用すると、プログラムでパイプラインを作成できます。詳細については、「[Data Factory をプログラムで作成、管理、監視する](data-factory-create-data-factories-programmatically.md)」を参照してください。
@@ -368,4 +369,4 @@ REST API を使用してパイプラインを作成およびデプロイする�
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

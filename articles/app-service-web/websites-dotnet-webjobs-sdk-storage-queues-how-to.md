@@ -544,7 +544,7 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 高スループットのシナリオ用にダッシュボード ログを無効にします。既定では、SDK はストレージにログを書き込みます。このアクティビティにより、多数のメッセージの処理時にパフォーマンスが低下する場合があります。ログを無効にするには、ダッシュボード接続文字列を、次の例に示すように null に設定します。
 
 		JobHostConfiguration config = new JobHostConfiguration();       
-		config.DashboardConnectionString = “”;        
+		config.DashboardConnectionString = "";        
 		JobHost host = new JobHost(config);
 		host.RunAndBlock();
 
@@ -611,4 +611,4 @@ public static void ErrorMonitor(
 このガイドでは、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0427_2016-->

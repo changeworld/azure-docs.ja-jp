@@ -180,9 +180,9 @@ Azure ポータルで関数を開き、関数アプリが実行中であるこ�
 
 #### 関数アプリの SCM (Kudu) エンドポイントを使用して project.json をアップロードするには
 
-1. *https://<function_app_name>.scm.azurewebsites.net* に移動します。
+1. `https://<function_app_name>.scm.azurewebsites.net` に移動します。
 
-2. **[デバッグ コンソール] > [CMD] **の順にクリックします。
+2. **[デバッグ コンソール] > [CMD]** の順にクリックします。
 
 3. *D:\\home\\site\\wwwroot<関数名>* に移動します。
 
@@ -258,4 +258,4 @@ public static void MyLogger(TraceWriter log, string logtext)
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

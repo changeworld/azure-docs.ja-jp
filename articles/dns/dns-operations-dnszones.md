@@ -3,7 +3,7 @@
    description="Azure Powershell を使用して DNS ゾーンを管理できます。Azure DNS の DNS ゾーンを更新、削除、および作成する方法" 
    services="dns" 
    documentationCenter="na" 
-   authors="joaoma" 
+   authors="cherylmc" 
    manager="carmonm" 
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
    ms.date="03/17/2016"
-   ms.author="joaoma"/>
+   ms.author="cherylmc"/>
 
 # PowerShell を使用して DNS ゾーンを管理する方法
 
@@ -113,4 +113,4 @@ Get-AzureRmDnsZone の $zone オブジェクトを使用してゾーンを指定
 
 [.NET SDK を使用した操作の自動化](dns-sdk.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->
