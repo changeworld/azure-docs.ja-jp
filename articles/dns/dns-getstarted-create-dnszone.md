@@ -3,7 +3,7 @@
    description="Azure DNS の DNS ゾーンを作成する方法について説明します。これは、PowerShell を使用して DNS ドメインのホストを開始するための最初の DNS ゾーンを作成する手順です。"
    services="dns"
    documentationCenter="na"
-   authors="joaoma"
+   authors="cherylmc"
    manager="carmonm"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/03/2016"
-   ms.author="joaoma"/>
+   ms.author="cherylmc"/>
 
 # Powershell で Azure DNS の使用を開始する
 
@@ -147,4 +147,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 [レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -3,7 +3,7 @@
 
 このトピックでは、次の操作について説明します。
 
-- Azure の仮想マシンをプロビジョニングしているときに、スクリプトやデータを挿入する。
+- Azure の仮想マシン (VM) をプロビジョニングしているときに、スクリプトやデータを挿入する。
 
 - Windows や Linux 用にデータを取得する。
 
@@ -13,33 +13,32 @@
 
 ## Azure 仮想マシンにカスタム データを挿入する
 
-この機能は、現在、[Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-xplat-cli)でのみサポートされています。`azure vm create` コマンドのオプションはすべて使用できますが、以下はきわめて基本的な方法の 1 つです。
+この機能は、現在、[Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-xplat-cli)でのみサポートされています。ここでは、データを含む `custom-data.txt` ファイルを作成し、プロビジョニング時に VM にそれを挿入します。`azure vm create` コマンドのオプションはすべて使用できますが、以下はきわめて基本的な方法の 1 つです。
 
 ```
-    PASSWORD='AcceptablePassword -- more than 8 chars, a cap, a num, a special'
-    VMNAME=mycustomdataubuntu
-    USERNAME=username
-    VMIMAGE= An image chosen from among those listed by azure vm image list
-    azure vm create $VMNAME $VMIMAGE $USERNAME $PASSWORD --location "West US" --json -d ./custom-data.txt -e 22
+    azure vm create <vmname> <vmimage> <username> <password> \  
+    --location "West US" --ssh 22 \  
+    --custom-data ./custom-data.txt  
 ```
 
 
 ## 仮想マシンでカスタム データを使用する
 
-+ Azure 仮想マシンが Windows ベース仮想マシンの場合、カスタム データのファイルは `%SYSTEMDRIVE%\AzureData\CustomData.bin` に保存されます。このファイルは、ローカル コンピューターから新しい仮想マシンに転送するために Base64 でエンコードされますが、自動的にデコードされるため、直ちに開いて使用できます。
++ Azure VM が Windows ベース VM の場合、カスタム データのファイルは `%SYSTEMDRIVE%\AzureData\CustomData.bin` に保存されます。このファイルは、ローカル コンピューターから新しい VM に転送するために Base64 でエンコードされますが、自動的にデコードされるため、直ちに開いて使用できます。
 
    > [AZURE.NOTE] このファイルが既に存在している場合には、上書きされます。ディレクトリのセキュリティは、**"システム: フル コントロール"** と **"管理者: フル コントロール"** に設定されます。
 
-+ Azure 仮想マシンが Linux ベースの仮想マシンの場合、カスタム データのファイルは次の 2 箇所にあります。データは base64 でエンコードされているので、最初にデータをデコードする必要があります。
++ Azure VM が Linux ベースの VM の場合、カスタム データのファイルは、ディストリビューションに基づき、次の場所に置かれます。データが base64 でエンコードされていれば、最初にデータをデコードする必要があります。
 
-    + `/var/lib/waagent/ovf-env.xml`
-    + `/var/lib/waagent/CustomData`
+    - `/var/lib/waagent/ovf-env.xml`
+    - `/var/lib/waagent/CustomData`
+    - `/var/lib/cloud/instance/user-data.txt` 
 
 
 
 ## Azure での cloud-Init
 
-Azure 仮想マシンが Ubuntu イメージまたは CoreOS イメージから作成されている場合は、CustomData を使用して cloud-config を cloud-init に送信できます。また、カスタム データ ファイルがスクリプトの場合は、cloud-init でスクリプトを実行できます。
+Azure VM が Ubuntu イメージまたは CoreOS イメージから作成されている場合は、CustomData を使用して cloud-config を cloud-init に送信できます。また、カスタム データ ファイルがスクリプトの場合は、cloud-init でスクリプトを実行できます。
 
 ### Ubuntu Cloud Image
 
@@ -59,4 +58,4 @@ Azure 仮想マシンが Ubuntu イメージまたは CoreOS イメージから�
 
 [Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-xplat-cli)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0427_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/28/2015"
+   ms.date="04/25/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager での MMC メニュー操作の使用
@@ -27,9 +27,7 @@ StorSimple Snapshot Manager では、すべての操作メニューと **[操作
 - リストのエクスポート 
 - ヘルプ 
 
-これらの操作は Microsoft 管理コンソール (MMC) の機能であり、StorSimple Snapshot Manager に固有のものではありません。
-
-このチュートリアルでは、これらの操作について説明し、StorSimple Snapshot Manager での各操作の使用方法を示します。
+これらの操作は Microsoft 管理コンソール (MMC) の機能であり、StorSimple Snapshot Manager に固有のものではありません。このチュートリアルでは、これらの操作について説明し、StorSimple Snapshot Manager での各操作の使用方法を示します。
 
 ## 表示
 
@@ -128,4 +126,4 @@ StorSimple Snapshot Manager では、すべての操作メニューと **[操作
 - [StorSimple Snapshot Manager のユーザー インターフェイスの詳細](storsimple-use-snapshot-manager.md)
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0427_2016-->

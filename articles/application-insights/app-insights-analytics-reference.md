@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="04/18/2016" 
 	ms.author="awills"/>
 
 # Analytics のリファレンス
@@ -25,27 +25,25 @@
 
 | | | | | 
 |---|---|---|---|---
-|[ago](#ago)|[dayofweek](#dayofweek)|[let 句](#let-clause)|[range](#range)|[summarize 演算子](#summarize-operator)
-|[任意](#any)|[dcount](#dcount)|[limit 演算子](#limit-operator)|[range 演算子](#range-operator)|[take 演算子](#take-operator)
-|[argmax](#argmax)|[let 句の動的オブジェクト](#dynamic-objects-in-let-clauses)|[makelist](#makelist)|[reduce 演算子](#reduce-operator)|[todatetime](#todatetime)
-|[argmin](#argmin)|[extend 演算子](#extend-operator)|[makeset](#makeset)|[render ディレクティブ](#render-directive)|[todouble](#todouble)
-|[算術演算子](#arithmetic-operators)|[extract](#extract)|[max](#max)|[replace](#replace)|[todynamic](#todynamic)
-|[配列とオブジェクトのリテラル](#array-and-object-literals)|[extractjson](#extractjson)|[min](#min)|[スカラーの比較](#scalar-comparisons)|[toint](#toint)
-|[arraylength](#arraylength)|[floor](#floor)|[mvexpand 演算子](#mvexpand-operator)|[sort 演算子](#sort-operator)|[tolong](#tolong)
-|[avg](#avg)|[getmonth](#getmonth)|[notempty](#notempty)|[split](#split)|[tolower](#tolower)
-|[bin](#bin)|[gettype](#gettype)|[notnull](#notnull)|[sqrt](#sqrt)|[top 演算子](#top-operator)
-|[ブール型リテラル](#boolean-literals)|[getyear](#getyear)|[now](#now)|[startofmonth](#startofmonth)|[totimespan](#totimespan)
-|[ブール演算子](#boolean-operators)|[hash](#hash)|[数値リテラル](#numeric-literals)|[startofyear](#startofyear)|[toupper](#toupper)
-|[buildschema](#buildschema)|[iff](#iff)|[難読化された文字列リテラル](#obfuscated-string-literals)|[stdev](#stdev)|[treepath](#treepath)
-|[キャスト](#casts)|[isempty](#isempty)|[parse 演算子](#parse-operator)|[strcat](#strcat)|[union 演算子](#union-operator)
-|[count](#count)|[isnotempty](#isnotempty)|[parsejson](#parsejson)|[文字列の比較](#string-comparisons)|[variance](#variance)
-|[count 演算子](#count-operator)|[isnotnull](#isnotnull)|[percentile](#percentile)|[文字列リテラル](#string-literals)|[where 演算子](#where-operator)
-|[countof](#countof)|[isnull](#isnull)|[percentiles](#percentiles)|[strlen](#strlen)
-|[日付と時刻の式](#date-and-time-expressions)|[join 演算子](#join-operator)|[project 演算子](#project-operator)|[substring](#substring)
-|[日付と時刻のリテラル](#date-and-time-literals)|[JSON パス式](#json-path-expressions)|[rand](#rand)|[sum](#sum)
-
-
-
+|[ago](#ago)|[dayofweek](#dayofweek)|[let 句](#let-clause)|[rand](#rand)|[sum](#sum)
+|[任意](#any)|[dcount](#dcount)|[limit 演算子](#limit-operator)|[range](#range)|[summarize 演算子](#summarize-operator)
+|[argmax](#argmax)|[let 句の動的オブジェクト](#dynamic-objects-in-let-clauses)|[log](#log)|[range 演算子](#range-operator)|[take 演算子](#take-operator)
+|[argmin](#argmin)|[exp](#exp)|[makelist](#makelist)|[reduce 演算子](#reduce-operator)|[todatetime](#todatetime)
+|[算術演算子](#arithmetic-operators)|[extend 演算子](#extend-operator)|[makeset](#makeset)|[render ディレクティブ](#render-directive)|[todouble](#todouble)
+|[配列とオブジェクトのリテラル](#array-and-object-literals)|[extract](#extract)|[max](#max)|[replace](#replace)|[todynamic](#todynamic)
+|[arraylength](#arraylength)|[extractjson](#extractjson)|[min](#min)|[restrict 句](#restrict-clause)|[toint](#toint)
+|[avg](#avg)|[floor](#floor)|[mvexpand 演算子](#mvexpand-operator)|[スカラーの比較](#scalar-comparisons)|[tolong](#tolong)
+|[bin](#bin)|[getmonth](#getmonth)|[notempty](#notempty)|[sort 演算子](#sort-operator)|[tolower](#tolower)
+|[ブール型リテラル](#boolean-literals)|[gettype](#gettype)|[notnull](#notnull)|[split](#split)|[top 演算子](#top-operator)
+|[ブール演算子](#boolean-operators)|[getyear](#getyear)|[now](#now)|[sqrt](#sqrt)|[totimespan](#totimespan)
+|[buildschema](#buildschema)|[hash](#hash)|[数値リテラル](#numeric-literals)|[startofmonth](#startofmonth)|[toupper](#toupper)
+|[キャスト](#casts)|[iff](#iff)|[難読化された文字列リテラル](#obfuscated-string-literals)|[startofyear](#startofyear)|[treepath](#treepath)
+|[count](#count)|[isempty](#isempty)|[parse 演算子](#parse-operator)|[stdev](#stdev)|[union 演算子](#union-operator)
+|[count 演算子](#count-operator)|[isnotempty](#isnotempty)|[parsejson](#parsejson)|[strcat](#strcat)|[variance](#variance)
+|[countif](#countif)|[isnotnull](#isnotnull)|[percentile](#percentile)|[文字列の比較](#string-comparisons)|[where 演算子](#where-operator)
+|[countof](#countof)|[isnull](#isnull)|[percentiles](#percentiles)|[文字列リテラル](#string-literals)
+|[日付と時刻の式](#date-and-time-expressions)|[join 演算子](#join-operator)|[project 演算子](#project-operator)|[strlen](#strlen)
+|[日付と時刻のリテラル](#date-and-time-literals)|[JSON パス式](#json-path-expressions)|[project-away 演算子](#project-away-operator)|[substring](#substring)
 
 
 ## クエリおよび演算子
@@ -54,12 +52,15 @@
 
 
 ```AIQL
-requests
-| where client_City == "London" and timestamp > ago(3d)
-| count
+requests // The request table starts this pipeline.
+| where client_City == "London" // filter the records
+   and timestamp > ago(3d)
+| count 
 ```
     
-パイプ文字 `|` が先頭に配置された各フィルターは、いくつかのパラメーターが設定される*演算子*のインスタンスです。この演算子への入力は、前のパイプラインの結果であるテーブルです。ほとんどの場合、パラメーターは入力の列に対する[スカラー式](##scalars)です。まれに、入力列の名前である場合や、2 つ目のテーブルである場合もあります。列と行が 1 つずつしかなくても、クエリの結果は常にテーブルです。
+パイプ文字 `|` が先頭に配置された各フィルターは、いくつかのパラメーターが設定される*演算子*のインスタンスです。この演算子への入力は、前のパイプラインの結果であるテーブルです。ほとんどの場合、パラメーターは入力の列に対する[スカラー式](##scalars)ですが、まれに、入力列の名前である場合や、2 つ目のテーブルである場合もあります。列と行が 1 つずつしかなくても、クエリの結果は常にテーブルです。
+
+クエリは、単一の改行を含めることができますが、空白行で終了します。クエリでは、`//` と行末の間に注釈が含まれる場合があります。
 
 クエリの前には 1 つ以上の [let 句](#let-clause)が配置されることがあります。これは、クエリ内で使用できるスカラー、テーブル、関数を定義するものです。
 
@@ -114,7 +115,7 @@ requests | count
 **引数**
 
 * *T:* 入力テーブル。
-* *ColumnName:* 追加する列の名前。 
+* *ColumnName:* 追加する列の名前。[名前](#names)は、大文字と小文字が区別されます。また、名前には、アルファベット、数字、または "\_" 文字を使用できます。キーワードまたは名前を他の文字で囲む場合は、`['...']` または `["..."]` を使います。
 * *Expression:* 既存の列に対する計算。
 
 **戻り値**
@@ -123,7 +124,7 @@ requests | count
 
 **ヒント**
 
-* ソース列を削除するか、ソース列の名前を変更する場合は、[`project`](#project-operator) を代わりに使います。
+* 複数の列を削除するか、複数の列の名前を変更する場合は、[`project`](#project-operator) を代わりに使います。
 * 長い式で使う短い名前を取得するためだけに `extend` を使うのは避けてください。`...| extend x = anonymous_user_id_from_client | ... func(x) ...` 
 
     テーブルのネイティブ列のインデックスは既に作成されていますが、新しい名前により、インデックスが作成されていない追加の列が定義されるため、クエリの実行速度が低下する可能性があります。
@@ -146,7 +147,7 @@ traces
 
 **構文**
 
-    Table1 | join [kind=Kind] \(Table2) on CommonColumn [, ...]
+    Table1 | join [kind=Kind] (Table2) on CommonColumn [, ...]
 
 **引数**
 
@@ -223,7 +224,7 @@ traces
        (interval:timespan) { requests | where timestamp > ago(interval) };
     Recent(3h) | count
 
-let 句は、名前を表形式の結果、スカラー値、または関数にバインドします。この句はクエリのプレフィックスであり、バインドのスコープはそのクエリです(let では、セッションの後の方で使用するものに名前を付けることはできません)。
+let 句は、[名前](#names)を表形式の結果、スカラー値、または関数にバインドします。この句はクエリのプレフィックスであり、バインドのスコープはそのクエリです(let では、セッションの後の方で使用するものに名前を付けることはできません)。
 
 **構文**
 
@@ -237,9 +238,6 @@ let 句は、名前を表形式の結果、スカラー値、または関数に�
 * *plain\_query:* let 句のプレフィックスが付いていないクエリ。
 
 **例**
-
-
-
 
     let rows(n:long) = range steps from 1 to n step 1;
     rows(10) | ...
@@ -448,7 +446,7 @@ StormEvents
 **引数**
 
 * *T:* 入力テーブル。
-* *ColumnName:* 出力に表示される列の名前。*Expression* を指定しない場合は、この名前の列が入力に存在する必要があります。 
+* *ColumnName:* 出力に表示される列の名前。*Expression* を指定しない場合は、この名前の列が入力に存在する必要があります。[名前](#names)は、大文字と小文字が区別されます。また、名前には、アルファベット、数字、または "\_" 文字を使用できます。キーワードまたは名前を他の文字で囲む場合は、`['...']` または `["..."]` を使います。
 * *Expression:* 入力列を参照する、省略可能なスカラー式。 
 
     入力内の既存の列と同じ名前を持つ新しい計算列を返すことは、問題ありません。
@@ -459,18 +457,23 @@ StormEvents
 
 **例**
 
-次の例は、`project` 演算子を使って実行できる何種類かの操作を示しています。入力テーブル `T` には、`int` 型の列が 3 つあります (`A`、`B`、`C`)。
+次の例は、`project` 演算子を使って実行できる複数の種類の操作を示しています。入力テーブル `T` には、`int` 型の列が 3 つあります (`A`、`B`、`C`)。
 
 ```AIQL
 T
 | project
-    X=C,                       // Rename column C to X
-    A=2*B,                     // Calculate a new column A from the old B
+    X=C,               // Rename column C to X
+    A=2*B,             // Calculate a new column A from the old B
     C=strcat("-",tostring(C)), // Calculate a new column C from the old C
-    B=2*B                      // Calculate a new column B from the old B
+    B=2*B,              // Calculate a new column B from the old B
+    ['where'] = client_City // rename, using a keyword as a column name
 ```
 
+### project-away 演算子
 
+    T | project-away column1, column2, ...
+
+指定された列を除外します。結果には、指定した列以外のすべての入力列が含まれます。
 
 ### range 演算子
 
@@ -495,14 +498,14 @@ T
 
 * *ColumnName:* 出力テーブル内の 1 つの列の名前。
 * *Start:* 出力の最小値。
-* *Stop:* 出力で生成される最高値 (*step* でこの値をステップオーバーする場合は、最高値へのバインド)。
+* *Stop:* 出力で生成される最高値 (*step* によって最高値を超過する場合は、限度内の最高値)。
 * *Step:* 2 つの連続する値の差異。 
 
 この引数は、数値、日付、または期間の値である必要があります。テーブルの列を参照することはできません(入力テーブルに基づいて範囲を計算する場合は、[range *関数*](#range)を使います。その際は、[mvexpand 演算子](#mvexpand-operator)も組み合わせて使うことになると思われます)。
 
 **戻り値**
 
-*ColumnName* という 1 つの列を持つテーブルです。その列の値は、*Start*、*Start* + *Step* というぐあいに続き、*Stop* までとなります。
+*ColumnName* という 1 つの列を持つテーブルです。その列の値は、*Start*、*Start* + *Step* というように続き、*Stop* までとなります。
 
 **例**
 
@@ -572,6 +575,15 @@ range timestamp from ago(4h) to now() step 1m
 
 render では、テーブルの表示方法をプレゼンテーション層に指示します。パイプの最後の要素である必要があります。特定のプレゼンテーション メソッドでクエリを保存でき、ディスプレイのコントロールの代わりに使用できる便利な方法です。
 
+### restrict 句 
+
+以下に示す演算子で使用可能なテーブル名のセットを指定します。次に例を示します。
+
+    let e1 = requests | project name, client_City;
+    let e2 =  requests | project name, success;
+    // Exclude predefined tables from the union:
+    restrict access to (e1, e2);
+    union * |  take 10 
 
 ### sort 演算子 
 
@@ -613,7 +625,7 @@ Traces
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-各間隔 ([0,10.0]、\[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
+各間隔 ([0,10.0]、[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
 
 
 **構文**
@@ -625,8 +637,8 @@ Traces
 
 **引数**
 
-* *Column:* 結果列の省略可能な名前。既定値は式から派生した名前です。 
-* *Aggregation:* 引数として列名を持つ、`count()` や `avg()` などの集計関数を呼び出します。[集計](#aggregations)を参照してください。
+* *Column:* 結果列の省略可能な名前。既定値は式から派生した名前です。[名前](#names)は、大文字と小文字が区別されます。また、名前には、アルファベット、数字、または "\_" 文字を使用できます。キーワードまたは名前を他の文字で囲む場合は、`['...']` または `["..."]` を使います。
+* *Aggregation:* 引数として列名を持つ、`count()` や `avg()` などの集計関数を呼び出します。「[集計](#aggregations)」を参照してください。
 * *GroupExpression:* 列に対する式です。個別の値のセットを示します。通常は、限られた値のセットが既に指定されている列名か、引数として数値列または時間列を持つ `bin()` になります。 
 
 `bin()` を使用せずに数値式または時間式を指定した場合、Analytics は自動的に `1h` (時間の場合) または `1.0` (数値の場合) の間隔でそれを適用します。
@@ -690,9 +702,9 @@ Traces
 **引数**
 
 * *Table1*, *Table2* ...
- *  `events` などのテーブルの名前
- *  または `(events | where id==42)` などのクエリ式
- *  ワイルドカードで指定されたテーブルのセット。たとえば、`E*` は、名前が `E` から始まるデータベース内の全テーブルを結合します。
+ *  テーブルの名前 (`requests` など)、または [let 句](#let-clause)で定義されたテーブルの名前
+ *  クエリ式 (`(requests | where success=="True")` など)
+ *  ワイルドカードで指定されたテーブルのセット。たとえば、`e*` は、"exceptions" テーブルと共に、前述の let 句で定義された、名前が "e" で始まるすべてのテーブルの和集合を形成します。
 * `kind`: 
  * `inner` - 結果には、すべての入力テーブルに共通する列のサブセットが含まれます。
  * `outer` - 結果には、入力のいずれかに存在するすべての列が含まれます。入力行で定義されていなかったセルは `null` に設定されます。
@@ -700,7 +712,7 @@ Traces
 
 **戻り値**
 
-すべての入力テーブルに存在する行と同数の行を含むテーブル。
+すべての入力テーブルに存在する行と同数の行と、入力に存在する一意の列名と同数の列を含むテーブル。
 
 **例**
 
@@ -782,6 +794,10 @@ Traces
 
 ## 集計
 
+集計とは、[summarize 演算](#summarize-operator)で作成されたグループの値を結合するための関数です。たとえば、次のクエリでは、dcount() が集計関数です。
+
+    requests | summarize dcount(name) by success
+
 ### 任意 
 
     any(Expression)
@@ -806,7 +822,7 @@ traces
     argmin(ExprToMinimize, * | ExprToReturn  [ , ... ] )
     argmax(ExprToMaximize, * | ExprToReturn  [ , ... ] ) 
 
-グループ内で最小化/最大化 (*ExprToMaximize*) する行を検索し、*ExprToReturn* の値を返します (`*` の場合は、行全体を返す)。
+グループ内で最小化/最大化 (*ExprToMaximize*) する行を検索し、*ExprToReturn* の値を返します (`*` の場合は、行全体を返します)。
 
 **ヒント**: パススルーされた列の名前は自動的に変更されます。正しい名前を使用していることを確認するには、別の演算子に結果をパイプする前に `take 5` を使用して結果を調べます。
 
@@ -935,13 +951,22 @@ traces
 **パフォーマンス ヒント**: `where filter | summarize count()` の代わりに `summarize count(filter)` を使用します。
 
 > [AZURE.NOTE] 要求、例外、またはその他の発生したイベントの数を検索する場合は、count() を使用しないでください。[サンプリング](app-insights-sampling.md)の実行中のデータ ポイントの数は、実際のイベントの数より少なくなります。代わりに `summarize sum(itemCount)...` を使用してください。itemCount プロパティには、保持されている各データ ポイントで表される元のイベントの数が反映されます。
-   
+
+### countif
+
+    countif(Predicate)
+
+*Predicate* が `true` と評価された行の数を返します。
+
+**パフォーマンス ヒント**: `where filter | summarize count()` の代わりに `summarize countif(filter)` を使用します。
+
+> [AZURE.NOTE] 要求、例外、またはその他の発生したイベントの数を検索する場合は、countif() を使用しないでください。[サンプリング](app-insights-sampling.md)の実行中のデータ ポイントの数は、実際のイベントの数より少なくなります。代わりに `summarize sum(itemCount)...` を使用してください。itemCount プロパティには、保持されている各データ ポイントで表される元のイベントの数が反映されます。
 
 ### dcount
 
     dcount( Expression [ ,  Accuracy ])
 
-グループ内にある*式*の個別の値の概数を返します(個別の値のリストを表示するには、[`makeset`](#makeset) を使用します)。
+グループ内にある*式*の個別の値の概数を返します (個別の値のリストを表示するには、[`makeset`](#makeset) を使用します)。
 
 *Accuracy* を指定した場合は、速度と精度のバランスが制御されます。
 
@@ -952,7 +977,7 @@ traces
 **例**
 
     pageViews 
-    | summarize countries=dcount(client_City) 
+    | summarize cities=dcount(client_City) 
       by client_CountryOrRegion
 
 ![](./media/app-insights-analytics-aggregations/dcount.png)
@@ -969,19 +994,19 @@ traces
 
     makeset(Expression [ , MaxSetSize ] )
 
-グループ内にある*式*で使用される個別の値セットの `dynamic` (JSON) 配列を返します。(ヒント: 単に個別の値をカウントする場合は、[`dcount`](#dcount) を使用します。)
+グループ内にある*式*で使用される個別の値セットの `dynamic` (JSON) 配列を返します (ヒント: 単に個別の値をカウントする場合は、[`dcount`](#dcount) を使用します)。
   
 *  *MaxSetSize* は、返される要素の最大数に対する省略可能な整数制限です (既定値は *128*)。
 
 **例**
 
     pageViews 
-    | summarize countries=makeset(client_City) 
+    | summarize cities=makeset(client_City) 
       by client_CountryOrRegion
 
 ![](./media/app-insights-analytics-aggregations/makeset.png)
 
-逆の処理について [`mvexpand` 演算子](#mvexpand-operator)も参照してください。
+逆の処理を実行する [`mvexpand` 演算子](#mvexpand-operator)も参照してください。
 
 
 ### max、min
@@ -994,7 +1019,7 @@ traces
 
 *式*の最小値を計算します。
 
-**ヒント**: これで最大値または最小値 (最高価格または最低価格など) をそれぞれ単独で計算できます。ただし、行に他の列 (最低価格を提示するサプライヤーの名前など) が必要な場合は、[argmin または argmax](#argmin-argmax) を使用します。
+**ヒント**: これで最小値または最大値 (最高価格または最低価格など) をそれぞれ単独で計算できます。ただし、行に他の列 (最低価格を提示するサプライヤーの名前など) が必要な場合は、[argmin または argmax](#argmin-argmax) を使用します。
 
 
 <a name="percentile"></a> <a name="percentiles"></a>
@@ -1080,7 +1105,7 @@ traces
 | `bool` | `boolean` | `System.Boolean` |
 | `datetime`| `date` | `System.DateTime` |
 | `dynamic` | | `System.Object` |
-| `guid` | `uuid`, `uniqueid` | `System.Guid` |
+| `guid` | `uuid`、`uniqueid` | `System.Guid` |
 | `int` | | `System.Int32` |
 | `long` | | `System.Int64` |
 | `double` | `real` | `System.Double` |
@@ -1263,17 +1288,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 || |
 |---|-------------|
 | + | [追加] のいずれかを |
-| - | 減算 |
-| * | 乗算 |
-| / | 除算 |
-| % | 剰余 |
-||
-|`<` |小さい
-|`<=`|小さいか等しい
-|`>` |大きい
-|`>=`|大きいか等しい
-|`<>`|等しくない
-|`!=`|等しくない
+| - | 減算 | | * | 乗算 | | / | 除算 | | % | 剰余 | || |`<` |小さい |`<=`|小さいまたは等しい |`>` |大きい |`>=`|大きいまたは等しい |`<>`|等しくない |`!=`|等しくない
 
 
 
@@ -1295,7 +1310,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 **戻り値**
 
-*value* 以下で、*roundTo* の最も近い倍数。
+*value* 未満で、*roundTo* の最も近い倍数。
  
     (toint((value/roundTo)-0.5)) * roundTo
 
@@ -1314,11 +1329,27 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
     T | summarize Hits=count() by bin(Duration, 1s)
 ```
+### exp
+
+    exp(v)   // e raised to the power v
+    exp2(v)  // 2 raised to the power v
+    exp10(v) // 10 raised to the power v
+
+
 
 ### floor
 
 [`bin()`](#bin) のエイリアス。
 
+
+### log
+
+    log(v)    // Natural logarithm of v
+    log2(v)   // Logarithm base 2 of v
+    log10(v)  // Logarithm base 10 of v
+
+
+`v` は 0 を超える実数である必要があります。それ以外の場合、null が返されます。
 
 ### rand
 
@@ -1582,7 +1613,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 難読化された文字列リテラルとは、文字列の出力時 (たとえば、トレース時) に Analytics によってわかりにくくされる文字列のことです。難読化プロセスでは、難読化されるすべての文字が開始 (`*`) 文字に置き換えられます。
 
-難読化された文字列リテラルを形成するには、前に `h` または 'H' を付加します。次に例を示します。
+難読化された文字列リテラルを形成するには、前に `h` または "H" を付加します。次に例を示します。
 
 ```
 h'hello'
@@ -1631,7 +1662,7 @@ h"hello"
 **引数**
 
 * *text:* 文字列。
-* *search:* *テキスト*内で一致させるプレーン文字列または[正規表現](app-analytics-reference.md#regular-expressions)。
+* *search:* *テキスト*内で一致させるプレーン文字列または正規表現。
 * *kind:* `"normal"|"regex"`。既定では `normal`。 
 
 **戻り値**
@@ -1870,7 +1901,7 @@ substring("ABCD", 0, 2)       // AB
 
 Application Insights の例外に対するクエリの結果を次に示します。`details` の値は配列です。
 
-![](./media/app-analytics-scalars/310.png)
+![](./media/app-insights-analytics-scalars/310.png)
 
 **インデックス:** JavaScript と同様に、配列やオブジェクトのインデックスを作成できます。
 
@@ -1902,7 +1933,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
     | mvexpand details[0].parsedStack[0]
 
 
-![](./media/app-analytics-scalars/410.png)
+![](./media/app-insights-analytics-scalars/410.png)
 
 
 **treepath:** 複合オブジェクト内のすべてのパスを検索するには、次のようにします。
@@ -1912,7 +1943,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
     | mvexpand path
 
 
-![](./media/app-analytics-scalars/420.png)
+![](./media/app-insights-analytics-scalars/420.png)
 
 **buildschema:** テーブル内の式のすべての値を受け入れる最小限のスキーマを見つけるには、次のようにします。
 
@@ -1976,15 +2007,15 @@ T
 |[`extractjson(`path,object`)`](#extractjson)|オブジェクトに移動するためのパスを使用します。
 |[`parsejson(`source`)`](#parsejson)| JSON 文字列を動的オブジェクトに変換します。
 |[`range(`from,to,step`)`](#range)| 値の配列。
-|[`mvexpand` listColumn](app-analytics-queries.md#mvexpand-operator) | リスト内の指定されたセルの各値に対して、行を複製します。
-|[`summarize buildschema(`column`)`](app-analytics-queries.md#summarize-operator) |列の内容から型スキーマを推測します。
-|[`summarize makelist(`column`)`](app-analytics-queries.md#summarize-operator)| 行のグループをフラット化し、列の値を配列に格納します。
-|[`summarize makeset(`column`)`](app-analytics-queries.md#summarize-operator) | 行のグループをフラット化し、列の値を重複しないように配列に格納します。
+|[`mvexpand` listColumn](#mvexpand-operator) | リスト内の指定されたセルの各値に対して、行を複製します。
+|[`summarize buildschema(`column`)`](#buildschema) |列の内容から型スキーマを推測します。
+|[`summarize makelist(`column`)` ](#makelist)| 行のグループをフラット化し、列の値を配列に格納します。
+|[`summarize makeset(`column`)`](#makeset) | 行のグループをフラット化し、列の値を重複しないように配列に格納します。
 
 ### let 句の動的オブジェクト
 
 
-[let 句](app-analytics-queries.md#let-clause)には動的値が文字列として格納されるため、以下の 2 つの句は同等で、どちらも使用前に `parsejson` (または `todynamic`) が必要です。
+[let 句](#let-clause)には動的値が文字列として格納されるため、以下の 2 つの句は同等で、どちらも使用前に `parsejson` (または `todynamic`) が必要です。
 
     let list1 = '{"a" : "somevalue"}';
     let list2 = parsejson('{"a" : "somevalue"}');
@@ -2167,8 +2198,29 @@ range(1, 8, 3)
 
 "[0]" は配列の存在を示しますが、特定のパスで使用されるインデックスを指定しないことに注意してください。
 
+## 名前
 
+名前の最大長は 1024 文字です。大文字と小文字が区別され、アルファベット、数字、およびアンダースコア (`_`) を含めることができます。
+
+名前として他の文字を含める場合やキーワードを使用する場合は、その名前を [' ... '] または [" ... "] で囲みます。次に例を示します。
+
+```AIQL
+
+    requests | 
+    summarize  ["distinct urls"] = dcount(name) // non-alphanumerics
+    by  ['where'] = client_City, // using a keyword as a name
+        ['outcome!'] = success // non-alphanumerics
+```
+
+
+|||
+|---|---|
+|['path\\file\\n'x''] | 文字をエスケープする場合は \\ を使用します。|
+|["d-e.=/f#\\n"] | |
+|[@'path\\file'] | エスケープなし - \\ はリテラルです。|
+|[@"\\now & then"] | |
+|[where] | 名前として言語キーワードを使用します。|
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

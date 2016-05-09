@@ -13,52 +13,63 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="04/08/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory のデータセット
+Azure Data Factory のデータセットは、パイプライン内のアクティビティの入力または出力として使用するデータへの名前付きの参照/ポインターです。データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。
 
-## 説明
-データセットはデータを論理的に説明するものです。記述されるデータは、単純なバイト、CSV ファイルのような半構造化データから、リレーショナル テーブルやモデルまでさまざまです。データにアクセスするためのメカニズム (アドレス、プロトコル、認証方式) はリンクされたサービスで定義され、データセット定義で参照されます。
+データ ファクトリを作成する際に、データ ストアをデータ ファクトリにリンクする、リンクされたサービスを作成します。**リンクされたサービス**は、Azure Data Factory がデータ ストアに**接続する**ために必要な情報を定義します (Azure ストレージ アカウント、Azure SQL Database など)。また、リンクされたサービスは、データ ストアにアクセスするためのメカニズムを定義します (アドレス、プロトコル、認証スキームなど)。
 
-## 構文
+Data Factory の**データセット**は、このデータ ストア内部のデータ構造を表します (たとえば、BLOB コンテナーや SQL テーブル)。このデータ構造は、パイプライン内のアクティビティの入力または出力として使用できます。データセットは作成後、パイプライン内のアクティビティで使用できます。たとえば、データセットはコピー アクティビティ/HDInsightHive アクティビティの入力/出力データセットとして使用できます。
+
+> [AZURE.NOTE] Azure Data Factory を初めて使用する場合は、Azure Data Factory サービス一般について説明した [Azure Data Factory の概要](data-factory-introduction.md)に関する記事と、最初のデータ ファクトリを作成するためのチュートリアル「[初めての Data Factory の作成](data-factory-build-your-first-pipeline.md)」を参照してください。これらの 2 つの記事には、この記事をより深く理解するために必要な背景情報が示されています。
+
+## データセットの定義
+Azure Data Factory のデータセットは次のように定義されます。
+
 
 	{
 	    "name": "<name of dataset>",
-	    "properties":
-	    {
-	       "structure": [ ],
-	       "type": "<type of dataset>",
-			"external": <boolean flag to indicate external data>,
-	        "typeProperties":
-	        {
+	    "properties": {
+	        "type": "<type of dataset: AzureBlob, AzureSql etc...>",
+			"external": <boolean flag to indicate external data. only for input datasets>,
+	        "linkedServiceName": "<Name of the linked service that refers to a data store.>",
+	        "structure": [
+	            {
+	                "name": "<Name of the column>",
+	                "type": "<Name of the type>"
+	            }
+	        ],
+	        "typeProperties": {
+	            "<type specific property>": "<value>",
+				"<type specific property 2>": "<value 2>",
 	        },
-	        "availability":
-	        {
-	
+	        "availability": {
+	            "frequency": "<Specifies the time unit for data slice production. Supported frequency: Minute, Hour, Day, Week, Month>",
+	            "interval": "<Specifies the interval within the defined frequency. For example, frequency set to 'Hour' and interval set to 1 indicates that new data slices should be produced hourly>"
 	        },
 	       "policy": 
 	        {      
-	
 	        }
 	    }
 	}
 
-**構文の詳細**
+次の表では、上記の JSON のプロパティについて説明します。
 
 | プロパティ | 説明 | 必須 | 既定値 |
 | -------- | ----------- | -------- | ------- |
-| name | データセットの名前 | あり | 該当なし |
-| structure | <br/>データセットのスキーマ<br/>詳細については、「[データセット構造](#Structure)」セクションを参照してください。 | いいえ、できません。 | 該当なし |
-| type | データセットの型 | あり | 該当なし |
-| typeProperties | 選択した種類に対応するプロパティ サポートされる型とそのプロパティについては、「[データセットの型](#Type)」セクションを参照してください。 | あり | 該当なし |
-| 外部 | データセットを Data Factory パイプラインにより明示的に生成するかどうかを指定するブール型のフラグ | いいえ | false | 
+| name | データセットの名前。名前付け規則については、「[Azure Data Factory - 名前付け規則](data-factory-naming-rules.md)」を参照してください。 | はい | 該当なし |
+| type | データセットの型。Azure Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。<br/><br/>詳細については、「[データセットの型](#Type)」を参照してください。 | はい | 該当なし |
+| structure | データセットのスキーマ。<br/><br/>詳細については、「[データセット構造](#Structure)」セクションを参照してください。 | いいえ、できません。 | 該当なし |
+| typeProperties | 選択された型に対応するプロパティ。サポートされている型とそのプロパティについては、「[データセットの型](#Type)」セクションを参照してください。 | あり | 該当なし |
+| 外部 | データセットをデータ ファクトリ パイプラインによって明示的に生成するかどうかを指定するブール型のフラグ。 | いいえ | false | 
 | availability | データセット生成の処理時間枠またはスライシング モデルを定義します。<br/><br/>詳細については、「[データセットの可用性](#Availability)」トピックを参照してください。<br/><br/>データセット スライシング モデルの詳細については、[スケジュールと実行](data-factory-scheduling-and-execution.md)に関する記事を参照してください。 | あり | 該当なし
 | policy | データセット スライスで満たさなければならない基準または条件を定義します。<br/><br/>詳細については、「[データセット ポリシー](#Policy)」トピックを参照してください。 | いいえ | 該当なし |
 
 ### 例
 
-以下は **Azure SQL データベース**に「**MyTable**」という名前のテーブルを表示するデータセットの例です。Azure SQL データベースの接続文字列はこのデータセットで参照される **AzureSqlLinkedService** で定義されます。このデータセットは毎日スライスされます。
+以下は **Azure SQL データベース**に **MyTable** という名前のテーブルを表示するデータセットの例です。
 
 	{
 	    "name": "DatasetSample",
@@ -77,18 +88,42 @@
 	    }
 	}
 
+以下の点に注意してください。
+
+- type が AzureSqlTable に設定されています。
+- (AzureSqlTable 型に固有の) 型プロパティ tableName が MyTable に設定されています。
+- linkedServiceName は、型が AzureSqlDatabase であるリンクされたサービスを参照します。次のリンクされたサービスの定義を参照してください。 
+- availability の frequency が Day に、interval が 1 に設定されています。これはスライスが毎日生成されることを意味します。  
+
+AzureSqlLinkedService は次のように定義されます。
+
+	{
+	    "name": "AzureSqlLinkedService",
+	    "properties": {
+	        "type": "AzureSqlDatabase",
+	        "description": "",
+	        "typeProperties": {
+	            "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Password=<password>;Integrated Security=False;Encrypt=True;Connect Timeout=30"
+	        }
+	    }
+	}
+
+上記の JSON では、
+
+- type が AzureSqlDatabase に設定されています。
+- 型プロパティ connectionString は、Azure SQL データベースに接続される情報を指定します。  
+
+
+ご覧のとおり、リンクされたサービスは Azure SQL データベースに接続する方法を定義します。また、データセットは、データ ファクトリの入力/出力として使用されるテーブルを定義します。[パイプライン](data-factory-create-pipelines.md) JSON 内の activity セクションは、データセットが入力データセットとして使用されるか、出力データセットとして使用されるかを指定します。
+
+
+> [AZURE.IMPORTANT] データセットは Azure Data Factory で作成されている場合を除き、**external** とマークされます。これは通常、パイプライン内の最初のアクティビティの入力に適用されます。
+
+## <a name="Type"></a> データセットの型
+サポートされるデータ ソースとデータセットの型が並んでいます。データセットの型と構成については、「[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores)」という記事のトピックを参照してください。たとえば、Azure SQL データベースのデータを使用している場合は、サポートされるデータ ストアの一覧にある Azure SQL Database をクリックします。これで、Azure SQL Database をソース データ ストアまたはシンク データ ストアとして使用する方法の詳細を確認できます。
+
 ## <a name="Structure"></a>データセット構造
-
-**構造**セクションでは、データセットのスキーマをアサートします。列の集合と列の種類が含まれます。各列には次のプロパティが含まれます。
-
-プロパティ | 説明 | 必須 | 既定値  
--------- | ----------- | -------- | -------
-name | 列の名前です。 | いいえ | 該当なし 
-type | 列のデータ型です。 | いいえ | 該当なし 
-
-### 例
-
-次の例では、データセットに slicetimestamp、projectname、pageviews の 3 つの列があります。
+**structure** セクションでは、データセットのスキーマを定義します。このセクションには列の名前とデータ型のコレクションが含まれています。次の例では、データセットに slicetimestamp、projectname、pageviews の 3 つの列があります。各列の型は、String、String、Decimal です。
 
 	structure:  
 	[ 
@@ -97,60 +132,85 @@ type | 列のデータ型です。 | いいえ | 該当なし
 	    { "name": "pageviews", "type": "Decimal"}
 	]
 
-## <a name="Type"></a> データセットの型
-
-サポートされるデータ ソースとデータセットの型が並んでいます。データセットの型と構成の詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事の中のコネクタに関するトピックを参照してください。
-
 ## <a name="Availability"></a> データセットの可用性
+データセットの **availability** セクションでは、データセットの処理時間枠 (時間単位、日単位、週単位など) またはスライシング モデルを定義します。データセットのスライシングおよび依存性モデルの詳細については、「[Data Factory を使用したスケジュール設定と実行](data-factory-scheduling-and-execution.md)」をご覧ください。
 
-データセットの「可用性」セクションにより、データセット生成の処理時間枠またはスライシング モデルが定義されます。データセットのスライシングおよび依存性モデルの詳細については、「[Data Factory を使用したスケジュール設定と実行](data-factory-scheduling-and-execution.md)」をご覧ください。
+次の availability セクションでは、出力データセットの場合は 1 時間ごとにデータセットが生成され、入力データセットの場合は 1 時間ごとにデータセットが使用可能であるように指定されています。
+
+	"availability":	
+	{	
+		"frequency": "Hour",		
+		"interval": 1	
+	}
+
+次の表では、availability セクションで使用できるプロパティについて説明します。
 
 | プロパティ | 説明 | 必須 | 既定値 |
 | -------- | ----------- | -------- | ------- |
-| frequency | データセット スライス生成の時間単位を指定します。<br/><br/>**サポートされている頻度**: 分、時間、日、週、月 | あり | 該当なし |
-| interval | 頻度の乗数を指定します。<br/><br/>"頻度 x 間隔" により、スライスが生成される頻度が決定されます。<br/><br/>データセットを時間単位でスライスする必要がある場合は、**[頻度]** を **[時間]** に、**[間隔]** を **[1]** に設定します。<br/><br/>**注:** 頻度に分を指定する場合、間隔を 15 以上に設定することをお勧めします。 | あり | 該当なし |
-| style | スライスを間隔の始め/終わりに生成するかどうかを指定します。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>頻度を月に設定し、スタイルを EndOfInterval に設定すると、スライスは月の最終日に生成されます。スタイルを StartOfInterval に設定すると、スライスは月の最初の日に生成されます。<br/><br/>頻度を日に設定し、スタイルを EndOfInterval に設定すると、スライスは 1 日の最後の 1 時間に生成されます。<br/><br/>頻度を時間に設定し、スタイルを EndOfInterval に設定すると、スライスは時間の終わりに生成されます。たとえば、午後 1 時 ～ 午後 2 時のスライスの場合、午後 2 時直前にスライスが生成されます。 | いいえ | EndOfInterval |
-| anchorDateTime | データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。<br/><br/>**注:** AnchorDateTime に頻度より細かい日付部分が含まれている場合、その部分は無視されます。たとえば、**間隔**が**時間単位** (頻度: 時間、間隔: 1) で、**AnchorDateTime** に**分と秒**が含まれる場合、AnchorDateTime の**分と秒**部分は無視されます。 | いいえ | 01/01/0001 |
-| offset | すべてのデータセット スライスの開始と終了がシフトされる時間帯です。<br/><br/>**注:** anchorDateTime とoffset の両方が指定されている場合、結果的にシフトが結合されます。 | いいえ | 該当なし |
+| frequency | データセット スライス生成の時間単位を指定します。<br/><br/>**サポートされている frequency**: Minute、Hour、Day、Week、Month。 | あり | 該当なし |
+| interval | frequency の乗数を指定します。<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、**frequency** を **Hour** に、**interval** を **1** に設定します。<br/><br/>**注:** frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします。 | あり | 該当なし |
+| style | スライスを間隔の始め/終わりに生成するかどうかを指定します。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>ｆrequency を Month に設定し、style を EndOfInterval に設定すると、スライスは月の最終日に生成されます。style を StartOfInterval に設定すると、スライスは月の最初の日に生成されます。<br/><br/>ｆrequency を Day に設定し、style を EndOfInterval に設定すると、スライスは 1 日の最後の 1 時間に生成されます。<br/><br/>frequency を Hour に設定し、style を EndOfInterval に設定すると、スライスは時間の終わりに生成されます。たとえば、午後 1 時 ～ 午後 2 時のスライスの場合、午後 2 時にスライスが生成されます。 | いいえ | EndOfInterval |
+| anchorDateTime | データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。<br/><br/>**注:** AnchorDateTime に頻度より細かい日付部分が含まれている場合、その部分は無視されます。<br/><br/>たとえば、**間隔**が**時間単位** (frequency が Hour で interval が 1) で、**AnchorDateTime** に**分と秒**が含まれる場合、AnchorDateTime の**分と秒**部分は無視されます。 | いいえ | 01/01/0001 |
+| offset | すべてのデータセット スライスの開始と終了がシフトされる時間帯です。<br/><br/>**注:** anchorDateTime と offset の両方が指定されている場合、結果的にシフトが結合されます。 | いいえ | 該当なし |
 
-### anchorDateTime 例
+### offset 例
+
+既定の設定である真夜中ではなく、毎日午前 6 時にスライスを開始する例です。
+
+	"availability":
+	{
+		"frequency": "Day",
+		"interval": 1,
+		"offset": "06:00:00"
+	}
+
+**frequency** が **Month** に設定され、**interval** が **1** (月 1 回) に設定されている場合、毎月 9 日の午前 6 時にスライスを生成するには、offset を "09.06:00:00" に設定します。これは UTC 時間であることに注意してください。
+
+12 か月スケジュールの場合 (頻度 = 月、間隔 = 12)、「オフセット: 60.00:00:00」は毎年の 3 月 1 日または 2 日 (スタイルが StartOfInterval の場合、年の初めから 60 日後であり、うるう年かどうかにより 1 日または 2 日になる) を意味します。
+
+### anchorDateTime の例
 
 **例:** 2007-04-19T08:00:00 に開始する 23 時間のデータセット スライス
 
 	"availability":	
 	{	
 		"frequency": "Hour",		
-		"interval": "23",	
+		"interval": 23,	
 		"anchorDateTime":"2007-04-19T08:00:00"	
 	}
 
+### offset/style の例
 
-### offset 例
+毎月、特定の日時 (たとえば、毎月 3 日の午前 8 時) にデータセットが必要な場合は、**offset** タグを使用して、実行する日時を設定できます。
 
-既定の真夜中の代わりに朝の 6 時に開始する毎日のスライス。
-
-	"availability":
 	{
-		"frequency": "Day",
-		"interval": "1",
-		"offset": "06:00:00"
+	  "name": "MyDataset",
+	  "properties": {
+	    "type": "AzureSqlTable",
+	    "linkedServiceName": "AzureSqlLinkedService",
+	    "typeProperties": {
+	      "tableName": "MyTable"
+	    },
+	    "availability": {
+	      "frequency": "Month",
+	      "interval": 1,
+	      "offset": "3.08:10:00",
+	      "style": "StartOfInterval"
+	    }
+	  }
 	}
-
-**頻度**が**月**に設定され、**間隔**が **1** (月 1 回) に設定されている場合、各月 9 日午前 6 時にスライスを生成するには、オフセットを "09.06:00:00" に設定します。これは UTC 時間であることに注意してください。
-
-12 か月スケジュールの場合 (頻度 = 月、間隔 = 12)、「オフセット: 60.00:00:00」は毎年の 3 月 1 日または 2 日 (スタイルが StartOfInterval の場合、年の初めから 60 日後であり、うるう年かどうかにより 1 日または 2 日になる) を意味します。
 
 
 ## <a name="Policy"></a>データセット ポリシー
 
-データセットのポリシー セクションでは、データセット スライスで満たさなければならない基準または条件を定義します。
+データセット定義の **policy** セクションでは、データセット スライスで満たさなければならない基準または条件を定義します。
 
 ### 検証ポリシー
 
 | ポリシー名 | 説明 | 適用先 | 必須 | 既定値 |
 | ----------- | ----------- | ---------- | -------- | ------- |
-| minimumSizeMB | Azure BLOB のデータが最小サイズ要件 (メガバイト単位) を満たすことを検証します。 | Azure BLOB | いいえ | 該当なし |
-|minimumRows | Azure SQL データベースまたは Azure テーブルのデータが最小行数が含まれていることを検証します。 | <ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> | いいえ | 該当なし
+| minimumSizeMB | **Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 | Azure BLOB | いいえ | 該当なし |
+|minimumRows | **Azure SQL データベース**または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 | <ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> | いいえ | 該当なし
 
 #### 例
 
@@ -175,9 +235,11 @@ type | 列のデータ型です。 | いいえ | 該当なし
 		}
 	}
 
-### ExternalData ポリシー
+### 外部データセット
 
-外部データセットは Data Factory のパイプライン実行で生成されないデータセットです。データセットが「外部」としてマークされている場合、データセット スライス可用性の動作を変更するように ExternalData ポリシーを定義できます。
+外部データセットはデータ ファクトリのパイプライン実行で生成されないデータセットです。データセットが **external** としてマークされている場合は、**ExternalData** ポリシーを定義することで、データセット スライス可用性の動作を変更できます。
+
+データセットは Azure Data Factory で作成されている場合を除き、**external** とマークされます。これは通常、パイプライン内の最初のアクティビティの入力に適用されます (アクティビティまたはパイプラインの連鎖が利用されていない場合を除く)。
 
 | 名前 | 説明 | 必須 | 既定値 |
 | ---- | ----------- | -------- | -------------- |
@@ -186,25 +248,96 @@ type | 列のデータ型です。 | いいえ | 該当なし
 | retryTimeout | 各再試行のタイムアウト。<br/><br/>これが 10 分に設定されている場合、検証を 10 分以内に完了する必要があります。検証に 10 分以上の時間がかかった場合、再試行はタイムアウトします。<br/><br/>検証のすべての試行がタイムアウトした場合、スライスに TimedOut のマークが付きます。 | いいえ | 00:10:00 (10 分) |
 | maximumRetry | 外部データの可用性の確認回数です。許容される最大値は 10 です。 | いいえ | 3 | 
 
-#### その他の例
-
-毎月の特定の日時 (たとえば、毎月 3 日の午前 8 時) にパイプラインを実行する必要がある場合は、**offset** タグを使用して、実行する日時を設定できます。
+## 範囲指定されたデータセット
+**datasets** プロパティを使用することで、対象となるパイプラインを指定したデータセットを作成できます。これらのデータセットは、そのパイプライン内のアクティビティでのみ使用できます。他のパイプラインのアクティビティでは使用できません。次の例では、パイプラインと、そのパイプライン内で使用する 2 つのデータセット (InputDataset-rdc と OutputDataset-rdc) が定義されています。
 
 	{
-	  "name": "MyDataset",
-	  "properties": {
-	    "type": "AzureSqlTable",
-	    "linkedServiceName": "AzureSqlLinkedService",
-	    "typeProperties": {
-	      "tableName": "MyTable"
-	    },
-	    "availability": {
-	      "frequency": "Month",
-	      "interval": 1,
-	      "offset": "3.08:10:00",
-	      "style": "StartOfInterval"
+	    "name": "CopyPipeline-rdc",
+	    "properties": {
+	        "activities": [
+	            {
+	                "type": "Copy",
+	                "typeProperties": {
+	                    "source": {
+	                        "type": "BlobSource",
+	                        "recursive": false
+	                    },
+	                    "sink": {
+	                        "type": "BlobSink",
+	                        "writeBatchSize": 0,
+	                        "writeBatchTimeout": "00:00:00"
+	                    }
+	                },
+	                "inputs": [
+	                    {
+	                        "name": "InputDataset-rdc"
+	                    }
+	                ],
+	                "outputs": [
+	                    {
+	                        "name": "OutputDataset-rdc"
+	                    }
+	                ],
+	                "scheduler": {
+	                    "frequency": "Day",
+	                    "interval": 1,
+	                    "style": "StartOfInterval"
+	                },
+	                "name": "CopyActivity-0"
+	            }
+	        ],
+	        "start": "2016-02-28T00:00:00Z",
+	        "end": "2016-02-28T00:00:00Z",
+	        "isPaused": false,
+	        "pipelineMode": "OneTime",
+	        "expirationTime": "15.00:00:00",
+	        "datasets": [
+	            {
+	                "name": "InputDataset-rdc",
+	                "properties": {
+	                    "type": "AzureBlob",
+	                    "linkedServiceName": "InputLinkedService-rdc",
+	                    "typeProperties": {
+	                        "fileName": "emp.txt",
+	                        "folderPath": "adftutorial/input",
+	                        "format": {
+	                            "type": "TextFormat",
+	                            "rowDelimiter": "\n",
+	                            "columnDelimiter": ","
+	                        }
+	                    },
+	                    "availability": {
+	                        "frequency": "Day",
+	                        "interval": 1
+	                    },
+	                    "external": true,
+	                    "policy": {}
+	                }
+	            },
+	            {
+	                "name": "OutputDataset-rdc",
+	                "properties": {
+	                    "type": "AzureBlob",
+	                    "linkedServiceName": "OutputLinkedService-rdc",
+	                    "typeProperties": {
+	                        "fileName": "emp.txt",
+	                        "folderPath": "adftutorial/output",
+	                        "format": {
+	                            "type": "TextFormat",
+	                            "rowDelimiter": "\n",
+	                            "columnDelimiter": ","
+	                        }
+	                    },
+	                    "availability": {
+	                        "frequency": "Day",
+	                        "interval": 1
+	                    },
+	                    "external": false,
+	                    "policy": {}
+	                }
+	            }
+	        ]
 	    }
-	  }
 	}
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

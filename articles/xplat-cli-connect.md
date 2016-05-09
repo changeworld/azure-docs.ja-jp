@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/08/2015"
+	ms.date="04/08/2016"
 	ms.author="danlep"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続
@@ -153,4 +153,4 @@ Azure CLI には、異なるコマンド セットを使用して、Azure リソ
 
 * Azure CLI、または Azure を利用していて問題が発生した場合は、[Azure のフォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home)をご覧ください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

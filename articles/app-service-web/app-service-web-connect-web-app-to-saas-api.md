@@ -10,7 +10,7 @@
 <tags
 	ms.service="app-service-web"
 	ms.devlang="dotnet"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na" 
 	ms.date="02/26/2016"
@@ -89,4 +89,4 @@
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!-----HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -31,7 +31,7 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 * [jq](https://stedolan.github.io/jq/): jq は、JSON ドキュメントを操作するためのクロスプラットフォームのコマンドライン ユーティリティです。このドキュメントでは、Ambari REST API から返される JSON ドキュメントの解析にこれを使用しています。
 * [Azure CLI](../xplat-cli-install.md): Azure サービスを操作するためのクロスプラットフォームのコマンドライン ユーティリティです。
 
-    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 ##<a id="whatis"></a>Ambari とは
 
@@ -257,4 +257,4 @@ REST API の完全なリファレンスについては、「[Ambari API リフ�
 
 > [AZURE.NOTE] HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています (クラスターに対するホストの追加や削除、新規サービスの追加など)。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

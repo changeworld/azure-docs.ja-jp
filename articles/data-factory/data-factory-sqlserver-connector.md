@@ -206,7 +206,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 	   }
 	}
 
-上記の例では、SqlSource に **sqlReaderQuery** が指定されています。コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
+上記の例では、SqlSource に **sqlReaderQuery** が指定されています。コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。sqlReaderQuery では、入力データセットによって参照されるデータベース内の複数のテーブルを、データセットの tableName typeProperty として設定されるテーブルに限らず参照できることに注意してください。
  
 SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
@@ -457,7 +457,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| sqlReaderQuery | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: select * from MyTable指定されていない場合に実行される SQL ステートメント: select from MyTable | いいえ |
+| sqlReaderQuery | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: select * from MyTable入力データセットによって参照されるデータベースから複数のテーブルを参照する場合があります。指定されていない場合に実行される SQL ステートメント: select from MyTable | いいえ |
 | sqlReaderStoredProcedureName | ソース テーブルからデータを読み取るストアド プロシージャの名前。 | ストアド プロシージャの名前。 | いいえ |
 | storedProcedureParameters | ストアド プロシージャのパラメーター。 | 名前と値のペア。パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ |
 
@@ -640,4 +640,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

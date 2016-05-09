@@ -3,7 +3,7 @@
    description="Azure DNS を使用して Web アプリのカスタム ドメイン DNS レコードを作成する方法。CNAME または A レコードを使用して、ドメインの所有権を確認する手順" 
    services="dns" 
    documentationCenter="na" 
-   authors="joaoma" 
+   authors="cherylmc" 
    manager="carmonm" 
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
    ms.date="03/03/2016"
-   ms.author="joaoma"/>
+   ms.author="cherylmc"/>
 
 # カスタム ドメインにおける Web アプリの DNS レコードの作成
 
@@ -165,4 +165,4 @@ awverify レコード セットが作成されると、次のコマンドに示�
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

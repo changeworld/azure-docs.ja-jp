@@ -21,11 +21,11 @@ Azure VM エージェントには、Windows VM 向けと Linux VM 向けの 2 �
 
 VM エージェントは、次のような状況で有効化されます。
 
--   Azure クラシック ポータルの**簡易作成**の方法を使用して仮想マシンのインスタンスを作成した場合。または、Azure クラシック ポータルの**カスタム作成**の方法を使用し、**[VM エージェントのインストール]** チェックボックスをオンにして (下記画像を参照) 仮想マシンのインスタンスを作成した場合。詳細については、「[カスタム仮想マシンを作成する方法](../articles/virtual-machines/virtual-machines-windows-classic-createportal.md)」を参照してください。
+-   Azure クラシック ポータルの**簡易作成**の方法を使用して VM のインスタンスを作成した場合。または、Azure クラシック ポータルの**カスタム作成**の方法を使用し、**[VM エージェントのインストール]** チェックボックスをオンにして (下記画像を参照) 仮想マシンのインスタンスを作成した場合。詳細については、「[カスタム仮想マシンを作成する方法](../articles/virtual-machines/virtual-machines-windows-classic-createportal.md)」を参照してください。
 
     ![VM エージェントのチェックボックス](./media/virtual-machines-common-classic-agents-and-extensions/IC719409.png)
 
--   [New-AzureVM](https://msdn.microsoft.com/library/azure/dn495254.aspx) コマンドレットまたは [New-AzureQuickVM](https://msdn.microsoft.com/library/azure/dn495183.aspx) コマンドレットを使用して仮想マシンのインスタンスを作成した場合。[Add-AzureProvisioningConfig](https://msdn.microsoft.com/library/azure/dn495299.aspx) コマンドレットに **–DisableGuestAgent** パラメーターを追加すると、VM エージェントをインストールせずに VM を作成することができます。
+-   [New-AzureVM](https://msdn.microsoft.com/library/azure/dn495254.aspx) コマンドレットまたは [New-AzureQuickVM](https://msdn.microsoft.com/library/azure/dn495183.aspx) コマンドレットを使用して VM のインスタンスを作成した場合。[Add-AzureProvisioningConfig](https://msdn.microsoft.com/library/azure/dn495299.aspx) コマンドレットに **–DisableGuestAgent** パラメーターを追加すると、VM エージェントをインストールせずに VM を作成することができます。
 
 -   VM エージェント (Window バージョンまたは Linux バージョンのいずれか) を手動でダウンロードして既存の VM インスタンスにインストールし、PowerShell または REST 呼び出しで **ProvisionGuestAgent** の値を **true** に設定した場合(VM エージェントの手動インストール後にこの値を設定しない場合、VM エージェントを追加したことが正常に検出されません)。 次のコード例に、`$svc` 引数と `$name` 引数が決定済みの場合に PowerShell を使用してこの処理を行う方法を示します。
 
@@ -35,7 +35,7 @@ VM エージェントは、次のような状況で有効化されます。
 
 -   VM エージェントを Azure へアップロードする前にインストールした VM イメージを作成した場合。Window VM の場合、[Windows VM Agent.msi ファイル](http://go.microsoft.com/fwlink/?LinkID=394789)をダウンロードして、VM エージェントをインストールします。Linux VM の場合、VM エージェントは GitHub リポジトリの <https://github.com/Azure/WALinuxAgent> からインストールします。Linux への VM エージェントのインストール方法の詳細については、「[Azure Linux エージェント ユーザー ガイド](../articles/virtual-machines/virtual-machines-linux-agent-user-guide.md)」を参照してください。
 
->[AZURE.NOTE]PaaS では VM エージェントは **GuestAgent** と呼ばれ、Web ロール VM および worker ロール VM でいつでも使用できます(詳細については、「[Azure Role Architecture](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx)」 (Azure ロールのアーキテクチャ) を参照してください)。 ロール VM 用の VM エージェントで、永続 Virtual Machines の場合と同じ方法でクラウド サービス VM に拡張機能を追加できるようになりました。ロール VM の VM 拡張機能と永続 VM の VM 拡張機能の最も大きな違いは、ロール VM では、拡張機能がクラウド サービス、そのクラウド サービス内のデプロイの順に追加されることです。
+>[AZURE.NOTE]PaaS では VM エージェントは **WindowsAzureGuestAgent** と呼ばれ、Web ロール VM および worker ロール VM でいつでも使用できます(詳細については、「[Azure Role Architecture](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx)」 (Azure ロールのアーキテクチャ) を参照してください)。 ロール VM 用の VM エージェントで、永続 Virtual Machines の場合と同じ方法でクラウド サービス VM に拡張機能を追加できるようになりました。ロール VM の VM 拡張機能と永続 VM の VM 拡張機能の最も大きな違いは、ロール VM では、拡張機能がクラウド サービス、そのクラウド サービス内のデプロイの順に追加されることです。
 
 >すべての利用可能なロール VM 拡張機能の一覧を表示するには、[Get-AzureServiceAvailableExtension](https://msdn.microsoft.com/library/azure/dn722498.aspx) コマンドレットを使用します。
 
@@ -43,4 +43,4 @@ VM エージェントは、次のような状況で有効化されます。
 
 これらのタスクの詳細については、「[仮想マシン拡張機能の管理](../articles/virtual-machines/virtual-machines-windows-classic-manage-extensions.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0427_2016-->

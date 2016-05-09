@@ -2,7 +2,7 @@
 	pageTitle="Azure PowerShell のインストールおよび構成方法"
 	description="Azure PowerShell のインストールと構成の方法について説明します。"
 	editor="tysonn"
-	manager="stevenka"
+	manager="dongill"
 	documentationCenter=""
 	services=""
 	authors="coreyp-at-msft"/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="powershell"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="04/22/2016"
 	ms.author="coreyp"/>
 
 # Azure PowerShell のインストールおよび構成方法
@@ -175,4 +175,4 @@ Windows PowerShell の基本的な使用手順については、「[Windows Powe
 
 スクリプトを使用した Azure の管理に役立つサンプル スクリプトと手順については、「[スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=321940)」をご覧ください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0427_2016-->

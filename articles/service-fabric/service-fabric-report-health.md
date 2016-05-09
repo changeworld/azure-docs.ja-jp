@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/23/2016"
+   ms.date="04/25/2016"
    ms.author="oanapl"/>
 
 # Service Fabric のカスタム正常性レポートの追加
@@ -297,4 +297,4 @@ HealthEvents          :
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0427_2016-->

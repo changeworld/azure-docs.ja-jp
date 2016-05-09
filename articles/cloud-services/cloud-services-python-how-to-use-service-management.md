@@ -39,11 +39,11 @@ Azure SDK for Python は、REST API である [Azure サービス管理 API][svc
 ### Windows、Mac または Linux での管理証明書 (OpenSSL)
 [OpenSSL](http://www.openssl.org/) を使用して管理証明書を作成できます。実際は 2 つの証明書を作成する必要があります。1 つはサーバー用 (`.cer` ファイル)、もう 1 つはクライアント用 (`.pem` ファイル) です。`.pem` ファイルを作成するには、次のコマンドを実行します。
 
-	`openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem`
+    openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
 `.cer` 証明書を作成するには、次のコマンドを実行します。
 
-	`openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer`
+    openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
 Azure 証明書の詳細については、「[Azure Cloud Services の証明書の概要](./cloud-services-certs-create.md)」を参照してください。OpenSSL のパラメーターの詳細については、[http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html) にあるドキュメントを参照してください。
 
@@ -435,4 +435,4 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 
 [クラウド サービス]: https://azure.microsoft.com/ja-JP/documentation/services/cloud-services/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

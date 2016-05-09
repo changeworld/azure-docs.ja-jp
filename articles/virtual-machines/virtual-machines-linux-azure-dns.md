@@ -136,6 +136,6 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 -  対象のクライアントからのアクセスを可能にし (ポート 53 の TCP および UDP)、インターネットへのアクセスを可能にする。
 -  外部エージェントによる脅威を軽減するために、インターネットからのアクセスをセキュリティ保護する。
 
-> [AZURE.NOTE] 最適なパフォーマンスを得るには、DNS サーバーとして Azure VM を使用する場合、IPv6 を無効にして、[インスタンスレベル パブリック IP](virtual-networks-instance-level-public-ip.mp) を各 DNS サーバーの VM に割り当てる必要があります。
+> [AZURE.NOTE] 最適なパフォーマンスを得るには、DNS サーバーとして Azure VM を使用する場合、IPv6 を無効にして、[インスタンスレベル パブリック IP](../virtual-network/virtual-networks-instance-level-public-ip.md) を各 DNS サーバーの VM に割り当てる必要があります。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

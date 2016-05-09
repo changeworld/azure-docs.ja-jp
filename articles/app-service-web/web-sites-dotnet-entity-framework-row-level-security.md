@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/25/2016"
+	ms.date="04/25/2016"
 	ms.author="thmullan"/>
 
 # チュートリアル: Entity Framework と行レベル セキュリティによるマルチテナント データベースを持つ Web アプリの構築
@@ -250,4 +250,4 @@ go
 
 これらの可能性の他にも、RLS をさらに良いものにするための努力が続けられています。ご質問、ご意見、ご要望などありましたら、お知らせください。フィードバックをお待ちしています。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

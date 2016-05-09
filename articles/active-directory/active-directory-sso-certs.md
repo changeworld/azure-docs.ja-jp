@@ -3,7 +3,7 @@
 	description="フェデレーション証明書の有効期限をカスタマイズする方法と、有効期限が近づいている証明書を更新する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="liviodlc"
+	authors="asmalser-msft"
 	manager="stevenpo"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="02/09/2016"
-	ms.author="liviodlc"/>
+	ms.author="asmalser-msft"/>
 
 #Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理
 
@@ -82,4 +82,4 @@
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 - [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -3,7 +3,7 @@
     description="Azure Active Directory で Google Apps を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。"
     services="active-directory"
     documentationCenter=""
-    authors="liviodlc"
+    authors="asmalser-msft"
     manager="stevenpo"
     editor=""/>
 
@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.workload="identity"
     ms.date="02/17/2016"
-    ms.author="liviodlc"/>
+    ms.author="asmalser-msft"/>
 
 #チュートリアル: Azure Active Directory と Google Apps を統合する方法
 
@@ -313,4 +313,4 @@
 [29]: ./media/active-directory-saas-google-apps-tutorial/assign-users.png
 [30]: ./media/active-directory-saas-google-apps-tutorial/assign-confirm.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0427_2016-->

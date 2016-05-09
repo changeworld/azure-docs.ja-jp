@@ -4,7 +4,7 @@
 	services="media-services"
 	documentationCenter=""
 	authors="Juliako,cenkdin"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ne"
 	ms.topic="article"
-	ms.date="01/31/2016"  
+	ms.date="04/25/2016"  
 	ms.author="juliako"/>
 
 
@@ -212,4 +212,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 <!-- Images -->
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

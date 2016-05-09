@@ -11,8 +11,8 @@
     ms.workload="identity"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
-	ms.topic="get-started-article"
-    ms.date="02/12/2016"
+	ms.topic="article"
+    ms.date="04/25/2016"
     ms.author="andkjell"/>
 
 # Azure AD Connect Sync: 既定の構成について
@@ -240,4 +240,4 @@ NULL
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/19/2016"
+   ms.date="03/30/2016"
    ms.author="cherylmc" />
 
 # PowerShell を利用し、仮想ネットワークへのポイント対サイト接続を構成する
@@ -22,11 +22,22 @@
 - [PowerShell - Resource Manager](vpn-gateway-howto-point-to-site-rm-ps.md)
 - [ポータル - クラシック](vpn-gateway-point-to-site-create.md)
 
-ポイント対サイト構成では、クライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を個別に作成することができます。VPN 接続を確立するには、クライアント コンピューターからの接続を開始します。ポイント対サイトは、自宅や会議室など、リモートの場所から VNet に接続する場合、または仮想ネットワークに接続する必要があるクライアントの数が少ない場合などに適しています。ポイント対サイト接続を機能させるために、VPN デバイスや公開 IP アドレスは必要ありません。ポイント対サイト接続の詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#point-to-site-connections)」と「[仮想ネットワークのセキュリティで保護されたクロスプレミス接続について](vpn-gateway-cross-premises-options.md)」を参照してください。
+ポイント対サイト構成では、クライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を個別に作成することができます。VPN 接続を確立するには、クライアント コンピューターからの接続を開始します。ポイント対サイトは、自宅や会議室など、リモートの場所から VNet に接続する場合、または仮想ネットワークに接続する必要があるクライアントの数が少ない場合などに適しています。
 
-この記事は、**Azure Resource Manager** デプロイメント モデルを使用して作成された VNet と VPN ゲートウェイを対象としています。サービス管理 (クラシック デプロイ モデルとも呼ばれます) を使用して作成された VNet のポイント対サイト接続を構成する場合は、「[VNet へのポイント対サイト VPN 接続の構成](vpn-gateway-point-to-site-create.md)」をご覧ください。
+ポイント対サイト接続を機能させるために、VPN デバイスや公開 IP アドレスは必要ありません。ポイント対サイト接続の詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#point-to-site-connections)」と「[仮想ネットワークのセキュリティで保護されたクロスプレミス接続について](vpn-gateway-cross-premises-options.md)」を参照してください。
 
-[AZURE.INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+この記事は、**Azure Resource Manager デプロイ モデル** (サービス管理) を使用して作成された仮想ネットワークへのポイント対サイト VPN Gateway 接続を対象としています。
+
+**Azure のデプロイ モデルについて**
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+**ポイント対サイト接続のデプロイ モデルとツール**
+
+[AZURE.INCLUDE [vpn-gateway-table-point-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)]
+
+![ポイント対サイトのダイアログ](./media/vpn-gateway-point-to-site-create/point2site.png "point-to-site")
+
 
 ## この構成について
 
@@ -40,17 +51,17 @@
 - サブネット名: **GatewaySubnet**。**192.168.200.0/24** を使用します。ゲートウェイが機能するには、サブネット名 *GatewaySubnet* が必須となります。 
 - VPN クライアント アドレス プール: **172.16.201.0/24**。このポイント対サイト接続を利用して VNet に接続する VPN クライアントはこのプールから IP アドレスを受け取ります。
 - サブスクリプション: サブスクリプションが複数ある場合は、適切なサブスクリプションを使用していることを確認します。
-- リソース グループ: **TestRG**。
-- 場所: **米国東部**。
+- リソース グループ: **TestRG**
+- 場所: **米国東部**
 - DNS サーバー: 名前解決に利用する DNS サーバーの **IP アドレス**。
-- GW 名: **GW**。
+- GW 名: **GW**
 - パブリック IP 名: **GWIP**。
 - VPN の種類: **RouteBased**。
 
 
 ## 作業を開始する前に
 
-- Azure サブスクリプションを持っていることを確認します。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+- Azure サブスクリプションを持っていることを確認します。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 	
 - Azure リソース マネージャー PowerShell コマンドレット (1.0.2 以降) をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
@@ -92,7 +103,7 @@
 
 		New-AzureRmResourceGroup -Name $RG -Location $Location
 
-6. 仮想ネットワークのサブネット構成を作成し、「*FrontEnd*」、「*BackEnd*」、「*GatewaySubnet*」という名前を付けます。これらのプレフィックスは、上で宣言された VNet アドレス空間に含まれる必要があります。
+6. 仮想ネットワークのサブネット構成を作成し、*FrontEnd*、*BackEnd*、*GatewaySubnet*という名前を付けます。これらのプレフィックスは、上で宣言された VNet アドレス空間に含まれる必要があります。
 
 		$fesub = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
 		$besub = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName -AddressPrefix $BESubPrefix
@@ -229,4 +240,4 @@
 
 仮想ネットワークに仮想マシンを追加できます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

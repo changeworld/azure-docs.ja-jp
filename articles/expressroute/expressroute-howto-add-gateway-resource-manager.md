@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Resource Manager と PowerShell を使用した ExpressRoute の仮想ネットワークへの VPN ゲートウェイの追加 | Microsoft Azure"
-   description="この記事では、ExpressRoute の作成済みの Resource Manager VNet に VPN ゲートウェイを追加する方法を説明します"
+   pageTitle="Resource Manager と PowerShell を使用した ExpressRoute の仮想ネットワークへの VNet ゲートウェイの追加 | Microsoft Azure"
+   description="この記事では、ExpressRoute の作成済みの Resource Manager VNet に VNet ゲートウェイを追加する方法を説明します"
    documentationCenter="na"
    services="expressroute"
-   authors="cherylmc"
+   authors="charwen"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
@@ -14,12 +14,22 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="02/26/2016"
-   ms.author="cherylmc"/>
+   ms.date="04/06/2016"
+   ms.author="charwen"/>
 
-# ExpressRoute 構成の Resource Manager VNet への VPN ゲートウェイの追加 
+# Resource Manager と PowerShell を使用して ExpressRoute 用の仮想ネットワーク ゲートウェイを構成する
 
-この記事では、ゲートウェイ サブネットを追加し、既存の VNet の VPN ゲートウェイを作成する手順について説明します。この構成の手順は、**Resource Manager のデプロイ モデル** を使用して作成され、ExpressRoute 構成で使用される予定の VNet 専用です。クラシック デプロイ モデルを使用した VNet のゲートウェイの作成の詳細については、「[ExpressRoute 用の Virtual Network の構成](expressroute-howto-vnet-portal-classic.md)」を参照してください。
+
+> [AZURE.SELECTOR]
+- [PowerShell - Resource Manager](expressroute-howto-add-gateway-resource-manager.md)
+- [PowerShell - クラシック](expressroute-howto-add-gateway-classic.md)
+
+
+この記事では、既存の仮想ネットワーク (VNet) 用の VNet ゲートウェイを追加、サイズ変更、および削除する手順を説明します。この構成の手順は、**Resource Manager のデプロイ モデル** を使用して作成され、ExpressRoute 構成で使用される予定の VNet 専用です。
+
+**Azure のデプロイ モデルについて**
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## 作業を開始する前に
 
@@ -28,14 +38,9 @@
 
 [AZURE.INCLUDE [expressroute-gateway-rm-ps](../../includes/expressroute-gateway-rm-ps-include.md)]
 
-## ゲートウェイが作成されていることの確認
-
-次のコマンドを使用して、ゲートウェイが作成されていることを確認します。
-
-	Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG
 	
 ## 次のステップ
 
-VPN ゲートウェイを作成したので、ExpressRoute 回線に VNet をリンクできるようになりました。「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
+VNet ゲートウェイを作成したので、ExpressRoute 回線に VNet をリンクできるようになりました。「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

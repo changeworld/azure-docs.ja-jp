@@ -3,7 +3,7 @@
    description="Azure DNS でドメインをホストする際に Azure DNS の DNS レコード セットとレコードを管理します。レコード セットとレコードに対する操作のための PowerShell コマンドをすべて紹介します。" 
    services="dns" 
    documentationCenter="na" 
-   authors="joaoma" 
+   authors="cherylmc" 
    manager="carmon" 
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
    ms.date="03/04/2016"
-   ms.author="joaoma"/>
+   ms.author="cherylmc"/>
 
 # PowerShell を使用して DNS レコードを管理する方法
 
@@ -297,4 +297,4 @@ CNAME レコード セットに格納できるレコードは最大 1 つであ�
 [レコード セットとレコードの作成の概要](dns-getstarted-create-recordset.md)<BR> [DNS ゾーンの管理](dns-operations-dnszones.md)<BR> [.NET SDK を使用した操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0427_2016-->
