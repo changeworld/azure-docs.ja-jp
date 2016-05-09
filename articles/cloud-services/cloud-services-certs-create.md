@@ -74,7 +74,7 @@ Java を使用して[証明書を作成](../app-service-web/java-create-azure-we
 
 ## 次のステップ
 
-[Azure クラシック ポータル (または [Azure ポータル](cloud-services-configure-ssl-certificate-portal.md)) にサービス証明書をアップロードします](cloud-services-configure-ssl-certificate.md)。
+[Azure クラシック ポータル にサービス証明書をアップロードします](cloud-services-configure-ssl-certificate.md)(または [Azure ポータル](cloud-services-configure-ssl-certificate-portal.md))。
 
 [管理 API 証明書](../azure-api-management-certs.md)を Azure クラシック ポータルにアップロードします。
 

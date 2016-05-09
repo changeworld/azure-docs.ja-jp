@@ -64,7 +64,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 ##作業ディレクトリの作成
 
-Oozie では、ジョブに必要なリソースを同じディレクトリに保存する必要があります。この例では、****wasb:///tutorials/useoozie** を使用します。次のコマンドを使用して、このディレクトリと、このワークフローで作成される新しい Hive テーブルを保持する data ディレクトリを作成します。
+Oozie では、ジョブに必要なリソースを同じディレクトリに保存する必要があります。この例では、**wasb:///tutorials/useoozie** を使用します。次のコマンドを使用して、このディレクトリと、このワークフローで作成される新しい Hive テーブルを保持する data ディレクトリを作成します。
 
 	hadoop fs -mkdir -p /tutorials/useoozie/data
 
@@ -114,7 +114,7 @@ Oozie では、ジョブに必要なリソースを同じディレクトリに�
 
 2. Ctrl + X キーを押してエディターを終了します。メッセージが表示されたら、**Y** を選択してファイルを保存し、**Enter** キーを押して、ファイル名として **useooziewf.hql** を使用します。
 
-3. 次のコマンドを使用して、**useooziewf.hql** を ****wasb:///tutorials/useoozie/useooziewf.hql** にコピーします。
+3. 次のコマンドを使用して、**useooziewf.hql** を **wasb:///tutorials/useoozie/useooziewf.hql** にコピーします。
 
 		hadoop fs -copyFromLocal useooziewf.hql /tutorials/useoozie/useooziewf.hql
 
@@ -187,7 +187,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 	- **RunSqoopExport**: Sqoop を使用して、作成されたデータを Hive スクリプトから SQL Database にエクスポートします。このアクションは、**RunHiveScript** アクションが正常に実行された場合にのみ実行されます。
 
-		> [AZURE.NOTE] Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight バージョン 2.1 の場合) を参照してください。
+		> [AZURE.NOTE] Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] \(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] \(HDInsight バージョン 2.1 の場合) を参照してください。
 
 	このワークフローには、このドキュメントで後述するジョブ定義で使用する値に置き換えられる複数のエントリ (`${jobTracker}` など) が含まれています。
 
@@ -195,7 +195,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 2. Ctrl + X キーを押した後、**Y** キーと **Enter** キーを押してファイルを保存します。
 
-3. 次のコマンドを使用して、**workflow.xml** ファイルを ****wasb:///tutorials/useoozie/workflow.xml** にコピーします。
+3. 次のコマンドを使用して、**workflow.xml** ファイルを **wasb:///tutorials/useoozie/workflow.xml** にコピーします。
 
 		hadoop fs -copyFromLocal workflow.xml wasb:///tutorials/useoozie/workflow.xml
 
@@ -286,7 +286,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		<name>fs.defaultFS</name>
 		<value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
 
-	次の手順で ****wasb://mycontainer@mystorageaccount.blob.core.windows.net** 値を使用するので、この値を保存します。
+	次の手順で **wasb://mycontainer@mystorageaccount.blob.core.windows.net** 値を使用するので、この値を保存します。
 
 2. 次のコマンドを使用して、クラスターのヘッド ノードの FQDN を取得します。これは、クラスターの JobTracker アドレスに使用されます。これは構成ファイルですぐに使用されます。
 
@@ -363,7 +363,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		  </property>
 		</configuration>
 
-	* ****wasb://mycontainer@mystorageaccount.blob.core.windows.net** のすべてのインスタンスを、前に返された値に置き換えます。
+	* **wasb://mycontainer@mystorageaccount.blob.core.windows.net** のすべてのインスタンスを、前に返された値に置き換えます。
 
 	> [AZURE.WARNING] パスの一部としてコンテナーとストレージ アカウントが含まれた完全な WASB パスを使用する必要があります。短い形式 (wasb:///) を使用すると、ジョブを開始したときに RunHiveScript アクションが失敗します。
 
@@ -394,7 +394,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		<name>oozie.base.url</name>
 		<value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
 
-	****http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie** の部分が Oozie コマンドで使用する URL です。
+	**http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie** の部分が Oozie コマンドで使用する URL です。
 
 2. 次のコマンドを使用して、URL の環境変数を作成します。すべてのコマンドでこれを入力する必要があるわけではありません。
 
@@ -481,7 +481,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
 1. HDInsight クラスターへの SSH トンネルを作成します。これを実行する方法の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
-2. トンネルが作成されたら、Web ブラウザーで Ambari Web UI を開きます。Ambari サイトの URI は、****https://CLUSTERNAME.azurehdinsight.net** です。**CLUSTERNAME** を、Linux ベースの HDInsight クラスターの名前に置き換えます。
+2. トンネルが作成されたら、Web ブラウザーで Ambari Web UI を開きます。Ambari サイトの URI は、**https://CLUSTERNAME.azurehdinsight.net** です。**CLUSTERNAME** を、Linux ベースの HDInsight クラスターの名前に置き換えます。
 
 3. ページの左側で **[Oozie]** を選択し、**[Quick Links]**、**[Oozie Web UI]** の順にクリックします。
 

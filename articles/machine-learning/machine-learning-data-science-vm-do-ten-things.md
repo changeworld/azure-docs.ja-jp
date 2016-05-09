@@ -91,7 +91,7 @@ Notebook から、任意のライブラリを使って、データの探索、�
 Azure Machine Learning でモデルを運用可能な状態にすると、REST 形式の Web サービスが公開されます。クライアントは、この Web サービスに入力パラメーターを渡し、モデルに基づく予測を出力として受け取ることが可能です。
 
 
->[AZURE.NOTE] AzureML にまだサインアップしていない場合、[AzureML Studio](https://studio.azureml.net/) のホーム ページにアクセスして [Get Started] をクリックすると、Free ワークスペースまたは Standard ワークスペースを利用できます。
+>[AZURE.NOTE] AzureML にまだサインアップしていない場合、[AzureML Studio](https://studio.azureml.net/) のホーム ページにアクセスして [Get Started] \(使ってみる) をクリックすると、Free ワークスペースまたは Standard ワークスペースを利用できます。
 
 
 ### Python のモデルを構築して運用可能な状態にする
@@ -404,7 +404,7 @@ Azure Data Lake Storage は、ビッグ データの分析ワークロード用�
 ![](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 
-Visual Studio では、Blob Storage からのデータ読み取り、各種データ操作、特徴エンジニアリングを実行するほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。Blob Storage 内のデータを参照するときは ****wasb://** を、Azure Data Lake 内のデータを参照するときは ****swbhdfs://** を使用します。
+Visual Studio では、Blob Storage からのデータ読み取り、各種データ操作、特徴エンジニアリングを実行するほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。Blob Storage 内のデータを参照するときは **wasb://** を、Azure Data Lake 内のデータを参照するときは ****swbhdfs://** を使用します。
 
 ![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 

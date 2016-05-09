@@ -251,6 +251,6 @@ Azure Resource Manager テンプレートをデプロイする基本のワーク
 
 [Azure リソース マネージャーの概要]: ../resource-group-overview.md
 [Azure リソース マネージャーのテンプレートを使用したリソースのデプロイ]: ../resource-group-template-deploy.md
-[Azure クイック スタート テンプレート]: https://azure.microsoft.com/ja-JP/documentation/templates/?term=service+bus
+[Azure クイック スタート テンプレート]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 
 <!---HONumber=AcomDC_0427_2016-->

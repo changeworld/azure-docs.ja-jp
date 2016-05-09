@@ -26,7 +26,7 @@
 
 このチュートリアルでは、**Azure Resource Manager** デプロイメント モデルと Azure PowerShell コマンドレットを使用して単一の Azure 仮想マシンを作成する方法について説明します。このチュートリアルでは、SQL ギャラリー内のイメージから、単一のディスク ドライブを使用して 1 台の仮想マシンを作成します。仮想マシンで使用するストレージ、ネットワーク、コンピューティング リソース用のプロバイダーは新たに作成します。これらのリソースのプロバイダーが既にある場合は、既存のプロバイダーを使用してもかまいません。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。同じ作業をクラシック デプロイメント モデルで行う方法については、「[Azure PowerShell での SQL Server 仮想マシンの作成 (クラシック)](virtual-machines-windows-classic-ps-sql-create.md)」を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル。同じ作業をクラシック デプロイメント モデルで行う方法については、「[Azure PowerShell での SQL Server 仮想マシンの作成 (クラシック)](virtual-machines-windows-classic-ps-sql-create.md)」を参照してください。
 
 ## 前提条件
 

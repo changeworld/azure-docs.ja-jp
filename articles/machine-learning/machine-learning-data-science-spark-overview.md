@@ -112,7 +112,7 @@ Azure ポータルから Jupyter Notebook を起動することができます�
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
 
-******https://CLUSTERNAME.azurehdinsight.net/jupyter*** を参照して、Jupyter Notebook にアクセスすることもできます。ノートブックにアクセスするには、管理者アカウントのパスワードが必要です。
+***https://CLUSTERNAME.azurehdinsight.net/jupyter*** を参照して、Jupyter Notebook にアクセスすることもできます。ノートブックにアクセスするには、管理者アカウントのパスワードが必要です。
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
 
