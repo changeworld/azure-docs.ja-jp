@@ -14,46 +14,69 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/12/2016"
+	ms.date="05/02/2016"
 	ms.author="davidmu"/>
 
 # Resource Manager と PowerShell を使用して Windows VM を作成する
 
-この記事では、Resource Manager と PowerShell を使用して、Windows Server を実行する Azure Virtual Machine およびそれに関連するリソースをすばやく作成する方法を示します。
+この記事では、Windows Server を実行する Azure 仮想マシンとそれに必要なリソースを [Resource Manager](../resource-group-overview.md) と PowerShell を使用してすばやく作成する方法を紹介します。
 
-この記事の手順を実行するには約 30 分かかります。
+仮想マシンを作成するには、この記事のすべての手順を実施する必要があります。所要時間は約 30 分です。
 
-## 手順 1: Azure PowerShell をインストールする
+## 手順 1. Azure PowerShell をインストールする
 
 最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
         
 ## 手順 2: リソース グループを作成する
 
-すべてのリソースをリソース グループにデプロイする必要があります。詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
+まず、リソース グループを作成します。
 
-1. リソースの作成に使用できる場所の一覧を取得します。
+1. リソースを作成できる場所の一覧を取得します。
 
 	    Get-AzureLocation | sort Name | Select Name
+        
+    次のような結果が表示されます。
+    
+        Name
+        ----
+        Australia East
+        Australia Southeast
+        Brazil South
+        Central India
+        Central US
+        East Asia
+        East US
+        East US 2
+        Japan East
+        Japan West
+        North Central US
+        North Europe
+        South Central US
+        South India
+        Southeast Asia
+        West Europe
+        West India
+        West US
 
-2. **$locName** の値を一覧の場所に置き換えます (例: **Central US**)。変数を作成します。
+2. **$locName** の値を一覧の場所に置き換えます。変数を作成します。
 
-        $locName = "location name"
+        $locName = "Central US"
         
 3. **$rgName** の値を、新しいリソース グループの名前に置き換えます。変数とリソース グループを作成します。
 
-        $rgName = "resource group name"
+        $rgName = "mygroup1"
         New-AzureRmResourceGroup -Name $rgName -Location $locName
     
 ## ステップ 3: ストレージ アカウントを作成する
 
-ストレージ アカウントは、作成する仮想マシンに関連付けられた仮想ハード ディスクに格納する必要があります。
+作成する仮想マシン用の仮想ハード ディスクを格納するためには[ストレージ アカウント](../storage/storage-introduction.md)が必要です。
 
-1. **$stName** の値 (小文字と数字のみ) を、ストレージ アカウントの名前に置き換えます。名前の一意性をテストします。
+1. **$stName** の値は、ストレージ アカウントの名前に置き換えます。名前の一意性をテストします。
 
-        $stName = "storage account name"
+        $stName = "mystorage1"
         Test-AzureName -Storage $stName
 
-    このコマンドで **False** が返された場合は、提案した名前は一意です。
+    このコマンドで **False** が返された場合は、提案した名前は Azure 内で一意です。ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
     
 2. 次のコマンドを実行して、ストレージ アカウントを作成します。
     
@@ -61,30 +84,32 @@
         
 ## 手順 4: 仮想ネットワークを作成する
 
-すべての仮想マシンは、仮想ネットワークと関連付けられている必要があります。
+すべての仮想マシンは[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)に属します。
 
 1. **$subnetName** の値を、サブネットの名前に置き換えます。変数とサブネットを作成します。
     	
-        $subnetName = "subnet name"
+        $subnetName = "mysubnet1"
         $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
         
 2. **$vnetName** の値を、仮想ネットワークの名前に置き換えます。サブネットで変数と仮想ネットワークを作成します。
 
-        $vnetName = "virtual network name"
+        $vnetName = "myvnet1"
         $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
+        
+    実際のアプリケーションと環境に合った値を使用してください。
         
 ## 手順 5: パブリック IP アドレスとネットワーク インターフェイスを作成する
 
-仮想ネットワークでの仮想マシンとの通信を有効にするには、パブリック IP アドレスとネットワーク インターフェイスが必要です。
+仮想ネットワークでの仮想マシンとの通信を有効にするには、[パブリック IP アドレス](../virtual-network/virtual-network-ip-addresses-overview-arm.md)とネットワーク インターフェイスが必要です。
 
 1. **$ipName** の値を、パブリック IP アドレスの名前に置き換えます。変数とパブリック IP アドレスを作成します。
 
-        $ipName = "public IP address name"
+        $ipName = "myIPaddress1"
         $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
         
 2. **$nicName** の値を、ネットワーク インターフェイスの名前に置き換えます。変数とネットワーク インターフェイスを作成します。
 
-        $nicName = "network interface name"
+        $nicName = "mynic1"
         $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
         
 ## 手順 6: 仮想マシンを作成する
@@ -95,16 +120,18 @@
 
         $cred = Get-Credential -Message "Type the name and password of the local administrator account."
         
+    パスワードは、8 ～ 123 文字で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字のうち、少なくとも 3 つを含める必要があります。
+        
 2. **$vmName** の値を、仮想マシンの名前に置き換えます。変数と仮想マシンの構成を作成します。
 
-        $vmName = "virtual machine name"
+        $vmName = "myvm1"
         $vm = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A1"
         
     仮想マシンに使用できるサイズの一覧は、「[Azure の仮想マシンのサイズ](virtual-machines-windows-sizes.md)」を参照してください。
     
 3. **$compName** の値を、仮想マシンのコンピューター名に置き換えます。変数を作成し、オペレーティング システムの情報を構成に追加します。
 
-        $compName = "computer name"
+        $compName = "myvm1"
         $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $compName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
         
 4. 仮想マシンのプロビジョニングに使用するイメージを定義します。
@@ -117,9 +144,9 @@
 
         $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
         
-6. **$blobPath** の値を、仮想ハード ディスクのストレージ内のパスとファイル名に置き換えます。通常、vhd ファイルはコンテナーに格納されます (例: "vhds/WindowsVMosDisk.vhd")。変数を作成します。
+6. **$blobPath** の値を、仮想ハード ディスクで使用するストレージ内のパスとファイル名に置き換えます。通常、仮想ハード ディスク ファイルはコンテナーに格納されます (例: **vhds/WindowsVMosDisk.vhd**)。変数を作成します。
 
-        $blobPath = "vhd path and file name"
+        $blobPath = "vhds/WindowsVMosDisk.vhd"
         $osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + $blobPath
         
 7. **$diskName** の値を、オペレーティング システム ディスクの名前に置き換えます。変数を作成し、ディスクの情報を構成に追加します。
@@ -140,7 +167,7 @@
 ## 次のステップ
 
 - デプロイに問題がある場合は、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
-- 作成した仮想マシンの管理方法については、「[Azure リソース マネージャーと PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)」を参照してください。
-- テンプレートを使用して仮想マシンを作成する方法については、「[リソース マネージャー テンプレートで Windows 仮想マシンを作成する](virtual-machines-windows-ps-template.md)」を参照してください。
+- 作成した仮想マシンの管理方法については、[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関する記事を参照してください。
+- テンプレートを使用して仮想マシンを作成する方法については、「[Resource Manager テンプレートで Windows 仮想マシンを作成する](virtual-machines-windows-ps-template.md)」を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

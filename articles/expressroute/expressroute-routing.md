@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/21/2016"
+   ms.date="05/03/2016"
    ms.author="cherylmc"/>
 
 
@@ -78,7 +78,7 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
 
 ## 自律システム番号
 
-Microsoft は、Azure パブリック、Azure プライベート、および Microsoft ピアリングのために AS 12076 を使用します。AS 65515 は、内部使用のために予約されています。16 ビットと 32 ビットの両方の AS 番号がサポートされています。
+Microsoft は、Azure パブリック、Azure プライベート、および Microsoft ピアリングのために AS 12076 を使用します。ASN 65515 ～ 65520 は、内部使用のために予約されています。16 ビットと 32 ビットの両方の AS 番号がサポートされています。
 
 データ転送の対称性に関する要件はありません。転送パスとリターン パスは、異なるルーター ペアを通過することができます。同じルートについては、自分に属している複数の回線ペアのどちらかの側からアドバタイズする必要があります。ルートのメトリックは同一である必要はありません。
 
@@ -134,8 +134,6 @@ Microsoft は、パブリック ピアリングと Microsoft ピアリングを�
 | **ヨーロッパ** | | |
 | | 北ヨーロッパ | 12076:51003 |
 | | 西ヨーロッパ | 12076:51002 |
-| | 英国北部 | 12076:51022 |
-| | 英国南部 2 | 12076:51023 |
 | **アジア太平洋** | | |
 | | 東アジア | 12076:51010 |
 | | 東南アジア | 12076:51011 |
@@ -174,8 +172,8 @@ Microsoft は、ユーザーによって設定されたすべての BGP コミ�
 
 - ExpressRoute 接続を構成します。
 
-	- [クラシック デプロイ モデルで ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)するか、[Azure Resource Manager を使用して ExpressRoute 回線を作成、変更](expressroute-howto-circuit-arm.md)します。
-	- [クラシック デプロイ モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[Resource Manager デプロイ モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
+	- [クラシック デプロイメント モデルで ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)するか、[Azure Resource Manager を使用して ExpressRoute 回線を作成、変更](expressroute-howto-circuit-arm.md)します。
+	- [クラシック デプロイメント モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[Resource Manager デプロイメント モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
 	- [クラシック VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[Resource Manager VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

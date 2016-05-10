@@ -21,10 +21,10 @@
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Azure ポータル - クラシック](vpn-gateway-site-to-site-create.md)
+- [Azure クラシック ポータル](vpn-gateway-site-to-site-create.md)
 - [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
-この記事では、**Azure Resource Manager** のデプロイ モデルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
+この記事では、Azure Resource Manager デプロイメント モデルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
 
 **Azure のデプロイ モデルについて**
 
@@ -46,7 +46,7 @@
 	
 - Azure サブスクリプション。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 	
-- Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
+- Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 
 ## 1\.サブスクリプションへの接続 
@@ -67,7 +67,9 @@ PowerShell コンソールを開き、アカウントに接続します。接続
 
 ## 2\.仮想ネットワークとゲートウェイ サブネットを作成する
 
-以下の例では、/28 のゲートウェイ サブネットを示します。/29 のように小規模のゲートウェイ サブネットを作成することはできますが、これは推奨されません。追加の機能要件に対応できるよう、/27 またはそれ以上の規模 (/26、/25 など) のゲートウェイ サブネットを作成することをお勧めします。/29 以上の規模のゲートウェイ サブネットを持つ仮想ネットワークが既にある場合は、「[手順 3. ローカル ネットワーク ゲートウェイを追加する](#localnet)」に進むことができます。
+以下の例では、/28 のゲートウェイ サブネットを示します。/29 のように小規模のゲートウェイ サブネットを作成することはできますが、これは推奨されません。追加の機能要件に対応できるよう、/27 またはそれ以上の規模 (/26、/25 など) のゲートウェイ サブネットを作成することをお勧めします。
+
+/29 以上の規模のゲートウェイ サブネットを持つ仮想ネットワークが既にある場合は、「[ローカル ネットワーク ゲートウェイを追加する](#localnet)」に進むことができます。
 
 ### 仮想ネットワークとゲートウェイ サブネットを作成するには
 
@@ -146,10 +148,10 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 
 次の値を使用します。
 
-- サイト間構成の **-GatewayType** は、**Vpn** です。ゲートウェイの種類は常に、実装する構成に対応するものとなります。たとえば、他のゲートウェイ構成では、-GatewayType に ExpressRoute を必要とする場合があります。 
+- サイト間構成の *-GatewayType* は、*Vpn* です。ゲートウェイの種類は常に、実装する構成に対応するものとなります。たとえば、他のゲートウェイ構成では、-GatewayType に ExpressRoute を必要とする場合があります。 
 
-- **-VpnType** には、**RouteBased** (ドキュメントによっては動的ゲートウェイと呼ばれます) または **PolicyBased** (ドキュメントによっては静的ゲートウェイと呼ばれます) を指定できます。VPN ゲートウェイの種類については、「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md#vpntype)」を参照してください。
-- **-GatewaySku** には、**Basic**、**Standard**、**HighPerformance** のいずれかを指定できます。 	
+- *-VpnType* には、*RouteBased* (ドキュメントによっては動的ゲートウェイと呼ばれます) または *PolicyBased* (ドキュメントによっては静的ゲートウェイと呼ばれます) を指定できます。VPN ゲートウェイの種類については、「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md#vpntype)」を参照してください。
+- *-GatewaySku* には、*Basic*、*Standard*、*HighPerformance* のいずれかを指定できます。 	
 
 		New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
 
@@ -163,7 +165,7 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 
 ## 8\.VPN 接続を作成する
 
-次に、仮想ネットワーク ゲートウェイと VPN デバイス間にサイト間 VPN 接続を作成します。サンプルの値は必ず実際の値に変更してください。共有キーは、VPN デバイスの構成に使用したものと同じ値にする必要があります。サイト間接続の `-ConnectionType` は **IPsec** です。
+次に、仮想ネットワーク ゲートウェイと VPN デバイス間にサイト間 VPN 接続を作成します。サンプルの値は必ず実際の値に変更してください。共有キーは、VPN デバイスの構成に使用したものと同じ値にする必要があります。サイト間接続の `-ConnectionType` は *IPsec* です。
 
 	$gateway1 = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 	$local = Get-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
@@ -187,6 +189,8 @@ VPN 接続を検証する方法はいくつかあります。以下で、Azure �
 
 ## 次のステップ
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
+- 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+- BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関するページと [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関するページを参照してください。
+
+<!---HONumber=AcomDC_0504_2016-->
