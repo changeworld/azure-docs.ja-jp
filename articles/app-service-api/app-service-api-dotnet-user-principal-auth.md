@@ -74,11 +74,17 @@
 
 API アプリの Node.js または Java 入門シリーズに従って学習している場合は、次の記事「[Azure App Service での API Apps のサービス プリンシパル認証](app-service-api-dotnet-service-principal-auth.md)」に進みます。
 
-API アプリの .NET 入門シリーズに従って学習していて、[1 番目](app-service-api-dotnet-get-started.md)と [2 番目](app-service-api-cors-consume-javascript.md)のチュートリアルで説明されているようにサンプル アプリケーションを既にデプロイしている場合は、「[認証を構成する](#azureauth)」セクションに進みます。
+API アプリの .NET 入門シリーズに従って学習していて、[1 番目](app-service-api-dotnet-get-started.md)と [2 番目](app-service-api-cors-consume-javascript.md)のチュートリアルで説明されているようにサンプル アプリケーションを既にデプロイしている場合は、「[Set up authentication in App Service and Azure AD (App Service および Azure AD で認証をセットアップする)](#azureauth)」セクションに進みます。
 
-1 番目と 2 番目のチュートリアルを省略してこのチュートリアルを進める場合は、[1 番目のチュートリアル](app-service-api-dotnet-get-started.md)に記載されている前提条件を確認してから、[To Do List サンプル リポジトリ Readme ファイル](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/readme.md)の **[Deploy to Azure]** ボタンを使用して API アプリケーションと Web アプリケーションをデプロイしてください。
+1 番目および 2 番目のチュートリアルに進まないで、このチュートリアルに従う場合は、次の手順を実行します。
 
-デプロイが完了すると、Web アプリへの HTTP リンクが表示されます。アプリケーションを実行して正常に動作していることを確認するには、その URL を HTTPS に変更します。
+1. [1 番目のチュートリアル](app-service-api-dotnet-get-started.md)に一覧されている前提条件がすべて満たされていることを確認します。前提条件が満たされていることに加えて、これらの認証チュートリアルでは、App Service Web アプリと API アプリが Visual Studio および Azure ポータルで操作されていることを前提とします。
+
+2. [To Do List サンプル リポジトリ Readme ファイル](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/readme.md)の **[Azure へのデプロイ]** ボタンを使用して API アプリと Web アプリをデプロイしてください。作成された Azure リソース グループをメモしておきます。これは後で Web アプリ名と API アプリ名を検索する場合に使用できます。
+ 
+3. [To Do List サンプル リポジトリ](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list)をダウンロードまたは複製して、Visual Studio でローカルに使用するコードを取得します。
+
+これらの手順の開始点は、最初の 2 つのチュートリアルを実行した場合と同じになります。例外が 1 つあります。それは Visual Studio では各プロジェクトがどの Web アプリまたは API アプリにデプロイされるのかまだ識別できないという点です。プロジェクトをデプロイする場合は、デプロイ先の Azure Web アプリまたは API アプリを選択することが必要になります。Web アプリと API アプリの名前を取得するには、Azure ポータルを開き、**[Deploy to Azure]** ボタンをクリックしたときに作成されたリソース グループのリソース グループ ブレードを参照します。
 
 ## <a id="azureauth"></a> App Service と Azure AD での認証の設定
 
@@ -322,7 +328,7 @@ Web API 2 バックエンドで AngularJS 単一ページ アプリケーショ�
 
 ## トラブルシューティング
 
-[AZURE.INCLUDE [troubleshooting](../../includes/app-service-api-auth-troubleshooting.md)]
+[AZURE.INCLUDE [トラブルシューティング](../../includes/app-service-api-auth-troubleshooting.md)]
 
 * ToDoListAPI (中間層) と ToDoListDataAPI (データ層) を混同しないよう注意してください。たとえば、認証をデータ層ではなく中間層 API アプリに追加していることを確認します。 
 * また、AngularJS ソース コードが中間層 API アプリ URL (ToDoListDataAPI ではなく、ToDoListAPI) と正しい Azure AD クライアント ID を参照していることを確認します。 
@@ -331,4 +337,4 @@ Web API 2 バックエンドで AngularJS 単一ページ アプリケーショ�
 
 このチュートリアルでは、API アプリで App Service 認証を使用する方法、および ADAL JS ライブラリを使用して API アプリを呼び出す方法を説明しました。次のチュートリアルでは、[サービス間シナリオで API アプリへのアクセスをセキュリティで保護する](app-service-api-dotnet-service-principal-auth.md)方法を学習します。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -41,11 +41,11 @@ Azure App Service は、Azure Websites、Azure Mobile Services、Azure Biztalk S
 ### アプリの種類
 App Service を使用すると、単一の開発エクスペリエンスで次の種類のアプリを作成することができます。
 
-- [**Web Apps**](../app-service-web-overview) - ビジネスに合わせて拡張できるミッション クリティカルな Web アプリをすばやく作成してデプロイします。
-- [**Mobile Apps**](../app-service-mobile-value-prop-preview) - あらゆるデバイスを使用する従業員、パートナー、顧客といつでもつながります。
-- [**API Apps**](../app-service-api-apps-why-best-platform) - 簡単な操作でクラウド API を作成し、使用します。
-- [**Function Apps**](../functions-overview) - Azure、オンプレミス、SaaS プロバイダー上のイベントに応答する軽量の関数を作成します。
-- [**Logic Apps**](../app-service-logic-what-are-logic-apps) - コードを記述することなく、クラウド全体のデータへのアクセスと使用を自動化します。
+- [**Web Apps**](../app-service-web/app-service-web-overview.md) - ビジネスに合わせて拡張できるミッション クリティカルな Web アプリをすばやく作成してデプロイします。
+- [**Mobile Apps**](../app-service-mobile/app-service-mobile-value-prop.md) - あらゆるデバイスを使用する従業員、パートナー、顧客といつでもつながります。
+- [**API Apps**](../app-service-api/app-service-api-apps-why-best-platform.md) - 簡単な操作でクラウド API を作成し、使用します。
+- [**関数アプリ**](../azure-functions/functions-overview.md) - Azure、オンプレミス、SaaS プロバイダー上のイベントに応答する軽量の関数を作成します。
+- [**Logic Apps**](../app-service-logic/app-service-logic-what-are-logic-apps.md) - コードを記述することなく、クラウド全体のデータへのアクセスと使用を自動化します。
 
 App Service は単一の統合サービスとして、上に挙げた種類のアプリを作成して単一のソリューションにすることを簡単にします。これにより、同じバックエンドを使用して Web クライアントとモバイル クライアントの両方を対象とするアプリを簡単に構築し、Office 365 や salesforce.com などの一般的なサービスと同様に、オンプレミスのシステムとも統合します。
 
@@ -60,4 +60,4 @@ Azure App Service なら、言語の選択と同じくらい簡単に使用で�
 無料ですぐに[新しいアプリを作成できます](http://go.microsoft.com/fwlink/?LinkId=523751)。クレジット カードもコミットメントも不要です。面倒なことはありません。
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

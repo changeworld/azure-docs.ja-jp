@@ -13,8 +13,8 @@ Azure ドキュメントにご興味をお持ちくださり、ありがとう�
 * [リポジトリの構造](#repository-organization)
 * [GitHub、Git、およびこのリポジトリの使い方](#use-github-git-and-this-repository)
 * [マークダウンを使用してトピックの書式を設定する方法](#how-to-use-markdown-to-format-your-topic)
-* [その他のリソース](#more-resources)
-* [作成協力者ガイドに掲載されている全記事のインデックス](./contributor-guide/contributor-guide-index.md) (新しいページが開きます)
+* [その他のリソース](#その他のリソース)
+* [作成協力者ガイドに掲載されている全記事のインデックス](https://github.com/Azure/azure-content/blob/master/contributor-guide/contributor-guide-index.md) (新しいページが開きます)
 
 ## 作成協力の方法
 

@@ -97,12 +97,4 @@ Azure で Windows ベースの仮想マシンを新たに作成するには、�
 - 既存の負荷分散セットのメンバーとしての設定。
 - 静的 IP アドレス。
 
-## Linux ベースの VM の作成
-
-次の項目が事前構成された Linux ベースの仮想マシンを Azure で新たに作成するには、「[Azure PowerShell を使用して Linux ベースの仮想マシンを作成および事前構成する](virtual-machines-linux-classic-createpowershell.md)」をご覧ください。
-
-- 追加のディスク。
-- 既存の負荷分散セットのメンバーとしての設定。
-- 静的 IP アドレス。
-
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0427_2016-->

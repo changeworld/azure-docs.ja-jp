@@ -48,7 +48,7 @@ CDN を使用して Azure データをキャッシュすると、次のような
 
 Standard CDN レベルには、以下の機能が含まれます。
 
-- [Storage](cdn-create-a-storage-account-with-cdn.md)、[Cloud Services](cdn-cloud-service-with-cdn.md)、Web Apps、[Media Services](../media-services/media-services-manage-origins.md#enable_cdn) などの Azure サービスと簡単に統合
+- [Storage](cdn-create-a-storage-account-with-cdn.md)、[Cloud Services](cdn-cloud-service-with-cdn.md)、[Web Apps](../app-service-web/cdn-websites-with-cdn.md)、[Media Services](../media-services/media-services-manage-origins.md#enable_cdn) などの Azure サービスと簡単に統合
 - HTTPS のサポート
 - 負荷分散
 - DDOS 保護
@@ -75,6 +75,6 @@ CDN の概要については、「[Azure の Content Delivery Network (CDN) を�
 
 既存の CDN 顧客は、[Microsoft Azure ポータル](https://portal.azure.com)から CDN エンドポイントを管理できるようになりました。
 
-実際の CDN の効果については、[Build 2016 セッションのビデオ](../../videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/)をご覧ください。
+実際の CDN の効果については、[Build 2016 セッションのビデオ](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/)をご覧ください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

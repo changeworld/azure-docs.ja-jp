@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/08/2016"
+	ms.date="04/22/2016"
 	ms.author="spelluru"/>
 
 
@@ -24,13 +24,21 @@
 
 
 
+## 新規
+
+
+| タイトル | 説明 |
+| :-- | :-- |
+| [Data Factory から Spark プログラムを起動する](data-factory-spark.md) | MapReduce アクティビティを使用して Azure Data Factory から Spark プログラムを呼び出す方法について説明します。 |
+
+
 ## 主要な概念
 
 
 | タイトル | 説明 |
 | :-- | :-- |
-| [Azure Data Factory サービスの概要](data-factory-introduction.md) | Azure データ ファクトリ サービスを使用してデータ処理、データ保存、データ移動のサービスを構成し、信頼済みの情報を生成するパイプラインを作成する方法について説明します。 |
 | [Azure Data Factory のデータセット](data-factory-create-datasets.md) | Azure Data Factory のデータセットを理解し、その作成方法について学習します。 |
+| [Azure Data Factory サービスの概要](data-factory-introduction.md) | Azure データ ファクトリ サービスを使用してデータ処理、データ保存、データ移動のサービスを構成し、信頼済みの情報を生成するパイプラインを作成する方法について説明します。 |
 | [Azure Data Factory のパイプラインとアクティビティ](data-factory-create-pipelines.md) | Azure Data Factory のパイプラインについて、およびパイプラインを作成してデータを移動および変換して洞察を得るために使用できる情報を生成する方法について説明します |
 | [Data Factory を使用したスケジュール設定と実行](data-factory-scheduling-and-execution.md) | Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
 
@@ -40,18 +48,19 @@
 
 | タイトル | 説明 |
 | :-- | :-- |
-| [チュートリアル: 初めての Data Factory の作成 (概要)](data-factory-build-your-first-pipeline.md) | このチュートリアルでは、Azure HDInsight を使用してデータを変換するデータ パイプラインで Data Factory を作成する方法を示します。 |
 | [Microsoft Visual Studio を使用した Azure の初めての Data Factory の作成](data-factory-build-your-first-pipeline-using-vs.md) | このチュートリアルでは、Visual Studio を使用して、サンプルの Azure Data Factory パイプラインを作成します。 |
 | [Azure ポータルまたは Data Factory Editor を使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-editor.md) | このチュートリアルでは、Azure ポータルで Data Factory Editor を使用して、サンプルの Azure Data Factory パイプラインを作成します。 |
 | [Azure PowerShell を使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-powershell.md) | このチュートリアルでは、Azure PowerShell を使用して、サンプルの Azure Data Factory パイプラインを作成します。 |
 | [チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-arm.md) | このチュートリアルでは、Azure リソース マネージャー テンプレートを使用して、サンプルの Azure Data Factory パイプラインを作成します。 |
+| [チュートリアル: 初めての Data Factory の作成 (概要)](data-factory-build-your-first-pipeline.md) | このチュートリアルでは、Azure HDInsight を使用してデータを変換するデータ パイプラインで Data Factory を作成する方法を示します。 |
 | [チュートリアル: Azure BLOB Storage から Azure SQL Database にデータをコピーする](data-factory-get-started.md) | このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure BLOB から Azure SQL Database にデータをコピーする方法を示します。 |
 | [チュートリアル: コピー アクティビティがあるパイプラインを Azure PowerShell で作成する](data-factory-monitor-manage-using-powershell.md) | このチュートリアルでは、Azure PowerShell を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。 |
-| [チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する](data-factory-get-started-using-editor.md) | このチュートリアルでは、Azure クラシック ポータルの Data Factory エディターを使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。 |
+| [チュートリアル: コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する](data-factory-copy-data-wizard-tutorial.md) | このチュートリアルでは、Data Factory でサポートされているコピー ウィザードを使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。 |
+| [チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する](data-factory-get-started-using-editor.md) | このチュートリアルでは、Azure ポータルで Data Factory Editor を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。 |
 | [チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する](data-factory-get-started-using-vs.md) | このチュートリアルでは、Visual Studio を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。 |
-| [チュートリアル: マーケティング キャンペーンの有効性の測定](data-factory-tutorial.md) | この高度なチュートリアルでは、現実に近いシナリオについて説明し、そのシナリオを Azure クラシック ポータルで Azure Data Factory サービスと Data Factory Editor を使用して実装します。 |
-| [チュートリアル: Data Factory を使用したログ ファイルの移動と処理 [PowerShell]](data-factory-tutorial-using-powershell.md) | この高度なチュートリアルでは、現実に近いシナリオについて説明し、そのシナリオを Azure Data Factory サービスと Azure PowerShell を使用して実装します。 |
-| [チュートリアル: 出力データをオンプレミスの SQL Server データベースにコピーする (Azure クラシック ポータル)](data-factory-tutorial-extend-onpremises.md) | ここでは、Azure クラシック ポータルで Data Factory Editor を使用してチュートリアルを拡張して、パイプラインで出力データを SQL Server データベースにコピーするようにします。 |
+| [チュートリアル: Azure Data Factory を使用してログ ファイルの移動と処理を行う (Azure ポータル)](data-factory-tutorial.md) | この高度なチュートリアルでは、現実に近いシナリオについて説明し、そのシナリオを Azure ポータルで Azure Data Factory サービスと Data Factory Editor を使用して実装します。 |
+| [チュートリアル: Data Factory を使用したログ ファイルの移動と処理 (PowerShell)](data-factory-tutorial-using-powershell.md) | この高度なチュートリアルでは、現実に近いシナリオについて説明し、そのシナリオを Azure Data Factory サービスと Azure PowerShell を使用して実装します。 |
+| [チュートリアル: 出力データをオンプレミスの SQL Server データベースにコピーする (Azure ポータル)](data-factory-tutorial-extend-onpremises.md) | ここでは、Azure ポータルで Data Factory Editor を使用してチュートリアルを拡張して、パイプラインで出力データを SQL Server データベースにコピーするようにします。 |
 | [チュートリアル: 出力データをオンプレミスの SQL Server データベースにコピーする (Azure PowerShell)](data-factory-tutorial-extend-onpremises-using-powershell.md) | ここでは、Azure PowerShell を使用してチュートリアルを拡張して、パイプラインで出力データを SQL Server データベースにコピーするようにします。 |
 
 
@@ -94,13 +103,13 @@
 | [Azure Machine Learning アクティビティを使用して予測パイプラインを作成する](data-factory-azure-ml-batch-execution-activity.md) | Azure Data Factory と Azure Machine Learning を使用して予測パイプラインを作成する方法について説明します |
 | [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md) | Azure Data Factory で Hadoop ストリーミング アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Hadoop ストリーミング プログラミングを実行する方法について説明します。 |
 | [Hive アクティビティ](data-factory-hive-activity.md) | Azure データ ファクトリで Hive アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Hive クエリを実行する方法について説明します。 |
+| [Azure Batch と Data Factory を使用した HPC とデータのオーケストレーション](data-factory-data-processing-using-batch.md) | Azure Batch の並列処理機能を使用して、Azure Data Factory パイプラインで膨大な量のデータを処理する方法について説明します。 |
 | [Data Factory から MapReduce プログラムを起動する](data-factory-map-reduce.md) | Azure Data Factory から Azure HDInsight クラスターで MapReduce プログラムを実行してデータを処理する方法について説明します。 |
 | [Pig アクティビティ](data-factory-pig-activity.md) | Azure データ ファクトリで Pig アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Pig スクリプトを実行する方法について説明します。 |
 | [Azure Data Factory から Azure Data Lake Analytics で U-SQL スクリプトを実行する](data-factory-usql-activity.md) | Azure Data Lake Analytics コンピューティング サービスで U-SQL スクリプトを実行してデータを処理する方法について説明します。 |
 | [SQL Server ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) | SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Database または Azure SQL Data Warehouse でストアド プロシージャを呼び出す方法について説明します。 |
 | [Azure Data Factory を使用した変換と分析](data-factory-data-transformation-activities.md) | Azure Data Factory サービスを使用してデータを変換、分析する方法について説明します。 |
 | [Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md) | カスタム アクティビティを作成して Azure Data Factory パイプラインで使用する方法について説明します。 |
-| [Azure Batch と Data Factory を使用した HPC とデータのオーケストレーション](data-factory-data-processing-using-batch.md) | Azure Batch の並列処理機能を使用して、Azure Data Factory パイプラインで膨大な量のデータを処理する方法について説明します。 |
 
 
 ## サンプル
@@ -126,7 +135,7 @@
 
 | タイトル | 説明 |
 | :-- | :-- |
-| [Azure Data Factory のパイプラインの監視と管理](data-factory-monitor-manage-pipelines.md) | Azure クラシック ポータルおよび Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。 |
+| [Azure Data Factory のパイプラインの監視と管理](data-factory-monitor-manage-pipelines.md) | Azure ポータルおよび Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。 |
 
 
 ## SDK
@@ -153,12 +162,12 @@
 
 #### 追加
 
-- ラーニング パスの図: [Data Factory](http://azure.microsoft.com/documentation/learning-paths/data-factory/)
-
 - [Microsoft Azure ドキュメントの新しい検索エクスペリエンス](http://azure.microsoft.com/search/documentation/)
 
-- [Data Factory サービスの更新情報](http://azure.microsoft.com/updates/?service=data-factory)
+- [Data factory サービスの更新情報](http://azure.microsoft.com/updates/?service=data-factory)
 
 - [Microsoft Azure サービスのラーニング パス グラフィック](http://azure.microsoft.com/documentation/learning-paths/)
 
-<!---HONumber=AcomDC_0309_2016-->
+- ラーニング パスの図: [Data Factory](http://azure.microsoft.com/documentation/learning-paths/data-factory/)
+
+<!---HONumber=AcomDC_0427_2016-->

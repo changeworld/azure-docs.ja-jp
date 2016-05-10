@@ -4,7 +4,7 @@
    services="app-service/web" 
    documentationCenter=".net" 
    authors="Juliako" 
-   manager="dwrede" 
+   manager="erikre" 
    editor=""/>
 
 <tags
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="01/19/2016"
+   ms.date="04/25/2016"
    ms.author="juliako"/>
 
-
+ 
 # Azure SDK for .NET 2.6 リリース ノート
 
 このドキュメントには、Azure SDK for .NET 2.6 リリースのリリース ノートが含まれます。
@@ -108,4 +108,4 @@ Azure SDK 2.6 において、Azure コンピューティング エミュレー�
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

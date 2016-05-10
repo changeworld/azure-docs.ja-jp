@@ -27,6 +27,7 @@
 ## HDInsight を管理するためのその他のツール
 Azure クラシック ポータル以外にも、HDInsight を管理するツールが用意されています。
 
+
 - Azure PowerShell を使用して HDInsight を管理する方法の詳細については、[Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)に関するページを参照してください。
 
 - Azure CLI を使用して HDInsight を管理する方法の詳細については、[Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)に関するページを参照してください。
@@ -200,4 +201,4 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal-v1/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
 [image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal-v1/hdi.clustercreate.uploadcert.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="12/07/2015"
+   ms.date="04/19/2015"
    ms.author="yuemlu"/>
 
 
@@ -81,4 +81,4 @@ foreach($subscription in Get-AzureSubscription) {
 ## 次のステップ
 最新の[ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -255,13 +255,13 @@ Azure SDK のインストールの詳細については、[Azure のダウンロ
 [azure-powershell]: http://msdn.microsoft.com/library/windowsazure/jj152841.aspx
 
 [azure-storage-client-library]: /develop/net/how-to-guides/blob-storage/
-[azure-create-storage-account]: ../storage-create-storage-account.md
-[azure-azcopy-download]: ../storage-use-azcopy.md
-[azure-azcopy]: ../storage-use-azcopy.md
+[azure-create-storage-account]: ../storage/storage-create-storage-account.md
+[azure-azcopy-download]: ../storage/storage-use-azcopy.md
+[azure-azcopy]: ../storage/storage-use-azcopy.md
 
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md
 
-[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 
@@ -282,4 +282,4 @@ Azure SDK のインストールの詳細については、[Azure のダウンロ
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

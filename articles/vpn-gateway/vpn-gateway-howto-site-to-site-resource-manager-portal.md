@@ -14,28 +14,30 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/25/2016"
+   ms.date="05/02/2016"
    ms.author="cherylmc"/>
 
-# Azure ポータルを使用してサイト間 VPN 接続を持つ Resource Manager VNet を作成する
+# Azure ポータルと Azure Resource Manager を使用してサイト間 VPN 接続を持つ VNet を作成する
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Azure ポータル - クラシック](vpn-gateway-site-to-site-create.md)
+- [Azure クラシック ポータル](vpn-gateway-site-to-site-create.md)
 - [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
 
 この記事では、Azure Resource Manager デプロイ モデルと Azure ポータルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。
 
-**デプロイ モデルとデプロイ ツール**
+
+**Azure のデプロイ モデルについて**
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+**サイト間接続のデプロイ モデルとデプロイ ツール**
 
 [AZURE.INCLUDE [vpn-gateway-table-site-to-site-table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
 VNet どうしは接続しても、オンプレミスへの接続は作成しない場合は、[VNet 間の接続の構成](vpn-gateway-vnet-vnet-rm-ps.md)に関するページを参照してください。
 
-**Azure のデプロイ モデルについて**
-
-[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## 開始する前に
 
@@ -142,6 +144,8 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
 ## 次のステップ
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。詳細については、仮想マシンの[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines)を参照してください。
+- 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。詳細については、仮想マシンの[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines)を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+- BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関するページと [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関するページを参照してください。
+
+<!---HONumber=AcomDC_0504_2016-->

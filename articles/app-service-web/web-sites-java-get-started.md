@@ -12,18 +12,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="get-started-article"
-	ms.date="03/04/2016"
+	ms.date="05/04/2016"
 	ms.author="robmcm"/>
 
 # Azure App Service での Java Web アプリの作成
 
-> [AZURE.SELECTOR]
-- [.NET](web-sites-dotnet-get-started.md)
-- [Node.JS](app-service-web-nodejs-get-started.md)
-- [Java](web-sites-java-get-started.md)
-- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
-- [Python](web-sites-python-ptvs-django-mysql.md)
+[AZURE.INCLUDE [タブ](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 このチュートリアルでは、[Azure ポータル](https://portal.azure.com/)を使用して [Azure App Service で Java Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)を作成する方法について説明します。Azure ポータルは、Azure リソースの管理に使用できる Web インターフェイスです。
 
@@ -178,4 +172,4 @@ Azure での Java アプリケーションの開発の詳細については、[J
 [無料試用版にサインアップ]: http://go.microsoft.com/fwlink/?LinkId=623901
 [Azure App Service アプリケーションの作成]: http://go.microsoft.com/fwlink/?LinkId=523751
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

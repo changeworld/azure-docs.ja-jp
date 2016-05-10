@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Redis Cache のプロビジョニング" 
+	pageTitle="Redis Cache のプロビジョニング| Microsoft Azure" 
 	description="Azure リソース マネージャー テンプレートを使用し、Redis Cache をデプロイします。" 
 	services="app-service" 
 	documentationCenter="" 
-	authors="tfitzmac" 
-	manager="wpickett" 
+	authors="steved0x" 
+	manager="Erikre" 
 	editor=""/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
-	ms.author="tomfitz"/>
+	ms.date="04/22/2016" 
+	ms.author="sdanie"/>
 
 # テンプレートを使用して Redis Cache を作成する
 
@@ -58,11 +58,11 @@ Redis Cache の場所。最適なパフォーマンスのために、アプリ�
       "type": "string"
     }
 
-### diagnosticsStorageAccountName
+### existingDiagnosticsStorageAccountName
 
 診断用に使用する既存のストレージ アカウントの名前。
 
-    "diagnosticsStorageAccountName": {
+    "existingDiagnosticsStorageAccountName": {
       "type": "string"
     }
 
@@ -100,30 +100,29 @@ Azure Redis Cache を作成します。
       "location": "[parameters('redisCacheLocation')]",
       "properties": {
         "enableNonSslPort": "[parameters('enableNonSslPort')]",
-        "redisVersion": "[parameters('redisCacheVersion')]",
         "sku": {
           "capacity": "[parameters('redisCacheCapacity')]",
           "family": "[parameters('redisCacheFamily')]",
           "name": "[parameters('redisCacheSKU')]"
         }
       },
-        "resources": [
-          {
-            "apiVersion": "2014-04-01",
-            "type": "diagnosticSettings",
-            "name": "service", 
-            "location": "[parameters('redisCacheLocation')]",
-            "dependsOn": [
-              "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
-            ],
-            "properties": {
-              "status": "[parameters('diagnosticsStatus')]",
-              "storageAccountName": "[parameters('diagnosticsStorageAccountName')]",
-              "retention": "30"
-            }
+      "resources": [
+        {
+          "apiVersion": "2015-07-01",
+          "type": "Microsoft.Cache/redis/providers/diagnosticsettings",
+          "name": "[concat(parameters('redisCacheName'), '/Microsoft.Insights/service')]",
+          "location": "[parameters('redisCacheLocation')]",
+          "dependsOn": [
+            "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
+          ],
+          "properties": {
+            "status": "[parameters('diagnosticsStatus')]",
+            "storageAccountName": "[parameters('existingDiagnosticsStorageAccountName')]"
           }
-        ]
+        }
+      ]
     }
+
 
 ## デプロイメントを実行するコマンド
 
@@ -137,4 +136,4 @@ Azure Redis Cache を作成します。
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/05/2016"
+   ms.date="04/22/2016"
    ms.author="larryfr"/>
 
 # リモート デスクトップによる HDInsight での MapReduce と Hadoop の使用
@@ -47,7 +47,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
 		hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-	これは、現在のディレクトリの **hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として ****wasb://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は ****wasb:///example/data/WordCountOutput** に格納されます。
+	これは、現在のディレクトリの **hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasb://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は **wasb:///example/data/WordCountOutput** に格納されます。
 
 	> [AZURE.NOTE] この MapReduce ジョブとサンプル データの詳細については、「<a href="hdinsight-use-mapreduce.md">HDInsight での Hadoop MapReduce の使用</a>」をご覧ください。
 
@@ -58,7 +58,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 		File Output Format Counters
         Bytes Written=337623
 
-3. ジョブが完了したら、次のコマンドを使用して ****wasb://example/data/WordCountOutput** に格納されている出力ファイルを一覧表示します。
+3. ジョブが完了したら、次のコマンドを使用して **wasb://example/data/WordCountOutput** に格納されている出力ファイルを一覧表示します。
 
 		hadoop fs -ls wasb:///example/data/WordCountOutput
 
@@ -70,7 +70,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
 		hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
-	ここでは、****wasb://example/data/gutenberg/davinci.txt** ファイルに含まれる単語の一覧と、各単語が発生した回数が表示されます。ファイルに含まれるデータの例を次に示します。
+	ここでは、**wasb://example/data/gutenberg/davinci.txt** ファイルに含まれる単語の一覧と、各単語が発生した回数が表示されます。ファイルに含まれるデータの例を次に示します。
 
 		wreathed        3
 		wreathing       1
@@ -96,4 +96,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0427_2016-->

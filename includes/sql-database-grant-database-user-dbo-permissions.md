@@ -1,6 +1,10 @@
-## SSMS を使用して新しいデータベース ユーザーを作成する
 
-次の手順では、SSMS を使用しており、オブジェクト エクスプローラーで SQL Database に接続していて、サーバー レベルのプリンシパル管理者として、またはユーザーにアクセス許可を付与するアクセス許可を持つユーザー アカウントで、SQL Database 論理サーバーに接続しているものとします。さらに、dbo アクセス許可を付与するユーザーがデータベースに存在するものとします。
+
+## 新しいデータベース ユーザーに db_owner 権限を付与する
+
+既存のデータベース ユーザーに db_owner 権限を付与するには、以下の手順に従います。
+
+ここでは、SSMS のオブジェクト エクスプローラーで SQL Database に接続していること、サーバー レベルのプリンシパル管理者として、またはユーザーに権限を付与するための権限を持ったユーザー アカウントで、SQL Database 論理サーバーに接続していることを前提としています。
 
 1. オブジェクト エクスプローラーで [データベース] ノードを展開し、dbo アクセス許可を付与するユーザーのデータベースを選択します。
 
@@ -12,8 +16,8 @@
 
 3. クエリ ウィンドウで、次の Transact-SQL ステートメントを編集して使用し、dbo アクセス許可を指定したユーザーに付与します。
 
-    '''ALTER ROLE db\_owner ADD MEMBER user1;
+    '''ALTER ROLE db_owner ADD MEMBER user1;
 
      ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-grant-database-user-dbo-permissions/sql-database-grant-database-user-dbo-permissions-1.png)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

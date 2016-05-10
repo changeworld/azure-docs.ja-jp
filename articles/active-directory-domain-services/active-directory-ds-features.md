@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/26/2016"
+	ms.date="04/11/2016"
 	ms.author="maheshu"/>
 
 # Azure AD ドメイン サービス *(プレビュー)*
@@ -45,4 +45,4 @@ Azure AD ドメイン サービス プレビュー リリースでは、次の�
 
 - **使い慣れた管理ツールの使用:** Active Directory 管理センターや Active Directory PowerShell などの使い慣れた Windows Server Active Directory 管理ツールを使用して、Azure AD ドメイン サービスが提供するドメインを管理できます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

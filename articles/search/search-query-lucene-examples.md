@@ -15,30 +15,38 @@
     ms.workload="search"
     ms.topic="article"
     ms.tgt_pltfrm="na"
-    ms.date="03/25/2016"
+    ms.date="04/22/2016"
     ms.author="liamca"
 />
 
 # Azure Search でクエリを作成するための Lucene クエリ構文例
 
-既定の[単純なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)の代わりに [Azure Search の Lucene Query Parser](https://msdn.microsoft.com/library/azure/mt589323.aspx) を利用できます。Lucene Query Parser では、フィールド スコープ クエリ、あいまい検索、近接検索、用語ブースト、正規表現検索など、複雑なクエリ構文に対応しています。
+Azure Search のクエリを構築するときは、既定の[単純なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)または代替の [Azure Search の Lucene Query Parser](https://msdn.microsoft.com/library/azure/mt589323.aspx) を使用できます。Lucene Query Parser では、フィールド スコープ クエリ、あいまい検索、近接検索、用語ブースト、正規表現検索など、複雑なクエリ構文に対応しています。
 
-この記事では、クエリ構文と結果が横並びに表示された例を順番に確認できます。例は [JSFiddle](https://jsfiddle.net/) に事前に読み込んでおいた検索インデックスに対して実行されます。JSFiddle は、スクリプトと HTML をテストするためのオンライン コード エディターです。
+この記事では、Lucene クエリ構文と結果が横並びに表示された例を順番に確認できます。例は [JSFiddle](https://jsfiddle.net/) に事前に読み込んでおいた検索インデックスに対して実行されます。JSFiddle は、スクリプトと HTML をテストするためのオンライン コード エディターです。
 
 クエリ例の URL を右クリックし、JSFiddle を新しいブラウザー ウィンドウで開きます。
 
 > [AZURE.NOTE] 次の例では、[City of New York OpenData](https://nycopendata.socrata.com/) イニシアティブが提供するデータセットのジョブで構成されている検索インデックスを活用します。このデータが最新のものであるとか、完全であるとはお考えにならないでください。このインデックスは、Microsoft が提供するサンドボックス サービスにあります。Azure サブスクリプションや Azure Search がなくてもこれらのクエリを試すことができます。
 
-## 検索要求に Lucene Query Parser を設定する
+## この記事の例の表示
 
-Lucene Query Parser を使用するには、**queryType** 検索パラメーターを設定し、使用するパーサーを指定します。すべての要求 **queryType** を指定します。有効な値は **simple**|**full** です。既定値は **simple** です。クエリ パラメーターの指定に関する詳細については、「[ドキュメントの検索 (Azure Search REST API)](https://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
+この記事のすべての例では、* * * * queryType** 検索パラメーターを使用して Lucene Query Parser を指定します。コードから Lucene Query Parser を使用する場合、要求ごとに **queryType** を指定します。有効な値には **simple**|**full** が含まれます。**simple** が既定値で、**full** は Lucene Query Parser 用です。クエリ パラメーターの指定に関する詳細については、「[ドキュメントの検索 (Azure Search REST API)](https://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
 
-**例 1** -- 次のクリエ スニペットを右クリックし、新しいブラウザー ページで開きます。新しいページが JSFiddle を読み込み、クエリを実行します。このクエリは Jobs インデックス (サンドボックス サービスに読み込まれています) からドキュメントを返します。
+**例 1** -- 次のクリエ スニペットを右クリックし、新しいブラウザー ページで開きます。新しいページが JSFiddle を読み込み、クエリを実行します。
 - [&queryType=full&search=*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*)
 
-## フィールド クエリ操作
+このクエリは Jobs インデックス (サンドボックス サービスに読み込まれています) からドキュメントを返します。
 
-次の例では、**fieldname:searchterm** 構造を指定し、フィールド クエリ操作を定義します。フィールドは 1 つの単語であり、検索語句も 1 つの単語か語句です。ブール演算子を利用することもあります。たとえば、次のようになります。
+新しいブラウザー ウィンドウで、JavaScript のソースと HTML 出力が横並びで表示されます。このスクリプトでは、この記事のサンプル URL で提供されているクエリが参照されています。たとえば、**例 1** では、基になるクエリは次のとおりです。
+
+    http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*
+
+クエリでは、nycjobs という構成済みの Azure Search インデックスが使用されていることに注意してください。**searchFields** パラメーターは、検索範囲をビジネス タイトル フィールドだけに制限します。**queryType** を **full** に設定されています。この場合、このクエリで Lucene Query Parser を使用するように Azure Search に指示します。
+
+### フィールド クエリ操作
+
+この記事の例を変更するには、**fieldname:searchterm** 構造を指定し、フィールド クエリ操作を定義します。フィールドは 1 つの単語であり、検索語句も 1 つの単語または語句です。ブール演算子を利用することもあります。たとえば、次のようになります。
 
 - business\_title:senior NOT junior
 - state:"New York" AND "New Jersey"
@@ -69,7 +77,7 @@ Lucene Query Parser を使用するには、**queryType** 検索パラメータ�
 
 - [&queryType=full&search=business\_title:"senior analyst"~1](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~1)
 
-**例 5** -- "senior analyst" の間の言葉を取り除いてもう一度試します。
+**例 5** -- "senior analyst" の間の言葉を削除してもう一度試します。
 
 - [&queryType=full&search=business\_title:"senior analyst"~0](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~0)
 
@@ -121,4 +129,4 @@ Lucene Query Parser を使用するには、**queryType** 検索パラメータ�
 
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0427_2016-->

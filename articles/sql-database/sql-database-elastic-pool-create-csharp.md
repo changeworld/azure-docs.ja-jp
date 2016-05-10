@@ -3,7 +3,7 @@
     description="多数のデータベースでリソースを共有できるように、C# データベース開発手法を使用して、Azure SQL Database にスケーラブルなエラスティック データベース プールを作成します。"
     services="sql-database"
     documentationCenter=""
-    authors="stevestein"
+    authors="sidneyh"
     manager="jhubbard"
     editor=""/>
 
@@ -13,10 +13,10 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="03/24/2016"
-    ms.author="sstein"/>
+    ms.date="04/28/2016"
+    ms.author="sidneyh"/>
 
-# C&#x23; を使用したエラスティック データベース プールの作成
+# C&#x23; による新しい Elastic Database プールの作成
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-elastic-pool-create-portal.md)
@@ -28,19 +28,17 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」を参照してください。
 
-> [AZURE.NOTE] エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md)を 1 回の手順で実行できます。
+エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md)を 1 回の手順で実行できます。
 
 ここで示す例では、[SQL Database Library for .NET](https://msdn.microsoft.com/library/azure/mt349017.aspx) を使用するため、このライブラリをインストールする必要があります。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行します。
 
     PM> Install-Package Microsoft.Azure.Management.Sql –Pre
 
+## 新しいプールの作成
+
+[Azure Active Directory](sql-database-client-id-keys.md) から得た値を使用して [SqlManagementClient](https://msdn.microsoft.com/library/microsoft.azure.management.sql.sqlmanagementclient) インスタンスを作成します。[ElasticPoolCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.sql.models.elasticpoolcreateorupdateparameters) インスタンスを作成し、[CreateOrUpdate](https://msdn.microsoft.com/library/microsoft.azure.management.sql.databaseoperationsextensions.createorupdate) メソッドを呼び出します。プールあたりの eDTU、最小 DTU、最大 DTU は、サービス レベルの値 (Basic、Standard、Premium) によって制限されます。「[エラスティック プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
 
 
-
-## プールを作成する
-
-
-    // Create elastic pool: configure create or update parameters and properties explicitly
     ElasticPoolCreateOrUpdateParameters newPoolParameters = new ElasticPoolCreateOrUpdateParameters()
     {
         Location = "South Central US",
@@ -56,34 +54,9 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
     // Create the pool
     var newPoolResponse = sqlClient.ElasticPools.CreateOrUpdate("resourcegroup-name", "server-name", "ElasticPool1", newPoolParameters);
 
-## 既存のデータベースをプールに移動する
-
-
-    // Retrieve current database properties
-    currentDatabase = sqlClient.Databases.Get("resourcegroup-name", "server-name", "Database1").Database;
-
-    // Configure create or update parameters with existing property values, override those to be changed.
-    DatabaseCreateOrUpdateParameters updatePooledDbParameters = new DatabaseCreateOrUpdateParameters()
-    {
-        Location = currentDatabase.Location,
-        Properties = new DatabaseCreateOrUpdateProperties()
-        {
-            Edition = "Standard",
-            RequestedServiceObjectiveName = "ElasticPool",
-            ElasticPoolName = "ElasticPool1",
-            MaxSizeBytes = currentDatabase.Properties.MaxSizeBytes,
-            Collation = currentDatabase.Properties.Collation,
-        }
-    };
-
-    // Update the database
-    var dbUpdateResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database1", updatePooledDbParameters);
-
-
-
-
 ## プールに新しいデータベースを作成する
 
+[DataBaseCreateorUpdateProperties](https://msdn.microsoft.com/library/microsoft.azure.management.sql.models.databasecreateorupdateproperties) インスタンスを作成し、新しいデータベースのプロパティを設定します。その後、リソース グループ、サーバー名、新しいデータベース名を指定して CreateOrUpdate メソッドを呼び出します。
 
     // Create a database: configure create or update parameters and properties explicitly
     DatabaseCreateOrUpdateParameters newPooledDatabaseParameters = new DatabaseCreateOrUpdateParameters()
@@ -101,20 +74,20 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
     var poolDbResponse = sqlClient.Databases.CreateOrUpdate("resourcegroup-name", "server-name", "Database2", newPooledDatabaseParameters);
 
+既存のデータベースをプールに移動する方法については、「[エラスティック プールへのデータベースの移動](sql-database-elastic-pool-manage-csharp.md#Move-a-database-into-an-elastic-pool)」を参照してください。
 
+## 例: C&#x23 を使用したプールの作成
 
-
-
-## プールを作成する (C&#x23; の例)
-
+この例では、新しい Azure リソース グループ、新しい Azure SQL Server インスタンス、新しいエラスティック プールを作成します。
+ 
 
 この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]**) から次のコマンドを実行します。
 
-    PM> Install-Package Microsoft.Azure.Management.Sql –Pre
-    PM> Install-Package Microsoft.Azure.Management.Resources –Pre
-    PM> Install-Package Microsoft.Azure.Common.Authentication –Pre
+    Install-Package Microsoft.Azure.Management.Sql –Pre
+    Install-Package Microsoft.Azure.Management.Resources –Pre
+    Install-Package Microsoft.Azure.Common.Authentication –Pre
 
-コンソール アプリを作成し、Program.cs の内容を次の内容に置き換えます。必要なクライアント ID と関連する値を取得するには、「[Register your app and get the required client values for connecting your app to SQL Database (アプリを登録し、アプリを SQL Database に接続するために必要なクライアント値を取得する)](sql-database-client-id-keys.md)」を参照してください。
+コンソール アプリを作成し、Program.cs の内容を次の内容に置き換えます。必要なクライアント ID と関連する値を取得するには、「[Register your app and get the required client values for connecting your app to SQL Database (アプリを登録し、アプリを SQL Database に接続するために必要なクライアント値を取得する)](sql-database-client-id-keys.md)」を参照してください。[Get-AzureRmSubscription](https://msdn.microsoft.com/library/mt619284.aspx) コマンドレットを使用して subscriptionId の値を取得します。
 
     using Microsoft.Azure;
     using Microsoft.Azure.Management.Resources;
@@ -271,12 +244,11 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 - [プールを管理する](sql-database-elastic-pool-manage-csharp.md)
 - [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブを使用すると、プール内にある任意の数のデータベースに対して T-SQL スクリプトを実行できます。
-
+- [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md): Elastic Database のツールを使用してスケールアウトを実施します。
 
 ## その他のリソース
-
 
 - [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

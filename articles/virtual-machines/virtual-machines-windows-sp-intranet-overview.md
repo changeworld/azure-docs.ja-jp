@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="04/25/2016"
 	ms.author="josephd"/>
 
 # Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ
@@ -92,7 +92,7 @@
 - 既存の Azure ハイブリッド クラウド デプロイが既にある場合は、フェーズ 1 および 2 の指示を自由に調整するかスキップし、適切なサブネットで新しい SharePoint ファームをホストしてください。
 - すべてのサーバーは、Azure Virtual Network 内の 1 つのサブネット上の存在します。サブネットの分離に相当する追加のセキュリティを提供する場合は、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)を使用できます。
 
-この構成の開発/テスト環境または概念実証環境を構築する場合は、「[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)」を参照してください。
+この構成の開発/テスト環境または概念実証環境を構築する場合は、「[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](virtual-machines-windows-ps-hybrid-cloud-test-env-sp.md)」を参照してください。
 
 SharePoint と SQL Server AlwaysOn 可用性グループの追加情報については、[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)を参照してください。
 
@@ -100,4 +100,4 @@ SharePoint と SQL Server AlwaysOn 可用性グループの追加情報につい
 
 - [フェーズ 1](virtual-machines-windows-ps-sp-intranet-ph1.md) を使用して、このワークロードの構成を開始します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

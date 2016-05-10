@@ -4,7 +4,7 @@
 	services="app-service\mobile"
 	documentationCenter="xamarin"
 	authors="ggailey777"
-	manager="dwrede"
+	manager="erikre"
 	editor="" />
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="02/05/2016"
+	ms.date="05/03/2016"
 	ms.author="glenga" />
 
 #Xamarin.Android アプリの作成
@@ -70,7 +70,9 @@ Xamarin Android アプリケーションの他のすべての Mobile Apps のチ
 
 ##次のステップ
 
-* [アプリへの認証の追加](app-service-mobile-xamarin-android-get-started-users.md)<br/> ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
+* [アプリに認証を追加する](app-service-mobile-xamarin-android-get-started-users.md) ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
+* [Xamarin.Android アプリへのプッシュ通知の追加](app-service-mobile-xamarin-android-get-started-push.md) アプリにプッシュ通知を追加する方法について説明します。
+* [Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md) Xamarin アプリでの管理されたクライアント SDK の操作方法について説明します。 
 
 
 <!-- Images. -->
@@ -84,4 +86,4 @@ Xamarin Android アプリケーションの他のすべての Mobile Apps のチ
 [Azure Portal]: https://azure.portal.com/
 [Visual Studio]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -3,7 +3,7 @@
 	description="Elastic Database クライアント ライブラリと Entity Framework をデータベースのコーディングに使用する" 
 	services="sql-database" 
 	documentationCenter="" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="torsteng" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/04/2016" 
+	ms.date="04/26/2016" 
 	ms.author="torsteng;sidneyh"/>
 
 # Entity Framework による Elastic Database クライアント ライブラリ 
@@ -281,4 +281,4 @@ EF の移行を通じたスキーマのデプロイは、**開かれていない
 [1]: ./media/sql-database-elastic-scale-use-entity-framework-applications-visual-studio/sample.png
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0427_2016-->

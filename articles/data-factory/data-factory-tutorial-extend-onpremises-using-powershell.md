@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="04/01/2016" 
 	ms.author="spelluru"/>
 
 
@@ -38,10 +38,10 @@
 2. [SQL Server のリンクされているサービスを作成する](#create-sql-server-linked-service)。この手順では、まずオンプレミスの SQL Server コンピューター上にデータベースとテーブルを作成し、その後リンクされたサービスの **OnPremSqlLinkedService** を作成します。
 3. [データセットとパイプラインを作成する](#create-dataset-and-pipeline)。この手順では、**MarketingCampaignEffectivenessOnPremSQLTable** テーブルと **EgressDataToOnPremPipeline** パイプラインを作成します。 
 
-4. [パイプラインを監視する](#monitor-pipeline)。この手順では、Azure クラシック ポータルを使用して、パイプライン、テーブル、データ スライスを監視します。
+4. [パイプラインを監視する](#monitor-pipeline)。この手順では、Azure ポータルを使用して、パイプライン、テーブル、およびデータ スライスを監視します。
 
 
-## Data Management Gateway を作成する
+## Data Management Gateway の作成
 
 Data Management Gateway は、所属する組織内のオンプレミスのデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、オンプレミスの SQL Server と Azure データ ストアの間でデータ転送が可能になります。
   
@@ -170,4 +170,4 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

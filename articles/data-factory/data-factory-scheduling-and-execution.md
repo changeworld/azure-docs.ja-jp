@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/27/2016" 
+	ms.date="04/11/2016" 
 	ms.author="spelluru"/>
 
 # Data Factory を使用したスケジュール設定と実行
@@ -268,7 +268,7 @@ CopyActivity1: 入力: Dataset1 出力: Dataset2
 
 CopyActivity2: 入力: Dataset2 出力: Dataset4
 
-CopyActivity2 は、CopyActivity1 が正常に実行され、Dataset2 が使用できる場合にのみ実行されます。
+CopyActivity2 は、CopyActivity1 が正常に実行していて、Dataset2 を使用できた場合にのみ実行します。
 
 上の例で、CopyActivity2 には異なる入力 (たとえば Dataset3) を使用できますが、Dataset2 も CopyActivity2 への入力として指定する必要があるため、このアクティビティは CopyActivity1 が完了するまで実行されません。次に例を示します。
 
@@ -278,7 +278,7 @@ CopyActivity2: 入力: Dataset3、Dataset2 出力: Dataset4
 
 複数の入力を指定すると、データのコピーに使用されるのは最初の入力データセットのみで、他のデータセットは依存関係として使用されます。CopyActivity2 は、次の条件が満たされた場合にのみ実行を開始します。
 
-- CopyActivity1 が正常に完了し、Dataset2 を使用できる。このデータセットは、データを Dataset4 にコピーする際に使用されません。これは、CopyActivity2 のスケジュールの依存関係としてのみ機能します。   
+- CopyActivity1 が正常に完了していて、Dataset2 を使用できる。このデータセットは、データを Dataset4 にコピーする際に使用されません。これは、CopyActivity2 のスケジュールの依存関係としてのみ機能します。   
 - Dataset3 を使用できる。このデータセットは、コピー先にコピーされるデータを表します。  
 
 
@@ -621,6 +621,51 @@ Data Factory で生成されるデータセットと同様に、外部データ�
 	} 
 
 
+## 1 回限りのパイプライン
+パイプライン定義で指定した開始時刻から終了時刻までの間に定期的に (毎時、毎日など) 実行するパイプラインを作成してスケジュール設定することができます。詳細については、「[スケジュール設定のアクティビティ](#scheduling-and-execution)」を参照してください。1 回だけ実行するパイプラインを作成することもできます。これを行うには、以下の JSON サンプルに示すように、パイプライン定義の **pipelineMode** プロパティを **onetime** に設定します。このプロパティの既定値は **scheduled** です。
+
+	{
+	    "name": "CopyPipeline",
+	    "properties": {
+	        "activities": [
+	            {
+	                "type": "Copy",
+	                "typeProperties": {
+	                    "source": {
+	                        "type": "BlobSource",
+	                        "recursive": false
+	                    },
+	                    "sink": {
+	                        "type": "BlobSink",
+	                        "writeBatchSize": 0,
+	                        "writeBatchTimeout": "00:00:00"
+	                    }
+	                },
+	                "inputs": [
+	                    {
+	                        "name": "InputDataset"
+	                    }
+	                ],
+	                "outputs": [
+	                    {
+	                        "name": "OutputDataset"
+	                    }
+	                ]
+	                "name": "CopyActivity-0"
+	            }
+	        ]
+	        "pipelineMode": "OneTime"
+	    }
+	}
+
+以下の点に注意してください。
+ 
+- パイプラインの**開始**時刻と**終了**時刻を指定する必要はありません。 
+- Data Factory で値が使用されない場合でも、現時点では入力データセットと出力データセット (頻度と間隔) の可用性を指定する必要があります。  
+- ダイアグラム ビューには、1 回限りのパイプラインは表示されません。これは設計によるものです。 
+- 1 回限りのパイプラインを更新することはできません。1 回限りのパイプラインを複製して名前を変更し、プロパティを更新してデプロイすることで別のパイプラインを作成することができます。 
+
+  
 
 
 
@@ -653,4 +698,4 @@ Data Factory で生成されるデータセットと同様に、外部データ�
 
   
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0427_2016-->

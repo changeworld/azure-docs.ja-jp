@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
+	ms.date="05/03/2016"
 	ms.author="piyushjo" />
 
 # Windows ユニバーサル アプリの Azure Mobile Engagement の概要
@@ -35,7 +35,7 @@
 
 ##<a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 
-このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。完全な統合のドキュメントについては、「[Mobile Engagement Windows ユニバーサル SDK の統合](../mobile-engagement-windows-store-sdk-overview/)」を参照してください。
+このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。完全な統合のドキュメントについては、「[Mobile Engagement Windows ユニバーサル SDK の統合](mobile-engagement-windows-store-sdk-overview.md)」を参照してください。
 
 統合のデモンストレーションを行うために、Visual Studio で基本的なアプリを作成します。
 
@@ -207,4 +207,4 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 [12]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_services_push_1.png
 [13]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_services_push_creds.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -15,7 +15,7 @@
     ms.tgt_pltfrm="vm-linux"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="04/12/2016"
+    ms.date="04/29/2016"
     ms.author="v-livech"
 />
 
@@ -66,7 +66,7 @@
 9. SSH 公開キーを使用して、パブリック IP に SSH 接続します。
 
 ```
-ahmetL@fedora$ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
+ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
 ```
 
 ## 次のステップ
@@ -79,4 +79,4 @@ ahmetL@fedora$ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
 
 これらの記事を読むと、Azure インフラストラクチャの構築を始めることができ、独自またはオープン ソースのインフラストラクチャ デプロイ、構成、オーケストレーション ツールを使用できます。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

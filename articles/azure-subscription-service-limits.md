@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="04/19/2016"
 	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -285,4 +285,4 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 [クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
 
-<!----HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0427_2016-->

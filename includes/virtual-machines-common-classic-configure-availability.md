@@ -44,11 +44,7 @@ Azure クラシック ポータルを使用するには:
 
 	新しい仮想マシンのダッシュボードで **[構成]** をクリックし、仮想マシンが新しい可用性セットに属していることを確認します。
 
-Azure PowerShell コマンド使用して Azure 仮想マシンを作成し、新規または既存の可用性セットに追加する方法については、次を参照してください。
-
-
-- [Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する](../articles/virtual-machines/virtual-machines-linux-classic-createpowershell.md)
-- [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md)
+Azure PowerShell コマンド使用して Azure 仮想マシンを作成し、新規または既存の可用性セットに追加する方法については、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md)」を参照してください。
 
 ## <a id="addmachine"> </a>オプション 2: 既存の仮想マシンを可用性セットに追加する##
 
@@ -80,7 +76,7 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 
 ## その他のリソース
 
-[サービス管理での仮想マシンの操作に関する記事]
+[クラシック仮想マシンに関する記事][]
 
 <!-- LINKS -->
 [オプション 1: 仮想マシンと可用性セットを同時に作成する]: #createset
@@ -91,6 +87,6 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 
 [Windows を実行する仮想マシンの作成]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
 [Virtual Network の概要]: ../articles/virtual-network/virtual-networks-overview.md
-[サービス管理での仮想マシンの操作に関する記事]: https://azure.microsoft.com/documentation/articles/?tag=azure-service-management&service=virtual-machines
+[クラシック仮想マシンに関する記事]: https://azure.microsoft.com/documentation/articles/?tag=azure-service-management&service=virtual-machines
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0427_2016-->

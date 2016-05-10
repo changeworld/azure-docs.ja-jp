@@ -12,18 +12,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/20/2016"
+   ms.date="04/29/2016"
    ms.author="alkohli" />
 
-# Azure での StorSimple 仮想デバイスのデプロイと管理 (Update 2)
+# Azure での StorSimple 仮想デバイスのデプロイと管理
 
-> [AZURE.SELECTOR]
-- [Update 2](../articles/storsimple/storsimple-virtual-device-u2.md)
-- [Update 1](../articles/storsimple/storsimple-virtual-device-u1.md)
-- [GA リリース](../articles/storsimple/storsimple-virtual-device.md)
 
 ##概要
-StorSimple 仮想デバイスは、Microsoft Azure StorSimple ソリューションに付属する追加的な機能です。StorSimple 仮想デバイスは Microsoft Azure の仮想ネットワーク内の仮想マシン上で動作します。この仮想マシンを使用して、ホストからデータをバックアップしたり、複製したりできます。
+StorSimple 8000 シリーズ仮想デバイスは、Microsoft Azure StorSimple ソリューションに付属する追加的な機能です。StorSimple 仮想デバイスは Microsoft Azure の仮想ネットワーク内の仮想マシン上で動作します。この仮想マシンを使用して、ホストからデータをバックアップしたり、複製したりできます。このチュートリアルは、Azure に仮想デバイスをデプロイして管理する方法について説明したものです。ソフトウェア バージョン Update 2 以前を実行するすべての仮想デバイスが対象となります。
 
 
 #### 仮想デバイス モデルの比較
@@ -34,13 +30,15 @@ StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 80
 | デバイスのモデル | 8010<sup>1</sup> | 8020 |
 |-----------------------|---------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | **最大容量** | 30 TB | 64 TB |
-| **Azure VM** | Standard\_A3 (4 コア、7 GB メモリ) | Standard\_DS3 (4 コア、14 GB メモリ) |
+| **Azure VM** | Standard_A3 (4 コア、7 GB メモリ) | Standard_DS3 (4 コア、14 GB メモリ) |
 | **バージョン互換性** | Update 2 より前または Update 2 以降を実行しているバージョン | Update 2 以降を実行しているバージョン |
-| **利用可能なリージョン** | すべての Azure リージョン | Premium Storage をサポートする Azure リージョン<br></br>リージョンの一覧については、「[8020 のサポートされるリージョン](#supported-regions-for-8020)」をご覧ください |
-| **ストレージの種類** | Azure Standard Storage を使用する<br></br>[Standard Storage アカウントを作成する]()方法を確認してください | Azure Premium Storage を使用する<br></br>[Premium Storage アカウントを作成する](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を確認してください |
+| **利用可能なリージョン** | すべての Azure リージョン | Premium Storage をサポートする Azure リージョン<br></br>リージョンの一覧については、「[8020 のサポートされるリージョン](#supported-regions-for-8020)」をご覧ください。 |
+| **ストレージの種類** | Azure Standard Storage をローカル ディスクに使用します。<br></br>[Standard Storage アカウントを作成する]()方法を確認してください。 | Azure Premium Storage をローカル ディスクに使用します。<sup>2</sup><br></br>[Premium Storage アカウントを作成する](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を確認してください。 |
 | **ワークロードのガイダンス** | バックアップからファイルを項目レベルで取得 | クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード <br></br>障害復旧のためのセカンダリ デバイス |
  
 <sup>1</sup> *以前は 1100 と呼ばれていました*。
+
+<sup>2</sup> *8010 も 8020 も共に、クラウド層には Azure Standard Storage が使用されます。デバイス内のローカル層にのみ違いがあります*。
 
 #### 8020 のサポートされるリージョン
 
@@ -62,7 +60,7 @@ StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 80
 | 12 | 東アジア* |
 | 13 | 米国中南部* |
 
-**Premium Storage はこれらの地域で最近提供が開始されました。
+*Premium Storage はこれらの地域で最近提供が開始されました。
 
 この記事では、Azure で StorSimple 仮想デバイスをデプロイするための段階的なプロセスについて説明します。この記事を読むと、次のことができます。
 
@@ -280,6 +278,6 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
 
 - [StorSimple Manager サービスを使用して仮想デバイスを管理する](storsimple-manager-service-administration.md)方法を確認します。
  
-- [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法を理解します。
+- [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法について理解します。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

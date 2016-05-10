@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="04/01/2016" 
 	ms.author="spelluru"/>
 
 # 使用事例 - 顧客プロファイル
 
-Azure Data Factory は、ソリューション アクセラレータの Cortana Analytics Suite の実装に使用されている数多くあるサービスの 1 つです。Cortana Analytics の詳細については、[Cortana Analytics Suite](http://www.microsoft.com/cortanaanalytics) を参照してください。このドキュメントでは、Azure Data Factory が一般的な分析の問題を解決する方法を理解するのに役立つ簡単な使用事例を説明します。
+Azure Data Factory は、ソリューション アクセラレータの Cortana Intelligence Suite の実装に使用されている数多くあるサービスの 1 つです。Cortana Intelligence の詳細については、[Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) を参照してください。このドキュメントでは、Azure Data Factory が一般的な分析の問題を解決する方法を理解するのに役立つ簡単な使用事例を説明します。
 
 この簡単な使用事例にアクセスして試すのに必要なものは、[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)だけです。「[サンプル](data-factory-samples.md)」記事で説明されている手順に従って、この使用事例を実装しているサンプルをデプロイできます。
 
@@ -36,7 +36,7 @@ Contoso の目標は、ユーザーのゲーム履歴プロファイルに基づ
 
 この単純な使用事例は、Azure Data Factory を使用してデータを取得、準備、変換、分析、および発行する方法の例として使用できます。
 
-上の ![エンド ツー エンド ワークフロー](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png) 図は、デプロイ後にデータ パイプラインが Azure クラシック ポータル UI にどのように表示されるかを示しています。
+![エンド ツー エンド ワークフロー](./media/data-factory-customer-profiling-usecase/EndToEndWorkflow.png)上の図は、デプロイ後にデータ パイプラインが Azure ポータル UI にどのように表示されるかを示しています。
 
 1.	**PartitionGameLogsPipeline** は、未処理のゲーム イベントを BLOB ストレージから読み取り、年、月、日に基づくパーティションを作成します。
 2.	**EnrichGameLogsPipeline** は、パーティション分割されたゲーム イベントを geo コードの参照データと結合し、IP アドレスを対応する地理的場所にマップすることによってデータを強化します。
@@ -48,4 +48,4 @@ Contoso の目標は、ユーザーのゲーム履歴プロファイルに基づ
 
 ゲーム会社は、ユーザー プロファイルの分析を最適化してビジネス目標と一致させることで、迅速に使用状況パターンを収集し、さまざまなゲーム製品のマーケティング キャンペーンの効果を分析できます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

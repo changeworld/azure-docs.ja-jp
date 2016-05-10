@@ -32,7 +32,7 @@ Azure Data Factory サービスは、データを処理するための Windows/L
 オンデマンド HDInsight のリンクされたサービスに関する次の**重要な**点に注意してください。
 
 - 作成したオンデマンド HDInsight クラスターは Azure サブスクリプションに表示されません。Azure Data Factory サービスがあなたの代わりにオンデマンド HDInsight クラスターを管理します。
-- オンデマンド HDInsight クラスターで実行されるジョブのログは HDInsight クラスターに関連付けられているストレージ アカウントにコピーされます。これらのログには、Azure クラシック ポータルの **[アクティビティの実行の詳細]** ブレードからアクセスできます。詳細については、「[パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)」という記事を参照してください。
+- オンデマンド HDInsight クラスターで実行されるジョブのログは HDInsight クラスターに関連付けられているストレージ アカウントにコピーされます。これらのログには Azure ポータルの **[アクティビティ実行の詳細]** ブレードからアクセスできます。詳細については、「[パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)」という記事を参照してください。
 - HDInsight クラスターが稼動し、ジョブを実行している時間に対してのみ課金されます。
 
 > [AZURE.IMPORTANT] オンデマンドで Azure HDInsight クラスターをプロビジョニングするには一般的に **15 分**以上かかります。
@@ -200,7 +200,7 @@ Azure Batch サービスの利用が初めての場合、次のトピックを�
 
 
 - Azure Batch サービスの概要については、「[Azure Batch の基本](../batch/batch-technical-overview.md)」をご覧ください。
-- Azure Batch アカウントについては、[New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレットを使用して作成する方法または [Azure クラシック ポータル](../batch/batch-account-create-portal.md)を使用して作成する方法をご覧ください。コマンドレットの使用方法の詳細については、「[PowerShell を使用した Azure Batch アカウントの管理](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)」トピックをご覧ください。
+- Azure Batch アカウントについては、[New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレットを使用して作成する方法または [Azure ポータル](../batch/batch-account-create-portal.md)を使用して作成する方法をご覧ください。コマンドレットの使用方法の詳細については、「[PowerShell を使用した Azure Batch アカウントの管理](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)」トピックをご覧ください。
 - Azure Batch プールを作成するための [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) コマンドレット。
 
 ### 例
@@ -339,4 +339,4 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 
 Azure SQL のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。このリンクされたサービスの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

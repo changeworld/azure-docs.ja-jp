@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="04/22/2016"
 	ms.author="larryfr"/>
 
 # Azure Machine Learning 向け R プログラミング言語クイック スタート チュートリアル
@@ -900,7 +900,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 
 	df.correlations <- data.frame(do.call(rbind, lapply(cadairycorrelations, '[[', 1)))
 
-	c.names <- c("-1 lag", "0 lag", "+1 lag")
+	c.names <- c("correlation pair", "-1 lag", "0 lag", "+1 lag")
 	r.names  <- c("Corr Cot Cheese - Ice Cream",
 	              "Corr Cot Cheese - Milk Prod",
 	              "Corr Cot Cheese - Fat Price",
@@ -1358,4 +1358,4 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0427_2016-->

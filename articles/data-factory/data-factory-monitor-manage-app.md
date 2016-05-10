@@ -13,17 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/14/2016" 
+	ms.date="04/04/2016" 
 	ms.author="spelluru"/>
 
 # 新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [AZURE.SELECTOR]
-- [Azure Portal と Azure PowerShell の使用](data-factory-monitor-manage-pipelines.md)
-- [監視と管理アプリの使用](data-factory-monitor-manage-app.md)
+- [Azure ポータルと Azure PowerShell の使用](data-factory-monitor-manage-pipelines.md)
+- [Monitoring and Management App の使用](data-factory-monitor-manage-app.md)
 
-この記事では、**監視と管理アプリ**を使用してパイプラインを監視、管理、デバッグする方法について説明します。また、そのアプリを使用し、アラートを作成して障害時に通知を受け取る方法についても説明します。
+この記事では、**監視と管理アプリ**を使用して、パイプラインを監視、管理、デバッグする方法、およびアラートを作成して障害について通知を受け取る方法について説明します。監視と管理アプリの使用方法の詳細については、次のビデオを視聴することもできます。
+   
+> [AZURE.VIDEO how-to-monitor--manage-big-data-pipelines-with-azure-data-factory]
       
-## 監視と管理アプリの起動 
+## 監視と管理アプリの起動
 監視と管理アプリを起動するには、該当するデータ ファクトリの **[DATA FACTORY]** ブレードで **[監視と管理]** タイルをクリックします。
 
 ![Monitoring tile on Data Factory home page](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
@@ -32,7 +34,11 @@
 
 ![Monitoring and Management App](./media/data-factory-monitor-manage-app/AppLaunched.png)
 
-> [AZURE.NOTE] 下部にある一覧でアクティビティ ウィンドウを確認できない場合は、ツールバーの **[更新]** ボタンをクリックして、一覧を更新します。さらに、**[開始時刻]** および **[終了時刻]** フィルターに適切な値を設定します。
+> [AZURE.NOTE] 承認中であることを示すメッセージが表示されたまま Web ブラウザーが固まってしまう場合は、**サード パーティの Cookie とサイト データをブロック**する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度アプリを起動してください。
+
+
+下部にある一覧でアクティビティ ウィンドウを確認できない場合は、ツールバーの **[更新]** ボタンをクリックして、一覧を更新します。さらに、**[開始時刻]** および **[終了時刻]** フィルターに適切な値を設定します。
+
 
 ## 監視と管理アプリについて
 左側には 3 つのタブ (**[リソース エクスプローラー]**、**[監視ビュー]**、**[アラート]**) があり、既定では、1 つ目のタブ ([リソース エクスプローラー]) が選択されています。
@@ -49,7 +55,7 @@
 
 ![Resource Explorer](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
 
-アクティビティ ウィンドウの概念の詳細については、「[Data Factory を使用したスケジュール設定と実行](data-factory-scheduling-and-execution.md)」を参照してください。
+アクティビティ ウィンドウの概念の詳細については、記事「[スケジュールと実行](data-factory-scheduling-and-execution.md)」を参照してください。
 
 ### Diagram View
 Data Factory のダイアグラム ビューでは、Data Factory とその資産を監視および管理する 1 つのウィンドウが提供されます。ダイアグラム ビューで Data Factory エンティティ (データセットまたはパイプライン) を選択する際は、次の点に注意します。
@@ -277,9 +283,6 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
 
 	![Create Alerts - Filters page](./media/data-factory-monitor-manage-app/CreateAlertFiltersPage.png)
 
-	次に示すように、アラート イベントを**集約**することもできます。
-
-	![Aggregate alerts](./media/data-factory-monitor-manage-app/AggregateAlerts.png)
 2. Data Factory サービスからアラートを受け取る**イベント**、**状態**、および**副状態** (オプション) を選択し、**[次へ]** をクリックします。**[宛先]** ページが表示されます。
 
 	![Create Alerts - Recipients page](./media/data-factory-monitor-manage-app/CreateAlertRecipientsPage.png) 
@@ -310,4 +313,4 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
     
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0427_2016-->

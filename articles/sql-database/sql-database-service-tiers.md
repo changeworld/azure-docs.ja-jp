@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="04/20/2016"
+	ms.date="04/27/2016"
 	ms.author="carlrab"/>
 
 # SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します
@@ -64,4 +64,4 @@ DTU について理解を深めるためには、このトピックの[「DTU」
 - [エラスティック プールの監視、管理、およびサイズ変更](sql-database-elastic-pool-manage-portal.md)と[単一データベースのパフォーマンスの監視](sql-database-single-database-monitor.md)を行う方法を確認してください。
 - SQL Database の階層について理解できたら、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)で実際に試してください。また、[初めて SQL データベースを作成する方法](sql-database-get-started.md)を確認してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

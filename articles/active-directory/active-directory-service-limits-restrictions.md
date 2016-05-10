@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="02/01/2016"
+	ms.date="04/26/2016"
 	ms.author="curtand"/>
 
 # Azure AD サービスの制限と制約
@@ -26,4 +26,4 @@ Microsoft Azure サービスの制限すべてをご覧になりたい場合は�
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
 - [Azure サブスクリプションを Azure AD に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0427_2016-->

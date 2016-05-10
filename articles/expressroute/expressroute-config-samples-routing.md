@@ -4,7 +4,7 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags
    ms.service="expressroute"
@@ -12,14 +12,14 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/16/2016"
+   ms.date="04/19/2016"
    ms.author="cherylmc"/>
 
 # ルーティングをセットアップして管理するためのルーター構成のサンプル
 
 このページでは、Cisco IOS-XE と Juniper MX シリーズ ルーターのインターフェイスとルーティングを構成するサンプルを示します。これらはガイダンスとしてのみ使用することを目的としたサンプルであり、現状のまま使用することはできません。ベンダーと協力して、ネットワークに適した構成を考えてください。
 
->[AZURE.IMPORTANT]このページのサンプルは、ガイダンスとしてのみ使用することを目的としています。ベンダーの販売/技術チームおよび自社のネットワーク チームと協力して、ニーズに対応する適切な構成を考える必要があります。Microsoft では、このページに示す構成に関連する問題には対応できません。サポートの問題については、デバイス ベンダーに問い合わせる必要があります。
+>[AZURE.IMPORTANT] このページのサンプルは、ガイダンスとしてのみ使用することを目的としています。ベンダーの販売/技術チームおよび自社のネットワーク チームと協力して、ニーズに対応する適切な構成を考える必要があります。Microsoft では、このページに示す構成に関連する問題には対応できません。サポートの問題については、デバイス ベンダーに問い合わせる必要があります。
 
 以下のルーター構成サンプルは、すべてのピアリングを対象としています。詳細については、「[ExpressRoute のピアリング](expressroute-circuit-peerings.md)」および「[ExpressRoute のルーティングの要件](expressroute-routing.md)」をご覧ください。
 
@@ -210,4 +210,4 @@
 
 詳細については、[ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0427_2016-->

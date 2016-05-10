@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="04/08/2016"
+   ms.date="04/25/2016"
    ms.author="hascipio"/>
 
 # マーケティング コンテンツを使用したプラン作成の実行
@@ -29,30 +29,59 @@
   > [AZURE.IMPORTANT] ステージングにプッシュするために、イメージを含め、すべてのフィールドが入力されている必要があります。
 
 ### 詳細
-1. プランについて、その概要、説明などを入力します。
-2.	必要な要件 (発行ポータルに記載された) を満たしたイメージを各サイズあたり 1 つ PNG 形式でアップロードします。
+1. プランのタイトル (最大 50 文字)、プランの概要 (最大 100 文字)、プランの長い概要 (最大 256 文字)、プランの説明 (最大 1300 文字)、ロゴを、**[詳細]** タブに入力します。
+2. SKU タイトル (最大 50 文字)、SKU の概要 (最大 100 文字)、SKU の説明 (最大 2000 文字) を、**[プラン]** タブに入力します。
+3. プランと SKU の説明に、同じテキストを入力しないでください。
+4. SKU のタイトルとプランの長い概要に、同じテキストを入力しないでください。
+5. SKU のタイトルとプランの概要に、同じテキストを入力しないでください。
+6. 必要な要件 (発行ポータルに記載された) を満たしたイメージを各サイズあたり 1 つ PNG 形式でアップロードします。
+7. ロゴが以下で説明する Azure Marketplace ロゴ ガイドラインに従っていることを確認します。
 
-  ![図](media/marketplace-publishing-push-to-staging/pubportal-02.png)
+  ![図](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-details-02.png)
 
-  *プランのタイトル、説明、およびロゴ*
+**Azure Marketplace のロゴのガイドライン**
+
+発行ポータルにアップロードされるすべてのロゴは、以下のガイドラインに従っている必要があります。
+
+- Azure の設計には簡単なカラー パレットがあります。ロゴのプライマリ カラーとセカンダリ カラーの数を少なくしてください。
+- ロゴを白い背景に配置してはいけません。単純なプライマリ カラーまたは透明な背景をお勧めします。
+- ロゴではグラデーションの背景を使用しないでください。
+- ロゴにはテキストを使用しないでください (会社またはブランドの名前であっても)。
+- ロゴのルック アンド フィールは "フラット" にする必要があり、グラデーションは避ける必要があります。
+- ロゴは拡大しないでください。
+- 小型のロゴのサイズ: 40 X 40 ピクセル
+- 中型のロゴのサイズ: 90 X 90 ピクセル
+- 大型のロゴのサイズ: 115 X 115 ピクセル
+- ワイドなロゴのサイズ: 255 X 115 ピクセル
+- Hero ロゴのサイズ: 815 X 290 ピクセル
+
+  ![図](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-details-03.png)
+
+**Hero ロゴ バナーに関する追加のガイドライン:**
+
+- Hero ロゴはオプションです。Hero ロゴをアップロードしなくてもかまいません。
+- プランを有効にすると、パブリッシャーの表示名、SKU のタイトル、プランの長い概要、作成ボタンが、Hero ロゴ内に自動的に埋め込まれます。したがって、Hero ロゴのデザイン時にそれらを入力する必要はありません。
+- パブリッシャーの表示名、SKU のタイトル、プランの長い概要は白い色のフォントで表示されるので、Hero アイコンの背景を白または明るい色にしないでください。
+- Hero アイコンの上部にあるテキストのために空間を残す必要があります。テキストのための領域は 415 x 100 で、左から 370 ピクセルだけオフセットされます。
+
+  ![図](media/marketplace-publishing-push-to-staging/pubportal-herobanner.png)
 
 ### リンク
 左のバーの **[リンク]** タブで、お客様に役立つ情報があればそのリンクを入力します。各リンクの名前と URL を入力します。
 
-![図](media/marketplace-publishing-push-to-staging/pubportal-02.png)
+![図](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-link-01.png)
 
 ### サンプル イメージ (省略可能)
 > [AZURE.NOTE] サンプル イメージを含めるステップは、省略可能です。ステージングにプッシュするための要件を満たすために、他のマーケティング コンテンツを実行することもできます。
 
 左側のメニューの **[サンプル イメージ]** タブで、**[新しいイメージのアップロード]** をクリックして新しいイメージをアップロードします。既存のイメージがある場合、それを置き換えるには、**[イメージの置換]** をクリックします。
 
-![図](media/marketplace-publishing-push-to-staging/pubportal-03.png)
-
-### プラン
-![図](media/marketplace-publishing-push-to-staging/pubportal-02.png)
+![図](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-sampleimg-01.png)
 
 ### 法的情報
-**[法的情報]** タブで、ポリシー/利用条件へのリンクを指定します。大きい **[利用条件]** ボックスに利用条件を入力するか、貼り付けます。
+**[法的情報]** タブで、ポリシー/利用条件へのリンクを指定します。大きい **[利用条件]** ボックスに利用条件を入力するか、貼り付けます。使用条項の文字制限は、1,000,000 文字です。
+
+![図](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-legal-01.png)
 
 > [AZURE.NOTE] 仮想マシンの場合、SKU をステージングまたは発行した後に、**プラン ID**、**発行者 ID**、**SKU ID** を変更することはできません。
 
@@ -107,18 +136,18 @@
 |ゴールド|1,000 ドル/月|機能 X の 10,000 のクォータ、機能 Y の 1,000 のクォータ、機能 Z は無制限に使用できます|Free を除くすべてのプランに移行可能|
 
 ## 手順 3.: サポート情報を入力する
-ここでの情報の一部は認定ステップでも完了できます。以下の手順により、情報を追加または編集することもできます。連絡先の詳細は、パートナーとマイクロソフト間の内部コミュニケーションにのみに使用されます。サポートURL は、エンド ユーザーに提供されます。
+連絡先の詳細は、パートナーとマイクロソフト間の内部コミュニケーションにのみに使用されます。サポートURL は、エンド ユーザーに提供されます。
 
-1.	発行ポータルの左側にある**[サポート]**に移動します。
-2.	**[エンジニアリング連絡先]**に情報を入力します。
-3.	**[カスタマー サポート]**に情報を入力します。電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
+1.	発行ポータルの左側にある **[サポート]** に移動します。
+2.	**[エンジニアリング連絡先]** に情報を入力します。
+3.	**[カスタマー サポート]** に情報を入力します。電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
 4.	サポート URL を入力します。
 
 ## 手順 4.: Azure Marketplace カテゴリを選択する
 **[カテゴリ]** タブには、一連の選択項目が表示されます。該当するカテゴリを最大 5 つまで選択できます。
 
 ## マーケティングの表示例
-[Azure Marketplace Web サイト](https://azure.microsoft.com/marketplace/)と [Azure プレビュー ポータル](https://ms.portal.azure.com)における、プラン マーケティング情報の使用方法についての詳細なビューを次に示します。
+[Azure Marketplace Web サイト](https://azure.microsoft.com/marketplace/)と [Azure ポータル](https://portal.azure.com)における、プラン マーケティング情報の使用方法についての詳細なビューを次に示します。
 
 ### Azure Marketplace Web サイト
 ![図](media/marketplace-publishing-push-to-staging/acom-catalog-01.png)
@@ -135,14 +164,14 @@
 
 *Azure Marketplace Web サイト上のプランの説明の価格詳細*
 
-### Azure プレビュー ポータル
+### Azure ポータル
 ![図](media/marketplace-publishing-push-to-staging/portal-catalog-01.png)
 
-*Azure プレビュー ポータルのプランの一覧*
+*Azure ポータルでのプランの一覧*
 
 ![図](media/marketplace-publishing-push-to-staging/portal-listing-details-01.png)
 
-*Azure プレビュー ポータルのプランの説明の詳細*
+*Azure ポータルのプランの説明の詳細*
 
 ## 次のステップ
 Marketplace コンテンツが読み込まれたので、プランのステージングでのテストに進みましょう。ただし、手順はプランの種類によって異なるため、以下の一覧から適切なプランの種類を選択する必要があります。
@@ -163,4 +192,4 @@ Marketplace コンテンツが読み込まれたので、プランのステー�
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -4,7 +4,7 @@
 	services="cdn"
 	documentationCenter=".NET"
 	authors="juliako"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,9 +13,9 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/01/2016"
+	ms.date="04/25/2016"
 	ms.author="juliako"/>
-
+ 
 #Media Services Extension での CDN キャッシュ ポリシー
 
 Azure Media Services では、HTTP ベースのアダプティブ ストリーミングとプログレッシブ ダウンロードが提供されます。HTTP ベースのストリーミングは、プロキシと CDN レイヤーにおけるキャッシュだけでなくクライアント側のキャッシュの利点もあり、高い拡張性を備えています。ストリーミング エンドポイントは、一般的なストリーミング機能と、HTTP キャッシュ ヘッダーの構成も提供します。ストリーミング エンドポイントは、HTTP Cache-Control: max-age および Expires ヘッダーを設定します。HTTP キャッシュ ヘッダーの詳細については、[W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html) を参照してください。
@@ -42,4 +42,4 @@ Azure 管理ポータルまたは Azure Media Services API を使用して、キ
 2. 手動による構成がない場合は既定値が適用されます。
 3. 既定では、Azure Media または Azure Storage の構成に関係なく 2 秒のキャッシュ ヘッダーがライブ ストリーミング マニフェスト (プレイリスト) に適用され、この値の上書きは使用できません。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

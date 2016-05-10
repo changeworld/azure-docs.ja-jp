@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="04/27/2016"
+   ms.date="04/29/2016"
    ms.author="v-livech"/>
 
 
@@ -23,9 +23,10 @@
 
 ## クイック コマンドの概要
 
+VM をデプロイして SSH キーを関連付けるコマンドの例
+
 ```
-# One command to deploy the VM and attach your SSH key
-ahmet@fedora$ azure vm quick-create -M ~/.ssh/azure_id_rsa.pub
+azure vm quick-create -M ~/.ssh/azure_id_rsa.pub
 ```
 
 ## Linux VM のデプロイ
@@ -36,9 +37,15 @@ ImageURN については、`canonical:ubuntuserver:14.04.2-LTS:latest` を使用
 
 以下のコマンド チュートリアルでは、プロンプトを実際の環境の値に置き換えてください。ここでは、"サンプル" の値を使用します。出力は次のような出力ブロックになります。
 
+画面の指示に従って、独自の名前を入力してください。
+
 ```bash
-# Follow the prompts and enter your own names
-ahmet@fedora$ azure vm quick-create -M ~/.ssh/azure_id_rsa.pub
+azure vm quick-create -M ~/.ssh/azure_id_rsa.pub
+```
+
+出力
+
+```bash
 info:    Executing command vm quick-create
 Resource group name: exampleRGname
 Virtual machine name: exampleVMname
@@ -48,10 +55,6 @@ ImageURN (in the format of "publisherName:offer:skus:version") or a VHD link to 
 User name: ahmet
 Password: ************************************************
 Confirm password: ************************************************
-```
-
-```bash
-########### expected output ###########
 + Looking up the VM "exampleVMname"
 info:    Verifying the public key SSH file: /home/ahmet/.ssh/azure_id_rsa.pub
 info:    Using the VM Size "Standard_D1"
@@ -130,7 +133,7 @@ info:    vm quick-create command OK
 既定の SSH ポート 22 と、上記の出力に示されているパブリック IP アドレス (または完全修飾ドメイン名 (FQDN)) を使用して、VM に SSH 接続できます。
 
 ```
-ahmet@fedora$ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.88.22.244
+ssh -i ~/.ssh/azure_id_rsa ubuntu@13.88.22.244
 ```
 
 ## 次のステップ
@@ -145,4 +148,4 @@ ahmet@fedora$ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.88.22.244
 
 これらの記事を読むと、Azure インフラストラクチャの構築を始めることができ、独自またはオープン ソースのインフラストラクチャ デプロイ、構成、オーケストレーション ツールを使用できます。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->
