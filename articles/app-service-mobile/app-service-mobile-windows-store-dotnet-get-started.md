@@ -58,7 +58,7 @@
 
 4. Windows ストア アプリをスタートアップ プロジェクトとして使用し、F5 キーを押してプロジェクトをリビルドし、Windows ストア アプリを起動します。
 
-5. アプリで、**[Insert a TodoItem]** テキスト ボックスに意味のあるテキスト (たとえば、「*チュートリアルの完了*」) を入力し、**[Save]** をクリックします。
+5. アプリで、**[Insert a TodoItem]** テキスト ボックスに意味のあるテキスト (たとえば、「 *チュートリアルの完了* 」) を入力し、**[Save]** をクリックします。
 
 	![](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 

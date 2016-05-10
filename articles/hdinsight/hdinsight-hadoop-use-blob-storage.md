@@ -64,7 +64,7 @@ Hadoop は、既定のファイル システムの概念をサポートしてい
 - **クラスターに接続されていないストレージ アカウント内のプライベート コンテナー:** WebHCat ジョブを送信するときにストレージ アカウントを定義しない限り、コンテナー内の BLOB にはアクセスできません。詳しくは、この記事の後半で説明します。
 
 
-作成プロセスで定義されたストレージ アカウントとそのキーは、クラスター ノードの %HADOOP\_HOME%/conf/core-site.xml に格納されます。HDInsight の既定の動作では、core-site.xml ファイルに定義されたストレージ アカウントが使用されます。core-site.xml ファイルを編集することは推奨されません。クラスター ヘッドノード (マスター) はいつでも再イメージングしたり移行したりでき、そうなると core-site.xml ファイルに加えた変更がすべて失われるためです。
+作成プロセスで定義されたストレージ アカウントとそのキーは、クラスター ノードの %HADOOP_HOME%/conf/core-site.xml に格納されます。HDInsight の既定の動作では、core-site.xml ファイルに定義されたストレージ アカウントが使用されます。core-site.xml ファイルを編集することは推奨されません。クラスター ヘッドノード (マスター) はいつでも再イメージングしたり移行したりでき、そうなると core-site.xml ファイルに加えた変更がすべて失われるためです。
 
 Hive、MapReduce、Hadoop ストリーミング、Pig など、複数の WebHCat ジョブを利用して、ストレージ アカウントの説明とそのメタデータを伝達できます。(現在、ストレージ アカウントについては Pig が対応していますが、メタデータについては対応していません)。 この記事の「[Azure PowerShell を使用した BLOB へのアクセス](#powershell)」で、この機能のサンプルを紹介しています。詳細については、「[Using an HDInsight Cluster with Alternate Storage Accounts and Metastores (代替のストレージ アカウントおよびメタストアでの HDInsight クラスターの使用)](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)」を参照してください。
 
@@ -263,7 +263,8 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 
 ###定義されていないストレージ アカウントを使用する Hive クエリの実行
 
-このサンプルでは、作成プロセス時に定義されていないストレージ アカウントのフォルダーを一覧表示する方法を示しています。$clusterName = "<HDInsightClusterName>"
+このサンプルでは、作成プロセス時に定義されていないストレージ アカウントのフォルダーを一覧表示する方法を示しています。
+	$clusterName = "<HDInsightClusterName>"
 
 	$undefinedStorageAccount = "<UnboundedStorageAccountUnderTheSameSubscription>"
 	$undefinedContainer = "<UnboundedBlobContainerAssociatedWithTheStorageAccount>"
@@ -302,6 +303,6 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 
 [img-hdi-powershell-blobcommands]: ./media/hdinsight-hadoop-use-blob-storage/HDI.PowerShell.BlobCommands.png
 [img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
-[img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png
+[img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png  
 
 <!---HONumber=AcomDC_0504_2016-->

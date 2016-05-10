@@ -130,9 +130,10 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 
 		カタログ エンティティ (データベース、スキーマ、テーブル、UDO など) に対する IntelliSense は、コンピューティング アカウントと関連付けられています。現在のアクティブなコンピューティング アカウント、データベース、スキーマを上部のツールバーで確認でき、ドロップダウン リストで切り替えることができます。
 
-    - *** 列の展開**
+    - **列の展開**
 
-        * の右側をクリックすると、* の下に青い線が表示されます。青い下線にマウス カーソルをポイントし、下矢印をクリックします。![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
+        * の右側をクリックすると、* の下に青い線が表示されます。青い下線にマウス カーソルをポイントし、下矢印をクリックします。
+	![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
         **[列の展開]** をクリックすると、* が列名に置き換えられます。
 
@@ -150,7 +151,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 
 	- **定義に移動してすべての参照を検索**
 
-		行セット/パラメーター/列/UDO などの名前を右クリックし、[定義へ移動] (F12) をクリックすると、その定義に移動できます。[すべての参照の検索] (Shift + F12) をクリックすると、すべての参照が表示されます。
+		行セット/パラメーター/列/UDO などの名前を右クリックし、[定義へ移動] \(F12) をクリックすると、その定義に移動できます。[すべての参照の検索] \(Shift + F12) をクリックすると、すべての参照が表示されます。
 
 	- **Azure パスの挿入**
 
@@ -342,7 +343,7 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
 
     #region - prepare the source data
     Write-Host "Import the source data ..."  -ForegroundColor Green
-    $localFolder = "C:\Tutorials\Downloads" # A temp location for the file.
+    $localFolder = "C:\Tutorials\Downloads\" # A temp location for the file.
     $storageAccount = "adltutorials"  # Don't modify this value.
     $container = "adls-sample-data"  #Don't modify this value.
 

@@ -31,7 +31,7 @@
 
 
 ## エラスティック プールでの新しいデータベースの作成
-CREATE DATABASE コマンドと共に SERVICE\_OBJECTIVE オプションを使用します。
+CREATE DATABASE コマンドと共に SERVICE_OBJECTIVE オプションを使用します。
 
 	CREATE DATABASE db1 ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3M100] ));
 	-- Create a database named db1 in a pool named S3M100.
@@ -46,13 +46,13 @@ ALTER DATABASE コマンドと共に MODIFY を使用します。SERVICE\_OBJECT
 	-- Move the database named db1 to a pool named P1M125  
 
 ## エラスティック プールへのデータベースの移動 
-ALTER DATABASE コマンドと共に MODIFY を使用します。SERVICE\_OBJECTIVE オプションに ELASTIC\_POOL を設定し、name にターゲット プールの名前を設定します。
+ALTER DATABASE コマンドと共に MODIFY を使用します。SERVICE\_OBJECTIVE オプションに ELASTIC_POOL を設定し、name にターゲット プールの名前を設定します。
 
 	ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3100] ));
 	-- Move the database named db1 to a pool named S3100.
 
 ## エラスティック プールからのデータベースの移動
-ALTER DATABASE コマンドを使用し、SERVICE\_OBJECTIVE をいずれかのパフォーマンス レベル (S0、S1 など) に設定します。
+ALTER DATABASE コマンドを使用し、SERVICE_OBJECTIVE をいずれかのパフォーマンス レベル (S0、S1 など) に設定します。
 
 	ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = 'S1');
 	-- Changes the database into a stand-alone database with the service objective S1.

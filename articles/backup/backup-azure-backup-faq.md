@@ -101,10 +101,10 @@
 **Q20.どのようなファイアウォール ルールを Azure Backup 向けに構成する必要がありますか。** <br/>A20.オンプレミスから Azure に転送されるデータとワークロードから Azure に転送されるデータをシームレスに保護できるように、次の URL との通信を許可するようにファイアウォールを設定することをお勧めします。
 
 - www.msftncsi.com
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+- \*.Microsoft.com
+- \*.WindowsAzure.com
+- \*.microsoftonline.com
+- \*.windows.net
 
 **Q21.VM 拡張機能を使用する Azure Backup サービスで既にバックアップされている Azure VM に Azure Backup エージェントをインストールできますか。** <br/> A21.そして、Azure Backup では、VM 拡張機能を使用している Azure VM には VM レベルのバックアップを提供します。ゲスト Windows OS に Azure Backup エージェントをインストールすると、そのゲスト OS 上のファイルとフォルダーを保護できます。
 

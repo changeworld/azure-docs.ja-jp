@@ -30,7 +30,7 @@ StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 80
 | デバイスのモデル | 8010<sup>1</sup> | 8020 |
 |-----------------------|---------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | **最大容量** | 30 TB | 64 TB |
-| **Azure VM** | Standard\_A3 (4 コア、7 GB メモリ) | Standard\_DS3 (4 コア、14 GB メモリ) |
+| **Azure VM** | Standard_A3 (4 コア、7 GB メモリ) | Standard_DS3 (4 コア、14 GB メモリ) |
 | **バージョン互換性** | Update 2 より前または Update 2 以降を実行しているバージョン | Update 2 以降を実行しているバージョン |
 | **利用可能なリージョン** | すべての Azure リージョン | Premium Storage をサポートする Azure リージョン<br></br>リージョンの一覧については、「[8020 のサポートされるリージョン](#supported-regions-for-8020)」をご覧ください。 |
 | **ストレージの種類** | Azure Standard Storage をローカル ディスクに使用します。<br></br>[Standard Storage アカウントを作成する]()方法を確認してください。 | Azure Premium Storage をローカル ディスクに使用します。<sup>2</sup><br></br>[Premium Storage アカウントを作成する](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を確認してください。 |
@@ -60,7 +60,7 @@ StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 80
 | 12 | 東アジア* |
 | 13 | 米国中南部* |
 
-**Premium Storage はこれらの地域で最近提供が開始されました。
+*Premium Storage はこれらの地域で最近提供が開始されました。
 
 この記事では、Azure で StorSimple 仮想デバイスをデプロイするための段階的なプロセスについて説明します。この記事を読むと、次のことができます。
 
@@ -144,7 +144,8 @@ StorSimple 仮想デバイスを作成するには、次の手順を実行しま
 
 この手順を開始する前に、サービス データ暗号化キーのコピーがあることを確認してください。サービス データ暗号化キーは、最初の StorSimple デバイスの構成時に作成され、安全な場所に保存するように指示されます。サービス データ暗号化キーのコピーがない場合は、Microsoft サポートに支援を依頼する必要があります。
 
-StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
+StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。
+[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
 
 ### 手順 3. (オプション) デバイスの構成設定の変更
 

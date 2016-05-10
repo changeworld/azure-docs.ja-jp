@@ -91,7 +91,7 @@ Azure IoT Hub デバイス管理を利用するには、Azure IoT Hub を作成�
 
 このスクリプトでは、次の処理が実行されます。
 
-1.  **cmake** を実行し、シミュレートされたデバイスのための Visual Studio 2015 ソリューションを作成します。このプロジェクト ファイルは、**azure-iot-sdks\\csharp\\service\\samples\\cmake\\iotdm\_client\\samples\\iotdm\_simple\_sample\\iotdm\_simple\_sample.vcxproj** です。ソース ファイルは ****azure-iot-sdks\\c\\iotdm\_client\\samples\\iotdm\_simple\_sample** フォルダーにあることに注意してください。
+1.  **cmake** を実行し、シミュレートされたデバイスのための Visual Studio 2015 ソリューションを作成します。このプロジェクト ファイルは、**azure-iot-sdks\\csharp\\service\\samples\\cmake\\iotdm\_client\\samples\\iotdm\_simple\_sample\\iotdm\_simple\_sample.vcxproj** です。ソース ファイルは ***azure-iot-sdks\\c\\iotdm\_client\\samples\\iotdm\_simple\_sample** フォルダーにあることに注意してください。
 
 2.  シミュレートされたデバイス プロジェクト **iotdm\_simple\_sample.vcxproj** をビルドします。
 

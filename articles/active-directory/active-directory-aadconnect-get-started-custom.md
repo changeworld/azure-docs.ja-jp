@@ -57,9 +57,11 @@ AD FS とのフェデレーション | ユーザーは、オンプレミス ネ�
 ## Azure AD に接続
 [Azure AD に接続] 画面で、グローバル管理者のアカウントとパスワードを入力します。前のページで **[AD FS とのフェデレーション]** を選択した場合、フェデレーション用に有効にする予定があるドメイン内のアカウントでサインインしないようにしてください。Azure AD ディレクトリに付属する既定の **onmicrosoft.com** ドメイン内のアカウントを使用することをお勧めします。
 
-このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。![ユーザーのサインイン](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
+このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。
+![ユーザーのサインイン](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
 
-グローバル管理者アカウントで MFA が有効にされている場合は、サインイン ポップアップに再度パスワードを入力し、MFA チャレンジを完了する必要があります。MFA チャレンジは確認コードの入力、または音声通話によって行うことができます。 ![ユーザーのサインイン MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
+グローバル管理者アカウントで MFA が有効にされている場合は、サインイン ポップアップに再度パスワードを入力し、MFA チャレンジを完了する必要があります。MFA チャレンジは確認コードの入力、または音声通話によって行うことができます。 
+![ユーザーのサインイン MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
 
 グローバル管理者アカウントは [Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) も有効にされている可能性があります。
 
@@ -73,9 +75,11 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 ![ディレクトリの接続](./media/active-directory-aadconnect-get-started-custom/connectdir.png)
 
 ### ドメインと OU のフィルター処理
-既定では、すべてのドメインと OU が同期されます。Azure AD に同期させたくないドメインまたは OU がある場合は、これらのドメインと OU を選択解除できます。![DomainOU フィルター処理](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) ウィザード内のこのページでは、ドメイン ベースのフィルター処理を構成します。詳細については、「[ドメイン ベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)」を参照してください。
+既定では、すべてのドメインと OU が同期されます。Azure AD に同期させたくないドメインまたは OU がある場合は、これらのドメインと OU を選択解除できます。
+![DomainOU フィルター処理](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) ウィザード内のこのページでは、ドメイン ベースのフィルター処理を構成します。詳細については、「[ドメイン ベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)」を参照してください。
 
-さらに、一部のドメインは、ファイアウォールの制限のために到達できないこともあります。このようなドメインは既定で選択が解除されており、警告が表示されます。![到達不能ドメイン](./media/active-directory-aadconnect-get-started-custom/unreachable.png) この警告が表示される場合は、これらのドメインが実際に到達不能であり、警告の表示が予想されるものであることを確認してください。
+さらに、一部のドメインは、ファイアウォールの制限のために到達できないこともあります。このようなドメインは既定で選択が解除されており、警告が表示されます。
+![到達不能ドメイン](./media/active-directory-aadconnect-get-started-custom/unreachable.png) この警告が表示される場合は、これらのドメインが実際に到達不能であり、警告の表示が予想されるものであることを確認してください。
 
 ### ユーザーを一意に識別
 [フォレスト全体で一致] 機能を使用すると、AD DS フォレストのユーザーを Azure AD でどう表すかを定義することができます。ユーザーは、すべてのフォレストで 1 回だけ表すか、有効アカウントと無効アカウントを組み合わせることができます。一部のフォレストでは、ユーザーを連絡先として表すこともできます。

@@ -105,7 +105,7 @@ Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを�
 
 	$dataLakeStoreName = "<The default Data Lake Store account name>"
 	
-	$localFolder = "C:\Tutorials\Downloads" # A temp location for the file. 
+	$localFolder = "C:\Tutorials\Downloads\" # A temp location for the file. 
 	$storageAccount = "adltutorials"  # Don't modify this value.
 	$container = "adls-sample-data"  #Don't modify this value.
 
@@ -186,7 +186,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 		
 		Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticsName -JobId $job.JobId
 
-	このスクリプトでは、U-SQL スクリプト ファイルが c:\\tutorials\\data-lake-analytics\\copyFile.usql に格納されます。適宜、ファイル パスを更新してください。
+	このスクリプトでは、U-SQL スクリプト ファイルが c:\tutorials\data-lake-analytics\copyFile.usql に格納されます。適宜、ファイル パスを更新してください。
  
 ジョブが完了したら、以下のコマンドレットを使用し、ファイルをリストしてダウンロードできます。
 	

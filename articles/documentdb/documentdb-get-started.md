@@ -21,7 +21,7 @@
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-get-started.md)
-- [Node.JS](documentdb-nodejs-get-started.md)
+- [Node.js](documentdb-nodejs-get-started.md)
 
 DocumentDB .NET SDK の NoSQL チュートリアルへようこそ。 このチュートリアルに従うことで、DocumentDB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
 
@@ -61,11 +61,14 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
 1. コンピューターで **Visual Studio 2015** を開きます。
 2. **[ファイル]** メニューで、**[新規]**、**[プロジェクト]** の順に選択します。
-3. **[新しいプロジェクト]** ダイアログで、**[テンプレート]**、**[Visual C#]**、**[コンソール アプリケーション]** の順に選択し、プロジェクトの名前を指定して、**[OK]** をクリックします。![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
+3. **[新しいプロジェクト]** ダイアログで、**[テンプレート]**、**[Visual C#]**、**[コンソール アプリケーション]** の順に選択し、プロジェクトの名前を指定して、**[OK]** をクリックします。
+	![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
 4. **ソリューション エクスプローラー**で、Visual Studio ソリューションの下にある新しいコンソール アプリケーションを右クリックします。
-5. メニューの **[NuGet パッケージの管理...]** をクリックします。![プロジェクトの右クリック メニューのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+5. メニューの **[NuGet パッケージの管理...]** をクリックします。
+	![プロジェクトの右クリック メニューのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 6. **[Nuget]** タブの **[参照]** をクリックし、検索ボックスに「**azure documentdb**」と入力します。
-7. 結果で **Microsoft Azure DocumentDB** を探し、**[インストール]** をクリックします。DocumentDB クライアント ライブラリのパッケージ ID は [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB) です。 ![DocumentDB クライアント SDK を見つける NuGet メニューのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+7. 結果で **Microsoft Azure DocumentDB** を探し、**[インストール]** をクリックします。DocumentDB クライアント ライブラリのパッケージ ID は [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB) です。 
+	![DocumentDB クライアント SDK を見つける NuGet メニューのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
 以上です。 これでセットアップは終了です。いくつかのコードの記述を開始しましょう。このチュートリアルの完成したコード プロジェクトは [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) にあります。
 
