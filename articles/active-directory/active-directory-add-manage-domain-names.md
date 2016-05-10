@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="04/20/2016"
 	ms.author="curtand;jeffsta"/>
 
 # Azure Active Directory のカスタム ドメイン名の管理
 
-ドメイン名は、多くのディレクトリ リソースの識別子の重要な部分です。ユーザーのユーザー名または電子メール アドレスの一部であり、グループのアドレスの一部であり、アプリケーションのアプリ ID URI の一部になることもあります。Azure Active Directory (Azure AD) のリソースには、リソースを格納するディレクトリによって所有されていることが既に確認されているドメイン名を含めることができます。Azure AD でドメイン管理タスクを実行できるのは、グローバル管理者のみです。
+ドメイン名は、多くのディレクトリ リソースの識別子の重要な部分です。ユーザーのユーザー名または電子メール アドレスの一部であり、グループのアドレスの一部であり、アプリケーションのアプリ ID URI の一部になることもあります。Azure Active Directory (Azure AD) のリソースには、リソースを格納するディレクトリによって所有されていることが既に確認済みのドメイン名を含めることができます。Azure AD でドメイン管理タスクを実行できるのは、グローバル管理者のみです。
 
 ## Azure AD ディレクトリのプライマリ ドメイン名の設定
 
@@ -74,10 +74,10 @@ Azure Active Directory のドメイン名に関する管理作業の多くは、
 
 -   [Graph API を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
-**次のステップ**
+## 次のステップ
 
 -   [Azure AD のドメイン名について確認する](active-directory-add-domain-concepts.md)
 
 -   [カスタム ドメイン名を管理する](active-directory-add-manage-domain-names.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

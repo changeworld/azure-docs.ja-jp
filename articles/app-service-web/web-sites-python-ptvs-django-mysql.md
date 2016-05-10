@@ -18,13 +18,7 @@
 
 # Python Tools 2.2 for Visual Studio を使用した Azure 上の Django と MySQL 
 
-> [AZURE.SELECTOR]
-- [.NET](web-sites-dotnet-get-started.md)
-- [Node.JS](app-service-web-nodejs-get-started.md)
-- [Java](web-sites-java-get-started.md)
-- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
-- [Python](web-sites-python-ptvs-django-mysql.md)
+[AZURE.INCLUDE [タブ](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 このチュートリアルでは、[Python Tools for Visual Studio] のサンプル テンプレートを使用して、単純な投票 Web アプリを作成します。このチュートリアルは、[ビデオ](https://www.youtube.com/watch?v=oKCApIrS0Lo)でもご覧いただけます。
 
@@ -217,4 +211,4 @@ Python Tools for Visual Studio、Django および MySQL の詳細については
 [MySQL]: http://www.mysql.com/
  
 
-<!---HONumber=AcomDC_0406_2016--->
+<!---HONumber=AcomDC_0504_2016-->

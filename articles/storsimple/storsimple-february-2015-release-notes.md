@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
  <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/01/2015"
+   ms.date="04/18/2016"
    ms.author="v-sharos" />
 
 # StorSimple 8000 シリーズ Update 0.3 リリース ノート - 2015 年 2 月
@@ -27,7 +27,7 @@ StorSimple デバイスをインストールしたらすぐに、利用可能な
 
 StorSimple ソリューションの更新プログラムをデプロイする前に、リリース ノートに含まれる情報を確認してください。
 
->[AZURE.IMPORTANT]
+>[AZURE.IMPORTANT]   
 >
 > - StorSimple 用 Windows PowerShell ではなく StorSimple Manager サービスを使用して、2 月の更新プログラムをインストールします。   
 > - この更新プログラムをインストールするには、1 時間程度かかります。ただし、累積的更新プログラムをインストールする場合は、プロセスの完了に約 3 時間を要します。  
@@ -86,4 +86,4 @@ StorSimple デバイスを更新する前に、次の前提条件が満たされ
 このリリースには、仮想デバイス用の更新プログラムは含まれていません。この更新プログラムを適用しても、仮想デバイスのソフトウェア バージョンは変更されません。
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0427_2016-->

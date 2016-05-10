@@ -1,20 +1,20 @@
 <properties
-   pageTitle="パブリック データの Azure Event Hubs へのプル | Microsoft Azure"
-   description="Web サンプルから Event Hubs へのインポートの概要"
-   services="event-hubs"
-   documentationCenter="na"
-   authors="spyrossak"
-   manager="timlt"
-   editor=""/>
+    pageTitle="パブリック データの Azure Event Hubs へのプル | Microsoft Azure"
+    description="Web サンプルから Event Hubs へのインポートの概要"
+    services="event-hubs"
+    documentationCenter="na"
+    authors="spyrossak"
+    manager="timlt"
+    editor=""/>
 
 <tags 
-   ms.service="event-hubs"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="02/05/2016"
-   ms.author="spyros;sethm" />
+    ms.service="event-hubs"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="04/26/2016"
+    ms.author="spyros;sethm" />
 
 # パブリック データの Azure Event Hubs へのプル
 
@@ -47,4 +47,4 @@ GenericWebToEH ソリューションが起動すると、ソリューション�
 
 [Azure サンプル ギャラリー](https://azure.microsoft.com/documentation/samples/?service=event-hubs)と [MSDN](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5) で、他の Event Hubs のサンプルをご覧ください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0427_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="02/09/2016" 
+	ms.date="04/26/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory サービスの概要
@@ -69,4 +69,4 @@ Azure Data Factory を利用できるリージョンが**米国西部**と**北�
 将来的には、Azure がサポートするすべての地域で Azure Data Factory が提供される予定です。
   
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

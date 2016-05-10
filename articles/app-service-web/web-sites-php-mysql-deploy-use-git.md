@@ -327,4 +327,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
  
 
-<!---HONumber=AcomDC_0406_2016--->
+<!----HONumber=AcomDC_0406_2016--->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/25/2016"
+   ms.date="04/29/2016"
    ms.author="cherylmc" />
 
 # サイト間 VPN Gateway 接続の VPN デバイスについて
@@ -60,7 +60,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Microsoft | ルーティングとリモート アクセス サービス | Windows Server 2012 | 互換性なし | [Microsoft のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | Open Systems AG | Mission Control Security Gateway | 該当なし | [インストール ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) | [インストール ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |
 | Openswan | Openswan | 2\.6.32 | (近日対応予定) | 互換性なし |
-| Palo Alto Networks | PAN-OS 5.0 またはそれ以上を実行しているすべてのデバイス | PAN-OS 5x またはそれ以上 | [Palo Alto Networks](https://support.paloaltonetworks.com/) | 互換性なし |
+| Palo Alto Networks | PAN-OS を実行しているすべてのデバイス | PAN-OS 6.1.5 以降 (ポリシー ベース)、PAN-OS 7.0.5 以降 (ルート ベース) | [構成の手順](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) | [構成の手順](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
 | Watchguard | すべて | Fireware XTM v11.x | [構成の手順](http://customers.watchguard.com/articles/Article/Configure-a-VPN-connection-to-a-Windows-Azure-virtual-network/) | 互換性なし |
 
 
@@ -152,4 +152,4 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 - インターネット経由のクロスプレミス接続では、重要な通信のセキュリティを確保するため、上記の表にある暗号化およびハッシュ アルゴリズムによる既定の Azure VPN Gateway 設定を使用してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

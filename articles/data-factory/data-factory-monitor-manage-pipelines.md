@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Data Factory のパイプラインの監視と管理" 
-	description="Azure クラシック ポータルおよび Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。" 
+	description="Azure ポータルおよび Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/04/2016" 
+	ms.date="03/28/2016" 
 	ms.author="spelluru"/>
 
 
@@ -187,12 +187,12 @@ Azure PowerShell を使用してパイプラインを管理できます。たと
 
 
 ## パイプラインをデバッグする
-Azure Data Factory では、パイプラインをデバッグおよびトラブルシューティングするための充実した機能が Azure クラシック ポータルおよび Azure PowerShell で提供されています。
+Azure Data Factory では、パイプラインをデバッグおよびトラブルシューティングするための充実した機能が Azure ポータルおよび Azure PowerShell で提供されています。
 
 ### パイプラインのエラーを発見する
 パイプラインでアクティビティの実行が失敗した場合、パイプラインによって生成されるデータセットは障害のためにエラー状態になります。次のメカニズムを使用して、Azure Data Factory のエラーをデバッグおよびトラブルシューティングできます。
 
-#### Azure クラシック ポータルを使用してエラーをデバッグします。
+#### Azure ポータルを使用してエラーをデバッグします。
 
 1.	Data Factory のホーム ページで、**[データセット]** タイルの **[エラーあり]** をクリックします。
 	
@@ -265,7 +265,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 
 ## パイプラインのエラーを再実行する
 
-### Azure クラシック ポータルの使用
+### パイプラインのエラーを再実行する
 
 パイプラインのエラーをトラブルシューティングおよびデバッグした後は、エラー スライスに移動してコマンド バーの **[実行]** ボタンをクリックすることで、エラーを再実行できます。
 
@@ -585,4 +585,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 ![[リソースの移動] ダイアログ ボックス](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0427_2016-->

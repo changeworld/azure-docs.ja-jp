@@ -3,7 +3,7 @@
    description="Data Lake Analytics と U-SQL について学習するためのクイック スタートです。" 
    services="data-lake-analytics" 
    documentationCenter="" 
-   authors="mumian" 
+   authors="edmacauley" 
    manager="paulettm" 
    editor="cgronlun"/>
  
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
    ms.date="02/11/2016"
-   ms.author="jgao"/>
+   ms.author="edmaca"/>
 
 
 # Azure Data Lake Analytics の対話型チュートリアルの使用
@@ -88,4 +88,4 @@ Azure ポータルでは、Data Lake Analytics を使用するための対話型
 - [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
 - [Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

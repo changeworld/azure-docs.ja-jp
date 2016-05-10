@@ -139,4 +139,4 @@ App Service アプリのポータル ブレードには、アプリの構成、�
 - [モバイル アプリの作成](/documentation/learning-paths/appservice-mobileapps/)
 - [API アプリの作成](../app-service-api/app-service-api-apps-why-best-platform.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!----HONumber=AcomDC_0420_2016-->

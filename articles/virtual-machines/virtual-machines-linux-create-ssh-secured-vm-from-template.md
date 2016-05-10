@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="04/04/2016"
+	ms.date="04/27/2016"
 	ms.author="v-livech"/>
 
 # Azure テンプレートを使用して安全な Linux VM を作成する
@@ -66,4 +66,4 @@ info:    group create command OK
 
 テンプレートを使って Linux VM を作成したら、テンプレートで扱うことのできる他のアプリケーション フレームワークをぜひご覧ください。次にデプロイするアプリケーション フレームワークを見つけるには、[テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)を検索します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

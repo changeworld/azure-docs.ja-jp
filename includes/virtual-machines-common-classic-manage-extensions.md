@@ -19,13 +19,11 @@ Azure VM 拡張機能は、Azure VM 上での他のプログラムの動作の�
 
 ##使用可能な拡張機能の検索
 
-Azure VM 拡張機能には次のものがあります (サポートする機能別の拡張機能の完全な一覧については、「[Azure VM 拡張機能とその機能](../articles/virtual-machines/virtual-machines-windows-extensions-features.md)」を参照してください)。 以下を使用して、拡張機能とその詳細情報を見つけることができます。
+以下を使用して、拡張機能とその詳細情報を見つけることができます。
 
 -   PowerShell
 -   Azure クロスプラットフォーム インターフェイス (Azure CLI)
 -   サービス管理 REST API
-
-利用可能な拡張機能の情報を検索するには、[Azure PowerShell](https://msdn.microsoft.com/library/azure/dn495240.aspx) コマンドレットまたは[サービス管理 REST API](https://msdn.microsoft.com/library/ee460799.aspx) を使用します。
 
 ###Azure PowerShell
 
@@ -121,4 +119,4 @@ Azure PowerShell コマンドレットを使用するのが、最も簡単に拡
 
 >[AZURE.NOTE]拡張機能では、JSON で定義された構成も使用できます。これらの種類の拡張機能を使用する場合、**SampleConfig** 要素だけが使用されます。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0427_2016-->

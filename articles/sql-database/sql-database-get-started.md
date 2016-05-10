@@ -1,7 +1,7 @@
 <properties
 	pageTitle="SQL Database チュートリアル: SQL データベースの作成 | Microsoft Azure"
 	description="SQL Database 論理サーバー、サーバー ファイアウォール規則、SQL Database、サンプル データを設定し、クライアント ツールに接続し、ユーザーとデータベースとファイアウォール規則を構成する方法について説明します。"
-	keywords="SQL Database チュートリアル、SQL Database の作成"
+	keywords="SQL データベース チュートリアル, SQL データベースの作成"
 	services="sql-database"
 	documentationCenter=""
 	authors="carlrabeler"
@@ -30,7 +30,7 @@
 このチュートリアルでは、Azure ポータルの使用方法について説明します。
 
 - SQL Database をホストする SQL Database 論理サーバーを作成する
-- サンプル データ、または SQL Database バックアップのデータを使用して、データのない SQL Database を作成します。
+- データのソースを選んで SQL データベースを作成する (データなし、サンプル データ使用、SQL データベース バックアップ データ使用)。
 - 単一の IP アドレスまたは IP アドレスの範囲に対してサービスレベルのファイアウォール規則を作成します。
 
 同じタスクを [C#](sql-database-get-started-csharp.md) または [PowerShell](sql-database-get-started-powershell.md) を使用して実行するには、次のリンク先を参照してください。
@@ -50,7 +50,7 @@
 
 - Excel に詳しい場合は、[Excel を使用した SQL Database への接続](sql-database-connect-excel.md)方法を参照してください。
 
-- コーディングを開始する準備ができたら、[C# を使用した SQL データベースへの接続とクエリ](sql-database-connect-query.md)に関するページと [.NET (c#) からの SQL Database の使用](sql-database-develop-dotnet-simple.md)に関するページを参照してください。C# に加えて Node.js、Python、Ruby、Java、PHP、C++ のサンプルと方法については、[SQL Database のクイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)に関するページを参照してください。
+- コーディングを開始する準備が整ったら、「[SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」でプログラミング言語を選択します。
 
 - オンプレミスの SQL Server データベースを Azure に移動する場合の詳細については、[Azure SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
 
@@ -59,4 +59,4 @@
 
 [SQL Database の概要](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

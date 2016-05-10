@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
+	ms.date="05/03/2016"
 	ms.author="piyushjo" />
 
 # Windows Phone Silverlight アプリの Azure Mobile Engagement の概要
@@ -37,7 +37,7 @@
 
 ##<a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 
-このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。完全な統合のドキュメントについては、「[Mobile Engagement Windows Phone SDK 統合](../mobile-engagement-windows-phone-sdk-overview/)」をご覧ください。
+このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。完全な統合のドキュメントについては、「[Mobile Engagement Windows Phone SDK 統合](mobile-engagement-windows-phone-sdk-overview.md)」をご覧ください。
 
 統合のデモンストレーションを行うために、Visual Studio で基本的なアプリを作成します。
 
@@ -166,4 +166,4 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 [5]: ./media/mobile-engagement-windows-phone-get-started/reach-capabilities.png
 [6]: ./media/mobile-engagement-windows-phone-get-started/push-screenshot.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

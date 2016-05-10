@@ -13,7 +13,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="02/03/2016"
+ ms.date="04/29/2016"
  ms.author="dobett"/>
 
 # Azure IoT Hub とは
@@ -57,7 +57,10 @@ Azure IoT Hub は、次の方法でデバイスの接続の課題に対処しま
 
 -   **広範なデバイス ライブラリ**。[Azure IoT デバイス SDK][lnk-device-sdks] は、さまざまな言語とプラットフォーム (多くの Linux ディストリビューション、Windows、およびリアルタイム オペレーティング システムでは C) で使用でき、サポートされています。Azure IoT デバイス SDK はまた、C#、Java、JavaScript など管理対象言語に対応しています。
 
--   **IoT プロトコルと機能拡張**。ソリューションでデバイス ライブラリを使用できない場合、IoT Hub は、デバイスで MQTT v3.1.1、HTTP 1.1、または AMQP 1.0 プロトコルをネイティブに使用できるようにするパブリック プロトコルを公開します。[Azure IoT プロトコル ゲートウェイ][protocol-gateway]のオープン ソース コンポーネントをカスタマイズして、IoT Hub を拡張してカスタム プロトコルをサポートすることもできます。Azure IoT プロトコル ゲートウェイは、クラウドまたはオンプレミスで実行できます。
+-   **IoT プロトコルと機能拡張**。ソリューションでデバイス ライブラリを使用できない場合、IoT Hub は、デバイスで MQTT v3.1.1、HTTP 1.1、または AMQP 1.0 プロトコルをネイティブに使用できるようにするパブリック プロトコルを公開します。また、以下の方法で IoT Hub を拡張して、カスタム プロトコルをサポートすることもできます。
+
+    - IoT Hub で認識される 3 つのプロトコルのいずれかにカスタム プロトコルを変換するフィールド ゲートウェイを、[Azure IoT Gateway SDK][lnk-gateway-sdk] で作成します。 
+    - クラウドで実行されるオープン ソース コンポーネントである [Azure IoT プロトコル ゲートウェイ][protocol-gateway]をカスタマイズします。
 
 -   **スケール**。Azure IoT Hub は、デバイスの数百万単位での同時接続、および毎秒数百万単位のイベントに対応できます。
 
@@ -71,7 +74,7 @@ Azure IoT Hub は、次の方法でデバイスの接続の課題に対処しま
 
 ## ゲートウェイ
 
-通常、IoT ソリューションのゲートウェイは、クラウドにデプロイされる[プロトコル ゲートウェイ][lnk-gateway]か、デバイスでローカルにデプロイされる[フィールド ゲートウェイ][lnk-field-gateway]のいずれかになります。プロトコル ゲートウェイは、MQTT から AMQP への変換など、プロトコル変換を実行します。フィールド ゲートウェイは、デバイスのローカル管理サービスを提供します。フィールド ゲートウェイは、専用のデバイスまたは既存のハードウェアで実行されているソフトウェアです。どちらの種類のゲートウェイも、デバイスと IoT Hub 間の仲介役として機能します。
+通常、IoT ソリューションのゲートウェイは、クラウドにデプロイされる[プロトコル ゲートウェイ][lnk-gateway]か、デバイスでローカルにデプロイされる[フィールド ゲートウェイ][lnk-field-gateway]のいずれかになります。プロトコル ゲートウェイは、MQTT から AMQP への変換など、プロトコル変換を実行します。フィールド ゲートウェイは、現状分析を実行したり、時間の制約がある判断を行って遅延を短縮したりすることができます。また、デバイス管理サービスを提供したり、セキュリティおよびプライバシーの制約を強制したりするほかに、プロトコル変換も行うことができます。どちらの種類のゲートウェイも、デバイスと IoT Hub 間の仲介役として機能します。
 
 フィールド ゲートウェイは、通常、ソリューションにおけるアクセスと情報フローの管理において大きな役割を果たすため、単純なトラフィック ルーティング デバイス (ネットワーク アドレス変換 (NAT) デバイスやファイアウォールなど) とは異なります。
 
@@ -116,5 +119,6 @@ Azure IoT Hub の詳細については、次のリンクを参照してくださ
 [lnk-apple-push]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
+[lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

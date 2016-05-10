@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/15/2016"
+   ms.date="05/02/2016"
    ms.author="cherylmc"/>
 
 # Azure リソース マネージャーと PowerShell を使用した VNet 間の接続の構成
@@ -95,7 +95,7 @@
 - [サブスクリプションが異なる VNet](#difsub)
 
 
-## <a name ="samesub"/>同じサブスクリプション内にある VNet を接続する方法
+## <a name="samesub"></a>同じサブスクリプション内にある VNet を接続する方法
 
 この構成は、下の図のように同じサブスクリプションにある仮想ネットワークに適用されます。
 
@@ -107,7 +107,7 @@
 	
 - Azure リソース マネージャー PowerShell コマンドレットをインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
-### <a name ="Step1"/>手順 1 - IP アドレス範囲を決める
+### <a name="Step1"></a>手順 1 - IP アドレス範囲を決める
 
 
 ネットワーク構成に使用する範囲を決めることは重要です。VNet の範囲やローカル ネットワークの範囲が重複することは、どのような形であれ許容されないので注意してください。
@@ -152,7 +152,7 @@
 
 
 
-### <a name ="Step2"/>手順 2 - TestVNet1 を作成し、構成する
+### <a name="Step2"></a>手順 2 - TestVNet1 を作成し、構成する
 
 1. 変数を宣言する
 
@@ -312,7 +312,7 @@ TestVNet1 を構成したら、この手順を繰り返し、TestVNet4 を作成
 
 	数分後に接続が確立されます。
 
-## <a name ="Verify"/>VNet 間の接続を検証する方法
+## <a name="Verify"></a>VNet 間の接続を検証する方法
 
 次の例では、接続を確認する方法を説明します。環境に合わせて値を変更してください。
 
@@ -327,7 +327,7 @@ Azure ポータルで VPN 接続を確認するには、**[仮想ネットワー
 
 	Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName $RG1 -Debug
 
-コマンドレットが完了したら、スクロールして値を表示します。以下の PowerShell の出力例では、接続状態は *Connected* と表示されており、受信バイトと送信バイトを確認できます。
+コマンドレットが完了したら、スクロールして値を表示します。以下の PowerShell の出力例では、接続状態は "*Connected*" と表示されており、受信バイトと送信バイトを確認できます。
 
 
 
@@ -355,13 +355,13 @@ Azure ポータルで VPN 接続を確認するには、**[仮想ネットワー
 	Name                       : VNet1toVNet4
 	Id                         : /subscriptions/<SubscriptionID>/resourceGroups/TestRG1/providers/Micr osoft.Network/connections/VNet1toVNet4
 
-## <a name ="difsub"/>異なるサブスクリプション内にある VNet を接続する方法
+## <a name="difsub"></a>異なるサブスクリプション内にある VNet を接続する方法
 
 次の構成手順では、異なるサブスクリプションにある VNet 間の接続を追加し、TestVNet1 から TestVNet5 に接続します。ここでの違いは、特に 2 つのサブスクリプションが異なる組織に属するとき、2 つ目のサブスクリプションとの関連で、構成手順の一部を別個の PowerShell セッションで実行する必要があることです。次の手順を完了すると、下の図のような構成が完成します。
 
 ![異なるサブスクリプションの VNet2VNet](./media/vpn-gateway-vnet-vnet-rm-ps/differentsubscription.png)
 
-以下の指示は、前の手順からの続きになります。TestVNet1 と TestVNet1 の VPN Gateway を作成し、構成するには、[手順 1](#Step1) と [手順 2](#Step2) を完了する必要があります。サブスクリプションの異なる VNet のみを接続する予定の場合、前の演習の手順 3 と 4 は省略し、以下の手順 5 に進むことができます。
+以下の指示は、前の手順からの続きになります。TestVNet1 と TestVNet1 の VPN ゲートウェイを作成し、構成するには、[手順 1.](#Step1) と [手順 2.](#Step2) を完了する必要があります。サブスクリプションの異なる VNet のみを接続する予定の場合、前の演習の手順 3 と 4 は省略し、以下の手順 5 に進むことができます。
 
 ### 手順 5 - 追加の IP アドレス範囲を確認する
 
@@ -530,4 +530,4 @@ Azure ポータルで VPN 接続を確認するには、**[仮想ネットワー
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

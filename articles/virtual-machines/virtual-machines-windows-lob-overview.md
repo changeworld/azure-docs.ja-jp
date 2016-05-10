@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="04/25/2016" 
 	ms.author="josephd"/>
 
 # Azure での高可用な基幹業務アプリケーションのデプロイ
@@ -85,7 +85,7 @@
 - 既に Azure ハイブリッド クラウド実装がある場合は、フェーズ 1 および 2 の指示を自由に調整するかスキップし、適切なサブネットで新しいアプリケーション用の仮想マシンをホストしてください。
 - すべてのサーバーは、Azure Virtual Network 内の 1 つのサブネット上の存在します。サブネットの分離に相当する追加のセキュリティを提供する場合は、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)を使用できます。
 
-この構成の開発/テスト環境または概念実証環境を構築するには、「[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)」を参照してください。
+この構成の開発/テスト環境または概念実証環境を構築するには、「[テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md)」を参照してください。
 
 Azure の IT ワークロードの設計に関する詳細については、「[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-linux-infrastructure-service-guidelines.md)」を参照してください。
 
@@ -93,4 +93,4 @@ Azure の IT ワークロードの設計に関する詳細については、「[
 
 - [フェーズ 1](virtual-machines-windows-ps-lob-ph1.md) を使用して、このワークロードの構成を開始します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0427_2016-->

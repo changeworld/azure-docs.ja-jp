@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="04/07/2016" 
+	ms.date="05/02/2016" 
 	ms.author="billmath"/>
 
 #ユーザーに適した多要素のセキュリティ ソリューションの選択
@@ -73,7 +73,7 @@ MFA レポート | ● | ●
 音声通話のカスタムあいさつ文 | ● | ● 
 音声通話のカスタマイズ可能な発信元 ID | ● | ● 
 信頼できる IP | ● | ● 
-信頼済みデバイスの MFA の記憶 (パブリック プレビュー) | ● |  
+信頼済みデバイスの MFA の記憶 | ● |  
 条件付きアクセス | ● | ● 
 キャッシュ | | ● 
 
@@ -81,4 +81,4 @@ MFA レポート | ● | ●
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

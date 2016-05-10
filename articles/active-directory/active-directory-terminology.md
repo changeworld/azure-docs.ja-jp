@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="04/26/2016"
 	ms.author="curtand"/>
 
 # Azure AD の用語
@@ -43,4 +43,4 @@ Multi-factor authentication (2 要素認証または 2FA とも呼ばれます) 
 - [Azure サブスクリプションを Azure AD に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 - [Azure AD サービスの制限と制約](active-directory-service-limits-restrictions.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0427_2016-->

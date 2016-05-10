@@ -35,7 +35,7 @@ Linux を実行する Azure 仮想マシンを Azure コマンド ライン イ�
 
  	azure vm quick-create -g MyResourceGroup -n <your-virtual-machine-name> "centralus" -y Linux -Q canonical:ubuntuserver:14.04.2-LTS:latest -u <your-user-name> -p <your-password>
 
-VM をプロビジョニングし実行したら、データ ディスクを接続しマウントすることができます。手順については、[こちら](virtual-machines-linux-add-disk)を参照してください。
+VM をプロビジョニングし実行したら、データ ディスクを接続しマウントすることができます。手順については、[こちら](virtual-machines-linux-add-disk.md)を参照してください。
 
 
 ## VM をキャプチャする
@@ -197,4 +197,4 @@ VM をプロビジョニングし実行したら、データ ディスクを接�
 
 CLI を使用して VM を管理するには、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-linux-cli-deploy-templates.md)」に記載のタスクを参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0427_2016-->

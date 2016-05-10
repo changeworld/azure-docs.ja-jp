@@ -77,11 +77,11 @@ Storage Service Encryption は、ストレージ アカウント レベルで有
 
 -   この機能に登録するには、Register-AzureRmProviderFeature PowerShell コマンドレットを使用します。
 
-    `Register-AzureRmProviderFeature -FeatureName "EncryptionAtRest" -ProviderNamespace "Microsoft.Storage“`
-        
+    `Register-AzureRmProviderFeature -FeatureName "EncryptionAtRest" -ProviderNamespace "Microsoft.Storage"`
+
 -   登録の状態を照会してサブスクリプションが承認されているかどうかを確認するには、Get-AzureRmProviderFeature PowerShell コマンドレットを使用します。
 
-    `Get-AzureRmProviderFeature -FeatureName "EncryptionAtRest" -ProviderNamespace "Microsoft.Storage“`
+    `Get-AzureRmProviderFeature -FeatureName "EncryptionAtRest" -ProviderNamespace "Microsoft.Storage"`
 
 登録ステータスとして "Registered" が返されると、サブスクリプションは承認されています。Yammer の Azure Storage Service Encryption プレビュー グループも参照してください。
 
@@ -225,4 +225,4 @@ A: Storage Service Encryption に関する問題は、[ssediscussions@microsoft.
 
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。詳細については、「[Azure Storage security guide (Azure Storage セキュリティ ガイド)](storage-security-guide.md)」を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0427_2016-->

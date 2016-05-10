@@ -14,14 +14,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/16/2016"
+   ms.date="05/02/2016"
    ms.author="cherylmc"/>
 
 # Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Azure ポータル - クラシック](vpn-gateway-site-to-site-create.md)
+- [Azure クラシック ポータル](vpn-gateway-site-to-site-create.md)
 - [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
 
@@ -109,4 +109,4 @@
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。詳細については、[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

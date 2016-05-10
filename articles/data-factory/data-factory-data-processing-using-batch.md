@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/20/2016"
+    ms.date="04/05/2016"
     ms.author="spelluru"/>
 # Azure Batch と Data Factory を使用した HPC とデータのオーケストレーション
 
@@ -901,13 +901,13 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
 データを処理した後、**Microsoft Power BI** などのオンライン ツールで使用することができます。Power BI や Azure で使用する方法を理解するために役立つリンクを次に示します。
 
--   [Power BI でのデータセットの参照](https://support.powerbi.com/knowledgebase/articles/475159)
+-   [Power BI でのデータセットの参照](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-service-get-data/)
 
--   [Power BI Desktop の概要](https://support.powerbi.com/knowledgebase/articles/471664)
+-   [Power BI Desktop の概要](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-desktop-getting-started/)
 
--   [Power BI でのデータの更新](https://support.powerbi.com/knowledgebase/articles/474669)
+-   [Power BI でのデータの更新](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-refresh-data/)
 
--   [Azure と Power BI - 基本的な概要](https://support.powerbi.com/knowledgebase/articles/568614)
+-   [Azure と Power BI - 基本的な概要](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-azure-and-power-bi/)
 
 ## 参照
 
@@ -929,4 +929,4 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
     -   [Azure Batch ライブラリ .NET の概要](../batch/batch-dotnet-get-started.md)
 
-<!----HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0427_2016-->

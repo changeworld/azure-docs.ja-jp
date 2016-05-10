@@ -301,7 +301,8 @@ ASP.net MVC サンプル アプリケーションの [GetObjectIdOfServicePrinci
 |----|----
 | grant\_type | **client\_credentials**
 | client\_id | アプリケーションのクライアント ID
-| resource | アクセス トークンが要求されているリソースの URL エンコードされた識別子。ここでは、Azure AD Graph API の識別子は、**https://graph.windows.net/** です。| client\_secret または client\_assertion\_type + client\_assertion | アプリケーションがパスワード資格情報を使用する場合は、client\_secret を使用します。アプリケーションが証明書資格情報を使用する場合は、client\_assertion を使用します。
+| resource | アクセス トークンが要求されているリソースの URL エンコードされた識別子。ここでは、Azure AD Graph API の識別子は、**https://graph.windows.net/** です。
+| client\_secret または client\_assertion\_type + client\_assertion | アプリケーションがパスワード資格情報を使用する場合は、client\_secret を使用します。アプリケーションが証明書資格情報を使用する場合は、client\_assertion を使用します。
 
 クライアント資格情報付与トークンの要求の例を次に示します。
 

@@ -3,8 +3,8 @@
    description="Microsoft Azure の Azure DNS ホスティング サービスの概要と Microsoft Azure でのドメインのホストの開始" 
    services="dns" 
    documentationCenter="na" 
-   authors="joaoma" 
-   manager="adinah" 
+   authors="cherylmc" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
    ms.date="02/09/2016"
-   ms.author="joaoma"/>
+   ms.author="cherylmc"/>
 
 # Azure DNS の概要
 
@@ -44,4 +44,4 @@ Azure DNS では、現在、ドメイン名の購入はサポートされてい�
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0427_2016-->

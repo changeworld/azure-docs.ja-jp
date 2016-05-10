@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="04/19/2016"
 	ms.author="cynthn"/>
 
 # Windows を実行する仮想マシンを Azure クラシック ポータルで作成する
@@ -22,7 +22,7 @@
 > [AZURE.SELECTOR]
 - [Azure ポータル](virtual-machines-windows-hero-tutorial.md)
 - [Azure クラシック ポータル](virtual-machines-windows-classic-tutorial.md)
-- [PowerShell: リソース マネージャーによるデプロイ](virtual-machines-windows-ps-manage.md)
+- [PowerShell: Resource Manager によるデプロイ](virtual-machines-windows-ps-manage.md)
 - [PowerShell: クラシック デプロイ](virtual-machines-windows-classic-create-powershell.md)
 
 <!-- HHTML comment in to break between the selector and the note in the include below-->
@@ -52,8 +52,8 @@
 
 ## 次のステップ
 
-- 仮想マシンにログオンします。手順については、「[Azure クラシック ポータルを使用して Windows 仮想マシンにログオンする](virtual-machines-windows-classic-connect-logon.md)」をご覧ください。
+- 仮想マシンにログオンします。手順については、[Windows Server を実行する仮想マシンへのログオン](virtual-machines-windows-classic-connect-logon.md)に関する記事をご覧ください。
 
 - データを格納するディスクを接続します。空のディスクと、データが含まれているディスクのどちらも接続できます。手順については、「[クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにデータ ディスクをアタッチする](virtual-machines-windows-classic-attach-disk.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0427_2016-->

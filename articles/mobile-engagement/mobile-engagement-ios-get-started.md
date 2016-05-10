@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
+	ms.date="05/03/2016"
 	ms.author="piyushjo" />
 
 # Objective C で IOS アプリ の Azure Mobile Engagement を開始する
@@ -37,7 +37,7 @@
 
 ##<a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
 
-このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。統合に関する完全なドキュメントは、「[Mobile Engagement iOS SDK 統合](../mobile-engagement-ios-sdk-overview/)」を参照してください。
+このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。統合に関する完全なドキュメントは、「[Mobile Engagement iOS SDK 統合](mobile-engagement-ios-sdk-overview.md)」を参照してください。
 
 統合のデモンストレーションを行うために、XCode で基本的なアプリを作成します。
 
@@ -179,4 +179,4 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 [3]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [4]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

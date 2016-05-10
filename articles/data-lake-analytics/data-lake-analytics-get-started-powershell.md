@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/21/2016"
+   ms.date="04/26/2016"
    ms.author="edmaca"/>
 
 # チュートリアル: Azure PowerShell で Azure Data Lake Analytics の使用を開始する
@@ -105,7 +105,7 @@ Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを�
 
 	$dataLakeStoreName = "<The default Data Lake Store account name>"
 	
-	$localFolder = "C:\Tutorials\Downloads" # A temp location for the file. 
+	$localFolder = "C:\Tutorials\Downloads\" # A temp location for the file. 
 	$storageAccount = "adltutorials"  # Don't modify this value.
 	$container = "adls-sample-data"  #Don't modify this value.
 
@@ -186,7 +186,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 		
 		Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticsName -JobId $job.JobId
 
-	このスクリプトでは、U-SQL スクリプト ファイルが c:\\tutorials\\data-lake-analytics\\copyFile.usql に格納されます。適宜、ファイル パスを更新してください。
+	このスクリプトでは、U-SQL スクリプト ファイルが c:\tutorials\data-lake-analytics\copyFile.usql に格納されます。適宜、ファイル パスを更新してください。
  
 ジョブが完了したら、以下のコマンドレットを使用し、ファイルをリストしてダウンロードできます。
 	
@@ -209,4 +209,4 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->
