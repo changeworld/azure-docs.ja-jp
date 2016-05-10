@@ -1,9 +1,9 @@
 <properties
-    pageTitle="エラスティック データベース プールの作成 (PowerShell) | Microsoft Azure"
+    pageTitle="PowerShell による新しい Elastic Database プールの作成 | Microsoft Azure"
     description="PowerShell を使用し、複数のデータベースを管理するスケーラブルなエラスティック データベース プールを作成して、Azure SQL Database リソースをスケールアウトする方法について説明します。"
 	services="sql-database"
     documentationCenter=""
-    authors="stevestein"
+    authors="sidneyh"
     manager="jhubbard"
     editor=""/>
 
@@ -13,10 +13,10 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management"
-    ms.date="03/27/2016"
-    ms.author="sstein"/>
+    ms.date="04/28/2016"
+    ms.author="sidneyh"/>
 
-# PowerShell を使用したエラスティック データベース プールの作成
+# PowerShell による新しい Elastic Database プールの作成
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-elastic-pool-create-portal.md)
@@ -33,33 +33,26 @@ PowerShell コマンドレットを使った[エラスティック データベ�
 
 Azure PowerShell 1.0 以降を実行している必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
-## プールを作成する
+## 新しいプールの作成
 
-[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378.aspx) コマンドレットにより、プールが作成されます。
+プールの新規作成は、[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378.aspx) コマンドレットで行います。プールあたりの eDTU、最小 DTU、最大 DTU は、サービス レベルの値 (Basic、Standard、Premium) によって制限されます。「[エラスティック プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
 
 	New-AzureRmSqlElasticPool -ResourceGroupName "resourcegroup1" -ServerName "server1" -ElasticPoolName "elasticpool1" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 
 
 ## プールに新しいエラスティック データベースを作成する
 
-プール内に直接新しいデータベースを作成するには、[New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx) コマンドレットを使用して **ElasticPoolName** パラメーターを設定します。
-
+[New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx) コマンドレットを使用して **ElasticPoolName** パラメーターを対象のプールに設定します。既存のデータベースをプールに移動する方法については、「[エラスティック プールへのデータベースの移動](sql-database-elastic-pool-manage-powershell.md#Move-a-database-into-an-elastic-pool)」を参照してください。
 
 	New-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
+## プールを作成して複数の新しいデータベースを追加する 
 
+ポータルまたは PowerShell コマンドレットで一度に作成できるデータベースは 1 つのみであり、多数のデータベースをプールに作成しようとすると時間がかかる場合があります。新しいプールへの作成処理を自動化するには、「[CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae)」を参照してください。
 
-## スタンドアロンのデータベースをプールに移動する
+## 例: PowerShell を使用したプールの作成 
 
-プール内に既存のデータベースを移動するには、[Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433.aspx) コマンドレットを使用して **ElasticPoolName** パラメーターを設定します。
-
-	Set-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
-
-
-
-## プールを作成する (PowerShell の例)
-
-このスクリプトでは、新しいサーバーを作成します。そのため、ユーザー名とパスワードの入力を求められた場合は、(Azure の資格情報ではなく) 新しいサーバーの管理ログインと管理パスワードを入力します。
+これは、新しい Azure リソース グループと新しいサーバーを作成するスクリプトです。メッセージが表示されたら、(自分の Azure 資格情報ではなく) 新しいサーバーの管理者のユーザー名とパスワードを指定してください。
 
     $subscriptionId = '<your Azure subscription id>'
     $resourceGroupName = '<resource group name>'
@@ -85,5 +78,6 @@ Azure PowerShell 1.0 以降を実行している必要があります。詳細�
 
 - [プールを管理する](sql-database-elastic-pool-manage-powershell.md)
 - [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブを使用すると、プール内にある任意の数のデータベースに対して T-SQL スクリプトを実行できます。
+- [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md): Elastic Database のツールを使用してスケールアウトを実施します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

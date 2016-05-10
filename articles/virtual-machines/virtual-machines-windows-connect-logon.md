@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/14/2016"
+	ms.date="04/28/2016"
 	ms.author="cynthn"/>
 
 # Windows Server が実行されている Azure 仮想マシンに接続してログオンする方法 
@@ -32,7 +32,7 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 
 4. 仮想マシンのブレードで、**[接続]** をクリックします。
 
-	![VM に接続する方法を示す Azure ポータルのスクリーンショット。](./media/virtual-machines-windows-connect-logon/preview-portal-connect.png)
+	![VM に接続する方法を示す Azure ポータルのスクリーンショット。](./media/virtual-machines-windows-connect-logon/connect.png)
 
 ## 仮想マシンへのログオン
 
@@ -43,4 +43,4 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 
 接続時に問題が発生した場合は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)」を参照してください。この記事では、一般的な問題の診断と解決の手順について説明します。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

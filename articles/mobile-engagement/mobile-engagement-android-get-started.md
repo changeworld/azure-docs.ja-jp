@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="hero-article"
-	ms.date="04/08/2016"
+	ms.date="05/03/2016"
 	ms.author="piyushjo;ricksal" />
 
 # Android アプリ用 Azure Mobile Engagement の使用
@@ -36,7 +36,7 @@
 
 ## アプリを Mobile Engagement のバックエンドに接続する
 
-このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。統合に関する完全なドキュメントについては、「[Mobile Engagement Android SDK の統合](../mobile-engagement-android-sdk-overview/)」を参照してください。
+このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。統合に関する完全なドキュメントについては、「[Mobile Engagement Android SDK の統合](mobile-engagement-android-sdk-overview.md)」を参照してください。
 
 統合の例を示すために、Android Studio で基本的なアプリを作成します。
 
@@ -175,4 +175,4 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 [10]: ./media/mobile-engagement-android-get-started/copy-resources.png
 [11]: ./media/mobile-engagement-android-get-started/paste-resources.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -225,4 +225,12 @@ Web アプリのこのページでは、PowerBI JavaScript コントロール ([
 
 ![](media/iot-suite-remote-monitoring-sample-walkthrough/solutionportal_08.png)
 
-<!---HONumber=AcomDC_0309_2016-->
+
+## 次のステップ
+
+以下の TechNet ブログ投稿には、リモート監視の構成済みソリューションについての詳細情報が記載されています。
+
+- [IoT Suite - Under The Hood - Remote Monitoring (IoT スイート - 内部のしくみ - リモート監視)](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx)
+- [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices (IoT スイート - リモート監視 - ライブおよびシミュレートされたデバイスの追加)](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx)
+
+<!---HONumber=AcomDC_0504_2016-->

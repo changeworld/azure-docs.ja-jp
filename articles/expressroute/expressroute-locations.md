@@ -77,7 +77,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **MTN** | サポートされています | サポートされています | ロンドン |
 | **NEXTDC** | サポートされています | サポートされています | メルボルン、シドニー |
 | **NTT Communications** | サポートされています | サポートされています | ロンドン、大阪、東京 |
-| **[Orange](http://www.orange-business.com/)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、ワシントン DC |
+| **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、ワシントン DC |
 | **PCCW Global Limited** | サポートされています | サポートされています | 香港 |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | サポートされています | サポートされていません | シンガポール |
 | **ソフトバンク** | サポートされています | サポートされています | 大阪、東京 | 
@@ -157,4 +157,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

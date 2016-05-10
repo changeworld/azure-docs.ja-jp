@@ -18,13 +18,7 @@
 
 # Azure App Service での Node.js Web アプリの使用
 
-> [AZURE.SELECTOR]
-- [.NET](web-sites-dotnet-get-started.md)
-- [Node.JS](app-service-web-nodejs-get-started.md)
-- [Java](web-sites-java-get-started.md)
-- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
-- [Python](web-sites-python-ptvs-django-mysql.md)
+[AZURE.INCLUDE [タブ](../../includes/app-service-web-get-started-nav-tabs.md)]
 
 このチュートリアルでは、簡単な [Node.js](http://nodejs.org) アプリケーションを作成し、cmd.exe や bash などのコマンド ラインを使用して [Azure App Service](../app-service/app-service-value-prop-what-is.md) の [Web アプリ](app-service-web-overview.md)にデプロイする方法について説明します。このチュートリアルの手順は、Node.js を実行できる任意のオペレーティング システムで使用できます。
 
@@ -39,7 +33,7 @@
 
 ## 単純な Node.js Web アプリの作成とデプロイ
 
-1. 任意のコマンドライン端末を開いて、[Express generator for Yoeman](https://github.com/petecoop/generator-express) をインストールします。
+1. 任意のコマンドライン ターミナルを開いて、[Express generator for Yoeman](https://github.com/petecoop/generator-express) をインストールします。
 
         npm install -g generator-express
 
@@ -87,7 +81,7 @@
         git commit -m "<your commit message>"
         git push azure master
 
-    Express generator によって .gitignore ファイルがあらかじめ提供されているため、`git push` が node\_modules/ ディレクトリのアップロードを試みることによる帯域消費は発生しません。
+    Express ジェネレーターによって .gitignore ファイルがあらかじめ提供されているため、`git push` が node\_modules/ ディレクトリのアップロードを試みることによる帯域幅の消費は発生しません。
 
 5. 後は、ブラウザーで実稼働用の Azure アプリを起動します。
 
@@ -99,7 +93,7 @@
 
 ## Node.js Web アプリの更新
 
-App Service で実行されている Node.js Web アプリを更新するときは、デプロイするときと同様に、`git add`、`git commit`、`git push` を実行するだけです。
+App Service で実行されている Node.js Web アプリを更新するには、最初にデプロイしたときと同様に、`git add`、`git commit`、`git push` を実行します。
      
 ## App Service における Node.js アプリのデプロイ
 
@@ -109,12 +103,12 @@ Azure App Service では、Node.js アプリを実行するために [iisnode](h
 - `git push azure master` では、次のデプロイ タスクが Kudu によって自動化されます。
 
     - package.json がリポジトリのルートに存在する場合、`npm install --production` を実行します。
-    - package.json 内の起動スクリプトで指定されたアプリの起動ファイル (server.js、app.js など) を参照する Web.config を iisnode に対して生成します。
+    - package.json 内の起動スクリプト (server.js、app.js など) を参照する iisnode 用の Web.config を生成します。
     - Node-Inspector でアプリをデバッグできるよう Web.config をカスタマイズします。
     
 ## Node.js フレームワークの使用
 
-[Sails.js](http://sailsjs.org/) や [MEAN.js](http://meanjs.org/) などの広く使われている Node.js フレームワークを使用して開発したアプリは、App Service にデプロイすることができます。広く使われている Node.js フレームワークには、それぞれ独自のくせがあり、パッケージの依存関係も絶えず更新されます。しかし App Service では、stdout と stderr のログが利用できるようになっているため、アプリで起こっていることを正確に把握し、それに応じた変更を加えることができます。詳細については、「[Get stdout and stderr logs from iisnode (iisnode から stdout ログと stderr ログを取得する)](#iisnodelog)」をご覧ください。
+[Sails.js](http://sailsjs.org/) や [MEAN.js](http://meanjs.org/) などの広く使われている Node.js フレームワークを使用して開発したアプリは、App Service にデプロイすることができます。広く使われている Node.js フレームワークには、それぞれ独自のくせがあり、パッケージの依存関係も絶えず更新されます。しかし App Service では、stdout と stderr のログが利用できるようになっているため、アプリで起こっていることを正確に把握し、それに応じた変更を加えることができます。詳細については、「[iisnode から stdout ログと stderr ログを取得する](#iisnodelog)」を参照してください。
 
 以下のチュートリアルには、App Service における特定のフレームワークの使用方法がわかりやすく解説されています。
 
@@ -209,4 +203,4 @@ Node-Inspector を有効にするには、次の手順を実行します。
 - [Node.js デベロッパー センター](/develop/nodejs/)
 - [Azure App Service での Web アプリの使用](app-service-web-get-started.md)
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

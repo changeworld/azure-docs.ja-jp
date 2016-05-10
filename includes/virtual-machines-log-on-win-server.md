@@ -2,9 +2,11 @@
 
 4. **[接続]** をクリックすると、リモート デスクトップ プロトコル ファイル (.rdp ファイル) が作成され、ダウンロードされます。**[開く]** をクリックしてこのファイルを使用します。
 
-5. リモート デスクトップ ウィンドウで、**[接続]** をクリックして続行します。
+	![Screenshot of the downloaded .rdp file.](./media/virtual-machines-log-on-win-server/open-rdp.png)
 
-	![不明な発行元についての警告のスクリーンショット。](./media/virtual-machines-log-on-win-server/connectpublisher.png)
+5. .rdp の発行元が不明であることを示す警告が表示されます。問題はありません。リモート デスクトップ ウィンドウで、**[接続]** をクリックして続行します。
+
+	![Screenshot of a warning about an unknown publisher.](./media/virtual-machines-log-on-win-server/rdp-warn.png)
 
 6. Windows セキュリティ ウィンドウで、仮想マシンのアカウントの資格情報を入力し、**[OK]** をクリックします。
 
@@ -16,6 +18,6 @@
 
 7.	**[はい]** をクリックして、目的の仮想マシンであることを確認し、ログオンを完了します。
 
-	![VM の ID の検証に関するメッセージが表示されているスクリーンショット。](./media/virtual-machines-log-on-win-server/connectverify.png)
+	![VM の ID の検証に関するメッセージが表示されているスクリーンショット。](./media/virtual-machines-log-on-win-server/cert-warning.png)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

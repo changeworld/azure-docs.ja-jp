@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/20/2016"
+   ms.date="04/27/2016"
    ms.author="nitinme"/>
 
 # .NET SDK で Data Lake Store の使用を開始する
@@ -25,7 +25,7 @@
 - [Java SDK](data-lake-store-get-started-java-sdk.md)
 - [REST API](data-lake-store-get-started-rest-api.md)
 - [Azure CLI](data-lake-store-get-started-cli.md)
-- [Node.JS](data-lake-store-manage-use-nodejs.md)
+- [Node.js](data-lake-store-manage-use-nodejs.md)
 
 Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake の詳細については、[Azure Data Lake Store](data-lake-store-overview.md) に関するページを参照してください。
 
@@ -34,11 +34,17 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 * Visual Studio 2013 または 2015以下の手順では、Visual Studio 2015 を使用します。
 * **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
-* **Azure Active Directory アプリケーションを作成する**「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」を参照してください。この記事で作成した .NET コンソール アプリケーションの場合、(リンクで説明されている Web アプリケーションではなく) **ネイティブ クライアント アプリケーション**を作成する必要があります。アプリケーションの作成が完了したら、アプリケーションに関連する次の値を取得します。
-	- アプリケーションの**クライアント ID** と**リダイレクト URI** を取得します。
-	- 委任されたアクセス許可を設定する
+* **Azure Active Directory アプリケーションを作成する**Azure Active Directory を使用した認証には、**対話型**と**非対話型**の 2 とおりの方法があります。どのように認証を行うかで前提条件は異なります。
+	* **対話型の認証** (この記事で使用する認証方法) を使用する場合: Azure Active Directory で **[ネイティブ クライアント アプリケーション]** を作成する必要があります。アプリケーションの作成が完了したら、アプリケーションに関連する次の値を取得します。
+		- アプリケーションの**クライアント ID** と**リダイレクト URI** を取得します。
+		- 委任されたアクセス許可を設定する
 
-	これらの値を取得し、アクセス許可を設定する手順については、前述のリンクを参照してください。
+	* **非対話型の認証**を使用する場合: Azure Active Directory で **[Web アプリケーション]** を作成する必要があります。アプリケーションの作成が完了したら、アプリケーションに関連する次の値を取得します。
+		- アプリケーションの**クライアント ID**、**クライアント シークレット**、**リダイレクト URI** を取得します。
+		- 委任されたアクセス許可を設定する
+		- Azure Active Directory アプリケーションをロールに割り当てます。ロールは、Azure Active Directory アプリケーションにアクセス許可を付与するスコープのレベルにあります。たとえば、サブスクリプション レベルまたはリソース グループのレベルで、アプリケーションを割り当てることができます。 
+
+	これらの値を取得したりアクセス許可を設定したりロールを割り当てたりする手順については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」を参照してください。
 
 ## .NET アプリケーションの作成
 
@@ -108,7 +114,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
                     _resourceGroupName = "<RESOURCE-GROUP-NAME>"; // TODO: Replace this value. This resource group should already exist.
                     _location = "East US 2";
 
-                    string localFolderPath = @"C:\local_path"; // TODO: Make sure this exists and can be overwritten.
+                    string localFolderPath = @"C:\local_path\"; // TODO: Make sure this exists and can be overwritten.
                     string localFilePath = localFolderPath + "file.txt"; // TODO: Make sure this exists and can be overwritten.
                     string remoteFolderPath = "/data_lake_path/";
                     string remoteFilePath = remoteFolderPath + "file.txt";
@@ -128,7 +134,7 @@ Azure Active Directory を使用して認証する方法は 2 つあります。
 
 ### 対話型の認証
 
-次のスニペットは、対話型のログイン エクスペリエンスに使用できる `AuthenticateUser` の例です。
+次のスニペットは、対話型のログイン エクスペリエンスに使用できる `AuthenticateUser` メソッドの例です。
 
  	// Authenticate the user with AAD through an interactive popup.
     // You need to have an application registered with AAD in order to authenticate.
@@ -146,7 +152,7 @@ Azure Active Directory を使用して認証する方法は 2 つあります。
 
 ### 非対話型の認証
 
-次のスニペットは、非対話型のログイン エクスペリエンスに使用できる `AuthenticateApplication` の例です。
+次のスニペットは、非対話型のログイン エクスペリエンスに使用できる `AuthenticateApplication` メソッドの例です。
 
 	// Authenticate the application with AAD through the application's secret key.
 	// You need to have an application registered with AAD in order to authenticate.
@@ -288,7 +294,7 @@ Azure Active Directory を使用して認証する方法は 2 つあります。
 
 以下のコード スニペットでは、対話型と非対話型の両方のアプローチ向けにメソッドが用意されていますが、非対話型コード ブロックはコメントアウトされています。対話型メソッドでは、AAD アプリケーションのクライアント ID とリダイレクト URI を提供する必要があります。前提条件のリンクでは、これらを取得する方法について説明します。
 
->[AZURE.NOTE] 代わりにコード スニペットを変更して、非対話型 (`AuthenticateApplication`) メソッドを使用する場合は、クライアント ID とクライアント応答 URI だけでなく、メソッドへの入力としてクライアント認証キーを入力する必要もあります。「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」の記事では、 クライアント認証キーを生成し、取得する方法についても説明します。
+>[AZURE.NOTE] 代わりにコード スニペットを変更して、非対話型 (`AuthenticateApplication`) メソッドを使用する場合は、クライアント ID とクライアント応答 URI だけでなく、メソッドへの入力としてクライアント認証キーを入力する必要もあります。「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」の記事では、クライアント認証キーを生成し、取得する方法についても説明します。
 	
 最後に、ここで指定するローカル パスとファイル名は、コンピューターに存在している必要があります。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 
@@ -324,7 +330,7 @@ Azure Active Directory を使用して認証する方法は 2 つあります。
                 _resourceGroupName = "<RESOURCE-GROUP-NAME>"; // TODO: Replace this value. This resource group should already exist.
                 _location = "East US 2";
 
-                string localFolderPath = @"C:\local_path"; // TODO: Make sure this exists and can be overwritten.
+                string localFolderPath = @"C:\local_path\"; // TODO: Make sure this exists and can be overwritten.
                 string localFilePath = localFolderPath + "file.txt"; // TODO: Make sure this exists and can be overwritten.
                 string remoteFolderPath = "/data_lake_path/";
                 string remoteFilePath = remoteFolderPath + "file.txt";
@@ -520,4 +526,4 @@ Azure Active Directory を使用して認証する方法は 2 つあります。
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

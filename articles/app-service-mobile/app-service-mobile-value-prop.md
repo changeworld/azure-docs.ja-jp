@@ -3,7 +3,7 @@
 	description="App Service が企業のモバイル アプリにもたらす利点について説明します。"
 	services="app-service\mobile"
 	documentationCenter=""
-	authors="kirillg"
+	authors="adrianhall"
 	manager="dwrede"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="02/04/2016"
-	ms.author="kirillg"/>
+	ms.date="05/03/2016"
+	ms.author="adrianha"/>
 
 # <a name="getting-started"></a>Mobile Apps とは
 
@@ -102,4 +102,4 @@ Azure Mobile Apps の詳細については、[学習マップ]を確認してく
 [App Service 環境]: ../app-service-web/app-service-app-service-environment-intro.md
 [学習マップ]: https://azure.microsoft.com/ja-JP/documentation/learning-paths/appservice-mobileapps/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -240,9 +240,9 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 ## 次のステップ
 
-- [仮想デバイス](storsimple-virtual-device.md)を構成します。
+- [仮想デバイス](storsimple-virtual-device-u2.md)を構成します。
 
 - [StorSimple Manager サービス](storsimple-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

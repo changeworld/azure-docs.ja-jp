@@ -13,15 +13,15 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="04/29/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Azure Data Factory を使用してデータを読み込む
 
 > [AZURE.SELECTOR]
-- [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)
-- [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
-- [BCP](sql-data-warehouse-load-with-bcp.md)
+- [Data Factory][]
+- [PolyBase][]
+- [BCP][]
 
  このチュートリアルでは、Azure Storage BLOB から SQL Data Warehouse にデータを移動するパイプラインを Azure Data Factory で作成する方法について説明します。以降の手順では、次の操作を実行します。
 
@@ -34,25 +34,25 @@
 
 ## 開始する前に
 
-Azure Data Factory を理解するには、「[Azure Data Factory サービスの概要](../data-factory/data-factory-introduction.md)」を参照してください。
+Azure Data Factory を理解するには、「[Azure Data Factory サービスの概要][]」を参照してください。
 
 ### リソースを作成または識別する
 
 このチュートリアルを開始する前に、次のリソースを用意する必要があります。
 
-   + **Azure Storage BLOB**: このチュートリアルでは、Azure Data Factory パイプラインのデータ ソースとして Azure Storage BLOB を使用します。したがって、サンプル データを格納するためのストレージ アカウントが必要です。まだお持ちでない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account/#create-a-storage-accoun/)」を参照してください。
+   + **Azure Storage BLOB**: このチュートリアルでは、Azure Data Factory パイプラインのデータ ソースとして Azure Storage BLOB を使用します。したがって、サンプル データを格納するためのストレージ アカウントが必要です。まだお持ちでない場合は、「[ストレージ アカウントの作成][]」を参照してください。
 
-   + **SQL Data Warehouse**: このチュートリアルでは、Azure Storage BLOB から SQL Data Warehouse にデータを移動します。したがって、AdventureWorksDW サンプル データを読み込むデータ ウェアハウスをオンラインにする必要があります。データ ウェアハウスがまだない場合は、[データ ウェアハウスをプロビジョニング](sql-data-warehouse-get-started-provision.md)する方法を学習してください。データ ウェアハウスはあっても、それをサンプル データでまだプロビジョニングしていない場合は、[サンプル データを手動で読み込む](sql-data-warehouse-get-started-manually-load-samples.md)ことができます。
+   + **SQL Data Warehouse**: このチュートリアルでは、Azure Storage BLOB から SQL Data Warehouse にデータを移動します。したがって、AdventureWorksDW サンプル データを読み込むデータ ウェアハウスをオンラインにする必要があります。データ ウェアハウスがまだない場合は、[データ ウェアハウスをプロビジョニング][Create a SQL Data Warehouse]する方法を学習してください。データ ウェアハウスはあっても、それをサンプル データでまだプロビジョニングしていない場合は、[サンプル データを手動で読み込む][Load sample data into SQL Data Warehouse]ことができます。
 
-   + **Azure Data Factory**: Azure Data Factory によって実際の読み込みが実行されるので、データ移動パイプラインの作成に使用できるデータ ファクトリが必要です。まだ適切なデータ ファクトリがない場合は、「[Data Factory Editor を使用した初めての Azure Data Factory パイプラインの作成](../data-factory/data-factory-build-your-first-pipeline-using-editor.md)」の手順 1. に従って作成してください。
+   + **Azure Data Factory**: Azure Data Factory によって実際の読み込みが実行されるので、データ移動パイプラインの作成に使用できるデータ ファクトリが必要です。まだ適切なデータ ファクトリがない場合は、「[Data Factory Editor を使用した初めての Azure Data Factory パイプラインの作成][]」の手順 1. に従って作成してください。
 
-   + **AZCopy**: サンプル データをローカル クライアントから Azure Storage BLOB にコピーするには、AZCopy が必要です。インストールの手順については、[AZCopy のドキュメント](../storage/storage-use-azcopy.md)を参照してください。
+   + **AZCopy**: サンプル データをローカル クライアントから Azure Storage BLOB にコピーするには、AZCopy が必要です。インストールの手順については、[AZCopy のドキュメント][]を参照してください。
 
 ## 手順 1: サンプル データを Azure Storage BLOB にコピーする
 
 すべてのピースが揃ったら、サンプル データを Azure Storage BLOB にいつでもコピーすることができます。
 
-1. [サンプル データをダウンロードします](https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv)。このデータにより、別の 3 年分の売上データが AdventureWorksDW サンプル データに追加されます。
+1. [サンプル データをダウンロードします][]。このデータにより、別の 3 年分の売上データが AdventureWorksDW サンプル データに追加されます。
 
 2. 次の AZCopy コマンドを使用して、3 年分のデータを Azure Storage BLOB にコピーします。
 
@@ -65,7 +65,7 @@ AzCopy /Source:<Sample Data Location>  /Dest:https://<storage account>.blob.core
 
 これでデータの準備ができたので、Azure Data Factory パイプラインを作成して、データを Azure Storage BLOB から SQL Data Warehouse に移動することができます。
 
-そのためには、まず、[Azure ポータル](https://portal.azure.com/)を開き、左側のメニューで対象のデータ ファクトリを選択します。
+そのためには、まず、[Azure ポータル][]を開き、左側のメニューで対象のデータ ファクトリを選択します。
 
 ### 手順 2.1: リンクされたサービスを作成する
 
@@ -149,7 +149,7 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 
 ## 手順 3: パイプラインを作成して実行する
 
-最後に、Azure Data Factory でパイプラインを設定して実行します。これは、実際のデータの移動を実行する操作です。SQL Data Warehouse と Azure Data Factory で実行できるすべての操作については、[こちら](../data-factory/data-factory-azure-sql-data-warehouse-connector.md)を参照してください。
+最後に、Azure Data Factory でパイプラインを設定して実行します。これは、実際のデータの移動を実行する操作です。SQL Data Warehouse と Azure Data Factory で実行できるすべての操作については、[こちら][Move data to and from Azure SQL Data Warehouse using Azure Data Factory]を参照してください。
 
 [作成とデプロイ] セクションで、[その他のコマンド]、[新しいパイプライン] の順にクリックします。パイプラインを作成した後、次のコードを使用して、データ ウェアハウスにデータを転送できます。
 
@@ -205,14 +205,39 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 
 詳細については、まず以下の情報を参照してください。
 
-- [Azure Data Factory のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/data-factory/)。
-- [Azure SQL Data Warehouse コネクタ](../data-factory/data-factory-azure-sql-data-warehouse-connector.md)。これは、Azure Data Factory と Azure SQL Data Warehouse を組み合わせて使用するための主要な参照トピックとなります。
+- [Azure Data Factory のラーニング パス][]。
+- [Azure SQL Data Warehouse コネクタ][]。これは、Azure Data Factory と Azure SQL Data Warehouse を組み合わせて使用するための主要な参照トピックとなります。
 
 
 以下のトピックでは、Azure Data Factory に関する詳細情報を提供します。Azure SQL Database または HDinsight について説明しますが、この情報は Azure SQL Data Warehouse にも該当します。
 
-- [チュートリアル: 初めての Data Factory の作成 (概要)](../data-factory/data-factory-build-your-first-pipeline.md)。これは、Azure Data Factory を使用してデータを処理するための主要なチュートリアルです。このチュートリアルでは、HDInsight を使用して Web ログの変換および分析を毎月行う初めてのパイプラインを作成します。なお、このチュートリアルには、コピー アクティビティはありません。
-- [チュートリアル: Azure BLOB Storage から Azure SQL Database にデータをコピーする](../data-factory/data-factory-get-started.md)。このチュートリアルでは、Azure Data Factory でパイプラインを作成し、データを Azure Storage BLOB から Azure SQL Database にコピーします。
-- [実際のシナリオのチュートリアル](../data-factory/data-factory-tutorial.md)。これは、Azure Data Factory の使用に関する詳細なチュートリアルです。
+- [チュートリアル: 初めての Data Factory の作成][]。これは、Azure Data Factory を使用してデータを処理するための主要なチュートリアルです。このチュートリアルでは、HDInsight を使用して Web ログの変換および分析を毎月行う初めてのパイプラインを作成します。なお、このチュートリアルには、コピー アクティビティはありません。
+- [チュートリアル: Azure BLOB Storage から Azure SQL Database にデータをコピーする][]。このチュートリアルでは、Azure Data Factory でパイプラインを作成し、データを Azure Storage BLOB から Azure SQL Database にコピーします。
+- [実際のシナリオのチュートリアル][]。これは、Azure Data Factory の使用に関する詳細なチュートリアルです。
 
-<!---HONumber=AcomDC_0330_2016-->
+<!--Image references-->
+
+<!--Article references-->
+[AZCopy のドキュメント]: ../storage/storage-use-azcopy.md
+[Azure SQL Data Warehouse コネクタ]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
+[BCP]: sql-data-warehouse-load-with-bcp.md
+[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[ストレージ アカウントの作成]: ../storage/storage-create-storage-account.md#create-a-storage-account
+[Data Factory]: sql-data-warehouse-get-started-load-with-azure-data-factory.md
+[Data Factory Editor を使用した初めての Azure Data Factory パイプラインの作成]: ../data-factory/data-factory-build-your-first-pipeline-using-editor.md
+[Azure Data Factory サービスの概要]: ../data-factory/data-factory-introduction.md
+[Load sample data into SQL Data Warehouse]: sql-data-warehouse-get-started-manually-load-samples.md
+[Move data to and from Azure SQL Data Warehouse using Azure Data Factory]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
+[PolyBase]: sql-data-warehouse-get-started-load-with-polybase.md
+[実際のシナリオのチュートリアル]: ../data-factory/data-factory-tutorial.md
+[チュートリアル: Azure BLOB Storage から Azure SQL Database にデータをコピーする]: ../data-factory/data-factory-get-started
+[チュートリアル: 初めての Data Factory の作成]: ../data-factory/data-factory-build-your-first-pipeline.md
+
+<!--MSDN references-->
+
+<!--Other Web references-->
+[Azure Data Factory のラーニング パス]: https://azure.microsoft.com/documentation/learning-paths/data-factory
+[Azure ポータル]: https://portal.azure.com
+[サンプル データをダウンロードします]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
+
+<!---HONumber=AcomDC_0504_2016-->

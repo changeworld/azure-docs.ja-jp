@@ -109,6 +109,8 @@ RUL が (デモンストレーション用に選択した任意のしきい値�
 
 これで予測的なメンテナンスの構成済みソリューションを実行しましたが、これを修正する場合は、「[事前構成済みソリューションのカスタマイズに関するガイダンス][lnk-customize]」を参照してください。
 
+TechNet のブログ投稿「[IoT Suite - Under The Hood - Predictive Maintenance (IoT スイート - 内部のしくみ - 予測的なメンテナンス)](http://social.technet.microsoft.com/wiki/contents/articles/33527.iot-suite-under-the-hood-predictive-maintenance.aspx)」では、予測的なメンテナンスの構成済みソリューションについて詳しく説明されています。
+
   
 [img-architecture]: media/iot-suite-predictive-walkthrough/architecture.png
 [img-resource-group]: media/iot-suite-predictive-walkthrough/resource-group.png
@@ -124,4 +126,4 @@ RUL が (デモンストレーション用に選択した任意のしきい値�
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->
