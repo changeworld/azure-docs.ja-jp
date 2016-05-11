@@ -472,7 +472,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
     このチュートリアルで重要となる値は次のとおりです。
 
     - **metricName** - これは、wadperfcounter 変数で定義したパフォーマンス カウンターと同じです。診断拡張機能は、この変数を使用して、**Processor(\_Total)\\% Processor Time** カウンターを収集します。
-- **metricResourceUri** - 仮想マシン スケール セットのリソース識別子です。
+	- **metricResourceUri** - 仮想マシン スケール セットのリソース識別子です。
     - **timeGrain** – 収集するメトリックの粒度です。このテンプレートでは 1 分に設定しています。 
     - **statistic** – 自動スケーリング処理に対応するためのメトリックの集計方法を指定します。指定できる値は Average、Min、Max です。このテンプレートでは、スケール セットに含まれる仮想マシンの平均合計 CPU 使用率を検出しています。
     - **timeWindow** – インスタンス データを収集する時間の範囲です。5 分～ 12 時間の範囲で指定する必要があります。
@@ -561,4 +561,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	Remove-AzureRmResource -Name vmsstest1 -ResourceGroupName vmsstestrg1 -ApiVersion 2015-06-15 -ResourceType Microsoft.Compute/virtualMachineScaleSets
 
-<!---HONumber=AcomDC_0427_2016-->
+<!-----HONumber=AcomDC_0427_2016-->
