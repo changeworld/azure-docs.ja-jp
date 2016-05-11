@@ -71,7 +71,7 @@ azure-content リポジトリ内のコンテンツは、[Azure.Microsoft.com](ht
 
 作成に協力する方法、GitHub の UI を使用して軽微な変更を投稿する方法、より大規模な投稿のためにリポジトリのフォークとクローンを行う方法については、[GitHub の記事作成用ツールをインストールしてセットアップする方法](https://github.com/Azure/azure-content/blob/master/contributor-guide/tools-and-setup.md)に関するトピックをご覧ください。
 
-Git Bash をインストールしてローカルで作業する場合は、ローカルの作業ブランチを新たに作成し、変更を加え、その変更をメイン ブランチに送信する手順が、[記事の新規作成または既存の記事の更新のための Git コマンド](https://github.com/Azure/azure-content/blob/master/contributor-guide/git-commands-for-master.md))に関するトピックに記載されておりますので、ご覧ください。
+Git Bash をインストールしてローカルで作業する場合は、ローカルの作業ブランチを新たに作成し、変更を加え、その変更をメイン ブランチに送信する手順が、[記事の新規作成または既存の記事の更新のための Git コマンド](https://github.com/Azure/azure-content/blob/master/contributor-guide/git-commands-for-master.md)に関するトピックに記載されておりますので、ご覧ください。
 
 ### Branches
 
