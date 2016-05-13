@@ -57,7 +57,7 @@ Java MapReduce プログラムの開発手順については、「[HDInsight で
  
 **ワード カウント MapReduce ジョブを送信するには**
 
-1. **Windows PowerShell ISE** を開きます。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
+1. **Windows PowerShell ISE** を開きます。手順については、[Azure PowerShell のインストールおよび構成に関するページ](powershell-install-configure.md)を参照してください。
 2. 次の PowerShell スクリプトを貼り付けます。
 
 		$subscriptionName = "<Azure Subscription Name>"
