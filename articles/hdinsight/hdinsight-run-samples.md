@@ -996,5 +996,5 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 
 [streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
-
+[stdin-stdout-stderr]: https://msdn.microsoft.com/library/3x292kth.aspx
 <!----HONumber=AcomDC_0406_2016-->
