@@ -533,11 +533,11 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 	...
 	```
 
-	Note that injected script for the CSS bundle still contains the errant remnant from the `CdnFallbackExpression` property in the line:
+	CSS バンドルに対して挿入されたスクリプトには、次の行に `CdnFallbackExpression` プロパティのエラーの残りがまだ含まれている点に注意してください。
 
 		}())||document.write('<script src="/Content/css"><\/script>');</script>
 
-	But since the first part of the || expression will always return true (in the line directly above that), the document.write() function will never run.
+	ただし、(すぐ上の行の) || 式の最初の部分は常に true を返すため、document.write() 関数が実行されることはありません。
 
 6. フォールバック スクリプトが動作するかどうかをテストするには、CDN エンドポイントのブレードに戻り、**[停止]** をクリックします。
 

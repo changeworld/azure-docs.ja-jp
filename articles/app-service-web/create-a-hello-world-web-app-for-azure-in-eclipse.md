@@ -29,7 +29,7 @@
 * A Java Developer Kit (JDK) v 1.7 以降。
 * Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。
 * Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、Jetty など)。
-* Azure サブスクリプション。<https://azure.microsoft.com/ja-JP/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
+* Azure サブスクリプション。<https://azure.microsoft.com/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
 * Azure Toolkit for Eclipse。詳細については、「[Azure Toolkit for Eclipse のインストール]」を参照してください。
 
 ## Hello World アプリケーションを作成するには
@@ -90,9 +90,9 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
   1. **[リソース グループ]** ドロップダウン メニューで、Web アプリ に関連付けるリソース グループを選択します。
 
-        Note: Azure Resource Groups allow you to group related resources together so that, for example, they can be deleted together.
+        注: Azure のリソース グループを使用すると、関連リソースをグループ化できるため、まとめて削除することもできます。
 
-        You can select an existing Resource Group (if you have any) and skip to step g below, or use the following these steps to create a new Resource Group:
+        (所有している場合は) 既存のリソース グループを選択して、下記のステップ g にスキップするか、以下のステップに従って、新しいリソース グループを作成します。
 
       * **[New...]** をクリックします。
 
@@ -108,9 +108,9 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
   1. **[App Service プラン]** ドロップダウン メニューには、選択したリソース グループに関連付けられた App Service プランが表示されます。
 
-        Note: An App Service Plan specifies information such as the location of your Web App, the pricing tier and the compute instance size. A single App Service Plan can be used for multiple Web Apps, which is why it is maintained separately from a specific Web App deployment.
+        注: App Service プランでは、Web アプリの場所、価格レベル、およびコンピューティング インスタンス サイズなどの情報を指定します。単一の App Service プランを、複数の Web Apps に使用できます。そのため、App Service プランは、特定の Web アプリのデプロイとは別に保持されます。
 
-        You can select an existing App Service Plan (if you have any) and skip to step h below, or use the following these steps to create a new App Service Plan:
+        (所有している場合は) 既存の App Service プランを選択して、下記のステップ h にスキップするか、以下のステップに従って、新しい App Service プランを作成します。
 
       * **[New...]** をクリックします。
 
@@ -132,7 +132,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
   1. **[OK]** をクリックすると、新しい Web アプリ コンテナーの作成が完了します。
 
-        Wait a few seconds for the list of the Web App containers to be refreshed, and your newly-created web app container should now be selected in the list.
+        数秒待つと Web アプリ コンテナーの一覧が更新されます。一覧で新しく作成した Web アプリ コンテナーが選択されています。
 
 1. 以上で、初めて Web アプリを Azure にデプロイする処理を完了できます。
 

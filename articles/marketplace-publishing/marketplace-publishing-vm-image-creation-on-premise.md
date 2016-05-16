@@ -43,6 +43,7 @@ VHD をダウンロードするには、まず、オペレーティング シス
 
 ### VHD のダウンロード
 BLOB URL が分かったら、[Azure ポータル](http://manage.windowsazure.com/)または PowerShell を使用して VHD をダウンロードできます。
+
 > [AZURE.NOTE] このガイドの作成時点では、VHD をダウンロードするための機能は、新しい Microsoft Azure ポータルにはまだ存在していません。
 
 **現在の [Azure ポータル](http://manage.windowsazure.com/)経由でのオペレーティング システム VHD のダウンロード**

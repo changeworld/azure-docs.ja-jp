@@ -494,7 +494,7 @@ Hadoop ジョブを送信する例を次に示します。
 	$hdinsightJob = <JobDefinition>
 	Start-AzureHDInsightJob -Cluster http://localhost:50111 -Credential $creds -JobDefinition $hdinsightJob
 
-Get-Credential を呼び出すと入力画面が表示されます。ユーザー名として **hadoop** を使用する必要があります。パスワードは任意の文字列でかまいません。クラスター名は、常に ****http://localhost:50111** です。
+Get-Credential を呼び出すと入力画面が表示されます。ユーザー名として **hadoop** を使用する必要があります。パスワードは任意の文字列でかまいません。クラスター名は、常に **http://localhost:50111** です。
 
 Hadoop ジョブの送信方法の詳細については、「[プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)」に関するページをご覧ください。Azure HDInsight PowerShell コマンドレットの詳細については、「[HDInsight PowerShell コマンドレット リファレンス ドキュメント][hdinsight-powershell-reference]」をご覧ください。
 

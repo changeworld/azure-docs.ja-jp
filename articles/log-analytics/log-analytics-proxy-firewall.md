@@ -131,7 +131,7 @@ OMS と Operations Manager コンソールのリソースとポートの一覧�
 
 2. **[Operational Insights]** を展開して、**[Operational Insights の接続]** をクリックします。![Operations Manager OMS の接続](./media/log-analytics-proxy-firewall/proxy-om01.png)
 3. [OMS の接続] ビューで、**[プロキシ サーバーの構成]** をクリックします。![Operations Manager OMS の接続、プロキシ サーバーの構成](./media/log-analytics-proxy-firewall/proxy-om02.png)
-4. [Operational Insights 設定ウィザード: プロキシ サーバー] で **[Operational Insights Web サービスへのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力します (例: ****http://myproxy:80**. ![Operations Manager OMS のプロキシ アドレス](./media/log-analytics-proxy-firewall/proxy-om03.png))。
+4. [Operational Insights 設定ウィザード: プロキシ サーバー] で **[Operational Insights Web サービスへのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力します (例: **http://myproxy:80**. ![Operations Manager OMS のプロキシ アドレス](./media/log-analytics-proxy-firewall/proxy-om03.png))。
 
 
 ### プロキシ サーバーで認証が必要な場合の資格情報を指定するには

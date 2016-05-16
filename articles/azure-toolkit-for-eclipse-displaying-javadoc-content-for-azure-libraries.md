@@ -30,7 +30,7 @@ Java 用 Azure ライブラリの Javadoc コンテンツは、Javadoc コンテ
 * **[プロパティ]** をクリックします。
 * **[Properties]** ダイアログの左側のウィンドウで、**[Javadoc Location]** をクリックします。**[Javadoc Location]** ダイアログが表示されます。
 * **[Javadoc URL]** または **[Javadoc in archive]** を指定できます。
-    * **[Javadoc URL]** を指定する場合は、****http://dl.windowsazure.com/javadoc** や ****http://dl.windowsazure.com/storage/javadoc** などの URL を使用します。
+    * **[Javadoc URL]** を指定する場合は、**http://dl.windowsazure.com/javadoc** や **http://dl.windowsazure.com/storage/javadoc** などの URL を使用します。
 * **[Javadoc in archive]** を使用する場合は、外部ファイルまたはワークスペース ファイルを指定できます。選択したら、必要に応じて参照または検証します。次の例では、Java 用 Azure ライブラリを、**c:\\MyAzureJARs** という名前のローカル フォルダーにダウンロードされている対応する Javadoc JAR に関連付けています。![][ic553487]
 * *省略可能*: **[Validate]** をクリックします。Javadoc JAR に関する潜在的な問題があれば、ここに表示されます。
 * **[OK]** をクリックします。

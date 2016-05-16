@@ -120,7 +120,7 @@ CA PPM で Azure AD のシングル サインオンを構成してテストす�
 
     a.**[識別子]** ボックスに、**https://ca.ondemand.saml.20.post.\<会社名>** というパターンを使用して、ユーザーが CA PPM アプリケーションへのサインオンに使用する URL を入力します。
 	
-	b.**[応答 URL]** ボックスに、「****https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer**」と入力します
+	b.**[応答 URL]** ボックスに、「**https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer**」と入力します
 
 	c. **[次へ]** をクリックします。
  
