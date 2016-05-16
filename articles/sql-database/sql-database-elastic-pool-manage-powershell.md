@@ -13,10 +13,10 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="04/01/2016"
-    ms.author="sstein"/>
+    ms.date="04/28/2016"
+    ms.author="sidneyh"/>
 
-# PowerShell を使用したエラスティック データベース プールの監視、管理、およびサイズ設定 
+# PowerShell でのエラスティック データベース プールの監視と管理 
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-elastic-pool-manage-portal.md)
@@ -24,156 +24,170 @@
 - [C#](sql-database-elastic-pool-manage-csharp.md)
 - [T-SQL](sql-database-elastic-pool-manage-tsql.md)
 
-PowerShell コマンドレットを使用して、[エラスティック データベース プール](sql-database-elastic-pool.md)を管理する方法について説明します。
+PowerShell コマンドレットを使用して、[エラスティック データベース プール](sql-database-elastic-pool.md)を管理します。
 
 一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」をご覧ください。
 
-> [AZURE.NOTE] エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md)を 1 回の手順で実行できます。
+プールに関する値については、「[eDTU and storage limits (eDTU とストレージの制限)](sql-database-elastic-pool#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
 
-Azure PowerShell 1.0 以降を実行している必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
-
-## プールに新しいエラスティック データベースを作成する
-
-プール内に直接新しいデータベースを作成するには、[New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx) コマンドレットを使用して **ElasticPoolName** パラメーターを設定します。
+## 前提条件
+* Azure PowerShell 1.0 以降。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+* エラスティック データベース プールは、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md)を 1 回の手順で実行できます。
 
 
-	New-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
+## エラスティック プールへのデータベースの移動
 
-
-## スタンドアロンのデータベースをプールに移動する
-
-プール内に既存のデータベースを移動するには、[Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433.aspx) コマンドレットを使用して **ElasticPoolName** パラメーターを設定します。
+プールへの、またはプールからのデータベースの移動は、[Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433.aspx) で行うことができます。
 
 	Set-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
-
 ## プールのパフォーマンス設定を変更する
 
-プールのパフォーマンス設定を変更するには、[Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511.aspx) コマンドレットを使用します。
+パフォーマンスが低下したときは、成長に合わせてプールの設定を変更できます。[Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511.aspx) コマンドレットを使用します。-Dtu パラメーターにプールあたりの eDTU 数を設定します。使用可能な値については、「[eDTU and storage limits (eDTU とストレージの制限)](sql-database-elastic-pool#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
 
     Set-AzureRmSqlElasticPool –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” –Dtu 1200 –DatabaseDtuMax 100 –DatabaseDtuMin 50 
 
 
 ## プール操作の状態を取得する
 
-[Get-AzureRmSqlElasticPoolActivity](https://msdn.microsoft.com/library/azure/mt603812.aspx) コマンドレットを使用して、作成や更新など、プール操作の状態を追跡できます。
+プールの作成には時間がかかることがあります。作成や更新など、プール操作の状態を追跡するには、[Get-AzureRmSqlElasticPoolActivity](https://msdn.microsoft.com/library/azure/mt603812.aspx) コマンドレットを使用します。
 
 	Get-AzureRmSqlElasticPoolActivity –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” 
 
 
 ## エラスティック データベースをプールに出し入れする際の状態を取得する
 
-[Get-AzureRmSqlDatabaseActivity](https://msdn.microsoft.com/library/azure/mt603687.aspx) コマンドレットを使用して、作成や更新など、エラスティック データベース操作の状態を追跡できます。
+データベースの移動には時間がかかることがあります。移動の状態を追跡するには、[Get-AzureRmSqlDatabaseActivity](https://msdn.microsoft.com/library/azure/mt603687.aspx) コマンドレットを使用します。
 
 	Get-AzureRmSqlDatabaseActivity -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
 
-## プールの使用状況データを取得する
+## プールのリソース使用状況データを取得する
 
 リソース プールの制限値のパーセンテージとして取得できるメトリックを以下に示します。
 
-* 平均 CPU 使用率 - cpu\_percent 
-* 平均 IO 使用率 - data\_io\_percent 
-* 平均 Log 使用率 - log\_write\_percent 
-* 平均メモリ使用率 - memory\_percent 
-* 平均 eDTU 使用率 (CPU、IO、Log 使用率の最大値として) - DTU\_percent 
-* 同時ユーザー リクエストの最大数 (ワーカー) - max\_concurrent\_requests 
-* 同時ユーザー セッションの最大数 - max\_concurrent\_sessions 
-* エラスティック プールの合計ストレージ容量 - storage\_in\_megabytes 
 
+| メトリックの名前 | 説明 |
+| :-- | :-- |
+| cpu\_percent | プールの限度に対する割合で表した平均コンピューティング使用率。 |
+| physical\_data\_read\_percent | プールの限度に対する割合で表した平均 I/O 使用率。 |
+| log\_write\_percent | プールの限度に対する割合で表した平均書き込みリソース使用率。 | 
+| DTU\_consumption\_percent | プールの eDTU 限度に対する割合で表した平均 eDTU 使用率。 | 
+| storage\_percent | プールのストレージ限度に対する割合で表した平均ストレージ使用率。 |  
+| workers\_percent | プールの限度に対する割合で表した最大同時実行ワーカー (要求) 数。 |  
+| sessions\_percent | プールの限度に対する割合で表した最大同時実行セッション数。 | 
+| eDTU\_limit | この期間中のこのエラスティック プールに対する現在の最大エラスティック プール DTU 設定。 |
+| storage\_limit | この期間中のこのエラスティック プールに対する現在の最大エラスティック プール ストレージ制限 (メガバイト単位)。 |
+| eDTU\_used | この期間にプールによって使用された平均 eDTU 数。 |
+| storage\_used | この期間にプールによって使用された平均ストレージ (バイト単位)。 |
 
-メトリックの単位と保有期間を以下に示します。
+**メトリックの単位と保有期間を以下に示します。**
 
 * 5 分間隔でデータが返されます。  
 * データは 14 日間保持されます。  
 
-
 このコマンドレットと API で 1 度の呼び出しで取得できる行数が 1000 行 (5 分間隔で 3 日分のデータ) に制限されます。ただし、このコマンドは何度も呼び出すことができ、より多くのデータを取得するためにさまざまな開始から終了までの間隔で指定できます。
 
+メトリックを取得するには:
 
-次のメトリックを取得します。
+	$metrics = (Get-AzureRmMetric -ResourceId /subscriptions/<subscriptionId>/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/elasticPools/franchisepool -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015")  
 
-	$metrics = (Get-Metrics -ResourceId /subscriptions/<subscriptionId>/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/elasticPools/franchisepool -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015") 
 
-呼び出しを繰り返し、次のようなデータを追加することで日数を追加できます。
-
-	$metrics = $metrics + (Get-Metrics -ResourceId /subscriptions/<subscriptionId>/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/elasticPools/franchisepool -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/21/2015" -EndTime "4/24/2015") 
- 
-テーブルの書式を設定します。
-
-    $table = Format-MetricsAsTable $metrics 
-
-CSV ファイルにエクスポートします。
-
-    foreach($e in $table) { Export-csv -Path c:\temp\metrics.csv -input $e -Append -NoTypeInformation} 
-
-## エラスティック データベースのリソース消費メトリックの取得
+## エラスティック データベースのリソース使用状況データを取得する
 
 これらの API は、次のセマンティックな相違点を除き、スタンドアロン データベースのリソース使用率の監視に使用する現在の (V12) API と同じです。
 
-* この API では、取得されたメトリックが、プールに設定されている databaseDtuMax (または CPU、IO など、基盤となるメトリックに関してこれと同等の役割を果たす上限) に対するパーセンテージで表示されます。たとえば、これらのメトリックのうちのいずれかの使用率が 50% であることは、特定のリソースの消費量が、親となるプールでそのリソースに対して設けられている DB の上限の 50% であることを示しています。 
+この API では、取得されたメトリックが、プールに設定されている最大 eDTU 数 (または CPU、IO など、基盤となるメトリックに関してこれと同等の役割を果たす上限) に対するパーセンテージで表示されます。たとえば、これらのメトリックのうちのいずれかの使用率が 50% であることは、特定のリソースの消費量が、親となるプールでそのリソースに対して設けられているデータベースの上限の 50% であることを示しています。
 
-メトリックを取得します。
+メトリックを取得するには:
 
-    $metrics = (Get-Metrics -ResourceId /subscriptions/<subscriptionId>/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/databases/myDB -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015") 
+    $metrics = (Get-AzureRmMetric -ResourceId /subscriptions/<subscriptionId>/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/databases/myDB -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015") 
 
-呼び出しを繰り返し、次のようなデータを追加することで、必要に応じて日数を追加できます。
+## 例: プールとそのデータベースのリソース消費メトリックを取得する
 
-    $metrics = $metrics + (Get-Metrics -ResourceId /subscriptions/<subscriptionId>/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/databases/myDB -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/21/2015" -EndTime "4/24/2015") 
+この例では、特定のエラスティック プールとそのすべてのデータベースの消費メトリックを取得します。収集されたデータは書式設定されて .csv 形式のファイルに書き込まれます。ファイルは Excel で表示できます。
 
-テーブルの書式を設定します。
+	$subscriptionId = '<Azure subscription id>'	      # Azure subscription ID
+	$resourceGroupName = '<resource group name>'             # Resource Group
+	$serverName = <server name>                              # server name
+	$poolName = <elastic pool name>                          # pool name
+		
+	# Login to Azure account and select the subscription.
+	Login-AzureRmAccount
+	Set-AzureRmContext -SubscriptionId $subscriptionId
+	
+	# Get resource usage metrics for an elastic pool for the specified time interval.
+	$startTime = '4/27/2016 00:00:00'  # start time in UTC
+	$endTime = '4/27/2016 01:00:00'    # end time in UTC
+	
+	# Construct the pool resource ID and retrive pool metrics at 5 minute granularity.
+	$poolResourceId = '/subscriptions/' + $subscriptionId + '/resourceGroups/' + $resourceGroupName + '/providers/Microsoft.Sql/servers/' + $serverName + '/elasticPools/' + $poolName
+	$poolMetrics = (Get-AzureRmMetric -ResourceId $poolResourceId -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime $startTime -EndTime $endTime) 
+	
+	# Get the list of databases in this pool.
+	$dbList = Get-AzureRmSqlElasticPoolDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -ElasticPoolName $poolName
+	
+	# Get resource usage metrics for a database in an elastic database for the specified time interval.
+	$dbMetrics = @()
+	foreach ($db in $dbList)
+	{
+	    $dbResourceId = '/subscriptions/' + $subscriptionId + '/resourceGroups/' + $resourceGroupName + '/providers/Microsoft.Sql/servers/' + $serverName + '/databases/' + $db.DatabaseName
+	    $dbMetrics = $dbMetrics + (Get-AzureRmMetric -ResourceId $dbResourceId -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime $startTime -EndTime $endTime)
+	}
+	
+	#Optionally you can format the metrics and output as .csv file using the following script block.
+	$command = {
+    param($metricList, $outputFile)
 
-    $table = Format-MetricsAsTable $metrics 
+    # Format metrics into a table.
+    $table = @()
+    foreach($metric in $metricList) { 
+      foreach($metricValue in $metric.MetricValues) {
+        $sx = New-Object PSObject -Property @{
+            Timestamp = $metricValue.Timestamp.ToString()
+            MetricName = $metric.Name; 
+            Average = $metricValue.Average;
+            ResourceID = $metric.ResourceId 
+          }
+          $table = $table += $sx
+      }
+    }
+    
+    # Output the metrics into a .csv file.
+    write-output $table | Export-csv -Path $outputFile -Append -NoTypeInformation
+	}
+	
+	# Format and output pool metrics
+	Invoke-Command -ScriptBlock $command -ArgumentList $poolMetrics,c:\temp\poolmetrics.csv
+	
+	# Format and output database metrics
+	Invoke-Command -ScriptBlock $command -ArgumentList $dbMetrics,c:\temp\dbmetrics.csv
 
-CSV ファイルにエクスポートします。
-
-    foreach($e in $table) { Export-csv -Path c:\temp\metrics.csv -input $e -Append -NoTypeInformation}
 
 
 ## エラスティック プール操作の待機時間
 
-- 通常、データベースあたりに保証される eDTU (DatabaseDtuMin) またはデータベースあたりの最大 eDTU (DatabaseDtuMax) の変更は、5 分以内で完了します。
-- プールの eDTU や記憶域の上限 (Dtu) の変更は、プール内のすべてのデータベースで使用される領域の合計に依存します。変更の平均時間は、100 GB あたり 90 分以下です。たとえば、プール内のすべてのデータベースで使用される領域の合計が 200 GB の場合、プールの eDTU や記憶域上限の変更にかかる想定待機時間は、3 時間以下になります。
+- 通常、データベースあたりの最小 eDTU またはデータベースあたりの最大 eDTU の変更は、5 分以内で完了します。
+- プールあたりの eDTU の変更は、プール内のすべてのデータベースで使用される領域の合計に依存します。変更の平均時間は、100 GB あたり 90 分以下です。たとえば、プール内のすべてのデータベースで使用される領域の合計が 200 GB の場合、プールあたりの eDTU の変更にかかる想定待機時間は、3 時間以下になります。
+
+## V11 から V12 サーバーに移行する
+
+PowerShell コマンドレットを使用して、V11 を含め、V12 より前のバージョンから V12 への Azure SQL Database のアップグレードを開始、停止、監視できます。
+
+- [PowerShell を使用し、SQL Database V12 にアップグレードします](sql-database-upgrade-server-powershell.md)
+
+これらの PowerShell コマンドレットについては、次のリファレンス ドキュメントを参照してください。
 
 
-## プールを監視し、管理する (PowerShell の例)
+- [Get-AzureRMSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603582.aspx)
+- [Start-AzureRMSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt619403.aspx)
+- [Stop-AzureRMSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603589.aspx)
 
 
-    $subscriptionId = '<Azure subscription id>'
-    $resourceGroupName = '<resource group name>'
-    $location = '<datacenter location>'
-    $serverName = '<server name>'
-    $poolName = '<pool name>'
-    $databaseName = '<database name>'
-    
-    Login-AzureRmAccount
-    Set-AzureRmContext -SubscriptionId $subscriptionId
-    
-    
-    Set-AzureRmSqlElasticPool –ResourceGroupName $resourceGroupName –ServerName $serverName –ElasticPoolName $poolName –Dtu 1200 –DatabaseDtuMax 100 –DatabaseDtuMin 50 
-    
-    $poolResourceId = '/subscriptions/' + $subscriptionId + '/resourceGroups/' + $resourceGroupName + '/providers/Microsoft.Sql/servers/' + $serverName + '/elasticPools/' + $poolName
-    $dbResourceId = '/subscriptions/' + $subscriptionId + '/resourceGroups/' + $resourceGroupName + '/providers/Microsoft.Sql/servers/' + $serverName + '/databases/' + $databaseName 
-    $startTime1 = '2/10/2016'
-    $endTime1 = '2/14/2016'
-    $startTime2 = '2/14/2016'
-    $endTime2 = '2/18/2016'
-    
-    
-    
-    $metrics = (Get-Metrics -ResourceId $poolResourceId -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime $startTime1 -EndTime $endTime1) 
-    $metrics
-    
-    $metrics = $metrics + (Get-Metrics -ResourceId $poolResourceId -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime $startTime2 -EndTime $endTime2)
-    $table = Format-MetricsAsTable $metrics
-    foreach($e in $table) { Export-csv -Path c:\temp\metrics.csv -input $e -Append -NoTypeInformation}
-    
-    $metrics = (Get-Metrics -ResourceId $dbResourceId -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime $startTime1 -EndTime $endTime1) 
-    $metrics = $metrics + (Get-Metrics -ResourceId $dbResourceId -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime $startTime2 -EndTime $endTime2)
-    $table = Format-MetricsAsTable $metrics
-    foreach($e in $table) { Export-csv -Path c:\temp\metrics.csv -input $e -Append -NoTypeInformation}
+Stop- コマンドレットは、一時停止ではなく取り消しを意味します。アップグレードを再開する方法は、最初からやり直す方法以外にありません。Stop- コマンドレットにより、該当するすべてのリソースがクリーンアップされ、解放されます。
 
 ## 次のステップ
 
 - [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブを使用すると、プール内にある任意の数のデータベースに対して T-SQL スクリプトを実行できます。
+- エラスティック データベース ツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

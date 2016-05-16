@@ -5,7 +5,7 @@
 	documentationCenter=".net" 
 	authors="tdykstra" 
 	manager="wpickett" 
-	editor="jimbe"/>
+	editor=""/>
 
 <tags 
 	ms.service="app-service" 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="01/08/2016" 
+	ms.date="04/28/2016" 
 	ms.author="tdykstra"/>
 
 # Visual Studio を使用した Azure App Service のトラブルシューティング
 
 ## 概要
 
-Visual Studio のツールを活用し、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) で実行されている Web アプリを[デバッグ モード](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
+Visual Studio のツールを活用し、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の Web アプリを[デバッグ モード](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -41,17 +41,17 @@ Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](http:
 
 このチュートリアルで示すコード サンプルは、C# MVC Web アプリケーションに対応していますが、トラブルシューティング手順は Visual Basic および Web フォームの各アプリケーションでも同じです。
 
-リモート デバッグには、Visual Studio 2013 または Visual Studio 2012 Update 4 が必要です。Web ジョブ用のリモート デバッグ機能と**サーバー エクスプローラー**機能の使用には、[Visual Studio 2013 Update 4](http://go.microsoft.com/fwlink/?LinkID=510314) 以降が必要です。このチュートリアルで取り上げるその他の機能も Visual Studio 2013 Express for Web および Visual Studio 2012 Express for Web で動作します。
+このチュートリアルは、Visual Studio 2015 または 2013 の使用を前提としています。Visual Studio 2013 を使用している場合、[Update 4](http://go.microsoft.com/fwlink/?LinkID=510314) 以降が Web ジョブ機能の前提条件です。
 
 ストリーミング ログ機能は、.NET Framework 4 以降を対象とするアプリケーションでのみ動作します。
 
 ## <a name="sitemanagement"></a>Web アプリの構成と管理
 
-Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で利用できる Web アプリ管理機能や構成設定に一部アクセスできるようになっています。このセクションでは、その対象となる機能や設定について取り上げます。
+Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で利用できる Web アプリ管理機能や構成設定に一部アクセスできるようになっています。このセクションでは、**サーバー エクスプローラー**を使用することで、その対象となる機能や設定について取り上げます。最新の Azure の統合機能を確認するために、**Cloud Explorer** もお試しください。どちらのウィンドウも **[表示]** メニューから開くことができます。
 
 1. まだ Visual Studio から Azure にサインインしていない場合は、**サーバー エクスプローラー** の **[Azure に接続]** をクリックします。
 
-	または、アカウントへのアクセスを可能にする管理証明書をインストールします。証明書をインストールする方針を選択した場合は、**サーバー エクスプローラー**で、**Azure** ノードを右クリックし、コンテキスト メニューの **[サブスクリプションの管理]** をクリックします。**[Azure サブスクリプションの管理]** ダイアログ ボックスで、**[証明書]** タブをクリックし、**[インポート]** をクリックします。操作手順に従い、Azure アカウント用のサブスクリプション ファイル (*.publishsettings* ファイル) をダウンロードしてインポートします。
+	または、アカウントへのアクセスを可能にする管理証明書をインストールします。証明書をインストールする方針を選択した場合は、**サーバー エクスプローラー**で、**Azure** ノードを右クリックし、コンテキスト メニューの **[サブスクリプションの管理およびフィルター]** をクリックします。**[Azure サブスクリプションの管理]** ダイアログ ボックスで、**[証明書]** タブをクリックし、**[インポート]** をクリックします。操作手順に従い、Azure アカウント用のサブスクリプション ファイル (*.publishsettings* ファイル) をダウンロードしてインポートします。
 
 	> [AZURE.NOTE]
 	サブスクリプション ファイルをダウンロードする場合は、ソース コード ディレクトリの外にあるフォルダー (Downloads フォルダーなど) に保存し、インポートが完了したらそのファイルを削除します。悪意のあるユーザーがサブスクリプション ファイルへのアクセス許可を取得すると、Azure サービスを編集、作成、削除できるためです。
@@ -72,7 +72,7 @@ Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=
    
 	このウィンドウの [アプリケーション設定] ボックスと [接続文字列] ボックスについては、[Azure Web Apps: アプリケーション文字列と接続文字列の動作](http://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx)に関するページを参照してください。
 
-	このウィンドウでは実行できない Web アプリ管理タスクを実行する場合は、**[管理ポータルで開く]** をクリックすると、ブラウザー ウィンドウを開いて Azure クラシック ポータルにアクセスできます。詳細については、「[Web Apps の構成方法](/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig)」を参照してください。
+	このウィンドウでは実行できない Web アプリ管理タスクを行う場合は、**[管理ポータルで開く]** をクリックし、ブラウザー ウィンドウを開いて Azure ポータルにアクセスします。
 
 ## <a name="remoteview"></a>サーバー エクスプローラーでの Web アプリ ファイルへのアクセス
 
@@ -149,31 +149,13 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 4. デプロイが完了し、ブラウザーが起動して Web アプリケーションの Azure URL が表示されたら、ブラウザーを閉じます。
 
-5. Visual Studio 2013 の場合: **サーバー エクスプローラー**で、Web アプリを右クリックしてから **[デバッガーの接続]** をクリックします。
+5. **サーバー エクスプローラー**で、Web アプリを右クリックしてから **[デバッガーの接続]** をクリックします。
 
 	![デバッガーの接続](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
 
 	ブラウザーが自動的に起動し、Azure で実行されているホーム ページが表示されます。デバッグに必要な設定を Azure がサーバーに対して行う間、20 秒ほどの待ち時間が生じることがあります。この待ち時間が生じるのは、Web アプリケーションでのデバッグ モードの初回実行時に限られます。以後 48 時間は、デバッグを再度実行しても、待ち時間は生じません。
 
-6. Visual Studio 2012 Update 4 以降の場合:<a id="vs2012"></a>
-
-	* Azure クラシック ポータルで、Web アプリの **[設定] > [アプリケーション設定]** に移動し、下へスクロールして **[デバッグ]** セクションを表示します。
-
-	* **[リモート デバッグ]** を **[オン]** に設定し、**[リモート デバッグに使用する Visual Studio のバージョン]** を **[2012]** に設定します。
-
-	* Visual Studio の **[デバッグ]** メニューで **[プロセスにアタッチ]** をクリックします。
-
-	* **[修飾子]** ボックスに Web アプリの URL を入力します。プレフィックス `http://` は付けずに入力してください。
-
-	* **[すべてのユーザーからのプロセスを表示する]** を選択します。
-
-	* 資格情報を求められたら、Web アプリケーションにコンテンツをデプロイする権限のあるユーザー名とパスワードを入力します。これらの資格情報を入手するには、クラシック ポータルで Web アプリの [ダッシュボード] タブに移動し、**[発行プロファイルのダウンロード]** をクリックします。そのファイルをテキスト エディターで開くと、1 つ目の **userName=** と **userPWD=** の後に、ユーザー名とパスワードが表示されます。
-
-	* **[選択可能なプロセス]** テーブルにプロセスが表示されたら、**[w3wp.exe]** を選択し、**[アタッチ]** をクリックします。
-
-	* ブラウザーを開き、Web アプリケーションの URL に移動します。
-
-	デバッグに必要な設定を Azure がサーバーに対して行う間、20 秒ほどの待ち時間が生じることがあります。この待ち時間が生じるのは、Web アプリケーションでのデバッグ モードの初回実行時に限られます。以後 48 時間は、デバッグを再度実行しても、待ち時間は生じません。
+	**注:** デバッガーの起動時に問題がある場合、**サーバー エクスプローラー**ではなく**クラウド エクスプローラー**を使用して起動してみてください。
 
 6. メニューの **[About]** をクリックします。
 
@@ -195,7 +177,11 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 ## <a name="remotedebugwj"></a> Web ジョブのリモート デバッグ
 
-このセクションでは、「[Azure Web ジョブ SDK の使用](websites-dotnet-webjobs-sdk.md)」で作成したプロジェクトと Web アプリを使用してリモートでデバッグする方法を示します。このセクションで示す機能は、Visual Studio 2013 Update 4 以降でのみ使用できます。リモート デバッグは、継続的な Web ジョブでのみ動作します。スケジュールされたオンデマンドの Web ジョブでは、デバッグはサポートされていません。
+このセクションでは、「[Azure Web ジョブ SDK の使用](websites-dotnet-webjobs-sdk.md)」で作成したプロジェクトと Web アプリを使用してリモートでデバッグする方法を示します。
+
+このセクションで示す機能は、Visual Studio 2013 Update 4 以降でのみ使用できます。
+
+リモート デバッグは、継続的な Web ジョブでのみ動作します。スケジュールされたオンデマンドの Web ジョブでは、デバッグはサポートされていません。
 
 1. 「[Azure Web ジョブ SDK の使用][GetStartedWJ]」で作成した Web プロジェクトを開きます。
 
@@ -299,49 +285,36 @@ Web ジョブでアプリケーション ログを作成する方法について
 
 ### アプリケーションへのトレース ステートメントの追加
 
-1. *Controllers\\HomeController.cs* ファイルを開き、その内容を次のコードで置き換えて、`System.Diagnostics` の `Trace` ステートメントと `using` ステートメントを追加します。
+1. `System.Diagnostics` の `Trace` ステートメントと `using` ステートメントを追加するために、*Controllers\\HomeController.cs* を開き、`Index`、`About`、`Contact` のメソッドを次のコードで置き換えます。
 
-		using System;
-		using System.Collections.Generic;
-		using System.Configuration;
-		using System.Diagnostics;
-		using System.Linq;
-		using System.Web;
-		using System.Web.Configuration;
-		using System.Web.Mvc;
-		namespace MyExample.Controllers
+		public ActionResult Index()
 		{
-		    public class HomeController : Controller
-		    {
-		        public ActionResult Index()
-		        {
-		            Trace.WriteLine("Entering Index method");
-		            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-		            Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
-		            Trace.WriteLine("Leaving Index method");
-		            return View();
-		        }
-		
-		        public ActionResult About()
-		        {
-		            Trace.WriteLine("Entering About method");
-		            ViewBag.Message = "Your app description page.";
-		            Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
-		            Trace.WriteLine("Leaving About method");
-		            return View();
-		        }
-		
-		        public ActionResult Contact()
-		        {
-		            Trace.WriteLine("Entering Contact method");
-		            ViewBag.Message = "Your contact page.";
-		            Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
-		            Trace.WriteLine("Leaving Contact method");
-		            return View();
-		        }
-		    }
+		    Trace.WriteLine("Entering Index method");
+		    ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+		    Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
+		    Trace.WriteLine("Leaving Index method");
+		    return View();
 		}
 		
+		public ActionResult About()
+		{
+		    Trace.WriteLine("Entering About method");
+		    ViewBag.Message = "Your app description page.";
+		    Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
+		    Trace.WriteLine("Leaving About method");
+		    return View();
+		}
+		
+		public ActionResult Contact()
+		{
+		    Trace.WriteLine("Entering Contact method");
+		    ViewBag.Message = "Your contact page.";
+		    Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
+		    Trace.WriteLine("Leaving Contact method");
+		    return View();
+		}		
+
+2. `using System.Diagnostics;` ステートメントをファイルの先頭に追加します。
 				
 ### ローカルでのトレース出力の表示
 
@@ -476,9 +449,9 @@ Web サーバーのログには、Web アプリケーション上の HTTP アク
 	![出力ウィンドウの Web サーバーのログ](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-wslogs.png)
 
 
-Visual Studio で Web サーバーのログを初めて有効にしたとき、既定では、Azure によってファイル システムにログが書き込まれます。代わりに、クラシック ポータルを使用して、Web サーバーのログの書き込み先として、ストレージ アカウントの BLOB コンテナーを指定することもできます。詳細については、「**How to Configure Web Sites (Web サイトの構成方法)**」の[サイトの診断](/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig)に関するセクションを参照してください。
+Visual Studio で Web サーバーのログを初めて有効にしたとき、既定では、Azure によってファイル システムにログが書き込まれます。代わりに、Azure ポータルを使用して、Web サーバーのログの書き込み先として、ストレージ アカウントの BLOB コンテナーを指定することもできます。
 
-クラシック ポータルを使用して、Azure ストレージ アカウントへの Web サーバーのログ記録を有効にした後、Visual Studio でログ記録を無効にした場合、Visual Studio でログ記録を再度有効にすると、ストレージ アカウントの設定が復元されます。
+Azure ポータルを使用して、Azure ストレージ アカウントへの Web サーバーのログ記録を有効にした後、Visual Studio でログ記録を無効にした場合、Visual Studio でログ記録を再度有効にすると、ストレージ アカウントの設定が復元されます。
 
 ## <a name="detailederrorlogs"></a>詳細なエラー メッセージ ログの表示
 
@@ -639,7 +612,7 @@ Azure の Web アプリでは、同じ失敗した要求トレース機能が使
 
 2. Visual Studio で、**[Azure Web アプリ]** ウィンドウの **[構成]** タブにある **[管理ポータルで開く]** をクリックします。
 
-3. Web アプリの Azure ポータル (https://portal.azure.com) ブレードで、**[設定]、[デプロイ資格情報]** の順にクリックし、新しいユーザー名とパスワードを入力します。
+3. Web アプリの [[Azure ポータル]](https://portal.azure.com) の **[設定]** ブレードで **[デプロイ資格情報]** をクリックし、新しいユーザー名とパスワードを入力します。
 
 	![新しい FTP ユーザー名とパスワード](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png)
 
@@ -751,15 +724,8 @@ Web サーバーのログの分析の詳細については、次のリソース�
 
 失敗した要求トレース ログの活用方法については、Microsoft TechNet Web サイトの「[Using Failed Request Tracing (失敗した要求トレースの使用)](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing)」セクションなどが参考になります。ただし、このドキュメントで扱う内容は、失敗した要求トレースを IIS で構成する作業が主体です。この作業を Azure Web Apps で行うことはできません。
 
-### Cloud Services のデバッグ
-
-Web アプリではなく Azure Cloud Services をデバッグする場合は、「[Cloud Services のデバッグ](http://msdn.microsoft.com/library/windowsazure/ee405479.aspx)」を参照してください。
-
-## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-
 [GetStarted]: web-sites-dotnet-get-started.md
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

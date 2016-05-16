@@ -15,69 +15,83 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/03/2016"
+   ms.date="05/02/2016"
    ms.author="litran"/>
 
 
 # PowerApps Enterprise で新しい SQL Server API を作成する
 
-組織の (テナント) App Service 環境に SQL Server API を追加します。
+> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> 
+> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページをご覧ください。  
+> - PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事をご覧ください。 
 
-## Azure ポータルでの API の作成
+<!--Archived
+Add the SQL Server API to your organization's (tenant) app service environment. 
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。 
-2. タスク バーの **[参照]** をクリックします。![][14]  
-3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。![][15]  
-4. **[PowerApps]** で、**[API の管理]** を選択します。
-5. **[API の管理]** で、**[追加]** をクリックして新しい API を追加します。
-6. API のわかりやすい**名前**を入力します。たとえば、デモ用に SQL Server API を追加する場合は、*SQLServerDemo* といった名前を付けます。  	
-7. **[ソース]** で、**[利用可能な API]** を選択して既成の API を選択し、**[SQL Server]** を選択します。 
-8. **[OK]** をクリックして、手順を完了します。
+## Create the API in the Azure portal
 
-完了すると、App Service 環境に新しい SQL Server API が追加されます。
+1. In the [Azure portal](https://portal.azure.com/), sign-in with your work account. For example, sign-in with *yourUserName*@*YourCompany*.com. When you do this, you are automatically signed in to your company subscription. 
+2. Select **Browse** in the task bar:  
+![][14]  
+3. In the list, you can scroll to find PowerApps or type in *powerapps*:  
+![][15]  
+4. In **PowerApps**, select **Manage APIs**.
+5. In **Manage APIs**, select **Add** to add the new API.
+6. Enter a descriptive **name** for your API. For example, you're adding the SQL Server API for demo, you can name it *SQLServerDemo*.  	
+7. In **Source**, select **Available APIs** to select the pre-built APIs, and select **SQL Server**. 
+8. Select **OK** to complete the steps.
 
-## オンプレミスの SQL Server に対する接続の構成
+When finished, a new SQL Server API is added to your app service environment.
 
-オンプレミスの SQL Server に接続できます。このハイブリッド接続を確立するには、Azure に既に存在する次のようなハイブリッド ネットワーキング ソリューションを利用します。
+## Configure connectivity to SQL Server on-premises
+
+You can connect to SQL Server on-premises. To establish this hybrid connectivity, you can leverage existing hybrid networking solutions in Azure, including:
 
 - [ExpressRoute](../expressroute/expressroute-introduction.md)
-- [サイト間 VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
-- [ポイント対サイト接続](../vpn-gateway/vpn-gateway-point-to-site-create.md)  
+- [Site-to-site VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+- [Point-to-site connectivity](../vpn-gateway/vpn-gateway-point-to-site-create.md)  
 
-	> [AZURE.NOTE]  すべての App Service 環境には仮想ネットワークが関連付けられています。この仮想ネットワークに対してこのネットワーク接続を確立できます。  
-- [ハイブリッド接続](../app-service-web/web-sites-hybrid-connection-get-started.md)  
+	> [AZURE.NOTE]  Every app service environment has a virtual  network associated with it. You can establish this network connectivity to this virtual network.  
+- [Hybrid connections](../app-service-web/web-sites-hybrid-connection-get-started.md)  
 
-	> [AZURE.NOTE]  App Service 環境内のすべての登録済み API には、対応する Web アプリがあります。他の Web アプリの場合と同様に、この Web アプリからのハイブリッド接続を確立できます。
+	> [AZURE.NOTE]  Every registered API in your app service environment has a corresponding web app. You can establish hybrid connections from this web app just like you can from any other web app.
 	
-次の例では、ハイブリッド接続を作成する方法を示します。
+The following example shows how to create a hybrid connection:  
 
-1. 作成した SQL Server API を選択し、リソース グループを選択します。この例では、*sqlconnectordemo* という名前の API と、*DedicatedAses* リソース グループを選択します。 ![リソース グループ](./media/powerapps-create-api-sqlserver/sqlapi.png)
+1. Select the SQL Server API you just created and select the Resource group. In this example, select the API called *sqlconnectordemo*, and select the *DedicatedAses* Resource Group:  
+![Resource group](./media/powerapps-create-api-sqlserver/sqlapi.png)
 
-2.  **[リソース]** タイルを選択し、SQL Server API と同じ名前の Web アプリを選択します。この例では、*sqlconnectordemo* を選択します。 ![SQL Web アプリ](./media/powerapps-create-api-sqlserver/sqlwebapp.png)
+2.  Select the **Resources** tile, and then select the web app with the same name as your SQL Server API. In this example, select *sqlconnectordemo*:  
+![Sql Web app](./media/powerapps-create-api-sqlserver/sqlwebapp.png)
 
-3.  **[設定]** で、**[ネットワーク]** を選択します。**[ハイブリッド接続エンドポイントを構成する]** を選択し、[こちらの説明](../app-service-web/web-sites-hybrid-connection-get-started.md)に従ってハイブリッド接続を作成します。 ![ネットワーク](./media/powerapps-create-api-sqlserver/network.png)
+3.  In **Settings**, select **Networking**. Select **Configure your hybrid connection endpoints**, and then follow [these instructions](../app-service-web/web-sites-hybrid-connection-get-started.md) to create the hybrid connection:  
+![Networking](./media/powerapps-create-api-sqlserver/network.png)
 
-ハイブリッド接続を作成して接続すると、オンプレミスのサーバーに接続できるようになります。次に、データへの接続を作成し、ユーザーがアクセスできるようにします。 ![ハイブリッド接続](./media/powerapps-create-api-sqlserver/hybridconn.png)
+Once your hybrid connection is created and connected, you have enabled the connection to your on-premises server. Next, create the connection to your data and give users access:  
+![Hybrid connection](./media/powerapps-create-api-sqlserver/hybridconn.png)
 
-## SQL Server API への接続の作成
+## Create connection for SQL Server API
 
-1. Azure ポータルで、PowerApps を開き、**[API の管理]** を選択します。構成されている API の一覧が表示されます。 ![](./media/powerapps-create-api-sqlserver/apilist.png)
+1. In the Azure portal, open PowerApps, and select **Manage APIs**. A list of the configured APIs is displayed:  
+  ![](./media/powerapps-create-api-sqlserver/apilist.png)
 
-2. 目的の API を選択します。この例では、**SQLServerDemo** を選択し、**[接続]** を選択します。
+2. Select the API you want. In this example, select **SQLServerDemo**, and select **Connections**. 
 
-3. [接続] で **[追加]** を選択します。 ![](./media/powerapps-create-api-sqlserver/addconnection.png)
+3. In Connections, select **Add connection**:  
+![](./media/powerapps-create-api-sqlserver/addconnection.png)
 
-4. 接続の名前と、接続文字列を入力します。接続文字列を入力するには、接続しているサービスに関するいくつかの特定のプロパティを知っている必要があります。たとえば、オンプレミスの SQL Server に正常に接続するには、ユーザー名、パスワード、その他のプロパティが必要です。
+4. Enter a name for the connection and enter the connection string. Entering the connection string requires you to know some specific properties about the service you're connecting to. For example, if you're connecting to on-premises SQL Server, then you need to know the username, password, and other properties required to successfully make the connection. 
 
-5. **[追加]** を選択して変更を保存します。
+5. Select **Add** to save your changes.
 
-## まとめと次のステップ
-このトピックでは、オンプレミスの SQL Server に接続するための SQL Server API を追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
+## Summary and next steps
+In this topic, you added the SQL Server API to connect to SQL Server on-premises. Next, give users access to the API so it can be added to their apps: 
 
-[接続を追加し、ユーザーにアクセスを許可する](powerapps-manage-api-connection-user-access.md)
-
+[Add a connection and give users access](powerapps-manage-api-connection-user-access.md)
+-->
 
 [14]: ./media/powerapps-create-api-sqlserver/browseall.png
 [15]: ./media/powerapps-create-api-sqlserver/allresources.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

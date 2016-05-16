@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/02/2016"
+	ms.date="04/26/2016"
 	ms.author="dastrock"/>
 
 # Microsoft アカウント ユーザーおよび Azure AD ユーザーによる単一アプリでのサインイン
@@ -22,10 +22,14 @@
 
 v2.0 エンドポイントを使うアプリは、どちらの種類のアカウントを使用していても、[Microsoft Graph](https://graph.microsoft.io) や [Office 365](https://msdn.microsoft.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) の REST API を使用できます。
 
-## Getting Started (概要)
-次の中からプラットフォームを選択し、Microsoft のオープン ソース ライブラリとフレームワークを利用してアプリを構築します。または、OAuth 2.0 と OpenID Connect のプロトコル ドキュメントを使用し、認証ライブラリを使用せずに直接プロトコル メッセージを送受信することもできます。
-<!-- TODO: Finalize this table  -->
+<!-- For a quick introduction to the v2.0 endpoint, please view the [Getting Started with Microsoft Identities: Enterprise Grade Sign In For Your Apps](https://azure.microsoft.com/documentation/videos/build-2016-getting-started-with-microsoft-identities-enterprise-grade-sign-in-for-your-apps/) video. -->
 
+## Getting Started (概要)
+[AZURE.VIDEO build-2016-getting-started-with-microsoft-identities-enterprise-grade-sign-in-for-your-apps]
+
+次の中からプラットフォームを選択し、Microsoft のオープン ソース ライブラリとフレームワークを利用してアプリを構築します。または、OAuth 2.0 と OpenID Connect のプロトコル ドキュメントを使用し、認証ライブラリを使用せずに直接プロトコル メッセージを送受信することもできます。
+
+<!-- TODO: Finalize this table  -->
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-v2-quickstart-table.md)]
 
 ## 新機能
@@ -57,4 +61,4 @@ v2.0 エンドポイントを使うアプリは、どちらの種類のアカウ
   - [Android OAuth2 クライアント](https://github.com/wuman/android-oauth-client)
   - [Android OpenID Connect クライアント](https://github.com/kalemontes/OIDCAndroidLib)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

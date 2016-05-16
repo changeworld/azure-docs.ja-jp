@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="02/04/2016" 
+	ms.date="05/03/2016" 
 	ms.author="jeffstok"/>
 
 #Stream Analytics ジョブでの入力と出力のログイン資格情報の交換
@@ -123,7 +123,11 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 4.	パート 5 に進みます。  
 
 ##パート 5: 以前の資格情報セットの削除
-このパートは、次の入力/出力を対象とします。* BLOB ストレージ * イベント ハブ * SQL Database * テーブル ストレージ
+このパートは、次の入力/出力に適用できます。
+* BLOB ストレージ
+* Event Hubs
+* SQL Database
+* テーブル ストレージ
 
 ###BLOB ストレージとテーブル ストレージ
 ジョブで以前に使用されていたアクセス キーに対してパート 1 を繰り返し、現在未使用のアクセス キーを更新します。
@@ -196,4 +200,4 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

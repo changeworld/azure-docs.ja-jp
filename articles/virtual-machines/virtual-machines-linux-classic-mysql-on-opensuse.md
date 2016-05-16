@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="04/29/2016"
 	ms.author="cynthn"/>
 
 # Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール
@@ -41,4 +41,4 @@ MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参�
 [MySQLDocs]: http://dev.mysql.com/doc/index-topic.html
 [MySQL]: http://www.mysql.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

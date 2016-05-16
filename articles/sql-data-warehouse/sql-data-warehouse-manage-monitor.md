@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/14/2016"
+   ms.date="05/03/2016"
    ms.author="sonyama;barbkess;sahajs"/>
 
 # DMV を利用してワークロードを監視する
@@ -39,7 +39,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed';
 -- Monitor running queries
 SELECT * FROM sys.dm_pdw_exec_requests WHERE status = 'Running';
 
--- Find the 10 longest running queries
+-- Find 10 queries which ran the longest
 SELECT TOP 10 * FROM sys.dm_pdw_exec_requests ORDER BY total_elapsed_time DESC;
 ```
 
@@ -143,15 +143,15 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 ```
 
 ## 次のステップ
-Transact-SQL と動的管理ビュー (DMV) の詳細については、[参照先の概要][]に関するページを参照してください。また、SQL Data Warehouse の管理のヒントについては、[管理の概要][]に関するページを参照してください。
+動的管理ビュー (DMV) の詳細については、「[システム ビュー][]」を参照してください。SQL Data Warehouse の管理に関するヒントについては、「[SQL Data Warehouse の管理ツール][]」を参照してください。ベスト プラクティスについては、「[SQL Data Warehouse Best Practices (SQL Data Warehouse ベスト プラクティス)][]」を参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[管理の概要]: sql-data-warehouse-overview-manage.md
-[table design]: sql-data-warehouse-develop-table-design.md
-[参照先の概要]: sql-data-warehouse-overview-reference.md
 [manage data skew for distributed tables]: sql-data-warehouse-manage-distributed-data-skew.md
+[SQL Data Warehouse の管理ツール]: sql-data-warehouse-overview-manage.md
+[SQL Data Warehouse Best Practices (SQL Data Warehouse ベスト プラクティス)]: sql-data-warehouse-best-practices.md
+[システム ビュー]: sql-data-warehouse-reference-tsql-system-views.md
 
 <!--MSDN references-->
 [sys.dm\_pdw\_dms\_workers]: http://msdn.microsoft.com/library/mt203878.aspx
@@ -162,4 +162,4 @@ Transact-SQL と動的管理ビュー (DMV) の詳細については、[参照�
 [DBCC PDW\_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
 [DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

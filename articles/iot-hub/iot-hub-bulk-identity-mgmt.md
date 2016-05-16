@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="02/03/2016"
+ ms.date="04/29/2016"
  ms.author="dobett"/>
 
 # IoT Hub デバイス ID の一括管理
@@ -77,7 +77,7 @@ while(true)
 
 *  エクスポート データから認証キーを除外するかどうかを示す*ブール*。**false** の場合は、認証キーがエクスポート出力に含められます。true の場合、キーは **null** としてエクスポートされます。
 
-次の C# コード スニペットでは、エクスポート ジョブを開始し、ジョブの完了をポーリングする方法を示します。
+次の C# コード スニペットは、エクスポート データにデバイスの認証キーを含むエクスポート ジョブを開始し、ポーリングを実行して完了する方法を示します。
 
 ```
 // Call an export job on the IoT Hub to retrieve all devices
@@ -131,7 +131,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 ## デバイスのインポート
 
-**RegistryManager** クラスの **ImportDevicesAsync** メソッドを使用すると、IoT Hub デバイス レジストリの一括インポートおよび同期化操作を実行することができます。**ExportDevicesAsync** メソッドと同様に、**ImportDevicesAsync** メソッドでもジョブ フレームワークを使用します。
+**RegistryManager** クラスの **ImportDevicesAsync** メソッドを使用すると、IoT Hub デバイス レジストリの一括インポートおよび同期化操作を実行することができます。**ExportDevicesAsync** メソッドと同様に、**ImportDevicesAsync** メソッドでも**ジョブ** フレームワークを使用します。
 
 **ImportDevicesAsync** メソッドを使用する場合は注意が必要です。このメソッドでは、デバイス ID レジストリ内に新しいデバイスをプロビジョニングするほか、既存のデバイスを更新および削除する可能性もあるからです。
 
@@ -139,13 +139,13 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 **ImportDevicesAsync** メソッドには、次の 2 つのパラメーターが必要です。
 
-*  [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB コンテナーの URI を、ジョブへの*入力*として格納する*文字列*。この URI には、コンテナーに対する読み取りアクセスを付与する SAS トークンを含める必要があります。このコンテナーには、デバイス ID レジストリにインポートするシリアル化されたデバイス データが入っている **devices.txt** という名前の BLOB を含める必要があります。インポート データには、**ExportImportDevice** ジョブの場合と同じ JSON 形式でデバイス情報を含める必要があります。これは、SAS トークンには、次のアクセス許可を含める必要があります。
+*  [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB コンテナーの URI を、ジョブへの*入力*として格納する*文字列*。この URI には、コンテナーに対する読み取りアクセスを付与する SAS トークンを含める必要があります。このコンテナーには、デバイス ID レジストリにインポートするシリアル化されたデバイス データが入っている **devices.txt** という名前の BLOB を含める必要があります。インポート データには、**ExportImportDevice** ジョブが **devices.txt** BLOBを作製する時に使用するのと同じ JSON 形式でデバイス情報を含める必要があります。SAS トークンには、次のアクセス許可を含める必要があります。
 
     ```
     SharedAccessBlobPermissions.Read
     ```
 
-*  [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB コンテナーの URI を、ジョブからの*出力*として格納する*文字列*。ジョブは、このコンテナー内にブロック BLOB を作成して、完了したインポート **ジョブ**から返されたエラー情報を格納します。SAS トークンには、次のアクセス許可を含める必要があります。
+*  [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB コンテナーの URI を、ジョブからの*出力*として格納する*文字列*。ジョブは、このコンテナー内にブロック BLOB を作成して、完了したインポート **ジョブ**からのエラー情報を格納します。SAS トークンには、次のアクセス許可を含める必要があります。
     
     ```
     SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
@@ -169,7 +169,7 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 -   新しいデバイス認証キーの一括割り当て
 -   デバイス認証キーの一括自動再生成
 
-上記の操作の任意の組み合わせを、1 回の **ImportDevicesAsync** 呼び出しで実行できます。たとえば、新しいデバイスの登録と、既存のデバイスの削除または更新とを同時に行うことができます。**ExportDevicesAsync** メソッドと一緒に使用すると、すべてのデバイスを IoT Hub 間で完全に移行できます。
+上記の操作の任意の組み合わせを1 回の **ImportDevicesAsync** 呼び出しで実行できます。たとえば、新しいデバイスの登録と、既存のデバイスの削除または更新とを同時に行うことができます。**ExportDevicesAsync** メソッドと一緒に使用すると、すべてのデバイスを一つの IoT Hub から別の IoT Hub へ完全に移行できます。
 
 デバイスごとにインポート プロセスを制御するには、デバイスごとのインポート シリアル化データにオプションの **importMode** プロパティを使用します。**importMode** プロパティには、次のオプションが用意されています。
 
@@ -183,7 +183,7 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 | **delete** | 指定した **ID** を持つデバイスが既に存在する場合、そのデバイスは **ETag** 値に関係なく削除されます。<br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 |
 | **deleteIfMatchETag** | 指定した **ID** を持つデバイスが既に存在する場合、そのデバイスは **ETag** 値が一致した場合に限り削除されます。該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。<br/>ETag 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 |
 
-> [AZURE.NOTE] シリアル化データで、デバイスの **importMode** フラグが明示的に定義されていない場合、インポート操作中、既定値では **createOrUpdate** が使用されます。
+> [AZURE.NOTE] シリアル化データが、デバイスの **importMode** フラグを明確に定義していない場合、インポート操作中に**createOrUpdate** が既定値に設定されます。
 
 ## デバイスのインポートの例 – デバイスの一括プロビジョニング 
 
@@ -338,4 +338,4 @@ static string GetContainerSasUri(CloudBlobContainer container)
 - [IoT Hub usage metrics (IoT Hub の使用状況に関するメトリック)](iot-hub-metrics.md)
 - [IoT Hub 操作の監視](iot-hub-operations-monitoring.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

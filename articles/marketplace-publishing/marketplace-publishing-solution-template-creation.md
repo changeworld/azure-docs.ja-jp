@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="02/06/2016"
+      ms.date="04/29/2016"
       ms.author="hascipio; v-divte" />
 
 # Azure Marketplace 向けソリューション テンプレートの作成ガイド
@@ -58,13 +58,13 @@ zip ファイルをアップロードしたら、**[証明書の要求]** をク
 
 - VM 拡張機能: [VM エージェントと VM 拡張機能の概要](https://msdn.microsoft.com/library/azure/dn832621.aspx)および[Azure VM 拡張機能とその機能](https://msdn.microsoft.com/library/azure/dn606311.aspx)
 
-- Azure リソースマネージャー: [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates/)および[単純な ARM テンプレートの例](https://github.com/rjmax/ArmExamples)
+- Azure リソースマネージャー: [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)および[単純な ARM テンプレートの例](https://github.com/rjmax/ArmExamples)
 
 - ストレージ アカウントのスロットル: [ストレージ アカウントのスロットルの監視方法](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx)および[Premium Storage](../storage/storage-premium-storage.md#scalability-and-performance-targets-whja-JPing-premium-storage)
 
 [img-pubportal-menu-sol-templ]: media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
 [img-pubportal-sol-templ-new]: media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png
-[link-acct-creation]: marketplace-publishing-microsoft-accounts-creation-registration.md
+[link-acct-creation]: marketplace-publishing-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -2,7 +2,7 @@
 	pageTitle="PowerShell を使用してエラスティック データベース ジョブを作成して管理する" 
 	description="Azure SQL Database プールを管理するために使用するPowerShell" 
 	services="sql-database" documentationCenter=""  
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="ddove"/>
 
 <tags 
@@ -11,13 +11,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/02/2016" 
+	ms.date="05/03/2016" 
 	ms.author="ddove;sidneyh" />
 
 # PowerShell を使用した SQL Database のエラスティック データベース ジョブの作成と管理 (プレビュー)
 
 > [AZURE.SELECTOR]
-- [Azure Classic Portal](sql-database-elastic-jobs-create-and-manage.md)
+- [Azure クラシック ポータル](sql-database-elastic-jobs-create-and-manage.md)
 - [PowerShell](sql-database-elastic-jobs-powershell.md)
 
 
@@ -694,4 +694,4 @@ DACPAC の作成については、[データ層アプリケーション](https:/
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

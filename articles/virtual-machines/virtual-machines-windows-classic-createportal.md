@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/15/2016"
+	ms.date="04/29/2016"
 	ms.author="cynthn"/>
 
 # Windows を実行するカスタム仮想マシンの作成
@@ -30,4 +30,4 @@
 
 クラシック ポータルを使用して、[Linux を実行するカスタム仮想マシンを作成](virtual-machines-linux-classic-createportal.md)することもできます
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

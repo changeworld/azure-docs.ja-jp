@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="04/30/2016"
 	ms.author="markusvi"/>
 
 
@@ -46,9 +46,9 @@
 ## アクセス パネルへのアクセス
 
 
-アクセス パネルにアクセスするには、Web ブラウザーで次の URL にアクセスします。<br> ****http://myapps.microsoft.com**
+アクセス パネルにアクセスするには、Web ブラウザーで次の URL にアクセスします。<br> **http://myapps.microsoft.com**
 
-カスタム ブランドをサインイン ページ用に構成している場合は、次のように URL の末尾に組織のドメインを追加することで、このブランドを既定で読み込むことができます。<br> ****http://myapps.microsoft.com/contosobuild.com**
+カスタム ブランドをサインイン ページ用に構成している場合は、次のように URL の末尾に組織のドメインを追加することで、このブランドを既定で読み込むことができます。<br> **http://myapps.microsoft.com/contosobuild.com**
 
 この場合は、次のスクリーン ショットに示すように、Microsoft Azure 管理ポータルのディレクトリの ［ドメイン］ タブで構成されている、アクティブまたは確認済みのドメイン名を使用できます。
 
@@ -130,7 +130,7 @@ Azure 管理者がディレクトリのアカウントを使用して Microsoft 
 
 1. Azure ポータルまたはアクセス パネルの右上隅にあるユーザー メニューをクリックして、[サインアウト] を選択します。これで、Azure AD からサインアウトされます。
 
-2. アクセス パネル (****http://myapps.microsoft.com**) にサインインします。
+2. アクセス パネル (**http://myapps.microsoft.com**) にサインインします。
 
 3. サインイン ページで、テストするディレクトリのアカウントのユーザー名とパスワードを入力します。
  
@@ -185,4 +185,4 @@ Microsoft Azure 管理ポータルでアプリケーションのシングル サ
 [3]: ./media/active-directory-saas-access-panel-introduction/ic767168.png
 [4]: ./media/active-directory-saas-access-panel-introduction/ic767169.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

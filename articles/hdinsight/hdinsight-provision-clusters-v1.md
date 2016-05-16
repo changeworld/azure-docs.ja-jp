@@ -13,16 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="01/28/2016"
+   ms.date="04/28/2016"
    ms.author="jgao"/>
 
 #Provision Hadoop clusters in HDInsight (HDInsight での Hadoop クラスターのプロビジョニング)
 
 HDInsight クラスターのプロビジョニングを計画する方法について説明します。
 
-> [AZURE.WARNING] このドキュメントの手順では、Azure クラシック ポータルのほかに、以前のバージョンの Azure PowerShell と Azure CLI を使用します。これらの手順を使用しないことをお勧めします。代わりに、Azure ポータルおよび最新バージョンの Azure PowerShell と Azure CLI を使用してください。Azure ポータルおよび最新バージョンの Azure PowerShell と Azure CLI を使用するバージョンのこのドキュメントについては、[HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)に関する記事を参照してください。
+> [AZURE.IMPORTANT] このドキュメントの手順では、Azure クラシック ポータルを使用します。新しいサービスを作成する際は、クラシック ポータルを使用しないことをお勧めします。Azure ポータルの利点の詳細については、「[Microsoft Azure ポータル](https://azure.microsoft.com/features/azure-portal/)」をご覧ください。
 >
-> Azure ポータルの利点の詳細については、「[Microsoft Azure ポータル](https://azure.microsoft.com/features/azure-portal/)」を参照してください。
+> このドキュメントでは、Azure PowerShell と Azure CLI の使用方法についても説明します。ここで示すスニペットは、Azure サービス管理 (ASM) を使用して HDInsight で機能するコマンドに基づいていますが、これらのコマンドは__推奨されていません__。これらのコマンドは、2017 年 1 月 1 日までに削除される予定です。
+>
+>Azure Resource Manager (ARM) を使用する PowerShell および Azure CLI のスニペットと共に、Azure ポータルを使用するこのドキュメントのバージョンについては、[HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)に関する記事をご覧ください。
 
 **前提条件:**
 
@@ -444,7 +446,7 @@ Azure アカウント資格情報の入力を求められます。
 
 HDInsight クラスターをプロビジョニングするもう 1 つの方法は、Azure CLI を使用する方法です。Azure CLI は Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。
 
-Azure CLI の使い方に関する一般的なガイドについては、[Azure CLI](../xplat-cli-install.md) に関するページを参照してください。
+Azure CLI の使用方法に関する一般的なガイドについては、[Azure CLI](../xplat-cli-install.md) に関するページをご覧ください。
 
 ここでは、Azure CLI を Linux および Windows にインストールする手順と、コマンド ラインを使用してクラスターをプロビジョニングする手順について説明します。
 
@@ -709,7 +711,6 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 		using Microsoft.Azure.Common.Authentication.Models;
 		using Microsoft.Azure.Management.HDInsight;
 		using Microsoft.Azure.Management.HDInsight.Models;
-		using Microsoft.Azure.Management.Resources;
 
 		namespace CreateHDICluster
 		{
@@ -723,7 +724,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 		        private const string NewClusterName = "<HDINSIGHT CLUSTER NAME>";
 		        private const int NewClusterNumNodes = <NUMBER OF NODES>;
 		        private const string NewClusterLocation = "<LOCATION>";  // Must match the Azure Storage account location
-		        private const HDInsightClusterType NewClusterType = HDInsightClusterType.Hadoop;
+                private const string NewClusterType = "Hadoop";
 		        private const OSType NewClusterOSType = OSType.Windows;
 		        private const string NewClusterVersion = "3.2";
 
@@ -814,4 +815,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

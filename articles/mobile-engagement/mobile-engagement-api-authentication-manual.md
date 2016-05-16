@@ -13,14 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.workload="mobile" 
-	ms.date="03/11/2016"
+	ms.date="05/03/2016"
 	ms.author="piyushjo"/>
 
 # Mobile Engagement REST API を使用した認証 - 手動の設定
 
 これは、「[Azure Mobile Engagement - 認証への API の使用](mobile-engagement-api-authentication.md)」の付録のドキュメントです。このドキュメントを先に読み、内容を把握してください。このドキュメントでは、Azure ポータルを使用して Mobile Engagement REST API の認証を設定するために 1 回限りの設定を行う代替の方法について説明します。
 
->[AZURE.NOTE] 以下の手順はこの [Active Directory ガイド](../resource-group-create-service-principal-portal/)に基づいており、Mobile Engagement API の認証に必要なものに対応してカスタマイズしています。そのため、以下の手順を詳しく理解したい場合は、このガイドを参照してください。
+>[AZURE.NOTE] 以下の手順はこの [Active Directory ガイド](../resource-group-create-service-principal-portal.md)に基づいており、Mobile Engagement API の認証に必要なものに対応してカスタマイズしています。そのため、以下の手順を詳しく理解したい場合は、このガイドを参照してください。
 
 1. [従来のポータル](https://manage.windowsazure.com/)によって Azure アカウントにログインします。
 
@@ -144,4 +144,4 @@
 [20]: ./media/mobile-engagement-api-authentication-manual/add-user-select.png
 [21]: ./media/mobile-engagement-api-authentication-manual/add-access-final.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0504_2016-->

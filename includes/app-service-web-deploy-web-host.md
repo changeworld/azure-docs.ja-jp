@@ -1,18 +1,18 @@
 ### App Service プラン
 
-Web アプリをホストするためのサービス プランを作成します。**hostingPlanName** パラメーターに、プランの名前を指定します。プランの場所は、Web アプリで使用される場所と同じになります。価格レベルとワーカー サイズを **sku** パラメーター と **workerSize** パラメーターに指定します。
+Web アプリをホストするためのサービス プランを作成します。**hostingPlanName** パラメーターに、プランの名前を指定します。プランの場所は、リソース グループに使用される場所と同じになります。価格レベルとワーカー サイズを **sku** パラメーター と **workerSize** パラメーターに指定します。
 
     {
-      "apiVersion": "2014-06-01",
+      "apiVersion": "2015-08-01",
       "name": "[parameters('hostingPlanName')]",
       "type": "Microsoft.Web/serverfarms",
-      "location": "[parameters('siteLocation')]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "[parameters('sku')]",
+        "capacity": "[parameters('workerSize')]"
+      },
       "properties": {
-        "name": "[parameters('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "numberOfWorkers": 1
+        "name": "[parameters('hostingPlanName')]"
       }
     },
 
-<!---HONumber=AcomDC_1203_2015-->

@@ -14,47 +14,61 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/02/2016"
+   ms.date="05/02/2016"
    ms.author="guayan"/>
 
 # Azure Active Directory ドメイン上のバックエンド リソースに接続するために API を構成する
-Azure Active Directory (AAD) 上にドメインを作成するユーザーが増えているため、バックエンド リソースも、そのような AAD ドメインに追加されつつあります。これらのバックエンド リソースに接続できるように、API を作成し構成することができます。
 
-#### 開始のための前提条件
+> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> 
+> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページをご覧ください。  
+> - PowerApps のカスタム API の詳細については、「[What are Custom APIs (カスタム API とは)](https://powerapps.microsoft.com/tutorials/register-custom-api/)」をご覧ください。 
 
-- [PowerApps Enterprise](powerapps-get-started-azure-portal.md) にサインアップします。
-- [アプリ サービス環境](powerapps-get-started-azure-portal.md)を作成します。
-- [Azure PowerShell][11] 1.0 プレビュー以上をインストールする。
-- [アプリ サービス環境](powerapps-register-api-hosted-in-app-service.md)に API を登録する。
+<!--Archived
+As more users are creating domains on Azure Active Directory (AAD), backend resources are also being added to these AAD domains. You can create and configure APIs to connect to these backend resources. 
 
-## 手順 1: Active Directory アプリケーションを作成し、アクセス許可を付与する
+#### Prerequisites to get started
 
-AAD ドメイン上のバックエンド システムにアクセスするには、AAD アプリケーションを作成し、既存のバックエンド (AAD アプリケーションでもある) への適切なアクセス許可を付与します。手順:
+- Sign up for [PowerApps Enterprise](powerapps-get-started-azure-portal.md).
+- Create an [app service environment](powerapps-get-started-azure-portal.md).
+- Install [Azure PowerShell][11] 1.0 Preview or above.
+- Register an API in your [app service environment](powerapps-register-api-hosted-in-app-service.md).
 
-1. [Azure クラシック ポータル][13] で、目的の Azure Active Directory テナントに進み、テナント (またはディレクトリ) を開き、**[アプリケーション]** タブをクリックします。![][14]
-2. 下部にある **[追加]** ボタンをクリックします。次の操作を行います。  
+## Step 1: Create an Active Directory application and give it permissions
 
-	a) **[組織で開発中のアプリケーションを追加]** を選択します。b) アプリケーションの名前を入力し、**[Web アプリケーションや Web API]** を選択します。c) **[サインオン URL]** と **[アプリケーション ID/URI]** で、AAD 内の一意の URL と、組織にとって意味のある URL を入力します。たとえば、http://powerappssignon.contoso.com または http://powerappsappid.contoso.com を入力できます。組織の AAD ドメイン内の URL を使用することをお勧めします。URL は識別子として使用され、存在する上で必要な要件はありません。入力した URL は誰からも参照されません。HTTP または HTTPS を入力することができます。
+To access the backend system on an AAD domain, create an AAD application, and give it the proper permissions to your existing backend (which is also an AAD application). Steps:
 
-3. 新しく作成した AAD アプリケーション ページで、**[構成]** タブに移動します。![][15]
-4. **[キー]** セクションで、ドロップダウン リストを使用して期間を選択します。キーが表示されるのは、**[保存]** を選択した後です。![][16]
-5. **[シングル サインオン]** で、``https://<your App Service Environment name>.azure-apim.net:456/redirect`` を **応答 URL** として追加します。
-6. **[他のアプリケーションに対するアクセス許可]** で次の操作を行います。  
+1. In the [Azure classic portal][13], go to your Azure Active Directory, open your tenant (or directory), and select the **applications** tab:  
+![][14]
+2. Select the **Add** button at the bottom. Then:  
 
-	1. **[アプリケーションの追加]** をクリックします。ポップアップ ウィンドウで、既存のバックエンドをセキュリティで保護する AAD アプリケーションを選択します。![][17]  
+	a) Choose **Add an application my organization is developing**.  
+	b) Enter a name for your application and select **Web application and/or web API**.  
+	c) In **Sign-on URL** and **App ID URI**, enter unique URLs within your AAD and URLs that make sense to your organization. For example, you can enter http://powerappssignon.contoso.com or http://powerappsappid.contoso.com.  We recommend using a URL within your organization's AAD domain. The URLs are used as identifiers and there is no requirement that they need to exist. No one is going to browse the URLs you enter. You can enter HTTP or HTTPS.  
 
-	2. ドロップダウン リストを使用して、アクセス許可を追加します。![][18]
+3. In the newly created AAD application page, go to the **Configure** tab:  
+![][15]
+4. In the **keys** section, use the drop-down list to select a duration. Note that the key displays after you select **Save**:  
+![][16]
+5. In **single sign-on**, add ``https://<your App Service Environment name>.azure-apim.net:456/redirect`` as a **reply URL**.
+6. In **permissions to other applications**:  
 
-7. 下部にある **[保存]** を選択します。
-8. **[クライアント ID]** と **[キー]** をコピーし、保存します。Azure ポータルを閉じると、キーは二度と表示されません。 
+	1. Select **Add application**. In the pop-up window, choose the AAD application securing your existing backend:  
+	![][17]  
 
-AAD アプリケーションの詳細については、「[Azure Active Directory とアプリケーションの統合](../active-directory/active-directory-integrating-applications.md)」を参照してください。
+	2. Use the drop-down list to add the permissions:  
+	![][18]
 
-## 手順 2: Azure PowerShell を使用して API を構成する
+7. Select **Save** at the bottom. 
+8. Copy the **client ID** and **key** and store them. The key isn't shown again after you close Azure portal. 
 
-この時点で、API に必要な構成を初期化することは Azure ポータルでサポートされていません。Azure ポータルで API を構成するには、次の Auzre PowerShell スクリプトを使用します。
+See [Integrating Applications with Azure Active Directory](../active-directory/active-directory-integrating-applications.md) to learn more about  AAD applications. 
 
-> [AZURE.TIP] Azure PowerShell をインストール、構成、および実行する方法については、「[Azure PowerShell のインストールおよび構成の方法][11]」を参照してください。次のスクリプトは、Azure PowerShell 1.0 プレビュー以上で機能します。
+## Step 2: Configure your API using Azure PowerShell
+
+At this point, there isn't any Azure portal support to initialize the configuration needed for your API. To configure the API in the Azure portal, use the following Auzre PowerShell script: 
+
+> [AZURE.TIP] To learn how to install, configure, and run Azure PowerShell, see [How to install and configure Azure PowerShell][11]. The following script works with Azure PowerShell 1.0 preview or above.
 
 ```powershell
 # get the API resource
@@ -85,16 +99,17 @@ Add-Member -InputObject $api.Properties -MemberType NoteProperty -Name Connectio
 New-AzureRmResource -Location $api.Location -ResourceId $api.ResourceId -Properties $api.Properties
 ```
 
-接続パラメーター名 **token** は重要ですので**注意**してください。Camel ケースである限り、独自の名前を選択できます。この名前は後で、バックエンド コードまたは API ポリシーの中で使用することになります。
+**Notice** that the **token** connection parameter name is important. You can pick your own name as long as it's camel case. You'll use this name later in your backend code or API policy.
 
-次に、[Azure ポータル][19]に移動し、API の **[全般]** 設定ブレードに進みます。追加の構成オプションを確認してください。![][21]
+Next, go to [Azure portal][19], and go to the **General** settings blade of your API. You should see the additional configuration options:  
+![][21]
 
 
-## 実際に使ってみる
+## Try it out
 
-PowerApps でアプリを開きます。**[利用できる接続]** に、新しい API が一覧表示されます。**[接続]** を選択すると、AAD サインイン ウィンドウが表示されます。組織の AAD アカウントの詳細を入力して、接続を作成します。
+Open an app in PowerApps. In **Available connections**, your new API is listed. When you select **Connect**, it displays an AAD sign-in window. Enter your organization's AAD account details and your connection is created.
 
-この接続を使用してアプリから API をランタイム呼び出しすると、バックエンドは次の [Base64 エンコード][20]形式の **x-ms-apim-tokens** HTTP ヘッダーでユーザーの AAD トークンを受信します。
+Now when a runtime call is made from your app to the API using this connection, your backend receives the user's AAD token in the **x-ms-apim-tokens** HTTP header in the following [Base64 encoding][20] format:  
 
 ```json
 {
@@ -105,13 +120,13 @@ PowerApps でアプリを開きます。**[利用できる接続]** に、新し
 }
 ```
 
-プロパティ名 **token** が、設定を構成するときに使用する接続パラメーター名と一致することに**注目**してください。
+**Notice** that the property name **token** matches the connection parameter name you use when configuring the setting.
 
-必要に応じて、バックエンド コードで **AccessToken** プロパティから、AAD トークンを取得して使用することができます。トークンはアプリ サービス環境によって自動的に更新されます。
+Your backend code can then get the AAD token from the **AccessToken** property and use it, if needed. The app service environment automatically refreshes the token.
 
-## API ポリシーの構成
+## Configure the API policy
 
-オプションとして、API ポリシーを使用して、AAD トークンを標準の HTTP **Authorization** ヘッダーに設定することもできます。このように、バックエンド コードで AAD トークンを使用する必要がある場合は、カスタム HTTP ヘッダーを検索するのでなく標準的な方法で AAD トークンを取得し、Base64 デコードを実行することができます。これを行うには、Azure ポータルに移動し、API の **[ポリシー]** ブレードに移動して、次のポリシーを設定します。
+Optionally, you can also use API policy to set the AAD token into the standard HTTP **Authorization** header. This way, if your backend code needs to use the AAD token, you can get it in a standard way rather than looking into a custom HTTP header and perform Base64 decoding. To do this, go to the Azure portal, go to the **Policy** blade of your API, and set the following policy:  
 
 ```xml
 <policies>
@@ -134,16 +149,16 @@ PowerApps でアプリを開きます。**[利用できる接続]** に、新し
 </policies>
 ```
 
-このポリシーを見ると、基本的に、このポリシーでは **x-ms-apim-tokens** ヘッダーの値を、**tokens** 変数を使用するデコードされた JObject として参照することができます。さらに、**set-header** ポリシーを使用して、実際の AAD トークンを取得し、それを **Authorization** ヘッダーに設定することができます。このポリシーは、[Azure API Management](https://azure.microsoft.com/services/api-management/) で使用するポリシーと同じです。詳細については、「[Azure API Management のポリシー](../api-management/api-management-howto-policies.md)」を参照してください。
+Looking at this policy, it basically lets you reference the values in the **x-ms-apim-tokens** header as a decoded JObject using a **tokens** variable. Then you can use the **set-header** policy to get the actual AAD token and set it to the **Authorization** header. This is the same policy used by [Azure API Management](https://azure.microsoft.com/services/api-management/). To learn more, see [Policies in Azure API Management](../api-management/api-management-howto-policies.md).
 
-プロパティ名 **token** が、設定を構成するときに使用した接続パラメーター名と一致することに**注目**してください。
+**Notice** that the property name **token** matches the connection parameter name you used when configuring the setting.
 
-## まとめと次のステップ
+## Summary and next steps
 
-このトピックでは、Azure Active Directory ドメイン上のバックエンド リソースに接続 (および認証) するために API を構成する方法について見てきました。PowerApps についての関連トピックとリソースがあります。
+In this topic, you've seen how to configure an API to connect (and authenticate) to a backend resource on an Azure Active Directory domain. Here are some related topics and resources for learning more about PowerApps.
 
-- [PowerApps のための API を開発する](powerapps-develop-api.md)
-
+- [Develop an API for PowerApps](powerapps-develop-api.md)
+-->
 
 <!--References-->
 [11]: ../powershell-install-configure.md
@@ -157,4 +172,4 @@ PowerApps でアプリを開きます。**[利用できる接続]** に、新し
 [20]: https://tools.ietf.org/html/rfc4648
 [21]: ./media/powerapps-configure-apis-aad/api-settings-aad.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

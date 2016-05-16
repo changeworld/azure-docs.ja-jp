@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="04/07/2016"
+     ms.date="05/03/2016"
      ms.author="dobett"/>
 
 # PowerShell を使用した IoT Hub の作成
@@ -112,10 +112,10 @@ JSON テンプレートを使用して、リソース グループに新しい I
 
 2. このテンプレート ファイルをローカル コンピューターに保存します。この例では、**c:\\templates** フォルダーに保存することを前提としています。
 
-3. 次のコマンドを実行して、新しい IoT Hub をデプロイします。実際の IoT Hub の名前をパラメーターで指定してください。この例では、IoT Hub 名を **myiothub** としています (この名前はグローバルに一意であることが必要です)。
+3. 次のコマンドを実行して、新しい IoT Hub をデプロイします。実際の IoT Hub の名前をパラメーターで指定してください。この例では、IoT Hub の名前は **abcmyiothub** です (この名前はグローバルに一意でなければならないため、自分の名前やイニシャルを含めます)。
 
     ```
-    New-AzureRmResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName myiothub
+    New-AzureRmResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName abcmyiothub
     ```
 
 4. 作成した IoT Hub のキーが出力として表示されます。
@@ -139,4 +139,4 @@ JSON テンプレートを使用して、リソース グループに新しい I
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 [lnk-powershell-arm]: ../powershell-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

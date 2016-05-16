@@ -3,7 +3,7 @@
 	description="Azure SQL データベースにアクセスする IP アドレス用のファイアウォールの構成方法を説明します。"
 	services="sql-database"
 	documentationCenter=""
-	authors="BYHAM"
+	authors="stevestein"
 	manager="jhubbard"
 	editor=""/>
 
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article" 
-	ms.date="02/04/2016"
-	ms.author="rickbyh"/>
+	ms.date="05/03/2016"
+	ms.author="stevestein"/>
 
 
 # 方法: PowerShell を使用して Azure SQL Database ファイアウォールを構成する
@@ -68,4 +68,4 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

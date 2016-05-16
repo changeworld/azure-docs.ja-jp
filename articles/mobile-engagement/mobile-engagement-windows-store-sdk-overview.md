@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/03/2016" 
 	ms.author="piyushjo" />
 
 #Azure Mobile Engagement 向け Windows ユニバーサル SDK の概要
@@ -68,6 +68,6 @@ Reach オーバーレイの機能を強化しました。これは SDK NuGet パ
 
 ### 古いバージョンからのアップグレード
 
-[アップグレード手順](mobile-engagement-windows-store-upgrade-procedure/)をご覧ください
+[アップグレード手順](mobile-engagement-windows-store-upgrade-procedure.md)をご覧ください
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

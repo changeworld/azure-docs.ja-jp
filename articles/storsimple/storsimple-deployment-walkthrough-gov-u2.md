@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/22/2016"
+   ms.date="04/26/2016"
    ms.author="v-sharos" />
 
 # Government Portal でのオンプレミスの StorSimple デバイスのデプロイ (Update 2)
@@ -234,13 +234,13 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 Linux ホストに接続されている StorSimple デバイスの MPIO のインストール手順については、「[Linux ホストの MPIO の構成](storsimple-configure-mpio-on-linux.md)」をご覧ください。
 
-> [AZURE.NOTE] StorSimple 仮想デバイスでは、MPIO がサポートされていません。
+> [AZURE.NOTE] Azure の StorSimple 仮想デバイスでは、MPIO はサポートされていません。
 
 ## 次のステップ
 
-- [仮想デバイス](storsimple-virtual-device.md)を構成します。
+- [仮想デバイス](storsimple-virtual-device-u2.md)を構成します。
 
 - [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
  
 
-<!------HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

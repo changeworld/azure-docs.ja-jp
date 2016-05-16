@@ -14,78 +14,89 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="11/25/2015"
+   ms.date="05/02/2016"
    ms.author="guayan"/>
 
 # 既存 API とプロパティの更新
 
-App Service 環境で登録した API とは、本質的にはバックエンド サービスのプロキシです。API を作成したあとで、そのプロパティを変更する場合があります。たとえば、次のような変更があります。
+> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> 
+> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページをご覧ください。  
+> - PowerApps のカスタム API の詳細については、「[What are Custom APIs (カスタム API とは)](https://powerapps.microsoft.com/tutorials/register-custom-api/)」をご覧ください。 
 
-- API にカスタム アイコンを追加する。
-- API によって使用されるバックエンドを保護する方法を変更する。 
-- API の表示名をよりユーザー フレンドリーな名前に更新する。
+<!--Archived
+The API you register in the app service environment is essentially a proxy to your backend service. Once you create the API, you may want to change its properties. For example, you may want to: 
+
+- Add a custom icon for your API.
+- Change how you secure the backend used by the API. 
+- Update the display name of your API to a more user friendly name.
 
 
-#### 開始のための前提条件
+#### Prerequisites to get started
 
-- [PowerApps Enterprise](powerapps-get-started-azure-portal.md) にサインアップします。
-- [App Service 環境](powerapps-get-started-azure-portal.md)の作成。
-- ユーザー環境への [API](powerapps-register-from-available-apis) 登録。
+- Sign up for [PowerApps Enterprise](powerapps-get-started-azure-portal.md).
+- Create an [app service environment](powerapps-get-started-azure-portal.md).
+- Register an [API](powerapps-register-from-available-apis) in your environment.
 
-## カスタム アイコンの追加またはユーザー フレンドリー表示名の追加
+## Add a custom icon or add a user friendly display name
 
-1. [Azure ポータル](https://portal.azure.com)で、API のブレードを開きます。
-2. **[すべての設定]** を選択します。
-3. **[設定]** で**[全般]** を選択します: ![][11]
+1. In the [Azure portal](https://portal.azure.com), open the blade for your API.
+2. Select **All settings**.
+3. In **Settings**, select **General**:  
+![][11]
 
-[全般] では次の設定を変更できます。
+In General, you can change the following settings:
 
-設定 | 説明
+Setting | Description
 --- | ---
-表示名 | この名前は PowerApps で*利用可能な接続*を一覧表示する際に使用します。既定では、API のリソース名を使用するので、PowerApps ユーザーにはわかりやすい名前になっていない可能性があります。ユーザー フレンドリーな表示名を入力できます。たとえば、**新規顧客の注文** または **営業履歴の表示**などと名前をつけることができます。  
-アイコン URL | 自身の API にカスタム アイコンを追加できます。このアイコンは PowerApps で*利用可能な接続*と*接続*の一覧表示で使用します。既定では、次のアイコンが使用されます。<br/><br/>![][12] <br/><br/>カスタム アイコンを使用する際は次のことに注意してください。<br/><ul><li>アイコンへの URL はパブリックにアクセスできるようにする必要があります。</li><li>ファイルの拡張子は .png または .svg を使用できます。png ファイルを使用する場合は、40 x 40 ピクセルをお勧めします。</li></ul>
-URL スキーム | API がサポートする 1 つまたは複数のスキームを選択します。**HTTP**、**HTTPS**、または **HTTP および HTTPS** から選択できます。既定では、HTTP および HTTPS が可能です。<br/><br/> App Service 環境はバックエンド構成に基づいてスキームを自動的に構成します。そのため、追加で何らかの構成を行う必要があれば、バックエンド サービスを開発または変更できます。 
-バックエンド サービスによる認証 | App Service 環境でバックエンド サービスを登録後、クライアントが API を使用してのみバックエンド サービスを呼び出すよう、バックエンドをセキュリティ保護することをお勧めします。バックエンドがどこでデプロイされたかに基づいて、次のオプションが使用可能です。<br/><br/><ul><li><strong>この API を介してのみアクセス可能</strong>: このオプションはバックエンドが App Service 環境でデプロイされた場合にのみ使用可能です。これを選択すると、バックエンド上のホスト名はいずれも無効になります。API プロキシも同様に同じ App Service 環境で実行されているため、バックエンドには変わらずアクセスできます。</li><li><strong>HTTP 基本認証</strong>: このオプションはバックエンドがどこでデプロイされたかに関係なく使用可能です。これが選択されている場合は、ユーザー名とパスワードを入力します。プロキシがバックエンドを呼び出すと、プロキシは HTTP 基本認証を使用して、HTTP 承認ヘッダーのユーザー名とパスワードを渡します。最終的に、バックエンド サービスが入力されたユーザー名とパスワードを確認 (認証) する必要があります。<br/><br/>ASP.NET Web API 2 での HTTP 基本認証の実装についての詳細は、「[ASP.NET Web API 2 での認証フィルター](http://www.asp.net/web-api/overview/security/authentication-filters)」を参照してください。</li></ul>
+Display name | This name is used when listing the *Available connections* in PowerApps. By default, it uses the API's resource name, which may not be the best name for your PowerApps users. You can enter a user friendly display name. For example, you can name it **New Customer Orders** or **View Sales History**.  
+Icon URL | You can add a custom icon for you API. The icon is used when listing the *Available connections* and *My connections* in PowerApps. By default, the following icon is used: <br/><br/>![][12] <br/><br/>When using a custom icon:<br/><ul><li>The URL to the icon must be publicly accessible.</li><li>It can be a .png or an .svg file. When using a png file, 40 x 40 pixels is preferred.</li></ul>
+URL Scheme | Choose which scheme or schemes you want your API to support. You can choose **HTTP**, **HTTPS**, or **HTTP and HTTPS**. By default, HTTP and HTTPS are enabled. <br/><br/>The app service environment automatically configures the scheme based on the backend configuration. So if there is anything additional you need to configure, you can develop or change your backend service. 
+Authenticate with backend service | After registering your backend service in the app service environment, it's a good idea to secure the backend so that clients only call it using your API. Based on where your backend is deployed,  the following options are available:<br/><br/><ul><li><strong>Only accessible via this API</strong>: This option is only available when your backend is deployed in the app service environment. When selected, it disables any host name on your backend. Since the API proxy is also running in the same app service environment, it can still access your backend.</li><li><strong>HTTP basic authentication</strong>: This option is available regardless of where you backend is deployed. When selected, you enter a user name and password. When the proxy calls your backend, it uses HTTP basic authentication to pass the username and password in the HTTP Authorization header. Finally, your backend service needs to confirm (authenticate) the user name and password entered.<br/><br/>To learn more about implementing HTTP basic authentication in ASP.NET Web API 2, see [Authentication Filters in ASP.NET Web API 2](http://www.asp.net/web-api/overview/security/authentication-filters).</li></ul>
 
 
-## API の Swagger の更新
+## Update the Swagger of your API
 
-1. [Azure ポータル](https://portal.azure.com)で、API のブレードを開きます。
-2. **[すべての設定]** を選択します。
-3. **[設定]** で、**[API 定義]** を選択します。: ![][13]
+1. In the [Azure portal](https://portal.azure.com), open the blade for your API.
+2. Select **All settings**.
+3. In **Settings**, select **API definition**:  
+![][13]
 
-**Swagger 2.0** はサポートされている API 定義の形式です。現在の API の定義は、埋め込み JSON エディターで書かれています。インラインで編集したり、新しい JSON ファイルをアップロードしたりできます。変更を**保存**したら、API 定義で発生したエラーを含むいかなるエラーもこのブレード上に表示されます。
+**Swagger 2.0** is the supported API definition format. The current API definition is in the embedded JSON editor. You can edit inline or upload a new JSON file. After you **Save** your changes, any errors are shown in this blade, including any errors with the API definition.
 
-- Swagger 2.0 の詳細については、「[公式の Swagger web サイト](http://swagger.io)」を参照してください。
-- API を開発する際に Swagger 2.0 を取得する方法の詳細については、次のページを参照してください。  
-	- [Azure App Service での ASP.NET API アプリの作成](../app-service-dotnet-create-api-app.md)
-	- [Azure App Service での Java API アプリの構築とデプロイ](../app-service-api-java-api-app.md)
-	- [Azure App Service での Node.js API アプリの構築とデプロイ](../app-service-api-nodejs-api-app.md)
-	- [Swashbuckle が生成する API 定義をカスタマイズする](../app-service-api-dotnet-swashbuckle-customize.md)
-- PowerApps のための Swagger 2.0 を使用するベスト プラクティスについての詳細は、「[PowerApps 用 API の開発](powerapps-develop-api.md)」を参照してください。
+- To learn more about Swagger 2.0, see the [official Swagger website](http://swagger.io).
+- To learn more about how to get Swagger 2.0 when developing your API, see:  
+	- [Create an ASP.NET API app in Azure App Service](../app-service-dotnet-create-api-app.md)
+	- [Build and deploy a Java API app in Azure App Service](../app-service-api-java-api-app.md)
+	- [Build and deploy a Node.js API app in Azure App Service](../app-service-api-nodejs-api-app.md)
+	- [Customize Swashbuckle-generated API definitions](../app-service-api-dotnet-swashbuckle-customize.md)
+- To learn more about best practices of using Swagger 2.0 for PowerApps, see [Develop an API for PowerApps](powerapps-develop-api.md).
 
-## API の XML ポリシーの更新
+## Update the XML policy of your API
 
-1. [Azure ポータル](https://portal.azure.com)で、API のブレードを開きます。
-2. **[すべての設定]** を選択します。
-3. **[設定]** で、**[ポリシー]** を選択します。: ![][14]
+1. In the [Azure portal](https://portal.azure.com), open the blade for your API.
+2. Select **All settings**.
+3. In **Settings**, select **Policy**:  
+![][14]
 
-このポリシーは [Azure API Management](https://azure.microsoft.com/services/api-management/) でサポートされるポリシーと同じです。現在のポリシーは、組み込みの XML エディターで書かれています。インラインでの編集、または新しい XML ファイルのアップロードが可能です。変更を**保存**したら、API ポリシーで発生した問題を含むいかなるエラーもこのブレード上に表示されます。
+This policy is the same policy supported by [Azure API Management](https://azure.microsoft.com/services/api-management/). The current policy is in the embedded XML editor. You can either edit inline or upload a new XML file. After you **Save** your changes, any errors are shown in this blade, including any issues with the API policy.
 
-「[Azure API Management のポリシー](../api-management/api-management-howto-policies.md)」は、ポリシーの構成や理解のための学習には適切なリソースとなっています。
+[Policies in Azure API Management](../api-management/api-management-howto-policies.md) is a good resource to learn more about configuring and understanding policies.
 
 
-## まとめと次のステップ
-API を作成後、このトピックの手順を使用して設定変更をしたり、設定の一部をカスタマイズしたりすることも可能です。
+## Summary and next steps
+After you create your API, you can use the steps in this topic to change its settings and even customize some settings. 
 
-PowerApps の詳細については、次の関連するトピックやリソースも参照してください。
+Here are some related topics and resources for learning more about PowerApps.
 
-- [API を構成して AAD 保護バックエンドに接続する](powerapps-configure-apis-aad.md)
-- [PowerApps 用 API の開発](powerapps-develop-api.md)
+- [Configure an API to Connect to AAD Protected Backend](powerapps-configure-apis-aad.md)
+- [Develop an API for PowerApps](powerapps-develop-api.md)
+-->
+
 
 [11]: ./media/powerapps-configure-apis/api-settings-general.png
 [12]: ./media/powerapps-configure-apis/api-default-icon.png
 [13]: ./media/powerapps-configure-apis/api-settings-api-definition.png
 [14]: ./media/powerapps-configure-apis/api-settings-policy.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0504_2016-->

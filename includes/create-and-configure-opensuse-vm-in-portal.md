@@ -1,6 +1,6 @@
-<properties writer="kathydav" editor="tysonn" manager="timlt" />
+<properties writer="cynthn" editor="tysonn" manager="timlt" />
 
-1. [Azure クラシック ポータル](http://manage.windowsazure.com)にサインインします。まだサブスクリプションをお持ちでない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)をお試しください。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com)にサインインします。  
 
 2. ウィンドウの下部にあるコマンド バーで、**[新規]** をクリックします。
 
@@ -8,7 +8,7 @@
 
 	![新しい仮想マシンの作成][Image1]
 
-4. **[SUSE]** グループから OpenSUSE 仮想マシン イメージを選択し、矢印をクリックして次に進みます。
+4. **[SUSE]** グループで OpenSUSE 仮想マシン イメージを選択し、矢印をクリックして次に進みます。
 
 5. 最初の **[仮想マシンの構成]** ページで次の作業を行います。
 
@@ -21,7 +21,7 @@
 6. 次の **[仮想マシンの構成]** ページで次の作業を行います。
 
 	- 既定の **[新しいクラウド サービスの作成]** を使用します。
-	- **[DNS 名]** ボックスに、"testlinuxvm" など、アドレスの一部として使用する一意の DNS 名を入力します。
+	- **[DNS 名]** ボックスに、アドレスの一部として使用する一意の DNS 名 ("testlinuxvm" など) を入力します。
 	- **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
 	- **[エンドポイント]** で SSH エンドポイントを保持します。この時点で他のエンドポイントを追加できます。また、仮想マシンの作成後にエンドポイントを追加、変更、削除できます。
 
@@ -65,4 +65,3 @@
 
 [Image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png
 
-<!---HONumber=AcomDC_0323_2016-->

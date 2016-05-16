@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="05/04/2016"
 	ms.author="glenga"/>
 
 # Azure Mobile Services の .NET バックエンドによるランキング アプリケーションの作成
@@ -765,4 +765,4 @@ Model-View-View Model (MVVM) は、Model-View-Controller (MVC) の一種です�
 [プッシュ通知の追加]: ../notification-hubs-windows-store-dotnet-get-started.md
 [認証の使用]: /develop/mobile/tutorials/get-started-with-users-dotnet
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

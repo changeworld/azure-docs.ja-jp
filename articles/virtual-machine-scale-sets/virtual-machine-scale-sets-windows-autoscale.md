@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="04/26/2016"
 	ms.author="davidmu"/>
 
 # 仮想マシン スケール セットでのマシンの自動スケール
@@ -39,17 +39,17 @@
 
 このチュートリアルで作成するテンプレートは、テンプレート ギャラリーにあるテンプレートと似ています。詳細については、[Windows VM と Jumpbox を使った単純な VM スケール セットのデプロイ](https://azure.microsoft.com/documentation/templates/201-vmss-windows-jumpbox/)に関するページを参照してください。
 
-[AZURE.INCLUDE [powershell-preview-inline-include](../../includes/powershell-preview-inline-include.md)]
+## 手順 1. Azure PowerShell をインストールする
 
-## 手順 1: リソース グループとストレージ アカウントの作成
+最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。
 
-1. **Microsoft Azure にサインイン**します。Microsoft Azure PowerShell ウィンドウを開いて **Login-AzureRmAccount** を実行します。
+## 手順 2: リソース グループとストレージ アカウントを作成する
 
-2. **リソース グループを作成します**。リソースはすべてリソース グループにデプロイする必要があります。このチュートリアルでは、リソース グループに **vmsstestrg1** という名前を付けます。[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx) を参照してください。
+1. **リソース グループを作成します**。リソースはすべてリソース グループにデプロイする必要があります。このチュートリアルでは、リソース グループに **vmsstestrg1** という名前を付けます。[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx) を参照してください。
 
-3. **ストレージ アカウントを新しいリソース グループにデプロイします**。仮想マシン スケール セットを単純化するために、このチュートリアルでは、いくつかのストレージ アカウントを使用しています。[New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) を使用して、**vmsstestsa** という名前のストレージ アカウントを作成します。この後の手順に備えて、Azure PowerShell ウィンドウは開いたままにしておいてください。
+2. **ストレージ アカウントを新しいリソース グループにデプロイします**。仮想マシン スケール セットを単純化するために、このチュートリアルでは、いくつかのストレージ アカウントを使用しています。[New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) を使用して、**vmsstestsa** という名前のストレージ アカウントを作成します。この後の手順に備えて、Azure PowerShell ウィンドウは開いたままにしておいてください。
 
-## 手順 2: テンプレートの作成
+## 手順 3: テンプレートを作成する
 Azure リソース マネージャー テンプレートを使用すると、Azure リソースとそれに関連するデプロイ パラメーターを JSON 形式で記述することによって、それらのリソースをまとめてデプロイし、管理することができます。
 
 1. 任意のエディターで C:\\VMSSTemplate.json ファイルを作成し、このテンプレートをサポートする初期 JSON 構造体を追加します。
@@ -473,7 +473,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 
     - **metricName** - これは、wadperfcounter 変数で定義したパフォーマンス カウンターと同じです。診断拡張機能は、この変数を使用して、**Processor(\_Total)\\% Processor Time** カウンターを収集します。
 	- **metricResourceUri** - 仮想マシン スケール セットのリソース識別子です。
-    - **timeGrain** – 収集するメトリックの粒度です。このテンプレートでは 1 分に設定しています。 
+    - **timeGrain** – 収集するメトリックの粒度です。このテンプレートでは 1 分に設定しています。
     - **statistic** – 自動スケーリング処理に対応するためのメトリックの集計方法を指定します。指定できる値は Average、Min、Max です。このテンプレートでは、スケール セットに含まれる仮想マシンの平均合計 CPU 使用率を検出しています。
     - **timeWindow** – インスタンス データを収集する時間の範囲です。5 分～ 12 時間の範囲で指定する必要があります。
     - **timeAggregation** – 時間経過に沿って収集されたデータの集計方法を指定します。既定値は Average です。指定できる値は Average、Minimum、Maximum、Last、Total、Count です。
@@ -486,7 +486,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 
 12.	テンプレート ファイルを保存します。
 
-## 手順 3: ストレージへのテンプレートのアップロード
+## 手順 4: テンプレートをストレージにアップロードする
 
 手順 1. で作成したストレージ アカウントのアカウント名とプライマリ キーがわかっていれば、Microsoft Azure PowerShell ウィンドウからテンプレートをアップロードできます。
 
@@ -515,15 +515,15 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
             $fileName = "C:" + $BlobName
             Set-AzureStorageBlobContent -File $fileName -Container $ContainerName -Blob  $BlobName -Context $ctx
 
-## 手順 4: テンプレートのデプロイ
+## 手順 5: テンプレートをデプロイする
 
 テンプレートを作成したら、リソースのデプロイを開始できます。このプロセスを開始するには、次のコマンドを使用します。
 
-        New-AzureRmResourceGroupDeployment -Name "vmsstestdp1" -ResourceGroupName "vmsstestrg1" -TemplateUri "https://vmsstestsa.blob.core.windows.net/templates/VMSSTemplate.json"
+    New-AzureRmResourceGroupDeployment -Name "vmsstestdp1" -ResourceGroupName "vmsstestrg1" -TemplateUri "https://vmsstestsa.blob.core.windows.net/templates/VMSSTemplate.json"
 
 Enter キーを押すと、先ほど割り当てた変数の値を入力するよう求められます。次の値を指定します。
 
-	vmName: vmsstestvm1
+    vmName: vmsstestvm1
 	vmSSName: vmsstest1
 	instanceCount: 5
 	adminUserName: vmadmin1
@@ -532,26 +532,30 @@ Enter キーを押すと、先ほど割り当てた変数の値を入力する�
 
 すべてのリソースが正常にデプロイされるまでに約 15 分かかります。
 
->[AZURE.NOTE]ポータルの機能を利用してリソースをデプロイすることもできます。具体的な方法については、次のリンク先のページを参照してください: https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>
+>[AZURE.NOTE] ポータルの機能を利用してリソースをデプロイすることもできます。これを行うには、このリンク "https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>" を使用します。
 
-## 手順 5: リソースの監視
+## 手順 6: リソースを監視する
 
 仮想マシン スケール セットに関する情報の一部は、次の方法で入手することができます。
 
  - Azure ポータル - 現在、ポータルを使用して入手できる情報の量は限られています。
  - [Azure リソース エクスプローラー](https://resources.azure.com/) - スケール セットの現在の状態を調査するうえで最適なツールです。作成した スケール セットのインスタンス ビューは次のパスをたどって表示できます。
 
-		subscriptions > {your subscription} > resourceGroups > vmsstestrg1 > providers > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
+        subscriptions > {your subscription} > resourceGroups > vmsstestrg1 > providers > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
 
  - Azure PowerShell - 次のコマンドを使用して一部の情報を得ることができます。
 
-		Get-AzureRmResource -name vmsstest1 -ResourceGroupName vmsstestrg1 -ResourceType Microsoft.Compute/virtualMachineScaleSets -ApiVersion 2015-06-15
+        Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
+        
+        Or
+        
+        Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceView
 
  - 通常の仮想マシンに接続するときと同じように Jumpbox 仮想マシンに接続し、スケール セット内の仮想マシンにリモートからアクセスして個々のプロセスを監視することができます。
 
->[AZURE.NOTE]スケール セットに関する情報を得ることができる REST API の一覧については、[仮想マシン スケール セット](https://msdn.microsoft.com/library/mt589023.aspx)に関するページを参照してください。
+>[AZURE.NOTE] スケール セットに関する情報を得ることができる REST API の一覧については、[仮想マシン スケール セット](https://msdn.microsoft.com/library/mt589023.aspx)に関するページを参照してください。
 
-## 手順 6: リソースの削除
+## 手順 7: リソースを削除する
 
 Azure で使用されるリソースに対して課金されるため、不要になったリソースは削除することを常にお勧めします。リソース グループから各リソースを個別に削除する必要はありません。リソース グループを削除すると、そのすべてのリソースが自動的に削除されます。
 
@@ -559,6 +563,11 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 リソース グループを維持する必要がある場合は、スケール セットのみを削除することができます。
 
-	Remove-AzureRmResource -Name vmsstest1 -ResourceGroupName vmsstestrg1 -ApiVersion 2015-06-15 -ResourceType Microsoft.Compute/virtualMachineScaleSets
+	Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name"
+    
+## 次のステップ
 
-<!-----HONumber=AcomDC_0427_2016-->
+- 「[Manage virtual machines in a Virtual Machine Scale Set (仮想マシン スケール セットで仮想マシンを管理する)](virtual-machine-scale-sets-windows-manage.md)」を参照して、作成したスケール セットを管理します。
+- 「[仮想マシン スケール セットの使用を開始する](virtual-machine-scale-sets-vertical-scale-reprovision.md)」で垂直スケーリングの詳細を確認します。
+
+<!---HONumber=AcomDC_0504_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/16/2016"
+   ms.date="04/27/2016"
    ms.author="larryfr"/>
 
 #Beeline による HDInsight での Hive と Hadoop の使用
@@ -65,17 +65,19 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
         beeline
 
-2. `beeline>` プロンプトから、次を使用して HiveServer2 サービスに接続します。前にヘッド ノードで返されたホスト名で __HOSTNAME__ を置き換えます。
+2. `beeline>` プロンプトから、次を使用して HiveServer2 サービスに接続します。__HOSTNAME__ を以前にヘッド ノードで返されたホスト名に置き換えます。
 
         !connect jdbc:hive2://HOSTNAME:10001/;transportMode=http admin
+        
+    これにより、指定した __HOSTNAME__ でポート __10001__ に接続することと、__HTTP__ が転送方法であることを Beeline に指示します。__Admin__ アカウントは、接続の認証に使用します。
 
     メッセージが表示されたら、HDInsight クラスターの管理者 (admin) アカウントのパスワードを入力します。接続が確立されると、プロンプトが次に変わります。
     
         jdbc:hive2://HOSTNAME:10001/>
 
-3. Beeline コマンドは、通常、`!` 文字で始まります。たとえば、「`!help`」でヘルプが表示されます。ただし、`!` は、多くの場合、省略できます。たとえば、「`help`」も機能します。
+3. Beeline コマンドは、通常、`!` 文字で始まります。たとえば、「`!help`」でヘルプが表示されます。ただし、多くの場合、`!` は省略できます。たとえば、「`help`」も機能します。
 
-    ヘルプを表示すると、「`!sql`」が表示されます。これは HiveQL ステートメントの実行に使用されます。ただし、HiveQL は一般的に使用されるため、先行する「`!sql`」を省略できます。次の 2 つのステートメントはまったく同じ結果となります。Hive で現在利用可能なテーブルが表示されます。
+    ヘルプを表示すると、「`!sql`」が表示されます。これは HiveQL ステートメントの実行に使用されます。ただし、HiveQL は一般的に使用されるので、先行する `!sql` を省略できます。次の 2 つのステートメントはまったく同じ結果となります。Hive で現在利用可能なテーブルが表示されます。
     
         !sql show tables;
         show tables;
@@ -176,7 +178,7 @@ Beeline を使用し、HiveQL ステートメントを含むファイルを実�
     
 3. ファイルを保存するには、__Ctrl__ キーを押しながら ___X__ キーを押し、__Y__ キー、__Enter__ キーの順に押します。
 
-4. 次を使用し、Beeline でファイルを実行します。前にヘッド ノードで取得した名前で __HOSTNAME__ を置き換え、管理者アカウントのパスワードで __PASSWORD__ を置き換えます。
+4. 次を使用し、Beeline でファイルを実行します。__HOSTNAME__ を以前にヘッド ノードで取得した名前に置き換え、__PASSWORD__ を管理者アカウントのパスワードに置き換えます。
 
         beeline -u 'jdbc:hive2://HOSTNAME:10001/;transportMode=http' -n admin -p PASSWORD -f query.hql
 
@@ -243,4 +245,4 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/02/2016"
+   ms.date="04/18/2016"
    ms.author="alkohli" />
 
-# StorSimple Manager サービスを使用してストレージ アカウントを管理する
+# StorSimple Manager サービスを使用した StorSimple Virtual Array のストレージ アカウントの管理
 
 ## 概要
 
@@ -56,7 +56,9 @@ StorSimple デバイスで使用できるストレージ アカウントには�
 
 特定のクラウド サービス プロバイダーに対して複数のアカウントを作成できます。ストレージ アカウントの保存中、サービスは、クラウド サービス プロバイダーとの通信を試みます。この時点で、資格情報と指定したアクセス マテリアルが認証されます。ストレージ アカウントは、認証が成功した場合にのみ作成されます。認証に失敗した場合は、適切なエラー メッセージが表示されます。
 
-ストレージ アカウントを追加する手順については、以下で詳しく説明されています。
+Azure ポータルで作成された Resource Manager のストレージ アカウントは StorSimple でもサポートされます。Resource Manager のストレージ アカウントは、ドロップダウン リストに選択対象として表示されません。Azure クラシック ポータルで作成されたストレージ アカウントだけが表示されます。次に説明するストレージ アカウントの追加手順に従って、Resource Manager のストレージ アカウントを追加する必要があります。
+
+Azure クラシック ストレージ アカウントを追加する手順の詳細を次に示します。
 
 [AZURE.INCLUDE [add-a-storage-account](../../includes/storsimple-ova-configure-new-storage-account.md)]
 
@@ -74,9 +76,9 @@ StorSimple デバイスで使用できるストレージ アカウントには�
 
   1. **[ストレージ アカウント]** ボックスの一覧で、変更する既存のアカウントを選択します。
   2. 必要に応じて、**[SSL モードを有効にする]** の設定を変更できます。
-  3. ストレージ アカウント アクセス キーを再生成できます。詳細については、「[Regenerate the storage account keys (ストレージ アカウント キーの再生成)](storage-create-storage-account.md#manage-your-storage-access-keys)」を参照してください。新しいストレージ アカウント キーを指定します。Azure ストレージ アカウントの場合、これはプライマリ アクセス キーです。 
+  3. ストレージ アカウント アクセス キーを再生成できます。詳細については、[ストレージ アカウント キーの再生成](storage-create-storage-account.md#manage-your-storage-access-keys)に関するセクションをご覧ください。新しいストレージ アカウント キーを指定します。Azure ストレージ アカウントの場合、これはプライマリ アクセス キーです。 
   4. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-manage-storage-accounts/checkicon.png) をクリックして、設定を保存します。**[構成]** ページの設定が更新されます。 
-  5. ページ下部の **[保存]** をクリックし、新しく更新した設定を保存します。 
+  5. ページ下部の **[保存]** をクリックして、新しく更新した設定を保存します。 
 
      ![ストレージ アカウントの編集](./media/storsimple-ova-manage-storage-accounts/modifyexistingstorageaccount.png)
   
@@ -94,11 +96,11 @@ StorSimple デバイスで使用できるストレージ アカウントには�
 
 4. 確認を求めるメッセージが表示されたら、**[はい]** をクリックして削除操作を続行します。表形式のリストが更新され、変更が反映されます。
 
-5. ページ下部の **[保存]** をクリックし、新しく更新した設定を保存します。
+5. ページ下部の **[保存]** をクリックして、新しく更新した設定を保存します。
 
 
 ## 次のステップ
 
 - [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

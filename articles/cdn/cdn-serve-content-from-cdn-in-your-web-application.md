@@ -3,8 +3,8 @@
 	description="CDN からのコンテンツを使用して、Web アプリケーションのパフォーマンスを高める方法を説明するチュートリアル。" 
 	services="cdn" 
 	documentationCenter=".net" 
-	authors="cephalin" 
-	manager="wpickett" 
+	authors="camsoper" 
+	manager="erikre" 
 	editor="jimbe"/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="12/08/2015" 
-	ms.author="cephalin"/>
+	ms.date="04/29/2016" 
+	ms.author="casoper"/>
 
 # Web アプリケーションで Azure CDN からコンテンツを配信する #
 
@@ -277,4 +277,4 @@ Azure App Service Web Apps または Azure Cloud Services と統合しなくて�
 - [Azure CDN の使用](cdn-create-new-endpoint.md)
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

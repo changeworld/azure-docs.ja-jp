@@ -20,30 +20,33 @@ Web アプリをホストするために使用する App Service プランの名
       "type":"string"
     }
 
-### siteLocation
-
-Web アプリとホスティング プランを作成するために使用する場所。Web アプリをサポートする Azure の場所にする必要があります。
-
-    "siteLocation":{
-      "type":"string"
-    }
-
 ### sku
 
 ホスティング プランの価格レベル。
 
-    "sku":{
-      "type":"string",
-      "allowedValues":[
-        "Free",
-        "Shared",
-        "Basic",
-        "Standard"
+    "sku": {
+      "type": "string",
+      "allowedValues": [
+        "F1",
+        "D1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "P4"
       ],
-      "defaultValue":"Free"
+      "defaultValue": "S1",
+      "metadata": {
+        "description": "The pricing tier for the hosting plan."
+      }
     }
 
-テンプレートには、このパラメーターに指定できる値 (Free、Shared、Basic、または Standard) を定義します。値が指定されない場合は既定値 (Free) が割り当てられます。
+テンプレートでは、このパラメーターに指定できる値を定義します。値が指定されない場合は既定値 (S1) が割り当てられます。
 
 ### workerSize
 
@@ -61,4 +64,3 @@ Web アプリとホスティング プランを作成するために使用する
     
 テンプレートには、このパラメーターに指定できる値 (0、1、または 2) を定義します。値が指定されない場合は既定値 (0) が割り当てられます。値はそれぞれ、小、中、および大に対応しています。
 
-<!---HONumber=Oct15_HO3-->

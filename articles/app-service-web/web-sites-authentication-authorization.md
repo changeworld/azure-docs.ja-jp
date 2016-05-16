@@ -39,7 +39,7 @@
 	-	Azure AD では、[証明書利用者](http://en.wikipedia.org/wiki/Relying_party)アプリケーションの管理を管理者以外のロールに委任しますが、機密性の高いディレクトリ データへのアプリケーション アクセスは、引き続きグローバル管理者が構成する必要があります。
 	-	すべての証明書利用者アプリケーションに対して、汎用的な一連の要求タイプを送信します。要求の種類の一覧については、「[サポートされているトークンとクレームの種類](http://msdn.microsoft.com/library/azure/dn195587.aspx)」をご覧ください。要求はカスタマイズできません。
 	-	[Azure AD Graph API](http://msdn.microsoft.com/library/azure/hh974476.aspx) により、アプリケーションは Azure AD のディレクトリ データにアクセスできるようになります。
--	[AD FS などのオンプレミスのセキュリティ トークン サービス (STS)](../web-sites-dotnet-lob-application-adfs/) - AD FS のようなオンプレミスの STS を使用して、Web アプリの認証と承認を実装できます。オンプレミスの AD FS の使用には、次の特性があります。
+-	[AD FS などのオンプレミスのセキュリティ トークン サービス (STS)](web-sites-dotnet-lob-application-adfs.md) - AD FS のようなオンプレミスの STS を使用して、Web アプリの認証と承認を実装できます。オンプレミスの AD FS の使用には、次の特性があります。
 	-	AD FS トポロジは、社内にデプロイする必要があり、コストと管理のオーバーヘッドが伴います。
 	-	会社のポリシーによって、AD データを社内に保存することが要求される場合に最適です。
 	-	[ AD FS 管理者だけが、証明書利用者の信頼と要求規則](http://technet.microsoft.com/library/dd807108.aspx)を構成できます。
@@ -52,4 +52,4 @@
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

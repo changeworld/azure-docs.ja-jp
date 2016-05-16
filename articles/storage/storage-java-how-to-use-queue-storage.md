@@ -5,7 +5,7 @@
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe"/>
+	editor=""/>
 
 <tags
 	ms.service="storage"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="05/04/2016"
 	ms.author="robmcm"/>
 
 # Java から Queue ストレージを使用する方法
@@ -391,4 +391,4 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 [Azure Storage Services REST API (Azure Storage サービスの REST API)]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

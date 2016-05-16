@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/16/2016"
+   ms.date="05/03/2016"
    ms.author="larryfr"/>
 
 #SSH による HDInsight での Hive と Hadoop の使用
@@ -150,4 +150,4 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

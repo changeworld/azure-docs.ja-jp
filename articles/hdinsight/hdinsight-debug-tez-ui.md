@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="02/16/2016"
+ms.date="05/03/2016"
 ms.author="larryfr"/>
 
 # Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする
@@ -147,4 +147,4 @@ Tez を使用して実行される Hive クエリを実行するには、次の�
 
 Tez に関する技術的な情報の詳細については、[Hortonworks の Tez に関するページ](http://hortonworks.com/hadoop/tez/)を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

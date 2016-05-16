@@ -14,63 +14,77 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/02/2016"
+   ms.date="05/02/2016"
    ms.author="guayan"/>
 
 # App Service 環境内でホストされている API の登録
-PowerApps は、クラウド内またはオンプレミス内でホストされている既存の API の登録をサポートしています。非常に強力です。シナリオによっては、新しい API を開発または作成することがあります。次のような場合です。
 
-- 組織で使用する新しい機能を実装する。
-- アプリを作成するユーザーのために、既存の機能やデータを基にして、より優れたエクスペリエンスを提供する。
+> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> 
+> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページをご覧ください。  
+> - PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事をご覧ください。  
+> - PowerApps のカスタム API の詳細については、「[What are Custom APIs (カスタム API とは)](https://powerapps.microsoft.com/tutorials/register-custom-api/)」をご覧ください。 
 
-App Service 環境で API をホストするときは、[App Service 環境](../app-service-web/app-service-app-service-environment-intro.md)のすべての既存機能を活用し、よりよい統合エクスペリエンスも利用します。
+<!--Archived
+PowerApps supports registering existing APIs hosted anywhere in the cloud or on-premises, which is really powerful. In some scenarios, you may want to develop or create some new APIs. For example, you may want to:
 
-これらの API をアプリで使用するには、マネージ API を使用するか、App Service 環境に存在する API を使用するか、または Swagger を使用して API を作成して、Azure ポータルで "登録" する必要があります。
+- Implement some new functionality for your organization to use.
+- Build on top of existing functionality or data to provide a better experience for users building their apps.
+
+When you host your APIs in your app service environment, you leverage all the existing capabilities of the [app service environment](../app-service-web/app-service-app-service-environment-intro.md), and also get a better integration experience.
+
+To use these APIs in your apps, you must "register" the APIs in the Azure portal using a managed API, existing APIs in your app service environment, or creating an API using Swagger. 
 
 > [AZURE.SELECTOR]
-- [マネージ API](../articles/power-apps/powerapps-register-from-available-apis.md)
-- [ASE の API](../articles/power-apps/powerapps-register-api-hosted-in-app-service.md)
-- [Swagger の API](../articles/power-apps/powerapps-register-existing-api-from-api-definition.md)
+- [Managed APIs](../articles/power-apps/powerapps-register-from-available-apis.md)
+- [APIs in your ASE](../articles/power-apps/powerapps-register-api-hosted-in-app-service.md)
+- [Swagger APIs](../articles/power-apps/powerapps-register-existing-api-from-api-definition.md)
 
-このトピックでは、2 番目の選択肢 (**App Service 環境にホストされた Web アプリ、API アプリ、およびモバイル アプリの登録**) について説明します。
+In this topic, we focus on the second option - **registering a web app, API app, and mobile app hosted in your app service environment**.
 
-#### 開始のための前提条件
+#### Prerequisites to get started
 
-- [PowerApps Enterprise](powerapps-get-started-azure-portal.md) にサインアップします。
-- [App Service 環境](powerapps-get-started-azure-portal.md)を作成します。
+- Sign up for [PowerApps Enterprise](powerapps-get-started-azure-portal.md).
+- Create an [app service environment](powerapps-get-started-azure-portal.md).
 
 
-## App Service 環境での API の開発とデプロイ
+## Develop and deploy an API in you app service environment
 
-App service 環境では API を簡単に開発できます。好みのプログラミング言語を選択して Web API を作成し、[Swagger 2.0](http://swagger.io) を使用して API 定義を記述します。次に例をいくつか示します。
+Developing an API in the app service environment is straightforward. You choose your favorite programming language to build a web API, and then use [Swagger 2.0](http://swagger.io) to describe the API definition. Some examples include:  
 
-- [Azure App Service での .NET の構築とデプロイ](../app-service-api/app-service-api-dotnet-get-started.md)
-- [Azure App Service での Java API アプリの構築とデプロイ](../app-service-api/app-service-api-java-api-app.md)
-- [Azure App Service での Node.js API アプリの構築とデプロイ](../app-service-api/app-service-api-nodejs-api-app.md)
+- [Build and deploy a .NET in Azure App Service](../app-service-api/app-service-api-dotnet-get-started.md)
+- [Build and deploy a Java API app in Azure App Service](../app-service-api/app-service-api-java-api-app.md)
+- [Build and deploy a Node.js API app in Azure App Service](../app-service-api/app-service-api-nodejs-api-app.md)
 
-App Service 環境への Web API のデプロイでは、Visual Studio からのデプロイや、ソース管理システムを使用した継続的なデプロイなどのオプションもあります。「[Azure App Service での Web アプリのデプロイ](../app-service-web/web-sites-deploy.md)」でわかりやすく解説されています。
+You also have options to deploy your web API into an app service environment, including deploying from Visual Studio, and deploying continuously using a source control system.  [Deploy a web app in Azure App Service](../app-service-web/web-sites-deploy.md) is a good resource. 
 
-## App Service 環境でのカスタム API の登録
+## Register your custom API in the app service environment
 
-App Service 環境に API をデプロイした後は、以下の手順を使用して登録します。
+After the API is deployed to your app service environment, use the following steps to register:
 
-1. [Azure ポータル](https://portal.azure.com/)で、**[PowerApps]** を選択して、**[API の管理]** を選択します。 ![][11]
-2. [API の管理] で、**[追加]** を選択します。 ![][12]  
-3. **[API の追加]** で、API のプロパティを入力します。  
+1. In the [Azure portal](https://portal.azure.com/), select **PowerApps**, and then select **Manage APIs**:  
+![][11]
+2. In Manage APIs, select **Add**:  
+![][12]  
+3. In **Add API**, enter the API properties:  
 
-	- **[名前]** に、API の名前を入力します。入力した名前が、API のランタイム URL に含まれていることを確認してください。名前は意味があり、組織内で一意のものにしてください。	
-	- **[ソース]** で、**[App Service 環境でホストされている API から]** を選択します。 ![][13]
-4. **[App Service 環境でホストされている API]** で、インポートするAPI を選択します。この一覧には、App Service 環境内に存在し、**apiDefinition.url** プロパティが構成されている、すべての Web アプリ、API アプリ、モバイル アプリが表示されます。API をインポートするには、このプロパティを使用して公開される Swagger 2.0 API 定義を使用します。API を登録するときは、この URL にパブリックにアクセスできることを確認します。 ![][14]
-5. **[追加]** を選択して、手順を完了します。
+	- In **Name**, enter a name for your API. Notice that the name you enter is included in the runtime URL of the API. Make the name meaningful and unique within your organization.	
+	- In **Source**, select **Import from APIs hosted in App Service Environment**:  
+	![][13]
+4. In **API hosted in App Service Environment**, select the API you want to import. This list shows every web app, API app, and mobile app in your app service environment  that has its **apiDefinition.url** property configured. To import the API, it uses the Swagger 2.0 API definition exposed using this property. Make sure this URL is publicly accessible when you register the API:  
+![][14]
+5. Select **ADD** to complete these steps.
 
-> [AZURE.TIP] API を登録すると、その API が App Service Environment に登録されます。API が App Service Environment に登録されると、同じ App Service Environment 内の他のアプリでも使用することができます。
+> [AZURE.TIP] When you register an API, you're registering the API to your app service environment. Once in the app service environment, it can be used by other apps within the same app service environment.
 
-## まとめと次のステップ
-このトピックでは、App Service 環境内でホストされている API を登録する方法について説明しました。PowerApps についての関連トピックとリソースがあります。
+## Summary and next steps
+In this topic, you've seen how to register an APIs hosted in your app service environment. Here are some related topics and resources for learning more about PowerApps: 
 
-- [API プロパティの構成](powerapps-configure-apis.md)
-- [ユーザーへの API アクセス許可](powerapps-manage-api-connection-user-access.md)
-- [PowerApps でのアプリ作成の開始に関するページ](https://powerapps.microsoft.com/tutorials/)
+- [Configure the API properties](powerapps-configure-apis.md)
+- [Give users access to the APIs](powerapps-manage-api-connection-user-access.md)
+- [Start creating your apps in PowerApps](https://powerapps.microsoft.com/tutorials/)
+-->
+
 
 <!--Reference-->
 [11]: ./media/powerapps-register-api-hosted-in-app-service/registered-apis-part.png
@@ -78,4 +92,4 @@ App Service 環境に API をデプロイした後は、以下の手順を使用
 [13]: ./media/powerapps-register-api-hosted-in-app-service/add-api-blade.png
 [14]: ./media/powerapps-register-api-hosted-in-app-service/add-api-select-from-ase.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

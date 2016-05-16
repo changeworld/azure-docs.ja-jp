@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/15/2016"
+   ms.date="04/25/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用して StorSimple ジョブを表示および管理する (Update 2)
@@ -21,9 +21,9 @@
 
 ## 概要
 
-**[ジョブ]** ページには、StorSimple Manager サービスに接続されているデバイスで開始されたジョブを表示および管理するための一元的なポータルがあります。複数のデバイスについて、スケジュールされたジョブ、実行中のジョブ、完了したジョブ、および失敗したジョブを確認できます。結果は表形式で表示されます。
+**[ジョブ]** ページには、StorSimple Manager サービスに接続されているデバイスで開始されたジョブを表示および管理するための一元的なポータルがあります。複数のデバイスについて、スケジュールされたジョブ、実行中のジョブ、完了したジョブ、取り消されたジョブ、失敗したジョブを表示できます。結果は表形式で表示されます。
 
-![[ジョブ] ページ](./media/storsimple-manage-jobs-u2/HCS_JobsPage.png)
+![[ジョブ] ページ](./media/storsimple-manage-jobs-u2/jobs.png)
 
 以下のフィールドにフィルター処理を行うことで、関心のあるジョブを素早く見つけることができます。
 
@@ -73,7 +73,7 @@
 
 実行中のジョブを取り消すには、以下の手順を実行します。
 
->[AZURE.NOTE]ボリュームの種類の変更やボリュームの拡張などの一部のジョブは取り消しできません。
+>[AZURE.NOTE] ボリュームの種類の変更やボリュームの拡張などの一部のジョブは取り消しできません。
 
 ### ジョブを取り消すには
 
@@ -93,4 +93,4 @@
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0504_2016-->

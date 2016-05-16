@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="03/18/2016"
+	ms.date="05/03/2016"
 	ms.author="jeffstok"/>
 
 # ストリーム データ処理スループット向上のための Azure Stream Analytics ジョブのスケーリング
@@ -88,7 +88,7 @@ Stream Analytics のジョブ定義は、入力、クエリ、および出力で
     FROM Step1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
-このクエリはグループ化キーがあるので、同じキーを同じクエリ インスタンスで処理する必要があります。前のクエリと同じ戦略を使用できます。クエリには複数のステップがあります。各ステップの ** PartitionId** に **Partition By** があるので、 問題ありません。出力については、先述のように **PartitionKey** を **PartitionId** に設定する必要があり、入力と同じ数のパーティションがあります。このトポロジは驚異的並列です。
+このクエリはグループ化キーがあるので、同じキーを同じクエリ インスタンスで処理する必要があります。前のクエリと同じ戦略を使用できます。クエリには複数のステップがあります。各ステップの **PartitionId** に **Partition By** があるので、 問題ありません。出力については、先述のように **PartitionKey** を **PartitionId** に設定する必要があり、入力と同じ数のパーティションがあります。このトポロジは驚異的並列です。
 
 
 ## 驚異的並列ではないシナリオの例
@@ -351,4 +351,4 @@ Azure ポータルの [設定] からスケールの設定にアクセスでき�
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

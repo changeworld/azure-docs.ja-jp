@@ -15,13 +15,13 @@
     ms.tgt_pltfrm="vm-linux"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/22/2016"
+    ms.date="04/29/2016"
     ms.author="v-livech"
 />
 
 # cloud-init を利用し、作成時に Linux VM をカスタマイズする
 
-この記事では、ホスト名を設定し、インストールされているパッケージを更新し、ユーザー アカウントを管理する cloud-init スクリプトを作成します。それから、[Azure CLI](../xplat-cli-install.md) を利用し、Linux VM の作成時に cloud-init スクリプトを起動します。
+この記事では、ホスト名の設定、インストールされているパッケージの更新、およびユーザー アカウントの管理を行う cloud-init スクリプトを作成する方法について説明します。これらの cloud-init スクリプトは、[Azure CLI](../xplat-cli-install.md) から VM を作成するときに使用されます。
 
 ## 前提条件
 
@@ -45,16 +45,23 @@ Azure では、3 つの方法で起動時の Linux VM を変更できます。
 
 ## クイック コマンド
 
+ホスト名を設定する cloud-init スクリプトを作成します。
+
 ```bash
-# Create a hostname cloud-init script
 #cloud-config
 hostname: exampleServerName
+```
 
-# Create an update Linux on first boot cloud-init script for Debian Family
+最初の起動時に Linux を更新する、Debian 製品用の cloud-init スクリプトを作成します。
+
+```bash
 #cloud-config
 apt_upgrade: true
+```
 
-# Create an add a user cloud-init script
+ユーザーを追加する cloud-init スクリプトを作成します。
+
+```bash
 #cloud-config
 users:
   - name: exampleUser
@@ -62,21 +69,19 @@ users:
     shell: /bin/bash
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     ssh-authorized-keys:
-      - ssh-rsa
-AAAAB3NzaC1yc2EAAAADAQABAAABAQDf0q4PyG0doiBQYV7OlOxbRjle<snip />== exampleuser@slackwarelaptop
-
+      - ssh-rsa AAAAB3<snip>==exampleuser@slackwarelaptop
 ```
 
 ## 詳細なチュートリアル
 
 ### Azure CLI を使用し、VM の作成に cloud-init スクリプトを追加する
 
-Azure で VM を作成するとき、cloud-init スクリプトを起動するには、Azure CLI `--custom-data` スイッチを利用し、cloud-init ファイルを指定します。
+Azure で VM を作成するときに、cloud-init スクリプトを起動するには、Azure CLI の `--custom-data` スイッチを使用して cloud-init ファイルを指定します。
 
-注: この記事では、cloud-init ファイルに `--custom-data` スイッチを利用する方法について説明しますが、このスイッチを利用し、任意のコードやファイルを渡すこともできます。そのようなファイルの処理方法が Linux VM で既に理解されている場合、ファイルは自動的に実行されます。
+注: この記事では、`--custom-data` スイッチを cloud-init ファイルに使用する方法を説明していますが、このスイッチを使用して任意のコードやファイルを渡すこともできます。そのようなファイルの処理方法が Linux VM で既に理解されている場合、ファイルは自動的に実行されます。
 
 ```bash
-bill@slackware$ azure vm create \
+azure vm create \
 --resource-group exampleRG \
 --name exampleVM \
 --location westus \
@@ -91,17 +96,17 @@ bill@slackware$ azure vm create \
 
 Linux VM の最も単純で最も重要な設定にホスト名があります。このスクリプトで cloud-init を使用し、ホスト名を簡単に設定できます。
 
-#### `cloud_config_hostname.txt` という名前の cloud-init スクリプトの例。
+#### `cloud_config_hostname.txt` という名前の cloud-init スクリプトの例
 
 ``` bash
 #cloud-config
 hostname: exampleServerName
 ```
 
-VM の初回起動時、この cloud-init スクリプトが `exampleServerName` にホスト名を設定します。
+VM の初回起動時に、この cloud-init スクリプトによってホスト名が `exampleServerName` に設定されます。
 
 ```bash
-bill@slackware$ azure vm create \
+azure vm create \
 --resource-group exampleRG \
 --name exampleVM \
 --location westus \
@@ -115,26 +120,26 @@ bill@slackware$ azure vm create \
 ログインし、新しい VM のホスト名を確認します。
 
 ```bash
-bill@slackware$ ssh exampleVM
-bill@ubuntu$ hostname
-bill@ubuntu$ exampleServerName
+ssh exampleVM
+hostname
+exampleServerName
 ```
 
 ### Linux を更新する cloud-init スクリプトを作成する
 
 セキュリティ上の理由から、最初の起動で Ubuntu VM を更新することがあります。Linux ディストリビューションによっては、cloud-init を利用し、次のスクリプトで更新できます。
 
-#### Debian 製品に cloud-init スクリプト `cloud_config_apt_upgrade.txt` を使用する例
+#### Debian 製品用の cloud-init スクリプト `cloud_config_apt_upgrade.txt` の例
 
 ```bash
 #cloud-config
 apt_upgrade: true
 ```
 
-新しい Linux VM の起動後に、`apt-get` を介して、インストールされているすべてのパッケージが更新されます。
+新しい Linux VM が起動すると、`apt-get` によって、インストールされているすべてのパッケージが即座に更新されます。
 
 ```bash
-bill@slackware$ azure vm create \
+azure vm create \
 --resource-group exampleRG \
 --name exampleVM \
 --location westus \
@@ -148,8 +153,8 @@ bill@slackware$ azure vm create \
 ログインし、すべてのパッケージが更新されていることを確認します。
 
 ```bash
-bill@slackware$ ssh exampleVM
-bill@ubuntu$ sudo apt-get upgrade
+ssh exampleVM
+sudo apt-get upgrade
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
@@ -161,9 +166,9 @@ The following packages have been kept back:
 
 ### ユーザーを Linux に追加する cloud-init スクリプトを作成する
 
-新しい Linux VM で行う最初のタスクに、手動でユーザーを追加すること、または `root` の利用を回避することがあります。追加したユーザーの `~/.ssh/authorized_keys` ファイルに SSH 公開キーを追加し、パスワードの要らない安全な SSH ログインを可能にすることは、セキュリティや操作性を大幅に改善します。
+新しい Linux VM での最初のタスクの 1 つとして、ユーザーを手動で追加すること、または `root` を使用しないようにすることがあります。これはセキュリティ上の理由から重要です。また、使いやすさを考慮し、追加したユーザーの `~/.ssh/authorized_keys` ファイルに SSH 公開キーを追加して、パスワード不要の安全な SSH ログインを可能にします。
 
-#### Debian 製品に cloud-init スクリプト `cloud_config_add_users.txt` を使用する例
+#### Debian 製品用の cloud-init スクリプト `cloud_config_add_users.txt` の例
 
 ```bash
 #cloud-config
@@ -173,14 +178,13 @@ users:
     shell: /bin/bash
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     ssh-authorized-keys:
-      - ssh-rsa
-AAAAB3NzaC1yc2EAAAADAQABAAABAQDf0q4PyG0doiBQYV7OlOxbRjle<snip />== exampleuser@slackwarelaptop
+      - ssh-rsa AAAAB3<snip>==exampleuser@slackwarelaptop
 ```
 
 新しい Linux VM を起動すると、新しいユーザーが作成され、sudo グループに追加されます。
 
 ```bash
-bill@slackware$ azure vm create \
+azure vm create \
 --resource-group exampleRG \
 --name exampleVM \
 --location westus \
@@ -194,7 +198,12 @@ bill@slackware$ azure vm create \
 ログインし、新しく作成したユーザーを確認します。
 
 ```bash
-bill@slackware$ cat /etc/group
+cat /etc/group
+```
+
+出力
+
+```bash
 root:x:0:
 <snip />
 sudo:x:27:exampleUser
@@ -202,4 +211,4 @@ sudo:x:27:exampleUser
 exampleUser:x:1000:
 ```
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

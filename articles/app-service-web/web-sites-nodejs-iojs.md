@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="03/04/2016"
+	ms.date="05/04/2016"
 	ms.author="robmcm" />
 
 # Azure App Service Web Apps で io.js を使用する方法
@@ -60,4 +60,4 @@ Node.js アプリケーションをデプロイすると、App Service Web Apps 
 [io.js Deployment Script]: https://github.com/felixrieseberg/iojs-azure
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -3,7 +3,7 @@
 	description="データ依存ルーティング (Azure SQL Database のElastic Database の機能) のために .NET アプリで ShardMapManager クラスを使用する方法について説明します。" 
 	services="sql-database" 
 	documentationCenter="" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="torsteng" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/04/2016" 
+	ms.date="05/03/2016" 
 	ms.author="torsteng;sidneyh"/>
 
 #データ依存ルーティング
@@ -133,4 +133,4 @@ int newPersonId = 4321;
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

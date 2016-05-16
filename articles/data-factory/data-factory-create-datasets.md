@@ -251,6 +251,8 @@ AzureSqlLinkedService は次のように定義されます。
 ## 範囲指定されたデータセット
 **datasets** プロパティを使用することで、対象となるパイプラインを指定したデータセットを作成できます。これらのデータセットは、そのパイプライン内のアクティビティでのみ使用できます。他のパイプラインのアクティビティでは使用できません。次の例では、パイプラインと、そのパイプライン内で使用する 2 つのデータセット (InputDataset-rdc と OutputDataset-rdc) が定義されています。
 
+> [AZURE.IMPORTANT] 範囲指定されたデータセットは、1 回限りのパイプライン (**pipelineMode** が **OneTime** に設定されたパイプライン) でのみサポートされます。詳細については、「[Onetime pipeline (1 回限りのパイプライン)](data-factory-scheduling-and-execution.md#onetime-pipeline)」をご覧ください。
+
 	{
 	    "name": "CopyPipeline-rdc",
 	    "properties": {
@@ -340,4 +342,4 @@ AzureSqlLinkedService は次のように定義されます。
 	    }
 	}
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

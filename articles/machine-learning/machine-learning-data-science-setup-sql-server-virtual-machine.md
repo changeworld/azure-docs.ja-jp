@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
+	ms.date="04/28/2016"
 	ms.author="mohabib;xibingao;bradsev" />
 
 # 高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する
@@ -81,6 +81,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
     -   実行中 (プロビジョニング)
     -   実行中
 
+
 ##<a name="RemoteDesktop"></a>リモート デスクトップを使用して仮想マシンを開き、セットアップを完了する
 
 1.  プロビジョニングが完了したら、仮想マシンの名前をクリックして [ダッシュボード] ページに移動します。ページの下部にある **[接続]** をクリックします。
@@ -93,11 +94,12 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 
 Windows リモート デスクトップで仮想マシンに接続したら、仮想マシンは他のコンピューターと同様に使用できます。SQL Server Management Studio (仮想マシン上で実行) を使用して、通常どおりに SQL Server の既定インスタンスに接続します。
 
+
 ##<a name="InstallIPython"></a>IPython Notebook とその他のサポート ツールをインストールする
 
 IPython Notebook サーバーとして機能するよう新しい SQL Server VM を構成し、AzCopy、Azure ストレージ エクスプローラー、便利な Data Science Python パッケージその他のサポート ツールを追加でインストールできるよう、特別なカスタマイズ スクリプトが用意されています。インストールするには、次のようにします。
 
-- Windows の [スタート] アイコンを右クリックし、**[コマンド プロンプト (管理者)]** をクリックします。
+- Windows の **[スタート]** アイコンを右クリックし、**[コマンド プロンプト (管理者)]** をクリックします。
 - 次のコマンドをコピーして、コマンド プロンプトに貼り付けます。
 
     	set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/MachineSetup/Azure_VM_Setup_Windows.ps1'
@@ -154,7 +156,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
 	SQL Server Management Studio を使用して認証モードを変更するには、次のようにします。
 
-3.  SQL Server Management Studio のオブジェクト エクスプローラーで、SQL Server のインスタンス名 (仮想マシン名) を右クリックし、**[プロパティ]** をクリックします。
+3.  **SQL Server Management Studio のオブジェクト エクスプローラー**で、SQL Server のインスタンス名 (仮想マシン名) を右クリックし、**[プロパティ]** をクリックします。
 
     ![サーバー プロパティ][7]
 
@@ -162,19 +164,20 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
     ![認証モードを選択する][8]
 
-5.  [SQL Server Management Studio] ダイアログ ボックスで、SQL Server の再起動が必要であるというメッセージに対して **[OK]** をクリックします。
+5.  **[SQL Server Management Studio]** ダイアログ ボックスで、SQL Server の再起動が必要であるというメッセージに対して **[OK]** をクリックします。
 
-6.  オブジェクト エクスプローラーでサーバーを右クリックし、**[再起動]** をクリックします(実行中であれば、SQL Server エージェントも再起動する必要があります)。
+6.  **オブジェクト エクスプローラー**でサーバーを右クリックし、**[再起動]** をクリックします(実行中であれば、SQL Server エージェントも再起動する必要があります)。
 
     ![再起動][9]
 
-7.  [SQL Server Management Studio] ダイアログ ボックスで、SQL Server の再起動に同意を求めるメッセージに対して **[はい]** をクリックします。
+7.  **[SQL Server Management Studio]** ダイアログ ボックスで、SQL Server の再起動に同意を求めるメッセージに対して **[はい]** をクリックします。
 
 ##<a name="Logins"></a>SQL Server 認証ログインを作成する
 
 別のコンピューターからデータベース エンジンに接続するには、1 つ以上の SQL Server 認証ログインを作成する必要があります。
 
-> [AZURE.TIP] 新しい SQL Server ログインをプログラムによって作成することも、SQL Server Management Studio を使って作成することもできます。SQL 認証の sysadmin ユーザーをプログラムで新規作成するには、**[新規クエリ]** を開始し、次のスクリプトを実行します。<new user name> と <new password> をお好みのユーザー名とパスワードに置き換えてください。必要に応じてパスワード ポリシーを調整します (サンプル コードではポリシー検査とパスワード期限設定がオフになっています)。SQL Server のログインの詳細については、「[ログインの作成](http://msdn.microsoft.com/library/aa337562.aspx)」を参照してください。
+新しい SQL Server ログインをプログラムによって作成することも、SQL Server Management Studio を使って作成することもできます。SQL 認証の新しい sysadmin ユーザーをプログラムで作成するには、**[新規クエリ]** を開始し、次のスクリプトを実行します。<new user name> と <new password> を任意の*ユーザー名*と*パスワード*に置き換えます。
+
 
     USE master
     go
@@ -185,9 +188,12 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
     EXEC sp_addsrvrolemember @loginame = N'<new user name>', @rolename = N'sysadmin';
 
+
+必要に応じてパスワード ポリシーを調整します (サンプル コードではポリシー検査とパスワード期限設定がオフになっています)。SQL Server のログインの詳細については、「[ログインの作成](http://msdn.microsoft.com/library/aa337562.aspx)」を参照してください。
+
 SQL Server Management Studio を使用して新しい SQL Server ログインを作成するには、次のようにします。
 
-1.  SQL Server Management Studio のオブジェクト エクスプローラーで、新しいログインを作成するサーバー インスタンスのフォルダーを展開します。
+1.  **SQL Server Management Studio のオブジェクト エクスプローラー**で、新しいログインを作成するサーバー インスタンスのフォルダーを展開します。
 
 2.  **[セキュリティ]** フォルダーを右クリックし、**[新規作成]** をポイントして、**[ログイン…]** を選択します。
 
@@ -221,7 +227,9 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 ##<a name="DNS"></a>仮想マシンの DNS 名を特定する
 
-別のコンピューターから SQL Server Database エンジンに接続するには、仮想マシンのドメイン ネーム システム (DNS) 名が必要になります(これは、仮想マシンを識別するためにインターネットで使用される名前です。IP アドレスを使用することもできますが、Azure で冗長化またはメンテナンスのためにリソースが移動された場合、IP アドレスは変わる可能性があります。DNS 名は、新しい IP アドレスにリダイレクトできるため、安定しています)。
+別のコンピューターから SQL Server Database エンジンに接続するには、仮想マシンのドメイン ネーム システム (DNS) 名が必要になります
+
+(これは、仮想マシンを識別するためにインターネットで使用される名前です。IP アドレスを使用することもできますが、Azure で冗長化またはメンテナンスのためにリソースが移動された場合、IP アドレスは変わる可能性があります。DNS 名は、新しい IP アドレスにリダイレクトできるため、安定しています)。
 
 1.  Azure クラシック ポータルで (または前の手順から)、**[仮想マシン]** を選択します。
 
@@ -243,7 +251,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 ##<a name="amlconnect"></a>Azure Machine Learning からデータベース エンジンに接続します
 
-この後の Advanced Analytics Process and Technology 手順で、[Azure Machine Learning Studio](https://studio.azureml.net) を使用して機械学習モデルを構築し、デプロイします。トレーニングまたはスコアリングのために SQL Server VM データベースから Azure Machine Learning にデータを直接取り込むには、新しい [[Azure Machine Learning Studio]](https://studio.azureml.net) テストでリーダー モジュールを使用します。このトピックの詳細は Advanced Analytics Process and Technology のガイド リンクに記載されています。概要については、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
+Cortana Analytics Process の後半に、[Azure Machine Learning Studio](https://studio.azureml.net) を使用して機械学習モデルを構築し、デプロイします。トレーニングまたはスコアリングのために SQL Server VM データベースから Azure Machine Learning にデータを直接取り込むには、[Azure Machine Learning Studio](https://studio.azureml.net) の新しい実験で**リーダー** モジュールを使用します。このトピックの詳細は Cortana Analytics Process のガイド リンクに記載されています。概要については、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
 
 2.	[リーダー モジュール](https://msdn.microsoft.com/library/azure/dn905997.aspx)の **[プロパティ]** ウィンドウで、**[データ ソース]** ドロップダウン リストから **[Azure SQL Database]** を選択します。
 
@@ -298,4 +306,4 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

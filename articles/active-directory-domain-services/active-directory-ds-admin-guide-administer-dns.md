@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory ドメイン サービス プレビュー: 管理ガイド | Microsoft Azure"
+	pageTitle="Azure Active Directory ドメイン サービス プレビュー: 管理対象ドメインの DNS を管理する | Microsoft Azure"
 	description="Azure Active Directory ドメイン サービスを使用して管理対象ドメインの DNS を管理する"
 	services="active-directory-ds"
 	documentationCenter=""
@@ -13,22 +13,40 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/08/2016"
+	ms.date="04/27/2016"
 	ms.author="maheshu"/>
 
 # Azure AD ドメイン サービスで管理されているドメイン上の DNS の管理
-Azure Active Directory ドメイン サービスには、管理対象ドメインの DNS 解決を提供する DNS (ドメイン名解決) サーバーが含まれています。場合によっては、管理対象ドメインの DNS を、ドメイン、ロード バランサーの仮想 IP、または外部 DNS フォワーダーに結合されていないコンピューターのレコードの順に構成する必要があります。このため、AAD DC 管理者グループに属するユーザーは、管理対象ドメインの DNS 管理者権限が付与されます。
-
-## ドメインに参加している仮想マシンをプロビジョニングして、管理対象ドメインの DNS をリモートで管理する
-Azure AD ドメイン サービスの管理対象ドメインは、Active Directory 管理センター (ADAC) や AD PowerShell などの使い慣れた Active Directory 管理ツールでリモート管理することができます。同様に、管理対象ドメインの DNS は、DNS サーバーの管理ツールを使用してリモートで管理できます。テナント管理者には、管理対象ドメイン上のドメイン コントローラーにリモート デスクトップで接続する権限はありません。そのため、"AAD DC Administrators" グループのメンバーは、管理対象ドメインに参加している Windows Server とクライアント コンピューターから、DNS サーバー ツールを使用して、リモートで管理対象ドメインの DNS を管理できます。DNS サーバー ツールは、管理対象ドメインに参加している Windows Server とクライアント コンピューターで、リモート サーバー管理ツール (RSAT) のオプション機能の一部としてインストールできます。
-
-最初の手順では、管理対象ドメインに参加している Windows Server 仮想マシンを設定します。この手順については、「[join a Windows Server virtual machine to an Azure AD Domain Services managed domain (Windows Server 仮想マシンの Azure AD ドメイン サービス管理対象ドメインへの参加)](active-directory-ds-admin-guide-join-windows-vm.md)」を参照してください。これらの手順では、Azure AD ドメイン サービスの管理対象ドメインを管理するために、Windows Server 仮想マシンを使用することに注意してください。Windows クライアント (Windows 10 など) の仮想マシンを使用することもできます。この場合は、仮想マシンにリモート サーバー管理ツールのオプション機能をインストールできます。
+Azure Active Directory ドメイン サービスには、管理対象ドメインの DNS 解決を提供する DNS (ドメイン名解決) サーバーが含まれています。場合によっては、ドメイン、ロード バランサーの仮想 IP、または外部 DNS フォワーダーに結合されていないコンピューターの DNS レコードを作成するために、管理対象ドメインで DNS を構成することが必要になります。このため、AAD DC 管理者グループに属するユーザーは、管理対象ドメインの DNS 管理者権限が付与されます。
 
 
-## 仮想マシンに DNS サーバー ツールをインストールする
+## 開始する前に
+この記事に記載されているタスクを実行するには、次が必要です。
+
+1. 有効な **Azure サブスクリプション**。
+
+2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ**。
+
+3. **Azure AD ドメイン サービス**が Azure AD ディレクトリに対して有効である必要があります。有効になっていない場合は、[作業の開始に関するガイド](./active-directory-ds-getting-started.md)に記載されているすべてのタスクを実行してください。
+
+4. Azure AD ドメイン サービスで管理されたドメインの管理に使用する**ドメインに参加している仮想マシン**。そのような仮想マシンがない場合は、「[Windows Server 仮想マシンの管理対象ドメインへの参加](./active-directory-ds-admin-guide-join-windows-vm.md)」で概要が示されているすべてのタスクに従います。
+
+5. 管理対象ドメインの DNS を管理するには、ディレクトリの **"AAD DC Administrators" グループに属するユーザー アカウント**の資格情報が必要です。
+
+<br>
+
+## タスク 1 - ドメインに参加している仮想マシンをプロビジョニングして、管理対象ドメインの DNS をリモートで管理する
+Azure AD ドメイン サービスの管理対象ドメインは、Active Directory 管理センター (ADAC) や AD PowerShell などの使い慣れた Active Directory 管理ツールでリモート管理することができます。同様に、管理対象ドメインの DNS は、DNS サーバーの管理ツールを使用してリモートで管理できます。
+
+Azure AD ディレクトリの管理者には、管理対象ドメイン上のドメイン コントローラーにリモート デスクトップで接続する権限はありません。そのため、"AAD DC Administrators" グループのメンバーは、管理対象ドメインに参加している Windows Server とクライアント コンピューターから、DNS サーバー ツールを使用して、リモートで管理対象ドメインの DNS を管理できます。DNS サーバー ツールは、管理対象ドメインに参加している Windows Server とクライアント コンピューターで、リモート サーバー管理ツール (RSAT) のオプション機能の一部としてインストールできます。
+
+最初のタスクでは、管理対象ドメインに参加している Windows Server 仮想マシンをプロビジョニングします。手順については、「[Windows Server 仮想マシンの管理対象ドメインへの参加](active-directory-ds-admin-guide-join-windows-vm.md)」を参照してください。
+
+
+## タスク 2 - 仮想マシンに DNS サーバー ツールをインストールする
 ドメインに参加している仮想マシンに DNS 管理ツールをインストールするには、次の手順を実行します。[リモート サーバー管理ツールのインストールおよび使用](https://technet.microsoft.com/library/hh831501.aspx)の詳細については、TechNet を参照してください。
 
-1. Azure クラシック ポータルの** [仮想マシン] **ノードに移動します。作成した仮想マシンを選択し、ウィンドウ下部にあるコマンド バーで** [接続] **をクリックします。
+1. Azure クラシック ポータルの **[Virtual Machines]** ノードに移動します。作成した仮想マシンを選択し、ウィンドウ下部にあるコマンド バーで **[接続]** をクリックします。
 
     ![Windows 仮想マシンに接続する](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 
@@ -63,16 +81,18 @@ Azure AD ドメイン サービスの管理対象ドメインは、Active Direct
 	![確認ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-confirmation.png)
 
 
-## DNS 管理コンソールを起動する
+## タスク 3 - DNS 管理コンソールを起動して DNS を管理する
 ドメインに参加している仮想マシンに DNS サーバー ツール機能がインストールされると、DNS ツールを使用して管理対象ドメインの DNS を管理できるようになります。
 
-1. スタート画面で、**[管理ツール]** をクリックします。仮想マシンにインストールされた **DNS** コンソールを確認できます。
+> [AZURE.NOTE] 管理対象ドメインの DNS を管理するには、"AAD DC Administrators" グループのメンバーである必要があります。
+
+1. スタート画面で、**[管理ツール]** をクリックします。仮想マシンにインストールされた **DNS** コンソールが表示されます。
 
 	![管理ツール： DNS コンソール](./media/active-directory-domain-services-admin-guide/install-rsat-dns-tools-installed.png)
 
-2. **DNS** をクリックして、DNS 管理コンソールを起動します。
+2. **[DNS]** をクリックして、DNS 管理コンソールを起動します。
 
-3. **[DNS サーバーに接続]** ダイアログ ボックスで、**[次のコンピューター]** というオプションを選択して、管理対象ドメインの DNS ドメイン名 (例: 'contoso100.com') を入力します。
+3. **[DNS サーバーに接続]** ダイアログ ボックスで、**[次のコンピューター]** オプションをクリックし、管理対象ドメインの DNS ドメイン名 (例: "contoso100.com") を入力します。
 
     ![DNS コンソール: ドメインへの接続](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 
@@ -87,4 +107,15 @@ Azure AD ドメイン サービスの管理対象ドメインは、Active Direct
 
 DNS の管理について詳しくは、[Technet の DNS ツールの記事](https://technet.microsoft.com/library/cc753579.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+
+## 関連コンテンツ
+
+- [Azure AD ドメイン サービス - 作業開始ガイド](./active-directory-ds-getting-started.md)
+
+- [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
+
+- [Azure AD ドメイン サービスで管理されているドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
+
+- [DNS 管理ツール](https://technet.microsoft.com/library/cc753579.aspx)
+
+<!---HONumber=AcomDC_0504_2016-->

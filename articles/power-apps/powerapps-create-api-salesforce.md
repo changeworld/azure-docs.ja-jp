@@ -14,80 +14,93 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/29/2016"
+   ms.date="05/02/2016"
    ms.author="litran"/>
 
 # PowerApps Enterprise で新しい Salesforce API を作成する
 
-> [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/connectors-create-api-salesforce.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-salesforce.md)
+> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> 
+> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページを参照してください。  
+> - PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事を参照してください。 
 
-組織の (テナント) App Service 環境に新しい Salesforce API を追加します。
+<!--Archived
+Add the Salesforce API to your organization's (tenant) app service environment. 
 
-## Azure ポータルでの API の作成
+## Create the API in the Azure portal
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
+1. In the [Azure portal](https://portal.azure.com/), sign-in with your work account. For example, sign-in with *yourUserName*@*YourCompany*.com. When you do this, you are automatically signed in to your company subscription.
  
-2. タスク バーの **[参照]** をクリックします。![][14]
+2. Select **Browse** in the task bar:  
+![][14]
 
-3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。![][15]
+3. In the list, you can scroll to find PowerApps or type in *powerapps*:  
+![][15]  
 
-4. **[PowerApps]** で、**[API の管理]** を選択します。![登録されている API の参照][1]
+4. In **PowerApps**, select **Manage APIs**:    
+![Browse to registered apis][1]
 
-5. **[API の管理]** で、**[追加]** をクリックして新しい API を追加します。![Add API][2]
+5. In **Manage APIs**, select **Add** to add the new API:  
+![Add API][2]
 
-6. API のわかりやすい**名前**を入力します。
+6. Enter a descriptive **name** for your API.  
 	
-7. **[ソース]** で、**[利用可能な API]** を選択して既成の API を選択し、**[Salesforce]** を選択します。![Salesforce API を選択する][3]
+7. In **Source**, select **Available APIs** to select the pre-built APIs, and select **Salesforce**:  
+![select Salesforce api][3]
 
-8. **[設定] - [必要な設定の構成]** を選択します。![Dropbox API の設定を構成する][7]
+8. Select **Settings - Configure required settings**:  
+![configure dropbox API settings][7]
 
-9. Salesforce アプリケーションの*アプリケーション キー*と*アプリケーション シークレット*を入力します。これらがない場合は、このトピックの「PowerApps で使用する Salesforce アプリケーションの登録」を参照して、必要なキーとシークレットの値を作成します。
+9. Enter the *App Key* and *App Secret* of your Salesforce application. If you don't have one, see the "Register a Salesforce app for use with PowerApps" section in this topic to create the key and secret values you need.  
 
-	> [AZURE.IMPORTANT] **リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
+	> [AZURE.IMPORTANT] Save the **redirect URL**. You may need this value later in this topic.
 
-10. **[OK]** をクリックして、手順を完了します。
+10. Select **OK** to complete the steps.
 
-完了すると、App Service 環境に新しい Salesforce API が追加されます。
+When finished, a new Salesforce API is added to your app service environment.
 
 
-## 省略可能: PowerApps で使用する Salesforce アプリケーションの登録
+## Optional: Register a Salesforce app for use with PowerApps
 
-キーとシークレットの値が割り当てられた既存の Salesforce アプリケーションがない場合は、次の手順に従ってアプリケーションを作成し、必要な値を取得します。
+If you don't have an existing Salesforce app with the key and secret values, then use the following steps to create the application, and get the values you need. 
 
-1. [Salesforce 開発者ホーム ページ][5]を開き、Salesforce アカウントでサインインします。 
+1. Open [Salesforce developer homepage][5], and sign in with your Salesforce account. 
 
-2. ホーム ページで、自分のプロファイルを選択し、**[Setup]** を選択します。 ![Salesforce のホーム ページ][6]
+2. In the homepage, select your profile, and select **Setup**:  
+![Salesforce homepage][6]
 
-3. **[Create]** を選択し、**[Apps]** を選択します。**[Apps]** ページで、**[Connected Apps]** の **[New]** を選択します。 ![Salesforce がアプリを作成する][7]
+3. Select **Create** and select **Apps**. In the **Apps** page, select **New** under **Connected Apps**:  
+![Salesforce create app][7]
 
-4. **[New Connected App]** で次のようにします。
+4. In **New Connected App**:  
 
-	1. **[Connected App Name]** に値を入力します。  
-	2. **[API Name]** に値を入力します。  
-	3. **[Contact Email]** に値を入力します。  
-	4. _[API (Enable OAuth Settings)]_ で **[Enable OAuth Settings]** を選択し、**[Callback URL]** を、(このトピックで) Azure ポータルを使用して新しい Salesforce API を追加したときに表示されたリダイレクト URL に設定します。  
+	1. Enter the value for **Connected App Name**.  
+	2. Enter the value for **API Name**.  
+	3. Enter the value for **Contact Email**.  
+	4. Under _API (Enable OAuth Settings)_, select **Enable OAuth Settings**, and set the **Callback URL** to the redirect URL you received when you added the new Salesforce API in the Azure Portal (in this topic).  
 
-5. _[Selected OAuth scopes]_ で、次のスコープを **[Selected OAuth Scopes]** に追加します。
+5. Under _Selected OAuth scopes_, add the following scopes to the **Selected OAuth Scopes**:  
 
-	- 自分の Chatter データにアクセスして管理する (chatter\_api)
-	- 自分のデータにアクセスして管理する (api)
-	- 自分の一意の識別子へのアクセスを許可する (openid)
-	- いつでも自分に代わって要求を実行する (refresh\_token、offline\_access)
+	- Access and manage your Chatter data (chatter_api)
+	- Access and manage your data (api)
+	- Allow access to your unique identifier (openid)
+	- Perform requests on your behalf at any time (refresh_token, offline_access)
 
-6. 変更を**保存**します。 ![Salesforce の新しいアプリ][8]
+6. **Save** your changes:  
+![Salesforce new app][8]
 
-新しい Salesforce アプリが作成されます。Azure ポータルの Salesforce API 構成でこのアプリケーションを使用できます。
+A new Salesforce app is created. You can use this app in your Salesforce API configuration in the Azure portal. 
 
-## REST API に関するページを参照してください。
+## See the REST APIs
 
-[Salesforce REST API](../connectors/connectors-create-api-salesforce.md) リファレンス。
+[Salesforce REST API](../connectors/connectors-create-api-salesforce.md) reference.
 
-## まとめと次のステップ
-このトピックでは、Salesforce API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
+## Summary and next steps
+In this topic, you added the Salesforce API to your PowersApps Enterprise. Next, give users access to the API so it can be added to their apps: 
 
-[接続を追加し、ユーザーにアクセスを許可する](powerapps-manage-api-connection-user-access.md)
+[Add a connection and give users access](powerapps-manage-api-connection-user-access.md)
+-->
+
 
 <!--References-->
 [1]: ./media/powerapps-create-api-salesforce/browse-to-registered-apis.PNG
@@ -101,4 +114,4 @@
 [14]: ./media/powerapps-create-api-salesforce/browseall.png
 [15]: ./media/powerapps-create-api-salesforce/allresources.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

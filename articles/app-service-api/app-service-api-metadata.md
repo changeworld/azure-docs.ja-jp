@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="05/02/2016"
 	ms.author="tdykstra"/>
 
 # API の検出とコードの生成用の App Service API Apps メタデータ 
@@ -56,4 +56,4 @@ API アプリのクライアント コードは、Visual Studio を使用して�
 
 API アプリの作成、デプロイ、使用の手順を説明するステップ バイ ステップ チュートリアルについては、[Azure App Service での API アプリの使用](app-service-api-dotnet-get-started.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

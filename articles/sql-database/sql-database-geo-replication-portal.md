@@ -4,7 +4,7 @@
     services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
-    manager="jeffreyg" 
+    manager="jhubbard" 
     editor=""/>
 
 <tags
@@ -13,26 +13,25 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management" 
-    ms.date="02/23/2016"
+    ms.date="04/27/2016"
     ms.author="sstein"/>
 
 # Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-geo-replication-portal.md)
+- [Azure ポータル](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
 - [Transact-SQL](sql-database-geo-replication-transact-sql.md)
 
 
 この記事では、[Azure ポータル](http://portal.azure.com)を使用して SQL Database の geo レプリケーションを構成する方法を示します。
 
-geo レプリケーションでは、さまざまなデータ センターの場所 (リージョン) に最大 4 つのレプリカ (セカンダリ) データベースを作成することができます。セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合に使用できます。
+フェールオーバーを開始する方法については、[Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-portal.md)に関する記事をご覧ください。
 
-geo レプリケーションは、Standard データベースと Premium データベースにのみ使用できます。
+>[AZURE.NOTE] すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
 
-Standard データベースでは、読み取り不可のセカンダリ データベースを 1 つ置くことができますが、その場合は推奨されたリージョンを使用する必要があります。Premium データベースでは、利用可能な任意のリージョンに、最大 4 つの読み取り可能なセカンダリ データベースを置くことができます。
-
+同じまたは異なるデータ センターの場所 (リージョン) に最大 4 つの読み取り可能なセカンダリ データベースを構成できます。セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合に使用できます。
 
 geo レプリケーションを構成するには、次のものが必要です。
 
@@ -47,7 +46,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 セカンダリ データベースを追加するには、サブスクリプションの所有者または共同所有者でなければなりません。
 
-セカンダリ データベースは、プライマリ データベースと同じ名前となります。また、既定でのサービス レベルはプライマリ データベースと同じになります。セカンダリ データベースは、読み取り可能 (Premium レベルのみ) または読み取り不可とすることができるほか、単一データベースまたはエラスティック データベースとすることができます。詳細については、「[サービス レベル](sql-database-service-tiers.md)」を参照してください。セカンダリ データベースを作成しシード処理を行うと、プライマリ データベースから新しいセカンダリ データベースへのデータのレプリケートが開始されます。
+セカンダリ データベースは、プライマリ データベースと同じ名前となります。また、既定でのサービス レベルはプライマリ データベースと同じになります。セカンダリ データベースは、読み取り可能または読み取り不可とすることができるほか、単一データベースまたはエラスティック データベースとすることができます。詳細については、「[サービス レベル](sql-database-service-tiers.md)」を参照してください。セカンダリ データベースを作成しシード処理を行うと、プライマリ データベースから新しいセカンダリ データベースへのデータのレプリケートが開始されます。
 
 > [AZURE.NOTE] パートナー データベースが既に存在する場合 (たとえば、前の geo レプリケーション リレーションシップを終了した結果として)、コマンドは失敗します。
 
@@ -58,13 +57,13 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 1. [Azure ポータル](http://portal.azure.com) で、geo レプリケーションについてセットアップするデータベースを参照します。
 2. [SQL Database] ブレードで、**[すべての設定]**、**[geo レプリケーション]** の順に選択します。
-3. セカンダリ データベースを作成するリージョンを選択します。セカンダリ データベース用のリージョンとして、Premium データベースでは任意のリージョンを使用できますが、Standard データベースでは推奨リージョンを使用する必要があります。
+3. セカンダリ データベースを作成するリージョンを選択します。
 
 
     ![セカンダリ データベースの追加][1]
 
 
-4. **セカンダリ タイプ** (**[Readable]** または **[Non-readable]**) を構成します。Premium データベースのセカンダリ データベースは読み取り可能とすることができますが、Standard データベースのセカンダリ データベースは **[Non-readable]** にしか設定できません。
+4. **[セカンダリの種類]** (**[読み取り可能]** または **[読み取り不能]**) を構成します。
 5. セカンダリ データベース用のサーバーを選択または構成します。
 
     ![セカンダリ データベースの作成][3]
@@ -104,39 +103,24 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 
 
-## フェールオーバーの開始
-
-セカンダリ データベースは、プライマリ データベースとして使用するように切り替えることができます。
-
-1. [Azure ポータル](http://portal.azure.com)で、geo レプリケーション パートナーシップのプライマリ データベースを参照します。
-2. [SQL Database] ブレードで、**[すべての設定]**、**[geo レプリケーション]** の順に選択します。
-3. **[セカンダリ]** ボックスの一覧で、新しいプライマリ データベースとして使用するデータベースを選択します。
-4. **[フェールオーバー]** をクリックします。
-
-    ![フェールオーバー][10]
-
-コマンドによって、次のワークフローが実行されます。
-
-1. 一時的にレプリケーションを同期モードに切り替えます。これにより、すべての未完了のトランザクションがセカンダリ データベースにフラッシュされます。 
-
-2. geo レプリケーション パートナーシップで 2 つのデータベースのプライマリ ロールとセカンダリ ロールを切り替えます。
-
-計画されたフェールオーバーの場合、このシーケンスによってデータが失われることはありません。ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。通常の状況では、操作全体が完了するのに 1 分かかりません。
-
    
 
 ## 次のステップ
 
+- [Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-portal.md)
 - [geo レプリケーションを使用したビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [障害復旧訓練](sql-database-disaster-recovery-drills.md)
 
 
 ## その他のリソース
 
+- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
 - [新しい geo レプリケーション機能に関するスポットライト](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
-- [geo レプリケーションを使用したビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
+- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
+- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
 
 
 <!--Image references-->
@@ -151,4 +135,4 @@ geo レプリケーションを構成するには、次のものが必要です�
 [9]: ./media/sql-database-geo-replication-portal/seeding-complete.png
 [10]: ./media/sql-database-geo-replication-portal/failover.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

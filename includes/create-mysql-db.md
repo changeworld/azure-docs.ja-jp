@@ -1,6 +1,6 @@
 このガイドでは、[ClearDB] を使用して [Azure ストア]から MySQL データベースを作成する方法と、[Azure Website][waws]を作成するときに MySQL データベースをリンク済みリソースとして作成する方法について説明します。[ClearDB] は、サービスとしてのフォルト トレラント データベース プロバイダーであり、Azure データセンターで MySQL データベースを実行および管理し、どのアプリケーションからもデータベースに接続できるようにしています。
 
-> [AZURE.NOTE]MySQL データベースを Web サイト作成プロセスの一部として作成するときは、無料データベースを作成するだけでかまいません。Azure ストアから MySQL データベースを作成すると、無料データベースを作成するか、有料オプションから選択することができます。
+> [AZURE.NOTE] MySQL データベースを Web サイト作成プロセスの一部として作成するときは、無料データベースを作成するだけでかまいません。Azure ストアから MySQL データベースを作成すると、無料データベースを作成するか、有料オプションから選択することができます。
 
 ## 方法: Azure ストアからの MySQL データベースの作成
 
@@ -65,12 +65,11 @@
 
 	![表示された接続文字列](./media/create-mysql-db/shown-conn-string.png)
 
-> [AZURE.NOTE]接続文字列には、Web サイト アプリケーションから接続文字列名によりアクセスできます。.NET アプリケーションでは、接続文字列は **connectionStrings** オブジェクトにあります。他のプログラミング言語では、接続文字列には環境変数としてアクセスできます。詳細については、「[Web サイトの構成方法][configure]」を参照してください。
+> [AZURE.NOTE] 接続文字列には、Web サイト アプリケーションから接続文字列名によりアクセスできます。.NET アプリケーションでは、接続文字列は **connectionStrings** オブジェクトにあります。他のプログラミング言語では、接続文字列には環境変数としてアクセスできます。詳細については、「[Web サイトの構成方法][configure]」を参照してください。
 
 [ClearDB]: http://www.cleardb.com/
 [waws]: /documentation/services/web-sites/
 [Azure ストア]: ../articles/store.md
 [portal]: http://manage.windowsazure.com
-[configure]: ../article/app-service-web/web-sites-configure.md
+[configure]: ../articles/app-service-web/web-sites-configure.md
 
-<!---HONumber=Oct15_HO3-->

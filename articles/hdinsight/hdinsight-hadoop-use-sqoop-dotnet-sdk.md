@@ -35,8 +35,6 @@ HDInsight .NET SDK を使用して、HDInsight クラスターと Azure SQL Data
 
 HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。このセクションでは、C# コンソール アプリケーションを作成し、このチュートリアルで作成した SQL Database テーブルに hivesampletable をエクスポートします。
 
-次の例では、ユーザーの対話型認証を使用します。非対話型認証を使用する場合は、「[非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)」をご覧ください。
-
 
 **Sqoop ジョブを送信するには**
 
@@ -170,4 +168,4 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 - [HDInsight を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md): Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
 - [HDInsight へのデータのアップロード](hdinsight-upload-data.md): HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

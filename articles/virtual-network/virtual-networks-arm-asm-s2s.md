@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Azure で従来の VNet と ARM Vnet を接続する方法 - ソリューション ガイド"
    description="従来の VNet と新しい VNet の間の VPN 接続を作成する方法を学習します。"
-   services="virtual-network"
+   services="vpn-gateway"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="cherylmc"
    manager="carmonm"
    editor="tysonn" />
 <tags 
-   ms.service="virtual-network"
+   ms.service="vpn-gateway"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="cherylmc" />
 
 # 従来の VNet を新しい VNet に接続する
 
@@ -350,4 +350,4 @@ ARM VNet (vnet02) 用に作成されたゲートウェイの IP アドレスが�
 - [ネットワーク リソース プロバイダー](resource-groups-networking.md)についてさらに学習できます。
 - [create a S2S VPN connection between a classic VNet and an ARM VNet (従来の VNet と ARM VNet の間の S2S VPN 接続を作成する)](virtual-networks-arm-asm-s2s-howto.md) 方法に関する一般的なガイドラインを参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

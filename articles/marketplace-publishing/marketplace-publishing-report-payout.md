@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/04/2016"
+   ms.date="05/03/2016"
    ms.author="v-jeana; hascipio; v-dabosl"/>
 
 # Azure Marketplace 支払いレポートについて
@@ -22,9 +22,13 @@
 
 デベロッパー センターに移行中に、一部の支払いレポートは https://dev.windows.com/ja-JP のデベロッパー センターで利用できる場合がありますが、他の支払いレポートは、https://publish.windowsazure.com の公開ポータルに表示されたままになる可能性があります。
 
-支払いレポートは、最新の支払いに関連付けられているすべての Marketplace サービスに対して、**デベロッパー センター**で利用できるようになります。現在、次が対象に含まれています。- VM - B と C プラン - EA で提供されるデータと Dev Services
+支払いレポートは、最新の支払いに関連付けられているすべての Marketplace サービスについて、**デベロッパー センター**で利用できるようになります。現在は以下が対象となります。
+- VM
+- B+C プラン
+- EA で提供される Data Services と Dev Services
 
-支払いレポートは、次の**発行ポータル**に継続して存在します。- Web Direct (レガシ支払いシステムを継続して使用する) で提供されるデータと Dev Services。
+支払いレポートは、次の**発行ポータル**に引き続き存在します。
+- Web Direct (従来の支払いシステムを引き続き使用) で提供される Data Services と Dev Services
 
 レポートは四半期の終了後 45 日間入手可能であり、返金後に計算されます。
 
@@ -51,7 +55,7 @@
 
     ![PayoutSummaryUpcomingMostRecentLinksStatement][3]
 
-- 個々の明細書の下部にある **[収益の内訳]** フィルターを使用して、存在する場合に複数のアプリまたは製品を表示します。
+- 個々の明細書の下部にある **[収益の内訳]** フィルターを使用して、複数のアプリまたは製品を表示します (存在する場合)。
 
     ![PayoutSummaryPaymentStatementsFilterControl][4]
 
@@ -112,4 +116,4 @@
 [8]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png
 [9]: ./media/marketplace-publishing-report-payout/payoutquestions.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

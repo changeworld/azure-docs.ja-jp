@@ -34,7 +34,7 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
     仮想マシン イメージ名をクリックすると、ページの右側にイメージに関する情報が表示されます。
 
-        >[AZURE.NOTE] You can't add virtual machine images to the **Public Images** or **MSDN Images** lists because they are read-only. All virtual machines that you create are added to the **Private Images** list.
+    >[AZURE.NOTE] **[公開イメージ]** または **[MSDN イメージ]** の一覧は読み取り専用なので、仮想マシン イメージを追加することはできません。作成した仮想マシンはすべて **[プライベート イメージ]** の一覧に追加されます。
 
     Visual Studio レベルのサブスクリプションを持つ MSDN サブスクライバーの場合、Visual Studio と他のいくつかのイメージを含む事前に構築された Azure 仮想マシンを作成できます。詳細については、[Visual Studio でのイメージを使用した仮想マシン作成、MSDN サブスクライバー向け Visual Studio 2013 ギャラリー イメージ](http://visualstudio2013msdngalleryimage.azurewebsites.net)、[MSDN サブスクリプション](https://www.visualstudio.com/products/msdn-subscriptions-vs)の各ページを参照してください。
 
@@ -42,7 +42,7 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
     リモート デスクトップを使用するマシンにログインするときに、この新しい名前とパスワードを使用するので、忘れた場合に備えて書き留めておくことをお勧めします。Visual Studio で Azure 仮想マシンを作成した後、[Microsoft Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=253103)でサイズなどの設定を変更できます。
 
-        >[AZURE.NOTE] If you choose larger sizes for the virtual machine, extra charges may apply. See [Virtual Machines Pricing Details](https://azure.microsoft.com/pricing/details/virtual-machines/) for more information.
+    >[AZURE.NOTE] 選択する仮想マシンのサイズが大きいほど、適用される料金も大きくなります。詳細については、[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)のページを参照してください。
 
 1. Visual Studio で作成した仮想マシンの場合、クラウド サービスが必要です。**[クラウド サービス設定]** ページで、仮想マシン用のクラウド サービスを選択します。まだクラウド サービスを持っていないか、新規作成する場合は、ドロップダウン リストの **[<新規作成>]** をクリックします。また、ストレージ アカウントも必要になるため、**[ストレージ アカウント]** ボックスの一覧からストレージ アカウントを選択します (または新しいストレージ アカウントを作成します)。詳細については、「[Microsoft Azure Storage の概要](./storage/storage-introduction/)」をご覧ください。
 
@@ -158,4 +158,3 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
 仮想マシンの作成の詳細については、「[Linux を実行する仮想マシンの作成](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md)」および「[Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0413_2016-->

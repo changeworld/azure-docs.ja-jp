@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/03/2016" 
 	ms.author="piyushjo" />
 
 # Windows ユニバーサル アプリ Engagement SDK 統合
@@ -238,7 +238,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 オプションとして、アプリケーション特有のイベント、エラー、ジョブについて報告できます。そのためには、`EngagementAgent` クラスの別のメソッドを使用します。Engagement API により、Engagement のすべての高度な機能を使用できます。
 
-詳細については、「[How to use the advanced Mobile Engagement tagging API in your Windows Universal app (Windows ユニバーサル アプリで高度なモバイル エンゲージメント タグ付け API を使用する方法)](../mobile-engagement-windows-store-use-engagement-api/)」をご覧ください
+詳細については、「[How to use the advanced Mobile Engagement tagging API in your Windows Universal app (Windows ユニバーサル アプリで高度なモバイル エンゲージメント タグ付け API を使用する方法)](mobile-engagement-windows-store-use-engagement-api.md)」をご覧ください
 
 ##詳細な構成
 
@@ -283,4 +283,4 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 [NuGet website]: http://docs.nuget.org/docs/start-here/overview
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

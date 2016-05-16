@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="04/07/2016"
+ms.date="05/03/2016"
 ms.author="larryfr"/>
 
 #Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
@@ -218,7 +218,7 @@ Spark クラスターはプレビュー版では Windows クラスターで使�
 
 現在、Azure Data Factory カスタム .NET アクティビティは Linux ベースの HDInsight クラスターでサポートされていません。代わりに、以下のいずれかの方法を使用して、ADF パイプラインの一部としてカスタム アクティビティを実装する必要があります。
 
--   Azure Batch プールで .NET アクティビティを実行します。「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](../data-factory/data-factory-use-custom-activities.md/#AzureBatch)」の Azure Batch のリンクされたサービスの使用に関するセクションを参照してください。
+-   Azure Batch プールで .NET アクティビティを実行します。「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](../data-factory/data-factory-use-custom-activities.md#AzureBatch)」の Azure Batch のリンクされたサービスの使用に関するセクションを参照してください。
 
 -   MapReduce アクティビティとしてアクティビティを実装します。詳細については、「[Data Factory から MapReduce プログラムを起動する](../data-factory/data-factory-map-reduce.md)」を参照してください。
 
@@ -254,4 +254,4 @@ Linux クラスター ノードで直接実行されるスクリプト (Hive ま
 
 -   [Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

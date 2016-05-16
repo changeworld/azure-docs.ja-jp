@@ -14,174 +14,72 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="04/26/2016"
 	ms.author="davidmu"/>
 
 # 仮想マシン スケール セットで仮想マシンを管理する
 
-Azure PowerShell を使用すると、Microsoft Azure でリソースを管理する際に高い処理能力と柔軟性が得られます。この記事では、仮想マシン スケール セットで仮想マシン リソースを管理する方法を紹介します。
-
-- [仮想マシン スケール セットに関する情報を表示する](#displayvm)
-- [スケール セットで仮想マシンを起動する](#start)
-- [スケール セットで仮想マシンを停止する](#stop)
-- [スケール セットで仮想マシンを再起動する](#restart)
-- [スケール セットから仮想マシンを削除する](#delete)
+この記事では、仮想マシン スケール セットで仮想マシン リソースを管理する方法を紹介します。
 
 スケール セットで仮想マシンを管理するためのあらゆる作業で、管理するマシンのインスタンス ID が必要になります。[Azure リソース エクスプローラー](https://resources.azure.com)を利用し、スケール セットの仮想マシンのインスタンス ID を検索できます。リソース エクスプローラーを利用し、完了した作業の状態を確認することもできます。
 
-[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
+最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
-## <a id="displayvm"></a>仮想マシン スケール セットに関する情報を表示する
+## 仮想マシン スケール セットに関する情報を表示する
 
 スケール セットに関する全般情報を取得できます。これは、インスタンス ビューとも呼ばれています。あるいは、セットのリソースに関する情報など、より具体的な情報を取得できます。
 
-このコマンドで、*resource group name* を、仮想マシン スケール セットが含まれているリソース グループの名前で置き換え、*スケール セット名*を仮想マシン スケール セットの名前で置き換えます。それから、このコマンドを実行します。
+このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* を仮想マシン スケール セットの名前に置き換えます。それから、このコマンドを実行します。
 
     Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
 
 次のような結果が返されます。
 
-    Sku                      :  {
-                                  "name": "Standard_A0",
-                                  "tier": "Standard",
-                                  "capacity": 4
-                                }
-    UpgradePolicy            :  {
-                                  "mode": "Manual"
-                                }
-    VirtualMachineProfile    :  {
-                                  "osProfile": {
-                                    "computerNamePrefix": "myvmss1",
-                                    "adminUserName": "user1",
-                                    "adminPassword": null,
-                                    "customData": null,
-                                    "windowsConfiguration": {
-                                      "provisionVMAgent": true,
-                                      "enableAutomaticUpdates": true,
-                                      "timeZone": null,
-                                      "additionalUnattendContent": null,
-                                      "winRM": null
-                                    }
-                                    "linuxConfiguration": null,
-                                    "secrets": []
-                                  },
-                                  "storageProfile": {
-                                    "imageReference": {
-                                      "publisher": "MicrosoftWindowsServer",
-                                      "offer": "WindowsServer",
-                                      "sku": "2012-R2-Datacenter",
-                                      "version": "latest"
-                                    },
-                                    "osDisk": {
-                                      "name": "vmssosdisk",
-                                      "caching": "ReadOnly",
-                                      "createOption": "FromImage",
-                                      "osType": null,
-                                      "image": null,
-                                      "vhdContainers": [
-                                        "https://amyst1.blob.core.windows.net/vmss",
-                                        "https://gmyst1.blob.core.windows.net/vmss",
-                                        "https://mmyst1.blob.core.windows.net/vmss",
-                                        "https://smyst1.blob.core.windows.net/vmss",
-                                        "https://ymyst1.blob.core.windows.net/vmss"
-                                      ]
-                                    }
-                                  },
-                                  "networkProfile": {
-                                    "networkInterfaceConfigurations": [
-                                      {
-                                        "name": "myresnc2",
-                                        "properties.primary": true,
-                                        "properties.ipConfigurations": [
-                                          {
-                                            "name": "ip1",
-                                            "properties.subnet": {
-                                              "id": "/subscriptions/{subscription-id}/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/myresvn1/subnets/myressn1"
-                                            },
-                                            "properties.loadBalancerBackendAddressPools": [
-                                              {
-                                                "id": "/subscriptions/{subscription-id}/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/myreslb1/backendAddressPools/bepool1"
-                                              }
-                                            ],
-                                            "properties.loadBalancerInboundNatPools": [
-                                              {
-                                                "id": "/subscriptions/{subscription-id}/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/myreslb1/inboundNatPools/natpool1"
-                                              }
-                                            ],
-                                            "id": null
-                                          }
-                                        ],
-                                        "id": null
-                                      }
-                                    ]
-                                  },
-                                  "extensionProfile": {
-                                    "extensions": [
-                                      {
-                                        "name": "Microsoft.Insights.VMDiagnosticsSettings",
-                                        "properties.publisher": "Microsoft.Azure.Diagnostics",
-                                        "properties.type": "IaaSDiagnostics",
-                                        "properties.typeHandlerVersion": "1.5",
-                                        "properties.autoUpgradeMinorVersion": true,
-                                        "properties.settings": {
-                                          "xmlCfg": "{encoded configuration}",
-                                          "storageAccount": "amyst1"
-                                        },
-                                        "properties.protectedSettings": null,
-                                        "properties.provisioningState": null,
-                                        "id": null
-                                      }
-                                    ]
-                                  }
-                                }
-    ProvisioningState           : Succeeded
-    Id                          : /subscriptions/{subscription-id}/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/myvmss1
-    Name                        : myvmss1
-	Type                        : Microsoft.Compute/virtualMachineScaleSets
-	Location                    : westus
-	Tags.Count                  : 0
-	Tags                        :
+    Sku                   : Microsoft.Azure.Management.Compute.Models.Sku
+    UpgradePolicy         : Microsoft.Azure.Management.Compute.Models.UpgradePolicy
+    VirtualMachineProfile : Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile
+    ProvisioningState     : Succeeded
+    OverProvision         :
+    Id                    : /subscriptions/{subscription-id}/resourceGroups/myrg1/providers/Microsoft.Compute/virtualMachineScaleSets/myvmss1
+    Name                  : myvmss1
+    Type                  : Microsoft.Compute/virtualMachineScaleSets
+    Location              : centralus
+    Tags                  :
 
-全般情報を取得するには、*resource group name* を、仮想マシン スケール セットが含まれているリソース グループの名前で置き換え、*スケール セット名*を仮想マシン スケール セットの名前で置き換えます。それから、このコマンドを実行します。
+このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* を仮想マシン スケール セットの名前に置き換え、*InstanceId* を情報の取得元となる仮想マシンのインスタンス ID に置き換えます。それから、このコマンドを実行します。
 
-	Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceView
-
+    Get-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
+        
 次のような結果が返されます。
 
-    VirtualMachine   :  {
-                          "statusesSummary": [
-                            {
-                              "code": "ProvisioningState/succeeded",
-                              "count": 4
-                            }
-                          ]
-                        }
-    Extensions.Count :  1
-    Extensions       :  {
-                          "name": "Microsoft.Insights.VMDiagnosticsSettings",
-                          "statusesSummary": [
-                            {
-                              "code": "ProvisioningState/succeeded",
-                              "count": 4
-                            }
-                          ]
-                        }
-	Statuses.Count   :  1
-	Statuses         :  {
-                          "code": "ProvisioningState/succeeded",
-                          "level": "Info",
-                          "displayStatus": "Provisioning succeeded",
-                          "message": null,
-                          "time": "2016-03-14T20:29:37.170809Z"
-                        }
+    InstanceId         : 1
+    Sku                : Microsoft.Azure.Management.Compute.Models.Sku
+    LatestModelApplied : True
+    InstanceView       :
+    HardwareProfile    :
+    StorageProfile     : Microsoft.Azure.Management.Compute.Models.StorageProfile
+    OsProfile          : Microsoft.Azure.Management.Compute.Models.OSProfile
+    NetworkProfile     : Microsoft.Azure.Management.Compute.Models.NetworkProfile
+    DiagnosticsProfile :
+    AvailabilitySet    :
+    ProvisioningState  : Succeeded
+    LicenseType        :
+    Plan               :
+    Resources          :
+    Id                 : /subscriptions/{subscription-id}/resourceGroups/myrg1/providers/Microsoft.
+                         Compute/virtualMachineScaleSets/myvmss1/virtualMachines/1
+    Name               : myvmss1_1
+    Type               : Microsoft.Compute/virtualMachineScaleSets/virtualMachines
+    Location           : centralus
+    Tags               :
+        
+## スケール セットで仮想マシンを起動する
 
-## <a id="start"></a>スケール セットで仮想マシンを起動する
+このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* をスケール セットの名前に置き換え、*InstanceId* を起動する仮想マシンの ID に置き換えます。それから、このコマンドを実行します。
 
-このコマンドで、仮想マシン スケール セットが含まれているリソース グループの名前で *resource group name* を置き換え、スケール セットの名前で *VM スケール セット名*を置き換え、再起動する仮想マシンの ID で*インスタンス ID* を置き換えます。それから、このコマンドを実行します。
+    Start-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-    Start-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId "instance id"
-
-リソース エクスプローラーで、インスタンスの状態が**実行中**であることがわかります。
+リソース エクスプローラーで、インスタンスの状態が **running** (実行中) であることがわかります。
 
     "statuses": [
       {
@@ -197,13 +95,15 @@ Azure PowerShell を使用すると、Microsoft Azure でリソースを管理�
       }
     ]
 
-## <a id="stop"></a>スケール セットで仮想マシンを停止する
+-InstanceId パラメーターを使用しなければ、セット内のすべての仮想マシンを開始できます。
+    
+## スケール セットで仮想マシンを停止する
 
-このコマンドで、仮想マシン スケール セットが含まれているリソース グループの名前で *resource group name* を置き換え、スケール セットの名前で*スケール セット名*を置き換え、停止する仮想マシンの ID で*インスタンス ID* を置き換えます。それから、このコマンドを実行します。
+このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* をスケール セットの名前に置き換え、*InstanceId* を停止する仮想マシンの ID に置き換えます。それから、このコマンドを実行します。
 
-	Stop-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId "instance id"
+	Stop-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-リソース エクスプローラーで、インスタンスの状態が**割り当て解除**であることがわかります。
+リソース エクスプローラーで、インスタンスの状態が **deallocated** (割り当て解除) であることがわかります。
 
 	"statuses": [
       {
@@ -218,17 +118,23 @@ Azure PowerShell を使用すると、Microsoft Azure でリソースを管理�
         "displayStatus": "VM deallocated"
       }
     ]
+    
+仮想マシンを停止して割当てを解除しない場合、-StayProvisioned パラメーターを使用します。-InstanceId パラメーターを使用しなければ、セット内のすべての仮想マシンを停止できます。
+    
+## スケール セットで仮想マシンを再起動する
 
-## <a id="restart"></a>スケール セットで仮想マシンを再起動する
+このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* をスケール セットの名前に置き換え、*InstanceId* を再起動する仮想マシンの ID に置き換えます。それから、このコマンドを実行します。
 
-このコマンドで、仮想マシン スケール セットが含まれているリソース グループの名前で *resource group name* を置き換え、スケール セットの名前で*スケール セット名*を置き換え、再起動する仮想マシンの ID で*インスタンス ID* を置き換えます。それから、このコマンドを実行します。
+	Restart-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
+    
+-InstanceId パラメーターを使用しなければ、セット内のすべての仮想マシンを再起動できます。
 
-	Restart-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId "instance id"
+## スケール セットから仮想マシンを削除する
 
-## <a id="delete"></a>スケール セットから仮想マシンを削除する
+このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* をスケール セットの名前に置き換え、*InstanceId* をスケール セットから削除する仮想マシンの ID に置き換えます。それから、このコマンドを実行します。
 
-このコマンドで、仮想マシン スケール セットが含まれているリソース グループの名前で *resource group name* を置き換え、スケール セットの名前で*スケール セット名*を置き換え、スケール セットから削除する仮想マシンの ID で*インスタンス ID* を置き換えます。それから、このコマンドを実行します。
+	Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name" -InstanceId #
 
-	Remove-AzureRmVmssVM -ResourceGroupName "resource group name" –VMScaleSetName "scale set name" -InstanceId "instance id"
+-InstanceId パラメーターを使用しなければ、すべての仮想マシンをスケール セットから削除できます。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

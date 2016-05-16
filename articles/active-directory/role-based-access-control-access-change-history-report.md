@@ -10,10 +10,10 @@
 <tags
 	ms.service="active-directory"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="03/23/2016"
+	ms.date="04/28/2016"
 	ms.author="kgremban"/>
 
 # アクセス変更履歴レポートの作成
@@ -67,4 +67,4 @@ azure authorization changelog
 - [Azure のロールベースのアクセス制御](role-based-access-control-configure.md)の基本事項の確認
 - [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)の操作
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

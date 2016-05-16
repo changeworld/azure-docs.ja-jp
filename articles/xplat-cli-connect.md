@@ -31,7 +31,7 @@ Azure CLI からサブスクリプションに接続する方法には、次の 
 
 異なるアカウント ID と Azure サブスクリプションに関する背景については、「[How Azure subscriptions are associated with Azure Active Directory (Azure サブスクリプションを Azure Active Directory に関連付ける方法)](./active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
-## Azure ログインを使用して、Web ポータルを通じて対話型認証を行う
+## Azure ログインを使用した対話型認証
 
 引数なしで `azure login` コマンドを使用して、次のいずれかによる対話型認証を行います。
 
@@ -54,7 +54,7 @@ Azure CLI からサブスクリプションに接続する方法には、次の 
 	+
 	info:    login command OK
 
-## 組織アカウントのユーザー名とパスワードによる Azure ログインの使用
+## ユーザー名とパスワードによる Azure ログインの使用
 
 
 Multi-Factor Authentication を必要としない職場または学校のアカウントを使用する場合は、ユーザー名パラメーターまたはユーザー名とパスワードの両方を持つ `azure login` コマンドを使用して認証します。次の例では、組織アカウントのユーザー名が渡されます。
@@ -76,7 +76,7 @@ Multi-Factor Authentication を必要としない職場または学校のアカ�
 
 Active Directory アプリケーションのサービス プリンシパルを作成し、サービス プリンシパルにサブスクリプションに対するアクセス許可がある場合は、`azure login` コマンドを実行してサービス プリンシパルを認証できます。シナリオによっては、`azure login` コマンドの明示的なパラメーターとして、または CLI スクリプトまたはアプリケーション コードを通じてサービス プリンシパルの資格情報を入力できます。証明書を使用して、Automation のシナリオで非対話的にサービス プリンシパルを認証することもできます。詳細と例については、「[Authenticating a service principal with Azure Resource Manager (Azure Resource Manager でのサービス プリンシパルの認証)](resource-group-authenticate-service-principal.md)」を参照してください。
 
-## 発行設定ファイルによる方法の使用
+## 発行設定ファイルの使用
 
 Azure Service Management モード CLI コマンドを使用するだけで十分である場合は、発行設定ファイルを使用して接続できます。
 
@@ -122,13 +122,13 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 
 Azure CLI には、異なるコマンド セットを使用して、Azure リソースを操作するための次の 2 つのコマンド モードが用意されています。
 
-* **Azure Resource Manager モード** - Resource Manager デプロイ モデルでの Azure リソースを操作するため。このモードを設定するには、`azure config mode arm` を実行します。
+* **Resource Manager モード** - Resource Manager デプロイ モデルで Azure リソースを操作します。このモードを設定するには、`azure config mode arm` を実行します。
 
-* **Azure Service Management モード** - クラシック デプロイ モデルでの Azure リソースを操作するため。このモードを設定するには、`azure config mode asm` を実行します。
+* **サービス管理モード** - クラシック デプロイ モデルで Azure リソースを操作します。このモードを設定するには、`azure config mode asm` を実行します。
 
 最初にインストールされた場合、CLI は Service Management モードです。
 
->[AZURE.NOTE]Azure リソース マネージャー モードと Azure サービス管理モードは互いに排他的です。つまり、どちらか一方のモードで作成されたリソースは、他方のモードは管理できません。
+>[AZURE.NOTE]Resource Manager モードとサービス管理モードは相互に排他的です。つまり、どちらか一方のモードで作成されたリソースは、他方のモードは管理できません。
 
 ## CLI 設定の格納
 
@@ -147,10 +147,10 @@ Azure CLI には、異なるコマンド セットを使用して、Azure リソ
 アカウントに関連付けられたサブスクリプションが Active Directory のみを使用して認証された場合は、ログアウトするとローカル プロファイルからサブスクリプション情報が削除されます。ただし、サブスクリプション用に発行設定ファイルもインポートされている場合は、ログアウトするとローカル プロファイルから Active Directory 関連の情報のみが削除されます。
 ## 次のステップ
 
-* Azure CLI コマンドを使用するには、「[Azure CLI commands in Azure Resource Manager mode (Azure Resource Manager モードでの Azure CLI コマンド)](./virtual-machines/azure-cli-arm-commands.md)」および「 [Azure CLI commands in Azure Service Management mode (Azure Service Management モードでの Azure CLI コマンド)](virtual-machines-command-line-tools.md)」を参照してください。
+* Azure CLI コマンドを使用するには、「[Azure Resource Manager (arm) モードでの Azure CLI コマンド](./virtual-machines/azure-cli-arm-commands.md)」および「[Azure サービス管理 (asm) モードでの Azure CLI コマンド](virtual-machines-command-line-tools.md)」をご覧ください。
 
 * Azure CLI の詳細、ソース コードのダウンロード、問題のレポート、プロジェクトへの協力については、[GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli) のページを参照してください。
 
 * Azure CLI、または Azure を利用していて問題が発生した場合は、[Azure のフォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home)をご覧ください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/25/2016" 
+	ms.date="05/02/2016" 
 	ms.author="thmullan;torsteng;sidneyh" />
 
 # 弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション 
@@ -58,7 +58,7 @@ RLS はシャード データベースでまだ有効になっていないため
 
 ### Entity Framework
 
-Entity Framework を使用するアプリケーションの場合、最も簡単な方法は、「[EF DbContext を使用したデータ依存ルーティング](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md/#data-dependent-routing-using-ef-dbcontext)」で説明されている ElasticScaleContext オーバーライドの中で SESSION\_CONTEXT を設定する方法です。データ依存型ルーティングで仲介された接続を返す前に、SESSION\_CONTEXT の "TenantId" をその接続に指定されている shardingKey に設定する SqlCommand を作成して実行します。この方法では、SESSION\_CONTEXT を設定するコードを 1 回記述するだけで済みます。
+Entity Framework を使用するアプリケーションの場合、最も簡単な方法は、「[EF DbContext を使用したデータ依存ルーティング](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext)」で説明されている ElasticScaleContext オーバーライドの中で SESSION\_CONTEXT を設定する方法です。データ依存型ルーティングで仲介された接続を返す前に、SESSION\_CONTEXT の "TenantId" をその接続に指定されている shardingKey に設定する SqlCommand を作成して実行します。この方法では、SESSION\_CONTEXT を設定するコードを 1 回記述するだけで済みます。
 
 ```
 // ElasticScaleContext.cs 
@@ -312,4 +312,4 @@ GO
 
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

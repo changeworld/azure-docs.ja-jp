@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="02/11/2016"
-	ms.author="adrianha"/>
+	ms.date="05/02/2016"
+	ms.author="glenga"/>
 
 # Apache Cordova アプリへのプッシュ通知の追加
 
@@ -61,20 +61,17 @@ Google Android プラットフォームをターゲットとしているため�
 
 アプリケーションを Android デバイスにデプロイする前に、USB デバッグを有効にする必要があります。Android フォンで次の手順を実行します。
 
-1. **[設定]**、**[端末情報]** の順に移動します。
-2. デベロッパー モードが有効になるまで **[ビルド番号]** をタップします。
-3. **[設定]** に戻ります。
-4. **[開発者向けオプション]** を選択します。
-5. **[USB デバッグ]** をオンにします。
-6. Android フォンを USB ケーブルで開発用 PC に接続します。
+1. **[設定]**、**[端末情報]** の順に移動して、デベロッパー モードが有効になるまで (約 7 回) **[ビルド番号]** をタップします。
+ 
+2. **[設定]**、**[開発者向けオプション]** の順に戻り、**[USB デバッグ]** を有効にしてから、Android フォンを USB ケーブルで開発用 PC に接続します。
 
-このチュートリアルのテストでは、Android 6.0 (Marshmallow) リリースを実行している Google Nexus 5X を使用しました。ただし、その手法は最新のどの Android リリースでも共通です。
+このチュートリアルのテストでは、Android 6.0 (Marshmallow) を実行している Google Nexus 5X を使用しました。ただし、その手法は最新のどの Android リリースでも共通です。
 
 ##<a name="add-push-to-app"></a>アプリケーションにプッシュ通知を追加する
 
-Apache Cordova アプリ プロジェクトでプッシュ通知を処理する準備が整っていることを確認する必要があります。
+Apache Cordova アプリ プロジェクトでプッシュ通知を処理する準備が整っていることを確認する必要があります。Cordova のプッシュ プラグインと、プラットフォーム固有のプッシュ サービスをインストールする必要があります。
 
-### Apache Cordova プッシュ プラグインをインストールする
+### プッシュ プラグインをインストールする
 
 Apache Cordova アプリケーションでは、デバイスやネットワークの機能をネイティブで処理しません。これらの機能は、[npm](https://www.npmjs.com/) または GitHub で公開されているプラグインによって提供されます。ネットワーク プッシュ通知の処理には、`phonegap-plugin-push` プラグインを使用します。
 
@@ -82,32 +79,31 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 
 **コマンド プロンプトから:**
 
+次のコマンドを実行します。
+
     cordova plugin add phonegap-plugin-push
 
 **Visual Studio 内から:**
 
-1.  ソリューション エクスプローラーから `config.xml` ファイルを開きます。
-2.  **[プラグイン]**、**[カスタム]** の順にクリックし、 **[Git]** をインストール元として選択し、`https://github.com/phonegap/phonegap-plugin-push` をソースとして入力します。
+1.  Solution Explorerで `config.xml` ファイルを開き、**[プラグイン]**、**[カスタム]** の順にクリックし、**[Git]** をインストール元として選択し、`https://github.com/phonegap/phonegap-plugin-push` をソースとして入力します。
 
 	![](./media/app-service-mobile-cordova-get-started-push/add-push-plugin.png)
 
-4.  インストール元の横にある矢印をクリックし、**[追加]** をクリックします。
+2.  インストール元の横にある矢印をクリックし、**[追加]** をクリックします。
 
 これでプッシュ プラグインがインストールされました。
 
-### Android Google Play Services をインストールする
+### Google Play Services をインストールする
 
-PhoneGap プッシュ プラグインでは、プッシュ通知に Google Play Services を利用します。インストールするには、次のようにします。
+プッシュ プラグインでは、プッシュ通知に Android Google Play Services を利用します。
 
-1.  **Visual Studio** を開きます。
-2.  **[ツール]**、**[Android]**、**[Android SDK Manager]** の順にクリックします。
-3.  Extras フォルダー内の、インストールされていない必要な各 SDK の横にあるチェック ボックスをオンにします。次のパッケージが必要です。
+1.  **Visual Studio** で **[ツール]**、**[Android]**、**[Android SDK Manager]** の順にクリックし、**[Extras]** フォルダーを展開し、次の SDK がインストールされていれば、それらのチェック ボックスをオンにして確定します。    
     * Android Support Library バージョン 23 以上
     * Android Support Repository バージョン 20 以上
     * Google Play Services バージョン 27 以上
     * Google Repository バージョン 22 以上
-4.  **[パッケージのインストール]** をクリックします。
-5.  インストールが完了するのを待ちます。
+     
+2.  **[パッケージのインストール]** をクリックして、インストールが完了するのを待ちます。
 
 最新の必要なライブラリは、「[phonegap-plugin-push installation documentation (phonegap-plugin-push インストール ドキュメント)]」に記載されています。
 
@@ -169,17 +165,17 @@ PhoneGap プッシュ プラグインでは、プッシュ通知に Google Play 
 
 3. 上記のコードで、`Your_Project_ID` を、[Google デベロッパー コンソール]から入手したアプリのプロジェクト ID (数値) に置き換えます。
 
-## 発行されたモバイル サービスに対してアプリケーションをテストする
+## アプリでプッシュ通知をテストする 
 
-Android フォンを USB ケーブルで直接接続して、アプリケーションをテストできます。**Google Android エミュレーター**の代わりに、**[デバイス]** を選択します。Visual Studio によってデバイスにアプリケーションがダウンロードされ、アプリケーションが実行されます。デバイスでアプリケーションを操作します。
+ここで、アプリを実行して TodoItem テーブルにアイテムを挿入することにより、プッシュ通知をテストできます。同じバックエンドを使用している限り、同じデバイスまたは 2 番目のデバイスからテストを実行できます。次のいずれかの方法により、Android プラットフォームで Cordova アプリをテストします。
 
-開発環境を強化しましょう。[Mobizen] などの画面共有アプリケーションは、PC の Web ブラウザーに Android の画面を表示できるため、Android アプリケーションの開発に役立ちます。
+- **物理デバイス上:** Android デバイスを USB ケーブルで開発用コンピューターに接続します。**Google Android エミュレーター**の代わりに、**[デバイス]** を選択します。Visual Studio によってデバイスにアプリケーションがデプロイされ実行されます。デバイスでアプリケーションを操作できるようになります。開発環境を強化しましょう。[Mobizen] などの画面共有アプリケーションは、PC の Web ブラウザーに Android の画面を表示できるため、Android アプリケーションの開発に役立ちます。
 
-Android エミュレーターで Android アプリをテストすることもできます。まず、エミュレーターに Google アカウントを追加してください。
+- **Android エミュレーター上**: プッシュ通知を受信する前に、エミュレーターで Google アカウントを追加する必要があります。
 
 ##<a name="next-steps"></a>次のステップ
 
-* プッシュ通知の詳細については、「[Azure Notification Hubs]」を参照してください。
+* プッシュ通知の詳細については、「[Notification Hubs]」を参照してください。
 * まだ認証を追加していない場合は、チュートリアルの続きとして、Apache Cordova アプリに[認証を追加]してください。
 
 SDK の使用方法を確認してください。
@@ -199,9 +195,9 @@ SDK の使用方法を確認してください。
 [Mobizen]: https://www.mobizen.com/
 [Visual Studio Community 2015]: http://www.visualstudio.com/
 [Apache Cordova の Visual Studio ツール]: https://www.visualstudio.com/ja-JP/features/cordova-vs.aspx
-[Azure Notification Hubs]: ../notification-hubs/notification-hubs-overview.md
+[Notification Hubs]: ../notification-hubs/notification-hubs-overview.md
 [Apache Cordova SDK]: app-service-mobile-codova-how-to-use-client-library.md
 [ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

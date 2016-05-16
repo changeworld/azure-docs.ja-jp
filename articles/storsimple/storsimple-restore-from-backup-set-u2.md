@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/31/2016"
+   ms.date="04/26/2016"
    ms.author="v-sharos" />
 
 # バックアップ セットからの StorSimple ボリュームの復元 (Update 2)
@@ -23,7 +23,7 @@
 
 **[バックアップ カタログ]** ページには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
- ![[バックアップ カタログ] ページ](./media/storsimple-restore-from-backup-set-u2/HCS_BackupCatalog.png)
+ ![[バックアップ カタログ] ページ](./media/storsimple-restore-from-backup-set-u2/restore.png)
 
 このチュートリアルでは、**[バックアップ カタログ]** ページを使用してバックアップ セットからデバイスを復元する方法について説明します。
 
@@ -73,7 +73,7 @@
 
 1. StorSimple Manager サービスのページで、**[バックアップ カタログ]** タブをクリックします。
 
-    ![バックアップ カタログ](./media/storsimple-restore-from-backup-set-u2/HCS_Restore.png)
+    ![バックアップ カタログ](./media/storsimple-restore-from-backup-set-u2/restore.png)
 
 2. 次の手順に従って、バックアップ セットを選択します。
   1. 適切なデバイスを選択します。
@@ -115,4 +115,4 @@ StorSimple の複製機能と復元機能を使用して、削除されたファ
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

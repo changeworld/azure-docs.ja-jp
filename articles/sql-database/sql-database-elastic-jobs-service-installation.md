@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/24/2016" 
+	ms.date="05/02/2016" 
 	ms.author="ddove;sidneyh"/>
 
 # Elastic Database ジョブのインストールの概要
@@ -50,7 +50,7 @@
 
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-2.	.\\InstallElasticDatabaseJobs.ps1 PowerShell スクリプトを実行し、要求された変数に値を設定します。このスクリプトで、[Elastic Database ジョブ コンポーネントと価格設定](sql-database-elastic-jobs-overview/#components-and-pricing)のページで説明されているコンポーネントが作成され、依存するコンポーネントを適切に使用するように Azure クラウド サービスが構成されます。
+2.	.\\InstallElasticDatabaseJobs.ps1 PowerShell スクリプトを実行し、要求された変数に値を設定します。このスクリプトで、[Elastic Database ジョブ コンポーネントと価格設定](sql-database-elastic-jobs-overview.md#components-and-pricing)のページで説明されているコンポーネントが作成され、依存するコンポーネントを適切に使用するように Azure クラウド サービスが構成されます。
 
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
@@ -187,4 +187,4 @@
 [3]: ./media/sql-database-elastic-jobs-service-installation/start-board.png
 [4]: ./media/sql-database-elastic-jobs-service-installation/not-done.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

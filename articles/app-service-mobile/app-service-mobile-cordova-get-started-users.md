@@ -4,7 +4,7 @@
 	services="app-service\mobile"
 	documentationCenter="javascript"
 	authors="adrianhall"
-	manager="ggailey777"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="02/11/2016"
-	ms.author="adrianha"/>
+	ms.date="05/02/2016"
+	ms.author="glenga"/>
 
 # Apache Cordova アプリへの認証の追加
 
@@ -32,9 +32,7 @@
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-+ Visual Studio で、[Mobile Apps の使用]チュートリアルを実行したときに作成したプロジェクトを開き、**Google Android エミュレーター**でアプリケーションを実行します。さらに、アプリケーションの起動後に、予期しない接続エラーが表示されることを確認します。
-
-    これは、アプリが認証されていないユーザーとしてバックエンドにアクセスしようとするために生じます。バックエンドは、OAuth を使用して認証ページにユーザーをリダイレクトします。ただし、アプリケーションでは OAuth エンドポイントを信頼していません。
+これで、バックエンドへの匿名アクセスが無効になっていることを確認できます。Visual Studio で、[Mobile Apps の使用]に関するチュートリアルを実行したときに作成したプロジェクトを開いて、**Google Android エミュレーター**でアプリケーションを実行し、アプリケーションの起動後に、予期しない接続エラーが表示されることを確認します。
 
 次に、Mobile App バックエンドのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
@@ -57,7 +55,7 @@
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
 			data: gap: https://login.windows.net https://yourapp.azurewebsites.net; style-src 'self'">
 
-    `https://login.windows.net` を上の表の OAuth ホストに置き換える必要があります。このメタ タグの詳細については、[Content-Security-Policy に関するドキュメント]をご覧ください。
+    `https://login.windows.net` を上の表の OAuth ホストで置き換える必要があります。このメタ タグの詳細については、[Content-Security-Policy に関するドキュメント]をご覧ください。
 
     一部の認証プロバイダーについては、適切なモバイル デバイスで使用する場合、Content-Security-Policy を変更する必要がありません。たとえば、Android デバイスで Google 認証を使用する場合は、Content-Security-Policy を変更する必要はありません。
 
@@ -111,4 +109,4 @@ SDK の使用方法を確認してください。
 [ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

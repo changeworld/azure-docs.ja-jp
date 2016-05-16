@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="02/12/2016"
+	ms.date="04/28/2016"
 	ms.author="yuridio"/>
 
 #強力な ID ソリューションによりデータ セキュリティを強化するための計画を立てる
@@ -81,4 +81,4 @@ IT が各段階でデータ自体を保護できるようにする技術制御�
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

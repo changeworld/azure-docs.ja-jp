@@ -18,7 +18,7 @@
 
 # Azure App Service でのアプリの復元
 
-この記事では、[App Service](app-service-value-prop-what-is) の Backup 機能を使用して以前にバックアップした App Service アプリを復元する方法について説明します。詳細については、「[App Service の Backup](web-sites-backup.md)」を参照してください。
+この記事では、[App Service](../app-service/app-service-value-prop-what-is.md) の Backup 機能を使用して以前にバックアップした App Service アプリを復元する方法について説明します。詳細については、「[App Service の Backup](web-sites-backup.md)」を参照してください。
 
 App Service の復元機能を使用すると、リンクされたデータベース (SQL Database または MySQL) をオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりすることができます。最新バージョンと並行して実行される新しいアプリを作成すると、A/B テストを実施する場合に役立ちます。
 
@@ -106,4 +106,4 @@ REST API を使用して、App Service アプリのバックアップと復元�
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0504_2016-->

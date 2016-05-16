@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016" 
+	ms.date="05/02/2016" 
 	ms.author="garye" />
 
 
@@ -24,10 +24,9 @@
 
 Machine Learning Studio を使用して Machine Learning Web サービスを作成してデプロイする方法の詳細については、次を参照してください。
 
-- [Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
-- [Machine Learning Studio の概要](https://azure.microsoft.com/documentation/videos/getting-started-with-ml-studio/)
-- [Azure Machine Learning のプレビュー](https://studio.azureml.net/)
-- [Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)
+- Machine Learning Studio で実験を作成する方法については、[初めての実験を作成する方法のチュートリアル](machine-learning-create-experiment.md)をご覧ください。
+- Web サービスをデプロイする方法の詳細については、「[Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
+- Machine Learning 全般の詳細については、[Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
 
 ## Azure Machine Learning Web サービス ##
 
@@ -38,7 +37,7 @@ Azure Machine Learning には、2 種類のサービスがあります。
 - 要求応答サービス (RRS) – 待ち時間が短く拡張性の高い、Machine Learning Studio から作成およびデプロイされるステートレスなモデルへのインターフェイスを提供するサービス。
 - バッチ実行サービス (BES) – データ レコードのバッチをスコア付けする非同期のサービス。
 
-Machine Learning Web サービスの詳細については、「[Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」を参照してください。
+Machine Learning Web サービスの詳細については、「[Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
 
 ## Azure Machine Learning の承認キーを取得する ##
 Web サービスの API キーは、Machine Learning Web サービスから取得します。Machine Learning Studio または Azure ポータルから取得できます。
@@ -69,7 +68,7 @@ Machine Learning API ヘルプ ページは、Web サービスをデプロイす
 3. **[API ヘルプ ページ]** - **[要求/応答]** または **[バッチの実行]** を選択します。
 
 
-**Machine Learning API のヘルプ ページ** Machine Learning API のヘルプ ページには、予測 Web サービスに関する詳細が含まれます。
+**Machine Learning API のヘルプ ページ** Machine Learning API のヘルプ ページには、予測 Web サービスの詳細が含まれます。
 
 
 
@@ -88,7 +87,7 @@ Machine Learning Web サービスに接続するには、**Microsoft.AspNet.WebA
 **サンプル コードを実行するには**
 
 1. Machine Learning サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験を発行します。
-2. Web サービスからのキーを持つ apiKey を割り当てます。前述の「**Azure Machine Learning の承認キーを取得する**」を参照してください。
+2. Web サービスからのキーを持つ apiKey を割り当てます。前述の「**Azure Machine Learning の承認キーを取得する**」をご覧ください。
 3. 要求の URI を含む serviceUri を割り当てます。
 
 
@@ -100,7 +99,7 @@ Machine Learning Web サービスに接続するには、ScoreData を渡す **u
 **サンプル コードを実行するには**
 
 1. Machine Learning サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験を発行します。
-2. Web サービスからのキーを持つ apiKey を割り当てます。前述の「**Azure Machine Learning の承認キーを取得する**」を参照してください。
+2. Web サービスからのキーを持つ apiKey を割り当てます。前述の「**Azure Machine Learning の承認キーを取得する**」をご覧ください。
 3. 要求の URI を含む serviceUri を割り当てます。要求の URI を取得する方法を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

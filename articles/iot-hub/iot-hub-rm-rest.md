@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="02/12/2016"
+     ms.date="05/03/2016"
      ms.author="dobett"/>
 
 # チュートリアル: C# プログラムと REST API を使って IoT Hub を作成する
@@ -61,7 +61,7 @@
     using Newtonsoft.Json;
     ```
     
-7. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。**リソース グループ名**は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。**IoT Hub 名**は、**MyIoTHub** など、作成する IoT Hub の名前です (この名前はグローバルに一意であることが必要です)。**デプロイ名**は、デプロイの名前です (**Deployment\_01** など)。
+7. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。**リソース グループ名**は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。**IoT Hub 名**は、**MyIoTHub** など、作成する IoT Hub の名前です (この名前はグローバルに一意でなければならないため、自分の名前やイニシャルを含めます)。**デプロイ名**は、デプロイの名前です (**Deployment\_01** など)。
 
     ```
     static string applicationId = "{Your ApplicationId}";
@@ -70,7 +70,7 @@
     static string password = "{Your application Password}";
     
     static string rgName = "{Resource group name}";
-    static string iotHubName = "{IoT Hub name}";
+    static string iotHubName = "{IoT Hub name including your initials}";
     ```
 
 [AZURE.INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
@@ -183,4 +183,4 @@
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

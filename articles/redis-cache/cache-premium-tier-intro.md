@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/09/2016" 
+	ms.date="04/27/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache Premium レベルの概要
@@ -54,4 +54,4 @@ Basic/Standard レベルで作成されたキャッシュは、パブリック �
 -	[How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)
   
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

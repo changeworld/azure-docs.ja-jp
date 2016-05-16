@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/02/2016"
+   ms.date="05/02/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティ センターでのセキュリティに関する推奨事項の管理
@@ -82,6 +82,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 |SQL データベースでの透過的なデータ暗号化の有効化|SQL データベース (Azure SQL のサービスのみ) に対して暗号化を有効にすることをお勧めします。|
 |VM エージェントのデプロイ|VM エージェントを必要とする VM を確認できます。パッチのスキャン、基準のスキャン、およびマルウェア対策プログラムをプロビジョニングするには、VM 上に VM エージェントをインストールする必要があります。既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。「[VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」の記事には、VM エージェントのインストール方法が記載されています。|
 | [ディスク暗号化の適用](security-center-apply-disk-encryption.md) |Azure Disk Encryption を使用して VM ディスクを暗号化することをお勧めします (Windows VM および Linux VM)。VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。|
+|セキュリティの連絡先詳細の提供 | 各サブスクリプションのセキュリティの連絡先情報を提供することをお勧めします。連絡先情報は、電子メール アドレスと電話番号です。セキュリティ チームがリソースの侵害に気付いた場合、この情報を使用してご連絡します。 |
 
 推奨事項をフィルター処理し、無視することができます。
 
@@ -109,11 +110,12 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 ## 次のステップ
 このドキュメントでは、セキュリティ センターのセキュリティに関する推奨事項について説明しました。セキュリティ センターの詳細については、次を参照してください。
 
-- 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 -- Azure サブスクリプションとリソース グループに対するセキュリティ ポリシーの構成方法について説明しています。
+- 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーを構成する方法について説明しています。
 - 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」 -- Azure リソースの正常性を監視する方法について説明しています。
 - 「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理と対応の方法について説明しています。
-- 「[Azure セキュリティ センターについてよく寄せられる質問](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- 「[Azure セキュリティ センターのよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) – Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
 [2]: ./media/security-center-recommendations/recommendations-tile.png
@@ -122,4 +124,4 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 [5]: ./media/security-center-recommendations/select-enable-antimalware.png
 [6]: ./media/security-center-recommendations/install-antimalware.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

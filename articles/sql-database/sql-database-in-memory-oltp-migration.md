@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/11/2016"
+	ms.date="05/02/2016"
 	ms.author="jodebrui"/>
 
 
@@ -68,7 +68,9 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 SSMS には、アクティブなワークロードがあるデータベースに対して実行できる**トランザクション パフォーマンス分析の概要**レポートが用意されています。このレポートを使用して、インメモリ OLTP への移行の候補となるテーブルとストアド プロシージャを特定できます。
 
-SSMS でこのレポートを生成するには、**オブジェクト エクスプローラー**でデータベース ノードを右クリックし、**[レポート]**、**[標準レポート]**、**[トランザクション パフォーマンス分析の概要]** の順にクリックします。
+SSMS でこのレポートを生成するには、
+- **オブジェクト エクスプローラー**でデータベース ノードを右クリックし、
+- **[レポート]**、**[標準レポート]**、**[トランザクション パフォーマンス分析の概要]** の順にクリックします。
 
 詳細については、「[テーブルまたはストアド プロシージャをインメモリ OLTP に移植する必要があるかどうかの確認](http://msdn.microsoft.com/library/dn205133.aspx)」を参照してください。
 
@@ -83,7 +85,8 @@ SSMS でこのレポートを生成するには、**オブジェクト エクス
 
 1. SSMS を使用して、テスト データベースに接続します。
 
-2. クエリで WITH (SNAPSHOT) オプションを使用しなくても済むように、次に示す T-SQL ステートメントでデータベース オプションを設定します。```
+2. クエリで WITH (SNAPSHOT) オプションを使用しなくても済むように、次の T-SQL ステートメントに示すようにデータベース オプションを設定します。
+```
 ALTER DATABASE CURRENT
 	SET
 		MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
@@ -234,4 +237,4 @@ CREATE PROCEDURE schemaname.procedurename
 
 - [メモリ最適化アドバイザー](http://msdn.microsoft.com/library/dn284308.aspx)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->
