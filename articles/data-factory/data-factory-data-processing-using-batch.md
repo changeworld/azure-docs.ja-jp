@@ -13,13 +13,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/05/2016"
+    ms.date="04/26/2016"
     ms.author="spelluru"/>
 # Azure Batch と Data Factory を使用した HPC とデータのオーケストレーション
 
-ハイ パフォーマンス コンピューティング (HPC) はこれまでオンプレミスのデータ センターのドメイン (データを処理するスーパー コンピューター) でしたが、使用可能な物理マシンの数によって制限されます。Azure Batch サービスは、HPC をサービスとして提供することでこれを変革します。マシンを必要な数だけ構成することができます。また Batch は、作業のスケジューリングと調整を処理して、実行するアルゴリズムに集中できるようにします。Azure Data Factory は Batch を完全に補完するもので、データ移動のオーケストレーションを簡素化します。Data Factory を使用すると、ETL のデータの定期的な移動を指定し、データを処理した後、結果を永続記憶域に移動することができます。たとえば、センサーから収集されたデータは、(Data Factory によって) 一時的な場所に移動されます。ここで Batch が (Data Factory の制御下で) データを処理して新しい結果セットを生成します。その後、Data Factory によって結果が最終的なリポジトリに移動されます。これら 2 つのサービスを連動させることで、HPC を効率的に使用して定期的なスケジュールで大量のデータを処理することができます。
+ここでは、大規模なデータセットを自動的に移動して処理するソリューションの例を示します。このソリューションはエンド ツー エンドであり、アーキテクチャとコードが含まれています。ソリューションは、2 つの Azure サービスを基盤としています。Azure Batch は、コンピューターを必要な数だけ構成し、作業のスケジューリングと調整を行うために、サービスとして HPC を提供します。Azure Data Factory は、データ移動のオーケストレーションを簡素化することで Batch を補完します。ETL のデータの定期的な移動を指定し、データを処理した後、結果を永続記憶域に移動することができます。
 
-ここでは、大規模なデータセットを自動的に移動して処理するエンド ツー エンドのソリューション例を提供します。このアーキテクチャは、金融サービスによるリスク モデリング、画像処理とレンダリング、およびゲノムの分析などの多くのシナリオに関係します。設計者および IT 意思決定者は、ダイアグラムと基本的な手順から概要を取得します。開発者は、独自の実装の出発点として、コードを使用できます。この記事には、ソリューション全体が含まれています。
+このアーキテクチャは、金融サービスによるリスク モデリング、画像処理とレンダリング、およびゲノムの分析などの多くのシナリオに関係します。
 
 これらのサービスに精通していない場合は、以下のサンプル ソリューションの前に、「[Azure Batch](../batch/batch-api-basics.md)」と「[Data Factory](data-factory-introduction.md)」を参照してください。
 
@@ -51,7 +51,7 @@
 
 **時間**: Azure、Data Factory、および Batch を理解し、前提条件を完了した場合、このソリューションを完了するために、1 ～ 2 時間かかると推定しています。
 
-### 前提条件
+## 前提条件
 
 1.  **Azure サブスクリプション**。Azure サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。「[無料試用版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
@@ -101,7 +101,7 @@
 
 6.  **Microsoft Visual Studio 2012 以降** (Data Factory ソリューションで使用するカスタム Batch アクティビティを作成する場合)。
 
-### ソリューションを作成する手順の概要
+## ソリューションを作成する手順の概要
 
 1.  Data Factory ソリューションで使用するカスタム アクティビティを作成します。このカスタム アクティビティには、データ処理ロジックが含まれています。
 
@@ -709,7 +709,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 > [AZURE.IMPORTANT] BLOB コンテナー内の入力フォルダーに **file.txt** をまだアップロードしていない場合は、パイプラインを作成する前に行ってください。**isPaused** プロパティがパイプラインの JSON で false に設定されているため、パイプラインは **start** の日を過ぎると、すぐに実行されます。
 
-1.  Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] \(省略記号)** をクリックすると表示されます。
+1.  Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] (省略記号)** をクリックすると表示されます。
 
 2.  右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。
 
@@ -761,11 +761,11 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 	-   **AssemblyName** を DLL の名前 (**MyDotNetActivity.dll**) に設定します。
 
-	-   **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。基本的に、コード内の \<namespace\>.\<classname\> です。
+	-   **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。基本的に、コード内の <namespace>.<classname> です。
 
 	-   **PackageLinkedService** は **StorageLinkedService** に設定されます。これは、カスタム アクティビティの zip ファイルを含む Blob Storage を示します。入力/出力ファイルとカスタム アクティビティ zip ファイルに別の Azure Storage アカウントを使用している場合、Azure Storage のリンクされたサービスを別に作成する必要があります。この記事では、同じ Azure Storage アカウントを使用している前提で説明します。
 
-	-   **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。形式は \<containerforthezip\>/\<nameofthezip.zip\> です。
+	-   **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。形式は <containerforthezip>/<nameofthezip.zip> です。
 
 	-   カスタム アクティビティは入力として **InputDataset**、出力として **OutputDataset** を使用します。
 
@@ -893,9 +893,18 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
 3.  **[VM ごとの最大タスク]** を高くまたは低くして、プールを作成します。Data Factory ソリューションで、Azure Batch のリンクされたサービスを更新して、新しく作成したプールを使用します。(**VM ごとの最大タスク**の設定の詳細については、「手順 4: パイプラインを作成して実行する」を参照してください。)
 
-4.  **[自動スケール]** 機能で、Azure Batch プールを作成します。Azure Batch プール内のコンピューティング ノードの自動スケールは、アプリケーションによって使用される処理能力を動的に調整します。「[Azure Batch プール内のコンピューティング ノードの自動スケール](../batch/batch-automatic-scaling.md)」を参照してください。
+4.  **[自動スケール]** 機能で、Azure Batch プールを作成します。Azure Batch プール内のコンピューティング ノードの自動スケールは、アプリケーションによって使用される処理能力を動的に調整します。たとえば、専用 VM 数が 0 の Azure Batch プールと、保留中のタスクの数に基づく自動スケールの数式を作成できます。
+ 
+		pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);$TargetDedicated = max(pendingTaskSampleVector);
 
-    サンプル ソリューションで、**Execute** メソッドは、出力データ スライスを生成するために入力データ スライスを処理する、**Calculate** メソッドを呼び出します。入力データを処理し、Execute メソッドで呼び出される Calculate メソッドを、メソッドの呼び出しに置換する独自のメソッドを記述することができます。
+	詳細については、「[Azure Batch プール内のコンピューティング ノードの自動スケール](../batch/batch-automatic-scaling.md)」をご覧ください。
+
+	Azure Batch サービスでは、VM でカスタム アクティビティを実行する前に、VM の準備に 15 ～ 30 分かかる場合があります。
+	 
+5. サンプル ソリューションで、**Execute** メソッドは、出力データ スライスを生成するために入力データ スライスを処理する、**Calculate** メソッドを呼び出します。入力データを処理し、Execute メソッドで呼び出される Calculate メソッドを、メソッドの呼び出しに置換する独自のメソッドを記述することができます。
+
+ 
+
 
 ## 次の手順: データの処理
 
@@ -929,4 +938,4 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
     -   [Azure Batch ライブラリ .NET の概要](../batch/batch-dotnet-get-started.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -3,7 +3,7 @@
    description="Data Lake Analytics のジョブ、データ ソース、ユーザーの管理方法について説明します。" 
    services="data-lake-analytics" 
    documentationCenter="" 
-   authors="mumian" 
+   authors="edmacauley" 
    manager="paulettm" 
    editor="cgronlun"/>
  
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
    ms.date="01/26/2016"
-   ms.author="jgao"/>
+   ms.author="edmaca"/>
 
 # Azure PowerShell を使用する Azure Data Lake Analytics の管理
 
@@ -392,4 +392,4 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 	  }
 	}
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0504_2016-->

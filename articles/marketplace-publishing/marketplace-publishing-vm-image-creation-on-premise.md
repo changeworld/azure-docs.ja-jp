@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="Azure"
   ms.workload="na"
-  ms.date="02/04/2016"
+  ms.date="04/29/2016"
   ms.author="hascipio; v-divte"/>
 
 # Azure Marketplace 向けの仮想マシン イメージのオンプレミスでの作成
@@ -43,7 +43,6 @@ VHD をダウンロードするには、まず、オペレーティング シス
 
 ### VHD のダウンロード
 BLOB URL が分かったら、[Azure ポータル](http://manage.windowsazure.com/)または PowerShell を使用して VHD をダウンロードできます。
-
 > [AZURE.NOTE] このガイドの作成時点では、VHD をダウンロードするための機能は、新しい Microsoft Azure ポータルにはまだ存在していません。
 
 **現在の [Azure ポータル](http://manage.windowsazure.com/)経由でのオペレーティング システム VHD のダウンロード**
@@ -116,7 +115,7 @@ PowerShell の [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495
 
 > [AZURE.NOTE] これらのコマンドでは、現在のストレージ アカウントのコンテキストが PowerShell に設定されていることを前提としています。PowerShell のセットアップの詳細については、「[Azure PowerShell のセットアップ](marketplace-publishing-powershell-setup.md)」を参照してください。
 ### Mac と Linux 用のコマンドライン ツールを使用したストレージ アカウントの作成
-[Linux コマンドライン ツール](../virtual-machines/command-line-tools/)から、次のようにストレージ アカウントを作成します。
+[Linux コマンドライン ツール](../virtual-machines/virtual-machines-linux-cli-manage.md)から、次のようにストレージ アカウントを作成します。
 
         azure storage account create mystorageaccount --location "West US"
 
@@ -139,4 +138,4 @@ PowerShell の [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495
 - [Marketplace 向けの仮想マシン イメージの作成](marketplace-publishing-vm-image-creation.md)
 - [Azure PowerShell の設定](marketplace-publishing-powershell-setup.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -4,8 +4,8 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/23/2016"
+   ms.date="04/27/2016"
    ms.author="tomfitz"/>
 
 # Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
@@ -38,7 +38,7 @@ Resource Manager で作成したリソースには次の特性があります。
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        Compute、Storage、ネットワークのリソースについては、リソース マネージャーと従来のデプロイのどちらかを使用できます。 **[リソース マネージャー]** を選択します。
+        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -85,7 +85,7 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
 
         ![Classic portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        または、プレビュー ポータルを使い、**クラシック** デプロイを指定 (Compute、Storage、ネットワーク).
+        Or, the Azure portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
@@ -131,29 +131,23 @@ Resource Manager のタグの利用に関する詳細については、「[タ�
 
 ## デプロイ モデルで対応している操作
 
-従来のデプロイ モデルで作成したリソースは Resource Manager の操作に対応していません。場合によっては、Resource Manager コマンドで従来のデプロイで作成したリソースに関する情報を取得できます。あるいは、従来のリソースを別のリソース グループに移動するなどの管理タスクを実行できますが、この種類が Resource Manager の操作に対応するという印象を与えるべきではありません。たとえば、あるリソース グループに Resource Manager と従来のデプロイで作成された Virtual Machines が含まれるとします。例として、次の PowerShell コマンドを実行します。
+従来のデプロイ モデルで作成したリソースは Resource Manager の操作に対応していません。場合によっては、Resource Manager コマンドで従来のデプロイで作成したリソースに関する情報を取得できます。あるいは、従来のリソースを別のリソース グループに移動するなどの管理タスクを実行できますが、この種類が Resource Manager の操作に対応するという印象を与えるべきではありません。たとえば、クラシック デプロイで作成された仮想マシンを含むリソース グループがあるものとします。例として、次の PowerShell コマンドを実行します。
 
-    Get-AzureRmResourceGroup -Name ExampleGroup
+    Get-AzureRmResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
 
-すべての Virtual Machines が返されます。
+仮想マシンが返されます。
+    
+    Name              : ExampleClassicVM
+    ResourceId        : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.ClassicCompute/virtualMachines/ExampleClassicVM
+    ResourceName      : ExampleClassicVM
+    ResourceType      : Microsoft.ClassicCompute/virtualMachines
+    ResourceGroupName : ExampleGroup
+    Location          : westus
+    SubscriptionId    : {guid}
 
-    Resources :
-     Name                 Type                                          Location
-     ================     ============================================  ========
-     ExampleClassicVM     Microsoft.ClassicCompute/domainNames          eastus
-     ExampleClassicVM     Microsoft.ClassicCompute/virtualMachines      eastus
-     ExampleResourceVM    Microsoft.Compute/virtualMachines             eastus
-    ...
-
-しかしながら、**Get AzureRmVM** コマンドを実行した場合:
+ただし、**Get-AzureRmVM** コマンドレットでは、Resource Manager でデプロイされた Virtual Machines のみが返されます。次のコマンドでは、クラシック デプロイで作成された仮想マシンは返されません。
 
     Get-AzureRmVM -ResourceGroupName ExampleGroup
-
-Resource Manager で作成した Virtual Machines のみが表示されます。
-
-    Id       : /subscriptions/xxxx/resourceGroups/ExampleGroup/providers/Microsoft.Compute/virtualMachines/ExampleResourceVM
-    Name     : ExampleResourceVM
-    ...
 
 一般的に、従来のデプロイで作成したリソースは Resource Manager のコマンドと連動しないと考えてください。
 
@@ -167,7 +161,7 @@ Virtual Machines を使用するときには、重要な考慮事項がいくつ
 - Resource Manager のデプロイ モデルでデプロイされた仮想マシンは仮想ネットワークに含める必要があります。
 - 従来のデプロイ モデルでデプロイされた仮想マシンは仮想ネットワークに含める必要がありません。
 
-Virtual Machines のダウンロードに十分な時間を費やすことができる場合は、クラシック デプロイから [ASM2ARM PowerShell スクリプト](https://github.com/fullscale180/asm2arm)を使用する Resource Manager に移行できます。
+Virtual Machines のダウンロードに十分な時間を費やすことができる場合は、クラシック デプロイから [ASM2ARM PowerShell スクリプト](https://github.com/fullscale180/asm2arm)を使用するリソース マネージャーに移行できます。
 
 Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-windows-compare-deployment-models.md)」を参照してください。
 
@@ -179,4 +173,4 @@ Compute、Storage、Networking のリソースの移行に関する詳細につ�
 - Resource Manager のテンプレートの構造について詳しくは、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

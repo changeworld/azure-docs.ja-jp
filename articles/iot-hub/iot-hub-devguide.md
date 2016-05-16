@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="02/03/2016"
+ ms.date="04/29/2016"
  ms.author="dobett"/>
 
 # Azure IoT Hub 開発者ガイド
@@ -68,7 +68,7 @@ IoT Hub を認識しない SDK (または製品の統合) を使用する場合�
 
     ![][img-eventhubcompatible]
 
-> [AZURE.NOTE] SDK で **Hostname** または **Namespace** の値が必要な場合は、**[Event Hub-compatible endpoint]** (イベント ハブと互換性のあるエンドポイント) からスキームを削除します。たとえば、Event Hub 互換のエンドポイントが **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** の場合、**Hostname** は **iothub-ns-myiothub-1234.servicebus.windows.net**、**Namespace** は **iothub-ns-myiothub-1234** です。
+> [AZURE.NOTE] SDK で **Hostname** または **Namespace** の値が必要な場合は、**[Event Hub-compatible endpoint]** (イベント ハブと互換性のあるエンドポイント) からスキームを削除します。たとえば、Event Hub 互換のエンドポイントが ****sb://iothub-ns-myiothub-1234.servicebus.windows.net/** の場合、**Hostname** は **iothub-ns-myiothub-1234.servicebus.windows.net**、**Namespace** は **iothub-ns-myiothub-1234** です。
 
 この場合、指定したイベント ハブに接続するための **ServiceConnect** のアクセス許可を持つ、共有アクセスのセキュリティ ポリシーを使用できます。
 
@@ -90,7 +90,7 @@ Endpoint={Event Hub-compatible endpoint};SharedAccessKeyName={iot hub policy nam
 
 大まかに言うと、デバイス ID レジストリは、デバイス ID リソースの REST 対応のコレクションです。次のセクションでは、デバイス ID リソースのプロパティと、レジストリで ID に対して許可されている操作について詳しく説明します。
 
-> [AZURE.NOTE] デバイス ID レジストリの操作に使用できる HTTP プロトコルと SDK の詳細については、[IoT Hub の API と SDK][lnk-apis-sdks] に関する記事を参照してください。
+> [AZURE.NOTE] デバイス ID レジストリの操作に使用できる HTTP プロトコルと SDK の詳細については、[IoT Hub の API と SDK][lnk-apis-sdks] に関する記事をご覧ください。
 
 ### デバイス ID プロパティ<a id="deviceproperties"></a>
 
@@ -145,107 +145,17 @@ IoT Hub デバイス ID レジストリ:
 - オーケストレーション プロセスのプロビジョニング中。詳細については、「[ソリューションの設計 - デバイス プロビジョニング][lnk-guidance-provisioning]」を参照してください。
 - 何らかの理由でデバイスが侵害された、または許可されていないと考えられる場合。
 
-### デバイス ID のエクスポート<a id="importexport"></a>
+### デバイス ID のインポートとエクスポート <a id="importexport"></a>
 
-エクスポートは、顧客が指定した BLOB コンテナーを使用して、デバイス ID レジスタから読み取ったデバイス ID データを保存する、長時間実行されるジョブです。
+[IoT Hub のリソース プロバイダーのエンドポイント](#endpoints)での非同期操作を使用して、IoT Hub の ID レジストリから一括でデバイス ID をエクスポートすることができます。エクスポートは、顧客が指定した BLOB コンテナーを使用して、デバイス ID レジストリから読み取ったデバイス ID データを保存する、長時間実行されるジョブです。
 
-[IoT Hub のリソース プロバイダーのエンドポイント](#endpoints)での非同期操作を使用して、IoT Hub の ID レジストリから一括でデバイス ID をエクスポートすることができます。
+- インポート API とエクスポート API の詳細については、[Azure IoT Hub のリソース プロバイダー API][lnk-resource-provider-apis]に関する記事を参照してください。
+- インポートおよびエクスポート ジョブの実行方法の詳細については、「[IoT Hub デバイス ID の一括管理][lnk-bulk-identity]」をご覧ください。
 
-エクスポート ジョブで使用できる操作を次に示します。
+[IoT Hub のリソース プロバイダーのエンドポイント](#endpoints)での非同期操作を使用して、IoT Hub の ID レジストリに一括でデバイス ID をインポートすることができます。インポートは、顧客が指定した BLOB コンテナー内のデータを使用して、デバイス ID データをデバイス ID レジストリに書き込む、長時間実行されるジョブです。
 
-* エクスポート ジョブの作成
-* 実行中のジョブの状態の取得
-* 実行中のジョブのキャンセル
-
-> [AZURE.NOTE] 各ハブで一度に実行できるジョブは 1 つのみです。
-
-インポート API とエクスポート API の詳細については、[Azure IoT Hub のリソース プロバイダー API][lnk-resource-provider-apis]に関する記事を参照してください。
-
-インポートおよびエクスポート ジョブの実行方法の詳細については、「[Bulk management of IoT Hub device identities (IoT Hub デバイス ID の一括管理)][lnk-bulk-identity]」を参照してください。
-
-### エクスポート ジョブ
-
-エクスポート ジョブには次のプロパティがあります。
-
-| プロパティ | オプション | 説明 |
-| -------- | ------- | ----------- |
-| jobId | システムにより生成、作成時は無視 | |
-| creationTime | システムにより生成、作成時は無視 | |
-| endOfProcessingTime | システムにより生成、作成時は無視 | |
-| type | 読み取り専用 | **ExportDevices** |
-| status | システムにより生成、作成時は無視 | **[エンキュー]**、**[開始]**、**[完了]**、**[失敗]** |
-| 進捗状況 | システムにより生成、作成時は無視 | 完了の割合を示す整数値。 |
-| outputBlobContainerURI | すべてのジョブで必須 | BLOB コンテナーへの書き込みアクセス権を持つ、BLOB の Shared Access Signature URI (「[BLOB サービスによる SAS の作成および使用][lnk-createuse-sas]」を参照してください)。これは、ジョブの状態と結果の出力に使用されます。 |
-| excludeKeysInExport | 省略可能 | **false** の場合、キーがエクスポートの出力に含まれます。true の場合、キーは **null** としてエクスポートされます。既定値は **false** です。 |
-| failureReason | システムにより生成、作成時は無視 | 状態が **[失敗]** の場合、理由を含む文字列。 |
-
-エクスポート ジョブは、BLOB の Shared Access Signature URI をパラメーターとして取得します。これによって BLOB コンテナーに書き込みアクセス権を許可し、ジョブが結果を出力できるようにします。
-
-このジョブで、**devices.txt** というファイルの指定した BLOB コンテナーに出力結果を書き込みます。このファイルには、「[デバイス ID プロパティ](#deviceproperties)」に示すように、JSON としてシリアル化されたデバイス ID が含まれています。**excludeKeysInExport** パラメーターを **true** に設定した場合、**devices.txt** ファイル内の各デバイスの認証値は **null** に設定されます。
-
-**例**:
-
-```
-{"id":"devA","eTag":"MQ==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"123","secondaryKey":"123"}}}
-{"id":"devB","eTag":"MQ==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"123","secondaryKey":"123"}}}
-{"id":"devC","eTag":"MQ==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"123","secondaryKey":"123"}}}
-```
-
-### デバイス ID のエクスポート
-
-インポートは、顧客が指定した BLOB コンテナー内のデータを使用してデバイス ID データをデバイス ID レジスタに書き込む、長時間実行されるジョブです。
-
-[IoT Hub のリソース プロバイダーのエンドポイント](#endpoints)での非同期操作を使用して、IoT Hub の ID レジストリに一括でデバイス ID をインポートすることができます。
-
-インポート ジョブで使用できる操作を次に示します。
-
-* インポート ジョブの作成
-* 実行中のジョブの状態の取得
-* 実行中のジョブのキャンセル
-
-> [AZURE.NOTE] 各ハブで一度に実行できるジョブは 1 つのみです。
-
-インポート API とエクスポート API の詳細については、[Azure IoT Hub のリソース プロバイダー API][lnk-resource-provider-apis]に関する記事を参照してください。
-
-インポートおよびエクスポート ジョブの実行方法の詳細については、「[Bulk management of IoT Hub device identities (IoT Hub デバイス ID の一括管理)][lnk-bulk-identity]」を参照してください。
-
-### インポート ジョブ
-
-インポート ジョブには次のプロパティがあります。
-
-| プロパティ | オプション | 説明 |
-| -------- | ------- | ----------- |
-| jobId | システムにより生成、作成時は無視 | |
-| creationTime | システムにより生成、作成時は無視 | |
-| endOfProcessingTime | システムにより生成、作成時は無視 | |
-| type | 読み取り専用 | **ImportDevices** |
-| status | システムにより生成、作成時は無視 | **[エンキュー]**、**[開始]**、**[完了]**、**[失敗]** |
-| 進捗状況 | システムにより生成、作成時は無視 | 完了の割合を示す整数値。 |
-| outputBlobContainerURI | すべてのジョブで必須 | BLOB コンテナーへの書き込みアクセス権を持つ、BLOB の Shared Access Signature URI (「[BLOB サービスによる SAS の作成および使用][lnk-createuse-sas]」を参照してください)。これは、ジョブの状態を出力するために使用されます。 |
-| inputBlobContainerURI | 必須 | BLOB コンテナーへの読み込みアクセス権を持つ、BLOB の Shared Access Signature URI (「[BLOB サービスによる SAS の作成および使用][lnk-createuse-sas]」を参照してください)。ジョブは、インポートするデバイス情報をこの BLOB から読み取ります。 |
-| failureReason | システムにより生成、作成時は無視 | 状態が **[失敗]** の場合、理由を含む文字列。 |
-
-インポート ジョブは、BLOB の 2 つの Shared Access Signature URI をパラメーターとして取得します。その 1 つは、ジョブがその状態を出力できるように BLOB コンテナーに対する書き込みアクセスを許可し、もう 1 つは、ジョブがその入力データを読み取ることができるように BLOB コンテナーに対する読み取りアクセスを許可します。
-
-インポート ジョブは、**devices.txt** というファイルの指定した BLOB コンテナーから入力データを読み取ります。このファイルには、「[デバイス ID プロパティ](#deviceproperties)」に示すように、JSON としてシリアル化されたデバイス ID が含まれています。各デバイスの既定のインポート動作は、**importMode** プロパティを追加することで、置き換えることができます。このプロパティには、次のいずれかの値を使用できます。
-
-| importMode | 説明 |
-| -------- | ----------- |
-| **createOrUpdate** | 指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。<br/>該当するデバイスが既に存在する場合、既存の情報は、**ETag** 値に関係なく、指定した入力データで上書きされます。 |
-| **create** | 指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。<br/>該当するデバイスが既に存在する場合は、エラーがログ ファイルに書き込まれます。 |
-| **update** | 指定した **ID** を持つデバイスが既に存在する場合、**ETag** 値に関係なく、既存の情報は指定した入力データで上書きされます。<br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 |
-| **updateIfMatchETag** | 指定した **ID** を持つデバイスが既に存在する場合、**ETag** 値が一致した場合に限り、既存の情報は指定した入力データで上書きされます。<br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。<br/>**ETag** 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 |
-| **createOrUpdateIfMatchETag** | 指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。<br/>該当するデバイスが既に存在する場合、**ETag** 値が一致した場合に限り、既存の情報は指定した入力データで上書きされます。<br/>**ETag** 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 |
-| **delete** | 指定した **ID** を持つデバイスが既に存在する場合、そのデバイスは **ETag** 値に関係なく削除されます。<br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 |
-| **deleteIfMatchETag** | 指定した **ID** を持つデバイスが既に存在する場合、そのデバイスは **ETag** 値が一致した場合に限り削除されます。該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。<br/>ETag 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 |
-
-**例**:
-
-```
-{"id":"devA","eTag":"MQ==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"123","secondaryKey":"123"}}, "importMode":"delete"}
-{"id":"devB","eTag":"MQ==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"123","secondaryKey":"123"}}, "importMode":"createOrUpdate"}
-{"id":"devC","eTag":"MQ==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"123","secondaryKey":"123"}}, "importMode":"create"}
-```
+- インポート API とエクスポート API の詳細については、[Azure IoT Hub のリソース プロバイダー API][lnk-resource-provider-apis]に関する記事を参照してください。
+- インポートおよびエクスポート ジョブの実行方法の詳細については、「[IoT Hub デバイス ID の一括管理][lnk-bulk-identity]」をご覧ください。
 
 ## セキュリティ<a id="security"></a>
 
@@ -278,7 +188,7 @@ IoT Hub では、次の一連の*アクセス許可*を使用して、各 IoT Hu
 - ランタイム デバイス ビジネス ロジック コンポーネントでは *service* ポリシーを使用します。
 - 個々のデバイスは、IoT Hub の ID レジストリに格納されている資格情報を使用して接続します。
 
-IoT Hub のセキュリティに関するトピックのガイダンスについては、「[ソリューションの設計][lnk-guidance-security]」のセキュリティに関するセクションを参照してください。
+IoT Hub のセキュリティに関するトピックのガイダンスについては、「[ソリューションの設計][lnk-guidance-security]」のセキュリティに関するセクションをご覧ください。
 
 ### 認証
 
@@ -294,7 +204,7 @@ Azure IoT Hub では、共有アクセス ポリシーとデバイス ID レジ�
 
 AMQP、MQTT、HTTP など、サポートされているプロトコルごとに、さまざまな方法でトークンが転送されます。
 
-HTTP 認証は、**Authorization** 要求ヘッダーに有効なトークンを含めることによって実装されます。**Authorization** というクエリ パラメーターでも、トークンを転送できます。
+HTTP では、**Authorization** 要求ヘッダーに有効なトークンを含めることによって認証を実装します。**Authorization** というクエリ パラメーターでも、トークンを転送できます。
 
 [AMQP][lnk-amqp] を使用する場合、[SASL PLAIN][lnk-sasl-plain] と [AMQP Claims-Based-Security][lnk-cbs] が IoT Hub でサポートされます。
 
@@ -333,6 +243,7 @@ SASL PLAIN を使用する場合、IoT Hub に接続するクライアントは�
 ## メッセージング
 
 IoT Hub には、通信を行うためのメッセージング プリミティブが用意されています。
+
 - [C2D](#c2d): アプリケーション バックエンド (*service* または *cloud*) から。
 - [D2C](#d2c): デバイスからアプリケーション バックエンドへ。
 
@@ -364,7 +275,7 @@ IoT Hub のメッセージは、次の要素で構成されています。
 | Ack | デバイスがメッセージを使用した結果としてのフィードバック メッセージの生成を IoT Hub に要求するために、C2D メッセージで使用します。使用可能な値: **none** (既定値): フィードバック メッセージは生成されません。**positive**: メッセージが完了した場合にフィードバック メッセージを受信します。**negative**: デバイスでメッセージが完了しないまま、メッセージの有効期限が切れた場合 (または最大配信数に達した場合) にフィードバック メッセージを受信します。**full**: positive と negative の両方の値。詳細については、「[メッセージのフィードバック](#feedback)」を参照してください。 |
 | ConnectionDeviceId | IoT Hub で D2C メッセージに設定します。メッセージを送信したデバイスの **deviceId** が含まれます。 |
 | ConnectionDeviceGenerationId | IoT Hub で D2C メッセージに設定します。([デバイス ID のプロパティ](#deviceproperties)に従って) メッセージを送信したデバイスの **generationId** が含まれています。 |
-| ConnectionAuthMethod | IoT Hub で D2C メッセージに設定します。メッセージを送信するデバイスの認証に使用する認証方法に関する情報。詳細については、「[なりすまし対策のプロパティ](#antispoofing)」を参照してください。|
+| ConnectionAuthMethod | IoT Hub で D2C メッセージに設定します。メッセージを送信するデバイスの認証に使用する認証方法に関する情報。詳細については、「[なりすまし対策のプロパティ](#antispoofing)」をご覧ください。|
 
 ### 通信プロトコルの選択<a id="amqpvshttp"></a>
 
@@ -386,8 +297,10 @@ IoT Hub では、次の制限事項と特定の動作で MQTT v3.1.1 プロト�
 
   * **QoS 2 はサポートされていません**: デバイス クライアントが **QoS 2** によってメッセージを発行すると、IoT Hub はネットワーク接続を閉じます。デバイス クライアントが **QoS 2** を使用してトピックをサブスクライブしている場合、IoT Hub は **SUBACK** パケットに最大の QoS レベル 1 を許可します。
   * **保持**: デバイス クライアントが RETAIN フラグを 1 に設定してメッセージを発行すると、IoT Hub はそのメッセージに **x-opt-retain** アプリケーション プロパティを追加します。すなわち、IoT Hub は保持メッセージを保持するのでなく、バックエンド アプリケーションに渡します。
+  
+詳細については、「[IoT Hub の MQTT サポート][lnk-mqtt-support]」をご覧ください。
 
-最後の考慮事項として、[Azure IoT プロトコル ゲートウェイ][lnk-azure-protocol-gateway]に関するページをご覧ください。これにより、IoT Hub と直接やり取りする高性能のカスタム プロトコル ゲートウェイをデプロイできます。Azure IoT プロトコル ゲートウェイでは、ブラウンフィールド MQTT デプロイメントまたは他のカスタム プロトコルに応じてデバイス プロトコルをカスタマイズすることができます。このアプローチの短所は、カスタム プロトコル ゲートウェイを自前でホストし運用する必要がある点です。
+最後の考慮事項として、[Azure IoT Hub プロトコル ゲートウエイ][lnk-azure-protocol-gateway]に関するページを確認してください。これにより、IoT Hub と直接やり取りする高性能のカスタム プロトコル ゲートウェイをデプロイできます。Azure IoT プロトコル ゲートウェイでは、ブラウンフィールド MQTT デプロイメントまたは他のカスタム プロトコルに応じてデバイス プロトコルをカスタマイズすることができます。このアプローチの短所は、カスタム プロトコル ゲートウェイを自前でホストし運用する必要がある点です。
 
 ### D2C (デバイスからクラウド)<a id="d2c"></a>
 
@@ -406,10 +319,10 @@ IoT Hub では、[Event Hubs][lnk-event-hubs] と類似した方法で D2C メ�
 
 * 「[セキュリティ](#security)」セクションで説明したように、IoT Hub では、デバイスごとの認証とアクセス制御が許可されています。
 * IoT Hub では、何百万ものデバイスを同時に接続できますが (「[クォータとスロットル](#throttling)」を参照してください)、Event Hubs では、名前空間ごとの AMQP 接続が 5000 に制限されています。
-* IoT Hub では、**PartitionKey** を使用した任意のパーティション分割は許可されていません。D2C メッセージは、元の **deviceId** に基づいてパーティション分割されます。
+* IoT Hub では、**PartitionKey** を使用した任意のパーティション分割は許可されていません。D2C メッセージは、送信元の **deviceId** に基づいてパーティション分割されます。
 * IoT Hub のスケーリングは Event Hubs と若干異なります。詳細については、「[IoT Hub のスケーリング][lnk-guidance-scale]」を参照してください。
 
-上記の説明は、すべてのシナリオで IoT Hub が Event Hubs に代わるという意味ではないので、ご注意ください。たとえば、一部のイベントの計算処理では、データ ストリームを分析する前に、別のプロパティまたはフィールドを基準にイベントを再パーティション分割する必要があります。このシナリオでは、Event Hub を使用して、ストリーム処理パイプラインの 2 つの部分を分離できます。詳細については、「[Azure Event Hubs の概要][lnk-eventhub-partitions]」の「*パーティション*」を参照してください。
+上記の説明は、すべてのシナリオで IoT Hub が Event Hubs に代わるという意味ではないので、ご注意ください。たとえば、一部のイベントの計算処理では、データ ストリームを分析する前に、別のプロパティまたはフィールドを基準にイベントを再パーティション分割する必要があります。このシナリオでは、Event Hub を使用して、ストリーム処理パイプラインの 2 つの部分を分離できます。詳細については、「[Azure Event Hubs の概要][lnk-eventhub-partitions]」の「*パーティション*」をご覧ください。
 
 D2C メッセージングの使用方法の詳細については、[IoT Hub の API と SDK][lnk-apis-sdks] に関する記事を参照してください。
 
@@ -456,7 +369,7 @@ D2C メッセージでのデバイスのなりすましを回避するために�
 
 「[エンドポイント](#endpoints)」セクションで詳しく説明されているように、サービス向けのエンドポイント (**/messages/devicebound**) 経由で C2D メッセージを送信し、デバイスはデバイス固有のエンドポイント (**/devices/{deviceId}/messages/devicebound**) 経由でそのメッセージを受信できます。
 
-個々の C2D メッセージの宛先は単一のデバイスで、**to** プロパティが **/devices/{deviceId}/messages/devicebound** に設定されます。
+個々の C2D メッセージの宛先は単一のデバイスであり、**to** プロパティが **/devices/{deviceId}/messages/devicebound** に設定されます。
 
 **重要**: 各デバイスのキューで保持できる C2D メッセージは最大 50 個です。同じデバイスにそれ以上のメッセージを送信しようとすると、エラーが発生します。
 
@@ -473,6 +386,7 @@ D2C メッセージでのデバイスのなりすましを回避するために�
 サービスからメッセージが送信されると、そのメッセージは*エンキュー*されたと見なされます。デバイスでメッセージを*受信*する場合、同じデバイス上の他のスレッドが他のメッセージの受信を開始できるようにするために、IoT Hub によりメッセージが*ロック*されます (状態は**非表示**に設定されます)。デバイスのスレッドがメッセージの処理を完了すると、メッセージを*完了*して IoT Hub にその旨を通知します。
 
 デバイスは次の動作をすることもあります。
+
 - メッセージの*拒否*。この場合、IoT Hub によってメッセージの状態が**配信不能**に設定されます。
 - メッセージの*破棄*。この場合、IoT Hub によってメッセージがキューに戻され、状態が**エンキュー**に設定されます。
 
@@ -498,7 +412,7 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 
 > [AZURE.NOTE] **Ack** が **full** の場合で、フィードバック メッセージを受信しないときは、フィードバック メッセージの有効期限が切れたことを意味します。このとき、元のメッセージがどうなったかをサービスが認識することはできません。実際には、有効期限切れになる前にフィードバックをサービスが確実に処理できることが必要です。有効期限は最長 2 日間であるため、障害が発生した場合も、サービスを起動して稼働させる時間が十分にあると考えられます。
 
-「[エンドポイント](#endpoints)」で説明したように、IoT Hub はメッセージとしてサービス向けエンドポイント (**/messages/servicebound/feedback**) 経由でフィードバックを配信します。フィードバックの受信セマンティクスは C2D メッセージの場合と同様であり、[メッセージのライフサイクル](#message lifecycle)も同じです。可能な限り、メッセージのフィードバックは、次の形式で 1 つのメッセージのバッチとして処理します。
+「[エンドポイント](#endpoints)」で説明したように、IoT Hub はサービス向けエンドポイント (**/messages/servicebound/feedback**) 経由で、メッセージとしてフィードバックを配信します。フィードバックの受信セマンティクスは C2D メッセージの場合と同様であり、[メッセージのライフサイクル](#message lifecycle)も同じです。可能な限り、メッセージのフィードバックは、次の形式で 1 つのメッセージのバッチとして処理します。
 
 デバイスによってフィードバックのエンドポイントから取得された各メッセージには、次のプロパティがあります。
 
@@ -580,10 +494,11 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 
 たとえば、1 つの S1 ユニットを購入した場合、1 秒あたり 100 接続のスロットルを利用できます。これは、100,000 個のデバイスに接続するために、少なくとも 1,000 秒 (約 16 分) かかることを意味します。ただし、デバイス ID レジストリに登録されたデバイスの数だけ、同時に接続されたデバイスを持つことができます。
 
+ブログ投稿「[IoT Hub throttling and you (IoT Hub スロットルの操作)][lnk-throttle-blog]」では、IoT Hub スロットルの動作について詳しく説明しています。
 
 **注**:任意の時点で、IoT Hub にプロビジョニングされたユニットを増やすことで、クォータやスロットルの制限値を増やすことができます。
 
-**重要**: ID レジストリの操作は、デバイスの管理とプロビジョニングのシナリオでの実行時の使用を目的としています。多数のデバイス ID の読み取りまたは更新は、[インポート/エクスポート ジョブ](#importexport)でサポートされています。
+**重要**: ID レジストリの操作は、デバイスの管理とプロビジョニングのシナリオにおける実行時の使用を目的としています。多数のデバイス ID の読み取りまたは更新は、[インポート/エクスポート ジョブ](#importexport)でサポートされています。
 
 ## 次のステップ
 
@@ -602,8 +517,8 @@ IoT Hub の開発の概要については以上です。詳細については、
 [img-lifecycle]: ./media/iot-hub-devguide/lifecycle.png
 [img-eventhubcompatible]: ./media/iot-hub-devguide/eventhubcompatible.png
 
-[lnk-compatibility]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
-[lnk-apis-sdks]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
+[lnk-compatibility]: iot-hub-tested-configurations.md
+[lnk-apis-sdks]: iot-hub-sdks-summary.md
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
 [lnk-resource-provider-apis]: https://msdn.microsoft.com/library/mt548492.aspx
 
@@ -639,5 +554,7 @@ IoT Hub の開発の概要については以上です。詳細については、
 [lnk-bulk-identity]: iot-hub-bulk-identity-mgmt.md
 [lnk-eventhub-partitions]: ../event-hubs/event-hubs-overview.md#partitions
 [lnk-manage]: iot-hub-manage-through-portal.md
+[lnk-mqtt-support]: iot-hub-mqtt-support.md
+[lnk-throttle-blog]: https://azure.microsoft.com/blog/iot-hub-throttling-and-you/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

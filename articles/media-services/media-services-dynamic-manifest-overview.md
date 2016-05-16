@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
- 	ms.date="04/18/2016" 
+ 	ms.date="05/03/2016" 
 	ms.author="cenkdin;juliako"/>
 
 #フィルターと動的マニフェスト
@@ -87,7 +87,7 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)
 
 
-コンテンツを配信してストリーミング URL をビルドする方法の詳細については、「[コンテンツの配信の概要](media-services-deliver-content-overview/)」をご覧ください。
+コンテンツを配信してストリーミング URL をビルドする方法の詳細については、「[コンテンツの配信の概要](media-services-deliver-content-overview.md)」をご覧ください。
 
 
 >[AZURE.NOTE]動的マニフェストではアセットやそのアセットの既定のマニフェストは変更されないことにご注意ください。クライアントはストリームにフィルターを使用するかしないかを選択できます。
@@ -236,4 +236,4 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

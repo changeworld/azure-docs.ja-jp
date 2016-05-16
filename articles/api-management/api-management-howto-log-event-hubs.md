@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/15/2016" 
+	ms.date="04/27/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management で Azure Event Hubs にイベントを記録する方法
@@ -71,14 +71,12 @@ API Management のロガーは、[API Management REST API](http://aka.ms/smapi) 
       "credentials" : {
         "name" : "Name of the Event Hub from the Azure Classic Portal",
         "connectionString" : "Endpoint=Event Hub Sender connection string"
-        },
-        "isBuffered": "true | false"
+        }
     }
 
 -	`type` は `AzureEventHub` に設定する必要があります。
 -	`description` は、ロガーの説明です (省略可能)。必要に応じて、長さゼロの文字列にしてください。
 -	`credentials` には、Azure Event Hubs の `name` と `connectionString` が含まれます。
--	`isBuffered` によって、ロガー内のレコードを発行前にバッファーするかどうかが決まります。このプロパティは省略可能です。既定値は `true` です。レコードがバッファーされると、イベント ハブが 15 秒ごとに、またはバッファーが受信したメッセージが 256 KB に達するたびに、送信されます。
 
 要求を実行したとき、ロガーが作成されると、状態コード `201 Created` が返されます。
 
@@ -135,4 +133,4 @@ API Management でロガーを構成したら、必要なイベントを記録�
 [event-hub-policy]: ./media/api-management-howto-log-event-hubs/event-hub-policy.png
 [add-policy]: ./media/api-management-howto-log-event-hubs/add-policy.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

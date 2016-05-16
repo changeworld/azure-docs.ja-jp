@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="02/02/2016"
+	ms.date="05/02/2016"
 	ms.author="billmath"/>
 
 # ハイブリッド ID ソリューションの ID 要件の決定
@@ -44,7 +44,10 @@
 - 現在、会社にオンプレミスの同期サービスはありますか。
 - 会社はサードパーティの ID プロバイダー (IdP) を使用していますか。
 
-会社が利用しているクラウド サービスがある場合、そのサービスも認識する必要があります。評価を実行して、環境内にある SaaS、IaaS、または PaaS モデルとの現在の統合を理解することはとても重要です。この評価時に、次のチェック項目に回答してください。- クラウド サービス プロバイダーとの何らかの統合はありますか。- 「はい」の場合、使用されているのはどのサービスですか。- その統合は運用中ですか、パイロットですか。
+会社が利用しているクラウド サービスがある場合、そのサービスも認識する必要があります。評価を実行して、環境内にある SaaS、IaaS、または PaaS モデルとの現在の統合を理解することはとても重要です。この評価時に、次のチェック項目に回答してください。
+- クラウド サービス プロバイダーとの何らかの統合はありますか。
+- 「はい」の場合、使用されているのはどのサービスですか。
+- 現在、その統合は運用中ですか、パイロットですか。
 
 
 >[AZURE.NOTE]
@@ -89,7 +92,8 @@
 - 通常、ユーザーはオンプレミス環境にどのような方法でログインしますか。
 - ユーザーはクラウドにどのような方法でサインインしますか。
 
->注: 回答をメモし、その背後にある論理的根拠を理解してください。「[インシデント対応要件の決定](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)」では、使用できるオプションと、各オプションの短所/長所を確認します。チェック項目に答えることで、ビジネス ニーズに最適な選択肢が見つかります。
+>[AZURE.NOTE]
+回答をメモし、その背後にある論理的根拠を理解してください。「[インシデント対応要件の決定](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)」では、使用できるオプションと、各オプションの短所/長所を確認します。チェック項目に答えることで、ビジネス ニーズに最適な選択肢が見つかります。
 
 ## 次のステップ
 [ディレクトリ同期要件の決定](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
@@ -97,4 +101,4 @@
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

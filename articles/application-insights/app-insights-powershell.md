@@ -181,7 +181,7 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 
 ## メトリック アラートの定義
 
-[PowerShell を使用したアラートの設定方法](app-insights-alerts.md/#set-alerts-by-using-powershell) があります。
+[PowerShell を使用したアラートの設定方法](app-insights-alerts.md#set-alerts-by-using-powershell) があります。
 
 
 ## 例
@@ -321,4 +321,4 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 * [Azure 診断を Application Insights に送信する](app-insights-powershell-azure-diagnostics.md)
 * [リリースの注釈を作成する](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

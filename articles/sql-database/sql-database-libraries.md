@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="pehteh"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor="genemi"/>
 
 <tags
@@ -13,61 +13,21 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/23/2016"
+	ms.date="05/03/2016"
 	ms.author="pehteh"/>
 
 # SQL Database と SQL Server の接続ライブラリ
 
-このトピックでは、クライアント プログラムが Azure SQL Database または Microsoft SQL Server に接続するときに使用できる各ライブラリおよびドライバーの最小バージョン番号を示します。
-
-## Microsoft からリリースされているドライバー ライブラリの表
-
-Microsoft からリリースされているライブラリを次の表に示します。**[ライブラリ]** 列には、各ライブラリをダウンロードするためのリンクが用意されています。**[バージョン]** 列には、Azure SQL Database および Microsoft SQL Server とやり取りするうえで推奨される最小バージョンが示されています。
-
-| プラットフォーム | オペレーティング システム | ダウンロード用<br/>ライブラリ | ドライバーの<br/>バージョン | ドライバーの<br/>説明 | 詳細<br/>情報 |
-| :--- | :--- | :--- | :--- | :--- | :-- |
-| .NET | クロスプラットフォーム (.NET) | [ADO.NET、System.Data.SqlClient](http://www.microsoft.com/download/details.aspx?id=30653) | 4\.5 以降 | .NET Framework 用 SQL Server プロバイダー | . |
-| PHP | Windows | [PHP for SQL Server](http://www.microsoft.com/download/details.aspx?id=20098) | 2\.0 以降 | SQL Server 用 PHP ドライバー | [リンク](http://msdn.microsoft.com/library/dn865013.aspx) |
-| Java | Windows | [JDBC for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) | 2\.0 以降 | 標準の JDBC API を介してデータベース接続を提供する Type 4 JDBC ドライバー | [リンク](https://msdn.microsoft.com/library/mt654048.aspx) |
-| ODBC | Windows | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=36434) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | [リンク](http://msdn.microsoft.com/library/jj730308.aspx) |
-| ODBC | Suse Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | [リンク](https://msdn.microsoft.com/ja-JP/library/hh568451.aspx) |
-| ODBC | Redhat Linux | [ODBC for SQL Server](http://www.microsoft.com/download/details.aspx?id=34687) | 11\.0 以降 | Microsoft ODBC Driver for SQL Server | [リンク](https://msdn.microsoft.com/ja-JP/library/hh568451.aspx) |
-
-### ODBC のサポート
-
-Azure SQL Database のデータ ソースを定義するために、データ ソース名 (DSN) ウィザードを使用している場合は、**[ユーザーが入力する SQL Server 用のログイン ID とパスワードを使う]** オプションをクリックして、**[SQL Server に接続して追加の構成オプションの既定設定を取得する]** を選択してください。Azure SQL Database するための **[ログイン ID]** と **[パスワード]** としてユーザー名とパスワードを入力 します。**[SQL Server に接続して追加の構成オプションの既定設定を取得する]** チェックボックスをオフにします。**[既定のデータベースを以下に変更する:]** をクリックして、Azure SQL Database 名前を入力します (一覧に表示されない場合もあります)。ウィザードの **[SQL Server のシステム メッセージを以下の言語に変更する:]** の一覧には複数の言語が表示されます。
-
-このリリースの Microsoft Azure SQL Database では英語のみがサポートされているため、言語には英語を選択してください。Microsoft Azure SQL Database では **[ミラー サーバー]** または **[データベースのアタッチ]** はサポートされていないため、これらのアイテムは空のままにしておいてください。**[接続テスト]** をクリックします。
-
-SQL Server 2008 Native Client ODBC ドライバーを使用する場合、**[接続テスト]** ボタンを押すと、**master.dbo.syscharsets** がサポートされていないというエラーが発生する場合があります。このエラーは無視し、DSN を保存して使用してください。
-
-### OLEDB for DB2 および SQL Server (DRDA 設計向け)
-
-Microsoft OLE DB Provider for DB2 バージョン 5.0 (Data Provider) では、IBM DB2 データベース向けの分散アプリケーションを作成できます。Data Provider では、分散型リレーショナル データベース アーキテクチャ (DRDA) アプリケーション リクエスターとして機能する DB2 用の Microsoft ネットワーク クライアントと Microsoft SQL Server のデータ アクセス アーキテクチャを活用します。Data Provider は、Microsoft コンポーネント オブジェクト モデル (COM) OLE DB コマンドとデータ型を、DRDA プロトコル コード ポイントとデータ形式に変換します。
-
-詳細については、次を参照してください。
-
-- [Microsoft OLE DB Provider for DB2 バージョン 5.0](http://msdn.microsoft.com/library/dn745875.aspx)
-- [Microsoft OLEDB Provider for DB2 v4.0 for Microsoft SQL Server 2012](http://www.microsoft.com/download/details.aspx?id=29100)
-
-## サード パーティ製のライブラリ
-
-> [AZURE.IMPORTANT] サード パーティのライセンス条項に基づいてサード パーティからリリースされているライブラリを次の表に示します。これらのライブラリの使用にあたっては、該当するサード パーティのライセンスを確認しその内容に従う必要があります。これらのライブラリについては、お客様がその使用に伴うリスクを負います。Microsoft は、ユーザーの利便性のためにのみこの情報を提供し、明示的または黙示的にかかわらず、これらの情報についていかなる責任も負わないものとします。いかなる記述も、その種類を問わず、Microsoft による保証を暗示するものではありません。<br/><br/>GitHub.com 上で **Azure** によって所有されている [azure-content](http://github.com/Azure/azure-content/) リポジトリを使ってこの「サード パーティ製のライブラリ」セクションの情報を更新および管理する責任は、開発者のパブリック コミュニティにあります。Microsoft では、このセクションを更新することを開発者に奨励しています。特定のサード パーティ製のライブラリについては社外により専門的な知識を持つ人がいるため、Microsoft の担当者がこのセクション内の情報を管理することは*ありません*。ありがとうございます。
-
-他の会社、コミュニティなど、サード パーティからリリースされているライブラリを次の表に示します。Microsoft からリリースされているライブラリについては、このトピックの前のセクションで紹介しています。
-
-| プラットフォーム | ライブラリ |
-| :-- | :-- |
-| Ruby | [tinytds *(org、stable)*](https://rubygems.org/gems/tiny_tds/versions/0.7.0) |
-| GO | [go-mssqldb *(org、stable)*](https://github.com/denisenkom/go-mssqldb) |
-| Python | [pymssql *(org、stable)*](http://pymssql.org/en/stable/) |
-| Node.js | [Node-MSSQL *(npmjs)*](https://www.npmjs.com/package/node-mssql)<br/><br/>[Node-MSSQL-Connector *(npmjs)*](https://www.npmjs.com/package/node-mssql-connector) |
-| C++ | [FreeTDS *(org)*](http://www.freetds.org/) |
+このトピックでは、クライアント プログラムが Azure SQL Database または Microsoft SQL Server に接続するときに使用できる各ライブラリとドライバーを示します。
 
 
+| 言語 | プラットフォーム | 詳細情報 | ダウンロード |
+| :-- | :-- | :-- | :-- |
+| ADO.NET | Windows、Linux、Mac | [.NET (C#) を使用して SQL Database に接続する](sql-database-develop-dotnet-simple.md) | [ダウンロード](https://msdn.microsoft.com/vstudio/aa496123.aspx) |
+| Java | Windows | [Windows 上で JDBC を含む Java を使用して、SQL Database に接続する](sql-database-develop-java-simple-windows.md) | [ダウンロード](http://go.microsoft.com/fwlink/?LinkId=245496) |
+| PHP | Windows | [Windows 上で PHP を使用して SQL Database に接続する](sql-database-develop-php-simple-windows.md) | [ダウンロード](https://www.microsoft.com/download/details.aspx?id=20098) |
+| Node.js | Windows、Linux、Mac | [Node.js を使用して SQL Database に接続する](sql-database-develop-nodejs-simple.md) | [ダウンロード](https://msdn.microsoft.com/library/mt652094.aspx) |
+| Python | Windows、Linux、Mac | [Python を使用して SQL Database に接続する](sql-database-develop-python-simple.md) | [ダウンロード](https://msdn.microsoft.com/library/mt694094.aspx) |
+| Ruby | Windows、Linux、Mac | [Ruby を使用して SQL Database に接続する](sql-database-develop-ruby-simple.md) | [ダウンロード](https://msdn.microsoft.com/library/mt711041.aspx) |
 
-<!--
-https://en.wikipedia.org/wiki/Draft:Microsoft_SQL_Server_Libraries/Drivers
--->
-
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

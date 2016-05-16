@@ -10,10 +10,10 @@
 <tags
    ms.service="multiple"
    ms.devlang="multiple"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
-   ms.date="01/26/2016"
+   ms.date="04/29/2016"
    ms.author="danlep"/>
 
 # Azure における大規模なコンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース
@@ -30,11 +30,13 @@ Azure の大規模なコンピューティング オプションについて説�
 
 ## Azure Batch
 
-[Batch](https://azure.microsoft.com/services/batch/) は、アプリケーションを簡単にクラウド対応にすることができ、クラスターやジョブ スケジューラーをセットアップして管理しなくてもジョブを実行できるプラットフォーム サービスです。SDK を使用して、さまざまな言語を介してクライアント アプリケーションを Azure Batch と統合し、Azure にデータをステージングし、ジョブの実行パイプラインをビルドします。
+[Batch](https://azure.microsoft.com/services/batch/) は、Linux および Windows アプリケーションを簡単にクラウド対応にすることができ、クラスターやジョブ スケジューラーをセットアップして管理しなくてもジョブを実行できるプラットフォーム サービスです。SDK を使用して、さまざまな言語を介してクライアント アプリケーションを Azure Batch と統合し、Azure にデータをステージングし、ジョブの実行パイプラインをビルドします。
 
 * [ドキュメント](https://azure.microsoft.com/documentation/services/batch/)
 
-* [.NET](https://msdn.microsoft.com/library/azure/mt348682.aspx) と [REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) の API リファレンス
+* [.NET](https://msdn.microsoft.com/library/azure/mt348682.aspx)、[Python](http://azure-sdk-for-python.readthedocs.io/latest/)、[Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/)、および [REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) API リファレンス
+
+* [Batch Management .NET ライブラリ](https://msdn.microsoft.com/library/mt463120.aspx) リファレンス
 
 * [チュートリアル: .NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)
 
@@ -55,7 +57,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 * [ドキュメント](https://technet.microsoft.com/library/jj899572.aspx)
 
 
-* [Azure での Microsoft HPC Pack を使用した HPC クラスター オプション](../virtual-machines/virtual-machines-linux-hpcpack-cluster-options.md)
+* Azure における [Linux](../virtual-machines/virtual-machines-linux-hpcpack-cluster-options.md) および [Windows](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md) の HPC Pack クラスター オプション
 
 * [HPC Pack を使用した Azure ワーカー インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)
 
@@ -76,7 +78,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 
 ## Microsoft MPI
 
-[Microsoft MPI](https://msdn.microsoft.com/library/bb524831.aspx) (MS-MPI) は、Windows プラットフォームで並列アプリケーションを開発して実行するための、Microsoft が実装する標準 Message Passing Interface です。
+[Microsoft MPI](https://msdn.microsoft.com/library/bb524831.aspx) (MS-MPI) は、Windows プラットフォームで並列アプリケーションを開発して実行するための、Microsoft が実装する標準 Message Passing Interface です。最新バージョンは MS-MPI v7 です。
 
 
 * [MS-MPI のダウンロード](http://go.microsoft.com/FWLink/p/?LinkID=389556)
@@ -94,13 +96,13 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 
 * [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](../virtual-machines/virtual-machines-windows-classic-hpcpack-rdma-cluster.md)
 
-## アーキテクチャの設計図
 
-* [Azure Batch と Azure Data Factory を使用した HPC とデータのオーケストレーション](http://go.microsoft.com/fwlink/?linkid=717686) (PDF) と[記事](../data-factory/data-factory-data-processing-using-batch.md)
 
 ## サンプルとデモ
 
-* [Azure Batch のコード サンプル](https://github.com/Azure/azure-batch-samples)
+* [Azure Batch C# および Python のコード サンプル](https://github.com/Azure/azure-batch-samples)
+
+* [体験版 SUSE Linux Enterprise Server for HPC](https://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver12optimizedforhighperformancecompute/)
 
 ## 関連する Azure サービス
 
@@ -112,12 +114,23 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 
 * [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
+* [仮想マシン スケール セット](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/)
+
 * [Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/)
 
 * [Media Services](https://azure.microsoft.com/documentation/services/media-services/)
 
-## 顧客事例
+## アーキテクチャの設計図
 
+* [Azure Batch と Azure Data Factory を使用した HPC とデータのオーケストレーション](http://go.microsoft.com/fwlink/?linkid=717686) (PDF) と[記事](../data-factory/data-factory-data-processing-using-batch.md)
+
+## 業界のソリューション
+
+* [銀行と証券](https://finance.azure.com/)
+
+* [エンジニアリング シミュレーション](https://simulation.azure.com/)
+
+## 顧客事例
 
 * [ANEO](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=4168) 
 
@@ -135,9 +148,7 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 
 * [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222)
 
-
-
-
+* [UberCloud](https://simulation.azure.com/casestudies/Team-182-ABB-UC-Final.pdf)
 
 
 
@@ -146,4 +157,4 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](https://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](https://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

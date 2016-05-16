@@ -13,19 +13,11 @@
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
-	ms.topic="get-started-article"
-	ms.date="02/09/2016"
+	ms.topic="article"
+	ms.date="04/08/2016"
 	ms.author="robmcm"/>
 
 #Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
-
-> [AZURE.SELECTOR]
-- [.NET](web-sites-dotnet-get-started.md)
-- [Node.JS](app-service-web-nodejs-get-started.md)
-- [Java](web-sites-java-get-started.md)
-- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
-- [Python](web-sites-python-ptvs-django-mysql.md)
 
 このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、Git を使用してそれを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、および [Git][install-git] を使用します。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
 
@@ -214,7 +206,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 		php -S localhost:8000
 
-これで、**http://localhost:8000/** に移動してアプリケーションをテストできるようになりました。
+これで、****http://localhost:8000/** に移動してアプリケーションをテストできるようになりました。
 
 
 ##アプリケーションの発行
@@ -280,11 +272,9 @@ Registration アプリケーションは、名前と電子メール アドレス
     
 3. **[OK]** をクリックして法律条項に同意します。もう一度 **[OK]** をクリックすると、拡張機能が追加されます。
 
-    これで、**[インストールされている拡張機能]** ブレードに Composer 拡張機能が表示されるようになります。 
+    これで、**[インストールされている拡張機能]** ブレードに Composer 拡張機能が表示されるようになります。![](./media/web-sites-php-mysql-deploy-use-git/composer-extension-view.png)
     
-    ![](./media/web-sites-php-mysql-deploy-use-git/composer-extension-view.png)
-    
-4. 前のセクションと同様に `git add`、`git commit`、`git push` を実行します。composer.json で定義されている依存関係が Composer によってインストールされていることを確認できます。
+4. 前のセクションと同様に、`git add`、`git commit`、`git push` を実行します。composer.json で定義されている依存関係が Composer によってインストールされていることを確認できます。
 
     ![](./media/web-sites-php-mysql-deploy-use-git/composer-extension-success.png)
 
@@ -327,4 +317,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
  
 
-<!----HONumber=AcomDC_0406_2016--->
+<!---HONumber=AcomDC_0504_2016-->

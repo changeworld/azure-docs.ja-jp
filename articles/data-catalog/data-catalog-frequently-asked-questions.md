@@ -64,7 +64,7 @@ Standard Edition の Azure Data Catalog は、最大 100,000 の登録済みの�
 
 ## Q: Azure Data Catalog はどのように使用を開始するのですか。
 
-使用を開始する最適な場所は、「[Data Catalog の概要](../data-catalog-get-started/)」の手順に従うことです。この記事は、サービスの機能を網羅した概要です。
+使用を開始する最適な場所は、「[Data Catalog の概要](data-catalog-get-started.md)」の手順に従うことです。この記事は、サービスの機能を網羅した概要です。
 
 ## Q: データの登録方法を教えてください。
 
@@ -140,4 +140,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -22,6 +22,8 @@
 
 Azure の計画的なメンテナンスの概要と、それが Windows 仮想マシンの可用性に及ぼす影響について説明します。この記事は、[Linux 仮想マシン](virtual-machines-linux-planned-maintenance.md)にも利用できます。
 
+この記事では、Azure の計画的なメンテナンス プロセスに関する基本情報を提供します。VM が再起動した原因についてトラブルシューティングを行う場合は、[VM の再起動ログの表示について詳述しているこのブログ記事をご覧ください](https://azure.microsoft.com/blog/viewing-vm-reboot-logs/)。
+
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
@@ -35,4 +37,4 @@ Microsoft Azure は、世界各地で定期的に更新を行い、仮想マシ�
 
 [AZURE.INCLUDE [virtual-machines-common-planned-maintenance](../../includes/virtual-machines-common-planned-maintenance.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

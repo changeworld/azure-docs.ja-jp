@@ -4,7 +4,7 @@
    services="sql-database" 
    documentationCenter="" 
    authors="stevestein" 
-   manager="jeffreyg" 
+   manager="jhubbard" 
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="data-management" 
-   ms.date="03/23/2016"
+   ms.date="05/03/2016"
    ms.author="sstein"/>
 
 # C&#x23; で SQL Database を作成し、管理する
@@ -335,7 +335,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
 ## 既存のデータベースをエラスティック データベース プールに移動
 
-*プールを作成したら、Transact-SQL を使用して既存のデータベースをプールの内外に移動することもできます。詳細については、「[エラスティック データベース プールのリファレンス - Transact-SQL](sql-database-elastic-pool-reference.md#Transact-SQL)」をご覧ください。*
+*プールを作成したら、Transact-SQL を使用して既存のデータベースをプールの内外に移動することもできます。詳細については、「[Transact-SQL を使用したエラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-tsql.md)」をご覧ください。*
 
 既存のデータベースをプールに移動するには、以下の手順を実行します。
 
@@ -367,7 +367,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
 ## エラスティック データベース プールでの新しいデータベースの作成
 
-*プールを作成したら、Transact-SQL を使用してプールに新しいエラスティック データベースを作成することもできます。詳細については、「[エラスティック データベース プールのリファレンス - Transact-SQL](sql-database-elastic-pool-reference.md#Transact-SQL)」をご覧ください。*
+*プールを作成したら、Transact-SQL を使用してプールに新しいエラスティック データベースを作成することもできます。詳細については、「[Transact-SQL を使用したエラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-tsql.md)」をご覧ください。*
 
 プール内で新しいデータベースを直接作成するには、以下の手順を実行します。
 
@@ -784,9 +784,6 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
 [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-[エラスティック データベース プールのリファレンス](sql-database-elastic-pool-reference.md)
-
-
 <!--Image references-->
 [1]: ./media/sql-database-client-library/aad.png
 [2]: ./media/sql-database-client-library/permissions.png
@@ -798,4 +795,4 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 [8]: ./media/sql-database-client-library/add-application2.png
 [9]: ./media/sql-database-client-library/clientid.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

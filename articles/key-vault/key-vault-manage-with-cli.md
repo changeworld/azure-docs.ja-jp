@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/08/2016"
+	ms.date="04/29/2016"
 	ms.author="bruceper"/>
 
 # CLI を使用した Key Vault の管理 #
@@ -31,7 +31,6 @@ Azure Key Vault は、ほとんどのリージョンで使用できます。詳�
 Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault-whatis.md)」をご覧ください。
 
 ## 前提条件
-
 このチュートリアルを完了するには、以下が必要です。
 
 - Microsoft Azure サブスクリプション。サブスクリプションがない場合でも、[無料試用版](../../../pricing/free-trial)にサインアップできます。
@@ -42,7 +41,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 
 このチュートリアルでは、コマンドライン インターフェイス (Bash、Terminal、Command プロンプト) に慣れていることを前提としています。
 
---help または -h パラメーターを使用すると特定のコマンドに対するヘルプを表示できます。または、azure help [コマンド]\[オプション] の形式で指定しても、同じ情報が返されます。たとえば、次のコマンドでは、すべて同じ情報が返されます。
+--help または -h パラメーターを使用すると特定のコマンドに対するヘルプを表示できます。または、azure help [コマンド][オプション] の形式で指定しても、同じ情報が返されます。たとえば、次のコマンドでは、すべて同じ情報が返されます。
 
     azure account set --help
 
@@ -106,6 +105,12 @@ Azure リソース マネージャーを使用すると、すべての関連す�
 
 最初のパラメーターはリソース グループ名で、2 番目のパラメーターは場所です。場所の場合には、`azure location list` コマンドを使用して別の場所をこの例の場所に指定する方法を識別します。詳細情報が必要な場合は、`azure help location` と入力します。
 
+## Key Vault リソース プロバイダーの登録
+Key Vault リソース プロバイダーがサブスクリプションに登録されていることを確認します。
+
+`azure provider register Microsoft.KeyVault`
+
+これは、サブスクリプションごとに 1 回だけ実行する必要があります。
 
 
 ## Key Vault を作成します
@@ -134,13 +139,13 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
 
     azure keyvault key import --vaultName 'ContosoKeyVault' --key-name 'ContosoFirstKey' --pem-file './softkey.pem' --password 'PaSSWORD' --destination software
 
-作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定バージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
+作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定バージョンを取得するには ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
 
 資格情報コンテナーにシークレットを追加するには (SQLPassword という名前のパスワードで、Azure Key Vault に Pa$$w0rd 値を設定)、次のように入力します。
 
     azure keyvault secret set --vault-name 'ContosoKeyVault' --secret-name 'SQLPassword' --value 'Pa$$w0rd'
 
-Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用し、この特定バージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
+Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。常に現在のバージョンを取得するには ****https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用し、この特定バージョンを取得するには ****https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
 
 作成したキーやシークレットを表示してみましょう。
 
@@ -169,7 +174,7 @@ Azure Active Directory にアプリケーションを登録するには:
 
 3. **[アプリケーション]** をクリックします。アプリがディレクトリに追加されていない場合は、このページには **[アプリケーションの追加]** リンクのみが表示されます。リンクをクリックするか、コマンド バーの **[追加]** をクリックします。
 4.	**[アプリケーションの追加]** ウィザードの **[What do you want to do?]** ページで、**[組織で開発中のアプリケーションを追加]** をクリックします。
-5.	**[アプリケーション情報の指定]** ページで、アプリケーションの名前を指定し、**Web アプリケーションや Web API** (既定値) を選択します。[次へ] アイコンをクリックします。
+5.	**[アプリケーション情報の指定]** ページで、アプリケーションの名前を指定し、**[Web アプリケーションや Web API]** (既定値) を選択します。[次へ] アイコンをクリックします。
 6.	**[アプリのプロパティ]** ページで、**[サインオン URL]** と **[アプリケーション ID/URI]** を Web アプリケーションに指定します。アプリケーションにこれらの値を設定していない場合は、この手順のための値を作成します (両方のボックスに http://test1.contoso.com を指定するなど)。これらのサイトが存在するかどうかは関係ありません。各アプリケーションのアプリケーション ID URI がディレクトリ内のすべてのアプリケーションで異なっていることが重要です。ディレクトリは、この文字列を使用してアプリを識別します。
 7.	[完了] アイコンをクリックし、ウィザードで変更内容を保存します。
 8.	[クイック スタート] ページで、**[構成]** をクリックします。
@@ -186,6 +191,8 @@ Azure Active Directory にアプリケーションを登録するには:
 たとえば、資格情報コンテナー名が ContosoKeyVault で、承認するアプリケーションのクライアント ID が 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed の場合、アプリケーションの暗号化を解除し、資格情報コンテナー内のキーで署名することを承認するには、次のように実行します。
 
     azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-keys '["decrypt","sign"]'
+
+>[AZURE.NOTE] Windows コマンド プロンプトで実行する場合は、単一引用符を二重引用符に置き換え、内側の二重引用符をエスケープします。たとえば、"["decrypt","sign"]" のようになります。
 
 その同じアプリケーションを認証し、資格情報コンテナーのシークレットの読み取りを許可する場合、次を実行します。
 
@@ -256,4 +263,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

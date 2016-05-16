@@ -14,86 +14,109 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/03/2016"
+   ms.date="05/02/2016"
    ms.author="litran"/>
 
 # PowerApps Enterprise で新しい SharePoint Online API を作成する
 
-組織の (テナント) App Service 環境に SharePoint Online API を追加します。
+> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> 
+> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページをご覧ください。  
+> - PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事をご覧ください。 
 
-## Azure ポータルでの API の作成
+<!--Archived
+Add the SharePoint Online API to your organization's (tenant) app service environment. 
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
+## Create the API in the Azure portal
+
+1. In the [Azure portal](https://portal.azure.com/), sign-in with your work account. For example, sign-in with *yourUserName*@*YourCompany*.com. When you do this, you are automatically signed in to your company subscription.
  
-2. タスク バーの **[参照]** をクリックします。![][14]
+2. Select **Browse** in the task bar:  
+![][14]
 
-3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。![][15]
+3. In the list, you can scroll to find PowerApps or type in *powerapps*:  
+![][15]  
 
-4. **[PowerApps]** で、**[API の管理]** を選択します。![登録されている API の参照][1]
+4. In **PowerApps**, select **Manage APIs**:  
+![Browse to registered apis][1]
 
-5. **[API の管理]** で、**[追加]** をクリックして新しい API を追加します。![Add API][2]
+5. In **Manage APIs**, select **Add** to add the new API:  
+![Add API][2]
 
-6. API のわかりやすい**名前**を入力します。
+6. Enter a descriptive **name** for your API.  
 	
-7. **[ソース]** で、**[利用可能な API]** を選択して既成の API を選択し、**[SharePoint Online]** を選択します。![SharePoint Online API の選択][3]
+7. In **Source**, select **Available APIs** to select the pre-built APIs, and select **SharePoint Online**:  
+![select SharePoint Online api][3]
 
-8. **[設定] - [必要な設定の構成]** を選択します。![SharePoint Online API の設定の構成][4]
+8. Select **Settings - Configure required settings**:  
+![configure SharePoint Online API settings][4]
 
-9. SharePoint Online Azure Active Directory (AAD) アプリケーションの *[クライアント ID]* と *[アプリケーション シークレット]* を入力します。これらがない場合は、このトピックの「PowerApps Office 365 Users API で使用する AAD アプリケーションの登録」を参照して、必要な ID とシークレットの値を作成します。
+9. Enter the *Client Id* and *App Secret* of your SharePoint Online Azure Active Directory (AAD) application. If you don't have one, see the "Register an AAD app for use with PowerApps" section in this topic to create the ID and secret values you need.  
 
-	> [AZURE.IMPORTANT] **リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
+	> [AZURE.IMPORTANT] Save the **redirect URL**. You may need this value later in this topic.
 
-10. **[OK]** をクリックして、手順を完了します。
+10. Select **OK** to complete the steps.
 
-完了すると、App Service 環境に新しい SharePoint Online API が追加されます。
-
-
-## PowerApps SharePoint Online API で使用する AAD アプリケーションの登録
-
-1. [Azure ポータル][5] を開きます。
-
-2. **[参照]** をクリックし、**[Active Directory]** を選択します。
-
-	> [AZURE.NOTE] これにより、Azure クラシック ポータルで Active Directory が開きます。
-
-3. 組織のテナント名を選択します。![Azure Active Directory の起動][6]
-
-4. **[アプリケーション]** タブを選択し、**[追加]** をクリックします。![AAD テナント アプリケーション][7]
-
-5. **[アプリケーションの追加]** で次の操作を行います。
-
-	a) アプリケーションの**名前**を入力します。b) アプリケーションの種類は **Web** のままにしておきます。c) **[次へ]** をクリックします。
+When finished, a new SharePoint Online API is added to your app service environment.
 
 
-	![AAD アプリケーションの追加 - アプリケーション情報][8]
+## Register an AAD app for use with PowerApps SharePoint Online API
 
-6. **[アプリケーションのプロパティ]** で次の操作を行います。
+1. Open the [Azure Portal][5].
 
-	a) アプリケーションの**サインオン URL** を入力します。AAD を使用して PowerApps に対する認証を行うので、サインオン URL を _https://login.windows.net_ に設定します。b) アプリケーションの有効な**アプリケーション ID URI** を入力します。c) **[OK]** をクリックします。
+2. Select **Browse** and then select **Active Directory**:  
 
-	![AAD アプリケーションの追加 - アプリケーションのプロパティ][9]
+	> [AZURE.NOTE] This opens Active Directory in the Azure classic portal.  
 
-7. 操作が正常に完了すると、新しい AAD アプリケーションにリダイレクトされます。**[構成]** をクリックします。![Contoso AAD アプリケーション][10]
+3. Select your organization's tenant name:  
+![Launch Azure Active Directory][6]
 
-8. _OAuth 2_ セクションの **[応答 URL]** を、(このトピックで) Azure ポータルで新しい SharePont Online API を追加したときに受け取ったリダイレクト URL に設定します。**[アプリケーションの追加]** をクリックします。![Contoso AAD アプリケーションの構成][11]
+4. Select the **Applications** tab, and select **Add**:  
+![AAD tenant applications][7]
 
-9. **[他のアプリケーションに対するアクセス許可]** ウィンドウで、**[Office 365 Exchange Online]** を選択し、**[OK]** をクリックします。![Contoso アプリケーションでのデリゲート][12]
+5. In **Add application**:  
 
-10. 構成ページに戻り、_[他のアプリケーションに対するアクセス許可]_ の一覧に _Office 365 Exchange Online_ が追加されていることを確認します。
+	a) Enter a **Name** for your application.  
+	b) Leave the application type as **Web**.  
+	c) Select **Next**.
 
-11. _Office 365 Exchange Online_ の **[デリゲートされたアクセス許可]** を選択し、次のアクセス許可を選択します。
 
-	- すべてのサイト コレクションのアイテムの読み書き
-	- すべてのサイト コレクションのアイテムとリストの読み書き
+	![Add AAD application - app info][8]
 
-	![Contoso アプリケーションでのアクセス許可のデリゲート][13]
+6. In **App Properties**:  
 
-新しい Azure Active Directory アプリケーションが作成されます。Azure ポータルの SharePoint Online API 構成でこのアプリケーションを使用できます。
+	a) Enter the **SIGN-ON URL** of your application.  Since you are going to authenticate with AAD for PowerApps, set the sign-on url to _https://login.windows.net_.  
+	b) Enter a valid **APP ID URI** for your app.  
+	c) Select **OK**.  
 
-## まとめと次のステップ
-このトピックでは、SharePoint Online API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
+	![Add AAD application - app properties][9]
 
-[接続を追加し、ユーザーにアクセスを許可する](powerapps-manage-api-connection-user-access.md)
+7. On successful completion, you are redirected to the new AAD app. Select **Configure**:  
+![Contoso AAD app][10]
+
+8. Set the **Reply URL** under _OAuth 2_ section to the redirect URL you received when you added the new SharePont Online API in the Azure Portal (in this topic). Select **Add application**:  
+![Configure Contoso AAD app][11]
+
+9. In the **Permissions to other applications** window, select **Office 365 Exchange Online**, and select **OK**:  
+![Contoso app delegate][12]
+
+10. Back in the configure page, note that _Office 365 Exchange Online_ is added to the _Permission to other applications_ list.
+
+11. Select **Delegated Permissions** for _Office 365 Exchange Online_, and select the following permissions:  
+
+	- Read and write items in all site collections
+	- Read and write items and lists in all site collections
+
+	![Contoso app delegate permissions][13]
+
+A new Azure Active Directory app is created. You can use this app in your SharePoint Online API configuration in the Azure portal. 
+
+## Summary and next steps
+In this topic, you added the SharePoint Online API to your PowersApps Enterprise. Next, give users access to the API so it can be added to their apps: 
+
+[Add a connection and give users access](powerapps-manage-api-connection-user-access.md)
+-->
+
 
 <!--References-->
 [1]: ./media/powerapps-create-api-sharepointonline/browse-to-registered-apis.PNG
@@ -112,4 +135,4 @@
 [14]: ./media/powerapps-create-api-sharepointonline/browseall.png
 [15]: ./media/powerapps-create-api-sharepointonline/allresources.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

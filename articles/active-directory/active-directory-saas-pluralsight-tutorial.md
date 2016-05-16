@@ -13,13 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/23/2016"
+	ms.date="05/04/2016"
 	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と Pluralsight の統合
 
-このチュートリアルの目的は、Pluralsight と Azure Active Directory (Azure AD) を統合する方法を示すことです。<br>Pluralsight と Azure AD の統合には、次の利点があります。
+このチュートリアルの目的は、Pluralsight と Azure Active Directory (Azure AD) を統合する方法を説明することです。
+
+Pluralsight と Azure AD の統合には、次の利点があります。
 
 - Pluralsight にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に Pluralsight にサインオン (シングル サインオン) できるようにします。
@@ -32,7 +34,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 Pluralsight と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
+- Azure サブスクリプション
 - Pluralsight でのシングル サインオンが有効なサブスクリプション
 
 
@@ -46,7 +48,9 @@ Pluralsight と Azure AD の統合を構成するには、次のものが必要�
 
 
 ## シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。<br>このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
+
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーから Pluralsight を追加する
 2. Azure AD シングル サインオンの構成とテスト
@@ -57,20 +61,34 @@ Azure AD への Pluralsight の統合を構成するには、ギャラリーか�
 
 **ギャラリーから Pluralsight を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br> ![Active Directory][1]<br>
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+
+    ![Active Directory][1]
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br> ![アプリケーション][2]<br>
-4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
-6. 検索ボックスに「**Pluralsight**」と入力します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_01.png)<br>
-7. 結果ウィンドウで **[Pluralsight]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_06.png)<br>
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+
+    ![アプリケーション][2]
+
+4. ページの下部にある **[追加]** をクリックします。
+ 
+    ![アプリケーション][3]
+
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+
+    ![アプリケーション][4]
+
+6. 検索ボックスに「**Pluralsight**」と入力します。
+ 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_01.png)
+
+7. 結果ウィンドウで **[Pluralsight]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_06.png)
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Pluralsight で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Pluralsight ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Pluralsight の関連ユーザーの間で、リンク関係が確立されている必要があります。<br> このリンク関係は、Azure AD の **[ユーザー名]** の値を、Pluralsight の **[Username]** の値として割り当てることで確立されます。
 
 Pluralsight で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -84,54 +102,133 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
 
 このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Pluralsight アプリケーションでシングル サインオンを構成することです。
 
-Pluralsight アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。次のスクリーンショットはその例です。givenname、surname、および emailaddress の既定の要求を削除してください。次に示すように、次の要求を追加し、ドロップダウン リストから値を選択します。<br><br> ![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_02.png) <br>
+Pluralsight アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。次のスクリーンショットはその例です。
 
-**"一意の ID"** 属性を追加し、値として EmployeeID など組織に合った適切な値を設定することもできます。なお、これは必須の属性ではありませんが、一意のユーザーを識別するために追加することができます。
+![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_02.png)
+
+**"一意の ID"** 属性を追加し、EmployeeID などの組織に合った適切な値を設定することもできます。なお、これは必須の属性ではありませんが、一意のユーザーを識別するために追加できます。
 
 **Pluralsight で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **Pluralsight** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
+1. Azure クラシック ポータルの **[Pluralsight]** アプリケーション統合ページで、上部のメニューから **[属性]** をクリックします。
 
-2. **[ユーザーの Pluralsight へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_03.png) <br>
-
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_04.png) <br>
+	![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_general_81.png)
 
 
-    a.ユーザーが Pluralsight アプリケーションへのサインオンに使用する URL を [サインオン URL] ボックスに **"https://<インスタンス名>.pluralsight.com/sso/<会社名>"** の形式で入力します。
+
+1. 重複する **SAML トークン属性**を削除するには、次の手順を実行します。
+
+	![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/2829.png)
+
+
+    a.上の表で赤いボックスに囲まれたユーザー属性ごとに、ポインターを合わせて [削除] をクリックします。
+
+
+
+
+1. 必要な **SAML トークン属性**を追加するには、以下の表の各行について、次の手順を実行します。
+
+	| 属性名 | 属性値 |
+	| --- | --- |    
+	| 名| User.givenname |
+    | 姓 | User.surname |
+	| 電子メール | User.mail |
+
+	a.**[ユーザー属性の追加]** をクリックして **[ユーザー属性の追加]** ダイアログを開きます。
+
+	![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_general_82.png)
+
+
+	b.**[属性名]** ボックスに、その行に対して表示される属性名を入力します。
+
+    c.**[属性値]** リストから、その行に対して表示される属性値を選択します。
+
+    d.**[完了]** をクリックします。
+	
+
+
+1. **[変更の適用]** をクリックします。
+
+	![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/3232.png)
+
+
+
+1. 上部のメニューで **[クイック スタート]** をクリックします。
+
+	![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_general_83.png)
+
+
+
+
+
+
+
+
+
+1. Azure クラシック ポータルの **Pluralsight** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+
+    ![Configure Single Sign-On][6]
+
+2. **[ユーザーの Pluralsight へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+
+    ![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_03.png)
+
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
+
+    ![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_04.png)
+
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。`https://<instance name>.pluralsight.com/sso/<comapny name>`
 
     b.**[次へ]** をクリックします。
 
 
-4. **[Pluralsight でのシングル サインオンの構成]** ページで、次の手順を実行します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_05.png) <br>
+4. **[Pluralsight でのシングル サインオンの構成]** ページで、次の手順を実行します。![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_05.png)
 
     a.**[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
     b.**[次へ]** をクリックします。
 
 
-5. アプリケーション用に構成された SSO を入手するには、Pluralsight の営業担当者に連絡し、ダウンロードしたメタデータ ファイルを提供します。
+5. アプリケーション用に構成された SSO を入手するには、Pluralsight の[プロフェッショナル サービス](mailTo:professionalservices@pluralsight.com) チームに連絡し、ダウンロードしたメタデータ ファイルを提供します。
 
 
-6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD Single Sign-On][10]<br>
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
+  
+    ![Azure AD Single Sign-On][10]
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Single Sign-On][11]
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+ 
+    ![Azure AD Single Sign-On][11]
 
 
 
 ### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
+
+ユーザーの一覧で **[Britta Simon]** を選択します。
+
+![Azure AD ユーザーの作成][20]
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_09.png) <br>
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_09.png)
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_03.png) <br>
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
 
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_04.png) <br>
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_03.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_05.png) <br>
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_04.png)
+
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_05.png)
 
     a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
@@ -139,7 +236,9 @@ Pluralsight アプリケーションは、特定の形式の SAML アサーシ�
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_06.png) <br>
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_06.png)
 
     a.**[名]** ボックスに「**Britta**」と入力します。
 
@@ -151,9 +250,13 @@ Pluralsight アプリケーションは、特定の形式の SAML アサーシ�
 
     e.**[次へ]** をクリックします。
 
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_07.png) <br>
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_08.png) <br>
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_07.png)
+
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
+
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-pluralsight-tutorial/create_aaduser_08.png)
 
     a.**[新しいパスワード]** の値を書き留めます。
 
@@ -171,25 +274,37 @@ Pluralsight アプリケーションは、特定の形式の SAML アサーシ�
 
 ### Azure AD テスト ユーザーの割り当て
 
-このセクションの目的は、Britta Simon に Pluralsight へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。<br><br>![ユーザーの割り当て][200] <br>
+このセクションの目的は、Britta Simon に Pluralsight へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+
+![ユーザーの割り当て][200]
 
 **Pluralsight に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。 <br><br>![ユーザーの割り当て][201] <br>
+1. Azure クラシック ポータル上の、ディレクトリ ビューでアプリケーション ビューを開くには、トップ メニューの **[アプリケーション]** をクリックします。
 
-2. アプリケーションの一覧で **[Pluralsight]** を選択します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_50.png) <br>
+    ![ユーザーの割り当て][201]
 
-1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
+2. アプリケーションの一覧で **[Pluralsight]** を選択します。
+
+    ![Configure Single Sign-On](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_50.png)
+
+1. 上部のメニューで **[ユーザー]** をクリックします。
+
+    ![ユーザーの割り当て][203]
 
 1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-2. 下部にあるツール バーで **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][205]
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
+
+    ![ユーザーの割り当て][205]
 
 
 
 ### シングル サインオンのテスト
 
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。<br> アクセス パネルで [Pluralsight] タイルをクリックすると、自動的に Pluralsight アプリケーションにサインオンします。
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
+
+アクセス パネルで [Pluralsight] タイルをクリックすると、自動的に Pluralsight アプリケーションにサインオンします。
 
 
 ## その他のリソース
@@ -216,4 +331,4 @@ Pluralsight アプリケーションは、特定の形式の SAML アサーシ�
 [204]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Azure で従来の VNet と ARM Vnet を接続する方法"
    description="従来の VNet と新しい VNet の間の VPN 接続を作成する方法を学習します。"
-   services="virtual-network"
+   services="vpn-gateway"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="cherylmc"
    manager="carmonm"
    editor="tysonn" />
 <tags 
-   ms.service="virtual-network"
+   ms.service="vpn-gateway"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/22/2016"
-   ms.author="telmos" />
+   ms.author="cherylmc" />
 
 # 従来の VNet を新しい VNet に接続する
 
@@ -44,7 +44,7 @@ Azure には現在、Azure サービス マネージャー (従来型と呼ば�
 4. **[CIDR (アドレス数)] **ドロップダウン ボックスの一覧から、接続先の ARM VNet で使用される CIDR ブロックのネットワーク部分に使用するビット数を選択します。
 5. **[VPN デバイス IP アドレス (オプション)] **で、任意の有効なパブリック IP アドレスを入力します。この IP アドレスは後で変更します。次に、画面の右下にあるチェック マーク ボタンをクリックします。次の図は、このページの設定例です。
 
-	![ローカル ネットワークの設定](..\virtual-network\media\virtual-networks-arm-asm-s2s-howto\figurex1.png)
+	![ローカル ネットワークの設定](.\media\virtual-networks-arm-asm-s2s-howto\figurex1.png)
 
 5. **[ネットワーク] **ページで、**[仮想ネットワーク]**、従来の VNet 、**[構成] **の順にクリックします。
 6. **[サイト間接続] **で、**[ローカル ネットワークに接続する] **チェック ボックスをオンにします。
@@ -71,7 +71,7 @@ ARM VNet 用の VPN ゲートウェイを作成するには、以下の手順に
 4. 次のコマンドを実行して、ゲートウェイに使用されているサブネットを取得します。
 
 		$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet `
-			-VirtualNetwork (Get-AzureVirtualNetwork -Name VNetARM -ResourceGroupName RG1) 
+			-VirtualNetwork (Get-AzureRMVirtualNetwork -Name VNetARM -ResourceGroupName RG1) 
 
 	>[AZURE.IMPORTANT] ゲートウェイ サブネットが既に存在しており、GatewaySubnet という名前が付けられている必要があります。
 
@@ -118,4 +118,4 @@ ARM VNet 用の VPN ゲートウェイを作成するには、以下の手順に
 - [ネットワーク リソース プロバイダー](resource-groups-networking.md)についてさらに学習できます。
 - [end-to-end solution connecting a classic VNet to an ARM VNet by using a S2S VPN (S2S VPN を使用して従来の VNet と ARM VNet を接続するエンド ツーン エンド ソリューション)](virtual-networks-arm-asm-s2s.md) を作成します。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

@@ -3,8 +3,8 @@
 	description="この記事では、Azure VM で SQL Server を実行することに関してよく寄せられる質問に対する回答を示します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="rothja"
-	manager="jeffreyg"
+	authors="v-shysun"
+	manager="msmets"
 	editor=""
 	tags="azure-service-management"/>
 
@@ -14,8 +14,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/15/2016"
-	ms.author="jroth"/>
+	ms.date="04/27/2016"
+	ms.author="v-shysun"/>
 
 # Azure Virtual Machines における SQL Server に関する FAQ
 
@@ -31,7 +31,7 @@
 
 	概念上、Azure 仮想マシンで SQL Server を実行することは、リモート データ センターで SQL Server を実行することと違いません。これに対し、[SQL Database](../sql-database/sql-database-technical-overview.md) はサービスとしてデータベースを提供します。SQL Database では、データベースをホストするマシンにアクセスできません。完全な比較については、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/media/data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。
 
-1. **オンプレミス SQL Server データベースをクラウドに移行するにはどうすればよいですか?**
+1. ** オンプレミス SQL Server データベースをクラウドに移行するにはどうすればよいですか?**
 
 	まず SQL Server インスタンスで、Azure 仮想マシンを作成します。次に、オンプレミス データベースをそのインスタンスに移行します。データ移行の方法については、「[Azure VM の SQL Server への SQL Server データベースの移行](virtual-machines-windows-migrate-sql.md)」を参照してください。
 
@@ -75,4 +75,4 @@ Azure Virtual Machines 上の SQL Server の概要については、ビデオ「
 - [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

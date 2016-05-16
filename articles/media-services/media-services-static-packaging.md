@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/01/2016"   
+ 	ms.date="05/03/2016"    
 	ms.author="juliako"/>
 
 
@@ -27,7 +27,7 @@
 
 Media Services は、動的パッケージと静的パッケージをサポートしています。静的パッケージを使用する場合は、顧客に必要な各形式でコンテンツのコピーを作成する必要があります。動的パッケージを使用する場合、必要な操作は、一連のアダプティブ ビットレート MP4 または Smooth Streaming ファイルを含むアセットの作成のみです。そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
->[AZURE.NOTE] [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用することが推奨されます。
+>[AZURE.NOTE] [動的パッケージ](media-services-dynamic-packaging-overview.md)を使用することが推奨されます。
 
 ただし、静的パッケージが必要なシナリオもあります。
 
@@ -689,7 +689,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 ## 静的暗号化を使用して AES-128 でHLSv3 を保護する
 
-AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨されるオプション) と静的暗号化 (このセクションの説明を参照) のどちらかを選択できます。動的暗号化を使用する場合は、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128)」を参照してください。
+AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨されるオプション) と静的暗号化 (このセクションの説明を参照) のどちらかを選択できます。動的暗号化を使用する場合は、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」を参照してください。
 
 >[AZURE.NOTE]コンテンツを HLS に変換するには、まずコンテンツを Smooth Streaming に変換/エンコードする必要があります。また、AES で HLS を暗号化するには、MediaPackager\_SmoothToHLS.xml ファイルで次のプロパティを設定します。暗号化プロパティを true に設定し、キー値を設定し、認証/承認サーバーを指すように keyuri 値を設定するようにします。Media Services でキー ファイルが作成され、資産コンテナーに配置されます。/asset-containerguid/*.key ファイルは、サーバーにコピーし (または独自のキー ファイルを作成し)、資産コンテナーから *.key ファイルを削除する必要があります。
 
@@ -1447,4 +1447,4 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

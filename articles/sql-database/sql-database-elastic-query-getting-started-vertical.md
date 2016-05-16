@@ -1,9 +1,9 @@
 <properties
-	pageTitle="データベース間クエリの概要 (垂直的パーティション分割) | Microsoft Azure"	
+	pageTitle="クロスデータベース クエリの概要 (列方向のパーティション分割) | Microsoft Azure"	
 	description="垂直にパーティション分割されたデータベースでエラスティック データベース クエリを使用する方法"
 	services="sql-database"
 	documentationCenter=""  
-	manager="jeffreyg"
+	manager="jhubbard"
 	authors="sidneyh"/>
 
 <tags
@@ -12,10 +12,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/26/2016"
+	ms.date="04/26/2016"
 	ms.author="torsteng" />
 
-# データベース間クエリの概要 (垂直的パーティション分割) 
+# クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)
 
 Azure SQL Database 用の エラスティック データベース クエリ (プレビュー) を使用すると、1 つの接続ポイントで複数のデータベースにまたがる T-SQL クエリを実行することができます。このトピックは[垂直にパーティション分割されたデータベース](sql-database-elastic-query-vertical-partitioning.md)に適用されます。
 
@@ -39,7 +39,7 @@ Azure SQL Database 用の エラスティック データベース クエリ (�
 	INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1) 
 	INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8) 
 
-次に、「Customers」データベースで次のクエリを実行し、「CustomerInformation」テーブルを作成し、サンプル データを入力します。
+次に、**Customers** データベースで次のクエリを実行して、**CustomerInformation** テーブルを作成し、サンプル データを入力します。
 
 	CREATE TABLE [dbo].[CustomerInformation]( 
 		[CustomerID] [int] NOT NULL, 
@@ -53,9 +53,6 @@ Azure SQL Database 用の エラスティック データベース クエリ (�
 
 ## データベース オブジェクトを作成する
 ### データベース スコープのマスター キーと資格情報
-
-
-これらを使用し、次の手順に従ってシャード マップ マネージャーとシャードに接続します。
 
 1. SQL Server Management Studio または Visual Studio の SQL Server Data Tools を開きます。
 2. Orders データベースに接続し、次の T-SQL コマンドを実行します。
@@ -109,4 +106,4 @@ CustomerInformation テーブルの定義に一致する外部テーブルを Or
 
 <!--anchors-->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0504_2016-->

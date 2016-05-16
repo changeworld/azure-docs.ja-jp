@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/22/2016"
+   ms.date="04/26/2016"
    ms.author="v-sharos" />
 
 # Government Portal でのオンプレミスの StorSimple デバイスのデプロイ (Update 2)
@@ -46,7 +46,7 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 | **デプロイの手順** | 運用環境に StorSimple デバイスをデプロイするには、次の手順を実行します。 |
 | [手順 1. 新しいサービスを作成する](#step-1-create-a-new-service) | StorSimple デバイス用にクラウド管理とストレージを設定します。*既に他の StorSimple デバイス用のサービスがある場合は、この手順をスキップしてください。* |
 | [手順 2. サービス登録キーを取得する](#step-2-get-the-service-registration-key) | このキーを使用して、StorSimple デバイスを管理サービスに登録し、接続します。 |
-| [手順 3. Windows PowerShell for StorSimple を使用してデバイスを構成して登録する](step 3-configure-and-register-the-device-through-windows-powershell-for-storsimple) | 管理サービスを使用して、デバイスをネットワークに接続して Azure に登録し、セットアップを完了します。 |
+| 手順 3. Windows PowerShell for StorSimple を使用してデバイスを構成して登録する (step 3-configure-and-register-the-device-through-windows-powershell-for-storsimple) | 管理サービスを使用して、デバイスをネットワークに接続して Azure に登録し、セットアップを完了します。 |
 | [手順 4. デバイスの最小セットアップを完了する](#step-4-complete-the-minimum-device-setup) </br>省略可能: StorSimple デバイスを更新する | 管理サービスを使用して、デバイスのセットアップを完了し、ストレージを提供できるようにします。 |
 | [手順 5. ボリューム コンテナーを作成する](#step-5-create-a-volume-container) | ボリュームをプロビジョニングするためのコンテナーを作成します。ボリューム コンテナーでは、そこに含まれるすべてのボリュームのストレージ アカウント、帯域幅、暗号化が設定されています。 |
 | [手順 6. ボリュームを作成する](#step-6-create-a-volume) | サーバーの StorSimple デバイスでストレージ ボリュームをプロビジョニングします。 |
@@ -234,13 +234,13 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 Linux ホストに接続されている StorSimple デバイスの MPIO のインストール手順については、「[Linux ホストの MPIO の構成](storsimple-configure-mpio-on-linux.md)」をご覧ください。
 
-> [AZURE.NOTE] StorSimple 仮想デバイスでは、MPIO がサポートされていません。
+> [AZURE.NOTE] Azure の StorSimple 仮想デバイスでは、MPIO はサポートされていません。
 
 ## 次のステップ
 
-- [仮想デバイス](storsimple-virtual-device.md)を構成します。
+- [仮想デバイス](storsimple-virtual-device-u2.md)を構成します。
 
 - [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
  
 
-<!------HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

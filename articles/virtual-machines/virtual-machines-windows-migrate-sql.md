@@ -3,7 +3,7 @@
 	description="オンプレミスのユーザー データベースを Azure 仮想マシンの SQL Server に移行する方法について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="rothja"
+	authors="sabotta"
 	manager="jhubbard"
 	editor=""
 	tags="azure-service-management" />
@@ -13,16 +13,18 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
-	ms.author="jroth"/>
+	ms.date="05/02/2016"
+	ms.author="carlasab"/>
 
 
 # Azure VM の SQL Server への SQL Server データベースの移行
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]リソース マネージャー モデル。
 
 
 オンプレミスの SQL Server ユーザー データベースを Azure VM の SQL Server に移行する方法は多数あります。この記事では、さまざまな方法について簡単に説明したうえで、さまざまなシナリオに最適な方法を紹介します。また、**Microsoft Azure VM への SQL Server データベースのデプロイ** ウィザードを使用する方法について順を追って説明する[チュートリアル](#azure-vm-deployment-wizard-tutorial)も含まれています。
+
+[チュートリアル](#azure-vm-deployment-wizard-tutorial)で説明する **Microsoft Azure VM への SQL Server Database のデプロイ** ウィザードを使用する方法は、クラシック デプロイ モデル専用です。
 
 ## 主な移行方法
 
@@ -34,7 +36,7 @@
 - データとログ ファイルをデタッチしてから、Azure BLOB ストレージにコピーし、その後、URL から Azure VM の SQL Server にアタッチする
 - オンプレミスの物理マシンを HYPER-V VHD に変換して Azure BLOB ストレージにアップロードし、アップロードしたその VHD を使用して、新しい VM としてデプロイする
 - Windows の Import/Export サービスを使用して、ハード ドライブを発送する
-- オンプレミスの AlwaysOn デプロイがある場合は、[Azure のレプリカ追加ウィザード](virtual-machines-windows-classic-sql-onprem-availability.md)を使って Azure でレプリカを作成した後、フェールオーバーして、ユーザーに Azure データベース インスタンスを参照させる
+- オンプレミスの AlwaysOn デプロイがある場合は、[Azure のレプリカ追加ウィザード](virtual-machines-windows-classic-sql-onprem-availability.md)を使用して Azure でレプリカを作成した後、フェールオーバーして、ユーザーに Azure データベース インスタンスを参照させる
 - SQL Server の[トランザクション レプリケーション](https://msdn.microsoft.com/library/ms151176.aspx)を使用して Azure SQL Server インスタンスをサブスクライバーとして構成した後、レプリケーションを無効にして、ユーザーに Azure データベース インスタンスを参照させる
 
 
@@ -60,11 +62,13 @@
 | [URL へのバックアップを実行し、その URL から Azure 仮想マシンに復元する](#backup-to-url-and-restore) | SQL Server 2012 SP1 CU2 以上 | SQL Server 2012 SP1 CU2 以上 | > 1 TB (SQL Server 2016 の場合は < 12.8 TB) | 一般的に、[URL へのバックアップ](https://msdn.microsoft.com/library/dn435916.aspx)は、パフォーマンスについてはウィザードを使用する場合と同等で、それほど簡単ではありません。 |
 | [データとログ ファイルをデタッチしてから、Azure BLOB ストレージにコピーし、その後、URL から Azure 仮想マシンの SQL Server にアタッチする](#detach-and-copy-to-url-and-attach-from-url) | SQL Server 2005 以降 | SQL Server 2014 以降 | [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | この方法は、特にデータベースのサイズが非常に大きい場合に、[Azure BLOB ストレージ サービスを使用してこれらのファイルを格納](https://msdn.microsoft.com/library/dn385720.aspx)し、Azure VM で実行されている SQL Server にファイルをアタッチするときに使用します。 |
 | [オンプレミスのマシンを HYPER-V VHD に変換して Azure BLOB ストレージにアップロードし、アップロードしたその VHD を使用して、新しい仮想マシンをデプロイする](#convert-to-vm-and-upload-to-url-and-deploy-as-new-vm) | SQL Server 2005 以降 | SQL Server 2005 以降 | [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | [ご自身の SQL Server ライセンスを使用する](../data-management-azure-sql-database-and-sql-server-iaas/)場合、古いバージョンの SQL Server で実行するデータベースを移行する場合、または他のユーザー データベースやシステム データベースに応じて、データベースの移行の一環として、データベース システムとユーザー データベースを一緒に移行する場合に使用します。 |
-| [Windows の Import/Export サービスを使用して、ハード ドライブを発送する](#ship-hard-drive) | SQL Server 2005 以降 | SQL Server 2005 以降 | [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | [Windows の Import/Export サービス](../storage-import-export-service/)は、データベースのサイズが非常に大きい場合など、手動でのコピーが遅すぎるときに使用します。 |
+| [Windows の Import/Export サービスを使用して、ハード ドライブを発送する](#ship-hard-drive) | SQL Server 2005 以降 | SQL Server 2005 以降 | [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | [Windows の Import/Export サービス](../storage/storage-import-export-service.md)は、データベースのサイズが非常に大きい場合など、手動でのコピーが遅すぎるときに使用します。 |
 
 ## Azure VM のデプロイ ウィザードのチュートリアル
 
 Microsoft SQL Server Management Studio の "**Microsoft Azure VM への SQL Server データベースのデプロイ** ウィザード" を使用して、SQL Server 2005、SQL Server 2008、SQL Server 2008 R2、SQL Server 2012、SQL Server 2014、または SQL Server 2016 のオンプレミスのユーザー データベース (最大 1 TB) を、Azure 仮想マシンの SQL Server 2014 または SQL Server 2016 に移行します。このウィザードを使用すると、ユーザー データベースが、既存の Azure 仮想マシン、または移行プロセス中にウィザードによって作成された SQL Server が含まれる Azure VM のいずれかに移行されます。データベースを新しいバージョンの SQL Server に移行すると、そのデータベースは、プロセス中に自動的にアップグレードされます。
+
+この方法は、クラシック デプロイ モデル専用です。
 
 ### 最新の Microsoft Azure VM への SQL Server データベースのデプロイ ウィザードを入手する
 
@@ -74,7 +78,7 @@ Microsoft SQL Server Management Studio の "**Microsoft Azure VM への SQL Serv
 
 既存の Azure VM に移行するには、次の構成手順を実行します。
 
-- 「[Azure での SQL Server 仮想マシンのプロビジョニング](../virtual-machines-provision-sql-server/#SSMS)」の「別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する」の手順に従って、Azure VM と SQL Server インスタンスを構成して、別のコンピューターからの接続を有効にします。ウィザードを使用して移行する場合、サポートされるのは、ギャラリーの SQL Server 2014 および SQL Server 2016 のイメージのみです。
+- [別のコンピューター上の SSMS から SQL Server VM インスタンスに接続する](virtual-machines-windows-sql-connect.md)手順に従って、Azure VM と SQL Server インスタンスを構成し、別のコンピューターからの接続を有効にします。ウィザードを使用して移行する場合、サポートされるのは、ギャラリーの SQL Server 2014 および SQL Server 2016 のイメージのみです。
 - Microsoft Azure ゲートウェイの SQL Server クラウド アダプター サービスのオープン エンドポイントを、プライベート ポート 11435 で構成します。このポートは、Microsoft Azure VM における SQL Server 2014 または SQL Server 2016 のプロビジョニングの一環として作成されます。また、クラウド アダプターでは、既定のポート 11435 での着信 TCP 接続を許可する Windows ファイアウォール ルールも作成されます。このエンドポイントにより、ウィザードがクラウド アダプター サービスを利用して、バックアップ ファイルをオンプレミスのインスタンスから Azure VMにコピーできます。詳細については、「[SQL Server のクラウド アダプター](https://msdn.microsoft.com/library/dn169301.aspx)」をご覧ください。
 
 	![クラウド アダプターのエンドポイントの作成](./media/virtual-machines-windows-migrate-sql/cloud-adapter-endpoint.png)
@@ -133,7 +137,7 @@ Microsoft SQL Server Management Studio の "**Microsoft Azure VM への SQL Serv
 	![結果](./media/virtual-machines-windows-migrate-sql/results.png)
 
 13. ウィザードが完了したら、仮想マシンに接続し、データベースが移行されていることを確認します。
-14. 新しい仮想マシンを作成した場合は、「[Azure での SQL Server 仮想マシンのプロビジョニング](../virtual-machines-provision-sql-server/#SSMS)」の「別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する」の手順に従って、Azure 仮想マシンと SQL Server インスタンスを構成します。
+14. 新しい仮想マシンを作成した場合は、[別のコンピューター上の SSMS から SQL Server VM インスタンスに接続する](virtual-machines-windows-sql-connect.md)手順に従って、Azure 仮想マシンと SQL Server インスタンスを構成します。
 
 ## ファイルへのバックアップと VM へのコピーおよび復元
 
@@ -146,14 +150,14 @@ SQL Server 2014 より前の SQL Server に移行する場合、またはバッ�
 
 ## URL へのバックアップと復元
 
-バックアップ ファイルが 1 TB を超える場合、SQL Server 2016 から移行する場合、および SQL Server 2016 に移行する場合、Microsoft Azure VM への SQL Server データベースのデプロイ ウィザードは使用できません。[URL へのバックアップ](https://msdn.microsoft.com/library/dn435916.aspx)方法は、このような場合に使用します。データベースが 1 TB 未満の場合、または SQL Server 2016 より前のバージョンの SQL Server を実行している場合は、ウィザードを使用することをお勧めします。SQL Server 2016 では、ストライプ バックアップ セットがサポートされています。このバックアップ セットは、パフォーマンスを確保するために使用することが推奨されます。また、BLOB ごとのサイズ制限を超える場合は必須です。データベースのサイズが非常に大きい場合は、[Windows の Import/Export サービス](../storage-import-export-service/)をお勧めします。
+バックアップ ファイルが 1 TB を超える場合、SQL Server 2016 から移行する場合、および SQL Server 2016 に移行する場合、Microsoft Azure VM への SQL Server データベースのデプロイ ウィザードは使用できません。[URL へのバックアップ](https://msdn.microsoft.com/library/dn435916.aspx)方法は、このような場合に使用します。データベースが 1 TB 未満の場合、または SQL Server 2016 より前のバージョンの SQL Server を実行している場合は、ウィザードを使用することをお勧めします。SQL Server 2016 では、ストライプ バックアップ セットがサポートされています。このバックアップ セットは、パフォーマンスを確保するために使用することが推奨されます。また、BLOB ごとのサイズ制限を超える場合は必須です。データベースのサイズが非常に大きい場合は、[Windows の Import/Export サービス](../storage/storage-import-export-service.md)をお勧めします。
 
 ## デタッチして URL をコピーし、URL からアタッチ
 
 この方法は、特にデータベースのサイズが非常に大きい場合に、[Azure BLOB ストレージ サービスを使用してこれらのファイルを格納](https://msdn.microsoft.com/library/dn385720.aspx)し、Azure VM で実行されている SQL Server にファイルをアタッチするときに使用します。この手動による方法を使用してユーザー データベースを移行するには、次の一般的な手順を実行します。
 
 1.	オンプレミスのデータベース インスタンスからデータベース ファイルをデタッチします。
-2.	デタッチされたデータベース ファイルを、[AZCopy コマンド ライン ユーティリティ](../storage-use-azcopy/)を使用して Azure BLOB ストレージにコピーします。
+2.	デタッチされたデータベース ファイルを、[AZCopy コマンド ライン ユーティリティ](../storage/storage-use-azcopy.md)を使用して Azure BLOB ストレージにコピーします。
 3.	データベース ファイルを、Azure URL から Azure VM の SQL Server のインスタンスにアタッチします。
 
 ## VM に変換して URL にアップロードし、新しい VM としてデプロイ
@@ -164,14 +168,14 @@ SQL Server 2014 より前の SQL Server に移行する場合、またはバッ�
 2.	[Add-AzureVHD コマンドレット](https://msdn.microsoft.com/library/windowsazure/dn495173.aspx)を使用して、VHD ファイルを Azure Storage にアップロードします。
 3.	アップロードした VHD を使用して、新しい仮想マシンをデプロイします。
 
-> [AZURE.NOTE] アプリケーション全体を移行するには、[Azure Site Recovery](../services/site-recovery/) を使用することを検討します。
+> [AZURE.NOTE] アプリケーション全体を移行するには、[Azure Site Recovery](../site-recovery/site-recovery-overview.md) を使用することを検討します。
 
 ## ハード ドライブの発送
 
-ネットワーク経由のアップロードが実現不可能であるか、非常にコストがかかる場合には、[Windows の Import/Export サービス方法](../storage-import-export-service/)を使用して、ファイルの大量のデータを Azure BLOB ストレージに転送します。このサービスでは、そのデータを含む 1 台以上のハード ドライブを Azure データ センターに発送します。このデータ センターでデータがストレージ アカウントにアップロードされます。
+ネットワーク経由のアップロードが実現不可能であるか、非常にコストがかかる場合には、[Windows の Import/Export サービス方法](../storage/storage-import-export-service.md)を使用して、ファイルの大量のデータを Azure BLOB ストレージに転送します。このサービスでは、そのデータを含む 1 台以上のハード ドライブを Azure データ センターに発送します。このデータ センターでデータがストレージ アカウントにアップロードされます。
 
 ## 次のステップ
 
 Azure Virtual Machines で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

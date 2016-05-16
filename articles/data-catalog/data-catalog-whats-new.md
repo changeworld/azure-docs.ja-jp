@@ -184,7 +184,7 @@
 2015 年 9 月 11 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
 
 - HTTP/HTTPS を介した SQL Server Analysis Services オブジェクトの登録および検出をサポートします。ユーザーは、サーバー名ではなく URL (https://servername/olap/msmdpump.dll など) を使用して SSAS サーバーに接続できるようになりました。さらに、Windows 認証に加えて、基本認証と匿名接続も使用することができます。SSAS への HTTP/HTTPS 接続の詳細については、「[インターネット インフォメーション サービス (IIS) 8.0 上の Analysis Services への HTTP アクセスの構成](https://msdn.microsoft.com/library/gg492140.aspx)」を参照してください。
-- HDInsight で Hive データ ソースをサポートします。ユーザーは、HDInsight データ ソースにおいて、Hadoop の Apache Hive に対する Hive テーブルを登録および検出できるようになりました。HDInsight での Hive の詳細については、[HDInsight ドキュメント センター](../hdinsight-use-hive/)をご覧ください。
+- HDInsight で Hive データ ソースをサポートします。ユーザーは、HDInsight データ ソースにおいて、Hadoop の Apache Hive に対する Hive テーブルを登録および検出できるようになりました。HDInsight での Hive の詳細については、[HDInsight ドキュメント センター](../hdinsight/hdinsight-use-hive.md)をご覧ください。
 - Oracle データベースと HDFS クラスターをコンテナーとして登録し、検出できるようになりました。Oracle のテーブルとビューまたは HDFS の登録時に、**Azure Data Catalog** はテーブルとビューだけでなく、データベースのエントリも作成します。データベースは、**Azure Data Catalog** ポータルを使用して検出し、注釈を付けることができます。カタログのコンテンツを検索し、フィルター処理するだけでなく、データベースまたはクラスターのコンテンツを検索し、フィルター処理することもできます。
 
 
@@ -216,4 +216,4 @@
 - Standard Edition のみ: データ資産に所有者を追加するとき、**Azure Data Catalog** は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 - Azure BLOB Storage データ ソースのサポート。ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

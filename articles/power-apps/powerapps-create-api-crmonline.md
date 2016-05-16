@@ -14,98 +14,102 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/29/2016"
+   ms.date="05/02/2016"
    ms.author="sameerch"/>
 
 # PowerApps Enterprise で新しい Dynamics CRM Online API を作成する
 
-> [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/connectors-create-api-crmonline.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-crmonline.md)
+> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> 
+> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページを参照してください。  
+> - PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事を参照してください。 
 
-組織の (テナント) App Service 環境に Dynamics CRM Online API を追加する
+<!--Archived
+Add the Dynamics CRM Online API to your organization's (tenant) app service environment. 
 
-## Azure ポータルでの API の作成
+## Create the API in the Azure portal
 
-1. [Azure ポータル](https://portal.azure.com)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
+1. In the [Azure portal](https://portal.azure.com), sign-in with your work account. For example, sign-in with *yourUserName*@*YourCompany*.com. When you do this, you are automatically signed in to your company subscription.
 
-2. タスク バーの **[参照]** をクリックします。  
+2. Select **Browse** in the task bar:  
 ![][1]
 
-3. 一覧で、PowerApps が見つかるまでスクロールするか、「powerapps」と入力します。  
-![][2]
+3. In the list, you can scroll to find PowerApps or type in *powerapps*:  
+![][2]  
 
-4. **[PowerApps]** で、**[API の管理]** を選択します。  
-![登録されている API の参照][3]
+4. In **PowerApps**, select **Manage APIs**:  
+![Browse to registered apis][3]
 
-5. **[API の管理]** で、**[追加]** をクリックして新しい API を追加します。  
+5. In **Manage APIs**, select **Add** to add the new API:  
 ![Add API][4]
 
-6. API のわかりやすい**名前**を入力します。
+6. Enter a descriptive **name** for your API.  
 
-7. **[ソース]** で、**[利用可能な API]** を選択して既成の API を選択し、**[Dynamics CRM Online]** を選択します。  
-![Dynamics CRM Online API の選択][5]
+7. In **Source**, select **Available APIs** to select the pre-built APIs, and select **Dynamics CRM Online**:  
+![Select Dynamics CRM Online API][5]
 
-8. **[設定] - [必要な設定の構成]** を選択します。  
-![Dynamics CRM Online API 設定の構成][6]
+8. Select **Settings - Configure required settings**:  
+![Configure Dynamics CRM Online API settings][6]
 
-9. Dynamics CRM Online Azure Active Directory (AAD) アプリケーションの**クライアント ID** と**アプリケーション キー**を入力します。これらがない場合は、このトピックの「PowerApps Dynamics CRM Online API で使用する AAD アプリケーションの登録」を参照して、必要な ID とシークレットの値を作成します。
+9. Enter **Client Id** and **App Key** of your Dynamics CRM Online Azure Active Directory (AAD) application.  If you don't have one, see the "Register an AAD app for use with PowerApps" section in this topic to create the ID and secret values you need.  
 
-	> [AZURE.IMPORTANT] **リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
+	> [AZURE.IMPORTANT] Save the **redirect URL**. You may need this value later in this topic.
 
-10. **[OK]** をクリックして、手順を完了します。
+10. Select **OK** to complete the steps.
 
-完了すると、App Service 環境に新しい Dynamics CRM Online API が追加されます。
+When finished, a new Dynamics CRM Online API is added to your app service environment.
 
-## PowerApps Dynamics CRM Online API で使用する AAD アプリケーションの登録
+## Register an AAD app for use with PowerApps Dynamics CRM Online API
 
-1. [Azure ポータル](https://portal.azure.com)を開きます。
+1. Open the [Azure Portal](https://portal.azure.com).
 
-2. **[参照]** をクリックし、**[Active Directory]** を選択します。
+2. Select **Browse** and then select **Active Directory**:  
 
-	> [AZURE.NOTE] これにより、Azure クラシック ポータルで Active Directory が開きます。
+	> [AZURE.NOTE] This opens Active Directory in the Azure classic portal.  
 
-3. 組織のテナント名を選択します。  
-![Azure Active Directory の起動][7]
+3. Select your organization's tenant name:  
+![Launch Azure Active Directory][7]
 
-4. **[アプリケーション]** タブを選択し、**[追加]** をクリックします。  
-![AAD テナント アプリケーション][8]
+4. Select the **Applications** tab, and select **Add**:  
+![AAD tenant applications][8]
 
-5. **[アプリケーションの追加]** で次の操作を行います。
+5. In **Add application**:  
 
-	1. アプリケーションの **[名前]** を入力します。  
-	2. アプリケーションの種類は **[Web]** のままにします。  
-	3. **[次へ]** を選択します。
+	1. Enter a **Name** for your application.  
+	2. Leave the application type as **Web**.  
+	3. Select **Next**.
 
-	![AAD アプリケーションの追加 - アプリケーション情報][9]
+	![Add AAD application - app info][9]
 
-6. **[アプリケーションのプロパティ]** で次の操作を行います。
+6. In **App Properties**:  
 
-	1. アプリケーションの**サインオン URL** を入力します。PowerApps の AAD に対して認証するので、サインオン URL を _https://login.windows.net_ に設定します。
-	2. アプリの有効な**アプリ ID URI** を入力します。  
-	3. **[OK]** を選択します。  
+	1. Enter the **SIGN-ON URL** of your application.  Since you are going to authenticate with AAD for PowerApps, set the sign-on url to _https://login.windows.net_.  
+	2. Enter a valid **APP ID URI** for your app.  
+	3. Select **OK**.  
 
-	![AAD アプリケーションの追加 - アプリケーションのプロパティ][10]
+	![Add AAD application - app properties][10]
 
-7. 操作が正常に完了すると、新しい AAD アプリケーションにリダイレクトされます。**[構成]** をクリックします。  
-![Contoso AAD アプリケーション][11]
+7. On successful completion, you are redirected to the new AAD app. Select **Configure**:  
+![Contoso AAD app][11]
 
-8. _OAuth 2_ セクションの **[応答 URL]** を、(このトピックで) Azure ポータルで新しい Dynamics CRM Online API を追加したときに受け取ったリダイレクト URL に設定します。  
-![Contoso AAD アプリケーションの構成][12]
+8. Set the **Reply URL** under _OAuth 2_ section to the redirect URL you received when you added the new Dynamics CRM Online API in the Azure Portal (in this topic):  
+![Configure Contoso AAD app][12]
 
-9. [**保存**] を選択します。
+9. Select **Save**.
 
-新しい Azure Active Directory アプリケーションが作成されます。Azure ポータルの Dynamics CRM Online API 構成でこのアプリケーションを使用できます。
+A new Azure Active Directory app is created. You can use this app in your Dynamics CRM Online API configuration in the Azure portal.
 
-## REST API に関するページを参照してください。
+## See the REST APIs
 
-[Dynamics CRM Online REST API](../connectors/connectors-create-api-crmonline.md) リファレンス。
+[Dynamics CRM Online REST API](../connectors/connectors-create-api-crmonline.md) reference.
 
 
-## まとめと次のステップ
-このトピックでは、Dynamics CRM Online API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
+## Summary and next steps
+In this topic, you added the Dynamics CRM Online API to your PowersApps Enterprise. Next, give users access to the API so it can be added to their apps:
 
-[接続を追加し、ユーザーにアクセスを許可する](powerapps-manage-api-connection-user-access.md)
+[Add a connection and give users access](powerapps-manage-api-connection-user-access.md)
+-->
+
 
 <!-- References -->
 
@@ -122,4 +126,4 @@
 [11]: ./media/powerapps-create-api-crmonline/contoso-aad-app.PNG
 [12]: ./media/powerapps-create-api-crmonline/contoso-aad-app-configure.PNG
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

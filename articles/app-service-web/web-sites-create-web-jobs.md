@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/12/2016" 
+	ms.date="04/27/2016" 
 	ms.author="tdykstra"/>
 
 # Web ジョブでバックグラウンド タスクを実行する
@@ -25,6 +25,8 @@
 この記事では、[Azure ポータル](https://portal.azure.com)を使用して Web ジョブをデプロイする方法について説明します。Visual Studio または継続的な配信プロセスを使用したデプロイ方法については、[Azure WebJobs の Web Apps へのデプロイ方法](websites-dotnet-deploy-webjobs.md)に関するページをご覧ください。
 
 Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング タスクを簡略化しています。詳細については、「[Azure Web ジョブ SDK とは](websites-dotnet-webjobs-sdk.md)」をご覧ください。
+
+ Azure Functions (現在プレビュー段階) は、Azure App Service でプログラムとスクリプトを実行する別の方法です。詳細については、「[Azure Functions の概要](../azure-functions/functions-overview.md)」をご覧ください。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -76,7 +78,7 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 
 ## <a name="CreateScheduledCRON"></a>CRON 式を使用してスケジュール済みの WebJob を作成する
 
-この方法は、Basic、Standard または Premium モードで実行されている Web Apps に使用でき、アプリで **Always On** 設定が有効になっている必要があります。
+この方法は、Basic、Standard、または Premium モードで実行されている Web Apps に使用できます。この方法を使用するには、アプリで **Always On** 設定が有効になっている必要があります。
 
 オンデマンドの WebJob をスケジュール済みの WebJob に変換するには、単に WebJob zip ファイルの root に `settings.job` ファイルを追加します。この JSON ファイルには、次の例のように `schedule` プロパティを [CRON 式](https://en.wikipedia.org/wiki/Cron)と共に含める必要があります。
 
@@ -201,14 +203,9 @@ Azure ポータルには、スケジュールされた Web ジョブを作成す
 - [基本] モードと [標準] モードには [常時接続] 機能が用意されており、この機能を有効にすると、Web アプリがアイドル状態にならなくなります。
 - デバッグできるのは、連続的に実行する Web ジョブだけです。スケジュールされた Web ジョブとオンデマンドの Web ジョブのデバッグはサポートされていません。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-
 ## <a name="NextSteps"></a>次のステップ
  
 詳細については、[Azure WebJobs の推奨リソース][WebJobsRecommendedResources]に関するページをご覧ください。
-
-## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 [PSonWebJobs]: http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx
 [WebJobsRecommendedResources]: http://go.microsoft.com/fwlink/?LinkId=390226
@@ -238,4 +235,4 @@ Azure ポータルには、スケジュールされた Web ジョブを作成す
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

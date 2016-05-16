@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="04/27/2016" 
 	ms.author="awills"/>
 
 
@@ -160,14 +160,14 @@
 
 `name=` を使用すると、集計式または by 句の中で結果列の名前を設定できます。
 
-### データ ポイントのカウント
+## サンプリングされたデータのカウント
 
 イベントのカウントには、`sum(itemCount)` 集計を使うことをお勧めします。多くの場合、itemCount==1 であるため、この関数を使用すると単にグループ内の行数がカウントされます。ただし、[サンプリング](app-insights-sampling.md)を実行中の場合、元のイベントの一部のみが Application Insights のデータ ポイントとして保持されます。そのため、表示される各データ ポイントに複数の `itemCount` イベントが存在します。したがって、itemCount を合計することによって、元のイベント数の正確な見積もりが得られます。
 
 
 ![](./media/app-insights-analytics-tour/510.png)
 
-また、あるグループ内の行数を実際にカウントしたい場合は、`count()` 集計を使用します。
+また、あるグループ内の行数を実際にカウントする必要がある場合のために、`count()` 集計 (およびカウント操作) もあります。
 
 
 さまざまな[集計関数](app-insights-analytics-aggregations.md)が用意されています。
@@ -423,4 +423,4 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

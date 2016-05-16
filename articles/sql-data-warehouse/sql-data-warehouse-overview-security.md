@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="04/30/2016"
    ms.author="sahajs;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのデータベース保護
@@ -24,7 +24,9 @@
 
 接続のセキュリティとは、ファイアウォール ルールと接続の暗号化を使用して、データベースへの接続を制限し、保護する方法のことです。
 
-ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。新しいデータベースへの接続を試行するために、アプリケーションまたはクライアント コンピューターのパブリック IP アドレスを許可するには、まず Microsoft Azure クラシック ポータル、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。詳細については、「[Azure SQL Database ファイアウォール][]」を参照してください。
+ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure クラシック ポータル、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。詳細については、「[Azure SQL Database ファイアウォール][]」を参照してください。
+
+SQL Data Warehouse への接続は、接続文字列で暗号化モードを設定することで暗号化できます。接続の暗号化を有効にする構文は、プロトコルによって異なります。接続文字列を設定するには、Azure ポータルでデータベースに移動します。*[要点]* で *[データベース接続文字列の表示]* をクリックします。
 
 
 ## 認証
@@ -43,7 +45,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'strong_password';
 
 ```
 
-次に、SQL Data Warhouse データベースにサーバー管理ログインを使用して接続し、作成したばかりのサーバー ログインに基づいてデータベース ユーザーを作成します。
+次に、サーバー管理者ログインを使用して SQL Data Warehouse データベースに接続し、先ほど作成したサーバー ログインに基づいてデータベース ユーザーを作成します。
 
 ```sql
 -- Connect to SQL DW database and create a database user
@@ -67,7 +69,7 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 ユーザーが Azure SQL Database で実行できる操作をさらに制限する方法がいくつかあります。
 
-- 詳細な[アクセス許可][]により、個々の列、テーブル、ビュー、プロシージャ、その他のデータベース内のオブジェクトで実行できる操作を制御できます。詳細なアクセス許可を使用して最大限に制御し、必要最小限のアクセス許可を付与します。詳細なアクセス許可システムは、多少複雑なため、効率的に使用するには調査が必要になります。
+- 詳細な[アクセス許可][]により、個々の列、テーブル、ビュー、プロシージャ、その他のデータベース内のオブジェクトで実行できる操作を制御できます。詳細なアクセス許可を使用して最大限の制御を行い、必要最小限のアクセス許可を付与します。詳細なアクセス許可システムは、多少複雑なため、効率的に使用するには調査が必要になります。
 - db\_datareader と db\_datawriter 以外の[データベース ロール][]を使用して、より権限の大きなアプリケーション ユーザー アカウント、またはより権限の小さな管理アカウントを作成できます。組み込みの固定データベース ロールを使用すると、簡単にアクセス許可を付与できますが、その結果、必要以上のアクセス許可を付与することになる可能性があります。
 - [ストアド プロシージャ][]を使用すると、データベースで実行できるアクションを制限できます。
 
@@ -84,21 +86,20 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 ```
 
-透過的なデータ暗号化は、[Azure クラシック ポータル][]のデータベース設定から有効にすることもできます。詳細については、「[Transparent Data Encryption (TDE) の概要](sql-data-warehouse-encryption-tde-tsql.md)」を参照してください。
+透過的なデータ暗号化は、[Azure クラシック ポータル][]のデータベース設定から有効にすることもできます。詳細については、「[Transparent Data Encryption (TDE) の概要](sql-data-warehouse-encryption-tde-tsql.md)」をご覧ください。
 
 ## 監査
 
 データベースの監査イベントと追跡イベントは、規制遵守の維持や、疑わしいアクティビティの特定に役立ちます。SQL Data Warehouse の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。また SQL Data Warehouse の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。詳細については、「[SQL Database 監査の使用][]」を参照してください。
 
 ## 次のステップ
-開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
-
+さまざまなプロトコルでの SQL Data Warehouse への接続の詳細と例については、「[SQL Data Warehouse への接続][]」をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[開発の概要]: sql-data-warehouse-overview-develop.md
-
+[SQL Data Warehouse への接続]: sql-data-warehouse-develop-connections.md
+[SQL Database 監査の使用]: sql-database-auditing-get-started.md
 
 <!--MSDN references-->
 [Azure SQL Database ファイアウォール]: https://msdn.microsoft.com/library/ee621782.aspx
@@ -107,10 +108,9 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 [アクセス許可]: https://msdn.microsoft.com/library/ms191291.aspx
 [ストアド プロシージャ]: https://msdn.microsoft.com/library/ms190782.aspx
 [透過的なデータ暗号化]: http://go.microsoft.com/fwlink/?LinkId=526242
-[SQL Database 監査の使用]: sql-database-auditing-get-started.md
 [Azure クラシック ポータル]: https://portal.azure.com/
 
 <!--Other Web references-->
 [Azure ポータルでのロール ベースのアクセス制御]: http://azure.microsoft.com/documentation/articles/role-based-access-control-configure.aspx
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

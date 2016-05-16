@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="04/29/2016"
 	ms.author="robinsh"/>
 
 # Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
@@ -149,7 +149,7 @@ Azure CDN の詳細については、「[Azure CDN](https://azure.microsoft.com/
 どちらのテクノロジも、Web アプリケーションに不要な負荷 (およびボトルネック) をかけずに運用するために役立ちます。
 
 ####有用な情報
-SAS の詳細については、「[共有アクセス署名、パート 1:SAS モデルについて](../storage-dotnet-shared-access-signature-part-1/)」を参照してください。
+SAS の詳細については、「[共有アクセス署名、パート 1:SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 CORS の詳細については、「[Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート](http://msdn.microsoft.com/library/azure/dn535601.aspx)」を参照してください。
 
@@ -185,7 +185,7 @@ CORS の詳細については、「[Azure ストレージ サービスでのク�
 
 	ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 
-詳細については、「[ThreadPool.SetMinThreads メソッド](http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads(v=vs.110)」.aspx)) を参照してください。
+詳細については、「ThreadPool.SetMinThreads メソッド」(http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads(v=vs.110).aspx)) を参照してください。
 
 ####<a name="subheading11"></a>.NET 4.5 のガベージ コレクションを活用する
 クライアント アプリケーション用に .NET 4.5 以降を使用すると、サーバー ガベージ コレクションによるパフォーマンス向上が期待できます。
@@ -393,7 +393,7 @@ Nagle アルゴリズムについて論じているテーブル構成のセク�
 ###<a name=subheading44"></a>UpdateMessage
 **UpdateMessage** を使用すると、非常時タイムアウトを長くしたり、メッセージの状態情報を更新したりすることができます。この機能は効果的ですが、各 **UpdateMessage** 操作はスケーラビリティ ターゲットにカウントされることに留意してください。しかし、それでもジョブの手順が完了するごとに、次のキューにジョブを渡すワークフローに比べると、はるかに効率的な方法です。**UpdateMessage** 操作を使用すると、アプリケーションは、ジョブの各手順が完了するたびに次の手順に関するメッセージをキューから取得するのではなく、ジョブ状態をメッセージに保存して、処理を継続できるようになります。
 
-詳細については、「[方法: キューに配置されたメッセージの内容を変更する](storage-dotnet-how-to-use-queues#change-the-contents-of-a-queued-message)」を参照してください。
+詳細については、「[方法: キューに配置されたメッセージの内容を変更する](storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message)」を参照してください。
 
 ###<a name=subheading45"></a>アプリケーションのアーキテクチャ
 アプリケーション アーキテクチャの拡張性を確保するには、キューを使用します。以下のリストは、キューを使用して、アプリケーションの拡張性を高めるための方法を示しています。
@@ -404,4 +404,4 @@ Nagle アルゴリズムについて論じているテーブル構成のセク�
 ##まとめ
 この記事では、Azure Storage 使用時のパフォーマンスを最適化する実証済みプラクティスのうち、よく用いられるものをいくつか取り上げました。すべてのアプリケーション開発者に対して、この記事で示した個々のプラクティスに照らしてアプリケーションを評価し、推奨事項に基づく動作によって、Azure Storage を使用するアプリケーションが優れたパフォーマンスを発揮できるように検討することをお勧めします。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

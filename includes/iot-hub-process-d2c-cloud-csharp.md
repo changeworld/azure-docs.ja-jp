@@ -27,7 +27,7 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
 
     ![][30]
 
-2. Service Bus キューの一覧で、**[d2ctutorial]** をクリックし、**[構成]** をクリックします。2 つの共有アクセス ポリシー (1 つは **Send **アクセス許可を持つ **send**、もう 1 つは **Listen** アクセス許可を持つ **listen**) を作成します。完了したら、下部の **[保存]** をクリックします。
+2. Service Bus キューの一覧で、**[d2ctutorial]** をクリックし、**[構成]** をクリックします。2 つの共有アクセス ポリシー (1 つは **Send **アクセス許可を持つ **send**、もう 1 つは **Listen ** アクセス許可を持つ **listen**) を作成します。完了したら、下部の **[保存]** をクリックします。
 
     ![][31]
 
@@ -85,7 +85,7 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
         blobClient = storageAccount.CreateCloudBlobClient();
         blobContainer = blobClient.GetContainerReference("d2ctutorial");
         blobContainer.CreateIfNotExists();
-        queueClient = QueueClient.CreateFromConnectionString(ServiceBusConnectionString, "d2ctutorial");
+        queueClient = QueueClient.CreateFromConnectionString(ServiceBusConnectionString);
       }
 
       Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
@@ -255,7 +255,7 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
     Console.WriteLine("Process D2C Interactive Messages app\n");
 
     string connectionString = "{service bus listen connection string}";
-    QueueClient Client = QueueClient.CreateFromConnectionString(connectionString, "d2ctutorial");
+    QueueClient Client = QueueClient.CreateFromConnectionString(connectionString);
 
     OnMessageOptions options = new OnMessageOptions();
     options.AutoComplete = false;
@@ -314,4 +314,3 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
 [31]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue3.png
 [32]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue4.png
 
-<!---HONumber=AcomDC_0413_2016-->

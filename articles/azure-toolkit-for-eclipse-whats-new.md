@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="03/04/2016" 
+	ms.date="05/04/2016" 
 	ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694270.aspx -->
@@ -24,21 +24,29 @@
 
 この記事では、Azure Toolkit for Eclipse の各種リリースと最新情報について記載しています。
 
+### 2016 年 4 月 12 日
+
+Azure Toolkit for Eclipse - April 2016 リリースでは、次の点が強化されています。
+
+* **Azure SDK 2.9.0 のサポート**。最新バージョンの Azure SDK が、Azure Toolkit for Eclipse を使用するための最低限の前提条件になりました。
+* **Azure Web アプリのサポートに関連する、その他の操作性、応答性、およびパフォーマンスの強化**。Toolkit が Azure と通信する際のパフォーマンスがさまざまな点で最適化されたため、より応答性の高い UI となっています。
+* **Eclipse 内から Azure の既存の Web アプリケーション コンテナーを削除する機能**。Azure Toolkit for Eclipse を使用して、Eclipse を離れることなく既存の Azure Web コンテナーを削除できるようになりました。
+
 ### 2016 年 3 月 7 日
 
 Azure Toolkit for Eclipse - March 2016 リリースでは、次の点が強化されています。
 
-* **軽量 Java アプリケーションの簡易デプロイのサポート**。Azure Toolkit for Eclipse では、軽量の Java アプリケーションを Azure Web アプリ コンテナーに簡易デプロイできるようになりました。Java アプリケーションのデプロイが数分ではなく数秒で完了します。
-* **Azure Explorer ビューによる Web App 管理のサポート**。ツールキットの Azure Explorer ビューで Azure Web Apps を一覧表示し、起動し、停止できるようになりました。
+* **軽量の Java アプリケーションの簡易デプロイのサポート**。Azure Toolkit for Eclipse では、軽量の Java アプリケーションを Azure Web アプリ コンテナーに簡易デプロイできるようになりました。Java アプリケーションのデプロイが数分ではなく数秒で完了します。
+* **Azure Explorer ビューによる Web アプリ管理のサポート**。ツールキットの Azure Explorer ビューで Azure Web Apps を一覧表示し、起動し、停止できるようになりました。
 * **Tomcat、Jetty、Zulu OpenJDK のディストリビューションの更新**。Azure Toolkit for Eclipse は更新版の Tomcat、Jetty、Zulu OpenJDK に対応しており、Java を Azure Cloud Services にデプロイするために利用できます。
 
-### 2015 年 1 月 4 日
+### 2016 年 1 月 4 日
 
 Azure Toolkit for Eclipse - January 2016 リリースでは、次の点が強化されています。
 
 * **Zulu OpenJDK 更新をサポート**。詳細については、[Azul Systems の Zulu OpenJDK に関する Web ページ]を参照してください。
 * **Tomcat と Jetty ディストリビューションを更新**。Microsoft Azure で Azure Toolkit for Eclipse から利用できる Jetty ディストリビューションと Tomcat ディストリビューションが更新されました。
-* **Azure の Eclipse ツールキットと IntelliJ ツールキットの機能の類似性**。Azure Toolkit for Eclipse と [Azure Toolkit for IntelliJ] は、同じ機能セットをサポートするようになりました。
+* **Azure の Eclipse ツールキットと IntelliJ ツールキットの機能の同等性**。Azure Toolkit for Eclipse と [Azure Toolkit for IntelliJ] は、同じ機能セットをサポートするようになりました。
 
 ### 2015 年 9 月 1 日
 
@@ -334,4 +342,4 @@ Java での Azure の使用方法の詳細については、「[Azure Java Devel
 [ic710882]: ./media/azure-toolkit-for-eclipse-whats-new/ic710882.png
 [ic710883]: ./media/azure-toolkit-for-eclipse-whats-new/ic710883.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

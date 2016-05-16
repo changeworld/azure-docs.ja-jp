@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Service Bus メッセージングの例外 | Microsoft Azure"
-   description="Service Bus メッセージングの例外と推奨アクションの一覧。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Service Bus メッセージングの例外 | Microsoft Azure"
+    description="Service Bus メッセージングの例外と推奨アクションの一覧。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="tysonn" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="01/25/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="05/02/2016"
+    ms.author="sethm" />
 
 # Service Bus メッセージングの例外
 
@@ -21,7 +21,7 @@
 
 ## 例外のカテゴリ
 
-メッセージング API で生成される例外をカテゴリ別に分類し、修復のために実行できる関連するアクションと共に以下に示します。
+メッセージング API で生成される例外をカテゴリ別に分類し、修復のために実行できる関連するアクションと共に以下に示します。例外の意味と原因は、メッセージング エンティティの種類 (リレー、キュー/トピック、Event Hubs) によって異なる場合があります。
 
 1.  ユーザー コードのエラー ([System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)、[System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)、[System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)、[System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx))。一般アクション: 処理を実行する前にコードの修正を試みます。
 
@@ -58,8 +58,75 @@
 | [MessagingEntityDisabledException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingentitydisabledexception.aspx) | 無効になっているエンティティに対してランタイム操作を要求しました。 | エンティティをアクティブ化します。 | エンティティがそれまでにアクティブ化されている場合は、再試行によって解決することがあります。 |
 | [NoMatchingSubscriptionException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.nomatchingsubscriptionexception.aspx) | 事前フィルター処理が有効になっていて、一致するフィルターのないトピックにメッセージを送信した場合、Service Bus からこの例外が返されます。 | 少なくとも 1 つのフィルターに一致することを確認します。 | 再試行によって解決することはありません。 |
 | [MessageSizeExceededException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesizeexceededexception.aspx) | メッセージ ペイロードが 256K の制限を超えています。ただし 256k の制限はメッセージの合計サイズであり、システム プロパティや .NET のオーバーヘッドも含めたサイズです。 | メッセージ ペイロードのサイズを小さくし、操作を再試行します。 | 再試行によって解決することはありません。 |
-| [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) | アンビエント トランザクション (*Transaction.Current*) が無効です。トランザクションは完了または中止された可能性がありますがなります。内部例外で追加情報が提供される場合があります。 | | 再試行によって解決することはありません。 | -
-| [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) | 未確定トランザクションに対して操作が試行されたか、トランザクションのコミットが試行され、トランザクションが未確定になりました。 | トランザクションは既にコミットされた可能性があるため、アプリケーションはこの例外を (特殊なケースとして) 処理する必要があります。 | - |
+| [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) | アンビエント トランザクション (*Transaction.Current*) が無効です。トランザクションは完了または中止された可能性がありますがなります。内部例外で追加情報が提供される場合があります。 | | 再試行によって解決することはありません。 | - | [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) | 未確定トランザクションに対して操作が試行されたか、トランザクションのコミットが試行され、トランザクションが未確定になりました。 | トランザクションは既にコミットされた可能性があるため、アプリケーションはこの例外を (特殊なケースとして) 処理する必要があります。 | - |
+
+## QuotaExceededException
+
+[QuotaExceededException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.quotaexceededexception.aspx) は、特定のエンティティのクォータが超過していることを示します。
+
+### キューとトピック
+
+キューとトピックは、通常、キューのサイズに関連します。エラー メッセージのプロパティには、次の例のようにさらに詳しい情報が含まれます。
+
+```
+Microsoft.ServiceBus.Messaging.QuotaExceededException
+Message: The maximum entity size has been reached or exceeded for Topic: ‘xxx-xxx-xxx’. 
+	Size of entity in bytes:1073742326, Max entity size in bytes:
+1073741824..TrackingId:xxxxxxxxxxxxxxxxxxxxxxxxxx, TimeStamp:3/15/2013 7:50:18 AM
+```
+
+メッセージは、トピックがそのサイズの上限を超えたことを示します (この場合 1 GB (既定のサイズ上限))。
+
+#### 一般的な原因
+
+このエラーには 2 つの一般的な原因があります。配信不能キューと機能しないメッセージ受信者です。
+
+1. **配信不能キュー** リーダーがメッセージを完了できない状態でロックの有効期限が切れたときにメッセージが返されます。これは、リーダーが [BrokeredMessage.Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) を呼び出せない例外がリーダーに発生した場合に発生することがあります。メッセージは 10 回読み取られた後、既定で配信不能キューに移動します。この動作は [QueueDescription.MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) プロパティによって制御され、既定値は 10 です。メッセージが配信不能キューに溜まるほど、領域が占有されます。
+
+	この問題を解決するには、他のキューの場合と同様に、配信不能キューからメッセージを読み取り、完了します。[QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) クラスには、配信不能キューのパスのフォーマットに役立つ [FormatDeadLetterPath](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.formatdeadletterpath.aspx) メソッドも含まれています。
+
+2. **受信者の停止** 受信者によるキューまたはサブスクリプションからのメッセージの受信が停止されています。これを特定するには、メッセージの完全な詳細情報を表示する [QueueDescription.MessageCountDetails](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.messagecountdetails.aspx) プロパティを確認します。[ActiveMessageCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagecountdetails.activemessagecount.aspx) プロパティ値が大きいか大きくなっている場合は、メッセージが読み取られる速度が書き込まれる速度に追いついていません。
+
+### Event Hubs
+
+Event Hubs には、Event Hub あたり 20 個のコンシューマー グループという上限があります。それ以上作成しようとすると、[QuotaExceededException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.quotaexceededexception.aspx) が発生します。
+
+### リレー
+
+Service Bus リレーの場合、この例外は [System.ServiceModel.QuotaExceededException](https://msdn.microsoft.com/library/system.servicemodel.quotaexceededexception.aspx) をラップします。これは、このエンドポイントについてリスナーが最大数に達したことを示します。これは、例外メッセージの **MaximumListenersPerEndpoint** 値に示されます。
+
+## TimeoutException 
+
+[TimeoutException][] は、ユーザーが開始した操作が操作タイムアウトより時間がかかっていることを示します。
+
+### キューとトピック
+
+キューとトピックでは、タイムアウトは [MessagingFactorySettings.OperationTimeout](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx) プロパティで接続文字列の一部として、または [ServiceBusConnectionStringBuilder](https://msdn.microsoft.com/library/azure/microsoft.servicebus.servicebusconnectionstringbuilder.aspx) を通じて指定されます。エラー メッセージ自体はさまざまですが、これには常に現在の操作に指定されたタイムアウト値が含まれます。
+
+### Event Hubs
+
+Event Hubs では、タイムアウトは接続文字列の一部として、または [ServiceBusConnectionStringBuilder](https://msdn.microsoft.com/library/azure/microsoft.servicebus.servicebusconnectionstringbuilder.aspx) を通じて指定されます。エラー メッセージ自体はさまざまですが、これには常に現在の操作に指定されたタイムアウト値が含まれます。
+
+### リレー
+
+Service Bus リレーでは、リレー送信者接続を最初に開いたときにタイムアウトの例外を受け取る可能性があります。この例外の一般的な原因には、次の 2 つがあります。
+
+1. [OpenTimeout](https://msdn.microsoft.com/library/wcf.opentimeout.aspx) 値が小さすぎる可能性があります (1 秒に満たないなど)。
+2. オンプレミスのリレー リスナーが反応していない (または、リスナーに新しいクライアント接続を受け入れられないようにするファイアウォール ルールの問題が発生している) 可能性があり、[OpenTimeout](https://msdn.microsoft.com/library/wcf.opentimeout.aspx) 値が約 20 秒未満になっています。
+
+次に例を示します。
+
+```
+'System.TimeoutException’: The operation did not complete within the allotted timeout of 00:00:10. The time allotted to this operation may have been a portion of a longer timeout.
+```
+
+### 一般的な原因
+
+この例外の一般的な原因には、次の 2 つがあります。正しくない構成と、一時的なサービス エラーです。
+
+1. **構成が正しくない** 操作状態に対して、操作タイムアウトが小さすぎる可能性があります。クライアント SDK の操作タイムアウトの既定値は 60 秒です。コードに小さすぎる値を設定していないかどうかを確認します。ネットワークの状態と CPU 使用率は、特定の操作が完了する時間に影響します。このため、操作タイムアウトに小さい値を設定することは推奨されません。
+
+2. **一時的なサービス エラー** Service Bus サービスで、要求の処理に遅延が発生する場合 (トラフィック量の多い場合など) があります。このような場合、操作が成功するまで、遅延後に操作を再試行できます。複数回試行しても同じ操作が失敗する場合は、「[Azure の状態](https://azure.microsoft.com/status/)」にアクセスして、既知のサービス停止がいないかどうかを確認してください。
 
 ## 次のステップ
 
@@ -71,4 +138,4 @@ Service Bus と Event Hubs の詳細な .NET API リファレンスについて�
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus のアーキテクチャ](service-bus-architecture.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0504_2016-->

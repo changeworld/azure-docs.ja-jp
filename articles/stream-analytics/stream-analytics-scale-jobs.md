@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="03/18/2016"
+	ms.date="05/03/2016"
 	ms.author="jeffstok"/>
 
 # ストリーム データ処理スループット向上のための Azure Stream Analytics ジョブのスケーリング
@@ -351,4 +351,4 @@ Azure ポータルの [設定] からスケールの設定にアクセスでき�
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

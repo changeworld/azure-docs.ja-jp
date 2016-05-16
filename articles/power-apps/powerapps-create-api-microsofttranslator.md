@@ -14,78 +14,80 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/29/2016"
+   ms.date="05/02/2016"
    ms.author="litran"/>
 
 # PowerApps Enterprise に新しい Microsoft Translator API を作成する
 
-> [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/connectors-create-api-microsofttranslator.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-microsofttranslator.md)
+> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> 
+> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページを参照してください。  
+> - PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事を参照してください。 
 
-組織の (テナント) App Service 環境に Microsoft Translator API を追加する
+<!--Archived
+Add the Microsoft Translator API to your organization's (tenant) app service environment. 
 
-## Azure ポータルでの API の作成
+## Create the API in the Azure portal
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
+1. In the [Azure portal](https://portal.azure.com/), sign-in with your work account. For example, sign-in with *yourUserName*@*YourCompany*.com. When you do this, you are automatically signed in to your company subscription.
  
-2. タスク バーの **[参照]** をクリックします。  
+2. Select **Browse** in the task bar:  
 ![][7]
 
-3. 一覧で、PowerApps が見つかるまでスクロールするか、「 *powerapps* 」と入力します。  
+3. In the list, you can scroll to find PowerApps or type in *powerapps*:  
 ![][8]  
 
-4. **[PowerApps]** で、**[API の管理]** を選択します。  
-![登録されている API の参照][1]
+4. In **PowerApps**, select **Manage APIs**:  
+![Browse to registered apis][1]
 
-5. **[API の管理]** で、**[追加]** をクリックして新しい API を追加します。  
+5. In **Manage APIs**, select **Add** to add the new API:  
 ![Add API][2]
 
-6. API のわかりやすい**名前**を入力します。
+6. Enter a descriptive **name** for your API.  
 	
-7. **[ソース]** で、**[利用可能な API]** を選択して既成の API を選択し、**[Microsoft Translator]** を選択します。  
-![Microsoft Translator API の選択][3]
+7. In **Source**, select **Available APIs** to select the pre-built APIs, and select **Microsoft Translator**:  
+![select Microsoft Translator api][3]
 
-8. **[設定] - [必要な設定の構成]** を選択します。  
-![Microsoft Translator API 設定の構成][4]
+8. Select **Settings - Configure required settings**:  
+![configure Microsoft Translator API settings][4]
 
-9. Microsoft Translator アプリケーションの*クライアント ID* と*クライアント シークレット*を入力します。これらがない場合は、このトピックの「PowerApps で使用する Microsoft Translator アプリケーションの登録」を参照して、必要な ID とシークレットの値を作成します。
+9. Enter the *Client Id* and *Client Secret* of your Microsoft Translator application. If you don't have one, see the "Register a Microsoft Translator app for use with PowerApps" section in this topic to create the ID and secret values you need. 
 
-9. **[OK]** をクリックして、手順を完了します。
+9. Select **OK** to complete the steps.
 
-完了すると、App Service 環境に新しい Microsoft Translator API が追加されます。
-
-
-## 省略可能: PowerApps で使用する Microsoft Translator アプリケーションの登録
-
-ID とシークレットの値が割り当てられた既存の Microsoft Translator アプリケーションがない場合は、次の手順に従ってアプリケーションを作成し、必要な値を取得します。
+When finished, a new Microsoft Translator API is added to your app service environment.
 
 
-1. [Azure Data Market 開発者ページ][5]に移動し、Microsoft アカウントでサインインします。 
+## Optional: Register a Microsoft Translator app for use with PowerApps
 
-2. **[登録]** をクリックします。
+If you don't have an existing Microsoft Translator app with the ID and secret values, then use the following steps to create the application, and get the values you need. 
 
-3. **[アプリケーションの登録]**で次の操作を行います。
 
-	1. **[クライアント ID]** の値を入力します。  
-	2. アプリケーションの**名前**を入力します。  
-	3. **リダイレクト URL** のダミー値を入力します。たとえば、「 *https://contosoredirecturl* 」と入力します。  
-	4. **説明**を入力します。  
-	5. **[作成]** を選択します。  
+1. Go to [Azure Data Market developer's page][5] and sign in with your Microsoft Account. 
 
-	![アプリケーションの登録][6]
+2. Select **Register**.
 
-新しい Microsoft Translator アプリケーションが作成されます。Azure ポータルの Microsoft Translator API 構成でこのアプリケーションを使用できます。
+3. In **Register your application**:  
 
-## REST API に関するページを参照してください。
+	1. Enter a value for **Client Id**.  
+	2. Enter the **name** of your application.  
+	3. Enter a dummy value for **redirect url**. For example, enter *https://contosoredirecturl*.  
+	4. Enter a **description**.  
+	5. Select **Create**.  
 
-[Microsoft Translator REST API](../connectors/connectors-create-api-microsofttranslator.md) リファレンス。
+	![Register your application][6]
 
-## まとめと次のステップ
-このトピックでは、Microsoft Translator API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
+A new Microsoft Translator app is created. You can use this app in your Microsoft Translator API configuration in the Azure portal. 
 
-[接続を追加し、ユーザーにアクセスを許可する](powerapps-manage-api-connection-user-access.md)
+## See the REST APIs
 
+[Microsoft Translator REST API](../connectors/connectors-create-api-microsofttranslator.md) reference.
+
+## Summary and next steps
+In this topic, you added the Microsoft Translator API to your PowersApps Enterprise. Next, give users access to the API so it can be added to their apps: 
+
+[Add a connection and give users access](powerapps-manage-api-connection-user-access.md)
+-->
 
 <!--References-->
 [1]: ./media/powerapps-create-api-microsofttranslator/browse-to-registered-apis.PNG
@@ -97,4 +99,4 @@ ID とシークレットの値が割り当てられた既存の Microsoft Transl
 [7]: ./media/powerapps-create-api-microsofttranslator/browseall.png
 [8]: ./media/powerapps-create-api-microsofttranslator/allresources.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

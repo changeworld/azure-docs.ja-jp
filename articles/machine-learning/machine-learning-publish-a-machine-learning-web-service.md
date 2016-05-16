@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/01/2016"
+	ms.date="05/02/2016"
 	ms.author="garye"/>
 
 # Azure Machine Learning Web サービスをデプロイする
@@ -76,7 +76,7 @@ Web サービスをテストするには、Web サービス ダッシュボー�
 
 ![Web サービスをテストする](./media/machine-learning-publish-a-machine-learning-web-service/figure-3.png)
 
-**[構成]** タブで、サービスの表示名を変更したり、説明を付けたりできます。この名前と説明は、Web サービスを管理する Azure クラシック ポータルに表示されます。**INPUT SCHEMA**、**OUTPUT SCHEMA**、**WEB SERVICE PARAMETER** の各列に文字列を入力し、入力データ、出力データ、Web サービス パラメーターの説明を追加できます。これらの説明は、Web サービスのサンプル コードのドキュメントで使用されます。また、ログ記録を有効にすれば、Web サービスのアクセスで発生するすべてのエラーを診断できます。
+**[構成]** タブで、サービスの表示名を変更したり、説明を付けたりできます。この名前と説明は、Web サービスを管理する [Azure クラシック ポータル](http://manage.windowsazure.com/)に表示されます。**INPUT SCHEMA**、**OUTPUT SCHEMA**、**WEB SERVICE PARAMETER** の各列に文字列を入力し、入力データ、出力データ、Web サービス パラメーターの説明を追加できます。これらの説明は、Web サービスのサンプル コードのドキュメントで使用されます。また、ログ記録を有効にすれば、Web サービスのアクセスで発生するすべてのエラーを診断できます。
 
 詳細については、「[Enable logging for Machine Learning web services (Machine Learning Web サービスのログ記録を有効にする)](machine-learning-web-services-logging.md)」をご覧ください。
 
@@ -94,7 +94,7 @@ Machine Learning Web サービスへのアクセスの詳細については、[�
 
 ## Azure クラシック ポータルで Web サービスを管理する
 
-Azure クラシック ポータルでは、**[Machine Learning]** サービスをクリックして Machine Learning ワークスペースを開き、**[WEB SERVICES]** タブから Web サービスを開くことで Web サービスを管理できます。このページから Web サービスの監視、更新、削除ができます。Web サービスのデプロイ時に作成される既定のエンドポイントに加え、Web サービスの 2 つ目のエンドポイントを追加することもできます。
+[Azure クラシック ポータル](http://manage.windowsazure.com/)では、**[Machine Learning]** サービスをクリックして Machine Learning ワークスペースを開き、**[Web サービス]** タブから Web サービスを開くことで Web サービスを管理できます。このページから Web サービスの監視、更新、削除ができます。Web サービスのデプロイ時に作成される既定のエンドポイントに加え、Web サービスの 2 つ目のエンドポイントを追加することもできます。
 
 詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。
 <!-- When this article gets published, fix the link and uncomment
@@ -112,4 +112,4 @@ Web サービスを更新するには、Web サービスのデプロイに使用
 
 Web サービスを更新するオプションの 1 つに、モデルをプログラムによって再トレーニングする方法があります。詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

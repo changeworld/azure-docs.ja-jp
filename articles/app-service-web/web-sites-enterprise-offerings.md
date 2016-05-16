@@ -81,7 +81,7 @@ Web Apps を支える PaaS モデルによって、DevOps 手法の実践者は�
 
 App Service Web Apps では、小規模な社内開発やテスト ワークロードから高度に拡張されたトラフィック負荷の高い Web サイトまで、多岐にわたるビジネス ニーズへの対応力を証明し続ける、安定性と信頼性に優れたプラットフォームを提供します。Web Apps を使用することで、Microsoft が一企業として高付加価値の Web ワークロード用に使うものと同じ、エンタープライズ クラス ホスティング プラットフォームを活用することになります。Web Apps と Azure Platform 上のあらゆるサービスは、その要素および機能の核となる部分において、ISO (ISO/IEC 27001:2005)、SOC1 および SOC2 SSAE 16/ISAE 3402 Attestations、HIPAA BAA、PCI、Fedramp といった規制要件を含むセキュリティおよびコンプライアンスに基づき構築されています。詳細については [http://aka.ms/azurecompliance](/support/trust-center/compliance/) を参照してください。
 
-Microsoft Azure Platform では、ロール ベースの承認制御 (Role Based Authorization Control: RBAC) によって、Web Apps 内部のリソースへのエンタープライズ レベルの制御が可能になります。RBAC によって、企業は Azure 環境にある自社の資産に対し、ユーザーをグループに割り当て、グループには Web アプリのような資源に対して必要な許可を与えることで、独自のアクセス管理ポリシーを実装する能力が得られます。Azure での RBAC の詳細については、[http://aka.ms/azurerbac](../role-based-access-control-configure/) を参照してください。Web Apps を活用することで、Web アプリケーションが安全な環境にデプロイされているという確信が持てるうえ、自社の資産がデプロイされている領域を完全に制御できます。
+Microsoft Azure Platform では、ロール ベースの承認制御 (Role Based Authorization Control: RBAC) によって、Web Apps 内部のリソースへのエンタープライズ レベルの制御が可能になります。RBAC によって、企業は Azure 環境にある自社の資産に対し、ユーザーをグループに割り当て、グループには Web アプリのような資源に対して必要な許可を与えることで、独自のアクセス管理ポリシーを実装する能力が得られます。Azure での RBAC の詳細については、[http://aka.ms/azurerbac](../active-directory/role-based-access-control-configure.md) を参照してください。Web Apps を活用することで、Web アプリケーションが安全な環境にデプロイされているという確信が持てるうえ、自社の資産がデプロイされている領域を完全に制御できます。
 
 Azure App Service Environment [http://aka.ms/aseintro](http://aka.ms/aseintro) は、Azure App Service の活用を望む企業ユーザー向けの新しい Premium サービス プラン オプションであり、完全に分離された専用の環境をお届けします。ASE により、企業ユーザーは高スケールのメリットを活用できるアプリケーションをデプロイすることができ、送受信ネットワーク トラフィック全体を完全に制御できるようになります。さらに、アプリケーションで、仮想ネットワーク経由でのオンプレミスのリソースへの高速かつセキュアな接続も可能になります。
 
@@ -114,7 +114,7 @@ Web Apps は、世界各地にある 24 のデータ センターでグローバ
 -	GAC ベースのアセンブリ - Web Apps では、アセンブリをグローバル アセンブリ キャッシュ (GAC) にデプロイメントできません。このため、移行するアプリケーションがこの機能をオンプレミスで使用する場合は、アセンブリをアプリケーションの bin フォルダーに移動することを検討してください。
 -	IIS5 互換モード - Web Apps では、IIS5 互換モードはサポートされていません。したがって、各 Web Apps インスタンス、および親 Web Apps インスタンスの下にある Web アプリケーションすべてが、1 つのアプリケーション プール内の同じワーカー プロセスで実行されます。
 -	COM ライブラリの使用 – Web Apps では、プラットフォームで COM コンポーネントを登録できません。そのため、アプリケーションで COM コンポーネントを使用する場合、その COM コンポーネントはマネージ コードで書き換えて、アプリケーションにデプロイする必要があります。
--	ISAPI フィルター - ISAPI フィルターは Web Apps でサポートできますが、アプリケーションの一部としてデプロイし、アプリケーションの web.config ファイル内に登録する必要があります。詳細については、[http://aka.ms/azurewebsitesxdt](../web-sites-transform-extend/) を参照してください。 
+-	ISAPI フィルター - ISAPI フィルターは Web Apps でサポートできますが、アプリケーションの一部としてデプロイし、アプリケーションの web.config ファイル内に登録する必要があります。詳細については、[http://aka.ms/azurewebsitesxdt](web-sites-transform-extend.md) を参照してください。 
 
 これらのトピックについて検討が終われば、Web アプリケーションのクラウド化の準備は万端です。もし条件に合わないトピックがあっても心配は無用です。移行ツールが可能な限り移行を支援します。
 
@@ -159,4 +159,4 @@ Azure App Service Web Apps サービスの詳細については、[http://aka.ms
  
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

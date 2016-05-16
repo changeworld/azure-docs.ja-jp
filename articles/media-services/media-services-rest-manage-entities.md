@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="02/11/2016"  
+ 	ms.date="05/03/2016" 
 	ms.author="juliako"/>
 
 #REST API を使用した Media Services エンティティの管理
 
 > [AZURE.SELECTOR]
-- [REST](media-services-rest-manage-entities.md)
+- [REST ()](media-services-rest-manage-entities.md)
 - [.NET](media-services-dotnet-manage-entities.md)
 
 Microsoft Azure Media Services は、OData v3 上に構築された REST ベースのサービスです。このため、他の OData サービスで行うのとほとんど同じ方法で、エンティティの追加、照会、更新、削除を行うことができます。該当する場合には例外が呼び出されます。OData の詳細については、[Open Data Protocol に関するドキュメント](http://www.odata.org/documentation/)を参照してください。
@@ -35,7 +35,7 @@ Microsoft Azure Media Services は、OData v3 上に構築された REST ベー�
 >
 >Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 
->https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect_programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
+>https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
 
 
 ##エンティティの追加
@@ -175,4 +175,4 @@ Media Services のエンティティは、DELETE HTTP 要求を使用して削�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

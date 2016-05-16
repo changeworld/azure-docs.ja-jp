@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/08/2016"
+   ms.date="04/27/2016"
    ms.author="telmos" />
 
 # テンプレートを使用した静的パブリック IP を持つ VM のデプロイ
@@ -46,9 +46,9 @@
         }
       },
 
-**publicIPAllocationMethod** プロパティに注意してください。*Static* に設定されています。このプロパティには、*Dynamic* (既定値) または *Static* のいずれかを設定できます。Static に設定すると、このパブリック IP の IP アドレスが変更されないことが保証されます。
+**publicIPAllocationMethod** プロパティに注意してください。*Static* に設定されています。このプロパティには、*Dynamic* (既定値) または *Static* のいずれかを設定できます。Static に設定すると、割り当てられたパブリック IP アドレスが変更されないことが保証されます。
 
-次のセクションでは、上記のパブリック IP と NIC の関連付けを示します。
+次のセクションでは、パブリック IP アドレスとネットワーク インターフェイスの関連付けを示します。
 
       {
         "apiVersion": "2015-06-15",
@@ -83,7 +83,7 @@
 
 **publicIPAddress** プロパティが **variables('webVMSetting').pipName** という名前の **ID** を指していることに注意してください。これは上記のパブリック IP リソースの名前です。
 
-最後に、上記の NIC が、作成される VM の **networkProfile** プロパティにリストされます。
+最後に、作成される VM の **networkProfile** プロパティに、上記のネットワーク インターフェイスが示されます。
 
       "networkProfile": {
         "networkInterfaces": [
@@ -95,7 +95,7 @@
 
 ## [クリックしてデプロイ] を使用してテンプレートをデプロイする
 
-パブリック リポジトリで使用できるサンプル テンプレートは、上記のシナリオの生成に使用した既定値を含むパラメーター ファイルを使用します。"クリックしてデプロイ" を使用してこのテンプレートをデプロイするには、[このリンク](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/03-Static-public-IP)に従って、**[Azure へのデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えて、ポータルの指示に従います。
+パブリック リポジトリで使用できるサンプル テンプレートは、上記のシナリオの生成に使用した既定値を含むパラメーター ファイルを使用します。[クリックしてデプロイ] を使用してこのテンプレートをデプロイするには、[VM with static PIP](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/03-Static-public-IP) テンプレートの Readme.md ファイルで **[Azure へのデプロイ]** をクリックします。必要に応じて既定のパラメーター値を置き換え、空白のパラメーターの値を入力します。ポータルの指示に従って、静的パブリック IP アドレスを持つ仮想マシンを作成します。
 
 ## PowerShell を使用してテンプレートをデプロイする
 
@@ -105,11 +105,11 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 
 2. 必要に応じて、PowerShell コンソールで、**AzureRmResourceGroup** コマンドレットを実行して、新しいリソース グループを作成します。既に作成したリソース グループがある場合は、手順 3. に進みます。
 
-		New-AzureRmResourceGroup -Name StaticPublicIP -Location westus
+		New-AzureRmResourceGroup -Name PIPTEST -Location westus
 
 	予想される出力:
 
-		ResourceGroupName : StaticPublicIP
+		ResourceGroupName : PIPTEST
 		Location          : westus
 		ProvisioningState : Succeeded
 		Tags              :
@@ -126,7 +126,7 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 		DeploymentName    : DeployVM
 		ResourceGroupName : PIPTEST
 		ProvisioningState : Succeeded
-		Timestamp         : 1/8/2016 7:04:44 PM
+		Timestamp         : <Deployment date> <Deployment time>
 		Mode              : Incremental
 		TemplateLink      :
 		                    Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/mas
@@ -152,7 +152,7 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 
 Azure CLI を使用してテンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](../xplat-cli-install.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」の手順に従った後、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」の「Azure ログインを使用して、Web ポータルを通じて対話型認証を行う」に記載されている、CLI をサブスクリプションに接続する手順に従います。
 2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
 		azure config mode arm
@@ -161,13 +161,13 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 
 		info:    New mode is arm
 
-3. [パラメーター ファイル](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json)を開き、内容を選択してコンピューター内のファイルに保存します。この例では、パラメーター ファイルを *parameters.json* に保存しました。
+3. [パラメーター ファイル](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json)を開き、内容を選択してコンピューター内のファイルに保存します。この例では、パラメーターは *parameters.json* という名前のファイルに保存されます。必要に応じて、このファイル内のパラメーター値を変更します。ただし、少なくとも、adminPassword パラメーターの値を一意の複雑なパスワードに変更することをお勧めします。
 
-4. 上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、**azure group deployment create** コマンドレットを実行して新しい VNet をデプロイします。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
+4. 上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、**azure group deployment create** コマンドレットを実行して新しい VNet をデプロイします。次のコマンドで、<path> をファイルの保存先のパスに置き換えます。
 
-		azure group create -n PIPTEST2 -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json -e parameters.json
+		azure group create -n PIPTEST2 -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json -e <path>\parameters.json
 
-	予想される出力:
+	予想される出力 (使用されているパラメーター値の表示):
 
 		info:    Executing command group create
 		+ Getting resource group PIPTEST2
@@ -176,7 +176,7 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 		+ Initializing template configurations and parameters
 		+ Creating a deployment
 		info:    Created template deployment "azuredeploy"
-		data:    Id:                  /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/PIPTEST2
+		data:    Id:                  /subscriptions/<Subscription ID>/resourceGroups/PIPTEST2
 		data:    Name:                PIPTEST2
 		data:    Location:            westus
 		data:    Provisioning State:  Succeeded
@@ -184,4 +184,4 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 		data:
 		info:    group create command OK
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

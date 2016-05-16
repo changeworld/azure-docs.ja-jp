@@ -1,19 +1,19 @@
 <properties
-   pageTitle="Cache ASP.NET セッション状態プロバイダー"
-   description="Azure Redis Cache を使用して ASP.NET セッション状態を格納する方法を説明します。"
-   services="redis-cache"
-   documentationCenter="na"
-   authors="steved0x"
-   manager="erikre"
-   editor="tysonn" />
+	pageTitle="Cache の ASP.NET セッション状態プロバイダー | Microsoft Azure"
+	description="Azure Redis Cache を使用して ASP.NET セッション状態を格納する方法を説明します。"
+	services="redis-cache"
+	documentationCenter="na"
+	authors="steved0x"
+	manager="douge"
+	editor="tysonn" />
 <tags
-   ms.service="cache"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="cache-redis"
-   ms.workload="tbd"
-   ms.date="03/04/2016"
-   ms.author="sdanie" />
+	ms.service="cache"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="cache-redis"
+	ms.workload="tbd"
+	ms.date="04/27/2016"
+	ms.author="sdanie" />
 
 # Azure Redis Cache の ASP.NET セッション状態プロバイダー
 
@@ -25,19 +25,19 @@ Azure Redis Cache には、セッション状態プロバイダーが用意さ�
 
 Visual Studio で Redis Cache Session State NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-![Azure Redis Cache Manage NuGet パッケージ](./media/cache-asp.net-session-state-provider/IC729541.png)
+![Azure Redis Cache Manage NuGet パッケージ](./media/cache-aspnet-session-state-provider/redis-cache-manage-nuget-menu.png)
 
-[オンライン検索] ボックスに「**RedisSessionStateProvider**」と入力し、結果の中からそのプロバイダーを選択して、[インストール] をクリックします。
+検索ボックスに「**RedisSessionStateProvider**」と入力し、結果の中からそのプロバイダーを選択して、**[インストール]** をクリックします。
 
 >[AZURE.IMPORTANT] Premium レベルでクラスター機能を使用する場合は、[RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 以降を使用する必要があります。そうしないと、例外がスローされます。これは重大な変更です。詳細については、「[v2.0.0 の重大な変更の詳細](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)」を参照してください。
 
-![Azure Redis Cache セッション状態プロバイダー](./media/cache-asp.net-session-state-provider/IC751730.png)
+![Azure Redis Cache セッション状態プロバイダー](./media/cache-aspnet-session-state-provider/redis-cache-session-state-provider.png)
 
 Redis セッション状態プロバイダー NuGet パッケージは、StackExchange.Redis.StrongName パッケージに依存します。StackExchange.Redis.StrongName パッケージは、プロジェクト内に存在しなければインストールされます。厳密な名前を持つ StackExchange.Redis.StrongName パッケージ以外に、厳密な名前を持たない StackExchange.Redis バージョンもあります。厳密な名前を持たない StackExchange.Redis バージョンをプロジェクトで使用している場合は、Redis セッション状態プロバイダー NuGet パッケージのインストールの前か後にこのバージョンをアンインストールする必要があります。アンインストールしなかった場合は、名前の競合がプロジェクトで発生します。これらのパッケージの詳細については、[.NET キャッシュ クライアントの構成](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)に関するトピックを参照してください。
 
 NuGet パッケージによって、必要なアセンブリ参照がダウンロードされて追加されます。さらに、web.config ファイルには、ASP.NET アプリケーションが Redis Cache Session 状態プロバイダーを使用するために必要な構成を記述した以下のセクションが追加されます。
 
-    <sessionStatemode="Custom" customProvider="MySessionStateStore">
+    <sessionState mode="Custom" customProvider="MySessionStateStore">
         <providers>
         <!--
 		<add name="MySessionStateStore"
@@ -106,4 +106,4 @@ web.config の標準の InProc セッション状態プロバイダー セクシ
 
 「[Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

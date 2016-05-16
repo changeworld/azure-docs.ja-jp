@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="04/25/2016"
+   ms.date="04/26/2016"
    ms.author="hascipio"/>
 
 # マーケティング コンテンツを使用したプラン作成の実行
@@ -138,9 +138,9 @@
 ## 手順 3.: サポート情報を入力する
 連絡先の詳細は、パートナーとマイクロソフト間の内部コミュニケーションにのみに使用されます。サポートURL は、エンド ユーザーに提供されます。
 
-1.	発行ポータルの左側にある **[サポート]** に移動します。
-2.	**[エンジニアリング連絡先]** に情報を入力します。
-3.	**[カスタマー サポート]** に情報を入力します。電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
+1.	発行ポータルの左側にある** [サポート] **に移動します。
+2.	**[エンジニアリング連絡先] **に情報を入力します。
+3.	**[カスタマー サポート] **に情報を入力します。電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
 4.	サポート URL を入力します。
 
 ## 手順 4.: Azure Marketplace カテゴリを選択する
@@ -165,11 +165,11 @@
 *Azure Marketplace Web サイト上のプランの説明の価格詳細*
 
 ### Azure ポータル
-![図](media/marketplace-publishing-push-to-staging/portal-catalog-01.png)
+![図](media/marketplace-publishing-push-to-staging/azureportal-galleryblade-01.png)
 
 *Azure ポータルでのプランの一覧*
 
-![図](media/marketplace-publishing-push-to-staging/portal-listing-details-01.png)
+![図](media/marketplace-publishing-push-to-staging/azureportal-galleryblade-02.png)
 
 *Azure ポータルのプランの説明の詳細*
 
@@ -192,4 +192,4 @@ Marketplace コンテンツが読み込まれたので、プランのステー�
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

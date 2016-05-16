@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/03/2016" 
 	ms.author="piyushjo" />
 
 #Windows ユニバーサルでエンゲージメント API を使用する方法
 
-このドキュメントは、ドキュメント「[How to Integrate Engagement on Windows Universal (Windows ユニバーサルでエンゲージメントを統合する方法)](../mobile-engagement-windows-store-integrate-engagement/)」のアドオンです。エンゲージメントを使用して、アプリケーションの統計情報を報告する方法について詳しく説明しています。
+このドキュメントは、ドキュメント「[How to Integrate Engagement on Windows Universal (Windows ユニバーサルでエンゲージメントを統合する方法)](mobile-engagement-windows-store-integrate-engagement.md)」のアドオンです。エンゲージメントを使用して、アプリケーションの統計情報を報告する方法について詳しく説明しています。
 
 アプリケーションのセッション、アクティビティ、クラッシュ、技術情報を報告するエンゲージメントのみが必要な場合、最も簡単な方法はすべての `Page` サブクラスが `EngagementPage` クラスから継承されるようにすることです。
 
@@ -30,7 +30,7 @@
 
 ##エンゲージメントの概念
 
-次のパートは、Windows ユニバーサル プラットフォームの一般的な[モバイル エンゲージメントの概念](../mobile-engagement-concepts/)を改善するものです。
+次のパートは、Windows ユニバーサル プラットフォームの一般的な[モバイル エンゲージメントの概念](mobile-engagement-concepts.md)を改善するものです。
 
 ### `Session` と `Activity`
 
@@ -368,4 +368,4 @@ IDE コンソールにテスト ログを生成するように SDK を構成で�
 			EngagementAgent.Instance.Init();
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

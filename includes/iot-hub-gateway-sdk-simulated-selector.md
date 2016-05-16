@@ -2,60 +2,60 @@
 - [Linux](../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md)
 - [Windows](../articles/iot-hub/iot-hub-windows-gateway-sdk-simulated-device.md)
 
-This walkthrough of the [Simulated Device Cloud Upload sample] shows how to use the [Microsoft Azure IoT Gateway SDK][lnk-sdk] to send device-to-cloud telemetry to IoT Hub from simulated devices.
+[Simulated Device Cloud Upload サンプル]のチュートリアルでは、[Microsoft Azure IoT Gateway SDK][lnk-sdk] を使用して、シミュレートされたデバイスから IoT Hub に D2C テレメトリを送信する方法を示します。
 
-This walkthrough covers:
+このチュートリアルでは、次の項目について説明します。
 
-1. **Architecture**: important architectural information about the Simulated Device Cloud Upload sample.
+1. **アーキテクチャ**: Simulated Device Cloud Upload サンプルの重要なアーキテクチャに関する情報。
 
-2. **Build and run**: the steps required to build and run the sample.
+2. **ビルドおよび実行**: サンプルををビルドして実行するために必要な手順。
 
-## Architecture
+## アーキテクチャ
 
-The Simulated Device Cloud Upload sample shows how to use the SDK to create a gateway which sends telemetry from simulated devices to an IoT hub. The simulated devices cannot connect directly to IoT Hub because:
+Simulated Device Cloud Upload サンプルでは、SDK を使用して、シミュレートされたデバイスから IoT hub にテレメトリを送信するゲートウェイを作成する方法を示します。シミュレートされたデバイスが直接 IoT Hub に接続することはできません。それには、以下の理由があります。
 
-- The devices do not use a communications protocol understood by IoT Hub.
-- The devices are not smart enough to remember the identity assigned to them by IoT Hub.
+- シミュレートされたデバイスは IoT Hub で認識される通信プロトコルを使用していない。
+- シミュレートされたデバイスは IoT Hub によって割り当てられる ID を記憶できない。
 
-The gateway solves these problems for the simulated devices in the following ways:
+このシミュレートされたデバイスの問題は、ゲートウェイが次の方法で解決します。
 
-- The gateway understands the protocol used by the simulated devices, receives device-to-cloud telemetry from the devices, and forwards those messages to IoT Hub using a protocol understood by the hub.
-- The gateway stores IoT Hub identities on behalf of the simulated devices and acts as a proxy when the simulated devices send messages to IoT Hub.
+- シミュレートされたデバイスで使用されるプロトコルを理解し、デバイスから D2C テレメトリを受け取り、そのメッセージを Hub で認識されるプロトコルを使用して IoT Hub に転送する。
+- シミュレートされたデバイスに代わって IoT Hub の ID を格納し、シミュレートされたデバイスから IoT Hub にメッセージを送信するときにプロキシとして動作する。
 
-The following diagram shows the main components of the sample, including the gateway modules:
+次の図は、ゲートウェイ モジュールを含む、サンプルの主要なコンポーネントを示しています。
 
 ![][1]
 
 
-> [AZURE.NOTE] The modules do not pass messages directly to each other. The modules publish messages to an internal message bus that delivers the messages to the other modules using a subscription mechanism as shown in the diagram below. For more information see [Get started with the Gateway SDK][lnk-gw-getstarted].
+> [AZURE.NOTE] モジュールが他のモジュールに直接メッセージを渡すことはありません。下の図に示すように、モジュールが内部のメッセージ バスにメッセージを発行し、メッセージ バスが他のモジュールにメッセージを配信します。これにはサブスクリプション メカニズムが使用されます。詳細については、「[Get started with the Gateway SDK][lnk-gw-getstarted]」 (Gateway SDK の使用) を参照してください。
 
-### Protocol ingestion module
+### プロトコル インジェスト モジュール
 
-This module is the starting point for getting data from devices, through the gateway, and into the cloud. In the sample, the module performs four tasks:
+このモジュールは、データをデバイスから取得し、ゲートウェイを経由してクラウドに送信する流れの出発点となります。このサンプルでは、プロトコル インジェスト モジュールは次の 4 つのタスクを実行します。
 
-1.  It creates simulated temperature data.
+1.  シミュレートされた温度データを作成する。
     
-    Note: if you were using real devices, the module would read data from those physical devices.
+    注: 実際のデバイスを使用している場合は、それらの物理デバイスからデータが読み取られます。
 
-2.  It places the simulated temperature data into the contents of a message.
+2.  シミュレートされた温度データをメッセージに追加する。
 
-3.  It adds a property with a fake MAC address to the message that contains the simulated temperatue data.
+3.  シミュレートされた温度データを含むメッセージに、偽の MAC アドレスを持つプロパティを追加する。
 
-4.  It makes the message available to the next module in the chain.
+4.  チェーン内の次のモジュールでメッセージを利用できるようにする。
 
-> [AZURE.NOTE] The module called **Protocol X ingestion** in the diagram above is called **Simulated device** in the source code.
+> [AZURE.NOTE] 上の図で "**プロトコル X インジェスト**" と呼ばれているモジュールは、ソース コードでは "**シミュレートされたデバイス**" と呼ばれます。
 
-### MAC &lt;-&gt; IoT Hub ID module
+### MAC &lt;-&gt; IoT Hub ID モジュール
 
-This module scans for messages that include a property that contains the MAC address, added by the protocol ingestion module, of the simulated device. If the module finds such a property, it adds another property with an IoT Hub device key to the message and then makes the message available to the next module in the chain. This is how the sample associates IoT Hub device identities with simulated devices. The developer sets up the mapping between MAC addresses and IoT Hub identities manually as part of the module configuration. 
+このモジュールは、メッセージをスキャンして、プロトコル インジェスト モジュールによって追加された、シミュレートされたデバイスの MAC アドレスを持つプロパティが含まれているかどうかを調べます。そのようなプロパティが見つかると、IoT Hub デバイス キーを持つ別のプロパティをメッセージに追加し、メッセージをチェーン内の次のモジュールで利用できるようにします。この方法で、IoT Hub デバイス ID をシミュレートされたデバイスに関連付けます。開発者は、モジュールを構成する際に手動で MAC アドレスと IoT Hub ID のマッピングを設定します。
 
-> [AZURE.NOTE]  This sample uses a MAC address as a unique device identifier and correlates it with an IoT Hub device identity. However, you can write your own module that uses a different unique identifier. For example, you may have devices with unique serial numbers or telemetry data that has a unique device name embedded in it that you could use to determine the IoT Hub device identity.
+> [AZURE.NOTE]  このサンプルでは、MAC アドレスを一意のデバイス識別子として使用し、IoT Hub デバイス ID と関連付けていますが、別の一意識別子を使用する独自のモジュールを記述することもできます。たとえば、デバイスの一意のシリアル番号やテレメトリ データに一意のデバイス名が埋め込まれており、それを IoT Hub デバイス ID の確認に使用できる場合などです。
 
-### IoT Hub communication module
+### IoT Hub 通信モジュール
 
-This module takes messages with an IoT Hub device identity assigned by the previous module and sends the message content to IoT Hub using HTTPS. HTTPS is one of the three protocols understood by IoT Hub.
+このモジュールは、前のモジュールによって割り当てられた IoT Hub デバイス ID を持つメッセージを受け取り、HTTPS を使用してそのメッセージの内容を IoT Hub に送信します。HTTPS は、IoT Hub で認識される 3 つのプロトコルのうちの 1 つです。
 
-Instead of opening a connection to IoT Hub for each simulated device, this module opens a single HTTP connection from the gateway to the IoT hub and multiplexes connections from all the simulated devices over that connection. This enables a single gateway to connect many more devices, simulated or otherwise, than would be possible if it opened a unique connection for every device.
+このモジュールは、シミュレートされたデバイスごとに IoT Hub への接続を開く代わりに、ゲートウェイから IoT Hub への単一の HTTP 接続を開き、その接続を介するすべてのシミュレートされたデバイスからの接続を多重化します。これにより、デバイスごとに一意の接続が開かれている場合に比べ、1 つのゲートウェイでより多くの (シミュレートされた) デバイスに接続することができます。
 
 ![][2]
 
@@ -65,6 +65,7 @@ Instead of opening a connection to IoT Hub for each simulated device, this modul
 [2]: media/iot-hub-gateway-sdk-simulated-selector/image2.png
 
 <!-- Links -->
-[Simulated Device Cloud Upload sample]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/sample_simulated_device_cloud_upload.md
+[Simulated Device Cloud Upload サンプル]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/sample_simulated_device_cloud_upload.md
 [lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 [lnk-gw-getstarted]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md
+

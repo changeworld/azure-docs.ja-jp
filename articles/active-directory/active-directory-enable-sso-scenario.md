@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="02/16/2016"
+      ms.date="05/03/2016"
       ms.author="markvi"/>
 
 # Azure Active Directory でのアプリケーションの管理
@@ -24,7 +24,7 @@
 
 2. セキュリティとガバナンスを実現するために、組織は各アプリケーションに実際にアクセスしているユーザーを制御し、管理する必要があります。
 
-クラウド アプリケーションの用語を借りれば、これは、ID を使用して "*だれが何の実行を許可されているか*" を制御することで最も効果的に実現できます。
+クラウド アプリケーションの世界では、これは、ID を使用して "*だれが何の実行を許可されているか*" を制御することで最も効果的に実現できます。
 
 コンピューティングの用語では次のように説明できます。
 
@@ -135,4 +135,4 @@ Azure AD では、事前に統合された MFA ときめ細かいアクセス �
 
 [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

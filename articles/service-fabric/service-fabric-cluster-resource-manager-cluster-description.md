@@ -214,10 +214,10 @@ ClusterManifest.xml
 ClusterManifest.xml
 
 ```xml
-        <Section Name=" NodeBufferPercentage">
-            <Parameter Name="DiskSpace" Value="10" />
-            <Parameter Name="Memory" Value="15" />
-            <Parameter Name="SomeOtherMetric" Value="20" />
+        <Section Name="NodeBufferPercentage">
+            <Parameter Name="DiskSpace" Value="0.10" />
+            <Parameter Name="Memory" Value="0.15" />
+            <Parameter Name="SomeOtherMetric" Value="0.20" />
         </Section>
 ```
 クラスターにバッファー容量がなくなると、新しいサービスにつながる作成呼び出しが失敗します。これにより、クラスターで予備のオーバーヘッドが確実に確保され、アップグレードや障害でノードの容量超過が実際に発生することがなくなります。リソース マネージャーでは、PowerShell やクエリ API を使用して、こうした情報が多数公開されており、各メトリックのバッファー容量の設定、合計容量、および現在の消費量を確認することができます。その出力の例を次に示します。
@@ -262,4 +262,4 @@ LoadMetricInformation     :
 [Image6]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-placement-constraints-node-properties.png
 [Image7]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-nodes-and-capacity.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

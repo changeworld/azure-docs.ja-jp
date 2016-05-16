@@ -12,26 +12,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/21/2016"
+   ms.date="04/27/2016"
    ms.author="joaoma" />
 
 # ホスト名の表示と変更
 
-ロール インスタンスをホスト名で参照できるようにするには、各ロールのサービス構成ファイルでホスト名の値を設定する必要があります。そのためには、使用するホスト名を **Role** 要素の **vmName** 属性に追加します。**vmName** 属性の値は、各ロール インスタンスのホスト名に対するベースとして使用されます。たとえば、**vmName** が *webrole* であり、そのロールに 3 つのインスタンスがある場合、インスタンスのホスト名は *webrole0*、*webrole1*、*webrole2* になります。仮想マシンのホスト名を構成ファイルで指定する必要はありません。仮想マシンのホスト名は、仮想マシン名に基づいて設定されるためです。Microsoft Azure サービスの構成について詳しくは、「[Azure サービスの構成スキーマ (.cscfg ファイル)](https://msdn.microsoft.com/library/azure/ee758710.aspx)」をご覧ください。
+ロール インスタンスをホスト名で参照できるようにするには、各ロールのサービス構成ファイルでホスト名の値を設定する必要があります。そのためには、使用するホスト名を **Role** 要素の **vmName** 属性に追加します。**vmName** 属性の値は、各ロール インスタンスのホスト名に対するベースとして使用されます。たとえば、**vmName** が *webrole* であり、そのロールに 3 つのインスタンスがある場合、インスタンスのホスト名は *webrole0*、*webrole1*、*webrole2* になります。仮想マシンのホスト名は仮想マシン名に基づいて設定されるため、構成ファイルで仮想マシンのホスト名を指定する必要はありません。Microsoft Azure サービスの構成の詳細については、「[Azure Service Configuration Schema (.cscfg File) (Azure サービス構成スキーマ (.cscfg ファイル))](https://msdn.microsoft.com/library/azure/ee758710.aspx)」をご覧ください。
 
 ## ホスト名の表示
 
-クラウド サービス内の仮想マシンとロール インスタンスのホスト名は、Azure ポータル、サービス構成ファイル、リモート デスクトップ、[Azure Service Management REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) など、さまざまなツールを使用して表示できます。
+次のいずれかのツールを使用して、クラウド サービスで仮想マシンのホスト名とロール インスタンスを表示できます。
 
 ### Azure ポータル
 
-Azure ポータルを使用して、仮想マシンのホスト名を仮想マシン ダッシュボード ページに表示できます。ダッシュボードには **[名前]** と **[ホスト名]** の値が表示されることに注意してください。これらは最初は同じですが、ホスト名を変更しても、仮想マシンまたはロール インスタンスの名前は変わりません。
+[Azure ポータル](http://portal.azure.com)を使用して、仮想マシンの概要ブレードに仮想マシンのホスト名を表示できます。ブレードには、**[名前]** と **[ホスト名]** の値が表示されることに注意してください。これらは最初は同じですが、ホスト名を変更しても、仮想マシンまたはロール インスタンスの名前は変わりません。
 
-ロール インスタンスは Azure ポータルでもわかりますが、クラウド サービスでインスタンスの一覧を表示しても、ホスト名は表示されません。各インスタンスの名前は表示されますが、その名前はホスト名ではありません。
+ロール インスタンスは Azure ポータルでも表示できますが、クラウド サービスでインスタンスの一覧を表示しても、ホスト名は表示されません。各インスタンスの名前は表示されますが、その名前はホスト名ではありません。
 
 ### サービス構成ファイル
 
-Azure ポータルのサービスの **[構成]** ページから、デプロイされているサービスのサービス構成ファイルをダウンロードできます。その後、**Role name** 要素の **vmName** 属性で、ホスト名を確認できます。このホスト名は各ロール インスタンスのホスト名に対するベースとして使用されることに留意してください。たとえば、**vmName** が *webrole* であり、そのロールに 3 つのインスタンスがある場合、インスタンスのホスト名は *webrole0*、*webrole1*、*webrole2* になります。
+Azure ポータルのサービスの **[構成]** ブレードから、デプロイされているサービスのサービス構成ファイルをダウンロードできます。その後、**Role name** 要素の **vmName** 属性で、ホスト名を確認できます。このホスト名は各ロール インスタンスのホスト名に対するベースとして使用されることに留意してください。たとえば、**vmName** が *webrole* であり、そのロールに 3 つのインスタンスがある場合、インスタンスのホスト名は *webrole0*、*webrole1*、*webrole2* になります。
 
 ### リモート デスクトップ
 
@@ -51,7 +51,7 @@ REST クライアントから次の手順を実行します。
 
 1. x-ms-version という名前のヘッダー エントリの値を 2013-11-01 に設定します。
 
-1. 次の形式で要求を送信します。https://management.core.windows.net/<サブスクリプション ID>/services/hostedservices/<サービス名>?embed-detail=true
+1. 次の形式で要求を送信します。https://management.core.windows.net/\<サブスクリプション ID>/services/hostedservices/<サービス名>?embed-detail=true
 
 1. 各 **RoleInstance** 要素の **HostName** 要素を検索します。
 
@@ -67,8 +67,8 @@ REST クライアントから次の手順を実行します。
 
 [Azure サービス構成スキーマ (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)
 
-[Azure 仮想ネットワークの構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
 
 [ネットワーク構成ファイルを使用した DNS 設定の指定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

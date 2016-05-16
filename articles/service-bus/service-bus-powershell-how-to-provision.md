@@ -1,6 +1,6 @@
 <properties
 	pageTitle="PowerShell で Service Bus を管理する | Microsoft Azure"
-	description=".NET の代わりに PowerShell スクリプトで Service Bus を管理する"
+	description="PowerShell スクリプトで Service Bus を管理する"
 	services="service-bus"
 	documentationCenter=".net"
 	authors="sethmanheim"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
+	ms.date="05/02/2016"
 	ms.author="sethm"/>
 
 # PowerShell で Service Bus を管理する
@@ -156,6 +156,21 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 	Write-Output "The consumer group [$ConsumerGroupName] for the [$Path] event hub has been successfully created."
 	```
 
+## 別の Azure サブスクリプションへの名前空間の移行
+
+次の一連のコマンドは、Azure サブスクリプション間で名前空間を移動します。この操作を実行するには、名前空間が既にアクティブである必要があります。また、PowerShell コマンドを実行するユーザーは、ソース サブスクリプションとターゲット サブスクリプションの両方の管理者である必要があります。
+
+```
+# Create a new resource group in target subscription
+Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+New-AzureRmResourceGroup -Name 'targetRP' -Location 'East US'
+
+# Move namespace from source subscription to target subscription
+Select-AzureRmSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+$res = Find-AzureRmResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
+Move-AzureRmResource -DestinationResourceGroupName 'targetRP' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
+```
+
 ## 次のステップ
 
 この記事では、PowerShell を使用した Service Bus エンティティのプロビジョニングにおける基本的なアウトラインを提供します。.NET クライアント ライブラリを使用して実行できることはすべて、PowerShell スクリプトでも実行できます。
@@ -165,7 +180,8 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 - [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
 - [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
-既製のスクリプトもダウンロードできます。[Service Bus PowerShell Scripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
+既製のスクリプトも次のページからダウンロードできます。
+- [Service Bus PowerShell Scripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Link references-->
 [購入オプション]: http://azure.microsoft.com/pricing/purchase-options/
@@ -179,4 +195,4 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 [.NET API for Service Bus]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.aspx
 [NamespaceManager]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->
