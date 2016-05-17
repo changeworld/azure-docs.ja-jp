@@ -12,8 +12,8 @@
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="04/28/2016" 
+	ms.topic="hero-article" 
+	ms.date="05/05/2016" 
 	ms.author="sdanie"/>
 
 # Redis Cache で Web アプリを作成する方法
@@ -165,7 +165,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 
 2. **ソリューション エクスプローラー**で、**[web.config]** をダブルクリックして開きます。
 
-    ![Web.config][cache-web-config]
+    ![web.config][cache-web-config]
 
 3.  以下の接続文字列を `connectionStrings` セクションに追加します。接続文字列の名前は、Entity Framework のデータベース コンテキスト クラス (`TeamContext`) の名前と一致している必要があります。
 
@@ -309,7 +309,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 
 2. **ソリューション エクスプローラー**で、**[web.config]** をダブルクリックして開きます。
 
-    ![Web.config][cache-web-config]
+    ![web.config][cache-web-config]
 
 3. 以下の `file` 属性を `appSettings` 要素に追加します。異なるファイル名または場所を使用した場合は、この例の値を実際の値で置き換えてください。
 	-	変更前: `<appSettings>`
@@ -670,7 +670,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 Azure でアプリケーションをホストするにはまず、アプリケーションに必要な Azure サービスをプロビジョニングする必要があります。このチュートリアルのサンプル アプリケーションでは、次の Azure サービスを使用します。
 
 -	Azure Redis Cache
--	App Service Web App
+-	App Service Web Apps
 -	SQL Database
 
 新しいリソース グループまたは既存のリソース グループにこれらのサービスをデプロイするには、次の **[Azure へのデプロイ]** ボタンをクリックします。
@@ -838,4 +838,4 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

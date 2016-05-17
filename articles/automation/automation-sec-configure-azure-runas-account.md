@@ -5,15 +5,15 @@
     documentationCenter=""
     authors="mgoedtel"
     manager="jwhit"
-    editor=""/>
-
+    editor=""
+	keywords="サービス プリンシパル名, setspn, Azure の認証"/>
 <tags
     ms.service="automation"
     ms.workload="tbd"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/20/2016"
+    ms.date="05/10/2016"
     ms.author="magoedte"/>
 
 # Azure 実行アカウントを使用した Runbook の認証
@@ -45,7 +45,7 @@ Azure ポータルから Automation アカウントを作成する方法と、Az
 
     ![Add Automation Account Warning](media/automation-sec-configure-azure-runas-account/add-account-decline-create-runas-msg.png)
 
-    >[AZURE.NOTE] 実行アカウントを作成しなかった場合 (先ほどのオプションで **[いいえ]** を選択した場合)、**[Automation アカウントの追加]** ブレードに警告メッセージが表示されます。アカウントが作成されてサブスクリプションの **Contributor** ロールに割り当てられますが、サブスクリプションのディレクトリ サービスには対応する認証 ID が割り当てられず、サブスクリプション内のリソースにアクセスすることはできません。このアカウントを参照する Runbook は認証を通過できず、ARM リソースに対するタスクを実行することができません。
+    >[AZURE.NOTE] 実行アカウントを作成しなかった場合 (先ほどのオプションで **[いいえ]** を選択した場合)、**[Automation アカウントの追加]** ブレードに警告メッセージが表示されます。アカウントが作成されてサブスクリプションの**共同作成者**ロールに割り当てられますが、サブスクリプションのディレクトリ サービスには対応する認証 ID が割り当てられず、サブスクリプション内のリソースにアクセスすることはできません。このアカウントを参照する Runbook は認証を通過できず、ARM リソースに対するタスクを実行することができません。
 
     ![Add Automation Account Warning](media/automation-sec-configure-azure-runas-account/add-automation-acct-properties-error.png)
 
@@ -62,7 +62,7 @@ Azure ポータルから Automation アカウントを作成する方法と、Az
 
 1. [Windows PowerShell 用 Azure Active Directory モジュール (64 ビット バージョン)](http://go.microsoft.com/fwlink/p/?linkid=236297) をダウンロードしてインストール済みであること。
 2. Automation アカウントが作成済みであること。このアカウントは、以下のスクリプトの –AutomationAccountName パラメーターと -ApplicationDisplayName パラメーターの値として参照されます。
-3. [Azure Automation Authoring Toolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.2) をインストールしました
+3. [Azure Automation Authoring Toolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.2) がインストール済みであること。
 
 ```
 Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
@@ -155,7 +155,7 @@ Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
     New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
     ```
 <br>
-2. コンピューターの**スタート**画面から、昇格されたユーザー権限で **[Windows PowerShell]** を起動します。
+2. コンピューターの**スタート**画面から、昇格されたユーザー権限で **Windows PowerShell** を起動します。
 3. 昇格された PowerShell コマンドライン シェルから、手順 1. で作成したスクリプトが格納されているフォルダーに移動してスクリプトを実行します。*–ResourceGroup*、*-AutomationAccountName*、*-ApplicationDisplayName*、*-CertPlainPassword* の各パラメーターの値は適宜変更してください。<br>
 
     ```
@@ -175,7 +175,7 @@ Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
 1. 先ほど作成した Automation アカウントを Azure ポータルで開きます。  
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
 3. **[Runbook の追加]** ボタンをクリックし、**[Runbook の追加]** ブレードで **[新しい Runbook の作成]** を選択して新しい Runbook を作成します。
-4. Runbook に *Test-SecPrin-Runbook* という名前を付け、**[Runbook の種類]** に PowerShell を選択します。**[作成]** をクリックして Runbook を作成します。
+4. Runbook に *Test-SecPrin-Runbook* という名前を付け、**[Runbook の種類]** で [PowerShell] を選択します。**[作成]** をクリックして Runbook を作成します。
 5. **[PowerShell Runbook の編集]** ブレードのキャンバスに次のコードを貼り付けます。<br>
 
     ```
@@ -188,8 +188,8 @@ Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
 7. **[テスト ウィンドウ]** をクリックして **[テスト]** ブレードを開きます。
 8. **[開始]** をクリックしてテストを開始します。
 9. [Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態がペインに表示されます。  
-10. 最初のジョブの状態は*キューに設定*であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
-11. Runbook ジョブが完了すると、その出力が表示されます。このケースでは、ステータスが **[完了]** となります。<br> ![Security Principal Runbook Test](media/automation-sec-configure-azure-runas-account/runbook-test-results.png)<br>
+10. 最初のジョブの状態は*キュー登録済み*であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
+11. Runbook ジョブが完了すると、その出力が表示されます。このケースでは、状態が **[完了]** となります。<br> ![Security Principal Runbook Test](media/automation-sec-configure-azure-runas-account/runbook-test-results.png)<br>
 12. **[テスト]** ブレードを閉じてキャンバスに戻ります。
 13. **[PowerShell Runbook の編集]** ブレードを閉じます。
 14. **[Test-SecPrin-Runbook]** ブレードを閉じます。
@@ -200,4 +200,4 @@ Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
 - サービス プリンシパルの詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)」を参照してください。
 - Azure Automation におけるロールベースのアクセス制御の詳細については、「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

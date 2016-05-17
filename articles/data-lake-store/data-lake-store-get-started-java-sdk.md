@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/07/2016"
+   ms.date="05/10/2016"
    ms.author="nitinme"/>
 
 # Java で Azure Data Lake Store の使用を開始する
@@ -35,23 +35,33 @@ Azure Data Lake Store Java SDK を使用して、Azure Data Lake アカウント
 * IntelliJ または別の適切な Java 開発環境。この手順は省略可能ですが、実施することをお勧めします。以下の手順では、IntelliJ を使用します。
 * **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
-* Azure Active Directory (AAD) アプリケーションを作成し、**クライアント ID**、**応答 URI**、および**キー**を取得します。AAD アプリケーションと、クライアント ID を取得する方法の手順については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」を参照してください。アプリケーションを作成しキーを生成したら、応答 URI とキーをポータルから使用することもできます。
+* **Azure Active Directory アプリケーションを作成する**。Azure Active Directory を使用した認証には、**対話型**と**非対話型**の 2 とおりの方法があります。どのように認証を行うかで前提条件は異なります。
+	* **対話型の認証**を使用する場合: Azure Active Directory で**ネイティブ クライアント アプリケーション**を作成する必要があります。アプリケーションの作成が完了したら、アプリケーションに関連する次の値を取得します。
+		- アプリケーションの**クライアント ID** と**リダイレクト URI** を取得します。
+		- 委任されたアクセス許可を設定する
+
+	* **対話型の認証**を使用する場合: Azure Active Directory で **Web アプリケーション**を作成する必要があります。アプリケーションの作成が完了したら、アプリケーションに関連する次の値を取得します。
+		- アプリケーションの**クライアント ID**、**クライアント シークレット**、**リダイレクト URI** を取得します。
+		- 委任されたアクセス許可を設定する
+		- Azure Active Directory アプリケーションをロールに割り当てます。ロールは、Azure Active Directory アプリケーションにアクセス許可を付与するスコープのレベルにあります。たとえば、サブスクリプション レベルまたはリソース グループのレベルで、アプリケーションを割り当てることができます。 
+
+	これらの値を取得したりアクセス許可を設定したりロールを割り当てたりする手順については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」を参照してください。
 
 ## Azure Active Directory を使用して認証する方法
 
-次のコード スニペットは、プリケーションが独自の資格情報を提供する、**非対話型**認証用のコードを提供します。
+次のコード スニペットは、アプリケーションが独自の資格情報を提供する、**非対話型**認証用のコードを提供します。
 
 このチュートリアルが動作するには、アプリケーションに対して、Azure でリソースを作成するためのアクセス許可を付与する必要があります。このチュートリアルの目的においては、このアプリケーション Contributor に対して、Azure サブスクリプションの未使用で新しい空のリソース グループへのアクセス許可のみを付与することを**強くお勧めします**。
 
 ## Java アプリケーションを作成する
 
-1. IntelliJ を開き、**コマンド ライン アプリ** テンプレートを使用して新しい Java プロジェクトを作成します。
+1. IntelliJ を開き、**コマンド ライン アプリ** テンプレートを使用して新しい Java プロジェクトを作成します。ウィザードを実行してプロジェクトを作成します。
 
 2. 画面の左側にあるプロジェクトを右クリックし、**[フレームワーク サポートの追加]** をクリックします。**[Maven]** を選択し、**[OK]** をクリックします。
 
 3. 新しく作成された **"pom.xml"** ファイルを開き、**</version>** タグと **</project>** タグの間に、次のテキストのスニペットを追加します。
 
-    注: この手順は、Maven で Azure Data Lake Store SDK が利用可能になるまでの一時的なものです。この記事は、Maven で SDK が利用可能になると更新されます。この SDK に対する今後のすべての更新は、Maven を介して利用できます。
+    >[AZURE.NOTE] この手順は、Maven で Azure Data Lake Store SDK が利用可能になるまでの一時的なものです。この記事は、Maven で SDK が利用可能になると更新されます。この SDK に対する今後のすべての更新は、Maven を介して利用できます。
 
         <repositories>
         	<repository>
@@ -88,9 +98,9 @@ Azure Data Lake Store Java SDK を使用して、Azure Data Lake アカウント
     	</dependencies>
 
 
-4. **[ファイル]**、**[設定]**、**[ビルド**、**実行**、**デプロイ]** の順に移動します。**[Build Tools]**、**[Maven]**、**[インポート中 ]** の順に選択します。次に、**[Maven プロジェクトを自動的にインポートする]** をオンにします。
+4. **[ファイル]** の **[設定]** を開き、**[ビルド]、[実行]、[デプロイ]** の順に移動します。**[Build Tools]**、**[Maven]**、**[インポート]** の順に展開します。**[Import Maven projects automatically]** (Maven プロジェクトを自動的にインポートする) チェック ボックスをオンにします。**[適用]** をクリックし、**[OK]** をクリックします。
 
-5. **Main.java** を開き、既存のコード ブロックを次のコードに置き換えます。また、**localFolderPath**、**\_adlsAccountName**、**\_resourceGroupName** などのコード スニペットで呼び出されたパラメーターの値を入力し、**CLIENT-ID**、**CLIENT-SECRET**、**TENANT-ID**、および **SUBSCRIPTION-ID** のプレースホルダーを置き換えます。
+5. 左側のウィンドウで、**src**、**main**、**java**、**<パッケージ名>** の順に移動し、**Main.java** を開いて、現状のコードを次のコードに置き換えます。また、**localFolderPath**、**\_adlsAccountName**、**\_resourceGroupName** などのコード スニペットで呼び出されたパラメーターの値を入力し、**CLIENT-ID**、**CLIENT-SECRET**、**TENANT-ID**、および **SUBSCRIPTION-ID** のプレースホルダーを置き換えます。
 
     このコードでは、Data Lake Store アカウントの作成、ストアでのファイルの作成、ファイルの転結、ファイルのダウンロード、最後にアカウントの削除のプロセスを行います。
 
@@ -293,4 +303,4 @@ Azure Data Lake Store Java SDK を使用して、Azure Data Lake アカウント
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

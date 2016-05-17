@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="02/16/2016" 
+	ms.date="05/10/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication Server の概要
@@ -71,7 +71,7 @@ Azure Multi-Factor Authentication Server は 2 つの方法でダウンロード
 Azure Multi-Factor Authentication Server の要件|説明|
 :------------- | :------------- | 
 ハードウェア|<li>ハード ディスク空き容量 200 MB</li><li>x32 または x64 対応のプロセッサ</li><li>RAM 1 GB 以上</li>
-ソフトウェア|<li>ホストがサーバー OS の場合は Windows Server 2003 以降</li><li>ホストがクライアント OS の場合は Windows Vista 以降</li><li>Microsoft .NET 2.0 Framework</li><li>ユーザー ポータルまたは Web サービス SDK をインストールしている場合は IIS 6.0 以降</li>
+ソフトウェア|<li>ホストがサーバー OS の場合は Windows Server 2008 以降</li><li>ホストがクライアント OS の場合は Windows 7 以降</li><li>Microsoft .NET 4.0 Framework</li><li>ユーザー ポータルまたは Web サービス SDK をインストールしている場合は IIS 7.0 以降</li>
 
 ### Azure Multi-Factor Authentication Server ファイアウォールの要件
 --------------------------------------------------------------------------------
@@ -185,4 +185,4 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 [Windows Server Active Directory との同期](multi-factor-authentication-get-started-server-dirint.md)|Active Directory と Azure MFA Server 間の同期のセットアップと構成に関する情報です。
 [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](multi-factor-authentication-get-started-server-webservice.md)|Azure MFA Server Web サービスのセットアップと構成に関する情報です。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

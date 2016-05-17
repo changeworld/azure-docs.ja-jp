@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Windows から Azure にファイルとフォルダーをバックアップする | Microsoft Azure"
-   description="コンテナーを作成し、バックアップ エージェントをインストールして、ファイルとフォルダーを Azure にバックアップすることで、Windows Server のデータをバックアップする方法について説明します。"
+   pageTitle="Azure Backup と Resource Manager デプロイメント モデルを使用して、Windows のファイルとフォルダーを Azure にバックアップする方法 | Microsoft Azure"
+   description="コンテナーを作成し、Recovery Services エージェントをインストールして、ファイルとフォルダーを Azure にバックアップすることで、Windows Server のデータをバックアップする方法について説明します。"
    services="backup"
    documentationCenter=""
    authors="Jim-Parker"
@@ -14,132 +14,193 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="hero-article"
-   ms.date="04/14/2016"
+   ms.date="05/10/2016"
    ms.author="jimpark;"/>
 
-# 最初に: Windows Server または Windows クライアントから Azure にファイルとフォルダーをバックアップする
+# 最初に: Resource Manager デプロイメント モデルを使用して Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする
 
-この記事では、Azure Backup を使用して、Windows Server または Windows クライアントのファイルおよびフォルダーを Azure にバックアップする方法について説明します。基本事項に関するチュートリアルです。この記事は、Azure Backup を始めて使用する場合に適しています。
+この記事では、Resource Manager を使用して、Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする方法について説明します。基本事項に関するチュートリアルです。この記事は、Azure Backup を始めて使用する場合に適しています。
 
 Azure Backup の詳細については、こちらの[概要記事](backup-introduction-to-azure-backup.md)を参照してください。
 
 ファイルとフォルダーを Azure にバックアップするには、以下のアクティビティが必要です。
 
-![手順 1.](./media/backup-try-azure-backup-in-10-mins/step-1.png) Azure サブスクリプションを入手する (まだない場合)。<br> ![手順 2.](./media/backup-try-azure-backup-in-10-mins/step-2.png) バックアップ コンテナーを作成し、必要なアイテムをダウンロードする。<br> ![手順 3.](./media/backup-try-azure-backup-in-10-mins/step-3.png) Backup エージェントをインストールして登録する。<br> ![手順 4.](./media/backup-try-azure-backup-in-10-mins/step-4.png) ファイルとフォルダーをバックアップする。
+![手順 1.](./media/backup-try-azure-backup-in-10-mins/step-1.png) Azure サブスクリプションを入手する (まだない場合)。<br> ![手順 2.](./media/backup-try-azure-backup-in-10-mins/step-2.png) Recovery Services コンテナーを作成する。<br> ![手順 3.](./media/backup-try-azure-backup-in-10-mins/step-3.png) 必要なファイルをダウンロードする。<br> ![手順 4.](./media/backup-try-azure-backup-in-10-mins/step-4.png) Recovery Services エージェントをインストールして登録する。<br> ![手順 5](./media/backup-try-azure-backup-in-10-mins/step-5.png) ファイルとフォルダーをバックアップする。
 
-
-![How to back up your Windows machine with Azure Backup](./media/backup-try-azure-backup-in-10-mins/windows-machine-backup-process.png)
+![How to back up your Windows machine with Azure Backup](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
 ## 手順 1: Azure サブスクリプションを入手する
 
 Azure サブスクリプションがない場合は、すべての Azure サービスにアクセスできる[無料アカウント](https://azure.microsoft.com/free/)を作成します。
 
-## 手順 2: バックアップ コンテナーを作成し、必要なアイテムをダウンロードする
+## ステップ 2: Recovery Services コンテナーを作成する
 
-ファイルとフォルダーをバックアップするには、データを保存するリージョンにバックアップ コンテナーを作成する必要があります。また、ストレージのレプリケート方法を決定し、資格情報と Backup エージェントをダウンロードします。
+ファイルとフォルダーをバックアップするには、データを保存するリージョンに Recovery Services コンテナーを作成する必要があります。また、ストレージのレプリケート方法を決定する必要もあります。
 
-### バックアップ資格情報コンテナーを作成するには
+### Recovery Services コンテナーを作成するには
 
 1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com/)にサインインします。
 
-2. **[新規]、[ハイブリッド統合]、[Backup]** の順にクリックします。
+2. ハブ メニューの **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力して、**[Recovery Services コンテナー]** をクリックします。
 
-    ![Begin preparing to back up your files and folders](./media/backup-try-azure-backup-in-10-mins/second-blade-backup.png)
+    ![Create Recovery Services Vault step 1](./media/backup-try-azure-backup-in-10-mins/browse-to-rs-vaults.png) <br/>
 
-3. **[名前]** ボックスに、バックアップ資格情報コンテナーを識別する表示名を入力します。
+3. **[Recovery Services コンテナー]** メニューの **[追加]** をクリックします。
 
-4. **[リージョン]** で、ファイル転送の時間が最短になるように最も近いリージョンを選択します。
+    ![Create Recovery Services Vault step 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
-5. **[コンテナーの作成]** をクリックします。
+    [Recovery Services コンテナー] ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、および **[場所]** を指定するように求められます。
 
-    ![コンテナーの作成](./media/backup-try-azure-backup-in-10-mins/demo-vault-name.png)
+    ![Create Recovery Services vault step 5](./media/backup-try-azure-backup-in-10-mins/rs-vault-attributes.png)
 
-    バックアップ コンテナーの準備ができると、Recovery Services のリソースの一覧に "**アクティブ**" と表示されます。
+4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
 
-    ![Vault status is active](./media/backup-try-azure-backup-in-10-mins/recovery-services-select-vault.png)
+5. **[サブスクリプション]** をクリックして、使用可能なサブスクリプションの一覧を表示します。
 
-コンテナーを作成した後は、ストレージのレプリケート方法を選択します。
+6. **[リソース グループ]** をクリックして、使用可能なリソース グループを表示するか、**[新規]** をクリックして、新しいリソース グループを作成します。
 
->[AZURE.NOTE] コンテナーを作成した直後、コンピューターをコンテナーに登録する前に、ストレージのレプリケート方法を選択する必要があります。アイテムをコンテナーに登録すると、ストレージ レプリケーションはロックされて、変更できなくなります。
+7. **[場所]** をクリックして、コンテナーの地理的リージョンを選択します。この選択により、バックアップ データの送信先となるリージョンが決まります。
 
-### ストレージのレプリケート方法を選択するには
+8. **[作成]** をクリックします。
 
-1. 作成したコンテナーをクリックします。
-2. [クイック スタート] ページで、**[構成]** をクリックします。
+    完了した後に、コンテナーが一覧に表示されない場合は、**[最新の情報に更新]** をクリックします。一覧が更新されたら、コンテナーの名前をクリックします。
 
-    ![Configure vault](./media/backup-try-azure-backup-in-10-mins/configure-vault.png)
+### ストレージの冗長性を確認するには
+初めて Recovery Services コンテナーを作成するときに、ストレージのレプリケーション方法を決定します。
 
-3. 適切なストレージ オプションを選択します。
+1. 新しいコンテナーをクリックして、ダッシュボードを開きます。
 
-    プライマリ バックアップとして Azure を使用する場合は、[geo 冗長ストレージ](../storage/storage-redundancy.md#geo-redundant-storage)を選択します。第 3 のバックアップとして Azure を使用する場合は、[ローカル冗長ストレージ](../storage/storage-redundancy.md#locally-redundant-storage)を選択します。
+2. コンテナーのダッシュボードと一緒に自動的に開く **[設定]** ブレードで、**[Backup Infrastructure]** (バックアップ インフラストラクチャ) をクリックします。
 
-    ![ストレージ レプリケーション オプションの選択](./media/backup-try-azure-backup-in-10-mins/geo-redundant.png)
+3. [Backup Infrastructure] (バックアップ インフラストラクチャ) ブレードで **[Backup Configuration]** (バックアップ構成) をクリックして、**[Storage replication type]** (ストレージ レプリケーションの種類) を表示します。
 
-4. **[Geo 冗長]** が既定であるため、**[ローカル冗長]** を選択した場合は **[保存]** をクリックしてください。
+    ![Create Recovery Services vault step 5](./media/backup-try-azure-backup-in-10-mins/backup-infrastructure.png)
 
-バックアップ コンテナーでコンピューターを認証するには、コンテナー資格情報を使用します。資格情報をダウンロードする方法を次に示します。
+4. コンテナーの適切なストレージ レプリケーション オプションを選択します。
 
-### コンテナー資格情報をダウンロードするには
-コンテナーの資格情報ファイルは登録プロセス中しか使用されず、48 時間後に期限切れとなります。
+    ![List of recovery services vaults](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-1. コンテナーの **[クイック スタート]** ページに戻るには、![Select your new vault](./media/backup-try-azure-backup-in-10-mins/quick-start-icon.png) をクリックします。
+    既定では、コンテナーには geo 冗長ストレージがあります。プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き geo 冗長ストレージを使用します。プライマリ以外のバックアップ ストレージ エンドポイントとして Azure を使用している場合は、ローカル冗長ストレージを選択します。ローカル冗長ストレージを選択すると、Azure にデータを格納するコストが削減されます。[geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、こちらの[概要](../storage/storage-redundancy.md)を参照してください。
 
-2. **[コンテナー資格情報のダウンロード]、[保存]** の順にクリックします。
+これで、コンテナーが作成されました。次は、Microsoft Azure Recovery Services エージェントとコンテナーの資格情報をダウンロードして、ファイルとフォルダーをバックアップするインフラストラクチャを準備します。
 
-次に、Backup エージェントをダウンロードします。
+## 手順 3: ファイルをダウンロードする
 
-### Backup エージェントをダウンロードするには
+1. Recovery Services コンテナーのダッシュボードで、**[設定]** をクリックします。
 
-**[Windows Server、System Center Data Protection Manager、Windows クライアント向けエージェント]、[保存]** の順にクリックします。
+    ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/settings-button.png)
 
-![Save the backup agent](./media/backup-try-azure-backup-in-10-mins/agent.png)
+2. [設定] ブレードで、**[作業の開始]、[Backup]** の順にクリックします。
 
-コンテナーを作成し、必要なものをすべてダウンロードしたので、Backup エージェントをインストールして登録します。
+    ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/getting-started-backup.png)
 
-## 手順 3: Backup エージェントをインストールして登録する
+3. [Backup] ブレードで、**[Backup goal]** (バックアップの目標) をクリックします。
 
-1. 保存場所の **MARSagentinstaller.exe** をダブルクリックします。
+    ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/backup-goal.png)
+
+4. [Where is your workload running] (ワークロードの実行場所) メニューの **[オンプレミス]** を選択します。
+
+5. [What do you want to backup] (バックアップ対象) メニューの **[Files and folders]** (ファイルとフォルダー) を選択し、**[OK]** をクリックします。
+
+### Recovery Services エージェントのダウンロード
+
+1. **[Prepare infrastructure]** (インフラストラクチャの準備) ブレードで、**[Download Agent for Windows Server or Windows Client]** (Windows Server または Windows クライアント用エージェントのダウンロード) をクリックします。
+
+    ![prepare infrastructure](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-short.png)
+
+2. ダウンロードのポップアップ ウィンドウで、**[保存]** をクリックします。既定では、**MARSagentinstaller.exe** ファイルがダウンロード フォルダーに保存されます。
+
+### コンテナー資格情報のダウンロード
+
+1. [Prepare infrastructure] (インフラストラクチャの準備) ブレードで、**[ダウンロード]、[保存]** の順にクリックします。
+
+    ![prepare infrastructure](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-download.png)
+
+## 手順 4: エージェントをインストールして登録する
+
+>[AZURE.NOTE] 間もなく、Azure ポータルからバックアップを有効にできるようになります。現時点では、オンプレミスの Microsoft Azure Recovery Services エージェントを使用して、ファイルやフォルダーをバックアップします。
+
+1. ダウンロード フォルダー (または他の保存場所) で **MARSagentinstaller.exe** を見つけて、ダブルクリックします。
+
 2. Microsoft Azure Recovery Services エージェント セットアップ ウィザードを実行します。ウィザードでは以下のことを行う必要があります。
+
     - インストールとキャッシュ フォルダーの場所を選択します。
     - プロキシ サーバーを使用してインターネットに接続する場合は、プロキシ サーバーの情報を指定します。
     - 認証済みのプロキシを使用する場合は、ユーザー名とパスワードの詳細を入力します。
+    - ダウンロードしたコンテナーの資格情報を指定します。
     - 暗号化パスフレーズを安全な場所に保存します。
 
     >[AZURE.NOTE] パスフレーズを紛失または忘れた場合、Microsoft はバックアップ データの回復を支援することはできません。安全な場所にファイルを保存してください。バックアップを復元するために必要です。
 
 エージェントがインストールされ、コンピューターがコンテナーに登録されました。バックアップを構成してスケジュールする準備ができました。
 
-## 手順 4: ファイルとフォルダーをバックアップする
-Backup エージェントがまだ開いていない場合は、コンピューターで Microsoft Azure Backup を検索すると見つかります。
+## 手順 5: ファイルとフォルダーをバックアップする
 
-1. **Backup エージェント**で、**[バックアップのスケジュール]** をクリックします。
+初回バックアップには、次の 2 つの主要なタスクが含まれています。
 
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-try-azure-backup-in-10-mins/snap-in-schedule-backup-closeup.png)
+- バックアップのスケジュール
+- 初回のファイルとフォルダーのバックアップ
 
-2. Backup のスケジュール ウィザードを実行します。ウィザードでは以下のことを行います。
+初回バックアップを実行するには、Microsoft Azure Recovery Services エージェントを使用します。
 
-    - バックアップするファイルとフォルダーを選択します。
-    - バックアップ スケジュールを指定します (毎日または毎週)。
-    - 保持ポリシーを決定します。
-    - 最初のバックアップの実行方法を選択します (ネットワーク経由またはオフライン)。
+### バックアップのスケジュールを設定するには
 
-    詳細については、「[Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」を参照してください。 <br><br>
+1. Microsoft Azure Recovery Services エージェントを開きます。エージェントは、コンピューターで **Microsoft Azure Backup** を検索すると見つかります。
 
-3. ウィザードが完了したら、**Backup エージェント**に戻り、**[今すぐバックアップ]** をクリックして、ネットワーク経由で最初のバックアップを実行します。
+    ![Launch the Azure Recovery Services agent](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
+
+2. Recovery Services エージェントで、**[バックアップのスケジュール]** をクリックします。
+
+    ![Schedule a Windows Server backup](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
+
+3. バックアップのスケジュール ウィザードの [作業の開始] ページで、**[次へ]** をクリックします。
+
+4. [バックアップする項目の選択] 画面で、**[項目の追加]** をクリックします。
+
+5. バックアップするファイルとフォルダーを選択し、**[OK]** をクリックします。
+
+6. **[次へ]** をクリックします。
+
+7. **[バックアップ スケジュールの選択]** ページで**バックアップ スケジュール**を指定し、**[次へ]** をクリックします。
+
+    毎日 (1 日に最大 3 回) または毎週のバックアップをスケジュールすることができます。
+
+    ![Windows Server のバックアップ項目](./media/backup-try-azure-backup-in-10-mins/specify-backup-schedule-close.png)
+
+    >[AZURE.NOTE] バックアップ スケジュールを指定する方法の詳細については、「[Azure Backup を使用してテープのインフラストラクチャを置換する](backup-azure-backup-cloud-as-tape.md)」を参照してください。
+
+8. **[保持ポリシーの選択]** ページで、バックアップ コピーの**保持ポリシー**を選択します。
+
+    保有ポリシーは、バックアップを格納する必要がある期間を指定します。すべてのバックアップ ポイントに "同じポリシー" を指定するのでなく、バックアップが実行されるタイミングに基づいて異なる保持ポリシーを指定できます。必要に応じて、日、週、月、および年単位で保有ポリシーを変更できます。
+
+9. [初期バックアップの種類の選択] ページで、初期バックアップの種類を選択します。**[自動でネットワーク経由]** オプションが選択された状態のままにし、**[次へ]** をクリックします。
+
+    ネットワーク経由で自動的にバックアップことも、オフラインでバックアップすることもできます。この記事の残りの部分では、自動バックアップのプロセスについて説明します。オフライン バックアップを実行する場合は、「[Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」で詳細を確認してください。
+
+10. [確認] ページで情報を確認し、**[完了]** をクリックします。
+
+11. ウィザードでバックアップ スケジュールの作成が完了したら、**[閉じる]** をクリックします。
+
+### 初回のファイルとフォルダーをバックアップするには
+
+1. Recovery Services エージェントで **[今すぐバックアップ]** をクリックして、ネットワーク経由での最初のシード処理を完了します。
 
     ![Windows Server を今すぐバックアップする](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-4. **[確認]** 画面で、**[バックアップ]** をクリックします。バックアップ プロセスが完了する前にウィザードを閉じると、プロセスはバックグラウンドで引き続き実行されます。
+2. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。次に、**[バックアップ]** をクリックします。
 
-    最初のバックアップが完了すると、コンソールの **[ジョブ]** ビューにジョブの完了が示されます。
+3. **[閉じる]** をクリックしてウィザードを閉じます。バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
 
-    ![Initial backup complete](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
+初回バックアップが完了すると、**[ジョブは完了しました]** 状態が Backup コンソールに表示されます。
 
-これで、ファイルやフォルダーが Azure Backup に正常にバックアップされました。
+![IR complete](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
+
+## 疑問がある場合
+ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
 ## 次のステップ
 - [Windows コンピューターのバックアップ](backup-configure-vault.md)の詳細を参照してください。
 - ファイルとフォルダーをバックアップしたので、[コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
-- バックアップを復元する必要がある場合は、「[Windows Server または Windows クライアント コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)」を参照してください。
+- バックアップを復元する必要がある場合は、[Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/06/2016"
+   ms.date="05/04/2016"
    ms.author="charleywen"/>
 
 # リソース マネージャーのデプロイ モデルにおいて共存する ExpressRoute 接続とサイト間接続を構成する
@@ -115,7 +115,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 		$ckt = Get-AzureRmExpressRouteCircuit -Name "YourCircuit" -ResourceGroupName "YourCircuitResourceGroup"
 		New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -VirtualNetworkGateway1 $gw -PeerId $ckt.Id -ConnectionType ExpressRoute
 
-6. 次に、サイト間 VPN ゲートウェイを作成します。VPN ゲートウェイの構成の詳細については、「[Configure a VNet to VNet connection (VNet 間の接続の構成)](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)」を参照してください。GatewaySKU には、*Standard* または *HighPerformance* を指定します。VpnType には、*RouteBased* を指定する必要があります。
+6. <a name="vpngw"></a>次に、サイト間 VPN ゲートウェイを作成します。VPN ゲートウェイの構成の詳細については、[VNet 間の接続の構成](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)に関するページを参照してください。GatewaySKU には、*Standard* または *HighPerformance* を指定します。VpnType には、*RouteBased* を指定する必要があります。
 
 		$gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 		$gwIP = New-AzureRmPublicIpAddress -Name "VPNGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
@@ -137,9 +137,11 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 ## <a name="add"></a>既存の VNet の共存する接続を構成するには
 
-ExpressRoute 接続またはサイト間 VPN 接続経由で接続されている既存の仮想ネットワークがある場合は、既存の仮想ネットワークに接続する両方の接続を有効にするために、まず既存のゲートウェイを削除する必要があります。これは、この構成で作業している間、ローカル環境からゲートウェイ経由で仮想ネットワークに接続できなくなるということです。
+既存の仮想ネットワークがある場合は、ゲートウェイ サブネットのサイズを確認します。ゲートウェイ サブネットが /28 または /29 の場合、まず仮想ネットワーク ゲートウェイを削除してから、ゲートウェイ サブネットのサイズを増やしてください。このセクションの手順で、その方法を説明します。
 
-**構成を開始する前に:** ゲートウェイ サブネットのサイズを増やせるように、仮想ネットワーク内に十分な IP アドレスが残っていることを確認します。IP アドレスが十分にある場合でも、ゲートウェイを削除してから作成し直す必要があることにご注意ください。これは、共存する接続に対応するためにゲートウェイを作成し直す必要があるからです。
+ゲートウェイ サブネットが /27 以上で、仮想ネットワークが ExpressRoute 経由で接続されている場合、以降の手順をスキップして、前のセクションの[手順 6、サイト間 VPN ゲートウェイの作成手順](#vpngw)に進みます。
+
+>[AZURE.NOTE] この既存のゲートウェイを削除すると、この構成で作業している間、ローカル環境から仮想ネットワークに接続できなくなります。
 
 1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。必ず、これらの手順で指定されているコマンドレットを使用してください。 
 
@@ -149,19 +151,20 @@ ExpressRoute 接続またはサイト間 VPN 接続経由で接続されてい�
 
 3. ゲートウェイ サブネットを削除します。
 		
-		$vnet = Get-AzureRmVirtualNetworkGateway -Name <yourvnetname> -ResourceGroupName <yourresourcegroup> 
+		$vnet = Get-AzureRmVirtualNetwork -Name <yourvnetname> -ResourceGroupName <yourresourcegroup> 
 		Remove-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet
 
 4. /27 以上のゲートウェイ サブネットを追加します。
+	>[AZURE.NOTE] 仮想ネットワーク内の IP アドレスが不足していてゲートウェイ サブネットのサイズを増やせない場合は、IP アドレス空間を追加する必要があります。
 
-		$vnet = Get-AzureRmVirtualNetworkGateway -Name <yourvnetname> -ResourceGroupName <yourresourcegroup>
+		$vnet = Get-AzureRmVirtualNetwork -Name <yourvnetname> -ResourceGroupName <yourresourcegroup>
 		Add-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet -AddressPrefix "10.200.255.0/24"
 
 	VNet 構成を保存します。
 
 		$vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
-5. この時点では、VNet にゲートウェイがありません。新しいゲートウェイを作成し、接続を完了するには、前述の一連の手順にある「[手順 4 - ExpressRoute ゲートウェイを作成します](#gw)」に進みます。
+5. この時点では、VNet にゲートウェイがありません。新しいゲートウェイを作成し、接続を完了するには、前述の[手順 4、ExpressRoute ゲートウェイの作成手順](#gw)に進みます。
 
 ## VPN ゲートウェイにポイント対サイト構成を追加するには
 共存設定で VPN ゲートウェイにポイント対サイト構成を追加するのには、次の手順に従います。
@@ -185,10 +188,10 @@ ExpressRoute 接続またはサイト間 VPN 接続経由で接続されてい�
 		$p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData)
 		Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
 
-ポイント対サイト VPN の詳細については、「[Configure a Point-to-Site connection (ポイント対サイト接続の構成)](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)」を参照してください。
+ポイント対サイト VPN の詳細については、[ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)に関するページを参照してください。
 
 ## 次のステップ
 
 ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

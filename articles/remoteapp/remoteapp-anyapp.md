@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="02/02/2016"
+   ms.date="05/02/2016"
    ms.author="elizapo"/>
 
 # Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する
@@ -78,7 +78,7 @@ Access はデータベースです。せっかくのデータベースが役立�
 管理者として行う最初の部分です。次に、ユーザーが行ういくつかの手順があります。
 
 1. まず、コマンド ライン インターフェイス (cmd.exe) を発行します。 **[発行]** タブで **[cmd]** を選択し、次に **[発行 > パスを使用してプログラムを発行]** をクリックします。
-2. アプリの名前、およびパスを入力します。ここでは、名前には「File Explorer」、パスには「%SYSTEMDRIVE%\\windows\\explorer.exe」を使用します。
+2. アプリの名前、およびパスを入力します。ここでは、名前には「File Explorer」、パスには「%SYSTEMDRIVE%\windows\explorer.exe」を使用します。
 ![cmd.exe のファイルの発行](./media/remoteapp-anyapp/ra-publishcmd.png)
 3. ここで、Azure [ストレージ アカウント](../storage/storage-create-storage-account.md)を作成する必要があります。サンプルには「accessstorage」という名前が付いています。わかりやすい名前を 1 つ選んでください (「accessstorage」という名前は 1 つしか使えないため)。
 ![Azure ストレージ アカウント](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
@@ -117,5 +117,6 @@ Access はデータベースです。せっかくのデータベースが役立�
 コレクションの作成方法を習得できたので、[Office 365 を使用するコレクション](remoteapp-tutorial-o365anywhere.md)を作成してみてください。あるいは、ローカル ネットワークにアクセスする[ハイブリッド コレクション](remoteapp-create-hybrid-deployment.md)を作成することもできます。
 
 <!--Image references-->
+ 
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

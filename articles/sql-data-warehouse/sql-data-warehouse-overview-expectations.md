@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/19/2016"
+   ms.date="05/05/2016"
    ms.author="nicw;barbkess;sonyama"/>
 
 
@@ -72,10 +72,11 @@ SQL Data Warehouse のプレビュー中は、新機能の追加と重要な修�
 <!--Image references-->
 
 <!--Article references-->
+[サポート チケットを作成]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [作業を開始]: ./sql-data-warehouse-get-started-provision.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

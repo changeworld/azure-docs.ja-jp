@@ -5,15 +5,16 @@
    documentationCenter=""
    authors="SnehaGunda"
    manager="stevenka"
-   editor="tysonn" />
+   editor="tysonn"
+   keywords="Automation RBAC, ロールベースのアクセス制御, Azure RBAC" />
 <tags 
    ms.service="automation"
    ms.devlang="na"
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/11/2016"
-   ms.author="sngun"/>
+   ms.date="05/10/2016"
+   ms.author="magoedte;sngun"/>
 
 # Azure Automation におけるロールベースのアクセス制御
 
@@ -135,8 +136,8 @@ Automation アカウントに対するロールベースのアクセス制御は
 
 
 ## 次のステップ
--  Azure Automation に対して RBAC を構成する各種の方法については、「[Azure PowerShell を使用したロールベースのアクセス制御 (RBAC) の管理](../active-directory/role-based-access-control-manage-access-powershell.md)」を参照してください。
-- Runbook を開始するさまざまな方法については、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
+-  Azure Automation に対して RBAC を構成する各種の方法については、[Azure PowerShell を使用した RBAC の管理](../active-directory/role-based-access-control-manage-access-powershell.md)に関する記事を参照してください。
+- Runbook を開始するさまざまな方法の詳細については、[Runbook の開始](automation-starting-a-runbook.md)に関する記事を参照してください。
 - 種類については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

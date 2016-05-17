@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Windows Server VM に接続する | Microsoft Azure"
-	description="Azure ポータルおよび Resource Manager デプロイ モデルを使用して、Windows Server VM に接続し、ログオンする方法について説明します。"
+	description="Azure ポータルと Resource Manager デプロイメント モデルを使用して Windows VM に接続し、ログオンする方法について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="cynthn"
@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/28/2016"
+	ms.date="05/05/2016"
 	ms.author="cynthn"/>
 
-# Windows Server が実行されている Azure 仮想マシンに接続してログオンする方法 
+# Windows が実行されている Azure 仮想マシンに接続してログオンする方法 
 
 
 Azure ポータルの **[接続]** ボタンを使用して、リモート デスクトップ (RDP) セッションを開始します。まず、仮想マシンに接続して、ログオンします。
@@ -43,4 +43,4 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 
 接続時に問題が発生した場合は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)」を参照してください。この記事では、一般的な問題の診断と解決の手順について説明します。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

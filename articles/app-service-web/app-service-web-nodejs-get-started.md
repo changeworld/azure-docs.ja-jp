@@ -26,14 +26,14 @@
 ## 前提条件
 
 - Node.js。インストール用のバイナリは[こちら](https://nodejs.org/)にあります。
-- Yoeman。インストールの手順については、[こちら](http://yeoman.io/)を参照してください。
+- Yeoman。インストールの手順については、[こちら](http://yeoman.io/)を参照してください。
 - Gitインストール用のバイナリは[こちら](http://www.git-scm.com/downloads)にあります。
 - Azure CLI。インストールの手順については、[こちら](../xplat-cli-install.md)を参照してください。
 - Microsoft Azure アカウント。アカウントを持っていない場合は、[無料試用版にサインアップする](/pricing/free-trial/?WT.mc_id=A261C142F)か [Visual Studio サブスクライバー特典を有効](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
 
 ## 単純な Node.js Web アプリの作成とデプロイ
 
-1. 任意のコマンドライン ターミナルを開いて、[Express generator for Yoeman](https://github.com/petecoop/generator-express) をインストールします。
+1. 任意のコマンド ライン ターミナルを開いて、[Express generator for Yeoman](https://github.com/petecoop/generator-express) をインストールします。
 
         npm install -g generator-express
 
@@ -203,4 +203,4 @@ Node-Inspector を有効にするには、次の手順を実行します。
 - [Node.js デベロッパー センター](/develop/nodejs/)
 - [Azure App Service での Web アプリの使用](app-service-web-get-started.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="02/02/2016"
+   ms.date="05/02/2016"
    ms.author="elizapo"/>
 
 # SQL Azure と Azure RemoteApp
@@ -50,4 +50,4 @@ Azure RemoteApp でホストされているクライアント アプリケーシ
 - Azure RemoteApp でホストされているクライアント アプリがストレス条件下に置かれている。Premium 課金などの別の課金プランを選択すると、パフォーマンスが向上します。別の方法として、アプリによって使用されるリソースを監視するという手があります。アクティブ セッション中に、Ctrl + Alt + End キーを押して、SAS 画面を起動し、タスク マネージャーを選択して、アプリのリソース使用状況を確認します。
 - SQL サーバーがストレス条件下にあるか、または最適化されていません。SQL に関するトラブルシューティングのガイダンスに従います。 
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle=".NET を使用して Azure Blob Storage を使用する | Microsoft Azure"
-	description="Azure Blob Storage (オブジェクト ストレージ) を使用してクラウドにファイル データを格納します。コンテナーの作成、Blob コンテンツのアップロード、ダウンロード、一覧表示、削除など、単純な Blob Storage 操作を開始します。"
+	description="Azure Blob Storage (オブジェクト ストレージ) を使用してクラウドに非構造化データを格納します。"
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
@@ -380,7 +380,7 @@ Azure Storage では、クライアント側とサーバー側の両方で、BLO
 
 ### 概念的なガイド
 
-- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 - [.NET 用の File Storage の概要](storage-dotnet-how-to-use-files.md)
 - [Web ジョブ SDK で Azure Blob Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
 
@@ -395,4 +395,4 @@ Azure Storage では、クライアント側とサーバー側の両方で、BLO
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

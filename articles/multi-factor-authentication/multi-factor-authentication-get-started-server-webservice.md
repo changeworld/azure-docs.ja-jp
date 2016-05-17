@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="04/04/2016" 
+	ms.date="05/10/2016" 
 	ms.author="billmath"/>
 
 # MFA Server モバイル アプリ Web サービスの概要
@@ -24,12 +24,12 @@ Azure Multi-Factor Authentication アプリを使用するには、アプリが�
 
 - ハードウェアおよびソフトウェアの要件については、「ハードウェアとソフトウェアの要件」を参照してください。
 - Azure Multi-Factor Authentication Server の V6.0 以降を使用している必要があります
-- モバイル アプリ Web サービスが、Microsoft® Internet Information Services (IIS) 6.x または IIS 7.x を実行している、インターネットに接続された Web サーバーにインストールされている必要があります。IIS の詳細については、「[IIS.NET](http://www.iis.net/)」を参照してください。
-- IIS 6.x を使用している場合は、ASP.NET v2.0.50727 がインストールおよび登録され、[許可] に設定されるようにします
-- IIS 7.x を使用するときに必要なロール サービスには、ASP.NET および IIS 6 メタベース互換が含まれます
+- モバイル アプリ Web サービスが、Microsoft® インターネット インフォメーション サービス (IIS) の IIS 7.x 以降を実行している、インターネットに接続された Web サーバーにインストールされている必要があります。IIS の詳細については、[IIS.NET](http://www.iis.net/) に関するページを参照してください。
+- ASP.NET v4.0.30319 がインストールおよび登録され、[許可] に設定されていることを確認します
+- 必要なロール サービスには、ASP.NET および IIS 6 メタベース互換が含まれます
 - モバイル アプリ Web サービスにパブリック URL よりアクセスできる必要があります
 - モバイル アプリ Web サービスは、SSL 証明書で保護されている必要があります。
-- Azure Multi-Factor Authentication Web サービス SDK が、IIS 6.x または IIS 7.x にインストールされている必要があります
+- Azure Multi-Factor Authentication Server がインストールされているサーバー上の IIS 7.x 以降に、Azure Multi-Factor Authentication Web サービス SDK がインストールされている必要があります。
 - Azure Multi-Factor Authentication Web サービス SDK は、SSL 証明書で保護されている必要があります。
 - モバイル アプリ Web サービスは SSL 経由で Azure Multi-Factor Authentication Web サービス SDK に接続できる必要があります
 - モバイル アプリ Web サービスは、「PhoneFactor Admins」と呼ばれるセキュリティ グループのメンバーであるサービス アカウントの資格情報を使用して Azure Multi-Factor Authentication Web サービス SDK で認証できる必要があります。このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加しているサーバーで実行されている場合は、Active Directory に存在します。このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加していない場合、Azure Multi-Factor Authentication Server のローカルに存在します。
@@ -90,4 +90,4 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 <center>![Setup](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

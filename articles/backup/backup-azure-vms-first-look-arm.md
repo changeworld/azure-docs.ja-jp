@@ -78,35 +78,45 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
     >[AZURE.IMPORTANT] VM がどの場所に存在するかが不明な場合は、コンテナーを作成するダイアログを閉じて、ポータルで仮想マシンの一覧に移動します。複数のリージョンに仮想マシンがある場合は、各リージョンで Recovery Services コンテナーを作成する必要があります。最初の場所でコンテナーを作成してから、次の場所に移動してください。バックアップ データを格納するストレージ アカウントを指定する必要はありません。これは、Recovery Services コンテナーと Azure Backup サービスにより自動的に処理されます。
 
-8. **[作成]** をクリックします。Recovery Services コンテナーの作成に時間がかかることがあります。ポータルの右上隅で、状態の通知を監視します。コンテナーが作成されると、ポータルで開かれます。
+8. **[作成]** をクリックします。Recovery Services コンテナーの作成に時間がかかることがあります。ポータルの右上隅で、状態の通知を監視します。コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。
 
-9. コンテナー内で **[すべての設定]**、**[バックアップ構成]** の順にクリックして、**[ストレージ レプリケーションの種類]** を表示します。コンテナーのストレージ レプリケーション オプションを選択します。
+    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/rs-list-of-vaults.png)
 
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/choose-storage-configuration.png)
+これで、コンテナーが作成されました。次は、ストレージ レプリケーションを設定する方法について説明します。
 
-    既定では、コンテナーには geo 冗長ストレージがあります。プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き geo 冗長ストレージを使用することをお勧めします。プライマリ以外のバックアップ ストレージ エンドポイントとして Azure を使用している場合は、ローカル冗長ストレージを選択することも検討できます。ローカル冗長ストレージを選択すると、Azure にデータを格納するコストが削減されます。[geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、「[Azure Storage のレプリケーション](../storage/storage-redundancy.md)」を参照してください。
+### ストレージ レプリケーションの設定
+
+ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。既定では、コンテナーには geo 冗長ストレージがあります。プライマリ バックアップの場合は、オプションが geo 冗長ストレージに設定されているままにします。冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。[geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細について、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事を参照してください。
+
+ストレージ レプリケーション設定を編集するには、次の手順を実行します。
+
+1. コンテナーを選択して、コンテナーのダッシュボードと [設定] ブレードを開きます。**[設定]** ブレードが開かない場合は、コンテナーのダッシュボードで **[すべての設定]** をクリックします。
+
+2. **[設定]** ブレードで、**[Backup Infrastructure]** (バックアップ インフラストラクチャ)、**[Backup Configuration]** (バックアップ構成) の順にクリックして、**[Backup Configuration]** (バックアップ構成) ブレードを開きます。**[Backup Configuration]** (バックアップ構成) ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。
+
+    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
     コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。関連付けを開始するには、Azure 仮想マシンを検出して登録する必要があります。
 
-## 手順 2. シナリオの選択、ポリシーの設定、保護する項目の定義を行う
-VM をコンテナーに登録する前に、サブスクリプションに追加された新しい仮想マシンが特定されるように検出プロセスを実行してください。このプロセスでは、サブスクリプションに含まれる仮想マシンの一覧を、クラウド サービス名、リージョンなどの追加情報と共に Azure に照会します。
+## 手順 2. バックアップの目標の選択、ポリシーの設定、保護する項目の定義を行う
+
+VM をコンテナーに登録する前に、サブスクリプションに追加された新しい仮想マシンが特定されるように検出プロセスを実行してください。このプロセスでは、サブスクリプションに含まれる仮想マシンの一覧を、クラウド サービス名、リージョンなどの追加情報と共に Azure に照会します。Azure ポータルのシナリオは、Recovery Services コンテナーに何を格納するのかを指しています。ポリシーは、復旧ポイントを作成する頻度と時期のスケジュールです。ポリシーには、復旧ポイントの保持期間も含まれます。
 
 1. 既に Recovery Services コンテナーが開かれている場合は、手順 2. に進みます。Recovery Services コンテナーが開かれていなくても、Azure ポータルが表示されている場合は、ハブ メニューの **[参照]** をクリックします。
 
-    - リソースの一覧で「**Recovery Services**」と入力します。
-    - 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** が表示されたら、それをクリックします。
+  - リソースの一覧で「**Recovery Services**」と入力します。
+  - 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** が表示されたら、それをクリックします。
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
 
     Recovery Services コンテナーの一覧が表示されます。
-
-    - Recovery Services コンテナーの一覧で、コンテナーを選択します。
+  - Recovery Services コンテナーの一覧で、コンテナーを選択します。
 
     選択したコンテナーのダッシュボードが開きます。
 
     ![Open vault blade](./media/backup-azure-vms-first-look-arm/vault-settings.png)
 
-2. コンテナーのダッシュボード メニューで、**[Backup]** をクリックして、[Backup] ブレードを開きます。
+2. コンテナーのダッシュボード メニューの **[Backup]** をクリックして、[Backup] ブレードを開きます。
 
     ![Open Backup blade](./media/backup-azure-vms-first-look-arm/backup-button.png)
 
@@ -114,36 +124,38 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Discover VMs](./media/backup-azure-vms-first-look-arm/discovering-new-vms.png)
 
-3. [Backup] ブレードで、**[シナリオ]** をクリックして [シナリオ] ブレードを開きます。
+3. [Backup] ブレードで、**[Backup goal]** (バックアップの目標) をクリックして、[Backup Goal] (バックアップの目標) ブレードを開きます。
 
-    ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-scenario-one.png)
+    ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
 
-4. [シナリオ] ブレードの **[バックアップの種類]** メニューで **[Azure 仮想マシンのバックアップ]** を選択し、**[OK]** をクリックします。
+4. [Backup Goal] (バックアップの目標) ブレードで、**[Where is your workload running]** (ワークロードの実行場所) を [Azure] に、**[What do you want to backup]** (バックアップ対象) を [仮想マシン] に設定し、**[OK]** をクリックします。
 
-    ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-rs-backup-scenario-two.png)
+    [Backup Goal] (バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
 
-    [シナリオ] ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
+    ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-two.png)
 
-5. [Backup] ブレードで、コンテナーに適用するバックアップ ポリシーを選択し、**[OK]** をクリックします。
+5. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選択し、**[OK]** をクリックします。
 
-    ![Select backup policy](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy.png)
+    ![Select backup policy](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
 
-    既定のポリシーの詳細が一覧表示されます。新しいポリシーを作成する場合は、**[新規作成]** を選択します。バックアップ ポリシーを定義する手順については、「[バックアップ ポリシーの定義](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)」を参照してください。[OK] をクリックすると、バックアップ ポリシーがコンテナーに関連付けられます。次に、コンテナーに関連付ける VM を選択します。
+    既定のポリシーの詳細が一覧表示されます。新しいポリシーを作成する場合は、ドロップダウン メニューの **[新規作成]** を選択します。このドロップダウン メニューでは、スナップショットの作成時刻を午後 7 時などに切り替えることもできます。バックアップ ポリシーを定義する手順については、「[バックアップ ポリシーの定義](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)」を参照してください。**[OK]** をクリックすると、バックアップ ポリシーがコンテナーに関連付けられます。
+
+    次に、コンテナーに関連付ける VM を選択します。
 
 6. 指定したポリシーに関連付ける仮想マシンを選択し、**[選択]** をクリックします。
 
-    ![Select workload](./media/backup-azure-vms-first-look-arm/select-vms-to-backup.png)
+    ![Select workload](./media/backup-azure-vms-first-look-arm/select-vms-to-backup-new.png)
 
-    目的の VM が一覧に表示されない場合は、**[更新]** をクリックします。それでも目的の VM が表示されない場合は、Recovery Services コンテナーと同じ Azure の場所にその VM が存在することを確認します。
+    目的の VM が表示されない場合は、Recovery Services コンテナーと同じ Azure の場所にその VM が存在することを確認します。
 
-7. コンテナーの設定すべてを定義したところで、[Backup] ブレードで、ページの下部にある **[バックアップの有効化]** をクリックします。これにより、ポリシーがコンテナーと VM にデプロイされます。
+7. コンテナーの設定をすべて定義したところで、[Backup] ブレードで、ページの下部にある **[Enable Backup]** (バックアップの有効化) をクリックします。これにより、ポリシーがコンテナーと VM にデプロイされます。
 
-    ![Enable Backup](./media/backup-azure-vms-first-look-arm/enable-backup-settings.png)
+    ![Enable Backup](./media/backup-azure-vms-first-look-arm/enable-backup-settings-new.png)
 
 
 ## 手順 3. 初回バックアップを実行する
 
-バックアップ ポリシーが仮想マシンにデプロイされても、データがバックアップされたわけではありません。既定では、(バックアップ ポリシーで定義されたように) スケジュールされた最初のバックアップが初回バックアップとなります。初回バックアップが実行されるまで、**[バックアップ ジョブ]** ブレードの [前回のバックアップの状態] には、**[警告 (初回のバックアップが保留中)]** と表示されます。
+バックアップ ポリシーが仮想マシンにデプロイされても、データがバックアップされたわけではありません。既定では、(バックアップ ポリシーで定義されたように) スケジュールされた最初のバックアップが初回バックアップとなります。初回バックアップが実行されるまで、**[Backup Jobs]** (バックアップ ジョブ) ブレードの [前回のバックアップの状態] には、**[Warning(initial backup pending)]** (警告 (初回のバックアップが保留中)) と表示されます。
 
 ![Backup pending](./media/backup-azure-vms-first-look-arm/initial-backup-not-run.png)
 
@@ -163,7 +175,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Backup job triggered](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
 
-3. 初回バックアップが完了したことを確認するには、コンテナー ダッシュボードの **[バックアップ ジョブ]** タイルで **[Azure Virtual Machines]** をクリックします。
+3. 初回バックアップが完了したことを確認するには、コンテナー ダッシュボードの **[Backup Jobs]** (バックアップ ジョブ) タイルで **[Azure Virtual Machines]** をクリックします。
 
     ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
 
@@ -197,7 +209,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Weekly backup policy](./media/backup-azure-vms-first-look-arm/backup-policy-weekly.png)
 
-3. 既定では、すべての **[保持期間]** オプションが選択されています。使用しない保持期間のチェック ボックスをオフにします。
+3. 既定では、すべての **[リテンション期間]** オプションが選択されています。使用しない保持期間のチェック ボックスをオフにします。
 
     >[AZURE.NOTE] VM を保護する場合、バックアップ ジョブは 1 日に 1 回実行されます。バックアップが実行される時刻は、どの保持期間でも同じです。
 
@@ -205,7 +217,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
 4. ポリシーのすべてのオプションを設定したら、ブレードの下部にある **[OK]** をクリックします。
 
-    Recovery Services コンテナーの設定が完了した後、新しいポリシーがコンテナーに適用されるように設定されます。「[シナリオの選択、ポリシーの設定、保護する項目の定義を行う](backup-azure-vms-first-look-arm.md#step-2---select-scenario-set-policy-and-define-items-to-protect)」セクションの手順 6 に戻ります。
+    Recovery Services コンテナーの設定が完了した後、新しいポリシーがコンテナーに適用されるように設定されます。「[シナリオの選択、ポリシーの設定、保護する項目の定義を行う](backup-azure-vms-first-look-arm.md#step-2---select-scenario-set-policy-and-define-items-to-protect)」セクションの手順 6. に戻ります。
 
 ## 仮想マシンに VM エージェントをインストールする
 
@@ -235,4 +247,4 @@ VM エージェントが仮想マシンにインストールされると、Azure
 ## 疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

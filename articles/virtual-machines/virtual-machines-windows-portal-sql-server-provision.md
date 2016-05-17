@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure ポータルでの SQL Server 仮想マシンのプロビジョニング | Microsoft Azure"
-	description="Azure リソース マネージャー モードで SQL Server 仮想マシンを作成します。このチュートリアルでは、スクリプトではなく、主にユーザー インターフェイスとツールを使用します。"
+	pageTitle="SQL Server 仮想マシンのプロビジョニング | Microsoft Azure"
+	description="ポータルを使用して Azure で SQL Server 仮想マシンを作成し、接続します。このチュートリアルでは、Resource Manager モードを使用します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="rothja"
@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/22/2016"
+	ms.date="05/06/2016"
 	ms.author="jroth" />
 
 # Azure ポータルでの SQL Server 仮想マシンのプロビジョニング
@@ -22,116 +22,143 @@
 - [ポータル](virtual-machines-windows-portal-sql-server-provision.md)
 - [PowerShell](virtual-machines-windows-ps-sql-create.md)
 
-## 概要
-
-このエンド ツー エンド チュートリアルでは、Azure リソース マネージャー モデルを使ってポータルで Azure 仮想マシンをプロビジョニングし、Azure ギャラリーのテンプレートから SQL Server を構成する方法を示します。
+このエンド ツー エンドのチュートリアルでは、Azure ポータルを使用して、SQL Server を実行する仮想マシンをプロビジョニングする方法について説明します。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
-Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含むイメージがいくつか用意されています。ギャラリーからいずれかの VM イメージを選択すると、わずか数クリックで、Azure 環境に VM をプロビジョニングできます。
+Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含むイメージがいくつか用意されています。わずか数クリックで、ギャラリーからいずれかの SQL VM イメージを選択し、Azure 環境に VM をプロビジョニングできます。
 
 このチュートリアルでは、次のことについて説明します。
 
-- [Azure ポータルに接続し、リソース マネージャーのデプロイメント モデルでギャラリーから SQL VM イメージをプロビジョニングする](#Provision)
+- [ギャラリーから SQL VM イメージを選択する](#select-a-sql-vm-image-from-the-gallery)
+- [VM を構成して作成する](#configure-the-vm)
+- [リモート デスクトップを使用して VM を開く](#open-the-vm-with-remote-desktop)
+- [SQL Server にリモート接続する](#connect-to-sql-server-remotely)
 
-- [仮想マシンと SQL Server の設定を構成する](#ConfigureVM)
-
-- [リモート デスクトップを使って仮想マシンを開く](#Open)
-
-- [別のコンピューターの SQL Server Management Studio を使って SQL Server インスタンスに接続する](#Connect)
-
-- [次のステップ](#Next)
-
-このチュートリアルでは、Azure アカウントを既に取得していることを前提としています。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
-
-## <a id="Provision">Resource Manager デプロイメント モデルでギャラリーから SQL VM イメージをプロビジョニングする
+## ギャラリーから SQL VM イメージを選択する
 
 1. アカウントを使用して [Azure ポータル](https://portal.azure.com)にログインします。
-1. Azure ポータルで **[+新規]** をクリックします。ポータルで **[新規]** ブレードが開きます。SQL Server VM テンプレートは、Marketplace の **[Compute]** グループにあります。
 
-1. **[新規]** ブレードで **[Compute]** をクリックします。
-1. **[Compute]** ブレードですべての種類のリソースを表示するには、**[すべて表示]** をクリックします。<br/>![Azure Compute ブレード](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade.png)<br/>
-1. **[データベース サーバー]** の **[SQL Server]** をクリックすると、SQL Server で使用できるすべてのテンプレートが表示されます。**[データベース サーバー]** を下にスクロールしなければならない場合があります。
+	>[AZURE.NOTE] Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
+
+1. Azure ポータルで、**[新規]** をクリックします。ポータルで **[新規]** ブレードが開きます。SQL Server VM のリソースが、Marketplace の **[Virtual Machines]** グループに表示されます。
+
+1. **[新規]** ブレードで、**[Virtual Machines]** をクリックします。
+1. 利用可能なイメージをすべて表示するには、**[Virtual Machines]** ブレードの **[すべて表示]** をクリックします。
+
+	![Azure Virtual Machines Blade](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade.png)
+
+1. **[データベース サーバー]** の **[SQL Server]** をクリックすると、SQL Server で使用できるすべてのテンプレートが表示されます。**[データベース サーバー]** を見つけるために下へスクロールする必要がある場合があります。
+
+	![Virtual Machine Gallery SQL Images](./media/virtual-machines-windows-portal-sql-server-provision/virtual-machine-gallery-sql-server.png)
+
 1. 	各テンプレートでは、SQL Server のバージョンとオペレーティング システムが示されています。一覧からいずれかのイメージを選択し、詳細を含むブレードを表示します。
-1.	詳細ブレードでは、その仮想マシン イメージの説明が提供され、デプロイ モデルを選択できます。**[デプロイメント モデルの選択]** で **[リソース マネージャー]** を選択して **[作成]** をクリックします。<br/>![Azure Compute ブレード](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)<br/>
+1.	詳細ブレードでは、その仮想マシン イメージの説明が提供され、デプロイ モデルを選択できます。**[デプロイ モデルの選択]** で **[リソース マネージャー]** を選択していることを確認し、**[作成]** をクリックします。
 
-## <a id="ConfigureVM">VM を構成する
+	![Create SQL VM with Resource Manager](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
+
+## VM を構成する
 Azure ポータルには、SQL Server 仮想マシンを構成するための 5 つのブレードがあります。
 
-1.	基本設定を構成する
-1.	仮想マシンのサイズを選択する
-1.	仮想マシンの設定を構成する
-1.	SQL Server を構成する
-1.	概要を確認する
+| 手順 | 説明 |
+|---------------------|-------------------------------|
+| **基本** | [基本設定を構成する](#1-configure-basic-settings) |
+| **サイズ** | [仮想マシンのサイズを選択する](#2-choose-virtual-machine-size) |
+| **設定** | [オプション機能を構成する](#3-configure-optional-features) |
+| **SQL Server の設定** | [SQL Server の設定を構成する](#4-configure-sql-server-settings) |
+| **まとめ** | [概要を確認する](#5-review-the-summary) |
 
 ## 1\.基本設定を構成する
-**[仮想マシンの作成]** ブレードの **[基本]** では、次の情報を入力します。
+**[基本]** ブレードで次の情報を指定します。
 
-* 一意の**仮想マシン名**。
-* **[ユーザー名]** ボックスには、コンピューターのローカル管理者アカウントの一意のユーザー名を入力します。このアカウントは、SQL Server sysadmin 固定サーバー ロールのメンバーにもなります。
-* **[パスワード]** ボックスには、強力なパスワードを入力します。
+* 仮想マシンの一意の**名前**を入力します。
+* コンピューターのローカル管理者アカウントの**ユーザー名**を入力します。このアカウントは、SQL Server sysadmin 固定サーバー ロールのメンバーにもなります。
+* 強力な**パスワード**を指定します。
 * 複数のサブスクリプションがある場合は、作成しようとしている VM に対してサブスクリプションが正しいことを確認します。
-* **[リソース グループ]** ボックスには、リソース グループの名前を入力します。または、既存のリソース グループを使用する場合は、**[既存のものを選択]** をクリックします。リソース グループとは、Azure の関連するサービスのコレクションです。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。**[場所]** が要件に合った正しいものであることを確認します。
-* **[OK]** をクリックして設定を保存します。<br/>
+* **[リソース グループ]** ボックスに、新しいリソース グループの名前を入力します。または、既存のリソース グループを使用する場合は、**[既存のものを選択]** をクリックします。リソース グループとは、Azure の関連リソース (仮想マシン、ストレージ アカウント、仮想ネットワークなど) のコレクションです。
+>[AZURE.NOTE] Azure における SQL Server のデプロイについてテストまたは調査のみを実施する場合は、新しいリソース グループを使用すると便利です。テストが終わったら、リソース グループ全体を削除できます。これにより、SQL VM を含め、そのリソース グループに関連付けられているすべてのリソースが削除されます。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
+* このデプロイの**場所**を選択します。
+* **[OK]** をクリックして設定を保存します。
 
->![SQL ARM の基本](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-basic.png) <br/>
+	![SQL Basics Blade](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-basic.png)
 
 ## 2\.仮想マシンのサイズを選択する
-**[仮想マシンの作成]** ブレードの **[サイズ]** で、仮想マシンのサイズを選びます。Azure ポータルでは、推奨サイズが表示されます。仮想マシン サイズの詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。サイズは、選択したテンプレートに基づきます。サイズにより、VM の実行にかかる毎月のコストが見積もられます。サーバーの VM サイズを選択します。SQL Server VM のサイズに関する考慮事項については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
+この**サイズ**設定の手順では、**[サイズの選択]** ブレードで仮想マシンのサイズを選択します。推奨されるマシンのサイズが最初に表示されます。サイズは、選択したテンプレートに基づきます。VM の実行にかかる毎月のコストも見積もられます。
 
-## 3\.仮想マシンの設定を構成する
-**[仮想マシンの作成]** ブレードの **[設定]** で、仮想マシンの Azure Storage、ネットワーク、監視を構成します。
+![SQL VM Size Options](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
-- **[Storage]** で、ディスクの種類を指定します。運用環境のワークロードには Premium Storage をお勧めします。
+運用環境のワークロードには、[Premium Storage](../storage/storage-premium-storage.md) をサポートする仮想マシンのサイズを選択することをお勧めします。そのレベルのパフォーマンスが必要でない場合は、**[すべて表示]** ボタンを使用して、マシン サイズのオプションをすべて表示します。たとえば、開発またはテスト環境用には、小さいマシン サイズを使用することができます。
 
->[AZURE.NOTE] 既定では、Premium Storage が有効になります。Premium Storage をサポートするサイズに、コンピューターのサイズが自動的に変更されます。Premium Storage を無効にした場合は、以前のマシン サイズの選択が使用されます。
+>[AZURE.NOTE] 仮想マシン サイズの詳細については、[仮想マシンのサイズ](virtual-machines-windows-sizes.md)に関するページを参照してください。SQL Server VM のサイズに関する考慮事項については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
 
-- **[ストレージ アカウント]** では、自動的にプロビジョニングされたストレージ アカウント名をそのまま使用するか、**[ストレージ アカウント]** をクリックして既存のアカウントを選択し、ストレージ アカウントの種類を構成します。既定では、ローカル冗長ストレージで新しいストレージ アカウントが作成されます。
+マシン サイズを選択し、**[選択]** をクリックします。
 
-- **[ネットワーク]** では、機能に対して自動的に設定される値を使用するか、各機能をクリックして **[仮想ネットワーク]**、**[サブネット]**、**[パブリック IP アドレス]**、および **[ネットワーク セキュリティ グループ]** を構成します。既定では、これらの値は自動的に構成されます。
+## 3\.オプション機能を構成する
+**[設定]** ブレードで、仮想マシン用に Azure Storage、ネットワーク、監視を構成します。
+
+- **[Storage]** で、**ディスクの種類**として Standard または Premium (SSD) を指定します。運用環境のワークロードには Premium Storage をお勧めします。
+
+>[AZURE.NOTE] Premium Storage をサポートしていないマシン サイズで Premium (SSD) を選択した場合は、Premium Storage をサポートするいずれかのマシン サイズに変更されます。
+
+- **[ストレージ アカウント]** で、自動的にプロビジョニングされたストレージ アカウント名をそのまま使用するか、**[ストレージ アカウント]** をクリックして既存のアカウントを選択し、ストレージ アカウントの種類を構成します。既定では、ローカル冗長ストレージで新しいストレージ アカウントが作成されます。ストレージ オプションの詳細については、「[Azure Storage のレプリケーション](../storage/storage-redundancy.md)」を参照してください。
+
+- **[ネットワーク]** で、機能に対して自動的に設定される値を使用するか、各機能をクリックして **[仮想ネットワーク]**、**[サブネット]**、**[パブリック IP アドレス]**、および **[ネットワーク セキュリティ グループ]** を構成します。このチュートリアルでは、既定値をそのまま使用します。
 
 - **[監視]** は、既定では VM に指定されているものと同じストレージ アカウントで有効になります。これらの設定はここで変更できます。
 
 - **[可用性セット]** で、可用性セットを指定します。このチュートリアルでは、**[なし]** を選択します。SQL AlwaysOn 可用性グループを設定する場合は、仮想マシンを再作成しないように可用性を構成します。詳細については、「[Virtual Machines の可用性管理](virtual-machines-windows-manage-availability.md)」を参照してください。
 
-## 4\.SQL Server を構成する
-**[仮想マシンの作成]** ブレードの **[SQL Server の構成]** で、SQL Server の個々の設定と最適化を構成します。SQL Server について構成できる設定は次のとおりです。
+これらの設定の構成が済んだら、**[OK]** をクリックします。
 
-- 接続
-- 認証
-- ストレージの最適化
-- Patching
-- バックアップ
-- Key Vault の統合
+## 4\.SQL Server の設定を構成する
+**[SQL Server の設定]** ブレードで、SQL Server の個々の設定と最適化を構成します。SQL Server について構成できる設定は次のとおりです。
+
+| 設定 |
+|---------------------|
+| [接続](#connectivity) |
+| [認証](#authentication) |
+| [ストレージの構成](#storage-configuration) |
+| [自動修正](#automated-patching) |
+| [自動化されたバックアップ](#automated-backup) |
+| [Azure Key Vault の統合](#azure-key-vault-integration) |
 
 ### 接続
-**[SQL 接続]** で **[パブリック (インターネット)]** を指定して、インターネット上のコンピューターまたはサービスから SQL Server に接続できるようにします。このオプションを選択すると、ポート 1433 のトラフィックを許可するように、ファイアウォールとネットワーク セキュリティ グループが自動的に構成されます。<br/>![SQL ARM の接続](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-connectivity-alt.png)<br/>
+**[SQL 接続]** で、この VM 上の SQL Server インスタンスに必要なアクセスの種類を指定します。このチュートリアルでは、**[パブリック (インターネット)]** を選択して、インターネット上のマシンまたはサービスから SQL Server に接続できるようにします。このオプションを選択すると、ポート 1433 のトラフィックを許可するように、ファイアウォールとネットワーク セキュリティ グループが自動的に構成されます。
 
-インターネット経由で SQL Server に接続するには、SQL Server 認証を有効にする必要もあります。
+![SQL Connectivity Options](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-connectivity-alt.png)
 
->[AZURE.NOTE]セキュリティのため、ネットワーク セキュリティ グループを使用してソース ポートを制限します。詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)」を参照してください。
+インターネット経由で SQL Server に接続するには、次のセクションで説明する SQL Server 認証を有効にする必要もあります。
 
-インターネット経由によるデータベース エンジンへの自動接続を有効にしない場合は、次のいずれかのオプションを選択します。
+>[AZURE.NOTE] クライアントの特定のポートから SQL Server に接続する場合は、その発信元ポートへの接続を制限できます。これは、VM を作成した後に、ネットワーク セキュリティ グループを編集することで実行できます。詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)」を参照してください。
+
+インターネット経由によるデータベース エンジンへの接続を有効にしない場合は、次のいずれかのオプションを選択します。
+
 - **ローカル (VM 内のみ)**: VM 内から SQL Server への接続のみを許可します。
-- **プライベート (Virtual Network 内)**: 同じ仮想ネットワーク内のコンピューターまたはサービスから SQL Server への接続を許可します。
+- **プライベート (Virtual Network 内)**: 同じ仮想ネットワーク内のマシンまたはサービスから SQL Server への接続を許可します。
 
+一般的に、シナリオで許容される最も制限の厳しい接続を選択すると、セキュリティが向上します。ただし、ネットワーク セキュリティ グループの規則と SQL 認証または Windows 認証を使用すると、すべてのオプションをセキュリティで保護できます。
 
-**[ポート]** の既定値は 1433 です。別のポート番号を指定できます。詳細については、「[SQL Server 仮想マシンへの接続 (リソース マネージャー) | Microsoft Azure](virtual-machines-windows-sql-connect.md)」を参照してください。
-
-
+**[ポート]** の既定値は 1433 です。別のポート番号を指定できます。詳細については、[Microsoft Azure における SQL Server 仮想マシンへの接続 (Resource Manager)](virtual-machines-windows-sql-connect.md) に関するページを参照してください。
 
 ### 認証
 SQL Server 認証が必要な場合は、**[SQL 認証]** の **[有効]** をクリックします。
 
-<br/>![SQL ARM の認証](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-authentication.png) <br/>
-
-
-SQL Server 認証を有効にする場合は、**[ログイン名]** と **[パスワード]** を指定します。このユーザー名が、SQL Server 認証ログインおよび sysadmin 固定サーバー ロールのメンバーになります。認証モードの詳細については、「[認証モードの選択](http://msdn.microsoft.com/library/ms144284.aspx)」を参照してください。既定では、SQL Server 認証は有効になりません。その場合、仮想マシンのローカル管理者は SQL Server インスタンスに接続できます。
+![SQL Server 認証](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-authentication.png)
 
 >[AZURE.NOTE] インターネット経由で SQL Server にアクセスする場合 (つまりパブリック接続オプション)、ここで SQL 認証を有効にする必要があります。SQL Server へのパブリック アクセスでは、SQL 認証を使う必要があります。
 
-### ストレージの最適化
-ストレージの要件を指定するには、**[ストレージの構成]** をクリックします。1 秒間の入力/出力操作数 (IOP)、スループット (MB/秒)、およびストレージの合計サイズで、要件を指定できます。スライド スケールを使用してこれらを構成します。これらの要件に基づいて、ディスクの数が自動的に計算されます。
+SQL Server 認証を有効にする場合は、**[ログイン名]** と **[パスワード]** を指定します。このユーザー名が、SQL Server 認証ログインおよび sysadmin 固定サーバー ロールのメンバーになります。認証モードの詳細については、「[認証モードの選択](http://msdn.microsoft.com/library/ms144284.aspx)」を参照してください。
+
+SQL Server 認証を有効にしない場合は、VM のローカル管理者アカウントを使用して SQL Server インスタンスに接続できます。
+
+### ストレージの構成
+ストレージの要件を指定するには、**[ストレージの構成]** をクリックします。
+
+![SQL Storage Configuration](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-storage.png)
+
+>[AZURE.NOTE] Standard Storage を選択した場合は、このオプションは使用できません。ストレージの自動最適化は、Premium Storage でのみ使用できます。
+
+1 秒間の入力/出力操作数 (IOP)、スループット (MB/秒)、およびストレージの合計サイズで、要件を指定できます。スライド スケールを使用してこれらを構成します。これらの要件に基づいて、ディスクの数が自動的に計算されます。
 
 既定では、Azure はストレージを 5000 IOP、200 MB、1 TB の記憶域容量に最適化します。ワークロードに基づいて、これらのストレージ設定を変更できます。**[ストレージ最適化対象]** で、次のいずれかを選択します。
 
@@ -139,32 +166,34 @@ SQL Server 認証を有効にする場合は、**[ログイン名]** と **[パ�
 - **[トランザクション処理]** は、従来のデータベース OLTP ワークロード用にストレージを最適化します。
 - **[データ ウェアハウジング]** は、分析とレポートのワークロード用にストレージを最適化します。
 
-次の図は、[ストレージの構成] ブレードを示しています。<br/>![SQL ARM のストレージ](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-storage.png)<br/>
+>[AZURE.NOTE] スライダーの上限値は、選択した仮想マシンのサイズによって異なります。
 
->[AZURE.NOTE] ストレージ構成の制限は、仮想マシンのサイズによって異なります。詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。
+### 自動修正
+**[自動修正]** は、既定で有効になります。自動修正を有効にすると、Azure は SQL Server とオペレーティング システムに修正プログラムを自動的に適用します。メンテナンス ウィンドウの曜日、時刻、および期間を指定します。Azure は、修正プログラムの適用をメンテナンス ウィンドウで実行します。メンテナンス ウィンドウのスケジュールでは、VM のロケールが時刻に使用されます。SQL Server とオペレーティング システムを自動的に修正しない場合は、**[無効]** をクリックします。
 
-### Patching
-**[SQL 自動修正]** は、既定で有効になります。自動修正を有効にすると、Azure は SQL Server とオペレーティング システムに修正プログラムを自動的に適用します。メンテナンス ウィンドウの曜日、時刻、および期間を指定します。Azure は、修正プログラムの適用をメンテナンス ウィンドウで実行します。メンテナンス ウィンドウのスケジュールでは、VM のロケールが時刻に使用されます。SQL Server とオペレーティング システムを自動的に修正しない場合は、**[無効]** をクリックします。
-
-<br/>![SQL ARM の修正](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-patching.png) <br/>
+![SQL Automated Patching](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-patching.png)
 
 詳細については、「[Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-classic-sql-automated-patching.md)」を参照してください。
 
-### バックアップ
-**[SQL 自動バックアップ]** では、すべてのデータベースの自動データベース バックアップを有効にできます。SQL の自動バックアップを有効にするときは、以下の構成を行います。
+### 自動バックアップ
+**[自動バックアップ]** では、すべてのデータベースの自動データベース バックアップを有効にできます。既定では、自動バックアップは無効です。
+
+SQL の自動バックアップを有効にするときは、以下の構成を行います。
 
 - バックアップ保有期間の日数
 - バックアップに使用するストレージ アカウント
-- バックアップを暗号化するかどうか。バックアップを暗号化するには、**[有効]** をクリックします。自動バックアップを暗号化する場合は、パスワードを指定します。Azure は、バックアップを暗号化するための証明書を作成し、指定されたパスワードを使用してその証明書を保護します。
+- バックアップの暗号化オプション
 
-<br/>![SQL ARM のバックアップ](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup.png) <br/>
+バックアップを暗号化するには、**[有効]** をクリックします。**パスワード**を指定します。Azure は、バックアップを暗号化するための証明書を作成し、指定されたパスワードを使用してその証明書を保護します。
+
+![SQL Automated Backup](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup.png)
 
  詳細については、「[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-sql-automated-backup.md)」をご覧ください。
 
-### Key Vault の統合
-暗号化のためにセキュリティ シークレットを Azure に格納するには、**[Azure Key Vault の統合]**、**[有効]** の順にクリックします。
+### Azure Key Vault の統合
+暗号化のためのセキュリティ シークレットを Azure に格納するには、**[Azure Key Vault の統合]**、**[有効]** の順にクリックします。
 
-<br/>![SQL ARM の Azure Key Vault 統合](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-akv.png) <br/>
+![SQL Azure Key Vault Integration](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-akv.png)
 
 次の表では、Azure Key Vault の統合の構成に必要なパラメーターを示します。
 
@@ -175,34 +204,47 @@ SQL Server 認証を有効にする場合は、**[ログイン名]** と **[パ�
 | **プリンシパル シークレット**|Azure Active Directory サービスのプリンシパル シークレット。クライアント シークレットとも呼ばれます。 | 9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=|
 |**資格情報名**|**資格情報名**: AKV 統合により SQL Server 内に資格情報が作成されます。VM に Key Vault にアクセスする許可が与えられます。この資格情報の名前を選択します。| mycred1|
 
-詳細については、「[Azure VM で SQL Server 用に Azure Key Vault 統合を構成する](virtual-machines-windows-classic-ps-sql-keyvault.md)」を参照してください。
+詳細については、[Azure VM 上の SQL Server 向けに Azure Key Vault 統合を構成する方法](virtual-machines-windows-classic-ps-sql-keyvault.md)に関するページを参照してください。
+
+SQL Server の設定の構成が完了したら、**[OK]** をクリックします。
 
 ## 5\.概要を確認する
-概要を確認して **[OK]** をクリックし、この VM に対して指定した SQL Server、リソース グループ、リソースを作成します。Azure ポータルでデプロイメントを監視できます。画面の上部にある **[通知]** ボタンをクリックすると、デプロイの基本的な状態が表示されます。
+**[概要]** ブレードで概要を確認して **[OK]** をクリックし、この VM に対して指定した SQL Server、リソース グループ、リソースを作成します。
 
-##<a id="Open">リモート デスクトップを使用して仮想マシンを開き、セットアップを完了する
-次の手順に従い、リモート デスクトップを使用して仮想マシンを開きます。
+Azure ポータルでデプロイメントを監視できます。画面の上部にある **[通知]** ボタンをクリックすると、デプロイの基本的な状態が表示されます。
 
-1.	Azure VM を作成すると、Azure ダッシュボードに VM のアイコンが表示されます。アイコンをクリックして VM に関する情報を表示します。
-1.	VM ブレードで、上部の **[接続]** をクリックします。ブラウザーで VM の .rdp ファイルがダウンロードされます。.rdp ファイルを開きます。
-1.	リモート デスクトップ接続で、このリモート接続の発行元を識別できないことが通知され、それでも接続するかどうかの確認を求められます。**[接続]** をクリックします。
-1.	**[Windows セキュリティ]** ダイアログで、**[別のアカウントを使用]** をクリックします。**[ユーザー名]** に、VM の構成時に指定した <machine name><user name> を入力します。
+>[AZURE.NOTE] デプロイの時間について参考になるように、既定の設定で SQL VM を米国東部リージョンにデプロイしました。これには完了までに合計 26 分間かかりました。ただし、リージョンや選択した設定によっては、デプロイに必要な時間が変わる可能性があります。
 
-SQL Server 仮想マシンに接続した後は、SQL Server Management Studio を起動し、ローカル管理者の資格情報を使用して Windows 認証で接続できます。これにより、必要に応じて、プロビジョニング後にファイアウォールの設定または SQL Server の構成設定を変更することもできます。
+## リモート デスクトップを使用して VM を開く
 
-##<a id="Connect">インターネット経由で SQL Server に接続する
+リモート デスクトップを使用して仮想マシンに接続するには、次の手順に従います。
 
-インターネットから SQL Server データベース エンジンに接続する場合は、ファイアウォールの構成、SQL Server 認証の有効化、ネットワーク セキュリティ グループの構成など、いくつかの手順が必要です。ポート 1433 の TCP トラフィックを許可するネットワーク セキュリティ グループの規則が必要です。
+1. Azure VM を作成すると、Azure ダッシュボードに VM のアイコンが表示されます。既存の仮想マシンでもアイコンを見つけることができます。新しい SQL 仮想マシンをクリックしてその詳細を表示します。
+1. **[仮想マシン]** ブレードの上部にある **[接続]** をクリックします。
+1. ブラウザーで VM の .rdp ファイルがダウンロードされます。.rdp ファイルを開きます。![Remote Desktop to SQL VM](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-remote-desktop.png)
+1. リモート デスクトップ接続で、このリモート接続の発行元が識別できないことが通知されます。**[接続]** をクリックして続行します。
+1. **[Windows セキュリティ]** ダイアログで、**[別のアカウントを使用]** をクリックします。
+1. **[ユーザー名]** に、**<user name>** を入力します。この <user name> は、VM の構成時に指定したユーザー名です。先頭にバックスラッシュを追加する必要があります。
+1. この VM 用に構成した**パスワード**を入力し、**[OK]** をクリックして接続します。
+1. 別の **[リモート デスクトップ接続]** ダイアログ ボックスが表示され、接続するかどうかを確認するメッセージが表示されたら、**[はい]** をクリックします。
 
-ポータルで Resource Manager を使用して SQL Server 仮想マシン イメージをプロビジョニングする場合は、SQL 接続オプションで **[パブリック]** を選ぶと、これらの手順が自動的に実行され、SQL Server 認証が有効になりました。ただし、インターネット経由で SQL Server インスタンスにアクセスするには、他にいくつかの手順を完了する必要があります。
+SQL Server 仮想マシンに接続した後は、SQL Server Management Studio を起動し、ローカル管理者の資格情報を使用して Windows 認証で接続できます。SQL Server 認証を有効にした場合は、プロビジョニングの間に構成した SQL のログインとパスワードを使用して SQL 認証で接続することもできます。
 
->[AZURE.NOTE] プロビジョニングの間に [パブリック] を選択しなかった場合、インターネット経由で SQL Server インスタンスにアクセスするには、追加の手順が必要です。詳細については、「[Azure での SQL Server 仮想マシンへの接続 (リソース マネージャー) | Microsoft Azure](virtual-machines-windows-sql-connect.md)」を参照してください。
+マシンにアクセスすると、要件に基づいてマシンと SQL Server の設定を直接変更することができます。たとえば、ファイアウォールの設定を構成したり、SQL Server の構成設定を変更したりできます。
 
-ローカルにのみ、または Virtual Network 内からのみ、仮想マシンにアクセスする場合は、次の手順は必要ありません。
+## SQL Server にリモート接続する
+
+このチュートリアルでは、仮想マシンと **SQL Server 認証**に**パブリック** アクセスを選択しています。これらの設定により、インターネット経由による任意のクライアントから SQL Server への接続を許可するように仮想マシンが自動的に構成されています (適切な SQL ログインを持っている場合)。
+
+>[AZURE.NOTE] プロビジョニングの間に [パブリック] を選択しなかった場合、インターネット経由で SQL Server インスタンスにアクセスするには、追加の手順が必要です。詳細については、[SQL Server 仮想マシンへの接続](virtual-machines-windows-sql-connect.md)に関するページを参照してください。
+
+次のセクションでは、インターネット経由で別のコンピューターから VM の SQL Server インスタンスに接続する方法を示します。
 
 > [AZURE.INCLUDE [VM リソース マネージャーで SQL Server に接続する](../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
-##<a id="Next"> 次のステップ
-Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
+## 次のステップ
+Azure での SQL Server の使用に関するその他の情報については、[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) に関するページと[よく寄せられる質問](virtual-machines-windows-sql-server-iaas-faq.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+Azure Virtual Machines 上の SQL Server のビデオの概要については、「[Azure VM is the best platform for SQL Server 2016 (Azure VM は SQL Server 2016 に最適なプラットフォーム)](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)」をご覧ください。
+
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="get-started-article"
-    ms.date="01/26/2016"
+    ms.date="05/06/2016"
     ms.author="sethm"/>
 
 # Service Bus のトピックとサブスクリプションの使用方法
@@ -28,13 +28,11 @@
 
 ## Service Bus を使用するためのアプリケーションの構成
 
-Service Bus を使用するアプリケーションを作成するときには、Service Bus アセンブリに対する参照を追加して、対応する名前空間を含める必要があります。
+Service Bus を使用するアプリケーションを作成するときには、Service Bus アセンブリに対する参照を追加して、対応する名前空間を含める必要があります。これを行う最も簡単な方法は、適切な NuGet パッケージをダウンロードすることです。
 
 ## Service Bus NuGet パッケージの取得
 
-[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。
-
-アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
+[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、必要な Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
 
 1.  ソリューション エクスプローラーで **[参照]** を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 2.  "Service Bus" を検索して、**[Microsoft Azure Service Bus]** 項目を選択します。**[インストール]** をクリックし、インストールが完了したら、次のダイアログ ボックスを閉じます。
@@ -47,14 +45,14 @@ Service Bus を使用するアプリケーションを作成するときには�
 
 Service Bus では、接続文字列を使用してエンドポイントと資格情報を格納します。接続文字列は、ハードコーディングするのではなく、構成ファイルの中で指定します。
 
-- Azure Cloud Services を使用するときには、Azure サービス構成システム (.csdef ファイルと .cscfg ファイル) を使用して接続文字列を格納することをお勧めします。
+- Azure サービスを使用するときには、Azure サービス構成システム (.csdef ファイルと .cscfg ファイル) を使用して接続文字列を格納することをお勧めします。
 - Azure Websites または Azure Virtual Machines を使用する場合には、.NET 構成システム (Web.config ファイルなど) を使用して接続文字列を格納することをお勧めします。
 
 いずれの場合も、この記事で後ほど説明する `CloudConfigurationManager.GetSetting` メソッドを使用して接続文字列を取得できます。
 
-### Cloud Services を使用する場合の接続文字列の構成
+### 接続文字列の構成
 
-サービス構成メカニズムは、Azure Cloud Services プロジェクトに特有のものであり、これを使用すると、アプリケーションを再デプロイしなくても [Azure クラシック ポータル][]から構成設定を動的に変更できます。たとえば、次の例に示すように、サービス定義 (****.csdef**) ファイルに `Setting` ラベルを追加します。
+サービス構成メカニズムを使用すると、アプリケーションを再デプロイしなくても [Azure クラシック ポータル][]から構成設定を動的に変更できます。たとえば、次の例に示すように、サービス定義 (****.csdef**) ファイルに `Setting` ラベルを追加します。
 
 ```
 <ServiceDefinition name="Azure1">
@@ -107,7 +105,7 @@ Websites または Virtual Machines を使用する場合には、.NET 構成シ
 次の例では、Azure の `CloudConfigurationManager` クラスと接続文字列を使用して `NamespaceManager` オブジェクトを作成します。この接続文字列は、Service Bus 名前空間のベース アドレスと、それを管理する権限を備えた適切な SAS 資格情報で構成されます。この接続文字列は、次のようになっています。
 
 ```
-Endpoint=sb://<yourServiceNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourKey
+Endpoint=sb://<yourNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<yourKey>
 ```
 
 前のセクションの構成設定であれば、次の例を使用します。
@@ -126,7 +124,7 @@ if (!namespaceManager.TopicExists("TestTopic"))
 }
 ```
 
-[CreateTopic](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createtopic.aspx) メソッドにはオーバーロードがあり、トピックのプロパティを調整できるようになっています。たとえば、トピックに送信されるメッセージに対して既定の有効期間 (TTL) 値が適用されるように設定することができます。このような設定は、[TopicDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.aspx) クラスを使用して適用します。次の例では、名前が **TestTopic**、最大サイズが 5 GB、既定のメッセージ TTL が 1 分であるトピックを作成する方法を示します。
+[CreateTopic](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createtopic.aspx) メソッドにはオーバーロードがあり、トピックのプロパティを設定できるようになっています。たとえば、トピックに送信されるメッセージに対して既定の有効期間 (TTL) 値が適用されるように設定することができます。このような設定は、[TopicDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.aspx) クラスを使用して適用します。次の例では、名前が **TestTopic**、最大サイズが 5 GB、既定のメッセージ TTL が 1 分であるトピックを作成する方法を示します。
 
 ```
 // Configure Topic Settings.
@@ -151,7 +149,7 @@ if (!namespaceManager.TopicExists("TestTopic"))
 
 ## サブスクリプションを作成する
 
-トピック サブスクリプションは、[`NamespaceManager`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスでも作成できます。サブスクリプションを指定し、サブスクリプションの仮想キューに渡すメッセージを制限するフィルターを設定することができます。
+トピック サブスクリプションは、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスを使用して作成することもできます。サブスクリプションを指定し、サブスクリプションの仮想キューに渡すメッセージを制限するフィルターを設定することができます。
 
 ### 既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 
@@ -240,7 +238,7 @@ Service Bus トピックでは、[最大 256 KB のメッセージ](service-bus-
 
 ## サブスクリプションからメッセージを受信する方法
 
-サブスクリプションからメッセージを受信する推奨の方法は、[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) オブジェクトの使用です。[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) オブジェクトを使用する方法です。オブジェクトには、2 つの異なる動作モードがあります。[*ReceiveAndDelete* と *PeekLock*](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) です。
+サブスクリプションからメッセージを受信する推奨の方法は、[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) オブジェクトの使用です。[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) オブジェクトには、2 つの動作モードがあります。[*ReceiveAndDelete* と *PeekLock*](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) です。
 
 **ReceiveAndDelete** モードを使用する場合、受信が 1 回ずつの動作になります。つまり、Service Bus はサブスクリプション内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。**ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
@@ -313,18 +311,20 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 これで、Service Bus のトピックとサブスクリプションの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 -   [キュー、トピック、およびサブスクリプション][]
+-   [トピック フィルターのサンプル][]
 -   [SqlFilter][] の API のリファレンス
 -   Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: [Service Bus のブローカー メッセージングに関する .NET チュートリアル][]。
--   Service Bus のサンプル: [Azure のサンプル][]からダウンロードするか、「[概要](service-bus-samples.md)」を参照してください。
+-   Service Bus のサンプル: [Azure のサンプル][]からダウンロードするか、[概要](service-bus-samples.md)に関するページを参照してください。
 
   [Azure クラシック ポータル]: http://manage.windowsazure.com
 
   [7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
 
   [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
+  [トピック フィルターのサンプル]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
   [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [Service Bus のブローカー メッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->
