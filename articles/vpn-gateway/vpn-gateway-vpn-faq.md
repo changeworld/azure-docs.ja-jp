@@ -250,6 +250,12 @@ Azure VPN Gateway 経由でトラフィックを通過させることは可能�
 
 はい、これはサポートされています。詳細については、[共存する ExpressRoute とサイト間 VPN の接続の構成](../expressroute/expressroute-howto-coexist-classic.md)を参照してください。
 
+## BGP
+
+[AZURE.INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)]
+
+
+
 ## クロスプレミス接続と VM
 
 ### 仮想ネットワーク内に仮想マシンが存在し、クロスプレミス接続が使用できる場合、その VM にはどのように接続できますか。
@@ -273,4 +279,4 @@ Azure VPN Gateway 経由でトラフィックを通過させることは可能�
 
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

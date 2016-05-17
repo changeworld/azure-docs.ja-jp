@@ -88,7 +88,7 @@ AclLevel プロパティには、次の値が表示されます。
 
 		Add-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
 
-これで、ユーザーは、Azure RemoteApp クライアントにアプリケーションが表示され、そのアプリケーションに接続できるようになります。
+これで、ユーザーの Azure RemoteApp クライアントにアプリケーションが表示され、ユーザーがそのアプリケーションに接続できるようになります。
 
 ## ユーザーからアプリケーションを削除する方法
 
@@ -102,4 +102,4 @@ AclLevel プロパティには、次の値が表示されます。
 ## プレビュー機能を試す機会がなかった場合
 プレビューにまだ参加していない方は、こちらの[アンケート](http://www.instant.ly/s/AY83p)を使って利用を申し込んでください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -34,7 +34,7 @@
 
 ## 完全修飾 Azure SQL サーバー名を取得します。
 
-データベースに接続するには、接続先のデータベースを含むサーバーの完全名が必要です (***servername**.database.windows.net*)。
+データベースに接続するには、接続先のデータベースを含むサーバーの完全名が必要です (****servername**.database.windows.net*)。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. 接続先のデータベースを探します。
@@ -83,4 +83,4 @@ sqlcmd の詳細については、[sqlcmd のドキュメント](https://msdn.mi
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

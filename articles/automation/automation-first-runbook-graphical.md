@@ -5,23 +5,20 @@
     documentationCenter=""
     authors="mgoedtel"
     manager="jwhit"
-    editor=""/>
-
+    editor=""
+	keywords="Runbook, Runbook テンプレート, Runbook Automation, Azure Runbook"/>
 <tags
     ms.service="automation"
     ms.workload="tbd"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="04/21/2016"
+    ms.date="05/10/2016"
     ms.author="magoedte;bwren"/>
 
 # 初めてのグラフィカルな Runbook
 
-> [AZURE.SELECTOR]
-- [Graphical](automation-first-runbook-graphical.md)
-- [PowerShell Workflow](automation-first-runbook-textual.md)
-- [PowerShell](automation-first-runbook-textual-PowerShell.md)
+> [AZURE.SELECTOR] - [Graphical](automation-first-runbook-graphical.md) - [PowerShell Workflow](automation-first-runbook-textual.md) - [PowerShell](automation-first-runbook-textual-PowerShell.md)
 
 このチュートリアルでは、Azure Automation で[グラフィカルな Runbook](automation-runbook-types.md#graphical-runbooks) を作成する手順を説明します。簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を説明します。その後、実際に Azure リソースを管理するように Runbook を変更し、ここでは Azure 仮想マシンを開始します。そして、Runbook のパラメーターおよび条件付きリンクを追加することによって、Runbook をいっそう堅牢にします。
 
@@ -38,20 +35,19 @@
 
 最初に、*Hello World* というテキストを出力する簡単な Runbook を作成します。
 
-1.	Azure ポータルで、Automation アカウントを開きます。
-Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。既に資産がいくつかあります。これらのほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。[前提条件](#prerequisites)で説明されている資格情報資産も必要です。
+1.	Azure ポータルで、Automation アカウントを開きます。Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。既に資産がいくつかあります。これらのほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。[前提条件](#prerequisites)で説明されている資格情報資産も必要です。
 2.	**[Runbook]** タイルをクリックして、Runbook の一覧を開きます。<br> ![Runbook の制御](media/automation-first-runbook-graphical/runbooks-control.png)
 3.	**[Runbook の追加]** ボタンをクリックし、次に **[新しい Runbook の作成]** をクリックして、新しい Runbook を作成します
 4.	Runbook の名前を *MyFirstRunbook-Graphical* に設定します。
-5.	ここでは[グラフィカルな Runbook](automation-graphical-authoring-intro.md) を作成するので、**[Runbook の種類]** では **[グラフィカル]** を選択します。<br>![新しい Runbook](media/automation-first-runbook-graphical/new-runbook.png)<br>
+5.	ここでは[グラフィカルな Runbook](automation-graphical-authoring-intro.md) を作成するため、**[Runbook の種類]** では **[グラフィカル]** を選択します。<br>![新しい Runbook](media/automation-first-runbook-graphical/new-runbook.png)<br>
 6.	**[作成]** をクリックして Runbook を作成し、グラフィカル エディターを開きます。
 
 ## 手順 2 - Runbook にアクティビティを追加する
 
 エディターの左側にあるライブラリ コントロールでは、Runbook に追加するアクティビティを選択できます。Runbook のテキストを出力する **Write-Output** コマンドレットを追加します。
 
-1.	ライブラリ コントロールの検索ボックスをクリックして、「**Write-output**」と入力します。下に検索結果が表示されます。 <br> ![Microsoft.PowerShell.Utility](media/automation-first-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
-2.	一覧の一番下までスクロールします。**Write-output** を右クリックして **[キャンバスに追加]** を選択するか、コマンドレットの横にある省略記号ボタンをクリックして **[キャンバスに追加]** を選択します。
+1.	ライブラリ コントロールの検索ボックスをクリックして、「**Write-Output**」と入力します。下に検索結果が表示されます。 <br> ![Microsoft.PowerShell.Utility](media/automation-first-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
+2.	一覧の一番下までスクロールします。**Write-Output** を右クリックして **[キャンバスに追加]** を選択するか、コマンドレットの横にある省略記号ボタンをクリックして **[キャンバスに追加]** を選択します。
 3.	キャンバスで **[Write-Output]** アクティビティをクリックします。[構成コントロール] ブレードが開き、アクティビティを構成できます。
 4.	**[ラベル]** の既定値はコマンドレットの名前ですが、もっとわかりやすい名前に変更できます。「*Write Hello World to output*」に変更します。
 5.	**[パラメーター]** をクリックし、コマンドレットのパラメーターの値を指定します。一部のコマンドレットには複数のパラメーター セットがあり、使用するものを選択する必要があります。この場合、**[Write-Output]** のパラメーター セットは 1 つだけなので、選択する必要はありません。<br> ![Write-Output のプロパティ](media/automation-first-runbook-graphical/write-output-properties-update.png)
@@ -64,9 +60,9 @@ Automation アカウント ページでは、そのアカウントのリソー�
 
 Runbook を発行して運用環境で使用できるようにする前に、Runbook をテストして正常に動作することを確認します。Runbook をテストするときは、**ドラフト** バージョンを実行し、その出力を対話形式で表示します。
 
-1.	**[テスト ウィンドウ]** をクリックして [テスト] ブレードを開きます。<br>![Test pane](media/automation-first-runbook-graphical/runbook-toolbar-test.png)
+1.	**[テスト ウィンドウ]** をクリックして、[テスト] ブレードを開きます。<br> ![Test pane](media/automation-first-runbook-graphical/runbook-toolbar-test.png)
 2.	**[開始]** をクリックしてテストを開始します。有効なオプションはこれだけです。
-3.	[Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態がペインに表示されます。最初のジョブの状態は*キューに登録済み*であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
+3.	[Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態がペインに表示されます。最初のジョブの状態は*キュー登録済み*であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
 4.	Runbook ジョブが完了すると、その出力が表示されます。この例では、*Hello World* と表示されます。<br>![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
 5.	[テスト] ブレードを閉じてキャンバスに戻ります。
 
@@ -75,13 +71,12 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 前の手順で作成した Runbook はまだドラフト モードです。運用環境で実行できるようにするには、発行する必要があります。Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
 
 1.	**[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。<br> ![Publish](media/automation-first-runbook-graphical/runbook-toolbar-publish.png)
-2.	**[Runbook]** ブレードで左にスクロールして Runbook を表示すると、**[作成状態]** は **[発行済]** になっています。
-3.	右にスクロールして戻り、**MyFirstRunbook** のブレードを表示します。  
-上部のオプションを使用すると、Runbook の開始、将来の開始スケジュールの設定、または HTTP 呼び出しで開始できるようにする [Webhook](automation-webhooks.md) の作成を行うことができます。 
+2.	**[Runbook]** ブレードで左へスクロールして Runbook を表示すると、**[編集状態]** は **[発行]** になっています。
+3.	右へスクロールして戻り、**MyFirstRunbook** のブレードを表示します。上部のオプションを使用すると、Runbook の開始、将来の開始スケジュールの設定、または HTTP 呼び出しで開始できるようにする [Webhook](automation-webhooks.md) の作成を行うことができます。
 4.	ここでは単純に Runbook を開始するので、**[開始]** をクリックし、確認を求められたら **[はい]** をクリックします。<br> ![Runbook の開始](media/automation-first-runbook-graphical/runbook-controls-start.png)
 5.	作成した Runbook ジョブのジョブ ブレードが開かれます。このブレードは閉じてもかまいませんが、ここではジョブの進行状況を確認できるように開いたままにします。
 6.	ジョブの状態が **[ジョブの概要]** に表示され、Runbook をテストしたときに確認した状態と一致しています。<br> ![ジョブの概要](media/automation-first-runbook-graphical/runbook-job-summary.png)
-7.	Runbook の状態が *[完了]* になったら、**[出力]** をクリックします。**[出力]** ブレードが開き、ウィンドウに "*Hello World*" と表示されます。<br>![ジョブの概要](media/automation-first-runbook-graphical/runbook-job-output.png)  
+7.	Runbook の状態が *[完了]* になったら、**[出力]** をクリックします。**[出力]** ブレードが開き、ウィンドウに "*Hello World*" と表示されます。<br> ![ジョブの概要](media/automation-first-runbook-graphical/runbook-job-output.png)  
 8.	[出力] ブレードを閉じます。
 9.	**[すべてのログ]** をクリックして、Runbook ジョブの [ストリーム] ブレードを開きます。出力ストリームでは *Hello World* だけが表示されますが、Runbook が詳細やエラーに書き込んでいる場合は、これらの Runbook ジョブの他のストリームも表示できます。<br> ![ジョブの概要](media/automation-first-runbook-graphical/runbook-job-AllLogs.png)
 10.	[すべてのログ] ブレードと [ジョブ] ブレードを閉じて、MyFirstRunbook ブレードに戻ります。
@@ -92,8 +87,8 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 
 Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。ここでは、Runbook で Azure リソースを管理します。認証を設定する前に、サブスクリプション ID を格納する変数を作成します。次の手順 6 で、認証のアクティビティを設定するときにこの変数を参照します。次に進む前に、ナビゲーション ウィンドウの [サブスクリプション] からサブスクリプション ID をコピーしておきます。
 
-1. [Automation アカウント] ブレードの **[アセット]** タイルをクリックすると、**[アセット]** ブレードが開きます。
-2. [アセット] ブレードの **[変数]** タイルをクリックします。
+1. [Automation アカウント] ブレードの **[資産]** タイルをクリックすると、**[資産]** ブレードが開きます。
+2. [資産] ブレードの **[変数]** タイルをクリックします。
 3. [変数] ブレードで、**[変数の追加]** をクリックします。<br>![Automation の変数](media/automation-first-runbook-graphical/create-new-subscriptionid-variable.png)
 4. [新しい変数] ブレードで、**[名前]** ボックスに「**AzureSubscriptionId**」と入力し、**[値]** ボックスにサブスクリプション ID を入力します。**[型]** は *[文字列]* のままにして、**[暗号化]** も既定値のままにします。  
 5. **[作成]** をクリックして変数を作成します。  
@@ -101,42 +96,42 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 ## 手順 6 - Azure リソースを管理するための認証を追加する
 
-これで、サブスクリプション ID を保持する変数を作成できました。次に、この ID に加えて[前提条件](#prerequisites)で説明した資格情報を使って認証を行う Runbook を構成します。それには、**Add-AzureRMAccount** コマンドレットを使用します。ただし、この資格情報は **Add-AzureRMAccount** **Credential** パラーメーターから直接呼び出すことができないため、事前にこの資格情報の Runbook 入力パラメーターを作成しておく必要があります。
+これで、サブスクリプション ID を保持する変数を作成できました。次に、この ID に加えて[前提条件](#prerequisites)で説明した資格情報を使って認証を行う Runbook を構成します。それには、**Add-AzureRMAccount** コマンドレットを使用します。ただし、この資格情報は **Add-AzureRMAccount** **Credential** パラメーターから直接呼び出すことができないため、事前にこの資格情報の Runbook 入力パラメーターを作成しておく必要があります。
 
 1.	MyFirstRunbook ブレードで **[編集]** をクリックして、グラフィカル エディターを開きます。<br>![Edit runbook](media/automation-first-runbook-graphical/runbook-controls-edit.png)
 2.	**Write Hello World to output** はもう必要ないので、右クリックして **[削除]** を選択します。
 3.	**[入力と出力]**、**[入力の追加]** の順にクリックして、[Runbook 入力パラメーター] ブレードを開きます。<br> ![Runbook の入力と出力](media/automation-first-runbook-graphical/runbook-toolbar-InputandOutput.png)
-4.	**[名前]** に「*AzureCredentialAssetName*」と入力します。**[型]** は *[文字列]* のままにして、**[カスタム既定値]** に Azure Automation 資格情報を入力します。**[OK]** をクリックします。
-5.	ライブラリ コントロールで **[資産]**、**[変数]** の順に展開し、 **[Get 変数の追加]** を選択して、キャンバスに **AzureSubscriptionId** を追加します。
-6.	キャンバスで **Get-AutomationVariable** を選択し、[構成コントロール] ウィンドウの **[ラベル]** ボックスに「**Get Subscription ID**」と入力します。  
+4.	**[名前]** に「*AzureCredentialAssetName*」と入力します。**[型]** は *[文字列]* のままにして、**[カスタムの既定値]** に Azure Automation 資格情報を入力します。**[OK]** をクリックします。
+5.	ライブラリ コントロールで **[資産]**、**[変数]** の順に展開し、**["Add Get Variable" to canvas]** (キャンバスに "Get 変数" を追加) を選択して、キャンバスに **AzureSubscriptionId** を追加します。
+6.	キャンバスで **Get-AutomationVariable** を選択し、[Configuration control] (構成コントロール) ウィンドウの **[ラベル]** ボックスに「**Get Subscription ID**」と入力します。  
 7.	ライブラリ コントロールの検索ボックスに「**Get-AutomationPS**」と入力します。
 8.	キャンバスに **Get-AutomationPSCredential** を追加します。<br>![Get-AutomationPSCred コマンドレットの検索](media/automation-first-runbook-graphical/search-get-automationpscredential-cmdlet.png)
-9.	キャンバスで **Get-AutomationPSCredential** を選択し、[構成コントロール] ウィンドウの **[ラベル]** ボックスに「**Get Azure Credential**」と入力します。
-10.	**[パラメーター]** をクリックすると、[アクティビティ パラメーター構成] ブレードが表示されます。 
-11. [アクティビティ パラメーター構成] ブレードの **[名前]** をクリックすると、[パラメーター値] ブレードが表示されます。  
+9.	キャンバスで **Get-AutomationPSCredential** を選択し、[Configuration control] (構成コントロール) ウィンドウの **[ラベル]** ボックスに「**Get Azure Credential**」と入力します。
+10.	**[パラメーター]** をクリックすると、[アクティビティ パラメーターの構成] ブレードが表示されます。 
+11. [アクティビティ パラメーターの構成] ブレードの **[名前]** をクリックすると、[パラメーター値] ブレードが表示されます。  
 12.	 [パラメーター値] ブレードで、**[データ ソース]** に **[Runbook の入力]** を選択し、一覧から **AzureCredentialAssetName** を選択して、**[OK]** を 2 回クリックします。   
 13.	**Get Subscription Id** にポインターを合わせて、図形の下部に円を表示します。円をクリックし、矢印を **Get Azure Credential** までドラッグします。作成した矢印は*リンク*です。Runbook で **Get Subscription ID** が開始された後、**Get Azure Credential** が実行されます。<br> ![アクティビティ間のリンクの作成](media/automation-first-runbook-graphical/runbook-link-getsubscription-getcredential.png)
 14.	ライブラリ コントロールの検索ボックスに「**Add-AzureRm**」と入力します。
 15. **Add-AzureRmAccount** をキャンバスに追加します。<br> ![Add-AzureRMAccount](media/automation-first-runbook-graphical/search-powershell-cmdlet-addazurermaccount.png)
 16.	**Get Azure Credential** にポインターを合わせて、図形の下部に円を表示します。円をクリックし、矢印を **Add-AzureRmAccount** までドラッグします。
-17.	**Add-AzureRmAccount** を選択し、[構成コントロール] ウィンドウで **[パラメーター]** をクリックします。
-18.	**Add-AzureRmAccount** には複数のパラメーター セットがあるので、パラメーター値を指定する前に、1 つのパラメーター セットを選択する必要があります。**[パラメーター セット]** をクリックして、**SubscriptionId** パラメーター セットを選択します。
+17.	**Add-AzureRmAccount** を選択し、[Configuration control] (構成コントロール) ウィンドウで **[パラメーター]** をクリックします。
+18.	**Add-AzureRmAccount** には複数のパラメーター セットがあるため、パラメーター値を指定する前に、1 つのパラメーター セットを選択する必要があります。**[パラメーター セット]** をクリックして、**SubscriptionId** パラメーター セットを選択します。
 19.	パラメーター セットを選択すると、[アクティビティ パラメーター構成] ブレードにパラメーターが表示されます。**[資格情報]** をクリックします。<br> ![Azure RM アカウントのパラメーターの追加](media/automation-first-runbook-graphical/add-azurermaccount-parameters.png)
-20.	[パラメーター値] ブレードで、**[データ ソース]** に **[アクティビティ出力]** を選択し、一覧から **Get Azure Credential** を選択して、**[OK]** をクリックします。   
-21.	**SubscriptionId** をクリックし、[パラメータ値] ブレードで一覧から **Get Subscription ID** を選択した後、**[OK]** を 2 回クリックしてキャンバスに戻ります。
-22.	[構成コントロール] ウィンドウで、**[ラベル]** ボックスに「**Connect to Azure**」と入力します。
+20.	[パラメーター値] ブレードで、**[データ ソース]** に **[アクティビティの出力]** を選択し、一覧から **Get Azure Credential** を選択して、**[OK]** をクリックします。   
+21.	**SubscriptionId** をクリックし、[パラメーター値] ブレードで一覧から **Get Subscription ID** を選択した後、**[OK]** を 2 回クリックしてキャンバスに戻ります。
+22.	[Configuration control] (構成コントロール) ウィンドウで、**[ラベル]** ボックスに「**Connect to Azure**」と入力します。
 
 この時点の Runbook は次のようになります。 <br>![Runbook 認証の構成](media/automation-first-runbook-graphical/runbook-authentication-config.png)
 
 ## 手順 7 - 仮想マシンを開始するアクティビティを追加する
 
-次に、仮想マシンを開始するための **Start-AzureRmVM** アクティビティを追加します。Azure サブスクリプション内の任意の仮想マシンを選択し、ここではその名前をコマンドレットにハードコーディングします。
+次に、仮想マシンを起動するための **Start-AzureRmVM** アクティビティを追加します。Azure サブスクリプション内の任意の仮想マシンを選択し、ここではその名前をコマンドレットにハードコーディングします。
 
 1. ライブラリ コントロールの検索ボックスに「**Start-AzureRm**」と入力します。
-2. **Start-AzureRmVM** をキャンバスに追加した後、それをクリックして **Connect to Azure** の下にドラッグします。
+2. **Start-AzureRmVM** をキャンバスに追加した後、それをクリックして **Connect to Azure** の下へドラッグします。
 3. **Connect to Azure** にポインターを合わせて、図形の下部に円を表示します。円をクリックし、矢印を **Start-AzureRmVM** までドラッグします。 
 4.	**Start-AzureRmVM** を選択します。**[パラメーター]**、**[パラメーター セット]** の順にクリックし、**Start-AzureRmVM** のセットを表示します。**ResourceGroupNameParameterSetName** パラメーター セットを選択します。**ResourceGroupName** と **Name** の横に感嘆符が付いていることに注意してください。これは、必須のパラメーターであることを示します。また、どちらのパラメーターも文字列値を受け取ることにも注意してください。
-5.	**[Name]** を選択します。**[データ ソース]** には **[PowerShell 式]** を選択し、この Runbook で開始する仮想マシンの名前を二重引用符で囲んで入力します。**[OK]** をクリックします。<br>![Start-AzureRmVM Name パラメーターの値](media/automation-first-runbook-graphical/runbook-startvm-nameparameter.png)
+5.	**[Name]** を選択します。**[データ ソース]** には **[PowerShell 式]** を選択し、この Runbook で起動する仮想マシンの名前を二重引用符で囲んで入力します。**[OK]** をクリックします。<br>![Start-AzureRmVM Name パラメーターの値](media/automation-first-runbook-graphical/runbook-startvm-nameparameter.png)
 6.	**ResourceGroupName** を選択します。**[データ ソース]** には **[PowerShell 式]** を選択し、リソース グループの名前を二重引用符で囲んで入力します。**[OK]** をクリックします。<br> ![Start-AzureRmVM パラメーター](media/automation-first-runbook-graphical/startazurermvm-params.png)
 8.	テスト ウィンドウをクリックして、Runbook をテストできるようにします。
 9.	**[開始]** をクリックしてテストを開始します。完了したら、仮想マシンが開始されたことを確認します。
@@ -145,7 +140,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 ## 手順 8 - Runbook に追加の入力パラメーターを追加する
 
-現時点の Runbook は **Start-AzureRmVM** コマンドレットで指定したリソース グループ内の仮想マシンを開始しますが、Runbook を開始するときに両方とも指定できるようにすればもっと便利になります。そこで次に、入力パラメーターを Runbook に追加して、その機能を提供します。
+現時点の Runbook は **Start-AzureRmVM** コマンドレットで指定したリソース グループ内の仮想マシンを起動しますが、Runbook を開始するときに両方とも指定できるようにするともっと便利になります。そこで次に、入力パラメーターを Runbook に追加して、その機能を提供します。
 
 1. **MyFirstRunbook** ウィンドウで **[編集]** をクリックして、グラフィカル エディターを開きます。
 2. **[入力と出力]**、**[入力の追加]** の順にクリックして、Runbook 入力パラメーター ウィンドウを開きます。<br> ![Runbook の入力と出力](media/automation-first-runbook-graphical/runbook-toolbar-InputandOutput.png)
@@ -153,28 +148,28 @@ Runbook をテストして発行しましたが、これまでのところ役に
 4. *ResourceGroupName* という名前の 2 番目の必須入力パラメーターを作成し、**[OK]** をクリックして **[入力と出力]** ウィンドウを閉じます。<br> ![Runbook の入力パラメーター](media/automation-first-runbook-graphical/start-azurermvm-params-outputs.png)
 5. **Start-AzureRmVM** アクティビティを選択し、**[パラメーター]** をクリックします。
 6. **Name** の **[データ ソース]** を **[Runbook の入力]** に変更し、**VMName** を選択します。<br>
-7. **ResourceGroupName** の **[データ ソース]** を **[Runbook の入力]** に変更し、**ResourceGroupName** を選択します。<br>![Start-AzureVM のパラメーター](media/automation-first-runbook-graphical/start-azurermvm-params-runbookinput.png)
+7. **ResourceGroupName** の **[データ ソース]** を **[Runbook の入力]** に変更し、**ResourceGroupName** を選択します。<br> ![Start-AzureVM のパラメーター](media/automation-first-runbook-graphical/start-azurermvm-params-runbookinput.png)
 8. Runbook を保存してテスト ウィンドウを開きます。テストで使用される 2 つの入力変数の値を指定できることに注意してください。
 9. テスト ウィンドウを閉じます。
-10.  **[発行]** をクリックして、新しいバージョンの Runbook を発行します。
-11.  前の手順で開始した仮想マシンを停止します。
-12.  **[開始]** をクリックして Runbook を開始します。開始する仮想マシンの **VMName** と **ResourceGroupName** を入力します。<br> ![Runbook の開始](media/automation-first-runbook-graphical/runbook-start-inputparams.png)
-13.  Runbook が完了したら、仮想マシンが開始されたことを確認します。
+10.	**[発行]** をクリックして、新しいバージョンの Runbook を発行します。
+11.	前の手順で開始した仮想マシンを停止します。
+12.	**[開始]** をクリックして Runbook を開始します。起動する仮想マシンの **VMName** と **ResourceGroupName** を入力します。<br> ![Runbook の開始](media/automation-first-runbook-graphical/runbook-start-inputparams.png)
+13.	Runbook が完了したら、仮想マシンが開始されたことを確認します。
 
 ## 手順 9 - 条件付きリンクを作成する
 
 次に、まだ開始されていない場合にのみ仮想マシンを開始するように Runbook を変更します。そのためには、仮想マシンのインスタンス レベルの状態を取得する **Get-AzureRmVM** コマンドレットを Runbook に追加します。次に、**Get Status** という名前の PowerShell Workflow コード モジュールを追加します。これには、仮想マシンが実行中か停止中かを調べるための PowerShell コード スニペットが含まれています。**Get Status** モジュールの条件付きリンクは、現在の実行状態が停止の場合のみ **Start-AzureRmVM** を実行します。次に、PowerShell Write-Output コマンドレットを使用して、VM が正常に開始されたかどうかを通知するメッセージを出力します。
 
 1. グラフィカル エディターで **MyFirstRunbook** を開きます。
-2. **Connect to Azure** と **Start-AzureRmVM** の間のリンクをクリックして *Delete* キーを押し、リンクを削除します。
+2. **Connect to Azure** と **Start-AzureRmVM** の間のリンクをクリックし、*Del* キーを押して、リンクを削除します。
 3. ライブラリ コントロールの検索ボックスに「**Get-AzureRm**」と入力します。
 4. **Get-AzureRmVM** をキャンバスに追加します。
-5. **[Get-AzureRmVM]**、**[パラメーター セット]** の順にクリックし、**Get-AzureRmVM** のセットを表示します。**GetVirtualMachineInResourceGroupNameParamSet** パラメーター セットを選択します。**ResourceGroupName** と **Name** の横に感嘆符が付いていることに注意してください。これは、必須のパラメーターであることを示します。また、どちらのパラメーターも文字列値を受け取ることにも注意してください。
-6. **[Name]** の **[データ ソース]** で **[Runbook の入力]** を選択した後、**VMName** を選択します。**[OK]** をクリックします。
+5. **Get-AzureRmVM**、**[パラメーター セット]** の順にクリックし、**Get-AzureRmVM** のセットを表示します。**GetVirtualMachineInResourceGroupNameParamSet** パラメーター セットを選択します。**ResourceGroupName** と **Name** の横に感嘆符が付いていることに注意してください。これは、必須のパラメーターであることを示します。また、どちらのパラメーターも文字列値を受け取ることにも注意してください。
+6. **Name** の **[データ ソース]** で **[Runbook の入力]** を選択した後、**VMName** を選択します。**[OK]** をクリックします。
 7. **ResourceGroupName** の **[データ ソース]** で、**[Runbook の入力]** を選択した後、**ResourceGroupName** を選択します。**[OK]** をクリックします。
 8. **Status** の **[データ ソース]** で、**[定数値]** を選択した後、**[True]** をクリックします。**[OK]** をクリックします。  
 9. **Connect to Azure** から **Get-AzureRmVM** へのリンクを作成します。
-10. ライブラリ コントロールで **[Runbook の制御]** を展開して、**Code** をキャンバスに追加します。  
+10. ライブラリ コントロールで **[Runbook の制御]** を展開し、**Code** をキャンバスに追加します。  
 11. **Get-AzureRmVM** から **Code** へのリンクを作成します。  
 12. 構成ウィンドウで **Code** をクリックし、ラベルを「**Get Status**」に変更します。
 13. **Code** パラメーターを選択すると、**[コード エディター]** ブレードが表示されます。  
@@ -192,10 +187,10 @@ Runbook をテストして発行しましたが、これまでのところ役に
      ```
 
 16. **Get Status** から **Start-AzureRmVM** へのリンクを作成します。<br> ![コード モジュールを含む Runbook](media/automation-first-runbook-graphical/runbook-startazurermvm-get-status.png)
-17. リンクを選択して、構成ウィンドウの **[条件の適用]** を **[はい]** に変更します。条件が満たされた場合にのみ対象のアクティビティが実行されることを示す破線にリンクが変わることに注意してください。  
+17. リンクを選択し、構成ウィンドウの **[条件の適用]** を **[はい]** に変更します。条件が満たされた場合にのみ対象のアクティビティが実行されることを示す破線にリンクが変わることに注意してください。  
 18. **[条件式]** に「*$ActivityOutput['Get Status'] -eq "Stopped"*」と入力します。**Start-AzureRmVM** は、仮想マシンが停止している場合にのみ実行されるようになります。
 19.	ライブラリ コントロールで、**[コマンドレット]**、**[Microsoft.PowerShell.Utility]** の順に展開します。
-20.	**Write-Output** をキャンバスに 2 回追加します。<br>![Write-Output での Runbook](media/automation-first-runbook-graphical/runbook-startazurermvm-final.png)
+20.	**Write-Output** をキャンバスに 2 回追加します。<br> ![Write-Output での Runbook](media/automation-first-runbook-graphical/runbook-startazurermvm-final.png)
 21. 1 個目の **Write-Output** コントロールで、**[パラメーター]** をクリックし、**[ラベル]** の値を「*Notify VM Started*」に変更します。
 22. **InputObject** の **[データ ソース]** を **[PowerShell 式]** に変更し、式に「*$VMName successfully started.*」と入力します。
 23. 2 個目の **Write-Output** コントロールで、**[パラメーター]** をクリックし、**[ラベル]** の値を「*Notify VM Start Failed*」に変更します。
@@ -210,8 +205,8 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 ## 次のステップ
 
--	グラフィカル作成について詳しくは、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」をご覧ください。
--	PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」をご覧ください。
--	PowerShell Workflow Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-PowerShell.md)」をご覧ください。
+-	グラフィカル作成の詳細について、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
+-	PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
+-	PowerShell Workflow Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-PowerShell.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

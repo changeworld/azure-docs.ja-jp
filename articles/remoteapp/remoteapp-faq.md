@@ -32,8 +32,8 @@ Azure RemoteApp について次のような質問が寄せられています。�
 
 - **サービスの制限とは何ですか。** Azure RemoteApp の既定の設定とサービスの制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。他に質問がある場合は、お知らせください。
 - **必要なユーザー数は、どの程度でしょうか。** 少なくとも 20 ユーザーが必要です。明確にするために繰り返しますと、最低ユーザー数は 20 となっています。つまり、20 ユーザー分の代金が課金されることになります。 
-- **RemoteApp の料金についてはどうですか。** 「[Azure RemoteApp の料金体系について](../../../pricing/details/remoteapp/)」を参照してください。
-- **コレクションの種類によってはコストがかかるものはありますか。** コレクションに対する要件によってはそうなる場合があります。ハイブリッド コレクションの場合、Azure RemoteApp からオンプレミス ネットワークへの接続が必要です。既存の VNET と Express のルートを使用する場合、追加コストはありません。しかし新しい Azure VNET と、さらにゲートウェイまたは ExpressRoute を使用する場合、[VPN ゲートウェイ](../../../pricing/details/vpn-gateway)または [Express Route](../../../pricing/details/expressroute/) が課金されます。このコスト (詳細はリンクを参照) が、毎月の Azure の RemoteApp のコストに追加されます。
+- **RemoteApp の料金についてはどうですか。** 「[Azure RemoteApp の料金体系について](https://azure.microsoft.com/pricing/details/remoteapp/)」を参照してください。
+- **コレクションの種類によってはコストがかかるものはありますか。** コレクションに対する要件によってはそうなる場合があります。ハイブリッド コレクションの場合、Azure RemoteApp からオンプレミス ネットワークへの接続が必要です。既存の VNET と Express のルートを使用する場合、追加コストはありません。しかし新しい Azure VNET と、さらにゲートウェイまたは ExpressRoute を使用する場合、[VPN ゲートウェイ](https://azure.microsoft.com/pricing/details/vpn-gateway)または [Express Route](../../../pricing/details/expressroute/) が課金されます。このコスト (詳細はリンクを参照) が、毎月の Azure の RemoteApp のコストに追加されます。
 
 ## サポートされているコレクションや使用すべきコレクションなど
 - **カスタム基幹業務 (LOB) アプリケーションはサポートされていますか。** はい。Azure RemoteApp でカスタム アプリケーションを使用するには、[カスタム テンプレート イメージ](remoteapp-create-custom-image.md)を作成し、RemoteApp コレクションにアップロードします。
@@ -55,7 +55,7 @@ Azure RemoteApp について次のような質問が寄せられています。�
 
 
 
-- **認証については、 どの方法がサポートされていますか。** クラウド コレクションは、Office 365 アカウントでもある Microsoft アカウントと Azure Active Directory アカウントをサポートしています。ハイブリッド コレクションは、([Azure Active Directory Sync](http://blogs.technet.com/b/ad/archive/2014/09/16/azure-active-directory-sync-is-now-ga.aspx) のようなツールを使用して) Windows Server Active Directory のデプロイメントから同期されている Azure Active Directory アカウントのみをサポートします。具体的には、パスワード同期オプションで同期されているか、または Active Directory フェデレーション サービス (AD FS) の構成されたフェデレーションのいずれかで同期されます。[多要素認証 (MFA)](../../services/multi-factor-authentication/) を構成することもできます。
+- **認証については、 どの方法がサポートされていますか。** クラウド コレクションは、Office 365 アカウントでもある Microsoft アカウントと Azure Active Directory アカウントをサポートしています。ハイブリッド コレクションは、([Azure Active Directory Sync](http://blogs.technet.com/b/ad/archive/2014/09/16/azure-active-directory-sync-is-now-ga.aspx) のようなツールを使用して) Windows Server Active Directory のデプロイメントから同期されている Azure Active Directory アカウントのみをサポートします。具体的には、パスワード同期オプションで同期されているか、または Active Directory フェデレーション サービス (AD FS) の構成されたフェデレーションのいずれかで同期されます。[多要素認証 (MFA)](https://azure.microsoft.com/services/multi-factor-authentication/) を構成することもできます。
 
 >[AZURE.NOTE]Azure Active Directory ユーザーは、サブスクリプションに関連付けられているテナントに属している必要があります(サブスクリプションは、ポータルの **[設定]** タブで表示および変更できます。詳細については、「[Change the Azure Active Directory tenant used by RemoteApp](remoteapp-changetenant.md)」を参照してください)。
 
@@ -88,7 +88,7 @@ Azure RemoteApp について次のような質問が寄せられています。�
 ##サポートとフィードバック
 
 
-- **RemoteApp のサポート プランについてはどうですか。** 課金およびサブスクリプション管理が、無料でサポートされます。テクニカル サポートが [Azure のサービス プラン](../../../support/plans/)を通して提供されます。[Azure のディスカッション フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp)を通して、無料のコミュニティ サポートも得ることができます。 
+- **RemoteApp のサポート プランについてはどうですか。** 課金およびサブスクリプション管理が、無料でサポートされます。テクニカル サポートが [Azure のサービス プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。[Azure のディスカッション フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp)を通して、無料のコミュニティ サポートも得ることができます。 
 - **フィードバックを発行する方法を教えてください。** 「[フィードバック フォーラム](https://feedback.azure.com/forums/247748-azure-remoteapp/)」にアクセスしてください。
 - **Azure RemoteApp についての問い合わせ先を教えてください。** 質問を投稿するのに最適な場所である[ディスカッション フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp)に加えて、RemoteApp のあらゆることに関する情報が週次に提供される「[Ask the Experts Webinar](https://azureinfo.microsoft.com/US-Azure-WBNR-FY15-11Nov-AzureRemoteAppAskTheExperts-Registration-Page.html)」にも参加できます。
 - **RemoteApp に関するドキュメントはありますか。** ご問い合わせありがとうございます。ポータルのヘルプ ドロアーのヘルプ コンテンツ (ポータルのいずれかのページの **?** をクリックするだけです) に加えて、RemoteApp のすべてについて詳細に説明する次の資料を参照できます。
@@ -114,4 +114,4 @@ Azure RemoteApp について次のような質問が寄せられています。�
 ### サポートのお願い 
 記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上にスクロールし、**[GitHub で編集]** をクリックすると変更できます。届いたら確認されます。サインオフ後、変更と改善をここで確認できます。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

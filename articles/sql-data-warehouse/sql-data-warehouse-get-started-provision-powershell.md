@@ -77,7 +77,7 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [サンプル データを読み込んだり]: sql-data-warehouse-get-started-manually-load-samples.md
 [PowerShell コマンドレットと REST API]: sql-data-warehouse-reference-powershell-cmdlets.md
 [firewall rules]: sql-database-configure-firewall-settings.md
-[Azure PowerShell のインストールおよび構成方法]: powershell-install-configure.md
+[Azure PowerShell のインストールおよび構成方法]: ../powershell/powershell-install-configure.md
 [Azure ポータルから SQL Data Warehouse を作成する方法]: sql-data-warehouse-get-started-provision.md
 
 <!--MSDN references--> 
@@ -90,4 +90,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [SQL Data Warehouse の価格]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

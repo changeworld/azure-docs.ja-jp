@@ -240,4 +240,4 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 [Azure ポータル]: https://portal.azure.com
 [サンプル データをダウンロードします]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

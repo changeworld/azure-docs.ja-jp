@@ -29,8 +29,8 @@ Visual Studio をインストールする場合、Visual Studio 2013 または V
 
 Visual Studio 2015 をインストールするには:
 
-1. Visual Studio Team Services から [Visual Studio 2015 をダウンロード](https://www.visualstudio.com/downloads)します。
-2. MSDN の [Visual Studio のインストール](https://msdn.microsoft.com/library/e2h7fzkw.aspx)に関するガイドに従ってインストールし、既定の構成を選択します。
+1. Visual Studio Team Services から [Visual Studio 2015 をダウンロード][]します。
+2. MSDN の [Visual Studio のインストール][]に関するガイドに従ってインストールし、既定の構成を選択します。
 
 ## 手順 2. SQL Server Data Tools (SSDT) をダウンロードしてインストールする
 
@@ -38,15 +38,23 @@ Visual Studio がインストールされているかどうかに関係なく、
 
 最新のバージョンの SSDT をインストールするには:
 
-1. Visual Studio 2013 または 2015 用の [SQL Server Data Tools プレビューをダウンロード](https://msdn.microsoft.com/library/mt204009.aspx)します。
+1. Visual Studio 2013 または 2015 用の [SQL Server Data Tools プレビューをダウンロード][]します。
 2. ダウンロード サイトのインストール手順に従って、インストールします。
 
 ## 次のステップ
 
-これで、最新バージョンの SSDT がインストールされたので、データベースに[接続](./sql-data-warehouse-get-started-connect.md)できます。
+これで、最新バージョンの SSDT がインストールされたので、データベースに[接続][]できます。
 
 <!--Anchors-->
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0420_2016-->
+<!--Arcticles-->
+[接続]: ./sql-data-warehouse-get-started-connect.md
+
+<!--Other-->
+[Visual Studio 2015 をダウンロード]: https://www.visualstudio.com/downloads/
+[Visual Studio のインストール]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
+[SQL Server Data Tools プレビューをダウンロード]: https://msdn.microsoft.com/library/mt204009.aspx
+
+<!---HONumber=AcomDC_0511_2016-->

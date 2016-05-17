@@ -31,7 +31,7 @@
 この記事の手順を完了するには、次のものが必要です。
 
 - Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
-- V12 論理 SQL サーバー。SQL Data Warehouse を作成するには、V12 SQL サーバーが必要です。V12 論理 SQL サーバーを持っていない場合は、[Azure ポータルから SQL Data Warehouse を作成する方法][]に関する記事の「**サーバーを構成して作成する**」を参照してください。
+- V12 論理 SQL サーバー。SQL Data Warehouse を作成するには、V12 SQL サーバーが必要です。V12 論理 SQL サーバーを持っていない場合は、[Azure ポータルから SQL Data Warehouse を作成する方法][]に関する記事の**サーバーの構成と作成**の部分を参照してください。
 - 見ることができます。Visual Studio の無償版については、[Visual Studio のダウンロード][]に関するページを参照してください。
 
 
@@ -76,4 +76,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [SQL Data Warehouse の価格]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Visual Studio のダウンロード]: https://www.visualstudio.com/downloads/download-visual-studio-vs
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

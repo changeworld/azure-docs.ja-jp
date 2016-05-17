@@ -12,7 +12,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="04/26/2016" 
+	 ms.date="05/11/2016" 
 	 ms.author="casoper"/>
 
 # Azure CDN の使用  
@@ -27,28 +27,9 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
 > [AZURE.NOTE] 既定では、1 つの Azure サブスクリプションは 4 つの CDN プロファイルに限定されます。各 CDN プロファイルは 10 個の CDN エンドポイントに制限されます。
 >
-> CDN の価格は、CDN プロファイル レベルで適用されます。Standard と Premium の CDN 機能を組み合わせて使用する場合は、複数の CDN プロファイルが必要になります。
+> CDN の価格は、CDN プロファイル レベルで適用されます。Azure CDN の価格レベルを組み合わせて使用する場合は、複数の CDN プロファイルが必要になります。
 
-
-**新しい CDN プロファイルを作成するには**
-
-1. [Azure ポータル](https://portal.azure.com)の左上の **[新規]** をクリックします。**[新規]** ブレードで、**[メディア + CDN]**、**[CDN]** の順に選択します。
-
-    新しい CDN プロファイル ブレードが表示されます。
-
-    ![新しい CDN プロファイル][new-cdn-profile]
-
-2. CDN プロファイルの名前を入力します。
-
-3. **[価格レベル]** を選択するか、既定値を使用します。
-
-4. **リソース グループ**を選択または作成します。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md#resource-groups)」を参照してください。
-
-5. この CDN プロファイルの**サブスクリプション**を選択します。
-
-6. **[場所]** を選択します。これは、CDN プロファイル情報が格納される Azure の場所です。CDN エンドポイントの場所には影響しません。ストレージ アカウントと同じ場所である必要はありません。
-
-7. **[作成]** ボタンをクリックして、新しいプロファイルを作成します。
+[AZURE.INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
 ## 新しい CDN エンドポイントを作成する
 
@@ -84,7 +65,9 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 	
 	> [AZURE.NOTE] **[配信元ポート]** は、エンドポイントが配信元から情報を取得するときに使用されるポートにのみ影響します。エンドポイントそのものは、**配信元ポート**に関係なく、エンド クライアントが既定の HTTP ポートと HTTPS ポート (80 と 443) を介してのみ利用できます。
 	>
-	>HTTPS を使用して CDN コンテンツにアクセスする場合、次の制約があります。
+	> **Azure CDN from Akamai** エンドポイントでは、配信元の TCP ポート範囲全体が許可されません。許可されない配信元ポートの一覧については、「[Azure CDN from Akamai behavior details (Azure CDN from Akamai の動作の詳細)](cdn-akamai-behavior-details.md)」を参照してください。
+	>
+	> HTTPS を使用して CDN コンテンツにアクセスする場合、次の制約があります。
 	> 
 	> - CDN によって提供される SSL 証明書を使用する必要があります。サード パーティの証明書はサポートされません。
 	> - CDN から提供されたドメイン (`<endpointname>.azureedge.net`) を使用して、HTTPS コンテンツにアクセスする必要があります。現時点では CDN がカスタム証明書をサポートしていないために、HTTPS サポートではカスタム ドメイン名 (CNAME) を使用できません。
@@ -95,9 +78,9 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
     ![CDN エンドポイント][cdn-endpoint-success]
 
-    > [AZURE.IMPORTANT] 登録内容が CDN に反映されるまでに時間がかかるため、エンドポイントは、すぐには利用できません。通常は 90 分程度で利用できるようになりますが、もっと時間がかかる場合もあります。
+    > [AZURE.IMPORTANT] 登録内容が CDN に反映されるまでに時間がかかるため、エンドポイントは、すぐには利用できません。<b>Azure CDN from Akamai</b> プロファイルの場合、通常、反映は 1 分以内で完了します。<b>Azure CDN from Verizon</b> プロファイルの場合、通常、反映は 90 分以内に完了しますが、もっと時間がかかる場合もあります。
 	>	 
-	> エンドポイントの構成が POP に反映される前に CDN のドメイン名を利用しようとすると、HTTP 404 応答コードがユーザーに表示されます。エンドポイントを作成してから数時間が経過しても、404 が応答として返される場合は、「[Troubleshooting CDN endpoints returning 404 statuses (404 状態を返す CDN エンドポイントのトラブルシューティング)](cdn-troubleshoot-endpoint.md)」を参照してください。
+	> エンドポイントの構成が POP に反映される前に CDN のドメイン名を利用しようとすると、HTTP 404 応答コードがユーザーに表示されます。エンドポイントを作成してから数時間が経過しても、404 が応答として返される場合は、「[404 状態を返す CDN エンドポイントのトラブルシューティング](cdn-troubleshoot-endpoint.md)」を参照してください。
 
 
 ##関連項目
@@ -107,10 +90,9 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 - [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 - [404 状態を返す CDN エンドポイントのトラブルシューティング](cdn-troubleshoot-endpoint.md)
 
-[new-cdn-profile]: ./media/cdn-create-new-endpoint/cdn-new-profile.png
 [cdn-profile-settings]: ./media/cdn-create-new-endpoint/cdn-profile-settings.png
 [cdn-new-endpoint-button]: ./media/cdn-create-new-endpoint/cdn-new-endpoint-button.png
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

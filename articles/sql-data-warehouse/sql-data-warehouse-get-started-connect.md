@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/20/2016"
+   ms.date="05/10/2016"
    ms.author="sonyama;barbkess"/>
 
 # Visual Studio で SQL Data Warehouse に接続する
@@ -53,7 +53,7 @@
 
     ![Add SQL Server][3]
 
-1. [サーバーへの接続] ウィンドウのフィールドに入力します。
+4. [サーバーへの接続] ウィンドウのフィールドに入力します。
 
     ![サーバーへの接続][4]
 
@@ -63,10 +63,11 @@
     - **[データベース名]**: SQL DW データベースのデータベース名を入力します。
     - **[接続]** をクリックします。
 
-1. 確認のために、Azure SQL Server を展開します。サーバーに関連付けられているデータベースが表示されます。AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。
+5. 確認のために、Azure SQL Server を展開します。サーバーに関連付けられているデータベースが表示されます。AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。
 
     ![Explore AdventureWorksDW][5]
 
+> [AZURE.NOTE] 接続時 (手順 4.) に **[データベース名]** フィールドで SQL Data Warehouse データベースを指定することは、オブジェクト ツリーを正しく機能させるために重要です。このオプションを空白のままにして、既定のデータベースである **master** に接続すると、論理サーバーのいくつかのデータベースが一時停止している場合は動作しないことがあります。この制限はいずれ解決されますが、それまでの間は SQL Data Warehouse データベースに接続すると、前に説明したように、オブジェクト エクスプローラー ツリーが正しく機能します。
 
 ## 手順 3. サンプル クエリを実行する
 
@@ -88,7 +89,7 @@
 
     ![Run query][7]
 
-1. クエリ結果を確認します。この例では、FactInternetSales テーブルに 60,398 行が含まれています。
+5. クエリ結果を確認します。この例では、FactInternetSales テーブルに 60,398 行が含まれています。
 
     ![Query results][8]
 
@@ -110,4 +111,4 @@
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

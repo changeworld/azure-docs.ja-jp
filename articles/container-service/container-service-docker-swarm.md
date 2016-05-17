@@ -20,7 +20,7 @@
 
 # Docker Swarm でのコンテナーの管理
 
-Docker Swarm は、コンテナーにまとめたワークロードをプールされた Docker ホストのセット全体にデプロイする環境を提供します。Docker Swarm は、ネイティブ Docker API を使用します。Docker Swarm 上のコンテナーを管理するワークフローは、1 つのコンテナー ホスト上の場合とほぼ同じです。このドキュメントでは、Docker Swarm の Azure コンテナー サービス インスタンスで、コンテナーにまとめたワークロードをデプロイする簡単な例について説明します。Docker Swarm の詳細なドキュメントについては、[Docker.com の Docker Swarm](https://docs.docker.com/swarm/) を参照してください。
+Docker Swarm は、コンテナーにまとめたワークロードをプールされた Docker ホストのセット全体にデプロイする環境を提供します。Docker Swarm では、ネイティブの Docker API を使用します。Docker Swarm 上のコンテナーを管理するワークフローは、1 つのコンテナー ホスト上の場合とほぼ同じです。このドキュメントでは、Docker Swarm の Azure コンテナー サービス インスタンスで、コンテナーにまとめたワークロードをデプロイする簡単な例について説明します。Docker Swarm の詳細なドキュメントについては、[Docker.com の Docker Swarm](https://docs.docker.com/swarm/) を参照してください。
 
 このドキュメントで行う演習の前提条件:
 
@@ -49,14 +49,14 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 4298d397b9ab        yeasy/simple-web    "/bin/sh -c 'python i"   31 seconds ago      Up 9 seconds        10.0.0.5:80->80/tcp   swarm-agent-34A73819-1/happy_allen
 ```  
 
-このコンテナーで実行されているアプリケーションには、Swarm エージェント ロード バランサーのパブリック DNS エージェントを使用してアクセスできます。この情報は、Azure ポータルで確認できます。
+このコンテナーで実行されているアプリケーションには、Swarm エージェント ロード バランサーのパブリック DNS 名を使用してアクセスできます。この情報は、Azure ポータルで見つけることができます。
 
 
-![](media/real-visit.jpg)
+![Real visit results](media/real-visit.jpg)
 
 ## 複数のコンテナーをデプロイする
 
-Docker Swarm クラスターで複数のコンテナーを開始した場合、`docker ps` コマンドを使用して、コンテナーが実行されているホストを確認できます。この例では、3 つのコンテナーは 3 つの Swarm エージェントが均等に分散されます。
+Docker Swarm クラスターで複数のコンテナーを開始した場合、`docker ps` コマンドを使用して、コンテナーが実行されているホストを確認できます。この例では、3 つのコンテナーは 3 つの Swarm エージェントに均等に分散されます。
 
 
 ```bash
@@ -70,9 +70,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 ## Docker Compose を使用してコンテナーをデプロイする
 
-Docker Compose を使用して、複数のコンテナーのデプロイと構成を自動化することができます。自動化するには、SSH トンネルが作成され、DOCKER\_HOST 変数が設定されている必要があります。
+Docker Compose を使用して、複数のコンテナーのデプロイと構成を自動化することができます。自動化するには、Secure Shell (SSH) トンネルが作成され、DOCKER\_HOST 変数が設定されている必要があります。
 
-ローカル システムに docker-compose.yml を作成します。サンプルについては、[こちら](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml)を参照してください。
+ローカル システムに docker-compose.yml を作成します。これを行うには、この[サンプル](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml)を使用します。
 
 ```bash
 web:
@@ -105,7 +105,7 @@ swarm-agent-3B7093B8-2: Pulling adtd/web:0.1... : downloaded
 Creating compose_web_1
 ```
 
-最後に、実行中のコンテナーの一覧を返すことができます。この一覧には、Docker Compose でデプロイされたコンテナーが反映されます。
+最後に、実行されているコンテナーの一覧が返されます。この一覧は、Docker Compose を使用してデプロイされたコンテナーを反映しています。
 
 
 ```bash
@@ -115,8 +115,8 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 040efc0ea937        adtd/rest:0.1       "catalina.sh run"      3 minutes ago       Up 2 minutes        10.0.0.4:8080->8080/tcp   swarm-agent-3B7093B8-0/compose_rest_1
 ```
 
-## 次のステップ:
+## 次のステップ
 
-[Docker Swarm の詳細](https://docs.docker.com/swarm/)。
+[Docker Swarm の詳細](https://docs.docker.com/swarm/)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

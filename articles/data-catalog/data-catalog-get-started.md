@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Azure Data Catalog データ カタログの概要 | Microsoft Azure"
+   pageTitle="Azure Data Catalog - Data Catalog データ カタログの概要 | Microsoft Azure"
    description="Azure Data Catalog のシナリオと機能を紹介するエンド ツー エンドのチュートリアルです。"
    documentationCenter=""
    services="data-catalog"
-   authors="dvana"
-   manager="mblythe"
+   authors="steelanddata"
+   manager=""
    editor=""
    tags=""/>
 <tags
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="04/15/2016"
-   ms.author="derrickv"/>
+   ms.date="05/06/2016"
+   ms.author="maroche"/>
 
 # Azure Data Catalog の概要
 
@@ -184,6 +184,8 @@ T-SQL スクリプトを実行する代わりに、SQL Server Management Studio 
 
 この演習では、登録されているデータ資産にわかりやすい情報を追加し、カタログ ユーザーが理解できる用語を使用してデータ ソースを検出できるようにしました。
 
+> [AZURE.NOTE] Data Catalog Standard Edition には、カタログ管理者が中心的なビジネスの分類を定義できるビジネス用語集が含まれています。そのため、Catalog ユーザーは用語集の用語を使ってデータ資産に注釈を付けることができます。詳しくは、「[How to set up the Business Glossary for Governed Tagging (管理タグ付け用のビジネス用語集を設定する方法)](data-catalog-how-to-business-glossary.md)」をご覧ください。
+
 ## 演習 5: メタデータのクラウドソーシング
 
 この演習では、別のユーザーと協力して、カタログ内のデータ資産にメタデータを追加します。**Azure Data Catalog** の注釈のクラウドソーシング アプローチにより、すべてのユーザーがタグ、説明、およびその他のメタデータを追加できるため、データ資産とその使用に関してある観点を持つ任意のユーザーは、その観点を他のユーザーがキャプチャし、使用できるようにすることができます。
@@ -260,4 +262,4 @@ T-SQL スクリプトを実行する代わりに、SQL Server Management Studio 
 
 このチュートリアルでは、**Azure Data Catalog** のエンタープライズ データ ソースの登録、注釈、検出、および管理を含む重要な機能について学習しました。これでチュートリアルは完了したので、使用を開始できます。自分やチームが依存するデータ ソースを登録し、カタログを使用する同僚を招待することによって、今すぐ始めることができます。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

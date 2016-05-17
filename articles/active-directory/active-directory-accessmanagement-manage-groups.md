@@ -1,7 +1,7 @@
 <properties
 
-	pageTitle="Managing security groups in Azure Active Directory | Microsoft Azure"
-	description="How to create and manage security groups to manage Azure resource access using Azure Active Directory."
+	pageTitle="Managing groups in Azure Active Directory | Microsoft Azure"
+	description="How to create and manage groups to manage Azure resource access using Azure Active Directory."
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
@@ -22,7 +22,7 @@
 
 Azure Active Directory (Azure AD) の主な機能の 1 つは、リソースへのアクセスを管理することです。そうしたリソースは、ディレクトリ内のオブジェクトとして存在しているほか、SaaS アプリケーションや Azure サービス、SharePoint サイト、オンプレミス リソースなど、ディレクトリの外部に存在するケースもあります。加えてリソース所有者は、リソースへのアクセス権を Azure AD グループに対して割り当てることができます。この場合そのグループのメンバーに、リソースへのアクセス権が付与されます。グループのメンバーシップは、グループの所有者が管理します。実質的にはユーザーをリソースに割り当てる権限が、リソースの所有者からグループの所有者に委任されます。
 
-## セキュリティ グループを作成する方法
+## どのようにしてグループを作成しますか?
 
 **グループを作成するには**
 
@@ -102,4 +102,4 @@ Azure AD では、グループのメンバーとして追加するユーザー�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->
