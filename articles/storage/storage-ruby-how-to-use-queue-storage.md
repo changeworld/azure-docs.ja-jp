@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ruby" 
 	ms.topic="article" 
-	ms.date="02/23/2016" 
+	ms.date="05/04/2016" 
 	ms.author="robmcm"/>
 
 
@@ -162,4 +162,4 @@ Azure ポータルでクラシックまたは ARM ストレージ アカウン�
 この記事で説明されている Azure Queue サービスと、「[Service Bus キューの使用方法](/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Azure キューと Service Bus キューの比較](../service-bus/service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

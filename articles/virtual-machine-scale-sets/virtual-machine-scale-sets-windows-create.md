@@ -14,34 +14,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="04/26/2016"
 	ms.author="davidmu"/>
 
 # Azure PowerShell を使用した Windows 仮想マシン スケール セットの作成
 
-以下の手順では、空白に記入する方式に従って Azure 仮想マシン スケール セットを作成します。この記事の可変要素は、実際の値に置き換える必要があります。引用符内のテキストを、実際のサブスクリプションとアプリケーションに応じた値に置き換えてください。
+以下の手順では、空白に記入する方式に従って Azure 仮想マシン スケール セットを作成します。スケール セットについて詳しくは、「[仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」をご覧ください。
 
-## 手順 1. Azure PowerShell をインストールする
+この記事の手順を実行するには約 30 分かかります。
 
-[AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
+## 手順 1: Azure PowerShell をインストールする
 
-## 手順2. サブスクリプションを設定する
-
-1. PowerShell プロンプトを起動します。
-
-2. ご使用のアカウントにログインします。
-
-        Login-AzureRmAccount
-
-3. サブスクリプションを取得します。
-
-        Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
-
-4. 使用するサブスクリプションを最新として設定します。
-
-        $subscr = "subscription name"
-        Select-AzureSubscription -SubscriptionName $subscr –Current
-
+最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 ## 手順 2: リソースを作成する
 
@@ -51,7 +35,7 @@
 
 仮想マシン スケール セットは、リソース グループに含める必要があります。
 
-1.  このコマンドを実行して、利用可能な場所とサポートされるサービスの一覧を取得します。
+1.  利用可能な場所とサポートされるサービスの一覧を取得します。
 
         Get-AzureLocation | Sort Name | Select Name, AvailableServices
 
@@ -78,13 +62,16 @@
         West India          {Compute, Storage, PersistentVMRole, HighMemory}
         West US             {Compute, Storage, PersistentVMRole, HighMemory}
 
-    最適な場所を選択し、引用符で囲まれたテキストをその場所の名前に置き換えます。
+2. 最適な場所を選択し、**$locName** の値を場所の名前に置き換えた後、変数を作成します。
 
         $locName = "location name from the list, such as Central US"
 
-4. 引用符で囲まれたテキストを、新しいリソース グループに使用する名前に置き換えた後、前に設定した場所にそれを作成します。
+3. **$rgName** の値を新しいリソース グループに使用する名前に置き換えた後、変数を作成します。
 
         $rgName = "resource group name"
+        
+4. リソース グループを作成します。
+    
         New-AzureRmResourceGroup -Name $rgName -Location $locName
 
     次のような結果が表示されます。
@@ -99,16 +86,24 @@
 
 スケール セットに作成した仮想マシンには、関連付けられているディスクを保存するストレージ アカウントが必要です。
 
-1. 引用符で囲まれたテキストを、ストレージ アカウントに使用する名前に置き換えた後、その名前が一意であるかどうかをテストします。
+1. **$rgName** の値をストレージ アカウントに使用する名前に置き換えた後、変数を作成します。 
 
         $saName = "storage account name"
+        
+2. 選択した名前が一意であるかどうかをテストします。
+    
         Test-AzureName -Storage $saName
 
     **False** が返された場合、提案した名前は一意です。
 
-2. 引用符で囲まれたテキストをストレージ アカウントの種類に置き換えた後、前に設定した名前と場所を使ってアカウントを作成します。指定できる値は、Standard\_LRS、Standard\_GRS、Standard\_RAGRS、Premium\_LRS です。
+3. **$saType** の値をストレージ アカウントの種類に置き換えた後、変数を作成します。
 
         $saType = "storage account type"
+        
+    指定できる値は、Standard\_LRS、Standard\_GRS、Standard\_RAGRS、Premium\_LRS です。
+        
+4. アカウントを作成します。
+    
         New-AzureRmStorageAccount -Name $saName -ResourceGroupName $rgName –Type $saType -Location $locName
 
     次のような結果が表示されます。
@@ -136,165 +131,163 @@
 
 仮想ネットワークは、スケール セット内の仮想マシンのために必要です。
 
-1. 引用符で囲まれたテキストを、仮想ネットワーク内のサブネットに使用する名前に置き換えた後、構成を作成します。
+1. **$subName** の値を、仮想ネットワーク内のサブネットに使用する名前に置き換えた後、変数を作成します。 
 
         $subName = "subnet name"
+        
+2. サブネット構成を作成します。
+    
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subName -AddressPrefix 10.0.0.0/24
+        
+    お使いの仮想ネットワークではアドレス プレフィックスが異なる場合があります。
 
-2. 引用符で囲まれたテキストを、仮想ネットワークに使用する名前に置き換えた後、前に定義した情報とリソースを使ってそれを作成します。
+3. **$netName** の値を、仮想ネットワークに使用する名前に置き換えた後、変数を作成します。
 
-        $netName="virtual network name"
-        $vnet=New-AzureRmVirtualNetwork -Name $netName -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-
+        $netName = "virtual network name"
+        
+4. 仮想ネットワークを作成します。
+    
+        $vnet = New-AzureRmVirtualNetwork -Name $netName -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
 ### パブリック IP アドレス
 
 ネットワーク インターフェイスを作成する前に、パブリック IP アドレスを作成しておく必要があります。
 
-1. 引用符で囲まれたテキストを、パブリック IP アドレスで使用するドメイン名ラベルに置き換えた後、その名前が一意であるかどうかをテストします。ラベルに使用できるのはアルファベット、数字、ハイフンのみであり、最後の文字はアルファベットまたは数字にする必要があります。
+1. **$domName** の値を、パブリック IP アドレスで使用するドメイン名ラベルに置き換えた後、変数を作成します。  
 
         $domName = "domain name label"
+        
+    ラベルに使用できるのはアルファベット、数字、ハイフンのみであり、最後の文字はアルファベットまたは数字にする必要があります。
+    
+2. 名前が一意であるかどうかをテストします。
+    
         Test-AzureRmDnsAvailability -DomainQualifiedName $domName -Location $locName
 
-    **False** が返された場合、提案した名前は一意です。
+    **True** が返された場合、提案した名前は一意です。
 
-2. 引用符で囲まれたテキストを、パブリック IP アドレスに使用する名前に置き換えた後、パブリック IP アドレスを作成します。
+3. **$pipName** の値を、パブリック IP に使用する名前に置き換えた後、変数を作成します。
 
         $pipName = "public ip address name"
+        
+4. パブリック IP アドレスを作成します。
+    
         $pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic -DomainNameLabel $domName
 
 ### ネットワーク インターフェイス
 
 パブリック IP アドレスを作成したので、ネットワーク インターフェイスを作成できます。
 
-1. 引用符で囲まれたテキストを、ネットワーク インターフェイスに使用する名前に置き換えた後、前に作成したリソースを使ってそれを作成します。
+1. **$nicName** の値を、ネットワーク インターフェイスに使用する名前に置き換えた後、変数を作成します。 
 
         $nicName = "network interface name"
+        
+2. ネットワーク インターフェイスを作成します。
+    
         $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
 
+### スケール セットの構成
 
-### 仮想マシン スケール セットの作成
+スケール セットの構成に必要なリソースはすべて揃っているため、作成を開始しましょう。
 
-これで必要なリソースがすべてそろいましたので、スケール セットを作成します。
-
-1. 引用符で囲まれたテキストを、IP 構成に使用する名前に置き換えた後、それを作成します。
+1. **$ipName** の値を、IP 構成に使用する名前に置き換えた後、変数を作成します。 
 
         $ipName = "IP configuration name"
+        
+2. IP 構成を作成します。
+
         $ipConfig = New-AzureRmVmssIpConfig -Name $ipName -LoadBalancerBackendAddressPoolsId $null -SubnetId $vnet.Subnets[0].Id
 
-2. 引用符で囲まれたテキストを、スケール セット構成に使用する名前に置き換えた後、それを作成します。この手順では、セット内の仮想マシンのサイズ (SkuName と呼ばれます) を設定します。[仮想マシンのサイズ](..\virtual-machines\virtual-machines-windows-sizes.md)を確認し、自分のニーズに応じたサイズを調べます。この例の場合、 Standard\_A0 の使用をお勧めします。
+2. **$vmssConfig** の値を、スケール セットの構成に使用する名前に置き換えた後、変数を作成します。
 
-        $vmssName = "Scale set configuration name"
-        $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A0"
-        Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmss -Name $vmssName -Primary $true -IPConfiguration $ipConfig
+        $vmssConfig = "Scale set configuration name"
+        
+3. スケール セットの構成を作成します。
 
+        $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A0" -UpgradePolicyMode "manual"
+        
+    この例では、3 つの仮想マシンを使用して作成されるスケール セットを示しています。スケール セットの容量について詳しくは、「[仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」をご覧ください。この手順では、セット内の仮想マシンのサイズ (SkuName と呼ばれます) も設定します。[仮想マシンのサイズ](..\virtual-machines\virtual-machines-windows-sizes.md)を確認し、自分のニーズに応じたサイズを調べます。
+    
+4. ネットワーク インターフェイス構成をスケール セット構成に追加します。
+        
+        Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmss -Name $vmssConfig -Primary $true -IPConfiguration $ipConfig
+        
     次のような結果が表示されます。
 
-        Sku                   : {
-                                  "name": "Standard_A0",
-                                  "tier": null,
-                                  "capacity": 3
-        						}
-        UpgradePolicy         : {
-                                  "mode": "automatic"
-                                }
-        VirtualMachineProfile : {
-                                  "osProfile": null,
-                                  "storageProfile": null,
-                                  "networkProfile": {
-                                    "networkInterfaceConfigurations": [
-                                      {
-                                        "name": "myniccfg1",
-                                        "properties.primary": true,
-                                        "properties.ipConfigurations": [
-                                          {
-                                            "name": "myipconfig1",
-                                            "properties.subnet": {
-                                              "id": "/subscriptions/########-####-####-####-############/resourceGroups/myrg1/providers/Microsoft.Network/virtualNetworks/myvn1/subnets/mysn1"
-                                            },
-                                            "properties.loadBalancerBackendAddressPools": [],
-                                            "properties.loadBalancerInboundNatPools": [],
-                                            "id": null
-                                          }
-                                        ],
-                                        "id": null
-                                      }
-                                    ]
-                                  },
-                                  "extensionProfile": {
-                                    "extensions": null
-                                  }
-                                }
+        Sku                   : Microsoft.Azure.Management.Compute.Models.Sku
+        UpgradePolicy         : Microsoft.Azure.Management.Compute.Models.UpgradePolicy
+        VirtualMachineProfile : Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile
         ProvisioningState     :
+        OverProvision         :
         Id                    :
         Name                  :
         Type                  :
         Location              : Central US
-        Tags.Count            : 0
         Tags                  :
 
-3. 引用符で囲まれたテキストを、使用するコンピューター名プレフィックス、仮想マシンの管理者アカウントの名前、アカウントのパスワードに置き換えた後、オペレーティング システム プロファイルを作成します。
+#### オペレーティング システム プロファイル
+
+1. **$computerName** の値を使用するコンピューター名プレフィックスに置き換えた後、変数を作成します。 
 
         $computerName = "computer name prefix"
+        
+2. **$adminName** の値を仮想マシンの管理者アカウント名に置き換えた後、変数を作成します。
+
         $adminName = "administrator account name"
+        
+3. **$adminPassword** の値をアカウント パスワードに置き換えた後、変数を作成します。
+
         $adminPassword = "password for administrator accounts"
+        
+4. オペレーティング システム プロファイルを作成します。
+
         Set-AzureRmVmssOsProfile -VirtualMachineScaleSet $vmss -ComputerNamePrefix $computerName -AdminUsername $adminName -AdminPassword $adminPassword
 
-    osProfile セクションは、次のようになります。
+#### ストレージ プロファイル
 
-        "osProfile": {
-          "computerNamePrefix": "myvmss1",
-          "adminUsername": "########",
-          "adminPassword": "########",
-          "customData": null,
-          "windowsConfiguration": null,
-          "linuxConfiguration": null,
-          "secrets": null
-        },
-
-4. 引用符で囲まれたテキストを、ストレージ プロファイルに使用する名前、イメージ情報、仮想マシンが格納されるディスクのストレージ パスに置き換えた後、プロファイルを作成します。必要な情報を調べる方法については、「[Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](..\virtual-machines\virtual-machines-windows-cli-ps-findimage.md)」をご覧ください。
+1. **$storageProfile** の値をストレージ プロファイルに使用する名前に置き換えた後、変数を作成します。  
 
         $storeProfile = "storage profile name"
-        $imagePublisher = "image publisher name, such as MicrosoftWindowsServer"
-        $imageOffer = "offer from publisher, such as WindowsServer"
-        $imageSku = "sku of image, such as 2012-R2-Datacenter"
+        
+2. 使用するイメージを定義する変数を作成します。
+      
+        $imagePublisher = "MicrosoftWindowsServer"
+        $imageOffer = "WindowsServer"
+        $imageSku = "2012-R2-Datacenter"
+        
+    使用する他のイメージについて詳しくは、「[Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](..\virtual-machines\virtual-machines-windows-cli-ps-findimage.md)」をご覧ください。
+        
+3. **$vhdContainer** の値を仮想ハード ディスクが格納されているパス (https://mystorage.blob.core.windows.net/vhds など) に置き換えてから、変数を作成します。
+       
         $vhdContainer = "URI of storage container"
-        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storeProfile -VhdContainer $vhdContainer -OsDiskCreateOption "FromImage" -OsDiskCaching "None"
+        
+4. ストレージ プロファイルを作成します。
 
-    storageProfile セクションは、次のようになります。
+        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storeProfile -VhdContainer $vhdContainer -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
 
-        "storageProfile": {
-          "imageReference": {
-            "publisher": "MicrosoftWindowsServer",
-            "offer": "WindowsServer",
-            "sku": "2012-R2-Datacenter",
-            "version": "latest"
-          },
-          "osDisk": {
-            "name": "mystore1",
-            "caching": "None",
-            "createOption": "FromImage",
-            "osType": null,
-            "image": null,
-            "vhdContainers": {
-              "http://myst1.blob.core.windows.net/vhds"
-            }
-          }
-        },
+### 仮想マシン スケール セット
 
-5. 引用符で囲まれたテキストを、仮想マシン スケール セットの名前に置き換えた後、それを作成します。
+ここでようやく、スケール セットを作成できます。
+
+1. **$vmssName** の値を、仮想マシン スケール セットの名前に置き換えた後、変数を作成します。
 
         $vmssName = "scale set name"
+        
+2. スケール セットを作成します。
+
         New-AzureRmVmss -ResourceGroupName $rgName -Name $vmssName -VirtualMachineScaleSet $vmss
 
     次のように表示され、正常にデプロイされたことがわかります。
 
-        ProvisioningState     : Succeeded
-        Id                    : /subscriptions/########-####-####-####-############/resourceGroups/myrg1/providers/Microsoft.Compute/virtualMachineScaleSets/myvmss1
+        Sku                   : Microsoft.Azure.Management.Compute.Models.Sku
+        UpgradePolicy         : Microsoft.Azure.Management.Compute.Models.UpgradePolicy
+        VirtualMachineProfile : Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile
+        ProvisioningState     : Updating
+        OverProvision         :
+        Id                    : /subscriptions/########-####-####-####-############/resourceGroups/myrg1/providers/Microso
+                               ft.Compute/virtualMachineScaleSets/myvmss1
         Name                  : myvmss1
         Type                  : Microsoft.Compute/virtualMachineScaleSets
         Location              : centralus
-        Tags.Count            : 0
         Tags                  :
 
 ## 手順 3: リソースを調査する
@@ -309,8 +302,8 @@
 
 ## 次のステップ
 
-1. 詳細については、「[仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」をご覧ください。
+- 「[Manage virtual machines in a Virtual Machine Scale Set (仮想マシン スケール セットで仮想マシンを管理する)](virtual-machine-scale-sets-windows-manage.md)」を参照して、作成したスケール セットを管理します。
+- 「[自動スケールと仮想マシン スケール セット](virtual-machine-scale-sets-autoscale-overview.md)」の情報を使って、スケール セットの自動スケールを設定することを検討してください。
+- 「[仮想マシン スケール セットの使用を開始する](virtual-machine-scale-sets-vertical-scale-reprovision.md)」で垂直スケーリングの詳細を確認します。
 
-2. 「[自動スケールと仮想マシン スケール セット](virtual-machine-scale-sets-autoscale-overview.md)」の情報を使って、スケール セットの自動スケールを設定することを検討してください。
-
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

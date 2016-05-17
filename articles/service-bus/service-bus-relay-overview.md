@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="get-started-article"
-	ms.date="01/26/2016"
+	ms.date="05/06/2016"
 	ms.author="sethm"/>
 
 
@@ -38,4 +38,4 @@ Service Bus Relay の詳細については、次のトピックを参照して�
 
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

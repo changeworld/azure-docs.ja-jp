@@ -64,7 +64,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |**China Telecom Global** | サポートされています | サポートされていません | 香港 |
 |**Cologix** | サポートされています | 近日対応予定 | モントリオール+、トロント |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされています | アムステルダム、ダブリン、ロンドン |
-| **Comcast** | サポートされています | サポートされていません | シリコン バレー、ワシントン DC |
+| **Comcast** | サポートされています | サポートされています | シリコン バレー、ワシントン DC |
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** | サポートされています | サポートされています | ロサンゼルス | 
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされています | アムステルダム、アトランタ、シカゴ、ダラス、香港、ロンドン、ロサンゼルス、メルボルン、ニューヨーク、大阪、サンパウロ、シアトル、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
 | **euNetworks** | サポートされています | サポートされています | アムステルダム |
@@ -157,4 +157,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

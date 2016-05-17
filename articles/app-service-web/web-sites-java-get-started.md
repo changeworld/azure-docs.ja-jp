@@ -167,9 +167,12 @@
 
 Azure での Java アプリケーションの開発の詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
-<!-- External Links -->
+<!-- URL List -->
+
 [Visual Studio サブスクライバーの特典を有効にする]: http://go.microsoft.com/fwlink/?LinkId=623901
 [無料試用版にサインアップ]: http://go.microsoft.com/fwlink/?LinkId=623901
 [Azure App Service アプリケーションの作成]: http://go.microsoft.com/fwlink/?LinkId=523751
 
-<!---HONumber=AcomDC_0504_2016-->
+<!-- IMG List -->
+
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/04/2016" 
 	ms.author="robmcm"/>
 
 # Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
@@ -170,4 +170,4 @@ Azure エミュレーターでアプリケーションをテストする前に�
   
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

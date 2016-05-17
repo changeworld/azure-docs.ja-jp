@@ -3,7 +3,7 @@
    description="Data Lake Tools for Visual Studio のインストール方法と、U-SQL スクリプトの開発およびテスト方法について説明します。" 
    services="data-lake-analytics" 
    documentationCenter="" 
-   authors="mumian" 
+   authors="edmacauley" 
    manager="paulettm" 
    editor="cgronlun"/>
  
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="01/04/2016"
-   ms.author="jgao"/>
+   ms.date="04/26/2016"
+   ms.author="edmaca"/>
 
 # チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用
 
-U-SQL は、SQL のメリットと、任意の規模ですべてのデータを処理する独自のコードの表現力を融合した言語です。U-SQL のスケーラブルな分散クエリ機能を使用することで、ストアおよび Azure SQL Database などのリレーショナル ストアのデータを効率的に分析できます。読み取り時にスキーマを適用して非構造化データを処理し、カスタム ロジックと UDF を挿入できます。また、規模に応じて実行する方法を細かく制御できる拡張性もあります。U-SQL の背景にある設計理念の詳細については、この [Visual Studio ブログの投稿](http://blogs.msdn.com/b/visualstudio/archive/2015/09/28/introducing-u-sql.aspx)を参照してください。
+U-SQL は、SQL のメリットと、任意の規模ですべてのデータを処理する独自のコードの表現力を融合した言語です。U-SQL のスケーラブルな分散クエリ機能を使用することで、ストアおよび Azure SQL Database などのリレーショナル ストアのデータを効率的に分析できます。読み取り時にスキーマを適用して非構造化データを処理し、カスタム ロジックと UDF を挿入できます。また、規模に応じて実行する方法を細かく制御できる拡張性もあります。U-SQL の背景にある設計理念の詳細については、この [Visual Studio ブログの投稿](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)を参照してください。
 
 ANSI SQL や T-SQL とは異なる点がいくつかあります。たとえば、SELECT などのキーワードは大文字である必要があります。
 
@@ -47,7 +47,7 @@ select 句、where 述語などの型システムと式言語は C# です。こ
         TO "/output/SearchLog-first-u-sql.csv"
     USING Outputters.Csv();
 
-このスクリプトに変換手順は含まれていません。**SearchLog.tsv** というソース ファイルから読み取り、体系化して、**SearchLog-from-adltools.csv** というファイルに行セットを出力し直します。
+このスクリプトに変換手順は含まれていません。**SearchLog.tsv** というソース ファイルから読み取り、体系化して、**SearchLog-first-u-sql.csv** というファイルに行セットを出力し直します。
 
 Duration フィールドのデータ型の横にある疑問符に注目してください。これは、Duration フィールドを null にできることを意味します。
 
@@ -64,7 +64,7 @@ Duration フィールドのデータ型の横にある疑問符に注目して�
     
         wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 
-    >[AZURE.NOTE]パブリック BLOB またはパブリック コンテナーのアクセス許可を持つ Azure BLOB コンテナーは、現在サポートされていません。
+    >[AZURE.NOTE] パブリック BLOB またはパブリック コンテナーのアクセス許可を持つ Azure BLOB コンテナーは、現在サポートされていません。
 
 ## スカラー変数の使用
 
@@ -419,4 +419,4 @@ U-SQL では、データベースおよびスキーマのコンテキストで�
 - [フォーラムでサポートを受ける](http://aka.ms/adlaforums)
 - [U-SQL に関するフィードバックの提供](http://aka.ms/usqldiscuss)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0504_2016-->

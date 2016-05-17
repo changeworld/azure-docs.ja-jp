@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/11/2016"
+	ms.date="05/02/2016"
 	ms.author="jodebrui"/>
 
 
 # インメモリ OLTP ストレージの監視
 
-[インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。Premium サービス レベルは、それぞれにインメモリ ストレージの最大サイズがあります。詳細については、[SQL Database のサービス レベル](sql-database-service-tiers.md#service-tiers-for-single-databases)に関する記事を参照してください。この上限を超過すると、挿入操作や更新操作が (エラー 41823 で) 失敗することがあります。その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。
+[インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。Premium サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。詳細については、[SQL Database のサービス レベル](sql-database-service-tiers.md#service-tiers-for-single-databases)に関する記事をご覧ください。この上限を超過すると、挿入操作や更新操作が (エラー 41823 で) 失敗することがあります。その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。
 
 ## データがインメモリ ストレージの上限に収まるかどうかを判断する
 
@@ -35,12 +35,12 @@
 Azure [ポータル](https://portal.azure.com/)で、インメモリ ストレージの使用量を[パフォーマンス階層のストレージ上限](sql-database-service-tiers.md#service-tiers-for-single-databases)に対するパーセンテージとして監視できます。
 
 - [データベース] ブレードの [リソース使用率] ボックスで [編集] をクリックします。
-- [インメモリ OLTP ストレージの使用率] メトリックを選択します。
+- メトリック `In-Memory OLTP Storage percentage` を選択します。
 - アラートを追加するには、[リソース使用率] チェック ボックスをオンにして [メトリック] ブレードを開き、[アラートの追加] をクリックします。
 
 または、次のクエリを使用して、インメモリ ストレージの使用率を表示します。
 
-    select xtp_storage_percent from sys.dm_db_resource_stats
+    SELECT xtp_storage_percent FROM sys.dm_db_resource_stats
 
 
 ## メモリ不足状況の修正 - エラー 41823
@@ -56,6 +56,6 @@ Azure [ポータル](https://portal.azure.com/)で、インメモリ ストレ�
 - メモリ最適化テーブルにデータを残す必要がある場合は、十分なインメモリ ストレージがあるサービス階層にアップグレードします。
 
 ## 次のステップ
-「[動的管理ビューを使用した Azure SQL Database の監視](sql-database-monitoring-with-dmvs.md)」を参照してください。
+「[動的管理ビューを使用した Azure SQL Database の監視](sql-database-monitoring-with-dmvs.md)」で詳細を確認する
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0504_2016-->

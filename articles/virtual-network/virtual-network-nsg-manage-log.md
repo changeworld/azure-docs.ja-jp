@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/15/2015"
+   ms.date="03/15/2016"
    ms.author="telmos" />
 
 #ネットワーク セキュリティ グループ (NSG) のためのログ分析
@@ -30,7 +30,7 @@ Azure の各種ログを使用して NSG の管理やトラブルシューティ
 ##ログの有効化
 監査ログは、リソース マネージャーのすべてのリソースで常に自動的に有効になります。イベント ログとカウンター ログは、それらのログで利用できるデータの収集を開始するために有効にする必要があります。ログを有効にするには、次の手順に従います。
 
-1.  [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。まだネットワーク セキュリティ グループがない場合は、続行する前に [NSG を作成](virtual-networks-create-nsg-arm-ps.md)します。
+1.  [Azure ポータル](https://portal.azure.com)にサインインします。まだネットワーク セキュリティ グループがない場合は、続行する前に [NSG を作成](virtual-networks-create-nsg-arm-ps.md)します。
 
 2.  プレビュー ポータルで、**[参照]**、**[ネットワーク セキュリティ グループ]** の順にクリックします。
 
@@ -114,4 +114,4 @@ Azure の各種ログを使用して NSG の管理やトラブルシューティ
 - [Power BI を使用した Azure 監査ログの視覚化](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ記事
 - [Power BI などにおける Azure 監査ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関するブログ記事
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -14,88 +14,103 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/29/2016"
+   ms.date="05/02/2016"
    ms.author="litran"/>
 
 # PowerApps Enterprise で新しい Google Drive API を作成する
 
-> [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/connectors-create-api-googledrive.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-googledrive.md)
+> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> 
+> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページを参照してください。  
+> - PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事を参照してください。 
 
-組織の (テナント) App Service 環境に新しい Google Drive API を追加する
+<!--Archived
+Add the Google Drive API to your organization's (tenant) app service environment. 
 
-## Azure ポータルでの API の作成
+## Create the API in the Azure portal
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
+1. In the [Azure portal](https://portal.azure.com/), sign-in with your work account. For example, sign-in with *yourUserName*@*YourCompany*.com. When you do this, you are automatically signed in to your company subscription.
  
-2. タスク バーの **[参照]** をクリックします。![][15]
+2. Select **Browse** in the task bar:  
+![][15]
 
-3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。![][16]
+3. In the list, you can scroll to find PowerApps or type in *powerapps*:  
+![][16]  
 
-4. **[PowerApps]** で、**[API の管理]** を選択します。![登録されている API の参照][1]
+4. In **PowerApps**, select **Manage APIs**:  
+![Browse to registered apis][1]
 
-5. **[API の管理]** で、**[追加]** をクリックして新しい API を追加します。![Add API][2]
+5. In **Manage APIs**, select **Add** to add the new API:  
+![Add API][2]
 
-6. API のわかりやすい**名前**を入力します。
+6. Enter a descriptive **name** for your API.  
 	
-7. **[ソース]** で、**[利用可能な API]** を選択して既成の API を選択し、**[Google Drive]** を選択します。![Google Drive API を選択する][3]
+7. In **Source**, select **Available APIs** to select the pre-built APIs, and select **Google Drive**:  
+![select google drive api][3]
 
-8. **[設定] - [必要な設定の構成]** を選択します。![Google Drive API の設定を構成する][4]
+8. Select **Settings - Configure required settings**:  
+![configure google drive API settings][4]
 
-9. Google Drive アプリケーションの*アプリケーション キー*と*アプリケーション シークレット*を入力します。これらがない場合は、このトピックの「PowerApps で使用する Google Drive アプリの登録」を参照して、必要なキーとシークレットの値を作成します。
+9. Enter *App Key* and *App Secret* of your Google Drive application. If you don't have one, see the "Register a Google Drive app for use with PowerApps" section in this topic to create the key and secret values you need.  
 
-	> [AZURE.IMPORTANT] **リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
+	> [AZURE.IMPORTANT] Save the **redirect URL**. You may need this value later in this topic.
 
-10. **[OK]** をクリックして、手順を完了します。
+10. Select **OK** to complete the steps.
 
-完了すると、App Service 環境に新しい Google Drive API が追加されます。
+When finished, a new Google Drive API is added to your app service environment.
 
 
-## 省略可能: PowerApps で使用する Google Drive アプリの登録
+## Optional: Register a Google Drive app for use with PowerApps
 
-キーとシークレットの値が割り当てられた既存の Google Drive アプリがない場合は、次の手順に従ってアプリケーションを作成し、必要な値を取得します。
+If you don't have an existing Google Drive app with the key and secret values, then use the following steps to create the application, and get the values you need. 
 
-1. [Google Developers Console][5] にサインインします。 ![Google Developers Console][6]
+1. Sign in to [Google Developers Console][5]:  
+![Google developers console][6]
 
-2. **[Create an empty project]** を選択します。
+2. Select **Create an empty project**. 
 
-3. アプリケーションの名前を入力し、利用規約に同意して、**[Create]** を選択します。 ![新しい Google Drive プロジェクトを作成する][7]
+3. Enter a name for your application, agree to the terms and conditions, and select **Create**:  
+![create new google drive project][7]
 
-4. 新しいプロジェクトが正常に作成されたら、**[Use Google APIs]** を選択します。 ![Google API を使用する][8]
+4. On successful creation of the new project, select **Use Google APIs**:  
+![Use google apis][8]
 
-5. 概要ページで、**[Drive API]** を選択します。![Google Drive API の概要][9]
+5. In the overview page, select **Drive API**:  
+![Google Drive API overview][9]
 
-6. **[Enable API]** を選択します。 ![Google Drive API を有効にする][10]
+6. Select **Enable API**:  
+![Enable Google Drive API][10]
 
-7. Drive API を有効にするときは、**[Credentials]** および **[OAuth 2.0 Client ID]** を選択します。 ![資格情報を追加する][12]
+7. On enabling the Drive API, select **Credentials**, and select **OAuth 2.0 Client ID**:  
+![Add credentials][12]
 
-8. **[Configure consent screen]** を選択します。
+8. Select **Configure consent screen**.
 
-9. **[OAuth consent screen]** タブで、**[Product Name]** を入力し、**[Save]** を選択します。 ![Configure consent screen][13]
+9. In the **OAuth consent screen** tab, enter a **Product Name**, and select **Save**:  
+![Configure consent screen][13]
 
-10. [Create Client ID] ページで次のようにします。
+10. In the create client id page:  
 
-	1. **[Application type]** で **[Web application]** を選択します。  
-	2.  クライアントの名前を入力します。  
-	3. Redirect URL を、(このトピックで) Azure ポータルで新しい Google Drive API を追加したときに受け取ったリダイレクト URL に設定します。  
-	4. **[作成]** を選択します。  
+	1. In **Application type**, select **Web application**.  
+	2.  Enter a name for the client.  
+	3. Set the redirect URL to the redirect URL you received when you added the new Google Drive API in the Azure Portal (in this topic).  
+	4. Select **Create**.  
 
-	![クライアント ID を作成する][14]
+	![Create client id][14] 
 
-11. 登録したアプリケーションのクライアント ID とクライアント シークレットが表示されます。
+11. You are shown the client id and client secret of the registered application.
 
-新しい Google Drive アプリが作成されます。Azure ポータルの Google Drive API 構成でこのアプリケーションを使用できます。
+A new Google Drive app is created. You can use this app in your Google Drive API configuration in the Azure portal. 
 
-## REST API に関するページを参照してください。
+## See the REST APIs
 
-[Google Drive REST API](../connectors/connectors-create-api-googledrive.md) リファレンス。
+[Google Drive REST API](../connectors/connectors-create-api-googledrive.md) reference.
 
-## まとめと次のステップ
-このトピックでは、Google Drive API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
+## Summary and next steps
+In this topic, you added the Google Drive API to your PowersApps Enterprise. Next, give users access to the API so it can be added to their apps: 
 
-[接続を追加し、ユーザーにアクセスを許可する](powerapps-manage-api-connection-user-access.md)
-
+[Add a connection and give users access](powerapps-manage-api-connection-user-access.md)
+-->
 
 <!--References-->
 [1]: ./media/powerapps-create-api-googledrive/browse-to-registered-apis.PNG
@@ -115,4 +130,4 @@
 [15]: ./media/powerapps-create-api-googledrive/browseall.png
 [16]: ./media/powerapps-create-api-googledrive/allresources.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

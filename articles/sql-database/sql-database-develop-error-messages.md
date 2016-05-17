@@ -57,7 +57,7 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 一時的なエラーが発生すると通常、クライアント プログラムの*再試行ロジック*が設計に従って実行され、同じ操作がやり直されます。再試行ロジックのコード例については、以下のページを参照してください。
 
 
-- [SQL Database のクライアント開発とクイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
+- [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
 - [SQL Database における接続エラーと一過性のエラーから復旧するための対策](sql-database-connectivity-issues.md)
 
@@ -253,4 +253,4 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 - [Azure SQL Database の一般的な制限事項とガイドライン](sql-database-general-limitations.md)
 - [Azure SQL Database のリソース制限](sql-database-resource-limits.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0504_2016-->

@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="Azure"
   ms.workload="na"
-  ms.date="02/04/2016"
+  ms.date="04/29/2016"
   ms.author="hascipio; v-divte"/>
 
 # Azure Marketplace 向け仮想マシン イメージを作成するための技術的な前提条件
@@ -35,7 +35,7 @@ Azure ベース のVM は、Windows または Linux 上で開発することが�
 
 > [AZURE.NOTE] Windows ベースのコンピューターにアクセスして、次の操作を行う必要があります。
 - 証明書検証ツールを実行します。
-- VHD 証明書送信用の VHD 共有アクセス署名 URL を作成します。
+- VHD 証明書送信用の VHD Shared Access Signature URL を作成します。
 
 ## VHD の開発
 Azure VHD は、クラウドまたはオンプレミスでも開発できます。
@@ -48,9 +48,9 @@ Azure VHD は、クラウドまたはオンプレミスでも開発できます�
 
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
-- [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines/virtual-machines-windows-hero-tutorial/)
+- [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines-windows-hero-tutorial/)
 
 
 [link-acct-creation]: marketplace-publishing-accounts-creation-registration.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/04/2016" 
 	ms.author="robmcm"/>
 
 # 証明書を Java CA 証明書ストアに追加する方法
@@ -56,4 +56,4 @@ Azure で使用するルート証明書の詳細については、[Azure ルー�
 
 Java の詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

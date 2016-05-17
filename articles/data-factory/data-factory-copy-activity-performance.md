@@ -219,9 +219,9 @@ Microsoft データ ストアの場合は、データ ストアに限定した[�
 
 - Azure Storage (Azure BLOB、Azure Table など): [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md) と [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage//storage-performance-checklist.md)
 - Azure SQL Database: [パフォーマンスを監視](../sql-database/sql-database-service-tiers.md#monitoring-performance)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
-- Azure SQL Data Warehouse: その機能は、Data Warehouse ユニット (DWU) で測定されます。「[SQL Data Warehouse を使用した弾力的なパフォーマンスとスケール](../sql-data-warehouse/sql-data-warehouse-performance-scale.md)」を参照してください。
+- Azure SQL Data Warehouse: その機能は、Data Warehouse ユニット (DWU) で測定されます。「[SQL Data Warehouse を使用した弾力的なパフォーマンスとスケール](../sql-data-warehouse/sql-data-warehouse-overview-scalability.md)」を参照してください。
 - Azure DocumentDB: [Performance level in DocumentDB (DocumentDB のパフォーマンス レベル)](../documentdb/documentdb-performance-levels.md)
 - オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)
 - オンプレミスのファイル サーバー: [Performance Tuning for File Servers (ファイル サーバーのパフォーマンス チューニング)](https://msdn.microsoft.com/library/dn567661.aspx)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

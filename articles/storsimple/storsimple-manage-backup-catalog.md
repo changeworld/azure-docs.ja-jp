@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/30/2015"
+   ms.date="04/28/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用してバックアップ カタログを管理する
@@ -23,7 +23,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 
 このチュートリアルでは、バックアップ セットを一覧表示、選択、削除する方法について説明します。バックアップからデバイスを復元する方法については、「[Restore your device from a backup set (バックアップ セットからデバイスを復元する)](storsimple-restore-from-backup-set.md)」をご覧ください。ボリュームを複製する方法については、「[StorSimple ボリュームの複製](storsimple-clone-volume.md)」をご覧ください。
 
-![バックアップ カタログ](./media/storsimple-manage-backup-catalog/HCS_BackupCatalog.png)
+![バックアップ カタログ](./media/storsimple-manage-backup-catalog/backupcatalog.png)
 
 **[バックアップ カタログ]** ページには、バックアップ セットの選択を絞り込むことができるクエリが用意されています。次のパラメーターに基づいて、取得するバックアップ セットをフィルター選択できます。
 
@@ -117,4 +117,4 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0504_2016-->

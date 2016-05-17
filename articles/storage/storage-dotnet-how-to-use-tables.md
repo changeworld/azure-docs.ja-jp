@@ -1,6 +1,6 @@
 <properties
 	pageTitle=".NET を使用して Azure Table Storage を使用する | Microsoft Azure"
-	description="Microsoft の NoSQL データ ストアの Azure Table Storage を使用して構造化データをクラウドに格納します。テーブルの作成と削除、およびテーブル データの挿入、更新、削除、クエリなど、単純な Table Storage 操作を開始します。"
+	description="NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。"
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="04/07/2016"
+	ms.date="04/29/2016"
 	ms.author="tamram"/>
 
 
@@ -463,4 +463,4 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

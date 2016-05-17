@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="04/30/2016"
 	ms.author="markusvi"/>
 
 
@@ -103,7 +103,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 |名前| 必須/繰り返し | 型 | メモ |
 |--- | ---                 | ---  | ---   |
 | **separator** | 必須 | String | source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。区切り記号が必要ない場合は、“” とすることができます。 |
-| ****source1 … sourceN ** | 必須、回数は可変 | String | 結合する文字列値。 |
+| **source1 … sourceN** | 必須、回数は可変 | String | 結合する文字列値。 |
 
 
 
@@ -315,4 +315,4 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 - [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-	ms.date="03/18/2016"
+	ms.date="04/28/2016"
 	ms.author="yuridio"/>
 
 
@@ -91,11 +91,12 @@ Azure Active Directory では、何千もの SaaS アプリケーションやオ
 - 証明書
 
 
->[AZURE.NOTE]
-Azure で使用できる各プロトコルとその機能の詳細については、「[Azure Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)」をお読みください。Azure AD のサポートを使用すると、モバイル ビジネス アプリケーションでも簡単な Mobile Services の認証エクスペリエンスを使用できるため、従業員は会社の Active Directory 資格情報を使用してモバイル アプリケーションにサインインできます。この機能により、既にサポートしている ID プロバイダー (Microsoft アカウント、Facebook ID、Google ID、Twitter ID など) と共に、Azure AD が Mobile Services の ID プロバイダーとしてサポートされます。オンプレミスのアプリケーションで、会社の AD DS にあるユーザーの資格情報が使用されている場合、クラウドのユーザーやパートナーからのアクセスを透過的にする必要があります。(クラウドベースの) Web アプリケーション、Web API、Microsoft Cloud Services、サードパーティの SaaS アプリケーション、およびネイティブの (モバイル) クライアント アプリケーションに対するユーザーの条件付きアクセス制御を管理できます。また、セキュリティ、監査、レポートを 1 か所で実行できる利点があります。ただし、非運用環境で、またはユーザー数を限定してこれを検証することをお勧めします。
+>[AZURE.NOTE] Azure で使用できる各プロトコルとその機能の詳細については、「[Azure Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)」をお読みください。
 
->[AZURE.TIP]
-AD DS にあるようなグループ ポリシーが Azure AD にはないことを断っておくことが重要です。デバイスのポリシーを適用するには、[Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) などのモバイル デバイス管理ソリューションが必要です。
+Azure AD のサポートを使用すると、モバイル ビジネス アプリケーションでも簡単な Mobile Services の認証エクスペリエンスを使用できるため、従業員は会社の Active Directory 資格情報を使用してモバイル アプリケーションにサインインできます。この機能により、既にサポートしている ID プロバイダー (Microsoft アカウント、Facebook ID、Google ID、Twitter ID など) と共に、Azure AD が Mobile Services の ID プロバイダーとしてサポートされます。オンプレミスのアプリケーションで、会社の AD DS にあるユーザーの資格情報が使用されている場合、クラウドのユーザーやパートナーからのアクセスを透過的にする必要があります。(クラウドベースの) Web アプリケーション、Web API、Microsoft Cloud Services、サードパーティの SaaS アプリケーション、およびネイティブの (モバイル) クライアント アプリケーションに対するユーザーの条件付きアクセス制御を管理できます。また、セキュリティ、監査、レポートを 1 か所で実行できる利点があります。ただし、非運用環境で、またはユーザー数を限定してこれを検証することをお勧めします。
+
+
+>[AZURE.TIP] AD DS にあるようなグループ ポリシーが Azure AD にはないことを確認しておくことが必要です。デバイスのポリシーを適用するには、[Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) などのモバイル デバイス管理ソリューションが必要です。
 
 Azure AD を使用してユーザーが認証されたら、そのユーザーが持つアクセスのレベルを評価する必要があります。ユーザーがリソースに対して持つアクセスのレベルは異なりますが、Azure AD では一部のリソースへのアクセスを制御することにより、セキュリティ層を追加することができるため、ファイル サーバーにあるファイルのアクセス制御など、リソース自体にそれぞれ独自のアクセス制御リストを持たせることができる点にも注意する必要があります。次の図は、ハイブリッド シナリオで使用できるアクセス制御のレベルをまとめたものです。
 
@@ -104,19 +105,17 @@ Azure AD を使用してユーザーが認証されたら、そのユーザー�
 
 図 X に示した個々のやり取りは、Azure AD で対応できる 1 つのアクセス制御シナリオを表しています。各シナリオの説明を以下に示します。
 
-1. オンプレミスでホストされるアプリケーションへの条件付きアクセス: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。オンプレミスの条件付きアクセスを設定する方法の詳細については、「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-conditional-access-on-premises-setup.md)」を参照してください。
-2. Azure 管理ポータルに対する Access Control: Azure には、RBAC (ロールベースの Access Control) を使用して管理ポータルへのアクセスを制御する機能もあります。この方法により、ユーザーが Azure 管理ポータルにアクセスした時点で実行できる操作の量を会社が制限できます。RBAC を使用してポータルへのアクセスを制御することで、IT 管理者は、次のアクセスの管理方法を使用してアクセスを委任できます。
+1\. オンプレミスでホストされるアプリケーションへの条件付きアクセス: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。オンプレミスの条件付きアクセスを設定する方法の詳細については、「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-conditional-access-on-premises-setup.md)」を参照してください。2. Microsoft Azure 管理ポータルに対するアクセス制御: Azure には、RBAC (ロールベースのアクセス制御) を使用して管理ポータルへのアクセスを制御する機能もあります。この方法により、ユーザーが Azure 管理ポータルにアクセスした時点で実行できる操作の量を会社が制限できます。RBAC を使用してポータルへのアクセスを制御することで、IT 管理者は、次のアクセスの管理方法を使用してアクセスを委任できます。
 
  - グループベースのロールの割り当て: ローカルの Active Directory から同期できる Azure AD グループにアクセスを割り当てることができます。これにより、グループ管理用のツールとプロセスに組織が費やした既存の投資を活用できます。また、Azure AD Premium の委任されたグループ管理機能も使用できます。
  - Azure の組み込みロールの活用: 所有者、共同作業者、閲覧者の 3 つのロールを使用して、ジョブの実行に必要なタスクのみを実行する権限をユーザーとグループに付与できます。
  - リソースへのきめ細かなアクセス: 特定のサブスクリプションのユーザーとグループ、リソース グループ、Web サイトやデータベースなどの個々の Azure リソースにロールを割り当てることができます。このように、ユーザーが必要なすべてのリソースにアクセスし、管理する必要のないリソースには一切アクセスできないようにすることができます。
 
- >[AZURE.NOTE]
-  この機能の詳細については、[Azure でのロールベースのアクセス制御](https://azure.microsoft.com/updates/role-based-access-control-in-azure-preview-portal/)に関するページを参照してください。アプリケーションをビルドしていて、それらのアクセス制御をカスタマイズする必要がある開発者の場合、Azure AD アプリケーション ロールを使用して承認を実行することもできます。この機能を使用するアプリケーションをビルドする方法については、こちらの [WebApp-RoleClaims-DotNet の例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet)を参照してください。
+>[AZURE.NOTE] この機能の詳細については、[Azure でのロールベースのアクセス制御](https://azure.microsoft.com/updates/role-based-access-control-in-azure-preview-portal/)に関するページを参照してください。アプリケーションをビルドしていて、それらのアクセス制御をカスタマイズする必要がある開発者の場合、Azure AD アプリケーション ロールを使用して承認を実行することもできます。この機能を使用するアプリケーションをビルドする方法については、こちらの [WebApp-RoleClaims-DotNet の例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet)を参照してください。
 
-3. Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠デバイスからサービスへのアクセスを許可できます。詳細については、「[Office 365 サービス用条件付きアクセスのデバイス ポリシー](active-directory-conditional-access-device-policies.md)」を参照してください。
+3\. Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠デバイスからサービスへのアクセスを許可できます。詳細については、「[Office 365 サービス用条件付きアクセスのデバイス ポリシー](active-directory-conditional-access-device-policies.md)」を参照してください。
 
-4. Saas アプリの条件付きアクセス: [この機能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx)を使用すると、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークを使用していないユーザーのアクセスをブロックする機能を構成できます。Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
+4\. Saas アプリの条件付きアクセス: [この機能](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx)を使用すると、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークを使用していないユーザーのアクセスをブロックする機能を構成できます。Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
 
 アクセス制御のオプションでは複数層のアプローチを使用しているため、オプションを比較することはこのタスクには適しません。必ず、リソースへのアクセスを制御する必要があるシナリオごとに使用可能なすべてのオプションを使用してください。
 
@@ -156,4 +155,4 @@ Azure AD Premium で提供され、インシデント対応調査時に使用で
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

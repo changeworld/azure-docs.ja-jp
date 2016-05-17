@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="01/08/2016"
+	ms.date="05/06/2016"
 	ms.author="cabailey"/>
 
 # Azure Key Vault のログ記録 #
-Azure Key Vault は、ほとんどのリージョンで使用できます。詳細については、[Key Vault の価格のページ](../../../../pricing/details/key-vault/)を参照してください。
+Azure Key Vault は、ほとんどのリージョンで使用できます。詳細については、[Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
 
 ## はじめに  
 1 つまたは複数の Key Vault を作成したら、いつ、どのように、誰によって Key Vault がアクセスされるのかを監視するのが一般的です。監視を行うには、Key Vault のログ記録を有効にします。これにより、指定した Azure ストレージ アカウントに情報が保存されます。指定したストレージ アカウントに対して **insights-logs-auditevent** という名前の新しいコンテナーが自動的に作成されます。このストレージ アカウントを使用して複数の Key Vault のログを収集することができます。
@@ -30,7 +30,7 @@ Key Vault の操作を行ってから、遅くとも 10 分後には、ログ情
 このチュートリアルでは、Azure Key Vault のログ記録を開始する際に役立つ情報を提供し、ストレージ アカウントを作成し、ログ記録を有効にし、収集されたログ情報を解釈します。
 
 
->[AZURE.NOTE]Key Vault、キー、またはシークレットの作成方法については、このチュートリアルに含まれていません。詳細については、「[Azure Key Vault の概要](key-vault-get-started.md)」を参照してください。また、クロスプラットフォーム コマンドライン インターフェイスの手順については、[対応するチュートリアル](key-vault-manage-with-cli.md)をご覧ください。
+>[AZURE.NOTE]  Key Vault、キー、またはシークレットの作成方法については、このチュートリアルに含まれていません。詳細については、「[Azure Key Vault の概要](key-vault-get-started.md)」を参照してください。また、クロスプラットフォーム コマンドライン インターフェイスの手順については、[対応するチュートリアル](key-vault-manage-with-cli.md)をご覧ください。
 >
 >現時点では、Azure ポータルで Azure Key Vault を構成できません。代わりに、Azure PowerShell 命令を使用します。
 
@@ -73,7 +73,7 @@ Azure PowerShell の詳細については、「[How to install and configure Azu
 	$sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name ContosoKeyVaultLogs -Type Standard_LRS -Location 'East Asia'
 
 
->[AZURE.NOTE]既存のストレージ アカウントを使用する場合、そのストレージ アカウントでは、目的の Key Vault と同じサブスクリプションを使用する必要があります。また、クラシック デプロイメント モデルではなく、リソース マネージャー デプロイメント モデルを使用する必要があります。
+>[AZURE.NOTE]  既存のストレージ アカウントを使用する場合、そのストレージ アカウントでは、目的の Key Vault と同じサブスクリプションを使用する必要があります。また、クラシック デプロイメント モデルではなく、リソース マネージャー デプロイメント モデルを使用する必要があります。
 
 ## <a id="identify"></a>ログに対する Key Vault を識別する ##
 
@@ -105,8 +105,8 @@ Key Vault のログ記録を有効にするために、AzureRmDiagnosticSetting 
 - 認証されたすべての REST API 要求がログ記録されます。これには、アクセス許可がないため、システム エラーのため、または不正な要求の結果として、失敗した要求が含まれます。
 - Key Vault 自体に関する操作。これには、作成、削除、Key Vault アクセス ポリシーの設定、Key Vault 属性 (タグなど) の更新が含まれます。
 - Key Vault 内のキーおよびシークレットに関する操作。これには、キーまたはシークレットの作成、変更、または削除といった操作に加えて、キーの署名、確認、暗号化、複合化、ラップ、およびラップ解除、シークレットの取得、キーとシークレットとこれらのバージョンの一覧表示などの操作も含まれます。
+- 結果として 401 応答が発生する、認証されていない要求。たとえば、ベアラー トークンを持たない要求、形式が正しくない要求、有効期限切れの要求、または無効なトークンを持つ要求です。  
 
-認証されていない要求はログ記録されません。
 
 ## <a id="access"></a>ログへのアクセス ##
 
@@ -148,7 +148,7 @@ Key Vault のログは、指定したストレージ アカウント内の **ins
 
 	$blobs | Get-AzureStorageBlobContent -Destination 'C:\Users\username\ContosoKeyVaultLogs'
 
-この 2 番目のコマンドを実行すると、BLOB 名に含まれる **/** 区切り記号によって、宛先フォルダーの下に完全なフォルダー構造が作成されます。このフォルダー構造は、BLOB をファイルとしてダウンロードし、保存するために使用されます。
+この 2 番目のコマンドを実行すると、BLOB 名に含まれる **/** 区切り記号によって、宛先フォルダーの下にフォルダー構造全体が作成されます。このフォルダー構造は、BLOB をファイルとしてダウンロードし、保存するために使用されます。
 
 BLOB を選択的にダウンロードするには、ワイルドカードを使用します。次に例を示します。
 
@@ -156,11 +156,11 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 
 		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
 
-- 複数のリソース グループを持っている場合、1 つのリソース グループのみについてログをダウンロードするには、`-Blob '*/RESOURCEGROUPS/<resource group name>/*'` を次のように使用します。
+- 複数のリソース グループを持っている場合、1 つのリソース グループのみについてログをダウンロードするには、次のように `-Blob '*/RESOURCEGROUPS/<resource group name>/*'` を使用します。
 
 		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
 
-- 2016 年 1 月のすべてのログをダウンロードする場合は、`-Blob '*/year=2016/m=01/*'` を次のようにします。
+- 2016 年 1 月のすべてのログをダウンロードする場合は、次のように `-Blob '*/year=2016/m=01/*'` を使用します。
 
 		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
 
@@ -173,7 +173,7 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 
 ## <a id="interpret"></a>Key Vault のログを解釈する ##
 
-個々の BLOB はテキストとして格納されます (JSON BLOB 形式)。`Get-AzureRmKeyVault -VaultName 'contosokeyvault'` を実行して得られたログ エントリーの例を次に示します。
+個々の BLOB はテキストとして格納されます (JSON BLOB 形式)。`Get-AzureRmKeyVault -VaultName 'contosokeyvault'` を実行して得られたログ エントリの例を次に示します。
 
 	{
     	"records": 
@@ -221,54 +221,54 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 
 **operationName** フィールドの値は、ObjectVerb 形式となります。次に例を示します。
 
-- Key Vault に関するすべての操作は、'Vault`<action>`' 形式となります (`VaultGet` や `VaultCreate` など)。 
+- Key Vault に関するすべての操作は、"Vault`<action>`" 形式となります (`VaultGet` や `VaultCreate` など)。 
 
-- キーに関するすべての操作は、'Key`<action>`' 形式となります (`KeySign` や `KeyList` など)。
+- キーに関するすべての操作は、"Key`<action>`" 形式となります (`KeySign` や `KeyList` など)。
 
-- シークレットに関するすべての操作は、'Secret`<action>`' 形式となります (`SecretGet` や `SecretListVersions` など)。
+- シークレットに関するすべての操作は、"Secret`<action>`" 形式となります (`SecretGet` や `SecretListVersions` など)。
 
 次の表に、operationName と、対応する REST API コマンドを一覧します。
 
 | operationName | REST API コマンド |
 | ------------- |-------------|
 | 認証 | Azure Active Directory エンドポイント経由|
-| VaultGet | [Key Vault に関する情報を取得します](https://msdn.microsoft.com/en-us/library/azure/mt620026.aspx)|
-| VaultPut | [Key Vault を作成または更新します](https://msdn.microsoft.com/en-us/library/azure/mt620025.aspx)|
-| VaultDelete | [Key Vault を削除します](https://msdn.microsoft.com/en-us/library/azure/mt620022.aspx)|
+| VaultGet | [Key Vault に関する情報を取得します](https://msdn.microsoft.com/ja-JP/library/azure/mt620026.aspx)|
+| VaultPut | [Key Vault を作成または更新します](https://msdn.microsoft.com/ja-JP/library/azure/mt620025.aspx)|
+| VaultDelete | [Key Vault を削除します](https://msdn.microsoft.com/ja-JP/library/azure/mt620022.aspx)|
 | VaultPatch | [Key Vault を更新します](https://msdn.microsoft.com/library/azure/mt620025.aspx)|
-| VaultList | [リソース グループ内のすべての Key Vault を一覧表示します。](https://msdn.microsoft.com/en-us/library/azure/mt620027.aspx)|
-| KeyCreate | [キーを作成します](https://msdn.microsoft.com/en-us/library/azure/dn903634.aspx)|
-| KeyGet | [キーに関する情報を取得します](https://msdn.microsoft.com/en-us/library/azure/dn878080.aspx)|
-| KeyImport | [資格情報コンテナーにキーをインポートします](https://msdn.microsoft.com/en-us/library/azure/dn903626.aspx)|
-| KeyBackup | [キーをバックアップします](https://msdn.microsoft.com/en-us/library/azure/dn878058.aspx)|
-| KeyDelete | [キーを削除します](https://msdn.microsoft.com/en-us/library/azure/dn903611.aspx)|
-| KeyRestore | [キーを復元します](https://msdn.microsoft.com/en-us/library/azure/dn878106.aspx)|
-| KeySign | [キーで署名します](https://msdn.microsoft.com/en-us/library/azure/dn878096.aspx)|
-| KeyVerify | [キーで確認します](https://msdn.microsoft.com/en-us/library/azure/dn878082.aspx)|
-| KeyWrap | [キーをラップします](https://msdn.microsoft.com/en-us/library/azure/dn878066.aspx)|
-| KeyUnwrap | [キーのラップを解除します](https://msdn.microsoft.com/en-us/library/azure/dn878079.aspx)|
-| KeyEncrypt | [キーで暗号化します](https://msdn.microsoft.com/en-us/library/azure/dn878060.aspx)|
-| KeyDecrypt | [キーで復号化します](https://msdn.microsoft.com/en-us/library/azure/dn878097.aspx)|
-| KeyUpdate | [キーを更新します](https://msdn.microsoft.com/en-us/library/azure/dn903616.aspx)|
-| KeyList | [資格情報コンテナー内のキーを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/dn903629.aspx)|
-| KeyListVersions | [キーのバージョンを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/dn986822.aspx)|
-| SecretSet | [シークレットを作成します](https://msdn.microsoft.com/en-us/library/azure/dn903618.aspx)|
-| SecretGet | [シークレットを取得します](https://msdn.microsoft.com/en-us/library/azure/dn903633.aspx)|
-| SecretUpdate | [シークレットを更新します](https://msdn.microsoft.com/en-us/library/azure/dn986818.aspx)|
-| SecretDelete | [シークレットを削除します](https://msdn.microsoft.com/en-us/library/azure/dn903613.aspx)|
-| SecretList | [資格情報コンテナー内のシークレットを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx)|
-| SecretListVersions | [シークレットのバージョンを一覧表示します](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx)|
+| VaultList | [リソース グループ内のすべての Key Vault を一覧表示します。](https://msdn.microsoft.com/ja-JP/library/azure/mt620027.aspx)|
+| KeyCreate | [キーを作成します](https://msdn.microsoft.com/ja-JP/library/azure/dn903634.aspx)|
+| KeyGet | [キーに関する情報を取得します](https://msdn.microsoft.com/ja-JP/library/azure/dn878080.aspx)|
+| KeyImport | [資格情報コンテナーにキーをインポートします](https://msdn.microsoft.com/ja-JP/library/azure/dn903626.aspx)|
+| KeyBackup | [キーをバックアップします](https://msdn.microsoft.com/ja-JP/library/azure/dn878058.aspx)|
+| KeyDelete | [キーを削除します](https://msdn.microsoft.com/ja-JP/library/azure/dn903611.aspx)|
+| KeyRestore | [キーを復元します](https://msdn.microsoft.com/ja-JP/library/azure/dn878106.aspx)|
+| KeySign | [キーで署名します](https://msdn.microsoft.com/ja-JP/library/azure/dn878096.aspx)|
+| KeyVerify | [キーで確認します](https://msdn.microsoft.com/ja-JP/library/azure/dn878082.aspx)|
+| KeyWrap | [キーをラップします](https://msdn.microsoft.com/ja-JP/library/azure/dn878066.aspx)|
+| KeyUnwrap | [キーのラップを解除します](https://msdn.microsoft.com/ja-JP/library/azure/dn878079.aspx)|
+| KeyEncrypt | [キーで暗号化します](https://msdn.microsoft.com/ja-JP/library/azure/dn878060.aspx)|
+| KeyDecrypt | [キーで復号化します](https://msdn.microsoft.com/ja-JP/library/azure/dn878097.aspx)|
+| KeyUpdate | [キーを更新します](https://msdn.microsoft.com/ja-JP/library/azure/dn903616.aspx)|
+| KeyList | [資格情報コンテナー内のキーを一覧表示します](https://msdn.microsoft.com/ja-JP/library/azure/dn903629.aspx)|
+| KeyListVersions | [キーのバージョンを一覧表示します](https://msdn.microsoft.com/ja-JP/library/azure/dn986822.aspx)|
+| SecretSet | [シークレットを作成します](https://msdn.microsoft.com/ja-JP/library/azure/dn903618.aspx)|
+| SecretGet | [シークレットを取得します](https://msdn.microsoft.com/ja-JP/library/azure/dn903633.aspx)|
+| SecretUpdate | [シークレットを更新します](https://msdn.microsoft.com/ja-JP/library/azure/dn986818.aspx)|
+| SecretDelete | [シークレットを削除します](https://msdn.microsoft.com/ja-JP/library/azure/dn903613.aspx)|
+| SecretList | [資格情報コンテナー内のシークレットを一覧表示します](https://msdn.microsoft.com/ja-JP/library/azure/dn903614.aspx)|
+| SecretListVersions | [シークレットのバージョンを一覧表示します](https://msdn.microsoft.com/ja-JP/library/azure/dn986824.aspx)|
 
 
 
 
 ## <a id="next"></a>次のステップ ##
 
-Web アプリケーションでの Azure Key Vault の使用方法に関するチュートリアルについては、「[Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md)」をご覧ください。
+Web アプリケーションでの Azure Key Vault の使用方法に関するチュートリアルについては、「[Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md)」を参照してください。
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、[Azure Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052.aspx)に関するページを参照してください。
+Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、「[Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](https://msdn.microsoft.com/library/azure/dn868052.aspx)」を参照してください。
  
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0511_2016-->

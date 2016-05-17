@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/08/2016"
+	ms.date="04/29/2016"
 	ms.author="bruceper"/>
 
 # CLI を使用した Key Vault の管理 #
@@ -31,7 +31,6 @@ Azure Key Vault は、ほとんどのリージョンで使用できます。詳�
 Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault-whatis.md)」をご覧ください。
 
 ## 前提条件
-
 このチュートリアルを完了するには、以下が必要です。
 
 - Microsoft Azure サブスクリプション。サブスクリプションがない場合でも、[無料試用版](../../../pricing/free-trial)にサインアップできます。
@@ -106,6 +105,12 @@ Azure リソース マネージャーを使用すると、すべての関連す�
 
 最初のパラメーターはリソース グループ名で、2 番目のパラメーターは場所です。場所の場合には、`azure location list` コマンドを使用して別の場所をこの例の場所に指定する方法を識別します。詳細情報が必要な場合は、`azure help location` と入力します。
 
+## Key Vault リソース プロバイダーの登録
+Key Vault リソース プロバイダーがサブスクリプションに登録されていることを確認します。
+
+`azure provider register Microsoft.KeyVault`
+
+これは、サブスクリプションごとに 1 回だけ実行する必要があります。
 
 
 ## Key Vault を作成します
@@ -187,6 +192,8 @@ Azure Active Directory にアプリケーションを登録するには:
 
     azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-keys '["decrypt","sign"]'
 
+>[AZURE.NOTE] Windows コマンド プロンプトで実行する場合は、単一引用符を二重引用符に置き換え、内側の二重引用符をエスケープします。たとえば、"["decrypt","sign"]" のようになります。
+
 その同じアプリケーションを認証し、資格情報コンテナーのシークレットの読み取りを許可する場合、次を実行します。
 
 	azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-secrets '["get"]'
@@ -256,4 +263,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

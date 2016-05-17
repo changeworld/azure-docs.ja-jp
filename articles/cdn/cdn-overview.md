@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="04/15/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 # Azure Content Delivery Network (CDN) の概要
 
-Azure Content Delivery Network (CDN) では、Web サイトで使用される Azure の BLOB と静的コンテンツを戦略的に配置された場所にキャッシュし、ユーザーへのコンテンツ配信に最大スループットを使用できます。CDN では、世界各地の物理ノードにコンテンツをキャッシュすることによって、高帯域幅コンテンツを配信するためのグローバル ソリューションを開発者に提供します。現在の CDN ノードの場所の一覧については、[Azure POP ノードの場所](cdn-pop-locations.md)に関するページを参照してください。
+Azure Content Delivery Network (CDN) では、戦略的に配置された場所に静的 Web コンテンツをキャッシュし、ユーザーへのコンテンツ配信に最大スループットを使用できます。CDN では、世界各地の物理ノードにコンテンツをキャッシュすることによって、高帯域幅コンテンツを配信するためのグローバル ソリューションを開発者に提供します。現在の CDN ノードの場所の一覧については、「[Azure CDN POP Locations (Azure CDN POP の場所)](cdn-pop-locations.md)」を参照してください。
 
-CDN を使用して Azure データをキャッシュすると、次のような利点があります。
+CDN を使用して Web サイト資産をキャッシュすると、次のような利点があります。
 
 - エンド ユーザーのパフォーマンスとユーザー エクスペリエンスの向上。コンテンツの読み込みに複数のラウンドトリップか必要なアプリケーションを使用する場合は特にそうです。
 - 製品発表イベントの開始時のような、瞬間的高負荷を処理しやすくする大型のスケーリング。
@@ -44,37 +44,36 @@ CDN を使用して Azure データをキャッシュすると、次のような
 6. ファイルの TTL が期限切れになっていない場合、エッジ サーバーはキャッシュのファイルを返します。その結果、応答時間が短縮されます。
 
 
-## Standard の機能
+## Azure CDN の機能
 
-Standard CDN レベルには、以下の機能が含まれます。
+Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、および **Azure CDN Premium from Verizon** の 3 つがあります。次の表に、各製品で使用できる機能を示します。
 
-- [Storage](cdn-create-a-storage-account-with-cdn.md)、[Cloud Services](cdn-cloud-service-with-cdn.md)、[Web Apps](../app-service-web/cdn-websites-with-cdn.md)、[Media Services](../media-services/media-services-manage-origins.md#enable_cdn) などの Azure サービスと簡単に統合
-- HTTPS のサポート
-- 負荷分散
-- DDOS 保護
-- [クエリ文字列のキャッシュ](cdn-query-string.md)
-- [カスタム ドメイン名のサポート](cdn-map-content-to-custom-domain.md)
-- [国のフィルタリング](cdn-restrict-access-by-country.md)
-- [コア分析](cdn-analyze-usage-patterns.md)
-- [高速消去](cdn-purge-endpoint.md)
-- [資産の事前読み込み](cdn-preload-endpoint.md)
-- [REST API を介した管理](https://msdn.microsoft.com/library/mt634456.aspx)
+| | Standard Akamai | Standard Verizon | Premium Verizon |
+|-------|-----------------|------------------|-----------------|
+| [Storage](cdn-create-a-storage-account-with-cdn.md)、[Cloud Services](cdn-cloud-service-with-cdn.md)、[Web Apps](../app-service-web/cdn-websites-with-cdn.md)、[Media Services](../media-services/media-services-manage-origins.md#enable_cdn) などの Azure サービスと簡単に統合 | **&#x2713;** | **&#x2713;** | **&#x2713;**|
+| HTTPS のサポート | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| 負荷分散 | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| DDOS 保護 | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [カスタム ドメイン名のサポート](cdn-map-content-to-custom-domain.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [クエリ文字列のキャッシュ](cdn-query-string.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [国のフィルタリング](cdn-restrict-access-by-country.md) | | **&#x2713;** | **&#x2713;** |
+| [高速消去](cdn-purge-endpoint.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [資産の事前読み込み](cdn-preload-endpoint.md) | | **&#x2713;** | **&#x2713;** |
+| [コア分析](cdn-analyze-usage-patterns.md) | | **&#x2713;** | **&#x2713;** |
+| [REST API を介した管理](https://msdn.microsoft.com/library/mt634456.aspx) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [カスタマイズ可能なルール ベースのコンテンツ配信エンジン](cdn-rules-engine.md) | | | **&#x2713;** |
+| [詳細な HTTP レポート](cdn-advanced-http-reports.md) | | | **&#x2713;** |
+| [リアルタイム統計](cdn-real-time-stats.md) | | | **&#x2713;** |
 
-
-## Premium の機能
-
-Premium CDN レベルには Standard レベルのすべての機能に加え、以下の機能があります。
-
-- [カスタマイズ可能なルール ベースのコンテンツ配信エンジン](cdn-rules-engine.md)
-- [詳細な HTTP レポート](cdn-advanced-http-reports.md)
-- [リアルタイム統計](cdn-real-time-stats.md)
 
 ## 次のステップ
 
-CDN の概要については、「[Azure の Content Delivery Network (CDN) を有効にする方法](./cdn-create-new-endpoint.md)」を参照してください。
+CDN の概要については、「[Azure CDN の使用](./cdn-create-new-endpoint.md)」を参照してください。
 
 既存の CDN 顧客は、[Microsoft Azure ポータル](https://portal.azure.com)から CDN エンドポイントを管理できるようになりました。
 
 実際の CDN の効果については、[Build 2016 セッションのビデオ](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/)をご覧ください。
 
-<!---HONumber=AcomDC_0504_2016-->
+料金情報については、[CDN の料金](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
+
+<!---HONumber=AcomDC_0511_2016-->

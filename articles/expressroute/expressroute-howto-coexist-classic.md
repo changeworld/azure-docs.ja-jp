@@ -124,7 +124,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 		New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
 
-6. 次に、サイト間 VPN ゲートウェイを作成します。GatewaySKU を *Standard* または *HighPerformance* にし、GatewayType を *DynamicRouting* にする必要があります。
+6. <a name="vpngw"></a>次に、サイト間 VPN ゲートウェイを作成します。GatewaySKU を *Standard* または *HighPerformance* にし、GatewayType を *DynamicRouting* にする必要があります。
 
 		New-AzureVirtualNetworkGateway -VNetName MyAzureVNET -GatewayName S2SVPN -GatewayType DynamicRouting -GatewaySKU  HighPerformance
 
@@ -157,7 +157,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 	次のサンプルを使用して、自身の値に置き換えます。
 
-	`New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>`
+		New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>
 
 	> [AZURE.NOTE] ローカル ネットワークに複数のルートがある場合は、それらすべてを配列として渡すことができます。$MyLocalNetworkAddress = @("10.1.2.0/24","10.1.3.0/24","10.2.1.0/24")
 
@@ -182,25 +182,28 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 	この例では、connectedEntityId がローカル ゲートウェイ ID です。これは、`Get-AzureLocalNetworkGateway` を実行すると見つけることができます。`Get-AzureVirtualNetworkGateway` コマンドレットを使用すると、virtualNetworkGatewayId を見つけることができます。この手順の後に、ローカル ネットワークと Azure 間の接続がサイト間 VPN 接続経由で確立されます。
 
 
-	`New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>`
+		New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
 
 ## <a name="add"></a>既存の VNet の共存する接続を構成するには
 
-ExpressRoute 接続またはサイト間 VPN 接続経由で接続されている既存の仮想ネットワークがある場合は、既存の仮想ネットワークに接続する両方の接続を有効にするために、まず既存のゲートウェイを削除する必要があります。これは、この構成で作業している間、ローカル環境からゲートウェイ経由で仮想ネットワークに接続できなくなるということです。
+既存の仮想ネットワークがある場合は、ゲートウェイ サブネットのサイズを確認します。ゲートウェイ サブネットが /28 または /29 の場合、まず仮想ネットワーク ゲートウェイを削除してから、ゲートウェイ サブネットのサイズを増やしてください。このセクションの手順で、その方法を説明します。
 
-**構成を開始する前に:** ゲートウェイ サブネットのサイズを増やせるように、仮想ネットワーク内に十分な IP アドレスが残っていることを確認します。IP アドレスが十分にある場合でも、ゲートウェイを削除してから作成し直す必要があることにご注意ください。これは、共存する接続に対応するためにゲートウェイを作成し直す必要があるからです。
+ゲートウェイ サブネットが /27 以上で、仮想ネットワークが ExpressRoute 経由で接続されている場合、以降の手順をスキップして、前のセクションの[手順 6、サイト間 VPN ゲートウェイの作成手順](#vpngw)に進みます。
+
+>[AZURE.NOTE] この既存のゲートウェイを削除すると、この構成で作業している間、ローカル環境から仮想ネットワークに接続できなくなります。
 
 1. Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。必ず、これらの手順で指定されているコマンドレットを使用してください。 
 
 2. 既存の ExpressRoute またはサイト間 VPN ゲートウェイを削除します。次のコマンドレットを使用して、自身の値に置き換えます。
 
-	`Remove-AzureVNetGateway –VnetName MyAzureVNET`
+		Remove-AzureVNetGateway –VnetName MyAzureVNET
 
 3. 仮想ネットワークのスキーマをエクスポートします。次の PowerShell コマンドレットを使用して、自身の値に置き換えます。
 
-	`Get-AzureVNetConfig –ExportToFile “C:\NetworkConfig.xml”`
+		Get-AzureVNetConfig –ExportToFile “C:\NetworkConfig.xml”
 
-4. ゲートウェイ サブネットが /27 またはこれより短いプレフィックス (/26 や /25 など) になるように、ネットワーク構成ファイルのスキーマを編集します。次の例を参照してください。構成スキーマの詳細については、「[Azure Virtual Network の構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」を参照してください。
+4. ゲートウェイ サブネットが /27 またはこれより短いプレフィックス (/26 や /25 など) になるように、ネットワーク構成ファイルのスキーマを編集します。次の例を参照してください。
+>[AZURE.NOTE] 仮想ネットワーク内の IP アドレスが不足していてゲートウェイ サブネットのサイズを増やせない場合は、IP アドレス空間を追加する必要があります。構成スキーマの詳細については、「[Azure Virtual Network の構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」を参照してください。
 
           <Subnet name="GatewaySubnet">
             <AddressPrefix>10.17.159.224/27</AddressPrefix>
@@ -216,10 +219,10 @@ ExpressRoute 接続またはサイト間 VPN 接続経由で接続されてい�
 		          </ConnectionsToLocalNetwork>
 		        </Gateway>
 
-6. この時点では、VNet にゲートウェイがありません。新しいゲートウェイを作成し、接続を完了するには、前述の一連の手順にある「[手順 4 - ExpressRoute ゲートウェイを作成します](#gw)」に進みます。
+6. この時点では、VNet にゲートウェイがありません。新しいゲートウェイを作成し、接続を完了するには、前述の[手順 4、ExpressRoute ゲートウェイの作成手順](#gw)に進みます。
 
 ## 次のステップ
 
 ExpressRoute の詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

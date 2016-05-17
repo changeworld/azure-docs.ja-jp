@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/26/2016"
+   ms.date="05/04/2016"
    ms.author="larryfr"/>
 
 #HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
@@ -24,9 +24,11 @@
 
 HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。Pig では、一連のデータ変換をモデル化することで MapReduce 操作を作成できます。基本的な C# アプリケーションを使用して、Pig ジョブを HDInsight クラスターに送信する方法を説明します。
 
-[AZURE.INCLUDE [azure-preview-portal](../../includes/hdinsight-azure-portal.md)]
-
-* [HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行](hdinsight-hadoop-use-pig-dotnet-sdk.md)
+> [AZURE.IMPORTANT] このドキュメントの手順では、Azure クラシック ポータルを使用します。新しいサービスを作成する際は、クラシック ポータルを使用しないことをお勧めします。Azure ポータルの利点の詳細については、「[Microsoft Azure ポータル](https://azure.microsoft.com/features/azure-portal/)」をご覧ください。
+>
+> このドキュメントでは、HDInsight .NET SDK の使用方法についても説明します。ここで示すスニペットは、Azure サービス管理 (ASM) を使用して HDInsight で機能するコマンドに基づいていますが、これらのコマンドは__推奨されていません__。これらのコマンドは、2017 年 1 月 1 日までに削除される予定です。
+>
+>Azure Resource Manager (ARM) を使用する HDInsight .NET SDK のスニペットと共に、Azure ポータルを使用するこのドキュメントのバージョンについては、「[HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行](hdinsight-hadoop-use-pig-dotnet-sdk.md)」をご覧ください。
 
 ##<a id="prereq"></a>前提条件
 
@@ -160,4 +162,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

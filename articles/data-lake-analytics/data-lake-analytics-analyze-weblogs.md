@@ -3,7 +3,7 @@
    description="Data Lake Analytics を使用して Web サイトのログを分析する方法について説明します。"
    services="data-lake-analytics"
    documentationCenter=""
-   authors="mumian"
+   authors="edmacauley"
    manager="paulettm"
    editor="cgronlun"/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="12/01/2015"
-   ms.author="jgao"/>
+   ms.date="04/26/2016"
+   ms.author="edmaca"/>
 
 # チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する
 
@@ -202,4 +202,4 @@ U SQL アプリケーションの大部分は、U-SQL スクリプトです。U-
 - [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
 - [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

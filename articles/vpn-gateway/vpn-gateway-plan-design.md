@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/28/2016"
+   ms.date="04/20/2016"
    ms.author="cherylmc"/>
 
 # VPN ゲートウェイの計画と設計
 
-クロスプレミス接続および VNet 間接続の計画と設計は、ネットワークのニーズに応じて、ごく単純になる場合も、かなり複雑になる場合もあります。
+クロスプレミス構成および VNet 間構成の計画と設計は、ネットワークのニーズに応じて、ごく単純になる場合もあれば、かなり複雑になる場合もあります。この記事では、計画と設計に関する基本的な考慮事項を説明します。
 
 ## 計画
 
@@ -164,4 +164,4 @@ VNet 間接続の操作でも、サブネットの重複を避けることが重
 
 設計に役立つ詳しい情報については、「[VPN ゲートウェイに関する FAQ](vpn-gateway-vpn-faq.md)」と「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md)」を参照してください。接続トポロジの詳細については、[接続トポロジ](vpn-gateway-topology.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

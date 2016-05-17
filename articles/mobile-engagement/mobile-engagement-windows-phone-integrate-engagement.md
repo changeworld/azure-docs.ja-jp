@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/03/2016" 
 	ms.author="piyushjo" />
 
 #Windows Phone Silverlight Engagement SDK 統合
@@ -207,7 +207,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 オプションとして、アプリケーション特有のイベント、エラー、ジョブについて報告できます。そのためには、`EngagementAgent` クラスの別のメソッドを使用します。Engagement API により、Engagement のすべての高度な機能を使用できます。
 
-詳細については、「[How to use the advanced Mobile Engagement tagging API in your Windows Phone Silverlight app (Windows Phone Silverlight で高度なモバイル エンゲージメント タグ付け API を使用する方法)](../mobile-engagement-windows-phone-use-engagement-api/)」をご覧ください
+詳細については、「[How to use the advanced Mobile Engagement tagging API in your Windows Phone Silverlight app (Windows Phone Silverlight で高度なモバイル エンゲージメント タグ付け API を使用する方法)](mobile-engagement-windows-phone-use-engagement-api.md)」をご覧ください
 
 ##詳細な構成
 
@@ -247,4 +247,4 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 > [AZURE.WARNING] バーストのしきい値は、1 秒よりも短くすることはできません。1 秒未満にしようとすると、SDK でエラーのトレースが表示され、自動的に既定値の 0 秒にリセットされます。これにより、SDK はログをリアルタイムで報告するようになります。
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -1,10 +1,10 @@
 <properties 
-    pageTitle="PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する | Microsoft Azure" 
+    pageTitle="PowerShell を使用して Azure SQL Database のアクティブ geo レプリケーションを構成する | Microsoft Azure" 
     description="PowerShell を使用した Azure SQL Database の geo レプリケーション" 
     services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
-    manager="jeffreyg" 
+    manager="jhubbard" 
     editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="02/23/2016"
+    ms.date="04/27/2016"
     ms.author="sstein"/>
 
 # PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する
@@ -21,26 +21,24 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-geo-replication-portal.md)
+- [Azure ポータル](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
 - [Transact-SQL](sql-database-geo-replication-transact-sql.md)
 
 
 この記事では、PowerShell を使用して SQL Database の geo レプリケーションを構成する方法を示します。
 
-geo レプリケーションでは、さまざまなデータ センターの場所 (リージョン) に最大 4 つのレプリカ (セカンダリ) データベースを作成することができます。セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合に使用できます。
+フェールオーバーを開始する方法については、[Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-powershell.md)に関する記事をご覧ください。
 
-geo レプリケーションは、Standard データベースと Premium データベースにのみ使用できます。
+>[AZURE.NOTE] すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
 
-Standard データベースでは、読み取り不可のセカンダリ データベースを 1 つ置くことができますが、その場合は推奨されたリージョンを使用する必要があります。Premium データベースでは、利用可能な任意のリージョンに、最大 4 つの読み取り可能なセカンダリ データベースを置くことができます。
+同じまたは異なるデータ センターの場所 (リージョン) に最大 4 つの読み取り可能なセカンダリ データベースを構成できます。セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合に使用できます。
 
 geo レプリケーションを構成するには、次のものが必要です。
 
-- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料アカウント**をクリックしてからこの記事に戻り、最後まで完了してください。
+- Azure サブスクリプション。Azure サブスクリプションがない場合は、このページの上部にある "**無料アカウント**" をクリックしてサブスクリプションを作成してから、この記事に戻って最後まで完了してください。
 - Azure SQL Database データベース。別の地理的リージョンにレプリケートするプライマリ データベースです。
 - Azure PowerShell 1.0 以降。Azure PowerShell モジュールをダウンロードしてインストールするには、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
-
-
 
 
 ## 資格情報を構成してサブスクリプションを選択
@@ -60,7 +58,6 @@ geo レプリケーションを構成するには、次のものが必要です�
 	Select-AzureRmSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
 
 **Select-AzureRmSubscription** を正常に実行すると、PowerShell プロンプトに戻ります。
-
 
 
 ## セカンダリ データベースの追加
@@ -136,56 +133,6 @@ geo レプリケーションを構成するには、次のものが必要です�
     $secondaryLink | Remove-AzureRmSqlDatabaseSecondary 
 
 
-
-
-## 計画されたフェールオーバーの開始
-
-セカンダリ データベースを昇格させて新しいプライマリ データベースとし、既存のプライマリ データベースを降格させてセカンダリ データベースにするには、**Set-AzureRmSqlDatabaseSecondary** コマンドレットと **-Failover** パラメーターを組み合わせて使用します。　　　この機能は、障害復旧の訓練時など、計画されたフェールオーバー用に設計されたものであり、プライマリ データベースを使用できることが必要条件となります。
-
-コマンドによって、次のワークフローが実行されます。
-
-1. 一時的にレプリケーションを同期モードに切り替えます。これにより、すべての未完了のトランザクションがセカンダリ データベースにフラッシュされます。
-
-2. geo レプリケーション パートナーシップで 2 つのデータベースのロールを切り替えます。
-
-このシーケンスによってデータが失われることはありません。ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。通常の状況では、操作全体が完了するのに 1 分かかりません。詳細については、「[Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx)」を参照してください。
-
-
-> [AZURE.NOTE] コマンド発行時にプライマリ データベースが使用できない場合、コマンドは失敗し、プライマリ サーバーが使用できないことを示すエラー メッセージが返されます。まれに、操作が完了しないで、スタックしたような状態になる場合があります。この場合、ユーザーは強制フェールオーバー コマンド (計画されていないフェールオーバー) を呼び出すことができますが、データは失われることを容認する必要があります。
-
-
-
-このコマンドレットは、セカンダリ データベースをプライマリに切り替えるプロセスが完了すると、戻ります。
-
-次のコマンドでは、リソース グループ "rg2" に属するサーバー "srv2" 上の "mydb" という名前のデータベースのロールをプライマリに切り替えます。"db2" の接続先である元のプライマリは、2 つのデータベースが完全に同期すると、セカンダリに切り替わります。
-
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
-    $database | Set-AzureRmSqlDatabaseSecondary -Failover
-
-
-
-## プライマリ データベースからセカンダリ データベースへの計画されていないフェールオーバーを開始します。
-
-
-計画外のフェールオーバーとして、既存のプライマリ データベースが使用できなくなった時点でセカンダリ データベースを昇格させて新しいプライマリ データベースとし、既存のプライマリ データベースを降格させてセカンダリ データベースにするには、**Set-AzureRmSqlDatabaseSecondary** コマンドレットを **–Failover** および **-AllowDataLoss** パラメーターと組み合わせて使用します。
-
-この機能は、データベースの可用性を復元することが重要で、多少のデータ損失は許容されるような障害復旧を目的として設計されています。強制フェールオーバーが呼び出されると、指定したセカンダリ データベースはすぐにプライマリ データベースになり、書き込みトランザクションの受け入れを開始します。強制フェールオーバー操作の後、元のプライマリ データベースとこの新しいプライマリ データベースとの再接続が可能になるとすぐに、元のプライマリ データベース上で増分バックアップが行われます。古いプライマリ データベースは新しいプライマリ データベースのセカンダリ データベースとされ、以後、新しいプライマリ データベースの単なるレプリカとなります。
-
-ただし、セカンダリ データベース上でポイントインタイム リストアはサポートされていないので、古いプライマリ データベースにコミットされているデータのうち、新しいプライマリ データベースにレプリケートされていないものを復旧する場合は、CSS を有効にして既知のログ バックアップにデータベースを復元する必要があります。
-
-> [AZURE.NOTE] プライマリ データベースとセカンダリ データベースの両方がオンラインになっている場合にコマンドを発行すると、古いプライマリ データベースが新しいセカンダリ データベースになりますが、データの同期化は行われないので、一部のデータが失われることがあります。
-
-
-プライマリ データベースに複数のセカンダリ データベースがある場合、コマンドは部分的に成功します。コマンドが実行されたセカンダリ データベースがプライマリ データベースになります。ただし、古いプライマリ データベースはプライマリ データベースのままです。すなわち、2 つのプライマリ データベースは不整合の状態になり、中断されたレプリケーション リンクによって接続されます。ユーザーは、この 2 つのプライマリ データベースのいずれかで “remove secondary” API を使用して、この構成を手動で修復する必要があります。
-
-
-次のコマンドでは、プライマリが利用できない場合に、"mydb" という名前のデータベースのロールをプライマリに切り替えます。"mydb" の接続先であった元のプライマリ データベースは、それがオンラインに戻ると、セカンダリ データベースに切り替わります。その時点で、同期化によってデータが失われる可能性があります。
-
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
-    $database | Set-AzureRmSqlDatabaseSecondary –Failover -AllowDataLoss
-
-
-
 ## geo レプリケーションの構成と正常性を監視する
 
 監視タスクには、geo レプリケーションの構成に関する監視と、データ レプリケーションの正常性に関する監視が含まれます。
@@ -198,21 +145,24 @@ sys.geo\_replication\_links のカタログ ビューに表示される順方向
     $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink –PartnerResourceGroup "rg2” –PartnerServerName "srv2”
 
 
-
-   
+  
 
 ## 次のステップ
 
-- [障害復旧訓練](sql-database-disaster-recovery-drills.md)
+- [Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-powershell.md)
+- [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 
 
 
 
 ## その他のリソース
 
+- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
 - [新しい geo レプリケーション機能に関するスポットライト](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
-- [geo レプリケーションを使用したビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
+- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
+- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

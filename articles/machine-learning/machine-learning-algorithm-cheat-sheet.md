@@ -1,7 +1,7 @@
 <properties
 	pageTitle="機械学習アルゴリズム チート シート | Microsoft Azure"
 	description="印刷可能な機械学習アルゴリズム チート シートは、Azure Machine Learning Studio で予測モデルに適したアルゴリズムを選択するのに役立ちます。"
-|	keywords="アルゴリズム チート シート、チート シート、Machine Learning アルゴリズム"
+	keywords="アルゴリズム チート シート、チート シート、Machine Learning アルゴリズム"
 	services="machine-learning"
 	documentationCenter=""
 	authors="brohrer"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/10/2016"
+	ms.date="04/28/2016"
 	ms.author="brohrer;garye" />
 
 
@@ -87,4 +87,4 @@ Machine Learning アルゴリズム チート シートをダウンロードし�
 [k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
 [one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

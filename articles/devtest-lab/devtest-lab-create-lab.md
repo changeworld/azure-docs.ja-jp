@@ -1,6 +1,6 @@
-    <properties
-	pageTitle="Create a lab in DevTest Labs | Microsoft Azure"
-	description="Create a new lab in DevTest Labs for virtual machines"
+<properties
+	pageTitle="DevTest Labs でのラボの作成 | Microsoft Azure"
+	description="DevTest Labs で仮想マシン用の新しいラボを作成します。"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/03/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 # Azure DevTest Labs でのラボの作成
@@ -27,7 +27,7 @@
 
 ## ラボを作成する
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
 1. **[参照]** をタップします。
 
@@ -50,7 +50,7 @@
 
 ラボを作成した後は、次の手順を考慮します。
 
-- [DevTest ラボへのアクセスを保護します](devtest-lab-add-devtest-user.md)。
+- [ラボへのアクセスをセキュリティで保護します](devtest-lab-add-devtest-user.md)。
 
 - [ラボのポリシーを設定します](devtest-lab-set-lab-policy.md)。
 
@@ -58,6 +58,6 @@
 
 - [VM のカスタム アーティファクトを作成します](devtest-lab-artifact-author.md)。
 
-- [アーティファクトを含む VM を Azure DevTest ラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
+- [アーティファクトを含む VM をラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

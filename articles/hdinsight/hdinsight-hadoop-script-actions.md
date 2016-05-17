@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="04/28/2016"
 	ms.author="jgao"/>
 
 # HDInsight 用の Script Action スクリプトの開発
@@ -31,6 +31,8 @@ Script Action は、Hadoop クラスターで実行される追加のソフト�
 ## サンプルのスクリプト
 
 Windows オペレーティング システムで HDInsight クラスターを作成する場合、Script Action は、Azure PowerShell スクリプトです。サイト構成ファイルを構成するためのサンプル スクリプトを次に示します。
+
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 	param (
 	    [parameter(Mandatory)][string] $ConfigFileName,
@@ -351,4 +353,4 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 <!--Reference links in article-->
 [1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

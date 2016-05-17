@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="05/02/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して Web テーブル ソースからデータを移動する
@@ -27,7 +27,7 @@
 
 1.	[Web](#web-linked-service-properties) 型のリンクされたサービス。
 2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
-3.	[WebTabe](#WebTable-dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+3.	[WebTable](#WebTable-dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
 4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 4.	[WebSource](#websource-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
@@ -283,4 +283,7 @@ Excel 2013 を使用している場合、[Microsoft Power Query for Excel](https
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+## パフォーマンスとチューニング  
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
+
+<!---HONumber=AcomDC_0504_2016-->

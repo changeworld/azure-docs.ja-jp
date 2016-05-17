@@ -49,9 +49,9 @@ Azure サブスクリプションの新しいストレージ アカウントを�
 
 	この値は、このストレージ アカウントの名前として、ポータルやプログラムでこのアカウントにアクセスするときにも使用されます。
 
-5.  **[価格レベル]** を選択するか、既定値を使用します。価格レベルの詳細については、「[Azure Storage 料金](../../pricing/details/storage)」を参照してください。
+5.  **[価格レベル]** を選択するか、既定値を使用します。価格レベルの詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
-6.  **リソース グループ**を選択または作成します。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview/#resource-groups)」を参照してください。
+6.  **リソース グループ**を選択または作成します。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md#resource-groups)」を参照してください。
 
 7. ストレージ アカウントを使用する**サブスクリプション**を選択します。
 
@@ -104,7 +104,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
     ![[エンドポイントの追加] ブレード][cdn-add-endpoint]
 
-3. この CDN エンドポイントの**名前**を入力します。この名前は、ドメイン `<EndpointName>.azureedge.net` でキャッシュされたリソースにアクセスする際に使用します。
+3. この CDN エンドポイントの**名前**を入力します。この名前は、ドメイン `<endpointname>.azureedge.net` でキャッシュされたリソースにアクセスする際に使用します。
 
 4. **[配信元の種類]** ドロップダウンで、*[ストレージ]* を選択します。
 
@@ -135,7 +135,7 @@ http://<*EndpointName*>.azureedge.net/<*myPublicContainer*>/<*BlobName*>
 
 Azure Content Delivery Network (CDN) にオブジェクトをキャッシュする必要がなくなった場合は、次のいずれかの手順を実行できます。
 
--   コンテナーをパブリックではなくプライベートに設定できます。詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](../storage-manage-access-to-resources/)」を参照してください。
+-   コンテナーをパブリックではなくプライベートに設定できます。詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](../storage/storage-manage-access-to-resources.md)」を参照してください。
 -   管理ポータルを使用して CDN エンドポイントを無効にしたり削除したりできます。
 -   オブジェクトの要求に応答しなくなるようにホストされるサービスを変更できます。
 
@@ -154,4 +154,4 @@ CDN に既にキャッシュされているオブジェクトは、オブジェ�
 [cdn-add-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-a-storage-account-with-cdn/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -268,12 +268,12 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 			1. **[統合セキュリティ]** を **[true]** に設定します。
 			2. データベースの**サーバー名**と**データベース名**を指定します。 
 			2. **[ユーザー ID]** と **[パスワード]** を削除します。 
-		3. **[userName]** と **[password]** の各プロパティにユーザー名とパスワードを指定します。
+		3. **[userName]** と **[password]** の各プロパティにユーザー名とパスワードを指定します。  
 		
 				"typeProperties": {
             		"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;",
             		"gatewayName": "adftutorialgateway",
-            		"userName": "<Specify user name if you are using Windows Authentication>",
+            		"userName": "<Specify user name if you are using Windows Authentication. Example: <domain>\<user>",
             		"password": "<Specify password for the user account>"
         		}
 
@@ -480,7 +480,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
 	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
-- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
+	- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
@@ -529,7 +529,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	-  **Set-AzureRmDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 	-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
  
-	一覧のタイトルをクリックするか、**[...] \(省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
+	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
 	
 	代わりに、スライスの開始時刻と終了時刻で並べ替えられたデータ スライスを表示するには、**[データ スライス (スライスの時刻別)]** タイルをクリックします。
 
@@ -691,4 +691,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 5.	ゲートウェイは、同じ証明書で資格情報を復号化し、適切な認証の種類を使用してオンプレミスのデータ ストアに接続します。
 6.	ゲートウェイは、データ パイプラインでのコピー アクティビティの構成方法に応じて、オンプレミスのストアからクラウドのストレージに、またはクラウドのストレージからオンプレミスのデータ ストアに、データをコピーします。注: この手順では、ゲートウェイは、セキュリティで保護された (HTTPS) チャネルを使用して、クラウド ベースのストレージ サービス (例: Azure BLOB、Azure SQL など) と直接通信します。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

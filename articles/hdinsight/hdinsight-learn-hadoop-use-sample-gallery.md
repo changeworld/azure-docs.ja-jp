@@ -14,12 +14,12 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="02/04/2016"
+   ms.date="04/27/2016"
    ms.author="jgao"/>
 
 # HDInsight 概要ギャラリーを使用して Hadoop について説明する
 
-HDInsight 概要ギャラリーでは、HDInsight でサンプル アプリケーションを実行して Hadoop をすばやく簡単に学習できます。一部のサンプルには、サンプル データが含まれています。その他のサンプルでは、独自のデータを使用いただけます。現時点では、次の 6 つのサンプルがあります (今後追加される予定)。
+概要ギャラリーは、Windows ベースの HDInsight クラスターでのみ使用できます。概要ギャラリーでは、HDInsight でサンプル アプリケーションを実行して Hadoop をすばやく簡単に学習できます。一部のサンプルには、サンプル データが含まれています。その他のサンプルでは、独自のデータを使用いただけます。現時点では、次の 6 つのサンプルがあります (今後追加される予定)。
 
 - Azure データを使用したソリューション
 	- Microsoft Azure Web サイトのログ分析
@@ -60,8 +60,8 @@ HDInsight に関するその他の資料。
 [hdinsight.twitter.sample]: ./media/hdinsight-learn-hadoop-use-sample-gallery/HDInsight-Twitter-Trend-Analysis-sample.png
 
 <!--Link references-->
-[hdinsight.learn.map]: hdinsight-learn-map.md
+[hdinsight.learn.map]: https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/
 [hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
 [azure.portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

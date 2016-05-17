@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/11/2016"
+    ms.date="05/03/2016"
     ms.author="markusvi"/>
 
 
@@ -72,4 +72,4 @@ Microsoft アカウントを使用してサインインした SA は、Azure ク
 [3]: ./media/active-directory-understanding-resource-access/IC707933.png
 [4]: ./media/active-directory-understanding-resource-access/IC707934.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

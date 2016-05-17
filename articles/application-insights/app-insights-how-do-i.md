@@ -79,12 +79,12 @@
 
 ### アラートの自動設定
 
-[Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](app-insights-alerts/#set-alerts-by-using-powershell)
+[Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](app-insights-alerts.md#set-alerts-by-using-powershell)
 
 ## PowerShell を使用した Application Insights の管理
 
 * [新しいリソースの作成に関するページ](app-insights-powershell-script-create-resource.md)
-* [新しいアラートの作成に関するページ](app-insights-alerts/#set-alerts-by-using-powershell)
+* [新しいアラートの作成に関するページ](app-insights-alerts.md#set-alerts-by-using-powershell)
 
 ## アプリケーションのバージョンとスタンプ
 
@@ -241,4 +241,4 @@
 * 最初に、[新しいグラフを追加](app-insights-metrics-explorer.md)し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
 * 含まれていない場合は、[パフォーマンス カウンター モジュールによって収集されたセットにカウンターを追加](app-insights-web-monitor-performance.md#system-performance-counters)します。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

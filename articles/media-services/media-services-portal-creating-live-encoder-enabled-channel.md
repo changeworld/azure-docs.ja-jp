@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Azure クラシック ポータルを利用し、シングル ビットレートからマルチ ビットレート ストリーミングへの Live Encoding を実行するチャネルを作成する" 
+	pageTitle="Azure Media Services を使用してライブ ストリーミングを実行し、Azure クラシック ポータルでマルチビットレートのストリームを作成する方法" 
 	description="このチュートリアルでは、Azure クラシック ポータルを利用し、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードするチャネルを作成する手順について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako,anilmur" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
- 	ms.date="05/03/2016" 
+ 	ms.date="05/05/2016" 
 	ms.author="juliako"/>
 
 
-#Azure クラシック ポータルを利用し、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する
+#Azure Media Services を使用してライブ ストリーミングを実行し、Azure クラシック ポータルでマルチビットレートのストリームを作成する方法
 
 > [AZURE.SELECTOR]
 - [ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
@@ -26,7 +26,7 @@
 
 このチュートリアルでは、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードする**チャネル**を作成する手順について説明します。
 
->[AZURE.NOTE]ライブ エンコードが有効になっているチャネルに関連する概念的な情報については、「[シングル ビットレートからアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの作成](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
+>[AZURE.NOTE]ライブ エンコード対応のチャネルに関連する概念の詳細情報については、「[Live streaming using Azure Media Services to create multi-bitrate streams (Azure Media Services を使用したライブ ストリーミングによるマルチビットレートのストリームの作成)](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
 
 ##一般的なライブ ストリーミング シナリオ
 
@@ -109,7 +109,7 @@
 2.	[チャネル] ページを選択します。
 3.	[追加+] を選択し、新しいチャネルを追加します。
 
-エンコードの種類として [**標準**] を選択します。この種類の場合、ライブ エンコードが有効なチャネルが作成されます。つまり、受信シングル ビットレート ストリームはチャネルに送信され、指定のライブ エンコーダー設定によってマルチ ビットレート ストリームにエンコードされます。詳しくは、「[シングル ビットレートからマルチ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+エンコードの種類として [**標準**] を選択します。この種類の場合、ライブ エンコードが有効なチャネルが作成されます。つまり、受信シングル ビットレート ストリームはチャネルに送信され、指定のライブ エンコーダー設定によってマルチ ビットレート ストリームにエンコードされます。詳細については、「[Live streaming using Azure Media Services to create multi-bitrate streams (Azure Media Services を使用したライブ ストリンミングによるマルチビットレートのストリームの作成)](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
 
 ![standard0][standard0]
 
@@ -119,7 +119,7 @@
 - シングル ビットレート RTMP
 - RTP (MPEG-TS): MPEG-2 Transport Stream over RTP。
 
-各プロトコルの詳しい説明については、「[シングル ビットレートからマルチ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+各プロトコルの詳しい説明については、「[Live streaming using Azure Media Services to create multi-bitrate streams (Azure Media Services を使用したライブ ストリンミングによるマルチビットレートのストリームの作成)](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
 
 ![standard1][standard1]
 
@@ -127,7 +127,7 @@
 
 [**広告の構成 (Advertising Configuration)**] ページで、Ad マーカーの信号ソースを指定できます。ポータルを使用する場合に選択できるのは [API] のみです。これは、チャネル内のライブ エンコーダーが Ad マーカー API を非同期的にリッスンすることを示します。ポータルを使用する場合、選択できるのは [API] のみです。
 
-詳しくは、「[シングル ビットレートからマルチ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+詳細については、「[Live streaming using Azure Media Services to create multi-bitrate streams (Azure Media Services を使用したライブ ストリンミングによるマルチビットレートのストリームの作成)](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
 
 ![standard2][standard2]
 
@@ -148,7 +148,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 ![standard5][standard5]
 
-詳しくは、「[シングル ビットレートからマルチ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+詳細については、「[Live streaming using Azure Media Services to create multi-bitrate streams (Azure Media Services を使用したライブ ストリンミングによるマルチビットレートのストリームの作成)](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
 
 
 ##取り込み URL の取得
@@ -276,4 +276,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [standard4]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard4.png
 [standard5]: ./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel-standard_encode.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

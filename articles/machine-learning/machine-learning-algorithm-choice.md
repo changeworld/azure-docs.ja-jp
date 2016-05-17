@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="02/10/2016"
+	ms.date="04/28/2016"
 	ms.author="brohrer;garye" />
 
 # Microsoft Azure Machine Learning のアルゴリズムの選択方法
@@ -237,4 +237,4 @@ Azure Machine Learning には、[Vowpal Wabbit](https://msdn.microsoft.com/libra
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

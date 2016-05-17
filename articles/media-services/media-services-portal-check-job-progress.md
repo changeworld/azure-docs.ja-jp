@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016" 
+ 	ms.date="05/03/2016"  
 	ms.author="juliako"/>
 
 #方法: ジョブの進行状況をチェックする
@@ -44,10 +44,10 @@
 
 ##次のステップ
 
-コンテンツの発行詳細については、「[方法: アセットをエンコードする](../media-services-manage-content#publish)」をご覧ください
+コンテンツの発行詳細については、「[方法: アセットをエンコードする](media-services-manage-content.md#publish)」をご覧ください
 
 
 [checkstatus]: ./media/media-services-portal-check-job-progress/media-services-monitor-job-progress.png
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

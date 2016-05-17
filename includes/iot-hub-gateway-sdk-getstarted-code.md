@@ -1,6 +1,6 @@
-## Typical output
+## 典型的な出力
 
-Below is an example of the output written to the log file by the Hello World sample. Newline and Tab characters have been added for legibility:
+Hello World サンプルによってログ ファイルに書き込まれた出力の例を以下に示します。読みやすいように改行やタブ文字が追加されています。
 
 ```
 [{
@@ -30,15 +30,15 @@ Below is an example of the output written to the log file by the Hello World sam
 }]
 ```
 
-## Code snippets
+## コード スニペット
 
-This section discusses some key parts of the code in the Hello World sample.
+このセクションでは、Hello World サンプルの主なコード部分について説明します。
 
-### Gateway creation
+### ゲートウェイの作成
 
-The developer must write the *gateway process*. This program creates the internal infrastructure (the message bus), loads the modules, and sets everything up to function correctly. The SDK provides the **Gateway_Create_From_JSON** function to enable you to bootstrap a gateway from a JSON file. To use the **Gateway_Create_From_JSON** function you must pass it the path to a JSON file that specifies the modules to load. 
+開発者は*ゲートウェイ プロセス*を作成する必要があります。このプログラムは、内部インフラストラクチャ (メッセージ バス) を作成し、モジュールを読み込み、すべてが正常に動作するように設定します。SDK には、JSON ファイルからゲートウェイのブートストラップを行うための **Gateway\_Create\_From\_JSON** 関数が含まれています。**Gateway\_Create\_From\_JSON** 関数を使用するには、読み込むモジュールを指定する JSON ファイルへのパスを渡す必要があります。
 
-You can find the code for the gateway process in the Hello World sample in the [main.c][lnk-main-c] file. For legibility, the snippet below shows an abbreviated version of the gateway process code. This program creates a gateway and then waits for the user to press the **ENTER** key before it tears down the gateway. 
+ゲートウェイ プロセスのコードは、[main.c][lnk-main-c] ファイルの Hello World サンプル内にあります。次のスニペットは、ゲートウェイ プロセス コードを読みやすく省略したものです。このプログラムは、ゲートウェイを作成し、ユーザーが **Enter** キーを押すまで待機してから、ゲートウェイを破棄します。
 
 ```
 int main(int argc, char** argv)
@@ -59,13 +59,13 @@ int main(int argc, char** argv)
 }
 ```
 
-The JSON settings file contains a list of modules to load. Each module must specify a:
+JSON 設定ファイルには、読み込むモジュールの一覧が含まれています。各モジュールについて、以下を指定する必要があります。
 
-- **module_name**: a unique name for the module.
-- **module_path**: the path to the library containing the module. For Linux this is a .so file, on Windows this is a .dll file.
-- **args**: any configuration information the module needs.
+- **module\_name**: モジュールの一意の名前。
+- **module\_path**: モジュールを含むライブラリへのパス。Linux の場合は .so ファイル、Windows の場合は .dll ファイルです。
+- **args**: モジュールに必要な構成情報。
 
-The following sample shows the JSON settings file used to configure the Hello World sample on Linux. Whether a module requires an argument depends on the design of the module. In this example, the logger module takes an argument which is the path to the output file and the Hello World module does not take any arguments:
+次の例は、Linux での Hello World サンプルの構成に使用される JSON 設定ファイルを示します。引数が必要かどうかは、モジュールの設計によって変わります。この例では、logger モジュールは出力ファイルへのパスを引数として受け取り、Hello World モジュールは引数を受け取りません。
 
 ```
 {
@@ -85,9 +85,9 @@ The following sample shows the JSON settings file used to configure the Hello Wo
 }
 ```
 
-### Hello World module message publishing
+### Hello World モジュールでのメッセージの発行
 
-You can find the code used by the "hello world" module to publish messages in the ['hello_world.c'][lnk-helloworld-c] file. The snippet below shows an amended version with additional comments and some error handling code removed for legibility:
+"hello world" モジュールでメッセージを発行するコードは、['hello\_world.c'][lnk-helloworld-c] ファイル内にあります。次のスニペットは、コメントを追加してエラー処理コードを取り除き、読みやすく修正したコードです。
 
 ```
 int helloWorldThread(void *param)
@@ -135,9 +135,9 @@ int helloWorldThread(void *param)
 }
 ```
 
-### Hello World module message processing
+### Hello World モジュールでのメッセージの処理
 
-The Hello World module never needs to process any messages that other modules publish to the message bus. This makes implementation of the message callback in the Hello World module a no-op function.
+Hello World モジュールでは、他のモジュールがメッセージ バスに発行したメッセージを処理する必要はありません。このため、Hello World モジュールでのメッセージ コールバックの実装は no-op 関数になります。
 
 ```
 static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
@@ -146,11 +146,11 @@ static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messag
 }
 ```
 
-### Logger module message publishing and processing
+### Logger モジュールでのメッセージの発行と処理
 
-The Logger module receives messages from the message bus and writes them to a file. It never publishes messages to the message bus. Therefore, the code of the logger module never calls the **MessageBus_Publish** function.
+Logger モジュールはメッセージ バスからメッセージを受信し、ファイルに書き込みます。メッセージ バスにメッセージを発行することはありません。このため、logger モジュールのコードで **MessageBus\_Publish** 関数を呼び出すことはありません。
 
-The **Logger_Recieve** function in the [logger.c][lnk-logger-c] file is the callback the message bus invokes to deliver messages to the logger module. The snippet below shows an amended version with additional comments and some error handling code removed for legibility:
+[logger.c][lnk-logger-c] ファイル内の **Logger\_Recieve** 関数は、logger モジュールにメッセージを配信するためにメッセージ バスが呼び出すコールバックです。次のスニペットは、コメントを追加してエラー処理コードを取り除き、読みやすく修正したコードです。
 
 ```
 static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
@@ -173,17 +173,17 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 
     // Start the construction of the final string to be logged by adding
     // the timestamp
-    STRING_HANDLE jsonToBeAppended = STRING_construct(",{\"time\":\"");
+    STRING_HANDLE jsonToBeAppended = STRING_construct(",{"time":"");
     STRING_concat(jsonToBeAppended, timetemp);
 
     // Add the message properties
-    STRING_concat(jsonToBeAppended, "\",\"properties\":"); 
+    STRING_concat(jsonToBeAppended, "","properties":"); 
     STRING_concat_with_STRING(jsonToBeAppended, jsonProperties);
 
     // Add the content
-    STRING_concat(jsonToBeAppended, ",\"content\":\"");
+    STRING_concat(jsonToBeAppended, ","content":"");
     STRING_concat_with_STRING(jsonToBeAppended, contentAsJSON);
-    STRING_concat(jsonToBeAppended, "\"}]");
+    STRING_concat(jsonToBeAppended, ""}]");
 
     // Write the formatted string
     LOGGER_HANDLE_DATA *handleData = (LOGGER_HANDLE_DATA *)moduleHandle;
@@ -191,14 +191,14 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 }
 ```
 
-## Next steps
+## 次のステップ
 
-To learn about how to use the Gateway SDK, see the following:
+Gateway SDK の使用方法については、以下を参照してください。
 
-- [IoT Gateway SDK – send device-to-cloud messages with a simulated device using Linux][lnk-gateway-simulated].
-- [Azure IoT Gateway SDK][lnk-gateway-sdk] on GitHub.
+- [IoT Gateway SDK – send device-to-cloud messages with a simulated device using Linux][lnk-gateway-simulated] (IoT Gateway SDK – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する)
+- GitHub の [Azure IoT Gateway SDK][lnk-gateway-sdk]
 
-You can find out more about device management with IoT Hub by reading [Overview of Azure IoT Hub device management][lnk-device-management].
+IoT Hub を使用したデバイス管理の詳細については、「[Overview of Azure IoT Hub device management][lnk-device-management]」 (Azure IoT Hub デバイス管理の概要) を参照してください。
 
 <!-- Links -->
 [lnk-main-c]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/hello_world/src/main.c
@@ -207,3 +207,4 @@ You can find out more about device management with IoT Hub by reading [Overview 
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 [lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-device-management]: ../articles/iot-hub/iot-hub-device-management-overview.md
+

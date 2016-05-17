@@ -12,13 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/07/2016"
+   ms.date="04/29/2016"
    ms.author="bruceper" />
 
 # Azure Key Vault 開発者ガイド
-
-> [AZURE.VIDEO azure-key-vault-developer-quick-start]
-
 Key Vault を使用すると、アプリケーション内から機密情報に安全にアクセスできるようになります。具体的には次のとおりです。
 
 - 自分でコードを記述しなくても、キーとシークレットが保護されます。アプリケーションから簡単にそれらを使用できます。
@@ -26,6 +23,21 @@ Key Vault を使用すると、アプリケーション内から機密情報に�
 - アプリケーションで署名と暗号化のキーを使用しつつ、キー管理をアプリケーションの外部で実施できます。これにより、ソリューションは地理的に分散したアプリケーションを対象とすることができます。
 
 Azure Key Vault の全般的な情報については、「[Azure Key Vault とは](key-vault-whatis.md)」を参照してください。
+
+## ビデオ
+このビデオでは、独自の Key Vault を作成して 「Hello Key Vault」 サンプル アプリケーションからそれを使用する方法について説明します。
+
+ビデオで説明されているリソースへのリンク:
+- [Azure PowerShell](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
+- [Azure Key Vault のサンプル コード](http://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
+
+[Key Vault Blog](http://aka.ms/kvblog) の指示に従って [Key Vault Forum](http://aka.ms/kvforum) に参加すると、詳細情報を得ることができます。
+
+
+
+> [AZURE.VIDEO azure-key-vault-developer-quick-start]
+
+
 
 ## Key Vaults の作成と管理
 
@@ -40,7 +52,7 @@ Azure Key Vault の全般的な情報については、「[Azure Key Vault と�
 
 ## Key Vault を使用したコーディング
 
-プログラマー向けの Key Vault 管理システムは、REST を基盤とするさまざまなインターフェイスで構成されています (「[Key Vault REST API Reference (Key Vault REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn903609.aspx)」を参照)。
+プログラマー向けの Key Vault 管理システムは、REST を基盤とするさまざまなインターフェイスで構成されています。 [Key Vault REST API リファレンス ](https://msdn.microsoft.com/library/azure/dn903609.aspx)
 
 承認された場合は、以下を実行できます。
 
@@ -60,16 +72,18 @@ Key Vault の操作には次の SDK を使用できます。
 
 アプリケーションで Key Vault を使用する詳細な例については、以下のものを参照してください。
 
-- .NET サンプル アプリケーション *HelloKeyVault* と Azure Web サービスの例: [Azure Key Vault のコード サンプル](http://www.microsoft.com/download/details.aspx?id=45343)
+- .NET サンプル アプリケーション *HelloKeyVault* と Azure Web サービスの例：[Azure Key Vault のコード サンプル](http://www.microsoft.com/download/details.aspx?id=45343)
 - Azure の Web アプリケーションから Azure Key Vault を使用する方法について学習できるチュートリアル: [Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md)
 
 ## 方法
 
-次の記事とシナリオは、タスクの具体的なガイダンスを提供します。
+次の記事とシナリオは、Azure Key Vault を操作するための、タスクの具体的なガイダンスを提供します。
 
-- [Azure Key Vault の HSM 保護キーを生成し、転送する方法](key-vault-hsm-protected-keys.md)
-- [デプロイ時にセキュリティで保護された値 (パスワードなど) を渡す](../resource-manager-keyvault-parameter.md)
-- Key Vaults と Azure の統合と使用に関するタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け ARM テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。
+- [Azure Key Vault の HSM 保護キーを生成し、転送する方法](key-vault-hsm-protected-keys.md) - この記事は Azure Key Vault と共に使用する独自の HSM 保護キーを計画、生成、転送する際に役立ちます。
+- [デプロイ時にセキュリティで保護された値 (パスワードなど) を渡す方法](../resource-manager-keyvault-parameter.md) - デプロイメント時にパラメーターとしてセキュリティで保護された値 (パスワードなど) を渡す必要がある場合、Azure Key Vault にシークレットとしてその値を格納し、他のリソース マネージャー テンプレートで値を参照することができます。
+- [Key Vault を使用して SQL Server で拡張キーを管理する方法](https://msdn.microsoft.com/library/dn198405.aspx) - Azure Key Vault 用の SQL Server Connector により、SQL Server と VM 内の SQL で拡張キー管理 (EKM) プロバイダーとして Azure Key Vault サービスを利用して、Transparent Data Encryption (透過的なデータ暗号化、TDE)、バックアップ暗号化、Column Level Encryption (列レベル暗号化、CLE)など、アプリケーション リンクの暗号化キーを保護できます。
+
+Key Vaults と Azure の統合と使用に関するその他のタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け ARM テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。
 
 ## 対応ライブラリ
 
@@ -77,4 +91,8 @@ Key Vault の操作には次の SDK を使用できます。
 
 - [Microsoft Azure Key Vault Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/1.0.0): Azure Key Vault の拡張機能を提供します。
 
-<!---HONumber=AcomDC_0309_2016-->
+## その他の Key Vault リソース
+- [Key Vault Blog](http://aka.ms/kvblog)
+- [Key Vault Forum](http://aka.ms/kvforum)
+
+<!---HONumber=AcomDC_0504_2016-->

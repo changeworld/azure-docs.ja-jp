@@ -15,7 +15,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="04/21/2016"
+   ms.date="05/05/2016"
    ms.author="glenga"/>
 
 # 初めての Azure 関数の作成
@@ -29,7 +29,7 @@ Azure Functions は、イベント駆動型のオンデマンドのコンピュ�
 
 次のビデオでは、このチュートリアルの基本的な手順を実行する方法について説明します。
 
-[AZURE.VIDEO create-your-first-azure-function]
+[AZURE.VIDEO create-your-first-azure-function-simple]
 
 ##クイック スタートから関数を作成する
 
@@ -64,4 +64,4 @@ Azure Functions クイック スタートには機能コードが含まれてい
 
 [AZURE.INCLUDE [概要のメモ](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -14,106 +14,108 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/29/2016"
+   ms.date="05/02/2016"
    ms.author="litran"/>
 
 # PowerApps Enterprise で新しい Office 365 Users API を作成する
 
-> [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/connectors-create-api-office365-users.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-office365-users.md)
+> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> 
+> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページを参照してください。  
+> - PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事を参照してください。 
 
-組織の (テナント) App Service 環境に Office 365 Users API を追加する
+<!--Archived
+Add the Office 365 Users API to your organization's (tenant) app service environment. 
 
-## Azure ポータルでの API の作成
+## Create the API in the Azure portal
 
-1. [Azure ポータル](https://portal.azure.com/)で、職場アカウントでサインインします。たとえば、*yourUserName*@*YourCompany*.com でサインインします。これにより、会社のサブスクリプションに自動的にサインインされます。
+1. In the [Azure portal](https://portal.azure.com/), sign-in with your work account. For example, sign-in with *yourUserName*@*YourCompany*.com. When you do this, you are automatically signed in to your company subscription.
  
-2. タスク バーの **[参照]** をクリックします。  
+2. Select **Browse** in the task bar:  
 ![][14]
 
-3. 一覧で、PowerApps が見つかるまでスクロールするか、「*powerapps*」と入力します。  
+3. In the list, you can scroll to find PowerApps or type in *powerapps*:  
 ![][15]  
 
-4. **[PowerApps]** で、**[API の管理]** を選択します。    
-![登録されている API の参照][1]
+4. In **PowerApps**, select **Manage APIs**:    
+![Browse to registered apis][1]
 
-5. **[API の管理]** で、**[追加]** をクリックして新しい API を追加します。  
+5. In **Manage APIs**, select **Add** to add the new API:  
 ![Add API][2]
 
-6. API のわかりやすい**名前**を入力します。  
+6. Enter a descriptive **name** for your API.  
 	
-7. **[ソース]** で、**[利用可能な API]** を選択して既成の API を選択し、**[Office 365 Users]** を選択します。  
-![Office 365 Users API の選択][3]
+7. In **Source**, select **Available APIs** to select the pre-built APIs, and select **Office 365 Users**:  
+![select Office 365 Users api][3]
 
-8. **[設定] - [必要な設定の構成]** を選択します。  
-![Office 365 Users API 設定の構成][4]
+8. Select **Settings - Configure required settings**:  
+![configure Office 365 Users API settings][4]
 
-9. Office 365 Azure Active Directory (AAD) アプリケーションの*クライアント ID* と*クライアント シークレット*を入力します。これらがない場合は、このトピックの「PowerApps Office 365 Users API で使用する AAD アプリケーションの登録」を参照して、必要な ID とシークレットの値を作成します。  
+9. Enter the *Client Id* and *Client Secret* of your Office 365 Azure Active Directory (AAD) application. If you don't have one, see the "Register an AAD app for use with PowerApps" section in this topic to create the ID and secret values you need.  
 
-	> [AZURE.IMPORTANT] **リダイレクト URL** を保存しておいてください。この値は、このトピックで後ほど必要になる場合があります。
+	> [AZURE.IMPORTANT] Save the **redirect URL**. You may need this value later in this topic.  
 
-10. **[OK]** をクリックして、手順を完了します。
+10. Select **OK** to complete the steps.
 
-完了すると、App Service 環境に新しい Office 365 Users API が追加されます。
+When finished, a new Office 365 Users API is added to your app service environment.
 
-## 省略可能: PowerApps Office 365 Users API で使用する AAD アプリケーションの登録
+## Optional: Register an AAD app for use with PowerApps Office 365 Users API
 
-キーとシークレットの値が割り当てられた既存の AAD アプリケーションがない場合は、次の手順に従ってアプリケーションを作成し、必要な値を取得します。
+If you don't have an existing AAD app with the key and secret values, then use the following steps to create the application, and get the values you need. 
 
-1. [Azure ポータル][5]を開きます。
+1. Open [Azure Portal][5].
 
-2. **[参照]** をクリックし、**[Active Directory]** を選択します。  
+2. Select **Browse** and then select **Active Directory**:  
 
-	> [AZURE.NOTE] これにより、Azure クラシック ポータルで Active Directory が開きます。
+	> [AZURE.NOTE] This opens Active Directory in the Azure classic portal.  
 
-3. 組織のテナント名を選択します。  
-![Azure Active Directory の起動][6]
+3. Select your organization's tenant name:  
+![Launch Azure Active Directory][6]
 
-4. **[アプリケーション]** タブを選択し、**[追加]** をクリックします。  
-![AAD テナント アプリケーション][7]
+4. Select the **Applications** tab, and select **Add**:  
+![AAD tenant applications][7]
 
-5. **[アプリケーションの追加]** で次の操作を行います。  
+5. In **Add application**:  
 
-	1. アプリケーションの **[名前]** を入力します。  
-	2. アプリケーションの種類は **[Web]** のままにします。  
-	3. **[次へ]** を選択します。  
+	1. Enter a **Name** for your application.  
+	2. Leave the application type as **Web**.  
+	3. Select **Next**.  
 
-	![AAD アプリケーションの追加 - アプリケーション情報][8]
+	![Add AAD application - app info][8]
 
-6. **[アプリケーションのプロパティ]** で次の操作を行います。  
+6. In **App Properties**:  
 
-	1. アプリケーションの**サインオン URL** を入力します。PowerApps の AAD に対して認証するので、サインオン URL を _https://login.windows.net_ に設定します。
-	2. アプリの有効な**アプリ ID URI** を入力します。  
-	3. **[OK]** を選択します。  
+	1. Enter the **SIGN-ON URL** of your application. Since you are going to authenticate with AAD for PowerApps, set the sign-on url to _https://login.windows.net_.  
+	2. Enter a valid **APP ID URI** for your app.  
+	3. Select **OK**.  
 
-	![AAD アプリケーションの追加 - アプリケーションのプロパティ][9]
+	![Add AAD application - app properties][9]
 
-7. 操作が正常に完了すると、新しい AAD アプリケーションにリダイレクトされます。**[構成]** をクリックします。  
-![Contoso AAD アプリケーション][10]
+7. On successful completion, you are redirected to the new AAD app. Select **Configure**:  
+![Contoso AAD app][10]
 
-8. _OAuth 2_ セクションの **[応答 URL]** を、(このトピックで) Azure ポータルで新しい Office 365 Users API を追加したときに受け取ったリダイレクト URL に設定します。**[アプリケーションの追加]** をクリックします。  
-![Contoso AAD アプリケーションの構成][11]
+8. Set the **Reply URL** under the _OAuth 2_ section to the redirect URL you received when you added the new Office 365 Users API in the Azure Portal (in this topic). Select **Add application**:  
+![Configure Contoso AAD app][11]
 
-9. **[他のアプリケーションに対するアクセス許可]** ウィンドウで、**[Office 365 統合 API (プレビュー)]** を選択し、**[OK]** をクリックします。
+9. In the **Permissions to other applications** window, select **Office 365 Unified API (Preview)**, and select **OK**.
 
-10. 構成ページに戻り、_[他のアプリケーションに対するアクセス許可]_ の一覧に _Office 365 統合 API (プレビュー)_ が追加されていることを確認します。
+10. Back in the configure page, note that _Office 365 Unified API (Preview)_ is added to the _Permission to other applications_ list.
 
-11. _Office 365 統合 API (プレビュー)_ の **[デリゲートされたアクセス許可]** を選択し、**[すべてのユーザーの基本プロファイルの読み取り]** アクセス許可を選択します。
+11. Select **Delegated Permissions** for _Office 365 Unified API (Preview)_, and select the **Read all users' basic profiles** permission.
 
-新しい Azure Active Directory アプリケーションが作成されます。Azure ポータルの Office 365 Users API 構成でこのアプリケーションを使用できます。
+A new Azure Active Directory app is created. You can use this app in your Office 365 Users API configuration in the Azure portal. 
 
-「[アプリケーションを Azure AD に追加する方法と理由](../active-directory/active-directory-how-applications-are-added.md)」に AAD アプリケーションに関する有用な情報があります。
+Some good info on AAD applications at [How and why applications are added to Azure AD](../active-directory/active-directory-how-applications-are-added.md).
 
-## REST API に関するページを参照してください。
+## See the REST APIs
 
-[Office 365 Users REST API](../connectors/connectors-create-api-office365-users.md) リファレンス。
+[Office 365 Users REST API](../connectors/connectors-create-api-office365-users.md) reference.
 
-## まとめと次のステップ
-このトピックでは、Office 365 Users API を PowerApps Enterprise に追加しました。次に、この API をユーザーのアプリケーションに追加できるように、ユーザーに API へのアクセスを許可します。
+## Summary and next steps
+In this topic, you added the Office 365 Users API to your PowersApps Enterprise. Next, give users access to the API so it can be added to their apps: 
 
-[接続を追加し、ユーザーにアクセスを許可する](powerapps-manage-api-connection-user-access.md)
-
+[Add a connection and give users access](powerapps-manage-api-connection-user-access.md)
+-->
 
 <!--References-->
 [1]: ./media/powerapps-create-api-office365-users/browse-to-registered-apis.PNG
@@ -128,4 +130,4 @@
 [10]: ./media/powerapps-create-api-office365-users/contoso-aad-app.PNG
 [11]: ./media/powerapps-create-api-office365-users/contoso-aad-app-configure.PNG
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

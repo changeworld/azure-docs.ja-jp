@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="04/30/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse への接続
-SQL Data Warehouse に接続するには、認証のためのセキュリティ資格情報を渡す必要があります。接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されているのがわかります。
+SQL Data Warehouse に接続するには、認証のためのセキュリティ資格情報を渡す必要があります。接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されているのがわかります。セキュリティ、および SQL Data Warehouse への接続を有効にする方法の詳細については、「[SQL Data Warehouse でのデータベース保護][]」をご覧ください。
 
 この記事では、SQL Data Warehouse への接続に関する次の点について説明します。
 
@@ -52,7 +52,9 @@ SQL Data Warehouse に接続するには、次の情報を提供する必要が�
 - ADO.NET
 - ODBC
 - PHP
-- JDBC
+- JDBC 
+
+各プロトコルの接続文字列の例を以下に示します。接続文字列は、Azure ポータルを使用して設定することもできます。Azure ポータルでデータベースに移動します。*[要点]* で *[データベース接続文字列の表示]* をクリックします。
 
 ### ADO.NET 接続文字列の例
 
@@ -95,7 +97,7 @@ SQL Data Warehouse では、接続およびオブジェクトの作成中にい�
 
 各クエリは、1 つまたは複数の要求 ID によって表示されます。その接続で送信されるすべてのクエリは 1 つのセッションの一部であるため、1 つのセッション ID で示されます。
 
-ただし、SQL Data Warehouse は分散 MPP システムであるため、セッション ID および要求 ID の両方は、SQL Server とは少し異なる方法で表示されます。
+ただし、SQL Data Warehouse は分散 MPP (超並列処理) システムであるため、セッション ID と要求 ID は SQL Server とは少し異なる方法で示されます。
 
 セッションおよび要求は、それぞれの ID によって論理的に示されます。
 
@@ -153,9 +155,10 @@ WHERE   s.[session_id] <> SESSION_ID()
 <!--Azure.com references-->
 [接続およびクエリ]: ./sql-data-warehouse-get-started-connect.md
 [Table design in SQL Data Warehouse (SQL Data Warehouse でのテーブルの デザイン)]: ./sql-data-warehouse-develop-table-design.md
+[SQL Data Warehouse でのデータベース保護]: ./sql-data-warehouse-overview-security.md
 
 <!--MSDN references-->
 
 <!--Other references-->
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

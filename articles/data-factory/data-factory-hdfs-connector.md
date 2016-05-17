@@ -265,7 +265,7 @@ fileName | テーブルでフォルダー内の特定のファイルを参照す
 partitionedBy | partitionedBy を利用して時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 | いいえ
 fileFilter | すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: * (複数の文字) および ? (単一の文字)。<br/><br/>例 1: "fileFilter": "*.log"<br/>例 2: "fileFilter": 2014-1-?.txt"<br/><br/>**注**: fileFilter は入力の FileShare データセットに適用できます | いいえ
 | compression | データの圧縮の種類とレベルを指定します。サポートされる種類: **GZip**、**Deflate**、および **BZip2**。サポートされるレベル: **Optimal** および **Fastest**。現時点で、**AvroFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
-| BlobSink の format | **TextFormat**、**AvroFormat**、および **JsonFormat** の 3 種類の形式がサポートされています。形式の下にある type プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、下にある「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。JsonFormat を使用する場合は、「[JsonFormat の指定](#specifying-jsonformat)」セクションを参照してください。 | いいえ 
+| BlobSink の format | **TextFormat**、**AvroFormat**、および **JsonFormat** の 3 種類の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、および「[JsonFormat の指定](#specifying-jsonformat)」をご覧ください。 | いいえ 
 
 
 > [AZURE.NOTE] fileName と fileFilter は、同時に使用することができません。
@@ -301,52 +301,7 @@ fileFilter | すべてのファイルではなく、folderPath 内のファイ�
 
 上記の例では、SliceStart の年、月、日、時刻が folderPath プロパティと fileName プロパティで使用される個別の変数に抽出されます。
 
-### TextFormat の指定
-
-書式が **TextFormat** に設定されている場合、次の**任意の**プロパティを **Format** セクションで指定できます。
-
-| プロパティ | 説明 | 必須 |
-| -------- | ----------- | -------- |
-| columnDelimiter | ファイルの列の区切り記号として使用される文字です。この時点では 1 文字だけが許可されています。このタグは任意です。既定値はコンマです (,)。 | いいえ |
-| rowDelimiter | ファイルの行の区切り記号として使用される文字です。この時点では 1 文字だけが許可されています。このタグは任意です。既定値は [“\\r\\n”, “\\r”,” \\n”] のいずれかになります。 | いいえ |
-| escapeChar | コンテンツに表示される列区切り記号のエスケープに使用される特殊文字です。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。<br/><br/>たとえば、列の区切り文字としてコンマ (,) を使用しているとき、テキストにもコンマ文字が必要な場合 (例: “Hello, world”)、エスケープ文字として “$” を定義し、ソースで文字列 “Hello$, world” を使用できます。<br/><br/>1 つのテーブルに escapeChar と quoteChar の両方を指定できないことに注意してください。 | いいえ | 
-| quoteChar | この特殊文字は文字列値を引用符で囲むために使用されます。引用符文字内の列区切り文字と行区切り文字は文字列値の一部として処理されます。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。<br/><br/>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: <Hello  world>)、引用符文字として「"」を定義し、ソースで文字列「"Hello, world"」を使用できます。このプロパティは入力テーブルと出力テーブルの両方に適用されます。<br/><br/>1 つのテーブルに escapeChar と quoteChar の両方を指定できないことに注意してください。 | いいえ |
-| nullValue | BLOB ファイル コンテンツで null 値を表すために使用する文字です。このタグは任意です。既定値は “\\N” です。<br/><br/>たとえば、上記のサンプルに基づくと、BLOB の “NaN” は SQL Server などにコピーされるときに null 値として変換されます。 | いいえ |
-| encodingName | エンコード名の指定。有効なエンコード名の一覧については、[Encoding.EncodingName プロパティに関する記事](https://msdn.microsoft.com/library/system.text.encoding.aspx)を参照してください。例: windows-1250 または shift\_jis。既定値は UTF-8 です。 | いいえ | 
-
-#### TextFormat の例
-次の例は、TextFormat の format プロパティの一部を示します。
-
-	"typeProperties":
-	{
-	    "folderPath": "mycontainer/myfolder",
-	    "fileName": "myblobname"
-	    "format":
-	    {
-	        "type": "TextFormat",
-	        "columnDelimiter": ",",
-	        "rowDelimiter": ";",
-	        "quoteChar": """,
-	        "NullValue": "NaN"
-	    }
-	},
-
-quoteChar ではなく escapeChar を使用するには、quoteChar の行を次で置き換えます。
-
-	"escapeChar": "$",
-
-### AvroFormat の指定
-形式が AvroFormat に設定されている場合、typeProperties セクション内の Format セクションにプロパティを指定する必要はありません。例:
-
-	"format":
-	{
-	    "type": "AvroFormat",
-	}
-
-Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュートリアルに関するページ](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)を参照してください。
-
-[AZURE.INCLUDE [data-factory-json-format](../../includes/data-factory-json-format.md)]
-
+[AZURE.INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]  
 [AZURE.INCLUDE [data-factory-compression](../../includes/data-factory-compression.md)]
 
 ## HDFS のコピー アクティビティの type プロパティ
@@ -355,7 +310,7 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
 
-コピー アクティビティで、source の種類が **FileSystemSource** である場合は、typeProperties セクションで次のプロパティを使用できます。
+コピー アクティビティで、ソースが **FileSystemSource** 型の場合は、typeProperties セクションで次のプロパティを使用できます。
 
 **FileSystemSource** では次のプロパティがサポートされます。
 
@@ -368,6 +323,6 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するためのさまざまな方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

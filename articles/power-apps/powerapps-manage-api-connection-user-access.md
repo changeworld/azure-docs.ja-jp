@@ -14,76 +14,88 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/02/2016"
+   ms.date="05/02/2016"
    ms.author="litran"/>
 
 
 # 新しい API の追加、接続の追加、ユーザーへのアクセス許可
 
-API は[App Service 環境](powerapps-get-started-azure-portal.md)に存在します。API が作成されるのは PowerApps 用の利用可能な API から、App Service 環境でホストされる API アプリから、または Swagger 2.0 からです。PowerApps に容易に追加できる事前構築の API はたくさんあります。自分の API を JSON 形式または Swagger 2.0 にてアップロードすることもできます。
+> [AZURE.IMPORTANT] このトピックはアーカイブされたため、間もなく削除されます。新しい [PowerApps](https://powerapps.microsoft.com) のページで Microsoft の取り組みをご覧ください。
+> 
+> - PowerApps の詳細を確認し、使ってみる場合は、[PowerApps](https://powerapps.microsoft.com) のページをご覧ください。  
+> - PowerApps で利用可能な接続の詳細については、[利用可能な接続](https://powerapps.microsoft.com/tutorials/connections-list/)に関する記事をご覧ください。 
 
-こちらのトピック:
+<!--Archived
+APIs exist within an [app service environment](powerapps-get-started-azure-portal.md). APIs can be created from the available APIs for PowerApps, from API apps hosted in your app service environment, or from Swagger 2.0. There are many pre-built APIs available that can easily be added to your PowerApps. You can also upload your own API in JSON format or Swagger 2.0. 
 
-- API を PowerApps に追加し、社内のユーザーに API 使用のためのアクセス許可を付与する手順 (API のプロパティ変更を含む) を説明します。
-- API に接続を追加し、社内のユーザーに接続使用のためのアクセス許可を付与する手順を説明します。
+This topic:
 
-
-#### 開始のための前提条件
-
-- [Azure サブスクリプションの PowerApps](powerapps-get-started-azure-portal.md) を有効にする。
-- [App Service 環境](powerapps-get-started-azure-portal.md)の作成
-- 次の方法のいずれかを使用して API を作成する。  
-	- [Microsoft 管理の API または IT 管理の API](powerapps-register-from-available-apis.md) の作成
-	- [App Service 環境](powerapps-register-api-hosted-in-app-service.md)内でホストされる API の作成
-	- [Swagger 2.0 API の定義](powerapps-register-existing-api-from-api-definition.md)を使用して作成
+- Lists the steps to add an API to PowerApps, and give users within your company permissions to use the API, including changing its properties.
+- Lists the steps to add a connection to your API, and give users within your company permissions to use the connection.
 
 
-## ユーザーへの API アクセス許可
-API を作成して、App Service 環境に追加したら、社内のユーザーに使用許可を与える手順に入ります。
+#### Prerequisites to get started
 
-1. PowerApps にて、**[管理 API]** を選択し、API を選択します。たとえば、*MS Power BI* API を作成した場合は、それを選択して、そのブレードを開きます。**API ユーザー アクセス**を選択します。: ![][1]  
+- Enable [PowerApps in your Azure subscription](powerapps-get-started-azure-portal.md).
+- Create an [App Service environment](powerapps-get-started-azure-portal.md).
+- Create an API using any of the following methods:  
+	- Create a [Microsoft managed API or an IT managed API](powerapps-register-from-available-apis.md).
+	- Create an API hosted within [your App Service Environment](powerapps-register-api-hosted-in-app-service.md).
+	- Create using a [Swagger 2.0 API definition](powerapps-register-existing-api-from-api-definition.md).
 
-2. **追加**を選択してユーザーを追加し、権限を選択します。完了したら、**追加**を選択して変更を保存します。ユーザーまたはグループの数が **API ユーザー アクセス**ウィンドウで増加します。
+
+## Give users access to the API
+Now that the API is created and added to your app service environment, it's time to give users within your company the permissions to use it. 
+
+1. In PowerApps, select **Manage APIs**, and select your API. For example, if you created a *MS Power BI* API, select it to open its blade. Select **API user access**:  
+![][1]  
+
+2. Select **Add** to add users, and select the rights. When done, select **Add** to save your changes. The Users or Groups count increases in the **API user access** window.
 
 
-## API への新しい接続の追加
-次の手順は API に対する "接続" の作成です。これは接続文字列のようなものです。これにより、API が正常に「バックエンド」システムに接続可能になります。PowerApps Enterprise パブリック プレビューについては、SQL Server の接続のみが追加および構成可能です。これでさらに追加されました。
+## Add a new connection to your API
+The next step is to create the "connection" to your API, which is kind of like a connection string. This allows the API to successfully connect to your "backend" system. For PowerApps Enterprise public preview, only SQL Server's connection can be added and configured. More are being added. 
 
-- [SQL Server の接続の作成](powerapps-create-api-sqlserver.md)
+- [Create SQL Server's connection](powerapps-create-api-sqlserver.md)
 
-## ユーザーへの接続に対するランタイム アクセスの付与
-社内ユーザーに接続を使用するアクセス許可を行います。
+## Give users runtime access to the connection
+Now give users within your company permissions to use the connection.
 
-1. API を開き、[**接続**]を選択して、特定の接続を選択します。これにより、接続名が上部に表示されている新しいブレードが開きます。 
-2. この新しいブレードで、[**接続ユーザー アクセス**] を選択します。次の例では、**ハイブリッド トンネル**接続が選択されています。新しいブレードが開き、こちらで**接続ユーザー アクセス**を選択します。: ![][2]
+1. Open your API, select **Connections**, and then select your specific connection. This opens a new blade that lists your connection name at the top. 
+2. In this new blade, select **Connection user access**.  In the following example, the **Hybrid Tunnel** connection is selected. The new blade opens and this is where you select **Connection user access**:  
+![][2]
   
-3. **接続ユーザー アクセス**で、**追加**を選択し、付与するアクセス許可を選択します。: ![][3]
+3. In **Connection user access**, select **Add**, and then select the permission you want to give:  
+![][3]
   
-4. ユーザーまたはグループを追加します。**追加**を選択して、変更を保存します。
+4. Add your user or group. Select **Add** to save your changes.
 
-ユーザーが API とその接続に対してアクセス許可を得たので、ユーザーはこれらの API を PowerApps で作成したアプリに追加できるようになりました。具体的には次の処理が行われます。
+Now that users have permissions to the API and its connection, your users can add these APIs to their apps created in PowerApps. Specifically: 
 
-- ユーザーは PowerApps で**利用可能な接続**の下に一覧表示されている API を参照できます。
-- ユーザーは PowerApps で**接続**の下にある接続を参照できます。
-
-
-## API の削除
-以前に追加した API を削除することもできます。PowerApps にて、**管理 API**から API を選択し、**削除**を選択します。: ![][4]
+- Users can see the API listed under **Available Connections** in PowerApps.
+- Users can see the connection under **My Connections** in PowerApps.
 
 
-## まとめと次のステップ
-このトピックで説明した内容は次のとおりです。
+## Delete an API
+You can also delete an API you previously added. In PowerApps, select the **Manage APIs**, select the API, and select **Delete**:  
+![][4]
 
-- API を追加して、社内ユーザーに使用する権限を付与しました。これらの手順により、ランタイム アクセスをいつでも管理することが可能です。たとえば、ユーザー A が退職した場合、Azure ポータルを使用してユーザーのアクセス許可を容易に削除できます。ユーザー B が入社した場合にも同じシナリオです。
-- 接続を追加しました (接続文字列に似ています)。この手順により、Azure でホストされている API がオンプレミスの SQL Server のようにシステムに接続できるようになります。また、社内のユーザーに接続を使用できるアクセス許可を付与しました。 
-- タスクごとに異なるブレードにて作業しました。接続を追加するため、API を開いてそのブレードを使用します。ユーザーのアクセスを許可するには、アクセスを付与する対象に合わせて、API または接続を開きます。 
-- App Service 環境で作成した API はいずれも削除が可能です。
 
-次は、[PowerApps の管理および監視](powerapps-manage-monitor-usage.md)が可能です。
+## Summary and next steps
+In this topic, you:
+
+- Added an API and gave users within your company the rights to use it. You can also use these steps to manage the runtime access at any time. For example, if userA leaves your company, you can use the Azure portal to easily remove this user's permissions. Same scenario if a UserB joins your company.
+- Added a connection (which is similar to a connection string). This step lets the API hosted in Azure to connect to your system, like an on-premises SQL Server. You also gave users within your company permissions to use the connection. 
+- You worked with different blades, depending on the task. To add a connection, you open the API and use its blade. To grant user access, you open the API or the connection, depending on what you're giving access. 
+- You can also delete any of the APIs you create within your app service environment.
+
+Next, you can [manage and monitor your PowerApps](powerapps-manage-monitor-usage.md).
+-->
+
 
 [1]: ./media/powerapps-manage-api-connection-user-access/apiuseraccess.png
 [2]: ./media/powerapps-manage-api-connection-user-access/connectionuseraccess.png
 [3]: ./media/powerapps-manage-api-connection-user-access/selectpermission.png
 [4]: ./media/powerapps-manage-api-connection-user-access/deleteapi.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

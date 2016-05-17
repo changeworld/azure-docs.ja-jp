@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="04/15/2016" 
+	ms.date="05/03/2016" 
 	ms.author="jeffstok"/>
 
 #Stream Analytics のリリース ノート
@@ -149,4 +149,4 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Stream Analytics 管理 REST API 参照](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

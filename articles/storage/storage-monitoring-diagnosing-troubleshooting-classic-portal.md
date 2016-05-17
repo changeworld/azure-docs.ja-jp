@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="04/29/2016"
 	ms.author="jahogg"/>
 
 # Microsoft Azure Storage の監視、診断、およびトラブルシューティング
@@ -28,7 +28,7 @@
 
 > [AZURE.NOTE] 現時点では、レプリケーションの種類がゾーン冗長ストレージ (ZRS) のストレージ アカウントでは、メトリックまたはログ機能が有効になっていません。
 
-Azure のストレージ アプリケーションにおけるエンド ツー エンドのトラブルシューティングするための実践的なガイドについては、「[Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング](../storage-e2e-troubleshooting/)」を参照してください。
+Azure のストレージ アプリケーションにおけるエンド ツー エンドのトラブルシューティングするための実践的なガイドについては、「[Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング](storage-e2e-troubleshooting.md)」を参照してください。
 
 + [はじめに]
 	+ [本書の構成]
@@ -246,7 +246,7 @@ Storage Client Library for .NET では、アプリケーションで実行され
 
 ストレージ クライアント ライブラリは、要求ごとに固有のクライアント要求 ID を自動生成します。
 
-- ストレージ クライアント ライブラリが作成するクライアント側のログの場合、クライアント要求 ID は、その要求に関連したすべてのログ エントリの **[クライアント要求 ID]** フィールドに表示されます。
+- ストレージ クライアント ライブラリが作成するクライアント側のログの場合、クライアント要求 ID は、その要求に関連したすべてのログ エントリの [**クライアント要求 ID**] フィールドに表示されます。
 - Fiddler などによってキャプチャされたネットワーク トレースの場合、クライアント要求 ID は、要求メッセージの **x-ms-client-request-id** HTTP ヘッダー値として表示されます。
 - サーバー側の Storage Logging ログの場合、クライアント要求 ID は [クライアント要求 ID] 列に表示されます。
 
@@ -409,7 +409,7 @@ BLOB ダウンロード要求の **AverageServerLatency** が高い場合、Stor
 
 また **AverageServerLatency** 値が高いという症状は、テーブルやクエリがうまく設計されていないために、スキャン操作が生じたり、前後にアンチ パターンが存在したりする場合に起こり得ます。詳しくは、『[メトリックが PercentThrottlingError の増加を示す]』を参照してください。
 
-> [AZURE.NOTE] 注意が必要な他の問題を含む総合的なチェック リストについては、[拡張可能でパフォーマンスの高い Storage ベースのアプリケーションを設計するためのチェックリスト](storage-performance-checklist.md)のページを参照してください。
+> [AZURE.NOTE] 総合的なパフォーマンス チェックリストについては、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md)」を参照してください。
 
 ### <a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>キューのメッセージ配信で予期しない遅延が発生する
 
@@ -487,7 +487,8 @@ Microsoft.WindowsAzure.Storage|エラー|1|85d077ab -…|再試行ポリシー�
 
 - 一般に、クライアントがすぐに使用できるように SAS を作成する場合には開始時刻は設定しないでください。現行時間を使用して SAS を生成するホストと、Storage サービスのクロックに小さな差異が存在すると、有効になっていない SAS を Storage サービスが受け取る可能性があります。
 - SAS に非常に短い有効期限は設定しないでください。やはり、SAS を生成するホストと Storage サービス間のクロックに小さい差異があると、予想されていたよりも明らかに早く SAS の有効期限が切れる恐れがあります。
-- SAS キーのバージョン パラメーター (例: **sv=2012-02-12**) が、使用しているストレージ クライアント ライブラリのバージョンと一致するようにします。必ず、最新バージョンのストレージ クライアント ライブラリを使用してください。SAS トークンのバージョン管理およびクライアント ライブラリ バージョンの依存関係の詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/14/what-s-new-for-microsoft-azure-storage-at-teched-2014.aspx" target="_blank">Microsoft Azure Storage の新機能</a>に関するページを参照してください。
+- SAS キーのバージョン パラメーター (例: **sv=2012-02-12**) が、使用しているストレージ クライアント ライブラリのバージョンと一致するようにします。必ず、最新バージョンのストレージ クライアント ライブラリを使用してください。SAS トークンのバージョン管理の詳細については、「[What's new for Microsoft Azure Storage (Microsoft Azure Storage の新機能)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/14/what-s-new-for-microsoft-azure-storage-at-teched-2014.aspx)」を参照してください。
+- 
 - ストレージ アクセス キーを再生成すると (Azure クラシック ポータルのストレージ アカウントの任意のページで **[アクセス キーの管理]** をクリックします)、既存の SAS トークンが無効になる可能性があります。この状況は、SAS トークンを生成する際にクライアント アプリケーションがキャッシュする有効期限を長く設定していると問題となることがあります。
 
 SAS トークンを生成するためのストレージ クライアント ライブラリを使用すると、有効なトークンの作成が容易です。ただし、Storage REST API を使用し、手動で SAS トークンを構成している場合、MSDN の「<a href="http://msdn.microsoft.com/library/azure/ee395415.aspx" target="_blank">共有アクセス署名を使用したアクセスの委任</a>」を注意深くお読みください。
@@ -921,4 +922,4 @@ Blob Storage からダウンロードしたストレージ ログ データを E
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-2.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

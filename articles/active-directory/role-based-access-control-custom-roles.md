@@ -10,10 +10,10 @@
 <tags
 	ms.service="active-directory"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="04/18/2016"
+	ms.date="04/28/2016"
 	ms.author="kgremban"/>
 
 
@@ -99,4 +99,4 @@ Azure リソース プロバイダーの操作を一覧表示するには、`Get
 	- [REST API](role-based-access-control-manage-access-rest.md)
 - [組み込みのロール](role-based-access-built-in-roles.md): RBAC の標準ロールの詳細。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

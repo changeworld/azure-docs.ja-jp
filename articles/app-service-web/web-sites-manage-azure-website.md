@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/12/2016" 
+	ms.date="04/27/2016" 
 	ms.author="tdykstra"/>
 
 # Azure App Service での Web アプリの管理
@@ -90,12 +90,7 @@ Visual Studio Team Services を使用する場合は、ソース管理から継�
 - [Team Foundation バージョン管理 (TFVC) の使用](../cloud-services/cloud-services-continuous-delivery-use-vso.md) 
 - [Git の使用](../cloud-services/cloud-services-continuous-delivery-use-vso-git.md)
  
-[AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
-
-[AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
- 
 <!-- Anchors. -->
-
 
 [Before you deploy your site to production]: #before-you-deploy-your-site-to-production
 [While your website is running]: #while-your-website-is-running
@@ -103,4 +98,4 @@ Visual Studio Team Services を使用する場合は、ソース管理から継�
 
   
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

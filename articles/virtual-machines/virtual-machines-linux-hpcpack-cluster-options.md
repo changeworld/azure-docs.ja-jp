@@ -13,14 +13,14 @@ ms.service="virtual-machines-linux"
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="big-compute"
- ms.date="02/04/2016"
+ ms.date="04/29/2016"
  ms.author="danlep"/>
 
-# Microsoft HPC Pack を使用して Azure で Linux ハイ パフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション
+# Microsoft HPC Pack を使用して Azure でハイパフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション
 
 [AZURE.INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../includes/virtual-machines-common-hpcpack-cluster-options.md)]
 
-HPC Pack で Windows HPC ワークロードを実行する場合は、「[Microsoft HPC Pack を使用して Azure で Windows ハイ パフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション](virtual-machines-windows-hpcpack-cluster-options.md)」をご覧ください。
+この記事では、HPC Pack を使用して Linux ワークロードを実行するオプションについて説明します。[HPC Pack を使用して Windows HPC ワークロード](virtual-machines-windows-hpcpack-cluster-options.md)を実行するオプションもあります。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -52,12 +52,11 @@ HPC Pack で Windows HPC ワークロードを実行する場合は、「[Micros
 
 * [チュートリアル: Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFOAM を実行する](virtual-machines-linux-classic-hpcpack-cluster-openfoam.md)
 
-
+* [Tutorial: Run STAR-CCM+ with Microsoft HPC Pack on a Linux RDMA cluster in Azure (チュートリアル: Azure の Linux RDMA クラスターで Microsoft HPC Pack を使用して STAR-CCM+ を実行する)](virtual-machines-linux-classic-hpcpack-cluster-starccm.md)
 
 ### クラスターの管理
 
 * [Submit jobs to an HPC Pack cluster in Azure (Azure の HPC Pack クラスターにジョブを送信する)](virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
-
 
 
 ## MPI ワークロードのための RDMA のクラスターの作成
@@ -66,4 +65,4 @@ HPC Pack で Windows HPC ワークロードを実行する場合は、「[Micros
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-classic-rdma-cluster.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

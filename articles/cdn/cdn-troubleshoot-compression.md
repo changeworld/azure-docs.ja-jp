@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/21/2016" 
+	ms.date="04/28/2016" 
 	ms.author="casoper"/>
     
 # CDN ファイルの圧縮のトラブルシューティング
@@ -36,12 +36,14 @@
 
 ## トラブルシューティングの手順
 
+> [AZURE.TIP] 新しいエンドポイントをデプロイする場合と同様に、CDN の構成の変更がネットワークを通じて反映されるまでには多少の時間がかかります。ほとんどの場合、90 分以内に変更内容が適用されます。今回初めて CDN エンドポイントの圧縮を設定した場合は、圧縮設定が確実に POP に反映されるように 1 ～ 2 時間の待機時間を検討してください。
+
 ### 要求を確認する
 
 最初に、要求でクイック サニティ チェックを行う必要があります。ブラウザーの[開発者ツール](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)を使用して、実行中の要求を表示できます。
 
 - 送信元ではなく、エンドポイントの URL (`<endpointname>.azureedge.net`) に要求が送信されていることを確認します。
-- 要求に **Accept-Encoding** ヘッダーが含まれており、このヘッダーの値に **gzip**、**defalte**、または **bzip2** が含まれていることを確認します。
+- 要求に **Accept-Encoding** ヘッダーが含まれており、このヘッダーの値に **gzip**、**deflate**、または **bzip2** が含まれていることを確認します。
 
 ![CDN 要求ヘッダー](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
@@ -63,18 +65,17 @@
 [Azure ポータル](https://portal.azure.com)で、エンドポイントに移動し、**[管理]** ボタンをクリックします。補助ポータルが開きます。**[HTTP ラージ]** タブ、**[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。**[圧縮]** をクリックします。
 
 - 圧縮が有効になっていることを確認します。
-- **ファイルの種類**一覧に MIME の種類のコンマ区切り一覧が含まれていることを確認します。
+- **ファイルの種類**一覧に MIME の種類のコンマ区切り一覧 (スペースなし) が含まれていることを確認します。
 - 圧縮するコンテンツの MIME の種類が、圧縮形式の一覧に含まれていることを確認します。
 
 ![CDN Premium の圧縮設定](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
-
 
 ### コンテンツがキャッシュされていることを確認する
 
 ブラウザーの開発者ツールを使用して、応答ヘッダーを確認し、ファイルが要求されているリージョンでキャッシュされていることを確認します。
 
 - **Server** 応答ヘッダーを確認します。この応答ヘッダーの形式は、次の例に示すとおり**プラットフォーム (POP/サーバー ID)** である必要があります。
-- **X-Cache** 応答ヘッダーを確認します。ヘッダーによって **HIT** が読み込まれる必要があります。  
+- **X-Cache** 応答ヘッダーを確認します。ヘッダーによって **HIT** が読み取られる必要があります。  
 
 ![CDN 応答ヘッダー](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
@@ -85,4 +86,4 @@
 - 128 バイトより大きい
 - 1 MB 未満
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="01/26/2016"
+	ms.date="05/06/2016"
 	ms.author="sethm"/>
 
 
@@ -35,7 +35,7 @@ Service Bus Relay を使用して、既存のエンタープライズ環境内�
 
 ## サービス名前空間の作成
 
-Azure で Service Bus Relay を使用するには、最初にサービス名前空間を作成する必要があります。名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
+Azure で Service Bus Relay を使用するには、最初に名前空間を作成する必要があります。名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
 サービス名前空間を作成するには:
 
@@ -75,9 +75,7 @@ Azure で Service Bus Relay を使用するには、最初にサービス名前�
 
 ## Service Bus NuGet パッケージの取得
 
-[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
-
-アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
+[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
 
 1.  ソリューション エクスプローラーで **[参照]** を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 2.  "Service Bus" を検索して、**[Microsoft Azure Service Bus]** 項目を選択します。**[インストール]** をクリックし、インストールが完了したら、次のダイアログ ボックスを閉じます。
@@ -265,8 +263,8 @@ using (var ch = cf.CreateChannel())
 
 これで、Service Bus Relay サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
+- [Service Bus のリレー型メッセージングの概要](service-bus-relay-overview.md)
 - [Azure Service Bus アーキテクチャの概要](service-bus-fundamentals-hybrid-solutions.md)
-- [Service Bus Relay サービスの使用方法](service-bus-dotnet-how-to-use-relay.md)
 - Service Bus のサンプルを [Azure のサンプル][]からダウンロードするか、[Service Bus サンプルの概要][]を参照してください。
 
   [Azure クラシック ポータル]: http://manage.windowsazure.com
@@ -274,4 +272,4 @@ using (var ch = cf.CreateChannel())
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [Service Bus サンプルの概要]: service-bus-samples.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

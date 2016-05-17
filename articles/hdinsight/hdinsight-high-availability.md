@@ -14,12 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="04/27/2016"
 	ms.author="jgao"/>
 
 
-#HDInsight における Hadoop クラスターの可用性と信頼性
+#HDInsight における Windows ベースの Hadoop クラスターの可用性と信頼性
 
+
+>[AZURE.NOTE] このドキュメントで使用する手順は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースのクラスターを使用している場合、Linux 固有の情報については、[HDInsight における Linux ベースの Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)に関する記事をご覧ください。
 
 HDInsight を使用すると、さまざまなクラスターの種類を、異なるデータ分析ワークロードにデプロイできるようになります。現在提供されているクラスターの種類は、クエリとワークロードの分析のための Hadoop クラスター、NoSQL ワークロードのための HBase クラスター、リアルタイムのイベントの処理ワークロードのための Storm クラスターです。特定のクラスターの種類には、さまざまなノードに合わせたロールがあります。次に例を示します。
 
@@ -106,4 +108,4 @@ SDK でも、同じような方法を使用します。SDK を使用したクラ
 - [RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)
 - [HDInsight .NET SDK の使用](hdinsight-provision-clusters.md#sdk)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

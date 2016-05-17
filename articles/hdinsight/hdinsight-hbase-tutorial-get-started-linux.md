@@ -295,4 +295,4 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!------HONumber=AcomDC_0504_2016-->

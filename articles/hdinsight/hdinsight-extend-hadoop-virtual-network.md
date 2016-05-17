@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/22/2016"
+   ms.date="05/04/2016"
    ms.author="larryfr"/>
 
 
@@ -21,7 +21,7 @@
 
 Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL Server などのオンプレミスのリソースに組み込むことや、クラウドのリソース間にセキュリティで保護されたプライベート ネットワークを作成することができます。
 
-> [AZURE.NOTE] HDInsight ではアフィニティ ベースの Azure の仮想ネットワークはサポートされていません。HDInsight を使用するときは、場所ベースの仮想ネットワークを使用する必要があります。
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 
 ##<a id="whatis"></a>Azure Virtual Network とは
@@ -56,7 +56,7 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 
 	* **LOB アプリケーションから HDInsight サービスを呼び出す。**たとえば、HBase Java API を使用して HDInsight HBase クラスターにデータを格納したり、クラスターからデータを取得したりします。
 
-Virtual Network の機能、利点の詳細については、「[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
+Virtual Network の機能、利点の詳細については、「[Azure 仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
 > [AZURE.NOTE] HDInsight クラスターをプロビジョニングする前に、Azure Virtual Network を作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](https://azure.microsoft.com/documentation/services/virtual-network/)」を参照してください。
 
@@ -80,20 +80,20 @@ Windows ベースのクラスターでは、v1 (クラシック) Virtual Network
 
 ###セキュリティで保護された Virtual Networks
 
-インターネットへのアクセスやインターネットからのアクセスを明示的に制限する Azure Virtual Networks では HDInsight はサポートされません。たとえば、ネットワーク セキュリティ グループまたは ExpressRoute を使用して、Virtual Network 内のリソースへのインターネット トラフィックをブロックします。
+HDInsight サービスは管理されたサービスで、プロビジョニング中や実行中にインターネット アクセスが必要です。これは、クラスターの正常性を監視する、クラスター リソースのフェールオーバーを開始する、スケーリング操作によりノード数を変更するなどの管理タスクを Azure が監視できるようにすることが目的です。
 
-HDInsight サービスは管理されたサービスです。また、クラスターの正常性を監視したり、クラスター リソースのフェールオーバーなど、自動化された管理タスクを開始したりするために、プロビジョニング中や実行中にインターネット アクセスが必要です。次の IP アドレスに、HDInsight をインストールするサブネットへの着信アクセスを許可する必要があります。
+セキュリティで保護された仮想ネットワークに HDInsight をインストールする必要がある場合は、次の IP アドレスのポート 443 上で着信アクセスを許可する必要があります。これにより、Azure が HDInsight クラスターを管理できるようになります。
 
 * 168\.61.49.99
 * 23\.99.5.239
 * 168\.61.48.131
 * 138\.91.141.162
 
-これらのアドレスからの着信アクセスを許可すると、セキュリティ保護された仮想ネットワークに HDInsight を正常にインストールできます。
+これらのアドレスのポート 443 上で着信アクセスを許可すると、セキュリティ保護された仮想ネットワークに HDInsight を正常にインストールできます。
 
-必要なアドレスを許可し、Virtual Network 内のサブネットにセキュリティ グループを適用する、新しいネットワーク セキュリティ グループを作成するスクリプトの例を次に示します。これらの手順では、HDInsight をインストールする Virtual Network とサブネットを既に作成していることを前提としています。
+次の例では、必要なアドレスを許可し、Virtual Network内のサブネットにセキュリティ グループを適用する、新しいネットワーク セキュリティ グループを作成する方法を示します。これらの手順では、HDInsight をインストールする Virtual Network とサブネットを既に作成していることを前提としています。
 
-> [AZURE.NOTE] このスクリプトを実行する前に Azure PowerShell をインストールし、構成している必要があります。詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+__Azure PowerShell の使用__
 
     $vnetName = "Replace with your virtual network name"
     $resourceGroupName = "Replace with the resource group the virtual network is in"
@@ -114,10 +114,10 @@ HDInsight サービスは管理されたサービスです。また、クラス�
         -Location $location `
         | Add-AzureRmNetworkSecurityRuleConfig `
             -name "hdirule1" `
-            -Description "HDI health and management address 16.61.49.99" `
+            -Description "HDI health and management address 168.61.49.99" `
             -Protocol "*" `
             -SourcePortRange "*" `
-            -DestinationPortRange "*" `
+            -DestinationPortRange "443" `
             -SourceAddressPrefix "168.61.49.99" `
             -DestinationAddressPrefix "VirtualNetwork" `
             -Access Allow `
@@ -128,7 +128,7 @@ HDInsight サービスは管理されたサービスです。また、クラス�
             -Description "HDI health and management 23.99.5.239" `
             -Protocol "*" `
             -SourcePortRange "*" `
-            -DestinationPortRange "*" `
+            -DestinationPortRange "443" `
             -SourceAddressPrefix "23.99.5.239" `
             -DestinationAddressPrefix "VirtualNetwork" `
             -Access Allow `
@@ -139,7 +139,7 @@ HDInsight サービスは管理されたサービスです。また、クラス�
             -Description "HDI health and management 168.61.48.131" `
             -Protocol "*" `
             -SourcePortRange "*" `
-            -DestinationPortRange "*" `
+            -DestinationPortRange "443" `
             -SourceAddressPrefix "168.61.48.131" `
             -DestinationAddressPrefix "VirtualNetwork" `
             -Access Allow `
@@ -150,7 +150,7 @@ HDInsight サービスは管理されたサービスです。また、クラス�
             -Description "HDI health and management 138.91.141.162" `
             -Protocol "*" `
             -SourcePortRange "*" `
-            -DestinationPortRange "*" `
+            -DestinationPortRange "443" `
             -SourceAddressPrefix "138.91.141.162" `
             -DestinationAddressPrefix "VirtualNetwork" `
             -Access Allow `
@@ -165,7 +165,35 @@ HDInsight サービスは管理されたサービスです。また、クラス�
         -AddressPrefix $subnet.AddressPrefix `
         -NetworkSecurityGroupId $nsg
 
-> [AZURE.IMPORTANT] 上記のスクリプトを使用すると、Azure クラウドの HDInsight 正常性および管理サービスへのアクセスのみが開きます。これにより、HDInsight クラスターをサブネットに正常にインストールできますが、既定で Virtual Network 外からの HDInsight クラスターへのアクセスがブロックされます。Virtual Network 外からのアクセスを可能にする場合は、追加のネットワーク セキュリティ グループ規則を追加する必要があります。
+__Azure CLI の使用__
+
+1. 次のコマンドを使用して、`hdisecure` という名前の新しいネットワーク セキュリティ グループを作成します。__RESOURCEGROUPNAME__ と __LOCATION__ を、Azure Virtual Network を含むリソース グループと、グループの作成場所 (リージョン) に置き換えます。
+
+        azure network nsg create RESOURCEGROUPNAME hdisecure LOCATION
+    
+    グループが作成されたら、新しいグループに関する情報が表示されます。次のような行を検索し、`/subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure` の情報を保存します。これは、後の手順で使用します。
+    
+        data:    Id                              : /subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure
+
+2. ポート 443 上で Azure HDInsight の正常性と管理サービスからのインバウンド通信を許可する新しいネットワーク セキュリティ グループにルールを追加するには、次を使用します。__RESOURCEGROUPNAME__ を、Azure Virtual Network が含まれているリソース グループの名前に置き換えます。
+
+        azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule1 -p "*" -o "*" -u "443" -f "168.61.49.99" -e "VirtualNetwork" -c "Allow" -y 300 -r "Inbound"
+        azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule2 -p "*" -o "*" -u "443" -f "23.99.5.239" -e "VirtualNetwork" -c "Allow" -y 301 -r "Inbound"
+        azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule3 -p "*" -o "*" -u "443" -f "168.61.48.131" -e "VirtualNetwork" -c "Allow" -y 302 -r "Inbound"
+        azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "443" -f "138.91.141.162" -e "VirtualNetwork" -c "Allow" -y 303 -r "Inbound"
+
+3. ルールが作成されたら、次を使用して新しいネットワーク セキュリティ グループをサブネットに適用します。__RESOURCEGROUPNAME__ を、Azure Virtual Network が含まれているリソース グループの名前に置き換えます。__VNETNAME__ と __SUBNETNAME__ を、Azure Virtual Network の名前と HDInsight のインストール時に使用するサブネットの名前に置き換えます。
+
+        azure network vnet subnet set RESOURCEGROUPNAME VNETNAME SUBNETNAME -w "/subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    
+    このコマンドが完了すると、これらの手順で使用されるサブネット上のセキュリティで保護された Virtual Network に、HDInsight を正常にインストールできます。
+
+> [AZURE.IMPORTANT] 上記の手順を使用すると、Azure クラウドの HDInsight 正常性および管理サービスへのアクセスのみが開きます。これにより、HDInsight クラスターをサブネットに正常にインストールできますが、既定で Virtual Network 外からの HDInsight クラスターへのアクセスがブロックされます。Virtual Network 外からのアクセスを可能にする場合は、追加のネットワーク セキュリティ グループ規則を追加する必要があります。
+>
+> たとえば、インターネットからの SSH アクセスを許可するには、次のようなルールを追加する必要があります。
+>
+> * Azure PowerShell - ```Add-AzureRmNetworkSecurityRuleConfig -Name "SSSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 304 -Direction Inbound```
+> * Azure CLI - ```azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "22" -f "*" -e "VirtualNetwork" -c "Allow" -y 304 -r "Inbound"```
 
 ネットワーク セキュリティ グループの詳細については、「[ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md)」を参照してください。Azure Virtual Network でルーティングを制御する方法については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
 
@@ -275,4 +303,4 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -41,7 +41,9 @@ HDInsight Emulator は、Hadoop サンドボックスによく似たローカル
 	- Windows 8
 	- Windows Server 2012
 
-- **Azure PowerShell**[Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。
+- **Azure PowerShell**
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 
 ##<a name="install"></a>HDInsight Emulator のインストール
@@ -492,7 +494,7 @@ Hadoop ジョブを送信する例を次に示します。
 	$hdinsightJob = <JobDefinition>
 	Start-AzureHDInsightJob -Cluster http://localhost:50111 -Credential $creds -JobDefinition $hdinsightJob
 
-Get-Credential を呼び出すと入力画面が表示されます。ユーザー名として **hadoop** を使用する必要があります。パスワードは任意の文字列でかまいません。クラスター名は、常に ****http://localhost:50111** です。
+Get-Credential を呼び出すと入力画面が表示されます。ユーザー名として **hadoop** を使用する必要があります。パスワードは任意の文字列でかまいません。クラスター名は、常に **http://localhost:50111** です。
 
 Hadoop ジョブの送信方法の詳細については、「[プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)」に関するページをご覧ください。Azure HDInsight PowerShell コマンドレットの詳細については、「[HDInsight PowerShell コマンドレット リファレンス ドキュメント][hdinsight-powershell-reference]」をご覧ください。
 
@@ -506,7 +508,6 @@ Emulator をインストールしたコンピューターでコントロール �
 
 - [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)
 - [HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce.md)
-- [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発](hdinsight-hadoop-develop-deploy-streaming-jobs.md)
 - [HDInsight について議論する MSDN フォーラム](http://social.msdn.microsoft.com/Forums/hdinsight)
 
 
@@ -524,7 +525,6 @@ Emulator をインストールしたコンピューターでコントロール �
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 [hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
-[hdinsight-develop-deploy-streaming]: hdinsight-hadoop-develop-deploy-streaming-jobs.md
 [hdinsight-versions]: hdinsight-component-versioning.md
 
 [Powershell-install-configure]: powershell-install-configure.md
@@ -534,4 +534,4 @@ Emulator をインストールしたコンピューターでコントロール �
 [image-hdi-emulator-services]: ./media/hdinsight-hadoop-emulator-get-started/HDI.Emulator.Services.png
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

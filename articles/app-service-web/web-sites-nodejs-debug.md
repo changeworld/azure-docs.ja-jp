@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="04/08/2016"
 	ms.author="robmcm"/>
 
 # Azure App Service で Node.js Web アプリをデバッグする方法
@@ -63,7 +63,7 @@ Web アプリを再起動するには、[Azure ポータル](https://portal.azur
 
 	npm install azure-cli -g
 
-インストール後、ツールには "azure" コマンドを使用してアクセスできます。コマンド ライン ツールは、まず、Azure サブスクリプションを使用するように構成する必要があります。このタスクを実行する方法については、「**Azure コマンド ライン ツールの使用方法**」という記事の「[発行の設定をダウンロードおよびインポートする方法](../xplat-cli-connect)」のセクションを参照してください。
+インストール後、ツールには "azure" コマンドを使用してアクセスできます。コマンド ライン ツールは、まず、Azure サブスクリプションを使用するように構成する必要があります。このタスクを実行する方法については、「**Azure コマンド ライン ツールの使用方法**」という記事の「[発行の設定をダウンロードおよびインポートする方法](../xplat-cli-connect.md)」のセクションを参照してください。
 
 ###FTP
 
@@ -73,7 +73,7 @@ FTP を通じて診断情報にアクセスするには、[Azure ポータル](h
 
 ダッシュボードで返される FTP URL は、**LogFiles** ディレクトリのものです。このディレクトリには、次のサブディレクトリが含まれます。
 
-* [デプロイ方法](web-sites-deploy) - Git のようなデプロイ方法を使用する場合は、同じ名前のディレクトリが作成され、デプロイに関連する情報が含められます。
+* [デプロイ方法](web-sites-deploy.md) - Git のようなデプロイ方法を使用する場合は、同じ名前のディレクトリが作成され、デプロイに関連する情報が含められます。
 
 * nodejs - アプリケーションのすべてのインスタンスからキャプチャされた stdout および stderr 情報 (loggingEnabled が true の場合)。
 
@@ -89,7 +89,7 @@ FTP を通じて診断情報にアクセスするには、[Azure ポータル](h
 
 * LogFiles
 
-	* [デプロイ方法](web-sites-deploy) - Git のようなデプロイ方法を使用する場合は、同じ名前のディレクトリが作成され、デプロイに関連する情報が含められます。
+	* [デプロイ方法](web-sites-deploy.md) - Git のようなデプロイ方法を使用する場合は、同じ名前のディレクトリが作成され、デプロイに関連する情報が含められます。
 
 	* nodejs - アプリケーションのすべてのインスタンスからキャプチャされた stdout および stderr 情報 (loggingEnabled が true の場合)。
 
@@ -106,7 +106,7 @@ FTP を通じて診断情報にアクセスするには、[Azure ポータル](h
 
 この記事では、Azure の診断情報を有効にし、それにアクセスする方法について学習しました。この情報は、アプリケーションで発生する問題を理解するために役立ちますが、使用しているモジュールの問題や、App Service Web Apps で使用されている Node.js のバージョンがデプロイ環境で使用されているものと異なることが指摘される場合もあります。
 
-Azure でのモジュールの操作については、「[Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps)」を参照してください。
+Azure でのモジュールの操作については、「[Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)」を参照してください。
 
 アプリケーションの Node.js バージョンの指定については、「[Azure アプリケーションでの Node.js のバージョンの指定]」を参照してください。
 
@@ -126,4 +126,4 @@ Azure でのモジュールの操作については、「[Azure アプリケー�
 [restart-button]: ./media/web-sites-nodejs-debug/restartbutton.png
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0504_2016-->

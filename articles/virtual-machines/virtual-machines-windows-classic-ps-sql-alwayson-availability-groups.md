@@ -13,19 +13,18 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="12/04/2015"
+	ms.date="04/22/2016"
 	ms.author="mikeray" />
 
 # Azure VM での AlwaysOn 可用性グループの構成 (PowerShell)
 
 > [AZURE.SELECTOR]
-- [ポータル - リソース マネージャー](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-- [ポータル - クラシック](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
-- [PowerShell - クラシック](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
+- [ポータル](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
+- [PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
 
 <br/>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
 Azure 仮想マシン (VM) を使用すると、データベース管理者は高可用性の SQL Server システムを低いコストで実装できます。このチュートリアルでは、Azure 環境内で SQL Server AlwaysOn をエンド ツー エンドで使用し、可用性グループを実装する方法について説明します。チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
@@ -630,4 +629,4 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

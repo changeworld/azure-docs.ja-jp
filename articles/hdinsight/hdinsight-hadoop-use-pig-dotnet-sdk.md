@@ -52,8 +52,6 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。
 
-次の例では、ユーザーの対話型認証を使用します。非対話型認証を使用する場合は、「[非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)」をご覧ください。
-
 
 1. Visual Studio 2012 または 2013 を開く
 2. **[ファイル]** メニューから **[新規]**、**[プロジェクト]** の順に選択します。
@@ -209,4 +207,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

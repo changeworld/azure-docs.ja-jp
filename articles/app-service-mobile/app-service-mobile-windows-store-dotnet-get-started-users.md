@@ -3,8 +3,8 @@
 	description="Azure App Service Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを使って Windows アプリのユーザーを認証する方法を説明します。"
 	services="app-service\mobile"
 	documentationCenter="windows"
-	authors="mattchenderson"
-	manager="dwrede"
+	authors="ggailey777"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="05/02/2016"
 	ms.author="glenga"/>
 
 # Windows アプリに認証を追加する
@@ -32,7 +32,7 @@
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-スタートアップ プロジェクトとして設定された Windows アプリ プロジェクトの 1 つを使用して、F5 キーを押してアプリを実行します。アプリケーションの開始後、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。この問題は、認証されていないユーザーとしてアプリケーションがモバイル アプリ コードにアクセスしようとしても、現在の *TodoItem* テーブルでは認証が要求されるために発生します。
+これで、バックエンドへの匿名アクセスが無効になっていることを確認できます。スタートアップ プロジェクトとして設定された Windows アプリ プロジェクトの 1 つを使用して、F5 キーを押してアプリを実行します。アプリケーションの開始後、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。この問題は、認証されていないユーザーとしてアプリケーションがモバイル アプリ コードにアクセスしようとしても、現在の *TodoItem* テーブルでは認証が要求されるために発生します。
 
 次に、App Service のリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
@@ -61,4 +61,4 @@
 <!-- URLs. -->
 [Get started with your mobile app]: app-service-mobile-windows-store-dotnet-get-started.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

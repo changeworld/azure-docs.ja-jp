@@ -1,19 +1,19 @@
 <properties
-   pageTitle="Cache ASP.NET 出力キャッシュ プロバイダー"
-   description="Azure Redis Cache を使用して ASP.NET ページ出力をキャッシュする方法について説明します。"
-   services="redis-cache"
-   documentationCenter="na"
-   authors="steved0x"
-   manager="erikre"
-   editor="tysonn" />
+	pageTitle="Cache ASP.NET 出力キャッシュ プロバイダー"
+	description="Azure Redis Cache を使用して ASP.NET ページ出力をキャッシュする方法について説明します。"
+	services="redis-cache"
+	documentationCenter="na"
+	authors="steved0x"
+	manager="erikre"
+	editor="tysonn" />
 <tags
-   ms.service="cache"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="cache-redis"
-   ms.workload="tbd"
-   ms.date="01/13/2016"
-   ms.author="sdanie" />
+	ms.service="cache"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="cache-redis"
+	ms.workload="tbd"
+	ms.date="04/27/2016"
+	ms.author="sdanie" />
 
 # Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー
 
@@ -25,11 +25,11 @@ Redis 出力キャッシュ プロバイダーを使用するには、まず対�
 
 Visual Studio で Redis 出力キャッシュ プロバイダー NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-![Azure Redis Cache 管理 NuGet パッケージ](./media/cache-asp.net-output-cache-provider/IC729541.png)
+![Azure Redis Cache 管理 NuGet パッケージ](./media/cache-aspnet-output-cache-provider/redis-cache-manage-nuget-menu.png)
 
-**[オンライン検索]** ボックスに「**RedisOutputCacheProvider**」と入力し、結果の中からそのプロバイダーを選択して、**[インストール]** をクリックします。
+検索ボックスに「**RedisOutputCacheProvider**」と入力し、結果の中からそのプロバイダーを選択して、**[インストール]** をクリックします。
 
-![Azure Redis Cache 出力キャッシュプロバイダー](./media/cache-asp.net-output-cache-provider/IC751727.jpg)
+![Azure Redis Cache 出力キャッシュプロバイダー](./media/cache-aspnet-output-cache-provider/redis-cache-page-output-provider.png)
 
 Redis 出力キャッシュ プロバイダー NuGet パッケージは、StackExchange.Redis.StrongName パッケージに依存します。StackExchange.Redis.StrongName パッケージは、プロジェクト内に存在しなければインストールされます。厳密な名前を持つ StackExchange.Redis.StrongName パッケージ以外に、厳密な名前を持たない StackExchange.Redis バージョンもあります。厳密な名前を持たない StackExchange.Redis バージョンをプロジェクトで使用している場合は、Redis 出力キャッシュ プロバイダー NuGet パッケージのインストールの前か後にこのバージョンをアンインストールする必要があります。アンインストールしなかった場合は、名前の競合がプロジェクトで発生します。これらのパッケージの詳細については、[.NET キャッシュ クライアントの構成](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)に関するトピックを参照してください。
 
@@ -79,6 +79,6 @@ NuGet パッケージによって、必要なアセンブリ参照がダウン�
 
 ## 次のステップ
 
-「[Azure Redis Cache の ASP.NET セッション状態プロバイダー](cache-aspnet-session-state-provider.md)」を参照してください。
+「[ASP.NET Session State Provider for Azure Redis Cache (Azure Redis Cache の ASP.NET セッション状態プロバイダー)](cache-aspnet-session-state-provider.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

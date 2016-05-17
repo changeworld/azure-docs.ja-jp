@@ -1,22 +1,23 @@
 <properties
    pageTitle="Azure Automation のセキュリティ"
-   description="この記事では、Azure Automation の Automation アカウントで使用できるセキュリティとさまざまな認証方法の概要を説明します。"
+   description="この記事では、Azure Automation の Automation アカウントで使用できる Automation のセキュリティとさまざまな認証方法の概要を説明します。"
    services="automation"
    documentationCenter=""
    authors="MGoedtel"
    manager="jwhit"
-   editor="tysonn" />
+   editor="tysonn"
+   keywords="Automation のセキュリティ, セキュリティで保護された Automation" />
 <tags
    ms.service="automation"
    ms.devlang="na"
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/08/2016"
+   ms.date="05/10/2016"
    ms.author="magoedte" />
 
 # Azure Automation のセキュリティ
-Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、Amazon Web Services (AWS) などの他のクラウド プロバイダーのリソースに対するタスクを自動化できます。Runbook が必要な操作を実行するためには、操作対象のリソースに安全に、サブスクリプション内で必要な最低限の権限だけでアクセスするための、アクセス許可が必要です。この記事では、Azure Automation でサポートされるさまざまなセキュリティ シナリオについて説明し、管理する必要のある環境に基づいて開始する方法を示します。
+Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、Amazon Web Services (AWS) などの他のクラウド プロバイダーのリソースに対するタスクを自動化できます。Runbook が必要な操作を実行するためには、操作対象のリソースに安全に、サブスクリプション内で必要な最低限の権限だけでアクセスするための、アクセス許可が必要です。この記事では、Azure Automation でサポートされるさまざまな認証シナリオについて説明し、管理する必要のある環境に基づいて開始する方法を示します。
 
 ## Automation アカウントの概要
 Azure Automation を初めて開始するときに、少なくとも 1 つの Automation アカウントを作成する必要があります。Automation アカウントを使用すると、Automation アカウントごとに Automation リソース (Runbook、資産、構成) を分離できます。Automation アカウントを使用してリソースを異なる論理環境に分けることができます。たとえば、開発環境用、本番環境用、オンプレミス環境用に、それぞれ異なるアカウントを使用できます。Azure Automation アカウントは、Microsoft アカウントや、Azure サブスクリプションで作成されたアカウントとは異なります。
@@ -44,4 +45,4 @@ Azure AD サービス プリンシパル オブジェクト | Azure リソース
 Windows 認証 | オンプレミスのデータセンター | [Azure Automation の Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md)
 AWS 資格情報 | Amazon Web Services | [Authenticate Runbooks with Amazon Web Services (AWS) (Amazon Web Services (AWS) での Runbook の認証)](../automation/automation-sec-configure-aws-account.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

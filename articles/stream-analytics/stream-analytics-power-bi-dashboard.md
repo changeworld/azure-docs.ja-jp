@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="04/15/2016"
+	ms.date="05/03/2016"
 	ms.author="jeffstok"/>
 
 #  Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード
@@ -233,4 +233,4 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

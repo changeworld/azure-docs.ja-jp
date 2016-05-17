@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/03/2016" 
 	ms.author="piyushjo" />
 
 #Azure Mobile Engagement の Windows Phone Silverlight SDK 概要
@@ -43,7 +43,7 @@
 
 既に古いバージョンの SDK をアプリケーションに統合している場合は、SDK をアップグレードする際に次の点を考慮する必要があります。
 
-SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。完全な[アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure/)を参照してください。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
+SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。完全な[アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure.md)を参照してください。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
 
 ###2\.0.0 から 3.3.0 に移行
 
@@ -59,4 +59,4 @@ SDK によって生成されるコンソール ログを有効化/無効化/フ�
 [アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure/)をご覧ください
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

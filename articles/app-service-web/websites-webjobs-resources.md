@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/08/2016" 
+	ms.date="04/27/2016" 
 	ms.author="tdykstra"/>
 
 # Azure WebJobs のドキュメント リソース
@@ -22,7 +22,7 @@
 
 このトピックでは、Azure Web ジョブと Azure Web ジョブ SDK の使用方法に関するドキュメント リソースへのリンクを掲載しています。Azure Web ジョブでは、[App Service の Web アプリ、API アプリ、またはモバイル アプリ](../app-service/app-service-value-prop-what-is.md)のコンテキストで、スクリプトやプログラムをバックグラウンド プロセスとして簡単に実行できます。cmd、bat、exe (.NET)、ps1、sh、php、py、js、jar などの実行可能ファイルをアップロードして、実行できます。これらのプログラムは、スケジュールに従って (cron)、または継続的に Web ジョブとして実行されます。
 
-[WebJobs SDK](websites-webjobs-resources.md) の目的は、Web ジョブで実行できる一般的な作業 (画像処理、キュー処理、RSS 情報集約、ファイル管理、電子メールの送信など) を単純なコードで記述できるようにすることです。WebJobs SDK には、Azure Storage や Service Bus の操作、タスクのスケジューリング、エラー処理など、一般的な用途に対応した各種の機能が組み込まれています。拡張性にも優れた設計となっており、[拡張機能のオープン ソース リポジトリ](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)が存在します。
+[WebJobs SDK](websites-webjobs-resources.md) の目的は、Web ジョブで実行できる一般的な作業 (画像処理、キュー処理、RSS 情報集約、ファイル管理、電子メールの送信など) を単純なコードで記述できるようにすることです。WebJobs SDK には、Azure Storage や Service Bus の操作、タスクのスケジューリング、エラー処理など、一般的な用途に対応した各種の機能が組み込まれています。拡張性にも優れた設計となっており、[拡張機能のオープン ソース リポジトリ](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)が存在します。[Azure Functions](../azure-functions/functions-overview.md) (現在プレビュー段階) は、C# スクリプト、Node.js、その他の言語で動作するバージョンの WebJobs SDK に基づいています。
 
 Web ジョブの作成、デプロイ、管理は、Visual Studio の統合ツールでシームレスに行うことができます。テンプレートから Web ジョブを作成し、発行、および管理 (実行、停止、監視、デバッグ) できます。
 
@@ -82,11 +82,11 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 * [だれがその BLOB を作成したのか](http://blogs.msdn.com/b/jmstall/archive/2014/02/19/who-wrote-that-blob.aspx) 
 * [クラウドでの対話型のコードのホスティング](http://blogs.msdn.com/b/jmstall/archive/2014/04/26/hosting-interactive-code-in-the-cloud.aspx)
 * [Azure Web ジョブへのトレースの追加](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)
-* [Microsoft Azure Storage の監視、診断、およびトラブルシューティング](../storage-monitoring-diagnosing-troubleshooting/)
+* [Microsoft Azure Storage の監視、診断、およびトラブルシューティング](../storage/storage-monitoring-diagnosing-troubleshooting.md)
 * ビデオ
 	* [Web ジョブ ツールとリモート デバッグ](http://channel9.msdn.com/Shows/Web+Camps+TV/WebJobs-GA-Series-Episode-1-WebJobs-Tooling-with-Brady-Gaster) 
 
-##<a name="scale"></a>Web ジョブの拡張
+##<a name="scale"></a>WebJobs のスケーリング
 
 * [Azure Websites を使用した Web アプリケーションのスケーリング](http://msdn.microsoft.com/magazine/dn786914.aspx)
 * [Azure App Service: 大規模なビジネス対応 Web Apps の設計](https://channel9.msdn.com/Events/Build/2014/3-626)。Web ジョブ SDK など、Web ジョブを使用した Web アプリのスケール方法について説明します。
@@ -109,11 +109,13 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 ##<a name="additionalsdk"></a>その他の Web ジョブ SDK のリソース
 
 * [Web ジョブ SDK リリース ノート](https://github.com/Azure/azure-webjobs-sdk/wiki/Release-Notes)
-* [Web ジョブ SDK の拡張機能のオープン ソース リポジトリ](https://github.com/Azure/azure-webjobs-sdk-extensions)と、[機能拡張モデルの詳細なガイド](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)  
 * [Web ジョブ SDK のソース コード](https://github.com/Azure/azure-webjobs-sdk)
+* [WebJobs SDK の拡張機能のソース コード](https://github.com/Azure/azure-webjobs-sdk-extensions)と、[機能拡張モデルの詳細なガイド](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)  
+* [WebJobs SDK のスクリプトのソース コード](https://github.com/Azure/azure-webjobs-sdk-script/) ([Azure Functions](../azure-functions/functions-overview.md) に使用)
 * [Web ジョブ SDK を使用した、FREB のファイルの Azure Storage へのアップロード](http://thenextdoorgeek.com/post/WAWS-WebJob-to-upload-FREB-files-to-Azure-Storage-using-the-WebJobs-SDK)
 * [Azure がホストする Web ジョブのログに関するメリットが得られる、Azure 外部での Azure Web ジョブのホスティング](http://bypassion.dk/?p=510)
 * [Azure Web ジョブを使用したデータ インポート ツールの構築](http://www.freshconsulting.com/building-data-import-tool-azure-webjobs/)
+* [Azure Functions の概要](../azure-functions/functions-overview.md)
 * ビデオ
 	* [Channel 9 の Azure Web ジョブ ビデオ シリーズ](http://channel9.msdn.com/Tags/azurefridaywebjobs)
 
@@ -133,10 +135,11 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 
 * [Web ジョブに関する StackOverflow](http://stackoverflow.com/questions/tagged/azure-webjobs)
 * [Web ジョブ SDK に関する StackOverflow](http://stackoverflow.com/questions/tagged/azure-webjobssdk)
+* [Azure Functions に関する StackOverflow](http://stackoverflow.com/questions/tagged/azure-functions)
 * [Azure と ASP.NET のフォーラム](http://forums.asp.net/1247.aspx)
 * [Azure App Service Web Apps フォーラム](http://social.msdn.microsoft.com/Forums/azure/home?forum=windowsazurewebsitespreview)
 * [Azure Web Apps のユーザーからの意見のサイト](https://feedback.azure.com/forums/169385-websites/)
 * [Twitter](http://twitter.com/)。ハッシュタグ #AzureWebJobs を使用してください。
 * [Web ジョブのバグまたは問題を報告する](https://github.com/projectkudu/kudu/wiki/Reporting-WebJobs-issues)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

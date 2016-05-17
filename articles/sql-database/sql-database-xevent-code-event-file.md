@@ -4,7 +4,7 @@
 	services="sql-database" 
 	documentationCenter="" 
 	authors="MightyPen" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	editor="" 
 	tags=""/>
 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/15/2016" 
+	ms.date="04/28/2016" 
 	ms.author="genemi"/>
 
 
@@ -586,7 +586,7 @@ Azure SQL Database での拡張イベントに関する主なトピックは次�
 
 Azure ストレージ サービスのアカウントとコンテナーに関する詳細については、次を参照してください。
 
-- [.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md/)
+- [.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)
 - [コンテナー、BLOB、メタデータの名前付けと参照](http://msdn.microsoft.com/library/azure/dd135715.aspx)
 - [ルート コンテナーの使用](http://msdn.microsoft.com/library/azure/ee395424.aspx)
 
@@ -597,4 +597,4 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0504_2016-->

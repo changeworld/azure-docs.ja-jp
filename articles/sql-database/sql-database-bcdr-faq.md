@@ -4,7 +4,7 @@
    services="sql-database" 
    documentationCenter="" 
    authors="elfisher" 
-   manager="jeffreyg" 
+   manager="jhubbard" 
    editor="monicar"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="02/09/2016"
+   ms.date="04/25/2016"
    ms.author="elfish"/>
 
 # ビジネス継続性に関する FAQ
@@ -50,14 +50,8 @@
 
 一括復元を実行する機能は組み込まれていません。このタスクを達成する 1 つの方法として、たとえば、[Azure SQL Database: Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) スクリプトがあります。
 
-## 8\.標準 geo レプリケーションとアクティブ geo レプリケーションの違いは何ですか。
-
-標準 geo レプリケーションでは、セカンダリ データベースは読み取りできません。停止時のみにフェールオーバーで使用できます。
-
-アクティブ geo レプリケーションでは、すべてのセカンダリ データベース (最大 4 つのセカンダリ) で読み取り可能です。
-
-## 9\.標準 geo レプリケーションやアクティブ geo レプリケーションを使用する場合のレプリケーションの遅延時間とは何ですか。
+## 8\.アクティブ geo レプリケーションを使用する場合のレプリケーションの遅延とは何ですか。
 
 [sys.dm\_geo\_replication\_link\_status](https://msdn.microsoft.com/library/mt575504.aspx) 動的管理ビュー (DMV) を使用して、前回のレプリケーション時刻や前回のレプリケーション遅延など、レプリケーション リンクに関する情報を取得します。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

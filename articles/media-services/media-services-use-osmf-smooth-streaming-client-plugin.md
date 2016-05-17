@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/17/2016"
+	ms.date="05/03/2016"
 	ms.author="juliako"/>
 
 
@@ -410,4 +410,4 @@ OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe 
 
 [OSMF を更新するためのMicrosoft Adaptive Streamingプラグイン](https://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

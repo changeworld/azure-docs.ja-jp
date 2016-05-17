@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="05/03/2016" 
 	ms.author="juliako;cenkdin;anilmur"/>
 
 #FMLE エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
@@ -26,7 +26,7 @@
 
 このトピックでは、[Flash Media Live Encoder (FMLE) エンコーダー](http://www.adobe.com/products/flash-media-encoder.html)を構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。詳細については、「[Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
-このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。このツールは、Windows PC でのみ実行されます。Mac または Linux の場合は、Azure クラシック ポータルを使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) と [プログラム](media-services-portal-creating-live-encoder-enabled-channel#create-and-manage-a-program)を作成します。
+このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。このツールは、Windows PC でのみ実行されます。Mac または Linux の場合は、Azure クラシック ポータルを使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) と [プログラム](media-services-portal-creating-live-encoder-enabled-channel.md#create-and-manage-a-program)を作成します。
 
 このチュートリアルでは、AAC の使用方法について説明することに注意してください。ただし、FMLE は、既定では AAC をサポートしません。MainConcept [ の AAC プラグイン](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)などの AAC エンコード用のプラグインを購入する必要があります 。
 
@@ -170,4 +170,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0504_2016-->

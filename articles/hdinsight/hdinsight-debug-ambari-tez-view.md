@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="02/16/2016"
+ms.date="05/03/2016"
 ms.author="larryfr"/>
 
 # HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする
@@ -141,4 +141,4 @@ Tez に関する技術的な情報の詳細については、[Hortonworks の Te
 
 HDInsight での Ambari の使用の詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

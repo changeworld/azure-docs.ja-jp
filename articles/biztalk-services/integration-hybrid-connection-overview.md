@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/29/2016"
+	ms.date="05/10/2016"
 	ms.author="mandia"/>
 
 
@@ -35,7 +35,7 @@
 - ハイブリッド接続を使用するアプリケーションは、ハイブリッド接続を通じて発行される特定のオンプレミス リソースにのみ接続します。
 - SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービスなど、静的 TCP ポートを使用するすべてのオンプレミス リソースに接続できます。
 
-	> [AZURE.NOTE] 現在は、動的ポート (FTP パッシブ モードまたは拡張パッシブ モードなど) を使用する TCP ベースのサービスはサポートされていません。
+	> [AZURE.NOTE] 現在は、動的ポート (FTP パッシブ モードまたは拡張パッシブ モードなど) を使用する TCP ベースのサービスはサポートされていません。また、LDAP もサポートされていません。LDAP は静的 TCP ポートを使用しますが、UDP を使用することもできます。このため、サポートされないのです。
 
 - Web Apps でサポートされるすべてのフレームワーク (.NET、PHP、Java、Python、Node.js) と Mobile Apps でサポートされるすべてのフレームワーク (Node.js、.NET) で使用できます。
 - Web アプリとモバイル アプリは、これらがローカル ネットワークに配置されている場合とまったく同じ方法でオンプレミス リソースにアクセスできます。たとえば、オンプレミスで使用される接続文字列は Azure でも使用できます。
@@ -47,7 +47,7 @@
 - 企業ネットワークのイベント ログおよび監査ログに、ハイブリッド接続でアクセスされるリソースが表示されます。
 
 
-## サポートされる構成
+## シナリオ例
 
 ハイブリッド接続は、以下のフレームワークおよびアプリケーションの組み合わせをサポートします。
 
@@ -103,4 +103,4 @@
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0511_2016-->

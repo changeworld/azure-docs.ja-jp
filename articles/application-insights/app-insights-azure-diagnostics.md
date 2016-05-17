@@ -17,7 +17,7 @@
 
 # Application Insights に対する Azure 診断ログの構成
 
-Microsoft Azure で Cloud Services プロジェクトまたは仮想マシンをセットアップするときに、[Azure は診断ログを生成できます](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md/)。これを Application Insights に送信し、Application Insights SDK によってアプリ内から送信された診断および使用テレメトリと共に分析できます。Azure のログには、開始、停止、クラッシュ、パフォーマンス カウンターなど、アプリの管理でのイベントが含まれます。また、ログにはアプリでの System.Diagnostics.Trace の呼び出しも含まれます。
+Microsoft Azure で Cloud Services プロジェクトまたは仮想マシンをセットアップするときに、[Azure は診断ログを生成できます](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)。これを Application Insights に送信し、Application Insights SDK によってアプリ内から送信された診断および使用テレメトリと共に分析できます。Azure のログには、開始、停止、クラッシュ、パフォーマンス カウンターなど、アプリの管理でのイベントが含まれます。また、ログにはアプリでの System.Diagnostics.Trace の呼び出しも含まれます。
 
 この記事では、診断キャプチャの構成について詳しく説明します。
 
@@ -146,4 +146,4 @@ Application Insights にすべてのエラー (`DiagnosticMonitorConfiguration` 
 * [PowerShell を使用した Application Insights への Azure 診断の送信](app-insights-powershell-azure-diagnostics.md)
 * [Azure 診断構成ファイル](https://msdn.microsoft.com/library/azure/dn782207.aspx)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

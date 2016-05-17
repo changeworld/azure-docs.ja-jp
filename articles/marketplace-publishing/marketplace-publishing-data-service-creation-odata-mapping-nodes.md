@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="01/04/2016"
+      ms.date="04/29/2016"
       ms.author="hascipio; avikova" />
 
 # CSDL を使用して既存の Web サービスを OData にマップするためのノード スキーマについて
@@ -272,4 +272,4 @@ CSDL の仕様に追加されたその他の属性を次に示します。
 - 例を確認したい場合は、[データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
 - データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、こちらの[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0504_2016-->

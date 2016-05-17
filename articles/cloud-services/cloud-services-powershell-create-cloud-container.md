@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Azure PowerShell コマンドを使用して空のクラウド サービス コンテナーを作成する方法 | Microsoft Azure"
-   description="この記事では、PowerShell スクリプトを使用してクラウド サービス コンテナーを作成し、クラウド サービスに関連する管理操作を実行する方法について説明します。"
+   pageTitle="PowerShell を使用してクラウド サービス コンテナーを作成する |Microsoft Azure"
+   description="この記事では、PowerShell を使用してクラウド サービス コンテナーを作成する方法について説明します。コンテナーは、Web ロールと worker ロールをホストします。"
    services="cloud-services"
    documentationCenter=".net"
    authors="cawaMS"
-   manager="paulyuk"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="na"
-   ms.date="02/09/2016"
+   ms.date="04/25/2016"
    ms.author="cawa"/>
 
 # Azure PowerShell コマンドを使用して空のクラウド サービス コンテナーを作成する
@@ -32,11 +32,13 @@
     New-AzureService [-ServiceName] <String> [-Location] <String> [[-Label] <String>] [[-Description] <String>] [[-ReverseDnsFqdn] <String>] [<CommonParameters>]
 ```
 
-5. この例に従い、コマンドレットを呼び出します。 ```
-New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
+5. この例に従って、コマンドレットを呼び出します。
+```
+New-AzureService -ServiceName "mytestcloudservice" -Location "Central US" -Label "mytestcloudservice"
 ```
 
-Azure クラウド サービスを作成する方法については、次を実行します: ```
+Azure クラウド サービスの作成方法については、次のコマンドレットを実行します。
+```
 Get-help New-AzureService
 ```
 
@@ -46,4 +48,4 @@ Get-help New-AzureService
 
  * Azure にクラウド サービス プロジェクトを発行する方法については、「[Azure でのクラウド サービスの継続的な配信](cloud-services-dotnet-continuous-delivery.md)」の **PublishCloudService.ps1** コード サンプルを参照してください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -275,4 +275,4 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=AcomDC_0504_2016-->
+<!------HONumber=AcomDC_0504_2016-->

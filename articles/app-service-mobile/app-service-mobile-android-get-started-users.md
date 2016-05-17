@@ -3,8 +3,8 @@
 	description="Azure App Service で Mobile Apps を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Android アプリのユーザーを認証する方法について説明します。"
 	services="app-service\mobile"
 	documentationCenter="android"
-	authors="ggailey777"
-	manager="dwrede"
+	authors="RickSaling"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="02/04/2016"
-	ms.author="glenga"/>
+	ms.date="05/03/2016"
+	ms.author="ricksal"/>
 
 # Android アプリに認証を追加する
 
@@ -68,4 +68,4 @@
 <!-- URLs. -->
 [Mobile Apps の使用]: app-service-mobile-android-get-started.md
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

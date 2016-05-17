@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/16/2016" 
+	ms.date="05/02/2016" 
 	ms.author="billmath"/>
 
 
@@ -57,9 +57,7 @@ QR コードが取得できたら、アプリを起動します。「+」をク�
 
 すべてのアカウントを新しいアプリに追加したら、古いアプリを電話からアンインストールします。
 
-古いアプリから個々のアカウントを削除する場合は、 アカウントをタップします。そうすると、「削除」するためのオプションが表示されます。
 
-![Remove account](./media/multi-factor-authentication-azure-authenticator/remove.png)
 
 ## バーコード スキャナーを使用してアカウントを追加する方法
 
@@ -164,4 +162,10 @@ Azure Authenticator による Touch ID の設定はとても簡単で、PIN を�
 
 ![Touch ID](./media/multi-factor-authentication-azure-authenticator/touchid2.png)
 
-<!---HONumber=AcomDC_0218_2016-->
+## アカウントを削除する方法
+
+Azure Authenticator アプリから個々のアカウントを削除するには、アカウントをタップします。そうすると、「削除」するためのオプションが表示されます。
+
+![Remove account](./media/multi-factor-authentication-azure-authenticator/remove.png)
+
+<!---HONumber=AcomDC_0504_2016-->

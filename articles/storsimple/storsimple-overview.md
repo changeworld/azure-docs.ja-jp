@@ -1,10 +1,10 @@
 <properties 
    pageTitle="StorSimple について | Microsoft Azure" 
-   description="StorSimple 階層化、デバイス、仮想デバイス、サービス、およびストレージ管理について説明し、Azure Storsimple で使用される主な用語を説明します。" 
+   description="StorSimple 階層化と、デバイス、仮想デバイス、サービス、およびストレージの管理について説明し、StorSimple で使用される主な用語を紹介します。" 
    services="storsimple" 
    documentationCenter="NA" 
    authors="SharS" 
-   manager="carolz" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="01/15/2016"
+   ms.date="04/26/2016"
    ms.author="v-sharos@microsoft.com"/>
 
 # StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
@@ -26,7 +26,7 @@ StorSimple では、[ストレージ階層化](#automatic-storage-tiering)を使
 
 StorSimple Update 2 では、適切なボリュームを*ローカル固定*として識別し、プライマリ データをデバイスのローカルに保持されたままにして、クラウドに階層化しないようにすることができます。これにより、ローカル固定ボリューム上で、SQL および仮想マシンのワークロードなど、クラウドの待機時間に影響を受けやすいワークロードを実行しながら、引き続きクラウドをバックアップに使用できます。ローカル固定ボリュームの詳細については、「[StorSimple Manager サービスを使用してボリュームを管理する](storsimple-manage-volumes-u2.md)」を参照してください。
 
-また、Update 2 では、Azure Premium Storage で提供される短い待機時間と高いパフォーマンスを活用した StorSimple 仮想デバイスを作成することもできます。StorSimple Premium 仮想デバイスの詳細については、「[Azure での StorSimple 仮想デバイスのデプロイと管理](storsimple-virtual-device-u1.md)」を参照してください。Azure Premium Storage の詳細については、「[Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
+また、Update 2 では、Azure Premium Storage で提供される短い待機時間と高いパフォーマンスを活用した StorSimple 仮想デバイスを作成することもできます。StorSimple Premium 仮想デバイスの詳細については、「[Azure での StorSimple 仮想デバイスのデプロイと管理](storsimple-virtual-device-u2.md)」を参照してください。Azure Premium Storage の詳細については、「[Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
 
 ストレージ管理に加えて、StorSimple データ保護機能を使用すると、オンデマンド バックアップやスケジュールされたバックアップを作成して、ローカルやクラウドに格納できるようになります。バックアップは増分スナップショットの形式で実行されます。これは短時間で作成し、復元できることを意味しています。クラウド スナップショットはセカンダリ ストレージ システム (テープ バックアップなど) を置き換え、データセンターにデータを復元したり、必要に応じてサイトを交代できるため、非常に重要になります。
 
@@ -99,9 +99,9 @@ StorSimple を使用すると、物理ハイブリッド ストレージ デバ�
 - クラウドに仮想デバイスを無限に作成し、必要に応じてオン/オフを切り替えることができます。 
 - 障害復旧、開発、テストなどのシナリオでオンプレミスの環境をシミュレーションし、アイテムレベルでバックアップから復旧できます。 
 
-Update 2 以降では、StorSimple 仮想デバイスは 8010 デバイス (旧称: 1100 モデル) と 8020 デバイスの 2 つのモデルで利用できます。8010 デバイスの最大容量は 30 TB です。Azure Premium Storage を利用する 8020 デバイスの最大容量は 64 TB です。(Azure Premium Storage はデータを SSD に格納するのに対し、Standard Storage はデータを HDD に格納します。) Premium Storage を使用するには、Azure Premium Storage アカウントが必要であることに注意してください。Premium Storage の詳細については、「[Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
+Update 2 以降では、StorSimple 仮想デバイスは 8010 デバイス (旧称: 1100 モデル) と 8020 デバイスの 2 つのモデルで利用できます。8010 デバイスの最大容量は 30 TB です。Azure Premium Storage を利用する 8020 デバイスの最大容量は 64 TB です。(ローカル層では、Azure Premium Storage はデータを SSD に格納するのに対し、Standard Storage はデータを HDD に格納します。) Premium Storage を使用するには、Azure Premium Storage アカウントが必要であることに注意してください。Premium Storage の詳細については、「[Premium Storage: Azure Virtual Machine ワークロード向けの高パフォーマンス ストレージ](../storage/storage-premium-storage.md)」を参照してください。
 
-StorSimple 仮想デバイスの詳細については、「[Azure での StorSimple 仮想デバイスのデプロイと管理](storsimple-virtual-device-u1.md)」を参照してください。
+StorSimple 仮想デバイスの詳細については、「[Azure での StorSimple 仮想デバイスのデプロイと管理](storsimple-virtual-device-u2.md)」を参照してください。
 
 ## StorSimple Manager サービス
 
@@ -278,4 +278,4 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

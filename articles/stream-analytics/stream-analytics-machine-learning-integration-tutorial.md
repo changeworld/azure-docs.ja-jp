@@ -15,7 +15,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="02/04/2016" 
+	ms.date="05/03/2016" 
 	ms.author="jeffstok"
 />
 
@@ -150,4 +150,4 @@ Azure Machine Learning 関数に関連するメトリックも確認できます
 
     ![Stream Analytics Machine Learning チュートリアル: ML 監視ビュー](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-ml-monitor-view.png)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

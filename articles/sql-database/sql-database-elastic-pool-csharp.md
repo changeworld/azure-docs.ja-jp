@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management"
-    ms.date="02/23/2016"
+    ms.date="05/03/2016"
     ms.author="sstein"/>
 
 # C&#x23; データベース開発: SQL データベースのエラスティック データベース プールの作成と構成
@@ -317,7 +317,7 @@ C# で SQL の開発を開始する前に、Azure ポータルでいくつかの
 
 ## エラスティック データベース プールでの新しいデータベースの作成
 
-*プールを作成したら、Transact-SQL を使用してプールに新しいエラスティック データベースを作成することもできます。詳細については、[エラスティック データベース プールのリファレンスの「Transact-SQL」](sql-database-elastic-pool-reference.md#Transact-SQL)を参照してください。*
+*プールを作成したら、Transact-SQL を使用してプールに新しいエラスティック データベースを作成することもできます。詳細については、「[Transact-SQL を使用したエラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-tsql.md)」をご覧ください。*
 
 次の例では、プールに直接、新しいデータベースが作成されます。
 
@@ -562,9 +562,6 @@ C# で SQL の開発を開始する前に、Azure ポータルでいくつかの
 
 [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-[エラスティック データベース プールのリファレンス](sql-database-elastic-pool-reference.md)
-
-
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool-csharp/aad.png
 [2]: ./media/sql-database-elastic-pool-csharp/permissions.png
@@ -576,4 +573,4 @@ C# で SQL の開発を開始する前に、Azure ポータルでいくつかの
 [8]: ./media/sql-database-elastic-pool-csharp/add-application2.png
 [9]: ./media/sql-database-elastic-pool-csharp/clientid.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

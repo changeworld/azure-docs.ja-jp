@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/14/2016"
+	ms.date="05/09/2016"
 	ms.author="robinsh"/>
 
 
@@ -157,4 +157,4 @@ Azure 仮想マシンに関連付けられているストレージ アカウン�
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

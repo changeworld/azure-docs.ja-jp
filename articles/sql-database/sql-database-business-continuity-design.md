@@ -4,7 +4,7 @@
    services="sql-database" 
    documentationCenter="" 
    authors="elfisher" 
-   manager="jeffreyg" 
+   manager="jhubbard" 
    editor="monicar"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="02/09/2016"
+   ms.date="04/25/2016"
    ms.author="elfish"/>
 
 #ビジネス継続性のための設計
@@ -45,11 +45,6 @@ geo レプリケーションは、プライマリから別のリージョンに�
 2. データ変更レートが高い場合 (1 分または 1 秒あたりのトランザクションなど)。既存の保護に関連した RPO が 1 時間の場合は、許容できないデータ損失が発生する可能性が高くなります。
 3. geo レプリケーションの使用に関連するコストは、潜在的な財務責任とビジネスの関連する損失を大幅に下回る場合。
 
-> [AZURE.NOTE] アプリケーションで Basic レベルのデータベースを使用する場合は、geo レプリケーションはサポートされません。
-
-##Standard かアクティブ geo レプリケーションを選択するとき
-
-Standard レベルのデータベースには、アクティブ geo レプリケーションを使用するオプションがないため、Standard のデータベースを使用し、前述の条件を満たす場合は、標準 geo レプリケーションが有効にできるはずです。一方で Premium のデータベースではどちらのオプションも選択できます。標準 geo レプリケーションは、よりシンプルで低コストの障害復旧ソリューションとして設計されており、特に停電などの予期しないイベントから保護する場合にのみソリューションを使用するアプリケーションに最適です。標準 geo レプリケーションでは、障害復旧のペアのリージョンのみを復旧に使用でき、各プライマリに対してセカンダリは 1 つずつしか作成できません。アプリケーションのアップグレード シナリオでは、追加のセカンダリが必要になる場合があります。したがって、このシナリオが使用するアプリケーションにとって重要な場合は、代わりにアクティブ geo レプリケーションを有効にする必要があります。詳細については「[ダウンタイムのないアプリケーションのアップロード](sql-database-business-continuity-application-upgrade.md)」をご覧ください。
 
 > [AZURE.NOTE] アクティブ geo レプリケーションでは、セカンダリ データベースへの読み取り専用アクセスもサポートするため、読み取り専用ワークロードに対して追加の容量を提供します。
 
@@ -69,19 +64,19 @@ geo レプリケーションは Azure クラシック ポータルを使用す�
 6. セカンダリ タイプを選択します (*Readable* または *Non-readable*)。
 7. **[作成]** をクリックして、構成を完了します。
 
-> [AZURE.NOTE] geo レプリケーションのブレードでは、障害復旧のペアのリージョンが *[推奨]* とマークされます。Premium レベルのデータベースを使用する場合は、別のリージョンを選択できます。Standard のデータベースを使用している場合は、変更できません。Premium データベースでは、セカンダリ タイプが選択できます (*Readable* か *Non-readable*)。Standard データベースでは、*Non-readable* セカンダリのみ選択できます。
+> [AZURE.NOTE] geo レプリケーションのブレードでは、障害復旧のペアのリージョンが *[推奨]* とマークされますが、別のリージョンを選択することもできます。
 
 
 ###PowerShell
 
 geo レプリケーションの構成を作成するには、[New-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603689.aspx) PowerShell コマンドレットを使用します。このコマンドは同期コマンドです。プライマリ データベースとセカンダリ データベースが同期状態になるとこのコマンドから制御が戻ります。
 
-Premium または Standard データベースの読み取りできないセカンダリで geo レプリケーションを構成するには:
+読み取り不能なセカンダリで geo レプリケーションを構成するには:
 		
     $database = Get-AzureRmSqlDatabase –DatabaseName "mydb"
     $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" -AllowConnections "None"
 
-Premium データベースの読み取り可能なセカンダリで geo レプリケーションを作成するには:
+読み取り可能なセカンダリで geo レプリケーションを作成するには:
 
     $database = Get-AzureRmSqlDatabase –DatabaseName "mydb"
     $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" -AllowConnections "All"
@@ -98,4 +93,4 @@ geo レプリケーションのセカンダリ データベースをプログラ
 
 ビジネス継続性向けのアプリケーションを設計する際は、いくつかの構成オプションを検討する必要があります。アプリケーションのデプロイメント トポロジと、停止時に最も脆弱になるアプリケーションの部分によって選択肢が異なります。詳細は「[Geo レプリケーションを使用してビジネス継続性を実現するクラウド アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0504_2016-->

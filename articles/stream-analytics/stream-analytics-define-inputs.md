@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="02/22/2016"
+	ms.date="05/03/2016"
 	ms.author="jeffstok"/>
 
 # データ接続: Stream Analytics に対するイベントのデータ ストリーム入力の概要
@@ -191,7 +191,7 @@ FROM Input
 
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 ここでは、Azure での Stream Analytics ジョブのデータ接続オプションについて説明しました。Stream Analytics の詳細については、以下を参照してください。
@@ -209,4 +209,4 @@ FROM Input
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

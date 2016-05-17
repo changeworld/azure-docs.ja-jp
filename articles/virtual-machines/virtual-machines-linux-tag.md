@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="04/05/2016"
+   ms.date="04/06/2016"
    ms.author="iainfour;memccror"/>
 
 # Azure で Linux 仮想マシンにタグを付ける方法
@@ -29,15 +29,15 @@ Azure CLI で既に作成されているリソースにも、タグを付ける�
 
 このコマンドを使用すると、タグを含め、指定した仮想マシンのすべてのプロパティを表示できます。
 
-        azure vm show -g MyResourceGroup -n MyVM
+        azure vm show -g MyResourceGroup -n MyTestVM
 
 Azure CLI を使用して新しい VM タグを追加するには、タグ パラメーター **-t** を指定して `azure vm set` コマンドを実行できます。
 
-        azure vm set -g MyResourceGroup -n MyVM –t myNewTagName1=myNewTagValue1;myNewTagName2=myNewTagValue2
+        azure vm set -g MyResourceGroup -n MyTestVM –t myNewTagName1=myNewTagValue1;myNewTagName2=myNewTagValue2
 
 すべてのタグを削除するには、`azure vm set` コマンドで **-T** パラメーターを使用できます。
 
-        azure vm set – g MyResourceGroup –n MyVM -T
+        azure vm set – g MyResourceGroup –n MyTestVM -T
 
 
 ここでは、Azure CLI およびポータルを使用してリソースにタグを適用しました。次は、課金ポータルの使用量の詳細でタグを確認してみましょう。
@@ -60,4 +60,4 @@ Azure CLI を使用して新しい VM タグを追加するには、タグ パ�
 [Microsoft Azure の課金内容の確認]: ../billing-understand-your-bill.md
 [Microsoft Azure リソースの消費を把握する]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

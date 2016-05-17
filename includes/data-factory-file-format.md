@@ -1,18 +1,18 @@
-### Specifying TextFormat
+### TextFormat の指定
 
-If the format is set to **TextFormat**, you can specify the following **optional** properties in the **Format** section.
+書式が **TextFormat** に設定されている場合、次の**任意の**プロパティを **Format** セクションで指定できます。
 
-| Property | Description | Required |
+| プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| columnDelimiter | The character used as a column separator in a file. Only one character is allowed at this time. This tag is optional. The default value is comma (,). | No |
-| rowDelimiter | The character used as a raw separator in file. Only one character is allowed at this time. This tag is optional. The default value is any of the following: [“\r\n”, “\r”,” \n”]. | No |
-| escapeChar | The special character used to escape column delimiter shown in content. This tag is optional. No default value. You must specify no more than one character for this property.<br/><br/>For example, if you have comma (,) as the column delimiter but you want have comma character in the text (example: “Hello, world”), you can define ‘$’ as the escape character and use string “Hello$, world” in the source.<br/><br/>Note that you cannot specify both escapeChar and quoteChar for a table. | No | 
-| quoteChar | The special character is used to quote the string value. The column and row delimiters inside of the quote characters would be treated as part of the string value. This tag is optional. No default value. You must specify no more than one character for this property.<br/><br/>For example, if you have comma (,) as the column delimiter but you want have comma character in the text (example: <Hello, world>), you can define ‘"’ as the quote character and use string <"Hello, world"> in the source. This property is applicable to both input and output tables.<br/><br/>Note that you cannot specify both escapeChar and quoteChar for a table. | No |
-| nullValue | The character(s) used to represent null value in blob file content. This tag is optional. The default value is “\N”.<br/><br/>For example, based on above sample, “NaN” in blob will be translated as null value while copied into e.g. SQL Server. | No |
-| encodingName | Specify the encoding name. For the list of valid encoding names, see: [Encoding.EncodingName Property](https://msdn.microsoft.com/library/system.text.encoding.aspx). For example: windows-1250 or shift_jis. The default value is: UTF-8. | No | 
+| columnDelimiter | ファイルの列の区切り記号として使用される文字です。この時点では 1 文字だけが許可されています。このタグは任意です。既定値はコンマです (,)。 | いいえ |
+| rowDelimiter | ファイルの行の区切り記号として使用される文字です。この時点では 1 文字だけが許可されています。このタグは任意です。既定値は [“\\r\\n”, “\\r”,” \\n”] のいずれかになります。 | いいえ |
+| escapeChar | コンテンツに表示される列区切り記号のエスケープに使用される特殊文字です。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。<br/><br/>たとえば、列の区切り文字としてコンマ (,) を使用しているときに、テキストにもコンマ文字が必要な場合は (例: “Hello, world”)、エスケープ文字として "$" を定義し、ソースで文字列 "Hello$, world" を使用できます。<br/><br/>1 つのテーブルに escapeChar と quoteChar の両方を指定することはできません。 | いいえ | 
+| quoteChar | この特殊文字は文字列値を引用符で囲むために使用されます。引用符文字内の列区切り文字と行区切り文字は文字列値の一部として処理されます。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。<br/><br/>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: <Hello  world>)、引用符文字として「"」を定義し、ソースで文字列「"Hello, world"」を使用できます。このプロパティは入力テーブルと出力テーブルの両方に適用されます。<br/><br/>1 つのテーブルに escapeChar と quoteChar の両方を指定することはできません。 | いいえ |
+| nullValue | BLOB ファイル コンテンツで null 値を表すために使用する文字です。このタグは任意です。既定値は "\\N" です。<br/><br/>たとえば、上記のサンプルに基づくと、BLOB の "NaN" は SQL Server などにコピーされるときに null 値として変換されます。 | いいえ |
+| encodingName | エンコード名の指定。有効なエンコード名の一覧については、[Encoding.EncodingName プロパティに関する記事](https://msdn.microsoft.com/library/system.text.encoding.aspx)を参照してください。例: windows-1250 または shift\_jis。既定値は UTF-8 です。 | いいえ | 
 
-#### TextFormat example
-The following sample shows some of the format properties for TextFormat.
+#### TextFormat の例
+次の例は、TextFormat の format プロパティの一部を示します。
 
 	"typeProperties":
 	{
@@ -23,41 +23,41 @@ The following sample shows some of the format properties for TextFormat.
 	        "type": "TextFormat",
 	        "columnDelimiter": ",",
 	        "rowDelimiter": ";",
-	        "quoteChar": "\"",
+	        "quoteChar": """,
 	        "NullValue": "NaN"
 	    }
 	},
 
-To use an escapeChar instead of quoteChar, replace the line with quoteChar with the following:
+quoteChar ではなく escapeChar を使用するには、quoteChar の行を次で置き換えます。
 
 	"escapeChar": "$",
 
-### Specifying AvroFormat
-If the format is set to AvroFormat, you do not need to specify any properties in the Format section within the typeProperties section. Example:
+### AvroFormat の指定
+形式が AvroFormat に設定されている場合、typeProperties セクション内の Format セクションにプロパティを指定する必要はありません。例:
 
 	"format":
 	{
 	    "type": "AvroFormat",
 	}
 
-To use Avro format in a Hive table, you can refer to [Apache Hive’s tutorial](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe).
+Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュートリアルに関するページ](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)を参照してください。
 
-### Specifying JsonFormat
+### JsonFormat の指定
 
-If the format is set to **JsonFormat**, you can specify the following **optional** properties in the **Format** section.
+形式が **JsonFormat** に設定されている場合、**Format** セクションで次の**オプションの**プロパティを指定できます。
 
-| Property | Description | Required |
+| プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| filePattern | Indicate the pattern of data stored in each JSON file. Allowed values are: **setOfObjects** and **arrayOfObjects**. The **default** value is: **setOfObjects**. See sections below for details about these patterns.| No |
-| encodingName | Specify the encoding name. For the list of valid encoding names, see: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) Property. For example: windows-1250 or shift_jis. The **default** value is: **UTF-8**. | No | 
-| nestingSeparator | Character that is used to separate nesting levels. The **default** value is **. (dot)**. | No | 
+| filePattern | 各 JSON ファイルに格納されたデータのパターンを示します。使用できる値は、**setOfObjects** と **arrayOfObjects** です。**既定**値は **setOfObjects** です。これらのパターンの詳細については、以下のセクションを参照してください。| いいえ |
+| encodingName | エンコード名の指定。有効なエンコード名の一覧については、[Encoding.EncodingName プロパティに関する記事](https://msdn.microsoft.com/library/system.text.encoding.aspx)をご覧ください。例: windows-1250 または shift\_jis。**既定**値は **UTF-8** です。 | いいえ | 
+| nestingSeparator | 入れ子レベルの分割に使用される文字。**既定**値は **. (ドット)** です。 | いいえ | 
 
 
-#### setOfObjects file pattern
+#### setOfObjects ファイル パターン
 
-Each file contains single object, or line-delimited/concatenated multiple objects. When this option is chosen in an output dataset, copy will produce a single JSON file with each object per line (line-delimited).
+各ファイルには、単一のオブジェクト、または改行区切り/連結された複数のオブジェクトが含まれます。出力データセットで、このオプションを選択すると、コピーによって、各オブジェクトが行ごとに配置された (改行区切り) 1 つの JSON ファイルが生成されます。
 
-**single object** 
+**単一オブジェクト**
 
 	{
 		"time": "2015-04-29T07:12:20.9100000Z",
@@ -68,7 +68,7 @@ Each file contains single object, or line-delimited/concatenated multiple object
 		"switch2": "Germany"
 	}
 
-**line-delimited JSON** 
+**改行区切りの JSON**
 
 	{"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}
 	{"time":"2015-04-29T07:13:21.0220000Z","callingimsi":"466922202613463","callingnum1":"123436380","callingnum2":"789037573","switch1":"US","switch2":"UK"}
@@ -76,7 +76,7 @@ Each file contains single object, or line-delimited/concatenated multiple object
 	{"time":"2015-04-29T07:13:22.0960000Z","callingimsi":"466922202613463","callingnum1":"789037573","callingnum2":"789044691","switch1":"UK","switch2":"Australia"}
 	{"time":"2015-04-29T07:13:22.0960000Z","callingimsi":"466922202613463","callingnum1":"123436380","callingnum2":"789044691","switch1":"US","switch2":"Australia"}
 
-**concatenated JSON**
+**連結 JSON**
 
 	{
 		"time": "2015-04-29T07:12:20.9100000Z",
@@ -104,9 +104,9 @@ Each file contains single object, or line-delimited/concatenated multiple object
 	}
 
 
-#### arrayOfObjects file pattern. 
+#### arrayOfObjects ファイル パターン 
 
-Each file contains an array of objects. 
+各ファイルにはオブジェクトの配列が含まれます。
 
 	[
 	    {
@@ -167,9 +167,9 @@ Each file contains an array of objects.
 	    }
 	]
 
-### JsonFormat example
+### JsonFormat の例
 
-If you have a JSON file with the following content:  
+次の内容が含まれる JSON ファイルをお持ちで、
 
 	{
 		"Id": 1,
@@ -180,13 +180,13 @@ If you have a JSON file with the following content:
 		"Tags": ["Data Factory”, "Azure"]
 	}
 
-and you want to copy it into a an Azure SQL table in the following format: 
+上記の内容を Azure SQL テーブルに次の形式でコピーする場合:
 
-Id	| Name.First | Name.Middle | Name.Last | Tags
+ID | Name.First | Name.Middle | Name.Last | タグ
 --- | ---------- | ----------- | --------- | ----
 1 | John | null | Doe | ["Data Factory”, "Azure"]
 
-The input dataset with JsonFormat type is defined as follows: (partial definition with only the relevant parts)
+JsonFormat 型の入力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。
 
 	"properties": {
 		"structure": [
@@ -209,14 +209,14 @@ The input dataset with JsonFormat type is defined as follows: (partial definitio
 		}
 	}
 
-If the structure is not defined, the Copy Activity flattens the structure by default and copy every thing. 
+構造が定義されていない場合、コピー アクティビティでは既定で構造をフラット化し、すべてのものをコピーします。
 
-#### Supported JSON structure
-Note the following: 
+#### サポートされている JSON 構造
+以下の点に注意してください。
 
-- Each object with a collection of name/value pairs will be mapped to one row of data in a tabular format. Objects can be nested and you can define how to flatten the structure in a dataset with the  nesting separator (.) by default. See the [JsonFormat example](#jsonformat-example) section above for an example.  
-- If the structure is not defined in the Data Factory dataset, the Copy Activity detects the schema from the first object and flatten the whole object. 
-- If the JSON input has an array, the Copy Activity converts the entire array value into a string. You can choose to skip it by using [column mapping or filtering](#column-mapping-with-translator-rules).
-- If there are duplicate name at the same level, the Copy Activity will pick the last one.
-- Property names are case sensitive. Two properties with same name but different casing will be treated as two separate properties. 
+- 名前/値ペアのコレクションを持つ各オブジェクトは、表形式のデータの 1 つの行にマップされます。オブジェクトは入れ子にすることができ、既定では入れ子の区切り記号 (.) を使用してデータセット内の構造をフラット化する方法を定義できます。例については、前の「[JsonFormat の例](#jsonformat-example)」をご覧ください。  
+- Data Factory データセット内で構造が定義されていない場合、コピー アクティビティでは最初のオブジェクトからスキーマを検出し、オブジェクト全体をフラット化します。 
+- JSON 入力に配列がある場合、コピー アクティビティでは配列値全体を文字列に変換します。この変換は、[列マッピングまたはフィルター処理](#column-mapping-with-translator-rules)を使用することでスキップできます。
+- 同じレベルに重複する名前がある場合、コピー アクティビティでは最後の 1 つを選択します。
+- プロパティ名は大文字と小文字が区別されます。名前は同じでも大文字小文字が異なる 2 つのプロパティは、2 つの個別のプロパティとして扱われます。 
 

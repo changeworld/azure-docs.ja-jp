@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="02/26/2016" 
+    ms.date="05/04/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690951.aspx -->
@@ -24,7 +24,7 @@
 
 ## Azure にデプロイする前にリモート アクセスを有効にする方法 ##
 
->[AZURE.NOTE] Azure にアプリケーションをデプロイする前にリモート アクセスを有効にするには、Windows で Eclipse を実行する必要があります。
+>[AZURE.NOTE]Azure にアプリケーションをデプロイする前にリモート アクセスを有効にするには、Windows で Eclipse を実行する必要があります。
 
 次の図は、リモート アクセスを有効にするために使用する **[リモート アクセス]** プロパティ ダイアログを示しています。
 
@@ -85,7 +85,7 @@ Azure にデプロイした後にリモート アクセスを有効にするに�
 * リモートでログインするもう 1 つの方法は <a href="http://go.microsoft.com/fwlink/?LinkID=512959">Microsoft Azure 管理ポータル</a>を利用することです。
     * Microsoft Azure 管理ポータルの **[Cloud Services]** ビュー内で、クラウド サービスをクリックし、**[インスタンス]** をクリックし、特定のインスタンスをクリックし、**[接続]** ボタンをクリックします。 **[接続]** ボタンはコマンド バーに次のように表示されます。 
     ![][ic659273]  
-    >[AZURE.NOTE] Windows 以外のオペレーティング システムを使用している場合、そのオペレーティング システムと互換性のあるリモート デスクトップ クライアントを利用し、次の手順に従い、ダウンロードした RDP ファイルの設定でそのクライアントを構成する必要があります。
+    >[AZURE.NOTE]Windows 以外のオペレーティング システムを使用している場合、そのオペレーティング システムと互換性のあるリモート デスクトップ クライアントを利用し、次の手順に従い、ダウンロードした RDP ファイルの設定でそのクライアントを構成する必要があります。
     * **[接続]** ボタンをクリックすると、RDP ファイルを開くように求められます。ファイルを開き、指示に従います。(または、このファイルをローカル コンピューターに保存し、それをダブルクリックすることでファイルを実行できます。先に管理ポータルに移動する必要がありません。)
     * ユーザー名とパスワードの入力が求められたら、リモート ユーザーに指定した値を入力します。それでログインできます。
 
@@ -114,4 +114,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic719494]: ./media/azure-toolkit-for-eclipse-enabling-remote-access-for-azure-deployments/ic719494.png
 [ic659273]: ./media/azure-toolkit-for-eclipse-enabling-remote-access-for-azure-deployments/ic659273.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->

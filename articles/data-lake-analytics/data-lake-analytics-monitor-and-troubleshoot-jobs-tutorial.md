@@ -3,7 +3,7 @@
    description="Azure ポータルを使用して、Data Lake Analytics ジョブのトラブルシューティングを行う方法について説明します。" 
    services="data-lake-analytics" 
    documentationCenter="" 
-   authors="mumian" 
+   authors="edmacauley" 
    manager="paulettm" 
    editor="cgronlun"/>
  
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="02/11/2016"
-   ms.author="jgao"/>
+   ms.date="04/26/2016"
+   ms.author="edmaca"/>
 
 # Azure ポータルを使用する Azure Data Lake Analytics ジョブのトラブルシューティング
 
@@ -110,4 +110,4 @@ Azure ポータルを使用して、Data Lake Analytics ジョブのトラブル
 - [Visual Studio で Azure Data Lake Analytics と U-SQL の使用を開始する](data-lake-analytics-u-sql-get-started.md)
 - [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

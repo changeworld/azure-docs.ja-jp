@@ -4,20 +4,19 @@
 	services="automation"
 	documentationCenter=""
 	authors="mgoedtel"
-	manager="stevenka"
-	editor=""/>
-
+	manager="jwhit"
+	editor=""
+	keywords="Automation とは, Azure Automation, Azure Automation の例"/>
 <tags
 	ms.service="automation"
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="02/23/2016"
+	ms.date="05/10/2016"
 	ms.author="magoedte;bwren"/>
 
 # Azure Automation の概要
-
 
 ユーザーは Microsoft Azure Automation を使用すると、クラウド環境およびエンタープライズ環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を入手できます。時間を節約し、普段の管理タスクの信頼性が向上し、一定の間隔で自動的に実行されるようにスケジュールを設定します。Runbook を使用してプロセスを自動化したり、Desired State Configuration を使用して構成管理を自動化したりすることができます。この記事では、Azure Automation の概要を説明し、よく寄せられる質問に回答します。異なるトピックの詳細については、このライブラリの他の記事を参照してください。
 
@@ -67,7 +66,7 @@ Runbook や DSC の構成で使用できるコマンドレットを含む [Power
 
 ## Azure Automation の実際の適用例 
 
-以下では、Azure Automation を使用して自動化できるさまざまなシナリオの例を示します。
+以下では、Azure Automation を使用したさまざまな自動化のシナリオの例を示します。
 
 * 仮想マシンを作成し、異なる Azure サブスクリプションにコピーします。 
 * ローカル コンピューターから Azure BLOB ストレージ コンテナーへのファイルのコピーをスケジュールします。 
@@ -101,4 +100,4 @@ Azure Automation や独自の Runbook の作成方法の詳細を確認できる
 
 **フィードバックをお待ちしています。** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0511_2016-->

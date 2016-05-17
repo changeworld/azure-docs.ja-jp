@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/04/2016" 
 	ms.author="robmcm"/>
 
 # ストレージを使用する Node.js Web アプリケーション
@@ -403,4 +403,4 @@ Azure では、消費されたサーバー時間の 1 時間単位の料金が W
  
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

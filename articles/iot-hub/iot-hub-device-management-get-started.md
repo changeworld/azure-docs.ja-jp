@@ -16,7 +16,9 @@
  ms.date="04/29/2016"
  ms.author="elfarber"/>
 
-# Azure IoT Hub デバイス管理の使用 (プレビュー)
+# C# を使用した Azure IoT Hub デバイス管理の概要 (プレビュー)
+
+[AZURE.INCLUDE [iot-hub-device-management-get-started-selector](../../includes/iot-hub-device-management-get-started-selector.md)]
 
 ## はじめに
 Azure IoT Hub デバイス管理を利用するには、Azure IoT Hub を作成し、その IoT Hub にデバイスをプロビジョニングして、複数のシミュレートされたデバイスを起動する必要があります。このチュートリアルでは、これらの手順について説明します。
@@ -50,8 +52,10 @@ Azure IoT Hub デバイス管理を利用するには、Azure IoT Hub を作成�
   -   **[名前]** ボックスに IoT Hub の名前を入力します。その**名前**が有効で利用できる場合、**[名前]** ボックスに緑色のチェック マークが表示されます。
   -   **[価格とスケール レベル]** を選択します。このチュートリアルでは特定のレベルは必要ありません。
   -   **[リソース グループ]** で、新しいリソース グループを作成するか、既存のリソース グループを選択します。詳細については、[リソース グループを使用した Azure リソースの管理]に関するページを参照してください。
-  -   **デバイス管理を有効にする**チェック ボックスをオンにします。
-  -   **[場所]** で、IoT Hub をホストする場所を選択します。IoT Hub デバイス管理を使用できるのは、米国東部、北ヨーロッパ、および東アジアでのみです。
+  -   **[Enable Device Management]** (デバイス管理の有効化) チェック ボックスをオンにします。
+  -   **[場所]** で、IoT Hub をホストする場所を選択します。IoT Hub デバイス管理を使用できるのは、パブリック プレビューの段階では米国東部、北ヨーロッパ、および東アジアでのみです。将来的には、すべてのリージョンで使用可能になる予定です。
+
+    > [AZURE.NOTE]  **[Enable Device Management]** (デバイス管理の有効化) チェック ボックスをオンにしないと、サンプルは動作しません。
 
 4.  必要な IoT Hub 構成オプションを選択したら、**[作成]** をクリックします。Azure が IoT Hub を作成するまでに数分かかる場合があります。状態を確認するには、**スタート画面**または**通知**パネルで進行状況を監視してください。
 
@@ -75,29 +79,29 @@ Azure IoT Hub デバイス管理を利用するには、Azure IoT Hub を作成�
 
 サンプルをビルドし、IoT Hub にデバイスをプロビジョニングするには、次の手順を実行します。
 
-1.  **VS2015 の開発者コマンド プロンプト**を開きます。
+1.  **開発者コマンド プロンプト for VS2015** を開きます。
 
 2.  Github リポジトリを複製します。**スペースがないディレクトリに複製してください。**
 
-  ```
-  git clone --recursive --branch dmpreview https://github.com/Azure/azure-iot-sdks.git
-  ```
+	  ```
+	  git clone --recursive --branch dmpreview https://github.com/Azure/azure-iot-sdks.git
+	  ```
 
 3.  **azure-iot-sdks** リポジトリを複製したルート フォルダーから **\\azure-iot-sdks\\csharp\\service\\samples** フォルダーに移動して、次のように実行します。プレースホルダーの値は、前のセクションの接続文字列に置き換えます。
 
-  ```
-  setup.bat <IoT Hub Connection String>
-  ```
+	  ```
+	  setup.bat <IoT Hub Connection String>
+	  ```
 
 このスクリプトでは、次の処理が実行されます。
 
-1.  **cmake** を実行し、シミュレートされたデバイスのための Visual Studio 2015 ソリューションを作成します。このプロジェクト ファイルは、**azure-iot-sdks\\csharp\\service\\samples\\cmake\\iotdm\_client\\samples\\iotdm\_simple\_sample\\iotdm\_simple\_sample.vcxproj** です。ソース ファイルは ***azure-iot-sdks\\c\\iotdm\_client\\samples\\iotdm\_simple\_sample** フォルダーにあることに注意してください。
+1.  **cmake** を実行し、シミュレートされたデバイス用に Visual Studio 2015 ソリューションを作成します。このプロジェクト ファイルは、**azure-iot-sdks\\csharp\\service\\samples\\cmake\\iotdm\_client\\samples\\iotdm\_simple\_sample\\iotdm\_simple\_sample.vcxproj** です。ソース ファイルは ****azure-iot-sdks\\c\\iotdm\_client\\samples\\iotdm\_simple\_sample** フォルダーにあることに注意してください。
 
-2.  シミュレートされたデバイス プロジェクト **iotdm\_simple\_sample.vcxproj** をビルドします。
+2.  シミュレートされたデバイスの **iotdm\_simple\_sample.vcxproj** プロジェクトをビルドします。
 
 3.  デバイス管理のサンプル **azure-iot-sdks\\csharp\\service\\samples\\GetStartedWithIoTDM\\GetStartedWithIoTDM.sln** をビルドします。
 
-4.  **GenerateDevices.exe** を実行し、IoT Hub にデバイス ID をプロビジョニングします。デバイスは **sampledevices.json** (**azure-iot-sdks\\node\\service\\samples** フォルダー内) に記述されており、デバイスがプロビジョニングされた後、資格情報が **devicecreds.txt** ファイル (**azure-iot-sdks\\csharp\\service\\samples\\bin** フォルダー内) に格納されます。
+4.  **GenerateDevices.exe** を実行し、IoT Hub にデバイス ID をプロビジョニングします。デバイスは **sampledevices.json** (**azure-iot-sdks\\node\\service\\samples** フォルダー内) に記述されており、デバイスがプロビジョニングされると、資格情報が **devicecreds.txt** ファイル (**azure-iot-sdks\\csharp\\service\\samples\\bin** フォルダー内) に格納されます。
 
 ## シミュレートされたデバイスの起動
 
@@ -109,13 +113,13 @@ Azure IoT Hub デバイス管理を利用するには、Azure IoT Hub を作成�
   simulate.bat
   ```
 
-このスクリプトは、**devicecreds.txt** ファイルに記載されているデバイスごとに、**iotdm\_simple\_sample.exe** の 1 つのインスタンスを実行します。シミュレートされたデバイスは、コマンド ウィンドウを閉じるまで実行され続けます。
+このスクリプトは、**devicecreds.txt** ファイルに記載されているデバイスごとに、**iotdm\_simple\_sample.exe** のインスタンスを 1 つ実行します。シミュレートされたデバイスは、コマンド ウィンドウを閉じるまで実行され続けます。
 
 **iotdm\_simple\_sample** サンプル アプリケーションは、C 用の Azure IoT Hub デバイス管理クライアント ライブラリを使用してビルドされます。これにより、Azure IoT Hub によって管理できる IoT デバイスの作成が可能になります。デバイスの製造元は、このライブラリを使用して、デバイスのプロパティをレポートし、デバイスのジョブに必要な実行アクションを実装することができます。このライブラリは、オープン ソース Azure IoT Hub SDK の一部として提供されるコンポーネントです。
 
 **simulate.bat** を実行すると、出力ウィンドウにデータのストリームが表示されます。この出力には、受信トラフィックと送信トラフィックだけでなく、アプリケーション固有のコールバック関数の **printf** ステートメントも表示されます。そのため、受信トラフィックと送信トラフィックと共に、デコードされたパケットをサンプル アプリケーションがどのように処理しているかも確認できます。デバイスが IoT Hub に接続すると、サービスがデバイス上のリソースの監視を自動的に開始します。その後、IoT Hub DM クライアント ライブラリは、デバイス コールバックを呼び出して、デバイスから最新の値を取得します。
 
-**iotdm\_simple\_sample** サンプル アプリケーションからの出力を次に示します。上部には、成功した **REGISTERED** メッセージが表示され、ID が **Device11-7ce4a850** であるデバイスが IoT Hub に接続していることを示します。
+**iotdm\_simple\_sample** サンプル アプリケーションからの出力を次に示します。上部には、成功した **REGISTERED** メッセージが表示され、ID が **Device11-7ce4a850** のデバイスが IoT Hub に接続していることを示します。
 
 > [AZURE.NOTE]  出力から詳細を省くには、製品版構成をビルドして実行します。
 
@@ -148,4 +152,4 @@ Azure IoT Hub デバイス管理機能の詳細については、次のチュー
 [lnk-tutorial-queries]: iot-hub-device-management-device-query.md
 [lnk-tutorial-jobs]: iot-hub-device-management-device-jobs.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

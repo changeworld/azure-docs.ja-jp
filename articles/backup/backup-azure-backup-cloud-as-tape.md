@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="storage-backup-recovery"
-   ms.date="02/09/2016"
+   ms.date="05/03/2016"
    ms.author="jimpark;"/>
 
 # Azure Backup を使用してテープのインフラストラクチャを置換する
@@ -69,6 +69,6 @@ Backup スケジュールは、バックアップ操作の頻度を示します�
 Azure Backup について詳しくは、以下をご覧ください。
 
 - [Azure Backup の概要](backup-introduction-to-azure-backup.md)
-- [Azure Backup を試す](backup-try-azure-backup-in-10-mins)
+- [Azure Backup を試す](backup-try-azure-backup-in-10-mins.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

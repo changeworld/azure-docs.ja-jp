@@ -52,10 +52,199 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 
 IoT Hub の作成は以上です。以降の作業に必要なホスト名と接続文字列が得られました。
 
-[AZURE.INCLUDE [iot-hub-get-started-cloud-csharp](../../includes/iot-hub-get-started-cloud-csharp.md)]
+## デバイス ID の作成
+
+このセクションでは、IoT ハブの ID レジストリに新しいデバイス ID を作成する Windows コンソール アプリケーションを作成します。IoT Hub に接続するデバイスは、あらかじめデバイス ID レジストリに登録されている必要があります。詳細については、「[IoT Hub 開発者ガイド][lnk-devguide-identity]」の「**デバイス ID レジストリ**」を参照してください。このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
+
+1. Visual Studio で、**[コンソール アプリケーション]** プロジェクト テンプレートを使用し、新しい Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。.NET Framework のバージョンが 4.5.1 以降であることを確認します。プロジェクトに **CreateDeviceIdentity** という名前を付けます。
+
+	![][10]
+
+2. ソリューション エクスプローラーで **CreateDeviceIdentity** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+
+3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices** を検索して **[インストール]** をクリックし、**Microsoft.Azure.Devices** パッケージをインストールして使用条件に同意します。
+
+	![][11]
+
+4. これにより、パッケージのダウンロードとインストールが実行され、[Microsoft Azure IoT Service SDK][lnk-nuget-service-sdk] NuGet パッケージへの参照とその依存関係が追加されます。
+
+4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+
+		using Microsoft.Azure.Devices;
+        using Microsoft.Azure.Devices.Common.Exceptions;
+
+5. **Program** クラスに次のフィールドを追加し、プレースホルダーの値を、前のセクションで作成した IoT Hub の接続文字列に置き換えます。
+
+		static RegistryManager registryManager;
+        static string connectionString = "{iothub connection string}";
+
+6. **Program** クラスに次のメソッドを追加します。
+
+		private static async Task AddDeviceAsync()
+        {
+            string deviceId = "myFirstDevice";
+            Device device;
+            try
+            {
+                device = await registryManager.AddDeviceAsync(new Device(deviceId));
+            }
+            catch (DeviceAlreadyExistsException)
+            {
+                device = await registryManager.GetDeviceAsync(deviceId);
+            }
+            Console.WriteLine("Generated device key: {0}", device.Authentication.SymmetricKey.PrimaryKey);
+        }
+
+	このメソッドは、**myFirstDevice** という ID で新しいデバイス ID を作成します (そのデバイス ID が既にレジストリに存在する場合は、単にその既存のデバイス情報を取得します)。続けてその ID のプライマリ キーが表示されます。シミュレーション対象デバイスでこのキーを使用して IoT Hub に接続することになります。
+
+7. 最後に、**Main** メソッドに次の行を追加します。
+
+		registryManager = RegistryManager.CreateFromConnectionString(connectionString);
+        AddDeviceAsync().Wait();
+        Console.ReadLine();
+
+8. このアプリケーションを実行し、デバイスのキーを書き留めます。
+
+    ![][12]
+
+> [AZURE.NOTE] IoT Hub の ID レジストリには、ハブに対するアクセスの安全性を確保するためのデバイス ID だけが格納されます。セキュリティ資格情報として使用するキーとデバイス ID、そして個々のデバイスについてアクセスを無効にすることのできる有効/無効フラグが格納されます。その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。詳細については、「[IoT Hub 開発者ガイド][lnk-devguide-identity]」を参照してください。
+
+## デバイスからクラウドへのメッセージの受信
+
+このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Windows コンソール アプリケーションを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るための、[Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを規模を拡大して処理する方法を紹介しています。「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub のイベント ハブと互換性のあるエンドポイントに当てはまります。
+
+> [AZURE.NOTE] 常に、Event Hubs と互換性のあるエンドポイントは、デバイスからクラウドへのメッセージを読み取るために AMQPS プロトコルを使用します。
+
+1. Visual Studio で、**[コンソール アプリケーション]** プロジェクト テンプレートを使用し、新しい Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。.NET Framework のバージョンが 4.5.1 以降であることを確認します。プロジェクトに **ReadDeviceToCloudMessages** という名前を付けます。
+
+    ![][10]
+
+2. ソリューション エクスプローラーで、**[ReadDeviceToCloudMessages]** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+
+3. **[NuGet パッケージ マネージャー]** ウィンドウで **WindowsAzure.ServiceBus** を検索し、**[インストール]** をクリックして、使用条件に同意します。
+
+    これによって、[Azure Service Bus][lnk-servicebus-nuget] への参照がすべての依存関係と共にダウンロード、インストール、追加されます。このパッケージは、アプリケーションが IoT Hub でイベント ハブと互換性のあるエンドポイントに接続できるようにします。
+
+4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+
+        using Microsoft.ServiceBus.Messaging;
+        using System.Threading;
+
+5. **Program** クラスに次のフィールドを追加し、プレースホルダーの値を、「*IoT Hub の作成*」セクションで作成した IoT Hub の接続文字列に置き換えます。
+
+        static string connectionString = "{iothub connection string}";
+        static string iotHubD2cEndpoint = "messages/events";
+        static EventHubClient eventHubClient;
+
+6. **Program** クラスに次のメソッドを追加します。
+
+        private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
+        {
+            var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow);
+            while (true)
+            {
+                if (ct.IsCancellationRequested) break;
+                EventData eventData = await eventHubReceiver.ReceiveAsync();
+                if (eventData == null) continue;
+
+                string data = Encoding.UTF8.GetString(eventData.GetBytes());
+                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data);
+            }
+        }
+
+    このメソッドは、**EventHubReceiver** インスタンスを使用して、IoT Hub のすべてのデバイスからクラウドへの受信パーティションからメッセージを受け取ります。**EventHubReceiver** オブジェクトを作成するときの `DateTime.Now` パラメーターの渡し方に注目してください。これによって、起動後に送信されたメッセージのみを受信するようにしています。現在の一連のメッセージを確認できるので、テスト環境ではこれは便利ですが、運用環境の場合、コードですべてのメッセージが処理されることを確認する必要があります。詳細については、[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
+
+7. 最後に、**Main** メソッドに次の行を追加します。
+
+        Console.WriteLine("Receive messages. Ctrl-C to exit.\n");
+        eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, iotHubD2cEndpoint);
+
+        var d2cPartitions = eventHubClient.GetRuntimeInformation().PartitionIds;
+
+        CancellationTokenSource cts = new CancellationTokenSource();
+
+        System.Console.CancelKeyPress += (s, e) =>
+        {
+          e.Cancel = true;
+          cts.Cancel();
+          Console.WriteLine("Exiting...");
+        };
+
+        var tasks = new List<Task>();
+        foreach (string partition in d2cPartitions)
+        {
+           tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token));
+        }  
+        Task.WaitAll(tasks.ToArray());
+
+## シミュレーション対象デバイス アプリの作成
+
+このセクションでは、デバイスからクラウドへのメッセージを IoT ハブに送信するデバイスをシミュレートする Windows コンソール アプリを作成します。
+
+1. Visual Studio で、**[コンソール アプリケーション]** プロジェクト テンプレートを使用し、新しい Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。.NET Framework のバージョンが 4.5.1 以降であることを確認します。プロジェクトに **SimulatedDevice** という名前を付けます。
+
+   	![][10]
+
+2. ソリューション エクスプローラーで **SimulatedDevice** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+
+3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索して **[インストール]** をクリックし、**Microsoft.Azure.Devices.Client** パッケージをインストールして使用条件に同意します。
+
+	これによりパッケージのダウンロードとインストールが実行され、[Azure IoT - デバイス SDK NuGet パッケージ][lnk-device-nuget]への参照とその依存関係が追加されます。
+
+4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+
+		using Microsoft.Azure.Devices.Client;
+        using Newtonsoft.Json;
 
 
-[AZURE.INCLUDE [iot-hub-get-started-device-csharp](../../includes/iot-hub-get-started-device-csharp.md)]
+5. **Program** クラスに次のフィールドを追加し、プレースホルダーの値を、「*IoT Hub の作成*」セクションで取得した IoT Hub のホスト名と「*デバイス ID の作成*」セクションで取得したデバイス キーにそれぞれ置き換えます。
+
+		static DeviceClient deviceClient;
+        static string iotHubUri = "{iot hub hostname}";
+        static string deviceKey = "{device key}";
+
+6. **Program** クラスに次のメソッドを追加します。
+
+		private static async void SendDeviceToCloudMessagesAsync()
+        {
+            double avgWindSpeed = 10; // m/s
+            Random rand = new Random();
+
+            while (true)
+            {
+                double currentWindSpeed = avgWindSpeed + rand.NextDouble() * 4 - 2;
+
+                var telemetryDataPoint = new
+                {
+                    deviceId = "myFirstDevice",
+                    windSpeed = currentWindSpeed
+                };
+                var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
+                var message = new Message(Encoding.ASCII.GetBytes(messageString));
+
+                await deviceClient.SendEventAsync(message);
+                Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
+
+                Task.Delay(1000).Wait();
+            }
+        }
+
+	このメソッドは、デバイスからクラウドへの新しいメッセージを 1 秒おきに送信します。このメッセージには、JSON 形式でシリアル化されたオブジェクトが、デバイス ID、ランダムに生成された番号と共に含まれ、これによって風速センサーがシミュレートされます。
+
+7. 最後に、**Main** メソッドに次の行を追加します。
+
+        Console.WriteLine("Simulated device\n");
+        deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("myFirstDevice", deviceKey));
+
+        SendDeviceToCloudMessagesAsync();
+        Console.ReadLine();
+
+  既定では、**Create** メソッドは、IoT Hub と通信するために AMQP プロトコルを使用する **DeviceClient** インスタンスを作成します。HTTPS プロトコルを使用するには、プロトコルを引数として受け取る、**Create** メソッドのオーバーライドを使用します。HTTPS プロトコルを使用するように選択する場合は、**Microsoft.AspNet.WebApi.Client** NuGet パッケージをプロジェクトに追加して、**System.Net.Http.Formatting** 名前空間を含める必要もあります。
+
+このチュートリアルでは、IoT Hub デバイス クライアントを作成する手順について説明します。代わりに、Visual Studio 拡張機能である [Connected Service for Azure IoT Hub][lnk-connected-service] を使用して、デバイス クライアント アプリケーションに必要なコードを追加することもできます。
+
+
+> [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。運用環境のコードでは、[一時的な障害処理][lnk-transient-faults]に関する MSDN の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
 ## アプリケーションの実行
 
@@ -69,7 +258,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 
    	![][42]
 
-3. [Azure ポータル][lnk-portal]の **[使用量]** タイルには、Hub に送信されたメッセージ数が表示されます。
+3. [Azure ポータル][lnk-portal]の **[使用状況]** タイルには、Hub に送信されたメッセージ数が表示されます。
 
     ![][43]
 
@@ -86,6 +275,9 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 [41]: ./media/iot-hub-csharp-csharp-getstarted/run-apps1.png
 [42]: ./media/iot-hub-csharp-csharp-getstarted/run-apps2.png
 [43]: ./media/iot-hub-csharp-csharp-getstarted/usage.png
+[10]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp1.png
+[11]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp2.png
+[12]: ./media/iot-hub-csharp-csharp-getstarted/create-identity-csharp3.png
 
 <!-- Links -->
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
@@ -96,4 +288,14 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0413_2016-->
+[lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
+[lnk-devguide-identity]: iot-hub-devguide.md#identityregistry
+[lnk-servicebus-nuget]: https://www.nuget.org/packages/WindowsAzure.ServiceBus
+[lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
+
+[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
+[lnk-device-nuget]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
+[lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[lnk-connected-service]: https://visualstudiogallery.msdn.microsoft.com/e254a3a5-d72e-488e-9bd3-8fee8e0cd1d6
+
+<!---HONumber=AcomDC_0511_2016-->

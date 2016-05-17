@@ -12,20 +12,12 @@
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
-	ms.topic="get-started-article" 
-	ms.date="01/12/2016" 
+	ms.topic="article" 
+	ms.date="04/08/2016" 
 	ms.author="robmcm"/>
 
 
 #Azure App Service で PHP-MySQL Web アプリを作成して FTP でデプロイする
-
-> [AZURE.SELECTOR]
-- [.NET](web-sites-dotnet-get-started.md)
-- [Node.JS](app-service-web-nodejs-get-started.md)
-- [Java](web-sites-java-get-started.md)
-- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
-- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
-- [Python](web-sites-python-ptvs-django-mysql.md)
 
 このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、FTP を使用してそれをデプロイする方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php]、[MySQL][install-mysql]、Web サーバー、および FTP クライアントがインストールされていることを前提としています。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
  
@@ -303,4 +295,4 @@ Web Apps で実行されている MySQL データベースに接続するには�
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
  
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0504_2016-->

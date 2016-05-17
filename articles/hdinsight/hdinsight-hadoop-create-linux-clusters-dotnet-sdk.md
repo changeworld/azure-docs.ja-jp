@@ -51,7 +51,6 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
         Install-Package Microsoft.Azure.Common.Authentication -Pre
         Install-Package Microsoft.Azure.Management.HDInsight -Pre
-        Install-Package Microsoft.Azure.Management.Resources -Pre
 
     これらのコマンドは、.NET ライブラリおよび .NET ライブラリへの参照を現在の Visual Studio プロジェクトに追加します。
 
@@ -82,7 +81,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
                 private const int NewClusterNumNodes = 1;
                 private const string NewClusterLocation = "EAST US 2";     // Must be the same as the default Storage account
                 private const OSType NewClusterOSType = OSType.Linux;
-                private const HDInsightClusterType NewClusterType = HDInsightClusterType.Hadoop;
+                private const string NewClusterType = "Hadoop";
                 private const string NewClusterVersion = "3.2";
                 private const string NewClusterUsername = "admin";
                 private const string NewClusterPassword = "<Enter HTTP User Password>";
@@ -371,4 +370,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 - [.NET SDK を使用して HDInsight で Sqoop ジョブを実行する](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
 - [HDInsight で Oozie ジョブを実行する](hdinsight-use-oozie.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0504_2016-->

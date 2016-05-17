@@ -3,8 +3,8 @@
    description="Data Lake Analytics は Azure のビッグ データ コンピューティング サービスであり、クラウドのデータから得られた洞察を活用し、データを使用してビジネスを推進できます。その場所やサイズは関係ありません。Data Lake Analytics は、可能な限り最もシンプルで、スケーラブルかつ経済的な方法でこれを可能にします。このページはドキュメント作業のバックログです。"
    documentationCenter="na"
    services="data-lake-analytics"
-   authors="pablissima"
-   manager="pablissima"
+   authors="edmacauley"
+   manager="paulettm"
    editor="cgronlun"/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/10/2016"
-   ms.author="mwinkle"/>
+   ms.date="04/26/2016"
+   ms.author="edmaca"/>
 
 # Azure Data Lake Analytics ドキュメントのバックログ
 
@@ -62,4 +62,4 @@ U-SQL | REDUCE と COMBINE のリファレンス ドキュメントの更新 | 1
 * [Azure コンテンツ リポジトリ](https://github.com/Azure/azure-content/blob/master/articles/data-lake-analytics/data-lake-analytics-documentation-backlog.md)でこのドキュメントに関するプル要求を送信する。
 * [adlafeedback at microsoft.com](mailto:adlafeedback@microsoft.com?subject=DocBacklog) に電子メールを送信する。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

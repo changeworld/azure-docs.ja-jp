@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="get-started-article"
-    ms.date="01/26/2016"
+    ms.date="05/09/2016"
     ms.author="sethm"/>
 
 # Service Bus キューの使用方法
@@ -28,9 +28,7 @@
 
 ## Service Bus NuGet パッケージの追加
 
-[Service Bus **NuGet** パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
-
-アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
+[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
 
 1.  ソリューション エクスプローラーで **[参照]** を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 2.  "Service Bus" を検索して、**[Microsoft Azure Service Bus]** 項目を選択します。**[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
@@ -48,9 +46,9 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
 
 いずれの場合も、この記事で後ほど説明する [CloudConfigurationManager.GetSetting][GetSetting] メソッドを使用して接続文字列を取得できます。
 
-### Cloud Services を使用する場合の接続文字列の構成
+### 接続文字列の構成
 
-サービス構成メカニズムは、Azure Cloud Services プロジェクトに特有のものであり、これを使用すると、アプリケーションを再デプロイしなくても [Azure クラシック ポータル][]から構成設定を動的に変更できます。たとえば、次の例に示すように、サービス定義 (.csdef) ファイルに `Setting` ラベルを追加します。
+サービス構成メカニズムを使用すると、アプリケーションを再デプロイしなくても [Azure クラシック ポータル][]から構成設定を動的に変更できます。たとえば、次の例に示すように、サービス定義 (.csdef) ファイルに `Setting` ラベルを追加します。
 
 ```
 <ServiceDefinition name="Azure1">
@@ -255,4 +253,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
   [Complete]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

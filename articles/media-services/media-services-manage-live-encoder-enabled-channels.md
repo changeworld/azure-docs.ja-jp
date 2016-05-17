@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/14/2016" 
+	ms.date="05/03/2016"
 	ms.author="juliako"/>
 
 #Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
@@ -455,7 +455,7 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 チャネルとプログラムの作成および管理方法を表示する**ポータル**、**.NET**、**REST API** を選択します。
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
+- [ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
 - [.NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 - [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 
@@ -480,4 +480,4 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

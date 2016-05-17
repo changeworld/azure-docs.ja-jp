@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="04/28/2016"
 	ms.author="jgao"/>
 
 
@@ -75,7 +75,7 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 
 この記事では、Power Query を使用して HDInsight から Excel にデータを取得する方法を学習しました。同様に、Azure SQL Database に HDInsight からデータを取得することもできます。また、HDInsight にデータをアップロードすることもできます。詳細については、次の記事を参照してください。
 
-* [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-ODBC]
+* [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続](../../articles/hdinsight/hdinsight-connect-excel-hive-odbc-driver.md)
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
 
 [hdinsight-ODBC]: hdinsight-connect-excel-hive-ODBC-driver.md
@@ -88,4 +88,4 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 
 [powerquery-download]: http://go.microsoft.com/fwlink/?LinkID=286689
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0504_2016-->

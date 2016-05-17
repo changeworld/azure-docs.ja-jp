@@ -125,7 +125,7 @@
 
 ##関連項目##
 
-+ [ハイブリッド接続の Web サイト](../../services/biztalk-services/)
++ [ハイブリッド接続の Web サイト](https://azure.microsoft.com/services/biztalk-services/)
 + [ハイブリッド接続の概要](../biztalk-services/integration-hybrid-connection-overview.md)
 + [BizTalk Services: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブ](../biztalk-services/biztalk-dashboard-monitor-scale-tabs.md)
 + [データ モデルの変更を .NET バックエンド モバイル サービスに加える方法](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)
@@ -137,4 +137,4 @@
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 [Mobile Services の使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0504_2016-->

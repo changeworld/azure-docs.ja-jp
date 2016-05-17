@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="02/23/2016"
+	ms.date="05/06/2016"
 	ms.author="cabailey"/>
 
 # Azure Key Vault の概要 #
-Azure Key Vault は、ほとんどのリージョンで使用できます。詳細については、[Key Vault の価格のページ](../../../../pricing/details/key-vault/)を参照してください。
+Azure Key Vault は、ほとんどのリージョンで使用できます。詳細については、[Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
 
 ## はじめに  
 このチュートリアルを使用すると、Azure Key Vault で、強化されたコンテナー (資格情報コンテナー) を Azure に作成し、暗号化キーやシークレットを Azure に格納して管理できるようになります。ここでは、Azure PowerShell を使用して、Azure アプリケーションで使用できるキーまたはパスワードを含む資格情報コンテナーを作成するプロセスについて説明します。アプリケーションがそのキーやパスワードを使用する方法についても説明します。
@@ -34,7 +34,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 
 このチュートリアルを完了するには、以下が必要です。
 
-- Microsoft Azure サブスクリプション。サブスクリプションがない場合でも、[無料アカウント](../../../../pricing/free-trial)にサインアップできます。
+- Microsoft Azure サブスクリプション。サブスクリプションがない場合でも、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 - Azure PowerShell **1.1.0 以降のバージョン**。Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「`(Get-Module azure -ListAvailable).Version`」と入力します。Azure PowerShell バージョン 0.9.1 ～ 0.9.8 がインストールされている場合は、少し変更を加えるだけで、引き続きこのチュートリアルを利用できます。たとえば、`Switch-AzureMode AzureResourceManager` コマンドを使用する必要があったり、Azure Key Vault のコマンドの一部が変更されていたりします。バージョン 0.9.1 ～ 0.9.8 の Key Vault コマンドレットの一覧については、[Azure Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052(v=azure.98).aspx)に関するページを参照してください。 
 - このチュートリアルで作成したキーやパスワードを使用して構成されるアプリケーション。サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/ja-JP/download/details.aspx?id=45343)から入手できます。手順については、付属の Readme ファイルをご覧ください。
 
@@ -187,7 +187,7 @@ Azure Active Directory にアプリケーションを登録するには:
 
 さらに安心感を高めたい場合には、ハードウェア セキュリティ モジュール (HSM) でキーのインポートや生成を行うことができ、キーは HSM の境界内から出ることはありません。HSM は、FIPS 140-2 レベル 2 で検証済みです。この要件が自分に当てはまらない場合は、このセクションをスキップし、[Key Vault と関連するキーとシークレットを削除する](#delete)に進んでください。
 
-これらの HSM で保護されたキーを作成するには、[HSM で保護されたキーをサポートする資格情報コンテナーのサブスクリプション](../../../pricing/free-trial)が必要です。また、この機能は Azure China では使用できません。
+これらの HSM で保護されたキーを作成するには、[HSM で保護されたキーをサポートする資格情報コンテナーのサブスクリプション](https://azure.microsoft.com/pricing/free-trial/)が必要です。また、この機能は Azure China では使用できません。
 
 
 資格情報コンテナーを作成するときに、**-SKU** パラメーターを追加します。
@@ -245,4 +245,4 @@ Azure Key Vault の Azure PowerShell コマンドレットの最新の一覧に�
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

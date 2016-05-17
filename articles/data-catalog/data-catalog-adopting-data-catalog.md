@@ -1,20 +1,20 @@
 <properties
-   pageTitle="Azure Data Catalog の導入 | Microsoft Azure"
-   description="この記事では、Azure Data Catalog の導入を検討している組織向けのアプローチとプロセスを紹介します。具体的には、ビジョンの定義、主要なビジネス ユース ケースの特定、パイロット プロジェクトの選択などを取り上げます。"
-   services="data-catalog"
-   documentationCenter=""
-   authors="dvana"
-   manager="NA"
-   editor=""
-   tags=""/>
+	pageTitle="Azure Data Catalog の導入 | Microsoft Azure"
+	description="この記事では、Azure Data Catalog の導入を検討している組織向けのアプローチとプロセスを紹介します。具体的には、ビジョンの定義、主要なビジネス ユース ケースの特定、パイロット プロジェクトの選択などを取り上げます。"
+	services="data-catalog"
+	documentationCenter=""
+	authors="spelluru"
+	manager="NA"
+	editor=""
+	tags=""/>
 <tags
-   ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="04/06/2016"
-   ms.author="derrickv"/>
+	ms.service="data-catalog"
+	ms.devlang="NA"
+	ms.topic="hero-article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="05/09/2016"
+	ms.author="spelluru"/>
 
 # Azure Data Catalog の導入
 この記事は、組織における **Azure Data Catalog** の導入方法について説明します。**Azure Data Catalog** を正常に導入するには、次の 3 つの主要項目に注目します。ビジョンの定義、組織内の主要ビジネスのユースケースの識別、およびパイロット プロジェクトの選択。
@@ -172,4 +172,4 @@ Nancy と彼女のチームがどのように容易に価値の高いデータ �
 -	[データ ソースの注釈付け](data-catalog-get-started.md#exercise-4-annotating-registered-data-sources)
 - [メタデータのクラウドソーシング](data-catalog-get-started.md#exercise-5-crowdsourcing-metadata)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

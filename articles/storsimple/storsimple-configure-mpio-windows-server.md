@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/05/2016"
+   ms.date="04/27/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスのマルチパス IO の構成
@@ -23,7 +23,7 @@ StorSimple ソリューションの可用性を高めるためには、StorSimpl
 
 MPIO はオプションの機能であり、Windows サーバーに既定ではインストールされていません。サーバー マネージャーを使用して、機能としてインストールする必要があります。このトピックでは、Windows Server 2012 R2 が実行され、StorSimple 物理デバイスに接続されているホストに MPIO 機能をインストールし、その機能を使用するための手順を説明します。
 
->[AZURE.NOTE] **StorSimple 仮想デバイスでは、MPIO がサポートされていません。**
+>[AZURE.NOTE] **この手順は、StorSimple 8000 シリーズにのみ適用されます。StorSimple 仮想デバイスでは、MPIO は現在サポートされていません。**
 
 次の手順に従って、StorSimple デバイスに MPIO を構成します。
 
@@ -173,4 +173,4 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 [StorSimple Manager サービスを使用した StorSimple デバイス構成の変更](storsimple-modify-device-config.md)の詳細を確認する。
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -15,7 +15,7 @@
     ms.tgt_pltfrm="vm-linux"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/26/2016"
+    ms.date="04/29/2016"
     ms.author="v-livech"
 />
 
@@ -34,7 +34,7 @@ Linux VM で VMAccess を使用する方法は 2 つあります。1 つは、`a
 root パスワードをリセットするには:
 
 ```bash
-ahmet@fedora$ azure vm reset-access -g <resource group> -n <vm name> -u root -p <examplePassword>
+azure vm reset-access -g <resource group> -n <vm name> -u root -p <examplePassword>
 ```
 
 ## SSH キーのリセット
@@ -42,7 +42,7 @@ ahmet@fedora$ azure vm reset-access -g <resource group> -n <vm name> -u root -p 
 root 以外のユーザーの SSH キーをリセットするには:
 
 ```bash
-ahmet@fedora$ azure vm reset-access -g <resource group> -n <vm name> -u <exampleUser> -M <~/.ssh/azure_id_rsa.pub>
+azure vm reset-access -g <resource group> -n <vm name> -u <exampleUser> -M <~/.ssh/azure_id_rsa.pub>
 ```
 
 ## ユーザーの作成
@@ -50,13 +50,13 @@ ahmet@fedora$ azure vm reset-access -g <resource group> -n <vm name> -u <example
 新しいユーザーを作成するには:
 
 ```bash
-ahmet@fedora$ azure vm reset-access -g <resource group> -n <vm name> -u <exampleNewUserName> -p <examplePassword>
+azure vm reset-access -g <resource group> -n <vm name> -u <exampleNewUserName> -p <examplePassword>
 ```
 
 ## ユーザーの削除
 
 ```bash
-ahmet@fedora$ azure vm reset-access -g <resource group> -n <vm name> -R <exampleNewUserName>
+azure vm reset-access -g <resource group> -n <vm name> -R <exampleNewUserName>
 ```
 
 ## SSHD のリセット
@@ -64,7 +64,7 @@ ahmet@fedora$ azure vm reset-access -g <resource group> -n <vm name> -R <example
 SSHD 構成をリセットするには:
 
 ```bash
-ahmet@fedora$ azure vm reset-access -g <resource group> -n <vm name> -r
+azure vm reset-access -g <resource group> -n <vm name> -r
 ```
 
 
@@ -94,7 +94,7 @@ VMAccess を使用して、Linux VM 下のディスクに対して、fsck を実
 次を使用して VMAccess スクリプトを実行します。
 
 ```bash
-ahmet@fedora$ azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGruop exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path disk_check_repair.json
 ```
@@ -117,7 +117,7 @@ root パスワードをリセットするには、この VMAccess スクリプ�
 次を使用して VMAccess スクリプトを実行します。
 
 ```bash
-ahmet@fedora$ azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGruop exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path reset_root_password.json
 ```
@@ -136,7 +136,7 @@ root 以外のユーザーの SSH キーをリセットするには、この VMA
 次を使用して VMAccess スクリプトを実行します。
 
 ```bash
-ahmet@fedora$ azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGruop exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path reset_ssh_key.json
 ```
@@ -160,7 +160,7 @@ VMAccess は、ログインしたり、sudo や root アカウントを使用し
 次を使用して VMAccess スクリプトを実行します。
 
 ```bash
-ahmet@fedora$ azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGruop exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path create_new_user.json
 ```
@@ -178,7 +178,7 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 次を使用して VMAccess スクリプトを実行します。
 
 ```bash
-ahmet@fedora$ azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGruop exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path remove_user.json
 ```
@@ -200,9 +200,9 @@ SSHD 構成をリセットするには、この VMAccess スクリプトを使�
 次を使用して VMAccess スクリプトを実行します。
 
 ```bash
-ahmet@fedora$ azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGruop exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path reset_sshd.json
 ```
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0504_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/29/2016"
+	ms.date="04/28/2016"
 	ms.author="jgao"/>
 
 
@@ -154,4 +154,4 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0504_2016-->

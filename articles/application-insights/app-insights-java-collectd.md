@@ -27,7 +27,7 @@
 
 ## インストルメンテーション キーの取得
 
-[Microsoft Azure ポータル](https://portal.azure.com)で、データを表示する [Application Insights](start) リソースを開きます (または[新しいリソースを作成](app-insights-create-new-resource.md)します。)
+[Microsoft Azure ポータル](https://portal.azure.com)で、データを表示する [Application Insights](app-insights-overview.md) リソースを開きます (または[新しいリソースを作成](app-insights-create-new-resource.md)します。)
 
 リソースを識別する、インストルメンテーション キーのコピーを取ります。
 
@@ -143,4 +143,4 @@ Application Insights のリソースで、[メトリックス エクスプロー
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0504_2016-->
