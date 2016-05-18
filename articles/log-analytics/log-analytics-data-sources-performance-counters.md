@@ -90,7 +90,9 @@ Log Analytics は、カウンターがインストールされているすべて
 | Type=Perf (CounterName="% Processor Time") | measure max(Max) by Computer | コンピューター全体の最大 CPU 使用率 |
 | Type=Perf ObjectName=LogicalDisk CounterName="Current Disk Queue Length" Computer="MyComputerName" | measure Avg(Average) by InstanceName | 特定のコンピューターのインスタンス全体における現在のディスク キューの長さの平均 |
 | Type=Perf CounterName="DiskTransfers/sec" | measure percentile95(Average) by Computer | コンピューター全体のディスク転送数/秒の 95 パーセンタイル |
-| Type=Perf CounterName="% Processor Time" InstanceName="\_Total" | measure avg(CounterValue) by Computer Interval 1HOUR | コンピューター全体の CPU 使用率の時間単位の平均 | | Type=Perf Computer="MyComputer" CounterName=%* InstanceName=\_Total | measure percentile70(CounterValue) by CounterName Interval 1HOUR | 特定のコンピューターに関する % パーセント カウンターごとの時間単位の 70 パーセンタイル | |Type=Perf CounterName="% Processor Time" InstanceName="\_Total" (Computer="MyComputer") | measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR | 特定のコンピューターに関する時間単位の平均、最小、最大、および 75 パーセンタイルの CPU 使用率 |
+| Type=Perf CounterName="% Processor Time" InstanceName="\_Total" | measure avg(CounterValue) by Computer Interval 1HOUR | コンピューター全体の CPU 使用率の時間単位の平均 |
+| Type=Perf Computer="MyComputer" CounterName=%* InstanceName=\_Total | measure percentile70(CounterValue) by CounterName Interval 1HOUR | 特定のコンピューターに関する % パーセント カウンターごとの時間単位の 70 パーセンタイル |
+|Type=Perf CounterName="% Processor Time" InstanceName="\_Total" (Computer="MyComputer") | measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR | 特定のコンピューターに関する時間単位の平均、最小、最大、および 75 パーセンタイルの CPU 使用率 |
 
 ## パフォーマンス データの表示
 
