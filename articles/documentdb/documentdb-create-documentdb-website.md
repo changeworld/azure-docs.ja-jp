@@ -49,7 +49,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 > [AZURE.TIP] このテンプレートでは、ここで入力する Web アプリ名と DocumentDB アカウント名が a) 有効であること、および b) 使用可能であることについては確認されません。デプロイメントの送信前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
 
-1. [Azure ポータル](https://portal.azure.com)にログインし、[New] (新規) をクリックし、「テンプレートのデプロイ」を検索します。 ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
+1. [Azure ポータル](https://portal.azure.com)にログインし、[New] \(新規) をクリックし、「テンプレートのデプロイ」を検索します。 ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
 
 2. [テンプレートのデプロイ] を選択し、**[作成]** をクリックします。 ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment2.png)
 
