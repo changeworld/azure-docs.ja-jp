@@ -19,7 +19,7 @@
 
 # geo レプリケーションのセキュリティ構成
 
->[AZURE.NOTE] [Active Geo-Replication]すべてのサービス階層のデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
+>[AZURE.NOTE] すべてのサービス階層のデータベースで [Active Geo-Replication](sql-database-geo-replication-overview.md) を使用できるようになりました。
 
 ## アクティブ geo レプリケーションの認証要件の概要
 このトピックでは、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を構成し、制御するための認証要件と、セカンダリ データベースへのユーザー アクセスを設定するために必要な手順について説明します。geo レプリケーションの使用方法の詳細については、「[Azure SQL Database を障害から回復する](sql-database-disaster-recovery.md)」を参照してください。
