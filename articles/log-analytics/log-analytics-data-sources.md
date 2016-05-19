@@ -29,7 +29,12 @@ Log Analytics は、OMS ワークスペース内の接続されたソースか�
 
 | データ ソース | イベントの種類 | 説明 |
 |:--|:--|:--|
-| [カスタム ログ](log-analytics-data-sources-custom-logs.md) | <LogName>\_CL | ログ情報を含む Windows テキスト ファイルまたは Linux エージェント。 | | [Windows イベント ログ](log-analytics-data-sources-windows-events.md) | Event | Windows コンピューターのイベント ログから収集されたイベント。 | | [Windows パフォーマンス カウンター](log-analytics-data-sources-performance-counters.md) | Perf | Windows コンピューターから収集されたパフォーマンス カウンター。 | | [Linux パフォーマンス カウンター](log-analytics-data-sources-performance-counters.md) | Perf | Linux コンピューターから収集されたパフォーマンス カウンター。 | | [IIS ログ](log-analytics-data-sources-iis-logs.md) | W3CIISLog | W3C 形式の Internet Information Services ログ。 | | Syslog | Syslog | Windows または Linux コンピューターの Syslog イベント。 |
+| [カスタム ログ](log-analytics-data-sources-custom-logs.md) | \<LogName\>_CL | ログ情報を含む Windows テキスト ファイルまたは Linux エージェント。 |
+| [Windows イベント ログ](log-analytics-data-sources-windows-events.md) | Event | Windows コンピューターのイベント ログから収集されたイベント。 |
+| [Windows パフォーマンス カウンター](log-analytics-data-sources-performance-counters.md) | Perf | Windows コンピューターから収集されたパフォーマンス カウンター。 |
+| [Linux パフォーマンス カウンター](log-analytics-data-sources-performance-counters.md) | Perf | Linux コンピューターから収集されたパフォーマンス カウンター。 |
+| [IIS ログ](log-analytics-data-sources-iis-logs.md) | W3CIISLog | W3C 形式の Internet Information Services ログ。 |
+| Syslog | Syslog | Windows または Linux コンピューターの Syslog イベント。 |
 
 ## データ ソースの構成
 
