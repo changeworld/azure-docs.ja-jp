@@ -281,4 +281,4 @@ Web API の CORS サポートは、App Service の CORS サポートよりも柔
 
 この記事では、クライアントの JavaScript コードが、別のドメイン内の API を呼び出すための App Service の CORS サポートを有効にする方法を説明しました。引き続き API Apps の入門シリーズの記事で、[App Service の API アプリにおける認証](app-service-api-authentication.md)について説明します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!-----HONumber=AcomDC_0413_2016-->
