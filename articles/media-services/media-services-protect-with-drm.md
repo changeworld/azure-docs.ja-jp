@@ -626,4 +626,4 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 [Azure Media Services での Google Widevine ライセンス配信サービスのお知らせ](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!-----HONumber=AcomDC_0504_2016-->
