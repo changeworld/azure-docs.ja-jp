@@ -137,7 +137,7 @@ Media Services においてライブ ストリーミング コンテンツの処
 詳細については、次を参照してください。
 
 - [Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)
-- [オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-manage-channels-overview.md)
+- [オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-live-streaming-with-onprem-encoders.md)
 - [クォータと制限](media-services-quotas-and-limitations.md)。  
 
 ##コンテンツの保護
@@ -252,4 +252,4 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0511_2016-->

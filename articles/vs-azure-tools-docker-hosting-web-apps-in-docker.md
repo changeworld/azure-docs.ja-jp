@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/26/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher"/>
 
 # リモート Docker ホストへの ASP.NET コンテナーのデプロイ
@@ -51,11 +51,11 @@ Docker は軽量のコンテナー エンジンで、アプリケーションと
 1.  Visual Studio を再起動します。
 
 ## 5\.Azure Docker ホストのエンドポイントの構成
-Visual Studio から Azure にアプリケーションをデプロイする前に、Docker ホスト仮想マシンにエンドポイント 80 を追加して、後でブラウザーからアプリケーションを表示できるようにします。これは、従来の Azure ポータルまたは Windows PowerShell を使用して行うことができます。
+Visual Studio から Azure にアプリケーションをデプロイする前に、Docker ホスト仮想マシンにエンドポイント 80 を追加して、後でブラウザーからアプリケーションを表示できるようにします。これは、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)または Windows PowerShell を使用して行うことができます。
 
-- **従来の Azure ポータルを使用して Azure Docker ホストのエンドポイントを構成する**
+- **[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用して Azure Docker ホストのエンドポイントを構成する**
 
-    1.  [従来の Azure ポータル](https://manage.windowsazure.com/)に移動します。 
+    1.  [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)に移動します。 
     
     1.  **[仮想マシン]** をタップします。
     
@@ -96,4 +96,4 @@ Visual Studio から Azure にアプリケーションをデプロイする前�
 [2]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/31/2016"
+   ms.date="05/09/2016"
    ms.author="curtand"/>
 
 # Azure Active Directory の B2B コラボレーション
@@ -47,7 +47,7 @@ Azure Active Directory B2B コラボレーションは、構成が簡単で、�
 B2B コラボレーションのしくみについては、[このビデオ](http://aka.ms/aadshowb2b)を参照してください。
 
 ## 次のステップ
-Azure B2B コラボレーションに関する他の記事を参照してください。
+Azure AD B2B コラボレーションに関する他の記事をご覧ください。
 
 - [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
 - [動作のしくみ](active-directory-b2b-how-it-works.md)
@@ -58,4 +58,4 @@ Azure B2B コラボレーションに関する他の記事を参照してくだ�
 - [現在のプレビューの制限事項](active-directory-b2b-current-preview-limitations.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

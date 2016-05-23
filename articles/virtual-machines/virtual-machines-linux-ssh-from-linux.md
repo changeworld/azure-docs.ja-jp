@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="12/15/2015" 
+	ms.date="04/15/2016" 
 	ms.author="rasquill"/>
 
 #Azure 上の Linux または Mac における SSH の使用方法
@@ -23,7 +23,7 @@
 - [Windows](virtual-machines-linux-ssh-from-windows.md)
 - [Linux/Mac](virtual-machines-linux-ssh-from-linux.md)
 
-このトピックでは、**ssh-keygen** と **openssl** を Linux や Mac で使用し、**ssh-rsa** 形式または **.pem** 形式のファイルを作成して使用し、Linux を基盤とする Azure VM と安全に通信する方法について紹介します。リソース マネージャーのデプロイメント モデルによる Linux ベースの Azure Virtual Machines の作成は新しいデプロイメントの場合に推奨され、*ssh-rsa* タイプの公開鍵ファイルや文字列が使われます (デプロイメント クライアントにもよります)。[Azure ポータル](https://portal.azure.com)では現在のところ、従来のデプロイメントでもリソース マネージャー デプロイメントでも、**ssh-rsa** 形式の文字列のみを受け取ります。
+このトピックでは、**ssh-keygen** と **openssl** を Linux や Mac で使用し、**ssh-rsa** 形式または **.pem** 形式のファイルを作成して使用し、Linux を基盤とする Azure VM と安全に通信する方法について紹介します。リソース マネージャーのデプロイメント モデルによる Linux ベースの Azure Virtual Machines の作成は新しいデプロイメントの場合に推奨され、*ssh-rsa* タイプの公開鍵ファイルや文字列が使われます (デプロイメント クライアントにもよります)。[Azure ポータル](https://portal.azure.com)では現在のところ、従来のデプロイメントでも Resource Manager デプロイメントでも、**ssh-rsa** 形式の文字列のみを受け取ります。
 
 > [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]Windows コンピューターが Azure で Linux VM と安全に通信するためにこのような種類のファイルを作成する方法については、「[Windows で SSH 鍵を使用する](virtual-machines-linux-ssh-from-windows.md)」を参照してください。
 
@@ -33,12 +33,12 @@ Azure の基本的 ssh 設定には **ssh-rsa** の 2048 ビットの公開/秘�
 
 次にデプロイメント シナリオとそれぞれのシナリオで使用されるファイルの種類を紹介します。
 
-1. **ssh-rsa** 鍵は、デプロイメント モデルに関係なく、[Azure ポータル](https://portal.azure.com)を利用したあらゆるデプロイメントで必須です。
+1. **ssh-rsa** 鍵は、デプロイ モデルに関係なく、[Azure ポータル](https://portal.azure.com)を利用したあらゆるデプロイメントで必須です。
 2. .pem ファイルは[従来のポータル](https://manage.windowsazure.com)で VM を作成する際に必須です。.pem ファイルは、[Azure CLI](../xplat-cli-install.md) を使用する従来のデプロイメントでもサポートされます。 
 
 ## SSH で使用する鍵の作成
 
-Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵ファイルまたは同等の .pem ファイルを必要とします。既にそのようなファイルがある場合、Azure VM の作成時に公開鍵ファイルを渡します。
+SSH キーが既にある場合は、Azure VM の作成時に公開キー ファイルを渡します。
 
 ファイルを作成する必要がある場合:
 
@@ -47,17 +47,14 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 	- Mac の場合、[Apple の製品セキュリティ Web サイト](https://support.apple.com/HT201222)にアクセスし、必要に応じて適切な更新プログラムを選択してください。
 	- Ubuntu、Debian、Mint など、Debian 基盤の Linux 製品の場合:
 
-			sudo apt-get update ssh-keygen
-			sudo apt-get update openssl
+			sudo apt-get install --upgrade-only openssl
 
 	- CentOS や Oracle Linux など、RPM 基盤の Linux 製品の場合:
 
-			sudo yum update ssh-keygen
 			sudo yum update openssl
 
 	- SLES と OpenSUSE の場合:
 
-			sudo zypper update ssh-keygen
 			sudo zypper update openssl
 
 2. **ssh-keygen** を使用して 2048 ビット RSA 公開/秘密鍵ファイルを作成し、そのファイルに特定の場所や名前を使用するのでなければ、`~/.ssh/id_rsa` の既定の場所と名前をそのまま使用します。基本的なコマンド:
@@ -72,9 +69,7 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 
 	別の秘密鍵ファイルから .pem ファイルを作成する場合、`-key` 引数を変更します。
 
-> [AZURE.NOTE] 従来のデプロイメント モデルでデプロイされたサービスを管理する場合、**.cer** 形式ファイルを作成し、ポータルにアップロードすることもあります。ただし、その場合、**ssh** は使われず、この記事の主題である Linux VMS に接続しません。Linux または Mac でこれらのファイルを作成するには、「<br /> openssl.exe x509 -outform der -in myCert.pem -out myCert.cer」と入力します。
-
-.pem ファイルを DER 形式でエンコードされた X509 証明書ファイルに変換するには。
+> [AZURE.NOTE] 従来のデプロイメント モデルでデプロイされたサービスを管理する場合、**.cer** 形式ファイルを作成し、ポータルにアップロードすることもあります。ただし、その場合、**ssh** は使われず、この記事の主題である Linux VMS に接続しません。Linux または Mac で、.pem ファイルを DER エンコードされた X509 証明書ファイルに変換するには、「<br /> openssl x509 -outform der -in myCert.pem -out myCert.cer」と入力します。
 
 ## 既にある SSH 鍵を使用する
 
@@ -86,7 +81,7 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 
 ### 例: id\_rsa.pub ファイルで VM を作成する
 
-最も一般的な使用方法は VM を強制的に作成するか、VM を作成するためのテンプレートをアップロードするときです。次のコード例では、パブリック ファイル名 (この場合、既定の `~/.ssh/id_rsa.pub` ファイル) を `azure vm create` コマンドに渡し、Azure で新しい安全な Linux VM が作成されます。(他の引数は前に作成されました。)
+最も一般的な使用方法は VM を強制的に作成するか、VM を作成するためのテンプレートをアップロードするときです。次のコード例では、パブリック ファイル名 (この場合、既定の `~/.ssh/id_rsa.pub` ファイル) を `azure vm create` コマンドに渡し、Azure で新しい安全な Linux VM が作成されます。(リソース グループやストレージ アカウントなどの他の引数は以前に作成されました)。この例では、Resource Manager デプロイ方法を使用しているので、Azure CLI が `azure config mode arm` を使用して設定されていることを確認します。
 
 	azure vm create \
 	--nic-name testnic \
@@ -94,7 +89,7 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 	--vnet-name testvnet \
 	--vnet-subnet-name testsubnet \
 	--storage-account-name computeteststore 
-	--image-urn canonical:UbuntuServer:14.04.3-LTS:latest \
+	--image-urn canonical:UbuntuServer:14.04.4-LTS:latest \
 	--username ops \
 	-ssh-publickey-file ~/.ssh/id_rsa.pub \
 	testrg testvm westeurope linux
@@ -133,23 +128,23 @@ Azure は、シナリオに応じて、2048 ビットの **ssh-rsa** 形式鍵�
 	data:    location               String  West Europe
 	data:    vmSize                 String  Standard_A2
 	data:    vmName                 String  sshvm
-	data:    ubuntuOSVersion        String  14.04.2-LTS
+	data:    ubuntuOSVersion        String  14.04.4-LTS
 	info:    group deployment create command OK
 
 
 ### 例: .pem ファイルで VM を作成する
 
-次の例のように、従来のポータルまたは従来のデプロイメント モードと `azure vm create` で .pem ファイルを使用できます。
+次の例のように、クラシック ポータルまたはクラシック デプロイ モード (`azure config mode asm`) と `azure vm create` で .pem ファイルを使用できます。
 
 	azure vm create \
 	-l "West US" -n testpemasm \
 	-P -t myCert.pem -e 22 \
 	testpemasm \
-	b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_3-LTS-amd64-server-20150908-ja-JP-30GB \
+	b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160406-ja-JP-30GB \
 	ops
 	info:    Executing command vm create
 	warn:    --vm-size has not been specified. Defaulting to "Small".
-	+ Looking up image b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_3-LTS-amd64-server-20150908-ja-JP-30GB
+	+ Looking up image b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160406-ja-JP-30GB
 	+ Looking up cloud service
 	info:    cloud service testpemasm not found.
 	+ Creating cloud service
@@ -263,30 +258,32 @@ VM の作成時に既定の SSH ポート 22 を使用しなかった場合、�
 	RSA key fingerprint is dc:bb:e4:cc:59:db:b9:49:dc:71:a3:c8:37:36:fd:62.
 	Are you sure you want to continue connecting (yes/no)? yes
 	Warning: Permanently added 'testpemasm.cloudapp.net,40.83.178.221' (RSA) to the list of known hosts.
-	Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.19.0-28-generic x86_64)
-
+	
+    Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.19.0-49-generic x86_64)
+	
 	* Documentation:  https://help.ubuntu.com/
 
-	System information as of Sat Oct 10 20:53:08 UTC 2015
+    System information as of Fri Apr 15 18:51:42 UTC 2016
 
-	System load: 0.52              Memory usage: 5%   Processes:       80
-	Usage of /:  45.3% of 1.94GB   Swap usage:   0%   Users logged in: 0
+    System load: 0.31              Memory usage: 2%   Processes:       213
+    Usage of /:  42.1% of 1.94GB   Swap usage:   0%   Users logged in: 0
 
-	Graph this data and manage this system at:
-		https://landscape.canonical.com/
+    Graph this data and manage this system at:
+    https://landscape.canonical.com/
 
-	Get cloud support with Ubuntu Advantage Cloud Guest:
-		http://www.ubuntu.com/business/services/cloud
+    Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
 
-	0 packages can be updated.
+    0 packages can be updated.
 	0 updates are security updates.
-
+	
 	The programs included with the Ubuntu system are free software;
 	the exact distribution terms for each program are described in the
 	individual files in /usr/share/doc/*/copyright.
-
+	
 	Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 	applicable law.
+
 
 ## 接続に問題がある場合
 
@@ -296,4 +293,4 @@ VM の作成時に既定の SSH ポート 22 を使用しなかった場合、�
  
 これで VM に接続できたので、選択したディストリビューションを必ず更新してから使用を続けます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

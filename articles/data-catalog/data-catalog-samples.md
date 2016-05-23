@@ -1,20 +1,20 @@
 <properties
-   pageTitle="Data Catalog 開発者向けサンプル | Microsoft Azure"
-   description="この記事では、Data Catarog REST API で使用可能な開発者向けサンプルの概要を説明します。"
-   services="data-catalog"
-   documentationCenter=""
-   authors="dvana"
-   manager="mblythe"
-   editor=""
-   tags=""/>
+	pageTitle="Data Catalog 開発者向けサンプル | Microsoft Azure"
+	description="この記事では、Data Catarog REST API で使用可能な開発者向けサンプルの概要を説明します。"
+	services="data-catalog"
+	documentationCenter=""
+	authors="spelluru"
+	manager=""
+	editor=""
+	tags=""/>
 <tags
-   ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="03/30/2016"
-   ms.author="derrickv"/>
+	ms.service="data-catalog"
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="03/30/2016"
+	ms.author="spelluru"/>
 
 
 # Data Catalog 開発者向けサンプル
@@ -34,4 +34,4 @@ GitHub に以下のサンプルがあります。
 
   Data Catalog REST API を使用して Azure Data Catalog からアセットを取得し、ファイルにシリアル化する方法を示すサンプルです。また、JSON としてシリアル化されたアセットのセットを取得して、それらをカタログにプッシュする方法も示します。検索クエリを使用したカタログのサブセットのエクスポートをサポートします。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -4,7 +4,7 @@
 	services="app-service\mobile"
 	documentationCenter=""
 	authors="adrianhall"
-	manager="dwrede"
+	manager="ggailey"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="node"
 	ms.topic="article"
-	ms.date="02/09/2016"
-	ms.author="chrande"/>
+	ms.date="05/05/2016"
+	ms.author="adrianha"/>
 
 # App Service への既存の Node.js Azure Mobile Service のアップグレード
 
@@ -38,7 +38,7 @@ Azure App Service にアップグレードされたモバイル バックエン�
 
 - Mobile Services SDK に比べ、パフォーマンスが大幅に向上します。
 
-- モバイル バックエンドと共に Web サイトをホストできるようになりました。同様に、既存の expressv4 アプリケーションに Azure Mobile SDK を簡単に追加することができます。
+- モバイル バックエンドと共に Web サイトをホストできるようになりました。同様に、既存の express.v4 アプリケーションに Azure Mobile SDK を簡単に追加することができます。
 
 - クロスプラットフォームとローカル開発用に構築されており、Mobile Apps SDK を開発して Windows、Linux、および OSX プラットフォーム上でローカルに実行できます。デプロイメントの前の [Mocha](https://mochajs.org/) テストの実行などの一般的な Node 開発手法を簡単に使用できるようになりました。
 
@@ -288,4 +288,4 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 [ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

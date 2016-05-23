@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/09/2016"
 	ms.author="kgremban"/>
 
 
@@ -21,7 +21,10 @@
 
 > [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
-シングル サインオンは、Azure AD の重要な要素です。それは、最高のユーザー エクスペリエンスを提供します。このエクスペリエンスでは、ユーザーがクラウドにサインインすると、すべてのセキュリティ検証がクラウドで発生し (事前認証)、オンプレミス アプリケーションに要求が送信されるときにアプリケーション プロキシ コネクタがユーザーの代理となり、バックエンド アプリケーションは、それがドメイン参加デバイスからの正規ユーザーであると考えます。
+シングル サインオンは、Azure AD アプリケーション プロキシの重要な要素です。次の手順で、最適なユーザー エクスペリエンスを提供できます。
+1. ユーザーがクラウドにサインインします。
+2. クラウドですべてのセキュリティ検証 (事前認証) が実施されます。
+3. オンプレミス アプリケーションに要求が送信されると、アプリケーション プロキシ コネクタがユーザーの代理となります。バックエンド アプリケーションは、これをドメイン参加デバイスからサインインした正規ユーザーであると認識します。
 
 ![アプリケーション プロキシ経由のエンド ユーザーから企業ネットワークへのアクセス図](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_diagram.png)
 
@@ -34,9 +37,9 @@ Azure AD アプリケーション プロキシによって、ユーザーにシ�
 
 ### ネットワーク図
 
-![Microsoft AAD 認証のフロー図](./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png)
+この図は、IWA を使用するオンプレミス アプリケーションにユーザーがアクセスしようとしたときの流れを説明するものです。
 
-この図は、IWA を使用するオンプレミス アプリケーションにユーザーがアクセスしようとしたときの流れを説明するものです。全体的な流れは次のとおりです。
+![Microsoft AAD 認証のフロー図](./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png)
 
 1. ユーザーは、オンプレミスのアプリケーションにアプリケーション プロキシをとおしてアクセスするための URL を入力します。
 2. この要求がアプリケーション プロキシによって Azure AD 認証サービスにリダイレクトされて、事前認証が行われます。この時点で、Azure AD の認証および承認のポリシーのうち、該当するものが適用されます (たとえば多要素認証)。ユーザーの正当性が確認された場合は、Azure AD によってトークンが作成されてユーザーに送信されます。
@@ -49,9 +52,9 @@ Azure AD アプリケーション プロキシによって、ユーザーにシ�
 
 ### 前提条件
 
-1. アプリケーション (たとえば SharePoint Web アプリケーション) が統合 Windows 認証を使用するように設定されていることを確認します。詳細については、「[Kerberos 認証のサポートを有効にする](https://technet.microsoft.com/library/dd759186.aspx)」を参照してください。SharePoint の場合は、「[SharePoint 2013 で Kerberos 認証を計画する](https://technet.microsoft.com/library/ee806870.aspx)」を参照してください。
-2. アプリケーションのサービス プリンシパル名を作成します。
-3. コネクタを実行するサーバーと、発行しようとしているアプリケーションを実行するサーバーが、同じドメインに参加していることを確認します。ドメインへの参加の詳細については、「[コンピューターをドメインに参加させる](https://technet.microsoft.com/library/dd807102.aspx)」を参照してください。
+- アプリケーション (たとえば SharePoint Web アプリケーション) が統合 Windows 認証を使用するように設定されていることを確認します。詳細については、「[Kerberos 認証のサポートを有効にする](https://technet.microsoft.com/library/dd759186.aspx)」を参照してください。SharePoint の場合は、「[SharePoint 2013 で Kerberos 認証を計画する](https://technet.microsoft.com/library/ee806870.aspx)」を参照してください。
+- アプリケーションのサービス プリンシパル名を作成します。
+- コネクタを実行するサーバーと、発行しようとしているアプリケーションを実行するサーバーが、同じドメインに参加していることを確認します。ドメインへの参加の詳細については、「[コンピューターをドメインに参加させる](https://technet.microsoft.com/library/dd807102.aspx)」を参照してください。
 
 
 ### Active Directory の構成
@@ -146,28 +149,17 @@ SSO プロセスにエラーがある場合は、「[トラブルシューティ
 
 
 ## 関連項目
-アプリケーション プロキシを使ってできることは他にもたくさんあります。
-
 
 - [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
-- [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
-- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
-- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
 - [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
+- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
+- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
 
-## アプリケーション プロキシに関するその他の情報
-- [オンライン ヘルプ](active-directory-application-proxy-enable.md)
-- [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
-- [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
-
-## その他のリソース
-- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-- [Azure への組織としてのサインアップ](sign-up-organization.md)
-- [Azure ID](fundamentals-identity.md)
+最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 
 
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png
 [2]: ./media/active-directory-application-proxy-sso-using-kcd/Properties.jpg
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

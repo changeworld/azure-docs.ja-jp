@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/31/2016"
+   ms.date="04/19/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用してボリュームを複製する (Update 2)
@@ -35,7 +35,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 >
 >`Unable to modify the usage type for volume {0}. This can happen if the volume being modified is a transient clone and hasn’t been made permanent. Take a cloud snapshot of this volume and then retry the modify operation.`
 >
->一時的な複製を永続的な複製に変換しておけば、ローカル固定ボリュームに問題なく変換できます。一時的な複製を永続的な複製に変換するには、そのクラウド スナップショットを作成します。
+>このエラーは、別のデバイスに複製する場合にのみ発生します。一時的な複製を永続的な複製に変換しておけば、ローカル固定ボリュームに問題なく変換できます。一時的な複製を永続的な複製に変換するには、そのクラウド スナップショットを作成します。
 
 ## ボリュームの複製を作成する
 
@@ -55,11 +55,11 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 
   1. ターゲット デバイスを指定します。これは、複製が作成される場所です。同じデバイスを選択することも、別のデバイスを指定することもできます。別のクラウド サービス プロバイダー (Azure 以外) に関連付けられたボリュームを選択する場合、ターゲット デバイスのドロップダウン リストには物理デバイスのみが表示されます。別のクラウド サービスのプロバイダーに関連付けられたボリュームを仮想デバイス上に複製することはできません。
 
-        >[AZURE.NOTE] 複製に必要な容量がターゲット デバイスで使用可能な容量を下回っていることを確認してください。
+        >[AZURE.NOTE] Make sure that the capacity required for the clone is lower than the capacity available on the target device.
 
   2. 複製の一意の [ボリューム名] を指定します。名前は 3 文字以上 127 文字以下にする必要があります。
     
-        >[AZURE.NOTE] ローカル固定ボリュームを複製する場合でも、**[種類を指定してボリュームをクローン]** フィールドは **[階層化]** になります。 この設定を変更することはできません。ただし、複製されたボリュームをローカル固定にする必要がある場合は、複製の作成が正常に完了した後でローカル固定ボリュームに変換できます。 階層化ボリュームをローカル固定ボリュームに変換する方法については、「[ボリュームの種類を変更する](storsimple-manage-volumes-u2.md#change-the-volume-type)」を参照してください。
+        >[AZURE.NOTE] The **Clone Volume As** field will be **Tiered** even if you are cloning a locally pinned volume. You cannot change this setting; however, if you need the cloned volume to be locally pinned as well, you can convert the clone to a locally pinned volume after you successfully create the clone. For information about converting a tiered volume to a locally pinned volume, go to [Change the volume type](storsimple-manage-volumes-u2.md#change-the-volume-type).
 
         ![Clone wizard 1](./media/storsimple-clone-volume-u2/clone1.png) 
 
@@ -90,9 +90,9 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 
 ## 一時的な複製と永続的な複製
 
-バックアップ セットの特定のボリュームを複製できます。このように作成された複製は*一時的な*複製です。一時的な複製は元のボリュームを参照し、そのボリュームを使用して読み取りを行いますが、書き込みはローカルで行います。そのため、特に複製されたボリュームのサイズが大きい場合は、パフォーマンスが低下します。
+一時的な複製と永続的な複製は、別のデバイスに複製する場合にのみ作成されます。バックアップ セットの特定のボリュームを別のデバイスに複製できます。このように作成された複製は*一時的な*複製です。一時的な複製は元のボリュームを参照し、そのボリュームを使用して読み取りを行いますが、書き込みはローカルで行います。
 
-一時的な複製のクラウド スナップショットを作成すると、その複製は*永続的な*複製になります。永続的な複製は独立していて、複製元のボリュームを参照することはありません。パフォーマンスの高速化のために、永続的な複製を作成することをお勧めします。
+一時的な複製のクラウド スナップショットを作成すると、その複製は*永続的な*複製になります。永続的な複製は独立していて、複製元のボリュームを参照することはありません。
 
 ## 一時的な複製と永続的な複製のシナリオ
 
@@ -108,7 +108,7 @@ StorSimple の複製機能と復元機能を使用して、削除されたファ
 
 ### 永続的な複製による運用環境でのテスト
 
-運用環境でテストのバグを確認する場合を考えます。運用環境でボリュームの複製を作成します。パフォーマンスを向上させるために、この複製のクラウド スナップショットの作成が必要です。複製されたボリュームは独立しており、パフォーマンスの高速化につながります。このシナリオでは、永続的な複製を使用します。
+運用環境でテストのバグを確認する場合を考えます。運用環境でボリュームの複製を作成し、この複製のクラウド スナップショットを作成して、複製された独立したボリュームを作成します。このシナリオでは、永続的な複製を使用します。
 
 ## 次のステップ
 - [バックアップ セットからの StorSimple ボリュームの復元方法](storsimple-restore-from-backup-set-u2.md)
@@ -117,4 +117,4 @@ StorSimple の複製機能と復元機能を使用して、削除されたファ
 
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

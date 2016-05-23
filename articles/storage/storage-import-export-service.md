@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/29/2016"
+	ms.date="05/09/2016"
 	ms.author="renash"/>
 
 
@@ -195,6 +195,7 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 	- Anker 68UPSATAA-02BU
 	- Anker 68UPSHHDS-BU
 	- Startech SATADOCK22UE
+	- Sharkoon QuickPort XT HC
 
 > [AZURE.NOTE] 上に示した以外のコンバーターを持っている場合は、サポートされているコンバーターを購入する前に、そのコンバーターで Azure Import/Export ツールを実行してドライブの準備を試み、問題なく実行できるかどうかを確認することもできます。
 
@@ -231,7 +232,7 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 - いいえ。すべてのドライブは、BitLocker で準備する必要があります。
 
 **エクスポート ジョブを作成するときに、ディスクの準備作業を実行する必要はありますか。**
-- いいえ。ただし、いくつかの事前チェックをお勧めします。Azure Import/Export ツールの PreviewExport コマンドを使用して、必要なディスクの数を確認します。詳細については、「[Previewing Drive Usage for an Export Job](https://msdn.microsoft.com/library/azure/dn722414.aspx)」をご覧ください。使用するドライブのサイズに基づいて、選択した BLOB に対するドライブの使用率をプレビューするのに役立ちます。また、エクスポート ジョブに対して発送されるハード ドライブを読み書きできることを確認します。
+- いいえ。ただし、いくつかの事前チェックをお勧めします。Azure Import/Export ツールの PreviewExport コマンドを使用して、必要なディスクの数を確認します。詳細については、「[Previewing Drive Usage for an Export Job (エクスポート ジョブのドライブ使用量のプレビュー)](https://msdn.microsoft.com/library/azure/dn722414.aspx)」をご覧ください。使用するドライブのサイズに基づいて、選択した BLOB に対するドライブの使用率をプレビューするのに役立ちます。また、エクスポート ジョブに対して発送されるハード ドライブを読み書きできることを確認します。
 
 ### 発送
 
@@ -239,7 +240,7 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 
 - 米国およびヨーロッパのリージョンでは、[Federal Express](http://www.fedex.com/us/oadr/) (FedEx) のみがサポートされています。すべてのパッケージが FedEx Ground または FedEx International Economy で返送されます。
 
-- APAC 東部、APAC 南東部、オーストラリア東部、オーストラリア南東部、および西日本では、[DHL](http://www.dhl.com/) のみがサポートされています。すべてのパッケージが DHL Express Worldwide で返送されます。
+- APAC 東部、APAC 南東部、オーストラリア東部、オーストラリア南東部、西日本、東日本、インド中部では、[DHL](http://www.dhl.com/) のみがサポートされています。すべてのパッケージが DHL Express Worldwide で返送されます。
 
 	> [AZURE.IMPORTANT] Azure Import/Export サービスに問い合わせ番号を通知する必要があります。通知しないと、ジョブは処理されません。
 
@@ -265,6 +266,8 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 	- オーストラリア東部
 	- オーストラリア南東部
 	- 西日本
+	- 東日本
+	- インド中部
 
 - お客様のストレージ アカウントが存在するリージョン内の発送先住所が提供されます。たとえば、米国にお住まいで、ストレージ アカウントが西ヨーロッパ データ センターにある場合は、ドライブの発送先としてヨーロッパの住所が提供されます。
 
@@ -293,4 +296,4 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 [export-job-03]: ./media/storage-import-export-service/export-job-03.png
 [export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

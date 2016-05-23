@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/14/2016" 
+	ms.date="05/09/2016" 
 	ms.author="robinsh"/>
 
 # ストレージ メトリックの有効化とメトリック データの表示
@@ -211,4 +211,4 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
 [Storage Analytics ログの有効化とログ データへのアクセス](https://msdn.microsoft.com/library/dn782840.aspx)
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

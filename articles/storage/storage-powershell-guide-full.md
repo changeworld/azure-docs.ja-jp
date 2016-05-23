@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/19/2016"
+	ms.date="05/09/2016"
 	ms.author="robinsh"/>
 
 # Azure Storage での Azure PowerShell の使用
@@ -665,13 +665,17 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 
 [U.S.Azure Government](https://azure.microsoft.com/features/gov/) で Azure Storage を使用するには、新しい環境を定義し、その環境で新しいストレージ コンテキストを作成する必要があります。
 
-1. [Add-AzureEnvironment](http://msdn.microsoft.com/library/azure/dn790364.aspx) コマンドレットを呼び出し、プライベート データセンターの新しい Azure 環境を作成します。
+1.	[Get-AzureEnvironment](https://msdn.microsoft.com/library/azure/dn790368.aspx) コマンドレットを実行し、使用できる Azure 環境を確認します。
 
-    	Add-AzureEnvironment -Name $EnvironmentName -PublishSettingsFileUrl $publishSettingsFileUrl -ServiceEndpoint $serviceEndpoint -ManagementPortalUrl $managementPortalUrl -StorageEndpoint $storageEndpoint -ActiveDirectoryEndpoint $activeDirectoryEndpoint -ResourceManagerEndpoint $resourceManagerEndpoint -GalleryEndpoint $galleryEndpoint -ActiveDirectoryServiceEndpointResourceId $activeDirectoryServiceEndpointResourceId -GraphEndpoint $graphEndpoint -SubscriptionDataFile $subscriptionDataFile
+    `Get-AzureEnvironment`
 
-2. 次に示すように、[New-AzureStorageContext](http://msdn.microsoft.com/library/azure/dn806380.aspx) コマンドレットを実行し、この新しい環境の新しいストレージ コンテキストを作成します。
+2.	Azure 米国政府のアカウントを Windows PowerShell に追加します。
 
-	    $Ctx = New-AzureStorageContext -StorageAccountName $AccountName -StorageAccountKey $AccountKey> -Environment $EnvironmentName
+    `Add-AzureAccount –Environment AzureUSGovernment`
+
+3.	AzureUSGovernment アカウントのストレージ コンテキストを作成します。
+
+    	$Ctx = New-AzureStorageContext -StorageAccountName $AccountName -StorageAccountKey $AccountKey> -Environment AzureUSGovernment
 
 詳細については、次を参照してください。
 
@@ -730,4 +734,4 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 [Next Steps]: #next
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/02/2016"
+   ms.date="05/03/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用して、StorSimple Virtual Array のアクセス制御レコードを管理する 
@@ -43,7 +43,7 @@ Windows Server 2012 を実行する Windows ホストの IQN を取得するに�
 
 StorSimple Manager サービスの **[構成]** ページを使用して ACR を追加します。通常は、1 つの ACR を 1 つのボリュームに関連付けます。
 
-ボリュームに ACR を関連付ける方法については、「[StorSimple Manager サービスを使用して、StorSimple Virtual Array のボリュームを管理する](storsimple-ova-manage-volumes)」を参照してください。
+ボリュームへの ACR の関連付けについては、[ボリュームの追加](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume)に関するセクションをご覧ください。
 
 >[AZURE.IMPORTANT] 
 > 
@@ -114,4 +114,4 @@ ACR を削除するには、Azure クラシック ポータルの **[構成]** �
 
 - [ボリュームの追加と ACR の構成](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume)に関する詳細
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

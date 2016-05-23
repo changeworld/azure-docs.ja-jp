@@ -134,7 +134,7 @@ JavaScript
     }
     catch (ex)
     {
-      appInsights.TrackException(ex, "handler loc",
+      appInsights.trackException(ex, "handler loc",
         {Game: currentGame.Name, 
          State: currentGame.State.ToString()});
     }
@@ -467,7 +467,7 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
-[azure]: ../insights-perf-analytics.md
+[azure]: ../azure-portal/insights-perf-analytics.md
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
 [greenbrown]: app-insights-asp-net.md
@@ -477,4 +477,4 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

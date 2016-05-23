@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="StorSimple のシステム要件 | Microsoft Azure" 
-   description="Microsoft Azure StorSimple ソリューションのソフトウェア、ネットワーク、高可用性の要件とベスト プラクティスについて説明します。" 
-   services="storsimple" 
-   documentationCenter="NA" 
-   authors="alkohli" 
-   manager="carmonm" 
+<properties
+   pageTitle="StorSimple のシステム要件 | Microsoft Azure"
+   description="Microsoft Azure StorSimple ソリューションのソフトウェア、ネットワーク、高可用性の要件とベスト プラクティスについて説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="alkohli"
+   manager="carmonm"
    editor=""/>
 
 <tags
@@ -12,8 +12,8 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="TBD" 
-   ms.date="03/23/2016"
+   ms.workload="TBD"
+   ms.date="05/10/2016"
    ms.author="alkohli"/>
 
 # StorSimple ソフトウェア、高可用性、ネットワークの要件
@@ -29,14 +29,14 @@ Microsoft Azure StorSimple へようこそ。この記事では、StorSimple デ
 - **StorSimple の高可用性の要件** - StorSimple デバイスおよびホスト コンピューターの高可用性要件およびベスト プラクティスについて説明します。 
 
 
-## ストレージ クライアントのソフトウェア要件 
+## ストレージ クライアントのソフトウェア要件
 
 次のソフトウェア要件は、StorSimple デバイスにアクセスするストレージ クライアントに適用されます。
 
 | サポートされているオペレーティング システム | 必須のバージョン | その他の要件/注意事項 |
 | --------------------------- | ---------------- | ------------- |
 | Windows Server | 2008R2 SP1、2012、2012R2 |StorSimple iSCSI ボリュームは、次の Windows ディスク タイプで使用する場合にのみサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のミラー化されたシンプル ボリューム</li></ul>Windows Server 2012 の仮想プロビジョニング機能および ODX 機能は、StorSimple iSCSI ボリュームを使用する場合にサポートされます。<br><br>StorSimple で作成できるのは、仮想プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームです。部分的にプロビジョニングされたボリュームについては作成できません。<br><br>仮想プロビジョニングされたボリュームを再フォーマットと時間がかかる場合があります。再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。ただし、ボリュームの再フォーマットを行いたい場合は、次の操作を行ってください。<ul><li>領域の回復の遅延を避けるために、再フォーマットする前に次のコマンドを実行します。<br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の回復を再度有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) で説明されている Windows Server 2012 修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。|
-| VMWare ESX | 5\.1、5.5、6.0 | iSCSI クライアントとして VMWare vSphere でサポートされます。VAAI ブロック機能は、StorSimple デバイス上の VMware vSphere でサポートされます。 
+| VMWare ESX | 5\.5 および 6.0 | iSCSI クライアントとして VMWare vSphere でサポートされます。VAAI ブロック機能は、StorSimple デバイス上の VMware vSphere でサポートされます。
 | Linux RHEL/CentOS | 5 および 6 | Open-iSCSI イニシエーター バージョン 5 および 6 での Linux iSCSI クライアントのサポート。 |
 | Linux | SUSE Linux 11 | |
  > [AZURE.NOTE] 現在、IBM AIX は StorSimple ではサポートされていません。
@@ -49,13 +49,13 @@ Microsoft Azure StorSimple へようこそ。この記事では、StorSimple デ
 | --------------------------- | ---------------- | ------------- |
 | StorSimple Snapshot Manager | Windows Server 2008R2 SP1、2012、2012R2 | ミラー化されたダイナミック ディスクをバックアップ/復元する場合、およびアプリケーション整合性バックアップを実行する場合は、Windows Server 上で StorSimple Snapshot Manager を使用する必要があります。<br> StorSimple Snapshot Manager は、Windows Server 2008 R2 SP1 (64 ビット)、Windows 2012 R2、Windows Server 2012 でのみサポートされます。<ul><li>Window Server 2012 を使用する場合は、StorSimple Snapshot Manager をインストールする前に .NET 3.5 ～ 4.5 をインストールしておく必要があります。</li><li>Windows Server 2008 R2 SP1 を使用する場合は、StorSimple Snapshot Manager をインストールする前に Windows Management Framework 3.0 をインストールしておく必要があります。</li></ul> |
 | SharePoint 用 StorSimple アダプター | Windows Server 2008R2 SP1、2012、2012R2 |<ul><li>SharePoint 用 StorSimple アダプターは、SharePoint 2010 および SharePoint 2013 でのみサポートされます。</li><li>RBS には SQL Server Enterprise Edition のバージョン 2008 R2 または 2012が必要です。</li></ul>|
- 
+
 ## StorSimple デバイスのネットワーク要件
 
 StorSimple デバイスはロックされたデバイスです。ただし、iSCSI、クラウド、管理トラフィックを許可するには、ファイアウォールでポートを開く必要があります。次の表は、ファイアウォールで開く必要があるポートの一覧です。この表では、*イン*または*受信*はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。*アウト*または*送信*は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します
 
 | ポート番号<sup>1,2</sup> | インまたはアウト | ポート範囲 | 必須 | メモ |
-|------------------------|-----------|------------|----------|-------| 
+|------------------------|-----------|------------|----------|-------|
 |TCP 80 (HTTP)<sup>3</sup>| アウト | WAN | いいえ |<ul><li>送信ポートは、更新プログラムを取得するためにインターネット アクセスに使用されます。</li><li>送信 Web プロキシはユーザーが構成可能です。</li><li>システムの更新を許可するには、コントローラーの固定 IP アドレスに対してこのポートも開いている必要があります。</li></ul> |
 |TCP 443 (HTTPS)<sup>3</sup>| アウト | WAN | あり |<ul><li>送信ポートは、クラウド内のデータにアクセスするために使用されます。</li><li>送信 Web プロキシはユーザーが構成可能です。</li><li>システムの更新を許可するには、コントローラーの固定 IP アドレスに対してこのポートも開いている必要があります。</li></ul>|
 |UDP 53 (DNS) | アウト | WAN | 場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
@@ -73,7 +73,7 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 
 > [AZURE.IMPORTANT] StorSimple デバイスと Azure 間でファイアウォールが SSL トラフィックの変更や暗号化解除を行わないことを確認します。
 
-### ファイアウォール ルールの URL パターン 
+### ファイアウォール ルールの URL パターン
 
 多くの場合、ネットワーク管理者は、受信トラフィックと送信トラフィックをフィルターする URL パターンに基づいて、高度なファイアウォール ルールを構成できます。StorSimple デバイスと StorSimple Manager サービスは、Azure Service Bus、Azure Active Directory Access Control、ストレージ アカウント、Microsoft Update サーバーなど、他の Microsoft アプリケーションに依存しています。その Microsoft アプリケーションと関連付けられた URL パターンを使用してファイアウォール ルールを構成できます。Microsoft アプリケーションに関連付けられた URL パターンは変化する可能性がある点を理解することが重要です。これにより、ネットワーク管理者は必要に応じて StorSimple のファイアウォール ルールを監視し更新する必要があります。
 
@@ -121,22 +121,17 @@ StorSimple のコンテキストで、複数のネットワーク インター�
 Update 2 にはいくつかのネットワーク関連の機能強化があり、ルーティング メトリックが変更されました。動作の説明は次のとおりです。
 
 - 事前に定義された一連の値が、ネットワーク インターフェイスに割り当てられています。 	
-		
+
 - 以下に示す表の例では、さまざまなネットワーク インターフェイスがクラウド対応の場合とクラウド非対応 (ただしゲートウェイが構成済み) の場合に、割り当てられる値を示しています。ここで割り当てられている値はあくまでも一例です。
 
-		
+
 	| ネットワーク インターフェイス | クラウド対応 | クラウド非対応 (ゲートウェイを使用) |
 	|-----|---------------|---------------------------|
-	| Data 0 | 1 | - |
-	| Data 1 | 2 | 20 |
-	| Data 2 | 3 | 30 |
-	| Data 3 | 4 | 40 |
-	| Data 4 | 5 | 50 |
-	| Data 5 | 6 | 60 |
+	| Data 0 | 1 | - | | Data 1 | 2 | 20 | | Data 2 | 3 | 30 | | Data 3 | 4 | 40 | | Data 4 | 5 | 50 | | Data 5 | 6 | 60 |
 
 
 - クラウド トラフィックがネットワーク インターフェイスを介してルーティングされる順序は、次のとおりです。
-	 
+
 	*Data 0 > Data 1 > Date 2 > Data 3 > Data 4 > Data 5*
 
 	これは、次の例で説明できます。
@@ -144,23 +139,23 @@ Update 2 にはいくつかのネットワーク関連の機能強化があり�
 	2 つのクラウド対応ネットワーク インターフェイスとして Data 0 と Data 5 を使用する StorSimple デバイスを考えてみます。Data 1 から Data 4 まではクラウドに対応しておらず、ゲートウェイが構成されています。このデバイスでトラフィックがルーティングされる順序は、次のようになります。
 
 	*Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)*
-	
+
 	*かっこ内の数値は、それぞれのルーティング メトリックを示しています。*
-	
+
 	Data 0 が失敗すると、クラウド トラフィックは Data 5 を介してルーティングされます。ゲートウェイがその他のすべてのネットワークで構成されている場合、Data 0 と Data 5 の両方が失敗すると、クラウド トラフィックは Data 1 を介して送信されます。
- 
+
 
 - クラウド対応ネットワーク インターフェイスが失敗すると、そのインターフェイスへの接続が 30 秒間隔で 3 回試行されます。すべての再試行が失敗した場合、トラフィックはルーティング テーブルによって決定されるとおりに、次に利用可能なクラウド対応インターフェイスにルーティングされます。すべてのクラウド対応ネットワーク インターフェイスが失敗した場合、デバイスは他のコントローラーにフェールオーバーされます (この場合、再起動はありません)。
-	
+
 - iSCSI 対応のネットワーク インターフェイスで VIP エラーが発生した場合、2 秒間隔で 3 回まで再試行されます。この動作は、以前のリリースと同じです。すべての iSCSI ネットワーク インターフェイスが失敗すると、コントローラー フェールオーバーが発生します (再起動が伴います)。
 
 
 - VIP エラーが発生すると、StorSimple デバイスでアラートも生成されます。詳細については、[アラートのクイック リファレンス](storsimple-manage-alerts.md)に関するページを参照してください。
-	
+
 - 再試行に関しては、クラウドよりも iSCSI が優先されます。
 
 	次の例で考えてみましょう。StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっているとします。Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
-		
+
 	Data 1 が失敗した場合、これが最後の iSCSI ネットワーク インターフェイスであるため、他のコントローラー上の Data 1 に対するコントローラー フェールオーバーが発生します。
 
 
@@ -242,8 +237,7 @@ StorSimple デバイスには、ミラー化されたスペースを使用して
 
 - SSD または HDD の障害または交換が必要な場合、交換が必要な SSD または HDD のみを取り外すようにします。
 
-- どの時点でもシステムから複数台の SSD または HDD を取り外さないでください。
-特定の種類のディスク (HDD、SSD) での 2 つ以上のエラー、または短時間の連続したエラーは、システムの誤作動やデータ損失を発生させる可能性があります。その場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。
+- どの時点でもシステムから複数台の SSD または HDD を取り外さないでください。特定の種類のディスク (HDD、SSD) での 2 つ以上のエラー、または短時間の連続したエラーは、システムの誤作動やデータ損失を発生させる可能性があります。その場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。
 
 - 交換中は、SSD と HDD のドライブの **[メンテナンス]** ページで **[ハードウェア状態]** を監視します。緑のチェック状態は、ディスクが正常または OK であると示しています。一方、赤の感嘆符は障害中の SSD または HDD を示しています。
 
@@ -277,8 +271,8 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 
 - [StorSimple システムの制限の詳細](storsimple-limits.md)
 - [StorSimple ソリューションをデプロイする方法](storsimple-deployment-walkthrough-u2.md)
- 
+
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0511_2016-->

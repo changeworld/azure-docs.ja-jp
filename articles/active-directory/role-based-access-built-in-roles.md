@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="04/18/2016"
+	ms.date="05/10/2016"
 	ms.author="kgremban"/>
 
 #RBAC: 組み込みのロール
@@ -34,7 +34,7 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [ClearDB MySQL DB の共同作業者](#cleardb-mysql-db-contributor) | ClearDB MySQL データベースを管理できます |
 | [共同作成者](#contributor) | アクセス権以外のすべてを管理できます。 |
 | [Data Factory の共同作業者](#data-factory-contributor) | Data Factory を管理できます |
-| [DevTest Lab ユーザー](#devtest-lab-user) | すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます |
+| [DevTest Labs ユーザー](#devtest-labs-user) | すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます |
 | [Document DB アカウントの共同作業者](#document-db-account-contributor) | Document DB アカウントを管理できます |
 | [Intelligent Systems アカウントの共同作業者](#intelligent-systems-account-contributor) | Intelligent Systems アカウントを管理できます |
 | [ネットワークの共同作業者](#network-contributor) | すべてのネットワーク リソースを管理できます |
@@ -152,22 +152,12 @@ Data Factory を管理できます
 | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
-### DevTest Lab ユーザー
+### DevTest Labs ユーザー
 すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます
 
 | **アクション** ||
 | ------- | ------ |
-| */read | すべての種類のリソースの読み取り | | Microsoft.DevTestLab/labs/labStats/action | ラボ統計の読み取り | | Microsoft.DevTestLab/Environments/* | 環境の作成と管理 |
-| Microsoft.DevTestLab/labs/createEnvironment/action | ラボ環境の作成 |
-| Microsoft.Compute/virtualMachines/start/action | 仮想マシンの開始 |
-| Microsoft.Compute/virtualMachines/restart/action | 仮想マシンの再起動 |
-| Microsoft.Compute/virtualMachines/deallocate/action | 仮想マシンの割り当て解除 |
-| Microsoft.Storage/storageAccounts/listKeys/action | ストレージ アカウント キーの一覧表示 |
-| Microsoft.Network/virtualNetworks/join/action | 仮想ネットワークの接続 |
-| Microsoft.Network/loadBalancers/join/action | ロード バランサーの接続 |
-| Microsoft.Network/publicIPAddresses/link/action | パブリック IP アドレスへのリンク付け |
-| Microsoft.Network/networkInterfaces/link/action | ネットワーク インターフェイスへのリンク付け |
-| Microsoft.Network/networkInterfaces/write | ネットワーク インターフェイスの作成 |
+| **/read | すべての種類のリソースの読み取り | | Microsoft.DevTestLab/labs/createEnvironment/action | ラボ環境の作成 | | Microsoft.DevTestLab/labs/formulas/delete | 数式の削除 | | Microsoft.DevTestLab/labs/formulas/write | 数式の追加または変更 | | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | ラボのポリシーの評価 | | Microsoft.Compute/virtualMachines/start/action | 仮想マシンの起動 | | Microsoft.Compute/virtualMachines/restart/action | 仮想マシンの再起動 | | Microsoft.Compute/virtualMachines/deallocate/action | 仮想マシンの割り当て解除 | | Microsoft.Storage/storageAccounts/listKeys/action | ストレージ アカウント キーの一覧表示 | | Microsoft.Network/virtualNetworks/subnets/join/action | 仮想ネットワークに接続 | | Microsoft.Network/loadBalancers/backendAddressPools/join/action | ロード バランサー バックエンド アドレス プールに接続 | | Microsoft.Network/loadBalancers/inboundNatRules/join/action | ロード バランサー受信 NAT 規則に接続 | | Microsoft.Network/publicIPAddresses/join/action | パブリック IP アドレスに接続 | | Microsoft.Network/networkInterfaces/join/action | 仮想マシンをネットワーク インターフェイスに接続 | | Microsoft.Network/networkInterfaces/write | ネットワーク インターフェイスの作成 |
 
 ### Document DB アカウントの共同作業者
 Document DB アカウントを管理できます
@@ -369,17 +359,17 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### ストレージ アカウントの共同作業者
-ストレージ アカウントを管理できます
+アクセス権以外のストレージ アカウントを管理できます。
 
 | **アクション** ||
 | ------- | ------ |
 | Microsoft.Storage/storageAccounts/* | ストレージ アカウントの作成と管理 |
 | Microsoft.Authorization/*/read | あらゆる承認の読み取り |
-| Microsoft.Resources/subscriptions/resources/read | サブスクリプションのリソースの読み取り |
 | Microsoft.Resources/subscriptions/resourceGroups/read | サブスクリプション リソース グループの読み取り |
-| Microsoft.Resources/subscriptions/resourceGroups/resources/read | サブスクリプション リソース グループ リソースの読み取り |
 | Microsoft.Resources/subscriptions/resourceGroups/deployments/* | サブスクリプション リソース グループのデプロイの作成と管理 |
+| Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+| Microsoft.Insights/diagnosticSettings/* | 診断設定の管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### ユーザーアクセスの管理者
@@ -486,9 +476,9 @@ Web サイトを管理できますが、接続されている Web プランは�
 | Microsoft.Insights/components/* | Insights コンポーネントの作成と管理 |
 
 ## 関連項目
-- [ロールベースのアクセス制御](role-based-access-control-configure.md): Azure ポータルでの RBAC の基本について説明します。
+- [ロールベースのアクセス制御](role-based-access-control-configure.md): Azure ポータルでの RBAC の基本。
 - [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md): アクセスのニーズに合わせてカスタム ロールを作成する方法について説明します。
 - [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
 - [ロールベースのアクセス制御のトラブルシューティング](role-based-access-control-troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

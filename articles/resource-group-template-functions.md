@@ -4,8 +4,8 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/22/2016"
+   ms.date="05/06/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの関数
@@ -228,15 +228,15 @@
 <a id="padleft" />
 ### padLeft
 
-**padLeft(stringToPad, totalLength, paddingCharacter)**
+**padLeft(valueToPad, totalLength, paddingCharacter)**
 
 指定された長さに到達するまで左側に文字を追加していくことで、右揃えの文字列を返します。
   
 | パラメーター | 必須 | 説明
 | :--------------------------------: | :------: | :----------
-| stringToPad | あり | 右揃えにする文字列。
+| valueToPad | はい | 右揃えにする文字列または整数。
 | totalLength | あり | 返される文字列の文字合計数。
-| paddingCharacter | あり | 左余白の長さに到達するまで使用する文字。
+| paddingCharacter | いいえ | 左余白の長さに到達するまで使用する文字。既定値は空白です。
 
 次の例では、文字列が 10 文字に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値に埋め込む方法を示します。元のパラメーター値が 10 文字より長い場合、文字は追加されません。
 
@@ -299,15 +299,31 @@
 
 | パラメーター | 必須 | 説明
 | :--------------------------------: | :------: | :----------
-| valueToConvert | あり | 文字列に変換する値。値の種類はブール値、整数、文字列のいずれかになります。
+| valueToConvert | はい | 文字列に変換する値。オブジェクトと配列を含む、あらゆる種類の値を変換できます。
 
 次の例では、ユーザー指定のパラメーター値を文字列に変換します。
 
     "parameters": {
-        "appId": { "type": "int" }
+      "jsonObject": {
+        "type": "object",
+        "defaultValue": {
+          "valueA": 10,
+          "valueB": "Example Text"
+        }
+      },
+      "jsonArray": {
+        "type": "array",
+        "defaultValue": [ "a", "b", "c" ]
+      },
+      "jsonInt": {
+        "type": "int",
+        "defaultValue": 5
+      }
     },
     "variables": { 
-        "stringValue": "[string(parameters('appId'))]"
+      "objectString": "[string(parameters('jsonObject'))]",
+      "arrayString": "[string(parameters('jsonArray'))]",
+      "intString": "[string(parameters('jsonInt'))]"
     }
 
 <a id="substring" />
@@ -397,14 +413,14 @@
 
 **uniqueString (stringForCreatingUniqueString, ...)**
 
-指定された文字列の 64 ビット ハッシュを実行し、一意の文字列を作成します。この関数は、リソースの一意の名前を作成する必要がある場合に便利です。結果の一意性のレベルを表すパラメーターの値を指定します。サブスクリプション、リソース グループ、またはデプロイメントに関して名前が一意であるかどうかを指定できます。
+パラメーターとして渡された値に基づいて一意の文字列を作成します。この関数は、リソースの一意の名前を作成する必要がある場合に便利です。結果の一意性のレベルを表すパラメーターの値を指定します。サブスクリプション、リソース グループ、またはデプロイメントに関して名前が一意であるかどうかを指定できます。
 
 | パラメーター | 必須 | 説明
 | :--------------------------------: | :------: | :----------
 | stringForCreatingUniqueString | あり | 一意の文字列を作成するためにハッシュ関数で使用される基本文字列。
 | 必要に応じて追加のパラメーター | いいえ | 文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。
 
-返される値は完全にランダムな文字列ではなく、ハッシュ関数の結果になります。返される値は、13 文字です。グローバルに一意であるかは保証されません。命名規則にある何らかのプレフィックスをこの値と組み合わせて、よりわかりやすい名前を作成することもできます。
+返される値はランダムな文字列ではなく、ハッシュ関数の結果になります。返される値は、13 文字です。グローバルに一意であるかは保証されません。命名規則にあるプレフィックスをこの値と組み合わせて、より認識しやすい名前を作成することもできます。
 
 次の例は、uniqueString を使用して、一般的に使用されている別のレベル用に一意の値を作成する方法を示しています。
 
@@ -439,7 +455,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 | baseUri | あり | ベース URI 文字列。
 | relativeUri | あり | ベース URI 文字列に追加する相対 URI 文字列。
 
-**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。たとえば、baseUri パラメーターとして **http://contoso.com/resources/azuredeploy.json** を渡すと、**http://contoso.com/resources/** というベース URI が作成されます。
+**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。たとえば、baseUri パラメーターとして ****http://contoso.com/resources/azuredeploy.json** を渡すと、****http://contoso.com/resources/** というベース URI が作成されます。
 
 次の例は、親テンプレートの値に基づいて、入れ子になったテンプレートへのリンクを作成する方法を示しています。
 
@@ -671,15 +687,6 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 		}
 	}
 
-テンプレートで API バージョンを直接指定しない場合は、次に示すように、[providers](#providers) 関数を使用して、以下に示すように最新版などの値を取得できます。
-
-    "outputs": {
-		"BlobUri": {
-			"value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).primaryEndpoints.blob]",
-			"type" : "string"
-		}
-	}
-
 次の例では、別のリソース グループにあるストレージ アカウントが参照されます。
 
     "outputs": {
@@ -717,7 +724,7 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 <a id="resourceid" />
 ### resourceId
 
-**resourceId ([resourceGroupName], resourceType, resourceName1, [resourceName2]...)**
+**resourceId ([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)**
 
 リソースの一意の識別子を返します。リソース名があいまいであるか、同じテンプレート内でプロビジョニングされていないときに、この関数を使用します。識別子は、次の形式で返されます。
 
@@ -725,6 +732,7 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
       
 | パラメーター | 必須 | 説明
 | :---------------: | :------: | :----------
+| subscriptionId | いいえ | 省略可能なサブスクリプション ID。既定値は、現在のサブスクリプションです。別のサブスクリプション内のリソースを取得するときには、この値を指定します。
 | resourceGroupName | いいえ | 省略可能なリソース グループの名前。既定値は、現在のリソース グループです。別のリソース グループ内のリソースを取得するときには、この値を指定します。
 | resourceType | あり | リソース プロバイダーの名前空間を含むリソースの種類。
 | resourceName1 | あり | リソースの名前。
@@ -733,7 +741,7 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 次の例では、Web サイトとデータベースのリソース ID を取得する方法を示します。Web サイトは **myWebsitesGroup** という名前のリソース グループ内にあり、データベースはこのテンプレートの現在のリソース グループ内にあります。
 
     [resourceId('myWebsitesGroup', 'Microsoft.Web/sites', parameters('siteName'))]
-    [resourceId('Microsoft.SQL/servers/databases', parameters('serverName'),parameters('databaseName'))]
+    [resourceId('Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]
     
 代替のリソース グループで、ストレージ アカウントや仮想ネットワークを使用するときには、多くの場合にこの関数を使用する必要があります。ストレージ アカウントや仮想ネットワークは、複数のリソース グループ間で使用される場合があるので、単一のリソース グループを削除するときにそれらを削除しないでください。次の例は、外部のリソース グループのリソースを簡単に使用する方法を示しています。
 
@@ -807,4 +815,4 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

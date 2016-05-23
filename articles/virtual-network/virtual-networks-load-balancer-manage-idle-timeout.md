@@ -1,15 +1,15 @@
 <properties 
-   authors="danielceckert" 
+   authors="jimdial" 
    documentationCenter="dev-center-name" 
    editor=""
-   manager="jefco" 
+   manager="carmonm" 
    pageTitle="管理: ロード バランサーのアイドル タイムアウト" 
    description="Azure ロード バランサーのアイドル タイムアウトの管理機能" 
    services="virtual-network" 
    />
 
 <tags
-   ms.author="danecke"
+   ms.author="jdial"
    ms.date="09/01/2015"
    ms.devlang="na"
    ms.service="virtual-network"
@@ -152,4 +152,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
     </LoadBalancedEndpointList>
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

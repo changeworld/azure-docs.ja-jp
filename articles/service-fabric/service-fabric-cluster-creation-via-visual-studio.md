@@ -51,7 +51,7 @@ Service Fabric クラスターにはそれぞれ名前が与えられていま�
 既定では、クラスター名は自動生成されます。"cluster" プレフィックスにランダムなサフィックスを付けることで一意に作成されます。これにより、**継続的インテグレーション** (CI) システムの一部としてテンプレートを使用することが非常に簡単になります。自分にとってわかりやすい名前をクラスターに使用する場合は、Resource Manager テンプレート ファイル (`ServiceFabricCluster.json`) の `clusterName` 変数の値を選択した名前に設定します。そのファイルに定義されている最初の変数です。
 
 ## 省略可能: パブリック アプリケーション ポートを追加する
-デプロイする前に、クラスターのパブリック アプリケーション ポートを変更することもできます。既定では、テンプレートが開くパブリック TCP ポートは 2 つだけです (80 と 8081)。アプリケーションにさらに多くのポートが必要な場合は、テンプレート内の Azure Load Balancer の定義を変更します。定義は、メイン テンプレート ファイル (`SecureFabricCluster.json`) に保存されています。そのファイルを開き、`loadBalancedAppPort` を検索します。各ポートが、次の 3 つのアーティファクトに関連付けられていることがわかります。
+デプロイする前に、クラスターのパブリック アプリケーション ポートを変更することもできます。既定では、テンプレートが開くパブリック TCP ポートは 2 つだけです (80 と 8081)。アプリケーションにさらに多くのポートが必要な場合は、テンプレート内の Azure Load Balancer の定義を変更します。定義は、メイン テンプレート ファイル (`ServiceFabricCluster.json`) に保存されています。そのファイルを開き、`loadBalancedAppPort` を検索します。各ポートが、次の 3 つのアーティファクトに関連付けられていることがわかります。
 
 1. ポートの TCP ポート値を定義するテンプレート変数:
 
@@ -126,4 +126,4 @@ Visual Studio の出力ウィンドウで、デプロイ プロセスの進行�
 [2]: ./media/service-fabric-cluster-creation-via-visual-studio/selecting-azure-template.png
 [3]: ./media/service-fabric-cluster-creation-via-visual-studio/deploy-to-azure.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

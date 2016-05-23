@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="04/25/2016"
 	ms.author="josephd"/>
 
 # 基本構成テスト環境
@@ -289,7 +289,7 @@ CLIENT1 が再起動した後、CORP\\User1 のアカウント名とパスワー
 2.	**CLIENT1 のプロパティ**で、**[IE セキュリティ強化の構成]** の横にある **[有効]** をクリックします。
 3.	**[Internet Explorer セキュリティ強化の構成]** で、**[Administrators]** と **[Users]** の **[オフ]** をクリックし、**[OK]** をクリックします。
 4.	スタート画面で、**[Internet Explorer]** をクリックして、**[OK]** をクリックします。
-5.	アドレス バーに「**http://app1.corp.contoso.com/**」と入力し、Enter キーを押します。APP1 の既定のインターネット インフォメーション サービス Web ページが表示されます。
+5.	アドレス バーに「****http://app1.corp.contoso.com/**」と入力し、Enter キーを押します。APP1 の既定のインターネット インフォメーション サービス Web ページが表示されます。
 6.	デスクトップのタスク バーからエクスプローラー アイコンをクリックします。
 7.	アドレス バーに「**\\\app1\\Files**」と入力し、Enter キーを押します。
 8.	フォルダー ウィンドウに、Files 共有フォルダー内容が表示されます。
@@ -304,7 +304,8 @@ Azure の基本構成の準備が整いました。アプリケーションの�
 
 ## 次のステップ
 
-- [Azure ポータル](virtual-machines-windows-hero-tutorial.md)を使用して新しい仮想マシンを追加するか、[シミュレートされたハイブリッド クラウド テスト環境](virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md)を構築します。
+- [Azure ポータル](virtual-machines-windows-hero-tutorial.md)を使用して新しい仮想マシンを追加します。
+- [シミュレートされたハイブリッド クラウド テスト環境](virtual-machines-setup-simulated-hybrid-cloud-environment-testing.md)を構築します。
 
 
 ## <a id="costs"></a>Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法
@@ -334,4 +335,4 @@ Azure PowerShell で仮想マシンを順番に起動するには、リソース
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -4,8 +4,8 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -13,20 +13,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/10/2016"
+   ms.date="04/18/2016"
    ms.author="tomfitz"/>
 
 # ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する
 
 ## 概要
-リソースへのアクセスまたは変更が必要な自動プロセスまたはアプリケーションがある場合、クラシック ポータルを使用して Active Directory アプリケーションを作成する方法があります。クラシック ポータルを使用して Active Directory アプリケーションを作成すると、実際にはアプリケーションとサービス プリンシパルの両方が作成されます。アプリケーションの実行には、アプリケーション独自の ID、またはアプリケーションにサインインしたユーザーの ID を使用できます。アプリケーションを認証するこれら 2 つの方法は、対話型 (ユーザーのサインイン) と非対話型 (アプリケーションが用意した独自の資格情報) と呼ばれます。非対話型モードの場合、正しいアクセス許可を持つロールにサービス プリンシパルを割り当てる必要があります。
+リソースへのアクセスまたは変更が必要な自動プロセスまたはアプリケーションがある場合、クラシック ポータルを使用して Active Directory アプリケーションを作成する方法があります。アプリケーションの実行には、アプリケーション独自の ID、またはアプリケーションにサインインしたユーザーの ID を使用できます。アプリケーションを認証するこれら 2 つの方法は、対話型 (ユーザーのサインイン) と非対話型 (アプリケーションが用意した独自の資格情報) と呼ばれます。非対話型モードの場合、正しいアクセス許可を持つロールをアプリケーションの ID に割り当てる必要があります。アプリケーションが自動実行されている場合は、非対話型の認証を使用する必要があります。
 
-このトピックでは、クラシック ポータルを使用して、新しいアプリケーションとサービス プリンシパルを作成する方法について説明します。現時点では、新しい Active Directory アプリケーションを作成するには、クラシック ポータルを使用する必要があります。この機能は、今後のリリースで、Azure ポータルに追加されます。ポータルを使用して、アプリケーションをロールに割り当てることができます。これらの手順は、Azure Powershell または Azure CLI を介して実行することもできます。サービス プリンシパルで PowerShell または CLI を使用する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
+このトピックでは、クラシック ポータルを使用して、新しいアプリケーションを作成する方法について説明します。現時点では、新しい Active Directory アプリケーションを作成するには、クラシック ポータルを使用する必要があります。ポータルを使用して、アプリケーションをロールに割り当てることができます。
+
+これらの手順は、Azure Powershell または Azure CLI を介して実行することもできます。サービス プリンシパルで PowerShell または CLI を使用する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
 
 ## 概念
-1. Azure Active Directory (AAD) - クラウド用に構築された ID およびアクセス管理サービス。詳しくは、「[Azure Active Directory とは](active-directory/active-directory-whatis.md)」を参照してください。
-2. サービス プリンシパル - ディレクトリ内のアプリケーションのインスタンス。
-3. AD アプリケーション - AAD に対してアプリケーションを特定する ADD 内のディレクトリ レコード。 
+1. Azure Active Directory (AAD) - クラウド用に構築された ID およびアクセス管理サービス。詳細については、「[Azure Active Directory とは](active-directory/active-directory-whatis.md)」をご覧ください。
+2. AD アプリケーション - アプリケーションを特定する Active Directory 内のディレクトリ レコード。 
+3. サービス プリンシパル - アクセス制御ロールの適用先アプリケーションのインスタンス。
 
 アプリケーションとサービス プリンシパルの詳細については、「[アプリケーションおよびサービス プリンシパル オブジェクト](active-directory/active-directory-application-objects.md)」を参照してください。Active Directory 認証の詳細については、「[Azure AD の認証シナリオ](active-directory/active-directory-authentication-scenarios.md)」をご覧ください。
 
@@ -40,10 +42,14 @@
 2. 左側のペインで **[Active Directory]** を選択します。
 
      ![Active Directory の選択][1]
-
-3. 新しいアプリケーションを作成するために使用するディレクトリを選択します。
+     
+3. 新しいアプリケーションを作成するために使用するディレクトリを選択します。サブスクリプションのリソースについては、使用しているサブスクリプションと同じディレクトリのサービス プリンシパルにのみアクセスを割り当てることができます。通常、サブスクリプションが存在するディレクトリにアプリケーションを作成します。
 
      ![ディレクトリの選択][2]
+     
+    サブスクリプションのディレクトリを探す場合は、**[設定]** を選択し、ディレクトリ名を検索します。
+   
+     ![既定のディレクトリの検索](./media/resource-group-create-service-principal-portal/show-default-directory.png)
 
 3. ディレクトリ内のアプリケーションを表示するには、**[アプリケーション]** をクリックします。
 
@@ -73,7 +79,7 @@
 
 ## クライアント ID とテナント ID の取得
 
-アプリケーションにプログラムでアクセスするときは、アプリケーションの ID が必要です。**[構成]** タブをクリックし、**[クライアント ID]** をコピーします。
+アプリケーションにプログラムでアクセスするときは、アプリケーションの ID が必要です。**[構成]** タブをクリックし、**クライアント ID** をコピーします。
   
    ![クライアント ID][5]
 
@@ -83,7 +89,7 @@
 
 ネイティブ クライアント アプリケーションではエンドポイントを使用できません。代わりに、次の PowerShell を使ってテナント ID を取得できます。
 
-    PS C:\> Get-AzureRmSubscription
+    Get-AzureRmSubscription
 
 または、次の Azure CLI を使います。
 
@@ -120,11 +126,11 @@
 
 1. **[アプリケーションの追加]** をクリックします。
 
-2. リストから **[Azure Service Management API]** を選択します。
+2. 一覧から **[Azure Service Management API]** を選択します。
 
       ![アプリケーションの選択](./media/resource-group-create-service-principal-portal/select-app.png)
 
-3. **Access Azure Service Management (プレビュー)** の委任されたアクセス許可をサービス管理 API に追加します。
+3. **Access Azure Service Management (プレビュー)** の委任されたアクセス許可を Service Management API に追加します。
 
        ![アクセス許可の選択](./media/resource-group-create-service-principal-portal/select-permissions.png)
 
@@ -218,7 +224,7 @@ ID とシークレットを使用してサインインするには、次の方�
 
 - セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。  
 - これらの手順のビデオ デモについては、[Azure Active Directory を使用した Azure リソースのプログラムによる管理の有効化](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory)に関するビデオを参照してください。
-- 認証に証明書を利用する方法を含む、Azure PowerShell または Azure CLI で Active Directory のアプリケーションとサービス プリンシパルを操作する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)」を参照してください。
+- 認証に証明書を利用する方法を含む、Azure PowerShell または Azure CLI で Active Directory のアプリケーションとサービス プリンシパルを操作する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
 - Azure リソース マネージャーを使用したセキュリティの実装のガイダンスについては、「[Azure Resource Manager のセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 
 
@@ -237,4 +243,4 @@ ID とシークレットを使用してサインインするには、次の方�
 [12]: ./media/resource-group-create-service-principal-portal/add-icon.png
 [13]: ./media/resource-group-create-service-principal-portal/save-icon.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0511_2016-->

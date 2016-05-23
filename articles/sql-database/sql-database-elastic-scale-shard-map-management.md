@@ -13,17 +13,39 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/05/2016" 
+	ms.date="04/26/2016" 
 	ms.author="ddove;sidneyh"/>
 
-# シャード マップの管理
+# シャード マップ マネージャーでデータベースをスケールアウトする
 
-シャード化データベース環境では、アプリケーションが**シャーディング キー**の値に基づいて適切なデータベースに接続するための情報が[**シャード マップ**](sql-database-elastic-scale-glossary.md)に保持されます。これらのマップの構造を理解することは、シャード マップ管理に不可欠です。Azure SQL Database に対して、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)内で見つかった [ShardMapManager クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)を使用して、 シャード マップを管理します。
+SQL Azure でデータベースを簡単にスケールアウトするには、シャード マップ マネージャーを使用します。シャード マップ マネージャーは、シャード セット内のすべてのシャード (データベース) についてのグローバル マッピング情報を保持する特殊なデータベースです。メタデータにより、アプリケーションは**シャーディング キー**の値に基づいて適切なデータベースに接続できます。さらに、セット内のすべてのシャードには、ローカル シャード データを追跡するマップが含まれます (**シャードレット**と呼ばれます)。
 
-既存のデータベースのセットを変換するには、「[既存のデータベースをエラスティック データベース ツールを使用するように変換する](sql-database-elastic-convert-to-use-elastic-tools.md)」を参照してください。
- 
+![シャード マップの管理](./media/sql-database-elastic-scale-shard-map-management/glossary.png)
+
+これらのマップの構造を理解することは、シャード マップ管理に不可欠です。そのためには、シャード マップを管理するための[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)に含まれる [ShardMapManager クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)を使用します。
+
 
 ## シャード マップとシャードのマッピング
+
+シャードごとに、作成するシャード マップの種類を選択する必要があります。何を選択するかはデータベースのアーキテクチャによって異なります。
+
+1. データベースごとに 1 つのテナント  
+2. データベースごとに複数のテナント (2 種類):
+	3. リスト マッピング
+	4. 範囲マッピング
+ 
+シングルテナント モデルの場合は、**リスト マッピング** シャード マップを作成します。シングルテナント モデルでは、テナントごとに 1 つのデータベースが割り当てられます。これは、管理が簡単なので、SaaS 開発者に有効なモデルです。
+
+![リスト マッピング][1]
+
+マルチテナント モデルでは、1 つのデータベースに複数のテナントが割り当てられます (そして、テナントのグループを複数のデータベースに分散させることができます)。各テナントで必要なデータが少ない場合は、このモデルを使用します。このモデルでは、**範囲マッピング**を使用してデータベースにテナントの範囲を割り当てます。
+ 
+
+![範囲マッピング][2]
+
+または、*リスト マッピング*を使用して複数のテナントを 1 つのデータベースに割り当てることにより、マルチテナント データベース モデルを実装できます。たとえば、ID が 1 と 5 のテナントに関する情報を DB1 に格納し、DB2 にテナント 7 と 10 のデータを格納する、といったことができます。
+
+![単一 DB 上の複数のテナント][3]
  
 ### シャーディング キーでサポートされる .Net 型
 
@@ -151,7 +173,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 
 ### 影響を受けるのはメタデータのみ 
 
-**ShardMapManager** データを設定または変更するために使用されるメソッドは、シャード自体に格納されているユーザー データを変更しません。たとえば、**CreateShard**、**DeleteShard**、**UpdateMapping** などのメソッドは、シャード マップ メタデータのみに作用します。シャードに含まれるユーザー データを削除、追加、変更することはありません。代わりに、これらのメソッドは、実際のデータベースを作成または削除するために実行される別の操作や、シャード化環境のバランスを再調整するためにシャードで行を移動する操作と組み合わせて使用するように設計されています(エラスティック データベース ツールに含まれる**分割/マージ**ツールでは、シャード間の実際のデータ移動のオーケストレーションと共にこれらの API を利用しています)。 「[Elastic Database 分割/マージ ツールを使用したスケーリング](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください。
+**ShardMapManager** データを設定または変更するために使用されるメソッドは、シャード自体に格納されているユーザー データを変更しません。たとえば、**CreateShard**、**DeleteShard**、**UpdateMapping** などのメソッドは、シャード マップ メタデータのみに作用します。シャードに含まれるユーザー データを削除、追加、変更することはありません。代わりに、これらのメソッドは、実際のデータベースを作成または削除するために実行される別の操作や、シャード化環境のバランスを再調整するためにシャードで行を移動する操作と組み合わせて使用するように設計されています(エラスティック データベース ツールに含まれる**分割/マージ**ツールでは、シャード間の実際のデータ移動のオーケストレーションと共にこれらの API を利用しています)。 「[Elastic Database 分割/マージ ツールを使用したスケーリング](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください。
 
 ## シャード マップの設定の例
  
@@ -312,5 +334,9 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
+<!--Image references-->
+[1]: ./media/sql-database-elastic-scale-shard-map-management/listmapping.png
+[2]: ./media/sql-database-elastic-scale-shard-map-management/rangemapping.png
+[3]: ./media/sql-database-elastic-scale-shard-map-management/multipleonsingledb.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

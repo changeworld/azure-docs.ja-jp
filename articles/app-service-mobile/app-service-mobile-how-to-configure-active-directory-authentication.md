@@ -2,9 +2,9 @@
 	pageTitle="App Services アプリケーションに Azure Active Directory 認証を構成する方法"
 	description="App Services アプリケーションに Azure Active Directory 認証を構成する方法について説明します。"
 	authors="mattchenderson"
-	services="app-service\mobile"
+	services="app-service"
 	documentationCenter=""
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="05/04/2016"
 	ms.author="mahender"/>
 
 # Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法
@@ -21,9 +21,6 @@
 [AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 このトピックでは、認証プロバイダーとして Azure Active Directory を使用するように Azure App Services を構成する方法を示します。
-
-> [AZURE.NOTE] このトピックでは、App Service 認証/承認の使用例を示します。ほとんどのアプリケーションで、これが App Service ゲートウェイに取って代わっています。ゲートウェイを使用している場合は、[別の方法]を参照してください。ゲートウェイを使用する場合との相違点については、そのセクションの注に記載されています。
-
 
 ## <a name="express"></a>高速設定を使用して Azure Active Directory を構成する
 
@@ -39,7 +36,7 @@
 
 	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
 
-17. (省略可能) サイトに対するアクセスを、Azure Active Directory で認証されたユーザーに限定するには、**[要求が認証されていないときに実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Azure Active Directory にリダイレクトされます。
+17. (省略可能) サイトに対するアクセスを、Azure Active Directory で認証されたユーザーに限定するには、**[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Azure Active Directory にリダイレクトされます。
 
 17. **[保存]** をクリックします。
 
@@ -68,11 +65,6 @@
 
     ![][3]
 
-
-	> [AZURE.NOTE]
-	App Service の [認証/承認] 機能ではなく、App Service ゲートウェイを使用している場合は、応答 URL でパス _/signin-aad_ を含むゲートウェイ URL を代わりに使用します。
-
-
 9. **[保存]** をクリックします。その後、アプリケーションの**クライアント ID** をコピーします。後で、これを使用するようにアプリケーションを構成します。
 
 10. 下部のコマンド バーで、**[エンドポイントの表示]** をクリックして、**[フェデレーション メタデータ ドキュメント]** の URL をコピーし、そのドキュメントをダウンロードするか、ブラウザーでそのドキュメントに移動します。
@@ -80,10 +72,6 @@
 11. ルートの **EntityDescriptor** 要素内に、テナント固有の GUID ("テナント ID") が後に続く `https://sts.windows.net/` の形式の **entityID** 属性があります。この値をコピーします。これは**発行者の URL** として機能します。後で、これを使用するようにアプリケーションを構成します。
 
 ### <a name="secrets"> </a>Azure Active Directory の情報をアプリケーションに追加する
-
-> [AZURE.NOTE]
-App Service ゲートウェイを使用する場合は、このセクションの内容は無視し、ポータル内で目的のゲートウェイに移動します。**[設定]**、**[ID]**、**[Azure Active Directory]** の順に選択します。ClientID に貼り付け、テナント ID を **[許可されているテナント]** リストに追加します。**[保存]** をクリックします。
-
 
 13. [Azure ポータル]に戻り、アプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
 
@@ -95,7 +83,7 @@ App Service ゲートウェイを使用する場合は、このセクション�
 
 	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
 
-17. (省略可能) サイトに対するアクセスを、Azure Active Directory で認証されたユーザーに限定するには、**[要求が認証されていないときに実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Azure Active Directory にリダイレクトされます。
+17. (省略可能) サイトに対するアクセスを、Azure Active Directory で認証されたユーザーに限定するには、**[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Azure Active Directory にリダイレクトされます。
 
 17. **[保存]** をクリックします。
 
@@ -113,7 +101,7 @@ Azure Active Directory では、ネイティブ クライアントを登録し�
 
 4. アプリケーションの追加ウィザードで、アプリケーションの**名前**を入力し、種類として **[ネイティブ クライアント アプリケーション]** をクリックします。その後、クリックして続行します。
 
-5. **[リダイレクト URI]** に、HTTPS スキームを使用してサイトの _/.auth/login/done_ エンドポイントを入力します。この値は、_https://contoso.azurewebsites.net/.auth/login/done_ と同様です。
+5. **[リダイレクト URI]** に、HTTPS スキームを使用してサイトの _/.auth/login/done_ エンドポイントを入力します。この値は、_https://contoso.azurewebsites.net/.auth/login/done_ と同様です。Windows アプリケーションを作成する場合は、[パッケージ SID](app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) を URI として使用します。
 
 6. ネイティブ アプリケーションが追加されたら **[構成]** タブをクリックします。**[クライアント ID]** を検索し、その値をメモします。
 
@@ -140,7 +128,6 @@ Azure Active Directory では、ネイティブ クライアントを登録し�
 
 [Azure ポータル]: https://portal.azure.com/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
-[ios-adal]: ../app-service-mobile-xamarin-ios-aad-sso.md
-[別の方法]: #advanced
+[alternative method]: #advanced
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

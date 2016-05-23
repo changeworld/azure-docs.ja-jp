@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="04/18/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したボリュームの表示と管理
 
 ## 概要
 
-StorSimple Snapshot Manager の **[ボリューム]** ノード (**スコープ** ウィンドウ) を使用してボリュームを選択し、それらのボリュームの情報を表示できます。ボリュームは、ホストにマウントされているボリュームに対応するドライブとして表示されます。**[ボリューム]** ノードには、ローカル ボリュームと Azure StorSimple でサポートされているボリュームの種類が表示されます。これには、iSCSI とデバイスを使用して検出されたボリュームが含まれます。
+StorSimple Snapshot Manager の **[ボリューム]** ノード (**スコープ** ウィンドウ) を使用してボリュームを選択し、それらのボリュームの情報を表示できます。ボリュームは、ホストにマウントされているボリュームに対応するドライブとして表示されます。**[ボリューム]** ノードには、ローカル ボリュームと StorSimple でサポートされているボリュームの種類が表示されます。これには、iSCSI とデバイスを使用して検出されたボリュームが含まれます。
 
 サポートされるボリュームの詳細については、「[各種ボリュームのサポート](storsimple-what-is-snapshot-manager.md#support-for-multiple-volume-types)」をご覧ください。
 
@@ -35,11 +35,11 @@ StorSimple Snapshot Manager の **[ボリューム]** ノード (**スコープ*
 - ベーシック ボリュームを構成し、バックアップする
 - ダイナミック ミラー ボリュームを構成し、バックアップする
 
->[AZURE.NOTE]**[ボリューム]** ノードのすべての操作は、**[操作]** ウィンドウでも実行できます。
+>[AZURE.NOTE] **[ボリューム]** ノードのすべての操作は、**[操作]** ウィンドウでも実行できます。
  
 ## ボリュームのマウント
 
-Azure StorSimple ボリュームをマウントし、初期化してフォーマットするには、次の手順に従います。この手順で使用するディスクの管理は、ハード ディスクとハード ディスクに含まれるボリュームまたはパーティションを管理するためのシステム ユーティリティです。ディスクの管理の詳細については、Microsoft TechNet Web サイトの「[Disk Management (ディスクの管理)](https://technet.microsoft.com/library/cc770943.aspx)」をご覧ください。
+StorSimple ボリュームをマウントし、初期化してフォーマットするには、次の手順に従います。この手順で使用する "ディスクの管理" は、ハード ディスクおよび対応するボリュームまたはパーティションを管理するためのシステム ユーティリティです。ディスクの管理の詳細については、Microsoft TechNet Web サイトの「[Disk Management (ディスクの管理)](https://technet.microsoft.com/library/cc770943.aspx)」をご覧ください。
 
 #### ボリュームをマウントするには
 
@@ -55,7 +55,7 @@ Azure StorSimple ボリュームをマウントし、初期化してフォーマ
 
     - **[管理ツール]** を起動し、**[コンピューターの管理]** ノードを展開して、**[ディスクの管理]** を選択します。
 
-    >[AZURE.NOTE]ディスクの管理を実行するには、管理者特権を使用する必要があります。
+    >[AZURE.NOTE] ディスクの管理を実行するには、管理者特権を使用する必要があります。
  
 4. ボリュームをオンラインにします。
 
@@ -110,7 +110,7 @@ Azure StorSimple ボリュームをマウントし、初期化してフォーマ
 
 StorSimple Snapshot Manager からボリュームを削除するには、次の手順に従います。
 
->[AZURE.NOTE]ボリューム グループに属するボリュームは削除できません (ボリューム グループのメンバーであるボリュームでは、削除オプションは使用できません)。 ボリュームを削除するには、ボリューム グループ全体を削除する必要があります。
+>[AZURE.NOTE] ボリューム グループに属するボリュームは削除できません (ボリューム グループのメンバーであるボリュームでは、削除オプションは使用できません)。 ボリュームを削除するには、ボリューム グループ全体を削除する必要があります。
 
 
 #### ボリュームを削除するには
@@ -153,7 +153,7 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 
 作業を開始する前に、次のことを行います。
 
-- StorSimple デバイスとホスト コンピューターが正しく構成されていることを確認します。詳細については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」をご覧ください。
+- StorSimple デバイスとホスト コンピューターが正しく構成されていることを確認します。詳細については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)」をご覧ください。
 
 - StorSimple Snapshot Manager をインストールして構成します。詳細については、[Deploy StorSimple Snapshot Manager (StorSimple Snapshot Manager のデプロイ)](storsimple-snapshot-manager-deployment.md)」をご覧ください。
 
@@ -195,7 +195,7 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 
 作業を開始する前に、次のことを行います。
 
-- StorSimple デバイスとホスト コンピューターが正しく構成されていることを確認します。詳細については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」をご覧ください。
+- StorSimple デバイスとホスト コンピューターが正しく構成されていることを確認します。詳細については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)」をご覧ください。
 
 - StorSimple Snapshot Manager をインストールして構成します。詳細については、[Deploy StorSimple Snapshot Manager (StorSimple Snapshot Manager のデプロイ)](storsimple-snapshot-manager-deployment.md)」をご覧ください。
 
@@ -271,4 +271,4 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0511_2016-->

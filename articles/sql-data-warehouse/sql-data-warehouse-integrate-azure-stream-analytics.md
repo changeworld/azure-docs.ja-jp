@@ -86,8 +86,8 @@ SQL Database を選択し、[次へ] をクリックします。
 
 <!--Article references-->
 
-[Azure Stream Analytics の概要]: stream-analytics-introductiond.md
-[Azure Stream Analytics の使用]: stream-analytics-get-started.md
+[Azure Stream Analytics の概要]: ../stream-analytics/stream-analytics-introductiond.md
+[Azure Stream Analytics の使用]: ../stream-analytics/stream-analytics-get-started.md
 [SQL Data Warehouse の開発の概要]: sql-data-warehouse-overview-develop.md
 [SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)]: sql-data-warehouse-overview-integrate.md
 
@@ -96,4 +96,4 @@ SQL Database を選択し、[次へ] をクリックします。
 <!--Other Web references-->
 [Azure Stream Analytics documentation]: http://azure.microsoft.com/documentation/services/stream-analytics/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

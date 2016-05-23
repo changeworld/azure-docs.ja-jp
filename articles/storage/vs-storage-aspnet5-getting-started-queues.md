@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/21/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 # キュー ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET 5)
@@ -96,7 +96,9 @@ ASP.NET 5 プロジェクトでキューにアクセスするには、Azure キ�
 
 ##キュー内のメッセージを読み取って削除する
 
-コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。1.**GetMessageAsync** を呼び出して、キュー内の次のメッセージを取得します。**GetMessageAsync** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます。2.**DeleteMessageAsync** を呼び出して、キューからのメッセージの削除を終了します。
+コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。
+1. **GetMessageAsync** を呼び出して、キュー内の次のメッセージを取得します。**GetMessageAsync** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます。
+2.	**DeleteMessageAsync** を呼び出して、キューからのメッセージの削除を終了します。
 
 このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。次のコードでは、メッセージが処理された直後に **DeleteMessageAsync** を呼び出しています。
 
@@ -136,7 +138,7 @@ ASP.NET 5 プロジェクトでキューにアクセスするには、Azure キ�
 
 ## Async-Await パターンを一般的なキュー API で使用する
 
-この例では、Async-Await パターンを一般的なキュー API で使用する方法を示します。サンプルでは、特定のメソッドの非同期バージョンをそれぞれ呼び出します。これは、各メソッドの Async 接尾辞によって確認できます。非同期のメソッドを使用するとき、Async-Await パターンは、呼び出しが完了するまでローカルでの実行を中断します。この動作により、現在のスレッドで別の作業を実行できるようになるため、パフォーマンスのボトルネックを回避し、アプリケーションの全体的な応答性が向上させることができます。.NET での Async-Await パターンの使用方法の詳細については、「[Async と Await (C# と Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)」を参照してください。
+この例では、Async-Await パターンを一般的なキュー API で使用する方法を示します。サンプルでは、特定のメソッドの非同期バージョンをそれぞれ呼び出します。これは、各メソッドの Async 接尾辞によって確認できます。非同期のメソッドを使用するとき、Async-Await パターンは、呼び出しが完了するまでローカルでの実行を中断します。この動作により、現在のスレッドで別の作業を実行できるようになるため、パフォーマンスのボトルネックを回避し、アプリケーションの全体的な応答性が向上させることができます。.NET での Async-Await パターンの使用方法の詳細については、[Async と Await (C# と Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) に関するページをご覧ください。
 
     // Create a message to add to the queue.
     CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
@@ -164,4 +166,4 @@ ASP.NET 5 プロジェクトでキューにアクセスするには、Azure キ�
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

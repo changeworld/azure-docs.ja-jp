@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/29/2016"
+	ms.date="05/09/2016"
 	ms.author="robinsh"/>
 
 # Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
@@ -185,7 +185,7 @@ CORS の詳細については、「[Azure ストレージ サービスでのク�
 
 	ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 
-詳細については、「[ThreadPool.SetMinThreads メソッド](http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads(v=vs.110)」.aspx)) を参照してください。
+詳細については、「ThreadPool.SetMinThreads メソッド」(http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads(v=vs.110).aspx)) を参照してください。
 
 ####<a name="subheading11"></a>.NET 4.5 のガベージ コレクションを活用する
 クライアント アプリケーション用に .NET 4.5 以降を使用すると、サーバー ガベージ コレクションによるパフォーマンス向上が期待できます。
@@ -404,4 +404,4 @@ Nagle アルゴリズムについて論じているテーブル構成のセク�
 ##まとめ
 この記事では、Azure Storage 使用時のパフォーマンスを最適化する実証済みプラクティスのうち、よく用いられるものをいくつか取り上げました。すべてのアプリケーション開発者に対して、この記事で示した個々のプラクティスに照らしてアプリケーションを評価し、推奨事項に基づく動作によって、Azure Storage を使用するアプリケーションが優れたパフォーマンスを発揮できるように検討することをお勧めします。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

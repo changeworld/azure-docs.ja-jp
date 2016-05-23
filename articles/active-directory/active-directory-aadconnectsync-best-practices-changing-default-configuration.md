@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
-	ms.author="markusvi;andkjell"/>
+	ms.date="05/10/2016"
+	ms.author="markvi;andkjell"/>
 
 
 # Azure AD Connect Sync: 既定の構成を変更するためのベスト プラクティス
@@ -109,4 +109,4 @@ Fabrikam では、クラウドと同期する属性の一部が不要である�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

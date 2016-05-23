@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="identity"
-   ms.date="02/09/2016"
+   ms.date="05/09/2016"
    ms.author="viviali"/>
 
 # Azure AD B2B コラボレーション プレビュー: 現在のプレビューの制限事項
@@ -28,8 +28,8 @@
 - DL に対する招待はサポートされていません。
 - CSV を使用してアップロードできるレコードは最大 2,000 件です。
 
-## 関連記事:
-Azure B2B コラボレーションに関する他の記事を参照してください。
+## 関連記事
+Azure AD B2B コラボレーションに関する他の記事を参照してください。
 
 - [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
 - [動作のしくみ](active-directory-b2b-how-it-works.md)
@@ -39,4 +39,4 @@ Azure B2B コラボレーションに関する他の記事を参照してくだ�
 - [外部ユーザー オブジェクト属性の変更](active-directory-b2b-references-external-user-object-attribute-changes.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

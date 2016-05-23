@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/15/2016"
+	ms.date="04/19/2016"
 	ms.author="adegeo"/>
 
 
@@ -43,7 +43,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 -   証明書は秘密キーを含む必要があります。
 -   証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
--   証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。証明機関 (CA) から cloudapp.net ドメインの SSL 証明書を取得することはできません。サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。たとえば、カスタム ドメイン名が **contoso.com** である場合は、**.contoso.com** または **www.contoso.com** の証明書を CA に要求します。
+-   証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。証明機関 (CA) から cloudapp.net ドメインの SSL 証明書を取得することはできません。サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。たとえば、カスタム ドメイン名が **contoso.com** である場合は、****.contoso.com** または **www.contoso.com** の証明書を CA に要求します。
 -   証明書では、2048 ビット以上の暗号化を使用する必要があります。
 
 テスト目的で、自己署名証明書を[作成して](cloud-services-certs-create.md)使用できます。自己署名証明書は CA を通じて認証されないため、cloudapp.net ドメインを Web サイト URL として使用できます。たとえば、下のタスクでは自己署名証明書を使用しますが、証明書で使用される共通名 (CN) は **sslexample.cloudapp.net** です。
@@ -62,7 +62,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
             <Certificates>
                 <Certificate name="SampleCertificate" 
 							 storeLocation="LocalMachine" 
-                    		 storeName="CA"
+                    		 storeName="My"
                              permissionLevel="limitedOrElevated" />
                 <!-- IMPORTANT! Unless your certificate is either
                 self-signed or signed directly by the CA root, you
@@ -138,14 +138,9 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 ポータルに接続します。
 
-1. 次のいずれかの方法で、クラウド サービスを選択します。
-    - ポータルで、**[クラウド サービス]** を選択します (**[すべてを参照]/[最近使用したファイル]** 領域にあります)。
+1. ポータルでクラウド サービスを選択し、**[クラウド サービス]** を選択します (**[すべてのリソース]** セクションにあります)。 
     
-        ![クラウド サービスの発行](media/cloud-services-configure-ssl-certificate-portal/browse.png)
-    
-        **OR**
-        
-    - **[すべてを参照]** で、 **[フィルター]** にある **[Cloud Services]** を選択し、目的のクラウド サービス インスタンスを選択します。
+    ![クラウド サービスの発行](media/cloud-services-configure-ssl-certificate-portal/browse.png)
 
 3. クラウド サービスの **[設定]** を開きます。
 
@@ -182,4 +177,4 @@ Azure でデプロイメントを実行できるようになったため、HTTPS
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

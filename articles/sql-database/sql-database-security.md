@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="01/22/2016"
+   ms.date="04/25/2016"
    ms.author="thmullan;jackr"/>
 
 
@@ -102,8 +102,10 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 データベースの監査イベントと追跡イベントは、規制遵守の維持や、疑わしいアクティビティの特定に役立ちます。SQL Database の監査により、Azure ストレージ アカウントの監査ログにデータベースのイベントを記録できます。また SQL Database の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。詳細については、「[SQL Database 監査の使用](sql-database-auditing-get-started.md)」を参照してください。
 
+監査のほかに、SQL Database 脅威の検出機能によって、セキュリティを強化することもできます。この機能を使用すると、異常なアクティビティに対してセキュリティ アラートを提供することで、発生した脅威に対応できます。詳細については、「[SQL Database 脅威の検出の概要](sql-database-threat-detection-get-started.md)」をご覧ください。
+
 ## コンプライアンス
 
 アプリケーションがさまざまなセキュリティ コンプライアンスの要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database は定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)」を参照してください。ここから最新の[SQL Database コンプライアンス証明書](https://azure.microsoft.com/support/trust-center/services/)の一覧を入手できます。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

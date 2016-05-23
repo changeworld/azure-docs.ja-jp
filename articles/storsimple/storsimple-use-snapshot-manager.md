@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/28/2015"
+   ms.date="04/25/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager のユーザー インターフェイス
 
 ## 概要
 
-StorSimple Snapshot Manager は、ボリューム グループのバックアップ コピー (ローカルに保存されたものとクラウドに保存されたものを含む) の管理に使用できる直感的なグラフィカル ユーザー インターフェイス (GUI) を備えています。このチュートリアルでは、インターフェイスの概要と各コンポーネントの使用方法について説明します。StorSimple Snapshot Manager の詳細については、「[StorSimple Snapshot Manager について](storsimple-what-is-snapshot-manager.md)」を参照してください。
+StorSimple Snapshot Manager の直感的なユーザー インターフェイスを使用して、バックアップを作成および管理できます。このチュートリアルでは、ユーザー インターフェイスの概要と各コンポーネントの使用方法について説明します。StorSimple Snapshot Manager の詳細については、「[StorSimple Snapshot Manager について](storsimple-what-is-snapshot-manager.md)」を参照してください。
 
 ### コンソールの説明
 
@@ -110,7 +110,7 @@ StorSimple Snapshot Manager の操作を次の表に示します。
 
 - **「説明」**列では、**[操作]** メニューまたは [操作] ウィンドウに表示される各操作の使用方法と実行される内容について説明しています。
 
->[AZURE.NOTE]**[操作]** ウィンドウと **[操作]** メニューには、追加オプション (**[表示]**、**[ここから新しいウィンドウ]**、**[更新]**、**[リストのエクスポート]**、**[ヘルプ]** など) も表示されます。これらのオプションは MMC の機能であり、StorSimple Snapshot Manager に固有のものではありません。表にはこれらのオプションの説明も含まれています。
+>[AZURE.NOTE] **[操作]** ウィンドウと **[操作]** メニューには、追加オプション (**[表示]**、**[ここから新しいウィンドウ]**、**[更新]**、**[リストのエクスポート]**、**[ヘルプ]** など) も表示されます。これらのオプションは MMC の機能であり、StorSimple Snapshot Manager に固有のものではありません。表にはこれらのオプションの説明も含まれています。
  
 | アクション | ナビゲーション | 説明 |
 |:--------|:------------|:-------------|
@@ -234,7 +234,7 @@ StorSimple Snapshot Manager と MMC のオンライン ヘルプを表示する�
  
 ## スコープ ウィンドウ
 
-**スコープ** ウィンドウは、StorSimple Snapshot Manager の UI の左側のウィンドウです。コンソール (ノード) ツリーが含まれたこのウィンドウを主に使用して、StorSimple Snapshot Manager 内を移動します。
+**スコープ** ウィンドウは、StorSimple Snapshot Manager UI の一番左のウィンドウです。コンソール (ノード) ツリーが含まれたこのウィンドウを主に使用して、StorSimple Snapshot Manager 内を移動します。
  
 ### スコープ ウィンドウの構造
 
@@ -307,7 +307,7 @@ StorSimple Snapshot Manager と MMC のオンライン ヘルプを表示する�
 
 - バックアップ ポリシーのリストを表示するには、**スコープ** ウィンドウで **[バックアップ ポリシー]** をクリックします。バックアップ ポリシーのリストと各ポリシーに関する情報が**結果**ウィンドウに表示されます。
 
->[AZURE.NOTE]最大 64 個のバックアップを保持できます。
+>[AZURE.NOTE] 最大 64 個のバックアップを保持できます。
 
 
 ### [バックアップ カタログ] ノード
@@ -490,8 +490,7 @@ StorSimple Snapshot Manager のユーザー インターフェイス内の移動
 | V | **[表示]** メニューを開きます。 |
 | W | **[ボリューム グループ]** ノードがフォーカスされた新しい StorSimple Snapshot Manager コンソールを開きます。|
 | F | StorSimple Snapshot Manager コンソールを更新します。|
-| L | **[リストのエクスポート]** ページを開きます。
-| H | オンライン ヘルプを開きます。|
+| L | **[リストのエクスポート]** ページを開きます。| H | オンライン ヘルプを開きます。|
  
 #### [バックアップ カタログ] ノードのショートカット キー
 
@@ -516,4 +515,4 @@ StorSimple Snapshot Manager のユーザー インターフェイス内の移動
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
 - [StorSimple Snapshot Manager を使用して、デバイスを接続および管理する方法](storsimple-snapshot-manager-manage-devices.md)について説明します。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0511_2016-->

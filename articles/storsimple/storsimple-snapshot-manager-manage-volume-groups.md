@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="04/18/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したボリューム グループの作成と管理
@@ -23,7 +23,7 @@
 
 ボリューム グループは関連するボリュームのプールであり、バックアップのアプリケーション整合性を確保するために使用されます。詳細については、「[ボリュームとボリューム グループ](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups)」および「[Windows ボリューム シャドウ コピー サービスとの統合](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)」をご覧ください。
 
->[AZURE.IMPORTANT]
+>[AZURE.IMPORTANT] 
 >
 > * ボリューム グループ内のすべてのボリュームは、1 つのクラウド サービス プロバイダーから取得する必要があります。
 > 
@@ -54,7 +54,7 @@
 オン | **[オン]** 列には、ボリューム グループに含まれているボリュームの数が表示されます。ゼロ (0) は、ボリューム グループ内のボリュームに関連付けられたアプリケーションが存在しないことを示します。
 インポート済み | **[インポート済み]** 列には、インポートされたボリュームの数が表示されます。**True** に設定されている場合、この列はボリューム グループが Azure クラシック ポータルからインポートされ、StorSimple Snapshot Manager では作成されなかったことを示します。
  
->[AZURE.NOTE]StorSimple Snapshot Manager ボリューム グループも Azure クラシック ポータルの **[バックアップ ポリシー]** タブに表示されます。
+>[AZURE.NOTE] StorSimple Snapshot Manager ボリューム グループも Azure クラシック ポータルの **[バックアップ ポリシー]** タブに表示されます。
  
 ## ボリューム グループの作成
 
@@ -78,11 +78,11 @@
 
     2. **[アプリケーション]** ボックスで、ボリューム グループに追加するボリュームに関連付けられたアプリケーションを選択します。
 
-        **[アプリケーション]** ボックスには、Azure StorSimple ボリュームを使用し、それらに対して VSS ライターが有効になっているアプリケーションのみが一覧表示されます。VSS ライターは、ライターが認識しているすべてのボリュームが Azure StorSimple ボリュームである場合にのみ有効です。[アプリケーション] ボックスが空の場合は、Azure StorSimple ボリュームを使用し、サポートされる VSS ライターを持つアプリケーションはインストールされていません (現在、Azure StorSimple は Microsoft Exchange と SQL Server をサポートしています)。 VSS ライターの詳細については、「[Windows ボリューム シャドウ コピー サービスとの統合](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)」をご覧ください。
+        **[アプリケーション]** ボックスには、StorSimple ボリュームを使用し、それらのボリュームに対して VSS ライターが有効になっているアプリケーションだけが表示されます。VSS ライターは、ライターが認識しているすべてのボリュームが StorSimple ボリュームである場合にのみ有効になります。[アプリケーション] ボックスが空の場合は、Azure StorSimple ボリュームを使用し、サポートされる VSS ライターを持つアプリケーションはインストールされていません (現在、Azure StorSimple は Microsoft Exchange と SQL Server をサポートしています)。 VSS ライターの詳細については、「[Windows ボリューム シャドウ コピー サービスとの統合](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)」をご覧ください。
 
         アプリケーションを選択すると、それに関連付けられているすべてのボリュームが自動的に選択されます。逆に、特定のアプリケーションに関連付けられているボリュームを選択すると、**[アプリケーション]** ボックスでそのアプリケーションが自動的に選択されます。
 
-    3. **[ボリューム]** ボックスで、ボリューム グループに追加する Azure StorSimple ボリュームを選択します。
+    3. **[ボリューム]** ボックスで、ボリューム グループに追加する StorSimple ボリュームを選択します。
 
       - 1 つまたは複数のパーティションを持つボリュームを含めることができます (複数のパーティションを持つボリュームは、複数のパーティションを持つ動的ディスクまたは基本ディスクにすることができます)。 複数のパーティションが含まれているボリュームは、1 つの単位として扱われます。このため、ボリューム グループに 1 つのパーティションのみを追加する場合、その他のすべてのパーティションが、同時にそのボリューム グループに自動的に追加されます。複数パーティション ボリュームをボリューム グループに追加した後も、その複数パーティション ボリュームは 1 つの単位として扱われます。
 
@@ -130,7 +130,7 @@
 
 ボリューム グループを削除するには、以下の手順を実行します。
 
->[AZURE.WARNING]この処理により、ボリューム グループに関連付けられているすべてのバックアップも削除されます。
+>[AZURE.WARNING] この操作により、ボリューム グループに関連付けられているすべてのバックアップも削除されます。
 
 #### ボリューム グループを削除するには
 
@@ -147,4 +147,4 @@
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)方法を確認する。
 - [StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理](storsimple-snapshot-manager-manage-backup-policies.md)方法を確認する。
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0511_2016-->

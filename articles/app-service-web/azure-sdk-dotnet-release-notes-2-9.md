@@ -13,9 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="03/29/2016"
+   ms.date="04/25/2016"
    ms.author="juliako"/>
-
 
 # Azure SDK for .NET 2.9 リリース ノート
 
@@ -44,7 +43,7 @@
 
 	このツールは頻繁に更新されます。最新版は[こちら](http://aka.ms/datalaketool)から取得してください。
 
-- **サーバー エクスプローラー**で U-SQL メタデータ エンティティをすべて表示したり、一部を作成したりできるようになりました。詳細については、[このブログ]()を参照してください。
+- **サーバー エクスプローラー**で U-SQL メタデータ エンティティをすべて表示したり、一部を作成したりできるようになりました。詳細については、[このブログ](https://azure.microsoft.com/documentation/services/data-lake-analytics/)をご覧ください。
 
 
 ##HDInsight ツール 
@@ -60,4 +59,4 @@
 
 [Azure SDK 2.9 の発表に関するブログ記事](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

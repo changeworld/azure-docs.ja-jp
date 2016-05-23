@@ -4,7 +4,7 @@
    services="storsimple" 
    documentationCenter="NA" 
    authors="SharS" 
-   manager="Carolz" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="01/22/2016"
+   ms.date="05/03/2016"
    ms.author="v-sharos"/>
 
 # StorSimple のセキュリティとデータの保護
@@ -70,7 +70,7 @@ Azure サブスクリプションで作成した StorSimple Manager サービス
 
 StorSimple 用 Windows PowerShell は、StorSimple デバイスの管理に使用できるコマンドライン インターフェイスです。StorSimple 用 Windows PowerShell の機能を使用して、デバイスの登録、デバイス上のネットワーク インターフェイスの構成、特定のタイプの更新プログラムのインストール、サポート セッションを利用したデバイスのトラブルシューティング、デバイスの状態の変更を行うことができます。StorSimple 用 Windows PowerShell には、デバイス上のシリアル コンソールに接続するか、Windows PowerShell リモート処理を使用してアクセスできます。
 
-PowerShell リモート処理機能は、HTTPS または HTTP で利用することができます。HTTPS でのリモート管理が有効になっている場合、対象デバイスからリモート管理証明書をダウンロードしてリモート クライアントにインストールする必要があります。PowerShell リモート処理機能の詳細については、「[StorSimple デバイスにリモート接続する](storsimple-remote-connect)」を参照してください。
+PowerShell リモート処理機能は、HTTPS または HTTP で利用することができます。HTTPS でのリモート管理が有効になっている場合、対象デバイスからリモート管理証明書をダウンロードしてリモート クライアントにインストールする必要があります。PowerShell リモート処理機能の詳細については、「[StorSimple デバイスにリモート接続する](storsimple-remote-connect.md)」を参照してください。
 
 StorSimple 用 Windows PowerShell を使用してデバイスに接続した後、デバイス管理者のパスワードを指定してデバイスにログオンする必要があります。
 
@@ -269,4 +269,4 @@ StorSimple ソリューションに保存されるデータとソリューショ
 [StorSimple デバイスをデプロイする](storsimple-deployment-walkthrough.md)
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

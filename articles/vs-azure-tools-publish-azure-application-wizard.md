@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/19/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Azure アプリケーションの公開ウィザード
@@ -29,7 +29,7 @@ Azure に Web アプリケーションを発行する前に、Microsoft アカ�
 
 1. Microsoft アカウントと Azure サブスクリプションを取得します。[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間無料の Azure サブスクリプションを試すことができます。
 
-1. Azure でクラウド サービスとストレージ アカウントを作成します。これは、Visual Studio のサーバー エクスプローラーから行うことも、[Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用して行うこともできます。
+1. Azure でクラウド サービスとストレージ アカウントを作成します。これは、Visual Studio のサーバー エクスプローラーから行うことも、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用して行うこともできます。
 
 1. Azure 用の Web アプリケーションを有効にします。Web アプリケーションを Visual Studio から Azure に発行できるようにするには、Visual Studio で Azure クラウド サービス プロジェクトに関連付ける必要があります。関連付けられたクラウド サービス プロジェクトを作成するには、Web アプリケーションのプロジェクトのショートカット メニューを開き、[変換]、**[Azure クラウド サービス プロジェクトに変換]** の順に選択します。
 
@@ -139,4 +139,4 @@ Azure に Web アプリケーションを発行する前に、Microsoft アカ�
 
 [クラウド サービスのパフォーマンスのテスト](https://msdn.microsoft.com/library/azure/hh369930.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

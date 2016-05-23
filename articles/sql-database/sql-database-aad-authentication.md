@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Active Directory 認証を使用して SQL Database に接続する | Microsoft Azure"
+   pageTitle="Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する | Microsoft Azure"
    description="Azure Active Directory 認証を使用して SQL Database に接続する方法について説明します。"
    services="sql-database"
    documentationCenter=""
@@ -14,12 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="04/06/2016"
+   ms.date="05/05/2016"
    ms.author="rick.byham@microsoft.com"/>
 
-# Azure Active Directory 認証を使用して SQL Database に接続する
+# Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する
 
-Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して Microsoft Azure SQL Database に接続するメカニズムです。Azure Active Directory 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。次のような利点があります。
+Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して Microsoft Azure SQL Database および [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。Azure Active Directory 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。次のような利点があります。
 
 - SQL Server 認証の代替方法が用意されています。
 - データベース サーバー全体でユーザー ID が急増するのを防ぎます。
@@ -28,33 +28,34 @@ Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を�
 - 統合 Windows 認証や、Azure Active Directory でサポートされる他の認証形式を有効にすることで、パスワードが保存されないようにすることができます。
 - Azure Active Directory 認証では、包含データベース ユーザーを使用して、データベース レベルで ID を認証します。
 - Azure Active Directory では、SQL Database に接続するアプリケーション向けにトークンベースの認証をサポートしています。
+- Azure Active Directory 認証は、ADFS (ドメイン フェデレーション) またはドメインを同期しないローカル Azure Active Directory のネイティブ ユーザー/パスワード認証をサポートします。
 
 > [AZURE.IMPORTANT] Azure Active Directory 認証はプレビュー機能で、ライセンス契約 (例: Enterprise Agreement、Microsoft Azure 契約、マイクロソフト オンライン サブスクリプション契約) に定められたプレビューの規定に従うものとします。また、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)が適用される場合があります。
 
 構成の手順には、Azure Active Directory 認証を構成して使用する次の手順が含まれます。
 
-1. Azure Active Directory を作成して設定する
-2. データベースが Azure SQL Database V12 にあることを確認する
-3. 省略可能: Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更する
-4. Azure SQL Server 用に Azure Active Directory 管理者を作成する
-5. クライアント コンピューターを構成する
-6. Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成する
-7. Azure AD の ID を使用してデータベースに接続する
+1. Azure Active Directory を作成して設定します。
+2. データベースが Azure SQL Database V12 であることを確認します (SQL Data Warehouse の場合は不要)。
+3. 省略可能: Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更します。
+4. Azure SQL Server または [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/) 用に Azure Active Directory 管理者を作成します。
+5. クライアント コンピューターを構成します。
+6. Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成します。
+7. Azure AD の ID を使用してデータベースに接続します。
 
 
 ## 信頼のアーキテクチャ
 
-次の図では、Azure SQL Database で Azure AD 認証を使用する場合のソリューション アーキテクチャの概要を示しています。矢印は通信経路を示します。
+次の図では、Azure SQL Database で Azure AD 認証を使用する場合のソリューション アーキテクチャの概要を示しています。同じ概念が SQL Data Warehouse にも適用されます。Azure Active Directory のネイティブ ユーザー パスワードをサポートする場合は、クラウド部分と Azure AD/Azure SQL Database のみを考慮します。フェデレーション認証 (または Windows 資格情報のユーザー/パスワード) をサポートするには、ADFS ブロックとの通信が必要です。矢印は通信経路を示します。
 
 ![aad auth diagram][1]
 
-次の図では、フェデレーション、信頼、ホスティングの関係を示します。これらの関係により、クライアントは、Azure AD によって認証された、データベースが信頼するトークンを送信することで、データベースに接続できます。重要なのは、Azure AD 認証を使用してデータベースにアクセスするには、ホストしているサブスクリプションを Azure Active Directory に関連付ける必要があることを理解することです。
+次の図では、フェデレーション、信頼、ホスティングの関係を示します。これらの関係により、クライアントは、Azure AD によって認証された、データベースが信頼するトークンを送信することで、データベースに接続できます。顧客 1 は、Azure Active Directory とネイティブ ユーザーまたは Azure Active Directory とフェデレーション ユーザーを表すことができます。顧客 2 は、インポートされたユーザーなどの可能性のあるソリューションを表します。この例では、Azure Active Directory および Azure Active Directory と同期された ADFS です。重要なのは、Azure AD 認証を使用してデータベースにアクセスするには、ホストしているサブスクリプションを Azure Active Directory に関連付ける必要があること、および同じサブスクリプションが Azure SQL Database または SQL Data Warehouse サーバーの作成に使用されることを、理解することです。
 
 ![サブスクリプションの関係性][2]
 
 ## 管理者の構造
 
-Azure AD 認証を使用すると、SQL Database サーバーの管理者アカウントは、元の SQL Server 管理者と Azure AD 管理者の 2 つになります。ユーザー データベースに最初の Azure AD 包含データベース ユーザーを作成できるのは、Azure AD アカウントに基づく管理者のみです。Azure AD の管理者ログインには、Azure AD ユーザーまたは Azure AD グループを使用できます。管理者がグループ アカウントの場合は、SQL Server インスタンスに複数の Azure AD 管理者を有効にすることで、すべてのグループ メンバーがそのアカウントを使用できます。グループ アカウントを管理者として使用すると、SQL Database でユーザーまたはアクセス許可を変更することなく Azure AD でグループ メンバーを一元的に追加および削除できるため、より管理しやすくなります。いつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。
+Azure AD 認証を使用すると、SQL Database サーバーの管理者アカウントは、元の SQL Server 管理者と Azure AD 管理者の 2 つになります。同じ概念が SQL Data Warehouse にも適用されます。ユーザー データベースに最初の Azure AD 包含データベース ユーザーを作成できるのは、Azure AD アカウントに基づく管理者のみです。Azure AD の管理者ログインには、Azure AD ユーザーまたは Azure AD グループを使用できます。管理者がグループ アカウントの場合は、SQL Server インスタンスに複数の Azure AD 管理者を有効にすることで、すべてのグループ メンバーがそのアカウントを使用できます。グループ アカウントを管理者として使用すると、SQL Database でユーザーまたはアクセス許可を変更することなく Azure AD でグループ メンバーを一元的に追加および削除できるため、より管理しやすくなります。いつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。
 
 ![admin structure][3]
 
@@ -62,30 +63,32 @@ Azure AD 認証を使用すると、SQL Database サーバーの管理者アカ�
 
 新しいユーザーを作成するには、データベースにおける **ALTER ANY USER** アクセス許可が必要です。**ALTER ANY USER** アクセス許可は、任意のデータベース ユーザーに付与できます。また、**ALTER ANY USER** アクセス許可は、サーバーの管理者アカウント、そのデータベースの **CONTROL ON DATABASE** または **ALTER ON DATABASE** アクセス許可を持つデータベース ユーザー、**db\_owner** データベース ロールのメンバーも保持しています。
 
-Azure SQL Database に包含データベース ユーザーを作成するには、Azure AD の ID を使用してデータベースに接続する必要があります。最初の包含データベース ユーザーを作成するには、(データベースの所有者である) Azure AD 管理者を使用してデータベースに接続する必要があります。これについては、以下の手順 4. ～ 5. で説明します。
+Azure SQL Database または SQL Data Warehouse に包含データベース ユーザーを作成するには、Azure AD の ID を使用してデータベースに接続する必要があります。最初の包含データベース ユーザーを作成するには、(データベースの所有者である) Azure Active Directory 管理者を使用してデータベースに接続する必要があります。これについては、以下の手順 4. ～ 5. で説明します。Azure SQL Database または SQL Data Warehouse サーバーに対して Azure Active Directory 管理者が作成された場合にのみ、任意の Azure Active Directory 認証が可能です。Azure Active Directory 管理者がサーバーから削除された場合、SQL Server 内に以前に作成された既存の Azure Active Directory ユーザーは、現在の Azure Active Directory 資格情報を使用してデータベースにアクセスできなくなります。
 
 ## Azure AD の機能と制限事項
 
-Azure Active Directory の次のメンバーは、Azure SQL Server にプロビジョニングできます。
-- ネイティブ メンバー: 管理対象ドメインまたは顧客のドメインの Azure AD で作成したメンバー。詳細については、[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-add-domain.md)に関する記事を参照してください。
+Azure Active Directory の次のメンバーは、Azure SQL Server または SQL Data Warehouse にプロビジョニングできます。
+- ネイティブ メンバー: 管理対象ドメインまたは顧客のドメインの Azure AD で作成したメンバー。詳細については、「[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-add-domain.md)」を参照してください。
 - フェデレーション ドメインのメンバー: フェデレーション ドメインを使用して Azure AD で作成されたメンバー。詳細については、「[Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure が Windows Server Active Directory とのフェデレーションをサポートします)](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」を参照してください。
 - ネイティブ メンバーまたはフェデレーション ドメインのメンバーであるその他の Azure Active Directory からインポートされたメンバー。
 - セキュリティ グループとして作成された Active Directory グループ。
 
-Microsoft アカウント (outlook.com、hotmail.com、live.com など) またはその他のゲスト アカウント (gmail.com、yahoo.com など) はサポートされていません。アカウントとパスワードを使用して [https://login.live.com](https://login.live.com) にログインできる場合は、Azure SQL Database の Azure AD 認証でサポートされていない Microsoft アカウントを使用しています。
+Microsoft アカウント (outlook.com、hotmail.com、live.com など) またはその他のゲスト アカウント (gmail.com、yahoo.com など) はサポートされていません。アカウントとパスワードを使用して [https://login.live.com](https://login.live.com) にログインできる場合は、Azure SQL Database または Azure SQL Data Warehouse の Azure AD 認証でサポートされていない Microsoft アカウントを使用しています。
 
 ### 追加の考慮事項
 
 - さらに管理しやすくするには、管理者として専用の Azure Active Directory グループをプロビジョニングすることをお勧めします。
-- Azure SQL Server 用にいつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。
-- Azure Active Directory アカウントを使用して最初に Azure SQL Server に接続できるのは、Azure Active Directory 管理者のみです。Active Directory 管理者は、それ以降の Azure Active Directory のデータベース ユーザーを構成できます。
+- Azure SQL Server または Azure SQL Data Warehouse 用にいつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。
+- Azure Active Directory アカウントを使用して最初に Azure SQL Server または Azure SQL Data Warehouse に接続できるのは、Azure Active Directory 管理者のみです。Active Directory 管理者は、それ以降の Azure Active Directory のデータベース ユーザーを構成できます。
 - 接続のタイムアウトを 30 秒に設定することをお勧めします。
-- SQL Server 2016 Management Studio と SQL Server Data Tools for Visual Studio 2015 では、Azure Active Directory 認証がサポートされています (Azure Active Directory 認証は **.NET Framework Data Provider for SqlServer** (.NET Framework 4.6 以降のバージョン) でサポートされています)。そのため、これらのツールとデータ層アプリケーション (DAC および .bacpac) の最新のバージョンでは Azure Active Directory 認証を使用できますが、ODBC プロバイダーを使用する **sqlcmd.exe** と **bcp.exe** は接続できません。
-- [Microsoft JDBC Driver 6.0 for SQL Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/04/04/preview-the-microsoft-jdbc-driver-6-0-for-sql-server/) では Azure Active Directory 認証がサポートされています。
+- SQL Server 2016 Management Studio と SQL Server Data Tools for Visual Studio 2015 (バージョン 14.0.60311.1April 2016 以降) では、Azure Active Directory 認証がサポートされています (Azure Active Directory 認証は **.NET Framework Data Provider for SqlServer** (.NET Framework 4.6 以降のバージョン) でサポートされています)。そのため、これらのツールとデータ層アプリケーション (DAC および .bacpac) の最新のバージョンでは Azure Active Directory 認証を使用できますが、ODBC プロバイダーを使用する **sqlcmd.exe** と **bcp.exe** は接続できません。
+- SQL Server Data Tools for Visual Studio 2015 には、April 2016 バージョン以降の Data Tools (バージョン 14.0.60311.1) が必要です。現在、Azure Active Directory ユーザーは SSDT のオブジェクト エクスプローラーに表示されません。代替策として、ユーザーは [sys.database\_principals](https://msdn.microsoft.com/library/ms187328.aspx) で見てください。
+- [Microsoft JDBC Driver 6.0 for SQL Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/04/04/preview-the-microsoft-jdbc-driver-6-0-for-sql-server/) は、Azure Active Directory 認証をサポートします。
 - PolyBase では Azure Active Directory 認証を使用した認証は行えません。
+- SQL Server Management Studio は SQL Data Warehouse ではサポートされていません。SQL Server Data Tools を使用してください。
 - BI や Excel など、一部のツールはサポートされていません。
 - 2 要素認証や他の形式の対話型認証はサポートされていません。
-- Azure Active Directory 認証は、Azure ポータルの**インポート データベース**と**エクスポート データベース**のブレードでサポートされています。
+- SQL Database の Azure Active Directory 認証は、Azure ポータルの**インポート データベース**と**エクスポート データベース**のブレードでサポートされています。Azure Active Directory 認証を使用するインポートとエクスポートは、PowerShell コマンドからもサポートされます。
 
 
 ## 1\.Azure Active Directory を作成して設定する
@@ -96,11 +99,11 @@ Azure Active Directory を作成し、ユーザーとグループを設定しま
 - オンプレミスの Active Directory ドメイン サービスを Azure Active Directory とフェデレーションします。
 - **AD FS** ツールを使用し、**[サービス]** の **[エンドポイント]** セクションで、URL パス **/adfs/services/trust/13/windowstransport** の **WS-Trust 1.3** を有効にします。
 
-詳細については、「[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-add-domain.md)」、「[Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure による Windows Server Active Directory とのフェデレーションのサポートの実現)](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」「[Azure AD ディレクトリの管理](https://msdn.microsoft.com/library/azure/hh967611.aspx)」、「[Windows PowerShell による Azure AD の管理](https://msdn.microsoft.com/library/azure/jj151815.aspx)」を参照してください。
+詳細については、「[オンプレミス ID と Azure Active Directory の統合](../active-directory/active-directory-aadconnect.md)」、「[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-add-domain.md)」「[Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure による Windows Server Active Directory とのフェデレーションのサポートの実現)](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」、「[Azure AD ディレクトリの管理](https://msdn.microsoft.com/library/azure/hh967611.aspx)」、「[Windows PowerShell による Azure AD の管理](https://msdn.microsoft.com/library/azure/jj151815.aspx)」を参照してください。
 
-## 2\.データベースが Azure SQL Database V12 にあることを確認する
+## 2\.SQL Database が Azure SQL Database V12 であることを確認する
 
-Azure Active Directory 認証は、最新の SQL Database V12 でサポートされています。SQL Database V12 の概要と、自身のリージョンで SQL Database V12 が使用可能かどうかについては、[最新の SQL Database V12 の新機能](sql-database-v12-whats-new.md)に関するページを参照してください。
+Azure Active Directory 認証は、最新の SQL Database V12 でサポートされています。SQL Database V12 の概要と、自身のリージョンで SQL Database V12 が使用可能かどうかについては、[最新の SQL Database V12 の新機能](sql-database-v12-whats-new.md)に関するページを参照してください。Azure SQL Data Warehouse は V12 でのみ使用できるので、SQL Data Warehouse の場合はこの手順は必要ありません。
 
 既存のデータベースがある場合は、(たとえば SQL Server Management Studio を使用して) データベースに接続して `SELECT @@VERSION;` を実行することで、SQL Database V12 でホストされていることを確認します。SQL Database V12 のデータベースで予想される出力は **Microsoft SQL Azure (RTM) - 12.0** 以上です。
 
@@ -124,7 +127,7 @@ Azure Active Directory 認証は、最新の SQL Database V12 でサポートさ
 4. **[設定]** 領域でサブスクリプションをクリックし、ページの下部にある **[ディレクトリの編集]** をクリックします。
 
 	![ad-settings-portal][5]
-5. **[ディレクトリの編集]** ボックスで、SQL Server に関連付けられている Azure Active Directory を選択し、矢印をクリックして次に進みます。
+5. **[ディレクトリの編集]** ボックスで、SQL Server または SQL Data Warehouse に関連付けられている Azure Active Directory を選択し、矢印をクリックして次に進みます。
 
 	![edit-directory-select][6]
 6. **[ディレクトリ マッピングの確認]** ダイアログ ボックスで、"**共同管理者は全員削除されます。**" と表示されていることを確認します。
@@ -132,22 +135,22 @@ Azure Active Directory 認証は、最新の SQL Database V12 でサポートさ
 	![edit-directory-confirm][7]
 7. チェック マークをクリックしてポータルを再度読み込みます。
 
-> [AZURE.NOTE] ディレクトリを変更すると、共同管理者、Azure AD のユーザーとグループ、ディレクトリでサポートされているリソース ユーザーすべてへのアクセスが削除され、それらはこのサブスクリプションまたはそのリソースにアクセスできなくなります。サービス管理者の場合のみ、新しいディレクトリに基づくプリンシパルのアクセスを構成できます。この変更は、すべてのリソースに反映されるまで相当な時間がかかる場合があります。ディレクトリを変更すると、SQL Database の Azure AD 管理者も変更されるため、既存のすべての Azure AD ユーザーはデータベースにアクセスできなくなります。Azure AD の管理者を再設定し (後で説明)、新しい Azure AD ユーザーを作成する必要があります。
+> [AZURE.NOTE] ディレクトリを変更すると、共同管理者、Azure AD のユーザーとグループ、ディレクトリでサポートされているリソース ユーザーすべてへのアクセスが削除され、それらはこのサブスクリプションまたはそのリソースにアクセスできなくなります。サービス管理者の場合のみ、新しいディレクトリに基づくプリンシパルのアクセスを構成できます。この変更は、すべてのリソースに反映されるまで相当な時間がかかる場合があります。ディレクトリを変更すると、SQL Database および SQL Data Warehouse の Azure AD 管理者も変更されるため、既存のすべての Azure AD ユーザーはデータベースにアクセスできなくなります。Azure AD の管理者を再設定し (後で説明)、新しい Azure AD ユーザーを作成する必要があります。
 
-## 4\.Azure SQL Server 用に Azure Active Directory 管理者を作成する
+## 4\.Azure SQL Server または Azure SQL Data Warehouse 用に Azure Active Directory 管理者を作成する
 
-各 Azure SQL Server の開始には、Azure SQL Server 全体の管理者である 1 つのサーバー管理者アカウントを使用します。Azure AD アカウントであるもう 1 つのサーバー管理者を作成する必要があります。このプリンシパルは、master データベースの包含データベース ユーザーとして作成されます。管理者の場合、サーバー管理者アカウントは、すべてのユーザー データベースの **db\_owner** ロールのメンバーであり、**dbo** ユーザーとして各ユーザー データベースに入ります。サーバー管理者アカウントの詳細については、「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」と、「[Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md)」の「**ログインとユーザー**」セクションを参照してください。
+各 Azure SQL Server または SQL Data Warehouse の開始には、Azure SQL Server 全体の管理者である 1 つのサーバー管理者アカウントを使用します。Azure AD アカウントであるもう 1 つのサーバー管理者を作成する必要があります。このプリンシパルは、master データベースの包含データベース ユーザーとして作成されます。管理者の場合、サーバー管理者アカウントは、すべてのユーザー データベースの **db\_owner** ロールのメンバーであり、**dbo** ユーザーとして各ユーザー データベースに入ります。サーバー管理者アカウントの詳細については、「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」と、「[Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md)」の「**ログインとユーザー**」セクションを参照してください。
 
 geo レプリケーションで Azure Active Directory を使用する場合は、プライマリ サーバーとセカンダリ サーバーの両方で Azure Active Directory 管理者を構成する必要があります。サーバーに Azure Active Directory 管理者がいない場合、Azure Active Directory へのログイン時に、"Cannot connect" サーバー エラーが生じます。
 
 > [AZURE.NOTE] Azure AD アカウント (Azure SQL Server の管理者アカウントを含む) に基づいていないユーザーは、Azure AD に基づくユーザーを作成できません。これは、Azure AD で提示されるデータベース ユーザーを検証するアクセス許可がないためです。
 
-### Azure ポータルを使用して、Azure SQL Server の Azure Active Directory 管理者をプロビジョニングします。
+### Azure ポータルを使用して、Azure SQL Server または SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします。
 
-1. [Azure ポータル](https://portal.azure.com/)の右上隅にある接続をクリックすると、考えられる Active Directory のボックスの一覧が表示されます。既定の Azure AD として適切な Active Directory を選択します。この手順では、Active Directory とサブスクリプションの関連付けを Azure SQL Database とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします。
+1. [Azure ポータル](https://portal.azure.com/)の右上隅にある接続をクリックすると、考えられる Active Directory のボックスの一覧が表示されます。既定の Azure AD として適切な Active Directory を選択します。この手順では、Active Directory とサブスクリプションの関連付けを Azure SQL Database とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします。(次のスクリーンショットは Azure SQL Database のものですが、Azure SQL Data Warehouse の場合も同じです。)
 
 	![choose-ad][8]
-2. 左側のバナーで **[SQL Server]** を選択し、使用する **SQL Server** を選択した後、**[SQL Server]** ブレードの上部にある **[設定]** をクリックします。
+2. 左側のバナーで **[SQL Server]** を選択し、使用する **SQL Server** または **SQL Data Warehouse** を選択した後、**[SQL Server]** ブレードの上部にある **[設定]** をクリックします。
 
 	![ad settings][9]
 3. **[設定]** ブレードで **[Active Directory 管理者 (プレビュー)]** をクリックして、プレビューの句をそのまま使用します。
@@ -160,9 +163,9 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
 > [AZURE.NOTE] Azure AD 管理者をセットアップする場合、新しい管理者名 (ユーザーまたはグループ) が SQL Server 認証のログインとして、マスター データベース内に存在していてはなりません。存在する場合、Azure AD 管理者のセットアップは失敗します。その作成をロールバックされ、そのような管理者 (名前) が既に存在していることが示されます。前述 SQL Server 認証ログインは、Azure AD には属していないため、Azure AD 認証を使用してサーバーに接続する操作は失敗します。
 
-後で管理者を削除するには、**[Active Directory 管理者]** ブレードの上部にある **[管理者の削除]** をクリックします。
+後で管理者を削除するには、**[Active Directory 管理者]** ブレードの上部にある **[管理者の削除]** をクリックし、**[保存]** をクリックします。
 
-### PowerShell を使用して Azure SQL Server の Azure AD 管理者をプロビジョニングする
+### PowerShell を使用して Azure SQL Server または Azure SQL Data Warehouse の Azure AD 管理者をプロビジョニングする
 
 
 
@@ -178,9 +181,9 @@ Azure AD 管理者のプロビジョニングと管理に使用するコマン�
 
 | コマンドレット名 | 説明 |
 |---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| [Set-AzureRMSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt603544.aspx) | Azure SQL Server の Azure Active Directory 管理者をプロビジョニングします(現在のサブスクリプションから実行する必要があります)。 |
-| [Remove-AzureRMSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt619340.aspx) | Azure SQL Server の Azure Active Directory 管理者を削除します。 |
-| [Get-AzureRMSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt603737.aspx) | 現在 Azure SQL Server 用に構成されている Azure Active Directory 管理者に関する情報を返します。 |
+| [Set-AzureRMSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt603544.aspx) | Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします (現在のサブスクリプションから実行する必要があります)。 |
+| [Remove-AzureRMSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt619340.aspx) | Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
+| [Get-AzureRMSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt603737.aspx) | 現在 Azure SQL Server または Azure SQL Data Warehouse 用に構成されている Azure Active Directory 管理者に関する情報を返します。 |
 
 これらの各コマンドの詳細を確認するには、``get-help Set-AzureRmSqlServerActiveDirectoryAdministrator`` のように PowerShell コマンドの get-help を使用します。
 
@@ -219,7 +222,7 @@ Azure Active Directory 管理者は、REST API を使用してプロビジョニ
 
 ## 5\.クライアント コンピューターを構成する
 
-Azure AD の ID を使用して Azure SQL Database に接続するアプリケーションまたはユーザーが存在するすべてのクライアント コンピューターには、次のソフトウェアをインストールする必要があります。
+Azure AD の ID を使用して Azure SQL Database または Azure SQL Data Warehouse に接続するアプリケーションまたはユーザーが存在するすべてのクライアント コンピューターには、次のソフトウェアをインストールする必要があります。
 
 - [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) から入手できる .NET framework 4.6 以降。
 - SQL Server 用の Azure Active Directory 認証ライブラリ (**ADALSQL.DLL**)。ダウンロード センターの「[Microsoft SQL Server 用の Microsoft Active Directory 認証ライブラリ](http://www.microsoft.com/download/details.aspx?id=48742)」から複数の言語 (x86 と amd64 の両方) を入手できます。
@@ -237,19 +240,19 @@ Azure AD の ID を使用して Azure SQL Database に接続するアプリケ�
 
 Azure Active Directory 認証では、データベース ユーザーを包含データベース ユーザーとして作成することが必要です。Azure AD の ID に基づく包含データベース ユーザーは、master データベースにログインを持たないデータベース ユーザーで、そのデータベースに関連付けられている Azure AD ディレクトリの ID にマップされています。Azure AD の ID には、個々のユーザー アカウントにもグループ アカウントにもなります。包含データベース ユーザーの詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 
-> [AZURE.NOTE] ポータルを使用してデータベース ユーザー (管理者を除く) を作成することはできません。RBAC ロールは SQL Server に反映されず、Azure RBAC ロールはデータベースのアクセス許可に適用されません。たとえば、**SQL Server の共同作業者**ロールでは SQL Database に接続するアクセス許可が付与されません。Transact-SQL ステートメントを使用して、アクセス許可をデータベースで直接付与する必要があります。
+> [AZURE.NOTE] データベース ユーザー (管理者を除く) はポータルを使用して作成することはできず、RBAC ロールは SQL Server または SQL Data Warehouse には反映されません。Azure RBAC ロールは Azure リソースの管理に使用され、データベースのアクセス許可には適用されません。たとえば、**SQL Server の共同作業者**ロールでは SQL Database または SQL Data Warehouse に接続するアクセス許可が付与されません。Transact-SQL ステートメントを使用して、アクセス許可をデータベースで直接付与する必要があります。
 
-### SQL Server Management Studio を使用してユーザー データベースに接続する
+### SQL Server Management Studio または SQL Server Data Tools を使用してユーザーのデータベースまたはデータ ウェアハウスに接続する
 
-Azure AD 管理者が正しく設定されていることを確認するには、Azure AD の管理者アカウントを使用して **master** データベースに接続します。Azure AD ベースの包含データベース ユーザー (データベースを所有しているサーバー管理者以外) をプロビジョニングするには、そのデータベースへのアクセス権を持つ Azure AD の ID を使用してデータベースに接続します。
+Azure AD 管理者が正しく設定されていることを確認するには、Azure AD の管理者アカウントを使用して **master** データベースに接続します。Azure AD ベースの包含データベース ユーザー (データベースを所有しているサーバー管理者以外) をプロビジョニングするには、そのデータベースへのアクセス権を持つ Azure AD の ID を使用してデータベースに接続します。(SSMS は SQL Data Warehouse に対してはサポートされていません。代わりに SSDT を使用してください。)
 
-> [AZURE.IMPORTANT] Azure Active Directory 認証のサポートは、[SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) で利用可能です。
+> [AZURE.IMPORTANT] Azure Active Directory 認証は、[SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) および Visual Studio 2015 の [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) でサポートされています。
 
 #### Active Directory 統合認証を使用して接続する
 
 フェデレーション ドメインから Azure Active Directory の資格情報を使用して Windows にログオンしている場合は、この方法を使用します。
 
-1. Management Studio を起動して、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory 統合認証]** を選択します。接続用の既存の資格情報が表示されるため、パスワードは必要ないか、入力できません。![AD 統合認証を選択する][11]
+1. Management Studio または Data Tools を起動して、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory 統合認証]** を選択します。接続用の既存の資格情報が表示されるため、パスワードは必要ないか、入力できません。![AD 統合認証を選択する][11]
 
 2. **[オプション]** ボタンをクリックし、**[接続プロパティ]** ページの **[データベースへの接続]** ボックスに、接続先となるユーザー データベースの名前を入力します。
 
@@ -259,8 +262,8 @@ Azure AD の管理対象ドメインを使用して Azure AD のプリンシパ�
 
 この方法を使用するのは、Azure とフェデレーションされていないドメインの資格情報を使用して Windows にログオンしている場合や、初期ドメインまたはクライアント ドメインに基づく Azure AD で Azure AD 認証を使用する場合です。
 
-1. Management Studio を起動して、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory パスワード認証]** を選択します。
-2. **[ユーザー名]** ボックスに、**username@domain.com** 形式で Azure Active Directory のユーザー名を入力します。これは、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
+1. Management Studio または Data Tools を起動して、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory パスワード認証]** を選択します。
+2. **[ユーザー名]** ボックスに、****username@domain.com** 形式で Azure Active Directory のユーザー名を入力します。これは、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
 3. **[パスワード]** ボックスに、Azure Active Directory アカウントまたはフェデレーション ドメイン アカウントのユーザー パスワードを入力します。![AD パスワード認証を選択する][12]
 
 4. **[オプション]** ボタンをクリックし、**[接続プロパティ]** ページの **[データベースへの接続]** ボックスに、接続先となるユーザー データベースの名前を入力します。
@@ -291,6 +294,9 @@ Azure AD トークンを使用して接続するアプリケーションを表�
 
 Azure Active Directory の ID に基づく包含データベース ユーザーの作成の詳細については、「[CREATE USER (Transact-SQL)](http://msdn.microsoft.com/library/ms173463.aspx)」を参照してください。
 
+
+> [AZURE.NOTE] Azure SQL Server の Azure Active Directory 管理者を削除すると、Azure AD 認証ユーザーはサーバーに接続できなくなります。必要に応じて、SQL Database 管理者は不要な Azure AD ユーザーを手動で削除できます。
+
 データベース ユーザーを作成すると、そのユーザーは **CONNECT** アクセス許可が付与されるため、**PUBLIC** ロールのメンバーとしてそのデータベースに接続できます。最初にこのユーザーが利用できるアクセス許可は、**PUBLIC** ロールに付与されているアクセス許可か、またはそのユーザーが属している Windows グループに付与されているアクセス許可のみです。Azure AD ベースの包含データベース ユーザーをプロビジョニングすると、他の種類のユーザーにアクセス許可を付与する場合と同様に、そのユーザーに追加のアクセス許可を付与できます。通常は、データベース ロールにアクセス許可を付与し、そのロールにユーザーを追加します。詳細については、[データベース エンジンのアクセス許可の基本知識](http://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)に関するページを参照してください。特殊な SQL Database ロールの詳細については、「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」を参照してください。管理対象ドメインにインポートされるフェデレーション ドメイン ユーザーは、管理対象ドメインの ID を使用する必要があります。
 
 > [AZURE.NOTE] データベースのメタデータでは、Azure AD ユーザーはタイプ E (EXTERNAL\_USER) 、グループはタイプ X (EXTERNAL\_GROUPS) でマークされます。詳細については、「[sys.database\_principals](https://msdn.microsoft.com/library/ms187328.aspx)」を参照してください。
@@ -302,6 +308,7 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 
 - 統合 Windows 認証を使用する
 - Azure AD のプリンシパル名とパスワードを使用する
+- アプリケーション トークン認証を使用する
 
 ### 7\.1.統合 (Windows) 認証を使用して接続する
 
@@ -334,6 +341,7 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 3. アプリケーションを実行するクライアント コンピューター上で証明書を作成します。
 4. アプリケーションのキーとして、証明書を追加します。
 
+詳細については、[SQL Server のセキュリティに関するブログ](https://blogs.msdn.microsoft.com/sqlsecurity/2016/02/09/token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/)を参照してください。
 
 ## 関連項目
 
@@ -359,4 +367,4 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [11]: ./media/sql-database-aad-authentication/11connect-using-int-auth.png
 [12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

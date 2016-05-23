@@ -1,6 +1,6 @@
 <properties
     pageTitle="Table ストレージを使用する方法 (C++) | Microsoft Azure"
-    description="Azure で Table ストレージ サービスを使用する方法について説明します。サンプルは C++ で記述されています。"
+	description="NoSQL データ ストアの Azure Table Storage を使用して、構造化データをクラウドに格納します。"
     services="storage"
     documentationCenter=".net"
     authors="tamram"
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/17/2016"
+	ms.date="04/29/2016"
     ms.author="dineshm"/>
 
 # C++ から Table ストレージを使用する方法
@@ -414,4 +414,4 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 -	[C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
 -	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
-<!----HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

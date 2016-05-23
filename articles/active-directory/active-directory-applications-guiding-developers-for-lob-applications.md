@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/09/2016"
 	ms.author="kgremban"/>
 
-# Azure AD とアプリケーション: 開発者ガイド
-
-## 概要
+# Azure AD とアプリケーション: 基幹業務アプリの開発
 
 このガイドでは、Azure Active Directory (AD) 用の基幹業務 (LoB) アプリケーションの開発の概要について説明します。特に Active Directory/Office 365 のグローバル管理者向けに記述されています。
+
+## 概要
 
 Azure AD と統合されるアプリケーションを構築すると、組織内のユーザーは、Office 365 でシングル サインオンできます。アプリケーションを Azure AD と統合すると、アプリケーションに対して設定する認証ポリシーを管理できます。条件付きアクセスと多要素認証 (MFA) によってアプリを保護する方法については、「[アクセス ルールの構成](active-directory-conditional-access-azuread-connected-apps.md)」を参照してください。
 
@@ -32,12 +32,12 @@ Azure Active Directory を使用するためには、アプリケーションを
 
 - Azure AD が認識するアプリケーションの ID を取得する
 - アプリケーションが自身を AD に対して認証するために使用する 1 つまたは複数のシークレット/キーを取得する
-- Azure ポータルで、名前やロゴなどを使用してアプリケーションをブランド化する
-- アプリ用の Azure AD 承認機能を活用する
-  - アプリケーションのロール ベースのアクセス制御 (RBAC)
+- カスタム名やロゴなどを使用して Azure ポータルでアプリケーションをブランド化する
+- アプリ用に次の Azure AD 承認機能を活用する
+  - ロール ベースのアクセス制御 (RBAC)
   - OAuth 承認サーバーとしての Azure Active Directory (アプリケーションによって公開される API をセキュリティで保護する)
 
-- アプリケーションが期待どおりに機能するために必要なアクセス許可を宣言する。以下が含まれます。
+- アプリケーションが期待どおりに機能するために必要な次のアクセス許可を宣言する
 	  - アプリのアクセス許可 (グローバル管理者のみ)。次に例を示します。
 	    - 別の Azure AD アプリケーションのロール メンバーシップ、または Azure リソース、リソースグループ、またはサブスクリプションに関係するロール メンバーシップ
 	  - 委任されたアクセス許可 (任意のユーザー)次に例を示します。
@@ -53,11 +53,9 @@ Azure Active Directory を使用するためには、アプリケーションを
 - ユーザー割り当てを必要とするようにアプリを構成し、ユーザーを割り当てる
 - 既定のユーザー同意エクスペリエンスを抑制する
 
-## アクセス規則の構成
+## アクセス規則を構成する
 
-既に説明したように、次の記事で、任意のアプリケーションのアクセス規則を構成する方法の詳細を参照してください。
-
-[アクセス規則の構成](active-directory-conditional-access-azuread-connected-apps.md)
+SaaS アプリに対してアプリケーションごとのアクセス規則を構成します。これには、MFA を必須としたり、信頼されたネットワークでのみユーザーにアクセスを許可したりといった構成を含むことができます。この詳細については、[アクセス規則の構成](active-directory-conditional-access-azuread-connected-apps.md)に関するドキュメントをご覧ください。
 
 ## ユーザー割り当てを必要とするようにアプリを構成し、ユーザーを割り当てる
 
@@ -69,16 +67,19 @@ Azure AD Premium または Enterprise Mobility Suite (EMS) のサブスクライ
 
 [アプリケーションへのユーザーの割り当て](active-directory-applications-guiding-developers-assigning-users.md) [アプリケーションへのグループの割り当て](active-directory-applications-guiding-developers-assigning-groups.md)
 
-## ユーザーの同意の抑制
+## ユーザーの同意を抑制する
 
-既定では、ユーザーは、サインインするために必要なアクセス許可に同意する必要があります。アプリケーションへのアクセス許可を付与することを求める同意エクスペリエンスは、そのような決定に慣れていないユーザーの混乱を招く可能性があります。
+既定では、各ユーザーはサインインするために同意エクスペリエンスを経由します。アプリケーションへのアクセス許可を付与することを求める同意エクスペリエンスは、そのような決定に慣れていないユーザーの混乱を招く可能性があります。
 
-信頼できるアプリケーションの場合は、組織内のすべてのユーザーに代わってアプリケーションに同意できます。
+信頼できるアプリケーションの場合は、組織の代理としてアプリケーションに同意することでユーザー エクスペリエンスを簡略化できます。
 
 ユーザーの同意と Azure での同意エクスペリエンスの詳細については、「[Azure Active Directory とアプリケーションの統合](active-directory-integrating-applications.md)」を参照してください 。
 
 ##関連記事
 
+- [Azure AD アプリケーション プロキシを使用してオンプレミス アプリケーションへの安全なリモート アクセスを有効にする](active-directory-application-proxy-get-started.md)
+- [Azure Conditional Access Preview for SaaS Apps](active-directory-conditional-access-azuread-connected-apps.md)
+- [Azure AD を使用したアプリへのアクセスの管理](active-directory-managing-access-to-apps.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

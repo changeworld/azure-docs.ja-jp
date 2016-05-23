@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/28/2015"
+   ms.date="04/26/2016"
    ms.author="v-sharos" />
 
 
@@ -40,7 +40,7 @@
 
     - **[最後の実行]** – スケジュールされている最近のスナップショットの日時
 
-    >[AZURE.NOTE]1 回限りのみのスナップショットの場合、**[次の実行]** と **[最後の実行]** は同じになります。
+    >[AZURE.NOTE] 1 回限りのみのスナップショットの場合、**[次の実行]** と **[最後の実行]** は同じになります。
  
     ![スケジュールされたバックアップ ジョブ](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png)
  
@@ -96,11 +96,11 @@
     
     - **[経過時間]** – バックアップの開始以降に経過した時間。
 
-    - **[平均スループット (MB)]** – 配信されるデータ量の中央値で、メガバイト (MB) で表されます。
+    - **[平均スループット (MB)]** – 処理の合計所要時間に対する処理されたデータの合計バイト数の比率 (MB 単位)。
 
-    - **[処理バイト数 (MB)]** – 処理されたボリューム グループのデータ量 (MB)。
+    - **[処理バイト数 (MB)]** – 処理されたデータの合計バイト数 (MB 単位)。
 
-    - **[書き込みバイト数 (MB)]** – バックアップに書き込まれたデータ量 (MB)。
+    - **[書き込みバイト数 (MB)]** – 書き込まれたデータの合計バイト数 (MB 単位)。これには、データとメタデータが含まれるので、通常は処理バイト数よりも大きくなります。
 
     ![現在実行中のジョブ](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
 
@@ -130,4 +130,4 @@
 
  
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="05/05/2016"
 	ms.author="wesmc"/>
 
 # Xamarin.Forms アプリにプッシュ通知を追加する
@@ -145,6 +145,9 @@
 		using Newtonsoft.Json.Linq;
 		using System.Text;
 		using System.Linq;
+		using Android.Support.V4.App;
+		using Android.Media;
+
 
 9. ファイルの先頭の `using` ステートメントと `namespace` 宣言の間に、次のアクセス許可要求を追加します。
 
@@ -189,12 +192,9 @@
 		    Log.Verbose("PushHandlerBroadcastReceiver", "GCM Registered: " + registrationId);
 		    RegistrationID = registrationId;
 
-		    createNotification("GcmService Registered...", "The device has been Registered, Tap to View!");
-
             var push = TodoItemManager.DefaultManager.CurrentClient.GetPush();
 
 		    MainActivity.CurrentActivity.RunOnUiThread(() => Register(push, null));
-
 		}
 
         public async void Register(Microsoft.WindowsAzure.MobileServices.Push push, IEnumerable<string> tags)
@@ -206,7 +206,7 @@
                 JObject templates = new JObject();
                 templates["genericMessage"] = new JObject
                 {
-                  {"body", templateBodyGCM}
+                	{"body", templateBodyGCM}
                 };
 
                 await push.RegisterAsync(RegistrationID, templates);
@@ -256,28 +256,35 @@
 		    createNotification("Unknown message details", msg.ToString());
 		}
 
-		void createNotification(string title, string desc)
-		{
-		    //Create notification
-		    var notificationManager = GetSystemService(Context.NotificationService) as NotificationManager;
+        void createNotification(string title, string desc)
+        {
+            //Create notification
+            var notificationManager = GetSystemService(Context.NotificationService) as NotificationManager;
 
-		    //Create an intent to show ui
-		    var uiIntent = new Intent(this, typeof(MainActivity));
+            //Create an intent to show ui
+            var uiIntent = new Intent(this, typeof(MainActivity));
 
-		    //Create the notification
-		    var notification = new Notification(Android.Resource.Drawable.SymActionEmail, title);
+            //Use Notification Builder
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
 
-		    //Auto cancel will remove the notification once the user touches it
-		    notification.Flags = NotificationFlags.AutoCancel;
+            //Create the notification
+            //we use the pending intent, passing our ui intent over which will get called
+            //when the notification is tapped.
+            var notification = builder.SetContentIntent(PendingIntent.GetActivity(this, 0, uiIntent, 0))
+                    .SetSmallIcon(Android.Resource.Drawable.SymActionEmail)
+                    .SetTicker(title)
+                    .SetContentTitle(title)
+                    .SetContentText(desc)
 
-		    //Set the notification info
-		    //we use the pending intent, passing our ui intent over which will get called
-		    //when the notification is tapped.
-		    notification.SetLatestEventInfo(this, title, desc, PendingIntent.GetActivity(this, 0, uiIntent, 0));
+                    //Set the notification sound
+                    .SetSound(RingtoneManager.GetDefaultUri(RingtoneType.Notification))
 
-		    //Show the notification
-		    notificationManager.Notify(1, notification);
-		}
+                    //Auto cancel will remove the notification once the user touches it
+                    .SetAutoCancel(true).Build();
+
+            //Show the notification
+            notificationManager.Notify(1, notification);
+        }
 
 14. 受信側では、`OnUnRegistered` ハンドラーと `OnError` ハンドラーも実装する必要があります。
 
@@ -297,13 +304,11 @@
 
 1. Visual Studio または Xamarin Studio で、**droid** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
 
-2. **[Run]** ボタンを押して、プロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。
+2. **[実行]** をクリックしてプロジェクトをビルドし、Android デバイスでアプリケーションを開始します。
 
-	> [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
+3. アプリケーションで、タスクを入力し、プラス (**+**) アイコンをクリックします。
 
-2. アプリケーションで、タスクを入力し、プラス (**+**) アイコンをクリックします。
-
-3. 通知が受信されたことを確認し、**[OK]** をクリックして通知を破棄します。
+4. 項目が追加されたときに、通知が受信されていることを確認します。
 
 
 
@@ -405,7 +410,7 @@
 
 1. iOS プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
 
-2. Visual Studio で **[実行]** または **F5** キーを押して、プロジェクトをビルドし、iOS 対応デバイスでアプリケーションを起動します。**[OK]** をクリックして、プッシュ通知を受け入れます。
+2. Visual Studio で **[実行]** または **F5** キーを押して、プロジェクトをビルドし、iOS デバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。
 
 	> [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
@@ -437,9 +442,13 @@
 
 		using System.Threading.Tasks;
 		using Windows.Networking.PushNotifications;
-		using WesmcMobileAppGaTest;
 		using Microsoft.WindowsAzure.MobileServices;
 		using Newtonsoft.Json.Linq;
+
+	また、`TodoItemManager` クラスが含まれるポータブル プロジェクトの名前空間に対して、`using` ステートメントも追加します。
+
+		using <Your namespace for the TodoItemManager class>;
+ 
 
 2. App.xaml.cs に、次の `InitNotificationsAsync` メソッドを追加します。このメソッドによって、プッシュ通知チャネルが取得され、通知ハブからテンプレート通知を受け取るためのテンプレートが登録されます。`messageParam` をサポートするテンプレート通知が、このクライアントに配信されるようになります。
 
@@ -455,15 +464,15 @@
 
             JObject templates = new JObject();
             templates["genericMessage"] = new JObject
-                {
-                  {"body", templateBodyWNS},
-                  {"headers", headers} // Only needed for WNS & MPNS
-                };
+			{
+				{"body", templateBodyWNS},
+				{"headers", headers} // Only needed for WNS & MPNS
+			};
 
             await TodoItemManager.DefaultManager.CurrentClient.GetPush().RegisterAsync(channel.Uri, templates);
         }
 
-3. App.xaml.cs で、`async` 属性を使用して `OnLaunched` イベント ハンドラーを更新し、`InitNotificationsAsync` を呼び出します。
+3. App.xaml.cs で、`async` 属性を使用して `OnLaunched` イベント ハンドラーを更新し、メソッドの末尾に `InitNotificationsAsync` への呼び出しを追加します。
 
         protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
@@ -510,13 +519,11 @@
 1. Visual Studio で、**WinApp** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
 
 
-2. **[Run]** ボタンを押して、プロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。
+2. **[実行]** ボタンを押してプロジェクトをビルドし、アプリケーションを開始します。
 
-	> [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
+3. アプリケーションで、新しい todoitem の名前を入力し、プラス (**+**) アイコンをクリックして追加します。
 
-3. アプリケーションで、タスクを入力し、プラス (**+**) アイコンをクリックします。
-
-4. 通知が受信されたことを確認し、**[OK]** をクリックして通知を破棄します。
+4. 項目が追加されたときに、通知が受信されていることを確認します。
 
 
 
@@ -527,4 +534,4 @@
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

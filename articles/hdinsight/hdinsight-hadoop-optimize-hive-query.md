@@ -57,6 +57,7 @@ Tez はより高速です。それは次の理由によります。
 
 Windows ベースの HDInsight クラスターの場合は、プロビジョニング時に Tez を有効にする必要があります。Tez が有効になっている Hadoop クラスターのプロビジョニング用のサンプル Azure PowerShell スクリプトを次に示します。
 
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 	$clusterName = "[HDInsightClusterName]"
 	$location = "[AzureDataCenter]" #i.e. West US
@@ -220,4 +221,4 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

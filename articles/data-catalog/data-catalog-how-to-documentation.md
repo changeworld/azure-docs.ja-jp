@@ -1,20 +1,20 @@
 <properties
-   pageTitle="データ ソースの文書化の方法 | Microsoft Azure"
-   description="この記事では、Azure Data Catalog でデータ資産を文書化する方法について重点的に説明しています。"
-   services="data-catalog"
-   documentationCenter=""
-   authors="dvana"
-   manager="NA"
-   editor=""
-   tags=""/>
+	pageTitle="データ ソースの文書化の方法 | Microsoft Azure"
+	description="この記事では、Azure Data Catalog でデータ資産を文書化する方法について重点的に説明しています。"
+	services="data-catalog"
+	documentationCenter=""
+	authors="spelluru"
+	manager="NA"
+	editor=""
+	tags=""/>
 <tags
-   ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="03/31/2016"
-   ms.author="derrickv"/>
+	ms.service="data-catalog"
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="04/07/2016"
+	ms.author="spelluru"/>
 
 # データ ソースの文書化
 
@@ -48,4 +48,4 @@
 
 **Azure Data Catalog** でデータ ソースを文書化することにより、ニーズに応じた詳細度でデータ資産の概要を作成できます。既存のコンテンツ リポジトリに保存されているコンテンツは、リンクを使って関連付けることで、既にある文書やデータ資産を一元化することができます。ユーザーは適切なデータ資産を発見したうえで、ドキュメント全体を余さず利用することができます。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

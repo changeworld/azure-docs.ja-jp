@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/13/2016"
+	ms.date="04/18/2016"
 	ms.author="csand"/>
 
 
@@ -24,7 +24,7 @@
 
 ## Azure Automation とは
 
-[Azure Automation](https://azure.microsoft.com/services/automation/) は、プロセスの自動化によってクラウド管理を簡略化するための Azure サービスです。Azure Automation を使用して手動タスク、頻繁に繰り返されるタスク、実行時間の長いタスク、エラーが発生しやすいタスクを自動化し、信頼性と効率性を向上して組織のゴール達成までの時間を短縮できます。
+[Azure Automation](https://azure.microsoft.com/services/automation/) は、プロセスの自動化によってクラウド管理を簡略化するための Azure サービスです。Azure Automation を使用して手動タスク、繰り返しタスク、実行時間の長いタスク、エラーが発生しやすいタスクを自動化し、信頼性と効率性を向上して組織のゴール達成までの時間を短縮できます。
 
 Azure Automation は、ニーズに対応可能な信頼性と可用性の高いワークフロー実行エンジンを提供します。Azure Automation では、サード パーティ製のシステムによって手動でプロセスを開始したり、必要なときに正確にタスクが起動されるようにスケジュールされた間隔でプロセスを開始できます。
 
@@ -33,13 +33,15 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 
 ## Azure Automation を Azure Web App の管理に役立てる方法
 
-[Azure PowerShell ツール](https://msdn.microsoft.com/library/azure/jj156055.aspx)で利用可能な PowerShell コマンドレットを使用することにより、Azure Automation で Azure Web App を管理できます。Azure Automation には、このような Azure Web App PowerShell コマンドレットがあらかじめ用意されており、サービス内ですべての Web App 管理タスクを実行できます。Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスとサード パーティ システム全体の複雑なタスクを自動化することもできます。
+[Azure PowerShell モジュール](../powershell-install-configure/)で利用可能な PowerShell コマンドレットを使用することにより、Azure Automation で Web App を管理できます。[こうした Azure Web App PowerShell コマンドレットを Azure Automation にインストール](https://azure.microsoft.com/blog/announcing-azure-resource-manager-support-azure-automation-runbooks/)することで、サービス内ですべての Web App 管理タスクを実行できます。Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスとサード パーティ システム全体の複雑なタスクを自動化することもできます。
 
+Automation で App Services を管理する例については、
+* [Web Apps を管理するためのスクリプト](https://azure.microsoft.com/documentation/scripts/)に関するページをご覧ください
 
 ## 次のステップ
 
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure Web App を管理する方法について説明しました。Azure Automation の詳細については、これらのリンクをご覧ください。
 
-* [Azure Automation の使用](../automation/automation-intro.md) (Azure Automation の作業開始のチュートリアル)
+* Azure Automation の[作業開始のチュートリアル](https://azure.microsoft.com/documentation/learning-paths/automation/)に関するページをご覧ください
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

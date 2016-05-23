@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 # Azure での Cloud Services の継続的な配信
@@ -44,21 +44,21 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 
 1.  ビルド サーバーに Visual Studio がインストールされている場合は、Windows 内の **Visual Studio Tools** フォルダーで **Visual Studio Commmand Prompt** を見つけてそれを選択します。
 
-    Visual Studio がビルド サーバーにインストールされていない場合は、コマンド プロンプトを開き、MSBuild.exe へのパスを確認します。MSBuild は、.NET Framework と共に %WINDIR%\\Microsoft.NET\\Framework\\*Version* というパスにインストールされます。たとえば、.NET Framework 4 をインストールしたときに MSBuild.exe を PATH 環境変数に追加するには、コマンド プロンプトで次のコマンドを入力します。
+    Visual Studio がビルド サーバーにインストールされていない場合は、コマンド プロンプトを開き、MSBuild.exe へのパスを確認します。MSBuild は、.NET Framework と共に %WINDIR%\\Microsoft.NET\\Framework\*Version* というパスにインストールされます。たとえば、.NET Framework 4 をインストールしたときに MSBuild.exe を PATH 環境変数に追加するには、コマンド プロンプトで次のコマンドを入力します。
 
         set PATH=%PATH%;"C:\Windows\Microsoft.NET\Framework\v4.0.30319"
 
 2.  コマンド プロンプトで、ビルドする Azure プロジェクト ファイルが含まれているフォルダーに移動します。
 
-3.  次の例に示すように、/target:Publish オプションを指定して msbuild を実行します。
+3.  次の例に示すように、/target:Publish オプションを指定して MSBuild を実行します。
 
         MSBuild /target:Publish
 
     このオプションは、/t:Publish のように短縮できます。Azure SDK をインストールしている場合は、MSBuild の /t:Publish オプションと Visual Studio の Publish コマンドとを混同しないように注意してください。/t:Publish オプションは、Azure パッケージをビルドするのみです。Visual Studio の Publish コマンドとは異なり、パッケージをデプロイしません。
 
-    必要に応じて、プロジェクト名を MSBuild のパラメーターとして指定できます。このパラメーターを指定しない場合は、現在のディレクトリが使用されます。MSBuild のコマンド ライン オプションの詳細については、「MSBuild コマンド ライン リファレンス」[1]を参照してください。
+    必要に応じて、プロジェクト名を MSBuild のパラメーターとして指定できます。このパラメーターを指定しない場合は、現在のディレクトリが使用されます。MSBuild のコマンド ライン オプションの詳細については、「[MSBuild コマンド ライン リファレンス](1)」を参照してください。
 
-4.  出力を見つけます。既定では、プロジェクトのルート フォルダーに対してディレクトリが作成されます (たとえば、*ProjectDir*\\bin\\*Configuration*\\app.publish\\)。Azure プロジェクトをビルドすると、パッケージ ファイルとそれに対応する構成ファイルの 2 つのファイルが生成されます。
+4.  出力を見つけます。既定では、プロジェクトのルート フォルダーに対してディレクトリが作成されます (たとえば、*ProjectDir*\\bin\*Configuration*\\app.publish\\)。Azure プロジェクトをビルドすると、パッケージ ファイルとそれに対応する構成ファイルの 2 つのファイルが生成されます。
 
     -   Project.cspkg
     -   ServiceConfiguration.*TargetProfile*.cscfg
@@ -105,7 +105,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 このセクションでは、オプション パラメーターを使用して、クラウド アプリケーション パッケージ出力を Azure に発行する Windows PowerShell スクリプトを作成する方法について説明します。このスクリプトは、カスタム ビルド自動化のビルド手順の後に呼び出すことができます。このスクリプトは、Visual Studio TFS チーム ビルドのプロセス テンプレート ワークフロー アクティビティから呼び出すこともできます。
 
-1.  [Azure PowerShell コマンドレット][] \(v0.6.1 以降) をインストールします。コマンドレット セットアップ フェーズで、スナップインとしてインストールすることを選択します。従来 CodePlex で提供されていたバージョンは 2.x.x でしたが、これはそれに代わる 公式にサポートされたバージョンです。
+1.  [Azure PowerShell コマンドレット][] (v0.6.1 以降) をインストールします。コマンドレット セットアップ フェーズで、スナップインとしてインストールすることを選択します。従来 CodePlex で提供されていたバージョンは 2.x.x でしたが、これはそれに代わる 公式にサポートされたバージョンです。
 
 2.  [スタート] メニューまたは [スタート] ページを使用して Azure PowerShell を起動します。この方法で起動すると、Azure PowerShell コマンドレットが読み込まれます。
 
@@ -123,29 +123,29 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     サブスクリプションに関する情報が表示されます。すべての情報が正しいことを確認します。
 
-4.  この記事の末尾に示されているスクリプト テンプレートをスクリプト フォルダーに c:\\scripts\\WindowsAzure\\**PublishCloudService.ps1** として保存します。
+4.  この記事の末尾に示されているスクリプト テンプレートをスクリプト フォルダーに c:\\scripts\\WindowsAzure\**PublishCloudService.ps1** として保存します。
 
 5.  スクリプトのパラメーター セクションを見直します。既定値を追加または変更します。これらの値は、明示的なパラメーター値を渡すことでオーバーライドできます。
 
 6.  発行スクリプトの対象となる有効なクラウド サービスおよびストレージ アカウントがサブスクリプションに作成されていることを確認します。ストレージ アカウント (BLOB ストレージ) はアップロード用に使用され、デプロイを作成するときにデプロイ パッケージと config ファイルを一時的に格納します。
 
-    -   新しいクラウド サービスを作成するには、このスクリプトを呼び出すか、Microsoft Azure 管理ポータルを使用することができます。クラウド サービス名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。
+    -   新しいクラウド サービスを作成するには、このスクリプトを呼び出すか、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用します。クラウド サービス名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。
 
             New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 
-    -   新しいストレージ アカウントを作成するには、このスクリプトを呼び出すか、Microsoft Azure 管理ポータルを使用します。ストレージ アカウント名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。クラウド サービスと同じ名前を使用してもかまいません。
+    -   新しいストレージ アカウントを作成するには、このスクリプトを呼び出すか、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用します。ストレージ アカウント名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。クラウド サービスと同じ名前を使用してもかまいません。
 
             New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 
 7.  スクリプトは、Azure PowerShell から直接呼び出す以外に、ホスト ビルド自動化に関連付けてパッケージがビルドされるたびに実行されるように設定できます。
 
-    >[AZURE.IMPORTANT]このスクリプトは、既定で既存のデプロイを削除し置き換えます (既存のデプロイが検出された場合)。これは、ユーザーへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
+    >[AZURE.IMPORTANT] このスクリプトは、既定で既存のデプロイを削除し置き換えます (既存のデプロイが検出された場合)。これは、ユーザーへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
 
     **サンプル シナリオ 1:** サービスのステージング環境への継続的なデプロイ:
 
         PowerShell c:\scripts\windowsazure\PublishCloudService.ps1 -environment Staging -serviceName mycloudservice -storageAccountName mystoragesaccount -packageLocation c:\drops\app.publish\ContactManager.Azure.cspkg -cloudConfigLocation c:\drops\app.publish\ServiceConfiguration.Cloud.cscfg -subscriptionDataFile c:\scripts\default.publishsettings
 
-    通常は、この後にテスト実行検証と VIP スワップが行われます。VIP スワップは、Azure 管理ポータルまたは Move-Deployment コマンドレットを使用して実行できます。
+    通常は、この後にテスト実行検証と VIP スワップが行われます。VIP スワップは、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)または Move-Deployment コマンドレットを使用して実行できます。
 
     **サンプル シナリオ 2:** 専用テスト サービスの運用環境への継続的なデプロイ
 
@@ -169,7 +169,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
         Add-AzureCertificate -serviceName 'mytestcloudservice' -certToDeploy (get-item cert:\CurrentUser\MY\C33B6C432C25581601B84C80F86EC2809DC224E8
 
-    または、Azure 管理ポータルを使用して、証明書ファイル PFX を秘密キーと共にエクスポートし、証明書を各ターゲット クラウド サービスにアップロードすることもできます。詳細については、[http://msdn.microsoft.com/library/windowsazure/gg443832.aspx][] の記事を参照してください。
+    または、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用して、証明書ファイル PFX を秘密キーと共にエクスポートし、証明書を各ターゲット クラウド サービスにアップロードすることもできます。詳細については、[http://msdn.microsoft.com/library/windowsazure/gg443832.aspx][] の記事を参照してください。
 
     **デプロイのアップグレードと、デプロイの削除後に新しいデプロイを作成する操作**
 
@@ -177,7 +177,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     デプロイのアップグレード操作は、スクリプトで ($enableDeploymentUpgrade = 0)、またはパラメーターとして *-enableDeploymentUpgrade 0* を渡すことによって無効にできます。これにより、スクリプトの動作が変更され、既存のデプロイが削除された後、新しいデプロイが作成されます。
 
-    >[AZURE.IMPORTANT]このスクリプトは、既定で既存のデプロイを削除し置き換えます (既存のデプロイが検出された場合)。これは、ユーザー/オペレーターへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
+    >[AZURE.IMPORTANT] このスクリプトは、既定で既存のデプロイを削除し置き換えます (既存のデプロイが検出された場合)。これは、ユーザー/オペレーターへのプロンプトが不可能な自動化から継続的な配信を実現するために必要な操作です。
 
 ## 5: TFS チーム ビルドを使用してパッケージを発行する
 
@@ -573,4 +573,4 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
   [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
   [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

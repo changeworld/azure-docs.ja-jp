@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/03/2016"
+   ms.date="05/04/2016"
    ms.author="barbkess;sonyama;"/>
 
 # Azure SQL Data Warehouse でのデータベースの管理
@@ -115,7 +115,7 @@ geo リストア機能の使用については、「[Geo-restore from snapshot (
 <!--Image references-->
 
 <!--Article references-->
-[Azure storage redundancy options (Azure ストレージ冗長オプション)]: storage-redundancy.md#read-access-geo-redundant-storage
+[Azure storage redundancy options (Azure ストレージ冗長オプション)]: ../storage/storage-redundancy.md#read-access-geo-redundant-storage
 [SQL Data Warehouse の作成 (Azure ポータル)]: sql-data-warehouse-get-started-provision.md
 [Create a database (PowerShell) (データベースの作成 (PowerShell))]: sql-data-warehouse-get-started-provision-powershell
 [connection]: sql-data-warehouse-develop-connections.md
@@ -139,4 +139,4 @@ geo リストア機能の使用については、「[Geo-restore from snapshot (
 <!--Other web references-->
 [Azure ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

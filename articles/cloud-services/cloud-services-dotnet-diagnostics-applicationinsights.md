@@ -4,7 +4,7 @@
    services="cloud-services"
    documentationCenter=".net"
    authors="sbtron"
-   manager=""
+   manager="timlt"
    editor="tysonn" />
 <tags
    ms.service="cloud-services"
@@ -78,4 +78,4 @@ Application Insights で Azure 診断データを表示するには:
 [5]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/metrics-explorer-custom-metrics.png
 [6]: ./media/cloud-services-dotnet-diagnostics-applicationinsights/search-windowseventlog-error.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

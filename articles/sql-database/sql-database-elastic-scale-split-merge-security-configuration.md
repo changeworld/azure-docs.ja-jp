@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="Elastic Scale のセキュリティの構成 | Microsoft Azure" 
+    pageTitle="Split-Merge セキュリティの構成 | Microsoft Azure" 
     description="暗号化のための x409 証明書の設定" 
     metaKeywords="Elastic Database certificates security" 
     services="sql-database" 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="02/23/2016" 
+    ms.date="04/26/2016" 
     ms.author="torsteng;sidneyh" />
 
 
@@ -357,7 +357,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 * 表示される [証明書] ダイアログ ボックスで [詳細] タブをクリックする
 * すべてが表示されていることを確認する
 * 一覧の Thumbprint という名前のフィールドを選択する
-* サムプリントの値をコピーする **最初の桁の前にある非表示の Unicode 文字を削除する** すべてのスペースを削除する
+* サムプリントの値をコピーする ** 最初の桁の前にある非表示の Unicode 文字を削除する ** すべてのスペースを削除する
 
 ## 許可されているクライアントをサービス構成ファイルに構成する
 
@@ -487,4 +487,4 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

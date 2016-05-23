@@ -14,21 +14,16 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="05/06/2016"
 	ms.author="robmcm"/>
 
-
-
-
-
-#Azure VM での Ruby on Rails Web アプリケーション
+# Azure VM での Ruby on Rails Web アプリケーション
 
 このチュートリアルでは、Linux 仮想マシンを使用して、Azure で Ruby on Rails Web サイトをホストする方法について説明します。
 
 このチュートリアルは、Ubuntu Server 14.04 LTS を使用して検証されました。他の Linux ディストリビューションを使用する場合は、Rails のインストール手順が異なる場合があります。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
-
 
 ## Azure VM の作成
 
@@ -70,9 +65,9 @@ VM がプロビジョニングされたら、次のコマンドを実行して S
 
 3. 次のコマンドを使用して Rails をインストールします。
 
-		sudo gem install rails --no-rdoc --no-ri
+		sudo gem install rails --no-rdoc --no-ri -V
 
-	ここでは、--no-rdoc フラグと --no-ri フラグを使用してドキュメントのインストールをスキップしています。これにより、インストールに要する時間が短縮されます。
+	ここでは、--no-rdoc フラグと --no-ri フラグを使用してドキュメントのインストールをスキップしています。これにより、インストールに要する時間が短縮されます。このコマンドは実行に時間がかかる可能性があります。-V を追加すると、インストールの進行状況に関する情報が表示されます。
 
 ## アプリの作成と実行
 
@@ -93,7 +88,6 @@ SSH を使用してログインしている状態で、次のコマンドを実�
 	[2015-06-09 23:34:23] INFO  WEBrick 1.3.1
 	[2015-06-09 23:34:23] INFO  ruby 1.9.3 (2013-11-22) [x86_64-linux]
 	[2015-06-09 23:34:23] INFO  WEBrick::HTTPServer#start: pid=27766 port=3000
-
 
 ## エンドポイントの追加
 
@@ -129,8 +123,7 @@ SSH を使用してログインしている状態で、次のコマンドを実�
 
 	![既定の rails ページ][default-rails-cloud]
 
-
-##<a id="next"></a>次のステップ
+## 次のステップ
 
 このチュートリアルでは、ほとんどの手順を手作業で行いました。通常、運用環境では、開発用コンピューターで作成したアプリを Azure VM にデプロイします。また、運用環境では、Apache や NginX などの別のサーバー プロセスと組み合わせて Rails アプリケーションをホストすることがほとんどです。これらのサーバーは、複数の Rails アプリケーション インスタンスへの要求のルーティングを処理すると共に、静的リソースを提供します。詳細については、http://rubyonrails.org/deploy/ を参照してください。
 
@@ -144,35 +137,23 @@ Ruby アプリケーションから Azure のサービスを使用する方法�
 
 * [Content Delivery Network を使用して高帯域幅コンテンツを配信する][cdn-howto]
 
-
-
 <!-- WA.com links -->
 [blobs]: ../storage/storage-ruby-how-to-use-blob-storage.md
-
-[cdn-howto]: /develop/ruby/app-services/
-
+[cdn-howto]: https://azure.microsoft.com/develop/ruby/app-services/
 [management-portal]: https://manage.windowsazure.com/
-
-[tables]: /develop/ruby/how-to-guides/table-service/
-
+[tables]: ../storage/storage-ruby-how-to-use-table-storage.md
 [vm-instructions]: virtual-machines-linux-classic-createportal.md
-
 
 <!-- External Links -->
 [rails-guides]: http://guides.rubyonrails.org/
-
 [sqlite3]: http://www.sqlite.org/
 
 <!-- Images -->
 
 [default-rails-cloud]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/basicrailscloud.png
-
 [vmlist]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/vmlist.png
-
 [endpoints]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/endpoints.png
-
 [new-endpoint]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint.png
-
 [new-endpoint1]: ./media/virtual-machines-linux-classic-ruby-rails-web-app/newendpoint1.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -66,13 +66,13 @@ HDInsight での Hadoop ストリーミングの使用例については、以�
 
 Azure BLOB ストレージが HDInsight の既定のストレージであるため、**/example/data/gutenberg/davinci.txt** を使用してファイルにアクセスすることもできます。
 
-> [AZURE.NOTE] 上の構文 **wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、**wasb://mycontainer@mystorage.blob.core.windows.net/example/data/gutenberg/davinci.txt** のように指定します。
+> [AZURE.NOTE] 上の構文 ****wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、****wasb://mycontainer@mystorage.blob.core.windows.net/example/data/gutenberg/davinci.txt** のように指定します。
 
 ##<a id="job"></a>MapReduce 例について
 
-この例で使用される MapReduce ジョブは **wasb://example/jars/hadoop-mapreduce-examples.jar** にあり、HDInsight クラスターと共に提供されます。これには、**davinci.txt** に対して実行するワード カウント例が含まれます。
+この例で使用される MapReduce ジョブは ****wasb://example/jars/hadoop-mapreduce-examples.jar** にあり、HDInsight クラスターと共に提供されます。これには、**davinci.txt** に対して実行するワード カウント例が含まれます。
 
-> [AZURE.NOTE] HDInsight 2.1 クラスターの場合、ファイルの場所は **wasb:///example/jars/hadoop-examples.jar** です。
+> [AZURE.NOTE] HDInsight 2.1 クラスターの場合、ファイルの場所は ****wasb:///example/jars/hadoop-examples.jar** です。
 
 参考のために、ワード カウント MapReduce ジョブの Java コードを以下に示します。
 
@@ -146,7 +146,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 	  }
 	}
 
-独自の MapReduce ジョブの作成手順については、「[HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce.md)」を参照してください。
+独自の MapReduce ジョブの作成手順については、「[HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce-linux.md)」を参照してください。
 
 ##<a id="run"></a>MapReduce の実行
 
@@ -163,7 +163,7 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 
 MapReduce は高度な診断機能を備えていますが、使いこなすのは少し難しいツールです。HDInsight でデータを操作する簡単な方法を提供する、Pig や Hive などのテクノロジだけでなく、MapReduce アプリケーションを定義しやすくする Java ベースのフレームワークがいくつかあります。詳細については、次の記事を参照してください。
 
-* [HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce.md)
+* [HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce-linux.md)
 
 * [HDInsight 用 Python ストリーミング MapReduce プログラムの開発](hdinsight-hadoop-streaming-python.md)
 
@@ -178,7 +178,7 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
-[hdinsight-develop-mapreduce-jobs]: hdinsight-develop-deploy-java-mapreduce.md
+[hdinsight-develop-mapreduce-jobs]: hdinsight-develop-deploy-java-mapreduce-linux.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 [hdinsight-samples]: hdinsight-run-samples.md
@@ -188,4 +188,4 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->
