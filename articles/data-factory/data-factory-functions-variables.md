@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/18/2016" 
+	ms.date="05/09/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory - 関数およびシステム変数
@@ -88,4 +88,4 @@ Text | Format(X) | X: String 変数 | テキストの書式を設定します。
 > [AZURE.NOTE] 別の関数内で関数を使用する場合、内側の関数に **$$** プレフィックスを付ける必要はありません。例: $$Text.Format('PartitionKey eq \\'my\_pkey\_filter\_value\\' and RowKey ge \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)).この例でわかるように、**Time.AddHours** 関数に **$$** プレフィックスは使用されていません。
   
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -42,7 +42,7 @@
 | Livy クラッシュ復旧 | Livy を通じて送信されるすべてのジョブについてジョブ状態の復元性を提供します。 | 信頼性 | Linux での Spark| 該当なし
 | Jupyter コンテンツ HA | クラスターに関連付けられているストレージ アカウントとの間で、Jupyter Notebook の内容を保存およびロードする機能を提供します。詳しくは、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル (プレビュー)](hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。| Notebook | Linux での Spark| 該当なし
 | Jupyter Notebook での hiveContext の削除 | `%%hive` マジックの代わりに `%%sql` マジックを使用します。sqlContext は hiveContext と同等です。詳しくは、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル (プレビュー)](hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。| Notebook | Linux 上の Spark クラスター| 該当なし
-| Spark の古いバージョンの非推奨 | 古い Spark 1.3.1 バージョンは、5 月 31 でサービスが終了します。 | サービス | Linux 上の Spark クラスター | 該当なし
+| Spark の古いバージョンの非推奨 | 古い Spark 1.3.1 バージョンは、5 月 31 でサービスが終了します。 | サービス | Windows 上の Spark クラスター | 該当なし
 
 ## HDInsight の 2016 年 3 月 29 日リリース ノート
 
@@ -1565,4 +1565,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

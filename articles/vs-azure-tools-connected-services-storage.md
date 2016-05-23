@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="mobile"
-   ms.date="04/18/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Visual Studio 接続済みサービスを使用した Azure ストレージの追加
@@ -79,7 +79,7 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
  - ASP.NET プロジェクトの場合は、[変更内容 – ASP.NET プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=513126)を参照してください。 
  - ASP.NET 5 プロジェクトの場合は、[変更内容 – ASP.NET 5 プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=513124)を参照してください。 
  - クラウド サービス プロジェクト (Web ロールおよび worker ロール) の場合は、[変更内容 – クラウド サービス プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=516965)を参照してください。 
- - WebJob プロジェクトの場合は、[変更内容 - WebJob プロジェクト](vs-storage-webjobs-what-happened/)を参照してください。
+ - WebJob プロジェクトの場合は、[変更内容 - WebJob プロジェクト](./storage/vs-storage-webjobs-what-happened.md)を参照してください。
 
 ## 次のステップ
 
@@ -94,4 +94,4 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
      - [Storage のドキュメント (azure.microsoft.com)](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

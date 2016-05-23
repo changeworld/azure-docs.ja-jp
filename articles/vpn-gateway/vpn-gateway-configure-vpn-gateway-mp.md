@@ -4,7 +4,7 @@
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"/>
 
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/23/2016"
+   ms.date="05/09/2016"
    ms.author="cherylmc" />
 
 # クラシック デプロイ モデル用の VPN ゲートウェイの構成
@@ -162,12 +162,10 @@ VPN デバイスの構成完了後は、更新された接続情報を VNet の�
 
 ## 次のステップ
 
-Virtual Network のクロスプレミス接続の詳細については、「[仮想ネットワークのセキュリティで保護されたクロスプレミス接続について](vpn-gateway-cross-premises-options.md)」を参照してください。
-
 仮想ネットワークに仮想マシンを追加できます。「[カスタム仮想マシンの作成方法](../virtual-machines/virtual-machines-windows-classic-createportal.md)」を参照してください。
 
 ポイント対サイト VPN 接続を構成する場合は、[ポイント対サイト VPN 接続の構成](vpn-gateway-point-to-site-create.md)に関するページを参照してください。
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

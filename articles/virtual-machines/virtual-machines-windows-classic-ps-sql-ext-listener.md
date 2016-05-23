@@ -1,5 +1,5 @@
 <properties
-	pageTitle="AlwaysOn 可用性グループの外部リスナーを構成する | Microsoft Azure"
+	pageTitle="AlwaysOn 可用性グループの外部リスナーの構成 | Microsoft Azure"
 	description="このチュートリアルでは、関連付けられているクラウド サービスのパブリック仮想 IP アドレスを使用して外部からアクセスできる、AlwaysOn 可用性グループ リスナーを Azure で作成する手順について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/28/2016"
+	ms.date="05/08/2016"
 	ms.author="mikeray" />
 
 # Azure での AlwaysOn 可用性グループの外部リスナーの構成
@@ -22,7 +22,7 @@
 - [内部リスナー](virtual-machines-windows-classic-ps-sql-int-listener.md)
 - [外部リスナー](virtual-machines-windows-classic-ps-sql-ext-listener.md)
 
-このトピックでは、インターネット上の外部からアクセス可能な、AlwaysOn 可用性グループのリスナーを構成する方法について説明します。これは、クラウド サービスの**パブリック仮想 IP (VIP)** アドレスをリスナーに関連付けることにより可能になります。
+このトピックでは、インターネット上で外部からアクセス可能な、AlwaysOn 可用性グループのリスナーを構成する方法について説明します。これは、クラウド サービスの**パブリック仮想 IP (VIP)** アドレスをリスナーに関連付けることにより可能になります。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
@@ -122,12 +122,12 @@
 
 	sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-呼び出し元はインターネット経由で windows 認証を使用できないため、前の例とは異なり SQL 認証を使用する必要があります。詳細については、「[AlwaysOn Availability Group in Azure VM: Client Connectivity Scenarios (Azure VM での AlwaysOn 可用性グループ: クライアント接続のシナリオ)](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)」を参照してください。SQL 認証を使用する場合は、両方のレプリカで必ず同じログインを作成します。可用性グループのログインに関するトラブルシューティングの詳細については、「[How to map logins or use contained SQL database user to connect to other replicas and map to availability databases (ログインをマップするか、または 包含 SQL データベース ユーザーを使用して他のレプリカに接続し、可用性データベースにマップする方法)](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)」を参照してください。
+呼び出し元はインターネット経由で windows 認証を使用できないため、前の例とは異なり SQL 認証を使用する必要があります。詳細については、「[AlwaysOn Availability Group in Azure VM: Client Connectivity Scenarios (Azure VM での AlwaysOn 可用性グループ: クライアント接続のシナリオ)](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)」をご覧ください。SQL 認証を使用する場合は、両方のレプリカで必ず同じログインを作成します。可用性グループのログインに関するトラブルシューティングの詳細については、「[How to map logins or use contained SQL database user to connect to other replicas and map to availability databases (ログインをマップするか、または 包含 SQL データベース ユーザーを使用して他のレプリカに接続し、可用性データベースにマップする方法)](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)」を参照してください。
 
-AlwaysOn レプリカが異なるサブネットにある場合、クライアントは接続文字列で **MultisubnetFailover=True** を指定する必要があります。これにより、別のサブネット内のレプリカへのパラレル接続が試行されます。このシナリオには、AlwaysOn 可用性グループのリージョンを越えたデプロイが含まれていることに注意してください。
+AlwaysOn レプリカが別のサブネットにある場合、クライアントは接続文字列で **MultisubnetFailover=True** を指定する必要があります。これにより、別のサブネット内のレプリカへのパラレル接続が試行されます。このシナリオには、AlwaysOn 可用性グループのリージョンをまたがるデプロイが含まれていることに注意してください。
 
 ## 次のステップ
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

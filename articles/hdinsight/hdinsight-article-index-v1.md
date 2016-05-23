@@ -84,8 +84,7 @@ Azure ポータルでの Apache Spark ネイティブ クラスターの使用�
 
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
 * [Hadoop クラスターで Spark をインストールして使用する](hdinsight-hadoop-spark-install.md)
-* [Azure HDInsight クラスター上の Spark ジョブ サーバー](hdinsight-apache-spark-job-server.md)
-* [Provision Apache Spark and run interactive queries using Spark SQL (Apache Spark のプロビジョニングと Spark SQL を使用した対話型クエリの実行)](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1.md)
+
 
 
 ## ビッグ データ ソリューション
@@ -131,4 +130,4 @@ Azure ポータルでの Apache Spark ネイティブ クラスターの使用�
 * [エラー メッセージを解釈する](hdinsight-debug-jobs.md)
 * [フォーラムで質問する](https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

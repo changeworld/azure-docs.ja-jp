@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/18/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # 名前付き認証資格情報の設定
@@ -33,7 +33,7 @@ Visual Studio では、サブスクリプション ID が証明書データと�
 
 サブスクリプション情報は、**[新しいサブスクリプション/サブスクリプションの編集]** ダイアログ ボックスから編集することができます。この点については、このトピックの中で説明しています。
 
-証明書を自分で作成する場合は、「[Azure の管理証明書の作成とアップロード](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx)」に記載された手順を参照し、管理ポータルに手動で証明書をアップロードしてください。
+証明書を自分で作成する場合は、[Azure の管理証明書の作成とアップロード](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx)に関する記事に記載された手順を参照し、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)に証明書を手動でアップロードします。
 
 >[AZURE.NOTE] これらは、ユーザーのクラウド サービスを管理するために Visual Studio が必要とする資格情報であり、Azure ストレージ サービスに対する要求を認証するために必要な資格情報とは異なります。
 
@@ -53,15 +53,15 @@ Visual Studio では、サブスクリプション ID が証明書データと�
 
 1. **[完全パスのコピー]** をクリックします。証明書 (.cer ファイル) のパスがクリップボードにコピーされます。
 
-    >[AZURE.IMPORTANT] Visual Studio から Azure アプリケーションを発行するには、この証明書を管理ポータルにアップロードする必要があります。
+    >[AZURE.IMPORTANT] Visual Studio から Azure アプリケーションを発行するには、この証明書を [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)にアップロードする必要があります。
 
-1. 証明書を Microsoft Azure 管理ポータルにアップロードするために、次の手順を実行します。
+1. 証明書を [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)にアップロードするには、次の手順に従います。
 
     1. [Azure ポータル] リンクを選択します。
 
-         [Microsoft Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)が開きます。
+         [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)が開きます。
 
-    1. Microsoft アカウントを使用して Microsoft Azure 管理ポータルにサインインし、**[Cloud Services]** をクリックします。
+    1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)にサインインし、**[Cloud Services]** ボタンをクリックします。
 
     1. 必要なクラウド サービスを選択します。
 
@@ -71,4 +71,4 @@ Visual Studio では、サブスクリプション ID が証明書データと�
 
     1. 作成した .cer ファイルのフル パスを貼り付け、指定したパスワードを入力します。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

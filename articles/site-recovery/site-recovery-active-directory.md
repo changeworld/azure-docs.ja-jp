@@ -1,19 +1,19 @@
 <properties
-	pageTitle="Azure Site Recovery で Active Directory と DNS を保護する | Microsoft Azure" 
-	description="この記事では、Azure Site Recovery を使って Active Directory の障害復旧ソリューションを実装する方法について説明します。" 
-	services="site-recovery" 
-	documentationCenter="" 
-	authors="prateek9us" 
-	manager="abhiag" 
+	pageTitle="Azure Site Recovery で Active Directory と DNS を保護する | Microsoft Azure"
+	description="この記事では、Azure Site Recovery を使って Active Directory の障害復旧ソリューションを実装する方法について説明します。"
+	services="site-recovery"
+	documentationCenter=""
+	authors="prateek9us"
+	manager="abhiag"
 	editor=""/>
 
-<tags 
-	ms.service="site-recovery" 
+<tags
+	ms.service="site-recovery"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.workload="storage-backup-recovery" 
-	ms.date="12/14/2015" 
+	ms.workload="storage-backup-recovery"
+	ms.date="05/10/2016"
 	ms.author="pratshar"/>
 
 # Azure Site Recovery で Active Directory と DNS を保護する
@@ -36,7 +36,7 @@ Site Recovery を使用すると、Active Directory に合わせて完全な自�
 
 環境内に多数のアプリケーションがあってドメイン コントローラーが複数存在する場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、別のドメイン コントローラーをターゲット サイト (Azure またはセカンダリのオンプレミス データセンター) にセットアップすることをお勧めします。
 
->[AZURE.NOTE]方法 2 を選んだ場合でも、テスト フェールオーバーを実行するためには、Site Recovery を使ってドメイン コントローラーをレプリケートする必要があります。詳細については、「[テスト フェールオーバーの考慮事項](#considerations-for-test-failover)」を参照してください。
+>[AZURE.NOTE] 方法 2 を選んだ場合でも、テスト フェールオーバーを実行するためには、Site Recovery を使ってドメイン コントローラーをレプリケートする必要があります。詳細については、「[テスト フェールオーバーの考慮事項](#considerations-for-test-failover)」を参照してください。
 
 
 以降のセクションでは、Site Recovery でドメイン コントローラーの保護を有効にする方法と、Azure でドメイン コントローラーをセットアップする方法について説明します。
@@ -45,7 +45,7 @@ Site Recovery を使用すると、Active Directory に合わせて完全な自�
 ## 前提条件
 
 - Active Directory と DNS サーバーのオンプレミス デプロイ。
-- Microsoft Azure サブスクリプションにおける Azure Site Recovery Services の資格情報コンテナー。 
+- Microsoft Azure サブスクリプションにおける Azure Site Recovery Services の資格情報コンテナー。
 - レプリケート先が Azure である場合、Azure の仮想マシン準備状況評価ツールを VM で実行し、Azure VM と Azure Site Recovery Services に互換性があることを確認してください。
 
 
@@ -62,7 +62,7 @@ Site Recovery でドメイン コントローラー/DNS 仮想マシンの保護
 
 ![VM ネットワークの設定](./media/site-recovery-active-directory/VM-Network-Settings.png)
 
-## Active Directory レプリケーションで Active Directory を保護する 
+## Active Directory レプリケーションで Active Directory を保護する
 
 ### サイト間の保護
 
@@ -70,10 +70,10 @@ Site Recovery でドメイン コントローラー/DNS 仮想マシンの保護
 
 ###サイトと Azure 間の保護
 
-次の手順に従って、[Azure 仮想ネットワークにドメイン コントローラー](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md)を作成します。サーバーの役割をドメイン コントローラーに昇格させる場合は、プライマリ サイト側と同じドメイン名を指定してください。
+次の手順に従って、[Azure 仮想ネットワークにドメイン コントローラー](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)を作成します。サーバーの役割をドメイン コントローラーに昇格させる場合は、プライマリ サイト側と同じドメイン名を指定してください。
 
-その後、Azure で DNS サーバーを使用するには、[仮想ネットワークの DNS サーバーを再構成](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network)します。
-  
+その後、Azure で DNS サーバーを使用するには、[仮想ネットワークの DNS サーバーを再構成](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network)します。
+
 ![Azure ネットワーク](./media/site-recovery-active-directory/azure-network.png)
 
 ## テスト フェールオーバーの考慮事項
@@ -84,16 +84,16 @@ Site Recovery でドメイン コントローラー/DNS 仮想マシンの保護
 
 1. Site Recovery でドメイン コントローラー/DNS 仮想マシンの保護を有効にします。
 2. 分離されたネットワークを作成します。既定では、Azure で作成されるすべての仮想ネットワークは、その他のネットワークから分離します。このネットワークの IP アドレス範囲は、運用ネットワークと同じものを使用することをお勧めします。このネットワーク上でサイト間接続を有効化しないでください。
-3. DNS 仮想マシンに取得させる IP アドレスとして、作成したネットワークに DNS の IP アドレスを指定します。レプリケート先として Azure を使用している場合は、フェールオーバーで使用する VM の IP アドレスを VM プロパティの **[ターゲット IP]** 設定で指定します。別のオンプレミス サイトにレプリケートしていて、かつ DHCP を使用している場合は、所定の手順に従って、[テスト フェールオーバー用に DNS と DHCP をセットアップ](site-recovery-failover.md#prepare-dhcp)してください。 
+3. DNS 仮想マシンに取得させる IP アドレスとして、作成したネットワークに DNS の IP アドレスを指定します。レプリケート先として Azure を使用している場合は、フェールオーバーで使用する VM の IP アドレスを VM プロパティの **[ターゲット IP]** 設定で指定します。別のオンプレミス サイトにレプリケートしていて、かつ DHCP を使用している場合は、所定の手順に従って、[テスト フェールオーバー用に DNS と DHCP をセットアップ](site-recovery-failover.md#prepare-dhcp)してください。
 
->[AZURE.NOTE]テスト フェールオーバー中に仮想マシンに割り当てられた IP アドレスは、テスト フェールオーバー ネットワークで利用可能である場合、計画されたフェールオーバーや計画されていないフェールオーバー中に取得される IP アドレスと同じです。その IP アドレスが利用できない場合は、テスト フェールオーバー ネットワーク内で利用できる他の IP アドレスが仮想マシンに割り当てられます。
+>[AZURE.NOTE] テスト フェールオーバー中に仮想マシンに割り当てられた IP アドレスは、テスト フェールオーバー ネットワークで利用可能である場合、計画されたフェールオーバーや計画されていないフェールオーバー中に取得される IP アドレスと同じです。その IP アドレスが利用できない場合は、テスト フェールオーバー ネットワーク内で利用できる他の IP アドレスが仮想マシンに割り当てられます。
 
-4. ドメイン コントローラーの仮想マシンで、分離されたネットワークでテスト フェールオーバーを実行します。 
+4. ドメイン コントローラーの仮想マシンで、分離されたネットワークでテスト フェールオーバーを実行します。
 5. アプリケーション復旧計画のテスト フェールオーバーを実行します。
-6. テストが完了したら、Site Recovery ポータルの **[ジョブ]** タブで、ドメイン コントローラー仮想マシンのジョブと復旧計画とに対するテスト フェールオーバーを "完了" としてマークします。 
+6. テストが完了したら、Site Recovery ポータルの **[ジョブ]** タブで、ドメイン コントローラー仮想マシンのジョブと復旧計画とに対するテスト フェールオーバーを "完了" としてマークします。
 
 ### DNS とドメイン コントローラーが異なるマシン上に存在する場合
- 
+
 DNS がドメイン コントローラーと同じ仮想マシン上にない場合、テスト フェールオーバー用の DNS VM を作成する必要があります。両者が同じ VM 上にある場合は、このセクションを省略できます。
 
 新規の DNS サーバーを使用し、必要なすべてのゾーンを作成することができます。たとえば、Active Directory ドメインが contoso.com である場合には、contoso.com という名前で DNS ゾーンを作成することができます。Active Directory に対応するエントリは DNS で次のように更新する必要があります。
@@ -111,9 +111,9 @@ DNS がドメイン コントローラーと同じ仮想マシン上にない場
 
 3. DNS サーバー上にゾーンを追加し、セキュリティで保護されていない更新を許可し、その DNS サーバー用のエントリを DNS に追加します。
 
-	    dnscmd /zoneadd contoso.com  /Primary 
-	    dnscmd /recordadd contoso.com  contoso.com. SOA %computername%.contoso.com. hostmaster. 1 15 10 1 1 
-	    dnscmd /recordadd contoso.com %computername%  A <IP_OF_DNS_VM> 
+	    dnscmd /zoneadd contoso.com  /Primary
+	    dnscmd /recordadd contoso.com  contoso.com. SOA %computername%.contoso.com. hostmaster. 1 15 10 1 1
+	    dnscmd /recordadd contoso.com %computername%  A <IP_OF_DNS_VM>
 	    dnscmd /config contoso.com /allowupdate 1
 
 
@@ -121,4 +121,4 @@ DNS がドメイン コントローラーと同じ仮想マシン上にない場
 
 Azure Site Recovery によるエンタープライズ ワークロード保護の詳細については、「[Azure Site Recovery で保護できるワークロード](../site-recovery/site-recovery-workload.md)」を参照してください。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0511_2016-->

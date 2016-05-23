@@ -36,18 +36,6 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 * Azure HDInsight (HDInsight の Hadoop) クラスター (Windows または Linux ベース)
 * Visual Studio 2012/2013/2015
 
-## サブスクリプション ID の検索
-
-各 Azure サブスクリプションは、サブスクリプション ID と呼ばれる GUID で識別されます。次の手順に従って、この値を検索します。
-
-1. [Azure ポータル][preview-portal]にアクセスします。
-
-2. ポータルの左側のバーから __[すべて参照]__ を選択し、__[参照]__ ブレードから __[サブスクリプション]__ を選択します。
-
-3. __[サブスクリプション]__ ブレードにある情報から使用するサブスクリプションを見つけたら、**[サブスクリプション ID]** 列の値を見つけます。
-
-後で使用するため、サブスクリプション ID を書き留めます。
-
 ## アプリケーションを作成する
 
 HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。
@@ -79,22 +67,10 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 5. **[ツール]** メニューで **[ライブラリ パッケージ マネージャー]** または **[NuGet パッケージ マネージャー]** を選択し、**[パッケージ マネージャー コンソール]** を選択します。
 6. コンソールで次のコマンドを実行して、.NET SDK パッケージをインストールします。
 
-        Install-Package Microsoft.Azure.Common.Authentication -Pre
-        Install-Package Microsoft.Azure.Management.HDInsight -Pre
-        Install-Package Microsoft.Azure.Management.HDInsight.Job -Pre
+        Install-Package Microsoft.Azure.Management.HDInsight.Job
 
 7. ソリューション エクスプローラーで **Program.cs** をダブルクリックして、このファイルを開きます。既存のコードを次のコードに置き換えます。
 
-        using System;
-        using System.Collections.Generic;
-        using System.Security;
-        using System.Threading;
-        using Microsoft.Azure;
-        using Microsoft.Azure.Common.Authentication;
-        using Microsoft.Azure.Common.Authentication.Factories;
-        using Microsoft.Azure.Common.Authentication.Models;
-        using Microsoft.Azure.Management.Resources;
-        using Microsoft.Azure.Management.HDInsight;
         using Microsoft.Azure.Management.HDInsight.Job;
         using Microsoft.Azure.Management.HDInsight.Job.Models;
         using Hyak.Common;
@@ -103,32 +79,16 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
         {
             class Program
             {
-                private static HDInsightManagementClient _hdiManagementClient;
                 private static HDInsightJobManagementClient _hdiJobManagementClient;
-
-                private static Guid SubscriptionId = new Guid("<Your Subscription ID>");
-                private const string ResourceGroupName = "<Your Resource Group Name>";
 
                 private const string ExistingClusterName = "<Your HDInsight Cluster Name>";
                 private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.net";
                 private const string ExistingClusterUsername = "<Cluster Username>";
                 private const string ExistingClusterPassword = "<Cluster User Password>";
 
-                private const string DefaultStorageAccountName = "<Default Storage Account Name>";
-                private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
-                private const string DefaultStorageContainerName = "<Default Blob Container Name>";
-
                 static void Main(string[] args)
                 {
                     System.Console.WriteLine("The application is running ...");
-
-                    var tokenCreds = GetTokenCloudCredentials();
-                    var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
-
-                    var resourceManagementClient = new ResourceManagementClient(subCloudCredentials);
-                    var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
-
-                    _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
 
                     var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
                     _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
@@ -139,41 +99,17 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
                     System.Console.ReadLine();
                 }
 
-                public static TokenCloudCredentials GetTokenCloudCredentials(string username = null, SecureString password = null)
-                {
-                    var authFactory = new AuthenticationFactory();
-
-                    var account = new AzureAccount { Type = AzureAccount.AccountType.User };
-
-                    if (username != null && password != null)
-                        account.Id = username;
-
-                    var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
-
-                    var accessToken =
-                        authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto)
-                            .AccessToken;
-
-                    return new TokenCloudCredentials(accessToken);
-                }
-
-                public static SubscriptionCloudCredentials GetSubscriptionCloudCredentials(TokenCloudCredentials creds, Guid subId)
-                {
-                    return new TokenCloudCredentials(subId.ToString(), creds.Token);
-                }
-
-
                 private static void SubmitPigJob()
                 {
                     var parameters = new PigJobSubmissionParameters
                     {
                         Query = @"LOGS = LOAD 'wasb:///example/data/sample.log';
-                            LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
-                            FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
-                            GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
-                            FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
-                            RESULT = order FREQUENCIES by COUNT desc;
-                            DUMP RESULT;"
+                                    LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
+                                    FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
+                                    GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
+                                    FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
+                                    RESULT = order FREQUENCIES by COUNT desc;
+                                    DUMP RESULT;"
                     };
 
                     System.Console.WriteLine("Submitting the Pig job to the cluster...");
@@ -207,4 +143,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

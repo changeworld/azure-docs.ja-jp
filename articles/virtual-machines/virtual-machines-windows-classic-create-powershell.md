@@ -14,15 +14,14 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="05/05/2016"
 	ms.author="cynthn"/>
 
-# Powershell とクラシック デプロイ モデルを使用して Windows 仮想マシンを作成する 
+# PowerShell とクラシック デプロイメント モデルを使用した Windows 仮想マシンの作成 
 
 > [AZURE.SELECTOR]
 - [Azure クラシック ポータル - Windows](virtual-machines-windows-classic-tutorial.md)
 - [PowerShell - Windows](virtual-machines-windows-classic-create-powershell.md)
-- [PowerShell - Linux](virtual-machines-linux-classic-createpowershell.md)
 
 <br>
 
@@ -34,14 +33,12 @@
 
 これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。この方法は、PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
-このトピックと対になっている、Linux ベースの仮想マシンの構成については、「[Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する](virtual-machines-linux-classic-createpowershell.md)」を参照してください。
-
 まだ完了していない場合は、[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。次に、Windows PowerShell コマンド プロンプトを開きます。
 
 ## 手順 1: アカウントを追加する
 
 1. PowerShell プロンプトで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。 
-2. 使用している Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、**[続行]** をクリックします。 
+2. お使いの Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、**[続行]** をクリックします。 
 3. アカウントのパスワードを入力します。 
 4. **[サインイン]** をクリックします。
 
@@ -85,7 +82,7 @@ Windows ベースのコンピューターで使用する ImageFamily 値の例�
 
 ## 手順 4. コマンド セットを構築する
 
-残りのコマンド セットを構築します。具体的には、下の該当するブロック セットを新しいテキスト ファイルまたは ISE にコピーし、変数の値を入力した後、文字 < and > を削除します。この記事の末尾にある 2 つの[例](#examples)を、最終結果のアイデアとして参照してください。
+残りのコマンド セットを構築します。具体的には、下の該当するブロック セットを新しいテキスト ファイルまたは ISE にコピーし、変数の値を入力した後、文字 < and > を削除します。この記事の末尾にある 2 つの[例](#examples)を、最終結果のアイデアとしてご覧ください。
 
 この 2 つのコマンド ブロックのいずれかを選択することからコマンド セットを開始します (必須)。
 
@@ -178,7 +175,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
 - このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
-- Azure クラシック ポータルの **[Automation]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
+- Azure クラシック ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
 
 ## <a id="examples"></a>例
 
@@ -261,6 +258,6 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 ## 次のステップ
 
-127 GB より大きい OS ディスクが必要な場合は、 [OS ドライブを展開](virtual-machines-windows-expand-os-disk.md)することができます。
+127 GB より大きい OS ディスクが必要な場合は、[OS ドライブを拡張](virtual-machines-windows-expand-os-disk.md)できます。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0511_2016-->

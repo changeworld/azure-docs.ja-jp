@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/30/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Event Hubs を利用し、ホット パスの Azure 診断データをストリーム配信する
@@ -51,7 +51,7 @@ Azure 診断では常に、ログとメトリックが既定で Azure Storage �
 
 この例では、イベント ハブの URL はイベント ハブの完全修飾名前空間に設定されています (ServiceBus 名前空間 + “/” + イベント ハブ 名)。
 
-イベント ハブのURL は Event Hubs ダッシュボードの[クラシック Azure ポータル](https://manage.windowsazure.com)に表示されます。
+イベント ハブの URL は [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)の Event Hubs ダッシュボードに表示されます。
 
 構成ファイルで同じ値が一貫して使用される限り、**シンク**名は任意の有効な文字列に設定できます。
 
@@ -295,4 +295,4 @@ Event Hubs シンク構成と共にアプリケーションをデプロイする
 <!-- Images. -->
 [0]: ./media/event-hubs-streaming-azure-diags-data/dashboard.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

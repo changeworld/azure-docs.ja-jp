@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/18/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Azure のコマンド ライン ビルド
@@ -60,6 +60,6 @@ MSBuild を使用して Azure パッケージを作成するには、ソフト�
 
 ## デプロイ
 
-パッケージは、ビルド後に Azure にデプロイできます。このプロセスについて説明するチュートリアルについては、Azure の Web サイトを参照してください。このプロセスを自動化する方法については、「[Azure でのクラウド サービスの継続的な配信](../cloud-services/cloud-services-dotnet-continuous-delivery)」を参照してください。
+パッケージは、ビルド後に Azure にデプロイできます。このプロセスについて説明するチュートリアルについては、Azure の Web サイトを参照してください。このプロセスを自動化する方法については、「[Azure でのクラウド サービスの継続的な配信](./cloud-services/cloud-services-dotnet-continuous-delivery.md)」を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Ruby から Azure Table Storage を使用する方法 | Microsoft Azure"
-	description="Azure で Azure Table Storage を使用する方法について説明します。コード サンプルは Ruby API を使用して記述されています。"
+	description="NoSQL データ ストアの Azure Table Storage を使用して、構造化データをクラウドに格納します。"
 	services="storage"
 	documentationCenter="ruby"
 	authors="rmcmurray"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="04/10/2016"
+	ms.date="04/29/2016"
 	ms.author="robmcm"/>
 
 
@@ -164,4 +164,4 @@ Azure ポータルでクラシックまたは ARM ストレージ アカウン�
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

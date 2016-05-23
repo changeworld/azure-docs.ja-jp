@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/29/2016"
+	ms.date="05/09/2016"
 	ms.author="robinsh"/>
 
 #Azure Storage セキュリティ ガイド
@@ -40,7 +40,7 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 
 -   保存時の暗号化
 
-    Storage Service Encryption と、ストレージ アカウントで Storage Service Encryption を有効にして、Azure Storage への書き込み時にブロック BLOB とページ BLOB が自動的に暗号化されるようにする方法について説明します。また、Azure Disk Encryption の使用方法についても取り上げ、Disk Encryption と Storage Service Encryption vegood lucrsus クライアント側認証の基本的な違いと、例についても説明します。さらに、米国政府のコンピューターの FIPS 準拠についても簡単に取り上げます。
+    Storage Service Encryption と、ストレージ アカウントで Storage Service Encryption を有効にして、Azure Storage への書き込み時にブロック BLOB とページ BLOB が自動的に暗号化されるようにする方法について説明します。また、Azure Disk Encryption の使用方法についても取り上げ、Disk Encryption、Storage Service Encryption、およびクライアント側認証の基本的な違いと、例についても説明します。さらに、米国政府のコンピューターの FIPS 準拠についても簡単に取り上げます。
 
 -   Storage Analytics を使用して Azure Storage のアクセスを監査する
 
@@ -634,4 +634,4 @@ CORS と CORS を有効にする方法については、次のリソースを参
 
 	この記事では、旧バージョンの Windows コンピューターで FIPS モードを使用する場合について説明しています。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/09/2016"
 	ms.author="kgremban"/>
 
 # ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
 
 > [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
-Azure Active Directory アプリケーション プロキシは、SharePoint、Outlook Web Access、カスタムの基幹業務アプリケーションなどのブラウザー アプリケーションを公開するために幅広く使用されています。ネイティブ クライアントから使用される HTTP バックエンド アプリケーションを公開するときにも使用できます。この場合、標準の Authorize HTTP ヘッダーで送信された Azure AD 発行トークンをサポートしている必要があります。
+Azure Active Directory アプリケーション プロキシは、SharePoint、Outlook Web Access、カスタムの基幹業務アプリケーションなどのブラウザー アプリケーションを公開するために幅広く使用されています。また、デバイスにインストールされる点が Web アプリとは異なるネイティブ クライアント アプリケーションを発行する際にも使用できます。この場合、標準の Authorize HTTP ヘッダーで送信された Azure AD 発行トークンをサポートしている必要があります。
 
 ![エンド ユーザー、Azure Active Directory、および発行済みアプリケーション間の関係](./media/active-directory-application-proxy-native-client/richclientflow.png)
 
@@ -35,11 +35,11 @@ Azure Active Directory アプリケーション プロキシは、SharePoint、O
 ネイティブ アプリケーションを次のように構成します。
 
 1. Azure クラシック ポータルにサインインします。
-2. 左側のメニューの [Active Directory] アイコンをクリックし、目的のディレクトリをクリックします。
+2. 左側のメニューの [Active Directory] アイコンを選択し、次にディレクトリを選択します。
 3. 上部のメニューで、**[アプリケーション]** をクリックします。ディレクトリに追加されているアプリケーションがない場合、このページには **[アプリケーションの追加]** リンクだけが表示されます。このリンクをクリックします。または、コマンド バーの **[追加]** をクリックすることもできます。
 4. **[実行する作業を選択してください]** ページで、**[組織で開発中のアプリケーションを追加]** リンクをクリックします。
-5. **[アプリケーション情報の指定]** ページで、アプリケーション名を指定し、電話やコンピューターなど、デバイスにインストールされているアプリケーションを表す **[ネイティブ クライアント アプリケーション]** を選択します。完了したら、ページの右下にある矢印アイコンをクリックします。
-6. **[アプリケーションのプロパティ]** ページに、ネイティブ クライアント アプリケーションの **[リダイレクト URI]** を入力し、ページの右下にあるチェックボックスをオンにします。
+5. **[アプリケーション情報の指定]** ページで、アプリケーションの名前を指定し、**[ネイティブ クライアント アプリケーション]** を選択します。矢印アイコンをクリックして続行します。
+6. **[アプリケーション情報]** ページで、ネイティブ クライアント アプリケーションの**リダイレクト URI** を指定し、チェックマークをクリックして完了します。
 
 アプリケーションが追加されると、アプリケーションのクイック スタート ページが表示されます。
 
@@ -80,23 +80,13 @@ Active Directory Authentication Library (ADAL) の認証コンテキストのネ
 ネイティブ アプリケーション フローの詳細については、「[ネイティブ アプリケーション対 Web API](active-directory-authentication-scenarios.md#native-application-to-web-api)」をご覧ください。
 
 
-## 次の手順
-アプリケーション プロキシを使ってできることは他にもたくさんあります。
+## 関連項目
 
 - [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
-- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
-- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
 - [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
+- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
+- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
 
+最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 
-### アプリケーション プロキシに関するその他の情報
-- [オンライン ヘルプ](active-directory-application-proxy-enable.md)
-- [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
-- [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
-
-## その他のリソース
-- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-- [Azure への組織としてのサインアップ](sign-up-organization.md)
-- [Azure ID](fundamentals-identity.md)
-
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

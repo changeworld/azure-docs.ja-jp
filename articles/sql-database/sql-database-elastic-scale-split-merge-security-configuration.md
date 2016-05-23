@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="Elastic Scale のセキュリティの構成 | Microsoft Azure" 
+    pageTitle="Split-Merge セキュリティの構成 | Microsoft Azure" 
     description="暗号化のための x409 証明書の設定" 
     metaKeywords="Elastic Database certificates security" 
     services="sql-database" 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="02/23/2016" 
+    ms.date="04/26/2016" 
     ms.author="torsteng;sidneyh" />
 
 
@@ -87,7 +87,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 8.    [許可されているクライアントをサービス構成ファイルに構成する](#Configure-Allowed-Clients-in-the-Service-Configuration-File)
 
 ### 既存のクライアント証明書を使用する
-1.    [CA の公開キーを検索する] (#Find-CA-Public Key)
+1.    [CA の公開キーを検索する](#Find-CA-Public Key)
 2.    [CA 証明書をクラウド サービスにアップロードする](#Upload-CA-certificate-to-cloud-service)
 3.    [サービス構成ファイルの CA 証明書を更新する](#Update-CA-Certificate-in-Service-Configuration-File)
 4.    [クライアント証明書のサムプリントをコピーする](#Copy-Client-Certificate-Thumbprints)
@@ -487,4 +487,4 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

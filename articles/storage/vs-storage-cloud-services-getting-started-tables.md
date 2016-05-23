@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-    ms.date="02/21/2016"
+    ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 # Azure Table ストレージと Visual Studio 接続済みサービスの概要 (クラウド サービス プロジェクト)
@@ -197,4 +197,4 @@ Azure テーブルは、「コードでテーブルにアクセスする」セ�
 
 [AZURE.INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

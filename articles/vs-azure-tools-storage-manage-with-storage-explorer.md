@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="04/19/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher" />
 
 # ストレージ エクスプローラー (プレビュー) を使用した Azure ストレージ リソースの管理
@@ -42,8 +42,8 @@ Microsoft Azure ストレージ エクスプローラー (プレビュー) は�
 ### 外部ストレージをアタッチする
 
 1. アタッチするストレージ アカウントのアカウント名とキーを取得します。
-	1.	Azure プレビュー ポータルで、アタッチするストレージ アカウントを選択します。
-	1.	Azure プレビュー ポータルの **[設定]** ペインの **[管理]** セクションで、**[キー]** をクリックします。
+	1.	[Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で、アタッチするストレージ アカウントを選択します。
+	1.	**[設定]** ウィンドウの **[管理]** セクションで、**[キー]** をクリックします。
 	1.	**[ストレージ アカウント名]** と **[プライマリ アクセス キー]** の値をコピーします。
 
 		![][2]
@@ -182,4 +182,4 @@ BLOB コンテナーへのアクセスを制御するには、**[アクセス制
 [19]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS3c.png
 [20]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS4c.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="AMQP 1.0 での Service Bus と PHP | Microsoft Azure"
-   description="AMQP で PHP から Service Bus を使用します。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" /> 
+    pageTitle="AMQP 1.0 での Service Bus と PHP | Microsoft Azure"
+    description="AMQP で PHP から Service Bus を使用します。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" /> 
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="01/26/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="05/06/2016"
+    ms.author="sethm" />
 
 # AMQP 1.0 で PHP から Service Bus を使用する
 
@@ -187,4 +187,4 @@ if ($message->properties != null)
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/28/2016"
+   ms.date="04/07/2016"
    ms.author="larryfr"/>
 
 #PowerShell を使用して Hive クエリを実行
@@ -31,7 +31,9 @@
 この記事の手順を完了するには、次のものが必要です。
 
 - **Azure HDInsight (HDInsight での Hadoop) クラスター (Windows または Linux ベース)**
-- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell 1.0 以上のインストール](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 ##Azure PowerShell を使用して Hive クエリを実行する
 
@@ -186,4 +188,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0511_2016-->

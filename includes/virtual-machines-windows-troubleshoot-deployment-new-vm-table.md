@@ -1,6 +1,6 @@
-The following table lists the possible upload and capture combinations of Windows generalized (gen.) and specialized (spec.) OS images. The combinations that will process without any errors are indicated by a Y, and those that will throw errors are indicated by an N. The causes and resolutions for the different errors you will run into are given below the table.
+次の表に、Windows の一般化された OS イメージ (gen.) と特殊化された OS イメージ (spec.) のアップロードとキャプチャの考えられる組み合わせを 示します。エラーなしで処理される組み合わせは Y で示され、エラーがスローされる組み合わせは N で示されています。発生するさまざまなエラーの原因と解決策が表の下に記載されています。
 
-| OS            | Upload spec. | Upload gen. | Capture spec. | Capture gen. |
+| OS | spec. のアップロード | gen. のアップロード | spec. のキャプチャ | gen. のキャプチャ |
 |---------------|--------------|-------------|---------------|--------------|
-| Windows gen.  | N<sup>1</sup>            | Y           | N<sup>3</sup>             | Y            |
-| Windows spec. | Y            | N<sup>2</sup>           | Y             | N<sup>4</sup>            |
+| Windows gen. | N<sup>1</sup> | Y | N<sup>3</sup> | Y |
+| Windows spec. | Y | N<sup>2</sup> | Y | N<sup>4</sup> |

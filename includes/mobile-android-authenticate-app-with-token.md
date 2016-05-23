@@ -38,11 +38,11 @@
     	private boolean loadUserTokenCache(MobileServiceClient client)
 	    {
 	        SharedPreferences prefs = getSharedPreferences(SHAREDPREFFILE, Context.MODE_PRIVATE);
-    	    String userId = prefs.getString(USERIDPREF, "undefined"); 
-	        if (userId == "undefined")
+    	    String userId = prefs.getString(USERIDPREF, null); 
+	        if (userId == null)
 	            return false;
-    	    String token = prefs.getString(TOKENPREF, "undefined"); 
-    	    if (token == "undefined")
+    	    String token = prefs.getString(TOKENPREF, null); 
+    	    if (token == null)
     	        return false;
         	    
     	    MobileServiceUser user = new MobileServiceUser(userId);
@@ -87,4 +87,5 @@
 
 6. アプリケーションをビルドし、有効なアカウントを使用して認証をテストします。最低 2 回アプリケーションを実行します。最初の実行で、ログインとトークン キャッシュの作成を求めるプロンプトが表示されます。その後は実行するたびに認証用のトークン キャッシュが読み込まれ、ログインする必要はなくなります。
 
-<!---HONumber=AcomDC_1210_2015-->
+
+

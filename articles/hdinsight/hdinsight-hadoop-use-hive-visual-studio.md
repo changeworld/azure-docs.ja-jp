@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/05/2016"
+   ms.date="04/22/2016"
    ms.author="larryfr"/>
 
 #Visual Studio の HDInsight ツールを使用して Hive クエリを実行
@@ -31,7 +31,13 @@
 
 * Azure HDInsight (HDInsight での Hadoop) クラスター (Linux または Windows ベース)
 
-* Visual Studio 2012 [Update 4](http://www.microsoft.com/download/details.aspx?id=39305)、Visual Studio 2013 [Update 3](http://go.microsoft.com/fwlink/?LinkId=390465)、[Visual Studio Express 2013](http://www.microsoft.com/download/details.aspx?id=40769)
+* 下記のいずれかのバージョンの Visual Studio
+
+    Visual Studio 2013 Community/Professional/Premium/Ultimate の[アップデート 4](https://www.microsoft.com/download/details.aspx?id=44921)
+
+    Visual Studio 2015 (Community/Enterprise)
+
+- HDInsight Tools for Visual Studio。ツールのインストールおよび構成については、[HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページをご覧ください。
 
 ##<a id="run"></a>Visual Studio の HDInsight ツールを使用して Hive クエリを実行
 
@@ -59,7 +65,7 @@
     * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
     * **INPUT\_\_FILE\_\_NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
 
-3. ツール バーで、このクエリに使用する **HDInsight クラスター**を選択し、**[送信]** を選択して、Hive ジョブとしてステートメントを実行します。**[Hive ジョブの概要]** に実行しているジョブに関する情報が表示されます。**[更新]** リンクを使用して、**[ジョブのステータス]** が **[完了]** に変更されるまで、ジョブの情報を更新します。
+3. ツール バーで、このクエリに使用する **HDInsight クラスター**を選択し、**[Submit to WebHCat]** (WebHCat に送信) を選択して、WebHCat を使用して Hive ジョブとしてステートメントを実行します。HiveServer2 をクラスター バージョンで使用できる場合は、__[Execute via HiveServer2]__ (HiveServer2 経由で実行) ボタンを使用してジョブを送信することもできます。**[Hive ジョブの概要]** に実行しているジョブに関する情報が表示されます。**[更新]** リンクを使用して、**[ジョブのステータス]** が **[完了]** に変更されるまで、ジョブの情報を更新します。
 
 4. **[ジョブ出力]** リンクを使用して、このジョブの出力を表示します。SELECT ステートメントによって返された値「`[ERROR] 3`」が表示されます。
 
@@ -135,4 +141,4 @@ Visual Studio の HDInsight ツールに関する詳細情報:
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -37,27 +37,27 @@ Eclipse を使用しない場合は、[こちら]の手順をご覧ください�
 
 -   次のセクションを (`<application>` タグと `</application>` タグの間に) 追加します。
 
-			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light">
+			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
 			  <intent-filter>
 			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT"/>
 			    <category android:name="android.intent.category.DEFAULT" />
 			    <data android:mimeType="text/plain" />
 			  </intent-filter>
 			</activity>
-			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity" android:theme="@android:style/Theme.Light">
+			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
 			  <intent-filter>
 			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.ANNOUNCEMENT"/>
 			    <category android:name="android.intent.category.DEFAULT" />
 			    <data android:mimeType="text/html" />
 			  </intent-filter>
 			</activity>
-			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementPollActivity" android:theme="@android:style/Theme.Light">
+			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementPollActivity" android:theme="@android:style/Theme.Light" android:exported="false">
 			  <intent-filter>
 			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.POLL"/>
 			    <category android:name="android.intent.category.DEFAULT" />
 			  </intent-filter>
 			</activity>
-			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementLoadingActivity" android:theme="@android:style/Theme.Dialog">
+			<activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementLoadingActivity" android:theme="@android:style/Theme.Dialog" android:exported="false">
 			  <intent-filter>
 			    <action android:name="com.microsoft.azure.engagement.reach.intent.action.LOADING"/>
 			    <category android:name="android.intent.category.DEFAULT"/>
@@ -644,4 +644,4 @@ Web サイトのキャンペーンを作成する際に指定したフィール�
 [Google Cloud Messaging]: http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]: https://developer.amazon.com/sdk/adm.html
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

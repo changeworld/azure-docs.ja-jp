@@ -29,16 +29,17 @@
 
 ## 始める前のチェック事項
 
-この記事では、手順を開始する前に、次の前提条件が満たされているものとします:
+この記事では、以下のことを前提としています。
 
-1. Linux を実行する Azure 仮想マシンは、従来もしくは Resource Manager のデプロイ モデルを使用して作成したものです。オペレーティング システムとアタッチしたデータ ディスクの構成、および必要なアプリケーションのインストールなどの、その他のカスタマイズを行っています。上記で述べた仮想マシンを使用してコピーを作成します。 ソース VM の作成に関してヘルプが必要な場合は、[Azure での Linux VM の作成 ](virtual-machines-linux-quick-create-cli.md)に関する記事をご覧ください。 
+1. **Linux を実行する Azure 仮想マシン**が、クラシック デプロイメント モデルまたは Resource Manager デプロイメント モデルであり、オペレーティング システムが構成され、データ ディスクが接続され、必要なアプリケーションがインストールされている。この VM の作成方法に関するヘルプが必要な場合は、「[CLI を使用した Azure での Linux VM の作成](virtual-machines-linux-quick-create-cli.md)」をご覧ください。 
 
-1. Azure CLI のダウンロードとインストールを行い、Azure サブスクリプションにログインしています。詳細については「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
+1. コンピューターに **Azure CLI** がインストールされており、Azure サブスクリプションにログインしている。詳細については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
 
-1. リソース グループ、ストレージ アカウント、およびそのリソース グループで作成された、VHD ファイルをコピーするための BLOB コンテナーがあります。Azure CLI を使用して ストレージ アカウントおよびBLOB コンテナーを作成する方法については、「[Azure Storage での Azure CLI の使用 ](../storage/storage-azure-cli.md)」をご覧ください。
+1. **リソース グループ**が**ストレージ アカウント**と **BLOB コンテナー**を使用して VHD のコピー先で作成されている。詳細については、「[Azure Storage での Azure CLI の使用](../storage/storage-azure-cli.md)」をご覧ください。
 
 
-> [AZURE.NOTE] いずれかのデプロイ モデルをソース イメージとして使用して作成された仮想マシンには、同様の手順が適用されます。 手順が若干異なる部分については、その都度説明します。
+
+> [AZURE.NOTE] 2 つのデプロイ モデルのいずれかをソース イメージとして使用して作成された VM には、同様の手順が適用されます。手順が若干異なる部分については、その都度説明します。
 
 
 ## Resource Manager ストレージ アカウントに VHD ファイルをコピーする
@@ -46,23 +47,23 @@
 
 1. 最初に、次のいずれかのオプションにより、ソース VM の使用した VHD ファイルを 解放します：
 
-	- ソース VM を**_コピー_** する場合は、 **[停止]** して **[割当を解除]** します。ポータルで**[参照]** 、 **[仮想マシン]** あるいは **[仮想マシン (クラシック)]** 、 *[ご使用の仮想マシン]* 、 **[停止]**の順にクリックします。Resource Manager デプロイ モデルで作成された仮想マシンには、 `azure vm deallocate <yourResourceGroup> <yourVmName>`の次の Azure CLI コマンド`azure vm stop <yourResourceGroup> <yourVmName>` を使用することもできます。ポータルの仮想マシンの *状態* が **[実行中]** から**[停止済み (割り当て解除)]**に変わります。
+	- ソース仮想マシンを**_コピー_**する場合は、仮想マシンを**停止**し、**割り当てを解除**します。ポータルで、**[参照]**、**[仮想マシン]** または **[仮想マシン (クラシック)]**、*目的の仮想マシン*、**[停止]** の順にクリックします。Resource Manager デプロイメント モデルで作成された VM の場合、Azure CLI コマンドを使用することもできます。その場合、`azure vm stop <yourResourceGroup> <yourVmName>` コマンドの後に `azure vm deallocate <yourResourceGroup> <yourVmName>` コマンドを使用します。ポータルの VM の *[状態]* が **[実行中]** から **[停止済み (割り当て解除)]** に変わります。
 	
-	- ソース VM を**_移行_** する場合は、該当する VMを **[削除]** して後に残った VHD ファイルを使用します。[ポータル](https://portal.azure.com) の仮想マシンを**[参照]** して **[削除]**をクリックします。
+	- ソース仮想マシンを**_移行_**する場合は、その VM を**削除**し、後に残された VHD ファイルを使用します。[ポータル](https://portal.azure.com)で仮想マシンを**参照**し、**[削除]** をクリックします。
 	
 1. ソース VHD ファイルを含むストレージ アカウントのアクセス キーを検索します。 アクセス キーの詳細については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」をご覧ください。
 
-	- ソース VM が従来のデプロイ モデルを使用して作成された場合は、 **[参照]** 、 **[ストレージ アカウント (クラシック)]** 、 *[ご使用のストレージ アカウント]* 、 **[すべての設定]** 、 **[キー]** の順にクリックし、**プライマリ アクセス キー**としてラベル付けされているキーをコピーします。あるいは Azure CLI で `azure config mode asm` を使用してクラシック モードに変更しから `azure storage account keys list <yourSourceStorageAccountName>` を使用します。
+	- クラシック デプロイメント モデルを使用してソース VM が作成されている場合は、**[参照]**、**[ストレージ アカウント (クラシック)]**、*目的のストレージ アカウント*、**[すべての設定]**、**[キー]** の順にクリックし、**プライマリ アクセス キー**としてラベル付けされているキーをコピーします。または、Azure CLI で、`azure config mode asm` を使用してクラシック モードに変更してから `azure storage account keys list <yourSourceStorageAccountName>` を使用します。
 
-	- Resource Manager デプロイ モデルを使用して作成した仮想マシンには、**[参照]** 、 **[ストレージ アカウント]** 、 *[ご使用のストレージ アカウント]* 、 **[すべての設定]** 、 **[アクセス キー]**の順にクリックして、 **キー1**としてラベル付けされているテキストをコピーします。あるいは Azure CLI で `azure config mode arm` を使用して Resource Manager モードであることを確認してから `azure storage account keys list -g <yourDestinationResourceGroup> <yourDestinationStorageAccount>` を使用します。
+	- Resource Manager デプロイメント モデルを使用して作成された VM の場合、**[参照]**、**[ストレージ アカウント]**、*目的のストレージ アカウント*、**[すべての設定]**、**[アクセス キー]** の順にクリックし、**キー 1** としてラベル付けされているテキストをコピーします。または、Azure CLI で、`azure config mode arm` を使用して Resource Manager モードであることを確認してから `azure storage account keys list -g <yourDestinationResourceGroup> <yourDestinationStorageAccount>` を使用します。
 
-1. 次の手順で説明するように、 [Azure Storage で Azure CLI コマンドを](../storage/storage-azure-cli.md) 使用して VHD ファイルをコピーします。同じ結果を得るために UI のアプローチを選択する場合は、[Microsoft Azure Storage Explorer](http://storageexplorer.com/) を使用することもできます。</br>
+1. 次の手順で説明するように、[Azure Storage で Azure CLI コマンド](../storage/storage-azure-cli.md)を使用して VHD ファイルをコピーします。同じ結果を得るために UI アプローチを選択した場合は、代わりに [Microsoft Azure Storage エクスプローラー](http://storageexplorer.com/)を使用できます。</br>
 	1. コピー先のストレージ アカウントの接続文字列を設定します。この接続文字列は、ストレージ アカウントのアクセス キーを含みます。
 	
 			$azure storage account connectionstring show -g <yourDestinationResourceGroup> <yourDestinationStorageAccount>
 			$export AZURE_STORAGE_CONNECTION_STRING=<the_connectionstring_output_from_above_command>
 	
-	2. ソース ストレージ アカウントの VHD ファイルの[Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md)を作成します。次のコマンドの **Shared Access URL** をメモします。
+	2. ソース ストレージ アカウントで VHD ファイルの [Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md) を作成します。次のコマンドの **Shared Access URL** 出力をメモします。
 	
 			$azure storage blob sas create  --account-name <yourSourceStorageAccountName> --account-key <SourceStorageAccessKey> --container <SourceStorageContainerName> --blob <FileNameOfTheVHDtoCopy> --permissions "r" --expiry <mm/dd/yyyy_when_you_want_theSAS_to_expire>
 	
@@ -95,12 +96,12 @@
 	$azure network nic create <yourResourceGroup> <yourNicName> -k <yourSubnetName> -m <yourVnetName> -p <yourIpName> -l <yourLocation>
 
 
-次のコマンドで、コピーした VHD ファイルを使用して新しい仮想マシンを作成します。 </br>
+次のコマンドを使用して、コピーした VHD ファイルを使って新しい仮想マシンを作成します。</br>
 
 	$azure vm create -g <yourResourceGroup> -n <yourVmName> -f <yourNicName> -d <UriOfYourOsDisk> -x <UriOfYourDataDisk> -e <DataDiskSizeGB> -Y -l <yourLocation> -y Linux -z "Standard_A1" -o <DestinationStorageAccountName> -R <DestinationStorageAccountBlobContainer>
 
 	
-データおよび OS ディスクの URL は次のようになります：`https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`。ポータルでこれを見つけるには、ストレージ コンテナーを参照し、コピーしたOS またはデータ の VHD ファイルをクリックして、**URL**の内容をコピーします。
+データと OS ディスクの URL は、`https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd` のようになります。ポータルでこれを見つけるには、ストレージ コンテナーを参照し、コピーした OS またはデータ の VHD ファイルをクリックして、**URL** の内容をコピーします。
 	
 	
 コマンドが成功した場合は、次のような出力が表示されます：
@@ -118,13 +119,13 @@
 	+ Creating VM "redhatcopy"
 	info:    vm create command OK
 
-**[参照]** 、 **[仮想マシン]**の順にクリックして、[Azure ポータル](https://portal.azure.com) で新しく作成した仮想マシンを確認します。
+**[参照]**、**[仮想マシン]** の順にクリックして、[Azure ポータル](https://portal.azure.com)で新しく作成した VM を確認します。
 
-お好みの SSH クライアントを使用して新しい仮想マシンに接続します。その際、元の仮想マシンのアカウントの資格情報を使用します (例：`ssh OldAdminUser@<IPaddressOfYourNewVM>`)。Linux VM における SSH の使用方法については、 [Azure 上の Linux における SSH の使用方法](virtual-machines-linux-ssh-from-linux.md)に関する記事をご覧ください。
+任意の SSH クライアントを使用して新しい仮想マシンに接続します。その際、元の仮想マシンのアカウントの資格情報を使用します (例：`ssh OldAdminUser@<IPaddressOfYourNewVM>`)。Linux VM における SSH の使用方法の詳細については、[Azure 上の Linux での SSH の使用方法](virtual-machines-linux-ssh-from-linux.md)に関する記事をご覧ください。
 
 
 ## 次のステップ
 
-新しく作成した仮想マシンを Azure CLI を使用して管理する方法については、[ Azure Resource Manager のための Azure CLI コマンド](azure-cli-arm-commands.md)に関する記事をご覧ください。
+Azure CLI を使用して新しい仮想マシンを管理する方法については、[Azure Resource Manager の Azure CLI コマンド](azure-cli-arm-commands.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

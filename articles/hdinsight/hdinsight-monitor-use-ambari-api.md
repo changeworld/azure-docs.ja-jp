@@ -35,8 +35,9 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell 1.0 以上のインストール](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。
 
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 - [cURL][curl] は省略可能です。インストールするには、「[cURL のリリースとダウンロード][curl-download]」をご覧ください。
 
@@ -173,4 +174,4 @@ API 呼び出しの監視|URI|説明
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

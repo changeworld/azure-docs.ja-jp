@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure Virtual Network での Active Directory フォレストのインストール | Microsoft Azure" 
-	description="Azure Virtual Network 上の仮想マシン (VM) に新しい Active Directory フォレストを作成する手順について説明したチュートリアルです。" 
+<properties
+	pageTitle="Azure Virtual Network での Active Directory フォレストのインストール | Microsoft Azure"
+	description="Azure Virtual Network 上の仮想マシン (VM) に新しい Active Directory フォレストを作成する手順について説明したチュートリアルです。"
 	services="active-directory, virtual-network"
     keywords="Active Directory 仮想マシン, Active Directory フォレストのインストール, Azure Active Directory ビデオ"
-	documentationCenter="" 
-	authors="markusvi" 
-	manager="stevenpo" 
+	documentationCenter=""
+	authors="markusvi"
+	manager="stevenpo"
 	tags=""/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.devlang="na" 
-	ms.topic="article" 
-    ms.tgt_pltfrm="na" 
-    ms.workload="identity" 
-	ms.date="04/07/2016" 
+<tags
+	ms.service="active-directory"
+	ms.devlang="na"
+	ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="identity"
+	ms.date="04/07/2016"
 	ms.author="markusvi"/>
 
 
@@ -25,7 +25,7 @@
 必要に応じて次の関連するトピックも参照してください。
 
 - これらの手順については、ビデオ「[How to install a new Active Directory forest on an Azure virtual network (Azure Virtual Network に新しい Active Directory フォレストをインストールする方法)](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)」をご覧ください。
-- 必要であれば、[サイト間 VPN を構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)した後、新しいフォレストをインストールするか、オンプレミスのフォレストを Azure Virtual Network に拡張することもできます。これらの手順については、「[Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md)」を参照してください。
+- 必要であれば、[サイト間 VPN を構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)した後、新しいフォレストをインストールするか、オンプレミスのフォレストを Azure Virtual Network に拡張することもできます。これらの手順については、「[Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)」を参照してください。
 -  Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)」を参照してください。
 
 ## シナリオ図
@@ -37,7 +37,7 @@
 
 ドメイン コントローラーのオンプレミスへのインストールと Azure へのインストールにそれほど大きな違いはありません。主な違いを次の表に示します。
 
-構成対象 | オンプレミスの | Azure Virtual Network	
+構成対象 | オンプレミスの | Azure Virtual Network
 ------------- | -------------  | ------------
 **ドメイン コントローラーの IP アドレス** | ネットワーク アダプターのプロパティの静的 IP アドレスを割り当てる | Set-AzureStaticVNetIP コマンドレットを実行して、静的 IP アドレスを割り当てる
 **DNS クライアント リゾルバー** | ドメイン メンバーのネットワーク アダプターのプロパティの優先および代替 DNS サーバー アドレスを設定する | 仮想ネットワークのプロパティの DNS サーバー アドレスを設定する
@@ -48,7 +48,7 @@
 ## Azure の仮想ネットワークを作成する
 
 1. Azure クラシック ポータルにサインインします。
-2. 仮想ネットワークを作成します。**[ネットワーク]**、**[Virtual Network の作成]** の順にクリックします。次の表の値を使用してウィザードの手順を完了します。 
+2. 仮想ネットワークを作成します。**[ネットワーク]**、**[Virtual Network の作成]** の順にクリックします。次の表の値を使用してウィザードの手順を完了します。
 
 	ウィザードのページ | 指定する値
 	------------- | -------------
@@ -59,7 +59,7 @@
 
 
 ## ドメイン コントローラーと DNS サーバーのロールを実行する仮想マシンを作成する
- 
+
 次の手順を繰り返して、必要に応じて、DC ロールをホストする VM を作成します。フォールト トレランスと冗長性を確保するには 2 つ以上の仮想 DC をデプロイする必要があります。Azure の仮想ネットワークに、類似した構成の DC (いずれも GCで、DNS サーバーを実行し、FSMO ロールを保持していないなど) が 2 つ以上あると、それらの DC を実行する仮想マシンを可用性セットに置くとフォールト トレランスが向上します。
 
 UI ではなく Windows PowerShell を使用して VM を作成する方法については、「[UAzure PowerShell を使用して Windows ベースの Virtual Machines を作成し事前構成する](../virtual-machines/virtual-machines-windows-classic-create-powershell.md)」を参照してください。
@@ -88,14 +88,14 @@ DC のインストールが完了したら、仮想マシンに再び接続し�
 
 ## Azure 仮想ネットワークの DNS サーバーをリセットする
 
-1. 新しい DC/DNS サーバーでDNS フォワーダー設定をリセットします。 
-  1. サーバー マネージャーで、**[ツール]**、**[DNS]** の順にクリックします。 
-  2. **[DNS マネージャー]** で、DNS サーバーを右クリックして **[プロパティ]** をクリックします。 
-  3. **[フォワーダー]** タブで、フォワーダーの IP アドレスをクリックして **[編集]** をクリックします。IP アドレスを選択して、**[削除]** をクリックします。 
-  4. **[OK]** をクリックしてエディターを閉じ、もう一度 **[OK]** をクリックして DNS サーバーのプロパティを閉じます。 
-2. 仮想ネットワークの DNS サーバーの設定を更新します。 
-  1. **[Virtual Network]** をクリックして、作成した仮想ネットワークをダブルクリックし、**[構成]**、**[DNS サーバー]** の順にクリックします。DC/DNS サーバー ロールを実行する仮想マシンの名前と DIP を入力して、**[保存]** をクリックします。 
-  2. VM を選択し、**[再起動]** をクリックして VM を起動します。新しい DNS サーバーの IP アドレスを使用して DNS リゾルバーの設定を構成します。 
+1. 新しい DC/DNS サーバーでDNS フォワーダー設定をリセットします。
+  1. サーバー マネージャーで、**[ツール]**、**[DNS]** の順にクリックします。
+  2. **[DNS マネージャー]** で、DNS サーバーを右クリックして **[プロパティ]** をクリックします。
+  3. **[フォワーダー]** タブで、フォワーダーの IP アドレスをクリックして **[編集]** をクリックします。IP アドレスを選択して、**[削除]** をクリックします。
+  4. **[OK]** をクリックしてエディターを閉じ、もう一度 **[OK]** をクリックして DNS サーバーのプロパティを閉じます。
+2. 仮想ネットワークの DNS サーバーの設定を更新します。
+  1. **[Virtual Network]** をクリックして、作成した仮想ネットワークをダブルクリックし、**[構成]**、**[DNS サーバー]** の順にクリックします。DC/DNS サーバー ロールを実行する仮想マシンの名前と DIP を入力して、**[保存]** をクリックします。
+  2. VM を選択し、**[再起動]** をクリックして VM を起動します。新しい DNS サーバーの IP アドレスを使用して DNS リゾルバーの設定を構成します。
 
 
 ## ドメイン メンバーの VM を作成する
@@ -121,7 +121,7 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 -  [Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)
 
 -  [サイト間 VPN の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)
--  [Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md)
+-  [Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)
 -  [Microsoft Azure IT Pro IaaS: (01) 仮想マシンの基礎](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 -  [Microsoft Azure IT Pro IaaS: (05) Virtual Network とクロスプレミス接続の作成](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
 -  [Virtual Network の概要](../virtual-network/virtual-networks-overview.md)
@@ -136,6 +136,4 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 <!--Image references-->
 [1]: ./media/active-directory-new-forest-virtual-machine/AD_Forest.png
 
- 
-
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

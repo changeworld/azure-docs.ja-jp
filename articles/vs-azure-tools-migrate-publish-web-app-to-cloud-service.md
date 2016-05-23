@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/19/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # 方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行
@@ -47,7 +47,8 @@ Visual Studio から Azure に Web アプリケーションを移行および発
 
   >[AZURE.IMPORTANT]この Web アプリケーションに必要な他のアセンブリまたはファイルがある場合は、それらのファイルのプロパティを手動で設定する必要があります。これらのプロパティを設定する方法については、この記事で後述する「**サービス パッケージにファイルを含める**」を参照してください。  
 
-  >[AZURE.NOTE] 特定の Web プロジェクトの Web ロールがソリューションの Azure プロジェクトに既に存在する場合、この Web プロジェクトのショートカット メニューに **[変換]** - **[Microsoft Azure クラウド サービス プロジェクトに変換]** は表示されません。
+
+  >[AZURE.NOTE]特定の Web プロジェクトの Web ロールがソリューションの Azure プロジェクトに既に存在する場合、この Web プロジェクトのショートカット メニューに **[変換]** - **[Microsoft Azure クラウド サービス プロジェクトに変換]** は表示されません。
 
   Web アプリケーションに複数の Web プロジェクトがあり、各 Web プロジェクトの Web ロールを作成する場合は、Web プロジェクトごとにこの手順を実行する必要があります。これにより、Web ロールごとに個別の Azure プロジェクトが作成されます。各 Web プロジェクトは個別に発行できます。また、Web アプリケーションの既存の Azure プロジェクトに別の Web ロールを手動で追加することもできます。そのためには、Azure プロジェクトの **[ロール]** フォルダーのショートカット メニューを開き、**[追加]**、**[ソリューション内の Web ロール プロジェクト]** の順にクリックし、Web ロールとして追加するプロジェクトを選択して、**[OK]** ボタンをクリックします。
 
@@ -55,17 +56,17 @@ Visual Studio から Azure に Web アプリケーションを移行および発
 
 オンプレミスの SQL Server データベースを使用する Web アプリケーションの接続文字列がある場合、Azure でホストされる SQL Database のインスタンスを代わりに使用するために、この接続文字列を変更する必要があります。
 
->[AZURE.IMPORTANT] サブスクリプションで SQL Database を使用できるようにする必要があります。Microsoft Azure 管理ポータルからサブスクリプションにアクセスすると、サブスクリプションで提供されるサービスを確認できます。次の手順は、リリース済みの管理ポータルに適用されます。プレビュー管理ポータルを使用している場合は、この次の手順に進んでください。
+>[AZURE.IMPORTANT] サブスクリプションで SQL Database を使用できるようにする必要があります。[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)からサブスクリプションにアクセスすると、サブスクリプションで提供されるサービスを確認できます。次の手順は、リリース済みの [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)に適用されます。[Azure ポータル](http://portal.microsoft.com)を使用している場合は、この次の手順に進んでください。
 
 ### Web ロールで接続文字列に SQL Database インスタンスを使用するには
 
-1. Microsoft Azure 管理ポータルで SQL Database インスタンスを作成するには、「[SQL Database サーバーの作成](http://go.microsoft.com/fwlink/?LinkId=225109)」の手順に従います。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で SQL Database のインスタンスを作成するには、[SQL Database サーバーの作成](http://go.microsoft.com/fwlink/?LinkId=225109)に関する記事の手順に従います。
 
     >[AZURE.NOTE] SQL Database インスタンスのファイアウォール規則を設定するときに、**[Microsoft Azure サービスにサーバーへのアクセスを許可します]** チェック ボックスをオンにする必要があります。
 
 1. 接続文字列に使用する SQL Database インスタンスを作成するには、「[SQL Database の作成](http://go.microsoft.com/fwlink/?LinkId=225110)」に関する記事の次のセクションの手順に従います。
 
-1. 接続文字列に使用する ADO.NET 接続文字列をコピーするには、Azure 管理ポータルで次の手順を実行します。
+1. 接続文字列に使用する ADO.NET 接続文字列をコピーするには、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で次の手順を実行します。
 
   1. **[データベース]** ボタンをクリックし、SQL Database インスタンスを作成する際に使用したサブスクリプションのノードを開きます。
 
@@ -99,9 +100,9 @@ Visual Studio から Azure に Web アプリケーションを移行および発
 
 1. 変更したファイルを保存し、アプリケーションを再発行します。
 
-### Microsoft Azure 管理ポータルを使用して SQL Database インスタンスを使用するには
+### Azure クラシック ポータルを使用して SQL Database のインスタンスを使用するには
 
-1. [Microsoft Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で [SQL データベース] ノードを選択します。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で [SQL Database] ノードを選択します。
 
   - 使用する SQL Database インスタンスが表示されたら、インスタンスを選択して開きます。
 
@@ -133,9 +134,9 @@ Visual Studio から Azure に Web アプリケーションを移行および発
 
     ![VST\_AzureActivityLog](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744149.png)
 
-1. (省略可能) デプロイメント プロセスをキャンセルするには、アクティビティ ログの行項目のショートカット メニューを開き、**[取り消して削除]** を選択します。これにより、デプロイメント プロセスが停止し、Azure からデプロイメント環境が削除されます。
+1. (省略可能) デプロイメント プロセスをキャンセルするには、アクティビティ ログの行項目のショートカット メニューを開き、**[取り消して削除]** を選択します。これにより、デプロイ プロセスが停止し、Azure からデプロイ環境が削除されます。
 
-    >[AZURE.NOTE] このデプロイメント環境をデプロイ後に削除するには、Microsoft Azure 管理ポータルを使用する必要があります。
+    >[AZURE.NOTE] このデプロイ環境をデプロイ後に削除するには、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用する必要があります。
 
 1. (省略可能) ロール インスタンスが起動すると、Visual Studio の **Cloud Explorer** または**サーバー エクスプローラー**の **[Azure Compute]** ノードにデプロイメント環境が自動的に表示されます。ここから、個々のロール インスタンスの状態を確認できます。
 
@@ -168,7 +169,7 @@ Visual Studio から Azure に Web アプリケーションを移行および発
 
 1. ASP.NET 動的エンティティ Web アプリケーションで使用できる SQL Azure データベースを作成するには、前述の「**アプリケーションでの Azure SQL Database の使用**」の手順に従います。
 
-1. Microsoft Azure 管理ポータルからこのデータベースに必要なフィールドとテーブルを追加します。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)からこのデータベースに必要なテーブルとフィールドを追加します。
 
 1. この種類のアプリケーションの接続文字列は、web.config ファイルで次の形式になっています。
 
@@ -208,4 +209,4 @@ Azure に Web アプリケーションを発行するには、次の表に記載
 ## 次のステップ
 発行の詳細については、「[Visual Studio からの Azure アプリケーションの発行またはデプロイの準備](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)」を参照してください。また、「[名前付き認証資格情報の設定](vs-azure-tools-setting-up-named-authentication-credentials.md)」も確認してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

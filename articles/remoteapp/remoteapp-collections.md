@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="02/02/2016" 
+    ms.date="05/02/2016" 
     ms.author="elizapo" />
 
 
@@ -91,4 +91,4 @@ Azure AD および Active Directory の構成に必要な手順については�
 
 「[クラウドのコレクションを作成する](remoteapp-create-cloud-deployment.md)」または「[ハイブリッドのコレクションを作成する](remoteapp-create-hybrid-deployment.md)」で作成してください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

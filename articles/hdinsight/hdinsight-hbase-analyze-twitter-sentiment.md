@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/01/2016" 
+	ms.date="05/09/2016" 
 	ms.author="jgao"/>
 
 # HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する
@@ -23,7 +23,7 @@ HDInsight (Hadoop) クラスターで HBase を使用し、Twitter からリア�
 
 ビッグ データの多くはソーシャル Web サイトからもたらされます。Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。このチュートリアルでは、以下の事柄を実行するためのコンソール ストリーミング サービス アプリケーションと ASP.NET Web アプリケーションを開発します。
 
-![][img-app-arch]
+![HDInsight HBase での Twitter センチメントの分析][img-app-arch]
 
 - ストリーミングのアプリケーション
 	- Twitter streaming API を使用して、ジオタグ付けされたツイートをリアルタイムで取得します。
@@ -71,7 +71,7 @@ Visual Studio ソリューションの完全なサンプルは、GitHub: [Realti
 ### 前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **HDInsight 環境の HBase クラスター**。クラスターの作成については、「[HDInsight の Windows ベースの Hadoop で Apache HBase を使用する][hbase-get-started]」を参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
+- **HDInsight 環境の HBase クラスター**。クラスターの作成については、[HDInsight の Hadoop 環境での HBase の使用][hbase-get-started]に関する記事をご覧ください。このチュートリアルを読み進めるには、次のデータが必要です。
 
 
 	<table border="1">
@@ -146,7 +146,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 		Install-Package Microsoft.HBase.Client
 		Install-Package TweetinviAPI
     これらのコマンドによって、HBase クラスターにアクセスするクライアント ライブラリの [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) パッケージと、Twitter API へのアクセスに使用する [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/) パッケージがインストールされます。
-3. **ソリューション エクスプローラー**で、参照に "**System.Configuration" を追加します。
+3. **ソリューション エクスプローラー**で、参照に **System.Configuration** を追加します。
 4. **HBaseWriter.cs** という名前の新しいクラス ファイルをプロジェクトに追加し、そのコードを次のコードに置き換えます。
 
         using System;
@@ -193,12 +193,12 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
                     client = new HBaseClient(credentials);
 
                     // create the HBase table if it doesn't exist
-                    if (!client.ListTables().name.Contains(HBASETABLENAME))
+                    if (!client.ListTablesAsync().Result.name.Contains(HBASETABLENAME))
                     {
                         TableSchema tableSchema = new TableSchema();
                         tableSchema.name = HBASETABLENAME;
                         tableSchema.columns.Add(new ColumnSchema { name = "d" });
-                        client.CreateTable(tableSchema);
+                        client.CreateTableAsync(tableSchema).Wait;
                         Console.WriteLine("Table "{0}" is created.", HBASETABLENAME);
                     }
 
@@ -344,7 +344,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
                                 }
 
                                 // Write the Tweet by words cell set to the HBase table
-                                client.StoreCells(HBASETABLENAME, set);
+								client.StoreCellsAsync(HBASETABLENAME, set).Wait();
                                 Console.WriteLine("\tRows written: {0}", set.rows.Count);
                             }
                             Thread.Sleep(100);
@@ -367,7 +367,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
             }
         }
 
-6. 前述のコードに含まれる、**CLUSTERNAME**、**HADOOPUSERNAME**、**HADOOPUSERPASSWORD**、DICTIONARYFILENAME などの定数を設定します。DICTIONARYFILENAME は、direction.tsv のファイル名と場所です。このファイルは、****https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv** からダウンロードできます。HBase テーブル名を変更する場合には、それに応じて Web アプリケーション内のテーブル名も変更しなければなりません。
+6. 前述のコードに含まれる、**CLUSTERNAME**、**HADOOPUSERNAME**、**HADOOPUSERPASSWORD**、DICTIONARYFILENAME などの定数を設定します。DICTIONARYFILENAME は、direction.tsv のファイル名と場所です。このファイルは、**https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv** からダウンロードできます。HBase テーブル名を変更する場合には、それに応じて Web アプリケーション内のテーブル名も変更しなければなりません。
 
 7. **Program.cs** を開き、そのコードを次のコードに置き換えます。
 
@@ -445,9 +445,9 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 
 ストリーミング サービスを実行するには、**F5** キーを押します。コンソール アプリケーションのスクリーンショットは次のようになります。
 
-	![hdinsight.hbase.twitter.sentiment.streaming.service][img-streaming-service]
+![hdinsight.hbase.twitter.sentiment.streaming.service][img-streaming-service]
     
-Web アプリケーションの作成中はストリーミング コンソール アプリケーションを実行したままにし、さらに多くのデータを使用できるようにしてください。テーブルに挿入されたデータを確認するために、HBase シェルを使用することができます。[HDInsight でのHBase の使用](hdinsight-hbase-tutorial-get-started.md#create-tables-and-insert-data)に関するページをご覧ください。
+Web アプリケーションの作成中はストリーミング コンソール アプリケーションを実行したままにし、さらに多くのデータを使用できるようにしてください。テーブルに挿入されたデータを確認するために、HBase シェルを使用することができます。[HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started.md#create-tables-and-insert-data)に関するページをご覧ください。
 
 
 ## リアルタイムのセンチメントを視覚化する
@@ -600,9 +600,9 @@ Web アプリケーションの作成中はストリーミング コンソール
 	- **CLUSTERNAME**: *https://<HBaseClusterName>.azurehdinsight.net/* などの HBase cluster 名。 
     - **HADOOPUSERNAME**: HBase クラスター Hadoop ユーザーのユーザー名。既定の名前は *admin* です。
     - **HADOOPUSERPASSWORD**: HBase クラスター Hadoop ユーザーのパスワード。
-    - **HBASETABLENAME** = "tweets_by_words";
+    - **HBASETABLENAME** = "tweets\_by\_words";
 
-	HBase テーブル名は「**tweets_by_words**」です。値は、ストリーミング サービスで送信した値と同じでなければなりません。そのようにすると、Web アプリケーションは同じ HBase テーブルのデータを読み取ることができます。
+	HBase テーブル名は「**tweets\_by\_words**」です。値は、ストリーミング サービスで送信した値と同じでなければなりません。そのようにすると、Web アプリケーションは同じ HBase テーブルのデータを読み取ることができます。
 
 
 
@@ -1205,7 +1205,7 @@ Web アプリケーションの作成中はストリーミング コンソール
 
 		using System.Web.Http;
 
-2. 以下の行を **Application_Start()** 関数内に追加します。
+2. 以下の行を **Application\_Start()** 関数内に追加します。
 
 		// Register API routes
 		GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -1236,8 +1236,8 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
 
 
-[hbase-get-started]: ../hdinsight-hbase-tutorial-get-started.md
-[website-get-started]: ../web-sites-dotnet-get-started.md
+[hbase-get-started]: hdinsight-hbase-tutorial-get-started-linux.md
+[website-get-started]: ../app-service-web/web-sites-dotnet-get-started.md
 
 
 
@@ -1248,9 +1248,8 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 
 
 
-[hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
+[hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce-linux.md
 [hdinsight-analyze-twitter-data]: hdinsight-analyze-twitter-data.md
-[hdinsight-hbase-get-started]: ../hdinsight-hbase-tutorial-get-started.md
 
 
 
@@ -1277,4 +1276,4 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

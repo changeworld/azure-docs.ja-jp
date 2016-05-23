@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="04/28/2016"
+    ms.date="05/10/2016"
     ms.author="sidneyh"/>
 
 # PowerShell でのエラスティック データベース プールの監視と管理 
@@ -31,6 +31,7 @@ PowerShell コマンドレットを使用して、[エラスティック デー�
 プールに関する値については、「[eDTU and storage limits (eDTU とストレージの制限)](sql-database-elastic-pool#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
 
 ## 前提条件
+
 * Azure PowerShell 1.0 以降。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 * エラスティック データベース プールは、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md)を 1 回の手順で実行できます。
 
@@ -101,6 +102,26 @@ PowerShell コマンドレットを使用して、[エラスティック デー�
 メトリックを取得するには:
 
     $metrics = (Get-AzureRmMetric -ResourceId /subscriptions/<subscriptionId>/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/databases/myDB -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015") 
+
+## サブスクリプション内の複数のプールのリソース使用状況データを収集して監視する
+
+サブスクリプションに多数のデータベースがある場合、各エラスティック プールを個別に監視するのは面倒です。代わりに、SQL Database の PowerShell コマンドレットと T-SQL クエリを組み合わせて、複数のプールおよびそのデータベースからリソース使用状況データを収集し、リソースの使用状況を監視および分析できます。そのような PowerShell スクリプトの[実装のサンプル](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools)が、内容と方法についてのドキュメントと共に GitHub の SQL Server サンプル リポジトリにあります。
+
+このサンプル実装を使用するには次のようにします。
+
+
+1. [スクリプトとドキュメント](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools)をダウンロードします。
+2. 環境に合わせてスクリプトを変更します。エラスティック プールがホストされている 1 つまたは複数のサーバーを指定します。
+3. 収集されたメトリックを格納するテレメトリ データベースを指定します。 
+4. スクリプトをカスタマイズして、スクリプトの実行期間を指定します。
+
+スクリプトが行うことの概要は次のとおりです。
+
+*	指定された Azure サブスクリプション (または指定されたサーバーの一覧) のすべてのサーバーを列挙します。
+*	各サーバーに対してバック グラウンド ジョブを実行します。ジョブは一定の間隔で繰り返し実行し、サーバー内のすべてのプールのテレメトリ データを収集します。その後、収集されたデータを指定されたテレメトリ データベースに読み込みます。
+*	各プール内のデータベースの一覧を列挙し、データベース リソース使用状況データを収集します。その後、収集されたデータをテレメトリ データベースに読み込みます。
+
+テレメトリ データベースの収集されたメトリックを分析して、エラスティック プールとその中のデータベースの状態を監視できます。スクリプトでは、指定された時間範囲のメトリックの集計を支援する定義済みのテーブル値関数 (TVF) もテレメトリ データベースにインストールされます。たとえば、TVF の結果を使用すると、"指定した時間範囲で eDTU 使用率が高い上位 N 個のエラスティック プール" を表示できます。 必要に応じて、Excel や Power BI などの分析ツールを使用して、収集されたデータをクエリおよび分析します。
 
 ## 例: プールとそのデータベースのリソース消費メトリックを取得する
 
@@ -190,4 +211,4 @@ Stop- コマンドレットは、一時停止ではなく取り消しを意味�
 - [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブを使用すると、プール内にある任意の数のデータベースに対して T-SQL スクリプトを実行できます。
 - エラスティック データベース ツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

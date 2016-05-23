@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="04/28/2016"
+   ms.date="05/05/2016"
    ms.author="sstein"/>
 
 # Azure SQL Database Query Performance Insight
@@ -46,9 +46,9 @@ Query Performance Insight は簡単に使用できます。
 
 - リソース消費量上位のクエリの一覧を確認します。 
 - 個別のクエリを選択して詳細を表示します。
-- [Performance Advisor](sql-database-index-advisor.md) を開き、利用できる推奨事項があるかどうかを確認します。
+- [SQL Database Advisor](sql-database-index-advisor.md) を開き、利用できる推奨事項があるかどうかを確認します。
 - 拡大して詳細を確認します。
-- 
+
     ![パフォーマンス ダッシュボード](./media/sql-database-query-performance/performance.png)
 
 > [AZURE.NOTE] SQL Database がクエリ パフォーマンスの内実を提供するには、2 時間分のデータをクエリ ストアでキャプチャする必要があります。一定の期間、データベースでアクティビティが発生しない場合、またはクエリ ストアがアクティブではない場合は、その時間帯を表示してもグラフは空になります。クエリ ストアが実行されていない場合はいつでも有効にできます。
@@ -65,14 +65,15 @@ Query Performance Insight は簡単に使用できます。
 
     上位クエリ ビューが開き、CPU 消費量上位クエリの一覧が表示されます。
 
-1. グラフのあたりをクリックして詳細を確認します。<br>最初の行にはデータベース全体の DTU% が示され、バーには選択した期間 (たとえば、**[過去 1 週間]** を選択した場合は、各バーが 1 日を表します) に選択したクエリによって消費された CPU% が示されます。
+1. グラフのあたりをクリックして詳細を確認します。<br>最初の行にはデータベース全体の DTU% が示されます。また、バーには、選択した期間に、選択したクエリによって消費された CPU% が示されます (**[過去 1 週間]** を選択した場合は各バーが 1 日を表します)。
 
     ![上位クエリ][2]
 
     下部のグリッドには、表示可能なクエリの集計情報が表されます。
 
-    -	監視可能な期間のクエリあたり平均 CPU 使用率。 
-    -	1 つのクエリの合計実行時間。
+    -	クエリ ID - データベース内に含まれるクエリの一意の識別子。 
+    -	監視可能な期間のクエリあたりの CPU 使用率 (集計関数に依存)。
+    -	1 つのクエリの実行時間 (集計関数に依存)。
     -	特定のクエリの実行回数の合計。
 
 
@@ -151,14 +152,14 @@ Query Performance Insight の使用中に、次のようなクエリ ストア �
 
 ## 概要
 
-Query Performance Insight を使うと、クエリ ワークロードの影響や、データベース リソース消費量との関係を理解できます。この機能では、消費量上位クエリがわかり、問題になる前に簡単に識別して修正できます。リソース (CPU) 消費量上位クエリを確認するには、データベースで **[Query Performance Insight]** をクリックします。
+Query Performance Insight を使うと、クエリ ワークロードの影響や、データベース リソース消費量との関係を理解できます。この機能では、消費量上位クエリがわかり、問題になる前に簡単に識別して修正できます。
 
 
 
 
 ## 次のステップ
 
-SQL Database のパフォーマンス向上に関するその他の推奨事項を確認するために、**[Query Performance Insight]** ブレードで [[Performance Advisor]](sql-database-index-advisor.md) をクリックします。
+SQL Database のパフォーマンス向上に関するその他の推奨事項を確認するために、**[Query Performance Insight]** ブレードで [[SQL Database Advisor]](sql-database-index-advisor.md) をクリックします。
 
 ![Performance Advisor](./media/sql-database-query-performance/ia.png)
 
@@ -168,4 +169,4 @@ SQL Database のパフォーマンス向上に関するその他の推奨事項�
 [2]: ./media/sql-database-query-performance/top-queries.png
 [3]: ./media/sql-database-query-performance/query-details.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

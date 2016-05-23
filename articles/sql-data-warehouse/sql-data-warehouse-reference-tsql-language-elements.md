@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/08/2016"
+   ms.date="05/02/2016"
    ms.author="barbkess;sonyama"/>
 
 # 言語要素
@@ -287,4 +287,4 @@
 
 <!--MSDN references-->
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0511_2016-->

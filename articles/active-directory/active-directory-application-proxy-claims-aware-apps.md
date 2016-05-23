@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/09/2016"
 	ms.author="kgremban"/>
 
 
@@ -25,11 +25,9 @@
 要求に対応するアプリケーションは、Security Token Service (STS) へのリダイレクトを行います。STS は、ユーザーをアプリケーションにリダイレクトする前に、ユーザーにトークンの代わりの資格情報を要求します。これらのリダイレクトで機能するようにアプリケーション プロキシを有効にするには、次の手順を実行する必要があります。
 
 ## 前提条件
-
 この手順を実行する前に、要求に対応するアプリのリダイレクト先の STS が、オンプレミス ネットワークの外部でも使用できるようになっていることを確認してください。
 
-
-### Azure クラシック ポータルの構成
+## Azure クラシック ポータルの構成
 
 1. 「[アプリケーション プロキシを使用したアプリケーションの発行](active-directory-application-proxy-publish.md)」で説明されている手順に従って、アプリケーションを発行します。
 2. アプリケーションの一覧で、要求に対応するアプリケーションを選択し、**[構成]** をクリックします。
@@ -37,7 +35,7 @@
 4. **[事前認証方法]** として **Azure Active Directory** を選択した場合は、**[内部認証方法]** として **[なし]** を選択してください。
 
 
-### ADFS 構成
+## ADFS 構成
 
 1. [ADFS 管理] を開きます。
 2. **[証明書利用者信頼]** に移動し、アプリケーション プロキシで発行しているアプリを右クリックし、**[プロパティ]** を選択します。![[証明書利用者信頼] でアプリ名を右クリックしているスクリーンショット](./media/active-directory-application-proxy-claims-aware-apps/appproxyrelyingpartytrust.png)  
@@ -45,24 +43,12 @@
 4. **[信頼された URL]** で、アプリケーション プロキシの **[外部 URL]** で入力した URL を入力し、**[OK]** をクリックします。![エンドポイントを追加し、信頼された URL 値を設定しているスクリーン ショット](./media/active-directory-application-proxy-claims-aware-apps/appproxyendpointtrustedurl.png)  
 
 ## 関連項目
-アプリケーション プロキシを使ってできることは他にもたくさんあります。
 
 - [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
-- [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
 - [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
 - [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
+- [ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする](active-directory-application-proxy-native-client.md)
 
-## アプリケーション プロキシに関するその他の情報
-- [オンライン ヘルプ](active-directory-application-proxy-enable.md)
-- [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
-- [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
+最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 
-## その他のリソース
-
-- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-- [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)
-- [ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法](active-directory-application-proxy-native-client.md)
-- [Azure への組織としてのサインアップ](sign-up-organization.md)
-- [Azure ID](fundamentals-identity.md)
-
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/19/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Azure クラウド サービスおよび仮想マシン用の診断の構成
@@ -43,7 +43,7 @@ Azure SDK 2.4 以前と Azure SDK 2.6 以降とで、接続文字列の働きに
 
 - PowerShell を使用して診断拡張機能を構成するプロセスを単純化するために、Visual Studio からの出力パッケージには、ロールごとの診断拡張機能のパブリック構成 XML も含まれます。Visual Studio は、診断接続文字列を使用して、パブリック構成に存在するストレージ アカウント情報を取り込みます。このパブリック構成ファイルは、PaaSDiagnostics.<RoleName>.PubConfig.xml という名前で拡張機能フォルダーに作成されます。このファイルを PowerShell ベースのデプロイで使用し、各構成をロールにマップすることができます。
 
-- .cscfg ファイル内の接続文字列は、Azure ポータルで診断データにアクセスするときにも使用されます。**[監視]** タブで接続文字列を確認できます。ポータルで監視データを詳細出力するようにサービスを構成するには、この接続文字列が必要となります。
+- .cscfg ファイル内の接続文字列は、[Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で診断データにアクセスするときにも使用されます。**[監視]** タブで接続文字列を確認できます。ポータルで監視データを詳細出力するようにサービスを構成するには、この接続文字列が必要となります。
 
 ## Azure SDK 2.6 以降へのプロジェクトの移行
 
@@ -357,4 +357,4 @@ RoleEntryPoint のメソッドは、IIS ではなく WAIISHost.exe のコンテ�
 
 Azure の診断ログの詳細については、[Azure のクラウド サービスおよび仮想マシンの診断機能](./cloud-services/cloud-services-dotnet-diagnostics.md)に関するページと「[Azure App Service の Web アプリの診断ログの有効化](./app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

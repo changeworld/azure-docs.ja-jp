@@ -1,9 +1,9 @@
 <properties
-	pageTitle="シャーディング (水平的パーティション分割) のためのエラスティック クエリの概要 | Microsoft Azure"
+	pageTitle="スケール アウトされたクラウド データベース全体のレポート (行方向のパーティション分割) |Microsoft Azure"
 	description="データベース間データベース クエリを使用する方法"
 	services="sql-database"
 	documentationCenter=""  
-	manager="jeffreyg"
+	manager="jhubbard"
 	authors="sidneyh"/>
 
 <tags
@@ -12,14 +12,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/22/2016"
+	ms.date="04/26/2016"
 	ms.author="SilviaDoomra" />
 
-# シャーディング (水平的パーティション分割) のためのエラスティック クエリの概要
+# スケールアウトされたクラウド データベース全体のレポート (プレビュー)
 
-Azure SQL Database 用の エラスティック データベース クエリ (プレビュー) を使用すると、1 つの接続ポイントで複数のデータベースにまたがる T-SQL クエリを実行することができます。エラスティック データベース クエリ機能の詳細については、「[機能の概要に関するページ](sql-database-elastic-query-overview.md)」を参照してください。
+1 つの接続ポイントから複数の Azure SQL データベースのレポートを作成するには、[エラスティック クエリ](sql-database-elastic-query-overview.md)を使用します。データベースは、行方向にパーティション分割する必要があります ("シャード化" とも呼ばれます)。
 
-このトピックは、「[エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」に示したサンプルを拡張したものです。終了すると、多くの関連するデータベースにまたがるクエリを実行するために Azure SQL Database を構成および使用する方法を習得できます。
+既存のデータベースがある場合は、[スケール アウトされたデータベースへの既存データベースの移行](sql-database-elastic-convert-to-use-elastic-tools.md)に関するページをご覧ください。
+
+クエリに必要な SQL オブジェクトについては、[行方向にパーティション分割されたデータベース間のクエリ](sql-database-elastic-query-horizontal-partitioning.md)に関するページをご覧ください。
+
 ## 前提条件
 
 [「エラスティック データベース ツールの概要」に示されているサンプル](sql-database-elastic-scale-get-started.md)をダウンロードして実行します。
@@ -142,4 +145,4 @@ Elastic Database クエリ機能を使用する場合に追加の料金は発生
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

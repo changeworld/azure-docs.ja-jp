@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="04/19/2016"
 	ms.author="cynthn"/>
 
 # Azure 上でクラシック仮想マシンにエンドポイントをセットアップする方法
@@ -23,13 +23,15 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
-Azure クラシック ポータルで Linux 仮想マシンを作成するとき、Secure Shell (SSH) 用などの共通エンドポイントは、通常、自動的に作成されます。必要に応じて、仮想マシンの作成中や作成後に、追加のエンドポイントを構成できます。
+Azure クラシック ポータルで Linux 仮想マシンを作成すると、通常は Secure Shell (SSH) 用のエンドポイントが自動的に作成されます。必要に応じて、仮想マシンの作成中や作成後に、追加のエンドポイントを構成できます。
  
 
 [AZURE.INCLUDE [virtual-machines-common-classic-setup-endpoints](../../includes/virtual-machines-common-classic-setup-endpoints.md)]
 
 ## 次のステップ
 
-* [サービス管理モード](../virtual-machines-command-line-tools.md)で Azure コマンドライン インターフェイスを使用して、VM エンドポイントを作成することもできます。**azure vm endpoint create** コマンドを実行します。
+* VM エンドポイントは、[Azure コマンド ライン インターフェイス](../virtual-machines-command-line-tools.md)を使用して作成することもできます。**azure vm endpoint create** コマンドを実行します。
 
-<!---HONumber=AcomDC_0413_2016-->
+* Resource Manager デプロイメント モデルで仮想マシンを作成した場合は、Resource Manager モードで Azure CLI を使用して、VM へのトラフィックを制御する[ネットワーク セキュリティ グループを作成](../virtual-network/virtual-networks-create-nsg-arm-cli.md)できます。
+
+<!---HONumber=AcomDC_0511_2016-->

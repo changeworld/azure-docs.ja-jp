@@ -60,7 +60,7 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 ![](./media/app-insights-analytics-using/030.png)
 
-> [AZURE.NOTE] 列のヘッダーをクリックして、Web ブラウザーに表示される結果の順序を簡単に変更できます。ただし、大きな結果セットの場合、ブラウザーにダウンロードされる行数が制限されます。したがって、この並べ替え方法では、実際の最上位項目または最下位項目が表示されない場合があります。その場合は、[top](app-insights-analytics-queries.md#top-operator) または [sort](app-insights-analytics-queries.md#sort-operator) 演算子を使用する必要があります。
+> [AZURE.NOTE] 列の先頭をクリックすると、Web ブラウザーに表示される結果の順序を簡単に変更できます。ただし、大きな結果セットの場合、ブラウザーにダウンロードされる行数が制限されます。したがって、この並べ替え方法では、実際の最上位項目または最下位項目が表示されない場合があります。その場合は、[top](app-insights-analytics-queries.md#top-operator) または [sort](app-insights-analytics-queries.md#sort-operator) 演算子を使用する必要があります。
 
 サーバーから膨大なテーブルがダウンロードされないように、[take](app-insights-analytics-queries.md#take-operator)、[top](app-insights-analytics-queries.md#top-operator)、または [summarize](app-insights-analytics-queries.md#summarize-operator) 演算子を使用することをお勧めします。クエリ 1 件あたり約 10,000 行の自動制限が必ず適用されます。
 
@@ -71,7 +71,7 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 ![](./media/app-insights-analytics-using/230.png)
 
-右側の種類の複数の列がある場合は、x 軸と y 軸を選択し、結果を分割するディメンションの列を選択できます。
+種類が適切な複数の列がある場合は、x 軸と y 軸を選択して、結果を分割するディメンションの列を選択できます。
 
 ![](./media/app-insights-analytics-using/100.png)
 
@@ -83,7 +83,7 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 ## Power BI へのエクスポート
 
-1. クエリ内にカーソルを置き、**[Power BI にエクスポート]** を選択します。
+1. クエリにカーソルを置いて、**[Power BI にエクスポート]** を選択します。
 
     ![](./media/app-insights-analytics-using/240.png)
 
@@ -101,6 +101,7 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 
 
+
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0511_2016-->

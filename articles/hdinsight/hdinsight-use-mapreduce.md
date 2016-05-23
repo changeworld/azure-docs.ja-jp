@@ -146,7 +146,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 	  }
 	}
 
-独自の MapReduce ジョブの作成手順については、「[HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce.md)」を参照してください。
+独自の MapReduce ジョブの作成手順については、「[HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce-linux.md)」を参照してください。
 
 ##<a id="run"></a>MapReduce の実行
 
@@ -163,7 +163,7 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 
 MapReduce は高度な診断機能を備えていますが、使いこなすのは少し難しいツールです。HDInsight でデータを操作する簡単な方法を提供する、Pig や Hive などのテクノロジだけでなく、MapReduce アプリケーションを定義しやすくする Java ベースのフレームワークがいくつかあります。詳細については、次の記事を参照してください。
 
-* [HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce.md)
+* [HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce-linux.md)
 
 * [HDInsight 用 Python ストリーミング MapReduce プログラムの開発](hdinsight-hadoop-streaming-python.md)
 
@@ -178,7 +178,7 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
-[hdinsight-develop-mapreduce-jobs]: hdinsight-develop-deploy-java-mapreduce.md
+[hdinsight-develop-mapreduce-jobs]: hdinsight-develop-deploy-java-mapreduce-linux.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 [hdinsight-samples]: hdinsight-run-samples.md
@@ -188,4 +188,4 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -187,7 +187,7 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
 #### 1\.2 つのゲートウェイを取得する
 
 		$vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
-		$lng5gw  = Get-AzureRmVirtualNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5
+		$lng5gw  = Get-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5
 
 #### 2\.TestVNet1 から Site5 への接続を作成する
 
@@ -278,7 +278,7 @@ AS 番号で VPN ゲートウェイを作成します。Azure VPN ゲートウ�
 ログインし、サブスクリプション 1 に接続します。
 
 	$vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
-	$vnet2gw = Get-AzureRmLocalNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
+	$vnet2gw = Get-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
 	
 #### 2\.両方の接続を作成する
 
@@ -300,4 +300,4 @@ AS 番号で VPN ゲートウェイを作成します。Azure VPN ゲートウ�
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

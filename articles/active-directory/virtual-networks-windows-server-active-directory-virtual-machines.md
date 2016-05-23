@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure VM 上の Windows Server Active Directory | Microsoft Azure" 
-	description="Azure 仮想マシンでは、Windows Server Active Directory Domain Services (AD DS) または Active Directory フェデレーション サービス (AD FS) を実行できます。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="markusvi" 
-	manager="stevenpo" 
+<properties
+	pageTitle="Azure VM 上の Windows Server Active Directory | Microsoft Azure"
+	description="Azure 仮想マシンでは、Windows Server Active Directory Domain Services (AD DS) または Active Directory フェデレーション サービス (AD FS) を実行できます。"
+	services="active-directory"
+	documentationCenter=""
+	authors="markusvi"
+	manager="stevenpo"
 	tags="azure-classic-portal"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/07/2016" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/07/2016"
 	ms.author="markusvi"/>
 
 
@@ -24,7 +24,7 @@
 
 ## 概念的なガイドライン
 
-- [Azure Virtual Machines での Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx) 
+- [Azure Virtual Machines での Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)
 
 ## ビデオ
 
@@ -33,7 +33,7 @@
 ## 作業方法に関する記事
 
 - [Azure Virtual Network での Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)
-- [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md) 
+- [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)
 - [テスト用のハイブリッド クラウド環境の設定](../virtual-machines/virtual-machines-windows-ps-hybrid-cloud-test-env-base.md)
 
 
@@ -42,9 +42,4 @@
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
 - [Azure ID](fundamentals-identity.md)
 
-
-
-
- 
-
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

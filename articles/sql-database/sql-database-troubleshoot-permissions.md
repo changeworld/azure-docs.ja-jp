@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure SQL データベースのアクセス許可およびアクセスのトラブルシューティング"
-	description="共通のアクセス許可、アクセス、ユーザー、およびログインの問題をトラブルシューティングするための簡単な手順"
+	pageTitle="Azure SQL Database の一般的な管理タスクを実行する方法"
+	description="一般的な管理タスクを実行する方法について説明します"
 	services="sql-database"
 	documentationCenter=""
 	authors="v-shysun"
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="05/04/2016"
 	ms.author="v-shysun"/>
 
-#一般的な Azure SQL Database のアクセス許可およびアクセスの問題のトラブルシューティング
+# Azure SQL Database の一般的な管理タスクを実行する方法
 Azure SQL Database へのアクセスの付与および削除を行う簡単な手順については、このトピックをご覧ください。より包括的な情報については、次を参照してください。
 
 - [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
@@ -37,4 +37,4 @@ Azure SQL Database へのアクセスの付与および削除を行う簡単な�
 ## 仮想マスター データベースで高い特権を持つユーザーの追加ログインを作成するには
 - [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) ステートメントを使用し、「[Azure SQL Database におけるデータベースとログインを管理する](sql-database-manage-logins.md)」の「ログイン管理」のセクションで詳細を確認してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0511_2016-->

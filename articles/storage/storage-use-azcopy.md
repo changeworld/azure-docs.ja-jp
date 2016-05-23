@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="05/06/2016"
 	ms.author="micurd"/>
 
 # AzCopy コマンド ライン ユーティリティを使用してデータを転送する
@@ -477,7 +477,7 @@ AzCopy の操作を再開する場合:
 
 ### 開始する同時操作の数の指定
 
-オプション `/NC` を使用して同時コピー操作の数を指定します。既定では、AzCopy は、環境で使用されているコア プロセッサ数の 8 倍の数の同時操作を開始します。低帯域幅のネットワークで AzCopy を実行している場合は、このオプションに少ない数を指定することで、リソースの競合で生じる失敗を回避できます。
+オプション `/NC` を使用して同時コピー操作の数を指定します。既定では、AzCopy はデータ転送のスループットを向上するために一定数の同時操作を開始します。Table 操作については、同時操作数と所有するプロセッサ数が同じになります。BLOB および File 操作については、同時操作数は、所有するプロセッサ数に 8 を乗算した数と同じになります。低帯域幅のネットワークで AzCopy を実行している場合は、/NC に少ない数を指定することで、リソースの競合で生じる失敗を回避できます。
 
 ### Azure ストレージ エミュレーターに対して AzCopy を実行する
 
@@ -583,7 +583,7 @@ AzCopy は、Azure BLOB またはファイルをサービスにアップロー�
 
 スナップショットを転送するかどうかを示します。このオプションはソースが BLOB の場合のみに有効です。
 
-転送する BLOB のスナップショットは、[blob-name](snapshot-time)[extension] の形式で名前が変更されます。
+転送する BLOB のスナップショットは、blob-name (snapshot-time).extension の形式で名前が変更されます
 
 スナップショットは既定ではコピーされません。
 
@@ -864,4 +864,4 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 - [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

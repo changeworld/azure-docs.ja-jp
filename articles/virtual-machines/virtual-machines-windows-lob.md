@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="05/04/2016" 
 	ms.author="josephd"/>
 
 # Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション
@@ -52,7 +52,7 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 構成は次のとおりです。
 
 - Web層とデータベース層にサーバーが 2 つずつあるイントラネット専用基幹業務アプリケーション。
-- クラスターに SQL サーバーを実行する 2 つの仮想マシンと 1 つのマジョリティ ノード コンピューターがある SQL Server AlwaysOn 構成。
+- クラスターに SQL Server を実行する 2 つの仮想マシンと 1 つのマジョリティ ノード コンピューターがある SQL Server AlwaysOn 構成。
 - 仮想ネットワークに 2 つのレプリカ ドメイン コント ローラーがある Active Directory ドメイン サービス。
 
 基幹業務アプリケーションの概要については、「[基幹業務アプリケーションのアーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)」を参照してください。
@@ -77,7 +77,7 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 
 - フェーズ 5: SQL Server AlwaysOn 可用性グループを構成する
 
-	アプリケーション データベースを準備し、SQL Server AlwaysOn 可用性グループを作成して、準備したデータベースをそれに追加します。詳細な構成手順については、「[フェーズ 5](virtual-machines-windows-ps-lob-ph5.md)」を参照してください。
+	アプリケーション データベースを準備し、SQL Server AlwaysOn 可用性グループを作成して、準備したデータベースをそのグループに追加します。詳細な構成手順については、「[フェーズ 5](virtual-machines-windows-ps-lob-ph5.md)」を参照してください。
 
 構成が済むと、Web サーバー、または SQL Server を実行する仮想マシンをクラスターにさらに追加することで、この基幹業務アプリケーションを簡単に拡張できます。
 
@@ -85,4 +85,4 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 
 - 構成を開始する前に、実稼働ワークロードの[概要](virtual-machines-windows-lob-overview.md)を入手します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

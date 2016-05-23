@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="04/29/2016"
+   ms.date="05/07/2016"
    ms.author="glenga"/>
    
 # webhook または API Azure Function を作成する
@@ -89,4 +89,4 @@ Azure Functions の詳細については、次のトピックを参照してく�
 
 [AZURE.INCLUDE [概要のメモ](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -6,7 +6,7 @@
 	authors="rothja"
 	manager="jeffreyg"
 	editor="monicar"
-	tags="azure-service-management" />
+	tags="azure-resource-management" />
 
 <tags
 	ms.service="virtual-machines-windows"
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="02/03/2016"
+	ms.date="05/06/2016"
 	ms.author="jroth" />
 
 # Azure Virtual Machines おける SQL Server のバックアップと復元
@@ -33,29 +33,29 @@ SQL Server 2014 以降では、Microsoft Azure BLOB ストレージへのバッ�
 
 以降のセクションには、Azure 仮想マシンでサポートされているさまざまなバージョンの SQL Server に固有の情報が記載されています。
 
-## データベース ファイルが Microsoft Azure BLOB サービスに保存されている場合のバックアップに関する考慮事項
+## SQL Server 仮想マシン
 
-データベース ファイルが Microsoft Azure BLOB ストレージに保存されている場合、データベースのバックアップを実行する理由や、基になるバックアップ テクノロジ自体が変わります。データベース ファイルを Azure BLOB ストレージに保存する方法の詳細については、[Azure における SQL Server データ ファイル](https://msdn.microsoft.com/library/jj919148.aspx)に関するページをご覧ください。
+SQL Server インスタンスが Azure 仮想マシンで実行されている場合、Azure のデータ ディスク上にデータベース ファイルが既にあります。これらのディスクは Azure BLOB ストレージに配置されています。そのため、データベースをバックアップする理由と使用するアプローチが少し変わります。次の例を検討してみてください。
 
 - Microsoft Azure では、Microsoft Azure サービスの一部として、ハードウェアやメディアの障害からの保護が提供されるため、この保護のためにデータベースのバックアップを実行する必要はなくなりました。
 
 - ユーザー エラーからの保護、保存目的、規制上の理由、または管理目的で、データベースのバックアップを引き続き実行する必要があります。
 
-- Microsoft SQL Server 2016 Community Technology Preview 3 (CTP3) の SQL Server ファイル スナップショット バックアップ機能を使用して、ほぼ瞬時のバックアップと迅速な復元を実行できます。詳細については、「[Azure でのデータベース ファイルのスナップショット バックアップ](https://msdn.microsoft.com/library/mt169363.aspx)」をご覧ください。
+- バックアップ ファイルを直接 Azure に保存できます。詳細については、各種バージョンの SQL Server に関するガイダンスを示す以降のセクションをご覧ください。
 
-## Microsoft SQL Server 2016 Community Technology Preview 3 (CTP3) でのバックアップと復元
+## SQL Server 2016 Release Candidate
 
-Microsoft SQL Server 2016 Community Technology Preview 3 (CTP3) では、SQL Server 2014 の [Azure BLOB を使用したバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)機能をサポートしています。ただし、次の拡張機能も用意されています。
+Microsoft SQL Server 2016 Release Candidate (RC3) では、SQL Server 2014 の [Azure BLOB を使用したバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)機能をサポートしています。ただし、次の拡張機能も用意されています。
 
-- **ストライピング**: Microsoft Azure BLOB ストレージにバックアップする場合、SQL Server 2016 では、複数の BLOB へのバックアップをサポートしているので、最大 12.8 TB の大規模なデータベースをバックアップできます。
+| 2016 の拡張機能 | 詳細 |
+|---------------------|-------------------------------|
+| **ストライピング** | Microsoft Azure Blob ストレージにバックアップする場合、SQL Server 2016 では、複数の BLOB へのバックアップをサポートしているので、最大 12.8 TB の大規模なデータベースをバックアップできます。 |
+| **スナップショット バックアップ** | Azure のスナップショットを使用することで、SQL Server ファイル スナップショット バックアップでは、Azure Blob ストレージ サービスを使用して保存されたデータベース ファイルをほぼ瞬時にバックアップし、迅速に復元できます。この機能により、バックアップと復元のポリシーを簡素化することができます。ファイル スナップショット バックアップでは、ポイントインタイム リストアもサポートしています。詳細については、「[Snapshot Backups for Database Files in Azure (Azure でのデータベース ファイルのスナップショット バックアップ)](https://msdn.microsoft.com/library/mt169363%28v=sql.130%29.aspx)」をご覧ください。 |
+| **マネージ バックアップのスケジュール設定** | Azure への SQL Server マネージ バックアップでカスタム スケジュールがサポートされるようになりました。詳細については、「[SQL Server Managed Backup to Microsoft Azure (Microsoft Azure への SQL Server マネージ バックアップ)](https://msdn.microsoft.com/library/dn449496.aspx)」をご覧ください。 |
 
-- **スナップショット バックアップ**: Azure のスナップショットを使用することで、SQL Server ファイル スナップショット バックアップでは、Azure BLOB ストレージ サービスを使用して保存されたデータベース ファイルをほぼ瞬時にバックアップし、迅速に復元できます。この機能により、バックアップと復元のポリシーを簡素化することができます。ファイル スナップショット バックアップでは、ポイントインタイム リストアもサポートしています。詳細については、「[Snapshot Backups for Database Files in Azure (Azure でのデータベース ファイルのスナップショット バックアップ)](https://msdn.microsoft.com/library/mt169363%28v=sql.130%29.aspx)」をご覧ください。
+Azure BLOB ストレージを使用する場合の、SQL Server 2016 の機能のチュートリアルについては、「[Tutorial: Using the Microsoft Azure Blob storage service with SQL Server 2016 databases (チュートリアル: SQL Server 2016 データベースでの Microsoft Azure BLOB ストレージ サービスの使用)](https://msdn.microsoft.com/library/dn466438.aspx)」をご覧ください。
 
-- **マネージ バックアップのスケジュール設定**: Azure への SQL Server マネージ バックアップでカスタム スケジュールがサポートされるようになりました。詳細については、「[SQL Server Managed Backup to Microsoft Azure (Microsoft Azure への SQL Server マネージ バックアップ)](https://msdn.microsoft.com/library/dn449496.aspx)」をご覧ください。
-
->[AZURE.NOTE] Azure BLOB ストレージを使用する場合の、SQL Server 2016 の機能のチュートリアルについては、「[Tutorial: Using the Microsoft Azure Blob storage service with SQL Server 2016 databases (チュートリアル: SQL Server 2016 データベースでの Microsoft Azure BLOB ストレージ サービスの使用)](https://msdn.microsoft.com/library/dn466438.aspx)」をご覧ください。
-
-## SQL Server 2014 でのバックアップと復元
+## SQL Server 2014
 
 SQL Server 2014 には、次の拡張機能が用意されています。
 
@@ -68,7 +68,7 @@ SQL Server 2014 には、次の拡張機能が用意されています。
 
 1. **暗号化**: SQL Server 2014 では、バックアップの作成時におけるデータの暗号化をサポートしています。複数の暗号化アルゴリズムと、証明書または非対称キーの使用をサポートしています。詳細については、「[バックアップの暗号化](https://msdn.microsoft.com/library/dn449489%28v=sql.120%29.aspx)」をご覧ください。
 
-## SQL Server 2012 でのバックアップと復元
+## SQL Server 2012
 
 SQL Server 2012 での SQL Server のバックアップと復元の詳細については、「[SQL Server データベースのバックアップと復元](https://msdn.microsoft.com/library/ms187048%28v=sql.110%29.aspx)」(SQL Server 2012) をご覧ください。
 
@@ -78,7 +78,7 @@ Azure BLOB ストレージ サービスを使用する利点として、接続�
 
 ベスト プラクティスの推奨事項とトラブルシューティング情報については、「[バックアップと復元に関するベスト プラクティス (Azure BLOB ストレージ サービス)](https://msdn.microsoft.com/library/jj919149%28v=sql.110%29.aspx)」をご覧ください。
 
-## Azure 仮想マシンでサポートされる他のバージョンの SQL Server でのバックアップと復元
+## SQL Server 2008
 
 SQL Server 2008 R2 での SQL Server のバックアップと復元については、「[SQL Server でのデータベースのバックアップおよび復元](https://msdn.microsoft.com/library/ms187048%28v=sql.105%29.aspx)」(SQL Server 2008 R2) をご覧ください。
 
@@ -86,10 +86,10 @@ SQL Server 2008 での SQL Server のバックアップと復元については�
 
 ## 次のステップ
 
-Azure VM に SQL Server をデプロイすることを計画している場合、プロビジョニングのガイダンスについては、チュートリアル「[Provisioning a SQL Server Virtual Machine on Azure with Azure Resource Manager (Azure リソース マネージャーでの Azure 上の SQL Server 仮想マシンのプロビジョニング)](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
+Azure VM に SQL Server をデプロイすることを計画している場合、プロビジョニングのガイダンスについては、[Azure Resource Manager を使用した Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)に関するチュートリアルをご覧ください。
 
 バックアップと復元を使用してデータを移行できますが、Azure VM の SQL Server へのより簡単なデータ移行パスが存在する可能性があります。移行オプションと推奨事項の詳細については、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)」をご覧ください。
 
 [Azure Virtual Machines で SQL Server を実行するための他のリソース](virtual-machines-windows-sql-server-iaas-overview.md)を確認します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

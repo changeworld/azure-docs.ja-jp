@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/19/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行
@@ -149,7 +149,7 @@ JSON ファイルは **[構成]** フォルダーに作成されます。この�
 
 JSON 構成を編集して、発行スクリプトの実行時の動作を変更できます。`cloudService` セクションと `virtualMachine` セクションは必須ですが、`databases` セクションは不要であれば削除できます。Visual Studio によって生成される既定の構成ファイルに含まれる空のプロパティは省略可能です。既定の構成ファイルで値が指定されているプロパティは必須です。
 
-Azure に運用サイトが 1 つだけ存在するのでなく、複数のデプロイ環境 (スロット) を持つ Web サイトがある場合は、JSON 構成ファイルの Web サイト名にスロット名を含めることができます。たとえば、**mysite** という名前の Web サイトがあり、そのスロットが **test** という名前の場合、URI は mysite-test.cloudapp.net になります。ただし、構成ファイルで使用する正しい名前は mysite(test) です。これが可能なのは、サブスクリプションに Web サイトとスロットが既に存在している場合に限られます。存在していない場合は、スロットを指定せずにスクリプトを実行して Web サイトを作成し、Azure 管理ポータルでスロットを作成してから、変更した Web サイト名でスクリプトを実行します。Web アプリのデプロイメント スロットの詳細については、「[Azure App Service の Web アプリのステージング環境を設定する](./app-service-web/web-sites-staged-publishing.md)」をご覧ください。
+Azure に運用サイトが 1 つだけ存在するのでなく、複数のデプロイ環境 (スロット) を持つ Web サイトがある場合は、JSON 構成ファイルの Web サイト名にスロット名を含めることができます。たとえば、**mysite** という名前の Web サイトがあり、そのスロットが **test** という名前の場合、URI は mysite-test.cloudapp.net になります。ただし、構成ファイルで使用する正しい名前は mysite(test) です。これが可能なのは、サブスクリプションに Web サイトとスロットが既に存在している場合に限られます。存在していない場合は、スロットを指定せずにスクリプトを実行して Web サイトを作成し、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)でスロットを作成してから、変更した Web サイト名でスクリプトを実行します。Web アプリのデプロイメント スロットの詳細については、「[Azure App Service の Web アプリのステージング環境を設定する](./app-service-web/web-sites-staged-publishing.md)」をご覧ください。
 
 ## 発行スクリプトの実行方法
 
@@ -351,4 +351,4 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 
 PowerShell スクリプトの詳細については、「[Windows PowerShell を使用したスクリプト](https://technet.microsoft.com/library/bb978526.aspx)」をお読みください。また、「[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)」で他の Azure PowerShell スクリプトもご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->
