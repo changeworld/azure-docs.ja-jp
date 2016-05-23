@@ -87,7 +87,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 8.    [許可されているクライアントをサービス構成ファイルに構成する](#Configure-Allowed-Clients-in-the-Service-Configuration-File)
 
 ### 既存のクライアント証明書を使用する
-1.    [CA の公開キーを検索する] (#Find-CA-Public Key)
+1.    [CA の公開キーを検索する](#Find-CA-Public Key)
 2.    [CA 証明書をクラウド サービスにアップロードする](#Upload-CA-certificate-to-cloud-service)
 3.    [サービス構成ファイルの CA 証明書を更新する](#Update-CA-Certificate-in-Service-Configuration-File)
 4.    [クライアント証明書のサムプリントをコピーする](#Copy-Client-Certificate-Thumbprints)
@@ -357,7 +357,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 * 表示される [証明書] ダイアログ ボックスで [詳細] タブをクリックする
 * すべてが表示されていることを確認する
 * 一覧の Thumbprint という名前のフィールドを選択する
-* サムプリントの値をコピーする ** 最初の桁の前にある非表示の Unicode 文字を削除する ** すべてのスペースを削除する
+* サムプリントの値をコピーする **最初の桁の前にある非表示の Unicode 文字を削除する** すべてのスペースを削除する
 
 ## 許可されているクライアントをサービス構成ファイルに構成する
 

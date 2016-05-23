@@ -343,7 +343,7 @@
 | 172 | [Azure SQL Database のリソース制限](sql-database-resource-limits.md) | このページでは、Azure SQL Database に対するいくつかの一般的なリソース制限について説明します。 |
 | 173 | [Azure SQL Database の Transact-SQL の相違点](sql-database-transact-sql-information.md) | Azure SQL Database では完全にサポートされない Transact-SQL ステートメント |
 | 174 | [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md) | クライアント プログラムが Azure SQL Database または Microsoft SQL Server に接続する際に使用できる各ドライバーの最小バージョン番号を示します。Microsoft ではなくコミュニティからリリースされているドライバーに関するバージョン情報へのリンクが用意されています。 |
-| 175 | [フィルターを使用した検索](https://azure.microsoft.com/ja-JP/documentation/articles/?service=sql-database) | Azure SQL Database に関するドキュメント記事のフィルターを使用して検索します。 |
+| 175 | [フィルターを使用した検索](https://azure.microsoft.com/documentation/articles/?service=sql-database) | Azure SQL Database に関するドキュメント記事のフィルターを使用して検索します。 |
 
 
 ## その他

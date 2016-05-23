@@ -367,7 +367,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
             }
         }
 
-6. 前述のコードに含まれる、**CLUSTERNAME**、**HADOOPUSERNAME**、**HADOOPUSERPASSWORD**、DICTIONARYFILENAME などの定数を設定します。DICTIONARYFILENAME は、direction.tsv のファイル名と場所です。このファイルは、****https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv** からダウンロードできます。HBase テーブル名を変更する場合には、それに応じて Web アプリケーション内のテーブル名も変更しなければなりません。
+6. 前述のコードに含まれる、**CLUSTERNAME**、**HADOOPUSERNAME**、**HADOOPUSERPASSWORD**、DICTIONARYFILENAME などの定数を設定します。DICTIONARYFILENAME は、direction.tsv のファイル名と場所です。このファイルは、**https://hditutorialdata.blob.core.windows.net/twittersentiment/dictionary.tsv** からダウンロードできます。HBase テーブル名を変更する場合には、それに応じて Web アプリケーション内のテーブル名も変更しなければなりません。
 
 7. **Program.cs** を開き、そのコードを次のコードに置き換えます。
 

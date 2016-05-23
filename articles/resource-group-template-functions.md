@@ -455,7 +455,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 | baseUri | あり | ベース URI 文字列。
 | relativeUri | あり | ベース URI 文字列に追加する相対 URI 文字列。
 
-**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。たとえば、baseUri パラメーターとして ****http://contoso.com/resources/azuredeploy.json** を渡すと、****http://contoso.com/resources/** というベース URI が作成されます。
+**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。たとえば、baseUri パラメーターとして **http://contoso.com/resources/azuredeploy.json** を渡すと、**http://contoso.com/resources/** というベース URI が作成されます。
 
 次の例は、親テンプレートの値に基づいて、入れ子になったテンプレートへのリンクを作成する方法を示しています。
 

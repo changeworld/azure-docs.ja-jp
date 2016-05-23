@@ -1523,7 +1523,7 @@ HDInsight 2.x (HDP1.x) と HDInsight 3.x (HDP2.x) との間で以下のバージ
 
 
 ### ドライバー
-SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight によって内部的に使用され、外部の操作では使用されません。Open Database Connectivity (ODBC) を使用して HDInsight に接続する場合は、Microsoft Hive ODBC ドライバーを使用してください。詳細については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続](hdinsight-connect-excel-hive-odbc-driver.md)」をご覧ください。
+SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight によって内部的に使用され、外部の操作では使用されません。Open Database Connectivity (ODBC) を使用して HDInsight に接続する場合は、Microsoft Hive ODBC ドライバーを使用してください。詳細については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続](../../articles/hdinsight/hdinsight-connect-excel-hive-odbc-driver.md)」をご覧ください。
 
 
 ### バグの修正

@@ -191,7 +191,7 @@ Mobile Services 以降、Azure Notification Hubs SDK では大幅に更新され
 
     table.insert(function (context) {
         // For details of the Notification Hubs JavaScript SDK,
-        // see https://azure.microsoft.com/ja-JP/documentation/articles/notification-hubs-nodejs-how-to-use-notification-hubs/
+        // see https://azure.microsoft.com/documentation/articles/notification-hubs-nodejs-how-to-use-notification-hubs/
         logger.silly('Running TodoItem.insert');
 
         // This push uses a template mechanism, so we need a template/
@@ -271,7 +271,7 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 [How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[App Service の価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
+[App Service の価格]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 
 [Azure ポータル]: https://portal.azure.com/

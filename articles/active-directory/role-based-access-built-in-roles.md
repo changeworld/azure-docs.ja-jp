@@ -157,7 +157,21 @@ Data Factory を管理できます
 
 | **アクション** ||
 | ------- | ------ |
-| **/read | すべての種類のリソースの読み取り | | Microsoft.DevTestLab/labs/createEnvironment/action | ラボ環境の作成 | | Microsoft.DevTestLab/labs/formulas/delete | 数式の削除 | | Microsoft.DevTestLab/labs/formulas/write | 数式の追加または変更 | | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | ラボのポリシーの評価 | | Microsoft.Compute/virtualMachines/start/action | 仮想マシンの起動 | | Microsoft.Compute/virtualMachines/restart/action | 仮想マシンの再起動 | | Microsoft.Compute/virtualMachines/deallocate/action | 仮想マシンの割り当て解除 | | Microsoft.Storage/storageAccounts/listKeys/action | ストレージ アカウント キーの一覧表示 | | Microsoft.Network/virtualNetworks/subnets/join/action | 仮想ネットワークに接続 | | Microsoft.Network/loadBalancers/backendAddressPools/join/action | ロード バランサー バックエンド アドレス プールに接続 | | Microsoft.Network/loadBalancers/inboundNatRules/join/action | ロード バランサー受信 NAT 規則に接続 | | Microsoft.Network/publicIPAddresses/join/action | パブリック IP アドレスに接続 | | Microsoft.Network/networkInterfaces/join/action | 仮想マシンをネットワーク インターフェイスに接続 | | Microsoft.Network/networkInterfaces/write | ネットワーク インターフェイスの作成 |
+| */read | すべての種類のリソースの読み取り |
+| Microsoft.DevTestLab/labs/createEnvironment/action | ラボ環境の作成 |
+| Microsoft.DevTestLab/labs/formulas/delete | 数式の削除 |
+| Microsoft.DevTestLab/labs/formulas/write | 数式の追加または変更 |
+| Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | ラボのポリシーの評価 |
+| Microsoft.Compute/virtualMachines/start/action | 仮想マシンの起動 |
+| Microsoft.Compute/virtualMachines/restart/action | 仮想マシンの再起動 |
+| Microsoft.Compute/virtualMachines/deallocate/action | 仮想マシンの割り当て解除 |
+| Microsoft.Storage/storageAccounts/listKeys/action | ストレージ アカウント キーの一覧表示 |
+| Microsoft.Network/virtualNetworks/subnets/join/action | 仮想ネットワークに接続 |
+| Microsoft.Network/loadBalancers/backendAddressPools/join/action | ロード バランサー バックエンド アドレス プールに接続 |
+| Microsoft.Network/loadBalancers/inboundNatRules/join/action | ロード バランサー受信 NAT 規則に接続 |
+| Microsoft.Network/publicIPAddresses/join/action | パブリック IP アドレスに接続 |
+| Microsoft.Network/networkInterfaces/join/action | 仮想マシンをネットワーク インターフェイスに接続 |
+ | Microsoft.Network/networkInterfaces/write | ネットワーク インターフェイスの作成 |
 
 ### Document DB アカウントの共同作業者
 Document DB アカウントを管理できます
@@ -377,7 +391,8 @@ Azure リソースに対するユーザー アクセスを管理できます
 
 | **アクション** ||
 | ------- | ------ |
-| */read | 機密データを除くあらゆる種類のリソースの読み取り | | Microsoft.Authorization/* | 承認の読み取り |
+| */read | 機密データを除くあらゆる種類のリソースの読み取り |
+| Microsoft.Authorization/* | 承認の読み取り |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### 従来の仮想マシンの共同作業者

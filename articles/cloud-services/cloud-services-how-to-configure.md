@@ -33,7 +33,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 
 ## クラウド サービスの変更
 
-1. [Azure クラシック ポータル](http://manage.windowsazure.com/)で **[Cloud Services]** をクリックし、クラウド サービスの名前をクリックして、**[構成]** をクリックします。
+1. [Azure ポータル](http://manage.windowsazure.com/)で **[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックして、**[構成]** をクリックします。
 
     ![[構成] ページ](./media/cloud-services-how-to-configure/CloudServices_ConfigurePage1.png)
     

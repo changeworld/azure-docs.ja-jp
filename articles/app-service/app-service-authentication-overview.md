@@ -26,7 +26,7 @@ App Service では、サード パーティの ID プロバイダーがアカウ
 
 すぐに開始する場合は、以下のチュートリアルのいずれかを参照してください。
 
-- [iOS アプリに認証を追加する][iOS] (または [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova])
+- [iOS アプリに認証を追加する][iOS]\(または [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova])
 - [Azure App Service の API Apps でのユーザー認証][apia-user]
 - [Azure App Service の使用 - 第 2 部][web-getstarted]
 
