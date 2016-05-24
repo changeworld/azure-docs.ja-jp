@@ -123,7 +123,7 @@ table
     .then(success, failure);
 ```
 
-query オブジェクトの詳細については、[「query オブジェクト」](https://msdn.microsoft.com/library/azure/jj613353.aspx)を参照してください。
+query オブジェクトの詳細については、[「query オブジェクト」]を参照してください。
 
 ###<a name="inserting"></a>方法: データを挿入する
 
