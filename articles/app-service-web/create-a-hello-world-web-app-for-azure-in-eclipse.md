@@ -84,7 +84,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
   1. **[Web コンテナー]** ドロップダウン メニューで、アプリケーションに適したソフトウェアを選択します。
 
-        Currently, you can choose from Tomcat 8, Tomcat 7 or Jetty 9. A recent distribution of the selected software will be provided by Azure, and it will run on a recent distribution of JDK 8 created by Oracle and provided by Azure.
+        現在、Tomcat 8、Tomcat 7 または Jetty 9 から選択することができます。 選択したソフトウェアの最新の配信が Azure で提供されます。また、これは Oracle によって作成され、Azure で提供された JDK 8 の最新の配信で実行されます。
 
   1. **[サブスクリプション]** ドロップダウン メニューで、このデプロイに使用するサブスクリプションを選択します。
 

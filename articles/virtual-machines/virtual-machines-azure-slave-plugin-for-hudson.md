@@ -67,7 +67,7 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
 1. Hudson ダッシュボードで、**[Manage Hudson]** をクリックします。
 2. **[Configure System]** をクリックします。
 3. ページを下にスクロールして **[Cloud]** セクションを探します。
-4. **[Add new cloud]、[Microsoft Azure]** の順にクリックします。
+4. **Add new cloud、[Microsoft Azure]** の順にクリックします。
 
 	![新しいクラウドの追加][add new cloud]
 

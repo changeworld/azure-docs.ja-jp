@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="05/05/2016"
 	ms.author="danlep"/>
 
-# Azure Resource Manager (arm) モードでの Azure CLI コマンド
+# Resource Manager モードでの Azure CLI コマンド
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](../virtual-machines-command-line-tools.md).
 
@@ -1796,7 +1796,9 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 **既定のリソースで VM を作成します**
 
-	vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>
+    vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
+    
+>[AZURE.TIP]CLI バージョン 0.10 以降では、"UbuntuLTS"、"Win2012R2Datacenter" などの短いエイリアスを、広く普及している Marketplace イメージの `image-urn` として指定できます。オプションで `azure help vm quick-create` を実行します。また、バージョン 0.10 以降、`azure vm quick-create` では Premium Storage が既定で使用されます (選択したリージョンで使用できる場合)。
 
 **アカウント内の仮想マシンを一覧表示します**
 
@@ -1872,4 +1874,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

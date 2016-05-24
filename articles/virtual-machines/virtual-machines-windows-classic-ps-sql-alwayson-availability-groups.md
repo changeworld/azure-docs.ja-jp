@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure VM での AlwaysOn 可用性グループの構成 | Microsoft Azure"
-	description="このチュートリアルでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、PowerShell を使用して Azure AlwaysOn 可用性グループを作成します。"
+	description="このチュートリアルでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用し、PowerShell を使用して Azure で AlwaysOn 可用性グループを作成します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="MikeRayMSFT"
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/22/2016"
+	ms.date="05/04/2016"
 	ms.author="mikeray" />
 
 # Azure VM での AlwaysOn 可用性グループの構成 (PowerShell)
@@ -27,7 +27,7 @@
 > [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
-Azure 仮想マシン (VM) を使用すると、データベース管理者は高可用性の SQL Server システムを低いコストで実装できます。このチュートリアルでは、Azure 環境内で SQL Server AlwaysOn をエンド ツー エンドで使用し、可用性グループを実装する方法について説明します。チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
+Azure 仮想マシン (VM) を使用すると、データベース管理者は高可用性の SQL Server システムを低いコストで実装できます。このチュートリアルでは、Azure 環境内で SQL Server AlwaysOn をエンド ツー エンドで使用して、可用性グループを実装する方法について説明します。チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
 
 - 複数のサブネットから成る仮想ネットワーク (フロントエンドのサブネットとバックエンドのサブネットを含む)
 
@@ -47,7 +47,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 
 - [Azure PowerShell コマンドレット](../powershell-install-configure.md)がインストール済みである。
 
-- オンプレミス ソリューションにおける AlwaysOn 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」を参照してください。
+- オンプレミス ソリューションにおける AlwaysOn 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。
 
 ## Azure サブスクリプションへの接続と Virtual Network の作成
 
@@ -625,8 +625,8 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 		    -Database $db
 
 ## 次のステップ
-これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を実装できました。この可用性グループのリスナーを構成するには、[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)に関するページを参照してください。
+これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を正常に実装できました。この可用性グループのリスナーを構成するには、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」をご覧ください。
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

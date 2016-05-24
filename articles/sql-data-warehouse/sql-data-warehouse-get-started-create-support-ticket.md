@@ -3,7 +3,7 @@
    description="Azure SQL Data Warehouse でサポート チケットを作成する方法。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sahaj08"
+   authors="sonyam"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
-   ms.author="sahajs;barbkess;sonyama"/>
+   ms.date="05/17/2016"
+   ms.author="sonyam;barbkess;sonyama"/>
 
 # SQL Data Warehouse のサポート チケットを作成する
  この記事では、SQL Data Warehouse のサポート チケットを作成する方法を示します。
@@ -84,4 +84,4 @@
 [Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL Data Warehouse MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

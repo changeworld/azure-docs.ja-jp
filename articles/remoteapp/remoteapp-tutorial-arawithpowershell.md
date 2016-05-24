@@ -13,13 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="02/23/2016"
+   ms.date="05/05/2016"
    ms.author="elizapo"/>
 
 
 
 # Azure RemoteApp での Windows PowerShell コマンドレットの使用
-=====================================
 
  Azure RemoteApp PowerShell コマンドレットを使用して、コレクションを管理、保守できます。次の情報を使用して、作業を開始しましょう。
 
@@ -27,7 +26,7 @@
 -------------
 最初に Azure Powershell コマンドレットを[ここ](http://go.microsoft.com/?linkid=9811175)からダウンロードします。RemoteApp のコマンドレットもそこに含まれています。
 
-詳しくは、[Azure RemoteApp のコマンドレットのヘルプ](https://msdn.microsoft.com/library/mt428031.aspx)をご覧ください。
+詳細については、[Azure RemoteApp コマンドレットのヘルプ](https://msdn.microsoft.com/library/mt428031.aspx)をご覧ください。
 
 ## サブスクリプションを使用するために Azure コマンドレットを構成します。
 ------------------
@@ -38,8 +37,8 @@
 1.	[Azure PowerShell コマンドレット](http://go.microsoft.com/?linkid=9811175)をダウンロードしてインストールします。
 2.	Microsoft Azure PowerShell を起動します。
 3.	**Add-AzureAccount** を実行して、Azure サブスクリプションに対して認証します。メッセージが表示されたら、Azure ポータルへのサインインに使用するのと同じユーザー名とパスワードを入力します。  
-4.	**Get-AzureSubscription** を実行して、自分のアカウントに関連付けられたサブスクリプションを表示します。 
-5.	**Select-AzureSubscription** を実行し、PowerShell コンソールで使用するサブスクリプション名または ID を指定します。
+4.	**Get-AzureSubscription** を実行して、自分のユーザー アカウントに関連付けられたサブスクリプションを表示します。 
+5.	**Select-AzureSubscription** を実行して、PowerShell コンソールで使用するサブスクリプション名または ID を指定します。
 
 これで、Azure PowerShell コンソールが構成され、使用できるようになりました。Azure PowerShell コンソールを起動するたびに、2 ～ 5 の手順を繰り返してください。
 
@@ -112,4 +111,4 @@ RemoteApp テンプレート イメージのコマンドレット:
 - Get-AzureRemoteAppOperationResult
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

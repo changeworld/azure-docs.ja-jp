@@ -173,7 +173,13 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
 
     ![参照の追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-reference.png)
     
-    参照を追加することで、リソース グループ プロジェクトに Web アプリ プロジェクトをリンクし、3 つのキー プロパティを設定します。**[追加のプロパティ]** には Azure Storage にプッシュされる Web デプロイ パッケージのステージングの場所が含まれます。**[ファイル パスを含める]** にはパッケージを作成するパスが含まれます。**[ターゲットを含める]** にはデプロイで実行するコマンドが含まれます。**Build;Package** の既定値を使用すると、デプロイでは、Web デプロイ パッケージ (package.zip) がビルドおよび作成されます。パッケージを作成するのに必要な情報はプロパティから取得するので、デプロイで発行プロファイルは必要ありません。
+    参照を追加することで、リソース グループ プロジェクトに Web アプリ プロジェクトをリンクし、3 つのキー プロパティを自動的に設定します。
+    
+    - **[追加のプロパティ]** には Azure Storage にプッシュされる Web デプロイ パッケージのステージングの場所が含まれます。 
+    - **[ファイル パスを含める]** にはパッケージを作成するパスが含まれます。**[ターゲットを含める]** にはデプロイで実行するコマンドが含まれます。 
+    - **Build;Package** の既定値を使用すると、デプロイでは、Web デプロイ パッケージ (package.zip) がビルドおよび作成されます。  
+    
+    パッケージを作成するのに必要な情報はプロパティから取得するので、デプロイで発行プロファイルは必要ありません。
     
       ![参照の表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/see-reference.png)
       
@@ -194,6 +200,6 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
 ## 次のステップ
 
 - ポータルを使用したリソース管理の詳細については、「[Azure ポータルを使用した Azure リソースの管理](./azure-portal/resource-group-portal.md)」を参照してください。
-- テンプレートの詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+- テンプレートの詳細については、「[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

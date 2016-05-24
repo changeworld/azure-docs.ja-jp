@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/06/2016" 
+	ms.date="05/09/2016" 
 	ms.author="robinsh"/>
 
 # Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング 
@@ -208,8 +208,8 @@ Message Analyzer には、サーバー、クライアント、およびネット
 
 1. [Message Analyzer](http://www.microsoft.com/download/details.aspx?id=44226) を Microsoft ダウンロード センターからダウンロードし、インストーラーを実行します。
 2. Message Analyzer を起動します。
-3. **[Start]** ページで、**[Downloads]** に移動し、**Azure Storage** で検索を行います。以下の画像のように、Azure Storage アセットが表示されます。
-4. **[Sync All Displayed Items]** をクリックして、Azure Storage アセットをインストールします。以下に利用できるアセットを挙げます。 
+3. **[ツール]** メニューの **[資産マネージャー]** を選択します。**[資産マネージャー]** ダイアログで、**[ダウンロード]** を選択し、**Azure Storage** をフィルター処理します。以下の画像のように、Azure Storage アセットが表示されます。
+4. **[Sync All Displayed Items]** をクリックして、Azure Storage アセットをインストールします。以下に利用できるアセットを挙げます。
 	- **Azure Storage Color Rules:** Azure Storage カラー ルールにより、色、テキスト、およびフォント スタイルを使用する特別なフィルターを定義し、トレース内の特定の情報を含むメッセージを強調表示することができます。
 	- **Azure Storage Charts:** Azure Storage チャートは、サーバー ログ データをグラフ化する定義済みのチャートです。現時点で Azure Storage チャートを使用する場合、Analysis Grid に読み込むことができるのはサーバー ログのみである点に注意してください。
 	- **Azure Storage Parsers:** Azure Storage パーサーは、Azure Storage クライアント、サーバー、および HTTP のログを解析して Analysis Grid に表示します。
@@ -217,7 +217,7 @@ Message Analyzer には、サーバー、クライアント、およびネット
 	- **Azure Storage View Layouts:** Azure Storage ビュー レイアウトは、列の定義済みレイアウトであり、Analysis Grid 内のグループです。
 4. アセットのインストール後に、Message Analyzer を再起動します。
 
-![Message Analyzer の [Start] ページ](./media/storage-e2e-troubleshooting-classic-portal/mma-start-page-1.png)
+![Message Analyzer の資産マネージャー](./media/storage-e2e-troubleshooting-classic-portal/mma-start-page-1.png)
 
 > [AZURE.NOTE] このチュートリアルのために、表示された Azure Storage アセットはすべてインストールしてください。
 
@@ -347,7 +347,7 @@ Message Analyzer を使用したログ データの分析に慣れてきたと�
 | 調査目的… | 使用するフィルター式… | 式を適用するログ (クライアント、サーバー、ネットワーク、すべて) |
 |------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | キューのメッセージ配信での予期しない遅延 | AzureStorageClientDotNetV4.Description に "失敗した操作の再試行" が含まれている。 | クライアント |
-| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 || HTTP.Response.StatusCode == 503 | ネットワーク |
+| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 &#124;&#124; HTTP.Response.StatusCode == 503 | ネットワーク |
 | PercentTimeoutError の増加 | HTTP.Response.StatusCode == 500 | ネットワーク |
 | PercentTimeoutError の増加 (すべて) |    *StatusCode == 500 | すべて |
 | PercentNetworkError の増加 | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | クライアント |
@@ -375,4 +375,4 @@ Azure Storage におけるエンド ツー エンド シナリオのトラブル
  
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

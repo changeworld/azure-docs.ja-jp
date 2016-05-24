@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Node.js から Azure Table ストレージを使用する方法 | Microsoft Azure"
-	description="Azure Table Storage を使用する方法について説明します。コード サンプルは Node.js API を使用して記述されています。"
+	description="NoSQL データ ストアの Azure Table Storage を使用して、構造化データをクラウドに格納します。"
 	services="storage"
 	documentationCenter="nodejs"
 	authors="rmcmurray"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="04/08/2016"
+	ms.date="04/29/2016"
 	ms.author="micurd"/>
 
 
@@ -442,4 +442,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Azure Table サービスを使用する Node.js Web アプリ]: ../storage-nodejs-use-table-storage-web-site.md
   [Create and deploy a Node.js application to an Azure website]: ../web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

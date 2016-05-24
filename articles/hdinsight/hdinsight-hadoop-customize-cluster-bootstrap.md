@@ -33,6 +33,9 @@
 ブートストラップを使用する 3 つの方法があります。
 
 - Azure PowerShell の使用
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+    
 - .NET SDK の使用
 - ARM テンプレートの使用
 
@@ -249,4 +252,4 @@ ARM テンプレートでは、ブートストラップを使用できます。
 
     #endregion
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

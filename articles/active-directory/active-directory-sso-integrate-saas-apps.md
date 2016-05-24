@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="02/09/2016"
+    ms.date="04/26/2016"
     ms.author="curtand"/>
 
 # SaaS アプリと Azure Active Directory シングル サインオンを統合する  
@@ -47,7 +47,7 @@ Azure AD には、組織内のエンド ユーザーにアプリケーション�
 
 ### ユーザー アカウントのマップ
 
-ユーザー ID には、通常、一意の識別子が含まれます。それには電子メール アドレスまたは UPN (Universal Personal Name) が使用可能です。ユーザーの各アプリケーション ID は、ユーザーの各 Azure AD ID にリンク (マップ) する必要があります。アプリケーション認証の要件に応じて、これを実現する方法はいくつかあります。
+ユーザー ID には、通常、一意の識別子が含まれます。それには電子メール アドレスまたはユーザー プリンシパル名 (UPN) が使用可能です。ユーザーの各アプリケーション ID は、ユーザーの各 Azure AD ID にリンク (マップ) する必要があります。アプリケーション認証の要件に応じて、これを実現する方法はいくつかあります。
 
 アプリケーション ID と Azure AD ID のマッピングの詳細については、[SAML トークンで発行される要求のカスタマイズに関するページ](http://social.technet.microsoft.com/wiki/contents/articles/31257.azure-active-directory-customizing-claims-issued-in-the-saml-token-for-pre-integrated-apps.aspx)と、「[プロビジョニングにおける属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)」をご覧ください。
 
@@ -72,4 +72,4 @@ Azure.com ライブラリには、「[Azure Active Directory のアプリケー�
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

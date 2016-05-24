@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="AMQP 1.0 での Service Bus と .NET | Microsoft Azure"
-   description="AMQP で .NET から Service Bus を使用します。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" /> 
+    pageTitle="AMQP 1.0 での Service Bus と .NET | Microsoft Azure"
+    description="AMQP で .NET から Service Bus を使用する"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" /> 
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="01/26/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="05/06/2016"
+    ms.author="sethm" />
 
 # AMQP 1.0 で .NET から Service Bus を使用する
 
@@ -203,4 +203,4 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 [パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0511_2016-->

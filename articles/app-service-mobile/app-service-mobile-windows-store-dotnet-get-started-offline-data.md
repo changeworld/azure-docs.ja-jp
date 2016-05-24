@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="05/05/2016"
 	ms.author="wesmc"/>
 
 # Windows アプリのオフライン同期を有効にする
@@ -52,7 +52,17 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
     >[AZURE.NOTE] インストールによって、すでにインストールしてある SQLite とは別のバージョンのリファレンスが追加で作成される場合、コンパイル エラーとなります。このエラーを解決するには、プロジェクト内で **参照** ノードが重複しないようにします。
 
-3. ソリューション エクスプローラーで Windows 8.1 ランタイムおよび Windows Phone 8.1 プラットフォーム プロジェクトの [**参照設定**] を右クリックし、[**拡張**] セクションにある SQLite への参照を追加します。
+3. SQLite はネイティブ ライブラリであり、**x86**、**x64**、**ARM** などのプラットフォーム固有のアーキテクチャを選択する必要があります。**[任意の CPU]** はサポートされません。ソリューション エクスプ ローラーで、上部にある [ソリューション] をクリックし、プロセッサ アーキテクチャのドロップ ダウン ボックスをテストしたいサポート済みの設定の 1 つに変更します。
+
+    >[AZURE.NOTE] Visual Studio 2015 を使用している場合は、ソリューションを右クリックして **[プロパティ]** をクリックし、構成マネージャーを開いて、Windows および Windows Phone プロジェクトのプラットフォームを設定します。
+
+    ![][13]
+
+
+4. ソリューション エクスプローラーで Windows 8.1 ランタイムおよび Windows Phone 8.1 プラットフォーム プロジェクトの **[参照]** を右クリックし、SQLite への参照が存在することを確認します。これは **[拡張]** セクションにあります。
+
+    >[AZURE.NOTE] Visual Studio 2015 を使用している場合は、Windows 8.1 ランタイムおよび Windows Phone 8.1 プラットフォーム プロジェクトの **[参照]** ノードを右クリックし、**[参照の追加]** をクリックして構成マネージャーを開きます。
+
 
     ![][1] </br>
 
@@ -62,9 +72,6 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
     **Windows Phone 8.1**
 
-4. SQLite はネイティブ ライブラリであり、**x86**、**x64**、**ARM** などのプラットフォーム固有のアーキテクチャを選択する必要があります。**[任意の CPU]** はサポートされません。ソリューション エクスプ ローラーで、上部にある [ソリューション] をクリックし、プロセッサ アーキテクチャのドロップ ダウン ボックスをテストしたいサポート済みの設定の 1 つに変更します。
-
-    ![][13]
 
 5. ソリューション エクスプローラーで共有プロジェクトを使用し、MainPage.cs ファイルを開きます。ファイルの先頭にある次の using ステートメントをコメント解除します。
 
@@ -206,7 +213,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 4. アプリケーションで、ローカル ストアで完了させる項目の横にあるチェック ボックスをクリックします。
 
-  `UpdateCheckedTodoItem` は `SyncAsync` を呼び出し、項目全体をモバイル アプリ バックエンドと同期します。`SyncAsync` はプッシュとプルの両方を呼び出します。ただし、**クライアントが変更を行ったテーブルに対してプルを実行すると、クライアントの同期コンテキストへのプッシュが常に最初に自動的に実行される**ことに注意してください。これは、ローカル ストアのすべてのテーブルとリレーションシップの一貫性を確実に保つためです。そのため、ここでは `PushAsync` への呼び出しを削除できます。呼び出しはプルを実行すれば自動で行われるためです。この動作は、認識をしていない場合、予期せぬプッシュを引き起こすことがあります。この動作については、「[Azure Mobile Apps でのオフライン データ同期]」を参照してください。
+  `UpdateCheckedTodoItem` は `SyncAsync` を呼び出し、完了した各項目をモバイル アプリ バックエンドと同期します。`SyncAsync` はプッシュとプルの両方を呼び出します。ただし、**クライアントが変更を行ったテーブルに対してプルを実行すると、クライアントの同期コンテキストへのプッシュが常に最初に自動的に実行される**ことに注意してください。これは、ローカル ストアのすべてのテーブルとリレーションシップの一貫性を確実に保つためです。そのため、ここでは `PushAsync` への呼び出しを削除できます。呼び出しはプルを実行すれば自動で行われるためです。この動作は、認識をしていない場合、予期せぬプッシュを引き起こすことがあります。この動作については、「[Azure Mobile Apps でのオフライン データ同期]」を参照してください。
 
 
 ##概要
@@ -242,7 +249,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 * [Azure Mobile Apps でのオフライン データ同期]
 
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期]\(注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
 * [Azure Friday: Azure Mobile Services のオフライン対応アプリ]
 
@@ -259,9 +266,9 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 
 <!-- URLs. -->
-[Azure Mobile Apps でのオフライン データ同期]: ../app-service-mobile-offline-data-sync.md
-[create a windows app]: ../app-service-mobile-windows-store-dotnet-get-started.md
-[Create a Windows app (Windows アプリの作成)]: ../app-service-mobile-windows-store-dotnet-get-started.md
+[Azure Mobile Apps でのオフライン データ同期]: app-service-mobile-offline-data-sync.md
+[create a windows app]: app-service-mobile-windows-store-dotnet-get-started.md
+[Create a Windows app (Windows アプリの作成)]: app-service-mobile-windows-store-dotnet-get-started.md
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkID=716919
 [SQLite for Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkID=716920
 [SQLite for Windows 10]: http://go.microsoft.com/fwlink/?LinkID=716921
@@ -271,4 +278,4 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Azure Mobile Services のオフライン対応アプリ]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0511_2016-->

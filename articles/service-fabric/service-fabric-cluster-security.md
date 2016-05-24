@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/01/2016"
+   ms.date="05/02/2016"
    ms.author="chackdan"/>
 
 # Service Fabric クラスターのセキュリティ保護
@@ -82,6 +82,7 @@ Login-AzureRmAccount
 ```
 
 次のスクリプトを実行すると、新しいリソース グループ、Key Vault、またはその両方が作成されます (これらが存在しない場合)。**注意: 既存の Key Vault を使用している場合、このスクリプトを使用して、デプロイをサポートするように構成する必要があります。**
+
 ```
 Set-AzureRmKeyVaultAccessPolicy -VaultName <Name of the Vault> -ResourceGroupName <string> -EnabledForDeployment
 ```
@@ -134,11 +135,11 @@ Invoke-AddCertToKeyVault -SubscriptionId 35389201-c0b3-405e-8a23-9f1450994307 -R
 これは自己署名証明書であるため、セキュリティで保護されたクラスターへの接続にこの証明書を使用するには、コンピューターの "信頼されたユーザー" ストアにインポートする必要があります。
 
 ```
-Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople -FilePath C:\MyCertificates\ChackdanTestCertificate.pfx -Password (Read-Host -AsSecureString -Prompt "Enter Certificate Password")
+Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople -FilePath C:\MyCertificates\ChackdanTestCertificate.pfx -Password (Read-Host -AsSecureString -Prompt "Enter Certificate Password ")
 ```
 
 ```
-Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FilePath C:\MyCertificates\ChackdanTestCertificate.pfx -Password (Read-Host -AsSecureString -Prompt "Enter Certificate Password")
+Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FilePath C:\MyCertificates\ChackdanTestCertificate.pfx -Password (Read-Host -AsSecureString -Prompt "Enter Certificate Password ")
 ```
 
 スクリプトが正常に終了すると、次のような出力が表示されます。手順 3 でこの出力が必要になります。
@@ -262,4 +263,4 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FileP
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="05/11/2016"
+	ms.date="05/13/2016"
 	ms.author="anhoh"/>
 
 # NoSQL チュートリアル: DocumentDB C# コンソール アプリケーションの作成
@@ -47,7 +47,7 @@ DocumentDB .NET SDK の NoSQL チュートリアルへようこそ。 このチ�
 
 以下のものがそろっていることを確認してください。
 
-- アクティブな Azure アカウント。サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+- アクティブな Azure アカウント。お持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
 - [Visual Studio 2013/Visual Studio 2015](http://www.visualstudio.com/)。
 - .NET Framework 4.6
 
@@ -594,6 +594,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 ##<a id="GetSolution"></a> 完全な NoSQL チュートリアル ソリューションを入手する
 この記事のすべてのサンプルを含む GetStarted ソリューションをビルドするには、以下が必要です。
 
+- アクティブな Azure アカウント。お持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
 -   [DocumentDB アカウント][documentdb-create-account]。
 -   GitHub で入手可能な [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) ソリューション。
 
@@ -610,4 +611,4 @@ Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリ
 [documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

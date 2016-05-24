@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/22/2016"
+	ms.date="05/04/2016"
 	ms.author="mikeray" />
 
 # Azure VM での AlwaysOn 可用性グループの構成 (GUI)
@@ -27,9 +27,9 @@
 > [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
-このエンド ツー エンドのチュートリアルでは、Azure の仮想マシン上で実行されている SQL Server AlwaysOn を使用して可用性グループを実装する方法について説明します。
+このエンド ツー エンドのチュートリアルでは、Azure 仮想マシンで実行されている SQL Server AlwaysOn を使用して可用性グループを実装する方法について説明します。
 
->[AZURE.NOTE] Microsoft Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、AlwaysOn 可用性グループに必要なものすべてが自動的に構成されます。詳細については、[Microsoft Azure クラシック ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。PowerShell を使用するには、「[チュートリアル: Azure AlwaysOn 可用性グループの構成 (PowerShell)](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)」で同じシナリオのチュートリアルを参照してください。
+>[AZURE.NOTE] Microsoft Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、AlwaysOn 可用性グループに必要なものがすべて自動的に構成されます。詳細については、[Microsoft Azure クラシック ポータル ギャラリーで提供されている SQL Server AlwaysOn](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx) に関するブログをご覧ください。PowerShell を使用する場合は、「[Azure VM での AlwaysOn 可用性グループの構成 (PowerShell)](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)」で同じシナリオのチュートリアルをご覧ください。
 
 チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
 
@@ -55,9 +55,9 @@
 
 - GUI を使用して、仮想マシン ギャラリーから従来の SQL Server VM をプロビジョニングする方法を知っている。
 
-- AlwaysOn 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」を参照してください。
+- AlwaysOn 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。
 
->[AZURE.NOTE] SharePoint での SQL Server AlwaysOn 可用性グループの使用に興味がある場合は、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」を参照してください。
+>[AZURE.NOTE] SharePoint での SQL Server AlwaysOn 可用性グループの使用に関心がある場合は、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」をご覧ください。
 
 ## Virtual Network とドメイン コントローラー サーバーの作成
 
@@ -413,13 +413,13 @@
 
 1. **[名前]** ページで、**[名前]** ボックスに規則の名前 (**SQL Server (プログラム規則)** など) を指定し、**[完了]** をクリックします。
 
-1. 次に、**[AlwaysOn 可用性グループ]** 機能を有効にします。**スタート**画面から **SQL Server 構成マネージャー**を起動します。
+1. 次に、**AlwaysOn 可用性グループ**機能を有効にします。**スタート**画面から **SQL Server 構成マネージャー**を起動します。
 
 1. ブラウザー ツリーで、**[SQL Server のサービス]** をクリックし、**[SQL Server (MSSQLSERVER)]** サービスを右クリックして、**[プロパティ]** をクリックします。
 
 1. 次に示すように、**[AlwaysOn 高可用性]** タブをクリックし、**[AlwaysOn 可用性グループを有効にする]** をオンにして、**[適用]** をクリックします。ポップアップ ダイアログで **[OK]** をクリックします。プロパティ ウィンドウはまだ閉じないでください。サービス アカウントを変更した後に SQL Server サービスを再起動します。
 
-	![AlwaysOn 可用性グループを有効にする](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665520.gif)
+	![AlwaysOn 可用性グループの有効化](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665520.gif)
 
 1. 次に、SQL Server サービス アカウントを変更します。**[ログオン]** タブをクリックし、**[アカウント名]** に「**CORP\\SQLSvc1**」(**ContosoSQL1** の場合) または「**CORP\\SQLSvc2**」(**ContosoSQL2** の場合) を入力します。その後、パスワードを入力および確認入力し、**[OK]** をクリックします。
 
@@ -491,7 +491,7 @@
 
 ### 可用性グループを作成する
 
-1. **ContosoSQL1** のリモート デスクトップ セッションに戻ります。次に示すように、SSMS の**オブジェクト エクスプローラー**で、**[AlwaysOn 高可用性]** を右クリックして **[新しい可用性グループ ウィザード]** をクリックします。
+1. **ContosoSQL1** のリモート デスクトップ セッションに戻ります。次に示すように、SSMS の**オブジェクト エクスプローラー**で、**[AlwaysOn 高可用性]** を右クリックし、**[新しい可用性グループ ウィザード]** をクリックします。
 
 	![[新しい可用性グループ ウィザード] の起動](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665523.gif)
 
@@ -519,7 +519,7 @@
 
 	![新しい可用性グループ ウィザード、最初のデータの同期を選択](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665529.gif)
 
-1. **[検証]** ページで **[次へ]** をクリックします。このページは、次のようになっています。可用性グループ リスナーを構成していないため、リスナー構成に関する警告が表示されます。このチュートリアルではリスナーを構成しないため、この警告を無視できます。チュートリアルの完了後にリスナーを構成するには、[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)に関するページを参照してください。
+1. **[検証]** ページで **[次へ]** をクリックします。このページは、次のようになっています。可用性グループ リスナーを構成していないため、リスナー構成に関する警告が表示されます。このチュートリアルではリスナーを構成しないため、この警告を無視できます。このチュートリアルの完了後にリスナーを構成する場合は、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」をご覧ください。
 
 	![新しい AG ウィザード、検証](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665530.gif)
 
@@ -531,7 +531,7 @@
 
 	![AG ダッシュボードの表示](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665532.gif)
 
-1. **AlwaysOn ダッシュボード**は次のように表示されます。レプリカ、各レプリカのフェールオーバー モード、および同期の状態を確認できます。
+1. **AlwaysOn ダッシュボード**が次のように表示されます。レプリカ、各レプリカのフェールオーバー モード、および同期の状態を確認できます。
 
 	![AG ダッシュボード](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665533.gif)
 
@@ -544,8 +544,8 @@
 >[AZURE.WARNING] フェールオーバー クラスター マネージャーから、可用性グループのフェールオーバーを実行しないでください。すべてのフェールオーバー操作は、SSMS の **AlwaysOn ダッシュボード**から実行する必要があります。詳細については、[WSFC フェールオーバー クラスター マネージャーと可用性グループの使用に関する制限事項](https://msdn.microsoft.com/library/ff929171.aspx)のページを参照してください。
 
 ## 次のステップ
-これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を実装できました。この可用性グループのリスナーを構成するには、[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)に関するページを参照してください。
+これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を正常に実装できました。この可用性グループのリスナーを構成するには、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」をご覧ください。
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

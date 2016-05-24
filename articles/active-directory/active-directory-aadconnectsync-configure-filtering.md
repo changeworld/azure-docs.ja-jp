@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
-	ms.author="andkjell;markusvi"/>
+	ms.date="05/10/2016"
+	ms.author="andkjell;markvi"/>
 
 
 # Azure AD Connect Sync: フィルター処理の構成
@@ -51,7 +51,14 @@ November 2015 ([1\.0.9125](active-directory-aadconnect-version-history.md#109125
 複数のフォレストが存在する場合、このトピックで説明するフィルター処理構成をすべてのフォレストに適用する必要があります (すべてのフォレストに同じ構成を適用する場合)。
 
 ### スケジュールされたタスクを無効にする
-同期サイクルを 3 時間おきにトリガーする、スケジュールされたタスクを無効にするには、以下の手順に従います。
+同期サイクルを 30 分おきにトリガーする、組み込みのスケジューラを無効にするには、以下の手順に従います。
+
+1. PowerShell プロンプトに移動します。
+2. `Set-ADSyncScheduler -SyncCycleEnabled $False` を実行して、スケジューラを無効にします。
+3. このトピックで説明されているとおりに変更します。
+4. `Set-ADSyncScheduler -SyncCycleEnabled $True` を実行して、再度スケジューラを有効にします。
+
+**1.1.105.0 より前の Azure AD Connect のビルドを使用している場合** 同期サイクルを 3 時間おきにトリガーする、スケジュールされたタスクを無効にするには、以下の手順に従います。
 
 1. [スタート] メニューから **[タスク スケジューラ]** を起動します。
 2. **[タスク スケジューラ ライブラリ]** の直下から **"Azure AD Sync Scheduler"** というタスクを探して右クリックし、**[無効]** を選択します。![タスク スケジューラ](./media/active-directory-aadconnectsync-configure-filtering/taskscheduler.png)  
@@ -171,7 +178,7 @@ OU ベースのフィルター処理を変更する場合は、インストー�
 1. **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
 2. [スタート] メニューから、**同期規則エディター**を起動します。
 3. **[受信]** が選択されていることを確認し、**[新しい規則の追加]** をクリックします。
-4. わかりやすい名前を規則に付けます (「*AD からの受信 – 同期しないユーザーのフィルター*」など)。適切なフォレストを選択し、**[接続されているシステム オブジェクトのタイプ]** として **[ユーザー]** を、**[メタバース オブジェクトの種類]** として **[人]** を選択します。**[リンクの種類]** で **[結合]** を選択し、[優先順位] に、別の同期規則で現在使用されていない値 (500 など) を入力して、**[次へ]** をクリックします。![Inbound 1 の説明](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)  
+4. わかりやすい名前を規則に付けます ("*AD からの受信 – 同期しないユーザーのフィルター*" など)。適切なフォレストを選択し、**[接続されているシステム オブジェクトのタイプ]** として **[ユーザー]** を、**[メタバース オブジェクトの種類]** として **[人]** を選択します。**[リンクの種類]** で **[結合]** を選択し、[優先順位] に、別の同期規則で現在使用されていない値 (500 など) を入力して、**[次へ]** をクリックします。![Inbound 1 の説明](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)  
 5. **[スコープ フィルター]** で、**[グループの追加]** をクリックし、**[句の追加]** をクリックして、属性で **[ExtensionAttribute15]** を選択します。演算子を **EQUAL** に設定し、[値] ボックスに「**NoSync**」という値を入力します。**[次へ]** をクリックします。![Inbound 2 のスコープ](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)  
 6. **[参加]** 規則は空のままにして、**[次へ]** をクリックします。
 7. **[変換の追加]** をクリックして、**[FlowType]** を **[Constant]** に設定し、[ターゲット属性] で **cloudFiltered** を選択して、[ソース] ボックスに「**True**」と入力します。**[追加]** をクリックして規則を保存します。![Inbound 3 の変換](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)
@@ -187,7 +194,7 @@ OU ベースのフィルター処理を変更する場合は、インストー�
 1. **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
 2. [スタート] メニューから、**同期規則エディター**を起動します。
 3. **[受信]** が選択されていることを確認し、**[新しい規則の追加]** をクリックします。
-4. わかりやすい名前を規則に付けます (「*AD からの受信 – 営業部のユーザーの同期*」など)。適切なフォレストを選択し、**[接続されているシステム オブジェクトのタイプ]** として **[ユーザー]** を、**[メタバース オブジェクトの種類]** として **[人]** を選択します。**[リンクの種類]** で **[結合]** を選択し、[優先順位] に、別の同期規則で現在使用されていない値 (501 など) を入力して、**[次へ]** をクリックします。![Inbound 4 の説明](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)  
+4. わかりやすい名前を規則に付けます ("*AD からの受信 – 営業部のユーザーの同期*" など)。適切なフォレストを選択し、**[接続されているシステム オブジェクトのタイプ]** として **[ユーザー]** を、**[メタバース オブジェクトの種類]** として **[人]** を選択します。**[リンクの種類]** で **[結合]** を選択し、[優先順位] に、別の同期規則で現在使用されていない値 (501 など) を入力して、**[次へ]** をクリックします。![Inbound 4 の説明](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)  
 5. **[スコープ フィルター]** で、**[グループの追加]** をクリックし、**[句の追加]** をクリックして、属性で **[department]** を選択します。演算子を **EQUAL** に設定し、[値] ボックスに「**Sales**」という値を入力します。**[次へ]** をクリックします。![Inbound 5 のスコープ](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)  
 6. **[参加]** 規則は空のままにして、**[次へ]** をクリックします。
 7. **[変換の追加]** をクリックして、**[FlowType]** を **[Constant]** に設定し、[ターゲット属性] で **[cloudFiltered]** を選択して、[ソース] ボックスに「**False**」と入力します。**[追加]** をクリックして規則を保存します。![Inbound 6 の変換](./media/active-directory-aadconnectsync-configure-filtering/inbound6.png) これは特殊なケースですが、cloudFiltered を明示的に False に設定します。
@@ -233,7 +240,7 @@ OU ベースのフィルター処理を変更する場合は、インストー�
 同期後、すべての変更がエクスポートの対象としてステージングされます。実際に Azure AD に変更を加える前に、それらの変更がすべて正しいことを検証する必要があります。
 
 1. コマンド プロンプトを起動し、`%Program Files%\Microsoft Azure AD Sync\bin` に移動します。
-2. 次のコマンドを実行します: `csexport "Name of Connector" %temp%\export.xml /f:x` 同期サービスにコネクタの名前があることを確認できます。Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
+2. コマンド `csexport "Name of Connector" %temp%\export.xml /f:x` を実行します。同期サービスにコネクタの名前があることを確認できます。Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
 3. 次のコマンドを実行します: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`
 4. %temp% に export.csv という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。このファイルには、エクスポートの対象となるすべての変更が含まれています。
 5. データまたは構成に必要な変更を加え、エクスポートの対象となる変更が希望どおりになるまで、(インポート、同期、検証の) 手順を実行します。
@@ -254,4 +261,4 @@ OU ベースのフィルター処理を変更する場合は、インストー�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

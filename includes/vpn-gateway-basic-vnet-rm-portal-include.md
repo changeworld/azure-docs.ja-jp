@@ -1,6 +1,4 @@
-Azure ポータルを使用して VNet を作成するには、次の手順に従います。スクリーン ショットは例として示されていることに注意してください。サンプルの値は必ず実際の値に変更してください。
-
-仮想ネットワークの操作の詳細については、「[仮想ネットワークの概要](../articles/virtual-network/virtual-networks-overview.md)」を参照してください。
+Azure ポータルを使用して VNet を作成するには、次の手順に従います。スクリーン ショットは例として示されていることに注意してください。サンプルの値は必ず実際の値に変更してください。仮想ネットワークの操作の詳細については、「[仮想ネットワークの概要](../articles/virtual-network/virtual-networks-overview.md)」を参照してください。
 
 1. ブラウザーから [Azure ポータル](http://portal.azure.com)に移動します。必要であれば Azure アカウントでサインインします。
 
@@ -31,5 +29,3 @@ Azure ポータルを使用して VNet を作成するには、次の手順に�
 9. [作成] をクリックした後で、VNet の進捗状況を反映するタイルがダッシュボードに表示されます。タイルは、VNet の作成が進むに従って変化します。
 
 	![仮想ネットワーク タイルの作成](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png)
-
-<!---HONumber=AcomDC_0504_2016-->

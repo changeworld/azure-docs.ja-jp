@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="05/04/2016"
 	ms.author="josephd"/>
 
 # SharePoint サーバー ファームの作成
@@ -42,7 +42,7 @@ Microsoft Azure ポータル Marketplace では、事前に構成された Share
 
 ![sharepointfarm](./media/virtual-machines-windows-sharepoint-farm/HAFarm.png)
 
-このファーム構成は、より大量のクライアント読み込みや外部の SharePoint サイトの高可用性をテストしたり、SharePoint ファームの SQL Server AlwaysOn をテストしたりする場合に使用できます。この構成は、高可用環境での SharePoint アプリケーション開発でも使用できます。
+このファーム構成を使用して、高いクライアント負荷、外部 SharePoint サイトの高可用性、SharePoint ファームの SQL Server AlwaysOn をテストできます。この構成は、高可用環境での SharePoint アプリケーション開発でも使用できます。
 
 高可用性 (9 サーバー) の SharePoint ファームを作成するには:
 
@@ -53,17 +53,18 @@ Microsoft Azure ポータル Marketplace では、事前に構成された Share
 
 > [AZURE.NOTE] Azure 無料試用版では **SharePoint 2013 非 HA ファーム**または **SharePoint 2013 HA ファーム**を作成することはできません。
 
+Azure ポータルは、インターネットに接続する Web プレゼンスを持つクラウド専用の仮想ネットワークにこれら両ファームを作成します。組織のネットワークに戻るサイト間 VPN 接続や ExpressRoute 接続はありません。
+
 ## SharePoint ファームの管理
 
 これらのファームのサーバーはリモート デスクトップ接続を通じて管理できます。詳細については、「[仮想マシンへのログオン](virtual-machines-windows-hero-tutorial.md#log-on-to-the-virtual-machine)」を参照してください。
 
 SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint アプリケーション、その他の機能を構成できます。詳細については、「[SharePoint 2013 を構成する](http://technet.microsoft.com/library/ee836142.aspx)」を参照してください。
 
-> [AZURE.NOTE] Azure ポータルは、インターネットに接続する Web プレゼンスを持つクラウド専用の仮想ネットワークにこれら両ファームを作成します。組織のネットワークに戻るサイト間 VPN 接続や ExpressRoute 接続はありません。
+> [AZURE.NOTE] [SharePoint Server 2016 試用版のイメージ](https://azure.microsoft.com/blog/test-sharepoint-server-2016/)を使用して、SharePoint Server 2016 を実行する仮想マシンを作成できます。
 
 ## 次のステップ
 
-- Azure インフラストラクチャ サービスで、[SharePoint 2013 イントラネット ファーム](virtual-machines-windows-sp-intranet-overview.md)を実稼働ワークロードとしてデプロイします。
 - Azure インフラストラクチャ サービスで、追加の [SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) 構成を検出します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

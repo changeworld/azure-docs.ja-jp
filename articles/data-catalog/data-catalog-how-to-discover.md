@@ -10,7 +10,7 @@
 <tags
    ms.service="data-catalog"
    ms.devlang="NA"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
    ms.date="03/31/2016"
@@ -62,4 +62,4 @@
 ## 関連項目
 - データ ソースの探索方法の詳細な手順については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」チュートリアルをご覧ください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

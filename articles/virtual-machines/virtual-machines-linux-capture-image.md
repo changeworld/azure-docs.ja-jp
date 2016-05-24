@@ -71,7 +71,7 @@ VM をプロビジョニングし実行したら、データ ディスクを接�
 
 7. 次のコマンドを使用して、既にプロビジョニング解除されている VM を停止します。
 
-	`azure vm stop –g <your-resource-group-name> -n <your-virtual-machine-name>`
+	`azure vm deallocate -g <your-resource-group-name> -n <your-virtual-machine-name>`
 
 8. 次のコマンドを使用して VM を汎用化します。
 
@@ -197,4 +197,4 @@ VM をプロビジョニングし実行したら、データ ディスクを接�
 
 CLI を使用して VM を管理するには、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-linux-cli-deploy-templates.md)」に記載のタスクを参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -30,16 +30,19 @@
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **コンピューター**。Azure PowerShell がインストールされ構成されている必要があります。[Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。Windows PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)][powershell-script]」を参照してください。
+- **コンピューター**。Azure PowerShell がインストールされ構成されている必要があります。 
 
-	Windows PowerShell スクリプトを実行する前に、次のコマンドレットを使用して Azure サブスクリプションに接続されていることを確認します。
+    Windows PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)][powershell-script]」を参照してください。
 
-		Login-AzureRmAccount
+    Windows PowerShell スクリプトを実行する前に、次のコマンドレットを使用して Azure サブスクリプションに接続されていることを確認します。
 
-	Azure サブスクリプションが複数ある場合は、次のコマンドレットを使用して、現在のサブスクリプションを設定します。
+        Login-AzureRmAccount
 
-		Select-AzureRmSubscription -SubscriptionID <Azure Subscription ID>
+    Azure サブスクリプションが複数ある場合は、次のコマンドレットを使用して、現在のサブスクリプションを設定します。
 
+        Select-AzureRmSubscription -SubscriptionID <Azure Subscription ID>
+
+	[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 - **Azure HDInsight クラスター**。クラスターのプロビジョニングの手順については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。このチュートリアルでは、クラスター名は後で必要になります。
 
@@ -565,4 +568,4 @@ $hqlScriptFile|HiveQL スクリプト ファイルの場所とファイル名で
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
 [hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

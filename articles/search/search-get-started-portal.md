@@ -4,7 +4,7 @@
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
-	manager="mblythe" 
+	manager="paulettm" 
 	editor=""
     tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
 	ms.workload="search" 
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="04/22/2016" 
+	ms.date="05/17/2016" 
 	ms.author="heidist"/>
 
 # ポータルから Azure Search を使用する
@@ -23,7 +23,7 @@
 
 このチュートリアルは、[サンプルの Azure DocumentDB データベース](#apdx-sampledata)を前提に説明しています。このデータベースは、こちらで用意したデータと手順を使って簡単に作成できますが、既に DocumentDB または SQL Database 内にお持ちのデータに同じ手順を応用してもかまいません。
 
-> [AZURE.NOTE] この入門チュートリアルには [Azure サブスクリプション](../../includes/free-trial-note.md)と [Azure Search サービス](search-create-service-portal.md)が必要です。試用版サブスクリプションにサインアップする準備がまだできていない場合は、このチュートリアルをスキップし、代わりに [Azure App Service を試用](search-tryappservice.md)してください。この代替オプションの場合、Azure Search で ASP.NET Web アプリを無料で使用でき (セッションごとに 1 時間)、サブスクリプションは不要です。
+> [AZURE.NOTE] この入門チュートリアルには [Azure サブスクリプション](../../includes/free-trial-note.md)と [Azure Search サービス](search-create-service-portal.md)が必要です。
  
 ## サービスの検索
 
@@ -73,7 +73,7 @@
 フィールドとデータ型は構成されますが、属性の割り当ては手動で行う必要があります。フィールドがどのように使用されるかは、インデックスの属性によって制御されます。フィールド一覧の上部に並んだチェック ボックスが*インデックスの属性*です。
 
 - **[取得可能]** は、そのフィールドが検索結果のリストに現れることを意味します。このチェック ボックスをオフにすることで、フィルター式でのみ使用されているフィールドなど、検索結果から抑制するフィールドを個別に指定できます。 
-- **[フィルター可能]**、**[ソート可能]**、**[ファセット可能]** では、フィルター処理、並べ替え、ファセットのナビゲーション構造にフィールドを使用できるかどうかを決めます。 
+- **[フィルター可能]**、**[ソート可能]**、**[ファセット可能]** は、フィルタリング、並べ替え、ファセットのナビゲーション構造にフィールドを使用できるかどうかを決定します。 
 - **[検索可能]** は、フィールドがフルテキスト検索の対象となることを意味します。通常、文字列は検索可能です。数値フィールドとブール型フィールドは通常、検索対象外として指定されます。 
 
 このページから移動する前に、インデックス内のフィールドで以下のオプション ([取得可能]、[検索可能] など) を使用するように指定してください。ほとんどのフィールドは "取得可能" です。また、文字列フィールドは大半が "検索可能" です ([key] を [検索可能] にする必要はありません)。いくつかのフィールド (genre、orderableOnline、rating、tags) については、[フィルター可能]、[ソート可能]、[ファセット可能] も選択します。
@@ -183,4 +183,4 @@ Azure 仮想マシン上の Azure SQL Database または SQL Server などその
 [6]: ./media/search-get-started-portal/AzureSearch-GetStart-IndexerList.png
 [7]: ./media/search-get-started-portal/search-data-import-wiz-btn.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

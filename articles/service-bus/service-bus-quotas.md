@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/08/2016"
+   ms.date="05/04/2016"
    ms.author="sethm" />
 
 # Service Bus のクォータ
@@ -23,4 +23,4 @@
 
 [AZURE.INCLUDE [service-bus-quotas-table](../../includes/service-bus-quotas-table.md)]
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

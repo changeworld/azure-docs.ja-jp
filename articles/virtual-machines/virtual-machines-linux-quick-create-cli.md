@@ -166,10 +166,9 @@ Warning: Permanently added 'rhel-westu-1630678171-pip.westus.cloudapp.azure.com,
 `azure vm quick-create` を使用すると、VM を短時間でデプロイして、bash シェルにログインして作業できます。`vm quick-create` を使用しても、複雑な環境が備えているようなメリットは得られません。インフラストラクチャに合わせてカスタマイズした Linux VM をデプロイする方法については、次の記事を参照してください。
 
 - [Azure Resource Manager テンプレートを使用して特定のデプロイを作成する](virtual-machines-linux-cli-deploy-templates.md)
-- [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-cli-deploy-templates.md)
+- [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-create-cli-complete.md)
 - [Azure テンプレートを使用して安全な Linux VM を作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
-- [Azure CLI を使用して新しく Linux VM を作成する](virtual-machines-linux-create-cli-complete.md)
 
 これらの記事を読むと、Azure インフラストラクチャの構築を始めることができ、独自またはオープン ソースのインフラストラクチャ デプロイ、構成、オーケストレーション ツールを使用できます。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

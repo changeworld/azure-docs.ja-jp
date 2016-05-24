@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/18/2016"
+   ms.date="05/08/2016"
    ms.author="tarcher" />
 
 # Visual Studio での Azure プライベート クラウドへのアクセス
@@ -23,7 +23,7 @@
 
 ## Visual Studio で Azure プライベート クラウドにアクセスするには
 
-1. プライベート クラウドの管理ポータルで、発行設定ファイルをダウンロードするか、管理者に連絡して発行設定ファイルを入手します。パブリック版の Azure では、このファイルをダウンロードするためのリンクは [https://manage.windowsazure.com/publishsettings/](https://manage.windowsazure.com/publishsettings/) です(ダウンロードしたファイルには .publishsettings という拡張子が付きます)。
+1. プライベート クラウドの [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で、発行設定ファイルをダウンロードするか、管理者に連絡して発行設定ファイルを入手します。パブリック版の Azure では、このファイルをダウンロードするためのリンクは [https://manage.windowsazure.com/publishsettings/](https://manage.windowsazure.com/publishsettings/) です(ダウンロードしたファイルには .publishsettings という拡張子が付きます)。
 
 1. Visual Studio の**サーバー エクスプローラー**で、**[Azure]** ノードを選択し、ショートカット メニューの **[サブスクリプションの管理]** コマンドを選択します。
 
@@ -43,4 +43,4 @@
 
 [方法: 発行設定とサブスクリプション情報のダウンロードとインポート](https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

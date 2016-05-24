@@ -3,7 +3,7 @@
     description="Azure Blob Storage に接続することで、Todo リスト Xamarin.Forms モバイル アプリにイメージを追加する"
     documentationCenter="xamarin"
     authors="lindydonna"
-    manager="dwrede"
+    manager="erikre"
     editor=""
     services="app-service\mobile"/>
 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="mobile-xamarin-ios"
     ms.devlang="dotnet"
     ms.topic="article"
-	ms.date="02/03/2016"
+    ms.date="05/10/2016"
     ms.author="donnam"/>
 
 #Xamarin.Forms アプリで Azure Storage に接続する
@@ -42,7 +42,15 @@ Azure Mobile Apps クライアントとサーバー SDK は、/tables エンド�
 
 3. モバイル アプリ バックエンドに移動します。**[すべての設定]**、**[アプリケーションの設定]**、**[接続文字列]** の順に選択し、`MS_AzureStorageAccountConnectionString` という名前の新しいキーを作成し、ストレージ アカウントからコピーした値を使用します。キーの種類として **[カスタム]** を使用します。
 
-## ストレージ コントローラーをサーバー プロジェクトに追加する
+## ストレージ コントローラーをサーバーに追加する
+
+Azure Storage の SAS トークンの要求に応答するサーバー プロジェクトに新しいコント ローラーを追加すると共に、レコードに対応するファイルの一覧を返す必要があります。
+
+- [ストレージ コントローラーをサーバー プロジェクトに追加する](#add-controller-code)
+- [ストレージ コントローラーによって登録されているルート](#routes-registered)
+- [クライアントとサーバーの通信](#client-communication)
+
+###<a name="add-controller-code"></a>ストレージ コントローラーをサーバー プロジェクトに追加する
 
 1. Visual Studio で、.NET サーバー プロジェクトを開きます。NuGet パッケージ [Microsoft.Azure.Mobile.Server.Files] を追加します。**[プレリリースを含める]** を選択していることを確認します。
 
@@ -91,7 +99,7 @@ Azure Mobile Apps クライアントとサーバー SDK は、/tables エンド�
 
 7. サーバー プロジェクトをモバイル アプリ バックエンドに発行します。
 
-###ストレージ コントローラーによって登録されているルート
+###<a name="routes-registered"></a>ストレージ コントローラーによって登録されているルート
 
 新しい `TodoItemStorageController` は、管理するレコードの下で次の 2 つのサブリソースを公開します。
 
@@ -111,7 +119,7 @@ Azure Mobile Apps クライアントとサーバー SDK は、/tables エンド�
     
         `/tables/TodoItem/{id}/MobileServiceFiles/{fileid}`
 
-###クライアントとサーバーの通信
+###<a name="client-communication"></a>クライアントとサーバーの通信
 
 `TodoItemStorageController` には、Blob をアップロードまたはダウンロードするためのルートが*ない*ことに注意してください。これはモバイル クライアントが、特定の BLOB またはコンテナーに安全にアクセスするために、最初に SAS トークン (Shared Access Signature) を取得した後、これらの操作を実行するために Blob Storage と*直接*対話するためです。これは重要なアーキテクチャの仕様で、ストレージにアクセスする場合を除き、モバイル バックエンドのスケーラビリティと可用性の制限を受けます。代わりに、Azure Storage に直接接続することで、モバイル クライアントが自動パーティション分割や地理的分散などの機能を利用できるようになります。
 
@@ -123,11 +131,20 @@ Shared Access Signature を使用すると、ストレージ アカウント内�
 
 ## クライアント アプリを更新してイメージのサポートを追加する
 
-Visual Studio または Xamarin Studio のいずれかで、Xamarin.Forms のクイック スタート プロジェクトを開きます。
+Visual Studio または Xamarin Studio のいずれかで、Xamarin.Forms のクイック スタート プロジェクトを開きます。NuGet パッケージをインストールし、ポータブル ライブラリ プロジェクト、iOS プロジェクト、Android プロジェクト、および Windows プロジェクトを更新します。
+
+- [NuGet パッケージの追加](#add-nuget)
+- [IPlatform インターフェイスを追加します。](#add-iplatform)
+- [FileHelper クラスを追加する](#add-filehelper)
+- [ファイル同期ハンドラーを追加する](#file-sync-handler)
+- [TodoItemManager を更新する](#update-todoitemmanager)
+- [詳細ビューを追加する](#add-details-view)
+- [メイン ビューを更新する](#update-main-view)
+- [Android プロジェクト](#update-android)、[iOS プロジェクト](#update-ios)、[Windows プロジェクト](#update-windows)を更新する
 
 >[AZURE.NOTE] このチュートリアルに含まれているのは、Android、iOS、Windows ストア (Windows Phone ではなく) プラットフォームの手順だけです。
 
-###NuGet パッケージの追加
+###<a name="add-nuget"></a>NuGet パッケージの追加
 
 ソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** を選択します。次の NuGet パッケージをソリューション内の**すべて**のプロジェクトに追加します。**[プレリリースを含める]** がオンになっていることを確認します。
 
@@ -141,7 +158,7 @@ Visual Studio または Xamarin Studio のいずれかで、Xamarin.Forms のク
 
 [PCLStorage]: https://www.nuget.org/packages/PCLStorage/
 
-###IPlatform インターフェイスを追加します。
+###<a name="add-iplatform"></a>IPlatform インターフェイスを追加する
 
 メインのポータブル ライブラリ プロジェクトで新しいインターフェイス `IPlatform` を作成します。これは [Xamarin.Forms DependencyService] パターンに従って、実行時に正しいプラットフォーム固有のクラスをロードします。後から、各クライアント プロジェクトでプラットフォーム固有の実装を追加します。
 
@@ -164,7 +181,7 @@ Visual Studio または Xamarin Studio のいずれかで、Xamarin.Forms のク
             Task DownloadFileAsync<T>(IMobileServiceSyncTable<T> table, MobileServiceFile file, string filename);
         }
 
-###FileHelper クラスを追加する
+###<a name="add-filehelper"></a>FileHelper クラスを追加する
 
 1. メインのポータブル ライブラリ プロジェクトで新しいクラス `FileHelper` を作成します。次の using ステートメントを追加します。
 
@@ -222,7 +239,7 @@ Visual Studio または Xamarin Studio のいずれかで、Xamarin.Forms のク
             }
         }
 
-### ファイル同期ハンドラーを追加する
+###<a name="file-sync-handler"></a>ファイル同期ハンドラーを追加する
 
 メインのポータブル ライブラリ プロジェクトで新しいクラス `TodoItemFileSyncHandler` を作成します。このクラスには、ファイルが追加または削除された場合にコードに通知するための Azure SDK からのコールバックが含まれています。
 
@@ -264,7 +281,7 @@ Azure Mobile クライアント SDK は実際にはどのファイル データ�
             }
         }
 
-###TodoItemManager を更新する
+###<a name="update-todoitemmanager"></a>TodoItemManager を更新する
 
 1. **TodoItemManager.cs** で、行 `#define OFFLINE_SYNC_ENABLED` をコメント解除します。
 
@@ -316,7 +333,7 @@ Azure Mobile クライアント SDK は実際にはどのファイル データ�
             return await this.todoTable.GetFilesAsync(todoItem);
         }
 
-###詳細ビューを追加する
+###<a name="add-details-view"></a>詳細ビューを追加する
 
 このセクションでは、Todo 項目の新しい詳細ビューを追加します。このビューは、ユーザーが Todo 項目を選択した場合に作成されます。このビューでは、新しいイメージを項目に追加することができます。
 
@@ -449,7 +466,7 @@ Azure Mobile クライアント SDK は実際にはどのファイル データ�
             }
         }
 
-###メイン ビューを更新する 
+###<a name="update-main-view"></a>メイン ビューを更新する 
 
 Todo 項目が選択されたときに、メイン ビューを更新して詳細ビューを開きます。
 
@@ -468,7 +485,7 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
         todoList.SelectedItem = null;
     }
 
-###Android プロジェクトを更新する
+###<a name="update-android"></a>Android プロジェクトを更新する
 
 プラットフォーム固有のコード (ファイルをダウンロードし、カメラを使用して新しいイメージをキャプチャするためのコードも含める) を Android プロジェクトに追加します。
 
@@ -540,7 +557,7 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 
         App.UIContext = this;
 
-###iOS プロジェクトを更新する
+###<a name="update-ios"></a>iOS プロジェクトを更新する
 
 プラットフォーム固有のコードを iOS プロジェクトに追加します。
 
@@ -603,7 +620,7 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 
 3. **AppDelegate.cs** を編集し、`SQLitePCL.CurrentPlatform.Init()` の呼び出しをコメント解除します。
 
-###Windows プロジェクトを更新する
+###<a name="update-windows"></a>Windows プロジェクトを更新する
 
 1. Visual Studio の拡張機能 [SQLite for Windows 8.1](http://go.microsoft.com/fwlink/?LinkID=716919) をインストールします。詳細については、「[Windows アプリのオフライン同期を有効にする](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)」チュートリアルを参照してください。 
 
@@ -700,7 +717,7 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 
             jobService.MobileService.EventManager.Subscribe<StoreOperationCompletedEvent>(StoreOperationEventHandler);
 
-- 関連付けは名前付け規則によって行われるため、Blob Storage を直接変更して、レコードにファイルを追加またはレコードからファイルを削除することができまます。ただしこの場合は、**関連付けられた Blob が変更されたら、レコードのタイムスタンプも必ず更新**する必要があります。Azure Mobile クライアント SDK では、ファイルが追加または削除されると、レコードも常に更新されます。
+- 関連付けは名前付け規則によって行われるため、Blob Storage を直接変更して、レコードにファイルを追加またはレコードからファイルを削除することができまます。ただしこの場合は、**関連付けられた BLOB が変更されたら、レコードのタイムスタンプも必ず更新**する必要があります。Azure Mobile クライアント SDK では、ファイルが追加または削除されると、レコードも常に更新されます。
 
     これが必要な理由は、一部のモバイル クライアントはローカル ストレージに既にレコードがあるからです。これらのクライアントが増分プルを実行すると、このレコードは返されず、クライアントは新しい関連付けられているファイルに対してクエリを実行しません。この問題を回避するため、Azure Mobile クライアント SDK を使用しない Blob Storage の変更を実行するときに、レコードのタイムスタンプを更新することをお勧めします。
 
@@ -717,4 +734,4 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 [共有アクセス署名、第 1 部: SAS モデルについて]: ../storage/storage-dotnet-shared-access-signature-part-1.md
 [Azure Storage アカウントの作成]: ../storage/storage-create-storage-account.md#create-a-storage-account
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

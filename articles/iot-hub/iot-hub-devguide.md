@@ -82,7 +82,7 @@ Endpoint={Event Hub-compatible endpoint};SharedAccessKeyName={iot hub policy nam
 
 * [Event Hubs の Java クライアント](https://github.com/hdinsight/eventhubs-client)
 * [Apache Storm のスパウト](../hdinsight/hdinsight-storm-develop-csharp-event-hub-topology.md)。[スパウトのソース](https://github.com/apache/storm/tree/master/external/storm-eventhubs)は GitHub で確認できます。
-* [Apache Spark の統合](../hdinsight/hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming.md)
+* [Apache Spark の統合](../hdinsight/hdinsight-apache-spark-eventhub-streaming.md)
 
 ## デバイス ID レジストリ
 
@@ -557,4 +557,4 @@ IoT Hub の開発の概要については以上です。詳細については、
 [lnk-mqtt-support]: iot-hub-mqtt-support.md
 [lnk-throttle-blog]: https://azure.microsoft.com/blog/iot-hub-throttling-and-you/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

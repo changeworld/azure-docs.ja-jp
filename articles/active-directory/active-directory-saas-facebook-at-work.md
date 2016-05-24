@@ -13,13 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/02/2016"
+	ms.date="04/26/2016"
 	ms.author="asmalser"/>
 
 
 # チュートリアル: Azure Active Directory と Facebook at Work の統合
 
-このチュートリアルの目的は、Facebook at Work と Azure Active Directory (Azure AD) を統合する方法を示すことです。<br>Facebook at Work と Azure AD の統合には、次の利点があります。
+このチュートリアルの目的は、Facebook at Work と Azure Active Directory (Azure AD) を統合する方法を説明することです。
+
+Facebook at Work と Azure AD の統合には、次の利点があります。
 
 - Facebook at Work にアクセスする Azure AD ユーザーを制御できます 
 - Facebook at Work へのアクセス権が付与されているユーザーには、アカウントを自動的にプロビジョニングできます
@@ -47,15 +49,23 @@ Azure AD への Facebook at Work の統合を構成するには、ギャラリ�
 
 **ギャラリーから Facebook at Work を追加するには、次の手順に従います。**
 
-1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Active Directory][1]<br>
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+
+	![Active Directory][1]
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br>![アプリケーション][2]<br>
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-4. ページの下部にある **[追加]** をクリックします。<br><br>![アプリケーション][3]<br>
+	![アプリケーション][2]
 
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br>![アプリケーション][4]<br>
+4. ページの下部にある **[追加]** をクリックします。
+	
+	![アプリケーション][3]
+
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+
+	![アプリケーション][4]
 
 6. 検索ボックスに「**Facebook at Work**」と入力します。
 
@@ -68,7 +78,7 @@ Azure AD への Facebook at Work の統合を構成するには、ギャラリ�
 
 **Facebook at Work で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1.	Microsoft Azure 管理ポータルで Facebook at Work を追加したら、**[シングル サインオンの構成]** をクリックします。
+1.	Azure クラシック ポータルで Facebook at Work を追加したら、**[シングル サインオンの構成]** をクリックします。
 
 2.	**[アプリケーション URL の構成]** 画面に、ユーザーが Facebook at Work にサインインする URL を入力します。これが Facebook at Work テナント URL です (例: https://example.facebook.com/)。完了したら、**[次へ]** をクリックします。
 
@@ -76,25 +86,25 @@ Azure AD への Facebook at Work の統合を構成するには、ギャラリ�
 
 4. ID プロバイダーとして Azure AD を使用するように Facebook at Work を構成するには、[https://developers.facebook.com/docs/facebook-at-work/authentication/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/authentication/cloud-providers) の手順に従ってください。
 
-5.	完了したら、Microsoft Azure 管理ポータルが表示されているブラウザー ウィンドウに戻り、手順を完了したことを確認するチェックボックスをオンにして、**[次へ]** と **[完了]** をクリックします。
+5.	完了したら、Azure クラシック ポータルが表示されているブラウザー ウィンドウに戻り、手順を完了したことを確認するチェックボックスをオンにして、**[次へ]** と **[完了]** をクリックします。
 
 
 ## ユーザーを Facebook at Work に自動的にプロビジョニングする
 
 Azure AD は、割り当てられたユーザーのアカウントの詳細を Facebook at Work と自動的に同期する機能をサポートしています。この自動同期機能によって、ユーザーが初めてサインインする前に、Facebook at Work がユーザーのアクセスを承認するために必要なデータを取得することができます。また、Azure AD のアクセス権が取り消された場合、Facebook at Work からユーザーのプロビジョニングを解除することができます。
 
-自動プロビジョニングを設定するには、Microsoft Azure 管理ポータル ウィンドウで **[アカウント プロビジョニングの構成]** をクリックします。
+自動プロビジョニングを設定するには、Azure クラシック ポータル ウィンドウで **[アカウント プロビジョニングの構成]** をクリックします。
 
 自動プロビジョニングの詳細な構成方法については、[https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers) を参照してください。
 
 
 ## ユーザーを Facebook at Work に割り当てる
 
-プロビジョニングされた AAD ユーザーがアクセス パネルに Facebook at Work を表示できるようにするには、Microsoft Azure 管理ポータル内でアクセス権を割り当てる必要があります。
+プロビジョニングされた AAD ユーザーがアクセス パネルに Facebook at Work を表示できるようにするには、Azure クラシック ポータル内でアクセス権を割り当てる必要があります。
 
 **ユーザーを Facebook at Work に割り当てるには:**
 
-1.	Microsoft Azure 管理ポータルの Facebook at Work のスタート ページで、**[アカウントの割り当て]** をクリックします。
+1.	Azure クラシック ポータルの Facebook at Work のスタート ページで、**[アカウントの割り当て]** をクリックします。
 
 2.	**[表示]** メニューで、Facebook at Work にユーザーとグループのどちらを割り当てるかを選択し、チェックマーク ボタンをクリックします。
 
@@ -114,4 +124,4 @@ Azure AD は、割り当てられたユーザーのアカウントの詳細を F
 [3]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_04.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -41,7 +41,7 @@ Linux または OS X で SSH トンネルを作成するにはまず、負荷分
 ssh -L PORT:localhost:PORT -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
 ```
 
-### DC/OS トンネル
+## DC/OS トンネル
 
 DC/OS 関連のエンドポイントへのトンネルを開くには、次のようなコマンドを実行します。
 
@@ -59,7 +59,7 @@ ssh -L 80:localhost:80 -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com 
 
 同様に、各アプリケーションの REST API にはこのトンネルを経由して到達できます。
 
-### Swarm トンネル
+## Swarm トンネル
 
 Swarm エンドポイントへのトンネルを開くには、次のようなコマンドを実行します。
 
@@ -117,4 +117,4 @@ Docker Swarm のトンネルを構成したら、Docker CLI から Swarm クラ�
 
 [REST API を使用したコンテナー管理](./container-service-mesos-marathon-rest.md) [Working with the Azure Container Service and Docker Swarm (Azure コンテナー サービスと Docker Swarm の使用)](./container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

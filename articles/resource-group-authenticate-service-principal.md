@@ -69,7 +69,7 @@
 
 3. サブスクリプションに対する権限をサービス プリンシパルに付与します。このサンプルでは、サブスクリプション内のすべてのリソースを読み取る権限をサービス プリンシパルに付与します。**ServicePrincipalName** パラメーターには、アプリケーションを作成するときに使用した **ApplicationId** または **IdentifierUris** を指定します。ロールベースのアクセス制御の詳細については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
 
-        PS C:\> New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId
+        PS C:\> New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
 Active Directory アプリケーションとそのアプリケーション用のサービス プリンシパルの作成が完了しました。サービス プリンシパルをロールに割り当てました。これで、サービス プリンシパルとして操作できるよう、サービス プリンシパルとしてログインする必要があります。このトピックには、3 つのオプションがあります。
 
@@ -523,4 +523,4 @@ Active Directory アプリケーションとそのアプリケーション用の
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0511_2016-->

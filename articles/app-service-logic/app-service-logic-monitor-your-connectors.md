@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/18/2016"
+	ms.date="05/10/2016"
 	ms.author="mandia"/>
 
 # 組み込み API Apps とコネクタの管理と監視を実行する
@@ -117,13 +117,14 @@ API アプリへのユーザーの追加と特定のロールの割り当ては�
 > これらのプロパティは、API アプリをホストする Web サイトに固有です。組み込み API アプリまたはコネクタを使用するとき、これらのプロパティの大半は実際には適用されないため、これらのプロパティを更新しないことをお勧めします。Visual Studio で独自の API アプリを作成し、Azure サブスクリプションにデプロイした場合は、[ホスト] ブレードと [ゲートウェイ] ブレードを使用できます。
 
 
-
 >[AZURE.NOTE] Azure アカウントにはサインアップせずに Azure Logic Apps を体験することもできます。[Logic App の試用](https://tryappservice.azure.com/?appservice=logic)に関するページにアクセスしてください。App Service で短時間有効な簡易版のロジック アプリを作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-
 
 ## 詳細
 
-[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/> [App Service のコネクタと API Apps](app-service-logic-connectors-list.md)<br/> [Microsoft Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)<br/> [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)
+[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/>
+[App Service のコネクタと API Apps](app-service-logic-connectors-list.md)<br/>
+[Microsoft Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)<br/>
+[Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)
 
 
 <!--Image references-->
@@ -136,4 +137,4 @@ API アプリへのユーザーの追加と特定のロールの割り当ては�
 [hostsettings]: ./media/app-service-logic-monitor-your-connectors/hostsettings.png
 [apiapphost]: ./media/app-service-logic-monitor-your-connectors/apiapphost.png
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

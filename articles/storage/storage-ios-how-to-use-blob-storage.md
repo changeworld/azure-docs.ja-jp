@@ -1,6 +1,6 @@
 <properties
     pageTitle="iOS から Azure BLOB ストレージを使用する方法 | Microsoft Azure"
-    description="Azure BLOB ストレージを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、削除する方法について説明します。サンプルは Objective-C で記述されています。"
+	description="Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
     services="storage"
     documentationCenter="ios"
     authors="micurd"
@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="Objective-C"
     ms.topic="article"
-    ms.date="01/05/2016"
+    ms.date="04/11/2016"
     ms.author="micurd"/>
 
 # iOS から BLOB ストレージを使用する方法
@@ -111,7 +111,7 @@ iOS アプリケーションの場合、BLOB ストレージに対するクラ�
 		// Get a reference to a container in your Storage account
     	AZSCloudBlobContainer *blobContainer = [[AZSCloudBlobContainer alloc] initWithUrl:[NSURL URLWithString:@" your SAS URL"]];
 
-ご覧のように、SAS トークンを使用する場合、iOS アプリケーションでアカウント名とアカウント キーを公開することはありません。SAS の詳細については、「[Shared Access Signature: SAS モデルについて](../storage-dotnet-shared-access-signature-part-1)」を参照してください。
+ご覧のように、SAS トークンを使用する場合、iOS アプリケーションでアカウント名とアカウント キーを公開することはありません。SAS の詳細については、「[Shared Access Signature、第 1 部: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
 
 ##非同期操作
 > [AZURE.NOTE] サービスに対して要求を実行するメソッドは、すべてが非同期操作です。コード サンプルでは、このようなメソッドに完了ハンドラーが含まれていることがわかります。完了ハンドラーの中のコードは、要求が完了した**後に**実行されます。完了ハンドラーの後のコードは、要求が行われている**間に**実行されます。
@@ -355,4 +355,4 @@ NSString からブロック BLOB をアップロードする場合だけでな�
 
 このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata)または[スタック オーバーフロー](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)に投稿してください。Azure Storage の機能についてご提案がある場合は、[Azure Storage のフィードバック](https://feedback.azure.com/forums/217298-storage/)に投稿してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

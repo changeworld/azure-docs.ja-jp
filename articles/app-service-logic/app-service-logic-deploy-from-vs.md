@@ -1,8 +1,8 @@
 <properties 
-	pageTitle="Visual Studio からのデプロイ | Microsoft Azure" 
+	pageTitle="Visual Studio からのロジック アプリのデプロイ | Microsoft Azure" 
 	description="Visual Studio でプロジェクトを作成してロジック アプリを管理します。" 
 	authors="stepsic-microsoft-com" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="app-service\logic" 
 	documentationCenter=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/19/2016"
+	ms.date="05/03/2016"
 	ms.author="stepsic"/>
 	
 # Visual Studio からのデプロイ
@@ -35,13 +35,13 @@
 
 4. **テンプレート**を選択したら、**[OK]** をクリックします。
 
-これで、ロジック アプリ プロジェクトがソリューションに追加されます。ソリューション エクスプローラーにデプロイメントが表示されます。![デプロイ](./media/app-service-logic-deploy-from-vs/deployment.png)
+これで、ロジック アプリ プロジェクトがソリューションに追加されます。ソリューション エクスプローラーにデプロイ ファイルが表示されます。![デプロイ](./media/app-service-logic-deploy-from-vs/deployment.png)
 
 ## ロジック アプリの構成
 
 プロジェクトを作成したら、Visual Studio 内でロジック アプリの定義を編集することができます。ソリューション エクスプローラーで JSON ファイルをクリックします。アプリケーションのロジックを使用して入力できるプレースホルダーの定義が表示されます。
 
-定義全体で**パラメーター**を使用することをお勧めします。これは、開発環境と運用環境の両方にデプロイする場合に役立ちます。その場合、`*.parameters.json` ファイルに環境固有のすべての構成と、実際の文字列ではなくパラメーターを配置する必要があります。
+定義全体で**パラメーター**を使用することをお勧めします。これは、開発環境と運用環境の両方にデプロイする場合に役立ちます。その場合、`*.parameters.json` ファイルに環境固有のすべての構成を配置し、実際の文字列ではなくパラメーターを使用する必要があります。
 
 現在、Visual Studio には組み込みの JSON デザイナーがありません。そのため、(JSON を記述するのではなく) グラフィカル インターフェイスを使用する場合は、Azure ポータルを使用してください。
 
@@ -63,8 +63,10 @@
 
      > [AZURE.NOTE]    リソース グループに適したテンプレートとパラメーター ファイルを必ず選択してください (たとえば、運用環境にデプロイする場合、運用中のパラメーター ファイルを選択します)。 
 4.  [デプロイ] ボタンをクリックします
+5. 検出されたすべてのエラーを修正するよう求められます。次に例を示します。![リソース グループへのデプロイ](./media/app-service-logic-deploy-from-vs/deploytoresourcegrouperror.png)
+ 
     
-5. デプロイの状態が **[出力]** ウィンドウに表示されます (**[Azure プロビジョニング]** を選択することが必要になる場合があります)。![出力](./media/app-service-logic-deploy-from-vs/output.png)
+6. デプロイの状態が **[出力]** ウィンドウに表示されます (**[Azure のプロビジョニング]** の選択が必要になる場合があります)。![出力](./media/app-service-logic-deploy-from-vs/output.png)
 
 今後は、ソース管理でロジック アプリを修正し、Visual Studio を使用して新しいバージョンをデプロイできます。
 
@@ -72,4 +74,4 @@
 
 > [AZURE.TIP] Visual Studio は使用しないが、ソース管理からロジック アプリをデプロイするツールを使用する場合は、[API](https://msdn.microsoft.com/library/azure/dn948510.aspx) または [PowerShell](../powershell-azure-resource-manager.md) を直接使用してデプロイを自動化できます。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/02/2016"
+   ms.date="05/10/2016"
    ms.author="v-sharos"/>
 
 # StorSimple Manager サービスを使用してバックアップ ポリシーを管理する
@@ -90,4 +90,4 @@ StorSimple デバイスからバックアップ ポリシーを削除するに�
 
 [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

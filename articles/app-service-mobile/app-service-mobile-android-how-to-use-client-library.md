@@ -4,7 +4,7 @@
 	services="app-service\mobile"
 	documentationCenter="android"
 	authors="RickSaling"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="05/09/2016"
 	ms.author="ricksal"/>
 
 
@@ -841,4 +841,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [Android アプリに認証を追加する]: app-service-mobile-android-get-started-users.md
 [認証の使用]: app-service-mobile-android-get-started-users.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

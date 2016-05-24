@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Java からテーブル ストレージを使用する方法 | Microsoft Azure"
-	description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Java で記述されています。"
+	description="NoSQL データ ストアの Azure Table Storage を使用して、構造化データをクラウドに格納します。"
 	services="storage"
 	documentationCenter="java"
 	authors="rmcmurray"
@@ -563,4 +563,4 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Tables: Introducing Upsert and Query Projection (Azure Tables: アップサートおよびクエリ プロジェクションの概要)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

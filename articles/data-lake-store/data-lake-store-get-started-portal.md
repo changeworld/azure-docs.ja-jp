@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/07/2016"
+   ms.date="05/11/2016"
    ms.author="nitinme"/>
 
 # Azure ポータルで Azure Data Lake Store の使用を開始する
@@ -44,6 +44,13 @@ Azure ポータルを使用して、Azure Data Lake Store アカウントを作�
 3. **[新しい Data Lake Store]** ブレードで、**[プレビュー版にサインアップ]** をクリックします。情報を確認し、**[OK]** をクリックします。パブリック プレビューに対して Azure サブスクリプションが有効になると、電子メールを受信します。
 
 	![パブリック プレビューにサインアップ](./media/data-lake-store-get-started-portal/preview-signup.png "新しい Azure Data Lake アカウントの作成")
+
+## ビデオで速習する
+
+Data Lake Store の基本操作については以下のビデオをご覧ください。
+
+* [Data Lake Store アカウントを作成する](https://mix.office.com/watch/1k1cycy4l4gen)
+* [データ エクスプローラーで Data Lake Store のデータを管理する](https://mix.office.com/watch/icletrxrh6pc)
 
 ## Azure Data Lake Store アカウントを作成する
 
@@ -130,4 +137,4 @@ Azure Data Lake Store アカウントを削除するには、Data Lake Store ブ
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

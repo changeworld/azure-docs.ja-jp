@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/25/2016"
+	ms.date="05/09/2016"
 	ms.author="cynthn"/>
 
 # Azure ポータルで Windows VM にデータ ディスクを接続する方法
@@ -31,7 +31,7 @@
 
 ## <a id="initializeinWS"></a>方法: Windows Server で新しいデータ ディスクを初期化する
 
-1. 仮想マシンへの接続手順については、「[Windows Server が実行されている Azure 仮想マシンに接続してログオンする方法](virtual-machines-windows-connect-logon.md)」を参照してください。
+1. 仮想マシンへの接続手順については、[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](virtual-machines-windows-connect-logon.md)に関するページをご覧ください。
 
 2. 仮想マシンにログオンした後、**サーバー マネージャー**を開きます。左側のウィンドウで、**[ファイル サービスと記憶域サービス]** を選択します。
 
@@ -55,4 +55,4 @@
 
 アプリケーションで D: ドライブを使用してデータを保存する必要がある場合は、[Windows 一時ディスクのドライブ文字を変更](virtual-machines-windows-classic-change-drive-letter.md)できます。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

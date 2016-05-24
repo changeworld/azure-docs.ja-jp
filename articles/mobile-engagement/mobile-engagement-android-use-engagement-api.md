@@ -1,24 +1,24 @@
-<properties 
-	pageTitle="Engagement API を Android で使用する方法" 
+<properties
+	pageTitle="Engagement API を Android で使用する方法"
 	description="最新の Android SDK - Engagement API を Android で使用する方法"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="erikre"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/29/2016" 
-	ms.author="piyushjo" />
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="05/10/2016"
+	ms.author="piyushjo;ricksal" />
 
 #Engagement API を Android で使用する方法
 
-このドキュメントは、ドキュメント「[Engagement を Android に統合する方法](mobile-engagement-android-integrate-engagement.md)」の追加ドキュメントです。エンゲージメント API を使用してアプリケーションの統計情報を報告する方法についての詳細を提供しています。
+このドキュメントは、[Android Mobile Engagement SDK の詳細なレポート オプション](mobile-engagement-android-advanced-reporting.md)に関する記事の追加ドキュメントです。エンゲージメント API を使用してアプリケーションの統計情報を報告する方法についての詳細を提供しています。
 
 Engagement を使用してアプリケーションのセッション、アクティビティ、クラッシュ、および技術情報に関するレポートのみを作成する場合、すべての `Activity` サブクラスを対応する `EngagementActivity` クラスから継承するように設定する方法が簡単です。
 
@@ -136,7 +136,7 @@ Engagement を使用してアプリケーションのセッション、アクテ
 次の例は、アプリケーション プロセスの実行中に携帯電話のメモリーが少なくなったタイミングで出力されるエラーについてレポートを作成する方法を示します。
 
 			public MyApplication extends EngagementApplication {
-			
+
 			  @Override
 			  protected void onApplicationProcessLowMemory() {
 			    EngagementAgent.getInstance(this).sendError("low_memory", null);
@@ -148,18 +148,18 @@ Engagement を使用してアプリケーションのセッション、アクテ
 ### 例
 
 ログイン プロセスの実行時間を報告する場合を想定します。
-			
+
 			[...]
 			public void signIn(Context context, ...) {
-			
+
 			  /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
 			  EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
-			
+
 			  /* Report sign in job has started */
 			  engagementAgent.startJob("sign_in", null);
-			
+
 			  [... sign in ...]
-			
+
 			  /* Report sign in job is now ended */
 			  engagementAgent.endJob("sign_in");
 			}
@@ -177,10 +177,10 @@ Engagement を使用してアプリケーションのセッション、アクテ
 
 			  /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
 			  EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
-			
+
 			  /* Report sign in job has been started */
 			  engagementAgent.startJob("sign_in", null);
-			
+
 			  /* Try to sign in */
 			  while(true)
 			    try {
@@ -190,7 +190,7 @@ Engagement を使用してアプリケーションのセッション、アクテ
 			    catch(Exception e) {
 			      /* Report the error to Engagement */
 			      engagementAgent.sendJobError("sign_in_error", "sign_in", null);
-			
+
 			      /* Retry after a moment */
 			      sleep(2000);
 			    }
@@ -209,7 +209,7 @@ Engagement を使用してアプリケーションのセッション、アクテ
 ソーシャル ネットワークを持っていて、ジョブを使用して、ユーザーがサーバーに接続している合計時間を報告する場合を想定します。ユーザーは別のアプリケーションを使用している場合や携帯電話がスリープ状態にある場合でもバックグラウンドで接続されていることがあるため、セッションはありません。
 
 ユーザーは友達からメッセージを受信できます。これがジョブ イベントです。
-			
+
 			[...]
 			public void signin(Context context, ...) {
 			  [...Sign in code...]
@@ -296,6 +296,5 @@ Engagement を使用してアプリケーションのセッション、アクテ
 前の例では、サーバーに送信される JSON は 44 文字です。
 
 			{"expiration":"2016-12-07","status":"premium"}
- 
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0511_2016-->

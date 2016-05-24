@@ -13,9 +13,10 @@
 |サービス名前空間ごとのリレー エンドポイント数|システム全体|静的|-|10,000|
 |サービス名前空間ごとのトピック/キュー数|システム全体|静的|サービス名前空間での以降の新しいトピックまたはキューの作成要求は拒否されます。その結果、[Azure クラシック ポータル][]で構成されている場合は、エラー メッセージが生成されます。管理 API から呼び出される場合は、呼び出し元のコードが例外を受け取ります。|10,000<br /><br />1 つのサービス名前空間に含まれるトピックとキューの合計数は 10,000 以下にする必要があります。|
 |サービス名前空間ごとのパーティション分割されたトピック/キューの数|システム全体|静的|サービス名前空間での以降の新しいパーティション分割されたトピックまたはキューの作成要求は拒否されます。その結果、[Azure クラシック ポータル][]で構成されている場合は、エラー メッセージが生成されます。管理 API で呼び出される場合は、呼び出し元のコードが **QuotaExceededException** 例外を受け取ります。|100<br /><br />パーティション分割された各キューまたはトピックは、名前空間ごとに 10,000 個のエンティティ クォータに加算されます。|
-|メッセージング エンティティ名の最大サイズ: 名前空間、キュー、トピック、サブスクリプション、Event Hubs|エンティティ|静的|-|50 文字|
+|メッセージング エンティティ パスの最大サイズ: キューまたはトピック|エンティティ|静的|-|260 文字|
+|メッセージング エンティティ名の最大サイズ: 名前空間、サブスクリプション、サブスクリプション、サブスクリプション規則、または Event Hubs|静的|-|50 文字|
 |Event Hubs イベントの最大サイズ|システム全体|静的|-|256 KB|
-|キュー/トピック/サブスクリプション エンティティのメッセージ サイズ|システム全体|静的|これらのクォータを超過した受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。|最大メッセージ サイズ: 256 KB<br /><br />**注** システム オーバーヘッドにより、通常、この上限は 256 KB をわずかに下回ります。<br /><br />ヘッダーの最大サイズ: 64 KB<br /><br />プロパティ バッグ内のヘッダー プロパティの最大数: **byte/int.MaxValue**<br /><br />プロパティ バッグ内のプロパティの最大サイズ: 明示的な上限なし。ヘッダーの最大サイズによって制限されます。|
+|キューのメッセージ サイズ/トピック/サブスクリプション エンティティ|システム全体|静的|これらのクォータを超過した受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。|最大メッセージ サイズ: 256 KB ([Standard tier](../articles/service-bus/service-bus-premium-messaging.md))/1 MB ([Premium tier](../articles/service-bus/service-bus-premium-messaging.md)). <br /><br />**注** システム オーバーヘッドにより、通常、この上限はわずかに下回ります。<br /><br />最大ヘッダー サイズ: 64 KB<br /><br />プロパティ バッグ内のヘッダー プロパティの最大数: **byte/int.MaxValue**<br /><br />プロパティ バッグ内のプロパティの最大サイズ: 明示的な上限なし。ヘッダーの最大サイズによって制限されます。|
 |[NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx) と [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx) リレーのメッセージ サイズ|システム全体|静的|これらのクォータを超過した受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。|64 KB
 |[HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx) と [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) リレーのメッセージ サイズ|システム全体|静的|-|無制限|
 |キュー/トピック/サブスクリプション エンティティのメッセージ プロパティ サイズ|システム全体|静的|**SerializationException** 例外が生成されます。|各プロパティのメッセージ プロパティの最大サイズは 32 K です。すべてのプロパティの合計サイズが 64 K を超えることはできません。これは [BrokeredMessage](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.aspx) のヘッダー全体に適用されます。これには、ユーザー プロパティとシステム プロパティ ([SequenceNumber](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.sequencenumber.aspx)、[Label](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.label.aspx)、[MessageId](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) など) の両方が含まれます。|
@@ -25,5 +26,3 @@
 |SQL フィルター/アクションのサイズ|システム全体|静的|以降の追加のフィルター作成要求が拒否され、呼び出し元のコードが例外を受け取ります。|フィルター条件の文字列の最大長: 1024 (1K)<br /><br />ルール アクションの文字列の最大長: 1024 (1K)<br /><br />ルール アクションごとの式の最大数: 32|
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
-
-<!---HONumber=AcomDC_0420_2016-->

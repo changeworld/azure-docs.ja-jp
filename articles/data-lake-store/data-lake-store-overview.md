@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/13/2016"
+   ms.date="05/11/2016"
    ms.author="nitinme"/>
 
 # Azure Data Lake Store の概要
@@ -67,11 +67,18 @@ Azure Data Lake Store では、Azure Active Directory を使用し、認証お�
 | 認証 | Azure Data Lake Store は、Azure Active Directory (AAD) と統合することで、Azure Data Lake Store に格納されたすべてのデータの ID 管理とアクセス管理を行います。この統合によって、Azure Data Lake Store は、AAD のあらゆる機能 (たとえば、多要素認証、条件付きアクセス、ロール ベースのアクセス制御、アプリケーション使用状況の監視、セキュリティの監視とアラート通知など) から恩恵を受けます。Azure Data Lake Store では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルをサポートしています。 |
 | Access control | Azure Data Lake Store では、WebHDFS プロトコルで公開された POSIX 形式のアクセス許可をサポートすることにより、アクセス制御を実現しています。現在のリリースでは、アクセス許可は Data Lake のレベルで指定され、Data Lake 内のすべてのファイルおよびフォルダーに適用されます。今後の更新では、個々のファイルおよびフォルダーに対してアクセス許可を指定できるようにすることで、詳細なアクセス制御を可能にします。|
 
-Data Lake Store 内のデータをセキュリティで保護する方法については、「[Azure Data Lake Store 内のデータをセキュリティで保護する](data-lake-store-secure-data.md)」を参照してください。
+Data Lake Store に格納されているデータのセキュリティ保護の詳細については、以下のページを参照してください。
+
+* Data Lake Store 内のデータをセキュリティで保護する方法については、「[Azure Data Lake Store 内のデータをセキュリティで保護する](data-lake-store-secure-data.md)」を参照してください。
+* または、Data Lake Store に格納されているデータのセキュリティ保護の方法について紹介した [こちらのビデオ](https://mix.office.com/watch/1q2mgzh9nn5lx)をご覧ください。
 
 ## Azure Data Lake Store と互換性のあるアプリケーション
 
-Azure Data Lake Store と相互運用可能なオープン ソース アプリケーションの一覧については、「[Azure Data Lake と互換性のあるアプリケーションとサービス](data-lake-store-compatible-oss-other-applications.md)」を参照してください。Data Lake Store と他の Azure サービスを組み合わせて広範なシナリオを有効にする方法を理解するには、「[他の Azure サービスとの統合](data-lake-store-integrate-with-other-services.md)」を参照してください。
+Azure Data Lake Store は、Hadoop のエコシステムを構成するほとんどのオープン ソース コンポーネントと共存することができます。他の Azure サービスとの連携性にも優れています。その点において、Data Lake Store はあらゆるデータ ストレージのニーズを満たす最適な選択肢といえます。オープン ソース コンポーネントや各種 Azure サービスと Data Lake Store との連携について詳しくは、以下のページをご覧ください。
+
+* Data Lake Store と相互運用可能な一連のオープン ソース アプリケーションについては、「[Azure Data Lake Store で機能するオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)」を参照してください。
+* Data Lake Store と他の Azure サービスを組み合わせて広範なシナリオを有効にする方法を理解するには、「[他の Azure サービスとの統合](data-lake-store-integrate-with-other-services.md)」を参照してください。
+* データの取り込み、データの処理、データのダウンロード、データの視覚化などの各種シナリオにおける Data Lake Store の使い方については、「[Azure Data Lake Store に関するデータ シナリオ](data-lake-store-data-scenarios.md)」を参照してください。
 
 ## Azure Data Lake Store ファイル システムとは何か (adl://)?
 
@@ -87,4 +94,20 @@ Azure ポータルを使用して Data Lake Store をプロビジョニングす
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [.NET SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+
+## Data Lake Store のビデオ
+
+Data Lake Store の一連の機能について紹介するビデオをご覧ください。
+
+* [Azure Data Lake Store アカウントを作成する](https://mix.office.com/watch/1k1cycy4l4gen)
+* [データ エクスプローラーを使用して Azure Data Lake Store のデータを管理する](https://mix.office.com/watch/icletrxrh6pc)
+* [Azure Data Lake Analytics を Azure Data Lake Store に接続する](https://mix.office.com/watch/qwji0dc9rx9k)
+* [Azure Data Lake Store に Data Lake Analytics 経由でアクセスする](https://mix.office.com/watch/1n0s45up381a8)
+* [Azure HDInsight を Azure Data Lake Store に接続する](https://mix.office.com/watch/l93xri2yhtp2)
+* [Azure Data Lake Store に Hive や Pig 経由でアクセスする](https://mix.office.com/watch/1n9g5w0fiqv1q)
+* [DistCp (Hadoop Distributed Copy) を使用して Azure Data Lake Store にデータをコピーしたり Azure Data Lake Store からデータをコピーしたりする](https://mix.office.com/watch/1liuojvdx6sie)
+* [リレーショナル ソースと Azure Data Lake Store との間で Apache Sqoop を使用してデータを移動する](https://mix.office.com/watch/1butcdjxmu114)
+* [Azure Data Lake Store 用 Azure Data Factory を使用したデータのオーケストレーション](https://mix.office.com/watch/1oa7le7t2u4ka)
+* [Azure Data Lake Store でのデータのセキュリティ保護](https://mix.office.com/watch/1q2mgzh9nn5lx)
+
+<!---HONumber=AcomDC_0518_2016-->
