@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/02/2016"
+   ms.date="05/13/2016"
    ms.author="cherylmc"/>
 
 # Azure ポータルと Azure Resource Manager を使用してサイト間 VPN 接続を持つ VNet を作成する
@@ -25,19 +25,23 @@
 - [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
 
-この記事では、Azure Resource Manager デプロイ モデルと Azure ポータルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。
+この記事では、Azure Resource Manager デプロイ モデルと Azure ポータルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。以下の手順では、VNet を作成し、ゲートウェイ サブネット、ゲートウェイ、ローカル サイト、および接続を追加します。さらに、VPN デバイスの構成も必要になります。
+
 
 
 **Azure のデプロイ モデルについて**
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
+## 接続図
+
+![サイト間](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site2site.png)
+
 **サイト間接続のデプロイ モデルとデプロイ ツール**
 
 [AZURE.INCLUDE [vpn-gateway-table-site-to-site-table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-VNet どうしは接続しても、オンプレミスへの接続は作成しない場合は、[VNet 間の接続の構成](vpn-gateway-vnet-vnet-rm-ps.md)に関するページを参照してください。
-
+VNet どうしは接続しても、オンプレミスへの接続は作成しない場合は、[VNet 間の接続の構成](vpn-gateway-vnet-vnet-rm-ps.md)に関するページを参照してください。別の種類の接続構成をお探しの場合は、「[Azure VPN Gateway 接続トポロジ](vpn-gateway-topology.md)」の記事を参照してください。
 
 ## 開始する前に
 
@@ -49,18 +53,10 @@ VNet どうしは接続しても、オンプレミスへの接続は作成しな
 	
 - Azure サブスクリプション。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-## この構成について
-
-
-![サイト間](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site2site.png)
-
-以下の手順では、VNet を作成し、ゲートウェイ サブネット、ゲートウェイ、ローカル サイト、および接続を追加します。さらに、VPN デバイスの構成も必要になります。
-
-以下の手順を練習として使用する場合は、次の値を使用できます。
-
-
-
 ### <a name="values"></a>この演習のサンプル構成値
+
+
+以下の手順を練習として使用する場合は、次のサンプル構成値を使用してください。
 
 - VNet の名前: TestVNet1
 - アドレス空間: 10.11.0.0/16 および 10.12.0.0/16
@@ -83,9 +79,9 @@ VNet どうしは接続しても、オンプレミスへの接続は作成しな
 
 ## 1\.仮想ネットワークの作成 
 
-既に仮想ネットワークを作成済みの場合は、設定が VPN ゲートウェイの設計に適合していることを確認します。特に、他のネットワークと重複している可能性のあるサブネットに注意してください。その後、「[DNS サーバーの指定](#dns)」に進むことができます。
+既に仮想ネットワークを作成済みの場合は、設定が VPN ゲートウェイの設計に適合していることを確認します。特に、他のネットワークと重複している可能性のあるサブネットに注意してください。サブネットの重複があると適切に接続できません。VNet が正しい設定で構成されていることを確認したうえで、「[DNS サーバーの指定](#dns)」セクションの手順に進んでください。
 
-練習として新しい VNet を作成する場合は、VNet の作成時に、上記の[値](#values)を参照することができます。
+### 仮想ネットワークを作成するには
 
 [AZURE.INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
@@ -99,6 +95,8 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
 練習としてこの構成を作成する場合は、DNS サーバーの指定時に、上記の[値](#values)を参照してください。
 
+### DNS サーバーを指定するには
+
 [AZURE.INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## 4\.ゲートウェイ サブネットの作成
@@ -109,11 +107,17 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
 練習としてこの構成を作成する場合は、ゲートウェイ サブネットの作成時に、上記の[値](#values)を参照してください。
 
+### ゲートウェイ サブネットを作成するには
+
+[AZURE.INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
+
 [AZURE.INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
 ## 5\.仮想ネットワーク ゲートウェイの作成
 
 練習としてこの構成を作成する場合は、ゲートウェイの作成時に、上記の[値](#values)を参照してください。
+
+### 仮想ネットワーク ゲートウェイを作成するには
 
 [AZURE.INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
@@ -122,6 +126,8 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 *ローカル ネットワーク ゲートウェイ*は、オンプレミスの場所を指します。Azure から参照できるように、ローカル ネットワーク ゲートウェイに名前を付けます。
 
 練習としてこの構成を作成する場合は、ローカル サイトの追加時に、上記の[値](#values)を参照してください。
+
+### ローカル ネットワーク ゲートウェイを作成するには
 
 [AZURE.INCLUDE [vpn-gateway-add-lng-rm-portal](../../includes/vpn-gateway-add-lng-rm-portal-include.md)]
 
@@ -135,10 +141,14 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
 このセクションを開始する前に、仮想ネットワーク ゲートウェイとローカル ネットワーク ゲートウェイの作成が完了していることを確認してください。練習としてこの構成を作成する場合は、接続の作成時に、上記の[値](#values)を参照してください。
 
+### VPN 接続を作成するには
+
 
 [AZURE.INCLUDE [vpn-gateway-add-site-to-site-connection-rm-portal](../../includes/vpn-gateway-add-site-to-site-connection-rm-portal-include.md)]
 
 ## 9\.VPN 接続の確認
+
+VPN 接続の確認はポータルで行えるほか、PowerShell を使って確認することもできます。
 
 [AZURE.INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]
 
@@ -148,4 +158,4 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
 - BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関するページと [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

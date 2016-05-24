@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/25/2016"
+	ms.date="05/10/2016"
 	ms.author="billmath;andkjell"/>
 
 # 簡単設定を使用した Azure AD Connect の開始
@@ -43,11 +43,12 @@
 4. [簡単設定] 画面で、**[簡単設定を使う]** をクリックします。![Azure AD Connect へようこそ](./media/active-directory-aadconnect-get-started-express/express.png)
 5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。**[次へ]** をクリックします。![Azure への接続](./media/active-directory-aadconnect-get-started-express/connectaad.png) 接続の問題によってエラーが発生する場合は、「[Azure AD Connect での接続に関する問題のトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)」を参照してください。
 6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。ドメインの部分は NetBios または FQDN の形式で入力できます (FABRIKAM\\administrator または fabrikam.com\\administrator)。**[次へ]** をクリックします。![AD DS に接続](./media/active-directory-aadconnect-get-started-express/connectad.png)
-7. [構成の準備完了] 画面で、**[インストール]** をクリックします。
-	- 必要に応じて、[構成の準備完了] 画面の **[Start the synchronization process as soon as configuration completes]** (構成が完了したらすぐに同期プロセスを開始する) チェック ボックスをオフにします。続けて[フィルター処理](active-directory-aadconnectsync-configure-filtering.md)などの構成作業を行う場合は、このチェック ボックスをオフにする必要があります。このオプションをオフにした場合、同期の構成は実行されますが、スケジューラは無効のままとなります。スケジューラを実行するには、もう一度インストール ウィザードを実行して手動で有効にする必要があります。
+7. オンプレミスの Active Directory に登録された UPN ドメインが存在しない場合、または検証されていない場合は、このページが表示されます。オンプレミスの AD DS の UPN ドメインがすべて検証済みである場合、このページは表示されません。![Unverified domains](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png) このページが表示されたら、**[Not Added]** (追加されていません) と **[Not Verified]** (検証されていません) のマークが付いたドメインをすべて確認します。使用するドメインを Azure AD で検証済みにしてください。対象のドメインを検証済みにしたら、更新シンボルをクリックします。詳細については、[ドメインの追加と検証](active-directory-add-domain.md)に関するページを参照してください。
+8. [構成の準備完了] 画面で、**[インストール]** をクリックします。
+	- 必要に応じて、[構成の準備完了] ページの **[Start the synchronization process as soon as configuration completes]** (構成が完了したらすぐに同期プロセスを開始する) チェック ボックスをオフにします。続けて[フィルター処理](active-directory-aadconnectsync-configure-filtering.md)などの構成作業を行う場合は、このチェック ボックスをオフにする必要があります。このオプションをオフにした場合、同期の構成は実行されますが、スケジューラは無効のままとなります。スケジューラを実行するには、もう一度インストール ウィザードを実行して手動で有効にする必要があります。
 	- また、必要に応じて、**[Exchange ハイブリッド展開]** チェック ボックスをオンにすると、その同期サービスを構成することも選択できます。クラウドとオンプレミスの両方に Exchange メールボックスを同時に配置する場合は、このオプションを有効にしてください。 ![Ready to configure Azure AD Connect](./media/active-directory-aadconnect-get-started-express/readytoconfigure.png)
-8. インストールが完了したら、**[終了]** をクリックします。
-9. インストールが完了した後、 Synchronization Service Manager または同期規則エディターを使用する前に、サインアウトし、もう一度サインインします。
+9. インストールが完了したら、**[終了]** をクリックします。
+10. インストールが完了した後、 Synchronization Service Manager または同期規則エディターを使用する前に、サインアウトし、もう一度サインインします。
 
 高速インストールの使用方法については、以下のビデオをご覧ください。
 
@@ -58,4 +59,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

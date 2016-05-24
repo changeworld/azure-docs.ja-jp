@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/27/2016"
+	ms.date="05/10/2016"
 	ms.author="billmath;andkjell"/>
 
 # Azure AD Connect のカスタム インストール
@@ -57,11 +57,9 @@ AD FS とのフェデレーション | ユーザーは、オンプレミス ネ�
 ## Azure AD に接続
 [Azure AD に接続] 画面で、グローバル管理者のアカウントとパスワードを入力します。前のページで **[AD FS とのフェデレーション]** を選択した場合、フェデレーション用に有効にする予定があるドメイン内のアカウントでサインインしないようにしてください。Azure AD ディレクトリに付属する既定の **onmicrosoft.com** ドメイン内のアカウントを使用することをお勧めします。
 
-このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。
-![ユーザーのサインイン](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
+このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。![ユーザーのサインイン](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
 
-グローバル管理者アカウントで MFA が有効にされている場合は、サインイン ポップアップに再度パスワードを入力し、MFA チャレンジを完了する必要があります。MFA チャレンジは確認コードの入力、または音声通話によって行うことができます。 
-![ユーザーのサインイン MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
+グローバル管理者アカウントで MFA が有効にされている場合は、サインイン ポップアップに再度パスワードを入力し、MFA チャレンジを完了する必要があります。MFA チャレンジは確認コードの入力、または音声通話によって行うことができます。 ![ユーザーのサインイン MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
 
 グローバル管理者アカウントは [Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) も有効にされている可能性があります。
 
@@ -74,12 +72,20 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 
 ![ディレクトリの接続](./media/active-directory-aadconnect-get-started-custom/connectdir.png)
 
-### ドメインと OU のフィルター処理
-既定では、すべてのドメインと OU が同期されます。Azure AD に同期させたくないドメインまたは OU がある場合は、これらのドメインと OU を選択解除できます。
-![DomainOU フィルター処理](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) ウィザード内のこのページでは、ドメイン ベースのフィルター処理を構成します。詳細については、「[ドメイン ベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)」を参照してください。
+### Azure AD サインインの構成
+このページでは、オンプレミスの AD DS に存在し、Azure AD で検証された UPN ドメインを確認できます。また、userPrincipalName に使用する属性を構成できます。
 
-さらに、一部のドメインは、ファイアウォールの制限のために到達できないこともあります。このようなドメインは既定で選択が解除されており、警告が表示されます。
-![到達不能ドメイン](./media/active-directory-aadconnect-get-started-custom/unreachable.png) この警告が表示される場合は、これらのドメインが実際に到達不能であり、警告の表示が予想されるものであることを確認してください。
+![Unverified domains](./media/active-directory-aadconnect-get-started-custom/aadsigninconfig.png) **[Not Added]** (追加されていません) と **[Not Verified]** (検証されていません) のマークが付いたドメインをすべて確認します。使用するドメインを Azure AD で検証済みにしてください。対象のドメインを検証済みにしたら、更新シンボルをクリックします。詳細については、[ドメインの追加と検証](active-directory-add-domain.md)に関するページを参照してください。
+
+**UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサインインするときに使用する属性です。使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。既定の userPrincipalName 属性のままにしておくことをお勧めします。この属性がルーティング不可能で検証できない場合は、別の属性を選択することができます。たとえば、サインイン ID を保持する属性として電子メールを選択することができます。userPrincipalName 以外の属性を使用する方法は、**代替 ID** と呼ばれます。代替 ID の属性値は、RFC822 標準に従う必要があります。代替 ID は、パスワード同期とフェデレーションの両方で使用できます。
+
+>[AZURE.WARNING]
+代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、[代替ログイン ID の構成](https://technet.microsoft.com/library/dn659436.aspx)に関するページを参照してください。
+
+### ドメインと OU のフィルター処理
+既定では、すべてのドメインと OU が同期されます。Azure AD に同期させたくないドメインまたは OU がある場合は、これらのドメインと OU を選択解除できます。![DomainOU フィルター処理](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) ウィザード内のこのページでは、ドメイン ベースのフィルター処理を構成します。詳細については、「[ドメイン ベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)」を参照してください。
+
+さらに、一部のドメインは、ファイアウォールの制限のために到達できないこともあります。このようなドメインは既定で選択が解除されており、警告が表示されます。![到達不能ドメイン](./media/active-directory-aadconnect-get-started-custom/unreachable.png) この警告が表示される場合は、これらのドメインが実際に到達不能であり、警告の表示が予想されるものであることを確認してください。
 
 ### ユーザーを一意に識別
 [フォレスト全体で一致] 機能を使用すると、AD DS フォレストのユーザーを Azure AD でどう表すかを定義することができます。ユーザーは、すべてのフォレストで 1 回だけ表すか、有効アカウントと無効アカウントを組み合わせることができます。一部のフォレストでは、ユーザーを連絡先として表すこともできます。
@@ -94,12 +100,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 sAMAccountName および MailNickName | このオプションは、ユーザーのサインイン ID を見つけるために必要な属性同士を結合します。 |
 特有の属性 | このオプションでは、独自の属性を選択することができます。**制限:** 必ずメタバース内に既に存在する属性を選択するようにしてください。カスタム属性 (メタバースにない属性) を選択すると、ウィザードが完了できません。 |
 
-- **ソース アンカー** - sourceAnchor 属性はユーザー オブジェクトの有効期間中に変更できない属性です。オンプレミスのユーザーと Azure AD のユーザーをリンクするプライマリ キーです。この属性は変更できないため、適切な属性を使用するように計画する必要があります。適切な属性として考えられるのは objectGUID です。この属性は、ユーザー アカウントをフォレスト/ドメイン間で移動しなければ、変更されません。フォレスト間でアカウントを移動するマルチ フォレスト環境では、employeeID を持つ属性など、別の属性を使用する必要があります。ユーザーが結婚したり割り当てが変更されたりした場合に変化する可能性のある属性は、使用しないようにしてください。@ 記号が含まれる属性は使用できないので、電子メールや userPrincipalName は使用できません。属性では大文字と小文字も区別されるため、フォレスト間でオブジェクトを移動する場合は、大文字と小文字をそのままの状態に維持するようにしてください。バイナリ属性は base64 でエンコードされますが、他の種類の属性はエンコードされない状態のままになります。フェデレーション シナリオと一部の Azure AD インターフェイスでは、この属性は immutableID とも呼ばれます。ソース アンカーの詳細については、「[設計概念](active-directory-aadconnect-design-concepts.md#sourceAnchor)」を参照してください。
-
-- **UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサインインするときに使用する属性です。使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。既定の userPrincipalName 属性のままにしておくことをお勧めします。この属性がルーティング不可能で検証できない場合は、別の属性を選択することができます。たとえば、サインイン ID を保持する属性として電子メールを選択することができます。userPrincipalName 以外の属性を使用する方法は、**代替 ID** と呼ばれます。代替 ID の属性値は、RFC822 標準に従う必要があります。代替 ID は、パスワード同期とフェデレーションの両方で使用できます。
-
->[AZURE.WARNING]
-代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、[代替ログイン ID の構成](https://technet.microsoft.com/library/dn659436.aspx)に関するページを参照してください。
+**ソース アンカー** - sourceAnchor 属性はユーザー オブジェクトの有効期間中に変更できない属性です。オンプレミスのユーザーと Azure AD のユーザーをリンクするプライマリ キーです。この属性は変更できないため、適切な属性を使用するように計画する必要があります。適切な属性として考えられるのは objectGUID です。この属性は、ユーザー アカウントをフォレスト/ドメイン間で移動しなければ、変更されません。フォレスト間でアカウントを移動するマルチ フォレスト環境では、employeeID を持つ属性など、別の属性を使用する必要があります。ユーザーが結婚したり割り当てが変更されたりした場合に変化する可能性のある属性は、使用しないようにしてください。@ 記号が含まれる属性は使用できないので、電子メールや userPrincipalName は使用できません。属性では大文字と小文字も区別されるため、フォレスト間でオブジェクトを移動する場合は、大文字と小文字をそのままの状態に維持するようにしてください。バイナリ属性は base64 でエンコードされますが、他の種類の属性はエンコードされない状態のままになります。フェデレーション シナリオと一部の Azure AD インターフェイスでは、この属性は immutableID とも呼ばれます。ソース アンカーの詳細については、「[設計概念](active-directory-aadconnect-design-concepts.md#sourceAnchor)」を参照してください。
 
 ### グループに基づく同期フィルタリング
 グループに基づくフィルタリング機能では、パイロット用にごく一部のオブジェクトのみを同期することができます。この機能を使用するには、対象とするグループをオンプレミスの Active Directory に作成します。次に、直接のメンバーとして Azure AD に同期するユーザーとグループを追加します。このグループには後でユーザーを追加したりユーザーを削除したりして、Azure AD に表示するオブジェクトの一覧を管理することができます。同期するオブジェクトはすべて、グループの直接のメンバーである必要があります。ユーザー、グループ、連絡先、およびコンピューター/デバイスは、すべて直接のメンバーにする必要があります。入れ子になったグループのメンバーシップは解決されません。グループをメンバーとして追加すると、グループ自体は追加されますが、そのグループのメンバーは追加されません。
@@ -156,17 +157,17 @@ Azure AD Connect との AD FS の構成は、わずか数クリックで簡単�
 - 使用する予定のフェデレーション サービス名の SSL 証明書 (sts.contoso.com など)
 
 ### AD FS の構成の前提条件
-Azure AD Connect を使用して AD FS ファームを正しく構成するには、リモート サーバー上で WinRM が有効になっている必要があります。加えて、「[表 3 - Azure AD Connect とフェデレーション サーバー/WAP](active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-federation-serverswap)」に記載されているポート要件も確認してください。
+Azure AD Connect を使用して AD FS ファームを構成するには、リモート サーバー上で WinRM が有効になっている必要があります。加えて、「[表 3 - Azure AD Connect とフェデレーション サーバー/WAP](active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-federation-serverswap)」に記載されているポート要件も確認してください。
 
 ### 新しい AD FS ファームの作成または既存の AD FS ファームの使用
 既存の AD FS ファームを使用することも、新しい AD FS ファームを作成することもできます。新しく作成する場合は、SSL 証明書を提供する必要があります。SSL 証明書がパスワードで保護されている場合は、パスワードを入力するように求められます。
 
 ![AD FS ファーム](./media/active-directory-aadconnect-get-started-custom/adfs1.png)
 
-既存の AD FS ファームを使用する場合は、いくつかのページをスキップし、AD FS と Azure AD の間の信頼関係を構成する画面に直接移動します。
+既存の AD FS ファームを使用する場合は、AD FS と Azure AD の間の信頼関係を構成する画面に直接移動します。
 
 ### AD FS サーバーの指定
-AD FS をインストールするサーバーを入力します。容量計画のニーズに基づいて 1 つまたは複数のサーバーを追加することができます。この構成を実行する前に、すべてのサーバーを Active Directory に参加させてください。テストおよびパイロット デプロイ用に単一の AD FS サーバーをインストールすることをお勧めします。初期構成の後に Azure AD Connect を再度実行し、容量拡大のニーズを満たすようにサーバーをさらに追加してデプロイします。
+AD FS をインストールするサーバーを入力します。容量計画のニーズに基づいて 1 つまたは複数のサーバーを追加することができます。この構成を実行する前に、すべてのサーバーを Active Directory に参加させてください。テスト デプロイとパイロット デプロイ用に単一の AD FS サーバーをインストールすることをお勧めします。初期構成の後に Azure AD Connect を再度実行し、容量拡大のニーズを満たすようにサーバーをさらに追加してデプロイします。
 
 >[AZURE.NOTE]
 この構成を実行する前に、すべてのサーバーが 1 つの AD ドメインに参加していることを確認してください。
@@ -177,7 +178,7 @@ AD FS をインストールするサーバーを入力します。容量計画�
 Web アプリケーション プロキシ サーバーとするサーバーを入力します。Web アプリケーション プロキシ サーバーは DMZ (エクストラネット接続) にデプロイされ、エクストラネットからの認証要求をサポートします。容量計画のニーズに基づいて 1 つまたは複数のサーバーを追加することができます。テスト デプロイとパイロット デプロイ用に単一の Web アプリケーション プロキシ サーバーをインストールすることをお勧めします。初期構成の後に Azure AD Connect を再度実行し、容量拡大のニーズを満たすようにサーバーをさらに追加してデプロイします。イントラネットからの認証を処理するために同数のプロキシ サーバーを設定することをお勧めします。
 
 >[AZURE.NOTE]
-<li> Azure AD Connect のインストールに使用しているアカウントが AD FS サーバーのローカル管理者ではない場合、管理者の資格情報を入力するように求められます。</li>
+<li> 使用しているアカウントが AD FS サーバーのローカル管理者ではない場合、管理者の資格情報を入力するように求められます。</li>
 <li> この手順を実行する前に、Azure AD Connect サーバーと Web アプリケーション プロキシ サーバーの間に HTTP/HTTPS 接続が確立されていることを確認してください。</li>
 <li> 認証要求の通信ができるように、Web アプリケーション サーバーと AD FS サーバーの間に HTTP/HTTPS 接続が確立されていることを確認してください。</li>
 
@@ -208,13 +209,13 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 ![Azure AD ドメイン](./media/active-directory-aadconnect-get-started-custom/verifyfeddomain.png)
 
 >[AZURE.NOTE]
-AD Connect では、構成段階でドメインの検証を試みます。ドメイン DNS がホストされている場所で必要な DNS レコードを追加せずに構成を続行すると、ウィザードでは構成を完了することができません。
+AD Connect では、構成段階でドメインの検証を試みます。必要な DNS レコードを追加せずに構成を続行すると、ウィザードで構成を完了することができません。
 
 ## ページの構成および確認
-実際の構成はこのページで行われます。
+構成は次のページで行われます。
 
 >[AZURE.NOTE]
-インストールを続行する前に、フェデレーションを構成している場合は、[フェデレーション サーバーの名前解決](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers)を構成済みであることを確認してください。
+フェデレーションを構成している場合は、インストールを続行する前に、[フェデレーション サーバーの名前解決](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers)を構成済みであることを確認してください。
 
 ![構成の準備完了](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
@@ -247,4 +248,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

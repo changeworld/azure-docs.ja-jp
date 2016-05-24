@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/03/2016"
+	ms.date="05/16/2016"
 	ms.author="spelluru"/>
 
 # チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成
@@ -206,8 +206,8 @@
 						                "linkedServiceName": "HDInsightOnDemandLinkedService"
 						            }
 						        ],
-						        "start": "2014-02-01T00:00:00Z",
-						        "end": "2014-02-02T00:00:00Z",
+						        "start": "2016-04-01T00:00:00Z",
+						        "end": "2016-04-02T00:00:00Z",
 						        "isPaused": false
 						    }
 	                    }
@@ -254,6 +254,11 @@
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)	
 10. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
- 
 
-<!---HONumber=AcomDC_0323_2016-->
+Azure ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するセクションを参照してください。
+
+データ パイプラインは、監視と管理アプリを使用して監視することもできます。このアプリケーションの使い方について詳しくは、「[新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)」を参照してください。
+
+> [AZURE.IMPORTANT] 入力ファイルは、スライスが正常に処理された時点で削除されます。そのためスライスを取得したり、このチュートリアルをもう一度行ったりする場合は、adfgetstarted コンテナーの inputdata フォルダーに入力ファイル (input.log) をアップロードしてください。
+
+<!---HONumber=AcomDC_0518_2016-->

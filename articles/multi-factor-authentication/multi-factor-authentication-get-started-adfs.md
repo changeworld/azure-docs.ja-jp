@@ -12,7 +12,7 @@
 	ms.workload="identity" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" ms.topic="get-started-article" 
-	ms.date="02/25/2016" 
+	ms.date="05/12/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication と Active Directory フェデレーション サービスの概要
@@ -54,4 +54,4 @@ AD FS を使用した Azure Multi-Factor Authentication または Azure Multi-Fa
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

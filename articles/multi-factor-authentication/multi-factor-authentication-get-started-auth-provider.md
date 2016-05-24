@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/10/2016" 
+	ms.date="05/12/2016" 
 	ms.author="billmath"/>
 
 
@@ -45,4 +45,4 @@ Azure Multi-Factor Auth プロバイダーを作成するには、次の手順�
 		- Azure AD Connect、AAD Sync、または DirSync は、オンプレミスの Active Directory 環境を Azure AD ディレクトリと同期している場合にのみ必要です。非同期の Azure AD ディレクトリしか使用していない場合、同期は不要です。![Creating an MFA Provider](./media/multi-factor-authentication-get-started-auth-provider/authprovider5.png)	
 5. [作成] をクリックすると、Multi-Factor Authentication プロバイダーが作成され、**"Multi-Factor Authentication プロバイダーが正常に作成されました"** というメッセージが表示されます。**[OK]** をクリックします。![Creating an MFA Provider](./media/multi-factor-authentication-get-started-auth-provider/authprovider6.png)	
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

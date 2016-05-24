@@ -40,8 +40,7 @@ NSG ルールには、次のプロパティが含まれています。
 |---|---|---|---|
 |**名前**|ルールの名前|リージョン内で一意である必要があります。<br/>英字、数字、アンダー スコア、ピリオド、ハイフンを含めることができます。<br/>先頭は英字または数字にする必要があります。<br/>末尾は英字、数字、またはアンダー スコアにする必要があります。<br/>最大 80 字を指定できます。|1 つの NSG 内に複数のルールを作成することがあるため、ルールの機能を識別できる名前付け規則に準拠してください。|
 |**プロトコル**|規則に関して一致するプロトコル|TCP、UDP、または *|* をプロトコルとして使用すると、UDP と TCP に加えて ICMP (East-West トラフィックのみ) も含まれ、必要なルール数を減らすことができます。<br/>一方で、* を使用すると、アプローチの幅が広くなりすぎることがあるため、必要な場合にのみ使用してください。|
-|**発信元ポート範囲**|規則に関して一致するソース ポート範囲|1 から 65535 までの 1 つのポート番号、ポート範囲 (1 ～ 65635 など)、または * (すべてのポート)|発信元は、短期ポートである場合があります。クライアント プログラムが特定のポートを使用している場合を除き、ほとんどのケースでは "*" を使用してください。<br/>複数のルールを設定する必要がないように、できるだけポート範囲を使用してください。<br/>複数のポートまたは複数のポート範囲をコンマでグループ化することはできません。|
-|**宛先ポート範囲**|規則に関して一致する宛先ポート範囲|1 から 65535 までの 1 つのポート番号、ポート範囲 (1 ～ 65535 など)、または * (すべてのポート)|複数のルールを設定する必要がないように、できるだけポート範囲を使用してください。<br/>複数のポートまたは複数のポート範囲をコンマでグループ化することはできません。
+|**発信元ポート範囲**|規則に関して一致するソース ポート範囲|1 から 65535 までの 1 つのポート番号、ポート範囲 (1 ～ 65635 など)、または * (すべてのポート)|発信元は、短期ポートである場合があります。クライアント プログラムが特定のポートを使用している場合を除き、ほとんどのケースでは "*" を使用してください。<br/>複数のルールを設定する必要がないように、できるだけポート範囲を使用してください。<br/>複数のポートまたは複数のポート範囲をコンマでグループ化することはできません。|**宛先ポート範囲**|規則に関して一致する宛先ポート範囲|1 から 65535 までの 1 つのポート番号、ポート範囲 (1 ～ 65535 など)、または * (すべてのポート)|複数のルールを設定する必要がないように、できるだけポート範囲を使用してください。<br/>複数のポートまたは複数のポート範囲をコンマでグループ化することはできません。
 |**発信元アドレスのプレフィックス**|規則に関して一致する発信元アドレスのプレフィックスまたはタグ|1 つの IP アドレス (例: 10.10.10.10)、IP サブネット (例: 192.168.1.0/24)、[既定のタグ](#Default-Tags)、または * (すべてのアドレス)|ルールの数を減らすには、範囲、既定のタグ、* の使用を検討してください。|
 |**宛先アドレスのプレフィックス**|規則に関して一致する宛先アドレスのプレフィックスまたはタグ|1 つの IP アドレス (例: 10.10.10.10)、IP サブネット (例: 192.168.1.0/24)、[既定のタグ](#Default-Tags)、または * (すべてのアドレス)|ルールの数を減らすには、範囲、既定のタグ、* の使用を検討してください。|
 |**方向**|規則に関して一致するトラフィックの方向|受信または送信|受信ルールと送信ルールは方向に基づいて個別に処理されます。|
@@ -125,10 +124,10 @@ NSG は、使用しているデプロイ モデルに応じて、VM、NIC、お�
 |デプロイ ツール|クラシック|リソース マネージャー|
 |---|---|---|
 |クラシック ポータル|![いいえ][red]|![いいえ][red]|
-|Azure ポータル|[![はい][green]]( https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-pportal)
-|PowerShell|[![はい][green]]( https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-ps)|[![はい][green]]( https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-ps)|
-|Azure CLI|[![はい][green]]( https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-cli)|[![はい][green]]( https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-cli)|
-|ARM テンプレート|![なし][red]|[![はい][green]]( https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-template)|
+|Azure ポータル|![はい][green]|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-pportal">![はい][green]</a>|
+|PowerShell|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-ps">![はい][green]</a>|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-ps">![はい][green]</a>|
+|Azure CLI|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-cli">![はい][green]</a>|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-cli">![はい][green]</a>|
+|ARM テンプレート|![なし][red]|<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-arm-template">![はい][green]</a>|
 
 |**キー**|![はい][green] サポートされています。クリックして記事を確認してください。|![いいえ][red] サポートされていません。|
 |---|---|---|
@@ -173,7 +172,7 @@ NSG はサブネットに適用できるため、リソースをサブネット�
 
 ### ICMP トラフィック
 
-現在の NSG のルールは、プロトコル *TCP* または *UDP* のみを許可します。*ICMP* 専用のタグはありません。ただし、ICMP トラフィックは、VNet 内で任意のポートおよびプロトコル間のトラフィックを許可する受信 VNet ルール (既定のルール 65500 受信) を通じて、既定で Virtual Network 内で許可されます。
+現在の NSG のルールは、プロトコル *TCP* または *UDP* のみを許可します。*ICMP* 専用のタグはありません。ただし、ICMP トラフィックは、VNet 内で任意のポートおよびプロトコル間のトラフィックを許可する受信 VNet ルール (既定のルール 65000 受信) を通じて、既定で Virtual Network 内で許可されます。
 
 ### サブネット
 
@@ -282,4 +281,4 @@ NSG はサブネットに適用できるため、リソースをサブネット�
 [yellow]: ./media/virtual-network-nsg-overview/yellow.png
 [red]: ./media/virtual-network-nsg-overview/red.png
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

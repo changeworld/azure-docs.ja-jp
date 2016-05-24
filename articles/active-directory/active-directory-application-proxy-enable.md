@@ -47,7 +47,7 @@ Microsoft Azure Active Directory アプリケーション プロキシを使用�
 
 
 ## 手順 1: Azure AD でのアプリケーション プロキシの有効化
-1. Azure クラシック ポータルの管理者としてサインインします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)に管理者としてサインインします。
 2. Active Directory に移動し、アプリケーション プロキシを有効にするディレクトリを選択します。
 3. **[構成]** をクリックし、下へスクロールして [アプリケーション プロキシ] を表示し、[このディレクトリに対してアプリケーション プロキシ サービスを有効にする] を **[有効]** に切り替えます。
 
@@ -69,7 +69,7 @@ Microsoft Azure Active Directory アプリケーション プロキシを使用�
 
 	![アプリケーション プロキシ コネクタ サービス](./media/active-directory-application-proxy-enable/app_proxy_services.png)
 
-5. [アプリケーション プロキシを使用してアプリケーションを発行](active-directory-application-proxy-publish.md)する準備が、これで整いました。
+5. [アプリケーション プロキシを使用してアプリケーションを発行](active-directory-application-proxy-publish.md)する準備がこれで整いました。
 
 高可用性を確保するには、追加のコネクタを少なくとも 1 つデプロイしてください。追加のコネクタをデプロイするには、上記の手順 2. と手順 3. を繰り返します。各コネクタは個別に登録する必要があります。
 
@@ -91,9 +91,9 @@ Microsoft Azure Active Directory アプリケーション プロキシを使用�
 - [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
 ## その他のリソース
-- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
 - [Azure ID](fundamentals-identity.md)
 - [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

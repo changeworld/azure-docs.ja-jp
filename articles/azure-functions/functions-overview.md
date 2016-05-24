@@ -87,4 +87,4 @@ Azure Functions には 2 種類の料金プランがあり、ニーズに合わ�
 + [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。 
 + [Azure App Service とは](../app-service/app-service-value-prop-what-is.md) Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service プラットフォームを活用しています。 
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

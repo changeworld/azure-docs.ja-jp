@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="hero-article"
-	ms.date="05/10/2016"
+	ms.date="05/12/2016"
 	ms.author="piyushjo;ricksal" />
 
 # Android アプリ用 Azure Mobile Engagement の使用
@@ -165,7 +165,7 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 
 [AZURE.INCLUDE [Send notification from portal](../../includes/mobile-engagement-android-send-push-from-portal.md)]
 
-## その他のリソース
+## 次のステップ
 
 [Android SDK](mobile-engagement-android-sdk-overview.md) に関するページに移動し、SDK の統合について詳細を確認します。
 
@@ -182,4 +182,4 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 [10]: ./media/mobile-engagement-android-get-started/copy-resources.png
 [11]: ./media/mobile-engagement-android-get-started/paste-resources.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article" 
-	ms.date="03/16/2016"
+	ms.date="05/11/2016"
 	ms.author="glenga"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
@@ -92,11 +92,11 @@
 
 <!-- URLs. -->
 [オフライン データの同期の使用]: mobile-services-windows-store-dotnet-get-started-offline-data.md
-[Get started with authentication]: ../mobile-services-windows-store-dotnet-get-started-users.md
-[Get started with push notifications]: ../mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md
+[Get started with authentication]: mobile-services-javascript-backend-windows-universal-dotnet-get-started-users.md
+[Get started with push notifications]: mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md
 [Visual Studio 2013 Express for Windows]: http://go.microsoft.com/fwlink/?LinkId=257546
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -3,7 +3,7 @@
    description="ソリューション開発のための、Azure SQL Data Warehouse での Azure Machine Learning の使用に関するヒント。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sahaj08"
+   authors="shivaniguptamsft"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
-   ms.author="sahajs;barbkess;sonyama"/>
+   ms.date="05/17/2016"
+   ms.author="shivaniguptamsft;barbkess;sonyama"/>
 
 # Azure Machine Learning を使用したデータの分析
 このチュートリアルでは、Azure SQL Data Warehouse のデータを使用して Azure Machine Learning の機械学習予測モデルを作成する方法を使用します。このチュートリアルでは、顧客が自転車を購入する可能性があるかどうかを予測することで、Adventure Works のターゲット マーケティング キャンペーン (自転車店) を作成します。
@@ -65,9 +65,6 @@ FROM [dbo].[vTargetMail]
 実験の実行が正常に終了したら、[リーダー] モジュールの下部にある出力ポートをクリックし、**[視覚化]** を選択して、インポートしたデータを表示します。![インポート済みデータを表示する][3]
 
 
-
-
-
 ## 手順 2. データをクリーニングする
 モデルとの関連性が低い列をいくつか削除します。
 
@@ -75,8 +72,6 @@ FROM [dbo].[vTargetMail]
 2. [プロパティ] ウィンドウの **[列セレクターの起動]** をクリックし、削除する列を指定します。![プロジェクト列][4]
 
 3. CustomerAlternateKey と GeographyKey の 2 つの列を除外します。![不要な列を削除する][5]
-
-
 
 
 ## 手順 3. モデルを作成する
@@ -91,9 +86,6 @@ FROM [dbo].[vTargetMail]
 5. 予測する列として **[BikeBuyer]** 列を選択します。![予測する列を選択する][8]
 
 
-
-
-
 ## 手順 4. モデルにスコアを付ける
 ここでは、テスト データに対するモデルのパフォーマンスをテストします。選択したアルゴリズムを別のアルゴリズムと比較し、どちらのパフォーマンスが優れているかを評価します。
 
@@ -103,8 +95,6 @@ FROM [dbo].[vTargetMail]
 4. **[モデルの評価]** モジュールをキャンバスにドラッグし、2 つのアルゴリズムを比較します。
 5. 実験を**実行**します。![実験を実行する][10]
 6. [モデルの評価] モジュールの下部にある出力ポートをクリックし、[視覚化] をクリックします。![評価結果を視覚化する][11]
-
-
 
 指定されているメトリックは、ROC 曲線、精度/再現率図、およびリフト曲線です。これらのメトリックを見ると、最初に実行されたモデルの方が 2 つ目のモデルよりもパフォーマンスが優れていることがわかります。1 つ目のモデルが予測した内容を確認するには、[モデルのスコア付け] の出力ポートをクリックし、[視覚化] をクリックします。![スコア結果を視覚化する][12]
 
@@ -118,8 +108,6 @@ FROM [dbo].[vTargetMail]
 ## 次のステップ
 
 予測機械学習モデルの作成の詳細については、「[Microsoft Azure での機械学習の概要][]」を参照してください。
-
-
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1_reader.png
@@ -142,4 +130,4 @@ FROM [dbo].[vTargetMail]
 [サンプル データを手動で読み込む]: sql-data-warehouse-get-started-manually-load-samples.md
 [SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->

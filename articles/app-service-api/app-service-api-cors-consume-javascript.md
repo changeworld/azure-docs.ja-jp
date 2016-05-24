@@ -72,7 +72,7 @@ CORS のプロパティを設定する Azure Resource Manager テンプレート
 
 ## <a id="tutorialstart"></a> .NET 入門チュートリアルの続行
 
-API アプリの Node.js または Java 入門シリーズに従って学習している場合は、次の記事「[Azure App Service での API Apps の認証と承認](app-service-api-authentication.md)」に進みます。
+API アプリの Node.js または Java の入門シリーズを読んでいる場合は、これで作業が完了しました。「[次のステップ](#next-steps)」のセクションに移動して、API アプリについてさらに学習するための推奨事項を参照してください。
 
 この記事の残りの部分は .NET 入門シリーズの続きであり、[最初のチュートリアル](app-service-api-dotnet-get-started.md)を問題なく完了したことを前提としています。
 
@@ -264,13 +264,20 @@ Web API の CORS サポートは、App Service の CORS サポートよりも柔
 		    [EnableCors(origins:"https://todolistangular0121.azurewebsites.net", headers:"accept,content-type,origin,x-my-header", methods: "get,post")]
 		    public class ToDoListController : ApiController
  
+## API アプリでの Azure API Management の使用
+
+API アプリで Azure API Management を使用する場合は、API アプリではなく API Management で CORS を構成してください。詳細については、次のリソースを参照してください。
+
+* [Azure API Management Overview (Azure API Management の概要)](https://azure.microsoft.com/documentation/videos/azure-api-management-overview/) (ビデオ。CORS の部分は 12:10 から)
+* [API Management cross domain policies (API Management のクロス ドメイン ポリシー)](https://msdn.microsoft.com/library/azure/dn894084.aspx#CORS)
+ 
 ## トラブルシューティング
 
 このチュートリアルの手順を行う際に問題が発生した場合は、必ず最新バージョンの Azure SDK for .NET を使用するようにしてください。これを行う最も簡単な方法は、[Azure SDK for Visual Studio 2015 をダウンロード](http://go.microsoft.com/fwlink/?linkid=518003)することです。最新バージョンをインストール済みの場合は、Web Platform Installer によってインストールが不要であることが示されます。
 
 ポータルの CORS ブレードで URL を設定した後も CORS エラーが発生する場合は、適切な場所で正しく変更を行ったかどうかを再確認してください。次に例を示します。
 
-* 入力したプロトコルが正しいことを確認 (`http` ではなく `https`) し、`https` を使用してフロントエンド Web アプリを実行していることを確認します。
+* 入力したプロトコルが正しい (`http` ではなく `https` である) ことを確認し、`https` を使用してフロントエンド Web アプリを実行していることを確認します。
 * フロントエンドの Web アプリではなく中間層の API アプリで CORS 設定を入力したことを確認します。
 
 アプリケーション コードと Azure App Service の両方で CORS の設定を行っている場合、App Service の CORS 設定が、アプリケーション コードのどのような設定よりも優先されることに注意してください。
@@ -279,6 +286,6 @@ Web API の CORS サポートは、App Service の CORS サポートよりも柔
 
 ## 次のステップ 
 
-この記事では、クライアントの JavaScript コードが、別のドメイン内の API を呼び出すための App Service の CORS サポートを有効にする方法を説明しました。引き続き API Apps の入門シリーズの記事で、[App Service の API アプリにおける認証](app-service-api-authentication.md)について説明します。
+この記事では、クライアントの JavaScript コードが、別のドメイン内の API を呼び出すための App Service の CORS サポートを有効にする方法を説明しました。API アプリの詳細については、[App Service での認証についての紹介](../app-service/app-service-authentication-overview.md)を読んでから、[API アプリのユーザー認証](app-service-api-dotnet-user-principal-auth.md)のチュートリアルを参照してください。
 
-<!-----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->
