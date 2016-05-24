@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="05/06/2016"
+   ms.date="05/16/2016"
    ms.author="derrickv"/>
 
 # IFrame を使用した Power BI レポートの埋め込み
@@ -180,6 +180,40 @@ function postActionLoadReport() {
     iframe.contentWindow.postMessage(message, "*");
 }
 ```
+レポートをアプリに埋め込んだら、そのレポートをフィルター処理することができます。次のセクションでは、URL 構文を使用してレポートをフィルター処理する方法について説明します。
+
+## レポートのフィルター処理
+
+URL 構文を使用して、埋め込みレポートをフィルター処理できます。そのためには、フィルターを指定して iFrame src url にクエリ文字列パラメーターを追加します。レポートを**値でフィルター処理**したり、**フィルター ウィンドウ**を非表示にしたりすることができます。
+
+
+**値でのフィルター処理**
+
+レポートを値でフィルター処理するには、次のように **$filter** クエリ構文で **eq** 演算子を使用します。
+
+```
+https://app.powerbi.com/reportEmbed
+?reportId=d2a0ea38-0694-...-ee9655d54a4a&
+$filter={tableName/fieldName}%20eq%20'{fieldValue}'
+```
+
+たとえば、Store Chain = 'Lindseys' という検索条件を追加できます。URL のフィルター部分は、次のようになります。
+
+```
+$filter=Store/Chain%20eq%20'Lindseys'
+```
+
+> [AZURE.NOTE] {tableName/fieldName} には、スペースや特殊文字を含めることはできません。{fieldValue} は単一のカテゴリ値を受け入れます。
+
+**フィルター ウィンドウの非表示**
+
+**フィルター ウィンドウ**を非表示にするには、レポートのクエリ文字列に **filterPaneEnabled** を追加します。その例を次に示します。
+
+```
+&filterPaneEnabled=false
+```
+
+## まとめ
 
 この記事では、**Power BI** レポートをアプリに統合するためのコードを紹介しました。アプリへのレポートの統合をすぐに開始するには、次に示すサンプルを GitHub でダウンロードしてください。
 
@@ -194,4 +228,4 @@ function postActionLoadReport() {
 - [System.IdentityModel.Tokens.JwtSecurityTokenHandler](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
 - [Get Reports](https://msdn.microsoft.com/library/mt711510.aspx)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

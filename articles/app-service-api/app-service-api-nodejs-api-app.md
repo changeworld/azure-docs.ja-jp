@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
-このチュートリアルでは、簡単な [Node.js](http://nodejs.org) API を作成し、それを [Azure App Service](../app-service/app-service-value-prop-what-is.md) の [API アプリ](app-service-api-apps-why-best-platform.md)にデプロイする方法について説明します。Node.js を実行できる任意のオペレーティング システムを使用でき、作業はすべて cmd.exe や bash などのコマンド ライン ツールを使用して実行します。
+このチュートリアルでは、簡単な [Node.js](http://nodejs.org) API を作成し、[Git](http://git-scm.com) を使用してそれを [Azure App Service](../app-service/app-service-value-prop-what-is.md) の [API アプリ](app-service-api-apps-why-best-platform.md)にデプロイする方法について説明します。Node.js を実行できる任意のオペレーティング システムを使用でき、作業はすべて cmd.exe や bash などのコマンド ライン ツールを使用して実行します。
 
 ## 前提条件
 
@@ -41,9 +41,9 @@
 
 ## Swagger メタデータに基づく Node.js コードのスキャフォールディング
 
-[Swagger](http://swagger.io/) は、RESTful API を記述するメタデータ用の JSON ファイル形式です。Azure App Service は、[Swagger メタデータのビルトイン サポート](app-service-api-metadata.md)を提供しています。チュートリアルのこのセクションでは、Swagger メタデータ ファイルに基づいてサンプル API のサーバー コードをスキャフォールディングします。
+[Swagger](http://swagger.io/) は、RESTful API を記述するメタデータ用のファイル形式です。Azure App Service は、[Swagger メタデータのビルトイン サポート](app-service-api-metadata.md)を提供しています。このチュートリアルは、API 開発ワークフローをモデル化します。最初に Swagger メタデータを作成し、それを使用して API のサーバー コードをスキャフォールディングします。チュートリアルのこのセクションでは、Swagger メタデータ ファイルに基づいて Node.js サーバー コードをスキャフォールディングする方法について説明します。
 
->[AZURE.NOTE] Swagger ファイルのスキャフォールディング方法について知る必要がない場合は、サンプル コードを新しい API アプリにデプロイするチュートリアルの手順のみを実行できます。直接「[Azure での API アプリの作成](#createapiapp)」に進んでください。
+>[AZURE.NOTE] スキャフォールディングの手順を実行しない場合は、「[Azure での API アプリの作成](#createapiapp)」セクションに直接移動して、新しい API アプリにサンプル コードをデプロイする作業だけを行うことができます。
 
 1. 次のコマンドを実行して、**yo** および **generator-swaggerize** NPM モジュールをグローバルにインストールします。
 
@@ -90,7 +90,7 @@
 
 1. **handlers/contacts.js** ファイルのコードを次のコードで置き換えます。
 
-	このコードでは、**lib/contactRepository.js** で生成される **lib/contacts.json** ファイルに保存されている JSON データを使用します。次の新しい contacts.js コードは HTTP 要求に応答して、すべての contact を取得し、JSON ペイロードとして返します。
+	このコードでは、**lib/contactRepository.js** で生成される **lib/contacts.json** ファイルに保存されている JSON データを使用します。新しい contacts.js コードは HTTP 要求に応答して、すべての contact を取得し、JSON ペイロードとして返します。
 
         'use strict';
         
@@ -173,7 +173,7 @@
 
 ## <a id="createapiapp"></a> Azure ポータルでの新しい API アプリの作成
 
-このセクションでは、新しい空の API アプリを Azure に作成するプロセスの手順について説明します。その後、次のセクションで、アプリを Git リポジトリに接続し、コードの変更を継続的に配信できるようにします。
+このセクションでは、新しい空の API アプリを Azure に作成する手順について説明します。その後、次のセクションで、アプリを Git リポジトリに接続し、コードの変更を継続的に配信できるようにします。
 
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。 
 
@@ -189,7 +189,7 @@
 
 6. **[リソース グループ]** ドロップダウンで **[新規作成]** をクリックし、**[新しいリソース グループ名]** に「NodejsAPIAppGroup」(またはお好きな名前) を入力します。
 
-	[リソース グループ](../azure-portal/resource-group-portal.md)は、API アプリ、データベース、VM など、一連の Azure リソースをひとまとめにしたものです。このチュートリアルでは、新しいリソース グループを作成すると便利です。チュートリアルのために作成したすべての Azure リソースを 1 回の手順で簡単に削除できるからです。
+	[リソース グループ](../azure-portal/resource-group-portal.md)は、API アプリ、データベース、VM などの Azure リソースをひとまとめにしたものです。このチュートリアルでは、新しいリソース グループを作成すると便利です。チュートリアルのために作成したすべての Azure リソースを 1 回の手順で簡単に削除できるからです。
 
 4. **[App Service プラン/場所]** をクリックし、**[新規作成]** をクリックします。
 
@@ -237,17 +237,17 @@
 
     ![Git リポジトリの作成](media/app-service-api-nodejs-api-app/create-git-repo.png)
 
-1. Git リポジトリが作成されると、ブレードが更新され、アクティブなデプロイメントが表示されます。リポジトリは新しいので、一覧にはアクティブなデプロイメントがありません。
+1. Git リポジトリが作成されると、ブレードが更新され、アクティブなデプロイが表示されます。リポジトリは新しいので、一覧にはアクティブなデプロイメントがありません。
 
     ![アクティブなデプロイメントがない](media/app-service-api-nodejs-api-app/no-active-deployments.png)
 
-1. Git リポジトリの URL をコピーします。コピーするには、新しい API アプリのブレードを開き、ブレードの **[要点]** セクションを確認します。**[要点]** セクションに **[Git クローン URL]** が表示されます。この URL をポイントすると、URL をクリップボードにコピーするためのアイコンが右側に表示されます。このアイコンをクリックして URL をコピーします。
+1. Git リポジトリの URL をコピーします。コピーするには、新しい API アプリのブレードを開き、ブレードの **[要点]** セクションを確認します。**[要点]** セクションの **[Git クローン URL]** を見てください。この URL をポイントすると、URL をクリップボードにコピーするためのアイコンが右側に表示されます。このアイコンをクリックして URL をコピーします。
 
     ![ポータルから Git Url を取得する](media/app-service-api-nodejs-api-app/get-the-git-url-from-the-portal.png)
 
     **注**: Git クローン URL は次の手順で必要になるので、どこかの時点で保存しておく必要があります。
 
-以上の手順で Git リポジトリに新しい API アプリがバックアップされました。リポジトリにコードをプッシュし、Azure の継続的なデプロイメント機能を利用して変更を自動的にデプロイできるようになります。
+これで、Git リポジトリにバックアップされている API アプリができたので、リポジトリにコードをプッシュして、API アプリにコードをデプロイできます。
 
 ## Azure への API コードのデプロイ
 
@@ -273,7 +273,7 @@ Azure App Service に組み込まれた継続的な配信機能を使用する�
 
     **注**: 文字列 "YOUR\_GIT\_CLONE\_URL\_HERE" は、前の手順でコピーした Git クローン URL に置き換えます。
 
-1. 次の 2 つのコマンドを実行して、すべてのコードを含むコミットを作成します。
+1. 次のコマンドを実行して、すべてのコードを含むコミットを作成します。
 
         git add .
         git commit -m "initial revision"
@@ -286,7 +286,7 @@ Azure App Service に組み込まれた継続的な配信機能を使用する�
 
 	API アプリへのデプロイが開始されます。
 
-1. ブラウザーで API アプリの **[デプロイ]** ブレードに戻ると、実行中のデプロイが表示されます。
+1. ブラウザーで API アプリの **[デプロイ]** ブレードに戻ると、デプロイが実行されていることが表示されます。
 
     ![デプロイメントの実行中](media/app-service-api-nodejs-api-app/deployment-happening.png)
 
@@ -310,12 +310,12 @@ Azure App Service に組み込まれた継続的な配信機能を使用する�
 
     ![Postman に接続する Api](media/app-service-api-nodejs-api-app/postman-hitting-api.png)
 
-2. ブラウザーで `/docs` エンドポイントに移動し、Azure での Swagger UI の実行を試します。
+2. ブラウザーで `/docs` エンドポイントに移動し、Azure で実行されている Swagger UI を試します。
 
 継続的な配信の設定が完了しているので、コードを変更した後は、Azure の Git リポジトリにコミットをプッシュするだけで、Azure にデプロイできます。
 
 ## 次のステップ
 
-ここでは、Node.js を使用して、初めての API アプリを作成してデプロイしました。API Apps 入門シリーズの次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について学習します。
+ここでは、Node.js を使用して、初めての API アプリを作成してデプロイしました。次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について学習します。それ以降のチュートリアルでは、認証と承認を実装する方法について説明します。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

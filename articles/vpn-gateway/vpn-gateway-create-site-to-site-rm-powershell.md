@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/21/2016"
+   ms.date="05/13/2016"
    ms.author="cherylmc"/>
 
 # PowerShell と Azure Resource Manager を使用してサイト間 VPN 接続で仮想ネットワークを作成する
@@ -26,15 +26,21 @@
 
 この記事では、Azure Resource Manager デプロイメント モデルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
 
+
 **Azure のデプロイ モデルについて**
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+## 接続図 
 
 ![Site-to-Site diagram](./media/vpn-gateway-create-site-to-site-rm-powershell/site2site.png "site-to-site")
 
 **サイト間接続のデプロイ モデルとデプロイ ツール**
 
 [AZURE.INCLUDE [vpn-gateway-table-site-to-site](../../includes/vpn-gateway-table-site-to-site-include.md)]
+
+VNet どうしは接続しても、オンプレミスへの接続は作成しない場合は、[VNet 間の接続の構成](vpn-gateway-vnet-vnet-rm-ps.md)に関するページを参照してください。別の種類の接続構成をお探しの場合は、「[Azure VPN Gateway 接続トポロジ](vpn-gateway-topology.md)」の記事を参照してください。
+
 
 ## 開始する前に
 
@@ -46,10 +52,10 @@
 	
 - Azure サブスクリプション。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 	
-- Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+- Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 
-## 1.サブスクリプションへの接続 
+## 1\.サブスクリプションへの接続 
 
 リソース マネージャー コマンドレットを使用するように PowerShell モードを切り替えてください。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
@@ -65,11 +71,14 @@ PowerShell コンソールを開き、アカウントに接続します。接続
 
 	Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
-## 2.仮想ネットワークとゲートウェイ サブネットを作成する
+## 2\.仮想ネットワークとゲートウェイ サブネットを作成する
 
 以下の例では、/28 のゲートウェイ サブネットを示します。/29 のように小規模のゲートウェイ サブネットを作成することはできますが、これは推奨されません。追加の機能要件に対応できるよう、/27 またはそれ以上の規模 (/26、/25 など) のゲートウェイ サブネットを作成することをお勧めします。
 
 /29 以上の規模のゲートウェイ サブネットを持つ仮想ネットワークが既にある場合は、「[ローカル ネットワーク ゲートウェイを追加する](#localnet)」に進むことができます。
+
+
+[AZURE.INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ### 仮想ネットワークとゲートウェイ サブネットを作成するには
 
@@ -100,7 +109,7 @@ PowerShell コンソールを開き、アカウントに接続します。接続
 
 	Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
-## 3.<a name="localnet"></a>ローカル ネットワーク ゲートウェイを追加する
+## 3\.<a name="localnet"></a>ローカル ネットワーク ゲートウェイを追加する
 
 仮想ネットワークでは、ローカル ネットワーク ゲートウェイは通常、オンプレミスの場所を指します。そのサイトを Azure が参照できるように名前を付け、ローカル ネットワーク ゲートウェイのアドレス空間のプレフィックスも指定します。
 
@@ -124,7 +133,7 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 ローカル ネットワーク ゲートウェイのプレフィックスは変わる場合があります。IP アドレス プレフィックスを変更する手順は、VPN ゲートウェイの接続を作成したかどうかによって異なります。「[ローカル ネットワーク ゲートウェイ用の IP アドレスのプレフィックスを変更するには](#modify)」セクションを参照してください。
 
 
-## 4.VPN ゲートウェイのパブリック IP アドレスを要求する
+## 4\.VPN ゲートウェイのパブリック IP アドレスを要求する
 
 次に、Azure VNet VPN ゲートウェイに割り当てるパブリック IP アドレスを要求します。これは VPN デバイスに割り当てられているものと同じ IP アドレスではなく、Azure VPN ゲートウェイ自体に割り当てられている IP アドレスです。使用する IP アドレスは指定できません。IP アドレスはゲートウェイに動的に割り当てられます。ゲートウェイに接続するオンプレミス VPN デバイスを構成するときに、この IP アドレスを使用します。
 
@@ -134,7 +143,7 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 
 >[AZURE.NOTE] リソース マネージャーのデプロイ モデル用の Azure VPN ゲートウェイは、現在、動的割り当て方法を使用してパブリック IP アドレスのみをサポートしています。ただし、これは IP アドレスが変更されるという意味ではありません。Azure VPN ゲートウェイの IP アドレスが変更されるのは、ゲートウェイが削除され、再度作成されたときのみです。ゲートウェイのパブリック IP アドレスは、Azure VPN ゲートウェイのサイズ変更、リセット、その他の内部メンテナンス/アップグレードの際には変更されません。
 
-## 5.ゲートウェイ IP アドレス指定の構成を作成する
+## 5\.ゲートウェイ IP アドレス指定の構成を作成する
 
 ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。次のサンプルを使用して、ゲートウェイの構成を作成します。
 
@@ -142,7 +151,7 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 	$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 	$gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id 
 
-## 6.仮想ネットワーク ゲートウェイを作成する
+## 6\.仮想ネットワーク ゲートウェイを作成する
 
 この手順では、仮想ネットワーク ゲートウェイを作成します。ゲートウェイの作成には、しばらく時間がかかる場合があります。20 分以上かかることも珍しくありません。
 
@@ -155,7 +164,7 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 
 		New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
 
-## 7.VPN デバイスの構成
+## 7\.VPN デバイスの構成
 
 オンプレミス VPN デバイスを構成するには、この時点で仮想ネットワーク ゲートウェイのパブリック IP アドレスが必要です。具体的な構成方法については、お使いのデバイスの製造元の情報を参照してください。また、詳細については、[VPN デバイス](vpn-gateway-about-vpn-devices.md)に関するページを参照してください。
 
@@ -163,7 +172,7 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 
 	Get-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName testrg
 
-## 8.VPN 接続を作成する
+## 8\.VPN 接続を作成する
 
 次に、仮想ネットワーク ゲートウェイと VPN デバイス間にサイト間 VPN 接続を作成します。サンプルの値は必ず実際の値に変更してください。共有キーは、VPN デバイスの構成に使用したものと同じ値にする必要があります。サイト間接続の `-ConnectionType` は *IPsec* です。
 
@@ -174,7 +183,7 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 
 しばらくすると、接続が確立されます。
 
-## 9.VPN 接続の検証
+## 9\.VPN 接続の検証
 
 VPN 接続を検証する方法はいくつかあります。以下で、Azure ポータルと PowerShell を使用して基本的な検証を行う方法を紹介します。
 
@@ -193,4 +202,4 @@ VPN 接続を検証する方法はいくつかあります。以下で、Azure �
 
 - BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関するページと [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

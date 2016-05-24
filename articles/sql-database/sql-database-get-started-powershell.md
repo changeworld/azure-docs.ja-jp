@@ -5,7 +5,7 @@
 	services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
-    manager="jeffreyg" 
+    manager="jhubbard" 
     editor="cgronlun"/>
 
 <tags
@@ -14,45 +14,23 @@
     ms.topic="hero-article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="01/20/2016"
+    ms.date="05/09/2016"
     ms.author="sstein"/>
 
 # 新しい SQL Database を作成し、PowerShell コマンドレットで一般的なデータベース設定タスクを実行します。 
 
-**1 つのデータベース**
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-get-started.md)
-- [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
+- [C#](sql-database-get-started-csharp.md)
 
 
-新しい SQL Database を作成し、PowerShell コマンドレットを使用して一般的なデータベース設定タスクを実行します。
+
+PowerShell のコマンドレットを使用して新しい SQL データベースを作成する方法について説明します。(Elastic Database の作成については、「[PowerShell による新しい Elastic Database プールの作成](sql-database-elastic-pool-create-powershell.md)」を参照してください。)
 
 
-PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
-
-- Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
-
-
-## 資格情報を構成してサブスクリプションを選択
-
-これで、Azure リソース マネージャー モジュールが実行され、SQL データベースを作成するために必要なすべてのコマンドレットにアクセスできるようになりました。
-
-まず、Azure アカウントへのアクセスを確立させるため、以下のコマンドレットを実行してください。資格情報を入力するサインイン画面が表示されます。Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
-
-	Add-AzureRmAccount
-
-正常にサインインすると、サインインしている ID や使用中の Azure サブスクリプションを含む情報が画面に表示されます。
-
-
-### Azure サブスクリプションを選択します。
-
-サブスクリプションを選択するには、サブスクリプション ID が必要です。前の手順からコピーするか、複数のサブスクリプションがある場合は **Get-AzureRmSubscription** コマンドレットを実行して結果セットから目的のサブスクリプション情報をコピーできます。ご利用のサブスクリプションを取得したら次のコマンドレットを実行します。
-
-	Select-AzureRmSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
-
-**Select-AzureRmSubscription** を正常に実行すると、PowerShell プロンプトに戻ります。サブスクリプションが複数ある場合は、**Get-AzureRmSubscription** を実行して、使用するサブスクリプションが **IsCurrent: True** と表示されていることを確認できます。
+[AZURE.INCLUDE [PowerShell セッションの開始](../../includes/sql-database-powershell.md)]
 
 ## データベースの設定: リソース グループ、サーバー、ファイアウォール規則を作成する
 
@@ -142,4 +120,4 @@ SQL Database は Azure SQL Database サーバーの内部で作成されます�
 
 - [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

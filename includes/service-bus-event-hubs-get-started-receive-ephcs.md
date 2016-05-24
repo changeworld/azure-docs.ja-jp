@@ -1,6 +1,6 @@
 ## EventProcessorHost を使用したメッセージの受信
 
-[EventProcessorHost][] は、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列してそれらの Event Hubs から受信する .NET クラスです。[EventProcessorHost][] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost][] を使用する方法を示します。[イベント処理のスケールアウトのサンプル](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)は、受信側が複数の場合に [EventProcessorHost][] を使用する方法を示します。
+[EventProcessorHost][] は、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列してそれらの Event Hubs から受信する .NET クラスです。[EventProcessorHost][] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost][] を使用する方法を示します。[[イベント処理のスケールアウトのサンプル]][]は、受信側が複数の場合に [EventProcessorHost][] を使用する方法を示します。
 
 [EventProcessorHost][] を使用するには [Azure ストレージ アカウント][]が必要です。
 
@@ -28,7 +28,9 @@
 
 	これによって、[Azure Service Bus Event Hub - EventProcessorHost NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost)への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
 
-7. **[Receiver]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。クラスの名前として「**SimpleEventProcessor**」と入力し、**[OK]** をクリックしてクラスを作成します。
+7. **[Receiver]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。クラスの名前として「**SimpleEventProcessor**」と入力し、**[追加]** をクリックしてクラスを作成します。
+
+	![][15]
 
 8. SimpleEventProcessor.cs ファイルの先頭に次のステートメントを追加します。
 
@@ -83,13 +85,13 @@
 
 	このクラスは、**EventProcessorHost** から呼び出されて、Event Hub から受信したイベントを処理します。`SimpleEventProcessor` クラスは、ストップウォッチを使用して **EventProcessorHost** コンテキストで定期的にチェックポイント メソッドを呼び出します。これにより、受信側を再起動すると、処理の作業の 5 分以内に機能が失われます。
 
-9. **Program** クラスで、 ファイルの先頭に次の `using` ステートメントを追加します。
+9. **Program** クラスで、ファイルの先頭に次の `using` ステートメントを追加します。
 
 	```
 	using Microsoft.ServiceBus.Messaging;
 	```
 
-	次に、`Program` クラスの `Main` メソッドを以下のとおりに変更して、前のセクションでコピーした Event Hub 名と **ReceiveRule** 接続文字列、ストレージ アカウントとキーを代入します。`EntityPath` サフィックスを接続文字列から削除します。
+	次に、`Program` クラスの `Main` メソッドを次のコードに置き換え、先ほど保存した Event Hub の名前と名前空間レベルの接続文字列、および前のセクションでコピーしたストレージ アカウントとキーを代入します。
 
     ```
 	static void Main(string[] args)
@@ -118,7 +120,7 @@
 <!-- Links -->
 [Event Hubs の概要]: event-hubs-overview.md
 [Event Hubs のプログラミング ガイド]: event-hubs-programming-guide.md
-[イベント処理のスケールアウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[[イベント処理のスケールアウトのサンプル]]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [Azure ストレージ アカウント]: ../storage/storage-create-storage-account.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
@@ -129,6 +131,6 @@
 [11]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp2.png
 [12]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp3.png
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
-[14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
+[14]: ./media/service-bus-event-hubs-getstarted/create-receiver-csharp1.png
+[15]: ./media/service-bus-event-hubs-getstarted/create-receiver-csharp2.png
 
-<!---HONumber=AcomDC_0413_2016-->

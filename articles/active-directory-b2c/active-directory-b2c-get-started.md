@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="swkrish"
 	manager="msmbaldwin"
-	editor="curtand"/>
+	editor="bryanla"/>
 
 <tags
 	ms.service="active-directory-b2c"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/25/2016"
+	ms.date="05/16/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: Azure AD B2C テナントを作成する
@@ -46,13 +46,10 @@ Microsoft Azure Active Directory (Azure AD) B2C を使い始めるには、以�
 
 6. テナントが作成され、Active Directory 拡張機能に表示されます。また、現在のユーザーがテナントのグローバル管理者になります。必要に応じて、他のグローバル管理者を追加できます。
 
-    > [AZURE.IMPORTANT]
-    テナントの作成には最大で 2 分かかることがあります。テナントの作成中に問題が発生した場合は、「[Azure AD テナントまたは Azure AD B2C テナントの作成 - 問題と解決策](active-directory-b2c-support-create-directory.md)」を参考にしてください。
-
 ## 手順 3: Azure ポータルで B2C 機能ブレードに移動する
 
 1. 左側のナビゲーション バーで Active Directory 拡張機能に移動します。
-2. **[ディレクトリ]** タブで、作成した作成したテナントを見つけてクリックします。
+2. **[ディレクトリ]** タブで、作成したテナントを見つけてクリックします。
 3. [**構成**] タブをクリックします。
 4. **[B2C 管理]** セクションの **[B2C 設定の管理]** リンクをクリックします。
 
@@ -61,7 +58,7 @@ Microsoft Azure Active Directory (Azure AD) B2C を使い始めるには、以�
 5. 新しいブラウザー タブまたはウィンドウで、B2C 機能ブレードが含まれた Azure ポータルが開きます。
 
     > [AZURE.IMPORTANT]
-    (テナント数が少ない場合に) このページが正しく読み込まれないという既知の問題があります。この問題は、ブラウザーを更新することで解決されます。解決されない場合は、Azure サポートにご連絡ください。
+    テナントが Azure ポータルでアクセスできるようになるまでに、最大で 2 ～ 3 分かかる場合があります。しばらく待ってからこれらの手順をもう一度試すと、これは修正されます。解決されない場合は、サポートにご連絡ください。
 
 6. アクセスしやすいように、このブレードをスタート画面にピン留めします(機能ブレードの右上隅、赤でマークされているのがピン留めツールです)。
 
@@ -74,4 +71,4 @@ Microsoft Azure Active Directory (Azure AD) B2C を使い始めるには、以�
 
 「[Azure Active Directory B2C プレビュー: アプリケーションを登録する](active-directory-b2c-app-registration.md)」を読み、Azure AD B2C にアプリケーションを登録する方法と、クイック スタート アプリケーションを構築する方法を学習します。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

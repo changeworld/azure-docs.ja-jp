@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/10/2016"
+   ms.date="05/13/2016"
    ms.author="sonyama;barbkess"/>
 
 # Visual Studio で SQL Data Warehouse に接続する
@@ -22,27 +22,26 @@
 - [Visual Studio](sql-data-warehouse-get-started-connect.md)
 - [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
 
-このチュートリアルでは、Visual Studio の SQL Server Data Tools (SSDT) を使用して、Azure SQL Data Warehouse データベースにわずか数分で接続する方法について説明します。接続後に、簡単なクエリを実行します。
+このチュートリアルでは、Visual Studio の SQL Server Data Tools (SSDT) 拡張機能を使用して、Azure SQL Data Warehouse にわずか数分で接続する方法について説明します。接続後に、簡単なクエリを実行します。
 
 ## 前提条件
 
-+ SQL Data Warehouse に含まれる AdventureWorksDW サンプル データベース。このデータベースの作成方法については、[SQL Data Warehouse データベースの作成](sql-data-warehouse-get-started-provision.md)に関するページを参照してください。
-+ Visual Studio の SQL Server Data Tools。インストールの手順とオプションの詳細については、[Visual Studio または SSDT のインストール](sql-data-warehouse-install-visual-studio.md)に関するページを参照してください。
++ SQL Data Warehouse に含まれる AdventureWorksDW サンプル データ。このデータベースの作成方法については、[SQL Data Warehouse の作成][]に関するページを参照してください。
++ Visual Studio の SQL Server Data Tools。インストールの手順とオプションの詳細については、[Visual Studio と SSDT のインストール][]に関するページを参照してください。
 
 ## 手順 1. Azure SQL サーバーの完全修飾名を検索する
 
-データベースは、Azure SQL サーバーに関連付けられます。データベースに接続する際に、サーバーの完全修飾名 (**servername**.database.windows.net*) が必要になります。
+SQL Data Warehouse データベースは、Azure SQL Server に関連付けられます。データベースに接続する際に、サーバーの完全修飾名 (**servername**.database.windows.net*) が必要になります。
 
 完全修飾サーバー名を検索するには
 
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。
+1. [Azure ポータル][]にアクセスします。
 2. **[SQL データベース]** をクリックし、接続するデータベースをクリックします。この例では、AdventureWorksDW サンプル データベースを使用します。
 3. サーバーの完全名を見つけます。
 
     ![Full server name][1]
 
-## 手順 2. SQL Database に接続する
-最善の結果を得るには、Visual Studio 2015 と[最新の SQL Server Data Tools (SSDT) 更新プログラム](https://msdn.microsoft.com/library/mt204009.aspx)を使用します。
+## 手順 2. SQL Data Warehouse に接続する
 
 1. Visual Studio 2013 または 2015 を開きます。
 2. SQL Server オブジェクト エクスプローラーを開きます。これを行うには、**[表示]**、**[SQL Server オブジェクト エクスプローラー]** の順に選択します。
@@ -57,17 +56,14 @@
 
     ![サーバーへの接続][4]
 
-    - **[サーバー名]**: 前の手順で特定した*サーバー名*を入力します。
-    - **[認証]**: [SQL Server 認証] を選択します。
-    - **[ユーザー名]** と **[パスワード]**: Azure SQL Server のユーザー名とパスワードを入力します。
-    - **[データベース名]**: SQL DW データベースのデータベース名を入力します。
+    - **[サーバー名]**: 前の手順で特定した**サーバー名**を入力します。
+    - **[認証]**: **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
+    - **[ユーザー名]** と **[パスワード]**: 先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
     - **[接続]** をクリックします。
 
 5. 確認のために、Azure SQL Server を展開します。サーバーに関連付けられているデータベースが表示されます。AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。
 
     ![Explore AdventureWorksDW][5]
-
-> [AZURE.NOTE] 接続時 (手順 4.) に **[データベース名]** フィールドで SQL Data Warehouse データベースを指定することは、オブジェクト ツリーを正しく機能させるために重要です。このオプションを空白のままにして、既定のデータベースである **master** に接続すると、論理サーバーのいくつかのデータベースが一時停止している場合は動作しないことがあります。この制限はいずれ解決されますが、それまでの間は SQL Data Warehouse データベースに接続すると、前に説明したように、オブジェクト エクスプローラー ツリーが正しく機能します。
 
 ## 手順 3. サンプル クエリを実行する
 
@@ -97,8 +93,16 @@
 
 これで接続してクエリを実行することができます。[Power BI でデータを視覚化][]してみてください。
 
+Windows 認証を使用するように環境を構成する方法については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する][]」を参照してください。
+
+<!--Arcticles-->
+[SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
+[Visual Studio と SSDT のインストール]: sql-data-warehouse-install-visual-studio.md
+[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する]: ../sql-database/sql-database-aad-authentication.md
 [Power BI でデータを視覚化]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
 
+<!--Other-->
+[Azure ポータル]: https://portal.azure.com
 
 <!--Image references-->
 
@@ -111,4 +115,4 @@
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

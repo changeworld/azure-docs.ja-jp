@@ -55,8 +55,8 @@
 - オンプレミスの SQL Server データベースを Azure に移動する場合の詳細については、[Azure SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
 
 
-## その他のリソース
+## 詳細情報
 
-[SQL Database の概要](sql-database-technical-overview.md)
+[SQL Database とは](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

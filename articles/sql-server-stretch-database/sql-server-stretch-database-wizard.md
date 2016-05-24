@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="02/26/2016"
+	ms.date="05/17/2016"
 	ms.author="douglasl"/>
 
 # [Stretch Database を有効にする] ウィザードを実行する方法の概要
@@ -44,7 +44,7 @@ Stretch を有効にするテーブルを選択します。
 |**名前**|テーブルの列の名前を指定します。|
 |(タイトルなし)|この列の記号は、一般的に、ブロック問題に起因し、選択したテーブルの Stretch を有効にできないことを示します。非対応のデータ型をテーブルで使用していることが原因の可能性があります。記号の上にマウス カーソルを合わせると、ヒント形式で詳細が表示されます。詳細については、「[Stretch Database のセキュリティ制約とブロック問題](sql-server-stretch-database-limitations.md)」を参照してください。|
 |**ストレッチ済み**|テーブルが既に有効になっているかどうかを示します。|
-|**移行**|RC3 では、テーブル全体を移行することも (**[テーブル全体]**)、ウィザードで日付に基づくフィルター述語を指定することもできます。移行する行を選択するフィルター述語を変更する場合は、ウィザードを終了した後、ALTER TABLE ステートメントを実行してフィルター述語を指定します。フィルター述語の詳細については、「[移行する行の選択にフィルター述語を使用する (Stretch Database)](sql-server-stretch-database-predicate-function.md)」を参照してください。述語の適用方法の詳細については、「[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」または「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」を参照してください。|
+|**移行**|テーブル全体を移行することも (**[テーブル全体]**)、ウィザードで日付に基づくフィルター述語を指定することもできます。移行する行を選択するフィルター述語を変更する場合は、ウィザードを終了した後、ALTER TABLE ステートメントを実行してフィルター述語を指定します。フィルター述語の詳細については、「[移行する行の選択にフィルター述語を使用する (Stretch Database)](sql-server-stretch-database-predicate-function.md)」を参照してください。述語の適用方法の詳細については、「[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」または「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」を参照してください。|
 |**行**|テーブルの行数を指定します。|
 |**サイズ (KB)**|テーブルのサイズを KB 単位で指定します。|
 
@@ -163,4 +163,4 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 [StretchWizardImage7]: ./media/sql-server-stretch-database-wizard/stretchwiz7.png
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

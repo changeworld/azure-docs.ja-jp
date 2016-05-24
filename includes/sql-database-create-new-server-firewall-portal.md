@@ -30,6 +30,9 @@ articles/sql-database/sql-database-configure-firewall-settings
 
  	![新しいサーバー ファイアウォール](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-4.png)
     
+
+ 	> [AZURE.IMPORTANT] 現在表示されているブレードに **[ファイアウォール]** のオプションが見当たらない場合は、表示しているブレードが SQL データベースのものではなく SQL Database 論理サーバーのものであることを確認してください。
+
 5. **[クライアント IP の追加]** をクリックすると、Azure でそのクライアント IP アドレスの規則が作成されます。
 
       ![新しいサーバー ファイアウォール](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-5.png)

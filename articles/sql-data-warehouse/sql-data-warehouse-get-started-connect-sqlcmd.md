@@ -13,14 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/20/2016"
+   ms.date="05/16/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # SQLCMD を使用した接続とクエリ
 
 > [AZURE.SELECTOR]
-- [Visual Studio](sql-data-warehouse-get-started-connect.md)
-- [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
+- [Visual Studio][]
+- [SQLCMD][]
 
 このチュートリアルでは、sqlcmd.exe ユーティリティを使用して、Azure SQL Data Warehouse データベースへの接続とクエリを数分で実行する方法について説明します。このチュートリアルでは次を行います。
 
@@ -30,13 +30,13 @@
 
 ## 前提条件
 
-+ [sqlcmd.exe](https://msdn.microsoft.com/library/azure/ms162773.aspx) - sqlcmd.exe をダウンロードするには、[Microsoft Command Line Utilities 11 for SQL Server](http://go.microsoft.com/fwlink/?LinkId=321501) を参照してください。
++ [sqlcmd.exe][] をダウンロードするには、[Microsoft Command Line Utilities 11 for SQL Server][] を参照してください。
 
 ## 完全修飾 Azure SQL サーバー名を取得します。
 
 データベースに接続するには、接続先のデータベースを含むサーバーの完全名が必要です (****servername**.database.windows.net*)。
 
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。
+1. [Azure ポータル][]にアクセスします。
 2. 接続先のデータベースを探します。
 3. サーバーの完全名を見つけます (これを次の手順で使用します)。
 
@@ -70,17 +70,27 @@ C:\>sqlcmd -S <Server Name>.database.windows.net -d <Database> -U <User> -P <Pas
 3> QUIT
 ```
 
-sqlcmd の詳細については、[sqlcmd のドキュメント](https://msdn.microsoft.com/library/azure/ms162773.aspx)を参照してください。
+sqlcmd の詳細については、[sqlcmd のドキュメント][sqlcmd.exe]を参照してください。
 
 
 ## 次のステップ
 
 これで接続してクエリを実行することができます。[PowerBI で接続][]してみてください。
 
-[PowerBI で接続]: ./sql-data-warehouse-integrate-power-bi.md
+Windows 認証を使用するように環境を構成する方法については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する][]」を参照してください。
 
+<!--Articles-->
+[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する]: ../sql-database/sql-database-aad-authentication.md
+[PowerBI で接続]: ./sql-data-warehouse-integrate-power-bi.md
+[Visual Studio]: ./sql-data-warehouse-get-started-connect.md
+[SQLCMD]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
+
+<!--Other-->
+[sqlcmd.exe]: https://msdn.microsoft.com/ja-JP/library/ms162773.aspx
+[Microsoft Command Line Utilities 11 for SQL Server]: http://go.microsoft.com/fwlink/?LinkId=321501
+[Azure ポータル]: https://portal.azure.com
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

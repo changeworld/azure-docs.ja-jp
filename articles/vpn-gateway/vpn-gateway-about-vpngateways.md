@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Virtual Network クロスプレミス接続の VPN Gateway について | Microsoft Azure"
-   description="ハイブリッド構成のサイト間クロスプレミス接続、VNet 間接続、ポイント対サイト接続に使用できる VPN ゲートウェイについて説明します。"
+   pageTitle="VPN Gateway について| Microsoft Azure"
+   description="Azure Virtual Network の VPN Gateway について説明します。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -13,12 +13,12 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/18/2016"
+   ms.date="05/16/2016"
    ms.author="cherylmc" />
 
-# VPN ゲートウェイについて
+# VPN Gateway について
 
-VPN Gateway (Azure Virtual Netwok ゲートウェイとも呼ばれます) は、仮想ネットワークとオンプレミスの場所の間でネットワーク トラフィックを送信するために使用されます。また、Azure 内で複数の仮想ネットワーク間のトラフィック送信にも使用されます (VNet 間)。以下のセクションでは、VPN ゲートウェイに関連する項目について説明します。
+VPN Gateway は、仮想ネットワークとオンプレミスの場所の間でネットワーク トラフィックの送信に使用されます。また、Azure 内で複数の仮想ネットワーク間のトラフィック送信にも使用されます (VNet 間)。以下のセクションでは、VPN Gateway に関連する項目について説明します。
 
 VPN ゲートウェイの作成に使用する手順は、仮想ネットワークの作成に使用したデプロイ モデルによって異なります。たとえば、クラシック デプロイ モデルを使用して VNet を作成した場合は、クラシック デプロイ モデルに対応したガイドラインと手順を使用して VPN ゲートウェイを作成し、構成します。クラシック デプロイ モデルの仮想ネットワークに Resource Manager の VPN ゲートウェイを作成することはできません。
 
@@ -39,6 +39,7 @@ VPN ゲートウェイを構成するには、まず VNet のゲートウェイ 
 
 	Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 
+>[AZURE.IMPORTANT] GatewaySubnet にネットワーク セキュリティ グループ (NSG) が適用されていないことを確認してください。接続に失敗する原因となります。
 
 ## <a name="gwtype"></a>ゲートウェイの種類
 
@@ -64,7 +65,7 @@ VPN ゲートウェイを作成するときは、使用するゲートウェイ�
 
 	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewaySku Standard -GatewayType Vpn -VpnType RouteBased
 
-### SKU とゲートウェイの種類別の予測される合計スループット
+###  <a name="aggthroughput"></a>SKU とゲートウェイの種類別の予測される合計スループット
 
 
 次の表は、ゲートウェイの種類、および予測される合計スループットを示したものです。料金はゲートウェイの SKU によって異なります。料金については、[VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway/)のページをご確認ください。この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
@@ -73,7 +74,9 @@ VPN ゲートウェイを作成するときは、使用するゲートウェイ�
 
 ## <a name="vpntype"></a>VPN の種類
 
-各構成を適切に機能させるためには、特定の VPN の種類が必要です。同じ VNet に対してサイト間接続とポイント対サイト接続を作成するなど、2 つの構成を組み合わせる場合は、両方の接続の要件を満たす VPN の種類を使用する必要があります。ポイント対サイト接続とサイト間接続を共存させるときは、Azure Resource Manager のデプロイ モデルの場合はルート ベースの VPN の種類、クラシック デプロイ モデルの場合は動的ゲートウェイを使用する必要があります。
+各構成を適切に機能させるためには、特定の VPN の種類が必要です。同じ VNet に対してサイト間接続とポイント対サイト接続を作成するなど、2 つの構成を組み合わせる場合は、両方の接続の要件を満たす VPN の種類を使用する必要があります。
+
+ポイント対サイト接続とサイト間接続を共存させるときは、Azure Resource Manager のデプロイ モデルの場合はルート ベースの VPN の種類、クラシック デプロイ モデルの場合は動的ゲートウェイを使用する必要があります。
 
 構成を作成するときに、接続に必要な VPN の種類を選択します。
 
@@ -115,14 +118,14 @@ VPN ゲートウェイを作成するときは、使用するゲートウェイ�
 
 ### アドレス プレフィックスの変更 - クラシック デプロイ
 
-クラシック デプロイ モデルを使用していてローカル サイトを変更する必要がある場合、現時点では、クラシック ポータルの [ローカル ネットワークの構成] ページを使用するか、ネットワーク構成ファイル NETCFG.XML を直接変更できます。
+クラシック デプロイ モデルを使用していてローカル サイトを変更する必要がある場合、クラシック ポータルの [ローカル ネットワークの構成] ページを使用するか、ネットワーク構成ファイル NETCFG.XML を直接変更できます。
 
 
-## VPN デバイス
+##  <a name="devices"></a>VPN デバイス
 
 使用する VPN デバイスが、構成に必要な VPN の種類をサポートしていることを確認する必要があります。互換性のある VPN デバイスの詳細については、「[サイト間 VPN Gateway 接続の VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。
 
-## ゲートウェイの要件
+##  <a name="requirements"></a>ゲートウェイの要件
 
 
 [AZURE.INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
@@ -138,4 +141,4 @@ VPN ゲートウェイを作成するときは、使用するゲートウェイ�
 
  
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0518_2016-->
