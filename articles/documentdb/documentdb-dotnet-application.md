@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
-	ms.date="04/18/2016" 
+	ms.date="05/18/2016" 
 	ms.author="andrl"/>
 
 #<a name="_Toc395809351"></a>ASP.NET MVC のチュートリアル: DocumentDB を使用した Web アプリケーションの開発
@@ -30,7 +30,7 @@
 
 ![このチュートリアルで作成された、ToDo リスト MVC Web アプリケーションのスクリーン ショット - ASP NET MVC チュートリアル ステップ バイ ステップ](./media/documentdb-dotnet-application/asp-net-mvc-tutorial-image1.png)
 
-このチュートリアルでは、Azure で提供される DocumentDB サービスを使用して、Azure にホストされている ASP.NET MVC Web アプリケーションからデータを保存したりデータにアクセスしたりする方法を説明します。
+このチュートリアルでは、Azure で提供される DocumentDB サービスを使用して、Azure にホストされている ASP.NET MVC Web アプリケーションからデータを保存したりデータにアクセスしたりする方法を説明します。ASP.NET MVC コンポーネントに関する説明が不要で、DocumentDB のみを重点的に取り上げた解説をお探しの方は、「[DocumentDB C# コンソール アプリケーションの作成](documentdb-get-started.md)」を参照してください。
 
 > [AZURE.TIP] このチュートリアルでは、ASP.NET MVC と Azure Websites の使用経験がある読者を想定しています。ASP.NET や[前提条件となるツール](#_Toc395637760)を初めて扱う方は、完全なサンプル プロジェクトを [GitHub][] からダウンロードして、この例の指示に従うことをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
 
@@ -101,9 +101,9 @@
 
 	**[NuGet パッケージの管理]** ダイアログ ボックスが表示されます。
 
-2. **[オンラインで検索]** ボックスに、「***Azure DocumentDB***」と入力します。
+2. NuGet の **[参照]** ボックスに「***Azure DocumentDB***」と入力します。
 	
-	結果から、**Microsoft Azure DocumentDB クライアント ライブラリ** パッケージをインストールします。これにより、DocumentDB パッケージだけでなく、依存関係のあるすべてのコンポーネント (Newtonsoft.Json など) がダウンロードされてインストールされます。
+	結果から、**Microsoft Azure DocumentDB クライアント ライブラリ** パッケージをインストールします。これにより、DocumentDB パッケージだけでなく、依存関係のあるすべてのコンポーネント (Newtonsoft.Json など) がダウンロードされてインストールされます。**[プレビュー]** ウィンドウで **[OK]** をクリックし、**[ライセンスへの同意]** ウィンドウの **[同意する]** をクリックしてインストールを実行します。
 
   	![Microsoft Azure DocumentDB クライアント ライブラリが強調表示されている [NuGet パッケージの管理] ウィンドウのスクリーン ショット](./media/documentdb-dotnet-application/nuget.png)
 
@@ -391,6 +391,10 @@ MVC の標準的な構成要素を準備できたので、次に DocumentDB 用�
 			return View(items);
 		}
 	
+7. **Global.asax.cs** を開いて **Application\_Start** メソッドに次の行を追加します。
+ 
+		DocumentDBRepository<todo.Models.Item>.Initialize();
+	
 この時点で、エラーなくソリューションをビルドすることは可能です。
 
 ここで仮にアプリケーションを実行した場合は、**HomeController** とそのコントローラーの **Index** ビューが表示されます。これは、作業の開始時に選択した MVC テンプレート プロジェクトの既定の動作であって、期待していた動作ではありません。 この MVC アプリケーションのルーティングに手を加えて、この動作を変更しましょう。
@@ -587,4 +591,4 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -58,15 +58,15 @@ Azure Data Factory には、入力および出力データ、処理イベント�
 データセット、アクティビティ、パイプライン、およびリンクされたサービスという 4 つの簡単な概念を理解すれば、Azure Data Factory を使用できます。 何もない状態から[最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)ことも、[Data Factory のサンプル](data-factory-samples.md)を示した記事の説明に従って既成のサンプルをデプロイすることもできます。
 
 ## サポートされているリージョン
-現時点では、データ ファクトリは、**米国西部**と**北ヨーロッパ** リージョンで作成できます。ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
+現時点では、データ ファクトリは、**米国西部**、**米国東部**、**北ヨーロッパ** リージョンで作成できます。ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
 
 Azure Data Factory 自体は、データを保存しません。Azure Data Factory を使用すると、データ主導型のフローを作成し、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores)間でのデータ移動と、他のリージョンまたはオンプレミス環境にある[コンピューティング サービス](data-factory-compute-linked-services.md)を使用したデータ処理を調整できます。また、プログラムと UI の両方のメカニズムを使用して、[ワークフローを監視および管理](data-factory-monitor-manage-pipelines.md)することもできます。
 
-Azure Data Factory を利用できるリージョンが**米国西部**と**北ヨーロッパ**のみであっても、Data Factory 内でデータ移動を実行するサービスは、いくつかのリージョンで[グローバル](data-factory-data-movement-activities.md#global)に利用できます。データ ストアがファイアウォールの内側にある場合は、オンプレミス環境にインストールされている [Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) がデータを移動します。
+Azure Data Factory を利用できるリージョンが**米国西部**、**米国東部**、**北ヨーロッパ**のみであっても、Data Factory 内でデータ移動を実行するサービスは、いくつかのリージョンで[グローバル](data-factory-data-movement-activities.md#global)に利用できます。データ ストアがファイアウォールの内側にある場合は、オンプレミス環境にインストールされている [Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) がデータを移動します。
 
 たとえば、Azure HDInsight クラスターや Azure Machine Learning などのコンピューティング環境が西ヨーロッパ リージョン以外で稼働しているものと想定します。北ヨーロッパに Azure Data Factory インスタンスを作成して利用すると、西ヨーロッパのコンピューティング環境でジョブのスケジュール設定にそのインスタンスを使用することができます。Data Factory サービスがコンピューティング環境でジョブをトリガーするまでに数ミリ秒かかりますが、コンピューティング環境でのジョブの実行時間は変わりません。
 
 将来的には、Azure がサポートするすべての地域で Azure Data Factory が提供される予定です。
   
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

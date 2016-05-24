@@ -56,7 +56,11 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。Windows PowerShell スクリプトを実行するには、管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。詳細については、「[Windows PowerShell スクリプトの実行][powershell-script]」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。 
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+    
+    Windows PowerShell スクリプトを実行するには、管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。詳細については、「[Windows PowerShell スクリプトの実行][powershell-script]」を参照してください。
 
 ##Oozie ワークフローと関連 HiveQL スクリプトを定義する
 
@@ -142,7 +146,7 @@ RunHiveScript には、変数がいくつかあります。その値は、Azure 
 <tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダーを指定します。これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
 </table>
 
-Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight バージョン 2.1 の場合) を参照してください。
+Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400]\(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332]\(HDInsight バージョン 2.1 の場合) を参照してください。
 
 
 ワークフローの Hive アクションは、HiveQL スクリプト ファイルを呼び出します。このスクリプト ファイルは HiveQL ステートメントを 3 つ含んでいます。
@@ -168,7 +172,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 ##PowerShell を使用して Oozie ジョブを送信する
 
-現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。**Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。Oozie Web サービス API は、HTTP REST JSON API です。Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight クラスター バージョン 2.1 の場合) を参照してください。
+現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。**Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。Oozie Web サービス API は、HTTP REST JSON API です。Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400]\(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332]\(HDInsight クラスター バージョン 2.1 の場合) を参照してください。
 
 このセクションの PowerShell スクリプトでは、次の手順を実行します。
 
@@ -620,7 +624,6 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 - [HDInsight での時間ベースの Oozie コーディネーターの使用][hdinsight-oozie-coordinator-time]
 - [HDInsight で Hive と Hadoop を使用し、モバイル ハンドセットの使用状況を分析する][hdinsight-get-started]
-- [HDInsight Emulator の概要][hdinsight-get-started-emulator]
 - [HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]
 - [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 - [HDInsight での Hadoop ジョブ用データのアップロード][hdinsight-upload-data]
@@ -637,7 +640,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 [azure-data-factory-pig-hive]: ../data-factory/data-factory-data-transformation-activities.md
 [hdinsight-oozie-coordinator-time]: hdinsight-use-oozie-coordinator-time.md
 [hdinsight-versions]: hdinsight-component-versioning.md
-[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 
@@ -649,10 +652,9 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
-[hdinsight-get-started-emulator]: ../hdinsight-get-started-emulator.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
-[hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
+[hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce-linux.md
 
 [sqldatabase-create-configue]: ../sql-database-create-configure.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
@@ -678,4 +680,4 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

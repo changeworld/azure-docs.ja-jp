@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="02/05/2016"
+ ms.date="04/26/2016"
  ms.author="larryfr"/>
 
 # HDInsight での Apache Hadoop による Scalding MapReduce ジョブの開発
@@ -201,15 +201,15 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
     > [AZURE.NOTE] SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。たとえば、`ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net` のように指定します。
 
-3. ヘッド ノードに接続した後、次のコマンドを使用してワード カウント ジョブを実行します。
+3. ヘッド ノードに接続した後、次のコマンドを使用してワード カウント ジョブを実行します
 
-        hadoop jar scaldingwordcount-1.0-SNAPSHOT.jar com.microsoft.example.WordCount --hdfs --input wasb:///example/data/gutenberg/davinci.txt --output wasb:///example/wordcountout
+        yarn jar scaldingwordcount-1.0-SNAPSHOT.jar com.microsoft.example.WordCount --hdfs --input wasb:///example/data/gutenberg/davinci.txt --output wasb:///example/wordcountout
 
     これにより、前に実装した WordCount クラスが実行されます。`--hdfs` は、HDFS を使用するようにジョブに指示します。`--input` は入力テキスト ファイルを指定し、`--output` は出力の場所を指定します。
 
 4. ジョブが完了した後、次の方法で出力を表示します。
 
-        hadoop fs -text wasb:///example/wordcountout/part-00000
+        hdfs dfs -text wasb:///example/wordcountout/part-00000
 
     次のような情報が表示されます。
 
@@ -229,9 +229,9 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 ## Windows ベースのクラスターでのジョブの実行
 
-> [AZURE.NOTE] 次の手順では、Windows PowerShell を使用します。MapReduce ジョブを実行する他の方法については、「[HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」を参照してください。
+次の手順では、Windows PowerShell を使用します。MapReduce ジョブを実行する他の方法については、「[HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」を参照してください。
 
-1. [Azure PowerShell をインストールして構成します](../powershell-install-configure.md)。
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 2. Azure PowerShell を起動し、Azure アカウントにログインします。資格情報を提供すると、コマンドがアカウントの情報を返します。
 
@@ -344,4 +344,4 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

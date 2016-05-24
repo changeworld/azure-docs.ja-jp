@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="オンプレミス ライブ エンコーダーの構成" 
+	pageTitle="Azure Media Services を使用してマルチビットレートのストリームを作成するときにオンプレミス エンコーダーを構成する方法" 
 	description="このトピックには、ライブ イベントをキャプチャし、単一ビットレート ライブ ストリームを (Live Encoding が有効になっている) AMS チャネルに送信してさらに処理を行うために使用できるオンプレミス ライブ エンコーダーがリストされています。このトピックには、リストされているエンコーダーを構成する方法を示すチュートリアルへのリンクがあります。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
+	ms.date="05/05/2016"
 	ms.author="juliako"/>
 
 
 
-#オンプレミス ライブ エンコーダーの構成
+#Azure Media Services を使用してマルチビットレートのストリームを作成するときにオンプレミス エンコーダーを構成する方法
 
 このトピックには、ライブ イベントをキャプチャし、単一ビットレート ライブ ストリームを (Live Encoding が有効になっている) AMS チャネルに送信してさらに処理を行うために使用できるオンプレミス ライブ エンコーダーがリストされています。このトピックには、リストされているエンコーダーを構成する方法を示すチュートリアルへのリンクもあります。
 
@@ -51,6 +51,6 @@
 
 ## 関連項目
 
-[Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)。
+[Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

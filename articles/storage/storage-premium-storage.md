@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="04/26/2016"
 	ms.author="prkhad"/>
 
 
@@ -55,7 +55,11 @@ Azure Premium Storage を使用するには、[無料試用版](https://azure.mi
 
 ## DS、DSv2 および GS シリーズ VM
 
-Premium Storage は、DS シリーズ、DSv2 シリーズおよび GS シリーズの Azure Virtual Machines (VM) をサポートしています。DS シリーズ、DSv2 シリーズまたは GS シリーズの VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使用できます。DS シリーズや GS シリーズ以外の VM では Premium Storage ディスクを使用できません。使用可能な Azure VM の種類とサイズについては、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。次に、DS、DSv2 および GS シリーズ VM の機能をいくつか紹介します。
+Premium Storage は、DS シリーズ、DSv2 シリーズおよび GS シリーズの Azure Virtual Machines (VM) をサポートしています。DS シリーズ、DSv2 シリーズまたは GS シリーズの VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使用できます。DS シリーズや GS シリーズ以外の VM では Premium Storage ディスクを使用できません。
+
+Windows VM で使用できる Azure VM の種類やサイズについては、「[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」を参照してください。Linux VM の VM の種類やサイズについては、「[Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
+
+次に、DS、DSv2 および GS シリーズ VM の機能をいくつか紹介します。
 
 **Cloud Service**: DS シリーズ VM は DS シリーズ VM のみを含むクラウド サービスに追加できます。DS シリーズ以外の VM が存在する既存のクラウド サービスに DS シリーズの VM を追加しないでください。既存の VHD を DS シリーズ VM のみを実行する新しいクラウド サービスに移行できます。DS シリーズ VM をホストする新しいクラウド サービスに引き続き同じ仮想 IP アドレス (VIP) を使用するには、[予約済み IP アドレス](../virtual-network/virtual-networks-instance-level-public-ip.md)を使います。GS シリーズの VM は G シリーズの VM のみ実行している既存のクラウド サービスに追加できます。
 
@@ -73,7 +77,9 @@ Premium Storage は、DS シリーズ、DSv2 シリーズおよび GS シリー�
 
 現時点では、DS シリーズ最大の VM は STANDARD\_DS14 であり、この VM の全ディスクの帯域幅は最大 512 MB/秒です。現時点では、DS シリーズ最大の VM は STANDARD\_GS5 であり、この VM の全ディスクの帯域幅は最大 2000 MB/秒です。これらの制限は、ディスク トラフィックのみを対象としており、キャッシュ ヒットとネットワーク トラフィックは対象外となります。VM のネットワーク トラフィックの帯域幅は別に用意されており、Premium Storage ディスク専用の帯域幅とは区別されています。
 
-DS シリーズ、DSv2 シリーズおよび GS シリーズの VM の最大 IOPS とスループット (帯域幅) の最新情報については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。Premium Storage のディスクそれぞれの IOPS とスループット上限については、この記事の「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whja-JPing-premium-storage)」のセクションにある表を参照してください。
+DS シリーズ、DSv2 シリーズおよび GS シリーズの VM の最大 IOPS とスループット (帯域幅) の最新情報については、「[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」または「[Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
+
+Premium Storage のディスクそれぞれの IOPS とスループット上限については、この記事の「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whja-JPing-premium-storage)」のセクションにある表を参照してください。
 
 ## Premium Storage の拡張性とパフォーマンスの目標
 
@@ -544,4 +550,4 @@ Azure Premium Storage の詳細については、以下の記事を参照して�
 
 [Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

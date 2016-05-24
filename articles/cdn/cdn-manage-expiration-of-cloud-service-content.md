@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="02/25/2016"
+ ms.date="05/11/2016"
  ms.author="casoper"/>
 
 # Azure Content Delivery Network (CDN) でクラウド サービスのコンテンツの有効期限を管理する方法
@@ -50,4 +50,4 @@
 
 [Azure Content Delivery Network (CDN) で BLOB コンテンツの有効期限を管理する方法](./cdn-manage-expiration-of-blob-content.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

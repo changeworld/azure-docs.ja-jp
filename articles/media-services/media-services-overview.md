@@ -45,10 +45,6 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-##ポスター
-
-[ここ](https://azure.microsoft.com/documentation/infographics/media-services/)で、メディアの作成から使用までの Azure Media Services のワークフローを示す AMS ポスターを確認できます。
-
 ##前提条件
 
 Azure Media Services を使用するには、次が必要です。
@@ -132,17 +128,6 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
   
 1. コンテンツを徐々にダウンロードします。
 
-###関連トピック
-
-- [コンテンツのアップロード方法](media-services-manage-content.md#upload)
-- [メディア プロセッサの取得方法](media-services-get-media-processor.md)
-- [コンテンツのエンコード方法](media-services-manage-content.md#encode)
-- [ジョブの監視方法](media-services-portal-check-job-progress.md)
-- [Media Analytics の使用方法](media-services-analytics-overview.md)
-- [コンテンツの保護方法](media-services-manage-content.md#encrypt)
-- [公開の保護方法](media-services-manage-content.md#publish)
-- [エンコードの規模の設定方法](media-services-portal-encoding-units.md)
-
 ##<a id="live_scenarios"></a>Azure Media Services を使用してライブ ストリーミング イベントを配信する
 
 ライブ ストリーミングを使用する場合は、通常、次のコンポーネントが関連しています。
@@ -150,13 +135,14 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
 - イベントのブロードキャストに使用されるカメラ。
 - カメラからの信号をライブ ストリーミング サービスに送信されるストリームに変換するライブ ビデオ エンコーダー。
 
-必要に応じて、複数のライブ エンコーダー。非常に高い可用性と高品質が要求される重要なライブ イベントでは、アクティブ/アクティブの冗長エンコーダーを使用して、データを失わないシームレスなフェールオーバーを実現することをお勧めします。
+	(省略可) ライブ ストリーミングのタイミングを同期させた複数のエンコーダー。非常に高い可用性と高品質が要求される重要なライブ イベントでは、タイミングを同期させたアクティブ/アクティブの冗長エンコーダーを使用して、データを失わないシームレスなフェールオーバーを実現することをお勧めします。
 - 次の操作を実行できるライブ ストリーミング サービス。
-- さまざまなライブ ストリーミング プロトコル (RTMP、スムーズ ストリーミングなど) を使用してライブ コンテンツを取り込む。
-- ストリームをアダプティブ ビットレート ストリームにエンコードする。
-- ライブ ストリームをプレビューする。
-- 後でストリーミングするために、取り込んだコンテンツを保存する (ビデオ オン デマンド)。
-- コンテンツを一般的なストリーミング プロトコル (MPEG DASH、Smooth、HLS、HDS など) を使用して顧客に配信したり、再配布のための Content Delivery Network (CDN) に直接配信する。
+	
+	- さまざまなライブ ストリーミング プロトコル (RTMP、スムーズ ストリーミングなど) を使用してライブ コンテンツを取り込む。
+	- (省略可) ストリームをアダプティブ ビットレート ストリームにエンコードする。
+	- ライブ ストリームをプレビューする。
+	- 後でストリーミングするために、取り込んだコンテンツを記録して保存する (ビデオ オン デマンド)。
+	- コンテンツを一般的なストリーミング プロトコル (MPEG DASH、Smooth、HLS、HDS など) を使用して顧客に配信したり、再配布のための Content Delivery Network (CDN) に直接配信する。
 
 
 **Microsoft Azure Media Services** (AMS) は、ライブ ストリーミング コンテンツの取り込み、エンコード、プレビュー、保存、配信を行う機能を提供します。
@@ -165,17 +151,24 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
 
 Azure Media Services、**チャネル**、**プログラム**、**ストリーミング エンドポイント**で、インジェスト、書式設定、DVR、セキュリティ、スケーラビリティ、冗長性などのすべてのライブ ストリーミングの機能を処理します。
 
-**チャネル**は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。現時点では、チャネルは次の方法でライブ入力ストリームを受信できます。
+**チャネル**は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。チャネルは次の方法でライブ入力ストリームを受信できます。
 
+- オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、**パススルー**配信用に設定されたチャネルに送信します。**パススルー配信**とは、取り込んだストリームが、追加の処理なしで**チャネル**を通過することをいいます。マルチ ビットレートのスムーズ ストリーミングを出力するライブ エンコーダーとして、Elemental、Envivio、Cisco を使用できます。Adobe Flash Live、Telestream Wirecast、Tricaster トランスコーダーは、RTMP を出力するライブ エンコーダーです。ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。Media Services は、要求に応じて、ストリームを顧客に配信します。
 
+	>[AZURE.NOTE] 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。詳しくは、[価格情報](/pricing/details/media-services/)ページを参照してください。
+	
 - オンプレミスのライブ エンコーダーは、RTP (MPEG-TS)、RTMP、スムーズ ストリーミング (Fragmented MP4) のいずれかの形式で、シングル ビットレート ストリームを Media Services による Live Encoding が有効なチャネルに送信します。次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。Media Services は、要求に応じて、ストリームを顧客に配信します。
 
-Media Services でのライブ ストリームのエンコードは、**プレビュー**になっています。
-- オンプレミスのライブ エンコーダーは、マルチ ビットレート **RTMP** または **スムーズ ストリーミング** (Fragmented MP4) をチャネルに送信します。マルチ ビットレートのスムーズ ストリーミングを出力するライブ エンコーダーとして、Elemental、Envivio、Cisco を使用できます。Adobe Flash Live、Telestream Wirecast、Tricaster トランスコーダーは、RTMP を出力するライブ エンコーダーです。取り込んだストリームは、追加の処理なしで**チャネル**を通過します。ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。Media Services は、要求に応じて、ストリームを顧客に配信します。
 
+###オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルを操作する (パススルー)
+
+次の図は、**パススルー** ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
+
+![ライブ ワークフロー][live-overview2]
+
+詳細については、[オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの操作](media-services-live-streaming-with-onprem-encoders.md)に関するページを参照してください。
 
 ###Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する
-
 
 次の図は、Media Services による Live Encoding の実行が有効なチャネルのライブ ストリーミング ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
 
@@ -183,15 +176,6 @@ Media Services でのライブ ストリームのエンコードは、**プレ�
 
 詳細については、「[Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
-
-###オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
-
-
-次の図は、ライブ ストリーミング ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
-
-![ライブ ワークフロー][live-overview2]
-
-詳細については、[オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの操作](media-services-live-streaming-with-onprem-encoders.md)に関するページを参照してください。
 
 ##コンテンツの使用
 
@@ -236,4 +220,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

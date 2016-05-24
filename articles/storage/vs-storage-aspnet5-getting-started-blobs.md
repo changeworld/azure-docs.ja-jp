@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/21/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 # Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET 5)
@@ -155,4 +155,4 @@ BLOB を削除するには、まず BLOB の参照を取得し、次に **Delete
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0511_2016-->

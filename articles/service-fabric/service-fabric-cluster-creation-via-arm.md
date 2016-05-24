@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/12/2016"
+   ms.date="05/02/2016"
    ms.author="chackdan"/>
 
 
@@ -65,4 +65,4 @@ PowerShell を使用してテンプレートをデプロイする詳細な手順
 <!--Image references-->
 [DownloadTemplate]: ./media/service-fabric-cluster-creation-via-arm/DownloadTemplate.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

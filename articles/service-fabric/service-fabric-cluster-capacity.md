@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/28/2016"
+   ms.date="05/02/2016"
    ms.author="chackdan"/>
 
 
@@ -107,4 +107,4 @@
 <!--Image references-->
 [SystemServices]: ./media/service-fabric-cluster-capacity/SystemServices.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0511_2016-->

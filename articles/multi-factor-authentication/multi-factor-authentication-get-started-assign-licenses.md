@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/10/2016" 
+	ms.date="05/12/2016" 
 	ms.author="billmath"/>
 
 # Azure MFA、Azure AD Premium、または Enterprise Mobility のライセンスをユーザーに割り当てる
@@ -33,4 +33,4 @@ Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセ�
 7. チェック マークのアイコンを**クリック**して変更を保存します。![Assign Licenses](./media/multi-factor-authentication-get-started-assign-licenses/assign4.png)
 8. 割り当てられたライセンスの数と、割り当てに失敗した場合はその数を示すメッセージが表示されます。**[OK]** をクリックします。![Assign Licenses](./media/multi-factor-authentication-get-started-assign-licenses/assign5.png)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

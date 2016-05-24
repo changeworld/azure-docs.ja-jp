@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article" 
-	ms.date="02/04/2016"
+	ms.date="04/26/2016"
 	ms.author="rickbyh"/>
 
 
@@ -35,10 +35,11 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 
 ## Transact-SQL を使用してサーバー レベルのファイアウォール規則を管理する
 
-1. クラシック ポータルまたは SQL Server Management Studio を使用して、クエリ ウィンドウを起動します。
-2. マスター データベースに接続していることを確認します。
-3. サーバーレベルのファイアウォール規則は、クエリ ウィンドウから選択、作成、更新、または削除することができます。
-4. サーバーレベルのファイアウォール規則を更新または作成するには、sp\_set\_firewall rule ストアド プロシージャを実行します。次の例では、Contoso サーバーの IP アドレス範囲を有効にします。<br/>まず、既に存在する規則を確認します。
+サーバー レベルのプリンシパル ログインまたは Azure Active Directory 管理者のみが、Transact-SQL を使用して、サーバー レベルのファイアウォール ルールを作成できます。
+
+1. クエリ ウィンドウを起動し、仮想マスター データベースに接続するには、SQL Server Management Studio を使用します。
+2. サーバーレベルのファイアウォール規則は、クエリ ウィンドウから選択、作成、更新、または削除することができます。
+3. サーバーレベルのファイアウォール規則を更新または作成するには、sp\_set\_firewall rule ストアド プロシージャを実行します。次の例では、Contoso サーバーの IP アドレス範囲を有効にします。<br/>まず、既に存在する規則を確認します。
 
 		SELECT * FROM sys.firewall_rules ORDER BY name;
 
@@ -51,23 +52,28 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
  
 		EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
  
- 
+ このストアド プロシージャの詳細については、[sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) に関するページと [sp\_delete\_firewall\_rule](https://msdn.microsoft.com/library/dn270024.aspx) に関するページをご覧ください。
+
 ## データベース レベルのファイアウォール規則
+
+**CONTROL** 権限が付与されているデータベース ユーザー (データベース所有者など) のみが、データベース レベルのファイアウォール ルールを作成できます。
 
 1. サーバーレベルのファイアウォールを IP アドレスで作成した後、クラシック ポータルまたは SQL Server Management Studio からクエリ ウィンドウを起動します。
 2. データベースレベルのファイアウォール規則を作成するデータベースに接続します。
 
 	既存のデータベースレベルのファイアウォール規則を新規作成または更新するには、sp\_set\_database\_firewall\_rule ストアド プロシージャを実行します。次の例では ContosoFirewallRule という名前の新しいファイアウォール規則を作成します。
  
-		EXEC sp_set_database_firewall_rule @name = N'ContosoFirewallRule', @start_ip_address = '192.168.1.11', @end_ip_address = '192.168.1.11'
+		EXEC sp_set_database_firewall_rule @name = N'ContosoFirewallRule', 
+		    @start_ip_address = '192.168.1.11', @end_ip_address = '192.168.1.11'
  
 	既存のデータベースレベルのファイアウォール規則を削除するには、sp\_delete\_database\_firewall\_rule ストアド プロシージャを実行します。次の例では、ContosoFirewallRule という名前の規則を削除します。
  
 		EXEC sp_delete_database_firewall_rule @name = N'ContosoFirewallRule'
 
+このストアド プロシージャの詳細については、[sp\_set\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270010.aspx) に関するページと [sp\_delete\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270030.aspx) に関するページをご覧ください。
 
 ## 次のステップ
 
-データベース作成のチュートリアルについては、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照してください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、「[プログラムで Azure SQL Database に接続するためのガイドライン](https://msdn.microsoft.com/library/azure/ee336282.aspx)」を参照してください。データベースに移動する方法の詳細については、「[Azure SQL Database におけるデータベース、ログインの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)」を参照してください。
+データベース作成のチュートリアルについては、「[SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」をご覧ください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、[クライアントから SQL Database にすばやく接続するためのコード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関するページをご覧ください。データベースに移動する方法については、[データベースのアクセスとログイン セキュリティの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

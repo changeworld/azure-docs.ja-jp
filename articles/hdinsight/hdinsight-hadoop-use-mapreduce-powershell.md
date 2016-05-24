@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="02/04/2016"
+   ms.date="04/26/2016"
    ms.author="larryfr"/>
 
 #PowerShell を使用して HDInsight の Hadoop で Hive クエリを実行
@@ -29,7 +29,9 @@
 
 - **Azure HDInsight (HDInsight での Hadoop) クラスター (Windows または Linux ベース)**
 
-- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照
+- **Azure PowerShell を実行できるワークステーション**。
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 ##<a id="powershell"></a>Azure PowerShell を使用した MapReduce ジョブの実行
 
@@ -182,4 +184,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

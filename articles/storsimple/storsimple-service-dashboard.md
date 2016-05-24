@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="StorSimple Manager サービスのダッシュボード | Microsoft Azure"
    description="StorSimple Manager サービス ダッシュボードについて説明すると共に、サービス ダッシュボードを使用して StorSimple ソリューションの状態を監視する方法を説明します。"
    services="storsimple"
@@ -6,13 +6,13 @@
    authors="SharS"
    manager="carolz"
    editor="" />
-<tags 
+<tags
    ms.service="storsimple"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/01/2016"
+   ms.date="05/10/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスのダッシュボードを使用する
@@ -25,7 +25,7 @@ StorSimple Manager サービスのダッシュボード ページには、StorSi
 
 StorSimple Manager サービスのダッシュボードには、次の情報が表示されます。
 
-- **グラフ**の領域には、デバイスに関連するメトリック グラフが表示されます。ここでは、すべてのデバイスで使用されるプライマリ ストレージと、一定期間デバイスによって使用されるクラウド ストレージを確認できます。グラフの右上隅にあるコントロールを使用して、1 週間、1 か月、3 か月、または 1 年間のタイム スケールを指定できます。
+- **グラフ**の領域には、デバイスに関連するメトリック グラフが表示されます。ここでは、すべてのデバイスで使用されるプライマリ ストレージ (ローカル固定ストレージと階層化ストレージ) と、一定期間デバイスで使用されるクラウド ストレージを確認できます。グラフの右上隅にあるコントロールを使用して、1 週間、1 か月、3 か月、または 1 年間のタイム スケールを指定できます。
 
 - **[使用状況の概要]** では、すべてのデバイスで使用可能な合計ストレージに対して、プロビジョニングされているプライマリ ストレージ、およびすべてのデバイスで使用されているプライマリ ストレージの割合を示します。**[プロビジョニング済み]** は、使用のための準備および割り当てが完了しているストレージ容量を示し、**[使用済み]** は、デバイスに接続されているイニシエーターで確認された、ボリュームの使用状況を示します。
 
@@ -76,4 +76,4 @@ StorSimple Manager サービスのダッシュボード ページを使用して
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0511_2016-->

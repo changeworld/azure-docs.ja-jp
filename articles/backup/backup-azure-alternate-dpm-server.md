@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/10/2015"
+	ms.date="05/05/2016"
 	ms.author="giridham;jimpark"/>
 
 # バックアップ コンテナーで別の DPM サーバーからデータを復元する
@@ -32,7 +32,7 @@
 
     ![外部 DPM の資格情報](./media/backup-azure-alternate-dpm-server/external-dpm-credentials.png)
 
-    >[AZURE.NOTE]同じ登録コンテナーに関連付けられている DPM サーバーのみ互いのデータを復元できます。
+    >[AZURE.NOTE] 同じ登録コンテナーに関連付けられている DPM サーバーのみ互いのデータを復元できます。
 
     外部 DPM サーバーが追加されたら、**[回復]** タブから外部 DPM サーバーとローカル DPM サーバーのデータを閲覧できます。
 
@@ -73,7 +73,7 @@
 
     ![外部 DPM 回復のオプション概要](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
-    >[AZURE.NOTE]DPM サーバーの **[監視]** タブで回復ジョブを監視できます。
+    >[AZURE.NOTE] DPM サーバーの **[監視]** タブで回復ジョブを監視できます。
 
     ![回復の監視](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
 
@@ -103,4 +103,4 @@
 ## 次のステップ:
 • [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/03/2016"
+ 	ms.date="05/04/2016"
 	ms.author="juliako"/>
 
 #Azure Media Services を使用して Apple FairPlay で保護された HLS コンテンツをストリーミングする 
@@ -41,6 +41,9 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 	- Azure アカウント。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
 	- Media Services アカウント。Media Services アカウントを作成するには、「[アカウントの作成](media-services-create-account.md)」を参照してください。
+	- [Apple 開発プログラム](https://developer.apple.com/)にサインアップします。
+	- コンテンツ所有者による[デプロイ パッケージ](https://developer.apple.com/contact/fps/)の取得が Apple によって求められます。要求には、Azure Media Services で KSM (キー セキュリティ モジュール) が既に実装されていること、および最終的な FPS パッケージを要求していることを明記してください。最終的な FPS パッケージに含まれるのは、証明書を生成し、ASK を取得するための指示です。これを使用して FairPlay を構成します。 
+
 	- Azure Media Services .NET SDK バージョン **3.6.0** 以降。
 
 - AMS キーの配信側で次の設定が必要です。
@@ -49,10 +52,10 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 	 	顧客がキー配信ポリシーを構成する場合、パスワードと .pfx は base64 形式にする必要があります。
 
 	- **App Cert password** - .pfx ファイルを作成するための顧客のパスワード。
-	- **App Cert password ID** - 顧客は **ContentKeyType.FairPlayPfxPassword** 列挙値を使用して、他の AMS キーと同様の方法で ASK をアップロードする必要があります。そうすることで、キー配信ポリシー オプションの内部で使用する必要がある AMS ID を取得できます。
+	- **App Cert password ID** - 顧客は **ContentKeyType.FairPlayPfxPassword** 列挙値を使用して、他の AMS キーと同様の方法でパスワードをアップロードする必要があります。そうすることで、キー配信ポリシー オプションの内部で使用する必要がある AMS ID を取得できます。
 	- **iv** - 16 バイトのランダムな値。資産配信ポリシーの iv と一致している必要があります。顧客は IV を生成し、アセット配信ポリシーとキー配信ポリシー オプションの両方に配置します。 
 	- **ASK** - Apple 開発者ポータルを使用して証明書を生成したときに受け取るアプリケーションの秘密キー (Application Secret Key) です。開発チームごとに一意の ASK が割り当てられます。ASK のコピーを保存して、安全な場所に保管してください。後から ASK を FairPlayAsk として Azure Media services に構成する必要があります。 
-	-  **ASK ID** - Apple から提供されます。顧客は **ContentKeyType.FairPlayASk** 列挙値を使用して、他の AMS キーと同様の方法で ASK をアップロードする必要があります。そうすることで、キー配信ポリシー オプションの内部で使用する必要がある WAMS ID を取得できます。
+	-  **ASK ID** - 顧客が ASK を AMS にアップロードするときに取得されます。顧客は **ContentKeyType.FairPlayASk** 列挙値を使用して ASK をアップロードする必要があります。これにより AMS ID が返されます。これは、キー配信ポリシー オプションを設定するときに使用する ID です。
 
 - FPS のクライアント側で、次の設定が必要です。
  	- **App Cert (AC)** - OS が一部のペイロードを暗号化する際に使用する公開キーを含む .cer/.der ファイル。AMS で把握しておく必要がある理由は、プレーヤーで必要になるからです。復号化は、キー配信サービスが対応する秘密キーを使用して行います。
@@ -63,7 +66,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 	-  .pfx 
 	-  .pfx のパスワード
  
-- **AES-128 CBC** で暗号化された HLS をサポートしているクライアントは、OS X 上の Safari、Apple TV、iOS です。
+- **AES-128 CBC** 暗号化で HLS をサポートしているクライアントは、OS X 上の Safari、Apple TV、iOS です。
 
 ##FairPlay の動的暗号化とライセンス配信サービスを構成する手順
 
@@ -75,7 +78,9 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 1. コンテンツ キーの承認ポリシーを構成します。コンテンツ キーの承認ポリシーを作成するときに、次のものを指定する必要があります。 
 	
 	- 配信方法 (ここでは FairPlay) 
-	- FairPlay ポリシー オプションの構成FairPlay を構成する方法の詳細については、下の ConfigureFairPlayPolicyOptions() メソッドを参照してください。
+	- FairPlay ポリシー オプションの構成FairPlay を構成する方法の詳細については、以下のサンプルの ConfigureFairPlayPolicyOptions() メソッドをご覧ください。
+	
+		>[AZURE.NOTE] ほとんどの場合、証明書と ASK は 1 組だけなので、FairPlay ポリシー オプションを構成する必要があるのは 1 回のみです。
 	- 制限 (オープンまたはトークン) 
 	- キーをクライアントに配信する方法を定義する、キー配信タイプに固有の情報 
 	
@@ -91,6 +96,11 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 	>- もう 1 つは、HLS 向けに FairPlay を構成するための IAssetDeliveryPolicy
 
 1. ストリーミング URL を取得するために OnDemand ロケーターを作成します。
+
+>[AZURE.NOTE] Azure Media Player では、すぐに使用できる FairPlay 再生はサポートされていません。MAC OSX で FairPlay 再生を入手するには、Apple 開発者アカウントからサンプル プレーヤーを取得する必要があります。
+>
+>iOS SDK を使用してアプリを開発することもできます。
+
 
 ##.NET の例
 
@@ -281,7 +291,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 		
 		        static public IContentKey CreateCommonCBCTypeContentKey(IAsset asset)
 		        {
-		            // Create envelope encryption content key
+		            // Create HLS SAMPLE AES encryption content key
 		            Guid keyId = Guid.NewGuid();
 		            byte[] contentKey = GetRandomBuffer(16);
 		
@@ -439,6 +449,13 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 		            // Get the FairPlay license service URL.
 		            Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.FairPlay);
 		
+					// The reason the below code replaces "https://" with "skd://" is because
+					// in the IOS player sample code which you obtained in Apple developer account, 
+					// the player only recognizes a Key URL that starts with skd://. 
+					// However, if you are using a customized player, 
+					// you can choose whatever protocol you want. 
+					// For example, "https". 
+
 		            Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
 		                new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
 		                {
@@ -519,4 +536,4 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0511_2016-->

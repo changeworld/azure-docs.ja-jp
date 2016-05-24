@@ -1,6 +1,6 @@
 <properties
-	pageTitle="AlwaysOn 可用性グループの ILB リスナーを構成する | Microsoft Azure"
-	description="このチュートリアルでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、内部 Load Balancer (ILB) を使用して Azure で AlwaysOn 可用性グループ リスナーを作成します。"
+	pageTitle="AlwaysOn 可用性グループの ILB リスナーの構成 | Microsoft Azure"
+	description="このチュートリアルでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用し、内部ロード バランサー (ILB) を使用して Azure で AlwaysOn 可用性グループ リスナーを作成します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="MikeRayMSFT"
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/19/2016"
+	ms.date="05/08/2016"
 	ms.author="mikeray" />
 
 # Azure での AlwaysOn 可用性グループの ILB リスナーの構成
@@ -24,9 +24,9 @@
 
 ## 概要
 
-このトピックでは、**内部 Load Balancer (ILB)** を使用して AlwaysOn 可用性グループのリスナーを構成する方法について説明します。
+このトピックでは、**内部ロード バランサー (ILB)** を使用して AlwaysOn 可用性グループのリスナーを構成する方法について説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。Resource Manager モデルで AlwaysOn 可用性グループの ILB リスナーを構成する方法については、「[Azure の AlwaysOn 可用性グループに使用する内部ロード バランサーの構成](virtual-machines-windows-portal-sql-alwayson-int-listener.md)」をご覧ください。
 
 
 可用性グループには、オンプレミスのみ、Azure のみ、またはオンプレミスと Azure の両方にまたがるハイブリッド構成のレプリカを含めることができます。Azure レプリカは、同じリージョン内に配置することも、複数の仮想ネットワーク (VNet) を使用して複数のリージョンに配置することもできます。後述の手順では、既に[可用性グループは構成している](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)ものの、リスナーは構成していないと仮定しています。
@@ -36,7 +36,7 @@ ILB を使用した Azure の可用性グループ リスナーに関する次�
 
 - 可用性グループ リスナーは、Windows Server 2008 R2、Windows Server 2012、および Windows Server 2012 R2 でサポートされます。
 
-- 内部可用性グループ リスナーは、クラウド サービスごとに 1 つのみサポートされます。これは、リスナーが ILB に対して構成されており、クラウド サービスごとに 1 つの ILB しか持たないためです。ただし、複数の外部リスナーを作成することができます。詳細については、「[Azure での AlwaysOn 可用性グループの外部リスナーの構成](virtual-machines-windows-classic-ps-sql-ext-listener.md)」を参照してください。
+- 内部可用性グループ リスナーは、クラウド サービスごとに 1 つのみサポートされます。これは、リスナーが ILB に対して構成されており、クラウド サービスごとに 1 つの ILB しか持たないためです。ただし、複数の外部リスナーを作成することができます。詳細については、「[Azure での AlwaysOn 可用性グループの外部リスナーの構成](virtual-machines-windows-classic-ps-sql-ext-listener.md)」をご覧ください。
 
 - クラウド サービスのパブリック VIP を使用する外部リスナーも含まれるクラウド サービスに内部リスナーを作成することはできません。
 
@@ -138,4 +138,4 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

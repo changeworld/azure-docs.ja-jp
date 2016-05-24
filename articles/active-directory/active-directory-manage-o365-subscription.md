@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="02/10/2016"
+   ms.date="05/16/2016"
    ms.author="curtand"/>
 
 #Azure での Office 365 サブスクリプションのディレクトリの管理
@@ -71,4 +71,4 @@ Michael Smith さんが msmith@hotmail.com で Azure にサインインしてい
 ##次のステップ
 サブスクリプションとディレクトリの関係の詳細については、[サブスクリプションをディレクトリに関連付ける方法](active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

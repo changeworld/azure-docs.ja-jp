@@ -2,6 +2,7 @@ Data Factory は、お客様のサブスクリプションが互いのワーク�
 
 **リソース** | **既定の制限** | **上限**
 -------- | ------------- | -------------
+Azure サブスクリプション内の Data Factory | 50 | [サポートにお問い合せください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 1 つの Data Factory 内のパイプライン数 | 100 | 2500
 1 つの Data Factory 内のデータセット数 | 500 | 5000
 データセットあたりの同時実行のスライス数 | 10 | 10
@@ -29,4 +30,4 @@ Data Factory は、お客様のサブスクリプションが互いのワーク�
 
 Azure リソース マネージャーでは、API 呼び出しの制限があります。API の呼び出しは、[Azure リソース マネージャーの API 制限](../azure-subscription-service-limits/#resource-group-limits)内の割合で実行できます。
 
-<!---HONumber=AcomDC_0323_2016-->
+

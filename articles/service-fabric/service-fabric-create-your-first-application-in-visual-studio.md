@@ -3,7 +3,7 @@
    description="Visual Studio を使用して Service Fabric アプリケーションを作成、デプロイ、デバッグする"
    services="service-fabric"
    documentationCenter=".net"
-   authors="seanmck"
+   authors="rwike77"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="03/27/2016"
-   ms.author="seanmck"/>
+   ms.author="ryanwi"/>
 
 # Visual Studio で最初の Azure Service Fabric アプリケーションを作成する
 
@@ -115,9 +115,9 @@ Service Fabric のアプリケーションには、アプリケーションの�
   まとめに入る前に、ローカル クラスターが非常に現実的であることを覚えておくことが重要です。デバッガーを停止し、Visual Studio を閉じた後でも、アプリケーションはバック グラウンドで実行し続けます。アプリケーションの性質によっては、このバックグラウンド アクティビティはコンピューター上の大量のリソースを占有する場合があります。この問題は、いくつかのオプションで管理することができます。
 
   1. 個々のアプリケーションとそのデータすべてを削除するには、Service Fabric Explorer で **[アプリケーションの削除]** アクションを実行します。これは、**[アクション]** メニューから実行するか、左側のウィンドウにあるアプリケーション リスト ビューのコンテキスト メニューから実行します。
-  
+
     ![Delete an application is Service Fabric Explorer][sfe-delete-application]
-    
+
   2. クラスターからアプリケーションを削除すると、そのアプリケーションについて **[種類のプロビジョニング解除]** を選択できます。これにより、クラスターのイメージ ストアからアプリケーションのパッケージ (コードと構成を含む) が削除されます。
   3. クラスターをシャットダウンしても、アプリケーションのデータとトレースは保持するという場合は、システム トレイ アプリで **[ローカル クラスターの停止]** をクリックします。
 
@@ -150,4 +150,4 @@ Temporarily removing this link because we have removed the ASP.NET template.
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

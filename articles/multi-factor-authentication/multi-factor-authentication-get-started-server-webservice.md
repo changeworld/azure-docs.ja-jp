@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/10/2016" 
+	ms.date="05/12/2016" 
 	ms.author="billmath"/>
 
 # MFA Server モバイル アプリ Web サービスの概要
@@ -90,4 +90,4 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 <center>![Setup](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

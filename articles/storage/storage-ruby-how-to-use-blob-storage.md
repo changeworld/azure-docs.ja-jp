@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Ruby から BLOB ストレージを使用する方法 | Microsoft Azure"
-	description="BLOB ストレージを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、削除する方法について説明します。コード サンプルは Ruby で記述されています。"
+	description="Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 	services="storage"
 	documentationCenter="ruby"
 	authors="rmcmurray"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="02/17/2016"
+    ms.date="04/29/2016"
 	ms.author="robmcm"/>
 
 
@@ -31,7 +31,7 @@
 
 ## Ruby アプリケーションの作成
 
-Ruby アプリケーションを作成します。手順については、「[Azure VM での Ruby on Rails Web アプリケーション](../virtual-machines/virtual-machines-linux-classic-ruby-rails-web-app.md)」を参照してください。
+Ruby アプリケーションを作成します。手順については、「[Ruby on Rails Web application on an Azure VM](../virtual-machines/virtual-machines-linux-classic-ruby-rails-web-app.md)」 (Azure VM での Ruby on Rails Web アプリケーション) を参照してください。
 
 ## アプリケーションのストレージへのアクセスの構成
 
@@ -155,4 +155,4 @@ BLOB をダウンロードするには、**get\_blob()** メソッドを使用�
 - GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

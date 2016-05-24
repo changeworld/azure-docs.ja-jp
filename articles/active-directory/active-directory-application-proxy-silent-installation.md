@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/09/2016"
 	ms.author="kgremban"/>
 
 # Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法
@@ -23,7 +23,7 @@
 複数の Windows サーバーまたはユーザー インターフェイスが有効になっていない Windows サーバーにインストール スクリプトを送信できます。このトピックでは、無人インストールを有効にし、Azure AD アプリケーション プロキシ コネクタをインストールして登録する Windows PowerShell スクリプトを作成する方法について説明します。
 
 ## アクセスの実現
-アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。アプリケーション プロキシ コネクタを機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。通常、これは、コネクタのインストール時にポップアップ ダイアログ ボックスに入力します。代わりに、Windows PowerShell を使用して資格情報オブジェクトを作成することで登録情報を入力することも、独自のトークンを作成して、登録情報の入力に使用することもできます。
+アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。アプリケーション プロキシ コネクタを機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。通常、これは、コネクタのインストール時にポップアップ ダイアログ ボックスに入力します。または、Windows PowerShell を使用して資格情報オブジェクトを作成することで登録情報を入力することも、独自のトークンを作成して、登録情報の入力に使用することもできます。
 
 ## 手順 1: 登録せずにコネクタをインストールする
 
@@ -125,24 +125,13 @@
 
 
 
-## 次の手順
-アプリケーション プロキシを使ってできることは他にもたくさんあります。
+## 関連項目
 
-
+- [Azure Active Directory のアプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
 - [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
 - [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
-- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
-- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
+- [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
 
+最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 
-### アプリケーション プロキシに関するその他の情報
-- [オンライン ヘルプ](active-directory-application-proxy-enable.md)
-- [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
-- [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
-
-## その他のリソース
-- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-- [Azure への組織としてのサインアップ](sign-up-organization.md)
-- [Azure ID](fundamentals-identity.md)
-
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0511_2016-->

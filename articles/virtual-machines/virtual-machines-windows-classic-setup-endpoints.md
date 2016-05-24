@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/06/2016"
+	ms.date="04/19/2016"
 	ms.author="cynthn"/>
 
 # Azure 上でクラシック仮想マシンにエンドポイントをセットアップする方法
@@ -36,6 +36,6 @@ Azure クラシック ポータルで Windows 仮想マシンを作成すると�
 
 * Azure PowerShell コマンドレットを使用してエンドポイントの ACL を管理するには、「[PowerShell を使用してアクセス制御リスト (ACL) のエンドポイントを管理する方法](../virtual-network/virtual-networks-acl-powershell.md)」をご覧ください。
 
-* リソース マネージャーのデプロイメント モデルで仮想マシンを作成した場合、Azure PowerShell を使用して、[インターネットに接続するロード バランサーを作成する](../load-balancer/load-balancer-get-started-internet-arm-ps.md)こともできます。
+* Resource Manager デプロイメント モデルで仮想マシンを作成した場合は、Azure PowerShell を使用して、VM へのトラフィックを制御する[ネットワーク セキュリティ グループを作成](../virtual-network/virtual-networks-create-nsg-arm-ps.md)できます。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

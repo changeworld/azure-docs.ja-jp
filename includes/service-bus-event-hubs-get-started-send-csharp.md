@@ -4,9 +4,9 @@
 
 1. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。プロジェクトの名前として「**Sender**」と入力します。
 
-   ![][7]
+	![][7]
 
-2. ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします。 
+2. ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします。
 
 3. **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。プロジェクト名 (**Sender**) が **[バージョン]** ボックスで指定されていることを確認します。**[インストール]** をクリックして、使用条件に同意します。
 
@@ -21,7 +21,7 @@
 	using Microsoft.ServiceBus.Messaging;
 	```
 
-5. **Program** クラスに次のフィールドを追加し、**Send** 権限を使用して、前のセクションで作成した Event Hub の名前と接続文字列をプレースホルダーの値に代入します (**SendRule** 接続文字列)。`EntityPath` サフィックスを接続文字列から削除します。
+5. **Program** クラスに次のフィールドを追加し、前のセクションで作成した Event Hub の名前と、先ほど保存した名前空間レベルの接続文字列を値に代入します。
 
 	```
 	static string eventHubName = "{Event Hub name}";
@@ -69,5 +69,3 @@
 <!-- Images -->
 [7]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
-
-<!---HONumber=AcomDC_0413_2016-->

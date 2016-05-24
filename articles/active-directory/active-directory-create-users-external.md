@@ -74,6 +74,7 @@
 - 外部ユーザーは、自分のホーム ディレクトリ以外のディレクトリ内のマルチテナント アプリケーションに同意できません。
 - PowerBI では、現在、外部ユーザーによるアクセスはサポートされていません。
 - Office ポータルでは、外部ユーザーへのライセンス付与をサポートしていません。
+- Azure AD PowerShell では、外部ユーザーは自分のホーム ディレクトリにログインした状態であり、自分が外部ユーザーであるディレクトリを管理できません。
 
 
 ## 参照トピック
@@ -83,4 +84,4 @@
 - [Manage passwords in Azure AD](active-directory-manage-passwords.md)
 - [Manage groups in Azure AD](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

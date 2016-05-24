@@ -1,6 +1,6 @@
 <properties
 	pageTitle="オンプレミスの AlwaysOn 可用性グループの Azure への拡張 | Microsoft Azure"
-	description="このチュートリアルでは、クラシック デプロイメント モデルで作成されたリソースを使用し、SQL Server Management Studio (SSMS) のレプリカの追加ウィザードを使用して、Azure に AlwaysOn 可用性グループ レプリカを追加する方法について説明します。"
+	description="このチュートリアルでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用し、SQL Server Management Studio (SSMS) のレプリカの追加ウィザードを使用して、Azure に AlwaysOn 可用性グループ レプリカを追加する方法について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="MikeRayMSFT"
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/05/2016"
+	ms.date="05/08/2016"
 	ms.author="mikeray" />
 
 # オンプレミスの AlwaysOn 可用性グループの Azure への拡張
@@ -27,7 +27,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 - 有効な Azure サブスクリプション[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
-- 既存のオンプレミスの AlwaysOn 可用性グループ。可用性グループの詳細については、「[AlwaysOn 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)」を参照してください。
+- 既存のオンプレミスの AlwaysOn 可用性グループ。可用性グループの詳細については、「[AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。
 
 - オンプレミスのネットワークと、Azure Virtual Network 間の接続。この仮想ネットワークを作成する方法の詳細については、「[Azure クラシック ポータルでのサイト間 VPN の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)」を参照してください。
 
@@ -81,7 +81,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 1. **[次へ]** をクリックします。
 
-1. **[最初のデータの同期を選択]** ページで、使用するデータの同期方法を選択し、**[次へ]** をクリックします。ほとんどのシナリオでは、**[完全データ同期]** を選択します。データ同期方法の詳細については、「[[最初のデータの同期を選択] ページ (AlwaysOn 可用性グループ ウィザード)](https://msdn.microsoft.com/library/hh231021.aspx)」を参照してください。
+1. **[最初のデータの同期を選択]** ページで、使用するデータの同期方法を選択し、**[次へ]** をクリックします。ほとんどのシナリオでは、**[完全データ同期]** を選択します。データ同期方法の詳細については、「[[最初のデータの同期を選択] ページ (AlwaysOn 可用性グループ ウィザード)](https://msdn.microsoft.com/library/hh231021.aspx)」をご覧ください。
 
 1. **[検証]** ページで結果を確認します。未解決の問題を修正し、必要に応じて、検証を再実行します。**[次へ]** をクリックします。
 
@@ -95,7 +95,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 ## 可用性グループ リスナーの作成
 
-可用性グループを作成したら、レプリカに接続するクライアントのリスナーを作成する必要があります。リスナーは、着信接続をプライマリ レプリカまたは読み取り専用のセカンダリ レプリカに転送します。リスナーの詳細については、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」を参照してください。
+可用性グループを作成したら、レプリカに接続するクライアントのリスナーを作成する必要があります。リスナーは、着信接続をプライマリ レプリカまたは読み取り専用のセカンダリ レプリカに転送します。リスナーの詳細については、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」をご覧ください。
 
 ## 次のステップ
 
@@ -103,4 +103,4 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0511_2016-->

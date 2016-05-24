@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/02/2016"
+	ms.date="05/12/2016"
 	ms.author="awills"/>
 
 # Java Web プロジェクトで Application Insights を使う
@@ -214,35 +214,38 @@ Application Insights パッケージを含めるように次の要素を編集�
 
 ## 6\.Application Insights でのテレメトリを表示する
 
+
 [Microsoft Azure ポータル](https://portal.azure.com)の Application Insights リソースに戻ります。
 
 HTTP 要求データが概要ブレードに表示されます (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
 
 ![サンプル データ](./media/app-insights-java-get-started/5-results.png)
 
+[メトリックの詳細についてはこちらをご覧ください。][metrics]
 
-任意のグラフをクリックして、より詳細なメトリックを表示します。
+任意のグラフをクリックして、より詳細な集計メトリックを表示します。
 
 ![](./media/app-insights-java-get-started/6-barchart.png)
 
+> Application Insights では、MVC アプリケーションの HTTP 要求の形式として、`VERB controller/action` が想定されます。たとえば、`GET Home/Product/f9anuh81`、`GET Home/Product/2dffwrf5`、`GET Home/Product/sdf96vws` は、`GET Home/Product` にグループ化されます。これにより、要求数や要求の平均実行時間など、要求の意味のある集計を行うことができます。
 
+
+### インスタンス データ 
+
+個々のインスタンスを表示するには、特定の要求の種類をクリックします。
+
+Application Insights には、2 種類のデータが表示されます。1 つは、格納され、平均、カウント、合計として表示される集計データです。もう 1 つは、HTTP 要求、例外、ページ ビュー、またはカスタム イベントの個々のレポートであるインスタンス データです。
 
 要求のプロパティを表示すると、その要求に関連付けられているテレメトリ イベント (要求や例外など) が表示されます。
 
 ![](./media/app-insights-java-get-started/7-instance.png)
 
 
+### Analytics: 強力なクエリ言語
 
-[メトリックの詳細についてはこちらをご覧ください。][metrics]
+より多くのデータが蓄積されると、データを集計するためのクエリと、個々のインスタンスを検索するためのクエリの両方を実行できます。[Analytics]() は、パフォーマンスと使用状況を把握したり診断を行ったりするための強力なツールです。
 
-#### 洗練されたアドレス名の計算
-
-Application Insights では、MVC アプリケーションの HTTP 要求の形式として、`VERB controller/action` が想定されます。
-
-
-たとえば、`GET Home/Product/f9anuh81`、`GET Home/Product/2dffwrf5`、`GET Home/Product/sdf96vws` は、`GET Home/Product` にグループ化されます。
-
-これにより、要求数や要求の平均実行時間など、要求の意味のある集計を行うことができます。
+![Example of Analytics](./media/app-insights-java-get-started/025.png)
 
 
 ## 5\.サーバーへのアプリのインストール
@@ -364,7 +367,7 @@ SDK をインストールすると、API を使用して独自のテレメトリ
 
 ## 可用性 Web テスト
 
-Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。[設定するには][availability]、下にスクロールして [可用性] をクリックします。
+Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。[設定するには][availability]、下へスクロールして [可用性] をクリックします。
 
 ![Scroll down, click Availability, then Add Web test](./media/app-insights-java-get-started/31-config-web-test.png)
 
@@ -398,4 +401,4 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

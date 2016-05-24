@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/21/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 # Azure Storage の使用 (Azure Web ジョブ プロジェクト)
@@ -153,4 +153,4 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 
 この記事では、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブおよび Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブのドキュメント リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

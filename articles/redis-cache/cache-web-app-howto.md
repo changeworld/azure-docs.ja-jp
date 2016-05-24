@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
-	ms.date="05/05/2016" 
+	ms.date="05/18/2016" 
 	ms.author="sdanie"/>
 
 # Redis Cache で Web アプリを作成する方法
@@ -688,12 +688,13 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 1. 使用する Azure サブスクリプションを **[カスタム デプロイ]** ブレードで選択し、既存のリソース グループを選択するか新たに作成して、リソース グループの場所を指定します。
 2. **[パラメーター]** ブレードで、管理者アカウントの名前 (**admin** ではなく **ADMINISTRATORLOGIN**)、管理者のログイン パスワード (**ADMINISTRATORLOGINPASSWORD**)、データベース名 (**DATABASENAME**) を指定します。その他のパラメーターは、Free App Service ホスティング プランを使用するように構成し、Free レベルに付属しない SQL Database と Azure Redis Cache については、コストを低く抑えるように設定しています。
 3. 必要に応じて他の設定を変更するか、既定値をそのまま使用し、**[OK]** をクリックします。
-4. 設定が済んだら **[法律条項を確認してください]** をクリックします。
+
 
 ![Azure へのデプロイ][cache-deploy-to-azure-step-2]
 
-1. 条項を読み、**[作成]** ブレードをクリックして **[作成]** をクリックします。
-2. リソースのプロビジョニングを開始するには、**[カスタム デプロイ]** ブレードの **[作成]** をクリックします。
+1. **[法律条項を確認してください]** をクリックします。
+2. **[購入]** ブレードで法律条項を読み、**[購入]** をクリックします。
+3. リソースのプロビジョニングを開始するには、**[カスタム デプロイ]** ブレードの **[作成]** をクリックします。
 
 デプロイの進行状況を表示するには、通知アイコンをクリックして **[デプロイが開始されました]** をクリックします。
 
@@ -838,4 +839,4 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

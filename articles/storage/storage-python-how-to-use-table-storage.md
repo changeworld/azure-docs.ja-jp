@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Python から Table ストレージを使用する方法 | Microsoft Azure"
-	description="Python から Table サービスを使用して、テーブルを作成、削除する方法、テーブルのエンティティを挿入、照会する方法について説明します。"
+	description="NoSQL データ ストアの Azure Table Storage を使用して、構造化データをクラウドに格納します。"
 	services="storage"
 	documentationCenter="python"
 	authors="emgerner-msft"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="02/11/2016"
+	ms.date="04/29/2016"
 	ms.author="emgerner"/>
 
 
@@ -149,4 +149,4 @@
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
 
-<!----HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0511_2016-->

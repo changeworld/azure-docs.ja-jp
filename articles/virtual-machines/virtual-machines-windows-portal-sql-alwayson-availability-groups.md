@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure リソース マネージャーでの AlwaysOn 可用性グループの構成 | Microsoft Azure"
-	description="Azure Virtual Machines を使用して Azure リソース マネージャー モードで AlwaysOn 可用性グループを作成します。このチュートリアルでは、ソリューション全体の自動作成に、主にユーザー インターフェイスを使用します。"
+	pageTitle="Azure Resource Manager での AlwaysOn 可用性グループの構成 | Microsoft Azure"
+	description="Azure Virtual Machines を使用して Azure Resource Manager モードで AlwaysOn 可用性グループを作成します。このチュートリアルでは、ソリューション全体の自動作成に、主にユーザー インターフェイスを使用します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="MikeRayMSFT"
@@ -13,27 +13,25 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="02/04/2016"
+	ms.date="05/10/2016"
 	ms.author="mikeray" />
 
-# Azure リソース マネージャー仮想マシン (GUI) での AlwaysOn 可用性グループの構成
+# Azure Resource Manager 仮想マシン (GUI) での AlwaysOn 可用性グループの構成
 
 > [AZURE.SELECTOR]
-- [ポータル - Resource Manager - テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-- [ポータル - Resource Manager - 手動](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
-- [ポータル - クラシック - 手動](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
-- [PowerShell - クラシック](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
+- [テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+- [マニュアル](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
 
 <br/>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック モデル。
+> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック モデル。
 
 
 この詳細なチュートリアルでは、Azure リソース マネージャー仮想マシンに SQL Server の可用性グループを作成する方法について説明します。このチュートリアルでは、テンプレートの構成に Azure ブレードを使用します。このチュートリアルでは、既定の設定を確認し、必要な設定を入力し、ポータルでブレードを更新します。
 
->[AZURE.NOTE] Microsoft Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、AlwaysOn 可用性グループに必要なものすべてが自動的に構成されます。詳細については、[Microsoft Azure クラシック ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。
+>[AZURE.NOTE] Microsoft Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、可用性グループに必要なものすべてが自動的に構成されます。詳細については、[Microsoft Azure クラシック ポータル ギャラリーで提供されている SQL Server AlwaysOn](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx) に関するブログを参照してください。
 
-チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
+チュートリアルの最後には、次の要素で構成された SQL Server 可用性グループ ソリューションが Azure で完成します。
 
 - 複数のサブネットから成る仮想ネットワーク (フロントエンドのサブネットとバックエンドのサブネットを含む)
 
@@ -57,13 +55,13 @@
 
 - GUI を使用して、仮想マシン ギャラリーから SQL Server VM をプロビジョニングする方法を知っている。詳細については、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
 
-- AlwaysOn 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx)」を参照してください。
+- 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx)」を参照してください。
 
->[AZURE.NOTE] SharePoint での AlwaysOn 可用性グループの使用に興味がある場合は、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](http://technet.microsoft.com/library/jj715261.aspx)」を参照してください。
+>[AZURE.NOTE] SharePoint での SQL Server 可用性グループの使用に関心がある場合は、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](http://technet.microsoft.com/library/jj715261.aspx)」を参照してください。
 
 このチュートリアルでは、次を行うために Azure ポータルを使用します。
 
-- ポータルから新しい AlwaysOn 可用性グループ テンプレートを選択する
+- ポータルから AlwaysOn テンプレートを選択する
 
 - テンプレート設定を確認し、環境用にいくつかの構成設定を更新する
 
@@ -71,7 +69,7 @@
 
 - ドメイン コント ローラーのいずれかと接続し、次いで SQL Server のいずれかと接続する
 
-## リソース マネージャーのデプロイ モデルでギャラリーから AlwaysOn 可用性グループをプロビジョニングする
+## リソース マネージャーのデプロイ モデルでギャラリーから可用性グループをプロビジョニングする
 
 Azure では、ソリューション全体のギャラリー イメージを提供します。テンプレートを見つけるには、次を実行します。
 
@@ -89,7 +87,7 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 
 - **[パスワード]** は、ドメイン管理者アカウントのパスワードです。複雑なパスワードを使用します。パスワードを確認入力します。
 
-- **[サブスクリプション]** は、Azure AlwaysOn 可用性グループ用にデプロイされたすべてのリソースの実行に Azure が請求するサブスクリプションです。アカウントに複数のサブスクリプションがある場合は、別のサブスクリプションを指定できます。
+- **[サブスクリプション]** は、可用性グループ用にデプロイされたすべてのリソースの実行に Azure が請求するサブスクリプションです。アカウントに複数のサブスクリプションがある場合は、別のサブスクリプションを指定できます。
 
 - **[リソース グループ]** は、このチュートリアルで作成したすべての Azure リソースが属するグループです。このチュートリアルでは **SQL-HA-RG** を使用します。詳細については、(Azure リソース マネージャーの概要)[resource-group-overview.md/#resource-groups] を参照してください。
 
@@ -107,7 +105,7 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 
 **[ドメインおよびネットワークの設定]** ブレードで、ドメインとネットワークの設定の既定値を確認します。
 
-- **[フォレスト ルート ドメイン名]** は、クラスターをホストする AD ドメインが使用するドメイン名です。このチュートリアルでは **contoso.com** を使用します。
+- **[フォレスト ルート ドメイン名]** は、クラスターをホストする AD ドメインが使用するドメイン名です。このチュートリアルでは、**contoso.com** を使用します。
 
 - **[仮想ネットワーク名]** は、Azure の仮想ネットワークのネットワーク名です。このチュートリアルでは **autohaVNET** を使用します。
 
@@ -145,7 +143,7 @@ Azure の仮想ネットワークの詳細については、「[仮想ネット�
 
 **[VM サイズおよび記憶域の設定]** では、SQL Server の仮想マシンのサイズを選択し、その他の設定を確認します。
 
-- **[SQL Server 仮想マシンのサイズ]** は、両方の SQL Server の Azure 仮想マシンのサイズです。ワークロードに適した仮想マシンのサイズを選択します。このチュートリアル用に環境を構築する場合は **DS2** を使用します。実稼働ワークロードでは、ワークロードをサポートできる仮想マシンのサイズを選択します。多くの実稼働ワークロードでは、**DS4** 以上が必要です。このテンプレートでは、このサイズの仮想マシンを 2 つ構築し、それぞれに SQL Server をインストールします。詳細については、「[Virtual Machines のサイズ](virtual-machines-linux-sizes.md)」を参照してください。
+- **[SQL Server 仮想マシンのサイズ]** は、両方の SQL Server の Azure 仮想マシンのサイズです。ワークロードに適した仮想マシンのサイズを選択します。このチュートリアル用に環境を構築する場合は **DS2** を使用します。実稼働ワークロードでは、ワークロードをサポートできる仮想マシンのサイズを選択します。多くの実稼働ワークロードでは、**DS4** 以上が必要です。このテンプレートでは、このサイズの仮想マシンを 2 つ構築し、それぞれに SQL Server をインストールします。詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。
 
 >[AZURE.NOTE]Azure によって、SQL Server Enterprise Edition がインストールされます。価格は、エディションと仮想マシンのサイズによって異なります。現在の価格の詳細については、「[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」を参照してください。
 
@@ -191,7 +189,7 @@ Azure の仮想ネットワークの詳細については、「[仮想ネット�
 
 - [Windows Server バックアップと記憶域プール](http://technet.microsoft.com/library/dn390929.aspx)
 
-SQL Server の構成のベスト プラクティスについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」をご覧ください。
+SQL Server の構成のベスト プラクティスについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
 
 
 ###SQL Server の設定
@@ -222,7 +220,7 @@ SQL Server の構成のベスト プラクティスについては、「[Azure V
 
 ###購入
 
-この最後のブレードには **[ご契約条件]** と **[プライバシー ポリシー]** があります。この情報を確認します。Azure で仮想マシンと AlwaysOn 可用性グループに必要なその他のすべてのリソースを作成開始する準備ができたら **[作成]** をクリックします。
+この最後のブレードには **[ご契約条件]** と **[プライバシー ポリシー]** があります。この情報を確認します。Azure で仮想マシンと可用性グループに必要なその他のすべてのリソースを作成開始する準備ができたら **[作成]** をクリックします。
 
 Azure ポータルによって、リソース グループとすべてのリソースが作成されます。
 
@@ -244,7 +242,7 @@ SQL Server の新しいインスタンスは、インターネットに接続さ
 
 1.	**[リソース]** ブレードで、(プライマリ ドメイン コントローラーの仮想マシンのコンピューター名である) **ad-primary-dc** をクリックします。
 
-1.	**ad-primary-dc** のブレードで、**[接続]** をクリックします。リモート接続オブジェクトを開くか保存するか、ブラウザーによって求められます。**[開く]** をクリックします。![DC への接続](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/13-ad-primary-dc-connect.png)
+1.	**ad-primary-dc** のブレードで、**[接続]** をクリックします。リモート接続オブジェクトを開くか保存するか、ブラウザーによって求められます。**[開く]** をクリックします。 ![DC への接続](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/13-ad-primary-dc-connect.png)
 1.	**リモート デスクトップ接続**で、このリモート接続の発行元が識別できないことが通知される場合があります。**[接続]** をクリックします。
 
 1.	Windows のセキュリティによって、プライマリ ドメイン コントローラーの IP アドレスに接続するための資格情報の入力が求められます。**[別のアカウントを使用]** をクリックします。**[ユーザー名]** に **contoso\\DomainAdmin** と入力します。これが管理者のユーザー名に選択するアカウントです。テンプレートを構成したときに選択した複雑なパスワードを使用します。
@@ -259,6 +257,6 @@ SQL Server の新しいインスタンスは、インターネットに接続さ
 
 1.	ドメイン コントローラーへの RDP 接続に使用したのと同じユーザー アカウントとパスワードを使用します。
 
-これで SQL Server に RDP 接続できました。これで SQL Server Management Studio を開き、SQL Server の既定のインスタンスに接続し、AlwaysOn 可用性グループが構成済みであることを確認できます。
+これで SQL Server に RDP 接続できました。これで SQL Server Management Studio を開き、SQL Server の既定のインスタンスに接続し、可用性グループが構成済みであることを確認できます。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0511_2016-->

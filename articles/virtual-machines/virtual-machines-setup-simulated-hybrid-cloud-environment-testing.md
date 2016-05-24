@@ -14,16 +14,16 @@
 	ms.tgt_pltfrm="Windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/03/2016" 
+	ms.date="04/25/2016" 
 	ms.author="josephd"/>
 
 # テスト用のシミュレートされたハイブリッド クラウド環境の設定
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](../virtual-network/virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
-この記事では、2 つの Azure 仮想ネットワークを使用して、Microsoft Azure でシミュレートされたテスト用のハイブリッド クラウド環境を作成する手順について説明します。インターネットに直接接続できず、利用可能なパブリック IP アドレスがない場合は、「[テスト用のハイブリッド クラウド環境の設定](../virtual-network/virtual-networks-setup-hybrid-cloud-environment-testing.md)」の代わりに、この構成を使用してください。完成すると次のような構成になります。
+この記事では、2 つの Azure 仮想ネットワークを使用して、Microsoft Azure でシミュレートされたテスト用のハイブリッド クラウド環境を作成する手順について説明します。インターネットに直接接続できず、利用可能なパブリック IP アドレスがない場合は、「[テスト用のハイブリッド クラウド環境の設定](virtual-machines-windows-ps-hybrid-cloud-test-env-base.md)」の代わりに、この構成を使用してください。完成すると次のような構成になります。
 
-![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/CreateSimHybridCloud_4.png)
+![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/virtual-machines-setup-simulated-hybrid-cloud-environment-testing-ph4.png)
 
 この構成は、ハイブリッド クラウド運用環境をシミュレートしています。構成は次のとおりです。
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 
 次に、Azure PowerShell プロンプトを開始します。
 
-> [AZURE.NOTE] 次のコマンド セットは、Azure PowerShell 1.0 以降を使用します。詳細については、「Azure PowerShell 1.0」を参照してください。
+> [AZURE.NOTE] 次のコマンド セットは、Azure PowerShell 1.0 以降を使用します。詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
 
 ご使用のアカウントにログインします。
 
@@ -99,7 +99,7 @@ Azure サブスクリプションを設定します。基本構成をビルド�
 
 現在の構成は次のようになります。
 
-![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/CreateSimHybridCloud_1.png)
+![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/virtual-machines-setup-simulated-hybrid-cloud-environment-testing-ph1.png)
  
 ## フェーズ 2: TestVNET 仮想ネットワークを作成する
 
@@ -127,11 +127,11 @@ Azure サブスクリプションを設定します。基本構成をビルド�
 
 現在の構成は次のようになります。
 
-![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/CreateSimHybridCloud_2.png)
+![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/virtual-machines-setup-simulated-hybrid-cloud-environment-testing-ph2.png)
  
 ##フェーズ 3: VNet 間接続を作成する
 
-最初に、ランダムな、暗号強度の高い 32 文字の事前共有キーをネットワーク管理者またはセキュリティ管理者から取得します。または、[「Create a random string for an IPsec preshared key」](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx) (IPsec 事前共有キー用にランダムな文字列を作成する) に記載された情報を使用して事前共有キーを取得します。
+最初に、ランダムな、暗号強度の高い 32 文字の事前共有キーをネットワーク管理者またはセキュリティ管理者から取得します。または、「[Create a random string for an IPsec preshared key (IPsec 事前共有キー用にランダムな文字列を作成する)](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx)」に記載された情報を使用して事前共有キーを取得します。
 
 次に、以下のコマンドを使用して、サイト間 VPN 接続を作成します (完了するまでに時間がかかることがあります)。
 
@@ -145,7 +145,7 @@ Azure サブスクリプションを設定します。基本構成をビルド�
 
 現在の構成は次のようになります。
 
-![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/CreateSimHybridCloud_3.png)
+![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/virtual-machines-setup-simulated-hybrid-cloud-environment-testing-ph3.png)
  
 ## フェーズ 4: DC2 を構成する
 
@@ -190,7 +190,7 @@ ping コマンドで IP アドレス 10.0.0.4 からの応答が 4 回成功す�
 8.	[ファイル システム形式の選択] ページで、**[次へ]** をクリックします。
 9.	[選択内容の確認] ページで、**[作成]** をクリックします。
 10.	完了したら、**[閉じる]** をクリックします。
-
+ 
 次に、DC2 を corp.contoso.com ドメインのレプリカ ドメイン コントローラーとして構成します。DC2 で Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
 
 	Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
@@ -202,12 +202,12 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 1.	Azure ポータルの左側のウィンドウで、仮想ネットワーク アイコンをクリックし、**[TestVNET]** をクリックします。
 2.	**[設定]** タブで、**[DNS サーバー]** をクリックします。
-3.	**[プライマリ DNS サーバー]** で、 「**192.168.0.4**」と入力して 10.0.0.4 を置き換えます。
+3.	**[プライマリ DNS サーバー]** で、「**192.168.0.4**」と入力して 10.0.0.4 を置き換えます。
 4.	**[保存]** をクリックします。
 
 現在の構成は次のようになります。
 
-![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/CreateSimHybridCloud_4.png)
+![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/virtual-machines-setup-simulated-hybrid-cloud-environment-testing-ph4.png)
  
 これで、シミュレートされたハイブリッド クラウド環境でテストする準備が整いました。
 
@@ -215,4 +215,4 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 - TestVNET サブネットに[新しい仮想マシンを追加](virtual-machines-windows-create-powershell.md)します (Microsoft SQL Server を実行している仮想マシンなど)。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

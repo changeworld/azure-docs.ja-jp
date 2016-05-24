@@ -111,6 +111,6 @@ pushHandler.on('error', function (error) {
 [phonegap-plugin-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
-[Query object documentation]: https://msdn.microsoft.com/ja-JP/library/azure/jj613353.aspx
+[「query オブジェクト」]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
 
 <!---HONumber=AcomDC_0504_2016-->

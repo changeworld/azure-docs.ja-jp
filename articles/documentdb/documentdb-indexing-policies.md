@@ -14,7 +14,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="data-services" 
-    ms.date="03/30/2016" 
+    ms.date="05/05/2016" 
     ms.author="arramac"/>
 
 
@@ -44,9 +44,9 @@
 
     DocumentCollection collection = new DocumentCollection { Id = "myCollection" };
     
-    collection.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
     collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
-
+    collection.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
+    
     await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), collection);   
 
 
@@ -287,7 +287,7 @@ DocumentDB は、コレクションが "なし (None)" インデックス作成�
      
      collection.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
      
-     collection = await client.CreateDocumentCollectionAsync(database.SelfLink, collection);
+     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("mydb"), collection);
 
 
 ### インデックスのパス
@@ -543,20 +543,14 @@ DocumentDB では、Point データ型に指定できるすべてのパスに対
 
 空間インデックスでは、常にポイント用の既定のインデックスの有効桁数を使用するため、オーバーライドすることはできません。
 
-次の例では、.NET SDK を使用して、コレクション内の範囲インデックスの有効桁数を増やす方法を示します。この場合、既定のパス"/*" が使用されます。
+次の例では、.NET SDK を使用して、コレクション内の範囲インデックスの有効桁数を増やす方法を示します。
 
 **カスタム インデックスの有効桁数でコレクションを作成する**
 
     var rangeDefault = new DocumentCollection { Id = "rangeCollection" };
     
-    rangeDefault.IndexingPolicy.IncludedPaths.Add(
-        new IncludedPath { 
-            Path = "/*", 
-            Indexes = new Collection<Index> { 
-                new RangeIndex(DataType.String) { Precision = -1 }, 
-                new RangeIndex(DataType.Number) { Precision = -1 }
-            }
-        });
+    // Override the default policy for Strings to range indexing and "max" (-1) precision
+    rangeDefault.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
 
     await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), rangeDefault);   
 
@@ -566,7 +560,7 @@ DocumentDB では、Point データ型に指定できるすべてのパスに対
 同様に、インデックス作成からパスを完全に除外することができます。次の例では、ワイルドカード "*" を使用して、ドキュメントのセクション全体 (別名サブツリー) をインデックス作成から除外する方法を示します。
 
     var collection = new DocumentCollection { Id = "excludedPathCollection" };
-    collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/" });
+    collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
     collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
     
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
@@ -765,4 +759,4 @@ JSON 仕様に次の変更が実装されました。
 
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0511_2016-->

@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="StorSimple 帯域幅テンプレートを管理する | Microsoft Azure"
    description="帯域幅の消費量を制御するのに使用できる StorSimple 帯域幅テンプレートを管理する方法について説明します。"
    services="storsimple"
@@ -6,13 +6,13 @@
    authors="alkohli"
    manager="carolz"
    editor="" />
-<tags 
+<tags
    ms.service="storsimple"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/14/2015"
+   ms.date="05/10/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用して StorSimple 帯域幅テンプレートを管理する
@@ -28,7 +28,7 @@
 - 簡単でシームレスな方法で、集中管理し、複数のデバイスでスケジュールを再利用します。
 
 > [AZURE.NOTE] この機能は、StorSimple 物理デバイスに対してのみ使用でき、仮想デバイスでは使用できません。
-   
+
 サービスの帯域幅テンプレートはすべて、表形式で表示され、次の情報が含まれています。
 
 - **[名前]** - 作成時に帯域幅テンプレートに割り当てられた一意の名前。
@@ -66,8 +66,8 @@
    
          > [AZURE.NOTE] スケジュールの重複は許可されません。開始および終了時刻が重なると、エラー メッセージが表示されます。
 
-   5. **[帯域幅レート]** を指定します。これは、クラウドに関連する操作で StorSimple デバイスが使用する帯域幅 (メガ ビット/秒 (Mbps)) です。1 ～ 1,000 の値をこのフィールドで指定します。
-   
+   5. **[帯域幅レート]** を指定します。これは、クラウドに関連する操作 (アップロードとダウンロード) で StorSimple デバイスが使用する帯域幅 (メガビット/秒 (Mbps)) です。1 ～ 1,000 の値をこのフィールドで指定します。
+
    6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png) をクリックします。作成したテンプレートは、サービスの **[構成]** ページの帯域幅テンプレートの一覧に追加されます。
 
     ![新しい帯域幅テンプレートを作成する](./media/storsimple-manage-bandwidth-templates/HCS_CreateNewBT1.png)
@@ -172,4 +172,4 @@ StorSimple デバイスに関する次のベスト プラクティスに従っ�
 
 [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0511_2016-->

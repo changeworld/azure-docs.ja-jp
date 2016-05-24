@@ -12,18 +12,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/30/2015"
+   ms.date="04/22/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスのシャーシを交換する
 
 ## 概要
 
-このチュートリアルでは、StorSimple 8000 シリーズ デバイスのシャーシを取り外して交換する方法について説明します。StorSimple 8100 モデルはシングル エンクロージャ デバイス (1 つのシャーシ) で、8600 はデュアル エンクロージャ デバイス (2 つのシャーシ) です。8600 モデルの場合は、デバイスで故障する可能性があるシャーシが 2 つあります。主エンクロージャのシャーシまたは EBOD エンクロージャのシャーシです。
+このチュートリアルでは、StorSimple 8000 シリーズ デバイスのシャーシを取り外して交換する方法について説明します。StorSimple 8100 モデルはシングル エンクロージャ デバイス (1 つのシャーシ) で、8600 はデュアル エンクロージャ デバイス (2 つのシャーシ) です。8600 モデルでは、デバイスで故障する可能性があるシャーシが 2 つあります。主エンクロージャのシャーシと EBOD エンクロージャのシャーシです。
 
-どちらの場合も、マイクロソフトから出荷される交換用のシャーシは空です。電源および冷却モジュール (PCM)、コントローラー モジュール、ソリッド ステート ディスク ドライブ (SSD)、ハード ディスク ドライブ (HDD)、または EBOD モジュールは付属していません。
+どちらの場合も、Microsoft から出荷される交換用のシャーシは空です。電源および冷却モジュール (PCM)、コントローラー モジュール、ソリッド ステート ディスク ドライブ (SSD)、ハード ディスク ドライブ (HDD)、または EBOD モジュールは付属していません。
 
->[AZURE.IMPORTANT]シャーシを取り外して交換する前に、「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の安全に関する情報を再確認してください。
+>[AZURE.IMPORTANT] シャーシを取り外して交換する前に、「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の安全に関する情報を再確認してください。
 
 ## シャーシを取り外す
 
@@ -45,7 +45,7 @@
 
 ## シャーシを取り付ける
 
-次の手順を実行して、Microsoft Azure StorSimple デバイスにシャーシを取り付けます。
+次の手順を実行して、StorSimple デバイスのシャーシを取り付けます。
 
 #### シャーシを取り付けるには
 
@@ -55,7 +55,7 @@
 
 3. ドライブを以前と同じ位置およびスロットに取り付けます。
 
-    >[AZURE.NOTE]最初に SSD をスロットに取り付けて、その後で HDD を取り付けることをお勧めします。
+    >[AZURE.NOTE] 最初に SSD をスロットに取り付けて、その後で HDD を取り付けることをお勧めします。
 
 2. デバイスをラックに取り付け、コンポーネントを取り付けた状態で、デバイスを適切な電源に接続し、デバイスの電源を入れます。詳細については、「[StorSimple 8100 デバイスにケーブルを接続する](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device)」または「[StorSimple 8600 デバイスにケーブルを接続する](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device)」を参照してください。
 
@@ -63,4 +63,4 @@
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0511_2016-->

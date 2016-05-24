@@ -3,7 +3,7 @@
    description="Service Fabric のローカル クラスターをセットアップし、それに既存のアプリケーションをデプロイし、そのアプリケーションをアップグレードします。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="seanmck"
+   authors="rwike77"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="04/12/2016"
-   ms.author="seanmck"/>
+   ms.author="ryanwi"/>
 
 # ローカル クラスターでアプリケーションのデプロイおよびアップグレードを開始する
 Azure Service Fabric SDK には、完全なローカル開発環境が含まれています。これを使用して、ローカル クラスター上でアプリケーションをデプロイおよび管理する作業をすぐに開始することができます。この記事では、ローカル クラスターを作成し、既存のアプリケーションをローカル クラスターにデプロイし、そのアプリケーションを新しいバージョンにアップグレードします。これらの作業はすべて Windows PowerShell で行います。
@@ -190,4 +190,4 @@ Service Fabric では、クラスター全体にロールアウトされると�
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

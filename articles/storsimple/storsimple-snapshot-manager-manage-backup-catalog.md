@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,14 +12,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/28/2015"
+   ms.date="04/26/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したバックアップ カタログの管理
 
 ## 概要
 
-StorSimple Snapshot Manager の主な機能は、スナップショットの形式で Azure StorSimple ボリュームのアプリケーション整合性バックアップ コピーを作成することです。スナップショットは、*バックアップ カタログ*と呼ばれる XML ファイルに一覧表示されます。バックアップ カタログでは、ボリューム グループごとにスナップショットが編成され、その後、ローカル スナップショットまたはクラウド スナップショットごとに編成されます。
+StorSimple Snapshot Manager の主な機能は、スナップショットの形式で StorSimple ボリュームのアプリケーション整合性バックアップ コピーを作成できるようにすることです。スナップショットは、*バックアップ カタログ*と呼ばれる XML ファイルに一覧表示されます。バックアップ カタログでは、ボリューム グループごとにスナップショットが編成され、その後、ローカル スナップショットまたはクラウド スナップショットごとに編成されます。
+
+このチュートリアルでは、**バックアップ カタログ** ノードを使用して、次のタスクを実行する方法を説明します。
+
+- ボリュームの復元 
+- ボリュームまたはボリューム グループの複製 
+- バックアップの削除 
+- ファイルの復元
+- Storsimple Snapshot Manager データベースの復元
 
 **[スコープ]** ウィンドウで **[バックアップ カタログ]** ノードを展開し、次にボリューム グループを展開して、バックアップ カタログを表示できます。
 
@@ -33,7 +41,7 @@ StorSimple Snapshot Manager の主な機能は、スナップショットの形�
 
     - **[所有者]** – コンテンツの所有者。
 
-    - **[使用可能]** – スナップショットを現在使用できるかどうか。True の場合、スナップショットは使用可能で復元可能です。False の場合、スナップショットは使用できません。
+    - **[使用可能]** – スナップショットを現在使用できるかどうか。**True** の場合、スナップショットは使用可能で復元可能です。**False** の場合、スナップショットは使用できません。
 
     - **[インポート済み]** – バックアップがインポートされたかどうか。**True** の場合、デバイスが StorSimple Snapshot Manager で構成されたときに、StorSimple Manager サービスからバックアップがインポートされたことを示します。**False** の場合、バックアップはインポートされませんでしたが、StorSimple Snapshot Manager によって作成されたことを示します (ボリューム グループのインポート元となるデバイスを識別するサフィックスが追加されるため、インポートされたボリューム グループは簡単に特定できます)。
 
@@ -49,13 +57,6 @@ StorSimple Snapshot Manager の主な機能は、スナップショットの形�
 
     - **[使用可能]** – スナップショットを現在使用できるかどうか。**True** の場合、スナップショットは使用可能で復元可能です。**False** の場合、スナップショットは使用できません。
 
-このチュートリアルでは、**バックアップ カタログ** ノードを使用して、次のタスクを実行する方法を説明します。
-
-- ボリュームの復元 
-- ボリュームまたはボリューム グループの複製 
-- バックアップの削除 
-- ファイルの復元
-- Storsimple Snapshot Manager データベースの復元
 
 ## ボリュームの復元
 
@@ -69,7 +70,7 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
 
 ![自動スナップショット メッセージ](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Automatic_snap.png)
 
->[AZURE.IMPORTANT]ボリューム グループに属するボリュームは削除できません。[削除] オプションは使用できません。<br>
+>[AZURE.IMPORTANT] ボリューム グループに属するボリュームは削除できません。[削除] オプションは使用できません。<br>
 
 #### ボリュームを復元するには
 
@@ -117,7 +118,7 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
 
 バックアップ カタログからスナップショットを削除するには、以下の手順を実行します。
 
->[AZURE.NOTE]スナップショットを削除すると、そのスナップショットに関連付けられているバックアップ データも削除されます。ただし、クラウドからデータをクリーンアップする処理には、時間がかかる場合があります。<br>
+>[AZURE.NOTE] スナップショットを削除すると、そのスナップショットに関連付けられているバックアップ データも削除されます。ただし、クラウドからデータをクリーンアップする処理には、時間がかかる場合があります。<br>
  
 #### バックアップを削除するには
 
@@ -183,7 +184,7 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
 
 2. ホスト コンピューターで、C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
 
-    >[AZURE.NOTE]ProgramData は隠しフォルダーです。
+    >[AZURE.NOTE] ProgramData は隠しフォルダーです。
  
 3. カタログ XML ファイルを検索し、ファイルをコピーして、安全な場所、またはクラウドにコピーを保存します。ホストが失敗した場合は、このバックアップ ファイルを使用して、StorSimple Snapshot Manager で作成したバックアップ ポリシーを復元できます。
 
@@ -208,4 +209,4 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
 - [StorSimple Snapshot Manager のタスクとワークフローの詳細](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows)
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0511_2016-->

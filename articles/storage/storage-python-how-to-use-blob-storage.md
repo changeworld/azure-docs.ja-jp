@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Python から Azure BLOB ストレージを使用する方法 | Microsoft Azure"
-	description="Python から Azure BLOB ストレージを使用して、BLOB をアップロード、一覧表示、ダウンロード、削除する方法について説明します。"
+	description="Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 	services="storage"
 	documentationCenter="python"
 	authors="emgerner-msft"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="02/29/2016"
+    ms.date="04/29/2016"
 	ms.author="jehine"/>
 
 # Python から Azure BLOB ストレージを使用する方法
@@ -125,4 +125,4 @@ BLOB からデータをダウンロードするには、**get\_blob\_to\_path**�
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0511_2016-->

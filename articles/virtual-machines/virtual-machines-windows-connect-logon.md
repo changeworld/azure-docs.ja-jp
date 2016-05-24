@@ -33,6 +33,8 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 4. 仮想マシンのブレードで、**[接続]** をクリックします。
 
 	![VM に接続する方法を示す Azure ポータルのスクリーンショット。](./media/virtual-machines-windows-connect-logon/connect.png)
+	
+ > [AZURE.TIP] ポータルの [接続] ボタンが灰色表示され、[Express Route](../expressroute/expressroute-introduction.md) や[サイト間 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 接続で Azure に接続されていない場合、VM を作成してパブリック IP アドレスを割り当ててから RDP を使用する必要があります。[Azure におけるパブリック IP アドレス](../virtual-network/virtual-network-ip-addresses-overview-arm.md)に関するページをご覧ください。
 
 ## 仮想マシンへのログオン
 
@@ -43,4 +45,4 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 
 接続時に問題が発生した場合は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)」を参照してください。この記事では、一般的な問題の診断と解決の手順について説明します。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

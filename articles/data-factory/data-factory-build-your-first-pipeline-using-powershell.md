@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/03/2016"
+	ms.date="05/16/2016"
 	ms.author="spelluru"/>
 
 # Azure PowerShell を使用した初めての Azure Data Factory の作成
@@ -268,8 +268,8 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 		                "linkedServiceName": "HDInsightOnDemandLinkedService"
 		            }
 		        ],
-		        "start": "2014-02-01T00:00:00Z",
-		        "end": "2014-02-02T00:00:00Z",
+		        "start": "2016-04-01T00:00:00Z",
+		        "end": "2016-04-02T00:00:00Z",
 		        "isPaused": false
 		    }
 		}
@@ -356,4 +356,4 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 
 [cmdlet-reference]: https://msdn.microsoft.com/library/azure/dn820234(v=azure.98).aspx
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

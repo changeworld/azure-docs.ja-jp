@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/10/2016"
+    ms.date="05/16/2016"
     ms.author="magoedte"/>
 
 # Azure 実行アカウントを使用した Runbook の認証
@@ -53,7 +53,15 @@ Azure ポータルから Automation アカウントを作成する方法と、Az
 
 7. Azure によって Automation アカウントが作成されている間、メニューの **[通知]** で進行状況を追跡できます。
 
-完了すると、**AzureRunAsCertificate** という有効期間 1 年の証明書資産と **AzureRunAsConnection** という接続資産を含んだ Automation アカウントが作成されます。
+### 含まれるリソース
+Automation アカウントの作成が完了すると、いくつかのリソースが自動的に作成されます。これらのリソースの概要を次の表に示します。
+
+リソース|説明 
+----|----
+AzureAutomationTutorial Runbook|実行アカウントを使用した認証方法と、サブスクリプション内の最初の 10 個の Azure VM を表示する方法を示す、サンプル Runbook。
+AzureRunAsCertificate|Automation アカウントの作成時に実行アカウントを作成するように選択した場合、または既存のアカウント用に下の PowerShell スクリプトを使用している場合に作成される、証明書資産。この証明書には、1 年の有効期間があります。 
+AzureRunAsConnection|Automation アカウントの作成時に実行アカウントを作成するように選択した場合、または既存のアカウント用に下の PowerShell スクリプトを使用している場合に作成される、接続資産。
+モジュール|Runbook 内ですぐに使用できる、Azure、PowerShell、および Automation 用のコマンドレットを含む 15 個のモジュール。  
 
 ## PowerShell を使用して Automation アカウントを更新する
 以下の手順では、PowerShell を使用して既存の Automation アカウントを更新し、サービス プリンシパルを作成します。アカウントは作成済みであるものの、実行アカウントの作成を拒否した場合に、この手順が必要となります。
@@ -92,6 +100,9 @@ Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
     [String] $ApplicationDisplayName,
 
     [Parameter(Mandatory=$true)]
+    [String] $SubscriptionName,
+
+    [Parameter(Mandatory=$true)]
     [String] $CertPlainPassword,
 
     [Parameter(Mandatory=$false)]
@@ -100,6 +111,7 @@ Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
 
     Login-AzureRmAccount
     Import-Module AzureRM.Resources
+    Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 
     $CurrentDate = Get-Date
     $EndDate = $CurrentDate.AddMonths($NoOfMonthsUntilExpired)
@@ -156,12 +168,13 @@ Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
     ```
 <br>
 2. コンピューターの**スタート**画面から、昇格されたユーザー権限で **Windows PowerShell** を起動します。
-3. 昇格された PowerShell コマンドライン シェルから、手順 1. で作成したスクリプトが格納されているフォルダーに移動してスクリプトを実行します。*–ResourceGroup*、*-AutomationAccountName*、*-ApplicationDisplayName*、*-CertPlainPassword* の各パラメーターの値は適宜変更してください。<br>
+3. 昇格された PowerShell コマンドライン シェルから、手順 1. で作成したスクリプトが格納されているフォルダーに移動してスクリプトを実行します。*–ResourceGroup*、*-AutomationAccountName*、*-ApplicationDisplayName*、*-SubscriptionName*、*-CertPlainPassword* の各パラメーターの値は適宜変更してください。<br>
 
     ```
     .\New-AzureServicePrincipal.ps1 -ResourceGroup <ResourceGroupName> `
      -AutomationAccountName <NameofAutomationAccount> `
      -ApplicationDisplayName <DisplayNameofAutomationAccount> `
+     -SubscriptionName <SubscriptionName> `
      -CertPlainPassword "<StrongPassword>"
     ```   
 <br>
@@ -179,25 +192,58 @@ Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
 5. **[PowerShell Runbook の編集]** ブレードのキャンバスに次のコードを貼り付けます。<br>
 
     ```
-     $Conn = Get-AutomationConnection -Name AzureRunAsConnection `
+     $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
      Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
      -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
-   ```  
+    ```  
 <br>
 6. **[保存]** をクリックして Runbook を保存します。
-7. **[テスト ウィンドウ]** をクリックして **[テスト]** ブレードを開きます。
+7. **[テスト ウィンドウ]** をクリックして、**[テスト]** ブレードを開きます。
 8. **[開始]** をクリックしてテストを開始します。
 9. [Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態がペインに表示されます。  
-10. 最初のジョブの状態は*キュー登録済み*であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
+10. 最初のジョブの状態は*キュー登録済み*であり、クラウドの Runbook Worker が使用可能になるのを待っていることを示しています。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
 11. Runbook ジョブが完了すると、その出力が表示されます。このケースでは、状態が **[完了]** となります。<br> ![Security Principal Runbook Test](media/automation-sec-configure-azure-runas-account/runbook-test-results.png)<br>
 12. **[テスト]** ブレードを閉じてキャンバスに戻ります。
 13. **[PowerShell Runbook の編集]** ブレードを閉じます。
 14. **[Test-SecPrin-Runbook]** ブレードを閉じます。
 
-先ほど新しいアカウントが正しく設定されているかどうかを確かめるために使用したコードは、Azure Automation で ARM リソースを管理するための認証を行うために PowerShell Runbook で使用します。もちろん、現在使用している Automation アカウントは引き続き認証に使用できます。
+## ARM リソースで認証を行うサンプル コード
+
+AzureAutomationTutorial のサンプル Runbook から次の更新済みサンプル コードを取得して使用することで、実行アカウントを使用して認証を行い、Runbook で ARM リソースを管理することができます。
+
+   ```
+   $connectionName = "AzureRunAsConnection"
+   $SubId = Get-AutomationVariable -Name 'SubscriptionId'
+   try
+   {
+      # Get the connection "AzureRunAsConnection "
+      $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
+
+      "Logging in to Azure..."
+      Add-AzureRmAccount `
+         -ServicePrincipal `
+         -TenantId $servicePrincipalConnection.TenantId `
+         -ApplicationId $servicePrincipalConnection.ApplicationId `
+         -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
+	  "Setting context to a specific subscription"	 
+	  Set-AzureRmContext -SubscriptionId $SubId	 		 
+   }
+   catch {
+       if (!$servicePrincipalConnection)
+       {
+           $ErrorMessage = "Connection $connectionName not found."
+           throw $ErrorMessage
+       } else{
+           Write-Error -Message $_.Exception
+           throw $_.Exception
+       }
+   } 
+   ```
+
+スクリプトには、サブスクリプション コンテキストの参照をサポートする 2 つのコード行が追加されているため、複数のサブスクリプション間での作業がしやすくなっています。SubscriptionId という名前の変数資産にはサブスクリプションの ID が格納されており、Add-AzureRmAccount コマンドレットのステートメントの後に、*-SubscriptionId* パラメーター セットを使用して [Set-AzureRmContext コマンドレット](https://msdn.microsoft.com/library/mt619263.aspx)が宣言されます。変数名が一般的すぎる場合は、目的に沿った特定しやすい名前になるよう、プレフィックスやその他の名前付け規則を含むように変数名を変更できます。また、-SubscriptionId の代わりに、-SubscriptionName パラメーター セットを対応する変数資産と共に使用することもできます。
 
 ## 次のステップ
 - サービス プリンシパルの詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)」を参照してください。
 - Azure Automation におけるロールベースのアクセス制御の詳細については、「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

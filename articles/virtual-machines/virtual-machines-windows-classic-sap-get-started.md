@@ -14,7 +14,7 @@
    ms.topic="campaign-page"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="02/12/2016"
+   ms.date="05/04/2016"
    ms.author="sedusch"/>
 
 # Azure での Windows 仮想マシンにおける SAP の使用
@@ -35,4 +35,4 @@ Microsoft Azure Virtual Machines を通じて、マイクロソフトは包括�
 
 [このガイドを今すぐダウンロードする](http://go.microsoft.com/fwlink/?LinkId=613056)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0511_2016-->

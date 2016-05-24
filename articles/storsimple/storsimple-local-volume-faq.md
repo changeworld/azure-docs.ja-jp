@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/07/2016"
+   ms.date="04/25/2016"
    ms.author="manuaery" />
 
 # StorSimple のローカル固定ボリューム: よく寄せられる質問 (FAQ)
@@ -183,7 +183,7 @@
 
 **Q.** ローカル固定ボリュームを複製することはできますか。
 
-**A.** はい、できます。ただし、ローカル固定ボリュームは、既定では階層化ボリュームとして複製されます。ローカル固定ボリュームの複製方法の詳細については、[こちら](storsimple-clone-volume-u2)を参照してください。
+**A.** はい、できます。ただし、ローカル固定ボリュームは、既定では階層化ボリュームとして複製されます。ローカル固定ボリュームの複製方法の詳細については、[こちら](storsimple-clone-volume-u2.md)をご覧ください。
 
 ## ローカル固定ボリュームのフェールオーバーに関する質問
 
@@ -195,7 +195,7 @@
 - ターゲット デバイスで StorSimple 8000 シリーズ Update 1.x が実行されている場合は階層化ボリューム
 - ターゲット デバイスがクラウド アプライアンス (ソフトウェア バージョンは Update 2 または Update 1.x) の場合は階層化ボリューム
 
-各バージョンでのローカル固定ボリュームのフェールオーバーおよび DR の詳細については、[こちら](storsimple-device-failover-disaster-recover.md#device-failover-across-software-versions)を参照してください。
+各バージョンでのローカル固定ボリュームのフェールオーバーと DR の詳細については、[こちら](storsimple-device-failover-disaster-recovery.md#device-failover-across-software-versions)をご覧ください。
 
 **Q.** ローカル固定ボリュームは障害復旧 (DR) 時にすぐに復元されますか。
 
@@ -211,6 +211,6 @@
 
 **Q.** ローカル固定ボリュームを含むボリューム コンテナーをクラウド アプライアンスにフェールオーバーできますか。
 
-**A.** はい、できます。ローカル固定ボリュームは階層化ボリュームとしてフェールオーバーされます。各バージョンでのローカル固定ボリュームのフェールオーバーおよび DR の詳細については、[こちら](storsimple-device-failover-disaster-recover.md#device-failover-across-software-versions)を参照してください。
+**A.** はい、できます。ローカル固定ボリュームは階層化ボリュームとしてフェールオーバーされます。各バージョンでのローカル固定ボリュームのフェールオーバーと DR の詳細については、[こちら](storsimple-device-failover-disaster-recovery.md#considerations-for-device-failover)をご覧ください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0511_2016-->

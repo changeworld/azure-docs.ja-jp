@@ -1,0 +1,126 @@
+<properties
+	pageTitle="Android Mobile Engagement SDK での詳細な構成"
+	description="Azure Mobile Engagement SDK を使用した Android の詳細構成オプション"
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="erikre"
+	editor="" />
+
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="05/10/2016"
+	ms.author="piyushjo;ricksal" />
+
+# Android Mobile Engagement SDK での詳細な構成
+
+> [AZURE.SELECTOR]
+- [Android](mobile-engagement-android-logging.md)
+
+この手順では、Engagement Android アプリ向けのさまざまな詳細構成オプションを構成する方法について説明します。
+
+## 前提条件
+
+[AZURE.INCLUDE [前提条件](../../includes/mobile-engagement-android-prereqs.md)]
+
+## アクセス許可の要件
+オプションのいくつかで特定のアクセス許可 (以下の一覧を参照) が必要です。また、特定の機能ではインラインである必要があります。次のアクセス許可をプロジェクトの AndroidManifest.xml の `<application>` タグの直前または直後に追加します。
+
+アクセス許可のコードを次に示します。このコードに、以下の表から適切なアクセス許可を選択して入力します。
+
+		<uses-permission android:name="android.permission.[specific permission]"/>
+
+
+
+| アクセス許可 | 使用する場合 |
+| ---------- | --------- |
+| INTERNET | 基本的なレポート |
+| ACCESS\_NETWORK\_STATE" | 基本的なレポート |
+| WRITE\_EXTERNAL\_STORAGE | 基本的なレポート |
+| RECEIVE\_BOOT\_COMPLETED | 基本的なレポート |
+| VIBRATE | 基本的なレポート |
+| DOWNLOAD\_WITHOUT\_NOTIFICATION | 全体像の通知 |
+| WAKE\_LOCK | WiFi を使用している場合、または画面がオフの場合に、統計を収集します |
+| RECEIVE\_BOOT\_COMPLETED | 背景レポートを有効にします |
+| ACCESS\_COARSE\_LOCATION | リアル タイム場所レポート |
+| ACCESS\_FINE\_LOCATION | GPS ベースのレポート |
+
+
+
+Android M 以降、[一部のアクセス許可が実行時に管理されます](mobile-engagement-android-location-reporting.md#Android-M-Permissions)。
+
+``ACCESS_FINE_LOCATION`` を既に使用している場合は、``ACCESS_COARSE_LOCATION`` を一緒に使用する必要はありません。
+
+## マニフェスト ファイル構成オプション
+
+### クラッシュ レポート
+
+クラッシュ レポートを無効にする場合は、以下を (`<application>` タグと `</application>` タグの間) に追加します。
+
+		<meta-data android:name="engagement:reportCrash" android:value="false"/>
+
+### バーストのしきい値
+
+既定では、エンゲージメント サービスはログをリアルタイムで報告します。アプリケーションがログを送信する回数が非常に多い場合は、ログをバッファーに格納して、一定時間ごとにまとめて報告することをお勧めします (これは "バースト モード" と呼ばれます) 。これを行うには、このコードを `<application>` タグと `</application>` タグの間に追加します。
+
+		<meta-data android:name="engagement:burstThreshold" android:value="{interval between too bursts (in milliseconds)}"/>
+
+バースト モードではわずかにバッテリーの寿命が延びますが、Engagement の監視に影響を与えます。すべてのセッションとジョブの実行時間は、バーストのしきい値に丸められます (つまり、バーストのしきい値よりも短いセッションとジョブは、認識されない場合があります)。バーストのしきい値は、30000 (30 秒) よりも長くしないことをお勧めします。
+
+### セッションのタイムアウト
+
+既定では、セッションは最後のアクティビティが終了した後、10 秒経過した時点で終了します (アクティビティの終了は、通常は、[ホーム] または [戻る] キーを押す、電話をアイドル状態に設定する、または他のアプリケーションに移動することで発生します)。これは、ユーザーがアプリケーションを終了した後、非常に短時間で戻ってくるたびにセッションが分割されることを避けるためです (このユーザーの行動は、画像の選択や通知の確認などを行うときに発生する可能性があります)。このパラメーターを変更することができます。これを行うには、以下を (`<application>` タグと `</application>` タグの間に) 追加します。
+
+		<meta-data android:name="engagement:sessionTimeout" android:value="{session timeout (in milliseconds)}"/>
+
+## ログ レポートの無効化
+
+### メソッド呼び出しを使用した場合
+
+Engagement でログの送信を停止したい場合は、以下を呼び出します。
+
+			EngagementAgent.getInstance(context).setEnabled(false);
+
+この呼び出しは永続的であり、共有設定ファイルを使います。
+
+この関数を呼び出したときに Engagement がアクティブの場合、サービスが停止するまで 1 分ほどかかることがあります。ただし、次にアプリケーションが起動したときにサービスが起動することはありません。
+
+ログ レポートは、同じ関数を `true` でもう一度呼び出すことによって有効にすることができます。
+
+### 独自の `PreferenceActivity` での統合
+
+上記の関数を呼び出す代わりに、その設定を既存の `PreferenceActivity` の中に直接統合することもできます。
+
+
+`AndroidManifest.xml` ファイル内の設定ファイルを (目的のモードで) `application meta-data` と共に使うように Engagement を構成できます。
+
+-   `engagement:agent:settings:name` キーを使って、共有設定ファイルの名前を定義します。
+-   `engagement:agent:settings:mode` キーを使って、共有設定ファイルのモードを定義します。`PreferenceActivity` と同じモードを使う必要があります。モードは数値として渡す必要があります。コード内で定数フラグの組み合わせを使っている場合は、合計値を確認します。
+
+Engagement では、この設定を管理するために設定ファイル内で常に `engagement:key` ブール キーを使います。
+
+次の `AndroidManifest.xml` の例は、既定値を示しています。
+
+			<application>
+			    [...]
+			    <meta-data
+			      android:name="engagement:agent:settings:name"
+			      android:value="engagement.agent" />
+			    <meta-data
+			      android:name="engagement:agent:settings:mode"
+			      android:value="0" />
+
+次のような `CheckBoxPreference` を設定レイアウトに追加できます。
+
+			<CheckBoxPreference
+			  android:key="engagement:enabled"
+			  android:defaultValue="true"
+			  android:title="Use Engagement"
+			  android:summaryOn="Engagement is enabled."
+			  android:summaryOff="Engagement is disabled." />
+
+<!---HONumber=AcomDC_0511_2016-->

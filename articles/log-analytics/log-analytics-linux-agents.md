@@ -249,7 +249,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 ### Log Analytics でパフォーマンス データを表示するには
 
-1. Operations Management Suite ポータルで、[Log Search] (ログの検索) タイルをクリックします。
+1. Operations Management Suite ポータルで、[Log Search] \(ログの検索) タイルをクリックします。
 2. すべてのパフォーマンス カウンターを表示するには、検索バーに「`* (Type=Perf)`」と入力します。
 
 

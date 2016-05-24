@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/05/2016"
+   ms.date="05/02/2016"
    ms.author="chackdan"/>
 
 # Windows Server または Linux でのスタンドアロン Service Fabric クラスターの作成
@@ -62,4 +62,4 @@ Windows Server を実行する VM またはコンピューターでのクラス�
 
 Linux を実行している VM またはコンピューターでのクラスターの作成: [Linux 上の Service Fabric](service-fabric-linux-overview.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0511_2016-->

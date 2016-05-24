@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/06/2016"
+	ms.date="05/16/2016"
 	ms.author="jroth" />
 
 # Azure ポータルでの SQL Server 仮想マシンのプロビジョニング
@@ -76,11 +76,13 @@ Azure ポータルには、SQL Server 仮想マシンを構成するための 5 
 * 強力な**パスワード**を指定します。
 * 複数のサブスクリプションがある場合は、作成しようとしている VM に対してサブスクリプションが正しいことを確認します。
 * **[リソース グループ]** ボックスに、新しいリソース グループの名前を入力します。または、既存のリソース グループを使用する場合は、**[既存のものを選択]** をクリックします。リソース グループとは、Azure の関連リソース (仮想マシン、ストレージ アカウント、仮想ネットワークなど) のコレクションです。
->[AZURE.NOTE] Azure における SQL Server のデプロイについてテストまたは調査のみを実施する場合は、新しいリソース グループを使用すると便利です。テストが終わったら、リソース グループ全体を削除できます。これにより、SQL VM を含め、そのリソース グループに関連付けられているすべてのリソースが削除されます。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
+	
+	>[AZURE.NOTE] Azure における SQL Server のデプロイについてテストまたは調査のみを実施する場合は、新しいリソース グループを使用すると便利です。テストが終わったら、リソース グループ全体を削除できます。これにより、SQL VM を含め、そのリソース グループに関連付けられているすべてのリソースが削除されます。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
+
 * このデプロイの**場所**を選択します。
 * **[OK]** をクリックして設定を保存します。
 
-	![SQL Basics Blade](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-basic.png)
+	![SQL Basics Blade](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-basic.png)
 
 ## 2\.仮想マシンのサイズを選択する
 この**サイズ**設定の手順では、**[サイズの選択]** ブレードで仮想マシンのサイズを選択します。推奨されるマシンのサイズが最初に表示されます。サイズは、選択したテンプレートに基づきます。VM の実行にかかる毎月のコストも見積もられます。
@@ -247,4 +249,4 @@ Azure での SQL Server の使用に関するその他の情報については�
 
 Azure Virtual Machines 上の SQL Server のビデオの概要については、「[Azure VM is the best platform for SQL Server 2016 (Azure VM は SQL Server 2016 に最適なプラットフォーム)](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)」をご覧ください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

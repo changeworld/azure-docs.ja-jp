@@ -13,10 +13,12 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-windows"
  ms.workload="infrastructure-services"
- ms.date="01/26/2016"
+ ms.date="04/26/2016"
  ms.author="danlep"/>
 
-# Windows での A8、A9、A10、A11 コンピューティング集中型インスタンスの使用について
+# A8、A9、A10、A11 コンピューティング集中型インスタンスについて
+
+この記事では、*コンピューティング集中型*インスタンスとも呼ばれる Azure A8、A9、A10、A11 インスタンスの背景情報と使用上の考慮事項を示します。この記事は、Windows VM のこれらのインスタンスの使用方法について説明していますが、[Linux VM](virtual-machines-linux-a8-a9-a10-a11-specs.md) にも適用されます。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -24,31 +26,36 @@ ms.service="virtual-machines-windows"
 
 ## RDMA ネットワークへのアクセス
 
-単一のクラウド サービスまたは可用性セット内では、A8 および A9 インスタンスは、Azure の RDMA ネットワークにアクセスして、Microsoft Network Direct インターフェイスを使用してインスタンス間の通信を行う Windows MPI アプリケーションを実行できます。
+単一のクラウド サービス、可用性セット、または Azure Batch プール内では、A8 および A9 インスタンスは、Azure の RDMA ネットワークにアクセスし、Microsoft Network Direct インターフェイスを使用してインスタンス間の通信を行う Windows MPI アプリケーションを実行できます。
 
-A8 または A9 インスタンスの仮想マシン (IaaS) およびクラウド サービス (PaaS) デプロイ内の RDMA ネットワークにアクセスするための MPI アプリケーションの要件を、次の表に示します。標準的なデプロイのシナリオについては、「[Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](virtual-machines-windows-classic-hpcpack-rdma-cluster.md)」を参照してください。
-
-
-前提条件 | 仮想マシン (IaaS) | クラウド サービス (PaaS)
----------- | ------------ | -------------
-オペレーティング システム | Windows Server 2012 R2 または Windows Server 2012 | Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 ゲスト OS ファミリ
-MPI | MS-MPI 2012 R2 以降 (スタンドアロンまたは HPC Pack 2012 R2 以降によってインストール済み)<br/><br/>Intel MPI Library 5 | MS-MPI 2012 R2 以降 (HPC Pack 2012 R2 以降によってインストール済み)<br/><br/>Intel MPI Library 5
+MPI アプリケーションが、Windows 仮想マシン、クラウド サービス、A8 または A9 インスタンスの Azure Batch プールで RDMA ネットワークにアクセスするための前提条件を次の表に示します。一般的なデプロイ シナリオについては、「[HPC Pack と A8 および A9 インスタンスを使用して Windows RDMA クラスターを設定して MPI アプリケーションを実行する](virtual-machines-windows-classic-hpcpack-rdma-cluster.md)」および「[Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](../batch/batch-mpi.md)」をご覧ください。
 
 
->[AZURE.NOTE]IaaS シナリオの場合、HpcVmDrivers 拡張機能を VM に追加して RDMA 接続に必要な Windows ネットワーク デバイス ドライバーをインストールする必要があります。デプロイの方法によって、サイズ A8 または A9 の VM への HpcVmDrivers 拡張機能の追加は、自動的に行われることも、手動で行う必要があることもあります。拡張機能の追加については、「[仮想マシン拡張機能の管理](virtual-machines-windows-classic-manage-extensions.md)」を参照してください。
+前提条件 | 仮想マシン | クラウド サービスまたは Batch プール 
+---------- | ------------ | ------------- 
+オペレーティング システム | Windows Server 2012 R2 または Windows Server 2012 | Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 ゲスト OS ファミリ 
+MPI | MS-MPI 2012 R2 以降、または Intel MPI Library 5 | MS-MPI 2012 R2 以降、または Intel MPI Library 5 
+
+
+>[AZURE.NOTE]A8 および A9 サイズの仮想マシンでは、HpcVmDrivers 拡張機能を VM に追加して、RDMA 接続に必要な Windows ネットワーク デバイス ドライバーをインストールする必要があります。デプロイ方法に応じて、A8 または A9 サイズの VM への HpcVmDrivers 拡張機能の追加は、自動的に実行される場合もあれば、手動で行うことが必要な場合もあります。拡張機能を手動で追加する方法については、「[仮想マシン拡張機能の管理](virtual-machines-windows-classic-manage-extensions.md)」をご覧ください。
 
 ## HPC Pack および Windows を使用する場合の考慮事項
 
-HPC Pack は、Windows Server で A8、A9、A10、および A11 インスタンスを使用するためには必要ありませんが、Azure で RDMA ネットワークにアクセスする Windows ベースの MPI アプリケーションを実行する場合は推奨されるツールです。HPC Pack には、マイクロソフトによる Windows 用の Message Passing Interface (MS-MPI) の実装のためのランタイム環境が含まれます。
+Windows Server で A8、A9、A10、A11 インスタンスを使用するときに HPC Pack は不要ですが、このツールは Azure で RDMA ネットワークにアクセスする Windows ベースの MPI アプリケーションを実行する際に役立ちます。HPC Pack 2012 R2 以降のバージョンには、A8 および A9 インスタンスへのデプロイ時に Azure RDMA ネットワークを使用できる、Windows 用 の Message Passing Interface の Microsoft 実装 (MS-MPI) のためのランタイム環境が含まれています。
 
 Windows Server で HPC Pack を使って、多くのコンピューティング処理を要するインスタンスを使用する方法およびチェックリストについては、「[Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](virtual-machines-windows-classic-hpcpack-rdma-cluster.md)」を参照してください。
 
+
+
+
 ## 次のステップ
 
-* A8、A9、A10、および A11 インスタンスの可用性と料金の詳細については、「[Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)」および「[Cloud Services の料金](https://azure.microsoft.com/pricing/details/cloud-services/)」を参照してください。
+* A8、A9、A10、および A11 インスタンスの可用性と料金の詳細については、「[Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)」および「[Cloud Services の料金](https://azure.microsoft.com/pricing/details/cloud-services/)」を参照してください。
+
+* ストレージの容量とディスクの詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」をご覧ください。
 
 * Windows 上の HPC Pack により A8 および A9 インスタンスのデプロイと使用を開始する方法については、「[Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](virtual-machines-windows-classic-hpcpack-rdma-cluster.md)」を参照してください。
 
-* A8 および A9 インスタンスを使用して Azure Batch で MPI アプリケーションを実行する方法については、「[Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](../batch/batch-mpi.md)」を参照してください。
+* A8 および A9 インスタンスを使用して Azure Batch で MPI アプリケーションを実行する方法については、「[Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](../batch/batch-mpi.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0511_2016-->

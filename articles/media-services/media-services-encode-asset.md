@@ -159,7 +159,7 @@ MP3 (MPEG-1 Audio Layer 3)|あり|あり
 Windows Media オーディオ|あり|あり
 WAV/PCM|あり|あり
 [FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|あり|いいえ
-[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |あり|いいえ
+[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format)) |あり|いいえ
 [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|あり|いいえ
 
 
@@ -242,4 +242,4 @@ TransientError|一時的な問題に関するエラーのカテゴリ (Azure Sto
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0511_2016-->
