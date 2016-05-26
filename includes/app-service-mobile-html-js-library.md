@@ -56,7 +56,7 @@ table
 
 success 関数は results を指定して呼び出します。success 関数で `for (var i in results)` は使用しないでください。これを指定すると、その他のクエリ関数 (`.includeTotalCount()` など) を使用した場合に、results に含まれる情報が反復処理されるからです。
 
-クエリ構文の詳細については、[「query オブジェクト」](https://msdn.microsoft.com/ja-jp/library/azure/jj613353.aspx)を参照してください。
+クエリ構文の詳細については、[「query オブジェクト」](https://msdn.microsoft.com/library/azure/jj613353.aspx)を参照してください。
 
 ####<a name="table-filter"></a>サーバー上のデータのフィルター処理
 
