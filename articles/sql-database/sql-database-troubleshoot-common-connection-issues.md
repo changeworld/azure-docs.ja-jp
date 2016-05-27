@@ -22,7 +22,8 @@ Azure SQL Database との接続の問題は、大きく次のカテゴリに分�
 - [一時的なエラー (短期間または断続的)](#troubleshoot-the-transient-errors)
 - [永続的または一時的でないエラー (定期的に発生するエラー)](#troubleshoot-the-persistent-errors-non-transient-errors)
 
-接続の問題が発生したら、この記事のトラブルシューティング手順を実行してみてください。[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+接続の問題が発生したら、この記事のトラブルシューティング手順を実行してみてください。
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## 一時的なエラーのトラブルシューティング
 アプリケーションで一時的なエラーが発生する場合は、トラブルシューティングや、エラーの頻度を減らす方法について、次のヒントのトピックを確認してください。
