@@ -67,4 +67,4 @@
 [Azure portal]: https://portal.azure.com
 [ロジック アプリの機能を使用する]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!------HONumber=AcomDC_0323_2016-->

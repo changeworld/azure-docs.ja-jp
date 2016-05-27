@@ -63,4 +63,4 @@ API Management と API Apps の一部の機能には同じような働きがあ�
 
 API アプリに関する質問がある場合は、[API Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureAPIApps)でスレッドを開始します。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!------HONumber=AcomDC_0511_2016-->
