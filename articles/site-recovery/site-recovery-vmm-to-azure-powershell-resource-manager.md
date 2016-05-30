@@ -19,9 +19,11 @@
 # PowerShell と Azure Resource Manager を使用して VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする
 
 > [AZURE.SELECTOR]
-- [Azure クラシック ポータル](site-recovery-vmm-to-azure.md)
+- [Azure ポータル](site-recovery-vmm-to-azure.md)
+- [PowerShell - ARM](site-recovery-vmm-to-azure-powershell-resource-manager.md)
+- [クラシック ポータル](site-recovery-vmm-to-azure-classic.md)
 - [PowerShell - クラシック](site-recovery-deploy-with-powershell.md)
-- [PowerShell - Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md) 
+
 
 
 ## 概要
@@ -42,7 +44,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 このシナリオの設定時に問題が発生した場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
 
-> [AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager デプロイ モデルとクラシック デプロイ モデル](../resource-manager-deployment-model.md)です。この記事では、リソース マネージャーのデプロイメント モデルの使用について説明します。
+> [AZURE.NOTE] Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。この記事では、リソース マネージャーのデプロイメント モデルの使用について説明します。
 
 ## 開始する前に
 
@@ -50,10 +52,10 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 ### Azure の前提条件
 
-- [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/free)を使用できます。また、「[Azure Site Recovery の価格](https://azure.microsoft.com/pricing/details/site-recovery/)」も参照してください。
-- CSP サブスクリプションにレプリケートするシナリオを試す場合は、CSP サブスクリプションが必要です。CSP プログラムの詳細については、「[CSP プログラムに登録する](https://msdn.microsoft.com/library/partnercenter/mt156995.aspx)」を参照してください。
-- Azure にレプリケートしたデータを格納するために Azure v2 ストレージ (ARM) アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションまたは CSP サブスクリプションに関連付けられている必要があります。Azure Storage のセットアップの詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」を参照してください。
-- 保護する仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠していることを確認する必要があります。
+- [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/free)を使用できます。また、「[Azure Site Recovery の価格](https://azure.microsoft.com/pricing/details/site-recovery/)」もご覧ください。
+- CSP サブスクリプションにレプリケートするシナリオを試す場合は、CSP サブスクリプションが必要です。CSP プログラムの詳細については、「[CSP プログラムに登録する](https://msdn.microsoft.com/library/partnercenter/mt156995.aspx)」をご覧ください。
+- Azure にレプリケートしたデータを格納するために Azure v2 ストレージ (ARM) アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションまたは CSP サブスクリプションに関連付けられている必要があります。Azure Storage のセットアップの詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」をご覧ください。
+- 保護対象の仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠していることを確認する必要があります。
 
 > [AZURE.NOTE] 現時点では、PowerShell を使用して実行できるのは VM レベルの操作のみです。復旧計画レベルの操作もすぐにサポートされる予定です。現時点では、フェールオーバーの実行は、復旧計画レベルではなく、"保護された VM" レベルのみに制限されています。
 
@@ -67,14 +69,14 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 - VMM クラウドの設定について理解を深めます。
 	- プライベート VMM クラウドの詳細については、[System Center 2012 R2 VMM のプライベート クラウドの新機能に関するページ](http://go.microsoft.com/fwlink/?LinkId=324952)および [VMM 2012 とクラウドに関するページ](http://go.microsoft.com/fwlink/?LinkId=324956)を参照してください。
 	- [VMM クラウド ファブリックの構成に関するページ](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)を参照してください。
-	- クラウド ファブリック要素を配置した後で、プライベート クラウドの作成について、「[VMM でのプライベート クラウドの作成](http://go.microsoft.com/fwlink/p/?LinkId=324953)」および「[Walkthrough: Creating private clouds with System Center 2012 SP1 VMM (チュートリアル: System Center 2012 SP1 VMM でのプライベート クラウドの作成)](http://go.microsoft.com/fwlink/p/?LinkId=324954)」を参照してください。
+	- クラウド ファブリック要素を配置したら、「[VMM でのプライベート クラウドの作成](http://go.microsoft.com/fwlink/p/?LinkId=324953)」および「[Walkthrough: Creating private clouds with System Center 2012 SP1 VMM (チュートリアル: System Center 2012 SP1 VMM でのプライベート クラウドの作成)](http://go.microsoft.com/fwlink/p/?LinkId=324954)」で、プライベート クラウドの作成方法を確認してください。
 
 
 ### Hyper-V の前提条件
 
 - ホスト Hyper-V サーバーは、少なくとも Hyper-V ロールを持つ Windows Server 2012 を実行しており、最新の更新プログラムがインストールされている必要があります。
 - クラスターで Hyper-V を実行している場合に、静的 IP アドレス ベースのクラスターが存在すると、クラスター ブローカーが自動的に作成されません。クラスター ブローカーを手動で構成する必要があります。次に 
-- 手順については、「[How to Configure Hyper-V Replica Broker (Hyper-V レプリカ ブローカーを構成する方法)](http://blogs.technet.com/b/haroldwong/archive/2013/03/27/server-virtualization-series-hyper-v-replica-broker-explained-part-15-of-20-by-yung-chou.aspx)」を参照してください。
+- 手順については、「[How to Configure Hyper-V Replica Broker (Hyper-V レプリカ ブローカーを構成する方法)](http://blogs.technet.com/b/haroldwong/archive/2013/03/27/server-virtualization-series-hyper-v-replica-broker-explained-part-15-of-20-by-yung-chou.aspx)」をご覧ください。
 - 保護を管理するすべての Hyper-V ホスト サーバーまたはクラスターが VMM クラウドに属している必要があります。
 
 ### ネットワーク マッピングの前提条件
@@ -97,9 +99,9 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 
 ###PowerShell の前提条件
-Azure PowerShell を使用する準備が整っていることを確認してください。PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。PowerShell の設定方法の詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを[ここ](https://msdn.microsoft.com/library/dn850420.aspx)に表示できます。
+Azure PowerShell を使用する準備が整っていることを確認してください。PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。PowerShell の設定方法の詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを[ここ](https://msdn.microsoft.com/library/dn850420.aspx)に表示できます。
 
-Azure PowerShell でのパラメーター値、入力、出力の一般的な処理方法など、コマンドレットの使用に役立つヒントについては、「[Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」を参照してください。
+Azure PowerShell でのパラメーター値、入力、出力の一般的な処理方法など、コマンドレットの使用に役立つヒントについては、「[Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」をご覧ください。
 
 ## ステップ 1: サブスクリプションを設定する 
 
@@ -121,7 +123,7 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 		Set-AzureRmContext –SubscriptionID <subscriptionId>
 
 
-## ステップ 2: Recovery Services コンテナーを作成する
+## ステップ 2: Recovery Services コンテナーを作成する 
 
 1. ARM リソース グループがまだ存在しない場合は、それを作成します。
 
@@ -131,19 +133,11 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 
 		$vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location 
 
-## ステップ 3: コンテナー登録キーを生成する
+## ステップ 3: Recovery Services コンテナーのコンテキストを設定する
 
-コンテナーの登録キーを生成します。Azure Site Recovery プロバイダーをダウンロードして VMM サーバーにインストールした後で、このキーを使用して、VMM サーバーをコンテナーに登録します。
+1.  次のコマンドを実行して、コンテナーのコンテキストを設定します。
 
-1.	コンテナー設定ファイルを取得し、コンテキストを設定します。
-	
-
-		Get-AzureRmRecoveryServicesVaultSettingsFile -Vault vaultname -Path #VaultSettingFilePath
-	
-	
-2.	次のコマンドを実行して、コンテナーのコンテキストを設定します。
-	
-		Import-AzureRmSiteRecoveryVaultSettingsFile -Path $VaultSettingFilePath
+		Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
 
 ## ステップ 4: Azure Site Recovery プロバイダーをインストールする
 
@@ -319,7 +313,7 @@ Azure Resource Manager と PowerShell を使用して仮想ネットワークを
 
 ### 計画されていないフェールオーバーの実行
 
-1. 次のコマンドを実行して計画されていないフェールオーバーを開始します。
+1. 次のコマンドを実行して計画外のフェールオーバーを開始します。
 		
 		$protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $protectionContainer
 
@@ -351,4 +345,4 @@ Azure Resource Manager と PowerShell を使用して仮想ネットワークを
 
 Azure Site Recovery PowerShell コマンドレットの詳細を[確認します](https://msdn.microsoft.com/library/dn850420.aspx)</a>。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

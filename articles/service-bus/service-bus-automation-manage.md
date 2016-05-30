@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/12/2016"
+	ms.date="04/18/2016"
 	ms.author="csand"/>
 
 # Azure Automation を使用した Azure Service Bus の管理
@@ -30,14 +30,13 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 
 ## Azure Automation を Azure Service Bus の管理に役立てる方法
 
-[Service Bus REST API](https://msdn.microsoft.com/library/azure/hh780717.aspx) を使用することによって、Azure Automation で Service Bus を管理できます。Azure Automation 内では、REST API を使用して Service Bus タスクの多くを処理する PowerShell スクリプトを実行できます。このような Azure Automation 内の REST API 呼び出しと別の Azure サービスの PowerShell コマンドレットを組み合わせて、Azure サービスとサード パーティ システム全体に及ぶ複雑なタスクを自動化することもできます。
+[Service Bus REST API](https://msdn.microsoft.com/library/azure/hh780717.aspx) を使用することによって、Azure Automation で Service Bus を管理できます。Azure Automation 内では、REST API を使用して Service Bus タスクの多くを処理する PowerShell スクリプトを実行できます。このような Azure Automation 内の REST API 呼び出しと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスとサード パーティ システム全体に及ぶ複雑なタスクを自動化することもできます。
 
 PowerShell を使用して Azure Service Bus を管理するいくつかの例を次に示します。
-
-- [Azure Service Bus キューを管理するカスタム PowerShell コマンドレット](https://blogs.technet.microsoft.com/uktechnet/2014/12/04/sample-of-custom-powershell-cmdlets-to-manage-azure-servicebus-queues/)
-- [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-- [PowerShell を使用して Azure Service Bus 名前空間を作成する](http://buildazure.com/2015/09/24/create-azure-service-bus-namespaces-using-powershell-and-x-plat-cli/)
-- [構成ノードを追加して Azure サービス バスを作成するための、DSCResource を含むモジュール](https://www.powershellgallery.com/packages/AzureServiceBusCreation/1.0)
+* [Azure Service Bus キューを管理するカスタム PowerShell コマンドレット](https://blogs.technet.microsoft.com/uktechnet/2014/12/04/sample-of-custom-powershell-cmdlets-to-manage-azure-servicebus-queues/)
+* [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+* [PowerShell を使用して Azure Service Bus 名前空間を作成する](http://buildazure.com/2015/09/24/create-azure-service-bus-namespaces-using-powershell-and-x-plat-cli/)
+* [構成ノードを追加して Azure サービス バスを作成するための、DSCResource を含むモジュール](https://www.powershellgallery.com/packages/AzureServiceBusCreation/1.0)
 
 ## 次のステップ
 
@@ -46,4 +45,4 @@ PowerShell を使用して Azure Service Bus を管理するいくつかの例�
 * Azure Automation の[作業開始のチュートリアル](https://azure.microsoft.com/documentation/learning-paths/automation/)に関するページを参照してください。
 * [PowerShell で Service Bus を管理する](service-bus-powershell-how-to-provision.md)方法に関するページを参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

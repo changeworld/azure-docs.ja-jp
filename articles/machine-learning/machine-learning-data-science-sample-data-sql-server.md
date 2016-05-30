@@ -13,13 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/07/2016" 
+	ms.date="05/10/2016" 
 	ms.author="fashah;garye;bradsev" />
 
 #<a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
 
-
-## はじめに
 
 このドキュメントでは、SQL または Python プログラミング言語を使用して、Azure の SQL Server に格納されているデータをサンプリングする方法について説明します。また、サンプリングしたデータをファイルを保存し、Azure BLOB にアップロードして、Azure Machine Learning Studio に読み込むことで、データを Azure Machine Learning に移動する方法についても説明します。
 
@@ -126,4 +124,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

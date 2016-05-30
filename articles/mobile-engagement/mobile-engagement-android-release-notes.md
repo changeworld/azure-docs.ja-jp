@@ -13,11 +13,21 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="05/17/2016"
 	ms.author="piyushjo" />
 
 
 #リリース ノート
+
+##4\.2.2 (05/17/2016)
+
+- 安定性が向上しました。
+
+##4\.2.1 (05/10/2016)
+
+- セキュリティ: Web ビューのローカル ファイル アクセスが無効になりました。
+- セキュリティ: 廃止され、セキュリティで保護されていない `PreferenceActivity` クラスを拡張する `EngagementPreferenceActivity` クラスを削除しました。
+- セキュリティ: リーチ アクティビティが `exported="false"` を使用するように記述されました。このフラグは、SDK の以前のバージョンでも使用できます。
 
 ##4\.2.0 (03/11/2016)
 
@@ -70,4 +80,4 @@
 -   セキュリティの強化。
 -   Google Play と SmartAd の追跡機能が削除されました。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/07/2016"
+   ms.date="05/18/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect Sync: 誤って削除されないように保護する
@@ -29,11 +29,13 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 
 500 オブジェクトという既定値は PowerShell と `Enable-ADSyncExportDeletionThreshold` で変更できます。組織の規模に合わせてこの値を構成する必要があります。同期スケジューラは 30 分おきに実行されるので、この値は 30 分以内に確認される削除数になります。
 
-この機能が有効なときに、Azure AD にエクスポートするようにステージングされた削除の数が多すぎる場合は、エクスポートは続行されず、次のような電子メールが送信されます。
+Azure AD にエクスポートするようにステージングされた削除の数が多すぎる場合は、エクスポートは続行されず、次のような電子メールが送信されます。
 
 ![Prevent Accidental deletes email](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/email.png)
 
 > *(技術担当者) 様。(時刻) に、ID 同期サービスは、削除の数が、(組織名) に対して構成されている削除のしきい値を超えたことを検出しました。この ID 同期の実行で、合計 (数) 個のオブジェクトが削除のために送信されました。これは、構成されている削除のしきい値である (数) 個のオブジェクトに達しているか、それを超えています。続行する前に、これらの削除を処理してよいかどうかを確認する必要があります。この電子メール メッセージに記載されているエラーの詳細情報については、「誤って削除されないように保護する」を参照してください。*
+
+また、**Synchronization Service Manager** UI でエクスポート プロファイルのステータスが `stopped-deletion-threshold-exceeded` となっていることを確認できます。![誤って削除されないように保護する Sync Service Manager UI](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/syncservicemanager.png)
 
 これを予想していなかった場合は、調査し、修正のアクションを実行します。削除されようとしているオブジェクトを表示するには、次の操作を行います。
 
@@ -56,4 +58,4 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

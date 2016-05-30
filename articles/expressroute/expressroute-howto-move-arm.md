@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/01/2016"
+   ms.date="05/05/2016"
    ms.author="ganesr"/>
 
 
@@ -98,7 +98,7 @@ ExpressRoute 回線の詳細を取得するには、次のコマンドを実行�
 
     get-azurededicatedcircuit
 
-表示されたサービス キーを確認できる必要があります。これで、ExpressRoute 回線へのリンクを管理することができます。次の記事では、ExpressRoute 回線へのリンクを管理する方法について説明します。
+表示されたサービス キーを確認できる必要があります。これで、クラシック VNet の標準クラシック デプロイメント モデル コマンドと ARM VNET の標準 ARM コマンドを利用し、ExpressRoute のリンクを管理できるようになりました。次の記事では、ExpressRoute 回線へのリンクを管理する方法について説明します。
 
 - [Resource Manager デプロイ モデルの ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)
 - [クラシック デプロイ モデルの ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-classic.md)
@@ -126,4 +126,4 @@ ExpressRoute 回線の詳細を取得するには、次のコマンドを実行�
 - [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-arm.md)
 - [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

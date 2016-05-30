@@ -303,7 +303,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 このセクションでは、**サーバー エクスプローラー**を使用して Azure の接続文字列値を設定します。
 
-7. **サーバー エクスプローラー**で、**[Azure]、{リソース グループ}** の下にある Web アプリを右クリックし、**[設定の表示]** をクリックします。
+7. **サーバー エクスプローラー**で、**[Azure]、[App Service]、{リソース グループ}** の下にある Web アプリを右クリックし、**[設定の表示]** をクリックします。
 
 	**[構成]** タブで **[Azure Web アプリ]** ウィンドウが開きます。
 
@@ -822,5 +822,4 @@ https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 
 詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?LinkId=390226)」を参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
-
+<!---HONumber=AcomDC_0518_2016-->

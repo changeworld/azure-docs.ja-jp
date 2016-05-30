@@ -177,7 +177,7 @@ IO サイズがアプリケーションのパフォーマンスに及ぼす影�
 | Standard\_DS14 | 16 | 112 GB | OS = 1023 GB <br> ローカル SSD = 224 GB | 32 | 576 GB | 50,000 IOPS <br> 512 MB/秒 | 4,000 IOPS、33 MB/秒 |
 | Standard\_GS5 | 32 | 448 GB | OS = 1023 GB <br> ローカル SSD = 896 GB | 64 | 4224 GB | 80,000 IOPS <br> 2,000 MB/秒 | 5,000 IOPS、50 MB/秒 |
 
-利用可能なすべての Azure VM サイズのリストについては、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」をご覧ください。アプリケーションの目的のパフォーマンス要件を満たし、拡張できる VM サイズを選択します。これに加え、VM サイズを選択するときは、次の重要な考慮事項に注意してください。
+利用可能なすべての Azure VM サイズの一覧については、[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md)と [Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md)に関するページをご覧ください。アプリケーションの目的のパフォーマンス要件を満たし、拡張できる VM サイズを選択します。これに加え、VM サイズを選択するときは、次の重要な考慮事項に注意してください。
 
 
 *スケールの上限* IOPS の上限は、VM あたりとディスクあたりで異なり、互いに独立しています。アプリケーションが、VM と VM に接続された Premium ディスクの制限の範囲内で IOPS を引き上げていることを確認します。制限を超えると、アプリケーションのパフォーマンスが調整されます。
@@ -540,4 +540,4 @@ SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プ
 - [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-windows-sql-performance.md)
 - [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx) 
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

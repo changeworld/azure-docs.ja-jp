@@ -65,9 +65,8 @@ Azure Search の場合は常に、まず REST API によって、次に .NET SDK
 
 ただし、プレビュー機能は変更される可能性があるため、プレビュー バージョンに依存した実稼働コードの作成はお勧めしません。古いプレビュー バージョンを使用している場合は、一般公開 (GA) バージョンに移行することをお勧めします。
 
-- .NET SDK の場合: コード移行のガイダンスについては、「[Upgrade the .NET SDK (.NET SDK のアップグレード)](search-dotnet-sdk-migration.md)」を参照してください。
-- REST API の場合: コード移行のガイダンスについては、「[Transition from preview to GA (プレビューから GA への移行)](search-transition-from-preview.md)」を参照してください。
+.NET SDK の場合: コード移行のガイダンスについては、[.NET SDK のアップグレード](search-dotnet-sdk-migration.md)に関する記事を参照してください。
 
-一般的な可用性とは、Azure Search がサービス レベル アグリーメント (SLA) の下で稼働することを意味します。SLA については、「[Azure Search サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)」を参照してください。
+一般的な可用性とは、Azure Search がサービス レベル アグリーメント (SLA) の下で稼働することを意味します。SLA については、[Azure Search のサービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

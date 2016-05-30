@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/22/2016"
+    ms.date="05/12/2016"
     ms.author="elizapo" />
 
 
@@ -37,4 +37,4 @@ Azure VNET を検証するには、次の手順を行います。
 - [RemoteApp のハイブリッド デプロイの作成方法](remoteapp-create-hybrid-deployment.md)
 - [Azure RemoteApp コレクションの Azure Virtual Network へのデプロイ方法 (ExpressRoute のサポートを利用)](http://blogs.msdn.com/b/rds/archive/2015/04/23/deploy-azure-remoteapp-collection-to-your-azure-virtual-network-with-support-for-expressroute.aspx)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

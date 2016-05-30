@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/22/2016"
+   ms.date="05/17/2016"
    ms.author="larryfr"/>
 
 # Hadoop Tools for Visual Studio を使用した HDInsight での Apache Storm の C# トポロジの開発
@@ -37,11 +37,11 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 -	Azure SDK 2.5.1 以降
 
--	HDInsight Tools for Visual Studio: HDInsight Tools for Visual Studio のインストールと構成については、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
+-	HDInsight Tools for Visual Studio: HDInsight Tools for Visual Studio のインストールと構成については、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
 
     > [AZURE.NOTE] HDInsight Tools for Visual Studio は Visual Studio Express ではサポートされていません
 
--	HDInsight 上の Apache Storm クラスター: クラスターを作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-get-started.md)」をご覧ください。
+-	HDInsight 上の Apache Storm クラスター: クラスターを作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-get-started.md)」を参照してください。
 
 	> [AZURE.NOTE] 現在、HDInsight Tools for Visual Studio では HDInsight バージョン 3.2 cluster の Storm のみサポートしています。
 
@@ -68,7 +68,7 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
 
 ##C# トポロジの作成
 
-1.	HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
+1.	HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
 
 2.	Visual Studio を開いて、**[ファイル]** > **[新規]**、**[プロジェクト]** の順に選択します。
 
@@ -90,7 +90,7 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
 
 ###スパウトを実装する
 
-1.	**Spout.cs** を開きます。スパウトは、外部ソースからデータをトポロジに読み込む際に使用されます。スパウトの主なコンポーネントは次のとおりです。
+1.	**Spout.cs** を開きます。スパウトは、外部ソースからデータをトポロジに読み込む場合に使用されます。スパウトの主なコンポーネントは次のとおりです。
 
 	-	**NextTuple**: スパウトで複数のタプルの出力が許可されている場合、Storm によって呼び出されます。
 
@@ -167,7 +167,7 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
 	}
 	```
 
-	コメントに目を通して、このコードが行う内容をご確認ください。
+	コメントに目を通して、このコードが行う内容を確認してください。
 
 ###ボルトを実装する
 
@@ -235,7 +235,7 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
 	}
 	```
 
-	コメントに目を通して、このコードが行う内容をご確認ください。
+	コメントに目を通して、このコードが行う内容を確認してください。
 
 5.	**Counter.cs** を開いて、クラスの内容を次のように置き換えます。
 
@@ -301,7 +301,7 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
 	}
 	```
 
-	コメントに目を通して、このコードが行う内容をご確認ください。
+	コメントに目を通して、このコードが行う内容を確認してください。
 
 ###トポロジの定義
 
@@ -372,7 +372,7 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
     return topologyBuilder;
 ```
 
-コメントに目を通して、このコードが行う内容をご確認ください。
+コメントに目を通して、このコードが行う内容を確認してください。
 
 ##トポロジを送信する
 
@@ -438,7 +438,7 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
 
 -	**JavaComponentConstructor** は、スパウトやボルトの Java クラスの新しいインスタンスの作成に使用する必要があります。
 
--	**microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer** は、Java オブジェクトから JSON に、Java コンポーネントのデータをシリアル化する際に使用する必要があります。
+-	**microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer** は、Java オブジェクトから JSON に、Java コンポーネントのデータをシリアル化するときに使用する必要があります。
 
 -	トポロジをサーバーに送信するとき、**[追加の構成]** オプションを使用して **[Java ファイルのパス]** を指定する必要があります。ここで指定するパスは、Java クラスを含む JAR ファイルのあるディレクトリである必要があります。
 
@@ -469,7 +469,7 @@ SCP.NET の最新リリースでは、NuGet からパッケージをアップグ
 
 ###トポロジをローカルでテストする
 
-トポロジのクラスターへのデプロイは簡単ですが、状況によっては、トポロジをローカルでテストする必要が生じる場合があります。次の手順を使用して、お使いの開発環境のローカルでこのチュートリアルのサンプル トポロジを実行してテストします。
+トポロジのクラスターへのデプロイは簡単ですが、状況によっては、トポロジをローカルでテストする必要が生じる場合があります。次の手順を使用して、使用している開発環境のローカルでこのチュートリアルのサンプル トポロジを実行してテストします。
 
 > [AZURE.WARNING] ローカル テストは、基本的な C# のみトポロジの場合のみ機能します。エラーが発生するため、ハイブリッド トポロジまたは複数のストリームを使用するトポロジには、ローカル テストを使用しないでください。
 
@@ -602,7 +602,7 @@ SCP.NET の最新リリースでは、NuGet からパッケージをアップグ
 
 	> [AZURE.NOTE] これらのファイルでは、文字列データは 10 進数の値の配列として保存されます。たとえば、**splitter.txt** ファイルの [[97,103,111]] は「and」という単語を示します。
 
-基本的なワード カウント アプリケーションをローカルでテストすることはとても簡単ですが、外部データ ソースとやりとりしたり、複雑なデータ分析を実行したりする複合的なトポロジを扱う場合には非常に役立ちます。そのようなプロジェクトを扱う際は、コンポーネントのコードにブレークポイントとステップを設定して問題を分離する必要が生じる場合もあります。
+基本的なワード カウント アプリケーションをローカルでテストすることはとても簡単ですが、外部データ ソースとやりとりしたり、複雑なデータ分析を実行したりする複合的なトポロジを扱う場合には非常に役立ちます。そのようなプロジェクトを扱う場合は、コンポーネントのコードにブレークポイントとステップを設定して問題を分離する必要が生じる場合もあります。
 
 > [AZURE.NOTE] HDInsight クラスターの Storm にデプロイする前に、必ず **[プロジェクトの種類]** を **[クラス ライブラリ]** に戻すようにしてください。
 
@@ -634,11 +634,15 @@ Context.Logger.Info("Component started");
 
 ここまでで、HDInsight Tools for Visual Studio から Storm トポロジを開発、デプロイする方法を学習してきました。次のステップでは、[HDInsight で Storm を使用して Azure Event Hub のイベントを処理する方法](hdinsight-storm-develop-csharp-event-hub-topology.md) を学習できます。
 
-ストリーム データを複数のストリームに分割する C# トポロジの例は、「[C# Storm example (C# Storm の例)](https://github.com/Blackmist/csharp-storm-example)」をご覧ください。
+ストリーム データを複数のストリームに分割する C# トポロジの例は、「[C# Storm example (C# Storm の例)](https://github.com/Blackmist/csharp-storm-example)」を参照してください。
 
-C# トポロジの作成の詳細については、「[SCP.NET GettingStarted.md](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md)」をご覧ください。
+C# トポロジの作成の詳細については、「[SCP.NET GettingStarted.md](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md)」を参照してください。
 
-HDInsight を使用するさまざまな方法や、HDInsight での Storm のその他の例については、次の記事をご覧ください。
+HDInsight を使用するさまざまな方法や、HDInsight での Storm のその他の例については、次の記事を参照してください。
+
+**Microsoft SCP.NET**
+
+* [SCP プログラミング ガイド](hdinsight-storm-scp-programming-guide.md)
 
 **HDInsight での Apache Storm**
 
@@ -658,4 +662,4 @@ HDInsight を使用するさまざまな方法や、HDInsight での Storm の�
 
 -	[HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

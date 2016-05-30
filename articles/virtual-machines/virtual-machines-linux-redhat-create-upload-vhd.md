@@ -43,11 +43,13 @@
 
 **RHEL のインストールに関する注記**
 
+- Azure で Linux を準備する際のその他のヒントについては、「[Linux のインストールに関する一般的な注記](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes)」も参照してください。
+
 - 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは **convert-vhd** PowerShell コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
 - VHD は "固定" として作成する必要があります。動的 VHD はサポートされていません。
 
-- Linux オペレーティング システムをインストールする場合は、Logical Volume Manager (LVM) (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合を回避できます。必要に応じて、LVM または RAID をデータ ディスク上で使用できます。
+- Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、LVM または [RAID](virtual-machines-linux-configure-raid.md) をデータ ディスク上で使用できます。
 
 - OS ディスクにスワップ パーティションを構成しないでください。一時的なリソース ディスク上にスワップ ファイルを作成するよう Linux エージェントを構成できます。この詳細については、次の手順を参照してください。
 
@@ -55,7 +57,7 @@
 
 - **qemu-img** を使用してディスク イメージを VHD 形式に変換する場合、qemu-img のバージョン 2.2.1 以降には既知のバグがあることに注意してください。このバグが原因で、VHD は適切にフォーマットされません。この問題は、qemu-img の今後のリリースで修正される予定です。現時点では、qemu-img のバージョン 2.2.0 以前を使用することをお勧めします。
 
-### <a id="rhel67hyperv"></a>Hyper-V マネージャーからの RHEL 6.7 仮想マシンの準備###
+### <a id="rhel67hyperv"> </a>Hyper-V マネージャーからの RHEL 6.7 仮想マシンの準備###
 
 
 1.	Hyper-V マネージャーで仮想マシンを選択します。
@@ -147,9 +149,9 @@
         # export HISTSIZE=0
         # logout
 
-16.	Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+16.	Hyper-V マネージャーで **[アクション] > [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-### <a id="rhel7xhyperv"></a>Hyper-V マネージャーからの RHEL 7.1/7.2 仮想マシンの準備###
+### <a id="rhel7xhyperv"> </a>Hyper-V マネージャーからの RHEL 7.1/7.2 仮想マシンの準備###
 
 1.  Hyper-V マネージャーで仮想マシンを選択します。
 
@@ -225,7 +227,7 @@
         # export HISTSIZE=0
         # logout
 
-15.	Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+15.	Hyper-V マネージャーで **[アクション] > [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 
 ## KVM からの Red Hat ベースの仮想マシンの準備
@@ -509,11 +511,11 @@
 
 - OS ディスクにスワップ パーティションを構成しないでください。一時的なリソース ディスク上にスワップ ファイルを作成するよう Linux エージェントを構成できます。この詳細については、次の手順を参照してください。
 
-- 仮想ハード ディスクを作成する場合は、**[Store virtual disk as a single file]** (仮想ディスクを 1 つのファイルとして格納する) を選択します。
+- 仮想ハード ディスクを作成する場合は、**[Store virtual disk as a single file (仮想ディスクを 1 つのファイルとして格納する)]** を選択します。
 
 
 
-### <a id="rhel67vmware"></a>VMware からの RHEL 6.7 仮想マシンの準備###
+### <a id="rhel67vmware"> </a>VMWare からの RHEL 6.7 仮想マシンの準備###
 
 1.	次のコマンドを実行して NetworkManager をアンインストールします。
 
@@ -625,7 +627,7 @@
         # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.7.raw rhel-6.7.vhd
 
 
-### <a id="rhel7xvmware"></a>VMware からの RHEL 7.1/7.2 仮想マシンの準備###
+### <a id="rhel7xvmware"> </a>VMWare からの RHEL 7.1/7.2 仮想マシンの準備###
 
 1.	/etc/sysconfig/ ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
 
@@ -863,7 +865,7 @@
 
 4.	VM 設定を開きます。
 
-    a.新しい仮想ハード ディスクを VM に接続します。**[VHD 形式]** と **[固定サイズ]** を選択します。
+    a.新しい仮想ハード ディスクを VM に接続します。**[VHD Format (VHD 形式)]** と **[固定サイズ]** を選択します。
 
     b.インストール ISO を DVD ドライブに接続します。
 
@@ -910,8 +912,8 @@ initramfs を再構築します。
 詳細については、[initramfs の再構築](https://access.redhat.com/solutions/1958)に関する情報を参照してください。
 
 ## 次のステップ
-これで、Red Hat Enterprise Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Creating and uploading a virtual hard disk that contains the Linux operating system (Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード)](virtual-machines-linux-classic-create-upload-vhd.md)」の手順 2. と 3. を参照してください。
+これで、Red Hat Enterprise Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
 
 Red Hat Enterprise Linux の実行が認定されているハイパーバイザーの詳細については、[Red Hat の Web サイト](https://access.redhat.com/certified-hypervisors)を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

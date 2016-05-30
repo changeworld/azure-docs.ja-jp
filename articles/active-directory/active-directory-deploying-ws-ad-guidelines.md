@@ -53,7 +53,7 @@ AD をデプロイした経験のない方は、「[AD DS Deployment Guide (AD D
 - [Azure ポータルを使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
 - [Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する](../vpn-gateway/vpn-gateway-site-to-site-create.md)
 - [Azure の仮想ネットワークでの Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)
-- [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md)
+- [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)
 - [Microsoft Azure IT Pro IaaS: (01) 仮想マシンの基礎](https://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 - [Microsoft Azure IT Pro IaaS: (05) 仮想ネットワークとクロスプレミス接続の作成](https://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
 
@@ -338,7 +338,7 @@ LDAP 対応アプリケーションを Azure 仮想マシンにデプロイし�
 
 - [ネットワーク トポロジ](#BKMK_NetworkTopology): [クロスプレミス接続](../vpn-gateway/vpn-gateway-site-to-site-create.md)を使用する Azure 仮想ネットワークを作成します。
 
-- [インストール方法](#BKMK_InstallMethod): 会社の Windows Server Active Directory ドメインからレプリカ DC をデプロイします。レプリカ DC に使用する Windows Server AD DS を VM にインストールします。また必要に応じて、"メディアからのインストール" (IFM) 機能を使用すると、インストール時に新しい DC にレプリケートしなければならないデータの量を減らすことができます。チュートリアルについては、「[Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](../virtual-network/virtual-networks-install-replica-active-directory-domain-controller.md)」を参照してください。IFM を使用する場合でも、仮想 DC をオンプレミスに構築して仮想ハード ディスク (VHD) 全体をクラウドに移動する方が、インストール時に Windows Server AD DS をレプリケートするよりも効率がよいこともあります。セキュリティ上の理由から VHD は、Azure へのコピー後にオンプレミス ネットワークから削除することをお勧めします。
+- [インストール方法](#BKMK_InstallMethod): 会社の Windows Server Active Directory ドメインからレプリカ DC をデプロイします。レプリカ DC に使用する Windows Server AD DS を VM にインストールします。また必要に応じて、"メディアからのインストール" (IFM) 機能を使用すると、インストール時に新しい DC にレプリケートしなければならないデータの量を減らすことができます。チュートリアルについては、「[Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)」を参照してください。IFM を使用する場合でも、仮想 DC をオンプレミスに構築して仮想ハード ディスク (VHD) 全体をクラウドに移動する方が、インストール時に Windows Server AD DS をレプリケートするよりも効率がよいこともあります。セキュリティ上の理由から VHD は、Azure へのコピー後にオンプレミス ネットワークから削除することをお勧めします。
 
 - [Windows Server Active Directory のサイト トポロジ](#BKMK_ADSiteTopology): Active Directory サイトとサービスで新しい Azure サイトを作成します。Azure 仮想ネットワークを表す Windows Server Active Directory サブネット オブジェクトを作成し、そのサブネットを新しい Azure サイトに追加します。新しいサイト リンクを作成して、そのリンクに新しい Azure サイトを追加し、さらに、Azure 仮想ネットワークの VPN エンドポイントがあるサイトを追加します。その目的は、Azure との間でやり取りされる Windows Server Active Directory トラフィックを制御し、最適化することにあります。
 
@@ -558,4 +558,4 @@ Windows Server AD FS フェデレーション サービスをスタンドアロ�
 
 > [AZURE.NOTE] Azure で Windows Server AD FS のエンドポイントの負荷分散を行うには、同じクラウド サービス内の Windows Server AD FS ファームのすべてのメンバーが HTTP ポート (既定では 80) と HTTPS ポート (既定では 443) に Azure の負荷分散機能を使用するように構成します。詳細については、Azure サイトで「[LoadBalancerProbe スキーマ](https://msdn.microsoft.com/library/azure/jj151530)」を参照してください。Windows Server のネットワーク負荷分散 (NLB) は Azure でサポートされていません。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

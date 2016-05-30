@@ -13,9 +13,9 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/11/2016"
+	ms.date="05/17/2016"
 	ms.author="carlrabeler; ronitr"/>
- 
+
 # SQL Database 監査の使用
 Azure SQL Database 監査は、データベース イベントを追跡し、監査したイベントを Azure ストレージ アカウントの監査ログに書き込みます監査は通常、Basic、Standard、と Premium の各サービス層で使用できます。
 
@@ -57,7 +57,7 @@ SQL Database 監査により、以下のことが可能になります。
 
 特定のデータベースに対して、または既定のサーバー ポリシーとして、監査ポリシーを定義できます。既定のサーバー監査ポリシーは、特定のオーバーライド データベース監査ポリシーが定義されていないサーバー上のすべてのデータベースに適用されます。
 
-監査をセットアップする前に、["ダウンレベル クライアント"](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md) を使用しているかどうかを確認します。
+監査をセットアップする前に、["ダウンレベル クライアント"](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md) を使用しているかどうかを確認します。また、ファイアウォールを厳密に設定している場合は、監査を有効にすると[データベースの IP エンドポイントが変更される](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)ことに注意してください。
 
 
 ##<a id="subheading-2"></a>データベースに対する監査を設定する
@@ -140,7 +140,7 @@ Power Query を使用すると、Azure ストレージ アカウントから直�
 3. [監査の構成] ブレードに戻り、**[ストレージ アクセス キー]** を *[セカンダリ]* から *[プライマリ]* に切り替え、**[保存]** をクリックします。
 
 4. ストレージの UI に戻り、*セカンダリ アクセス キー*を**再生成** (次のキー更新サイクルの準備として) します。
-  
+
 ##<a id="subheading-7"></a>Automation
 Azure SQL Database で監査を構成する際、使用できる PowerShell コマンドレットがいくつかあります。
 
@@ -175,7 +175,4 @@ Azure SQL Database で監査を構成する際、使用できる PowerShell コ�
 [7]: ./media/sql-database-auditing-get-started/7_auditing_get_started_classic_portal_storage.png
 [8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_storage_key_rotation.png
 
-
- 
-
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

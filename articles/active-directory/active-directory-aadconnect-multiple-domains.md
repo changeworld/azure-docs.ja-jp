@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/14/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 # Azure AD とのフェデレーションに使用する複数ドメインのサポート
@@ -128,7 +128,7 @@ PowerShell コマンド `Get-MsolDomainFederationSettings - DomainName <your dom
 ##サブドメインのサポート
 サブドメインの追加では、Azure AD がドメインを処理する方法のために、親の設定を継承します。つまり、IssuerUri は親に一致させる必要があります。
 
-たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、****http://bmcontoso.com/adfs/services/trust.** とする必要があります。しかし、上で Azure AD に適用した標準ルールでは、発行者を ****http://corp.bmcontoso.com/adfs/services/trust.** としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
+たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、**http://bmcontoso.com/adfs/services/trust.** とする必要があります。しかし、上で Azure AD に適用した標準ルールでは、発行者を **http://corp.bmcontoso.com/adfs/services/trust.** としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
 
 ### サブドメインのサポートを有効にする方法
 この問題を回避するには、Microsoft Online 用 AD FS 証明書利用者の信頼を更新する必要があります。そのためには、カスタム Issuer 値の構築時にユーザーの UPN サフィックスからサブドメインを削除するよう、カスタム要求規則を構成する必要があります。
@@ -153,4 +153,4 @@ PowerShell コマンド `Get-MsolDomainFederationSettings - DomainName <your dom
 ![Replace claim](./media/active-directory-multiple-domains/sub2.png)
 5.	[OK] をクリックします。[適用] をクリックします。[OK] をクリックします。AD FS 管理を閉じます。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

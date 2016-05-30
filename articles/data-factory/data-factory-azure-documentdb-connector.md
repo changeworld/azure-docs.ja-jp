@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/24/2016" 
+	ms.date="05/09/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した DocumentDB との間でのデータの移動
 
-この記事では、Azure Data Factory のコピー アクティビティを利用し、Azure DocumentDB と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+この記事では、Azure Data Factory のコピー アクティビティを使用し、別のデータ ストアから Azure DocumentDB へのデータ移動および DocumentDB から別のデータ ストアへのデータ移動の方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
 次のサンプルは、Azure DocumentDB と Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
 
@@ -419,12 +419,14 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 
 	**回答:** レコードに "ID" フィールドがあり、コピー操作で同じ ID のレコードが挿入される場合、そのコピー操作はエラーをスローします。
  
-3. **質問:** Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割]( https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)をサポートしていますか?
+3. **質問:** Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)をサポートしていますか?
 
 	**回答:** いいえ。 
 4. **質問:** 1 つのテーブルに複数の DocumentDB コレクションを指定できますか?
 	
 	**回答:** いいえ。現時点では、1 つのコレクションだけを指定できます。
      
+## パフォーマンスとチューニング  
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

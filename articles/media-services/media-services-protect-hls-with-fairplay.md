@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/04/2016"
+ 	ms.date="05/11/2016"
 	ms.author="juliako"/>
 
 #Azure Media Services を使用して Apple FairPlay で保護された HLS コンテンツをストリーミングする 
 
 Azure Media Services では、次の形式を使用して HTTP Live Streaming (HLS) コンテンツを動的に暗号化することができます。
 
-- **AES-128 エンベロープ クリア キー** - **AES-128 CTR** モードを使用してチャンク全体を暗号化します。ストリームの復号化は iOS および OSX プレーヤーでネイティブにサポートされています。詳細については、[こちらの記事](media-services-protect-with-aes128.md)を参照してください。
+- **AES-128 エンベロープ クリア キー** - **AES-128 CBC** モードを使用してチャンク全体を暗号化します。ストリームの復号化は iOS および OSX プレーヤーでネイティブにサポートされています。詳細については、[こちらの記事](media-services-protect-with-aes128.md)を参照してください。
 
 - **Apple FairPlay** - **AES-128 CBC** モードを使用して個々のビデオやオーディオのサンプルを暗号化します。**FairPlay ストリーミング** (FPS) はデバイスのオペレーティング システムに統合されており、iOS および Apple TV でネイティブにサポートされます。OS X 上の Safari では、Encrypted Media Extensions (EME) インターフェイスのサポートを使用することで FPS が可能になります。
 
@@ -97,10 +97,14 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 1. ストリーミング URL を取得するために OnDemand ロケーターを作成します。
 
->[AZURE.NOTE] Azure Media Player では、すぐに使用できる FairPlay 再生はサポートされていません。MAC OSX で FairPlay 再生を入手するには、Apple 開発者アカウントからサンプル プレーヤーを取得する必要があります。
->
->iOS SDK を使用してアプリを開発することもできます。
+##プレーヤー アプリまたはクライアント アプリによる FairPlay キー配信の使用
 
+プレーヤー アプリは、iOS SDK を使用して開発できます。FairPlay コンテンツを再生できるようにするには、ライセンス交換プロトコルを実装する必要があります。ライセンス交換プロトコルは、Apple によって指定されません。キー配信要求の送信方法はアプリごとに異なります。AMS FairPlay キー配信サービスでは、SPC が www-form-url でエンコードされた投稿メッセージとなることが想定されます。これは次のような形式になります。
+
+	spc=<Base64 encoded SPC>
+
+>[AZURE.NOTE] Azure Media Player では、すぐに使用できる FairPlay 再生はサポートされていません。MAC OSX で FairPlay 再生を入手するには、Apple 開発者アカウントからサンプル プレーヤーを取得する必要があります。
+ 
 
 ##.NET の例
 
@@ -536,4 +540,4 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

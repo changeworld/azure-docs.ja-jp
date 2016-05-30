@@ -73,16 +73,16 @@ SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービス
 2. ハイブリッド接続ブレードで、**[追加]** をクリックします。
 	
 	<!-- ![Add a hybrid connnection][CreateHCAddHC]
--->
+	-->
 	
 3. **[ハイブリッド接続の追加]** ブレードが開きます。これは最初のハイブリッド接続であるため、**[新しいハイブリッド接続]** があらかじめ選択され、**[ハイブリッド接続の作成]** ブレードが開きます。
 	
 	![ハイブリッド接続の作成][TwinCreateHCBlades]
 	
-	**[ハイブリッド接続の作成]** ブレードで、次の操作を行います。
+	**[ハイブリッド接続の作成] ブレード** で、次の手順を実行します。
 	- **[名前]** に、接続の名前を入力します。
-	- **[ホスト名]** に、リソースをホストするオンプレミスのコンピューターの名前を入力します。
-	- **[ポート]** に、オンプレミスのリソースが使用するポート番号 (SQL Server の既定のインスタンスの場合は 1433) を入力します。
+	- **[ホスト名]** に、リソースをホストする内部設置型のコンピューターの名前を入力します。
+	- **[ポート]** には、内部設置型のリソースが使用するポート番号 (SQL Server の既定のインスタンスの場合は 1433) を入力します。
 	- **[BizTalk サービス]** をクリックします。
 
 
@@ -98,8 +98,8 @@ SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービス
 	
 6. 処理が完了すると、ポータルの通知領域に接続の作成が完了したことが通知されます。
 	<!--- TODO
-
-    Everything fails at this step. I can't create a BizTalk service in the dogfood portal. I switch to the classic portal
+	
+	Everything fails at this step. I can't create a BizTalk service in the dogfood portal. I switch to the classic portal
 	(full portal) and created the BizTalk service but it doesn't seem to let you connnect them - When you finish the
 	Create hybrid conn step, you get the following error
 	Failed to create hybrid connection RelecIoudHC. The 
@@ -162,13 +162,13 @@ SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービス
 
 >[AZURE.NOTE]以下のセクションでは、Mobile Apps .NET バックエンド プロジェクトでハイブリッド接続を使用する方法を説明します。
 
-## SQL Server データベースに接続するモバイル アプリ .NET バックエンド プロジェクトを構成する
+## SQL Server データベースに接続する Mobile Apps .NET バックエンド プロジェクトを構成する
 
-App Service では、Mobile Apps .NET バックエンド プロジェクトは、追加の Mobile Apps SDK をインストールし初期化した ASP.NET Web アプリにすぎません。Web アプリを Mobile Apps バックエンドとして使用するには、 [Mobile Apps .NET バックエンド SDK をダウンロードして初期化する](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#install-sdk)必要があります。
+App Service では、Mobile Apps .NET バックエンド プロジェクトは、追加の Mobile Apps SDK をインストールし初期化した ASP.NET Web アプリにすぎません。Web アプリを Mobile Apps バックエンドとして使用するには、[Mobile Apps .NET バックエンド SDK をダウンロードして初期化する](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#install-sdk)必要があります。
 
 Mobile Apps については、オンプレミスのデータベースの接続文字列を定義し、この接続を使用するようにバックエンドを変更する必要もあります。
 
-1. Visual Studio のソリューション エクスプローラーで、モバイル アプリ .NET バックエンドの Web.config ファイルを開き、 **connectionStrings** セクションを探し、次のような新しい SqlClient エントリを追加します。このエントリはオンプレミスの SQL Server データベースを指しています。
+1. Visual Studio のソリューション エクスプローラーで、Mobile Apps .NET バックエンドの Web.config ファイルを開き、 **connectionStrings** セクションを探し、次のような新しい SqlClient エントリを追加します。このエントリはオンプレミスの SQL Server データベースを指しています。
 
 	    <add name="OnPremisesDBConnection"
          connectionString="Data Source=OnPremisesServer,1433;
@@ -227,7 +227,7 @@ Mobile Apps については、オンプレミスのデータベースの接続�
 
 [ハイブリッド接続の Web サイト](https://azure.microsoft.com/services/biztalk-services/)
 
-[BizTalk サービス: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブ](../biztalk-dashboard-monitor-scale-tabs/)
+[BizTalk サービス: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブ](../biztalk-services/biztalk-dashboard-monitor-scale-tabs.md)
 
 [Building a Real-World Hybrid Cloud with Seamless Application Portability (シームレスなアプリケーションの移植性を使用して実際のハイブリッド クラウドをビルドする) (Channel 9 のビデオ)](http://channel9.msdn.com/events/TechEd/NorthAmerica/2014/DCIM-B323#fbid=)
 
@@ -262,4 +262,4 @@ Mobile Apps については、オンプレミスのデータベースの接続�
 [HCStatusConnected]: ./media/web-sites-hybrid-connection-get-started/D10HCStatusConnected.png
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

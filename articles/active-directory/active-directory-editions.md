@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="05/12/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory のエディション
@@ -30,7 +30,7 @@ Azure Active Directory を強化するには、Azure Active Directory Basic エ�
 Office 365 サブスクリプションには、下の比較表に記載されているその他の Azure Active Directory 機能が含まれます。
 
 
-> [AZURE.NOTE] これらのエディションの価格オプションについては、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。<br>Azure Active Directory Premium と Azure Active Directory Basic は、現在、中国ではサポートされていません。詳細については、Azure Active Directory フォーラムからお問い合わせください。
+> [AZURE.NOTE] これらのエディションの価格オプションについては、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。Azure Active Directory Premium と Azure Active Directory Basic は、現在、中国ではサポートされていません。詳細については、Azure Active Directory フォーラムからお問い合わせください。
 
 
 - **Azure Active Directory Basic**: このエディションは、クラウド優先のニーズを持つタスク ワーカー向けに設計されており、クラウド中心のアプリケーション アクセスおよびセルフサービス ID 管理のソリューションを提供します。Azure Active Directory Basic エディションでは、グループベースのアクセス管理、クラウド アプリケーション向けのセルフサービスのパスワード リセット、Azure Active Directory アプリケーション プロキシ (Azure Active Directory を使用してオンプレミス Web アプリケーションを発行するため) などの生産性の強化とコスト削減の機能が提供され、すべてがアップタイム 99.9% のエンタープライズレベルの SLA によって保証されます。
@@ -50,7 +50,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 ##一般公開機能の比較
 
-> [AZURE.NOTE] このデータの異なるビューについては、「[マイクロソフト クラウド プラットフォームの全体像](https://www.microsoft.com/server-cloud/products/azure-active-directory/Features.aspx)」を参照してください。
+> [AZURE.NOTE] このデータの異なるビューについては、「[マイクロソフト クラウド プラットフォームの全体像](https://www.microsoft.com/en/server-cloud/products/azure-active-directory/features.aspx)」を参照してください。
 
 | | Azure AD Free | Azure AD Basic | Azure AD Premium |
 | ---                      | :-:           | :-:            | :-:              |
@@ -60,7 +60,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 
 
-<br>
+
 
 **共通機能**
 
@@ -117,8 +117,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 
 
-<br>
-<hr>
+
+
 ## 共通機能
 #### ディレクトリ オブジェクト 
 
@@ -134,7 +134,6 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 | 最大で 500,000 のオブジェクト| オブジェクトの制限なし| オブジェクトの制限なし| Office 365 ユーザー アカウントにはオブジェクトの制限なし|
 
 
-<br>
 
 #### ユーザー/グループの管理 (追加/更新/削除)/ユーザー ベースのプロビジョニング、デバイス登録
 
@@ -153,8 +152,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 - [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)
 
 
-<br>
-<hr>
+
+
 #### シングル サインオン (SSO)
 
 **種類:** 共通機能
@@ -164,7 +163,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 | Free エディション| Basic エディション| Premium Edition| Office 365 アプリのみ |
 | :-: | :-: | :-: | :-: |
-| 10 個のアプリ (ユーザーあたり) [1] <br>(事前統合済みの SaaS アプリおよび開発者が統合したアプリ)| 10 個のアプリ (ユーザーあたり) [1] <br>(Free レベル + アプリケーション プロキシ アプリ) | 制限なし [2] <br> (Free、Basic レベル + セルフサービスのアプリ統合テンプレート)| 10 個のアプリ (ユーザーあたり) [1] <br> (事前統合済みの SaaS アプリおよび開発者が統合したアプリ)|
+| 10 個のアプリ (ユーザーあたり) [1] (事前統合済みの SaaS アプリおよび開発者が統合したアプリ)| 10 個のアプリ (ユーザーあたり) [1] (Free レベル + アプリケーション プロキシ アプリ) | 制限なし [2] (Free、Basic レベル + セルフサービスのアプリ統合テンプレート)| 10 個のアプリ (ユーザーあたり) [1] (事前統合済みの SaaS アプリおよび開発者が統合したアプリ)|
 
 [1] Azure AD Free と Azure AD Basic で、SaaS アプリへのアクセス権が割り当てられているエンド ユーザーは、アクセス パネルで最大 10 個のアプリを表示でき、アプリへの SSO アクセスを取得できます。管理者は SSO を構成して、Free と Basic のユーザーに対して、SaaS アプリへのアクセス権を何個でも割り当てることができますが、エンド ユーザーはアクセス パネルで一度に 10 個のアプリしか表示できません。
 
@@ -174,8 +173,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [Azure Active Directory (AD) を使ったアプリケーションの管理](active-directory-enable-sso-scenario.md)
 
-<br>
-<hr>
+
+
 #### クラウド ユーザーに対するセルフサービスのパスワード変更
 
 **種類:** 共通機能
@@ -191,8 +190,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 - [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md)
 
 
-<br>
-<hr>
+
+
 #### 接続 (オンプレミスのディレクトリを Azure Active Directory に拡張する同期エンジン) 
 
 **種類:** 共通機能
@@ -208,8 +207,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<br>
-<hr>
+
+
 #### セキュリティ/使用量レポート
 
 **種類:** 共通機能
@@ -225,8 +224,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 
-<br>
-<hr>
+
+
 
 ## Premium および Basic の機能
 #### グループ ベースのアクセス管理/プロビジョニング
@@ -244,8 +243,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [SaaS アプリケーションへのアクセスをグループで管理する](active-directory-accessmanagement-group-saasapps.md)
 
-<br>
-<hr>
+
+
 #### クラウド ユーザーに対するセルフサービスのパスワード リセット
 
 **種類:** Basic の機能
@@ -261,8 +260,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [ユーザーおよび管理者の Azure AD のパスワード リセット](active-directory-passwords.md)
 
-<br>
-<hr>
+
+
 #### 企業ブランド (ログオン ページ/アクセス パネルのカスタマイズ)
 
 **種類:** Basic の機能
@@ -278,8 +277,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<br>
-<hr>
+
+
 #### アプリケーション プロキシ
 
 **種類:** Basic の機能
@@ -295,8 +294,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)
 
-<br>
-<hr>
+
+
 #### SLA 99.9%
 
 **種類:** Basic の機能
@@ -312,8 +311,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)
 
-<br>
-<hr>
+
+
 
 ## Premium の機能
 #### セルフサービスによるグループとアプリの管理/セルフサービスによるアプリケーションの追加/動的なグループ
@@ -329,7 +328,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 
 
-<br>
+
          
 #### セルフサービスによるパスワードのリセット、変更、ロック解除 (オンプレミスの書き戻しが可能)
 
@@ -344,7 +343,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 
 
-<br>
+
 
 #### Multi-Factor Authentication (クラウドおよびオンプレミス (MFA サーバー))
 
@@ -361,8 +360,8 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 - [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)
 
-<br>
-<hr>
+
+
 #### MIM CAL + MIM サーバー 
 
 Microsoft Identity Manager サーバー ソフトウェアの使用権は、Windows Server ライセンス (任意のエディション) と共に付与されます。Microsoft Identity Manager は、Windows Server OS で実行されるため、サーバーで Windows Server の有効なライセンス コピーが実行されている限り、そのサーバー上に Microsoft Identity Manager をインストールでき、使用することができます。Microsoft Identity Manager サーバーに他の個別のライセンスは不要です。
@@ -378,7 +377,7 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 
 
 
-<br>
+
 
 #### Cloud App Discovery 
 
@@ -395,8 +394,8 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 
 - [管理されていないクラウド アプリケーションを Cloud App Discovery で検出する](active-directory-cloudappdiscovery-whatis.md)
 
-<br>
-<hr>
+
+
 #### Connect Health
 
 **種類:** Premium の機能
@@ -412,8 +411,8 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 
 - [クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](active-directory-aadconnect-health.md)
 
-<br>
-<hr>
+
+
 #### グループ アカウントの自動パスワード ロールオーバー
 
 **種類:** Premium の機能
@@ -426,8 +425,8 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 | | | ![○][12]| |
 
 
-<br>
-<hr>
+
+
 ## Azure Active Directory Join – Windows 10 のみの関連機能
 #### Azure AD へのデバイスの参加、デスクトップ SSO、Azure AD 用の Microsoft Passport、管理者による Bitlocker 回復
 
@@ -441,7 +440,7 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 | ![○][12]| ![○][12]| ![○][12]| ![○][12]|
 
 
-<br>
+
 
 #### MDM の自動登録、セルフサービスによる Bitlocker 回復、Azure AD Join による Windows 10 デバイスへのローカル管理者の追加
 
@@ -454,7 +453,7 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 | :-: | :-: | :-: | :-: |
 | | | ![○][12]| |
 
-<hr>
+
 
 
 ## Azure AD プレビュー機能
@@ -483,4 +482,4 @@ Azure AD には、Free、Basic、Premium エディションの一般提供され
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

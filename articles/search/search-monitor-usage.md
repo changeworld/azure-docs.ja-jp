@@ -4,7 +4,7 @@
    services="search" 
    documentationCenter="" 
    authors="HeidiSteen" 
-   manager="mblythe" 
+   manager="paulettm" 
    editor=""
    tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required" 
-   ms.date="02/04/2016"
+   ms.date="05/17/2016"
    ms.author="heidist"/>
 
 # Azure Search サービスでの使用状況と統計の監視
@@ -59,4 +59,4 @@ Azure Search REST API または .NET SDK を使用することにより、プロ
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

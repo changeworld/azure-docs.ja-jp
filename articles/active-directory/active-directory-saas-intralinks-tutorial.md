@@ -63,6 +63,7 @@ Azure AD への Intralinks の統合を構成するには、ギャラリーか�
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
+
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
@@ -80,11 +81,14 @@ Azure AD への Intralinks の統合を構成するには、ギャラリーか�
 6. 検索ボックスに、「**Intralinks**」と入力します。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_01.png)
+
 7. 結果ウィンドウで **[Intralinks]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_02.png)
 
 
 ##  Azure AD シングル サインオンの構成とテスト
+
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Intralinks で Azure AD のシングル サインオンを構成し、テストします。
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する Intralinks ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Intralinks の関連ユーザーの間で、リンク関係が確立されている必要があります。
@@ -259,7 +263,7 @@ Intralinks では、Deal Nexus アプリケーションを除くその他すべ�
 
 	![Intralinks VIA または Elite アプリケーションの追加](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_51.png)
 
-7. アプリケーションに適切な名前 (「**Intralinks Elite**」など) を付け、[完了] ボタンをクリックします。
+7. アプリケーションに適切な名前 (**Intralinks Elite** など) を付け、[完了] ボタンをクリックします。
 
 8. **[シングル サインオンの構成]** ボタンをクリックします。
 
@@ -274,7 +278,7 @@ Intralinks では、Deal Nexus アプリケーションを除くその他すべ�
 	a.[サインオン URL] テキスト ボックスに、次のパターンを使用して、ユーザーが Intralinks アプリケーションへのサインオンに使用する URL を入力します。**https://\<会社名>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/<Azure AD テナント ID>/**
 
 
-11. [次へ] をクリックします。
+11. **[次へ]** をクリックします。
 
 12. 「**[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)**」セクションの手順に従って、アプリケーションをユーザーまたはグループに割り当てます。
 
@@ -311,4 +315,4 @@ Intralinks では、Deal Nexus アプリケーションを除くその他すべ�
 [204]: ./media/active-directory-saas-intralinks-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-intralinks-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

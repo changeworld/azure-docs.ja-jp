@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="05/16/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection の通知 
@@ -41,7 +41,7 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 - Identity Protection の関連するレポートへのリンク
 
 
-<br> ![Remediation](./media/active-directory-identityprotection-notifications/400.png "Remediation") <br>
+<br> ![修復](./media/active-directory-identityprotection-notifications/400.png "修復") <br>
 
 週間ダイジェスト電子メールの送信は無効化できます。 <br><br> ![ユーザーのリスク](./media/active-directory-identityprotection-notifications/62.png "ユーザーのリスク") <br>
  
@@ -59,4 +59,4 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

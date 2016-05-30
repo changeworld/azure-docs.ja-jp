@@ -6,14 +6,14 @@
    authors="bmscholl"
    manager="timlt"
    editor=""/>
-   
+
 <tags
    ms.service="service-fabric"
    ms.devlang="dotnet"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/12/2016"
+   ms.date="05/17/2016"
    ms.author="bscholl"/>
 
 # Service Fabric へのゲスト実行可能ファイルのデプロイ
@@ -34,7 +34,7 @@ Service Fabric クラスターでゲスト実行可能ファイルを実行す�
 
 ## アプリケーション マニフェスト ファイルとサービス マニフェスト ファイルの概要
 
-ゲスト実行可能ファイルのデプロイの詳細に入る前に、Service Fabric のパッケージ化とデプロイメントのモデルについて理解しておく必要があります。Service Fabric パッケージ化デプロイ モデルは、主に 2 つのファイルに依存しています。
+ゲスト実行可能ファイルのデプロイの詳細に入る前に、Service Fabric のパッケージ化とデプロイメントのモデルについて理解しておく必要があります。Service Fabric パッケージ化デプロイ モデルは、主に 2 つのファイルに依存しています。アプリケーション マニフェストとサービス マニフェストです。ApplicationManifest.xml と ServiceManifest.xml ファイルのスキーマ定義は、Service Fabric SDK およびツールと共に *C:\\Program Files\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd* にインストールされます。
 
 
 * **アプリケーション マニフェスト**
@@ -105,7 +105,8 @@ Service Fabric では、アプリケーション ルート ディレクトリの
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ServiceManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="NodeApp" Version="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ServiceManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+Name="NodeApp" Version="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceTypes>
       <StatelessServiceType ServiceTypeName="NodeApp" UseImplicitHost="true"/>
    </ServiceTypes>
@@ -248,10 +249,10 @@ SetupEntrypoint は 1 つだけのため、アプリケーションのセット�
 Connect-ServiceFabricCluster localhost:19000
 
 Write-Host 'Copying application package...'
-Copy-ServiceFabricApplicationPackage -ApplicationPackagePath 'C:\Dev\MultipleApplications' -ImageStoreConnectionString 'file:C:\SfDevCluster\Data\ImageStoreShare' -ApplicationPackagePathInImageStore 'Store\nodeapp'
+Copy-ServiceFabricApplicationPackage -ApplicationPackagePath 'C:\Dev\MultipleApplications' -ImageStoreConnectionString 'file:C:\SfDevCluster\Data\ImageStoreShare' -ApplicationPackagePathInImageStore 'nodeapp'
 
 Write-Host 'Registering application type...'
-Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'Store\nodeapp'
+Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'nodeapp'
 
 New-ServiceFabricApplication -ApplicationName 'fabric:/nodeapp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0
 
@@ -272,11 +273,11 @@ Service Fabric サービスは、さまざまな "構成" にデプロイでき�
 
 Service Fabric エクスプローラーで、サービスが実行されているノードを特定します。この例では、Node1 で実行されています。
 
-![サービスが実行されているノード](./media/service-fabric-deploy-existing-app/runningapplication.png)
+![サービスが実行されているノード](./media/service-fabric-deploy-existing-app/nodeappinsfx.png)
 
 ノードに移動してアプリケーションを参照した場合は、ディスク上の場所を含むノードの重要な情報が表示されます。
 
-![ディスク上の場所](./media/service-fabric-deploy-existing-app/locationondisk.png)
+![ディスク上の場所](./media/service-fabric-deploy-existing-app/locationondisk2.png)
 
 サーバー エクスプローラーを使用してディレクトリを参照した場合は、次に示すように、作業ディレクトリとサービスのログ フォルダーを確認できます。
 
@@ -286,8 +287,8 @@ Service Fabric エクスプローラーで、サービスが実行されてい�
 ## 次のステップ
 この記事では、ゲスト実行可能ファイルをパッケージ化し、Service Fabric にデプロイする方法について説明しました。次のステップとして、このトピックに関する他のコンテンツを確認できます。
 
-- ゲスト実行可能ファイルをパッケージ化し、デプロイするためのサンプルが [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Custom/SimpleApplication) で入手できます。これには、パッケージ化ツールのプレリリース版のリンクが含まれています。
+- [ゲスト実行可能ファイルをパッケージ化し、デプロイするためのサンプルが GitHub で入手できます。](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)これには、パッケージ化ツールのプレリリース版のリンクが含まれています。
 - [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
 - [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

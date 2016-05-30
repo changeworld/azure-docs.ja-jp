@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="02/17/2016" 
+    ms.date="05/16/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Igloo Software の統合
@@ -144,7 +144,7 @@ Igloo Software へのユーザー プロビジョニングを構成するとき�
 
 1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  **Igloo Software ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Igloo Software** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-igloo-software-tutorial/IC783974.png "ユーザーの割り当て")
 
@@ -154,4 +154,4 @@ Igloo Software へのユーザー プロビジョニングを構成するとき�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

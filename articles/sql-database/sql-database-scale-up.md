@@ -35,9 +35,9 @@
 [SQL Database の Web/Business データベースの新しいサービス階層へのアップグレード](sql-database-upgrade-server-portal.md)に関するトピックと「[Azure SQL Database のサービス階層とパフォーマンス レベル](sql-database-service-tiers.md)」の情報を使用して、Azure SQL Database に適したサービス階層とパフォーマンス レベルを決定します。
 
 - データベースをダウングレードするには、データベースがダウングレード後のサービス階層で許可されている最大サイズより小さい必要があります。 
-- [標準の geo レプリケーション](https://msdn.microsoft.com/library/azure/dn758204.aspx)または[アクティブ geo レプリケーション](https://msdn.microsoft.com/library/azure/dn741339.aspx)を有効にしてデータベースをアップグレードする場合、まず、そのセカンダリ データベースを目的のパフォーマンス階層にアップグレードしてから、プライマリ データベースをアップグレードする必要があります。
-- Premium サービス階層からダウングレードするときは、最初に geo レプリケーション リレーションシップをすべて終了する必要があります。「[連続コピーの関係の終了](https://msdn.microsoft.com/library/azure/dn741323.aspx)」に説明されている手順に従って、プライマリ データベースとアクティブ セカンダリ データベース間のレプリケーション プロセスを停止してください。
-- サービス階層によって、提供されている復元サービスは異なります。ダウングレードすると、特定の時点に復元する機能を使えなくなったり、バックアップの保存期間が短くなったりする可能性があります。詳細については、「[Azure SQL Database のバックアップと復元](https://msdn.microsoft.com/library/azure/jj650016.aspx)」を参照してください。
+- [geo レプリケーション](sql-database-geo-replication-overview.md)を有効にしてデータベースをアップグレードする場合、まず、そのセカンダリ データベースを目的のパフォーマンス レベルにアップグレードしてから、プライマリ データベースをアップグレードする必要があります。
+- サービス階層をダウングレードするときは、最初に geo レプリケーション リレーションシップをすべて終了する必要があります。 
+- サービス階層によって、提供されている復元サービスは異なります。ダウングレードすると、特定の時点に復元する機能を使えなくなったり、バックアップの保存期間が短くなったりする可能性があります。詳細については、「[Azure SQL Database のバックアップと復元](sql-database-business-continuity.md)」を参照してください。
 - データベースの価格レベルを変更しても、データベースの最大サイズは変更されません。データベースの最大サイズを変更するには、[Transact-SQL (T-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) または [PowerShell](https://msdn.microsoft.com/library/mt619433.aspx) を使用します。
 - データベースに対する新しいプロパティは、変更が完了するまで適用されません。
 
@@ -106,4 +106,4 @@
 [3]: ./media/sql-database-scale-up/scale-notification.png
 [4]: ./media/sql-database-scale-up/new-tier.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

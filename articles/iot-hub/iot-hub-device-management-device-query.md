@@ -16,7 +16,9 @@
  ms.date="04/29/2016"
  ms.author="elfarber"/>
 
-# チュートリアル: クエリを使用したデバイス ツインの検索方法 (プレビュー)
+# チュートリアル: C# でクエリを使用したデバイス ツインの検索方法 (プレビュー)
+
+[AZURE.INCLUDE [iot-hub-device-management-query-selector](../../includes/iot-hub-device-management-query-selector.md)]
 
 Azure IoT デバイス管理では、デバイス ツイン (物理デバイスのサービス表現) をクエリを使って検索できます。クエリは、デバイス ツインのデバイス プロパティ、サービス プロパティ、またはタグに基づいて実行できます。タグやプロパティを使用してクエリを実行できます。
 
@@ -24,21 +26,21 @@ Azure IoT デバイス管理では、デバイス ツイン (物理デバイス�
 
 -   サービス プロパティまたはデバイス プロパティを使用してデバイス ツインのクエリを実行するには、JSON クエリ式を使用します。
 
-デバイス ツインとクエリの詳細については、「[Overview of Azure IoT Hub device management][lnk-dm-overview]」 (Azure IoT Hub デバイス管理の概要) を参照してください。
+デバイス ツインとクエリの詳細については、「[Azure IoT Hub デバイス管理の概要][lnk-dm-overview]」を参照してください。
 
 ## デバイス クエリのサンプルを実行する
 
-次の例では、「[Get started with Azure IoT Hub device management][lnk-get-started]」 (Azure IoT Hub デバイス管理の使用) のチュートリアル機能を拡張します。まず別々のシミュレートされたデバイスを実行してから、クエリを使用して特定のデバイスを検索します。
+次の例では、「[Azure IoT Hub デバイス管理の使用][lnk-get-started]」チュートリアル機能が拡張されます。まず別々のシミュレートされたデバイスを実行してから、クエリを使用して特定のデバイスを検索します。
 
 ### 前提条件 
 
-このサンプルを実行する前に、「[Get started with Azure IoT Hub device management][lnk-get-started]」 (Azure IoT Hub デバイス管理の使用) の手順を完了する必要があります。つまり、シミュレートされたデバイスを実行する必要があります。事前にプロセスを完了済みの場合は、ここでシミュレートされたデバイスを再起動してください。
+このサンプルを実行する前に、「[Azure IoT Hub デバイス管理の使用][lnk-get-started]」の手順を完了する必要があります。つまり、シミュレートされたデバイスを実行する必要があります。事前にプロセスを完了済みの場合は、ここでシミュレートされたデバイスを再起動してください。
 
 ### サンプルを開始する
 
 サンプルを開始するには、**Query.exe** プロセスを実行する必要があります。これにより、いくつかの異なるクエリが実行されます。次の手順に従って、サンプルを開始してください。
 
-1.  シミュレートされたデバイスを少なくとも 1 分間実行します。これにより、ツインのデバイス プロパティが物理デバイスと同期します。同期の詳細については、「[Tutorial: How to use the device twin][lnk-twin-tutorial]」 (チュートリアル: デバイス ツインの使用方法) を参照してください。
+1.  シミュレートされたデバイスを少なくとも 1 分間実行します。これにより、ツインのデバイス プロパティが物理デバイスと同期します。同期の詳細については、「[チュートリアル: デバイス ツインの使用方法][lnk-twin-tutorial]」を参照してください。
 
 2.  **azure-iot-sdks** リポジトリを複製したルート フォルダーから **azure-iot-sdks\\csharp\\service\\samples\\bin** フォルダーに移動します。
 
@@ -53,26 +55,29 @@ Azure IoT デバイス管理では、デバイス ツイン (物理デバイス�
 - **Project**: クエリ結果セットに含めるデバイス オブジェクトからのフィールドを指定する式 (SQL の SELECT に相当)。
 
   ```
-  var query = JsonConvert.SerializeObject(
-      project = new
-      {
-        all = false,
-        properties = new []
-        {
-          new
-          {
-            name = "CustomerId",
-            type = "service"
-          },
-          new
-          {
-            name = "Weight",
-            type = "service"
-          }
-        }
-      }
-  );
-```
+	  var query = JsonConvert.SerializeObject(
+		  new
+		  {
+			  project = new
+			  {
+				  all = false,
+				  properties = new[]
+				  {
+					  new
+					  {
+					  name = "CustomerId",
+					  type = "service"
+					  },
+					  new
+					  {
+					  name = "Weight",
+					  type = "service"
+					  }
+				  }
+			  }
+		  }
+	  );
+	```
 
 - **Filter**: クエリ結果セットに含めるデバイス オブジェクトを制限する式 (SQL の WHERE に相当)。
 
@@ -196,7 +201,7 @@ var foundDevices = await registryManager.QueryDevicesAsync(new[] { "bacon" }, 10
 
 ### デバイスの実装
 
-クエリは、Azure IoT Hub デバイス管理クライアント ライブラリによって有効になります。デバイス プロパティが同期している限り(「[Tutorial: How to use the device twin][lnk-twin-tutorial]」 (チュートリアル: デバイス ツインの使用方法) を参照)、それらのプロパティでクエリを実行できます。デバイス プロパティは、物理デバイスが IoT Hub に接続され、初期値が指定された後にのみ使用できます。
+クエリは、Azure IoT Hub デバイス管理クライアント ライブラリによって有効になります。デバイス プロパティが同期している限り (「[チュートリアル: デバイス ツインの使用方法][lnk-twin-tutorial]」を参照)、それらのプロパティでクエリを実行できます。デバイス プロパティは、物理デバイスが IoT Hub に接続され、初期値が指定された後にのみ使用できます。
 
 ## 次のステップ
 
@@ -216,4 +221,4 @@ Azure IoT Hub デバイス管理機能の詳細については、次のチュー
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
 [lnk-query-expression-guide]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/node/service/devdoc/query_expression_requirements.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -34,7 +34,7 @@
 
 4. **[My Apps]**、**[Add a New App]**、**[Website]**、**[Skip and Create App ID]** の順にクリックします。
 
-5. **[Display name]** にアプリケーションの一意の名前を入力し、**[Category]** でアプリケーションのカテゴリを選択します。次に、**[Create App ID]** をクリックし、セキュリティ チェックを完了します。これで、新しい Facebook アプリケーションの開発者向けダッシュボードに移動します。
+5. **[Display Name]** にアプリの一意の名前を入力し、**[Contact Email]** を入力して、**[Category]** でアプリのカテゴリを選択します。次に、**[Create App ID]** をクリックし、セキュリティ チェックを完了します。これで、新しい Facebook アプリケーションの開発者向けダッシュボードに移動します。
 
 6. "Facebook ログイン" で **[Get Started]** をクリックします。**[Valid OAuth redirect URIs]** にアプリケーションの**リダイレクト URI** を追加して、**[Save Changes]** をクリックします。
 
@@ -75,4 +75,4 @@
 [Get started with authentication]: /ja-JP/develop/mobile/tutorials/get-started-with-users-dotnet/
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

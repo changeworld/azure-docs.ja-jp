@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/04/2016"
+	ms.date="04/19/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: LinkedIn アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして LinkedI
 
 	>[AZURE.NOTE] **[Client Secret]** は、重要なセキュリティ資格情報です。
 
-6. **[OAuth 2.0]** セクションの **[Authorized Redirect URLs]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。**{tenant}** は、実際のテナントの名前 (例: contoso.onmicrosoft.com) に置き換えます。**[Add]** をクリックし、**[Update]** をクリックします。
+6. **[OAuth 2.0]** セクションの **[Authorized Redirect URLs]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。**{tenant}** は、実際のテナントの名前 (例: contoso.onmicrosoft.com) に置き換えます。**[Add]** をクリックし、**[Update]** をクリックします。**{tenant}** の値は大文字小文字が区別されます。
 
     ![LinkedIn - アプリの設定](./media/active-directory-b2c-setup-li-app/linkedin-setup.png)
 
@@ -52,4 +52,4 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして LinkedI
 6. **[この ID プロバイダーを設定する]** をクリックし、先に作成した LinkedIn アプリケーションのクライアント ID とクライアント シークレットを入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして LinkedIn の構成を保存します。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

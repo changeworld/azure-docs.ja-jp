@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Azure SQL Database を使用した Elastic Database トランザクションの概要"
+   pageTitle="クラウド データベースにまたがる分散トランザクション"
    description="Azure SQL Database を使用した Elastic Database トランザクションの概要"
    services="sql-database"
    documentationCenter=""
    authors="torsteng"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor="sidneyh"/>
 
 <tags
@@ -16,7 +16,7 @@
    ms.date="02/23/2016"
    ms.author="torsteng"/>
 
-# Azure SQL Database を使用した Elastic Database トランザクションの概要
+# クラウド データベースにまたがる分散トランザクション
 
 Azure SQL Database (SQL DB) のエラスティック データベース トランザクションは、SQL DB 内の複数のデータベースにまたがるトランザクションを実行する機能です。SQL DB のエラスティック データベース トランザクションは、.NET アプリケーションから ADO .NET を介して利用できます。[System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) クラスを使用することで、これまでに培ったプログラミングの経験を活かすことが可能です。ライブラリを入手するには、[.NET Framework 4.6.1 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=49981) を参照してください。
 
@@ -149,6 +149,7 @@ SQL DB のエラスティック データベース トランザクションに�
 * サポートされるトランザクションの対象は、SQL DB 内のデータベースに限られます。その他の [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) リソース プロバイダーや SQL DB 以外のデータベースがエラスティック データベース トランザクションに参加することはできません。つまり、オンプレミス SQL Server と Azure SQL Database にまたがってエラスティック データベース トランザクションを実行することはできません。オンプレミスの分散トランザクションについては、引き続き MSDTC をご利用ください。 
 * サポートされるのは、.NET アプリケーションからクライアント側で調整されるトランザクションだけです。将来的には、サーバー側の T-SQL サポート (BEGIN DISTRIBUTED TRANSACTION など) が予定されていますが、現時点では利用できません。 
 * Azure SQL DB V12 上のデータベースのみサポートされます。
+* WCF サービスをまたがるトランザクションはサポートされません。たとえば、トランザクションを実行する WCF サービス メソッドがあるとします。トランザクション スコープ内にこの呼び出しを囲い込むと、[System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception) として失敗します。
 
 ## 詳細情報
 
@@ -157,4 +158,4 @@ Azure アプリケーションでエラスティック データベースの機�
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

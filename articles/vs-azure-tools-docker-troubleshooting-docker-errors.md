@@ -12,92 +12,108 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/18/2016"
+   ms.date="05/15/2016"
    ms.author="tarcher" />
 
 # Docker エラーのトラブルシューティング
 
-アプリケーションの Docker コンテナーのすべての設定を構成したら、設定とパスが正しいことを確認する必要があります。Visual Studio では、[発行] ダイアログに、この確認に役立つ [検証] ボタンがあります。
+Docker Preview 用 Visual Studio ツールを使用する場合は、プレビューの性質によりいくつかの問題が発生する可能性があります。いくつかの一般的な問題と解決策を次に示します。
 
-このトピックは、Docker で Visual Studio アプリケーションをホストする場合に発生する最も一般的な問題を診断し、修正または回避するために役立ちます。問題が検出されると、このトピックに追加されます。
+##Docker サポートのための Program.cs の構成に失敗する
 
-## [Web の発行] ダイアログ ボックスで Docker ホストへの接続を検証しようとすると失敗メッセージが表示される
-
-以下に、この問題のいくつかの解決策を示します。
-
-- **[発行]** ダイアログの **[接続]** タブで、**[サーバーの URL]** が正しいことと、**[サーバーの URL]** の末尾の `:<port_number>` が Docker デーモンがリッスンしているポートであることを確認します。
-
-- **[発行]** ダイアログの **[接続]** タブで、**[Docker の詳細オプション]** セクションを展開し、適切な **[認証]** オプションが指定されていることを確認します。
-  - サーバー上の Docker デーモンが TLS セキュリティを使用するように構成されている場合、Windows Docker コマンド ライン インターフェイス (docker.exe) は既定で `<%userprofile%>\.docker` フォルダーの下にあるクライアント キー (key.pem) と証明書 (cert.pem) を検索します。これらの項目が存在しない場合、OpenSSL を使用して生成する必要があります。TLS 用の Docker の構成の詳細については、[HTTPS による Docker デーモン ソケットの保護](https://docs.docker.com/articles/https/)に関するページを参照してください。
-
-	Docker で Windows クライアントから Linux サーバーへの認証が適切に行われていることを確認する 1 つの方法は、[プレビュー] ボックスの内容を新しいコマンド ウィンドウにコピーし、次に示すように `<command>` を "info" に変更することです。
-
-    ```
-    // This example assumes the Docker daemon is configured to use the default port
-    // of 2376 to listen for connections.docker.
-
-    --tls -H tcp://contoso.cloudapp.net:2376 info
-    ```
-
-    .docker フォルダーにクライアント証明書とキー ファイルをコピーする代わりに、次のパラメーターを追加することで **[認証]** オプションを変更できます。
-
-    ```
-    --tls --tlscert=C:\mycert\cert.pem --tlskey=C:\mycert\key.pem
-    ```
-- Docker ホスト マシン上の Docker デーモンがバージョン 1.6 以降であることを確認します。
-
-## Docker フォルダー内にクライアント証明書がなく独自の証明書を使用している場合のタイムアウト エラー
-
-Visual Studio で Docker ホストを作成する際に独自の証明書を使用するように選択した (つまり、**[Microsoft Azure で仮想マシンを作成します]** ダイアログ ボックスの **[Docker 証明書を自動生成]** チェック ボックスをオフにした) 場合は、クライアント証明書とキー ファイル (cert.pem と key.pem) Docker フォルダー (`<%userprofile%>\.docker`) にコピーする必要があります。そうしないと、プロジェクトの発行時に、1 時間でタイムアウト エラーが発生し、発行操作が失敗します。
-
-## Docker コンテナーへの発行には PowerShell 3.0 が必要である
-
-オペレーティング システムが Windows 7 または Windows Server 2008 の場合は、Docker コンテナーに発行する前に、PowerShell 3.0 をインストールする必要があります。PowerShell 3.0 は、[Windows Management Framework 3.0](https://www.microsoft.com/ja-JP/download/details.aspx?id=34595) に含まれています。インストール後にシステムを再起動する必要があります。
-
-別の回避策として、PowerShell 3.0 が既に組み込まれている Windows 8.1 または Windows 10 にアップグレードすることができます。
-
-## PowerShell ウィンドウは自動的に閉じない
-
-VM の作成後、PowerShell ウィンドウが自動的に閉じないことがあります。このウィンドウを閉じると、Visual Studio も閉じられます。ウィンドウは、Visual Studio や Docker ツールの機能に影響しないため、作業を完了するまで、開いたままにしておいてください。
-
-## FAQ
-
-Q: Visual Studio ツールを使用して、Azure で新しい Docker 対応の Linux マシンを作成するにはどうすればよいですか?
-
-A: 作成方法については、「[Docker での Web アプリのホスト](vs-azure-tools-docker-hosting-web-apps-in-docker.md)」を参照してください。
-
-Q: Linux Docker コンテナーへの発行ではどのような Visual Studio プロジェクト テンプレートがサポートされていますか?
-
-Visual Studio では現在、C# コンソール アプリケーション (パッケージ) と、次のような C# ASP.NET 5 Web プレビュー テンプレートをサポートしています。
-
-- Empty
-
-- Web API
-
-- Web Application
-
-Q: コマンドラインから MSBUILD を使用して、Docker に ASP.NET 5 Web またはコンソール プロジェクトを発行するにはどうすればよいですか?
-
-A: 次の MSBuild コマンドを使用します。
-
-    `msbuild <projectname.xproj> /p:deployOnBuild=true;publishProfile=<profilename>`
-
-Q: コマンドラインから PowerShell を使用して、Docker に ASP.NET 5 Web またはコンソール プロジェクトを発行するにはどうすればよいですか?
-
-A: 次の PowerShell コマンドを使用します。
-
+Docker サポートを追加するときに、`.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_SERVER.URLS"))` を WebHostBuilder() に追加する必要があります。Program.cs の Main() 関数または新しい WebHostBuilder が見つからない場合は、警告が表示されます。Docker コンテナー内で実行する localhost 以外で Kestrel が受信トラフィックを待機できるようにするには.UseUrls() が必要です。完了すると、一般的なコードは次のようになります。
 ```
-.\contoso-Docker-publish.ps1 -packOutput $env:USERPROFILE\AppData\Local\Temp\PublishTemp -pubxmlFile .\contoso-Docker.pubxml
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        var host = new WebHostBuilder()
+            .UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_SERVER.URLS") ?? String.Empty)
+            .UseKestrel()
+            .UseContentRoot(Directory.GetCurrentDirectory() ?? "")
+            .UseIISIntegration()
+            .UseStartup<Startup>()
+            .Build();
+
+        host.Run();
+    }
+}
 ```
+UseUrls() が WebHost で受信 URL トラフィックを待機するように構成します。[Visual Studio 用 Docker ツール](http://aka.ms/DockerToolsForVS)により、dockerfile.debug/release mode の環境変数が次のように構成されます。
+```
+# Configure the listening port to 80
+ENV ASPNETCORE_SERVER.URLS http://*:80
+```
+## ボリューム マッピングが機能しない
+編集と更新の機能を有効にするには、プロジェクトのソース コードがコンテナー内の .app フォルダーで共有されるように、ボリューム マッピングを構成します。 ホスト コンピューター上でファイルが変更されると、コンテナーの /app ディレクトリは同じディレクトリを使用します。docker-compose.debug.yml では、次の構成によりボリューム マッピングが有効になります。
+```
+    volumes:
+      - ..:/app
+```
+ボリューム マッピングが機能しているかどうかをテストするには、次のコマンドを試してください。
 
-Q: Docker がインストールされた独自の Linux サーバーがありますが、**[Web の発行]** ダイアログでこれを指定するにはどうすればよいですか?
+**Windows から**
+```
+docker run -it -v /c/Users/Public:/wormhole busybox
+cd wormhole
+/ # ls
+```
+ユーザー/パブリック フォルダーのディレクトリ一覧が表示されます。/C/ユーザー/パブリック フォルダーが空でないにもかかわらず、ファイルが表示されない場合は、ボリューム マッピングが正しく構成されていません。
+```
+bin       etc       proc      sys       usr       wormhole
+dev       home      root      tmp       var
+```
+ワームホール ディレクトリに移動して、`/c/Users/Public` ディレクトリの内容を確認します。
+```
+/ # cd wormhole/
+/wormhole # ls
+AccountPictures  Downloads        Music            Videos
+Desktop          Host             NuGet.Config     a.txt
+Documents        Libraries        Pictures         desktop.ini
+/wormhole #
+```
+**注:** *Linux VM を使用する場合、コンテナーのファイル システムでは大文字と小文字が区別されます*。
 
-A: 「[Docker での Web アプリのホスト](vs-azure-tools-docker-hosting-web-apps-in-docker.md)」トピックの「**カスタム Docker ホストの指定**」セクションを参照してください。
+内容が表示されない場合は、以下を試します。
 
-Q: Docker がインストールされた独自の Linux サーバー使用しています。TLS を使用して認証を構成するためにキーと証明書を生成するにはどうすればよいですか?
+**Docker for Windows (ベータ)**
+- Docker for Windows のデスクトップ アプリが動作していることを確認するには、システム トレイにあるクジラのアイコンが白く表示され、機能していることを確認します。
+- ボリューム マッピングが構成されていることを確認するには、システム トレイのクジラのアイコンを右クリックして [Settings] を選択し、**[Manage shared drives...]** をクリックします。
 
-A: 1 つの方法は、サーバーで OpenSSL を使用して、CA、サーバー、およびクライアントに必要な証明書とキーを生成することです。そうすれば、サード パーティのソフトウェアを使用して SSH/SFTP 接続を確立してから、証明書をローカルの Windows 開発用コンピューターにコピーできます。既定では、Docker (CLI) は `<userprofile>\.docker` フォルダーにある証明書の使用を試みます。
+**Docker Toolbox (VirtualBox を含む)**
 
-別のオプションは、Windows 用の OpenSSL をダウンロードして、必要な証明書とキーを生成してから、CA、サーバーの証明書、およびキーを Linux コンピューターにアップロードすることです。Docker へのセキュリティで保護された接続の確立の詳細については、[HTTPS による Docker デーモン ソケットの保護](https://docs.docker.com/articles/https/)に関するページを参照してください。
+既定では、VirtualBox は `C:\Users` を `c:/Users` として共有します。可能であれば、プロジェクトをこのディレクトリの下に移動します。または、VirtualBox の[共有フォルダー](https://www.virtualbox.org/manual/ch04.html#sharedfolders)に手動で追加することもできます。
+	
+##"Build : Failed to build the image"、"Error checking TLS connection: Host is not running" と表示される
 
-<!---HONumber=AcomDC_0420_2016-->
+- 既定の Docker ホストが実行されていることを確認します。「[VirtualBox を使用した Docker ホストの構成](./vs-azure-tools-docker-setup.md)」をご覧ください。
+
+##Microsoft Edge を既定のブラウザーとして使用している
+
+Microsoft Edge ブラウザーを使用している場合、IP アドレスがセキュリティで保護されていないと見なされるため、サイトが表示されないことがあります。この問題を解決するには、次の手順を実行します。
+1. Windows の [ファイル名を指定して実行] ボックスに「`Internet Options`」と入力します。
+2. **[インターネット オプション]** が表示されたらタップします。 
+2. **[セキュリティ]** タブをタップします。
+3. **[ローカル イントラネット]** ゾーンを選択します。
+4. **[サイト]** をタップします。 
+5. 一覧に仮想マシンの IP (この場合は Docker ホスト) を追加します。 
+6. Edge でページを更新すると、サイトが実行されていることがわかります。 
+7. この問題の詳細については、Scott Hanselman のブログ記事「[Microsoft Edge can't see or open VirtualBox-hosted local web sites (VirtualBox にホストされたローカル Web サイトを Microsoft Edge で表示したり開いたりできない)](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx)」を参照してください。 
+
+##0\.15 以前のバージョンのトラブルシューティング
+
+
+###アプリを実行すると、PowerShell が開き、エラーを表示した後に閉じる。ブラウザーのページは開かない。
+
+これは、`docker-compose-up` の実行中のエラーであると考えられます。このエラーを表示するには、次の手順を実行します。
+
+1. ファイル `Properties\launchSettings.json` を開きます。Docker エントリを見つけます。
+1. 次の内容で始まる行を見つけます。
+
+    "commandLineArgs": "-ExecutionPolicy RemoteSigned …”
+	
+1. 次のように、この行に `-noexit` パラメーターを追加します。これにより、PowerShell が開いたままになり、エラーを確認できるようになります。
+
+	"commandLineArgs": "-noexit -ExecutionPolicy RemoteSigned …”
+
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/08/2016"
+	ms.date="05/13/2016"
 	ms.author="sethm"/>
 
 # Event Hubs の使用
@@ -34,35 +34,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 + アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
 
-## Event Hub を作成する
-
-1. [Azure クラシック ポータル][]にログオンし、画面の下部にある **[新規]** をクリックします。
-
-2. **[App Services]**、**[Service Bus]**、**[イベント ハブ]**、**[簡易作成]** の順にクリックします。
-
-   	![][1]
-
-3. Event Hub の名前を入力して、目的のリージョンを選択し、**[Create a new Event Hub (新しい Event Hub を作成する)]** をクリックします。
-
-   	![][2]
-
-4. 先ほど作成した名前空間 (通常は ***event hub name*-ns**) をクリックします。
-
-   	![][3]
-
-5. ページ上部にある、**[Event Hubs]]** タブをクリックし、先ほど作成したイベント ハブをクリックします。
-
-   	![][4]
-
-6. ページ上部にある **[構成]** タブをクリックし **SendRule** という名前のルールを *Send* 権限で、**ReceiveRule** という別のルールを *Listen* 権限で追加して、**[保存]** をクリックします。
-
-   	![][5]
-
-7. 同じページで、**SendRule** と **ReceiveRule** に対して生成されたキーをメモしておきます。
-
-   	![][6c]
-
-イベント ハブが作成され、イベントの送受信に必要な接続文字列が手元にあります。
+[AZURE.INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-send-java](../../includes/service-bus-event-hubs-get-started-send-java.md)]
 
@@ -89,18 +61,10 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 - 「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発][]」は、C# を使用して Storm のパイプラインを作成する方法に関するチュートリアルです。
 
 <!-- Images. -->
-[1]: ./media/event-hubs-java-storm-getstarted/create-event-hub1.png
-[2]: ./media/event-hubs-java-storm-getstarted/create-event-hub2.png
-[3]: ./media/event-hubs-java-storm-getstarted/create-event-hub3.png
-[4]: ./media/event-hubs-java-storm-getstarted/create-event-hub4.png
-[5]: ./media/event-hubs-java-storm-getstarted/create-event-hub5.png
-[6]: ./media/event-hubs-getstarted/create-event-hub6.png
-[6c]: ./media/event-hubs-java-storm-getstarted/create-event-hub6c.png
-
 [22]: ./media/event-hubs-java-storm-getstarted/receive-storm2.png
 
 <!-- Links -->
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: event-hubs-overview.md
 
@@ -110,4 +74,4 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

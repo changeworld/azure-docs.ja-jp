@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/18/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 #DevTest ラボ VM のカスタム アーティファクトの作成
@@ -119,10 +119,10 @@
 
 	![Artifact git repo example](./media/devtest-lab-artifact-author/git-repo.png)
 
-1. ラボへのアーティファクト リポジトリの追加 - 「[DevTest ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)」を参照してください。
+1. ラボへのアーティファクト リポジトリの追加 - 「[ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)」を参照してください。
 
 ## 次のステップ
 
-- [DevTest ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
+- [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

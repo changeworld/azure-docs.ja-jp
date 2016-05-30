@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="05/17/2016"
 	ms.author="douglasl"/>
 
 # 移行する行の選択にフィルター述語を使用する (Stretch Database)
@@ -24,7 +24,7 @@
 
 フィルター述語を指定しない場合、テーブル全体が移行されます。
 
-RC3 では、[Stretch Database を有効にする] ウィザードを実行するときに、テーブル全体を移行することも、ウィザードで日付に基づく単純なフィルター述語を指定することもできます。別のフィルター述語を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
+Stretch Database の有効化ウィザードを実行するときに、テーブル全体を移行することも、ウィザードで日付に基づく単純なフィルター述語を指定することもできます。別のフィルター述語を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
 
 -   ウィザードを終了し、ALTER TABLE ステートメントを実行してテーブルの Stretch を有効にし、述語を指定します。
 
@@ -508,4 +508,4 @@ ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

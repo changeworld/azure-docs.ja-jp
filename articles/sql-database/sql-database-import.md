@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="04/11/2016"
+	ms.date="05/09/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -47,7 +47,7 @@ BACPAC は、データベース スキーマとデータを含む .bacpac ファ
 
 ## データベースを含めるサーバーの選択
 
-次のように、インポートするデータベースの [SQL Server] ブレードを開きます。
+次のように、[SQL Server] ブレードを開きます。
 
 1.	[Azure ポータル](https://portal.azure.com)にアクセスします。
 2.	**[SQL Server]** をクリックします。
@@ -60,7 +60,7 @@ BACPAC は、データベース スキーマとデータを含む .bacpac ファ
 
     ![ストレージ オプションの構成][2]
 
-1.  新しいデータベースの価格レベルを選択し、**[選択]**をクリックします。
+1.  新しいデータベースの価格レベルを選択し、**[選択]**をクリックします。エラスティック プールへのデータベースの直接インポートはサポートされていませんが、最初に 1 つのデータベースにインポートしてからプールにデータベースを移動できます。
 
     ![価格レベルの選択][3]
 
@@ -109,4 +109,4 @@ BACPAC は、データベース スキーマとデータを含む .bacpac ファ
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

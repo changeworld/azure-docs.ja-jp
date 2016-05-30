@@ -69,8 +69,8 @@ Shared Access Signature とは、特殊なクエリ パラメーターのセッ�
 
 - **API のバージョン。**要求の実行に使用するストレージ サービスのバージョンを指定する省略可能なパラメーターです。
 - **サービスのバージョン。**要求の認証に使用するストレージ サービスのバージョンを指定する必須パラメーターです。
-- **開始時刻。** この時刻に SAS が有効になります。Shared Access Signature の開始時刻は省略可能です。省略した場合は、SAS がすぐに有効になります。
-- **有効期限。** この時刻の後、SAS が有効ではなくなります。ベスト プラクティスでは、SAS の有効期限を指定するか、保存されているアクセス ポリシーに SAS を関連付けることを推奨しています (以下を参照)。
+- **開始時刻。** この時刻に SAS が有効になります。Shared Access Signature の開始時刻は省略可能です。省略した場合は、SAS がすぐに有効になります。1994-11-05T13:15:30Z など、特別な UTC 指定子 ("Z") を使用して、UTC (世界協定時刻) で表す必要があります。
+- **有効期限。** この時刻の後、SAS が有効ではなくなります。ベスト プラクティスでは、SAS の有効期限を指定するか、保存されているアクセス ポリシーに SAS を関連付けることを推奨しています。1994-11-05T13:15:30Z など、特別な UTC 指定子 ("Z") を使用して、UTC (世界協定時刻) で表す必要があります (以下を参照)。
 - **アクセス許可。** SAS に指定されたアクセス許可は、クライアントが SAS を使用して、ストレージ リソースに対して実行できる操作を示します。使用可能なアクセス許可は、アカウント SAS とサービス SAS で異なります。
 - **IP。** 要求の送信元である Azure 外部の IP アドレスまたは IP アドレスの範囲を指定する省略可能なパラメーター (Express Route については、「[ルーティング セッション構成の状態](../expressroute/expressroute-workflows.md#routing-session-configuration-state)」を参照してください)。
 - **プロトコル。** 要求に許可されているプロトコルを指定する省略可能なパラメーターです。指定できる値は、既定値の HTTPS と HTTP (https,http) か、HTTPS のみ (https) です。HTTP のみの値は許可されていないことに注意してください。
@@ -318,4 +318,4 @@ Shared Access Signature は、アカウント キーを知らせずに、スト�
 [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
 [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

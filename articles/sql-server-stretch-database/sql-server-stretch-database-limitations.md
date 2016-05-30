@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Stretch Database のセキュリティ制約とブロック問題 | Microsoft Azure"
-	description="Stretch Database を有効にする前に解決する必要のあるブロック問題について説明します。"
+	pageTitle="Stretch Database の制限事項 | Microsoft Azure"
+	description="Stretch Database の制限事項について説明します。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
 	authors="douglaslMS"
@@ -13,61 +13,73 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="05/17/2016"
 	ms.author="douglasl"/>
 
-# Stretch Database のセキュリティ制約とブロック問題
+# Stretch Database の制限事項
 
-Stretch Database を有効にする前に解決する必要のあるブロック問題について説明します。
+Stretch が有効なテーブルの制限事項と、テーブルの Stretch の有効化を現在妨げている制限事項について説明します。
 
-## <a name="Limitations"></a>ブロック問題
-SQL Server 2016 の現在のプレビュー リリースでは、次の項目があればテーブルは Stretch の対象外となります。
+##  <a name="Caveats"></a> Stretch が有効なテーブルの制限事項
 
-**テーブルのプロパティ**
--   1,023 よりも多くの列
+Stretch が有効なテーブルの制限事項を次に示します。
 
--   998 よりも多くのインデックス
+### 制約
 
--   FILESTREAM データを格納するテーブル
+-   移行されたデータが含まれる Azure テーブルの UNIQUE 制約と PRIMARY KEY 制約では一意性が強制されません。
 
--   FileTables
+### DML 操作
 
--   レプリケートされたテーブル
+-   Stretch が有効なテーブル、または Stretch が有効なテーブルが含まれるビューでは行を更新または削除できません。
 
--   変更の追跡または Change Data Capture が現在使用されているテーブル
+-   リンクされているサーバーの Stretch が有効なテーブルに行を挿入することはできません。
+
+### インデックス
+
+-   Stretch が有効なテーブルを含むビューのインデックスを作成することはできません。
+
+-   SQL Server インデックスのフィルターは、リモート テーブルには反映されません。
+
+##  <a name="Limitations"></a> テーブルの Stretch の有効化を現在妨げている制限事項
+
+テーブルの Stretch の有効化を現在妨げている制限事項を次に示します。
+
+### テーブルのプロパティ
+
+-   1,023 よりも多くの列または 998 よりも多くのインデックスが含まれるテーブル
+
+-   FILESTREAM データが格納されている FileTable またはテーブル
+
+-   レプリケートされたテーブル、または変更追跡あるいは Change Data Capture が現在使用されているテーブル
 
 -   メモリ最適化テーブル
 
-**データ型と列のプロパティ**
+### データの種類
+
+-   text、ntext、および image
+
 -   timestamp
 
 -   sql\_variant
 
 -   XML
 
--   ジオメトリ
+-   CLR データ型。geometry、geography、hierarchyid、CLR ユーザー定義型など
 
--   地理
+### 列の型
 
--   hierarchyid
-
--   CLR ユーザー定義型 (UDT)
-
-**列の型**
 -   COLUMN\_SET
 
 -   計算列
 
-**制約**
--   CHECK 制約
+### 制約
 
--   既定の制約
+-   既定の制約と CHECK 制約
 
--   テーブルを参照する外部キー制約
+-   テーブルを参照する外部キー制約。親子関係 (Order と Order\_Detail など) では、子テーブル (Order\_Detail) については Stretch を有効にできますが、親テーブル (Order) に対して有効にすることはできません。
 
-    Stretch Database を有効にできないテーブルは、外部キー制約によって参照されるテーブルです。親子関係 (たとえば、注文と注文明細) の場合、これは親テーブル (注文) になります。
+### インデックス
 
-**インデックス**
 -   フル テキスト インデックス
 
 -   XML インデックス
@@ -75,23 +87,6 @@ SQL Server 2016 の現在のプレビュー リリースでは、次の項目が
 -   空間インデックス
 
 -   テーブルを参照するインデックス付きビュー
-
-## <a name="Caveats"></a>Stretch が有効なテーブルの制限事項と注意事項
-SQL Server 2016 の現在のプレビュー リリースでは、Stretch が有効なテーブルに次の制限事項と注意事項があります。
-
--   Stretch が有効なテーブルで UNIQUE 制約と PRIMARY KEY 制約の一意性は強制されません。
-
--   Stretch が有効なテーブルで更新操作または削除操作を実行することはできません。
-
--   リンクされているサーバー上の Stretch が有効なテーブルにリモートで挿入することはできません。
-
--   Stretch が有効なテーブルを使用してレプリケーションを使用することはできません。
-
--   Stretch が有効なテーブルを含むビューのインデックスを作成することはできません。
-
--   Stretch が有効なテーブルを含むビューを更新または削除することはできません。ただし、Stretch が有効なテーブルを含むビューに挿入することはできます。
-
--   インデックスのフィルターは、リモート テーブルには反映されません。
 
 ## 関連項目
 
@@ -101,4 +96,4 @@ SQL Server 2016 の現在のプレビュー リリースでは、Stretch が有�
 
 [テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

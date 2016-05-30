@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 #クエリ文字列による CDN 要求のキャッシュ動作の制御 - Premium
 
 > [AZURE.SELECTOR]
 - [Standard](cdn-query-string.md)
-- [Premium](cdn-query-string-premium.md)
+- [Azure CDN Premium from Verizon](cdn-query-string-premium.md)
 
 ##概要
 
 クエリ文字列のキャッシュにより、ファイルにクエリ文字列が含まれている場合のファイルのキャッシュ方法を制御します。
 
-> [AZURE.NOTE] Standard CDN 層と Premium CDN 層には同じクエリ文字列キャッシュ機能が備わっていますが、ユーザー インターフェイスが異なります。このドキュメントでは、**Premium** 層のユーザー インターフェイスについて説明します。Standard 層については、「[クエリ文字列による CDN 要求のキャッシュ動作の制御](cdn-query-string.md)」を参照してください。
+> [AZURE.IMPORTANT] Standard および Premium CDN 製品では同じクエリ文字列キャッシュ機能が提供されますが、ユーザー インターフェイスは異なります。ここでは、**Azure CDN Premium from Verizon** のインターフェイスについて説明します。**Azure CDN Standard from Akamai** と **Azure CDN Standard from Verizon** のクエリ文字列のキャッシュについては、「[クエリ文字列による CDN 要求のキャッシュ動作の制御](cdn-query-string.md)」を参照してください。
 
 次の 3 つのモードを使用できます。
 
@@ -34,9 +34,7 @@
 - **no-cache**: このモードでは、クエリ文字列のある要求は CDN エッジ ノードでキャッシュされません。エッジ ノードは元のドメインから直接資産を取得し、それを各要求により要求元に渡します。
 - **unique-cache**: このモードでは、クエリ文字列のある各要求は、独自のキャッシュを持つ一意の資産として処理されます。たとえば、*foo.ashx?q=bar* の要求の配信元からの応答はエッジ ノードでキャッシュされ、後続のキャッシュではその同じクエリ文字列により返されます。*foo.ashx?q=somethingelse* の要求は、独自の有効期限を持つ個別の資産としてキャッシュされます。
 
-	>[AZURE.WARNING] このモードは、クエリ文字列に各要求で異なるパラメーター (セッション ID、ユーザー名など) が含まれる場合には使用できません。これは、非常に低いキャッシュ ヒット率を招くことがあるためです。
-
-##クエリ文字列キャッシュ設定を変更する
+##Premium CDN プロファイル用にクエリ文字列のキャッシュ設定を変更する
 
 1. [CDN プロファイル] ブレードで、**[管理]** をクリックします。
 
@@ -52,4 +50,7 @@
 
 3. 選択したら、**[更新]** をクリックします。
 
-<!---HONumber=AcomDC_0302_2016-->
+
+> [AZURE.IMPORTANT] 設定の変更が CDN に反映されるまでに時間がかかるので、変更がすぐに表示されないことがあります。<b>Azure CDN from Verizon</b> プロファイルの場合、通常、反映は 90 分以内に完了しますが、もっと時間がかかる場合もあります。
+
+<!---HONumber=AcomDC_0518_2016-->

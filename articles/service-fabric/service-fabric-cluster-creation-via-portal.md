@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/28/2016"
+   ms.date="05/02/2016"
    ms.author="chackdan"/>
 
 
@@ -75,7 +75,7 @@
 
 	b.VM のサイズと価格レベルを選択します。既定値は D4 Standard ですが、アプリケーションのテストにのみこのクラスターを使用する場合は、D2 以下の小さな VM を選択できます。
 
-	c.プライマリ ノード タイプの最低 VM 数は、選択した信頼性レベルによって決まります。既定の信頼性レベルは Silver です。Service Fabric クラスターの信頼性と耐久性を選択する方法については[こちら](service-fabric-cluster-reliability-and-durability.md)でご確認いただけます。
+	c.プライマリ ノード タイプの最低 VM 数は、選択した信頼性レベルによって決まります。既定の信頼性レベルは Silver です。Service Fabric クラスターの信頼性と耐久性を選択する方法については[こちら](service-fabric-cluster-capacity.md)でご確認いただけます。
 
 	c.ノードのタイプの VM 数を選択します。後であるノード タイプの VM 数を増減できますが、プライマリのノード タイプの場合、選択した信頼性レベルによって最小値が決まります。他のノード タイプの場合、VM 数の最小値に 1 を設定できます。
 
@@ -88,8 +88,7 @@
 
 	b.**[アプリケーション入力エンドポイント]** フィールドにすべてのポートをコンマで区切って追加します。TCP クライアント接続エンドポイント - 既定で 19000 なので、指定する必要はありません。たとえば、サンプル アプリケーション WordCount の場合、ポート 83 を開く必要があります。この設定は、アプリケーション パッケージの servicemanifest.xml ファイルにあります(複数の servicemanifest.xml ファイルが存在する場合があります)。
 
-    c.ほとんどのサンプル アプリケーションはポート 80 と 8081 を使用するので、このクラスターにサンプルをデプロイする場合はそれらを追加します。
-    ![ポート][Ports]
+    c.ほとんどのサンプル アプリケーションはポート 80 と 8081 を使用するので、このクラスターにサンプルをデプロイする場合はそれらを追加します。 ![ポート][Ports]
 
 10. "NodeTypeName" の既定の配置プロパティはシステムによって追加されるので、**[配置プロパティ]** を構成する必要はありません。アプリケーションに必要な場合は、追加することもできます。
 
@@ -129,11 +128,11 @@
 1. **[参照]** に移動し、**[Service Fabric クラスター]** をクリックします。
 
 2. クラスターを探してクリックします。
+
 ![ポータルでクラスターを検索するスクリーン ショット。][BrowseCluster]
-
 3. これにより、クラスターのパブリック IP アドレスなどのクラスターに関する詳細が、ダッシュボードに表示されます。**[クラスター パブリック IP アドレス]** の上にポインターを移動するとクリップボードが開き、アドレスをクリックしてコピーできます。
-![ダッシュボードのクラスターの詳細のスクリーン ショット。][ClusterDashboard]
 
+![ダッシュボードのクラスターの詳細のスクリーン ショット。][ClusterDashboard]
   クラスターのダッシュボード ブレードの **[ノード モニター]** セクションには、正常な VM 数と正常ではない VM 数が表示されます。クラスターの正常性の詳細については、「[Service Fabric の正常性モニタリングの概要](service-fabric-health-introduction.md)」を参照してください。
 
 >[AZURE.NOTE] Service Fabric クラスターが可用性を維持し、状態を保持するには、一定数のノードが常にアップしている必要があります。これは、「維持クォーラム」と呼ばれます。そのため、先に[状態の完全なバックアップ](service-fabric-reliable-services-backup-restore.md)を実行しない限り、クラスター内のすべてのコンピューターをシャットダウンするのは一般に安全ではありません。
@@ -144,39 +143,39 @@
 
 ### セキュリティで保護されていないクラスターに接続する
 
-    ```powershell
-    Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 -KeepAliveIntervalInSec 10
-    ```
+```powershell
+Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 -KeepAliveIntervalInSec 10
+```
 
 ### セキュリティ保護されたクラスターに接続する
 
-    1. Run the following to set up the certificate on the machine that you are going to use to run the "Connect-serviceFabricCluster" PowerShell command.
+1. 次のコマンドを実行し、"Connect-serviceFabricCluster" PowerShell コマンドの実行に使用するコンピューターに証明書を設定します。
 
-        ```powershell
-        Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
-                -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
-                -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
-        ```
+    ```powershell
+    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
+            -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
+            -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
+    ```
 
-    2. Run the following PowerShell command to connect to a secure cluster. The certificate details are the same ones that you gave on the portal.
+2. 次の PowerShell コマンドを実行して、セキュリティで保護されたクラスターに接続します。証明書の詳細はポータルで指定したものと同じです。
 
-        ```powershell
-        Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
-                  -KeepAliveIntervalInSec 10 `
-                  -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
-                  -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
-                  -StoreLocation CurrentUser -StoreName My
-        ```
+    ```powershell
+    Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
+              -KeepAliveIntervalInSec 10 `
+              -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
+              -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
+              -StoreLocation CurrentUser -StoreName My
+    ```
 
-        For example, the PowerShell command above should look similar to the following:
+    たとえば、上の PowerShell コマンドの結果は次のようになります。
 
-        ```powershell
-        Connect-serviceFabricCluster -ConnectionEndpoint sfcluster4doc.westus.cloudapp.azure.com:19000 `
-                  -KeepAliveIntervalInSec 10 `
-                  -X509Credential -ServerCertThumbprint C179E609BBF0B227844342535142306F3913D6ED `
-                  -FindType FindByThumbprint -FindValue C179E609BBF0B227844342535142306F3913D6ED `
-                  -StoreLocation CurrentUser -StoreName My
-        ```
+    ```powershell
+    Connect-serviceFabricCluster -ConnectionEndpoint sfcluster4doc.westus.cloudapp.azure.com:19000 `
+              -KeepAliveIntervalInSec 10 `
+              -X509Credential -ServerCertThumbprint C179E609BBF0B227844342535142306F3913D6ED `
+              -FindType FindByThumbprint -FindValue C179E609BBF0B227844342535142306F3913D6ED `
+              -StoreLocation CurrentUser -StoreName My
+    ```
 
 ### アプリケーションをデプロイする
 接続が完了するので、次のコマンドを実行してアプリケーションをデプロイします。パスは実際のコンピューターのものに置き換えます。次の例は、単語数サンプル アプリケーションをデプロイします。
@@ -208,9 +207,9 @@
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## 仮想マシン スケール セット (VMSS) インスタンスまたはクラスター ノードにリモート接続する
+## 仮想マシン スケール セット インスタンスまたはクラスター ノードにリモート接続する
 
-クラスターで指定する NodeType ごとに、VMSS がセットアップされます。詳細については、「[How to RDP into your VMSS instance (VMSS インスタンスに RDP 接続する方法)](service-fabric-cluster-nodetypes.md)」を参照してください。
+クラスターで指定する NodeType ごとに、VM スケール セットがセットアップされます。詳細については、[VM スケール セットのインスタンスへのリモート接続](service-fabric-cluster-nodetypes.md#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node)に関する記事を参照してください。
 
 ## 次のステップ
 
@@ -232,4 +231,4 @@
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

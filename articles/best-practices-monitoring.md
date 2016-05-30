@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -19,7 +19,7 @@
 
 # 監視と診断のガイダンス
 
-![patterns & practices のロゴ](media/best-practices-monitoring/pnp-logo.png)
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 ## 概要
 クラウドで実行される分散アプリケーションとサービスは、その性質上、多数の変化する部分で構成される複雑なソフトウェアです。運用環境では、ユーザーによるシステムの利用方法を追跡し、リソースの使用率をトレースし、システムの正常性とパフォーマンスを総合的に監視できることが重要です。ここに記載する情報を診断に使用して、問題の検出と修正を行うことができます。さらに、潜在的な問題を見つけてその発生を防止するために役立てることもできます。
@@ -664,4 +664,4 @@ _図 6: 分析要件とストレージ要件に基づくデータのパーティ
 - 「[アラート通知の受信](./azure-portal/insights-receive-alert-notifications.md)」と「[サービス正常性を追跡する](./azure-portal/insights-service-health.md)」
 - [Application Insights](./application-insights/app-insights-get-started.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

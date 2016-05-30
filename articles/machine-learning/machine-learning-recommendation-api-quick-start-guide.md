@@ -3,7 +3,7 @@
 	description="Azure Machine Learning Recommendations - クイック スタート ガイド" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="luisca" 
+	authors="LuisCabrer" 
 	manager="paulettm" 
 	editor="cgronlun"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/09/2016" 
+	ms.date="05/09/2016" 
 	ms.author="luisca"/>
 
 # Machine Learning の Recommendations API のクイック スタート ガイド
@@ -189,10 +189,10 @@ OData XML
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	modelId	|	モデルの一意識別子 (大文字小文字を区別する) |
+|	modelId |	モデルの一意識別子 (大文字小文字を区別する) |
 | filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 |
-|	apiVersion		| 1.0 |
-|||
+| apiVersion | 1.0 | 
+||| 
 | Request Body | 利用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>ユーザー ID</td><td>はい</td><td>英字</td><td>ユーザーの一意識別子</td></tr><tr><td>アイテム ID</td><td>はい</td><td>英字、最大の長さ 50</td><td>項目の一意識別子</td></tr><tr><td>時間</td><td>いいえ</td><td>次の形式の日付: YYYY/MM/DDTHH:MM:SS (例. 2013/06/20T10:00:00)</td><td>データの時間</td></tr><tr><td>イベント</td><td>いいえ、指定した場合は日付も指定すること</td><td>次のいずれか:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイルサイズ 200MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **応答**:
@@ -239,8 +239,8 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	apiVersion | 1\.0 |
-|
-|Request body| 送信する各イベントのイベント データ エントリ。同じユーザーまたはブラウザーのセッションに対して、SessionId フィールドに同じ ID を送信する必要があります。(以下のイベントの本文のサンプルを参照してください)。|
+||| 
+|要求本文| 送信する各イベントのイベント データ エントリ。同じユーザーまたはブラウザーのセッションに対して、SessionId フィールドに同じ ID を送信する必要があります。(以下のイベントの本文のサンプルをご覧ください)。|
 
 
 - 'Click' のイベントの例:
@@ -295,7 +295,7 @@ OData XML
   		</EventData>
 		</Event>
 
-- 'Purchase' のイベントの例:
+- 'Purchase' のイベントの例: 
 
 		<Event xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 		<ModelId>2779c063-48fb-46c1-bae3-74acddc8c1d1</ModelId>
@@ -346,7 +346,7 @@ OData XML
 | modelId |	モデルの一意識別子 (大文字小文字を区別する) |
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例をご覧ください。<br>最大長: 50 |
 | apiVersion | 1\.0 |
-|
+|||
 | 要求本文 | なし |
 
 **応答**:
@@ -444,19 +444,19 @@ HTTP 状態コード: 200
 - `feed/entry/content/properties/ExecutionTime` – ビルドの期間。
 - `feed/entry/content/properties/ProgressStep` - 進行中のビルドの現在のステージの詳細。
 
-有効なビルドの状態:
-- Created - ビルド要求のエントリが作成されました。
-- Queued – ビルド要求がトリガーされ、キューに登録されました。
-- Building – ビルドが処理中です。
+有効なビルド状態:
+- Created – ビルド要求エントリが作成されました。
+- Queued – ビルド要求がトリガーされ、キューされます。
+- Building - ビルドが処理中です。
 - Success - ビルドが正常に終了しました。
-- Error - ビルドがエラーで終了しました。
-- Cancelled - ビルドは取り消されました。
-- Cancelling - ビルドは取り消されます。
+- Error – ビルドでエラーが発生して終了しました。
+- Cancelled – ビルドが取り消されました。
+- Cancelling – ビルドが取り消されます。
 
 ビルドの種類における有効な値:
-- Rank - 順番付けのビルド。(順番付けのビルドの詳細については、「Machine Learning Recommendation API ドキュメント」をご覧ください)。
-- 推奨事項 - 推奨事項のビルド。
-- Fbt - Frequently Bought Together ビルド
+- Rank - 順番付けのビルド。(順位付けのビルドの詳細については、「Machine Learning Recommendation API のドキュメント」を参照してください。)
+- Recommendation - 推奨事項のビルド。
+- Fbt - Frequently Bought Together ビルド。
 
 OData XML
 
@@ -688,9 +688,9 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 | id | モデルの一意識別子 (大文字小文字を区別する) |
-| apiVersion | 1\.0 |
-|
-| 要求本文 | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>XML タグの Description と ActiveBuildId は省略可能です。Description や ActiveBuildId を設定したくない場合は、タグ全体を削除します。 |
+| apiVersion | 1.0 |
+|||
+| 要求本文 | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能です。Description や ActiveBuildId を設定したくない場合は、タグ全体を削除します。 |
 
 **応答**:
 
@@ -713,4 +713,4 @@ OData XML
 このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。社内での参照目的に限り、このドキュメントを複製して使用できます。© 2014 Microsoft.All rights reserved.
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

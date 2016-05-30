@@ -19,7 +19,7 @@
 # Azure Data Factory パイプラインでカスタム アクティビティを使用する
 Azure Data Factory パイプラインでは、2 種類のアクティビティを使用できます。
  
-- [サポートされるデータ ストア](data-factory-data-movement-activities#supported-data-stores)の間でデータを移動する[データ移動アクティビティ](data-factory-data-movement-activities.md)。
+- [サポートされるデータ ストア](data-factory-data-movement-activities.md#supported-data-stores)の間でデータを移動する[データ移動アクティビティ](data-factory-data-movement-activities.md)。
 - Azure HDInsight、Azure Batch、Azure Machine Learning などのコンピューティングを使用してデータを変換/処理する[データ変換アクティビティ](data-factory-data-transformation-activities.md)。たとえば、HDInsight Hive および Machine Learning Batch の実行です。  
 
 Azure Data Factory でサポートされていないデータ ストアとの間でデータを移動する必要がある場合は、独自のデータ移動ロジックでカスタム .NET アクティビティを作成し、パイプラインでそのアクティビティを使用できます。
@@ -47,17 +47,19 @@ Azure Data Factory でサポートされていないデータ ストアとの間
 1. [Azure ポータル](http://manage.windowsazure.com)を使用して、**Azure Batch アカウント**を作成します。手順については、「[Azure Batch アカウントの作成と管理][batch-create-account]」の記事を参照してください。Azure Batch のアカウント名とアカウント キーをメモしておきます。
 
 	[New-AzureBatchAccount][new-azure-batch-account] コマンドレットを使用して、Azure Batch アカウントを作成することもできます。このコマンドレットの使用方法の詳細については、「[Using Azure PowerShell to Manage Azure Batch Account (Azure PowerShell を使用した Azure Batch アカウントの管理)][azure-batch-blog]」をご覧ください。
-2. **Azure Batch プール**を作成します。[Azure Batch Explorer ツール][batch-explorer]のソース コードをダウンロードし、コンパイルして使用することもできますが、[.NET 向け Azure Batch ライブラリ][batch-net-library]を使用して Azure Batch プールを作成することもできます。Azure Batch Explorer の使用手順については、[Azure Batch Explorer サンプル チュートリアル][batch-explorer-walkthrough]のページを参照してください。
-
+2. **Azure Batch プール**を作成します。
+	1. [Azure ポータル](https://portal.azure.com)で、左側のメニューの **[参照]** をクリックしてから、**[Batch アカウント]** をクリックします。 
+	2. Azure Batch アカウントを選択して、**[Batch アカウント]** ブレードを開きます。 
+	3. **[プール]** タイルをクリックします。
+	4. **[プール]** ブレードで、ツールバーの [追加] ボタンをクリックしてプールを追加します。
+		1. プールの ID を入力します (**プール ID**)。**プールの ID** は、Data Factory ソリューションを作成するときに必要になります。 
+		2. オペレーティング システム ファミリ設定には、**Windows Server 2012 R2** を指定します。
+		3. **ノード価格レベル**を選択します。 
+		3. **ターゲットの専用数**の設定値として、「**2**」と入力します。
+		4. **ノードごとの最大タスク**の設定値として、「**2**」と入力します。
+	5. **[OK]** をクリックすると、プールが作成されます。 
+ 
 	[New-AzureBatchPool](https://msdn.microsoft.com/library/mt628690.aspx) コマンドレットを使用して、Azure Batch プールを作成することもできます。
-
-	また、複数のコンピューティング ノードを含む Azure Batch プールを作成して、それらのスライスが並列して処理されるようにすることもできます。Batch Explorer を使用している場合:
-
-	- プールの ID を入力します (**プール ID**)。**プールの ID** は、Data Factory ソリューションを作成するときに必要になります。 
-	- オペレーティング システム ファミリ設定には、**Windows Server 2012 R2** を指定します。
-	- **コンピューティング ノードごとの最大タスク**の設定値には、**2** を指定します。
-	- **ターゲットの専用数**の設定値には、**2** を指定します。 
-
 
 ### 手順の概要 
 1.	Data Factory パイプラインを使用する**カスタム アクティビティを作成**します。このサンプルのカスタム アクティビティには、データ変換/処理ロジックが格納されます。 
@@ -77,7 +79,7 @@ Azure Data Factory でサポートされていないデータ ストアとの間
 	4. パイプラインをデバッグします。
 
 ## カスタム アクティビティの作成
-.NET カスタム アクティビティを作成するには、その **IDotNetActivity** インターフェイスを実装したクラスを含む **.NET クラス ライブラリ** プロジェクトを作成する必要があります。このインターフェイスには、[Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) という 1 つのメソッドのみが含まれ、そのシグネチャは次のとおりです。
+.NET カスタム アクティビティを作成するには、その **IDotNetActivity** インターフェイスを実装したクラスを含む **.NET クラス ライブラリ** プロジェクトを作成します。このインターフェイスには、[Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) という 1 つのメソッドのみが含まれ、そのシグネチャは次のとおりです。
 
 	public IDictionary<string, string> Execute(
             IEnumerable<LinkedService> linkedServices, 
@@ -93,7 +95,7 @@ Azure Data Factory でサポートされていないデータ ストアとの間
 - **activity**。このパラメーターは、現在のコンピューティング エンティティ (この場合は Azure Batch) を表します。
 - **logger**。logger を使用すると、パイプラインの “User” ログとして表示されるデバッグ コメントが出力されます。 
 
-メソッドから、カスタム アクティビティの連結に使用できるディクショナリが返されます。現時点では、この機能はまだサポートされていません。
+メソッドから、今後、カスタム アクティビティの連結に使用できるディクショナリが返されます。この機能はまだ実装されていないため、メソッドからは空のディクショナリが返されるだけです。
 
 ### 手順 
 1.	**.NET クラス ライブラリ** プロジェクトを作成します。
@@ -107,7 +109,7 @@ Azure Data Factory でサポートされていないデータ ストアとの間
 		<li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
 	</ol>
 2.  **[ツール]** をクリックし、**[NuGet パッケージ マネージャー]** をポイントして、**[パッケージ マネージャー コンソール]** をクリックします。
-3.	[パッケージ マネージャー コンソール] で、次のコマンドを実行して **Microsoft.Azure.Management.DataFactories** をインポートします。
+3.	パッケージ マネージャー コンソールで、次のコマンドを実行して **Microsoft.Azure.Management.DataFactories** をインポートします。
 
 		Install-Package Microsoft.Azure.Management.DataFactories
 
@@ -234,7 +236,9 @@ Azure Data Factory でサポートされていないデータ ストアとの間
             logger.Write("Writing {0} to the output blob", output);
             outputBlob.UploadText(output);
 
-            // return a new Dictionary object (unused in this code).
+			// The dictionary can be used to chain custom activities together in the future.
+			// This feature is not implemented yet, so just return an empty dictionary.  
+
             return new Dictionary<string, string>();
         }
 
@@ -324,7 +328,7 @@ Azure Data Factory でサポートされていないデータ ストアとの間
 12. <project folder>\\bin\\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、**MyDotNetActivity.pdb** ファイルを含めることもできます。カスタム アクティビティの zip ファイル内のファイルは、いずれもサブフォルダーがない**最上位レベル**に置く必要があります。
 
 	![バイナリ出力ファイル](./media/data-factory-use-custom-activities/Binaries.png)
-13. **MyDotNetActivity.zip** を BLOB として **customactvitycontainer** にアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内の **AzureStorageLinkedService** リンク サービスが使用する Azure Blob Storage 内にあります。BLOB コンテナー **customactivitycontainer** が既に存在していなければ、作成します。
+13. **MyDotNetActivity.zip** を BLOB として **customactvitycontainer** にアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内の **AzureStorageLinkedService** リンク サービスが使用する Azure BLOB ストレージ内にあります。BLOB コンテナー **customactivitycontainer** が既に存在していなければ、作成します。
 
 > [AZURE.NOTE] この .NET アクティビティ プロジェクトを Visual Studio で Data Factory プロジェクトを含むソリューションに追加し、Data Factory アプリケーション プロジェクトから .NET アクティビティ プロジェクトへの参照を追加する場合は、最後の 2 つの手順 (手動での zip ファイルの作成と Azure Blob Storage へのアップロード) を実行する必要はありません。Data Factory エンティティを Visual Studio を使用して発行すると、これらの手順は発行プロセスによって自動的に実行されます。Visual Studio を使用した Data Factory エンティティの作成と発行の詳細については、記事「[Visual Studio を使用した初めてのパイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md)」と記事「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started-using-vs.md)」を参照してください。
 
@@ -543,7 +547,7 @@ mycontainer\\output フォルダーには、1 行または複数行 (入力フ�
 		    }
 		}
 
- 	出力場所は **adftutorial/customactivityoutput/YYYYMMDDHH/** です。YYYYMMDDHH は、スライスが生成された年 (Year)、月 (Month)、日 (Day)、時間 (Hour) です。詳細については、[開発者用リファレンス][adf-developer-reference]のページをご覧ください。
+ 	出力場所は **adftutorial/customactivityoutput/** で、出力ファイル名は yyyy-MM-dd-HH.txt です。この yyyy-MM-dd-HH は、スライスが生成された年、月、日、時間です。詳細については、[開発者用リファレンス][adf-developer-reference]のページをご覧ください。
 
 	各入力スライスの出力 BLOB/ファイルが生成されます。次に、各スライスの出力ファイルの命名方法を示します。すべての出力ファイルは、**adftutorial\\customactivityoutput** という 1 つのフォルダーに生成されます。
 
@@ -563,7 +567,7 @@ mycontainer\\output フォルダーには、1 行または複数行 (入力フ�
 
 ### カスタム アクティビティを使用するパイプラインの作成と実行
 
-1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] \(省略記号)** をクリックすると表示されます。
+1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] (省略記号)** をクリックすると表示されます。
 2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。 
 
 		{
@@ -611,7 +615,7 @@ mycontainer\\output フォルダーには、1 行または複数行 (入力フ�
 
 	以下の点に注意してください。
 
-	- **Concurrency** を **2** に設定し、Azure Batch プール内の 2 つの VM で 2 つのスライスが並列的に処理されるようにします。
+	- **Concurrency** を **2** に設定して、Azure Batch プール内の 2 つの VM で 2 つのスライスが並列的に処理されるようにします。
 	- activities セクションには、**DotNetActivity** 型のアクティビティが 1 つあります。
 	- **AssemblyName** を DLL の名前 (**MyActivities.dll**) に設定します。
 	- **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。
@@ -654,8 +658,11 @@ mycontainer\\output フォルダーには、1 行または複数行 (入力フ�
 データセットやパイプラインを監視するための詳細な手順については、「[パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)」を参照してください。
 
 Data Factory サービスによって、Azure Batch に **adf-<pool name>:job-xxx** という名前のジョブが作成されます。スライスのアクティビティの実行ごとに、1 つのタスクが作成されます。10 個のスライスを処理する準備ができた場合、このジョブに 10 個のタスクが作成されています。プール内に複数のコンピューティング ノードがある場合、複数のスライスを並列して実行することができます。コンピューティング ノードごとの最大タスクが 1 より大きな値に設定されている場合、同じコンピューティング ノードで複数のスライスを実行することもできます。
+
 	
 ![Batch Explorer のタスク](./media/data-factory-use-custom-activities/BatchExplorerTasks.png)
+
+> [AZURE.NOTE] [Azure Batch Explorer ツール][batch-explorer]のソース コードをダウンロードし、コンパイルしてから Batch プールの作成および監視に使用します。Azure Batch Explorer の使用手順については、[Azure Batch Explorer サンプル チュートリアル][batch-explorer-walkthrough]のページを参照してください。
 
 ![Data Factory と Batch](./media/data-factory-use-custom-activities/DataFactoryAndBatch.png)
 
@@ -709,7 +716,7 @@ Azure Data Factory ランチャーによって使用されるアセンブリの�
 	  }
 	},
 
-上記の例では、2 つの拡張プロパティ (**SliceStart** と **DataFactoryName**) があります。SliceStart の値は、SliceStart システム変数に基づいています。サポートされているシステム変数の一覧については、「[Data Factory の関数およびシステム変数](data-factory-scheduling-and-execution.md#data-factory-system-variables)」を参照してください。DataFactoryName の値は、"CustomActivityFactory" にハードコーディングされます。
+上記の例では、2 つの拡張プロパティ (**SliceStart** と **DataFactoryName**) があります。SliceStart の値は、SliceStart システム変数に基づいています。サポートされているシステム変数の一覧については、「[Data Factory を使用したスケジュール設定と実行](data-factory-scheduling-and-execution.md#data-factory-system-variables)」を参照してください。DataFactoryName の値は、"CustomActivityFactory" にハードコーディングされます。
 
 **Execute** メソッドでこれらの拡張プロパティにアクセスするには、次のようなコードを使用します。
 
@@ -725,6 +732,14 @@ Azure Data Factory ランチャーによって使用されるアセンブリの�
     	logger.Write("<key:{0}> <value:{1}>", entry.Key, entry.Value);
 	}
 
+## Azure Batch の自動スケール機能
+**自動スケール**機能で、Azure Batch プールを作成することもできます。たとえば、専用 VM 数が 0 の Azure Batch プールと、保留中のタスクの数に基づく自動スケールの数式を作成できます。
+ 
+	pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);$TargetDedicated = max(pendingTaskSampleVector);
+
+詳細については、「[Azure Batch プール内のコンピューティング ノードの自動スケール](../batch/batch-automatic-scaling.md)」を参照してください。
+
+プールが既定の [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx) を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。プールが異なる 　autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
 
 ## Azure HDInsight のリンクされたサービスの使用
 このチュートリアルでは、Azure Batch コンピューティングを使用して、カスタム アクティビティを実行しました。独自の HDInsight クラスターを使用するか、Data Factory によってオンデマンド HDInsight クラスターを作成してから、HDInsight クラスターでカスタム アクティビティを実行することもできます。ここでは、HDInsight クラスターを使用するための手順の概要を示します。
@@ -756,7 +771,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 			        "typeProperties": {
 			            "clusterSize": 4,
 			            "timeToLive": "00:05:00",
-			            "osType": "linux",
+			            "osType": "Windows",
 			            "linkedServiceName": "AzureStorageLinkedService",
 			        }
 			    }
@@ -825,12 +840,12 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 ## 例
 
-| サンプル | カスタム アクティビティの動作| 
-| ------ | ----------- | 
-| [HTTP データ ダウンローダー](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample)。 | Data Factory のカスタム C# アクティビティを使用して、HTTP エンドポイントから Azure Blob Storage にデータをダウンロードします。 |
-| [Twitter センチメント分析のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) | Azure ML モデルを呼び出し、センチメント分析、スコア付け、予測などを行います。 |
-| [R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)。 | 既に R がインストールされている HDInsight クラスターで RScript.exe を実行し、R スクリプトを呼び出します。 | 
-| [クロス AppDomain .NET アクティビティ](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) | Data Factory 起動ツールによって使用されているアセンブリ バージョンとは別のバージョンを使用します (たとえば、WindowsAzure.Storage v4.3.0、Newtonsoft.Json v6.0.x など)。
+サンプル | カスタム アクティビティの動作 
+------ | ----------- 
+[HTTP データ ダウンローダー](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample)。 | Data Factory のカスタム C# アクティビティを使用して、HTTP エンドポイントから Azure Blob Storage にデータをダウンロードします。
+[Twitter センチメント分析のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) | Azure ML モデルを呼び出し、センチメント分析、スコア付け、予測などを行います。
+[R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)。 | 既に R がインストールされている HDInsight クラスターで RScript.exe を実行し、R スクリプトを呼び出します。 
+[クロス AppDomain .NET アクティビティ](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) | Data Factory 起動ツールによって使用されているアセンブリ バージョンとは別のバージョンを使用します。  
  
 
 ## 関連項目
@@ -844,7 +859,6 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [batch-technical-overview]: ../batch/batch-technical-overview.md
 [batch-get-started]: ../batch/batch-dotnet-get-started.md
 [monitor-manage-using-powershell]: data-factory-monitor-manage-using-powershell.md
-[adf-tutorial]: data-factory-tutorial.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
 [data-factory-introduction]: data-factory-introduction.md
@@ -872,4 +886,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

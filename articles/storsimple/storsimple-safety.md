@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/20/2016"
+   ms.date="05/13/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスを安全にインストールして操作する
@@ -51,7 +51,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 ## 接続の注意事項
 
-![警告のアイコン](./media/storsimple-safety/IC740879.png) ![感電を示すアイコン](./media/storsimple-safety/IC740882.png) **警告!**
+![警告のアイコン](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **警告!**
 
 けが、感電、または死亡事故を招く可能性を低減する方法
 
@@ -179,4 +179,4 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 - 8600 デバイスの場合は、「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0518_2016-->

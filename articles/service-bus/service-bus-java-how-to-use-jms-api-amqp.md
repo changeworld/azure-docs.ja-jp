@@ -53,7 +53,7 @@ JMS では、Java Naming and Directory Interface (JNDI) を使用して論理名
 	
 # Register a ConnectionFactory in JNDI using the form:
 # connectionfactory.[jndi_name] = [ConnectionURL]
-connectionfactory.SBCF = amqps://[username]:[password]@[namespace].servicebus.windows.net
+connectionfactory.SBCF = amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].servicebus.windows.net
 	
 # Register some queues in JNDI using the form
 # queue.[jndi_name] = [physical_name]
@@ -77,13 +77,13 @@ connectionfactory.[jndi_name] = [ConnectionURL]
 **ConnectionURL** の形式は次のようになります。
 
 ```
-amqps://[username]:[password]@[namespace].servicebus.windows.net
+amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].servicebus.windows.net
 ```
-ここで、**[namespace]**、**[username]**、**[password]** には次の意味があります。
+**[namespace]**、**[SASPolicyName]**、**[SASPolicyKey]** の意味は次のとおりです。
 
 - **[namespace]**: Service Bus 名前空間。
-- **[username]**: Service Bus 発行者名。
-- **[password]**: Service Bus 発行者キーの URL エンコード形式。
+- **[SASPolicyName]**: キューの Shared Access Signature のポリシー名。
+- **[SASPolicyKey]**: キューの Shared Access Signature のポリシー キー。
 
 > [AZURE.NOTE] パスワードは手動で URL エンコードする必要があります。便利な URL エンコード ユーティリティは、[http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) で入手できます。
 
@@ -339,4 +339,4 @@ Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、そ�
 
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

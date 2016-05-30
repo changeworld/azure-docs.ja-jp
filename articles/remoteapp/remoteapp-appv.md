@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/21/2016" 
+    ms.date="05/12/2016" 
     ms.author="elizapo" />
 
 
@@ -36,4 +36,4 @@
 
  カスタム イメージとハイブリッド コレクションを作成したら、アプリケーションを公開し、ユーザーを割り当てれば、Azure RemoteApp にホストされている既存の App-V アプリケーションを、場所を問わず、あらゆるデバイスに配信できます。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

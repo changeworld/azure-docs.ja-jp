@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure リソース マネージャーのセキュリティに関する考慮事項"
+	pageTitle="リソース マネージャーのセキュリティの考慮事項 | Microsoft Azure"
 	description="Azure リソース マネージャーでキーとシークレット、ロールベースのアクセス制御、ネットワーク セキュリティ グループを使用してリソースをセキュリティで保護するための推奨方法を示します。"
 	services="azure-resource-manager"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="05/16/2016"
 	ms.author="georgem;tomfitz"/>
 
 
@@ -306,7 +306,7 @@ Azure では、IP トラフィックを各パケットの宛先に基づいて�
 
 ### BGP のルート
 
-この記事の執筆時には、[ExpressRoute](./expressroute/expressroute-introduction.md) は Azure リソース マネージャー向け[ネットワーク リソース プロバイダー](virtual-network/resource-groups-networking.md)ではまだサポートされていません。NRP で ExpressRoute がサポートされたら、オンプレミス ネットワークと Azure との間に ExpressRoute 接続が存在する場合に、BGP を有効にして、オンプレミス ネットワークから Azure へとルートを伝達することができます。これらの BGP ルートは、各 Azure サブネットで既定のルートやユーザー定義のルートと同じように使用されます。詳細については、[ExpressRoute の概要](./expressroute/expressroute-introduction.md)に関するページを参照してください。
+この記事の執筆時には、[ExpressRoute](./expressroute/expressroute-introduction.md) は Azure リソース マネージャー向け[ネットワーク リソース プロバイダー](./virtual-network/resource-groups-networking.md)ではまだサポートされていません。NRP で ExpressRoute がサポートされたら、オンプレミス ネットワークと Azure との間に ExpressRoute 接続が存在する場合に、BGP を有効にして、オンプレミス ネットワークから Azure へとルートを伝達することができます。これらの BGP ルートは、各 Azure サブネットで既定のルートやユーザー定義のルートと同じように使用されます。詳細については、[ExpressRoute の概要](./expressroute/expressroute-introduction.md)に関するページを参照してください。
 
 >[AZURE.NOTE] NRP で ExpressRoute がサポートされている場合は、VPN Gateway を次ホップとする、サブネット 0.0.0.0/0 宛てのユーザー定義のルートを作成することで、オンプレミス ネットワークを介した強制トンネリングを使用するように Azure 環境を構成することができます。ただし、この方法が利用できるのは、VPN Gateway を使用している場合に限られます。ExpressRoute では利用できません。ExpressRoute の場合、強制トンネリングは BGP を介して構成します。
 
@@ -339,4 +339,4 @@ Azure では、IP トラフィックを各パケットの宛先に基づいて�
 - ルーティングと IP 転送を構成する方法については、「[テンプレートを使用して Resource Manager でユーザー定義ルート (UDR) を作成する](./virtual-network/virtual-network-create-udr-arm-template.md)」をご覧ください。
 - ロールベースのアクセス制御の概要については、「[Microsoft Azure ポータルでのロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

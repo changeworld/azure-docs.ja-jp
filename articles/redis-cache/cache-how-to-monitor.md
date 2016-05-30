@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Azure Redis Cache の監視方法" 
+	pageTitle="Azure Redis Cache を監視する方法 | Microsoft Azure" 
 	description="Azure Redis Cache のインスタンスの正常性とパフォーマンスを監視する方法を学習する" 
 	services="redis-cache" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/10/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の監視方法
@@ -82,8 +82,8 @@ Azure Redis Cache には診断データをストレージ アカウントに格�
 | メモリ使用量 | 指定したレポート期間中にキャッシュ内のキー/値のペアで使用されるキャッシュ メモリの量 (MB)。この値は Redis INFO の `used_memory` コマンドにマッピングされます。これには、メタデータや断片化は含まれません。 |
 | RSS メモリ使用量 | 指定したレポート期間中に使用されるキャッシュ メモリの量 (MB)。これには断片化とメタデータが含まれます。この値は Redis INFO の `used_memory_rss` コマンドにマッピングされます。 |
 | CPU | 指定したレポート期間中に Azure Redis Cache で使用される CPU の割合。この値は、オペレーティング システム `\Processor(_Total)\% Processor Time` パフォーマンス カウンターにマッピングされます。 |
-| キャッシュの読み取り | 指定したレポート期間中に、キャッシュから読み取られたデータ量 (KB/秒)。この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。 |
-| キャッシュの書き込み | 指定したレポート期間中に、キャッシュに書き込まれたデータ量 (KB/秒)。この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。 |
+| キャッシュの読み取り | 指定したレポート期間中にキャッシュから読み取られた、メガバイト単位での 1 秒あたりのデータ量 (MB/秒)。この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。**この値は、このキャッシュで使用されるネットワーク帯域幅に対応しています。サーバー側のネットワーク帯域幅の制限に対してアラートを設定する場合は、この `Cache Read` カウンターを使用してアラートを作成します。キャッシュのさまざまな価格レベルとサイズで観測された帯域幅の制限値については、[こちらの表](cache-faq.md#cache-performance)を参照してください。** |
+| キャッシュの書き込み | 指定したレポート期間中にキャッシュに書き込まれた、メガバイト単位での 1 秒あたりのデータ量 (MB/秒)。この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。この値は、クライアントからキャッシュに送信されるデータのネットワーク帯域幅に対応しています。 |
 
 ## 監視グラフ
 
@@ -259,4 +259,4 @@ Azure のアラートの詳細については、「[アラート通知の受信]
 
 [redis-cache-premium-point-shard]: ./media/cache-how-to-monitor/redis-cache-premium-point-shard.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

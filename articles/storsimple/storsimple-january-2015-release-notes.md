@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
  <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/15/2016"
+   ms.date="05/16/2016"
    ms.author="v-sharos" />
 
 
@@ -26,7 +26,7 @@
 
 2015 年 1 月の更新プログラムのリリース ノートに含まれている次の情報を確認してください。
 
-> [AZURE.IMPORTANT]
+> [AZURE.IMPORTANT]  
 >
 >- この更新プログラムは Windows Update からは入手できず、他の更新プログラムと同様にインストールすることはできません。Azure クラシック ポータルを使用して更新プログラムを適用した場合でも、デバイスはこの更新プログラムを受信しません。この更新プログラムは、2015 年 1 月 20 日以降に作成された仮想デバイスにのみ適用されます。 
 > 
@@ -78,4 +78,4 @@
 
  
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0518_2016-->

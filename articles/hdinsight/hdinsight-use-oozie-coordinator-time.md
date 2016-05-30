@@ -56,14 +56,17 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 > [AZURE.NOTE] HDInsight クラスターでサポートされている Oozie のバージョンについては、「[HDInsight で提供されるクラスター バージョンの新機能][hdinsight-versions]」を参照してください。
 
-> [AZURE.NOTE] このチュートリアルでは、HDInsight クラスター バージョン 2.1 と 3.0 を取り扱います。この記事に関して、HDInsight エミュレーターを使用したテストは実施されていません。
-
 
 ##<a id="prerequisites"></a>前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure PowerShell を実行できるワークステーション**。[Azure PowerShell のインストールおよび使用](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)に関するページを参照してください。Window PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。詳細については、「[Windows PowerShell スクリプトの実行][powershell-script]」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+
+    Window PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。詳細については、「[Windows PowerShell スクリプトの実行][powershell-script]」を参照してください。
+
 - **HDInsight クラスター**。HDInsight クラスターの作成については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」または「[HDInsight の概要][hdinsight-get-started]」を参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
 
 	<table border = "1">
@@ -645,7 +648,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 **ジョブのエラー ログを確認するには**
 
-ワークフローのトラブルシューティングを実行するには、クラスター ヘッドノードの C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log にある Oozie のログ ファイルを参照します。RDP の詳細については、「[Azure ポータルを使用した HDInsight クラスターの管理][hdinsight-admin-portal]」を参照してください。
+ワークフローのトラブルシューティングを実行するには、クラスター ヘッドノードの C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log にある Oozie のログ ファイルを参照します。RDP の詳細については、「[Administering HDInsight clusters using the Azure portal (Azure ポータルを使用した HDInsight クラスターの管理)][hdinsight-admin-portal]」を参照してください。
 
 **チュートリアルを再実行するには**
 
@@ -687,7 +690,6 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 このチュートリアルでは、Oozie ワークフローおよび Oozie コーディネーターを定義する方法と、Azure PowerShell を使用して Oozie コーディネーター ジョブを実行する方法を説明しました。詳細については、次の記事を参照してください。
 
 - [HDInsight の概要][hdinsight-get-started]
-- [HDInsight Emulator の概要][hdinsight-get-started-emulator]
 - [HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]
 - [Azure PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 - [HDInsight へのデータのアップロード][hdinsight-upload-data]
@@ -702,7 +704,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 
 [hdinsight-versions]: hdinsight-component-versioning.md
-[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 
@@ -713,13 +715,12 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
-[hdinsight-get-started-emulator]: ../hdinsight-get-started-emulator.md
-[hdinsight-develop-java-mapreduce]: hdinsight-develop-deploy-java-mapreduce.md
+[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
+[hdinsight-develop-java-mapreduce]: hdinsight-develop-deploy-java-mapreduce-linux.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
 
 [sqldatabase-create-configue]: ../sql-database-create-configure.md
-[sqldatabase-get-started]: ../sql-database-get-started.md
+[sqldatabase-get-started]: ../sql-database/sql-database-get-started.md
 
 [azure-management-portal]: https://portal.azure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account.md
@@ -742,4 +743,4 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

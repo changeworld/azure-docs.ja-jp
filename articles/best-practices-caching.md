@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -20,7 +20,7 @@
 
 # キャッシュに関するガイダンス
 
-![patterns & practices のロゴ](media/best-practices-caching/pnp-logo.png)
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 キャッシュは、システムのパフォーマンスとスケーラビリティを改善することを目的とする一般的な手法です。キャッシュは、アプリケーションに近い場所にある高速ストレージに、アクセス頻度が高いデータを一時的にコピーして、この目的を達成しています。この高速データ ストレージを元のソースよりもアプリケーションに近い場所に配置すると、キャッシュにより、データがよりすばやく提供され、クライアント アプリケーションの応答時間を大幅に改善できます。
 
@@ -151,7 +151,8 @@ HTTP 接続経由でデータを提供する Web アプリケーションを作�
 
 この方法の場合、共有キャッシュと比較してローカル キャッシュが古くなりすぎないように、慎重に構成する必要があります。ただし、共有キャッシュにアクセスできない場合、ローカル キャッシュはバッファーとして機能します。図 3 に、この構造を示します。
 
-![共有キャッシュとローカルなプライベート キャッシュの併用](media/best-practices-caching/Caching3.png) _図 3: 共有キャッシュとローカルなプライベート キャッシュの併用_
+![共有キャッシュとローカルなプライベート キャッシュの併用](media/best-practices-caching/Caching3.png) 
+_図 3: 共有キャッシュとローカルなプライベート キャッシュの併用_
 
 一部のキャッシュ サービスでは、有効期間が比較的長いデータを保持する大規模なキャッシュをサポートするために、キャッシュが使用できなくなった場合に自動フェールオーバーを実装する、高可用性オプションを使用できます。通常、この方法では、プライマリ キャッシュ サーバーに格納されているキャッシュされたデータをセカンダリ キャッシュ サーバーにレプリケートして、プライマリ サーバーで障害が発生するか接続が失われた場合にセカンダリ サーバーに切り替えます。
 
@@ -934,4 +935,4 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 - StackExchange.Redis リポジトリの「[Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) (Redis のトランザクション)」のページ
 - Microsoft Web サイトの「[Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx) (データのパーティション分割のガイダンス)」
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

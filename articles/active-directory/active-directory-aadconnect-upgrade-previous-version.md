@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="Identity"
-   ms.date="04/14/2016"
+   ms.date="05/12/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする
 このトピックでは、Azure AD Connect のインストールを最新リリースにアップグレードするさまざまな方法について説明します。Azure AD Connect を常に最新リリースにしておくことをお勧めします。
 
-DirSync からアップグレードする場合は、代わりに「[Azure AD Connect: Microsoft Azure Active Directory 同期 (DirSync) のアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)」を参照してください。
+DirSync からアップグレードする場合は、代わりに「[Azure AD Connect: Windows Azure Active Directory 同期 (DirSync) のアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)」を参照してください。
 
 Azure AD Connect のアップグレードには複数の方法があります。
 
@@ -34,7 +34,7 @@ Azure AD Connect のアップグレードには複数の方法があります。
 ## インプレース アップグレード
 インプレース アップグレードは、Azure AD Sync または Azure AD Connect からの移動に使用できます。DirSync または FIM + Azure AD コネクタのソリューションには使用できません。
 
-この方法は、サーバーが 1 台でオブジェクトが約 100,000 未満の場合にお勧めします。アップグレード後、完全なインポートと完全な同期が行われます。これにより、新しい構成がシステムのすべての既存のオブジェクトに適用されることが保証されます。同期エンジンのスコープ内のオブジェクトの数によっては、数時間かかることがあります。通常の定期差分同期 (既定では 30 分ごと) は中断されますが、パスワード同期は続行されます。インプレース アップグレードは週末に実行するよう検討してください。
+この方法は、サーバーが 1 台でオブジェクトが約 100,000 未満の場合にお勧めします。標準の同期規則に対する変更があった場合は、アップグレード後にフル インポートと完全同期が実行されます。これにより、新しい構成がシステムのすべての既存のオブジェクトに適用されることが保証されます。同期エンジンのスコープ内のオブジェクトの数によっては、数時間かかることがあります。通常の定期差分同期 (既定では 30 分ごと) は中断されますが、パスワード同期は続行されます。インプレース アップグレードは週末に実行するよう検討してください。新しい Azure AD Connect リリースで標準構成に変更がなかった場合は、フル インポートまたは完全同期ではなく通常の差分インポートまたは差分同期が開始されます。
 
 ![インプレース アップグレード](./media/active-directory-aadconnect-upgrade-previous-version/inplaceupgrade.png)
 
@@ -85,4 +85,4 @@ Azure AD Connect のアップグレードには複数の方法があります。
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

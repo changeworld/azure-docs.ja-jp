@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="04/14/2016"
+   ms.date="05/11/2016"
    ms.author="andkjell;billmath"/>
 
 # プレビュー段階の機能の詳細
@@ -36,19 +36,11 @@ Office 365 グループの詳細とその使い方については、[こちら](
 >[AZURE.NOTE] グループの書き戻しには、Azure AD Premium のサブスクリプションが必要です。
 
 ## ユーザーの書き戻し
-> [AZURE.IMPORTANT] ユーザーの書き戻しプレビュー機能は、Azure AD Connect の 2015 年 8 月の更新時に一時的に削除されました。この機能を有効にしていた場合は、無効にする必要があります。
-
-ユーザーの書き戻しは初期プレビュー段階です。この機能を使用できるのは、Azure AD がすべてのユーザー オブジェクトのソースであり、この機能を有効にする前にオンプレミスの Active Directory が空 (初期状態のデプロイ) である場合に限られます。
-
->[AZURE.WARNING] この機能の評価は必ずテスト環境で行ってください。本番環境で使用される Azure AD ディレクトリでは使用しないでください。
-
-.
-
->[AZURE.NOTE] ユーザーの書き戻しには、Azure AD Premium のサブスクリプションが必要です。
+> [AZURE.IMPORTANT] ユーザーの書き戻しプレビュー機能は、Azure AD Connect の 2015 年 8 月の更新時に削除されました。この機能を有効にしていた場合は、無効にする必要があります。
 
 ## 次のステップ
 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」に進んでください。
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/05/2016"
+   ms.date="05/18/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用したハードウェア コンポーネントと状態の監視
@@ -39,7 +39,7 @@
 
 - **EBOD コントローラー 1 のコンポーネント**: EBOD エンクロージャ 1 を構成するコンポーネント。詳細は EBOD エンクロージャ 0 と同様。
 
->[AZURE.NOTE]**[ハードウェアの状態] セクションは、StorSimple 仮想デバイス (1100) の[メンテナンス] ページにはありません。**
+>[AZURE.NOTE] **[ハードウェアの状態] セクションは、StorSimple 仮想デバイス (1100) の[メンテナンス] ページにはありません。**
 
 
 ## ハードウェアの状態を監視する
@@ -136,4 +136,4 @@
 
 - デバイスの問題が解決しない場合は、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure からの Windows Server または Windows クライアントへのデータの復元 | Microsoft Azure"
+   pageTitle="Resource Manager デプロイメント モデルを使用した Azure からの Windows Server または Windows Client へのデータの復元 | Microsoft Azure"
    description="Windows Server または Windows クライアントからの復元方法について説明します。"
    services="backup"
    documentationCenter=""
@@ -13,16 +13,23 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="article"
-	 ms.date="01/25/2016"
+	 ms.date="05/10/2016"
 	 ms.author="trinadhk; jimpark; markgal;"/>
 
-# Windows Server または Windows クライアント コンピューターへのファイルの復元
+# Resource Manager デプロイメント モデルを使用した Windows Server または Windows Client コンピューターへのファイルの復元
+
+> [AZURE.SELECTOR]
+- [Azure ポータル](backup-azure-restore-windows-server.md)
+- [クラシック ポータル](backup-azure-restore-windows-server-classic.md)
+
 この記事では、復元操作に必要な 2 種類の手順を説明します。
 
 - バックアップが実行されたのと同じマシンにデータを復元する
 - その他の任意のマシンにデータを復元する
 
-いずれの場合も、データは Azure Backup コンテナーから取得されます。
+いずれの場合も、データは Azure Recovery Services コンテナーから取得されます。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
 ## 同じコンピューターへのデータの回復
 ファイルを誤って削除してしまったため、バックアップを実行したのと同じコンピューターにそのファイルを復元するには、次の手順でデータを回復できます。
@@ -69,12 +76,12 @@
 
 - *ソース コンピューター* – バックアップが実行され、現在は使用できなくなっている元のコンピューター。
 - *ターゲット コンピューター* – データの回復先となるコンピューター。
-- *サンプルの資格情報コンテナー* – *ソース コンピューター*と*ターゲット コンピューター*が登録されているバックアップ資格情報コンテナー。<br/>
+- *サンプルのコンテナー* – *ソース コンピューター*と*ターゲット コンピューター*が登録されている Recovery Services コンテナー。<br/>
 
 > [AZURE.NOTE] コンピューターのバックアップは、以前のバージョンのオペレーティング システムが実行されているコンピューターには復元できません。たとえば、バックアップが Windows 7 コンピューターで行われた場合、Windows 8 以上のコンピューターにそのバックアップを復元できます。ただし、その逆は当てはまりません。
 
 1. *ターゲット コンピューター*の **Microsoft Azure Backup** スナップインを開きます。
-2. *ターゲット コンピューター*および*ソース コンピューター*が同じバックアップ資格情報コンテナーに登録されていることを確認します。
+2. *ターゲット コンピューター*および*ソース コンピューター*が同じ Recovery Services コンテナーに登録されていることを確認します。
 3. **[データの回復]** をクリックして、ワークフローを開始します。
 
     ![Recover Data](./media/backup-azure-restore-windows-server/recover.png)
@@ -83,7 +90,7 @@
 
     ![Another Server](./media/backup-azure-restore-windows-server/anotherserver.png)
 
-5. *サンプルの資格情報コンテナー*に対応するコンテナー資格情報ファイルを指定します。コンテナー資格情報ファイルが無効である (または有効期限が切れている) 場合、Azure ポータルの*サンプルの資格情報コンテナー*から、新しいコンテナー資格情報ファイルをダウンロードします。資格情報コンテナーの資格情報ファイルを指定すると、その資格情報コンテナーの資格情報ファイルに対するバックアップ資格情報コンテナーが表示されます。
+5. *サンプルの資格情報コンテナー*に対応するコンテナー資格情報ファイルを指定します。コンテナー資格情報ファイルが無効である (または有効期限が切れている) 場合、Azure ポータルの*サンプルの資格情報コンテナー*から、新しいコンテナー資格情報ファイルをダウンロードします。コンテナーの資格情報ファイルを指定すると、そのコンテナーの資格情報ファイルに対する Recovery Services コンテナーが表示されます。
 
 6. 表示されているコンピューターの一覧から*ソース コンピューター*を選択します。
 
@@ -108,12 +115,6 @@
 11. 入力して [**回復**] ボタンをクリックすると、指定した復元先でバックアップ ファイルの復元が開始します。
 
 ## 次のステップ
-- [Azure Backup FAQ](backup-azure-backup-faq.md)
-- [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
+- ファイルとフォルダーを回復したので、[バックアップを管理](backup-azure-manage-windows-server.md)できます。
 
-## 詳細情報
-- [Azure Backup の概要](http://go.microsoft.com/fwlink/p/?LinkId=222425)
-- [Azure 仮想マシンのバックアップ](backup-azure-vms-introduction.md)
-- [Microsoft ワークロードのバックアップ ](backup-azure-dpm-introduction.md)
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

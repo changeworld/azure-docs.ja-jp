@@ -460,7 +460,7 @@ GO
 Azure SQL Database のインメモリ OLTP 機能は、[2015 年 10 月 28 日にプレビュー段階になりました](https://azure.microsoft.com/updates/public-preview-in-memory-oltp-and-real-time-operational-analytics-for-azure-sql-database/)。
 
 
-一般公開 (GA) 前のプレビュー段階では、インメモリ OLTP は次の条件でのみサポートされます。
+現在のプレビューでは、インメモリ OLTP は以下に対してのみサポートされています。
 
 - *Premium* サービス レベルのデータベース。
 
@@ -491,7 +491,11 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 #### その他のリレーションシップ
 
 
-- プレビュー段階では、エラスティック プール内のデータベースでインメモリ OLTP 機能を使用することはできませんが、今後はサポートされる可能性があります。
+- プレビュー段階では、エラスティック プール内のデータベースでインメモリ OLTP 機能を使用することはできません。
+ - インメモリ OLTP オブジェクトを保有しているまたは保有していたデータベースをエラスティック プールに移動するには、次の手順を実行します。
+  - 1. データベース内で、メモリ最適化テーブル、テーブル型、およびネイティブ コンパイルの T-SQL モジュールを削除する
+  - 2. データベースのサービス レベルを Standard に変更する (*現在、インメモリ OLTP オブジェクトを過去に保有していた Premium データベースをエラスティック プールに移動できない問題が発生しています。Azure DB チームが問題解決に積極的に取り組んでいます)
+  - 3. データベースをエラスティック プールに移動する
 
 - SQL Data Warehouse でインメモリ OLTP を使用することはサポートされていません。
  - インメモリ分析の列ストア インデックス機能は、SQL Data Warehouse でサポートされています。
@@ -533,4 +537,4 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 - インメモリ OLTP のために[インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

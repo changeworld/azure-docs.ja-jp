@@ -47,7 +47,7 @@ Application Insights リソースでは、利用統計情報データが分析�
     ![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-cloudservices/02-props.png)
 
 
-通常、それぞれの Web と worker ロールからのデータに対して個別のリソースを作成するのが最良の方法になります。
+通常、[それぞれの Web と worker ロールからのデータに対して個別のリソースを作成するのが最良の方法](app-insights-separate-resources.md)になります。
 
 代替として、すべてのロールからのデータを 1 つだけのリソースに送信できます。ただし、各ロールからの結果をフィルター処理またはグループ化できるように[既定のプロパティ][apidefaults]を設定します。
 
@@ -59,7 +59,7 @@ Application Insights リソースでは、利用統計情報データが分析�
     ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-cloudservices/03-nuget.png)
 
 
-2. [Web 向けの Application Insights](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet パッケージを追加します。SDK のこのバージョンには、ロールの情報など、サーバー コンテキストを追加するモジュールが含まれています。worker ロールの場合、Windows Services の Application Insights を使用します。
+2. Web ロールの場合は、[Web 用 Application Insights](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet パッケージを追加します。SDK のこのバージョンには、ロールの情報など、サーバー コンテキストを追加するモジュールが含まれています。worker ロールの場合は、[Windows Services 用 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) を使用します。
 
     !["Application Insights" の検索](./media/app-insights-cloudservices/04-ai-nuget.png)
 
@@ -264,7 +264,7 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 
 ## Azure Cloud Services で実行する際の例外「メソッドが見つかりません」
 
-.NET 4.6 でビルドした場合 4.6 は Azure Cloud Services のロールでは自動的にサポートされていません。アプリを実行する前に[各ロールに 4.6 をインストールします](../cloud-services/cloud-services-dotnet-install-dotnet.md)。
+.NET 4.6 でビルドした場合 4.6 は Azure Cloud Services のロールでは自動的にサポートされていません。アプリを実行する前に、[各ロールに 4.6 をインストールしてください](../cloud-services/cloud-services-dotnet-install-dotnet.md)。
 
 ## 関連トピック
 
@@ -275,7 +275,7 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 
 [api]: app-insights-api-custom-events-metrics.md
 [apidefaults]: app-insights-api-custom-events-metrics.md#default-properties
-[apidynamicikey]: app-insights-api-custom-events-metrics.md#dynamic-ikey
+[apidynamicikey]: app-insights-separate-resources.md#dynamic-ikey
 [availability]: app-insights-monitor-web-app-availability.md
 [azure]: app-insights-azure.md
 [client]: app-insights-javascript.md
@@ -286,4 +286,4 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

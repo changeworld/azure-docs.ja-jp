@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Python を使用して SQL Database に接続する"
+	pageTitle="Python を使用して SQL Database に接続する | Microsoft Azure"
 	description="Azure SQL Database への接続に使用できる Python コード サンプルについて説明します。"
 	services="sql-database"
 	documentationCenter=""
@@ -47,4 +47,4 @@
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

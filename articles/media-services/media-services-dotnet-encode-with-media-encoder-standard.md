@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"
+ 	ms.date="05/03/2016"
 	ms.author="juliako;anilmur"/>
 
 
@@ -37,12 +37,15 @@
 
 Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
-###MES の入力メタデータと出力メタデータ
+###入力メタデータと出力メタデータ
 
-エンコーダーの入力メタデータの説明は[ここ](http://msdn.microsoft.com/library/azure/dn783120.aspx)にあります。
+MES を使用して 1 つ (または複数) の入力資産をエンコードし、そのエンコード タスクが正常に終了すると、出力資産が得られます。出力資産には、使用するエンコード プリセットに基づいて、ビデオ、オーディオ、サムネイル、マニフェストなどが含まれます。
 
-エンコーダーの出力メタデータの説明は[ここ](http://msdn.microsoft.com/library/azure/dn783217.aspx)にあります。
+この出力資産には、入力資産に関するメタデータが格納されたファイルも含まれます。メタデータ XML ファイルの名前は、<asset_id>\_metadata.xml という形式になっています (たとえば、41114ad3-eb5e-4c57-8d92-5354e2b7d4a4\_metadata.xml)。ここで、<asset_id> は入力資産の AssetId の値です。この入力メタデータ XML のスキーマについては、[こちら](http://msdn.microsoft.com/library/azure/dn783120.aspx)で説明されています。
 
+出力資産には、出力資産に関するメタデータが格納されたファイルも含まれます。メタデータ XML ファイルの名前は、<source_file_name>\_manifest.xml という形式になっています (たとえば、BigBuckBunny\_manifest.xml)。この出力メタデータ XML のスキーマについては、[こちら](http://msdn.microsoft.com/library/azure/dn783217.aspx)で説明されています。
+
+2 つのメタデータ ファイルのいずれかを確認したい場合は、SAS ロケータ―を作成してファイルをローカル コンピューターにダウンロードできます。Media Services .NET SDK Extensions を使って SAS ロケータ―を作成し、ファイルをダウンロードする方法の例をご覧ください。
 
 ##サンプルのダウンロード
 
@@ -147,4 +150,4 @@ Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618
 
 [Media Encoder Standard と .NET を使用してサムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md) [Media Services でのエンコーディングの概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

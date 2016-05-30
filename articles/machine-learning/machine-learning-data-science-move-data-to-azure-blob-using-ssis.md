@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
+	ms.date="05/10/2016"
 	ms.author="bradsev" />
 
 # SSIS コネクタを使用して Azure BLOB ストレージとの間でデータを移動する
@@ -24,7 +24,6 @@
 
 [AZURE.INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
 
-## はじめに
 
 ユーザーは、オンプレミスのデータをクラウドに移動すると、そのデータにすべての Azure サービスからアクセスできるようになり、一連の Azure テクノロジを最大限に活用できます。たとえば、Azure Machine Learning または HDInsight クラスター上で使用できます。
 
@@ -38,8 +37,8 @@
 
 この記事で説明するタスクを実行するには、Azure サブスクリプションと Azure ストレージ アカウントの設定が必要です。データをアップロードまたはダウンロードするために、Azure ストレージ アカウント名とアカウント キーを確認しておく必要があります。
 
-- **Azure サブスクリプション**を設定するには、「[1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
-- **ストレージ アカウント**の作成と、アカウントとキー情報の取得の手順については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
+- **Azure サブスクリプション**を設定するには、「[1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
+- **ストレージ アカウント**の作成と、アカウントとキー情報の取得についての手順については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
 
 **SSIS コネクタ**を使用するには、次のものをダウンロードする必要があります。
@@ -88,4 +87,4 @@ SSIS 機能パックでは、複数のタスクを 1 つにパッケージ化す
 - SSIS を使用して Azure HDInsight クラスター上で Hive スクリプトを実行するには、[Azure HDInsight Hive タスク](https://msdn.microsoft.com/library/mt146771.aspx)を使用します。
 - SSIS を使用して Azure HDInsight クラスター上で Pig スクリプトを実行するには、[Azure HDInsight Pig タスク](https://msdn.microsoft.com/library/mt146781.aspx)を使用します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

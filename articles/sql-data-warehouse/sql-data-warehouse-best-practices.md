@@ -119,7 +119,7 @@ SQL Data Warehouse の**機能の提案**がある場合は、[Azure SQL Data Wa
 [Azure SQL Data Warehouse で列ストア インデックスを管理する]: sql-data-warehouse-manage-columnstore-indexes.md
 [SQL Data Warehouse での統計の管理]: sql-data-warehouse-develop-statistics.md
 [DMV を利用してワークロードを監視する]: sql-data-warehouse-manage-monitor.md
-[Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動]: data-factory-azure-sql-data-warehouse-connector.md
+[Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
 [SQL Data Warehouse のトランザクションの最適化]: sql-data-warehouse-develop-best-practices-transactions.md
 [コンピューティング リソースの一時停止]: sql-data-warehouse-overview-scalability.md#pause-compute-bk
 [コンピューティング リソースの再開]: sql-data-warehouse-overview-scalability.md#resume-compute-bk
@@ -157,4 +157,4 @@ SQL Data Warehouse の**機能の提案**がある場合は、[Azure SQL Data Wa
 [Azure SQL Data Warehouse Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Azure SQL Data Warehouse loading patterns and strategies (Azure SQL Data Warehouse の読み込みパターンと戦略)]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/06/azure-sql-data-warehouse-loading-patterns-and-strategies
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

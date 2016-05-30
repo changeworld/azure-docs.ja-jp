@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="12/10/2015"
+	ms.date="05/18/2016"
 	ms.author="rashimg;cgronlun"/>
 
 # Azure HDInsight の Hadoop の Hive メモリ設定を使用してメモリ不足 (OOM) エラーを修正する
@@ -45,7 +45,7 @@
 
 * T1 は、STRING 型の列が多数ある大きなテーブル TABLE1 のエイリアスです。
 * 他のテーブルはそれほど大きくありませんが、多数の列があります。
-* すべてのテーブルは相互に結合され、場合によっては、TABLE1 と他のテーブルに複数の列があります。
+* すべてのテーブルは相互に結合されています。場合によっては、TABLE1 などのテーブルにある複数の列によって結合されています。
 
 ユーザーが 24 ノード A3 クラスターの MapReduce に Hive を使用してクエリを実行すると、クエリの実行時間は約 26 分間になりました。ユーザーは、MapReduce に Hive を使用してクエリを実行すると、次の警告メッセージが表示されることに気づきました。
 
@@ -100,7 +100,7 @@ hive-site.xml ファイルを確認したところ、**hive.auto.convert.join.no
     	</description>
   	</property>
 
-警告と JIRA の説明に基づき、Map Join が Java Heap Space OOM エラーの原因であると仮説を立てました。そしてこの問題をさらに深く掘り下げました。
+警告と JIRA の説明に基づき、Map Join が Java ヒープ領域 OOM エラーの原因であると仮説を立てました。そしてこの問題をさらに深く掘り下げました。
 
 [HDInsight の Hadoop Yarn メモリ設定](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx)に関するブログの投稿で説明したように、Tez 実行エンジンを使用すると、使用されるヒープ領域は、実際には Tez コンテナーに属します。Tez コンテナー メモリについて説明した次の図を参照してください。
 
@@ -109,7 +109,7 @@ hive-site.xml ファイルを確認したところ、**hive.auto.convert.join.no
 
 ブログの投稿で提案したように、**hive.tez.container.size** と **hive.tez.java.opts** という 2 つのメモリ設定で、ヒープのコンテナー メモリを定義しています。経験から判断すると、OOM 例外の原因は、コンテナー サイズが小さすぎることではありません。Java ヒープ サイズ (hive.tez.java.opts) が小さすぎることが原因です。そのため、OOM が発生する場合は、**hive.tez.java.opts** を増やしてみてください。必要に応じて、**hive.tez.container.size** も増やす必要があります。**java.opts** 設定は、**container.size** の約 80% にすることをお勧めします。
 
-> [AZURE.NOTE]**hive.tez.java.opts** は、常に **hive.tez.container.size** よりも小さく設定する必要があります。
+> [AZURE.NOTE]  **hive.tez.java.opts** は、常に **hive.tez.container.size** よりも小さく設定する必要があります。
 
 D12 コンピューターには 28 GB のメモリがあるので、10 GB (10,240 MB) のコンテナー サイズを使用し、80% を java.opts に割り当てることにしました。そのために、Hive コンソールで次の設定を使用しました。
 
@@ -120,6 +120,6 @@ D12 コンピューターには 28 GB のメモリがあるので、10 GB (10,24
 
 ## 結論: OOM エラーとコンテナー サイズ
 
-OOM エラーの原因は、必ずしもコンテナー サイズが小さすぎるためではありません。コンテナー サイズではなくヒープ サイズを増やし、コンテナー メモリ サイズの 80% 移乗を割り当てるようにメモリ設定を構成することをお勧めします。
+OOM エラーの原因は、必ずしもコンテナー サイズが小さすぎるためではありません。コンテナー サイズではなくヒープ サイズを増やし、コンテナー メモリ サイズの 80% 以上を割り当てるようにメモリ設定を構成することをお勧めします。
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0518_2016-->

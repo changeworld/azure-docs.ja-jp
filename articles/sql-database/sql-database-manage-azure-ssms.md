@@ -3,8 +3,8 @@
 	description="SQL Server Management Studio を使用して SQL データベース サーバーとデータベースを管理する方法について説明します。" 
 	services="sql-database" 
 	documentationCenter=".net" 
-	authors="jeffgoll" 
-	manager="jeffreyg" 
+	authors="stevestein" 
+	manager="jhubbard" 
 	editor="tysonn"/>
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/07/2016" 
-	ms.author="jeffreyg"/>
+	ms.date="05/09/2016" 
+	ms.author="sstein"/>
 
 
 # SQL Server Management Studio を使用した Azure SQL Database の管理 
@@ -25,9 +25,11 @@
 - [SSMS](sql-database-manage-azure-ssms.md)
 - [PowerShell](sql-database-command-line-tools.md)
 
-SQL Server Management Studio (SSMS) を使用して Azure SQL Database の論理サーバーとデータベースを管理できます。このトピックでは、SSMS を使用した一般的なタスクの手順について説明します。始める前に、Azure SQL Database 論理サーバーとデータベースが既にある必要があります。接続してから単純な SELECT クエリを実行する方法については、[最初の Azure SQL Database を作成する方法の記事](sql-database-get-started.md)と [SSMS を使用して接続してクエリを実行する方法の記事](sql-database-connect-query-ssms.md)をご覧ください。
+SQL Server Management Studio (SSMS) を使用して Azure SQL Database の論理サーバーとデータベースを管理できます。このトピックでは、SSMS を使用した一般的なタスクの手順について説明します。始める前に、Azure SQL Database 論理サーバーとデータベースが既にある必要があります。接続してから単純な SELECT クエリを実行する方法については、[最初の Azure SQL Database の作成](sql-database-get-started.md)に関する記事と [SSMS を使用して接続しクエリを実行する](sql-database-connect-query-ssms.md)方法に関する記事をご覧ください。
 
-Azure SQL Database を操作する際は、常に最新バージョンの SSMS を使用することをお勧めします。これを取得するには、「[Download SQL Server Management Studio (SQL Server Management Studio のダウンロード)](https://msdn.microsoft.com/library/mt238290.aspx)」にアクセスしてください。
+Azure SQL Database を操作する際は、常に最新バージョンの SSMS を使用することをお勧めします。
+
+> [AZURE.IMPORTANT] 最新バージョンの SQL Server Management Studio (SSMS) を使用して、Microsoft Azure と SQL Database の更新プログラムの同期を維持する必要があります。SQL Database で前のバージョンの SSMS が正常に動作しない場合は、[「Download SQL Server Management Studio (SSMS )(SQL Server Management Studio (SSMS ) のダウンロード)](https://msdn.microsoft.com/library/mt238290.aspx)」をご覧ください。
 
 ## Azure SQL データベースの作成と管理
 
@@ -80,7 +82,7 @@ Management Studio でクエリ ウィンドウを開くには、[データベー
 
  2. **myTestDB** データベースを右クリックし、**[新しいクエリ]** を選択します。
 
-    3.  myTestDB データベースに対して次のステートメントを実行して、サーバー レベルのログイン **login1** に対応する ** login1User** という名前のデータベース ユーザーを作成します。
+    3.  myTestDB データベースに対して次のステートメントを実行して、サーバー レベルのログイン **login1** に対応する **login1User** という名前のデータベース ユーザーを作成します。
 
             CREATE USER login1User FROM LOGIN login1;
 
@@ -149,4 +151,4 @@ SQL データベースでは、個々のデータベースを監視するのに�
  
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="03/15/2016"
+   ms.date="05/11/2016"
    ms.author="nitinme"/>
 
 # Azure Data Lake Store に格納されているデータのセキュリティ保護
@@ -34,6 +34,10 @@ Azure Data Lake Store のデータをセキュリティで保護するには 3 �
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 - **Azure Data Lake Store アカウント**。このアカウントを作成する手順については、「[Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。
+
+## ビデオで速習する
+
+Data Lake Store に格納されているデータのセキュリティ保護の方法については、[こちらのビデオ](https://mix.office.com/watch/1q2mgzh9nn5lx)をご覧ください。
 
 ## Azure Active Directory でセキュリティ グループを作成する
 
@@ -98,8 +102,8 @@ Azure Data Lake ファイル システムにユーザーまたはセキュリテ
 
 	![標準アクセスとカスタム アクセスを一覧表示する](./media/data-lake-store-secure-data/adl.acl.2.png "標準アクセスとカスタム アクセスを一覧表示する")
 
-	* 標準アクセスは UNIX 形式のアクセスです。この場合は、読み取り、書き込み、実行 (rwx) を 3 つの個別のユーザー クラス (所有者、グループ、その他) に指定します。
-	* カスタム アクセスは POSIX ACL に対応します。この場合、ファイルの所有者またはグループだけでなく、特定の名前付きユーザーまたはグループにもアクセス許可を設定することができます。
+	* **標準アクセス**は UNIX 形式のアクセスです。この場合は、読み取り、書き込み、実行 (rwx) を 3 つの個別のユーザー クラス (所有者、グループ、その他) に指定します。
+	* **カスタム アクセス**は POSIX ACL に対応します。この場合、ファイルの所有者またはグループだけでなく、特定の名前付きユーザーまたはグループにもアクセス許可を設定することができます。 
 	
 	詳細については、[HDFS ACL](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists) を参照してください。
 
@@ -111,8 +115,13 @@ Azure Data Lake ファイル システムにユーザーまたはセキュリテ
 
 	![グループにアクセス許可を割り当てる](./media/data-lake-store-secure-data/adl.acl.4.png "グループにアクセス許可を割り当てる")
 
+	アクセス許可は次のように理解することができます。
 
-	>[AZURE.NOTE] Execute アクセス許可はディレクトリの列挙体で必要です。また、データへの読み取り専用アクセスをユーザーまたはグループに許可する場合にもしばしば必要となります。
+	* **読み取り** - このアクセス許可がディレクトリに対して設定されている場合、そのディレクトリ内のファイルの名前を読み取ることができます。
+	* **書き込み** - このアクセス許可がディレクトリに対して設定されている場合、ファイルの作成、削除、名前変更など、ディレクトリ内のエントリを変更することができます。
+	* **実行** - このアクセス許可がディレクトリに対して設定されている場合、そのディレクトリ内のファイルのコンテンツにアクセスすることができます。また、ファイル名がわかっている場合は、ファイルのメタデータにアクセスすることもできます。ただし、**読み取り**アクセス許可も設定されていない限り、このアクセス許可でディレクトリ内のファイルを一覧表示することはできません。
+
+	>[AZURE.NOTE] **読み取りと実行**アクセス許可はディレクトリの列挙体で必要です。また、データへの読み取り専用アクセスをユーザーまたはグループに許可する場合にもしばしば必要となります。
 
 
 6. **[カスタム アクセスの追加]** ブレードで **[OK]** をクリックします。新しく追加されたグループは、関連付けられたアクセス許可と一緒に **[アクセス]** ブレードに一覧表示されます。
@@ -165,4 +174,4 @@ Azure Data Lake Store ファイル システムからセキュリティ グル�
 - [PowerShell で Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
 - [.NET SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

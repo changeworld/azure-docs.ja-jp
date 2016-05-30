@@ -3,7 +3,7 @@
 	description="Azure Blob Storage (WASB) に保存されている学習モデルをスコア付けする方法です。"
 	services="machine-learning"
 	documentationCenter=""
-	authors="bradsev"
+	authors="bradsev,deguhath,gokuma"
 	manager="paulettm"
 	editor="cgronlun" />
 
@@ -13,22 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="05/05/2016"
 	ms.author="deguhath;bradsev" />
 
 # Spark で構築した機械学習モデルのスコア付け 
 
 [AZURE.INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-
-## はじめに
-
 このトピックでは、Spark MLlib を使用して構築され、Azure Blob Storage (WASB) に保存された機械学習 (ML) モデルを読み込む方法と、やはり WASB に保存されているデータセットを使用してその機械学習モデルをスコア付けする方法を説明します。入力データを前処理し、MLlib ツールキットのインデックス機能とエンコード機能を使用して特徴を変換する方法と、ML モデルをスコア付けする際に入力として使用できるラベル付けされたポイント データ オブジェクトの作成方法を示します。スコア付けに使用するモデルには、線形回帰、ロジスティック回帰、ランダム フォレスト モデル、勾配ブースティング ツリー モデルなどがあります。
 
 
 ## 前提条件
 
-1. このチュートリアルを開始するには、Azure アカウントと HDInsight Spark クラスターが必要です。このチュートリアルの要件、チュートリアルで使用される NYC 2013 Taxi データの説明、Spark クラスターで Jupyter Notebook のコードを実行する方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](machine-learning-data-science-spark-overview.md)」を参照してください。このトピックのコード サンプルが収録されている **machine-learning-data-science-spark-model-consumption.ipynb** ノートブックは、[Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Python) で入手できます。
+1. Azure アカウントと HDInsight Spark が必要となります。このチュートリアルを実行するには HDInsight 3.4 Spark 1.6 クラスターが必要です。このチュートリアルの要件、チュートリアルで使用される 2013 年 NYC タクシー データの説明、Spark クラスターで Jupyter Notebook のコードを実行する方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](machine-learning-data-science-spark-overview.md)」をご覧ください。このトピックのコード サンプルが含まれた **machine-learning-data-science-spark-data-exploration-modeling.ipynb** ノートブックは、[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) で入手できます。
 
 2. ここでスコア付けする機械学習モデルは、「[Spark を使用したデータ探索とモデリング](machine-learning-data-science-spark-data-exploration-modeling.md)」のチュートリアルでも作成できます。
 
@@ -36,11 +33,11 @@
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
  
 
-## Spark の設定とデータおよびモデルの保存先ディレクトリ パスの設定 
+## セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
 
 Spark は Azure Storage Blob (WASB) の読み取りと書き込みを実行できます。そのため、そこに保存されている既存データはすべて Spark を使って処理でき、結果も再び WASB に保存できます。
 
-WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。Spark クラスターに接続されている既定のコンテナーは、*"wasb//"* で始まるパスを使って参照できます。次のコード サンプルでは、読み取るデータの場所と、モデルの出力の保存先となるモデル ストレージ ディレクトリのパスを指定しています。
+WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。Spark クラスターに接続されている既定のコンテナーは、*"wasb///"* で始まるパスを使用して参照できます。次のコード サンプルでは、読み取るデータの場所と、モデルの出力の保存先となるモデル ストレージ ディレクトリのパスを指定しています。
 
 
 ### WASB のストレージの場所となるディレクトリ パスの設定
@@ -49,7 +46,11 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 
 スコア付けの結果が保存されるのは、"wasb:///user/remoteuser/NYCTaxi/ScoredResults" です。フォルダーへのパスを正しく指定しなければ、このフォルダーには結果が保存されません。
 
->AZURE.NOTE: **machine-learning-data-science-spark-data-exploration-modeling.ipynb** ノートブックの最後のセルの出力からファイル パスの場所をコピーし、このコード内のプレースホルダーに貼り付けることができます。
+
+>[AZURE.NOTE] **machine-learning-data-science-spark-data-exploration-modeling.ipynb** ノートブックの最後のセルの出力からファイル パスの場所をコピーし、このコード内のプレースホルダーに貼り付けることができます。
+
+
+ディレクトリ パスを設定するコードを次に示します。
 
 	# LOCATION OF DATA TO BE SCORED (TEST DATA)
 	taxi_test_file_loc = "wasb://mllibwalkthroughs@cdspsparksamples.blob.core.windows.net/Data/NYCTaxi/JoinedTaxiTripFare.Point1Pct.Test.tsv";
@@ -76,10 +77,10 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 
 **出力:**
 
-datetime.datetime(2016, 4, 19, 17, 21, 28, 379845)
+datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
 
-### 必須ライブラリのインポートと Spark コンテキストの設定 
+### ライブラリのインポート
 
 次のコードを使用して、Spark コンテキストを設定し、必要なライブラリをインポートします。
 
@@ -88,6 +89,8 @@ datetime.datetime(2016, 4, 19, 17, 21, 28, 379845)
 	from pyspark import SparkConf
 	from pyspark import SparkContext
 	from pyspark.sql import SQLContext
+	import matplotlib
+	import matplotlib.pyplot as plt
 	from pyspark.sql import Row
 	from pyspark.sql.functions import UserDefinedFunction
 	from pyspark.sql.types import *
@@ -95,17 +98,22 @@ datetime.datetime(2016, 4, 19, 17, 21, 28, 379845)
 	from numpy import array
 	import numpy as np
 	import datetime
-	
-	# SET SPARK CONTEXT
-	sc = SparkContext(conf=SparkConf().setMaster('yarn-client'))
-	sqlContext = SQLContext(sc)
-	atexit.register(lambda: sc.stop())
-	
-	sc.defaultParallelism
 
-**出力:**
 
-4
+### プリセットの Spark コンテキストと PySpark マジック
+
+Jupyter Notebook で提供される PySpark カーネルは、コンテキストがあらかじめ設定されており、開発しているアプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。これらのカーネルは、既定で利用できます。各コンテキストは次のとおりです。
+
+- sc: Spark 用 
+- sqlContext: Hive 用
+
+PySpark カーネルには、"マジック"、つまり、%% で呼び出すことができる特別なコマンドがいくつか事前定義されています。そのようなコマンドが、以降のコード サンプルでは 2 つ使用されています。
+
+- **%%local** このコマンドを指定した場合、後続行のすべてのコードがローカルで実行されます。コードは有効な Python コードにする必要があります。
+- **%%sql -o <variable name>** sqlContext に対して Hive クエリを実行します。-o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
+ 
+
+Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前定義済みの "マジック" (%%local など) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。
 
 
 ## データの取り込みとクリーンなデータ フレームの作成
@@ -174,7 +182,7 @@ datetime.datetime(2016, 4, 19, 17, 21, 28, 379845)
 
 **出力:**
 
-Time taken to execute above cell: 15.36 seconds
+上記のセルの実行に要した時間: 46.37 秒
 
 
 ## Spark でスコア付けを行うためのデータの準備 
@@ -195,7 +203,7 @@ Time taken to execute above cell: 15.36 seconds
 	timestart = datetime.datetime.now()
 	
 	# LOAD PYSPARK LIBRARIES
-	from pyspark.ml.feature import OneHotEncoder, StringIndexer, VectorAssembler, OneHotEncoder, VectorIndexer
+	from pyspark.ml.feature import OneHotEncoder, StringIndexer, VectorAssembler, VectorIndexer
 	
 	# CREATE FOUR BUCKETS FOR TRAFFIC TIMES
 	sqlStatement = """
@@ -249,7 +257,7 @@ Time taken to execute above cell: 15.36 seconds
 
 **出力:**
 
-Time taken to execute above cell: 4.88 seconds
+上記のセルの実行に要した時間: 5.37 秒
 
 
 ### モデルに入力する特徴配列を含む RDD オブジェクトの作成
@@ -326,7 +334,7 @@ Time taken to execute above cell: 4.88 seconds
 
 **出力:**
 
-Time taken to execute above cell: 9.94 seconds
+上記のセルの実行に要した時間: 11.72 秒
 
 
 ## ロジスティック回帰モデルを利用したスコア付けと BLOB への出力の保存
@@ -360,7 +368,7 @@ Time taken to execute above cell: 9.94 seconds
 
 **出力:**
 
-Time taken to execute above cell: 32.46 seconds
+上記のセルの実行に要した時間: 19.22 秒
 
 
 ## 線形回帰モデルのスコア付け
@@ -377,7 +385,7 @@ Time taken to execute above cell: 32.46 seconds
 	#LOAD LIBRARIES​
 	from pyspark.mllib.regression import LinearRegressionWithSGD, LinearRegressionModel
 	
-	# LOAD MODEL AND SCORE USING ** SCALED VARIABLES **
+	# LOAD MODEL AND SCORE USING **SCALED VARIABLES**
 	savedModel = LinearRegressionModel.load(sc, linearRegFileLoc)
 	predictions = oneHotTESTregScaled.map(lambda features: (float(savedModel.predict(features))))
 	
@@ -395,7 +403,7 @@ Time taken to execute above cell: 32.46 seconds
 
 **出力:**
 
-Time taken to execute above cell: 25.00 seconds
+上記のセルの実行に要した時間: 16.63 秒
 
 
 ## 分類と回帰のランダム フォレスト モデルのスコア付け
@@ -443,7 +451,7 @@ Time taken to execute above cell: 25.00 seconds
 
 **出力:**
 
-Time taken to execute above cell: 52.2 seconds
+上記のセルの実行に要した時間: 31.07 秒
 
 
 ## 分類と回帰の勾配ブースティング ツリー モデルのスコア付け
@@ -463,7 +471,7 @@ Time taken to execute above cell: 52.2 seconds
 	#IMPORT MLLIB LIBRARIES
 	from pyspark.mllib.tree import GradientBoostedTrees, GradientBoostedTreesModel
 	
-	# CLASSIFICATION:LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+	# CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
 
 	#LOAD AND SCORE THE MODEL
 	savedModel = GradientBoostedTreesModel.load(sc, BoostedTreeClassificationFileLoc)
@@ -496,7 +504,8 @@ Time taken to execute above cell: 52.2 seconds
 	
 **出力:**
 
-Time taken to execute above cell: 27.73 seconds
+上記のセルの実行に要した時間: 14.6 秒
+
 
 ## メモリ内のオブジェクトのクリーンアップとスコア付けファイルの場所の出力
 
@@ -520,17 +529,17 @@ Time taken to execute above cell: 27.73 seconds
 
 **出力:**
 
-logisticRegFileLoc: LogisticRegressionWithLBFGS\_2016-04-1917\_22\_36.354603.txt
+logisticRegFileLoc: LogisticRegressionWithLBFGS\_2016-05-0317\_22\_38.953814.txt
 
-linearRegFileLoc: LinearRegressionWithSGD\_2016-04-1917\_23\_06.083178
+linearRegFileLoc: LinearRegressionWithSGD\_2016-05-0317\_22\_58.878949
 
-randomForestClassificationFileLoc: RandomForestClassification\_2016-04-1917\_23\_33.994108.txt
+randomForestClassificationFileLoc: RandomForestClassification\_2016-05-0317\_23\_15.939247.txt
 
-randomForestRegFileLoc: RandomForestRegression\_2016-04-1917\_24\_00.352683.txt
+randomForestRegFileLoc: RandomForestRegression\_2016-05-0317\_23\_31.459140.txt
 
-BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification\_2016-04-1917\_24\_21.465683.txt
+BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification\_2016-05-0317\_23\_49.648334.txt
 
-BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression\_2016-04-1917\_24\_32.371641.txt
+BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression\_2016-05-0317\_23\_56.860740.txt
 
 
 
@@ -538,9 +547,11 @@ BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression\_2016-04-1917\_24\_
 
 Spark には、Livy と呼ばれるコンポーネントを使用して、REST インターフェイス経由でバッチ ジョブや対話型クエリをリモートから送信できるメカニズムが備えられています。HDInsight Spark クラスターでは Livy が既定で有効になっています。Livy の詳細については、「[Livy を使用して Spark ジョブをリモートで送信する](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。
 
-Livy を使用して、Azure BLOB に格納されているファイルをバッチ処理でスコア付けし、結果を別の BLOB に書き込むジョブをリモートから送信できます。それには、[Github](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。**Microsoft Azure ストレージ エクスプローラー**や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。この例では、スクリプトを ***wasb:///example/python/ConsumeGBNYCReg.py*** にアップロードしています。
+Livy を使用して、Azure BLOB に格納されているファイルをバッチ処理でスコア付けし、結果を別の BLOB に書き込むジョブをリモートから送信できます。それには、[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。**Microsoft Azure Storage Explorer** や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。この例では、スクリプトを ***wasb:///example/python/ConsumeGBNYCReg.py*** にアップロードしています。
 
->AZURE.NOTE: 必要なアクセス キーは、Spark クラスターに関連付けられているストレージ アカウント用のポータルで見つけることができます。
+
+>[AZURE.NOTE] 必要なアクセス キーは、Spark クラスターに関連付けられているストレージ アカウント用のポータルで見つけることができます。
+
 
 このスクリプトをこの場所にアップロードすると、 Spark クラスター内の分散コンテキストでスクリプトが実行されます。スクリプトによってモデルが読み込まれ、モデルに基づいて入力ファイルに対して予測が実行されます。
 
@@ -553,7 +564,9 @@ Livy を使用して、Azure BLOB に格納されているファイルをバッ�
 
 Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実行することで、リモート システムから任意の言語を使って Spark ジョブを呼び出すことができます。
 
->AZURE.NOTE: この HTTP 呼び出しを実行するときには Python 要求ライブラリを使うと便利ですが、現在このライブラリは Azure Functions に既定でインストールされていません。そのため、従来の HTTP ライブラリが使用されます。
+
+>[AZURE.NOTE] この HTTP 呼び出しを実行するときには Python 要求ライブラリを使うと便利ですが、現在このライブラリは Azure Functions に既定でインストールされていません。そのため、従来の HTTP ライブラリが使用されます。
+
 
 この HTTP 呼び出しの Python コードを次に示します。
 
@@ -582,9 +595,9 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 	conn.close()
 
 
-この Python コードを [Azure Functions](../functions/) に追加することで、タイマー、BLOB の作成、BLOB の更新などのさまざまなイベントに基づいて BLOB をスコア付けする Spark ジョブの送信をトリガーできます。
+この Python コードを [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) に追加することで、タイマー、BLOB の作成、BLOB の更新などのさまざまなイベントに基づいて BLOB をスコア付けする Spark ジョブの送信をトリガーできます。
 
-コードを使用しないクライアント エクスペリエンスを実現するには、[Azure Logic Apps](../app-service/logic/) を使用し、**Logic Apps デザイナー**で HTTP 操作を定義してそのパラメーターを設定することで、Spark バッチ スコアリングを呼び出します。
+コードを使用しないクライアント エクスペリエンスを実現するには、[Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) を使用し、**Logic Apps デザイナー**で HTTP 操作を定義してそのパラメーターを設定することで、Spark バッチ スコアリングを呼び出します。
 
 - Azure ポータルで、**[新規]**、**[Web + モバイル]**、**[Logic App]** の順に選択して、新しいロジック アプリを作成します。 
 - ロジック アプリと App Service プランの名前を入力して、**Logic Apps デザイナー**を起動します。
@@ -592,4 +605,9 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 
 ![](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
 
-<!---HONumber=AcomDC_0420_2016-->
+
+## 次の手順 
+
+**クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)」を参照してください。
+
+<!---HONumber=AcomDC_0518_2016-->

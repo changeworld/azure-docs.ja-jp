@@ -1,6 +1,6 @@
 <properties
-	pageTitle="アーティファクトを含む VM の DevTest ラボへの追加 | Microsoft Azure"
-	description="アーティファクトを含む VM を DevTest ラボに追加する方法について説明します。"
+	pageTitle="アーティファクトを含む VM をラボに追加する | Microsoft Azure"
+	description="アーティファクトを含む VM を DevTest ラボに追加する方法について説明します"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/21/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
-# アーティファクトを含む VM の DevTest ラボへの追加
+# アーティファクトを含む VM をラボに追加する
 
-> [AZURE.NOTE] この記事の付属のビデオを表示するには、次のリンクをクリックします。[How to create VMs with artifacts in a DevTest Lab](/documentation/videos/how-to-create-vms-with-artifacts-in-a-devtest-lab) (DevTest ラボでアーティファクトを含む VM を作成する方法)
+> [AZURE.NOTE] この記事の付属のビデオを表示するには、次のリンクをクリックします。[How to create VMs with artifacts in a lab](/documentation/videos/how-to-create-vms-with-artifacts-in-a-devtest-lab) (ラボでアーティファクトを含む VM を作成する方法)
 
 ## 概要
 
-[カスタム イメージ](./devtest-lab-create-template.md)または Marketplace イメージのいずれかである基本イメージから、DevTest ラボで VM を作成します。
+[カスタム イメージ](./devtest-lab-create-template.md)、[数式](./devtest-lab-manage-formulas.md)、または [Marketplace イメージ](./devtest-lab-configure-marketplace-images.md)のいずれかである*ベース*から、ラボで VM を作成します。
 
-DevTest ラボ*アーティファクト*を使用すると、VM の作成時に実行される*アクション*を指定できます。
+DevTest ラボ *アーティファクト*を使用すると、VM の作成時に実行される*アクション*を指定できます。
 
 アーティファクトのアクションでは、Windows PowerShell スクリプトや Bash コマンドの実行、ソフトウェアのインストールなどの手順を実行することができます。
 
@@ -34,23 +34,19 @@ DevTest ラボ*アーティファクト*を使用すると、VM の作成時に�
 
 ## アーティファクトを含む VM の追加
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
 1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
 
 1. ラボの一覧で、新しい VM を作成するラボをタップします。
 
-1. ラボのブレードで、次の図に示す **[+ ラボ VM]** をタップします。![DevTest lab home blade](./media/devtest-lab-add-vm-with-artifacts/devtestlab-home-blade-add-vm.png)
+1. ラボのブレードで、次の図に示す **[+ ラボ VM]** をタップします。![[+ ラボ VM] ボタン](./media/devtest-lab-add-vm-with-artifacts/devtestlab-home-blade-add-vm.png)
+
+1. **[Choose a base]** (ベースの選択) ブレードで、VM のベースを選択します。
 
 1. **[ラボ VM]** ブレードで、**[ラボ VM 名]** ボックスに新しい仮想マシンの名前を入力します。
 
-1. **[基本 / 必要な設定の構成]** をタップし、VM の基本イメージを選択します。
-
-    ![Lab VM settings](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-lab-vm-blade-1.png)
-
-1. 基本イメージを選択して **[OK]** をタップすると、**[ラボ VM]** ブレードが展開して、 **[ユーザー名]**、**[認証の種類]** (選択したベースの OS の種類が Linux の場合)、および **[パスワード]** (認証の種類が*パスワード*である場合) を含むユーザー アカウント情報を指定するための UI 要素が含まれます。
-
-    ![Expanded Lab VM blade](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-lab-vm-blade-2.png)
+	![[ラボ VM] ブレード](./media/devtest-lab-add-vm-with-artifacts/devtestlab-lab-vm-blade.png)
 
 1. **[ユーザー名]** に、仮想マシンの管理者特権を付与するユーザー名を入力します。
 
@@ -64,9 +60,11 @@ DevTest ラボ*アーティファクト*を使用すると、VM の作成時に�
 
 1. **[サブネット]** をタップして、サブネットを選択します。
 
-1. ラボのポリシーが選択したサブネットでパブリック IP アドレスを許可するように設定されている場合は、**[はい]** または **[いいえ]** を選択して IP アドレスをパブリックにするかどうかを指定します。パブリック IP アドレスを許可するように設定されていない場合、このオプションは無効であり、**[いいえ]** として選択されます。
+1. ラボのポリシーが選択したサブネットでパブリック IP アドレスを許可するように設定されている場合は、**[はい]** または **[いいえ]** を選択して IP アドレスをパブリックにするかどうかを指定します。それ以外の場合、このオプションは無効になっており、**[いいえ]** が選択されています。
 
 1. **[アーティファクト]** をタップし、アーティファクトの一覧から基本イメージに追加するアーティファクトを選択して構成します。**注:** DevTest ラボやアーティファクトの構成に関する経験がない場合は、「[既存のアーティファクトの VM への追加](#add-an-existing-artifact-to-a-vm)」セクションに進み、終了してからここに戻ってください。
+
+1. ARM テンプレートを表示またはコピーする場合は、「[ARM テンプレートの保存](#save-arm-template)」セクションに進み、終了してからここに戻ってください。
 
 1. **[作成]** をタップして、指定した VM をラボに追加します。
 
@@ -76,7 +74,7 @@ DevTest ラボ*アーティファクト*を使用すると、VM の作成時に�
 
 ## 既存のアーティファクトの VM への追加
 
-VM を作成するときに、既存のアーティファクトを追加できます。各ラボには、パブリック DevTest ラボ アーティファクト リポジトリのアーティファクトと、独自のアーティファクト リポジトリに作成または追加されたアーティファクトが含まれます。アーティファクトの作成方法については、「[Learn how to author your own artifacts for use with DevTest Labs](devtest-lab-artifact-author.md)」 (DevTest ラボで使用するために独自のアーティファクトを作成する方法) の記事を参照してください。
+VM を作成するときに、既存のアーティファクトを追加できます。各ラボには、パブリック DevTest ラボ アーティファクト リポジトリのアーティファクトと、独自のアーティファクト リポジトリに作成または追加されたアーティファクトが含まれます。アーティファクトの作成方法については、「[DevTest ラボ VM のカスタム アーティファクトの作成](devtest-lab-artifact-author.md)」の記事を参照してください。
 
 1. **[ラボ VM]** ブレードで、**[アーティファクト]** をタップします。 
 
@@ -90,7 +88,7 @@ VM を作成するときに、既存のアーティファクトを追加でき�
 
 1. VM に必要なアーティファクトを引き続き追加します。
 
-1. アーティファクトを追加すると、[アーティファクトの実行順序の変更](#change-the-order-in-which-artifacts-are-run)を行うことができます。[アーティファクトの表示または変更](#view-or-modify-an-artifact)に戻ることもできます。
+1. アーティファクトを追加したら、[アーティファクトの実行順を変更する](#change-the-order-in-which-artifacts-are-run)ことができます。[アーティファクトの表示または変更](#view-or-modify-an-artifact)に戻ることもできます。
 
 ## アーティファクトの実行順序の変更
 
@@ -118,9 +116,28 @@ VM を作成するときに、既存のアーティファクトを追加でき�
 
 1. **[OK]** をタップして、**[選択されたアーティファクト]** ブレードを閉じます。
 
+## ARM テンプレートの保存
+
+ARM テンプレートでは、反復可能なデプロイを定義する宣言的な方法が提供されます。次の手順では、作成される VM の ARM テンプレートを保存する方法について説明します。保存した ARM テンプレートで、[Azure PowerShell を使用して新しい VM をデプロイする](../resource-group-overview/#template-deployment)ことができます。
+
+1. **[ラボ VM]** ブレードで、**[ARM テンプレートの表示]** をタップします。
+
+1. **[Azure Resource Manager テンプレートの表示]** ブレードで、すべてのテンプレート テキストを選択します。
+
+1. 選択したテキストをクリップボードにコピーします。
+
+1. **[OK]** をタップして、**[Azure Resource Manager テンプレートの表示]** ブレードを閉じます。
+
+1. テキスト エディターを開きます。
+
+1. クリップボードからテンプレート テキストを貼り付けます。
+
+1. 後で使用するためにファイルを保存します。
+
 ## 次のステップ
 
 - VM が作成されたら、VM のブレードで **[接続]** をタップして VM に接続できます。
-- アーティファクトの作成方法については、「[Learn how to author your own artifacts for use with DevTest Labs](devtest-lab-artifact-author.md)」 (DevTest ラボで使用するために独自のアーティファクトを作成する方法) の記事を参照してください。
+- [DevTest ラボ VM のカスタム アーティファクトの作成](devtest-lab-artifact-author.md)方法を学習します。
+- [DevTest ラボ ARM のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)を調べます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

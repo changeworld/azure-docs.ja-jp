@@ -5,7 +5,8 @@
    documentationCenter="dev-center-name" 
    authors="coreyp-at-msft" 
    manager="stevenka" 
-   editor="tysonn"/>
+   editor="tysonn"
+   keywords="powershell dsc, 必要な状態の構成, powershell dsc azure"/>
 
 <tags
    ms.service="automation"
@@ -13,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="TBD" 
-   ms.date="04/29/2016"
-   ms.author="coreyp"/>
+   ms.date="05/10/2016"
+   ms.author="magoedte;coreyp"/>
 
 # Azure Automation DSC の概要 #
 
@@ -98,6 +99,8 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 ##認識されている既知の問題##
 
+- WMF 5 RTM にアップグレードするときに、コンピューターが Azure Automation DSC のノードとして既に登録されている場合は、Azure Automation DSC からノードの登録を解除し、WMF 5 RTM のアップグレード後に再登録してください。
+
 - 現時点では、Azure Automation DSC では部分的または複合 DSC 構成はサポートされていません。ただし、DSC の複合リソースをインポートし、構成の再利用を有効にしてローカル PowerShell と同様に使用することができます。
 
 - Windows 用 PowerShell DSC エージェントを Azure Automation と通信できるようにするには、最新バージョンの WMF 5 をインストールする必要があります。Linux を Azure Automation と通信できるようにするには、最新バージョンの Linux 用 PowerShell DSC エージェントをインストールする必要があります。
@@ -112,11 +115,9 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - 登録すると、各ノードは、1 年後に有効期限が切れる認証用の一意の証明書を自動的にネゴシエートします。現時点では、PowerShell DSC 登録プロトコルは、有効期限が近づいたときに証明書を自動的に更新することはできないため、1 年後にノードを再登録する必要があります。再登録する前に、各ノードで Windows Management Framework 5.0 RTM が実行されていることを確認します。ノードの認証証明書の有効期限が切れるときにノードが再登録されない場合、ノードは Azure Automation と通信できなくなり、[反応なし] とマークされます。 再登録は、ノードを初めて登録したのと同じ方法で実行されます。証明書の有効期限が切れる 90 日以内または証明書の有効期限が切れた後で再登録を実行すると、新しい証明書が生成されて使用されます。
 
-- WMF 5 RTM にアップグレードするときに、コンピューターが Azure Automation DSC のノードとして既に登録されている場合は、Azure Automation DSC からノードの登録を解除し、WMF 5 RTM のアップグレード後に再登録してください。再登録する前に、`$env:windir\system32\configuration\DSCEngineCache.mof` ファイルを削除します。
+- WMF 5 RTM にアップグレードするときに、コンピューターが Azure Automation DSC のノードとして既に登録されている場合は、Azure Automation DSC からノードの登録を解除し、WMF 5 RTM のアップグレード後に再登録してください。再登録する前に、$env:windir\\system32\\configuration\\DSCEngineCache.mof を削除します。
 
 - PowerShell DSC コマンドレットは、WMF 5 RTM が WMF 5 Production Preview の上にインストールされている場合は機能しないことがあります。これを解決するには、管理者特権の PowerShell セッションで次のコマンドを実行します (管理者として実行)。`mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`
-
-- コンピューターで以前に WMF 4 PowerShell DSC の機能を使用していた場合、Azure Automation DSC からこのコンピューターに構成情報を取得しようとすると、"解読に失敗しました" という例外が表示されて失敗します。これを解決するには、次のファイルを削除し、Azure Automation DSC にコンピューターを再登録します。`$env:windir\system32\configuration\Current.mof`、`$env:windir\system32\configuration\DSCEngineCache.mof`、`$env:windir\system32\configuration\DSCStatusHistory.mof`
  
 
 ##関連記事##
@@ -127,4 +128,4 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 - [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 - [Azure Automation DSC と Chocolatey を使用した IaaS VM への継続的なデプロイ](automation-dsc-cd-chocolatey.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

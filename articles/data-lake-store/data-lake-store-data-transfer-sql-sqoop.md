@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="02/29/2016"
+   ms.date="05/11/2016"
    ms.author="nitinme"/>
 
 # Sqoop を使用して Data Lake Store と Azure SQL Database の間でデータをコピーする
@@ -37,9 +37,13 @@ Apache Sqoop を使用して Azure SQL Database と Data Lake Store の間でデ
 - Data Lake Store アカウントにアクセスできる **Azure HDInsight クラスター**「[Data Lake Store で HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。この記事では、Data Lake Store にアクセスできる HDInsight Linux クラスターがあることを前提とします。
 - **Azure SQL Database**。Azure SQL Database の作成方法については、[Azure SQL Database の作成](../sql-database/sql-database-get-started.md)に関するページをご覧ください。
 
+## ビデオで速習する
+
+DistCp を使用して Azure Storage BLOB と Data Lake Store の間でデータをコピーする方法については、[こちらのビデオ](https://mix.office.com/watch/1butcdjxmu114)をご覧ください。
+
 ## Azure SQL Database にサンプル テーブルを作成する
 
-1. 最初に、Azure SQL Database で 2 つのサンプル テーブルを作成します。[SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) または Visual Studio を使用して、Azure SQL Database に接続して次のクエリを実行します。
+1. 最初に、Azure SQL Database で 2 つのサンプル テーブルを作成します。[SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) または Visual Studio を使用して、Azure SQL Database に接続してから次のクエリを実行します。
 
 	**Table1 の作成**
 
@@ -88,14 +92,14 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
 
 ### Azure SQL Database から Data Lake Store にデータをインポートする
 
-3. Sqoop パッケージを利用できるディレクトリに移動します。通常、このディレクトリは `/usr/hdp/<version>/sqoop/bin` にあります。 
+3. Sqoop パッケージを利用できるディレクトリに移動します。通常、これは `/usr/hdp/<version>/sqoop/bin` にあります。 
 
 4. **Table1** から Data Lake Store アカウントにデータをインポートします。次の構文を使用します。
 
 		
 		sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-store-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-	なお、**sql-database-server-name** プレースホルダーは、Azure SQL Database が実行されているサーバー名前を表します。**sql-database-name** プレース ホルダーは、実際のデータベース名を表します。
+	**sql-database-server-name** プレースホルダーは、Azure SQL Database が実行されているサーバーの名前を表していることに注意してください。**sql-database-name** プレース ホルダーは、実際のデータベース名を表します。
 
 	たとえば、次のように入力します。
 
@@ -131,7 +135,7 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
 		
 		sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=nitinme@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlstore.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-6. SQL Database テーブルにデータがアップロードされていることを確認します。[SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) または Visual Studio を使用して、Azure SQL Database に接続して次のクエリを実行します。
+6. SQL Database テーブルにデータがアップロードされていることを確認します。[SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) または Visual Studio を使用して、Azure SQL Database に接続してから次のクエリを実行します。
 
 		
 		SELECT * FROM TABLE2
@@ -152,4 +156,4 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

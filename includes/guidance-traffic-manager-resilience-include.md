@@ -1,7 +1,7 @@
-##Highly available solutions with Azure traffic manager
+##Azure Traffic Manager での高可用性ソリューション
 
-You need to determine whether your workload's high availability requirements can be met by using Azure traffic manager alone, or if you need to combine traffic manager with other DNS solutions, or processes. Depending on your needs, you can use:
+Azure Traffic Manager を単独で使用してワークロードの高可用性の要件を満たすことができるのか、または他の DNS ソリューションやプロセスとトラフィック マネージャーを組み合わせる必要があるかどうかを確認する必要があります。ニーズに応じて、以下のサービスを使用できます。
 
-- **Traffic manager alone**. If a 99.99% up time is sufficient for your workload, you can use traffic manager by itself. In the event of failure in the traffic manager service, users will not be able to access your workload until the traffic manager service is reestablished.
+- **Traffic Manager 単独**。ワークロードにとって 99.99% の稼働時間で十分であれば、Traffic Manager を単独で使用できます。Traffic Manager サービスで障害が発生した場合、Traffic Manager サービスが再び確立されるまでユーザーはワークロードにアクセスできません。
 
-- **Use another traffic manager solution along with Azure traffic manager**. In the event of failure in the traffic manager service, you can change your CNAME record to point to the other traffic manager service. Access to your workload is still available, and distributed to all locations hosting your workload. This is the most expensive solution, but may be required for workloads that need a higher SLA.
+- **Azure Traffic Manager と別のトラフィック マネージャー ソリューションを併用する**。Traffic Manager サービスで障害が発生した場合、別のトラフィック マネージャー サービスを参照するように CNAME レコードを変更できます。ワークロードへのアクセスは引き続き使用可能であり、ワークロードをホストしているすべての場所に分散されます。これは最も高価なソリューションですが、より高度な SLA が必要なワークロードでは要求される場合があります。

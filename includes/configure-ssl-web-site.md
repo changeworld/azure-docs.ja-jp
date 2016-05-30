@@ -455,6 +455,7 @@ Visual Studio がインストールされている Windows システムからテ
 >
 > 2. ドメイン名レジストラーから提供されるツールを使用して、前の手順の IP アドレスを指定するようにカスタム ドメイン名用の A レコードを変更します。
 
+> [AZURE.NOTE] IP SSL が Web アプリに対して有効になったらすぐに別の証明書に **SNI バインド**が既にある Web アプリに **IP ベースの SSL** を追加した場合、その IP アドレスに対するサイトのホスト名が再マッピングされます。このため、任意の他のホスト名がそのサイトのホスト名に CNAME された場合、IP SSL アドレス上でのトラフィックも取得されます。このような場合に備えて、DNS エントリを 1 つ追加しました: sni.&lt;nameofyourWebApp&gt;.azurewebsites.net。ここで、&lt;nameofyourWebApp&gt; は、Azure App Service Web アプリの名前です。したがって、SNI バインドで使用される名前をポイントする DNS レコードを、河原に sni.&lt;nameofyourWebApp&gt;.azurewebsites.net をポイントするように変更する必要があります。
 
 ここで、証明書が正しく構成されていることを確認するために、`HTTP://` ではなく `HTTPS://` を使用してアプリを参照できます。
 
@@ -563,5 +564,3 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 [certwiz2]: ./media/configure-ssl-web-site/waws-certwiz2.png
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
-
-<!---HONumber=AcomDC_0323_2016-->

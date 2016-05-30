@@ -37,7 +37,9 @@ HDInsight クラスターでサポートされている Sqoop のバージョン
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure PowerShell を実行できるワークステーション**。「[Install Azure PowerShell 1.0 and greater (Azure PowerShell 1.0 以上のインストール)](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」をご覧ください。
+- **Azure PowerShell を実行できるワークステーション**。
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 ##シナリオの理解
 
@@ -72,7 +74,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
 ## クラスターと SQL Database を作成します。
 
-ここでは、Azure ポータルと ARM テンプレートを使用してチュートリアルを実行するために、クラスターと SQL データベース スキーマを作成する方法を説明します。Azure PowerShell を使用する場合は、[付録 A](#appendix-a---a-powershell-sample) をご覧ください。
+ここでは、Azure ポータルと ARM テンプレートを使用してチュートリアルを実行するために、クラスターと SQL データベース スキーマを作成する方法を説明します。Azure PowerShell を使用する場合は、「[付録 A](#appendix-a---a-powershell-sample)」を参照してください。
 
 1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。         
 
@@ -127,7 +129,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
         * SQL Server を Azure 仮想マシンで使用する際に、SQL Server をホストする仮想マシンが HDInsight と同じ仮想ネットワークに属している場合は、任意の仮想ネットワーク構成を使用できます。
 
-    * 仮想ネットワークに HDInsight クラスターを作成する場合は、[カスタム オプションを使用した HDInsight での Hadoop クラスターの作成](hdinsight-provision-clusters.md)に関するページをご覧ください。
+    * 仮想ネットワークに HDInsight クラスターを作成する場合は、「[HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-provision-clusters.md)」を参照してください。
 
     > [AZURE.NOTE] SQL Server では認証を許可する必要もあります。この記事の手順を実行するには、SQL Server ログインを使用する必要があります。
 
@@ -209,7 +211,7 @@ PowerShell のサンプルでは、次の手順を実行します。
 	> [AZURE.NOTE] 接続文字列情報を除き、このセクションの手順は、Azure SQL データベースまたは SQL Server で動作します。これらの手順は次の構成を使用してテスト済みです。
 	>
 	> * **Azure Virtual Network ポイント対サイト構成**: HDInsight クラスターをプライベート データセンター内の SQL Server に接続する仮想ネットワーク。詳細については、「[管理ポータルでのポイント対サイト VPN の構成](../vpn-gateway/vpn-gateway-point-to-site-create.md)」を参照してください。
-	> * **Azure HDInsight 3.1**: 仮想ネットワークでのクラスターの作成については、[カスタム オプションを使用した HDInsight での Hadoop クラスターの作成](hdinsight-provision-clusters.md)に関するページをご覧ください。
+	> * **Azure HDInsight 3.1**: 仮想ネットワークでのクラスターの作成については、「[HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-provision-clusters.md)」を参照してください。
 	> * **SQL Server 2014**: 仮想ネットワークに安全に接続するために、認証と、VPN クライアント構成パッケージの実行を許可する構成。
 
 7. Azure SQL Database に Hive テーブルをエクスポートします。
@@ -624,7 +626,7 @@ PowerShell のサンプルでは、次の手順を実行します。
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
 
-[sqldatabase-get-started]: ../sql-database-get-started.md
+[sqldatabase-get-started]: ../sql-database/sql-database-get-started.md
 [sqldatabase-create-configue]: ../sql-database-create-configure.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
@@ -633,4 +635,4 @@ PowerShell のサンプルでは、次の手順を実行します。
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

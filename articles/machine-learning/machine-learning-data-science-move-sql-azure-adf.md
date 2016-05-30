@@ -3,11 +3,9 @@
 	description="オンプレミスとクラウド内のデータベース間で毎日同時にデータを移動する 2 つのデータ移行アクティビティを構成する ADF パイプラインを設定します。"
 	services="machine-learning"
 	documentationCenter=""
-	authors="fashah"
-	manager="jacob.spoelstra"
-	editor=""
-	videoId=""
-	scriptId="" />
+	authors="bradsev"
+	manager="paulettm"
+	editor="cgronlun" />
 
 <tags
 	ms.service="machine-learning"
@@ -15,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
+	ms.date="05/10/2016"
 	ms.author="fashah;bradsev" />
 
 
@@ -27,6 +25,7 @@
 
 [AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
+
 ## <a name="intro"></a>概要: ADF の説明とデータの移行に ADF を使用するべきタイミング
 
 Azure Data Factory は、データの移動や変換を調整し自動化する、完全に管理されたクラウドベースのデータ統合サービスです。ADF モデルにおける主要な概念は、パイプラインです。パイプラインはアクティビティの論理グループで、それぞれがデータセットに含まれているデータに対して実行するアクションを定義します。リンクされたサービスは、Data Factory がデータ リソースに接続するために必要な情報を定義するために使用されます。
@@ -34,6 +33,7 @@ Azure Data Factory は、データの移動や変換を調整し自動化する�
 ADF を使用すると、既存のデータ処理サービスを、可用性が高く、クラウドで管理されるデータ パイプラインに組み込むことができます。これらのデータ パイプラインは、データの取り込み、準備、変換、分析、および発行のためのスケジュールが設定できます。ADF が複雑なデータと処理の依存関係をすべて管理して調整します。増加するオンプレミスのデータ ソースとクラウドのデータ ソースを接続するソリューションをクラウド内で迅速に構築してデプロイすることができます。
 
 オンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオで、継続的にデータを移行する必要がある場合、および移行の過程で、データを処理する場合や、データに変更を加えたりビジネス ロジックを付加したりする必要がある場合には、ADF の使用を検討してください。ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。ADF には他にも、複雑な操作のサポートなどの機能があります。詳細については、[Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/) にあるドキュメントを参照してください。
+
 
 ## <a name="scenario"></a>シナリオ
 
@@ -55,6 +55,7 @@ ADF を使用すると、既存のデータ処理サービスを、可用性が�
 
 > [AZURE.NOTE] この手順では、[Azure ポータル](https://ms.portal.azure.com/)を使用します。
 
+
 ##<a name="upload-data"></a>オンプレミスの SQL Server にデータをアップロードする
 
 [NYC タクシー データセット](http://chriswhong.com/open-data/foil_nyc_taxi/)を使用して、移行プロセスを説明します。NYC タクシー データセットは、記事に記載されているように、Azure BLOB ストレージの [NYC タクシー データ](http://www.andresmh.com/nyctaxitrips/)から入手できます。データには、乗車の詳細を含む trip\_data.csv ファイルと、乗車ごとの料金の詳細を含む trip\_far.csv ファイルの 2 つのファイルがあります。これらのファイルのサンプルと説明は、「[NYC タクシー乗車データセットの説明](machine-learning-data-science-process-sql-walkthrough.md#dataset)」にあります。
@@ -62,9 +63,11 @@ ADF を使用すると、既存のデータ処理サービスを、可用性が�
 
 ここに示されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。NYC タクシー データセットを自身のオンプレミスの SQL Server データベースにアップロードするには、「[SQL Server データベースにデータを一括インポートする](machine-learning-data-science-process-sql-walkthrough.md#dbload)」に記載されている手順に従います。これらは Azure Virtual Machine 上の SQL Server にアップロードする手順ですが、オンプレミスの SQL Server へのアップロード手順も同じです。
 
+
 ##<a name="create-adf"></a>Azure Data Factory を作成する
 
 [Azure ポータル](https://ms.portal.azure.com/)に新しい Azure Data Factory とリソース グループを作成するための手順については、「[Azure Data Factory を作成する](../data-factory/data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory)」を参照してください。新しい ADF インスタンスに *adfdsp* という名前を付け、作成されたリソース グループに *adfdsprg* という名前を付けます。
+
 
 ## Data Management Gateway をインストールして構成する
 
@@ -208,6 +211,7 @@ Azure SQL Database 用にリンクされたサービスを作成するには、A
 
 	New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json  
 
+
 ##<a name="adf-pipeline"></a>パイプラインを作成して定義する
 
 次のスクリプトベースの手順に従って、パイプラインに属するアクティビティを指定し、パイプラインを作成します。パイプラインのプロパティを定義するため、JSON ファイルを使用します。
@@ -294,6 +298,7 @@ Azure クラシック ポータルで (図をクリックすると) ADF 上に�
 
 ![](media/machine-learning-data-science-move-sql-azure-adf/DJP1kji.png)
 
+
 ##<a name="adf-pipeline-start"></a>パイプラインを開始する
 これで、次のコマンドを使用してパイプラインを実行できます。
 
@@ -305,4 +310,4 @@ Azure クラシック ポータルで (図をクリックすると) ADF 上に�
 
 ADF が提供するデータを段階的にパイプ処理する機能をまだ活用していないことに注意してください。これを行う方法と ADF が提供するその他の機能の詳細については、[ADF のドキュメント](https://azure.microsoft.com/services/data-factory/)を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

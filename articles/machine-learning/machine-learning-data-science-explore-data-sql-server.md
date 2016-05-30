@@ -13,12 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="fashah;garye;bradsev" />
 
 #Azure の SQL Server Virtual Machine に格納されているデータを探索する
 
-##はじめに
 
 このドキュメントでは、Azure の SQL Server VM に格納されているデータを探索する方法について説明します。これは、SQL を使用してデータを処理するか、Python などのプログラミング言語を使用して実行できます。
 
@@ -76,4 +75,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

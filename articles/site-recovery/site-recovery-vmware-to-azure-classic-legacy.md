@@ -19,8 +19,9 @@
 # Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする (旧)
 
 > [AZURE.SELECTOR]
-- [拡張](site-recovery-vmware-to-azure-classic.md)
-- [レガシ](site-recovery-vmware-to-azure-classic-legacy.md)
+- [Azure ポータル](site-recovery-vmware-to-azure.md)
+- [クラシック ポータル](site-recovery-vmware-to-azure-classic.md)
+- [クラシック ポータル (レガシ)](site-recovery-vmware-to-azure-classic-legacy.md)
 
 
 Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
@@ -29,10 +30,10 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 この記事では、次の方法について説明します。
 
-- **VMware 仮想マシンを Azure にレプリケートする** - Site Recovery をデプロイして、オンプレミス VMware 仮想マシンから Azure Storage へのレプリケーション、フェールオーバー、および復旧を調整します。
-- **物理サーバーを Azure にレプリケートする** - Azure Site Recovery をデプロイして、Windows および Linux オンプレミス物理サーバーから Azure へのレプリケーション、フェールオーバー、および復旧を調整します。
+- **VMware 仮想マシンを Azure にレプリケートする** - Site Recovery をデプロイして、オンプレミス VMware 仮想マシンから Azure Storage へのレプリケーション、フェールオーバー、復旧を調整します。
+- **物理サーバーを Azure にレプリケートする** - Azure Site Recovery をデプロイして、Windows/Linux オンプレミス物理サーバーから Azure へのレプリケーション、フェールオーバー、復旧を調整します。
 
->[AZURE.NOTE] この記事で説明されているシナリオには、**レガシの手順**が含まれています。新しいデプロイでは、この記事に従わないでください。代わりに、クラシック ポータル用の[強化されたデプロイ](site-recovery-vmware-to-azure-classic.md)の手順を使用してください。既に、この記事で説明されている方法でデプロイした場合は、以下の説明に従って新しいバージョンに移行することをお勧めします。
+>[AZURE.NOTE] この記事で説明するシナリオには、**従来の手順**が含まれています。新しいデプロイでは、この記事に従わないでください。代わりに、クラシック ポータル用の[強化されたデプロイ](site-recovery-vmware-to-azure-classic.md)の手順を使用してください。既に、この記事で説明されている方法でデプロイした場合は、以下の説明に従って新しいバージョンに移行することをお勧めします。
 
 
 ## 強化されたデプロイへの移行
@@ -50,17 +51,17 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 開始する前に、次のことに注意してください。
 
 - 強化されたデプロイに移行するためのメンテナンス期間を計画することをお勧めします。
-- **[コンピューターの移行]** オプションは、従来のデプロイ中に作成された既存の保護グループがある場合にのみ使用できます。
+- **[コンピューターの移行]** オプションは、従来のデプロイ時に作成された既存の保護グループがある場合にのみ使用できます。
 - 移行手順の完了後、資格情報の更新と、保護グループに追加するための仮想マシンの検出および更新に、15 分以上かかることがあります。待機する代わりに、手動で更新することもできます。 
 
 移行手順は、次のとおりです。
 
-1. [強化された機能](site-recovery-vmware-to-azure-classic.md#enhanced-deployment)について読み、新しい[アーキテクチャ](site-recovery-vmware-to-azure-classic.md#scenario-architecture)をしっかり理解して、強化されたデプロイの[前提条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)を確認します。
+1. [強化された機能](site-recovery-vmware-to-azure-classic.md#enhanced-deployment)について読み、新しい[アーキテクチャ](site-recovery-vmware-to-azure-classic.md#scenario-architecture)を必ず理解し、強化されたデプロイの[前提条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)を確認します。
 2. 現在保護しているマシンからモビリティ サービスをアンインストールします。新しい保護グループにマシンを追加すると、そのマシンに新しいバージョンのモビリティ サービスがインストールされます。
-3. [コンテナー登録キー](site-recovery-vmware-to-azure-classic.md#step-4-download-a-vault-registration-key)を取得し、[統合セットアップ ウィザードを実行](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)して、構成サーバー、プロセス サーバー、およびマスター ターゲット サーバーのコンポーネントを管理サーバーにインストールします。[容量計画](site-recovery-vmware-to-azure-classic.md#capacity-planning)についての詳細情報をお読みください。
-4. VMware vCenter サーバーがある場合は、アクセスするための[資格情報をセットアップ](site-recovery-vmware-to-azure-classic.md#step-6-set-up-credentials-for-the-vcenter-server)して、Site Recovery が管理対象の VM を自動的に検出できるようにします。[必要なアクセス許可](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)についての詳細情報をお読みください。
+3. [コンテナー登録キー](site-recovery-vmware-to-azure-classic.md#step-4-download-a-vault-registration-key)を取得し、[統合セットアップ ウィザードを実行](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)して、構成サーバー、プロセス サーバー、およびマスター ターゲット サーバーのコンポーネントを管理サーバーにインストールします。キャパシティ プランニングの詳細については、[こちら](site-recovery-vmware-to-azure-classic.md#capacity-planning)をご覧ください。
+4. VMware vCenter サーバーがある場合は、サーバーにアクセスするための[資格情報を設定](site-recovery-vmware-to-azure-classic.md#step-6-set-up-credentials-for-the-vcenter-server)し、Site Recovery が管理対象の VM を自動的に検出できるようにします。必要なアクセス許可の詳細については、[こちら](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)をご覧ください。
 5. [vCenter サーバーまたは ESXi ホスト](site-recovery-vmware-to-azure-classic.md#step-7-add-vcenter-servers-and-esxi-hosts)を追加します。ポータルを更新して資格情報を表示するまでに、最大で 15 分かかる場合があります。
-6. [新しい保護グループ](site-recovery-vmware-to-azure-classic.md#step-8-create-a-protection-group)を作成します。ポータルを更新し、仮想マシンを検出して表示するまでに、最大で 15 分かかる場合があります。待機しない場合は、管理サーバー名を強調表示し (クリックせずに)、**[更新]** を選択します。
+6. [新しい保護グループ](site-recovery-vmware-to-azure-classic.md#step-8-create-a-protection-group)を作成します。ポータルを更新し、仮想マシンを検出して表示するまでに、最大で 15 分かかる場合があります。ポータルをすぐに更新する場合は、管理サーバー名を強調表示し (クリックしないでください)、**[更新]** をクリックします。
 7. 新しい保護グループの下の **[コンピューターの移行]** をクリックします。
 
 	![アカウントの追加](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration1.png)
@@ -68,7 +69,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 8. **[コンピューターの選択]** で、移行元の保護グループと、移行するマシンを選択します。
 
 	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration2.png)
-9. **[ターゲット設定の構成]** で、すべてのマシンに同じ設定を使用するかどうかを指定し、プロセス サーバーと Azure ストレージ アカウントを選択します。単一の管理サーバーをセットアップした場合、プロセス サーバーはその管理サーバーの IP アドレスになります。
+9. **[ターゲット設定の構成]** で、すべてのマシンに同じ設定を使用するかどうかを指定し、プロセス サーバーと Azure Storage アカウントを選択します。単一の管理サーバーをセットアップした場合、プロセス サーバーはその管理サーバーの IP アドレスになります。
 
 	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration3.png)
 
@@ -105,7 +106,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 **オンプレミスのマシン** | VMware ハイパーバイザーで稼働しているオンプレミスの仮想マシン、または Windows や Linux を実行しているオンプレミスの物理サーバーです。 | 仮想マシンおよびサーバーに適用されるレプリケーションを設定します。マシンを個別にフェールオーバーすることもできますが、より一般的には、まとめてフェールオーバーする複数の仮想マシンを含む復旧計画の一部としてフェールオーバーします。
 **モビリティ サービス** | <p>保護する個々の仮想マシンまたは物理サーバーにインストールします。</p><p>手動でインストールすることも、サーバーの保護が有効になったときにプロセス サーバーによって自動的にプッシュしてインストールすることもできます。 | モビリティ サービスは、初期レプリケーション (再同期) の一環としてプロセス サーバーにデータを送信します。 サーバーが保護状態に達すると (再同期が完了すると)、モビリティ サービスは、ディスクへの書き込みのインメモリ キャプチャを実行し、それをプロセス サーバーに送信します。Windows Server のアプリケーションの整合性は、VSS フレームワークを使って実現されます。
 **Azure Site Recovery コンテナー** | Site Recovery サービスをサブスクライブした後で設定します。 | Site Recovery コンテナーにサーバーを登録します。コンテナーは、オンプレミスのサイトと Azure 間でのデータ レプリケーション、フェールオーバー、および復旧を調整およびオーケストレーションします。
-**レプリケーション メカニズム** | <p>**インターネット経由** — パブリック インターネット接続を介してセキュリティで保護された SSL/TLS 通信チャネルを使用して、保護されたオンプレミスのサーバーおよび Azure からのデータを通信およびレプリケートします。これは既定のオプションです。</p><p>**VPN/ExpressRoute** — オンプレミスのサーバーと Azure の通信およびデータ レプリケーションを VPN 接続を介して実行します。オンプレミスのサイトと Azure ネットワークとの間にサイト間 VPN または ExpressRoute 接続を設定する必要があります。</p><p>Site Recovery のデプロイの間にレプリケート方法を選択します。構成が済んだ後では、既に保護されているサーバーに対する保護に影響を与えずにメカニズムを変更することはできません。| <p>どちらのオプションでも、保護されたマシン上で受信ネットワーク ポートを開く必要があります。すべてのネットワーク通信は、オンプレミスのサイトから開始されます。</p> 
+**レプリケーション メカニズム** | <p>**インターネット経由** — パブリック インターネット接続を介してセキュリティで保護された SSL/TLS 通信チャネルを使用して、保護されたオンプレミスのサーバーおよび Azure からのデータを通信およびレプリケートします。これは既定のオプションです。</p><p>**VPN/ExpressRoute** — オンプレミスのサーバーと Azure の通信およびデータ レプリケーションを VPN 接続を介して実行します。オンプレミス サイトと Azure ネットワーク間にサイト間 VPN 接続または ExpressRoute 接続を設定する必要があります。</p><p>Site Recovery のデプロイ時にレプリケートの方法を選択します。構成が済んだ後では、既に保護されているサーバーに対する保護に影響を与えずにメカニズムを変更することはできません。| <p>どちらのオプションでも、保護されたマシン上で受信ネットワーク ポートを開く必要があります。すべてのネットワーク通信は、オンプレミスのサイトから開始されます。</p> 
 
 ## 容量計画
 
@@ -121,8 +122,8 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 - **マスター ターゲット サーバーごとのソース数** — 1 台のマスター ターゲット サーバーで複数のソース コンピューターを保護できます。ただし、1 台のソース マシンを複数のマスター ターゲット サーバーで保護することはできません。これは、ディスクのレプリケート時に、このディスクのサイズをミラーリングする VHD が Azure の Blob Storage に作成され、データ ディスクとしてマスター ターゲット サーバーに接続されるためです。  
 - **ソースごとの 1 日の最大変更率** — ソースごとの推奨される変更率を検討するときは、3 つの要因を考慮する必要があります。ターゲット ベースの考慮の場合、ソースでの操作ごとにターゲット ディスクでは 2 IOPS が必要です。これは、ターゲット ディスクでは古いデータが読み取られて、新しいデータが書き込まれるためです。 
 	- **プロセス サーバーによってサポートされる 1 日あたりの変更率** — 1 台のソース マシンを複数のプロセス サーバーでサポートすることはできません。1 台のプロセス サーバーでは、1 日あたり最大 1 TB の変更率をサポートできます。したがって、ソース マシンごとにサポートされる最大の変化量は 1 TB です。 
-	- **ターゲット ディスクでサポートされる最大のスループット** — ソース ディスクあたりの最大変化量は、144 GB/日を超えることはできません (8 K の書き込みサイズの場合)。さまざまな書き込みサイズでのターゲットのスループットと IOPS については、マスター ターゲット セクションの表を参照してください。各ソース IOPS によってターゲット ディスクでは 2 IOPS が生成されるので、この値を 2 で割る必要があります。Premium Storage アカウントのターゲットの構成時には、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts)」を参照してください。
-	- **ストレージ アカウントでサポートされる最大スループット** — 1 つのソースで複数のストレージ アカウントに対応することはできません。ストレージ アカウントが 1 秒間に最大で 20,000 の要求を受け取り、各ソース IOPS によってマスター ターゲット サーバーでは 2 IOPS が生成されることから、ソースの IOPS 数を 10,000 に維持することをお勧めします。Premium Storage アカウントのソースの構成時には、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts)」を参照してください。
+	- **ターゲット ディスクでサポートされる最大のスループット** — ソース ディスクあたりの最大変化量は、144 GB/日を超えることはできません (8 K の書き込みサイズの場合)。さまざまな書き込みサイズでのターゲットのスループットと IOPS については、マスター ターゲット セクションの表を参照してください。各ソース IOPS によってターゲット ディスクでは 2 IOPS が生成されるので、この値を 2 で割る必要があります。Premium Storage アカウントのターゲットの構成時には、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts)」をご覧ください。
+	- **ストレージ アカウントでサポートされる最大スループット** — 1 つのソースで複数のストレージ アカウントに対応することはできません。ストレージ アカウントが 1 秒間に最大で 20,000 の要求を受け取り、各ソース IOPS によってマスター ターゲット サーバーでは 2 IOPS が生成されることから、ソースの IOPS 数を 10,000 に維持することをお勧めします。Premium Storage アカウントのソースの構成時には、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts)」をご覧ください。
 
 ### コンポーネント サーバーに関する考慮事項
 
@@ -183,7 +184,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 マスター ターゲット サーバーの容量計画は以下のことに依存します。
 
 - Azure Storage のパフォーマンスと制限
-	- 使用率の高いディスクの最大数は、Standard レベルの VM では、1 つのストレージ アカウントで約 40 (ディスクあたり IOPS 20,000/500) です。[Standard Storage アカウント](../storage/storage-scalability-targets.md#scalability-targets-for-standard-storage-accounts)および [Premium Storage アカウントのスケーラビリティ ターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts)についてご確認ください。
+	- 使用率の高いディスクの最大数は、Standard レベルの VM では、1 つのストレージ アカウントで約 40 (ディスクあたり IOPS 20,000/500) です。[Standard Storage アカウント](../storage/storage-scalability-targets.md#scalability-targets-for-standard-storage-accounts)と [Premium Storage アカウントのスケーラビリティ ターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts)について確認してください。
 -	1 日の変更率 
 -	保持ボリュームのストレージ
 
@@ -204,11 +205,11 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 **コンポーネント** | **要件** | **詳細**
 --- | --- | --- 
 **Azure アカウント** | [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
-**Azure Storage** | <p>レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。</p><p>アカウントは [Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium Storage アカウント](../storage/storage-premium-storage.md)のいずれかとする必要があります。</p><p>アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。[新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。</p><p>詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)</p>」を参照してください。
+**Azure Storage** | <p>レプリケートしたデータを保存するには、Azure Storage アカウントが必要です。</p><p>アカウントは、[Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium Storage アカウント](../storage/storage-premium-storage.md)のいずれかである必要があります。</p><p>アカウントは Azure Site Recovery サービスと同じリージョンに存在し、同じサブスクリプションに関連付けられている必要があります。[新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントのリソース グループ間での移動はサポートされていません。</p><p>詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」をご覧ください。</p>
 **Azure Virtual Network** | 構成サーバーとターゲット マスター サーバーのデプロイ先となる Azure 仮想ネットワークが必要になります。Azure 仮想ネットワークは、Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。ExpressRoute 接続または VPN 接続でデータをレプリケートする場合、Azure Virtual Network が、ExpressRoute 接続またはサイト間 VPN を介してオンプレミス ネットワークに接続されている必要があります。
 **Azure リソース** | すべてのコンポーネントをデプロイできるだけの十分な Azure リソースがあることを確認してください。詳細については、「[Azure サブスクリプションの制限](../azure-subscription-service-limits.md)」をご覧ください。
 **Azure Virtual Machines** | <p>保護する仮想マシンは、[Azure の前提条件](site-recovery-best-practices.md)に従う必要があります。</p><p>**ディスクの数** — 1 台の保護されたサーバーでサポートできるディスク数は最大 31 です。</p><p>**ディスク サイズ** — 個々のディスク容量は 1023 GB 未満である必要があります。</p><p>**クラスタリング** — クラスター化されたサーバーはサポートされません。</p><p>**ブート** — Unified Extensible Firmware Interface (UEFI) ブートまたは拡張ファームウェア インターフェイス (EFI) ブートはサポートされません。</p><p>**ボリューム** — Bitlocker 暗号化ボリュームはサポートされません。</p><p> **サーバー名** — 名前は 1 ～ 63 文字 (文字、数字、ハイフン) である必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンが保護された後で、Azure の名前を変更することができます。</p>
-**構成サーバー** | <p>Azure Site Recovery Windows Server 2012 R2 ギャラリー イメージに基づいた構成サーバー用の Standard A3 仮想マシンがサブスクリプションに作成されます。新しいクラウド サービスの最初のインスタンスとして作成されます。構成サーバーの接続の種類としてパブリック インターネットを選択した場合、予約されたパブリック IP アドレスでクラウド サービスが作成されます。</p><p>インストール パスには英字以外使わないでください。</p>
+**構成サーバー** | <p>Azure Site Recovery Windows Server 2012 R2 ギャラリー イメージに基づいた構成サーバー用の Standard A3 仮想マシンがサブスクリプションに作成されます。新しいクラウド サービスの最初のインスタンスとして作成されます。構成サーバーの接続の種類としてパブリック インターネットを選択した場合、予約されたパブリック IP アドレスでクラウド サービスが作成されます。</p><p>インストール パスには英字以外は使用しないでください。</p>
 **マスター ターゲット サーバー** | <p>Azure Virtual Machine、Standard A4、D14、または DS4。</p><p>インストール パスは英語文字のみで構成される必要があります。たとえば、Linux を実行するマスター ターゲット サーバーのパスは、**/usr/local/ASR** のようにする必要があります。</p></p>
 **プロセス サーバー** | <p>プロセス サーバーは、最新の更新プログラムがインストールされている Windows Server 2012 R2 を実行している物理マシンまたは仮想マシンにデプロイできます。C:/ にインストールします。</p><p>プロセス サーバーは、保護するマシンと同じネットワークおよびサブネット上に配置することをお勧めします。</p><p>VMware vSphere CLI 5.5.0 をプロセス サーバーにインストールします。vCenter サーバーによって管理される仮想マシンまたは ESXi ホストで実行する仮想マシンを検出するには、プロセス サーバー上に VMware vSphere CLI コンポーネントが必要です。</p><p>インストール パスは英語文字のみで構成される必要があります。</p><p>ReFS ファイル システムはサポートされていません。</p>
 **VMware** | <p>VMware vSphere ハイパーバイザーを管理する VMWare vCenter サーバー。最新の更新プログラムがインストールされた vCenter バージョン 5.1 または 5.5 を実行している必要があります。</p><p>保護する VMWare 仮想マシンを含む、1 つまたは複数の vSphere ハイパーバイザー。ハイパーバイザーは、最新の更新プログラムがインストールされた ESX/ESXi バージョン 5.1 または 5.5 を実行している必要があります。</p><p>VMware 仮想マシンは、VMware ツールがインストールされて稼働している必要があります。</p>  
@@ -226,11 +227,11 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 
 インフラストラクチャ コンポーネント (構成サーバー、マスター ターゲット サーバー) のデプロイ先となる Azure Virtual Network とオンプレミス サイト間のネットワーク接続を構成する場合、2 つの選択肢があります。構成サーバーをデプロイするには、どちらのネットワーク接続を使用するかを決めておく必要があります。デプロイメント時にはこの設定を選択する必要があります。後から変更することはできません。
 
-**パブリック インターネット:** オンプレミスのサーバー (プロセス サーバー、保護されたマシン) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間におけるデータの通信とレプリケーションは、オンプレミスから、構成サーバーとマスター ターゲット サーバー上のパブリック エンドポイントへの安全な SSL/TLS 接続上で行われます。(唯一の例外は、プロセス サーバーとマスター ターゲット サーバー間の TCP ポート 9080 上の接続です。この接続は暗号化されません。レプリケーション プロトコルに関連して、レプリケーションのセットアップに使用される制御情報だけがこの接続でやり取りされます。)
+**パブリック インターネット:** オンプレミスのサーバー (プロセス サーバー、保護されたマシン) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間での通信とデータのレプリケーションは、オンプレミスから、構成サーバーとマスター ターゲット サーバー上のパブリック エンドポイントへのセキュリティで保護された SSL/TLS 接続経由で行われます。(唯一の例外は、プロセス サーバーとマスター ターゲット サーバー間の TCP ポート 9080 上の接続です。この接続は暗号化されません。レプリケーション プロトコルに関連して、レプリケーションのセットアップに使用される制御情報だけがこの接続でやり取りされます。)
 
 ![インターネットのデプロイ図](./media/site-recovery-vmware-to-azure-classic-legacy/internet-deployment.png)
 
-**VPN:** オンプレミスのサーバー (プロセス サーバー、保護されたマシン) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間におけるデータの通信とレプリケーションは、オンプレミス ネットワークと、構成サーバーおよびマスター ターゲット サーバーのデプロイ先となる Azure Virtual Network とを結ぶ VPN 接続上で行われます。オンプレミス ネットワークが、ExpressRoute 接続またはサイト間 VPN 接続で Azure Virtual Network に接続されていることを確認してください。
+**VPN:** オンプレミスのサーバー (プロセス サーバー、保護されたマシン) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間での通信とデータのレプリケーションは、オンプレミス ネットワークと、構成サーバーおよびマスター ターゲット サーバーがデプロイされている Azure 仮想ネットワーク間の VPN 接続経由で行われます。オンプレミス ネットワークが、ExpressRoute 接続またはサイト間 VPN 接続で Azure Virtual Network に接続されていることを確認してください。
 
 ![VPN のデプロイ図](./media/site-recovery-vmware-to-azure-classic-legacy/vpn-deployment.png)
 
@@ -456,7 +457,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 4. インストール ファイルの **Microsoft-ASR\_CX\_TP\_8.4.0.0\_Windows*** を実行して、指示に従います。これでデプロイに必要なサード パーティのコンポーネントがインストールされます。
 5. 次に、**Microsoft-ASR\_CX\_8.4.0.0\_Windows*** を実行します。
 6. **[サーバー モード]** ページで、**[プロセス サーバー]** を選択します。
-7. **[環境の詳細]** ページで次のように実行します。
+7. **[環境の詳細]** ページで、次の操作を行います。
 
 
 	- VMware 仮想マシンを保護する場合は、**[はい]** をクリックします。
@@ -705,7 +706,7 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 	![vCenter サーバーの追加](./media/site-recovery-vmware-to-azure-classic-legacy/select-vms.png)	
 4. **[ターゲット リソースの指定]** で、マスター ターゲット サーバーおよびレプリケーションに使用するストレージを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、[Premium Storage アカウント](../storage/storage-premium-storage.md)を選択します。ワークロード ディスクで Premium Storage アカウントを使用する場合は、DS シリーズの Master Target を使用する必要があります。DS シリーズ以外の Master Target では Premium Storage ディスクを使用できません。
 
-	>[AZURE.NOTE] [新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
+	>[AZURE.NOTE] [新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントのリソース グループ間での移動はサポートされていません。
 
 	![vCenter サーバー](./media/site-recovery-vmware-to-azure-classic-legacy/machine-resources.png)
 
@@ -814,4 +815,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

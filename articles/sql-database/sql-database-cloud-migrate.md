@@ -85,4 +85,4 @@ SQL Database の互換性の問題があるかどうかを確認するには、�
 
 	 ![SQL Server database migration - migrate SQL database to the cloud.](./media/sql-database-cloud-migrate/01SSMSDiagram_new.png)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

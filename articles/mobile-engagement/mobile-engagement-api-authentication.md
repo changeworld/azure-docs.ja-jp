@@ -95,7 +95,7 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 1. 次のパラメーターで API を呼び出します。TENANT\_ID、CLIENT\_ID、CLIENT\_SECRET を実際の値に置き換えます。
 
 	- **要求 URL**: **https://login.microsoftonline.com/{TENANT\_ID}/oauth2/token*
-	- **HTTP Content-Type ヘッダー**: *application/x-www-form-urlencoded*
+- **HTTP Content-Type ヘッダー**: *application/x-www-form-urlencoded*
 	- **HTTP 要求本文**: *grant\_type=client\_credentials&client\_id={CLIENT\_ID}&client\_secret={CLIENT\_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F*
 
 	要求の例を次に示します。
@@ -146,7 +146,8 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 	![Mobile Engagement API の URI パラメーター][2]
 
 >[AZURE.NOTE] <br/>
->1. API ルート アドレスは以前の API 用であるため、無視してください。<br/> 2. アプリケーション名自体とは異なるアプリケーション リソース名を使用する必要があります。 
+>1. API ルート アドレスは以前の API 用であるため、無視してください。<br/>
+>2. Azure クラシック ポータルを使用してアプリを作成した場合は、アプリケーション名自体とは異なるアプリケーション リソース名を使用する必要があります。Azure ポータルでアプリを作成した場合は、アプリ名自体を使用する必要があります (アプリケーション リソース名と、新しいポータルで作成したアプリのアプリ名に違いはありません)。  
 
 <!-- Images -->
 [1]: ./media/mobile-engagement-api-authentication/azure-module.png
@@ -154,4 +155,4 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 [3]: ./media/mobile-engagement-api-authentication/ps-cmdlets.png
 [4]: ./media/mobile-engagement-api-authentication/ad-app-creation.png
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

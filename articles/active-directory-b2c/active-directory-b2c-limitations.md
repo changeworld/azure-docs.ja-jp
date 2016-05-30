@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="05/16/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: 制限事項および制約事項
 
-Azure Active Directory (Azure AD) B2C の機能の中には、プレビューではサポートされていなかったものがあります。これらの制限事項の多くは、Azure AD B2C が一般公開される前に排除される予定ですが、プレビューの時点で Azure AD B2C を使用して消費者向けアプリケーションを作成する場合は注意が必要です。
+Azure Active Directory (Azure AD) B2C の機能の中には、プレビューではサポートされていなかったものがあります。これらの既知の問題や制限事項の多くは、Azure AD B2C が一般公開される前に排除される予定ですが、プレビューの時点で Azure AD B2C を使用して消費者向けアプリケーションを作成する場合は注意が必要です。
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
@@ -92,4 +92,11 @@ Azure クラシック ポータルで Azure AD B2C テナントを削除する�
 
 現在、[Azure クラシック ポータル](https://manage.windowsazure.com/)でドメインを正常に確認することはできません。Microsoft では、この問題の解決に取り組んでいます。
 
-<!---HONumber=AcomDC_0427_2016-->
+## Safari ブラウザーでの MFA ポリシーを使用したサインインに関する問題
+
+Safari ブラウザーで、サインイン ポリシーに対する (MFA をオンにした) 要求が、HTTP 400 (正しくない要求) エラーで断続的に失敗します。これは、Safari の Cookie サイズ制限の値が低いためです。この問題にはいくつかの回避策があります。
+
+- "サインイン ポリシー" ではなく "サインアップまたはサインイン ポリシー" を使用します。
+- ポリシーで要求されている**アプリケーション要求**の数を減らします。 
+
+<!---HONumber=AcomDC_0518_2016-->

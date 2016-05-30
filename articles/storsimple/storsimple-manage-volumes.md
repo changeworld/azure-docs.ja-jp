@@ -4,15 +4,15 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
-<tags 
+<tags
    ms.service="storsimple"
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/29/2016"
+   ms.date="05/11/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用してボリュームを管理する
@@ -51,11 +51,11 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 ボリュームに関連する最も一般的なタスクは次のとおりです。
 
-- ボリュームを追加する 
-- ボリュームを変更する 
-- ボリュームを削除する 
-- ボリュームをオフラインにする 
-- ボリュームを監視する 
+- ボリュームを追加する
+- ボリュームを変更する
+- ボリュームを削除する
+- ボリュームをオフラインにする
+- ボリュームを監視する
 
 ## ボリュームを追加する
 
@@ -79,9 +79,9 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
   5. 矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes/HCS_ArrowIcon.png) をクリックして **[追加設定]** ページに移動します。
 
         ![Add Volume wizard Additional Settings](./media/storsimple-manage-volumes/AddVolume2.png)
-   
+
 5. **[追加設定]** で、新しいアクセス制御レコード (ACR) を追加します。
-  
+
   1. ボックスの一覧で、アクセス制御レコード (ACR) を選択します。また、新しい ACR を追加することもできます。ACR は、ホストの IQN をレコードに記載されている IQN と照合することによって、ボリュームにアクセスできるホストを判定します。
   2. **[このボリュームの既定のバックアップの有効化]** チェックボックスをオンにして、既定のバックアップを有効にすることをお勧めします。
    3. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes/HCS_CheckIcon.png) をクリックして、指定した設定でボリュームを作成します。
@@ -92,10 +92,10 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 ボリュームを拡張する必要がある場合やボリュームにアクセスするホストを変更する必要がある場合は、ボリュームを変更します。
 
-> [AZURE.IMPORTANT] 
+> [AZURE.IMPORTANT]
 >
-> - デバイス上のボリューム サイズを変更した場合、ホスト上のボリュームのサイズも変更する必要があります。 
-> - ここで説明されているホスト側の手順は、Windows Server 2012 (2012R2) 向けです。Linux などの他のホスト オペレーティング システムでは、手続きが異なります。別のオペレーティング システムで稼働しているホスト上のボリュームを変更する場合は、お使いのホスト オペレーティング システムの指示を参照してください。 
+> - デバイス上のボリューム サイズを変更した場合、ホスト上のボリュームのサイズも変更する必要があります。
+> - ここで説明されているホスト側の手順は、Windows Server 2012 (2012R2) 向けです。Linux などの他のホスト オペレーティング システムでは、手続きが異なります。別のオペレーティング システムで稼働しているホスト上のボリュームを変更する場合は、お使いのホスト オペレーティング システムの指示を参照してください。
 
 ### ボリュームを変更するには
 
@@ -116,7 +116,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
   - ACR を変更する (ボリュームがオフラインの場合)。ボリュームがオンラインの場合は、最初にボリュームをオフラインにする必要があります。ACR を変更する前に、「[ボリュームをオフラインにする](#take-a-volume-offline)」の手順を参照してください。
   - ボリュームをオフラインにした後、ACR の一覧を変更する。
- 
+
     > [AZURE.NOTE] ボリュームの **[このボリュームの既定のバックアップの有効化]** オプションは変更できません。
 
 6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes/HCS_CheckIcon.png) をクリックして変更を保存します。ボリュームを更新中であることを示すメッセージが Azure クラシック ポータルに表示されます。ボリュームが正常に更新されると、成功メッセージが表示されます。
@@ -198,6 +198,4 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
- 
-
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

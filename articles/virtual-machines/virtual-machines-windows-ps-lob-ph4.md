@@ -11,10 +11,10 @@
 <tags 
 	ms.service="virtual-machines-windows" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="Windows" 
+	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/21/2016" 
+	ms.date="04/01/2016" 
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 4: Web サーバーを構成する
@@ -151,4 +151,4 @@ ASP.NET アプリケーション、または Windows Server 2012 R2 のインタ
 
 - [フェーズ 5](virtual-machines-windows-ps-lob-ph5.md) を使用して、このワークロードの構成を完了します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

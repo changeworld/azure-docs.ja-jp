@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/26/2016" 
+	ms.date="04/28/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management の FAQ
@@ -35,6 +35,7 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 -	[API Management ゲートウェイ IP アドレスは一定ですか。 それをファイアウォール ルールで使用できますか。](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
 -	[ADFS セキュリティを使用して OAuth 2.0 認証サーバーを構成できますか。](#can-i-configure-an-oauth-20-authorization-server-with-adfs-security)
 -	[複数の地理的な場所にデプロイされた場合、API Management はどのようなルーティング方法を使用しますか。](#what-routing-method-does-api-management-use-when-deployed-to-multiple-geographic-locations)
+-	[ARM テンプレートを使用して API Management サービス インスタンスを作成できますか。](#can-i-create-an-api-management-service-instance-using-an-arm-template)
 
 
 
@@ -52,18 +53,18 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 
 複数の方法がサポートされています。
 
-1. HTTP 基本認証を使用します。詳細については、「[API 設定の構成](api-management-howto-create-apis.md#configure-api-settings)」をご覧ください。
+1. HTTP 基本認証を使用します。詳細については、「[API 設定の構成](api-management-howto-create-apis.md#configure-api-settings)」を参照してください。
 2. 「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法](api-management-howto-mutual-certificates.md)」の説明に従って、SSL 相互認証を使用します。
 3. バックエンド サービスで IP ホワイトリストを使用します。Standard または Premium レベルの API Management インスタンスを使用している場合、ゲートウェイの IP アドレスが変わることはないので、この IP アドレスを許可するようにホワイトリストを構成できます。API Management インスタンスの IP アドレスは、Azure クラシック ポータルの**ダッシュボード**で取得できます。
-4. API Management インスタンスを Azure Virtual Network (クラシック) に接続できます。詳細については、「[Azure API Management で VPN 接続を設定する方法](api-management-howto-setup-vpn.md)」をご覧ください。
+4. API Management インスタンスを Azure Virtual Network (クラシック) に接続できます。詳細については、「[Azure API Management で VPN 接続を設定する方法](api-management-howto-setup-vpn.md)」を参照してください。
 
 ### API Management インスタンスを新しいインスタンスにコピーするにはどうすればよいですか。
 
 API Management サービス インスタンスは、いくつかの方法で新しいインスタンスにコピーできます。
 
--	API Management のバックアップと復元機能を使用します。詳細については、「[Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法](api-management-howto-disaster-recovery-backup-restore.md)」をご覧ください。
+-	API Management のバックアップと復元機能を使用します。詳細については、「[Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法](api-management-howto-disaster-recovery-backup-restore.md)」を参照してください。
 -	[API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx) を使用して独自のバックアップと復元機能を作成し、サービス インスタンスの目的のエンティティを保存して復元します。
--	Git を使用してサービス構成をダウンロードし、新しいインスタンスにアップロードしてバックアップします。詳細については、「[Git を使用して API Management サービス構成を保存および構成する方法](api-management-configuration-repository-git.md)」をご覧ください。
+-	Git を使用してサービス構成をダウンロードし、新しいインスタンスにアップロードしてバックアップします。詳細については、「[Git を使用して API Management サービス構成を保存および構成する方法](api-management-configuration-repository-git.md)」を参照してください。
 
 ### API Management インスタンスはプログラムで管理できますか。
 
@@ -71,12 +72,23 @@ API Management サービス インスタンスは、いくつかの方法で新�
 
 ### ユーザーを Administrators グループに追加するにはどうすればよいですか。
 
-現時点では、管理者は、API Management インスタンスを含む Azure サブスクリプションで、管理者または共同管理者として Azure クラシック ポータルからログインできるユーザーに制限されています。パブリッシャー ポータルで作成されたユーザーは、管理者として指定することも、Administrators グループに追加することもできません。
+以下の手順に従って実現できます。
+
+1. 新しい [Azure ポータル](https://portal.azure.com)にログインします 
+2. 目的の API Management インスタンスを含むリソース グループに移動します
+3. 目的のユーザーを "API Management サービス共同作成者" ロールに追加します
+
+それが終わると、新しく追加した共同作業者は Azure PowerShell [コマンドレット](https://msdn.microsoft.com/library/mt613507.aspx)を使用して管理者としてログインできます。
+
+1. `Login-AzureRmAccount` コマンドレットを使用してログインします
+2. `Set-AzureRmContext -SubscriptionID <subscriptionGUID>` を使用して、サービスを含むサブスクリプションへのコンテキストを設定します
+3. `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` を使用して SSO トークンを取得します
+4. URL をコピーしてブラウザーに貼り付けると、ユーザーは管理ポータルにアクセスできます
 
 
 ### 追加するポリシーがポリシー エディターで有効になっていないのはなぜですか。
 
-追加するポリシーが有効になっていない場合、そのポリシーの正しいスコープが選択されていることを確認します。各ポリシー ステートメントは、特定のスコープおよびポリシー セクション内で使用するように設計されています。ポリシーのポリシー セクションとスコープを確認するには、[ポリシー リファレンス](https://msdn.microsoft.com/library/azure/dn894080.aspx)に関するページでそのポリシーの**使用例**を参照してください。
+追加するポリシーが有効になっていない場合、そのポリシーの正しいスコープが選択されていることを確認します。各ポリシー ステートメントは、特定のスコープおよびポリシー セクション内で使用するように設計されています。ポリシーのポリシー セクションとスコープを確認するには、[ポリシー リファレンス](https://msdn.microsoft.com/library/azure/dn894080.aspx) ページでそのポリシーの**使用例**を参照してください。
 
 
 ### API Management で API のバージョン管理を実現するにはどうすればよいですか。
@@ -119,6 +131,10 @@ IP アドレス (複数リージョンのデプロイの場合は複数個) は 
 
 ### 複数の地理的な場所にデプロイされた場合、API Management はどのようなルーティング方法を使用しますか。 
 
-API Management では[パフォーマンスによるトラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#performance-traffic-routing-method)が使用されます。着信トラフィックは、最も近い API ゲートウェイにルーティングされます。1 つのリージョンがオフラインになった場合、着信トラフィックは自動的に次に最も近いゲートウェイにルーティングされます。ルーティング方法の詳細については、「[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)」をご覧ください。
+API Management では[パフォーマンスによるトラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#performance-traffic-routing-method)が使用されます。着信トラフィックは、最も近い API ゲートウェイにルーティングされます。1 つのリージョンがオフラインになった場合、着信トラフィックは自動的に次に最も近いゲートウェイにルーティングされます。ルーティング方法の詳細については、「[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+### ARM テンプレートを使用して API Management サービス インスタンスを作成できますか。
+
+はい、「[Azure API Management Service](http://aka.ms/apimtemplate)」クイックスタート テンプレートを参照してください。
+
+<!---HONumber=AcomDC_0518_2016-->

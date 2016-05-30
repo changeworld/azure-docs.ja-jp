@@ -15,7 +15,7 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="04/06/2016"
+	ms.date="05/13/2016"
 	ms.author="chrande"/>
 
 # Azure Functions NodeJS 開発者向けリファレンス
@@ -138,10 +138,22 @@ context.res = { status: 202, body: 'You successfully ordered more coffee!' };
 
 Node のバージョンは、現在、`5.9.1` にロックされています。現在、さまざまなバージョンのサポートを追加して構成できるようにするために、調査しています。
 
-パッケージは、関数ディレクトリに (`npm install` を使用して) 含めてから、通常の方法で (`require('packagename')` を使用して) 関数にインポートできます
+関数アプリのファイル システムの関数のフォルダーに *package.json* ファイルをアップロードすることで関数にパッケージを追加できます。ファイルをアップロードする方法については、「[Azure Functions developer reference topic (Azure Functions 開発者参照トピック)](functions-reference.md#fileupdate)」の「**How to update function app files (関数アプリ ファイルを更新する方法)**」セクションを参照してください。
+
+関数アプリの SCM (Kudu) コマンド ライン インターフェイスで `npm install` を使用することもできます。
+
+1. `https://<function_app_name>.scm.azurewebsites.net` に移動します。
+
+2. **[デバッグ コンソール] > [CMD]** の順にクリックします。
+
+3. `D:\home\site\wwwroot<function_name>` に移動します。
+
+4. `npm install` を実行します。
+
+必要なパッケージがインストールされたら、普段の方法でそれを関数にインポートします。たとえば、`require('packagename')` を利用します。
 
 ```javascript
-// Import the underescore.js library
+// Import the underscore.js library
 var _ = require('underscore');
 var version = process.version; // version === 'v5.9.1'
 
@@ -161,6 +173,6 @@ module.exports = function(context) {
 
 * [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)
 * [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
-* [Azure Functions のトリガーとバインド](functions-triggers-bindings.md)に関する記事
+* [Azure Functions のトリガーとバインドに関する記事](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

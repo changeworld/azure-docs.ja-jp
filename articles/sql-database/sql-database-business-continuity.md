@@ -83,4 +83,4 @@
 
 [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)は、すべてのデータベース レベルで使用できます。アクティブ geo レプリケーションは、geo リストアよりもアグレッシブな復旧要件があるアプリケーション用に設計されています。アクティブ geo レプリケーションを使用して、別のリージョン内のサーバーで最大 4 つの読み取り可能なセカンダリを作成できます。いずれかのセカンダリへのフェールオーバーを開始できます。さらに、アクティブ geo レプリケーションを使用すると、アプリケーションのアップグレードや再配置のシナリオをサポートするだけでなく読み取り専用ワークロードの負荷を分散することができます。[geo レプリケーションの構成](sql-database-geo-replication-portal.md)方法と[セカンダリ データベースにフェールオーバーする](sql-database-geo-replication-failover-portal.md)方法の詳細については、「[ビジネス継続性のための設計](sql-database-business-continuity-design.md)」をご覧ください。ダウンタイムなくアプリケーションのアップグレードを実装する方法の詳細については、「[ダウンタイムのないアプリケーションのアップグレード](sql-database-business-continuity-application-upgrade.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

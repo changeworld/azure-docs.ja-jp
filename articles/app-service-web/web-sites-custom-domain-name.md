@@ -20,9 +20,9 @@
 # Azure App Service のカスタム ドメイン名の構成
 
 > [AZURE.SELECTOR]
-- [Buy Domain for Web Apps](custom-dns-web-site-buydomains-web-app.md)
-- [Web Apps with External Domains](web-sites-custom-domain-name.md)
-- [Web Apps with Traffic Manager](web-sites-traffic-manager-custom-domain-name.md)
+- [Web Apps のドメインを購入する](custom-dns-web-site-buydomains-web-app.md)
+- [外部ドメインを使用する Web Apps](web-sites-custom-domain-name.md)
+- [Traffic Manager 付きの Web アプリ](web-sites-traffic-manager-custom-domain-name.md)
 - [GoDaddy](web-sites-godaddy-custom-domain-name.md)
 
 Web アプリを作成するときに、Azure は azurewebsites.net のサブドメインにそのアプリを割り当てます。たとえば、Web アプリの名前が **contoso** の場合、URL は **contoso.azurewebsites.net** になります。また Azure によって仮想 IP アドレスも割り当てられます。
@@ -112,7 +112,7 @@ CNAME レコードを作成している場合は、この手順をスキップ�
 - 168\.62.48.183 にマップされた **contoso.com**
 - **contoso.azurewebsites.net** にマップされた **www.contoso.com**
 
->[AZURE.NOTE] Azure DNS を使用すると、Web アプリに必要なドメイン レコードをホストできます。Azure DNS でカスタム ドメインを構成し、レコードを作成するには、「[Web アプリのカスタム DNS レコードの作成](../dns/dns-web-sites-custom-domain)」をご覧ください。
+>[AZURE.NOTE] Azure DNS を使用すると、Web アプリに必要なドメイン レコードをホストできます。Azure DNS でカスタム ドメインを構成し、レコードを作成するには、「[Web アプリのカスタム DNS レコードの作成](../dns/dns-web-sites-custom-domain.md)」をご覧ください。
 
 <a name="awverify" />
 ## awverify レコードの作成 (A レコードのみ)
@@ -155,4 +155,4 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

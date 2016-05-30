@@ -13,14 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/16/2016"
 	ms.author="dastrock"/>
 
 # Azure AD を使用した Web アプリのサインインおよびサインアウト
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-Azure AD を使用すると、数行のコードを追加するだけで、Web アプリの ID 管理を外部委託し、シングル サインインおよびサインアウトを提供することが、簡単に実現できます。ASP.NET Web アプリでは、.NET Framework 4.5 に含まれるコミュニティ駆動の OWIN ミドルウェアの Microsoft 実装を使用することにより、これを達成できます。ここでは、Azure AD を ID プロバイダーとして使用してアプリに対するユーザーのサインイン処理を行う、ユーザーに関する一部の情報を表示する、およびアプリからのユーザーのサインアウト処理を行う機能について、OWIN を使用して実装します。
+Azure AD を使用すると、数行のコードを追加するだけで、Web アプリの ID 管理を外部委託し、シングル サインインおよびサインアウトを提供することが、簡単に実現できます。ASP.NET Web アプリでは、.NET Framework 4.5 に含まれるコミュニティ駆動の OWIN ミドルウェアの Microsoft 実装を使用することにより、これを達成できます。ここでは、OWIN を使用して次のことを行います。
+-	ID プロバイダーとして Azure AD を使用して、ユーザーをアプリにサインインします。
+-	ユーザーについての情報を表示します。
+-	ユーザーをアプリからサインアウトします。
 
 これを行うには、次の手順を実行する必要があります。
 
@@ -175,4 +178,4 @@ public ActionResult About()
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

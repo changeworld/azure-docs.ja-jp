@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/31/2016"
+   ms.date="05/06/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog の用語集
@@ -51,7 +51,7 @@ Azure Data Catalog は、データ ソースとデータ資産を登録できる
 - データ ソースにアクセスするために使用できる ID およびアクセス管理ツール (Microsoft Identity Manager など) の URL。
 - ユーザーがデータ ソースにアクセスする方法が示された自由書式のエントリ。
 
-## プレビュー
+## Preview
 
 Azure Data Catalog のプレビューは、最大 20 レコードのスナップショットです。登録時にデータ ソースから抽出し、データ資産メタデータと共にカタログに格納できます。プレビューを使用すると、データ資産の機能と目的を理解しやすくなります。言い換えると、列名とデータ型だけではなく、サンプル データも確認できるので、わかりやすくなります。テーブルとビューのプレビューのみがサポートされています。登録時にユーザーが明示的にプレビューを選択する必要があります。
 
@@ -73,7 +73,7 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 
 ## 所有者
 
-所有者は、Azure Data Catalog のデータ資産を管理する追加の特権を持つユーザーです。ユーザーは、登録したデータ資産の所有権を得ることができます。また、所有者は他のユーザーを共同所有者として追加することができます。
+所有者は、Azure Data Catalog のデータ資産を管理する追加の特権を持つユーザーです。ユーザーは、登録したデータ資産の所有権を得ることができます。また、所有者は他のユーザーを共同所有者として追加することができます。詳細については、「[データ資産を管理する方法](data-catalog-how-to-manage.md)」を参照してください。
 > [AZURE.NOTE] 所有権と管理は、Azure Data Catalog の Standard Edition でのみ使用できます。
 
 ## 登録
@@ -86,4 +86,4 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 
 - [GAzure Data Catalog の概要](data-catalog-get-started.md) - この記事は、データ ソースの検出に Azure Data Catalog を使用する方法を示す総合的なチュートリアルです。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -227,4 +227,4 @@
 - Key Vault の全般的な情報については、「[Azure Key Vault の概要](./key-vault/key-vault-get-started.md)」を参照してください。
 - テンプレートをデプロイするときにキー コンテナーのシークレットを参照する例については、[デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)ことに関する記事を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

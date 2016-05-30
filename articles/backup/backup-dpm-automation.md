@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="04/20/2016"
 	ms.author="jimpark; aashishr; anuragm"/>
 
 
@@ -98,7 +98,7 @@ PS C:\> MARSAgentInstaller.exe /?
 
 | オプション | 詳細 | 既定値 |
 | ---- | ----- | ----- |
-| /q | サイレント インストール | - | 
+| /q | サイレント インストール | - |
 | /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent |
 | /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
 | /m | Microsoft Update のオプトイン | - |
@@ -300,7 +300,10 @@ DPM レプリカとシャドウ コピーのボリューム サイズは、[Set-
 PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 ## バックアップ ポイントの表示
-データソースのすべての回復ポイントの一覧を取得するには、[Get DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) コマンドレットを使用します。この例では、次の手順を実行します。 - 配列 ```$PG``` に格納される、DPM サーバー上のすべての PG を取得する。 - ```$PG[0]``` に対応するデータソースを取得する。 - データソースのすべての回復ポイントを取得する。
+データソースのすべての回復ポイントの一覧を取得するには、[Get DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) コマンドレットを使用します。この例の内容:
+- 配列 ```$PG``` に格納される DPM サーバーのすべての PG を取得します。
+- ```$PG[0]``` に対応するデータソースを取得します。
+- データソースのすべての回復ポイントを取得します。
 
 ```
 PS C:\> $PG = Get-DPMProtectionGroup –DPMServerName "TestingServer"
@@ -333,4 +336,4 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 
 - Azure DPM Backup の詳細については、「[DPM Backup の概要](backup-azure-dpm-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0518_2016-->

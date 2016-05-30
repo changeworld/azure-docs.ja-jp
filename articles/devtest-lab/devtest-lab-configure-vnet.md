@@ -1,6 +1,6 @@
 <properties
-	pageTitle="DevTest ラボ用の仮想ネットワークの構成 |Microsoft Azure"
-	description="既存の仮想ネットワークとサブネットを構成し、それらを VM で使用する方法について説明します。"
+	pageTitle="ラボ用の仮想ネットワークの構成 |Microsoft Azure"
+	description="既存の仮想ネットワークとサブネットを構成し、それらを VM で DevTest ラボと共に使用する方法について説明します"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,19 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/15/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
-# DevTest ラボ用の仮想ネットワークの構成
+# ラボ用の仮想ネットワークの構成
 
 ## 概要
 
-記事「[アーティファクトを含む VM の Azure DevTest ラボへの追加](devtest-lab-add-vm-with-artifacts.md)」で説明しているように、ラボで VM を作成する際に、その VM に構成されている仮想ネットワーク (およびサブネット) を指定できます。これを行う 1 つのシナリオは、ExpressRoute またはサイト間 VPN で設定されている仮想ネットワークを使用して、VM から企業ネットワーク リソースにアクセスしたい場合です。以下のセクションでは、VM の作成時に選択できるように、ラボの Virtual Network の設定に既存の仮想ネットワークを追加する方法を説明します。
+「[アーティファクトを含む VM を Azure DevTest ラボに追加する](devtest-lab-add-vm-with-artifacts.md)」の記事で説明しているように、ラボで VM を作成する際に、その VM に構成されている仮想ネットワーク (およびサブネット) を指定できます。これを行う 1 つのシナリオは、ExpressRoute またはサイト間 VPN で設定されている仮想ネットワークを使用して、VM から企業ネットワーク リソースにアクセスしたい場合です。以下のセクションでは、VM の作成時に選択できるように、ラボの Virtual Network の設定に既存の仮想ネットワークを追加する方法を説明します。
 
-## Azure ポータルを使用して DevTest ラボの仮想ネットワークを構成する
-次に、DevTest ラボに既存の仮想ネットワーク (およびサブネット) を追加し、同じラボで VM を作成するときにそれを使用できるようにするための手順を説明します。
+## Azure ポータルを使用してラボ用の仮想ネットワークを構成する
+次に、ラボに既存の仮想ネットワーク (およびサブネット) を追加し、同じラボで VM を作成するときにそれを使用できるようにするための手順を説明します。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
 1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
 
@@ -63,10 +63,10 @@
 
 1. **[保存]** をタップします。
 
-1. 仮想ネットワークが構成されたので、新しい VM の作成時にそれを選択できます。これについては、記事「[アーティファクトを含む VM の Azure DevTest ラボへの追加](devtest-lab-add-vm-with-artifacts.md)」で説明しています。
+1. 仮想ネットワークが構成されたので、新しい VM の作成時にそれを選択できます。これについては、「[アーティファクトを含む VM をラボに追加する](devtest-lab-add-vm-with-artifacts.md)」の記事で説明しています。
 
 ## 次のステップ
 
-ラボに目的の仮想ネットワークを追加したら、次の手順は[DevTest ラボに VM を追加する](devtest-lab-add-vm-with-artifacts.md)ことです。
+ラボに目的の仮想ネットワークを追加したら、次は[ラボに VM を追加](devtest-lab-add-vm-with-artifacts.md)します
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

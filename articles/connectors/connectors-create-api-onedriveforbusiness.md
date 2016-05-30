@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/17/2016"
 ms.author="deonhe"/>
 
 # OneDrive for Business コネクタの使用
@@ -25,7 +25,7 @@ OneDrive for Business コネクタは、次のツールから使用できます�
 
 - [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)  
 - [PowerApps](http://powerapps.microsoft.com)  
-- [Flows](http://flows.microsoft.com)  
+- [フロー](http://flows.microsoft.com)  
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
@@ -69,6 +69,8 @@ OneDrive for Business を使用してロジック アプリを作成するには
 | ---|---|---|
 |トークン|あり|OneDrive for Business の資格情報を提供します|
 接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
+
+>[AZURE.INCLUDE [OneDrive for Business への接続を作成する手順](../../includes/connectors-create-api-onedriveforbusiness.md)]
 
 >[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
@@ -364,4 +366,4 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

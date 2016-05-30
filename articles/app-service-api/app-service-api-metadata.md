@@ -56,4 +56,6 @@ API アプリのクライアント コードは、Visual Studio を使用して�
 
 API アプリの作成、デプロイ、使用の手順を説明するステップ バイ ステップ チュートリアルについては、[Azure App Service での API アプリの使用](app-service-api-dotnet-get-started.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+API アプリで Azure API Management を使う場合は、Swagger メタデータを使用して API を API Management にインポートできます。詳細については、「[Azure API Management で API の定義を操作と共にインポートする方法](../api-management/api-management-howto-import-api.md)」を参照してください。
+
+<!---HONumber=AcomDC_0518_2016-->
