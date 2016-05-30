@@ -29,21 +29,17 @@
 
 ##概要
 
-Media Services アカウントは、エンコード ジョブを処理する速度を決定する予約ユニットの種類に関連付けられます。予約ユニットの種類は、S1、S2、S3 から選択できます。たとえば、同じエンコード ジョブを実行した場合、Standard 予約ユニットの方が Basic 予約ユニットに比べ高速です。詳細については、[Milan Gada](https://azure.microsoft.com/blog/author/milanga/) によるエンコード占有ユニットの種類に関するブログを参照してください。
+Media Services アカウントは、エンコード ジョブを処理する速度を決定する予約ユニットの種類に関連付けられます。予約ユニットの種類は、S1、S2、S3 から選択できます。たとえば、同じエンコード ジョブを実行した場合、Standard 予約ユニットの方が Basic 予約ユニットに比べ高速です。詳細については、[Milan Gada](https://azure.microsoft.com/blog/high-speed-encoding-with-azure-media-services/) によるエンコード占有ユニットの種類に関するブログを参照してください。
 
 予約ユニットの種類を指定するだけでなく、エンコード予約ユニットを使用して、アカウントをプロビジョニングすることも指定できます。用意したエンコード予約ユニットの数によって、所定のアカウントで並列処理できるメディア タスクの数が決まります。たとえば、アカウントの予約ユニットの数が 5 である場合、処理するタスクがある限り、5 個のメディア タスクが並列実行されます。残りのタスクはキューで待機して、実行中のタスクが完了すると直ちにキューから取り出されて順番に処理されます。アカウントに予約ユニットが用意されていない場合、タスクは逐次処理されます。この場合、あるタスクが終了した後、次のタスクが開始するまでの待機時間は、システムのリソースが利用できるかどうかに左右されます。
 
 .NET SDK を使用して予約ユニットの種類とエンコード予約ユニットの数を変更するには、以下の手順に従います。
 
-	IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
-	encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
-	encodingS1ReservedUnit.Update();
-	Console.WriteLine("Reserved Unit Type: {0}", encodingS1ReservedUnit.ReservedUnitType);
-	
-	encodingS1ReservedUnit.CurrentReservedUnits = 2;
-	encodingS1ReservedUnit.Update();
-	
-	Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
+IEncodingReservedUnit encodingS1ReservedUnit = \_context.EncodingReservedUnits.FirstOrDefault(); encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1 encodingS1ReservedUnit.Update(); Console.WriteLine("Reserved Unit Type: {0}", encodingS1ReservedUnit.ReservedUnitType);
+
+encodingS1ReservedUnit.CurrentReservedUnits = 2; encodingS1ReservedUnit.Update();
+
+Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
 
 ##サポート チケットを開く
 
@@ -56,21 +52,21 @@ Media Services アカウントは、エンコード ジョブを処理する速�
 1. [[サポートの要求]](https://manage.windowsazure.com/?getsupport=true) をクリックします。ログインしていない場合は、資格情報を入力するように求められます。
 
 1. サブスクリプションを選択します。
- 
+
 1. サポートの種類として [技術] を選択します。
- 
+
 1. [チケットの作成] をクリックします。
- 
+
 1. 次のページに示される製品一覧で [Azure Media Services] を選択します。
- 
+
 1. 問題に適した「問題の種類」を選択します。
- 
+
 1. [続行] をクリックして続行します。
- 
+
 1. 次のページの指示に従って、問題に関する詳細を入力します。
- 
+
 1. [送信] をクリックして、チケットを開きます。
- 
+
 
 
 ##Media Services のラーニング パス
@@ -81,4 +77,4 @@ Media Services アカウントは、エンコード ジョブを処理する速�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

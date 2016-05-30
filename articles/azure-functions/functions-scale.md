@@ -37,7 +37,7 @@ Azure Functions にまだ慣れていない場合は、「[Azure Functions の�
 * [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)または動的サービス プラン 
 * 実行環境のメモリ サイズ 
 
-関数のコストは、選択したサービス プランの種類によって変わります。動的サービス プランでは、コストは実行時間、メモリ サイズ、および実行数の関数です。実際にコードを実行したときにのみ変更が発生します。
+関数のコストは、選択したサービス プランの種類によって変わります。動的サービス プランでは、コストは実行時間、メモリ サイズ、および実行数の関数です。実際にコードを実行したときにのみ課金が発生します。
 
 通常のサービス プランでは、他のコードの実行にも使用される可能性のある既存の VM で関数をホストできます。これらの VM の毎月の料金を払う以外に、VM 上で関数を実行するための追加料金はありません。
 
@@ -47,4 +47,4 @@ Azure Functions にまだ慣れていない場合は、「[Azure Functions の�
 
 [AZURE.INCLUDE [動的サービス プラン](../../includes/functions-dynamic-service-plan.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -48,9 +48,15 @@ Microsoft Azure IoT サービス SDK には、IoT Hub と直接やりとりし�
 - [Node.js 用 Azure IoT サービス SDK][]
 - [Java 用 Azure IoT サービス SDK][]
 
+## Azure IoT Gateway SDK
+
+この Azure IoT Gateway SDK には、IoT ゲートウェイ ソリューションを作成するためのインフラストラクチャとモジュールが含まれています。SDK を拡張して、エンド ツー エンドのシナリオに合わせて調整されたゲートウェイを作成できます。
+
+GitHub から [Azure IoT Gateway SDK][] をダウンロードできます。
+
 ## オンライン API リファレンス ドキュメント
 
-Azure IoT デバイスおよびサービス ライブラリのオンライン API リファレンス ドキュメントへのリンクの一覧を次に示します。
+Azure IoT デバイス、サービス、およびゲートウェイ ライブラリのオンライン API リファレンス ドキュメントへのリンクの一覧を次に示します。
 
 - [Internet of Things (IoT) .NET (モノのインターネット (IoT) .NET)][]
 - [IoT Hub REST][]
@@ -59,6 +65,7 @@ Azure IoT デバイスおよびサービス ライブラリのオンライン AP
 - [Microsoft Azure IoT service SDK for Java (Java 用 Microsoft Azure IoT サービス SDK)][]
 - [Microsoft Azure IoT device SDK for Node.js (Node.js 用 Microsoft Azure IoT デバイス SDK)][]
 - [Microsoft Azure IoT service SDK for Node.js (Node.js 用 Microsoft Azure IoT サービス SDK)][]
+- [Microsoft Azure IoT Gateway SDK][]
 
 [Microsoft Azure IoT SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
 [C 用 Azure IoT デバイス SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/c/readme.md
@@ -70,13 +77,15 @@ Azure IoT デバイスおよびサービス ライブラリのオンライン AP
 [Python 2.7 用 Microsoft Azure IoT device SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/python/device/readme.md
 [OS Platforms and hardware compatibility]: iot-hub-tested-configurations.md
 [Microsoft Azure Certified for IoT プログラム]: iot-hub-tested-configurations.md#microsoft-azure-certified-for-iot
+[Azure IoT Gateway SDK]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/README.md
 
 [Internet of Things (IoT) .NET (モノのインターネット (IoT) .NET)]: https://msdn.microsoft.com/library/mt488521.aspx
 [Microsoft Azure IoT device SDK for C (C 用 Microsoft Azure IoT デバイス SDK)]: http://azure.github.io/azure-iot-sdks/c/api_reference/index.html
 [Microsoft Azure IoT device SDK for Java (Java 用 Microsoft Azure IoT デバイス SDK)]: http://azure.github.io/azure-iot-sdks/java/device/api_reference/index.html
-[Microsoft Azure IoT device SDK for Node.js (Node.js 用 Microsoft Azure IoT デバイス SDK)]: http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iot-device/1.0.3/index.html
+[Microsoft Azure IoT device SDK for Node.js (Node.js 用 Microsoft Azure IoT デバイス SDK)]: http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iot-device/1.0.5/index.html
 [IoT Hub REST]: https://msdn.microsoft.com/library/mt548492.aspx
 [Microsoft Azure IoT service SDK for Java (Java 用 Microsoft Azure IoT サービス SDK)]: http://azure.github.io/azure-iot-sdks/java/service/api_reference/index.html
-[Microsoft Azure IoT service SDK for Node.js (Node.js 用 Microsoft Azure IoT サービス SDK)]: http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iothub/1.0.3/index.html
+[Microsoft Azure IoT service SDK for Node.js (Node.js 用 Microsoft Azure IoT サービス SDK)]: http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iothub/1.0.5/index.html
+[Microsoft Azure IoT gateway SDK]: http://azure.github.io/azure-iot-gateway-sdk/api_reference/c/html/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

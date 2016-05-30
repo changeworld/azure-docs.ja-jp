@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/21/2016"
+   ms.date="05/16/2016"
    ms.author="mbaldwin"/>
 
 
@@ -94,4 +94,4 @@ Azure または Active Directory のブランドをエンド ユーザーに表�
 
 アプリケーションが Azure AD と Microsoft アカウントの両方をサポートしている場合、アプリケーションに 2 つのサインイン ボタンを用意する必要があります。Microsoft は、1 回の統合で Microsoft の個人アカウントと職場アカウントの両方をサポートできるようにするための更新プログラムに積極的に取り組んでいます。これが利用可能になれば、アプリケーションに 1 つの "Microsoft によるサインイン" ボタンを表示できるようになります。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

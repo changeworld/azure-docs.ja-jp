@@ -13,11 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/08/2016"
+	ms.date="04/05/2016"
 	ms.author="onewth"/>
 
 
 # Machine Learning API: センチメントのテキスト分析、キー フレーズ抽出、言語検出、トピック検出
+
+>[AZURE.NOTE] このガイドはバージョン 1 の API 用です。バージョン 2 については、[**こちらのドキュメントを参照**](../cognitive-services-text-analytics-quick-start/)してください。この API の推奨バージョンは現在、バージョン 2 となっています。
 
 ## 概要
 
@@ -383,4 +385,4 @@ Text Analytics サービスでは、センチメントとキー フレーズの�
 | TopicId | レコードが割り当てられているトピック ID。 |
 | Distance | レコードがトピックに属する確実性。Distance がゼロに近ければ、それだけ確実性が高くなります。 |
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

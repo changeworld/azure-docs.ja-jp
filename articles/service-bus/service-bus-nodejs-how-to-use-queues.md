@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="05/06/2016" 
 	ms.author="sethm"/>
 
 # Service Bus キューの使用方法
 
 [AZURE.INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-この記事では、Service Bus キューの使用方法について説明します。サンプルは JavaScript で記述され、Node.js Azure モジュールを利用しています。紹介するシナリオは、**キューの作成**、**メッセージの送受信**、**キューの削除**です。キューの詳細については、「次のステップ[]」のセクションを参照してください。
+この記事では、Node.js での Service Bus キューの使用方法について説明します。サンプルは JavaScript で記述され、Node.js Azure モジュールを利用しています。紹介するシナリオは、**キューの作成**、**メッセージの送受信**、**キューの削除**です。キューの詳細については、「次のステップ[]」のセクションを参照してください。
 
 [AZURE.INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
@@ -145,7 +145,7 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 });
 ```
 
-Service Bus キューでは、最大 256 KB までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。クォータの詳細については、[Azure キューと Service Bus キュー][]に関するページをご覧ください。
+Service Bus キューでは、最大 256 KB までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。クォータの詳細については、「[Service Bus のクォータ][]」を参照してください。
 
 ## キューからメッセージを受信する
 
@@ -185,7 +185,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## 次のステップ
 
-詳細については、次のリソースを参照してください。
+キューの詳細については、次のリソースを参照してください。
 
 -   [キュー、トピック、およびサブスクリプション][]
 -   GitHub の [Azure SDK for Node][] リポジトリ
@@ -199,7 +199,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
   [Storage を使用する Node.js Cloud Service に関するトピック]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
   [ストレージを使用する Node.js Web アプリケーション]: ../storage/storage-nodejs-how-to-use-table-storage.md
-  [Azure キューと Service Bus キュー]: service-bus-azure-and-service-bus-queues-compared-contrasted.md#capacity-and-quotas
+  [Service Bus のクォータ]: service-bus-quotas.md
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

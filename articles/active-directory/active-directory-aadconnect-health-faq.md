@@ -83,7 +83,7 @@ AD FS Audit Channel for AD Health エージェントがすべてのデータを�
 
 **Q: Azure AD Connect Health アラートはどのように解決すればよいですか。**
 
-Azure AD Connect Health アラートは、成功条件を満たすと解決されます。Azure AD Connect Health エージェントは、定期的に成功条件を検出して、成功条件をサービスにレポートします。一部のアラートは、時間に基づいて抑制されます。つまり、アラートの生成から 48 時間以内に同じエラー条件が観察されない場合、アラートは自動的に解決されます。
+Azure AD Connect Health アラートは、成功条件を満たすと解決されます。Azure AD Connect Health エージェントは、定期的に成功条件を検出して、成功条件をサービスにレポートします。一部のアラートは、時間に基づいて抑制されます。つまり、アラートの生成から 72 時間以内に同じエラー条件が観察されない場合、アラートは自動的に解決されます。
 
 
 
@@ -106,4 +106,4 @@ Azure AD Health サービス エンドポイントと通信できるようにす
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

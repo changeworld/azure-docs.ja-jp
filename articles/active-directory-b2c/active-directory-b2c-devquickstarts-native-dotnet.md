@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/16/2016"
 	ms.author="dastrock"/>
 
 # Azure AD B2C プレビュー: Windows デスクトップ アプリを作成する
@@ -86,8 +86,7 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
 Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、[Web API の概要についての記事](active-directory-b2c-devquickstarts-api-dotnet.md)を参照してください。
 
 ## ポリシーの実行
-`TaskService` で要求を認証する準備が完了したら、`TaskClient` を実装できます。アプリは、HTTP 認証要求を送信することで、Azure AD B2C と通信します。このとき、要求の一部として実行するポリシーを指定します。
-.NET デスクトップ アプリケーションでは、Active Directory 認証ライブラリ (ADAL) を使用して、OAuth 2.0 認証メッセージを送信し、ポリシーを実行して、Web API を呼び出すトークンを取得できます。
+`TaskService` で要求を認証する準備が完了したら、`TaskClient` を実装できます。アプリは、HTTP 認証要求を送信することで、Azure AD B2C と通信します。このとき、要求の一部として実行するポリシーを指定します。.NET デスクトップ アプリケーションでは、Active Directory 認証ライブラリ (ADAL) を使用して、OAuth 2.0 認証メッセージを送信し、ポリシーを実行して、Web API を呼び出すトークンを取得できます。
 
 ### ADAL をインストールする
 Visual Studio Package Manager Console を使用して、ADAL を `TaskClient` プロジェクトに追加します。
@@ -345,4 +344,4 @@ You can now move on to more advanced B2C topics. You may try:
 
 -->
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

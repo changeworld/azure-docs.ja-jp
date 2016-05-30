@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Multi-Factor Authentication とは | Microsoft Azure"
-	description="このトピックでは、Multifactor Authentication (mfa) について説明し、MFA を使用する理由、Multifactor Authentication クライアントに関する詳細、使用可能なさまざまな認証方法とバージョンを示します。Azure Multi-Factor Authentication は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。ユーザーのサインインとトランザクションに多層構造のセキュリティを確保することができます。"
+	description="このトピックでは、Multi-Factor Authentication (MFA) について説明し、MFA を使用する理由、Multifactor Authentication クライアントに関する詳細、使用可能なさまざまな認証方法とバージョンを示します。Azure Multi-Factor Authentication は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。ユーザーのサインインとトランザクションに多層構造のセキュリティを確保することができます。"
 	keywords="MFA の概要, mfaの概要, mfa とは"
 	services="multi-factor-authentication"
 	documentationCenter=""
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="04/07/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication とは
@@ -35,7 +35,7 @@ Azure Multi-Factor Authentication を使えば、シンプルなサインイン 
 Azure Multi-Factor Authentication の概要については、次のビデオをご覧ください。
 
 
-> [AZURE.VIDEO multi-factor-authentication-overview]
+>[AZURE.VIDEO multi-factor-authentication-overview]
 
 ##Azure Multi-Factor Authentication を使う理由
 
@@ -54,7 +54,7 @@ Azure Multi-Factor Authentication は、認証手段の多層化によってユ�
 
 Azure Multi-Factor Authentication を使う理由について、さらに詳しい情報については、次のビデオをご覧ください。
 
-> [AZURE.VIDEO windows-azure-multi-factor-authentication]
+>[AZURE.VIDEO windows-azure-multi-factor-authentication]
 
 
 ## Azure Multi-Factor Authentication のしくみ
@@ -75,7 +75,7 @@ Azure Multi-Factor Authentication を使えば、シンプルなサインイン 
 
 しくみの詳細については、次のビデオをご覧ください。
 
-> [AZURE.VIDEO multi-factor-authentication-deep-dive-securing-access-on-premises]
+>[AZURE.VIDEO multi-factor-authentication-deep-dive-securing-access-on-premises]
 
 ## Multi-Factor Authentication で使用可能な方法
 ユーザーがサインインしようとすると、追加の確認がユーザーに対して行われます。この 2 番目の確認のために使用できる方法の一覧を次に示します。
@@ -95,7 +95,7 @@ Azure Multi-Factor Authentication は、次の 3 種類のバージョンが使�
 ------------- | ------------- |
 Office 365 の多要素認証 | このバージョンは、Office 365 アプリケーション専用に動作し、Office 365 ポータルから管理されます。これにより、管理者は多要素認証を使用して Office 365 リソースを保護できるようになります。このバージョンには、Office 365 サブスクリプションが付属しています。
 Azure 管理者用の多要素認証 | すべての Azure 管理者には、Office 365 向けと同じ多要素認証機能が追加費用なしでご利用いただけます。Azure サブスクリプションのすべての管理者アカウントは、この主要な多要素認証機能を有効にすることによって、追加の保護を実現できるようになりました。したがって、Azure ポータルにアクセスして、VM と Web サイトの作成、ストレージの管理、モバイル サービスの使用など、Azure のさまざまなサービスを利用する必要のある管理者は、各自の管理者アカウントに多要素認証を追加することができます。
-Azure Multi-Factor Authentication | Azure Multi-Factor Authentication は、豊富な機能を備えています。Microsoft Azure 管理ポータルを介した追加の構成オプション、高度なレポート、および一連のオンプレミスおよびクラウド アプリケーションのサポートを提供します。Azure Multi-Factor Authentication は、Azure Active Directory Premium の一部として提供されます。
+Azure Multi-Factor Authentication | Azure Multi-Factor Authentication は、豊富な機能を備えています。Microsoft Azure 管理ポータルを介した追加の構成オプション、高度なレポート、および一連のオンプレミスおよびクラウド アプリケーションのサポートを提供します。Azure Multi-Factor Authentication は、Azure Active Directory Premium および Enterprise Mobility Suite の一部として提供されます。
 
 ## バージョンごとの機能の比較
 下の表は、さまざまなバージョンの Azure Multi-Factor Authentication で使用できる機能の一覧を提供しています。
@@ -209,4 +209,4 @@ MFA レポート | ● | ●
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

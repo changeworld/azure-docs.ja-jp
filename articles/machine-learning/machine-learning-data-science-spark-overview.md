@@ -13,37 +13,32 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="05/05/2016"
 	ms.author="bradsev" />
 
 # Azure HDInsight 上の Spark を使用したデータ サイエンスの概要
 
 [AZURE.INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-## はじめに
+この一連のトピックでは、データの取り込み、特徴エンジニアリング、モデリング、モデル評価など、データ サイエンスの一般的な作業を HDInsight Spark を使用して行う方法について説明しています。ここで使用しているデータは、2013 年における NYC タクシーの乗車と料金のデータセットから抽出したサンプルです。構築されるモデルには、ロジスティック回帰と線形回帰、ランダム フォレスト、勾配ブースティング ツリーなどがあります。これらのモデルを Azure Blob Storage (WASB) に保存する方法や、その予測パフォーマンスをスコア付けして評価する方法も、一連のトピックの中で紹介します。クロス検証とハイパーパラメーター スイープを使用してモデルをトレーニングする方法については、高度な内容を扱った別のトピックで説明します。また後続の 3 つのチュートリアルの手順を踏襲するために必要な Spark クラスターのセットアップ方法についても、こちらの「概要」のトピックで取り上げます。
 
 [Spark](http://spark.apache.org/) はビッグ データ分析アプリケーションのパフォーマンスを向上するメモリ内の処理をサポートする、オープン ソースの並列処理のフレームワークです。Spark 処理エンジンは、速度、使いやすさ、高度な分析用に作成されています。Spark のメモリ内の分散計算機能により、機械学習とグラフ計算における反復的なアルゴリズムに対して、Spark は適切な選択肢となります。[MLlib](http://spark.apache.org/mllib/) はスケーラブルな Spark の Machine Learning ライブラリであり、これによってモデリング機能がこの分散環境にもたらされます。
 
-HDInsight Spark は、Azure でホストされるオープン ソースの Spark オファリングです。さらに、Azure Blob (WASB) に格納されているデータを変換、フィルター処理、および視覚化するために Spark クラスターで Spark SQL の対話型クエリを実行できる Jupyter Notebook のサポートも含まれます。
+[HDInsight Spark](../hdinsight/hdinsight-apache-spark-overview.md) は、Azure でホストされるオープン ソースの Spark オファリングです。さらに、Azure BLOB (WASB) に格納されているデータを変換、フィルター処理、および視覚化するために Spark クラスターで Spark SQL の対話型クエリを実行できる **Jupyter PySpark ノートブック**のサポートも含まれます。PySpark は、Spark の Python API です。ここで各種の手法を紹介したりデータを視覚化するためのプロットを表示したりするために使用しているコード スニペットは、Spark クラスターにインストールされた Jupyter Notebook で実行しています。これらのトピックにあるモデリング手順には、各種モデルをトレーニング、評価、保存、および使用する方法を示すコードも含まれています。
 
-メニューでリンクされている一連のトピックでは、2013 年 NYC タクシー乗車および料金データセットのサンプルでデータ探索を実行し、二項分類および回帰モデリング タスクを実行して、モデルを WASB に格納する処理を紹介しています。構築されるモデルには、ロジスティック回帰と線形回帰、ランダム フォレスト、勾配ブースティング ツリーなどがあります。これらのトピックでは、モデルを使用して、モデルの予測パフォーマンスのスコア付けと評価を行う方法も紹介します。より高度なトピックでは、クロス検証とハイパー パラメーター スイープを使用してモデルをトレーニングする方法について説明しています。
-
-これらのトピックにあるモデリング手順には、各種モデルをトレーニング、評価、保存、および使用する方法を示すコードも含まれています。Spark クラスターにインストールされている Jupyter Notebook で実行される Python (PySpark) は、ソリューションのコーディングと関連するプロットの表示を行って、データを視覚化するために使用されます。
-
-セットアップ手順とこのチュートリアルで示すコードは、HDInsight Spark 向けです。ただし、コードはジェネリックであり、すべての Spark クラスター上で動作します。HDInsight Spark を使用していない場合、クラスターのセットアップと管理の手順は、ここに記載されている内容と若干異なります。
+セットアップ手順とこのチュートリアルで示すコードは、HDInsight 3.4 Spark 1.6 向けです。ただし、このページとノートブックに記載しているコードは汎用性があり、すべての Spark クラスター上で動作します。HDInsight Spark を使用していない場合、クラスターのセットアップと管理の手順は、ここに記載されている内容と若干異なります。
 
 ## 前提条件
 
 1\. これらのトピックを開始する前に、Azure サブスクリプションが必要です。Azure サブスクリプションがない場合は、[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-2\. HDInsight Spark クラスター (バージョン Spark 1.5.2 (HDI 3.3)) を作成するには、「[概要: Azure HDInsight での Apache Spark の作成](../hdinsight/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)」を参照してください。
+2\. このチュートリアルを実行するためには HDInsight 3.4 Spark 1.6 クラスターが必要です。クラスターを作成するには、[Azure HDInsight での Apache Spark クラスターの作成](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)に関するページの手順を参照してください。クラスターの種類とバージョンは、**[クラスターの種類の選択]** メニューから指定します。
 
->[AZURE.NOTE] 現在、Notebook で使用される Python2 カーネルや、このチュートリアルのコードでは、Spark (プレビュー) -> Spark 1.5.2 (HDI 3.3) バージョンを使用する必要があります。
 
 ![](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
 
 
-[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+>[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
 ## 2013 年 NYC タクシー データ
@@ -108,37 +103,46 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 
 ## Spark クラスターで、Jupyter Notebook からのコードを実行する 
 
-Azure ポータルから Jupyter Notebook を起動することができます。 Spark クラスターを見つけてクリックし、詳細なクラスター管理ページに移動します。**[クラスター ダッシュ ボード]** をクリックします。ここでは、Jupyter Notebook のアイコンは Spark クラスターに関連付けられています。
+Jupyter Notebook は Azure ポータルから起動できます。ダッシュボードでご利用の Spark クラスターを見つけてクリックし、クラスターの管理ページにアクセスします。**[クラスター ダッシュボード]**、**[Jupyter Notebook]** の順にクリックして、Spark クラスターに関連付けられているノートブックを開きます。
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
 
-***https://CLUSTERNAME.azurehdinsight.net/jupyter*** を参照して、Jupyter Notebook にアクセスすることもできます。ノートブックにアクセスするには、管理者アカウントのパスワードが必要です。
+ブラウザーから ******https://CLUSTERNAME.azurehdinsight.net/jupyter*** で Jupyter Notebook にアクセスすることもできます。この URL の CLUSTERNAME の部分は、実際のクラスターの名前に置き換えてください。ノートブックにアクセスするには、管理者アカウントのパスワードが必要です。
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
 
-Python に移動して、Python スクリプトを実行する既存のノートブックを確認します。パッケージ済みのノートブックのサンプルがいくつか格納されているディレクトリが表示されます。このトピックのコード サンプルが含まれる Notebook は、[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Python) で利用できます。
+[PySpark] を選択すると表示されるディレクトリには、PySpark API を使用する、あらかじめパッケージされたノートブックの例が格納されています。Spark に関連する一連のトピックのコード サンプルを含んだノートブックは [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) から入手できます。
 
-Github から、直接ノートブックを Spark クラスター上の Jupyter Notebook サーバーにアップロードできます。Jupyter のホーム ページで、画面の右側にある **[アップロード]** ボタンをクリックします。ファイル エクスプローラーが開きます。ここで、Notebook の GitHub (raw コンテンツ) URL を貼り付けることができます。次に、**[開く]** をクリックします。Jupyter ファイルの一覧にファイル名が **[アップロード]** ボタンとともに表示されます。この **[アップロード]** ボタンをクリックします。これで、ノートブックがインポートされます。このチュートリアルの次のノートブックをアップロードするには、この手順を繰り返します。(注: ブラウザー下部にあるリンクを右クリックして **[リンクのコピー]** を選択すると、Jupyter アップロード ファイル エクスプ ローラーのダイアログ ボックスに貼り付けることができる GitHub の raw コンテンツ URL を取得することができます)
 
-1.	[machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/machine-learning-data-science-spark-data-exploration-modeling.ipynb)
-2.	[machine-learning-data-science-spark-model-consumption.ipynb](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/machine-learning-data-science-spark-model-consumption.ipynb)
-3.	[machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)
+Github から、直接ノートブックを Spark クラスター上の Jupyter Notebook サーバーにアップロードできます。Jupyter のホーム ページで、画面の右側にある **[アップロード]** ボタンをクリックします。ファイル エクスプローラーが開きます。ここで、Notebook の GitHub (raw コンテンツ) URL を貼り付けることができます。次に、**[開く]** をクリックします。PySpark ノートブックには、次の URL でアクセスできます。
+
+1.	[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)
+2.	[pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-model-consumption.ipynb)
+3.	[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)
+
+Jupyter ファイルの一覧にファイル名が **[アップロード]** ボタンと共に表示されます。この **[アップロード]** ボタンをクリックします。これで、ノートブックがインポートされます。このチュートリアルの次のノートブックをアップロードするには、この手順を繰り返します。
+
+> [AZURE.TIP] ブラウザー下部にあるリンクを右クリックして **[リンクのコピー]** を選択すると、Jupyter アップロード ファイル エクスプローラーのダイアログ ボックスに貼り付けることができる GitHub の raw コンテンツ URL を取得することができます。
 
 ここでは、次の操作を実行できます。
 
 - Notebook をクリックしてコードを参照する
 - **Shift キーを押しながら Enter キー**を押すことで各セルを実行する
-- **[Cell]** (セル)、**[Run]** (実行) の順にクリックして Notebook 全体を実行する
+- **[Cell]** (セル)、**[Run]** (実行) の順にクリックしてノートブック全体を実行する
+- クエリの自動視覚化を使用する
 
+> [AZURE.TIP] PySpark カーネルは、SQL (HiveQL) のクエリの出力を自動的に視覚化します。視覚化にはいくつかの種類 (表、円グラフ、折れ線グラフ、面グラフ、棒グラフ) があり、ノートブックの **[Type]** (タイプ) メニュー ボタンで選択できます。
+
+![Logistic regression ROC curve for generic approach](./media/machine-learning-data-science-spark-overview/pyspark-jupyter-autovisualization.png)
 
 ## 次の手順
 
-HDInsight Spark クラスターが設定され、Jupyter Notebook がアップロードされると、これら 3 つの Notebook に関連するトピック (データの探索方法、モデルの作成および使用方法) を処理できます。高度なデータの探索と Notebook のモデリングでは、クロス検証、ハイパー パラメーター スイープやモデルの評価などに深く踏み込みます。
+HDInsight Spark クラスターが設定され、Jupyter Notebook がアップロードされると、これら 3 つの PySpark ノートブックに関連するトピック (データの探索方法、モデルの作成および使用方法) を処理できます。高度なデータの探索と Notebook のモデリングでは、クロス検証、ハイパー パラメーター スイープやモデルの評価などに深く踏み込みます。
 
-**Spark を使用したデータ探索およびモデリング: **[「Create binary classification and regression models for data with the Spark MLlib toolkit (Spark MLlib ツールキットを使用したデータの二項分類と回帰モデルの作成)](machine-learning-data-science-spark-data-exploration-modeling.md)」で、データセットの詳細を確認し、スコア付けおよび評価される Machine Learning モデルを作成します。
+**Spark を使用したデータ探索およびモデリング: **[Spark MLlib ツールキットを使用したデータの二項分類と回帰モデルの作成](machine-learning-data-science-spark-data-exploration-modeling.md)に関するトピックで、データセットの詳細を確認し、スコア付けおよび評価される Machine Learning モデルを作成します。
 
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付ける方法については、[Spark で構築した機械学習モデルのスコア付けと評価](machine-learning-data-science-spark-model-consumption.md)に関するページをご覧ください。
 
-**クロス検証とハイパー パラメーター スイープ**: クロス検証とハイパー パラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)」を参照してください。
+**クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

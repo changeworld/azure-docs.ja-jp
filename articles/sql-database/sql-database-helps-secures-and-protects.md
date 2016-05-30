@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure SQL Database がセキュリティと保護を支援"
+   pageTitle="Azure SQL Database のセキュリティと保護"
    description="SQL Database でセキュリティと保護を支援する方法"
    keywords=""
    services="sql-database"
@@ -14,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="05/04/2016"
+   ms.date="05/13/2016"
    ms.author="carlrab"/>
    
-# Azure SQL Database がセキュリティと保護を支援
+# Azure SQL Database のセキュリティと保護
 
 ## アプリ データの安全とセキュリティを維持
 
@@ -25,7 +25,7 @@ Azure SQL Database は、数百万単位のミッションクリティカルな�
 
 ![helps-secures-and-protects](./media/sql-database-helps-secures-and-protects/sql-database-helps-secures-and-protects.png)
 
-## 緊急時
+## 我々がサポートします
 
 誰でも、昨日のバックアップにアクセスしたり、災害から復旧したりする状況が起きないように、と願うものです。それでも、そのような状況になった場合は、SQL Database が役に立ちます。99.99% の可用性、自動バックアップ、ポイントインタイム リストア、組み込みの geo レプリケーション、フェールオーバー オプションが用意されているので、アプリが安全な状況にあると安心することができます。
 
@@ -43,6 +43,16 @@ SQL Database には、複数層のデータ保護が用意されています。�
 
 [ドキュメントを参照する](http://go.microsoft.com/fwlink/?LinkID=787593)
 
-SQL Database の他の機能についてはホーム ページを参照してください。[ぜひご確認ください。](https://azure.microsoft.com/services/sql-database/)
+SQL Database の他の機能についてはホーム ページを[ぜひご確認ください。](https://azure.microsoft.com/services/sql-database/)
 
-<!---HONumber=AcomDC_0511_2016-->
+## 次のステップ
+
+[無料の Azure サブスクリプション](https://azure.microsoft.com/get-started/)を入手し、[最初の Azure SQL Database を作成](sql-database-get-started.md)します。
+
+## 詳細情報
+
+[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
+ 
+[SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
+
+<!---HONumber=AcomDC_0518_2016-->

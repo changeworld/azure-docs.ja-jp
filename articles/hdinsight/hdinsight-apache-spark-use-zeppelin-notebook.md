@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/14/2016" 
+	ms.date="05/16/2016" 
 	ms.author="nitinme"/>
 
 
@@ -26,7 +26,7 @@ Spark クラスターに Zeppelin Notebook をインストールする方法と�
 **前提条件:**
 
 * このチュートリアルを開始する前に、Azure サブスクリプションが必要です。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* Apache Spark クラスター。手順については、[Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-provision-clusters.md)に関するページを参照してください。
+* Apache Spark クラスター。手順については、[Azure HDInsight での Apache Spark クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 * SSH クライアントLinux および UNIX のディストリビューション、または Macintosh OS X の場合、オペレーティング システムに `ssh`コマンドが用意されています。Windows の場合は [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をお勧めします。
 
 	> [AZURE.NOTE] `ssh`または PuTTY 以外の SSH クライアントを使用する場合は、クライアントのマニュアルで SSH トンネルの確立方法を確認してください。
@@ -39,13 +39,15 @@ Spark クラスターに Zeppelin Notebook をインストールする方法と�
 
 ## クラスター作成の一部としての Zeppelin のインストール
 
-Zeppelin は、スクリプト アクションを使用して Spark クラスターにインストールできます。スクリプト アクションは、既定で使用できないクラスターにコンポーネントをインストールするためにカスタム スクリプトを使用します。Spark クラスターに Zeppelin をインストールするカスタム スクリプトは、**https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** で入手できます。
+Zeppelin は、スクリプト アクションを使用して Spark クラスターにインストールできます。スクリプト アクションは、既定で使用できないクラスターにコンポーネントをインストールするためにカスタム スクリプトを使用します。HDInsight .NET SDK を使用するか、または Azure PowerShell を使用すると、カスタム スクリプトを使用して、Azure ポータルから Zeppelin をインストールできます。
 
 ### Azure ポータルの使用
 
-Zeppelin をインストールするスクリプト アクションを実行するために HDInsight .NET SDK を使用する方法については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-from-the-azure-portal)」を参照してください。その記事の手順は、いくつか変更する必要があります。
+Zeppelin をインストールするスクリプト アクションを実行するために HDInsight .NET SDK を使用する方法については、「[スクリプト アクションを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-from-the-azure-portal)」を参照してください。その記事の手順は、いくつか変更する必要があります。
 
-* Zeppelin をインストールするために、スクリプトを使用する必要があります。使用するスクリプトは、**https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** です。
+* Zeppelin をインストールするには、スクリプトを使用する必要があります。HDInsight の Spark クラスターに Zeppelin をインストールするカスタム スクリプトは、次のリンクから入手できます。
+	* Spark 1.6.0 クラスターの場合 - `https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark160-v01.sh`
+	* Spark 1.5.2 クラスターの場合 - `https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh`
 
 * スクリプト アクションは、ヘッドノードでのみ実行する必要があります。
 
@@ -53,9 +55,11 @@ Zeppelin をインストールするスクリプト アクションを実行す�
 
 ### HDInsight .NET SDK の使用
 
-Zeppelin をインストールするスクリプト アクションを実行するために HDInsight .NET SDK を使用する方法については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-from-the-hdinsight-net-sdk)」を参照してください。その記事の手順は、いくつか変更する必要があります。
+Zeppelin をインストールするスクリプト アクションを実行するために HDInsight .NET SDK を使用する方法については、「[スクリプト アクションを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-from-the-hdinsight-net-sdk)」を参照してください。その記事の手順は、いくつか変更する必要があります。
 
-* Zeppelin をインストールするために、スクリプトを使用する必要があります。使用するスクリプトは、**https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh** です。
+* Zeppelin をインストールするには、スクリプトを使用する必要があります。HDInsight の Spark クラスターに Zeppelin をインストールするカスタム スクリプトは、次のリンクから入手できます。
+	* Spark 1.6.0 クラスターの場合 - `https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark160-v01.sh`
+	* Spark 1.5.2 クラスターの場合 - `https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh`
 
 * スクリプトにパラメーターは必要ありません。
 
@@ -63,7 +67,13 @@ Zeppelin をインストールするスクリプト アクションを実行す�
 
 ### Azure PowerShell の使用
 
-次の PowerShell スニペットを使用すると、Zeppelin がインストールされている HDInsight Linux の Spark クラスターを作成できます。作業を進める前に、PowerShell がインストールされていることを確認してください。手順については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。
+次の PowerShell スニペットを使用すると、Zeppelin がインストールされている HDInsight Linux の Spark クラスターを作成できます。所有している Spark クラスターのバージョンに応じて、対応するカスタム スクリプトへのリンクを含めるために、次の PowerShell スニペットを更新する必要があります。
+
+* Spark 1.6.0 クラスターの場合 - `https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark160-v01.sh`
+* Spark 1.5.2 クラスターの場合 - `https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh`
+
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+
 
 	Login-AzureRMAccount
 	
@@ -191,7 +201,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	* **[パターン名]** - **zeppelinnotebook** - パターンのフレンドリ名です。
 
-	* **URL パターン** - **\*hn0*\** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン **hn0** を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
+	* **URL パターン** - ***hn0*** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン **hn0** を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
 
 		![foxyproxy のパターン](./media/hdinsight-apache-spark-use-zeppelin-notebook/foxypattern.png)
 
@@ -217,13 +227,13 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 
 2. 新しい Notebook を作成します。ヘッダー ウィンドウで **[Notebook]** をクリックし、**[Note の新規作成]** をクリックします。
 
-	![新しい Zeppelin Notebook を作成します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.createnewnote.png "新しい Zeppelin Notebook を作成します")
+	![新しい Zeppelin Notebook を作成します](./media/hdinsight-apache-spark-use-zeppelin-notebook/hdispark.createnewnote.png "新しい Zeppelin Notebook を作成します")
 
 	同じページの **[Notebook]** 見出しの下に、**Note XXXXXXXXX** で名前が始まる新しい Notebook が表示されます。新しい Notebook をクリックします。
 
 3. 新しい Notebook の Web ページで、見出しをクリックし、必要に応じて Notebook の名前を変更します。Enter キーを押して名前の変更を保存します。また、Notebook のヘッダーの右上隅に **[接続]** というステータスが表示されることを確認します。
 
-	![Zeppelin Notebook のステータス](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.newnote.connected.png "Zeppelin Notebook のステータス")
+	![Zeppelin Notebook のステータス](./media/hdinsight-apache-spark-use-zeppelin-notebook/hdispark.newnote.connected.png "Zeppelin Notebook のステータス")
 
 4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターを作成すると、サンプル データ ファイル **hvac.csv** が、関連するストレージ アカウントの **\\HdiSamples\\SensorSampleData\\hvac** にコピーされます。
 
@@ -250,7 +260,7 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 		
 	**Shift + Enter** キーを押すか、段落の **[プレイ]** ボタンをクリックして、スニペットを実行します。段落の右上隅にあるステータスが、[準備完了]、[保留中]、[実行中]、[完了] の順に進行します。出力が同じ段落の下に表示されます。スクリーンショットは次のようになります。
 
-	![生データから一時テーブルを作成します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.note.loaddataintotable.png "生データから一時テーブルを作成します")
+	![生データから一時テーブルを作成します](./media/hdinsight-apache-spark-use-zeppelin-notebook/hdispark.note.loaddDataintotable.png "生データから一時テーブルを作成します")
 
 	各段落にタイトルを指定することもできます。右上隅の **[設定]** アイコンをクリックし、**[タイトルの表示]** をクリックします。
 
@@ -265,7 +275,7 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 
 	次のスクリーンショットでは出力を示します。
 
-	![Notebook を使用して Spark SQL ステートメントを実行します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.note.sparksqlquery1.png "Notebook を使用して Spark SQL ステートメントを実行します")
+	![Notebook を使用して Spark SQL ステートメントを実行します](./media/hdinsight-apache-spark-use-zeppelin-notebook/hdispark.note.sparksqlquery1.png "Notebook を使用して Spark SQL ステートメントを実行します")
 
 	 表示オプション (四角で囲ってある部分) をクリックして、同じ出力の異なる表現に切り替えることができます。**[設定]** をクリックして、出力のキーと値の構成を選択します。上記の画面キャプチャでは、**buildingID** をキーとして使用し、**temp\_diff** の平均を値として使用しています。
 
@@ -279,13 +289,13 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 
 	このスニペットを新しい段落に貼り付けて、**Shift + Enter** キーを押します。次のスクリーンショットでは出力を示します。
 
-	![Notebook を使用して Spark SQL ステートメントを実行します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.note.sparksqlquery2.png "Notebook を使用して Spark SQL ステートメントを実行します")
+	![Notebook を使用して Spark SQL ステートメントを実行します](./media/hdinsight-apache-spark-use-zeppelin-notebook/hdispark.note.sparksqlquery2.png "Notebook を使用して Spark SQL ステートメントを実行します")
 
 	後続のクエリでは、ドロップダウンから新しい値を選択し、クエリを再実行できます。**[設定]** をクリックして、出力のキーと値の構成を選択します。上の画面キャプチャでは、**buildingID** をキーとして、**temp\_diff** の平均を値として、**targettemp** をグループとして使用しています。
 
 7. Spark SQL インタープリターを再起動して、アプリケーションを終了します。上部の **[インタープリター]** タブをクリックし、Spark インタープリターの **[再起動]** をクリックします。
 
-	![Zeppelin インタープリターを再起動します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1/hdispark.zeppelin.restart.interpreter.png "Zeppelin インタープリターを再起動します")
+	![Zeppelin インタープリターを再起動します](./media/hdinsight-apache-spark-use-zeppelin-notebook/hdispark.zeppelin.restart.interpreter.png "Zeppelin インタープリターを再起動します")
 
 
 ## <a name="seealso"></a>関連項目
@@ -313,7 +323,7 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 
@@ -332,4 +342,4 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

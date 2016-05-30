@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Script Action を使用して Hadoop クラスターに Spark をインストールする | Microsoft Azure"
-	description="Script Action を使用し、Spark で HDInsight クラスターをカスタマイズする方法について説明します。"
+	pageTitle="スクリプト アクションを使用して Hadoop クラスターに Spark をインストールする | Microsoft Azure"
+	description="スクリプト アクションを使用し、Spark で HDInsight クラスターをカスタマイズする方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="nitinme"
@@ -18,7 +18,7 @@
 
 # スクリプト アクションを使用して、HDInsight Hadoop クラスターで Spark をインストールして使用する
 
-> [AZURE.IMPORTANT] この記事は現在、推奨されていません。現在、HDInsight は、Spark を Windows ベースのクラスターに対する最上位のクラスターの種類として提供します。つまり、現在、スクリプト アクションを使用して Hadoop クラスターを変更しなくても、Spark クラスターを直接作成できます。Spark クラスターの種類を使用して、Spark バージョン 1.3.1 の HDInsight バージョン 3.2 クラスターを取得します。Spark のさまざまなバージョンをインストールするために、Script Action を使用できます。HDInsight には、Script Action のサンプル スクリプトがあります。
+> [AZURE.IMPORTANT] この記事は現在、推奨されていません。現在、HDInsight は、Spark を Windows ベースのクラスターに対する最上位のクラスターの種類として提供します。つまり、現在、スクリプト アクションを使用して Hadoop クラスターを変更しなくても、Spark クラスターを直接作成できます。Spark クラスターの種類を使用して、Spark バージョン 1.3.1 の HDInsight バージョン 3.2 クラスターを取得します。Spark のさまざまなバージョンをインストールするために、スクリプト アクションを使用できます。HDInsight には、スクリプト アクションのサンプル スクリプトがあります。
 
 スクリプト アクションを使用して Windows ベースの HDInsight に Spark をインストールし、HDInsight クラスターで Spark クエリを実行する方法について説明します。
 
@@ -27,11 +27,11 @@
 
 - [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報。
 
-- [HDInsight での Apache Spark の使用](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md): Windows OS で Spark タイプのクラスターを作成します。
+- [HDInsight での Apache Spark の使用](hdinsight-apache-spark-jupyter-spark-sql.md): HDInsight の Spark クラスターを作成します。
 
-- [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: Script Action を使用した HDInsight クラスターのカスタマイズに関する一般情報。
+- [スクリプト アクションを使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: スクリプト アクションを使用した HDInsight クラスターのカスタマイズに関する一般情報。
 
-- [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions.md)。
+- [HDInsight 用のスクリプト アクションのスクリプトを開発する](hdinsight-hadoop-script-actions.md)。
 
 ## Spark とは
 
@@ -50,7 +50,7 @@ HDInsight クラスターに Spark をインストールするためのサンプ
 
 このスクリプトを変更するか、独自のスクリプトを作成してその他の Spark バージョンをインストールできます。
 
-> [AZURE.NOTE] サンプル スクリプトは、HDInsight 3.1 と 3.2 クラスターでのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
+> [AZURE.NOTE] サンプル スクリプトは、HDInsight 3.1 と 3.2 クラスターでのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」を参照してください。
 
 1. 「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md#portal)」の説明に基づき、**CUSTOM CREATE** オプションを使用してクラスターの作成を開始します。次に基づいてクラスター バージョンを選択します。
 
@@ -60,7 +60,7 @@ HDInsight クラスターに Spark をインストールするためのサンプ
 
 2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
-	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-spark-install/HDI.CustomProvision.Page6.png "Script Action を使ってクラスターをカスタマイズする")
+	![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-spark-install/HDI.CustomProvision.Page6.png "スクリプト アクションを使ってクラスターをカスタマイズする")
 
 	<table border='1'>
 		<tr><th>プロパティ</th><th>値</th></tr>
@@ -88,7 +88,7 @@ Spark は Scala、Python、および Java で API を提供します。対話型
 ###<a name="sparkshell"></a>Spark シェルを使用して、対話型のクエリを実行する
 次の手順を実行して、対話型の Spark シェルから Spark クエリを実行します。このセクションでは、既定で HDInsight クラスターに用意されているサンプル データ ファイル (/example/data/gutenberg/davinci.txt) に対して Spark クエリを実行します。
 
-1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」をご覧ください。
+1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」を参照してください。
 
 2. Remote Desktop Protocol (RDP) セッションで、デスクトップから Hadoop コマンド ライン (デスクトップ ショートカットから) を開き、Spark がインストールされている場所、たとえば **C:\\apps\\dist\\spark-1.2.0** に移動します。
 
@@ -118,11 +118,11 @@ Spark は Scala、Python、および Java で API を提供します。対話型
 
 ###<a name="sparksql"></a>Spark シェルを使用して、Spark SQL のクエリを実行する
 
-Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、Scala で表されるリレーショナル クエリを実行することができます。このセクションでは、Spark を使用した Hive テーブルのサンプルにおける Hive クエリの実行について確認します。このセクションで使用する Hive テーブル (**hivesampletable**) は、クラスターを作成する際に既定で使用できます。
+Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、Scala で表されるリレーショナル クエリを実行することができます。このセクションでは、Spark を使用した Hive テーブルのサンプルにおける Hive クエリの実行について確認します。このセクションで使用する Hive テーブル (**hivesampletable**) は、クラスターを作成するときに既定で使用できます。
 
 >[AZURE.NOTE] 下記のサンプルは HDInsight 3.2 クラスターの作成中にスクリプト アクションを実行するとインストールされる **Spark 1.2.0** に対して作成されました。
 
-1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」をご覧ください。
+1. Spark のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」を参照してください。
 
 2. RDP セッションで、デスクトップから Hadoop コマンドライン (デスクトップ ショートカットから) を開き、Spark がインストールされている場所、たとえば **C:\\apps\\dist\\spark-1.2.0** に移動します。
 
@@ -233,7 +233,7 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 
 ## Azure PowerShell を使用した Spark のインストール
 
-このセクションでは、**<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptActionScript Action</a>** コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。次に進む前に、Azure PowerShell をインストールして構成したことを確認します。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」をご覧ください。
+このセクションでは、**<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptActionScript Action</a>** コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。次に進む前に、Azure PowerShell をインストールして構成したことを確認します。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。
 
 次の手順に従います。
 
@@ -271,7 +271,7 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:550px; padding-left:5px; padding-right:5px;">定義</th></tr>
 	<tr>
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Config</td>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">Script Action 情報が追加される構成オブジェクト</td></tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">スクリプト アクション情報が追加される構成オブジェクト</td></tr>
 	<tr>
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">名前</td>
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">スクリプト アクションの名前。</td></tr>
@@ -296,19 +296,19 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 
 ## PowerShell を使用した Spark のインストール
 
-「[Script Action を使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call_scripts_using_powershell)」を参照してください。
+「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call_scripts_using_powershell)」を参照してください。
 
 ## .NET SDK を使用して Spark をインストールする
 
-「[Script Action を使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call_scripts_using_azure_powershell)」を参照してください。
+「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call_scripts_using_azure_powershell)」を参照してください。
 
 
 ## 関連項目
 
 - [HDInsight で Hadoop を作成する](hdinsight-provision-clusters.md): HDInsight クラスターを作成します。
-- [HDInsight で Apache Spark を使用する](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md): HDInsight で Spark を使用します。
-- [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: Script Action を使用して HDInsight クラスターをカスタマイズします。
-- [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions.md): Script Action スクリプトを開発します。
+- [HDInsight で Apache Spark を使用する](hdinsight-apache-spark-jupyter-spark-sql.md): HDInsight で Spark を使用します。
+- [スクリプト アクションを使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: スクリプト アクションを使用して HDInsight クラスターをカスタマイズします。
+- [HDInsight 用のスクリプト アクションのスクリプトを開発する](hdinsight-hadoop-script-actions.md): スクリプト アクションのスクリプトを開発します。
 - 「[HDInsight Hadoop クラスターでの R のインストール][hdinsight-install-r]」に関するページでは、HDInsight Hadoop クラスターで R をインストールして使用するためのクラスター カスタマイズの使用法に関する手順が説明されています。R は、統計計算用のオープン ソースの言語および環境です。R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。また、広範なグラフィカル機能も提供します。
 - [HDInsight クラスターでの Giraph のインストール](hdinsight-hadoop-giraph-install.md): クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
 - [HDInsight クラスターでの Solr のインストール](hdinsight-hadoop-solr-install.md):クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。Solr は、格納されたデータに対して強力な検索操作を実行することができます。
@@ -318,4 +318,4 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [powershell-install-configure]: powershell-install-configure.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

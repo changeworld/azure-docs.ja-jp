@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="05/06/2016" 
 	ms.author="sethm"/>
 
 # クラウドと社内にまたがったハイブリッド アプリケーションの有効化
@@ -43,8 +43,8 @@
 ## 関連サービス
 
 - [BizTalk Services](https://azure.microsoft.com/services/biztalk-services/)
-- [Mobile Services](https://azure.microsoft.com/services/mobile-services/)
+- [Mobile Apps](https://azure.microsoft.com/services/app-service/mobile/)
 - [Cloud Services](https://azure.microsoft.com/services/cloud-services/) 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

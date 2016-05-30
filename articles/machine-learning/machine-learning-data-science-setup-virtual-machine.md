@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
-	ms.author="mohabib;xibingao;bradsev" />
+	ms.date="05/10/2016"
+	ms.author="xibingao;bradsev" />
 
 # 高度な分析のために Azure 仮想マシンを IPython Notebook サーバーとしてセットアップする
 
@@ -85,14 +85,11 @@ IPython Notebook サーバーにアクセスするには、Web ブラウザー�
 
 次の図のように、_この Web サイトのセキュリティ証明書には問題があります_ (Internet Explorer) や_この接続ではプライバシーが保護されません_ (Chrome) という警告が表示されます。Internet Explorer の場合は **[このサイトの閲覧を続行する (推奨されません)]**、Chrome の場合は **[詳細設定]** の **[&#60;*DNS 名*> にアクセスする (安全ではありません)]** をクリックして続行します。次に、既に指定したパスワードを入力して IPython Notebook にアクセスします。
 
-Internet Explorer:
-![Create workspace][20]
+Internet Explorer: ![Create workspace][20]
 
-Chrome:
-![Create workspace][21]
+Chrome: ![Create workspace][21]
 
-IPython Notebook にログオンした後、*DataScienceSamples* ディレクトリがブラウザーに表示されます。このディレクトリには、ユーザーがデータ サイエンス タスクを実行するうえで役立つ、Microsoft が共有するサンプル IPython Notebook が含まれています。これらのサンプル IPython Notebook は、IPython Notebook サーバーのセットアップ プロセス中に [**Github リポジトリ**](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)から仮想マシンにチェックアウトされます。Microsoft はこのリポジトリを保守し、頻繁に更新しています。ユーザーは Github リポジトリを参照して、最近更新されたサンプル IPython Notebook を入手できます。
-![Create workspace][18]
+IPython Notebook にログオンした後、*DataScienceSamples* ディレクトリがブラウザーに表示されます。このディレクトリには、ユーザーがデータ サイエンス タスクを実行するうえで役立つ、Microsoft が共有するサンプル IPython Notebook が含まれています。これらのサンプル IPython Notebook は、IPython Notebook サーバーのセットアップ プロセス中に [**Github リポジトリ**](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)から仮想マシンにチェックアウトされます。Microsoft はこのリポジトリを保守し、頻繁に更新しています。ユーザーは Github リポジトリを参照して、最近更新されたサンプル IPython Notebook を入手できます。![Create workspace][18]
 
 ## <a name="upload"></a>手順 5: 既存の IPython Notebook をローカル マシンから IPython Notebook サーバーにアップロードする
 
@@ -107,7 +104,7 @@ IPython Notebook を使用すると、ユーザーはローカル マシン上�
 
 Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用しないときに課金されないようにするには、未使用時に **[停止 (割り当て解除)]** 状態にする必要があります。
 
-> [AZURE.NOTE] \(Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Microsoft Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その場合、"PostShutdownAction" を "StoppedDeallocated" に設定して **ShutdownRoleOperation** を呼び出します。
+> [AZURE.NOTE] (Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Microsoft Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その場合、"PostShutdownAction" を "StoppedDeallocated" に設定して **ShutdownRoleOperation** を呼び出します。
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 
@@ -145,4 +142,4 @@ Cortana Analytics Process の次のステップは、[ラーニング パス](ht
 [28]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-5.png
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

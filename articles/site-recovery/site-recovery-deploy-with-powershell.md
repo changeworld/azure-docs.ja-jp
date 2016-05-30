@@ -19,9 +19,11 @@
 # PowerShell を使用して VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする - クラシック
 
 > [AZURE.SELECTOR]
-- [Azure クラシック ポータル](site-recovery-vmm-to-azure.md)
+- [Azure ポータル](site-recovery-vmm-to-azure.md)
+- [PowerShell - ARM](site-recovery-vmm-to-azure-powershell-resource-manager.md)
+- [クラシック ポータル](site-recovery-vmm-to-azure-classic.md)
 - [PowerShell - クラシック](site-recovery-deploy-with-powershell.md)
-- [PowerShell - Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md) 
+
 
 ## 概要
 
@@ -34,7 +36,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 このシナリオの設定時に問題が発生した場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
 
 
-> [AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。この記事では、クラシック デプロイ モデルの使用方法について説明します。
+> [AZURE.NOTE] Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。この記事では、クラシック デプロイ モデルの使用方法について説明します。
 
 
 
@@ -447,4 +449,4 @@ marsagentinstaller.exe /q /nu
 
 Azure Site Recovery PowerShell コマンドレットの詳細を[確認します](https://msdn.microsoft.com/library/dn850420.aspx)</a>。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

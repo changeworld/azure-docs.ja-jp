@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/07/2016"
+   ms.date="05/11/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager MMC スナップインのデプロイ
@@ -23,7 +23,7 @@ StorSimple Snapshot Manager は、Microsoft Azure StorSimple 環境でのデー�
 
 このチュートリアルでは構成要件に加え、StorSimple Snapshot Manager のインストール、削除、およびアップグレード手順についても説明します。
 
->[AZURE.NOTE]
+>[AZURE.NOTE] 
 >
 >- StorSimple Snapshot Manager を使用して、Microsoft Azure StorSimple Virtual Array (別名 StorSimple オンプレミス仮想デバイス) を管理することはできません。
 >
@@ -39,9 +39,7 @@ Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナ�
 
 次の手順では、StorSimple Snapshot Manager をインストールする前に完了する必要がある構成タスクの概要を説明します。システム要件や詳細な手順の説明など、Microsoft Azure StorSimple の構成とセットアップに関する完全な情報については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」をご覧ください。
 
->[AZURE.IMPORTANT] 開始する前に、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)
-> 」にある「[デプロイメント チェックリスト](storsimple-deployment-walkthrough.md#deployment-configuration-checklist)」と「[デプロイメントの前提条件](storsimple-deployment-walkthrough.md#deployment-prerequisites)」をご確認ください。
-<br>
+>[AZURE.IMPORTANT] 開始する前に、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」にある「[デプロイメント チェックリスト](storsimple-deployment-walkthrough.md#deployment-configuration-checklist)」と「[デプロイメントの前提条件](storsimple-deployment-walkthrough.md#deployment-prerequisites)」をご確認ください。<br>
  
 ### StorSimple Snapshot Manager をインストールする前に
 
@@ -185,7 +183,7 @@ StorSimple Snapshot Manager をアンインストールするには、以下の�
 
 4. これにより、StorSimple Snapshot Manager のセットアップ プログラムが開始します。**[セットアップの変更]** をクリックし、**[アンインストール]** をクリックします。
 
-    >[AZURE.NOTE]StorSimple Snapshot Manager や ディスクの管理など、バック グラウンドで実行されている MMC プロセスがある場合、アンインストールは失敗し、プログラムのアンインストールを試行する前に、MMC のすべてのインスタンスを閉じるように求めるメッセージが表示されます。**[セットアップの完了後、アプリケーションを自動的に終了して、再起動する]** を選択し、**[OK]** をクリックします。
+    >[AZURE.NOTE] StorSimple Snapshot Manager や ディスクの管理など、バック グラウンドで実行されている MMC プロセスがある場合、アンインストールは失敗し、プログラムのアンインストールを試行する前に、MMC のすべてのインスタンスを閉じるように求めるメッセージが表示されます。**[セットアップの完了後、アプリケーションを自動的に終了して、再起動する]** を選択し、**[OK]** をクリックします。
  
 5. アンインストール プロセスが完了したら、**[セットアップ完了]** メッセージが表示されます。**[閉じる]** をクリックします。
 
@@ -207,9 +205,9 @@ StorSimple Snapshot Manager データベースのコピーを作成して保存�
 
         ![Stop the StorSimple Manager service](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
 
-2. C:\ProgramData\Microsoft\StorSimple\BACatalog を参照します。
+2. C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
 
-    >[AZURE.NOTE]ProgramData は隠しフォルダーです。
+    >[AZURE.NOTE] ProgramData は隠しフォルダーです。
 
 3. カタログ XML ファイルを検索し、ファイルをコピーして、安全な場所、またはクラウドにコピーを保存します。
 
@@ -239,9 +237,9 @@ StorSimple Snapshot Manager を再インストールするには、「[StorSimpl
 
     4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスの停止]** をクリックします。
 
-2. C:\ProgramData\Microsoft\StorSimple\BACatalog を参照します。
+2. C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
 
-     >[AZURE.NOTE]ProgramData は隠しフォルダーです。
+     >[AZURE.NOTE] ProgramData は隠しフォルダーです。
 
 3. カタログ XML ファイルを削除し、以前に保存したバージョンで置き換えます。
 
@@ -261,4 +259,4 @@ StorSimple Snapshot Manager を再インストールするには、「[StorSimpl
 
 - StorSimple Snapshot Manager の使用方法については、「[StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)」を参照してください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0518_2016-->

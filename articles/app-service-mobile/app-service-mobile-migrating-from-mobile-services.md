@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/14/2016"
+	ms.date="04/26/2016"
 	ms.author="adrianhall"/>
 
 # <a name="article-top"></a>既存の Azure Mobile Service を Azure App Service に移行する
@@ -248,7 +248,7 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 通知ハブは [Azure ポータル]経由で管理されます。Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
 
   1. [Azure ポータル]にログインします。
-  2. **[参照]** > \[Notification Hubs] の順に選択します。
+  2. **[参照]** > **[Notification Hubs]** の順に選択します。
   3. モバイル サービスに関連付けられている通知ハブの名前をクリックします。
 
 > [AZURE.NOTE] 「Mixed」タイプの場合、通知ハブは表示されません。「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。[Mixed 名前空間を変換する]必要があります。変換が完了すると、通知ハブが [Azure ポータル]に表示されます。
@@ -332,6 +332,33 @@ Azure PowerShell を使用して、移行したモバイル サービスを複�
 
 解決策: Microsoft ではこの問題に取り組んでいます。サイトを複製する必要がある場合は、ポータルを使用してください。
 
+### web.config の変更が機能しない
+
+ASP.NET サイトがある場合、`Web.config` ファイルの変更は機能しません。Azure App Service は、Mobile Services ランタイムをサポートするために適切な `Web.config` ファイルを起動時に作成します。XML 変換ファイルを使用することで特定の設定 (カスタム ヘッダーなど) をオーバーライドできます。呼び出される `applicationHost.xdt` でファイルを作成します。このファイルは Azure Service の `D:\home\site` ディレクトリに格納されます。これは、カスタム デプロイ スクリプトで、または直接 Kudu を使用して、実現できます。ドキュメントの例を以下に示します。
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <system.webServer>
+    <httpProtocol>
+      <customHeaders>
+        <add name="X-Frame-Options" value="DENY" xdt:Transform="Replace" />
+        <remove name="X-Powered-By" xdt:Transform="Insert" />
+      </customHeaders>
+    </httpProtocol>
+    <security>
+      <requestFiltering removeServerHeader="true" xdt:Transform="SetAttributes(removeServerHeader)" />
+    </security>
+  </system.webServer>
+</configuration>
+```
+
+詳細については、GitHub の「[XDT Transform Samples (XDT 変換サンプル)]」を参照してください。
+
+### 移行された Mobile Services を Traffic Manager に追加できない
+
+Traffic Manager プロファイルを作成するとき、移行された Mobile Services をプロファイルに直接選択できません。"外部エンドポイント" を使用する必要があります。外部エンドポイントは、PowerShell でしか追加できません。詳細については、[Traffic Manager のチュートリアル](https://azure.microsoft.com/blog/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 アプリケーションが App Service に移行され、活用できる機能がさらに増えました。
@@ -354,17 +381,17 @@ Azure PowerShell を使用して、移行したモバイル サービスを複�
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[App Service 価格]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service 価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [自動スケール]: ../app-service-web/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [Azure App Service のデプロイに関するドキュメント]: ../app-service-web/web-sites-deploy.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 [Azure ポータル]: https://portal.azure.com
-[Azure リージョン]: https://azure.microsoft.com/regions/
+[Azure リージョン]: https://azure.microsoft.com/ja-JP/regions/
 [Azure Scheduler プラン]: ../scheduler/scheduler-plans-billing.md
 [連続的にデプロイ]: ../app-service-web/web-sites-publish-source-control.md
-[Mixed 名前空間を変換する]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[Mixed 名前空間を変換する]: https://azure.microsoft.com/ja-JP/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
 [custom domain names]: ../app-service-web/web-sites-custom-domain-name.md
 [Fiddler]: http://www.telerik.com/fiddler
@@ -380,5 +407,6 @@ Azure PowerShell を使用して、移行したモバイル サービスを複�
 [ステージング スロット]: ../app-service-web/web-sites-staged-publishing.md
 [VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
+[XDT Transform Samples (XDT 変換サンプル)]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

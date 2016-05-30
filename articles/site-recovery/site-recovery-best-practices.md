@@ -33,7 +33,18 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 **コンポーネント** | **Azure にレプリケート (VMM を使用)** | **Azure にレプリケート (VMM を使用しない)** | **セカンダリ サイトにレプリケート (VMM を使用)**
 ---|---|---|---
-**VMM** | 1 つまたは複数の VMM サーバーが System Center 2012 R2 で実行されていること。VMM サーバーには、1 つまたは複数の VMM ホスト グループを含むクラウドが少なくとも 1 つ必要です。 | 適用不可 | 少なくとも 1 つの VMM サーバーが System Center 2012 R2 で実行されていること。各サイトに 1 つの VMM サーバーをお勧めします。VMM サーバーには、1 つまたは複数の VMM ホスト グループを含むクラウドが少なくとも 1 つ必要です。クラウドには、Hyper-V 機能プロファイルが設定されている必要があります。 **Hyper-V** | Windows Server 2012 R2 以上を実行しているオンプレミスのデータセンターに、1 つまたは複数の Hyper-V ホスト サーバーがあること。Hyper-V サーバーが VMM クラウド内のホスト グループに配置されている必要があります。 | Windows Server 2012 R2 以上を実行しているソース サイトとターゲット サイトに、1 つまたは複数の Hyper-V サーバーがあること。 | 最新の更新プログラムが適用された Windows Server 2012 以上を実行しているソース サイトとターゲット サイトに、1 つまたは複数の Hyper-V サーバーがあること。Hyper-V サーバーが VMM クラウド内のホスト グループに配置されている必要があります。**仮想マシン** | ソース Hyper-V サーバーに少なくとも 1 つの VM が必要です。Azure にレプリケートする VM が [Azure 仮想マシンの前提条件](#azure-virtual-machine-requirements)を満たしている必要があります。<br>[こちら](https://technet.microsoft.com/library/hh846766.aspx#BKMK_step4)で説明されている手順に従い、VM の[統合サービス](https://technet.microsoft.com/library/dn798297.aspx)をインストールまたはアップグレードしてください。 | ソース Hyper-V サーバーに少なくとも 1 つの VM があること。Azure にレプリケートする VM が [Azure 仮想マシンの前提条件](#azure-virtual-machine-requirements)を満たしている必要があります。<br>[こちら](https://technet.microsoft.com/library/hh846766.aspx#BKMK_step4)で説明されている手順に従い、VM の[統合サービス](https://technet.microsoft.com/library/dn798297.aspx)をインストールまたはアップグレードしてください。 | ソース VMM クラウドに少なくとも 1 つの VM があること。<br>[こちら](https://technet.microsoft.com/library/hh846766.aspx#BKMK_step4)で説明されている手順に従い、VM の[統合サービス](https://technet.microsoft.com/library/dn798297.aspx)をインストールまたはアップグレードしてください。**Azure アカウント** | [Azure](https://azure.microsoft.com/) アカウントとサブスクリプションが必要です。 | 適用不可 | [Azure](https://azure.microsoft.com/) アカウントとサブスクリプションが必要です。 **Azure Storage** | レプリケートしたデータを格納するには [Azure ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。 | 適用不可 | レプリケートしたデータを格納するには [Azure ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。 **プロバイダー/エージェント** | デプロイのときに、Azure Site Recovery プロバイダーを VMM サーバーにインストールし、Azure Recovery Services エージェントを Hyper-V ホスト サーバーにインストールします。プロバイダーは、Azure Site Recovery と通信します。エージェントは、ソースとターゲットの Hyper-V サーバー間のデータ レプリケーションを処理します。VM には何もインストールされていません。 | デプロイのときに、Azure Site Recovery プロバイダーと Azure Recovery Services エージェントの両方を Hyper-V ホスト サーバーまたはクラスターにインストールします。VM には何もインストールされていません。 | デプロイのときに、Azure Site Recovery プロバイダーを VMM サーバーにインストールして、Azure Site Recovery と通信できるようにします。レプリケーションは LAN/VPN で Hyper-V ソース サーバーとターゲット サーバーの間で発生します。 **プロバイダー/エージェント接続** | プロバイダーから Site Recovery サービスにプロキシ経由で接続する場合は、プロキシから Site Recovery の URL にアクセスできることを確認する必要があります。 | プロバイダーから Site Recovery にプロキシ経由で接続する場合は、プロキシから Site Recovery の URL にアクセスできることを確認する必要があります。 | プロバイダーから Site Recovery にプロキシ経由で接続する場合は、プロキシから Site Recovery の URL にアクセスできることを確認する必要があります。 **インターネット接続** | VMM サーバーおよび Hyper-V ホストから。 | Hyper-V ホストから。 | VMM サーバー上のみ。 **ネットワーク マッピング** | 仮想マシンがどの復旧計画に含まれているのかに関係なく、同じ Azure ネットワーク上でフェールオーバーするすべての仮想マシンが相互に通信できるように、ネットワーク マッピングをセットアップします。ターゲット Azure ネットワーク上にネットワーク ゲートウェイが存在する場合は、仮想マシンはオンプレミスの仮想マシンにも接続できます。ネットワーク マッピングを設定しない場合は、同じ復旧計画に属する、フェールオーバーするマシンのみが接続できます。 | 適用不可 | 仮想マシンがフェールオーバー後に適切なネットワークに確実に接続されて、レプリカ仮想マシンがターゲット Hyper-V ホスト サーバーに最適に配置されるように、ネットワーク マッピングをセットアップします。ネットワーク マッピングを構成しない場合、フェールオーバー後に、レプリケートされたマシンは、どの VM ネットワークにも接続されません。 **ストレージ マッピング** | 適用不可 | 適用不可 | 仮想マシンがフェールオーバー後にストレージに最適に接続されるように、ストレージ マッピング オプションを任意でセットアップできます (既定で、レプリカ VM はターゲット Hyper-V サーバー上に指定された場所に格納されます)。 **SAN レプリケーション** | 適用不可 | 適用不可 | 2 つのオンプレミス VMM サイト間で SAN レプリケーションを使用してレプリケートする場合は、既存の SAN 環境を使用することができます。[サポートされる SAN 配列](http://social.technet.microsoft.com/wiki/contents/articles/28317.deploying-azure-site-recovery-with-vmm-and-san-supported-storage-arrays.aspx)に関するページをご覧ください。 **詳細情報** | [詳細なデプロイメントの前提条件](site-recovery-vmm-to-azure.md#before-you-start) | [詳細なデプロイメントの前提条件](site-recovery-hyper-v-site-to-azure.md#before-you-start#before-you-start) | [詳細なデプロイメントの前提条件](site-recovery-vmm-to-vmm.md#before-you-start)
+**VMM** | 1 つまたは複数の VMM サーバーが System Center 2012 R2 で実行されていること。VMM サーバーには、1 つまたは複数の VMM ホスト グループを含むクラウドが少なくとも 1 つ必要です。 | 適用不可 | 少なくとも 1 つの VMM サーバーが System Center 2012 R2 で実行されていること。各サイトに 1 つの VMM サーバーをお勧めします。VMM サーバーには、1 つまたは複数の VMM ホスト グループを含むクラウドが少なくとも 1 つ必要です。クラウドには、Hyper-V 機能プロファイルが設定されている必要があります。
+**Hyper-V** | Windows Server 2012 R2 以上を実行しているオンプレミスのデータセンターに、1 つまたは複数の Hyper-V ホスト サーバーがあること。Hyper-V サーバーが VMM クラウド内のホスト グループに配置されている必要があります。 | Windows Server 2012 R2 以上を実行しているソース サイトとターゲット サイトに、1 つまたは複数の Hyper-V サーバーがあること。 | 最新の更新プログラムが適用された Windows Server 2012 以上を実行しているソース サイトとターゲット サイトに、1 つまたは複数の Hyper-V サーバーがあること。Hyper-V サーバーが VMM クラウド内のホスト グループに配置されている必要があります。
+**仮想マシン** | ソース Hyper-V サーバーに少なくとも 1 つの VM が必要です。Azure にレプリケートする VM が [Azure 仮想マシンの前提条件](#azure-virtual-machine-requirements)を満たしている必要があります。<br>[こちら](https://technet.microsoft.com/library/hh846766.aspx#BKMK_step4)で説明されている手順に従い、VM の[統合サービス](https://technet.microsoft.com/library/dn798297.aspx)をインストールまたはアップグレードしてください。 | ソース Hyper-V サーバーに少なくとも 1 つの VM があること。Azure にレプリケートする VM が [Azure 仮想マシンの前提条件](#azure-virtual-machine-requirements)を満たしている必要があります。<br>[こちら](https://technet.microsoft.com/library/hh846766.aspx#BKMK_step4)で説明されている手順に従い、VM の[統合サービス](https://technet.microsoft.com/library/dn798297.aspx)をインストールまたはアップグレードしてください。 | ソース VMM クラウドに少なくとも 1 つの VM があること。<br>[こちら](https://technet.microsoft.com/library/hh846766.aspx#BKMK_step4)で説明されている手順に従い、VM の[統合サービス](https://technet.microsoft.com/library/dn798297.aspx)をインストールまたはアップグレードしてください。
+**Azure アカウント** | [Azure](https://azure.microsoft.com/) アカウントとサブスクリプションが必要です。 | 適用不可 | [Azure](https://azure.microsoft.com/) アカウントとサブスクリプションが必要です。
+**Azure Storage** | レプリケートしたデータを格納するには [Azure ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。 | 適用不可 | レプリケートしたデータを格納するには [Azure ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。
+**プロバイダー/エージェント** | デプロイのときに、Azure Site Recovery プロバイダーを VMM サーバーにインストールし、Azure Recovery Services エージェントを Hyper-V ホスト サーバーにインストールします。プロバイダーは、Azure Site Recovery と通信します。エージェントは、ソースとターゲットの Hyper-V サーバー間のデータ レプリケーションを処理します。VM には何もインストールされていません。 | デプロイのときに、Azure Site Recovery プロバイダーと Azure Recovery Services エージェントの両方を Hyper-V ホスト サーバーまたはクラスターにインストールします。VM には何もインストールされていません。 | デプロイのときに、Azure Site Recovery プロバイダーを VMM サーバーにインストールして、Azure Site Recovery と通信できるようにします。レプリケーションは LAN/VPN で Hyper-V ソース サーバーとターゲット サーバーの間で発生します。
+**プロバイダー/エージェント接続** | プロバイダーから Site Recovery サービスにプロキシ経由で接続する場合は、プロキシから Site Recovery の URL にアクセスできることを確認する必要があります。 | プロバイダーから Site Recovery にプロキシ経由で接続する場合は、プロキシから Site Recovery の URL にアクセスできることを確認する必要があります。 | プロバイダーから Site Recovery にプロキシ経由で接続する場合は、プロキシから Site Recovery の URL にアクセスできることを確認する必要があります。
+**インターネット接続** | VMM サーバーおよび Hyper-V ホストから。 | Hyper-V ホストから。 | VMM サーバー上のみ。
+**ネットワーク マッピング** | 仮想マシンがどの復旧計画に含まれているのかに関係なく、同じ Azure ネットワーク上でフェールオーバーするすべての仮想マシンが相互に通信できるように、ネットワーク マッピングをセットアップします。ターゲット Azure ネットワーク上にネットワーク ゲートウェイが存在する場合は、仮想マシンはオンプレミスの仮想マシンにも接続できます。ネットワーク マッピングを設定しない場合は、同じ復旧計画に属する、フェールオーバーするマシンのみが接続できます。 | 適用不可 | 仮想マシンがフェールオーバー後に適切なネットワークに確実に接続されて、レプリカ仮想マシンがターゲット Hyper-V ホスト サーバーに最適に配置されるように、ネットワーク マッピングをセットアップします。ネットワーク マッピングを構成しない場合、フェールオーバー後に、レプリケートされたマシンは、どの VM ネットワークにも接続されません。
+**ストレージ マッピング** | 適用不可 | 適用不可 | 仮想マシンがフェールオーバー後にストレージに最適に接続されるように、ストレージ マッピング オプションを任意でセットアップできます (既定で、レプリカ VM はターゲット Hyper-V サーバー上に指定された場所に格納されます)。
+**SAN レプリケーション** | 適用不可 | 適用不可 | 2 つのオンプレミス VMM サイト間で SAN レプリケーションを使用してレプリケートする場合は、既存の SAN 環境を使用することができます。[サポートされる SAN 配列](http://social.technet.microsoft.com/wiki/contents/articles/28317.deploying-azure-site-recovery-with-vmm-and-san-supported-storage-arrays.aspx)に関するページをご覧ください。
+**詳細情報** | [詳細なデプロイメントの前提条件](site-recovery-vmm-to-azure.md#before-you-start) | [詳細なデプロイメントの前提条件](site-recovery-hyper-v-site-to-azure.md#before-you-start#before-you-start) | [詳細なデプロイメントの前提条件](site-recovery-vmm-to-vmm.md#before-you-start)
 
 
 
@@ -46,7 +57,16 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 **コンポーネント** | **Azure にレプリケート (拡張)** | **セカンダリ サイトへのレプリケート**
 ---|---|---
-**オンプレミスのプライマリ サイト** | すべての Site Recovery コンポーネント (構成、プロセス、マスター ターゲット) を実行する管理サーバーをインストールします。 | レプリケーション データのキャッシュ、圧縮、および暗号化のためのプロセス サーバーをインストールしてから、セカンダリ サイトに送信します。負荷分散やフォールト トレランスのための他のプロセス サーバーをインストールすることができます。 **オンプレミスのセカンダリ サイト** | 適用不可 | デプロイの構成、管理、および監視に使用される 1 つの構成サーバーをインストールします。<br/><br>サーバー管理を容易に構成できるように、vContinuum サーバーをインストールすることをお勧めします。<br/><br/>セカンダリ vSphere サーバーで実行されている VM としてマスター ターゲット サーバーをセットアップする必要があります。 **VMware vCenter/ESXi** | プライマリ サイトに VMware VM をレプリケートする場合 (または物理サーバーをフェールバックする場合)、プライマリ サイトに vSphere ESX/ESXi が必要です。ESXi ホストを管理する vCenter サーバーもお勧めします。 | プライマリ サイトとセカンダリ サイトに 1 つまたは複数の VMware ESXi ホスト (必要に応じて vCenter サーバーも) が必要です。 **フェールバック** | 物理サーバーをレプリケートする場合でも、Azure からフェールバックする VMware 環境が必要です。<br/><br/>Azure VM としてプロセス サーバーをセットアップする必要があります。<br/><br/>構成サーバーがマスター ターゲット サーバーとして動作しますが、大量のトラフィックをフェールバックする場合は、その他のオンプレミス マスター ターゲット サーバーをセットアップすることが必要になる可能性もあります。[詳細情報](site-recovery-failback-azure-to-vmware-classic.md)| 物理マシンでフェールオーバーした場合でも、セカンダリ サイトからプライマリ サイトへのフェールバックは VMware に限られます。フェールバックのために、マスター ターゲット サーバーをプライマリ vSphere サーバー上の VM としてセットアップする必要があります。 **Azure アカウント** | [Azure](https://azure.microsoft.com/) アカウントとサブスクリプションが必要です。 | 適用不可 **Azure Storage** | レプリケートしたデータを格納するには [Azure ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。 | 適用不可 **Azure Virtual Network** | フェールオーバーが発生した場合に Azure VM が接続する Azure 仮想ネットワークが必要です。フェールオーバー後にフェールバックするには、Azure ネットワークからオンプレミス サイトへの VPN 接続 (または Azure ExpressRoute) のセットアップが必要です。 | 適用不可 **保護されたマシン** | 少なくとも 1 つの VMware 仮想マシンまたは物理 Windows/Linux サーバー。デプロイのときに、レプリケートする各マシンに Mobility サービスがインストールされます。 | 少なくとも 1 つの VMware 仮想マシンまたは物理 Windows/Linux サーバー。デプロイのときに、レプリケートする各マシンに統合エージェントがインストールされます。 **接続** | 管理サーバーからプロキシ経由で Site Recovery に接続する場合、プロキシ サーバーが特定の URL に接続できることを確認する必要があります。 | 構成サーバーがインターネットにアクセスできる必要があります。 **詳細** | [詳細なデプロイメントの前提条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)。 | InMage Scout ユーザー ガイドを[ダウンロード](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)します。
+**オンプレミスのプライマリ サイト** | すべての Site Recovery コンポーネント (構成、プロセス、マスター ターゲット) を実行する管理サーバーをインストールします。 | レプリケーション データのキャッシュ、圧縮、および暗号化のためのプロセス サーバーをインストールしてから、セカンダリ サイトに送信します。負荷分散やフォールト トレランスのための他のプロセス サーバーをインストールすることができます。
+**オンプレミスのセカンダリ サイト** | 適用不可 | デプロイの構成、管理、および監視に使用される 1 つの構成サーバーをインストールします。<br/><br>サーバー管理を容易に構成できるように、vContinuum サーバーをインストールすることをお勧めします。<br/><br/>セカンダリ vSphere サーバーで実行されている VM としてマスター ターゲット サーバーをセットアップする必要があります。
+**VMware vCenter/ESXi** | プライマリ サイトに VMware VM をレプリケートする場合 (または物理サーバーをフェールバックする場合)、プライマリ サイトに vSphere ESX/ESXi が必要です。ESXi ホストを管理する vCenter サーバーもお勧めします。 | プライマリ サイトとセカンダリ サイトに 1 つまたは複数の VMware ESXi ホスト (必要に応じて vCenter サーバーも) が必要です。
+**フェールバック** | 物理サーバーをレプリケートする場合でも、Azure からフェールバックする VMware 環境が必要です。<br/><br/>Azure VM としてプロセス サーバーをセットアップする必要があります。<br/><br/>構成サーバーがマスター ターゲット サーバーとして動作しますが、大量のトラフィックをフェールバックする場合は、その他のオンプレミス マスター ターゲット サーバーをセットアップすることが必要になる可能性もあります。[詳細情報](site-recovery-failback-azure-to-vmware-classic.md)| 物理マシンでフェールオーバーした場合でも、セカンダリ サイトからプライマリ サイトへのフェールバックは VMware に限られます。フェールバックのために、マスター ターゲット サーバーをプライマリ vSphere サーバー上の VM としてセットアップする必要があります。
+**Azure アカウント** | [Azure](https://azure.microsoft.com/) アカウントとサブスクリプションが必要です。 | 適用不可
+**Azure Storage** | レプリケートしたデータを格納するには [Azure ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。 | 適用不可
+**Azure Virtual Network** | フェールオーバーが発生した場合に Azure VM が接続する Azure 仮想ネットワークが必要です。フェールオーバー後にフェールバックするには、Azure ネットワークからオンプレミス サイトへの VPN 接続 (または Azure ExpressRoute) のセットアップが必要です。 | 適用不可
+**保護されたマシン** | 少なくとも 1 つの VMware 仮想マシンまたは物理 Windows/Linux サーバー。デプロイのときに、レプリケートする各マシンに Mobility サービスがインストールされます。 | 少なくとも 1 つの VMware 仮想マシンまたは物理 Windows/Linux サーバー。デプロイのときに、レプリケートする各マシンに統合エージェントがインストールされます。
+**接続** | 管理サーバーからプロキシ経由で Site Recovery に接続する場合、プロキシ サーバーが特定の URL に接続できることを確認する必要があります。 | 構成サーバーがインターネットにアクセスできる必要があります。
+**詳細** | [詳細なデプロイメントの前提条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)。 | InMage Scout ユーザー ガイドを[ダウンロード](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)します。
 
 
 ## Azure 仮想マシンの要件
@@ -65,7 +85,7 @@ VMware ハイパーバイザー | サポートされるオペレーティング 
 データ ディスク数 | 16 以下 (最大値は、作成される仮想マシンのサイズの関数であり、16 = XL で求められます。) | サポートされていない場合、前提条件の確認は失敗します。
 データ ディスク VHD のサイズ | 最大 1023 GB | サポートされていない場合、前提条件の確認は失敗します。
 ネットワーク アダプター | 複数のアダプターがサポートされます。 |
-静的 IP アドレス | サポートされています | プライマリ仮想マシンが静的 IP アドレスを使用している場合、Azure で作成される仮想マシンに静的 IP アドレスを指定できます。Hyper-V で実行されている Linux 仮想マシンの場合、静的 IP アドレスはサポートされません。 
+静的 IP アドレス | サポートされています | プライマリ仮想マシンが静的 IP アドレスを使用している場合、Azure で作成される仮想マシンに静的 IP アドレスを指定できます。Hyper-V で実行されている Linux 仮想マシンの場合、静的 IP アドレスはサポートされません。
 iSCSI ディスク | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
 共有 VHD | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
 FC ディスク | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
@@ -92,7 +112,19 @@ FC ディスク | サポートされていません | サポートされてい�
 - **RPO**: Azure にレプリケートするときには、Site Recovery は、ほぼ同期の回復ポイントの目標 (RPO) をサポートします。これは、データセンターと Azure の間に十分な帯域幅があることを前提としています。
 
 
+##サービス URL
+サーバーからこれらの URL にアクセスできるようにします。
 
+
+**URL** | **VMM から VMM** | **VMM から Azure** | **Hyper-V サイトから Azure** | **VMware から Azure**
+---|---|---|---|---
+ *.accesscontrol.windows.net | アクセス権が必要 | アクセス権が必要 | アクセス権が必要 | アクセス権が必要
+ *.backup.windowsazure.com | | アクセス権が必要 | アクセス権が必要 | アクセス権が必要
+ *.hypervrecoverymanager.windowsazure.com | アクセス権が必要 | アクセス権が必要 | アクセス権が必要 | アクセス権が必要
+ *.store.core.windows.net | アクセス権が必要 | アクセス権が必要 | アクセス権が必要 | アクセス権が必要
+ *.blob.core.windows.net | | アクセス権が必要 | アクセス権が必要 | アクセス権が必要
+ https://www.msftncsi.com/ncsi.txt | アクセス権が必要 | アクセス権が必要 | アクセス権が必要 | アクセス権が必要
+ https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi | | | | アクセス権が必要
 
 
 ## 次のステップ
@@ -107,4 +139,4 @@ FC ディスク | サポートされていません | サポートされてい�
 - [Hyper-V VM をセカンダリ サイトにレプリケート (SAN を使用)](site-recovery-vmm-san.md)
 - [Hyper-V VM をレプリケート (単一の VMM サーバーを使用)](site-recovery-single-vmm.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

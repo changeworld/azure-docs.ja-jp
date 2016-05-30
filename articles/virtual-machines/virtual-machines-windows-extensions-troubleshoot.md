@@ -28,9 +28,9 @@ Azure リソース マネージャー テンプレートは、Azure Powershell �
 
 たとえば次のようになります。
 
-Azure Powershell:
+Azure PowerShell:
 
-      Get-AzureVM -ResourceGroupName $RGName -Name $vmName -Status
+      Get-AzureRmVM -ResourceGroupName $RGName -Name $vmName -Status
 
 出力例を次に示します。
 
@@ -61,13 +61,13 @@ Azure Powershell:
 
 ### VM での拡張機能の再実行
 
-VM でカスタム スクリプト拡張機能を使用してスクリプトを実行している場合、VM は正常に作成されたがスクリプトは失敗するというエラーが発生することがあります。このような状況でこのエラーから回復するためにお勧めする方法は、拡張機能を削除してもう一度テンプレートに戻ることです。注: 将来的には、拡張機能のアンインストールが不要になるように機能強化が行われるる予定です。
+VM でカスタム スクリプト拡張機能を使用してスクリプトを実行している場合、VM は正常に作成されたがスクリプトは失敗するというエラーが発生することがあります。このような状況でこのエラーから回復するためにお勧めする方法は、拡張機能を削除してもう一度テンプレートに戻ることです。注: 将来的には、拡張機能のアンインストールが不要になるように機能強化が行われる予定です。
 
 
 #### Azure Powershell から拡張機能を削除する
 
-    Remove-AzureVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
+    Remove-AzureRmVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
 拡張機能を削除した後、テンプレートを再実行して、VM 上でスクリプトを実行できます。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

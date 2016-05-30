@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="04/16/2016"
+  ms.date="05/09/2016"
   ms.author="andrl"/>
 
 # コミュニティ ポータル
@@ -147,12 +147,8 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | イベント名 | 講演者 | 場所 | 日付 | ハッシュタグ |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------------------------ | ------- |
-| [グローバル Azure ブートキャンプ: 南カリフォルニア](http://xprs.imcreator.com/free/vishalishere/gab2016) | Leonard Lobel | カリフォルニア州オレンジ | 2016 年 4 月 16 日 | [#GlobalAzure](https://twitter.com/hashtag/GlobalAzure)
-| [グローバル Azure ブートキャンプ: レドモンド](https://www.eventbrite.com/e/2016-global-azure-bootcamp-redmond-wa-tickets-21387752343) | David Makogon | ワシントン州レドモンド | 2016 年 4 月 16 日 | [#GlobalAzure](https://twitter.com/hashtag/GlobalAzure)
-| [Integration User Group](http://www.integrationusergroup.com/#) | Howard Edidin | ウェビナー | 2016 年 4 月 25 日 | 該当なし |
-| [Meetup: NYC .NET Developers Group](http://www.meetup.com/NYC-NET-Developers/events/230396260/) | Leonard Lobel | ニューヨーク州ニューヨーク市 | 2016 年 4 月 21 日 | 該当なし |
-| [SQLBits XV](https://sqlbits.com/) | Andrew Liu、Aravind Ramachandran | リバプール (英国) | 2016 年 5 月 4 ～ 7日 | [#SQLBits](https://twitter.com/hashtag/SQLBits)
 | [Meetup: UK Azure User Group](http://www.meetup.com/UKAzureUserGroup/events/229673468/) | Andrew Liu | ロンドン (英国) | 2016 年 5 月 12 日 | 該当なし |
+| [Meetup: ONETUG - Orlando .NET User Group ](http://www.meetup.com/ONETUG/events/230797164/) | Santosh Hari | オーランド (フロリダ州) | 2016 年 5 月 12 日 | [#ONETUG](https://twitter.com/search?q=%23onetug&src=typd) |
 
 *イベントで講演を行ったり、イベントを主催していますか。 お手伝いできることがあれば[お知らせください](mailto:askdocdb@microsoft.com)。*
 
@@ -160,6 +156,11 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | イベント名 | 講演者 | 場所 | 日付 | 記録 |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ---------------------- | --------- |
+| [SQLBits XV](https://sqlbits.com/) | Andrew Liu、Aravind Ramachandran | リバプール (英国) | 2016 年 5 月 4 ～ 7日 | 該当なし
+| [Meetup: NYC .NET Developers Group](http://www.meetup.com/NYC-NET-Developers/events/230396260/) | Leonard Lobel | ニューヨーク州ニューヨーク市 | 2016 年 4 月 21 日 | 該当なし |
+| [Integration User Group](http://www.integrationusergroup.com/#) | Howard Edidin | ウェビナー | 2016 年 4 月 25 日 | 該当なし |
+| [グローバル Azure ブートキャンプ: 南カリフォルニア](http://xprs.imcreator.com/free/vishalishere/gab2016) | Leonard Lobel | カリフォルニア州オレンジ | 2016 年 4 月 16 日 | 該当なし |
+| [グローバル Azure ブートキャンプ: レドモンド](https://www.eventbrite.com/e/2016-global-azure-bootcamp-redmond-wa-tickets-21387752343) | David Makogon | ワシントン州レドモンド | 2016 年 4 月 16 日 | 該当なし |
 | [SQL Saturday #481 - Israel 2016](http://www.sqlsaturday.com/481/Sessions/Details.aspx?sid=40912) | Leonard Lobel | ハメルカズ (イスラエル) | 2016 年 4 月 4 日 | 該当なし |
 | [Build 2016](https://build.microsoft.com/) | John Macintyre | カリフォルニア州サンフランシスコ | 2016 年 3 月 31 日 | [DocumentDB と Azure の NoSQL ドキュメント データベースでアプリケーションを大規模に配信](https://channel9.msdn.com/Events/Build/2016/B840)
 | [SQL Saturday #505 - Belgium 2016](http://www.sqlsaturday.com/505/Sessions/Details.aspx?sid=44217) | Mihail Mateev | アントワープ (ベルギー) | 2016 年 3 月 19 日 | 該当なし |
@@ -307,4 +308,4 @@ DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できる�
 
 DocumentDB ウィザードになりたいですか。 DocumentDB ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度が評価されます。[電子メールを送信](mailto:askdocdb@microsoft.com)することで、自薦または他薦できます。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

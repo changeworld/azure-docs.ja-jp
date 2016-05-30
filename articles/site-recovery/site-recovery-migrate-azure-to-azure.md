@@ -33,7 +33,7 @@
 
 このデプロイで必要なものを次に示します。
 
-- **管理サーバー**: 管理サーバーとして動作する、Windows Server 2012 R2 を実行するオンプレミス VM。このサーバーに Site Recovery コンポーネント (構成サーバーとプロセス サーバーを含む) をインストールします。詳細については、[管理サーバーの考慮事項](site-recovery-vmware-to-azure-classic.md#management-server-considerations)と[オンプレミスの前提条件](site-recovery-vmware-to-azure-classic.md#on-premises-prerequisites)を参照してください。
+- **管理サーバー**: 管理サーバーとして機能する、Windows Server 2012 R2 を実行している VM。このサーバーに Site Recovery コンポーネント (構成サーバーとプロセス サーバーを含む) をインストールします。詳細については、[管理サーバーの考慮事項](site-recovery-vmware-to-azure-classic.md#management-server-considerations)と[ソースの前提条件](site-recovery-vmware-to-azure-classic.md#on-premises-prerequisites)をご覧ください。
 - **IaaS 仮想マシン**: 移行する VM。
 
 ## デプロイの手順
@@ -61,4 +61,4 @@
 
 その他のレプリケーション シナリオの詳細については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

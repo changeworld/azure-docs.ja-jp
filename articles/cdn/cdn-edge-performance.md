@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016"
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 # Microsoft Azure CDN でのエッジ ノード パフォーマンスの分析
 
+[AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
+
 ## 概要
 エッジ パフォーマンス分析は、CDN のトラフィックや帯域幅の使用状況の詳細な情報を提供します。この情報は、傾向分析の統計を生成するために使用できます。この統計を使用すると、アセットがどのようにキャッシュされ、クライアントに配信されるかを把握できます。さらに、コンテンツの配信を最適化する方法の戦略を立てたり、CDN を活用するために取り組む必要がある問題を判断したりすることができます。その結果、データ配信のパフォーマンスを向上させるだけでなく、CDN コストを削減することもできます。
 
-> [AZURE.NOTE] エッジ パフォーマンス分析は、Premium CDN レベルの機能です。Standard CDN と Premium CDN の機能の比較については、「[Azure CDN の概要](cdn-overview.md)」を参照してください。
->
-> すべてのレポートは、日付/時刻を指定するときに、UTC/GMT 表記を使用します。
+> [AZURE.NOTE] すべてのレポートは、日付/時刻を指定するときに、UTC/GMT 表記を使用します。
 
 ## レポートとログの収集
 
@@ -192,4 +192,4 @@ HTTP 応答コード | エッジ サーバーによって HTTP クライアン�
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
 * [詳細な HTTP レポート](cdn-advanced-http-reports.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

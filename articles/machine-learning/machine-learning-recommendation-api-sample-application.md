@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="05/18/2016" 
 	ms.author="luisca"/>
 
 
@@ -90,4 +90,4 @@ API の詳細については、Microsoft Azure Marketplace のドキュメント
 サンプル アプリケーションは、運用環境での実行を意図していません。カタログに提供されたデータはごく小さく、意味のある推奨モデルとはなりませんが、デモの目的でのみ提供されています。
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

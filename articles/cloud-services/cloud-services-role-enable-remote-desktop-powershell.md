@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="01/19/2016" 
+ms.date="05/17/2016" 
 ms.author="adegeo"/>
 
 # PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
@@ -35,7 +35,7 @@ ms.author="adegeo"/>
 PowerShell を対話形式で使用している場合は、[Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) コマンドレットを呼び出すことで、PSCredential オブジェクトを簡単に設定できます。
 
 ```
-	$remoteusercredentials = Get-Credential
+$remoteusercredentials = Get-Credential
 ```
 
 これにより、リモート ユーザーのユーザー名とパスワードを安全な方法で入力できるダイアログ ボックスが表示されます。
@@ -45,7 +45,7 @@ PowerShell は自動化のシナリオで使用されることが多いため、
 セキュリティで保護されたパスワード ファイルを作成するには、次の PowerShell を使用します。
 
 ```
-	ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-SecureString | Set-Content "password.txt"
+ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-SecureString | Set-Content "password.txt"
 ``` 
 
 パスワード ファイル (password.txt) が作成されると、このファイルのみを使用するようになるので、プレーンテキストでパスワードを指定する必要がなくなります。パスワードの更新が必要な場合は、新しいパスワードを使用して上記の PowerShell を再度実行することで、新しい password.txt ファイルを生成できます。
@@ -57,12 +57,12 @@ PowerShell は自動化のシナリオで使用されることが多いため、
 次の PowerShell の例では、クラウド サービスでリモート デスクトップ拡張機能を設定する方法を示しています。
 
 ```
-	$servicename = "cloudservice"
-	$username = "RemoteDesktopUser"
-	$securepassword = Get-Content -Path "password.txt" | ConvertTo-SecureString
-	$expiry = $(Get-Date).AddDays(1)
-	$credential = New-Object System.Management.Automation.PSCredential $username,$securepassword
-	Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $credential -Expiration $expiry 
+$servicename = "cloudservice"
+$username = "RemoteDesktopUser"
+$securepassword = Get-Content -Path "password.txt" | ConvertTo-SecureString
+$expiry = $(Get-Date).AddDays(1)
+$credential = New-Object System.Management.Automation.PSCredential $username,$securepassword
+Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $credential -Expiration $expiry 
 ```
 また、必要に応じて、リモート デスクトップを有効にするデプロイ スロットおよびロールを指定することもできます。これらのパラメーターが指定されていない場合、コマンドレットは既定で運用環境のデプロイ スロットを使用し、運用環境のデプロイに含まれるすべてのロールでリモート デスクトップを有効にします。
 
@@ -73,7 +73,7 @@ PowerShell は自動化のシナリオで使用されることが多いため、
 [Get-AzureRemoteDesktopFile](https://msdn.microsoft.com/library/azure/dn495261.aspx) コマンドレットを使用すると、クラウド サービスの特定のロール インスタンスにリモート デスクトップ接続できます。このコマンドレットでは、*LocalPath* パラメーターを使用して RDP ファイルをローカルにダウンロードすることも、*Launch* パラメーターを使用して、クラウド サービスのロール インスタンスにアクセスするための [リモート デスクトップ接続] ダイアログを直接起動することもできます。
 
 ```
-	Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
+Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
 ```
 
 
@@ -81,7 +81,7 @@ PowerShell は自動化のシナリオで使用されることが多いため、
 [Get-AzureServiceRemoteDesktopExtension](https://msdn.microsoft.com/library/azure/dn495261.aspx) コマンドレットを使用すると、サービスのデプロイでリモート デスクトップが有効になっているかどうかが表示されます。このコマンドレットによって、リモート デスクトップ ユーザーのユーザー名と、リモート デスクトップ拡張機能が有効になっているロールが返されます。デプロイ スロットは既定で運用環境になっているため、必要に応じて指定できます。
 
 ```
-	Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
+Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 ```
 
 ## リモート デスクトップ拡張機能をサービスから削除する 
@@ -91,10 +91,11 @@ PowerShell は自動化のシナリオで使用されることが多いため、
 
 ```
 Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallConfiguration
-
 ```  
 
->[AZURE.NOTE] *UninstallConfiguration* パラメーターを使用すると、サービスに適用されていた拡張機能の構成がアンインストールされます。拡張機能のすべての構成は、デプロイによって拡張機能をアクティブ化するためにサービス構成に関連付けられており、デプロイはその拡張機能の構成に関連付けられている必要があります。*UninstallConfiguration* を使用せずに Remove コマンドレットを呼び出すと、拡張機能の構成からデプロイとの関連付けが解除されるため、実質的にはデプロイから拡張機能が削除されることになります。ただし、拡張機能の構成は、サービスに関連付けられたままになります。拡張機能の構成を完全に削除するには、*UninstallConfiguration* パラメーターを使用して Remove コマンドレットを呼び出す必要があります。
+>[AZURE.NOTE] 拡張機能の構成を完全に削除するには、**UninstallConfiguration** パラメーターを使用して *Remove* コマンドレットを呼び出す必要があります。
+>
+>**UninstallConfiguration** パラメーターを使用すると、サービスに適用されていた拡張機能の構成がアンインストールされます。拡張機能のすべての構成は、デプロイによって拡張機能をアクティブ化するためにサービス構成に関連付けられており、デプロイはその拡張機能の構成に関連付けられている必要があります。**UninstallConfiguration** を使用せずに *Remove* コマンドレットを呼び出すと、拡張機能の構成からデプロイとの関連付けが解除されるため、実質的にはデプロイから拡張機能が削除されることになります。ただし、拡張機能の構成は、サービスに関連付けられたままになります。
 
 
 
@@ -102,4 +103,4 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 
 [Cloud Services の構成方法](cloud-services-how-to-configure.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

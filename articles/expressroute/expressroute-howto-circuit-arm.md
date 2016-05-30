@@ -16,6 +16,7 @@
    ms.date="04/15/2016"
    ms.author="ganesr"/>
 
+
 # ExpressRoute 回線の作成と変更
 
 > [AZURE.SELECTOR]
@@ -35,7 +36,7 @@
 
 - Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) を入手します。PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」の手順に従ってください。
 
-- 構成を開始する前に、[前提条件](expressroute-prerequisites.md)ページと[ワークフロー](expressroute-workflows.md)ページを確認してください。
+- 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
 
 ## ExpressRoute 回線の作成とプロビジョニング
 
@@ -55,7 +56,7 @@ ExpressRoute 回線を作成するサブスクリプションを選択します�
 
 ### 2\.サポートされるプロバイダー、場所、帯域幅のリストを取得する
 
-ExpressRoute 回線を作成する前に、接続プロバイダー、サポートされている場所、帯域幅オプションのリストが必要になります。
+ExpressRoute 回線を作成する前に、サポートされている接続プロバイダー、場所、帯域幅オプションのリストが必要になります。
 
 PowerShell コマンドレット `Get-AzureRmExpressRouteServiceProvider` を実行すると、この情報が返されます。この情報は、後のステップで使用します。
 
@@ -85,12 +86,12 @@ PowerShell コマンドレット `Get-AzureRmExpressRouteServiceProvider` を実
 
 必ず、適切な SKU レベルと SKU ファミリを指定してください。
 
-- SKU レベルによって、ExpressRoute の Standard と Premium のどちらのアドオンが有効になるかが決まります。Standard SKU を取得する場合は "Standard"、Premium アドオンの場合は "Premium" を指定できます。
- 
-- SKU ファミリによって、課金の種類が決まります。従量制課金データ プランの場合は "Metereddata"、無制限データ プランの場合は "Unlimiteddata" を指定できます。**注:** 課金の種類を "Metereddata" から "Unlimiteddata" に変更することはできますが、"Unlimiteddata" から "Metereddata" に変更することはできません。
+- SKU レベルによって、ExpressRoute の Standard と Premium のどちらのアドオンが有効になるかが決まります。標準 SKU を取得する場合は *[Standard]* を、プレミアム アドオンの場合は *[Premium]* を指定できます。
+
+- SKU ファミリによって、課金の種類が決まります。従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。課金の種類を *Metereddata* から *Unlimiteddata* に変更することはできますが、*Unlimiteddata* から *Metereddata* に変更することはできません。
 
 
->[AZURE.IMPORTANT] ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。接続プロバイダーが回線をプロビジョニングする準備ができたら、この操作を実行してください。
+>[AZURE.IMPORTANT] ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。接続プロバイダーが回線をプロビジョニングする準備ができたら、この操作を実行します。
 
 応答にはサービス キーが含まれます。以下を実行することで、すべてのパラメーターの詳細な説明を取得できます。
 
@@ -104,9 +105,9 @@ PowerShell コマンドレット `Get-AzureRmExpressRouteServiceProvider` を実
 
 
 	Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-	
+
 応答は、次の例のようになります。
-	
+
 
 	Name                             : ExpressRouteARMCircuit
 	ResourceGroupName                : ExpressRouteResourceGroup
@@ -129,15 +130,15 @@ PowerShell コマンドレット `Get-AzureRmExpressRouteServiceProvider` を実
 	                                    }
 	ServiceKey                        : **************************************
 	Peerings                          : []
-	
-この情報は、`Get-AzureRmExpressRouteCircuit` コマンドレットを使用していつでも取得できます。パラメーターを指定せずに呼び出しを実行すると、すべての回線が一覧表示されます。サービス キーは "ServiceKey" フィールドに一覧表示されます。
-	
+
+この情報は、`Get-AzureRmExpressRouteCircuit` コマンドレットを使用していつでも取得できます。パラメーターを指定せずに呼び出しを実行すると、すべての回線が一覧表示されます。サービス キーは *ServiceKey* フィールドに一覧表示されます。
+
 
 	Get-AzureRmExpressRouteCircuit
 
 
 応答は、次の例のようになります。
-	
+
 
 	Name                             : ExpressRouteARMCircuit
 	ResourceGroupName                : ExpressRouteResourceGroup
@@ -169,7 +170,7 @@ PowerShell コマンドレット `Get-AzureRmExpressRouteServiceProvider` を実
 
 ### 5\.プロビジョニングのためにサービス キーを接続プロバイダーに送信する
 
-"ServiceProviderProvisioningState" はサービス プロバイダー側でのプロビジョニングの現在の状態に関する情報を提供し、Statusは Microsoft 側での状態を示します。回線のプロビジョニング状態に関する詳細については、[ワークフロー](expressroute-workflows.md#expressroute-circuit-provisioning-states)に関する記事を参照してください。
+*ServiceProviderProvisioningState* は、サービス プロバイダー側でのプロビジョニングの現在の状態に関する情報を提供します。Status は、Microsoft 側での状態を提供します。回線のプロビジョニング状態に関する詳細については、[ワークフロー](expressroute-workflows.md#expressroute-circuit-provisioning-states)に関する記事を参照してください。
 
 新しい ExpressRoute 回線を作成する場合、この回線は次の状態になります。
 
@@ -191,14 +192,14 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 
 ### 6\.回線キーのステータスと状態を定期的に確認する
 
-回線キーのステータスと状態をチェックすると、いつプロバイダーによって回線が有効にされたかがわかります。回線が構成されると、以下の例に示すように、"ServiceProviderProvisioningState" が "Provisioned" と表示されます。
+回線キーのステータスと状態をチェックすると、いつプロバイダーによって回線が有効にされたかがわかります。回線が構成されると、以下の例に示すように、*ServiceProviderProvisioningState* が *Provisioned* と表示されます。
 
 
 	Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
-	
+
 応答は、次の例のようになります。
-	
+
 
 	Name                             : ExpressRouteARMCircuit
 	ResourceGroupName                : ExpressRouteResourceGroup
@@ -231,7 +232,7 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 
 ### 8\.ExpressRoute 回線への仮想ネットワークのリンク
 
-次に、ExpressRoute 回線に仮想ネットワークをリンクします。Resource Manager デプロイ モデルを使用するときは、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
+次に、ExpressRoute 回線に仮想ネットワークをリンクします。Resource Manager デプロイメント モデルを使用するときは、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
 
 ## ExpressRoute 回線の状態の取得
 
@@ -310,21 +311,21 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 ダウンタイムなく、次を実行できます。
 
 - ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にします。
-- ExpressRoute 回線の帯域幅を増やす。回線の帯域幅のダウングレードはサポートされていないことに注意してください。 
-- 課金プランを従量制課金データから無制限データに変更します。無制限データから従量制課金データへの課金プランの変更はサポートされていないことに注意してください。 
--  "従来の操作の許可" を有効または無効にできます。 
+- ExpressRoute 回線の帯域幅を増やす。回線の帯域幅のダウングレードはサポートされていないことに注意してください。
+- 課金プランを従量制課金データから無制限データに変更します。無制限データから従量制課金データへの課金プランの変更はサポートされていないことに注意してください。
+-  *従来の操作の許可*を有効または無効にできます。
 
-制限と制約事項の詳細は、「[ExpressRoute の FAQ](expressroute-faqs.md)」ページを参照してください。
+制限と制約事項の詳細は、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
 ### ExpressRoute Premium アドオンを有効にするには
 
 次の PowerShell スニペットを使用し、既存の回線の ExpressRoute Premium アドオンを有効にすることができます。
 
 	$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-	
+
 	$ckt.Sku.Tier = "Premium"
 	$ckt.sku.Name = "Premium_MeteredData"
-	
+
 	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 
@@ -346,16 +347,16 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 
 	$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-	
+
 	$ckt.Sku.Tier = "Standard"
 	$ckt.sku.Name = "Standard_MeteredData"
-	
+
 	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 
 ### ExpressRoute 回線の帯域幅を更新するには
 
-プロバイダーでサポートされている帯域幅のオプションについては、「[ExpressRoute の FAQ](expressroute-faqs.md)」ページを確認してください。既存の回線のサイズを超えるサイズを選択することができます。
+プロバイダーでサポートされている帯域幅のオプションについては、「[ExpressRoute の FAQ](expressroute-faqs.md)」を確認してください。既存の回線のサイズを超えるサイズを選択することができます。
 
 >[AZURE.IMPORTANT] 中断せずに ExpressRoute 回線の帯域幅を減らすことはできません。帯域幅をダウングレードするには、ExpressRoute 回線のプロビジョニングを解除してから、新しい ExpressRoute 回線を再度プロビジョニングする必要があります。
 
@@ -363,9 +364,9 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 
 	$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-	
+
 	$ckt.ServiceProviderProperties.BandwidthInMbps = 1000
-	
+
 	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 
@@ -377,15 +378,15 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 ExpressRoute 回線の SKU を変更するには、次の PowerShell スニペットを使用します。
 
 	$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-	
+
 	$ckt.Sku.Family = "UnlimitedData"
 	$ckt.sku.Name = "Premium_UnlimitedData"
-	
+
 	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ### クラシック環境および Resource Manager 環境へのアクセスを制御するには  
 
-「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」の説明を参照してください。
+「[クラシック デプロイメント モデルから Resource Manager デプロイメント モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」の説明を参照してください。
 
 
 ## ExpressRoute 回線の削除とプロビジョニング解除
@@ -396,7 +397,7 @@ ExpressRoute 回線の SKU を変更するには、次の PowerShell スニペ�
 
 - ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が有効の場合、状態は有効状態から*無効化中*に移ります。サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。Microsoft は、サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金を続行します。
 
-- ユーザーが上記のコマンドレットを実行する前にサービス プロバイダーが回路のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が*未プロビジョニング*に設定されている) の場合、Microsoft は回線のプロビジョニングを解除し、課金を停止します。
+- ユーザーが上記のコマンドレットを実行する前にサービス プロバイダーが回路のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が*未プロビジョニング*に設定されている) の場合、回線のプロビジョニングが解除され、課金が停止します。
 
 ExpressRoute 回線は、次のコマンドを実行して削除できます。
 
@@ -411,4 +412,4 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 - [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-arm.md)
 - [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

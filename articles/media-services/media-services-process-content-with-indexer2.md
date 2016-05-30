@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/14/2016"   
+	ms.date="04/22/2016"   
 	ms.author="adsolank;juliako;"/>
 
 
@@ -56,9 +56,9 @@
 
 ##タスクの構成 (プリセット)
 
-**Azure Media Indexer 2 プレビュー*でインデックス作成タスクを作成するときは、構成プリセットを指定する必要があります。
+**Azure Media Indexer 2 プレビュー**でインデックス作成タスクを作成するときは、構成プリセットを指定する必要があります。
 
-次の JSON は、使用可能なパラメーターを設定します。
+次の JSON では、使用可能なパラメーターを設定します。
 
 	{
 	  "version":"1.0",
@@ -289,4 +289,4 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

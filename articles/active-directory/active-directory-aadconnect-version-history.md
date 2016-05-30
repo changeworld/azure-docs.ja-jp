@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/20/2016"
+   ms.date="05/11/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -29,6 +29,22 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 | Azure AD Connect からのアップグレード手順 | Azure AD Connect の[以前のバージョンから最新バージョンにアップグレード](active-directory-aadconnect-upgrade-previous-version.md)するさまざまな方法を説明しています。 |
 | 必要なアクセス許可 | 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。 |
 | ダウンロード| [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771) |
+
+## 1\.1.180.0
+リリース日: 2016 年 5 月
+
+**新機能:**
+
+- Azure AD Connect 実行前にドメインの確認が行われなかった場合に、ドメインの確認について警告し、必要なヘルプ情報を提供します。
+- [Microsoft Cloud Germany](active-directory-aadconnect-instances.md#microsoft-cloud-germany) のサポートが追加されました。
+- 新しい URL 要件を持つ最新の [Microsoft Azure Government クラウド](active-directory-aadconnect-instances.md#microsoft-azure-government-cloud) インフラストラクチャのサポートが追加されました。
+
+**修正された問題と機能強化:**
+
+- 同期規則を探しやすくするフィルターが同期規則エディターに追加されました。
+- コネクタ スペースを削除するときのパフォーマンスが改善されました。
+- 同じオブジェクトに対して削除と追加の両方が同一の実行で行われた場合 (削除/追加) の問題が修正されました。
+- 無効にした同期規則で、含まれるオブジェクトや属性が、アップグレードまたはディレクトリ スキーマの更新時に再び有効になることはありません。
 
 ## 1\.1.130.0
 リリース日: 2016 年 4 月
@@ -53,9 +69,9 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 **修正された問題:**
 
-- インストールが既定の **C:\\Program Files** フォルダーにない場合、以前のリリースからのアップグレードは機能しません。
-- インストール時に、インストール ウィザードの最後で **[...同期処理を開始してください]** をオフにした場合、インストール ウィザードを再実行しても、スケジューラは有効になりません。
-- 日付と時刻の形式が US-en ではない場合、スケジューラはサーバーで予想どおりに機能しません。また、正しい時刻を返す `Get-ADSyncScheduler` もブロックされます。
+- インストールが既定の **C:\\Program Files** フォルダーにない場合、以前のリリースからのアップグレードが機能しない。
+- インストール時に、インストール ウィザードの最後で **[...同期処理を開始してください]** をオフにした場合、インストール ウィザードを再実行しても、スケジューラが有効にならない。
+- 日付と時刻の形式が US-en ではない場合、スケジューラはサーバーで予想どおりに機能しません。また、正しい時刻を返す `Get-ADSyncScheduler` もブロックされる。
 - サインイン オプションおよびアップグレードとして ADFS を使用して以前のリリースの Azure AD Connect をインストールした場合、インストール ウィザードを再度実行することはできません。
 
 ## 1\.1.105.0
@@ -268,4 +284,4 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

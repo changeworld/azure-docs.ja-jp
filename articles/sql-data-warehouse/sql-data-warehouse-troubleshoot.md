@@ -13,62 +13,37 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/20/2016"
+   ms.date="05/15/2016"
    ms.author="mausher;sonyama;barbkess"/>
 
 # トラブルシューティング
 次のトピックでは、Azure SQL Data Warehouse で発生するいくつかの一般的な問題を示します。
 
 ## 接続
-Azure SQL Data Warehouse への接続は、次の 2 つの一般的な原因によって失敗する可能性があります。
+一般的な接続に関する問題は次のとおりです。
 
 - ファイアウォール ルールが設定されていない
 - サポートされていないツール/プロトコルを使用している
 
 ### ファイアウォール ルール
-Azure SQL Database は、既知の IP アドレスのみがデータベースにアクセスできるように、サーバーとデータベース レベルのファイアウォールによって保護されています。ファイアウォールは、既定でセキュリティ保護されています。つまり、接続する前に、IP アドレスにアクセスを許可する必要があります。
-
-アクセスするためにファイアウォールを構成するには、[プロビジョニング][] ページの[クライアント IP 用にサーバーのファイアウォール アクセスを構成する][]に関するセクションの手順に従ってください。
+Azure SQL Database は、既知の IP アドレスのみがデータベースにアクセスできるように、サーバーとデータベース レベルのファイアウォールによって保護されています。ファイアウォールは、既定でセキュリティ保護されています。つまり、接続する前に、IP アドレスまたはアドレス範囲を明示的に有効にする必要があります。アクセスできるようにファイアウォールを構成するには、[プロビジョニング手順][]に関するページの、[クライアント IP に対するサーバー ファイアウォール アクセスの構成][]に関するトピックの手順に従ってください。
 
 ### サポートされていないツール/プロトコルを使用している
-SQL Data Warehouse は、開発環境として [Visual Studio 2013/2015][] を、クライアント接続用に [SQL Server Native Client 10/11 (ODBC)][] をサポートします。
-
-詳細については、[接続][]に関するページを参照してください。
+SQL Data Warehouse では、[Visual Studio 2013 または 2015][] を使用してデータのクエリを実行することをお勧めします。クライアント接続については、[SQL Server Native Client 10/11 (ODBC)][] をお勧めします。SQL Server Management Studio (SSMS) はまだサポートされていません。部分的には動作しますが、オブジェクト エクスプ ローラー ツリーは SQL Data Warehouse では機能しません。クエリは、エラー メッセージをいくつか無視すると機能することがあります。
 
 ## クエリのパフォーマンス
 
+SQL Data Warehouse で最適なクエリ パフォーマンスを実現するために、データベース設計で実行できることは複数あります。クエリを実行する方法を把握するには、まず、[クエリを監視する方法][]に関する記事をご覧ください。[SQL Data Warehouse をスケーリング][]して、コンピューティング能力をクエリに追加するだけで、クエリをより高速に実行できる場合があります。こうした最適化の方法の多くは、「[SQL Data Warehouse のベスト プラクティス][]」で確認することができます。
+
+クエリのパフォーマンスに関する問題の原因として最も一般的なものをいくつか次に示します。
+
 ### 統計
 
-[統計][]は、データベースの列値の範囲と頻度に関する情報を含むオブジェクトです。クエリ エンジンは、これらの統計情報を使用してクエリの実行を最適化し、クエリのパフォーマンスを向上させます。SQL Server や SQL DB とは異なり、SQL Data Warehouse では統計情報を自動で作成したり更新したりすることはありません。このため、どのテーブルも、統計情報を手動で管理する必要があります。
+テーブルの[統計][]には、データベースの列または列の組み合わせの値の、範囲と頻度に関する情報が含まれます。クエリ エンジンは、これらの統計情報を使用してクエリの実行を最適化し、クエリのパフォーマンスを向上させます。SQL Server や SQL DB とは異なり、SQL Data Warehouse では、統計情報が自動的には作成または更新されません。このため、どのテーブルも、統計情報を手動で管理する必要があります。統計情報を管理し、統計情報を必要とするテーブルを特定する方法については、「[SQL Data Warehouse での統計の管理][]」をご覧ください。
 
-以下のクエリでは、それぞれのテーブルで統計情報が最後に更新された時刻を確認できます。
+### テーブル設計
 
-```sql
-SELECT
-    sm.[name] AS [schema_name],
-    tb.[name] AS [table_name],
-    co.[name] AS [stats_column_name],
-    st.[name] AS [stats_name],
-    STATS_DATE(st.[object_id],st.[stats_id]) AS [stats_last_updated_date]
-FROM
-    sys.objects ob
-    JOIN sys.stats st
-        ON  ob.[object_id] = st.[object_id]
-    JOIN sys.stats_columns sc    
-        ON  st.[stats_id] = sc.[stats_id]
-        AND st.[object_id] = sc.[object_id]
-    JOIN sys.columns co    
-        ON  sc.[column_id] = co.[column_id]
-        AND sc.[object_id] = co.[object_id]
-    JOIN sys.types  ty    
-        ON  co.[user_type_id] = ty.[user_type_id]
-    JOIN sys.tables tb    
-        ON  co.[object_id] = tb.[object_id]
-    JOIN sys.schemas sm    
-        ON  tb.[schema_id] = sm.[schema_id]
-WHERE
-    st.[user_created] = 1;
-```
+SQL Data Warehouse では、[テーブルに適したハッシュ分散キー][]と[テーブル設計][]を選択することが重要です。作業を開始した後、SQL Data Warehouse のパフォーマンスを高めていくには、こうした記事で説明されている概念を理解するようにしてください。
 
 ### クラスター化列ストア セグメントの質
 
@@ -97,7 +72,9 @@ CROSS JOIN (SELECT COUNT(*) nbr_nodes  FROM sys.dm_pdw_nodes WHERE type = 'compu
 GROUP BY 
     n.nbr_nodes, s.name, t.name
 HAVING 
-    AVG(CASE WHEN rg.State = 3 THEN rg.Total_rows ELSE NULL END) < 100000
+    AVG(CASE WHEN rg.State = 3 THEN rg.Total_rows ELSE NULL END) < 100000 OR
+    AVG(CASE WHEN rg.State = 0 THEN rg.Total_rows ELSE NULL END) < 100000
+
 ORDER BY 
     s.name, t.name
 ```
@@ -123,39 +100,30 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 EXEC sp_droprolemember 'smallrc', 'LoadUser'
 ```
 
-
 CCI テーブルに対する読み込みで最低限推奨されるリソース クラスは、DW100 ～ DW300 であれば xlargerc、DW400 ～ DW600 であれば largerc、DW1000 以上であれば mediumrc です。ほとんどのワークロードでは、このガイダンスに従えば問題ありません。その目的は、各インデックス構築処理に 400 MB 以上のメモリを割り当てることにあります。ただし、1 つのサイズすべてに対応できるとは限りません。列ストア インデックスの最適化に必要なメモリは、読み込むデータに左右されます。そして、読み込むデータに影響を及ぼすのは、主に行のサイズです。このため、行のサイズが小さなテーブルであれば、必要なメモリが少なくなります。これに対して、行のサイズが大きければ、必要なメモリが多くなります。メモリの割り当てを少なくしても最適な列ストア インデックスが得られるかどうかを確認する場合には、手順 1 のクエリを使用します。行グループ 1 つにつき、少なくとも平均 100,000 行以上は必要になります。500,000 行あればさらに良いでしょう。最大では、行グループあたり 100 万行を確認します。リソース クラスと同時実行を管理する方法について詳しくは、以下のリンクをご覧ください。
 
 
-### 主要なパフォーマンスの概念
-
-その他の主要なパフォーマンスとスケールの概念を理解するために、次の記事を参照してください。
-
-- [パフォーマンスとスケール][]
-- [同時実行モデル][]
-- [テーブルの設計][]
-- [テーブルのハッシュ分散キーの選択][]
-
 ## 次のステップ
-SQL Data Warehouse ソリューションの作成に関するガイダンスについては、[開発の概要][]に関する記事を参照してください。
+SQL Data Warehouse ソリューションを最適化する方法の詳細については、「[SQL Data Warehouse のベスト プラクティス][]」をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[パフォーマンスとスケール]: sql-data-warehouse-performance-scale.md
-[同時実行モデル]: sql-data-warehouse-develop-concurrency.md
-[テーブルの設計]: sql-data-warehouse-develop-table-design.md
-[テーブルのハッシュ分散キーの選択]: sql-data-warehouse-develop-hash-distribution-key
-[開発の概要]: sql-data-warehouse-overview-develop.md
-[プロビジョニング]: sql-data-warehouse-get-started-provision.md
-[クライアント IP 用にサーバーのファイアウォール アクセスを構成する]: sql-data-warehouse-get-started-provision.md/#step-4-configure-server-firewall-access-for-your-client-ip
-[Visual Studio 2013/2015]: sql-data-warehouse-get-started-connect.md
-[接続]: sql-data-warehouse-get-started-connect.md
-[統計]: sql-data-warehouse-develop-statistics.md
+[SQL Data Warehouse をスケーリング]: ./sql-data-warehouse-overview-scalability.md
+[テーブル設計]: ./sql-data-warehouse-develop-table-design.md
+[テーブルに適したハッシュ分散キー]: ./sql-data-warehouse-develop-hash-distribution-key
+[development overview]: ./sql-data-warehouse-overview-develop.md
+[クエリを監視する方法]: ./sql-data-warehouse-manage-monitor.md
+[SQL Data Warehouse での統計の管理]: ./sql-data-warehouse-develop-statistics.md
+[プロビジョニング手順]: ./sql-data-warehouse-get-started-provision.md
+[クライアント IP に対するサーバー ファイアウォール アクセスの構成]: ./sql-data-warehouse-get-started-provision.md/#create-a-new-azure-sql-server-level-firewall
+[Visual Studio 2013 または 2015]: ./sql-data-warehouse-get-started-connect.md
+[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
+[統計]: ./sql-data-warehouse-develop-statistics.md
 
 <!--MSDN references-->
 [SQL Server Native Client 10/11 (ODBC)]: https://msdn.microsoft.com/library/ms131415.aspx
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

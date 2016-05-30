@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/02/2016"
+   ms.date="05/13/2016"
    ms.author="bwren" />
 
 # Log Analytics とは
@@ -69,8 +69,8 @@ Log Analytics のデプロイ要件は、中央のコンポーネントが Azure
 
 ## 次のステップ
 
-- [無料の Log Analytics アカウントにサインアップ](log-analytics)し、 独自の環境でテストします。
+- [無料の Log Analytics アカウントにサインアップ](log-analytics-get-started.md)し、独自の環境でテストします。
 - OMS リポジトリにデータを収集できるさまざまな[データソース](log-analytics-data-sources.md)を表示します。 
 - [ソリューションギャラリーで利用可能なソリューションを参照](log-analytics-add-solutions.md)し、Log Analytics に機能を追加します。 
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

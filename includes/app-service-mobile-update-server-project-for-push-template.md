@@ -70,7 +70,7 @@
 	    logger.info('Running TodoItem.insert');
 	    
 	    // Define the template payload.
-	    var payload = '{"messageParam": context.item.text}'; 
+	    var payload = '{"messageParam":' + context.item.text + '}'; 
 	    
 	    // Execute the insert.  The insert returns the results as a Promise,
 	    // Do the push as a post-execute action within the promise flow.
@@ -100,5 +100,3 @@
 	これにより、新しい ToDo 項目が挿入されたときには item.text を含むテンプレート通知が送信されます。
 
 2. ローカル コンピューターでファイルを編集するときは、サーバー プロジェクトを再発行します。
-
-<!---HONumber=AcomDC_1223_2015-->

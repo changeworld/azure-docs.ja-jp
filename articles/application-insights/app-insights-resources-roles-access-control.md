@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="05/07/2016"
 	ms.author="awills"/>
 
 # Application Insights のリソース、ロール、アクセス制御
@@ -58,7 +58,7 @@ Visual Studio [Application Insights][start] では、[Microsoft Azure の役割�
 
 サブスクリプションまたはリソース グループの所有者権限が必要です。
 
-ユーザーは [Microsoft Azure アカウント][account]を持つ必要があります。個人と Azure Active Directory に定義されているユーザー グループにアクセスを供与できます。
+ユーザーは、[Microsoft アカウント][account]を持っているか、または[組織の Microsoft アカウント](..\active-directory\sign-up-organization.md)にアクセスする必要があります。個人と Azure Active Directory に定義されているユーザー グループにアクセスを供与できます。
 
 #### リソース グループに移動する
 
@@ -104,8 +104,8 @@ Reader | Can view but not change anything
 <!--Link references-->
 
 [account]: https://account.microsoft.com
-[group]: ../azure-preview-portal-using-resource-groups.md
-[portal]: http://portal.azure.com/
+[group]: ../azure-portal/resource-group-portal.md
+[portal]: https://portal.azure.com/
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

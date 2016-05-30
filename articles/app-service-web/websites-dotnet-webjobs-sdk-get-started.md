@@ -74,13 +74,11 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 1. Visual Studio で**サーバー エクスプローラー** ウィンドウを開きます。
 
-2. **[Azure]** ノードを右クリックし、**[Microsoft Azure に接続]** をクリックします。
-![Azure への接続](./media/websites-dotnet-webjobs-sdk-get-started/connaz.png)
+2. **[Azure]** ノードを右クリックし、**[Microsoft Azure に接続]** をクリックします。![Azure への接続](./media/websites-dotnet-webjobs-sdk-get-started/connaz.png)
 
 3. Azure の資格情報を使用してサインインします。
 
-5. Azure ノードの **[Storage]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。
-![ストレージ アカウントの作成](./media/websites-dotnet-webjobs-sdk-get-started/createstor.png)
+5. Azure ノードの **[Storage]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。![ストレージ アカウントの作成](./media/websites-dotnet-webjobs-sdk-get-started/createstor.png)
 
 3. **[ストレージ アカウントの作成]** ダイアログ ボックスで、ストレージ アカウントの名前を入力します。
 
@@ -303,7 +301,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 このセクションでは、**サーバー エクスプローラー**を使用して Azure の接続文字列値を設定します。
 
-7. **サーバー エクスプローラー**で、**[Azure]、{リソース グループ}** の下にある Web アプリを右クリックし、**[設定の表示]** をクリックします。
+7. **サーバー エクスプローラー**で、**[Azure]、[App Service]、{リソース グループ}** の下にある Web アプリを右クリックし、**[設定の表示]** をクリックします。
 
 	**[構成]** タブで **[Azure Web アプリ]** ウィンドウが開きます。
 
@@ -475,7 +473,7 @@ Web と Web ジョブ プロジェクトはどちらも SQL Database と連携�
 	- *Global.asax.cs*  
 	- *Controllers* フォルダー: *AdController.cs*
 	- *Views\\Shared* フォルダー: *\_Layout.cshtml* ファイル
-	- *Views\\Home* フォルダー: *Index.cshtml*
+- *Views\\Home* フォルダー: *Index.cshtml*
 	- *Views\\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル<br/><br/>
 
 3. ContosoAdsWebJob プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
@@ -822,5 +820,4 @@ https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 
 詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?LinkId=390226)」を参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
-
+<!---HONumber=AcomDC_0518_2016-->

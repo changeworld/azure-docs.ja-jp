@@ -19,16 +19,18 @@
 # Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure から VMware にフェールバックする (レガシ)
 
 > [AZURE.SELECTOR]
-- [拡張](site-recovery-failback-azure-to-vmware-classic.md)
-- [レガシ](site-recovery-failback-azure-to-vmware-classic-legacy.md)
+- [Azure ポータル](site-recovery-failback-azure-to-vmware.md)
+- [Azure クラシック ポータル](site-recovery-failback-azure-to-vmware-classic.md)
+- [Azure クラシック ポータル (レガシ)](site-recovery-failback-azure-to-vmware-classic-legacy.md)
 
-Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
+
+Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Site Recovery とは](site-recovery-overview.md)」をご覧ください。
 
 ## 概要
 
 この記事では、VMware 仮想マシンと Windows/Linux 物理サーバーをオンプレミス サイトから Azure にレプリケートした後で、Azure からオンプレミス サイトにフェールバックする方法について説明します。
 
->[AZURE.NOTE] この記事では、従来のシナリオを扱います。Azure にレプリケートする際に[こちらの記事に記載されている手順](site-recovery-vmware-to-azure-classic-legacy.md)に従った場合は、フェールバックの際に本記事の手順を使用する必要があります。レプリケーションのセットアップに[強化されたデプロイ](site-recovery-vmware-to-azure-classic-legacy.md)を使用した場合は、[こちらの記事](site-recovery-failback-azure-to-vmware-classic.md)に記載されている手順に従ってフェールバックしてください。
+>[AZURE.NOTE] この記事では、従来のシナリオを扱います。[こちらの従来の手順](site-recovery-vmware-to-azure-classic-legacy.md)に従って Azure へのレプリケーションを実行した場合にのみ、この記事の手順を使用してください。[強化されたデプロイ](site-recovery-vmware-to-azure-classic-legacy.md)を使用してレプリケーションを設定した場合は、[こちらの記事](site-recovery-failback-azure-to-vmware-classic.md)に記載されている手順に従ってフェールバックします。
 
 
 ## アーキテクチャ
@@ -44,8 +46,8 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 フェールバックをセットアップする手順は次のとおりです。
 
-1. **フェールバック コンポーネントをセットアップする**: オンプレミスで vContinuum サーバーをセットアップし、Azure の構成サーバー VM をポイントする必要があります。また、プロセス サーバーを Azure VM としてセットアップし、データをオンプレミスのマスター ターゲット サーバーに送信するように設定します。フェールオーバーを処理した構成サーバーにプロセス サーバーを登録します。マスター ターゲット サーバーをオンプレミスにインストールします。Windows マスター ターゲット サーバーが必要な場合は、vContinuum をインストールすると自動的にセットアップされます。Linux が必要な場合は、別のサーバーに手動でセットアップする必要があります。
-2. **保護とフェールバックを有効にする**: コンポーネントをセットアップしたら、フェールオーバーした Azure VM に対する保護を vContinuum で有効にする必要があります。VM で適合性チェックを実行し、Azure からオンプレミス サイトへのフェールオーバーを実行します。フェールバックの完了後、Azure へのレプリケートが開始されるように、オンプレミスのマシンを再保護します。
+1. **フェールバック コンポーネントをセットアップする**: オンプレミスで vContinuum サーバーをセットアップし、Azure の構成サーバー VM を参照する必要があります。また、プロセス サーバーを Azure VM としてセットアップし、データをオンプレミスのマスター ターゲット サーバーに送信するように設定します。フェールオーバーを処理した構成サーバーにプロセス サーバーを登録します。マスター ターゲット サーバーをオンプレミスにインストールします。Windows マスター ターゲット サーバーが必要な場合は、vContinuum をインストールすると自動的にセットアップされます。Linux が必要な場合は、別のサーバーに手動でセットアップする必要があります。
+2. **保護とフェールバックを有効にする**: コンポーネントをセットアップしたら、vContinuum で、フェールオーバーした Azure VM の保護を有効にする必要があります。VM で適合性チェックを実行し、Azure からオンプレミス サイトへのフェールオーバーを実行します。フェールバックの完了後、Azure へのレプリケートが開始されるように、オンプレミスのマシンを再保護します。
 
 
 
@@ -141,7 +143,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 	![](./media/site-recovery-failback-azure-to-vmware/image14.png)
 
-4. **[disk.EnableUUID]** と表示される行が存在するかどうかが確認されます。そのような行が存在し、値が **[False]** の場合は、[True] \(大文字と小文字の区別なし) に設定します。そのような行が存在し、値が [True] の場合は、**[Cancel]** をクリックし、ゲスト オペレーティング システムが起動した後に、その OS 内で SCSI コマンドをテストします。そのような行が存在しない場合、**[Add Row]** をクリックします。
+4. **[disk.EnableUUID]** と表示される行が存在するかどうかが確認されます。そのような行が存在し、値が **[False]** の場合は、[True] (大文字と小文字の区別なし) に設定します。そのような行が存在し、値が [True] の場合は、**[Cancel]** をクリックし、ゲスト オペレーティング システムが起動した後に、その OS 内で SCSI コマンドをテストします。そのような行が存在しない場合、**[Add Row]** をクリックします。
 5. **[Name]** 列に disk.EnableUUID を追加します。その値を TRUE に設定します。前述の値を追加する際には、二重引用符で囲まないでください。
 
 	![](./media/site-recovery-failback-azure-to-vmware/image15.png)
@@ -150,7 +152,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 注: その他のパッケージをダウンロードおよびインストールする前に、システムがインターネットに接続されていることを確認します。
 
-\# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
+# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
 
 このコマンドは、CentOS 6.6 リポジトリから次の 15 のパッケージをダウンロードして、インストールします。
 
@@ -186,17 +188,17 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 注: ソース マシンで、ルートまたはブート デバイスとして Reiser または XFS のファイル システムが使用されている場合、保護する前に、次のパッケージを Linux マスター ターゲットにダウンロードしてインストールする必要があります。
 
-\# cd /usr/local
+# cd /usr/local
 
-\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
+# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
 
-\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
+# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
 
-\# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
+# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
-\# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
+# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
 
-\# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
+# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
 
 #### カスタム構成変更を適用する
 
@@ -426,4 +428,4 @@ VM は Azure にフェールオーバーするときに、ページ ファイル
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

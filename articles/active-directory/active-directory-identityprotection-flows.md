@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory Identity Protection のフロー | Microsoft Azure"
+	pageTitle="Azure AD Identity Protection を使用したサインイン エクスペリエンス| Microsoft Azure"
 	description="Identity Protection でユーザーの侵害が和らげられたか修正された場合、またはポリシーにより多要素認証が要求される場合のユーザー エクスペリエンスの概要を示します。"
 	services="active-directory"
 	keywords="Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="05/17/2016"
 	ms.author="markvi"/>
 
-#Azure Active Directory Identity Protection のフロー
+# Azure AD Identity Protection を使用したサインイン エクスペリエンス
 
 Azure Active Directory Identity Protection を使用すると、次の操作を行うことができます。
 
@@ -64,7 +64,7 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 **多要素認証の登録には 3 つのステップがあります。**
 
-1. 最初の手順では、ユーザーはアカウントを多要素認証に設定するように求める通知を受け取ります。<br><br> ![Remediation](./media/active-directory-identityprotection-flows/140.png "Remediation") <br>
+1. 最初の手順では、ユーザーはアカウントを多要素認証に設定するように求める通知を受け取ります。<br><br> ![修復](./media/active-directory-identityprotection-flows/140.png "Remediation") <br>
 
 
 2. 多要素認証を設定するには、システムに自分への連絡方法を設定する必要があります。<br><br> ![Remediation](./media/active-directory-identityprotection-flows/141.png "Remediation") <br>
@@ -158,4 +158,4 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -27,9 +27,7 @@
 
 リソースを Azure にデプロイするときにエラーを受け取った場合は、発生した問題のトラブルシューティングを行う必要があります。REST API では、エラーを見つけて、可能性のある修正を確認できるように、操作を提供します。
 
-監査ログまたはデプロイ操作のいずれかを確認して、デプロイのトラブルシューティングを行うことができます。このトピックでは、両方のメソッドを示します。
-
-デプロイの前にテンプレートおよびインフラストラクチャを検証して、いくつかのエラーを回避できます。詳細については、「[Azure リソース マネージャーのテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)」を参照してください。
+[AZURE.INCLUDE [resource-manager-troubleshoot-introduction](../includes/resource-manager-troubleshoot-introduction.md)]
 
 ## REST API を使用したトラブルシューティング
 
@@ -111,7 +109,8 @@
 
 ## 次のステップ
 
+- 特定のデプロイ エラーの解決については、「[Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーを解決する](resource-manager-common-deployment-errors.md)」を参照してください。
 - 他の種類のアクションを監視するために監査ログを使用する方法については、「[リソース マネージャーの監査操作](resource-group-audit.md)」を参照してください。
 - デプロイを実行する前に検証するには、「[Azure リソース マネージャーのテンプレートを使用してリソース グループをデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

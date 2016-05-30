@@ -20,6 +20,25 @@
 
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
 
+## May ゲスト OS 
+
+| セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
+| MS16-051 | [3155533] | Internet Explorer 用の累積的なセキュリティ更新プログラム | 4\.32、3.39、2.51 | 2016 年 5 月 10 日 |  
+| MS16-053 | [3156764] | JScript および VBScript 用の累積的なセキュリティ更新プログラム | 2\.51 | 2016 年 5 月 10 日 | 
+| MS16-055 | [3156754] | Microsoft グラフィックス コンポーネント用のセキュリティ更新プログラム | 4\.32、3.39、2.51 | 2016 年 5 月 10 日 | 
+| MS16-057 | [3156987] | Windows Shell 用のセキュリティ更新プログラム | 4\.32 | 2016 年 5 月 10 日 | 
+| MS16-060 | [3154846] | Windows カーネル用のセキュリティ更新プログラム | 4\.32、3.39、2.51 | 2016 年 5 月 10 日 | 
+| MS16-061 | [3155520] | RPC のセキュリティ更新プログラム | 4\.32、3.39、2.51 | 2016 年 5 月 10 日 | 
+| MS16-062 | [3158222] | カーネル モード ドライバー用のセキュリティ更新プログラム | 4\.32、3.39、2.51 | 2016 年 5 月 10 日 | 
+| MS16-065 | [3156757] | .Net Framework 用のセキュリティ更新プログラム | 4\.32、3.39、2.51 | 2016 年 5 月 10 日 | 
+| MS16-067 | [3155784] | ボリューム マネージャー ドライバー用のセキュリティ更新プログラム | 4\.32、3.39 | 2016 年 5 月 10 日 | 
+| | [3148851] | Windows のロシア用タイム ゾーンの変更 | 4\.32、3.39、2.51 | 2016 年 5 月 10 日 | 
+| | [3133977] | Windows 7 または Windows Server 2008 R2 では、svchost.exe プロセスでサービスがクラッシュするため、BitLocker はドライブを暗号化できません。 | 2\.51 | 2016 年 5 月 10 日 | 
+| | [3133681] | Windows Server 2012 R2 では、仮想マシンは SCVMM の操作に応答しません | 4\.32 | 2016 年 5 月 10 日 | 
+| | [3123245] | 更新プログラムによって、Windows Server 2012 R2 のポート枯渇の特定が改善されます | 4\.32 | 2016 年 5 月 10 日 | 
+| | [RC4 の無効化] | Microsoft セキュリティ アドバイザリ: RC4 を無効にするための更新プログラム | 4\.32、3.39、2.51 | 2016 年 5 月 10 日 | 
+
 
 ## April ゲスト OS 
 
@@ -269,6 +288,23 @@
 | 該当なし | [2999802][2999802] | 点線ではなく実線が Windows で印刷される | 4\.15、3.22、2.34 | 2015 年 1 月 13 日 |
 | 該当なし | [2896881][2896881] | Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い | 4\.15、3.22、2.34 | 2015 年 1 月 13 日 |
 
+[3155533]: http://support.microsoft.com/kb/3155533
+[3156764]: http://support.microsoft.com/kb/3156764
+[3156754]: http://support.microsoft.com/kb/3156754
+[3156987]: http://support.microsoft.com/kb/3156987
+[3141083]: http://support.microsoft.com/kb/3141083
+[3154846]: http://support.microsoft.com/kb/3154846
+[3155520]: http://support.microsoft.com/kb/3155520
+[3158222]: http://support.microsoft.com/kb/3158222
+[3156757]: http://support.microsoft.com/kb/3156757
+[3155784]: http://support.microsoft.com/kb/3155784
+[3148851]: http://support.microsoft.com/kb/3148851
+[3133977]: http://support.microsoft.com/kb/3133977
+[3133681]: http://support.microsoft.com/kb/3133681
+[3123245]: http://support.microsoft.com/kb/3123245
+[RC4 の無効化]: https://blogs.msdn.microsoft.com/azuresecurity/2016/04/12/azure-cipher-suite-change-removes-rc4-support/
+
+
 [3148531]: http://support.microsoft.com/kb/3148531
 [3148522]: http://support.microsoft.com/kb/3148522
 [3148541]: http://support.microsoft.com/kb/3148541
@@ -453,4 +489,4 @@
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

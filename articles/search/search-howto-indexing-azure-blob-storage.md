@@ -12,12 +12,12 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="05/03/2016"
+ms.date="05/17/2016"
 ms.author="eugenesh" />
 
 # Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 
-この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Office ファイルなど) のインデックスを作成する方法を説明します。Azure Search の新しい BLOB インデクサーを使用すると、迅速かつシームレスに作成できます。
+この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。Azure Search の新しい BLOB インデクサーを使用すると、迅速かつシームレスに作成できます。
 
 > [AZURE.IMPORTANT] 現在この機能はプレビュー版です。バージョン **2015-02-28-Preview** を使用した REST API でのみ利用できます。プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
 
@@ -104,7 +104,7 @@ BLOB インデクサーは、次の形式のドキュメントからテキスト
 Azure Search は、各ドキュメント (BLOB) のインデックスを次のように作成します。
 
 - ドキュメントのテキスト コンテンツ全体が、`content` という名前の文字列フィールドに抽出されます。現時点では、1 つの BLOB から複数のドキュメントを抽出することはできません。
-	- たとえば CSV ファイルは、1 つのドキュメントとしてインデックスが作成されます。
+	- たとえば CSV ファイルは、1 つのドキュメントとしてインデックスが作成されます。CSV 内の各行を個別のドキュメントとして扱う必要がある場合は、[こちらの UserVoice の提案](https://feedback.azure.com/forums/263029-azure-search/suggestions/13865325-please-treat-each-line-in-a-csv-file-as-a-separate)に投票してください。
 	- 複合ドキュメントや埋め込みドキュメント (PDF が添付された Outlook 電子メールを埋め込んだ Word 文書、ZIP アーカイブなど) も、1 つのドキュメントとしてインデックスが作成されます。
 
 - ユーザー指定のメタデータのプロパティが BLOB に存在する場合、それらのプロパティは、そのまま抽出されます。メタデータのプロパティを使って、ドキュメント抽出プロセスをある程度制御することもできます。詳細については、「[カスタム メタデータを使ったドキュメント抽出の制御](#CustomMetadataControl)」を参照してください。
@@ -215,7 +215,7 @@ PPT (application/vnd.ms-powerpoint) | `metadata_content_type`<br/>`metadata_auth
 MSG (application/vnd.ms-outlook) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` | テキストを抽出します。添付ファイルも対象となります。
 ZIP (application/zip) | `metadata_content_type` | アーカイブ内のすべてのドキュメントからテキストを抽出します。
 XML (application/xml) | `metadata_content_type`</br>`metadata_content_encoding`</br> | XML マークアップを削除し、テキストを抽出します。
-JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | テキストを抽出します。<br/>注意: JSON BLOB から複数のドキュメント フィールドを抽出する必要がある場合は、詳細について 「[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)」を参照してください。
+JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | テキストを抽出します。<br/>注: JSON BLOB から複数のドキュメント フィールドを抽出する必要がある場合は、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事で詳細を確認してください。
 EML (message/rfc822) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` | テキストを抽出します。添付ファイルも対象となります。
 プレーン テキスト (text/plain) | `metadata_content_type`</br>`metadata_content_encoding`</br> | 
 
@@ -292,4 +292,4 @@ AzureSearch\_SkipContent | "true" | メタデータのインデックス作成�
 
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

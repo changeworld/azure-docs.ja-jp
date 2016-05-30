@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/10/2016"
+   ms.date="05/17/2016"
    ms.author="navale;tomfitz;"/>
 
 # Azure Resource Manager SDK for .NET  
@@ -28,7 +28,7 @@ Azure SDK for .NET は、Azure Resource Manager によって公開された API 
 以降で使用するすべてのコード スニペットの引用元である完全なサンプル プロジェクトは、[こちら](https://github.com/dx-ted-emea/Azure-Resource-Manager-Documentation/tree/master/ARM/SDKs/Samples/Net)からダウンロードできます。
 
 ## 認証
-ARM の認証は、Azure Active Directory (AD) によって処理されます。任意の API に接続するには、最初に Azure AD で認証を行って認証トークンを受信する必要があります。この認証トークンは、すべての要求に対して渡すことができます。このトークンを取得するには、まず Azure AD アプリケーションと、ログインに使用するサービス プリンシパルを作成する必要があります。詳しい手順については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](./resource-group-create-service-principal-portal.md)」を参照してください。
+ARM の認証は、Azure Active Directory (AD) によって処理されます。任意の API に接続するには、最初に Azure AD で認証を行って認証トークンを受信する必要があります。この認証トークンは、すべての要求に対して渡すことができます。このトークンを取得するには、まず Azure AD アプリケーションと、ログインに使用するサービス プリンシパルを作成する必要があります。手順については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](resource-group-create-service-principal-portal.md)」を参照してください。
 
 サービス プリンシパルを作成すると、次の項目が準備できたことになります。
 * クライアント ID (GUID)
@@ -274,7 +274,7 @@ private static async Task<VirtualMachine> CreateVirtualMachineAsync(TokenCredent
 ```
 
 ### テンプレート化されたデプロイの使用
-テンプレートをデプロイする詳しい手順については、「[.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](./arm-template-deployment/#step-4-create-the-credentials-that-are-used-to-authenticate-requests)」チュートリアルを参照してください。
+テンプレートをデプロイする詳しい手順については、「[#C と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ](./virtual-machines/virtual-machines-windows-csharp-template.md)」チュートリアルを参照してください。
 
 簡単に言えば、テンプレートのデプロイは、手動によるリソースのプロビジョニングよりもはるかに簡単です。次のコードでは、テンプレートとパラメーター ファイルのある URI を指定してこれを行う方法を示しています。
 
@@ -298,4 +298,4 @@ private static async Task<DeploymentExtended> CreateTemplatedDeployment(TokenCre
  
    
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

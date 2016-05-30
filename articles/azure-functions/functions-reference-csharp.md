@@ -15,7 +15,7 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="04/14/2016"
+	ms.date="05/13/2016"
 	ms.author="chrande"/>
 
 # Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
@@ -100,8 +100,10 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 
 * `System`
 * `System.Collections.Generic`
+* `System.IO`
 * `System.Linq`
 * `System.Net.Http`
+* `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
 * `Microsoft.Azure.WebJobs.Host`
 
@@ -121,7 +123,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 
 次のアセンブリは、Azure Functions をホストしている環境によって自動的に追加されます。
 
-* `mscorlib`
+* `mscorlib`,
 * `System`
 * `System.Core`
 * `System.Xml`
@@ -135,10 +137,12 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 さらに、次のアセンブリは特別扱いされ、simplename によって参照される場合があります (例: `#r "AssemblyName"`)。
 
 * `Newtonsoft.Json`
+* `Microsoft.WindowsAzure.Storage`
+* `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
 * `Microsoft.AspNEt.WebHooks.Common`
 
-プライベート アセンブリを参照する必要がある場合、アセンブリ ファイルを関数に関連する `bin` フォルダーにアップロードし、ファイル名 (例: `#r "MyAssembly.dll"`) を使用して参照できます。
+プライベート アセンブリを参照する必要がある場合、アセンブリ ファイルを関数に関連する `bin` フォルダーにアップロードし、ファイル名 (例: `#r "MyAssembly.dll"`) を使用して参照できます。関数フォルダーにファイルをアップロードする方法については、パッケージ管理の次のセクションを参照してください。
 
 ## パッケージの管理
 
@@ -160,43 +164,13 @@ NuGet パッケージを C# 関数で使用するには、*project.json* ファ�
 
 ### Project.json ファイルをアップロードする方法
 
-Azure ポータルで関数を開き、関数アプリが実行中であることを確認して開始します。これにより、パッケージのインストール出力が表示されるストリーミング ログへのアクセス権が付与されます。
+1. Azure ポータルで関数を開き、関数アプリが実行中であることを確認して開始します。 
 
-関数アプリは App Service 上で構築されるため、[標準 Web アプリで利用できるデプロイ オプション](../app-service-web/web-sites-deploy.md)はすべて、関数アプリでも利用できます。ここでは、いくつかのメソッドを使用することができます。
+	これにより、パッケージのインストール出力が表示されるストリーミング ログへのアクセス権が付与されます。
 
-#### Visual Studio Online (Monaco) を使用して project.json にアップロードするには
+2. project.json ファイルをアップロードする方法には、「[Azure Functions developer reference topic (Azure Functions 開発者参照トピック)](functions-reference.md#fileupdate)」の「**How to update function app files (関数アプリ ファイルを更新する方法)**」セクションにあるいずれかの方法を利用してください。
 
-1. Azure Functions ポータルで、**[Function app settings]** (関数アプリの設定) をクリックします。
-
-2. **[詳細設定]** セクションで、**[Go to App Service Settings]** (App Service の設定に移動) をクリックします。
-
-3. **[ツール]** をクリックします。
-
-4. **[開発]** で、**[Visual Studio Online]** をクリックします。
-
-5. Visual Studio Online が有効になっていない場合は**オン**にして、**[Go]** をクリックします。
-
-6. Visual Studio Online がロードされたら、*project.json* ファイルを関数のフォルダー (関数の名前が付けられたフォルダー) にドラッグ アンド ドロップします。
-
-#### 関数アプリの SCM (Kudu) エンドポイントを使用して project.json をアップロードするには
-
-1. `https://<function_app_name>.scm.azurewebsites.net` に移動します。
-
-2. **[デバッグ コンソール] > [CMD]** の順にクリックします。
-
-3. *D:\\home\\site\\wwwroot<関数名>* に移動します。
-
-4. *project.json* ファイルを (ファイル グリッド上の) フォルダーにドラッグ アンド ドロップします。
-
-#### FTP を使用して project.json をアップロードするには
-
-1. [ここ](../app-service-web/web-sites-deploy.md#ftp)の指示に従って、FTP を構成します。
-
-2. 関数アプリのサイトに接続したら、*project.json* ファイルを */site/wwwroot/<function_name>* にコピーします。
-
-#### パッケージのインストール ログ 
-
-*project.json* ファイルがアップロードされた後、関数のストリーミング ログには次の例のような出力があります。
+3. *project.json* ファイルがアップロードされた後、関数のストリーミング ログには次の例のような出力があります。
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -213,6 +187,25 @@ Azure ポータルで関数を開き、関数アプリが実行中であるこ�
 2016-04-04T19:02:57.189 
 2016-04-04T19:02:57.189 
 2016-04-04T19:02:57.455 Packages restored.
+```
+
+## 環境変数
+
+環境変数またはアプリ設定値を取得するには、次のコード例のように、`System.Environment.GetEnvironmentVariable` を使用します。
+
+```csharp
+public static void Run(TimerInfo myTimer, TraceWriter log)
+{
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+    log.Info(GetEnvironmentVariable("AzureWebJobsStorage"));
+    log.Info(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
+}
+
+public static string GetEnvironmentVariable(string name)
+{
+    return name + ": " + 
+        System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
+}
 ```
 
 ## .csx コードの再利用
@@ -258,4 +251,4 @@ public static void MyLogger(TraceWriter log, string logtext)
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

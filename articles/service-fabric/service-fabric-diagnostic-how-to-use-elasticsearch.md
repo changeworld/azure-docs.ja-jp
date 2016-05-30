@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/31/2016"
+   ms.date="05/16/2016"
    ms.author="karolz@microsoft.com"/>
 
 # Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する
 ## はじめに
-この記事では、[Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric/) アプリケーションがアプリケーション トレース ストレージ、インデックス作成、および検索に **Elasticsearch** と **Kibana** を使用する方法について説明します。[Elasticsearch](https://www.elastic.co/guide/index.html) は、オープンソースの分散型でスケーラブルなリアルタイム検索および分析エンジンで、このタスクに適しています。Microsoft Azure で実行されている Windows および Linux 仮想マシンにインストールできます。Elasticsearch は、**Event Tracing for Windows (ETW)** などのテクノロジを使用して生成された *構造化* トレースを高い効率で処理できます。
+この記事では、[Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric/) アプリケーションがアプリケーション トレース ストレージ、インデックス作成、および検索に **Elasticsearch** と **Kibana** を使用する方法について説明します。[Elasticsearch](https://www.elastic.co/guide/index.html) は、オープンソースの分散型でスケーラブルなリアルタイム検索および分析エンジンで、このタスクに適しています。Microsoft Azure で実行されている Windows および Linux 仮想マシンにインストールできます。Elasticsearch は、**Event Tracing for Windows (ETW)** などのテクノロジを使用して生成された*構造化*トレースを高い効率で処理できます。
 
 ETW は、Service Fabric ランタイムが診断情報 (トレース) をソースにするために使用します。Service Fabric アプリケーションに対しても、診断情報をソースにする場合に推奨される方法です。この方法ではランタイムで提供されたトレースとアプリケーションから提供されたトレースを関連付けることができるので、トラブルシューティングが簡単になります。Visual Studio の Service Fabric プロジェクト テンプレートには、(.NET **EventSource** クラスに基づいて) 既定で ETW トレースを出力するロギング API が含まれています。ETW を使用した Service Fabric アプリケーション トレースの一般的な概要については、「[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)」を参照してください。
 
@@ -34,14 +34,14 @@ Elasticsearch に出現するトレースの場合、リアルタイムで (ア�
 ## Azure で Elasticsearch を設定する
 Azure で Elasticsearch サービスを設定するには、[**Azure リソース マネージャー テンプレート**](../resource-group-overview.md)を使用する方法が最も簡単です。Azure クイックスタート テンプレート リポジトリから、[Elasticsearch 用の包括的なクイックスタート Azure リソース マネージャー テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch)を入手できます。このテンプレートでは、スケール ユニット (ノードのグループ) ごとに異なるストレージ アカウントを使用します。構成と接続されているデータ ディスクの数が異なるクライアント ノードとサーバー ノードを個別にプロビジョニングすることもできます。
 
-ここでは、[Microsoft patterns & practices ELK ブランチ](https://github.com/mspnp/semantic-logging/tree/elk/)の **ES-MultiNode** という別のテンプレートを使用します。このテンプレートは使い方が簡単で、既定で HTTP 基本認証で保護された Elasticsearch クラスターを簡単に作成できます。続行する前に、GitHub から [Microsoft patterns & practices ELK リポジトリ](https://github.com/mspnp/semantic-logging/tree/elk/)をコンピューターにダウンロードしてください (リポジトリを複製するか、zip ファイルをダウンロードします)。ES-MultiNode テンプレートは、同じ名前のフォルダーに格納されています。
+ここでは、[Azure 診断ツール リポジトリ](https://github.com/Azure/azure-diagnostics-tools)の **ES-MultiNode** という別のテンプレートを使用します。このテンプレートは使い方が簡単で、HTTP 基本認証で保護された Elasticsearch クラスターを簡単に作成できます。続行する前に、GitHub からリポジトリをコンピューターにダウンロードしてください (リポジトリを複製するか、zip ファイルをダウンロードします)。ES-MultiNode テンプレートは、同じ名前のフォルダーに格納されています。
 
 ### コンピューターで ElasticSearch のインストール スクリプトを実行するための準備をする
-ES-MultiNode テンプレートを使用するには、提供されている `CreateElasticSearchCluster`という Azure PowerShell スクリプトを使用するのが最も簡単な方法です。このスクリプトを使用するには、PowerShell モジュールと、**openssl** というツールをインストールする必要があります。openssl は、Elasticsearch クラスターのリモート管理に使用できる SSH キーを作成するために必要です。
+ES-MultiNode テンプレートを使用するには、提供されている `CreateElasticSearchCluster` という Azure PowerShell スクリプトを使用するのが最も簡単な方法です。このスクリプトを使用するには、PowerShell モジュールと、**openssl** というツールをインストールする必要があります。openssl は、Elasticsearch クラスターのリモート管理に使用できる SSH キーを作成するために必要です。
 
 `CreateElasticSearchCluster` スクリプトは、Windows コンピューターから ES-MultiNode テンプレートを簡単に使用できるように設計されていることに注意してください。Windows 以外のコンピューターでもこのテンプレートを使用できますが、そのシナリオについては、この記事では説明しません。
 
-1. まだインストールしていない場合は、[**Azure PowerShell モジュール**](http://aka.ms/webpi-azps)をインストールします。メッセージが表示されたら、**[実行]**、**[インストール]** の順にクリックします。
+1. まだインストールしていない場合は、[**Azure PowerShell モジュール**](http://aka.ms/webpi-azps)をインストールします。メッセージが表示されたら、**[実行]**、**[インストール]** の順にクリックします。Azure PowerShell 1.3 以降が必要です。
 
 2. **openssl** ツールは、[**Git for Windows**](http://www.git-scm.com/downloads) のディストリビューションに含まれています。まだインストールしていない場合は、今すぐ [Git for Windows](http://www.git-scm.com/downloads) をインストールしてください (既定のインストール オプションで問題ありません)。
 
@@ -69,12 +69,12 @@ ES-MultiNode テンプレートを使用するには、提供されている `Cr
 |dataDiskSize |各データ ノードに割り当てられるデータ ディスクのサイズ (GB 単位)。各ノードは、Elastic Search サービス専用の 4 個のデータ ディスクを受け取ります。|
 |region |Elastic Search クラスターがある Azure リージョンの名前。|
 |esUserName |(HTTP 基本認証に従って) ES クラスターへのアクセス権を持つように構成されるユーザーのユーザー名。パスワードはパラメーター ファイルに含まれないため、`CreateElasticSearchCluster` スクリプトが呼び出された時点で指定する必要があります。|
-|vmSizeDataNodes |Elastic Search クラスター ノードの Azure 仮想マシンのサイズ。既定値は Standard\_D1 です。|
+|vmSizeDataNodes |Elastic Search クラスター ノードの Azure 仮想マシンのサイズ。既定値は Standard\_D2 です。|
 
 これで、スクリプトを実行する準備が整いました。次のコマンドを発行します。
 
 ```powershell
-CreateElasticSearchCluster -ResourceGroupName <es-group-name>
+CreateElasticSearchCluster -ResourceGroupName <es-group-name> -Region <azure-region> -EsPassword <es-password>
 ```
 
 各値の説明:
@@ -255,4 +255,4 @@ Elasticsearch 接続データは、サービス構成ファイル (**PackageRoot
 [1]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/listener-lib-references.png
 [2]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/kibana.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

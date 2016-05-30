@@ -1,14 +1,14 @@
 <properties
 	pageTitle="Media Services Extension での CDN キャッシュ ポリシー"
-	description="このトピックでは、Media Services Extension での CDM キャッシュ ポリシーの概要について説明します。"
-	services="cdn"
+	description="このトピックでは、Media Services Extension での CDN キャッシュ ポリシーの概要について説明します。"
+	services="media-services,cdn"
 	documentationCenter=".NET"
 	authors="juliako"
 	manager="erikre"
 	editor=""/>
 
 <tags
-	ms.service="cdn"
+	ms.service="media-services"
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -28,6 +28,8 @@ Azure Media Services では、HTTP ベースのアダプティブ ストリー�
 
 Azure Media services は、ストリーミング エンドポイントに対して[統合 CDN](https://azure.microsoft.com/updates/azure-media-services-now-fully-integrated-with-azure-cdn/) を提供します。キャッシュ制御ヘッダーは、ストリーミング エンドポイントと同じ方法で CDN が有効なストリーミング エンドポイントに適用されます。Azure CDN は、ストリーミング エンドポイントで構成されたキャッシュ値を使用して内部キャッシュされるオブジェクトの有効期間を定義し、配信キャッシュ ヘッダーもこの値を使用して設定します。CDN 対応のストリーミング エンドポイントを使用するときは、小さいキャッシュ値を設定することは推奨されません。小さい値を設定すると、パフォーマンスが低下し、CDN のメリットが小さくなります。CDN が有効なストリーミング エンドポイントの場合、600 秒未満にキャッシュ ヘッダーを設定することは許可されません。
 
+>[AZURE.IMPORTANT] Azure CDN と統合された Azure Media Services は、**Azure CDN from Verizon** に実装されています。Azure Media Services に **Azure CDN from Akamai** を使用する場合、[エンドポイントを手動で構成する](cdn-create-new-endpoint.md)必要があります。Azure CDN 機能の詳細については、「[CDN の概要](cdn-overview.md)」を参照してください。
+
 ##Azure Media Services でのキャッシュ ヘッダーの構成
 
 Azure 管理ポータルまたは Azure Media Services API を使用して、キャッシュ ヘッダーの値を構成できます。
@@ -42,4 +44,4 @@ Azure 管理ポータルまたは Azure Media Services API を使用して、キ
 2. 手動による構成がない場合は既定値が適用されます。
 3. 既定では、Azure Media または Azure Storage の構成に関係なく 2 秒のキャッシュ ヘッダーがライブ ストリーミング マニフェスト (プレイリスト) に適用され、この値の上書きは使用できません。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

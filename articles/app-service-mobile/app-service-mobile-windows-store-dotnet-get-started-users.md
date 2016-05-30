@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Windows Runtime 8.1 ユニバーサル アプリへの認証の追加 | Azure Mobile Apps"
-	description="Azure App Service Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを使って Windows アプリのユーザーを認証する方法を説明します。"
+	pageTitle="ユニバーサル Windows プラットフォーム (UWP) アプリに認証を追加する | Azure Mobile Apps"
+	description="Azure App Service Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを使ってユニバーサル Windows プラットフォーム (UWP) アプリのユーザーを認証する方法を説明します。"
 	services="app-service\mobile"
 	documentationCenter="windows"
 	authors="ggailey777"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="05/14/2016"
 	ms.author="glenga"/>
 
 # Windows アプリに認証を追加する
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-このトピックでは、モバイル アプリにクラウド ベースの認証を追加する方法を説明します。このチュートリアルでは、Azure App Service でサポートされている ID プロバイダーを使用して、Mobile Apps のクイック スタート プロジェクトに認証を追加します。Mobile Apps のバックエンドによって正常に認証され、承認されると、ユーザー ID 値が表示されます。
+このトピックでは、モバイル アプリにクラウド ベースの認証を追加する方法を説明します。このチュートリアルでは、Azure App Service でサポートされている ID プロバイダーを使用して、Mobile Apps のユニバーサル Windows プラットフォーム (UWP) のクイック スタート プロジェクトに認証を追加します。Mobile Apps のバックエンドによって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
 このチュートリアルは、Mobile Apps のクイック スタートに基づいています。事前に[Mobile Apps の使用](app-service-mobile-windows-store-dotnet-get-started.md)に関するチュートリアルを完了している必要があります。
 
@@ -32,13 +32,82 @@
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-これで、バックエンドへの匿名アクセスが無効になっていることを確認できます。スタートアップ プロジェクトとして設定された Windows アプリ プロジェクトの 1 つを使用して、F5 キーを押してアプリを実行します。アプリケーションの開始後、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。この問題は、認証されていないユーザーとしてアプリケーションがモバイル アプリ コードにアクセスしようとしても、現在の *TodoItem* テーブルでは認証が要求されるために発生します。
+これで、バックエンドへの匿名アクセスが無効になっていることを確認できます。スタートアップ プロジェクトとして設定された UWP アプリ プロジェクトを使用し、アプリをデプロイして実行します。アプリケーションの開始後、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。この問題は、認証されていないユーザーとしてアプリケーションがモバイル アプリ コードにアクセスしようとしても、現在の *TodoItem* テーブルでは認証が要求されるために発生します。
 
 次に、App Service のリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
 ##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
-[AZURE.INCLUDE [mobile-windows-universal-dotnet-authenticate-app](../../includes/mobile-windows-universal-dotnet-authenticate-app.md)]
+1. UWP アプリ プロジェクトの MainPage.cs ファイルを開き、次のコード スニペットを MainPage クラスに追加します。
+	
+		// Define a member variable for storing the signed-in user. 
+        private MobileServiceUser user;
+
+        // Define a method that performs the authentication process
+        // using a Facebook sign-in. 
+        private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
+        {
+            string message;
+            bool success = false;
+            try
+            {
+                // Change 'MobileService' to the name of your MobileServiceClient instance.
+                // Sign-in using Facebook authentication.
+                user = await App.MobileService
+                    .LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+                message =
+                    string.Format("You are now signed in - {0}", user.UserId);
+
+                success = true;
+            }
+            catch (InvalidOperationException)
+            {
+                message = "You must log in. Login Required";
+            }
+
+            var dialog = new MessageDialog(message);
+            dialog.Commands.Add(new UICommand("OK"));
+            await dialog.ShowAsync();
+            return success;
+        }
+
+    このコードでは、Facebook ログインを使用してユーザーを認証します。Facebook 以外の ID プロバイダーを使用している場合は、上の **MobileServiceAuthenticationProvider** の値をプロバイダーに対応する値に変更してください。
+
+3. 既存の **OnNavigatedTo** メソッドのオーバーライドで、**ButtonRefresh\_Click** メソッド (または **InitLocalStoreAsync** メソッド) の呼び出しをコメントにするか、削除します。これを行うと、ユーザーが認証されるまでデータが読み込まれなくなります。次は、認証をトリガーするアプリに**サインイン** ボタンを追加します。
+
+4. MainPage クラスに、次のコード スニペットを追加します。
+
+	    private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
+	    {
+	        // Login the user and then load data from the mobile app.
+	        if (await AuthenticateAsync())
+	        {
+	            // Switch the buttons and load items from the mobile app.
+	            ButtonLogin.Visibility = Visibility.Collapsed;
+	            ButtonSave.Visibility = Visibility.Visible;
+	            //await InitLocalStoreAsync(); //offline sync support.
+	            await RefreshTodoItems();
+	        }
+	    }
+		
+5. MainPage.xaml プロジェクト ファイルを開き、**[保存]** ボタンを定義している要素を探して、次のコードに置き換えます。
+
+        <Button Name="ButtonSave" Visibility="Collapsed" Margin="0,8,8,0" 
+				Click="ButtonSave_Click">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Add"/>
+                <TextBlock Margin="5">Save</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Name="ButtonLogin" Visibility="Visible" Margin="0,8,8,0" 
+                Click="ButtonLogin_Click" TabIndex="0">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Permissions"/>
+                <TextBlock Margin="5">Sign in</TextBlock> 
+            </StackPanel>
+        </Button>
+
+9. F5 キーを押してアプリを実行します。**[サインイン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサインインします。サインインに成功すると、アプリはエラーなしで実行し、バックエンドに対してクエリを行ってデータを更新できるようになります。
 
 
 ##<a name="tokens"></a>クライアント側で認証トークンを保存する
@@ -61,4 +130,4 @@
 <!-- URLs. -->
 [Get started with your mobile app]: app-service-mobile-windows-store-dotnet-get-started.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

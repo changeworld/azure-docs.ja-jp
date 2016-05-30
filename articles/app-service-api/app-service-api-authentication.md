@@ -22,6 +22,8 @@
 
 ## 概要 
 
+> [AZURE.NOTE] このトピックは、Web、モバイル、および API Apps に関する説明が記載された「[Azure App Service での認証および承認](../app-service/app-service-authentication-overview.md)」トピックに統合される予定です。
+
 Azure App Service は、[OAuth 2.0](#oauth) と [OpenID Connect](#oauth) を実装する、組み込み認証機能と承認サービスを提供します。この記事では、Azure App Service の API Apps に使用可能なサービスとオプションについて説明します。
 
 次の図は、App Service の認証の鍵となるいくつかの特性を示しています。
@@ -112,4 +114,4 @@ Azure Active Directory の詳細については、次のリソースを参照し
 
 この記事では、API アプリに使用できる App Service の認証と承認の機能について説明しました。入門シリーズの次のチュートリアルでは、[App Service API Apps にユーザー認証](app-service-api-dotnet-user-principal-auth.md)を実装する方法について説明します。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

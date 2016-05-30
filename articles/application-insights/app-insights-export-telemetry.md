@@ -12,18 +12,21 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/10/2016" 
+	ms.date="05/07/2016" 
 	ms.author="awills"/>
  
 # Application Insights からのテレメトリのエクスポート
 
-テレメトリに対してカスタマイズした分析を行う必要がありますか。 それとも、特定のプロパティを持つイベントに対して電子メール アラートを送信する必要がありますか。 そのようなケースには、連続エクスポートが最適です。Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。
+標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。
 
 連続エクスポートは、無料の評価期間、および [Standard 料金プランと Premium 料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)で使用できます。
 
->[AZURE.NOTE] [Power BI のデータを探索](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)する場合は、連続エクスポートを使用せずにこれを実行できます。
->
->また、メトリックや検索ブレードでの表示内容の [1 回限りのエクスポート](app-insights-metrics-explorer.md#export-to-excel)を実行する場合は、ブレードの上部で [エクスポート] をクリックします。
+
+連続エクスポートをセットアップする前に、次の代替手段を検討してください。
+
+* メトリック ブレードや検索ブレードの上部にある [[エクスポート] ボタン](app-insights-metrics-explorer.md#export-to-excel)を使用すると、テーブルやグラフを Excel のスプレッドシートに転送できます。 
+* [Analytics](app-insights-analytics.md) にはテレメトリ用の強力なクエリ言語があり、結果をエクスポートすることもできます。
+* [Power BI でデータを探索](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)する場合は、連続エクスポートを使用せずに実行できます。
 
 
 ## ストレージ アカウントの作成
@@ -74,6 +77,8 @@ BLOB でデータが表示されるまで、約 1 時間の遅延が発生する
 
 エクスポートされたデータは、お客様のアプリケーションから受け取った未加工のテレメトリですが、クライアントの IP アドレスから計算された位置データが追加されます。
 
+[サンプリング](app-insights-sampling.md)によって破棄されたデータは、エクスポートされるデータに含まれません。
+
 他の計算メトリックは含まれません。たとえば、平均 CPU 使用率はエクスポートされませんが、平均の計算に使用された未加工のテレメトリはエクスポートされます。
 
 データには、セットアップ済みのすべての[利用可能な Web テスト](app-insights-monitor-web-app-availability.md)の結果も含まれます。
@@ -107,6 +112,7 @@ Where
 ## <a name="format"></a> データ形式
 
 * それぞれの Blob は、"\\n" で区切られた複数の行を含むテキスト ファイルです。
+* 各行は、要求やページ表示などのテレメトリ データ ポイントを表します。
 * それぞれの行は、書式設定されていない JSON ドキュメントです。詳細を確認する場合は、Visual Studio でファイルを開き、[編集]、[詳細]、[フォーマット ファイル] の順に選択します。
 
 ![適切なツールでテレメトリを表示します](./media/app-insights-export-telemetry/06-json.png)
@@ -223,4 +229,4 @@ Where
 
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

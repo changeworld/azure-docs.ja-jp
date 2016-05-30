@@ -543,7 +543,7 @@ range timestamp from ago(4h) to now() step 1m
 類似したレコードのグループ化を試みます。この演算子は、グループごとに、そのグループを最も適切に表していると思われる `Pattern` と、そのグループ内のレコードの `Count` を出力します。
 
 
-![](./media/app-insights-analytics-queries/reduce.png)
+![](./media/app-insights-analytics-reference/reduce.png)
 
 **構文**
 
@@ -625,7 +625,7 @@ Traces
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-各間隔 ([0,10.0]、 \[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
+各間隔 ([0,10.0]、[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
 
 
 **構文**
@@ -844,7 +844,7 @@ traces
       by name
 
 
-![](./media/app-insights-analytics-aggregations/argmin.png)
+![](./media/app-insights-analytics-reference/argmin.png)
  
 
 
@@ -980,7 +980,7 @@ traces
     | summarize cities=dcount(client_City) 
       by client_CountryOrRegion
 
-![](./media/app-insights-analytics-aggregations/dcount.png)
+![](./media/app-insights-analytics-reference/dcount.png)
 
 ### makelist
 
@@ -1004,7 +1004,7 @@ traces
     | summarize cities=makeset(client_City) 
       by client_CountryOrRegion
 
-![](./media/app-insights-analytics-aggregations/makeset.png)
+![](./media/app-insights-analytics-reference/makeset.png)
 
 逆の処理を実行する [`mvexpand` 演算子](#mvexpand-operator)も参照してください。
 
@@ -1052,7 +1052,7 @@ traces
         percentiles(duration, 5, 20, 50, 80, 95) 
       by name
 
-![](./media/app-insights-analytics-aggregations/percentiles.png)
+![](./media/app-insights-analytics-reference/percentiles.png)
 
 結果には、/Events/Index 要求の場合、要求の 5% の応答が 2.44 秒未満、50% の応答が 3.52 秒、5% が 6.85 秒より遅いことが示されています。
 
@@ -1288,17 +1288,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 || |
 |---|-------------|
 | + | [追加] のいずれかを |
-| - | 減算 | 
-| * | 乗算 | 
-| / | 除算 | 
-| % | 剰余 | 
-|| 
-|`<` |小さい 
-|`<=`|小さいまたは等しい 
-|`>` |大きい 
-|`>=`|大きいまたは等しい 
-|`<>`|等しくない 
-|`!=`|等しくない
+| - | 減算 | | * | 乗算 | | / | 除算 | | % | 剰余 | || |`<` |小さい |`<=`|小さいまたは等しい |`>` |大きい |`>=`|大きいまたは等しい |`<>`|等しくない |`!=`|等しくない
 
 
 
@@ -1911,7 +1901,7 @@ substring("ABCD", 0, 2)       // AB
 
 Application Insights の例外に対するクエリの結果を次に示します。`details` の値は配列です。
 
-![](./media/app-insights-analytics-scalars/310.png)
+![](./media/app-insights-analytics-reference/310.png)
 
 **インデックス:** JavaScript と同様に、配列やオブジェクトのインデックスを作成できます。
 
@@ -1943,7 +1933,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
     | mvexpand details[0].parsedStack[0]
 
 
-![](./media/app-insights-analytics-scalars/410.png)
+![](./media/app-insights-analytics-reference/410.png)
 
 
 **treepath:** 複合オブジェクト内のすべてのパスを検索するには、次のようにします。
@@ -1953,7 +1943,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
     | mvexpand path
 
 
-![](./media/app-insights-analytics-scalars/420.png)
+![](./media/app-insights-analytics-reference/420.png)
 
 **buildschema:** テーブル内の式のすべての値を受け入れる最小限のスキーマを見つけるには、次のようにします。
 
@@ -2233,4 +2223,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

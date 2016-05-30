@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/08/2016"
+   ms.date="04/26/2016"
    ms.author="seanmck"/>
 
 # 複数の環境のアプリケーション パラメーターを管理する
@@ -24,7 +24,7 @@ Azure Service Fabric クラスターは、1 台～ 数千台のコンピュー�
 
 ## 環境固有のパラメーターを指定する
 
-この構成の問題に対するソリューションとして、パラメーター化された既定のサービス セットと、特定の環境のパラメーター値を含むアプリケーション パラメーター ファイルがあります。
+この構成の問題に対するソリューションとして、パラメーター化された既定のサービス セットと、特定の環境のパラメーター値を含むアプリケーション パラメーター ファイルがあります。既定のサービスとアプリケーションのパラメーターは、アプリケーション マニフェストとサービス マニフェストで構成します。ServiceManifest.xml と ApplicationManifest.xml ファイルのスキーマ定義は、Service Fabric SDK およびツールと共に *C:\\Program Files\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd* にインストールされます。
 
 ### 既定のサービス
 
@@ -33,10 +33,13 @@ Service Fabric アプリケーションは、サービス インスタンスの�
     <DefaultServices>
         <Service Name="Stateful1">
             <StatefulService
-                ServiceTypeName="Stateful1Type" TargetReplicaSetSize="[Stateful1_TargetReplicaSetSize]" MinReplicaSetSize="[Stateful1_MinReplicaSetSize]">
+                ServiceTypeName="Stateful1Type"
+                TargetReplicaSetSize="[Stateful1_TargetReplicaSetSize]"
+                MinReplicaSetSize="[Stateful1_MinReplicaSetSize]">
 
                 <UniformInt64Partition
-                    PartitionCount="[Stateful1_PartitionCount]" LowKey="-9223372036854775808"
+                    PartitionCount="[Stateful1_PartitionCount]"
+                    LowKey="-9223372036854775808"
                     HighKey="9223372036854775807"
                 />
         </StatefulService>
@@ -116,17 +119,19 @@ Visual Studio でアプリケーションを発行する場合は、使用可能
 
 ### PowerShell からのデプロイ
 
-`DeployCreate-FabricApplication.ps1` PowerShell スクリプトは、パラメーター ファイルをパラメーターとして受け入れます。
+アプリケーション プロジェクト テンプレートに含まれる `Deploy-FabricApplication.ps1` PowerShell スクリプトは、発行プロファイルをパラメーターとして受け入れます。PublishProfile にはアプリケーション パラメーター ファイルへの参照が含まれています。
 
-    ./DeployCreate-FabricApplication -ApplicationPackagePath <app_package_path> -ApplicationDefinitionFilePath <app_instance_definition_path>
+  ```PowerShell
+    ./Deploy-FabricApplication -ApplicationPackagePath <app_package_path> -PublishProfileFile <publishprofile_path>
+  ```
 
 ## 次のステップ
 
-このトピックで説明したいくつかのコア概念の詳細については、「[Service Fabric の技術概要](service-fabric-technical-overview.md)」を参照してください。Visual Studio で使用可能な他のアプリケーション管理機能の詳細については、「[Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)」を参照してください。
+このトピックで説明したいくつかのコア概念の詳細については、[Service Fabric の技術概要](service-fabric-technical-overview.md)に関する記事を参照してください。Visual Studio で使用可能なその他のアプリケーション管理機能の詳細については、[Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)に関する記事を参照してください。
 
 <!-- Image references -->
 
 [publishdialog]: ./media/service-fabric-manage-multiple-environment-app-configuration/publish-dialog-choose-app-config.png
 [app-parameters-solution-explorer]: ./media/service-fabric-manage-multiple-environment-app-configuration/app-parameters-in-solution-explorer.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

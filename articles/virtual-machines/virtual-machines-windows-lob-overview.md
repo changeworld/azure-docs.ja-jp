@@ -11,17 +11,17 @@
 <tags 
 	ms.service="virtual-machines-windows" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="Windows" 
+	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/25/2016" 
+	ms.date="05/08/2016" 
 	ms.author="josephd"/>
 
 # Azure での高可用な基幹業務アプリケーションのデプロイ
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
-この記事には、Azure インフラストラクチャ サービスに、高可用なイントラネット専用のWeb ベース基幹業務アプリケーションと SQL Server AlwaysOn 可用性グループをデプロイするための詳細な手順へのリンクが含まれます。アプリケーションは、次のコンピューターでホストされます。
+この記事には、Azure インフラストラクチャ サービスに、高可用なイントラネット専用の Web ベース基幹業務アプリケーションと SQL Server AlwaysOn 可用性グループをデプロイするための詳細な手順へのリンクが含まれます。アプリケーションは、次のコンピューターでホストされます。
 
 - 2 台の Web サーバー
 - 2 台のデータベース サーバー
@@ -93,4 +93,4 @@ Azure の IT ワークロードの設計に関する詳細については、「[
 
 - [フェーズ 1](virtual-machines-windows-ps-lob-ph1.md) を使用して、このワークロードの構成を開始します。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

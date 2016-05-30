@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 # Microsoft Azure CDN でのリアルタイム統計情報
 
+[AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
+
 ## 概要
 
 この文書では、Microsoft Azure CDN のリアルタイム統計情報について説明します。この機能は、クライアントにコンテンツを配信するときの CDN のパフォーマンスに関するリアルタイム データを提供します。
-
-> [AZURE.NOTE] リアルタイム統計情報は、Premium CDN 層の機能です。Standard CDN と Premium CDN の機能の比較については、「[Azure CDN の概要](cdn-overview.md)」を参照してください。
 
 HTTP ベースのプラットフォームのリアルタイムの統計情報を表示するとき、次のグラフを使用できます。
 
@@ -99,4 +99,4 @@ Other per second (毎秒その他) | その他すべての状態コードの合�
 * [詳細な HTTP レポート](cdn-advanced-http-reports.md)
 * [Edge のパフォーマンスの分析](cdn-edge-performance.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

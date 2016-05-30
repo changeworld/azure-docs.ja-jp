@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/13/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 # Azure AD のフェデレーション互換性リスト
@@ -215,9 +215,7 @@ NetIQ Access Manager 4.0.1 は、広く使用されている WS-Federation/WS-Tr
 
 | クライアント |サポート |例外|
 | --------- | --------- |--------- |
-| Exchange Web Access や SharePoint Online などの Web ベースのクライアント | サポートされています |**Kerberos Contract がサポートされています|
-|Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション|サポートされています|統合 Windows 認証はサポートされていません|
-|Outlook や ActiveSync などの電子メール リッチ クライアント|サポートされています|なし|
+| Exchange Web Access や SharePoint Online などの Web ベースのクライアント | サポートされています |**Kerberos Contract がサポートされています| |Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション|サポートされています|統合 Windows 認証はサポートされていません| |Outlook や ActiveSync などの電子メール リッチ クライアント|サポートされています|なし|
 
 **NetIQ は、Kerberos Contract の構成を介した Kerberos 認証をサポートしています。この構成に関するサポートについては、NetIQ 社に問い合わせるか、セットアップ ガイドを参照してください。NetIQ Access Manager の詳細については、[NetIQ Access Manager](https://www.netiq.com/documentation/netiqaccessmanager4/identityserverhelp/data/b12iqp0m.html) に関するページを参照してください。
 
@@ -320,4 +318,4 @@ AuthAnvil Single Sign On 4.5 は、広く使用されている WS-Federation/WS-
 
 詳細については、[AuthAnvil のシングル サインオン](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="SQL Server との間でのデータの移動 | Azure Data Factory" 
-	description="Azure Data Factory を使用してオンプレミスまたは Azure VM の SQL Server データベースとの間でデータを移動する方法を説明します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+<properties
+	pageTitle="SQL Server との間でのデータの移動 | Azure Data Factory"
+	description="Azure Data Factory を使用してオンプレミスまたは Azure VM の SQL Server データベースとの間でデータを移動する方法を説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
-<tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/18/2016" 
+<tags
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/18/2016"
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してオンプレミスまたは IaaS (Azure VM) の SQL Server との間でデータを移動する
@@ -36,7 +36,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 
 1.	[OnPremisesSqlServer](data-factory-sqlserver-connector.md#sql-server-linked-service-properties) 型のリンクされたサービス。
 2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
-3.	[SqlServerTable](data-factory-sqlserver-connector.md#sql-server-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。 
+3.	[SqlServerTable](data-factory-sqlserver-connector.md#sql-server-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
 4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 4.	[SqlSource](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
@@ -71,7 +71,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 
 **SQL Server 入力データセット**
 
-このサンプルでは、SQL Server で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
+このサンプルでは、SQL Server で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。1 つのデータセットを使用して同じデータベース内の複数のテーブルに対してクエリを実行することはできますが、データセットの tableName typeProperty には 1 つのテーブルを使用する必要があることに注意してください。
 
 “external”: ”true” を設定して externalData ポリシーを指定すると、テーブルが Data Factory に対して外部にあり、Data Factory のアクティビティでは生成されてないことが Azure Data Factory のサービスに通知されます。
 
@@ -101,7 +101,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 **Azure BLOB の出力データセット**
 
 データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
-	
+
 	{
 	  "name": "AzureBlobOutput",
 	  "properties": {
@@ -206,8 +206,10 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 	   }
 	}
 
+
 上記の例では、SqlSource に **sqlReaderQuery** が指定されています。コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。sqlReaderQuery では、入力データセットによって参照されるデータベース内の複数のテーブルを、データセットの tableName typeProperty として設定されるテーブルに限らず参照できることに注意してください。
- 
+
+
 SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
 
@@ -226,7 +228,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 このサンプルはある時系列に属するデータを 1 時間おきに Azure BLOB から SQL Server データベースのテーブルにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **SQL Server のリンクされているサービス**
-	
+
 	{
 	  "Name": "SqlServerLinkedService",
 	  "properties": {
@@ -253,7 +255,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 **Azure BLOB の入力データセット**
 
 データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。フォルダー パスは開始時間の年、月、日の部分を利用し、ファイル名は開始時間の時刻部分を使用します。「“external”: “true”」設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
-	
+
 	{
 	  "name": "AzureBlobInput",
 	  "properties": {
@@ -316,11 +318,11 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 	    }
 	  }
 	}
-	
+
 **SQL Server の出力データセット**
 
 このサンプルは SQL Server の「MyTable」というテーブルにデータをコピーします。BLOB CSV ファイルに含めることが予想される数の列で SQL Server にテーブルを作成する必要があります。新しい行は 1 時間ごとにテーブルに追加されます。
-	
+
 	{
 	  "name": "SqlServerOutput",
 	  "properties": {
@@ -394,7 +396,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 | type | type プロパティは、**OnPremisesSqlServer** に設定されます。 | はい |
 | connectionString | SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 | はい |
 | gatewayName | Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 | はい |
-| username | Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ |
+| username | Windows 認証を使用している場合は、ユーザー名を指定します。例: **domainname\\username**。 | いいえ |
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ |
 
 **New-AzureRmDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
@@ -404,7 +406,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 ### サンプル
 
 **SQL 認証を使用している場合の JSON**
-	
+
 	{
 	    "name": "MyOnPremisesSQLDB",
 	    "properties":
@@ -419,16 +421,16 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 ユーザー名とパスワードが指定されている場合、ゲートウェイはその情報を使用して指定されたユーザー アカウントに偽装して、オンプレミス SQL Server データベースに接続します。指定されていない場合、ゲートウェイは、Gateway (スタートアップ アカウント) のセキュリティ コンテキストを使用して SQL Server に直接接続します。
 
-	{ 
-	     "Name": " MyOnPremisesSQLDB", 
-	     "Properties": 
-	     { 
-	         "type": "OnPremisesSqlLinkedService", 
-	         "ConnectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=True;", 
-	         "username": "<username>", 
-	         "password": "<password>", 
-	         "gatewayName": "<gateway name>" 
-	     } 
+	{
+	     "Name": " MyOnPremisesSQLDB",
+	     "Properties":
+	     {
+	         "type": "OnPremisesSqlLinkedService",
+	         "ConnectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=True;",
+	         "username": "<domain\\username>",
+	         "password": "<password>",
+	         "gatewayName": "<gateway name>"
+	     }
 	}
 
 SQL Server データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
@@ -467,7 +469,7 @@ SqlSource に **sqlReaderQuery** が指定されている場合、コピー ア�
 
 SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
-> [AZURE.NOTE] **sqlReaderStoredProcedureName** を使用する場合は、データセット JSON の **tableName** プロパティの値を指定する必要があります。これは、現時点での製品の制限です。ただし、このテーブルに対して実行される検証はありません。
+> [AZURE.NOTE] **sqlReaderStoredProcedureName** を使用する場合でも、データセット JSON の **tableName** プロパティの値を指定する必要があります。これは、現時点での製品の制限です。ただし、このテーブルに対して実行される検証はありません。
 
 ### SqlSink
 
@@ -476,32 +478,32 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | (単位 = 時間) 例: “00:30:00” (30 分) | いいえ | 
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | (単位 = 時間) 例: “00:30:00” (30 分) | いいえ |
 | writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 | 整数 (単位 = 行数) | いいえ (既定値 = 10000)
 | sqlWriterCleanupScript | 特定のスライスのデータを消去する方法で実行するコピー アクティビティのユーザー指定のクエリ。詳細については、下にある繰り返し性のセクションを参照してください。 | クエリ ステートメント。 | いいえ |
 | sliceIdentifierColumnName | コピー アクティビティで、自動生成スライス ID を入力する列のユーザー指定の名前。再実行時、特定のスライスのデータを消去するために使用されます。詳細については、下にある繰り返し性のセクションを参照してください。 | バイナリ (32) のデータ型の列の列名。 | いいえ |
 | sqlWriterStoredProcedureName | 対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 | ストアド プロシージャの名前。 | いいえ |
-| storedProcedureParameters | ストアド プロシージャのパラメーター。 | 名前と値のペア。パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ | 
+| storedProcedureParameters | ストアド プロシージャのパラメーター。 | 名前と値のペア。パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ |
 | sqlWriterTableType | 上記のストアド プロシージャで使用するテーブル型のユーザー指定の名前。コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 | テーブルの種類の名前。 | いいえ |
 
 ## 接続の問題のトラブルシューティング
 
 1. リモート接続を許可するよう、SQL Server を構成します。**SQL Server Management Studio** を起動し、**サーバー**を右クリックして、**[プロパティ]** をクリックします。一覧から **[接続]** を選択し、**[このサーバーへのリモート接続を許可する]** をオンにします。
-	
+
 	![リモート接続を有効にする](.\media\data-factory-sqlserver-connector\AllowRemoteConnections.png)
 
-	詳細な手順については、「[remote access サーバー構成オプションの構成](https://msdn.microsoft.com/library/ms191464.aspx)」を参照してください。 
+	詳細な手順については、「[remote access サーバー構成オプションの構成](https://msdn.microsoft.com/library/ms191464.aspx)」を参照してください。
 2. **SQL Server 構成マネージャー**を起動します。目的のインスタンスの **SQL Server ネットワーク構成**を展開し、**[MSSQLSERVER のプロトコル]** を選択します。右側のウィンドウにプロトコルが表示されます。**[TCP/IP]** を右クリックし、**[有効化]** をクリックして TCP/TP を有効にします。
 
 	![TCP/IP を有効にする](.\media\data-factory-sqlserver-connector\EnableTCPProptocol.png)
 
-	詳細について、また TCP/IP プロトコルを有効にする別の方法については、「[サーバー ネットワーク プロトコルの有効化または無効化](https://msdn.microsoft.com/library/ms191294.aspx)」を参照してください。 
+	詳細について、また TCP/IP プロトコルを有効にする別の方法については、「[サーバー ネットワーク プロトコルの有効化または無効化](https://msdn.microsoft.com/library/ms191294.aspx)」を参照してください。
 3. 同じウィンドウで、**[TCP/IP]** をダブルクリックして、**[TCP/IP プロパティ]** ウィンドウを起動します。
 4. **[IP アドレス]** タブに切り替えます。下にスクロールして **IPAll** セクションを表示します。**TCP ポート** をメモしておきます (既定は **1433**)。
 5. コンピューターに **Windows Firewall のルール**を作成し、このポート経由の受信トラフィックを許可します。  
-6. **接続の確認**: 別のコンピューターから SQL Server Management Studio を使用して、完全修飾名を使って SQL Server に接続します。<machine>.<domain>.corp.<company>.com,1433 などです。
+6. **接続の確認**: 別のコンピューターから SQL Server Management Studio を使用して、完全修飾名を使って SQL Server に接続します。<machine>.<domain>.corp.<company>.com,1433 などを使用します。
 
-	> [AZURE.IMPORTANT] 
+	> [AZURE.IMPORTANT]
 	詳細については、「[ポートとセキュリティに関する考慮事項](data-factory-move-data-between-onprem-and-cloud.md#port-and-security-considerations)」を参照してください。
 	>   
 	> 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
@@ -570,7 +572,7 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQ
 	        },
 	        "external": false,
 	        "policy": {}
-	    }	
+	    }
 	}
 
 
@@ -609,8 +611,8 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 | Decimal | Decimal |
 | FILESTREAM 属性 (varbinary(max)) | Byte |
 | Float | Double |
-| image | Byte | 
-| int | Int32 | 
+| image | Byte |
+| int | Int32 |
 | money | Decimal |
 | nchar | String、Char |
 | ntext | String、Char |
@@ -620,7 +622,7 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 | rowversion | Byte |
 | smalldatetime | DateTime |
 | smallint | Int16 |
-| smallmoney | Decimal | 
+| smallmoney | Decimal |
 | sql\_variant | Object * |
 | text | String、Char |
 | time | TimeSpan |
@@ -638,6 +640,6 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

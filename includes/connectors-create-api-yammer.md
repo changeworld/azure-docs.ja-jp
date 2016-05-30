@@ -1,15 +1,11 @@
-### Prerequisites
-- A [Yammer](https://www.yammer.com/) account 
+### 前提条件
+- [Yammer](https://www.yammer.com/) アカウント 
 
-Before you can use your Yammer account in a Logic app, you must authorize the Logic app to connect to your Yammer account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
+ロジック アプリで Yammer アカウントを使用するには、Yammer アカウントに接続するロジック アプリを承認する必要があります。幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
-Here are the steps to authorize your Logic app to connect to your Yammer account:
+次に、Yammer アカウントに接続するロジック アプリを承認する手順を示します。
 
-1. To create a connection to Yammer, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Yammer* in the search box. Select the trigger or action you'll like to use:  
-  ![](./media/connectors-create-api-yammer/yammer-1.png)
-2. If you haven't created any connections to Yammer before, you'll get prompted to provide your Yammer credentials. These credentials will be used to authorize your Logic app to connect to, and access your Yammer account's data:  
-  ![](./media/connectors-create-api-yammer/yammer-2.png)
-3. Provide your Yammer user name and password to authorize your Logic app:  
-  ![](./media/connectors-create-api-yammer/yammer-3.png)   
-4. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
-  ![](./media/connectors-create-api-yammer/yammer-4.png)   
+1. Yammer への接続を作成するには、ロジック アプリ デザイナーのドロップダウン リストから **[Show Microsoft managed APIs]** (Microsoft Managed API を表示) を選択し、検索ボックスに「*Yammer*」と入力します。使用するトリガーまたはアクションを選択します。 ![](./media/connectors-create-api-yammer/yammer-1.png)
+2. これまでに Yammer への接続を作成していない場合は、Yammer の資格情報を指定するよう求められます。この資格情報を使用して、接続するロジック アプリの承認と、Yammer アカウントのデータへのアクセスが行われます。 ![](./media/connectors-create-api-yammer/yammer-2.png)
+3. Yammer のユーザー名とパスワードを入力して、ロジック アプリを承認します。 ![](./media/connectors-create-api-yammer/yammer-3.png)   
+4. 接続が作成され、ロジック アプリで他の手順を実行できるようになります。 ![](./media/connectors-create-api-yammer/yammer-4.png)   

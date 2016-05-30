@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/29/2016"
+	ms.date="05/11/2016"
 	ms.author="robinsh"/>
 
 # Azure Storage Service Encryption for Data at Rest (プレビュー)
@@ -37,7 +37,7 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 
 ##可用性
 
-現在、この機能は、東アジアでは Standard Storage に対して、東日本では Premium Storage に対して使用できることに注意してください。他のリージョンに展開されたら、このドキュメントを更新します。
+現在、この機能は、東アジアと西ヨーロッパでは Standard Storage に対して、東日本では Premium Storage に対して使用できることに注意してください。他のリージョンに展開されたら、このドキュメントを更新します。
 
 ##暗号化のシナリオ
 
@@ -215,7 +215,7 @@ A: いつストレージ アカウントを作成しましたか。 プレビュ
 
 **Q: SSE プレビューを使用できるのは特定のリージョンだけですか?**
 
-A: SSE プレビューは、東アジアでは Standard Storage に、東日本では Premium Storage に使用できます。今後他のリージョンに展開されたら、このドキュメントを更新します。
+A: SSE プレビューは、東アジアと西ヨーロッパでは Standard Storage に、東日本では Premium Storage に使用できます。今後他のリージョンに展開されたら、このドキュメントを更新します。
 
 **Q: 問題やフィードバックの連絡先はどこですか?**
 
@@ -225,4 +225,4 @@ A: Storage Service Encryption に関する問題は、[ssediscussions@microsoft.
 
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。詳細については、「[Azure Storage security guide (Azure Storage セキュリティ ガイド)](storage-security-guide.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

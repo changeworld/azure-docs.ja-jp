@@ -93,7 +93,7 @@ ADO.NET を使用するクライアントの*ブロック期間*については�
 
 さまざまなプログラミング言語での再試行ロジックが使われているコード サンプルは次のリンクからアクセスできます。
 
-- [クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
+- [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
@@ -418,11 +418,6 @@ Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークで�
 - [4 - Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block (忍耐力、すべての勝利の秘訣: 一時的エラー処理アプリケーション ブロックの使用)](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)
 
 
-再試行ロジックで EntLib60 を使用する簡単な C# コード サンプルは、以下のページにあります。
-
-- [コード サンプル: Enterprise Library 6 で提供される SQL Database に接続するための C# の再試行ロジック](sql-database-develop-entlib-csharp-retry-windows.md)
-
-
 > [AZURE.NOTE] EntLib60 のソース コードは、[ダウンロード サイト](http://go.microsoft.com/fwlink/p/?LinkID=290898)から入手できます。EntLib に対して機能の更新や保守目的での更新を行う予定はありません。
 
 <a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
@@ -558,11 +553,11 @@ public bool IsTransient(Exception ex)
 
 ## 次のステップ
 
-- Azure SQL Database の他の一般的な接続の問題のトラブルシューティングについては、「[Troubleshoot common connection issues to Azure SQL Database (Azure SQL Database との接続に関する一般的な問題のトラブルシューティング)](sql-database-troubleshoot-common-connection-issues.md)」をご覧ください。
+- Azure SQL Database の他の一般的な接続の問題のトラブルシューティングについては、「[Azure SQL Database との接続に関する一般的な問題のトラブルシューティング](sql-database-troubleshoot-common-connection-issues.md)」をご覧ください。
 
 - [SQL Server の接続プーリング (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)
 
 
 - [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

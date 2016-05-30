@@ -31,11 +31,13 @@
 
 - **.vhd ファイルにインストールされている Linux オペレーティング システム** - サポートされている Linux オペレーティング システムを仮想ハード ディスクにインストールしておきます。.vhd ファイルを作成するツールは複数あります。たとえば、Hyper-V などの仮想化ソリューションにより、.vhd ファイルを作成し、オペレーティング システムをインストールできます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
-	**重要**: 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
+	> [AZURE.NOTE] 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
-	動作保証済みディストリビューションの一覧については、「[Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md)」を参照してください。Linux ディストリビューションの総目録については、「[動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-generic.md)」を参照してください。
+動作保証済みディストリビューションの一覧については、「[Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md)」を参照してください。Linux ディストリビューションの総目録については、「[動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-generic.md)」を参照してください。
 
 - **Azure コマンド ライン インターフェイス** - [Azure コマンド ライン インターフェイス](../virtual-machines-command-line-tools.md)をインストールして使用し、VHD をアップロードします。
+
+> [AZURE.TIP] Azure では動的 VHD のアップロードはサポートしないため、そのようなディスクは、アップロードする前に静的 VHD に変換する必要があります。動的ディスクの変換には、[GO 用の Azure VHD Utilities](https://github.com/Microsoft/azure-vhd-utils-for-go) などのツールを使用できます。
 
 <a id="prepimage"> </a>
 ## 手順 1. アップロードするイメージを準備する
@@ -50,7 +52,7 @@ Azure は、さまざまな Linux ディストリビューションをサポー�
 - **[Ubuntu](virtual-machines-linux-create-upload-ubuntu.md)**
 - **[その他 - 動作保証外のディストリビューション](virtual-machines-linux-create-upload-generic.md)**
 
-Azure で Linux イメージを準備する際のその他のヒントについては、「**[Linux のインストールに関する注記](virtual-machines-linux-create-upload-generic.md#linuxinstall)**」を参照してください。
+Azure で Linux イメージを準備する際のその他のヒントについては、「**[Linux のインストールに関する注記](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes)**」を参照してください。
 
 上のガイドに説明されている次の手順を行うと、Azure にアップロードする VHD ファイルの準備が整います。
 
@@ -81,4 +83,4 @@ Azure CLI でイメージをアップロードするには、次のコマンド�
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

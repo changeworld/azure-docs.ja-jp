@@ -31,9 +31,11 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-##Azure PowerShell 1.0 以上をインストールする
+##Azure PowerShell をインストールするには
 
-最初に 0.9x バージョンをアンインストールする必要があります。
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+
+Azure PowerShell バージョン 0.9x をインストールしている場合は、新しいバージョンをインストールする前に、アンインストールする必要があります。
 
 インストールされている PowerShell のバージョンを確認するには:
 
@@ -41,26 +43,10 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 	
 以前のバージョンをアンインストールするには、コントロール パネルで [プログラムと機能] を実行します。
 
-Azure PowerShell をインストールするための主な 2 つのオプションは次のとおりです。
-
-- [PowerShell ギャラリー](https://www.powershellgallery.com/)管理者特権の PowerShell ISE または管理者特権の Windows PowerShell コンソールから、次のコマンドを実行します。
-
-		# Install the Azure Resource Manager modules from PowerShell Gallery
-		Install-Module AzureRM
-		Install-AzureRM
-		
-		# Import AzureRM modules for the given version manifest in the AzureRM module
-		Import-AzureRM
-
-	詳細については、「[PowerShell ギャラリー](https://www.powershellgallery.com/)」を参照してください。
-
-- [Microsoft Web プラットフォーム インストーラー (WebPI)](http://aka.ms/webpi-azps)Azure PowerShell 0.9.x をインストールしている場合は、0.9.x のアンインストールを要求するメッセージが表示されますAzure PowerShell モジュールを PowerShell ギャラリーからインストールした場合、一貫した Azure PowerShell 環境を保つため、インストーラーにより、インストール前にモジュールを削除することが求められます。手順については、[WebPI を介した Azure PowerShell 1.0 のインストール](https://azure.microsoft.com/blog/azps-1-0/)に関するページを参照してください。
-
-WebPI は月次の更新プログラムを受け取ります。PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。PowerShell ギャラリーからのインストールを選んだ場合は、これが Azure PowerShell で最新および最良の点について情報を取得できる最初のチャネルになります。
 
 ##クラスターの作成
 
-「[Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)」をご覧ください。
+「[Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)」を参照してください。
 
 ##クラスターの一覧表示
 現在のサブスクリプションにあるクラスターすべてを一覧表示するには次のコマンドを使用します。
@@ -81,7 +67,7 @@ WebPI は月次の更新プログラムを受け取ります。PowerShell ギャ
 ##クラスターのスケール
 クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用される worker ノードの数を、クラスターを再作成することなく、変更できます。
 
->[AZURE.NOTE] HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスター ポータル インターフェイスについての理解する](hdinsight-adminster-use-management-portal/#Get-familiar-with-the-cluster-portal-interface)」を参照してください。
+>[AZURE.NOTE] HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスターの一覧と表示](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)」を参照してください。
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
@@ -99,7 +85,6 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
 		>hbase shell
 		>balancer
 
-	HBase シェルの使用方法の詳細については、以下を参照してください。
 - Storm
 
 	実行中の Storm クラスターに対して、データ ノードの追加または削除をシームレスに実行できます。ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
@@ -109,7 +94,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
 	* Storm Web UI
 	* コマンド ライン インターフェイス (CLI) ツール
 
-	詳細については、[Apache Storm に関するドキュメント](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)をご覧ください。
+	詳細については、[Apache Storm に関するドキュメント](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)を参照してください。
 
 	Storm Web UI は、HDInsight クラスターで使用できます。
 
@@ -249,4 +234,4 @@ ARM モードでは、各 HDInsight クラスターは Azure リソース グル
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

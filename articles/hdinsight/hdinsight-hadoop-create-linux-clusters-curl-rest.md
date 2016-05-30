@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="03/08/2016"
+   	ms.date="05/16/2016"
    	ms.author="larryfr"/>
 
 #cURL と Azure REST API を使用して HDInsight に Linux ベースのクラスターを作成する
@@ -44,7 +44,7 @@ Azure REST API を使用すると、Azure プラットフォームでホスト�
     > 
     > このエイリアスを削除するには、PowerShell プロンプトから以下を使用します。
     >
-    > ```Remove-item alias:curl`
+    > `Remove-item alias:curl`
     >
     > エイリアスが削除されると、システムにインストールした cURL のバージョンを使用できるようになります。
 
@@ -66,7 +66,7 @@ Azure リソース管理テンプレートは、__リソース グループ__と
         }
     }
 
-たとえば、以下は [https://github.com/Azure/azure-quickstart-templates/tree/master/hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/hdinsight-linux-ssh-password) からのテンプレートとパラメーター ファイルを併せたもので、ここでは、SSH ユーザー アカウントをセキュリティ保護するためにパスワードを使用して Linux ベースのクラスターを作成します。
+たとえば、以下は [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) からのテンプレートとパラメーター ファイルを併せたもので、ここでは、SSH ユーザー アカウントをセキュリティ保護するためにパスワードを使用して Linux ベースのクラスターを作成します。
 
     {
         "properties": {
@@ -262,49 +262,117 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 
 ##Azure サブスクリプションへのログイン
 
-「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」に記載されている手順に従い、__login__ メソッドを使用してサブスクリプションに接続します。
+「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」に記載されている手順に従い、`azure login` コマンドを使用してサブスクリプションに接続します。
 
 ##サービス プリンシパルの作成
 
-> [AZURE.IMPORTANT] 以下にリンクされた記事の手順に従う場合、次の変更を行う必要があります。
-> 
-> * __reader__ の値を使用する手順では、代わりに __owner__ を使用します。これにより、サブスクリプションのサービスに変更を追加できるサービス プリンシパルが作成されます。これは、HDInsight クラスターの作成に必要です。
->
-> また、このプロセスで使用する次の情報を保存する必要もあります。
-> 
-> * サブスクリプション ID - `azure account list` の使用時に受け取ります
-> * テナント ID - `azure account list` の使用時に受け取ります
-> * アプリケーション ID - サービス プリンシパルの作成時に返されます
-> * サービス プリンシパルのパスワード - サービス プリンシパルの作成時に使用
+> [AZURE.NOTE] これらの手順は、「[Azure Resource Manager でのサービス プリンシパルの認証](../resource-group-authenticate-service-principal.md#authenticate-service-principal-with-password---azure-cli)」ドキュメントの「_パスワードによるサービス プリンシパルの認証 - Azure CLI_」で提供される情報の要約版です。これらの手順は、HDInsight クラスターなどの Azure リソースを作成するために使用する REST API 要求の認証に使用できる新しいサービス プリンシパルを作成します。
 
-「[Azure リソース マネージャーでのサービス プリンシパルの認証](https://azure.microsoft.com/documentation/articles/resource-group-authenticate-service-principal/#authenticate-service-principal-with-password---azure-cli)」ドキュメントの「_パスワードによるサービス プリンシパルの認証 - Azure CLI_」の手順に従います。これにより、クラスター作成要求の認証に使用できる新しいサービス プリンシパルが作成されます。
+1. コマンド プロンプト、ターミナル セッション、またはシェルから、次のコマンドを使用して Azure サブスクリプションを一覧します。
+
+        azure account list
+        
+    一覧で、使用するサブスクリプションを選択し、__Id__ 列を書き留めます。これは__サブスクリプション ID__ で、このドキュメントのほとんどの手順で使用されます。
+
+2. Azure Active Directory に新しいアプリケーションを作成する
+
+        azure ad app create --name "exampleapp" --home-page "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your_Password>
+        
+    `--name`、`--home-page`、および `--identifier-uris` の値を自分の値に置き換えます。新しい Active Directory エントリのパスワードを指定します。
+    
+    > [AZURE.NOTE] このアプリケーションをサービス プリンシパルでの認証用に作成しているため、`--home-page` と `--identifier-uris` の値は、一意の URI である必要があるだけで、インターネットでホストされている実際の Web ページを参照する必要はありません。
+    
+    返されたデータの __AppId__ 値を保存します。
+    
+        data:    AppId:          4fd39843-c338-417d-b549-a545f584a745
+        data:    ObjectId:       4f8ee977-216a-45c1-9fa3-d023089b2962
+        data:    DisplayName:    exampleapp
+        ...
+        info:    ad app create command OK
+    
+3. 前に返された __AppId__ 値を使用して、サービス プリンシパルを作成します。
+
+        azure ad sp create 4fd39843-c338-417d-b549-a545f584a745
+        
+     返されたデータの __Object Id__ 値を保存します。
+     
+        info:    Executing command ad sp create
+        - Creating service principal for application 4fd39843-c338-417d-b549-a545f584a74+
+        data:    Object Id:        7dbc8265-51ed-4038-8e13-31948c7f4ce7
+        data:    Display Name:     exampleapp
+        data:    Service Principal Names:
+        data:                      4fd39843-c338-417d-b549-a545f584a745
+        data:                      https://www.contoso.org/example
+        info:    ad sp create command OK
+        
+4. 以前に返された __Object ID__ 値を使用して、__所有者__ロールをサービス プリンシパルに割り当てます。前に取得した__サブスクリプション ID__ も使用する必要があります。
+    
+        azure role assignment create --objectId 7dbc8265-51ed-4038-8e13-31948c7f4ce7 -o Owner -c /subscriptions/{SubscriptionID}/
+        
+    このコマンドが完了すると、サービス プリンシパルには特定のサブスクリプション ID にアクセスする所有者があります。
 
 ##認証トークンの取得
 
-以下を使用して Azure から新しいトークンを取得します。__TENANTID__、__APPLICATIONID__、__PASSWORD__ を、サービス プリンシパルの作成時に保存した情報に置き換えます。
+1. 次を使用して、自分のサブスクリプションの __Tenant ID__ を見つけます。
 
-    curl -X "POST" "https://login.microsoftonline.com/TENANTID/oauth2/token" \
-    -H "Cookie: flight-uxoptin=true; stsservicecookie=ests; x-ms-gateway-slice=productionb; stsservicecookie=ests" \
-    -H "Content-Type: application/x-www-form-urlencoded" \
-    --data-urlencode "client_id=APPLICATIONID" \
-    --data-urlencode "grant_type=client_credentials" \
-    --data-urlencode "client_secret=PASSWORD" \
-    --data-urlencode "resource=https://management.azure.com/"
+        azure account show -s <subscription ID>
+        
+    返されたデータで、__Tenant ID__ を検索します。
+    
+        info:    Executing command account show
+        data:    Name                        : MyAzureAccount
+        data:    ID                          : 45a1014d-0f27-25d2-b838-b8f373d6d52e
+        data:    State                       : Enabled
+        data:    Tenant ID                   : 22f988bf-56f1-41af-91ab-3d7cd011db47
+        data:    Is Default                  : true
+        data:    Environment                 : AzureCloud
+        data:    Has Certificate             : No
+        data:    Has Access Token            : Yes
+        data:    User name                   : myname@contoso.org
+        data:    
+        info:    account show command OK
 
-この要求が成功したら、200 シリーズの応答が届きます。応答本文に JSON ドキュメントが含まれています。
+2. Azure REST API を使用して新しいトークンを生成します。
 
-> [AZURE.IMPORTANT] この要求によって返される JSON ドキュメントには __access\_token__ という名前の要素が含まれます。この要素の値はアクセス トークンで、これは本ドキュメントの次のセクションで使用される要求の認証に使用する必要があります。
+        curl -X "POST" "https://login.microsoftonline.com/TenantID/oauth2/token" \
+        -H "Cookie: flight-uxoptin=true; stsservicecookie=ests; x-ms-gateway-slice=productionb; stsservicecookie=ests" \
+        -H "Content-Type: application/x-www-form-urlencoded" \
+        --data-urlencode "client_id=AppID" \
+        --data-urlencode "grant_type=client_credentials" \
+        --data-urlencode "client_secret=password" \
+        --data-urlencode "resource=https://management.azure.com/"
+    
+    __TenantID__、__AppID__、および__パスワード__を、以前に取得または使用した値に置き換えます。
+
+    この要求が成功したら、200 シリーズの応答が届きます。応答本文に JSON ドキュメントが含まれています。
+
+    この要求によって返される JSON ドキュメントには __access\_token__ という名前の要素が含まれます。この要素の値はアクセス トークンで、これは本ドキュメントの次のセクションで使用される要求の認証に使用する必要があります。
+    
+        {
+            "token_type":"Bearer",
+            "expires_in":"3599",
+            "expires_on":"1463409994",
+            "not_before":"1463406094",
+            "resource":"https://management.azure.com/","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWoNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI2Ny8iLCJpYXQiOjE0NjM0MDYwOTQsIm5iZiI6MTQ2MzQwNjA5NCwiZXhwIjoxNDYzNDA5OTk5LCJhcHBpZCI6IjBlYzcyMzM0LTZkMDMtNDhmYi04OWU1LTU2NTJiODBiZDliYiIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJvaWQiOiJlNjgxZTZiMi1mZThkLTRkZGUtYjZiMS0xNjAyZDQyNWQzOWYiLCJzdWIiOiJlNjgxZTZiMi1mZThkLTRkZGUtYjZiMS0xNjAyZDQyNWQzOWYiLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ2ZXIiOiIxLjAifQ.nJVERbeDHLGHn7ZsbVGBJyHOu2PYhG5dji6F63gu8XN2Cvol3J1HO1uB4H3nCSt9DTu_jMHqAur_NNyobgNM21GojbEZAvd0I9NY0UDumBEvDZfMKneqp7a_cgAU7IYRcTPneSxbD6wo-8gIgfN9KDql98b0uEzixIVIWra2Q1bUUYETYqyaJNdS4RUmlJKNNpENllAyHQLv7hXnap1IuzP-f5CNIbbj9UgXxLiOtW5JhUAwWLZ3-WMhNRpUO2SIB7W7tQ0AbjXw3aUYr7el066J51z5tC1AK9UC-mD_fO_HUP6ZmPzu5gLA6DxkIIYP3grPnRVoUDltHQvwgONDOw"
+        }
 
 ##リソース グループの作成
 
 次を利用して新しいリソース グループを作成します。リソース (HDInsight クラスターなど) を作成するには、まずグループを作成する必要があります。
 
-* __SUBSCRIPTIONID__ をサービス プリンシパルの作成時に受信するサブスクリプション ID に置き換えます。
-* __ACCESSTOKEN__ を前の手順で受け取ったアクセス トークンに置き換えます。
-* __DATACENTERLOCATION__ をリソース グループやリソースを作成するデータ センターに置き換えます。たとえば、"South Central US" のようになります。 
-* __GROUPNAME__ を、このグループに使用する名前に置き換えます。
+* __SubscriptionID__ をサービス プリンシパルの作成時に受信するサブスクリプション ID に置き換えます。
+* __AccessToken__ を前の手順で受け取ったアクセス トークンに置き換えます。
+* __DataCenterLocation__ をリソース グループやリソースを作成するデータ センターに置き換えます。たとえば、"South Central US" のようになります。 
+* __ResourceGroupName__ をこのグループに使用する名前に置き換えます。
 
-    curl -X "PUT" "https://management.azure.com/subscriptions/SUBSCRIPTIONID/resourcegroups/GROUPNAME?api-version=2015-01-01" \\ -H "Authorization: Bearer ACCESSTOKEN" \\ -H "Content-Type: application/json" \\ -d $'{ "location": "DATACENTERLOCATION" }’
+```
+curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourcegroups/ResourceGroupName?api-version=2015-01-01" \
+    -H "Authorization: Bearer AccessToken" \
+    -H "Content-Type: application/json" \
+    -d $'{
+"location": "DataCenterLocation"
+}'
+```
 
 この要求が成功したら、200 シリーズの応答が届きます。応答本文に含まれる JSON ドキュメントにグループに関する情報が含まれています。`"provisioningState"` 要素には `"Succeeded"` の値が含まれます。
 
@@ -312,15 +380,20 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 
 以下を使用して、クラスター構成 (テンプレートとパラメーター値) をリソース グループにデプロイします。
 
-* __SUBSCRIPTIONID__ と __ACCESSTOKEN__ を前に使用した値に置き換えます。 
-* __GROUPNAME__ を前のセクションで作成したリソース グループの名前に置き換えます。
-* __DEPLOYMENTNAME__ を、このデプロイに使用する名前に置き換えます。
+* __SubscriptionID__ と __AccessToken__ を前に使用した値に置き換えます。 
+* __ResourceGroupName__ を前のセクションで作成したリソース グループの名前に置き換えます。
+* __DeploymentName__ を、このデプロイに使用する名前に置き換えます。
 
-    curl -X "PUT" "https://management.azure.com/subscriptions/SUBSCRIPTIONID/resourcegroups/GROUPNAME/providers/microsoft.resources/deployments/DEPLOYMENTNAME?api-version=2015-01-01" \\ -H "Authorization: Bearer ACCESSTOKEN" \\ -H "Content-Type: application/json" \\ -d "{本文の文字列をテンプレートとパラメーターに設定}"
+```
+curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourcegroups/ResourceGroupName/providers/microsoft.resources/deployments/DeploymentName?api-version=2015-01-01" \
+-H "Authorization: Bearer AccessToken" \
+-H "Content-Type: application/json" \
+-d "{set your body string to the template and parameters}"
+```
 
-> [AZURE.NOTE] テンプレートとパラメーターを含む JSON ドキュメントをファイルに保存した場合、`-d "{テンプレートとパラメーター}"' の代わりに以下を使用できます。
+> [AZURE.NOTE] テンプレートとパラメーターを含む JSON ドキュメントをファイルに保存した場合、`-d "{ template and parameters}"` の代わりに以下を使用できます。
 >
-> ```--data-binary "@/path/to/file.json"```
+> `--data-binary "@/path/to/file.json"`
 
 この要求が成功したら、200 シリーズの応答が届きます。応答本文に含まれる JSON ドキュメントにデプロイ操作に関する情報が含まれています。
 
@@ -330,16 +403,20 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 
 デプロイの状態を確認するには、次のコマンドを使用します。
 
-* __SUBSCRIPTIONID__ と __ACCESSTOKEN__ を前に使用した値に置き換えます。 
-* __GROUPNAME__ を前のセクションで作成したリソース グループの名前に置き換えます。
+* __SubscriptionID__ と __AccessToken__ を前に使用した値に置き換えます。 
+* __ResourceGroupName__ を前のセクションで作成したリソース グループの名前に置き換えます。
 
-    curl -X "GET" "https://management.azure.com/subscriptions/SUBSCRIPTIONID/resourcegroups/GROUPNAME/providers/microsoft.resources/deployments/DEPLOYMENTNAME?api-version=2015-01-01" \\ -H "Authorization: Bearer ACCESSTOKEN" \\ -H "Content-Type: application/json"
+```
+curl -X "GET" "https://management.azure.com/subscriptions/SubscriptionID/resourcegroups/ResourceGroupName/providers/microsoft.resources/deployments/DeploymentName?api-version=2015-01-01" \
+-H "Authorization: Bearer AccessToken" \
+-H "Content-Type: application/json"
+```
 
 これにより返される JSON ドキュメントにデプロイ操作に関する情報が含まれます。`"provisioningState"` 要素にはデプロイの状態が含まれます。これに `"Succeeded"` の値が含まれている場合、デプロイは正常に完了しています。この時点で、クラスターは使用可能になっています。
 
 ##次のステップ
 
-HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックをご覧ください。
+HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックを参照してください。
 
 ###Hadoop クラスター
 
@@ -358,4 +435,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -41,7 +41,7 @@ HTTP 要求のプロパティ:
 - `name` : オブジェクトの関数コードで使用される変数名 (または Node.js 関数の要求本文)。
 - `type` : *httpTrigger* に設定する必要があります。
 - `direction` : *in* に設定する必要があります。 
-- `webHookType` : WebHook トリガーの場合、有効な値は *github*、*slack*、および *genericJson* です。WebHook ではない HTTP トリガーの場合、このプロパティを空の文字列に設定します。WebHook について詳しくは、以降の「[WebHook トリガー](#webhook-triggers)」ご覧ください。
+- `webHookType` : WebHook トリガーの場合、有効な値は *github*、*slack*、および *genericJson* です。WebHook ではない HTTP トリガーの場合、このプロパティを空の文字列に設定します。WebHook の詳細については、以降の「[WebHook トリガー](#webhook-triggers)」を参照してください。
 - `authLevel` : WebHook トリガーには適用されません。API キーを要求するには "function" に、API の主な要件を破棄するには "anonymous" に、マスター API キーを要求するには "admin" に設定します。詳しくは、以下の「[API キー](#apikeys)」を参照してください。
 
 HTTP 応答のプロパティ:
@@ -80,7 +80,7 @@ WebHook トリガーとは、Webhook 用に設計された次の機能を備え�
 * Node.js 関数の場合、Functions ランタイムは request オブジェクトではなく、要求本文を提供します。C# 関数では、何が提供されるかは、パラメーターの種類を指定することで管理されるため、特別な処理は存在しません。`HttpRequestMessage` を指定すると、request オブジェクトが取得されます。POCO 型を指定すると、Functions ランタイムにより要求の本文で JSON オブジェクトの解析が試行され、オブジェクトのプロパティが入力されます。
 * WebHook 関数をトリガーするには、HTTP 要求に API キーを含める必要があります。WebHook 以外の HTTP トリガーの場合、この要件は省略できます。
 
-GitHub WebHook を設定する方法について詳しくは、「[GitHub Developer - Creating WebHooks](http://go.microsoft.com/fwlink/?LinkID=761099&clcid=0x409)」 (GitHub 開発者 - WebHook の作成) をご覧ください。
+GitHub WebHook を設定する方法の詳細については、「[GitHub Developer - Creating WebHooks](http://go.microsoft.com/fwlink/?LinkID=761099&clcid=0x409)」 (GitHub 開発者 - WebHook の作成) を参照してください。
 
 ### API キー
 
@@ -117,7 +117,7 @@ using System.Threading.Tasks;
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
-    log.Verbose($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
+    log.Info($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
 
     // parse query parameter
     string name = req.GetQueryNameValuePairs()
@@ -177,7 +177,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
     string jsonContent = await req.Content.ReadAsStringAsync();
     dynamic data = JsonConvert.DeserializeObject(jsonContent);
 
-    log.Verbose($"WebHook was triggered! Comment: {data.comment.body}");
+    log.Info($"WebHook was triggered! Comment: {data.comment.body}");
 
     return req.CreateResponse(HttpStatusCode.OK, new {
         body = $"New GitHub comment: {data.comment.body}"
@@ -254,7 +254,7 @@ module.exports = function (context, data) {
 ```csharp
 public static void Run(TimerInfo myTimer, TraceWriter log)
 {
-    log.Verbose($"C# Timer trigger function executed at: {DateTime.Now}");    
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");    
 }
 ```
 
@@ -262,43 +262,23 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
 このセクションには、次のようにいくつかのサブセクションがあります。
 
-* [function.json の Azure Storage 接続プロパティ](#storageconnection)
 * [Azure Storage キュー トリガー](#storagequeuetrigger)
 * [Azure Storage キュー出力バインド](#storagequeueoutput)
 * [Azure Storage BLOB トリガー](#storageblobtrigger)
 * [Azure Storage BLOB 入力および出力バインド](#storageblobbindings)
 * [Azure Storage テーブル入力および出力バインド](#storagetablesbindings)
 
-### <a id="storageconnection"></a>function.json の Azure Storage 接続プロパティ
-
-すべての Azure Storage のトリガーとバインドについて、*function.json* ファイルに `connection` プロパティが含まれます。次に例を示します。
-
-```json
-{
-    "disabled": false,
-    "bindings": [
-        {
-            "name": "myQueueItem",
-            "type": "queueTrigger",
-            "direction": "in",
-            "queueName": "myqueue-items",
-            "connection":""
-        }
-    ]
-}
-```
-
-`connection` を空にすると、トリガーまたはバインドは、関数アプリ用に既定のストレージ アカウントを使用します。トリガーまたはバインドで別のストレージ アカウントを使用するには、使用するストレージ アカウントをポイントする関数アプリにアプリ設定を作成し、`connection` をアプリ設定名に設定します。アプリ設定を追加するには、次の手順を実行します。
-
-1. Azure ポータルの **[関数アプリ]** ブレードで、**[Function App Settings] \(関数アプリの設定)、[Go to App Service Settings] \(App Service の設定に移動)** の順にクリックします。
-
-2. **[設定]** ブレードで、**[アプリケーション設定]** をクリックします。
-
-3. **[アプリケーション設定]** セクションまで下にスクロールして、**Key** = *{任意の一意の値}* および **Value** = ストレージ アカウントの接続文字列であるエントリを追加します。
-
 ### <a id="storagequeuetrigger"></a>Azure Storage キュー トリガー
 
-*function.json* ファイルはポーリングするキューの名前と、キュー メッセージの変数名を指定します。次に例を示します。
+ストレージ キュー トリガーの *function.json* ファイルでは、次のプロパティを指定します。
+
+- `name` : キューまたはキュー メッセージの関数コードで使用される変数名。 
+- `queueName`: ポーリングするキューの名前。キューの名前付け規則については、「[キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/dd179349.aspx)」を参照してください。
+- `connection` : ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、トリガーは AzureWebJobsStorage アプリ設定で指定される、関数アプリの既定のストレージ接続文字列で動作します。
+- `type` : *queueTrigger* に設定する必要があります。
+- `direction` : *in* に設定する必要があります。 
+
+#### ストレージ キュー トリガーの *Function.json* の例
 
 ```json
 {
@@ -306,10 +286,10 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
     "bindings": [
         {
             "name": "myQueueItem",
-            "type": "queueTrigger",
-            "direction": "in",
             "queueName": "myqueue-items",
-            "connection":""
+            "connection":"",
+            "type": "queueTrigger",
+            "direction": "in"
         }
     ]
 }
@@ -319,10 +299,10 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
 キュー メッセージを、次のいずれかの型に逆シリアル化できます。
 
-* `string`
-* `byte[]`
-* JSON オブジェクト   
-* `CloudQueueMessage`
+* オブジェクト (JSON)
+* String
+* Byte array 
+* `CloudQueueMessage` (C#) 
 
 #### キュー トリガー メタデータ
 
@@ -349,7 +329,7 @@ public static void Run(string myQueueItem,
     int dequeueCount,
     TraceWriter log)
 {
-    log.Verbose($"C# Queue trigger function processed: {myQueueItem}\n" +
+    log.Info($"C# Queue trigger function processed: {myQueueItem}\n" +
         $"queueTrigger={queueTrigger}\n" +
         $"expirationTime={expirationTime}\n" +
         $"insertionTime={insertionTime}\n" +
@@ -368,27 +348,37 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 
 有害キューには *{originalqueuename}*-poison という名前が付けられます。メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。
 
-有害メッセージを手動で処理する場合は、処理のためメッセージが取得された回数を、`dequeueCount` を確認して取得できます。
+有害メッセージを手動で処理する場合は、処理のためにメッセージが取得された回数を、`dequeueCount` を確認して取得できます。
 
-### <a id="storagequeueoutput"></a>Azure Storage キュー出力バインド
+### <a id="storagequeueoutput"></a> Azure Storage キュー出力バインド
 
-*function.json* ファイルは出力キューの名前と、メッセージのコンテンツの変数名を指定します。この例ではキュー トリガーを使用し、キュー メッセージを書き込みます。
+ストレージ キュー出力バインドの *function.json* ファイルでは、次のプロパティを指定します。
+
+- `name` : キューまたはキュー メッセージの関数コードで使用される変数名。 
+- `queueName` : キューの名前。キューの名前付け規則については、「[キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/dd179349.aspx)」を参照してください。
+- `connection` : ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、トリガーは AzureWebJobsStorage アプリ設定で指定される、関数アプリの既定のストレージ接続文字列で動作します。
+- `type` : *queue* に設定する必要があります。
+- `direction` : *out* に設定する必要があります。 
+
+#### ストレージ キュー出力バインドの *Function.json* の例
+
+この例ではキュー トリガーを使用し、キュー メッセージを書き込みます。
 
 ```json
 {
   "bindings": [
     {
       "queueName": "myqueue-items",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in"
     },
     {
       "name": "myQueue",
-      "type": "queue",
       "queueName": "samples-workitems-out",
-      "connection": "",
+      "connection": "MyStorageConnection",
+      "type": "queue",
       "direction": "out"
     }
   ],
@@ -398,12 +388,14 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 
 #### キュー出力バインドにサポートされた型
 
-`queue` バインドは次の型をキュー メッセージにシリアル化できます。
+`queue` バインドは、次の型をキュー メッセージにシリアル化できます。
 
-* `string` (関数が終了したときに、パラメーター値が null でない場合は、キュー メッセージを作成します)
-* `byte[]` (string と同様に動作) 
-* `CloudQueueMessage` (string と同様に動作) 
-* JSON オブジェクト (シリアル化可能な型で、関数が終了したときに、パラメーターが null である場合は、null オブジェクトでメッセージを作成します)
+* オブジェクト (C# の `out T` で、関数が終了したときに、パラメーターが null である場合は、null オブジェクトでメッセージを作成します)
+* String (C# の `out string` で、関数が終了したときに、パラメーター値が null でない場合は、キュー メッセージを作成します)
+* Byte array (C# の `out byte[]` で、string と同様に動作) 
+* `out CloudQueueMessage` (C#、string と同様に動作) 
+
+また、C# では、`T` がいずれかのサポートされている型である場合、`ICollector<T>` または `IAsyncCollector<T>` にバインドすることもできます。
 
 #### キュー出力バインドのコード例
 
@@ -428,7 +420,17 @@ public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWrit
 
 ### <a id="storageblobtrigger"></a>Azure Storage BLOB トリガー
 
-*function.json* は、監視するコンテナーを指定するパスと、必要に応じて BLOB 名のパターンを指定します。この例は、samples-workitems コンテナーに追加されるすべての BLOB でトリガーされます。
+ストレージ BLOB トリガーの *function.json* ファイルでは、次のプロパティを指定します。
+
+- `name` : BLOB の関数コードで使用される変数名。 
+- `path` : 監視するコンテナーを指定するパスと、必要に応じて BLOB 名のパターンを指定します。
+- `connection` : ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、トリガーは AzureWebJobsStorage アプリ設定で指定される、関数アプリの既定のストレージ接続文字列で動作します。
+- `type` : *blobTrigger* に設定する必要があります。
+- `direction` : *in* に設定する必要があります。
+
+#### ストレージ BLOB トリガーの *Function.json* の例
+
+この例は、samples-workitems コンテナーに追加されるすべての BLOB でトリガーされます。
 
 ```json
 {
@@ -445,13 +447,15 @@ public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWrit
 }
 ```
 
-> [AZURE.NOTE] トリガーが監視する BLOB コンテナーに 10,000 を超える BLOB が含まれる場合は、Functions ランタイムによりログ ファイルがスキャンされ、新しいまたは変更された BLOB が監視されます。このプロセスはリアルタイムではありません。関数は、BLOB が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります。また、[ストレージ ログの作成は "ベスト エフォート"](https://msdn.microsoft.com/library/azure/hh343262.aspx) ベースで行われます。そのため、すべてのイベントがキャプチャされる保証はありません。ある条件下では、ログが欠落する可能性があります。大規模なコンテナーで BLOB トリガーの速度と信頼性の制限がアプリケーションで許容されない場合は、BLOB を作成する際にキュー メッセージを作成し、BLOB トリガーではなくキュー トリガーを使って BLOB を処理することをお勧めします。
-
 #### BLOB トリガーにサポートされた型
 
-BLOB を次の型に逆シリアル化できます。
+ノードまたは C# の関数では、BLOB は次の型のいずれかに逆シリアル化することができます。
 
-* string
+* オブジェクト (JSON)
+* String
+
+C# 関数の場合は、次の型のいずれかにもバインドできます。
+
 * `TextReader`
 * `Stream`
 * `ICloudBlob`
@@ -465,18 +469,18 @@ BLOB を次の型に逆シリアル化できます。
 
 #### BLOB トリガーの C# コードの例
 
-この C# コード例では、コンテナーに追加される各 BLOB の内容を記録します。
+この C# コード例では、監視対象のコンテナーに追加される各 BLOB の内容を記録します。
 
 ```csharp
 public static void Run(string myBlob, TraceWriter log)
 {
-    log.Verbose($"C# Blob trigger function processed: {myBlob}");
+    log.Info($"C# Blob trigger function processed: {myBlob}");
 }
 ```
 
 #### BLOB トリガー名のパターン
 
-BLOB 名のパターンは `path` に指定できます。次に例を示します。
+BLOB 名のパターンは `path` プロパティに指定できます。次に例を示します。
 
 ```json
 "path": "input/original-{name}",
@@ -494,7 +498,7 @@ BLOB 名のパターンは `path` に指定できます。次に例を示しま�
 
 関数をトリガーする BLOB の型を制限するには、ファイル拡張子の値が固定されたパターンを指定します。`path` を *samples/{name}.png* に設定した場合、*samples* コンテナー内の *.png* BLOB のみが関数をトリガーします。
 
-名前に波括弧がある BLOB 名に新しいパターンを指定する必要がある場合は、波括弧を二重にします。たとえば、以下のような名前を持つ*イメージ* コンテナーに BLOB を見つける場合は、
+名前に波括弧がある BLOB 名に新しいパターンを指定する必要がある場合は、波括弧を二重にします。たとえば、以下のような名前を持つ *イメージ*コンテナーに blob を見つける場合は、
 
 		{20140101}-soundfile.mp3
 
@@ -530,16 +534,30 @@ BLOB トリガー関数が失敗した場合、失敗が一時的なエラーに
 * BlobName
 * ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
 
+#### 大規模なコンテナーをポーリングする BLOB
+
+トリガーが監視する BLOB コンテナーに 10,000 を超える BLOB が含まれる場合は、Functions ランタイムによりログ ファイルがスキャンされ、新しいまたは変更された BLOB が監視されます。このプロセスはリアルタイムではありません。関数は、BLOB が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります。また、[ストレージ ログの作成は "ベスト エフォート"](https://msdn.microsoft.com/library/azure/hh343262.aspx) ベースで行われます。そのため、すべてのイベントがキャプチャされる保証はありません。ある条件下では、ログが欠落する可能性があります。大規模なコンテナーで BLOB トリガーの速度と信頼性の制限がアプリケーションで許容されない場合は、BLOB を作成するときにキュー メッセージを作成し、BLOB トリガーではなくキュー トリガーを使って BLOB を処理することをお勧めします。
+ 
 ### <a id="storageblobbindings"></a>Azure Storage BLOB 入力および出力バインド
 
-*function.json* は、コンテナーの名前と、BLOB 名およびコンテンツの変数名を指定します。次の例では、キュー トリガーを使用して BLOB をコピーします。
+ストレージ BLOB 入力または出力バインドの *function.json* ファイルでは、次のプロパティを指定します。
+
+- `name` : BLOB の関数コードで使用される変数名。 
+- `path` : BLOB を読み込むまたは BLOB を書き込むコンテナーを指定するパスと、必要に応じて BLOB 名のパターンを指定します。
+- `connection` : ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、バインドは AzureWebJobsStorage アプリ設定で指定される、関数アプリの既定のストレージ接続文字列で動作します。
+- `type` : *blob* に設定する必要があります。
+- `direction` : *in* または *out* に設定します。 
+
+#### ストレージ BLOB 入力または出力バインドの *Function.json* の例
+
+次の例では、キュー トリガーを使用して BLOB をコピーします。
 
 ```json
 {
   "bindings": [
     {
       "queueName": "myqueue-items",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in"
@@ -548,14 +566,14 @@ BLOB トリガー関数が失敗した場合、失敗が一時的なエラーに
       "name": "myInputBlob",
       "type": "blob",
       "path": "samples-workitems/{queueTrigger}",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "direction": "in"
     },
     {
       "name": "myOutputBlob",
       "type": "blob",
       "path": "samples-workitems/{queueTrigger}-Copy",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "direction": "out"
     }
   ],
@@ -565,13 +583,16 @@ BLOB トリガー関数が失敗した場合、失敗が一時的なエラーに
 
 #### BLOB の入力および出力にサポートされた型
 
-`blob` バインドは次の型をシリアル化または逆シリアル化できます。
+`blob` バインドは、Node.js または C# 関数で次の型をシリアル化または逆シリアル化できます。
 
+* オブジェクト (出力 BLOB の場合は、C# の`out T`: 関数が終了したときに、パラメーター値が null の場合に null オブジェクトとして BLOB を作成します)
+* String (出力 BLOB の場合、C# の `out string`: 関数を返されたときに、文字列パラメーターが null 以外の場合にのみ BLOB を作成します)
+
+C# 関数の場合は、次の型にもバインドできます。
+
+* `TextReader` (入力のみ)
+* `TextWriter` (出力のみ)
 * `Stream`
-* `TextReader`
-* `TextWriter`
-* `string` (出力 BLOB について: 関数を返されたときに、文字列パラメーターが null 以外の場合にのみ BLOB を作成します)
-* JSON オブジェクト (出力 BLOB について: 関数が終了したときに、パラメーター値が null の場合に null オブジェクトとして BLOB を作成します)
 * `CloudBlobStream` (出力のみ)
 * `ICloudBlob`
 * `CloudBlockBlob` 
@@ -581,52 +602,68 @@ BLOB トリガー関数が失敗した場合、失敗が一時的なエラーに
 
 この C# コード例では、名前をキュー メッセージで受信した BLOB をコピーします。
 
-```CSHARP
+```csharp
 public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, TraceWriter log)
 {
-    log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+    log.Info($"C# Queue trigger function processed: {myQueueItem}");
     myOutputBlob = myInputBlob;
 }
 ```
 
 ### <a id="storagetablesbindings"></a>Azure Storage テーブル入力および出力バインド
 
-ストレージ テーブルの *function.json* はいくつかのプロパティを指定します。
+ストレージ テーブルの *function.json* ファイルでは、次のプロパティを指定します。
 
-* `name` -テーブル バインド用にコードで使用する変数の名前。
-* `tableName`
-* `partitionKey` および `rowKey` - 一緒に使用して、C# またはノード関数の単一エンティティを読み取るか、ノード関数の単一のエンティティを書き込みます。
-* `take` - ノード関数でのテーブル入力のために読み取る行の最大数。
-* `filter` - ノード関数のテーブル入力の OData フィルター式です。
+- `name` : テーブル バインドの関数コードで使用される変数名。 
+- `tableName` : テーブルの名前。
+- `partitionKey` および `rowKey` : 一緒に使用して、C# またはノード関数の単一エンティティを読み取るか、ノード関数の単一のエンティティを書き込みます。
+- `take` : ノード関数でのテーブル入力のために読み取る行の最大数。
+- `filter` : ノード関数のテーブル入力の OData フィルター式。
+- `connection` : ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、バインドは AzureWebJobsStorage アプリ設定で指定される、関数アプリの既定のストレージ接続文字列で動作します。
+- `type` : *table* に設定する必要があります。
+- `direction` : *in* または *out* に設定します。 
 
-これらのプロパティは、次のシナリオをサポートします。
+#### ストレージ テーブルの入力および出力にサポートされた型
+
+`table` バインドは、Node.js または C# 関数でオブジェクトをシリアル化または逆シリアル化できます。オブジェクトには、RowKey と PartitionKey プロパティがあります。
+
+C# 関数の場合は、次の型にもバインドできます。
+
+* `T` が `ITableEntity` を実装する場合の `T`
+* `IQueryable<T>` (入力のみ)
+* `ICollector<T>` (出力のみ)
+* `IAsyncCollector<T>` (出力のみ)
+
+#### ストレージ テーブル バインドのシナリオ
+
+テーブル バインドは、次のシナリオをサポートしています。
 
 * C# またはノード関数での単一行の読み取り。
 
-	`partitionKey` と `rowKey` を設定します。`filter` および `take` プロパティは、このシナリオでは使用されません。
+	`partitionKey` と `rowKey` を設定します。`filter` と `take` プロパティは、このシナリオでは使用されません。
 
 * C# 関数での複数行の読み取り。
 
-	Functions ランタイムは、テーブルにバインドされている `IQueryable<T>` オブジェクトを指定します。型 `T` は `TableEntity` から派生するか、`ITableEntity` を実装する必要があります。`partitionKey`、`rowKey`、`filter`、および `take` プロパティはこのシナリオでは使用されません。必要なフィルターを実行するには、`IQueryable` オブジェクトを使用できます。
+	Functions ランタイムは、テーブルにバインドされている `IQueryable<T>` オブジェクトを指定します。型 `T` は `TableEntity` から派生するか、`ITableEntity` を実装する必要があります。`partitionKey`、`rowKey`、`filter`、および `take` プロパティは、このシナリオでは使用されません。必要なフィルターを実行するには、`IQueryable` オブジェクトを使用できます。
 
 * ノード関数での複数行の読み取り。
 
-	`filter` および `take` プロパティを設定します。`partitionKey` または `rowKey` は設定しません。
+	`filter` と `take` プロパティを設定します。`partitionKey` または `rowKey` は設定しません。
 
 * C# 関数での 1 つまたは複数の行の書き込み。
 
-	Functions ランタイムはテーブルにバインドされた `ICollector<T>` または `IAsyncCollector<T>` を指定します。ここで、`T` は追加するエンティティのスキーマを指定します。型 `T` は `TableEntity` から派生するか、`ITableEntity` を実装するのが一般的ですが、必須ではありません。`partitionKey`、`rowKey`、`filter`、および `take` プロパティは、このシナリオでは使用されません。
+	Functions ランタイムは、テーブルにバインドされた `ICollector<T>` または `IAsyncCollector<T>` を指定します。ここで、`T` は追加するエンティティのスキーマを指定します。型 `T` は `TableEntity` から派生するか、`ITableEntity` を実装するのが一般的ですが、必須ではありません。`partitionKey`、`rowKey`、`filter`、および `take` プロパティは、このシナリオでは使用されません。
 
-#### C# またはノードでの 1 つのテーブル エンティティの読み取り
+#### ストレージ テーブルの例: C# またはノードでの 1 つのテーブル エンティティの読み取り
 
-この *function.json* の例ではクエリ トリガーを使用して、ハードコーディングされたパーティション キーの値と、キュー メッセージに指定された行キーを使って 1 つのテーブル行を読み取ります。
+この *function.json* の例では、クエリ トリガーを使用して、ハードコーディングされたパーティション キーの値と、キュー メッセージに指定された行キーを使って 1 つのテーブル行を読み取ります。
 
 ```json
 {
   "bindings": [
     {
       "queueName": "myqueue-items",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in"
@@ -637,20 +674,21 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
       "tableName": "Person",
       "partitionKey": "Test",
       "rowKey": "{queueTrigger}",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "direction": "in"
     }
   ],
   "disabled": false
 }
 ```
-次の C# コード例では、上記の *function.json* ファイルを使用して、単一のテーブル エンティティを読み取ります。キュー メッセージは行キー値を持ち、テーブル エンティティは、*run.csx* ファイルに定義された型に読み込まれます。型は `PartitionKey` と `RowKey` プロパティを含み、`TableEntity` から派生しません。
+
+次の C# コード例では、上記の *function.json* ファイルを使用して、単一のテーブル エンティティを読み取ります。キュー メッセージには行キー値があり、テーブル エンティティは、*run.csx* ファイルに定義された型に読み込まれます。型は `PartitionKey` と `RowKey` プロパティを含み、`TableEntity` から派生しません。
 
 ```csharp
 public static void Run(string myQueueItem, Person personEntity, TraceWriter log)
 {
-    log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
-    log.Verbose($"Name in Person entity: {personEntity.Name}");
+    log.Info($"C# Queue trigger function processed: {myQueueItem}");
+    log.Info($"Name in Person entity: {personEntity.Name}");
 }
 
 public class Person
@@ -671,7 +709,7 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-#### C での複数のテーブル エンティティの読み取り# 
+#### ストレージ テーブルの例: C での複数のテーブル エンティティの読み取り# 
 
 次の *function.json* および C# コード例では、キュー メッセージに指定されたパーティション キーのエンティティを読み取ります。
 
@@ -680,7 +718,7 @@ module.exports = function (context, myQueueItem) {
   "bindings": [
     {
       "queueName": "myqueue-items",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in"
@@ -688,6 +726,7 @@ module.exports = function (context, myQueueItem) {
     {
       "name": "tableBinding",
       "type": "table",
+      "connection": "MyStorageConnection",
       "tableName": "Person",
       "direction": "in"
     }
@@ -704,10 +743,10 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 public static void Run(string myQueueItem, IQueryable<Person> tableBinding, TraceWriter log)
 {
-    log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+    log.Info($"C# Queue trigger function processed: {myQueueItem}");
     foreach (Person person in tableBinding.Where(p => p.PartitionKey == myQueueItem).ToList())
     {
-        log.Verbose($"Name: {person.Name}");
+        log.Info($"Name: {person.Name}");
     }
 }
 
@@ -717,7 +756,7 @@ public class Person : TableEntity
 }
 ``` 
 
-#### C でのテーブル エンティティの作成# 
+#### ストレージ テーブルの例: C でのテーブル エンティティの作成# 
 
 次の *function.json* と *run.csx* の例は、C# でテーブル エンティティを書き込む方法を示します。
 
@@ -731,7 +770,7 @@ public class Person : TableEntity
     },
     {
       "tableName": "Person",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "tableBinding",
       "type": "table",
       "direction": "out"
@@ -746,7 +785,7 @@ public static void Run(string input, ICollector<Person> tableBinding, TraceWrite
 {
     for (int i = 1; i < 10; i++)
         {
-            log.Verbose($"Adding Person entity {i}");
+            log.Info($"Adding Person entity {i}");
             tableBinding.Add(
                 new Person() { 
                     PartitionKey = "Test", 
@@ -766,7 +805,7 @@ public class Person
 
 ```
 
-#### ノードでのテーブル エンティティの作成
+#### ストレージ テーブルの例: ノードでのテーブル エンティティの作成
 
 次の *function.json* と *run.csx* の例は、ノードでテーブル エンティティを書き込む方法を示します。
 
@@ -775,7 +814,7 @@ public class Person
   "bindings": [
     {
       "queueName": "myqueue-items",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in"
@@ -784,7 +823,7 @@ public class Person
       "tableName": "Person",
       "partitionKey": "Test",
       "rowKey": "{queueTrigger}",
-      "connection": "",
+      "connection": "MyStorageConnection",
       "name": "personEntity",
       "type": "table",
       "direction": "out"
@@ -798,6 +837,167 @@ public class Person
 module.exports = function (context, myQueueItem) {
     context.log('Node.js queue trigger function processed work item', myQueueItem);
     context.bindings.personEntity = {"Name": "Name" + myQueueItem }
+    context.done();
+};
+```
+
+## Azure Service Bus のトリガーとバインド
+
+このセクションには、次のようにいくつかのサブセクションがあります。
+
+* [Azure Service Bus: PeekLock の動作](#sbpeeklock)
+* [Azure Service Bus: 有害メッセージの処理](#sbpoison)
+* [Azure Service Bus: シングル スレッド](#sbsinglethread)
+* [Azure Service Bus キューまたはトピックのトリガー](#sbtrigger)
+* [Azure Storage Bus キューまたはトピックの出力バインド](#sboutput)
+
+### <a id="sbpeeklock"></a>Azure Service Bus: PeekLock の動作
+
+Functions では、`PeekLock` モードでメッセージを受信して、関数が正常に終了した場合はメッセージの `Complete` を呼び出し、関数が失敗した場合は、`Abandon` を呼び出します。関数の実行時間が `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。
+
+### <a id="sbpoison"></a>Azure Service Bus: 有害メッセージの処理
+
+Service Bus では、Azure Functions の構成やコードで制御または構成することができない、独自の有害メッセージを処理します。
+
+### <a id="sbsinglethread"></a>Azure Service Bus: シングル スレッド
+
+既定では、Functions ランタイムは、複数のキュー メッセージを同時に処理します。一度に 1 つのキューまたはトピックのメッセージのみを処理するように、ランタイムに指示するには、*host.json* ファイルで `serviceBus.maxConcurrrentCalls` を 1 に設定します。*host.json* ファイルの詳細については、開発者向けリファレンスの記事「[Folder Structure](functions-reference.md#folder-structure)」と、WebJobs.Script リポジトリ Wiki の「[host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)」を参照してください。
+
+### <a id="sbtrigger"></a>Azure Service Bus キューまたはトピックのトリガー
+
+Service Bus トリガーの *function.json* ファイルでは、次のプロパティを指定します。
+
+- `name` : キューまたはトピック、キューまたはトピックのメッセージの関数コードで使用される変数名。 
+- `queueName` : キューのトリガーのみの場合、ポーリングするキューの名前。
+- `topicName` : トピックのトリガーのみの場合は、ポーリングするトピックの名前。
+- `subscriptionName` : トピックのトリガーのみの場合は、サブスクリプション名。
+- `connection` : Service Bus 接続文字列を含むアプリ設定の名前。接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間に使用する必要があります。接続文字列に管理権限がない場合は、`accessRights` プロパティを設定します。`connection` を空のままにすると、トリガーまたはバインドは、AzureWebJobsServiceBus アプリ設定で指定される、関数アプリの既定の Service Bus 接続文字列で動作します。
+- `accessRights` : 接続文字列に使用できるアクセス権を指定します。既定値は `manage` です。アクセス許可の管理を提供しない接続文字列を使用している場合、`listen` に設定します。それ以外の場合は、Functions ランタイムは、管理権限を必要とする操作を試行し、失敗する可能性があります。
+- `type` : *serviceBusTrigger* に設定する必要があります。
+- `direction` : *in* に設定する必要があります。 
+
+Service Bus キュー メッセージを、次のいずれかの型に逆シリアル化できます。
+
+* オブジェクト (JSON)
+* string
+* byte array 
+* `BrokeredMessage` (C#) 
+
+#### Service Bus キューのトリガーを使用する *Function.json* の例
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "testqueue",
+      "connection": "MyServiceBusConnection",
+      "name": "myQueueItem",
+      "type": "serviceBusTrigger",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+#### Service Bus キュー メッセージを処理する C# コードの例
+
+```csharp
+public static void Run(string myQueueItem, TraceWriter log)
+{
+    log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+}
+```
+
+#### Service Bus キュー メッセージを処理する Node.js コードの例
+
+```javascript
+module.exports = function(context, myQueueItem) {
+    context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
+    context.done();
+};
+```
+
+### <a id="sboutput"></a>Azure Service Bus キューまたはトピックの出力
+
+Service Bus 出力バインドの *function.json* ファイルでは、次のプロパティを指定します。
+
+- `name` : キューまたはキュー メッセージの関数コードで使用される変数名。 
+- `queueName` : キューのトリガーのみの場合、ポーリングするキューの名前。
+- `topicName` : トピックのトリガーのみの場合は、ポーリングするトピックの名前。
+- `subscriptionName` : トピックのトリガーのみの場合は、サブスクリプション名。
+- `connection` : Service Bus のトリガーと同じです。
+- `accessRights` : 接続文字列に使用できるアクセス権を指定します。既定値は `manage` です。アクセス許可の管理を提供しない接続文字列を使用している場合、`send` に設定します。それ以外の場合は、Functions ランタイムは、キューの作成などの管理権限を必要とする操作を試行し、失敗する可能性があります。
+- `type` : *serviceBus* に設定する必要があります。
+- `direction` : *out* に設定する必要があります。 
+
+Azure Functions は、次の型のいずれかから Service Bus キュー メッセージを作成できます。
+
+* オブジェクト (常に JSON メッセージを作成し、関数が終了したときに、値が null である場合は、null オブジェクトでメッセージを作成)
+* string (関数が終了したときに、値が null でない場合は、メッセージを作成します)
+* byte array (string と同様に動作) 
+* `BrokeredMessage` (C#、string と同様に動作)
+
+C# 関数で複数のメッセージを作成するには、`ICollector<T>` または `IAsyncCollector<T>` を使用できます。`Add` メソッドを呼び出すときに、メッセージが作成されます。
+
+#### Service Bus キュー メッセージを記述するために、タイマー トリガーを使用する *function.json* の例
+
+```JSON
+{
+  "bindings": [
+    {
+      "schedule": "0/15 * * * * *",
+      "name": "myTimer",
+      "runsOnStartup": true,
+      "type": "timerTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "outputSbQueue",
+      "type": "serviceBus",
+      "queueName": "testqueue",
+      "connection": "MyServiceBusConnection",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+``` 
+
+#### Service Bus キュー メッセージを作成する C# コードの例
+
+```csharp
+public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQueue)
+{
+	string message = $"Service Bus queue message created at: {DateTime.Now}";
+    log.Info(message); 
+    outputSbQueue = message;
+}
+```
+
+```csharp
+public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> outputSbQueue)
+{
+	string message = $"Service Bus queue message created at: {DateTime.Now}";
+    log.Info(message); 
+    outputSbQueue.Add("1 " + message);
+    outputSbQueue.Add("2 " + message);
+}
+```
+
+#### Service Bus キュー メッセージを作成する Node.js コードの例
+
+```javascript
+module.exports = function (context, myTimer) {
+    var timeStamp = new Date().toISOString();
+    
+    if(myTimer.isPastDue)
+    {
+        context.log('Node.js is running late!');
+    }
+    var message = 'Service Bus queue message created at ' + timeStamp;
+    context.log(message);   
+    context.bindings.outputSbQueueMsg = message;
     context.done();
 };
 ```
@@ -820,7 +1020,7 @@ function.json ファイルは、DocumentDB 入力バインドで使用するた�
 - `databaseName` : ドキュメントを含むデータベース。
 - `collectionName` : ドキュメントを含むコレクション。
 - `id` : 取得するドキュメントの ID。このプロパティは、"{queueTrigger}" と同類のバインドをサポートします。ここでは、ドキュメント ID としてキュー メッセージの文字列値を使用します。
-- `connection` : この文字列は、DocumentDB アカウントのエンドポイントに設定されたアプリケーション設定である必要があります。[Integrate] \(統合) タブからアカウントを選択した場合、新しいアプリ設定が yourAccount\_DOCUMENTDB という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;.
+- `connection` : この文字列は、DocumentDB アカウントのエンドポイントに設定されたアプリケーション設定である必要があります。[Integrate] (統合) タブからアカウントを選択した場合、新しいアプリ設定が yourAccount\_DOCUMENTDB という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;。
 - `direction : *"in"* に設定する必要があります。
 
 function.json の例:
@@ -851,7 +1051,7 @@ function.json の例:
 
 #### Azure DocumentDB 入力コード例 (Node.js キュー トリガー)
  
-上記の function.json の例を使用して、DocumentDB 入力バインドはキュー メッセージと一致する ID を持つドキュメントを取得し、それを `documentIn` バインド プロパティに渡します。Node.js 関数では、更新されたドキュメントは再びコレクションに送信されません。ただし、入力バインドを、更新をサポートする `documentOut` という名前の DocumentDB 出力バインドに直接渡すことができます。このコード例では、入力ドキュメントの text プロパティを更新し、出力ドキュメントとして設定します。
+上記の function.json の例を使用して、DocumentDB 入力バインドはキュー メッセージ文字列と一致する ID を持つドキュメントを取得し、それを `documentIn` バインド プロパティに渡します。Node.js 関数では、更新されたドキュメントは再びコレクションに送信されません。ただし、入力バインドを、更新をサポートする `documentOut` という名前の DocumentDB 出力バインドに直接渡すことができます。このコード例では、入力ドキュメントの text プロパティを更新し、出力ドキュメントとして設定します。
  
 	module.exports = function (context, input) {   
 	    context.bindings.documentOut = context.bindings.documentIn;
@@ -861,7 +1061,7 @@ function.json の例:
 
 ### <a id="docdboutput"></a>Azure DocumentDB 出力バインド
 
-関数を使用して、**Azure DocumentDB Document** 出力バインドを使って、JSON ドキュメントを Azure DocumentDB データベースに書き込むことができます。Azure DocumentDB について詳しくは、「[DocumentDB 入門](../documentdb/documentdb-introduction.md)」および「[Getting Started tutorial](../documentdb/documentdb-get-started.md)」 (概要チュートリアル) を参照してください。
+関数を使用して、**Azure DocumentDB Document** 出力バインドを使って、JSON ドキュメントを Azure DocumentDB データベースに書き込むことができます。Azure DocumentDB の詳細については、「[DocumentDB の概要](../documentdb/documentdb-introduction.md)」および「[概要チュートリアル](../documentdb/documentdb-get-started.md)」を参照してください。
 
 function.json ファイルは、DocumentDB 出力バインドで使用するための次のプロパティを提供します。
 
@@ -869,8 +1069,8 @@ function.json ファイルは、DocumentDB 出力バインドで使用するた�
 - `type` : *"documentdb"* に設定する必要があります。
 - `databaseName` : 新しいドキュメントが作成されるコレクションを含むデータベース。
 - `collectionName` : 新しいドキュメントが作成されるコレクション。
-- `createIfNotExists` : これは、存在しない場合にコレクションを作成するかどうかを示すブール値です。既定値は *false* です。これは、新しいコレクションが予約済みのスループットで作成されるためです。これにより、価格に影響が及びます。詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
-- `connection` : この文字列は、DocumentDB アカウントのエンドポイントに設定された**アプリケーション設定**である必要があります。**[Integrate]** (統合) タブからアカウントを選択した場合、新しいアプリ設定が `yourAccount_DOCUMENTDB` という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;`。 
+- `createIfNotExists` : これは、存在しない場合にコレクションを作成するかどうかを示すブール値です。既定値は *false* です。これは、新しいコレクションが予約済みのスループットで作成されるためです。これにより、価格に影響が及びます。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
+- `connection` : この文字列は、DocumentDB アカウントのエンドポイントに設定された**アプリケーション設定**である必要があります。**[統合]** タブからアカウントを選択した場合、新しいアプリ設定が `yourAccount_DOCUMENTDB` という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;`。 
 - `direction` : *"out"* に設定する必要があります。 
  
 function.json の例:
@@ -917,7 +1117,7 @@ function.json の例:
 
 	public static void Run(string myQueueItem, out object document, TraceWriter log)
 	{
-	    log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+	    log.Info($"C# Queue trigger function processed: {myQueueItem}");
 	   
 	    document = new {
 	        text = $"I'm running in a C# function! {myQueueItem}"
@@ -945,7 +1145,7 @@ function.json の例:
 	
 	public static void Run(string myQueueItem, out object employeeDocument, TraceWriter log)
 	{
-	    log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+	    log.Info($"C# Queue trigger function processed: {myQueueItem}");
 	    
 	    dynamic employee = JObject.Parse(myQueueItem);
 	    
@@ -966,32 +1166,32 @@ function.json の例:
 	  "address": "A town nearby"
 	}
 
-## Azure Mobile Apps のテーブルの簡単操作バインド
+## Azure Mobile Apps のバインド
 
-Azure App Service Mobile Apps を使用すると、テーブル エンドポイント データをモバイル クライアントに公開できます。この同じ表形式のデータは、Azure Functions の入力バインドと出力バインドの両方で使用できます。Node.js バックエンド モバイル アプリがある場合は、*テーブルの簡単操作*を使用して Azure ポータルでこの表形式データを操作できます。テーブルの簡単操作では、挿入されるデータの形に合わせて列を自動的に追加する動的スキーマがサポートされているため、スキーマ開発を簡略化できます。動的スキーマは既定で有効になっていますが、運用環境のモバイル アプリでは無効にする必要があります。Mobile Apps でのテーブルの簡単操作について詳しくは、「[方法: Azure ポータルで [テーブルの簡単操作] を使用する」](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#in-portal-editing)を参照してください。ポータルでのテーブルの簡単操作は、現在 .NET バックエンド モバイル アプリではサポートされていません。.NET バックエンド モバイル アプリのテーブル エンドポイント関数のバインドは引き続き利用できますが、.NET バックエンド モバイル アプリでは動的スキーマはサポートされていません。
+Azure App Service Mobile Apps を使用すると、テーブル エンドポイント データをモバイル クライアントに公開できます。この同じ表形式のデータは、Azure Functions の入力バインドと出力バインドの両方で使用できます。動的スキーマをサポートしているため、Node.js バックエンドのモバイル アプリは、関数で使用するために表形式のデータを公開するのに最適です。動的スキーマは既定で有効になっていますが、運用環境のモバイル アプリでは無効にする必要があります。Node.js バックエンドでテーブル エンドポイントの詳細については、「[概要: テーブル操作](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations)」を参照してください。Mobile Apps では、Node.js バックエンドは、ポータル内の参照とテーブルの編集をサポートします。詳細については、Node.js SDK トピックの「[ポータルでの編集](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#in-portal-editing)」を参照してください。Azure Functions で .NET バックエンドのモバイル アプリを使用する場合は、関数からの必要に応じて、データ モデルを手動で更新する必要があります。.NET バックエンドのモバイル アプリのテーブル エンドポイントの詳細については、.NET バックエンドの SDK トピックの「[方法: テーブル コントローラーを定義する](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller)」を参照してください。
 
 このセクションには、次のようにいくつかのサブセクションがあります。
 
-* [Azure Mobile Apps のテーブルの簡単操作 API キー](#easytablesapikey)
-* [Azure Mobile Apps のテーブルの簡単操作入力バインド](#easytablesinput)
-* [Azure Mobile Apps のテーブルの簡単操作出力バインド](#easytablesoutput)
+* [Azure Mobile Apps のテーブルの API キー](#mobiletablesapikey)
+* [Azure Mobile Apps のテーブルの入力バインド](#mobiletablesinput)
+* [Azure Mobile Apps のテーブルの出力バインド](#mobiletablesoutput)
 
-### <a id="easytablesapikey"></a>API キーを使用した Mobile Apps テーブルの簡単操作エンドポイントへの安全なアクセス
+### <a id="mobiletablesapikey"></a>API キーを使用した Mobile Apps テーブル エンドポイントへの安全なアクセス
 
-Azure Functions では、現在 App Service 認証でセキュリティ保護されたエンドポイントにアクセスすることができません。これは、テーブルの簡単操作バインドにより関数内で使用されるすべての Mobile Apps エンドポイントで匿名アクセスが許可される必要があり、またこれは既定で許可されています。テーブルの簡単操作バインドでは API キーを指定できます。これは、関数以外のアプリからの望ましくないアクセスを回避するために使用できる共有シークレットです。Mobile Apps には、API キー認証向けのサポートが組み込まれていません。ただし、「[Azure App Service Mobile Apps backend implementing an API key](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)」 (API キーを実装する Azure App Service Mobile Apps バックエンド) の例に従って Node.js バックエンド モバイル アプリに API キーを実装できます。
+Azure Functions のモバイル テーブルのバインドでは、API キーを指定できます。これは、関数以外のアプリからの望ましくないアクセスを回避するために使用できる共有シークレットです。Mobile Apps には、API キー認証向けのサポートが組み込まれていません。ただし、「[API キーを実装する Azure App Service Mobile Apps バックエンド](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)」の例に従って、Node.js バックエンド モバイル アプリに API キーを実装できます。同様に、[.NET バックエンドのモバイル アプリ](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)に API キーを実装することができます。
 
 >[AZURE.IMPORTANT] この API キーはモバイル アプリ クライアントで配布する必要があり、Azure Functions のようなサービス側のクライアントにのみ安全に配布する必要があります。
 
-### <a id="easytablesinput"></a>Azure Mobile Apps のテーブルの簡単操作入力バインド
+### <a id="mobiletablesinput"></a>Azure Mobile Apps の入力バインド
 
-入力バインドでは、Mobile Apps テーブル エンドポイントからレコードを読み込んで、バインドに直接渡すことができます。レコード ID は、関数を呼び出したトリガーに基づいて決定されます。C# 関数で、レコードに加えられた変更は、関数が正常に終了したときに、テーブルに自動的に再送信されます。
+入力バインドでは、モバイル テーブル エンドポイントからレコードを読み込んで、バインドに直接渡すことができます。レコード ID は、関数を呼び出したトリガーに基づいて決定されます。C# 関数で、レコードに加えられた変更は、関数が正常に終了したときに、テーブルに自動的に再送信されます。
 
-function.json ファイルでは、Mobile Apps テーブルの簡単操作入力バインドで使用するための次のプロパティがサポートされています。
+function.json ファイルでは、Mobile Apps の入力バインドで使用するための次のプロパティがサポートされています。
 
 - `name` : 新しいレコードの関数コードで使用される変数名。
-- `type` : バインドの型は *easyTable* に設定する必要があります。
+- `type` : バインドの型は *mobileTable* に設定する必要があります。
 - `tableName` : 新しいレコードの作成先のテーブル。
-- `id` : 取得するレコードの ID。このプロパティは、`{queueTrigger}` と同類のバインドをサポートします。ここでは、レコード ID としてキュー メッセージの文字列値を使用します。
+- `id` : 取得するレコードの ID。このプロパティは、`{queueTrigger}` と同様のバインドをサポートします。ここでは、レコード ID としてキュー メッセージの文字列値を使用します。
 - `apiKey` : モバイル アプリ用のオプションの API キーを指定するアプリケーション設定である文字列。これは、モバイル アプリが API キーを使用してクライアント アクセスを制限するときに必要です。
 - `connection` : モバイル アプリの URI を指定するアプリケーション設定である文字列。
 - `direction` : バインドの方向。*in* に設定する必要があります。
@@ -1002,7 +1202,7 @@ function.json の例:
 	  "bindings": [
 	    {
 	      "name": "record",
-	      "type": "easyTable",
+	      "type": "mobileTable",
 	      "tableName": "MyTable",
 	      "id" : "{queueTrigger}",
 	      "connection": "My_MobileApp_Uri",
@@ -1013,9 +1213,9 @@ function.json の例:
 	  "disabled": false
 	}
 
-#### Azure Mobile Apps のテーブルの簡単操作のコード例 (C# キュー トリガー)
+#### Azure Mobile Apps のコード例 (C# キュー トリガー)
 
-上記の function.json の例に基づいて、入力バインドはキュー メッセージ文字列と一致する ID を持つレコードを取得し、それを *record* パラメーターに渡します。レコードが検出されなかった場合、パラメーターは null になります。関数の終了時に、レコードは新しい *Text* 値で更新されます。
+上記の function.json の例に基づいて、入力バインドはキュー メッセージ文字列と一致する ID を持つ Mobile Apps テーブル エンドポイントからレコードを取得し、それを *record* パラメーターに渡します。レコードが検出されなかった場合、パラメーターは null になります。関数の終了時に、レコードは新しい *Text* 値で更新されます。
 
 	#r "Newtonsoft.Json"	
 	using Newtonsoft.Json.Linq;
@@ -1028,9 +1228,9 @@ function.json の例:
 	    }    
 	}
 
-#### Azure Mobile Apps のテーブルの簡単操作のコード例 (Node.js キュー トリガー)
+#### Azure Mobile Apps のコード例 (Node.js キュー トリガー)
 
-上記の function.json の例に基づいて、入力バインドはキュー メッセージ文字列と一致する ID を持つレコードを取得し、それを *record* パラメーターに渡します。Node.js 関数では、更新されたレコードは再びテーブルに送信されません。このコード例では、取得されたレコードをログに書き込みます。
+上記の function.json の例に基づいて、入力バインドはキュー メッセージ文字列と一致する ID を持つ Mobile Apps テーブル エンドポイントからレコードを取得し、それを *record* パラメーターに渡します。Node.js 関数では、更新されたレコードは再びテーブルに送信されません。このコード例では、取得されたレコードをログに書き込みます。
 
 	module.exports = function (context, input) {    
 	    context.log(context.bindings.record);
@@ -1038,14 +1238,14 @@ function.json の例:
 	};
 
 
-### <a id="easytablesoutput"></a>Azure Mobile Apps のテーブルの簡単操作出力バインド
+### <a id="mobiletablesoutput"></a>Azure Mobile Apps の出力バインド
 
-関数により、テーブルの簡単操作出力バインドを使用して、レコードを Mobile Apps テーブル エンドポイントに書き込めます。
+関数により、出力バインドを使用して、レコードを Mobile Apps テーブル エンドポイントに書き込めます。
 
-function.json ファイルでは、Easy Tables 出力バインドで使用するための次のプロパティがサポートされています。
+function.json ファイルでは、モバイル テーブルの出力バインドで使用するための次のプロパティがサポートされています。
 
 - `name` : 新しいレコードの関数コードで使用される変数名。
-- `type` : バインドの型。*easyTable* に設定する必要があります。
+- `type` : *mobileTable* に設定する必要があるバインドの型。
 - `tableName` : 新しいレコードが作成されるテーブル。
 - `apiKey` : モバイル アプリ用のオプションの API キーを指定するアプリケーション設定である文字列。これは、モバイル アプリが API キーを使用してクライアント アクセスを制限するときに必要です。
 - `connection` : モバイル アプリの URI を指定するアプリケーション設定である文字列。
@@ -1057,7 +1257,7 @@ function.json の例:
 	  "bindings": [
 	    {
 	      "name": "record",
-	      "type": "easyTable",
+	      "type": "mobileTable",
 	      "tableName": "MyTable",
 	      "connection": "My_MobileApp_Uri",
 	      "apiKey": "My_MobileApp_Key",
@@ -1067,9 +1267,9 @@ function.json の例:
 	  "disabled": false
 	}
 
-#### Azure Mobile Apps のテーブルの簡単操作のコード例 (C# キュー トリガー)
+#### Azure Mobile Apps のコード例 (C# キュー トリガー)
 
-この C# コード例では、*Text* プロパティを持つ新しいレコードを上のバインドで指定したテーブルに挿入します。
+この C# コード例では、*Text* プロパティを持つ Mobile Apps テーブル エンドポイントを、上のバインドで指定したテーブルに挿入します。
 
 	public static void Run(string myQueueItem, out object record)
 	{
@@ -1078,9 +1278,9 @@ function.json の例:
 	    };
 	}
 
-#### Azure Mobile Apps のテーブルの簡単操作のコード例 (Node.js キュー トリガー)
+#### Azure Mobile Apps のコード例 (Node.js キュー トリガー)
 
-この Node.js コード例では、*Text* プロパティを持つ新しいレコードを上のバインドで指定されたテーブルに挿入します。
+この Node.js コード例では、*Text* プロパティを持つ Mobile Apps テーブル エンドポイントを、上のバインドで指定したテーブルに挿入します。
 
 	module.exports = function (context, input) {
 	
@@ -1093,15 +1293,15 @@ function.json の例:
 
 ## Azure Notification Hub 出力バインド
 
-関数を使用して、構成された Azure Notification Hub でほんの数行のコードを使ってプッシュ通知を送信できます。ただし、通知ハブは、使用するプラットフォーム通知サービス (PNS) 用に構成する必要があります。Azure Notification Hub の構成方法や、通知用に登録するクライアント アプリケーションの開発方法について詳しくは、「[Notification Hubs の使用](../notification-hubs/notification-hubs-windows-store-dotnet-get-started.md)」を参照して、上部の目的のクライアント プラットフォームをクリックしてください。
+関数を使用して、構成された Azure Notification Hub でほんの数行のコードを使ってプッシュ通知を送信できます。ただし、通知ハブは、使用するプラットフォーム通知サービス (PNS) 用に構成する必要があります。Azure Notification Hub の構成方法や、通知用に登録するクライアント アプリケーションの開発方法の詳細については、「[Notification Hubs の使用](../notification-hubs/notification-hubs-windows-store-dotnet-get-started.md)」を参照して、上部の目的のクライアント プラットフォームをクリックしてください。
 
 function.json ファイルは、通知ハブ出力バインドに使用する次のプロパティを提供します。
 
 - `name` : 通知ハブ メッセージの関数コードで使用される変数名。
 - `type` : *"notificationHub"* に設定する必要があります。
-- `tagExpression` : タグ式。これにより、タグ式に一致する通知を受信するように登録した一連のデバイスに通知を配信するように指定できます。詳しくは、「[ルーティングとタグ式](../notification-hubs/notification-hubs-routing-tag-expressions.md)」を参照してください。
+- `tagExpression` : タグ式。これにより、タグ式に一致する通知を受信するように登録した一連のデバイスに通知を配信するように指定できます。詳細については、「[ルーティングとタグ式](../notification-hubs/notification-hubs-routing-tag-expressions.md)」を参照してください。
 - `hubName` : Azure ポータル内の通知ハブ リソースの名前。
-- `connection` : 接続文字列。お使いの通知ハブの *DefaultFullSharedAccessSignature* 値に設定された**アプリケーション設定**接続文字列です。
+- `connection` : この接続文字列は、使用している通知ハブの *DefaultFullSharedAccessSignature* 値に設定された**アプリケーション設定**接続文字列である必要があります。
 - `direction` : *"out"* に設定する必要があります。 
  
 function.json の例:
@@ -1122,11 +1322,11 @@ function.json の例:
 
 ### Azure Notification Hub の接続文字列の設定
 
-Notification Hub 出力バインドを使用するには、ハブの接続文字列を設定する必要があります。このためには、*[Integrate]* (統合) タブで、単に通知ハブを選択するか、新しいハブを作成します。
+Notification Hub 出力バインドを使用するには、ハブの接続文字列を設定する必要があります。このためには、*[統合]* タブで、単に通知ハブを選択するか、新しいハブを作成します。
 
-*DefaultFullSharedAccessSignature* の接続文字列を通知ハブに追加して、既存のハブの接続文字列を手動で追加することもできます。この接続文字列により、通知メッセージを送信するための関数アクセス権限が付与されます。*DefaultFullSharedAccessSignature* 接続文字列の値には、Azure ポータルの通知ハブ リソースのメイン ブレード内の **[keys]** (キー) ボタンからアクセスできます。ハブの接続文字列を手動で追加するには、次の手順を実行します。
+*DefaultFullSharedAccessSignature* の接続文字列を通知ハブに追加して、既存のハブの接続文字列を手動で追加することもできます。この接続文字列により、通知メッセージを送信するための関数アクセス権限が付与されます。*DefaultFullSharedAccessSignature* 接続文字列の値には、Azure ポータルの通知ハブ リソースのメイン ブレード内の **[キー]** ボタンからアクセスできます。ハブの接続文字列を手動で追加するには、次の手順を実行します。
 
-1. Azure ポータルの **[関数アプリ]** ブレードで、**[Function App Settings] \(関数アプリの設定)、[Go to App Service Settings] \(App Service の設定に移動)** の順にクリックします。
+1. Azure ポータルの **[関数アプリ]** ブレードで、**[関数アプリの設定]、[App Service の設定に移動]** の順にクリックします。
 
 2. **[設定]** ブレードで、**[アプリケーション設定]** をクリックします。
 
@@ -1163,7 +1363,7 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 	 
 	public static void Run(string myQueueItem,  out IDictionary<string, string> notification, TraceWriter log)
 	{
-	    log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+	    log.Info($"C# Queue trigger function processed: {myQueueItem}");
         notification = GetTemplateProperties(myQueueItem);
 	}
 	 
@@ -1180,7 +1380,7 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 	 
 	public static void Run(string myQueueItem,  out string notification, TraceWriter log)
 	{
-		log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+		log.Info($"C# Queue trigger function processed: {myQueueItem}");
 		notification = "{"message":"Hello from C#. Processed a queue item!"}";
 	}
 
@@ -1198,7 +1398,7 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 	  }
 	}
 
-project.json ファイルのアップロードについて詳しくは、「[uploading a project.json file](http://stackoverflow.com/questions/36411536/how-can-i-use-nuget-packages-in-my-azure-functions)」 (project.json ファイルのアップロード) を参照してください。
+project.json ファイルのアップロードの詳細については、「[project.json ファイルのアップロード](http://stackoverflow.com/questions/36411536/how-can-i-use-nuget-packages-in-my-azure-functions)」を参照してください。
 
 コード例:
 
@@ -1208,7 +1408,7 @@ project.json ファイルのアップロードについて詳しくは、「[upl
 	 
 	public static void Run(string myQueueItem,  out Notification notification, TraceWriter log)
 	{
-	   log.Verbose($"C# Queue trigger function processed: {myQueueItem}");
+	   log.Info($"C# Queue trigger function processed: {myQueueItem}");
 	   notification = GetTemplateNotification(myQueueItem);
 	}
 	private static TemplateNotification GetTemplateNotification(string message)
@@ -1226,4 +1426,4 @@ project.json ファイルのアップロードについて詳しくは、「[upl
 * [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

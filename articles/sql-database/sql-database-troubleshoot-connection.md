@@ -31,7 +31,7 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 
 ## 一時的な接続の問題を解決する手順
 1.	アプリケーションによって報告されたエラーで発生している既知の障害については、[Microsoft Azure サービス ダッシュボード](https://azure.microsoft.com/status)を参照してください。
-2. Azure SQL Database など、クラウド サービスに接続するアプリケーションは、定期的な再構成イベントを想定し、これらをアプリケーション エラーとしてユーザーに示すのではなく、再試行ロジックを実装してこれらのエラーを処理します。詳細および一般的な再試行戦略については、「[一時エラー](sql-database-connectivity-issues.md)」セクション、または[ベスト プラクティスやデザイン ガイドライン](sql-database-connect-central-recommendations.md)を参照してください。次に、具体的な内容を[コード サンプル](sql-database-develop-quick-start-client-code-samples.md)で確認してください。
+2. Azure SQL Database など、クラウド サービスに接続するアプリケーションは、定期的な再構成イベントを想定し、これらをアプリケーション エラーとしてユーザーに示すのではなく、再試行ロジックを実装してこれらのエラーを処理します。詳細および一般的な再試行戦略については、「[一時エラー](sql-database-connectivity-issues.md)」セクション、または[ベスト プラクティスやデザイン ガイドライン](sql-database-connect-central-recommendations.md)を参照してください。その後、具体的な内容を「[SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」のコード サンプルで確認してください。
 3.	データベースがリソースの制限に近づくと、一時的な接続の問題に見える場合があります。[パフォーマンスの問題のトラブルシューティング](sql-database-troubleshoot-performance.md)のトピックを参照してください。
 4.	接続の問題が解消されない場合、アプリケーションでのエラーの継続時間が 60 秒を超えた場合、または 1 日にエラーが複数回発生した場合は、[Azure サポート](https://azure.microsoft.com/support/options) サイトの **[サポートの要求]** を選択して、サポート要求を送信してください。
 
@@ -39,4 +39,4 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 - 別のエラーが発生している場合は、原因の手掛かりとなる[エラー メッセージ](sql-database-develop-error-messages.md)を確認してください。
 - 問題が解消されない場合は、「[Troubleshoot common connection issues to SQL Azure Database (SQL Azure Database への接続の一般的な問題のトラブルシューティング)](sql-database-troubleshoot-common-connection-issues.md)」のガイダンスを参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

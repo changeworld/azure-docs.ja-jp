@@ -1,15 +1,11 @@
-### Prerequisites
-- A [ProjectOnline](https://products.office.com/Project/project-online-with-project-for-office-365) account 
+### 前提条件
+- [ProjectOnline](https://products.office.com/Project/project-online-with-project-for-office-365) アカウント 
 
-Before you can use your ProjectOnline account in a Logic app, you must authorize the Logic app to connect to your ProjectOnline account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
+ロジック アプリで ProjectOnline アカウントを使用するには、ProjectOnline アカウントに接続するロジック アプリを承認する必要があります。幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
-Here are the steps to authorize your Logic app to connect to your ProjectOnline account:
+次に、ProjectOnline アカウントに接続するロジック アプリを承認する手順を示します。
 
-1. To create a connection to ProjectOnline, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *ProjectOnline* in the search box. Select the trigger or action you'll like to use:  
-  ![ProjectOnline step 1](./media/connectors-create-api-projectonline/projectonline-1.png)
-2. If you haven't created any connections to ProjectOnline before, you'll get prompted to provide your ProjectOnline credentials. These credentials will be used to authorize your Logic app to connect to, and access your ProjectOnline account's data:  
-  ![ProjectOnline step 2](./media/connectors-create-api-projectonline/projectonline-2.png)
-3. Provide your ProjectOnline user name and password to authorize your Logic app:  
-  ![ProjectOnline step 3](./media/connectors-create-api-projectonline/projectonline-3.png)   
-4. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
-  ![ProjectOnline step 4](./media/connectors-create-api-projectonline/projectonline-4.png)   
+1. ProjectOnline への接続を作成するには、ロジック アプリ デザイナーのドロップダウン リストから **[Show Microsoft managed APIs]** (Microsoft Managed API を表示) を選択し、検索ボックスに「*ProjectOnline*」と入力します。使用するトリガーまたはアクションを選択します。 ![ProjectOnline 手順 1](./media/connectors-create-api-projectonline/projectonline-1.png)
+2. これまでに ProjectOnline への接続を作成していない場合は、ProjectOnline の資格情報を指定するよう求められます。この資格情報を使用して、接続するロジック アプリの承認と、ProjectOnline アカウントのデータへのアクセスが行われます。 ![ProjectOnline 手順 2](./media/connectors-create-api-projectonline/projectonline-2.png)
+3. ProjectOnline のユーザー名とパスワードを入力して、ロジック アプリを承認します。 ![ProjectOnline 手順 3](./media/connectors-create-api-projectonline/projectonline-3.png)   
+4. 接続が作成され、ロジック アプリで他の手順を実行できるようになります。 ![ProjectOnline 手順 4](./media/connectors-create-api-projectonline/projectonline-4.png)   

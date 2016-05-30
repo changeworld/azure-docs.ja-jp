@@ -14,14 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="04/22/2016"
+	ms.date="05/05/2016"
 	ms.author="larryfr"/>
 
-# HDInsight での Hadoop 用 Java MapReduce プログラムの開発
+# HDInsight Linux での Hadoop 用 Java MapReduce プログラムの開発
 
-[AZURE.INCLUDE [pig セレクター](../../includes/hdinsight-maven-mapreduce-selector.md)]
-
-このドキュメントでは、Apache Maven を使用して MapReduce アプリケーションを作成し、HDInsight クラスターの Linux ベースの Hadoop にこれをデプロイして実行する手順について説明します。HDInsight クラスターでの Windows ベースの Hadoop の使用の詳細については、「[HDInsight での Hadoop 用 Java MapReduce プログラムの開発 (Windows)](hdinsight-develop-deploy-java-mapreduce.md)」を参照してください。
+このドキュメントでは、Apache Maven を使用して MapReduce アプリケーションを作成し、HDInsight クラスターの Linux ベースの Hadoop にこれをデプロイして実行する手順について説明します。
 
 ##<a name="prerequisites"></a>前提条件
 
@@ -290,4 +288,4 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 [powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

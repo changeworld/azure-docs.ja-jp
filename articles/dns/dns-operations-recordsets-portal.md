@@ -10,14 +10,14 @@
 
 <tags
    ms.service="dns"
-   ms.devlang="en"
+   ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="03/29/2016"
+   ms.date="05/06/2016"
    ms.author="cherylmc"/>
 
-# Azure ポータルを使用して DNS レコードとレコード セットを作成および管理する方法
+# Azure ポータルを使用した DNS レコードとレコード セットの管理
 
 
 > [AZURE.SELECTOR]
@@ -26,9 +26,9 @@
 - [PowerShell](dns-operations-recordsets.md)
 
 
-このガイドでは、Azure ポータルを使用して DNS ゾーンのレコード セットとレコードを作成して管理する方法について説明します。
+この記事では、Azure ポータルを使用して DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
 
-DNS レコード セットと個々の DNS レコードの違いを理解することは重要です。レコード セットとは、1 つのゾーン内にある同じ名前、同じ種類のレコードのコレクションです。詳細については、「[レコード セットとレコードについて](../dns-getstarted-create-recordset#Understanding-record-sets-and-records)」を参照してください。
+DNS レコード セットと個々の DNS レコードの違いを理解することは重要です。レコード セットとは、1 つのゾーン内にある同じ名前、同じ種類のレコードのコレクションです。詳細については、「[レコード セットとレコードについて](dns-getstarted-create-recordset-portal.md)」を参照してください。
 
 ## 新しいレコード セットとレコードを作成する
 
@@ -44,7 +44,7 @@ Azure ポータルでレコード セットを作成する方法については�
 	![レコード セットの検索](./media/dns-operations-recordsets-portal/searchset500.png)
 
 
-## 既存のレコード セットに新しいレコードを追加する
+## レコード セットに新しいレコードを追加する
 
 すべてのレコード セットに対して、最大 20 個のレコードを追加できます。レコード セットには、同一の 2 つのレコードを含めることはできません。空のレコード セット (レコードが 0 個) を作成することはできますが、Azure DNS ネーム サーバーには表示されません。レコード セットの種類が CNAME の場合、そこに含めることができるレコードは 1 つまでです。
 
@@ -77,14 +77,11 @@ Azure ポータルでレコード セットを作成する方法については�
 	![レコードの変更](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
 3. ブレードの上部にある **[保存]** をクリックして設定を保存します。画面の右上隅に、レコードが保存されたことを示す通知が表示されます。
-
 	
 	![レコードの保存](./media/dns-operations-recordsets-portal/saved150.png)
 
 
-
 3. レコードが保存されると、DNS ブレードのレコード セットの値にはレコードの更新が反映されます。
-
 
 
 ## レコード セットからレコードを削除する
@@ -135,4 +132,8 @@ Azure ポータルを使用して、レコード セットからレコードを�
 
 Azure DNS の詳細については、「[Azure DNS の概要](dns-overview.md)」を参照してください。DNS 作成の自動化については、「[.NET SDK を使用した DNS ゾーンとレコード セットの作成](dns-sdk.md)」を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+
+逆引き DNS レコードを使用する場合、「[逆引き DNS レコードを管理する方法](dns-reverse-dns-record-operations-ps.md)」を参照してください。
+ 
+
+<!---HONumber=AcomDC_0518_2016-->

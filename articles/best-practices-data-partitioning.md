@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -19,7 +19,7 @@
 
 # データのパーティション分割のガイダンス
 
-![](media/best-practices-data-partitioning/pnp-logo.png)
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 ## 概要
 
@@ -567,4 +567,4 @@ _図 10: 顧客の注文とそれらの詳細情報を記録するために Redi
 [SQL Database とは]: sql-database/sql-database-technical-overview.md
 [SQL Database とは SQL Database の概要]: sql-database/sql-database-technical-overview.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -14,12 +14,10 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/29/2016"
+	ms.date="05/13/2016"
 	ms.author="dkshir"/>
 
 # リソース マネージャー デプロイメント モデルで Windows 仮想マシンをキャプチャする方法
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-windows-classic-capture-image.md)。
 
 
 ここでは、Azure PowerShell を使用して Windows を実行する Azure 仮想マシン (VM) をキャプチャし、それを使用して他の仮想マシンを作成する方法を説明します。このイメージには、仮想マシンに接続された OS ディスクやデータ ディスクが含まれます。Windows VM の作成に必要な仮想ネットワーク リソースは含まれないので、イメージを使用する別の仮想マシンを作成する前に、これらをセットアップする必要があります。このイメージは、[一般化された Windows イメージ](https://technet.microsoft.com/library/hh824938.aspx)としても準備されます。
@@ -62,9 +60,9 @@ Azure PowerShell または新しい Azure Resource Manager エクスプローラ
 
 ### PowerShell の使用
 
-この記事では、Azure PowerShell バージョン 1.0.x をインストールしてあるものとします。古いバージョンの PowerShell にはリソース マネージャーの新しい機能が追加されていないので、このバージョンを使用することをお勧めします。バージョンの違いの詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)」を参照してください。
+この記事では、Azure PowerShell バージョン 1.0.x をインストールしてあるものとします。古いバージョンの PowerShell にはリソース マネージャーの新しい機能が追加されていないので、このバージョンを使用することをお勧めします。PowerShell をまだインストールしていない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」のインストール手順を実行してください。
 
-1. Azure PowerShell 1.0.x を開き、Azure アカウントにサインインします。
+1. Azure PowerShell を開き、Azure アカウントにサインインします。
 
 		Login-AzureRmAccount
 
@@ -100,7 +98,7 @@ Azure PowerShell または新しい Azure Resource Manager エクスプローラ
 
 	`-Path` 変数は省略可能です。これを使用して、JSON テンプレートをローカルに保存することができます。`-DestinationContainerName` 変数は、イメージを格納するコンテナーの名前です。格納されるイメージの URL は、`https://YourStorageAccountName.blob.core.windows.net/system/Microsoft.Compute/Images/YourImagesContainer/YourTemplatePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` のようになります。元の仮想マシンと同じストレージ アカウントに作成されます。
 
-	>[AZURE.NOTE] イメージの場所を見つけるには、ローカルの JSON ファイル テンプレートを開きます。イメージの完全なパスは、**resources** > **storageProfile** > **osDisk** > **image** > **uri** セクションにあります。現時点では、ストレージ アカウントの *system* コンテナーが非表示であるため、ポータルでこれらのイメージを確認する簡単な方法はありません。このため、`-Path` 変数は省略可能ですが、テンプレートをローカルに保存してイメージの URL を簡単に確認するには必ず必要になります。また、これは、次のセクションの手順で説明する **Azure ストレージ エクスプローラー**というツールを使用して確認することもできます。
+	>[AZURE.NOTE] イメージの場所を見つけるには、ローカルの JSON ファイル テンプレートを開きます。イメージの完全なパスは、**resources** > **storageProfile** > **osDisk** > **image** > **uri** セクションにあります。URI はポータルで確認することもできます。それは、ストレージ アカウントの **システム** という名前の blob にコピーされます。
 
 
 ### Azure リソース エクスプローラー (プレビュー) の使用
@@ -111,7 +109,7 @@ Azure PowerShell または新しい Azure Resource Manager エクスプローラ
 - API ドキュメントを取得する。
 - Azure サブスクリプションで API を直接呼び出す。
 
-この強力なツールの機能の詳細については、ビデオ「[Azure Resource Manager Explorer with David Ebbo (David Ebbo が紹介するAzure Resource Manager エクスプローラー)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Resource-Manager-Explorer-with-David-Ebbo)」をご覧ください。
+この強力なツールの機能の詳細については、ビデオ「[Azure Resource Manager Explorer with David Ebbo](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Resource-Manager-Explorer-with-David-Ebbo)」 (David Ebbo が紹介するAzure Resource Manager エクスプローラー) をご覧ください。
 
 PowerShell の方法の代わりにリソース エクスプローラーを使用して、仮想マシンをキャプチャできます。
 
@@ -127,21 +125,21 @@ PowerShell の方法の代わりにリソース エクスプローラーを使�
 
 	![リソース エクスプローラー: アクション メニュー](./media/virtual-machines-windows-capture-image/ArmExplorerActionMenu.png)
 
-   その仮想マシンで実行できるすべてのアクションの一覧が表示されます。
+	- その仮想マシンで実行できるすべてのアクションの一覧が表示されます。
 
-	![Resource Explorer Action items](./media/virtual-machines-windows-capture-image/ArmExplorerActionItems.png)
+		![リソース エクスプローラー: アクション項目](./media/virtual-machines-windows-capture-image/ArmExplorerActionItems.png)
 
-5. **[割り当て解除]** のアクション ボタンをクリックして、仮想マシンの割り当てを解除します。VM の状態が **[停止済み]** から **[停止済み (割り当て解除)]** に変わります。
+5. **[割り当て解除]** のアクション ボタンをクリックして、仮想マシンの割り当てを解除します。VM の状態が、**[停止済み]** から **[停止済み (割り当て解除)]** に変わります。
 
-6. **[一般化]** のアクション ボタンをクリックし、仮想マシンを一般化済みとしてマークします。左側の仮想マシン名の下にある **[InstanceView]** メニューをクリックし、右側で **[状態]** セクションに移動して、状態を確認することもできます。
+6. **[一般化]** のアクション ボタンをクリックし、仮想マシンを一般化済みとしてマークします。左側の仮想マシン名の下にある **[インスタンス ビュー]** メニューをクリックし、右側で **[状態]** セクションに移動して、状態を確認することもできます。
 
 7. **[キャプチャ]** アクション ボタンの下では、イメージをキャプチャするための値を設定できます。入力した値は次のようになります。
 
 	![リソース エクスプローラー: キャプチャ](./media/virtual-machines-windows-capture-image/ArmExplorerCaptureAction.png)
 
-	**[キャプチャ]** アクション ボタンをクリックして、仮想マシンのイメージをキャプチャします。これにより、新しいイメージの VHD だけでなく、JSON テンプレート ファイルも作成されます。現時点では、リソース エクスプローラーまたは [Azure ポータル](https://portal.azure.com)からはアクセスできません。
+	**[キャプチャ]** アクション ボタンをクリックして、仮想マシンのイメージをキャプチャします。これにより、新しいイメージの VHD だけでなく、JSON テンプレート ファイルも作成されます。
 
-8. 新しいイメージ VHD とテンプレートにアクセスするには、ストレージ リソース管理用の Azure ツールである [Azure ストレージ エクスプローラー](http://storageexplorer.com/)をダウンロードしてインストールします。コンピューターのローカルに Azure ストレージ エクスプローラーがインストールされます。
+8. 新しいイメージ VHD とテンプレートにアクセスするには、ストレージ リソース管理用の Azure ツールである [Azure Storage エクスプローラー](http://storageexplorer.com/)をダウンロードしてインストールします。コンピューターのローカルに Azure ストレージ エクスプローラーがインストールされます。
 
 	- ストレージ エクスプローラーを開き、Azure サブスクリプションにサインインします。サブスクリプションで使用可能なすべてのストレージ アカウントが表示されます。
 
@@ -212,4 +210,4 @@ PowerShell の方法の代わりにリソース エクスプローラーを使�
 
 Azure PowerShell で新しい仮想マシンを管理する方法については、「[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)」を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

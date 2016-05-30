@@ -14,11 +14,30 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/03/2016"
+	ms.date="05/13/2016"
 	ms.author="nitinme"/>
 
 
 # Azure HDInsight の Hadoop コンポーネントのリリース ノート
+
+## HDInsight の 2016 年 5月 13 日リリース ノート
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight (Windows) 2.1.10.875.2159884 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight (Windows) 3.0.6.875.2159884 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight (Windows) 3.1.4.922.2266903 (HDP 2.1.15.0-2374 - 変更なし)
+* HDInsight (Windows) 3.2.7.922.2266903 (HDP 2.2.9.1-11)
+* HDInsight (Windows) 3.3.0.922.2266903 (HDP 2.3.3.1-18)
+* HDInsight (Linux) 3.2.1000.0.7565644 (HDP 2.2.9.1-11)
+* HDInsight (Linux) 3.3.1000.0.7565644 (HDP 2.3.3.1-18)
+* HDInsight (Linux) 3.4.1000.0.7548380 (HDP 2.4.2.0)
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Spark、Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| Spark バージョンの更新とその他のバグ修正 | このリリースでは、HDInsight クラスターの Spark バージョンを 1.6.1 に更新し、その他のバグを修正します| サービス | Spark| 該当なし
 
 ## HDInsight の 2016 年 4 月 11 日リリース ノート
 
@@ -31,7 +50,7 @@
 * HDInsight (Windows) 3.3.0.889.2191206 (HDP 2.3.3.1-16 - 変更なし)
 * HDInsight (Linux) 3.2.1000.0.7339916 (HDP 2.2.9.1-10)
 * HDInsight (Linux) 3.3.1000.0.7339916 (HDP 2.3.3.1-16)
-* HDInsight (Linux) 3.3.1000.0.7338911 (HDP 2.4.1.1-3)
+* HDInsight (Linux) 3.4.1000.0.7338911 (HDP 2.4.1.1-3)
 * SDK 1.5.8
 
 このリリースには、次の更新プログラムが含まれています。
@@ -40,8 +59,8 @@
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
 | HDI 3.4 でのカスタム メタストアのアップグレードに関する問題 | 以前に下位バージョンの別の HDInsight クラスターで使用されていたカスタム メタストアを使用した場合、クラスターの作成が失敗しました。これは、現在では修正されたアップグレード スクリプトのエラーによるものでした| クラスターの作成 | すべて | 該当なし
 | Livy クラッシュ復旧 | Livy を通じて送信されるすべてのジョブについてジョブ状態の復元性を提供します。 | 信頼性 | Linux での Spark| 該当なし
-| Jupyter コンテンツ HA | クラスターに関連付けられているストレージ アカウントとの間で、Jupyter Notebook の内容を保存およびロードする機能を提供します。詳しくは、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル (プレビュー)](hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。| Notebook | Linux での Spark| 該当なし
-| Jupyter Notebook での hiveContext の削除 | `%%hive` マジックの代わりに `%%sql` マジックを使用します。sqlContext は hiveContext と同等です。詳しくは、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル (プレビュー)](hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。| Notebook | Linux 上の Spark クラスター| 該当なし
+| Jupyter コンテンツ HA | クラスターに関連付けられているストレージ アカウントとの間で、Jupyter Notebook の内容を保存およびロードする機能を提供します。詳細については、「[Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。| Notebook | Linux での Spark| 該当なし
+| Jupyter Notebook での hiveContext の削除 | `%%hive` マジックの代わりに `%%sql` マジックを使用します。sqlContext は hiveContext と同等です。詳細については、「[Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。| Notebook | Linux 上の Spark クラスター| 該当なし
 | Spark の古いバージョンの非推奨 | 古い Spark 1.3.1 バージョンは、5 月 31 でサービスが終了します。 | サービス | Windows 上の Spark クラスター | 該当なし
 
 ## HDInsight の 2016 年 3 月 29 日リリース ノート
@@ -63,10 +82,10 @@
 | タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
 | すべての HDInsight クラスターに HDInsight 3.4 バージョンが追加され、HDP バージョンが更新されました | このリリースでは、HDInsight v3.4 (HDP 2.4 に基づく) が追加され、他の HDP バージョンも更新されました。HDP 2.4 リリース ノートについては、[こちら](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)を参照してください。また、HDInsight バージョンの詳細については、[こちら](hdinsight-component-versioning.md)を参照してください。| サービス | すべての Linux クラスター| 該当なし
-| HDInsight Premium | HDInsight は、Standard と Premium の 2 つのカテゴリで利用できるようになりました。HDInsight Premium は現在プレビューの段階で、Linux 上の Hadoop および Spark クラスターでのみ利用できます。詳しくは、[こちら](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)を参照してください。| サービス | Linux 上の Hadoop および Spark| 該当なし
-| Microsoft R Server | HDInsight Premium は、Linux 上の Hadoop クラスターや Spark クラスターに含めることのできる Microsoft R Server を提供します。詳しくは、「[概要: HDInsight の R Server (プレビュー)](hdinsight-hadoop-r-server-overview.md)」を参照してください。| サービス | Linux 上の Hadoop および Spark| 該当なし
+| HDInsight Premium | HDInsight は、Standard と Premium の 2 つのカテゴリで利用できるようになりました。HDInsight Premium は現在プレビューの段階で、Linux 上の Hadoop および Spark クラスターでのみ利用できます。詳細については、[こちら](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)を参照してください。| サービス | Linux 上の Hadoop および Spark| 該当なし
+| Microsoft R Server | HDInsight Premium は、Linux 上の Hadoop クラスターや Spark クラスターに含めることのできる Microsoft R Server を提供します。詳細については、「[概要: HDInsight の R Server](hdinsight-hadoop-r-server-overview.md)」を参照してください。| サービス | Linux 上の Hadoop および Spark| 該当なし
 | Spark 1.6.0 | HDInsight 3.4 クラスターに Spark 1.6.0 が導入されました| サービス | Linux 上の Spark クラスター| 該当なし
-| Jupyter Notebook の拡張機能 | Spark クラスターで使用できる Jupyter Notebook に、追加の Spark カーネルが備わりました。また、%%magic の使用、自動視覚化、Python 視覚ライブラリ (matplotlib など) との統合などの拡張機能も含まれています。詳しくは、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル (プレビュー)](hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。 | サービス | Linux 上の Spark クラスター | 該当なし
+| Jupyter Notebook の拡張機能 | Spark クラスターで使用できる Jupyter Notebook に、追加の Spark カーネルが備わりました。また、%%magic の使用、自動視覚化、Python 視覚ライブラリ (matplotlib など) との統合などの拡張機能も含まれています。詳細については、「[Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。 | サービス | Linux 上の Spark クラスター | 該当なし
 
 ## HDInsight の 2016 年 3 月 22 日リリース ノート
 
@@ -795,7 +814,7 @@
 
 <tr>
 <td>HDInsight 3.2 クラスター</td>
-<td>Hadoop 2.6/HDP2.2 は HDInsight 3.2 クラスターで使用できます。これにはすべてのオープン ソース コンポーネントの主要な更新プログラムが含まれます。詳細については、「HDInsight での新機能」と「<a href ="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.0/HDP_2.2.0_Release_Notes_20141202_version/index.html" target="_blank">HDP 2.2.0.0 リリース ノート</a>」をご覧ください。</td>
+<td>Hadoop 2.6/HDP2.2 は HDInsight 3.2 クラスターで使用できます。これにはすべてのオープン ソース コンポーネントの主要な更新プログラムが含まれます。詳細については、「HDInsight での新機能」と「<a href ="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.0/HDP_2.2.0_Release_Notes_20141202_version/index.html" target="_blank">HDP 2.2.0.0 リリース ノート</a>」を参照してください。</td>
 <td>オープンソース ソフトウェア</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -803,7 +822,7 @@
 
 <tr>
 <td>Linux での HDInsight (プレビュー)</td>
-<td>Ubuntu Linux で実行されているクラスターをデプロイできます。詳細については、「Linux での HDInsight の概要」をご覧ください。</td>
+<td>Ubuntu Linux で実行されているクラスターをデプロイできます。詳細については、「Linux での HDInsight の概要」を参照してください。</td>
 <td>サービス</td>
 <td>Hadoop は、</td>
 <td>該当なし</td>
@@ -811,7 +830,7 @@
 
 <tr>
 <td>Storm の一般公開</td>
-<td>Apache Storm クラスターは一般で使用できます。詳細については、「HDInsight での Storm 使用方法の概要」をご覧ください。</td>
+<td>Apache Storm クラスターは一般で使用できます。詳細については、「HDInsight での Storm 使用方法の概要」を参照してください。</td>
 <td>サービス</td>
 <td>Storm</td>
 <td>該当なし</td>
@@ -835,7 +854,7 @@
 
 <tr>
 <td>Visual Studio ツール</td>
-<td>Apache Storm のツール一式に加えて、Visual Studio で Apache Hive のツールが更新され、ステートメント入力候補、ローカル検証、改善されたデバッグ サポートが追加されました。詳細については、「HDInsight Hadoop Tools for Visual Studio の使用開始」をご覧ください。</td>
+<td>Apache Storm のツール一式に加えて、Visual Studio で Apache Hive のツールが更新され、ステートメント入力候補、ローカル検証、改善されたデバッグ サポートが追加されました。詳細については、「HDInsight Hadoop Tools for Visual Studio の使用開始」を参照してください。</td>
 <td>ツール</td>
 <td>Hadoop は、</td>
 <td>該当なし</td>
@@ -843,7 +862,7 @@
 
 <tr>
 <td>DocumentDB 用 Hadoop コネクタ</td>
-<td>DocumentDB 用 Hadoop コネクタを使用すれば、DocumentDB コレクション全体またはデータベース アカウント全体に格納されているスキーマのない JSON ドキュメントで複雑な集計、分析、操作を実行できます。詳細とチュートリアルについては、「DocumentDB と HDInsight を使用した Hadoop ジョブの実行」をご覧ください。</td>
+<td>DocumentDB 用 Hadoop コネクタを使用すれば、DocumentDB コレクション全体またはデータベース アカウント全体に格納されているスキーマのない JSON ドキュメントで複雑な集計、分析、操作を実行できます。詳細とチュートリアルについては、「DocumentDB と HDInsight を使用した Hadoop ジョブの実行」を参照してください。</td>
 <td>サービス</td>
 <td>Hadoop は、</td>
 <td>該当なし</td>
@@ -891,7 +910,7 @@
 
 <tr>
 <td>HDP 2.1 メンテナンスの更新</td>
-<td>HDInsight 3.1 が更新され、HDP 2.1.10.0 がデプロイされます。詳細については、「<a href ="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.10/bk_releasenotes_hdp_2.1/content/ch_relnotes-HDP-2.1.10.html" target="_blank">HDP-2.1.10 リリース ノート</a>」をご覧ください。</td>
+<td>HDInsight 3.1 が更新され、HDP 2.1.10.0 がデプロイされます。詳細については、「<a href ="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.10/bk_releasenotes_hdp_2.1/content/ch_relnotes-HDP-2.1.10.html" target="_blank">HDP-2.1.10 リリース ノート</a>」を参照してください。</td>
 <td>オープンソース ソフトウェア</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -986,7 +1005,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 
 <tr>
 <td>Hive 構成 hive.auto.convert.join.noconditionaltask.size の既定値への変更</td>
-<td><p>このサイズ構成は、自動変換されたマップの結合に適用されます。この値は、メモリに収まるハッシュ マップに変換できるテーブルのサイズの合計を表します。以前のリリースで、この値は既定値の 10MB から 128MB に増えました。ただし、128MB という新しい値がメモリ不足でジョブが失敗する原因になっていました。このリリースでは、既定値を 10 MB に戻します。ユーザーは、クエリとテーブル サイズに応じて、クラスターの作成中にこの値を上書きできます。この設定と、それを上書きする方法の詳細については、「<a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.0.2/ds_Hive/optimize-joins.html#JoinOptimization-OptimizeAutoJoinConversion" target="_blank">Optimize Auto Join Conversion (Auto Join Conversion の最適化)</a>」をご覧ください。</p></td>
+<td><p>このサイズ構成は、自動変換されたマップの結合に適用されます。この値は、メモリに収まるハッシュ マップに変換できるテーブルのサイズの合計を表します。以前のリリースで、この値は既定値の 10MB から 128MB に増えました。ただし、128MB という新しい値がメモリ不足でジョブが失敗する原因になっていました。このリリースでは、既定値を 10 MB に戻します。ユーザーは、クエリとテーブル サイズに応じて、クラスターの作成中にこの値を上書きできます。この設定と、それを上書きする方法の詳細については、「<a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.0.2/ds_Hive/optimize-joins.html#JoinOptimization-OptimizeAutoJoinConversion" target="_blank">Optimize Auto Join Conversion (Auto Join Conversion の最適化)</a>」を参照してください。</p></td>
 <td>Hive</td>
 <td>Hadoop、HBase</td>
 <td>該当なし</td>
@@ -1074,8 +1093,8 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 </tr>
 
 <tr>
-<td>バグの修正: Hive DDL でテーブルに大量のパーティションを追加する際に断続的にエラーが発生する。 </td>
-<td><p>Hive テーブルに対してパーティションを大量に追加しようとした際に、Hive メタストア データベースとの間に断続的に接続エラーが発生した場合には、Hive DDL にエラーが発生することがあります。このエラーが発生した場合には、この Hive エラー ログに以下の文言が表示されます。 </p><p>"ERROR [main]: ql.Driver (SessionState.java:printError(547)) - FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask.MetaException(message:java.lang.RuntimeException: commitTransaction was called but openTransactionCalls = 0.This probably indicates that there are unbalanced calls to openTransaction/commitTransaction)"</p></td>
+<td>バグの修正: Hive DDL でテーブルに大量のパーティションを追加するときに断続的にエラーが発生する。 </td>
+<td><p>Hive テーブルに対してパーティションを大量に追加しようとしたときに、Hive メタストア データベースとの間に断続的に接続エラーが発生した場合には、Hive DDL にエラーが発生することがあります。このエラーが発生した場合には、この Hive エラー ログに以下の文言が表示されます。 </p><p>"ERROR [main]: ql.Driver (SessionState.java:printError(547)) - FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask.MetaException(message:java.lang.RuntimeException: commitTransaction was called but openTransactionCalls = 0.This probably indicates that there are unbalanced calls to openTransaction/commitTransaction)"</p></td>
 <td>Hive</td>
 <td>Hadoop、HBase</td>
 <td>HIVE-482 (これは、内部 JIRA の一種です。このため、外部から引用することはできません。ここには参考までに記載しています)</td>
@@ -1186,7 +1205,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 <td>Azure Websites および Azure Storage のログ分析用に既成のジョブを用意</td>
 <td>HDInsight クエリ コンソールには、既にあるデータまたはサンプルのデータを使用するソリューションで役立つ初心者向けギャラリーが用意されています。
 <p>**既にあるデータを使用するソリューション**:<br>
-データ分析のなかでも特によくあるもののいくつかについて、ジョブを作成しました。自分でソリューションを作成する際の第一歩として役立ちます。各ジョブには既にお持ちのデータを使って、どのように動作するかを確認できます。その後準備ができたら、これまでに得た知識を使って、既成のジョブを手本にソリューションを作成します。</p>
+データ分析のなかでも特によくあるもののいくつかについて、ジョブを作成しました。自分でソリューションを作成するときの第一歩として役立ちます。各ジョブには既にお持ちのデータを使って、どのように動作するかを確認できます。その後準備ができたら、これまでに得た知識を使って、既成のジョブを手本にソリューションを作成します。</p>
 <p>**サンプルのデータを使用するソリューション**:<br>
 Web ログやセンサー データの分析など、基本的なシナリオをいくつかなぞっていくことによって、HDInsight の使い方を学習できます。HDInsight を使ってデータを分析する方法だけでなく、その他のアプリケーションやサービスにこのデータを接続する方法も学べます。こちらは、Microsoft Excel に接続してデータを視覚化する場合などに役立ちます。</p></td>
 <td>クエリ コンソール</td>
@@ -1234,7 +1253,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 <tr>
 <td>HDP 2.1.7</td>
-<td>このリリースは、Hortonworks Data Platform (HDP) 2.1.7 に基づくものです。詳細については、「<a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.7-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.7.html" target="_blank">HDP-2.1.7 リリース ノート</a>」をご覧ください。</td>
+<td>このリリースは、Hortonworks Data Platform (HDP) 2.1.7 に基づくものです。詳細については、「<a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.7-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.7.html" target="_blank">HDP-2.1.7 リリース ノート</a>」を参照してください。</td>
 <td>HDP</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -1242,7 +1261,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 <tr>
 <td>YARN タイムライン サーバー</td>
-<td>YARN Timeline Server (別名 Generic Application History Server) は、既定で有効になっています。Timeline Server は、アプリケーション ID、アプリケーション名、アプリケーションの状態、アプリケーションの送信時刻、アプリケーションの完了時刻など、完了済みのアプリケーションに関する全般的な情報を提供するものです。このアプリケーション情報は、ヘッド ノードから URI (http://headnodehost:8188) にアクセスするか、YARN コマンド (yarn application –list –appStates ALL) を実行すると取得できます。この情報は、REST API (https://{ClusterDnsName}. azurehdinsight.net/ws/v1/applicationhistory/) からリモートで取得することもできます。詳細については、「<a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN Timeline Server</a>」をご覧ください。</td>
+<td>YARN Timeline Server (別名 Generic Application History Server) は、既定で有効になっています。Timeline Server は、アプリケーション ID、アプリケーション名、アプリケーションの状態、アプリケーションの送信時刻、アプリケーションの完了時刻など、完了済みのアプリケーションに関する全般的な情報を提供するものです。このアプリケーション情報は、ヘッド ノードから URI (http://headnodehost:8188) にアクセスするか、YARN コマンド (yarn application –list –appStates ALL) を実行すると取得できます。この情報は、REST API (https://{ClusterDnsName}. azurehdinsight.net/ws/v1/applicationhistory/) からリモートで取得することもできます。詳細については、「<a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN Timeline Server</a>」を参照してください。</td>
 <td>サービス、YARN</td>
 <td>Hadoop、HBase</td>
 <td>該当なし</td>
@@ -1269,7 +1288,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 * Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host\_name* フィールドがホスト名だけではなくノードの完全修飾ドメイン名 (FQDN) を返します。たとえば、"**headnode0**" を返す代わりに、FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**" を返します。この変更は、1 つの仮想ネットワークに HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
 
-* HDInsight クラスターの既定のデプロイメントのために、新しいメモリ設定が用意されています。前の既定のメモリ設定は、デプロイされる CPU コアの数についてガイダンスの考慮が適切ではありませんでした。今回の新しいメモリ設定は、Hortonworks による推奨に基づき、既定の設定を改善するものです。メモリ設定の変更については、クラスター構成の変更に関する SDK リファレンス ドキュメントをご覧ください。既定の 4 CPU コア (8 コンテナー) HDInsight クラスターで使用される新しいメモリ設定を次の表に示します(前のリリースで使用された値もかっこ内に記載します)。
+* HDInsight クラスターの既定のデプロイメントのために、新しいメモリ設定が用意されています。前の既定のメモリ設定は、デプロイされる CPU コアの数についてガイダンスの考慮が適切ではありませんでした。今回の新しいメモリ設定は、Hortonworks による推奨に基づき、既定の設定を改善するものです。メモリ設定の変更については、クラスター構成の変更に関する SDK リファレンス ドキュメントを参照してください。既定の 4 CPU コア (8 コンテナー) HDInsight クラスターで使用される新しいメモリ設定を次の表に示します(前のリリースで使用された値もかっこ内に記載します)。
 
 <table border="1">
 <tr><th>コンポーネント</th><th>メモリの割り当て</th></tr>
@@ -1287,7 +1306,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 </table><br>
 
-HDInsight で使用される Hortonworks Data Platform で YARN および MapReduce によって使用されるメモリ構成の設定の詳細については、「[Determine HDP Memory Configuration Settings (HDP メモリ構成の設定の決定)](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1-latest/bk_installing_manually_book/content/rpm-chap1-11.html)」をご覧ください。Hortonworks は、適切なメモリ設定を計算するツールも提供しています。
+HDInsight で使用される Hortonworks Data Platform で YARN および MapReduce によって使用されるメモリ構成の設定の詳細については、「[Determine HDP Memory Configuration Settings (HDP メモリ構成の設定の決定)](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1-latest/bk_installing_manually_book/content/rpm-chap1-11.html)」を参照してください。Hortonworks は、適切なメモリ設定を計算するツールも提供しています。
 
 Azure PowerShell と HDInsight SDK のエラー メッセージ: "*クラスターが HTTP サービスのアクセス用に構成されていません*" について
 
@@ -1299,7 +1318,7 @@ Azure PowerShell と HDInsight SDK のエラー メッセージ: "*クラスタ�
 
 ## HDInsight 3.1 の 2014 年 9 月 12 日リリース
 
-* このリリースは、Hortonworks Data Platform (HDP) 2.1.5 に基づくものです。このリリースで修正されたバグの一覧については、Hortonworks のサイトで「[Fixed in this Release (このリリースでの修正点)](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.5/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.5-fixed.html)」ページをご覧ください。
+* このリリースは、Hortonworks Data Platform (HDP) 2.1.5 に基づくものです。このリリースで修正されたバグの一覧については、Hortonworks のサイトで「[Fixed in this Release (このリリースでの修正点)](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.5/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.5-fixed.html)」ページを参照してください。
 * Pig ライブラリ フォルダーで、ファイル "avro-mapred-1.7.4.jar" が "avro-mapred-1.7.4-hadoop2.jar" に変更されています。 これらのファイルの内容には、重要でない小さなバグ修正が含まれます。ファイルの名前が変更されたときにファイルが壊れるのを避けるため、JAR ファイルの名前と直接依存関係を持たないことをお勧めします。
 
 
@@ -1363,7 +1382,7 @@ HBase を使用すると、大規模なデータセットを処理する対話�
 
 		mahout org.apache.mahout.classifier.df.BreimanExample -d /user/hdp/glass.data -ds /user/hdp/glass.info -i 10 -t 100
 
-この手順の詳しい説明については、Apache Mahout Web サイトのドキュメント「[Breiman Example (Breiman の例)](https://mahout.apache.org/users/classification/breiman-example.html)」をご覧ください。
+この手順の詳しい説明については、Apache Mahout Web サイトのドキュメント「[Breiman Example (Breiman の例)](https://mahout.apache.org/users/classification/breiman-example.html)」を参照してください。
 
 
 ### HDInsight 3.1 で Hive クエリに Tez を使用可能
@@ -1375,7 +1394,7 @@ HDInsight 3.1 で Hive 0.13 が利用可能になり、Tez を使用してクエ
 
 Hortonworks では、Tez を使用した Hive クエリのパフォーマンスの向上について、標準ベンチマークによる詳細なブレークダウンを公開しています。詳細については、「[Benchmarking Apache Hive 13 for Enterprise Hadoop (Enterprise Hadoop 向け Apache Hive 13 のベンチマーク)](http://hortonworks.com/blog/benchmarking-apache-hive-13-enterprise-hadoop/)」を参照してください。
 
-Tez を使用した Hive に関する詳細については、「[Hive on Tez (Tez を使用した Hive)](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)」をご覧ください。
+Tez を使用した Hive に関する詳細については、「[Hive on Tez (Tez を使用した Hive)](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)」を参照してください。
 
 ###グローバル対応
 Hadoop 2.2 対応の HDInsight のリリースに伴い、Azure が利用できるすべての主要な地域で HDInsight が利用可能になりました。具体的には、西ヨーロッパと東南アジアのデータセンターがオンラインになりました。これで、お客様は、距離的に近く、コンプライアンス要件が似ていると思われる地域にあるデータセンター内のクラスターを見つけることができます。
@@ -1523,7 +1542,7 @@ HDInsight 2.x (HDP1.x) と HDInsight 3.x (HDP2.x) との間で以下のバージ
 
 
 ### ドライバー
-SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight によって内部的に使用され、外部の操作では使用されません。Open Database Connectivity (ODBC) を使用して HDInsight に接続する場合は、Microsoft Hive ODBC ドライバーを使用してください。詳細については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続](../../articles/hdinsight/hdinsight-connect-excel-hive-odbc-driver.md)」をご覧ください。
+SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight によって内部的に使用され、外部の操作では使用されません。Open Database Connectivity (ODBC) を使用して HDInsight に接続する場合は、Microsoft Hive ODBC ドライバーを使用してください。詳細については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続](hdinsight-connect-excel-hive-odbc-driver.md)」を参照してください。
 
 
 ### バグの修正
@@ -1565,4 +1584,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

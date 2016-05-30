@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="05/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse へのスキーマの移行#
@@ -23,19 +23,20 @@
 ### テーブルの機能
 SQL Data Warehouse では、次の機能は使用またはサポートされません。
 
-- 主キー
-- 外部キー
-- CHECK 制約
-- UNIQUE 制約
-- 一意のインデックス
-- 計算列
-- スパース列
-- ユーザー定義型
-- インデックス付きビュー
-- ID
-- シーケンス
-- トリガー
-- シノニム
+- 主キー  
+- 外部キー  
+- CHECK 制約  
+- UNIQUE 制約  
+- 一意のインデックス  
+- 計算列  
+- スパース列  
+- ユーザー定義型  
+- インデックス付きビュー  
+- ID  
+- シーケンス  
+- トリガー  
+- シノニム  
+
 
 ### データ型の相違
 SQL Data Warehouse では、次の一般的なビジネス データ型がサポートされています。
@@ -54,14 +55,17 @@ SQL Data Warehouse では、次の一般的なビジネス データ型がサポ
 - money
 - nchar
 - nvarchar
+- numeric
 - real
 - smalldatetime
 - smallint
 - smallmoney
+- sysname
 - time
 - tinyint
 - varbinary
 - varchar
+- uniqueidentifier
 
 次のクエリを使用して、互換性のない型を含むデータ ウェアハウス内の列を特定できます。
 
@@ -81,19 +85,12 @@ WHERE y.[name] IN
                 ,   'hierarchyid'
                 ,   'image'
                 ,   'ntext'
-                ,   'numeric'
                 ,   'sql_variant'
-                ,   'sysname'
                 ,   'text'
                 ,   'timestamp'
-                ,   'uniqueidentifier'
                 ,   'xml'
                 )
-
-OR  (   y.[name] IN (  'nvarchar','varchar','varbinary')
-    AND c.[max_length] = -1
-    )
-OR  y.[is_user_defined] = 1
+AND  y.[is_user_defined] = 1
 ;
 
 ```
@@ -108,22 +105,22 @@ OR  y.[is_user_defined] = 1
 - **geography**: varbinary 型を使用します。
 - **hierarchyid**: この CLR 型はサポートされていません。
 - **image**、**text**、**ntext**: rchar/nvarchar を使用します (より小さいほうが適切)。
-- **nvarchar(max)**: パフォーマンスを向上させるために、nvarchar(4000) 以下を使用します。
-- **numeric**: decimal を使用します。
 - **sql\_variant**: 列を厳密に型指定された複数の列に分割します。
-- **sysname**: nvarchar(128) を使用します。
 - **table**: 一時テーブルに変換します。
 - **timestamp**: datetime2 と `CURRENT_TIMESTAMP` 関数を使用するようにコードを再作成します。current\_timestamp を既定の制約として指定することはできません。また、値は自動的には更新されません。timestamp で型指定された列から rowversion 値を移行する必要がある場合は、行バージョンの値 NOT NULL または NULL に binary(8) または varbinary(8) を使用します。
-- **varchar(max)**: パフォーマンスを向上させるために、varchar(8000) 以下を使用します。
-- **uniqueidentifier**: 値の入力形式 (バイナリまたは文字) に応じて、varbinary(16) または varchar(36) を使用します。入力形式が文字ベースの場合は最適化が可能です。文字形式からバイナリ形式に変換することで、列のストレージを50% 以上減らすことができます。非常に大きなテーブルでは、この最適化は有益である可能性があります。
 - **ユーザー定義型**: 可能な限り、ネイティブ型に変換します。
-- **xml**: パフォーマンスを向上させるために、varchar(8000) 以下を使用します。必要に応じて、列全体を分割します。
+- **xml**: パフォーマンスを向上させるために、varchar(max) 以下を使用します。必要に応じて、列全体を分割します。
+
+パフォーマンス向上のための代替のデータ型は次のとおりです。
+
+- nvarchar(max): パフォーマンスを向上させるために、nvarchar(4000) 以下を使用します
+- varchar(max): パフォーマンスを向上させるために、varchar(8000) 以下を使用します
 
 部分的なサポート:
 
 - 既定の制約では、リテラルと定数のみがサポートされます。`GETDATE()` や `CURRENT_TIMESTAMP` など、不明確な式または関数はサポートされていません。
 
-> [AZURE.NOTE] 可変長列の全長を含め、行の最大サイズが 32,767 バイトを超えないように、テーブルを定義します。この数値を超える可能性のある可変長データを含む行を定義することはできますが、データをテーブルに挿入できなくなります。また、クエリを実行する際のスループットをさらに向上させるために、可変長列のサイズを制限してください。
+> [AZURE.NOTE] テーブルの読み込みに Polybase を使用している場合は、可変長列の全長を含め、行の最大サイズが 32,767 バイトを超えないように、テーブルを定義します。この数値を超える可能性のある可変長データを含む行を定義し、BCP を含む行を読み込むことはできますが、Polybase を使用して、このデータを完全に読み込むことはまだできません。行のサイズが大きな Polybase のサポートはまもなく追加されます。また、クエリを実行する際のスループットをさらに向上させるために、可変長列のサイズを制限してください。
 
 ## 次のステップ
 SQLDW にデータベース スキーマを正常に移行した後、次の記事のいずれかに進むことができます。
@@ -145,4 +142,4 @@ SQLDW にデータベース スキーマを正常に移行した後、次の記�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

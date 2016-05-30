@@ -1,6 +1,6 @@
 <properties
    pageTitle="HDInsight の R Server (プレビュー) の使用開始 | Azure"
-   description="R Server を含む HDInsight の Apache Spark (プレビュー) クラスターを作成し、クラスターで R スクリプトを送信する方法について説明します。"
+   description="R Server (プレビュー) を含む HDInsight (Hadoop) クラスターで Apache Spark を作成し、クラスターで R スクリプトを送信する方法について説明します。"
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
@@ -14,12 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="03/25/2016"
-   ms.author="jeffstok"/>
+   ms.date="05/16/2016"
+   ms.author="jeffstok"
+/>
 
-#HDInsight の R Server (プレビュー) の使用開始
+# HDInsight の R Server (プレビュー) の使用開始
 
-HDInsight の Premium レベル サービスには、HDInsight の R Server (プレビュー) が含まれています。これにより、R スクリプトで MapReduce と Spark を使用して、分散計算を実行することができます。このドキュメントでは、HDInsight で新しい R Server を作成し、分散 R 計算の Spark の使用方法を示す R スクリプトを実行する方法を学習します。
+HDInsight の Premium レベル サービスには、HDInsight (プレビュー) クラスターの一部として R Server が含まれています。これにより、R スクリプトで MapReduce と Spark を使用して、分散計算を実行することができます。このドキュメントでは、HDInsight で新しい R Server を作成し、分散 R 計算の Spark の使用方法を示す R スクリプトを実行する方法を学習します。
 
 ![このドキュメントのワークフロー図](./media/hdinsight-getting-started-with-r/rgettingstarted.png)
 
@@ -117,7 +118,7 @@ SSH を使用して HDInsight クラスターの R Server エッジ ノードに
     
 SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。公開キーを使用している場合、`-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。たとえば、「`ssh -i ~/.ssh/id_rsa USERNAME@RServer.CLUSTERNAME.ssh.azurehdinsight.net`」のように入力します。
     
-Linux ベースの HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
+Linux ベースの HDInsight での SSH の使用方法の詳細については、次の記事を参照してください。
 
 * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -174,84 +175,114 @@ Linux ベースの HDInsight での SSH の使用方法の詳細については�
         
 1. R コンソールから次をコマンドを実行し、HDInsight の既定のストレージにサンプル データを読み込みます。
 
-        # Set the NameNode and port for the cluster
-        myNameNode <- "default"
-        myPort <- 0
         # Set the HDFS (WASB) location of example data
         bigDataDirRoot <- "/example/data"
-        # Source for the data to load
-        source <- system.file("SampleData/AirlineDemoSmall.csv", package="RevoScaleR")
-        # Directory in bigDataDirRoot to load the data into
-        inputDir <- file.path(bigDataDirRoot,"AirlineDemoSmall") 
+        # create a local folder for storaging data temporarily
+        source <- "/tmp/AirOnTimeCSV2012"
+        dir.create(source)
+        # Download data to the tmp folder
+        remoteDir <- "http://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012"
+        download.file(file.path(remoteDir, "airOT201201.csv"), file.path(source, "airOT201201.csv"))
+        download.file(file.path(remoteDir, "airOT201202.csv"), file.path(source, "airOT201202.csv"))
+        download.file(file.path(remoteDir, "airOT201203.csv"), file.path(source, "airOT201203.csv"))
+        download.file(file.path(remoteDir, "airOT201204.csv"), file.path(source, "airOT201204.csv"))
+        download.file(file.path(remoteDir, "airOT201205.csv"), file.path(source, "airOT201205.csv"))
+        download.file(file.path(remoteDir, "airOT201206.csv"), file.path(source, "airOT201206.csv"))
+        download.file(file.path(remoteDir, "airOT201207.csv"), file.path(source, "airOT201207.csv"))
+        download.file(file.path(remoteDir, "airOT201208.csv"), file.path(source, "airOT201208.csv"))
+        download.file(file.path(remoteDir, "airOT201209.csv"), file.path(source, "airOT201209.csv"))
+        download.file(file.path(remoteDir, "airOT201210.csv"), file.path(source, "airOT201210.csv"))
+        download.file(file.path(remoteDir, "airOT201211.csv"), file.path(source, "airOT201211.csv"))
+        download.file(file.path(remoteDir, "airOT201212.csv"), file.path(source, "airOT201212.csv"))
+        # Set directory in bigDataDirRoot to load the data into
+        inputDir <- file.path(bigDataDirRoot,"AirOnTimeCSV2012") 
         # Make the directory
         rxHadoopMakeDir(inputDir)
         # Copy the data from source to input
-        rxHadoopCopyFromLocal(source, inputDir)
+        rxHadoopCopyFromLocal(source, bigDataDirRoot)
 
-2. 次に、いくつかの要素を作成し、データ利用できるようにデータ ソースを定義しましょう。
+2. 次に、いくつかのデータ情報を作成し、データを利用できるようにデータ ソースを 2 つ定義しましょう。
 
         # Define the HDFS (WASB) file system
-        hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, 
-                                   port=myPort)
-        # Create Factors for the days of the week
-        colInfo <- list(DayOfWeek = list(type = "factor",
-             levels = c("Monday", 
-                        "Tuesday", 
-                        "Wednesday", 
-                        "Thursday", 
-                        "Friday", 
-                        "Saturday", 
-                        "Sunday")))
-        # Define the data source
-        airDS <- RxTextData(file = inputDir, 
-                            missingValueString = "M",
-                            colInfo  = colInfo, 
-                            fileSystem = hdfsFS)
+        hdfsFS <- RxHdfsFileSystem()
+        # Create info list for the airline data
+        airlineColInfo <- list(
+            DAY_OF_WEEK = list(type = "factor"),
+            ORIGIN = list(type = "factor"),
+            DEST = list(type = "factor"),
+            DEP_TIME = list(type = "integer"),
+            ARR_DEL15 = list(type = "logical"))
 
-3. ローカルのコンピューティング テキストを使用し、データに対して線形回帰を実行してみましょう。
+        # get all the column names
+        varNames <- names(airlineColInfo)
+
+        # Define the text data source in hdfs
+        airOnTimeData <- RxTextData(inputDir, colInfo = airlineColInfo, varsToKeep = varNames, fileSystem = hdfsFS)
+        # Define the text data source in local system
+        airOnTimeDataLocal <- RxTextData(source, colInfo = airlineColInfo, varsToKeep = varNames)
+
+        # formula to use
+        formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
+
+3. ローカルのコンピューティング テキストを使用し、データに対してロジスティック回帰を実行してみましょう。
 
         # Set a local compute context
         rxSetComputeContext("local")
-        # Run a linear regression
+        # Run a logistic regression
         system.time(
-            modelLocal <- rxLinMod(ArrDelay~CRSDepTime+DayOfWeek,
-                                   data = airDS)
+            modelLocal <- rxLogit(formula, data = airOnTimeDataLocal)
         )
         # Display a summary 
-        summary(modelLocal) 
+        summary(modelLocal)
 
     次のような行で終了する出力が表示されます。
-    
-        Residual standard error: 40.39 on 582620 degrees of freedom
-        Multiple R-squared: 0.01465
-        Adjusted R-squared: 0.01464
-        F-statistic:  1238 on 7 and 582620 DF,  p-value: < 2.2e-16
-        Condition number: 10.6542
 
-4. 次に、Spark コンテキストを使用して同じ線形回帰を実行してみましょう。Spark コンテキストを使用すると、HDInsight クラスターのすべてのワーカー ノードに処理が分散されます。
+        Data: airOnTimeDataLocal (RxTextData Data Source)
+        File name: /tmp/AirOnTimeCSV2012
+        Dependent variable(s): ARR_DEL15
+        Total independent variables: 634 (Including number dropped: 3)
+        Number of valid observations: 6005381
+        Number of missing observations: 91381
+        -2*LogLikelihood: 5143814.1504 (Residual deviance on 6004750 degrees of freedom)
+
+        Coefficients:
+                        Estimate Std. Error z value Pr(>|z|)
+        (Intercept)   -3.370e+00  1.051e+00  -3.208  0.00134 **
+        ORIGIN=JFK     4.549e-01  7.915e-01   0.575  0.56548
+        ORIGIN=LAX     5.265e-01  7.915e-01   0.665  0.50590
+        ......
+        DEST=SHD       5.975e-01  9.371e-01   0.638  0.52377
+        DEST=TTN       4.563e-01  9.520e-01   0.479  0.63172
+        DEST=LAR      -1.270e+00  7.575e-01  -1.676  0.09364 .
+        DEST=BPT         Dropped    Dropped Dropped  Dropped
+        ---
+        Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+        Condition number of final variance-covariance matrix: 11904202
+        Number of iterations: 7
+
+4. 次に、Spark コンテキストを使用して同じロジスティック回帰を実行してみましょう。Spark コンテキストを使用すると、HDInsight クラスターのすべてのワーカー ノードに処理が分散されます。
 
         # Define the Spark compute context 
-        mySparkCluster <- RxSpark(consoleOutput=TRUE) 
+        mySparkCluster <- RxSpark()
         # Set the compute context 
-        rxSetComputeContext(mySparkCluster) 
-        # Run a linear regression 
+        rxSetComputeContext(mySparkCluster)
+        # Run a logistic regression 
         system.time(  
-            modelSpark <- rxLinMod(ArrDelay~CRSDepTime+DayOfWeek, data = airDS) 
+            modelSpark <- rxLogit(formula, data = airOnTimeData)
         )
         # Display a summary
         summary(modelSpark)
 
-    `consoleOutput=TRUE` を設定したため、Spark 処理の出力はコンソールに書き込まれます。
-    
-    > [AZURE.NOTE] MapReduce を使用して、クラスター ノード全体に計算を分散することもできます。コンピューティング コンテキストの詳細については、「[Compute context options for R Server on HDInsight Premium (HDInsight Premium での R Server のコンピューティング コンテキストのオプション)](hdinsight-hadoop-r-server-compute-contexts.md)」を参照してください。
+    > [AZURE.NOTE] MapReduce を使用して、クラスター ノード全体に計算を分散することもできます。コンピューティング コンテキストの詳細については、「[HDInsight Premium での R Server のコンピューティング コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)」を参照してください。
 
 ##複数のノードに R コードを分散する
 
-R Server では、既存の R コードを容易に取得し、`rxExec` を使用してクラスタ内の複数のノード全体で実行することができます。これは、パラメーター スイープまたはシミュレーションを行うときに便利です。`rxExec` を使用する方法の例を次に示します。
+R Server では、既存の R コードを容易に取得し、`rxExec` を使用してクラスター内の複数のノード全体で実行することができます。これは、パラメーター スイープまたはシミュレーションを行うときに便利です。`rxExec` を使用する方法の例を次に示します。
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
     
-Spark や MapReduce のコンテキストを使用している場合は、コード (`Sys.info()["nodename"]`) が実行されているワーカー ノードのノード名の値が返されます。たとえば、4 ノードのクラスタでは次のような出力が表示されます。
+Spark や MapReduce のコンテキストを使用している場合は、コード (`Sys.info()["nodename"]`) が実行されているworker ノードのノード名の値が返されます。たとえば、4 ノードのクラスタでは次のような出力が表示されます。
 
     $rxElem1
         nodename
@@ -288,14 +319,14 @@ Spark や MapReduce のコンテキストを使用している場合は、コー
     * __名前__: このスクリプトを識別するための表示名
     * __Bash スクリプト URI__: http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh
     * __ヘッド__: __オフ__に設定します
-    * __ワーカー__: __オン__に設定します
+    * __worker__: __オン__に設定します
     * __Zookeeper__: __オフ__に設定します
     * __パラメーター__: インストールする R パッケージ。たとえば、`bitops stringr arules` のように指定します。
-    * __このスクリプトの保持... __: __オン__に設定します
+    * __このスクリプトの保持…__: __オン__に設定します
     
     > [AZURE.IMPORTANT] インストールする R パッケージでシステム ライブラリを追加する必要がある場合、ここで使用する基本スクリプトをダウンロードし、システム ライブラリをインストールする手順を追加します。その後、変更後のスクリプトを Azure ストレージ内のパブリック BLOB コンテナーにアップロードし、変更後のスクリプトを使用してパッケージをインストールする必要があります。
     >
-    >スクリプト アクションを開発する方法の詳細については、「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」を参照してください。
+    >スクリプト アクションを開発する方法の詳細については、「[スクリプト アクションの開発](hdinsight-hadoop-script-actions-linux.md)」を参照してください。
     
     ![スクリプト アクションの追加](./media/hdinsight-getting-started-with-r/scriptaction.png)
 
@@ -322,4 +353,4 @@ Azure Resource Manager テンプレートを使用して HDInsight で R Server 
 
 ARM テンプレートの使用方法の一般的な情報については、「[ARM テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

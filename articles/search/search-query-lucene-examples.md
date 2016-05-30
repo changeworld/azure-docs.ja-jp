@@ -15,7 +15,7 @@
     ms.workload="search"
     ms.topic="article"
     ms.tgt_pltfrm="na"
-    ms.date="04/22/2016"
+    ms.date="05/17/2016"
     ms.author="liamca"
 />
 
@@ -48,8 +48,8 @@ Azure Search のクエリを構築するときは、既定の[単純なクエリ
 
 この記事の例を変更するには、**fieldname:searchterm** 構造を指定し、フィールド クエリ操作を定義します。フィールドは 1 つの単語であり、検索語句も 1 つの単語または語句です。ブール演算子を利用することもあります。たとえば、次のようになります。
 
-- business\_title:senior NOT junior
-- state:"New York" AND "New Jersey"
+- business\_title:(senior NOT junior)
+- state:("New York" AND "New Jersey")
 
 複数の文字列を 1 つのエンティティとして評価するのであれば、複数の文字列を引用符で囲ってください。この例では、場所フィールドで 2 つの異なる都市を検索しています。また、NOT や AND のように、演算子は大文字表記になります。
 
@@ -129,4 +129,4 @@ Azure Search のクエリを構築するときは、既定の[単純なクエリ
 
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -44,7 +44,7 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 Azure ポータルから直接、システム データおよびパフォーマンス データを表示および構成するには、こちらの[手順](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/ "Windows ブログの URL"/)に従ってください。
 
 
-この記事では、Azure CLI コマンドを使用して拡張機能を有効化および構成する方法を説明します。直接ストレージ テーブルからデータを読み取って表示できます。
+この記事では、Azure CLI コマンドを使用して拡張機能を有効化および構成する方法を説明します。直接ストレージ テーブルからデータを読み取って表示できます。ここで説明する構成方法は、Azure ポータルでは機能しないことに注意してください。Azure ポータルからシステムとパフォーマンス データを直接表示および構成するには、前の段落で説明したように、この拡張機能を Azure ポータルから有効にする必要があります。
 
 
 ## 前提条件
@@ -74,15 +74,13 @@ Azure ポータルから直接、システム データおよびパフォーマ�
 ###   シナリオ 2. パフォーマンス モニターのメトリックをカスタマイズする  
 このセクションでは、パフォーマンスと診断データのテーブルをカスタマイズする方法について説明します。
 
-手順 1.次の例で示されている内容を含む、PrivateConfig.json という名前のファイルを作成します。収集する特定のデータを指定します。
+手順 1.上のシナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。さらに、次の例に示されている PrivateConfig.json という名前のファイルを作成します。収集する特定のデータを指定します。
 
 サポートされているすべてのプロバイダーと変数については、この[ドキュメント](https://scx.codeplex.com/wikipage?title=xplatproviders)を参照してください。スクリプトにさらにクエリを追加することにより、複数のクエリを使用して複数のテーブルにそれを格納することができます。
 
 Rsyslog データは既定で常に収集されます。
 
 	{
-     	"storageAccountName":"storage account to receive data",
-     	"storageAccountKey":"key of the account",
       	"perfCfg":[
            	{"query":"SELECT PercentAvailableMemory, AvailableMemory, UsedMemory ,PercentUsedSwap FROM SCX_MemoryStatisticalInformation","table":"LinuxMemory"
            	}
@@ -90,17 +88,15 @@ Rsyslog データは既定で常に収集されます。
 	}
 
 
-手順 2.**azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** を実行します。
+手順 2.**azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** を実行します。
 
 
 ###   シナリオ 3. 独自のログ ファイルをアップロードする
 このセクションでは、ストレージ アカウントに特定のログ ファイルを収集およびアップロードする方法について説明します。ログ ファイルのパスを指定し、ログを格納するテーブル名を指定する必要があります。複数の file/table エントリをスクリプトに追加することで、複数のログ ファイルを使用できます。
 
-手順 1.次の内容を含む PrivateConfig.json という名前のファイルを作成します。
+手順 1.シナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。次の内容を含む PrivateConfig.json という名前の別のファイルを作成します。
 
 	{
-     	"storageAccountName":"the storage account to receive data",
-     	"storageAccountKey":"key of the account",
       	"fileCfg":[
            	{"file":"/var/log/mysql.err",
              "table":"mysqlerr"
@@ -109,21 +105,19 @@ Rsyslog データは既定で常に収集されます。
 	}
 
 
-手順 2.**azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** を実行します。
+手順 2.**azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** を実行します。
 
 
 ###   シナリオ 4. Linux の監視拡張機能を無効にする
-手順 1.次の内容を含む PrivateConfig.json という名前のファイルを作成します。
+手順 1.シナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。次の内容を含む PrivateConfig.json という名前の別のファイルを作成します。
 
 	{
-     	"storageAccountName":"the storage account to receive data",
-     	"storageAccountKey":"the key of the account",
-     	“perfCfg”:[],
-     	“enableSyslog”:”False”
+     	"perfCfg":[],
+     	"enableSyslog":”False”
 	}
 
 
-手順 2.**azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** を実行します。
+手順 2.**azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** を実行します。
 
 
 ## データを確認する
@@ -143,4 +137,4 @@ Rsyslog データは既定で常に収集されます。
 ## 既知の問題
 - バージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

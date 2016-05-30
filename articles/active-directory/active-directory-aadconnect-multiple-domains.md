@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/14/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 # Azure AD とのフェデレーションに使用する複数ドメインのサポート
@@ -153,4 +153,4 @@ PowerShell コマンド `Get-MsolDomainFederationSettings - DomainName <your dom
 ![Replace claim](./media/active-directory-multiple-domains/sub2.png)
 5.	[OK] をクリックします。[適用] をクリックします。[OK] をクリックします。AD FS 管理を閉じます。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

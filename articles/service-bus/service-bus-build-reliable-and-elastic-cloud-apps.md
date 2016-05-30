@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="sethm"/>
 
 # メッセージングを使用した信頼性の高い柔軟なクラウド アプリケーションの構築 
@@ -39,10 +39,11 @@
 
 - [Azure キューと Azure Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - [Service Bus REST API リファレンス](http://msdn.microsoft.com/library/azure/hh780717.aspx)
+- [Service Bus RP REST API リファレンス](https://msdn.microsoft.com/library/azure/mt639375.aspx)
 
 ## 関連サービス
 
 - [Cloud Services](https://azure.microsoft.com/services/cloud-services/) 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

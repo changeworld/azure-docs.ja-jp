@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/27/2016"
+   ms.date="05/13/2016"
    ms.author="tomfitz"/>
 
 # Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
@@ -26,7 +26,9 @@
 - **Storage** - オペレーティング システム ディスク、追加のデータ ディスクを含む、仮想マシンの VHD の保存に必要なストレージ アカウントをサポートします。
 - **Network** - 必要とされる NIC、仮想マシンの IP アドレス、仮想ネットワークとオプションのロード バランサー内のサブネット、ロード バランサー IP アドレス、およびネットワーク セキュリティ グループをサポートします。
 
-これらの書類のリソースの場合、サポートされる操作が異なるため、使用しているバージョンに注意してください。リソースのデプロイにどちらのモデルを使用したかを把握するために、2 つのモデルを詳しく見てみましょう。
+これらの書類のリソースの場合、サポートされる操作が異なるため、使用しているバージョンに注意してください。クラシック デプロイメントから Resource Manager のデプロイにリソースを移行する準備ができたら、「[Platform supported migration of IaaS resources from Classic to Azure Resource Manager (プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行)](./virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)」を参照してください。
+
+リソースのデプロイにどちらのモデルを使用したかを把握するために、2 つのモデルを詳しく見てみましょう。
 
 ## Resource Manager の特性
 
@@ -38,7 +40,7 @@ Resource Manager で作成したリソースには次の特性があります。
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        Compute、Storage、ネットワークのリソースについては、リソース マネージャーと従来のデプロイのどちらかを使用できます。 **[リソース マネージャー]** を選択します。
+        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -46,7 +48,7 @@ Resource Manager で作成したリソースには次の特性があります。
 
             Get-AzureRmResourceGroupDeployment
 
-  - [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx) (REST 操作の場合)。
+  - [Azure リソース マネージャー REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx) (REST 操作の場合)。
   - Azure CLI コマンドは **arm** モードで実行されます。
 
             azure config mode arm
@@ -85,7 +87,7 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
 
         ![Classic portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        または、プレビュー ポータルを使い、**クラシック** デプロイを指定 (Compute、Storage、ネットワーク).
+        Or, the Azure portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
@@ -127,7 +129,7 @@ Resource Manager の導入前は、従来のデプロイで作成されたリソ
 
 タグを利用すれば、リソースを論理的に整理できます。Resource Manager で作成したリソースだけがタグに対応しています。従来のリソースにタグを適用することはできません。
 
-Resource Manager のタグの利用に関する詳細については、「[タグを利用して Azure リソースを整理する](resource-group-using-tags.md)」を参照してください。
+リソース マネージャーのタグの利用に関する詳細については、「[タグを利用して Azure リソースを整理する](resource-group-using-tags.md)」を参照してください。
 
 ## デプロイ モデルで対応している操作
 
@@ -161,7 +163,7 @@ Virtual Machines を使用するときには、重要な考慮事項がいくつ
 - Resource Manager のデプロイ モデルでデプロイされた仮想マシンは仮想ネットワークに含める必要があります。
 - 従来のデプロイ モデルでデプロイされた仮想マシンは仮想ネットワークに含める必要がありません。
 
-Virtual Machines のダウンロードに十分な時間を費やすことができる場合は、クラシック デプロイから [ASM2ARM PowerShell スクリプト](https://github.com/fullscale180/asm2arm)を使用するリソース マネージャーに移行できます。
+クラシック デプロイメントから Resource Manager のデプロイにリソースを移行する準備ができたら、「[Platform supported migration of IaaS resources from Classic to Azure Resource Manager (プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行)](./virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)」を参照してください。
 
 Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-windows-compare-deployment-models.md)」を参照してください。
 
@@ -173,4 +175,4 @@ Compute、Storage、Networking のリソースの移行に関する詳細につ�
 - Resource Manager のテンプレートの構造について詳しくは、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

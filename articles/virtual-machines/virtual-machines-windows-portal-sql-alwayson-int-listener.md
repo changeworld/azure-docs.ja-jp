@@ -20,7 +20,7 @@
 
 このトピックでは、Resource Manager モデルで動作する Azure 仮想マシンに、SQL Server AlwaysOn 可用性グループの内部ロード バランサーを作成する方法について説明します。SQL Server インスタンスが Azure 仮想マシン上で実行されている場合、AlwaysOn 可用性グループにロード バランサーが必要となります。ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]従来のモデル。
 
 この作業を行うには、SQL Server AlwaysOn 可用性グループが Resource Manager モデルの Azure 仮想マシンにデプロイされている必要があります。両方の SQL Server 仮想マシンが同じ可用性セットに属している必要があります。Azure Resource Manager では、[Microsoft のテンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)を使用して自動的に AlwaysOn 可用性グループを作成することができます。内部ロード バランサーは、このテンプレートによって自動的に作成されます。
 
@@ -267,4 +267,4 @@ SQLCMD 接続は、プライマリ レプリカをホストしている SQL Serv
 - 内部ロード バランサーでは、同じ仮想ネットワーク内からしかリスナーにアクセスできません。
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

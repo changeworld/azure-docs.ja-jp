@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="05/17/2016"
 	ms.author="douglasl"/>
 
 
@@ -58,4 +58,4 @@ Stretch Database が有効になっているデータベースのバックアッ
 
 [SQL Server データベースのバックアップと復元](https://msdn.microsoft.com/library/ms187048.aspx)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

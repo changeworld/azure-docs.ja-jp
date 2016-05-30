@@ -1,9 +1,9 @@
 <properties
-   pageTitle="編集と更新の機能によるローカル Docker コンテナーでのアプリのデバッグ | Microsoft Azure"
-   description="編集と更新を使用して、ローカルの Docker コンテナーで実行されているアプリケーションに変更を加え、コンテナーを更新する方法について説明します。"
+   pageTitle="ローカルの Docker コンテナーでアプリをデバッグする | Microsoft Azure"
+   description="編集と更新を使用して、ローカルの Docker コンテナーで実行されているアプリに変更を加え、デバッグのブレークポイントを設定する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="TomArcher"
+   authors="AllenClark"
    manager="douge"
    editor="" />
 <tags
@@ -12,105 +12,124 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="03/25/2016"
-   ms.author="tarcher" />
+   ms.date="05/13/2016"
+   ms.author="allclark" />
 
-# 編集と更新の機能によるローカル Docker コンテナーでのアプリのデバッグ
+# ローカルの Docker コンテナーでアプリをデバッグする
 
 ## 概要
-Visual Studio Tools for Docker を使用すると、アプリケーションの開発とテストを Docker コンテナーでローカルで実行でき、しかも、コードに変更を加えるたびにコンテナーを再起動する必要がありません。この記事では、"編集と更新" の機能を使用して、ローカルの Docker コンテナーで ASP.NET 5 Web アプリを起動し、必要な変更を行い、その変更を反映するためにブラウザーの表示を更新する方法について説明します。
+Visual Studio Tools for Docker を使用すると、一貫した方法でアプリケーションの開発と検証を Linux Docker コンテナーでローカルで実行できます。コード変更のたびにコンテナーを再起動する必要はありません。この記事では、"編集と更新" の機能を使用して、ローカルの Docker コンテナーで ASP.NET Core Web アプリを起動し、必要な変更を行い、その変更を反映するためにブラウザーの表示を更新する方法について説明します。デバッグ用のブレークポイントを設定する方法についても説明します。
+
+> [AZURE.NOTE] Windows コンテナーのサポートは今後のリリースで開始する予定です
 
 ## 前提条件
 次のツールをインストールする必要があります。
 
-- [Visual Studio 2015 Update 1](https://go.microsoft.com/fwlink/?LinkId=691979)
-- [Microsoft ASP .NET and Web Tools 2015 RC](https://go.microsoft.com/fwlink/?LinkId=627627)
-- [Docker Toolbox](https://www.docker.com/products/overview#/docker_toolbox)
+- [Visual Studio 2015 Update 2](https://go.microsoft.com/fwlink/?LinkId=691978)
+- [Microsoft ASP .NET Core RC 2](http://go.microsoft.com/fwlink/?LinkId=798481)
 - [Visual Studio 2015 Tools for Docker](https://aka.ms/DockerToolsForVS)
-- [Docker クライアントを構成する](./vs-azure-tools-docker-setup.md)
 
-> [AZURE.NOTE] Visual Studio 2015 Tools for Docker の以前のバージョンがインストールされている場合は、最新のバージョンをインストールする前に、コントロール パネルで以前のバージョンをアンインストールする必要があります。
+ローカルで Docker コンテナーを実行するには、ローカルの Docker クライアントが必要です。Hyper-V を無効にして、リリース済みの [Docker Toolbox](https://www.docker.com/products/overview#/docker_toolbox) を使用するか、または Hyper-V を使用し、Windows 10 が必要な [Docker for Windows Beta](https://beta.docker.com) を使用することができます。
+
+Docker Toolbox を使用する場合は、[Docker クライアントを構成する](./vs-azure-tools-docker-setup.md)必要があります
 
 ## ローカルの Docker コンテナーで実行されているアプリを編集する
-ASP .NET 5 Web アプリの開発に Visual Studio 2015 Tools for Docker を使用すると、Docker コンテナーでアプリケーションをテストして実行し、Visual Studio でアプリケーションに変更を加えた後、ブラウザーの表示を更新して、コンテナー内で実行されているアプリに加えた変更を反映することができます。
+ASP .NET Core RC2 Web アプリの開発に Visual Studio 2015 Tools for Docker を使用すると、Docker コンテナーでアプリケーションをテストして実行し、Visual Studio でアプリケーションに変更を加えた後、ブラウザーの表示を更新して、コンテナー内で実行されているアプリに加えた変更を反映することができます。.NET Core と Visual Studio Tools for Docker バージョン 0.20 により、Docker コンテナーで実行されるコードのブレークポイントを設定することもできます。
 
-1. Visual Studio のメニューで、**[ファイル]、[新規作成]、[プロジェクト]** の順に選択します。 
+1. Visual Studio のメニューで、**[ファイル]、[新規作成]、[プロジェクト]** の順に選択します。
 
 1. **[新しいプロジェクト]** ダイアログ ボックスの **[テンプレート]** セクションで、**[Visual C#]、[Web]** の順に選択します。
 
-1. **[ASP.NET Web アプリケーション]** を選択します。
+1. **ASP.NET Core Web アプリケーション (.NET Core)** を選択します。
 
-1. 新しいアプリケーションに名前を設定します (または、既定の名前をそのまま使用します)。
+1. 新しいアプリケーションに名前を設定 (または、既定の名前をそのまま使用) して、**[OK]** をタップします。
 
-1. **[OK]** をタップします。
+1. **[ASP.NET Core テンプレート]** で、**[Web アプリケーション]** を選択して、**[OK]** をタップします。
 
-1. **[ASP.NET 5 テンプレート]** で **[ASP.NET Web アプリケーション]** を選択します。
+1. Docker をデプロイ ソリューションで使用するため、**[クラウドでのホスト]** の選択を解除します。
 
-1. **[OK]** をタップします。
-
-1. Visual Studio のソリューション エクスプローラーで、プロジェクトを右クリックし、**[追加]、[Docer サポート]** の順に選択します。
+1. Visual Studio のソリューション エクスプローラーで、プロジェクトを右クリックし、**[追加]、[Docker サポート]** の順に選択します。
 
 	![][0]
- 
+
 1. プロジェクト ノードに次のファイルが作成されます。
 
 	![][1]
 
-1. ソリューション構成を `Debug` に設定し、**F5** キーを押して、ローカルでアプリケーションのテストを開始します。
+> [AZURE.NOTE] [Docker for Windows Beta](https://beta.docker.com) を使用している場合は、Properties\\Docker.props を開き、既定値を削除して、Visual Studio を再起動すると、値が反映されます。![][2]
 
-1. コンテナー イメージが作成されて Docker コンテナーで実行されると、PowerShell コンソールは既定のブラウザーでその Web アプリの起動を試みます。Microsoft Edge ブラウザーを使用している場合は、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
+##編集と更新
+変更をすばやく反復処理するには、コンテナー内でアプリケーションを起動して変更を行うと、IIS Express を使用する場合のように表示できます。
 
-1. Visual Studio に戻り、`Views\Home\Index.cshtml` を開きます。
+1. ソリューション構成を `Debug` に設定して **&lt;CTRL + F5>** を押すと、Docker イメージが作成され、ローカルで実行されます。ビルドを使用するか、次の方法で出力ウィンドウを確認します
+
+1. コンテナー イメージが作成されて Docker コンテナーで実行されると、Visual Studio は既定のブラウザーでその Web アプリの起動を試みます。Microsoft Edge ブラウザーを使用している場合、またはエラーが発生している場合は、「[トラブルシューティング](vs-azure-tools-docker-troubleshooting-docker-errors.md)」セクションを参照してください。
+
+1. Visual Studio に戻り、`Views\Home\About.cshtml` を開きます。
 
 1. ファイルの最後に次の HTML コンテンツを追加し、変更を保存します。
 
-		<div>
-			<h1>Hello from Docker Container!</h1>
-		</div>
+	```
+	<h1>Hello from a Docker Container!</h1>
+	```
 
-1.	ブラウザーに戻り、表示を更新します。
+1.	出力ウィンドウで .NET ビルドが完了したことを確認し、`Application started. Press Ctrl+C to shut down` が表示されたら、お使いのブラウザーに戻り、ページを更新します。
 
-1.	ホーム ページの一番下までスクロールし、変更が反映されていることを確認します。 サイトの再コンパイルに数秒かかる場合があるため、変更がすぐに反映されない場合はブラウザーの表示をもう一度更新してください。
+1.	変更が適用されたことが表示されます。
 
-##トラブルシューティング 
+##ブレークポイントのデバッグ
+多くの場合、変更にはさらなる検査が必要になります。この場合、Visual Studio のデバッグ機能を活用します。
 
-- **アプリケーションを実行すると、PowerShell が開き、エラーを表示した後に閉じる。ブラウザーのページは開かない。**
+1.	Visual Studio に戻り、`Controllers\HomeController.cs` を開きます。
 
-	これは、`docker-compose-up` の実行中のエラーであると考えられます。このエラーを表示するには、次の手順を実行します。
+1.  About() メソッドの内容を次のように置き換えます。
 
-	1. `Properties\launchSettings.json` ファイルを開きます。
-	
-	1. Docker エントリを見つけます。
-	
-	1. 次の内容で始まる行を見つけます。
+	```
+	string message = "Your application description page from wthin a Container";
+	ViewData["Message"] = message;
+    ````
 
-			"commandLineArgs": "-ExecutionPolicy RemoteSigned …”
-	
-	1. 次のように、この行に `-noexit` パラメーターを追加します。これにより、PowerShell が開いたままになり、エラーを確認できるようになります。
+1.  ブレークポイントを `string message`... 行の左側に設定します。
 
-			"commandLineArgs": "-noexit -ExecutionPolicy RemoteSigned …”
+1.  **&lt;F5>** キーを押して、デバッグを開始します。
 
-- **"Build : Failed to build the image"、"Error checking TLS connection: Host is not running" と表示される**
+1.  [About] ページに移動して、ブレークポイントを探します。
 
-	既定の Docker ホストが実行されていることを確認します。「[Configure the Docker client (VirtualBox を使用して Docker ホストを構成する)](./vs-azure-tools-docker-setup.md)」をご覧ください。
+1.  Visual Studio に切り替えてブレークポイントを表示し、メッセージの値を検査します。
 
-- **ボリューム マッピングが見つからない**
+	![][3]
 
-	既定では、VirtualBox は `C:\Users` を `c:/Users` として共有します。プロジェクトが `c:\Users` にない場合は、手動で VirtualBox の[共有フォルダー](https://www.virtualbox.org/manual/ch04.html#sharedfolders)に追加してください。
+##概要
+[Visual Studio 2015 Tools for Docker](https://aka.ms/DockerToolsForVS) により、Docker コンテナー内での開発の生産性が実際に向上するため、ローカル作業の生産性が上がります。
 
-- **Microsoft Edge を既定のブラウザーとして使用している**
+## トラブルシューティング
+[Docker エラーのトラブルシューティング](vs-azure-tools-docker-troubleshooting-docker-errors.md)
 
-	Microsoft Edge ブラウザーを使用している場合、IP アドレスがセキュリティで保護されていないと見なされるため、サイトが表示されないことがあります。この問題を解決するには、次の手順を実行します。
-	1. Windows の [ファイル名を指定して実行] ボックスに「`Internet Options`」と入力します。
-	2. **[インターネット オプション]** が表示されたらタップします。 
-	2. **[セキュリティ]** タブをタップします。
-	3. **[ローカル イントラネット]** ゾーンを選択します。
-	4. **[サイト]** をタップします。 
-	5. 一覧に仮想マシンの IP (この場合は Docker ホスト) を追加します。 
-	6. Edge でページを更新すると、サイトが実行されていることがわかります。 
-	7. この問題の詳細については、Scott Hanselman のブログ記事「[Microsoft Edge can't see or open VirtualBox-hosted local web sites (VirtualBox にホストされたローカル Web サイトを Microsoft Edge で表示したり開いたりできない)](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx)」を参照してください。
+## Visual Studio、Windows、および Azure での Docker の詳細について
+
+- [Visual Studio 用 Docker ツール](http://aka.ms/dockertoolsforvs) - コンテナー内での .NET Core コードの開発
+- [Visual Studio Team Services 用 Docker ツール](http://aka.ms/dockertoolsforvsts) - Docker コンテナーの構築およびデプロイ
+- [Visual Studio Code 用 Docker ツール](http://aka.ms/dockertoolsforvscode) - Docker ファイルを編集するための言語サービス (e2e シナリオは増加予定)
+- [Windows コンテナー情報](http://aka.ms/containers) - Windows Server および Nano Server の情報
+- [Azure Container Service](https://azure.microsoft.com/services/container-service/) - [Azure Container Service の内容](http://aka.ms/AzureContainerService)
+
+## さまざまな Docker ツール
+
+[Some great docker tools (Steve Lasker's blog) (いくつかの優れた Docker ツール (Steve Lasker のブログ))](https://blogs.msdn.microsoft.com/stevelasker/2016/03/25/some-great-docker-tools/)
+
+## お勧めの記事
+
+[Introduction to Microservices from NGINX (Nginx のマイクロサービスの概要)](https://www.nginx.com/blog/introduction-to-microservices/)
+
+## プレゼンテーション
+
+- [Steve Lasker: VS Live Las Vegas 2016 - Docker e2e (Steve Lasker: VS Live ラスベガス 2016 - Docker e2e)](https://github.com/SteveLasker/Presentations/blob/master/VSLive2016/Vegas/)
+- [Introduction to ASP.NET Core @ build 2016 - Where You At Demo (ASP.NET Core の概要 @ ビルド 2016 - デモンストレーション)](https://channel9.msdn.com/Events/Build/2016/B810)
+- [コンテナーでの .NET アプリの開発、Channel 9](https://blogs.msdn.microsoft.com/stevelasker/2016/02/19/developing-asp-net-apps-in-docker-containers/)
 
 [0]: ./media/vs-azure-tools-docker-edit-and-refresh/add-docker-support.png
 [1]: ./media/vs-azure-tools-docker-edit-and-refresh/docker-files-added.png
+[2]: ./media/vs-azure-tools-docker-edit-and-refresh/docker-props.png
+[3]: ./media/vs-azure-tools-docker-edit-and-refresh/breakpoint.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

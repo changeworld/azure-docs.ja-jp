@@ -36,19 +36,21 @@ Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの 1 つです�
 
 * Mahout を HDInsight 3.0 と HDInsight 2.0 クラスターにインストールする方法
 
-	> [AZURE.NOTE] Mahout は、HDInsight 3.1 バージョンのクラスターで提供されます。以前のバージョンの HDInsight を使用している場合は、次に進む前に「[Mahout のインストール](#install)」をご覧ください。
+	> [AZURE.NOTE] Mahout は、HDInsight 3.1 バージョンのクラスターで提供されます。以前のバージョンの HDInsight を使用している場合は、次に進む前に「[Mahout のインストール](#install)」を参照してください。
 
 ##前提条件
 
 - **HDInsight での Windows ベースの Hadoop クラスター**。作成の詳細については、[HDInsight での Hadoop の使用][getstarted]に関するページを参照してください。
-- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell 1.0 以上のインストール](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
+- **Azure PowerShell を実行できるワークステーション**。
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 
 ##<a name="recommendations"></a>Windows PowerShell を使用してリコメンデーションを生成する
 
-> [AZURE.NOTE] このセクションで使用されるジョブは Windows PowerShell で動作しますが、Mahout で提供されるクラスの多くは現在 Windows PowerShell で動作しないため、Hadoop コマンド ラインを使用して実行する必要があります。Windows PowerShell で動作しないクラスの一覧については、「[トラブルシューティング](#troubleshooting)」セクションをご覧ください。
+> [AZURE.NOTE] このセクションで使用されるジョブは Windows PowerShell で動作しますが、Mahout で提供されるクラスの多くは現在 Windows PowerShell で動作しないため、Hadoop コマンド ラインを使用して実行する必要があります。Windows PowerShell で動作しないクラスの一覧については、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
 >
-> Hadoop コマンド ラインを使用して Mahout ジョブを実行する例については、[Hadoop コマンド ラインを使用してデータを分類する](#classify)をご覧ください。
+> Hadoop コマンド ラインを使用して Mahout ジョブを実行する例については、[Hadoop コマンド ラインを使用してデータを分類する](#classify)を参照してください。
 
 Mahout で提供される機能の 1 つが、リコメンデーション エンジンです。データは、`userID`、`itemId`、`prefValue` (項目に対するユーザーの嗜好) の形式で受け付けられます。Mahout では、共起分析を実行して、_ある項目を嗜好するユーザーが他の項目も嗜好する_ということを判断できます。次に Mahout は、項目の嗜好が似ているユーザーを特定します。これはリコメンデーションの作成に使用できます。
 
@@ -64,7 +66,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 [GroupLens Research][movielens] では利便性を高めるために、Mahout と互換性のある形式で映画の評価データを提供します。このデータは、クラスターの既定のストレージ (`/HdiSamples/MahoutMovieData`) にあります。
 
-2 つのファイル `moviedb.txt` (映画に関する情報) と `user-ratings.txt` があります。user-ratings.txt ファイルは分析中に使用されます。moviedb.txt は、分析の結果を表示する際に、わかりやすいテキスト情報を提供するために使用されます。
+2 つのファイル `moviedb.txt` (映画に関する情報) と `user-ratings.txt` があります。user-ratings.txt ファイルは分析中に使用されます。moviedb.txt は、分析の結果を表示するときに、わかりやすいテキスト情報を提供するために使用されます。
 
 user-ratings.txt に含まれているデータは、`userID`、`movieID`、`userRating`、`timestamp` で構成されており、各ユーザーが映画をどれだけ高く評価したかを示します。次にデータの例を示します。
 
@@ -425,9 +427,9 @@ Mahout は HDInsight 3.1 クラスターにインストールされますが、�
 
 			mvn -Dhadoop2.version=2.2.0 -DskipTests clean package
 
-    	ビルドが完了した後、__mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__ で JAR ファイルを入手できます。
+    	After the build completes, you can find the JAR file at __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__.
 
-    	> [AZURE.NOTE] Mahout 1.0 がリリースされると、HDInsight 3.0 で既成のパッケージを使用できるようになります。
+    	> [AZURE.NOTE] When Mahout 1.0 is released, you should be able to use the prebuilt packages with HDInsight 3.0.
 
 2. この jar ファイルを、使用しているクラスターの既定のストレージ内の __example/jars__ にアップロードします。次のスクリプトの CLUSTERNAME を HDInsight クラスターの名前に置き換えます。また、FILENAME を __mahout-coure-0.9-job.jar__ ファイルのパスに置き換えます。
 
@@ -527,4 +529,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

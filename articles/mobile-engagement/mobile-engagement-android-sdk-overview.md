@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Mobile Engagement の Android SDK の統合"
-	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
+	description="Android アプリで Azure Mobile Engagement SDK を統合する方法について説明します"
 	services="mobile-engagement"
 	documentationCenter="mobile"
 	authors="piyushjo"
@@ -13,11 +13,10 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="05/17/2016"
 	ms.author="piyushjo;ricksal" />
 
-
-# Android アプリ向けの高度な Azure Mobile Engagement 機能の使用
+# Azure Mobile Engagement の Android SDK の統合
 
 > [AZURE.SELECTOR]
 - [ユニバーサル Windows](mobile-engagement-windows-store-sdk-overview.md)
@@ -25,7 +24,7 @@
 - [iOS](mobile-engagement-ios-sdk-overview.md)
 - [Android](mobile-engagement-android-sdk-overview.md)
 
-Android アプリに統合できる Azure Mobile Engagement のすべての高度な機能について説明します。
+このドキュメントでは、Azure Mobile Engagement Android SDK で使用できる統合と構成のすべてのオプションについて説明します。
 
 ## 前提条件
 
@@ -53,6 +52,16 @@ Android アプリに統合できる Azure Mobile Engagement のすべての高�
 
 ## リリース ノート
 
+### 4\.2.2 (05/17/2016)
+
+- 安定性が向上しました。
+
+### 4\.2.1 (05/10/2016)
+
+- セキュリティ: Web ビューのローカル ファイル アクセスが無効になりました。
+- セキュリティ: 廃止され、セキュリティで保護されていない `PreferenceActivity` クラスを拡張する `EngagementPreferenceActivity` クラスを削除しました。
+- セキュリティ: リーチ アクティビティが `exported="false"` を使用するように記述されました。このフラグは、SDK の以前のバージョンでも使用できます。
+
 ### 4\.2.0 (03/11/2016)
 
 - SDK が MIT でライセンスされるようになりました。
@@ -64,4 +73,4 @@ Android アプリに統合できる Azure Mobile Engagement のすべての高�
 
 SDK の旧バージョンをアプリケーションに既に統合している場合、[アップグレード手順](mobile-engagement-android-upgrade-procedure.md)を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

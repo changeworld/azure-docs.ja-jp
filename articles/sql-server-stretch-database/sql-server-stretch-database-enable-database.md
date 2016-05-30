@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/09/2016"
+	ms.date="05/17/2016"
 	ms.author="douglasl"/>
 
 # データベースの Stretch Database を有効にする
@@ -133,4 +133,4 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 
 [ALTER DATABASE SET のオプション (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

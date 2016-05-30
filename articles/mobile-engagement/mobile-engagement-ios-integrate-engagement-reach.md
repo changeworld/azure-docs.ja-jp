@@ -86,7 +86,7 @@
 
 ### Apple プッシュ通知用アプリケーションを準備する
 
-「How to Prepare your Application for Apple Push Notifications (Apple プッシュ通知用アプリケーションを準備する方法)」をご覧ください。
+[Apple プッシュ通知用アプリケーションを準備する方法](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)に関するガイドをご覧ください。
 
 ### 必要なクライアント コードを追加する
 
@@ -416,4 +416,4 @@
 
 	@end
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -30,8 +30,11 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Databa
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure PowerShell を実行できるワークステーション**。「[Azure PowerShell 1.0 以上のインストール](hdinsight-administer-use-powershell.md#install-azure-powershell-10-and-greater)」を参照してください。
-- **HDInsight の Hadoop クラスター**。「[クラスターと SQL Database を作成します](hdinsight-use-sqoop.md#create-cluster-and-sql-database)」をご覧ください。
+- **Azure PowerShell を実行できるワークステーション**。
+
+    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+
+- **HDInsight の Hadoop クラスター**。「[クラスターと SQL Database を作成する](hdinsight-use-sqoop.md#create-cluster-and-sql-database)」を参照してください。
 
 	
 ## PowerShell を使用した Sqoop の実行
@@ -174,4 +177,4 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Databa
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

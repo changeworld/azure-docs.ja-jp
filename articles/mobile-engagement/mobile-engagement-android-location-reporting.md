@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Android Mobile Engagement の場所レポート"
-	description="Azure Mobile Engagement の Android の場所レポート"
+	pageTitle="Azure Mobile Engagement Android SDK の位置報告"
+	description="Azure Mobile Engagement Android SDK の位置報告を構成する方法について説明します"
 	services="mobile-engagement"
 	documentationCenter="mobile"
 	authors="piyushjo"
@@ -13,20 +13,19 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="04/20/2016"
+	ms.date="05/12/2016"
 	ms.author="piyushjo;ricksal" />
 
-# Android での Engagement の場所レポート
+# Azure Mobile Engagement Android SDK の位置報告
 
 > [AZURE.SELECTOR]
 - [Android](mobile-engagement-android-integrate-engagement.md)
 
-このトピックでは、Android アプリケーションで Engegement の場所レポートを操作する方法について説明します。
+このトピックでは、Android アプリケーションの位置報告を実行する方法について説明します。
 
 ## 前提条件
 
 [AZURE.INCLUDE [前提条件](../../includes/mobile-engagement-android-prereqs.md)]
-
 
 ## 場所レポート
 
@@ -47,7 +46,7 @@
 
 さらに、次のアクセス権限が不足している場合は追加する必要があります。
 
-		<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 あるいは、アプリケーションで ``ACCESS_FINE_LOCATION`` を使用している場合、引き続きそれを利用できます。
 
@@ -66,7 +65,7 @@
 
 さらに、次のアクセス権限が不足している場合は追加する必要があります。
 
-		<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
 あるいは、アプリケーションで ``ACCESS_FINE_LOCATION`` を使用している場合、引き続きそれを利用できます。
 
@@ -82,7 +81,7 @@
 
 さらに、次のアクセス権限が不足している場合は追加する必要があります。
 
-		<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
 #### 背景レポート
 
@@ -98,18 +97,18 @@
 
 バックグラウンド ロケーション レポートは、ユーザーがデバイスを再起動すると停止します。以下を追加することで、起動時に自動的に再開されるように設定できます。
 
-		<receiver android:name="com.microsoft.azure.engagement.EngagementLocationBootReceiver"
-			   android:exported="false">
-			<intent-filter>
-			    <action android:name="android.intent.action.BOOT_COMPLETED" />
-			</intent-filter>
-		</receiver>
+	<receiver android:name="com.microsoft.azure.engagement.EngagementLocationBootReceiver"
+		   android:exported="false">
+		<intent-filter>
+		    <action android:name="android.intent.action.BOOT_COMPLETED" />
+		</intent-filter>
+	</receiver>
 
 さらに、次のアクセス権限が不足している場合は追加する必要があります。
 
-		<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-### Android M アクセス許可
+## Android M アクセス許可
 
 Android M より、一部のアクセス許可が実行時に管理され、ユーザーの承認を必要とします。
 
@@ -160,4 +159,4 @@ Mobile Engagement の場所レポートの場合、次のアクセス許可で�
         getEngagementAgent().refreshPermissions();
     }
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

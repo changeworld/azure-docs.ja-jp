@@ -51,7 +51,7 @@ Linux ベースの Azure HDInsight クラスターは、Azure クラウドで実
 
 * **Ambari (web)** - https://&lt;clustername>.azurehdinsight.net
 
-	クラスター管理者のユーザー名とパスワードを使用して認証した後、Ambari にログインします。その際も、クラスター管理者のユーザー名とパスワードを使用します。
+	クラスター管理者のユーザー名とパスワードを使用して認証した後、Ambari にログインします。その場合も、クラスター管理者のユーザー名とパスワードを使用します。
 
 	認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
@@ -86,7 +86,7 @@ Hadoop 関連ファイルは、`/usr/hdp` のクラスター ノードにあり�
 
 ## HDFS、Azure BLOB ストレージ、ストレージのベスト プラクティス
 
-ほとんどの Hadoop ディストリビューションでは、HDFS はクラスター内のコンピューターのローカル ストレージによって支えられています。これは効率的である一方、コンピューティング リソースが時間単位で課金されるクラウド ベースのソリューションでは、コストが高くなります。
+ほとんどの Hadoop ディストリビューションでは、HDFS はクラスター内のコンピューターのローカル ストレージによって支えられています。これは効率的である一方、コンピューティング リソースが時間または分単位で課金されるクラウド ベースのソリューションでは、コストが高くなります。
 
 HDInsight は Azure BLOB ストレージを既定の保管場所として使用します。これには次の利点があります。
 
@@ -98,7 +98,7 @@ HDInsight の既定の保管場所であるため、通常は何もしなくて�
 
 	hadoop fs -ls /example/data
 
-一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして **WASB://** を付けることができます。
+一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして ****WASB://** を付けることができます。
 
 HDInsight では、クラスターに複数の BLOB ストレージ アカウントを関連付けることもできます。既定以外の BLOB ストレージ アカウントのデータにアクセスするには、**WASB://&lt;container-name>@<account-name>.blob.core.windows.net/** という形式を使用できます。たとえば、次のコマンドは、指定したコンテナーと BLOB ストレージ アカウントについて、**/example/data** ディレクトリの内容を表示します。
 
@@ -150,7 +150,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 クラスターから Hadoop コマンドを使用する以外にも、BLOB にアクセスするさまざまな方法があります。
 
-* [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md): Azure を使用するためのコマンドライン インターフェイス コマンド。インストール後、ストレージの使用方法については `azure storage`、BLOB 特有のコマンドについては `azure blob` をご覧ください。
+* [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md): Azure を使用するためのコマンドライン インターフェイス コマンド。インストール後、ストレージの使用方法については `azure storage`、BLOB 特有のコマンドについては `azure blob` を参照してください。
 
 * [blobxfer.py](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): Azure Storage で BLOB を使用するための Python スクリプト。
 
@@ -182,7 +182,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 * __HBase__: リージョンのサーバーは、スケーリング操作の完了後、数分以内に自動的に調整されます。リージョンのサーバーを手動で調整するには、次の手順を使用します。
 
-	1. SSH を使用して HDInsight クラスターに接続します。HDInsight での SSH の使用方法の詳細については、次のいずれかのドキュメントをご覧ください。
+	1. SSH を使用して HDInsight クラスターに接続します。HDInsight での SSH の使用方法の詳細については、次のいずれかのドキュメントを参照してください。
 
 		* [Linux、Unix、Mac OS X から HDInsight で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -230,7 +230,7 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [R](hdinsight-hadoop-r-scripts-linux.md)
 * [Solr](hdinsight-hadoop-solr-install-linux.md)
 
-独自のスクリプト アクションを開発する方法の詳細については、「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」を参照してください。
+独自のスクリプト アクションを開発する方法の詳細については、「[HDInsight でのスクリプト アクションの開発](hdinsight-hadoop-script-actions-linux.md)」を参照してください。
 
 ###Jar ファイル
 
@@ -257,4 +257,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

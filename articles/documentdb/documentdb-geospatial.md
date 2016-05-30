@@ -13,7 +13,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="data-services" 
-    ms.date="03/30/2016" 
+    ms.date="05/16/2016" 
     ms.author="arramac"/>
     
 # Azure DocumentDB で地理空間データを扱う
@@ -181,7 +181,7 @@ DocumentDB は、以下の Open Geospatial Consortium (OGC) 組み込み関数�
 
 ポイントがポリゴン内に存在するかどうかは、ST\_WITHIN を使用してチェックできます。通常ポリゴンは、郵便番号、都道府県の境界など、自然な形状の範囲を表す目的で使用されます。インデックス作成ポリシーに空間インデックスを含めた場合、"範囲内" 検索はインデックスを使って効率的に実行されます。
 
-ST\_WITHIN のポリゴン引数に指定できるのは、単一のリングだけです。つまり、環の内側に穴が含まれているポリゴンは指定できません。ST\_WITHIN クエリのポリゴンに許容される最大ポイント数については、[DocumentDB の制限事項](documentdb-limits.md)を参照してください。
+ST\_WITHIN のポリゴン引数に指定できるのは、単一のリングだけです。つまり、環の内側に穴が含まれているポリゴンは指定できません。
 
 **クエリ**
 
@@ -346,4 +346,4 @@ DocumentDB の地理空間機能の基本的な使い方を身に付けたら、
 - [DocumentDB クエリ](documentdb-sql-query.md)についてさらに理解を深める
 - [DocumentDB のインデックス作成ポリシー](documentdb-indexing-policies.md)についてさらに理解を深める
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

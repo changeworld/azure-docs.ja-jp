@@ -11,7 +11,7 @@
 <tags 
 	ms.service="virtual-machines-windows" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="Windows" 
+	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/01/2016" 
@@ -60,12 +60,12 @@ Azure サブスクリプションを持っていない場合は、[Azure の試�
 
 Office 365 FastTrack 試用版を使用し始めるには、仮の会社名と Microsoft アカウントが必要です。会社名には、Microsoft のサンプル コンテンツで使用される仮の会社の会社名 Contoso のバリエーションを使用することをお勧めします。ただし、この会社名の使用は必須ではありません。
 
-次に、新しい Microsoft アカウントにサインアップします。**http://outlook.com** に移動し、user123@outlook.com のような電子メール アドレスを使用してアカウントを作成します。このアカウントで Office 365 FastTrack 試用版にサインアップすることになります。
+次に、新しい Microsoft アカウントにサインアップします。****http://outlook.com** に移動し、user123@outlook.com のような電子メール アドレスを使用してアカウントを作成します。このアカウントで Office 365 FastTrack 試用版にサインアップすることになります。
 
 次に、新しい Office 365 Enterprise E3 試用版にサインアップします。
 
 1.	CORP\\User1 アカウント資格情報で CLIENT1 にログオンします。
-2.	Internet Explorer を開き、**https://go.microsoft.com/fwlink/p/?LinkID=403802** にアクセスします。
+2.	Internet Explorer を開き、****https://go.microsoft.com/fwlink/p/?LinkID=403802** にアクセスします。
 3.	Office 365 Enterprise E3 試用版にサインアップする手順を実行します。
 
 **ビジネス用電子メール アドレス**の入力を求められたら、新しい Microsoft アカウントを指定します。
@@ -142,7 +142,7 @@ ping コマンドで IP アドレス 192.168.0.4 からの応答が 4 回成功�
 
 次に、DS1 に Azure AD Connect ツールをインストールして構成します。
 
-1.	Internet Explorer を実行し、**アドレス** バーに「**https://www.microsoft.com/download/details.aspx?id=47594**」と入力してから、Enter キーを押します。
+1.	Internet Explorer を実行し、**アドレス** バーに「****https://www.microsoft.com/download/details.aspx?id=47594**」と入力してから、Enter キーを押します。
 2.	Microsoft Azure AD Connect のセットアップ プログラムを実行します。
 3.	デスクトップで、**[Azure AD Connect]** をダブルクリックします。
 4.	**[ようこそ]** ページで、**[ライセンス条項とプライバシーに関する声明に同意します]** を選択し、**[続行]** をクリックします。
@@ -167,7 +167,7 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 3.	**[ライセンスの割り当て]** タブで、**[ユーザーの所在地の設定]** で所在地 (米国など) を選択します。
 4.	**[Microsoft Office 365 プラン E3]** を選択してから、**[保存]** をクリックします。
 5.	Internet Explorer を閉じます。
-6.	Internet Explorer を実行し、**http://portal.microsoftonline.com** にアクセスします。
+6.	Internet Explorer を実行し、****http://portal.microsoftonline.com** にアクセスします。
 7.	Lynda Meyer の Office 365 の資格情報を使用してログオンします。彼女のユーザー名は lyndam@<*架空の名前*>.onmicrosoft.com になります。パスワードは、Lynda Meyer の Active Directory ユーザー アカウントのパスワードです。
 8.	ログオンに成功すると、Office 365 ポータルのメインのページが **"今日は差を付けてみよう"** のメッセージと共に表示されます。
 
@@ -181,4 +181,4 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
 - [実稼働環境](http://technet.microsoft.com/library/dn635310.aspx)で、このワークロードをデプロイします。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

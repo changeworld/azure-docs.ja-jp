@@ -123,7 +123,7 @@
 		$pip = New-AzureRmPublicIpAddress -Name $GWIPName -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
 		$ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 		
-10. Azure にルート証明書 .cer ファイルをアップロードします。会社の証明書環境のルート証明書を使用するか、自己署名のルート証明書を使用できます。最大 20 個のルート証明書をアップロードすることができます。*makecert* を使用して自己署名ルート証明書を作成する手順については、「[ポイント対サイト構成の自己署名ルート証明書の操作](vpn-gateway-certificates-point-to-site.md)」をご覧ください。.cer ファイルにはルート証明書の秘密キーを含めないでください。
+10. Azure にルート証明書 .cer ファイルをアップロードします。会社の証明書環境のルート証明書を使用するか、自己署名のルート証明書を使用できます。最大 20 個のルート証明書をアップロードすることができます。*makecert* を使用して自己署名ルート証明書を作成する手順については、「[ポイント対サイト構成の自己署名ルート証明書の操作](vpn-gateway-certificates-point-to-site.md)」をご覧ください。.cer ファイルにはルート証明書の秘密キーを含めないでください。下の例に示すパブリック キーを取得するには、.cer ファイルを Base-64 encoded X.509 (.CER) ファイルとしてエクスポートした後、そのファイルをメモ帳で開きます。次に、-----BEGIN CERTIFICATE----- から -----END CERTIFICATE----- までの間をすべてコピーします。
 	
 	以下はサンプルです。公的な証明書データをアップロードする際の問題は、文字列全体をスペースなしでコピーし、貼り付けなければならないということです。そのようにコピーしないと、アップロードは機能しません。この手順では、独自の証明書 .cer ファイルを使用する必要があります。下のサンプルからはコピーしないでください。
 
@@ -240,4 +240,4 @@
 
 仮想ネットワークに仮想マシンを追加できます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

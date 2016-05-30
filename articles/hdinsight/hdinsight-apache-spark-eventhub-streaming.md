@@ -123,7 +123,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 5. アプリケーションでは、次の 2 つの依存関係 jar が必要です。
 
-	* **EventHub receiver jar**。Spark で Event Hub からメッセージを受信するために必要です。この jar は、Spark Linux クラスター (`/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.2.2.3.3.1-7-jar-with-dependencies.jar`) で入手できます。pscp を使用すると、jar をローカル コンピューターにコピーできます。
+	* **EventHub receiver jar**。Spark で Event Hub からメッセージを受信するために必要です。この jar は、Spark Linux クラスター (`/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.2.2.3.3.1-7-jar-with-dependencies.jar`) で入手できます。pscp を使用すると、jar をローカル コンピューターにコピーできます。(注: 一部のインスタンスは、`/usr/hdp/2.4.1.0-327/spark/lib` の下にファイルがあります)
 
 			pscp sshuser@mysparkcluster-ssh.azurehdinsight.net:/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.2.2.3.3.1-7-jar-with-dependencies.jar C:/eventhubjar
 
@@ -257,6 +257,8 @@ Hive テーブルにイベントをストリーミングするアプリケーシ
 
 **.Jar** ファイルは、`/usr/hdp/current/spark-client/lib` にある HDInsight Spark クラスターで入手できます。**Hive-site.xml** は、`/usr/hdp/current/spark-client/conf` で入手できます。
 
+
+
 これらのファイルは、[WinScp](http://winscp.net/eng/download.php) を使用して、クラスターからローカル コンピューターにコピーすることができます。次に、これらのファイルはツールを使用して、クラスターに関連付けられているストレージ アカウントにコピーすることができます。ストレージ アカウントにファイルをアップロードする方法の詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
 
 ファイルが Azure ストレージ アカウントにコピーされたら、コマンド プロンプトを開き、CURL をインストールしたディレクトリに移動し、次のコマンドを実行します (ユーザー名/パスワードおよびクラスター名を置き換える)。
@@ -353,7 +355,7 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -374,4 +376,4 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

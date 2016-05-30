@@ -5,7 +5,7 @@
 	documentationCenter=".net" 
 	authors="sethmanheim" 
 	manager="timlt" 
-	editor="tysonn"/>
+	editor=""/>
 
 <tags 
 	ms.service="service-bus" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="sethm"/>
 
 # .NET サービス バス API で AMQP 1.0 を使用する方法
@@ -306,11 +306,11 @@ exit
 * セッション ロックの更新
 * いくつかの動作の小さな違い
 
-詳細については、「[Service Bus AMQP の概要](service-bus-amqp-dotnet.md)」をご覧ください。このトピックには、サポートされていない API の詳細なリストが含まれています。
+詳細については、「[Service Bus AMQP の概要](service-bus-amqp-dotnet.md)」をご覧ください。この記事には、サポートされていない API の詳細なリストが含まれています。
 
 ## 概要
 
-このトピックでは、AMQP 1.0 と Service Bus .NET API を使って .NET からサービス バスのブローカー メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法を説明しました。
+この記事では、AMQP 1.0 と Service Bus .NET API を使って .NET からサービス バスのブローカー メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法を説明しました。
 
 Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語からも使用できます。サービス バスで AMQP 1.0 を使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。詳細については、「[Service Bus AMQP の概要](service-bus-amqp-dotnet.md)」をご覧ください。
 
@@ -322,6 +322,6 @@ Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語�
 * [Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法](service-bus-java-how-to-use-jms-api-amqp.md)
 * [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
  
-[Azure クラシック ポータル]: http://manage.windowsazure.com
+[Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

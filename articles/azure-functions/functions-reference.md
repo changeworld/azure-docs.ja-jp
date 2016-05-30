@@ -15,7 +15,7 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="04/07/2016"
+	ms.date="05/13/2016"
 	ms.author="chrande"/>
 
 # Azure Functions developer reference (Azure Functions 開発者向けリファレンス)
@@ -80,7 +80,7 @@ HTTP トリガーを容易にするため、運用環境シナリオでスクリ
 スクリプト ホストは、構成ファイルと 1 つまたは複数の関数を含むフォルダーを参照します。
 
 ```
-parentFolder (for example, wwwroot)
+parentFolder (for example, wwwroot in a function app)
  | - host.json
  | - mynodefunction
  | | - function.json
@@ -93,11 +93,49 @@ parentFolder (for example, wwwroot)
  | | - run.csx
 ```
 
-*host.json* ファイルは、スクリプト ホスト固有の構成を含み、親フォルダーに格納されます。
+*host.json* ファイルは、スクリプト ホスト固有の構成を含み、親フォルダーに格納されます。利用可能な設定に関する詳細については、WebJobs.Script リポジトリ wiki の [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) を参照してください。
 
 各関数には、コード ファイル、*function.json*、およびその他の依存関係を含むフォルダーがあります。
 
 Azure App Service で関数アプリに関数をデプロイするためにプロジェクトをセットアップするときは、このフォルダー構造をサイト コードとして扱うことができます。継続的インテグレーションやデプロイなどの既存のツール、またはカスタム デプロイ スクリプトを使用して、デプロイ時のパッケージのインストールまたはコードの変換を行うことができます。
+
+## <a id="fileupdate"></a> 関数アプリ ファイルを更新する方法
+
+Azure ポータルに組み込まれている関数エディターでは、*function.json* ファイルと関数のコード ファイルを更新できます。*package.json* や *project.json* などのその他のファイルや依存関係をアップロードまたは更新するには、その他のデプロイ方法を使用する必要があります。
+
+関数アプリは App Service 上で構築されるため、[標準 Web アプリで利用できるデプロイ オプション](../app-service-web/web-sites-deploy.md)はすべて、関数アプリでも利用できます。ここでは、関数アプリ ファイルをアップロードまたは更新するための方法をいくつか紹介します。
+
+#### Visual Studio Online (Monaco) を使用するには
+
+1. Azure Functions ポータルで、**[関数アプリの設定]** をクリックします。
+
+2. **[詳細設定]** セクションで、**[App Service の設定に移動]** をクリックします。
+
+3. **[ツール]** をクリックします。
+
+4. **[開発]** で、**[Visual Studio Online]** をクリックします。
+
+5. Visual Studio Online が有効になっていない場合は**オン**にして、**[Go]** をクリックします。
+
+	Visual Studio Online の読み込み後、*host.json* ファイルと関数フォルダーが *wwwroot* の下に表示されます。
+
+6. ファイルを開いて編集するか、開発コンピューターからドラッグアンドドロップしてファイルをアップロードします。
+
+#### 関数アプリの SCM (Kudu) エンドポイントを使用するには
+
+1. `https://<function_app_name>.scm.azurewebsites.net` に移動します。
+
+2. **[デバッグ コンソール] > [CMD]** の順にクリックします。
+
+3. `D:\home\site\wwwroot` に移動し、*host.json* または `D:\home\site\wwwroot<function_name>` を更新し、関数のファイルを更新します。
+
+4. アップロードするファイルをファイル グリッドのフォルダーにドラッグアンドドロップします。
+
+#### FTP を使用するには
+
+1. [ここ](../app-service-web/web-sites-deploy.md#ftp)の指示に従って、FTP を構成します。
+
+2. 関数アプリのサイトに接続されたら、更新された *host.json* ファイルを `/site/wwwroot` にコピーするか、関数ファイルを `/site/wwwroot/<function_name>` にコピーします。
 
 ## 並列実行
 
@@ -106,6 +144,16 @@ Azure App Service で関数アプリに関数をデプロイするためにプ�
 ## Azure Functions パルス  
 
 パルスは、関数の実行頻度と成功または失敗を示すライブ イベント ストリームです。また、平均実行時間を監視することができます。今後、さらに機能とカスタマイズが追加される予定です。**[パルス]** ページには **[監視]** タブからアクセスできます。
+
+## リポジトリ
+
+Azure Functions のコードはオープン ソースであり、GitHub リポジトリに保存されています。
+
+* [Azure Functions ランタイム](https://github.com/Azure/azure-webjobs-sdk-script/)
+* [Azure Functions ポータル](https://github.com/projectkudu/AzureFunctionsPortal)
+* [Azure Functions テンプレート](https://github.com/Azure/azure-webjobs-sdk-templates/)
+* [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
+* [Azure WebJobs SDK 拡張機能](https://github.com/Azure/azure-webjobs-sdk-extensions/)
 
 ## バインド
 
@@ -124,5 +172,6 @@ Azure App Service で関数アプリに関数をデプロイするためにプ�
 * [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
+* Azure App Service チーム ブログの「[Azure Functions: The Journey](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/)」。Azure Functions の開発の歴史。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

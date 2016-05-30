@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/14/2016" 
+	ms.date="05/16/2016" 
 	ms.author="nitinme"/>
 
 
@@ -170,10 +170,10 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 1. データセットの内容を理解しましょう。たとえば、**results** 列のさまざまな値は何でしょうか。
 
 
-	df.select('results').distinct().show()
+		df.select('results').distinct().show()
 
 	
-	出力は次のように表示されます。
+	出力次のように表示されます。
 
 	    # -----------------
 		# THIS IS AN OUTPUT
@@ -402,7 +402,7 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -412,4 +412,4 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->
