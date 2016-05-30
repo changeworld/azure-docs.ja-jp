@@ -159,7 +159,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 -	任意のコントローラー/アクション
 -	CDN エンドポイントでクエリ文字列が有効になっている場合、クエリ文字列を含む任意の URL
 
-実際、上記の構成の場合、**http://*&lt;cdnName>*.azureedge.net/** からのクラウド サービス全体をホストできます。****http://camservice.azureedge.net/** に移動すると、Home/Index からのアクション結果が得られます。
+実際、上記の構成の場合、**http://*&lt;cdnName>*.azureedge.net/** からのクラウド サービス全体をホストできます。**http://camservice.azureedge.net/** に移動すると、Home/Index からのアクション結果が得られます。
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 
@@ -319,7 +319,7 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 
 	![](media/cdn-cloud-service-with-cdn/cdn-7-configureview.PNG)
 
-4. 新しい *Views\\MemeGenerator\\Index.cshtml* を開き、その内容を、ジョークを送信するための次の単純な HTML で置き換えます。
+4. 新しい *Views\MemeGenerator\Index.cshtml* を開き、その内容を、ジョークを送信するための次の単純な HTML で置き換えます。
 
 		<h2>Meme Generator</h2>
 

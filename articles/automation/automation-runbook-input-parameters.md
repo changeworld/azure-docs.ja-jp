@@ -98,9 +98,17 @@ Azure で認証する [**Add-AzureAccount**](https://msdn.microsoft.com/library/
 
 4. **Get-AzureVM** アクティビティで使用される 2 つのパラメーターを次のプロパティで作成します。
 
-    * **Parameter1:** 名前 – VMName、型 – String、必須 – いいえ
-
-    * **Parameter2:** 名前 – ServiceName、型 – String、必須 – いいえ、既定値 – カスタム、カスタム既定値 – <仮想マシンを含む既定サービスの名前>
+    * **Parameter1:** 
+    名前 – VMName、
+    型 – String、
+    必須 – いいえ
+	
+    * **Parameter2:** 
+    名前 – ServiceName、
+    型 – String、
+    必須 – いいえ、
+    既定値 – カスタム、
+    カスタム既定値 – \<仮想マシンを含む既定サービスの名前>
 
 5. パラメーターを追加したら、**[OK]** をクリックします。パラメーターが **[入力と出力]** ブレードに表示されます。**[OK]** をもう一度クリックし、Runbook の **[保存]** と **[発行]** をクリックします。
 
@@ -245,23 +253,23 @@ Runbook ジョブにパラメーターを渡すには、要求本文を使用し
 
 テスト オプションを利用し、[Runbook の草案バージョンをテスト](automation-testing-runbook.md)すると、**[テスト]** ブレードが開きます。このブレードで、先に作成したパラメーターの値を構成できます。
 
-![Test and assign parameters](media/automation-runbook-input-parameters/automation_06_TestAndAssignParameters.png)
+![テストし、パラメーターを割り当てる](media/automation-runbook-input-parameters/automation_06_TestAndAssignParameters.png)
 
 ### スケジュールを Runbook にリンクし、パラメーターを割り当てる
 
 Runbook を特定の時刻に開始するために、Runbook に[スケジュールをリンク](automation-scheduling-a-runbook.md)できます。スケジュールを作成するときに、入力パラメーターを割り当てます。スケジュールで Runbook が起動されるときに、それらの値が使用されます。必須のパラメーター値をすべて指定しないと、スケジュールは保存できません。
 
-![Schedule and assign parameters](media/automation-runbook-input-parameters/automation_07_ScheduleAndAssignParameters.png)
+![スケジュールし、パラメーターを割り当てる](media/automation-runbook-input-parameters/automation_07_ScheduleAndAssignParameters.png)
 
 ### Runbook の Webhook を作成し、パラメーターを割り当てる
 
 Runbook の [Webhook](automation-webhooks.md) を作成し、Runbook 入力パラメーターを構成できます。必須のパラメーター値をすべて指定しないと、Webhook は保存できません。
 
-![Create webhook and assign parameters](media/automation-runbook-input-parameters/automation_08_CreateWebhookAndAssignParameters.png)
+![Webhook を作成し、パラメーターを割り当てる](media/automation-runbook-input-parameters/automation_08_CreateWebhookAndAssignParameters.png)
 
 Webhook を利用して Runbook を実行すると、定義した入力パラメーターと共に **[Webhookdata](automation-webhooks.md#details-of-a-webhook)** が送信されます。**WebhookData** パラメーターの詳細を展開するには、このパラメーターをクリックします。
 
-![WebhookData parameter](media/automation-runbook-input-parameters/automation_09_WebhookDataParameter.png)
+![WebhookData パラメーター](media/automation-runbook-input-parameters/automation_09_WebhookDataParameter.png)
 
 
 ## 次のステップ

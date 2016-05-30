@@ -143,7 +143,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 	![](./media/site-recovery-failback-azure-to-vmware/image14.png)
 
-4. **[disk.EnableUUID]** と表示される行が存在するかどうかが確認されます。そのような行が存在し、値が **[False]** の場合は、[True] (大文字と小文字の区別なし) に設定します。そのような行が存在し、値が [True] の場合は、**[Cancel]** をクリックし、ゲスト オペレーティング システムが起動した後に、その OS 内で SCSI コマンドをテストします。そのような行が存在しない場合、**[Add Row]** をクリックします。
+4. **[disk.EnableUUID]** と表示される行が存在するかどうかが確認されます。そのような行が存在し、値が **[False]** の場合は、[True] \(大文字と小文字の区別なし) に設定します。そのような行が存在し、値が [True] の場合は、**[Cancel]** をクリックし、ゲスト オペレーティング システムが起動した後に、その OS 内で SCSI コマンドをテストします。そのような行が存在しない場合、**[Add Row]** をクリックします。
 5. **[Name]** 列に disk.EnableUUID を追加します。その値を TRUE に設定します。前述の値を追加する際には、二重引用符で囲まないでください。
 
 	![](./media/site-recovery-failback-azure-to-vmware/image15.png)
@@ -152,7 +152,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 注: その他のパッケージをダウンロードおよびインストールする前に、システムがインターネットに接続されていることを確認します。
 
-# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
+\# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
 
 このコマンドは、CentOS 6.6 リポジトリから次の 15 のパッケージをダウンロードして、インストールします。
 
@@ -188,17 +188,17 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 注: ソース マシンで、ルートまたはブート デバイスとして Reiser または XFS のファイル システムが使用されている場合、保護する前に、次のパッケージを Linux マスター ターゲットにダウンロードしてインストールする必要があります。
 
-# cd /usr/local
+\# cd /usr/local
 
-# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
+\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
 
-# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
+\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
 
-# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
+\# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
-# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
+\# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
 
-# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
+\# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
 
 #### カスタム構成変更を適用する
 

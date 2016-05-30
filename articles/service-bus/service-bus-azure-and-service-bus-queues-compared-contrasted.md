@@ -204,7 +204,8 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 |比較条件|Azure キュー|Service Bus キュー|
 |---|---|---|
 |管理プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**|
-|ランタイム プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**<br/><br/>**AMQP 1.0 Standard (TCP と TLS)**| |.NET マネージ API|**はい**<br/><br/>(.NET 管理対象 Storage クライアント API)|**はい**<br/><br/>(.NET の仲介型メッセージング API)|
+|ランタイム プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**<br/><br/>**AMQP 1.0 Standard (TCP と TLS)**|
+|.NET マネージ API|**はい**<br/><br/>(.NET 管理対象 Storage クライアント API)|**はい**<br/><br/>(.NET の仲介型メッセージング API)|
 |ネイティブ C++|**はい**|**いいえ**|
 |Java API|**はい**|**はい**|
 |PHP API|**はい**|**はい**|

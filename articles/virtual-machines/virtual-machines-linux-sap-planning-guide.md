@@ -1650,7 +1650,7 @@ SAP 向けの Azure での監視ソリューションの基本的な構成ブロ
  
 ![Microsoft Azure Extension components (Microsoft Azure 拡張機能コンポーネント)][planning-guide-figure-2400]
 
-上のブロック図に示すように、SAP 向け監視ソリューションの一部は Azure VM イメージと Azure 拡張機能ギャラリー (Azure 操作によって管理されるグローバルにレプリケートされたリポジトリ) でホストされます。SAP の Azure 実装を行い、Azure 操作を処理して新しいバージョンの Azure Monitoring Extension for SAP を発行することは SAP/MS の共同チームの役割です。この Azure Monitoring Extension for SAP は Windows Azure 診断 (WAD) 拡張機能または Linux Azure 診断 (LAD) を使用して、必要な情報を取得します。
+上のブロック図に示すように、SAP 向け監視ソリューションの一部は Azure VM イメージと Azure 拡張機能ギャラリー (Azure 操作によって管理されるグローバルにレプリケートされたリポジトリ) でホストされます。SAP の Azure 実装を行い、Azure 操作を処理して新しいバージョンの Azure Monitoring Extension for SAP を発行することは SAP/MS の共同チームの役割です。この Azure Monitoring Extension for SAP は Microsoft Azure 診断 (WAD) 拡張機能または Linux Azure 診断 (LAD) を使用して、必要な情報を取得します。
 
 新しい Windows VM をデプロイするときに "Azure VM エージェント" が VM に自動的に追加されます。このエージェントの機能は、SAP NetWeaver システムの監視用 Azure 拡張機能の読み込みと構成を調整することです。Linux VM の場合、Azure VM エージェントは Azure Marketplace OS イメージに既に含まれています。
 

@@ -22,7 +22,8 @@
 
 この記事では、PowerShell コマンドレットを使用して、Azure で SQL Server 仮想マシンを作成する手順を説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。同じ作業を Resource Manager デプロイ モデルで行う方法については、「[Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (Resource Manager)](virtual-machines-windows-ps-sql-create.md)」を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+リソース マネージャー モデル。同じ作業を Resource Manager デプロイ モデルで行う方法については、「[Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (Resource Manager)](virtual-machines-windows-ps-sql-create.md)」を参照してください。
 
 ## PowerShell のインストールと構成
 
@@ -172,4 +173,4 @@ Azure ポータルを使用して SQL Virtual Machines を作成する方法に�
 
 これらのリソースのほかにも、[Azure Virtual Machines における SQL Server の実行に関連するその他のトピック](virtual-machines-windows-sql-server-iaas-overview.md)もご覧になることをお勧めします。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!----HONumber=AcomDC_0518_2016-->

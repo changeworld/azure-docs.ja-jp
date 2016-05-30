@@ -224,7 +224,7 @@ Azure Site Recovery Provider とエージェントは、次のコマンド ラ�
 
 			C:\ASR> setupdr.exe /i
 
-4. 次のコマンドを実行して、サーバーをコンテナーに登録します。CD C:\\Program Files\\Microsoft Azure Site Recovery Provider\\ C:\\Program Files\\Microsoft Azure Site Recovery Provider> DRConfigurator.exe /r /Friendlyname <friendly name of the server> /Credentials <path of the credentials file>
+4. 次のコマンドを実行して、サーバーをコンテナーに登録します。CD C:\Program Files\Microsoft Azure Site Recovery Provider\ C:\Program Files\Microsoft Azure Site Recovery Provider> DRConfigurator.exe /r /Friendlyname <friendly name of the server> /Credentials <path of the credentials file>
 
 - **/Credentials**: 登録キー ファイルが配置されている場所を指定する必須パラメーターです。  
 - **/Friendlyname**: Azure Site Recovery ポータルに表示される、Hyper-V ホスト サーバーの名前を表す必須パラメーターです。

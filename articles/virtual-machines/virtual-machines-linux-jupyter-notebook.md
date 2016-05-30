@@ -195,7 +195,7 @@ Jupyter の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介し
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-[portal-vm-linux]: https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
+[portal-vm-linux]: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
 [リポジトリ]: https://github.com/ipython/ipython
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 

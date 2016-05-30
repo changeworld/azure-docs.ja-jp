@@ -40,7 +40,7 @@
 
 ## ExpressRoute 回線の作成とプロビジョニング
 
-### 1\.Azure アカウントにサインインしてサブスクリプションを選択する
+### 1.Azure アカウントにサインインしてサブスクリプションを選択する
 
 構成を始めるには、Azure アカウントにサインインします。PowerShell の詳細については、「[リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。接続については、次の例を参照してください。
 
@@ -99,7 +99,7 @@ PowerShell コマンドレット `Get-AzureRmExpressRouteServiceProvider` を実
 	get-help New-AzureRmExpressRouteCircuit -detailed
 
 
-### 4\.すべての ExpressRoute 回線を一覧表示する
+### 4.すべての ExpressRoute 回線を一覧表示する
 
 作成したすべての ExpressRoute 回線の一覧を取得するには、`Get-AzureRmExpressRouteCircuit` コマンドを実行します。
 
@@ -168,7 +168,7 @@ PowerShell コマンドレット `Get-AzureRmExpressRouteServiceProvider` を実
 
 	get-help Get-AzureRmExpressRouteCircuit -detailed
 
-### 5\.プロビジョニングのためにサービス キーを接続プロバイダーに送信する
+### 5.プロビジョニングのためにサービス キーを接続プロバイダーに送信する
 
 *ServiceProviderProvisioningState* は、サービス プロバイダー側でのプロビジョニングの現在の状態に関する情報を提供します。Status は、Microsoft 側での状態を提供します。回線のプロビジョニング状態に関する詳細については、[ワークフロー](expressroute-workflows.md#expressroute-circuit-provisioning-states)に関する記事を参照してください。
 
@@ -190,7 +190,7 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 	ServiceProviderProvisioningState : Provisioned
 	CircuitProvisioningState         : Enabled
 
-### 6\.回線キーのステータスと状態を定期的に確認する
+### 6.回線キーのステータスと状態を定期的に確認する
 
 回線キーのステータスと状態をチェックすると、いつプロバイダーによって回線が有効にされたかがわかります。回線が構成されると、以下の例に示すように、*ServiceProviderProvisioningState* が *Provisioned* と表示されます。
 
@@ -223,14 +223,14 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 	ServiceKey                       : **************************************
 	Peerings                         : []
 
-### 7\.ルーティング構成を作成する
+### 7.ルーティング構成を作成する
 
 回線ピアリングの作成と変更の詳しい手順については、「[PowerShell を使用した ExpressRoute 回線のルーティングの作成と変更](expressroute-howto-routing-arm.md)」を参照してください。
 
 
 >[AZURE.IMPORTANT] 次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IP VPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。
 
-### 8\.ExpressRoute 回線への仮想ネットワークのリンク
+### 8.ExpressRoute 回線への仮想ネットワークのリンク
 
 次に、ExpressRoute 回線に仮想ネットワークをリンクします。Resource Manager デプロイメント モデルを使用するときは、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
 

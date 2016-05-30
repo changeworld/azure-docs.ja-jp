@@ -205,7 +205,7 @@ StorSimple Snapshot Manager データベースのコピーを作成して保存�
 
         ![Stop the StorSimple Manager service](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
 
-2. C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
+2. C:\ProgramData\Microsoft\StorSimple\BACatalog を参照します。
 
     >[AZURE.NOTE] ProgramData は隠しフォルダーです。
 
@@ -237,7 +237,7 @@ StorSimple Snapshot Manager を再インストールするには、「[StorSimpl
 
     4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスの停止]** をクリックします。
 
-2. C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
+2. C:\ProgramData\Microsoft\StorSimple\BACatalog を参照します。
 
      >[AZURE.NOTE] ProgramData は隠しフォルダーです。
 

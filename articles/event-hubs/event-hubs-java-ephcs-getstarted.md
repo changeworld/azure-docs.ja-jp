@@ -70,7 +70,7 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [22]: ./media/event-hubs-java-ephcs-getstarted/run-csharp-ephcs2.png
 
 <!-- Links -->
-[Azure classic portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: event-hubs-overview.md
 [Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097

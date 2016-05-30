@@ -150,7 +150,7 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 
 2. Backup エージェントで、**[バックアップのスケジュール]** をクリックします。
 
-    ![Schedule a Windows Server backup](./media/backup-configure-vault/schedule-first-backup.png)
+    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-configure-vault/schedule-first-backup.png)
 
 3. バックアップのスケジュール ウィザードの [作業の開始] ページで、**[次へ]** をクリックします。
 

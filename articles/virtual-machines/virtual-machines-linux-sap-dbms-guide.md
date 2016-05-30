@@ -1100,7 +1100,7 @@ Oracle で SAP Business Suite を実行する場合の一般的な情報につ�
 ### Azure VM で SAP をインストールするための Oracle 構成ガイドライン
 
 #### ストレージの構成
-NTFS でフォーマットされたディスクを使用した単一インスタンスの Oracle のみサポートされています。すべてのデータベース ファイルは、VHD ディスクに基づく NTFS ファイル システムに保存する必要があります。これらの VHD は、Azure VM にマウントされ、Azure ページのBLOB ストレージに基づいています(<https://msdn.microsoft.com/library/azure/ee691964.aspx>)。あらゆる種類のネットワーク ドライブまたは Azure ファイルサービスのようなリモート共有:
+NTFS でフォーマットされたディスクを使用した単一インスタンスの Oracle のみサポートされています。すべてのデータベース ファイルは、VHD ディスクに基づく NTFS ファイル システムに保存する必要があります。これらの VHD は、Azure VM にマウントされ、Azure Page BLOB Storage に基づいています(<https://msdn.microsoft.com/library/azure/ee691964.aspx>)。あらゆる種類のネットワーク ドライブまたは Azure ファイルサービスのようなリモート共有:
  
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx> 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
@@ -1161,7 +1161,7 @@ SAP MaxDB 向けの Azure Storage のベスト プラクティスについては
 ![SAP MaxDB DBMS 用の Azure IaaS VM の参照の構成][dbms-guide-figure-600]
 
 #### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>バックアップと復元
-Azure にSAP MaxDB をデプロイする場合、バックアップ方法を確認する必要があります。実稼働システムでない場合でも、SAP MaxDB でホストされている SAP データベースを定期的にバックアップする必要があります。Azure Storage には 3 つのイメージを保持するため、記憶域の障害と重要な運用や管理の障害からシステムを保護するという点ではバックアップの重要度は低くなりました。適切なバックアップと復元の計画を維持するための主な理由は、ポイントイン タイム復旧機能を提供することにより、論理エラーや人的エラーから復旧できる可能性が高くなるためです。したがって、目標は、特定の時点までデータベースを復元するためにバックアップを使用するか、既存のデータベースをコピーして別のシステムに配置するために Azure のバックアップを使用するかのいずれかです。たとえば、バックアップを復元すると、同じシステムの 3 層システムのセットアップを 2 層 SAP 構成から転送できます。
+Azure にSAP MaxDB をデプロイする場合、バックアップ方法を確認する必要があります。実稼働システムでない場合でも、SAP MaxDB でホストされている SAP データベースを定期的にバックアップする必要があります。Azure Storage には 3 つのイメージを保持するため、ストレージの障害、重大な運用上またら管理上の障害から復旧するという点ではバックアップの重要度は低くなりました。適切なバックアップと復元の計画を維持するための主な理由は、ポイントイン タイム復旧機能を提供することにより、論理エラーや人的エラーから復旧できる可能性が高くなるためです。したがって、目標は、特定の時点までデータベースを復元するためにバックアップを使用するか、既存のデータベースをコピーして別のシステムに配置するために Azure のバックアップを使用するかのいずれかです。たとえば、バックアップを復元すると、同じシステムの 3 層システムのセットアップを 2 層 SAP 構成から転送できます。
 
 Azure でのデータベースのバックアップと復元はオンプレミスと同様に動作します。そのため、SAP Note [767598] に記載されている SAP MaxDB ドキュメントのいずれかで説明した標準の SAP MaxDB バックアップ/復元ツールを使用できます。
 
@@ -1298,7 +1298,7 @@ Microsoft Azure Virtual Machine サービスにおける SAP on IBM DB2 for LUW 
 ### Azure VM で SAP をインストールするための IBM DB2 for Linux, UNIX, and Windows 構成ガイドライン
 
 #### ストレージの構成
-すべてのデータベース ファイルは、VHD ディスクに基づく NTFS ファイル システムに保存する必要があります。これらの VHD は、Azure VM にマウントされ、Azure ページの BLOB ストレージに基づいています (<https://msdn.microsoft.com/library/azure/ee691964.aspx>)。あらゆる種類のネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は次のデータベース ファイルをサポートして**いません**。
+すべてのデータベース ファイルは、VHD ディスクに基づく NTFS ファイル システムに保存する必要があります。これらの VHD は、Azure VM にマウントされ、Azure Page BLOB Storage に基づいています (<https://msdn.microsoft.com/library/azure/ee691964.aspx>)。あらゆる種類のネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は次のデータベース ファイルをサポートして**いません**。
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>

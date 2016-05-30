@@ -144,7 +144,7 @@ Igloo Software へのユーザー プロビジョニングを構成するとき�
 
 1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  **Igloo Software ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Igloo Software** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-igloo-software-tutorial/IC783974.png "ユーザーの割り当て")
 

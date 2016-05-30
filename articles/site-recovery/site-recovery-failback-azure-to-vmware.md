@@ -38,7 +38,7 @@
 
 このアーキテクチャは、プロセス サーバーが Azure 上にあり、VPN または ExpressRoute 接続のいずれかがある場合に使用します。
 
-![VPN のアーキテクチャ ダイアグラム](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
+![VPN のアーキテクチャ ダイアグラム](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.PNG)
 
 ポートの一覧とフェールバック アーキテクチャ ダイアグラムについては、次の図をご覧ください。
 
@@ -96,7 +96,7 @@ Azure の VM がデータをオンプレミスのマスター ターゲット �
 
 1.  [コンテナー]、[設定]、[Manage Site Recovery Infrastructure] (Site Recovery インフラストラクチャの管理)、**[構成サーバー]** の順にクリックし、[For VMware and Physical Machines] (VMware マシンと物理マシン) で構成サーバーを選択します。[+ プロセス サーバー] をクリックします。
 
-	![](./media/site-recovery-failback-azure-to-vmware-new/add-processserver.png)
+	![](./media/site-recovery-failback-azure-to-vmware-new/add-processserver.PNG)
 
 2. プロセス サーバーのデプロイ先として、[Deploy a failback process server in Azure] (フェールバック プロセス サーバーを Azure にデプロイする) を選択します。
 
@@ -106,11 +106,11 @@ Azure の VM がデータをオンプレミスのマスター ターゲット �
 
 5. *クラシック デプロイメント* ネットワークを選択した場合、Azure ギャラリーを使用して新しい VM を作成し、プロセス サーバーをインストールするよう求められます。
 
-	![](./media/site-recovery-failback-azure-to-vmware-new/add-classic.png)
+	![](./media/site-recovery-failback-azure-to-vmware-new/add-classic.PNG)
 	
 	1. イメージの名前は、*Microsoft Azure Site Recovery Process Server V2* です。デプロイメント モデルとして、必ず *[クラシック]* を選択します。
 	
-		![](./media/site-recovery-failback-azure-to-vmware-new/templatename.png)
+		![](./media/site-recovery-failback-azure-to-vmware-new/templateName.PNG)
 	
 	2. [こちらに記載](./site-recovery-vmware-to-azure-classicz.md#step-5-install-the-management-server)されている手順に従って、プロセス サーバーをインストールします。
 	
@@ -126,13 +126,14 @@ Azure の VM がデータをオンプレミスのマスター ターゲット �
 	
 	5. サブネットとサブネットに接続するネットワーク インターフェイスを選択します。注: 独自の[ネットワーク インターフェイス](../virtual-network/virtual-networks-multiple-nics.md) (NIC) を作成し、デプロイ時に選択する必要があります。
 	
-		![](./media/site-recovery-failback-azure-to-vmware-new/psinputsadd.png)
+		![](./media/site-recovery-failback-azure-to-vmware-new/PSinputsadd.PNG)
 	
 	6. [OK] をクリックします。これにより、プロセス サーバーのセットアップで、デプロイメントの種類が Resource Manager の仮想マシンを作成するジョブがトリガーされます。VM 内でセットアップを実行して、サーバーを構成サーバーに登録する必要があります。これは、[こちらの手順](./site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)に従って行います。
 
 	7. プロセス サーバーをデプロイするジョブがトリガーされます。
 
-7. 最後に、[構成サーバー] ページの [プロセス サーバー] タブにある関連付けられたサーバーのセクションにプロセス サーバーが表示されます。![](./media/site-recovery-failback-azure-to-vmware-new/pslistingincs.png)
+7. 最後に、[構成サーバー] ページの [プロセス サーバー] タブにある関連付けられたサーバーのセクションにプロセス サーバーが表示されます。
+![](./media/site-recovery-failback-azure-to-vmware-new/pslistingincs.png)
 
 		
 	>[AZURE.NOTE] サーバーは、**[VM プロパティ]** には表示されません。登録先の管理サーバーの **[サーバー]** タブにのみ表示されます。プロセス サーバーの表示には、10 ～ 15 分かかります。
@@ -250,4 +251,4 @@ VPN 接続または Azure ExpressRoute を使用してフェールバックで�
 - ExpressRoute が、ソース マシンがフェールオーバーする、フェールオーバーの発生後に Azure VM が配置される Azure VM 仮想ネットワーク上に設定されている必要があります。
 - データは、パブリック エンドポイントの Azure ストレージ アカウントに複製されます。ExpressRoute を使用するには、Site Recovery のレプリケーション用のターゲット データ センターを使用して ExpressRoute でパブリック ピアリングを設定する必要があります。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!------HONumber=AcomDC_0518_2016-->

@@ -107,7 +107,7 @@ Jupyter Notebook は Azure ポータルから起動できます。ダッシュ�
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
 
-ブラウザーから ******https://CLUSTERNAME.azurehdinsight.net/jupyter*** で Jupyter Notebook にアクセスすることもできます。この URL の CLUSTERNAME の部分は、実際のクラスターの名前に置き換えてください。ノートブックにアクセスするには、管理者アカウントのパスワードが必要です。
+ブラウザーから ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** で Jupyter Notebook にアクセスすることもできます。この URL の CLUSTERNAME の部分は、実際のクラスターの名前に置き換えてください。ノートブックにアクセスするには、管理者アカウントのパスワードが必要です。
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
 
