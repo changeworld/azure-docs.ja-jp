@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Log Analytics とは | Microsoft Azure"
    description="Log Analytics は、Operations Management Suite (OMS) のサービスであり、 クラウドおよびオンプレミスの環境内にあるリソースで生成された運用データを収集して分析するのに役立ちます。この記事では、Log Analytics のさまざまなコンポーネントと詳細なコンテンツへのリンクの概要について説明します。"
    services="log-analytics"
@@ -6,10 +6,10 @@
    authors="bwren"
    manager="jwhit"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="log-analytics"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="05/13/2016"
@@ -70,7 +70,7 @@ Log Analytics のデプロイ要件は、中央のコンポーネントが Azure
 ## 次のステップ
 
 - [無料の Log Analytics アカウントにサインアップ](log-analytics-get-started.md)し、独自の環境でテストします。
-- OMS リポジトリにデータを収集できるさまざまな[データソース](log-analytics-data-sources.md)を表示します。 
-- [ソリューションギャラリーで利用可能なソリューションを参照](log-analytics-add-solutions.md)し、Log Analytics に機能を追加します。 
+- OMS リポジトリにデータを収集できるさまざまな[データソース](log-analytics-data-sources.md)を表示します。
+- [ソリューションギャラリーで利用可能なソリューションを参照](log-analytics-add-solutions.md)し、Log Analytics に機能を追加します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

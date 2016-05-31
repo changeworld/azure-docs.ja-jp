@@ -56,21 +56,23 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 
 モバイル アプリ バックエンドを構成した後は、新しいクライアント アプリを作成したり、既存のアプリを Azure に接続するように変更したりできます。このセクションでは、モバイル アプリ バックエンドに接続するようにカスタマイズされた UWP アプリ テンプレート プロジェクトをダウンロードします。
 
-1. モバイル アプリ バックエンドの **[開始]** ブレードに戻り、**[新しいアプリの作成]**、**[ダウンロード]** の順にクリックして、圧縮されたプロジェクト ファイルをローカル コンピューターに抽出します。
+1. モバイル アプリ バックエンドの **[クイック スタート]** ブレードに戻り、**[新しいアプリの作成]**、**[ダウンロード]** の順にクリックして、圧縮されたプロジェクト ファイルをローカル コンピューターに展開します。
+
+	![Download Windows quickstart project](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-app-windows-quickstart.png)
 
 3. (省略可能) サーバー プロジェクトと同じソリューションに UWP アプリ プロジェクトを追加します。これにより、必要であれば、同じ Visual Studio ソリューションでアプリとバックエンドの両方をより簡単にデバッグおよびテストできるようになります。UWP アプリ プロジェクトをソリューションに追加するには、Visual Studio 2015 以降のバージョンを使用している必要があります。
 
 4. UWP アプリをスタートアップ プロジェクトにして F5 キーを押し、アプリをデプロイおよび実行します。
 
-5. アプリで、**[Insert a TodoItem]** テキスト ボックスに意味のあるテキスト (たとえば、 *チュートリアルの完了* ) を入力し、**[Save]** をクリックします。
+5. アプリで、**[Insert a TodoItem]** テキスト ボックスに意味のあるテキスト (たとえば、「*チュートリアルの完了*」) を入力し、**[Save]** をクリックします。
 
-	![](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
+	![Windows quickstart complete desktop](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 
 	これで、Azure でホストされている新しいモバイル アプリ バックエンドに POST 要求が送信されます。
 
 6. (省略可能) アプリを停止し、別のデバイスまたはモバイル エミュレーターで再開します。
 
-	![](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)
+	![Windows quickstart complete phone](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)
 
 	UWP アプリの開始後、前の手順で保存したデータが Azure から読み込まれる点に注目してください。
 
@@ -87,6 +89,6 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 <!-- URLs. -->
 [Mobile App SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure portal]: https://portal.azure.com/
-[Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
+[Visual Studio Community 2015]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -255,10 +255,22 @@
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)	
 10. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
 
-Azure ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するセクションを参照してください。
+Azure ポータル ブレードを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法の手順については、[データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するページを参照してください。
 
 データ パイプラインは、監視と管理アプリを使用して監視することもできます。このアプリケーションの使い方について詳しくは、「[新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)」を参照してください。
 
 > [AZURE.IMPORTANT] 入力ファイルは、スライスが正常に処理された時点で削除されます。そのためスライスを取得したり、このチュートリアルをもう一度行ったりする場合は、adfgetstarted コンテナーの inputdata フォルダーに入力ファイル (input.log) をアップロードしてください。
 
-<!---HONumber=AcomDC_0518_2016-->
+
+## 関連項目
+| トピック | 説明 |
+| :---- | :---- |
+| [データ変換のアクティビティ](data-factory-data-transformation-activities.md) | この記事には、Azure Data Factory でサポートされているデータ変換のアクティビティ (このチュートリアルで使用した HDInsight Hive 変換など) の一覧を示します。 |
+| [スケジュールと実行](data-factory-scheduling-and-execution.md) | この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
+| [パイプライン](data-factory-create-pipelines.md) | この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
+| [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
+| [監視アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事 | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
+
+  
+
+<!---HONumber=AcomDC_0525_2016-->

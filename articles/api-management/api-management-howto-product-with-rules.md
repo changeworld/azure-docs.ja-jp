@@ -4,7 +4,7 @@
 	services="api-management"
 	documentationCenter=""
 	authors="steved0x"
-	manager="douge"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/27/2016"
+	ms.date="05/25/2016"
 	ms.author="sdanie"/>
 
 # Azure API Management でレート制限を使用して API を保護する
@@ -293,4 +293,4 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

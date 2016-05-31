@@ -34,7 +34,7 @@ PowerShell のコマンドレットを使用して新しい SQL データベー�
 
 ## データベースの設定: リソース グループ、サーバー、ファイアウォール規則を作成する
 
-これで選択した Azure サブスクリプションに対してコマンドレットを実行する準備ができましたので、次にデータベースを作成するサーバーを含むリソース グループを確立します。次のコマンドを編集して選択した任意の有効な場所で使用できます。**(Get-AzureRmLocation | where-object {$\_.Name -eq "Microsoft.Sql/servers" }).Locations** を実行して有効な場所の一覧を取得します。
+これで選択した Azure サブスクリプションに対してコマンドレットを実行する準備ができましたので、次にデータベースを作成するサーバーを含むリソース グループを確立します。次のコマンドを編集して選択した任意の有効な場所で使用できます。**(Get-AzureRmLocation | Where-Object { $\_.Providers -eq "Microsoft.Sql" }).Location** を実行して有効な場所の一覧を取得します。
 
 次のコマンドを実行して、新しいリソース グループを作成します。
 
@@ -120,4 +120,4 @@ SQL Database は Azure SQL Database サーバーの内部で作成されます�
 
 - [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

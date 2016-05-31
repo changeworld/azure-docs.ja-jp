@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="03/07/2016" 
+	ms.date="05/16/2016" 
 	ms.author="spelluru"/>
 
 # チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する
@@ -64,6 +64,8 @@
 	![使用できない Data Factory 名][image-data-factory-name-not-available]
 	
 	> [AZURE.NOTE] データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
+	> 
+	> Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者/管理者である必要があります。
 
 9. 左側の **[通知]** ハブをクリックし、作成プロセスからの通知を探します。**[通知]** ブレードが開いている場合は、**[X]** をクリックして閉じます。
 10. 作成が完了すると、次に示すような **[Data Factory]** ブレードが表示されます。
@@ -100,12 +102,12 @@
 
 	![エディターの Azure SQL 設定][image-editor-azure-sql-settings]
 
-2. **servername**、**databasename**、**username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
+2. **servername**、**databasename**、****username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
 3. ツール バーの **[デプロイ]** をクリックして、AzureSqlLinkedService を作成してデプロイします。 
    
 
 ## データセットを作成する
-前の手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL Database を **ADFTutorialDataFactory** という Data Factory にリンクしました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つのデータ ファクトリ テーブルを定義します。これらは AzureStorageLinkedService と AzureSqlLinkedService が参照するデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。
+前の手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL データベースを **ADFTutorialDataFactory** というデータ ファクトリにリンクしました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つのデータ ファクトリ テーブルを定義します。これらは AzureStorageLinkedService と AzureSqlLinkedService が参照するデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。
 
 ### 入力データセットの作成 
 テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **AzureStorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **EmpBlobTable** という名前のテーブルを作成します。
@@ -222,7 +224,7 @@
 ## パイプラインの作成
 この手順では、**EmpTableFromBlob** を入力、**EmpSQLTable** を出力として使用し、**コピー アクティビティ**を持つパイプラインを作成します。
 
-1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] \(省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
+1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
 
 	![エディターの [新しいパイプライン] ボタン][image-editor-newpipeline-button]
  
@@ -299,7 +301,7 @@
 
 2. 以下のような図が表示されるはずです。
 
-	![ダイアグラムビュー][image-data-factory-get-started-diagram-blade]
+	![ダイアグラム ビュー][image-data-factory-get-started-diagram-blade]
 
 	パイプラインとテーブルは、拡大、縮小、100% に拡大、ウィンドウのサイズに合わせて大きさを変更、自動的に配置などの表示が可能です。また、系列情報を表示 (選択した項目の上位項目や下位項目を強調表示) することもできます。オブジェクト (入力/出力テーブルまたはパイプライン) をダブルクリックすると、そのオブジェクトのプロパティを表示できます。 
 3. ダイアグラム ビューで **[ADFTutorialPipeline]** を右クリックして **[パイプラインを開く]** をクリックします。パイプライン内のアクティビティに加えて、アクティビティの入力データセットと出力データセットが表示されます。このチュートリアルでは、パイプラインのアクティビティ (コピー アクティビティ) は、入力データセットとして EmpTableBlob、出力データセットとして EmpSQLTable の 1 つだけです。   
@@ -330,7 +332,7 @@
 	-  **Set-AzureRmDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 	-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
  
-	一覧のタイトルをクリックするか、**[...] \(省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
+	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
 	
 	代わりに、スライスの開始時刻と終了時刻で並べ替えられたデータ スライスを表示するには、**[データ スライス (スライスの時刻別)]** タイルをクリックします。
 
@@ -348,7 +350,7 @@
 	![[テーブル] ブレード][image-data-factory-get-started-table-blade]
  
 7. 現在の時刻までのデータ スライスが既に生成されており、**準備完了**になっています。下部の **[問題のあるスライス]** セクションにはスライスが表示されていません。
-8. **[...] \(省略記号)** をクリックし、すべてのスライスを表示します。
+8. **[...] (省略記号)** をクリックし、すべてのスライスを表示します。
 
 	![[データ スライス] ブレード][image-data-factory-get-started-dataslices-blade]
 
@@ -371,16 +373,24 @@
 
 
 ## 概要 
-このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。また、Azure ポータルを使用して、データ ファクトリ、リンクされたサービス、テーブル、パイプラインを作成しました。以下は、このチュートリアルで実行した手順の概要です。
+このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。また、Azure ポータルを使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成しました。以下は、このチュートリアルで実行した手順の概要です。
 
-1.	**Azure Data Factory を作成します**。
-2.	データ ストアとコンピューティングをデータ ファクトリに**リンクするサービス** (**リンクされたサービス**と呼びます) を作成します。
-3.	パイプラインの入力データと出力データを記述した**テーブル**を作成します。
-4.	**パイプライン**を作成します。パイプラインは、入力を処理し、出力を生成する 1 つ以上のアクティビティで構成されます。パイプラインの **開始**時間と**終了**時間を指定して、パイプラインの有効期間を設定します。有効期間は、データ スライスが生成される期間を定義します。
+1.	Azure **データ ファクトリ**を作成しました。
+2.	次の**リンクされたサービス**を作成しました。
+	1. 入力データを保持する Azure ストレージ アカウントをリンクするための、**Azure Storage** のリンクされたサービス。 	
+	2. 出力データを保持する Azure SQL データベースをリンクするための、**Azure SQL** のリンクされたサービス。 
+3.	パイプラインの入力データと出力データを記述する**データセット**を作成しました。
+4.	ソースとして **BlobSource**、シンクとして **SqlSink** を持つ**コピー アクティビティ**がある**パイプライン**を作成しました。  
 
 
 ## 関連項目
-Azure Data Factory の**コピー アクティビティ**の詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
+| トピック | 説明 |
+| :---- | :---- |
+| [データ移動アクティビティ](data-factory-data-movement-activities.md) | この記事には、このチュートリアルで使用したコピー アクティビティの詳細な情報が記載されています。 |
+| [スケジュールと実行](data-factory-scheduling-and-execution.md) | この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
+| [パイプライン](data-factory-create-pipelines.md) | この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
+| [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
+| [監視アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事 | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
 <!--Link references-->
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
@@ -455,4 +465,4 @@ Azure Data Factory の**コピー アクティビティ**の詳細について�
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

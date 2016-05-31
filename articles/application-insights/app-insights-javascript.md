@@ -12,10 +12,11 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/19/2016"
+	ms.date="05/18/2016"
 	ms.author="awills"/>
 
 # Web ページ向けの Application Insights
+
 
 [AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
@@ -89,8 +90,14 @@ Application Insights リソースは、ページのパフォーマンスと使�
     // Don't log browser exceptions.
     disableExceptionTracking: true,
 
+    // Don't log ajax calls.
+    disableAjaxTracking: boolean,
+
     // Limit number of Ajax calls logged, to reduce traffic.
     maxAjaxCallsPerView: 10, // default is 500
+
+    // Time page load up to execution of first trackPageView().
+    overridePageViewDuration: boolean,
 
     // Set these dynamically for an authenticated user.
     appUserId: string,
@@ -123,7 +130,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ![](./media/app-insights-javascript/08-client-split.png)
 
-通常、 *ネットワーク接続* 時間は予想より短くなることに注意してください。これは、ブラウザーからサーバーに送信されるすべての要求の平均であるためです。個別の要求の多くは接続時間が 0 です。サーバーへの接続が既にアクティブになっているためです。
+通常、*ネットワーク接続*時間は予想より短くなることに注意してください。これは、ブラウザーからサーバーに送信されるすべての要求の平均であるためです。個別の要求の多くは接続時間が 0 です。サーバーへの接続が既にアクティブになっているためです。
 
 ### 読み込みに時間がかかる
 
@@ -204,7 +211,11 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 
 ### ページ ビュー プロパティ
 
-* **ページ ビュー時間**: ページの読み込みや、スクリプト実行の開始にかかる時間です。具体的には、ページ読み込みの開始から trackPageView の実行までの間隔です。スクリプトの初期化後、trackPageView をその定位置から移動した場合、別の値が反映されます。
+* **ページ ビュー時間** 
+
+ * 既定では、クライアント要求から完全な読み込みまでの、ページの読み込みにかかる時間です (補助ファイルを含みますが、Ajax 呼び出しなどの非同期タスクは含まれません)。
+ * [ページ構成](#detailed-configuration)で `overridePageViewDuration` を設定した場合は、クライアント要求から最初に `trackPageView` が実行されるまでの間隔です。スクリプトの初期化後、trackPageView をその定位置から移動した場合、別の値が反映されます。
+ * `overridePageViewDuration` が設定され、期間引数が `trackPageView()` 呼び出しで指定される場合は、その引数の値が代わりに使用されます。 
 
 
 ## ページ カウントのカスタマイズ
@@ -238,4 +249,4 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 * [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
 * [ビルド - 測定 - 学習](app-insights-overview-usage.md)
 
-<!------HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0525_2016-->

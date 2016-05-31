@@ -53,7 +53,9 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[ポ�
 
 ## コードのダウンロード
 
-このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet) で管理されています。手順に従ってサンプルを構築するには、[スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet/archive/skeleton.zip)します。スケルトンを複製することもできます。
+[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-devquickstarts-bug-fix.md)]
+
+このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet) で管理されています。手順に従ってサンプルをビルドするには、[スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet/archive/skeleton.zip)します。スケルトンを複製することもできます。
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet.git
@@ -61,11 +63,11 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-Dot
 
 また、完成済みのアプリも、[.zip ファイルとして入手する](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet/archive/complete.zip)か、同じリポジトリの `complete` ブランチで利用できます。
 
-サンプル コードをダウンロードした後、Visual Studio の .sln ファイルを開いて作業を開始します。ソリューション ファイルには、2 つのプロジェクト `TaskWebApp` と `TaskService` が含まれます。`TaskWebApp` は、ユーザーが対話する MVC Web アプリケーションです。`TaskService` は、各ユーザーの To-Do List を格納する、アプリのバックエンド Web API です。
+サンプル コードをダウンロードした後、Visual Studio の .sln ファイルを開いて作業を開始します。ソリューション ファイルには、2 つのプロジェクト `TaskWebApp` と `TaskService` が含まれます。`TaskWebApp` は、ユーザーが操作する MVC Web アプリケーションです。`TaskService` は、各ユーザーの To-Do List を格納する、アプリのバックエンド Web API です。
 
 ## タスク Web アプリの構成
 
-ユーザーが `TaskWebApp` と対話するとき、クライアントは Azure AD に要求を送信し、`TaskService` Web API の呼び出しに使用できるトークンを取得します。ユーザーをサインインさせてトークンを取得するには、アプリに関する情報を `TaskWebApp` に提供する必要があります。`TaskWebApp` プロジェクトで、プロジェクトのルートにある `web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。
+ユーザーが `TaskWebApp` を操作するとき、クライアントは Azure AD に要求を送信し、`TaskService` Web API の呼び出しに使用できるトークンを取得します。ユーザーをサインインさせてトークンを取得するには、アプリに関する情報を `TaskWebApp` に提供する必要があります。`TaskWebApp` プロジェクトで、プロジェクトのルートにある `web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。
 
 ```
 <appSettings>
@@ -215,17 +217,17 @@ public IEnumerable<Models.Task> Get()
 
 ## サンプル アプリを実行する
 
-最後に、`TaskWebApp` と `TaskService` を構築して実行します。電子メール アドレスまたはユーザー名を使用して、アプリにサインアップします。ユーザーの To-Do List にいくつかのタスクを作成すると、クライアントを停止して再起動した後でも、作成したタスクが API に保持されていることを確認できます。
+最後に、`TaskWebApp` と `TaskService` をビルドして実行します。電子メール アドレスまたはユーザー名を使用して、アプリにサインアップします。ユーザーの To-Do List にいくつかのタスクを作成すると、クライアントを停止して再起動した後でも、作成したタスクが API に保持されていることを確認できます。
 
 ## ポリシーの編集
 
-Azure AD B2C を使用して API をセキュリティ保護した後は、アプリのポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。<!--add **identity providers** to the policies, allowing you users to sign into the Task Client using social accounts.  You can also -->ポリシー内のアプリケーション要求を操作し、Web API で利用できるユーザー情報を変更することができます。追加した要求は、前述のように .NET MVC Web API の `ClaimsPrincipal` オブジェクトで利用できます。
+Azure AD B2C を使用して API をセキュリティ保護した後は、アプリのポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。<!--add **identity providers** to the policies, allowing you users to sign into the Task Client using social accounts.  You can also -->ポリシー内のアプリケーション要求を操作し、Web API で利用できるユーザー情報を変更することができます。追加した要求は、既に説明したとおり .NET MVC Web API の `ClaimsPrincipal` オブジェクトで利用できます。
 
 <!--
 
-## 次のステップ
+## Next steps
 
-さらに高度な B2C のトピックに進むことができます。 次のチュートリアルを試してみてください。
+You can now move onto more advanced B2C topics. You may try:
 
 [Call a web API from a web app]()
 
@@ -233,4 +235,4 @@ Azure AD B2C を使用して API をセキュリティ保護した後は、ア�
 
 -->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

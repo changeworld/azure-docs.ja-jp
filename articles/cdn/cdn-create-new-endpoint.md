@@ -12,7 +12,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="05/11/2016" 
+	 ms.date="05/24/2016" 
 	 ms.author="casoper"/>
 
 # Azure CDN の使用  
@@ -25,7 +25,7 @@
 
 CDN プロファイルは、CDN エンドポイントのコレクションです。各プロファイルには、1 つ以上の CDN エンドポイントが含まれます。複数のプロファイルを使って、インターネット ドメイン、Web アプリケーション、またはその他の一部の基準別に CDN エンドポイントを整理する必要が生じる場合があります。
 
-> [AZURE.NOTE] 既定では、1 つの Azure サブスクリプションは 4 つの CDN プロファイルに限定されます。各 CDN プロファイルは 10 個の CDN エンドポイントに制限されます。
+> [AZURE.NOTE] 既定では、1 つの Azure サブスクリプションは 8 つの CDN プロファイルに限定されます。各 CDN プロファイルは 10 個の CDN エンドポイントに制限されます。
 >
 > CDN の価格は、CDN プロファイル レベルで適用されます。Azure CDN の価格レベルを組み合わせて使用する場合は、複数の CDN プロファイルが必要になります。
 
@@ -97,4 +97,4 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

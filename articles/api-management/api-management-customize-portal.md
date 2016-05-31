@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/04/2016"
+	ms.date="05/25/2016"
 	ms.author="sdanie"/>
 
 # Azure API Management での開発者ポータルのカスタマイズ
@@ -60,7 +60,8 @@
 
 選択した要素のスタイルに変更を加えたら、**[変更のプレビュー]** をクリックして画面上で結果を確認します。この時点では、管理者にしか表示されません。変更を全員が閲覧できるようにするには、スタイル エディターで **[発行]** をクリックして変更を確定してください。
 
-![[発行] メニュー][api-management-customization-toolbar-publish-form]
+![[発行] メニュー  
+][api-management-customization-toolbar-publish-form]
 
 > ページの他の要素に適用されるスタイル ルールを変更するには、ヘッダーの場合と同じ手順を実行します。スタイル エディターで **[要素を選択]** をクリックし、対象の要素を選択して、画面に表示されるスタイル ルールの値の変更を開始します。
 
@@ -99,4 +100,4 @@
 [bootstrap]: http://getbootstrap.com/
 [LESS 変数]: http://getbootstrap.com/css/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -14,7 +14,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="03/02/2016"
+ ms.date="05/24/2016"
  ms.author="stevehob"/>
 
 # 予測的なメンテナンスの構成済みソリューションの概要
@@ -53,9 +53,9 @@ Azure IoT が予測的なメンテナンスのシナリオを実現する方法�
 [lnk-predictive-walkthrough]: iot-suite-predictive-walkthrough.md
 [lnk_preconfigured_solutions]: iot-suite-what-are-preconfigured-solutions.md
 [lnk_iot_suite]: iot-suite-overview.md
-[lnk_machine_learning]: https://azure.microsoft.com/services/machine-learning/
+[lnk_machine_learning]: https://azure.microsoft.com/ja-JP/services/machine-learning/
 [lnk_infographic]: https://www.microsoft.com/server-cloud/predictivemaintenance/Index.html
 [lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
 [lnk_capture_value]: http://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

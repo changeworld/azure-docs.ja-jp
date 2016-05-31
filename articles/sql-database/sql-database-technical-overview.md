@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="03/29/2016"
+   ms.date="05/23/2016"
    ms.author="shkurhek"/>
 
 # SQL Database とは SQL Database の概要
@@ -31,7 +31,7 @@ SQL Database は、Basic、Standard、Premium の*サービス階層*で使用�
 
 特に使用パターンが比較的予測可能である場合、多くのビジネスとアプリについては、データベースを作成し、要求に応じて単一のデータベースのパフォーマンスを調整する能力は十分です。しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。
 
-この問題は、SQL Database の[エラスティック プール](sql-database-elastic-pool.md)によって解決されます。概念は単純です。プールにパフォーマンスを割り当てたら、単一のデータベースのパフォーマンスに対してではなく、プールの全体的なパフォーマンスに対して支払いを行います。データベースのパフォーマンスを高くしたり低くしたりして調整する必要はありません。*エラスティック データベース*と呼ばれるプール内のデータベースでは、需要に合わせて自動的にスケール アップおよびスケール ダウンが行われます。エラスティック データベースでの使用はプールの上限を超えることはありません。したがってデータベースの使用状況が予測できなくても、コストが予測可能なことに変わりはありません。さらに、[プールに対してデータベースの追加および削除を行う](sql-database-elastic-pool-manage-portal.md)ことで、すべて制御可能な予算内で、アプリケーションを数個のデータベースから何千ものデータベースに及ぶ範囲でスケーリングすることができます。
+この問題は、SQL Database の[エラスティック プール](sql-database-elastic-pool.md)によって解決されます。概念は単純です。プールにパフォーマンスを割り当てたら、単一のデータベースのパフォーマンスに対してではなく、プールの全体的なパフォーマンスに対して支払いを行います。データベースのパフォーマンスを高くしたり低くしたりして調整する必要はありません。*エラスティック データベース*と呼ばれるプール内のデータベースでは、需要に合わせて自動的にスケール アップおよびスケール ダウンが行われます。エラスティック データベースでの使用はプールの上限を超えることはありません。したがってデータベースの使用状況が予測できなくても、コストが予測可能なことに変わりはありません。さらに、[プールに対してデータベースの追加および削除を行う](sql-database-elastic-pool-manage-portal.md)ことで、すべて制御可能な予算内で、アプリケーションを数個のデータベースから何千ものデータベースに及ぶ範囲でスケーリングすることができます。エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「[Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database (Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン)](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
 
 単一のデータベースまたはエラスティック データベースのどちらを使用したとしても、それに固定されることはありません。Single Database をエラスティック データベース プールと組み合わせ、Single Database とプールのサービス階層を変更することで、革新的なデザインを作成することができます。さらに、Azure の強力さと幅広さを利用して、さまざまな Azure サービスを SQL Database とうまく組み合わせることにより、独自の最新アプリ設計のニーズを満たし、コストとリソースの効率性を向上させ、新たなビジネス チャンスを開くことができます。
 
@@ -52,11 +52,11 @@ SQL サーバーには、アクセスの制限、データの保護、および�
 ## 次のステップ
 ここでは、SQL Database の概要を紹介し、"SQL Database とは何か" という問いに対する答えを示したので、次のステップに進むことができます。
 
-- [価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)で、単一データベースとエラスティック データベースのコストの比較と計算ツールについて確認します。
+- 単一データベースとエラスティック データベースのコストの比較と計算ツールについては、[価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
 - [エラスティック プール](sql-database-elastic-pool.md)について学習します。
 - [最初のデータベースを作成する](sql-database-get-started.md)ことによって作業を開始します。
 - [SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)
 - 初めてのアプリを C#、Java、Node.js、PHP、Python、Ruby で作成します。「[SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
 - 「[Azure SQL Database サービスに関するすべてのトピック](sql-database-index-all-articles.md)」のタイトルと説明のインデックスを確認します。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

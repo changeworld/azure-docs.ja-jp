@@ -15,7 +15,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="04/28/2016"
+	ms.date="05/25/2016"
 	ms.author="jgao"/>
 
 # HDInsight Tools for Visual Studio を使用して Hive クエリを実行する
@@ -230,6 +230,8 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 - 結果が NULL 値で始まっている場合、現在その結果は表示されません。この問題は修正されており、この問題で支障が出ている場合は、電子メールでお知らせいただくか、サポート チームにお問い合わせください。
 
+- ユーザーのローカルのリージョン設定によっては、Visual Studio によって作成された HQL スクリプトがエンコードされます。ユーザーがスクリプトをバイナリとしてクラスターにアップロードする場合、これは正常に実行されないことがあります。
+
 ご提案やフィードバックがある場合、またはこのツールを使用していて問題が発生した場合は、hdivstool@microsoft.com に電子メールをお送りください。
 
 ## 次のステップ
@@ -275,4 +277,4 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 [apache.hive]: http://hive.apache.org
 
-<!------HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

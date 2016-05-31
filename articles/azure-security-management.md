@@ -1,19 +1,19 @@
 <properties
    pageTitle="Azure のセキュリティ管理 | Microsoft Azure"
    description="この記事では、クラウド サービスや仮想マシン、カスタム アプリケーションをはじめとする Microsoft Azure 環境の管理という観点で、リモート管理のセキュリティを強化するための手順を説明します。"
-   services="azure-security, virtual-machines, cloud-services"
+   services="security"
    documentationCenter="na"
    authors="TerryLanfear"
    manager="StevenPo"
    editor="TomSh"/>
 
 <tags
-   ms.service="azure-security"
+   ms.service="security"
    ms.devlang="na"
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/26/2016"
+   ms.date="05/23/2016"
    ms.author="terrylan"/>
 
 # Azure のセキュリティ管理
@@ -247,4 +247,4 @@ Azure のクラウド サービス、仮想マシン、アプリケーション�
 [3]: ./media/azure-security-management/hardened-workstation-enabled-with-hyper-v.png
 [4]: ./media/azure-security-management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

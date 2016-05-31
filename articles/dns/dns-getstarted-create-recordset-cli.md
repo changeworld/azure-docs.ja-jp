@@ -62,8 +62,8 @@
 
 ## 次のステップ
 
-レコード セットとレコードを管理する方法については、[CLI を使用した DNS レコードとレコード セットの管理](dns-operations-recordsets-portal.md)に関するページを参照してください。
+レコード セットとレコードを管理する方法については、「[Manage DNS records and record sets using CLI (CLI を使用した DNS レコードとレコード セットの管理)](dns-operations-recordsets-cli.md)」を参照してください。
 
 Azure DNS の詳細については、「[Azure DNS の概要](dns-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -34,6 +34,7 @@ Application Insights SDK は実行中の Web アプリケーションから Azur
 * [Microsoft Azure](http://azure.com) のサブスクリプションチームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
 * Visual Studio 2013 Update 3 以降。
 
+
 ## <a name="ide"></a> Application Insights を Visual Studio のプロジェクトに追加する
 
 #### 新しいプロジェクトの場合
@@ -62,7 +63,7 @@ Azure にサインインしているアカウントを選択します。資格�
 
 ####<a name="land"></a> [Application Insights の追加] の実行結果
 
-このコマンドによって次の手順が実行されます (必要に応じて、代わりに[手動で実行](app-insights-start-monitoring-app-health-usage.md)できます)。
+このコマンドによって次の手順が実行されます (必要に応じて、代わりに[手動で実行](app-insights-asp-net-manual.md)できます)。
 
 1. プロジェクトに Application Insights Web SDK NuGet パッケージが追加されます。Visual Studio で表示するには、プロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。
 2. [Azure ポータル][portal]に Application Insights のリソースが作成されます。ここにデータが表示されます。リソースを識別する*インストルメンテーション キー*を取得します。
@@ -208,7 +209,7 @@ Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレ�
 
 [このトラブルシューティング項目](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。
 
-> [AZURE.NOTE] \(ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。[サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
+> [AZURE.NOTE] (ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。[サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
 
 
 
@@ -257,4 +258,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

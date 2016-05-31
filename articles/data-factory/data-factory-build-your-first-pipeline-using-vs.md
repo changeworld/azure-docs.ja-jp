@@ -48,7 +48,8 @@
 1. **Visual Studio 2013** または **Visual Studio 2015** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
 2. **[新しいプロジェクト]** ダイアログで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。   
 
-	![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
+	![[新しいプロジェクト] ダイアログ ボックス  
+](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
 
 3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
 
@@ -279,8 +280,6 @@
 	2. **[名前]** フィールドに「**FirstDataFactoryUsingVS**」と入力します。 
 	
 		> [AZURE.IMPORTANT] Azure Data Factory の名前はグローバルに一意にする必要があります。発行時に "**Data factory 名 "FirstDataFactoryUsingVS" は利用できません**" というエラーが発生した場合は、名前を変更します (yournameFirstDataFactoryUsingVS など)。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
-		> 
-		> データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 	3. **[サブスクリプション]** フィールドで適切なサブスクリプションを選択します。 
 	4. 作成するデータ ファクトリの**リソース グループ**を選択します。 
 	5. データ ファクトリの**リージョン**を選択します。 
@@ -289,23 +288,26 @@
 24. 概要を確認し、**[次へ]** をクリックし、デプロイ プロセスを開始し、**[デプロイ ステータス]** を表示します。
 25. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。デプロイメントが完了したら、[完了] をクリックします。 
 
-"**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。
+以下の点に注意してください。
 
-- Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。 
+- "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。 
+
+	- Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。 
 		
-		Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+			Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
 	
-	Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
+		Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
 	
-		Get-AzureRmResourceProvider
-- Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com)にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。その場合、プロバイダーが自動的に登録されます。
+			Get-AzureRmResourceProvider
+	- Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com)にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。その場合、プロバイダーが自動的に登録されます。
+- 	データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
+- 	Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者/管理者である必要があります。
 
  
-## パイプラインを監視する
+## パイプラインの監視
 
 6. [Azure ポータル](https://portal.azure.com/)にログインし、次の操作を行います。
-	1. **[参照]** をクリックし、**[Data Factory]** を選択します。
-		![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png) 
+	1. **[参照]** をクリックし、**[Data Factory]** を選択します。 ![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png) 
 	2. データ ファクトリの一覧から **[FirstDataFactoryUsingVS]** を選択します。 
 7. 該当するデータ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
   
@@ -463,8 +465,27 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 
 実際にデプロイすると、Data Factory エンティティ (リンクされたサービス、テーブル、パイプライン) の JSON ファイルに指定されているプロパティの値が、構成ファイルの値を使用して設定された後、Azure Data Factory サービスにエンティティがデプロイされます。
 
+## 概要 
+このチュートリアルでは、HDInsight Hadoop クラスター上で Hive スクリプトを実行してデータを処理するために、Azure データ ファクトリを作成しました。以下の手順を実行するには、Azure ポータルで Data Factory エディターを使用しました。
+
+1.	Azure **データ ファクトリ**を作成しました。
+2.	次の 2 つの**リンクされたサービス**を作成しました。
+	1.	入出力ファイルを保持する Azure Blob Storage をデータ ファクトリにリンクするための **Azure Storage** のリンクされたサービス。
+	2.	オンデマンド HDInsight Hadoop クラスターをデータ ファクトリにリンクするための **Azure HDInsight** オンデマンドのリンクされたサービス。Azure Data Factory は、入力データを処理し、出力データを生成するために、HDInsight Hadoop クラスターをジャストインタイムで作成します。 
+3.	パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの**データセット**を作成しました。 
+4.	**HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。  
+
+
 ## 次のステップ
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」を参照してください。
   
+## 関連項目
+| トピック | 説明 |
+| :---- | :---- |
+| [データ変換のアクティビティ](data-factory-data-transformation-activities.md) | この記事には、Azure Data Factory でサポートされているデータ変換のアクティビティ (このチュートリアルで使用した HDInsight Hive 変換など) の一覧を示します。 | 
+| [スケジュールと実行](data-factory-scheduling-and-execution.md) | この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
+| [パイプライン](data-factory-create-pipelines.md) | この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
+| [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
+| [監視アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事 | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->
