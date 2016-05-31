@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/11/2016"
+	ms.date="05/24/2016"
 	ms.author="casoper"/>
 
 # Azure Content Delivery Network (CDN) の概要
 
-Azure Content Delivery Network (CDN) では、戦略的に配置された場所に静的 Web コンテンツをキャッシュし、ユーザーへのコンテンツ配信に最大スループットを使用できます。CDN では、世界各地の物理ノードにコンテンツをキャッシュすることによって、高帯域幅コンテンツを配信するためのグローバル ソリューションを開発者に提供します。現在の CDN ノードの場所の一覧については、「[Azure CDN POP Locations (Azure CDN POP の場所)](cdn-pop-locations.md)」を参照してください。
+> [AZURE.NOTE] このドキュメントでは、Azure Content Delivery Network (CDN) の概要、しくみ、各 Azure CDN 製品の機能について説明します。この情報をスキップし、CDN エンドポイントの作成方法に関するチュートリアルに直接進む場合は、「[Azure CDN の使用](cdn-create-new-endpoint.md)」を参照してください。現在の CDN ノードの場所の一覧については、「[Azure CDN POP Locations (Azure CDN の POP の場所)](cdn-pop-locations.md)」を参照してください。
+
+Azure Content Delivery Network (CDN) では、戦略的に配置された場所に静的 Web コンテンツをキャッシュし、ユーザーへのコンテンツ配信に最大スループットを使用できます。CDN では、世界各地の物理ノードにコンテンツをキャッシュすることによって、高帯域幅コンテンツを配信するためのグローバル ソリューションを開発者に提供します。
 
 CDN を使用して Web サイト資産をキャッシュすると、次のような利点があります。
 
@@ -46,7 +48,7 @@ CDN を使用して Web サイト資産をキャッシュすると、次のよ�
 
 ## Azure CDN の機能
 
-Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、および **Azure CDN Premium from Verizon** の 3 つがあります。次の表に、各製品で使用できる機能を示します。
+Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** の 3 つがあります。次の表に、各製品で使用できる機能を示します。
 
 | | Standard Akamai | Standard Verizon | Premium Verizon |
 |-------|-----------------|------------------|-----------------|
@@ -76,4 +78,4 @@ CDN の概要については、「[Azure CDN の使用](./cdn-create-new-endpoin
 
 料金情報については、[CDN の料金](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

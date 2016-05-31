@@ -12,10 +12,13 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/18/2016"
+	ms.date="05/20/2016"
 	ms.author="awills"/>
 
 # Web サイトの可用性と応答性の監視
+
+
+[AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
 Web アプリケーションをデプロイした後、Web テストを設定して Web アプリケーションの可用性と応答性を監視できます。Application Insights は、世界各地の複数のポイントから定期的に Web 要求を送信します。アプリケーションの応答が遅くなったりアプリケーションがまったく応答しなくなったりした場合は、Application Insights からその旨が通知されます。
 
@@ -66,7 +69,7 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 - **アラート** は、既定では、エラーが 3 つの場所で 5 分を超えて存在する場合に送信されます。エラーが 1 つの場所で発生している場合は、サイトでの問題ではなく、ネットワークの問題である可能性が高くなります。ただし、しきい値は上げ下げでき、電子メールの送信先を変更することもできます。
 
-    アラートが生成されたときに呼び出される [Webhook](../azure-portal/insights-webhooks-alerts.md) を設定できます。
+    アラートが発生したときに呼び出される [webhook](../azure-portal/insights-webhooks-alerts.md) を設定できます。
 
 #### 他の URL のテスト
 
@@ -231,14 +234,15 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 個々のテストを開くと、テストを編集したり無効にしたりできます。
 
-![Web テストの編集または無効化](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+![Web テストの編集または無効化  
+](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
 
 たとえば、サービスのメンテナンスを行うときは Web テストを無効にします。
 
 ## Automation
 
 * [PowerShell スクリプトにより、Web テストを自動的に設定](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)する。 
-* アラートが生成されたときに呼び出される [Webhook](../azure-portal/insights-webhooks-alerts.md) を設定する。
+* アラートが発生したときに呼び出される [webhook](../azure-portal/insights-webhooks-alerts.md) を設定する。
 
 ## 疑問がある場合 問題が発生した場合
 
@@ -257,6 +261,28 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 * *ファイアウォールの内側で稼働している内部サーバーに対して可用性テストを使用したいと考えています。*
 
     この記事の最後にある一覧に記載されている IP アドレスからの要求を許可するようファイアウォールを構成してください。
+
+* *複数手順の Web テストのアップロードが失敗します。*
+
+    300 K のサイズ制限があります。
+
+    ループはサポートされていません。
+
+    他の Web テストへの参照はサポートされていません。
+
+    データ ソースはサポートされていません。
+
+    
+* *複数手順のテストが完了しません。*
+
+    1 テストあたりの要求は 100 個に制限されています。
+
+    実行時間が 2 分を超えると、テストは停止します。
+
+* *クライアント証明書でテストを実行するにはどうすればよいですか。*
+
+    申し訳ありませんが、それはサポートされていません。
+
 
 ## <a name="video"></a>ビデオ
 
@@ -396,4 +422,4 @@ Web テストを許可するためにファイアウォールを開く必要が�
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

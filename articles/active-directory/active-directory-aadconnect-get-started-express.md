@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/10/2016"
+	ms.date="05/19/2016"
 	ms.author="billmath;andkjell"/>
 
 # 簡単設定を使用した Azure AD Connect の開始
@@ -22,14 +22,14 @@
 ## 関連ドキュメント
 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関するドキュメントをまだお読みでない方のために、次の表に関連トピックへのリンクを示します。インストールを開始する前に、太字で表示した最初の 2 つのトピックをお読みいただく必要があります。
 
-| トピック | |
-| --------- | --------- |
-| **Azure AD Connect のダウンロード** | [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771) |
-| **ハードウェアと前提条件** | [Azure AD Connect: ハードウェアと前提条件](active-directory-aadconnect-prerequisites.md) |
-| カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md) |
-| DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md) |
-| インストール後 | [インストールの確認とライセンスの割り当て](active-directory-aadconnect-whats-next.md) |
-| インストールで使用するアカウント | [Azure AD Connect アカウントとアクセス許可の詳細](active-directory-aadconnect-accounts-permissions.md) |
+トピック |  
+--------- | ---------
+**Azure AD Connect のダウンロード** | [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
+**ハードウェアと前提条件** | [Azure AD Connect: ハードウェアと前提条件](active-directory-aadconnect-prerequisites.md)
+カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)
+DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
+インストール後 | [インストールの確認とライセンスの割り当て](active-directory-aadconnect-whats-next.md)
+インストールで使用するアカウント | [Azure AD Connect アカウントとアクセス許可の詳細](active-directory-aadconnect-accounts-permissions.md)
 
 
 ## Azure AD Connect の高速インストール
@@ -39,9 +39,9 @@
 
 1. Azure AD Connect をインストールするサーバーにローカル管理者としてサインインします。この作業は、同期サーバーとなるサーバーに対して行う必要があります。
 2. **AzureADConnect.msi** を検索し、ダブルクリックします。
-3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、**[続行]** をクリックします。![Azure AD Connect へようこそ](./media/active-directory-aadconnect-get-started-express/welcome.png)
+3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、**[続行]** をクリックします。 ![Azure AD Connect へようこそ](./media/active-directory-aadconnect-get-started-express/welcome.png)
 4. [簡単設定] 画面で、**[簡単設定を使う]** をクリックします。![Azure AD Connect へようこそ](./media/active-directory-aadconnect-get-started-express/express.png)
-5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。**[次へ]** をクリックします。![Azure への接続](./media/active-directory-aadconnect-get-started-express/connectaad.png) 接続の問題によってエラーが発生する場合は、「[Azure AD Connect での接続に関する問題のトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)」を参照してください。
+5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。**[次へ]** をクリックします。![Azure への接続](./media/active-directory-aadconnect-get-started-express/connectaad.png) 接続の問題によってエラーが発生する場合は、[接続の問題に対するトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)についてのページを参照してください。
 6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。ドメインの部分は NetBios または FQDN の形式で入力できます (FABRIKAM\\administrator または fabrikam.com\\administrator)。**[次へ]** をクリックします。![AD DS に接続](./media/active-directory-aadconnect-get-started-express/connectad.png)
 7. オンプレミスの Active Directory に登録された UPN ドメインが存在しない場合、または検証されていない場合は、このページが表示されます。オンプレミスの AD DS の UPN ドメインがすべて検証済みである場合、このページは表示されません。![Unverified domains](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png) このページが表示されたら、**[Not Added]** (追加されていません) と **[Not Verified]** (検証されていません) のマークが付いたドメインをすべて確認します。使用するドメインを Azure AD で検証済みにしてください。対象のドメインを検証済みにしたら、更新シンボルをクリックします。詳細については、[ドメインの追加と検証](active-directory-add-domain.md)に関するページを参照してください。
 8. [構成の準備完了] 画面で、**[インストール]** をクリックします。
@@ -59,4 +59,4 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="05/18/2016"
+   	ms.date="05/24/2016"
    	ms.author="jgao"/>
 
 # カスタム HDInsight アプリケーションのインストール
@@ -86,14 +86,31 @@ Azure ポータルでアプリケーションのステータスを確認し、�
  
 ## インストールのトラブルシューティング
 
-HDInsight アプリケーションのインストールの[トラブルシューティング](hdinsight-apps-install-applications.md#troubleshoot)に関するセクションを参照してください。
+アプリケーションのインストールの状態は、ポータル通知で確認できます (ポータル上部のベル アイコンをクリック)。
 
+アプリケーションのインストールが失敗した場合は、エラー メッセージとデバッグ情報を次の 3 つの場所で確認できます。
+
+- HDInsight アプリケーション: 一般的なエラー情報です。
+
+    ポータルでクラスターを開き、[設定] ブレードで [アプリケーション] をクリックします。
+
+    ![hdinsight applications application installation error](./media/hdinsight-apps-install-applications/hdinsight-apps-error.png)
+
+- HDInsight のスクリプト アクション: HDInsight アプリケーションのエラー メッセージがスクリプト アクションのエラーを示している場合、その詳細がスクリプト アクション ウィンドウに表示されます。
+
+    [設定] ブレードで、[スクリプト アクション] をクリックします。スクリプト アクションの履歴に、エラー メッセージが表示されます。
+
+    ![hdinsight applications script action error](./media/hdinsight-apps-install-applications/hdinsight-apps-script-action-error.png)
+    
+- Ambari Web UI: インストール スクリプトがエラーの原因であった場合は、Ambari Web UI を使用して、インストール スクリプトの完全なログを確認します。
+
+    詳細については、「[トラブルシューティング](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)」セクションを参照してください。
 
 ## 次のステップ
 
-- [MSDN 記事を参照して HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx)。HDInsight アプリケーションをデプロイするための ARM テンプレートの作成方法を確認します。
-- [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。
-- [Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)。スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
-- [ARM テンプレートを使用して Linux ベースの Hadoop クラスターを HDInsight に作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。ARM テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
+- [MSDN: Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションをデプロイするための ARM テンプレートの作成方法を確認します。
+- [HDInsight アプリケーションの発行](hdinsight-apps-publish-applications.md)に関する記事: カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法を確認します。
+- [Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
+- [ARM テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md): ARM テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

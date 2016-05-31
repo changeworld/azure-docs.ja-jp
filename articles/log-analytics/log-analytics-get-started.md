@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="05/11/2016"
 	ms.author="banders"/>
 
@@ -35,7 +35,7 @@ Log Analytics は、Microsoft Operations Management Suite (OMS) からほんの�
 - Log Analytics の機能をすべて利用するには、有料の Microsoft Azure サブスクリプションが必要です。Azure サブスクリプションがない場合は、すべての Azure サービスにアクセスできる[無料アカウント](https://azure.microsoft.com/free/)を作成します。または、[Operations Management Suite](http://microsoft.com/oms) の Web サイトで **[無料で試す]** をクリックして、無料の OMS アカウントを作成します。
 - OMS ワークスペース。
 - データを収集する各 Windows コンピューターで、Windows Server 2008 SP1 以降が実行されている必要があります。
-- OMS Web サービスのアドレスへの[ファイアウォール](log-analytics-proxy-firewall)経由のアクセス。
+- OMS Web サービスのアドレスへの[ファイアウォール](log-analytics-proxy-firewall.md)経由のアクセス。
 - コンピューターがインターネットに接続できない場合、サーバーから OMS にトラフィックを転送するための [OMS Log Analytics フォワーダー](https://blogs.technet.microsoft.com/msoms/2016/03/17/oms-log-analytics-forwarder) (ゲートウェイ) サーバー。
 - Operations Manager を使用する場合、Log Analytics は Operations Manager 2012 SP1 UR6 以降、Operations Manager 2012 R2 UR2 以降をサポートします。プロキシ サポートは、Operations Manager 2012 SP1 UR7 と Operations Manager 2012 R2 UR3 に追加されています。OMS との統合方法を調べます。
 - コンピューターがインターネットに直接アクセスできるかどうかを調べます。コンピューターがインターネットに直接アクセスできない場合は、OMS Web サービス サイトにアクセスするためのゲートウェイ サーバーが必要です。すべてのアクセスは HTTPS で行われます。
@@ -131,4 +131,4 @@ Operations Management Suite では、Azure Cloud Services の診断を有効に�
 - [ログ検索](log-analytics-log-searches.md)について理解を深め、ソリューションによって収集された情報の詳細を確認します。
 - [ダッシュボード](log-analytics-dashboards.md)を使用して、カスタム検索結果を保存したり表示したりします。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->
