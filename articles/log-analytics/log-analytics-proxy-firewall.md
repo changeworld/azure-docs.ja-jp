@@ -27,9 +27,10 @@ OMS サービスに Microsoft Monitoring Agent を接続して登録するには
 
 |**エージェントのリソース**|**ポート**|
 |--------------|-----|
-|*.ods.opinsights.azure.com|ポート 443| |*.oms.opinsights.azure.com|ポート 443|
+|*.ods.opinsights.azure.com|ポート 443|
+|*.oms.opinsights.azure.com|ポート 443|
 |ods.systemcenteradvisor.com|ポート 443|
-|**.blob.core.windows.net|Port 443|
+|*.blob.core.windows.net|Port 443|
 
 コントロール パネルから Microsoft Monitoring Agent のプロキシ設定を構成する際には、以下の手順を使用してください。この手順は、各サーバーに対して行う必要があります。構成が必要なサーバーの数が多い場合には、このプロセスを自動化するスクリプトを使った方が作業が簡単に済むことも考えられます。そのような場合は、1 つ先の手順の「[スクリプトを使って Microsoft Monitoring Agent のプロキシ設定を構成するには](#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script)」をご覧ください。
 
@@ -39,7 +40,8 @@ OMS サービスに Microsoft Monitoring Agent を接続して登録するには
 
 2. **[Microsoft Monitoring Agent]** を開きます。
 
-3. **[プロキシ設定]** タブをクリックします。![proxy settings tab](./media/log-analytics-proxy-firewall/proxy-direct-agent-proxy.png)
+3. **[プロキシ設定]** タブをクリックします。
+  ![proxy settings tab](./media/log-analytics-proxy-firewall/proxy-direct-agent-proxy.png)
 
 4. 例に示したように、**[プロキシ サーバーを使用する]** をオンにして、URL と (必要に応じて) ポート番号を入力します。プロキシ サーバーで認証が必要な場合には、プロキシ サーバーにアクセスするためのユーザー名とパスワードを入力します。
 
@@ -95,25 +97,32 @@ Operations Manager エージェントが OMS サービスと通信するには�
 
 |**エージェントのリソース**|**ポート**|
 |--------------|-----|
-|*.ods.opinsights.azure.com|ポート 443| |*.oms.opinsights.azure.com|ポート 443|
+|*.ods.opinsights.azure.com|ポート 443|
+|*.oms.opinsights.azure.com|ポート 443|
 |ods.systemcenteradvisor.com|ポート 443|
-|**.blob.core.windows.net/|Port 443|
+|*.blob.core.windows.net/|Port 443|
 
 管理サーバーのリソースとポートの一覧は次のとおりです。
 
 |**管理サーバーのリソース**|**ポート**|
 |--------------|-----|
-|*.ods.opinsights.azure.com|Port 443| |service.systemcenteradvisor.com|Port 443| |scadvisor.accesscontrol.windows.net|Port 443| |scadvisorservice.accesscontrol.windows.net|Port 443| |*.blob.core.windows.net|ポート 443|
+|*.ods.opinsights.azure.com|Port 443|
+|service.systemcenteradvisor.com|Port 443|
+|scadvisor.accesscontrol.windows.net|Port 443|
+|scadvisorservice.accesscontrol.windows.net|Port 443|
+|*.blob.core.windows.net|ポート 443|
 |data.systemcenteradvisor.com|ポート 443|
 |ods.systemcenteradvisor.com|ポート 443|
-|**.systemcenteradvisor.com|ポート 443|
+|*.systemcenteradvisor.com|ポート 443|
 
 OMS と Operations Manager コンソールのリソースとポートの一覧は次のとおりです。
 
 |**OMS と Operations Manager コンソールのリソース**|**ポート**|
 |----|----|
-|*.systemcenteradvisor.com|ポート 80 および 443| |*.live.com|ポート 80 と 443|
-|**.microsoftonline.com|ポート 80 および 443| |login.windows.net|ポート 80 および 443|
+|*.systemcenteradvisor.com|ポート 80 および 443|
+|*.live.com|ポート 80 と 443|
+|*.microsoftonline.com|ポート 80 および 443|
+|login.windows.net|ポート 80 および 443|
 
 
 
@@ -129,9 +138,12 @@ OMS と Operations Manager コンソールのリソースとポートの一覧�
 
 1. Operations Manager コンソールを開き、**[Administration (管理)]** ワークスペースを選択します。
 
-2. **[Operational Insights]** を展開して、**[Operational Insights の接続]** をクリックします。![Operations Manager OMS の接続](./media/log-analytics-proxy-firewall/proxy-om01.png)
-3. [OMS の接続] ビューで、**[プロキシ サーバーの構成]** をクリックします。![Operations Manager OMS の接続、プロキシ サーバーの構成](./media/log-analytics-proxy-firewall/proxy-om02.png)
-4. [Operational Insights 設定ウィザード: プロキシ サーバー] で **[Operational Insights Web サービスへのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力します (例: ****http://myproxy:80**. ![Operations Manager OMS のプロキシ アドレス](./media/log-analytics-proxy-firewall/proxy-om03.png))。
+2. **[Operational Insights]** を展開して、**[Operational Insights の接続]** をクリックします。
+    ![Operations Manager OMS の接続](./media/log-analytics-proxy-firewall/proxy-om01.png)
+3. [OMS の接続] ビューで、**[プロキシ サーバーの構成]** をクリックします。
+    ![Operations Manager OMS の接続、プロキシ サーバーの構成](./media/log-analytics-proxy-firewall/proxy-om02.png)
+4. [Operational Insights 設定ウィザード: プロキシ サーバー] で **[Operational Insights Web サービスへのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力します (例: **http://myproxy:80**.  
+    ![Operations Manager OMS のプロキシ アドレス](./media/log-analytics-proxy-firewall/proxy-om03.png))。
 
 
 ### プロキシ サーバーで認証が必要な場合の資格情報を指定するには
@@ -139,17 +151,24 @@ OMS と Operations Manager コンソールのリソースとポートの一覧�
 
 1. Operations Manager コンソールを開き、**[Administration (管理)]** ワークスペースを選択します。
 2. **[RunAs Configuration (RunAs の構成)]** で **[Profiles (プロファイル)]** を選択します。
-3. **System Center Advisor Run As Profile Proxy** というプロファイルを開きます。![System Center Advisor Run As Proxy profile のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct1.png)
-4. Run As Profile (Run As プロファイル) ウィザードで **[追加]** をクリックして Run As アカウント (実行アカウント) を使用します。新しい Run As アカウント(実行アカウント) を作成するか、既存のアカウントを使用できます。このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct2.png)
-5. 管理するアカウントを設定するには、**[選択したクラス、グループ、またはオブジェクト]** をクリックして、[オブジェクトの検索] ボックスを開きます。![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct2-1.png)
-6. **Microsoft System Center Advisor Monitoring Server Group** を検索して選択します。![Object Search boxc のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct3.png)
-7. **[OK]** をクリックして、[実行アカウントの追加] ボックスを閉じます。![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct4.png)
-8. ウィザードを完了し、変更を保存します。![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct5.png)
+3. **System Center Advisor Run As Profile Proxy** というプロファイルを開きます。
+    ![System Center Advisor Run As Proxy profile のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct1.png)
+4. Run As Profile (Run As プロファイル) ウィザードで **[追加]** をクリックして Run As アカウント (実行アカウント) を使用します。新しい Run As アカウント(実行アカウント) を作成するか、既存のアカウントを使用できます。このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。  
+![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct2.png)
+5. 管理するアカウントを設定するには、**[選択したクラス、グループ、またはオブジェクト]** をクリックして、[オブジェクトの検索] ボックスを開きます。  
+    ![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct2-1.png)
+6. **Microsoft System Center Advisor Monitoring Server Group** を検索して選択します。
+    ![Object Search boxc のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct3.png)
+7. **[OK]** をクリックして、[実行アカウントの追加] ボックスを閉じます。  
+![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct4.png)
+8. ウィザードを完了し、変更を保存します。  
+    ![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct5.png)
 
 
 ### OMS の管理パックがダウンロードされることを確認するには
 
-- OMS にソリューションを追加した場合、ソリューションは Operations Manager コンソールの **[Administration]** (管理) で管理パックとして表示されます。「*System Center Advisor*」と入力して検索すると、早く見つけることができます。![ダウンロードした管理パック](./media/log-analytics-proxy-firewall/proxy-mpdownloaded.png)
+- OMS にソリューションを追加した場合、ソリューションは Operations Manager コンソールの **[Administration]** (管理) で管理パックとして表示されます。「*System Center Advisor*」と入力して検索すると、早く見つけることができます。  
+    ![ダウンロードした管理パック](./media/log-analytics-proxy-firewall/proxy-mpdownloaded.png)
 - また、Operations Manager 管理サーバーで次の Windows PowerShell コマンドを使用する方法でも、OMS の管理パックを確認できます。
 
         get-scommanagementpack | where {$_.DisplayName -match 'Advisor'} | select Name,DisplayName,Version,KeyToken
@@ -160,8 +179,10 @@ OMS と Operations Manager コンソールのリソースとポートの一覧�
 
 1. Operations Manager 管理サーバーで、パフォーマンス モニター (perfmon.exe) を開き、**[Performance Monitor (パフォーマンス モニター)]** を選択します。
 2. **[追加]** をクリックして、**[Health Service Management Groups]** を選択します。
-3. **HTTP** から始まるすべてのカウンターを追加します。![カウンターの追加](./media/log-analytics-proxy-firewall/proxy-sendingdata1.png)
-4. Operations Manager の構成が適切であれば、OMS と構成済みのログ収集ポリシーで追加した、管理パックに基づく Health Service Management カウンターのイベントやその他のデータ アイテムにおけるアクティビティが表示されます。![アクティビティが表示されたパフォーマンス モニター](./media/log-analytics-proxy-firewall/proxy-sendingdata2.png)
+3. **HTTP** から始まるすべてのカウンターを追加します。
+    ![カウンターの追加](./media/log-analytics-proxy-firewall/proxy-sendingdata1.png)
+4. Operations Manager の構成が適切であれば、OMS と構成済みのログ収集ポリシーで追加した、管理パックに基づく Health Service Management カウンターのイベントやその他のデータ アイテムにおけるアクティビティが表示されます。  
+    ![アクティビティが表示されたパフォーマンス モニター](./media/log-analytics-proxy-firewall/proxy-sendingdata2.png)
 
 
 ## Azure Automation の Hybrid Runbook Worker

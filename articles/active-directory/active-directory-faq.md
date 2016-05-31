@@ -28,7 +28,7 @@ Azure Active Directory は、包括的なサービスとしての ID (IDaaS) ソ
 ## Azure と Azure Active Directory へのアクセス
 
 
-****Q: Azure クラシック ポータルで Azure AD にアクセスしようとすると "サブスクリプションが見つかりません" と表示されるのはなぜですか (https://manage.windowsazure.com)?**
+**Q: Azure クラシック ポータルで Azure AD にアクセスしようとすると "サブスクリプションが見つかりません" と表示されるのはなぜですか (https://manage.windowsazure.com)?**
 
 **A:** Azure クラシック ポータルにアクセスするには、Azure サブスクリプションに対するアクセス許可が各ユーザーに付与されている必要があります。有料の Office 365 または Azure AD をご利用の場合は、1 回限りのアクティブ化手順を行うために [http://aka.ms/accessAAD](http://aka.ms/accessAAD) に移動してください。これらをご利用でない場合は、完全な [Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)または有料サブスクリプションをアクティブ化する必要があります。
 

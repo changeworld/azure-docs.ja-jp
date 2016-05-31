@@ -225,9 +225,9 @@ Azure AD B2C を使用して API をセキュリティ保護した後は、ア�
 
 <!--
 
-## Next steps
+## 次のステップ
 
-You can now move onto more advanced B2C topics. You may try:
+さらに高度な B2C のトピックに進むことができます。 次のチュートリアルを試してみてください。
 
 [Call a web API from a web app]()
 

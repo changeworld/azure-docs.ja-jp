@@ -74,12 +74,12 @@ OMS ポータルへのアクセスをユーザーに与えているが、それ�
 
 ### Azure ポータルを使用した Log Analytics へのアクセスの管理
 
-(Azure ポータルなどで) Azure のアクセス許可を使用して Log Analytics ワークスペースへのアクセス権をユーザーに付与すると、そのユーザーは Log Analytics ポータルにもアクセスできるようになります。このユーザーが Azure ポータルで操作している場合、Log Analytics ワークスペース リソースを表示しているときに [OMS Portal] (OMS ポータル) タスクをクリックすると、OMS ポータルに移動できます。
+(Azure ポータルなどで) Azure のアクセス許可を使用して Log Analytics ワークスペースへのアクセス権をユーザーに付与すると、そのユーザーは Log Analytics ポータルにもアクセスできるようになります。このユーザーが Azure ポータルで操作している場合、Log Analytics ワークスペース リソースを表示しているときに [OMS Portal] \(OMS ポータル) タスクをクリックすると、OMS ポータルに移動できます。
 
 以下の 4 つの点に留意してください。
 
 1. これはロール ベースのアクセス制御ではありません。Azure ポータルで Log Analytics ワークスペースに対する "閲覧者" アクセス許可がある場合は、OMS ポータルを使用してデータを変更できます。OMS ポータルには、管理者、共同作成者、読み取り専用ユーザーの概念があります。ログインに使用したアカウントが Azure Active Directory 内でワークスペースにリンクされている場合、このユーザーは OMS ポータルにおいて "管理者" になります。それ以外の場合、このユーザーは "共同作成者" になります。
-2. ユーザーが mms.microsoft.com 経由で OMS ポータルにログインしている場合、既定で [Select a workspace] (ワークスペースの選択) リストが表示されます。このリストには、OMS ポータルで追加されたワークスペースのみが含まれています。Azure のサブスクリプション経由でアクセスできるワークスペースを表示するには、URL の一部としてテナントを指定する必要があります (多くの場合、テナント識別子は、mms.microsoft.com/?tenant=contoso.com のように、サインインするときに使う電子メール アドレスの最後の部分です)。
+2. ユーザーが mms.microsoft.com 経由で OMS ポータルにログインしている場合、既定で [Select a workspace] \(ワークスペースの選択) リストが表示されます。このリストには、OMS ポータルで追加されたワークスペースのみが含まれています。Azure のサブスクリプション経由でアクセスできるワークスペースを表示するには、URL の一部としてテナントを指定する必要があります (多くの場合、テナント識別子は、mms.microsoft.com/?tenant=contoso.com のように、サインインするときに使う電子メール アドレスの最後の部分です)。
 3. ログインに使用するアカウントが AAD テナントのアカウントの場合 (CSP としてサインインしている場合を除き、よくあるケースです)、このユーザーは OMS ポータルにおいて "管理者" になります。アカウントがテナントの AAD に含まれていない場合、このユーザーは OMS ポータルにおいて "ユーザー" になります。
 4. Azure のアクセス許可を介してアクセスできるポータルに直接移動する場合は、URL の一部としてリソースを指定する必要があります。この URL は、PowerShell を使用して取得できます (例: Get-AzureRmOperationalInsightsWorkspace)。PortalUrl。URL は次のようになります: https://eus.mms.microsoft.com/?tenant=contoso.com&resource=%2fsubscriptions%2faaa5159e-dcf6-890a-a702-2d2fee51c102%2fresourcegroups%2fdb-resgroup%2fproviders%2fmicrosoft.operationalinsights%2fworkspaces%2fmydemo12
 
