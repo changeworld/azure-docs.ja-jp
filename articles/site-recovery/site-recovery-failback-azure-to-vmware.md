@@ -94,11 +94,11 @@ Azure の VM がデータをオンプレミスのマスター ターゲット �
 
 マシンをクラシック リソースとして保護した場合 (Azure に復旧された VM がクラシック VM の場合)、Azure にクラシック プロセス サーバーが必要です。デプロイメントの種類として Resource Manager を指定してマシンを復旧した場合、デプロイメントの種類が Resource Manager であるプロセス サーバーが必要になります。この種類は、プロセス サーバーのデプロイ先の Azure 仮想ネットワークによって選択されます。
 
-1.  [コンテナー]、[設定]、[Manage Site Recovery Infrastructure] (Site Recovery インフラストラクチャの管理)、**[構成サーバー]** の順にクリックし、[For VMware and Physical Machines] (VMware マシンと物理マシン) で構成サーバーを選択します。[+ プロセス サーバー] をクリックします。
+1.  [コンテナー]、[設定]、[Manage Site Recovery Infrastructure] \(Site Recovery インフラストラクチャの管理)、**[構成サーバー]** の順にクリックし、[For VMware and Physical Machines] \(VMware マシンと物理マシン) で構成サーバーを選択します。[+ プロセス サーバー] をクリックします。
 
 	![](./media/site-recovery-failback-azure-to-vmware-new/add-processserver.PNG)
 
-2. プロセス サーバーのデプロイ先として、[Deploy a failback process server in Azure] (フェールバック プロセス サーバーを Azure にデプロイする) を選択します。
+2. プロセス サーバーのデプロイ先として、[Deploy a failback process server in Azure] \(フェールバック プロセス サーバーを Azure にデプロイする) を選択します。
 
 3. マシンの復旧時に使用したサブスクリプションを選択します。
 
