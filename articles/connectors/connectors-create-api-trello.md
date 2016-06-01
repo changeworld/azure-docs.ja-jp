@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
 # Trello コネクタの使用
@@ -67,6 +67,8 @@ Trello を使用してロジック アプリを作成するには、まず**接�
 | ---|---|---|
 |トークン|はい|Trello 資格情報を提供します|
 接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
+
+>[AZURE.INCLUDE [Trello への接続を作成する手順](../../includes/connectors-create-api-trello.md)]
 
 >[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
@@ -608,4 +610,4 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

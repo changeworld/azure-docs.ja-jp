@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/05/2016"
-    ms.author="vikbucha" />
+    ms.date="05/13/2016"
+    ms.author="elizapo" />
 
 
 
@@ -42,4 +42,4 @@ Azure がコレクションにプロビジョニングするのを待ってい�
 
 このエラーが表示される場合、通常は、次のようなことを意味します。有料アカウントにアップグレード済みであるのに、サービスの試用版モードでのみ有効な Microsoft 提供のイメージを使用している。この場合は、適切なイメージを指定して、クラウド コレクションを再度作成してみてください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -25,7 +25,7 @@
 
 ## アプリケーションの設定
 
-1. [Azure ポータル](https://portal.azure.com/)で、Web アプリのブレードを開きます。
+1. [Azure ポータル](https://portal.azure.com)で、Web アプリのブレードを開きます。
 2. **[すべての設定]** をクリックします。
 3. **[アプリケーションの設定]** をクリックします。
 
@@ -38,7 +38,7 @@
 **[Framework バージョン]**。アプリでこれらのフレームワークを使用する場合は、以下のオプションを設定します。
 
 - **.NET Framework**: .NET Framework のバージョンを設定します。 
-- **PHP**: PHP のバージョンを設定するか、PHP を無効にする場合は [オフ] を設定します。
+- **PHP**: PHP のバージョンを設定するか、PHP を無効にする場合は **[オフ]** を設定します。 
 - **Java**: Java のバージョンを選択するか、Java を無効にする場合は **[オフ]** を選択します。**[Web コンテナー]** オプションを使用して Tomcat か Jetty のバージョンを選択します。
 - **Python**: Python のバージョンを選択するか、Python を無効にする場合は **[オフ]** を選択します。
 
@@ -177,4 +177,4 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

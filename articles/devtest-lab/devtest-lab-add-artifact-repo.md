@@ -1,6 +1,6 @@
 <properties
-	pageTitle="DevTest ラボへの Git アーティファクト リポジトリの追加 | Microsoft Azure"
-	description="ラボにカスタム アーティファクト用に GitHub または Visual Studio Team Services Git リポジトリを追加する方法を説明します。"
+	pageTitle="ラボへの Git アーティファクト リポジトリの追加 | Microsoft Azure"
+	description="DevTest ラボでカスタム アーティファクト用に GitHub または Visual Studio Team Services Git リポジトリを追加します"
 	services="devtest-lab,virtual-machines,visual-studio-online"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/21/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
-# DevTest ラボへの Git アーティファクト リポジトリの追加
+# ラボへの Git アーティファクト リポジトリの追加
 
-> [AZURE.NOTE] この記事の付属のビデオを表示するには、次のリンクをクリックします。[How to add your private Artifacts Repository in a DevTest Lab](/documentation/videos/how-to-add-your-private-artifacts-repository-in-a-devtest-lab) (DevTest Lab でプライベート アーティファクト リポジトリを追加する方法)
+> [AZURE.NOTE] この記事の付属のビデオを表示するには、次のリンクをクリックします。[How to add your private Artifacts Repository in a DevTest Lab](/documentation/videos/how-to-add-your-private-artifacts-repository-in-a-devtest-lab) (DevTest ラボでプライベート アーティファクト リポジトリを追加する方法)
 
 ## 概要
 
-既定では、公式の Azure DevTest ラボ アーティファクト リポジトリからのアーティファクトが DevTest ラボに含まれます。ラボに Git アーティファクト リポジトリを追加することで、チームが作成したアーティファクトを含めることができます。リポジトリは、[GitHub](https://github.com) または [Visual Studio Team Services (VSTS)](https://visualstudio.com) 上にホストできます。
+既定では、公式の Azure DevTest Labs アーティファクト リポジトリからのアーティファクトがラボに含まれます。ラボに Git アーティファクト リポジトリを追加することで、チームが作成したアーティファクトを含めることができます。リポジトリは、[GitHub](https://github.com) または [Visual Studio Team Services (VSTS)](https://visualstudio.com) 上にホストできます。
 
 - GitHub リポジトリを作成する方法については、「[GitHub Bootcamp (GitHub ブートキャンプ)](https://help.github.com/categories/bootcamp/)」を参照してください。
 - Git リポジトリを使用して、Team Services プロジェクトを作成する方法については、「[Connect to Visual Studio Team Services (Visual Studio Team Services への接続)](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)」を参照してください。
@@ -51,7 +51,7 @@
 
 ###GitHub リポジトリに、ラボを接続します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
 1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
 
@@ -101,7 +101,7 @@
 
 1. 完了すると、新しいトークンが **[個人用アクセス トークン]** の一覧に表示されます。**[トークンのコピー]** をタップし、すぐに使用するため、トークンの値を保存します。
 
-### DevTest ラボ
+### ラボ
 
 1. ラボのブレードで、**[設定]** をタップします。
 
@@ -117,4 +117,4 @@
     3. アーティファクト リポジトリに保存された**個人用アクセス トークン**を入力します。
     4. **[保存]** をタップします。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Azure Redis Cache Premium レベルの概要" 
+	pageTitle="Azure Redis Cache Premium レベルの概要 | Microsoft Azure" 
 	description="Premium レベルの Azure Redis Cache インスタンス向けの Redis の永続化、Redis クラスタリング、および VNET サポートの作成と管理方法について説明します。" 
 	services="redis-cache" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/27/2016" 
+	ms.date="05/18/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache Premium レベルの概要
 Azure Redis Cache は、データへの超高速アクセスを提供することで、拡張性や応答性の高いアプリケーションの作成を可能にするマネージ キャッシュです。
 
-新しい Premium レベルは、Standard 階層の全機能に加えて、パフォーマンスの向上、ワークロードの増加、障害復旧、セキュリティの強化などを備えたエンタープライズ対応のレベルです。Premium キャッシュ レベルの追加機能の詳細をお知りになりたい場合は、このドキュメントを引き続きお読みください。
+新しい Premium レベルは、Standard レベルの全機能に加えて、パフォーマンスの向上、ワークロードの増加、障害復旧、インポート/エクスポート、セキュリティの強化などを備えたエンタープライズ対応のレベルです。Premium キャッシュ レベルの追加機能の詳細をお知りになりたい場合は、このドキュメントを引き続きお読みください。
 
 ## Standard/Basic レベルを超えるパフォーマンス
 **Standard/Basic レベルを超えるパフォーマンス。** Premium レベルのキャッシュは、高速プロセッサを備え、Basic/Standard レベルと比較して優れたパフォーマンスを発揮するハードウェア上にデプロイされます。Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。
@@ -45,6 +45,16 @@ Basic/Standard レベルで作成されたキャッシュは、パブリック �
 
 詳細については、「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
 
+## Import/Export
+
+Import/Export は Azure Redis Cache のデータ管理操作です。Redis Cache データベース (RDB) のスナップショットを Premium キャッシュからエクスポートし、Azure ストレージ アカウント内のページ BLOB にインポートすることで、Azure Redis Cache との間でデータのインポートとエクスポートを実行できます。これにより、異なる Azure Redis Cache インスタンス間での移行または使用前のキャッシュへのデータ入力が可能になります。
+
+インポートは、任意のクラウドまたは環境で稼働している任意の Redis サーバー (Linux や Windows のほか、アマゾン ウェブ サービスをはじめとする各種クラウド プロバイダーで稼働している Redis など) から Redis と互換性のある RDB ファイルを取り込むときに使用できます。データをインポートすると、あらかじめデータが入力されたキャッシュを簡単に作成できます。インポート処理中に、Azure Redis Cache は RDB ファイルを Azure ストレージからメモリに読み込み、キーをキャッシュに挿入します。
+
+エクスポート機能では、Azure Redis Cache に格納されたデータを Redis と互換性のある RDB ファイルにエクスポートできます。この機能を使えば、Azure Redis Cache インスタンス間でデータを移動したり、Azure Redis Cache インスタンスから別の Redis サーバーにデータを移動したりできます。エクスポート処理中に、Azure Redis Cache サーバー インスタンスをホストする VM 上に一時ファイルが作成され、それが指定されたストレージ アカウントにアップロードされます。エクスポート操作が完了したら、操作の成否にかかわらず、この一時ファイルは削除されます。
+
+詳細については、[Azure Redis Cache との間でデータのインポートとエクスポートを実行する方法](cache-how-to-import-export-data.md)に関するページを参照してください。
+
 ## 次のステップ
 
 キャッシュを作成し、Premium レベルの新機能を確認します。
@@ -52,6 +62,7 @@ Basic/Standard レベルで作成されたキャッシュは、パブリック �
 -	[How to configure persistence for a Premium Azure Redis Cache (Premium Azure Redis Cache の永続性の構成方法)](cache-how-to-premium-persistence.md)
 -	[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)
 -	[How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)
+-	[Azure Redis Cache との間でデータのインポートとエクスポートを実行する方法](cache-how-to-import-export-data.md)
   
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

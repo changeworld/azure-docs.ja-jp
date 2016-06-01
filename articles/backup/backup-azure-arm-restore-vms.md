@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="05/10/2016"
 	ms.author="trinadhk; jimpark;"/>
 
 
@@ -56,11 +56,7 @@ Backup サービスを使用してデータを保護するには、定義され�
 
     ![list of VMs in vault](./media/backup-azure-arm-restore-vms/list-of-vms-in-vault.png)
 
-5. 一覧から VM を選択して、ダッシュボードを開きます。
-
-    ![list of VMs in vault](./media/backup-azure-arm-restore-vms/list-of-vms-in-vault-selected.png)
-
-    VM のダッシュボードが開き、[復旧ポイント] タイルを含む [監視] 領域が表示されます。
+5. 一覧から VM を選択して、ダッシュボードを開きます。VM のダッシュボードが開き、[復元ポイント] タイルを含む [監視] 領域が表示されます。
 
     ![list of VMs in vault](./media/backup-azure-arm-restore-vms/vm-blade.png)
 
@@ -72,90 +68,57 @@ Backup サービスを使用してデータを保護するには、定義され�
 
     ![restore blade](./media/backup-azure-arm-restore-vms/restore-blade.png)
 
-7. **[復元]** ブレードで **[復旧ポイント]** をクリックして、**[復旧ポイントの選択]** ブレードを開きます。
+7. **[復元]** ブレードで **[復元ポイント]** をクリックして、**[復元ポイントの選択]** ブレードを開きます。
 
     ![restore blade](./media/backup-azure-arm-restore-vms/recovery-point-selector.png)
 
-    既定では、ダイアログ ボックスには過去 30 日間のすべての復旧ポイントが表示されます。**[期間]**、**[年]**、および **[復元ポイントの整合性]** の各一覧を必要に応じて編集します。各種の復元ポイントの詳細については、[データの一貫性](./backup-azure-vms-introduction.md#data-consistency)の説明を参照してください。
-    - **[期間]** は、特定の月または過去 30 日間です。
-    - **[年]** は、特定の年です。
+    既定では、ダイアログ ボックスには過去 30 日間のすべての復元ポイントが表示されます。表示される復元ポイントの時間範囲を変更するには、ブレードの上の **[フィルター]** を使用します。既定では、すべての整合性の復元ポイントが表示されます。復元ポイントの特定の整合性を選択するには、**[すべての復元ポイント]** フィルターを変更します。各種の復元ポイントの詳細については、[データの整合性](./backup-azure-vms-introduction.md#data-consistency)の説明を参照してください。
     - **[復元ポイントの整合性]** は、次の一覧から選択します。
         - クラッシュ整合性の復元ポイント
         - アプリケーション整合性の復元ポイント
         - ファイル システム整合性の復元ポイント
         - すべての復元ポイント  
 
-8. 復旧ポイントを選択し、**[OK]** をクリックします。
+8. 復元ポイントを選択し、**[OK]** をクリックします。
 
-    ![choose recovery point](./media/backup-azure-arm-restore-vms/select-recovery-point.png)
+    ![復元ポイントの選択](./media/backup-azure-arm-restore-vms/select-recovery-point.png)
 
-    **[復元]** ブレードに、設定した復旧ポイントが表示されます。
+    **[復元]** ブレードに、設定した復元ポイントが表示されます。
 
-    ![recovery point is set](./media/backup-azure-arm-restore-vms/recovery-point-set.png)
+    ![復元ポイントが設定される](./media/backup-azure-arm-restore-vms/recovery-point-set.png)
 
-9. **[復元]** ブレードで、**[復旧構成]** をクリックしてブレードを開きます。
+9. 復元ポイントを設定すると、**[復元]** ブレードに **[復元の構成]** が自動的に開きます。
+
+    ![復元構成ウィザードが設定される](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard.png)
+
+## VM の復元構成の選択
+
+復元ポイントを選択したので、次に復元 VM の構成を選択します。復元 VM の構成には、Azure ポータルまたは PowerShell を使用できます。
+
+> [AZURE.NOTE] ポータルには、復元される VM の [簡易作成] オプションがあります。復元する VM の VM 構成をカスタマイズする場合は、PowerShell を使用してバックアップ ディスクを復元し、選択した VM 構成にアタッチします。「[特別なネットワーク構成を持つ VM の復元](#restoring-vms-with-special-network-configurations)」を参照してください。
+
+1. 現在 **[復元]** ブレードを表示していない場合は、表示します。いずれかの**復元ポイント**が選択されている状態で、**[復元の構成]** をクリックして **[復元の構成]** ブレードを開きます。
 
     ![recovery configuration wizard is set](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard.png)
 
-## VM の復旧構成の選択
-
-復旧ポイントを選択したら、ストレージ アカウントと、復旧 VM を構成する方法を選択します。復旧 VM の構成には、Azure ポータルまたは PowerShell を使用できます。ストレージ アカウントを選択するときは、Recovery Services コンテナーと同じ場所を共有するアカウントを選択する必要があります。ゾーン冗長であるストレージ アカウントはサポートされていません。Recovery Services コンテナーと同じ場所を共有するストレージ アカウントがない場合は、復元操作を開始する前にアカウントを作成する必要があります。
-
-1. 現在 **[復元]** ブレードを表示していない場合は、表示します。いずれかの**復旧ポイント**が選択されている状態で、**[復旧構成]** をクリックして **[復旧構成]** ブレードを開きます。
-
-    ![recovery configuration wizard is set](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard.png)
-
-2. **[復旧構成]** ブレードで **[ストレージ アカウント]** をクリックして、Recovery Services コンテナーと同じ場所にあるストレージ アカウントの一覧を開きます。
-
-3. 一覧からストレージ アカウントを選択し、[OK] をクリックします。
-
-    ![list of storage accounts](./media/backup-azure-arm-restore-vms/list-of-storage-accounts.png)
-
-    **[復旧構成]** ブレードで、選択したストレージ アカウントが **[ストレージ アカウント]** ダイアログ ボックスに表示されます。
-
-    ![choose storage accounts](./media/backup-azure-arm-restore-vms/selected-storage-account.png)
-
-4. ポータルで VM を復元するときには、基本的な ARM VM またはクラシック VM を構成できます。次の一覧に示すオプションのような複雑な構成を復元する場合は、PowerShell を使用して、ディスクから VM を構成する必要があります。複雑な構成を復元しない場合は、手順 5. に進みます。
-
-    ![list of complex VM configurations](./media/backup-azure-arm-restore-vms/complex-vm-configurations.png)
-
-    復元の構成が複雑であると考えられる場合は、**[復旧構成]** ブレードで **[OK]** をクリックします。**[復旧構成]** ブレードが閉じ、復旧構成の横にチェックマークが表示されます。**[復元]** をクリックして、ディスクの復元ジョブを開始します。手順 5. には進まずに、「[特別なネットワーク構成を持つ VM の復元](#restoring-vms-with-special-network-configurations)」に進みます。
-
-    ![Restore configured](./media/backup-azure-arm-restore-vms/restore-configured.png)
-
-5. **[復旧構成]** ブレードで **[仮想マシンの構成]** をクリックして、**[VM の作成]** ブレードを開きます。
-
-    ![Open Create VM blade](./media/backup-azure-arm-restore-vms/recovery-configuration-create-vm.png)
-
-6. **[VM の作成]** ブレードで、次の各フィールドの値を入力または選択します。
-
-    - **[仮想マシン名]** - VM の名前を指定します。この名前は、リソース グループ (ARM VM の場合) またはクラウド サービス (クラシック VM の場合) に対して一意である必要があります。同じ名前を持つ既存の VM を置き換える場合は、最初に既存の VM とデータ ディスクを削除した後で、Azure Backup からデータを復元します。
+2. **[復元の構成]** ブレードで、次の各フィールドの値を入力または選択します。
+    - **[仮想マシン名]** - VM の名前を指定します。この名前は、リソース グループ (ARM VM の場合) またはクラウド サービス (クラシック VM の場合) に対して一意である必要があります。仮想マシンがサブスクリプション内に存在しているときの仮想マシンの置換はサポートされていません.
     - **[リソース グループ]** - 既存のリソース グループを使用するか、新しいリソース グループを作成します。クラシック VM を復元する場合は、このフィールドを使用して、新しいクラウド サービスの名前を指定します。新しいリソース グループまたはクラウド サービスを作成する場合、名前はグローバルに一意である必要があります。通常、クラウド サービス名は、公開された URL に関連付けられています (例: [cloudservice].cloudapp.net)。既に使用されているクラウド リソース グループまたはクラウド サービスの名前を指定した場合、Azure はリソース グループまたはクラウド サービスに VM と同じ名前を割り当てます。一覧には、どのアフィニティ グループにも関連付けられていないリソース グループまたはクラウド サービス、および仮想マシンが表示されます。詳細については、「[アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)」を参照してください。
-    - **[Virtual Network]** - VM を作成する場合は、Virtual Network (VNET) を選択します。このフィールドには、サブスクリプションに関連付けられているすべての VNET が表示されます。
-
+    - **[Virtual Network]** - VM を作成する場合は、Virtual Network (VNET) を選択します。このフィールドには、サブスクリプションに関連付けられているすべての VNET が表示されます。VM のリソース グループがかっこ内に表示されます。 
+    - **[サブネット]** - VNET にサブネットがある場合は、最初のサブネットが既定で選択されています。追加のサブネットがある場合は、必要なサブネットを選択します。
+    - **[ストレージ アカウント]** - Recovery Services コンテナーと同じ場所にあるストレージ アカウントの一覧を開きます。ストレージ アカウントを選択するときは、Recovery Services コンテナーと同じ場所を共有するアカウントを選択する必要があります。ゾーン冗長であるストレージ アカウントはサポートされていません。Recovery Services コンテナーと同じ場所を共有するストレージ アカウントがない場合は、復元操作を開始する前にアカウントを作成する必要があります。ストレージ アカウントのレプリケーション種類がかっこ内に表示されます。 
+    
     > [AZURE.NOTE] ARM ベースの VM を復元する場合には、VNET の選択は必須です。クラシック VM の場合には、VNET は省略可能です。
 
-    - **[サブネット]** - VNET にサブネットがある場合は、最初のサブネットが既定で選択されています。追加のサブネットがある場合は、必要なサブネットを選択します。
+3. **[復元の構成]** ブレードで **[OK]** をクリックして、復元の構成を完了します。
 
-7. **[VM の作成]** ブレードで **[OK]** をクリックして、構成を完了します。
-
-    **[VM の作成]** ブレードが閉じ、**[復旧構成]** ブレードに新しい VM の名前が表示されます。
-
-    ![Recovery configuration completed](./media/backup-azure-arm-restore-vms/recovery-configuration-complete.png)
-
-8. **[復旧構成]** ブレードで **[OK]** をクリックして、復元の構成を完了します。
-
-9. **[復元]** ブレードで **[復元]** をクリックして、復元操作を開始します。
+4. **[復元]** ブレードで **[復元]** をクリックして、復元操作を開始します。
 
     ![Recovery configuration completed](./media/backup-azure-arm-restore-vms/trigger-restore-operation.png)
 
 ## 復元操作を追跡する
 
-復元操作を開始すると、Backup サービスによって、復元操作を追跡するためのジョブが作成されます。また、通知が作成されて一時的に表示されます。
-
-![Restore triggered](./media/backup-azure-arm-restore-vms/restore-triggered.png)
-
-通知が表示されない場合は、いつでも通知アイコンをクリックすることで通知を表示できます。
+復元操作を開始すると、Backup サービスによって、復元操作を追跡するためのジョブが作成されます。また、通知が作成されて、ポータルの [通知] 領域に一時的に表示されます。通知が表示されない場合は、いつでも通知アイコンをクリックすることで通知を表示できます。
 
 ![Restore triggered](./media/backup-azure-arm-restore-vms/restore-notification.png)
 
@@ -171,8 +134,6 @@ Backup サービスを使用してデータを保護するには、定義され�
 
 2. 一覧から、復元した VM に関連付けられているコンテナーを選択します。コンテナーをクリックすると、ダッシュボードが開きます。
 
-    ![List of Recovery Services vaults](./media/backup-azure-arm-restore-vms/select-vault-open-vault-jobs.png)
-
 3. コンテナーのダッシュボードの **[バックアップ ジョブ]** タイルで **[Azure Virtual Machines]** をクリックして、コンテナーに関連付けられているジョブを表示します。
 
     ![vault dashboard](./media/backup-azure-arm-restore-vms/vault-dashboard-jobs.png)
@@ -181,9 +142,6 @@ Backup サービスを使用してデータを保護するには、定義され�
 
     ![list of VMs in vault](./media/backup-azure-arm-restore-vms/restore-job-in-progress.png)
 
-
-
-
 ## 特別なネットワーク構成を持つ VM の復元
 次のような特別なネットワーク構成を持つ VM をバックアップして復元することができます。ただし、これらの構成では、復元プロセスを実行するときにいくつかの特別な配慮が必要となります。
 
@@ -191,12 +149,11 @@ Backup サービスを使用してデータを保護するには、定義され�
 - 予約済み IP が複数ある VM
 - NIC が複数ある VM
 
->[AZURE.IMPORTANT] VM に対して特別なネットワーク構成を作成するときには、PowerShell を使用してディスクから復元する必要があります。
-
+>[AZURE.IMPORTANT] VM に対して特別なネットワーク構成を作成するときは、PowerShell を使用して、復元されたディスクから VM を作成する必要があります。
 
 ディスクへの復元後に仮想マシンを完全に再作成するには、次の手順を実行します。
 
-1. [Azure Backup PowerShell](../backup-azure-vms-automation.md#restore-an-azure-vm) を使用して、Recovery Services コンテナーからディスクを復元します。
+1. [PowerShell](backup-azure-vms-automation.md/#restore-an-azure-vm) を使用して、Recovery Services コンテナーからディスクを復元します。
 
 2. PowerShell コマンドレットを使用して、ロード バランサー、複数の NIC、複数の予約済み IP に必要な VM 構成を作成し、その構成を使用して、目的の構成の VM を作成します。
 	- [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用してクラウド サービスに VM を作成する
@@ -210,4 +167,4 @@ Backup サービスを使用してデータを保護するには、定義され�
 - [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
 - [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

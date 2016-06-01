@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="04/18/2016" 
 	ms.author="awills"/>
 
 
@@ -30,14 +30,14 @@
 
 ```AIQL
 
-    requests 
-    | where timestamp > ago(30d) and client_City == "Hyderabad"
+    requests      // Table of events that log HTTP requests.
+    | where timestamp > ago(7d) and client_City == "Hyderabad"
     | summarize clients = dcount(client_IP) 
       by tod_UTC=bin(timestamp % 1d, 1h), resultCode
     | extend local_hour = (tod_UTC + 5h + 30min) % 24h + datetime("2001-01-01") 
 ```
 
-異なるクライアント IP アドレスをカウントし、それらを過去 30 日間にわたり 1 日の時刻ごとにまとめます。
+異なるクライアント IP アドレスをカウントし、それらを過去 7 日間にわたり 1 日の時刻ごとにまとめます。
 
 結果を棒グラフで表示し、異なる応答コードの結果を積算してましょう。
 
@@ -53,9 +53,9 @@
 
 言語には、以下のような多くの魅力的な機能があります。
 
-* [フィルター](app-insights-analytics-queries.md)。カスタム プロパティとメトリックを含む、すべてのフィールドで未加工のアプリ テレメトリをフィルター処理します。
-* [結合](app-insights-analytics-queries.md#join-operator)。複数のテーブルを結合します。要求をページ ビュー、依存関係の呼び出し、例外およびログ トレースに関連付けます。
-* 強力な統計[集計](app-insights-analytics-aggregations.md)。
+* [フィルター](app-insights-analytics-reference.md#where-operator)。カスタム プロパティとメトリックを含む、すべてのフィールドで未加工のアプリ テレメトリをフィルター処理します。
+* [結合](app-insights-analytics-reference.md#join-operator)。複数のテーブルを結合します。要求をページ ビュー、依存関係の呼び出し、例外およびログ トレースに関連付けます。
+* 強力な統計[集計](app-insights-analytics-reference.md#aggregations)。
 * SQL と同じように強力ですが、複雑なクエリがより容易になります。つまり、ステートメントを入れ子にするのではなく、基本演算間でデータをパイプします。
 * 迅速かつ強力な視覚化。
 
@@ -82,4 +82,4 @@
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

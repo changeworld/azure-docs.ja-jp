@@ -1,5 +1,5 @@
 <properties
-   pageTitle="DNS ゾーンのレコード セットとレコードの作成 | Microsoft Azure"
+   pageTitle="PowerShell を使用して DNS ゾーンのレコード セットとレコードを作成する | Microsoft Azure"
    description="Azure DNS のホスト レコードを作成する方法。PowerShell を使用したレコード セットとレコードの設定"
    services="dns"
    documentationCenter="na"
@@ -13,11 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/03/2016"
+   ms.date="05/06/2016"
    ms.author="cherylmc"/>
 
 
-# DNS レコードの作成
+
+# PowerShell を使用した DNS レコード セットとレコードの作成
 
 
 > [AZURE.SELECTOR]
@@ -25,69 +26,83 @@
 - [PowerShell](dns-getstarted-create-recordset.md)
 - [Azure CLI](dns-getstarted-create-recordset-cli.md)
 
-DNS ゾーンを作成した後は、ドメインの DNS レコードを追加する必要があります。そのために、まずは DNS レコードとレコード セットについて理解することが必要です。
+この記事では、PowerShell を使用してレコードとレコード セットを作成する手順を説明します。DNS ゾーンを作成した後は、ドメインの DNS レコードを追加する必要があります。そのために、まずは DNS レコードとレコード セットについて理解することが必要です。
 
+[AZURE.INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
-## レコード セットとレコードについて
-各 DNS レコードには名前と種類があります。
+## 開始する前に
 
-_完全修飾_名にはゾーン名が含まれますが、_相対_名には含まれません。たとえば、"contoso.com" ゾーン内の相対レコード名 "www" によって、完全修飾レコード名 "www.contoso.com" が示されます。
-
->[AZURE.NOTE] Azure DNS では、相対名を使用してレコードを指定します。
-
-レコードは、含まれるデータによってさまざまな種類があります。最も一般的な種類は "A" レコードで、名前が IPv4 アドレスにマップされます。また、別の種類の "MX" レコードでは、名前がメール サーバーにマップされます。
-
-Azure DNS では、一般的な DNS レコードの種類である A、AAAA、CNAME、MX、NS、SOA、SRV、TXT をすべてサポートしています。([SPF レコードは、レコードの種類として TXT を使用して作成する必要があります](http://tools.ietf.org/html/rfc7208#section-3.1)。)
-
-場合によっては、特定の名前と種類の DNS レコードを複数作成する必要があることもあります。たとえば、www.contoso.com という Web サイトが 2 つの異なる IP アドレスでホストされているとします。この場合は、IP アドレスごとに異なる A レコードが、合計 2 つ必要になります。
-
-	www.contoso.com.		3600	IN	A	134.170.185.46
-	www.contoso.com.		3600	IN	A	134.170.188.221
-
-これはレコード セットの例です。レコード セットとは、1 つのゾーン内にある同じ名前、同じ種類の DNS レコードのコレクションです。ほとんどのレコード セットには 1 つのレコードが含まれていますが、上の例のように複数のレコードが含まれているレコード セットも珍しくはありません (SOA および CNAME という種類のレコード セットは例外で、DNS 標準により、これらの種類では同じ名前を持つ複数のレコードが許可されません)。
-
-Time-to-Live (TTL) は、各レコードが再度照会されるまでクライアントによってキャッシュされる期間を指定します。上の例では、TTL は 3600 秒、つまり 1 時間です。TTL は、各レコードではなく、レコード セットに対して指定されるため、そのレコード セット内のすべてのレコードに同じ値が使用されます。
-
->[AZURE.NOTE] Azure DNS は、レコード セットを使用して DNS レコードを管理します。
-
-
+Azure Resource Manager PowerShell コマンドレットの最新版がインストールされていることを確認します。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 ## レコード セットとレコードの作成
 
-次の例では、レコード セットとレコードの作成方法を示します。使用する DNS レコードの種類は "A" です。他の種類のレコードについては、「[DNS レコードの管理方法](dns-operations-recordsets.md)」を参照してください。
+このセクションでは、レコード セットとレコードの作成方法を示します。
 
 
-### 手順 1
+### 1\.サブスクリプションへの接続 
 
-レコード セットを作成し、変数 $rs に割り当てます。
+PowerShell コンソールを開き、アカウントに接続します。接続するには、次のサンプルを参照してください。
 
-	PS C:\>$rs = New-AzureRmDnsRecordSet -Name "www" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 60
+	Login-AzureRmAccount
 
-レコード セットには、DNS ゾーン "contoso.com" の相対名 "www" が含まれているため、レコードの完全修飾名は "www.contoso.com" になります。レコードの種類は "A" で、TTL は 60 秒です。
+アカウントのサブスクリプションを確認します。
 
->[AZURE.NOTE] ゾーンの頂点 (この場合は "contoso.com") にレコード セットを作成するには、レコード名 "@" (引用符を含みます) を使用します。これは、一般的な DNS の規則です。
+	Get-AzureRmSubscription 
 
-レコード セットは空であるため、新しく作成した "www" レコード セットを使用できるようにレコードを追加する必要があります。<BR>
+使用するサブスクリプションを指定します。
 
-### 手順 2
+	Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
-手順 1. でレコード セットの作成時に割り当てた $rs 変数を使用して、"www" レコード セットに IPv4 A レコードを追加します。
+PowerShell の使用方法の詳細については、「[リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
-	PS C:\> Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.185.46
-	PS C:\> Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.188.221
 
-Add-AzureRmDnsRecordConfig を使用してレコード セットにレコードを追加する操作は、オフライン操作です。ローカル変数 $rs のみが更新されます。
+### 2\.レコード セットの作成
 
-### 手順 3.
-レコード セットへの変更をコミットします。レコード セットへの変更を Azure DNS にアップロードするには、次のように Set-AzureRmDnsRecordSet を使用します。
+レコード セットは、`New-AzureRmDnsRecordSet` コマンドレットを使用して作成します。レコード セットを作成するとき、レコード セット名、ゾーン、Time-to-Live (TTL)、レコードの種類を指定する必要があります。
 
+ゾーンの頂点 (この場合は "contoso.com") にレコード セットを作成するには、レコード名 "@" (引用符を含みます) を使用します。これは、一般的な DNS の規則です。
+
+下の例では、DNS ゾーン *contoso.com* に相対名 *www* を持つレコード セットを作成します。レコードの完全修飾名は *www.contoso.com* になります。レコードの種類は *A* です。TTL は 60 秒です。この手順を完了すると、空の *www* レコード セットが作成され、変数 *$rs* に割り当てられます。
+
+	$rs = New-AzureRmDnsRecordSet -Name "www" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 60
+
+#### レコード セットが既に存在する場合
+
+レコード セットが既に存在する場合、*-Overwrite* スイッチを使用しないと、コマンドは失敗します。*-Overwrite* オプションによって確認プロンプトが表示されますが、これは *-Force* スイッチを使用して、表示されないように設定できます。
+
+
+	$rs = New-AzureRmDnsRecordSet -Name www -RecordType A -Ttl 300 -ZoneName contoso.com -ResouceGroupName MyAzureResouceGroup [-Tag $tags] [-Overwrite] [-Force]
+
+
+上の例では、ゾーンはゾーン名とリソース グループ名を使用して指定されています。あるいは、`Get-AzureRmDnsZone` または `New-AzureRmDnsZone` で返されるゾーン オブジェクトを指定できます。
+
+	$zone = Get-AzureRmDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
+	$rs = New-AzureRmDnsRecordSet -Name www -RecordType A -Ttl 300 –Zone $zone [-Tag $tags] [-Overwrite] [-Force]
+
+`New-AzureRmDnsRecordSet` は、Azure DNS で作成されたレコード セットを表すローカル オブジェクトを返します。
+
+### 3\.レコードの追加
+
+新しく作成した *www* レコード セットを使用できるようにするには、レコードをそれに追加する必要があります。下の例を利用し、IPv4 *A* レコードを *www* レコード セットに追加できます。この例は、前の手順で設定した変数の $rs に依存しています。
+
+`Add-AzureRmDnsRecordConfig` を使用してレコード セットにレコードを追加する操作はオフライン操作です。ローカル変数 *$rs* のみが更新されます。
+
+
+	Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.185.46
+	Add-AzureRmDnsRecordConfig -RecordSet $rs -Ipv4Address 134.170.188.221
+
+### 4\.変更をコミットする
+
+レコード セットへの変更をコミットします。レコード セットへの変更を Azure DNS にアップロードするには、`Set-AzureRmDnsRecordSet` を使用します。
 
 	Set-AzureRmDnsRecordSet -RecordSet $rs
 
-変更が完了しました。Get-AzureRmDnsRecordSet を使用して、Azure DNS からレコード セットを取得できます。
+### 5\.レコード セットを取得する
+
+次の例のように `Get-AzureRmDnsRecordSet` を使用し、Azure DNS からレコード セットを取得できます。
 
 
-	PS C:\> Get-AzureRmDnsRecordSet –Name www –RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
+	Get-AzureRmDnsRecordSet –Name www –RecordType A -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
 
 
 	Name              : www
@@ -100,13 +115,12 @@ Add-AzureRmDnsRecordConfig を使用してレコード セットにレコード�
 	Tags              : {}
 
 
-
 nslookup や他の DNS ツールを使用して、新しいレコード セットを照会することもできます。
 
->[AZURE.NOTE] ゾーンの作成時と同様に、まだドメインを Azure DNS ネーム サーバーに委任していない場合は、ゾーンのネーム サーバー アドレスを明示的に指定する必要があります。
+まだドメインを Azure DNS ネーム サーバーに委任していない場合、ゾーンのネーム サーバー アドレスを明示的に指定する必要があります。
 
 
-	C:\> nslookup www.contoso.com ns1-01.azure-dns.com
+	nslookup www.contoso.com ns1-01.azure-dns.com
 
 	Server: ns1-01.azure-dns.com
 	Address:  208.76.47.1
@@ -115,15 +129,21 @@ nslookup や他の DNS ツールを使用して、新しいレコード セッ�
 	Addresses:  134.170.185.46
     	        134.170.188.221
 
+## その他のレコードの種類の例
+
+
+次の例では、それぞれ 1 つのレコードを含む各種のレコード セットを作成する方法を示します。
+
+[AZURE.INCLUDE [dns-add-record-ps-include](../../includes/dns-add-record-ps-include.md)]
 
 
 ## 次のステップ
 
 [DNS ゾーンの管理方法](dns-operations-dnszones.md)
 
-[DNS レコードの管理方法](dns-operations-recordsets.md)<BR>
+[DNS レコードの管理方法](dns-operations-recordsets.md)
 
 [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -22,12 +22,7 @@
 
 ## 前提条件
 
-このチュートリアルは、次の API アプリ チュートリアル シリーズに基づいています。
-
-1. [Azure API アプリの作成](../app-service-dotnet-create-api-app)
-3. [Azure API アプリのデプロイ](../app-service-dotnet-deploy-api-app)
-4. [Azure API アプリのデバッグ](../app-service-dotnet-remotely-debug-api-app)
-
+このチュートリアルは、「[Azure API アプリの作成](../app-service-api/app-service-api-dotnet-get-started.md)」が基になっています。
 
 ## Visual Studio で ASP.NET MVC アプリケーションを作成する
 
@@ -89,4 +84,4 @@
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

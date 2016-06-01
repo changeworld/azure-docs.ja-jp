@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="05/18/2016" 
 	ms.author="luisca"/>
 
 #Machine Learning Recommendations API の設定と使用に関する FAQ
@@ -135,4 +135,4 @@ API ドキュメントは、「[Azure Machine Learning Recommendations - クイ�
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

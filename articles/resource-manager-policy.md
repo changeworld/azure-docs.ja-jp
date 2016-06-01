@@ -91,15 +91,13 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
 | [ | "in" : [ "&lt;value1&gt;","&lt;value2&gt;" ]|
 | ContainsKey | "containsKey" : "&lt;keyName&gt;" |
 
-### フィールドおよびソース
+### フィールド
 
 条件は、フィールドおよびソースを使用して構成します。フィールドは、リソースの状態の記述に使用されるリソース要求ペイロード内のプロパティを表します。ソースは、要求自体の特性を表します。
 
 次のフィールドおよびソースがサポートされています。
 
 フィールド: **name**、**kind**、**type**、**location**、**tags**、**tags.***、**property alias**。
-
-ソース: **action**
 
 ### プロパティのエイリアス 
 プロパティのエイリアスは、設定や SKU など、リソースの種類固有のプロパティにアクセスするためにポリシー定義で使用できる名前です。プロパティが存在するすべての API バージョンで機能します。エイリアスは、次の REST API を使用して取得できます (今後、Powershell のサポートが追加される予定です)。
@@ -339,8 +337,8 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
                 }
               },
               {
-                "source": "action",
-                "like": "Microsoft.Storage/*"
+                "field": "type",
+                "equals": "Microsoft.Storage/storageAccounts"
               }
             ]
         },
@@ -464,4 +462,4 @@ Get-AzureRmPolicyDefinition、Set-AzureRmPolicyDefinition、および Remove-Azu
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

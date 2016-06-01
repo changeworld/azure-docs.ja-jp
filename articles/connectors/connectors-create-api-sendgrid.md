@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/17/2016"
 ms.author="deonhe"/>
 
 # SendGrid コネクタの使用
@@ -25,7 +25,7 @@ SendGrid コネクタは、次のツールから使用できます。
 
 - [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)  
 - [PowerApps](http://powerapps.microsoft.com)  
-- [Flows](http://flows.microsoft.com)  
+- [フロー](http://flows.microsoft.com)  
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
@@ -57,9 +57,13 @@ SendGrid を使用してロジック アプリを作成するには、まず**�
 |プロパティ| 必須|説明|
 | ---|---|---|
 |ApiKey|あり|SendGrid API キーを指定します。|
-接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
+ 
+
+>[AZURE.INCLUDE [SendGrid への接続を作成する手順](../../includes/connectors-create-api-sendgrid.md)]
 
 >[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
+
+接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
 
 ## SendGrid のリファレンス
 適用されるバージョン: 1.0
@@ -121,7 +125,7 @@ SendGrid を使用してロジック アプリを作成するには、まず**�
 |fromname|string|いいえ |
 |] を [|string|あり |
 |toname|string|いいえ |
-|subject|string|はい |
+|subject|string|あり |
 |body|string|あり |
 |ishtml|boolean|いいえ |
 |cc|string|いいえ |
@@ -188,4 +192,4 @@ SendGrid を使用してロジック アプリを作成するには、まず**�
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

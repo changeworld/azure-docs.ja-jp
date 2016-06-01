@@ -3,7 +3,7 @@
 	description="Spark MLlib ツールキットのデータ探索およびモデリング機能を紹介します。"
 	services="machine-learning"
 	documentationCenter=""
-	authors="bradsev"
+	authors="bradsev,deguhath,gokuma"
 	manager="paulettm"
 	editor="cgronlun" />
 
@@ -13,21 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/18/2016"
+	ms.date="05/05/2016"
 	ms.author="deguhath;bradsev" />
 
 # Spark を使用したデータ探索とモデリング
 
 [AZURE.INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-## はじめに 
-
-このチュートリアルでは、HDInsight Spark を使用して、2013 年 NYC タクシー乗車および料金データセットのサンプルでデータ探索を実行し、二項分類および回帰モデリング タスクを実行します。チュートリアルでは、エンド ツー エンドの[データ サイエンス プロセス](http://aka.ms/datascienceprocess)の手順について説明します。処理には HDInsight Spark クラスターを使用し、Azure BLOB を使用してデータとモデルを保存します。プロセスでは、Azure Storage BLOB のデータを探索し、視覚化した後、予測モデルを構築するためのデータを準備します。これらのモデルは、二項分類および回帰モデリング タスクを実行する Spark MLlib キットを使用して構築されます。
+このチュートリアルでは、HDInsight Spark を使用して、2013 年 NYC タクシー乗車および料金データセットのサンプルでデータ探索を実行し、二項分類および回帰モデリング タスクを実行します。チュートリアルでは、エンド ツー エンドの[データ サイエンス プロセス](http://aka.ms/datascienceprocess)の手順について説明します。処理には HDInsight Spark クラスターを使用し、Azure BLOB にデータとモデルを保存します。プロセスでは、Azure Storage BLOB のデータを探索し、視覚化した後、予測モデルを構築するためのデータを準備します。これらのモデルは、二項分類および回帰モデリング タスクを実行する Spark MLlib キットを使用して構築されます。
 
 - **二項分類**タスクでは、乗車でチップが支払われるかどうかを予測します。 
 - **回帰**タスクでは、チップの他の特徴に基づいてチップの金額を予測します。 
-
-また、モデリング手順には、各種モデルをトレーニング、評価し、保存する方法を示すコードも含まれています。ソリューションのコーディングと関連するプロットの表示には、Python が使用されています。
 
 使用するモデルは、ロジスティック回帰と線形回帰、ランダム フォレスト、勾配ブースティング ツリーです。
 
@@ -36,24 +32,25 @@
 - [ランダム フォレスト](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)は、複数のデシジョン ツリーをまとめたものです。オーバーフィットのリスクを軽減するために、多くのデシジョン ツリーが結合されています。ランダム フォレストは回帰と分類に使用されます。カテゴリの特徴を処理し、多クラス分類設定に拡張できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。ランダム フォレストは、分類と回帰に使用される最も成功している機械学習モデルの 1 つです。
 - [勾配ブースティング ツリー](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。GBT は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。GBT は回帰と分類に使用されます。カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。また、多クラス分類設定でも使用できます。
 
+また、モデリング手順には、各種モデルをトレーニング、評価し、保存する方法を示すコードも含まれています。ソリューションのコーディングと関連するプロットの表示には、Python が使用されています。
 
->AZURE.NOTE: Spark MLlib ツールキットは、大規模なデータセットを操作することを目的としていますが、そのモデリング機能を紹介するために、便宜上、比較的小規模なサンプル (最大30 MB、170,000 行使用、元の NYC データセットの約 0.1%) を使用しています。ここでの演習は、2 つのワーカー ノードを含む HDInsight クラスターで効率的に実行されます (約 10 分)。少し変更を加えれば、同じコードを使用して大規模なデータセットを処理できます。メモリへのデータのキャッシュやクラスター サイズの変更など、適切な変更を加えてください。
+
+>[AZURE.NOTE] Spark MLlib ツールキットは、大規模なデータセットを操作することを目的としていますが、そのモデリング機能を紹介するために、便宜上、比較的小規模なサンプル (最大30 MB、170,000 行使用、元の NYC データセットの約 0.1%) を使用しています。ここでの演習は、2 つのワーカー ノードを含む HDInsight クラスターで効率的に実行されます (約 10 分)。少し変更を加えれば、同じコードを使用して大規模なデータセットを処理できます。メモリへのデータのキャッシュやクラスター サイズの変更など、適切な変更を加えてください。
 
 ## 前提条件
 
-このチュートリアルを開始するには、Azure アカウントと HDInsight Spark クラスターが必要です。このチュートリアルの要件、チュートリアルで使用される 2013 年 NYC タクシー データの説明、Spark クラスターで Jupyter Notebook のコードを実行する方法については、「[Overview of Data Science using Spark on Azure HDInsight (Azure HDInsight での Spark を使用したデータ サイエンスの概要)](machine-learning-data-science-spark-overview.md)」をご覧ください。このトピックのコード サンプルが含まれた **machine-learning-data-science-spark-data-exploration-modeling.ipynb** Notebook は、[Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Python) で入手できます。
+Azure アカウントと HDInsight Spark が必要となります。このチュートリアルを実行するには HDInsight 3.4 Spark 1.6 クラスターが必要です。このチュートリアルの要件、チュートリアルで使用される 2013 年 NYC タクシー データの説明、Spark クラスターで Jupyter Notebook のコードを実行する方法については、「[Overview of Data Science using Spark on Azure HDInsight (Azure HDInsight での Spark を使用したデータ サイエンスの概要)](machine-learning-data-science-spark-overview.md)」をご覧ください。このトピックのコード サンプルが含まれた **machine-learning-data-science-spark-data-exploration-modeling.ipynb** ノートブックは、[Github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) で入手できます。
 
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
-## セットアップ: ストレージの場所、ライブラリ、および Spark コンテキスト
+## セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
 
 Spark は、Azure Storage BLOB (WASB とも呼ばれます) に対する読み取りと書き込みを実行できます。そのため、WASB に保存されている既存のデータは Spark を使用して処理することができ、結果も WASB に保存できます。
 
 WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。Spark クラスターに接続されている既定のコンテナーは、"wasb///" で始まるパスを使用して参照できます。他の場所は "wasb://" で参照します。
 
-セットアップでは、必要なライブラリのインポートと Spark コンテキストの設定も行う必要があります。
 
 ### WASB 内のストレージの場所のディレクトリ パスを設定する
 
@@ -66,13 +63,13 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 	taxi_train_file_loc = "wasb://mllibwalkthroughs@cdspsparksamples.blob.core.windows.net/Data/NYCTaxi/JoinedTaxiTripFare.Point1Pct.Train.tsv";
 
 	# SET THE MODEL STORAGE DIRECTORY PATH 
-	# Note that the final backslash in the path is needed.
+	# NOTE THAT THE FINAL BACKSLASH IN THE PATH IS NEEDED.
 	modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/" 
 
 
-### 必要なライブラリをインポートし、Spark コンテキストを設定する 
+### ライブラリのインポート
 
-次のコードを使用して、Spark コンテキストを設定し、必要なライブラリをインポートします。
+セットアップでは、必要なライブラリのインポートも行う必要があります。次のコードを使用して、Spark コンテキストを設定し、必要なライブラリをインポートします。
 
 
 	# IMPORT LIBRARIES
@@ -80,7 +77,6 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 	from pyspark import SparkConf
 	from pyspark import SparkContext
 	from pyspark.sql import SQLContext
-	%matplotlib inline
 	import matplotlib
 	import matplotlib.pyplot as plt
 	from pyspark.sql import Row
@@ -90,21 +86,25 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 	from numpy import array
 	import numpy as np
 	import datetime
-	datetime.datetime.now()
-	
-	# SET SPARK CONTEXT
-	sc = SparkContext(conf=SparkConf().setMaster('yarn-client'))
-	sqlContext = SQLContext(sc)
-	atexit.register(lambda: sc.stop())
-	
-	sc.defaultParallelism
-
-**出力:**
-
-4
 
 
-## データの取り込み
+### プリセットの Spark コンテキストと PySpark マジック
+
+Jupyter Notebook で提供される PySpark カーネルは、コンテキストがあらかじめ設定されており、開発しているアプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。これらのカーネルは、既定で利用できます。各コンテキストは次のとおりです。
+
+- sc: Spark 用 
+- sqlContext: Hive 用
+
+PySpark カーネルには、"マジック"、つまり、%% で呼び出すことができる特別なコマンドがいくつか事前定義されています。そのようなコマンドが、以降のコード サンプルでは 2 つ使用されています。
+
+- **%%local** このコマンドを指定した場合、後続行のすべてのコードがローカルで実行されます。コードは有効な Python コードにする必要があります。
+- **%%sql -o <variable name>** sqlContext に対して Hive クエリを実行します。-o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
+ 
+
+Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前定義済みの "マジック" (%%local など) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。
+ 
+
+## パブリック BLOB からのデータの取り込み
 
 このセクションでは、モデル化するデータ サンプルの取り込みに必要な一連のタスクを実行するコードを紹介します。タクシーの乗車データおよび料金ファイル (.tsv ファイルとして保存) の結合された 0.1% サンプルを読み取り、データのフォーマットとクリーニングを行います。次に、データ フレームを作成してメモリにキャッシュし、SQL コンテキストで一時テーブルとして登録します。
 
@@ -152,7 +152,7 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 	                        float(p[11]),float(p[12]),p[13],p[14],p[15],p[16],p[17],p[18],float(p[19]),
 	                        float(p[20]),float(p[21]),float(p[22]),float(p[23]),float(p[24]),int(p[25]),int(p[26])))
 	
-	    
+	
 	# CREATE DATA FRAME
 	taxi_train_df = sqlContext.createDataFrame(taxi_temp, taxi_schema)
 	
@@ -162,7 +162,7 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 	    .drop('dropoff_longitude').drop('tip_class').drop('total_amount').drop('tolls_amount').drop('mta_tax')\
 	    .drop('direct_distance').drop('surcharge')\
 	    .filter("passenger_count > 0 and passenger_count < 8 AND payment_type in ('CSH', 'CRD') AND tip_amount >= 0 AND tip_amount < 30 AND fare_amount >= 1 AND fare_amount < 150 AND trip_distance > 0 AND trip_distance < 100 AND trip_time_in_secs > 30 AND trip_time_in_secs < 7200" )
-	
+
 	
 	# CACHE DATA-FRAME IN MEMORY & MATERIALIZE DF IN MEMORY
 	taxi_df_train_cleaned.cache()
@@ -174,11 +174,11 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 	# PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
 	timeend = datetime.datetime.now()
 	timedelta = round((timeend-timestart).total_seconds(), 2) 
-	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+	print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **出力:**
 
-上記のセルの実行に要した時間: 19.8 秒
+上記のセルの実行に要した時間: 51.72 秒
 
 
 ## データの探索と視覚化
@@ -187,67 +187,92 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 
 ### タクシー乗車データのサンプルで乗客数の頻度のヒストグラムをプロットする
 
-このコードでは、SQL squery を使用してデータをサンプリングし、結果を Pandas データ フレームに変換してプロットします。
+このコードおよび後続のスニペットでは、SQL マジックを使用してサンプルを照会し、ローカル マジックを使用してデータをプロットしています。
+
+- **SQL マジック (`%%sql`)** HDInsight PySpark カーネルは、sqlContext に対する簡単なインライン HiveQL クエリをサポートしています。引数 (-o VARIABLE\_NAME) を指定すると、SQL クエリの出力結果が Pandas データフレームとして Jupyter サーバー上に永続化されます。つまり、出力結果をローカルから使用できるようになります。
+- **`%%local` マジック**は、Jupyter サーバー (HDInsight クラスターのヘッドノード) 上のローカルでコードを実行するときに使用します。通常、`%%local` マジックは、`%%sql` マジック (-o パラメーター) と組み合わせて使用します。SQL クエリの出力結果を -o パラメーターでローカルに永続化したうえで、%%local マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
+
+その出力結果は、コードの実行後、自動的に視覚化されます。
+
+次のクエリは、乗客数ごとの乗車回数を取得しています。
 
 	# PLOT FREQUENCY OF PASSENGER COUNTS IN TAXI TRIPS
 
-	# SQL SQUERY
-	sqlStatement = """
-	    SELECT passenger_count, COUNT(*) as trip_counts 
-	    FROM taxi_train 
-	    WHERE passenger_count > 0 and passenger_count < 7
-	    GROUP BY passenger_count 
-	"""
-	sqlResults = sqlContext.sql(sqlStatement)
+	# HIVEQL QUERY AGAINST THE sqlContext
+	%%sql -q -o sqlResults
+	SELECT passenger_count, COUNT(*) as trip_counts 
+	FROM taxi_train 
+	WHERE passenger_count > 0 and passenger_count < 7 
+	GROUP BY passenger_count 
+
+以下のコードは、クエリの出力結果からローカル データフレームを作成し、データをプロットします。`%%local` マジックでローカル データフレーム (`sqlResults`) を作成し、そのデータを matplotlib でプロットします。
+
+>[AZURE.NOTE] この PySpark マジックは、このチュートリアルの中でたびたび使用しています。データの量が大きい場合はサンプリングして、ローカル メモリに収まるようにデータフレームを作成する必要があります。
+
+	#CREATE LOCAL DATA-FRAME AND USE FOR MATPLOTLIB PLOTTING
+
+	# RUN THE CODE LOCALLY ON THE JUPYTER SERVER
+	%%local
 	
-	#CONVERT TO PANDAS DATA FRAME FOR PLOTTING IN PYTHON
-	resultsPDDF = sqlResults.toPandas()
-	
+	# USE THE JUPYTER AUTO-PLOTTING FEATURE TO CREATE INTERACTIVE FIGURES. 
+	# CLICK ON THE TYPE OF PLOT TO BE GENERATED (E.G. LINE, AREA, BAR ETC.)
+	sqlResults
+
+乗客数ごとの乗車回数をプロットするコードを次に示します。
+
 	# PLOT PASSENGER NUMBER VS. TRIP COUNTS
-	x_labels = resultsPDDF['passenger_count'].values
-	fig = resultsPDDF[['trip_counts']].plot(kind='bar', facecolor='lightblue')
+	%%local
+	import matplotlib.pyplot as plt
+	%matplotlib inline
+	
+	x_labels = sqlResults['passenger_count'].values
+	fig = sqlResults[['trip_counts']].plot(kind='bar', facecolor='lightblue')
 	fig.set_xticklabels(x_labels)
-	fig.set_title('Frequency of trips by passenger count')
+	fig.set_title('Counts of trips by passenger count')
+	fig.set_xlabel('Passenger count in trips')
+	fig.set_ylabel('Trip counts')
 	plt.show()
 
 **出力:**
 
 ![乗客数別乗車頻度](./media/machine-learning-data-science-spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
 
+視覚化にはいくつかの種類 (表、円グラフ、折れ線グラフ、面グラフ、棒グラフ) があり、ノートブックの **[Type]** (タイプ) メニュー ボタンで選択できます。ここに示したのは棒グラフによるプロットです。
 	
-### チップの金額と、支払金額および支払の種類によるチップの金額の変化のヒストグラムをプロットする
+### チップの金額と、乗客数別および料金別のチップ金額の変化のヒストグラムをプロットする
 
-このコードでは、SQL squery を使用してデータをサンプリングし、結果を Pandas データ フレームに変換してプロットします。
+SQL クエリを使用してデータをサンプリングします。
 
 	#PLOT HISTOGRAM OF TIP AMOUNTS AND VARIATION BY PASSENGER COUNT AND PAYMENT TYPE
+	
+	# HIVEQL QUERY AGAINST THE sqlContext
+	%%sql -q -o sqlResults
+	SELECT fare_amount, passenger_count, tip_amount, tipped 
+	FROM taxi_train 
+	WHERE passenger_count > 0 
+	AND passenger_count < 7 
+	AND fare_amount > 0 
+	AND fare_amount < 200 
+	AND payment_type in ('CSH', 'CRD') 
+	AND tip_amount > 0 
+	AND tip_amount < 25
 
-	# RECORD START TIME
-	timestart = datetime.datetime.now()
+
+次のコード セルでは、サンプリングされたデータに対し、SQL クエリを使用して 3 つのプロットを作成しています。
+
+	# RUN THE CODE LOCALLY ON THE JUPYTER SERVER
+	%%local
 	
-	# SQL SQUERY
-	sqlStatement = """
-	    SELECT fare_amount, passenger_count, tip_amount, tipped
-	    FROM taxi_train 
-	    WHERE passenger_count > 0 AND passenger_count < 7
-	    AND fare_amount > 0 AND fare_amount < 200
-	    AND payment_type in ('CSH', 'CRD')
-	    AND tip_amount > 0 AND tip_amount < 25
-	"""
-	sqlResults = sqlContext.sql(sqlStatement)
-	
-	#CONVERT TO PANDAS DATA FRAME FOR PLOTTING IN PYTHON
-	resultsPDDF= sqlResults.toPandas()
-	
-	# HISTOGRAM OF TIP AMOUNTS
-	ax1 = resultsPDDF[['tip_amount']].plot(kind='hist', bins=25, facecolor='lightblue')
+	# HISTOGRAM OF TIP AMOUNTS AND PASSENGER COUNT
+	ax1 = sqlResults[['tip_amount']].plot(kind='hist', bins=25, facecolor='lightblue')
 	ax1.set_title('Tip amount distribution')
 	ax1.set_xlabel('Tip Amount ($)')
 	ax1.set_ylabel('Counts')
 	plt.suptitle('')
 	plt.show()
 	
-	# TIP AMOUNT BY PASSENGER COUNT
-	ax2 = resultsPDDF.boxplot(column=['tip_amount'], by=['passenger_count'])
+	# TIP BY PASSENGER COUNT
+	ax2 = sqlResults.boxplot(column=['tip_amount'], by=['passenger_count'])
 	ax2.set_title('Tip amount by Passenger count')
 	ax2.set_xlabel('Passenger count')
 	ax2.set_ylabel('Tip Amount ($)')
@@ -255,17 +280,12 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 	plt.show()
 	
 	# TIP AMOUNT BY FARE AMOUNT, POINTS ARE SCALED BY PASSENGER COUNT
-	ax = resultsPDDF.plot(kind='scatter', x= 'fare_amount', y = 'tip_amount', c='blue', alpha = 0.10, s=5*(resultsPDDF.passenger_count))
+	ax = sqlResults.plot(kind='scatter', x= 'fare_amount', y = 'tip_amount', c='blue', alpha = 0.10, s=5*(sqlResults.passenger_count))
 	ax.set_title('Tip amount by Fare amount')
 	ax.set_xlabel('Fare Amount ($)')
 	ax.set_ylabel('Tip Amount ($)')
-	plt.axis([-2, 120, -2, 30])
+	plt.axis([-2, 100, -2, 20])
 	plt.show()
-	
-	# PRINT ELAPSED TIME
-	timeend = datetime.datetime.now()
-	timedelta = round((timeend-timestart).total_seconds(), 2) 
-	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
 **出力:**
@@ -275,8 +295,6 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 ![乗客数別チップの金額](./media/machine-learning-data-science-spark-data-exploration-modeling/tip-amount-by-passenger-count.png)
 
 ![料金別チップの金額](./media/machine-learning-data-science-spark-data-exploration-modeling/tip-amount-by-fare-amount.png)
-
-上記のセルの実行に要した時間: 10.61 秒
 
 
 ## モデリングのための特徴エンジニアリング、変換、およびデータの準備
@@ -294,7 +312,7 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 
 次のコードでは、時間を乗車時間のバケットにビン分割して新しい特徴を作成する方法と、結果として生成されたデータ フレームをメモリにキャッシュする方法を示します。Resilient Distributed Dataset (RDD) とデータ フレームを繰り返し使用する場合、キャッシュによって実行時間が短縮されます。そのため、このチュートリアルでは複数の段階で RDD とデータ フレームをキャッシュしています。
 
-	## CREATE FOUR BUCKETS FOR TRAFFIC TIMES
+	# CREATE FOUR BUCKETS FOR TRAFFIC TIMES
 	sqlStatement = """
 	    SELECT *,
 	    CASE
@@ -307,7 +325,9 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 	"""
 	taxi_df_train_with_newFeatures = sqlContext.sql(sqlStatement)
 	
-	## CACHE DATA FRAME IN MEMORY & MATERIALIZE IT IN MEMORY
+	# CACHE DATA-FRAME IN MEMORY & MATERIALIZE DF IN MEMORY
+	# THE .COUNT() GOES THROUGH THE ENTIRE DATA-FRAME,
+	# MATERIALIZES IT IN MEMORY, AND GIVES THE COUNT OF ROWS.
 	taxi_df_train_with_newFeatures.cache()
 	taxi_df_train_with_newFeatures.count()
 
@@ -321,7 +341,7 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 
 - **ツリー ベースのモデリング**では、カテゴリを数値としてエンコードする必要があります (たとえば、3 つのカテゴリを持つ特徴は、0、1、2 でエンコードできます)。これは、MLlib の [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) 関数によって提供されます。この関数は、ラベルの文字列型の列を、ラベルの頻度で順序付けられたラベル インデックスの列にエンコードします。入力とデータ処理のために数値でインデックスを作成しますが、ツリー ベースのアルゴリズムでは、これらの数値をカテゴリとして適切に処理するように指定できます。 
 
-- **ロジスティック回帰モデルと線形回帰モデル**では、ワンホット エンコードが必要です。たとえば、3 つのカテゴリを持つ特徴は、観察のカテゴリに応じてそれぞれ 0 または 1 が含まれた 3 つの特徴列に展開できます。MLlib には、ワンホット エンコードを実行する [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 関数が用意されています。このエンコーダーは、ラベル インデックスの列をバイナリ ベクトルの列にマップします。この列に含まれる値は最大でも 1 つだけです。このエンコードにより、連続値を持つ特徴を必要とするアルゴリズム (ロジスティック回帰など) をカテゴリの特徴に適用できます。
+- **ロジスティック回帰モデルと線形回帰モデル**では、ワンホット エンコードが必要です。たとえば、3 つのカテゴリを持つ特徴は、観察のカテゴリに応じてそれぞれ 0 または 1 が含まれた 3 つの特徴列に展開できます。MLlib には、ワンホット エンコードを実行する [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 関数が用意されています。このエンコーダーは、ラベル インデックスの列をバイナリ ベクトルの列にマップします。この列に含まれる値は最大でも 1 つだけです。このエンコードにより、数値を持つ特徴を必要とするアルゴリズム (ロジスティック回帰など) をカテゴリの特徴に適用できます。
 
 カテゴリの特徴のインデックス作成とエンコードを実行するコードを次に示します。
 
@@ -369,7 +389,7 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 
 **出力:**
 
-上記のセルの実行に要した時間: 1.42 秒
+上記のセルの実行に要した時間: 1.28 秒
 
 ### ML 関数への入力用にラベル付きポイント オブジェクトを作成する
 
@@ -377,10 +397,11 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 
 このセクションのコードでは、[ラベル付きポイント](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) データ型としてカテゴリ テキスト データのインデックスを作成し、MLlib ロジスティック回帰モデルや他の分類モデルのトレーニングとテストに使用できるように、カテゴリ テキスト データをエンコードする方法を示します。ラベル付きポイント オブジェクトは、ラベル (ターゲット変数/応答変数) と特徴ベクトルで構成された Resilient Distributed Dataset (RDD) です。この形式は、MLlib の多くの ML アルゴリズムで入力として必要とされます。
 
+以下に示したのは、二項分類に使用するテキストの特徴のインデックスを作成してエンコードするコードです。
 
 	# FUNCTIONS FOR BINARY CLASSIFICATION
 
-	# LOAD PYSPARK LIBRARIES
+	# LOAD LIBRARIES
 	from pyspark.mllib.regression import LabeledPoint
 	from numpy import array
 
@@ -401,6 +422,8 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 	    labPt = LabeledPoint(line.tipped, features)
 	    return  labPt
 
+
+以下に示したのは、線形回帰分析に使用するカテゴリ テキストの特徴をエンコードしてインデックスを作成するコードです。
 
 	# FUNCTIONS FOR REGRESSION WITH TIP AMOUNT AS TARGET VARIABLE
 
@@ -464,15 +487,18 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 
 **出力:**
 
-上記のセルの実行に要した時間: 0.26 秒
+上記のセルの実行に要した時間: 0.24 秒
 
 
 ### 特徴のスケーリング
 
 特徴のスケーリングはデータ正規化とも呼ばれ、目的関数で広く分散した値を持つ特徴に過大な重みが与えられないようにします。特徴のスケーリングのコードでは、[StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) を使用して特徴を単価差異にスケーリングします。これは、確率的勾配降下 (SGD) による線形回帰に使用するために、MLlib で提供されています。SGD は、正規化回帰やサポート ベクター マシン (SVM) などの他のさまざまな機械学習モデルのトレーニングに広く使用されているアルゴリズムです。
 
->AZURE.NOTE: LinearRegressionWithSGD アルゴリズムは特徴のスケーリングの影響を受けやすいことがわかりました。
+>[AZURE.NOTE] LinearRegressionWithSGD アルゴリズムは特徴のスケーリングの影響を受けやすいことがわかりました。
 
+正規化線形 SGD アルゴリズムで使用するために変数をスケーリングするコードを次に示します。
+
+	# FEATURE SCALING
 
 	# RECORD START TIME
 	timestart = datetime.datetime.now()
@@ -503,7 +529,7 @@ WASB にモデルやファイルを保存するには、パスを正しく指定
 
 **出力:**
 
-上記のセルの実行に要した時間: 6.63 秒
+上記のセルの実行に要した時間: 13.17 秒
 
 
 ### オブジェクトをメモリにキャッシュする
@@ -536,7 +562,7 @@ ML アルゴリズムのトレーニングとテストの所要時間は、分�
 
 **出力:**
 
-上記のセルの実行に要した時間: 0.11 秒
+上記のセルの実行に要した時間: 0.15 秒
 
 
 ## 二項分類モデルを使用してチップが支払われるかどうかを予測する
@@ -555,15 +581,18 @@ ML アルゴリズムのトレーニングとテストの所要時間は、分�
 
 ### ロジスティック回帰を使用した分類
 
-このセクションのコードでは、NYC タクシー乗車および料金データセットで、乗車でチップが支払われるかどうかを予測するロジスティック回帰モデル ([LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) を使用) をトレーニング、評価し、保存する方法を示します。
+このセクションのコードでは、NYC タクシーの乗車と料金のデータセットで、乗車でチップが支払われるかどうかを予測するロジスティック回帰モデル ([LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) を使用) をトレーニング、評価し、保存する方法を示します。
 
+**CV とハイパーパラメーター スイープを使用してロジスティック回帰モデルをトレーニングする**
 
-	#PREDICT WHETHER A TIP IS PAID OR NOT USING LOGISTIC REGRESSION WITH LBFGS
+	# LOGISTIC REGRESSION CLASSIFICATION WITH CV AND HYPERPARAMETER SWEEPING
+
+	# GET ACCURACY FOR HYPERPARAMETERS BASED ON CROSS-VALIDATION IN TRAINING DATA-SET
 
 	# RECORD START TIME
 	timestart = datetime.datetime.now()
 	
-	# LOAD PYSPARK LIBRARIES
+	# LOAD LIBRARIES
 	from pyspark.mllib.classification import LogisticRegressionWithLBFGS 
 	from sklearn.metrics import roc_curve,auc
 	from pyspark.mllib.evaluation import BinaryClassificationMetrics
@@ -575,6 +604,33 @@ ML アルゴリズムのトレーニングとテストの所要時間は、分�
 	                                               regParam=0.01, regType='l2', intercept=True, corrections=10, 
 	                                               tolerance=0.0001, validateData=True, numClasses=2)
 	
+	# PRINT COEFFICIENTS AND INTERCEPT OF THE MODEL
+	# NOTE: There are 20 coefficient terms for the 10 features, 
+	#       and the different categories for features: vendorVec (2), rateVec, paymentVec (6), TrafficTimeBinsVec (4)
+	print("Coefficients: " + str(logitModel.weights))
+	print("Intercept: " + str(logitModel.intercept))
+	
+	# PRINT ELAPSED TIME
+	timeend = datetime.datetime.now()
+	timedelta = round((timeend-timestart).total_seconds(), 2) 
+	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+
+
+**出力:**
+
+係数: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.48124578069e-05, -0.00247646947233, -0.00165897881503, 0.0675394837328, -0.111823113101, -0.324609912762, -0.204549780032, -1.36499216354, 0.591088507921, -0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
+
+切片: -0.0111216486893
+
+上記のセルの実行に要した時間: 14.43 秒
+
+**標準メトリックで二項分類モデルを評価する**
+
+	#EVALUATE LOGISTIC REGRESSION MODEL WITH LBFGS
+
+	# RECORD START TIME
+	timestart = datetime.datetime.now()
+
 	# PREDICT ON TEST DATA WITH MODEL
 	predictionAndLabels = oneHotTESTbinary.map(lambda lp: (float(logitModel.predict(lp.features)), lp.label))
 	
@@ -596,13 +652,61 @@ ML アルゴリズムのトレーニングとテストの所要時間は、分�
 	print("Precision = %s" % precision)
 	print("Recall = %s" % recall)
 	print("F1 Score = %s" % f1Score)
+
+
+	## SAVE MODEL WITH DATE-STAMP
+	datestamp = unicode(datetime.datetime.now()).replace(' ','').replace(':','_');
+	logisticregressionfilename = "LogisticRegressionWithLBFGS_" + datestamp;
+	dirfilename = modelDir + logisticregressionfilename;
+	logitModel.save(sc, dirfilename);
 	
-	# CREATE A PANDAS DATA-FRAME AND PLOT ROC-CURVE, FROM PREDICTED PROBS AND LABELS                                     
+	# OUTPUT PROBABILITIES AND REGISTER TEMP TABLE
 	logitModel.clearThreshold(); # This clears threshold for classification (0.5) and outputs probabilities
 	predictionAndLabelsDF = predictionAndLabels.toDF()
-	test_predictions = predictionAndLabelsDF.toPandas()
-	predictions_pddf = test_predictions.rename(columns={'_1': 'probability', '_2': 'label'})
+	predictionAndLabelsDF.registerTempTable("tmp_results");
 	
+	# PRINT ELAPSED TIME
+	timeend = datetime.datetime.now()
+	timedelta = round((timeend-timestart).total_seconds(), 2) 
+	print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+
+**出力:**
+
+PR 下面積 = 0.985297691373
+
+ROC 下面積 = 0.983714670256
+
+要約統計量
+
+精度 = 0.984304060189
+
+再現率 = 0.984304060189
+
+F1 スコア = 0.984304060189
+
+上記のセルの実行に要した時間: 57.61 秒
+
+**ROC 曲線をプロットする**
+
+*predictionAndLabelsDF* は、既出のセルでテーブル (*tmp\_results*) として登録されています。*tmp\_results* を使用してクエリを実行したり、sqlResults データフレームに結果を出力してプロットしたりすることができます。次にコードを示します。
+
+
+	# QUERY RESULTS                              
+	%%sql -q -o sqlResults
+	SELECT * from tmp_results
+
+
+予測を行って ROC 曲線をプロットするコードを次に示します。
+
+	# MAKE PREDICTIONS AND PLOT ROC-CURVE
+
+	# RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
+	%%local
+	%matplotlib inline
+	from sklearn.metrics import roc_curve,auc
+
+	# MAKE PREDICTIONS
+	predictions_pddf = test_predictions.rename(columns={'_1': 'probability', '_2': 'label'})
 	prob = predictions_pddf["probability"] 
 	fpr, tpr, thresholds = roc_curve(predictions_pddf['label'], prob, pos_label=1);
 	roc_auc = auc(fpr, tpr)
@@ -619,27 +723,13 @@ ML アルゴリズムのトレーニングとテストの所要時間は、分�
 	plt.legend(loc="lower right")
 	plt.show()
 	
-	## SAVE MODEL WITH DATE-STAMP
-	datestamp = unicode(datetime.datetime.now()).replace(' ','').replace(':','_');
-	logisticregressionfilename = "LogisticRegressionWithLBFGS_" + datestamp;
-	dirfilename = modelDir + logisticregressionfilename;
-	
-	logitModel.save(sc, dirfilename);
-	
-	# PRINT ELAPSED TIME
-	timeend = datetime.datetime.now()
-	timedelta = round((timeend-timestart).total_seconds(), 2) 
-	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 **出力:**
 
-PR 下面積 = 0.985319161941 ROC 下面積 = 0.983511076103 要約統計量の精度 = 0.984187223276 再現率 = 0.984187223276 F1 スコア = 0.984187223276
-
 ![Logistic regression ROC curve.png](./media/machine-learning-data-science-spark-data-exploration-modeling/logistic-regression-roc-curve.png)
 
-上記のセルの実行に要した時間: 26.63 秒
 
-### ランダム フォレスト モデル分類
+### ランダム フォレスト分類
 
 このセクションのコードでは、NYC タクシー乗車および料金データセットで、乗車でチップが支払われるかどうかを予測するランダム フォレスト モデルをトレーニング、評価し、保存する方法を示します。
 	
@@ -672,8 +762,6 @@ PR 下面積 = 0.985319161941 ROC 下面積 = 0.983511076103 要約統計量の�
 	
 	# AREA UNDER ROC CURVE
 	metrics = BinaryClassificationMetrics(predictionAndLabels)
-
-	# PRINT TEST METRICS
 	print("Area under ROC = %s" % metrics.areaUnderROC)
 	
 	# PERSIST MODEL IN BLOB
@@ -690,7 +778,9 @@ PR 下面積 = 0.985319161941 ROC 下面積 = 0.983511076103 要約統計量の�
 
 **出力:**
 
-ROC 下面積 = 0.985240932843 上記のセルの実行に要した時間: 25.62 秒
+ROC 下面積 = 0.985297691373
+
+上記のセルの実行に要した時間: 31.09 秒
 
 
 ### 勾配ブースティング ツリー分類
@@ -734,12 +824,19 @@ ROC 下面積 = 0.985240932843 上記のセルの実行に要した時間: 25.62
 	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
+**出力:**
+
+ROC 下面積 = 0.985297691373
+
+上記のセルの実行に要した時間: 19.76 秒
+
+
 ## 回帰モデルを使用してタクシー乗車でのチップの金額を予測する
 
 このセクションでは、チップの他の特徴に基づいて、タクシーの乗車で支払われるチップの金額を予測する回帰タスクで 3 つのモデルを使用する方法を示します。使用するモデルは次のとおりです。
 
 - 正規化線形回帰
-- ランダム フォレスト モデル
+- ランダム フォレスト
 - 勾配ブースティング ツリー
 
 これらのモデルについては、「はじめに」で説明しました。各モデル構築コードのセクションは、次のステップに分けることができます。
@@ -752,20 +849,27 @@ ROC 下面積 = 0.985240932843 上記のセルの実行に要した時間: 25.62
 
 このセクションのコードでは、スケーリングされた特徴を使用して、最適化に確率的勾配降下 (SGD) を使用する線形回帰をトレーニングする方法と、このモデルにスコアを付け、評価し、Azure BLOB Storage (WASB) に保存する方法を示します。
 
->AZURE.NOTE: 経験上、LinearRegressionWithSGD モデルの収束で頻繁に問題が発生する可能性があるので、有効なモデルを入手するために、パラメーターを慎重に変更/最適化する必要があります。変数のスケーリングが非常に有効です (下記を参照)。
+>[AZURE.TIP] 経験上、LinearRegressionWithSGD モデルの収束で問題が発生する可能性があるため、有効なモデルを入手するために、パラメーターを慎重に変更/最適化する必要があります。収束には変数のスケーリングがきわめて有効です。
+
 
 	#PREDICT TIP AMOUNTS USING LINEAR REGRESSION WITH SGD
 
 	# RECORD START TIME
 	timestart = datetime.datetime.now()
 	
-	# LOAD PYSPARK LIBRARIES
+	# LOAD LIBRARIES
 	from pyspark.mllib.regression import LabeledPoint, LinearRegressionWithSGD, LinearRegressionModel
 	from pyspark.mllib.evaluation import RegressionMetrics
 	from scipy import stats
 	
 	# USE SCALED FEATURES TO TRAIN MODEL
 	linearModel = LinearRegressionWithSGD.train(oneHotTRAINregScaled, iterations=100, step = 0.1, regType='l2', regParam=0.1, intercept = True)
+
+	# PRINT COEFFICIENTS AND INTERCEPT OF THE MODEL
+	# NOTE: There are 20 coefficient terms for the 10 features, 
+	#       and the different categories for features: vendorVec (2), rateVec, paymentVec (6), TrafficTimeBinsVec (4)
+	print("Coefficients: " + str(linearModel.weights))
+	print("Intercept: " + str(linearModel.intercept))
 	
 	# SCORE ON SCALED TEST DATA-SET & EVALUATE
 	predictionAndLabels = oneHotTESTregScaled.map(lambda lp: (float(linearModel.predict(lp.features)), lp.label))
@@ -775,7 +879,7 @@ ROC 下面積 = 0.985240932843 上記のセルの実行に要した時間: 25.62
 	print("RMSE = %s" % testMetrics.rootMeanSquaredError)
 	print("R-sqr = %s" % testMetrics.r2)
 	
-	# SAVE MODEL IN BLOB
+	# SAVE MODEL WITH DATE-STAMP IN THE DEFAULT BLOB FOR THE CLUSTER
 	datestamp = unicode(datetime.datetime.now()).replace(' ','').replace(':','_');
 	linearregressionfilename = "LinearRegressionWithSGD_" + datestamp;
 	dirfilename = modelDir + linearregressionfilename;
@@ -787,10 +891,22 @@ ROC 下面積 = 0.985240932843 上記のセルの実行に要した時間: 25.62
 	timedelta = round((timeend-timestart).total_seconds(), 2) 
 	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
+**出力:**
+
+係数: [0.00457675809917, -0.0226314167349, -0.0191910355236, 0.246793409578, 0.312047890459, 0.359634405999, 0.00928692253981, -0.000987181489428, -0.0888306617845, 0.0569376211553, 0.115519551711, 0.149250164995, -0.00990211159703, -0.00637410344522, 0.545083566179, -0.536756072402, 0.0105762393099, -0.0130117577055, 0.0129304737772, -0.00171065945959]
+
+切片: 0.853872718283
+
+RMSE = 1.24190115863
+
+R-sqr = 0.608017146081
+
+上記のセルの実行に要した時間: 58.42 秒
+
 
 ### ランダム フォレスト回帰
 
-このセクションのコードでは、NYC タクシー乗車データでチップの金額を予測するランダム フォレスト モデルをトレーニング、評価し、保存する方法を示します。
+このセクションのコードでは、NYC タクシー乗車データでチップの金額を予測するランダム フォレスト回帰をトレーニング、評価し、保存する方法を示します。
 
 
 	#PREDICT TIP AMOUNTS USING RANDOM FOREST
@@ -816,9 +932,9 @@ ROC 下面積 = 0.985240932843 上記のセルの実行に要した時間: 25.62
 	## PREDICT AND EVALUATE ON TEST DATA-SET
 	predictions = rfModel.predict(indexedTESTreg.map(lambda x: x.features))
 	predictionAndLabels = oneHotTESTreg.map(lambda lp: lp.label).zip(predictions)
-	testMetrics = RegressionMetrics(predictionAndLabels)
 
-	# PRINT TEST METRICS
+	# TEST METRICS
+	testMetrics = RegressionMetrics(predictionAndLabels)
 	print("RMSE = %s" % testMetrics.rootMeanSquaredError)
 	print("R-sqr = %s" % testMetrics.r2)
 	
@@ -834,11 +950,20 @@ ROC 下面積 = 0.985240932843 上記のセルの実行に要した時間: 25.62
 	timedelta = round((timeend-timestart).total_seconds(), 2) 
 	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
+**出力:**
+
+RMSE = 0.891209218139
+
+R-sqr = 0.759661334921
+
+上記のセルの実行に要した時間: 49.21 秒
+
 
 ### 勾配ブースティング ツリー回帰
 
 このセクションのコードでは、NYC タクシー乗車データでチップの金額を予測する勾配ブースティング ツリー モデルをトレーニング、評価し、保存する方法を示します。
 
+****トレーニングと評価**
 
 	#PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -857,16 +982,53 @@ ROC 下面積 = 0.985240932843 上記のセルの実行に要した時間: 25.62
 	## EVALUATE A TEST DATA-SET
 	predictions = gbtModel.predict(indexedTESTreg.map(lambda x: x.features))
 	predictionAndLabels = indexedTESTreg.map(lambda lp: lp.label).zip(predictions)
-	testMetrics = RegressionMetrics(predictionAndLabels)
 
-	# PRINT TEST METRICS
+	# TEST METRICS
+	testMetrics = RegressionMetrics(predictionAndLabels)
 	print("RMSE = %s" % testMetrics.rootMeanSquaredError)
 	print("R-sqr = %s" % testMetrics.r2)
+
+	# SAVE MODEL IN BLOB
+	datestamp = unicode(datetime.datetime.now()).replace(' ','').replace(':','_');
+	btregressionfilename = "GradientBoostingTreeRegression_" + datestamp;
+	dirfilename = modelDir + btregressionfilename;
+	gbtModel.save(sc, dirfilename)
 	
-	# PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
+	# CONVER RESULTS TO DF AND REGISER TEMP TABLE
 	test_predictions = sqlContext.createDataFrame(predictionAndLabels)
-	test_predictions_pddf = test_predictions.toPandas()
+	test_predictions.registerTempTable("tmp_results");
 	
+	# PRINT ELAPSED TIME
+	timeend = datetime.datetime.now()
+	timedelta = round((timeend-timestart).total_seconds(), 2) 
+	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+
+**出力:**
+
+RMSE = 0.908473148639
+
+R-sqr = 0.753835096681
+
+上記のセルの実行に要した時間: 34.52 秒
+
+**プロット**
+
+*tmp\_results* は、既出のセルで Hive テーブルとして登録されています。このテーブルからの結果を *sqlResults* データフレームに出力し、プロットに使用しています。次にコードを示します。
+
+	# PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
+
+	# SELECT RESULTS
+	%%sql -q -o sqlResults
+	SELECT * from tmp_results
+
+Jupyter サーバーを使用してデータをプロットするコードを次に示します。
+
+	# RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
+	%%local
+	%matplotlib inline
+	import numpy as np
+
+	# PLOT 
 	ax = test_predictions_pddf.plot(kind='scatter', figsize = (6,6), x='_1', y='_2', color='blue', alpha = 0.25, label='Actual vs. predicted');
 	fit = np.polyfit(test_predictions_pddf['_1'], test_predictions_pddf['_2'], deg=1)
 	ax.set_title('Actual vs. Predicted Tip Amounts ($)')
@@ -876,23 +1038,8 @@ ROC 下面積 = 0.985240932843 上記のセルの実行に要した時間: 25.62
 	plt.axis([-1, 20, -1, 20])
 	plt.show(ax)
 	
-	# SAVE MODEL IN BLOB
-	datestamp = unicode(datetime.datetime.now()).replace(' ','').replace(':','_');
-	btregressionfilename = "GradientBoostingTreeRegression_" + datestamp;
-	dirfilename = modelDir + btregressionfilename;
-	
-	gbtModel.save(sc, dirfilename)
-	
-	# PRINT ELAPSED TIME
-	timeend = datetime.datetime.now()
-	timedelta = round((timeend-timestart).total_seconds(), 2) 
-	print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTLOOK**
-
-RMSE = 0.962160568829
-
-R-sqr = 0.717354800581
+**出力:**
 
 ![Actual-vs-predicted-tip-amounts](./media/machine-learning-data-science-spark-data-exploration-modeling/actual-vs-predicted-tips.png)
 
@@ -935,10 +1082,27 @@ R-sqr = 0.717354800581
 	print "BoostedTreeRegressionFileLoc = modelDir + "" + btregressionfilename + """;
 
 
+**出力**
+
+logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS\_2016-05-0317\_03\_23.516568"
+
+linearRegFileLoc = modelDir + "LinearRegressionWithSGD\_2016-05-0317\_05\_21.577773"
+
+randomForestClassificationFileLoc = modelDir + "RandomForestClassification\_2016-05-0317\_04\_11.950206"
+
+randomForestRegFileLoc = modelDir + "RandomForestRegression\_2016-05-0317\_06\_08.723736"
+
+BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassification\_2016-05-0317\_04\_36.346583"
+
+BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression\_2016-05-0317\_06\_51.737282"
+
+
 ## 次の手順
 
-Spark MlLib を使用して回帰モデルと分類モデルを作成しました。これで、これらのモデルにスコアを付け、評価する方法を学習する準備ができました。
+Spark MlLib を使用して回帰モデルと分類モデルを作成しました。これで、これらのモデルにスコアを付け、評価する方法を学習する準備ができました。高度なデータの探索と Notebook のモデリングでは、クロス検証、ハイパー パラメーター スイープやモデルの評価などに深く踏み込みます。
 
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、[Spark で構築した機械学習モデルのスコア付けと評価](machine-learning-data-science-spark-model-consumption.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+**クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)」を参照してください。
+
+<!---HONumber=AcomDC_0518_2016-->

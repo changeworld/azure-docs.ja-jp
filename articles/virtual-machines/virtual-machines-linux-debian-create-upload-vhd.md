@@ -14,9 +14,8 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/25/2016"
+	ms.date="05/09/2016"
 	ms.author="szark"/>
-
 
 
 
@@ -28,8 +27,9 @@
 
 ## インストールに関する注記
 
+- Azure で Linux を準備する際のその他のヒントについては、「[Linux のインストールに関する注記](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes)」も参照してください。
 - 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは **convert-vhd** コマンドレットを使用して、ディスクを VHD 形式に変換できます。
-- Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、LVM または RAID をデータ ディスク上で使用できます。
+- Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、[LVM](virtual-machines-linux-configure-lvm.md) または [RAID](virtual-machines-linux-configure-raid.md) をデータ ディスク上で使用できます。
 - OS ディスクにスワップ パーティションを構成しないでください。Azure Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。このことに関する詳細については、次の手順を参照してください。
 - すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
@@ -108,6 +108,6 @@
 
 ## 次のステップ
 
-これで、Debian 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Creating and uploading a virtual hard disk that contains the Linux operating system (Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード)](virtual-machines-linux-classic-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
+これで、Debian 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

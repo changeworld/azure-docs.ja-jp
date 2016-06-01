@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/08/2015"
+	ms.date="04/20/2015"
 	ms.author="anuragm;jimpark;delhan"/>
 
 
@@ -32,6 +32,7 @@ Azure Backup に DPM サーバーを正常に登録するには、System Center 
 - エージェントとコンテナーの資格情報が DPM サーバーにダウンロード済みである。
 - DPM サーバーにエージェントがインストールされている。
 - コンテナーの資格情報を使用して DPM サーバーを登録済みである。
+- Exchange 2016 を保護する場合は、DPM 2012 R2 UR9 以降にアップグレードしてください。
 
 ## DPM 保護エージェント  
 Exchange サーバーに DPM 保護エージェントをインストールするには、次の手順に従います。
@@ -131,4 +132,4 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

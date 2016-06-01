@@ -130,8 +130,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 再試行ロジックを示すコード サンプルについては、次の記事をご覧ください。
 
-- [SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
-
+- コード サンプル: [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
 ### 一時障害のエラー番号
 
@@ -161,10 +160,12 @@ SQL Database でエラーが発生した場合、[SqlException](http://msdn.micr
 次のトピックには、クライアント プログラムから Azure SQL Database への接続に使用できる、いくつかの言語のコード サンプルと、ドライバー テクノロジへのリンクが含まれています。
 
 
-Windows、Linux、および Mac OS X で実行するクライアントに使用できるさまざまなコード サンプルがあります。
+Windows、Linux、および Mac プラットフォームで実行するクライアントに使用できるさまざまなコード サンプルがあります。
 
 
-**一般的なサンプル:** PHP、Python、Node.js、および .NET CSharp などのさまざまなプログラミング言語の[コード サンプル](sql-database-develop-quick-start-client-code-samples.md)があります。また、Windows、Linux、および Mac OS X 上で実行されるクライアント用のサンプルもあります。
+**一般的なサンプル:** PHP、Python、Java、Node.js、および .NET CSharp などのさまざまなプログラミング言語に使用できるコード サンプルがあります。コード サンプルについては、次のリンクをご覧ください。
+
+- [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
 
 **Elastic Scale:** Elastic Scale データベースへの接続に関する詳細については、次を参照してください。
@@ -172,9 +173,4 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 - [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 - [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
 
-
-**ドライバー ライブラリ:** 推奨バージョンを含む接続ドライバー ライブラリの詳細については、次を参照してください。
-
-- [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
-
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

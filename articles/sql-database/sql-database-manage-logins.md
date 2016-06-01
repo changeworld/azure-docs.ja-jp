@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="03/22/2016"
+   ms.date="05/12/2016"
    ms.author="rickbyh"/>
 
 # SQL Database のセキュリティ: データベースのアクセスとログインのセキュリティの管理  
@@ -24,7 +24,7 @@ SQL Database のセキュリティ管理 (具体的にはサーバーレベル �
 
 ## データベースのプロビジョニングとサーバーレベル プリンシパル ログイン
 
-Microsoft Azure SQL Database では、サービスをサインアップすると、プロビジョニング処理が実行され、Azure SQL Database サーバー、**master** という名前のデータベース、ログインが作成されます。このログインは Azure SQL Database サーバーのサーバーレベル プリンシパルとなります。このログインは、オンプレミスの SQL Server インスタンスにおけるサーバーレベル プリンシパル (**sa**) に似ています。
+Microsoft Azure SQL Database では、サービスをサインアップすると、プロビジョニング処理が実行され、Azure SQL Database サーバー、**master** という名前のデータベース、ログインが作成されます。このログインは Azure SQL Database サーバーのサーバーレベル プリンシパルとなります。このログインは、オンプレミスの SQL Server インスタンスにおけるサーバーレベル プリンシパル (**sa**) に似ています。このトピックで説明する概念は、Azure SQL Data Warehouse にも適用されます。
 
 Azure SQL Database サーバーレベル プリンシパル アカウントには、サーバーレベルとデータベースレベルのセキュリティをすべて管理する権限が常にあります。このトピックでは、SQL Database でサーバーレベル プリンシパルなどのアカウントを使用してログインとデータベースを管理する方法について説明します。
 
@@ -176,4 +176,4 @@ SELECT * FROM sys.databases;
 
 [Azure SQL Database チュートリアル: Azure SQL Database セキュリティの概要](sql-database-get-started-security.md) [Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md) [Azure Active Directory 認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

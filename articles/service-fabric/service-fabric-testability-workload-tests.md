@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/27/2016"
+   ms.date="05/17/2016"
    ms.author="anmola"/>
 
 # サービス ワークロード中のエラーのシミュレーション
@@ -155,4 +155,4 @@ class Test
 }
 ```
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

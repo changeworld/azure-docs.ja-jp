@@ -1,1 +1,1 @@
-> [AZURE.IMPORTANT] This feature is available with **Azure CDN from Verizon** products (Standard and Premium). It is not supported on **Azure CDN from Akamai**.  For a comparison of CDN features, see [Azure CDN Overview](cdn-overview.md#azure-cdn-features). 
+> [AZURE.IMPORTANT] この機能を利用できるのは、**Azure CDN from Verizon** 製品 (Standard と Premium) のみです。**Azure CDN from Akamai** ではサポートされていません。CDN の機能の比較については、「[Azure CDN の概要](cdn-overview.md#azure-cdn-features)」を参照してください。

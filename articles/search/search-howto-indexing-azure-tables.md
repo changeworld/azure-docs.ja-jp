@@ -12,7 +12,7 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="04/12/2016"
+ms.date="05/12/2016"
 ms.author="eugenesh" />
 
 # Azure Table Storage のインデックスを Azure Search で作成する
@@ -29,15 +29,16 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
 
 インデクサーはデータ ソースからデータを読み取って、対象となる検索インデックスに読み込みます。
 
-テーブルのインデクサーを設定するには:
+テーブル インデックスを設定するには、次の手順に従います。
 
 1. Azure ストレージ アカウント内のテーブル (および、必要に応じてクエリ) を参照する `azuretable` タイプのデータ ソースを作成します
 	- ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして指定します。
 	- `container.name` パラメーターを使用して、テーブル名を指定します
 	- 必要に応じて `container.query` パラメーターを使用して、クエリを指定します。可能な場合は、PartitionKey でフィルターを使用して、パフォーマンスを最大限に高めます。他のクエリを実行すると、フル テーブル スキャンが発生し、大きなテーブルの場合はパフォーマンスが低下する可能性があります。
-2. 既存のターゲット インデックスにデータ ソースを接続してインデクサーを作成します (まだインデックスがない場合はインデックスを作成してください)。
+2. インデックスを作成するテーブルの列に対応するスキーマを使用して検索インデックスを作成します。 
+3. データ ソースを検索インデックスに接続することによって、インデクサーを作成します。
 
-次の例でこれを具体的に示します。
+### データ ソースの作成
 
 	POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -50,7 +51,27 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
 	    "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
 	}   
 
-次に、データ ソースとターゲット インデックスとを参照するインデクサーを作成します。次に例を示します。
+データ ソース作成 API の詳細については、「[データ ソースの作成](search-api-indexers-2015-02-28-preview.md#create-data-source)」を参照してください。
+
+### インデックスの作成 
+
+	POST https://[service name].search.windows.net/indexes?api-version=2015-02-28
+	Content-Type: application/json
+	api-key: [admin key]
+
+	{
+  		"name" : "my-target-index",
+  		"fields": [
+    		{ "name": "key", "type": "Edm.String", "key": true, "searchable": false },
+    		{ "name": "SomeColumnInMyTable", "type": "Edm.String", "searchable": true }
+  		]
+	}
+
+インデックス作成 API の詳細については、[インデックスの作成](https://msdn.microsoft.com/library/dn798941.aspx)に関する記事を参照してください。
+
+### インデクサーの作成 
+
+最後に、データ ソースとターゲット インデックスとを参照するインデクサーを作成します。次に例を示します。
 
 	POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -63,7 +84,13 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
 	  "schedule" : { "interval" : "PT2H" }
 	}
 
+インデクサー作成 API の詳細については、「[インデクサーの作成](search-api-indexers-2015-02-28-preview.md#create-indexer)」を参照してください。
+
 これですべて完了です。是非お試しください。
+
+## さまざまなフィールド名の操作
+
+既存のインデックス内のフィールド名が、テーブルのプロパティ名と異なることは少なくありません。テーブルのプロパティ名は、**フィールド マッピング**を使用して、検索インデックス内のフィールド名に対応付けることができます。フィールド マッピングの詳細については、「[データ ソースと検索インデックスの橋渡し役としての Azure Search インデクサー フィールド マッピング](search-indexer-field-mappings.md)」を参照してください。
 
 ## ドキュメント キーの処理
 
@@ -71,11 +98,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 テーブル行には複合キーがあるため、Azure Search では、パーティション キーと行キーの値が連結された `Key` と呼ばれる合成フィールドが生成されます。たとえば、行の PartitionKey が `PK1` で、RowKey が `RK1` の場合、`Key` フィールドの値は `PK1RK1` になります。
 
-> [AZURE.NOTE] `Key` 値には、ドキュメント キーでは無効な文字、たとえばダッシュを含めることができます。無効な文字は、インデクサーのプロパティで `base64EncodeKeys` オプションを有効にすることによって処理することができます。その場合、API 呼び出し (Lookup など) にドキュメント キーを渡すとき、必ずエンコードしてください (たとえば、.NET であれば [UrlTokenEncode メソッド](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx)を利用できます)。
-
-## さまざまなフィールド名の操作
-
-既存のインデックス内のフィールド名が、テーブルのプロパティ名と異なることは少なくありません。テーブルのプロパティ名は、**フィールド マッピング**を使用して、検索インデックス内のフィールド名に対応付けることができます。フィールド マッピングの詳細については、「[Azure Search Indexer のカスタマイズ](search-indexers-customization.md)」を参照してください。
+> [AZURE.NOTE] `Key` 値には、ドキュメント キーでは無効な文字、たとえばダッシュを含めることができます。無効な文字を扱うには、`base64Encode` [フィールド マッピング関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用します。これを行う場合は、Lookup などの API 呼び出しでドキュメント キーを渡す際に、必ず URL の安全な Base64 エンコードを使用する点にも注意してください。
 
 ## インデックスの増分作成と削除の検出
  
@@ -100,4 +123,4 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

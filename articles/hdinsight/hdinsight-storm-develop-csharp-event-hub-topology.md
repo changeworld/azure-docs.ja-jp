@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/10/2016"
+   ms.date="05/17/2016"
    ms.author="larryfr"/>
 
 # HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)
@@ -121,7 +121,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
 このセクションでは、Event Hubs のボルトを使用して Event Hubs にデータを書き込むトポロジを作成します。
 
-1. HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
+1. HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
 
 2. Visual Studio を開いて、**[ファイル]**、**[新規]**、**[プロジェクト]** の順に選択します。
 
@@ -557,7 +557,7 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 
 * **stormmeta\_delete.cmd**: Zookeeper からのすべての Storm メタデータを削除します。
 
-インポートのエクスポートにより、クラスターを削除する必要がある一方で、新しいクラスターを再びオンラインにする際にハブの現在のオフセットから処理を再開する場合、チェックポイントのデータを保持できます。
+インポートのエクスポートにより、クラスターを削除する必要がある一方で、新しいクラスターを再びオンラインにするときにハブの現在のオフセットから処理を再開する場合、チェックポイントのデータを保持できます。
 
 > [AZURE.NOTE] データは既定のストレージ コンテナーに保存されるため、新しいクラスターで以前のクラスターと同じストレージ アカウントとコンテナーを使用する**必要があります**。
 
@@ -567,7 +567,9 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 
 * [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 
+* [SCP プログラミング ガイド](hdinsight-storm-scp-programming-guide.md)
+
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

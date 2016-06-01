@@ -42,11 +42,11 @@ Azure のインフラストラクチャとプラットフォームのセキュ�
 
 - SQL インジェクション
 - セッション ハイジャック
-- クロス サイト スクリプト
+- クロス サイト スクリプティング
 - アプリケーションレベルの MITM
 - アプリケーションレベルの DDoS
 
-Web ベースのアプリケーションにおけるセキュリティ上の考慮事項に関する詳細な説明は、このドキュメントの対象範囲外です。アプリケーションをセキュリティで保護するためのさらなるガイダンスを得るための出発点として、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」、特に [top 10 プロジェクト](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)のページを参照してください。OWASP メンバーによって判別された、Web アプリケーションにおける重要なセキュリティ リスクの現在のトップ 10 が記載されています。
+Web ベースのアプリケーションにおけるセキュリティ上の考慮事項に関する詳細な説明は、このドキュメントの対象範囲外です。アプリケーションをセキュリティで保護するためのさらなるガイダンスを得るための出発点として、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」、特に [top 10 プロジェクト](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)のページを参照してください。OWASP メンバーが選んだ、Web アプリケーションにおける重要なセキュリティ リスクの現在のトップ 10 が記載されています。
 
 ## アプリに対して侵入テストを実行する
 
@@ -58,11 +58,11 @@ App Service アプリの脆弱性のテストを開始する最も簡単な方�
 
 App Service アプリ用に作成された ***.azurewebsites.net** ドメイン名を使用する場合は、SSL 証明書がすべての ***.azurewebsites.net** ドメイン名に提供されているため、すぐに HTTPS を使用できます。サイトで[カスタム ドメイン名](web-sites-custom-domain-name.md)を使用している場合は、SSL 証明書をアップロードし、カスタム ドメインに対して [HTTPS を有効](web-sites-configure-ssl-certificate.md)にすることができます。
 
-[HTTPS](https://en.wikipedia.org/wiki/HTTPS) を有効にすると、アプリとそのユーザー間の通信をねらった MITM 攻撃から保護することができます。
+[HTTPS](https://en.wikipedia.org/wiki/HTTPS) を有効にすると、アプリとそのユーザー間の通信を狙った MITM 攻撃から保護することができます。
 
 ## データ層をセキュリティで保護する
 
-App Service は SQL Database と高度に統合されます。たとえば、すべての接続文字列はボード全体で暗号化され、アプリが実行される VM で、アプリの実行時にのみ暗号化が解除されます。さらに、Azure SQL Database には、[保存暗号化](https://msdn.microsoft.com/library/dn948096.aspx)、[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)、[動的データ マスク](../sql-database/sql-database-dynamic-data-masking-get-started.md)、[脅威検出](sql-database-threat-detection-get-started)など、サイバー攻撃の脅威からアプリケーション データを保護するのに役立つ多くのセキュリティ機能が用意されています。機密データやコンプライアンスの要件がある場合、データをセキュリティで保護する方法の詳細については、「[SQL Database の保護](../sql-database/sql-database-security.md)」をご覧ください。
+App Service は SQL Database と高度に統合されます。たとえば、すべての接続文字列はボード全体で暗号化され、アプリが実行される VM で、アプリの実行時にのみ暗号化が解除されます。さらに、Azure SQL Database には、[保存暗号化](https://msdn.microsoft.com/library/dn948096.aspx)、[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)、[動的データ マスク](../sql-database/sql-database-dynamic-data-masking-get-started.md)、[脅威検出](../sql-database/sql-database-threat-detection-get-started.md)など、サイバー攻撃の脅威からアプリケーション データを保護するのに役立つ多くのセキュリティ機能が用意されています。機密データやコンプライアンスの要件がある場合、データをセキュリティで保護する方法の詳細については、「[SQL Database の保護](../sql-database/sql-database-security.md)」をご覧ください。
 
 ClearDB などのサードパーティのデータベース プロバイダーを使用する場合は、プロバイダーのマニュアルを直接参照してセキュリティのベスト プラクティスを確認する必要があります。
 
@@ -89,9 +89,9 @@ ClearDB などのサードパーティのデータベース プロバイダー�
 ### 構成設定と接続文字列
 接続文字列、認証資格情報、およびその他の機密情報は構成ファイルに保存するのが一般的な方法です。残念ながら、これらのファイルは Web サイト上で公開される場合やパブリック リポジトリにチェックインされる場合があり、結果としてこの情報が危険にさらされる可能性があります。たとえば、[GitHub](https://github.com) で単純な検索を実行すると、パブリック リポジトリにシークレットが公開されている構成ファイルが無数に見つかります。
 
-この情報はアプリの構成ファイル以外に保持することをお勧めします。App Service では、ランタイム環境の一部である構成情報を**アプリ設定**および**接続文字列**として保存できます。大半のプログラミング言語では、値は、*環境変数*を介して実行時にアプリケーションに公開されます。.NET アプリケーションの場合、これらの値は実行時に .NET 構成に挿入されます。このような状況とは別に、これらの構成設定は、[Azure ポータル](https://portal.azure.com)またはユーティリティ (PowerShell や Azure CLI など) を使用して表示または構成する場合を除いて、暗号化されたままになります。
+この情報は、アプリの構成ファイルとは別に保持しておくことをお勧めします。App Service では、ランタイム環境の一部である構成情報を**アプリ設定**および**接続文字列**として保存できます。大半のプログラミング言語では、値は、*環境変数*を介して実行時にアプリケーションに公開されます。.NET アプリケーションの場合、これらの値は実行時に .NET 構成に挿入されます。このような状況とは別に、これらの構成設定は、[Azure ポータル](https://portal.azure.com)またはユーティリティ (PowerShell や Azure CLI など) を使用して表示または構成する場合を除いて、暗号化されたままになります。
 
-App Service に構成情報を保存すると、アプリの管理者は、運用アプリの機密情報をロックダウンできます。開発者は、アプリの開発用に別の構成設定のセットを使用できます。この設定は、App Service で構成されている設定に自動的に置き換わります。開発者でさえ、運用アプリ用に構成された機密情報を知る必要はありません。App Service のアプリ設定と接続文字列の構成の詳細については、[Web アプリの構成](web-sites-configure.md)に関するページを参照してください。
+App Service に構成情報を保存すると、アプリの管理者は、運用アプリの機密情報をロックダウンできます。開発者は、アプリの開発用に別の構成設定のセットを使用できます。この設定は、App Service で構成されている設定に自動的に置き換わります。開発者であっても、運用アプリ用に構成された機密情報を知る必要はありません。App Service のアプリ設定と接続文字列の構成の詳細については、[Web アプリの構成](web-sites-configure.md)に関するページを参照してください。
 
 ### FTPS
 
@@ -123,4 +123,4 @@ App Service アプリの **web.config** ファイルまたは **applicationhost.
 
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

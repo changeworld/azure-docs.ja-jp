@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="01/21/2016"
+    ms.date="05/13/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp でリダイレクトを使用する
@@ -104,4 +104,4 @@ RemoteApp に接続するコンピューターで USB リダイレクトを使�
 7. **[有効]** を選択し、**[RemoteFX USB リダイレクト アクセス権の管理者とユーザー]** を選択します。
 8. **[OK]** をクリックします。  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

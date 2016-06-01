@@ -1,6 +1,6 @@
-    <properties
-	pageTitle="Create a DevTest Lab custom image from a VHD file | Microsoft Azure"
-	description="Learn how to create a custom image from a VHD file, which can then be used to create VMs in a DevTest Lab"
+<properties
+	pageTitle="VHD ファイルから DevTest ラボ カスタム イメージを作成する | Microsoft Azure"
+	description="DevTest ラボで VM を作成するために使用できるカスタム イメージを VHD ファイルから作成する方法を説明します。"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/13/2016"
+	ms.date="05/08/2016"
 	ms.author="tarcher"/>
 
 # VHD ファイルから DevTest ラボ カスタム イメージを作成する
 
 ## 概要
 
-[DevTest ラボを作成](devtest-lab-create-lab.md)したら、[そのラボに仮想マシン (VM) を追加](devtest-lab-add-vm-with-artifacts.md)することができます。VM を作成する場合は、*ベース*として*カスタム イメージ*または*Marketplace イメージ*を指定します。この記事では、VHD ファイルからカスタム イメージを作成する方法を説明します。なお、この記事のすべての手順を実行するには、有効な VHD ファイルへのアクセス件が必要です。
+[ラボを作成](devtest-lab-create-lab.md)したら、[そのラボに仮想マシン (VM) を追加](devtest-lab-add-vm-with-artifacts.md)することができます。VM を作成する場合は、*ベース*として*カスタム イメージ*または*Marketplace イメージ*を指定します。この記事では、VHD ファイルからカスタム イメージを作成する方法を説明します。なお、この記事のすべての手順を実行するには、有効な VHD ファイルへのアクセス件が必要です。
 
 ## カスタム イメージの作成
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
 1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
 
@@ -62,7 +62,7 @@
 
 1. **[OK]** をタップして、カスタム イメージを作成します。
 
-1. 「[次のステップ](#next-steps)」セクションに移動します。
+1. 「[次のステップ](#next-steps)」セクションを参照してください。
 
 ##VHD ファイルのアップロード
 
@@ -76,6 +76,6 @@
 
 ##次のステップ
 
-VM を作成するときに使用するカスタム イメージを追加したら、次に [VM を DevTest ラボに追加](./devtest-lab-add-vm-with-artifacts.md)します。
+VM を作成するときに使用するカスタム イメージを追加したら、次は [VM をラボに追加](./devtest-lab-add-vm-with-artifacts.md)します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

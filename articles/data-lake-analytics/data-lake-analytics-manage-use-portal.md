@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Azure ポータルを使用する Azure Data Lake Analytics の管理
@@ -167,7 +167,7 @@ Data Lake Analytics では、Azure Active Directory でのロール ベースの
 |共同作成者|ポータルにアクセスし、ジョブを送信および監視します。ジョブを送信するには、共同作成者に Data Lake Store アカウントに対する読み取りまたは書き込みアクセス許可も必要になります。|
 |DataLakeAnalyticsDeveloper | ユーザーはジョブを送信し、すべてのジョブを監視できますが、取り消すことができるのは自分のジョブのみです。ユーザーの追加、アクセス許可の変更、アカウントの削除などを行って、自分のアカウントを管理することはできません。ジョブを実行するには、Data Lake Store アカウントに対する読み取りまたは書き込みアクセス許可が必要です。 | 
 |閲覧者|すべてを表示できますが、変更することはできません。|  
-|DevTest Lab ユーザー|すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます。|  
+|DevTest Labs ユーザー|すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます。|  
 |ユーザーアクセスの管理者|Azure リソースに対するユーザー アクセスを管理します。|  
 
 Azure Active Directory ユーザーとセキュリティ グループの作成については、「[Azure Active Directory とは](../active-directory/active-directory-whatis.md)」を参照してください。
@@ -293,4 +293,4 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 - [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-powershell.md)
 - [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

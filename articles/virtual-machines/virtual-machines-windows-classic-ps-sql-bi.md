@@ -4,7 +4,7 @@
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="guyinacube"
-	manager="jeffreyg"
+	manager="mblythe"
 	editor="monicar"
 	tags="azure-service-management"/>
 <tags
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="12/11/2015"
+	ms.date="05/13/2016"
 	ms.author="asaxton" />
 
 # Azure Virtual Machines での SQL Server Business Intelligence
@@ -50,27 +50,29 @@ Microsoft Azure 仮想マシン ギャラリーには、Microsoft SQL Server を
 
 	Set-AzureSubscription -SubscriptionName $subscriptionName -Certificate $certificate -SubscriptionID $subscriptionID
 
+	Write-Host -foregroundcolor green "List of available gallery images where imagename contains 2016"
+	Write-Host -foregroundcolor green ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+	get-azurevmimage | where {$_.ImageName -Like "*SQL-Server-2016*"} | select imagename,category, location, label, description
+
 	Write-Host -foregroundcolor green "List of available gallery images where imagename contains 2014"
 	Write-Host -foregroundcolor green ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 	get-azurevmimage | where {$_.ImageName -Like "*SQL-Server-2014*"} | select imagename,category, location, label, description
-
-	Write-Host -foregroundcolor green "List of available gallery images where imagename contains 2012"
-	Write-Host -foregroundcolor green ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-	get-azurevmimage | where {$_.ImageName -Like "*SQL-Server-2012*"} | select imagename,category, location, label, description
 
 SQL Server でサポートされているエディションと機能の詳細については、以下をご覧ください。
 
 - [SQL Server のエディション](https://www.microsoft.com/server-cloud/products/sql-server-editions/#fbid=Zae0-E6r5oh)
 
-- [SQL Server 2014 の各エディションがサポートする機能](https://msdn.microsoft.com/library/cc645993.aspx)
+- [SQL Server 2016 の各エディションがサポートする機能](https://msdn.microsoft.com/library/cc645993.aspx)
 
 ### SQL Server 仮想マシン ギャラリー イメージにインストールされている BI 機能
 
 次の表は、SQL Server の一般的な Microsoft Azure 仮想マシン ギャラリー イメージにインストールされている Business Intelligence 機能を示しています。
 
-- SQL Server 2014 RTM Enterprise
+- SQL Server 2016 RC3
 
-- SQL Server 2014 Standard
+- SQL Server 2014 SP1 Enterprise
+
+- SQL Server 2014 SP1 Standard
 
 - SQL Server 2012 SP2 Enterprise
 
@@ -81,7 +83,7 @@ SQL Server でサポートされているエディションと機能の詳細に
 |**Reporting Services ネイティブ モード**|あり|インストールされていますが、レポート マネージャー URL などの構成が必要です。「[Reporting Services の構成](#configure-reporting-services)」をご覧ください。|
 |**Reporting Services SharePoint モード**|いいえ|Microsoft Azure 仮想マシン ギャラリー イメージには、SharePoint も SharePoint インストール ファイルも含まれていません。<sup>1</sup>|
 |**Analysis Services 多次元およびデータ マイニング (OLAP)**|あり|インストールされ、既定の Analysis Services インスタンスとして構成されています。|
-|**Analysis Services 表形式**|いいえ|SQL Server 2012 および 2014 のイメージでサポートされていますが、既定ではインストールされていません。Analysis Services の別のインスタンスをインストールします。このトピックの「SQL Server のその他のサービスと機能のインストール」をご覧ください。|
+|**Analysis Services 表形式**|いいえ|SQL Server 2012、2014、および 2016 のイメージでサポートされていますが、既定ではインストールされていません。Analysis Services の別のインスタンスをインストールします。このトピックの「SQL Server のその他のサービスと機能のインストール」をご覧ください。|
 |**Analysis Services Power Pivot for SharePoint**|いいえ|Microsoft Azure 仮想マシン ギャラリー イメージには、SharePoint も SharePoint インストール ファイルも含まれていません。<sup>1</sup>|
 
 <sup>1</sup> SharePoint と Azure 仮想マシンの追加情報については、「[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)」および「[Microsoft Azure Virtual Machines の SharePoint デプロイ](https://www.microsoft.com/download/details.aspx?id=34598)」をご覧ください。
@@ -184,7 +186,7 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 
 1. **[スタート]** ボタンをクリックし、**[すべてのプログラム]** をクリックします。
 
-1. **[Microsoft SQL Server 2012]** をクリックします。
+1. **[Microsoft SQL Server 2016]** をクリックします。
 
 1. **[構成ツール]** をクリックします。
 
@@ -240,9 +242,9 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 
 1. **[続行して完了する]** ページで **[次へ]** をクリックします。
 
-**レポート マネージャー URL:**
+**Web ポータル URL または 2012 および 2014 用のレポート マネージャ URL:**
 
-1. 左側のウィンドウで、**[レポート マネージャー URL]** をクリックします。
+1. 左側のウィンドウで、**[Web ポータル URL]** または2014 および 2012 用の **[レポート manager URL]** をクリックします。
 
 1. **[Apply]** をクリックします。
 
@@ -260,31 +262,33 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 
 1. VM で http://localhost/reports を参照します。
 
-### リモート レポート マネージャーに接続するには
+### リモート Web ポータル、または 2014 および 2012 用のレポート マネージャーに接続するには
 
-リモート コンピューターから仮想マシン上のレポート マネージャーに接続する場合は、新しい仮想マシン TCP エンドポイントを作成します。既定では、レポート サーバーは**ポート 80** で HTTP 要求をリッスンします。別のポートを使用するようにレポート サーバーの URL を構成した場合は、次の手順でそのポート番号を指定する必要があります。
+リモート コンピューターから仮想マシン上の Web ポータル、または 2014 および 2012 用のレポート マネージャーに接続する場合は、新しい仮想マシン TCP エンドポイントを作成します。既定では、レポート サーバーは**ポート 80** で HTTP 要求をリッスンします。別のポートを使用するようにレポート サーバーの URL を構成した場合は、次の手順でそのポート番号を指定する必要があります。
 
 1. TCP ポート 80 の仮想マシンのエンドポイントを作成します。詳細については、このドキュメントの「[仮想マシン エンドポイントとファイアウォール ポート](#virtual-machine-endpoints-and-firewall-ports)」をご覧ください。
 
 1. 仮想マシンのファイアウォールでポート 80 を開きます。
 
-1. URL 内のサーバー名として Azure 仮想マシンの **DNS 名**を使用して、レポート マネージャーを参照します。次に例を示します。
+1. URL 内のサーバー名として Azure 仮想マシンの **DNS 名**を使用して、Web ポータルまたはレポート マネージャーを参照します。次に例を示します。
 
-	**レポート マネージャー**: http://uebi.cloudapp.net/reportserver **レポート サーバー**: http://uebi.cloudapp.net/reports
+	**レポート サーバー**: http://uebi.cloudapp.net/reportserver **Web ポータル**: http://uebi.cloudapp.net/reports
 
-	[レポート サーバー アクセスに対するファイアウォールの構成](https://technet.microsoft.com/library/bb934283.aspx)
+	[レポート サーバー アクセスに対するファイアウォールの構成](https://msdn.microsoft.com/library/bb934283.aspx)
 
 ### レポートを作成して Azure 仮想マシンに発行するには
 
 Microsoft Azure 仮想マシンでホストされているレポート サーバーに、オンプレミスのコンピューターから既存のレポートを発行する際に使用できるオプションの一部を次に示します。
 
-- **レポート ビルダー**: 仮想マシンには、ClickOnce バージョンの Microsoft SQL Server レポート ビルダーが含まれています。仮想マシンでレポート ビルダーを初めて起動するときは、次の手順を実行します。
+- **レポート ビルダー**: 仮想マシンには、SQL 2014 および 2012 用の Microsoft SQL Server レポート ビルダーの ClickOnce バージョンが含まれています。仮想マシン上で SQL 2016 を使用してレポート ビルダーを初めて起動するときは、次の手順を実行します。
 
 	1. 管理者特権でブラウザーを起動します。
 
-	1. 仮想マシン上のレポート マネージャーを参照し、リボンの **[レポート ビルダー]** をクリックします。
+	1. 仮想マシン上で Web ポータルを参照し、右上の **[ダウンロード]** アイコンを選択します。
+	
+	1. **[レポート ビルダー]** を選択します。
 
-	詳細については、「[レポート ビルダーのインストール、アンインストール、およびサポート](https://technet.microsoft.com/library/dd207038.aspx)」をご覧ください。
+	詳細については、「[レポート ビルダーの起動](https://msdn.microsoft.com/library/ms159221.aspx)」を参照してください。
 
 - **SQL Server Data Tools: VM**: SQL Server Data Tools は仮想マシンにインストールされます。このツールを使用して、仮想マシンで**レポート サーバー プロジェクト**とレポートを作成できます。SQL Server Data Tools では、仮想マシン上のレポート サーバーにレポートを発行できます。
 
@@ -308,11 +312,11 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 1. **[スタート]** ボタンをクリックし、**[すべてのプログラム]** をクリックします。
 
-1. **[Microsoft SQL Server 2014]** または **[Microsoft SQL Server 2012]** をクリックし、**[構成ツール]** をクリックします。
+1. [**Microsoft SQL Server 2016]**、**[Microsoft SQL Server 2014]**、または **[Microsoft SQL Server 2012]** をクリックし、**[構成ツール]** をクリックします。
 
 1. **[SQL Server インストール センター]** をクリックします。
 
-または、C:\\SQLServer\_12.0\_full\\setup.exe か C:\\SQLServer\_11.0\_full\\setup.exe を実行します。
+または、C:\\SQLServer\_13.0\_full\\setup.exe、C:\\SQLServer\_12.0\_full\\setup.exe、または C:\\SQLServer\_11.0\_full\\setup.exe を実行します。
 
 >[AZURE.NOTE] SQL Server セットアップを初めて実行すると、さらに多くのセットアップ ファイルがダウンロードされ、仮想マシンの再起動と SQL Server セットアップの再起動が必要になる場合があります。
 >
@@ -324,13 +328,13 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 - [表形式モードでの Analysis Services のインストール](https://msdn.microsoft.com/library/hh231722.aspx)
 
-- [テーブル モデリング (Adventure Works チュートリアル)](https://technet.microsoft.com/library/140d0b43-9455-4907-9827-16564a904268)
+- [テーブル モデリング (Adventure Works チュートリアル)](https://msdn.microsoft.com/library/140d0b43-9455-4907-9827-16564a904268)
 
 **Analysis Services 表形式モードをインストールするには:**
 
 1. SQL Server インストール ウィザードで、左側のウィンドウの **[インストール]** をクリックし、**[SQL Server の新規スタンドアロン インストールを実行するか、既存のインストールに機能を追加します]** をクリックします。
 
-	- **[フォルダーの参照]** が表示されたら、c:\\SQLServer\_12.0\_full または c:\\SQLServer\_11.0\_full を参照し、**[OK]** をクリックします。
+	- **[フォルダーの参照]** が表示されたら、c:\\SQLServer\_13.0\_full、c:\\SQLServer\_12.0\_full、または c:\\SQLServer\_11.0\_full を参照し、**[OK]** をクリックします。
 
 1. 製品の更新プログラム ページで **[次へ]** をクリックします。
 
@@ -388,8 +392,8 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 	|ポート|型|説明|
 |---|---|---|
-|**80**|TCP|レポート サーバー リモート アクセス (*).| 
-|**1433**|TCP|SQL Server Management Studio (*).| 
+|**80**|TCP|レポート サーバー リモート アクセス (*).|
+|**1433**|TCP|SQL Server Management Studio (*).|
 |**1434**|UDP|SQL Server Browser。これは、VM がドメインに参加しているときに必要となります。|
 |**2382**|TCP|SQL Server Browser。|
 |**2383**|TCP|SQL Server Analysis Services の既定のインスタンスとクラスター化された名前付きインスタンス。|
@@ -433,4 +437,4 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

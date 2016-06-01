@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/13/2016" 
+	ms.date="05/12/2016" 
 	ms.author="awills"/>
  
 # Application Insights での依存関係に関する問題の診断
@@ -57,6 +57,16 @@ Web ページ | [JavaScript モニター](app-insights-javascript.md) (Web ペ�
 Azure Cloud Services | [スタートアップ タスクを使用](app-insights-cloudservices.md#dependencies)するか、[.NET Framework 4.6 以降をインストール](../cloud-services/cloud-services-dotnet-install-dotnet.md)する  
 
 IIS サーバー用の Status Monitor では、Application Insights SDK を使用してソース プロジェクトをリビルドする必要はありません。
+
+## アプリケーション マップ
+
+アプリケーション マップを見ると、アプリケーションのコンポーネント間の依存関係を発見できます。
+
+![[設定]、[アプリケーション マップ] の順にクリックします。](./media/app-insights-dependencies/08.png)
+
+ボックスからは、関連する依存関係および他のグラフに移動できます。
+
+小さい [x] をクリックすると、サブツリーが折りたたまれます。
 
 ## <a name="diagnosis"></a> Web サーバーでの依存関係のパフォーマンスの問題の診断
 
@@ -135,9 +145,9 @@ IIS サーバー用の Status Monitor では、Application Insights SDK を使�
 
 ## Ajax
 
-「[Web ページ向けの Application Insights](app-insights-javascript.md)」をご覧ください。
+「[Web ページ向けの Application Insights](app-insights-javascript.md)」を参照してください。
 
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

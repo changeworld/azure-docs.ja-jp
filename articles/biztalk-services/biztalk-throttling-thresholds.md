@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/16/2016" 
 	ms.author="mandia"/>
 
 
@@ -42,7 +42,7 @@ Azure BizTalk Services では、調整の状態 (通常と調整された状態)
 
 Azure BizTalk Services が調整状態になると、次のことが発生します。
 
-- 調整はロール インスタンス単位で行われます。次に例を示します。<br/>RoleInstanceA は調整中です。RoleInstanceB は調整されていません。この状況では、RoleInstanceB のメッセージは予期したとおりに処理されます。RoleInstanceA のメッセージは破棄され、次のエラーで失敗します。<br/><br/>
+- 調整はロール インスタンス単位で行われます。次に例を示します。<br/>RoleInstanceA は調整中です。RoleInstanceB は調整されていません。この状況では、RoleInstanceB のメッセージは予期したとおりに処理されます。RoleInstanceA のメッセージは破棄され、次のエラーで失敗します。<br/><br/> 
 **サーバーがビジー状態です。もう一度実行してください。**<br/><br/>
 - どの取り出し元も、メッセージのポーリングやダウンロードを行いません。次に例を示します。<br/>パイプラインは外部の FTP ソースからメッセージを取り出します。取り出しを実行するロール インスタンスは調整状態になります。この状況では、パイプラインは、ロール インスタンスが調整を停止するまで追加のメッセージのダウンロードを停止します。
 - 応答がクライアントに送信され、クライアントはメッセージを再送信できるようになります。
@@ -70,4 +70,4 @@ Azure BizTalk Services が調整状態になると、次のことが発生しま
 - [BizTalk Services: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -3,9 +3,9 @@
 	description="Azure Machine Learning で高度な予測分析プロセスを行うための適切なシナリオを選択します。"
 	services="machine-learning"
 	documentationCenter=""
-	authors="msolhab"
+	authors="bradsev"
 	manager="paulettm"
-	editor="" />
+	editor="cgronlun" />
 
 <tags
 	ms.service="machine-learning"
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
-	ms.author="msolhab;bradsev" />
+	ms.date="05/10/2016" 
+	ms.author="bradsev" />
 
 
 # Azure Machine Learning での高度な分析のシナリオ
 
-この記事では、Cortana Analytics Process (CAP) で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。データの特性、ソースの場所、および Azure でのターゲット リポジトリによって決まる、シーケンス処理で使用できるオプションを示します。
+この記事では、Cortana Analytics Process で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。データの特性、ソースの場所、および Azure でのターゲット リポジトリによって決まる、シーケンス処理で使用できるオプションを示します。
 
 最後のセクションに、データと目標に適したサンプル シナリオを選択するための**デシジョン ツリー**を示します。
 
@@ -314,4 +314,4 @@ Advanced Analytics Process and Technology とパブリック データセット�
 <!-- Module References -->
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

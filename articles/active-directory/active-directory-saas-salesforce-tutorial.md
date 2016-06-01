@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="02/09/2016"
+    ms.date="05/16/2016"
     ms.author="asmalser-msft"/>
 
 #チュートリアル: Azure Active Directory と Salesforce を統合する方法
@@ -22,7 +22,7 @@
 
 ##前提条件
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)から Azure Active Directory にアクセスするには、まず有効な Azure サブスクリプションが必要です。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)から Azure Active Directory にアクセスするには、まず有効な Azure サブスクリプションが必要です。
 
 2. [Salesforce.com](https://www.salesforce.com/) の有効なテナントが必要です。
 
@@ -46,7 +46,7 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 ##手順 1. Salesforce をディレクトリに追加する
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Select Active Directory from the left navigation pane.][0]
 
@@ -256,4 +256,4 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 [28]: ./media/active-directory-saas-salesforce-tutorial/assign-confirm.png
 [29]: ./media/active-directory-saas-salesforce-tutorial/assign-sf-profile.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/16/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 # 次のステップと Azure AD Connect の管理方法
@@ -21,13 +21,6 @@
 
 ## その他の同期管理者の追加
 既定では、インストールを行ったユーザーとローカルの Administrators グループのメンバーのみが、インストールされている同期エンジンを管理できます。同期エンジンにアクセスして管理できるその他のユーザーを追加するには、ローカル サーバーで ADSyncAdmins というグループを見つけ、そのグループにユーザーを追加します。
-
-## AD FS サービスでのオプションの構成
-AD FS ログイン ページのイラストとロゴのイメージをカスタマイズできます。それには、AD FS にログインし、PSH を使用して構成します。
-
-	Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.png"} –Illustration @{path=”c:\Contoso\illustration.png”}
-
-構成の可能性に関する詳細な説明については、「[AD FS サインイン ページのカスタマイズ](https://technet.microsoft.com/library/dn280950.aspx)」を参照してください。
 
 ## Azure AD Premium および Enterprise Mobility のユーザーにライセンスを割り当てる
 
@@ -61,7 +54,7 @@ AD FS ログイン ページのイラストとロゴのイメージをカスタ�
 
 <center>![Cloud](./media/active-directory-aadconnect-whats-next/startsynch.png)</center>
 
-Azure AD Connect 同期: スケジューラの詳細については、「[Azure AD Connect Scheduler](active-directory-aadconnectsync-feature-scheduler.md)」(Azure AD Connect 同期スケジューラ) を参照してください。
+Azure AD Connect 同期: スケジューラの詳細については、「[Azure AD Connect スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)」を参照してください。
 
 
 ## Azure AD Connect で利用可能なその他のタスク
@@ -81,4 +74,4 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

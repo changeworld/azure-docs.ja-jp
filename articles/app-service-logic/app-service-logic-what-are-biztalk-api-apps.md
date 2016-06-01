@@ -50,4 +50,4 @@ Azure App Service では、さまざまなサービス レベルを提供して�
 Standard コネクタ、BizTalk EAI、Premium コネクタなどの各カテゴリに含まれるコネクタと API Apps の完全な一覧については、[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)を参照してください。
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!------HONumber=AcomDC_0420_2016-->

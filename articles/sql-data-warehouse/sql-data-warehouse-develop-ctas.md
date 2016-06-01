@@ -282,7 +282,7 @@ SELECT @d*@f
 ;
 ```
 
-このコードを CTAS に移行することが正しいと思われるかもしれません。しかし、これには問題があります。
+このコードを CTAS に移行することが正しいと思われるかもしれません。しかし、これには問題が潜んでいます。
 
 次のコードからは、同じ結果が得られないからです。
 
@@ -433,4 +433,4 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

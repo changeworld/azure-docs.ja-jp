@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/02/2016"
+   ms.date="05/04/2016"
    ms.author="bwren" />
 
 # Log Analytics のカスタム ログ
@@ -39,7 +39,7 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 
 1.	OMS ポータルで、**[設定]** に進みます。
 2.	**[データ]** をクリックし、**[カスタム ログ]** をクリックします。
-3.	既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。Linux エージェントの場合、構成ファイルは Fluentd データ コレクターに送信されます。各 Linux エージェントでこのファイルを手動で変更する場合、*[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスのチェックを外します。
+3.	既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。各 Linux エージェントでこのファイルを手動で変更する場合、*[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスのチェックを外します。
 4.	**[追加+]** をクリックし、カスタム ログ ウィザードを開きます。
 
 ### 手順 2.サンプル ログをアップロードし、解析する
@@ -70,8 +70,8 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 |:--|:--|
 | Windows エージェントの *C:\\Logs* にあり、拡張子が .txt のすべてのファイル | C:\\Logs\\*.txt |
 | Windows エージェントの *C:\\Logs* にあり、名前が log で始まり、拡張子が .txt のすべてのファイル | C:\\Logs\\log*.txt |
-| Windows エージェントの */var/log/audit* にあり、拡張子が .txt のすべてのファイル | /var/log/audit/*.txt |
-| Windows エージェントの */var/log/audit* にあり、名前が log で始まり、拡張子が .txt のすべてのファイル | /var/log/audit/log*.txt |
+| Linux エージェントの */var/log/audit* にあり、拡張子が .txt のすべてのファイル | /var/log/audit/*.txt |
+| Linux エージェントの */var/log/audit* にあり、名前が log で始まり、拡張子が .txt のすべてのファイル | /var/log/audit/log*.txt |
   
 
 1.	Windows または Linux を選択し、追加するパス書式を指定します。
@@ -178,4 +178,4 @@ Log Analytics は約 5 分おきに各カスタム ログから新しいエン�
 - [カスタム フィールド](log-analytics-custom-fields.md)を使用し、カスタム ログのエントリを個別のフィールドに解析します。
 - [ログ検索](log-analytics-log-searches.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="04/13/2016" 
+	ms.date="04/27/2016" 
 	ms.author="awills"/>
 
 # Application Insights SDK におけるテレメトリのサンプリング、フィルター処理、および前処理
@@ -79,7 +79,8 @@ Web ページからのデータに対して固定レートのサンプリング�
 
 [サンプリングの詳細についてはこちらを参照してください](app-insights-sampling.md)。
 
-## フィルター処理
+<a name="filtering"></a>
+## フィルター: ITelemetryProcessor
 
 この手法では、テレメトリ ストリームに含める内容またはテレメトリ ストリームから除外する内容をより直接的に制御できます。フィルター処理はサンプリングと組み合わせて使用することも別々に使用することもできます。
 
@@ -239,8 +240,8 @@ public void Process(ITelemetry item)
 
 ```
 
-
-## プロパティの追加
+<a name="add-properties"></a>
+## プロパティの追加: ITelemetryInitializer
 
 テレメトリ初期化子を使用して、すべてのテレメトリで送信されるグローバル プロパティを定義し、標準テレメトリ モジュールの選択された動作を上書きします。
 
@@ -368,6 +369,15 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 任意の数の初期化子を追加できます。
 
 
+## ITelemetryProcessor と ITelemetryInitializer
+
+テレメトリ プロセッサとテレメトリ初期化子は何が違うのでしょうか。
+
+* 共通する機能もあり、どちらもテレメトリにプロパティを追加するために使用できます。
+* TelemetryInitializer は常に TelemetryProcessor の前に実行します。
+* TelemetryProcessor を使用すると、テレメトリ項目を完全に置換または破棄できます。
+* TelemetryProcessor は、パフォーマンス カウンター テレメトリを処理しません。
+
 ## リファレンス ドキュメント
 
 * [API の概要](app-insights-api-custom-events-metrics.md)
@@ -409,4 +419,4 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

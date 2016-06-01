@@ -30,7 +30,7 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 
 ## 前提条件
 
-*   **A8 または A9 サイズの Linux コンピューティング ノードでの HPC Pack クラスター** - Azure 上の A8 または A9 サイズの Linux コンピューティング ノードで、[Azure Resource Manager テンプレート](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)または [Azure PowerShell スクリプト](virtual-machines-hpcpack-cluster-powershell-script)を使用して HPC Pack クラスターをデプロイします。どちらのオプションについても、前提条件および手順について詳しくは、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。Powershell スクリプトによるデプロイ オプションを選択した場合は、この記事の末尾にあるサンプル ファイル内のサンプル構成を確認して、サイズ A8 の Windows Server 2012 R2 ヘッド ノードと 2 つのサイズ A8 の SUSE Linux Enterprise Server 12 コンピューティング ノードから成る Azure ベースの HPC Pack クラスターをデプロイします。該当する値は、実際のサブスクリプションとサービス名に置き換えてください。 
+*   **A8 または A9 サイズの Linux コンピューティング ノードでの HPC Pack クラスター** - Azure 上の A8 または A9 サイズの Linux コンピューティング ノードで、[Azure Resource Manager テンプレート](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)または [Azure PowerShell スクリプト](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md)を使用して HPC Pack クラスターをデプロイします。どちらのオプションについても、前提条件および手順について詳しくは、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。Powershell スクリプトによるデプロイ オプションを選択した場合は、この記事の末尾にあるサンプル ファイル内のサンプル構成を確認して、サイズ A8 の Windows Server 2012 R2 ヘッド ノードと 2 つのサイズ A8 の SUSE Linux Enterprise Server 12 コンピューティング ノードから成る Azure ベースの HPC Pack クラスターをデプロイします。該当する値は、実際のサブスクリプションとサービス名に置き換えてください。 
 
     **その他の注意事項**
 
@@ -654,4 +654,4 @@ exit ${RTNSTS}
 [isosurface_color]: ./media/virtual-machines-linux-classic-hpcpack-cluster-openfoam/isosurface_color.png
 [linux_processes]: ./media/virtual-machines-linux-classic-hpcpack-cluster-openfoam/linux_processes.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

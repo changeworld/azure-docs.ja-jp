@@ -18,7 +18,7 @@ ms.author="larryfr"/>
 
 #HDInsight クラスターを削除する方法
 
-HDInsight クラスターの課金は時間単位で行われますので、クラスターの使用を止める場合には必ず削除してください。このドキュメントでは、Azure ポータル、Azure PowerShell、および Azure CLI を使用してクラスターを削除する方法について説明します。
+HDInsight クラスターは、クラスターが作成されたときに開始され、クラスターが削除されたときに停止し、分単位で課金されます。そのため、使用しなくなる場合は、常にクラスターを削除する必要がありあす。このドキュメントでは、Azure ポータル、Azure PowerShell、および Azure CLI を使用してクラスターを削除する方法について説明します。
 
 > [AZURE.IMPORTANT] HDInsight クラスターを削除しても、そのクラスターに関連付けられている Azure Storage アカウントは削除されません。このため、クラスターに格納されているすべてのデータを保持し、再利用することができます。
 
@@ -34,7 +34,7 @@ HDInsight クラスターの課金は時間単位で行われますので、ク�
 
 ##Azure PowerShell
 
-> [AZURE.NOTE] Azure PowerShell をインストールおよび構成していない場合は、「[Azure PowerShell のインストールと構成](../powershell-install-configure.md)」の手順を実行してください。
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 クラスターを削除するには、PowerShell プロンプトで次のコマンドを実行します。
 
@@ -52,4 +52,4 @@ __CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き�
     
 __CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き換えます。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

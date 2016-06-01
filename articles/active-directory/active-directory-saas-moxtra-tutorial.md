@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/10/2016"
+	ms.date="05/16/2016"
 	ms.author="jeedes"/>
 
 
@@ -77,7 +77,7 @@ Azure AD への Moxtra の統合を構成するには、ギャラリーから管
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Moxtra で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Moxtra ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Moxtra の関連ユーザーの間で、リンク関係が確立されている必要があります。<br>
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Moxtra ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Moxtra の関連ユーザーの間で、リンク関係が確立されている必要があります。<br> 
 このリンク関係は、Azure AD の **[ユーザー名]** の値を、Moxtra の **[Username]** の値として割り当てることで確立されます。
  
 Moxtra で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -93,7 +93,7 @@ Moxtra で Azure AD のシングル サインオンを構成してテストす�
 このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Moxtra アプリケーションでシングル サインオンを構成することです。
 
 Moxtra アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。次のスクリーンショットはその例です。
-<br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_09.png)<br>
+<br><br> ![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_09.png)<br>
 
 
 
@@ -123,11 +123,11 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
 
 1. 別の Web ブラウザー ウィンドウで、管理者として Moxtra 企業サイトにサインオンします。
 
-1. 左のツールバーで、**[管理コンソール]、[SAML シングル サインオン]** の順にクリックし、**[新規]** をクリックします。
+1. 左のツールバーで、**[管理コンソール]、[SAML シングル サインオン]** の順にクリックし、**[新規]** をクリックします。 
 <br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_06.png) <br>
 
 
-1. **[SAML]** ページで、次の手順を実行します。
+1. **[SAML]** ページで、次の手順を実行します。 
 <br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_moxtra_08.png)<br>
 
     a.**[Name]** ボックスに、構成の名前を入力します (例: *SAML*)。
@@ -169,7 +169,7 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
     | idpid | *<Azure クラシック ポータルの **[Moxtra でのシングル サインオンの構成]** ダイアログの **[エンティティ ID]** 値>* |
 
  
-    a.[ユーザー属性の追加] をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_general_81.png)<br>
+    a.[ユーザー属性の追加] をクリックします。<br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_general_81.png) <br>
 
     b.**[ユーザー属性の追加]** ダイアログで、テーブルのその行に表示されている属性名と属性値を入力します。 <br><br>![シングル サインオンの構成](./media/active-directory-saas-moxtra-tutorial/tutorial_general_82.png) <br>
 
@@ -260,7 +260,7 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
 
     d.**[事業部]** テキストボックスに、「**Dev**」と入力します。
 
-    e.**[部署]** テキストボックスに、「**IT**」と入力します。
+    e.**[学科]** テキストボックスに、「**IT**」と入力します。
 
     f.**[管理者]** を選択します。
 
@@ -295,7 +295,7 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
 
 ### シングル サインオンのテスト
 
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。<br> 
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。<br>
 アクセス パネルで Moxtra のタイルをクリックすると、自動的に Moxtra アプリケーションにサインオンします。
 
 
@@ -323,4 +323,4 @@ Moxtra アプリケーションでは、特定の形式の SAML アサーショ�
 [204]: ./media/active-directory-saas-moxtra-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-moxtra-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

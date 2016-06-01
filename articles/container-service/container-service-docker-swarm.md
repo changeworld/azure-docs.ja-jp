@@ -24,9 +24,9 @@ Docker Swarm は、コンテナーにまとめたワークロードをプール�
 
 このドキュメントで行う演習の前提条件:
 
-[Azure コンテナー サービスに Swarm クラスターを作成する](./container-service-deployment.md)
+[Azure コンテナー サービスに Swarm クラスターを作成する](container-service-deployment.md)
 
-[Azure コンテナー サービスの Swarm クラスターと接続する](./container-service-connect.md)
+[Azure コンテナー サービスの Swarm クラスターと接続する](container-service-connect.md)
 
 ## 新しいコンテナーをデプロイする
 
@@ -119,4 +119,4 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 [Docker Swarm の詳細](https://docs.docker.com/swarm/)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

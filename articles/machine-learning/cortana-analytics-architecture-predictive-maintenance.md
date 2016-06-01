@@ -1,6 +1,6 @@
 <properties
-	pageTitle="航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template のアーキテクチャ | Microsoft Azure"
-	description="航空宇宙、公益事業、および輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence Solution Template のアーキテクチャの図"
+	pageTitle="予測メンテナンスのアーキテクチャ | Microsoft Azure"
+	description="航空宇宙、公益事業、輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence Solution Template のアーキテクチャの図"
 	services="cortana-analytics"
 	documentationCenter=""
 	authors="garyericson"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/12/2016"
+	ms.date="05/14/2016"
 	ms.author="garye" />
 
 # 航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template のアーキテクチャ
@@ -26,4 +26,4 @@
 
 [image]: ./media/cortana-analytics-architecture-predictive-maintenance/ca-topologies-maintenance-prediction.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -3,7 +3,7 @@
 	description="エラスティック データベース ジョブの使用方法"
 	services="sql-database"
 	documentationCenter=""  
-	manager="jeffreyg"
+	manager="jhubbard"
 	authors="sidneyh"/>
 
 <tags
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/23/2016"
+	ms.date="05/17/2016"
 	ms.author="sidneyh; ddove" />
 
 # Elastic Database ジョブの概要
@@ -447,4 +447,4 @@ Elastic Database クエリ機能を使用する場合に追加の料金は発生
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

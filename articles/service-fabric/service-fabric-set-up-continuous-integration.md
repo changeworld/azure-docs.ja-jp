@@ -3,7 +3,7 @@
    description="Visual Studio Team Services (VSTS) を使用して Service Fabric アプリケーションの継続的インテグレーションをセットアップする方法の概要について説明します。"
    services="service-fabric"
    documentationCenter="na"
-   authors="cawams"
+   authors="mthalman-msft"
    manager="timlt"
    editor="" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="03/29/2016"
-   ms.author="cawa" />
+   ms.author="mthalman" />
 
 # Visual Studio Team Services を使用して Service Fabric アプリケーションの継続的インテグレーションをセットアップする
 
@@ -45,7 +45,7 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 
     a.最新の更新プログラムが適用された Windows 10 を実行している場合は、この手順を省略できます (PowerShellGet はすでにインストールされています)。
 
-    b.それ以外の場合には、PowerShellGet が付属している [Windows Management Framework 5.0](http://www.microsoft.com/download/details.aspx?id=48729) をインストールします。
+    b.それ以外の場合には、PowerShellGet が付属している [Windows Management Framework 5.0](https://aka.ms/wmf5download) をインストールします。
 
 2.	AzureRM モジュールをインストールし更新します。Azure PowerShell の以前のバージョンがインストールされている場合は、それを削除します。
 
@@ -53,11 +53,9 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 
     b."Azure PowerShell" を見つけて、それをアンインストールします。
 
-    c.PowerShell コマンド プロンプトを開きます。
+    c.管理者として PowerShell のコマンド プロンプトを開きます。
 
     d.`Install-Module AzureRM` コマンドを使用して AzureRM モジュールをインストールします。
-
-    e.`Update-AzureRM` コマンドを使用して AzureRM モジュールを更新します。
 
 3.	Azure データ コレクションを無効 (または有効) にします。
 
@@ -99,10 +97,10 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 | --- | --- |
 | KeyVaultLocation | 任意の値。このパラメーターは、クラスターを作成する場所と一致する必要があります。 |
 | CertificateSecretName | 任意の値。 |
-| CertificateDnsName | クラスターの DNS 名に一致する必要があります。例: `mycluster.westus.azure.cloudapp.net` |
+| CertificateDnsName | クラスターの DNS 名に一致する必要があります。例: `mycluster.westus.cloudapp.azure.com` |
 | SecureCertificatePassword | 任意の値。このパラメーターは、ビルド コンピューターに証明書をインポートするときに使用されます。 |
-| KeyVaultResourceGroupName | 任意の値。ただし、クラスターに使用するリソース グループ名は使用しないでください。 |
 | KeyVaultName | 任意の値。 |
+| KeyVaultResourceGroupName | 任意の値。ただし、クラスターに使用するリソース グループ名は使用しないでください。 |
 | PfxFileOutputPath| 任意の値。このファイルを使用して、ビルド コンピューターに証明書をインポートします。 |
 
 スクリプトが完了すると、次の 3 つの値が出力されます。これらの値はビルド変数として使用するので、メモしておいてください。
@@ -127,9 +125,9 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 
 4. **Visual Studio 2015** を検索します。
 
-5. **[Compute]**、**[仮想マシン]**、**[From Gallery (ギャラリーから)]** の順に選択します。
+5. **[Compute]** -> **[仮想マシン]** -> **[ギャラリーから]** の順にクリックします。
 
-6. イメージ **[Visual Studio Enterprise 2015 Update 1 With Azure SDK 2.8 on Windows Server 2012 R2]** を選択します。
+6. イメージ **[Visual Studio Enterprise 2015 Update 2 with Universal Windows Tools and Azure SDK 2.9 on Windows Server 2012 R2]** を選択します。
 
     >[AZURE.NOTE] Azure SDK は必須のコンポーネントではありませんが、Visual Studio 2015 のみがインストールされているイメージは、現在は用意されていません。
 
@@ -137,7 +135,7 @@ Team Services プロジェクトの操作の詳細については、「[Visual S
 
 ### Service Fabric SDK をインストールします。
 
-コンピューターに [Service Fabric SDK](https://azure.microsoft.com/campaigns/service-fabric/) をインストールします。
+コンピューターに [Service Fabric SDK](service-fabric-get-started.md#install-the-runtime-sdk-and-tools) をインストールします。
 
 ### Azure PowerShell をインストールするには
 
@@ -151,7 +149,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
 2. ノード `HKEY_Users\.Default\Environment` を右クリックし、**[新規]**、**[展開可能な文字列値]** の順に選択します。
 
-3. 名前として「`PSModulePath`」と入力し、値として「`%PROGRAMFILES%\WindowsPowerShell\Modules`」と入力します。`%PROGRAMFILES%` を `PROGRAMFILES` 環境変数の値に置き換えます。
+3. 名前として `PSModulePath` を入力し、値として `%PROGRAMFILES%\WindowsPowerShell\Modules` を入力します。`%PROGRAMFILES%` を `PROGRAMFILES` 環境変数の値に置き換えます。
 
 ### Automation の証明書をインポートする
 
@@ -161,10 +159,10 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
     b.先ほど `CreateAndUpload-Certificate.ps1` に渡したパスワードを使用して、管理者 PowerShell プロンプトを開き、次のコマンドを実行します。
 
-        ```
-        $password = Read-Host -AsSecureString
-        Import-PfxCertificate -FilePath <path/to/cert.pfx> -CertStoreLocation Cert:\LocalMachine\My -Password $password -Exportable
-        ```
+    ```powershell
+    $password = Read-Host -AsSecureString
+    Import-PfxCertificate -FilePath <path/to/cert.pfx> -CertStoreLocation Cert:\LocalMachine\My -Password $password -Exportable
+    ```
 
 2.	証明書マネージャーを実行します。
 
@@ -184,7 +182,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
     d.**[追加]** ボタンを選択し、「**ネットワーク サービス**」と入力し、**[名前の確認]** を選択します。
 
-    e.**[OK]** を選択し、証明書マネージャーを閉じます。
+    e.**[OK]** を選択します。
 
     ![ローカル サービス アカウントのアクセス許可を付与するための手順のスクリーンショット](media/service-fabric-set-up-continuous-integration/windows-certificate-manager.png)
 
@@ -196,7 +194,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
 1.	agent.zip をダウンロードします。これを行うには、次の手順を実行します。
 
-    a.**https://[your-VSTS-account-name].visualstudio.com** などチーム プロジェクトにサインインします。
+    a.* **https://[your-VSTS-account-name].visualstudio.com** などのチーム プロジェクトにサインインします。
 
     b.画面の右上隅にある歯車アイコンを選択します。
 
@@ -210,7 +208,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
     f.agent.zip をビルド コンピューターの `C:\agent` (または短いパスの任意の場所) に解凍します。
 
-    >[AZURE.NOTE] ASP.NET 5 Web サービスを使用する場合は、デプロイ中に **PathTooLongExceptions** エラーが発生するのを防ぐために、このフォルダーに対しては可能な限り短い名前を選択することをお勧めします。ASP.NET Core がリリースされたときに、この問題が軽減されます。
+    >[AZURE.NOTE] ASP.NET 5 Web サービスを使用する場合は、デプロイ中に **PathTooLongExceptions** エラーが発生するのを防ぐために、フォルダーに対しては可能な限り短い名前を選択することをお勧めします。ASP.NET Core がリリースされたときに、この問題が軽減されます。
 
 2.	管理者のコマンド プロンプトで、`C:\agent\ConfigureAgent.cmd` を実行します。スクリプトは次のパラメーターに対して入力を求めるメッセージを表示します。
 
@@ -221,7 +219,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 |エージェント プール|エージェント プールの名前を入力します(エージェント プールを作成していない場合は、既定値を使用します)。|
 |作業フォルダー|既定値をそのまま使用します。これは、ビルド エージェントによってアプリケーションが実際にビルドされるフォルダーです。ASP.NET 5 Web サービスを使用する場合は、デプロイ中に PathTooLongExceptions エラーが発生するのを防ぐために、フォルダーに対しては可能な限り短い名前を選択することをお勧めします。|
 |Windows サービスとしてインストールしますか?|既定値は N です。値を **Y** に変更します。|
-|サービスを実行するユーザー アカウント|既定値 `NT AUTHORITY\NetworkService` をそのまま使用します。|
+|サービスを実行するユーザー アカウント|既定値は `NT AUTHORITY\LOCAL SERVICE` です。既定値を `NT AUTHORITY\NetworkService` に変更します。|
 |`NT AUTHORITY\Network Service` のパスワード|ネットワーク サービス アカウントのパスワードはありませんが、空のパスワードは拒否されます。空でないパスワード文字列を入力してください (入力内容は無視されます)。|
 |既存のエージェントの構成を解除しますか?|既定値 **N** をそのまま使用します。|
 
@@ -277,7 +275,9 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
     e.適切なリポジトリとブランチが選択されていることを確認します。
 
-    f.ビルド エージェントを登録したエージェント キューを選択し、**[継続的インテグレーション]** チェック ボックスをオンにします。
+    f.**[継続的インテグレーション]** チェック ボックスをオンにして、分岐が更新されるたびに、このビルドがトリガーされるようにします。
+
+    g.ビルド エージェントを登録したエージェント キューを選択します。
 
 2.	**[変数]** タブで、次の値を持つ変数を作成します。
 
@@ -337,13 +337,13 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
 5.	ビルド定義を保存します。
 
-### "クラスター リソース グループの削除" ステップを追加する
+### <a name="RemoveClusterResourceGroup"></a>"クラスター リソース グループの削除" ステップを追加する
 
 クリーンアップの後で以前のビルドがクリーンアップされていない場合 (クリーンアップされる前にビルドが取り消された場合など)、既存のリソース グループが新しいものと競合する可能性があります。競合を避けるためには、残されているリソース グループ (および関連付けられているリソース) をいずれもクリーンアップしてから新しいリソース グループを作成します。
 
 1.	**[ビルド]** タブで、**[ビルド ステップの追加...]** コマンドを選択します。
 
-2.	**[配置]**、**[Azure リソース グループの配置]** の順に選択します。
+2.	**[デプロイする]**、**[Azure リソース グループのデプロイ]** の順に選択します。
 
 3.	ビルド ステップの名前の横にある鉛筆アイコンを選択し、その名前を「**クラスター リソース グループの削除**」に変更します。
 
@@ -355,6 +355,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
     |Azure RM サブスクリプション|「**サービス プリンシパルの作成**」セクションで作成した接続エンドポイントを選択します。|
     |アクション|**リソース グループの削除**|
     |リソース グループ|任意の未使用の名前を入力します。次の手順で、同じ名前を使用する必要があります。|
+    |エラー時に続行|このステップは、リソース グループが存在しない場合は失敗します。この問題を回避するには、**[管理オプション]** セクションの **[エラー時に続行]** を有効にします。|
 
 5.	ビルド定義を保存します。
 
@@ -362,7 +363,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
 1.	**[ビルド]** タブで、**[ビルド ステップの追加...]** コマンドを選択します。
 
-2.	**[配置]**、**[Azure リソース グループの配置]** の順に選択します。
+2.	**[デプロイする]**、**[Azure リソース グループのデプロイ]** の順に選択します。
 
 3.	ビルド ステップの名前の横にある鉛筆アイコンを選択し、その名前を「**セキュリティで保護されたクラスターをプロビジョニングする**」に変更します。
 
@@ -386,7 +387,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
 2.	**[ユーティリティ]**、**[PowerShell]** の順に選択します。
 
-3.	ビルド ステップの名前の横にある鉛筆アイコンを選択し、その名前を「**デプロイ**」に変更します。
+3.	ビルド ステップの名前の横にある鉛筆アイコンを選択し、その名前を「**デプロイする**」に変更します。
 
 4. これらの値を選択します。
 
@@ -397,6 +398,14 @@ Azure PowerShell をインストールするには、前のセクション「Azu
     |引数|`-PublishProfileFile path/to/MySolution/MyApplicationProject/PublishProfiles/MyPublishProfile.xml -ApplicationPackagePath path/to/MySolution/MyApplicationProject/pkg/$(BuildConfiguration)`|
 
 5.	ビルド定義を保存します。
+
+### "確認" ステップの追加
+
+1. 最初にこの構成済みのビルド定義を取得する場合、次の手順は省略可能です。正常にビルドを実行して、他のビルド手順の正確性を確認したら、ここで、独自の検証ビルド ステップを挿入できます。これはアプリケーションに固有のもので、目的は、クラスターにデプロイされているアプリケーションの正確性を確認することです。
+  
+### 最後の "クリーンアップ" ステップの追加
+
+1. 「["クラスター リソース グループの削除" ステップを追加する](#RemoveClusterResourceGroup)」と同じ手順に従います。この操作では、ビルド中に作成された、プロビジョニング済みのすべての Azure リソースをクリーンアップします。
 
 ### 試してみる
 
@@ -420,4 +429,4 @@ Service Fabric アプリケーションの継続的インテグレーション�
  - [ビルド エージェントのデプロイ](https://msdn.microsoft.com/Library/vs/alm/Build/agents/windows)
  - [ビルド定義の作成と構成](https://msdn.microsoft.com/Library/vs/alm/Build/vs/define-build)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

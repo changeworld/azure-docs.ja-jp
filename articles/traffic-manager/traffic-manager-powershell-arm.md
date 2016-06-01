@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure リソース マネージャーによる Traffic Manager プレビューのサポート | Microsoft Azure"
-   description="Azure リソース マネージャー (ARM) での Traffic Manager に対する Powershell の使用 (プレビュー)"
+   pageTitle="Azure Resource Manager による Traffic Manager のサポート | Microsoft Azure"
+   description="Azure Resource Manager (ARM) での Traffic Manager に対する Powershell の使用"
    services="traffic-manager"
    documentationCenter="na"
    authors="joaoma"
@@ -15,8 +15,8 @@
    ms.date="03/17/2016"
    ms.author="joaoma" />
 
-# Azure リソース マネージャーによる Azure Traffic Manager プレビューのサポート
-Azure リソース マネージャー (ARM) は、Azure のサービスの新しい管理フレームワークです。Azure リソース マネージャー ベースの API とツールを使用して、Azure Traffic Manager プロファイルを管理できるようになりました。
+# Azure Resource Manager による Azure Traffic Manager のサポート
+Azure リソース マネージャー (ARM) は、Azure 上のサービス向けの新しい管理フレームワークです。Azure リソース マネージャー ベースの API とツールを使用して、Azure Traffic Manager プロファイルを管理できるようになりました。
 
 ## リソース モデル
 
@@ -42,8 +42,6 @@ ARM を使用して Traffic Manager プロファイルを構成すると、下�
 現在、Azure Traffic Manager の ARM サポートには若干の制限があります。
 
 - 既存の (ARM 以外の) Azure サービス管理 (ASM) API、ツール、"クラシック" ポータルを使用して作成された Traffic Manager プロファイルは ARM では使用できません。逆の場合も同様です。プロファイルを削除して再作成する方法以外に、ASM から ARM API へのプロファイルの移行は現在サポートされていません。
-
-- "入れ子" になった Traffic Manager のエンドポイントは、ARM API、ARM PowerShell、ARM モードの Azure CLI でサポートされています。Azure ポータルでは現在サポートされていません (Azure ポータルでも ARM API が使用されています)。
 
 - "AzureEndpoints" タイプの Traffic Manager エンドポイントは、Web アプリを参照するとき、既定の (運用) [Web アプリ スロット](../app-service-web/web-sites-staged-publishing.md)だけを参照できます。カスタム スロットはまだサポートされていません。回避策として、カスタム スロットは "ExternalEndpoints" タイプを使用して構成できます。
 
@@ -236,7 +234,7 @@ Traffic Manager を入れ子にすることによって、柔軟で強力なト�
 
 
 ## Traffic Manager エンドポイントの更新
-既存の Traffic Manager エンドポイントを更新する方法は 2 とおりあります。<BR>
+既存の Traffic Manager エンドポイントを更新する方法は 2 通りあります。<BR>
 
 1. Get-AzureRmTrafficManagerProfile を使用して Traffic Manager プロファイルを取得し、プロファイル内でエンドポイントのプロパティを更新した後、Set-AzureRmTrafficManagerProfile を使用して変更をコミットします。この方法の利点は、1 回の操作で複数のエンドポイントを更新できることです。<BR>
 2. Get-AzureRmTrafficManagerEndpoint を使用して Traffic Manager エンドポイントを取得し、エンドポイントのプロパティを更新した後、Set-AzureRmTrafficManagerEndpoint を使用して変更をコミットします。この方法は、プロファイル内の Endpoints 配列にインデックスを作成する必要がないため、より単純です。<BR>
@@ -311,4 +309,4 @@ Traffic Manager プロファイルを削除するには、プロファイル名�
 [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

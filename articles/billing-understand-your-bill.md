@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/13/2016"
+   ms.date="04/28/2016"
    ms.author="erihur"/>
 
 
@@ -35,11 +35,11 @@ Microsoft Azure サブスクリプションの課金額は、料金プランに�
 
 ### Microsoft Azure の課金内容の表示またはダウンロード:
 
-[Azure アカウント ポータル](https://account.windowsazure.com/subscriptions)では、現在の課金情報を確認したり、過去の課金情報をダウンロードしたりできます。
+[Azure アカウント センター](https://account.windowsazure.com/subscriptions)では、現在の課金情報を確認したり、過去の課金情報をダウンロードしたりできます。
 
 課金内容を表示またはダウンロードするには:
 
-1. Microsoft アカウント ID か、職場または学校アカウントの ID を使用して[アカウント ポータル](https://account.windowsazure.com/subscriptions)にサインインします。
+1. Microsoft アカウント ID か、職場または学校アカウントの ID を使用して[アカウント センター](https://account.windowsazure.com/subscriptions)にサインインします。
 
 2. 詳細と使用状況を表示するサブスクリプションをクリックします。
 
@@ -48,7 +48,7 @@ Microsoft Azure サブスクリプションの課金額は、料金プランに�
     ![概要 - 請求履歴 1](./media/billing-understand-your-bill/ContentViewaBillforMA1.png)
 
 
-4. **請求履歴**セクションには、最新の 6 つの請求期間と現行の未請求期間に関する明細が表示されます。現在の期間の明細は、見積もりを作成した時点での料金の見積もりです。この情報は毎日更新されますが、その日までのすべての累計使用量が含まれていない可能性があります。その月に実際に支払う料金は、この見積もりとは異なる場合があります。
+4. **請求履歴**セクションには、以前の請求期間と現行の未請求期間に関する明細が表示されます。現在の期間の明細は、見積もりを作成した時点での料金の見積もりです。この情報は毎日更新されますが、その日までのすべての累計使用量が含まれていない可能性があります。その月に実際に支払う料金は、この見積もりとは異なる場合があります。
 
     ![概要 - 請求履歴 2](./media/billing-understand-your-bill/ContentViewaBillforMA2.png)
 
@@ -140,7 +140,7 @@ Microsoft Azure アカウントが登録されたアカウントのメール ア
 ![追加情報](./media/billing-understand-your-bill/AdditionalInformation.png)
 
 ### 詳細な使用状況
-**[詳細な使用状況]** の説明のリンクから、アカウント ポータルに移動します。ここで、このサブスクリプションの詳細な使用状況を確認できます。現在、ダウンロードできるバージョンは 2 種類です。**.csv version 1** には、古い命名規則と使用状況のフィールドが含まれ、**.csv version 2** には、各カテゴリのユーザーにわかりやすい名前と、Microsoft Azure で使用しているサービス内容を理解できるその他のフィールドが含まれています。.csv version 1 には Azure Resource Manager の詳細がないことに注意してください。Azure Resource Manager の情報は .csv version 2 に含まれています。
+**[詳細な使用状況]** の説明のリンクから、アカウント センターに移動します。ここで、このサブスクリプションの詳細な使用状況を確認できます。現在、ダウンロードできるバージョンは 2 種類です。**.csv version 1** には、古い命名規則と使用状況のフィールドが含まれ、**.csv version 2** には、各カテゴリのユーザーにわかりやすい名前と、Microsoft Azure で使用しているサービス内容を理解できるその他のフィールドが含まれています。.csv version 1 には Azure Resource Manager の詳細がないことに注意してください。Azure Resource Manager の情報は .csv version 2 に含まれています。
 
 ### 追加情報と役立つリソース
 このセクションには、コンピューティング インスタンスのサイズに関する簡単な質問、SQL DB 料金へのリンク、および詳細な質問に答えるための役立つリンクがあります。
@@ -238,18 +238,19 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 
 - [Azure の課金とサブスクリプションに関する FAQ](billing-subscription-faq.md)
 
-- [支払い方法の管理](https://msdn.microsoft.com/library/azure/dn736054.aspx)
+- [Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法](billing-how-to-change-credit-card.md)
 
-- [既存のクレジット カードの支払い情報を編集する](https://msdn.microsoft.com/library/azure/dn736053.aspx)
-
-- [支払い方法として使用する新しいクレジット カードの追加](https://msdn.microsoft.com/library/azure/dn736057.aspx)
-
-- [Azure の請求書の支払いに使用するクレジット カードを変更する](https://msdn.microsoft.com/library/azure/dn736050.aspx)
-
-<!-- - [What do I do if my Azure subscription become disabled?](https://msdn.microsoft.com/library/azure/dn736049.aspx)-->
+<!--
+OLD MSDN Articles
+- [What do I do if my Azure subscription become disabled?](https://msdn.microsoft.com/library/azure/dn736049.aspx)
+- [Edit payment information for an existing credit card](https://msdn.microsoft.com/library/azure/dn736053.aspx)
+- [Add a new credit card to use as a payment method](https://msdn.microsoft.com/library/azure/dn736057.aspx)
+- [Change the credit card on your Microsoft Azure account](https://msdn.microsoft.com/library/azure/dn736050.aspx)
+- [Manage your payment method](https://msdn.microsoft.com/library/azure/dn736054.aspx)
+-->
 
 
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

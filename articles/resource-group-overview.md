@@ -4,8 +4,8 @@
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/11/2016"
+   ms.date="05/20/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーの概要
@@ -59,7 +59,7 @@
 
 ## リソース プロバイダー
 
-リソース プロバイダーは、リソース マネージャーを使用してデプロイおよび管理できるリソースを提供するサービスです。各リソース プロバイダーは、リソースを利用するための REST API 操作を提供します。たとえば、キーとシークレットを格納するために Azure Key Vault をデプロイする場合は、**Microsoft.KeyVault** リソース プロバイダーを使用します。このリソース プロバイダーは、キー コンテナーを作成するための **vaults** というリソースの種類、キー コンテナーにシークレットを作成するための **vaults/secrets** というリソースの種類、および一連の [REST API 操作](https://msdn.microsoft.com/library/azure/dn903609.aspx)を提供します。
+リソース プロバイダーは、リソース マネージャーを使用してデプロイおよび管理できるリソースを提供するサービスです。各リソース プロバイダーは、リソースを利用するための REST API 操作を提供します。たとえば、キーとシークレットを格納するために Azure Key Vault をデプロイする場合は、**Microsoft.KeyVault** リソース プロバイダーを使用します。このリソース プロバイダーは、キー コンテナーを作成するための **vaults** というリソースの種類、キー コンテナーにシークレットを作成するための **vaults/secrets** というリソースの種類を提供します。リソース プロバイダーの詳細については、[Key Vault REST API 操作](https://msdn.microsoft.com/library/azure/dn903609.aspx)などの REST API 操作を参照してください。
 
 インフラストラクチャをデプロイおよび管理するには、リソース プロバイダーの詳細 (提供するリソースの種類、REST API 操作のバージョン番号、サポートする操作、作成するリソースの種類の値を設定する際に使用するスキーマなど) を把握する必要があります。サポートされているリソース プロバイダーについては、「[リソース マネージャーのプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)」を参照してください。
 
@@ -69,6 +69,8 @@
 
 テンプレート内では、アプリのインフラストラクチャ、構成方法、およびアプリケーション コードをインフラストラクチャに発行する方法を定義します。Azure リソース マネージャーでは、依存関係を分析し、リソースが確実に正しい順序で作成されるため、デプロイの順序について心配する必要はありません。詳細については、「[Azure リソース マネージャーのテンプレートでの依存関係の定義](resource-group-define-dependencies.md)」を参照してください。
 
+Marketplace からソリューションを作成すると、ソリューションには自動的にデプロイ テンプレートが含まれます。最初からテンプレートを作成する必要はありません。はじめにソリューション向けのテンプレートを使用して、それを特定のニーズに合わせてカスタマイズできます。リソース グループの現在の状態をテンプレートにエクスポートするか、特定のデプロイに使用されたテンプレートを表示することで、既存のリソース グループのテンプレートを取得できます。エクスポートしたテンプレートを表示すると、テンプレートの構文について理解するのに役立ちます。エクスポートしたテンプレートの操作の詳細については、「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
+
 インフラストラクチャ全体を 1 つのテンプレートで定義する必要はありません。多くの場合、対象を絞って目的を特化した一連のテンプレートにデプロイの要件を分類することが合理的です。これらのテンプレートは、さまざまなソリューションで簡単に再利用できます。特定のソリューションをデプロイするには、必要なすべてのテンプレートをリンクするマスター テンプレートを作成します。詳細については、「[Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。
 
 インフラストラクチャの更新にも、テンプレートを使用することができます。たとえば、アプリに新しいリソースを追加したり、既にデプロイされたリソースに構成ルールを追加したりできます。テンプレートで新しいリソースの作成を指定した際、そのリソースが既に存在する場合は、Azure リソース マネージャーでは、新しい資産を作成する代わりに更新が実行されます。Azure リソース マネージャーでは、既存の資産が、新しい資産と同じ状態になるよう更新されます。または、テンプレートで指定されていないリソースをリソース マネージャーで削除するように指定することができます。デプロイ時の各種のオプションについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
@@ -77,17 +79,11 @@
 
 リソース マネージャーでは、セットアップ時に含まれていなかった特定ソフトウェアのインストールなど、追加の操作が必要なシナリオのための拡張機能を使用できます。DSC、Chef、または Puppet などの構成管理サービスをすでにご利用の場合は、拡張機能を使用すれば、引き続きそのサービスで作業ができます。
 
-Marketplace からソリューションを作成すると、ソリューションには自動的にデプロイ テンプレートが含まれます。最初からテンプレートを作成する必要はありません。はじめにソリューション向けのテンプレートを使用して、それを特定のニーズに合わせてカスタマイズできます。
-
-リソース グループの現在の状態をテンプレートにエクスポートするか、特定のデプロイに使用されたテンプレートを表示することで、既存のリソース グループのテンプレートを取得できます。いずれの選択肢も「[Azure ポータルを使用した Azure リソースのデプロイと管理](./azure-portal/resource-group-portal.md)」で解説しています。
-
 最後に、テンプレートは、アプリのソース コードの一部になります。テンプレートはソース コード リポジトリにチェックインして、アプリの変更に合わせて更新できます。テンプレートは Visual Studio から編集できます。
 
-テンプレートの定義の詳細については、[Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)を参照してください。
+テンプレートの定義の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)を参照してください。
 
-テンプレートの作成に関する段階的指示については、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」をご覧ください。
-
-テンプレートを構造化する方法のガイダンスについては、「[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](best-practices-resource-manager-design-templates.md)」を参照してください。
+テンプレートの作成手順については、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」を参照してください。
 
 ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments.md)」を参照してください。
 
@@ -97,13 +93,13 @@ Marketplace からソリューションを作成すると、ソリューショ�
 
 タグを共有するために、リソースが同じリソース グループ内に格納されている必要はありません。組織内のユーザーが類似したタグを誤って適用しないよう (「department」の代わりに「dep」など)、組織内のすべてのユーザーが共通のタグを使用できる独自のタグ分類法を作成することができます。
 
-タグの詳細については、[タグを使用した Azure リソースの整理](./resource-group-using-tags.md)を参照してください。デプロイ中にリソースへのタグの追加を要求する[カスタマイズしたポリシー](#manage-resources-with-customized-policies)を作成することができます。
+タグの詳細については、[タグを使用した Azure リソースの整理](resource-group-using-tags.md)を参照してください。デプロイ中にリソースへのタグの追加を要求する、[カスタマイズしたポリシー](#manage-resources-with-customized-policies)を作成することができます。
 
 ## Access control
 
 リソース マネージャーを使用すると、組織に対する特定アクションにアクセスできるユーザーを制御できます。Azure リソース マネージャーでは、OAuth およびロールベースのアクセス制御 (RBAC) が管理プラットフォームにネイティブに統合されているため、そのアクセス制御がリソース グループ内のすべてのサービスに適用されます。ユーザーを事前定義されたプラットフォームおよびリソース固有のロールに追加し、これらのロールをサブスクリプション、リソース グループ、またはリソースに適用することで、アクセスを制限できます。たとえば、ユーザーにデータベース管理は許可するが、データベース サーバーやセキュリティ ポリシーの管理は許可しない SQL DB 共同作業者と呼ばれる事前定義済みのロールを利用するとします。このようなアクセスを必要とする組織内ユーザーを、SQL DB 共同作業者ロールに追加して、このロールをサブスクリプション、リソース グループ、またはリソースに適用します。
 
-リソース マネージャーでは、監査のために、自動的にユーザー操作が記録されます。監査ログの使用については、「[リソース マネージャーの監査操作](resource-group-audit.md)」を参照してください。
+リソース マネージャーでは、監査のために、自動的にユーザー操作が記録されます。監査ログの使用については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
 
 ロールベースのアクセス制御の詳細については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。「[RBAC: 組み込みのロール](./active-directory/role-based-access-built-in-roles.md)」トピックには、組み込みのロールと許可されているアクションの一覧が含まれています。組み込みのロールには、所有者、閲覧者、共同作業者などの一般的なロールに加え、仮想マシンの共同作業者、仮想ネットワークの共同作業者、SQL セキュリティ管理者など、サービス固有のロールがあります (使用可能なロールの数例にすぎません)。
 
@@ -119,25 +115,25 @@ Marketplace からソリューションを作成すると、ソリューショ�
 
 リソース マネージャーでの操作は、Azure PowerShell、Mac、Linux、および Windows 用の Azure CLI、Azure ポータル、または REST API の操作と完全な互換性があります。ユーザーに最適なインターフェイスを使用できるほか、インターフェイス間を混乱せずにすばやく移動できます。ポータルでは、ポータルの外で実行された操作さえも表示されます。
 
-PowerShell に関する詳細については、[リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)および [Azure Resource Manager Cmdlets (Azure リソース マネージャのコマンドレッド)](https://msdn.microsoft.com/library/azure/dn757692.aspx) を参照してください。
+PowerShell に関する詳細については、[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)および [Azure Resource Manager Cmdlets (Azure リソース マネージャのコマンドレッド)](https://msdn.microsoft.com/library/azure/dn757692.aspx) を参照してください。
 
-Azure CLI の詳細については、[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](./xplat-cli-azure-resource-manager.md)を参照してください。
+Azure CLI の詳細については、[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)を参照してください。
 
 REST API の詳細については、[Azure リソース マネージャー REST API リファレンス](https://msdn.microsoft.com/library/azure/dn790568.aspx)を参照してください。デプロイしたリソースの REST 操作を表示する方法については、「[Azure リソース エクスプローラーを使用してリソースを表示および変更する](resource-manager-resource-explorer.md)」を参照してください。
 
-ポータルの使用方法の詳細については、「[Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)」を参照してください。
+ポータルの使用方法の詳細については、「[Azure ポータルを使用した Azure リソースの管理](./azure-portal/resource-group-portal.md)」を参照してください。
 
 Azure リソース マネージャーでは、クロス オリジン リソース共有 (CORS) がサポートされています。CORS を使用すると、別のドメインに存在する Web アプリケーションからリソース マネージャー REST API または Azure サービス REST API を呼び出すことができます。CORS がサポートされていない場合は、Web ブラウザーによって、あるドメイン内のアプリは別のドメイン内のリソースにアクセスできないようになっています。リソース マネージャーを使用すると、有効な認証の資格情報を持つすべての要求で CORS が有効になります。
 
 ## 次のステップ
 
-- テンプレート作成の詳細については、[テンプレートの作成](./resource-group-authoring-templates.md)に関するページを参照してください。
+- テンプレート作成の詳細については、[テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 - 作成したテンプレートをデプロイするには、[テンプレートのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
-- テンプレートで使用できる関数については、[テンプレートの関数](./resource-group-template-functions.md)に関するページを参照してください。
+- テンプレートで使用できる関数については、[テンプレートの関数](resource-group-template-functions.md)に関するページを参照してください。
 - テンプレートのデザインのガイダンスについては、[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](best-practices-resource-manager-design-templates.md)に関するページを参照してください。
 
 この概要のデモンストレーション ビデオを次に示します。
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

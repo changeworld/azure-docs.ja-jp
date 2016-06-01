@@ -11,7 +11,7 @@
 <tags 
 	ms.service="virtual-machines-windows" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="Windows" 
+	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/25/2016" 
@@ -215,4 +215,4 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 - TestVNET サブネットに[新しい仮想マシンを追加](virtual-machines-windows-create-powershell.md)します (Microsoft SQL Server を実行している仮想マシンなど)。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

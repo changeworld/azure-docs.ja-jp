@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Powershell を使用した VM の作成 | Microsoft Azure"
-	description="Powershell とリソース マネージャー デプロイ モデルで Azure 仮想マシンを作成および構成します。"
+	pageTitle="PowerShell を使用した VM の作成 | Microsoft Azure"
+	description="PowerShell と Resource Manager デプロイ モデルで Azure 仮想マシンを作成および構成します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="cynthn"
@@ -17,7 +17,7 @@
 	ms.date="03/04/2016"
 	ms.author="cynthn"/>
 
-# リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、構成する
+# Resource Manager デプロイ モデルでの Azure PowerShell を使用した Windows 仮想マシンの作成と構成
 
 > [AZURE.SELECTOR]
 - [ポータル - Windows](virtual-machines-windows-hero-tutorial.md)
@@ -28,15 +28,13 @@
 
 <br>
 
-
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-windows-classic-create-powershell.md)。
-
 次の手順では、一連の Azure PowerShell のコマンドを作成して Azure の仮想マシンを作成および構成する方法を説明します。この基本的なプロセスを利用すると、簡単な新しい Windows ベースの仮想マシン向けにコマンド セットを作成し、既存のデプロイを拡張できるようになります。また、カスタムの開発環境、テスト環境、IT プロ環境を簡単に構築する複数のコマンド セットを作成することもできます。
 
 これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。この方法は、PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
-## 手順 1. Azure PowerShell をインストールする
+> [AZURE.IMPORTANT] VM を可用性セットの一部にする場合は、VM を作成するときにセットに追加する必要があります。作成後に VM を可用性セットに追加する方法は現在ありません。
+
+## 手順 1: Azure PowerShell をインストールする
 
 インストールには、[PowerShell ギャラリー](https://www.powershellgallery.com/profiles/azure-sdk/)と [WebPI](http://aka.ms/webpi-azps) という 2 つの大きなオプションがあります。WebPI は月次の更新プログラムを受け取ります。PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。
 
@@ -52,7 +50,7 @@
 
 次のコマンドを使用して、利用可能なサブスクリプションを取得します。
 
-	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
+	Get-AzureRmSubscription | Sort SubscriptionName | Select SubscriptionName
 
 現在のセッション用の Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
@@ -115,6 +113,7 @@ DNSNameAvailability が"True"の場合、指定の名前はグローバルに一
 ### 可用性セット
 
 
+
 必要に応じて、次のコマンドを実行して新しい仮想マシンの新しい可用性セットを作成します。
 
 	$avName="<availability set name>"
@@ -136,7 +135,7 @@ DNSNameAvailability が"True"の場合、指定の名前はグローバルに一
 	$locName="West US"
 	$frontendSubnet=New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix 10.0.1.0/24
 	$backendSubnet=New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix 10.0.2.0/24
-	New-AzureRmVirtualNetwork -Name TestNet -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -SubnetId $frontendSubnet,$backendSubnet
+	New-AzureRmVirtualNetwork -Name TestNet -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet,$backendSubnet
 
 既存の仮想ネットワークの一覧を取得するには、次のコマンドを実行します。
 
@@ -220,7 +219,7 @@ NIC を作成し、受信 NAT ルールのロード バランサーのインス�
 	$bePoolIndex=<index of the back end pool, starting at 0>
 	$natRuleIndex=<index of the inbound NAT rule, starting at 0>
 	$lb=Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgName
-	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex] -LoadBalancerInboundNatRule $lb.InboundNatRules[$natRuleIndex]
+	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex] -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex] -LoadBalancerInboundNatRule $lb.InboundNatRules[$natRuleIndex]
 
 $NicName 文字列はリソース グループで一意にする必要があります。最良事例は、「LOB07-NIC」のように文字列に仮想マシン名を組み込むことです。
 
@@ -239,7 +238,7 @@ NIC を作成し、負荷分散セットのロード バランサーのインス
 	$lbName="<name of the load balancer instance>"
 	$bePoolIndex=<index of the back end pool, starting at 0>
 	$lb=Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgName
-	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex]
+	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex] -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex]
 
 次に、ローカル VM オブジェクトを作成し、必要に応じて可用性セットに追加します。次の 2 つのオプションのいずれかをコマンド セットをコピーし、名前、サイズ、および可用性セット名を入力します。
 
@@ -293,7 +292,7 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 |MicrosoftWindowsServerEssentials | WindowsServerEssentials | WindowsServerEssentials |
 |MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | 2012R2 |
 
-必要な仮想マシン イメージが掲載されていない場合は、[こちら](virtual-machines-linux-cli-ps-findimage.md#powershell)の手順に従って発行元、プラン、および SKU 名を判断します。
+必要な仮想マシン イメージが掲載されていない場合は、[こちら](virtual-machines-windows-cli-ps-findimage.md#powershell)の手順に従って発行元、プラン、および SKU 名を判断します。
 
 コマンド セットに次のコマンドをコピーし、発行元、プラン、および SKU 名を入力します。
 
@@ -317,7 +316,7 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 テキスト エディターまたは PowerShell ISE を使用して手順 4. で作成した Azure PowerShell コマンド セットを確認します。すべての変数が指定され、それらの値が正しいことを確認します。さらに、文字 < and > がすべて削除されていることも確認します。
 
-テキスト エディターでコマンドを構築した場合は、コマンド セットをクリップボードにコピーしてから、Azure PowerShell プロンプトを右クリックします。この操作により、コマンド セットが一連の PowerShell コマンドとして送信され、Azure 仮想マシンが作成されます。または、Azure PowerShell ISE のコマンド セットを実行します。
+テキスト エディターでコマンドを構築した場合は、コマンド セットをクリップボードにコピーしてから、Windows PowerShell プロンプトを右クリックします。この操作により、コマンド セットが一連の PowerShell コマンドとして送信され、Azure 仮想マシンが作成されます。または、PowerShell ISE のコマンド セットを実行します。
 
 この情報を再利用してさらに VM を作成する場合、PowerShell スクリプト ファイル (*.ps1) としてこのコマンド セットを保存できます。
 
@@ -341,7 +340,7 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 	# Set the existing virtual network and subnet index
 	$vnetName="AZDatacenter"
 	$subnetIndex=0
-	$vnet=Get-AzureRMVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
+	$vnet=Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
 
 	# Create the NIC
 	$nicName="LOB07-NIC"
@@ -390,6 +389,6 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 [リソース マネージャー テンプレートと PowerShell で Windows 仮想マシンを作成する](virtual-machines-windows-ps-template.md)
 
-[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
+[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

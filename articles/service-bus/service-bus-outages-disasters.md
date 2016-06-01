@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="障害と災害に対する Service Bus アプリケーションの保護 | Microsoft Azure"
-   description="発生する可能性がある Service Bus の障害からアプリケーションを保護するために使用できる手法について説明します。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" /> 
+    pageTitle="障害と災害に対する Service Bus アプリケーションの保護 | Microsoft Azure"
+    description="発生する可能性がある Service Bus の障害からアプリケーションを保護するために使用できる手法について説明します。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="tysonn" /> 
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="01/26/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="05/06/2016"
+    ms.author="sethm" />
 
 # Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 
@@ -27,7 +27,7 @@
 
 Service Bus では、複数のメッセージング ストアを使用して、キューまたはトピックに送信されたメッセージを格納します。パーティション分割されていないキューまたはトピックは 1 つのメッセージング ストアに割り当てられます。このメッセージング ストアを使用できない場合、そのキューまたはトピックに対するすべての操作が失敗します。
 
-Service Bus のメッセージング エンティティ (キュー、トピック、リレー) はすべて、データセンターと連携する 1 つのサービスの名前空間に存在します。Service Bus では、データの自動 geo レプリケーションを有効にすることや、サービスの名前空間が複数のデータセンターにまたがることを許可していません。
+Service Bus のメッセージング エンティティ (キュー、トピック、リレー) はすべて、データセンターと連携する 1 つのサービスの名前空間に存在します。Service Bus では、データの自動 geo レプリケーションを有効にすることや、名前空間が複数のデータセンターにまたがることを許可していません。
 
 ## ACS の障害に対する保護
 
@@ -61,7 +61,7 @@ ACS の障害から保護するには、Shared Access Signature (SAS) トーク�
 
 ## アクティブ レプリケーション
 
-アクティブ レプリケーションでは、すべての操作で両方のサービスの名前空間のエンティティを使用します。メッセージを送信するクライアントはすべて、同じメッセージのコピーを 2 つ送信します。1 つ目のコピーがプライマリ エンティティ (たとえば **contosoPrimary.servicebus.windows.net/sales**) に送信され、そのメッセージの 2 つ目のコピーはセカンダリ エンティティ (たとえば **contosoSecondary.servicebus.windows.net/sales**) に送信されます。
+アクティブ レプリケーションでは、すべての操作で両方の名前空間のエンティティを使用します。メッセージを送信するクライアントはすべて、同じメッセージのコピーを 2 つ送信します。1 つ目のコピーがプライマリ エンティティ (たとえば **contosoPrimary.servicebus.windows.net/sales**) に送信され、そのメッセージの 2 つ目のコピーはセカンダリ エンティティ (たとえば **contosoSecondary.servicebus.windows.net/sales**) に送信されます。
 
 クライアントは両方のキューからメッセージを受信します。受信側はメッセージの 1 つ目のコピーを処理し、2 つ目のコピーは抑制されます。重複したメッセージを抑制するには、送信側が各メッセージに一意の識別子のタグを付ける必要があります。メッセージのコピーには、両方とも同じ識別子のタグを付ける必要があります。[BrokeredMessage.MessageId][] プロパティ、[BrokeredMessage.Label][] プロパティ、またはカスタム プロパティを使用して、メッセージにタグを付けることができます。受信側は、既に受信したメッセージの一覧を保持する必要があります。
 
@@ -111,4 +111,4 @@ ACS の障害から保護するには、Shared Access Signature (SAS) トーク�
   [Azure SQL Database の継続性]: ../sql-database/sql-database-business-continuity.md
   [Azure のビジネス継続性テクニカル ガイダンス]: https://msdn.microsoft.com/library/azure/hh873027.aspx
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

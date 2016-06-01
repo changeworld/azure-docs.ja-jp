@@ -23,9 +23,11 @@
 
 この記事の手順を実行するには、約 20 分かかります。
 
+> [AZURE.IMPORTANT] VM を可用性セットの一部にする場合は、VM を作成するときにセットに追加する必要があります。作成後に VM を可用性セットに追加する方法は現在ありません。
+
 ## 手順 1: テンプレート ファイルの作成
 
-「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」にある情報を使用して、独自のテンプレートを作成することができます。また、[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)から作成済みのテンプレートをデプロイすることもできます。この記事で使用されている例は、「[Deploy a simple Windows VM in West US (米国西部に単純な Windows VM をデプロイする)](https://azure.microsoft.com/documentation/templates/101-vm-simple-windows/)」で説明されているテンプレートに似ています。
+「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」にある情報を使用して、独自のテンプレートを作成できます。また、[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)から作成済みのテンプレートをデプロイすることもできます。この記事で使用されている例は、「[Deploy a simple Windows VM in West US](https://azure.microsoft.com/documentation/templates/101-vm-simple-windows/)」 (米国西部に単純な Windows VM をデプロイする) で説明されているテンプレートに似ています。
 
 1. 任意のテキスト エディターを開き、この JSON 情報を、*VirtualMachineTemplate.json* と呼ばれる新しいファイルにコピーします。
 
@@ -218,7 +220,7 @@
 
 ## 手順 3: Azure PowerShell のインストール
 
-最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
+最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。
 
 ## 手順 4: リソース グループの作成
 
@@ -228,7 +230,7 @@
 
 	    Get-AzureLocation | sort Name | Select Name
 
-2. **$locName** の値を一覧の場所に置き換えます (例: **Central US**)。変数を作成します。
+2. **$locName** の値を一覧の場所に置き換えます (例: **米国中部**)。変数を作成します。
 
         $locName = "location name"
         
@@ -282,4 +284,4 @@
 - デプロイに問題がある場合は、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
 - 作成した仮想マシンの管理方法については、[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

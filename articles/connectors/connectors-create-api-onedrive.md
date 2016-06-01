@@ -14,7 +14,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="03/16/2016"
+ms.date="05/12/2016"
 ms.author="mandia"/>
 
 # OneDrive API の概要
@@ -59,7 +59,7 @@ OneDrive API には、次のトリガーとアクションがあります。
 1. OneDrive アカウントにサインインします。
 2. ロジック アプリが OneDrive に接続して使用することを許可します。 
 
-接続を作成したら、フォルダー パスやファイル名など、OneDrive のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
+>[AZURE.INCLUDE [OneDrive への接続を作成する手順](../../includes/connectors-create-api-onedrive.md)]
 
 >[AZURE.TIP] 他のロジック アプリでも、この同じ接続を使用できます。
 
@@ -312,4 +312,4 @@ OneDrive にフォルダーを抽出します。```POST: /datasets/default/extra
 [6]: ./media/connectors-create-api-onedrive/onedrive-new-app.png
 [7]: ./media/connectors-create-api-onedrive/onedrive-app-api-settings.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

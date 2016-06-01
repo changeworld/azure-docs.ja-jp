@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/04/2016"
+   ms.date="05/18/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理
@@ -39,7 +39,7 @@ StorSimple Snapshot Manager の中央管理コンソールを使用すると、�
 
 - StorSimple Snapshot Manager のデプロイ手順については、「[Deploy StorSimple Snapshot Manager (StorSimple Snapshot Manager のデプロイ)](storsimple-snapshot-manager-deployment.md)」をご覧ください。
 
->[AZURE.NOTE]StorSimple Snapshot Manager を使用して、Microsoft Azure StorSimple Virtual Array (別名 StorSimple オンプレミス仮想デバイス) を管理することはできません。
+>[AZURE.NOTE] StorSimple Snapshot Manager を使用して、Microsoft Azure StorSimple Virtual Array (別名 StorSimple オンプレミス仮想デバイス) を管理することはできません。
 
 ## StorSimple Snapshot Manager のタスクとワークフロー
 
@@ -62,4 +62,4 @@ StorSimple Snapshot Manager を使用すると、現在のバックアップ ジ
 
 [StorSimple Snapshot Manager のダウンロード](https://www.microsoft.com/download/details.aspx?id=44220)。
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0518_2016-->

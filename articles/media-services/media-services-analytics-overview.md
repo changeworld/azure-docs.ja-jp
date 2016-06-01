@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/14/2016"   
+	ms.date="04/22/2016"   
 	ms.author="milanga;juliako;johndeu"/>
 
 # Azure Media Services Analytics の概要
@@ -22,21 +22,26 @@
 
 従業員のトレーニング、お客様への対応、およびビジネス機能のドキュメント化で優先的に利用するメディアとしてビデオを取り入れる組織や企業が増えています。クラウド コンピューティングでは、このような大量のメディア ファイルの格納、ストリーミング、およびアクセスを効果的に行うことができます。しかし、所有するビデオのコンテンツ ライブラリが増大するにつれて、組織や企業は、対象ユーザーとのより意味のある個別化した対話を実現し、ビジネスを次のレベルに進めることができるよう、ビデオから新しい洞察を抽出するための効果的な手段も同様に準備する必要があります。
 
-市場におけるこのニーズの拡大に対応するために、Azure Media Services では、Media Analytics (エンタープライズ規模での音声およびコンピューター ビジョン サービス、コンプライアンス、セキュリティ、およびグローバル展開をまとめたもの) を提供しています。Azure Media Analytics サービスは、Azure Media Services の基本的なプラットフォーム コンポーネントを使用して構築されているので、1 日目からいつでも規模に応じてメディアを処理することができます。
+この市場で高まるニーズに対応するために、Azure Media Services には Media Analytics が用意されています。これは、組織と企業がビデオ ファイルから意思決定の基となる洞察を簡単に得られるようにする、(エンタープライズ向けの規模、コンプライアンス、セキュリティ、グローバルな展開で使用できる) 音声コンポーネントと視覚コンポーネントのコレクションです。Azure Media Analytics サービスは、Azure Media Services の基本的なプラットフォーム コンポーネントを使用して構築されているので、1 日目からいつでも規模に応じてメディアを処理することができます。
 
 Azure Media Analytics を使用することで、開発者は、限定された規模でビデオ用のビジョン機能の使用を迅速に開始し、この高度な機能を、ボットやアプリケーションに取り込むことができます。Azure Media Analytics は、エンタープライズ環境での使用を目的として構築されており、大規模な組織で必要とされる本格的なスケール、コンプライアンス、セキュリティ、グローバル展開に対応します。
 
+次の図には、**Media Analytics** のほか、Media Services プラットフォームの他の主要な部分が示されています。Media Analytics のメディア プロセッサによって MP4 ファイルまたは JSON ファイルが生成されることに注意してください。メディア プロセッサによって MP4 ファイルが生成された場合は、そのファイルのプログレッシブ ダウンロードが可能です。メディア プロセッサによって JSON ファイルが生成された場合は、そのファイルを Azure Blob Storage からダウンロードできます。
+
+![VoD ワークフロー](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
+
+
 ## Azure Media Analytics サービス
 
-- **インデクサー** - Azure Media Indexer では、コンテンツを検索可能にすると共に、クローズド キャプション トラックを生成することができます。Azure Media Services では、**Azure Media Indexer 2 Preview** をリリースしました。インデックス作成が速くなり、サポートする言語が増えています。英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語、ポルトガル語、アラビア語などがサポートされています。詳細な情報と例については、「[Process videos with Azure Media Indexer 2 (Azure Media Indexer 2 でビデオを処理する)](media-services-process-content-with-indexer2.md)」を参照してください。
+- **インデクサー** - Azure Media Indexer では、コンテンツを検索可能にすると共に、クローズド キャプション トラックを生成することができます。Azure Media Services では、**Azure Media Indexer 2 プレビュー**をリリースしました。インデックス作成が速くなり、サポートする言語が増えています。英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語、ポルトガル語、アラビア語などがサポートされています。詳細な情報と例については、[Azure Media Indexer 2 を使用したビデオの処理](media-services-process-content-with-indexer2.md)に関するページを参照してください。
  
 - **Hyperlapse** - Microsoft Hyperlapse は、Microsoft Research (MSR) での 20 年にわたるコンピューター ビジョン研究の成果として生まれたものです。ビデオ安定化と低速撮影を組み合わせて、長いフォーム コンテンツから、利用可能な美しいビデオをすばやく作成できます。低速撮影のほか、Hyperlapse では携帯電話やビデオ カメラを使用して撮影したブレのあるビデオから安定したビデオを作成することもできます。詳細と例については、「[Azure Media Hyperlapse を使用する Hyperlapse メディア ファイル](media-services-hyperlapse-content.md)」を参照してください。
  
-- **モーション検出** - このサービスを使用することで、ひな形の背景を持つビデオでモーションを検出するができます。これは、監視ビデオ フィードで監視カメラによって検出された移動イベントに誤検出がないかどうかを確認する必要がある顧客にとって理想的なサービスです。詳細と例については、「[Motion Detection for Azure Media Analytics (Azure Media Analytics でのモーション検出)](media-services-motion-detection.md)」を参照してください。
+- **モーション検出** - このサービスを使用することで、ひな形の背景を持つビデオでモーションを検出することができます。これは、監視ビデオ フィードで監視カメラによって検出された移動イベントに誤検出がないかどうかを確認する必要がある顧客にとって理想的なサービスです。詳細と例については、[Azure Media Analytics でのモーション検出](media-services-motion-detection.md)に関するページを参照してください。
  
-- **顔の検出と顔の感情** - このサービスを使用すると、人の顔および感情を検出できます (喜び、悲しみ、驚き、怒り、軽蔑、恐れ、嫌悪、無関心/はっきりしない、など)。これは、イベントに参加している人の反応を収集し分析するなど、以下に説明するいくつかの業界アプリケーションに有用です。詳細と例については、「[Face and Emotion Detection for Azure Media Analytics (Azure Media Analytics での顔と感情の検出)](media-services-face-and-emotion-detection.md)」を参照してください。
+- **顔の検出と顔の感情** - このサービスを使用すると、人の顔と感情を検出できます (喜び、悲しみ、驚き、怒り、軽蔑、恐れ、嫌悪、無関心/はっきりしない、など)。これは、イベントに参加している人の反応を収集し分析するなど、以下に説明するいくつかの業界アプリケーションに有用です。詳細と例については、[Azure Media Analytics での顔と感情の検出](media-services-face-and-emotion-detection.md)に関するページを参照してください。
  
-- **ビデオ要約** - ビデオ要約では、ソース ビデオから興味深いスニペットが自動的に選択されるので、長いビデオの要約を簡単に作成することができます。これは、長いビデオにおいて予定されている内容の概要をすばやく提供する場合に便利です。詳細と例については、「[Use Azure Media Video Thumbnails to Create a Video Summarization (Azure Media Video Thumbnails を使用してビデオ要約を作成する)](media-services-video-summarization.md)」を参照してください。
+- **ビデオ要約** - ビデオ要約では、ソース ビデオから興味深いスニペットが自動的に選択されるので、長いビデオの要約を簡単に作成することができます。これは、長いビデオにおいて予定されている内容の概要をすばやく提供する場合に便利です。詳細と例については、「[Azure Media Video Thumbnails を使用してビデオ要約を作成する](media-services-video-summarization.md)」を参照してください。
 
 ## 一般的なシナリオ
 
@@ -65,7 +70,8 @@ Azure Media Analytics を使用することで、開発者は、限定された�
 [Media Services Analytics のお知らせ](https://azure.microsoft.com/blog/introducing-azure-media-analytics/)
   
 
+<!-- Images -->
 
- 
+[overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

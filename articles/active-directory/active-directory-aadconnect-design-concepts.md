@@ -65,7 +65,32 @@ Azure AD でオブジェクトを作成して、ID を同期した後に、sourc
 - 別の Azure AD Connect サーバーをインストールする場合は、前に使用したのと同じ sourceAnchor 属性を選択する必要があります。以前に DirSync を使用していて Azure AD Connect に移行する場合は、**objectGUID** を使用する必要があります。これは、DirSync で使用される属性です。
 - Azure AD にオブジェクトをエクスポートした後で sourceAnchor の値を変更すると、Azure AD Connect Sync によってエラーがスローされます。問題が解決され、ソース ディレクトリで sourceAnchor が元に戻されるまでは、そのオブジェクトをそれ以上変更できなくなります。
 
+## Azure AD のサインイン
+
+オンプレミス ディレクトリを Azure AD に統合する場合、同期の設定がユーザーの認証方法に与える影響について理解することが重要です。Azure AD では、userPrincipalName または UPN がユーザーの認証に使用されます。ただし、ユーザーを同期する場合は、userPrincipalName の値として使用される属性を慎重に選択する必要があります。
+
+### userPrincipalName の属性を選択する
+
+Azure で使用する UPN の値を指定するための属性を選択する場合、次のことを確認する必要があります。
+
+* 属性値が UPN の構文 (RFC 822) に準拠していること (つまり、username@domain の書式)。
+* 値のサフィックスが、Azure AD で確認済みのカスタム ドメインのいずれかに一致すること
+
+簡単設定では、属性の値として userPrincipalName が想定されます。ただし、Azure にログインするユーザーに使わせたい値が userprincipalname 属性に含まれていない場合は、**カスタム インストール**を選び、適切な属性を指定する必要があります。
+
+### カスタム ドメインの状態と UPN
+確認済みのドメインを UPN のサフィックスとして使用することが重要です。
+
+John は、contoso.com に属するユーザーです。Azure AD ディレクトリ azurecontoso.onmicrosoft.com にユーザーを同期した後、John がオンプレミスの UPN である john@contoso.com を使って Azure にログインする必要があるとします。そのためには、ユーザーの同期を開始する前に、contoso.com を Azure AD にカスタム ドメインとして追加する必要があります。John の UPN サフィックスである contoso.com が Azure AD で確認済みのドメインと一致しない場合は、UPN サフィックスが azurecontoso.onmicrosoft.com に置き換えられ、John は john@azurecontoso.onmicrosoft.com を使って Azure にサインインする必要があります。
+
+### ルーティング不可能なオンプレミス ドメインと Azure AD の UPN
+一部の組織には、contoso.local や、contoso のように単純な単一ラベルのドメインなど、ルーティング不可能なドメインが存在します。ルーティング不可能なドメインは Azure AD で確認できません。Azure AD Connect は、Azure AD で確認済みのドメインのみに対して同期できます。Azure AD ディレクトリを作成すると、ルーティング可能なドメインが作成され、そのドメインが Azure AD の既定のドメインになります (例: contoso.onmicrosoft.com)。そのため、既定の .onmicrosoft.com ドメインに同期しないシナリオでは、他のルーティング可能なドメインを確認することが必要になります。
+
+ドメインの追加と確認の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](active-directory-add-domain.md)」を参照してください。
+
+ルーティング不可能なドメイン環境で実行している場合、その環境が Azure AD Connect で検出され、簡単設定を続行するかどうかについて適切な警告が表示されます。ルーティング不可能なドメインで運用している場合は、ユーザーの UPN がルーティング不可能なサフィックスを使用している可能性もあります。たとえば、contoso.local で実行している場合、簡単設定を使用するのではなく、カスタム設定を使用するように Azure AD Connect で推奨されます。カスタム設定を使用すると、ユーザーが Azure AD に同期された後、Azure へのログイン時に UPN として使用する属性を指定できます。詳細については、以下の「**Azure AD でのユーザー プリンシパル名の属性の選択**」を参照してください。
+
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

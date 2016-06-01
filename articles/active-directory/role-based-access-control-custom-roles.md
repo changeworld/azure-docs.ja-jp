@@ -20,7 +20,7 @@
 # Azure RBAC のカスタム ロール
 
 
-組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) でカスタム ロールを作成できます。カスタム ロールは、[Azure PowerShell](role-based-access-control-manage-access-powershell.md)、[Azure コマンドライン インターフェイス (CLI)](role-based-access-control-manage-access-azure-cli.md)、および [REST API](role-based-access-control-manage-access-rest.md) で作成することができます。組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。
+組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) でカスタム ロールを作成できます。カスタム ロールは、[Azure PowerShell](role-based-access-control-manage-access-powershell.md)、[Azure コマンドライン インターフェイス (CLI)](role-based-access-control-manage-access-azure-cli.md)、および [REST API](role-based-access-control-manage-access-rest.md) で作成することができます。組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。カスタム ロールは Azure AD テナントで保存され、そのテナントをサブスクリプションのAzure AD ディレクトリとして使用するすべてのサブスクリプションで共有することができます。
 
 以下は、仮想マシンの監視と再起動を行うためのカスタム ロールの例です。
 
@@ -99,4 +99,4 @@ Azure リソース プロバイダーの操作を一覧表示するには、`Get
 	- [REST API](role-based-access-control-manage-access-rest.md)
 - [組み込みのロール](role-based-access-built-in-roles.md): RBAC の標準ロールの詳細。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

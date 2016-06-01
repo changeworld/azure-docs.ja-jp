@@ -3,7 +3,7 @@
    description="ソリューション開発のための、Azure SQL Data Warehouse での Azure Machine Learning の使用に関するヒント。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sahaj08"
+   authors="shivaniguptamsft"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
-   ms.author="sahajs;barbkess;sonyama"/>
+   ms.date="05/17/2016"
+   ms.author="shigu;barbkess;sonyama"/>
 
 # SQL Data Warehouse での Azure Machine Learning の使用
 
@@ -43,7 +43,7 @@ Machine Learning Studio ウィンドウの下部にある [+新規] をクリッ
 リーダー モジュールを選択し、プロパティ ウィンドウに情報を入力します。
 
 1. [データ ソース] として [Azure SQL Database] を選択します。
-2. [データベース サーバー名]: サーバー名を入力します。これは、[Azure クラシック ポータル][]を使用して見つけることができます。
+2. [データベース サーバー名]: サーバー名を入力します。これは、[Azure ポータル][]を使用して見つけることができます。
 
 ![][server_name]
 
@@ -101,7 +101,7 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 ライター モジュールを選択し、プロパティ ウィンドウに情報を入力します。
 
 1. [データ ソース] として [Azure SQL Database] を選択します。
-2. [データベース サーバー名]: サーバー名を入力します。これは、[Azure クラシック ポータル][]を使用して見つけることができます。
+2. [データベース サーバー名]: サーバー名を入力します。これは、[Azure ポータル][]を使用して見つけることができます。
 3. [データベース名]: 指定したサーバー上のデータベースの名前を入力します。
 4. [サーバー ユーザー アカウント名]: データベースに対する書き込みアクセス許可を持つアカウントのユーザー名を入力します。
 5. [サーバー ユーザー アカウントのパスワード]: 指定したユーザー アカウントのパスワードを入力します。
@@ -136,12 +136,12 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 
 <!--Article references-->
 
-[SQL Data Warehouse の開発の概要]: ./sql-data-warehouse-overview-develop/
-[SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)]: ./sql-data-warehouse-overview-integration/
-[実験作成チュートリアル]: https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-create-experiment/
-[Azure の Machine Learning の概要]: https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-what-is-machine-learning/
+[SQL Data Warehouse の開発の概要]: ./sql-data-warehouse-overview-develop.md
+[SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)]: ./sql-data-warehouse-overview-integration.md
+[実験作成チュートリアル]: https://azure.microsoft.com/documentation/articles/machine-learning-create-experiment/
+[Azure の Machine Learning の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
 [Azure Machine Learning Studio]: https://studio.azureml.net/Home
-[Azure クラシック ポータル]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 
 <!--MSDN references-->
 
@@ -149,4 +149,4 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 
 [Azure Machine Learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

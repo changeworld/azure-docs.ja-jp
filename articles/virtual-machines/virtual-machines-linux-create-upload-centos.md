@@ -14,14 +14,13 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/22/2015"
+	ms.date="05/09/2016"
 	ms.author="szarkos"/>
 
 # Azure 用の CentOS ベースの仮想マシンの準備
 
-
-- [Azure 用の CentOS 6.x 仮想マシンの準備](#centos6)
-- [Azure 用の CentOS 7.0 以上の仮想マシンの準備](#centos7)
+- [Azure 用の CentOS 6.x 仮想マシンの準備](#centos-6.x)
+- [Azure 用の CentOS 7.0 以上の仮想マシンの準備](#centos-7.0+)
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -32,9 +31,11 @@
 
 **CentOS のインストールに関する注記**
 
+- Azure で Linux を準備する際のその他のヒントについては、「[Linux のインストールに関する注記](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes)」も参照してください。
+
 - VHDX 形式は Azure ではサポートされていません。サポートされるのは **固定 VHD** のみです。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
-- Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、LVM または [RAID](virtual-machines-linux-configure-raid.md) をデータ ディスク上で使用できます。
+- Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、[LVM](virtual-machines-linux-configure-lvm.md) または [RAID](virtual-machines-linux-configure-raid.md) をデータ ディスク上で使用できます。
 
 - さらに大きいサイズの VM では NUMA はサポートされていません。2.6.37 以下のバージョンの Linux カーネルにバグがあるためです。この問題は、主に、アップストリームの Red Hat 2.6.32 カーネルを使用したディストリビューションに影響します。Azure Linux エージェント (waagent) を手動でインストールすると、Linux カーネルの GRUB 構成で NUMA が自動的に無効になります。このことに関する詳細については、次の手順を参照してください。
 
@@ -43,7 +44,7 @@
 - すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
 
-## <a id="centos6"></a>CentOS 6.x ##
+## CentOS 6.x ##
 
 1. Hyper-V マネージャーで仮想マシンを選択します。
 
@@ -70,11 +71,10 @@
 		PEERDNS=yes
 		IPV6INIT=no
 
-6.	udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
+6.	udev ルールを編集して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となる可能性があります。
 
-		# sudo mkdir -m 0700 /var/lib/waagent
-		# sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/
-		# sudo mv /etc/udev/rules.d/70-persistent-net.rules /var/lib/waagent/
+		# sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+		# sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
 
 7. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
@@ -205,7 +205,7 @@
 ----------
 
 
-## <a id="centos7"></a>CentOS 7.0 以上 ##
+## CentOS 7.0+ ##
 
 **CentOS 7 (および同様な派生版) への変更**
 
@@ -237,11 +237,9 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 		PEERDNS=yes
 		IPV6INIT=no
 
-5.	udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
+6.	udev ルールを編集して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となる可能性があります。
 
-		# sudo mkdir -m 0700 /var/lib/waagent
-		# sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/ 2>/dev/null
-		# sudo mv /etc/udev/rules.d/70-persistent-net.rules /var/lib/waagent/ 2>/dev/null
+		# sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
 6. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
@@ -306,9 +304,9 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 
 10.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/etc/default/grub" を開き、次のように `GRUB_CMDLINE_LINUX` パラメーターを編集します。
 
-		GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
+		GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
 
-	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。上記のほかに、次のパラメーターを*削除*することをお勧めします。
+	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。NIC の新しい CentOS 7 名前付け規則もオフになります。上記のほかに、次のパラメーターを*削除*することをお勧めします。
 
 		rhgb quiet crashkernel=auto
 
@@ -335,6 +333,7 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 14. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
 		# sudo yum install WALinuxAgent
+		# sudo systemctl enable waagent
 
 15.	OS ディスクにスワップ領域を作成しないでください。
 
@@ -357,4 +356,4 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 ## 次のステップ
 これで、CentOS Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

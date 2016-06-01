@@ -34,7 +34,8 @@ Azure Active Directory を使用して Azure や Office 365 などの Microsoft 
 Azure Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。電話、テキスト メッセージ、モバイル アプリによる通知、確認コードやサード パーティの OATH トークンなど、一連の簡単な照合方法を通じて確実な認証を行うことができます。
 
 Azure Multi-Factor Authentication の概要については、次のビデオをご覧ください。
-<center>[AZURE.VIDEO windows-azure-multi-factor-authentication]</center>
+
+>[AZURE.VIDEO windows-azure-multi-factor-authentication]
 
 詳細については、「[MFA for Office 365 and MFA for Azure (Office 365 の MFA と Azure の MFA)](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/)」を参照してください。
 
@@ -50,7 +51,7 @@ Azure Multi-Factor Authentication の概要については、次のビデオを�
 
 ## 攻撃の検出
 
-[Azure Active Directory Identity Protection](active-directory-identityprotection.d) は、リスク イベントや組織の ID に影響する潜在的な脆弱性に関する統合ビューを提供します。リスク イベントを基にして、Identity Protection は各ユーザーのユーザー リスク レベルを計算し、ユーザーがリスク ベースのポリシーを構成して組織の ID を自動的に保護するできるようにします。これらのポリシーを、Azure Active Directory や EMS によって提供される他の条件付きアクセス コントロールと組み合わせて、ユーザーを自動的にブロックしたり、パスワードのリセットや多要素認証の適用などの提案を提示したりすることができます。
+[Azure Active Directory Identity Protection](active-directory-identityprotection.md) は、リスク イベントや組織の ID に影響する潜在的な脆弱性に関する統合ビューを提供します。リスク イベントを基にして、Identity Protection は各ユーザーのユーザー リスク レベルを計算し、ユーザーがリスク ベースのポリシーを構成して組織の ID を自動的に保護するできるようにします。これらのポリシーを、Azure Active Directory や EMS によって提供される他の条件付きアクセス コントロールと組み合わせて、ユーザーを自動的にブロックしたり、パスワードのリセットや多要素認証の適用などの提案を提示したりすることができます。
 
 ![Azure AD Identity Protection][3]
 
@@ -82,4 +83,4 @@ Azure Active Directory は、条件付きアクセス制御によって、ユー
 [3]: ./media/active-directory-identityprotection/29.png
 [4]: ./media/active-directory-conditional-access/conditionalaccess-saas-apps.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

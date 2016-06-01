@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/29/2016"
+	ms.date="05/19/2016"
 	ms.author="deonhe"/>
 
 # 管理されているコネクタの一覧
@@ -27,7 +27,7 @@
 
 アイコンをクリックすると、これらのコネクタを活用して、対象のサービスを呼び出すアプリを簡単に構築する方法について確認できます。各コネクタは、ロジック アプリ、PowerApps、およびフローを構築するために使用できます。
 
-|API||||
+|コネクタ||||
 |-----------|-----------|-----------|-----------|
 |[![API アイコン][blobicon]<br/>**Azure BLOB**][azureblobdoc]|[![API アイコン][bingsearchicon]<br/>**Bing Search**][bingsearchdoc]|[![API アイコン][boxicon]<br/>**Box**][boxDoc]|[![API アイコン][crmonlineicon]<br/>**CRM Online**][crmonlinedoc]|
 |[![API アイコン][dropboxicon]<br/>**Dropbox**][dropboxdoc]|[![API アイコン][facebookicon]<br/>**Facebook**][facebookdoc]|[![API アイコン][ftpicon]<br/>**FTP**][ftpdoc]|[![API アイコン][githubicon]<br/>**GitHub**][githubdoc]|
@@ -35,11 +35,11 @@
 |[![API アイコン][office365icon]<br/>**Office 365**<br/>**Users**][office365usersdoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**Video**][office365videodoc]|[![API アイコン][onedriveicon]<br/>**OneDrive**][onedrivedoc]|[![API アイコン][onedriveicon]<br/>**OneDrive<br/>for Business**][onedriveforbusinessdoc]|
 |[![API アイコン][outlookicon]<br/>**Outlook**][outlookdoc]|[![API アイコン][projectonlineicon]<br/>**Project<br/>Online**][projectonlinedoc]|[![API アイコン][rssicon]<br/>**RSS**][rssdoc]|[![API アイコン][salesforceicon]<br/>**Salesforce**][salesforcedoc]|
 |[![API アイコン][sendgridicon]<br/>**SendGrid**][sendgriddoc]|[![API アイコン][servicebusicon]<br/>**Service Bus**][servicebusdoc]|[![API アイコン][sftpicon]<br/>**SFTP**][sftpdoc]|[![API アイコン][sharepointicon]<br/>**SharePoint**<br/>**Online**][sharepointdoc]|
-|[![API アイコン][slackicon]<br/>**Slack**<br/>][slackdoc]|[![API アイコン][smtpicon]<br/>**SMTP**][smtpdoc]|[![API アイコン][sqlicon]<br/>**SQL Azure**][sqldoc]|[![API アイコン][sqlicon]<br/>**SQL Mashup**][mashupsqldoc]|
-|[![API アイコン][trelloicon]<br/>**Trello**][trellodoc]|[![API アイコン][twilioicon]<br/>**Twilio**][twiliodoc]|[![API アイコン][twittericon]<br/>**Twitter**][twitterdoc]|[![API アイコン][wunderlisticon]<br/>**Wunderlist**][wunderlistdoc]|
+|[![API アイコン][slackicon]<br/>**Slack**<br/>][slackdoc]|[![API アイコン][smtpicon]<br/>**SMTP**][smtpdoc]|[![API アイコン][sqlicon]<br/>**SQL Azure**][sqldoc]|[![API アイコン][trelloicon]<br/>**Trello**][trellodoc]|
+[![API アイコン][twilioicon]<br/>**Twilio**][twiliodoc]|[![API アイコン][twittericon]<br/>**Twitter**][twitterdoc]|[![API アイコン][wunderlisticon]<br/>**Wunderlist**][wunderlistdoc]|
 [![API アイコン][yammericon]<br/>**Yammer**][yammerdoc] | |
 
-> [AZURE.NOTE] 2014-12-01-preview のスキーマを使用してロジック アプリを作成している場合は、BizTalk 用などのエンタープライズ統合コネクタが上記の一覧にないことにお気付きでしょう。これらの重要性については認識しており、近日中に公開できるように取り組んでおります。正確な公開日をお知らせすることはできませんが、このような API を公開することは最優先事項の 1 つになっています。それまでの間は、[Logic Apps から v1 API および BizTalk API にアクセスする](https://blogs.msdn.microsoft.com/logicapps/2016/02/25/accessing-v1-apis-and-biztalk-apis-from-logic-apps/)ことができます。ご理解いただきありがとうございます。しばらくお待ちください。
+> [AZURE.NOTE] 2014-12-01-preview のスキーマを使用してロジック アプリを作成している場合は、BizTalk 用などのエンタープライズ統合コネクタが上記の一覧にないことにお気付きでしょう。これらの重要性については認識しており、近日中に公開できるように取り組んでおります。正確な公開日をお知らせすることはできませんが、このような API を公開することは最優先事項の 1 つになっています。それまでの間は、[Logic Apps から v1 API および BizTalk API](https://blogs.msdn.microsoft.com/logicapps/2016/02/25/accessing-v1-apis-and-biztalk-apis-from-logic-apps/) にアクセスすることができます。ご理解いただきありがとうございます。しばらくお待ちください。
 
 
 ### トリガーとして使用できるコネクタ
@@ -58,9 +58,9 @@
 [新機能](../app-service-logic/app-service-logic-schema-2015-08-01.md)  
 [今すぐロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)  
 [今すぐ PowerApps を使い始める](../power-apps/powerapps-get-started-azure-portal.md)  
-[既存のロジック アプリを最新のスキーマ バージョンに移行する](connectors-schema-migration.md) 
+[既存のロジック アプリを最新のスキーマ バージョンに移行する](connectors-schema-migration.md)
 
-<!--API Documentation-->
+<!--Connectors Documentation-->
 [azureblobdoc]: ./connectors-create-api-azureblobstorage.md "Azure BLOB に接続して、BLOB コンテナーのファイルを管理します。"
 [bingsearchDoc]: ./connectors-create-api-bingsearch.md "Web、イメージ、ニュース、ビデオを対象に Bing 検索します。"
 [boxDoc]: ./connectors-create-api-box.md "Box に接続して、ファイルのアップロード、取得、削除、一覧の取得や、その他のファイル タスクを実行できます。"
@@ -90,7 +90,6 @@
 [mailchimpdoc]: ./connectors-create-api-mailchimp.md "優れた電子メールを送信します。"
 [smtpdoc]: ./connectors-create-api-smtp.md "SMTP サーバーに接続して、添付ファイルを含む電子メールを送信します。"
 [sqldoc]: ./connectors-create-api-sqlazure.md "SQL Azure Database に接続します。SQL データベース テーブルのエントリを作成、更新、取得、削除できます。"
-[mashupsqldoc]: ./connectors-create-api-mashupsql.md "SQL に接続します。SQL データベース テーブルのエントリを作成、更新、取得、削除できます。"
 [trellodoc]: ./connectors-create-api-trello.md "Trello は、どのようなものでも柔軟かつ視覚的に整理でき、だれとでも共有できる無料ツールです。"
 [twiliodoc]: ./connectors-create-api-twilio.md "Twilio に接続して、メッセージの送信と取得、利用可能な番号の取得、着信電話番号の管理などを実行できます。"
 [twitterdoc]: ./connectors-create-api-twitter.md "Twitter に接続してタイムラインを取得し、ツイートの投稿などを実行します。"
@@ -124,11 +123,10 @@
 [slackicon]: ./media/apis-list/slackicon.png
 [smtpicon]: ./media/apis-list/smtpicon.png
 [sqlicon]: ./media/apis-list/sqlicon.png
-[mashupsqlicon]: ./media/apis-list/mashupsqlicon.png
 [trelloicon]: ./media/apis-list/trelloicon.png
 [twilioicon]: ./media/apis-list/twilioicon.png
 [twittericon]: ./media/apis-list/twittericon.png
 [wunderlisticon]: ./media/apis-list/wunderlisticon.png
 [yammericon]: ./media/apis-list/yammericon.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

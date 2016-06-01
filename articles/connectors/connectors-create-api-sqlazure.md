@@ -14,23 +14,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/25/2016"
+   ms.date="05/16/2016"
    ms.author="mandia"/>
 
 
 # SQL Azure API の概要
-SQL Azure に接続して、行の挿入、テーブルの取得など、テーブルと行を管理します。
+Azure SQL Database に接続して、行の挿入、テーブルの取得など、テーブルと行を管理します。
 
-SQL Azure API は次のツールから使用できます。
+Azure SQL Database API は、次のアプリから使用できます。
 
-- Logic Apps 
+- Logic Apps (このトピックで説明)
+- PowerApps (詳細な一覧については、[PowerApps 接続リスト](https://powerapps.microsoft.com/tutorials/connections-list/)を参照してください)
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
-SQL Azure では次のことができます。
+Azure SQL Database では、次のことができます。
 
-- SQL Azure から取得したデータに基づいてビジネス フローを構築できます。 
-- 行の取得、行の挿入などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、SQL Azure からデータの行を取得し、そのデータを Excel に追加できます。 
+- Azure SQL Database から取得したデータに基づいてビジネス フローを構築できます。 
+- 行の取得、行の挿入などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Azure SQL Database からデータの行を取得し、そのデータを Excel に追加できます。 
 
 ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
@@ -49,9 +50,9 @@ SQL には、次のアクションがあります。トリガーはありませ�
 
 |プロパティ| 必須|説明|
 | ---|---|---|
-|SQL 接続文字列|あり|SQL Azure の接続文字列を入力します。|
+|SQL 接続文字列|あり|Azure SQL Database 接続文字列を入力します|
 
-接続を作成したら、テーブル名など、SQL のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、テーブル名など、SQL のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
@@ -227,4 +228,4 @@ SQL テーブルの既存の行を更新します。```PATCH: /datasets/default/
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

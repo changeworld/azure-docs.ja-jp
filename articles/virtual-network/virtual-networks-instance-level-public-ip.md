@@ -36,7 +36,9 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 >[AZURE.NOTE] 各 VM またはロール インスタンスに割り当てることができる ILPIP は 1 つだけです。サブスクリプションにつき最大 5 つの ILPIP を使用できます。現時点では、複数 NIC の VMは ILPIP でサポートされていません。
 
 ## ILPIP を要求する理由
-直接割り当てられている IP アドレスで VM またはロール インスタンスに接続できるようにするには、クラウド サービスの "VIP:&lt;ポート番号&gt;" を使用するのではなく、VM またはロール インスタンスの ILPIP を要求します。- **パッシブ FTP** - VM に ILPIP を持つことで、任意のポートに関するトラフィックのみを受信できるため、トラフィックを受信するためにエンドポイントを開く必要がなくなります。これにより、ポートが動的に選択されるパッシブ FTP に似たシナリオを実現できます。- **送信 IP** - VM からの発信トラフィックは、送信元である ILPIP と共に送信されます。これは、外部エンティティに対して VM を一意に識別します。
+VM またはロール インスタンスに直接割り当てた IP アドレスで接続できるようにする場合は、クラウド サービスの VIP:&lt;ポート番号&gt; を使用する代わりに、VM またはロール インスタンスの ILPIP を要求します。
+- **パッシブ FTP** - VM の ILPIP を取得することですべてのポートのトラフィックを受信でき、トラフィックを受信するためにエンドポイントを開く必要はなくなります。これにより、ポートが動的に選択されるパッシブ FTP などのシナリオを実現できます。
+- **送信 IP** - VM からの発信トラフィックは、送信元である ILPIP と共に送信されます。これは、外部エンティティに対して VM を一意に識別します。
 
 ## VM の作成中に ILPIP を要求する方法
 次の PowerShell スクリプトでは、*FTPService* という名前の新しいクラウド サービスを作成した後、Azure のイメージを取得し、取得したイメージを使用して *FTPInstance* という名前の VM を作成します。さらに、ILPIP を使用するように VM を設定し、新しいサービスにその VM を追加します。
@@ -94,7 +96,7 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 	| Update-AzureVM
 
 ## サービス構成ファイルを使用して VM に ILPIP を関連付ける方法
-サービス構成 (CSCFG) ファイルを使用して、VM に ILPIP を関連付けることもできます。次のサンプル xml では、*MyReservedIP* という名前の予約済み IP をロール インスタンスの ILPIP として使用するようにクラウド サービスを構成する方法を示しています。
+サービス構成 (CSCFG) ファイルを使用して、VM に ILPIP を関連付けることもできます。次のサンプル xml では、ロール インスタンスで *MyPublicIP* という名前の ILPIP を使用するようにクラウド サービスを構成する方法を示しています。
 	
 	<?xml version="1.0" encoding="utf-8"?>
 	<ServiceConfiguration serviceName="ReservedIPSample" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2014-01.2.3">
@@ -113,7 +115,7 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 	          <Subnet name="Subnet2"/>
 	        </Subnets>
 	        <PublicIPs>
-	          <PublicIP name="MyReservedIP" domainNameLabel="MyReservedIP" />
+	          <PublicIP name="MyPublicIP" domainNameLabel="MyPublicIP" />
 	        </PublicIPs>
 	      </InstanceAddress>
 	    </AddressAssignments>
@@ -122,9 +124,9 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 
 ## 次のステップ
 
-- 従来のデプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md)の動作を理解します。
+- クラシック デプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md)のしくみを理解します。
 
 - [予約 IP](../virtual-networks-reserved-public-ip) について学習します。
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

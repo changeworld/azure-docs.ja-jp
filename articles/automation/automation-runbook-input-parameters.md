@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="12/16/2015"
+   ms.date="04/25/2016"
    ms.author="sngun"/>
 
 # Runbook の入力パラメーター
@@ -108,7 +108,7 @@ Azure で認証する [**Add-AzureAccount**](https://msdn.microsoft.com/library/
     型 – String、
     必須 – いいえ、
     既定値 – カスタム、
-    カスタム既定値 – <仮想マシンを含む既定サービスの名前>
+    カスタム既定値 – \<仮想マシンを含む既定サービスの名前>
 
 5. パラメーターを追加したら、**[OK]** をクリックします。パラメーターが **[入力と出力]** ブレードに表示されます。**[OK]** をもう一度クリックし、Runbook の **[保存]** と **[発行]** をクリックします。
 
@@ -124,11 +124,11 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
 
 [Runbook を起動する](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal)と、**[Runbook の開始]** ブレードが開きます。ここで、作成したパラメーターの値を構成できます。
 
-![ポータルによる起動](media/automation-runbook-input-parameters/automation_04_StartRunbookUsingPortal.png)
+![Start using the portal](media/automation-runbook-input-parameters/automation_04_StartRunbookUsingPortal.png)
 
 入力ボックスの下にあるラベルで、パラメーターに設定された属性を確認できます。属性は、必須/任意、型、既定値などです。パラメーター名の横にあるヘルプ バルーンでは、パラメーター入力値を決定するために必要なすべての主要情報を確認できます。たとえば、パラメーターが必須か任意かを示す情報です。また、型、既定値 (該当する場合)、その他の役に立つ注記も含まれます。
 
-![ヘルプ バルーン](media/automation-runbook-input-parameters/automation_05_HelpBaloon.png)
+![Help balloon](media/automation-runbook-input-parameters/automation_05_HelpBaloon.png)
 
 
 >[AZURE.NOTE] 文字列型のパラメーターの場合、文字列値に**空**を指定できます。入力パラメーター ボックスに「**EmptyString**」と入力すると、空の文字列がパラメーターに渡されます。また、文字列型パラメーターでは **Null** 値を渡すことができません。文字列型パラメーターに何の値も渡さないと、PowerShell はそれを Null として解釈します。
@@ -145,7 +145,7 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
         Start-AzureAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” -Parameters $params
       ```
 
-    - **Azure リソース マネージャー コマンドレット:** [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) を使用して、リソース グループに作成された Automation Runbook を起動できます。
+    - **Azure Resource Manager コマンドレット:** [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) を使用して、リソース グループに作成された Automation Runbook を起動できます。
 
 
     **例:**
@@ -180,7 +180,7 @@ Azure ポータル UI、Webhook、PowerShell コマンドレット、REST API、
         }
     ```
 
-    - **Azure リソース マネージャー メソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。完全なコードは、[GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。  
+    - **Azure Resource Manager メソッド:** プログラミング言語の SDK を利用して Runbook を起動できます。以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。完全なコードは、[GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。  
 
     ```
         public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -253,7 +253,7 @@ Runbook ジョブにパラメーターを渡すには、要求本文を使用し
 
 テスト オプションを利用し、[Runbook の草案バージョンをテスト](automation-testing-runbook.md)すると、**[テスト]** ブレードが開きます。このブレードで、先に作成したパラメーターの値を構成できます。
 
-![Test and assign parameters](media/automation-runbook-input-parameters/automation_06_TestAndAssignParameters.png)
+![テストし、パラメーターを割り当てる](media/automation-runbook-input-parameters/automation_06_TestAndAssignParameters.png)
 
 ### スケジュールを Runbook にリンクし、パラメーターを割り当てる
 
@@ -269,14 +269,14 @@ Runbook の [Webhook](automation-webhooks.md) を作成し、Runbook 入力パ�
 
 Webhook を利用して Runbook を実行すると、定義した入力パラメーターと共に **[Webhookdata](automation-webhooks.md#details-of-a-webhook)** が送信されます。**WebhookData** パラメーターの詳細を展開するには、このパラメーターをクリックします。
 
-![WebhookData parameter](media/automation-runbook-input-parameters/automation_09_WebhookDataParameter.png)
+![WebhookData パラメーター](media/automation-runbook-input-parameters/automation_09_WebhookDataParameter.png)
 
 
 ## 次のステップ
 
-- Runbook の入力と出力の詳細については、[Azure Automation の Runbook 入力、出力、および入れ子 Runbook](https://azure.microsoft.com/blog/azure-automation-runbook-input-output-and-nested-runbooks/) に関するページを参照してください。
-- Runbook を起動するさまざまな方法については、[Runbook の開始](automation-starting-a-runbook.md)に関するページを参照してください。
-- テキスト Runbook を編集する方法については、[テキスト Runbook の編集](automation-edit-textual-runbook.md)に関するページを参照してください。
-- グラフィカル Runbook を編集する方法については、[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)に関するページを参照してください。
+- Runbook の入力と出力の詳細については、「[Azure Automation: runbook input, output, and nested runbooks (Azure Automation: Runbook の入力と出力および入れ子になった Runbook)](https://azure.microsoft.com/blog/azure-automation-runbook-input-output-and-nested-runbooks/)」を参照してください。
+- Runbook を起動するさまざまな方法については、「[Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
+- テキスト Runbook を編集する方法については、「[テキスト Runbook の編集](automation-edit-textual-runbook.md)」を参照してください。
+- グラフィカル Runbook を編集する方法については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

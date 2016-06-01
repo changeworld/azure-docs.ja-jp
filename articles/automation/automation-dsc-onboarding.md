@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="TBD" 
-   ms.date="03/15/2016"
+   ms.date="04/22/2016"
    ms.author="coreyp"/>
 
 # Azure Automation DSC による管理のためのマシンのオンボード
@@ -26,7 +26,8 @@
 
 *    Azure Virtual Machines (クラシック)
 *    Azure Virtual Machines
-*    オンプレミス、または Azure 以外のクラウド内の物理/仮想 Windows マシン
+*    Amazon Web Services (AWS) 仮想マシン
+*    オンプレミス、または Azure/AWS 以外のクラウド内の物理/仮想 Windows マシン
 *    オンプレミス、Azure、または Azure 以外のクラウド内の物理/仮想 Linux マシン
 
 また、クラウドからコンピューター構成を管理する準備ができていない場合は、Azure Automation DSC をレポートのみのエンドポイントとして使用することもできます。この場合、オンプレミスの DSC で目的の構成を設定 (プッシュ) し、Azure Automation の目的の状態へのノード コンプライアンスに関する詳細なレポートを表示できます。
@@ -137,7 +138,11 @@ Azure Virtual Machines は、Azure リソース マネージャーのテンプ�
 
 [Register-AzureRmAutomationDscNode](https://msdn.microsoft.com/library/mt603833.aspx) コマンドレットを使用して、Azure ポータルで PowerShell を介して仮想マシンをオンボードすることができます。
 
-## オンプレミス、または Azure 以外のクラウド内の物理/仮想 Windows マシン
+## Amazon Web Services (AWS) 仮想マシン
+
+AWS DSC Toolkit を使用して Azure Automation DSC による構成管理のための Amazon Web Services 仮想マシンを簡単にオンボードできます。ツールキットの詳細については、[こちら](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/)を参照してください。
+
+## オンプレミス、または Azure/AWS 以外のクラウド内の物理/仮想 Windows マシン
 
 オンプレミスの Windows マシンと (Amazon Web Services などの) Azure 以外のクラウド内の Windows マシンも、インターネットへの発信アクセスが可能な限り、いくつかの簡単な手順で Azure Automation DSC にオンボードすることができます。
 
@@ -374,4 +379,4 @@ Azure Automation DSC に DSC ノードとしてマシンを登録した後も、
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

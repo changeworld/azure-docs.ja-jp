@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="mblythe"
+	manager="paulettm"
 	editor=""
     tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article" 
 	ms.tgt_pltfrm="na"
-	ms.date="03/15/2016"
+	ms.date="05/17/2016"
 	ms.author="heidist"/>
 
 #Azure Search: コード サンプル、デモ、ビデオ、チュートリアル
@@ -35,21 +35,20 @@
 
 これらのサイトは、検索操作に Azure Search を使用する完全に機能する Web アプリケーションです。
 
-[**Azure Search のニューヨーク市 (NYC) ジョブ ポータルのデモ**](http://aka.ms/azjobsdemo)は、NYC Open Data 構想のデータを使用して Azure Search の機能を示すライブ ASP.NET Web サイトです。このアプリケーションでは、[簡単なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)を使用しています。コードを変更して、[Lucene 構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)を試すことができます。
+[**Azure Search のニューヨーク市 (NYC) ジョブ ポータルのデモ**](http://aka.ms/azjobsdemo)は、NYC Open Data 構想のデータを使用して Azure Search の機能を示すライブ ASP.NET Web サイトです。このアプリでは、[簡単なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)を使用しています。コードを変更して、[Lucene 構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)を試すことができます。
 
-[**ASP.NET MVC コンボ アプリで App Service + Azure Search を試す**](search-tryappservice.md)は、オンラインで変更して ASP.NET アプリケーションのさまざまな検索機能を試すことのできるデータ、機能 Web アプリケーション、ソース コードを掲載した、Azure Search の無料のセッションです (1 時間)。
 
 [**Azure Search デモ サイト**](https://searchsamples.azurewebsites.net/#/)は、Azure Search のためのデモ アプリを集めたサイトです。Azure Search を利用し、メディア検索、地理検索、製品在庫のアプリを試します。
 
 ##トップ 5
 
-次に、上位にランクされた Azure Search のチュートリアルとビデオをいくつか紹介します。
+次に、ユーザーから高い評価を受けた Azure Search のチュートリアルとビデオをいくつか紹介します。
 
-- [ビデオ: Microsoft Virtual Academy の Azure Search の概要](https://mva.microsoft.com/ja-JP/training-courses/adding-microsoft-azure-search-to-your-websites-and-apps-10540?l=ADkxnd97_9304984382)は Azure Search の知識を深めるために優れたリソースです。
-- [ビデオ: AzureCon 2015: Azure Search のベスト プラクティス](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/)は、Web またはモバイル シナリオ用のアプリを構築する際に、スケールアウト、パフォーマンスの最適化、および効率的なコーディングを実現する方法に関する実用的なアドバイスを提供します。 
+- [Microsoft Virtual Academy の Azure Search の概要に関するビデオ](https://mva.microsoft.com/ja-JP/training-courses/adding-microsoft-azure-search-to-your-websites-and-apps-10540?l=ADkxnd97_9304984382)は Azure Search の知識を深めるために優れたリソースです。
+- [AzureCon 2015: Azure Search のベスト プラクティスに関するビデオ](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/)は、Web またはモバイル シナリオ用のアプリを構築する際に、スケールアウト、パフォーマンスの最適化、および効率的なコーディングを実現する方法に関する実用的なアドバイスを提供します。 
 - [.NET クライアント ライブラリのコード サンプル](https://github.com/Azure-Samples/search-dotnet-getting-started)は、検索操作に .NET クライアント ライブラリを使用する ASP.NET MVC 5 アプリケーションです。
-- 「[チュートリアル: .NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」では、Azure Search と連携するサンプル Visual Studio Web アプリケーションを構成して実行します。
-- 「[チュートリアル: ポータルから Azure Search を使用する](search-get-started-portal.md)」は、コードを書かずに、インデックスとデータを取得する純粋なポータル ベースのチュートリアルです。このチュートリアルは、ポータルで一般的なタスクを実行する方法を学習するために役立ちます。
+- [チュートリアル「.NET アプリケーションから Azure Search を使用する方法」](search-howto-dotnet-sdk.md)では、Azure Search と連携するサンプル Visual Studio Web アプリケーションを構成して実行します。
+- [チュートリアル「ポータルから Azure Search を使用する」](search-get-started-portal.md)は、コードを書かずに、インデックスとデータを取得する純粋なポータル ベースのチュートリアルです。このチュートリアルは、ポータルで一般的なタスクを実行する方法を学習するために役立ちます。
 
 
 ##ビデオ
@@ -89,4 +88,4 @@
 [スコアリング プロファイルのチュートリアル](search-get-started-scoring-profiles.md)|コンソール アプリケーションを使用してスコアリング プロファイルをテスト使用します。
 [Azure Search 管理 REST API チュートリアル](search-get-started-management-api.md)|管理 REST API を使用して、サービスをプロビジョニングし、管理またはクエリ API キーを管理する方法。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

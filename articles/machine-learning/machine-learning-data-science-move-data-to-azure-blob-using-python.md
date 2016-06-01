@@ -13,15 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="05/10/2016"
 	ms.author="bradsev" />
 
 # Python を使用して Azure BLOB ストレージ間でデータを移動する
 
-## はじめに
-このトピックでは、Python API を使用して BLOB の一覧表示、アップロード、ダウンロードを行う方法について説明します。
-
-Azure SDK で提供される Python API を使用して、以下のことを行うことができます。
+このトピックでは、Python API を使用して BLOB の一覧表示、アップロード、ダウンロードを行う方法について説明します。Azure SDK で提供される Python API を使用して、以下のことを行うことができます。
 
 - コンテナーを作成する
 - コンテナーに BLOB をアップロードする
@@ -40,12 +37,14 @@ Python API を使用する方法の詳細については、「[Python から Azu
 
 > [AZURE.NOTE] Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage/storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
 
+
 ## 前提条件
 
 このドキュメントは、Azure サブスクリプション、ストレージ アカウント、そのアカウントに対応するストレージ キーがあることを前提としています。データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。
 
 - Azure サブスクリプションを設定するには、「[1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 - ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
+
 
 ## BLOB へのデータのアップロード
 
@@ -93,6 +92,7 @@ Python API を使用する方法の詳細については、「[Python から Azu
 	    except:
 	        print "something wrong happened when uploading the data %s"%blob_name
 
+
 ## BLOB からのデータのダウンロード
 
 BLOB からデータをダウンロードするには、次のメソッドを使用します。
@@ -129,4 +129,4 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 	    except:
 	        print "something wrong happened when downloading the data %s"%blob.name
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

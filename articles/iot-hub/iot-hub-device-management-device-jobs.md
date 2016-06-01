@@ -18,9 +18,12 @@
 
 # チュートリアル: デバイスのジョブを使用して、デバイスのファームウェア を更新する方法 (プレビュー)
 
+[AZURE.INCLUDE [iot-hub-device-management-job-selector](../../includes/iot-hub-device-management-jobs-selector.md)]
+
+## はじめに
 Azure の IoT デバイス管理では、デバイスのジョブを使用して物理デバイスと対話することができます。デバイス ツイン (物理デバイスのサービスの表現) を識別すると、デバイスのジョブを使用して、対応する物理デバイスと対話できるようになります。デバイス ジョブは、複数のデバイス上の複雑なプロセスの調整を有効にします。このプロセスには、複数のステップと実行時間の長い操作が含まれることがあります。
 
-現時点では、Azure IoT Hub デバイス管理によって用意されている 6 種類のデバイスジョブがあります (ジョブは今後、顧客の必要に応じて追加されます)。
+現時点では、Azure IoT Hub デバイス管理によって用意されている 6 種類のデバイスジョブがあります (顧客の必要に応じてジョブは今後追加されます)。
 
 - **ファームウェアの更新**: 物理デバイスのファームウェア (または OS イメージ) を更新します。
 - **再起動**: 物理デバイスを再起動します。
@@ -154,7 +157,7 @@ Azure IoT Hub デバイス管理クライアント ライブラリは、デバ�
 
 Azure IoT Hub デバイス管理機能の詳細については、次のチュートリアルに進んでください。
 
-- Azure IoT Hub DM クライアント ライブラリは、 [Intel Edison デバイス][lnk-edison]を使用したエンドツーエンドのサンプルを提供します。
+- Azure IoT Hub DM クライアント ライブラリは、[Intel Edison デバイス][lnk-edison]を使用したエンドツーエンドのサンプルを提供します。
 
 - [デバイス ツインの使用方法][lnk-twin-tutorial]
 
@@ -175,4 +178,4 @@ Azure IoT Hub デバイス管理機能の詳細については、次のチュー
 [lnk-github-firmware]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/c/iotdm_client/samples/iotdm_simple_sample/iotdm_simple_sample.c
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Ruby を使用して SQL Database に接続する"
+	pageTitle="Ruby を使用して SQL Database に接続する | Microsoft Azure"
 	description="Azure SQL Database に接続するための Ruby コード サンプルを提供します。"
 	services="sql-database"
 	documentationCenter=""
@@ -40,4 +40,4 @@
 
 [Ruby を使用した SQL 接続の概念実証](http://msdn.microsoft.com/library/mt715797.aspx)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

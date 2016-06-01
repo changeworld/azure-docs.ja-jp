@@ -62,21 +62,17 @@
     サンプル ソリューションでは、(Azure Data Factory パイプラインを通じて間接的に) Azure Batch を使用して、仮想マシンの管理コレクションであるコンピューティング ノードのプールで、同じ方法でデータを処理します。
 
 4.  2 個以上のコンピューティング ノードで **Azure Batch プール** を作成します。
-
-	 [Azure Batch Explorer ツール](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer)のソース コードをダウンロードし、コンパイルして使用し、プールを作成することもできますが (**このサンプル ソリューションには強くお勧めします**)、[.NET 向け Azure Batch ライブラリ](../batch/batch-dotnet-get-started.md)を使用して、プールを作成することもできます。Azure Batch Explorer の使用手順については、[Azure Batch Explorer サンプル チュートリアル](http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx)のページを参照してください。[New-AzureRmBatchPool](https://msdn.microsoft.com/library/mt628690.aspx) コマンドレットを使用して、Azure Batch プールを作成することもできます。
-
-	 Batch Explorer を使用して、次の設定でプールを作成します。
-
-	-   プールの ID を入力します (**プール ID**)。**プールの ID** は、Data Factory ソリューションを作成するときに必要になります。
-
-	-   **オペレーティング システム ファミリ**設定には、**Windows Server 2012 R2** を指定します。
-
-	-   **コンピューティング ノードごとの最大タスク**の設定値には、**2** を指定します。
-
-	-   **ターゲットの専用数**の設定値には、**2** を指定します。
-
-	 ![](./media/data-factory-data-processing-using-batch/image2.png)
-
+	1.  [Azure ポータル](https://portal.azure.com)で、左側のメニューの **[参照]** をクリックしてから、**[Batch アカウント]** をクリックします。 
+	2. Azure Batch アカウントを選択して、**[Batch アカウント]** ブレードを開きます。 
+	3. **[プール]** タイルをクリックします。
+	4. **[プール]** ブレードで、ツールバーの [追加] ボタンをクリックしてプールを追加します。
+		1. プールの ID を入力します (**プール ID**)。**プールの ID** は、Data Factory ソリューションを作成するときに必要になります。 
+		2. オペレーティング システム ファミリ設定には、**Windows Server 2012 R2** を指定します。
+		3. **ノード価格レベル**を選択します。 
+		3. **ターゲットの専用数**の設定値として、「**2**」と入力します。
+		4. **ノードごとの最大タスク**の設定値として、「**2**」と入力します。
+	5. **[OK]** をクリックすると、プールが作成されます。 
+ 	 
 5.  [Azure Storage エクスプローラー 6 (ツール)](https://azurestorageexplorer.codeplex.com/) または [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) (ClumsyLeaf ソフトウェアから)。これらは、クラウドでホストされるアプリケーションのログを含む、Azure Storage プロジェクト内のデータを調べたり、変更したりするための GUI ツールです。
 
     1.  プライベートなアクセス (匿名アクセスなし) で **mycontainer** という名前のコンテナーを作成します
@@ -161,7 +157,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
     4.  **logger**。logger を使用すると、パイプラインの “User” ログとして表示されるデバッグ コメントが出力されます。
 
--   メソッドから、カスタム アクティビティの連結に使用できるディクショナリが返されます。このサンプル ソリューションでは、この機能を使用しません。
+-   メソッドから、今後、カスタム アクティビティの連結に使用できるディクショナリが返されます。この機能はまだ実装されていないため、メソッドからは空のディクショナリが返されるだけです。
 
 ### 手順: カスタム アクティビティの作成
 
@@ -228,13 +224,8 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
             // declare types for input and output data stores
             AzureStorageLinkedService inputLinkedService;
 
-            // declare dataset types
-            CustomDataset inputLocation;
-            AzureBlobDataset outputLocation;
-
             Dataset inputDataset = datasets.Single(dataset => dataset.Name == activity.Inputs.Single().Name);
-            inputLocation = inputDataset.Properties.TypeProperties as CustomDataset;
-
+	
             foreach (LinkedService ls in linkedServices)
                 logger.Write("linkedService.Name {0}", ls.Name);
 
@@ -277,8 +268,6 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
             // get the output dataset using the name of the dataset matched to a name in the Activity output collection.
             Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
-            // convert to blob location object.
-            outputLocation = outputDataset.Properties.TypeProperties as AzureBlobDataset;
 
             folderPath = GetFolderPath(outputDataset);
 
@@ -295,7 +284,8 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
             logger.Write("Writing {0} to the output blob", output);
             outputBlob.UploadText(output);
 
-            // return a new Dictionary object (unused in this code).
+			// The dictionary can be used to chain custom activities together in the future.
+			// This feature is not implemented yet, so just return an empty dictionary.
             return new Dictionary<string, string>();
         }
 
@@ -428,9 +418,6 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 		// Get the output dataset using the name of the dataset matched to a name in the Activity output collection.
 		Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
 
-		// Convert to blob location object.
-		outputLocation = outputDataset.Properties.TypeProperties as AzureBlobDataset;
-
 4.	また、このコードは、**GetFolderPath** というヘルパー メソッドも呼び出して、フォルダー パス (ストレージ コンテナー名) を取得します。
 
 		folderPath = GetFolderPath(outputDataset);
@@ -554,9 +541,15 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
     3.  **poolName** プロパティにプールの ID を入力しています**。**このプロパティでは、プール名またはプール ID のいずれかを指定できます。
 
-    4.  **batchUri** JSON プロパティにバッチ URI を入力します。**[Azure Batch アカウント] ブレード**の **URL** は、次の形式です: <accountname>.<region>.batch.azure.com。JSON の **batchUri** プロパティでは、URL から **"accountname." を削除**する必要があります。例: "batchUri": "https://eastus.batch.azure.com"。
+    4.  **batchUri** JSON プロパティにバッチ URI を入力します。
+    
+		> [AZURE.IMPORTANT] **[Azure Batch アカウント] ブレード**の **URL** は、次の形式です: <accountname>.<region>.batch.azure.com。JSON の **batchUri** プロパティでは、URL から **"accountname." を削除**する必要があります。例: "batchUri": "https://eastus.batch.azure.com"。
 
         ![](./media/data-factory-data-processing-using-batch/image9.png)
+
+		**poolName** プロパティでは、プール名の代わりにプール ID を指定することもできます。
+
+		> [AZURE.NOTE] Data Factory サービスでは、HDInsight の場合と同様、Azure Batch のオンデマンド オプションはサポートされません。Azure データ ファクトリでは、独自の Azure Batch プールのみ使用できます。
 
     5.  **linkedServiceName** プロパティに、**StorageLinkedService** を指定します。このリンクされたサービスは、前の手順で作成しています。このストレージは、ファイルおよびログのステージング領域として使用されます。
 
@@ -576,7 +569,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 		    "name": "InputDataset",
 		    "properties": {
 		        "type": "AzureBlob",
-		        "linkedServiceName": "StorageLinkedService",
+		        "linkedServiceName": "AzureStorageLinkedService",
 		        "typeProperties": {
 		            "folderPath": "mycontainer/inputfolder/{Year}-{Month}-{Day}-{Hour}",
 		            "format": {
@@ -651,7 +644,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 	| 4 | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
 	| 5 | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
 
-3.  ツール バーの **[デプロイ]** をクリックし、**InputDataset** テーブルを作成してデプロイします。エディターのタイトル バーに **"テーブルが正常に作成されました"** というメッセージが表示されていることを確認します。
+3.  ツール バーの **[デプロイ]** をクリックし、**InputDataset** テーブルを作成してデプロイします。
 
 #### 出力データセットの作成
 
@@ -665,7 +658,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 		    "name": "OutputDataset",
 		    "properties": {
 		        "type": "AzureBlob",
-		        "linkedServiceName": "StorageLinkedService",
+		        "linkedServiceName": "AzureStorageLinkedService",
 		        "typeProperties": {
 		            "fileName": "{slice}.txt",
 		            "folderPath": "mycontainer/outputfolder",
@@ -723,7 +716,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 						"typeProperties": {
 							"assemblyName": "MyDotNetActivity.dll",
 							"entryPoint": "MyDotNetActivityNS.MyDotNetActivity",
-							"packageLinkedService": "StorageLinkedService",
+							"packageLinkedService": "AzureStorageLinkedService",
 							"packageFile": "customactivitycontainer/MyDotNetActivity.zip"
 						},
 						"inputs": [
@@ -807,6 +800,8 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 6.  [Azure Batch エクスプローラー](http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx)を使用して、**スライス**に関連付けられている**タスク**を表示し、各スライスが実行された VM を表示します。ジョブが **adf-<poolname>** という名前で作成されていることを確認します。このジョブには、スライスごとにタスクがあります。この例では、スライスが 5 個あるため、Azure Batch には 5 個のタスクがあります。Azure Data Factory のパイプラインの JSON の **concurrency** を **5** に、VM を **2** 個持つ Azure Batch プールの **[VM ごとの最大タスク]** を **2** に設定すると、タスクが高速で実行されます (**作成** 時刻を参照)。
 
     ![](./media/data-factory-data-processing-using-batch/image14.png)
+
+	> [AZURE.NOTE] [Azure Batch Explorer ツール][batch-explorer]のソース コードをダウンロードし、コンパイルしてから Batch プールの作成および監視に使用します。Azure Batch Explorer の使用手順については、[Azure Batch Explorer サンプル チュートリアル][batch-explorer-walkthrough]のページを参照してください。
 
 7.  Azure Blob Storage の **mycontainer** の **outputfolder** に、出力ファイルが表示されます。
 
@@ -897,9 +892,9 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
  
 		pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);$TargetDedicated = max(pendingTaskSampleVector);
 
-	詳細については、「[Azure Batch プール内のコンピューティング ノードの自動スケール](../batch/batch-automatic-scaling.md)」をご覧ください。
+	詳細については、「[Azure Batch プール内のコンピューティング ノードの自動スケール](../batch/batch-automatic-scaling.md)」を参照してください。
 
-	Azure Batch サービスでは、VM でカスタム アクティビティを実行する前に、VM の準備に 15 ～ 30 分かかる場合があります。
+	プールが既定の [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx) を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。プールが異なる 　autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
 	 
 5. サンプル ソリューションで、**Execute** メソッドは、出力データ スライスを生成するために入力データ スライスを処理する、**Calculate** メソッドを呼び出します。入力データを処理し、Execute メソッドで呼び出される Calculate メソッドを、メソッドの呼び出しに置換する独自のメソッドを記述することができます。
 
@@ -910,13 +905,13 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
 データを処理した後、**Microsoft Power BI** などのオンライン ツールで使用することができます。Power BI や Azure で使用する方法を理解するために役立つリンクを次に示します。
 
--   [Power BI でのデータセットの参照](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-service-get-data/)
+-   [Power BI でのデータセットの参照](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
 
--   [Power BI Desktop の概要](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-desktop-getting-started/)
+-   [Power BI Desktop の概要](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 
--   [Power BI でのデータの更新](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-refresh-data/)
+-   [Power BI でのデータの更新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 
--   [Azure と Power BI - 基本的な概要](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-azure-and-power-bi/)
+-   [Azure と Power BI - 基本的な概要](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## 参照
 
@@ -938,4 +933,8 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
     -   [Azure Batch ライブラリ .NET の概要](../batch/batch-dotnet-get-started.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+
+[batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
+[batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
+
+<!---HONumber=AcomDC_0518_2016-->

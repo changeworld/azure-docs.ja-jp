@@ -3,7 +3,7 @@
 	description="SQL Azure からのデータを処理する" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="fashah" 
+	authors="garyericson" 
 	manager="paulettm" 
 	editor="" />
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
-	ms.author="fashah;garye" />
+	ms.date="05/16/2016" 
+	ms.author="fashah;garye;bradsev" />
 
 #<a name="heading">Azure の SQL Server Virtual Machine でデータを処理する</a>
 
@@ -84,7 +84,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 
 このセクションでは、テーブル内の 1 つの列を展開して追加の特徴を生成する方法を示します。この例は、特徴を生成しようとするテーブルに、緯度や経度の列があることを前提としています。
 
-緯度と経度の位置データ (リソースは `http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude` の stackoverflow) の簡単な概要を次に示します。これは、Featurize する前に [場所] フィールドを理解するうえで役立ちます。
+緯度と経度の位置データ (リソースは stackoverflow の「[How to measure the accuracy of latitude and longitude? (緯度と経度の精度を測定する方法)](http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)」) の簡単な概要を次に示します。これは、Featurize する前に [場所] フィールドを理解するうえで役立ちます。
 
 - 記号は、私たちが地球の北半球か南半球、東半球か西半球、それぞれどちらにいるかを示します。
 - 100 の位が 0 でなければ、それは経度を使用していることを示します。緯度ではありません。
@@ -97,7 +97,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 - 小数第 5 位は、1.1 m に値します。木々を互いに識別することができます。商用の GPS ユニットにおいて、このレベルの精度は微分補正によってのみ実現できます。
 - 小数第 6 位は、最大 0.11 m に値します。これは、造園設計、道路建設において構造を詳細に配置するために使用できます。氷河と川の動きを追跡するには十分すぎるはずです。これは、GPS の微分補正など、GPS を使用した精密な測定で実現できます。
 
-位置情報の Featurize は、地域、位置、および都市の情報に分けて、次のように実行します。1 回に、`https://msdn.microsoft.com/library/ff701710.aspx` で使用できる Bing Maps API などの REST エンド ポイントを呼び出して、地域または地区の情報を得ることもできることに注意してください。
+位置情報の Featurize は、地域、位置、および都市の情報に分けて、次のように実行します。地域または地区の情報は、「[Find a Location by Point (ポイントで位置情報を特定する)](https://msdn.microsoft.com/library/ff701710.aspx)」で紹介されている Bing Maps API などの REST エンド ポイントを呼び出すことで取得することもできます。
 
 	select 
 		<location_columnname>
@@ -113,14 +113,14 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 上記の位置ベースの特徴をさらに使用すると、前述した追加のカウント特徴を生成できます。
 
 
-> [AZURE.TIP] お好みのプログラム言語でレコードを挿入できます。書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。[こちらで pyodbc を使用した実行方法の例を確認してください。](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)
+> [AZURE.TIP] お好みのプログラム言語でレコードを挿入できます。書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。「[A HelloWorld sample to access SQLServer with python (SQL Server に python でアクセスするための HelloWorld サンプル)](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)」で pyodbc を使用した実行方法の例を確認してください。
  
 
 > [AZURE.TIP] もう 1 つの選択肢は、[BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)を使用してデータベースにデータを挿入することです。
 
 ###<a name="sql-aml"></a>Azure Machine Learning への接続
 
-新しく生成された特徴は、既存のテーブルに列として追加するか、新しいテーブルに格納して機械学習の元のテーブルと結合することができます。特徴を生成できます。作成済みであれば、次に示すように、Azure ML の[リーダー][reader] モジュールを使用してアクセスすることができます。
+新しく生成された特徴は、既存のテーブルに列として追加するか、新しいテーブルに格納して機械学習の元のテーブルと結合することができます。特徴は生成できるほか、作成済みであれば、次に示すように、Azure Machine Learning の[データのインポート][reader] モジュールを使用してアクセスすることができます。
 
 ![Azure ML リーダー][1]
 
@@ -139,7 +139,7 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 	# Query database and load the returned results in pandas data frame
 	data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
-これで、トピック「[データ サイエンス環境で Azure BLOB データを処理する](machine-learning-data-science-process-data-blob.md)」で扱うとおりに Pandas データ フレームを操作できるようになりました。
+これで、「[データ サイエンス環境で Azure BLOB データを処理する](machine-learning-data-science-process-data-blob.md)」の記事で扱うとおりに Pandas データ フレームを操作できるようになりました。
 
 ## 実行中の Azure データ サイエンスの例
 
@@ -152,4 +152,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0518_2016-->

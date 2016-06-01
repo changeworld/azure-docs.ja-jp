@@ -3,7 +3,7 @@
    description="Service Fabric の用語の概要です。重要な用語の概念と、ドキュメントの他の部分で使用される用語について説明します。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="msfussell"
+   authors="rwike77"
    manager="timlt"
    editor="chackdan;subramar"/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="04/05/2016"
-   ms.author="msfussell"/>
+   ms.author="ryanwi"/>
 
 # Service Fabric の用語の概要
 
@@ -90,4 +90,4 @@ Service Fabric の詳細については、以下の情報を参照してくだ�
 - [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
 - [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

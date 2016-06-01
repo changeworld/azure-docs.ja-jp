@@ -18,11 +18,9 @@
 
 # Azure App Service での API Apps のサービス プリンシパル認証
 
-[AZURE.INCLUDE [セレクター](../../includes/app-service-api-auth-selector.md)]
-
 ## 概要
 
-この記事では、App Service 認証を使用して API アプリへの[内部的](app-service-api-authentication.md#internal)なアクセスを実現する方法について説明します。ここでいう "内部的" とは、特定の API アプリを自分のアプリケーション コードからしか利用できないようにすることを指します。このシナリオを App Service で実装する最も簡単な方法は、呼び出し先の API アプリを Azure AD で保護することです。Azure AD にアプリケーション ID (サービス プリンシパル) の資格情報を提示することによって取得したベアラー トークンを使って保護対象の API アプリを呼び出します。
+この記事では、App Service 認証を使用して API アプリへの*内部的*なアクセスを実現する方法について説明します。ここでいう "内部的" とは、特定の API アプリを自分のアプリケーション コードからしか利用できないようにすることを指します。このシナリオを App Service で実装する推奨される方法は、呼び出し先の API アプリを Azure AD で保護することです。Azure AD にアプリケーション ID (サービス プリンシパル) の資格情報を提示することによって取得したベアラー トークンを使って保護対象の API アプリを呼び出します。Azure AD 以外の方法については、「[Azure App Service での認証および承認](../app-service/app-service-authentication-overview.md#service-to-service-authentication)」の「**サービス間認証**」セクションを参照してください。
 
 この記事では、次の内容について説明します。
 
@@ -94,11 +92,11 @@ App Service から提供される `objectidentifier` 要求は、X-MS-CLIENT-PRI
 
 保護対象の API アプリのコードで要件を検証せず、保護対象の API アプリに別の Azure AD アプリケーションを使用する場合は、Azure AD アプリケーションの Reply URL が API アプリのベース URL と同じにならないようにします。Reply URL が保護対象の API アプリを直接示している場合、同じ Azure AD テナント内のユーザーは、API アプリの閲覧、ログオン、API の呼び出しを実行できるようになります。
 
-## <a id="tutorialstart"></a>.NET 入門チュートリアルの続行
+## <a id="tutorialstart"></a> .NET API アプリ チュートリアル シリーズの続行
 
-API アプリの Node.js または Java の入門シリーズを読んでいる場合は、「[次のステップ](#next-steps)」セクションに進みます。
+API アプリの Node.js または Java チュートリアル シリーズを読んでいる場合は、「[次のステップ](#next-steps)」セクションに進みます。
 
-この記事では、引き続き API アプリの .NET 入門シリーズについて説明します。また、[ユーザー認証のチュートリアル](app-service-api-dotnet-user-principal-auth.md)を完了し、ユーザー認証を有効にして Azure でサンプル アプリケーションを実行している前提で話を進めます。
+この記事では、引き続き .NET API アプリ チュートリアル シリーズについて説明します。また、[ユーザー認証のチュートリアル](app-service-api-dotnet-user-principal-auth.md)を完了し、ユーザー認証を有効にして Azure でサンプル アプリケーションを実行している前提で話を進めます。
 
 ## Azure で認証を設定する
 
@@ -405,7 +403,7 @@ ToDoListAngular のような Web API バックエンドで AngularJS 単一ペ�
 
 ## 次のステップ
 
-これは、API Apps 入門シリーズの最終回の記事です。
+これは、API アプリ シリーズの最後のチュートリアルです。
 
 Azure Active Directory の詳細については、次のリソースを参照してください。
 
@@ -417,4 +415,4 @@ Azure Active Directory の詳細については、次のリソースを参照し
 
 Visual Studio を使用するか、[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)から[デプロイを自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)して、Visual Studio プロジェクトを API アプリにデプロイする他の方法については、「[Azure App Service へのアプリのデプロイ](../app-service-web/web-sites-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

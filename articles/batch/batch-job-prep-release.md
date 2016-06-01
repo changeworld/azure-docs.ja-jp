@@ -13,14 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="01/22/2016"
+	ms.date="04/21/2016"
 	ms.author="marsma" />
 
 # Azure Batch コンピューティング ノードでのジョブ準備タスクとジョブ完了タスクの実行
 
-Azure Batch ジョブでは、実行前に何らかのセットアップが必要になることがよくあります。同様に、ジョブのタスクが完了した後に何らかのジョブ実行後のメンテナンスが必要になることもよくあります。Batch では、この準備と保守のメカニズムが、オプションの*ジョブ準備*タスクおよび*ジョブ解放*タスクの形式で提供されています。
+Azure Batch ジョブでは、実行前に何らかのセットアップが必要になることがよくあります。同様に、ジョブのタスクが完了した後に何らかのジョブ実行後のメンテナンスが必要になることもよくあります。Batch では、この準備と保守のメカニズムが、オプションのジョブ準備タスクおよびジョブ解放タスクの形式で提供されています。
 
-ジョブのタスクが実行される前には、タスクの実行がスケジュールされているすべてのコンピューティング ノードにおいてジョブ準備タスクが実行されます。ジョブが完了すると、少なくとも 1 つのタスクを実行したプールの各ノードでジョブ解放タスクが実行されます。ジョブ準備タスクとジョブ解放タスクのどちらに対しても、タスクの実行時に呼び出すコマンド ラインを指定できます。これらの特別なタスクは、ファイルのダウンロード、管理者特権での実行、カスタム環境変数、最大実行時間、再試行回数、ファイルのリテンション期間などの使い慣れた機能を提供します。
+ジョブのタスクが実行される前には、タスクの実行がスケジュールされているすべてのコンピューティング ノードにおいて**ジョブ準備タスク**が実行されます。ジョブが完了すると、少なくとも 1 つのタスクを実行したプールの各ノードで**ジョブ解放タスク**が実行されます。通常の Batch タスクと同様に、ジョブ準備タスクまたはジョブ解放タスクのコマンド ラインを指定して、タスクが実行されるときに呼び出すことができます。これらの特殊なタスクでは、ファイルのダウンロード、管理者特権での実行、カスタム環境変数、最大実行時間、再試行回数、ファイルのリテンション期間などの使い慣れた機能を利用できます。
 
 以降のセクションでは、[Batch .NET][api_net] API の [JobPreparationTask][net_job_prep] クラスと [JobReleaseTask][net_job_release] クラスを使用して、これら 2 つの特別な種類のタスクを使用する方法について説明します。
 
@@ -58,7 +58,7 @@ Batch ジョブでは、ジョブのタスクに対する入力として共通�
 
 ## Batch .NET API のジョブ準備タスクとジョブ解放タスク
 
-ジョブ準備タスクを指定するには、[JobPreparationTask][net_job_prep] オブジェクトを作成して構成し、それをジョブの [CloudJob.JobPreparationTask][net_job_prep_cloudjob] プロパティに割り当てます。同様に、ジョブ解放タスクを設定するには、[JobReleaseTask][net_job_release] を初期化し、それをジョブの [CloudJob.JobReleaseTask][net_job_prep_cloudjob] プロパティに割り当てます。
+ジョブ準備タスクを使用するには、[JobPreparationTask][net_job_prep] オブジェクトを作成して構成し、それをジョブの [CloudJob.JobPreparationTask][net_job_prep_cloudjob] プロパティに割り当てます。同様に、ジョブ解放タスクを設定するには、[JobReleaseTask][net_job_release] を初期化し、それをジョブの [CloudJob.JobReleaseTask][net_job_prep_cloudjob] プロパティに割り当てます。
 
 次のコード例では、`myBatchClient` は完全に初期化された [BatchClient][net_batch_client] のインスタンスであり、`myPool` は Batch アカウント内の既存のプールです。
 
@@ -185,6 +185,5 @@ Sample complete, hit ENTER to exit...
 [net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
 
 [1]: ./media/batch-job-prep-release/batchexplorer-01.png
-[2]: ./media/batch-job-prep-release/batchexplorer-02.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

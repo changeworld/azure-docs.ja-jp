@@ -22,7 +22,7 @@
 
 Azure App Service では、アプリ (Web、モバイル、API) を自分のサブスクリプションの Azure 仮想ネットワーク (VNET) に接続できます。この機能は VNET 統合と呼ばれています。VNET 統合機能を App Service Environment 機能と混同しないでください。App Service Environment 機能の場合、仮想ネットワークで Azure App Service のインスタンスを実行できます。
 
-新しいポータルに、VNET 統合機能のユーザー インターフェイス (UI) が用意されています。これを使って、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルでデプロイされた仮想ネットワークと統合できます。この機能の詳細については、「[アプリを Azure 仮想ネットワークに統合する](web-sites-integrate-with-vnet)」をご覧ください。
+新しいポータルに、VNET 統合機能のユーザー インターフェイス (UI) が用意されています。これを使って、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルでデプロイされた仮想ネットワークと統合できます。この機能の詳細については、「[アプリを Azure 仮想ネットワークに統合する](web-sites-integrate-with-vnet.md)」を参照してください。
 
 この記事で取り上げるのは UI の使い方ではなく、PowerShell を使って統合を実現する方法です。コマンドはデプロイ モデルごとに異なるため、この記事には、デプロイ モデルごとにセクションが用意されています。
 
@@ -725,4 +725,4 @@ Resource Manager デプロイ モデルを使用する仮想ネットワーク�
 [createvpngateway]: http://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/
 [azureportal]: http://portal.azure.com
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

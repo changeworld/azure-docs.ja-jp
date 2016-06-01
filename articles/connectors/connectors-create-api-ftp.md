@@ -14,13 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/25/2016"
+   ms.date="05/16/2016"
    ms.author="mandia"/>
 
 # FTP API の概要
 FTP サーバーに接続して、ファイルのアップロードやファイルの削除など、ファイルを管理します。FTP API は次のツールから使用できます。
 
-- Logic Apps
+- Logic Apps (このトピックで説明)
+- PowerApps (詳細な一覧については、[PowerApps 接続リスト](https://powerapps.microsoft.com/tutorials/connections-list/)を参照してください)
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
@@ -51,7 +52,7 @@ FTP では、次のトリガーとアクションを使用できます。
 |ユーザー名| あり | ユーザー名を入力して、FTP サーバーに接続します。|
 |パスワード | あり | ユーザー名のパスワードを入力します。|
 
-接続を作成したら、ソース ファイルや宛先フォルダーなど、FTP のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、ソース ファイルや宛先フォルダーなど、FTP のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでも、この同じ FTP 接続を使用できます。
 
@@ -247,4 +248,4 @@ FTP サーバーのファイルを更新します。```PUT: /datasets/default/fi
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

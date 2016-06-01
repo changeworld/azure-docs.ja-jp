@@ -217,7 +217,6 @@ MapReduce アクティビティを使用して、HDInsight Spark クラスター
 
 [adfgetstarted]: data-factory-get-started.md
 [adfgetstartedmonitoring]: data-factory-get-started.md#monitor-pipelines
-[adftutorial]: data-factory-tutorial.md
 
 [Developer Reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [Azure Portal]: http://portal.azure.com
@@ -229,4 +228,4 @@ MapReduce アクティビティを使用して、HDInsight Spark クラスター
 - [Spark プログラムを呼び出す](data-factory-spark.md)
 - [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

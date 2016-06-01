@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/28/2016"
+	ms.date="05/16/2016"
 	ms.author="dastrock"/>
 
 # Azure Active Directory B2C プレビュー: OAuth 2.0 承認コード フロー
@@ -277,4 +277,4 @@ Here is the entire flow for a native app; each request is detailed in the sectio
 - [アプリケーションを作成し](active-directory-b2c-app-registration.md)、アプリケーション ID と redirect\_uri を取得します。アプリに**ネイティブ クライアント**を追加します。
 - [ポリシーを作成し](active-directory-b2c-reference-policies.md)、ポリシー名を取得します。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

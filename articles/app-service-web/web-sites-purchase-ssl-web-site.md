@@ -89,7 +89,7 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
     ![新規 KV 作成のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/NewKV.jpg)
  
     > [AZURE.NOTE]
-    最小限の料金でこの証明書を Azure Key Vault に格納できます。コストは約 0.03 米ドルです。詳細については、「**[Key Vault の価格](https://azure.microsoft.com/pricing/details/key-vault/)**」を参照してください。
+    最小限の料金でこの証明書を Azure Key Vault に格納できます。詳細については、「**[Key Vault の価格](https://azure.microsoft.com/pricing/details/key-vault/)**」をご覧ください。
 
 4. この証明書を格納する Key Vault リポジトリを選択した後、**[Key Vault の状態]** ブレードの上部にある **[格納]** ボタンをクリックして格納します。
 
@@ -113,7 +113,7 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
 
     * **ドメイン検証**
 
-        * この方法は、**[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)** **場合にのみ**、最も便利な方法です。
+        * この方法は、**[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)****場合にのみ**、最も便利な方法です。
         
         * **[検証]** ボタンをクリックして、この手順を実行します。
         
@@ -208,4 +208,4 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

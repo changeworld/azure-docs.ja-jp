@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/20/2016"
+   ms.date="05/11/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute の FAQ
@@ -149,7 +149,7 @@ ExpressRoute 回線を確立し、パブリック ピアリング用のルート
 はい。プライベート ピアリング用に最大 4,000 個およびパブリック ピアリングと Microsoft ピアリング用にそれぞれ 200 個のルート プレフィックスを使用できます。ExpressRoute Premium 機能を有効にすると、プライベート ピアリング用のこの上限を 10,000 ルートに増やすことができます。
 
 ### BGP セッションを介してアドバタイズできる IP 範囲に制限はありますか。
-パブリック ピアリング BGP セッションでは、プライベート プレフィックス (RFC1918) は受け付けられません。
+パブリックと Microsoft のピアリング BGP セッションでは、プライベート プレフィックス (RFC1918) は受け付けられません。
 
 ### BGP の上限を超えるとどうなりますか。
 BGP セッションが切断されます。プレフィックス数が上限未満になると、BGP セッションはリセットされます。
@@ -245,4 +245,7 @@ ExpressRoute がサポートされているパートナーと地域の一覧に�
 ### 自社で ExpressRoute が構成されている場合でも、インターネット経由で Office 365 にアクセスできますか。
 はい。自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
 
-<!---HONumber=AcomDC_0427_2016-->
+### ExpressRoute 接続経由で Dynamics AX にアクセスできますか。
+いいえ。それはサポートされていません。
+
+<!---HONumber=AcomDC_0518_2016-->

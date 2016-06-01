@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/22/2016"
+   ms.date="05/13/2016"
    ms.author="larryfr"/>
 
 #HDInsight 用 Python ストリーミング プログラムの開発
@@ -32,6 +32,8 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 * HDInsight クラスターでの Linux ベースの Hadoop
 
 * テキスト エディター
+
+    > [AZURE.IMPORTANT] テキスト エディターでは、行の終わりとして LF を使用する必要があります。CRLF を使用する場合、これは Linux ベースの HDInsight クラスターで MapReduce ジョブを実行するときにエラーが発生します。不明な場合は、「[MapReduce の実行](#run-mapreduce)」セクションにある省略可能な手順を使用して、CRLF を LF に変換します。
 
 * Windows クライアントとして PuTTY および PSCPこれらのユーティリティは「<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY のダウンロード ページ</a>」から入手できます。
 
@@ -154,13 +156,18 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 	> [AZURE.NOTE] SSH アカウントのセキュリティ保護にパスワードを使用している場合は、パスワードの入力が求められます。SSH キーを使用している場合は、`-i` パラメーターと、秘密キーのパスを使用する必要があることがあります。例`ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`:
 
+2. (省略可能) ファイルを作成するときに、行の終わりとして CRLF を使用するテキスト エディターを使用した場合、またはエディターが使用する行の終わりがわからない場合、次のコマンドを使用して、mapper.py と reducer.py の CRLF を LF に変換します。
+
+        perl -pi -e 's/\r\n/\n/g' mappery.py
+        perl -pi -e 's/\r\n/\n/g' reducer.py
+
 2. MapReduce ジョブを開始するには次のコマンドを使用します。
 
 		yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasb:///example/data/gutenberg/davinci.txt -output wasb:///example/wordcountout
 
 	このコマンドには次のようなものがあります。
 
-	* **hadoop-streaming.jar**: MapReduce 操作のストリーミングを実行する際に使用します。Hadoop と指定した外部 MapReduce コードとの橋渡しを務めます。
+	* **hadoop-streaming.jar**: MapReduce 操作のストリーミングを実行するときに使用します。Hadoop と指定した外部 MapReduce コードとの橋渡しを務めます。
 
 	* **-files**: 指定されたファイルがこの MapReduce ジョブに必要なこと、また、すべてのワーカー ノードにコピーする必要があることを Hadoop に伝えます。
 
@@ -205,4 +212,4 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

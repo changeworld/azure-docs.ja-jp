@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/15/2016"
+	ms.date="05/16/2016"
 	ms.author="jeedes"/>
 
 
@@ -212,4 +212,4 @@ Cimpl で Azure AD のシングル サインオンを構成してテストする
 [204]: ./media/active-directory-saas-cimpl-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-cimpl-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

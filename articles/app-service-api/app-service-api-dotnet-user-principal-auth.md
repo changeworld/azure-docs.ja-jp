@@ -18,13 +18,12 @@
 
 # Azure App Service の API Apps でのユーザー認証
 
-[AZURE.INCLUDE [セレクター](../../includes/app-service-api-auth-selector.md)]
-
 ## 概要
 
-これは、App Service API アプリ入門シリーズの 4 番目の記事です。この記事では、次の内容について説明します。
+この記事では、認証されたユーザーのみが呼び出せるように Azure API アプリを保護する方法を説明します。この記事を読む前に、「[Azure App Service での認証および承認](../app-service/app-service-authentication-overview.md)」をお読みください。
 
-* 認証されたユーザーのみが呼び出せるように App Service API アプリを保護する方法。
+学習内容:
+
 * 認証プロバイダーを構成する方法と、Azure Active Directory (Azure AD) の詳細。
 * [Active Directory Authentication Library (ADAL) for JavaScript](https://github.com/AzureAD/azure-activedirectory-library-for-js) を使用して保護された API アプリを使用する方法。
 
@@ -32,7 +31,7 @@
 
 * 「[Azure App Service でユーザー認証を構成する方法](#authconfig)」セクションでは、API アプリ用にユーザー認証を構成する一般的な方法について説明します。.NET、Node.js、Java など、App Service でサポートされるすべてのフレームワークに適用されます。
 
-* 「[.NET 入門チュートリアルの続行](#tutorialstart)」セクション以降では、ユーザー認証に Azure Active Directory を使用するように、.NET バックエンドと AngularJS フロントエンドによりサンプル アプリケーションを構成する方法について説明します。
+* 「[.NET API アプリ チュートリアルの続行](#tutorialstart)」セクション以降では、ユーザー認証に Azure Active Directory を使用するように、.NET バックエンドと AngularJS フロントエンドによりサンプル アプリケーションを構成する方法について説明します。
 
 ## <a id="authconfig"></a>Azure App Service でユーザー認証を構成する方法
 
@@ -70,21 +69,21 @@
 
 呼び出し元が認証された API 呼び出しを行うには、認証プロバイダーの OAuth 2.0 ベアラー トークンを、HTTP 要求の承認ヘッダーに組み込みます。トークンは、認証プロバイダーの SDK を使用して取得できます。
 
-## <a id="tutorialstart"></a>.NET 入門チュートリアルの続行
+## <a id="tutorialstart"></a> .NET API アプリ チュートリアルの続行
 
-API アプリの Node.js または Java 入門シリーズに従って学習している場合は、次の記事「[Azure App Service での API Apps のサービス プリンシパル認証](app-service-api-dotnet-service-principal-auth.md)」に進みます。
+API アプリの Node.js または Java チュートリアルに従って学習している場合は、次の記事「[Azure App Service での API Apps のサービス プリンシパル認証](app-service-api-dotnet-service-principal-auth.md)」に進みます。
 
-API アプリの .NET 入門シリーズに従って学習していて、[1 番目](app-service-api-dotnet-get-started.md)と [2 番目](app-service-api-cors-consume-javascript.md)のチュートリアルで説明されているようにサンプル アプリケーションを既にデプロイしている場合は、「[Set up authentication in App Service and Azure AD (App Service および Azure AD で認証をセットアップする)](#azureauth)」セクションに進みます。
+API アプリの .NET チュートリアルに従って学習していて、[1 番目](app-service-api-dotnet-get-started.md)と [2 番目](app-service-api-cors-consume-javascript.md)のチュートリアルで説明されているようにサンプル アプリケーションを既にデプロイしている場合は、「[App Service と Azure AD での認証の設定](#azureauth)」セクションに進みます。
 
-1 番目および 2 番目のチュートリアルに進まないで、このチュートリアルに従う場合は、次の手順を実行します。
+1 番目と 2 番目のチュートリアルをとばしてこのチュートリアルを読みたい場合は、自動プロセスでサンプル アプリケーションをデプロイして始める方法が説明されている以下の手順に従ってください。
+
+>[AZURE.NOTE] 以下の手順の開始点は、最初の 2 つのチュートリアルを実行した場合と同じになります。例外が 1 つあります。それは Visual Studio では各プロジェクトがどの Web アプリまたは API アプリにデプロイされるのかまだ識別できないという点です。つまり、正しいターゲットにデプロイする方法はこのチュートリアルではわかりません。自分でデプロイする方法がよくわからない場合は、この自動デプロイ プロセスで始めるのではなく、[1 番目のチュートリアル](app-service-api-dotnet-get-started.md)からチュートリアル シリーズに従うことをお勧めします。
 
 1. [1 番目のチュートリアル](app-service-api-dotnet-get-started.md)に一覧されている前提条件がすべて満たされていることを確認します。前提条件が満たされていることに加えて、これらの認証チュートリアルでは、App Service Web アプリと API アプリが Visual Studio および Azure ポータルで操作されていることを前提とします。
 
 2. [To Do List サンプル リポジトリ Readme ファイル](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/readme.md)の **[Azure へのデプロイ]** ボタンを使用して API アプリと Web アプリをデプロイしてください。作成された Azure リソース グループをメモしておきます。これは後で Web アプリ名と API アプリ名を検索する場合に使用できます。
  
 3. [To Do List サンプル リポジトリ](https://github.com/Azure-Samples/app-service-api-dotnet-todo-list)をダウンロードまたは複製して、Visual Studio でローカルに使用するコードを取得します。
-
-これらの手順の開始点は、最初の 2 つのチュートリアルを実行した場合と同じになります。例外が 1 つあります。それは Visual Studio では各プロジェクトがどの Web アプリまたは API アプリにデプロイされるのかまだ識別できないという点です。プロジェクトをデプロイする場合は、デプロイ先の Azure Web アプリまたは API アプリを選択することが必要になります。Web アプリと API アプリの名前を取得するには、Azure ポータルを開き、**[Deploy to Azure]** ボタンをクリックしたときに作成されたリソース グループのリソース グループ ブレードを参照します。
 
 ## <a id="azureauth"></a> App Service と Azure AD での認証の設定
 
@@ -337,4 +336,4 @@ Web API 2 バックエンドで AngularJS 単一ページ アプリケーショ�
 
 このチュートリアルでは、API アプリで App Service 認証を使用する方法、および ADAL JS ライブラリを使用して API アプリを呼び出す方法を説明しました。次のチュートリアルでは、[サービス間シナリオで API アプリへのアクセスをセキュリティで保護する](app-service-api-dotnet-service-principal-auth.md)方法を学習します。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

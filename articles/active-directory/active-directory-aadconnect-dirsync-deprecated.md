@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/20/2016"
+	ms.date="05/11/2016"
 	ms.author="andkjell"/>
 
 
@@ -46,11 +46,7 @@ Azure AD Sync を使用している場合、インプレース アップグレ�
 
 DirSync から Azure AD Connect へのインプレース アップグレードを実行する方法を確認するには、チャネル 9 ビデオをご覧ください。
 
-<!-- The next section is actually supposed to look like this, but video ids are not working at present.
 > [AZURE.VIDEO azure-active-directory-connect-in-place-upgrade-from-legacy-tools]
--->
-
-[Azure Active Directory Connect: 従来のツールからのインプレース アップグレード](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-in-place-upgrade-from-legacy-tools) ![インプレース アップグレード](./media/active-directory-aadconnect-dirsync-deprecated/inplaceupgrade.png)
 
 ## FAQ
 **Q: Azure チームからの電子メール通知や Office 365 メッセージ センターからのメッセージが届きましたが、現在は Connect を使用しています。** ビルド番号が 1.0.*.0 (1.1 リリースより前) の Azure AD Connect を使用しているお客様にも通知が送信されています。Microsoft ではお客様に、常に最新の Azure AD Connect リリースを使用することをお勧めしています。1.1 には[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)機能が搭載されているため、常に最新バージョンの Azure AD Connect がインストールされている状態を簡単に維持できます。
@@ -65,4 +61,4 @@ DirSync から Azure AD Connect へのインプレース アップグレード�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

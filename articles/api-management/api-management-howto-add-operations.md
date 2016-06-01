@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Azure API Management で API に操作を追加する方法" 
+	pageTitle="Azure API Management で API に操作を追加する方法 | Microsoft Azure" 
 	description="Azure API Management で API に操作を追加する方法について説明します。" 
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="04/19/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API に操作を追加する方法
@@ -40,9 +40,13 @@ API Management 内の API を使用するためには、操作を追加する必
 
 ![HTTP メソッド][api-management-http-method]
 
+<a name="url-template"></a>
+
 1 つ以上の URL パス セグメントと 0 個以上のクエリ文字列パラメーターから構成される URL フラグメントを入力して、URL テンプレートを定義します。URL テンプレートは、API のベース URL に付加され、単一の HTTP 操作を識別します。URL テンプレートには、中かっこで識別される 1 つまたは複数の名前付き変数部分を含めることができます。テンプレート パラメーターと呼ばれるこれらの変数部分には、要求が API Management プラットフォームによって処理されるときに要求の URL から抽出された値が動的に割り当てられます。
 
 ![URL テンプレート][api-management-url-template]
+
+<a name="rewrite-url-template"></a>
 
 必要に応じて、**[書き換え URL テンプレート]** に値を指定します。これにより、標準 URL テンプレートを使用してフロントエンドで受け取った要求を処理する一方で、書き換えテンプレートに従って変換された URL を介してバックエンドを呼び出すことができます。書き換えテンプレートでは、URL テンプレートのテンプレート パラメーターを使用する必要があります。次の例に、前の例の Web サービスでパス セグメントとしてエンコードされるコンテンツ タイプを、URL テンプレートを使用して API Management プラットフォーム経由で発行される API のクエリ パラメーターとして渡す方法を示します。
 
@@ -164,4 +168,4 @@ API Management 内の API を使用するためには、操作を追加する必
 [成果物を作成して発行する方法]: api-management-howto-add-products.md
 [Azure API Management で操作の結果をキャッシュする方法]: api-management-howto-cache.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

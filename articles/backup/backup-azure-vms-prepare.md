@@ -14,15 +14,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/01/2016"
+	ms.date="05/04/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 
 # Azure 仮想マシンをバックアップする環境の準備
 
+> [AZURE.SELECTOR]
+- [ARM VM のバックアップの準備](backup-azure-arm-vms-prepare.md)
+- [Azure VM のバックアップの準備](backup-azure-vms-prepare.md)
+
 Azure 仮想マシン (VM) をバックアップするには、事前に 3 つの条件を満たしておく必要があります。
 
-- バックアップ資格情報コンテナーを作成するか、または*ご使用の VM と同じリージョンに*ある既存のバックアップ資格情報コンテナーを識別する必要があります。
+- Backup コンテナーを作成するか、または*ご使用の VM と同じリージョンに*ある既存の Backup コンテナーを識別する必要があります。
 - Azure パブリック インターネット アドレスと Azure Storage エンドポイントの間にネットワーク接続を確立します。
 - VM に VM エージェントをインストールします。
 
@@ -31,11 +35,9 @@ Azure 仮想マシン (VM) をバックアップするには、事前に 3 つ�
 
 ## VM のバックアップと復元に関する制限
 
->[AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[リソース マネージャー デプロイ モデルとクラシック デプロイ モデル](../resource-manager-deployment-model.md)です。従来のモデルでデプロイする場合の制限事項を以下に一覧します。
+>[AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。従来のモデルでデプロイする場合の制限事項を以下に一覧します。
 
-- Azure リソース マネージャー (ARM) に基づく (別名 IaaS V2) 仮想マシンのバックアップは、現在サポートされていません。
 - 16 台以上のデータ ディスクを搭載した仮想マシンのバックアップはサポートされません。
-- Premium Storage を使用した仮想マシンのバックアップはサポートされません。
 - 予約済み IP アドレスはあるがエンドポイントが定義されていない仮想マシンのバックアップはサポートされません。
 - 復元中に既存の仮想マシンを置き換えることはサポートされません。まず既存の仮想マシンに関連付けられているディスクを削除し、次にバックアップからデータを復元します。
 - リージョン間のバックアップと復元はサポートされません。
@@ -43,11 +45,11 @@ Azure 仮想マシン (VM) をバックアップするには、事前に 3 つ�
 - オペレーティング システムのバージョンの選択でサポートされるのは、Azure Backup サービスを使用した仮想マシンのバックアップのみです。
   - **Linux**: [Azure で動作保証済みのディストリビューションの一覧](../virtual-machines/virtual-machines-linux-endorsed-distros.md)をご確認ください。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作する限り使用できます。
   - **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
-	- マルチ DC 構成の一部であるドメイン コントローラー (DC) VM の復元は、PowerShell を通じてのみサポートされます。[マルチ DC ドメイン コントローラーの復元](backup-azure-restore-vms.md#restoring-domain-controller-vms)の詳細をご覧ください。
-	- 次のような特殊なネットワーク構成を持つ仮想マシンの復元は、PowerShell でのみサポートされています。UI の復元ワークフローを使用して作成する VM には、復元操作の完了後、これらのネットワーク構成は含まれません。詳細については、「[特別なネットワーク構成を持つ VM の復元](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations)」を参照してください。
-		- ロード バランサー構成 (内部および外部の) での仮想マシン
-		- 複数の予約済み IP アドレスを持つ仮想マシン
-		- 複数のネットワーク アダプターを持つ仮想マシン
+- マルチ DC 構成の一部であるドメイン コントローラー (DC) VM の復元は、PowerShell を通じてのみサポートされます。[マルチ DC ドメイン コントローラーの復元](backup-azure-restore-vms.md#restoring-domain-controller-vms)の詳細をご覧ください。
+- 次のような特殊なネットワーク構成を持つ仮想マシンの復元は、PowerShell でのみサポートされています。UI の復元ワークフローを使用して作成する VM には、復元操作の完了後、これらのネットワーク構成は含まれません。詳細については、「[特別なネットワーク構成を持つ VM の復元](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations)」を参照してください。
+    - ロード バランサー構成 (内部および外部の) での仮想マシン
+    - 複数の予約済み IP アドレスを持つ仮想マシン
+    - 複数のネットワーク アダプターを持つ仮想マシン
 
 ## VM 用のバックアップ資格情報コンテナーの作成
 
@@ -63,7 +65,7 @@ Azure 仮想マシン (VM) をバックアップするには、事前に 3 つ�
 
     ![Ibiza ポータル](./media/backup-azure-vms-prepare/Ibiza-portal-backup01.png)
 
-    >[AZURE.NOTE] サブスクリプションが最後にクラシック ポータルで使用された場合、サブスクリプションはクラシック ポータルで開かれる場合があります。このイベントでは、バックアップ資格情報コンテナーを作成するために、**[新規]**、**[Data Services]**、**[Recovery Services]**、**[バックアップ資格情報コンテナー]**、**[簡易作成]** の順にクリックします (下図を参照)。
+    >[AZURE.NOTE] サブスクリプションが最後にクラシック ポータルで使用された場合、サブスクリプションはクラシック ポータルで開かれる場合があります。このイベントでは、Backup コンテナーを作成するために、**[新規]**、**[Data Services]**、**[Recovery Services]**、**[Backup コンテナー]**、**[簡易作成]** の順にクリックします (下図を参照)。
 
     ![バックアップ資格情報コンテナーの作成](./media/backup-azure-vms-prepare/backup_vaultcreate.png)
 
@@ -71,13 +73,13 @@ Azure 仮想マシン (VM) をバックアップするには、事前に 3 つ�
 
 4. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。資格情報コンテナーは、保護する仮想マシンと同じリージョンにある必要があります。複数のリージョンに仮想マシンがある場合は、各リージョンでバックアップ資格情報コンテナーを作成する必要があります。バックアップ データを格納するストレージ アカウントを指定する必要はありません。バックアップ資格情報コンテナーと Azure Backup サービスはこれを自動的に処理します。
 
-5. **[サブスクリプション]** で、バックアップ資格情報コンテナーに関連付けるサブスクリプションを選択します。組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
+5. **[サブスクリプション]** で、Backup コンテナーに関連付けるサブスクリプションを選択します。組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
 
 6. **[資格情報コンテナーの作成]** をクリックします。バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。ポータルの下部にある状態通知を監視します。
 
     ![資格情報コンテナーのトースト通知の作成](./media/backup-azure-vms-prepare/creating-vault.png)
 
-7. コンテナーが正常に作成されたことを確認するメッセージが表示されています。**[復旧サービス]** ページに、コンテナーが **[アクティブ]** と表示されます。コンテナーを作成したら、必ず適切なストレージの冗長オプションを選択してください。詳細については、「[setting the storage redundancy option in the backup vault (バックアップ資格情報コンテナーのストレージ冗長オプションの設定)](backup-configure-vault.md#azure-backup---storage-redundancy-options)」をご覧ください。
+7. コンテナーが正常に作成されたことを確認するメッセージが表示されています。**[Recovery Services]** ページに、コンテナーが **[アクティブ]** と表示されます。コンテナーを作成したら、必ず適切なストレージの冗長オプションを選択してください。詳細については、「[setting the storage redundancy option in the backup vault (バックアップ資格情報コンテナーのストレージ冗長オプションの設定)](backup-configure-vault.md#azure-backup---storage-redundancy-options)」をご覧ください。
 
     ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-prepare/backup_vaultslist.png)
 
@@ -88,56 +90,83 @@ Azure 仮想マシン (VM) をバックアップするには、事前に 3 つ�
 
 ## ネットワーク接続
 
-バックアップ拡張機能が正常に機能するには、Azure パブリック IP アドレスへの接続が必要です。これは、Azure Storage エンドポイント (HTTP URL) に対して、VM のスナップショットを管理するコマンドを送信するためです。適切なインターネット接続を利用できない場合、VM からの HTTP 要求はタイムアウトになり、バックアップ操作は失敗します。
+拡張機能が VM スナップショットを管理するためには、Azure のパブリック IP アドレスへの接続が必要です。適切なインターネット接続を利用できない場合、VM からの HTTP 要求はタイムアウトになり、バックアップ操作は失敗します。(たとえば、ネットワーク セキュリティ グループ (NSG) を使用して) デプロイにアクセス制限が適用されている場合は、次のいずれかのオプションを選択して、バックアップ トラフィックの明確なパスを指定する必要があります。
 
-### NSG を使用したネットワーク制限
+- [Azure データ センターの IP の範囲をホワイトリストに登録する](http://www.microsoft.com/ja-JP/download/details.aspx?id=41653) - IP アドレスをホワイトリストに登録する手順に関する記事を参照してください。
+- トラフィックをルーティングする HTTP プロキシ サーバーをデプロイする。
 
-(たとえば、ネットワーク セキュリティ グループ (NSG) を使用して) デプロイメントにアクセス制限が適用されている場合、バックアップ コンテナーへのバックアップ トラフィックが影響を受けないようにするには、追加の手順を実行する必要があります。
-
-バックアップ トラフィック用のパスを指定するには、次の 2 つの方法があります。
-
-1. [Azure データ センターの IP 範囲](http://www.microsoft.com/ja-JP/download/details.aspx?id=41653)をホワイトリストに登録する。
-2. トラフィックをルーティングする HTTP プロキシをデプロイする。
-
-管理の容易さ、細かな制御、およびコストの間のトレードオフは次のとおりです。
+どのオプションを使用するか決める場合は、次に示す管理の容易さ、細かな制御、およびコストの間のトレードオフを考慮します。
 
 |オプション|長所|短所|
 |------|----------|-------------|
-|オプション 1: IP 範囲のホワイトリストへの登録| 追加のコストが発生しない。<br><br>NSG でアクセスを開くには、<i>Set-AzureNetworkSecurityRule</i> コマンドレットを使用する。 | 影響を受ける IP 範囲が時間の経過と共に変化するため、管理が複雑。<br>Storage だけでなく Azure 全体へのアクセスを提供。|
-|オプション 2: HTTP プロキシ| 許可するストレージ URL をプロキシで詳細に制御可能。<br>VM への単一ポイントのインターネット アクセス。<br>Azure の IP アドレスの変更による影響を受けない。| プロキシ ソフトウェアで VM を実行するための追加のコストが発生する。|
+|IP 範囲をホワイトリストに登録する| 追加のコストが発生しない。<br><br>NSG でアクセスを開くには、<i>Set-AzureNetworkSecurityRule</i> コマンドレットを使用する。 | 影響を受ける IP 範囲が時間の経過と共に変化するため、管理が複雑である。<br><br>Storage だけでなく Azure 全体へのアクセスを提供する。|
+|HTTP プロキシ| 許可するストレージ URL をプロキシで詳細に制御可能。<br>VM への単一ポイントのインターネット アクセス。<br>Azure の IP アドレスの変更による影響を受けない。| プロキシ ソフトウェアで VM を実行するための追加のコストが発生する。|
+
+### Azure データセンターの IP 範囲をホワイトリストに登録する
+
+Azure データ センターの IP 範囲をホワイトリストに登録する場合、IP 範囲の詳細と手順については、[Azure の Web サイト](http://www.microsoft.com/ja-JP/download/details.aspx?id=41653)を参照してください。
 
 ### VM のバックアップに HTTP プロキシを使用する
-VM をバックアップする際、HTTPS API を使用してスナップショット管理コマンドがバックアップ拡張機能から Azure Storage に送信されます。パブリック インターネットにアクセスできるように構成されるのはプロキシのみのため、このトラフィックは、拡張機能からプロキシを介してルーティングされる必要があります。
+VM をバックアップする際、バックアップ拡張機能は HTTPS API を使用してスナップショット管理コマンドを Azure Storage に送信します。パブリック インターネットにアクセスできるように構成されたコンポーネントは HTTP プロキシのみであるため、HTTP プロキシ経由でバックアップ拡張機能のトラフィックをルーティングします。
 
 >[AZURE.NOTE] 使用するプロキシ ソフトウェアについて推奨事項はありません。以降の構成手順と互換性があるプロキシを選択してください。
 
-次の例では、パブリック インターネットに送信されるすべての HTTP トラフィックにプロキシ VM を使用するようにアプリ VM を構成する必要があります。プロキシ VM は、仮想ネットワーク内の VM からの着信トラフィックを許可するように構成する必要があります。最後に、NSG (*NSG-lockdown*) には、プロキシ VM からの発信インターネット トラフィックを許可する新しいセキュリティ規則が必要です。
+次の図は、HTTP プロキシを使用するために必要な 3 つの構成手順を示しています。
+
+- アプリケーション VM は、パブリック インターネット宛てのすべての HTTP トラフィックをプロキシ VM 経由でルーティングします。
+- プロキシ VM では、仮想ネットワーク内の VM からの着信トラフィックを許可します。
+- NSF ロックダウンと呼ばれるネットワーク セキュリティ グループ (NSG) には、プロキシ VM からの発信インターネット トラフィックを許可するセキュリティ規則が必要です。
 
 ![HTTP プロキシ デプロイメントを使用した NSG の図](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
 
-**A) 発信方向のネットワーク接続を許可する:**
+HTTP プロキシを使用してパブリック インターネットとの通信を行うには、次の手順を実行します。
 
-1. Windows コンピューターの場合、管理者特権でのコマンド プロンプトで、次のコマンドを実行します。
+#### 手順 1.発信方向のネットワーク接続を構成する
+###### Windows マシンの場合
+次の手順により、ローカル システム アカウントのプロキシ サーバー構成が設定されます。
 
-    ```
-    netsh winhttp set proxy http://<proxy IP>:<proxy port>
-    ```
-    これにより、コンピューター全体のプロキシ構成が設定され、すべての発信 HTTP/ HTTPS トラフィックに使用されます。
+1. [PsExec](https://technet.microsoft.com/sysinternals/bb897553) をダウンロードします。
+2. 管理者特権のプロンプトで、次のコマンドを実行します。
 
-2. Linux コンピューターの場合、次の行を ```/etc/environment``` ファイルに追加します。
+     ```
+     psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"
+     ```
+    Internet Explorer のウィンドウが開きます。
+3. [ツール]、[インターネット オプション]、[接続]、[LAN の設定] の順に進みます。
+4. システム アカウントのプロキシ設定を確認します。プロキシの IP アドレスとポートを設定します。 
+5. Internet Explorer を閉じます。
 
-    ```
-    http_proxy=http://<proxy IP>:<proxy port>
-    ```
+これにより、コンピューター全体のプロキシ構成が設定され、すべての発信 HTTP/ HTTPS トラフィックに使用されます。
+   
+現在のユーザー アカウント (ローカル システム アカウントではなく) にプロキシ サーバーを設定した場合は、次のスクリプトを使用して、SYSTEMACCOUNT にそれらを適用します。
 
-  次の行を ```/etc/waagent.conf``` ファイルに追加します。
+```
+   $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
+   Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
+   Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
+   $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+   Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
+   Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
+```
 
-    ```
-    HttpProxy.Host=<proxy IP>
-    HttpProxy.Port=<proxy port>
-    ```
+>[AZURE.NOTE] プロキシ サーバーのログに "(407) プロキシ認証が必要です" というメッセージが記録されている場合は、認証が正しく設定されているか確認します。
 
-**B) プロキシ サーバーで着信接続を許可する:**
+######Linux マシンの場合 
+
+次の行を ```/etc/environment``` ファイルに追加します。
+
+```
+http_proxy=http://<proxy IP>:<proxy port>
+```
+
+次の行を ```/etc/waagent.conf``` ファイルに追加します。
+   
+```
+HttpProxy.Host=<proxy IP>
+HttpProxy.Port=<proxy port>
+```
+
+#### 手順 2.プロキシ サーバーで着信接続を許可する
 
 1. プロキシ サーバーで Windows ファイアウォールを開きます。ファイアウォールにアクセスする最も簡単な方法は、"セキュリティが強化された Windows ファイアウォール" を検索することです。
 
@@ -148,6 +177,7 @@ VM をバックアップする際、HTTPS API を使用してスナップショ�
     ![新しいルールの作成](./media/backup-azure-vms-prepare/firewall-02.png)
 
 3. **新規の受信の規則ウィザード**の **[規則の種類]** で **[カスタム]** を選択し、**[次へ]** をクリックします。
+
 4. **プログラム**の選択ページで、**[すべてのプログラム]** を選択し、**[次へ]** をクリックします。
 
 5. **[プロトコルおよびポート]** ページで、次の情報を入力して、**[次へ]** をクリックします。
@@ -160,16 +190,16 @@ VM をバックアップする際、HTTPS API を使用してスナップショ�
 
     ウィザードの残りの部分では、[次へ] をクリックして最後まで進んだら、この規則に名前を付けます。
 
-**C) NSG に例外の規則を追加する:**
+#### 手順 3.NSG に例外の規則を追加する
 
 Azure PowerShell コマンド プロンプトで、次のコマンドを入力します。
+
+次のコマンドは、例外を NSG に追加します。この例外により、10.0.0.5 の任意のポートから、ポート 80 (HTTP) または 443 (HTTPS) 上の任意のインターネット アドレスに TCP トラフィックを送信できます。パブリック インターネットで特定のポートが必要な場合は、必ずそのポートも ```-DestinationPortRange``` に追加します。
 
 ```
 Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
 Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
 ```
-
-このコマンドでは、NSG に例外を追加します。これにより、10.0.0.5 の任意のポートから、ポート 80 (HTTP) または 443 (HTTPS) 上の任意のインターネット アドレスに TCP トラフィックを送信できます。パブリック インターネット上の特定のポートを対象にする必要がある場合は、そのポートも ```-DestinationPortRange``` に追加します。
 
 *例で使用されている名前は、デプロイメントに適した詳細情報に置き換えてください。*
 
@@ -208,4 +238,4 @@ VM が実行されている場合、バックアップ拡張機能がインス�
 - [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

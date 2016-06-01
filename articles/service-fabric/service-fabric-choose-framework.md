@@ -34,7 +34,7 @@ Web サーバー、Azure Cloud Services の worker ロールなど、ほとん�
 
 Reliable Services は Service Fabric と排他的でステートフルの場合もあります。Service Fabric は Reliable Collection を使用してサービスに直接維持されます。状態はレプリケーションによって高可用になり、パーティションによって分散されます。いずれも Service Fabric で自動的に管理されます。
 
-[Reliable Services の詳細](service-fabric-reliable-services-introduction)、または[最初の Reliable Services を作成する](service-fabric-reliable-services-quick-start.md)場合の概要を参照してください。
+[Reliable Services の詳細](service-fabric-reliable-services-introduction.md)、または[最初の Reliable Services を作成する](service-fabric-reliable-services-quick-start.md)場合の概要を参照してください。
 
 ## Reliable Actor
 
@@ -45,4 +45,4 @@ Reliable Actors 自体が Reliable Services 上に構築されたアプリケー
 ## 次のステップ
 [Reliable Actors の詳細](service-fabric-reliable-actors-introduction.md)と[最初の Reliable Actors サービスを作成する](service-fabric-reliable-actors-get-started.md)場合の概要を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

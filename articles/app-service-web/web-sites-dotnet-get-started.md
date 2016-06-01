@@ -240,4 +240,4 @@ ASP.NET Web アプリが Azure App Service で動作するようになったら�
 
 	Azure ポータルでリソース グループを操作する方法については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](../resource-group-portal.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!------HONumber=AcomDC_0504_2016-->

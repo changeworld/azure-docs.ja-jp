@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/27/2016" 
+	ms.date="05/04/2016" 
 	ms.author="awills"/>
 
 
@@ -31,10 +31,10 @@
 
 以下のように、Application Insights でアプリの[概要ブレード](app-insights-dashboards.md)から Analytics を開きます。
 
-![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-insights-analytics/001.png)
+![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-insights-analytics-tour/001.png)
 
 	
-## [take](app-insights-analytics-aggregations.md#take): n 個の行を表示する
+## [take](app-insights-analytics-reference.md#take-operator): n 個の行を表示する
 
 ユーザーの操作 (通常、Web アプリが受信する HTTP 要求) を記録するデータ ポイントは、`requests` という名前のテーブルに格納されます。各行は、アプリの Application Insights SDK から受信したテレメトリ データ ポイントです。
 
@@ -56,7 +56,7 @@
 
 > [AZURE.NOTE] 列の先頭をクリックすると、Web ブラウザーで使用できる結果の順序を変更できます。ただし、大きな結果セットの場合、ブラウザーにダウンロードされる行の数が制限されることに注意してください。このように並べ替えると、実際の最高または最低の項目が表示されないことがあります。その場合は、`top` または `sort` 演算子を使用する必要があります。
 
-## [top](app-insights-analytics-aggregations.md#top) と [sort](app-insights-analytics-aggregations.md#sort)
+## [top](app-insights-analytics-reference.md#top-operator) と [sort](app-insights-analytics-reference.md#sort-operator)
 
 `take` は結果の簡単なサンプルを取得するのに便利ですが、テーブルの行は任意の順序で表示されます。指定した順序で表示するには、(サンプルに対して) `top` を使用するか、(テーブル全体に対して) `sort` を使用します。
 
@@ -84,9 +84,9 @@
 テーブル ビューの列ヘッダーを使用して、画面上の結果を並べ替えることもできます。ただし、言うまでもなく、`take` または `top` を使用してテーブルの一部のみを取得した場合、並べ替えるのは取得したレコードのみとなります。
 
 
-## [project](app-insights-analytics-aggregations.md#project): 列の選択、名前変更、計算を行う
+## [project](app-insights-analytics-reference.md#project-operator): 列の選択、名前変更、計算を行う
 
-必要な列だけを選択する場合は、次のように [`project`](app-insights-analytics-aggregations.md#project) を使用します。
+必要な列だけを選択する場合は、次のように [`project`](app-insights-analytics-reference.md#project-operator) を使用します。
 
 ```AIQL
 
@@ -117,11 +117,13 @@
 * `1d` (数字の 1 の後に "d" が付加されている) は 1 日を意味する期間リテラルです。期間リテラルにはこの他にも `12h`、`30m`、`10s`、`0.01s` などがあります。
 * `floor` (エイリアスは `bin`) は、指定した基準値の最も近い倍数に値を切り捨てます。したがって、`floor(aTime, 1s)` の場合、最も近い秒数に時間を切り捨てます。
 
-[式](app-insights-analytics-scalars.md)には、一般的な演算子 (`+` や `-` など) をすべて含めることができ、各種の便利な関数があります。
+[式](app-insights-analytics-reference.md#scalars)には、一般的な演算子 (`+` や `-` など) をすべて含めることができ、各種の便利な関数があります。
 
-## [extend](app-insights-analytics-aggregations.md#extend): 列を計算する
+    
 
-単に列を既存の列に追加する場合は、以下のように [`extend`](app-insights-analytics-aggregations.md#extend) を使用します。
+## [extend](app-insights-analytics-reference.md#extend-operator): 列を計算する
+
+単に列を既存の列に追加する場合は、以下のように [`extend`](app-insights-analytics-reference.md#extend-operator) を使用します。
 
 ```AIQL
 
@@ -130,9 +132,53 @@
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-既存の列をすべて保持する場合に、[`extend`](app-insights-analytics-aggregations.md#extend) を使用すると [`project`](app-insights-analytics-aggregations.md#project) よりも詳細度が低くなります。
+既存の列をすべて保持する場合に、[`extend`](app-insights-analytics-reference.md#extend-operator) を使用すると [`project`](app-insights-analytics-reference.md#project-operator) よりも詳細度が低くなります。
 
-## [summarize](app-insights-analytics-aggregations.md#summarize): 行のグループをまとめる
+
+## 入れ子になったオブジェクトへのアクセス
+
+入れ子になったオブジェクトに簡単にアクセスできます。たとえば、例外ストリームの構造化されたオブジェクトは次のようになります。
+
+![result](./media/app-insights-analytics-tour/520.png)
+
+関心のあるプロパティを選択することで、これをフラット化できます。
+
+```AIQL
+
+    exceptions | take 10
+    | extend method1 = details[0].parsedStack[1].method
+```
+
+## カスタム プロパティと測定値
+
+アプリケーションで[カスタム ディメンション (プロパティ) とカスタム測定値](app-insights-api-custom-events-metrics.md#properties)をイベントにアタッチする場合、これらは `customDimensions` および `customMeasurements` オブジェクトで表示されます。
+
+
+たとえば、アプリに以下が含まれているものとします。
+
+```C#
+
+    var dimensions = new Dictionary<string, string> 
+                     {{"p1", "v1"},{"p2", "v2"}};
+    var measurements = new Dictionary<string, double>
+                     {{"m1", 42.0}, {"m2", 43.2}};
+	telemetryClient.TrackEvent("myEvent", dimensions, measurements);
+```
+
+Analytics でこれらの値を抽出するには、次のようにします。
+
+```AIQL
+
+    customEvents
+    | extend p1 = customDimensions.p1, 
+      m1 = todouble(customMeasurements.m1) // cast numerics
+
+``` 
+
+> [AZURE.NOTE] [メトリックス エクスプローラー](app-insights-metrics-explorer.md)では、任意の種類のテレメトリにアタッチされているすべてのカスタム測定値は、`TrackMetric()` を使用して送信されたメトリックと共にメトリックス ブレードにまとめて表示されます。一方、Analytics では、カスタム測定値は実行されたテレメトリの種類にまだアタッチされていて、メトリックは独自の `metrics` ストリームに表示されます。
+
+
+## [summarize](app-insights-analytics-reference.md#summarize-operator): 行のグループをまとめる
 
 `Summarize` を使用すると、行のグループに対して指定の*集計関数*が適用されます。
 
@@ -170,7 +216,7 @@
 また、あるグループ内の行数を実際にカウントする必要がある場合のために、`count()` 集計 (およびカウント操作) もあります。
 
 
-さまざまな[集計関数](app-insights-analytics-aggregations.md)が用意されています。
+さまざまな[集計関数](app-insights-analytics-reference.md#aggregations)が用意されています。
 
 
 ## 結果のグラフ表示
@@ -196,7 +242,7 @@
 結果を時間で並べ替えていませんが (テーブル表示でわかるように)、グラフには常に正しい順序で日時が表示されることに注目してください。
 
 
-## [where](app-insights-analytics-aggregations.md#where): 条件に基づいてフィルター処理する
+## [where](app-insights-analytics-reference.md#where-operator): 条件に基づいてフィルター処理する
 
 Application Insights 監視をアプリの[クライアント](app-insights-javascript.md)側とサーバー側の両方に対して設定した場合、データベース内のテレメトリの一部はブラウザーからのものです。
 
@@ -218,7 +264,7 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
  * `==`、`<>`: 等しい、等しくない
  * `=~`、`!=`: 等しい、等しくない (大文字と小文字が区別されない文字列の場合)。文字列比較演算子にはさらに多くの種類があります。
 
-詳細については、[スカラー式](app-insights-analytics-scalars.md)に関する記述を参照してください。
+詳細については、[スカラー式](app-insights-analytics-reference.md#scalars)に関する記述を参照してください。
 
 ### イベントのフィルター処理
 
@@ -230,7 +276,7 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
     | where isnotempty(resultCode) and toint(resultCode) >= 400
 ```
 
-`responseCode` は文字列型であるため、数値比較では[キャスト](app-insights-analytics-scalars.md#casts)する必要があります。
+`responseCode` は文字列型であるため、数値比較では[キャスト](app-insights-analytics-reference.md#casts)する必要があります。
 
 さまざまな応答をまとめる場合は、次のように指定します。
 
@@ -339,7 +385,7 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 
 
-## [パーセンタイル](app-insights-analytics-aggregations.md#percentiles)
+## [パーセンタイル](app-insights-analytics-reference.md#percentiles)
 
 ここでは、セッションのパーセンタイルごとの期間範囲を見てみます。
 
@@ -385,7 +431,7 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 ![](./media/app-insights-analytics-tour/190.png)
 
 
-## [Join](app-insights-analytics-aggregations.md#join)
+## [Join](app-insights-analytics-reference.md#join)
 
 要求や例外も含む、いくつかのテーブルにアクセスできます。
 
@@ -404,7 +450,7 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 
 
-## [let](app-insights-analytics-aggregations.md#let): 結果を変数に代入する
+## [let](app-insights-analytics-reference.md#let-clause): 結果を変数に代入する
 
 上記の式の部分を分割する場合は、[let](./app-insights-analytics-syntax.md#let-statements) を使用します。結果は変わりません。
 
@@ -423,4 +469,4 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

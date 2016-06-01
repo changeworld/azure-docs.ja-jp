@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/02/2016" 
+	ms.date="05/12/2016" 
 	ms.author="billmath"/>
 
 
@@ -168,4 +168,4 @@ Azure Authenticator アプリから個々のアカウントを削除するには
 
 ![Remove account](./media/multi-factor-authentication-azure-authenticator/remove.png)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

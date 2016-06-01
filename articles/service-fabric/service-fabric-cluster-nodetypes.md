@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/17/2016"
+   ms.date="05/02/2016"
    ms.author="chackdan"/>
 
 
@@ -66,7 +66,7 @@ IP アドレスとポートを検出する手順を次に示します。
 
 ポートは、VM スケール セットのインスタンスの昇順で割り当てられます。そのため、FrontEnd のノードの種類の例では、5 つのインスタンスの各ポートは次のようになります。ここでは、VM スケール セットのインスタンスと同じマッピングを行う必要があります。
 
-|**VMSS インスタンス**|**ポート**|
+|**VM スケール セットのインスタンス**|**ポート**|
 |-----------------------|--------------------------|
 |FrontEnd\_0|3389|
 |FrontEnd\_1|3390|
@@ -133,4 +133,4 @@ Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG nam
 [NATRules]: ./media/service-fabric-cluster-nodetypes/NATRules.png
 [RDP]: ./media/service-fabric-cluster-nodetypes/RDP.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

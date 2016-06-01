@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 
@@ -66,25 +66,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
 > [AZURE.TIP] このチュートリアルで使用する CDN プロファイルが既にある場合は[手順 3](#step-3-create-a-new-cdn-endpoint) に進みます。
 
-**新しい CDN プロファイルを作成するには**
-
-1. [Azure 管理ポータル](https://portal.azure.com)の左上の **[新規]** をクリックします。**[新規]** ブレードで、**[メディア + CDN]**、**[CDN]** の順に選択します。
-
-    新しい CDN プロファイル ブレードが表示されます。
-
-    ![新しい CDN プロファイル][new-cdn-profile]
-
-2. CDN プロファイルの名前を入力します。
-
-3. **[価格レベル]** を選択するか、既定値を使用します。
-
-4. **リソース グループ**を選択または作成します。これは、ストレージ アカウントと同じリソース グループである必要はありません。
-
-5. この CDN プロファイルの**サブスクリプション**を選択します。この場合は、このチュートリアルでの便宜上、ストレージ アカウントと同じサブスクリプションである必要があります。
-
-6. **[場所]** を選択します。これは、CDN プロファイル情報が格納される Azure の場所です。CDN エンドポイントの場所には影響しません。ストレージ アカウントと同じ場所である必要はありません。
-
-7. **[作成]** ボタンをクリックして、新しいプロファイルを作成します。
+[AZURE.INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
 ## ステップ 3: 新しい CDN エンドポイントを作成する
 
@@ -148,10 +130,9 @@ CDN に既にキャッシュされているオブジェクトは、オブジェ�
 
 [create-new-storage-account]: ./media/cdn-create-a-storage-account-with-cdn/CDN_CreateNewStorageAcct.png
 
-[new-cdn-profile]: ./media/cdn-create-a-storage-account-with-cdn/cdn-new-profile.png
 [cdn-profile-settings]: ./media/cdn-create-a-storage-account-with-cdn/cdn-profile-settings.png
 [cdn-new-endpoint-button]: ./media/cdn-create-a-storage-account-with-cdn/cdn-new-endpoint-button.png
 [cdn-add-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-a-storage-account-with-cdn/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

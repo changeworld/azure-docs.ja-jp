@@ -92,7 +92,7 @@ Azure AD Connect Health では、次の組み込みのロールをサポート�
 |Contributor| 共同作成者は、ポータルからの***すべての情報の表示*** (例: アラートの表示) と Azure AD Connect Health 内の***設定の変更*** (例: 電子メール通知) を実行できます。|
 |Reader| 閲覧者は、ポータルから Azure AD Connect Health 内の***すべての情報の表示*** (例: アラートの表示) を実行できます。|
 
-上記以外のすべてのロール (「ユーザー アクセス管理者」 や「DevTest Lab ユーザー」など) は、ポータル エクスペリエンスで利用できる場合でも、Azure AD Connect Health 内のアクセスに影響することはありません。
+上記以外のすべてのロール ("ユーザー アクセス管理者" や "DevTest Labs ユーザー" など) は、ポータル エクスペリエンスで利用できる場合でも、Azure AD Connect Health 内のアクセスに影響することはありません。
 
 #### アクセス スコープ
 
@@ -148,4 +148,4 @@ Azure AD Connect Health Role の [ロール ベースの Access Control] 部分�
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

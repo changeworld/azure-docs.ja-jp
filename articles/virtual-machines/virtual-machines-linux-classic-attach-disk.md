@@ -19,26 +19,21 @@
 
 # データ ディスクを Linux 仮想マシンに接続する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。[Resource Manager デプロイ モデルを使用してデータディスクを接続する](virtual-machines-linux-add-disk.md)方法を参照してください。
 
-
-空のディスクと、データが含まれているディスクのどちらも接続できます。ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。ディスクを接続した後に、初期化して、使用できる状態にする必要があります。
+空のディスクと、データが含まれているディスクのどちらも Azure VM に接続できます。どちらの種類のディスクも、Azure ストレージ アカウントの .vhd ファイルです。Linux マシンへのディスクの追加では、ディスクを接続した後、初期化とフォーマットを行って使用できるようにする必要があります。この記事では、空のディスクと、データが含まれているディスクの両方を Azure VM に接続し、新しいディスクを初期化してフォーマットする方法について詳しく説明します。
 
 > [AZURE.NOTE] 仮想マシンのデータを格納するには、1 つ以上の個別のディスクを使用することをお勧めします。Azure の仮想マシンを作成するとき、オペレーティング システム ディスクと一時ディスクが表示されます。**永続データの格納に一時ディスクを使用しないでください。** 名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。一時ディスクは通常、Azure Linux Agent によって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt** )に自動的にマウントされます。一方で、データ ディスクには Linux カーネルによって `/dev/sdc` のような名前が付けられる場合があります。その場合、このリソースをパーティション分割し、フォーマットしてからマウントする必要があります。詳細については、「[Azure Linux エージェント ユーザー ガイド][Agent]」を参照してください。
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-linux.md)]
 
-## 方法: Linux での新しいデータ ディスクの初期化
+## Linux での新しいデータ ディスクの初期化
 
-下記のように適切なデバイス ID を使用して、同じ手順で複数のデータ ディスクを初期化できます。
-
-1. 仮想マシンへの接続詳細については、[Linux を実行する仮想マシンにログオンする方法][Logon]に関するページを参照してください。
-
-
+1. VM に SSH 接続します。詳細については、「[Linux を実行する仮想マシンにログオンする方法][Logon]」を参照してください。
 
 2. 次に、データ ディスクの初期化のためにデバイスの ID を検索する必要があります。この作業を実行する 2 つの方法があります。
 
-	a) SSH のウィンドウで、次のコマンドを入力します。
+	a) 次のコマンドのように、ログの SCSI デバイスを検索します。
 
 			$sudo grep SCSI /var/log/messages
 
@@ -46,37 +41,34 @@
 
 	表示されたメッセージで、最後に追加されたデータ ディスクの識別子を確認できます。
 
-	![ディスク メッセージに取得](./media/virtual-machines-linux-classic-attach-disk/DiskMessages.png)
+	![ディスク メッセージに取得](./media/virtual-machines-linux-classic-attach-disk/scsidisklog.png)
 
 	または
 
 	b) `lsscsi` コマンドを使用してデバイスの ID を検索します。`lsscsi` は、`yum install lsscsi` (Red Hat ベースのディストリビューション) または `apt-get install lsscsi` (Debian ベースのディストリビューション) のいずれかでインストールできます。検索対象のディスクは、その _LUN_ (**論理ユニット番号**) で検索できます。たとえば、ディスクに割り当てた _LUN_ は、`azure vm disk list <virtual-machine>` から以下のように簡単に確認することができます。
 
-			~$ azure vm disk list ubuntuVMasm
+			~$ azure vm disk list TestVM
 			info:    Executing command vm disk list
 			+ Fetching disk images
 			+ Getting virtual machines
 			+ Getting VM disks
 			data:    Lun  Size(GB)  Blob-Name                         OS
 			data:    ---  --------  --------------------------------  -----
-			data:         30        ubuntuVMasm-2645b8030676c8f8.vhd  Linux
-			data:    1    10        test.VHD
-			data:    2    30        ubuntuVMasm-76f7ee1ef0f6dddc.vhd
+			data:         30        TestVM-2645b8030676c8f8.vhd  Linux
+			data:    0    100       TestVM-76f7ee1ef0f6dddc.vhd
 			info:    vm disk list command OK
 
 	これを、同じサンプル仮想マシンに対する `lsscsi` の出力と比較します。
 
-			adminuser@ubuntuVMasm:~$ lsscsi
+			ops@TestVM:~$ lsscsi
 			[1:0:0:0]    cd/dvd  Msft     Virtual CD/ROM   1.0   /dev/sr0
 			[2:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sda
 			[3:0:1:0]    disk    Msft     Virtual Disk     1.0   /dev/sdb
 			[5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc
-			[5:0:0:1]    disk    Msft     Virtual Disk     1.0   /dev/sdd
-			[5:0:0:2]    disk    Msft     Virtual Disk     1.0   /dev/sde
 
 	各行の組にある最後の数字が _LUN_ です。詳細については、「`man lsscsi`」を参照してください。
 
-3. SSH のウィンドウで、次のコマンドを入力して、新しいデバイスを作成します。
+3. プロンプトで、次のコマンドを入力して、新しいデバイスを作成します。
 
 		$sudo fdisk /dev/sdc
 
@@ -84,46 +76,48 @@
 4. 表示されるプロンプトで「**n**」と入力すると、新しいパーティションが作成されます。
 
 
-	![Create new device](./media/virtual-machines-linux-classic-attach-disk/DiskPartition.png)
+	![Create new device](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
 
 5. 表示されるプロンプトで、パーティションをプライマリ パーティションにするには「**p**」を、最初のパーティションにするには「**1**」を、シリンダーの既定値をそのまま使用するには Enter キーを押します。システムによっては、シリンダーではなく、最初と最後のセクターの既定値が表示される場合があります。これらの既定値をそのまま使用することもできます。
 
 
-	![Create partition](./media/virtual-machines-linux-classic-attach-disk/DiskCylinder.png)
+	![Create partition](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
 
 
 
 6. 「**p**」を入力すると、パーティション分割されたディスクに関する詳細情報が表示されます。
 
 
-	![ディスク情報の表示](./media/virtual-machines-linux-classic-attach-disk/DiskInfo.png)
+	![ディスク情報の表示](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
 
 
 
 7. 「**w**」と入力すると、ディスクの設定が書き込まれます。
 
 
-	![Write the disk changes](./media/virtual-machines-linux-classic-attach-disk/DiskWrite.png)
+	![Write the disk changes](./media/virtual-machines-linux-classic-attach-disk/fdiskwritedisk.png)
 
-8. 新しいパーティションにファイル システムを作成します。デバイス ID にパーティション番号 (1) を追加します。たとえば、/dev/sdc1 に ext4 パーティションを作成するには、次のように入力します。
+8. これで、新しいパーティションにファイル システムを作成できます。パーティション番号をデバイス ID に追加します (次の例では `/dev/sdc1`)。次の例では、ext4 パーティションを /dev/sdc1 に作成します。
 
 		# sudo mkfs -t ext4 /dev/sdc1
 
-	![Create file system](./media/virtual-machines-linux-classic-attach-disk/DiskFileSystem.png)
+	![Create file system](./media/virtual-machines-linux-classic-attach-disk/mkfsext4.png)
 
-	>[AZURE.NOTE] SUSE Linux Enterprise 11 では、ext4 ファイル システムへのアクセスは読み取り専用のみサポートされていることに注意してください。これらのシステムには ext4 ではなく ext3 として新しいファイル システムの書式設定することをお勧めします。
+	>[AZURE.NOTE] SuSE Linux Enterprise 11 システムでは、ext4 ファイル システムへのアクセスは読み取り専用のみサポートされていることに注意してください。これらのシステムには ext4 ではなく ext3 として新しいファイル システムの書式設定することをお勧めします。
 
 
-9. 新しいファイル システムをマウントするディレクトリを作成します。たとえば、次のコマンドを入力します。
+9. 次のように、新しいファイル システムをマウントするディレクトリを作成します。
 
 		# sudo mkdir /datadrive
 
 
-10. 次のコマンドを入力してドライブをマウントします。
+10. 最後に、次のように、ドライブをマウントできます。
 
 		# sudo mount /dev/sdc1 /datadrive
 
 	これで、データ ディスクを **/datadrive** として使用する準備ができました。
+	
+	![ディレクトリの作成とディスクのマウント](./media/virtual-machines-linux-classic-attach-disk/mkdirandmount.png)
 
 
 11. 新しいドライブを /etc/fstab に追加します。
@@ -149,7 +143,7 @@
 
 		UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
 
-	または、SUSE Linux に基づいたシステムでは、わずかに異なる形式を使用する必要がある場合があります。
+	または、SuSE Linux に基づいたシステムでは、わずかに異なる形式を使用する必要がある場合があります。
 
 		/dev/disk/by-uuid/33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext3   defaults   1   2
 
@@ -177,4 +171,4 @@
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-classic-log-on.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

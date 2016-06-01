@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/04/2016"
+	ms.date="05/25/2016"
 	ms.author="sdanie"/>
 
 # Azure API Management での最初の API の管理
@@ -105,7 +105,7 @@ API の構成は、Azure クラシック ポータルから発行者ポータル
 
 電卓 API を構成するには、次の手順を実行します。
 
-1. **[URL から]** をクリックし、**[仕様ドキュメント URL]** テキスト ボックスに「****http://calcapi.cloudapp.net/calcapi.json**」と入力し、**[Swagger]** ラジオ ボタンをクリックします。
+1. **[URL から]** をクリックし、**[仕様ドキュメント URL]** テキスト ボックスに「**http://calcapi.cloudapp.net/calcapi.json**」と入力し、**[Swagger]** ラジオ ボタンをクリックします。
 2. **[Web API URL サフィックス]** テキスト ボックスに「**calc**」と入力します。
 3. **[製品 (オプション)]** ボックスをクリックし、**[スターター]** を選択します。
 4. **[保存]** をクリックして、API をインポートします。
@@ -245,4 +245,4 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 [api-management-]: ./media/api-management-get-started/api-management-.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

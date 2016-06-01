@@ -1,5 +1,5 @@
 <properties
-	pageTitle="常に暗号化 - データベース暗号化を使用して Azure SQL Database で機密データを保護する"
+	pageTitle="Always Encrypted - データベース暗号化を使用して Azure SQL Database で機密データを保護する"
 	description="SQL Database の機密データをわずか数分で保護します。"
 	keywords="データの暗号化, 暗号化キー, クラウドの暗号化"	
 	services="sql-database"
@@ -15,10 +15,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="05/09/2016"
 	ms.author="sstein"/>
 
-# 常に暗号化 - データ暗号化を使用して SQL Database で機密データを保護し、Azure Key Vault で暗号化キーを格納する
+# Always Encrypted - データ暗号化を使用して SQL Database で機密データを保護し、Azure Key Vault で暗号化キーを格納する
 
 > [AZURE.SELECTOR]
 - [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)
@@ -69,8 +69,8 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 7. **[クライアント ID]** をコピーします (この値は、後でコードで必要になります)。
 8. キーのセクションで、**[時間の選択]** ドロップダウンを **[1 年]** に設定します (以下で格納した後にキーはコピーします)。
 11. スクロール ダウンし、**[アプリケーションの追加]** をクリックします。
-12. **[表示]** の設定を **[Microsoft アプリ]** のままにして、**[Windows Azure サービス管理]** を探して選択して、チェックマークをクリックして続行します。
-13. **[Windows Azure サービス管理]** の行の **[デリゲートされたアクセス許可]** ドロップダウンをクリックし、**[Azure Service 管理へのアクセス]** を選択します。
+12. **[表示]** の設定を **[Microsoft アプリ]** のままにして、**[Microsoft Azure サービス管理]** を探して選択して、チェックマークをクリックして続行します。
+13. **[Microsoft Azure サービス管理]** の行の **[デリゲートされたアクセス許可]** ドロップダウンをクリックし、**[Azure Service 管理へのアクセス]** を選択します。
 14. (下部の) **[保存]** をクリックします。
 15. 保存が完了したら、キーの値を探して **[キー]** セクションにコピーします (この値は、後でコードで必要になります)。 
 
@@ -689,4 +689,4 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 - [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
 - [Always Encrypted に関するブログ](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

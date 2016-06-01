@@ -93,7 +93,7 @@ bm.Properties["MachineID"] = "POS_1";
 トピックにメッセージを送信する最も簡単な方法は、[CreateMessageSender](https://msdn.microsoft.com/library/azure/hh322659.aspx) を使用して [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) インスタンスから [MessageSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesender.aspx) オブジェクトを直接作成することです。
 
 ```
-MessageSender sender = factory.CreateMessageSender("DataCollectionQueue");
+MessageSender sender = factory.CreateMessageSender("DataCollectionTopic");
 sender.Send(bm);
 ```
 
@@ -119,7 +119,7 @@ catch (Exception e)
 
 ## サブスクリプション フィルター
 
-今のところ、このシナリオでは、トピックに送信されるすべてのメッセージを、登録されているすべてのサブスクリプションで使用できます。ここでの重要なフレーズは "使用可能にする" です。 Service Bus のサブスクリプションにはトピックに送信されたすべてのメッセージが含まれますが、これらのメッセージの一部のみを仮想サブスクリプション キューにコピーできます。これを行うには、サブスクリプション *フィルター*を使用します。サブスクリプションを作成するときは、メッセージのシステム プロパティ (例: [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)) とアプリケーション プロパティの両方によって動作する SQL92 スタイルの述語の形式でフィルター式を提供できます。前のコードの **StoreName** はその例です。
+今のところ、このシナリオでは、トピックに送信されるすべてのメッセージが、登録されているすべてのサブスクリプションで使用可能になっています。ここでの重要なフレーズは "使用可能にする" です。 Service Bus のサブスクリプションにはトピックに送信されたすべてのメッセージが含まれますが、これらのメッセージの一部のみを仮想サブスクリプション キューにコピーできます。これを行うには、サブスクリプション *フィルター*を使用します。サブスクリプションを作成するときは、メッセージのシステム プロパティ (例: [Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)) とアプリケーション プロパティの両方によって動作する SQL92 スタイルの述語の形式でフィルター式を提供できます。前のコードの **StoreName** はその例です。
 
 これを示すためにシナリオを発展させ、2 番目の店を小売りシナリオに追加します。両店舗のすべての POS 端末からの売上データを一元的な在庫管理システムにルーティングする必要があるのは同じですが、ダッシュボード ツールを使用する店のマネージャーはその店の実績だけに関心があります。サブスクリプション フィルターを使用してこれを実現できます。POS 端末はメッセージを発行するときにメッセージの **StoreName** アプリケーション プロパティを設定することを思い出してください。たとえば **Redmond** と **Seattle** という 2 つの店があると、Redmond 店の POS 端末は売上データ メッセージの **StoreName** を **Redmond** に設定し、Seattle 店の POS 端末は **StoreName** を **Seattle** に設定します。Redmond 店のマネージャーは、Redmond 店の POS 端末のデータにだけ関心があります。システムは次のようになります。
 
@@ -150,4 +150,4 @@ namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard", dashboar
 
 POS 小売シナリオでキューを使用する方法については、「[Service Bus キューを使用するアプリケーションを作成する](service-bus-create-queues.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

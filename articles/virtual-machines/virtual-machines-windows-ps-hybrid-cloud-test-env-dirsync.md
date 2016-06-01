@@ -11,7 +11,7 @@
 <tags 
 	ms.service="virtual-machines-windows" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="Windows" 
+	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/01/2016" 
@@ -181,4 +181,4 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
 - [実稼働環境](http://technet.microsoft.com/library/dn635310.aspx)で、このワークロードをデプロイします。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="03/04/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 # ハイブリッド ID ソリューションの多要素認証要件の決定
@@ -58,4 +58,4 @@ MFA とその機能についてよく知らない場合、このセクション�
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

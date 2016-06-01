@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="mblythe"
+	manager="paulettm"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="02/04/2016"
+	ms.date="05/17/2016"
 	ms.author="heidist" />
 
 # 管理 API: バージョン 2015-02-28
@@ -828,4 +828,4 @@ api-key、特に管理者キーは、必ず機密データとして扱ってく�
 
 ありません。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->
