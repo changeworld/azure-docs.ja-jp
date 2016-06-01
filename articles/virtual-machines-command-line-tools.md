@@ -466,6 +466,8 @@ info:   vm shutdown command OK
 
 このコマンドは、仮想マシン イメージを作成します。ユーザーがカスタム .vhd ファイルを BLOB ストレージにアップロードした後、そこから仮想マシン イメージが作成されます。この仮想マシン イメージを使って、仮想マシンを作成できます。Location パラメーターと OS パラメーターは必須です。
 
+>[AZURE.NOTE]現在、このコマンドは、静的な .vhd ファイルのアップロードのみをサポートしています。動的な .vhd ファイルをアップロードするには、[Azure VHD utilities for Go (Go 向け Azure VHD ユーティリティ)](https://github.com/Microsoft/azure-vhd-utils-for-go)を使用します。
+
 一部のシステムでは、プロセスごとにファイル記述子の制限が適用されます。制限を超えると、ファイル記述子の制限エラーが表示されます。-p &lt;number> パラメーターを使用してコマンドを再度実行し、並列アップロードの最大数を減らすことができます。並列アップロードの既定の最大数は 96 です。
 
 	~$ azure vm image create mytestimage ./Sample.vhd -o windows -l "West US"
@@ -2348,4 +2350,4 @@ Virtual Network の詳細を表示します。
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

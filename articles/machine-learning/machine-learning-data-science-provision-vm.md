@@ -13,13 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="bradsev" />
 
 
 # Microsoft データ サイエンス仮想マシンのプロビジョニング
-
-## はじめに
 
 Microsoft データ サイエンス用仮想マシンは、プレインストールの Azure 仮想マシン (VM) イメージです。データ分析と機械学習用に一般的に使用されているいくつかのツールで構成されています。含まれているツールは、次のとおりです。
 
@@ -111,10 +109,10 @@ VM が作成され、プロビジョニングされた後は、VM にインス�
 分析に R を使用できるように、VM に Microsoft R Server Developer エディションがインストールされています。Microsoft R Server は、サポート対象のスケーラブルで安全な R に基づく、広範にデプロイできるエンタープライズ クラスの分析プラットフォームです。さまざまなビッグ データ統計、予測モデリング、および機械学習の機能をサポートする R Server は、幅広い分析機能 (探索、分析、視覚化、モデリングなど) をサポートしています。オープン ソース R を使用、拡張することで、Microsoft R Server は R スクリプト、関数、CRAN パッケージと完全に互換性のある形式で、エンタープライズ規模でデータを分析します。また、Microsoft R Server でデータの並列処理やチャンク処理を追加することにより、オープン ソース R のインメモリの制限に対処します。これにより、ユーザーはメイン メモリーに収まる容量よりはるかに大きいデータに対し分析を実行できます。さらに、IDE for R が VM にパッケージングされており、[スタート] メニューまたはデスクトップ上のアイコン "Revolution R Enterprise 8.0" をクリックしてアクセスできます。[RStudio](http://www.rstudio.com) のような他の IDE をダウンロードして使用することもできます。
 
 ### Python
-Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。Visual Studio 2015 Community 版でインストールされている、または IDLE や Spyder など、Anaconda でバンドルされている IDE の 1 つである Python Tools for Visual Studio (PTVS) を利用できます。検索バーで検索して (**Win** + **S** キー)、いずれかの IDE を起動できまます。**注**: Anaconda Python 2.7 および 3.5 で Python Tools for Visual Studio をポイントするには、各バージョン用のカスタム環境を作成する必要があります。それには、Visual Studio 2015 Community 版で [ツール] -> [Python Tools] -> [Python Environments] に移動し、[+ Custom] をクリックして環境パスを設定します。Anaconda Python 2.7 のインストール先は C:\\Anaconda、Anaconda Python 3.5 は c:\\Anaconda\\envs\\py35 です。詳細な手順については、[PTVS のドキュメント](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it)を参照してください。
+Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。Visual Studio 2015 Community 版でインストールされている、または IDLE や Spyder など、Anaconda でバンドルされている IDE の 1 つである Python Tools for Visual Studio (PTVS) を利用できます。検索バーで検索して (**Win** + **S** キー)、いずれかの IDE を起動できまます。**注**: Anaconda Python 2.7 および 3.5 で Python Tools for Visual Studio をポイントするには、各バージョン用のカスタム環境を作成する必要があります。それには、Visual Studio 2015 Community 版で [ツール]、[Python Tools]、[Python Environments] の順に移動し、[+ Custom] をクリックして環境パスを設定します。Anaconda Python 2.7 のインストール先は C:\\Anaconda、Anaconda Python 3.5 は c:\\Anaconda\\envs\\py35 です。詳細な手順については、[PTVS のドキュメント](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it)を参照してください。
 
 ### Jupyter Notebook
-Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter ノートブックにも付属しています。Jupyter ノートブック サーバーは、Python 2、Python 3、R カーネルがあらかじめ構成されています。Notebook サーバーにアクセスするためのブラウザーを起動する Jupyter Notebook という名前のデスクトップ アイコンがあります。リモート デスクトップを通じて VM を利用している場合は、Jupyter ノートブック サーバーにアクセスするために、[https://localhost:9999/](https://localhost:9999/) を使用することもできます (注: 証明書の警告が表示されても続行します)。サンプルのノートブックがパッケージングされています (Python と R にそれぞれ 1 つずつ)。前の手順で作成したパスワードを使用して Jupyter ノートブックを認証すると、ノートブックのホーム ページにサンプルへのリンクを表示できます。
+Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter ノートブックにも付属しています。Jupyter ノートブック サーバーは、Python 2、Python 3、R カーネルがあらかじめ構成されています。Notebook サーバーにアクセスするためのブラウザーを起動する Jupyter Notebook という名前のデスクトップ アイコンがあります。リモート デスクトップを通じて VM を利用している場合は、Jupyter ノートブック サーバーにアクセスするために、[https://localhost:9999/](https://localhost:9999/) を使用することもできます (注: 証明書の警告が表示されても続行してください)。サンプルのノートブックがパッケージングされています (Python と R にそれぞれ 1 つずつ)。前の手順で作成したパスワードを使用して Jupyter ノートブックを認証すると、ノートブックのホーム ページにサンプルへのリンクを表示できます。
 
 ### Visual Studio 2015 Community エディション
 Visual Studio Community エディションが VM にインストールされています。これは、Microsoft の人気のある IDE の無料版で、評価用または非常に小規模なチーム用に使用できます。ライセンス条項は、[ここ](https://www.visualstudio.com/support/legal/mt171547)で確認することができます。Visual Studio を開くには、デスクトップ アイコンをダブルクリックするか、**[スタート]** メニューを使用します。**Win** + **S** キーを押し、「Visual Studio」と入力することで、プログラムを検索することもできます。C#、Python などの言語でプロジェクトを作成できます。また、インストールされたプラグインにより、Azure Data Catalog、Azure HDInsight (Hadoop、Spark)、Azure Data Lake などの Azure サービスを簡単に操作できるようになります。
@@ -128,7 +126,7 @@ SQL Server の制限付きバージョンも、Visual Studio Community エディ
 VM には複数の Azure ツールがインストールされます。
 - Azure SDK のドキュメントにアクセスするためのデスクトップ ショートカットがあります。 
 - **AzCopy** は、Microsoft Azure ストレージ アカウントとの間でのデータ移動に使用します。 
-- **Azure ストレージ エクスプ ローラー**は、Azure ストレージ アカウントに保存されているオブジェクトを参照するために使用します。 
+- **Azure ストレージ エクスプローラー**は、Azure ストレージ アカウントに保存されているオブジェクトを参照するために使用します。 
 - **Microsoft Azure PowerShell** は、PowerShell スクリプト言語で Azure リソースを管理するためのツールです。やはり VM にインストールされます。 
 
 ###Power BI
@@ -146,7 +144,7 @@ VM には複数の Azure ツールがインストールされます。
 * [スタート] メニューをクリックし、メニューに一覧表示されたツールを確認して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを検討できます。
 * **C:\\Program Files\\Microsoft\\MRO-for-RRE\\8.0\\R-3.2.2\\library\\RevoScaleR\\demoScripts** に移動し、エンタープライズ規模でのデータ分析をサポートする R で RevoScaleR ライブラリを使用して、サンプルを入手します。  
 * 「[データ サイエンス仮想マシンでできる 10 のこと](http://aka.ms/dsvmtenthings)」を参照してください。
-* [データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を体系的に使用して、エンド ツー エンドの分析ソリューションを構築する方法を確認します。
-* [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com) では、Cortana Intelligence Suite を使用して機械学習やデータ分析のサンプルを入手できます。アクセスしやすいように、[スタート] メニューや仮想マシンのデスクトップにもアイコンが用意されています。 
+* [データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
+* [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、Cortana Intelligence Suite を使用して機械学習やデータ分析のサンプルを入手できます。アクセスしやすいように、[スタート] メニューや仮想マシンのデスクトップにもアイコンが用意されています。 
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

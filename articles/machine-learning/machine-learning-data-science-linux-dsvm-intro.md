@@ -13,12 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/05/2016"
+	ms.date="05/10/2016"
 	ms.author="gokuma;bradsev" />
 
 # Linux データ サイエンス仮想マシンのプロビジョニング 
 
-## はじめに
 
 Linux データ サイエンス仮想マシンは、プレインストールの Azure 仮想マシン (VM) イメージです。データ分析と機械学習用に一般的に使用されているいくつかのツールで構成されています。含まれている主なソフトウェア コンポーネントは次のとおりです。
 
@@ -204,11 +203,11 @@ Microsoft SQL Server の ODBC ドライバー パッケージには、次の 2 �
 
 **bcp** - bcp ユーティリティでは、Microsoft SQL Server のインスタンスとユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。SQL Server のテーブルに多数の新しい行をインポートする、またはテーブルからデータ ファイルにデータをエクスポートする場合には、BCP ユーティリティを使用できます。テーブルにデータをインポートするには、そのテーブルに対して作成されたフォーマット ファイルを使用するか、テーブルの構造と列の有効なデータの種類を把握する必要があります。
 
-詳細については、「[Connecting with bcp (bcp を使用した接続)](https://msdn.microsoft.com/library/hh568446.aspx)」を参照してください。
+詳細については、「[bcp による接続](https://msdn.microsoft.com/library/hh568446.aspx)」を参照してください。
 
 **sqlcmd** - sqlcmd ユーティリティを使用すると、コマンド プロンプトで Transact-SQL ステートメント、システム プロシージャ、およびスクリプト ファイルを入力できます。このユーティリティでは、ODBC を使用して、Transact-SQL バッチを実行します。
 
-詳細については、「[Connecting with sqlcmd (sqlcmd を使用した接続)](https://msdn.microsoft.com/library/hh568447.aspx)」を参照してください。
+詳細については、「[sqlcmd による接続](https://msdn.microsoft.com/library/hh568447.aspx)」を参照してください。
 
 >[AZURE.NOTE] このユーティリティには、Linux と Windows プラットフォームでいくつか違いがあります。詳細については、上記のドキュメント ページを参照してください。
 
@@ -325,7 +324,7 @@ xgboost コマンド ラインを実行するには、シェルで次のコマ�
 
 .model ファイルは、指定したディレクトリに書き込まれます。このデモの例については、[こちら](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification)を参照してください。
 
-xgboost の詳細については、[xgboost ドキュメント ページ](https://xgboost.readthedocs.org/en/latest/)および xgboost の [Github リポジトリ](https://github.com/dmlc/xgboost)を参照してください。
+xgboost の詳細については、[xgboost ドキュメント ページ](https://xgboost.readthedocs.org/en/latest/)および xgboost の [GitHub リポジトリ](https://github.com/dmlc/xgboost)を参照してください。
 
 #### Rattle
 Rattle (R Analytical Tool To Learn Easily) を使用すると、GUI ベースのデータ探索とモデリングにより、R で非常に簡単にデータ マイニングを開始できます。Rattle では、データの統計の概要を視覚的に表示し、簡単にモデル化できるようにデータを変換して、データから教師なしと教師ありの両方のモデルを作成し、モデルのパフォーマンスを視覚的に表示して、新しいデータセットをスコア付けできます。また、UI での操作をレプリケートする R コードを生成することもできます。生成したコードは、R で直接実行することや、詳細な分析の開始点として使用することができます。
@@ -355,7 +354,7 @@ Rattle と R を終了できます。これで、生成された R スクリプ�
 引き続き学習や調査に役立つ手順をいくつか紹介します。
 
 * この記事で説明しているツールを試して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを確認します。VM にインストールされているツールの基本的な概要と詳細情報を入手できる場所は、仮想マシン内のシェルで *dsvm-more-info* を実行して確認することもできます。  
-* [データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を体系的に使用して、エンド ツー エンドの分析ソリューションを構築する方法を確認します。
+* [データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
 * [Cortana Analytics ギャラリー](http://gallery.cortanaanalytics.com)では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。 
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/30/2016"
+   ms.date="05/02/2016"
    ms.author="sahajs;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのデータベース保護
@@ -86,7 +86,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 ```
 
-透過的なデータ暗号化は、[Azure クラシック ポータル][]のデータベース設定から有効にすることもできます。詳細については、「[Transparent Data Encryption (TDE) の概要](sql-data-warehouse-encryption-tde-tsql.md)」をご覧ください。
+透過的なデータ暗号化は、[Azure ポータル][]のデータベース設定から有効にすることもできます。詳細については、「[Transparent Data Encryption (TDE) の概要](sql-data-warehouse-encryption-tde-tsql.md)」をご覧ください。
 
 ## 監査
 
@@ -108,9 +108,9 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 [アクセス許可]: https://msdn.microsoft.com/library/ms191291.aspx
 [ストアド プロシージャ]: https://msdn.microsoft.com/library/ms190782.aspx
 [透過的なデータ暗号化]: http://go.microsoft.com/fwlink/?LinkId=526242
-[Azure クラシック ポータル]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 
 <!--Other Web references-->
 [Azure ポータルでのロール ベースのアクセス制御]: http://azure.microsoft.com/documentation/articles/role-based-access-control-configure.aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

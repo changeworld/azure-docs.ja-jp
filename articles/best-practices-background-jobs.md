@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -19,8 +19,7 @@
 
 # バックグラウンド ジョブのガイダンス
 
-![パターンおよびプラクティスのロゴ](media/best-practices-background-jobs/pnp-logo.png)
-
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 ## 概要
 
@@ -321,4 +320,4 @@ Web ロールと worker ロールが開始、実行、停止される過程に�
 - [Azure キューと Service Bus キューの比較](./service-bus/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - [クラウド サービスの診断を有効にする方法](./cloud-services/cloud-services-dotnet-diagnostics.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

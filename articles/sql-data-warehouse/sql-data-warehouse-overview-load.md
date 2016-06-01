@@ -1,6 +1,6 @@
    <properties
-   pageTitle="SQL Data Warehouse へのデータのロード | Microsoft Azure"
-   description="SQL Data Warehouse にデータをロードするための一般的なシナリオを学習します"
+   pageTitle="Azure SQL Data Warehouse へのデータの読み込み | Microsoft Azure"
+   description="SQL Data Warehouse にデータを読み込むための一般的なシナリオについて説明します。これには PolyBase、Azure Blob Storage、フラット ファイル、およびディスク発送の使用が含まれます。サード パーティ製のツールを使用することもできます。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="lodipalm"
@@ -13,167 +13,102 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/28/2016"
+   ms.date="05/17/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
-# SQL Data Warehouse へのデータのロード
-SQL Data Warehouse には、データをロードするために以下のような多数のオプションが用意されています。
+# Azure SQL Data Warehouse へのデータの読み込み
 
-- PolyBase
-- Azure Data Factory
-- BCP コマンドライン ユーティリティ
-- SQL Server Integration Services (SSIS)
-- サード パーティ製のデータ ロード ツール
+データを SQL Data Warehouse に読み込むためのシナリオ オプションと推奨事項の概要。
 
-SQL Data Warehouse では上記のすべてのメソッドを使用できますが、PolyBase が Azure BLOB Storage からの読み込みを透過的に並列処理する機能を使用すると、データの読み込みが最速になります。[PolyBase を使用して読み込む][]方法を参照してください。また、ユーザーの多くがオンプレミス ソースから 100 GB 単位から 10 TB 単位の初期読み込みを要求した場合のように、以下のセクションでは、初期データ読み込みについていくつかのガイダンスを提供します。
+データを読み込むとき、通常、最も大変なのは読み込み対象のデータを準備する作業です。Azure では、多くのサービスの共通データ ストアとして Azure Blob Storage を使用し、Azure Data Factory で Azure サービス間の通信とデータ移動を調整することで、この読み込み作業が簡単になっています。こうしたプロセスは、超並列処理 (MPP) によって Azure Blob Storage から SQL Data Warehouse へのデータ読み込みを並列処理する PolyBase テクノロジと統合されています。
 
-## SQL Server から SQL Data Warehouse への初期ロード
-オンプレミスの SQL Server インスタンスから SQL Data Warehouse にロードをするには、以下の手順をお勧めします。
+サンプル データベースを読み込むためのチュートリアルについては、[サンプル データベースの読み込み][]に関するページをご覧ください。
 
-1. SQL Server データをフラット ファイルに **BCP** する。
-2. **AZCopy** または **インポート/エクスポート** (大きめのデータセットの場合) を使用して、ファイルを Azure に移動する。
-3. PolyBase を構成して、自身のストレージ アカウントからファイルを読み込む。
-4. 新しいテーブルを作成し、**PolyBase** でデータを読み込む。
+## Azure Blob Storage からの読み込み
+PolyBase を使用して Azure Blob Storage からデータを読み込むと、SQL Data Warehouse へのデータ インポートが最速になります。PolyBase では、SQL Data Warehouse の超並列処理 (MPP) 設計を使用して、Azure Blob Storage からのデータ読み込みを並列処理します。PolyBase を使用するには、T-SQL コマンドまたは Azure Data Factory パイプラインを使用します。
 
-次のセクションでは、各ステップをより詳しく説明し、処理の例を提供します。
+### 1\.PolyBase と T-SQL を使用する
 
-> [AZURE.NOTE] SQL Server などのシステムからデータを移動する前に、ドキュメントの[スキーマの移行][]と[コードの移行][]の記事を確認してください。
+読み込みプロセスの概要:
 
-## BCP によるファイルのエクスポート
+2. データを UTF-8 として書式設定します (現在 PolyBase では UTF-16 はサポートされていません)。
+2. データを Azure Blob Storage に移動し、テキスト ファイルに格納します。
+3. SQL Data Warehouse で外部オブジェクトを構成して、データの場所とデータ形式を定義します。
+4. 新しいデータベース テーブルへのデータ読み込みを並列処理する T-SQL コマンドを実行します。
+<!-- 5. Schedule and run a loading job. --> 
 
-Azure へのファイルの移動の準備として、ファイルをフラット ファイルにエクスポートする必要があります。これには BCP コマンドライン ユーティリティを使用すると最適です。まだユーティリティがない場合は、[Microsoft Command Line Utilities for SQL Server][] (SQL Server の Microsoft コマンド ライン ユーティリティ) からダウンロードできます。サンプルの BCP コマンドは、次のようになります。
+チュートリアルについては、「[Load data from Azure blob storage to SQL Data Warehouse (PolyBase) (Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase))][]」をご覧ください。
 
-```sql
-bcp "select top 10 * from <table>" queryout "<Directory><File>" -c -T -S <Server Name> -d <Database Name> -- Export Query
-or
-bcp <table> out "<Directory><File>" -c -T -S <Server Name> -d <Database Name> -- Export Table
-```
+### 2\.Azure Data Factory を使用する
 
-スループットを最大化するために、個々のテーブルに対して、または 1 つのテーブル内の個々のパーティションに対して、BCP コマンドを複数同時に実行して、プロセスの並列化を試みることができます。これにより、BCP で使用される CPU を、BCP が実行されているサーバー内の複数のコアに分散できます。SQL DW または PDW システムから抽出する場合は、BCP コマンドに引数 -q (引用符で囲まれた識別子) を追加する必要があります。また、使用環境で Active Directory を使用していない場合は、-U と -P を追加してユーザー名とパスワードを指定する必要があります。
+PolyBase をさらに簡単に使用できるように、PolyBase を使用する Azure Data Factory パイプラインを作成して、Azure Blob Storage から SQL Data Warehouse にデータを読み込むことができます。この場合、T-SQL オブジェクトを定義する必要がないため、すばやく構成できます。外部データをインポートせずに、そのデータに対してクエリを実行する必要がある場合は、T-SQL を使用します。
 
-さらに、PolyBase を使用してロードする際には、PolyBase が UTF-16 をまだサポートしておらず、すべてのファイルが UTF-8 でなければならないことに注意してください。これは、BCP コマンドで "-c" フラグを使用することで容易に解決し、また、フラット ファイルを下記のコードで UTF-16 から UTF-8 に変換することもできます。
+読み込みプロセスの概要:
 
-```PowerShell
-Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name> -Encoding utf8
-```
+2. データを UTF-8 として書式設定します (現在 PolyBase では UTF-16 はサポートされていません)。
+2. データを Azure Blob Storage に移動し、テキスト ファイルに格納します。
+3. Azure Data Factory パイプラインを作成して、データを取り込みます。PolyBase オプションを使用します。
+4. パイプラインのスケジュールを設定し、実行します。
 
-ファイルへのデータのエクスポートに成功したら、ファイルを Azure に移動します。これは、次のセクションで述べる AZCopy もしくは "インポート/エクスポート" サービスで実行可能です。
-
-## AZCopy またはインポート/エクスポートを使用した Azure へのロード
-5 から 10 テラバイトもの範囲かそれ以上のデータを移動する場合、Microsoft のディスク発送サービスの[インポート/エクスポート][]を使用してデータ移動を行うことをお勧めします。しかし、我々が調べたところ、テラバイトまでの範囲なら、AZCopy で公開インターネットを使って問題なくデータを移動できることがわかっています。この処理は ExpressRoute でスピードアップもしくは拡張できます。
-
-次のステップで、AZCopy を使って、オンプレミスから Azure ストレージ アカウントにデータを移動する方法を詳しく説明します。同じリージョンに Azure ストレージ アカウントがない場合、[Azure Storage のドキュメント][]に従ってアカウントを 1 つ作成できます。異なるリージョンのストレージ アカウントからもデータをロードできます。しかし、この場合は最適なパフォーマンスとなりません。
-
-> [AZURE.NOTE] 本ドキュメントでは、すでに AZCopy コマンド ライン ユーティリティがインストールされているものとしており、その場合、AZCopy は Powershell で実行可能です。AZCopy がインストールされていない場合は、[AZCopy インストール手順][]に従ってください。
-
-BCP を使って作成されたファイルのセットができたら、Azure powershell から、または、powershell スクリプトの実行により、AZCopy を簡単に実行できます。AZCopy を実行する際のプロンプトのおおよその形式は次のようになります。
-
-```
-AZCopy /Source:<File Location> /Dest:<Storage Container Location> /destkey:<Storage Key> /Pattern:<File Name> /NC:256
-```
-
-AZCopy でのロードについては、基本に加えて、以下のベスト プラクティスをお勧めします。
+チュートリアルについては、「[Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (Azure Data Factory)][]」をご覧ください。
 
 
-+ **同時接続**: 一度に実行する AZCopy の操作の数を増やすことに加え、/NC パラメーターの設定でロード先への同時接続数を開くことにより、AZCopy 操作自体の並行処理を促進できます。/NC パラメーターは 512 まで高い値に設定できますが、最適なデータ転送は 256 であることがわかっており、構成に最適なパラメーターの数値を試行して見つけることをお勧めします。
+## SQL Server からの読み込み
+SQL Server から SQL Data Warehouse にデータを読み込むには、Integration Services (SSIS) を使用するか、フラット ファイルを転送するか、ディスクを Microsoft に送付します。他の読み込みプロセスの概要とチュートリアルへのリンクをご覧ください。
 
-+ **Express Route**: 既に述べたように、AZCopy の処理は express route を有効にするとスピードアップできます。Express Route の概要と構成手順は、「[ExpressRoute に関するドキュメント][]」を参照してください。
+SQL Server から SQL Data Warehouse への完全なデータ移行を計画するには、[移行の概要][]に関するページをご覧ください。
 
-+ **フォルダー構造**: PolyBase での転送を容易にするため、各テーブルが必ずその独自のフォルダーにマップされるようにしてください。これにより、PolyBase でのロードを後で行う際に、手順が最小限に簡素化されます。とは言っても、テーブルがフォルダー内で複数のファイルや、さらにはサブ ディレクトリに分割されていたとしても問題はありません。
+### Integration Services (SSIS) の使用
+Integration Services (SSIS) パッケージを使用して SQL Server に読み込む場合は、SQL Server を移行元として、また SQL Data Warehouse を移行先として使用するようにパッケージを更新します。この手軽で簡単な方法は、読み込みプロセスを移行せず、クラウドに既にあるデータを使用する場合に適しています。ただし、SSIS では読み込みの並列処理は実行されないため、PolyBase を使用するよりも読み込み速度が遅くなります。
 
+読み込みプロセスの概要:
 
-## PolyBase の構成
+1. 移行元として SQL Server インスタンスを指定し、移行先として SQL Data Warehouse データベースを指定するように、Integration Services パッケージを変更します。
+2. スキーマを SQL Data Warehouse に移行します (その場所にまだ存在しない場合)。
+3. SQL Data Warehouse でサポートされているデータ型のみを使用するように、パッケージのマッピングを変更します。
+3. パッケージのスケジュールを設定し、実行します。
 
-データが Azure ストレージ BLOB に存在するようになったら、SQL Data Warehouse インスタンスへ PolyBase を使用してデータをインポートします。以下の手順は構成のみであり、手順の多くは SQL Data Warehouse インスタンス、ユーザー、ストレージ アカウントごとに一回だけ完了する必要があります。これらの手順は、「[PolyBase を使用したデータのロード][]」ドキュメントで詳しく説明しています。
+チュートリアルについては、「[Load data from SQL Server to Azure SQL Data Warehouse (SSIS) (SQL Server から Azure SQL Data Warehouse へのデータの読み込み (SSIS))][]」をご覧ください。
 
-1. **データベース マスター キーの作成** この操作はデータベースごとに一回だけ完了する必要があります。
+### AZCopy の使用 (データが 10 TB 未満の場合に推奨)
+データのサイズが 10 TB 未満の場合、SQL Server からフラット ファイルにデータをエクスポートし、ファイルを Azure Blob Storage にコピーして、PolyBase を使って SQL Data Warehouse に読み込むことができます。
 
-2. **データベース スコープの資格情報の作成** この操作は新しい資格情報/ユーザーを作成する場合にのみ必要であり、それ以外は事前に作成された資格情報を使用できます。
+読み込みプロセスの概要:
 
-3. **外部ファイル形式の作成** 外部ファイル形式も同様に再利用でき、新しいファイル形式をアップロードするときのみ作成が必要です。
+1. bcp コマンドライン ユーティリティを使用して、SQL Server からフラット ファイルにデータをエクスポートします。
+2. AZCopy コマンドライン ユーティリティを使用して、フラット ファイルから Azure Blob Storage にデータをコピーします。
+3. PolyBase を使用して SQL Data Warehouse に読み込みます。
 
-4. **外部データ ソースの作成** ストレージ アカウントについては、同じコンテナーからロードする場合は、外部データ ソースを使用できます。"LOCATION" パラメーターでは、フォーマットのロケーション： 'wasbs://mycontainer@ test.blob.core.windows.net' を使用してください。
+チュートリアルについては、「[Load data from Azure blob storage to SQL Data Warehouse (PolyBase) (Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase))][]」をご覧ください。
 
-```sql
--- Creating master key
-CREATE MASTER KEY;
+### bcp の使用
+データ量が少ない場合は、bcp を使用して、Azure SQL Data Warehouse に直接読み込むことができます。
 
--- Creating a database scoped credential
-CREATE DATABASE SCOPED CREDENTIAL <Credential Name>
-WITH
-    IDENTITY = '<User Name>'
-,   Secret = '<Azure Storage Key>'
-;
+読み込みプロセスの概要:
+1. bcp コマンドライン ユーティリティを使用して、SQL Server からフラット ファイルにデータをエクスポートします。
+2. bcp を使用して、フラット ファイルから SQL Data Warehouse にデータを直接読み込みます。
 
--- Creating external file format (delimited text file)
-CREATE EXTERNAL FILE FORMAT text_file_format
-WITH
-(
-    FORMAT_TYPE = DELIMITEDTEXT
-,   FORMAT_OPTIONS  (
-                        FIELD_TERMINATOR ='|'
-                    )
-);
-
---Creating an external data source
-CREATE EXTERNAL DATA SOURCE azure_storage
-WITH
-(
-    TYPE = HADOOP
-,   LOCATION ='wasbs://<Container>@<Blob Path>'
-,   CREDENTIAL = <Credential Name>
-)
-;
-```
-
-ストレージ アカウントが正しく構成されたら、SQL Data Warehouse へのデータのロードに進みます。
-
-## PolyBase を使用したデータのロード
-PolyBase を構成した後は、ストレージ内のデータを参照する外部テーブルを作成し、そのデータを SQL Data Warehouse 内の新しいテーブルにマップするだけで、データを SQL Data Warehouse に直接ロードできます。これは以下の簡単な 2 つのコマンドだけで実行できます。
-
-1. "CREATE EXTERNAL TABLE" コマンドを使用して、データの構造を定義します。データの状態をすばやく効率的に取得できるように、SQL Server テーブルを SSMS でスクリプティングし、外部テーブルとの相違を解決する際は手動にて調整することをお勧めします。Azure に外部テーブルを作成したら、外部テーブルはデータがアップデートされたり、データが追加されても、同じロケーションを参照しつづけます。  
-
-```sql
--- Creating external table pointing to file stored in Azure Storage
-CREATE EXTERNAL TABLE <External Table Name>
-(
-    <Column name>, <Column type>, <NULL/NOT NULL>
-)
-WITH
-(   LOCATION='<Folder Path>'
-,   DATA_SOURCE = <Data Source>
-,   FILE_FORMAT = <File Format>      
-);
-```
-
-2. "CREATE TABLE...AS SELECT" ステートメントでデータをロードします。
-
-```sql
-CREATE TABLE <Table Name>
-WITH
-(
-	CLUSTERED COLUMNSTORE INDEX,
-	DISTRIBUTION = <HASH(<Column Name>)>/<ROUND_ROBIN>
-)
-AS
-SELECT  *
-FROM    <External Table Name>
-;
-```
-
-より詳細の SELECT ステートメントを使用すると、テーブルから行のサブセクションのロードもできることに注意してください。しかし、PolyBase は今回はストレージ アカウントに追加のコンピューティングを転送してくれるわけではないので、SELECT ステートメントでサブセクションをロードする場合は、データセット全体をロードするよりも早くなることはありません。
-
-`CREATE TABLE...AS SELECT` ステートメントの他に、"INSERT...INTO" ステートメントで外部テーブルから既存テーブルにデータをロードすることもできます。
-
-##  新しくロードしたデータの統計を作成する
-
-Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。統計の詳細については、開発トピック グループの「[統計][]」トピックを参照してください。この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します。
+チュートリアルについては、「[SQL Server から Azure SQL Data Warehouse へのデータの読み込み (フラット ファイル)][]」をご覧ください。
 
 
-```sql
-create statistics [<name>] on [<Table Name>] ([<Column Name>]);
-create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
-```
+### Import/Export の使用 (データが 10 TB を超える場合に推奨)
+10 TB を超えるデータを Azure に移動する場合は、Microsoft のディスク発送サービス [Import/Export][] を使用することをお勧めします。
+
+読み込みプロセスの概要
+2. bcp コマンド ライン ユーティリティを使用して、SQL Server から、転送可能なディスクのフラット ファイルにデータをエクスポートします。
+3. ディスクを Microsoft に送付します。
+4. Microsoft がデータを SQL Data Warehouse に読み込みます
+
+
+## 推奨事項
+
+パートナーの多くが読み込みソリューションを提供しています。詳細については、[ソリューション パートナー][]の一覧をご覧ください。
+
+
+非リレーショナル ソースのデータを SQL Data Warehouse に読み込む場合は、事前にそのデータを行と列に変換しておく必要があります。変換したデータはデータベースに格納しなくても、テキスト ファイルに保存できます。
+
+新しく読み込んだデータの統計を作成してください。Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリで最高のパフォーマンスを得るには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。詳細については、[統計][]に関するページをご覧ください。
+
 
 ## 次のステップ
 開発に関するその他のヒントについては、[開発の概要][]に関するページをご覧ください。
@@ -181,26 +116,21 @@ create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
 <!--Image references-->
 
 <!--Article references-->
-[Load data with bcp]: sql-data-warehouse-load-with-bcp.md
-[PolyBase を使用したデータのロード]: sql-data-warehouse-get-started-load-with-polybase.md
-[PolyBase を使用して読み込む]: sql-data-warehouse-get-started-load-with-polybase.md
-[solution partners]: sql-data-warehouse-solution-partners.md
+[Load data from Azure blob storage to SQL Data Warehouse (PolyBase) (Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase))]: sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+[Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (Azure Data Factory)]: sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md
+[Load data from SQL Server to Azure SQL Data Warehouse (SSIS) (SQL Server から Azure SQL Data Warehouse へのデータの読み込み (SSIS))]: sql-data-warehouse-load-from-sql-server-with-integration-services.md
+[SQL Server から Azure SQL Data Warehouse へのデータの読み込み (フラット ファイル)]: sql-data-warehouse-load-from-sql-server-with-bcp.md
+[Load data from SQL Server to Azure SQL Data Warehouse (AZCopy)]: sql-data-warehouse-load-from-sql-server-with-azcopy.md
+
+[サンプル データベースの読み込み]: sql-data-warehouse-load-sample-databases.md
+[移行の概要]: sql-data-warehouse-overview-migrate.md
+[ソリューション パートナー]: sql-data-warehouse-integrate-solution-partners.md
 [開発の概要]: sql-data-warehouse-overview-develop.md
-[スキーマの移行]: sql-data-warehouse-migrate-schema.md
-[コードの移行]: sql-data-warehouse-migrate-code.md
 [統計]: sql-data-warehouse-develop-statistics.md
 
 <!--MSDN references-->
-[supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx
-[copy activity]: https://msdn.microsoft.com/library/dn835035.aspx
-[SQL Server destination adapter]: https://msdn.microsoft.com/library/ms141237.aspx
-[SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
 <!--Other Web references-->
-[AZCopy インストール手順]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-use-azcopy/
-[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/ja-JP/download/details.aspx?id=36433
-[インポート/エクスポート]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-import-export-service/
-[Azure Storage のドキュメント]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/
-[ExpressRoute に関するドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
+[Import/Export]: https://azure.microsoft.com/documentation/articles/storage-import-export-service/
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/01/2015"
+   ms.date="04/29/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用してストレージ アカウントを管理する
@@ -60,7 +60,10 @@ StorSimple デバイスで使用できるストレージ アカウントには�
 
 ストレージ アカウントの保存中、サービスは、クラウド サービス プロバイダーとの通信を試みます。この時点で、資格情報と指定したアクセス マテリアルが認証されます。ストレージ アカウントは、認証が成功した場合にのみ作成されます。認証に失敗した場合は、適切なエラー メッセージが表示されます。
 
-> [AZURE.NOTE]ストレージ アカウントを追加する手順は、使用する StorSimple ソフトウェアのバージョンによって異なります。使用する StorSimple のバージョンの手順に必ず従ってください。
+Azure ポータルで作成された Resource Manager のストレージ アカウントは StorSimple でもサポートされます。ボリューム コンテナーを作成する際、Resource Manager のストレージ アカウントは、ドロップダウン リストに選択対象として表示されません。Azure クラシック ポータルで作成されたストレージ アカウントだけが表示されます。次に説明するストレージ アカウントの追加手順に従って、Resource Manager のストレージ アカウントを追加する必要があります。
+
+> [AZURE.NOTE] ストレージ アカウントを追加する手順は、使用する StorSimple ソフトウェアのバージョンによって異なります。使用する StorSimple のバージョンの手順に必ず従ってください。
+
 
 [AZURE.INCLUDE [add-a-storage-account-update1](../../includes/storsimple-configure-new-storage-account-u1.md)]
 
@@ -87,7 +90,7 @@ StorSimple デバイスで使用できるストレージ アカウントには�
   
 ## ストレージ アカウントの削除
 
-> [AZURE.IMPORTANT]ストレージ アカウントは、ボリューム コンテナーで使用されていない場合にのみ削除できます。ストレージ アカウントがボリューム コンテナーで使用されている場合は、最初にボリューム コンテナーを削除し、次に関連するストレージ アカウントを削除します。
+> [AZURE.IMPORTANT] ストレージ アカウントは、ボリューム コンテナーで使用されていない場合にのみ削除できます。ストレージ アカウントがボリューム コンテナーで使用されている場合は、最初にボリューム コンテナーを削除し、次に関連するストレージ アカウントを削除します。
 
 #### ストレージ アカウントを削除するには
 
@@ -103,7 +106,7 @@ StorSimple デバイスで使用できるストレージ アカウントには�
 
 セキュリティ上の理由から、データ センターではキー ローテーションが必要になることがよくあります。
 
-> [AZURE.NOTE]次のキー ローテーション情報と交代手順は、Microsoft Azure ストレージ アカウントのみに適用されます。別のクラウド サービス プロバイダーを使用している場合は、そのプロバイダーのダッシュ ボードからストレージ アカウント キーを管理できます。
+> [AZURE.NOTE] 次のキー ローテーション情報と交代手順は、Microsoft Azure ストレージ アカウントのみに適用されます。別のクラウド サービス プロバイダーを使用している場合は、そのプロバイダーのダッシュ ボードからストレージ アカウント キーを管理できます。
  
 ストレージ アカウントは、各 Microsoft Azure サブスクリプションにつき 1 つまたは複数作成できます。これらのアカウントへのアクセスは、各ストレージ アカウントのサブスクリプションとアクセス キーによって制御されます。
 
@@ -151,4 +154,4 @@ StorSimple Manager サービスにこの変更を認識させるには、StorSim
 - [StorSimple のセキュリティの詳細](storsimple-security.md)
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="リソース マネージャー テンプレートで Key Vault シークレットを使用する | Microsoft Azure"
+   pageTitle="Resource Manager テンプレートでの Key Vault シークレット | Microsoft Azure"
    description="デプロイメント時にパラメーターとして Key Vault からシークレットを渡す方法について説明します。"
    services="azure-resource-manager,key-vault"
    documentationCenter="na"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/09/2016"
+   ms.date="05/16/2016"
    ms.author="tomfitz"/>
 
 # デプロイメント時にセキュリティで保護された値を渡す
@@ -103,4 +103,4 @@ Key Vault とシークレットのデプロイについては、[Key Vault の�
 - 仮想マシンで Key Vault を使用する方法については、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」をご覧ください。
 - キー シークレットの詳細な参照例については、[Key Vault の例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

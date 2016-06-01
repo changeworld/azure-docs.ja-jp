@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="rest-api"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/12/2016"
+	ms.date="05/13/2016"
 	ms.author="kgremban"/>
 
 # REST API を使用したロールベースのアクセス制御の管理
@@ -36,7 +36,7 @@ Azure ポータルと Azure Resource Manager API のロールベースのアク�
 
 次の URI で **GET** メソッドを使用します。
 
-	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&filter={filter}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&$filter={filter}
 
 URI 内の次の項目を置換して要求をカスタマイズします。
 
@@ -56,8 +56,8 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 | 条件 | *{Filter}* | *Views\\\Home\\\AllDates.cshtml* |
 |-----------|------------|---------|
 | (サブスコープのロールの割り当ては含めずに) 指定したスコープのみを対象にロールの割り当てを一覧表示する。 | `atScope()` | |
-| 特定のユーザー、グループ、またはアプリケーションのみを対象にロールの割り当てを一覧表示する。 | `principalId%20eq%20'{objectId}'` | *{objectId}* は、対象となるユーザー、グループ、またはサービス プリンシパルの Azure AD objectId に置き換えます。例: `&filter=principalId%20eq%20'3a477f6a-6739-4b93-84aa-3be3f8c8e7c2'` |
-| 特定のユーザーのみを対象にロールの割り当て (そのユーザーが属しているグループに割り当てられているものも含む) を一覧表示する。 | `assignedTo('{objectId}')` | *{objectId}* は、対象となるユーザーの Azure AD objectId に置き換えます。例: `&filter=assignedTo('3a477f6a-6739-4b93-84aa-3be3f8c8e7c2')` |
+| 特定のユーザー、グループ、またはアプリケーションのみを対象にロールの割り当てを一覧表示する。 | `principalId%20eq%20'{objectId}'` | *{objectId}* は、対象となるユーザー、グループ、またはサービス プリンシパルの Azure AD objectId に置き換えます。例: `&$filter=principalId%20eq%20'3a477f6a-6739-4b93-84aa-3be3f8c8e7c2'` |
+| 特定のユーザーのみを対象にロールの割り当て (そのユーザーが属しているグループに割り当てられているものも含む) を一覧表示する。 | `assignedTo('{objectId}')` | *{objectId}* は、対象となるユーザーの Azure AD objectId に置き換えます。例: `&$filter=assignedTo('3a477f6a-6739-4b93-84aa-3be3f8c8e7c2')` |
 
 
 
@@ -259,7 +259,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 次の URI で **GET** メソッドを使用します。
 
-	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&filter={filter}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&$filter={filter}
 
 URI 内の次の項目を置換して要求をカスタマイズします。
 
@@ -714,4 +714,4 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ```
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

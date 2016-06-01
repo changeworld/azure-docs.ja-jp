@@ -21,15 +21,17 @@
 
 既定では、Hadoop クラスターのパフォーマンスは最適化されていません。この記事では、クエリに適用できる最も一般的な Hive パフォーマンス最適化の方法について説明します。
 
-[AZURE.INCLUDE [portal](../../includes/hdinsight-azure-portal.md)]
-
-* [HDInsight の Hadoop に対する Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query.md)。
+> [AZURE.IMPORTANT] このドキュメントの手順では、Azure クラシック ポータルを使用します。新しいサービスを作成するときは、クラシック ポータルを使用しないことをお勧めします。Azure ポータルの利点の詳細については、「[Microsoft Azure ポータル](https://azure.microsoft.com/features/azure-portal/)」を参照してください。
+>
+> このドキュメントでは、Azure PowerShell の使用方法についても説明します。ここで示すスニペットは、Azure サービス管理 (ASM) を使用して HDInsight で機能するコマンドに基づいていますが、これらのコマンドは__推奨されていません__。これらのコマンドは、2017 年 1 月 1 日までに削除される予定です。
+>
+>Azure Resource Manager (ARM) を使用する PowerShell のスニペットと共に、Azure ポータルを使用するこのドキュメントのバージョンについては、「[HDInsight の Hadoop に対する Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query.md)」を参照してください。
 
 ##ワーカー ノードのスケール アウト
 
 クラスター内のノードのワーカーの数を増やすことで、より多くの mapper と reducer を同時に実行できるようになります。HDInsight でのスケール アウトを向上させる方法が 2 つあります。
 
-- プロビジョニング時に、Azure ポータル、Azure PowerShell またはクロス プラットフォームのコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。次の画面は、Azure ポータル上に表示されたワーカー ノード構成を示しています。
+- プロビジョニング時に、Azure ポータル、Azure PowerShell またはクロス プラットフォームのコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。次の画面は、Azure ポータル上に表示されたワーカー ノード構成を示しています。
 
 	![scaleout\_1][image-hdi-optimize-hive-scaleout_1]
 - 実行時に、クラスターを再作成せずにスケールアウトすることもできます。これは次のように表示されます。![scaleout\_1][image-hdi-optimize-hive-scaleout_2]
@@ -86,7 +88,7 @@ Tez は、プロビジョニング時に有効にする必要があります。T
 
 I/O 操作は、Hive クエリを実行するための主なパフォーマンスのボトルネックです。読み取る必要があるデータの量を削減することで、パフォーマンスを向上することができます。既定では、Hive クエリは、全 Hive テーブルをスキャンします。これはテーブルのスキャンのようなクエリでは有効な方法ですが、少量のデータのみのスキャンが必要なクエリ (例えば、フィルターを使用するクエリ) では、不要なオーバーヘッドが生じてしまいます。Hive パーティション分割では、Hive クエリは Hive テーブルの必要な量のデータだけにアクセスします。
 
-Hive パーティション分割は、生データを新しいディレクトリに再構成することにより実装されます。その際、各パーティションに独自のディレクトリを用意します (パーティションは、ユーザーによって定義されます)。次の図は、列 *Year* による Hive テーブルのパーティション分割を示しています。年ごとに新しいディレクトリが作成されます。
+Hive パーティション分割は、生データを新しいディレクトリに再構成することにより実装されます。その場合は、各パーティションに独自のディレクトリを用意します (パーティションは、ユーザーによって定義されます)。次の図は、列 *Year* による Hive テーブルのパーティション分割を示しています。年ごとに新しいディレクトリが作成されます。
 
 ![パーティション分割][image-hdi-optimize-hive-partitioning_1]
 
@@ -218,4 +220,4 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/partitioning_1.png
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

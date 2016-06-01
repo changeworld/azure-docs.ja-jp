@@ -382,10 +382,10 @@ let 句は、[名前](#names)を表形式の結果、スカラー値、または
 
 |EventNarrative|
 |---|
-|The Green River (Brownsville) は December 12 の 0930EST 頃に最高水位 (18.8 フィート) に達しました。(The Green River at Brownsville crested at 18.8 feet around 0930EST on December 12.)Brownsville の洪水位は 18 フィートです。(Flood stage at Brownsville is 18 feet.)小規模な氾濫がこのレベルで発生します。(Minor flooding occurs at this level.)閘門壁と一部の堤防下部に加えて、農業用の低地の一部に河川の越流が起こります。(The river overflows lock walls and some of the lower banks, along with some agricultural bottom land.)|
-|The Rolling Fork River (Boston) は December 12 の 1700EST 頃に最高水位 (39.3 フィート) に達しました。(The Rolling Fork River at Boston crested at 39.3 feet around 1700EST on December 12.)Boston の洪水位は 35 フィートです。(Flood stage at Boston is 35 feet.)小規模な氾濫がこのレベルで発生し、農業用の低地の一部が冠水します。(Minor flooding occurs at this level, with some agricultural bottom land covered.)|
-|The Green River (Woodbury) は December 16 の 0600EST 頃に最高水位 (36.7 フィート) に達しました。(The Green River at Woodbury crested at 36.7 feet around 0600EST on December 16.)Woodbury の洪水位は 33 フィートです。(Flood stage at Woodbury is 33 feet.)小規模な氾濫がこのレベルで発生し、Woodbury の町周辺の低地が冠水します。(Minor flooding occurs at this level, with some lowlands around the town of Woodbury covered with water.)|
-|The Ohio River (Tell City) は December 18 の 7 AM EST 頃に最高水位 (39.0 フィート) に達しました。(The Ohio River at Tell City crested at 39.0 feet around 7 AM EST on December 18.)Tell City の洪水位は 38 フィートです。(Flood stage at Tell City is 38 feet.)このレベルに達すると、量水標を超えて土手に河川の越流が起こります。(At this level, the river begins to overflow its banks above the gage.)インディアナ州道 66 号線はロームとダービー間で氾濫が発生します。(Indiana Highway 66 floods between Rome and Derby.)|
+|The Green River (Brownsville) は December 12 の 0930EST 頃に最高水位 (18.8 フィート) に達しました。(The Green River at Brownsville crested at 18.8 feet around 0930EST on December 12.) Brownsville の洪水位は 18 フィートです。(Flood stage at Brownsville is 18 feet.) 小規模な氾濫がこのレベルで発生します。(Minor flooding occurs at this level.) 閘門壁と一部の堤防下部に加えて、農業用の低地の一部に河川の越流が起こります。(The river overflows lock walls and some of the lower banks, along with some agricultural bottom land.)|
+|The Rolling Fork River (Boston) は December 12 の 1700EST 頃に最高水位 (39.3 フィート) に達しました。(The Rolling Fork River at Boston crested at 39.3 feet around 1700EST on December 12.) Boston の洪水位は 35 フィートです。(Flood stage at Boston is 35 feet.) 小規模な氾濫がこのレベルで発生し、農業用の低地の一部が冠水します。(Minor flooding occurs at this level, with some agricultural bottom land covered.)|
+|The Green River (Woodbury) は December 16 の 0600EST 頃に最高水位 (36.7 フィート) に達しました。(The Green River at Woodbury crested at 36.7 feet around 0600EST on December 16.) Woodbury の洪水位は 33 フィートです。(Flood stage at Woodbury is 33 feet.) 小規模な氾濫がこのレベルで発生し、Woodbury の町周辺の低地が冠水します。(Minor flooding occurs at this level, with some lowlands around the town of Woodbury covered with water.)|
+|The Ohio River (Tell City) は December 18 の 7 AM EST 頃に最高水位 (39.0 フィート) に達しました。(The Ohio River at Tell City crested at 39.0 feet around 7 AM EST on December 18.) Tell City の洪水位は 38 フィートです。(Flood stage at Tell City is 38 feet.) このレベルに達すると、量水標を超えて土手に河川の越流が起こります。(At this level, the river begins to overflow its banks above the gage.) インディアナ州道 66 号線はロームとダービー間で氾濫が発生します。(Indiana Highway 66 floods between Rome and Derby.)|
 
 ```AIQL
 
@@ -543,7 +543,7 @@ range timestamp from ago(4h) to now() step 1m
 類似したレコードのグループ化を試みます。この演算子は、グループごとに、そのグループを最も適切に表していると思われる `Pattern` と、そのグループ内のレコードの `Count` を出力します。
 
 
-![](./media/app-insights-analytics-queries/reduce.png)
+![](./media/app-insights-analytics-reference/reduce.png)
 
 **構文**
 
@@ -625,7 +625,7 @@ Traces
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-各間隔 ([0,10.0]、 \[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
+各間隔 ([0,10.0]、[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
 
 
 **構文**
@@ -844,7 +844,7 @@ traces
       by name
 
 
-![](./media/app-insights-analytics-aggregations/argmin.png)
+![](./media/app-insights-analytics-reference/argmin.png)
  
 
 
@@ -968,7 +968,7 @@ traces
 
 グループ内にある*式*の個別の値の概数を返します (個別の値のリストを表示するには、[`makeset`](#makeset) を使用します)。
 
-*Accuracy* を指定した場合は、速度と精度のバランスが制御されます。
+*精度* を指定した場合は、速度と精度のバランスが制御されます。
 
  * `0` = 精度は最も低くなりますが、計算速度は最高になります。
  * `1` = 既定値です。精度と計算時間のバランスをとります。エラー率は約 0.8% です。
@@ -980,7 +980,7 @@ traces
     | summarize cities=dcount(client_City) 
       by client_CountryOrRegion
 
-![](./media/app-insights-analytics-aggregations/dcount.png)
+![](./media/app-insights-analytics-reference/dcount.png)
 
 ### makelist
 
@@ -1004,7 +1004,7 @@ traces
     | summarize cities=makeset(client_City) 
       by client_CountryOrRegion
 
-![](./media/app-insights-analytics-aggregations/makeset.png)
+![](./media/app-insights-analytics-reference/makeset.png)
 
 逆の処理を実行する [`mvexpand` 演算子](#mvexpand-operator)も参照してください。
 
@@ -1052,7 +1052,7 @@ traces
         percentiles(duration, 5, 20, 50, 80, 95) 
       by name
 
-![](./media/app-insights-analytics-aggregations/percentiles.png)
+![](./media/app-insights-analytics-reference/percentiles.png)
 
 結果には、/Events/Index 要求の場合、要求の 5% の応答が 2.44 秒未満、50% の応答が 3.52 秒、5% が 6.85 秒より遅いことが示されています。
 
@@ -1911,7 +1911,7 @@ substring("ABCD", 0, 2)       // AB
 
 Application Insights の例外に対するクエリの結果を次に示します。`details` の値は配列です。
 
-![](./media/app-insights-analytics-scalars/310.png)
+![](./media/app-insights-analytics-reference/310.png)
 
 **インデックス:** JavaScript と同様に、配列やオブジェクトのインデックスを作成できます。
 
@@ -1943,7 +1943,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
     | mvexpand details[0].parsedStack[0]
 
 
-![](./media/app-insights-analytics-scalars/410.png)
+![](./media/app-insights-analytics-reference/410.png)
 
 
 **treepath:** 複合オブジェクト内のすべてのパスを検索するには、次のようにします。
@@ -1953,7 +1953,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
     | mvexpand path
 
 
-![](./media/app-insights-analytics-scalars/420.png)
+![](./media/app-insights-analytics-reference/420.png)
 
 **buildschema:** テーブル内の式のすべての値を受け入れる最小限のスキーマを見つけるには、次のようにします。
 
@@ -2233,4 +2233,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

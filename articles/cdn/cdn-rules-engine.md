@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/15/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 # 規則エンジンを使用して既定の HTTP 動作をオーバーライドする
 
+[AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
+
 ## 概要
 
 規則エンジンでは、特定の種類のコンテンツの配信のブロック、キャッシュ ポリシーの定義、HTTP ヘッダーの変更など、HTTP 要求の処理方法をカスタマイズできます。このチュートリアルでは、CDN 資産のキャッシュ動作を変更するルールの作成について説明します。また、「[関連項目](#see-also)」セクションではビデオ コンテンツもご覧いただけます。
-
-> [AZURE.NOTE] 規則エンジンは、Premium CDN 層の機能です。Standard CDN と Premium CDN の機能の比較については、「[Azure CDN の概要](cdn-overview.md)」を参照してください。
 
 ## チュートリアル
 
@@ -38,6 +38,8 @@
 
 	![CDN の新しい規則オプション](./media/cdn-rules-engine/cdn-new-rule.png)
 
+	>[AZURE.IMPORTANT] 複数の規則が表示される順序は、これらの規則の処理方法に影響します。前の規則で指定したアクションは、後続の規則でオーバーライドされます。
+	
 3. **[名前 / 説明]** テキストボックスに名前を入力します。
 
 4. 規則を適用する要求の種類を指定します。既定では、一致条件 **[常に]** が選択されています。このチュートリアルでは **[常に]** を使用するため、選択されたままにしておきます。
@@ -58,12 +60,10 @@
 
 6.  **[追加]** をクリックして、新しい規則を保存します。次に、新しい規則は承認を待機します。承認されると、ステータスが**保留中の XML** から**アクティブな XML** に変わります。
 
-## 考慮事項
-
-- 複数の規則が表示される順序は、これらの規則の処理方法に影響します。前の規則で指定したアクションは、後続の規則でオーバーライドされます。
+	>[AZURE.IMPORTANT] 規則の変更が CDN に反映されるまでに最大 90 分かかる場合があります。
 
 ## 関連項目
-* [Azure Friday: Azure CDN に新しく追加された強力な Premium 機能](../../videos/azure-cdns-powerful-new-premium-features/) (ビデオ)
+* [Azure Friday: Azure CDN に新しく追加された強力な Premium 機能](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (ビデオ)
 * [ルール エンジンの一致条件と機能詳細](cdn-rules-engine-details.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

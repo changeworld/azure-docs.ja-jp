@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="05/17/2016"
 	ms.author="douglasl"/>
 
 # テーブルの Stretch Database を有効にする
@@ -43,7 +43,7 @@ Stretch Database のテーブルを設定するには、SQL Server Management St
 
 有効にするテーブルが表示され、選択されていることを確認します。
 
-RC3 では、テーブル全体を移行することも、ウィザードで日付に基づく単純なフィルター述語を指定することもできます。別のフィルター述語を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
+テーブル全体を移行することも、ウィザードで日付に基づく単純なフィルター述語を指定することもできます。別のフィルター述語を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
 
 -   ウィザードを終了し、ALTER TABLE ステートメントを実行してテーブルの Stretch を有効にし、述語を指定します。
 
@@ -118,4 +118,4 @@ CREATE TABLE <table name> ...
 
 [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,12 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/08/2016"
+	ms.date="05/10/2016"
 	ms.author="bradsev" />
 
 # AzCopy を使用して Azure BLOB ストレージ間でデータを移動する
-
-## はじめに
 
 AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ストレージ間のデータのアップロード、ダウンロード、コピーにおいて高いパフォーマンスを実現するために設計されたコマンド ライン ユーティリティです。
 
@@ -33,12 +31,14 @@ AzCopy のインストール手順と、Azure プラットフォームでの使�
 
 > [AZURE.NOTE] Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage/storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
 
+
 ## 前提条件
 
 このドキュメントは、Azure サブスクリプション、ストレージ アカウント、そのアカウントに対応するストレージ キーがあることを前提としています。データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。
 
 - Azure サブスクリプションを設定するには、「[1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 - ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
+
 
 ## ファイルを Azure BLOB にアップロードする
 
@@ -47,12 +47,14 @@ AzCopy のインストール手順と、Azure プラットフォームでの使�
 	# Upload from local file system
 	AzCopy /Source:<your_local_directory> /Dest: https://<your_account_name>.blob.core.windows.net/<your_container_name> /DestKey:<your_account_key> /S
 
+
 ## Azure BLOB からファイルをダウンロードする
 
 Azure BLOB からファイルをダウンロードするには、AzCopy コマンド ラインで次のコマンドを使用します。
 
 	# Downloading blobs to local file system
 	AzCopy /Source:https://<your_account_name>.blob.core.windows.net/<your_container_name>/<your_sub_directory_at_blob>  /Dest:<your_local_directory> /SourceKey:<your_account_key> /Pattern:<file_pattern> /S
+
 
 ## Azure コンテナー間で BLOB を転送する
 
@@ -68,6 +70,7 @@ Azure コンテナー 間で BLOB を 転送するには、AzCopy コマンド �
 	<your_local_directory>: directory of local file system where files to be uploaded from or the directory of local file system files to be downloaded to
 	<file_pattern>: pattern of file names to be transferred. The standard wildcards are supported
 
+
 ## AzCopy を使用するためのヒント
 
 > [AZURE.TIP]   
@@ -75,4 +78,4 @@ Azure コンテナー 間で BLOB を 転送するには、AzCopy コマンド �
 > 2. ファイルをダウンロードする場合、/S を指定すると、指定したディレクトリとそのサブディレクトリ内のすべてのファイル、または指定されたディレクトリとそのサブディレクトリ内の指定したパターンと一致するすべてのファイルがダウンロードされるまで、コンテナーを再帰的に検索します。  
 > 3.  /Source パラメーターを使用して、ダウンロードする特定の BLOB ファイルを指定することはできません。特定のファイルをダウンロードするには、ダウンロードする BLOB ファイル名を /Pattern パラメーターを使用して指定します。/S パラメーターは、AzCopy にファイル名のパターンを再帰的に検索させるために使用できます。パターンのパラメーターを指定しなかった場合、AzCopy はそのディレクトリ内のすべてのファイルをダウンロードします。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

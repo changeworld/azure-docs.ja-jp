@@ -14,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/29/2016"
+   ms.date="05/09/2016"
    ms.author="cherylmc"/>
 
-# Azure ポータルでの DNS ゾーンの作成と管理
+# Azure ポータルで DNS ゾーンを作成する
 
 
 > [AZURE.SELECTOR]
@@ -29,13 +29,8 @@
 
 この記事では、Azure ポータルを使用して DNS ゾーンを作成する手順を説明します。DNS ゾーンは、PowerShell または CLI を使用して作成することもできます。
 
-ドメイン "contoso.com" には、"mail.contoso.com" (メール サーバー用) や "www.contoso.com" (Web サイト用) など、多数の DNS レコードが含まれている場合があります。DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。ドメインのホストを開始するには、まず DNS ゾーンを作成します。特定のドメイン用に作成された DNS レコードは、そのドメインの DNS ゾーン内に含まれます。
+[AZURE.INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-### <a name="names"></a>DNS ゾーンの名前について
- 
-- ゾーンの名前がリソース グループ内で一意であること、および作成するゾーンがまだ存在していないことが必要です。そうでない場合、操作は失敗します。
-
-- 同じゾーン名は、別のリソース グループまたは別の Azure サブスクリプション内で再利用できます。複数のゾーンで同じ名前を共有できますが、各インスタンスには異なるネーム サーバー アドレスが割り当てられます。また、親ドメインから委任できるインスタンスは 1 つだけです。詳細については、[Azure DNS へのドメインの委任](#delegate)に関するページを参照してください。
 
 ### Azure DNS のタグについて
 
@@ -53,11 +48,11 @@ Azure ポータルでタグを追加するには、DNS ゾーンの **[設定]**
  
 	![DNS ゾーン](./media/dns-getstarted-create-dnszone-portal/openzone650.png)
 
-3. **[DNS ゾーン]** ブレードの下部にある **[作成]** をクリックします。これにより、**[Create DNS zone (DNS ゾーンの作成)]** ブレードが開きます。
+3. **[DNS ゾーン]** ブレードの下部にある **[作成]** をクリックします。これにより、**[DNS ゾーンの作成]** ブレードが開きます。
 
 	![ゾーンの作成](./media/dns-getstarted-create-dnszone-portal/newzone250.png)
 
-4. **[Create DNS zone (DNS ゾーンの作成)]** ブレードで、DNS ゾーンの名前を入力します。たとえば、*contoso.com* などのドメインです。前のセクション「[DNS ゾーンの名前について](#names)」を参照してください。
+4. **[DNS ゾーンの作成]** ブレードで、DNS ゾーンの名前を入力します。たとえば、*contoso.com* などのドメインです。前のセクション「[DNS ゾーンの名前について](#names)」を参照してください。
 
 5. 次に、使用するリソース グループを指定します。新しいリソース グループを作成することも、既存のリソース グループを選択することもできます。
 
@@ -74,7 +69,7 @@ Azure ポータルでタグを追加するには、DNS ゾーンの **[設定]**
 9. 新しいゾーンが作成されると、ダッシュボードに新しいゾーンのブレードが開きます。
 
 
-## DNS ゾーン レコードの表示
+## レコードの表示
 
 DNS ゾーンを作成すると、次のレコードも作成されます。
 
@@ -93,6 +88,29 @@ Azure ポータルからレコードを表示することができます。
 
 	![ゾーン](./media/dns-getstarted-create-dnszone-portal/viewzone500.png)
 
+## テスト
+
+DNS ゾーンをテストするには、nslookup、dig、[Resolve-DnsName PowerShell コマンドレット](https://technet.microsoft.com/library/jj590781.aspx)などの DNS ツールを使用します。
+
+Azure DNS の新しいゾーンを使用するためのドメインの委任をまだ行っていない場合は、ゾーンのネーム サーバーの 1 つに DNS クエリを直接送信する必要があります。ゾーンのネーム サーバーは、上の `Get-AzureRmDnsRecordSet` で一覧表示されているように、NS レコードで与えられます。次のコマンドを実際のゾーンの正しい値に置き換えてください。
+
+	nslookup
+	> set type=SOA
+	> server ns1-01.azure-dns.com
+	> contoso.com
+
+	Server: ns1-01.azure-dns.com
+	Address:  208.76.47.1
+
+	contoso.com
+        	primary name server = ns1-01.azure-dns.com
+        	responsible mail addr = msnhst.microsoft.com
+        	serial  = 1
+        	refresh = 900 (15 mins)
+        	retry   = 300 (5 mins)
+        	expire  = 604800 (7 days)
+        	default TTL = 300 (5 mins)
+
 
 
 ## DNS ゾーンの削除
@@ -106,6 +124,6 @@ Azure ポータルからレコードを表示することができます。
 
 ## 次のステップ
 
-DNS ゾーンを作成した後は、「[Get started creating record sets and records (レコード セットとレコードの作成の概要)](dns-getstarted-create-recordset-portal.md)」、「[How to manage DNS zones (DNS ゾーンの管理方法)](dns-operations-dnszones.md)」、「[How to manage DNS records (DNS レコードの管理方法)](dns-operations-recordsets-portal.md)」を参照してください。
+DNS ゾーンを作成したら、[レコード セットとレコード](dns-getstarted-create-recordset-portal.md)を作成し、インターネット ドメインの名前解決を開始します。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

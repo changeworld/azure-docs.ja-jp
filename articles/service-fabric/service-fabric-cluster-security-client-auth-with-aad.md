@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/11/2016"
+   ms.date="04/22/2016"
    ms.author="seanmck"/>
 
 # プレビュー: クライアント認証用に Azure Active Directory を使用する Service Fabric クラスターを作成する
@@ -33,9 +33,13 @@ AAD の Service Fabric クラスターでの構成に関する手順の一部を
 
 >[AZURE.NOTE] これらの手順は、クラスターを作成する*前に*実行する必要があります。これは、スクリプトでクラスター名とエンドポイントの使用が発生した場合に、すでに作成した値ではなく、予定された値にする必要があるためです。
 
-1. 先に進む前に[スクリプトをダウンロード][sf-aad-ps-script-download]して解凍します。
+1. コンピューターに[スクリプトをダウンロードします][sf-aad-ps-script-download]。
 
-2. `SetupApplications.ps1` を実行します。パラメーターとして、TenantId、ClusterName、および WebApplicationReplyUrl を指定します。次に例を示します。
+2. zip ファイルを右クリックして、**[プロパティ]** を選択して、**[ブロックの解除]** チェックボックスをオンにして適用します。
+
+3. zip ファイルを解凍します。
+
+4. `SetupApplications.ps1` を実行します。パラメーターとして、TenantId、ClusterName、および WebApplicationReplyUrl を指定します。次に例を示します。
 
     ```powershell
     .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
@@ -93,7 +97,7 @@ clusterApplication は、前のセクションで作成した Web アプリケ�
 
     ![ユーザーをロールに割り当てる][assign-users-to-roles-dialog]
 
->[AZURE.NOTE] Service Fabric でのロールの詳細については、「[ロール ベースのアクセス制御](service-fabric-cluster-security-roles.md)」 (Service Fabric クライアント用) を参照してください。
+>[AZURE.NOTE] Service Fabric でのロールの詳細については、「[ロール ベースのアクセス制御 (Service Fabric クライアント用)](service-fabric-cluster-security-roles.md)」を参照してください。
 
 ## クラスターに接続する
 
@@ -141,7 +145,7 @@ Visual Studio や PowerShell などのネイティブ クライアントから�
 
 ## 次のステップ
 
-- 「[Service Fabric クラスターのセキュリティ保護](service-fabric-cluster-security.md)」で詳細を確認する
+- 「[Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)」で詳細を確認する
 - [Visual Studio を使用してリモート クラスターにアプリケーションを発行する](service-fabric-publish-app-remote-cluster.md)方法を知る
 
 <!-- Links -->
@@ -156,4 +160,4 @@ Visual Studio や PowerShell などのネイティブ クライアントから�
 [setupapp-script-output]: ./media/service-fabric-cluster-security-client-auth-with-aad/setupapp-script-arm-json-output.png
 [vs-publish-aad-login]: ./media/service-fabric-cluster-security-client-auth-with-aad/vs-login-prompt.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

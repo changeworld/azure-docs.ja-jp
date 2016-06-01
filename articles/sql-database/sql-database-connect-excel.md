@@ -22,7 +22,7 @@
 # SQL Database チュートリアル: Excel を Azure SQL データベースに接続してレポートを作成する
 
 > [AZURE.SELECTOR]
-- [C#](sql-database-connect-query.md)
+- [Visual Studio](sql-database-connect-query.md)
 - [SSMS](sql-database-connect-query-ssms.md)
 - [Excel](sql-database-connect-excel.md)
 
@@ -83,4 +83,4 @@ Excel をクラウドの SQL データベースに接続し、データをイン
 - [エラスティック プール](sql-database-elastic-pool.md)の利点について学習します。
 - [バックエンドで SQL Database に接続する Web アプリケーションを作成する](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)方法を学習します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

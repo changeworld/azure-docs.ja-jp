@@ -34,6 +34,7 @@ Application Insights SDK は実行中の Web アプリケーションから Azur
 * [Microsoft Azure](http://azure.com) のサブスクリプションチームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
 * Visual Studio 2013 Update 3 以降。
 
+
 ## <a name="ide"></a> Application Insights を Visual Studio のプロジェクトに追加する
 
 #### 新しいプロジェクトの場合
@@ -62,7 +63,7 @@ Azure にサインインしているアカウントを選択します。資格�
 
 ####<a name="land"></a> [Application Insights の追加] の実行結果
 
-このコマンドによって次の手順が実行されます (必要に応じて、代わりに[手動で実行](app-insights-start-monitoring-app-health-usage.md)できます)。
+このコマンドによって次の手順が実行されます (必要に応じて、代わりに[手動で実行](app-insights-asp-net-manual.md)できます)。
 
 1. プロジェクトに Application Insights Web SDK NuGet パッケージが追加されます。Visual Studio で表示するには、プロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。
 2. [Azure ポータル][portal]に Application Insights のリソースが作成されます。ここにデータが表示されます。リソースを識別する*インストルメンテーション キー*を取得します。
@@ -257,4 +258,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

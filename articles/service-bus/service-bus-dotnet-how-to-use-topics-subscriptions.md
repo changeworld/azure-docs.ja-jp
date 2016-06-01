@@ -52,7 +52,7 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
 
 ### 接続文字列の構成
 
-サービス構成メカニズムを使用すると、アプリケーションを再デプロイしなくても [Azure クラシック ポータル][]から構成設定を動的に変更できます。たとえば、次の例に示すように、サービス定義 (****.csdef**) ファイルに `Setting` ラベルを追加します。
+サービス構成メカニズムを使用すると、アプリケーションを再デプロイしなくても [Azure クラシック ポータル][]から構成設定を動的に変更できます。たとえば、次の例に示すように、サービス定義 (**.csdef**) ファイルに `Setting` ラベルを追加します。
 
 ```
 <ServiceDefinition name="Azure1">
@@ -234,11 +234,11 @@ for (int i=0; i<5; i++)
 }
 ```
 
-Service Bus トピックでは、[最大 256 KB のメッセージ](service-bus-quotas.md)がサポートされます (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。トピックで保持されるメッセージ数には上限がありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。パーティション分割が有効な場合、上限が高くなります。詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」を参照してください。
+Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。トピックで保持されるメッセージ数には上限がありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。パーティション分割が有効な場合、上限が高くなります。詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」を参照してください。
 
 ## サブスクリプションからメッセージを受信する方法
 
-サブスクリプションからメッセージを受信する推奨の方法は、[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) オブジェクトの使用です。[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) オブジェクトには、2 つの動作モードがあります。[*ReceiveAndDelete* と *PeekLock*](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) です。
+サブスクリプションからメッセージを受信する推奨の方法は、[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) オブジェクトの使用です。[SubscriptionClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) オブジェクトを使用する方法です。オブジェクトには、2 つの異なる動作モードがあります。[*ReceiveAndDelete* と *PeekLock*](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) です。
 
 **ReceiveAndDelete** モードを使用する場合、受信が 1 回ずつの動作になります。つまり、Service Bus はサブスクリプション内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。**ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
@@ -313,7 +313,7 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 -   [キュー、トピック、およびサブスクリプション][]
 -   [トピック フィルターのサンプル][]
 -   [SqlFilter][] の API のリファレンス
--   Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: [Service Bus のブローカー メッセージングに関する .NET チュートリアル][]。
+-   Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: [Service Bus ブローカー メッセージング .NET チュートリアル][]。
 -   Service Bus のサンプル: [Azure のサンプル][]からダウンロードするか、[概要](service-bus-samples.md)に関するページを参照してください。
 
   [Azure クラシック ポータル]: http://manage.windowsazure.com
@@ -324,7 +324,7 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
   [トピック フィルターのサンプル]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
   [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-  [Service Bus のブローカー メッセージングに関する .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
+  [Service Bus ブローカー メッセージング .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

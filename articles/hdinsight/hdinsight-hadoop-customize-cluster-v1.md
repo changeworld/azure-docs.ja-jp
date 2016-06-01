@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Script Action を使った HDInsight クラスターのカスタマイズ | Microsoft Azure" 
-	description="Script Action を使って HDInsight クラスターをカスタマイズする方法について説明します。" 
+	pageTitle="スクリプト アクションを使った HDInsight クラスターのカスタマイズ | Microsoft Azure" 
+	description="スクリプト アクションを使って HDInsight クラスターをカスタマイズする方法について説明します。" 
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
@@ -13,42 +13,44 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/26/2016" 
+	ms.date="05/17/2016" 
 	ms.author="nitinme"/>
 
-# Script Action を使って HDInsight クラスターをカスタマイズする
+# スクリプト アクションを使って HDInsight クラスターをカスタマイズする
 
-[AZURE.INCLUDE [hdinsight-azure-portal](../../includes/hdinsight-azure-portal.md)]
+> [AZURE.IMPORTANT] このドキュメントの手順では、Azure クラシック ポータルを使用します。新しいサービスを作成するときは、クラシック ポータルを使用しないことをお勧めします。Azure ポータルの利点の詳細については、「[Microsoft Azure ポータル](https://azure.microsoft.com/features/azure-portal/)」を参照してください。
+>
+> このドキュメントでは、Azure PowerShell と HDInsight .NET SDK の使用方法についても説明します。ここで示すスニペットは、Azure サービス管理 (ASM) を使用して HDInsight で機能するコマンドに基づいていますが、これらのコマンドは__推奨されていません__。これらのコマンドは、2017 年 1 月 1 日までに削除される予定です。
+>
+>Azure Resource Manager (ARM) を使用する PowerShell と HDInsight .NET SDK スニペットと共に、Azure ポータルを使用するこのドキュメントのバージョンについては、「[スクリプト アクションを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」を参照してください。
 
-* [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)
-
-HDInsight には、カスタム スクリプトを呼び出す **Script Action** という構成オプションがあります。Script Action は、プロビジョニング プロセス中にクラスター上で実行されるカスタマイズを定義します。これらのスクリプトを使用して、クラスター上に追加のソフトウェアをインストールしたり、クラスター上のアプリケーションの構成を変更したりできます。
+HDInsight には、カスタム スクリプトを呼び出す **スクリプト アクション**という構成オプションがあります。スクリプト アクションは、プロビジョニング プロセス中にクラスター上で実行されるカスタマイズを定義します。これらのスクリプトを使用して、クラスター上に追加のソフトウェアをインストールしたり、クラスター上のアプリケーションの構成を変更したりできます。
 
 
-> [AZURE.NOTE] Script Action は、HDInsight クラスター バージョン 3.1 以降では、Windows オペレーティング システムでのみサポートされます。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
+> [AZURE.NOTE] スクリプト アクションは、HDInsight クラスター バージョン 3.1 以降では、Windows オペレーティング システムでのみサポートされます。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」を参照してください。
 > 
-> Script Action は標準の Azure HDInsight のサブスクリプションの一部として追加料金なしで利用可能です。
+> スクリプト アクションは標準の Azure HDInsight のサブスクリプションの一部として追加料金なしで利用可能です。
 
-HDInsight クラスターは、その他さまざまな方法でカスタマイズできます。たとえば、Azure ストレージ アカウントの追加、Hadoop 構成ファイルの変更 (core-site.xml、hive-site.xml など)、クラスター内の一般的な場所への共有ライブラリの追加 (Hive、Oozie など) といった方法があります。これらのカスタマイズは、Azure PowerShell、Azure HDInsight .NET SDK、Azure クラシック ポータルから実行できます。詳細については、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング][hdinsight-provision-cluster]」をご覧ください。
+HDInsight クラスターは、その他さまざまな方法でカスタマイズできます。たとえば、Azure ストレージ アカウントの追加、Hadoop 構成ファイルの変更 (core-site.xml、hive-site.xml など)、クラスター内の一般的な場所への共有ライブラリの追加 (Hive、Oozie など) といった方法があります。これらのカスタマイズは、Azure PowerShell、Azure HDInsight .NET SDK、Azure クラシック ポータルから実行できます。詳細については、「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング][hdinsight-provision-cluster]」を参照してください。
 
-## クラスターのプロビジョニング処理での Script Action
+## クラスターのプロビジョニング処理でのスクリプト アクション
 
-Script Action は、クラスターが作成中にのみ使用されます。次の図は、プロビジョニング処理中に Script Action が実行された場合を示しています。
+スクリプト アクションは、クラスターが作成中にのみ使用されます。次の図は、プロビジョニング処理中にスクリプト アクションが実行された場合を示しています。
 
 ![クラスター プロビジョニング時の HDInsight クラスターのカスタマイズと段階][img-hdi-cluster-states]
 
 スクリプトの実行中、クラスターは **ClusterCustomization** 段階に入ります。この段階でスクリプトは、システム管理者アカウントで、ノードで完全な管理者権限を持ち、クラスター内のすべての指定したノードで並列的に実行されます。
 
-> [AZURE.NOTE] **ClusterCustomization** 段階ではクラスター ノードで管理者権限を持っているため、スクリプトを使用して、Hadoop 関連のサービスを含め、サービスの停止や開始などの操作を行うことができます。そのため、スクリプトの一部として、スクリプトの完了前に Ambari サービスや他の Hadoop 関連のサービスが動作していることを確認する必要があります。これらのサービスでは、クラスターの作成時にクラスターが正常に稼動しているか確認する必要があります。これらのサービスに影響するクラスター上の構成を変更する場合は、用意されているヘルパー関数を使用する必要があります。ヘルパー関数の詳細については、「[HDInsight 用の Script Action スクリプトの開発][hdinsight-write-script]」を参照してください。
+> [AZURE.NOTE] **ClusterCustomization** 段階ではクラスター ノードで管理者権限を持っているため、スクリプトを使用して、Hadoop 関連のサービスを含め、サービスの停止や開始などの操作を行うことができます。そのため、スクリプトの一部として、スクリプトの完了前に Ambari サービスや他の Hadoop 関連のサービスが動作していることを確認する必要があります。これらのサービスでは、クラスターの作成時にクラスターが正常に稼動しているか確認する必要があります。これらのサービスに影響するクラスター上の構成を変更する場合は、用意されているヘルパー関数を使用する必要があります。ヘルパー関数の詳細については、「[HDInsight 用のスクリプト アクションのスクリプトを開発する][hdinsight-write-script]」を参照してください。
 
 スクリプトの出力とエラー ログは、クラスター用に指定した既定のストレージ アカウントに格納されます。ログは、**u<\\cluster-name-fragment><\\time-stamp>setuplog** という名前のテーブルに格納されます。これらは、クラスター内のすべてのノード (ヘッドノードとワーカー ノード) で実行されるスクリプトから取得される集計ログです。
 
 
-各クラスターは、指定された順序で呼び出される複数の Script Action を受け取ることができます。スクリプトはヘッド ノード、ワーカー ノード、またはその両方で実行できます。
+各クラスターは、指定された順序で呼び出される複数のスクリプト アクションを受け取ることができます。スクリプトはヘッド ノード、ワーカー ノード、またはその両方で実行できます。
 
-## Script Action のスクリプトを呼び出す
+## スクリプト アクションのスクリプトを呼び出す
 
-Script Action のスクリプトは、Azure クラシック ポータル、Azure PowerShell、または HDInsight .NET SDK から使用できます。
+スクリプト アクションのスクリプトは、Azure クラシック ポータル、Azure PowerShell、または HDInsight .NET SDK から使用できます。
 
 HDInsight は、HDInsight クラスターで、次のコンポーネントをインストールするためのいくつかのスクリプトを提供します。
 
@@ -56,7 +58,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 ----- | -----
 **Spark のインストール** | https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」を参照してください。
 **R のインストール** | https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1[HDInsight クラスターでの R のインストールと使用][hdinsight-install-r]に関するページを参照してください。
-**Solr のインストール** | https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1「[HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)」をご覧ください。
+**Solr のインストール** | https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1「[HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)」を参照してください。
 - **Giraph のインストール** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1「[HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)」を参照してください。
 
 
@@ -66,7 +68,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 1. 「[カスタム オプションを使用したクラスターのプロビジョニング](hdinsight-provision-clusters.md#portal)」に関するページの説明に従い、**[カスタム作成]** オプションを使用してプロビジョニングを開始します。 
 2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
-	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-v1/HDI.CustomProvision.Page6.png "Script Action を使ってクラスターをカスタマイズする")
+	![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-v1/HDI.CustomProvision.Page6.png "スクリプト アクションを使ってクラスターをカスタマイズする")
 	
 	<table border='1'>
 		<tr><th>プロパティ</th><th>値</th></tr>
@@ -86,9 +88,9 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
   
 **Azure PowerShell コマンドレットから**
 
-HDInsight の Azure PowerShell コマンドを使用して、1 つまたは複数の Script Action を実行します。**<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptAction</a>** コマンドレットを使用して、カスタム スクリプトを呼び出します。これらのコマンドレットを使用するには Azure PowerShell をインストールし、構成しておく必要があります。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」をご覧ください。
+HDInsight の Azure PowerShell コマンドを使用して、1 つまたは複数のスクリプト アクションを実行します。**<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptAction</a>** コマンドレットを使用して、カスタム スクリプトを呼び出します。これらのコマンドレットを使用するには Azure PowerShell をインストールし、構成しておく必要があります。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。
 
-次の Azure PowerShell コマンドを使用して、HDInsight クラスターのデプロイ時に、1 つの Script Action を実行します。
+次の Azure PowerShell コマンドを使用して、HDInsight クラスターのデプロイ時に、1 つのスクリプト アクションを実行します。
 
 	$config = New-AzureHDInsightClusterConfig –ClusterSizeInNodes 4
 
@@ -96,7 +98,7 @@ HDInsight の Azure PowerShell コマンドを使用して、1 つまたは複�
 
 	New-AzureHDInsightCluster -Config $config
 
-次の Azure PowerShell コマンドを使用して、HDInsight クラスターのデプロイ時に、複数の Script Action を実行します。
+次の Azure PowerShell コマンドを使用して、HDInsight クラスターのデプロイ時に、複数のスクリプト アクションを実行します。
 
 	$config = New-AzureHDInsightClusterConfig –ClusterSizeInNodes 4
 
@@ -112,7 +114,7 @@ HDInsight .NET SDK は、カスタム スクリプトを呼び出す <a href="ht
 
 		Install-Package Microsoft.WindowsAzure.Management.HDInsight
 
-2. SDK を使用してクラスターを作成します。手順については、「[.NET SDK を使用した HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md#sdk)」に関するページをご覧ください。
+2. SDK を使用してクラスターを作成します。手順については、「[.NET SDK を使用した HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md#sdk)」に関するページを参照してください。
 
 3. 以下に示すように、**ScriptAction** クラスを使用してカスタム スクリプトを呼び出します。
 
@@ -154,15 +156,15 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 2. クラスターのカスタマイズ - クラスター作成時に、追加設定や、クラスター ノードにインストールするカスタム コンポーネントを指定できます。
 3. サンプル - よく利用されるカスタム コンポーネントに対しては、それらを HDInsight クラスターで使用する方法について Microsoft やその他の提供者がサンプルを用意している場合があります。これらのサンプルはサポートなしで提供されます。
 
-## Script Action のスクリプトを開発する
+## スクリプト アクションのスクリプトを開発する
 
-「[HDInsight 用の Script Action スクリプトの開発][hdinsight-write-script]」を参照してください。
+「[HDInsight 用のスクリプト アクションのスクリプトを開発する][hdinsight-write-script]」を参照してください。
 
 
 ## 関連項目
 
 - 「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング][hdinsight-provision-cluster]」では、その他のカスタム オプションを使用して HDInsight クラスターをプロビジョニングする方法について説明しています。
-- [HDInsight 用の Script Action スクリプトの開発][hdinsight-write-script]
+- [HDInsight 用のスクリプト アクションのスクリプトを開発する][hdinsight-write-script]
 - [HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]
 - [HDInsight クラスターに R をインストールして使用する][hdinsight-install-r]
 - [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)
@@ -178,4 +180,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-v1/HDI-Cluster-state.png "クラスター プロビジョニング時の段階"
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -78,7 +78,7 @@ Traffic Manager の ping を WAF からアプリケーションに転送する�
 
 ![Web サイトの変換][WebsiteTranslations]
 
-## App Service 環境へのトラフィックをネットワーク リソース グループを使用して保護する##
+## App Service 環境へのトラフィックをネットワーク セキュリティ グループ (NSG) を使用して保護する##
 App Service 環境へのトラフィックを、クラウド サービスの VIP アドレスを使用して WAF からのトラフィックだけに制限する方法の詳細については、[着信トラフィックの制御に関するドキュメント](app-service-app-service-environment-control-inbound-traffic.md)を参照してください。このタスクを TCP ポート 80 に対して実行するサンプル Powershell コマンドを次に示します。
 
 
@@ -99,4 +99,4 @@ SourceAddressPrefix を、WAF のクラウド サービスの仮想 IP アドレ
 [ConfigureTrafficManager]: ./media/app-service-app-service-environment-web-application-firewall/ConfigureTrafficManager.png
 [WebsiteTranslations]: ./media/app-service-app-service-environment-web-application-firewall/WebsiteTranslations.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

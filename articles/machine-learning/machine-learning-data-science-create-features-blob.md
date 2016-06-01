@@ -13,24 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/10/2016" 
 	ms.author="fashah;garye;bradsev" />
 
 #Pandas を使用して Azure BLOB ストレージ データの特徴を作成する
 
-
-##はじめに
-
-このドキュメントでは、[Pandas](http://pandas.pydata.org/) Python パッケージを使用して Azure BLOB コンテナーに格納されているデータの特徴を作成する方法について説明します。Panda データ フレームに読み込む方法の概要の次に、インジケーター値を使用してカテゴリ特徴を生成し、特徴をビン分割する方法について説明します (いずれの処理にも Python スクリプトを使用します)。
+このドキュメントでは、[Pandas](http://pandas.pydata.org/) Python パッケージを使用して Azure BLOB コンテナーに格納されているデータの特徴を作成する方法について説明します。まず Panda データ フレームにデータを読み込む方法を概説し、その後、Python スクリプトからインジケーター値を使用してカテゴリ特徴を生成し、特徴をビン分割する方法について説明します。
 
 [AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
+この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
 
-この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Cortana Analytics Process (CAP)]( https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
 
 ## 前提条件
-この記事では、以下のことを前提としています。
-
-* Azure BLOB アカウントを作成済みで、そこにデータが格納されている。アカウントの設定手順については、[Azure ストレージ アカウントの作成](../hdinsight-get-started.md#storage)についてのページを参照してください。
+この記事は、Azure Blob Storage アカウントが作成済みで、そこにデータが格納されていることを前提とします。アカウントの設定手順については、[Azure ストレージ アカウントの作成](../hdinsight-get-started.md#storage)についてのページを参照してください。
 
 
 ## Pandas データ フレームにデータを読み込む
@@ -66,7 +61,7 @@
 	
 次の 2 つのセクションでは、Python スクリプトを使用して、インジケーター値を持つカテゴリ特徴を生成し、特徴をビン分割する方法について説明します。
 
-###<a name="blob-countfeature"></a>インジケーター値ベースの特徴の生成
+###<a name="blob-countfeature">インジケーター値ベースの特徴の生成</a>
 
 カテゴリの特徴は、次のように作成できます。
 
@@ -142,4 +137,4 @@
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!----HONumber=AcomDC_0518_2016-->

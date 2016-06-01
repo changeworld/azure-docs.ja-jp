@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/17/2016"
 ms.author="deonhe"/>
 
 # MailChimp コネクタの使用
@@ -25,7 +25,7 @@ MailChimp コネクタは、次のツールから使用できます。
 
 - [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)  
 - [PowerApps](http://powerapps.microsoft.com)  
-- [Flows](http://flows.microsoft.com)  
+- [フロー](http://flows.microsoft.com)  
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
@@ -62,7 +62,8 @@ MailChimp を使用してロジック アプリを作成するには、まず**�
 |プロパティ| 必須|説明|
 | ---|---|---|
 |トークン|はい|MailChimp の資格情報を提供します|
-接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
+
+>[AZURE.INCLUDE [MailChimp への接続を作成する手順](../../includes/connectors-create-api-mailchimp.md)]
 
 >[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
@@ -489,11 +490,11 @@ MailChimp を使用してロジック アプリを作成するには、まず**�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|name|string|はい |
+|name|string|あり |
 |contact|未定義|あり |
-|permission\_reminder|string|あり |
+|permission\_reminder|string|はい |
 |use\_archive\_bar|boolean|いいえ |
-|campaign\_defaults|未定義|あり |
+|campaign\_defaults|未定義|はい |
 |notify\_on\_subscribe|string|いいえ |
 |notify\_on\_unsubscribe|string|いいえ |
 |email\_type\_option|boolean|あり |
@@ -595,7 +596,7 @@ MailChimp を使用してロジック アプリを作成するには、まず**�
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
 |email\_type|string|いいえ |
-|status|string|あり |
+|status|string|はい |
 |merge\_fields|未定義|いいえ |
 |interests|string|いいえ |
 |言語|string|いいえ |
@@ -743,4 +744,4 @@ MailChimp を使用してロジック アプリを作成するには、まず**�
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

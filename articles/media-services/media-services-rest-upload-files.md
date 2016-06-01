@@ -424,11 +424,48 @@ IngestManifestAssets は一括取り込みで使用される IngestManifest 内�
 	Expect: 100-continue
 	{ "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "Asset" : { "Id" : "nb:cid:UUID:b757929a-5a57-430b-b33e-c05c6cbef02e"}}
 
-###(省略可能) 暗号化に使用する ContentKey を作成する
 
-資産で暗号化を使用する場合、資産の IngestManifestFiles を作成する前に暗号化に使用する ContentKey を作成する必要があります。この場合は、次のプロパティを要求本文に含めます。
+###各資産の IngestManifestFiles を作成する
+
+IngestManifestFile とは、資産の一括取り込みの一環としてアップロードされる実際のビデオまたはオーディオ BLOB オブジェクトです。暗号化関連のプロパティは、資産で暗号化オプションを使用しない限り不要です。このセクションの例では、StorageEncryption を使用する IngestManifestFile を作成済みの資産用に作成する方法を示します。
+
+
+**HTTP 応答**
+
+	POST https://media.windows.net/API/IngestManifestFiles HTTP/1.1
+	Content-Type: application/json;odata=verbose
+	Accept: application/json;odata=verbose
+	DataServiceVersion: 3.0
+	MaxDataServiceVersion: 3.0
+	x-ms-version: 2.11
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
+	Host: media.windows.net
+	Content-Length: 367
+	Expect: 100-continue
+	
+	{ "Name" : "REST_Example_File.wmv", "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "ParentIngestManifestAssetId" : "nb:maid:UUID:beed8531-9a03-9043-b1d8-6a6d1044cdda", "IsEncrypted" : "true", "EncryptionScheme" : "StorageEncryption", "EncryptionVersion" : "1.0", "EncryptionKeyId" : "nb:kid:UUID:32e6efaf-5fba-4538-b115-9d1cefe43510" }
+	
+###Blob ストレージにファイルをアップロードする
+
+資産ファイルを BLOB ストレージ コンテナーの URI にアップロードする機能のある任意の高速クライアント アプリケーションを使用できます。これは、IngestManifest の BlobStorageUriForUpload プロパティから提供します。有名な高速アップロードサービスには、[Aspera On Demand for Azure アプリケーション](http://go.microsoft.com/fwlink/?LinkId=272001)などがあります。
+
+###一括取り込みの進捗状況を監視する
+
+IngestManifest の Statistics プロパティをポーリングすることによって、IngestManifest の一括取り込み操作の進行状況を監視できます。このプロパティは複合型の [IngestManifestStatistics](https://msdn.microsoft.com/library/azure/jj853027.aspx) です。Statistics プロパティをポーリングするには、IngestManifest ID を渡して、HTTP GET 要求を送信します。
  
-要求本文のプロパティ | 説明 ID |"nb:kid:UUID:<NEW GUID>" 形式を使用して生成する ContentKey ID です。ContentKeyType | 整数によるこのコンテンツ キーの種類です。ストレージの暗号化には、値 1 を渡します。EncryptedContentKey | 256 ビット (32 バイト) の値の新しいコンテンツ キー値を作成します。このキーは、GetProtectionKeyId および GetProtectionKey メソッド用に HTTP GET 要求を実行して Microsoft Azure Media Services から取得する、ストレージ暗号化 X.509 証明書を使用して暗号化します。ProtectionKeyId | コンテンツ キーの暗号化に使用したストレージ暗号化 X.509 証明書の保護キー ID です。ProtectionKeyType |コンテンツ キーの暗号化に使用した保護キーの暗号化の種類です。例では、この値には StorageEncryption(1) を使用しています。Checksum | コンテンツ キー用に MD5 で計算されたチェックサムです。コンテンツ ID をコンテンツ キーで暗号化してコンピューティングします。コード例では、チェックサムの計算方法を示しています。
+
+##暗号化に使用する ContentKey を作成する
+
+資産で暗号化を使用する場合、資産ファイルを作成する前に、暗号化に使用する ContentKey を作成しておく必要があります。ストレージ暗号化では、次のプロパティを要求本文に含める必要があります。
+ 
+要求本文のプロパティ | 説明
+---|---
+ID | "nb:kid:UUID:<NEW GUID>" 形式を使用して生成する ContentKey ID です。
+ContentKeyType | 整数によるこのコンテンツ キーの種類です。ストレージの暗号化には、値 1 を渡します。
+EncryptedContentKey | 256 ビット (32 バイト) の値の新しいコンテンツ キー値を作成します。このキーは、GetProtectionKeyId および GetProtectionKey メソッド用に HTTP GET 要求を実行して Microsoft Azure Media Services から取得する、ストレージ暗号化 X.509 証明書を使用して暗号化します。
+ProtectionKeyId | コンテンツ キーの暗号化に使用したストレージ暗号化 X.509 証明書の保護キー ID です。
+ProtectionKeyType | コンテンツ キーの暗号化に使用した保護キーの暗号化の種類です。例では、この値には StorageEncryption(1) を使用しています。
+Checksum |コンテンツ キー用に MD5 で計算されたチェックサムです。コンテンツ ID をコンテンツ キーで暗号化してコンピューティングします。コード例では、チェックサムの計算方法を示しています。
 
 
 **HTTP 応答**
@@ -465,35 +502,6 @@ ContentKey は、HTTP POST 要求を送信することによって 1 つ以上�
 	
 	{ "uri": "https://media.windows.net/api/ContentKeys('nb%3Akid%3AUUID%3A32e6efaf-5fba-4538-b115-9d1cefe43510')"}
 
-###各資産の IngestManifestFiles を作成する
-
-IngestManifestFile とは、資産の一括取り込みの一環としてアップロードされる実際のビデオまたはオーディオ BLOB オブジェクトです。暗号化関連のプロパティは、資産で暗号化オプションを使用しない限り不要です。このセクションの例では、StorageEncryption を使用する IngestManifestFile を作成済みの資産用に作成する方法を示します。
-
-
-**HTTP 応答**
-
-	POST https://media.windows.net/API/IngestManifestFiles HTTP/1.1
-	Content-Type: application/json;odata=verbose
-	Accept: application/json;odata=verbose
-	DataServiceVersion: 3.0
-	MaxDataServiceVersion: 3.0
-	x-ms-version: 2.11
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
-	Host: media.windows.net
-	Content-Length: 367
-	Expect: 100-continue
-	
-	{ "Name" : "REST_Example_File.wmv", "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "ParentIngestManifestAssetId" : "nb:maid:UUID:beed8531-9a03-9043-b1d8-6a6d1044cdda", "IsEncrypted" : "true", "EncryptionScheme" : "StorageEncryption", "EncryptionVersion" : "1.0", "EncryptionKeyId" : "nb:kid:UUID:32e6efaf-5fba-4538-b115-9d1cefe43510" }
-	
-###Blob ストレージにファイルをアップロードする
-
-資産ファイルを BLOB ストレージ コンテナーの URI にアップロードする機能のある任意の高速クライアント アプリケーションを使用できます。これは、IngestManifest の BlobStorageUriForUpload プロパティから提供します。有名な高速アップロードサービスには、[Aspera On Demand for Azure アプリケーション](http://go.microsoft.com/fwlink/?LinkId=272001)などがあります。
-
-###一括取り込みの進捗状況を監視する
-
-IngestManifest の Statistics プロパティをポーリングすることによって、IngestManifest の一括取り込み操作の進行状況を監視できます。このプロパティは複合型の [IngestManifestStatistics](https://msdn.microsoft.com/library/azure/jj853027.aspx) です。Statistics プロパティをポーリングするには、IngestManifest ID を渡して、HTTP GET 要求を送信します。
- 
-
 **HTTP 応答**
 
 	GET https://media.windows.net/API/IngestManifests('nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048') HTTP/1.1
@@ -521,4 +529,4 @@ IngestManifest の Statistics プロパティをポーリングすることに�
 [How to Get a Media Processor]: media-services-get-media-processor.md
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

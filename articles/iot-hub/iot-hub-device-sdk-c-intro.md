@@ -26,6 +26,8 @@ C 用 Azure IoT デバイス SDK は、移植性を最大限まで高めるた�
 
 この記事では、C 用 Azure IoT デバイス SDK のアーキテクチャについて紹介します。また、デバイスのライブラリを初期化する方法、IoT Hub にイベントを送信する方法や IoT Hub からメッセージを受信する方法の例を示します。この記事の情報は、SDK を使用し始めるにあたり十分な内容ですが、ライブラリに関する追加情報を入手できる場所も紹介します。
 
+>> [AZURE.NOTE] この記事には SDK の C ライブラリの*デバイス管理*機能を使用する方法についての情報は含まれません。デバイス管理機能を使用する方法については、「[Azure IoT Hub デバイス管理 (DM) クライアント ライブラリの概要](iot-hub-device-management-library.md)」を参照してください。
+
 ## SDK のアーキテクチャ
 
 次の GitHub リポジトリ内で **C 用 Azure IoT デバイス SDK** を見つけることができます。
@@ -90,7 +92,7 @@ Azure サブスクリプションで Azure IoT Hub のインスタンスを作�
   		![](media/iot-hub-device-sdk-c-intro/11-GitToolsPath.PNG)
 
 
-[「開発環境を準備する」](https://github.com/Azure/azure-iot-sdks/blob/master/c/doc/devbox_setup.md) ページで説明されているすべての手順を完了すると、サンプル アプリケーションをコンパイルする準備ができます。
+「[開発環境を準備する](https://github.com/Azure/azure-iot-sdks/blob/master/c/doc/devbox_setup.md)」ページで説明されているすべての手順を完了すると、サンプル アプリケーションをコンパイルする準備ができます。
 
 ### デバイスの資格情報の取得
 
@@ -460,4 +462,6 @@ serializer_deinit();
 
 この記事では、**C 用 Azure IoT device SDK** のライブラリの使用方法の基本を説明しました。SDK の内容、そのアーキテクチャ、Windows サンプルの実行を開始する方法を理解するうえで十分な情報を提供しました。次の記事では、[IoTHubClient ライブラリに関する詳細](iot-hub-device-sdk-c-iothubclient.md)を説明することで、引き続き SDK について記述します。
 
-<!---HONumber=AcomDC_0330_2016------>
+**Azure IoT device SDK for C** のデバイス管理機能を使用する方法については、「[Azure IoT Hub デバイス管理 (DM) クライアント ライブラリの概要](iot-hub-device-management-library.md)」を参照してください。
+
+<!---HONumber=AcomDC_0518_2016-->

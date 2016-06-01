@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="05/17/2016"
 	ms.author="douglasl"/>
 
 # Stretch Database の管理とトラブルシューティング
@@ -56,4 +56,4 @@ Stretch Database に構成された SQL Server テーブルに関連付けられ
 
 [Stretch 対応データベースをバックアップし、復元します。](sql-server-stretch-database-backup.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

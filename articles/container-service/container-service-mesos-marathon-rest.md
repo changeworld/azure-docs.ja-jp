@@ -24,8 +24,8 @@ DC/OS はクラスター化されたワークロードをデプロイし、ス�
 
 一般的な各種ワークロードに対応したフレームワークがあるものの、このドキュメントでは、Marathon を使ってコンテナー デプロイを作成し、スケールする方法について説明します。これらの例を見ていく前に、Azure コンテナー サービスで構成された DC/OS クラスターが必要です。また、このクラスターへのリモート接続も必要です。これらの項目の詳細については、次の記事を参照してください。
 
-- [Azure コンテナー サービス クラスターのデプロイ](./container-service-deployment.md)
-- [Azure コンテナー サービス クラスターに接続する](./container-service-connect.md)
+- [Azure コンテナー サービス クラスターのデプロイ](container-service-deployment.md)
+- [Azure コンテナー サービス クラスターに接続する](container-service-connect.md)
 
 Azure コンテナー サービス クラスターに接続したら、http://localhost:local-port を通じて DC/OS と関連の REST API にアクセスできます。このドキュメントの例では、ポート 80 にトンネリングしていることを前提としています。たとえば、Marathon エンドポイントには、`http://localhost/marathon/v2/` で到達できます。さまざまな API の詳細については、[Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) と [Chronos API](https://mesos.github.io/chronos/docs/api.html) に関する Mesosphere ドキュメントと [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) に関する Apache ドキュメントを参照してください。
 
@@ -172,6 +172,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 ## 次のステップ
 
-[Meso HTTP エンドポイントの詳細](http://mesos.apache.org/documentation/latest/endpoints/)。[Marathon REST API の詳細](https://mesosphere.github.io/marathon/docs/rest-api.html)。
+[Mesos HTTP エンドポイントの詳細](http://mesos.apache.org/documentation/latest/endpoints/)。[Marathon REST API の詳細](https://mesosphere.github.io/marathon/docs/rest-api.html)。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

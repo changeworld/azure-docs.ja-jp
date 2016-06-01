@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法" 
+	pageTitle="Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法 | Microsoft Azure" 
 	description="Azure API Management でバックアップと復元を使用して障害復旧を行う方法について説明します。" 
 	services="api-management" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/16/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法
@@ -191,4 +191,4 @@ API Management サービスをバックアップするには、次の HTTP 要�
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

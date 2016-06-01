@@ -9,32 +9,48 @@ Azure で実行される VM には 2 つの可能な構成があります。VM �
 
 ## 複数インスタンス構成の場合
 可用性セットから VM を削除することで、可用性セット構成にデプロイされた VM に対していつ計画的メンテナンスが行われるかを選択できます。
+
 1.	複数インスタンス構成の VM に対する計画的メンテナンスの 7 日前に、電子メールがユーザーに送信されます。電子メールの本文には、サブスクリプション ID と、影響を受ける複数インスタンス VM の名前が記載されています。
-2.	この 7 日の間に、そのリージョン内の複数インスタンス VM を可用性セットから削除することにより、インスタンスが更新される時間を選択できます。この構成変更により、仮想マシンがメンテナンス対象の物理ホストからメンテナンス対象ではない別の物理ホストに移動するので、再起動が行われます。 
-3.	可用性セットからの VM の削除はクラシック ポータルで行うことができます。 
+
+2.	この 7 日の間に、そのリージョン内の複数インスタンス VM を可用性セットから削除することにより、インスタンスが更新される時間を選択できます。この構成変更により、仮想マシンがメンテナンス対象の物理ホストからメンテナンス対象ではない別の物理ホストに移動するので、再起動が行われます。
+
+3.	可用性セットからの VM の削除はクラシック ポータルで行うことができます。
    
-        a.	In the Classic portal, click on the VM and then select “configure.” 
-        
-        b.	Under “settings”, you can see which Availability Set the VM is in.
-        
-    ![可用性セットの選択](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
+    1.	クラシック ポータルで、VM をクリックし、[構成] を選択します。 
 
-        c.	In the availability set dropdown menu, select “remove from availability set.”
-        
-    ![セットからの削除](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselectionconfiguration.png)
+    2.	[設定] で、VM がどの可用性セットの中にあるかを確認できます。
 
-        d.	At the bottom, select “save.” Select “yes” to acknowledge that this action will restart the VM.
+        ![可用性セットの選択](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
+
+    3.	[可用性セット] にドロップダウン メニューから [可用性セットから削除] を選択します。
+
+        ![セットからの削除](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselectionconfiguration.png)
+
+    4.	下部にある [保存] を選択します。 [はい] を選択して、この操作によって VM が再起動されることを承認します。
+
 4.	これらの VM は単一インスタンス ホストに移動し、可用性セット構成の計画的メンテナンスでは更新されません。
+
 5.	可用性セット VM の更新が (元の電子メールに記載されているスケジュールに従って) 完了した後で、可用性セットに VM を戻す必要があります。戻した VM は、複数インスタンス VM として再構成されます。VM を単一インスタンスから複数インスタンスに戻すと、再起動が行われます。通常、Azure 環境全体のすべての複数インスタンスの更新が完了した後で、単一インスタンスのメンテナンスが行われます。
 
-これも次の Azure PowerShell を使用して行うことができます。Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Remove-AzureAvailabilitySet | Update-AzureVM
+これも Azure PowerShell を使用して行うことができます。
+
+```
+Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Remove-AzureAvailabilitySet | Update-AzureVM
+```
 
 ## 単一インスタンス構成の場合
-VM を可用性セットに追加することで、単一インスタンス構成の VM に対する計画的メンテナンスのタイミングを選択できます。詳細な手順:
+VM を可用性セットに追加することで、単一インスタンス構成の VM に対する計画的メンテナンスのタイミングを選択できます。
+
+詳細な手順:
+
 1.	単一インスタンス構成の VM に対する計画的メンテナンスの 7 日前に、電子メールがユーザーに送信されます。電子メールの本文には、サブスクリプション ID と、影響を受ける単一インスタンス VM の名前が記載されています。 
+
 2.	この 7 日の間に、単一インスタンス VM を同じリージョンの可用性セットに移動することにより、インスタンスが再起動する時間を選択できます。この構成変更により、仮想マシンがメンテナンス対象の物理ホストからメンテナンス対象ではない別の物理ホストに移動するので、再起動が行われます。
+
 3.	クラシック ポータルと Azure PowerShell を使用し、ここで示す手順に従って、既存の VM を可用性セットに追加します (後の Azure PowerShell サンプルを参照)。
+
 4.	複数インスタンスとして再構成した VM は、単一インスタンス VM の計画的メンテナンスから除外されます。
+
 5.	単一インスタンス VM の更新が (元の電子メールに記載されているスケジュールに従って) 完了したら、可用性セットから VM を削除できます。削除した VM は、単一インスタンス VM として再構成されます。
 
 これも Azure PowerShell を使用して行うことができます。
@@ -48,5 +64,3 @@ VM を可用性セットに追加することで、単一インスタンス構�
 <!--Link references-->
 [Virtual Machines Manage Availability]: virtual-machines-windows-tutorial.md
 [Understand planned versus unplanned maintenance]: virtual-machines-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
-
-<!---HONumber=AcomDC_0323_2016-->

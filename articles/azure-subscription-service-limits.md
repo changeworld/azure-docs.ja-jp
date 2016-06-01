@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="05/11/2016"
 	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -41,6 +41,7 @@
 - [API Management](#api-management-limits)
 - [App Service](#app-service-limits)
 - [Application Insights](#application-insights-limits)
+- [Automation](#automation-limits)
 - [Azure Redis Cache](#azure-redis-cache-limits)
 - [Azure RemoteApp](#azure-remoteapp-limits)
 - [Backup](#backup-limits)
@@ -190,7 +191,7 @@
 
 [AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-all.md)]
 
-ドキュメントのサイズ、キー数、要求数、応答数など、他の制限の詳細については、「[Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」をご覧ください。
+ドキュメントのサイズ、キー数、要求数、応答数など、他の制限の詳細については、「[Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」を参照してください。
 
 ### Media Services の制限
 
@@ -273,6 +274,9 @@
 ### Multi-Factor Authentication
 [AZURE.INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
+### Automation の制限
+[AZURE.INCLUDE [automation-limits](../includes/azure-automation-service-limits.md)]
+
 ### SQL Database の制限
 
 SQL Database の制限については、「[SQL Database のリソース制限](sql-database/sql-database-resource-limits.md)」を参照してください。
@@ -285,4 +289,4 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 [クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

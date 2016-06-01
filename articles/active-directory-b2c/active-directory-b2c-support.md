@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="05/16/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: サポート要求の提出
@@ -25,7 +25,7 @@ Azure ポータルで Azure Active Directory (Azure AD) B2C のサポート要�
 1. [この手順に従って、Azure ポータルで B2C 機能ブレードに移動します。](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)
 2. B2C テナントを、Azure サブスクリプションが関連付けられている別のテナントに切り替えます。通常、移動先のテナントは、従業員のテナント、または Azure サブスクリプションにサインアップしたときに作成された既定のテナントです。詳細については、「[Azure サブスクリプションが Azure AD に関連付けられる方法](active-directory-how-subscriptions-associated-directory.md#how-an-azure-subscription-is-related-to-azure-ad)」を参照してください。
 
-    ![Support - Switch tenants](./media/active-directory-b2c-support/support-switch-dir.png)
+    ![サポート - ディレクトリの切り替え](./media/active-directory-b2c-support/support-switch-dir.png)
 
 3. テナントを切り替えた後、**[ヘルプとサポート]** をクリックします。
 
@@ -40,7 +40,7 @@ Azure ポータルで Azure Active Directory (Azure AD) B2C のサポート要�
     - **[問題の種類]** は **[技術]** です。
 	- 適切な**サブスクリプション**を選択します。
     - **[サービス]** は **[Active Directory]** です。
-    - 適切な**サポート プラン**を選択します。サポート プランがない場合は、[ここ](https://azure.microsoft.com/ja-JP/support/plans/)からサインアップできます。
+    - 適切な**サポート プラン**を選択します。サポート プランがない場合は、[ここ](https://azure.microsoft.com/support/plans/)からサインアップできます。
 
     ![Support - Basics](./media/active-directory-b2c-support/support-basics.png)
 
@@ -70,4 +70,4 @@ B2C テナントで新しい Azure サブスクリプションにサインアッ
 
 ![サポート - サブスクリプションなし](./media/active-directory-b2c-support/support-no-sub.png)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

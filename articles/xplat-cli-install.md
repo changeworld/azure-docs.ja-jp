@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure コマンド ライン インターフェイスのインストール | Microsoft Azure"
-	description="Mac、Linux、および Windows に Azure CLI をインストールして Azure サービスの利用を開始する"
+	description="Mac、Linux、および Windows に Azure コマンド ライン インターフェイス (CLI) をインストールして Azure サービスの利用を開始する"
 	editor=""
 	manager="timlt"
 	documentationCenter=""
@@ -14,10 +14,14 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/07/2016"
+	ms.date="04/20/2016"
 	ms.author="danlep"/>
-
+    
 # Azure CLI のインストール
+
+> [AZURE.SELECTOR]
+- [PowerShell](powershell-install-configure.md)
+- [Azure CLI](xplat-cli-install.md)
 
 Azure コマンド ライン インターフェイス (Azure CLI) を簡単にインストールすると、コマンド ライン シェルからオープン ソースのコマンドを使って Microsoft Azure 上のリソースを作成したり管理したりすることができます。インストールにはいくつかの方法があります。各種オペレーティング システム用に提供されているいずれかのインストーラー パッケージを使用するか、npm パッケージを使用するか、Docker ホストのコンテナーとして Azure CLI をインストールします。その他のオプションとバックグラウンドについては、[GitHub](https://github.com/azure/azure-xplat-cli) のプロジェクト リポジトリを参照してください。
 
@@ -31,7 +35,7 @@ Azure CLI をインストールした後、[Azure サブスクリプションに
 
 * [Windows インストーラー][windows-installer]
 
-* [OS X インストーラー](http://go.microsoft.com/fwlink/?LinkId=252249)
+* [OS X インストーラー][mac-installer]
 
 * [Linux インストーラー][linux-installer]
 
@@ -59,6 +63,11 @@ Azure CLI をインストールすると、コマンド ライン ユーザー �
 ```
 azure help
 ```
+> [AZURE.NOTE]一部の Linux ディストリビューションでは /usr/bin/env: ‘node’: No such file or directory というエラーが発生する可能性があります。これは、nodejs の最近のインストールが /usr/bin/nodejs にインストールされていることが原因です。このエラーを修正するには、次のコマンドを実行して /usr/bin/node にシンボリック リンクを作成します。
+
+```
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+```
 
 インストールした Azure CLI のバージョンを確認するには、次のように入力します。
 
@@ -67,6 +76,8 @@ azure --version
 ```
 
 これで準備が整いました。 CLI コマンドを使って必要なリソースを操作するためには、[Azure CLI から Azure サブスクリプションに接続](xplat-cli-connect.md)します。
+
+>[AZURE.NOTE] 最初に Azure CLI バージョン 0.9.20 以降を使用すると、Microsoft が CLI の使用状況についての情報を収集することを許可するかどうかを尋ねるメッセージが表示されます。参加は任意です。参加した後でも、`azure telemetry --disable` を実行するといつでも停止することができます。参加を有効にするには、任意のタイミングで `azure telemetry --enable` を実行します。
 
 
 ## CLI の更新
@@ -93,4 +104,4 @@ npm update -g azure-cli
 [cliasm]: virtual-machines-command-line-tools.md
 [cliarm]: ./virtual-machines/azure-cli-arm-commands.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="パーティション分割されたメッセージング エンティティ | Microsoft Azure"
-   description="複数のメッセージ ブローカーを使用したメッセージング エンティティをパーティション分割する方法について説明します。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" /> 
+    pageTitle="パーティション分割されたメッセージング エンティティ | Microsoft Azure"
+    description="複数のメッセージ ブローカーを使用したメッセージング エンティティをパーティション分割する方法について説明します。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" /> 
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="12/28/2015"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="05/06/2016"
+    ms.author="sethm" />
 
 # パーティション分割されたメッセージング エンティティ
 
@@ -25,7 +25,7 @@ Service Bus 内部の詳細については、「[Service Bus アーキテクチ�
 
 パーティション分割されたキューまたはトピックはそれぞれ、複数のフラグメントで構成されます。フラグメントはそれぞれ別々のメッセージング ストアに格納され、別々のメッセージ ブローカーで処理されます。パーティション分割されたキューまたはトピックにメッセージが送信されると、Service Bus はそのメッセージをいずれかのフラグメントに割り当てます。対象のフラグメントは、Service Bus によってランダムに選択されるか、送信側で指定できるパーティション キーによって選択されます。
 
-クライアントがパーティション分割されたキューまたはパーティション分割されたトピックのサブスクリプションからメッセージを受信する場合、Service Bus はすべてのフラグメントを照会してメッセージを探し、いずれかのメッセージング ストアから返された最初のメッセージを受信側に返します。Service Bus は、追加の受信要求を受信すると、他のメッセージをキャッシュして返します。受信側クライアントはパーティション分割を認識しません。パーティション分割されたキューやトピックの動作 (読み込み、完了、遅延、配信不能、プリフェッチなど) は、クライアント側には通常のエンティティの動作と同一に見えます。
+クライアントがパーティション分割されたキューまたはパーティション分割されたトピックのサブスクリプションからメッセージを受信する場合、Service Bus はすべてのフラグメントを照会してメッセージを探し、いずれかのメッセージング ストアから取得された最初のメッセージを受信側に返します。Service Bus は、追加の受信要求を受信すると、他のメッセージをキャッシュして返します。受信側クライアントはパーティション分割を認識しません。パーティション分割されたキューやトピックの動作 (読み込み、完了、遅延、配信不能、プリフェッチなど) は、クライアント側には通常のエンティティの動作と同一に見えます。
 
 パーティション分割されたキューやトピックとのメッセージの送受信に追加費用は発生しません。
 
@@ -144,4 +144,4 @@ Azure Service Bus では、パーティション分割されたエンティテ�
   [QueueDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
   [Service Bus のパーティション分割されたキューとトピックの AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 
-<!---HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/25/2016"
+	ms.date="05/06/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 # Azure 仮想マシンのバックアップを管理および監視する
@@ -42,7 +42,9 @@
     ![ジョブ](./media/backup-azure-manage-vms/backup-job.png)
 
 ## オンデマンドでの仮想マシンのバックアップ
-仮想マシンに保護が構成されていれば、その仮想マシンについてオンデマンド バックアップを作成できます。仮想マシンの最初のバックアップが保留中の場合、オンデマンド バックアップを実行すると、仮想マシンの完全なコピーが Azure のバックアップ コンテナーに作成されます。最初のバックアップが完了している場合、オンデマンド バックアップを実行すると、前のバックアップから変更された部分のみが Azure のバックアップ コンテナーに送られます。
+仮想マシンに保護が構成されていれば、その仮想マシンについてオンデマンド バックアップを作成できます。仮想マシンの最初のバックアップが保留中の場合、オンデマンド バックアップを実行すると、仮想マシンの完全なコピーが Azure のバックアップ コンテナーに作成されます。最初のバックアップが完了している場合、オンデマンド バックアップを実行すると、前のバックアップから変更された部分のみが Azure のバックアップ コンテナーに送られます (すなわち、常に増分バックアップとなります)。
+
+>[AZURE.NOTE] オンデマンド バックアップの保有期間の範囲は、VM に対応するバックアップ ポリシーの日単位の保有期間として指定された保有期間の値に設定されます。
 
 仮想マシンのオンデマンド バックアップを作成するには:
 
@@ -198,62 +200,38 @@ Azure Backup では、顧客がトリガーしたバックアップ操作の "�
     ![操作の詳細](./media/backup-azure-manage-vms/ops-logs-details-window.png)
 
 ## アラート通知
-ポータルで、ジョブのカスタム アラート通知を取得できます。この通知は、操作ログのイベントに PowerShell ベースのアラート ルールを定義することによって取得できます。
-
-イベント ベースのアラートは、Azure リソース モードで動作します。Azure リソース モードに切り替えるには、管理者特権のコマンド モードで次のコマンドレットを実行します。
-
-```
-PS C:\> Switch-AzureMode AzureResourceManager
-```
+ポータルで、ジョブのカスタム アラート通知を取得できます。この通知は、操作ログのイベントに PowerShell ベースのアラート ルールを定義することによって取得できます。*PowerShell バージョン 1.3.0 以降*の使用をお勧めします。
 
 バックアップが失敗した場合にアラートを発行するカスタム通知を定義する場合、コマンドのサンプルは次のようになります。
 
 ```
-PS C:\> Add-AlertRule -Operator GreaterThanOrEqual -Threshold 1 -ResourceId '/subscriptions/86eeac34-eth9a-4de3-84db-7a27d121967e/resourceGroups/RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US/providers/microsoft.backupbvtd2/BackupVault/trinadhVault' -EventName Backup  -EventSource Administrative -Level Error -OperationName 'Microsoft.Backup/backupVault/Backup' -ResourceProvider Microsoft.Backup -Status Failed  -SubStatus Failed -RuleType Event -Location eastus -ResourceGroup RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US -Name Backup-Failed -Description 'Backup failed for one of the VMs in vault trinadhkVault' -CustomEmails 'contoso@microsoft.com' -SendToServiceOwners
+PS C:\> $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail contoso@microsoft.com
+PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -ResourceGroup RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US -OperationName Microsoft.Backup/backupVault/Backup -Status Failed -TargetResourceId /subscriptions/86eeac34-eth9a-4de3-84db-7a27d121967e/resourceGroups/RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US/providers/microsoft.backupbvtd2/BackupVault/trinadhVault -Actions $actionEmail
 ```
 
 **ResourceId**: 前のセクションで説明した操作ログのポップアップから取得できます。具体的には、操作の詳細を示したポップアップ ウィンドウに表示される ResourceUri が、このコマンドレットに指定する ResourceId となります。
 
-**EventName**: IaaS VM バックアップに関するアラートの場合、サポートされる値は、Register、Unregister、ConfigureProtection、Backup、Restore、StopProtection、DeleteBackupData、CreateProtectionPolicy、DeleteProtectionPolicy、UpdateProtectionPolicy です。
+**OperationName**: 形式は "Microsoft.Backup/backupvault/<EventName>" となります。ここで、EventName は、Register、Unregister、ConfigureProtection、Backup、Restore、StopProtection、DeleteBackupData、CreateProtectionPolicy、DeleteProtectionPolicy、UpdateProtectionPolicy のいずれかとなります。
 
-**Level**: サポートされる値は、Informational、Error です。操作が失敗した場合のアラートには Error を使用し、ジョブが成功した場合のアラートには Informational を使用します。
-
-**OperationName**: これは、"Microsoft.Backup/backupvault/<EventName>" の形式で指定します。EventName には上で説明した値を指定します。
-
-**Status**: サポートされる値は、Started、Succeeded、および Failed です。Status に Succeeded を指定する場合、Level には Informational を指定することをお勧めします。
-
-**SubStatus**: バックアップ操作の Status と同じです。
-
-**RuleType**: イベント ベースのバックアップ アラートであるため、*Event* のままにします。
+**Status**: サポートされる値は、Started、Succeeded、および Failed です。
 
 **ResourceGroup**: 操作がトリガーされるリソースの ResourceGroup です。これは、ResourceId の値から取得できます。ResourceId 値の */resourceGroups/* と */providers/* フィールドの間にある値が ResourceGroup の値です。
 
 **Name**: アラート ルールの名前を指定します。
 
-**Description**: アラート ルールの説明を指定します。
+**CustomEmail**: アラート通知を送信するカスタム電子メール アドレスを指定します。
 
-**CustomEmails**: アラート通知を送信するカスタム電子メール アドレスを指定します。
-
-**SendToServiceOwners**: このオプションを指定すると、サブスクリプションの管理者と共同管理者全員にアラート通知を送信します。
-
-アラートの電子メール サンプルは、次のようになります。
-
-ヘッダーのサンプル:
-
-![アラート ヘッダー](./media/backup-azure-manage-vms/alert-header.png)
-
-アラートの電子メールの本文のサンプル:
-
-![アラートの本文](./media/backup-azure-manage-vms/alert-body.png)
+**SendToServiceOwners**: このオプションを指定すると、サブスクリプションの管理者と共同管理者全員にアラート通知を送信します。これは、**New-AzureRmAlertRuleEmail** コマンドレットで使用できます。
 
 ### アラートに関する制限事項
 イベント ベースのアラートには、次の制限事項が適用されます。
 
 1. アラートは、バックアップ コンテナー内のすべての仮想マシン上でトリガーされます。バックアップ コンテナー内の特定の仮想マシンのセットのアラートを取得するようにカスタマイズすることはできません。
-2. アラートは、次のアラート期間にアラートの条件に一致するイベントがトリガーされなかった場合、自動解決されます。アラートのトリガー期間を設定するには、Add-AlertRule コマンドレットで、*WindowSize* パラメーターを使用します。
+2. この機能はプレビュー段階にあります。[詳細情報](../azure-portal/insights-powershell-samples.md/#create-alert-rules)
+3. "alerts-noreply@mail.windowsazure.com" からアラートが送信されてきます。現時点で、電子メールの送信者を変更することはできません。 
 
 ## 次のステップ
 
 - [Azure VM の復元](backup-azure-restore-vms.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

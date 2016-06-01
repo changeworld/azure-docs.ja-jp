@@ -31,12 +31,12 @@
 
 変更を行った後は、ウィザードは表示されなくなります。ウィザードを実行したユーザーや他のセキュリティ管理者が次に PIM を使用するときには、PIM ダッシュボードが表示されます。
 
-- ロールに対するユーザーの追加や削除、または永続的から一時的への割り当ての変更を行う場合は、「[ユーザー ロールを追加または削除する方法](active-directory-privileged-identity-management-how-to-add-role-to-user)」を参照してください。
-- PIM を管理するためのアクセス権を付与するユーザーを増やす場合は、「[PIM へのアクセス権を付与する方法](active-directory-privileged-identity-management-how-to-give-access-to-pim)」を参照してください。
+- ロールに対するユーザーの追加や削除、または永続的から一時的への割り当ての変更を行う場合は、「[ユーザー ロールを追加または削除する方法](active-directory-privileged-identity-management-how-to-add-role-to-user.md)」を参照してください。
+- PIM を管理するためのアクセス権を付与するユーザーを増やす場合は、「[PIM へのアクセス権を付与する方法](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)」を参照してください。
 
 
 
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

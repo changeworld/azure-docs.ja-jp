@@ -1,27 +1,27 @@
 <properties
    pageTitle="VM の再起動またはサイズ変更の問題 | Microsoft Azure"
    description="Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング"
-   services="virtual-machines"
+   services="virtual-machines-windows, azure-resource-manager"
    documentationCenter=""
-   authors="delhan"
+   authors="Deland-Han"
    manager="felixwu"
    editor=""
    tags="top-support-issue"/>
 
 <tags
-   ms.service="virtual-machines"
-   ms.topic="support-article"
-   ms.tgt_pltfrm="virtual-machines"
+   ms.service="virtual-machines-windows"
+   ms.topic="article"
+   ms.tgt_pltfrm="vm-windows"
    ms.devlang="na"
    ms.workload="required"
-   ms.date="04/28/2016"
+   ms.date="05/12/2016"
    ms.author="delhan"/>
 
 # Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング
 
 > [AZURE.SELECTOR]
 - [クラシック](../articles/virtual-machines/virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
-- [リソース マネージャー](../articles/virtual-machines/virtual-machines-windows-arm-restart-resize-error-troubleshooting.md)
+- [リソース マネージャー](../articles/virtual-machines/virtual-machines-windows-restart-resize-error-troubleshooting.md)
 
 停止している Azure 仮想マシン (VM) を起動しようとしたとき、または既存の Azure VM のサイズを変更しようとしたときに発生する一般的なエラーは割り当てエラーです。このエラーは、クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできない場合に発生します。
 
@@ -70,10 +70,10 @@ VM のサイズ変更要求は、クラウド サービスをホストしてい�
 * 要求した VM のサイズを変更できない場合は、次の手順を実行します。
 
   1. 可用性セットのすべての VM を停止します。
-  
+
     * **[リソース グループ]**、_対象のリソース グループ_、**[リソース]**、_対象の可用性セット_、**[Virtual Machines]**、_対象の仮想マシン_、**[停止]** の順にクリックします。
 
   2. すべての VM が停止したら、目的の VM のサイズを大きなサイズに変更します。
   3. サイズ変更した VM を選択して **[起動]** をクリックした後、停止している各 VM を起動します。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

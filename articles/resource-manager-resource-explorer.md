@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/04/2016"
+   ms.date="05/16/2016"
    ms.author="stuartle;tomfitz"/>
 
 # Azure リソース エクスプローラーを使用してリソースを表示および変更する
@@ -67,11 +67,11 @@ ARM テンプレートに精通するにしたがい、本文のコンテンツ�
 
 ![PowerShell](./media/resource-manager-resource-explorer/are-07-powershell.png)
 
-Azure PowerShell コマンドレットの詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)」をご覧ください。
+Azure PowerShell コマンドレットの詳細については、「[Azure Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)」をご覧ください。
 
 ## 概要
 ARM を使用する場合は、リソース エクスプローラーを使用すると非常に便利です。PowerShell を使用してどのようにクエリを実行し変更を行うかを考える場合に有効です。REST API を使用する場合は、コードの記述を開始する前に、起動して API 呼び出しを迅速にテストすることができます。ARM テンプレートを作成する場合は、リソースの階層を把握し、構成を配置する場所を特定するのに便利です。ポータルで変更を加え、リソース エクスプローラーで対応するエントリを見つけることができます。
 
 詳細については、「[Channel 9 video with Scott Hanselman and David Ebbo (Scott Hanselman と David Ebbo によるチャネル 9 ビデオ)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Resource-Manager-Explorer-with-David-Ebbo)」を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

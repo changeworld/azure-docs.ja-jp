@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="storage"
-   ms.date="04/11/2016"
+   ms.date="04/19/2016"
    ms.author="robinsh" />
 
 # Azure Storage のスケーラビリティおよびパフォーマンスのターゲット
@@ -23,13 +23,11 @@
 
 >[AZURE.NOTE] すべてのストレージ アカウントは新しいフラット ネットワーク トポロジで実行され、ストレージ アカウントがいつ作成されたかにかかわらず、以下に示すスケーラビリティおよびパフォーマンスのターゲットがサポートされます。のフラット ネットワーク アーキテクチャおよびスケーラビリティの詳細については、[Microsoft Azure Storage の高い整合性を持つ高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)に関するページを参照してください。
 
-<!-- -->
-
 >[AZURE.IMPORTANT] ここで示すスケーラビリティおよびパフォーマンスのターゲットは、ハイエンドのターゲットですが、達成可能です。いかなる場合でも、ストレージ アカウントで達成される要求レートおよび帯域幅は、格納されたオブジェクトのサイズ、使用されているアクセス パターン、およびアプリケーションで実行されているワークロードの種類によって異なります。必ずサービスをテストして、パフォーマンスがユーザー要件を満たしているかどうかを確認してください。可能であれば、トラフィック量の急増を回避し、トラフィックがパーティション間でうまく分散されるようにしてください。
 
 >ワークロードがアプリケーションのパーティションで処理できる上限に達すると、Azure Storage はエラー コード 503 (サーバーがビジー状態) またはエラー コード 500 (操作タイムアウト) の応答を返しはじめます。このような状況になった場合、アプリケーションで指数関数的バックオフによる再試行ポリシーを使用する必要があります。指数関数的バックオフによって、そのパーティションへの負荷が減少し、そのパーティションへのトラフィック量の増加が緩和されます。
 
-アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。ボリューム料金については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
+アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。ボリューム価格については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
 
 
 ## Blob、キュー、テーブル、およびファイルのスケーラビリティ ターゲット
@@ -40,8 +38,7 @@
 
 [AZURE.INCLUDE [azure-storage-limits-vm-disks](../../includes/azure-storage-limits-vm-disks.md)]
 
-
-その他の詳細については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
+詳細については、[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md)および [Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md)に関するページをご覧ください。
 
 ### Standard Storage アカウント
 
@@ -86,4 +83,4 @@ Azure Storage に格納されているデータを含むすべてのオブジェ
 - [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md)
 - [Microsoft Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

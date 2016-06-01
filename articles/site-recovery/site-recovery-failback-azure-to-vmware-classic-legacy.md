@@ -19,16 +19,18 @@
 # Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure から VMware にフェールバックする (レガシ)
 
 > [AZURE.SELECTOR]
-- [拡張](site-recovery-failback-azure-to-vmware-classic.md)
-- [レガシ](site-recovery-failback-azure-to-vmware-classic-legacy.md)
+- [Azure ポータル](site-recovery-failback-azure-to-vmware.md)
+- [Azure クラシック ポータル](site-recovery-failback-azure-to-vmware-classic.md)
+- [Azure クラシック ポータル (レガシ)](site-recovery-failback-azure-to-vmware-classic-legacy.md)
 
-Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
+
+Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Site Recovery とは](site-recovery-overview.md)」をご覧ください。
 
 ## 概要
 
 この記事では、VMware 仮想マシンと Windows/Linux 物理サーバーをオンプレミス サイトから Azure にレプリケートした後で、Azure からオンプレミス サイトにフェールバックする方法について説明します。
 
->[AZURE.NOTE] この記事では、従来のシナリオを扱います。Azure にレプリケートする際に[こちらの記事に記載されている手順](site-recovery-vmware-to-azure-classic-legacy.md)に従った場合は、フェールバックの際に本記事の手順を使用する必要があります。レプリケーションのセットアップに[強化されたデプロイ](site-recovery-vmware-to-azure-classic-legacy.md)を使用した場合は、[こちらの記事](site-recovery-failback-azure-to-vmware-classic.md)に記載されている手順に従ってフェールバックしてください。
+>[AZURE.NOTE] この記事では、従来のシナリオを扱います。[こちらの従来の手順](site-recovery-vmware-to-azure-classic-legacy.md)に従って Azure へのレプリケーションを実行した場合にのみ、この記事の手順を使用してください。[強化されたデプロイ](site-recovery-vmware-to-azure-classic-legacy.md)を使用してレプリケーションを設定した場合は、[こちらの記事](site-recovery-failback-azure-to-vmware-classic.md)に記載されている手順に従ってフェールバックします。
 
 
 ## アーキテクチャ
@@ -44,8 +46,8 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 フェールバックをセットアップする手順は次のとおりです。
 
-1. **フェールバック コンポーネントをセットアップする**: オンプレミスで vContinuum サーバーをセットアップし、Azure の構成サーバー VM をポイントする必要があります。また、プロセス サーバーを Azure VM としてセットアップし、データをオンプレミスのマスター ターゲット サーバーに送信するように設定します。フェールオーバーを処理した構成サーバーにプロセス サーバーを登録します。マスター ターゲット サーバーをオンプレミスにインストールします。Windows マスター ターゲット サーバーが必要な場合は、vContinuum をインストールすると自動的にセットアップされます。Linux が必要な場合は、別のサーバーに手動でセットアップする必要があります。
-2. **保護とフェールバックを有効にする**: コンポーネントをセットアップしたら、フェールオーバーした Azure VM に対する保護を vContinuum で有効にする必要があります。VM で適合性チェックを実行し、Azure からオンプレミス サイトへのフェールオーバーを実行します。フェールバックの完了後、Azure へのレプリケートが開始されるように、オンプレミスのマシンを再保護します。
+1. **フェールバック コンポーネントをセットアップする**: オンプレミスで vContinuum サーバーをセットアップし、Azure の構成サーバー VM を参照する必要があります。また、プロセス サーバーを Azure VM としてセットアップし、データをオンプレミスのマスター ターゲット サーバーに送信するように設定します。フェールオーバーを処理した構成サーバーにプロセス サーバーを登録します。マスター ターゲット サーバーをオンプレミスにインストールします。Windows マスター ターゲット サーバーが必要な場合は、vContinuum をインストールすると自動的にセットアップされます。Linux が必要な場合は、別のサーバーに手動でセットアップする必要があります。
+2. **保護とフェールバックを有効にする**: コンポーネントをセットアップしたら、vContinuum で、フェールオーバーした Azure VM の保護を有効にする必要があります。VM で適合性チェックを実行し、Azure からオンプレミス サイトへのフェールオーバーを実行します。フェールバックの完了後、Azure へのレプリケートが開始されるように、オンプレミスのマシンを再保護します。
 
 
 
@@ -426,4 +428,4 @@ VM は Azure にフェールオーバーするときに、ページ ファイル
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->

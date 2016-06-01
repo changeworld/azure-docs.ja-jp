@@ -16,7 +16,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 
 4. Eclipse で、新しい Maven プロジェクトを作成します (**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします)。
 
-   ![][12]
+	![][12]
 
 5. **[既定のワークスペースの場所を使用する]** を選択し、**[次へ]** をクリックします。
 
@@ -229,5 +229,3 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 [12]: ./media/service-bus-event-hubs-getstarted/create-storm1.png
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
-
-<!---HONumber=AcomDC_0316_2016-->

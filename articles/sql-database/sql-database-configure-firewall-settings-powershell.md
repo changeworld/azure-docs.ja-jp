@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article" 
-	ms.date="05/03/2016"
-	ms.author="stevestein"/>
+	ms.date="05/09/2016"
+	ms.author="sstein"/>
 
 
 # 方法: PowerShell を使用して Azure SQL Database ファイアウォールを構成する
@@ -33,29 +33,31 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 > [AZURE.IMPORTANT] Azure のアプリケーションからデータベース サーバーに接続を許可するには、Azure の接続を有効にする必要があります。ファイアウォール規則と Azure からの接続を有効にする方法については、「[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)」を参照してください。Azure クラウド境界内で接続を行う場合は、追加の TCP ポートをいくつか開かなければならない場合があります。詳細については、「[ADO.NET 4.5 と SQL Database V12 の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」の「**SQL Database V12: 外部と内部**」を参照してください。
 
 
-## Azure PowerShell を使用してサーバー レベルのファイアウォール規則を管理する
-1. Azure PowerShell を起動します。
-2. Azure PowerShell を使用すると、サーバーレベルのファイアウォール規則を作成、更新、および削除できます。 
+[AZURE.INCLUDE [PowerShell セッションの開始](../../includes/sql-database-powershell.md)]
 
-	新しいサーバーレベルのファイアウォール規則を作成するには、New-AzureSqlDatabaseServerFirewallRule コマンドレットを実行します。次の例では、サーバー Contoso の IP アドレス範囲を有効にします。
- 
-		New-AzureSqlDatabaseServerFirewallRule –StartIPAddress 192.168.1.1 –EndIPAddress 192.168.1.10 –RuleName ContosoFirewallRule –ServerName Contoso
- 
-	既存のサーバーレベルのファイアウォール規則を変更するには、Set-azuresqldatabaseserverfirewallrule コマンドレットを実行します。次の例では、ContosoFirewallRule という名前の規則で許容される IP アドレスの範囲を変更します。
- 
-		Set-AzureSqlDatabaseServerFirewallRule –StartIPAddress 192.168.1.4 –EndIPAddress 192.168.1.10 –RuleName ContosoFirewallRule –ServerName Contoso
+## サーバー ファイアウォール規則の作成
 
-	既存のサーバーレベルのファイアウォール規則を削除するには、Remove-AzureSqlDatabaseServerFirewallRule コマンドレットを実行します。次の例では、ContosoFirewallRule という名前の規則を削除します。
+Azure PowerShell を使用すると、サーバーレベルのファイアウォール規則を作成、更新、および削除できます。
 
-		Remove-AzureSqlDatabaseServerFirewallRule –RuleName ContosoFirewallRule –ServerName Contoso
+新しいサーバーレベルのファイアウォール規則を作成するには、New-AzureRmSqlServerFirewallRule コマンドレットを実行します。次の例では、サーバー Contoso の IP アドレス範囲を有効にします。
+ 
+    New-AzureRmSqlServerFirewallRule -ResourceGroupName 'resourcegroup1' -ServerName 'Contoso' -FirewallRuleName "ContosoFirewallRule" -StartIpAddress '192.168.1.1' -EndIpAddress '192.168.1.10'		
+ 
+既存のサーバーレベルのファイアウォール規則を変更するには、Set-azuresqldatabaseserverfirewallrule コマンドレットを実行します。次の例では、ContosoFirewallRule という名前の規則で許容される IP アドレスの範囲を変更します。
+ 
+    Set-AzureRmSqlServerFirewallRule -ResourceGroupName 'resourcegroup1' –StartIPAddress 192.168.1.4 –EndIPAddress 192.168.1.10 –RuleName 'ContosoFirewallRule' –ServerName 'Contoso'
+
+既存のサーバーレベルのファイアウォール規則を削除するには、Remove-AzureSqlDatabaseServerFirewallRule コマンドレットを実行します。次の例では、ContosoFirewallRule という名前の規則を削除します。
+
+    Remove-AzureRmSqlServerFirewallRule –RuleName 'ContosoFirewallRule' –ServerName 'Contoso'
 
 
 ## PowerShell を使用したファイアウォール規則の管理
 
-* [New-AzureSqlDatabaseServerFirewallRule](https://msdn.microsoft.com/library/azure/dn546724.aspx)
-* [Remove-AzureSqlDatabaseServerFirewallRule](https://msdn.microsoft.com/library/azure/dn546727.aspx)
-* [Set-AzureSqlDatabaseServerFirewallRule](https://msdn.microsoft.com/library/azure/dn546739.aspx)
-* [Get-AzureSqlDatabaseServerFirewallRule](https://msdn.microsoft.com/library/azure/dn546731.aspx)
+* [New-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/mt603860.aspx)
+* [Remove-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/mt603588.aspx)
+* [Set-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/mt603789.aspx)
+* [Get-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/mt603586.aspx)
  
 ## 次のステップ
 
@@ -68,4 +70,4 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

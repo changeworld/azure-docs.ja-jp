@@ -1,5 +1,5 @@
 <properties
-	pageTitle="常に暗号化 - データベース暗号化を使用して Azure SQL Database で機密データを保護する"
+	pageTitle="Always Encrypted - データベース暗号化を使用して Azure SQL Database で機密データを保護する"
 	description="SQL Database の機密データをわずか数分で保護します。"
 	keywords="データの暗号化, sql 暗号化, データベースの暗号化, 機密データ, Always Encrypted"	
 	services="sql-database"
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="05/09/2016"
 	ms.author="sstein"/>
 
 # Always Encrypted - データベース暗号化を使用して SQL Database で機密データを保護し、Windows 証明書ストアで暗号化キーを格納する
@@ -550,4 +550,4 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 - [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
 - [Always Encrypted に関するブログ](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0518_2016-->

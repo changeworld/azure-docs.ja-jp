@@ -33,7 +33,7 @@ Event Hub や管理操作、チェックポイントなどの制御呼び出し�
 
 ## Event Hubs のスループット単位とは何ですか。
 
-Event Hubs のスループット単位は、Azure クラシック ポータルまたは Event Hubs 管理 API によってユーザーが明示的に選択します。スループット単位は Service Bus 名前空間のすべての Event Hubs に適用され、それぞれのスループット単位はその名前空間に次の使用許可を与えます。
+Event Hubs のスループット単位は、Azure クラシック ポータルまたは Event Hubs リソース マネージャー テンプレートによってユーザーが明示的に選択します。スループット単位は Service Bus 名前空間のすべての Event Hubs に適用され、それぞれのスループット単位はその名前空間に次の使用許可を与えます。
 
 - 最大 1 MB/秒の受信イベント (Event Hub に送信されるイベント)。ただし、1 秒あたり 1000 個未満の受信イベント、管理操作、または制御 API 呼び出し。
 
@@ -110,4 +110,4 @@ Event Hubs の詳細については、次の記事を参照してください。
 [Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

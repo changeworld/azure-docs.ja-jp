@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 
 # CDN ルール エンジンの一致条件と機能詳細
 
-このトピックでは、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できる一致条件と機能について詳しく説明します。
+[AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-> [AZURE.NOTE] このルール エンジンには Premium CDN 層が必要です。Standard と Premium の CDN 層の機能については、「[Azure Content Delivery Network の概要](cdn-overview.md)」を参照してください。
+このトピックでは、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できる一致条件と機能について詳しく説明します。
 
 ## 一致条件
 
@@ -98,6 +98,8 @@ URL Query Wildcard (URL クエリ ワイルドカード) | 指定値を要求の
 ### Access (アクセス)
 
 以下の機能でコンテンツのアクセスが制御されます。
+
+> [AZURE.NOTE] トークン認証はまだ一般公開されていませんが、今後のリリースでサポートされる予定です。
 
 名前 | 目的
 -----|--------
@@ -206,4 +208,4 @@ Web アプリケーション ファイアウォール機能は、要求が Web �
 * [Azure CDN の概要](cdn-overview.md)
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

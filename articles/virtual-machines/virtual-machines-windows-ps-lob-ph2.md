@@ -11,7 +11,7 @@
 <tags 
 	ms.service="virtual-machines-windows" 
 	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="Windows" 
+	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/01/2016" 
@@ -197,4 +197,4 @@ V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-
 
 - [フェーズ 3](virtual-machines-windows-ps-lob-ph3.md) を使用して、このワークロードを引き続き構成します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

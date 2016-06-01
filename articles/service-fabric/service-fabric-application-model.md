@@ -3,7 +3,7 @@
    description="Service Fabric のアプリケーションとサービスをモデル化し、記述する方法。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="seanmck"
+   authors="rwike77"
    manager="timlt"
    editor="mani-ramaswamy"/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/05/2016"   
-   ms.author="seanmck"/>
+   ms.date="05/12/2016"   
+   ms.author="ryanwi"/>
 
 # Service Fabric でのアプリケーションのモデル化
 
@@ -29,7 +29,7 @@
 
 アプリケーションの種類は、サービスの種類の集まりで構成されているアプリケーションの分類です。サービスの種類は、サービスを分類したものです。分類にはさまざまな設定と構成を含めることができますが、コア機能は変わりません。サービスのインスタンスは、同じサービスの種類の別のサービス構成のバリエーションです。
 
-アプリケーションのクラス (または "種類") とサービスは、アプリケーションをクラスターのイメージ ストアからインスタンス化する対象となるテンプレートである XML ファイル (アプリケーション マニフェストとサービス マニフェスト) を使用して記述されます。
+アプリケーションのクラス (または "種類") とサービスは、アプリケーションをクラスターのイメージ ストアからインスタンス化する対象となるテンプレートである XML ファイル (アプリケーション マニフェストとサービス マニフェスト) を使用して記述されます。ServiceManifest.xml と ApplicationManifest.xml ファイルのスキーマ定義は、Service Fabric SDK およびツールと共に *C:\\Program Files\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd* にインストールされます。
 
 別のアプリケーション インスタンスのコードは、同じ Service Fabric ノードでホストされている場合でも個別のプロセスとして実行されます。さらに、各アプリケーション インスタンスのライフサイクルを個別に管理できます (つまりアップグレード)。次の図では、コード、構成、パッケージで構成されるサービスの種類で、アプリケーションの種類がどのように構成されるかを示しています。図を簡単にするために、`ServiceType4` のコード/構成/データ パッケージのみが表示されていますが、各サービス タイプにはそのようなパッケージ タイプの一部または全部が含まれます。
 
@@ -254,4 +254,4 @@ PS D:\temp>
 [11]: service-fabric-manage-multiple-environment-app-configuration.md
 [12]: service-fabric-application-runas-security.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

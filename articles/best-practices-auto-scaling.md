@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -19,7 +19,7 @@
 
 # 自動スケール ガイダンス
 
-![patterns and practices logo](media/best-practices-auto-scaling/pnp-logo.png)
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 ## 概要
 自動スケールとは、パフォーマンス要件を満たし、サービス レベル アグリーメント (SLA) に準拠しつつ、ランタイム コストを最小限に抑えられるように、アプリケーションに必要なリソースを動的に割り当てるプロセスです。作業の量が多くなると、アプリケーションで効率よく作業を実行できるようにするために、追加リソースが必要になる場合があります。需要が低くなれば、リソースの割り当てを解除してコストを最小限に抑えながら、十分なパフォーマンスを維持し、SLA に準拠できます。自動スケールは、クラウドでホストされている環境の弾力性を活用しながら、管理オーバーヘッドを削減します。これは、オペレーターがシステムのパフォーマンスを継続的に監視し、リソースの追加や削除に関して判断を行う必要性を軽減することで達成されます。
@@ -113,4 +113,4 @@ Azure ソリューションでは自動スケールを構成するためのオ�
 - [自動スケールに対する操作](http://msdn.microsoft.com/library/azure/dn510374.aspx)
 - [Microsoft.WindowsAzure.Management.Monitoring.Autoscale 名前空間](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.management.monitoring.autoscale.aspx)
 
-<!-----HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

@@ -565,8 +565,8 @@ POD:
 **Swift**:
 
 	// add the following imports to your bridging header:
-	//     #import <ADALiOS/ADAuthenticationContext.h>
-	//     #import <ADALiOS/ADAuthenticationSettings.h>
+	//		#import <ADALiOS/ADAuthenticationContext.h>
+	//		#import <ADALiOS/ADAuthenticationSettings.h>
 
 	func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> Void) {
 		let authority = "INSERT-AUTHORITY-HERE"
@@ -588,6 +588,158 @@ POD:
     		}
 	}
 
+
+## <a name="facebook-sdk"></a>方法: Facebook SDK for iOS でユーザーを認証する
+
+Facebook SDK for iOS を使用すると、Facebook でアプリケーションにユーザーをサインインさせることができます。これにより、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、多くの場合、`loginAsync()` メソッドを使用する方法よりも推奨されます。
+
+1. 「[App Service アプリケーションを Facebook ログインを使用するように構成する方法](app-service-mobile-how-to-configure-facebook-authentication.md)」のチュートリアルに従って、Facebook のサインイン用にモバイル アプリ バックエンドを構成します。
+
+2. 「[Facebook SDK for iOS - Getting Started (Facebook SDK for iOS - 概要)](https://developers.facebook.com/docs/ios/getting-started)」に従って Facebook SDK for iOS をインストールします。新しいアプリを作成する代わりに、既存の登録に iOS プラットフォームを追加できます。
+
+    Facebook のドキュメントには、App Delegate での Objective-C コードが含まれます。**Swift** を使用している場合は、AppDelegate.swift に次の変換を使用できます。
+  
+		// Add the following import to your bridging header:
+		//		#import <FBSDKCoreKit/FBSDKCoreKit.h>
+		
+		func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+			FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+			// Add any custom logic here.
+			return true
+		}
+
+		func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+			let handled = FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+			// Add any custom logic here.
+			return handled
+		}
+
+3. `FBSDKCoreKit.framework` をプロジェクトに追加するだけでなく、同じ方法で `FBSDKLoginKit.framework` への参照を追加することもできます。
+
+4. ご使用の言語に応じて、以下のコードをアプリケーションに追加します。
+
+**Objective-C**:
+
+	#import <FBSDKLoginKit/FBSDKLoginKit.h>
+	#import <FBSDKCoreKit/FBSDKAccessToken.h>
+	// ...
+	- (void) authenticate:(UIViewController*) parent
+	           completion:(void (^) (MSUser*, NSError*)) completionBlock;
+	{	    
+	    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+	    [loginManager
+	     logInWithReadPermissions: @[@"public_profile"]
+	     fromViewController:parent
+	     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+	         if (error) {
+	             completionBlock(nil, error);
+	         } else if (result.isCancelled) {
+	             completionBlock(nil, error);
+	         } else {
+	             NSDictionary *payload = @{
+	                                       @"access_token":result.token.tokenString
+	                                       };
+	             [client loginWithProvider:@"facebook" token:payload completion:completionBlock];
+	         }
+	     }];
+	}
+
+
+**Swift**:
+
+	// Add the following imports to your bridging header:
+	//		#import <FBSDKLoginKit/FBSDKLoginKit.h>
+	//		#import <FBSDKCoreKit/FBSDKAccessToken.h>
+	
+	func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> Void) {
+		let loginManager = FBSDKLoginManager()
+		loginManager.logInWithReadPermissions(["public_profile"], fromViewController: parent) { (result, error) in
+			if (error != nil) {
+				completion(nil, error)
+			}
+			else if result.isCancelled {
+				completion(nil, error)
+			}
+			else {
+				let payload: [String: String] = ["access_token": result.token.tokenString]
+				client.loginWithProvider("facebook", token: payload, completion: completion)
+			}
+		}
+	}
+
+## <a name="twitter-fabric"></a>方法: Twitter Fabric for iOS でユーザーを認証する
+
+Fabric for iOS を使用すると、Twitter でアプリケーションにユーザーをサインインさせることができます。これにより、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、多くの場合、`loginAsync()` メソッドを使用する方法よりも推奨されます。
+
+1. 「[App Service アプリケーションを Twitter ログインを使用するように構成する方法](app-service-mobile-how-to-configure-twitter-authentication.md)」のチュートリアルに従って、Twitter のサインイン用にモバイル アプリ バックエンドを構成します。
+
+2. 「[Fabric for iOS - Getting Started (Fabric for iOS - 概要)](https://docs.fabric.io/ios/fabric/getting-started.html)」ドキュメントに従ってプロジェクトに Fabric を追加し、TwitterKit をセットアップします。
+
+    > [AZURE.NOTE] 既定では、Fabric は新しい Twitter アプリケーションを自動的に作成します。次のコード スニペットを使用して、前に作成したコンシューマー キーとコンシューマー シークレットを登録することにより、これを変更することができます。または、App Service に提供したコンシューマー キーとコンシューマー シークレットの値を、[Fabric Dashboard](https://www.fabric.io/home) に表示される値に置き換えることもできます。このオプションを選択する場合は、コールバック URL を `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback` などのプレースホルダーの値に設定してください。
+
+	前に作成したシークレットを使用する場合は、App Delegate に以下を追加します。
+	
+	**Objective-C**:
+
+		#import <Fabric/Fabric.h>
+		#import <TwitterKit/TwitterKit.h>
+		// ...
+		- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+		{
+		    [[Twitter sharedInstance] startWithConsumerKey:@"your_key" consumerSecret:@"your_secret"];
+		    [Fabric with:@[[Twitter class]]];
+			// Add any custom logic here.
+		    return YES;
+		}
+		
+	**Swift**:
+	
+		import Fabric
+		import TwitterKit
+		// ...
+		func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+			Twitter.sharedInstance().startWithConsumerKey("your_key", consumerSecret: "your_secret")
+			Fabric.with([Twitter.self])
+			// Add any custom logic here.
+			return true
+		}
+	
+3. ご使用の言語に応じて、以下のコードをアプリケーションに追加します。
+
+**Objective-C**:
+
+	#import <TwitterKit/TwitterKit.h>
+	// ...
+	- (void)authenticate:(UIViewController*)parent completion:(void (^) (MSUser*, NSError*))completionBlock
+	{
+		[[Twitter sharedInstance] logInWithCompletion:^(TWTRSession *session, NSError *error) {
+			if (session) {
+				NSDictionary *payload = @{
+											@"access_token":session.authToken,
+											@"access_token_secret":session.authTokenSecret
+										};
+				[client loginWithProvider:@"twitter" token:payload completion:completionBlock];
+			} else {
+				completionBlock(nil, error);
+			}
+	    }];
+	}
+
+**Swift**:
+
+	import TwitterKit
+	// ...
+	func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> Void) {
+		let client = self.table!.client
+		Twitter.sharedInstance().logInWithCompletion { session, error in
+			if (session != nil) {
+				let payload: [String: String] = ["access_token": session!.authToken, "access_token_secret": session!.authTokenSecret]
+				client.loginWithProvider("twitter", token: payload, completion: completion)
+			} else {
+				completion(nil, error)
+			}
+		}
+	}
 
 <!-- Anchors. -->
 
@@ -640,4 +792,4 @@ POD:
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -25,7 +25,7 @@ Outlook.com コネクタは、次のツールから使用できます。
 
 - [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)  
 - [PowerApps](http://powerapps.microsoft.com)  
-- [Flow](http://flow.microsoft.com)  
+- [フロー](http://flow.microsoft.com)  
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
@@ -79,7 +79,9 @@ Outlook.com を使用してロジック アプリを作成するには、まず*
 |プロパティ| 必須|説明|
 | ---|---|---|
 |トークン|あり|Outlook.com の資格情報を提供します|
-接続を作成したら、接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
+接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
+
+>[AZURE.INCLUDE [Outlook.com への接続を作成する手順](../../includes/connectors-create-api-outlook.md)]
 
 >[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
@@ -603,7 +605,7 @@ Outlook.com を使用してロジック アプリを作成するには、まず*
 |Cc|string|いいえ |
 |[Bcc]|string|いいえ |
 |[件名]|string|あり |
-|本文|string|はい |
+|本文|string|あり |
 |[重要度]|string|いいえ |
 |IsHtml|boolean|いいえ |
 |To|string|あり |
@@ -616,7 +618,7 @@ Outlook.com を使用してロジック アプリを作成するには、まず*
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
 |@odata.type|string|いいえ |
-|名前|string|あり |
+|名前|string|はい |
 |ContentBytes|string|あり |
 
 
@@ -773,7 +775,7 @@ Outlook.com を使用してロジック アプリを作成するには、まず*
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|[件名]|string|はい |
+|[件名]|string|あり |
 |オプション|string|あり |
 |本文|string|いいえ |
 |[重要度]|string|いいえ |
@@ -912,4 +914,4 @@ Outlook.com を使用してロジック アプリを作成するには、まず*
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

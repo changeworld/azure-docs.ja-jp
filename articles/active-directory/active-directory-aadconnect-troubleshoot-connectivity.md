@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/14/2016"
+	ms.date="04/27/2016"
 	ms.author="andkjell"/>
 
 # Azure AD Connect での接続に関する問題のトラブルシューティング
@@ -26,9 +26,8 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 
 まず、[**machine.config**](active-directory-aadconnect-prerequisites.md#connectivity) が正しく構成されていることを確認する必要があります。 ![machineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/machineconfig.png)
 
-> [AZURE.NOTE] Microsoft 以外の一部のブログでは、machine.config ではなく miiserver.exe.config に変更を加える必要があると記載されていますが、このファイルはアップグレードのたびに上書きされるため、初回インストール時には有効であっても、初回アップグレード時には機能しなくなります。このような理由から、machine.config を更新することをお勧めします。
-
-
+>[AZURE.NOTE]
+Microsoft 以外の一部のブログでは、machine.config ではなく miiserver.exe.config に変更を加える必要があると記載されていますが、このファイルはアップグレードのたびに上書きされるため、初回インストール時には有効であっても、初回アップグレード時には機能しなくなります。このような理由から、machine.config を更新することをお勧めします。
 
 プロキシ サーバーでは、必須となる URL を開いておくことも必要です。公式の URL 一覧は、「[Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されています。
 
@@ -37,11 +36,11 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 | URL | ポート | 説明 |
 | ---- | ---- | ---- |
 | mscrl.microsoft.com | HTTP/80 | CRL リストのダウンロードに使用します。 |
-| *.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。 |
-| *.trust.com | HTTP/80 | MFA の CRL リストのダウンロードに使用します。 |
-| *.windows.net | HTTPS/443 | Azure AD へのサインインに使用します。 |
-| secure.aadcdn.microsoftonline-p.com | HTTPS/443 | MFA に使用します。 |
-| *.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリを構成し、データをインポート/エクスポートするために使用します。 |
+| *.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。 | 
+| *.entrust.com | HTTP/80 | MFA の CRL リストのダウンロードに使用します。 | 
+| *.windows.net | HTTPS/443 | Azure AD へのサインインに使用します。 | 
+| secure.aadcdn.microsoftonline-p.com | HTTPS/443 | MFA に使用します。 | 
+| *.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリを構成し、データをインポートまたはエクスポートするために使用します。 |
 
 ## ウィザードでのエラー
 インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。**[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用しています。**[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に変更します。ここで行うプロキシ構成はコンピューターに対してグローバルになるため、構成になんらかの問題があると、ほとんどの場合はすぐにウィザードの **[Azure AD に接続]** ページに反映されることになります。
@@ -55,7 +54,8 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 - 正しいようであれば、「[プロキシ接続を検証する](#verify-proxy-connectivity)」の手順に従って、ウィザード外部でも同じように問題が発生するかどうかを確認してください。
 
 ### MFA エンドポイントに到達できない
-このエラーは、エンドポイント **https://secure.aadcdn.microsoftonline-p.com** に到達できず、グローバル管理者が MFA を有効にしている場合に表示されます。 ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
+このエラーは、エンドポイント **https://secure.aadcdn.microsoftonline-p.com** に到達できず、グローバル管理者が MFA を有効にしている場合に表示されます。 
+![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
 
 - これが表示された場合は、エンドポイント secure.aadcdn.microsoftonline-p.com がプロキシに追加されていることを確認します。
 
@@ -126,6 +126,42 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 1/11/2016 8:49 | connect://*bba900-anchor*.microsoftonline.com:443
 1/11/2016 8:49 | connect://*bba800-anchor*.microsoftonline.com:443
 
+## 認証エラー
+このセクションでは、ADAL (Azure AD Connect で使用される認証ライブラリ) および PowerShell から返される可能性があるエラーについて説明します。エラーの説明は、次に進むステップを理解するうえで役立ちます。
+
+### 無効な許可
+ユーザー名またはパスワードが無効です。詳細については、「[パスワードを確認できない](#the-password-cannot-be-verified)」を参照してください。
+
+### ユーザーの種類が不明
+Azure AD ディレクトリが見つからないか、解決できません。確認されていないドメインのユーザー名でログインしようとした可能性があります。
+
+### ユーザー領域を検出できない
+ネットワークまたはプロキシの構成の問題です。ネットワークに接続できない場合は、「[インストール ウィザードにおける接続に関する問題のトラブルシューティング](#troubleshoot-connectivity-issues-in-the-installation-wizard)」を参照してください。
+
+### ユーザー パスワードの期限切れ
+資格情報が有効期限切れです。パスワードを変更してください。
+
+### AuthorizationFailure
+既知の問題です。
+
+### 認証が取り消された
+Multi-Factor Authentication (MFA) 要求が取り消されました。
+
+### ConnectToMSOnline
+認証は成功しましたが、Azure AD PowerShell に認証の問題があります。
+
+### AzureRoleMissing
+認証に成功しました。全体管理者ではありません。
+
+### PrivilegedIdentityManagement
+認証に成功しました。Privileged Identity Management が有効になっており、現時点では全体管理者ではありません。詳細については、「[Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)」を参照してください。
+
+### CompanyInfoUnavailable
+認証に成功しました。Azure AD から会社情報を取得できませんでした。
+
+### RetrieveDomains
+認証に成功しました。Azure AD からドメイン情報を取得できませんでした。
+
 ## 以前のリリース用のトラブルシューティング手順です。
 ビルド番号 1.1.105.0 (2016 年 2 月リリース) 以降のリリースでは、サインイン アシスタントが提供されなくなりました。このセクションと構成は必要がなくなりますが、参照用に残されています。
 
@@ -140,4 +176,4 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

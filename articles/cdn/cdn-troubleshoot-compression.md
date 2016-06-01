@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/28/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
     
 # CDN ファイルの圧縮のトラブルシューティング
@@ -45,11 +45,13 @@
 - 送信元ではなく、エンドポイントの URL (`<endpointname>.azureedge.net`) に要求が送信されていることを確認します。
 - 要求に **Accept-Encoding** ヘッダーが含まれており、このヘッダーの値に **gzip**、**deflate**、または **bzip2** が含まれていることを確認します。
 
+> [AZURE.NOTE] **Azure CDN from Akamai** プロファイルは、**gzip** エンコーディングのみをサポートしています。
+
 ![CDN 要求ヘッダー](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
 ### 圧縮の設定を確認する (Standard CDN プロファイル)
 
-> [AZURE.NOTE] この手順は、CDN プロファイルが **Standard** 価格レベルの場合にのみ適用されます。
+> [AZURE.NOTE] この手順が適用されるのは、CDN プロファイルが **Azure CDN Standard from Verizon** プロファイルまたは **Azure CDN Standard from Akamai** プロファイルの場合のみです。
 
 [Azure ポータル](https://portal.azure.com)で、エンドポイントに移動し、**[構成]** ボタンをクリックします。
 
@@ -60,7 +62,7 @@
 
 ### 圧縮の設定を確認する (Premium CDN プロファイル)
 
-> [AZURE.NOTE] この手順は、CDN プロファイルが **Premium** 価格レベルの場合にのみ適用されます。
+> [AZURE.NOTE] この手順が適用されるのは、CDN プロファイルが **Azure CDN Premium from Verizon** プロファイルの場合のみです。
 
 [Azure ポータル](https://portal.azure.com)で、エンドポイントに移動し、**[管理]** ボタンをクリックします。補助ポータルが開きます。**[HTTP ラージ]** タブ、**[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。**[圧縮]** をクリックします。
 
@@ -72,6 +74,8 @@
 
 ### コンテンツがキャッシュされていることを確認する
 
+> [AZURE.NOTE] この手順が適用されるのは、CDN プロファイルが **Azure CDN from Verizon** プロファイル (Standard または Premium) の場合のみです。
+
 ブラウザーの開発者ツールを使用して、応答ヘッダーを確認し、ファイルが要求されているリージョンでキャッシュされていることを確認します。
 
 - **Server** 応答ヘッダーを確認します。この応答ヘッダーの形式は、次の例に示すとおり**プラットフォーム (POP/サーバー ID)** である必要があります。
@@ -81,9 +85,11 @@
 
 ### ファイルがサイズ要件を満たしていることを確認する
 
+> [AZURE.NOTE] この手順が適用されるのは、CDN プロファイルが **Azure CDN from Verizon** プロファイル (Standard または Premium) の場合のみです。
+
 圧縮の対象とするため、ファイルは次のサイズ要件を満たす必要があります。
 
 - 128 バイトより大きい
 - 1 MB 未満
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

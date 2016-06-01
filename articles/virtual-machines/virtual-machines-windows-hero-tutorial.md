@@ -116,4 +116,4 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 * [Powershell を使用して Windows VM を作成する](virtual-machines-windows-ps-create.md)ことも、Azure CLI を使用して [Linux 仮想マシンを作成する](virtual-machines-linux-quick-create-cli.md)こともできます。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!------HONumber=AcomDC_0511_2016-->

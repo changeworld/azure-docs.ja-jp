@@ -1,25 +1,27 @@
 <properties 
-   pageTitle="Service Bus サンプルの概要 | Microsoft Azure"
-   description="Service Bus サンプルを分類して説明し、各サンプルへのリンクが含まれています。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Service Bus サンプルの概要 | Microsoft Azure"
+    description="Service Bus サンプルを分類して説明し、各サンプルへのリンクが含まれています。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="01/26/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="05/06/2016"
+    ms.author="sethm" />
 
 # Service Bus サンプル
 
 Service Bus のサンプルでは、[Service Bus](https://azure.microsoft.com/services/service-bus/) (クラウド サービス) と [Service Bus for Windows Server](https://msdn.microsoft.com/library/dn282144.aspx) の主な機能を紹介します。この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。
 
 >[AZURE.NOTE] Service Bus のサンプルは SDK と共にインストールされません。サンプルを入手するには、[Azure SDK のサンプル ページ](https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=5)にアクセスしてください。
+>
+>さらに、[ここ](https://github.com/Azure-Samples/azure-servicebus-messaging-samples)には、Service Bus メッセージングのサンプルの更新されたセットがあります (この記事の執筆時点では、この記事に記述されていません)。リレーのサンプルは[ここ](https://github.com/Azure-Samples/azure-servicebus-relay-samples)にあります。
 
 ## Service Bus ブローカー メッセージング
 
@@ -132,4 +134,4 @@ Service Bus の概念の要約については、次のトピックを参照し�
 - [Service Bus のアーキテクチャ](service-bus-architecture.md)
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="03/29/2016"
+   ms.date="05/16/2016"
    ms.author="derrickv"/>
 
 # Microsoft Power BI Embedded の使用を開始するためのサンプル
@@ -222,14 +222,14 @@ Task<ActionResult> Report(string reportId)
 ![](media\powerbi-embedded-get-started-sample\power-bi-embedded-iframe-code.png)
 
 
-### アプリケーションに埋め込まれたレポートのフィルター
+## アプリケーションに埋め込まれたレポートのフィルター
 
-URL 構文を使用して、埋め込みレポートをフィルター処理できます。そのためには、フィルターを指定して iFrame src url にクエリ文字列パラメーターを追加します。フィルター クエリ構文を次に示します。
+URL 構文を使用して、埋め込みレポートをフィルター処理できます。そのためには、**$filter** クエリ文字列パラメーターを iFrame src url に追加し、**eq** 演算子を使用してフィルターを指定します。フィルター クエリ構文を次に示します。
 
 ```
 https://app.powerbi.com/reportEmbed
-?reportId=d2a0ea38-0694-4c70-9673-ee9655d54a4a&
-$filter={tableName/fieldName} eq '{fieldValue}'
+?reportId=d2a0ea38-...-9673-ee9655d54a4a&
+$filter={tableName/fieldName}%20eq%20'{fieldValue}'
 ```
 
 > [AZURE.NOTE] {tableName/fieldName} には、スペースや特殊文字を含めることはできません。{fieldValue} は単一のカテゴリ値を受け入れます。
@@ -242,4 +242,4 @@ $filter={tableName/fieldName} eq '{fieldValue}'
 - [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューの使用を開始する)](power-bi-embedded-get-started.md)
 - [About app token flow in Power BI Embedded (Power BI Embedded のアプリ トークン フローについて)](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

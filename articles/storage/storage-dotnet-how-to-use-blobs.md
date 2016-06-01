@@ -1,6 +1,6 @@
 <properties
-	pageTitle=".NET を使用して Azure Blob Storage を使用する | Microsoft Azure"
-	description="Azure Blob Storage (オブジェクト ストレージ) を使用してクラウドに非構造化データを格納します。"
+	pageTitle=".NET を使用して Azure Blob Storage (オブジェクト ストレージ) を使用する | Microsoft Azure"
+	description="Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
@@ -395,4 +395,4 @@ Azure Storage では、クライアント側とサーバー側の両方で、BLO
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

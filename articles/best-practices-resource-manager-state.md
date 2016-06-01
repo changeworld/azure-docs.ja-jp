@@ -365,7 +365,7 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
         "type": "string"
       }
      
-リンクされたテンプレートの出力のセクションを使用して仮想マシンのデータ ディスクを取得する例については、[「仮想マシン用の複数のデータ ディスクの作成」](./resource-group-create-multiple/#creating-multiple-data-disks-for-a-virtual-machine)を参照してください。
+リンクされたテンプレートの出力のセクションを使用して仮想マシンのデータ ディスクを取得する例については、「[仮想マシン用の複数のデータ ディスクの作成](resource-group-create-multiple.md#creating-multiple-data-disks-for-a-virtual-machine)」を参照してください。
 
 ## 仮想マシンの認証設定を定義する
 
@@ -426,4 +426,4 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 - テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートで使用できる関数については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

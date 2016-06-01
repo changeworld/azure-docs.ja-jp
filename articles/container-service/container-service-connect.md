@@ -7,7 +7,7 @@
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Docker、コンテナー、マイクロ サービス、Mesos、Azure"/>
+   keywords="Docker, コンテナー, マクロサービス, DC/OS, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -34,12 +34,14 @@ Linux または OS X で SSH トンネルを作成するにはまず、負荷分
 
 次に、シェルを開き、次のコマンドを実行します。
 
-**PORT** は、公開するエンドポイントのポートです。Swarm の場合は 2375 です。DC/OS の場合、ポート 80 を使用します。**USERNAME** は、クラスターのデプロイ時に指定したユーザー名です。**DNSPREFIX** は、クラスターのデプロイ時に指定した DNS 接頭辞です。**REGION** は、リソース グループが置かれているリージョンです。
+**PORT** は、公開するエンドポイントのポートです。Swarm の場合は 2375 です。DC/OS の場合、ポート 80 を使用します。**USERNAME** は、クラスターのデプロイ時に指定したユーザー名です。**DNSPREFIX** は、クラスターのデプロイ時に指定した DNS 接頭辞です。**REGION** は、リソース グループが置かれているリージョンです。**PATH\_TO\_PRIVATE\_KEY** [省略可能] は、コンテナー サービス クラスターの作成時に指定した公開キーに対応する秘密キーへのパスです。このオプションは、-i フラグと共に使用します。
 
 ```bash
 # ssh sample
-ssh -L PORT:localhost:PORT -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
+
+ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
 ```
+> SSH 接続ポートは、標準の 22 ではなく 2200 です。
 
 ## DC/OS トンネル
 
@@ -48,7 +50,7 @@ DC/OS 関連のエンドポイントへのトンネルを開くには、次の�
 ```bash
 # ssh sample
 
-ssh -L 80:localhost:80 -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
+sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
 これで DC/OS 関連のエンドポイントに次の場所でアクセスできます。
@@ -66,7 +68,7 @@ Swarm エンドポイントへのトンネルを開くには、次のような�
 ```bash
 # ssh sample
 
-ssh -L 2375:localhost:2375 -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
+ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
 これで DOCKER\_HOST 環境変数を次のように設定し、通常どおり Docker コマンドライン インターフェイス (CLI) の使用を継続できます。
@@ -90,8 +92,8 @@ Windows システムに PuTTY をダウンロードし、実行します。
 ![PuTTY configuration 2](media/putty2.png)
 
 `Tunnels` を選択し、次のように転送ポートを構成してください。
-- **[Source Port]** (ソース ポート) には、使用する優先設定を指定します (DC/OS の場合は 80、Swarm の場合は 2375)。
-- **[Destination]** (ターゲット) には、localhost:80 (DC/OS) または localhost:2375 (Swarm) を指定します。
+- **[接続元ポート]** には、DC/OS の場合は 80、Swarm の場合は 2375 を指定します。
+- **[ターゲット]** には、DC/OS の場合は localhost:80、Swarm の場合は localhost:2375 を指定します。
 
 次の例は DC/OS で構成されていますが、Docker Swarm でも同様です。
 
@@ -115,6 +117,6 @@ Docker Swarm のトンネルを構成したら、Docker CLI から Swarm クラ�
 
 コンテナーをデプロイし、DC/OS または Swarm で管理します。
 
-[REST API を使用したコンテナー管理](./container-service-mesos-marathon-rest.md) [Working with the Azure Container Service and Docker Swarm (Azure コンテナー サービスと Docker Swarm の使用)](./container-service-docker-swarm.md)
+[REST API を使用したコンテナー管理](container-service-mesos-marathon-rest.md) [Docker Swarm でのコンテナーの管理](container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

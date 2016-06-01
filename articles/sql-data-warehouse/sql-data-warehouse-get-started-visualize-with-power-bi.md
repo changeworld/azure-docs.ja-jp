@@ -13,17 +13,20 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="05/18/2016"
    ms.author="lodipalm;barbkess;sonyama" />
 
 # Power BI でデータを視覚化する
 
+> [AZURE.SELECTOR]
+- [Power BI][]
+- [Azure Machine Learning][]
+
+このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
 
 > [AZURE.NOTE] このチュートリアルを完了するには、AdventureWorksDW サンプル データベースを事前に読み込まれている SQL Data Warehouse データベースが必要です。「[Create a SQL Data Warehouse (SQL Data Warehouse の作成)](sql-data-warehouse-get-started-provision.md)」では、作成方法が示されています。
 >
 > SQL Data Warehouse データベースは既にあっても、サンプル データがない場合は、[サンプル データを手動で読み込む][]ことができます。
-
-このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
 
 > [AZURE.VIDEO azure-sql-data-warehouse-sample-data-and-powerbi]
 
@@ -85,7 +88,7 @@ Power BI を使用して AdventureWorksDW サンプル データを分析する�
 **[ファイル]** をクリックして **[保存]** を選択すれば、作業はいつでも保存できます。
 
 ## 次のステップ
-いくつかサンプル データを挙げて、どのようにして[開発][]、[ロード][]、[移行][]するかを確認しながらウォーミングアップしていきます。
+いくつかサンプル データを挙げて、どのようにして[開発][]、[ロード][]、[移行][]するかを確認しながらウォーミングアップしていきます。または、[Power BI の Web サイト][]を参照してください。
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
@@ -106,9 +109,13 @@ Power BI を使用して AdventureWorksDW サンプル データを分析する�
 [開発]: ./sql-data-warehouse-overview-develop.md
 [ロード]: ./sql-data-warehouse-overview-load.md
 [サンプル データを手動で読み込む]: ./sql-data-warehouse-get-started-manually-load-samples.md
-[Azure ポータル]: https://portal.azure.com/
-[Power BI]: http://www.powerbi.com/
 [connecting to SQL Data Warehouse]: ./sql-data-warehouse-integrate-power-bi.md
 [Create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
+[Power BI]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
+[Azure Machine Learning]: ./sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!--Other-->
+[Azure ポータル]: https://portal.azure.com/
+[Power BI の Web サイト]: http://www.powerbi.com/
+
+<!---HONumber=AcomDC_0525_2016-->

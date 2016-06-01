@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/29/2016"
+   ms.date="05/16/2016"
    ms.author="v-sharos" />
 
 # StorSimple 運用デバイスのトラブルシューティング
@@ -67,4 +67,4 @@
 [1]: https://technet.microsoft.com/ja-JP/%5Clibrary/Dn688135(v=WPS.630).aspx
 [2]: https://technet.microsoft.com/ja-JP/%5Clibrary/Dn715782(v=WPS.630).aspx
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0518_2016-->

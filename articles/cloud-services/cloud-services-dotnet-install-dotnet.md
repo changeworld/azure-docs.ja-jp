@@ -1,5 +1,5 @@
 <properties
-   pageTitle="クラウド サービスのロールに .NET をインストールする"
+   pageTitle="クラウド サービスのロールに .NET をインストールする | Microsoft Azure"
    description="この記事では、クラウド サービスの Web ロールと worker ロールに .NET Framework を手動でインストールする方法について説明します。"
    services="cloud-services"
    documentationCenter=".net"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/17/2016"
+   ms.date="05/17/2016"
    ms.author="adegeo"/>
 
 # クラウド サービスのロールに .NET をインストールする 
@@ -183,4 +183,4 @@
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

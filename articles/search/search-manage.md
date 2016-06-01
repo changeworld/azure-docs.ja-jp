@@ -4,7 +4,7 @@
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
-	manager="mblythe" 
+	manager="paulettm" 
 	editor=""
     tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="02/04/2016" 
+	ms.date="05/17/2016" 
 	ms.author="heidist"/>
 
 # Microsoft Azure で検索サービスを管理する
@@ -58,7 +58,6 @@ Azure Search は、カスタムの検索アプリケーションで使用でき�
 +	API キーを管理および配布する。
 +	リソース使用量を監視する
 +	拡大または縮小 (標準検索のみに適用される)
-+	サービスを開始または停止する
 +	管理アクセスを制御するロールを設定する
 
 <a id="sub-3"></a>
@@ -127,7 +126,7 @@ Search Service API を使用して、ドキュメントとインデックスの�
 
 ### レプリカの追加
 
-1 秒あたりのクエリ (QPS) の増加や高可用性の実現は、レプリカの追加により達成できます。各レプリカにはインデックスのコピーが 1 つあるため、レプリカを 1 つ追加することは、サービス クエリ要求で使用できるインデックスを 1 つ追加することです。一般に、高可用性を実現するには少なくとも 3 つのレプリカが必要です (詳細については、「[Capacity planning in Azure Search](search-capacity-planning.md)」をご覧ください)。
+1 秒あたりのクエリ (QPS) の増加や高可用性の実現は、レプリカの追加により達成できます。各レプリカにはインデックスのコピーが 1 つあるため、レプリカを 1 つ追加することは、サービス クエリ要求で使用できるインデックスを 1 つ追加することです。一般に、高可用性を実現するには少なくとも 3 つのレプリカが必要です (詳細については、「[Azure Search の容量計画](search-capacity-planning.md)」をご覧ください)。
 
 より多くのレプリカを持つ検索サービスでは、より多くのインデックスに対してクエリ要求を負荷分散できます。特定のクエリの数量のレベルで、要求のサービスで利用できるインデックスのコピーが多いほど、クエリ スループットはより高速になります。クエリの遅延が発生した場合は、追加のレプリカをオンラインにすることでパフォーマンスへの良い影響を期待できます。
 
@@ -159,15 +158,6 @@ Standard レベルでは、パーティションが 12 の倍数単位 (具体�
 
 > [AZURE.VIDEO azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications]
 
-<a id="sub-7"></a>
-## サービスを開始または停止する
-
-サービス ダッシュボードのコマンドを使用して、サービスの開始と停止だけでなく削除も行うことができます。
-
- ![][11]
-
-
-サービスの停止または開始により、課金がなくなるわけではありません。課金されないようにするには、サービスを削除する必要があります。サービスを廃止すると、サービスに関連付けられたデータはすべて削除されます。
 
 <a id="sub-8"></a>
 ## 管理アクセスのロールを設定する
@@ -194,16 +184,14 @@ Azure Search の観点から、ロールベースのアクセス制御は次の�
 [Manage the api-keys]: #sub-4
 [Monitor resource usage]: #sub-5
 [Scale up or down]: #sub-6
-[Start or Stop the Service]: #sub-7
 [Set roles to control administrative access]: #sub-8
 
 <!--Image references-->
 [8]: ./media/search-manage/Azure-Search-Manage-1-URL.png
 [9]: ./media/search-manage/Azure-Search-Manage-2-Keys.png
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png
-[11]: ./media/search-manage/Azure-Search-Manage-4-StartStop.png
 
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

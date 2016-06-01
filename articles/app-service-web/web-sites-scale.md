@@ -45,7 +45,7 @@ App Service プランの詳細については、「[App Service プラン](../ap
 	
 	操作が完了すると、**[通知]** タブに緑色で "**成功**" が点滅します。
 	
-5. 設定で **[スケールアウトする]** をクリックし、ドロップダウン リストで *[手動で選択するインスタンス数]*を選択し、**[インスタンス]** バーを左から右にスライドさせてインスタンス数を増やしてから、コマンド バーで **[保存]** をクリックします。**Shared** モードでは、インスタンス サイズのオプションは利用できません。これらのインスタンス サイズの詳細については、「[Virtual Machine and Cloud Service Sizes for Microsoft Azure (Microsoft Azure の仮想マシンおよびクラウド サービスのサイズ)][vmsizes]」を参照してください。
+5. 設定で **[スケールアウトする]** をクリックし、ドロップダウン リストで *[手動で選択するインスタンス数]*を選択し、**[インスタンス]** バーを左から右にスライドさせてインスタンス数を増やしてから、コマンド バーで **[保存]** をクリックします。**Shared** モードでは、インスタンス サイズのオプションは利用できません。これらのインスタンス サイズの詳細については、「[App Service の価格][vmsizes]」を参照してください。
 	
 	![基本モードのインスタンス サイズ][ChooseBasicInstances]
 	
@@ -180,7 +180,7 @@ Web アプリのモードに応じて、次の開発者向け機能を使用で�
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 <!-- LINKS -->
-[vmsizes]: http://go.microsoft.com/fwlink/?LinkId=309169
+[vmsizes]: /pricing/details/app-service/
 [SQLaccountsbilling]: http://go.microsoft.com/fwlink/?LinkId=234930
 [azuresubscriptions]: http://go.microsoft.com/fwlink/?LinkID=235288
 [portal]: https://portal.azure.com/
@@ -202,4 +202,4 @@ Web アプリのモードに応じて、次の開発者向け機能を使用で�
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

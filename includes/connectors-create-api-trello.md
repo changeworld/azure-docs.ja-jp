@@ -1,17 +1,12 @@
-### Prerequisites
-- A [Trello](http://trello.com) account 
+### 前提条件
+- [Trello](http://trello.com) アカウント 
 
-Before you can use your Trello account in a Logic app, you must authorize the Logic app to connect to your Trello account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
+ロジック アプリで Trello アカウントを使用するには、Trello アカウントに接続するロジック アプリを承認する必要があります。幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
-Here are the steps to authorize your Logic app to connect to your Trello account:
+次に、Trello アカウントに接続するロジック アプリを承認する手順を示します。
 
-1. To create a connection to Trello, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Trello* in the search box. Select the trigger or action you'll like to use:  
-  ![](./media/connectors-create-api-trello/trello-1.png)
-2. If you haven't created any connections to Trello before, you'll get prompted to provide your Trello credentials. These credentials will be used to authorize your Logic app to connect to, and access your Trello account's data:  
-  ![](./media/connectors-create-api-trello/trello-2.png) 
-3. Allow us to connect to Trello:  
-  ![](./media/connectors-create-api-trello/trello-3.png)   
-4. Provide your Trello user name and password to authorize your Logic app:  
-  ![](./media/connectors-create-api-trello/trello-4.png)  
-5. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
-  ![](./media/connectors-create-api-trello/trello-5.png)
+1. Trello への接続を作成するには、ロジック アプリ デザイナーのドロップダウン リストから **[Show Microsoft managed APIs]** (Microsoft Managed API を表示) を選択し、検索ボックスに「*Trello*」と入力します。使用するトリガーまたはアクションを選択します。 ![](./media/connectors-create-api-trello/trello-1.png)
+2. これまでに Trello への接続を作成していない場合は、Trello の資格情報を指定するよう求められます。この資格情報を使用して、接続するロジック アプリの承認と、Trello アカウントのデータへのアクセスが行われます。 ![](./media/connectors-create-api-trello/trello-2.png) 
+3. Trello への接続を許可します。 ![](./media/connectors-create-api-trello/trello-3.png)   
+4. Trello のユーザー名とパスワードを入力して、ロジック アプリを承認します。 ![](./media/connectors-create-api-trello/trello-4.png)  
+5. 接続が作成され、ロジック アプリで他の手順を実行できるようになります。 ![](./media/connectors-create-api-trello/trello-5.png)

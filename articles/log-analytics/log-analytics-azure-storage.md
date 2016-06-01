@@ -80,21 +80,28 @@ Azure Resource Manager 仮想マシンの場合は、次の PowerShell の例を
 Login-AzureRMAccount
 Select-AzureSubscription -SubscriptionId "**"
 
+$workspaceName = "your workspace name"
+$VMresourcegroup = "**"
+$VMresourcename = "**"
 
-$workspaceId="**"
-$workspaceKey="**"
+$workspace = (Get-AzureRmOperationalInsightsWorkspace).Where({$_.Name -eq $workspaceName})
 
-$resourcegroup = "**"
-$resourcename = "**"
+if ($workspace.Name -ne $workspaceName) 
+{
+    Write-Error "Unable to find OMS Workspace $workspaceName. Do you need to run Select-AzureRMSubscription?"
+}
 
-$vm = Get-AzureRMVM -ResourceGroupName $resourcegroup -Name $resourcename
+$workspaceId = $workspace.CustomerId 
+$workspaceKey = (Get-AzureRmOperationalInsightsWorkspaceSharedKeys -ResourceGroupName $workspace.ResourceGroupName -Name $workspace.Name).PrimarySharedKey
+
+$vm = Get-AzureRMVM -ResourceGroupName $VMresourcegroup -Name $VMresourcename
 $location = $vm.Location
 
-Set-AzureRMVMExtension -ResourceGroupName $resourcegroup -VMName $resourcename -Name 'MicrosoftMonitoringAgent' -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionType 'MicrosoftMonitoringAgent' -TypeHandlerVersion '1.0' -Location $location -SettingString "{'workspaceId':  '$workspaceId'}" -ProtectedSettingString "{'workspaceKey': '$workspaceKey' }"
+Set-AzureRMVMExtension -ResourceGroupName $VMresourcegroup -VMName $VMresourcename -Name 'MicrosoftMonitoringAgent' -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionType 'MicrosoftMonitoringAgent' -TypeHandlerVersion '1.0' -Location $location -SettingString "{'workspaceId':  '$workspaceId'}" -ProtectedSettingString "{'workspaceKey': '$workspaceKey' }"
 
 
 ```
-PowerShell を使用して構成する場合は、ワークスペース ID とプライマリ キーを指定する必要があります。ワークスペース ID とプライマリ キーは、OMS ポータルにある、**[設定]** ページで見つけることができます。
+PowerShell を使用して構成する場合は、ワークスペース ID とプライマリ キーを指定する必要があります。ワークスペース ID とプライマリ キーは、OMS ポータルの **[設定]** ページか、前の例で示したように PowerShell を使って調べることができます。
 
 ![ワークスペース ID と主キー](./media/log-analytics-azure-storage/oms-analyze-azure-sources.png)
 
@@ -130,12 +137,15 @@ Syslog|Syslog または Rsyslog デーモンに送信されるイベント
 現時点では、OMS では次の分析が可能です。
 
 - Web ロールと仮想マシンからの IIS ログ
-- Windows オペレーティング システムを実行する Web ロール、worker ロール、および Azure の仮想マシンからの Windows イベント ログ
+- Windows オペレーティング システムを実行する Web ロール、worker ロール、および Azure の仮想マシンからの Windows イベント ログおよび ETW ログ
 - Linux オペレーティング システムを実行する Azure の仮想マシンからの syslog
+- ネットワーク セキュリティ グループ、Application Gateway、および KeyVault リソース用に JSON 形式でBlob Storage に書き込まれた診断情報
 
 ログは、次の場所にある必要があります。
 
 - WADWindowsEventLogsTable (テーブル ストレージ) - Windows イベント ログの情報を含みます。
+- WADETWEventTable (Table Storage) - Windows ETW ログの情報を含みます。
+- WADServiceFabricSystemEventTable、WADServiceFabricReliableActorEventTable、WADServiceFabricReliableServiceEventTable (Table Storage) - Service Fabric の操作イベント、アクター イベント、サービス イベントの情報を含みます。
 - wad-iis-logfiles (BLOB ストレージ) - IIS ログに関する情報を含みます。
 - LinuxsyslogVer2v0 (テーブル ストレージ) – Linux の syslog イベントを含みます。
 
@@ -143,7 +153,7 @@ Syslog|Syslog または Rsyslog デーモンに送信されるイベント
 
 仮想マシンについては、[Microsoft Monitoring Agent](http://go.microsoft.com/fwlink/?LinkId=517269) をインストールして追加のインサイトを有効にすることもできます。これにより、IIS ログとイベント ログを分析できるほか、構成の変更の追跡、SQL の評価、更新の評価などの追加の分析を実行することもできます。
 
-OMS で分析できるログを追加する順番を決定するために、[フィードバック ページ](http://feedback.azure.com/forums/267889-azure-operational-insights/category/88086-log-management-and-log-collection-policy)で投票にご協力ください。
+OMS で分析できるログを追加する順番を決定するために、[フィードバック ページ](http://feedback.azure.com/forums/267889-azure-log-analytics/category/88086-log-management-and-log-collection-policy)で投票にご協力ください。
 
 ## IIS ログとイベントの収集のために Web ロールで Azure 診断を有効にする
 
@@ -157,7 +167,7 @@ OMS で分析できるログを追加する順番を決定するために、[フ
 
 ### 診断を有効にするには
 
-Windows イベント ログを有効にする、または scheduledTransferPeriod を変更するには、「クラウド サービスの診断を有効にする方法」のトピック「[手順 2: Visual Studio ソリューションに diagnostics.wadcfg ファイルを追加する](https://msdn.microsoft.com/library/azure/dn482131.aspx#BKMK_step2)」と「[手順 3: 診断機能をアプリケーション向けに構成する](https://msdn.microsoft.com/library/azure/dn482131.aspx#BKMK_step3)」に示す XML 構成ファイル (diagnostics.wadcfg) を使用して Azure 診断を構成します。次の構成ファイルの例では、IIS ログと、アプリケーション ログとシステム ログからすべてのイベントを収集します。
+Windows イベント ログを有効にする、または scheduledTransferPeriod を変更するには、「Azure Cloud Services での Azure 診断の有効化」の[ Visual Studio ソリューションに diagnostics.wadcfg ファイルを追加する手順](https://msdn.microsoft.com/library/azure/dn482131.aspx#BKMK_step2)と、[診断機能をアプリケーション向けに構成する手順](https://msdn.microsoft.com/library/azure/dn482131.aspx#BKMK_step3)で示されている XML 構成ファイル (diagnostics.wadcfg) を使用して Azure 診断を構成します。次の構成ファイルの例では、IIS ログと、アプリケーション ログとシステム ログからすべてのイベントを収集します。
 
 ```
     <?xml version="1.0" encoding="utf-8" ?>
@@ -254,13 +264,13 @@ Azure PowerShell を使用すると、Azure Storage に書き込むイベント�
 
 ## OMS による Azure Storage 分析を有効にする
 
-「[Log Analytics のデータ ソース](log-analytics-data-sources.md#collect-data-from-azure-diagnostics)」の情報を使用してストレージ分析を有効にし、Azure 診断で Azure Storage アカウントからデータを読み取るよう OMS を構成します。
+「[Log Analytics のデータ ソース](log-analytics-data-sources.md#collect-data-from-azure-diagnostics)」の情報を使用してストレージ分析を有効にし、Azure 診断で Azure ストレージ アカウントからデータを読み取るよう OMS を構成します。
 
 約 1 時間で、ストレージ アカウントからのデータが表示され、OMS 内で分析できるようになります。
 
 
 ## 次のステップ
 
-- エージェントが Log Analytics サービスと通信できるように組織がプロキシ サーバーまたはファイアウォールを使用している場合は、「[Configure proxy and firewall settings in Log Analytics](log-analytics-proxy-firewall.md)」 (Log Analytics のプロキシとファイアウォールの設定を構成する) を参照してください。
+- エージェントが Log Analytics サービスと通信できるようにするために、組織がプロキシ サーバーまたはファイアウォールを使用している場合は、「[Log Analytics のプロキシ設定とファイアウォール設定の構成](log-analytics-proxy-firewall.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

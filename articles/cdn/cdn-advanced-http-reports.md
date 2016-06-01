@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016"
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 # Microsoft Azure CDN の詳細な HTTP レポート
@@ -22,7 +22,7 @@
 
 このドキュメントでは、Microsoft Azure CDN の高度な HTTP レポート機能について説明します。これらのレポートでは、CDN アクティビティの詳細情報が提供されます。
 
-> [AZURE.NOTE] 詳細な HTTP レポートは、Premium CDN レベルの機能です。Standard CDN と Premium CDN の機能の比較については、「[Azure CDN の概要](cdn-overview.md)」を参照してください。
+[AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## 詳細な HTTP レポートへのアクセス
 
@@ -196,4 +196,4 @@
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
 * [Edge のパフォーマンスの分析](cdn-edge-performance.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

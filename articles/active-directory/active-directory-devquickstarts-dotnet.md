@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/16/2016"
 	ms.author="dastrock"/>
 
 
@@ -53,7 +53,8 @@
 - また、**[構成]** タブで、[他のアプリケーションに対するアクセス許可] セクションに移動します。"Azure Active Directory" アプリケーションに対して、**[委任されたアクセス許可]** の下の **[組織のディレクトリにアクセス]** アクセス許可を追加します。これにより、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
 
 ## *2.ADAL をインストールおよび構成する*
-アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。ADAL が Azure AD と通信できるようにするためには、アプリの登録に関するいくつかの情報を提供する必要があります。まず、パッケージ マネージャー コンソールを使用して、ADAL を DirectorySearcher プロジェクトに追加します。
+アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。ADAL が Azure AD と通信できるようにするには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
+-	最初に、パッケージ マネージャー コンソールを使用して、ADAL を DirectorySearcher プロジェクトに追加します。
 
 ```
 PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -65,7 +66,7 @@ PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     -	`ida:RedirectUri` は、ポータルに登録したリダイレクト URL です。
 
 ## *3.ADAL を使用して AAD からトークンを取得する*
-ADAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、アプリは `authContext.AcquireToken(...)` を呼び出すだけで、残りの処理は ADAL が実行してくれることです。
+ADAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、アプリは `authContext.AcquireTokenAsync(...)` を呼び出すだけで、残りの処理は ADAL が実行してくれることです。
 
 -	`DirectorySearcher` プロジェクトで、`MainWindow.xaml.cs` を開き、`MainWindow()` メソッドを見つけます。最初の手順は、アプリの `AuthenticationContext` (ADAL のプライマリ クラス) を初期化することです。ここでは、ADAL が Azure AD と通信し、トークンをキャッシュする方法を通知するために必要な調整項目を ADAL に渡します。
 
@@ -75,22 +76,28 @@ public MainWindow()
     InitializeComponent();
 
     authContext = new AuthenticationContext(authority, new FileCache());
-    ...
+
+    CheckForCachedToken();
 }
 ```
 
 - 次に、`Search(...)` メソッドを見つけます。このメソッドは、ユーザーがアプリの UI で [検索] ボタンをクリックすると呼び出されます。このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access\_token を含める必要があります。この処理を ADAL が実行します。
 
 ```C#
-private void Search(object sender, RoutedEventArgs e)
+private async void Search(object sender, RoutedEventArgs e)
 {
-    ...
+    // Validate the Input String
+    if (string.IsNullOrEmpty(SearchText.Text))
+    {
+        MessageBox.Show("Please enter a value for the To Do item name");
+        return;
+    }
 
     // Get an Access Token for the Graph API
     AuthenticationResult result = null;
     try
     {
-        result = authContext.AcquireToken(graphResourceId, clientId, redirectUri);
+        result = await authContext.AcquireTokenAsync(graphResourceId, clientId, redirectUri, new PlatformParameters(PromptBehavior.Auto));
         UserNameLabel.Content = result.UserInfo.DisplayableId;
         SignOutButton.Visibility = Visibility.Visible;
     }
@@ -106,10 +113,10 @@ private void Search(object sender, RoutedEventArgs e)
     ...
 }
 ```
-- アプリが `AcquireToken(...)` を呼び出すことによってトークンを要求すると、ADAL はユーザーに資格情報を要求することなく、トークンを返そうとします。ADAL は、トークンを取得するにはユーザーのサインインが必要であると判断した場合、ログイン ダイアログを表示し、ユーザーの資格情報を収集し、認証が成功するとトークンを返します。また、何らかの理由によりトークンを返せない場合、`AdalException` をスローします。
+- アプリが `AcquireTokenAsync(...)` を呼び出すことによってトークンを要求すると、ADAL はユーザーに資格情報を要求することなく、トークンを返そうとします。ADAL は、トークンを取得するにはユーザーのサインインが必要であると判断した場合、ログイン ダイアログを表示し、ユーザーの資格情報を収集し、認証が成功するとトークンを返します。また、何らかの理由によりトークンを返せない場合、`AdalException` をスローします。
 - `AuthenticationResult` オブジェクトには、アプリが必要とする可能性のある情報を収集するために使用される `UserInfo` オブジェクトが含まれていることに注意してください。DirectorySearcher で、`UserInfo` は、ユーザーの ID を使用してアプリの UI をカスタマイズするために使用されます。
 
-- ユーザーが [サインアウト] ボタンをクリックした場合、次の `AcquireToken(...)` への呼び出しでは、ユーザーにサインインするように要求する必要があります。ADAL を使用すると、この操作は、トークン キャッシュをクリアするのと同じくらい容易に達成できます。
+- ユーザーが [サインアウト] ボタンをクリックした場合、次の `AcquireTokenAsync(...)` への呼び出しでは、ユーザーにサインインするように要求する必要があります。ADAL を使用すると、この操作は、トークン キャッシュをクリアするのと同じくらい容易に達成できます。
 
 ```C#
 private void SignOut(object sender = null, RoutedEventArgs args = null)
@@ -121,20 +128,16 @@ private void SignOut(object sender = null, RoutedEventArgs args = null)
 }
 ```
 
-- ただし、ユーザーが [サインアウト] ボタンをクリックしていない場合、ユーザーが次に DirectorySearcher を実行するときに備えて、ユーザーのセッションを維持する必要があります。アプリが起動したら、既存のトークン用の ADAL のトークン キャッシュをチェックし、必要に応じて UI を更新できます。`MainWindow()` に戻り、`AcquireToken(...)` に対して別の呼び出しを行います。今回は、`PromptBehavior.Never` パラメーターを渡します。`PromptBehavior.Never` は ADAL に対して、トークンを返せない場合、ユーザーにサインイン用の認証情報の入力を求めるのではなく、代わりに ADAL は例外をスローする必要があることを通知します。
+- ただし、ユーザーが [サインアウト] ボタンをクリックしていない場合、ユーザーが次に DirectorySearcher を実行するときに備えて、ユーザーのセッションを維持する必要があります。アプリが起動したら、既存のトークン用の ADAL のトークン キャッシュをチェックし、必要に応じて UI を更新できます。`CheckForCachedToken()` メソッドで、`AcquireTokenAsync(...)` に対して別の呼び出しを行います。今回は、`PromptBehavior.Never` パラメーターを渡します。`PromptBehavior.Never` は ADAL に対して、トークンを返せない場合、ユーザーにサインイン用の認証情報の入力を求めるのではなく、代わりに ADAL は例外をスローする必要があることを通知します。
 
 ```C#
-public MainWindow()
+public async void CheckForCachedToken() 
 {
-    InitializeComponent();
-
-    authContext = new AuthenticationContext(authority, new FileCache());
-
     // As the application starts, try to get an access token without prompting the user.  If one exists, show the user as signed in.
     AuthenticationResult result = null;
     try
     {
-        result = authContext.AcquireToken(graphResourceId, clientId, redirectUri, PromptBehavior.Never);
+        result = await authContext.AcquireTokenAsync(graphResourceId, clientId, redirectUri, new PlatformParameters(PromptBehavior.Never));
     }
     catch (AdalException ex)
     {
@@ -156,7 +159,7 @@ public MainWindow()
 
 ご利用ありがとうございます。 これで、ユーザー認証を処理でき、OAuth 2.0 を使用して Web API を安全に呼び出すことができ、ユーザーについての基本情報を取得できる、動作する . WPF アプリケーションが完成しました。テナントに一連のユーザーを設定します (設定していない場合)。DirectorySearcher アプリを実行し、それらのユーザーの一人としてサインインします。UPN に基づいて、他のユーザーを検索します。アプリを閉じて、再び実行します。ユーザーのセッションがそのままに維持されていることに注意します。サインアウトし、別のユーザーとしてサインインします。
 
-ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、煩わしい操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`authContext.AcquireToken(...)` のみです。
+ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、煩わしい操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`authContext.AcquireTokenAsync(...)` のみです。
 
 完全なサンプル (構成値を除く) を取得するには、[ここ](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)をクリックしてください。ここからは、さらなるシナリオに進むことができます。次のチュートリアルを試してみてください。
 
@@ -164,4 +167,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

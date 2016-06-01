@@ -41,6 +41,16 @@ SQL Database でアプリケーションを開発するにあたり、新しい�
 
 [ドキュメントを読む](sql-database-connect-central-recommendations.md)
 
-SQL Database の他の機能についてはホーム ページを[ご覧ください](https://azure.microsoft.com/services/sql-database/)。
+SQL Database の他の機能についてはホーム ページを[ぜひご確認ください。](https://azure.microsoft.com/services/sql-database/)
 
-<!---HONumber=AcomDC_0511_2016-->
+## 次のステップ
+
+[無料の Azure サブスクリプション](https://azure.microsoft.com/get-started/)を入手し、[最初の Azure SQL Database を作成](sql-database-get-started.md)します。
+
+## 詳細情報
+
+[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
+ 
+[SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
+
+<!---HONumber=AcomDC_0518_2016-->

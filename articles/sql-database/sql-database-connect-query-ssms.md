@@ -21,8 +21,8 @@
 # SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する
 
 > [AZURE.SELECTOR]
+- [Visual Studio](sql-database-connect-query.md)
 - [SSMS](sql-database-connect-query-ssms.md)
-- [C#](sql-database-connect-query.md)
 - [Excel](sql-database-connect-excel.md)
 
 この記事では、SQL Server Management Studio (SSMS) の最新バージョンを使用して Azure SQL Database に接続し、TRANSACT-SQL (T-SQL) ステートメントを使用して簡単なクエリを実行する方法を示します。
@@ -66,4 +66,4 @@ T-SQL を初めて使用する場合は、「[チュートリアル: TRANSACT-SQ
 
 データベース ユーザーおよびデータベース ユーザー管理者の作成の概要については、「[Get Started with Azure SQL Database security (Azure SQL Database セキュリティの概要)](sql-database-get-started-security.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

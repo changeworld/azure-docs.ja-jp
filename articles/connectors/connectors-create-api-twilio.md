@@ -14,7 +14,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="05/10/2016"
+ms.date="05/12/2016"
 ms.author="mandia"/>
 
 # Twilio API の使用
@@ -47,9 +47,10 @@ Twilio API には、次のアクションがあります。トリガーはあり
 |Account ID|あり|Twilio アカウント ID を入力します。|
 |Access Token|あり|Twilio アカウント トークンを入力します。|
 
-アクセス トークンを作成する方法については、「[Twilio](https://www.twilio.com/docs/api/ip-messaging/guides/identity)」をご覧ください。
+>[AZURE.INCLUDE [Twilio への接続を作成する手順](../../includes/connectors-create-api-twilio.md)]
 
-接続を作成したら、Twilio のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
+アクセス トークンがない場合は、[Twilio](https://www.twilio.com/docs/api/ip-messaging/guides/identity) を参照してアクセス トークンを作成してください。
+
 
 >[AZURE.TIP] 他のロジック アプリでこの同じ Twilio 接続を使用できます。
 
@@ -247,4 +248,4 @@ Twilio API には、次のアクションがあります。トリガーはあり
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

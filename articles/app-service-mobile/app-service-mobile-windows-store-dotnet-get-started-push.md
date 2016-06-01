@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Windows Runtime 8.1 ユニバーサル アプリへのプッシュ通知の追加 | Azure Mobile Apps"
-	description="Azure App Service Mobile Apps と Azure Notification Hubs を使用して Windows アプリにプッシュ通知を送信する方法について説明します。"
+	pageTitle="ユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を追加する | Azure Mobile Apps"
+	description="Azure App Service Mobile Apps と Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を送信する方法について説明します。"
 	services="app-service\mobile,notification-hubs"
 	documentationCenter="windows"
 	authors="ggailey777"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="05/15/2016"
 	ms.author="glenga"/>
 
 # Windows Runtime 8.1 ユニバーサル アプリへのプッシュ通知の追加
@@ -22,18 +22,9 @@
 
 ##概要
 
-このトピックでは、Azure App Service Mobile Apps と Azure Notification Hubs を使用して Windows Runtime 8.1 ユニバーサル アプリにプッシュ通知を送信する方法を説明します。このシナリオでは、新しい項目が追加されると、Mobile App バックエンドによって、Windows Notification Service (WNS) に登録されているすべての Windows アプリにプッシュ通知が送信されます。
+このトピックでは、Azure App Service の Mobile Apps と Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を送信する方法を説明します。このシナリオでは、新しい項目が追加されると、Mobile App バックエンドによって、Windows Notification Service (WNS) に登録されているすべての Windows アプリにプッシュ通知が送信されます。
 
-このチュートリアルは、App Service Mobile App のクイック スタートに基づいています。このチュートリアルを開始する前に、クイック スタート チュートリアル「[Windows アプリを作成する](app-service-mobile-windows-store-dotnet-get-started.md)」を完了する必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
-
-##前提条件
-
-このチュートリアルを完了するには、以下が必要です。
-
-* アクティブな [Microsoft ストア アカウント](http://go.microsoft.com/fwlink/p/?LinkId=280045)。
-* [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934)
-* [クイック スタート チュートリアル](app-service-mobile-windows-store-dotnet-get-started.md)を完了していること。
-
+このチュートリアルは、Mobile Apps のクイック スタートに基づいています。このチュートリアルを開始する前に、クイック スタート チュートリアル「[Windows アプリを作成する](app-service-mobile-windows-store-dotnet-get-started.md)」を完了する必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 ##<a name="create-hub"></a>通知ハブを作成する
 
@@ -43,8 +34,23 @@
 
 Azure から Windows アプリにプッシュ通知を送信するには、Windows ストア にアプリを送信する必要があります。その後、サーバー プロジェクトを構成して WNS と統合できます。
 
-[AZURE.INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
+1. Visual Studio ソリューション エクスプローラーで、UWP アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。 
 
+    ![アプリを Windows ストアと関連付ける](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+    
+2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインし、**[新しいアプリケーション名の予約]** にアプリの名前を入力し、**[予約]** をクリックします。
+
+3. アプリの登録が正常に作成されたら、新しいアプリ名を選択し、**[次へ]** をクリックし、**[関連付け]** をクリックします。この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
+
+7. [[Windows デベロッパー センター]](https://dev.windows.com/ja-JP/overview) に移動し、Microsoft アカウントでサインインし、**[マイ アプリ]** で新しいアプリ登録をクリックしてから、**[サービス]**、**[プッシュ通知]** の順に展開します。
+
+8. **[プッシュ通知]** ページで、**[Microsoft Azure Mobile Services]** の下にある **[Live サービス サイト]** をクリックします。
+
+9. 登録ページで、**[アプリケーション シークレット]** と **[パッケージ SID]** の値を記録しておきます。モバイル アプリ バックエンドを構成するときに使用します。
+
+	![アプリを Windows ストアと関連付ける](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
+
+    > [AZURE.IMPORTANT] クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。これらの値は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。**[アプリケーション ID]** は、Microsoft アカウント認証を構成するためにシークレットと共に使用されます。
 
 ##プッシュ通知を送信するようにバックエンドを構成する
 
@@ -155,7 +161,9 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 ##<a id="update-app"></a>アプリケーションにプッシュ通知を追加する
 
-1. 共有の **App.xaml.cs** プロジェクト ファイルを開き、次の `using` ステートメントを追加します。
+次に、アプリは起動時にプッシュ通知に登録する必要があります。認証を既に有効にしている場合は、プッシュ通知を登録する前にユーザーがサインインしていることを確認します。詳細については、クイック スタートの完全なサンプルの「[Authenticate first](https://github.com/Azure-Samples/app-service-mobile-windows-quickstart/blob/master/README.md#authenticate-first)」を参照してください。
+
+1. **App.xaml.cs** プロジェクト ファイルを開き、次の `using` ステートメントを追加します。
 
 		using System.Threading.Tasks;
         using Windows.Networking.PushNotifications;
@@ -185,15 +193,7 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
     これにより、アプリケーションが起動されるたびに、有効期限付きの ChannelURI が登録されます。
 
-    >[AZURE.NOTE] 認証も有効にしている場合は、プッシュ通知を登録する前にユーザーがサインインしていることを確認します。詳細については、クイック スタートの完全なサンプルの「[Authenticate first](https://github.com/Azure-Samples/app-service-mobile-windows-quickstart/blob/master/README.md#authenticate-first)」をご覧ください。
-
-4. ソリューション エクスプローラーで Windows ストア アプリの **Package.appxmanifest** をダブルクリックし、**[通知]** で **[トースト対応]** を **[はい]** に設定します。
-
-    **[ファイル]** メニューの **[すべて保存]** をクリックします。
-
-5. Windows Phone ストア アプリ プロジェクトの前の手順を繰り返します。
-
-これで、アプリケーションがトースト通知を受信する準備が整いました。
+4. UWP アプリ プロジェクトをリビルドします。これで、アプリケーションがトースト通知を受信する準備が整いました。
 
 ##<a id="test"></a>アプリケーションでプッシュ通知をテストする
 
@@ -213,4 +213,4 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 <!-- Images. -->
 ))) )
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

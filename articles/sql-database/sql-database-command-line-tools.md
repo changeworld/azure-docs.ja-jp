@@ -4,7 +4,7 @@
 	services="sql-database" 
 	documentationCenter="" 
 	authors="stevestein" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
@@ -13,42 +13,21 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/23/2016" 
+	ms.date="05/09/2016" 
 	ms.author="sstein"/>
 
 # PowerShell を使用した Azure SQL Database の管理
 
 
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-database-manage-portal.md)
+- [Azure ポータル](sql-database-manage-portal.md)
 - [Transact-SQL (SSMS)](sql-database-manage-azure-ssms.md)
 - [PowerShell](sql-database-command-line-tools.md)
 
 このトピックでは、多数の Azure SQL Database タスクを実行する PowerShell コマンドについて説明します。
 
+[AZURE.INCLUDE [PowerShell セッションの開始](../../includes/sql-database-powershell.md)]
 
-PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
-
-
-
-## 資格情報の構成
-
-Azure サブスクリプションに PowerShell コマンドレットを実行するには、Azure アカウントにまずアクセスできるようにする必要があります。次を実行すると資格情報を入力するサインイン画面が表示されます。Azure クラシック ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
-
-	Login-AzureRmAccount
-
-正常にサインインすると、サインインしている ID や使用中の Azure サブスクリプションを含む情報が画面に表示されます。
-
-
-## Azure サブスクリプションを選択します。
-
-使用するサブスクリプションを選択するには、サブスクリプション ID (**SubscriptionId**) またはサブスクリプション名 (**SubscriptionName**) が必要になります。前の手順からコピーするか、複数のサブスクリプションがある場合は **Get-AzureSubscription** コマンドレットを実行して結果セットから目的のサブスクリプション情報をコピーできます。
-
-現在のサブスクリプションを設定するには、サブスクリプション情報と共に次のコマンドレットを実行します。
-
-	Select-AzureRmSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
-
-上で選択したサブスクリプションに対し、次のコマンドが実行されます。
 
 ## リソース グループの作成
 
@@ -127,4 +106,4 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 
 - [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

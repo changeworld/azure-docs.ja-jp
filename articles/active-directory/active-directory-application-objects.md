@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="01/08/2016"
+   ms.date="05/16/2016"
    ms.author="mbaldwin"/>
 
 
@@ -31,7 +31,7 @@ Microsoft Azure 管理ポータルにアプリを登録するときに、次の 
 - **ServicePrincipal オブジェクト**: このオブジェクトは、ディレクトリ テナントのアプリのインスタンスを表します。アプリにテナントのディレクトリ データの読み取りを許可する ServicePrincipal に権限を割り当てるなど、ServicePrincipal オブジェクトにポリシーを適用できます。アプリケーション オブジェクトを変更するたびに、その変更は、テナントの関連付けられた ServicePrincipal オブジェクトにも適用されます。
 
 
-> [AZURE.NOTE]アプリケーションが外部アクセス用に構成されている場合は、コンシューマー テナントでアクセスを削除して、もう一度アクセス権を付与するまで、コンシューマー テナントの ServicePrincipal にアプリケーション オブジェクトの変更は反映されません。
+> [AZURE.NOTE] アプリケーションが外部アクセス用に構成されている場合は、コンシューマー テナントでアクセスを削除して、もう一度アクセス権を付与するまで、コンシューマー テナントの ServicePrincipal にアプリケーション オブジェクトの変更は反映されません。
 
 
 
@@ -85,4 +85,4 @@ Microsoft Azure 管理ポータルにアプリを登録するときに、次の 
 
 ##
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0518_2016-->

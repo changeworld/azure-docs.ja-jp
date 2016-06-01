@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="03/14/2016"
+	ms.date="05/12/2016"
 	ms.author="marsma" />
 
 # Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ
@@ -56,13 +56,15 @@ Batch はバックグラウンドで綿密に Azure Storage を運用し、ア�
 
 ## アプリケーションのアップロードと管理
 
-Azure ポータルでは、アプリケーション パッケージを追加、更新、削除でき、各アプリケーションの既定のバージョンを構成することができます。現時点で、これらの操作は Azure ポータルでのみサポートされています。
+Azure ポータルでは、アプリケーション パッケージを追加、更新、削除でき、各アプリケーションの既定のバージョンを構成することができます。
 
 以降の数セクションでは、ストレージ アカウントと Batch アカウントの関連付けについて説明し、Azure ポータルで利用できるパッケージ管理機能を確認します。次に、[Batch .NET][api_net] ライブラリを使用して、これらのパッケージをコンピューティング ノードにデプロイする方法について説明します。
 
 ### ストレージ アカウントのリンク
 
 アプリケーション パッケージを使用するには、最初に Azure ストレージ アカウントを Batch アカウントにリンクする必要があります。Batch アカウントに対してストレージ アカウントを構成していない場合は、[Batch アカウント] ブレードで最初に *[アプリケーション]* タイルをクリックしたときに、Azure ポータルに警告が表示されます。
+
+> [AZURE.IMPORTANT] 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の手順 5「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類*のみ*がサポートされています。Azure Storage アカウントを Batch アカウントにリンクする場合は、**汎用**のストレージ アカウント*のみ*をリンクしてください。
 
 ![No storage account configured warning in Azure portal][9]
 
@@ -111,29 +113,6 @@ Batch アカウントに含まれているアプリケーションを表示す�
 ![New application blade in Azure portal][5]
 
 *[新しいアプリケーション]* ブレードには、新しいアプリケーションとアプリケーション パッケージを設定できる以下のフィールドがあります。
-
-**Metadata**
-
-アプリケーション メタデータの入力には、**[アプリケーション ID]** と **[バージョン]** の各ボックスに値を直接入力する方法と、メタデータを含む JSON ファイルをアップロードする方法があります。アプリケーション ID とバージョンを直接入力するには、**[メタデータ]** ドロップダウン セレクターの設定を **[メタデータを入力]** (既定) のままにして、**[アプリケーション ID]** と **[バージョン]** の各ボックスに手動で値を入力します。
-
-パッケージ用の ID とバージョンを含む JSON 形式のメタデータ ファイルを指定するには、**[メタデータ]** ドロップダウンから **[メタデータ ファイルをアップロード]** を選択します。
-
-![Upload metadata file drop-down selector][6]
-
-次に、**[メタデータ ファイル]** ボックスの隣に表示されるフォルダー アイコンをクリックし、JSON データを含むローカル ファイルを参照します。この例では、アップロードするファイルとして `litware_1.1001.2b.json` を選択しました。すると、**[アプリケーション ID]** と **[バージョン]** の両ボックスに自動でファイルの情報が入力されました。
-
-![Metadata file selection detail][13]
-
-ファイルでアプリケーション パッケージのメタデータを指定するには、次の JSON 形式を使用します。
-
-```
-{
-    "id": "litware",
-    "version": "1.1001.2b"
-}
-```
-
-> [AZURE.NOTE] ID とバージョンを含む JSON メタデータ ファイルをアップロードする場合は、[アプリケーション ID] または [バージョン] ボックスを編集する必要は*ありません*。これらには、JSON ファイルのデータが自動で入力されます。
 
 **[アプリケーション ID]**
 
@@ -292,6 +271,7 @@ foreach (ApplicationSummary app in applications)
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
+[batch_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [storage_pricing]: https://azure.microsoft.com/pricing/details/storage/
 [net_appops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationoperations.aspx
@@ -308,13 +288,11 @@ foreach (ApplicationSummary app in applications)
 [3]: ./media/batch-application-packages/app_pkg_03.png "Applications blade in Azure portal"
 [4]: ./media/batch-application-packages/app_pkg_04.png "Application details blade in Azure portal"
 [5]: ./media/batch-application-packages/app_pkg_05.png "New application blade in Azure portal"
-[6]: ./media/batch-application-packages/app_pkg_06.png "Upload metadata file drop-down selector"
 [7]: ./media/batch-application-packages/app_pkg_07.png "Update or delete packages drop-down in Azure portal"
 [8]: ./media/batch-application-packages/app_pkg_08.png "New application package blade in Azure portal"
 [9]: ./media/batch-application-packages/app_pkg_09.png "No linked Storage account alert"
 [10]: ./media/batch-application-packages/app_pkg_10.png "Choose storage account blade in Azure portal"
 [11]: ./media/batch-application-packages/app_pkg_11.png "Update package blade in Azure portal"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Delete package confirmation dialog in Azure portal"
-[13]: ./media/batch-application-packages/app_pkg_13.png "Metadata file selection detail"
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

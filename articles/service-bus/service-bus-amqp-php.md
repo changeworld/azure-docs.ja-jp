@@ -156,7 +156,25 @@ if ($message->properties != null)
 
 | .NET プロパティの型 | PHP プロパティの型 | メモ |
 |--------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte | integer | - | | sbyte | integer | - | | char | Char | Proton-PHP class | | short | integer | - | | ushort | integer | - | | int | integer | - | | uint | Integer | - | | long | integer | - | | ulong | integer | - | | float | double | - | | double | double | - | | decimal | string | 現在、decimal は Proton でサポートされていません。 | | bool | boolean | - | | Guid | UUID | Proton-PHP クラス | | string | string | - | | DateTime | integer | - | | DateTimeOffset | DescribedType | AMQP 型にマップされる DateTimeOffset.UtcTicks:<type name="datetime-offset" class=restricted source="long"> <descriptor name="com.microsoft:datetime-offset" /></type> | | TimeSpan | DescribedType | AMQP 型にマップされる Timespan.Ticks:<type name="timespan" class=restricted source="long"> <descriptor name="com.microsoft:timespan" /></type> | | Uri | DescribedType | AMQP 型にマップされる Uri.AbsoluteUri:<type name="uri" class=restricted source="string"> <descriptor name="com.microsoft:uri" /></type> |
+| byte | integer | - | 
+| sbyte | integer | - | 
+| char | Char | Proton-PHP class | 
+| short | integer | - | 
+| ushort | integer | - | 
+| int | integer | - | 
+| uint | Integer | - | 
+| long | integer | - | 
+| ulong | integer | - | 
+| float | double | - | 
+| double | double | - | 
+| decimal | string | 現在、decimal は Proton でサポートされていません。 | 
+| bool | boolean | - | 
+| Guid | UUID | Proton-PHP クラス | 
+| string | string | - | 
+| DateTime | integer | - | 
+| DateTimeOffset | DescribedType | AMQP 型にマップされる DateTimeOffset.UtcTicks:<type name="datetime-offset" class=restricted source="long"> <descriptor name="com.microsoft:datetime-offset" /></type> | 
+| TimeSpan | DescribedType | AMQP 型にマップされる Timespan.Ticks:<type name="timespan" class=restricted source="long"> <descriptor name="com.microsoft:timespan" /></type> | 
+| Uri | DescribedType | AMQP 型にマップされる Uri.AbsoluteUri:<type name="uri" class=restricted source="string"> <descriptor name="com.microsoft:uri" /></type> |
 
 ### 標準のプロパティ
 
@@ -167,13 +185,38 @@ if ($message->properties != null)
 | Durable | 該当なし | Service Bus は、持続的なメッセージのみをサポートします。 |
 | 優先順位 | 該当なし | Service Bus は、単一のメッセージの優先度のみをサポートします。 |
 | Ttl | Message.TimeToLive | 変換、Proton-PHP TTL はミリ秒単位で定義されます。 |
-| first\_acquirer | - | - | | delivery\_count | - | - | | Id | Message.Id | - | | user\_id | - | - | | Address | Message.To | - | | Subject | Message.Label | - | | reply\_to | Message.ReplyTo | - | | correlation\_id | Message.CorrelationId | - | | content\_type | Message.ContentType | - | | content\_encoding | 該当なし | - | | expiry\_time | Message.ExpiresAtUTC | - | | creation\_time | 該当なし | - | | group\_id | Message.SessionId | - | | group\_sequence | - | - | | reply\_to\_group\_id | Message.ReplyToSessionId | - | | Format | 該当なし | -
+| first\_acquirer | - | - | 
+| delivery\_count | - | - | 
+| Id | Message.Id | - | 
+| user\_id | - | - | 
+| Address | Message.To | - | 
+| Subject | Message.Label | - | 
+| reply\_to | Message.ReplyTo | - | 
+| correlation\_id | Message.CorrelationId | - | 
+| content\_type | Message.ContentType | - | 
+| content\_encoding | 該当なし | - | 
+| expiry\_time | Message.ExpiresAtUTC | - | 
+| creation\_time | 該当なし | - | 
+| group\_id | Message.SessionId | - | 
+| group\_sequence | - | - | 
+| reply\_to\_group\_id | Message.ReplyToSessionId | - | 
+| Format | 該当なし | -
 
 #### Service Bus .NET API から Proton-PHP へ
 
 | Service Bus .NET | Proton-PHP | メモ |
 |-------------------------|--------------------------------------------------------|--------------------------------------------------------|
-| ContentType | Message->content\_type | - | | CorrelationId | Message->correlation\_id | - | | EnqueuedTimeUtc | Message->annotations[x-opt-enqueued-time] | - | | Label | Message->subject | - | | MessageId | Message->id | - | | ReplyTo | Message->reply\_to | - | | ReplyToSessionId | Message->reply\_to\_group\_id | - | | ScheduledEnqueueTimeUtc | Message->annotations ["x-opt-scheduled-enqueue-time"] | - | | SessionId | Message->group\_id | - | | TimeToLive | Message->ttl | Conversion, Proton-PHP TTL is defined in milliseconds. | | To | Message->address | - |
+| ContentType | Message->content\_type | - | 
+| CorrelationId | Message->correlation\_id | - | 
+| EnqueuedTimeUtc | Message->annotations[x-opt-enqueued-time] | - | 
+| Label | Message->subject | - | 
+| MessageId | Message->id | - | 
+| ReplyTo | Message->reply\_to | - | 
+| ReplyToSessionId | Message->reply\_to\_group\_id | - | 
+| ScheduledEnqueueTimeUtc | Message->annotations ["x-opt-scheduled-enqueue-time"] | - | 
+| SessionId | Message->group\_id | - | 
+| TimeToLive | Message->ttl | Conversion, Proton-PHP TTL is defined in milliseconds. | 
+| To | Message->address | - |
 
 ## 次のステップ
 

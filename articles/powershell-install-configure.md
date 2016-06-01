@@ -52,7 +52,9 @@ Azure PowerShell 1.0 以降は、0.9.x までと同じ方法で WebPI からイ�
         + FullyQualifiedErrorId : CommandNotFoundException
 ```
 
-この問題は、コンピューターを再起動することで修正できます。
+This can be corrected by restarting the machine or importing the cmdlets from C:\Program Files\WindowsPowerShell\Modules\Azure\XXXX\ as following (where XXXX is the version of PowerShell installed:
+```
+import-module "C:\\Program Files\\WindowsPowerShell\\Modules\\Azure\\XXXX\\azure.psd1" import-module "C:\\Program Files\\WindowsPowerShell\\Modules\\Azure\\XXXX\\expressroute\\expressroute.psd1" ```
 
 ###PowerShell ギャラリーから Azure PowerShell をインストールする
 
@@ -175,4 +177,4 @@ Windows PowerShell の基本的な使用手順については、「[Windows Powe
 
 スクリプトを使用した Azure の管理に役立つサンプル スクリプトと手順については、「[スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=321940)」をご覧ください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

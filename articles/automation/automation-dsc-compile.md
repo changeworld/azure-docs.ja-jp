@@ -37,7 +37,7 @@ Azure Automation を使用して、Desired State Configuration (DSC) 構成を�
 
 コンパイルの方法を決定したら、以下の各手順に従い、コンパイルを開始できます。
 
-##Azure プレビュー ポータルを使用した DSC 構成のコンパイル##
+##Azure プレビューを使用した DSC 構成のコンパイル##
 
 1.  Automation アカウントから、**[Configurations]** をクリックします。
 2.  構成をクリックし、ブレードを開きます。
@@ -115,7 +115,7 @@ PowerShell には、[ハッシュテーブル](http://technet.microsoft.com/libr
     }
     
     
-    Start-AzureRMAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "ParametersExample" -Parameters $Parameters 
+    Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "ParametersExample" -Parameters $Parameters 
     
 
 PSCredentials をパラメーターとして渡す方法の詳細については、以下の「<a href="#credential-assets">**資格情報資産**</a>」を参照してください。
@@ -228,4 +228,4 @@ Azure Automation の DSC 構成では **Get-AutomationPSCredential** を使用�
     
     Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "CredentialSample" -ConfigurationData $ConfigData
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0518_2016-->

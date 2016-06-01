@@ -1,10 +1,10 @@
 <properties
 	pageTitle="Azure Active Directory Premium の概要"
-	description="Azure Active Directory Premium エディションにサインアップする方法について説明します。"
+	description="このトピックでは、ボリューム ライセンスの Web サイトを通じて Azure Active Directory Premium Edition にサインアップする方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo" 
+	manager="femila" 
 	editor=""/>
 
 <tags
@@ -13,107 +13,131 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/18/2016"
+	ms.date="05/25/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory Premium の概要
 
-Azure Active Directory には、Free、Basic、Premium という 3 つのエディションがあります。Free エディションは、Azure または Office 365 のサブスクリプションに含まれます。Basic および Premium エディションは、[Microsoft Enterprise Agreement](https://www.microsoft.com/ja-JP/licensing/licensing-programs/enterprise.aspx) または[オープン ボリューム ライセンス](https://www.microsoft.com/ja-JP/licensing/licensing-programs/open-license.aspx) プログラムで利用できます。Azure および Office 365 のサブスクリプション会員も、Active Directory Premium をオンラインで購入できます。購入するには、[こちらでサインイン](https://portal.office.com/Commerce/Catalog.aspx)してください。
+
+Active Directory Premium にはいくつかの方法でサインアップできます。
+
+**Azure または Office 365** - Azure または Office 365 のサブスクライバーである場合、Active Directory Premium をオンラインで購入できます。詳細な手順については、「[How to Purchase Azure Active Directory Premium - Existing Customers (Azure Active Directory Premium を購入する方法 - 既存のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)」または「[How to Purchase Azure Active Directory Premium - New Customers (Azure Active Directory Premium を購入する方法 - 新規のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)」をご覧ください。
+
+**Enterprise Mobility Suite** - Enterprise Mobility Suite は、Active Directory Premium、Azure Rights Management、および Microsoft Intune のサービスを 1 つのライセンス プランでまとめて使用できる、組織にとってコスト効果の高い方法です。詳細については、[Enterprise Mobility Suite](https://www.microsoft.com/ja-JP/server-cloud/enterprise-mobility/overview.aspx) の Web サイトをご覧ください。30 日間の無料試用を開始するには、[こちら](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0)をクリックしてください。
+
+
+**マイクロソフト ボリューム ライセンス** - Azure Active Directory Premium は、[Microsoft エンタープライズ契約](https://www.microsoft.com/ja-JP/licensing/licensing-programs/enterprise.aspx) (250 個以上のライセンス) または [Open Volume License](https://www.microsoft.com/ja-JP/licensing/licensing-programs/open-license.aspx) (5 ～ 250 個のライセンス) プログラムで購入できます。
+
+
+このトピックでは、ボリューム ライセンス プログラムで購入した Azure Active Directory Premium の使用を開始する方法について説明します。Azure Active Directory のエディションの違いについてまだよくご存知でない方は、「[Azure Active Directory のエディション](active-directory-editions.md)」を参照してください。
 
 > [AZURE.NOTE]
 Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory Premium および Basic エディションを使用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
 
-Azure Active Directory Premium は、**Enterprise Mobility Suite** にも含まれます。Enterprise Mobility Suite は、1 つのライセンス プランで次のサービスをまとめて利用できるという対費用効果の高い方法を組織に提供します。
-
-- Active Directory Premium 
-- Azure Rights Management
-- Microsoft Intune
 
 
-詳細については、[Enterprise Mobility Suite](https://www.microsoft.com/ja-JP/server-cloud/enterprise-mobility/overview.aspx) の Web サイトをご覧ください。
-
-Azure Active Directory Premium の機能は、次のセクションの手順に従ってすぐに使い始めることができます。これらの手順は Azure Active Directory Basic エディションにも適用されます。
 
 ## 手順 1: Active Directory Premium にサインアップする
 
-サインアップについては、[ボリューム ライセンス](http://www.microsoft.com/ja-JP/licensing/how-to-buy/how-to-buy.aspx)の Web サイトを参照してください。
+サインアップするには、[ボリューム ライセンスを通じて購入する方法](http://www.microsoft.com/ja-JP/licensing/how-to-buy/how-to-buy.aspx)に関するページをご覧ください。
+
+
 
 ## 手順 2: ライセンス プランをアクティブ化する
 
-マイクロソフトから初めて Enterprise Volume Licensing プログラムのライセンス プランを購入すると、確認メールが届きます。最初のライセンス プランをアクティベートするにはそのメールが必要になります。このディレクトリでの 2 回目以降の購入では、ライセンスは同じディレクトリで自動的にアクティブ化されます。
+Microsoft から Enterprise Volume Licensing プログラムを通じてライセンス プランを購入するのが初めての場合、 購入が完了したら確認メールが届きます。最初のライセンス プランをアクティベートするにはそのメールが必要になります。
 
-アクティベーションを開始するには、**[サインイン]** または **[サインアップ]** をクリックします。
+このディレクトリでの 2 回目以降の購入では、ライセンスは同じディレクトリで自動的にアクティブ化されます。
 
 
-![][1]
 
-既存のテナントがある場合は、**[サインイン]** をクリックし、既存の管理者アカウントでサインインします。ライセンスをアクティブ化する必要があるディレクトリからグローバル管理者の資格情報でサインインすることが重要です。
+**ライセンス プランをアクティブ化するには、次の手順のいずれかを行います。**
 
-自分のライセンス プランで使用する新しい Azure Active Directory テナントを作成する場合、**[サインアップ]** をクリックし、**[アカウント プロファイルの作成]** ダイアログを開きます。
 
-![][2]
+1. アクティブ化を開始するには、**[サインイン]** または **[サインアップ]** をクリックします。
+
+    ![サインイン][1]
+
+
+
+    - 既存のテナントがある場合は、**[サインイン]** をクリックし、既存の管理者アカウントでサインインします。ライセンスをアクティブ化する必要があるディレクトリからグローバル管理者の資格情報でサインインする必要があります。
+
+    - 自分のライセンス プランで使用する新しい Azure Active Directory テナントを作成する場合、**[サインアップ]** をクリックし、**[アカウント プロファイルの作成]** ダイアログを開きます。
+
+        ![Create account profile][2]
 
 完了すると、テナントのライセンス プランのアクティベーションの確定として次のダイアログが表示されます。
 
-![][3]
+![確認][3]
 
 ## 手順 3: Azure Active Directory のアクセスをアクティブ化する
 
+以前に Microsoft Azure を使用したことがある場合は、[手順 4.](#step-4-assign-license-to-user-accounts) に進みます。
+
 ライセンスがディレクトリにプロビジョニングされると、**ウェルカム メール**が届きます。そのメールで、Azure Active Directory Premium または Enterprise Mobility Suite のライセンスと機能の管理を開始できることが確認されます。
 
-以前に Microsoft Azure を使用したことがある場合は、[http://manage.windowsazure.com](http://manage.windowsazure.com) にアクセスして新しいライセンスを割り当てることができます (詳しくは[手順 4](#step-4-assign-license-to-user-accounts) を参照)。
+ウェルカム メールを受け取る前に Azure Active Directory へのアクセスをアクティブ化しようとすると、次のエラー メッセージが表示されます。
 
-初めて Microsoft Azure を使用する場合、メール内の **[サインイン]** をクリックするか、[Azure Active Directory へのアクセス](https://account.windowsazure.com/signup?offer=MS-AZR-0110P) アクティベーション ページに進みます。いずれの方法でも、一連の手順を実行し、Azure クラシック ポータルでディレクトリにアクセスします。
+![Access is not available][9]
 
-![][4]
+電子メールを受け取った後、少ししてからもう一度やり直してください。
 
-サインインできたら、携帯電話の番号を入力して検証を受け、第 2 要素の認証画面を完了する必要があります。携帯による検証を完了したら、**[サインアップ]** をクリックし、Azure Active Directory へのアクセスをアクティベートできます。
+サブスクリプションの新しい管理者も、このリンクを介して Azure クラシック ポータルへのアクセスをアクティブ化できます。
 
-![][5]
+
+
+
+
+
+**Azure Active Directory へのアクセスをアクティブ化するには、次の手順を行います。**
+
+1. **ウェルカム メール**の **[サインイン]** をクリックします。 
+    
+    ![Welcome email][4]
+
+2. サインインできたら、携帯電話確認のフォームで第 2 の要素の認証を完了する必要があります。
+
+    ![Mobile verification][5]
 
 アクティベーションには数分かかることがあります。アクセスがアクティブになると、茶色のバーが消え、**[ポータル]** をクリックできます。
 
-![][6]
+![Please wait while we set up][6]
 
 この例では、Azure へのアクセスは Azure Active Directory に制限されています。
 
-![][7]
+![Azure capabilities][7]
 
-以前の使用により、Azure に既にアクセスできる状態である場合があります。さらに、追加の Azure サブスクリプションをアクティブ化することによって、Azure Active Directory へのアクセスを完全な Azure アクセスにアップグレードできます。このような場合、Azure クラシック ポータルで与えられる機能が増えます。
+以前の使用により、Azure に既にアクセスできる状態である場合があります。さらに、追加の Azure サブスクリプションをアクティブ化することによって、Azure Active Directory へのアクセスを完全な Azure アクセスにアップグレードできます。このような場合、Azure クラシック ポータルで使用できる機能が増えます。
 
-![][8]
+![Azure capabilities][8]
 
-ウェルカム メールを受け取る前に Azure Active Directory へのアクセスをアクティブ化しようとすると、次のエラー メッセージが表示される場合があります。電子メールを受け取った後、少ししてからもう一度やり直してください。
 
-![][9]
-
-サブスクリプションの新しい管理者も、このリンクを介して Azure クラシック ポータルへのアクセスをアクティブ化できます。
 
 ## 手順 4: ユーザー アカウントにライセンスを割り当てる
 
 購入したプランの使用を開始する前に、組織内のユーザーが Premium で提供される豊富な機能を使用できるように、ユーザー アカウントにライセンスを手動で割り当てる必要があります。以下の手順を使用して、ユーザーにライセンスを割り当て、ユーザーが Azure Active Directory Premium の機能を使用できるようにします。
 
-ライセンスをユーザーに割り当てるには:
+**ユーザーにライセンスを割り当てるには、次の手順を実行します。**
 
 1. カスタマイズするディレクトリのグローバル管理者として、Azure クラシック ポータルにサインインします。
 2. **[Active Directory]** をクリックし、ライセンスを割り当てるディレクトリを選択します。
 3. **[ライセンス]** タブを選択し、**[Active Directory Premium]** または **[Enterprise Mobility Suite]** を選択して、**[割り当て]** をクリックします。
 
-    ![][10]
+    ![License plans][10]
 
 4. ダイアログ ボックスで、ライセンスを割り当てるユーザーを選択し、チェック マーク アイコンをクリックして変更を保存します。
 
-    ![][11]
+    ![ライセンスを割り当てる][11]
 
-## ライセンスの制限
+### ライセンスの制限
 
 一部のライセンス プランは、他のライセンス プランのサブセットまたはスーパーセットです。通常、ユーザーに既に割り当てられているライセンス プランをユーザーに割り当てることはできません。スーパーセットであるライセンス プランを割り当てる場合は、先にサブセットのライセンス プランを削除する必要があります。
 
-## ライセンスの要件
+### ライセンスの要件
 
 ユーザーにライセンスを割り当てるときは、アカウントのプロパティで主な利用場所を指定できます。利用場所を指定しないと、テナントの場所が自動的にユーザーに割り当てられます。
 
-![][12]
+![ユーザーの配置][12]
 
 Microsoft クラウド サービスで利用できるサービスと機能は、国または地域によって異なります。Voice over Internet Protocol (VoIP) などのサービスは、ある国または地域では利用できても、他の国または地域では利用できないことがあります。サービスに含まれる機能は、法的な理由から特定の国や地域では制限される場合があります。サービスまたは機能を利用するときの制限の有無を確認するには、サービスのライセンス制限サイトで国または地域を検索してください。
 
@@ -136,4 +160,4 @@ Microsoft クラウド サービスで利用できるサービスと機能は、
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

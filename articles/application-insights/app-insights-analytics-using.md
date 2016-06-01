@@ -29,7 +29,7 @@
 
 Application Insights のアプリのホーム リソースで、[Analytics] をクリックします。
 
-![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-insights-analytics/001.png)
+![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-insights-analytics-using/001.png)
 
 インラインのチュートリアルでは、実行可能な操作が説明されています。
 
@@ -37,7 +37,7 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 ## クエリの作成
 
-左側に表示されるテーブルの名前で始まるクエリを作成します。`|` を使用して、[演算子](app-insights-analytics-queries.md)のパイプラインを作成します。
+左側に表示されるテーブルの名前で始まるクエリを作成します。`|` を使用して、[演算子](app-insights-analytics-reference.md#queries-and-operators)のパイプラインを作成します。
 
 
 ![](./media/app-insights-analytics-using/150.png)
@@ -60,9 +60,9 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 ![](./media/app-insights-analytics-using/030.png)
 
-> [AZURE.NOTE] 列の先頭をクリックすると、Web ブラウザーに表示される結果の順序を簡単に変更できます。ただし、大きな結果セットの場合、ブラウザーにダウンロードされる行数が制限されます。したがって、この並べ替え方法では、実際の最上位項目または最下位項目が表示されない場合があります。その場合は、[top](app-insights-analytics-queries.md#top-operator) または [sort](app-insights-analytics-queries.md#sort-operator) 演算子を使用する必要があります。
+> [AZURE.NOTE] 列の先頭をクリックすると、Web ブラウザーに表示される結果の順序を簡単に変更できます。ただし、大きな結果セットの場合、ブラウザーにダウンロードされる行数が制限されます。したがって、この並べ替え方法では、実際の最上位項目または最下位項目が表示されない場合があります。その場合は、[top](app-insights-analytics-reference.md#top-operator) または [sort](app-insights-analytics-reference.md#sort-operator) 演算子を使用する必要があります。
 
-サーバーから膨大なテーブルがダウンロードされないように、[take](app-insights-analytics-queries.md#take-operator)、[top](app-insights-analytics-queries.md#top-operator)、または [summarize](app-insights-analytics-queries.md#summarize-operator) 演算子を使用することをお勧めします。クエリ 1 件あたり約 10,000 行の自動制限が必ず適用されます。
+サーバーから膨大なテーブルがダウンロードされないように、[take](app-insights-analytics-reference.md#take-operator)、[top](app-insights-analytics-reference.md#top-operator)、または [summarize](app-insights-analytics-reference.md#summarize-operator) 演算子を使用することをお勧めします。クエリ 1 件あたり約 10,000 行の自動制限が必ず適用されます。
 
 
 ## ダイアグラム
@@ -75,7 +75,7 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 ![](./media/app-insights-analytics-using/100.png)
 
-既定では、結果は最初にテーブルとして表示されるので、ダイアグラムを手動で選択します。ただし、クエリの末尾に[レンダー ディレクティブ](app-insights-analytics-queries.md#render-directive)を使用して、ダイアグラムを選択できます。
+既定では、結果は最初にテーブルとして表示されるので、ダイアグラムを手動で選択します。ただし、クエリの末尾に[レンダー ディレクティブ](app-insights-analytics-reference.md#render-directive)を使用して、ダイアグラムを選択できます。
 
 ## Excel へのエクスポート
 
@@ -104,4 +104,4 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

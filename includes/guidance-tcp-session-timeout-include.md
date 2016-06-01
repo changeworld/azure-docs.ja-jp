@@ -1,26 +1,20 @@
-##TCP settings for Azure VMs
+##Azure VM の TCP 設定
 
-Azure VMs communicate with the public Internet by using [NAT][nat] (Network Address Translation). NAT devices assign a public IP address and port to an Azure VM, allowing that VM to establish a socket for communication with other devices. If packets stop flowing through that socket after a specific time, the NAT device kills the mapping, and the socket is free to be used by other VMs.
+Azure VM は [NAT][nat] (ネットワーク アドレス変換) を使用して、パブリック ネットワークと通信を行います。NAT デバイスは Azure VM にパブリック IP アドレスとポートを割り当て、他のデバイスとの通信に使用するソケットを VM が確立できるようにします。所定の時間が経過した後、ソケットを通じたパケットの流れが停止すると、NAT デバイスによりマッピングが切断され、ソケットは他の VM が自由に使用できるようになります。
 
-This is a common NAT behavior, which can cause communication issues on TCP based applications that expect a socket to be maintained beyond a time-out period. There are two idle timeout settings to consider, for sessions in a *established connection* state:
+これは一般的な NAT の動作ですが、タイムアウト後もソケットの保持を期待する TCP ベースのアプリケーションでは、通信の問題が発生する場合があります。*接続が確立された*状態にあるセッションでは、2 つの考慮すべきアイドル タイムアウト設定があります。
 
-- **inbound** through the [Azure load balancer][azure-lb-timeout]. This timeout defaults to 4 minutes, and can be adjusted up to 30 minutes.
-- **outbound** using [SNAT][snat] (Source NAT). This timeout is set to 4 minutes, and cannot be adjusted.
+- [Azure Load Balancer][azure-lb-timeout] 経由の**受信**。このタイムアウトの既定値は 4 分であり、最大 30 分に調整できます。
+- [SNAT][snat] (Source NAT) を使用した**送信**。このタイムアウトは 4 分に設定されており、調整はできません。
 
-To ensure connections are not lost beyond the timeout limit, you should make sure either your application keeps the session alive, or you can configure the underlying operating system to do so. The settings to be used are different for Linux and Windows systems, as shown below.
+タイムアウト制限を超える接続が失われないように、アプリケーションでセッションを有効に保持するか、基になるオペレーティング システムをそのように構成できることを確認してください。以下のように、使用する設定は Linux と Windows のシステムでは異なります。
 
-For [Linux][linux], you should change the kernel variables below.
-net.ipv4.tcp_keepalive_time = 120
-net.ipv4.tcp_keepalive_intvl = 30
-net.ipv4.tcp_keepalive_probes = 8
+[Linux][linux] の場合、次のカーネル変数を変更する必要があります (net.ipv4.tcp\_keepalive\_time = 120 net.ipv4.tcp\_keepalive\_intvl = 30 net.ipv4.tcp\_keepalive\_probes = 8)。
  
-For [Windows][windows], you should change the registry values below.
-KeepAliveInterval = 30
-KeepAliveTime = 120
-TcpMaxDataRetransmissions = 8
+[Windows][windows] の場合、次のレジストリ値を変更する必要があります (KeepAliveInterval = 30 KeepAliveTime = 120 TcpMaxDataRetransmissions = 8)。
 
 
-The settings above ensure a keep alive packet is sent after 2 minutes (120 seconds) of idle time, and then sent every 30 seconds. And if 8 of those packets fail, the session is dropped.
+上記の設定では、2 分 (120 秒) のアイドル時間が経過するとキープ アライブ パケットが送信され、その後は 30 秒ごとに送信されます。これらのパケットのうち 8 つが失敗すると、セッションは切断されます。
 
 <!-- links -->
 [nat]: http://computer.howstuffworks.com/nat.htm

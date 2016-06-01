@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/07/2016"
+	ms.date="04/22/2016"
 	ms.author="jroth" />
 
 # Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス
@@ -23,7 +23,7 @@
 
 このトピックでは、Microsoft Azure 仮想マシンで SQL Server のパフォーマンスを最適化するためのベスト プラクティスを紹介します。Azure Virtual Machines で SQL Server を実行するときは、オンプレミスのサーバー環境で SQL Server に適用されるデータベース パフォーマンス チューニング オプションと同じものを引き続き使用することをお勧めします。ただし、パブリック クラウド内のリレーショナル データベースのパフォーマンスは、仮想マシンのサイズやデータ ディスクの構成などのさまざまな要素に左右されます。
 
-SQL Server イメージを作成するときは、[Azure ポータルで VM をプロビジョニングすることを検討して](virtual-machines-windows-portal-sql-server-provision.md)、Premium Storage を既定使用する機能や、自動修正、自動バックアップ、および AlwaysOn 構成などのその他のオプションを活用してください。
+SQL Server イメージを作成するときは、[VM を Azure ポータルにプロビジョニングすることを検討してください](virtual-machines-windows-portal-sql-server-provision.md)。Resource Manager を使用してポータルにプロビジョニングされた SQL Server VM は、ストレージの構成を含むすべてのベスト プラクティスを実装します。
 
 この記事は、Azure VM で SQL Server の*最適な*パフォーマンスを得ることに重点を置いています。ワークロードの要求が厳しくない場合は、以下に示す最適化がすべて必要になるわけではありません。各推奨事項を評価するときに、パフォーマンスのニーズとワークロードのパターンを考慮してください。
 
@@ -36,7 +36,7 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 |領域|最適化|
 |---|---|
 |[VM サイズ](#vm-size-guidance)|[DS3](virtual-machines-windows-sizes.md#standard-tier-ds-series) 以上 (SQL Enterprise Edition の場合)。<br/><br/>[DS2](virtual-machines-windows-sizes.md#standard-tier-ds-series) 以上 (SQL Standard Edition および Web Edition の場合)。|
-|[ストレージ](#storage-guidance)|[Premium Storage](../storage/storage-premium-storage.md) を使用します。<br/><br/>[ストレージ アカウント](../storage/storage-create-storage-account.md)と SQL Server VM を同じリージョンに保持します。<br/><br/>ストレージ アカウントで Azure [geo 冗長ストレージ](../storage/storage-redundancy.md) (geo レプリケーション) を無効にします。|
+|[Storage](#storage-guidance)|[Premium Storage](../storage/storage-premium-storage.md) を使用します。標準ストレージは dev/test に対してのみ推奨されます。<br/><br/>[ストレージ アカウント](../storage/storage-create-storage-account.md)と SQL Server VM を同じリージョンに保持します。<br/><br/>ストレージ アカウントで Azure geo [冗長ストレージ](../storage/storage-redundancy.md) (geo レプリケーション) を無効にします。|
 |[ディスク](#disks-guidance)|少なくとも 2 つの [P30 ディスク](../storage/storage-premium-storage.md#scalability-and-performance-targets-whja-JPing-premium-storage) (ログ ファイル用に 1 つ、データ ファイルと TempDB 用に 1 つ) を使用します。<br/><br/>データベースの保存またはログ記録にオペレーティング システム ディスクまたは一時ディスクを使用することは避けます。<br/><br/>データ ファイルと TempDB をホストするディスクで読み取りキャッシュを有効にします。<br/><br/>ログ ファイルをホストするディスクでは、キャッシュを有効にしないでください。<br/><br/>複数の Azure データ ディスクをストライプして、IO スループットを増やします。<br/><br/>ドキュメントに記載されている割り当てサイズでフォーマットします。|
 |[I/O](#io-guidance)|データベース ページの圧縮を有効にします。<br/><br/>データ ファイルの瞬時初期化を有効にします。<br/><br/>データベースで自動拡張を制限するか、無効にします。<br/><br/>データベースで自動圧縮を無効にします。<br/><br/>システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。<br/><br/>SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。<br/><br/>既定のバックアップ ファイルとデータベース ファイルの場所を設定します。<br/><br/>ロックされたページを有効にします。<br/><br/>SQL Server パフォーマンス修正プログラムを適用します。|
 |[機能固有](#feature-specific-guidance)|BLOB ストレージに直接バックアップします。|
@@ -78,11 +78,11 @@ Azure VM には、次の 3 種類のメイン ディスクがあります。
 
 ### 一時ディスク
 
-**D**: ドライブとしてラベル付けされる一時ストレージ ドライブは、Azure BLOB ストレージに保持されません。**D**: ドライブにデータ ファイルやログ ファイルを保存しないでください。
+**D**: ドライブとしてラベル付けされる一時ストレージ ドライブは、Azure BLOB ストレージに保持されません。ユーザー データベース ファイルやユーザー トランザクション ログ ファイルを **D**: ドライブに保存しないでください。
 
-D シリーズ、Dv2 シリーズ、および G シリーズの VM では、 TempDB とバッファー プール拡張機能を **D** ドライブに格納します。これらの VM の一時ドライブは SSD ベースです。そのため、一時オブジェクトを頻繁に使用するワークロードや、メモリに収まらないワーキング セットを持つワークロードのパフォーマンスを向上させることができます。
+D シリーズ、Dv2 シリーズ、および G シリーズの VM では、これらの VM 上の一時ドライブは SSD ベースです。一時オブジェクトや複雑な結合などのワークロードで TempDB が多用される場合、TempDB を **D** ドライブに格納すると、TempDB のスループットは高く、TempDB の遅延時間は低くなる可能性があります。
 
-Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ) をサポートする VM の場合は、Premium Storage をサポートし、読み取りキャッシングが有効なディスクに TempDB とバッファー プール拡張機能を格納することをお勧めします。この推奨事項には 1 つの例外があります。TempDB の使用が書き込み重視である場合は、TempDB をローカル **D** ドライブに格納することにより、より高いパフォーマンスを実現できます。
+Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ) をサポートする VM の場合は、Premium Storage をサポートし、読み取りキャッシングが有効なディスクに TempDB とバッファー プール拡張機能を格納することをお勧めします。この推奨事項には 1 つの例外があります。TempDB の使用が書き込み重視である場合は、TempDB をローカル **D** ドライブに格納することで、より高いパフォーマンスを実現できます。これも、マシン サイズに基づく SSD ベースです。
 
 ### データ ディスク
 
@@ -148,4 +148,4 @@ SQL Server と Premium Storage についてさらに詳しく調べたい場合�
 
 SQL Server 仮想マシンに関する他のトピックについては、[Azure 仮想マシンにおける SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

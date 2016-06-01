@@ -14,13 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/25/2016"
+   ms.date="05/16/2016"
    ms.author="mandia"/>
 
 # Facebook API の概要
 Facebook に接続し、タイムラインへの投稿、ページ フィードの取得などを行います。Facebook API は次のツールから使用できます。
 
-- Logic Apps 
+- Logic Apps (このトピックで説明)
+- PowerApps (詳細な一覧については、[PowerApps 接続リスト](https://powerapps.microsoft.com/tutorials/connections-list/)を参照してください)
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
@@ -48,7 +49,7 @@ Facebook API には、次のトリガーとアクションがあります。
 1. Facebook アカウントにサインインします。
 2. **[Authorize]** を選択して、ロジック アプリが Facebook に接続して使用することを許可します。 
 
-接続を作成したら、Facebook のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+>[AZURE.INCLUDE [Facebook への接続を作成する手順](../../includes/connectors-create-api-facebook.md)]
 
 >[AZURE.TIP] 他のロジック アプリでも、この同じ Facebook 接続を使用できます。
 
@@ -433,6 +434,6 @@ Facebook API には、次のトリガーとアクションがあります。
 
 ## 次のステップ
 
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

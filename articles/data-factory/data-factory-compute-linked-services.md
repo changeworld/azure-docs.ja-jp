@@ -66,7 +66,7 @@ HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 type | type プロパティは **HDInsightOnDemand** に設定されます。 | はい
-clusterSize | オンデマンド クラスターのサイズです。このオンデマンド クラスターに配置するノードの数を指定します。 | はい
+clusterSize | クラスター内の worker/データ ノードの数です。このプロパティで指定した worker ノード数と共に 2 つのヘッド ノードを使用して HDInsight クラスターが作成されます。ノードのサイズは Standard\_D3 (4 コア) であるため、4 worker ノード クラスターのコアは 24 個になります。つまり、worker ノード用に 16 (4 x 4) 個のコアとヘッド ノード用に 8 (2 x 4) 個のコアが使用されます。Standard\_D3 レベルの詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 | あり
 timetolive | オンデマンド HDInsight クラスターに許可されるアイドル時間です。他のアクティブなジョブがクラスターにない場合、アクティビティ実行の完了後にオンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。<br/><br/>たとえば、アクティビティ実行に 6 分かかるときに timetolive が 5 分に設定されている場合、アクティビティ実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。別のアクティビティ実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br/><br/>オンデマンド HDInsight クラスターの作成は高額な作業であり (時間もかかることがあります)、オンデマンド HDInsight クラスターを再利用し、Data Factory のパフォーマンスを改善する必要がある場合にこの設定を利用します。<br/><br/>timetolive 値を 0 に設定した場合、アクティビティ実行の処理直後にクラスターが削除されます。その一方で、高い値を設定した場合、クラスターは不必要にアイドル状態を維持し、コストの上昇を招きます。そのため、ニーズに合わせて適切な値を設定することが重要です。<br/><br/>timetolive プロパティ値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターの同じインスタンスを共有できます。 | あり
 version | HDInsight クラスターのバージョン。既定値は、Windows クラスターでは 3.1、Linux クラスターでは 3.2 です。 | いいえ
 linkedServiceName | データの保存し、処理するためのオンデマンド クラスターで使用される BLOB ストアです。 | はい
@@ -137,9 +137,9 @@ yarnConfiguration | HDInsight クラスターに Yarn 構成パラメーター (
 
 プロパティ | 説明 | 必須
 :-------- | :----------- | :--------
-headNodeSize | ヘッド ノードのサイズを指定します。既定値は "Large" です。詳細については、下記の「**ノードのサイズの指定**」をご覧ください。 | いいえ
-dataNodeSize | データ ノードのサイズを指定します。既定値は "Large" です。 | いいえ
-zookeeperNodeSize | Zookeeper ノードのサイズを指定します。既定値は "Small" です。 | いいえ
+headNodeSize | ヘッド ノードのサイズを指定します。既定値は Standard\_D3 です。詳細については、下記の「**ノードのサイズの指定**」をご覧ください。 | いいえ
+dataNodeSize | データ ノードのサイズを指定します。既定値は Standard\_D3 です。 | いいえ
+zookeeperNodeSize | Zookeeper ノードのサイズを指定します。既定値は Standard\_D3 です。 | いいえ
  
 #### ノードのサイズの指定
 上記のプロパティで指定する必要がある文字列値については、「[仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md#size-tables)」をご覧ください。値は、この記事に記載されている**コマンドレットと API** に準拠する必要があります。この記事に示すように、Large (既定値) サイズのデータ ノードのメモリ容量は 7 GB ですが、シナリオによってはこれでは不十分な場合があります。
@@ -200,7 +200,7 @@ Azure Batch サービスの利用が初めての場合、次のトピックを�
 
 
 - Azure Batch サービスの概要については、「[Azure Batch の基本](../batch/batch-technical-overview.md)」をご覧ください。
-- Azure Batch アカウントについては、[New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレットを使用して作成する方法または [Azure ポータル](../batch/batch-account-create-portal.md)を使用して作成する方法をご覧ください。コマンドレットの使用方法の詳細については、「[PowerShell を使用した Azure Batch アカウントの管理](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)」トピックをご覧ください。
+- Azure Batch アカウントについては、[New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレットを使用して作成する方法または [Azure ポータル](../batch/batch-account-create-portal.md)を使用して作成する方法を参照してください。コマンドレットの使用方法の詳細については、「[PowerShell を使用した Azure Batch アカウントの管理](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)」トピックをご覧ください。
 - Azure Batch プールを作成するための [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) コマンドレット。
 
 ### 例
@@ -302,7 +302,7 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 | ユーザー タイプ | 有効期限 |
 | :-------- | :----------- | 
 | Azure Active Directory で管理されていないユーザー アカウント (@hotmail.com、@live.com など) | 12 時間 |
-| Azure Active Directory (AAD) で管理されているユーザー アカウント | スライスの最後の実行から 14 日後。<br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスが実行する場合、90 日です。 |
+| Azure Active Directory (AAD) で管理されているユーザー アカウント | スライスの最後の実行から 14 日後。<br/><br/>OAuth ベースのリンクされたサービスに基づいて、少なくとも 14 日間に 1 回スライスを実行する場合は 90 日です。 |
  
 このエラーを回避または解決するには、**トークンの有効期限が切れた**ときに、**[認証]** ボタンを使用して再認証し、リンクされたサービスを再デプロイする必要があります。次のセクションのコードを使用して、sessionId と authorization プロパティの値をプログラムで生成することもできます。
 
@@ -332,11 +332,11 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
         }
     }
 
-コードで使用する Data Factory クラスに関する詳細は、「[AzureDataLakeStoreLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)」、「[AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)」、「[AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)」のトピックを参照してください。WindowsFormsWebAuthenticationDialog クラスの Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll に参照を追加する必要があります。
+コードで使用する Data Factory クラスの詳細については、「[AzureDataLakeStoreLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)」、「[AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)」、「[AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)」のトピックを参照してください。WindowsFormsWebAuthenticationDialog クラスの Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll に参照を追加する必要があります。
  
 
 ## Azure SQL のリンクされたサービス
 
 Azure SQL のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。このリンクされたサービスの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0518_2016-->

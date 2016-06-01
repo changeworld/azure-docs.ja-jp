@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/05/2016"
+   ms.date="04/26/2016"
    ms.author="dobett"/>
 
 
-# デバイスを IoT Suite リモート監視構成済みソリューションに接続する
+# デバイスをリモート監視構成済みソリューションに接続する (mbed)
 
 [AZURE.INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
@@ -199,7 +199,7 @@ IoT Hub から受信する**コマンド**の例:
 
     ![][11]
 
-4. PuTTY で、接続タイプとして **[シリアル]** をクリックします。通常、デバイスは 115200 ボーで接続するため、**[速度]** ボックスに「115200」と入力します。次に、**[開く]** をクリックします。
+4. PuTTY で、接続タイプとして **[シリアル]** をクリックします。通常、デバイスは 9600 ボーで接続するため、**[速度]** ボックスに「9600」と入力します。次に、**[開く]** をクリックします。
 
 5. プログラムの実行が開始されます。接続時にプログラムが自動的に開始されない場合は、ボードのリセットが必要になることがあります (Ctrl キーを押しながら Break キーを押すか、ボードのリセット ボタンを押します)。
 
@@ -220,4 +220,4 @@ IoT Hub から受信する**コマンド**の例:
 [lnk-mbed-pcconnect]: https://developer.mbed.org/platforms/FRDM-K64F/#pc-configuration
 [lnk-serializer]: https://azure.microsoft.com/documentation/articles/iot-hub-device-sdk-c-intro/#serializer
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0518_2016-->

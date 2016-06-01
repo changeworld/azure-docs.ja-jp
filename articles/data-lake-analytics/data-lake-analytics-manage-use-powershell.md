@@ -132,7 +132,7 @@ Azure リソース グループのテンプレートを使用することもで�
 	
 	Remove-AzureRmDataLakeAnalyticsAccount -Name $dataLakeAnalyticsAccountName 
 
-Analytics アカウントを削除しても、従属する Data Lake ストレージ アカウントは削除されません。次の例では、Data Lake Analytics アカウントと既定の Data Lake Store アカウントを削除します。
+Data Lake Analytics アカウントを削除しても、従属する Data Lake ストレージ アカウントは削除されません。次の例では、Data Lake Analytics アカウントと既定の Data Lake Store アカウントを削除します。
 
 	$resourceGroupName = "<ResourceGroupName>"
 	$dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
@@ -392,4 +392,4 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 	  }
 	}
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

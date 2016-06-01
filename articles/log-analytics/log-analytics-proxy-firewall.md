@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="04/28/2016"
 	ms.author="banders"/>
 
@@ -40,7 +40,7 @@ OMS サービスに Microsoft Monitoring Agent を接続して登録するには
 
 2. **[Microsoft Monitoring Agent]** を開きます。
 
-3. **[プロキシ設定]** タブをクリックします。  
+3. **[プロキシ設定]** タブをクリックします。
   ![proxy settings tab](./media/log-analytics-proxy-firewall/proxy-direct-agent-proxy.png)
 
 4. 例に示したように、**[プロキシ サーバーを使用する]** をオンにして、URL と (必要に応じて) ポート番号を入力します。プロキシ サーバーで認証が必要な場合には、プロキシ サーバーにアクセスするためのユーザー名とパスワードを入力します。
@@ -138,9 +138,9 @@ OMS と Operations Manager コンソールのリソースとポートの一覧�
 
 1. Operations Manager コンソールを開き、**[Administration (管理)]** ワークスペースを選択します。
 
-2. **[Operational Insights]** を展開して、**[Operational Insights の接続]** をクリックします。  
+2. **[Operational Insights]** を展開して、**[Operational Insights の接続]** をクリックします。
     ![Operations Manager OMS の接続](./media/log-analytics-proxy-firewall/proxy-om01.png)
-3. [OMS の接続] ビューで、**[プロキシ サーバーの構成]** をクリックします。  
+3. [OMS の接続] ビューで、**[プロキシ サーバーの構成]** をクリックします。
     ![Operations Manager OMS の接続、プロキシ サーバーの構成](./media/log-analytics-proxy-firewall/proxy-om02.png)
 4. [Operational Insights 設定ウィザード: プロキシ サーバー] で **[Operational Insights Web サービスへのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力します (例: **http://myproxy:80**.  
     ![Operations Manager OMS のプロキシ アドレス](./media/log-analytics-proxy-firewall/proxy-om03.png))。
@@ -151,16 +151,16 @@ OMS と Operations Manager コンソールのリソースとポートの一覧�
 
 1. Operations Manager コンソールを開き、**[Administration (管理)]** ワークスペースを選択します。
 2. **[RunAs Configuration (RunAs の構成)]** で **[Profiles (プロファイル)]** を選択します。
-3. **System Center Advisor Run As Profile Proxy** というプロファイルを開きます。  
+3. **System Center Advisor Run As Profile Proxy** というプロファイルを開きます。
     ![System Center Advisor Run As Proxy profile のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct1.png)
 4. Run As Profile (Run As プロファイル) ウィザードで **[追加]** をクリックして Run As アカウント (実行アカウント) を使用します。新しい Run As アカウント(実行アカウント) を作成するか、既存のアカウントを使用できます。このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。  
-    ![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct2.png)
+![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct2.png)
 5. 管理するアカウントを設定するには、**[選択したクラス、グループ、またはオブジェクト]** をクリックして、[オブジェクトの検索] ボックスを開きます。  
     ![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct2-1.png)
-6. **Microsoft System Center Advisor Monitoring Server Group** を検索して選択します。  
+6. **Microsoft System Center Advisor Monitoring Server Group** を検索して選択します。
     ![Object Search boxc のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct3.png)
 7. **[OK]** をクリックして、[実行アカウントの追加] ボックスを閉じます。  
-    ![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct4.png)
+![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct4.png)
 8. ウィザードを完了し、変更を保存します。  
     ![Run As Profile Wizard のイメージ](./media/log-analytics-proxy-firewall/proxy-proxyacct5.png)
 
@@ -179,7 +179,7 @@ OMS と Operations Manager コンソールのリソースとポートの一覧�
 
 1. Operations Manager 管理サーバーで、パフォーマンス モニター (perfmon.exe) を開き、**[Performance Monitor (パフォーマンス モニター)]** を選択します。
 2. **[追加]** をクリックして、**[Health Service Management Groups]** を選択します。
-3. **HTTP** から始まるすべてのカウンターを追加します。  
+3. **HTTP** から始まるすべてのカウンターを追加します。
     ![カウンターの追加](./media/log-analytics-proxy-firewall/proxy-sendingdata1.png)
 4. Operations Manager の構成が適切であれば、OMS と構成済みのログ収集ポリシーで追加した、管理パックに基づく Health Service Management カウンターのイベントやその他のデータ アイテムにおけるアクティビティが表示されます。  
     ![アクティビティが表示されたパフォーマンス モニター](./media/log-analytics-proxy-firewall/proxy-sendingdata2.png)
@@ -196,5 +196,4 @@ Hybrid Runbook Worker を実行するオンプレミスのコンピューター�
 - 機能を追加し、データを収集する方法については、「[Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md)」 (ソリューションギャラリーから Log Analytics ソリューションを追加する) を参照してください。
 - [ログ検索](log-analytics-log-searches.md)について理解を深め、ソリューションによって収集された情報の詳細を確認します。
 
-<!---HONumber=AcomDC_0504_2016-->
-
+<!---HONumber=AcomDC_0525_2016-->

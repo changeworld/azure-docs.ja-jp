@@ -60,7 +60,7 @@ PIM 自体で管理する別のユーザー アクセス権を付与する場合
 
 Exchange Online または SharePoint Online 内のロールについて、上述以外のロールは Azure AD で表示されないため、PIM でも表示されません。これらの Office 365 サービスでのきめ細かなロールの割り当てを変更する方法について詳しくは、「[Office 365 の権限](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d)」を参照してください。
 
-Azure サブスクリプションとリソース グループも、Azure AD では表示されません。Azure サブスクリプションを管理するには「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator)」を、Azure RBAC について詳しくは、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
+Azure サブスクリプションとリソース グループも、Azure AD では表示されません。Azure サブスクリプションを管理するには「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を、Azure RBAC について詳しくは、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 
@@ -87,4 +87,4 @@ Microsoft Online Services へのアクセスでは、ユーザーがサービス
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

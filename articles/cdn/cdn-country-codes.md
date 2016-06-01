@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/25/2016" 
+	ms.date="05/11/2016"
 	ms.author="casoper"/>
 
 #国コード
+
+[AZURE.INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
 **国のフィルタリング**機能では、国コードを使用して保護されたディレクトリに対して許可またはブロックする要求の国を定義します。次の表には、すべての国コードが含まれています。"EU" (ヨーロッパ) または "AP" (アジア/太平洋) を指定した場合、その地域の国から発信される IP アドレスのサブセットがブロックまたは許可されます。国のフィルタリング機能を使用する方法については、「[国によってコンテンツへのアクセスを制限する方法](cdn-restrict-access-by-country.md)」を参照してください。
 
@@ -268,4 +270,4 @@
 | ZM | ザンビア | |
 | ZW | ジンバブエ | |
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0518_2016-->

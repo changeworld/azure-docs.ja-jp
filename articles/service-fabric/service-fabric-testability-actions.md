@@ -95,7 +95,7 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 Azure クラスターに対する (PowerShell を使用した) Testability アクションの実行は、ローカル クラスターに対する実行に似ています。唯一の違いは、アクションを実行する前に、ローカル クラスターではなく Azure クラスターに接続する必要があることです。
 
-## Testability アクションの実行
+## C&#35; を使用した Testability アクションの実行 
 
 C# を使用して Testability アクションを実行するには、FabricClient を使用してクラスターに接続する必要があります。その後、アクションを実行するために必要なパラメーターを取得します。異なるパラメーターを使用して同じアクションを実行することができます。RestartServiceFabricNode アクションを実行する方法の 1 つは、クラスター内のノード情報 (ノード名とノード インスタンス ID) を使用することです。
 
@@ -236,4 +236,4 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
    - [サービス ワークロード中のエラーのシミュレーション](service-fabric-testability-workload-tests.md)
    - [サービス間の通信障害](service-fabric-testability-scenarios-service-communication.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

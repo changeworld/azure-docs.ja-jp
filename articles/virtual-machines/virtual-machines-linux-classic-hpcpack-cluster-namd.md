@@ -29,7 +29,7 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 
 ## 前提条件
 
-* **HPC Pack クラスターと Linux コンピューティング ノード** - Azure 上の Linux コンピューティング ノードで、[Azure Resource Manager テンプレート](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)または [Azure PowerShell スクリプト](virtual-machines-hpcpack-cluster-powershell-script)を使用して HPC Pack クラスターをデプロイします。どちらのオプションについても、前提条件および手順について詳しくは、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。PowerShell スクリプトによるデプロイ オプションを選択した場合は、この記事の末尾にあるサンプル ファイル内のサンプル構成ファイルを確認して、Windows Server 2012 R2 ヘッド ノードおよび 4 つの L (A3) サイズの CentOS 6.6 コンピューティング ノードから成る Azure ベースの HPC Pack クラスターをデプロイします。必要に応じて、環境に合わせて変更してください。
+* **HPC Pack クラスターと Linux コンピューティング ノード** - Azure 上の Linux コンピューティング ノードで、[Azure Resource Manager テンプレート](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)または [Azure PowerShell スクリプト](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md)を使用して HPC Pack クラスターをデプロイします。どちらのオプションについても、前提条件および手順について詳しくは、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。PowerShell スクリプトによるデプロイ オプションを選択した場合は、この記事の末尾にあるサンプル ファイル内のサンプル構成ファイルを確認して、Windows Server 2012 R2 ヘッド ノードおよび 4 つの L (A3) サイズの CentOS 6.6 コンピューティング ノードから成る Azure ベースの HPC Pack クラスターをデプロイします。必要に応じて、環境に合わせて変更してください。
 
 
 * **NAMD ソフトウェアおよびチュートリアル ファイル** - [NAMD](http://www.ks.uiuc.edu/Research/namd/) サイトから Linux 用 NAMD ソフトウェアをダウンロードします (要登録)。この記事は、NAMD バージョン 2.10 に基づいており、[Linux x86\_64 (イーサネット搭載の 64 ビット Intel/AMD)](http://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1310) アーカイブを使用しています。このアーカイブを使用することで、クラスター ネットワークの複数の Linux コンピューティング ノードで NAMD を実行することができます。また、[NAMD チュートリアル ファイル](http://www.ks.uiuc.edu/Training/Tutorials/#namd)をダウンロードしてください。ダウンロードするのは .tar ファイルであるため、クラスター ヘッド ノード上でファイルを抽出するための Windows ツールが必要になります。この記事の後半の指示に従って、この作業を行ってください。
@@ -415,4 +415,4 @@ exit ${RTNSTS}
 [task_details]: ./media/virtual-machines-linux-classic-hpcpack-cluster-namd/task_details.png
 [vmd_view]: ./media/virtual-machines-linux-classic-hpcpack-cluster-namd/vmd_view.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0518_2016-->

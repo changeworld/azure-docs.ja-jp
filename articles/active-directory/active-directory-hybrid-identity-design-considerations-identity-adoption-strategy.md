@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="02/23/2016"
+	ms.date="05/12/2016"
 	ms.author="billmath"/>
 
 
@@ -73,7 +73,10 @@
 | Exchange ActiveSync | 資格情報の要求 | Lync の場合はシングル サインオン、Exchange の場合は資格情報の要求 |
 | モバイル アプリ | 資格情報の要求 | 資格情報の要求 |
 
-タスク 1 で、サードパーティ IdP があるか、サードパーティ IdP を使用して Azure AD とフェデレーションを行うことを決定した場合は、次のサポートされる機能を理解しておく必要があります。- Sp-Lite プロファイルに準拠する SAML 2.0 プロバイダーは、Azure AD および関連するアプリケーションに対する認証をサポートできます。- パッシブ認証がサポートされます。これにより、OWA や SPO などに対する認証が容易になります。- SAML 2.0 Enhanced Client Profile (ECP) を使用して Exchange Online クライアントをサポートできます。
+タスク 1 で、サードパーティ IdP があるか、サードパーティ IdP を使用して Azure AD とフェデレーションを行うことを決定した場合は、次のサポートされる機能を理解しておく必要があります。
+- Sp-Lite プロファイルに準拠する SAML 2.0 プロバイダーは、Azure AD および関連するアプリケーションに対する認証をサポートできます。
+- パッシブ認証がサポートされます。これにより、OWA や SPO などに対する認証が容易になります。
+- SAML 2.0 Enhanced Client Profile (ECP) を使用して Exchange Online クライアントをサポートできます。
 
 また、どの機能が使用できないかについても注意が必要です。
 
@@ -197,4 +200,4 @@ Azure Active Directory テナントを持つグローバル管理者は、既定
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0518_2016-->

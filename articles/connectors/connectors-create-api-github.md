@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="04/29/2016"
+ms.date="05/17/2016"
 ms.author="deonhe"/>
 
 # GitHub コネクタの使用
@@ -25,11 +25,11 @@ GitHub コネクタは、次のツールから使用できます。
 
 - [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)  
 - [PowerApps](http://powerapps.microsoft.com)  
-- [Flows](http://flows.microsoft.com)  
+- [フロー](http://flows.microsoft.com)  
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
-まず、ロジック アプリを作成します。「[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
 ## トリガーとアクション
 
@@ -59,7 +59,9 @@ GitHub を使用してロジック アプリを作成するには、まず**接�
 |プロパティ| 必須|説明|
 | ---|---|---|
 |トークン|あり|GitHub の資格情報を提供します|
-接続を作成したら、接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
+接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
+
+>[AZURE.INCLUDE [GitHub への接続を作成する手順](../../includes/connectors-create-api-github.md)]
 
 >[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
@@ -177,4 +179,4 @@ GitHub を使用してロジック アプリを作成するには、まず**接�
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

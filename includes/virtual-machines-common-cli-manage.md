@@ -11,7 +11,7 @@
 
 タスク | サービス管理モード | リソース マネージャー モード
 -------------- | ----------- | -------------------------
-最も基本的な VM の作成 | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(`azure vm image list` コマンドから `image-urn` を取得します。例については[こちらの記事](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md)を参照してください。)
+最も基本的な VM の作成 | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(`azure help vm quick-create` を実行して、一般的な Marketplace イメージの `image-urn` を取得します。*publisherName:offer:skus:version* 形式の URN については、[こちらの記事](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md)の例を参照してください。)
 Linux VM の作成 | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure  vm create [options] <resource-group> <name> <location> -y "Linux"`
 Windows VM の作成 | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure  vm create [options] <resource-group> <name> <location> -y "Windows"`
 VM の一覧表示 | `azure  vm list [options]` | `azure  vm list [options]`
@@ -42,4 +42,3 @@ VM リソースの使用量の取得 | 使用できません。 | `azure vm list
 
 * CLI コマンドのその他の例については、「[Azure サービス管理 (asm) モードでの Azure CLI コマンド](../articles/virtual-machines-command-line-tools.md)」および「[Azure Resource Manager (arm) モードでの Azure CLI コマンド](../articles/virtual-machines/azure-cli-arm-commands.md)」を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->

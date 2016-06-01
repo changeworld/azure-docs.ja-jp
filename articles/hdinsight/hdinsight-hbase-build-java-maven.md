@@ -106,7 +106,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
     これにより、HBase の構成情報が含まれているリソース (__conf\\hbase-site.xml__) が構成されます。
 
-    > [AZURE.NOTE] コードを介して構成値を設定することもできます。その方法については、__CreateTable__ サンプル内のコメントをご覧ください。
+    > [AZURE.NOTE] コードを介して構成値を設定することもできます。その方法については、__CreateTable__ サンプル内のコメントを参照してください。
 
     これによって、[Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) と [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/) も構成されます。トポロジのコンパイルにはコンパイラ プラグインが使用されます。シャードのプラグインは、Maven でビルドされる JAR パッケージ内のライセンスの重複を防ぐために使用されます。ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
 
@@ -361,7 +361,10 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 ##JAR ファイルをアップロードしてジョブを開始する
 
-> [AZURE.NOTE] 「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」で説明されているように、ファイルを HDInsight にアップロードするには多くの方法があります。次の手順では、[Azure PowerShell](../powershell-install-configure.md) を使用します。
+「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」で説明されているように、ファイルを HDInsight にアップロードするには多くの方法があります。次の手順では、Azure PowerShell を使用します。
+
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+
 
 1. Azure PowerShell をインストールし、構成した後で、__hbase-runner.psm1__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
 
@@ -629,4 +632,4 @@ __hdinsightclustername__ を、使用する HDInsight クラスターの名前�
 
 `-showErr` パラメーターを使用して、ジョブの実行中に生成された標準エラー (STDERR) を表示します。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

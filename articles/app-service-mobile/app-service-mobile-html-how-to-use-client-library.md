@@ -113,4 +113,4 @@ pushHandler.on('error', function (error) {
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [「query オブジェクト」]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!--------HONumber=AcomDC_0504_2016-->

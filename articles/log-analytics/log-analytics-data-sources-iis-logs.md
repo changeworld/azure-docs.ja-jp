@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Log Analytics の IIS ログ | Microsoft Azure"
    description="インターネット インフォメーション サービス (IIS) は、Log Analytics によって収集されるログ ファイルにユーザーの利用状況を格納します。この記事では、IIS ログの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
    services="log-analytics"
@@ -6,13 +6,13 @@
    authors="bwren"
    manager="jwhit"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="log-analytics"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/02/2016"
+   ms.date="05/11/2016"
    ms.author="bwren" />
 
 # Log Analytics の IIS ログ
@@ -26,6 +26,8 @@ Log Analytics は IIS によって作成されたログ ファイルからエン
 Log Analytics は、W3C 形式で格納されている IIS ログ ファイルのみをサポートします。ログは NCSA または IIS のネイティブ形式では収集されません。
 
 Log Analytics の IIS ログは、[Log Analytics の [設定] の [データ] メニュー](log-analytics-data-sources.md/configuring-data-sources)から構成します。必要な構成は、**[Collect W3C format IIS log files]** (W3C 形式の IIS ログ ファイルを収集する) を選択することのみです。
+
+IIS ログの収集を有効にする場合、各サーバーに IIS ログ ロールオーバー設定を構成することをお勧めします。
 
 
 ## データ収集
@@ -76,7 +78,7 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 ## 次のステップ
 
 - 分析のために別の[データ ソース](log-analytics-data-sources.md)を収集するように Log Analytics を構成します。
-- [ログ検索](log-analytics-log-searches.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+- [ログ検索](log-analytics-log-searches.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。
 - IIS ログで検出された重要な状態を事前に通知するように、Log Analytics のアラートを構成します。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

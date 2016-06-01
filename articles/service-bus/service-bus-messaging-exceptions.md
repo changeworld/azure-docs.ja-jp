@@ -98,7 +98,7 @@ Service Bus リレーの場合、この例外は [System.ServiceModel.QuotaExcee
 
 ## TimeoutException 
 
-[TimeoutException][] は、ユーザーが開始した操作が操作タイムアウトより時間がかかっていることを示します。
+[TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) は、ユーザーが開始した操作が操作タイムアウトより時間がかかっていることを示します。
 
 ### キューとトピック
 
@@ -139,4 +139,4 @@ Service Bus と Event Hubs の詳細な .NET API リファレンスについて�
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus のアーキテクチャ](service-bus-architecture.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0518_2016-->

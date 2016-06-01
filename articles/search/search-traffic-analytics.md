@@ -14,59 +14,50 @@
 	ms.workload="na" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="01/26/2016" 
+	ms.date="04/21/2016" 
 	ms.author="betorres"
 />
 
 
 # 検索トラフィックの分析の有効化と使用
 
-検索トラフィックの分析は、使用している検索サービスを表示し、ユーザーとその動作に関する洞察のロックを解除できる Azure Search の機能です。この機能を有効にすると、検索サービスのデータは選択しているストレージ アカウントにコピーされます。このデータには、検索サービスのログと集計された運用メトリックが含まれます。データがコピーされると、任意の方法で利用状況データを処理および操作することができます。
-
+検索トラフィックの分析は、使用している検索サービスを表示し、ユーザーとその動作に関する洞察のロックを解除できる Azure Search の機能です。この機能を有効にすると、検索サービスのデータは選択しているストレージ アカウントにコピーされます。このデータには、検索サービスのログと集計された運用メトリックが含まれます。これらを処理および操作して、さらに詳しい分析を行うことができます。
 
 ## 検索トラフィックの分析を有効にする方法
+
+検索サービスと同じリージョンおよびサブスクリプション内にあるストレージ アカウントが必要になります。
+
+> [AZURE.IMPORTANT] このストレージ アカウントには標準料金が適用されます。
+
+有効にすると、5 ～ 10 分以内にデータのストレージ アカウントへの送信が開始され、次の 2 つの BLOB コンテナーに格納されます。
+
+    insights-logs-operationlogs: search traffic logs
+    insights-metrics-pt1m: aggregated metrics
+
 
 ### 1\.ポータルの使用
 [Azure ポータル](http://portal.azure.com)で Azure Search サービスを開きます。[設定] には、検索トラフィックの分析オプションが表示されます。
 
 ![][1]
 
-このオプションを選択して、新しいブレードが開きます。[状態] を **[オン]** に変更し、データがコピーされる Azure Storage アカウントを選択して、コピーするデータ (ログ、メトリック、または両方) を選択します。ログとメトリックをコピーすることをお勧めします。
+このオプションを選択して、新しいブレードが開きます。[状態] を **[オン]** に変更し、データがコピーされる Azure Storage アカウントを選択して、コピーするデータ (ログ、メトリック、または両方) を選択します。ログとメトリックをコピーすることをお勧めします。データのリテンション期間ポリシーを 1 日から 365 日の間で設定できるオプションがあります。リテンション期間ポリシーを適用せず、永久にデータを保持する場合は、[リテンション期間 (日数)] を 0 に設定します。
 
 ![][2]
 
-
-> [AZURE.IMPORTANT] ストレージ アカウントは、検索サービスと同じリージョンおよび同じサブスクリプション内にある必要があります。
-> 
-> このストレージ アカウントには標準料金が適用されます。
-
 ### 2\.PowerShell の使用
 
-また、次の PowerShell コマンドレットを実行して、この機能を有効にすることもできます。
+まず、最新の [Azure PowerShell コマンドレット](https://github.com/Azure/azure-powershell/releases)がインストールされていることを確認します。
+
+次に、検索サービスとストレージ アカウントのリソース ID を取得します。リソース ID は、ポータルで [設定]、[プロパティ]、[リソース ID] の順にクリックして確認できます。
+
+![][3]
 
 ```PowerShell
 Login-AzureRmAccount
-Set-AzureRmDiagnosticSetting -ResourceId <SearchService ResourceId> StorageAccountId <StorageAccount ResourceId> -Enabled $true
+$SearchServiceResourceId = "Your Search service resource id"
+$StorageAccountResourceId = "Your Storage account resource id"
+Set-AzureRmDiagnosticSetting -ResourceId $SearchServiceResourceId StorageAccountId $StorageAccountResourceId -Enabled $true
 ```
-
--   **SearchService ResourceId**: ```
-/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Search/searchServices/<searchServiceName>
-```
-
- 
--  **StorageAccount ResourceId**: [設定]、[プロパティ]、[ResourceId] の順に開いたポータル内に表示されます```
-New: /subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/Microsoft.Storage/storageAccounts/<storageAccountName>
-OR
-Classic: /subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ClassicStorage/storageAccounts/<storageAccountName>
-```
-
-----------
-
-有効にすると、5 ～ 10 分以内にデータのストレージ アカウントへの送信が開始されます。Blob Storage に 2 つの新しいコンテナーが表示されます。
-
-    insights-logs-operationlogs: search traffic logs
-    insights-metrics-pt1m: aggregated metrics
-
 
 ## データの説明
 
@@ -112,6 +103,7 @@ durationMS |int |50 |操作時間 (ミリ秒)
 使用可能なメトリック:
 
 - 待機時間
+- SearchQueriesPerSecond
 
 ####メトリックのスキーマ
 
@@ -137,7 +129,7 @@ durationMS |int |50 |操作時間 (ミリ秒)
 
 [Power BI コンテンツ パック](https://app.powerbi.com/getdata/services/azure-search): データが自動的に表示され、検索サービスに関する情報を視覚化できる Power BI ダッシュボードと Power BI レポートのセットを作成します。[コンテンツ パックのヘルプ ページ](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-azure-search/)を参照してください。
 
-![][3]
+![][4]
 
 #### Power BI Desktop
 
@@ -146,17 +138,17 @@ durationMS |int |50 |操作時間 (ミリ秒)
 1. 新しい PowerBI Desktop レポートを開きます
 2. [データの取得]、[詳細] の順に選択します
 
-	![][4]
+	![][5]
 
 3. Microsoft Azure Blob Storage を選択して接続します
 
-	![][5]
+	![][6]
 
 4. 使用しているストレージ アカウントの名前とアカウント キーを入力します
 5. "insight-logs-operationlogs" と "insights-metrics-pt1m" を選択して、[編集] をクリックします
 6. クエリ エディターが開き、左側で "insight-logs-operationlogs" が選択されていることを確認します。ここで、[表示]、[詳細エディター] の順に選択して、詳細エディターを開きます。
 
-	![][6]
+	![][7]
 
 7. 最初の 2 つの行を保持し、残りの部分を次のクエリに置き換えます。
 
@@ -223,9 +215,10 @@ durationMS |int |50 |操作時間 (ミリ秒)
 
 [1]: ./media/search-traffic-analytics/SettingsBlade.png
 [2]: ./media/search-traffic-analytics/DiagnosticsBlade.png
-[3]: ./media/search-traffic-analytics/Dashboard.png
-[4]: ./media/search-traffic-analytics/GetData.png
-[5]: ./media/search-traffic-analytics/BlobStorage.png
-[6]: ./media/search-traffic-analytics/QueryEditor.png
+[3]: ./media/search-traffic-analytics/ResourceId.png
+[4]: ./media/search-traffic-analytics/Dashboard.png
+[5]: ./media/search-traffic-analytics/GetData.png
+[6]: ./media/search-traffic-analytics/BlobStorage.png
+[7]: ./media/search-traffic-analytics/QueryEditor.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0518_2016-->

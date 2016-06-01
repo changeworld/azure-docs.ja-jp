@@ -3,8 +3,8 @@
   description="Azure Backup Server を使用して、ワークロードをバックアップする環境を適切に準備します"
   services="backup"
   documentationCenter=""
-  authors="pvrk"
-  manager="shivamg"
+  authors="trinadhk"
+  manager="shreeshd"
   editor=""
   keywords="Azure Backup Server, バックアップ コンテナー"/>
 
@@ -14,22 +14,26 @@
   ms.tgt_pltfrm="na"
   ms.devlang="na"
   ms.topic="article"
-  ms.date="02/04/2016"
+  ms.date="05/10/2016"
   ms.author="jimpark;trinadhk;pullabhk"/>
 
 # Azure Backup Server を使用してワークロードをバックアップするための準備
 
 > [AZURE.SELECTOR]
 - [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
-- [System Center DPM](backup-azure-dpm-introduction.md)
+- [SCDPM](backup-azure-dpm-introduction.md)
+- [Azure Backup Server (クラシック)](backup-azure-microsoft-azure-backup-classic.md)
+- [SCDPM (クラシック)](backup-azure-dpm-introduction-classic.md)
 
-この記事では、Azure Backup Server を使用してワークロードをバックアップする環境の準備方法について説明します。Azure Backup Server を使用すると、単一のコンソールから Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange、Windows クライアントなどのアプリケーションのワークロードを保護することができます。
+この記事では、Azure Backup Server を使用してワークロードをバックアップする環境の準備方法について説明します。
+
+> [AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
+
+Azure Backup Server を使用すると、単一のコンソールから Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange、Windows クライアントなどのアプリケーションのワークロードを保護することができます。
 
 >[AZURE.WARNING] Azure Backup Server は、Data Protection Manager (DPM) のワークロード バックアップの機能を継承しています。これらの機能の一部については、DPM ドキュメントへのポインターがあります。ただし、Azure Backup Server は、テープ上の保護や System Center との統合の機能は提供していません。
 
 ## 1\.Windows Server マシン
-
-![step1](./media/backup-azure-microsoft-azure-backup/step1.png)
 
 Azure Backup Server を準備して実行するための最初の手順は、Windows Server マシンを用意することです。
 
@@ -40,52 +44,103 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
 
 > [AZURE.NOTE] Azure Backup Server は、Windows Server 2012 R2 Datacenter を設定済みのマシンにインストールすることをお勧めします。前提条件の多くは、最新バージョンの Windows オペレーティング システムを使用すると自動的に満たされます。
 
-このサーバーをドメインに参加させる予定がある場合は、Azure Backup Server をインストールする前にドメインへの参加作業を完了することをお勧めします。デプロイメント後の、新しいドメインへの既存の Azure Backup Server マシンの移動は*サポートされていません*。
+このサーバーをドメインに参加させる予定がある場合は、Azure Backup Server をインストールする前にドメインへの参加作業を完了することをお勧めします。デプロイ後の、新しいドメインへの既存の Azure Backup Server マシンの移動は*サポートされていません*。
 
-## 2\.バックアップ資格情報コンテナー
+## 2\.Recovery Services コンテナー
 
-![step2](./media/backup-azure-microsoft-azure-backup/step2.png)
+バックアップ データを Azure に送信する場合でも、ローカルに保存する場合でも、ソフトウェアを Azure に接続する必要があります。具体的には、Azure Backup Server マシンを Recovery Services コンテナーに登録する必要があります。
 
-バックアップ データを Azure に送信する場合でも、ローカルに保存する場合でも、ソフトウェアを Azure に接続する必要があります。具体的には、Azure Backup Server マシンをバックアップ資格情報コンテナーに登録する必要があります。
+Recovery Services コンテナーを作成するには、次の手順に従います。
 
-バックアップ資格情報コンテナーを作成するには:
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 
-1. [管理ポータル](http://manage.windowsazure.com/)にサインインします。
+2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** をクリックします。
 
-2. **[新規]** > **[Data Services]** > **[Recovery Services]** > **[バックアップ資格情報コンテナー]** > **[簡易作成]** の順にクリックします。組織のアカウントに関連付けられたサブスクリプションが複数ある場合は、正しいアカウントを選択してバックアップ資格情報コンテナーに関連付けてください。
+    ![Create Recovery Services Vault step 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png) <br/>
 
-3. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。これは、サブスクリプションごとに一意である必要があります。
+    Recovery Services コンテナーの一覧が表示されます。
 
-4. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。通常、資格情報コンテナーのリージョンは、データの主権またはネットワーク待ち時間の制約に応じて選択します。
+3. **[Recovery Services コンテナー]** メニューの **[追加]** をクリックします。
 
-    ![バックアップ資格情報コンテナーの作成](./media/backup-azure-microsoft-azure-backup/backup_vaultcreate.png)
+    ![Create Recovery Services Vault step 2](./media/backup-azure-microsoft-azure-backup/rs-vault-menu.png)
 
-5. **[資格情報コンテナーの作成]** をクリックします。バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。ポータルの下部にある状態通知を監視します。
+    Recovery Services コンテナー ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、および **[場所]** を指定するように求められます。
 
-    ![資格情報コンテナーのトースト通知の作成](./media/backup-azure-microsoft-azure-backup/creating-vault.png)
+    ![Create Recovery Services vault step 5](./media/backup-azure-microsoft-azure-backup/rs-vault-attributes.png)
 
-6. 資格情報コンテナーが正常に作成されたことを示すメッセージが表示され、[復旧サービス] ページに [アクティブ] と表示されます。![バックアップ資格情報コンテナーの一覧](./media/backup-azure-microsoft-azure-backup/backup_vaultslist.png)
+4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。名前は Azure サブスクリプションに対して一意である必要があります。2 ～ 50 文字の名前を入力します。名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
 
-  > [AZURE.IMPORTANT] コンテナーを作成したら、適切なストレージの冗長オプションが選択されていることを確認してください。この[概要](../storage/storage-redundancy.md)に記載されている [geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)オプションの詳細をご覧ください。
+5. **[サブスクリプション]** をクリックして、使用可能なサブスクリプションの一覧を表示します。どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
 
+6. **[リソース グループ]** をクリックして使用可能なリソース グループを表示するか、**[新規]** をクリックして新しいリソース グループを作成します。リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](../azure-portal/resource-group-portal.md)」を参照してください。
+
+7. **[場所]** をクリックして、コンテナーの地理的リージョンを選択します。
+
+8. **[作成]** をクリックします。Recovery Services コンテナーの作成に時間がかかることがあります。ポータルの右上隅で、状態の通知を監視します。コンテナーが作成されると、ポータルで開かれます。
+
+### ストレージ レプリケーションの設定
+
+ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。既定では、コンテナーには geo 冗長ストレージがあります。プライマリ バックアップの場合は、オプションが geo 冗長ストレージに設定されているままにします。冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。[geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細について、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事を参照してください。
+
+ストレージ レプリケーション設定を編集するには、次の手順を実行します。
+
+1. コンテナーを選択して、コンテナーのダッシュボードと [設定] ブレードを開きます。**[設定]** ブレードが開かない場合は、コンテナーのダッシュボードで **[すべての設定]** をクリックします。
+
+2. **[設定]** ブレードで、**[バックアップ インフラストラクチャ]**、**[バックアップ構成]** の順にクリックして、**[バックアップ構成]** ブレードを開きます。**[バックアップ構成]** ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。
+
+    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
+
+    コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。関連付けを開始するには、Azure 仮想マシンを検出して登録する必要があります。
 
 ## 3\.ソフトウェア パッケージ
 
-![step3](./media/backup-azure-microsoft-azure-backup/step3.png)
-
 ### ソフトウェア パッケージのダウンロード
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 
-コンテナー資格情報と同様に、アプリケーション ワークロード用の Microsoft Azure Backup をバックアップ コンテナーの**クイック スタート ページ**からダウンロードすることができます。
+2. 既に Recovery Services コンテナーが開かれている場合は、手順 3. に進みます。Recovery Services コンテナーが開かれていなくても、Azure ポータルが表示されている場合は、ハブ メニューの **[参照]** をクリックします。
 
-1. **[アプリケーション ワークロード用 (Disk to Disk to Cloud)]** をクリックします。ソフトウェア パッケージをダウンロード可能なダウンロード センターのページが表示されます。
+    - リソース ボックスに「**Recovery Services**」と入力します。
+    - 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** が表示されたら、それをクリックします。
 
-    ![Microsoft Azure Backup Welcome Screen](./media/backup-azure-microsoft-azure-backup/dpm-venus1.png)
+    ![Create Recovery Services Vault step 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
-2. **[Download]** をクリックします。
+    Recovery Services コンテナーの一覧が表示されます。
+    
+    - Recovery Services コンテナーの一覧で、コンテナーを選択します。
 
-    ![Download center 1](./media/backup-azure-microsoft-azure-backup/downloadcenter1.png)
+    選択したコンテナーのダッシュボードが開きます。
 
-3. すべてのファイルを選択し、**[次へ]** をクリックします。Microsoft Azure Backup のダウンロード ページからすべてのファイルをダウンロードし、すべてのファイルを同じフォルダーに配置します。![Download center 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
+    ![Open vault blade](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
+
+3. 既定では、設定ブレードが開きます。設定ブレードが閉じている場合は、**[設定]** をクリックし、設定ブレードを開きます。
+
+    ![Open vault blade](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
+
+4. **[作業の開始]** の **[バックアップ]** をクリックして、[作業の開始] ウィザードを開きます。
+
+    ![バックアップ作業の開始](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
+
+5. 表示される [作業の開始] では、[バックアップの目標] 画面が自動的に選択されます。![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
+
+    **[バックアップの目標]** セクションで、*[ワークロードの実行場所]* の *[オンプレミス]* を選択します。
+
+    ![目標としてのオンプレミスおよびワークロード](./media/backup-azure-microsoft-azure-backup/backup-goals-azure-backup-server.png)
+
+6. *[保護対象のワークロード]* で、Azure Backup Server を使用して保護するワークロードを選択し、**[OK]** をクリックします。
+
+    > [AZURE.NOTE] ファイルとフォルダーだけを保護する場合は、Azure Backup エージェントを使用することを勧めします。保護するワークロードがファイルやフォルダーだけにとどまらない場合、または将来的に保護の必要性を拡張する場合は、該当するワークロードをすべて選択します。
+
+    これにより、オンプレミスから Azure にワークロードを保護するためのインフラストラクチャを準備する [作業の開始] ウィザードの内容が変わります。
+
+    ![作業の開始ウィザードの変更](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
+  
+7. 開いた **[インフラストラクチャの準備]** ブレードで、**[Azure Backup Server のダウンロード]** と、Recovery Services コンテナーに Azure Backup Server を登録するときに使用するコンテナーの資格情報をクリックします。ソフトウェア パッケージをダウンロード可能なダウンロード センターのページが表示されます。
+
+    ![Azure Backup Server 用のインフラストラクチャの準備](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
+
+8. すべてのファイルを選択し、**[次へ]** をクリックします。Microsoft Azure Backup のダウンロード ページからすべてのファイルをダウンロードし、すべてのファイルを同じフォルダーに配置します。
+
+    ![Download center 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
     すべてのファイルをまとめてダウンロードするとサイズが 3 G を超えるため、10 Mbps のダウンロード リンクでは、ダウンロードが完了するまでに最大で 60 分かかることがあります。
 
@@ -141,7 +196,7 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
 
 8. インストールは段階的に実施します。最初の段階では、Microsoft Azure Recovery Services エージェントをサーバーにインストールします。インターネットに接続できるかどうかも、ウィザードによって確認されます。インターネット接続を利用可能な場合は、インストールを続行できます。利用可能でない場合は、プロキシの詳細を指定してインターネットに接続する必要があります。
 
-    次の手順では、Microsoft Azure Recovery Services エージェントを構成します。構成を行う際、マシンをバックアップ資格情報コンテナーに登録するために、コンテナーの資格情報を提供する必要があります。また、Azure とお客様の環境間で送信されるデータを暗号化/復号化するためのパスフレーズも提供します。自動的にパスフレーズを生成するか、最小で 16 文字の独自のパスフレーズを指定することができます。エージェントの構成が完了するまで、ウィザードを続行します。
+    次の手順では、Microsoft Azure Recovery Services エージェントを構成します。構成を行う際、マシンを Recovery Services コンテナーに登録するために、コンテナーの資格情報を提供する必要があります。また、Azure とお客様の環境間で送信されるデータを暗号化/復号化するためのパスフレーズも提供します。自動的にパスフレーズを生成するか、最小で 16 文字の独自のパスフレーズを指定することができます。エージェントの構成が完了するまで、ウィザードを続行します。
 
     ![Azure Backup Serer PreReq2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 
@@ -159,8 +214,6 @@ Azure Backup Server を準備して実行するための最初の手順は、Win
 > [AZURE.NOTE] Azure にデータを送信する場合でも、Backup ストレージを追加する必要があります。Azure Backup Server の現在のアーキテクチャでは、Azure Backup コンテナーにはデータの *2 番目の*コピーが保持され、最初の (必須の) バックアップ コピーはローカル ストレージに保持されます。
 
 ## 4\.ネットワーク接続
-
-![step4](./media/backup-azure-microsoft-azure-backup/step4.png)
 
 Azure Backup Server が正常に動作するためには、Azure Backup サービスに接続されている必要があります。マシンが Azure に接続されているかどうかを確認するには、Azure Backup Server PowerShell コンソールで ```Get-DPMCloudConnection``` コマンドレットを使用します。コマンドレットの出力が TRUE の場合、マシンは接続されていますが、それ以外の場合は接続されていません。
 
@@ -211,4 +264,4 @@ Microsoft TechNet サイトの「[System Center 2012 R2 Data Protection Manager 
 - [SharePoint サーバーのバックアップ](backup-azure-backup-sharepoint.md)
 - [代替サーバーのバックアップ](backup-azure-alternate-dpm-server.md)
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0518_2016-->

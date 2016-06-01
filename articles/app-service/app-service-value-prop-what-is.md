@@ -20,12 +20,12 @@
 # Azure App Service とは
 Azure App Service は、任意のプラットフォームおよびデバイス向けに迅速かつ容易に Web アプリやモバイル アプリを構築するのに必要なすべてを統合する唯一のクラウド サービスです。開発者向けに構築された App Service は、完全に管理されたプラットフォームで、組み込み DevOps、Visual Studio Team Services や GitHub との継続的インテグレーション、ステージング環境と運用環境のサポート、修正プログラム適用の自動化などの強力な機能を備えています。
 
-Azure App Service は、Azure Websites、Azure Mobile Services、Azure Biztalk Services の機能をすべて含んだ単一のサービスです。App Service には、Azure Functions など、次世代のアプリケーションを支える機能強化が絶えず行われています。
+Azure App Service は、Azure Websites、Azure Mobile Services、Azure Biztalk Services の既存の機能をすべて含み、さらに新しい機能を追加した単一のサービスです。これらの既存のサービスと App Service の関連の詳細については、[こちらを参照してください](https://azure.microsoft.com/documentation/services/app-service/)。
 
 ## App Service を使用する理由
 ビジネス プロセスの自動化だけでなく、Web アプリやモバイル アプリの迅速な開発にも重点を置いている Azure App Service は、単一の開発エクスペリエンスと管理エクスペリエンスを通じてエンタープライズ機能の統合セットを提供しており、次のような利点があります。
 
-- **Web Apps と Mobile Apps の迅速な構築** - 単一のバックエンドを使用して、従業員や顧客向けに Web アプリやモバイル アプリを迅速に構築、デプロイ、および管理します。.NET、Java、NodeJS、PHP、Python など、既存の言語スキルを使用します。Azure Marketplace に用意されている豊富な API、コネクタ、ロジックのギャラリーへのアクセスにより、開発時間を短縮します。
+- **Web アプリとモバイル アプリの迅速な構築** - 単一のバックエンドを使用して、従業員や顧客向けに Web アプリやモバイル アプリを迅速に構築、デプロイ、および管理します。.NET、Java、NodeJS、PHP、Python など、既存の言語スキルを使用します。Azure Marketplace に用意されている豊富な API、コネクタ、ロジックのギャラリーへのアクセスにより、開発時間を短縮します。
 
 - **任意のサービスへの接続とデータのロック解除** - 組み込みコネクタを使用して、Web アプリやモバイル アプリをエンタープライズ システムや SaaS に数分で接続します。SAP、Siebel、Oracle などのエンタープライズ システムから Salesforce や Office 365 などの人気のエンタープライズ SaaS サービス、Facebook、Twitter、Dropbox などの人気のインターネット サービスまで、50 を超えるコネクタから選択できます。
 
@@ -44,7 +44,6 @@ App Service を使用すると、単一の開発エクスペリエンスで次�
 - [**Web Apps**](../app-service-web/app-service-web-overview.md) - ビジネスに合わせて拡張できるミッション クリティカルな Web アプリをすばやく作成してデプロイします。
 - [**Mobile Apps**](../app-service-mobile/app-service-mobile-value-prop.md) - あらゆるデバイスを使用する従業員、パートナー、顧客といつでもつながります。
 - [**API Apps**](../app-service-api/app-service-api-apps-why-best-platform.md) - 簡単な操作でクラウド API を作成し、使用します。
-- [**関数アプリ**](../azure-functions/functions-overview.md) - Azure、オンプレミス、SaaS プロバイダー上のイベントに応答する軽量の関数を作成します。
 - [**Logic Apps**](../app-service-logic/app-service-logic-what-are-logic-apps.md) - コードを記述することなく、クラウド全体のデータへのアクセスと使用を自動化します。
 
 App Service は単一の統合サービスとして、上に挙げた種類のアプリを作成して単一のソリューションにすることを簡単にします。これにより、同じバックエンドを使用して Web クライアントとモバイル クライアントの両方を対象とするアプリを簡単に構築し、Office 365 や salesforce.com などの一般的なサービスと同様に、オンプレミスのシステムとも統合します。
@@ -60,4 +59,4 @@ Azure App Service なら、言語の選択と同じくらい簡単に使用で�
 無料ですぐに[新しいアプリを作成できます](http://go.microsoft.com/fwlink/?LinkId=523751)。クレジット カードもコミットメントも不要です。面倒なことはありません。
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

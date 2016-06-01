@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="05/13/2016"
+	ms.date="05/16/2016"
 	ms.author="anhoh"/>
 
 # NoSQL チュートリアル: DocumentDB C# コンソール アプリケーションの作成
@@ -602,7 +602,8 @@ Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリ
 
 ## 次のステップ
 
--   さらに複雑な ASP.NET MVC NoSQL チュートリアルが必要ですか。 「[DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築](documentdb-dotnet-application.md)」を参照してください。
+- さらに複雑な ASP.NET MVC NoSQL チュートリアルが必要ですか。 「[DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築](documentdb-dotnet-application.md)」を参照してください。
+- DocumentDB のスケールとパフォーマンスのテストを行う場合は、 「[Performance and Scale Testing with Azure DocumentDB (Azure DocumentDB のパフォーマンスとスケールのテスト)](documentdb-performance-testing.md)」を参照してください。
 -	[DocumentDB アカウントを監視する](documentdb-monitor-accounts.md)方法について学習します。
 -	[クエリのプレイ グラウンド](https://www.documentdb.com/sql/demo)でサンプル データセットに対してクエリを実行します。
 -	プログラミング モデルの詳細については、[DocumentDB のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/documentdb/)の「開発」セクションを参照してください。
@@ -611,4 +612,4 @@ Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリ
 [documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

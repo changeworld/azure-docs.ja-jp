@@ -14,14 +14,16 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/10/2016"
+	ms.date="05/18/2016"
 	ms.author="jroth"/>
 
 # Azure Virtual Machines における SQL Server の概要
 
 [Azure Virtual Machines で実行されている SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) を使用すると、クラウドに SQL Server データベースをホストすることができます。たとえば、Windows Server 2012 R2 および SQL Server 2014 Enterprise Edition を使用して構成済みの Azure VM に、オンプレミスのデータベースを移行できます。ただし、高可用性やオンプレミスのネットワークと接続するハイブリッド アーキテクチャをサポートする複数のコンピューターの構成など、他にも多くのシナリオの可能性があります。
 
-概要については、「[SQL Server 2016 に最適なプラットフォームである Azure VM](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)」のビデオを参照してください。
+概要については、次のビデオをご覧ください。
+
+> [AZURE.VIDEO data-driven-sql-server-2016-azure-vm-is-the-best-platform-for-sql-server-2016]
 
 ## SQL サービス
 
@@ -42,7 +44,7 @@ Azure で SQL Server 仮想マシンを作成するには、最初に Azure プ�
 
 サブスクリプションにサインアップした後、Azure で SQL Server 仮想マシンをデプロイする最も簡単な方法は、[Azure で SQL Server マシンのギャラリー イメージをプロビジョニングする](virtual-machines-windows-portal-sql-server-provision.md)方法です。それらのイメージには、VM の価格での SQL Server のライセンスが含まれます。
 
-Azure Virtual Machines の作成と管理には、クラシックと Resource Manager の 2 つのモデルがあることに注意してください。最新のデプロイでは、Resource Manager モデルを使用することをお勧めします。詳細については、「[Resource Manager デプロイとクラシック デプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。この記事のように、クラシックと Resource Manager の両方に適用されない限り、トピックごとに対象のモデルが明示されます。
+Azure Virtual Machines の作成と管理には、クラシックと Resource Manager の 2 つのモデルがあることに注意してください。最新のデプロイでは、Resource Manager モデルを使用することをお勧めします。詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。この記事のように、クラシックと Resource Manager の両方に適用されない限り、トピックごとに対象のモデルが明示されます。
 
 ## SQL VM イメージの選択
 次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。作成する VM のバージョン、エディション、およびオペレーティング システムに応じて、テーブル内のリンクのいずれかをクリックします。
@@ -76,7 +78,7 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 その他の高可用性構成については、「[Azure の仮想マシン内の SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
 
 ## バックアップと復元
-オンプレミス データベースを使う場合は、SQL Server のバックアップ ファイルを格納するためのセカンダリ データ センターとして Azure を利用できます。バックアップと復元のオプションの概要については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」を参照してください。
+オンプレミス データベースを使う場合は、SQL Server のバックアップ ファイルを格納するためのセカンダリ データ センターとして Azure を利用できます。バックアップと復元のオプションの概要については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」をご覧ください。
 
 [SQL Server Backup to URL](https://msdn.microsoft.com/library/dn435916.aspx) を実行すると、Azure のバックアップ ファイルが Azure BLOB ストレージに格納されます。[SQL Server マネージ バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)を実行すると、Azure でバックアップのスケジュールと保持期間を設定できます。これらのサービスは、オンプレミスの SQL Server インスタンスか、Azure VM で実行されている SQL Server で使用できます。Azure VM は、SQL Server の[自動バックアップ](virtual-machines-windows-classic-sql-automated-backup.md)や[修正プログラムの自動適用](virtual-machines-windows-classic-sql-automated-patching.md)を活用することもできます。
 
@@ -88,4 +90,4 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 
 Azure Virtual Machines での SQL Server に関して質問がある場合は、「[Azure Virtual Machines における SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)」を参照してください。または、Microsoft やコミュニティと対話するために、SQL VM トピックのいずれかの下部にコメントを追加します。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0518_2016-->

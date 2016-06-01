@@ -24,8 +24,8 @@ DC/OS はクラスター化されたワークロードをデプロイし、ス�
 
 一般的な各種ワークロードに対応したフレームワークがあるものの、このドキュメントでは、Marathon を使ってコンテナー デプロイを作成し、スケールする方法について説明します。これらの例を見ていく前に、Azure コンテナー サービスで構成された DC/OS クラスターが必要です。また、このクラスターへのリモート接続も必要です。これらの項目の詳細については、次の記事を参照してください。
 
-- [Azure コンテナー サービス クラスターのデプロイ](./container-service-deployment.md)
-- [Azure コンテナー サービス クラスターに接続する](./container-service-connect.md)
+- [Azure コンテナー サービス クラスターのデプロイ](container-service-deployment.md)
+- [Azure コンテナー サービス クラスターに接続する](container-service-connect.md)
 
 ## DC/OS UI を操作する
 
@@ -95,6 +95,6 @@ Marathon UI では、コンテナーのインスタンス数を増減するこ�
 
 ## 次のステップ
 
-[DC/OS と Marathon API の使用](./container-service-mesos-marathon-rest.md)
+[DC/OS と Marathon API の使用](container-service-mesos-marathon-rest.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

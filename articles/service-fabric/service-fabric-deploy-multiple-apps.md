@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/12/2016"
+   ms.date="05/17/2016"
    ms.author="bscholl"/>
 
 
@@ -61,7 +61,7 @@ Service Fabric のパッケージを手動で作成する方法については�
 使用されているパラメーターの説明を以下に示します。
 
 - **/source** は、パッケージ化するアプリケーションのディレクトリを指しています。
-- **/target** は、パッケージを作成するディレクトリを定義します。このディレクトリは、対象ディレクトリとは別のディレクトリである必要があります。
+- **/target** は、パッケージを作成するディレクトリを定義します。このディレクトリは、ソース ディレクトリとは別のディレクトリである必要があります。
 - **/appname** は、既存のアプリケーションのアプリケーション名を定義します。この名前はマニフェスト内で、Service Fabric のアプリケーション名ではなく、サービス名に変換されることを理解しておくことが重要です。
 - **/exe** は、Service Fabric が開始する実行可能ファイルを定義します (この例では `node.exe`)。
 - **/ma** は、実行可能ファイルの起動に使用される引数を定義します。Node.js がインストールされていないため、Service Fabric は、`node.exe bin/www` を実行して Node.js Web サーバーを起動する必要があります。`/ma:'bin/www'` と定義することで、パッケージ化ツールは `bin/ma` を node.exe の引数として使用します。
@@ -182,10 +182,10 @@ MongoDB を Service Fabric アプリケーション パッケージに追加す�
 Connect-ServiceFabricCluster localhost:19000
 
 Write-Host 'Copying application package...'
-Copy-ServiceFabricApplicationPackage -ApplicationPackagePath '[yourtargetdirectory]' -ImageStoreConnectionString 'file:C:\SfDevCluster\Data\ImageStoreShare' -ApplicationPackagePathInImageStore 'Store\NodeAppType'
+Copy-ServiceFabricApplicationPackage -ApplicationPackagePath '[yourtargetdirectory]' -ImageStoreConnectionString 'file:C:\SfDevCluster\Data\ImageStoreShare' -ApplicationPackagePathInImageStore 'NodeAppType'
 
 Write-Host 'Registering application type...'
-Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'Store\NodeAppType'
+Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
@@ -198,4 +198,4 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 
 - [ゲスト アプリケーションを手動でパッケージ化する](service-fabric-deploy-existing-app.md)方法について学習します。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0518_2016-->

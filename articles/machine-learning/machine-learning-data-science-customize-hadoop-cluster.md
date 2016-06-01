@@ -3,7 +3,7 @@
 	description="一般的な Python モジュールは、カスタムの Azure HDInsight Hadoop クラスターで利用できます。"
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="hangzh-msft" 
+	authors="bradsev" 
 	manager="paulettm" 
 	editor="cgronlun"  />
 
@@ -13,16 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	ms.author="hangzh;bradsev" />
 
 # Cortana Analytics Process の Azure HDInsight Hadoop クラスターをカスタマイズする 
 
-## はじめに
-
-この記事では、HDInsight サービスでクラスターをプロビジョニングするときに各ノードで 64 ビット Anaconda (Python 2.7) をインストールして、HDInsight Hadoop クラスターをカスタマイズする方法について説明します。このカスタマイズでは、Cortana Analytics Process で使用するためのクラスターを準備します。また、クラスターにカスタム ジョブを送信するためにヘッドノードにアクセスする方法も示します。
-
-このカスタマイズでは、便宜上 Anaconda に含まれる多くの一般的な Python モジュールを、クラスター内のハイブ レコードを処理するように設計されたユーザー定義関数 (UDF) で使用できるようにします。このシナリオで使用される手順の詳細については、「[高度な分析プロセスで HDInsight Hadoop クラスターに Hive クエリを送信する](machine-learning-data-science-hive-queries.md)」をご覧ください。
+この記事では、HDInsight サービスでクラスターをプロビジョニングするときに各ノードで 64 ビット Anaconda (Python 2.7) をインストールして、HDInsight Hadoop クラスターをカスタマイズする方法について説明します。また、クラスターにカスタム ジョブを送信するためにヘッドノードにアクセスする方法も示します。このカスタマイズでは、便宜上 Anaconda に含まれる多くの一般的な Python モジュールを、クラスター内のハイブ レコードを処理するように設計されたユーザー定義関数 (UDF) で使用できるようにします。このシナリオで用いている手順については、「[Hive クエリを送信する方法](machine-learning-data-science-move-hive-tables.md#submit)」を参照してください。
 
 次のメニューは、Cortana Analytics Process (CAP) によって使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
 
@@ -33,25 +29,25 @@
 
 カスタマイズされた HDInsight Hadoop クラスターをユーザーが作成するには、[**Azure クラシック ポータル**](https://manage.windowsazure.com/)にログオンし、左下隅にある **[新規]** をクリックした後、[DATA SERVICES] -> [HDINSIGHT] -> **[カスタム作成]** を選択して **[クラスターの詳細]** ウィンドウを表示する必要があります。
 
-![Create workspace][1]
+![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png)
 
 構成ページ 1 で作成したクラスターの名前を入力し、他のフィールドの既定値をそのまま使用します。矢印をクリックして、次の構成ページに移動します。
 
-![Create workspace][2]
+![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png)
 
 構成ページ 2 で **[データ ノード]** の番号を入力し、**[リージョン/仮想ネットワーク]** を選択して、**[ヘッド ノード]** と **[データ ノード]** のサイズを選択します。矢印をクリックして、次の構成ページに進みます。
 
 >[AZURE.NOTE] **[リージョン/仮想ネットワーク]** は、HDInsight Hadoop クラスターに使用するストレージ アカウントのリージョンと同じにする必要があります。同じにしないと、4 番目の構成ページで、ユーザーが使用するストレージ アカウントが **[アカウント名]** ドロップダウン リストに表示されません。
 
-![Create workspace][3]
+![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img3.png)
 
 構成ページ 3 では、HDInsight Hadoop クラスターのユーザー名とパスワードを指定します。**[Hive/Oozie メタストアの入力]** は選択しないでください。矢印をクリックして、次の構成ページに進みます。
 
-![Create workspace][4]
+![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img4.png)
 
 構成ページ 4 では、ストレージ アカウント名 (HDInsight Hadoop クラスターの既定のコンテナー) を指定します。ユーザーが **[既定のコンテナー]** ドロップダウン リストで _[既定のコンテナーの作成]_ を選択した場合、クラスターと同じ名前のコンテナーが作成されます。矢印をクリックして、最後の構成ページに進みます。
 
-![Create workspace][5]
+![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img5.png)
 
 最後の **[スクリプトのアクション]** 構成ページで **[スクリプト アクションの追加]** ボタンをクリックし、テキスト フィールドに次の値を入力します。
  
@@ -64,7 +60,7 @@
 
 最後に、チェック マークをクリックして、カスタマイズされた HDInsight Hadoop クラスターの作成を開始します。
 
-![Create workspace][6]
+![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/script-actions.png)
 
 ## <a name="headnode"></a>Hadoop クラスターのヘッド ノードへのアクセス
 
@@ -72,36 +68,22 @@
 
 1. [**Azure クラシック ポータル**](https://manage.windowsazure.com/)にログインし、左側で **[HDInsight]** を選択して、クラスターのリストから Hadoop クラスターを選択します。次に、**[構成]** タブをクリックし、ページの下部にある **[リモートを有効にする]** アイコンをクリックします。
 	
-	![Create workspace][7]
+	![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-1.png)
 
 2. **[リモート デスクトップの構成]** ウィンドウで、[ユーザー名]、[パスワード] の各フィールドに入力し、リモート アクセスの有効期限を選択します。チェック マークをクリックして Hadoop クラスターのヘッド ノードへのリモート アクセスを有効にします。
+
+	![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-2.png)
 	
-	>[AZURE.NOTE] 
-	>
-	>1. リモート アクセスのユーザー名とパスワードは、Hadoop クラスターを作成したときに使用するユーザー名とパスワードではありません。これらは別個の資格情報のセットです。
-	>
-	>2. リモート アクセスの有効期限は、現在の日付から 7 日以内にする必要があります。
+>[AZURE.NOTE] リモート アクセスのユーザー名とパスワードは、Hadoop クラスターを作成したときに使用するユーザー名とパスワードではありません。これらは別個の資格情報のセットです。また、リモート アクセスの有効期限は、現在の日付から 7 日以内にする必要があります。
 
-	![Create workspace][8]
+リモート アクセスを有効にした後、ページ下部の **[接続]** をクリックして、ヘッド ノードにリモートで接続します。以前に指定したリモート アクセス ユーザーの資格情報を入力して、Hadoop クラスターのヘッド ノードにログオンします。
 
-3. リモート アクセスを有効にした後、ページ下部の **[接続]** をクリックして、ヘッド ノードにリモートで接続します。以前に指定したリモート アクセス ユーザーの資格情報を入力して、Hadoop クラスターのヘッド ノードにログオンします。
-
-	 ![Create workspace][9]
+![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-3.png)
 
 高度な分析プロセスの次のステップは、「[Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)」に示されています。HDInsight にデータを移動し、Azure Machine Learning でデータの情報を取得する準備としてデータを処理してサンプリングする手順などがあります。
 
-Hive レコードを処理するために使用されるクラスターに格納されたユーザー定義関数 (UDF) で、クラスターのヘッド ノードから Anaconda に含まれる Python モジュールにアクセスする方法については、「[高度な分析プロセスで HDInsight Hadoop クラスターに Hive クエリを送信する](machine-learning-data-science-process-hive-tables.md)」をご覧ください。
-
-[1]: ./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png
-[2]: ./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img2.png
-[3]: ./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img3.png
-[4]: ./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img4.png
-[5]: ./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img5.png
-[6]: ./media/machine-learning-data-science-customize-hadoop-cluster/script-actions.png
-[7]: ./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-1.png
-[8]: ./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-2.png
-[9]: ./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-3.png
+Hive レコードを処理するために使用されるクラスターに格納されたユーザー定義関数 (UDF) で、クラスターのヘッド ノードから Anaconda に含まれる Python モジュールにアクセスする方法については、「[Hive クエリを送信する方法](machine-learning-data-science-move-hive-tables.md#submit)」をご覧ください。
 
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/28/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management の使用
@@ -35,9 +35,9 @@ Azure AD Privileged Identity Management を使用するには、まず Azure ポ
 6. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** ボタンをクリックします。Privileged Identity Management アプリケーションが起動します。
 
 
-ディレクトリ内で Azure AD Privileged Identity Management を使用する最初のユーザーには、[セキュリティ ウィザード](active-directory-privileged-identity-management-security-wizard.md)に最初の割り当て操作の手順が表示されます。手順を実行した後、ディレクトリの最初の**セキュリティ管理者**に自動的に設定されます。セキュリティ管理者だけが、このアプリケーションにアクセスして他の管理者のアクセスを管理できます。
+ディレクトリ内で Azure AD Privileged Identity Management を使用する最初のユーザーには、[セキュリティ ウィザード](active-directory-privileged-identity-management-security-wizard.md)に最初の割り当て操作の手順が表示されます。手順を実行した後、ディレクトリの最初の**セキュリティ管理者**と**特権ロール管理者**に自動的に設定されます。特権ロール管理者だけが、このアプリケーションにアクセスして他の管理者のアクセスを管理できます。
 
-自分が PIM を最初に使用するユーザーではなく、別のセキュリティ管理者によって 1 つ以上のロールが割り当てられている場合は、アクティブ化するロールを選択できます。自分にもセキュリティ管理者ロールが割り当てられている場合は、**ユーザーの管理**も選択肢として表示されます。
+自分が PIM を最初に使用するユーザーではなく、別の特権ロール管理者によって 1 つ以上のロールが割り当てられている場合は、アクティブ化するロールを選択できます。自分にも特権ロール管理者ロールが割り当てられている場合は、**ユーザーの管理**も選択肢として表示されます。
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
@@ -47,4 +47,4 @@ Azure AD Privileged Identity Management を使用するには、まず Azure ポ
 
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

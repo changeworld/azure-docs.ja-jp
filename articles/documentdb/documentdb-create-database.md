@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="DocumentDB でデータベースを作成する方法 |Microsoft Azure" 
-	description="JSON の NoSQL ドキュメント データベースである Azure DocumentDB 用のオンライン サービス ポータルを使用して、データベースを作成する方法について説明します。今すぐ無料のアカウントを取得します。" 
+	description="きわめて高速なグローバル スケールの NoSQL データベースである Azure DocumentDB のオンライン サービス ポータルを使用してデータベースを作成する方法について説明します。" 
 	keywords="データベースの作成方法" 
 	services="documentdb" 
 	authors="mimig1" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/19/2016" 
+	ms.date="05/16/2016" 
 	ms.author="mimig"/>
 
 # Azure ポータルを使用して DocumentDB のデータベースを作成する方法
@@ -51,4 +51,4 @@ DocumentDB データベースの作成方法を学習したら、次の手順は
 
 コレクションにドキュメントを用意した後で、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](documentdb-sdk-dotnet.md) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-sql-queries)することができます。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0518_2016-->

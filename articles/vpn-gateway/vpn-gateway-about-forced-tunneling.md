@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="PowerShell を使用して VPN Gateway の強制トンネリングを構成する | Microsoft Azure"
-   description="クラシック デプロイ モデルの仮想ネットワークとクロスプレミスの VPN Gateway が存在する場合、インターネットに向かうすべてのトラフィックをオンプレミスのロケーションにリダイレクトする (強制的に戻す) ことができます。"
+   pageTitle="クラシック デプロイ モデルを使用したサイト間接続の強制トンネリングの構成 |Microsoft Azure"
+   description="すべてのインターネットへのトラフィックをオンプレミスの場所に ";強制的に"; リダイレクトする方法。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -13,28 +13,35 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/24/2016"
+   ms.date="05/16/2016"
    ms.author="cherylmc" />
 
-# クラシック デプロイ モデルを使用した VPN ゲートウェイの強制トンネリングの構成
+# クラシック デプロイ モデルを使用した 強制トンネリングの構成
 
 > [AZURE.SELECTOR]
 - [PowerShell - サービス管理](vpn-gateway-about-forced-tunneling.md)
 - [PowerShell - Resource Manager](vpn-gateway-forced-tunneling-rm.md)
 
-強制トンネリングによって、検査および監査には、サイト間の VPN トンネルを介して、インターネットへのすべてのトラフィックをオンプレミス ロケーションにリダイレクトまたは "強制" できます。これは、ほとんどの企業 IT ポリシーの重要なセキュリティ要件です。強制トンネリングを使用しない場合、Azure の VM からインターネットへのトラフィックは、トラフィックを検査または監査できるオプションを使用せずに、常に Azure ネットワーク インフラストラクチャからインターネットへ直接トラバースします。認証されていないインターネット アクセスは、情報の漏えいまたは他の種類のセキュリティ侵害を招く可能性があります。
+強制トンネリングを使用すると、検査および監査のために、サイト間の VPN トンネルを介して、インターネットへのすべてのトラフィックをオンプレミスの場所に戻すようにリダイレクトする (つまり、"強制する") ことができます。これは、ほとんどの企業 IT ポリシーの重要なセキュリティ要件です。
 
+強制トンネリングを使用しない場合、Azure の VM からインターネットへのトラフィックは、トラフィックを検査または監査できるオプションを使用せずに、常に Azure ネットワーク インフラストラクチャからインターネットへ直接トラバースします。認証されていないインターネット アクセスは、情報の漏えいまたは他の種類のセキュリティ侵害を招く可能性があります。
 
-[AZURE.INCLUDE [vpn-gateway-forcedtunnel](../../includes/vpn-gateway-table-forcedtunnel-include.md)]
-
+この記事では、クラシック デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する手順について説明します。
 
 **Azure のデプロイ モデルについて**
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
+**強制トンネリングに使用されるデプロイ モデルとツール**
+
+両方のデプロイ モデルで、さまざまなツールを使用して強制トンネリング接続を構成できます。詳細については、下の表を参照してください。この表は、この構成について新しい記事、新しいデプロイメント モデル、追加のツールが利用できるようになったら更新されるものです。記事が利用できるようになったら、表から直接リンクできるようにします。
+
+[AZURE.INCLUDE [vpn-gateway-forcedtunnel](../../includes/vpn-gateway-table-forcedtunnel-include.md)]
+
+
 ## 要件と考慮事項
 
-Azure では、強制トンネリングは仮想ネットワークのユーザー定義ルートを使用して構成されます。オンプレミス サイトへのトラフィックのリダイレクトは、Azure VPN Gateway への既定のルートとして表されます。以下のセクションでは、Azure Virtual Network のルーティング テーブルおよびルートの現在の制限を一覧表示します。
+Azure では、強制トンネリングは仮想ネットワークのユーザー定義ルート (UDR) を使用して構成されます。オンプレミス サイトへのトラフィックのリダイレクトは、Azure VPN Gateway への既定のルートとして表されます。以下のセクションでは、Azure Virtual Network のルーティング テーブルおよびルートの現在の制限を一覧表示します。
 
 
 -  各仮想ネットワーク サブネットには、システム ルーティング テーブルが組み込まれています。システム ルーティング テーブルには、次の 3 つのグループがあります。
@@ -58,9 +65,9 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 ## 構成の概要
 
-次の例では、フロントエンドのサブネットは、トンネリングを強制されません。フロントエンドのサブネット内のワークロードは、直接、インターネットから顧客の要求を承認し応答し続けることができます。Mid-tier およびMid-tier のサブネットは、トンネリングを強制されます。
+次の例では、フロントエンドのサブネットは、トンネリングを強制されません。フロントエンドのサブネット内のワークロードは、直接、インターネットから顧客の要求を承認し応答し続けることができます。Mid-tier およびMid-tier のサブネットは、トンネリングを強制されます。これら 2 つのサブネットからのインターネットへのオウトバウンド接続は、S2S VPN トンネルの 1 つを介して、オンプレミス サイトに ”強制” リダイレクトされます。
 
-これら 2 つのサブネットからのインターネットへのオウトバウンド接続は、S2S VPN トンネルの 1 つを介して、オンプレミス サイトに ”強制” リダイレクトされます。これにより、必要な多層サービス アーキテクチャが継続的に使用可能になっている間は、Azure Virtual Machines やクラウド サービスからのインターネット アクセスを制限および検査することができます。また、仮想ネットワーク内に、インターネットに接続されたワークロードがない場合、全体の仮想ネットワークに強制トンネリングを適用するオプションがあります。
+これにより、必要な多層サービス アーキテクチャが継続的に使用可能になっている間は、Azure 内の仮想マシンやクラウド サービスからのインターネット アクセスを制限および検査することができます。また、仮想ネットワーク内に、インターネットに接続されたワークロードがない場合、全体の仮想ネットワークに強制トンネリングを適用するオプションがあります。
 
 
 ![強制トンネリング](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
@@ -75,7 +82,8 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 - 構成済みの仮想ネットワーク。
 
-- Web Platform Installer を使用した、Azure PowerShell コマンドレットの最新バージョン。[ダウンロード ページ](https://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
+- 最新バージョンの Azure PowerShell コマンドレット。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
+
 
 ## 強制トンネリングについて
 
@@ -119,20 +127,22 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
       </VirtualNetworkSite>
 	</VirtualNetworkSite>
 
-この例では、仮想ネットワークである "MultiTier-VNet" には、*Frontend*、*Midtier*、*Backend* の 3 つのサブネットがあり、*DefaultSiteHQ* と 3 つの *Branch* の計 4 つのクロス プレミス接続があります。以下の手順で *DefaultSiteHQ* を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように *Midtier* と *Backend* を構成します。
+この例では、仮想ネットワークである "MultiTier-VNet" には、*Frontend*、*Midtier*、*Backend* の 3 つのサブネットがあり、*DefaultSiteHQ* と 3 つの *Branch* の計 4 つのクロス プレミス接続があります。
+
+以下の手順で *DefaultSiteHQ* を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように Midtier と Backend を構成します。
 
 
 1. ルーティング テーブルを作成します。ルート テーブルを作成するには、以下のコマンドレットを使用します。
 
 		New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
 
-1. 既定のルートをルーティング テーブルに追加します。
+2. 既定のルートをルーティング テーブルに追加します。
 
 	次のコマンドレット例は、手順 1. で作成された、ルーティング テーブルに既定のルートを追加します。サポートされている唯一のルートには、"VPNGateway" ネクストホップへの宛先プレフィックスの「0.0.0.0/0」が付いています。
  
 		Set-AzureRoute –RouteTableName "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
 
-1. サブネットには、ルーティング テーブルを関連付けます。
+3. サブネットには、ルーティング テーブルを関連付けます。
 
 	ルーティング テーブルが作成され、ルートが追加された後は、以下のコマンドレットを使用して、ルート テーブルを VNet サブネットに追加または関連付けます。以下のサンプルでは、ルート テーブル "MyRouteTable" を VNet MultiTier-VNet の Midtier および Backend サブネットに追加します。
 
@@ -140,7 +150,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 		Set-AzureSubnetRouteTable -VNetName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
 
-1. 強制トンネリングに既定のサイトを割り当てます。
+4. 強制トンネリングに既定のサイトを割り当てます。
 
 	前の手順で、サンプルのコマンドレット スクリプトが、ルーティング テーブルを作成して、ルート テーブルを 2 つの VNet のサブネットに関連付けました。残りの手順は、仮想ネットワークの複数サイト間接続でローカルのサイトを規定のサイトまたはトンネルとして選択します。
 
@@ -149,30 +159,28 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 ## その他の PowerShell コマンドレット
 
-強制トンネリングの構成に役立つその他の PowerShell コマンドレットを以下に示します。
-
-**ルート テーブルを削除するには:**
+### ルート テーブルを削除するには
 
 	Remove-AzureRouteTable -RouteTableName <routeTableName>
 
-**ルート テーブルを一覧表示するには:**
+### ルート テーブルを一覧表示するには
 
 	Get-AzureRouteTable [-Name <routeTableName> [-DetailLevel <detailLevel>]]
 
-**ルート テーブルからルートを削除するには:**
+### ルート テーブルからルートを削除するには
 
 	Remove-AzureRouteTable –Name <routeTableName>
 
-**サブネットからのルートを削除するには:**
+### サブネットからのルートを削除するには
 
 	Remove-AzureSubnetRouteTable –VNetName <virtualNetworkName> -SubnetName <subnetName>
 
-**サブネットに関連付けられたルート テーブルの一覧表示するには:**
+### サブネットに関連付けられたルート テーブルの一覧表示するには
 	
 	Get-AzureSubnetRouteTable -VNetName <virtualNetworkName> -SubnetName <subnetName>
 
-**VNet VPN ゲートウェイから既定のサイトを削除するには:**
+### VNet VPN ゲートウェイから既定のサイトを削除するには
 
 	Remove-AzureVnetGatewayDefaultSites -VNetName <virtualNetworkName>
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0518_2016-->

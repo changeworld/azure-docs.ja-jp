@@ -16,7 +16,7 @@
  	ms.date="03/02/2016"  
 	ms.author="juliako"/>
 
-#ライブ ストリーミングのトラブルシューティング ガイド 
+#ライブ ストリーミングのトラブルシューティング ガイド
 
 このトピックでは、一部のライブ ストリーミングの問題のトラブルシューティング方法に関する推奨事項を説明します。
 
@@ -85,4 +85,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0518_2016-->
