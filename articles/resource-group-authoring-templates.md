@@ -394,4 +394,4 @@ resources セクションには、デプロイの対象となる一連のリソ�
 これは、複数のリソース グループ間で共有されているストレージ アカウントまたは仮想ネットワークを使用している場合は一般的です。  
 詳細については、「[resourceId 関数](resource-group-template-functions.md#resourceid)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!----HONumber=AcomDC_0518_2016-->
