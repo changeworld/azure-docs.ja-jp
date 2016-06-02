@@ -79,7 +79,9 @@ Azure Active Directory を使用した認証方法には 2 つあります。
         -F code=<AUTHORIZATION-CODE>
 
 
-	>[AZURE.NOTE] この場合、<REDIRECT-URI> をエンコードする必要はありません。
+
+	>[AZURE.NOTE] この場合、<REDIRECT-URI> をエンコードする必要はありません。  
+
 
 
 3. 応答は、アクセス トークン (例: `"access_token": "<ACCESS_TOKEN>"`) および更新トークン (例: `"refresh_token": "<REFRESH_TOKEN>"`) を含む JSON オブジェクトです。アプリケーションでは、Azure Data Lake Store にアクセスするときにアクセス トークンを使用し、アクセス トークンの有効期限が切れたときに別のアクセス トークンを取得するために更新トークンを使用します。
@@ -281,4 +283,3 @@ Data Lake Store アカウントを削除するには、次の cURL コマンド�
  
 
 <!---HONumber=AcomDC_0518_2016-->
-
