@@ -61,7 +61,9 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 
 		https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
-	>[AZURE.NOTE] <REDIRECT-URI> は、URL で使用するにはエンコードする必要があります。したがって、https://localhost は `https%3A%2F%2Flocalhost` を使用します。
+
+	>[AZURE.NOTE] \<REDIRECT-URI> は、URL で使用するにはエンコードする必要があります。したがって、https://localhost は `https%3A%2F%2Flocalhost` を使用します。
+
 
 	このチュートリアルでは、上記 URL のプレースホルダーの値を置換し、Web ブラウザーのアドレス バーに貼り付けることができます。ユーザーは、Azure ログインを使用して認証するためにリダイレクトされます。正常にログインすると、ブラウザーのアドレス バーに応答が表示されます。応答は次の形式になります。
 		
@@ -76,7 +78,9 @@ Azure Active Directory を使用した認証方法には 2 つあります。
         -F client_id=<CLIENT-ID> \
         -F code=<AUTHORIZATION-CODE>
 
-	>[AZURE.NOTE] この場合、<REDIRECT-URI> をエンコードする必要はありません。
+
+	>[AZURE.NOTE] この場合、\<REDIRECT-URI> をエンコードする必要はありません。
+
 
 3. 応答は、アクセス トークン (例: `"access_token": "<ACCESS_TOKEN>"`) および更新トークン (例: `"refresh_token": "<REFRESH_TOKEN>"`) を含む JSON オブジェクトです。アプリケーションでは、Azure Data Lake Store にアクセスするときにアクセス トークンを使用し、アクセス トークンの有効期限が切れたときに別のアクセス トークンを取得するために更新トークンを使用します。
 

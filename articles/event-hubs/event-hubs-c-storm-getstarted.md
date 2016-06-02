@@ -65,7 +65,7 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [23]: ./media/event-hubs-c-storm-getstarted/receive-storm3.png
 
 <!-- Links -->
-[Azure classic portal]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: event-hubs-overview.md
 
