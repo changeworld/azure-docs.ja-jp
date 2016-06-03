@@ -102,4 +102,4 @@ Azure Mobile Apps の詳細については、[学習マップ]を確認してく
 [App Service 環境]: ../app-service-web/app-service-app-service-environment-intro.md
 [学習マップ]: https://azure.microsoft.com/ja-JP/documentation/learning-paths/appservice-mobileapps/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!-----HONumber=AcomDC_0511_2016-->
