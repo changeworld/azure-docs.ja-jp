@@ -259,7 +259,7 @@ SampleValue:[0..2]
 
 ### 論理演算子
 
-クエリ言語では、論理演算子 (*AND*、*OR*、*NOT*) と、C スタイルのエイリアス (*&&*、*||*、*!*) をサポートしています。かっこを使用して、これらの演算子をグループ化できます。
+クエリ言語では、論理演算子 (*AND* 、 *OR* 、 *NOT*) と、C スタイルのエイリアス (*&&* 、 *||* 、 *!*) をサポートしています。かっこを使用して、これらの演算子をグループ化できます。
 
 次に例を示します。
 
@@ -292,7 +292,7 @@ system "Windows Server" OR Severity:1|system AND ("Windows Server" OR Severity:1
 Type=Event Computer=*SQL*
 ```
 
->[AZURE.NOTE] 現在、ワイルドカードを引用符で囲んで使用することはできません。Message=`"*This text*"` では、(*) をリテラル文字の (*) として使用していると見なされます。
+>[AZURE.NOTE] 現在、ワイルドカードを引用符で囲んで使用することはできません。Message=`"*This text*"` では、(\*) をリテラル文字の (\*) として使用していると見なされます。
 
 ## コマンド
 
@@ -350,11 +350,11 @@ Type=Event Computer=*SQL*
 
 	Type:Alert errors detected | select Name, Severity
 
-返される結果のフィールドを *Name** と *Severity* に制限します。
+返される結果のフィールドを *Name* と *Severity* に制限します。
 
 ### Measure
 
-*Measure* コマンドは、生の検索結果に統計関数を適用するために使用されます。これは、データの*グループ別*の表示を取得するときに非常に役立ちます。*Measure* コマンドを使用すると、Log Analytics 検索では、集計結果が表で示されます。
+*Measure* コマンドは、生の検索結果に統計関数を適用するために使用されます。これは、データの *グループ別* の表示を取得するときに非常に役立ちます。 *Measure* コマンドを使用すると、Log Analytics 検索では、集計結果が表で示されます。
 
 構文:
 
@@ -551,13 +551,13 @@ Type:Perf CounterName=”% Processor Time” InstanceName=”_Total”  | measur
 
 説明: この構文を使用すると、集計を作成し、その集計から別の外部 (プライマリ) 検索に値のリストをフィードすることで、それらの値を持つイベントを検索することができます。これを実行するには、内部検索を中かっこで囲み、その結果を IN 演算子を使用して外部検索内のフィールドに指定できる値としてフィードします。
 
-内部クエリの例: 次の集計クエリを使用して*現時点でセキュリティ更新プログラムが適用されていないコンピューター*を検索します。
+内部クエリの例: 次の集計クエリを使用して *現時点でセキュリティ更新プログラムが適用されていないコンピューター* を検索します。
 
 ```
 Type:Update Classification="Security Updates"  UpdateState=needed TimeGenerated>NOW-25HOURS | measure count() by Computer
 ```    
 
-*現時点でセキュリティ更新プログラムが適用されていないコンピューター向けのすべての Windows イベント*を検索する場合、最終的なクエリは次のようになります。
+*現時点でセキュリティ更新プログラムが適用されていないコンピューター向けのすべての Windows イベント* を検索する場合、最終的なクエリは次のようになります。
 
 ```
 Type=Event Computer IN {Type:Update Classification="Security Updates"  UpdateState=needed TimeGenerated>NOW-25HOURS | measure count() by Computer}
@@ -599,40 +599,42 @@ SQL の評価に関する推奨事項の重み付けされた推奨スコアを�
 
 **例 4**
 
-	Type=Perf CounterName="% Processor Time" | EXTEND if(map(CounterValue,0,50,0,1),"HIGH","LOW") as UTILIZATION
+```
+Type=Perf CounterName="% Processor Time" | EXTEND if(map(CounterValue,0,50,0,1),"HIGH","LOW") as UTILIZATION
 Perf Counter 値に対して 50% 未満を LOW、それ以外を HIGH としてタグ付けします。
+```
 
 **サポートされている関数**
 
 
-|関数 |説明 |構文の例|  
+| 関数 |説明 |構文の例|  
 |---------|---------|---------|
-|abs | 指定された値または関数の絶対値を返します。|<p>abs(x)</p> <p>abs(-5)</p>|
-|と | すべてのオペランドが true と評価された場合にのみ値 true を返します。 | and(not(exists(**popularity**))、exists(**price**)):|
-|def | def は default (既定) の略です。"field" フィールドの値を返すか、このフィールドが存在しない場合は指定されている既定値を返し、exists()==true になる最初の値を導出します。 |<p>div(1,y)</p><p>div(sum(x,100),max(y,1))</p>|
-| div | div(x,y) は、x を y で除算します。 | div(1,y)、div(sum(x,100),max(y,1)) |
-| dist | 2 つのベクトル (ポイント) 間の距離を n 次元空間で返します。指数と 2 つ以上の ValueSource インスタンスを受け取り、2 つのベクトル間の距離を計算します。各 ValueSource は数値にする必要があります。同じ数の ValueSource インスタンスを渡す必要があり、メソッドでは前半が最初のベクトル、後半が 2 番目のベクトルを表すと見なされます。 | <p>dist(2, x, y, 0, 0): ドキュメントごとに (0,0) と (x,y) の間のユークリッド距離を計算します。</p><p>dist(1, x, y, 0, 0): ドキュメントごとに (0,0) と (x,y) の間のマンハッタン (タクシー) 距離を計算します。</p><p>dist(2,,x,y,z,0,0,0): ドキュメントごとに (0,0,0) と (x,y,z) の間のユークリッド距離を計算します。</p><p>dist(1,x,y,z,e,f,g): (x,y,z) と (e,f,g) の間のマンハッタン距離であり、それぞれの文字はフィールド名です。</p> |
-| exists | フィールドが 1 つでも存在する場合は TRUE を返します。 | <p>exists(author) は、"author" フィールドに値が含まれているドキュメントについて TRUE を返します。</p><p>exists(query(price:5.00)) は、"price" が "5.00" に一致する場合に TRUE を返します。</p> |
-| hsin | Haversine (半正矢) 距離では、球面に沿って移動する場合の球面上の 2 点間の距離を計算します。値はラジアン単位にする必要があります。hsin では、この関数の出力をラジアンに変換するかどうかを指定するために、ブール型の引数も使用できます。 | hsin(2, true, x, y, 0, 0) |
-| if | 条件付きの関数クエリを使用できます。if(test,value1,value2) において、test は論理値または論理値 (TRUE か FALSE) を返す式を参照している or 関数です。value1 は、test から TRUE が導出された場合に関数によって返される値です。value2 は、test から FALSE が導出された場合に関数によって返される値です。式は、ブール値を出力する任意の関数にも、数値または文字列を返す関数にもすることができます。数値を返す関数の場合、値 0 は false と解釈され、文字列を返す関数の場合、空の文字列は false と解釈されます。 | if(termfreq(cat,'electronics'),popularity,42): この関数は、各ドキュメントをチェックして、cat フィールド内に "electronics" という語句が含まれているかどうかを確認します。含まれている場合は popularity フィールドの値が返され、それ以外の場合は値 42 が返されます。 |
-| linear | m*x+c を実装します。m と c は定数で、x は任意関数です。これは sum(product(m,x),c) と等価ですが、単一の関数として実装されるため、少し効率的です。 | linear(x,m,c) linear(x,2,4) は、2*x+4 を返します。 |
-| log | 指定された関数の 10 を底とする対数を返します。 | log(x) log(sum(x,100)) |
-| map | min ～ max の範囲内にある入力関数 x の値を、指定された target にマップします。引数の min と max は定数にする必要があります。引数の target と default は定数または関数にすることができます。x の値が min ～ max の範囲内に含まれない場合は、x の値が返されるか、既定値が 5 番目の引数として指定されていれば、その値が返されます。 | <p>map(x,min,max,target) map(x,0,0,1) - 値 0 を 1 に変更します。これは、既定値 0 を処理する際に役立ちます。</p> <p> map(x,min,max,target,default) map(x,0,100,1,-1) - 0 ～ 100 の値を 1 に変更し、それ以外のすべての値を -1 に変更します。</p> </p> map(x,0,100,sum(x,599),docfreq(text,solr)) - 0 ～ 100 の値を x+599 に変更し、それ以外のすべての値を test フィールド内での語句 "solr" の頻度に変更します。</p> |
-| max | 引数として max(x,y,...) のように指定された、複数の入れ子になった関数または定数の最大数値を返します。max 関数は、別の関数またはフィールドを指定された定数に "ボトム アウト" する場合にも便利です (単一の複数値フィールドの最大値を選択するために field(myfield,max) 構文を使用します)。 | max(myfield,myotherfield,0) |
-| min | 引数として min(x,y,...) のように指定された、複数の入れ子になった関数または定数の最小数値を返します。min 関数は、定数を使用して関数の "上限" を設定する場合にも便利です (単一の複数値フィールドの最小値を選択するために field(myfield,min) 構文を使用します)。 | min(myfield,myotherfield,0) |
-| ms | 引数間の差異をミリ秒単位で返します。日付は Unix または POSIX タイム エポックである 1970 年 1 月 1 日午前 0 時 (UTC) からの相対値です。引数には、インデックス付きの TrieDateField、日付の定数に基づく日付の計算、または NOW を指定できます。ms(): ms(NOW) と等価であり、エポックからのミリ秒数です。ms(a): 引数によって表されるエポックからのミリ秒数を返します。ms(a,b): b が発生してから a が発生するまで (つまり a - b) のミリ秒数を返します。 | <p> </p><p> ms(NOW/DAY) </p> <p> ms(2000-01-01T00:00:00Z)</p> <p> ms(mydatefield)</p> <p> ms(NOW,mydatefield)</p> <p> ms(mydatefield,2000-01-01T00:00:00Z)</p> <p> ms(datefield1,datefield2)</p> |
-| not | ラップされた関数の論理的に否定された値。 | not(exists(author)): exists(author) が false の場合にのみ TRUE。 |
-| または | 論理和。 | or(value1,value2): value1 または value2 が true の場合に TRUE。 |
-| pow | 指定された基数を指定された数値でべき乗します。pow(x,y) は、x を y 乗します。 | <p> pow(x,y)</p> <p>pow(x,log(y))</p> <p> pow(x,0.5)</p>: sqrt と同じ。 |
-| product | コンマ区切りのリストで指定された複数の値または関数の積を返します。mul(...) は、この関数のエイリアスとしても使用できます。 | <p> product(x,y,...)</p> <p>product(x,2)</p> <p> product(x,y)</p> <p>mul(x,y)</p> |
-| recip | `recip(x,m,a,b)` による逆関数を実行し、`<a/(m*x+b)` を実装します。m、a、b は定数で、x は任意の複素関数です。a と b が等しく、x が 0 以上の場合、この関数の最大値は 1 となり、x が増加するとその値は減少します。a と b の値を同時に増やすと、関数全体が曲線上のより平坦な部分に移動することになります。このような特性により、x を "rord(datefield)" とした場合、この関数はより新しいドキュメントを検索するという点で最適な関数になります。 | <p>recip(myfield,m,a,b)<p> <p> recip(rord(creationDate),1,1000,1000)</p> |
-| scale | 関数 x の値を、指定された minTarget ～ maxTarget の範囲内に収まるようにスケーリングします。現在の実装では、正しいスケールを選択できるように、関数のすべての値を走査して最小値と最大値を取得しています。現在の実装では、ドキュメントが削除されている場合、または値を持たない場合、それらを判別することができません。このような場合には、値 0.0 が使用されます。つまり、すべての値が通常どおりに 0.0 を越えている場合でも、最終的に 0.0 がマップ元の最小値になる可能性があります。このような場合、適切な map() 関数を scale(map(x,0,0,5),1,2) のように対処法として使用し、0.0 を実際の範囲内の値に変更することができます。 | <p>scale(x,minTarget,maxTarget)</p> <p>scale(x,1,2): すべての値が 1 ～ 2 の範囲内に収まるように x の値をスケーリングします。 </p> |
-| sqedist | 2 乗ユークリッド距離では 2-norm (ユークリッド距離) を計算しますが、平方根を使用しないため負荷のかかる演算が不要になります。多くの場合、ユークリッド距離を考慮するアプリケーションに実際の距離は必要ありませんが、代わりに距離の 2 乗が必要になります。同じ数の ValueSource インスタンスを渡す必要があり、メソッドでは前半が最初のベクトル、後半が 2 番目のベクトルを表すと見なされます。 | sqedist(x\_td, y\_td, 0, 0) |
-| sqrt | 指定された値または関数の平方根を返します。 | <p>sqrt(x)</p><p>sqrt(100)</p><p>sqrt(sum(x,100))</p> |
-| strdist | 2 つの文字列間の距離を計算します。Lucene スペル チェッカーの StringDistance インターフェイスを使用し、そのパッケージに含まれるすべての実装をサポートしているほか、Solr のリソース読み込み機能を通じてアプリケーション独自の実装をプラグインとして使用できます。strdist には string1、string2、distance measure (距離指標) を指定できます。距離指標として指定できる値は、jw: Jaro-Winkler、edit: Levenstein または Edit distance、ngram: NGramDistance です。NGramDistance を指定した場合、オプションとして ngram サイズも渡すことができます。既定値は 2 です。FQN: StringDistance インターフェイスの実装用の完全修飾クラス名。引数なしのコンストラクターが必要です。 | strdist("SOLR",id,edit) |
-| sub | sub(x,y) から x-y を返します。 | <p>sub(myfield,myfield2)</p> <p> sub(100,sqrt(myfield))</p> |
-| sum | コンマ区切りのリストで指定された複数の値または関数の合計を返します。add(...) をこの関数のエイリアスとして使用できます。 | <p>sum(x,y,...)</p> <p>sum(x,1)</p> <p> sum(x,y)</p> <p> sum(sqrt(x),log(y),z,0.5)</p> <p> add(x,y)</p> |
-| xor | どちらか一方であり、両方ではない。 | xor(field1,field2): field1 または field2 のどちらかが true の場合に TRUE を返し、両方が true の場合に FALSE を返します。 |
+| abs | 指定された値または関数の絶対値を返します。| `abs(x)` <br> `abs(-5)` |
+| と | すべてのオペランドが true と評価された場合にのみ値 true を返します。 | `and(not(exists(**popularity**)),exists(**price**))` |
+| def | def は default (既定) の略です。"field" フィールドの値を返すか、このフィールドが存在しない場合は指定されている既定値を返し、`exists()==true` になる最初の値を導出します。 | `div(1,y)` <br> `div(sum(x,100),max(y,1))` |
+| div | `div(x,y)` は、x を y で除算します。 | `div(1,y),div(sum(x,100),max(y,1))` |
+| dist | 2 つのベクトル (ポイント) 間の距離を n 次元空間で返します。指数と 2 つ以上の ValueSource インスタンスを受け取り、2 つのベクトル間の距離を計算します。各 ValueSource は数値にする必要があります。同じ数の ValueSource インスタンスを渡す必要があり、メソッドでは前半が最初のベクトル、後半が 2 番目のベクトルを表すと見なされます。 | `dist(2, x, y, 0, 0)` - ドキュメントごとに (0,0) と (x,y) の間のユークリッド距離を計算します。 <br> `dist(1, x, y, 0, 0)` - ドキュメントごとに (0,0) と (x,y) の間のマンハッタン (タクシー) 距離を計算します。 <br> `dist(2,,x,y,z,0,0,0)` - ドキュメントごとに (0,0,0) と (x,y,z) の間のユークリッド距離を計算します。<br>`dist(1,x,y,z,e,f,g)` - (x,y,z) と (e,f,g) の間のマンハッタン距離であり、それぞれの文字はフィールド名です。</p> |
+| exists | フィールドが 1 つでも存在する場合は TRUE を返します。 | `exists(author)` は、"author" フィールドに値が含まれているドキュメントについて TRUE を返します。<br>`exists(query(price:5.00))` は、"price" が "5.00" に一致する場合に TRUE を返します。 |
+| hsin | Haversine (半正矢) 距離では、球面に沿って移動する場合の球面上の 2 点間の距離を計算します。値はラジアン単位にする必要があります。hsin では、この関数の出力をラジアンに変換するかどうかを指定するために、ブール型の引数も使用できます。 | `hsin(2, true, x, y, 0, 0)` |
+| if | 条件付きの関数クエリを使用できます。`if(test,value1,value2)` において、test は論理値または論理値 (TRUE か FALSE) を返す式を参照している or 関数です。 `value1` は、test から TRUE が導出された場合に関数によって返される値です。`value2` は、test から FALSE が導出された場合に関数によって返される値です。式は、ブール値を出力する任意の関数にも、数値または文字列を返す関数にもすることができます。数値を返す関数の場合、値 0 は false と解釈され、文字列を返す関数の場合、空の文字列は false と解釈されます。 | `if(termfreq(cat,'electronics'),popularity,42)` - この関数は、各ドキュメントをチェックして、cat フィールド内に "electronics" という語句が含まれているかどうかを確認します。含まれている場合は popularity フィールドの値が返され、それ以外の場合は値 42 が返されます。 |
+| linear | `m*x+c` を実装します。m と c は定数で、x は任意関数です。これは `sum(product(m,x),c)` と等価ですが、単一の関数として実装されるため、少し効率的です。 | `linear(x,m,c) linear(x,2,4)` は、`2*x+4` を返します。 |
+| log | 指定された関数の 10 を底とする対数を返します。 | `log(x)   log(sum(x,100))` |
+| map | min ～ max の範囲内にある入力関数 x の値を、指定された target にマップします。引数の min と max は定数にする必要があります。引数の target と default は定数または関数にすることができます。x の値が min ～ max の範囲内に含まれない場合は、x の値が返されるか、既定値が 5 番目の引数として指定されていれば、その値が返されます。 | `map(x,min,max,target) map(x,0,0,1)` - 値 0 を 1 に変更します。これは、既定値 0 を処理する際に役立ちます。<br> `map(x,min,max,target,default)    map(x,0,100,1,-1)` - 0 ～ 100 の値を 1 に変更し、それ以外のすべての値を -1 に変更します。<br>  `map(x,0,100,sum(x,599),docfreq(text,solr))` - 0 ～ 100 の値を x+599 に変更し、それ以外のすべての値を test フィールド内での語句 "solr" の頻度に変更します。</p> |
+| max | 引数として `max(x,y,...)` のように指定された、複数の入れ子になった関数または定数の最大数値を返します。max 関数は、別の関数またはフィールドを指定された定数に "ボトム アウト" する場合にも便利です (単一の複数値フィールドの最大値を選択するために `field(myfield,max)` 構文を使用します)。 | `max(myfield,myotherfield,0)` |
+| min | 引数として `min(x,y,...)` のように指定された、複数の入れ子になった関数または定数の最小数値を返します。min 関数は、定数を使用して関数の "上限" を設定する場合にも便利です (単一の複数値フィールドの最小値を選択するために `field(myfield,min)` 構文を使用します)。 | `min(myfield,myotherfield,0)` |
+| ms | 引数間の差異をミリ秒単位で返します。日付は Unix または POSIX タイム エポックである 1970 年 1 月 1 日午前 0 時 (UTC) からの相対値です。引数には、インデックス付きの TrieDateField、日付の定数に基づく日付の計算、または NOW を指定できます。`ms()` : `ms(NOW)` と等価であり、エポックからのミリ秒数です。`ms(a)` : 引数によって表されるエポックからのミリ秒数を返します。`ms(a,b)` : b が発生してから a が発生するまで (つまり `a - b`) のミリ秒数を返します。 | `ms(NOW/DAY)`<br>`ms(2000-01-01T00:00:00Z)`<br>`ms(mydatefield)`<br>`ms(NOW,mydatefield)`<br>`ms(mydatefield,2000-01-01T00:00:00Z)`<br>`ms(datefield1,datefield2)` |
+| not | ラップされた関数の論理的に否定された値。 | `not(exists(author))`: `exists(author)` が false の場合にのみ TRUE。 |
+| または | 論理和。 | `or(value1,value2)` - value1 または value2 が true の場合に TRUE。 |
+| pow | 指定された基数を指定された数値でべき乗します。`pow(x,y)` は、x を y 乗します。 | `pow(x,y)`<br>`pow(x,log(y))`<br>`pow(x,0.5)` - sqrt と同じ。 |
+| product | コンマ区切りのリストで指定された複数の値または関数の積を返します。`mul(...)` は、この関数のエイリアスとしても使用できます。 | `product(x,y,...)`<br>`product(x,2)`<br>`product(x,y)`<br>`mul(x,y)` |
+| recip | `recip(x,m,a,b)` による逆関数を実行し、`a/(m*x+b)` を実装します。m、a、b は定数で、x は任意の複素関数です。a と b が等しく、x が 0 以上の場合、この関数の最大値は 1 となり、x が増加するとその値は減少します。a と b の値を同時に増やすと、関数全体が曲線上のより平坦な部分に移動することになります。このような特性により、x を `rord(datefield)` とした場合、この関数はより新しいドキュメントを検索するという点で最適な関数になります。 | `recip(myfield,m,a,b)`<br>`recip(rord(creationDate),1,1000,1000)` |
+| scale | 関数 x の値を、指定された minTarget ～ maxTarget の範囲内に収まるようにスケーリングします。現在の実装では、正しいスケールを選択できるように、関数のすべての値を走査して最小値と最大値を取得しています。現在の実装では、ドキュメントが削除されている場合、または値を持たない場合、それらを判別することができません。このような場合には、値 0.0 が使用されます。つまり、すべての値が通常どおりに 0.0 を越えている場合でも、最終的に 0.0 がマップ元の最小値になる可能性があります。このような場合、適切な `map()` 関数を `scale(map(x,0,0,5),1,2)` のように対処法として使用し、0.0 を実際の範囲内の値に変更することができます。 | `scale(x,minTarget,maxTarget)`<br>`scale(x,1,2)` - すべての値が 1 ～ 2 の範囲内に収まるように x の値をスケーリングします。 </p> |
+| sqedist | 2 乗ユークリッド距離では 2-norm (ユークリッド距離) を計算しますが、平方根を使用しないため負荷のかかる演算が不要になります。多くの場合、ユークリッド距離を考慮するアプリケーションに実際の距離は必要ありませんが、代わりに距離の 2 乗が必要になります。同じ数の ValueSource インスタンスを渡す必要があり、メソッドでは前半が最初のベクトル、後半が 2 番目のベクトルを表すと見なされます。 | `sqedist(x_td, y_td, 0, 0)` |
+| sqrt | 指定された値または関数の平方根を返します。 | `sqrt(x)`<br>`sqrt(100)`<br>`sqrt(sum(x,100))` |
+| strdist | 2 つの文字列間の距離を計算します。Lucene スペル チェッカーの StringDistance インターフェイスを使用し、そのパッケージに含まれるすべての実装をサポートしているほか、Solr のリソース読み込み機能を通じてアプリケーション独自の実装をプラグインとして使用できます。strdist には `(string1, string2, distance measure)` (距離指標) を指定できます。距離指標として指定できる値は、jw: Jaro-Winkler、edit: Levenstein または Edit distance、ngram: NGramDistance です。NGramDistance を指定した場合、オプションとして ngram サイズも渡すことができます。既定値は 2 です。FQN: StringDistance インターフェイスの実装用の完全修飾クラス名。引数なしのコンストラクターが必要です。 | `strdist("SOLR",id,edit)` |
+| sub | `sub(x,y)` から x-y を返します。 | `sub(myfield,myfield2)`<br>`sub(100,sqrt(myfield))` |
+| sum | コンマ区切りのリストで指定された複数の値または関数の合計を返します。`add(...)` をこの関数のエイリアスとして使用できます。 | `sum(x,y,...)`<br>`sum(x,1)`<br>`sum(x,y)`<br>`sum(sqrt(x),log(y),z,0.5)`<br>`add(x,y)` |
+| xor | どちらか一方であり、両方ではない。 | `xor(field1,field2)` - field1 または field2 のどちらかが true の場合に TRUE を返し、両方が true の場合に FALSE を返します。 |
 
 
 
