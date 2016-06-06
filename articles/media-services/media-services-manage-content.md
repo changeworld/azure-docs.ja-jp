@@ -39,7 +39,7 @@
 [AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
 
 
-1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[Media Services]** をクリックし、Media Services アカウント名をクリックします。
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[Media Services]** をクリックし、目的の Media Services アカウント名をクリックします。
 2. [コンテンツ] ページを選択します。 
 3. ページまたはポータルの下部にある **[アップロード]** をクリックします。 
 4. **[コンテンツのアップロード]** ダイアログで、目的の資産ファイルを見つけます。ファイルをクリックして、**[開く]** をクリックするか、**Enter** キーを押します。
@@ -222,4 +222,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-manage-content/media-services-portal-player.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

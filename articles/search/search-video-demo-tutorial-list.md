@@ -55,7 +55,9 @@
 
 リンク|リリース日|詳細
 ----|------------|-----------
-[Channel9 Data Exposed: Azure Search のカスタム アナライザー、検索分析、および ポータル クエリ](https://channel9.msdn.com/Shows/Data-Exposed/Custom-Analyzers-Search-Analytics--Portal-Querying-in-Azure-Search)|2016 年 1 月|21 分。カスタム アナライザーによって、トークナイザーとトークン フィルターの構成が可能になります。検索分析によって、ユーザーが入力した検索用語や、検索インデックスの有効性についての洞察を得ることができます。Search エクスプローラーは、ポータルからクエリを実行する、組み込みのクエリ ツールです。 
+[Channel9 Build 2016: "Applications That Learn & Adapt (学習し、適応するアプリケーション): Azure Machine Learning + Search"](https://channel9.msdn.com/Events/Build/2016/P458)|2016 年 5 月|17 分。Azure Search アプリケーションに "あなたへのおすすめ" 機能を追加する利点と、Machine Learning からユーザー設定に関する洞察を導き出す方法を Liam Cavanagh が説明します。 
+[Channel9 Build 2016: "Intelligent Data Driven Applications that Learn and Adapt (学習し、適応するインテリジェントなデータ主導のアプリケーション)"](https://channel9.msdn.com/Events/Build/2016/B857)|2016 年 5 月|1 時間。Machine Learning と Azure Search を一緒に使用して高度なデータ主導のアプリケーションを作成する方法を学習します。
+[Channel9 Data Exposed: Azure Search のカスタム アナライザー、検索分析、および ポータル クエリ](https://channel9.msdn.com/Shows/Data-Exposed/Custom-Analyzers-Search-Analytics--Portal-Querying-in-Azure-Search)|2016 年 1 月|15 分。カスタム アナライザーによって、トークナイザーとトークン フィルターの構成が可能になります。検索分析によって、ユーザーが入力した検索用語や、検索インデックスの有効性についての洞察を得ることができます。Search エクスプローラーは、ポータルからクエリを実行する、組み込みのクエリ ツールです。 
 [Channel9 Data Exposed: Azure Search の拡張機能](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-Enhancements)|2015 年 11 月|17 分。StackExchange データのデータの取り込み。Azure ポータルでのインデックスの作成。インデクサーがサポートされているデータ ソースをクロールして Azure Search インデックスにデータをプルする方法について学びます。言語アナライザー。Lucene クエリ式。
 [Azure Search とは](https://azure.microsoft.com/documentation/videos/what-is-azure-search/)|2015 年 10 月|1、2 分で説明します。 Azure Search の概要。
 [AzureCon 2015 での Azure Search のベスト プラクティス](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/)|2015 年 9 月|Web またはモバイル シナリオ用のアプリを構築する際に、スケールアウト、パフォーマンスの最適化、および効率的なコーディングを実現する方法に関する実用的なアドバイスです (プレゼンター: Pablo Castro)。 
@@ -88,4 +90,4 @@
 [スコアリング プロファイルのチュートリアル](search-get-started-scoring-profiles.md)|コンソール アプリケーションを使用してスコアリング プロファイルをテスト使用します。
 [Azure Search 管理 REST API チュートリアル](search-get-started-management-api.md)|管理 REST API を使用して、サービスをプロビジョニングし、管理またはクエリ API キーを管理する方法。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/08/2016"
+   ms.date="05/20/2016"
    ms.author="toddabel"/>
 
 
@@ -59,11 +59,11 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 ### Azure リソース マネージャー を使用してクラスター作成の一環で診断拡張機能をデプロイする
 リソース マネージャーを使用してクラスターを作成するには、診断の構成 JSON を完全なクラスターのリソース マネージャー テンプレートに追加してから、クラスターを作成します。ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。このサンプルは、Azure サンプル ギャラリーの「[Five-node cluster with Diagnostics Resource Manager template sample](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)」で参照できます。Resource Manager テンプレートの診断設定を確認するには、**azuredeploy.json** ファイルを開き、**IaaSDiagnostics** を検索します。このテンプレートを使用してクラスターを作成するには、上のリンクにある **[Azure にデプロイ]** ボタンをクリックしてください。
 
-または、リソース マネージャー サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzureResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。コマンドで渡す必要があるパラメーターについては、後述します。PowerShell を利用してリソース グループをデプロイする方法については、「[Azure Resource Manager のテンプレートを使用したリソース グループのデプロイ](../resource-group-template-deploy.md)」を参照してください。
+または、リソース マネージャー サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzureRmResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。コマンドで渡す必要があるパラメーターについては、後述します。PowerShell を利用してリソース グループをデプロイする方法については、「[Azure Resource Manager のテンプレートを使用したリソース グループのデプロイ](../resource-group-template-deploy.md)」を参照してください。
 
 ```powershell
 
-New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $deploymentName -TemplateFile $pathToARMConfigJsonFile -TemplateParameterFile $pathToParameterFile –Verbose
+New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $deploymentName -TemplateFile $pathToARMConfigJsonFile -TemplateParameterFile $pathToParameterFile –Verbose
 ```
 
 ### 既存のクラスターに診断拡張機能をデプロイする
@@ -173,10 +173,10 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
 
 
 ## 新しい EventSource チャネルのログを収集およびアップロードするように診断を更新する
-デプロイする予定の新しいアプリケーションを示す新しい EventSource チャネルのログを収集するように診断を更新するには、既存のクラスターに対する診断の設定について説明した[前述のセクション](#deploywadarm)と同じ手順を実行する必要があります。**template.json** の *EtwEventSourceProviderConfiguration* セクションを更新し、新しい EventSource のエントリを追加してから、*New-AzureResourceGroupDeployment* PowerShell コマンドで構成の更新を適用する必要があります。
+デプロイする予定の新しいアプリケーションを示す新しい EventSource チャネルのログを収集するように診断を更新するには、既存のクラスターに対する診断の設定について説明した[前述のセクション](#deploywadarm)と同じ手順を実行する必要があります。**template.json** の *EtwEventSourceProviderConfiguration* セクションを更新し、新しい EventSource のエントリを追加してから、*New-AzureRmResourceGroupDeployment* PowerShell コマンドで構成の更新を適用する必要があります。
 
 
 ## 次のステップ
 問題を解決する際に確認する必要があるイベントの詳細については、[Reliable Actors](service-fabric-reliable-actors-diagnostics.md) と [Reliable Services](service-fabric-reliable-services-diagnostics.md) で生成される診断イベントを参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

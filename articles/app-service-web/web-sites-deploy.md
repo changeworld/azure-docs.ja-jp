@@ -126,7 +126,7 @@ Web コンテンツを Web サーバーに手動でコピーすることに慣�
 * [任意の git/hg リポジトリから Web アプリへの発行](http://blog.davidebbo.com/2013/04/publishing-to-azure-web-sites-from-any.html)。  
 
 ## IDE を使用したデプロイ
-[Visual Studio](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) と [Azure SDK](https://azure.microsoft.com/downloads/)、または [Xcode](https://developer.apple.com/xcode/) や [Eclipse](https://www.eclipse.org) などの他の IDE スイートを既に使用している場合は、IDE 内から直接 Azure にデプロイできます。このオプションは個人開発者に最適です。
+[Visual Studio](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) と [Azure SDK](https://azure.microsoft.com/downloads/)、[Xcode](https://developer.apple.com/xcode/)、[Eclipse](https://www.eclipse.org)、[IntelliJ IDEA](https://www.jetbrains.com/idea/) などの IDE スイートを既に使用している場合は、IDE 内から直接 Azure にデプロイできます。このオプションは個人開発者に最適です。
 
 Visual Studio は 3 つのデプロイ プロセス (FTP、Git、Web Deploy) をすべてサポートしていますが、FTP または Git と統合されていれば、他の IDE でも App Service にデプロイできます (「[デプロイメント プロセスの概要](#overview)」を参照してください)。
 
@@ -154,6 +154,14 @@ IDE を使用したデプロイの欠点は次のとおりです。
 * [メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションの Web アプリへのデプロイ](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)。Visual Studio、Web Deploy、Entity Framework、Code First Migrations を使用して、ASP.NET MVC Web プロジェクトを SQL データベースと共に配置する方法。
 * [Visual Studio を使用した ASP.NET Web デプロイ](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/introduction)。12 部構成のチュートリアル シリーズであり、このリスト内に掲載されている他のリソースより詳細にデプロイ タスクの範囲を網羅しています。チュートリアルを作成した後で、不足している事項を説明するためにメモが追加されたため、一部の Azure デプロイ機能が追加されました。
 * [Git リポジトリから ASP.NET Web サイトを Visual Studio 2012 内にある Azure へ直接のデプロイ](http://www.dotnetcurry.com/ShowArticle.aspx?ID=881)。Visual Studio 内で ASP.NET Web プロジェクトをデプロイし、Git プラグインを使用してコードを Git にコミットして、Azure を Git リポジトリに接続する方法について説明します。Visual Studio 2013 以降、Git のサポートが組み込まれており、プラグインをインストールする必要はありません。
+
+###<a name="aztk"></a>Azure Toolkit for Eclipse や Azure Toolkit for IntelliJ IDEA を使用してデプロイする方法
+
+Azure には、[Azure Toolkit for Eclipse](../azure-toolkit-for-eclipse.md) や [Azure Toolkit for IntelliJ](../azure-toolkit-for-intellij.md) を使用することで、Eclipse や IntelliJ から直接 Web Apps をデプロイすることができます。以下のチュートリアルでは、いずれかの IDE を使用して単純な "Hello" world Web App を Azure にデプロイする手順を説明しています。
+
+*  [Eclipse で Azure 用の Hello World Web アプリを作成する](./app-service-web-eclipse-create-hello-world-web-app.md)このチュートリアルでは、Azure Toolkit for Eclipse を使用して、Azure 用の Hello World Web アプリを作成、デプロイする方法について説明します。
+*  [IntelliJ で Azure 用の Hello World Web アプリを作成する](./app-service-web-intellij-create-hello-world-web-app.md)。このチュートリアルでは、Azure Toolkit for IntelliJ を使用して、Azure 用の Hello World Web アプリを作成、デプロイする方法について説明します。
+
 
 ## <a name="automate"></a>コマンド ライン ツールを使用したデプロイの自動化
 
@@ -226,4 +234,4 @@ Azure のロールベースのアクセス許可を使用して、App Service �
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

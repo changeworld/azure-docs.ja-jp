@@ -1,12 +1,12 @@
 <properties
-	pageTitle="PowerApps Enterprise または Logic Apps に Office 365 Users API を追加する | Microsoft Azure"
-	description="Office 365 Users API と REST API パラメーターの概要"
-	services=""	
-	documentationCenter="" 	
-	authors="msftman"	
-	manager="erikre"	
-	editor="" 
-	tags="connectors" />
+    pageTitle="PowerApps Enterprise またはロジック アプリに Office 365 Users コネクタを追加する | Microsoft Azure"
+    description="Office 365 Users コネクタと REST API パラメーターの概要"
+    services=""    
+    documentationCenter=""     
+    authors="msftman"    
+    manager="erikre"    
+    editor="" 
+    tags="connectors" />
 
 <tags
 ms.service="multiple"
@@ -14,12 +14,12 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="03/16/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Office 365 Users API を使ってみる
+# Office 365 Users コネクタの使用
 
-Office 365 ユーザーに接続して、プロファイルの取得、ユーザーの検索などを行います。Office 365 Users API は、以下のツールから使用できます。
+Office 365 ユーザーに接続して、プロファイルの取得、ユーザーの検索などを行います。Office 365 Users コネクタは、次のツールから使用できます。
 
 - Logic Apps 
 - PowerApps
@@ -37,29 +37,28 @@ Office 365 ユーザーは、次のことを行えます。
 
 - Office 365 ユーザーから取得したデータに基づいてビジネス フローを構築できます。 
 - 直属の部下の取得、上司のユーザーのプロファイルの取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、ユーザーの直属の部下を取得し、この情報を利用して、SQL Azure Database を更新します。 
-- PowerApps Enterprise に Office 365 Users API を追加します。追加すると、ユーザーはアプリ内で API を使用できるようになります。 
+- PowerApps Enterprise に Office 365 Users コネクタを追加します。追加すると、ユーザーはアプリ内でコネクタを使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、[PowerApps での API の登録](../power-apps/powerapps-register-from-available-apis.md)に関するページをご覧ください。
+PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
 
 ロジック アプリに操作を追加する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
 
 ## トリガーとアクション
 
-Office 365 Users API では、次のアクションを使用できます。トリガーはありません。
+Office 365 Users コネクタでは、次のアクションを使用できます。トリガーはありません。
 
 | トリガー | アクション|
 | --- | --- |
 |なし | <ul><li>上司の取得</li><li>自分のプロファイルを取得</li><li>直属の部下を取得</li><li>ユーザー プロファイルの取得</li><li>ユーザーの検索</li></ul>|
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 
 ## Office 365 Users への接続を作成します
 
-この API をロジック アプリに追加する場合は、Office 365 ユーザー アカウントにサインインして、ロジック アプリでアカウントに接続できるようにする必要があります。
+このコネクタをロジック アプリに追加する場合は、Office 365 ユーザー アカウントにサインインして、ロジック アプリでアカウントに接続できるようにする必要があります。
 
-1. Office 365 ユーザー アカウントにサインインします。
-2. ロジック アプリが Office 365 アカウントに接続して使用することを許可します。 
+>[AZURE.INCLUDE [Office 365 Users への接続を作成する手順](../../includes/connectors-create-api-office365users.md)]
 
 接続を作成したら、ユーザー ID など、Office 365 ユーザー プロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
@@ -204,4 +203,4 @@ Office 365 Users API では、次のアクションを使用できます。ト�
 [10]: ./media/connectors-create-api-office365-users/contoso-aad-app.PNG
 [11]: ./media/connectors-create-api-office365-users/contoso-aad-app-configure.PNG
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

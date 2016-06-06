@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="05/16/2016" 
 	ms.author="johnmac"/>
 
 # DocumentDB のパフォーマンス レベル
@@ -173,7 +173,9 @@ Azure DocumentDB の価格設定とデータ管理の詳細については、以
 
 DocumentDB の詳細については、Azure DocumentDB に関する[ドキュメント](https://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
 
+DocumentDB に関するスケールとパフォーマンスのテストを始めるには、「[Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」を参照してください。
+
 [1]: ./media/documentdb-performance-levels/documentdb-change-collection-performance7-9.png
 [2]: ./media/documentdb-performance-levels/documentdb-change-collection-performance10-11.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

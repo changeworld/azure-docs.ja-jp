@@ -4,7 +4,7 @@
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
-   manager="stevenka"
+   manager="jwhit"
    editor="tysonn" />
 <tags 
    ms.service="automation"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/23/2016"
+   ms.date="05/23/2016"
    ms.author="magoedte;bwren"/>
 
 # Azure Automation での Runbook の開始
@@ -23,13 +23,13 @@
 |-------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Azure ポータル](#starting-a-runbook-with-the-azure-portal) | <li>対話型ユーザー インターフェイスを使用する最も簡単な方法です。<br> <li>単純なパラメーター値を提供するフォームです。<br> <li>ジョブの状態を簡単に追跡できます。<br> <li>アクセスを Azure ログオンで認証します。 |
 | [Windows PowerShell](https://msdn.microsoft.com/library/dn690259.aspx) | <li>Windows PowerShell コマンドレットを使用してコマンドラインから呼び出します。<br> <li>複数のステップで自動化されたソリューションに含めることができます。<br> <li>証明書または OAuth ユーザー プリンシパル/サービス プリンシパルで要求が認証されます。<br> <li>単純および複雑なパラメーター値を提供します。<br> <li>ジョブの状態を追跡できます。<br> <li>PowerShell コマンドレットをサポートするために必要なクライアントです。 |
-| [Azure Automation API](http://msdn.microsoft.com/library/azure/mt163849.aspx) | <li>最も柔軟性の高い方法ですが、最も複雑でもあります。<br> <li>HTTP 要求を発行することが可能なあらゆるカスタム コードから呼び出せます。<br> <li>証明書または OAuth ユーザー プリンシパル/サービス プリンシパルでの認証を要求します。<br> <li>単純および複雑なパラメーター値を提供します。<br> <li>ジョブの状態を追跡できます。 |
+| [Azure Automation API](https://msdn.microsoft.com/library/azure/mt662285.aspx) | <li>最も柔軟性の高い方法ですが、最も複雑でもあります。<br> <li>HTTP 要求を発行することが可能なあらゆるカスタム コードから呼び出せます。<br> <li>証明書または OAuth ユーザー プリンシパル/サービス プリンシパルでの認証を要求します。<br> <li>単純および複雑なパラメーター値を提供します。<br> <li>ジョブの状態を追跡できます。 |
 | [Webhook](automation-webhooks.md) | <li>1 つの HTTP 要求で Runbook を開始します。<br> <li>URL のセキュリティ トークンを使用して認証します。<br> <li>クライアントは Webhook の作成時に指定されたパラメーター値を上書きできません。Runbook は、HTTP 要求の詳細が含まれる 1 つのパラメーターを定義できます。<br> <li>Webhook URL でジョブの状態を追跡することはできません。 |
 | [Azure アラートに応答する](automation-webhooks.md) | <li>Azure アラートに応答して Runbook を開始します。<br> <li>runbook 用の Webhook とアラートへのリンクを構成します。<br> <li>URL のセキュリティ トークンを使用して認証します。<br> <li>現時点ではメトリックに関するアラートのみサポートします。 |
 | [スケジュール](automation-scheduling-a-runbook.md) | <li>時間、日、週の単位のスケジュールで Runbook を自動的に開始できます。<br> <li>Azure ポータル、PowerShell コマンドレット、または Azure API を使用してスケジュールを設定します。<br> <li>スケジュールで使用するパラメーター値を提供します。 |
 | [別の Runbook から](automation-child-runbooks.md) | <li>別の Runbook の活動として、Runbook を使用します。<br> <li>複数の Runbook で使用する機能に役立ちます。<br> <li>子 Runbook にパラメーター値を指定し、出力を親 Runbook で使用します。 |
 
-次の図は、Runbook のライフサイクルのプロセスをステップごとに詳細に示しています。この図には、Azure Automation で Runbook を開始するさまざまな方法、オンプレミス コンピューターが Azure Automation Runbook を実行するために必要なコンポーネント、さまざまなコンポーネント間のやり取りが含まれています。自社のデータセンターで Automation Runbook を実行する方法については、「[Azure Automation の Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)」を参照してください。
+次の図は、Runbook のライフ サイクルにおけるプロセスをステップごとに詳細に示したものです。これには、Azure Automation で Runbook を開始するためのさまざまな方法、Hybrid Runbook Worker で Azure Automation Runbook を実行するために必要な各コンポーネント、異なるコンポーネント間でのやり取りなどが示されています。自社のデータセンターで Automation Runbook を実行する方法については、「[Azure Automation の Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)」を参照してください。
 
 ![Runbook のアーキテクチャ](media/automation-starting-runbook/runbooks-architecture.png)
 
@@ -51,43 +51,47 @@
 
 ## Windows PowerShell での Runbook の開始
 
-[Start-AzureAutomationRunbook](http://msdn.microsoft.com/library/azure/dn690259.aspx) を使用して、Windows PowerShell で Runbook を開始できます。次のサンプル コードは、Test-Runbook という Runbook を開始します。
+[Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) を使用して、Windows PowerShell で Runbook を開始できます。次のサンプル コードは、Test-Runbook という Runbook を開始します。
 
 ```
-Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
+Start-AzureRmAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-Start-AzureAutomationRunbook は、Runbook の開始後にその状態を追跡するために使用できるジョブ オブジェクトを返します。その後、このジョブ オブジェクトを [Get-AzureAutomationJob](http://msdn.microsoft.com/library/azure/dn690263.aspx) と一緒に使用するとジョブの状態を判別でき、[Get-AzureAutomationJobOutput](http://msdn.microsoft.com/library/azure/dn690268.aspx) を使用すると出力を取得できます。次のサンプル コードは、Test-Runbook という Runbook を開始し、完了するまで待機してからその出力を表示します。
+Start-AzureRmAutomationRunbook は、Runbook の開始後にその状態を追跡するために使用できるジョブ オブジェクトを返します。その後、このジョブ オブジェクトを [Get-AzureRmAutomationJob](https://msdn.microsoft.com/library/mt619440.aspx) と一緒に使用するとジョブの状態を判別でき、[Get-AzureRmAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx) を使用すると出力を取得できます。次のサンプル コードは、Test-Runbook という Runbook を開始し、完了するまで待機してからその出力を表示します。
 
 ```
-$job = Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
+$runbookName = "Test-Runbook"
+$ResourceGroup = "ResourceGroup01"
+$AutomationAcct = "MyAutomationAccount"
+
+$job = Start-AzureRmAutomationRunbook –AutomationAccountName $AutomationAcct -Name $runbookName -ResourceGroupName $ResourceGroup
 
 $doLoop = $true
 While ($doLoop) {
-   $job = Get-AzureAutomationJob –AutomationAccountName "MyAutomationAccount" -Id $job.Id
+   $job = Get-AzureRmAutomationJob –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup
    $status = $job.Status
-   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped")
+   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
 }
 
-Get-AzureAutomationJobOutput –AutomationAccountName "MyAutomationAccount" -Id $job.Id –Stream Output
+Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
 ```
 
 Runbook でパラメーターが必要な場合には、それらを [Hashtable](http://technet.microsoft.com/library/hh847780.aspx) として指定する必要があります。その Hashtable のキーがパラメーター名、値がパラメーター値になります。次の例は、FirstName と LastName という 2 つの文字列パラメーターと、RepeatCount という名前の整数、および Show という名前のブール型パラメーターが含まれる Runbook を開始する方法を示します。パラメーターについて詳しくは、次に取り上げる「[Runbook のパラメーター](#Runbook-parameters)」をご覧ください。
 
 ```
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
-Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" –Parameters $params
+Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -ResourceGroupName "ResourceGroup01" –Parameters $params
 ```
 
 ## Runbook のパラメーター
 
-Azure 管理ポータルまたは Windows PowerShell を使用して Runbook を開始する場合、命令は、Azure Automation Web サービスを通じて送信されます。このサービスは、複雑なデータ型を持つパラメーターをサポートしていません。複合型のパラメーター値を指定する必要がある場合、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」で説明されているように別の Runbook からインラインで呼び出す必要があります。
+Azure ポータルまたは Windows PowerShell から Runbook を開始する場合、命令は、Azure Automation Web サービスを通じて送信されます。このサービスは、複雑なデータ型を持つパラメーターをサポートしていません。複合型のパラメーター値を指定する必要がある場合、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」で説明されているように別の Runbook からインラインで呼び出す必要があります。
 
 Azure Automation Web サービスは、次のセクションで説明されているように特定のデータ型を使用してパラメーターに対して特殊な機能を提供します。
 
 ### 名前付きの値
 
-パラメーターのデータ型が [object] の場合、*{"Name1":Value1, "Name2":Value2, "Name3":Value3}* という JSON 形式を使用して名前付きの値の一覧を送信できます。これらの値は単純型にする必要があります。Runbook は、それぞれの名前付き値に対応するプロパティが設定された [PSCustomObject](http://msdn.microsoft.com/library/azure/system.management.automation.pscustomobject(v=vs.85).aspx) としてパラメーターを受け取ります。
+パラメーターのデータ型が [object] の場合、*{"Name1":Value1, "Name2":Value2, "Name3":Value3}* という JSON 形式を使用して名前付きの値の一覧を送信できます。これらの値は単純型にする必要があります。Runbook は、それぞれの名前付き値に対応するプロパティが設定された [PSCustomObject](https://msdn.microsoft.com/library/system.management.automation.pscustomobject(v=vs.85).aspx) としてパラメーターを受け取ります。
 
 user というパラメーターを受け入れる次のテスト Runbook について考慮してください。
 
@@ -187,6 +191,6 @@ jsmith
 
 ## 次のステップ
 
--	この記事の Runbook アーキテクチャでは、ハイブリッド Runbook の概要について説明します。詳細については、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」を参照してください。
+-	この記事の Runbook アーキテクチャでは、ハイブリッド Runbook の概要について説明しています。詳細については、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」を参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0525_2016-->

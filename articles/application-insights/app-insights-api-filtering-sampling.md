@@ -3,7 +3,7 @@
 	description="テレメトリが Application Insights ポータルに送信される前に、SDK でフィルター処理、サンプリング、またはデータへのプロパティの追加を行うためのプラグインを記述します。" 
 	services="application-insights"
     documentationCenter="" 
-	authors="alancameronwills" 
+	authors="beckylino" 
 	manager="douge"/>
  
 <tags 
@@ -12,8 +12,8 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="04/27/2016" 
-	ms.author="awills"/>
+	ms.date="05/19/2016" 
+	ms.author="borooji"/>
 
 # Application Insights SDK におけるテレメトリのサンプリング、フィルター処理、および前処理
 
@@ -30,13 +30,10 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 開始する前に次の操作を実行してください。
 
-* [アプリに Application Insights SDK](app-insights-asp-net.md) をインストールする。NuGet パッケージを手動でインストールし、最新の*プレリリース* バージョンを選択します。
-* [Application Insights API](app-insights-api-custom-events-metrics.md) を試用する。 
+* アプリに [Application Insights SDK for ASP.NET v2](app-insights-asp-net.md) をインストールする。 
 
 
 ## サンプリング
-
-*この機能はベータ版です。*
 
 [サンプリング](app-insights-sampling.md)は、正確な統計情報を保持したままでトラフィックを削減するお勧めの方法です。フィルターを使用すると、関連のある項目が選択されるため、診断内の項目間を移動しやすくなります。フィルター処理された項目を補正するために、メトリックス エクスプローラーでイベントの数が調整されます。
 
@@ -92,7 +89,7 @@ Web ページからのデータに対して固定レートのサンプリング�
 
 ### テレメトリ プロセッサを作成する
 
-1. Application Insights SDK を最新バージョンに (2.0.0-beta2 以降) に更新します。Visual Studio ソリューション エクスプローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] をクリックします。NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、Microsoft.ApplicationInsights を検索します。
+1. プロジェクトの Application Insights SDK がバージョン 2.0.0 以降であることを確認してください。Visual Studio ソリューション エクスプローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] をクリックします。NuGet パッケージ マネージャーで、Microsoft.ApplicationInsights.Web をオンにします。
 
 1. フィルターを作成するには、ITelemetryProcessor を実装します。これは、テレメトリ モジュール、テレメトリ初期化子、テレメトリ チャネルと同じく、機能拡張ポイントの 1 つです。
 
@@ -239,6 +236,11 @@ public void Process(ITelemetry item)
 }
 
 ```
+
+#### 依存関係の問題の診断
+
+[このブログ](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/)では、依存関係に対して定期的な ping を自動送信することによって依存関係の問題を診断するプロジェクトについて説明します。
+
 
 <a name="add-properties"></a>
 ## プロパティの追加: ITelemetryInitializer
@@ -419,4 +421,4 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

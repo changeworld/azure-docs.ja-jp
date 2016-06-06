@@ -11,7 +11,7 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/24/2016"
+	ms.date="05/23/2016"
 	ms.author="tamram"/>
 	
 # Windows ストア アプリでの Azure Storage の使用方法
@@ -87,4 +87,4 @@ WCF Data Services NuGet パッケージを参照したら、ボタンの **Click
 [store-apps-storage-choose-library]: ./media/storage-use-store-apps/store-apps-storage-choose-library.png
 [store-apps-storage-package-manager]: ./media/storage-use-store-apps/store-apps-storage-package-manager.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

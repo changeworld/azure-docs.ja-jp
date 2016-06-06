@@ -1,10 +1,10 @@
 <properties
-pageTitle="ロジック アプリまたは PowerApps で SharePoint Online API を使用する | Microsoft Azure"
-description="ロジック アプリと PowerApps で Azure App Service SharePoint Online API を使用する方法の概要について説明します。"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="ロジック アプリまたは PowerApps で SharePoint Online コネクタを使用する | Microsoft Azure"
+description="ロジック アプリと PowerApps で Azure App Service SharePoint Online コネクタを使用する方法の概要について説明します。"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,12 +14,12 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="02/26/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# SharePoint Online API の概要
+# SharePoint Online コネクタの使用 
 
-SharePoint Connection Provider には、SharePoint リストを操作する API があります。
+SharePoint コネクタを使用すると、SharePoint リストを操作できます。
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
@@ -32,9 +32,9 @@ SharePoint では、次の操作を実行できます。
 
 ## トリガーとアクション
 
-SharePoint API は、アクションとして使用できます。SharePoint API にはトリガーがあります。すべての API は、JSON および XML 形式のデータに対応します。
+SharePoint コネクタは、アクションとして使用できます。SharePoint コネクタにはトリガーがあります。すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
-SharePoint API では、次のアクションやトリガーを使用できます。
+SharePoint コネクタでは、次のアクションやトリガーを使用できます。
 
 ### SharePoint のアクション
 実行できるアクションは以下のとおりです。
@@ -66,13 +66,13 @@ SharePoint API では、次のアクションやトリガーを使用できま�
 
 
 ## SharePoint への接続を作成する
-SharePoint API を使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。
+SharePoint コネクタを使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。
 
 |プロパティ| 必須|説明|
 | ---|---|---|
 |トークン|あり|SharePoint の資格情報を指定します|
 
-**SharePoint Online** に接続するには、SharePoint Online で ID (ユーザー名とパスワード、スマート カードの資格情報など) を入力する必要があります。認証されたら、ロジック アプリで SharePoint Online API を使用できるようになります。
+**SharePoint Online** に接続するには、SharePoint Online で ID (ユーザー名とパスワード、スマート カードの資格情報など) を入力する必要があります。認証されたら、ロジック アプリで SharePoint Online コネクタを使用できるようになります。
 
 ロジック アプリのデザイナーで、次の手順に従って SharePoint にサインインし、ロジック アプリで使用する**接続**を作成します。
 
@@ -701,4 +701,4 @@ TablesList の必須プロパティ:
 [4]: ./media/connectors-create-api-sharepointonline/connectionconfig4.png
 [5]: ./media/connectors-create-api-sharepointonline/connectionconfig5.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

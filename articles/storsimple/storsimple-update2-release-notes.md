@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
  <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="02/12/2016"
+   ms.date="05/24/2016"
    ms.author="v-sharos" />
 
 # StorSimple 8000 シリーズ Update 2 リリース ノート  
@@ -115,4 +115,4 @@ Update 2 では、次の新機能が導入されています。
 
 StorSimple デバイスに [Update 2 をインストールする](storsimple-install-update-2.md)方法を確認します。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0525_2016-->

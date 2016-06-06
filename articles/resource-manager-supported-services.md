@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
-   ms.author="tomfitz"/>
+   ms.date="05/25/2016"
+   ms.author="magoedte;tomfitz"/>
 
 # リソース マネージャーのプロバイダー、リージョン、API のバージョン、およびスキーマ
 
@@ -133,7 +133,7 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 
 | サービス | リソース マネージャーが有効 | REST API | スキーマ | クイック スタート テンプレート |
 | ------- | ------- | -------- | ------ | ------ |
-| Automation | あり | | | [Microsoft.Automation](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Automation%22&type=Code) |
+| Automation | あり | [Automation REST](https://azure.microsoft.com/documentation/articles/resource-manager-supported-services/) | | [Microsoft.Automation](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Automation%22&type=Code) |
 | Key Vault | あり | [Key Vault](https://msdn.microsoft.com/library/azure/dn903609.aspx) | [Key Vault](resource-manager-template-keyvault.md)<br />[Key Vault シークレット](resource-manager-template-keyvault-secret.md) | [Microsoft.KeyVault](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.KeyVault%22&type=Code) |
 | Operational Insights | あり | | | [Microsoft.OperationalInsights](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.OperationalInsights%22&type=Code) |
 | 復旧サービス | あり | | | |
@@ -156,7 +156,7 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 
 ### REST API
 
-使用可能なすべてのリソース プロバイダーとその種類、場所、API バージョン、登録状態を取得するには、[すべてのリソース プロバイダーの一覧表示](https://msdn.microsoft.com/library/azure/dn790524.aspx)操作を使用します。リソース プロバイダーを登録する必要がある場合は、「[Register a subscription with a resource provider (リソース プロバイダーへのサブスクリプションの登録)](https://msdn.microsoft.com/library/azure/dn790548.aspx)」をご覧ください。
+使用可能なすべてのリソース プロバイダーとその種類、場所、API バージョン、登録状態を取得するには、[すべてのリソース プロバイダーの一覧表示](https://msdn.microsoft.com/library/azure/dn790524.aspx)操作を使用します。リソース プロバイダーを登録する必要がある場合は、「[リソース プロバイダーへのサブスクリプションの登録](https://msdn.microsoft.com/library/azure/dn790548.aspx)」をご覧ください。
 
 ### PowerShell
 
@@ -303,4 +303,4 @@ Azure Active Directory はリソース マネージャーと連携して、サ�
 - リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 - リソースをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/23/2016" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache のデータ永続化の構成方法
@@ -22,7 +22,7 @@ Azure Redis Cache には、新しい Premium レベルなど、キャッシュ�
 
 Azure Redis Cache の Premium レベルには、クラスタリング、永続性、および Virtual Network のサポートが含まれています。この記事では、Premium Azure Redis Cache インスタンスで永続化を構成する方法について説明します。
 
-その他の Premium キャッシュ機能については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」および「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
+その他の Premium キャッシュ機能については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」および「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」をご覧ください。
 
 ## データの永続化とは
 Redis の永続化を使用すると、Redis に格納されたデータを保持できます。また、スナップショットを取得したりデータをバックアップしたりして、ハードウェア障害のときに読み込むことができます。これは、Basic レベルや Standard レベルにはない大きな利点です。Basic/Standard レベルでは、すべてのデータはメモリに格納され、Cache ノードがダウンするような障害時にはデータが失われる可能性があります。
@@ -73,21 +73,33 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 
 次の一覧は、Azure Redis Cache の永続化に関するよく寄せられる質問への回答です。
 
-## 以前に作成したキャッシュで永続化を有効にできますか
+-	[以前に作成したキャッシュで永続化を有効にできますか](#can-i-enable-persistence-on-a-previously-created-cache)
+-	[キャッシュの作成後にバックアップ頻度を変更できますか](#can-i-change-the-backup-frequency-after-i-create-the-cache)
+-	[バックアップ間隔を 60 分に設定した場合、バックアップの間隔が 60 分より長くなるのはなぜですか](#why-if-i-have-a-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups)
+-	[新しいバックアップが作成されると、古いバックアップはどうなりますか](#what-happens-to-the-old-backups-when-a-new-backup-is-made)
+-	[別のサイズにスケーリングしていて、スケーリング操作の前に作成したバックアップを復元したらどうなりますか](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+
+### 以前に作成したキャッシュで永続化を有効にできますか
 
 はい、Redis の永続化はキャッシュの作成時と、既存の Premium キャッシュの両方に構成できます。
 
-## キャッシュの作成後にバックアップ頻度を変更できますか
+### キャッシュの作成後にバックアップ頻度を変更できますか
 
-はい、**[Redis データ永続化]** ブレードでバックアップの頻度を変更できます。手順については、「[Redis の永続化を構成する](#configure-redis-persistence)」を参照してください。
+はい、**[Redis データ永続化]** ブレードでバックアップの頻度を変更できます。手順については、「[Redis の永続化を構成する](#configure-redis-persistence)」をご覧ください。
 
-## バックアップ間隔を 60 分に設定した場合、バックアップの間隔が 60 分より長くなるのはなぜですか
+### バックアップ間隔を 60 分に設定した場合、バックアップの間隔が 60 分より長くなるのはなぜですか
 
 バックアップ間隔は、前のバックアップ プロセスが正常に完了するまでは開始しません。バックアップ間隔を 60 分に設定し、バックアップ プロセスが正常に完了するのに 15 分かかる場合、次のバックアップは、前回のバックアップの開始時刻から 75 分経つまで開始しません。
 
-## 新しいバックアップが作成されると、古いバックアップはどうなりますか
+### 新しいバックアップが作成されると、古いバックアップはどうなりますか
 
 最新のものを除くすべてのバックアップは自動的に削除されます。この削除はすぐに行われないことがありますが、古いバックアップは無期限には保持されません。
+
+### 別のサイズにスケーリングしていて、スケーリング操作の前に作成したバックアップを復元したらどうなりますか
+
+-	大きいサイズにスケーリングした場合、影響はありません。
+-	小さいサイズにスケーリングして、新しいサイズの[データベースの制限](cache-configure.md#databases)より大きなカスタムの[データベース](cache-configure.md#databases)設定がある場合、そのデータベースのデータは復元されません。詳細については、「[スケーリング中に影響を受けるカスタム データベース](#is-my-custom-databases-setting-affected-during-scaling)」をご覧ください。
+-	小さいサイズにスケーリングしていて、最新のバックアップからのデータをすべて保持するには、小さなサイズでスペースが足りない場合、キーは復元プロセス中に削除されます。通常は [allkeys-lru](http://redis.io/topics/lru-cache) 削除ポリシーを使用します。
 
 ## 次のステップ
 Premium キャッシュ機能をさらに使用する方法を学習します。
@@ -107,4 +119,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-settings]: ./media/cache-how-to-premium-persistence/redis-cache-settings.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/29/2016"
+   ms.date="05/25/2016"
    ms.author="bruceper" />
 
 # Azure Key Vault 開発者ガイド
@@ -82,8 +82,10 @@ Key Vault の操作には次の SDK を使用できます。
 - [Azure Key Vault の HSM 保護キーを生成し、転送する方法](key-vault-hsm-protected-keys.md) - この記事は Azure Key Vault と共に使用する独自の HSM 保護キーを計画、生成、転送する際に役立ちます。
 - [デプロイ時にセキュリティで保護された値 (パスワードなど) を渡す方法](../resource-manager-keyvault-parameter.md) - デプロイメント時にパラメーターとしてセキュリティで保護された値 (パスワードなど) を渡す必要がある場合、Azure Key Vault にシークレットとしてその値を格納し、他のリソース マネージャー テンプレートで値を参照することができます。
 - [Key Vault を使用して SQL Server で拡張キーを管理する方法](https://msdn.microsoft.com/library/dn198405.aspx) - Azure Key Vault 用の SQL Server Connector により、SQL Server と VM 内の SQL で拡張キー管理 (EKM) プロバイダーとして Azure Key Vault サービスを利用して、Transparent Data Encryption (透過的なデータ暗号化、TDE)、バックアップ暗号化、Column Level Encryption (列レベル暗号化、CLE)など、アプリケーション リンクの暗号化キーを保護できます。
+- [Key Vault から VM に証明書をデプロイする方法](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) - Azure の VM で実行するクラウド アプリケーションには証明書が必要です。今すぐこの VM で証明書を取得する方法を説明します。
+- [Windows および Linux IaaS VM の Azure Disk Encryption と Key Vault を統合する方法](../azure-security-disk-encryption.md) - このディスク暗号化ソリューションは Azure Key Vault と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、Azure ストレージで保存中の仮想マシン ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
 
-Key Vaults と Azure の統合と使用に関するその他のタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け ARM テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。
+Key Vault と Azure の統合と使用に関するその他のタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け ARM テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。
 
 ## 対応ライブラリ
 
@@ -95,4 +97,4 @@ Key Vaults と Azure の統合と使用に関するその他のタスク固有�
 - [Key Vault Blog](http://aka.ms/kvblog)
 - [Key Vault Forum](http://aka.ms/kvforum)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

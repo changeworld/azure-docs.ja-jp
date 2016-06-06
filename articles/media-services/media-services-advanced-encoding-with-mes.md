@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/24/2016"    
+	ms.date="05/19/2016"    
 	ms.author="juliako"/>
 
 
@@ -236,6 +236,20 @@
 		}
 
 
+##相対サイズのサポート
+
+サムネイルを生成するときに、常に出力の幅と高さをピクセルで指定する必要はありません。パーセント単位で指定することができます ([1%、…、100%] の範囲)。
+
+###JSON プリセット 
+	
+	"Width": "100%",
+	"Height": "100%"
+
+###XML プリセット
+	
+	<Width>100%</Width>
+	<Height>100%</Height>
+	
 ##<a id="thumbnails"></a>サムネイルを生成する
 
 このセクションでは、サムネイルを生成するプリセットをカスタマイズする方法を紹介します。下に定義されているプリセットには、ファイルとサムネイルの生成に必要な情報をエンコードする方法に関する情報が含まれています。[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、サムネイルを生成するコードを追加できます。
@@ -444,9 +458,9 @@
 
 ##<a id="trim_video"></a>動画をトリミングする (クリッピング)
 
-このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。エンコーダーを使用して、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングすることもできます。詳細については、[このブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)をご覧ください。
+このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。エンコーダーを使用して、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングすることもできます。詳細については、[このブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)を参照してください。
 
-動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照)。StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。次の例では、入力ビデオの開始タイムスタンプは 0 であると想定しています。**[ソース]** はプリセットの先頭に配置する必要があります。
+動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照してください)。StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。次の例では、入力ビデオの開始タイムスタンプは 0 であると想定しています。**[ソース]** はプリセットの先頭に配置する必要があります。
  
 ###<a id="json"></a>JSON プリセット
 	
@@ -570,7 +584,7 @@
 
 ###XML プリセット
 	
-動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照)。
+動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照してください)。
 
 	<?xml version="1.0" encoding="utf-16"?>
 	<Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -1072,4 +1086,4 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

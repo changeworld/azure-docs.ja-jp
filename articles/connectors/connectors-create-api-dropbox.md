@@ -1,13 +1,13 @@
 <properties
-	pageTitle="PowerApps Enterprise またはロジック アプリに Dropbox を追加する | Microsoft Azure"
-	description="Dropbox API と REST API パラメーターの概要"
-	services=""
+    pageTitle="PowerApps Enterprise またはロジック アプリに Dropbox コネクタを追加する | Microsoft Azure"
+    description="Dropbox コネクタと REST API パラメーターの概要"
+    services=""
     suite=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -15,11 +15,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/16/2016"
+   ms.date="05/20/2016"
    ms.author="mandia"/>
 
-# Dropbox API の概要 
-Dropbox に接続して、ファイルの作成、ファイルの取得など、ファイルを管理します。Dropbox API は次のツールから使用できます。
+# Dropbox コネクタの使用 
+Dropbox に接続して、ファイルの作成、ファイルの取得など、ファイルを管理します。Dropbox コネクタは、次のツールから使用できます。
 
 - Logic Apps 
 - PowerApps
@@ -38,9 +38,9 @@ Dropbox では、次の操作を実行できます。
 - Dropbox から取得したデータに基づいてビジネス フローを構築できます。 
 - ファイルを作成または更新するときにトリガーを使用できます。
 - ファイルの作成、ファイルの削除などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Dropbox で新しいファイルを作成すると、Office 365 を使用してそのファイルを電子メールで送信できます。
-- Dropbox API を PowerApps Enterprise に追加する | Microsoft Azure追加すると、ユーザーはアプリ内で API を使用できるようになります。 
+- PowerApps Enterprise に Dropbox コネクタを追加します。追加すると、ユーザーはアプリ内でコネクタを使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
+PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
 
 ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
@@ -51,14 +51,13 @@ Dropbox には、次のトリガーとアクションがあります。
 --- | ---
 <ul><li>ファイルの作成時</li><li>ファイルの変更時</li></ul> | <ul><li>ファイルを作成する</li><li>ファイルの作成時</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>アーカイブをフォルダーに抽出する</li><li>ID を使用してファイルの内容を取得する</li><li>パスを使用してファイルを取得する</li><li>ID を使用してファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>ファイルを更新する</li><li>ファイルの変更時</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## Dropbox への接続を作成する
 
-ロジック アプリにこの API を追加するとき、Dropbox に接続するロジック アプリを承認する必要があります。
+ロジック アプリにこのコネクタを追加するとき、Dropbox に接続するロジック アプリを承認する必要があります。
 
-1. Dropbox アカウントにサインインします。
-2. **[Authorize]** を選択し、ロジック アプリが Dropbox に接続して使用することを許可します。 
+>[AZURE.INCLUDE [Dropbox への接続を作成する手順](../../includes/connectors-create-api-dropbox.md)]
 
 接続を作成したら、フォルダー パスやファイル名など、Dropbox のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
@@ -128,7 +127,7 @@ Dropbox からファイルを削除します。```DELETE: /datasets/default/file
 
 
 ### アーカイブをフォルダーに抽出する    
-Dropbox のフォルダーにアーカイブ ファイル (例: .zip) を抽出します。**```POST: /datasets/default/extractFolderV2```**
+Dropbox のフォルダーにアーカイブ ファイル (例: .zip) を展開します。**```POST: /datasets/default/extractFolderV2```**
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -286,4 +285,4 @@ Dropbox フォルダー内のファイルが変更されたときにフローを
 [10]: ./media/connectors-create-api-dropbox/dropbox-create-app-page1.png
 [11]: ./media/connectors-create-api-dropbox/dropbox-create-app-page2.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

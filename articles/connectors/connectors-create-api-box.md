@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Box API をロジック アプリに追加する | Microsoft Azure"
-	description="Box API と REST API パラメーターの概要"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="Box コネクタをロジック アプリに追加する | Microsoft Azure"
+    description="Box コネクタと REST API パラメーターの概要"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/16/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# Box API の概要
-Box に接続し、ファイルの作成、削除などを行います。Box API は次のツールから使用できます。
+# Box コネクタの使用
+Box に接続し、ファイルの作成、削除などを行います。Box コネクタは、次のツールから使用できます。
 
 - Logic Apps (このトピックで説明)
 - PowerApps (詳細な一覧については、[PowerApps 接続リスト](https://powerapps.microsoft.com/tutorials/connections-list/)を参照してください)
@@ -40,13 +40,12 @@ Box には、次のトリガーとアクションがあります。
 | --- | --- |
 |<ul><li>ファイルの作成時</li><li>ファイルの変更時</li></ul> | <ul><li>ファイルを作成する</li><li>ファイルの作成時</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>アーカイブをフォルダーに抽出する</li><li>ID を使用してファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ID を使用してファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>ファイルを更新する</li><li>ファイルの変更時</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## Box への接続を作成する
-ロジック アプリにこの API を追加するとき、Box に接続するロジック アプリを承認する必要があります。
+ロジック アプリにこのコネクタを追加するとき、Box に接続するロジック アプリを承認する必要があります。
 
-1. Box アカウントにサインインします。
-2. **[Authorize]** を選択し、ロジック アプリが Box に接続し、使用することを許可します。 
+>[AZURE.INCLUDE [Box への接続を作成する手順](../../includes/connectors-create-api-box.md)]
 
 接続を作成したら、Box のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
@@ -117,7 +116,7 @@ Box からファイルを削除します。```DELETE: /datasets/default/files/{i
 
 
 ### アーカイブをフォルダーに抽出する
-Box のフォルダーにアーカイブ ファイル (例: .zip) を抽出します。```POST: /datasets/default/extractFolderV2```
+Box のフォルダーにアーカイブ ファイル (例: .zip) を展開します。```POST: /datasets/default/extractFolderV2```
 
 | 名前|データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -263,4 +262,4 @@ Box フォルダー内のファイルが変更されたときにフローをト�
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

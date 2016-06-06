@@ -3,7 +3,7 @@
 	description="Resource Manager のデプロイ モデルで作成された Windows ベースの Azure 仮想マシン (VM) のイメージをキャプチャする方法について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="05/13/2016"
-	ms.author="dkshir"/>
+	ms.author="cynthn"/>
 
 # リソース マネージャー デプロイメント モデルで Windows 仮想マシンをキャプチャする方法
 
@@ -210,4 +210,4 @@ PowerShell の方法の代わりにリソース エクスプローラーを使�
 
 Azure PowerShell で新しい仮想マシンを管理する方法については、「[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

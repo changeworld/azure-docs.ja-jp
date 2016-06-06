@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/21/2016"
+   ms.date="05/24/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスへの Update 1.2 のインストール
@@ -125,4 +125,4 @@ Update 1.2 を適用するには、次の手順を実行します。**この更�
 
 詳細については、[Update 1.2 リリース](storsimple-update1-release-notes.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

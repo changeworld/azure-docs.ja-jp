@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/29/2016" 
+	ms.date="05/17/2016" 
 	ms.author="awills"/>
  
 # データが存在しない場合のトラブルシューティング - Application Insights for .NET
@@ -50,7 +50,7 @@
 + 適切な Azure アカウントのサインイン資格情報を指定していることを確認してください。 
 + ブラウザーで、[Azure ポータル](https://portal.azure.com)に対するアクセス権があることを確認してください。設定を開き、制限がないかどうか確認してください。
 + [Application Insights を既存のプロジェクトに追加するには](app-insights-asp-net.md): ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。
-+ 解決しない場合は、[手動の手順](app-insights-start-monitoring-app-health-usage.md)を実行して、ポータルでリソースを追加してから、SDK をプロジェクトに追加してください。 
++ 解決しない場合は、[手動の手順](app-insights-asp-net-manual.md)を実行して、ポータルでリソースを追加してから、SDK をプロジェクトに追加してください。 
 
 ## <a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
 
@@ -205,4 +205,4 @@ Azure Web サイトのパフォーマンス データは表示されません。
 
 * [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-JP/home?forum=ApplicationInsights)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

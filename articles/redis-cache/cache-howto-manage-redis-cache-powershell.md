@@ -4,7 +4,7 @@
 	services="redis-cache"
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/27/2016" 
+	ms.date="05/23/2016" 
 	ms.author="sdanie"/>
 
 # Azure PowerShell を使用した Azure Redis Cache の管理
@@ -22,7 +22,7 @@
 - [PowerShell](cache-howto-manage-redis-cache-powershell.md)
 - [Azure CLI](cache-manage-cli.md)
 
-このトピックでは、Azure Redis Cache インスタンスの作成、更新、スケールなどの一般的なタスクを実行する方法、アクセス キーを再生成する方法、キャッシュに関する情報を表示する方法について説明します。Azure Redis Cache 用の PowerShell コマンドレットの詳細な一覧については、[Azure Redis Cache コマンドレット](https://msdn.microsoft.com/library/azure/mt634513.aspx)に関するページを参照してください。
+このトピックでは、Azure Redis Cache インスタンスの作成、更新、スケールなどの一般的なタスクを実行する方法、アクセス キーを再生成する方法、キャッシュに関する情報を表示する方法について説明します。Azure Redis Cache 用の PowerShell コマンドレットの詳細な一覧については、[Azure Redis Cache コマンドレット](https://msdn.microsoft.com/library/azure/mt634513.aspx)に関するページをご覧ください。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](#classic)については、この記事の後半で説明します。
 
@@ -81,7 +81,7 @@ Azure Government Cloud でキャッシュを作成するには、次のいずれ
 -	米国政府バージニア州
 -	米国政府アイオワ州
 
-Azure Government Cloud の詳細については、[Microsoft Azure Government](https://azure.microsoft.com/features/gov/) と [Microsoft Azure Government 開発者ガイド](../azure-government-developer-guide.md)を参照してください。
+Azure Government Cloud の詳細については、[Microsoft Azure Government](https://azure.microsoft.com/features/gov/) と [Microsoft Azure Government 開発者ガイド](../azure-government-developer-guide.md)をご覧ください。
 
 ### Azure China Cloud に接続するには
 
@@ -98,11 +98,11 @@ Azure China Cloud でキャッシュを作成するには、次のいずれか�
 -	中国 (東部)
 -	中国 (北部)
 
-Azure China Cloud の詳細については、[中国の 21Vianet が運営している AzureChinaCloud for Azure](http://www.windowsazure.cn/) に関するページを参照してください。
+Azure China Cloud の詳細については、[中国の 21Vianet が運営している AzureChinaCloud for Azure](http://www.windowsazure.cn/) に関するページをご覧ください。
 
 ## Azure Redis Cache 用の PowerShell で使用されるプロパティ
 
-次の表は、Azure PowerShell を使用して Azure Redis Cache インスタンスを作成し、管理する際に一般的に使用されるパラメーターのプロパティと説明を示しています。
+次の表は、Azure PowerShell を使用して Azure Redis Cache インスタンスを作成し、管理するときに一般的に使用されるパラメーターのプロパティと説明を示しています。
 
 | パラメーター | 説明 | 既定値 |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
@@ -110,9 +110,9 @@ Azure China Cloud の詳細については、[中国の 21Vianet が運営して
 | Location (場所) | キャッシュの場所 | |
 | ResourceGroupName | キャッシュを作成するリソース グループの名前 | |
 | サイズ | キャッシュのサイズ。有効な値: P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250 MB、1 GB、2.5 GB、6 GB、13 GB、26 GB、53 GB | 1GB |
-| ShardCount | クラスタリングが有効になっている Premium キャッシュを作成する際に作成するシャードの数。有効な値: 1、2、3、4、5、6、7、8、9、10 | |
+| ShardCount | クラスタリングが有効になっている Premium キャッシュを作成するときに作成するシャードの数。有効な値: 1、2、3、4、5、6、7、8、9、10 | |
 | SKU | キャッシュの SKU を指定します。有効な値: Basic、Standard、Premium | Standard |
-| RedisConfiguration | maxmemory-delta、maxmemory-policy、notify-keyspace-events の Redis 構成設定を指定します。maxmemory-delta と notify-keyspace-events は Standard および Premium のキャッシュでのみ使用できます。 | |
+| RedisConfiguration | Redis 構成の設定を指定します。各設定の詳細については、次の「[RedisConfiguration プロパティ](#redisconfiguration-properties)」の表をご覧ください。 | |
 | EnableNonSslPort | 非 SSL ポートが有効になっているかどうかを示します。 | False |
 | MaxMemoryPolicy | このパラメーターは廃止されました。代わりに、RedisConfiguration を使用します。 | |
 | StaticIP | VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 | |
@@ -120,6 +120,23 @@ Azure China Cloud の詳細については、[中国の 21Vianet が運営して
 | VirtualNetwork | VNET でキャッシュをホストする場合に、キャッシュをデプロイする VNET のリソース ID を指定します。 | |
 | KeyType | アクセス キーを更新するときに再生成するアクセス キーを指定します。有効な値: Primary、Secondary | | | |
 
+
+### RedisConfiguration プロパティ
+
+| プロパティ | 説明 | 価格レベル |
+|-------------------------------|----------------------------------------------------------------------------------------------------------------------|---------------------|
+| rdb-backup-enabled | [Redis データ永続化](cache-how-to-premium-persistence.md)が有効かどうか。 | Premium のみ |
+| rdb-storage-connection-string | [Redis データ永続化](cache-how-to-premium-persistence.md)のストレージ アカウントに対する接続文字列 | Premium のみ |
+| rdb-backup-frequency | [Redis データ永続化](cache-how-to-premium-persistence.md)に対するバックアップの頻度 | Premium のみ |
+| maxmemory-reserved | キャッシュ以外のプロセスに[予約済みのメモリ](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)を構成する | Standard と Premium |
+| maxmemory-policy | キャッシュに[削除ポリシー](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)を構成する | すべての価格レベル |
+| notify-keyspace-events | [キースペース通知](cache-configure.md#keyspace-notifications-advanced-settings)を構成する | Standard と Premium |
+| hash-max-ziplist-entries | 小規模の集計データの種類に[メモリ最適化](http://redis.io/topics/memory-optimization)を構成する | Standard と Premium |
+| hash-max-ziplist-value | 小規模の集計データの種類に[メモリ最適化](http://redis.io/topics/memory-optimization)を構成する | Standard と Premium |
+| set-max-intset-entries | 小規模の集計データの種類に[メモリ最適化](http://redis.io/topics/memory-optimization)を構成する | Standard と Premium |
+| zset-max-ziplist-entries | 小規模の集計データの種類に[メモリ最適化](http://redis.io/topics/memory-optimization)を構成する | Standard と Premium |
+| zset-max-ziplist-value | 小規模の集計データの種類に[メモリ最適化](http://redis.io/topics/memory-optimization)を構成する | Standard と Premium |
+| データベース | データベースの数を構成する。このプロパティは、キャッシュの作成時にのみ構成できます。 | Standard と Premium |
 
 ## Redis Cache の作成方法
 
@@ -131,7 +148,7 @@ Azure Redis Cache インスタンスを新規作成するには、[New-AzureRmRe
 
 `New-AzureRmRedisCache` で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
-	PS C:\> Get-Help New-AzureRmRedisCache -detailed
+	PS SQLSERVER:> Get-Help New-AzureRmRedisCache -detailed
 	
 	NAME
 	    New-AzureRmRedisCache
@@ -139,14 +156,17 @@ Azure Redis Cache インスタンスを新規作成するには、[New-AzureRmRe
 	SYNOPSIS
 	    Creates a new redis cache.
 	
+	
 	SYNTAX
 	    New-AzureRmRedisCache -Name <String> -ResourceGroupName <String> -Location <String> [-RedisVersion <String>]
 	    [-Size <String>] [-Sku <String>] [-MaxMemoryPolicy <String>] [-RedisConfiguration <Hashtable>] [-EnableNonSslPort
 	    <Boolean>] [-ShardCount <Integer>] [-VirtualNetwork <String>] [-Subnet <String>] [-StaticIP <String>]
 	    [<CommonParameters>]
 	
+	
 	DESCRIPTION
 	    The New-AzureRmRedisCache cmdlet creates a new redis cache.
+	
 	
 	PARAMETERS
 	    -Name <String>
@@ -174,21 +194,19 @@ Azure Redis Cache インスタンスを新規作成するには、[New-AzureRmRe
 	
 	    -RedisConfiguration <Hashtable>
 	        All Redis Configuration Settings. Few possible keys: rdb-backup-enabled, rdb-storage-connection-string,
-	        rdb-backup-frequency, maxmemory-delta, maxmemory-policy, notify-keyspace-events, maxmemory-samples,
-	        slowlog-log-slower-than, slowlog-max-len, list-max-ziplist-entries, list-max-ziplist-value,
-	        hash-max-ziplist-entries, hash-max-ziplist-value, set-max-intset-entries, zset-max-ziplist-entries,
-	        zset-max-ziplist-value etc.
+	        rdb-backup-frequency, maxmemory-reserved, maxmemory-policy, notify-keyspace-events, hash-max-ziplist-entries,
+	        hash-max-ziplist-value, set-max-intset-entries, zset-max-ziplist-entries, zset-max-ziplist-value, databases.
 	
 	    -EnableNonSslPort <Boolean>
 	        EnableNonSslPort is used by Azure Redis Cache. If no value is provided, the default value is false and the
 	        non-SSL port will be disabled. Possible values are true and false.
-
+	
 	    -ShardCount <Integer>
 	        The number of shards to create on a Premium Cluster Cache.
 	
 	    -VirtualNetwork <String>
-	        The exact ARM resource ID of the virtual network to deploy the redis cache in. Example format:
-	        /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}
+	        The exact ARM resource ID of the virtual network to deploy the redis cache in. Example format: /subscriptions/{
+	        subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}
 	
 	    -Subnet <String>
 	        Required when deploying a redis cache inside an existing Azure Virtual Network.
@@ -212,9 +230,18 @@ Premium キャッシュを作成する場合は、P1 (6 GB ～ 60 GB)、P2 (13 G
 
 	New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
 
-`RedisConfiuration` の値を指定する場合は、`@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}` のように、キー/値のペアとして値を `{}` で囲みます。次の例では、`allkeys-random` に設定された maxmemory ポリシーと `KEA` に設定されたキースペース通知を使用して、Standard の 1 GB のキャッシュを作成しています。詳細については、「[キースペース通知 (詳細設定)](cache-configure.md#keyspace-notifications-advanced-settings)」および「[maxmemory-policy と maxmemory-reserved](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)」を参照してください。
+`RedisConfiguration` の値を指定する場合は、`@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}` のように、キー/値のペアとして値を `{}` で囲みます。次の例では、`allkeys-random` に設定された maxmemory ポリシーと `KEA` に設定されたキースペース通知を使用して、Standard の 1 GB のキャッシュを作成しています。詳細については、「[キースペース通知 (詳細設定)](cache-configure.md#keyspace-notifications-advanced-settings)」および「[maxmemory-policy と maxmemory-reserved](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)」をご覧ください。
 
 	New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}
+
+<a name="databases"></a>
+## キャッシュの作成時にデータベースの設定を構成するには
+
+`databases` の設定は、キャッシュの作成中にのみ構成することができます。次の例では、[New-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634517.aspx) コマンドレットを使用して、48 のデータベースを持つ Premium P3 (26 GB) のキャッシュを作成します。
+
+	New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
+
+`databases` プロパティの詳細については、「[既定の Azure Redis Cache サーバー構成](cache-configure.md#default-redis-server-configuration)」をご覧ください。[New-AzureRmRedisCache](https://msdn.microsoft.com/library/azure/mt634517.aspx) コマンドレットを使用して、キャッシュを作成する方法の詳細については、上記の「[Redis Cache の作成方法](#to-create-a-redis-cache)」セクションをご覧ください。
 
 ## Redis Cache の更新方法
 
@@ -257,11 +284,9 @@ Azure Redis Cache インスタンスを更新するには、[Set-AzureRmRedisCac
 	        MaxMemoryPolicy. e.g. -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"}
 	
 	    -RedisConfiguration <Hashtable>
-	        All Redis Configuration Settings. Few possible keys: rdb-backup-enabled, rdb-storage-connection-string,
-	        rdb-backup-frequency, maxmemory-delta, maxmemory-policy, notify-keyspace-events, maxmemory-samples,
-	        slowlog-log-slower-than, slowlog-max-len, list-max-ziplist-entries, list-max-ziplist-value,
-	        hash-max-ziplist-entries, hash-max-ziplist-value, set-max-intset-entries, zset-max-ziplist-entries,
-	        zset-max-ziplist-value etc.
+			All Redis Configuration Settings. Few possible keys: rdb-backup-enabled, rdb-storage-connection-string,
+			rdb-backup-frequency, maxmemory-reserved, maxmemory-policy, notify-keyspace-events, hash-max-ziplist-entries,
+			hash-max-ziplist-value, set-max-intset-entries, zset-max-ziplist-entries, zset-max-ziplist-value.
 	
 	    -EnableNonSslPort <Boolean>
 	        EnableNonSslPort is used by Azure Redis Cache. The default value is null and no change will be made to the
@@ -289,12 +314,14 @@ Azure Redis Cache インスタンスを更新するには、[Set-AzureRmRedisCac
 
 >[AZURE.NOTE]PowerShell を使用してキャッシュをスケールする場合、Azure ポータルからキャッシュをスケールする場合と同じ制限とガイドラインが適用されます。別の価格レベルにスケーリングできますが、次のような制約があります。
 >
->-	**Premium** キャッシュへのスケーリング、またはキャッシュからのスケーリングは行えません。
->-	**Standard** キャッシュから **Basic** キャッシュにスケーリングすることはできません。
+>-	上位の価格レベルから下位の価格レベルにスケーリングすることはできません。
+>    -    **Premium** キャッシュから **Standard** または **Basic** キャッシュにスケーリングすることはできません。
+>    -    **Standard** キャッシュから **Basic** キャッシュにスケーリングすることはできません。
 >-	**Basic** キャッシュから **Standard** キャッシュにスケーリングすることはできますが、同時にサイズを変更することはできません。サイズを変更する必要がある場合、後続のスケーリング操作でサイズを変更できます。
+>-	**Basic** キャッシュから直接 **Premium** キャッシュにスケーリングすることはできません。1 回のスケーリング操作で **Basic** から **Standard** にスケーリングし、その後の操作で **Standard** から **Premium** にスケーリングする必要があります。
 >-	**C0 (250 MB)** サイズにそれより大きなサイズからスケールダウンすることはできません。
 >
->詳細については、「[Azure Redis Cache のスケーリング方法](cache-how-to-scale.md)」を参照してください。
+>詳細については、「[Azure Redis Cache のスケーリング方法](cache-how-to-scale.md)」をご覧ください。
 
 次の例は、`myCache` という名前のキャッシュを 2.5 GB のキャッシュにスケーリングする方法を示しています。このコマンドは、Basic と Standard の両方のキャッシュで使用できます。
 
@@ -600,7 +627,7 @@ Redis Cache を削除するには、[Remove-AzureRmRedisCache](https://msdn.micr
 
 ## 次のステップ
 
-Azure での Windows PowerShell の使用の詳細については、次のリソースを参照してください。
+Azure での Windows PowerShell の使用の詳細については、次のリソースをご覧ください。
 
 - [MSDN 上の Azure Redis Cache コマンドレットのドキュメント](https://msdn.microsoft.com/library/azure/mt634513.aspx)
 - [Azure リソース マネージャー コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765): AzureResourceManager モジュールのコマンドレットを使用する方法について説明します。
@@ -609,4 +636,4 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

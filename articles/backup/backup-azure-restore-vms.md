@@ -67,7 +67,7 @@ Azure Backup コンテナーに格納されているバックアップから新�
 
         クラウド サービス名はどのようなものであれグローバルに一意である必要があります。クラウド サービス名は通常、[cloudservice].cloudapp.net の形式で公開される URL に紐付けられます。Azure では、名前がすでに使用されている場合は新しいクラウド サービスを作成できません。新しいクラウド サービスの選択でクラウド サービスを作成する場合、仮想マシンと同じ名前になります。ここで選択された VM 名は関連するクラウド サービスに使うことができる、一意のものである必要があります。
 
-“復元インスタンス詳細のアフィニティ グループに関連しないクラウド サービスや仮想ネットワークのみが表示されます。[詳細について](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+        復元インスタンス詳細のアフィニティ グループに関連しないクラウド サービスや仮想ネットワークのみが表示されます。[詳細について](https://msdn.microsoft.com/ja-jp/library/azure/jj156085.aspx)。
 
 2. 仮想マシンのストレージ アカウントを選択する: これは仮想マシンを作成するために必須です。Azure Backup 資格情報コンテナーと同じリージョン内の既存のストレージ アカウントから選択できます。ゾーン冗長または Premium Storage タイプのストレージ アカウントはサポートされません。
 
@@ -100,7 +100,7 @@ Azure Backup コンテナーに格納されているバックアップから新�
 
 ![復元ジョブの完了](./media/backup-azure-restore-vms/restore-job-complete.png)
 
-仮想マシンを復元したら、元の仮想マシンにある拡張機能を再インストールし、Azure ポータルで仮想マシンの[エンドポイントを変更する](virtual-machines-set-up-endpoints)必要がある場合があります。
+仮想マシンを復元したら、元の仮想マシンにある拡張機能を再インストールし、Azure ポータルで仮想マシンの[エンドポイントを変更する](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)必要がある場合があります。
 
 ## 復元された VM のバックアップ
 最初にバックアップされた VM と同じ名前で同じクラウド サービスに VM を復元した場合、復元後も VM に対するバックアップは引き続き行われます。別のクラウド サービスに VM を復元した場合、または復元された VM に別の名前を指定した場合、この VM は新しい VM として扱われるので、復元された VM に対してバックアップをセットアップする必要があります。
@@ -142,7 +142,7 @@ PowerShell には仮想マシンを作成する機能はなく、バックアッ
 
 ディスクの復元後に仮想マシンを完全に再作成するには、次の手順を実行します。
 
-1. [Azure Backup PowerShell](../backup-azure-vms-automation.md#restore-an-azure-vm) を使用してバックアップ資格情報コンテナーからディスクを復元します。
+1. [Azure Backup PowerShell](../backup-azure-vms-classic-automation.md#restore-an-azure-vm) を使用してバックアップ資格情報コンテナーからディスクを復元します。
 
 2. PowerShell コマンドレットを使用して、ロード バランサー、複数の NIC、複数の予約済み IP に必要な VM 構成を作成し、その構成を使用して、目的の構成の VM を作成します。
 	- [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用してクラウド サービスに VM を作成する
@@ -155,4 +155,4 @@ PowerShell には仮想マシンを作成する機能はなく、バックアッ
 - [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
 - [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

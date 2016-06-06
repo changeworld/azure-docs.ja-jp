@@ -203,7 +203,7 @@ IIS マネージャーに慣れている場合は、IIS マネージャーを使
 
 	> [AZURE.NOTE] エクスポート プロセスでは、<strong>[はい、秘密キーをエクスポートします]</strong> オプションを必ず選択してください。これにより、エクスポートされる証明書に秘密キーが含まれます。
 
-	> [AZURE.NOTE] エクスポート プロセスでは、**[証明のパスにあるすべての証明書を含める]** オプション と **[すべての拡張プロパティをエクスポートする]** オプションを必ず選択してください。これにより、エクスポートされる証明書にすべての中間証明書が含まれます。
+	> エクスポート プロセスでは、**[証明のパスにあるすべての証明書を含める]** オプション と **[すべての拡張プロパティをエクスポートする]** オプションを必ず選択してください。これにより、エクスポートされる証明書にすべての中間証明書が含まれます。
 
 <a name="bkmk_subjectaltname"></a>
 ### OpenSSL を使用した SubjectAltName 証明書の取得
@@ -394,7 +394,7 @@ Visual Studio がインストールされている Windows システムからテ
 
 カスタム ドメインに対して HTTPS を有効にできるのは、Azure App Service の価格レベルが **Standard** と **Premium** の場合のみです。App Service プランを **Standard** レベルに切り替えるには、次の手順を実行します。
 
-> [AZURE.NOTE] アプリを **Free** レベルから **Standard** レベルに切り替える前に、サブスクリプションに設定されている使用制限を解除する必要があります。そうしないと、請求期間が終了する前に制限に到達した場合に、アプリが使用できなくなるおそれがあります。Shared レベルと **Standard** レベルの料金の詳細については、「[価格の詳細][pricing]」を参照してください。
+> [AZURE.NOTE] アプリを **Free** レベルから **Standard** レベルに切り替える前に、サブスクリプションに設定されている使用制限を解除する必要があります。そうしないと、請求期間が終了する前に制限に達した場合に、アプリが使用できなくなるおそれがあります。Shared レベルと **Standard** レベルの料金の詳細については、「[Azure の価格][pricing]」をご覧ください。
 
 1.	ブラウザーで、[Azure ポータル](https://portal.azure.com)を開きます。
 	
@@ -455,7 +455,9 @@ Visual Studio がインストールされている Windows システムからテ
 >
 > 2. ドメイン名レジストラーから提供されるツールを使用して、前の手順の IP アドレスを指定するようにカスタム ドメイン名用の A レコードを変更します。
 
-> [AZURE.NOTE] IP SSL が Web アプリに対して有効になったらすぐに別の証明書に **SNI バインド**が既にある Web アプリに **IP ベースの SSL** を追加した場合、その IP アドレスに対するサイトのホスト名が再マッピングされます。このため、任意の他のホスト名がそのサイトのホスト名に CNAME された場合、IP SSL アドレス上でのトラフィックも取得されます。このような場合に備えて、DNS エントリを 1 つ追加しました: sni.&lt;nameofyourWebApp&gt;.azurewebsites.net。ここで、&lt;nameofyourWebApp&gt; は、Azure App Service Web アプリの名前です。したがって、SNI バインドで使用される名前をポイントする DNS レコードを、河原に sni.&lt;nameofyourWebApp&gt;.azurewebsites.net をポイントするように変更する必要があります。
+<br>別の証明書に既に **SNI バインド**されている Web アプリに **IP ベースの SSL** を追加した場合、Web アプリの IP SSL が有効になった直後に、サイトのホスト名がその IP アドレスに再マッピングされます。そのため、他のホスト名がそのサイトのホスト名に CNAME されている場合、IP SSL アドレスでトラフィックが取得されます。
+
+このような場合に備えて、DNS エントリを 1 つ追加しました: sni.&lt;nameofyourWebApp&gt;.azurewebsites.net。ここで、&lt;nameofyourWebApp&gt; は、Azure App Service Web アプリの名前です。したがって、SNI バインドで使用される名前をポイントする DNS レコードを、河原に sni.&lt;nameofyourWebApp&gt;.azurewebsites.net をポイントするように変更する必要があります。
 
 ここで、証明書が正しく構成されていることを確認するために、`HTTP://` ではなく `HTTPS://` を使用してアプリを参照できます。
 
@@ -503,9 +505,9 @@ web.config ファイルに **&lt;rewrite>** セクションが既に含まれて
 
 PHP アプリケーションの場合、[例](#example)を web.config ファイルとしてアプリケーションのルートに保存し、このアプリケーションをアプリに再デプロイするだけです。
 
-###Node.js、Python Django、および Java
+###Node.js、Python Django、Java
 
-Node.js、Python Django、および Java アプリケーションの場合、web.config ファイルがまだ提供されていない場合は自動的に作成されますが、デプロイメント時に作成されるため、サーバー上にのみ存在します。自動生成されたファイルには、Azure にアプリケーションのホスト方法を伝える設定が含まれます。
+Node.js、Python Django、および Java アプリケーションでは、web.config ファイルがまだ提供されていない場合は自動的に作成されますが、デプロイ時に作成されるのでサーバー上にのみ存在します。自動生成されたファイルには、Azure にアプリケーションのホスト方法を伝える設定が含まれます。
 
 自動生成されたファイルをアプリから取得して変更するには、次の手順を実行します。
 
@@ -523,7 +525,7 @@ Node.js、Python Django、および Java アプリケーションの場合、web
 
 		Apache Tomcat を使用している Java アプリケーションの web.config ファイルには **&lt;rewrite>** セクションが含まれていないため、例の **&lt;rewrite>** セクションを **&lt;system.webServer>** セクションに追加する必要があります。
 
-4. プロジェクト (更新された web.config を含む) を Azure に再度デプロイします。
+4. /site/wwwroot フォルダーに配置します。
 
 HTTPS を強制的に使用する書き換えルールを伴う web.config をデプロイすると、すぐに有効となり、すべての要求が HTTPS にリダイレクトされます。
 
@@ -564,3 +566,5 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 [certwiz2]: ./media/configure-ssl-web-site/waws-certwiz2.png
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
+
+<!---HONumber=AcomDC_0525_2016-->

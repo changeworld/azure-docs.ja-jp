@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="01/12/2016"
-	ms.author="erikre"/>
+	ms.author="cephalin"/>
 
 # Azure App Service でのカスタム ドメイン名の構成 (GoDaddy から直接購入した場合)
 
@@ -81,4 +81,4 @@ Azure App Service Web Apps からドメインを購入した場合は、「[Web 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0525_2016-->

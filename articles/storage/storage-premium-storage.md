@@ -37,7 +37,7 @@ Azure Premium Storage を使用するには、[無料試用版](https://azure.mi
 
 **Premium Storage ディスク**: Azure Premium Storage は、DS、DSv2 または GS シリーズ Azure VM に接続できる VM ディスクをサポートしています。Premium Storage の使用時に、それぞれパフォーマンス仕様の異なる P10 (128GiB)、P20 (512GiB)、P30 (1024GiB) の 3 つのディスク サイズから選択できます。アプリケーション要件に応じて、これらのディスクの 1 つ以上を DS、DSv2 または GS シリーズ VM に接続できます。[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)に関する次のセクションで、仕様についてさらに詳しく説明します。
 
-**Premium ページ BLOB**: Premium Storage は Azure ページ BLOB をサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使用されます。現在、Premium Storage は Azure ブロック BLOB、Azure ファイル、Azure 追加 BLOB、Azure テーブル、Azure キューをサポートしていません。
+**Premium ページ BLOB**: Premium Storage は Azure ページ BLOB をサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使用されます。現在、Premium Storage は Azure ブロック BLOB、Azure ファイル、Azure 追加 BLOB、Azure テーブル、Azure キューをサポートしていません。Premium Storage アカウントに配置されている他のオブジェクトはページ BLOB であり、サポートされているプロビジョニングされたサイズのいずれかにスナップされます。したがって、Premium Storage アカウントは小さな BLOB を格納するためのものではありません。
 
 **Premium Storage アカウント**: Premium Storage の使用を開始するには、Premium Storage アカウントを作成する必要があります。[Azure ポータル](https://portal.azure.com)を使用する場合は、"Premium" パフォーマンス レベルと、レプリケーション オプションとして "ローカル冗長ストレージ (LRS)" を指定することで、Premium Storage アカウントを作成できます。また、[Storage REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) バージョン 2014-02-14 以降、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) バージョン 2014-10-01 以降 (クラシック デプロイ)、[Azure Storage Resource Provider REST API リファレンス](http://msdn.microsoft.com/library/azure/mt163683.aspx) (ARM デプロイ)、[Azure PowerShell](../powershell-install-configure.md) バージョン 0.8.10 以降を使用している場合は、種類として "Premium\_LRS" を指定することで、Premium Storage アカウントを作成することもできます。Premium Storage アカウントの制限については、以降の「[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)」を参照してください。
 
@@ -63,7 +63,7 @@ Windows VM で使用できる Azure VM の種類やサイズについては、�
 
 **Cloud Service**: DS シリーズ VM は DS シリーズ VM のみを含むクラウド サービスに追加できます。DS シリーズ以外の VM が存在する既存のクラウド サービスに DS シリーズの VM を追加しないでください。既存の VHD を DS シリーズ VM のみを実行する新しいクラウド サービスに移行できます。DS シリーズ VM をホストする新しいクラウド サービスに引き続き同じ仮想 IP アドレス (VIP) を使用するには、[予約済み IP アドレス](../virtual-network/virtual-networks-instance-level-public-ip.md)を使います。GS シリーズの VM は G シリーズの VM のみ実行している既存のクラウド サービスに追加できます。
 
-**オペレーティング システム ディスク**: DS シリーズ、DSv2 シリーズおよび GS シリーズの Azure Virtual Machines で使用するオペレーティング システム (OS) ディスクは、Standard Storage アカウントと Premium Storage アカウントのどちらでホストするように設定されていてもかまいません。OS ディスクをマシンの起動のみに使用する場合は、Standard Storage ベースの OS ディスクの使用を検討してください。コストの点で有利であり、起動後のパフォーマンスは Premium Storage とほぼ同じであるからです。マシン起動以外のタスクも OS ディスクで実行する場合は、Premium Storage を使用すると、より高いパフォーマンスが得られます。たとえば、アプリケーションで OS ディスクの読み取りと書き込みを行う場合は、Premium Storage ベースの OS ディスクを使うと VM のパフォーマンスが向上します。
+**オペレーティング システム ディスク**: DS シリーズ、DSv2 シリーズおよび GS シリーズの Azure Virtual Machines で使用するオペレーティング システム (OS) ディスクは、Standard Storage アカウントと Premium Storage アカウントのどちらでホストするように設定されていてもかまいません。最適なエクスペリエンスを実現するために、Premium Storage ベースの OS ディスクを使用することをお勧めします。
 
 **データ ディスク**: 同じ DS シリーズの VM、DSv2 シリーズの VM または GS シリーズの VM 内では、Premium Storage ディスクと Standard Storage ディスクの両方を使用できます。Premium Storage を使用すると、DS、DSv2 または GS シリーズの VM をプロビジョニングし、複数の永続データ ディスクを VM に接続できます。必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。
 
@@ -335,11 +335,11 @@ OpenLogic CentOS VM を実行しているお客様は、次のコマンドを実
 
 ## 価格と課金
 Premium Storage を使用するときには、課金に関する次の考慮事項が適用されます。
-- Premium Storage のディスク サイズ
+- Premium Storage のディスク/BLOB サイズ
 - Premium Storage のスナップショット
 - 送信データ転送
 
-**Premium Storage のディスク サイズ**: Premium Storage ディスクへの課金はプロビジョニングしたディスクのサイズによって異なります。Azure は、ディスク サイズ (切り上げたもの) を「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whja-JPing-premium-storage)」にある表で指定されている、最も近い Premium Storage ディスク オプションにマッピングしますプロビジョニングされたディスクには、Premium Storage プランの月額料金を使用して、時間割りで計算して課金されます。たとえば、P10 ディスクをプロビジョニングし、20 時間後にそのディスクを削除した場合は、P10 製品の 20 時間分に対して課金されます。これは、実際にディスクに書き込まれたデータの量や、使用した IOPS/スループットには関係ありません。
+**Premium Storage のディスク/BLOB サイズ**: Premium Storage ディスク/BLOB への課金は、プロビジョニングされたディスク/BLOB のサイズによって異なります。Azure は、プロビジョニングされたサイズ (切り上げたもの) を、「[Premium Storage の拡張性とパフォーマンスの目標](#scalability-and-performance-targets-whja-JPing-premium-storage)」にある表に記載されているオプションの中で最も近い Premium Storage ディスク オプションにマップします。Premium Storage アカウントに保存されているすべてのオブジェクトが、サポートされているプロビジョニングされたサイズのいずれかにマップされ、それに応じて課金されます。そのため、小さな BLOB の格納に Premium Storage アカウントを使用しないでください。プロビジョニングされたディスク/BLOB には、Premium Storage プランの月額料金を使用して、時間割りで計算して課金されます。たとえば、P10 ディスクをプロビジョニングし、20 時間後にそのディスクを削除した場合は、P10 製品の 20 時間分に対して課金されます。これは、実際にディスクに書き込まれたデータの量や、使用した IOPS/スループットには関係ありません。
 
 **Premium Storage のスナップショット**: Premium Storage でのスナップショットについては、スナップショットで使用した追加の容量に対して課金されます。スナップショットの詳細については、「[BLOB のスナップショットの作成](http://msdn.microsoft.com/library/azure/hh488361.aspx)」をご覧ください。
 
@@ -550,4 +550,4 @@ Azure Premium Storage の詳細については、以下の記事を参照して�
 
 [Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/07/2016"
+   ms.date="05/24/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager について
@@ -25,7 +25,7 @@ StorSimple Snapshot Manager は、Microsoft Azure StorSimple 環境でのデー�
 
 StorSimple デバイス、StorSimple Manager サービス、StorSimple Snapshot Manager、SharePoint 用 StorSimple アダプターを含む Microsoft Azure StorSimple システム全体の概要については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」を参照してください。
  
->[AZURE.NOTE]
+>[AZURE.NOTE] 
 >
 >- StorSimple Snapshot Manager を使用して、Microsoft Azure StorSimple Virtual Array (別名 StorSimple オンプレミス仮想デバイス) を管理することはできません。
 >
@@ -38,9 +38,9 @@ StorSimple Snapshot Manager は、ローカルとクラウドのデータにつ�
 - ボリュームを構成、バックアップ、削除する。
 - ボリューム グループを構成してバックアップ データのアプリケーション整合性を確保する。
 - 事前に指定されたスケジュールでデータがバックアップされるようにバックアップ ポリシーを管理する。
-- クラウドに保存して障害復旧に使用できる、データの独立したコピーを作成する。
+- クラウドに保存して障害復旧に使用できる、ローカルとクラウドのスナップショットを作成する。
 
-StorSimple Snapshot Manager では、ボリュームをマウントし、(通常はアプリケーションごとに) それらをボリューム グループとして構成します。StorSimple Snapshot Manager では、これらのボリューム グループを使用して、アプリケーション整合性のあるバックアップ コピーを生成します ("アプリケーション整合性" とは、関連するすべてのファイルとデータベースが同期されており、特定の時点におけるアプリケーションの正確な状態が反映されていることをいいます)。
+StorSimple Snapshot Manager によって、ホスト上の VSS プロバイダーに登録されているアプリケーションの一覧が取得されます。次に、アプリケーション整合性バックアップを作成するために、アプリケーションが使用するボリュームがチェックされ、構成するボリューム グループが提案されます。StorSimple Snapshot Manager では、これらのボリューム グループを使用して、アプリケーション整合性のあるバックアップ コピーを生成します ("アプリケーション整合性" とは、関連するすべてのファイルとデータベースが同期されており、特定の時点におけるアプリケーションの正確な状態が反映されていることをいいます)。
 
 StorSimple Snapshot Manager のバックアップの形式は増分スナップショットであり、前回のバックアップ以降の変更部分だけがキャプチャされます。そのため、バックアップに必要なストレージが減り、バックアップの作成と復元を短時間で実行できます。StorSimple Snapshot Manager では、スナップショットでキャプチャされるデータのアプリケーション整合性を確保するために、Windows ボリューム シャドウ コピー サービス (VSS) を使用します (詳細については、「Windows ボリューム シャドウ コピー サービスとの統合」をご覧ください)。 StorSimple Snapshot Manager では、バックアップ スケジュールを作成することも、必要に応じて即時バックアップを作成することもできます。バックアップからデータを復元する必要がある場合は、StorSimple Snapshot Manager を使用してローカル スナップショットまたはクラウド スナップショットのカタログから選択できます。Azure StorSimple は、必要なときに必要なデータだけを復元するので、復元操作の実行中にデータの可用性が長時間損なわれることはありません。
 
@@ -62,7 +62,7 @@ StorSimple Snapshot Manager を使用して構成およびバックアップで�
 
 - **クラスターの共有ボリューム** - クラスターの共有ボリューム (CSV) では、フェールオーバー クラスター内の複数のノードが同じディスクに対して同時に読み取り/書き込みを実行できます。ドライブの所有権の変更や、マウント、マウントの解除、ボリュームの削除を行わずに、ノード間でのフェールオーバーを迅速に実行できます。
 
->[AZURE.IMPORTANT]同じスナップショット内で CSV と非 CSV を混在させないでください。1 つのスナップショット内での CSV と非 CSV の混在はサポートされていません。
+>[AZURE.IMPORTANT] 同じスナップショット内で CSV と非 CSV を混在させないでください。1 つのスナップショット内での CSV と非 CSV の混在はサポートされていません。
  
 StorSimple Snapshot Manager を使用すると、ボリューム グループ全体を復元したり、個々のボリュームを複製して個々のファイルを回復したりできます。
 
@@ -79,7 +79,7 @@ StorSimple Snapshot Manager では、ボリューム グループを使用して
 
 ボリューム グループはボリューム コンテナーとは異なります。ボリューム コンテナーには、クラウド ストレージ アカウントと他の属性 (暗号化や帯域幅消費量など) を共有する 1 つ以上のボリュームが含まれます。1 つのボリューム コンテナーに、仮想プロビジョニングされた最大 256 個の StorSimple ボリュームを含めることができます。ボリューム コンテナーの詳細については、「[StorSimple ボリューム コンテナーの管理](storsimple-manage-volume-containers.md)」をご覧ください。ボリューム グループは、バックアップ操作を容易にするために構成するボリュームの集まりです。異なるボリューム コンテナーに属する 2 つのボリュームを選択し、それらを同じボリューム グループに配置して、そのボリューム グループのバックアップ ポリシーを作成すると、適切なストレージ アカウントを使用して、適切なボリューム コンテナーで各ボリュームがバックアップされます。
 
->[AZURE.NOTE]ボリューム グループ内のすべてのボリュームは、1 つのクラウド サービス プロバイダーから取得する必要があります。
+>[AZURE.NOTE] ボリューム グループ内のすべてのボリュームは、1 つのクラウド サービス プロバイダーから取得する必要があります。
 
 ## Windows ボリューム シャドウ コピー サービスとの統合
 
@@ -156,4 +156,4 @@ StorSimple Snapshot Manager を使用して、今後予定されているバッ�
 
 - [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) をダウンロードする。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0525_2016-->

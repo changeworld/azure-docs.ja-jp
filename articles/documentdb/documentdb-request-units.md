@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="05/16/2016" 
 	ms.author="stbaro"/>
 
 #DocumentDB の要求ユニット
@@ -178,6 +178,9 @@ Azure DocumentDB の予約済みスループットの詳細については、以
 
 DocumentDB の詳細については、Azure DocumentDB に関する[ドキュメント](https://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
 
+DocumentDB に関するスケールとパフォーマンスのテストを始めるには、「[Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」を参照してください。
+
+
 [1]: ./media/documentdb-request-units/queryexplorer.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0525_2016-->

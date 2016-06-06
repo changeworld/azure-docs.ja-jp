@@ -1,12 +1,12 @@
 <properties
-	pageTitle="ロジック アプリに Facebook API を追加する | Microsoft Azure"
-	description="Facebook API と REST API パラメーターの概要"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="ロジック アプリに Facebook コネクタを追加する | Microsoft Azure"
+    description="Facebook コネクタと REST API パラメーターの概要"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/16/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# Facebook API の概要
-Facebook に接続し、タイムラインへの投稿、ページ フィードの取得などを行います。Facebook API は次のツールから使用できます。
+# Facebook コネクタの使用
+Facebook に接続し、タイムラインへの投稿、ページ フィードの取得などを行います。Facebook コネクタは、次のツールから使用できます。
 
 - Logic Apps (このトピックで説明)
 - PowerApps (詳細な一覧については、[PowerApps 接続リスト](https://powerapps.microsoft.com/tutorials/connections-list/)を参照してください)
@@ -35,16 +35,16 @@ Facebook では、次の操作を実行できます。
 ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 ## トリガーとアクション
-Facebook API には、次のトリガーとアクションがあります。
+Facebook コネクタには、次のトリガーとアクションがあります。
 
 | トリガー | アクション|
 | --- | --- |
 | <ul><li>タイムラインに新しい投稿がある場合</li></ul> |<ul><li>タイムラインからフィードを取得する</li><li>タイムラインに投稿する</li><li>タイムラインに新しい投稿がある場合</li><li>ページ フィードを取得する</li><li>ユーザーのタイムラインを取得する</li><li>ページに投稿する</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## Facebook への接続を作成する
-ロジック アプリにこの API を追加するとき、Facebook に接続するロジック アプリを承認する必要があります。
+ロジック アプリにこのコネクタを追加するとき、Facebook に接続するロジック アプリを承認する必要があります。
 
 1. Facebook アカウントにサインインします。
 2. **[Authorize]** を選択して、ロジック アプリが Facebook に接続して使用することを許可します。 
@@ -436,4 +436,4 @@ Facebook API には、次のトリガーとアクションがあります。
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

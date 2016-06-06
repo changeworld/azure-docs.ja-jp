@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/09/2016" 
+	ms.date="05/22/2016" 
 	ms.author="jeannt"/>
 
 
@@ -414,4 +414,4 @@ Net# では、オプションで、共有の重みを持つ複数のバンドル
 [1]: ./media/machine-learning-azure-ml-netsharp-reference-guide/formula_large.gif
  
 
-<!----HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0525_2016-->

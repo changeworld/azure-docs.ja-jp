@@ -40,13 +40,13 @@ VNet は、Cloud Services (PaaS)、Virtual Machines、Web Apps など、さま�
 
 作成または仮想ネットワークを構成するのには、次のツールを使用できます。
 
-- Azure ポータル (クラシックおよびリソース マネージャー VNet)。
+- Azure ポータル (クラシックおよび Resource Manager VNet)。
 
-- ネットワーク構成ファイル (クラシック VNet では netcfg のみ)。[ネットワーク構成ファイルを使用した仮想ネットワークの構成](../articles/virtual-network/virtual-networks-using-network-configuration-file.md)を参照してください。
+- ネットワーク構成ファイル (netcfg - クラシック VNet のみ)。[ネットワーク構成ファイルを使用した仮想ネットワークの構成](../articles/virtual-network/virtual-networks-using-network-configuration-file.md)を参照してください。
 
-- PowerShell (クラシックおよびリソース マネージャー VNet)。
+- PowerShell (クラシックおよび Resource Manager VNet)。
 
-- Azure CLI (クラシックおよびリソース マネージャー VNet)。
+- Azure CLI (クラシックおよび Resource Manager VNet)。
 
 ### VNet でどのアドレス範囲が使用できるでしょうか。
 
@@ -88,13 +88,13 @@ VNet 内の標準 IP ベースのプロトコルを使用することができ�
 - UDP
 - ICMP
 
-### VNet 内で、既定ルーターに対して ping できるでしょうか。
+### VNet 内には、既定ルーターを ping できるでしょうか。
 
-できません。
+番号
 
 ### Tracert を使用して、接続を診断することができますか。
 
-できません。
+番号
 
 ### VNet を作成した後のサブネットを追加できますか。
 
@@ -183,7 +183,7 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 
 ### 後で作成する VM の内部 IP アドレスを予約できますか。
 
-いいえ。内部 IP アドレスを予約することはできません。Iternal IP アドレスが使用可能な場合は、DHCP サーバーによって、VM またはロール インスタンスに割り当てられます。その VM は、内部 IP アドレスを割り当てさせたいマシンの場合もあるし、そうでない場合もあります。ただし、すでに作成済みの VM の内部 IP アドレスを、使用可能な内部 IP アドレスに変更することができます。
+いいえ。内部 IP アドレスを予約することはできません。内部 IP アドレスが使用可能な場合は、DHCP サーバーによって、VM またはロール インスタンスに割り当てられます。その VM は、内部 IP アドレスを割り当てさせたいマシンの場合もあるし、そうでない場合もあります。ただし、すでに作成済みの VM の内部 IP アドレスを、使用可能な内部 IP アドレスに変更することができます。
 
 ### 内部 IP アドレスを、VNet 内の VM 用に変更しますか。
 
@@ -270,4 +270,4 @@ Vnet は、1 つの別の機能と、Azure インフラストラクチャでホ�
 
 はい。各種プラットフォームで PowerShell とコマンド ライン ツールを使用することができます。詳細については、[こちら](http://go.microsoft.com/fwlink/?LinkId=317721)で確認できます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

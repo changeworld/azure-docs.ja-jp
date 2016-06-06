@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="05/24/2016"
 	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -227,7 +227,10 @@
 
 ### Stream Analytics の制限
 
-[AZURE.INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]
+| 制限の種類 | 制限 | 説明 |
+|----------------- | ------------|--------- |
+| リージョンあたりのサブスクリプションごとのストリーミング ユニットの最大数 | 50 | サブスクリプションのストリーミング ユニットを 50 より大きい数に増やす要求を行うには、[Microsoft サポート](https://support.microsoft.com/ja-JP)に連絡します。 |
+| ストリーミング ユニットの最大スループット | 1 MB/秒* | SU ごとの最大スループットは、シナリオによって異なります。実際のスループットはそれより少なくなる可能性があり、クエリの複雑さやパーティション分割によって異なります。詳細な情報については、「[スループット向上のための Azure Stream Analytics ジョブのスケーリング](../articles/stream-analytics/stream-analytics-scale-jobs.md)」記事を参照してください。 |
 
 ### Active Directory の制限
 
@@ -289,4 +292,4 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 [クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

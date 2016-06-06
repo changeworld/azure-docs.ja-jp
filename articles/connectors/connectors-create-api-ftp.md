@@ -1,12 +1,12 @@
 <properties
-	pageTitle="ロジック アプリに FTP API を追加する | Microsoft Azure"
-	description="FTP API と REST API パラメーターの概要"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="ロジック アプリに FTP コネクタを追加する | Microsoft Azure"
+    description="FTP コネクタと REST API パラメーターの概要"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/16/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# FTP API の概要
-FTP サーバーに接続して、ファイルのアップロードやファイルの削除など、ファイルを管理します。FTP API は次のツールから使用できます。
+# FTP コネクタの使用
+FTP サーバーに接続して、ファイルのアップロードやファイルの削除など、ファイルを管理します。FTP コネクタは、次のツールから使用できます。
 
 - Logic Apps (このトピックで説明)
 - PowerApps (詳細な一覧については、[PowerApps 接続リスト](https://powerapps.microsoft.com/tutorials/connections-list/)を参照してください)
@@ -41,16 +41,12 @@ FTP では、次のトリガーとアクションを使用できます。
 --- | ---
 <ul><li>更新されたファイルを取得する</li></ul> | <ul><li>ファイルを作成する</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>フォルダーを抽出する</li><li>ファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>更新されたファイルを取得する</li><li>ファイルを取得する</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## FTP への接続を作成する
-この API をロジック アプリに追加するときに、次の値を入力します。
 
-|プロパティ| 必須|説明|
-| ---|---|---|
-|サーバー アドレス| あり | 完全修飾ドメイン (FQDN) または FTP サーバーの IP アドレスを入力します。|
-|ユーザー名| あり | ユーザー名を入力して、FTP サーバーに接続します。|
-|パスワード | あり | ユーザー名のパスワードを入力します。|
+
+>[AZURE.INCLUDE [FTP 接続を作成する手順](../../includes/connectors-create-api-ftp.md)]
 
 接続を作成したら、ソース ファイルや宛先フォルダーなど、FTP のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
@@ -103,7 +99,7 @@ FTP サーバーからファイルを削除します。```DELETE: /datasets/defa
 |default|操作に失敗しました。|
 
 ### フォルダーを抽出する
-FTP サーバーのフォルダーにアーカイブ ファイル (例: .zip) を抽出します。```POST: /datasets/default/extractFolderV2```
+FTP サーバーのフォルダーにアーカイブ ファイル (例: .zip) を展開します。```POST: /datasets/default/extractFolderV2```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -248,4 +244,4 @@ FTP サーバーのファイルを更新します。```PUT: /datasets/default/fi
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

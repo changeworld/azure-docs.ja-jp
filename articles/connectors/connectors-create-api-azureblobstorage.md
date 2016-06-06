@@ -1,12 +1,12 @@
 <properties
-	pageTitle="ロジック アプリに Azure Blob Storage API を追加する | Microsoft Azure"
-	description="Azure Blob Storage API と REST API パラメーターの概要"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="ロジック アプリに Azure Blob Storage コネクタを追加する | Microsoft Azure"
+    description="Azure Blob Storage コネクタと REST API パラメーターの概要"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/16/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# Azure Blob Storage API の概要
-Azure Blob に接続して、ファイルの作成、ファイルの削除など、BLOB コンテナーのファイルを管理します。Azure Blob ストレージ API は、次のツールから使用できます。
+# Azure Blob Storage コネクタの概要
+Azure Blob に接続して、ファイルの作成、ファイルの削除など、BLOB コンテナーのファイルを管理します。Azure Blob Storage コネクタは、次のツールから使用できます。
 
 - Logic Apps 
 
@@ -38,17 +38,13 @@ Azure Blob には、次のアクションがあります。トリガーはあり
 | --- | --- |
 | ありません。 | <ul><li>ファイルを作成する</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>アーカイブをフォルダーに抽出する</li><li>ファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>ファイルを更新する</li></ul> |
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## Azure Blob への接続を作成する
-この API をロジック アプリに追加するときに、次のストレージ アカウントAを入力します。
 
-|プロパティ| 必須|説明|
-| ---|---|---|
-|Azure ストレージ アカウント名 | ○ | Blob Storage アカウントの名前|
-|Azure Storage アカウントのアクセス キー | ○ | Blob Storage アカウントへのアクセス キー|
+>[AZURE.INCLUDE [Azure Blob Storage への接続を作成する手順](../../includes/connectors-create-api-azureblobstorage.md)]
 
-接続を作成したら、フォルダー パスやファイル名など、BLOB のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成したら、フォルダー パスやファイル名など、BLOB のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでも、この同じ BLOB 接続を使用できます。
  
@@ -102,7 +98,7 @@ Azure Blob Storage からファイルを削除します。```DELETE: /datasets/d
 
 
 ### アーカイブをフォルダーに抽出する
-Azure Blob Storage のフォルダーにアーカイブ ファイル (例: .zip) を抽出します。```POST: /datasets/default/ExtractFolderV2```
+Azure Blob Storage のフォルダーにアーカイブ ファイル (例: .zip) を展開します。```POST: /datasets/default/ExtractFolderV2```
 
 | 名前|データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -232,6 +228,6 @@ Azure Blob Storage のファイルを更新します。```PUT: /datasets/default
 
 ## 次のステップ
 
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

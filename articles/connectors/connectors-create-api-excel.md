@@ -1,10 +1,10 @@
 <properties
-pageTitle="PowerApps Enterprise への Excel API の追加 | Microsoft Azure"
-description="Excel API と REST API パラメーターの概要"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="PowerApps Enterprise への Excel コネクタの追加 | Microsoft Azure"
+description="Excel コネクタと REST API パラメーターの概要"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,20 +14,20 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="02/25/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Excel API を使ってみる
+# Excel コネクタの使用
 
-Excel に接続して行の挿入、削除などを行います。Excel API は次のツールから使用できます。
+Excel に接続して行の挿入、削除などを行います。Excel コネクタは、次のツールから使用できます。
 
 - PowerApps
 
 Excel で次の操作を実行できます。
 
-- Excel API を PowerApps Enterprise に追加。その後、ユーザーはアプリ内でこの API を使用できます。 
+- PowerApps Enterprise に Excel コネクタを追加します。追加すると、ユーザーはアプリ内でコネクタを使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」を参照してください。
+PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
 
 ## トリガーとアクション
 Excel には次のアクションが含まれています。トリガーはありません。
@@ -36,7 +36,7 @@ Excel には次のアクションが含まれています。トリガーはあ�
 |--- | ---|
 |なし | <ul><li>行の取得</li><li>行の挿入</li><li>行の削除</li><li>行の取得</li><li>テーブルの取得</li><li>行の更新</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## Swagger REST API リファレンス
 適用されるバージョン: 1.0。
@@ -208,4 +208,4 @@ Excel には次のアクションが含まれています。トリガーはあ�
 ## 次のステップ
 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md) [PowerApps の作成](../power-apps/powerapps-get-started-azure-portal.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

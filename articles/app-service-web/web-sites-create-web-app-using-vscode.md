@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="02/26/2016" 
-	ms.author="erikre"/>
+	ms.author="cephalin"/>
 
 # Visual Studio Code を使用した ASP.NET 5 Web アプリの作成
 
@@ -127,7 +127,7 @@ Web アプリが作成され、アプリのすべての NuGet パッケージが
 
 2. ブラウザーを開き、次の URL に移動します。
 
-	****http://localhost:5000**
+	**http://localhost:5000**
 
 	Web アプリの既定のページが次のように表示されます。
 
@@ -262,4 +262,4 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 ## 概要
 このチュートリアルでは、VS コードで、Web アプリを作成し、Azure にデプロイする方法を学習しました。VS コードの詳細については、[Visual Studio Code を使用する理由](https://code.visualstudio.com/Docs/)に関する記事をご覧ください。 App Service Web Apps の詳細については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0525_2016-->

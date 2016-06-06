@@ -108,12 +108,14 @@ Rsyslog データは既定で常に収集されます。
 手順 2.**azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** を実行します。
 
 
-###   シナリオ 4. Linux の監視拡張機能を無効にする
+###   シナリオ 4. 拡張機能によるログ収集を停止する
+このセクションでは、拡張機能によるログ収集を停止する方法について説明します。この再構成を使用しても、監視エージェント プロセスはまだ稼働していることに注意してください。監視エージェント プロセスを完全に停止するには、現在の拡張機能をアンインストールする必要があります。将来的には、拡張機能全体のアンインストールを必要とせずに、拡張機能を無効にする (監視エージェント プロセスも完全に停止する) 構成プロパティを追加する予定です。
+
 手順 1.シナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。次の内容を含む PrivateConfig.json という名前の別のファイルを作成します。
 
 	{
      	"perfCfg":[],
-     	"enableSyslog":”False”
+     	"enableSyslog":"false"
 	}
 
 
@@ -137,4 +139,4 @@ Rsyslog データは既定で常に収集されます。
 ## 既知の問題
 - バージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

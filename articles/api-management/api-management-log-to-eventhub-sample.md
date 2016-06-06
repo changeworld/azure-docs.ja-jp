@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="article"
-    ms.date="02/19/2016"
+    ms.date="05/25/2016"
     ms.author="v-darmi"/>
 
 # Azure API Management、Event Hubs、Runscope を使用した API の監視
@@ -268,4 +268,4 @@ Azure API Management サービスでは、API を経由して送受信される 
 	-	[log-to-eventhub ポリシー リファレンス](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
 	
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="05/18/2016"
 	ms.author="jgao"/>
 
 # HDInsight で Azure PowerShell for Hadoop を使用した Sqoop ジョブの実行
@@ -71,9 +71,9 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Databa
     $destBlobName = "tutorials/usesqoop/data/sample.log"
         
     # Define the connection string
-    $defaultStorageAccountKey = Get-AzureRmStorageAccountKey `
+    $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
                                     -ResourceGroupName $resourceGroupName `
-                                    -Name $defaultStorageAccountName |  %{ $_.Key1 }
+                                    -Name $defaultStorageAccountName)[0].Value
     $storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$defaultStorageAccountName;AccountKey=$defaultStorageAccountKey"
         
     # Create block blob objects referencing the source and destination blob.
@@ -177,4 +177,4 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Databa
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

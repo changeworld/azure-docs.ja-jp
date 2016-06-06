@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/21/2016"
+	ms.date="05/19/2016"
 	ms.author="genemi"/>
 
 
@@ -54,6 +54,23 @@ SQL Database V12 の主な目標は、Microsoft SQL Server 2014 との互換性�
 - [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](http://msdn.microsoft.com/library/mt629158.aspx)
 
 SQL Database でまだサポートされていない一部の機能については、[ここ](sql-database-transact-sql-information.md)を参照してください。
+
+
+### 互換性レベル 130
+
+
+> [AZURE.IMPORTANT] **2016 年 6 月**以降、Azure SQL Database V12 で*新しく*作成されるデータベースでは、その互換性レベルが 130 で始まります。これは Microsoft SQL Server 2016 GA と一致します。
+> 
+> もちろん、必要に応じて `ALTER DATABASE YourDatabase SET COMPATIBILITY_LEVEL = 120` を使用することもできます。
+> 
+> この既定の設定の変更によって、2016 年 6 月より前に作成されたデータベースの互換性レベルが変更されることはありません。V11 から V12 へのアップグレードによってデータベースのレベルが変更されることもありません。
+
+
+
+最新の互換性レベルと前の互換性レベル間で重要なクエリを比較する方法については、
+
+- 「[SQL Database での互換性レベル 130 によるクエリ パフォーマンスの向上](sql-database-compatibility-level-query-performance-130.md)」を参照してください。
+
 
 
 ## Premium のパフォーマンスの向上、新しいパフォーマンス レベル
@@ -166,4 +183,4 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 
 [Microsoft Azure プレビューの使用条件に関する補足](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

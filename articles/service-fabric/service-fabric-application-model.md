@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/12/2016"   
-   ms.author="ryanwi"/>
+   ms.date="05/18/2016"   
+   ms.author="seanmck"/>
 
 # Service Fabric でのアプリケーションのモデル化
 
@@ -254,4 +254,4 @@ PS D:\temp>
 [11]: service-fabric-manage-multiple-environment-app-configuration.md
 [12]: service-fabric-application-runas-security.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

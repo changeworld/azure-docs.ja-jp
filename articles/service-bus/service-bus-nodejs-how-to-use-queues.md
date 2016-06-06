@@ -145,7 +145,7 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 });
 ```
 
-Service Bus キューでは、最大 256 KB までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。クォータの詳細については、「[Service Bus のクォータ][]」を参照してください。
+Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。クォータの詳細については、「[Service Bus のクォータ][]」を参照してください。
 
 ## キューからメッセージを受信する
 
@@ -202,4 +202,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [Service Bus のクォータ]: service-bus-quotas.md
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

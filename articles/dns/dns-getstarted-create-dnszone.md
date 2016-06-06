@@ -67,7 +67,7 @@ PowerShell コンソールを開き、アカウントに接続します。詳細
 
 接続するには、次のサンプルを参照してください。
 
-	Login-AzureRmAccountt
+	Login-AzureRmAccount
 
 アカウントのサブスクリプションを確認します。
 
@@ -174,4 +174,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 
 DNS ゾーンを作成したら、[レコード セットとレコード](dns-getstarted-create-recordset.md)を作成し、インターネット ドメインの名前解決を開始します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

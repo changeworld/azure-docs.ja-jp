@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/26/2016" 
+	ms.date="05/13/2016" 
 	ms.author="awills"/>
  
 # 質問 - ASP.NET 向けの Application Insights
@@ -39,7 +39,7 @@
 * Microsoft Azure に登録するには、クレジット カード データを登録する必要がありますが、他の有料の Azure のサービスを使用するか、明示的に有料レベルにアップグレードしない限り、料金は発生しません。
 * アプリが Free レベルの月間クォータより多くのデータを送信すると、ログの記録を停止します。このような場合は、料金の支払いを開始するか、月末にクォータがリセットされるまでお待ちください。
 * 基本的な使用とセッション データは、クォータの対象になりません。
-* 30 日間の無料トライアルが用意されています。この期間中、Premium の機能を無料でご利用いただけます。
+* 30 日間の無料試用版が用意されています。この期間中、有料の機能を無料でご利用いただけます。
 * 各アプリケーション リソースには、個別のクォータがあり、それぞれに個別に価格レベルを設定します。
 
 #### 料金を払うと何ができますか。
@@ -126,11 +126,10 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 <tr><td>サーバーのカスタム メトリック</td><td><a href="../app-insights-api-custom-events-metrics/">サーバー コードでの呼び出しの追跡</a></td><td>ビジネス インテリジェンス</td></tr>
 </table>
 
-Azure VM で Web サービスが実行されている場合は、そこでも[診断を取得][azurediagnostic]できます。
 
 ## Automation
 
-Application Insights リソースを作成したり更新したりするための [PowerShell スクリプトを作成](app-insights-powershell.md)することができます。
+Application Insights リソースを作成および更新するための [PowerShell スクリプトを作成](app-insights-powershell.md)することができます。
 
 ## その他の回答
 
@@ -139,7 +138,6 @@ Application Insights リソースを作成したり更新したりするため�
 
 <!--Link references-->
 
-[azurediagnostic]: ../insights-how-to-use-diagnostics.md
 [data]: app-insights-data-retention-privacy.md
 [platforms]: app-insights-platforms.md
 [start]: app-insights-overview.md
@@ -147,4 +145,4 @@ Application Insights リソースを作成したり更新したりするため�
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

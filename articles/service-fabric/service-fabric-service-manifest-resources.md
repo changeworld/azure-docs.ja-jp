@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/13/2016"
+   ms.date="05/18/2016"
    ms.author="subramar"/>
 
 # サービス マニフェストにリソースを指定する
@@ -137,4 +137,4 @@ HTTPS で設定する必要がある ApplicationManifest の例を次に示し�
 </ApplicationManifest>
 ```
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

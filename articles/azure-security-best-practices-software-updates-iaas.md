@@ -1,7 +1,7 @@
 <properties
    pageTitle="Microsoft Azure IaaS でのソフトウェアの更新のためのベスト プラクティス | Microsoft Azure"
    description="この記事では、Microsoft Azure IaaS 環境でのソフトウェアの更新に関するさまざまなベスト プラクティスについて説明します。組織のセキュリティ担当者やコンプライアンス担当者など、日常的に変更管理、ソフトウェアの更新、および資産管理に携わる IT プロフェッショナルとセキュリティ アナリストを対象とした内容です。"
-   services="virtual-machines, cloud-services, storage"
+   services="security"
    documentationCenter="na"
    authors="YuriD"
    manager="swadhwa"
@@ -9,12 +9,12 @@
    tags="azure-service-management,azure-resource-manager"/>
 
 <tags
-   ms.service="azure-security"
+   ms.service="security"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/11/2016"
+   ms.date="05/23/2016"
    ms.author="yurid"/>
 
 #Microsoft Azure IaaS でのソフトウェアの更新のためのベスト プラクティス
@@ -119,4 +119,4 @@ PaaS のシナリオでは、オペレーティング システムの更新の�
 
 この記事で示されているガイドラインを使用して、Azure IaaS 内の仮想マシンに対してソフトウェア更新プログラムの最適なオプションを決定できます。ソフトウェア更新プログラムのベスト プラクティスについては、従来のデータセンター内と Azure IaaS 内で多数の類似点があります。したがって、現在のソフトウェア更新ポリシーを評価して、全体的なソフトウェア更新プロセスに Azure VM を含め、この記事内の関連するベスト プラクティスを含めることをお勧めします。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

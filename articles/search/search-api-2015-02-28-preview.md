@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search"
-   ms.date="03/08/2016"
+   ms.date="05/18/2016"
    ms.author="brjohnst"/>
 
 # Azure Search サービス REST API: バージョン 2015-02-28-Preview
@@ -1056,35 +1056,112 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
 
 **応答**
 
-状態コード: 成功応答に対して返される「200 OK」は、すべての項目のインデックスが正常に作成されたことを意味します (すべての項目の "status" フィールドが true に設定されることによって示される状態)。
+成功応答に対して返される状態コード 200 OK は、すべての項目のインデックスが正常に作成されたことを意味します。これは、すべての項目の `status` プロパティが true に設定されるか、`statusCode` プロパティが 201 (新しくアップロードされたドキュメントの場合) または 200 (結合または削除されたドキュメントの場合) のいずれかに設定されることによって示されます。
 
     {
       "value": [
         {
-          "key": "unique_key_of_document",
+          "key": "unique_key_of_new_document",
           "status": true,
-          "errorMessage": null
+          "errorMessage": null,
+          "statusCode": 201
+        },
+        {
+          "key": "unique_key_of_merged_document",
+          "status": true,
+          "errorMessage": null,
+          "statusCode": 200
+        },
+        {
+          "key": "unique_key_of_deleted_document",
+          "status": true,
+          "errorMessage": null,
+          "statusCode": 200
         }
       ]
     }  
 
-状態コード: 1 つ以上の項目のインデックスが正常に作成されなかった場合、207 が返されます (インデックスが作成されなかった項目の "status" フィールドが false に設定されることによって示される状態)。
+1 つ以上の項目のインデックスが正常に作成されなかった場合は、状態コード 207 (マルチステータス) が返されます。インデックスが作成されていない項目は、`status` フィールドが false に設定されます。`errorMessage` プロパティと `statusCode` プロパティは、インデックス作成エラーの理由を示します。
 
     {
       "value": [
         {
-          "key": "unique_key_of_document",
+          "key": "unique_key_of_document_1",
           "status": false,
-          "errorMessage": "The search service is too busy to process this document. Please try again later."
+          "errorMessage": "The search service is too busy to process this document. Please try again later.",
+          "statusCode": 503
+        },
+        {
+          "key": "unique_key_of_document_2",
+          "status": false,
+          "errorMessage": "Document not found.",
+          "statusCode": 404
+        },
+        {
+          "key": "unique_key_of_document_3",
+          "status": false,
+          "errorMessage": "Index is temporarily unavailable because it was updated with the 'allowIndexDowntime' flag set to 'true'. Please try again later.",
+          "statusCode": 422
         }
       ]
     }  
 
-`errorMessage` プロパティは、可能な場合はインデックス作成エラーの理由を示します。
+次の表では、応答で返されるドキュメントごとのさまざまな状態コードについて説明します。要求自体に問題があることを示すコードと、一時的なエラー状態を示すコードがあります。後者の場合は、待機してから再試行する必要があります。
 
-**注**: クライアント コードで頻繁に 207 応答が発生する場合、考えられる理由の 1 つはシステムの負荷が高いことです。`errorMessage` プロパティを調べることによってこれを確認できます。負荷が高い場合は、***インデックス作成の要求を調整する***ことをお勧めします。調整しないでインデックス作成トラフィックが減らない場合、システムは 503 エラーですべての要求を拒否し始めることがあります。
+<table style="font-size:12">
+    <tr>
+		<th>状態コード</th>
+		<th>意味</th>
+		<th>再試行可能</th>
+		<th>メモ</th>
+	</tr>
+    <tr>
+		<td>200</td>
+		<td>ドキュメントは正常に変更または削除されました。</td>
+		<td>該当なし</td>
+		<td>削除操作は<a href="https://en.wikipedia.org/wiki/Idempotence">べき等</a>です。つまり、インデックスにドキュメント キーが存在しない場合でも、そのキーを使用した削除操作に対して状態コード 200 が返されます。</td>
+	</tr>
+    <tr>
+		<td>201</td>
+		<td>ドキュメントは正常に作成されました。</td>
+		<td>該当なし</td>
+		<td></td>
+	</tr>
+    <tr>
+		<td>400</td>
+		<td>ドキュメントにエラーがあり、インデックスを作成できませんでした。</td>
+		<td>いいえ</td>
+		<td>応答に含まれるエラー メッセージに、ドキュメントに関する問題が示されます。</td>
+	</tr>
+    <tr>
+		<td>404</td>
+		<td>指定されたキーがインデックス内に存在しないため、ドキュメントを結合できませんでした。</td>
+		<td>いいえ</td>
+		<td>アップロードの場合は新しいドキュメントが作成されるため、このエラーは発生しません。また、削除は<a href="https://en.wikipedia.org/wiki/Idempotence">べき等</a>であるため、削除の場合も発生しません。</td>
+	</tr>
+    <tr>
+		<td>409</td>
+		<td>ドキュメントのインデックスを作成しようとしたときにバージョンの競合が検出されました。</td>
+		<td>あり</td>
+		<td>これは、同じドキュメントに対して同時に複数回インデックスを作成しようとしたときに発生することがあります。</td>
+	</tr>
+    <tr>
+		<td>422</td>
+		<td>インデックスは、allowIndexDowntime フラグを true に設定して更新されたため、一時的に使用できない状態です。</td>
+		<td>あり</td>
+		<td></td>
+	</tr>
+    <tr>
+		<td>503</td>
+		<td>検索サービスは一時的に使用できない状態です。負荷が高いことが原因として考えられます。</td>
+		<td>あり</td>
+		<td>この場合は、待機してから再試行する必要があります。そうしないと、サービスを使用できない状態が長引く場合があります。</td>
+	</tr>
+</table> 
 
-状態コード: 429 は、インデックスあたりのドキュメント数に対するクォータを超過したことを示します。新しいインデックスを作成するか、またはさらに高い処理能力の限界にアップグレードする必要があります。
+**注**: クライアント コードで頻繁に 207 応答が発生する場合、考えられる理由の 1 つはシステムの負荷が高いことです。これは、`statusCode` プロパティが 503 になっているかどうかをチェックすることで確認できます。負荷が高い場合は、***インデックス作成の要求を調整する***ことをお勧めします。調整しないでインデックス作成トラフィックが減らない場合、システムは 503 エラーですべての要求を拒否し始めることがあります。
+
+状態コード 429 は、インデックスあたりのドキュメント数に対するクォータを超過したことを示します。新しいインデックスを作成するか、またはさらに高い処理能力の限界にアップグレードする必要があります。
 
 **例:**
 
@@ -1150,7 +1227,7 @@ ________________________________________
 
 HTTP GET を使用して **Search** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーションでは、非常に大規模なクエリまたは OData フィルター式が生成されます。このようなアプリケーションでは、HTTP POST を使用する方がより適切です。GET より大規模なフィルターおよびクエリを使用できるためです。POST 要求のサイズ制限がほぼ 16 MB であるため、POST を使用する場合は、クエリのサイズそのものではなく、クエリに含まれる語または句の数が制限要因になります。
 
-> [AZURE.NOTE] POST 要求のサイズ制限が非常に大きいとはいえ、検索のクエリとフィルター式を任意に複雑にすることはできません。検索クエリおよびフィルターにおける複雑さの制限の詳細については、[Lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)および[OData 式の構文](https://msdn.microsoft.com/library/dn798921.aspx)のページをご覧ください。**要求**
+> [AZURE.NOTE] POST 要求のサイズ制限が非常に大きいとはいえ、検索のクエリとフィルター式を任意に複雑にすることはできません。検索クエリとフィルターにおける複雑さの制限の詳細については、[Lucene クエリの構文](https://msdn.microsoft.com/library/mt589323.aspx)と[OData 式の構文](https://msdn.microsoft.com/library/dn798921.aspx)の説明を参照してください。**要求**
 
 サービス要求には HTTPS が必要です。**Search** 要求は、GET メソッドまたは POST メソッドを使用して作成できます。
 
@@ -1244,9 +1321,13 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 `scoringProfile=[string]` (省略可能) - 結果の並べ替えを目的として一致するドキュメントのマッチ スコアを評価するためのスコアリング プロファイルの。
 
-`scoringParameter=[string]` (0 以上) - 名前:値の形式を使用して、スコアリング関数で定義されている各パラメーターの値を示します (例: `referencePointParameter`)。たとえば、スコアリング プロファイルで "mylocation" という名前のパラメーターを持つ関数が定義されている場合、クエリ文字列のオプションは &scoringParameter=mylocation:-122.2,44.8 になります。
+`scoringParameter=[string]` (0 以上) - `name-value1,value2,...` の形式を使用して、スコアリング関数で定義されている各パラメーターの値を示します (例: `referencePointParameter`)。
 
-> [AZURE.NOTE] POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `scoringParameter` ではなく `scoringParameters` です。また、各文字列が個々に name:value のペアとなる JSON 配列の文字列として指定します。
+- たとえば、スコアリング プロファイルで "mylocation" という名前のパラメーターを持つ関数が定義されている場合、クエリ文字列のオプションは `&scoringParameter=mylocation--122.2,44.8` になります。最初のダッシュは名前を値リストから区別し、2 番目のダッシュは最初の値の一部です (この例では経度)。
+- タグ ブーストなどに使用するスコア パラメーターは、コンマを含む場合があります。その場合、リスト内では単一引用符を使用してこのような値をエスケープすることができます。値自体に単一引用符が含まれる場合は、2 個入力することでエスケープできます。
+  - たとえば、"mytag" というタグ ブーストのパラメーターを使用し、タグ値 "Hello, O'Brien" および "Smith" をブーストする場合、クエリ文字列オプションは `&scoringParameter=mytag-'Hello, O''Brien',Smith` になります。引用符は、コンマを含む値にのみ必要であることに注意してください。
+
+> [AZURE.NOTE] POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `scoringParameter` ではなく `scoringParameters` です。また、各文字列が個々に `name-values` のペアとなる JSON 配列の文字列として指定します。
 
 `minimumCoverage` (省略可能、既定値は 100) - クエリが成功として報告されるために、検索クエリで照合する必要のあるインデックスの割合を示す 0 ～ 100 の範囲の数値。既定では、インデックス全体が一致する必要があります。そうでないと、`Search` は HTTP 状態コード 503 を返します。`minimumCoverage` を設定し、`Search` が成功した場合は、HTTP 200 が返され、応答にはクエリで照合したインデックスの割合を示す `@search.coverage` 値が含められます。
 
@@ -1492,13 +1573,13 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
 13) 2 つの距離スコアリング関数を含む "geo" という名前のスコアリング プロファイルがあるものとしてインデックスを検索します。1 つの関数は "currentLocation" という名前のパラメーターを定義し、もう 1 つは "lastLocation" という名前のパラメーターを定義しています。
 
 
-    GET /indexes/hotels/docs?search=something&scoringProfile=geo&scoringParameter=currentLocation:-122.123,44.77233&scoringParameter=lastLocation:-121.499,44.2113&api-version=2015-02-28-Preview
+    GET /indexes/hotels/docs?search=something&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&scoringParameter=lastLocation--121.499,44.2113&api-version=2015-02-28-Preview
 
     POST /indexes/hotels/docs/search?api-version=2015-02-28-Preview
     {
       "search": "something",
       "scoringProfile": "geo",
-      "scoringParameters": [ "currentLocation:-122.123,44.77233", "lastLocation:-121.499,44.2113" ]
+      "scoringParameters": [ "currentLocation--122.123,44.77233", "lastLocation--121.499,44.2113" ]
     }
 
 14) [簡単なクエリ構文](https://msdn.microsoft.com/library/dn798920.aspx)を使用して、インデックス内のドキュメントを検索します。このクエリは、検索可能なフィールドに語句 "comfort" および "location" が含まれていて "motel" が含まれないホテルを返します。
@@ -1772,4 +1853,4 @@ POST の場合:
       "suggesterName": "sg"
     }
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

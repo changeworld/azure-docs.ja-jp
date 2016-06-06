@@ -130,7 +130,7 @@ message.correlation_id = "test-correlation-id"
 azure_service_bus_service.send_queue_message("test-queue", message)
 ```
 
-Service Bus キューでは、最大 256 KB までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。
+Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。
 
 ## キューからメッセージを受信する方法
 
@@ -164,7 +164,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 -   [キュー、トピック、およびサブスクリプション](service-bus-queues-topics-subscriptions.md)の概要
 -   GitHub の [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) リポジトリ
 
-この記事で説明されている Azure Service Bus キューと、「[Ruby から Queue ストレージを使用する方法](../storage/storage-ruby-how-to-use-queue-storage.md)」の記事で説明されている Azure Queues の比較については、「[Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
+この記事で説明されている Azure Service Bus キューと、「[Ruby から Queue ストレージを使用する方法](../storage/storage-ruby-how-to-use-queue-storage.md)」の記事で説明されている Azure キューの比較については、「[Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

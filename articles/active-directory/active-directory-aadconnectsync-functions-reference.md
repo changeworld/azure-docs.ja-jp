@@ -13,14 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
-	ms.author="andkjell;markusvi"/>
+	ms.date="05/23/2016"
+	ms.author="andkjell;markvi"/>
 
 
 # Azure AD Connect Sync: 関数リファレンス
 
-
-Azure Active Directory Sync では、同期時の属性値を操作するために関数を使用します。関数の構文は、次の形式を使用して表されます。`<output type> FunctionName(<input type> <position name>, ..)`
+Azure AD Connect では、同期時の属性値を操作するために関数を使用します。関数の構文は、次の形式を使用して表されます。`<output type> FunctionName(<input type> <position name>, ..)`
 
 関数がオーバーロード状態の場合に複数の構文を受け入れると、すべての有効な構文が一覧表示されます。関数は厳密に型指定され、渡された型が文書化された型と一致することを確認します。型が一致しない場合は、エラーがスローされます。
 
@@ -32,50 +31,44 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 - **enum** – 既知の定数の列挙
 - **exp** – 評価結果にブール値が想定される式
 - **mvbin** – 複数値のバイナリ
-- **mvstr** – 複数値の参照
+- **mvstr** – 複数値の文字列
+- **mvref** – 複数値の参照
 - **num** – 数値
 - **ref** – 単一値の参照
 - **str** – 単一値の文字列
 - **var** – その他の (ほとんど) すべての型のバリアント
 - **void** – 値を返しません
 
-
-
 ## 関数参照
 
-----------
-**換算:**
-
-[CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [CGuid](#cguid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [ConvertFromBase64](#convertfrombase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertFromUTF8Hex](#convertfromutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [CNum](#cnum) &nbsp;&nbsp;&nbsp;&nbsp; [CRef](#cref) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [StringFromGuid](#StringFromGuid) &nbsp;&nbsp;&nbsp;&nbsp; [StringFromSid](#stringfromsid)
-
-**日付/時刻:**
-
-[DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate)
-
-**ディレクトリ**
-
-[DNComponent](#dncomponent) &nbsp;&nbsp;&nbsp;&nbsp; [DNComponentRev](#dncomponentrev) &nbsp;&nbsp;&nbsp;&nbsp; [EscapeDNComponent](#escapedncomponent)
-
-**評価:**
-
-[IsBitSet](#isbitset) &nbsp;&nbsp;&nbsp;&nbsp; [IsDate](#isdate) &nbsp;&nbsp;&nbsp;&nbsp; [IsEmpty](#isempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsGuid](#isguid) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsNumeric](#isnumeric) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring)
-
-**算術:**
-
-[BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [BitOr](#bitor) &nbsp;&nbsp;&nbsp;&nbsp; [RandomNum](#randomnum)
-
-**複数値**
-
-[Contains](#contains) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [ItemOrNull](#itemornull) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)
-
-**プログラム フロー:**
-
-[Error](#error) &nbsp;&nbsp;&nbsp;&nbsp; [IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
-
-
-**テキスト**
-
-[GUID](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [InStrRev](#instrrev) &nbsp;&nbsp;&nbsp;&nbsp; [LCase](#lcase) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Len](#len) &nbsp;&nbsp;&nbsp;&nbsp; [LTrim](#ltrim) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [PadLeft](#padleft) &nbsp;&nbsp;&nbsp;&nbsp; [PadRight](#padright) &nbsp;&nbsp;&nbsp;&nbsp; [PCase](#pcase) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [ReplaceChars](#replacechars) &nbsp;&nbsp;&nbsp;&nbsp; [Right](#right) &nbsp;&nbsp;&nbsp;&nbsp; [RTrim](rtrim) &nbsp;&nbsp;&nbsp;&nbsp; [Trim](#trim) &nbsp;&nbsp;&nbsp;&nbsp; [UCase](#ucase) &nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+関数の一覧 | | | | |  
+--------- | --------- | --------- | --------- | --------- | ---------
+**Conversion** |  
+[CBool](#cbool) | [CDate](#cdate) | [CGuid](#cguid) | [ConvertFromBase64](#convertfrombase64)
+[ConvertToBase64](#converttobase64) | [ConvertFromUTF8Hex](#convertfromutf8hex) | [ConvertToUTF8Hex](#converttoutf8hex) | [CNum](#cnum)
+[CRef](#cref) | [CStr](#cstr) | [StringFromGuid](#StringFromGuid) | [StringFromSid](#stringfromsid)
+**日付/時刻** |  
+[DateAdd](#dateadd) | [DateFromNum](#datefromnum) | [FormatDateTime](#formatdatetime) | [Now](#now)
+[NumFromDate](#numfromdate) |  
+**ディレクトリ** |  
+[DNComponent](#dncomponent) | [DNComponentRev](#dncomponentrev) | [EscapeDNComponent](#escapedncomponent)
+**評価** |  
+[IsBitSet](#isbitset) | [IsDate](#isdate) | [IsEmpty](#isempty) | [IsGuid](#isguid)
+[IsNull](#isnull) | [IsNullOrEmpty](#isnullorempty) | [IsNumeric](#isnumeric) | [IsPresent](#ispresent) |
+[IsString](#isstring) |  
+**算術** |  
+[BitAnd](#bitand) | [BitOr](#bitor) | [RandomNum](#randomnum)
+**複数値** |  
+[指定値を含む](#contains) | [カウント](#count) | [項目](#item) | [ItemOrNull](#itemornull)
+[Join](#join) | [RemoveDuplicates](#removeduplicates) | [分割](#split) |
+**プログラム フロー** |  
+[エラー](#error) | [IIF](#iif) | [Switch](#switch)
+**テキスト** |  
+[GUID](#guid) | [InStr](#instr) | [InStrRev](#instrrev) | [LCase](#lcase)
+[Left](#left) | [Len](#len) | [LTrim](#ltrim) | [Mid](#mid)
+[PadLeft](#padleft) | [PadRight](#padright) | [PCase](#pcase) | [*Views\\\Home\\\AllDates.cshtml*](#replace)
+[ReplaceChars](#replacechars) | [Right](#right) | [RTrim](#rtrim) | [Trim](#trim)
+[UCase](#ucase) | [Word](#word)
 
 ----------
 ### BitAnd
@@ -93,7 +86,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 
 つまり、両方のパラメーターの対応するビットが 1 の場合を除くすべてのケースで 0 を返します。
 
-**例:** `BitAnd(&HF, &HF7)` 16 進数の "F" AND "F7" は 7 と評価されるので、7 を返します。
+**例:** `BitAnd(&HF, &HF7)` 16 進数の "F" と "F7" の AND は 7 と評価されるため、7 を返します。
 
 ----------
 ### BitOr
@@ -104,7 +97,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 
 - value1, value2: ともに OR になる数値
 
-**解説:** この関数は両方のパラメーターをバイナリ表現に変換し、マスクとフラグで対応するビットの 1 つまたは両方が 1 の場合はビットを 1 に設定し、対応する両方のビットが 0 の場合は 0 に設定します。つまり、両方のパラメーターの対応するビットが 0 の場合を除くすべてのケースで 1 を返します。
+**解説:** この関数は両方のパラメーターをバイナリ表現に変換して、マスクとフラグで対応するビットの 1 つまたは両方が 1 の場合はビットを 1 に設定し、対応する両方のビットが 0 の場合は 0 に設定します。つまり、両方のパラメーターの対応するビットが 0 の場合を除くすべてのケースで 1 を返します。
 
 ----------
 ### CBool
@@ -156,16 +149,16 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 
 文字列が見つかった複数値の属性にインデックスを返します。文字列が見つからない場合は 0 を返します。
 
-**解説:** 複数値の文字列属性の場合、検索では、値で部分文字列が検出されます。参照属性の場合、一致と見なされるためには、検索された文字列は正確に値と一致する必要があります。
+**解説:** 複数値の文字列属性の場合、検索では、値の部分文字列が検出されます。参照属性の場合、一致と見なされるためには、検索された文字列は正確に値と一致する必要があります。
 
-**例:** `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))` proxyAddresses 属性にプライマリ メール アドレスが含まれている場合は (大文字の " SMTP:" で表されます) proxyAddress 属性を返し、それ以外の場合はエラーを返します。
+**例:** `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))` proxyAddresses 属性にプライマリ メール アドレスが含まれている場合は (大文字の "SMTP:" で表されます) proxyAddress 属性を返し、それ以外の場合はエラーを返します。
 
 ----------
 ### ConvertFromBase64
 
 **説明:** ConvertFromBase64 関数は、指定した base64 でエンコードされた値を正規の文字列に変換します。
 
-**構文:** `str ConvertFromBase64(str source)` - エンコードに Unicode を前提とします。<br> `str ConvertFromBase64(str source, enum Encoding)`
+**構文:** `str ConvertFromBase64(str source)` - エンコードには Unicode を想定しています。<br> `str ConvertFromBase64(str source, enum Encoding)`
 
 - source: Base64 でエンコードされた文字列  
 - Encoding: Unicode、ASCII、UTF8
@@ -239,7 +232,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 
 - value: 数値、参照属性、ブール値を指定できます。
 
-**例:** `CStr([dn])` "cn=Joe,dc=contoso,dc=com" を返すことができます。
+**例:** `CStr([dn])` "cn=Joe,dc=contoso,dc=com" などを返します。
 
 ----------
 ### DateAdd
@@ -301,7 +294,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 ----------
 ### エラー
 
-**説明:** Error 関数を使用して、カスタム エラーを返します。
+**説明:** Error 関数は、カスタム エラーを返すために使用します。
 
 **構文:** `void Error(str ErrorMessage)`
 
@@ -310,16 +303,16 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 ----------
 ### EscapeDNComponent
 
-**説明:** EscapeDNComponent 関数は、DN のコンポーネントを 1 つ受け取り、LDAP で表すためにそれをエスケープします。
+**説明:** EscapeDNComponent 関数は、DN のコンポーネントを 1 つ受け取り、LDAP で表示できるようにそれをエスケープします。
 
 **構文:** `str EscapeDNComponent(str value)`
 
-**例:** `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)` displayName 属性に LDAP でエスケープする必要のある文字が含まれている場合でも、LDAP ディレクトリでオブジェクトを作成できることを確認します。
+**例:** `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)` displayName 属性に LDAP でエスケープする必要のある文字が含まれている場合でも、LDAP ディレクトリでオブジェクトを作成できるようにします。
 
 ----------
 ### FormatDateTime
 
-**説明:** FormatDateTime 関数を使用して、DateTime を指定した形式の文字列に設定します。
+**説明:** FormatDateTime 関数は、DateTime を指定した形式の文字列に設定するために使用します。
 
 **構文:** `str FormatDateTime(dt value, str format)`
 
@@ -330,7 +323,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 
 **例:**
 
-`FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")` 結果は "2007-12-25" です。
+`FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")` 結果は "2007-12-25" となります。
 
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")` "20140905081453.0Z" などの結果になります。
 
@@ -344,7 +337,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 ----------
 ### IIF
 
-**説明:** IIF 関数は、指定した条件に基づいて使用できる値セットのうち、いずれかを返します。
+**説明:** IIF 関数は、指定した条件に基づいて、使用できる値セットのうち、いずれかを返します。
 
 **構文:** `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
@@ -477,7 +470,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 **構文:** `bool IsPresent(var expression)`
 
-**解説:** この関数の逆の関数は IsNullOrEmpty です。
+**解説:** この関数の逆関数は IsNullOrEmpty です。
 
 **例:** `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
@@ -523,7 +516,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 **解説:** Join 関数と Split 関数の間には類似点があります。Join 関数は、文字列の配列を受け取り、区切り文字列を使用してそれらを結合し、単一の文字列を返します。Split 関数は、文字列を受け取って区切り記号で分割し、文字列の配列を返します。ただし、Join 関数が任意の区切り文字列を使った文字列を連結できるのに対し、Split 関数で文字列を分割する際には 1 文字の区切り記号しか使用できないという大きな違いがあります。
 
-**例:** `Join([proxyAddresses],",")` "SMTP:john.doe@contoso.com,smtp:jd@contoso.com" を返すことができます
+**例:** `Join([proxyAddresses],",")` "SMTP:john.doe@contoso.com,smtp:jd@contoso.com" などを返します。
 
 ----------
 ### LCase
@@ -544,7 +537,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - string: 返される文字を含む文字列
 - NumChars: 文字列の左端から数えて返される文字数を指定する数値
 
-**解説:** 文字列内の最初の numChars 文字分の文字を含む文字列。
+**解説:** string 内の最初の numChars 文字分の文字を含む文字列。
 
 - numChars = 0 の場合、空の文字列を返します。
 - numChars < 0 の場合、入力文字列を返します。
@@ -570,12 +563,12 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 **構文:** `str LTrim(str value)`
 
-**例:** `LTrim(" Test ")` "Test " を返します。
+**例:** `LTrim(" Test ")` "Test" を返します。
 
 ----------
 ### Mid
 
-**説明:** Mid 関数は文字列の指定した位置から数えて、指定した文字数を返します。
+**説明:** Mid 関数は文字列の指定した位置から数えて、指定した文字数分の文字を返します。
 
 **構文:** `str Mid(str string, num start, num NumChars)`
 
@@ -633,7 +626,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - 文字列の長さが length 未満の場合、padCharacter が埋め込まれた文字列が含まれる、必要な長さの新しい文字列が返されます。
 - string が null の場合、この関数は空の文字列を返します。
 
-**例:** `PadLeft("User", 10, "0")` “000000User” を返します。
+**例:** `PadLeft("User", 10, "0")` "000000User" を返します。
 
 ----------
 ### PadRight
@@ -655,7 +648,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - 文字列の長さが length 未満の場合、padCharacter が埋め込まれた文字列が含まれる、必要な長さの新しい文字列が返されます。
 - string が null の場合、この関数は空の文字列を返します。
 
-**例:** `PadRight("User", 10, "0")` “User000000” を返します。
+**例:** `PadRight("User", 10, "0")` "User000000" を返します。
 
 ----------
 ### PCase
@@ -669,23 +662,23 @@ CGuid() が成功するかどうかを判断するために使用します。
 ----------
 ### RandomNum
 
-**説明:** RandomNum 関数は、指定した間隔を空けた乱数を返します。
+**説明:** RandomNum 関数は、指定した範囲内の乱数を返します。
 
 **構文:** `num RandomNum(num start, num end)`
 
 - start: 生成するランダムな値の下限を指定する数値
 - end: 生成するランダムな値の上限を指定する数値
 
-**例:** `Random(100,999)` 734 を返すことができます。
+**例:** `Random(100,999)` 734 などを返します。
 
 ----------
 ### RemoveDuplicates
 
-**説明:** RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意であることを確認します。
+**説明:** RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意になるように処理します。
 
 **構文:** `mvstr RemoveDuplicates(mvstr attribute)`
 
-**例:** `RemoveDuplicates([proxyAddresses])` 重複する値がすべて削除された後の、校正済み proxyAddress 属性を返します。
+**例:** `RemoveDuplicates([proxyAddresses])` 重複する値がすべて削除された、校正済みの proxyAddress 属性を返します。
 
 ----------
 ### Replace
@@ -704,7 +697,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - \\r – キャリッジ リターン
 - \\t – タブ
 
-**例:** `Replace([address],"\r\n",", ")` CRLF をコンマとスペースで置き換え、"One Microsoft Way, Redmond, WA, USA" とすることができます。
+**例:** `Replace([address],"\r\n",", ")` CRLF をコンマとスペースで置き換え、"One Microsoft Way, Redmond, WA, USA" などの文字列にします。
 
 ----------
 ### ReplaceChars
@@ -733,7 +726,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 `ReplaceChars("Räksmörgås",%ReplaceString%)` Raksmorgas を返します。
 
-`ReplaceChars("O’Neil",%ReplaceString%)` "ONeil" を返します。1 つのチェックマークを削除するように定義されています。
+`ReplaceChars("O’Neil",%ReplaceString%)` "ONeil" を返します。単一引用符を削除するように定義されています。
 
 ----------
 ### Right
@@ -764,7 +757,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 **構文:** `str RTrim(str value)`
 
-**例:** `RTrim(" Test ")` " Test" を返します。
+**例:** `RTrim(" Test ")` "Test" を返します。
 
 ----------
 ### Split
@@ -796,7 +789,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 ----------
 ### Switch
 
-**説明:** Switch 関数は、評価された条件に基づいて 1 つの値を返すために使用します。
+**説明:** Switch 関数は、条件の評価結果に基づいて 1 つの値を返すために使用します。
 
 **構文:** `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
@@ -816,7 +809,7 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 
 値には、カスタム文字列を返す Error 関数を指定することもできます。
 
-**例:** `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))` 主要都市で話される言語を返します。それ以外の場合はエラーを返します。
+**例:** `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))` 一部の主要都市で話される言語を返します。それ以外の場合はエラーを返します。
 
 ----------
 ### Trim
@@ -827,7 +820,7 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 
 **例:** `Trim(" Test ")` "Test" を返します。
 
-`Trim([proxyAddresses])` proxyAddress 属性の値ごとに先頭と末尾の空白を削除します。
+`Trim([proxyAddresses])` proxyAddress 属性の値ごとに先頭と末尾の空白文字を削除します。
 
 ----------
 ### UCase
@@ -841,7 +834,7 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 ----------
 ### Word
 
-**説明:** Word 関数は、使用する区切り記号を記述するパラメーターと、返す単語の番号に基づいて、文字列内に含まれる単語を返します。
+**説明:** Word 関数は、使用する区切り記号と返す単語の番号を表すパラメーターに基づいて、文字列内に含まれる単語を返します。
 
 **構文:** `str Word(str string, num WordNumber, str delimiters)`
 
@@ -849,7 +842,7 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 - WordNumber: 返すべき単語の番号を指定する数値。
 - delimiters: 単語を識別するために使用される区切り記号を表す文字列
 
-**解説:** 区切り記号のいずれかの文字で区切られた、文字列内の文字による各文字列が、単語として識別されます。
+**解説:** delimiters 内のいずれかの文字で区切られた string 内の各文字列が、単語として識別されます。
 
 - num < 1 の場合、空の文字列を返します。
 - string が null の場合、空の文字列を返します。
@@ -866,4 +859,4 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

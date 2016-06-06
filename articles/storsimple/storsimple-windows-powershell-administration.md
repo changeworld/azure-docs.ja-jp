@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="01/29/2016"
+   ms.date="05/24/2016"
    ms.author="alkohli@microsoft.com" />
 
 # Windows PowerShell for StorSimple を使用してデバイスを管理する
@@ -102,7 +102,7 @@ Windows PowerShell for StorSimple に接続するには、[PuTTY をダウンロ
 
 次の設定から選択できます。
 
-1. **フル アクセスによるログイン**。このオプションでは、(適切な資格情報を使用して) ローカル コント ローラーの **SSAdminConsole** に接続できます (ローカル コント ローラーとは、StorSimple デバイスのシリアル コンソール経由でアクセス中のコントローラーのことです)。 このオプションは、デバイスの問題をトラブルシューティングするために無制限実行空間にアクセスすること (サポート セッション) を Microsoft サポートに許可するために使用することもできます。オプション 1 を使用してログオンした後、特定のコマンドレットを実行することで、無制限実行空間へのアクセスを Microsoft サポート エンジニアに許可できます。詳細については、「[サポート セッションを開始する](storsimple-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)」を参照してください。
+1. **Log in with full access**。このオプションでは、(適切な資格情報を使用して) ローカル コント ローラーの **SSAdminConsole** に接続できます (ローカル コント ローラーとは、StorSimple デバイスのシリアル コンソール経由でアクセス中のコントローラーのことです)。 このオプションは、デバイスの問題をトラブルシューティングするために無制限実行空間にアクセスすること (サポート セッション) を Microsoft サポートに許可するために使用することもできます。オプション 1 を使用してログオンした後、特定のコマンドレットを実行することで、無制限実行空間へのアクセスを Microsoft サポート エンジニアに許可できます。詳細については、「[サポート セッションを開始する](storsimple-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)」を参照してください。
 
 2. **Log in to peer controller with full access**。このオプションはオプション １ と同じですが、接続先が異なり、ピア コントローラーの **SSAdminConsole** 実行空間に接続できます (適切な資格情報を使用します)。StorSimple デバイスはアクティブ/パッシブ構成された 2 つのコントローラーを持つ可用性の高いデバイスであるため、ピア コントローラーとは、シリアル コンソールからアクセス中のデバイスのもう一方のコントローラーを指します。オプション 1 と同じように、このオプションも、ピア コントローラーの無制限実行空間にアクセスすることを Microsoft サポートに許可するために使用できます。
 
@@ -197,4 +197,4 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 ## 次のステップ
 上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「[StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0525_2016-->
