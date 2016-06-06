@@ -25,7 +25,8 @@
 
 SQL Server IaaS Agent 拡張機能 (SQLIaaSExtension) は、管理タスクを自動化するために Azure 仮想マシン上で実行されます。このトピックでは、この拡張機能によってサポートされるサービスの概要と、インストール、状態、および削除のための手順について説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。この記事のクラシック バージョンを確認するには、「[SQL Server IaaS Agent 拡張機能 (クラシック デプロイ)](virtual-machines-windows-classic-sql-server-agent-extension.md)」を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
+クラシック デプロイ モデル。この記事のクラシック バージョンを確認するには、「[SQL Server IaaS Agent 拡張機能 (クラシック デプロイ)](virtual-machines-windows-classic-sql-server-agent-extension.md)」を参照してください。
 
 ## サポートされているサービス
 
@@ -98,4 +99,4 @@ Azure ポータルで拡張機能をアンインストールするには、仮�
 
 Azure Virtual Machines で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0525_2016--->

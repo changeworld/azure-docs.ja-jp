@@ -91,7 +91,7 @@ Azure IaaS VM の Azure Disk Encryption を有効にしてデプロイすると�
 
 Windows および Linux 用 IaaS VM の Azure Disk Encryption ソリューションには、Windows のディスク暗号化拡張機能、Linux のディスク暗号化拡張機能、ディスク暗号化 PowerShell コマンドレット、ディスク暗号化 CLI コマンドレットおよびディスク暗号化 Azure リソース マネージャー テンプレートが含まれます。Azure Disk Encryption ソリューションは、Windows または Linux OS を実行している IaaS VM でサポートされます。サポートされているオペレーティング システムの詳細については、後述の「前提条件」セクションをご覧ください。
 
-****注: **Azure Disk Encryption による VM ディスクの暗号化に対して課金されることはありません。
+**注: **Azure Disk Encryption による VM ディスクの暗号化に対して課金されることはありません。
 
 ### 価値の提案
 

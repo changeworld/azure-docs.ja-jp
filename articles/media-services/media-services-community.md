@@ -52,7 +52,7 @@
 
 ## チームへのお問い合わせ
 
-Azure Media Services のメインの電子メール アドレスは ****mediaservices@microsoft.com** です。
+Azure Media Services のメインの電子メール アドレスは **mediaservices@microsoft.com** です。
 
 次の表は、機能のサブチームの電子メール アドレス一覧です。
 

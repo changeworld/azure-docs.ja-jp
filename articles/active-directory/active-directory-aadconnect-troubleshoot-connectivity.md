@@ -36,11 +36,11 @@ Microsoft 以外の一部のブログでは、machine.config ではなく miiser
 URL | ポート | 説明
 ---- | ---- | ----
 mscrl.microsoft.com | HTTP/80 | CRL リストのダウンロードに使用します。
-*.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。
-*.entrust.com | HTTP/80 | MFA の CRL リストのダウンロードに使用します。
-*.windows.net | HTTPS/443 | Azure AD へのサインインに使用します。
+\*.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。
+\*.entrust.com | HTTP/80 | MFA の CRL リストのダウンロードに使用します。
+\*.windows.net | HTTPS/443 | Azure AD へのサインインに使用します。
 secure.aadcdn.microsoftonline-p.com | HTTPS/443 | MFA に使用します。
-*.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリの構成とデータのインポート/エクスポートに使用します。
+\*.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリの構成とデータのインポート/エクスポートに使用します。
 
 ## ウィザードでのエラー
 インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。**[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用します。**[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に変更します。ここで行うプロキシ構成はコンピューターに対してグローバルになるため、構成に何らかの問題があると、ほとんどの場合はすぐにウィザードの **[Azure AD に接続]** ページに反映されることになります。
@@ -54,7 +54,7 @@ secure.aadcdn.microsoftonline-p.com | HTTPS/443 | MFA に使用します。
 - 正しいようであれば、「[プロキシ接続を検証する](#verify-proxy-connectivity)」の手順に従って、ウィザード外部でも同じように問題が発生するかどうかを確認してください。
 
 ### MFA エンドポイントに到達できない
-このエラーは、エンドポイント ****https://secure.aadcdn.microsoftonline-p.com** に到達できず、全体管理者が MFA を有効にしている場合に表示されます。 ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
+このエラーは、エンドポイント **https://secure.aadcdn.microsoftonline-p.com** に到達できず、全体管理者が MFA を有効にしている場合に表示されます。 ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
 
 - これが表示された場合は、エンドポイント secure.aadcdn.microsoftonline-p.com がプロキシに追加されていることを確認します。
 

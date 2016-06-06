@@ -108,7 +108,7 @@ Linux ベースの HDInsight クラスターと Azure SQL Database または SQL
 
         sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --export-dir 'wasb:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
 
-    これにより、SQL Database と **sqooptest** データベースに接続して ****wasb:///hive/warehouse/hivesampletable** (*hivesampletable* の物理ファイル) から **mobiledata** テーブルにデータをエクスポートするよう Sqoop に指示します。
+    これにより、SQL Database と **sqooptest** データベースに接続して **wasb:///hive/warehouse/hivesampletable** (*hivesampletable* の物理ファイル) から **mobiledata** テーブルにデータをエクスポートするよう Sqoop に指示します。
 
 5. コマンドが完了したら、次を使用して、TSQL によってデータベースに接続します。
 
@@ -123,7 +123,7 @@ Linux ベースの HDInsight クラスターと Azure SQL Database または SQL
 
 ##Sqoop のインポート
 
-1. 次を使用して、SQL Database の **mobiledata** テーブルから HDInsight の ****wasb:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
+1. 次を使用して、SQL Database の **mobiledata** テーブルから HDInsight の **wasb:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
 
         sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
 

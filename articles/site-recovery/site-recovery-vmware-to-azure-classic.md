@@ -239,11 +239,11 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 ## 手順 5: 管理サーバーをインストールする
 > [AZURE.TIP] 管理サーバーからこれらの URL にアクセスできるようにします。
 >
-- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net
+- *.hypervrecoverymanager.windowsazure.com
+- *.accesscontrol.windows.net
+- *.backup.windowsazure.com
+- *.blob.core.windows.net
+- *.store.core.windows.net
 - https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi
 - https://www.msftncsi.com/ncsi.txt
 

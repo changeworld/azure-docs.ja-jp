@@ -114,9 +114,9 @@
     
     b.Azure クラシック ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[発行者の URL]** の値をコピーし、**[発行者]** ボックスに貼り付けます。
     
-    c.これがディレクトリに追加する最初の Salesforce Sandbox インスタンスの場合は、**[エンティティ ID]** ボックスに「****https://test.salesforce.com**」と入力します。Salesforce Sandbox のインスタンスを既に追加している場合は、**[エンティティ ID]** に次の形式の**サインオン URL** を入力します。`http://company.my.salesforce.com`
+    c.  これがディレクトリに追加する最初の Salesforce Sandbox インスタンスの場合は、**[エンティティ ID]** ボックスに「 **https://test.salesforce.com** 」と入力します。Salesforce Sandbox のインスタンスを既に追加している場合は、**[エンティティ ID]** に次の形式の**サインオン URL** を入力します。`http://company.my.salesforce.com`
     
-    d.**[参照]** をクリックして、ダウンロードした証明書をアップロードします。
+    d.  **[参照]** をクリックして、ダウンロードした証明書をアップロードします。
     
     e.**[SAML ID の種類]** では、**[アサーションには、ユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
     

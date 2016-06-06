@@ -237,9 +237,9 @@ OAuth 2.0 を使用して開発者を承認するように開発者ポータル�
 
 ![新規アプリケーション][api-management-aad-new-application-devportal-1]
 
-**[サインオン URL]** に API Management サービスの URL を入力し、`/signin` を追加します。この例では ****https://contoso5.portal.azure-api.net/signin ** を使用します。
+**[サインオン URL]** に API Management サービスの URL を入力し、`/signin` を追加します。この例では **https://contoso5.portal.azure-api.net/signin** を使用します。
 
-**[アプリ URL]** に API Management サービスの URL を入力し、一意の文字をいくつか追加します。この例では ****https://contoso5.portal.azure-api.net/dp** を使用しますが、ここには任意の文字を入力できます。必要な **[アプリケーションのプロパティ]** が構成されたら、チェック マークをクリックして、アプリケーションを作成します。
+**[アプリ URL]** に API Management サービスの URL を入力し、一意の文字をいくつか追加します。この例では **https://contoso5.portal.azure-api.net/dp** を使用しますが、ここには任意の文字を入力できます。必要な **[アプリケーションのプロパティ]** が構成されたら、チェック マークをクリックして、アプリケーションを作成します。
 
 ![新規アプリケーション][api-management-aad-new-application-devportal-2]
 

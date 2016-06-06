@@ -115,7 +115,16 @@ PS C:\> MARSAgentInstaller.exe /?
 
 | オプション | 詳細 | 既定値 |
 | ---- | ----- | ----- |
-| /q | サイレント インストール | - | | /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent | | /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch | | /m | Microsoft Update のオプトイン | - | | /nu | インストールの完了後に更新プログラムを確認しない | - | | /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - | | /ph | プロキシ ホストのアドレス | - | | /po | プロキシ ホストのポート番号 | - | | /pu | プロキシ ホストのユーザー名 | - | | /pw | プロキシ パスワード | - |
+| /q | サイレント インストール | - |
+| /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent |
+| /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
+| /m | Microsoft Update のオプトイン | - |
+| /nu | インストールの完了後に更新プログラムを確認しない | - |
+| /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - |
+| /ph | プロキシ ホストのアドレス | - |
+| /po | プロキシ ホストのポート番号 | - |
+| /pu | プロキシ ホストのユーザー名 | - |
+| /pw | プロキシ パスワード | - |
 
 
 ## Recovery Services コンテナーへの Windows Server または Windows クライアント コンピューターの登録
