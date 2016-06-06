@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Channel 9 の Azure セキュリティ |Microsoft Azure"
+   pageTitle="Channel 9 で配信中の Azure セキュリティに関するビデオ |Microsoft Azure"
    description="この記事では、Channel 9 の Azure セキュリティに関するプレゼンテーションを精選した一覧を示します。Channel 9 は、製品を使用するユーザーと製品を提供する側の人たちを結び付けるコミュニティです。"
    services="security"
    documentationCenter="na"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="05/19/2016"
    ms.author="terrylan"/>
 
-# Channel 9 の Azure セキュリティ
+# Channel 9 で配信中の Azure セキュリティに関するビデオ
 
 [Channel 9](https://channel9.msdn.com/) は、コミュニティです。製品の背後にいる人たちを前面に引き出して、ユーザーと結び付けます。
 
@@ -45,6 +45,7 @@ Azure Security Center では、すべての Azure リソースのセキュリテ
 Azure 仮想マシン インスタンス上の SQL Server データベースを簡単に暗号化する方法を、Jack Richins が [Scott](https://channel9.msdn.com/Niners/Glucose) に説明します。予想外に簡単です。
 
 このビデオの対象範囲:
+
 - 暗号化と SQL Server について理解する
 - データ保護 API、マスター キー、証明書について理解する
 - SQL コマンドを使用して、マスター キーと証明書を作成し、データベースを暗号化する
@@ -67,4 +68,4 @@ Azure 仮想ネットワークでのネットワーク セキュリティ グル
 
 Azure Key Vault について、Amit Bapat が Scott に紹介します。Azure Key Vault を使用すると、キーや (パスワードなどの) 小規模の秘密情報を、ハードウェア セキュリティ モジュール (HSM) に格納されたキーで暗号化できます。これは、クラウド ベースでハードウェア ベースの、Microsoft Azure 用の機密情報管理です。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

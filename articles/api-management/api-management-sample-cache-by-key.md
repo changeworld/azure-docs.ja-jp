@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="02/19/2016"
+	ms.date="05/25/2016"
 	ms.author="v-darmi"/>
 
 # Azure API Management のカスタム キャッシュ
@@ -245,4 +245,4 @@ Azure API Management のキャッシュを使用すると、あらゆる種類�
 ## 次のステップ
 ご意見ご感想をこのトピックの Disqus スレッドでお寄せください。上記のポリシーによって実現できる他のシナリオや、実現したいと思いながら現時点では難しいと感じているシナリオがありましたら、ぜひお聞かせください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0525_2016-->

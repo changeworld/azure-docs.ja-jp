@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/20/2016"
+	ms.date="05/23/2016"
 	ms.author="danlep"/>
     
 # Azure CLI のインストール
@@ -23,30 +23,31 @@
 - [PowerShell](powershell-install-configure.md)
 - [Azure CLI](xplat-cli-install.md)
 
-Azure コマンド ライン インターフェイス (Azure CLI) を簡単にインストールすると、コマンド ライン シェルからオープン ソースのコマンドを使って Microsoft Azure 上のリソースを作成したり管理したりすることができます。インストールにはいくつかの方法があります。各種オペレーティング システム用に提供されているいずれかのインストーラー パッケージを使用するか、npm パッケージを使用するか、Docker ホストのコンテナーとして Azure CLI をインストールします。その他のオプションとバックグラウンドについては、[GitHub](https://github.com/azure/azure-xplat-cli) のプロジェクト リポジトリを参照してください。
+Azure コマンド ライン インターフェイス (Azure CLI) を簡単にインストールすると、コマンド ライン シェルからオープン ソースのコマンドを使って Microsoft Azure 上のリソースを作成したり管理したりすることができます。インストールにはいくつかの方法があります。npm パッケージからインストールするか (Node.js と npm が必要)、各種オペレーティング システム用に提供されているいずれかのインストーラー パッケージを使用するか、Docker ホストのコンテナーとして Azure CLI をインストールします。その他のオプションとバックグラウンドについては、[GitHub](https://github.com/azure/azure-xplat-cli) のプロジェクト リポジトリを参照してください。
 
 
 Azure CLI をインストールした後、[Azure サブスクリプションに接続](xplat-cli-connect.md)し、コマンド ライン インターフェイス (Bash、ターミナル、コマンド プロンプトなど) から **azure** コマンドを実行すると、Azure のリソースを操作できるようになります。
 
 
-## インストーラーの使用
-
-次のインストーラー パッケージを使用できます。
-
-* [Windows インストーラー][windows-installer]
-
-* [OS X インストーラー][mac-installer]
-
-* [Linux インストーラー][linux-installer]
-
 
 ## npm パッケージのインストール
 
-または、最新の Node.js と npm が既にシステムにインストールされている場合は、次のコマンドを実行して Azure CLI パッケージをインストールします (Linux ディストリビューションの場合、__npm__ コマンドを正常に実行するには **sudo** を使用することが必要になる場合があります)。
+CLI を npm パッケージからインストールするには、ご使用のシステムに最新の Node.js と npm がインストールされている必要があります。そのうえで、次のコマンドを使用して Azure CLI パッケージをインストールします (Linux ディストリビューションの場合、__npm__ コマンドを正常に実行するには **sudo** を使用することが必要になる場合があります)。
 
 	npm install azure-cli -g
 
 > [AZURE.NOTE]ご利用のオペレーティング システム用に Node.js と npm をインストールまたは更新する必要がある場合は、[Nodejs.org](https://nodejs.org/en/download/package-manager/) のドキュメントをご覧ください。最新の Node.js LTS バージョン (4.x) をインストールされることをお勧めします。以前のバージョンを使用すると、インストール エラーが発生する場合があります。
+
+## インストーラーの使用
+
+次のインストーラー パッケージをダウンロードして利用することもできます。
+
+
+* [OS X インストーラー][mac-installer]
+
+* [Windows インストーラー][windows-installer]
+
+* [Linux tar ファイル][linux-installer] (Node.js と npm が必要) - `sudo npm install -g <path to downloaded tar file>` を実行してインストールします。
 
 
 ## Docker コンテナーの使用
@@ -88,6 +89,24 @@ azure --version
 npm update -g azure-cli
 ```
 
+## タブ補完の有効化
+
+Mac と Linux では、CLI コマンドのタブ補完がサポートされます。
+
+zsh で有効化する場合は、次のコマンドを実行します。
+
+```
+echo '. <(azure --completion)' >> .zshrc
+```
+
+bash で有効化する場合は、次のコマンドを実行します。
+
+```
+azure --completion >> ~/azure.completion.sh
+echo 'source ~/azure.completion.sh' >> ~/.bash_profile
+```
+
+
 ## 次のステップ 
 
 * [CLI から Azure サブスクリプションへの接続](xplat-cli-connect.md)を行い、Azure リソースを作成および管理します。
@@ -104,4 +123,4 @@ npm update -g azure-cli
 [cliasm]: virtual-machines-command-line-tools.md
 [cliarm]: ./virtual-machines/azure-cli-arm-commands.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -148,9 +148,12 @@ azure-iot-sdks リポジトリ内の **iothub\_client** フォルダーに **sam
 
 このソリューションには単一のプロジェクトが含まれています。このソリューションには 4 つの NuGet パッケージがインストールされていることに注意してください。
 
-  ![](media/iot-hub-device-sdk-c-intro/17-iothub-client-sample-amqp-githubpackages.PNG)
+- Microsoft.Azure.C.SharedUtility
+- Microsoft.Azure.IoTHub.AmqpTransport
+- Microsoft.Azure.IoTHub.IoTHubClient
+- Microsoft.Azure.uamqp
 
-SDK を使った作業には必ず **Microsoft.Azure.C.SharedUtility** パッケージが必要となります。このサンプルは AMQP に依存しているため、**Microsoft.Azure.uamqp** パッケージと **Microsoft.Azure.IoTHub.AmqpTransport** パッケージを追加する必要があります (HTTP と MQTT にも同等のパッケージが存在します)。サンプルでは **IoTHubClient** ライブラリが使用されているため、ソリューション内に **Microsoft.Azure.IoTHub.IoTHubClient** パッケージも含める必要があります。
+SDK を使った作業には必ず **Microsoft.Azure.C.SharedUtility** パッケージが必要となります。このサンプルは AMQP に依存しているため、**Microsoft.Azure.uamqp** パッケージと **Microsoft.Azure.IoTHub.AmqpTransport** パッケージを含める必要があります (HTTP と MQTT にも同等のパッケージが存在します)。サンプルでは **IoTHubClient** ライブラリが使用されているため、ソリューション内に **Microsoft.Azure.IoTHub.IoTHubClient** パッケージも含める必要があります。
 
 **iothub\_client\_sample\_amqp.c** ソース ファイルでサンプル アプリケーションの実装を見つけることができます。
 
@@ -158,7 +161,7 @@ SDK を使った作業には必ず **Microsoft.Azure.C.SharedUtility** パッケ
 
 ### ライブラリの初期化
 
-> [AZURE.NOTE] ライブラリの使用を開始する前に、プラットフォーム固有の初期化の実行が必要になる場合があります。たとえば、Linux 上で AMQPS を使用する計画がある場合は、OpenSSL ライブラリを初期化する必要があります。[GitHub リポジトリ](https://github.com/Azure/azure-iot-sdks)のサンプルはクライアントの起動時にユーティリティ関数 **platform\_init** を呼び出し、終了する前に **platform\_deinit** 関数を呼び出します。これらの関数は、platform.h ヘッダー ファイルで宣言されます。[リポジトリ](https://github.com/Azure/azure-iot-sdks)の目的のプラットフォームについてこれらの関数の定義を確認して、クライアントにいずれかのプラットフォーム初期化コードを含める必要があるかどうかを決める必要があります。
+> [AZURE.NOTE] ライブラリの使用を開始する前に、プラットフォーム固有の初期化の実行が必要になる場合があります。たとえば、Linux 上で AMQPS を使用する計画がある場合は、OpenSSL ライブラリを初期化する必要があります。[GitHub リポジトリ](https://github.com/Azure/azure-iot-sdks)のサンプルはクライアントの起動時にユーティリティ関数 **platform\_init** を呼び出し、終了する前に **platform\_deinit** 関数を呼び出します。これらの関数は、platform.h ヘッダー ファイルで宣言されます。[リポジトリ](https://github.com/Azure/azure-iot-sdks)のターゲット プラットフォームについてこれらの関数の定義を確認して、クライアントにいずれかのプラットフォーム初期化コードを含める必要があるかどうかを判断する必要があります。
 
 ライブラリで作業を開始するには、最初に、IoT Hub クライアントのハンドルを割り当てる必要があります。
 
@@ -260,7 +263,11 @@ azure-iot-sdks リポジトリ内の **serializer** フォルダー内には **s
 
 前のサンプルと同様、このソリューションにも、いくつかの NuGet パッケージが含まれています。
 
-  ![](media/iot-hub-device-sdk-c-intro/18-simplesample_amqp-githubpackages.PNG)
+- Microsoft.Azure.C.SharedUtility
+- Microsoft.Azure.IoTHub.AmqpTransport
+- Microsoft.Azure.IoTHub.IoTHubClient
+- Microsoft.Azure.IoTHub.Serializer
+- Microsoft.Azure.uamqp
 
 ほとんどは前のサンプルにもありましたが、**Microsoft.Azure.IoTHub.Serializer** を使うのはこれが初めてです。これは、**serializer** ライブラリを使用するときに必要です。
 
@@ -442,7 +449,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 関数の名前はモデル内のアクションの名前に一致し、関数のパラメーターはアクションに対して指定されたパラメーターに一致することに注意してください。最初のパラメーターは常に必要であり、モデルのインスタンスへのポインターが含まれます。
 
-デバイスがこのシグネチャと一致するメッセージを受信すると、対応する関数が呼び出されます。したがって、**IoTHubMessage** の定型コードを使用する必要があることを除けば、メッセージの受信は、モデルで定義されている各アクションに単純な関数を定義する処理のみで実行できます。
+デバイスがこのシグネチャと一致するメッセージを受信すると、対応する関数が呼び出されます。したがって、**IoTHubMessage** の定型コードを含める必要があることを除けば、メッセージの受信は、モデルで定義されている各アクションに単純な関数を定義する処理のみで実行できます。
 
 ### ライブラリの初期化解除
 
@@ -464,4 +471,4 @@ serializer_deinit();
 
 **Azure IoT device SDK for C** のデバイス管理機能を使用する方法については、「[Azure IoT Hub デバイス管理 (DM) クライアント ライブラリの概要](iot-hub-device-management-library.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

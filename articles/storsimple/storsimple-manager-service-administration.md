@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/27/2016"
+   ms.date="05/24/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの管理
@@ -57,11 +57,11 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |ランディング ページ|サービス レベルのページ|デバイス レベルのページ|デバイス レベルのページ|
 |---|---|---|---|
 |StorSimple Manager サービス|サービスのダッシュボード|デバイス ダッシュボード||
-|デバイス →|監視|
-|バックアップ カタログ|ボリューム コンテナー →|ボリューム|
-|構成 (サービス)|バックアップ ポリシー||
-|ジョブ|構成 (デバイス)|
-|アラート|メンテナンス|
+||デバイス →|監視|
+||バックアップ カタログ|ボリューム コンテナー →|ボリューム|
+||構成 (サービス)|バックアップ ポリシー||
+||ジョブ|構成 (デバイス)|
+||アラート|メンテナンス|
 
 ![ビデオ](./media/storsimple-manager-service-administration/Video_icon.png) **ビデオ**
 
@@ -114,4 +114,4 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 
 問題を解決できず、サービス要求の作成が必要な場合は、｢[Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)」を参照してください。
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0525_2016-->

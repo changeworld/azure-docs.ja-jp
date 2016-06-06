@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/15/2016" 
+	ms.date="05/17/2016" 
 	ms.author="awills"/>
 
 # Application Insights でのデータの収集、保持、保存 
@@ -27,7 +27,7 @@
 * 「難しい設定なしで」動く標準の製品利用統計情報モジュールは、多くの場合、機密データをサービスに送信しません。製品利用統計情報は、負荷指標、パフォーマンス指標、利用率指標、例外レポート、その他の診断データに関連します。診断レポートに表示される主なユーザー データは URL ですが、いかなる場合も、アプリは URL にプレーンテキストで機密データを入力するべきではありません。
 * 診断と監視利用に役立つ追加のカスタム製品利用統計情報を送信するコードを記述できます。(この拡張機能は Application Insights の優れた機能です。) 手違いにより、このコードを記述し、個人データやその他の機密データが含まれてしまうことはあります。アプリケーションがそのようなデータを利用する場合、記述するあらゆるコードに強力なレビュー プロセスを適用してください。
 * アプリを開発し、テストするとき、SDK により送信される内容は簡単に調査できます。データは IDE とブラウザーのデバッグ出力ウィンドウに表示されます。 
-* データは米国の [Microsoft Azure](http://azure.com) サーバーに保管されます。Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。転送中は暗号化されます。サーバーに保管されているときは暗号化されません。
+* データは米国の [Microsoft Azure](http://azure.com) サーバーに保管されます。(ただし、アプリは、場所を問わず実行できます)。 Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。転送中は暗号化されます。サーバーに保管されているときは暗号化されません。
 
 この記事の残りの部分では、以上の答えについてもっと詳しく説明します。設計は自己完結型であり、直近のチームに入っていない同僚にも見せることができます。
 
@@ -94,9 +94,7 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 
 ## データはどれだけの期間保持されますか。 
 
-これは、[料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)によって異なります。
-
-生データ ポイント (つまり、診断検索で調べることができる項目) は、7 日間です。それ以上長くデータを保持する必要がある場合は、[連続エクスポート](app-insights-export-telemetry.md)を使用してストレージ アカウントにコピーすることができます。
+生データ ポイント (つまり、診断検索で調べることができる項目) は、7 日間保持されます。それ以上長くデータを保持する必要がある場合は、[連続エクスポート](app-insights-export-telemetry.md)を使用してストレージ アカウントにコピーすることができます。
 
 集計されたデータ (つまり、メトリックス エクスプローラーに表示されるカウント、平均、その他の統計データ) は、1 分の詳細度であれば 30 日、(種類に応じて) 1 時間または 1 日の詳細度であれば少なくとも 90 日の期間にわたって保持されます。
 
@@ -119,6 +117,10 @@ Microsoft は、お客様にサービスを提供する目的でのみデータ�
 #### データを他の場所 (たとえば、ヨーロッパ) に保存することはできますか。 
 
 * 現時点ではすべてではありません。 
+
+#### それはアプリを米国内でホストする必要があるという意味ですか。
+
+* いいえ。アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
 
 ## データのセキュリティは保たれますか。  
 
@@ -191,7 +193,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 操作 | 収集されるデータのクラス (次の表を参照)
 ---|---
 [Application Insights SDK を .NET Web プロジェクトに追加する][greenbrown] | ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Session<br/>ユーザー
-[Status Monitor を IIS にインストールする][redfield]<br/>[AI 拡張機能を Azure VM または Web アプリに追加する][azure]|Dependencies<br/>ServerContext<br/>Inferred<br/>Perf counters
+[Status Monitor を IIS にインストールする][redfield]|Dependencies<br/>ServerContext<br/>Inferred<br/>Perf counters
 [Application Insights SDK を Java Web アプリに追加する][java]|ServerContext<br/>Inferred<br/>Request<br/>Session<br/>ユーザー
 [JavaScript SDK を Web ページに追加する][client]|ClientContext <br/>Inferred<br/>Page<br/>ClientPerf<br/>Ajax
 [SDK を Windows ストア アプリに追加する][windows]|DeviceContext<br/>ユーザー<br/>Crash data
@@ -254,7 +256,6 @@ SDK diagnostics | トレース メッセージまたは例外
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
-[azure]: ../insights-perf-analytics.md
 [client]: app-insights-javascript.md
 [config]: app-insights-configuration-with-applicationinsights-config.md
 [greenbrown]: app-insights-asp-net.md
@@ -267,4 +268,4 @@ SDK diagnostics | トレース メッセージまたは例外
 
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

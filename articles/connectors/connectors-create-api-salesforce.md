@@ -1,10 +1,10 @@
 <properties
-pageTitle="PowerApps Enterprise とロジック アプリに Salesforce API を追加する | Microsoft Azure"
-description="Salesforce API と REST API パラメーターの概要"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="PowerApps Enterprise とロジック アプリに Salesforce コネクタを追加する | Microsoft Azure"
+description="Salesforce コネクタと REST API パラメーターの概要"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,11 +14,11 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="03/16/2016"
+ms.date="05/19/2016"
 ms.author="deonhe"/>
 
-# Salesforce API の概要
-Salesforce に接続し、オブジェクトの作成、オブジェクトの取得などを行います。Salesforce API は次のツールから使用できます。
+# Salesforce コネクタの使用 
+Salesforce に接続し、オブジェクトの作成、オブジェクトの取得などを行います。Salesforce コネクタは、次のツールから使用できます。
 
 - Logic Apps 
 - PowerApps
@@ -36,9 +36,9 @@ Salesforce では、次の操作を実行できます。
 - Salesforce から取得したデータに基づいてビジネス フローを構築できます。 
 - オブジェクトを作成または更新するときにトリガーを使用できます。
 - Azure Blob の作成、オブジェクトの削除などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Salesforce で新しいオブジェクトを作成するときに、Office 365 を使用して電子メールを送信できます。
-- PowerApps Enterprise に Salesforce API を追加できます。追加すると、ユーザーはアプリ内で API を使用できるようになります。 
+- PowerApps Enterprise に Salesforce コネクタを追加します。追加すると、ユーザーはアプリ内でコネクタを使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
+PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
 
 ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
@@ -49,14 +49,13 @@ Salesforce API には、次のトリガーとアクションがあります。
 | --- | --- |
 |<ul><li>オブジェクトの作成時</li><li>オブジェクトの変更時</li></ul> | <ul><li>オブジェクトを作成する</li><li>オブジェクトを取得する</li><li>オブジェクトの作成時</li><li>オブジェクトの変更時</li><li>オブジェクトを削除する</li><li>オブジェクトを取得する</li><li>オブジェクトの種類 (SObjects) を取得する</li><li>オブジェクトを更新する</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## Salesforce への接続を作成する 
 
-ロジック アプリにこの API を追加するとき、Salesforce に接続するロジック アプリを承認する必要があります。
+ロジック アプリにこのコネクタを追加するとき、Salesforce に接続するロジック アプリを承認する必要があります。
 
-1. Salesforce アカウントにサインインします。
-2. ロジック アプリが Salesforce アカウントに接続して使用することを許可します。 
+>[AZURE.INCLUDE [Salesforce への接続を作成する手順](../../includes/connectors-create-api-salesforce.md)]
 
 接続を作成したら、テーブル名など、Salesforce のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
@@ -266,4 +265,4 @@ Salesforce のオブジェクトが変更されたときにフローをトリガ
 [7]: ./media/connectors-create-api-salesforce/salesforce-create-app.png
 [8]: ./media/connectors-create-api-salesforce/salesforce-new-app.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

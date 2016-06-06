@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="05/20/2016"
 	ms.author="maheshu"/>
 
 # Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
@@ -30,7 +30,7 @@
 
 4. **セキュリティで保護された LDAP を有効にするために使用する証明書**。
     - **推奨** - エンタープライズ CA または公開証明機関から証明書を取得します。これははるかに安全性の高い構成オプションです。
-	- または、この記事の後半で説明するように、[自己署名証明書を作成](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-1---obtain-a-certificate-for-secure-ldap)することもできます。
+	- または、この記事で後ほど説明するように、[自己署名証明書を作成](#task-1---obtain-a-certificate-for-secure-ldap)することもできます。
 
 <br>
 
@@ -60,7 +60,7 @@
 ### オプション A (推奨) - セキュリティで保護された LDAP 証明書を証明機関から取得する
 組織がエンタープライズ公開キー基盤 (PKI) をデプロイする場合は、組織のエンタープライズ証明機関 (CA) から証明書を取得する必要があります。組織が公開証明機関から証明書を取得する場合は、セキュリティで保護された LDAP 証明書をその公開証明機関から取得する必要があります。
 
-証明書を請求する場合は、「[セキュリティで保護された LDAP 証明書の要件](./active-directory-ds-admin-guide-configure-secure-ldap.md/#requirements-for-the-secure-ldap-certificate)」で説明されている要件に従うようにします。
+証明書を請求する場合は、「[セキュリティで保護された LDAP 証明書の要件](#requirements-for-the-secure-ldap-certificate)」で説明されている要件に従うようにします。
 
 セキュリティで保護された LDAP を使用して管理対象ドメインに接続する必要があるクライアント コンピューターが、LDAPS 証明書の発行者を信頼する必要があることに注意してください。
 
@@ -147,7 +147,7 @@ LDAPS 証明書を .PFX ファイルにエクスポートするために、次�
 
     ![証明書のエクスポート - パスワードを指定する](./media/active-directory-domain-services-admin-guide/secure-ldap-export-select-password.png)
 
-	> [AZURE.NOTE] このパスワードを書き留めておいてください。「[タスク 3 - 管理対象ドメインに対してセキュリティで保護された LDAP を有効にする](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-3---enable-secure-ldap-for-the-managed-domain)」で、この管理対象ドメインに対してセキュリティで保護された LDAP を有効にするときに必要になります。
+	> [AZURE.NOTE] このパスワードを書き留めておいてください。「[タスク 3 - 管理対象ドメインに対してセキュリティで保護された LDAP を有効にする](#task-3---enable-secure-ldap-for-the-managed-domain)」で、この管理対象ドメインに対してセキュリティで保護された LDAP を有効にするときに必要になります。
 
 15. **[エクスポートするファイル]** ページで、ファイル名と証明書をエクスポートする場所を指定します。
 
@@ -201,7 +201,7 @@ LDAPS 証明書を .PFX ファイルにエクスポートするために、次�
 ## タスク 4 - インターネット経由でのセキュリティで保護された LDAP アクセスを有効にする
 **オプションのタスク** - インターネット経由で LDAPS を使用して管理対象ドメインにアクセスする予定がない場合は、このタスクをスキップしてください。
 
-このタスクを開始する前に、[タスク 3](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-3---enable-secure-ldap-for-the-managed-domain) で説明した手順が完了していることを確認してください。
+このタスクを開始する前に、[タスク 3](#task-3---enable-secure-ldap-for-the-managed-domain) で説明した手順が完了していることを確認してください。
 
 1. **[構成]** ページの **[ドメイン サービス]** セクションに、**[インターネット経由でのセキュリティで保護された LDAP アクセスを有効にする]** ためのオプションが表示されます。セキュリティで保護された LDAP 経由での管理対象ドメインへのインターネット アクセスは既定で無効になっているので、この設定は既定では **[いいえ]** に設定されています。
 
@@ -224,7 +224,7 @@ LDAPS 証明書を .PFX ファイルにエクスポートするために、次�
 ## タスク 5 - インターネットから管理対象ドメインにアクセスできるように DNS を構成する
 **オプションのタスク** - インターネット経由で LDAPS を使用して管理対象ドメインにアクセスする予定がない場合は、このタスクをスキップしてください。
 
-このタスクを開始する前に、[タスク 4](./active-directory-ds-admin-guide-configure-secure-ldap.md/#task-4---enable-secure-ldap-access-over-the-internet) で説明した手順が完了していることを確認してください。
+このタスクを開始する前に、[タスク 4](#task-4---enable-secure-ldap-access-over-the-internet) で説明した手順が完了していることを確認してください。
 
 管理対象ドメインに対してインターネット経由でのセキュリティで保護された LDAP アクセスを有効にしたら、クライアント コンピューターがこの管理対象ドメインを見つけられるようにするために、DNS を更新する必要があります。タスク 4 の最後には、**[構成]** タブの **[LDAPS アクセスのための外部 IP アドレス]** に外部 IP アドレスが表示されます。
 
@@ -242,4 +242,4 @@ LDAPS 証明書を .PFX ファイルにエクスポートするために、次�
 
 - [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

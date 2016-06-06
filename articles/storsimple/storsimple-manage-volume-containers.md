@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/01/2016"
+   ms.date="05/24/2016"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用して StorSimple ボリューム コンテナーを管理する
@@ -66,4 +66,4 @@ Microsoft Azure StorSimple デバイスのボリューム コンテナーには�
 - [StorSimple ボリュームの管理の詳細](storsimple-manage-volumes.md) 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

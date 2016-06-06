@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/18/2016"
+	ms.date="05/25/2016"
 	ms.author="jroth"/>
 
 # Azure Virtual Machines における SQL Server の概要
@@ -33,8 +33,8 @@ Azure VM で SQL Server を実行することは、リレーショナル デー�
 |---:|---|---|
 |![Azure Virtual Machines における SQL Server](./media/virtual-machines-windows-sql-server-iaas-overview/sql-server-virtual-machine.png)|[Azure Virtual Machines における SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)|Azure Virtual Machines で SQL Server を実行します。直接仮想マシンを管理し、製品版の SQL Server でデータベースを実行します。 |
 |![SQL Database](./media/virtual-machines-windows-sql-server-iaas-overview/azure-sql-database.png)|[SQL Database](https://azure.microsoft.com/services/sql-database/)|SQL Database サービスを使用して、基になるインフラストラクチャを管理することなく、データベースにアクセスしてスケールアップ/スケールダウンします。|
-|![SQL Data Warehouse](./media/virtual-machines-windows-sql-server-iaas-overview/azure-sql-data-warehouse.png)|[SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/)|Azure SQL Data Warehouse を使用して、大量のリレーショナルおよび非リレーショナル データを処理します。サービスとしてスケーラブルなデータ ウェアハウジング機能を提供します。|
-|![SQL Server Stretch Database](./media/virtual-machines-windows-sql-server-iaas-overview/sql-server-stretch-database.png)|[SQL Server Stretch Database](https://azure.microsoft.com/services/sql-server-stretch-database/)|オンプレミスのトランザクション データを Microsoft SQL Server 2016 から Azure に動的にストレッチします。|
+|![SQL Data Warehouse](./media/virtual-machines-windows-sql-server-iaas-overview/azure-sql-data-warehouse.png)|[SQL Data Warehouse](https://azure.microsoft.com/ja-JP/services/sql-data-warehouse/)|Azure SQL Data Warehouse を使用して、大量のリレーショナルおよび非リレーショナル データを処理します。サービスとしてスケーラブルなデータ ウェアハウジング機能を提供します。|
+|![SQL Server Stretch Database](./media/virtual-machines-windows-sql-server-iaas-overview/sql-server-stretch-database.png)|[SQL Server Stretch Database](https://azure.microsoft.com/ja-JP/services/sql-server-stretch-database/)|オンプレミスのトランザクション データを Microsoft SQL Server 2016 から Azure に動的にストレッチします。|
 
 >[AZURE.NOTE] SQL VM と SQL Database の詳細な比較については、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。
 
@@ -47,7 +47,7 @@ Azure で SQL Server 仮想マシンを作成するには、最初に Azure プ�
 Azure Virtual Machines の作成と管理には、クラシックと Resource Manager の 2 つのモデルがあることに注意してください。最新のデプロイでは、Resource Manager モデルを使用することをお勧めします。詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。この記事のように、クラシックと Resource Manager の両方に適用されない限り、トピックごとに対象のモデルが明示されます。
 
 ## SQL VM イメージの選択
-次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。作成する VM のバージョン、エディション、およびオペレーティング システムに応じて、テーブル内のリンクのいずれかをクリックします。
+次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。バージョン、エディション、およびオペレーティング システムに基づいて、テーブル内のリンクのいずれかをクリックします。次に、Marketplace ページで **[仮想マシンの作成]** をクリックします。
 
 |SQL Server のバージョン|オペレーティング システム|SQL Server のエディション|
 |---|---|---|
@@ -61,19 +61,21 @@ Azure Virtual Machines の作成と管理には、クラシックと Resource Ma
 
 >[AZURE.NOTE] 既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。必要に応じて、仮想マシンをプロビジョニングした後に、CEIP をカスタマイズまたは無効にすることができます。リモート デスクトップを使用して VM に接続し、**SQL Server エラーと使用状況レポート** ユーティリティを実行します。
 
+新しい SQL VM の作成についてさらにヘルプが必要な場合は、 [プロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)に関するページで詳細なチュートリアルをご覧ください。
+
 これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure 仮想マシンを作成する](virtual-machines-windows-hero-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure 仮想マシンで SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure Compute および Storage [コスト](https://azure.microsoft.com/pricing/details/virtual-machines/)のみを支払います。
 
-SQL Server イメージに最適な仮想マシン構成の設定を決定するには、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を確認してください。実稼働ワークロードでは、SQL Server Enterprise Edition の最小推奨仮想マシン サイズは **DS3** であり、Standard edition の最小推奨仮想マシン サイズは **DS2** です。
+SQL Server イメージに最適な仮想マシン構成の設定を決めるには、[SQL Server VM のパフォーマンスのベスト プラクティス](virtual-machines-windows-sql-performance.md)に関するページをご覧ください。運用環境のワークロードの場合、SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは **DS3** です。Standard Edition での運用環境のワークロードに推奨される仮想マシンの最小サイズは **DS2** です。
 
 ## データの移行
 
-SQL Server 仮想マシンを起動した後、マシンに既存のデータベースを移行できます。移行オプションの一覧とガイダンスについては、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)」を参照してください。
+SQL Server 仮想マシンを起動した後、マシンに既存のデータベースを移行できます。移行オプションの一覧とガイダンスについては、[Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)に関するページをご覧ください。
 
 ## 高可用性
 
-高可用性が必要な場合は、SQL Server 高可用性グループの構成を検討してください。そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。Azure ポータルには、この構成が事前に設定されたテンプレートがあります。詳細については、「[Azure Resource Manager 仮想マシンでの AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)」を参照してください。
+高可用性が必要な場合は、SQL Server 高可用性グループの構成を検討してください。そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。Azure ポータルには、この構成が事前に設定されたテンプレートがあります。詳細については、[Azure Resource Manager 仮想マシンでの AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)に関するページをご覧ください。
 
-可用性グループおよび関連付けられているリスナーを手動で構成する場合は、「[Azure VM での AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)」を参照してください。
+可用性グループおよび関連付けられているリスナーを手動で構成する場合は、[Azure VM での AlwaysOn 可用性グループの構成](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)に関するページをご覧ください。
 
 その他の高可用性構成については、「[Azure の仮想マシン内の SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
 
@@ -86,8 +88,8 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 
 まず、[Azure ポータルで独自の SQL Server VM を作成します](virtual-machines-windows-portal-sql-server-provision.md)。
 
-次に、SQL Server のワークロードから Azure VM に移動することを検討するために、[パフォーマンスのベスト プラクティス](virtual-machines-windows-sql-performance.md)と[移行手法](virtual-machines-windows-migrate-sql.md)を確認します。
+次に、[パフォーマンスのベスト プラクティス](virtual-machines-windows-sql-performance.md)と[移行手法](virtual-machines-windows-migrate-sql.md)を確認して、SQL Server のワークロードを Azure VM に移動することを検討します。
 
-Azure Virtual Machines での SQL Server に関して質問がある場合は、「[Azure Virtual Machines における SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)」を参照してください。または、Microsoft やコミュニティと対話するために、SQL VM トピックのいずれかの下部にコメントを追加します。
+Azure 仮想マシン上の SQL Server についてご不明な点がある場合は、 まず、「[Azure Virtual Machines における SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)」をご確認ください。SQL VM に関するトピックのいずれかで、下部のセクションに質問またはコメントを追加して、Microsoft やコミュニティとやり取りすることもできます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

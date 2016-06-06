@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/18/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法
 
 Azure Active Directory (AD) では、グローバル管理者 (または会社の管理者) は、Azure AD でどのユーザーにロールを**永続的に**割り当てるかを変更できます。これを行うには、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用するか、「[Azure Active Directory (Azure AD) の管理者ロールの割り当て](active-directory-assign-admin-roles.md)」に記載されているように、Azure クラシック ポータルを使用できます。
 
-Azure AD Privileged Identity Management (PIM) アプリケーションを使用すると、セキュリティ管理者も、永続的なロールの割り当てを行うことができます。ただし、このアプリケーションでは、ロールの**一時的な**割り当ての候補者を追加または削除することもできます。候補者は必要なときにロールをアクティブ化できます。作業が完了すると、そのアクセス許可は期限切れになります。
+Azure AD Privileged Identity Management (PIM) アプリケーションを使用すると、特権ロール管理者も、永続的なロールの割り当てを行うことができます。ただし、このアプリケーションでは、ロールの**一時的な**割り当ての候補者を追加または削除することもできます。候補者は必要なときにロールをアクティブ化できます。作業が完了すると、そのアクセス許可は期限切れになります。
 
 ## Azure ポータルで PIM を使用してロールを管理する
 
@@ -64,4 +64,4 @@ Azure AD PIM ダッシュボードでロールを選択するか、**[管理者�
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

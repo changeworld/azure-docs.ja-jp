@@ -1,19 +1,19 @@
 <properties
    pageTitle="Windows および Linux IaaS VM の Azure Disk Encryption | Microsoft Azure"
    description="このドキュメントでは、Windows および Linux IaaS VM の Microsoft Azure Disk Encryption の概要を示します。"
-   services="virtual-machines, cloud-services, storage"
+   services="security"
    documentationCenter="na"
    authors="YuriDio"
    manager="swadhwa"
    editor="TomSh"/>
 
 <tags
-   ms.service="azure-security"
+   ms.service="security"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/15/2016"
+   ms.date="05/23/2016"
    ms.author="devtiw"/>
 
 
@@ -36,7 +36,7 @@ Azure Disk Encryption ソリューションでは、次の顧客シナリオが�
 - 事前に暗号化した VHD と暗号化キーから作成された新しい IaaS VM での暗号化を有効にする
 - Azure ギャラリー イメージから作成された新しい IaaS VM での暗号化を有効にする 
 - Azure で既に実行されている既存の IaaS VM での暗号化を有効にする 
-- Windows IaaS VM での暗号化を無効にする  
+- Windows IaaS VM での暗号化を無効にする 
 
 このソリューションでは、Microsoft Azure で有効になっている場合、IaaS VM で以下がサポートされます。
 
@@ -78,7 +78,7 @@ Azure IaaS VM の Azure Disk Encryption を有効にしてデプロイすると�
 - 顧客ストレージに保存中のブート ボリュームを保護するための OS ボリュームの暗号化
 
 	- Azure で既に実行されている Linuｘ IaaS VM での OS ボリュームの暗号化は、現在サポートされていません。Linux IaaS VM の OS ボリュームの暗号化は、事前暗号化済みの VHD シナリオについてのみサポートされています。
-	
+
 - 顧客ストレージに保存中のデータ ボリュームを保護するためのデータ ボリュームの暗号化
 
 - Windows IaaS VM での暗号化を無効にする
@@ -845,4 +845,4 @@ BitLocker 暗号化または DM-Crypt 暗号化を有効にしたら、ローカ
 
 [Azure PowerShell を使用する Azure ディスク暗号化の探索 - パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

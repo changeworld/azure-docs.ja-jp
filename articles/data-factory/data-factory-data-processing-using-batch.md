@@ -702,7 +702,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 > [AZURE.IMPORTANT] BLOB コンテナー内の入力フォルダーに **file.txt** をまだアップロードしていない場合は、パイプラインを作成する前に行ってください。**isPaused** プロパティがパイプラインの JSON で false に設定されているため、パイプラインは **start** の日を過ぎると、すぐに実行されます。
 
-1.  Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] \(省略記号)** をクリックすると表示されます。
+1.  Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] (省略記号)** をクリックすると表示されます。
 
 2.  右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。
 
@@ -754,11 +754,11 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 	-   **AssemblyName** を DLL の名前 (**MyDotNetActivity.dll**) に設定します。
 
-	-   **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。基本的に、コード内の \<namespace\>.\<classname\> です。
+	-   **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。基本的に、コード内の <namespace>.<classname> です。
 
 	-   **PackageLinkedService** は **StorageLinkedService** に設定されます。これは、カスタム アクティビティの zip ファイルを含む Blob Storage を示します。入力/出力ファイルとカスタム アクティビティ zip ファイルに別の Azure Storage アカウントを使用している場合、Azure Storage のリンクされたサービスを別に作成する必要があります。この記事では、同じ Azure Storage アカウントを使用している前提で説明します。
 
-	-   **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。形式は \<containerforthezip\>/\<nameofthezip.zip\> です。
+	-   **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。形式は <containerforthezip>/<nameofthezip.zip> です。
 
 	-   カスタム アクティビティは入力として **InputDataset**、出力として **OutputDataset** を使用します。
 
@@ -834,7 +834,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
     **注:** 5 つの入力ファイルを試す前に、出力ファイル 2015-11-16-01.txt を削除していない場合は、以前に実行したスライスから 1 行と、現在実行しているスライスから 5 行表示されます。既定では、コンテンツが既に存在している場合、出力ファイルに追加されます。
 
-### パイプラインのデバッグ
+## パイプラインのデバッグ
 
 デバッグには、いくつかの基本的な技術があります。
 
@@ -877,6 +877,9 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
     ![](./media/data-factory-data-processing-using-batch/image21.png)
 
     **注:** **adfjobs** という名前の Azure Blob Storage に、**コンテナー**が表示されます。このコンテナーは自動的に削除されませんが、ソリューションのテストを完了した後に、安全に削除することができます。同様に、Data Factory ソリューションでは、**adf-<pool ID/name>:job-0000000001** という名前の Azure Batch **ジョブ**を作成します。必要な場合は、ソリューションのテストを実行した後、このジョブを削除することができます。
+7. このカスタム アクティビティでは、パッケージ内の **app.config** ファイルは使用されません。そのためこの構成ファイルから接続文字列を読み取るようにコードを記述した場合、実行時に正しく機能しません。Azure Batch を使用するときは、すべてのシークレットを **Azure KeyVault** に格納し、証明書ベースのサービス プリンシパルを使用してその Key Vault を保護したうえで、Azure Batch プールに証明書を配布することをお勧めします。こうすることで .NET カスタム アクティビティが実行時に KeyVault 内のシークレットにアクセスすることができます。これは一般的な手法であり、接続文字列に限らず、あらゆる種類のシークレットに応用できます。
+
+	最善の方法ではありませんが、同じことをもっと簡単に行うこともできます。**Azure SQL のリンクされたサービス**を接続文字列の設定で新たに作成し、そのリンクされたサービスを使用するデータセットを作成して、カスタム .NET アクティビティにダミーの入力データセットとしてチェーンする方法です。リンクされたサービスの接続文字列にカスタム アクティビティのコード内からアクセスすれば、実行時に適切に機能します。
 
 ### サンプルの拡張
 
@@ -905,13 +908,13 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
 データを処理した後、**Microsoft Power BI** などのオンライン ツールで使用することができます。Power BI や Azure で使用する方法を理解するために役立つリンクを次に示します。
 
--   [Power BI でのデータセットの参照](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
+-   [Power BI でのデータセットの参照](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-service-get-data/)
 
--   [Power BI Desktop の概要](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+-   [Power BI Desktop の概要](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-desktop-getting-started/)
 
--   [Power BI でのデータの更新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
+-   [Power BI でのデータの更新](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-refresh-data/)
 
--   [Azure と Power BI - 基本的な概要](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
+-   [Azure と Power BI - 基本的な概要](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-azure-and-power-bi/)
 
 ## 参照
 
@@ -937,4 +940,4 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

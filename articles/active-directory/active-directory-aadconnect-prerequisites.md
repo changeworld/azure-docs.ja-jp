@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="05/10/2016"
+   ms.date="05/24/2016"
    ms.author="andkjell;billmath"/>
 
 # Azure AD Connect の前提条件
@@ -42,7 +42,11 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 - Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。リモート インストールのために、これらのサーバーで [Windows リモート管理](#windows-remote-management)を有効にする必要があります。
 - Active Directory フェデレーション サービスがデプロイされている場合は、[SSL 証明書](#ssl-certificate-requirements)が必要です。
 - Active Directory フェデレーション サービス (AD FS) がデプロイされている場合は、[名前解決](#name-resolution-for-federation-servers)を構成する必要があります。
-- Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定する必要があります。Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2014 まで、すべてのエディションの Microsoft SQL Server がサポートされています。Microsoft Azure SQL Database は、データベースとして**サポートされていません**。
+- Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定する必要があります。
+- 別の SQL Server を使用する場合は、次の要件が適用されます。
+    - Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2014 まで、すべてのエディションの Microsoft SQL Server がサポートされています。Microsoft Azure SQL Database は、データベースとして**サポートされていません**。
+    - 大文字と小文字が区別されない SQL 照合順序を使用する必要があります。これらは名前に含まれる \_CI\_ で識別します。大文字と小文字が区別される照合順序 (名前に含まれる \_CS\_ で識別) は**サポートされていません**。
+    - 1 つのデータベース インスタンスにつき保持できる同期エンジンは 1 つだけです。FIM/MIM Sync、DirSync、または Azure AD Sync とのデータベース インスタンスの共有は**サポートされていません**。
 
 ### アカウント
 - 統合する Azure AD ディレクトリの Azure AD グローバル管理者アカウント。これには**学校または組織のアカウント**を使用する必要があり、**Microsoft アカウント**を使用することはできません。
@@ -50,13 +54,14 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 - カスタム設定のインストール パスを使用する場合は、[Active Directory 内のアカウント](active-directory-aadconnect-accounts-permissions.md)。
 
 ### Azure AD Connect サーバーの構成
-- グローバル管理者が MFA を有効にしている場合は、URL **https://secure.aadcdn.microsoftonline-p.com** が信頼済みサイトの一覧に追加されている必要があります。追加されていない場合は、MFA チャレンジを求められる前に、この URL を信頼済みサイトの一覧に追加するように促されます。信頼済みサイトへの追加には、Internet Explorer を使用できます。
+- 全体管理者が MFA を有効にしている場合は、URL ****https://secure.aadcdn.microsoftonline-p.com** が信頼済みサイトの一覧に追加されている必要があります。追加されていない場合は、MFA チャレンジを求められる前に、この URL を信頼済みサイトの一覧に追加するように促されます。信頼済みサイトへの追加には、Internet Explorer を使用できます。
 
 ### 接続
 - Azure AD Connect サーバーには、イントラネット用とインターネット用の両方の DNS 解決が必要です。DNS サーバーは、オンプレミス Active Directory と Azure AD エンドポイントの両方の名前を解決できる必要があります。
 - お使いのイントラネット環境でファイアウォールを使用していて、Azure AD Connect サーバーとドメイン コントローラーの間でポートを開く必要がある場合は、[Azure AD Connect のポート](active-directory-aadconnect-ports.md)に関する記事で詳細を確認してください。
 - アクセスできる URL をプロキシが制限している場合は、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL をプロキシで開く必要があります。
-    - ドイツで Microsoft Cloud を使用する場合、または Microsoft Azure Government クラウドを使用する場合は、「[Azure AD Connect sync service instances considerations (Azure AD Connect 同期サービス インスタンス)](active-directory-aadconnect-instances.md)」で URL を確認してください。
+    - ドイツで Microsoft Cloud を使用する場合、または Microsoft Azure Government クラウドを使用する場合は、[Azure AD Connect 同期サービス インスタンスの考慮事項](active-directory-aadconnect-instances.md)に関するページで URL を確認してください。
+- Azure AD Connect は、Azure AD との通信に既定で TLS 1.0 を使用します。これを TLS 1.2 に変更するには、「[Azure AD Connect 用に TLS 1.2 を有効にする](#enable-tls-12-for-azure-ad-connect)」の手順に従います。
 - 送信プロキシを使用してインターネットに接続する場合は、次の設定を **C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config** ファイルに追加して、インストール ウィザードと Azure AD Connect 同期がインターネットと Azure AD に接続できるようにする必要があります。このテキストは、ファイルの末尾に入力する必要があります。このコードの &lt;PROXYADRESS&gt; は実際のプロキシ IP アドレスまたはホスト名を表します。
 
 ```
@@ -71,7 +76,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
     </system.net>
 ```
 
-- プロキシ サーバーで認証が必要な場合は、[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)をドメインに配置する必要があり、カスタマイズした設定のインストール パスを使用して、[カスタム サービス アカウント](active-directory-aadconnect-get-started-custom.md#install-required-components)を指定する必要があります。異なる machine.config も必要になります。この machine.config の変更によって、インストール ウィザードと同期エンジンは、プロキシ サーバーからの認証要求に応答します。**[構成]** ページを除くインストール ウィザードのすべてのページで、サインインしたユーザーの資格情報を使用します。インストール ウィザードの最後の **[構成]** ページで、コンテキストが自分で作成した[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に切り替わります。machine.config のセクションは、次のようになるはずです。
+- プロキシ サーバーで認証が必要な場合は、[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)をドメイン内に配置する必要があり、カスタマイズした設定のインストール パスを使用して、[カスタム サービス アカウント](active-directory-aadconnect-get-started-custom.md#install-required-components)を指定する必要があります。異なる machine.config も必要になります。この machine.config の変更によって、インストール ウィザードと同期エンジンは、プロキシ サーバーからの認証要求に応答します。**[構成]** ページを除くインストール ウィザードのすべてのページで、サインインしたユーザーの資格情報を使用します。インストール ウィザードの最後の **[構成]** ページで、コンテキストが自分で作成した[サービス アカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に切り替わります。machine.config のセクションは、次のようになるはずです。
 
 ```
     <system.net>
@@ -87,13 +92,15 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 
 [既定のプロキシ要素](https://msdn.microsoft.com/library/kd3cf2ex.aspx)の詳細については、MSDN を参照してください。
 
-接続に問題がある場合は、[接続に関する問題のトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)に関する記事を参照してください。
+接続に問題がある場合は、[接続に関する問題のトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)の記事を参照してください。
 
 ### その他
 - 省略可能: 同期を検証するテスト ユーザー アカウント。
 
 ## コンポーネントの前提条件
-Azure AD Connect は、Microsoft PowerShell と .NET 4.5.1 に依存しています。Windows Server のバージョンに応じて、次の操作を行います。
+
+### PowerShell と .NET Framework
+Azure AD Connect は、Microsoft PowerShell と .NET 4.5.1 に依存しています。これ以降のバージョンがサーバーにインストールされている必要があります。Windows Server のバージョンに応じて、次の操作を行います。
 
 - Windows Server 2012R2
   - Microsoft PowerShell は既定でインストールされているため、操作は必要ありません。
@@ -104,6 +111,23 @@ Azure AD Connect は、Microsoft PowerShell と .NET 4.5.1 に依存していま
 - Windows Server 2008
   - PowerShell の最新のサポート バージョンは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)の **Windows Management Framework 3.0** で入手できます。
  - .NET Framework 4.5.1 以降のリリースは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)で入手できます。
+
+### Azure AD Connect 用に TLS 1.2 を有効にする
+Azure AD Connect は、同期エンジン サーバーと Azure AD の間での通信を暗号化するために、既定で TLS 1.0 を使用します。これを変更するには、サーバーで TLS 1.2 を既定で使用するように .NET アプリケーションを構成します。TLS 1.2 の詳細については、「[マイクロソフト セキュリティ アドバイザリ 2960358](https://technet.microsoft.com/security/advisory/2960358)」を参照してください。
+
+1. Windows Server 2008 で TLS 1.2 を有効にすることはできません。有効にするには、Windows Server 2008 R2 以降が必要です。オペレーティング システムに .NET 4.5.1 修正プログラムがインストールされていることを確認してください。詳細については、「[Microsoft セキュリティ アドバイザリ 2960358 ](https://technet.microsoft.com/security/advisory/2960358)」を参照してください。既にこれ以降のリリースをサーバーにインストールしている可能性があります。
+2. Windows Server 2008 R2 を使用している場合は、TLS 1.2 が有効になっていることを確認してください。Windows Server 2012 以降のバージョンのサーバーのオペレーティング システムでは、TLS 1.2 が既に有効になっています。
+```
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+```
+3. すべてのオペレーティング システムに対して、次のレジストリ キーを設定してサーバーを再起動します。
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
+"SchUseStrongCrypto"=dword:00000001
+```
+4. 同期エンジン サーバーとリモート SQL Server の間でも TLS 1.2 を有効にする場合は、[Microsoft SQL Server 用の TLS 1.2 のサポート](https://support.microsoft.com/kb/3135244)に必要なバージョンがインストールされていることを確認してください。
 
 ## フェデレーションのインストールと構成の前提条件
 
@@ -173,4 +197,4 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

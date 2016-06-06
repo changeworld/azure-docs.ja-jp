@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="05/20/2016"
    ms.author="terrylan"/>
 
 # Azure Security and Compliance のブログ
@@ -26,6 +26,18 @@ Azure Security and Compliance チームのブログでは、技術的な情報�
 
 Azure Security and Compliance チームのブログを確認して、Azure のセキュリティに関するすべてのことの最新情報をご覧ください。
 
-**最新の記事** (毎週更新):
+**最新の記事** (新しい投稿へのリンクを毎週更新):
 
-<!---HONumber=AcomDC_0518_2016-->
+[Azure Disk Encryption for Windows Virtual Machines reaches General Availability (Windows 仮想マシン向け Azure Disk Encryption の一般公開)](https://blogs.msdn.microsoft.com/azuresecurity/2016/05/20/azure-disk-encryption-for-windows-virtual-machines-reaches-general-availability/) (2016 年 5 月 20 日)
+
+[Advances in Azure Security Center Threat Detection (Azure Security Center の先進機能: 脅威検出)](https://blogs.msdn.microsoft.com/azuresecurity/2016/05/17/advances-in-azure-security-center-threat-detection/) (2016 年 5月 17 日)
+
+[Update on Operations Management Suite (OMS) Security (Operations Management Suite (OMS) セキュリティ機能の更新)](https://blogs.msdn.microsoft.com/azuresecurity/2016/05/12/update-on-operations-management-suite-omssecurity/) (2016 年 5 月 12 日)
+
+[Azure Services SSL/TLS cipher suite update and removal of RC4 (Azure サービスの SSL/TLS 暗号スイートの更新と RC4 の削除)](https://blogs.msdn.microsoft.com/azuresecurity/2016/04/26/azure-services-ssltls-cipher-suite-update-and-removal-of-rc4/) (2016 年 4 月 26 日)
+
+[Enabling Diagnostics Logging for Azure Antimalware (Azure Antimalware の診断ログの有効化)](https://blogs.msdn.microsoft.com/azuresecurity/2016/04/19/enabling-diagnostics-logging-for-azure-antimalware/) (2016 年 4 月 19 日)
+
+[What does shared responsibility in the cloud mean? (クラウドにおける責任分担について)](https://blogs.msdn.microsoft.com/azuresecurity/2016/04/18/what-does-shared-responsibility-in-the-cloud-mean/)(2016 年 4 月 18 日)
+
+<!---HONumber=AcomDC_0525_2016-->

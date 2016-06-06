@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.workload="identity"
 	ms.topic="article"
-    ms.date="04/21/2016"
+    ms.date="05/19/2016"
     ms.author="andkjell"/>
 
 # Azure AD Connect のトポロジ
@@ -21,16 +21,16 @@
 
 ドキュメント内の図の凡例:
 
-| 説明 | アイコン |
-|-----|-----|
-| オンプレミスの Active Directory フォレスト | ![AD](./media/active-directory-aadconnect-topologies/LegendAD1.png)|
-| Active Directory とフィルター処理されたインポート | ![AD](./media/active-directory-aadconnect-topologies/LegendAD2.png)|
-| Azure AD Connect 同期サーバー | ![同期](./media/active-directory-aadconnect-topologies/LegendSync1.png)|
-| Azure AD Connect 同期サーバー "ステージング モード" | ![同期](./media/active-directory-aadconnect-topologies/LegendSync2.png)|
-| GALSync と FIM2010 または MIM2016 | ![同期](./media/active-directory-aadconnect-topologies/LegendSync3.png)|
-| Azure AD Connect 同期サーバー、詳細 |![同期](./media/active-directory-aadconnect-topologies/LegendSync4.png)|
-| Azure AD ディレクトリ |![AAD](./media/active-directory-aadconnect-topologies/LegendAAD.png)|
-| サポートされていないシナリオ | ![サポートされていません](./media/active-directory-aadconnect-topologies/LegendUnsupported.png)
+説明 | アイコン
+-----|-----
+オンプレミスの Active Directory フォレスト| ![AD](./media/active-directory-aadconnect-topologies/LegendAD1.png)
+Active Directory とフィルター処理されたインポート| ![AD](./media/active-directory-aadconnect-topologies/LegendAD2.png)
+Azure AD Connect 同期サーバー| ![同期](./media/active-directory-aadconnect-topologies/LegendSync1.png)
+Azure AD Connect 同期サーバー "ステージング モード"| ![同期](./media/active-directory-aadconnect-topologies/LegendSync2.png)
+GALSync と FIM2010 または MIM2016| ![同期](./media/active-directory-aadconnect-topologies/LegendSync3.png)
+Azure AD Connect 同期サーバー、詳細| ![同期](./media/active-directory-aadconnect-topologies/LegendSync4.png)
+Azure AD ディレクトリ |![AAD](./media/active-directory-aadconnect-topologies/LegendAAD.png)
+サポートされていないシナリオ | ![サポートされていません](./media/active-directory-aadconnect-topologies/LegendUnsupported.png)
 
 
 ## 単一のフォレスト、単一の Azure AD ディレクトリ
@@ -116,10 +116,10 @@ FSP は、セキュリティ グループ内の他のフォレストのメンバ
 ## Office 365 とトポロジの考慮事項
 Office 365 の一部のワークロードでは、サポートされるトポロジに一定の制限が生じます。これらのいずれかを使用する場合は、対象のワークロードのサポートされているトポロジに関するトピックを参照してください。
 
-| ワークロード | |
-| --------- | --------- |
-| Exchange Online |	オンプレミスに複数の Exchange 組織がある場合 (つまり、Exchange が複数のフォレストにデプロイされている場合) は、Exchange 2013 SP1 以降を使用する必要があります。詳細については「[複数の Active Directory フォレストを伴うハイブリッド展開](https://technet.microsoft.com/ja-JP/library/jj873754.aspx)」を参照してください。 |
-| Skype for Business | オンプレミスで複数のフォレストを使用する場合は、アカウント リソース フォレスト トポロジのみがサポートされます。サポートされているトポロジの詳細については、「[Skype for Business Server 2015 の環境要件](https://technet.microsoft.com/ja-JP/library/dn933910.aspx)」を参照してください。 |
+ワークロード |  
+--------- | ---------
+Exchange Online | オンプレミスに複数の Exchange 組織がある場合 (つまり、Exchange が複数のフォレストにデプロイされている場合) は、Exchange 2013 SP1 以降を使用する必要があります。詳細については「[複数の Active Directory フォレストを伴うハイブリッド展開](https://technet.microsoft.com/library/jj873754.aspx)」を参照してください。
+Skype for Business | オンプレミスで複数のフォレストを使用する場合は、アカウント リソース フォレスト トポロジのみがサポートされます。サポートされているトポロジの詳細については、「[Skype for Business Server 2015 の環境要件](https://technet.microsoft.com/library/dn933910.aspx)」を参照してください。
 
 ## ステージング サーバー
 ![Staging Server](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)
@@ -135,9 +135,9 @@ Azure AD Connect では、**ステージング モード**でのセカンド サ
 ## 複数の Azure AD ディレクトリ
 組織の Azure AD には 1 つのディレクトリを置くことをお勧めします。複数の Azure AD ディレクトリの使用を計画する前に、これらのトピックでは 1 つのディレクトリを使用できる一般的なシナリオについて説明しています。
 
-| トピック | |
-| --------- | --------- |
-| 管理単位を使用した委任 | [Azure AD の管理単位](active-directory-administrative-units-management.md)
+トピック |  
+--------- | ---------
+管理単位を使用した委任 | [Azure AD の管理単位](active-directory-administrative-units-management.md)
 
 ![Forest Multi Directory](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectory.png)
 
@@ -187,4 +187,4 @@ Azure AD のディレクトリは、分離するように設計されていま�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

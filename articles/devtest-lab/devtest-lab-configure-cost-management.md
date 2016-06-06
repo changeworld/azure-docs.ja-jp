@@ -1,6 +1,6 @@
 <properties
-	pageTitle="コスト管理の構成 | Microsoft Azure"
-	description="DevTest ラボのコスト管理機能を構成する方法について説明します。"
+	pageTitle="月間推定コスト傾向 | Microsoft Azure"
+	description="DevTest ラボの月間推定コスト傾向グラフについて説明します。"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="05/25/2016"
 	ms.author="tarcher"/>
 
-# コスト管理の構成
+# 月間推定コスト傾向
 
 ## 概要
 
 DevTest ラボのコスト管理機能は、ラボのコストを追跡するのに役立ちます。この記事では、**月間推定コスト傾向**グラフを使用して、現在のカレンダー月の現時点までの推定コストおよび現在のカレンダー月の月末の予測コストを表示する方法を示します。
 
-## 月間推定コスト傾向グラフを有効にする
+## 月間推定コスト傾向グラフを表示する
 
-月間推定コスト傾向グラフを有効にするには、次の手順に従います。
+月間推定コスト傾向グラフを表示するには、次の手順に従います。
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
@@ -34,26 +34,27 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
 
 1. **[設定]** をタップします。
 
-	![[設定]](./media/devtest-lab-configure-cost-management/lab-blade-settings.png)
+	![Settings](./media/devtest-lab-configure-cost-management/lab-blade-settings.png)
 
-1. ラボの **[設定]** ブレードで、**[コスト ポリシー]** の **[コストしきい値]** をタップします。
+1. ラボの **[設定]** ブレードの **[Cost Management]** (コスト管理) で、**[しきい値]** をクリックします。
 
 	![メニュー](./media/devtest-lab-configure-cost-management/menu.png)
  
-1. **[コストしきい値]** ブレードで、この機能を有効にする場合は **[オン]** をタップし、無効にする場合は **[オフ]** をタップします。
+1. 次のスクリーン ショットはコスト グラフの例を示しています。
 
-1. **[保存]** をタップします。
+    ![コスト グラフ](./media/devtest-lab-configure-cost-management/graph.png)
 
-この機能を有効にすると、グラフに推定コストと予測コストが表示されるまで数時間かかる場合があります。これは、サービスはこの情報を収集するために 1 時間ごとに実行されますが、ライブ データが収集されてから実行されるのは数時間後になるためです。たとえば、午前 1 時に VM を起動するとします。その VM に関連付けられているコストは、おそらく、2 ～ 3 時間はコスト グラフに組み込まれません。
+**[推定コスト]** 値は現在のカレンダー月のこれまでの推定コストであるのに対し、**[予測コスト]** は現在のカレンダー月全体の推定コストで、過去 5 日間のラボのコストを使用して計算されます。
  
-次のスクリーン ショットはコスト グラフの例を示しています。
+コストの金額の端数は切り上げられることに注意してください。次に例を示します。
 
-![コスト グラフ](./media/devtest-lab-configure-cost-management/graph.png)
-
-**[推定コスト]** 値は現在のカレンダー月のこれまでの推定コストであるのに対し、**[予測コスト]** は現在のカレンダー月全体の推定コストです。
+- 5\.01 は切り上げて 6 になります。 
+- 5\.50 は切り上げて 6 になります。
+- 5\.99 は切り上げて 6 になります。
 
 グラフの上に示されているとおり、グラフに表示されるコストは、[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)プラン料金を使用した*推定*コストです。また、コスト計算には次のものは含まれて*いません*。
 
+- CSP サブスクリプションと Dreamspark サブスクリプションは現在サポートされません。DevTest ラボは、[Azure 課金 API](../billing-usage-rate-card-overview.md) を使用してラボ コストを計算しますが、Azure 課金 API は CSP サブスクリプションも Dreamspark サブスクリプションもサポートしていないためです。
 - プラン料金。現時点では、Microsoft または Microsoft パートナーとネゴシエートしたプラン料金 (サブスクリプションの下に表示される) は使用できません。従量課金料金を使用します。
 - 税金
 - 割引
@@ -65,7 +66,7 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
 
 - [ラボ ポリシーを定義する](./devtest-lab-set-lab-policy.md) - ラボとその VM の使用方法を制御するために使用されるさまざまなポリシーの設定方法を確認します。 
 - [カスタム イメージを作成する](./devtest-lab-create-template.md) - VM を作成する場合は、ベースとしてカスタム イメージまたは Marketplace イメージを指定します。この記事では、VHD ファイルからカスタム イメージを作成する方法について説明します。
-- [Marketplace イメージを構成する](./devtest-lab-configure-marketplace-images.md) - DevTest ラボでは、Azure Marketplace イメージに基づく新しい VM を作成することができます。この記事では、ラボで新しい VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。
+- [Marketplace イメージを構成する](./devtest-lab-configure-marketplace-images.md) - DevTest ラボでは、Azure Marketplace イメージを基にした新しい VM を作成することができます。この記事では、ラボで新しい VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。
 - [ラボで VM を作成する](./devtest-lab-add-vm-with-artifacts.md) - ベース イメージ (カスタムまたは Marketplace) から新しい VM を作成する方法と、VM でアーティファクトを操作する方法について説明します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

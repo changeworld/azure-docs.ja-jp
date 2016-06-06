@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/26/2016"
-    ms.author="ddove;sidneyh"/>
+    ms.date="05/24/2016"
+    ms.author="ddove"/>
 
 # スケーラブルなクラウド データベースの構築
 
@@ -37,6 +37,7 @@ SQL Azure データベース用のスケーラブルなツールと機能を使�
 * [Entity Framework による Elastic Database クライアント ライブラリ](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)
 * [Dapper を使用したエラスティック データベース クライアント ライブラリ](sql-database-elastic-scale-working-with-dapper.md)
 * [Split-Merge ツール](sql-database-elastic-scale-overview-split-and-merge.md)
+* [シャード マップ マネージャーのパフォーマンス カウンター](sql-database-elastic-database-client-library.md) 
 * [エラスティック データベース ツールに関する FAQ](sql-database-elastic-scale-faq.md)
 
 ## クライアントの機能
@@ -63,7 +64,7 @@ SQL Azure データベース用のスケーラブルなツールと機能を使�
 
 [エラスティック クエリ](sql-database-elastic-query-overview.md)を使用します。
 
-ライブラリは、[GitHub](https://github.com/Azure/elastic-db-tools) 上でオープン ソース ソフトウェアとして入手できます。
+ライブラリは、[GitHub](https://github.com/Azure/elastic-db-tools) でオープン ソース ソフトウェアとして入手できます。
 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
@@ -72,4 +73,4 @@ SQL Azure データベース用のスケーラブルなツールと機能を使�
 <!--Image references-->
 [1]: ./media/sql-database-elastic-database-client-library/glossary.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

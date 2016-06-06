@@ -116,12 +116,14 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
 * 質問および問題点:
  * [トラブルシューティング][qna]
- * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-JP/home?forum=ApplicationInsights)
+ * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * バグ:
  * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
 * ご提案:
  * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
+* ブログ:
+ * [Application Insights のブログ](https://azure.microsoft.com/blog/tag/application-insights)
 
 
 ## ビデオ
@@ -155,4 +157,4 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

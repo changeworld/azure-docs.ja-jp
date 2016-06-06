@@ -21,7 +21,7 @@
 
 ## エラスティック プールを利用して効率的なマルチテナント アプリを構築する
 
-多くの顧客を処理するマルチテナント アプリを作成する場合、カスタマー パフォーマンス、管理、セキュリティにおいてトレードオフを強いられることがよくあります。Azure SQL Database のエラスティック データベース プールがあれば、もう妥協をする必要はありません。エラスティック データベース プールを使用すると、マルチテナント アプリを管理および監視し、データベースあたり 1 ユーザーという分離の利点が得られます。
+多くの顧客を処理するマルチテナント アプリを作成する場合、カスタマー パフォーマンス、管理、セキュリティにおいてトレードオフを強いられることがよくあります。Azure SQL Database のエラスティック データベース プールがあれば、もう妥協をする必要はありません。エラスティック データベース プールを使用すると、マルチテナント アプリを管理および監視し、データベースあたり 1 ユーザーという分離の利点が得られます。「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
 
 ![build-multi-tenant-apps](./media/sql-database-build-multi-tenant-apps/sql-database-build-multi-tenant-apps.png)
 
@@ -61,8 +61,8 @@ SQL Database の他の機能についてはホーム ページを参照してく
 
 ## 詳細情報
 
-[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
+[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)のすべてを確認します。
  
 [SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

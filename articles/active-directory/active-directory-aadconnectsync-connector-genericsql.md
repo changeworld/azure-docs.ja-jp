@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="03/16/2016"
+   ms.date="05/24/2016"
    ms.author="andkjell"/>
 
 # Generic SQL コネクタに関するテクニカル リファレンス
@@ -34,12 +34,12 @@ Generic SQL コネクタを使用すると、ODBC 接続を提供するデータ
 
 包括的な観点から見た場合、コネクタの現在のリリースでサポートされている機能は次のとおりです。
 
-| 機能 | サポート |
-| --- | --- |
-| 接続先のデータ ソース | コネクタは、すべての 64 ビット ODBC ドライバーでサポートされています。次のデータ ソースでテスト済みです。<li>Microsoft SQL Server および SQL Azure</li><li>IBM DB2 10.x</li><li>IBM DB2 9.x</li><li>Oracle 10 および 11 g</li><li>MySQL 5.x</li>
-| シナリオ | <li>オブジェクトのライフサイクル管理</li><li>パスワード管理</li> |
-| 操作 | <li>フル インポートと差分インポート、エクスポート</li><li>エクスポートの場合: 追加、削除、更新、および置換</li><li>パスワードの設定、パスワードの変更</li>
-| スキーマ | <li>オブジェクトと属性の動的な検出</li>
+機能 | サポート
+--- | ---
+接続先のデータ ソース | コネクタは、すべての 64 ビット ODBC ドライバーでサポートされています。次のデータ ソースでテスト済みです。<li>Microsoft SQL Server および SQL Azure</li><li>IBM DB2 10.x</li><li>IBM DB2 9.x</li><li>Oracle 10 および 11 g</li><li>MySQL 5.x</li>
+シナリオ | <li>オブジェクトのライフサイクル管理</li><li>パスワード管理</li>
+操作 | <li>フル インポートと差分インポート、エクスポート</li><li>エクスポートの場合: 追加、削除、更新、および置換</li><li>パスワードの設定、パスワードの変更</li>
+スキーマ | <li>オブジェクトと属性の動的な検出</li>
 
 ### 前提条件
 
@@ -297,4 +297,4 @@ Generic SQL コネクタでは、次に示す 4 つのサポートされた方�
 
 -	コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「[How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

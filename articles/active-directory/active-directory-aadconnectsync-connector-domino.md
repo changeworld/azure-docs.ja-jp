@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="04/20/2016"
+   ms.date="05/24/2016"
    ms.author="andkjell"/>
 
 # Lotus Domino Connector のテクニカル リファレンス
@@ -32,12 +32,12 @@ Lotus Domino Connector を使用すると、IBM の Lotus Domino サーバーと
 
 包括的な観点から見た場合、コネクタの現在のリリースでサポートされている機能は次のとおりです。
 
-| 機能 | サポート |
-| --- | --- |
-| 接続先のデータ ソース | サーバー: <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>クライアント:<li>Lotus Notes 9.x</li> |
-| シナリオ | <li>オブジェクトのライフサイクル管理</li><li>グループ管理</li><li>パスワード管理</li> |
-| 操作 | <li>完全および差分インポート</li><li>エクスポート</li><li>HTTP パスワードにおけるパスワードの設定と変更</li> |
-| スキーマ | <li>Person (ローミング ユーザー、連絡先 (証明書のない Person))</li><li>グループ</li><li>リソース (リソース、ルーム、オンライン会議)</li><li>メールイン データベース</li><li>サポートされているオブジェクトの属性の動的検出</li> |
+機能 | サポート
+--- | ---
+接続先のデータ ソース | サーバー: <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>クライアント:<li>Lotus Notes 9.x</li>
+シナリオ | <li>オブジェクトのライフサイクル管理</li><li>グループ管理</li><li>パスワード管理</li>
+操作 | <li>完全および差分インポート</li><li>エクスポート</li><li>HTTP パスワードにおけるパスワードの設定と変更</li>
+スキーマ | <li>Person (ローミング ユーザー、連絡先 (証明書のない Person))</li><li>グループ</li><li>リソース (リソース、ルーム、オンライン会議)</li><li>メールイン データベース</li><li>サポートされているオブジェクトの属性の動的検出</li>
 
 Lotus Domino Connector は、Lotus Domino サーバーとの通信に、Lotus Notes クライアントを使用します。そのため、同期サーバーサポートされている Lotus Notes クライアントをインストールする必要があります。クライアントとサーバー間の通信は、Lotus Notes .NET Interop (Interop.domino.dll) インターフェイスを介して実装されています。このインターフェイスにより、Microsoft.NET プラットフォームと Lotus Notes 間の通信は促され、Lotus Domino ドキュメントおよびビューにアクセスできるようになります。(選択している差分インポートの方法に応じて) 差分インポートで C++ ネイティブ インターフェイスを使用することも可能です。
 
@@ -59,10 +59,10 @@ Lotus Domino Connector でサポートされている任意のタスクを実行
 
 次の表に、各操作に必要なアクセス権を示します。
 
-| 操作 | アクセス権 |
-| --- | --- |
-| インポート | <li>公開されているドキュメントの読み取り</li><li> フル アクセスを持つ管理者 (フル アクセスを持つ管理者グループのメンバーである場合、ACL には実質的に自動的にアクセスできます)。</li> |
-| エクスポートおよびパスワードの設定 | 実質的なアクセス: <li>ドキュメントの作成</li><li>ドキュメントの削除</li><li>公開されているドキュメントの読み取り</li><li>公開されているドキュメントの書き込み</li><li>ドキュメントの複製またはコピー</li>エクスポート操作には、上記のアクセス権のみでなく、次のロールも割り当てられている必要があります。<li>CreateResource</li><li>GroupCreator</li><li>GroupModifier</li><li>UserCreator</li><li>UserModifier</li> |
+操作 | アクセス権
+--- | ---
+インポート | <li>公開されているドキュメントの読み取り</li><li> フル アクセスを持つ管理者 (フル アクセスを持つ管理者グループのメンバーである場合、ACL には実質的に自動的にアクセスできます)。</li>
+エクスポートおよびパスワードの設定 | 実質的なアクセス: <li>ドキュメントの作成</li><li>ドキュメントの削除</li><li>公開されているドキュメントの読み取り</li><li>公開されているドキュメントの書き込み</li><li>ドキュメントの複製またはコピー</li>エクスポート操作には、上記のアクセス権のみでなく、次のロールも割り当てられている必要があります。<li>CreateResource</li><li>GroupCreator</li><li>GroupModifier</li><li>UserCreator</li><li>UserModifier</li>
 
 ### 直接の操作および AdminP
 
@@ -70,21 +70,21 @@ Lotus Domino Connector でサポートされている任意のタスクを実行
 
 **プライマリ アドレス帳**
 
-| オブジェクト | 作成 | 更新 | 削除 |
-| --- | --- | --- | --- |
-| Person | AdminP | 直接 | AdminP |
-| グループ | AdminP | 直接 | AdminP |
-| MailInDB | 直接 | 直接 | 直接 |
-| リソース | AdminP | 直接 | AdminP |
+オブジェクト | 作成 | 更新 | 削除
+--- | --- | --- | ---
+Person | AdminP | 直接 | AdminP
+グループ | AdminP | 直接 | AdminP
+MailInDB | 直接 | 直接 | 直接
+リソース | AdminP | 直接 | AdminP
 
 **セカンダリ アドレス帳**
 
-| オブジェクト | 作成 | 更新 | 削除 |
-| --- | --- | --- | --- |
-| Person | 該当なし | 直接 | 直接 |
-| グループ | 直接 | 直接 | 直接 |
-| MailInDB | 直接 | 直接 | 直接 |
-| リソース | 該当なし | 該当なし | 該当なし |
+オブジェクト | 作成 | 更新 | 削除
+--- | --- | --- | ---
+Person | 該当なし | 直接 | 直接
+グループ | 直接 | 直接 | 直接
+MailInDB | 直接 | 直接 | 直接
+リソース | 該当なし | 該当なし | 該当なし
 
 リソースが作成されると、Notes ドキュメントが作成されます。同様にリソースが削除されると、Notes ドキュメントが削除されます。
 
@@ -327,11 +327,11 @@ Person オブジェクトとは、組織と組織単位内のユーザーです�
 
 リソースは Lotus Domino のもう 1 種類のデータベースです。リソースは、プロジェクターなどのさまざまな種類の機器がある会議室である場合があります。リソースには、リソースの種類の属性に基づいて定義される Lotus Domino Connector によってサポートされるそのサブタイプがあります。
 
-| リソースの種類 | リソースの種類の属性 |
-| --- | --- |
-| ルーム | 1 |
-| リソース (その他) | 2 |
-| オンライン会議 | 3 |
+リソースの種類 | リソースの種類の属性
+--- | ---
+ルーム | 1
+リソース (その他) | 2
+オンライン会議 | 3
 
 リソース オブジェクトの種類が機能するには、次が必要です。
 
@@ -409,21 +409,21 @@ Lotus Domino ディレクトリに Person オブジェクトをプロビジョ�
 
 これらのプロパティとその説明は、次の表で示します。
 
-| プロパティ | 説明 |
-| --- | --- |
-| \_MMS\_AltFullName | ユーザーの別の完全名。 |
-| \_MMS\_AltFullNameLanguage | ユーザーの別の完全名を指定するために使用する言語。 |
-| \_MMS\_CertDaysToExpire | 証明書が有効期限切れになる前の現在の日付からの日数。これを指定しない場合、既定の日付は現在の日から 2 年後になります。 |
-| \_MMS\_Certifier | 認証者の組織階層名が格納されたプロパティ。例: OU=OrganizationUnit,O=Org,C=Country。 |
-| \_MMS\_IDPath | このプロパティが空の場合、ユーザー ID ファイルが同期サーバーのローカルに作成されません。プロパティにファイル名が含まれる場合、ユーザー ID ファイルがメタデータ フォルダーに作成されます。このプロパティには、ユーザー ID ファイルが作成された場所の完全なパスを含めることも可能です。 |
-| \_MMS\_IDRegType | Person は、連絡先、米国ユーザーおよび海外ユーザーに分類できます。可能な値を次に示します。<li>0 - 連絡先</li><li>1 - 米国ユーザー</li><li>2 - 海外ユーザー</li> |
-| \_MMS\_IDStoreType | 米国および海外ユーザーに必須のプロパティ。このプロパティには、ユーザー ID を Notes のアドレス帳に添付ファイルとして格納するか、ユーザーのメール ファイルに格納するかを指定する整数値が含まれます。ユーザー ID ファイルがアドレス帳の添付ファイルの場合は、必要に応じて \_MMS\_IDPath 付きのファイルとして作成できます。<li>空 - ID ファイルは ID コンテナーに格納。(連絡先に使用する) ID ファイルはない。</li><li> 1: Notes アドレス帳の添付ファイル。添付ファイルのユーザー ID ファイルには、\_MMS\_Password プロパティを設定する必要があります。</li><li>2: ユーザーのメール ファイルへの ID の格納。Person の登録時にメール ファイルを作成するには、\_MMS\_UseAdminP は false に設定する必要があります。\_MMS\_Password プロパティは、ユーザーの ID ファイルに設定する必要があります。</li>
-| \_MMS\_MailQuotaSizeLimit | 電子メール ファイル データベースに許可されるメガバイト数での領域。 |
-| \_MMS\_MailQuotaWarningThreshold | 警告が発行される前に電子メール ファイル データベースに許可されるメガバイト数での領域。 |
-| \_MMS\_MailTemplateName | ユーザーの電子メール ファイルの作成に使用される電子メール テンプレート ファイル。テンプレートを指定すると、指定したテンプレートを使用してメール ファイルが作成されます。テンプレートを指定しない場合、ファイルの作成に既定のテンプレート ファイルが使用されます。 |
-| \_MMS\_OU | 証明者の下の OU 名である省略可能なプロパティ。連絡先の場合、このプロパティは空になっている必要があります。 |
-| \_MMS\_Password | ユーザーに必須のプロパティ。このプロパティには、オブジェクトの ID ファイルのパスワードが含まれます。 |
-| \_MMS\_UseAdminP | Domino サーバーの AdminP プロセスでメール ファイルを作成する場合、プロパティは true に設定する必要があります (エクスポート プロセスに対して非同期)。プロパティを false に設定する場合、メール ファイルは Domino ユーザーと共に作成されます (エクスポート プロセスで同期)。 |
+プロパティ | 説明
+--- | ---
+\_MMS\_AltFullName | ユーザーの別の完全名。
+\_MMS\_AltFullNameLanguage | ユーザーの別の完全名を指定するために使用する言語。
+\_MMS\_CertDaysToExpire | 証明書が有効期限切れになる前の現在の日付からの日数。これを指定しない場合、既定の日付は現在の日から 2 年後になります。
+\_MMS\_Certifier | 認証者の組織階層名が格納されたプロパティ。例: OU=OrganizationUnit,O=Org,C=Country。
+\_MMS\_IDPath | このプロパティが空の場合、ユーザー ID ファイルが同期サーバーのローカルに作成されません。プロパティにファイル名が含まれる場合、ユーザー ID ファイルがメタデータ フォルダーに作成されます。このプロパティには、ユーザー ID ファイルが作成された場所の完全なパスを含めることも可能です。
+\_MMS\_IDRegType | Person は、連絡先、米国ユーザーおよび海外ユーザーに分類できます。可能な値を次に示します。<li>0 - 連絡先</li><li>1 - 米国ユーザー</li><li>2 - 海外ユーザー</li>
+\_MMS\_IDStoreType | 米国および海外ユーザーに必須のプロパティ。このプロパティには、ユーザー ID を Notes のアドレス帳に添付ファイルとして格納するか、ユーザーのメール ファイルに格納するかを指定する整数値が含まれます。ユーザー ID ファイルがアドレス帳の添付ファイルの場合は、必要に応じて \_MMS\_IDPath 付きのファイルとして作成できます。<li>空 - ID ファイルは ID コンテナーに格納。(連絡先に使用する) ID ファイルはない。</li><li> 1: Notes アドレス帳の添付ファイル。添付ファイルのユーザー ID ファイルには、\_MMS\_Password プロパティを設定する必要があります。</li><li>2: ユーザーのメール ファイルへの ID の格納。Person の登録時にメール ファイルを作成するには、\_MMS\_UseAdminP は false に設定する必要があります。\_MMS\_Password プロパティは、ユーザーの ID ファイルに設定する必要があります。</li>
+\_MMS\_MailQuotaSizeLimit | 電子メール ファイル データベースに許可されるメガバイト数での領域。
+\_MMS\_MailQuotaWarningThreshold | 警告が発行される前に電子メール ファイル データベースに許可されるメガバイト数での領域。
+\_MMS\_MailTemplateName | ユーザーの電子メール ファイルの作成に使用される電子メール テンプレート ファイル。テンプレートを指定すると、指定したテンプレートを使用してメール ファイルが作成されます。テンプレートを指定しない場合、ファイルの作成に既定のテンプレート ファイルが使用されます。
+\_MMS\_OU | 証明者の下の OU 名である省略可能なプロパティ。連絡先の場合、このプロパティは空になっている必要があります。
+\_MMS\_Password | ユーザーに必須のプロパティ。このプロパティには、オブジェクトの ID ファイルのパスワードが含まれます。
+\_MMS\_UseAdminP | Domino サーバーの AdminP プロセスでメール ファイルを作成する場合、プロパティは true に設定する必要があります (エクスポート プロセスに対して非同期)。プロパティを false に設定する場合、メール ファイルは Domino ユーザーと共に作成されます (エクスポート プロセスで同期)。
 
 ID ファイルが関連付けられているユーザーについては、\_MMS\_Password プロパティに値を含める必要があります。Lotus Notes クライアントを使用した電子メールでのアクセスの場合、ユーザーの MailServer および MailFile プロパティには値を含める必要があります。
 
@@ -449,13 +449,13 @@ Lotus Domino Connector は、同期サービスで主に次の 4 種類のオブ
 
 このセクションでは、Domino サーバーへのオブジェクトのエクスポート用にサポートされている各種類のオブジェクトに必須の属性について説明します。
 
-| オブジェクトの種類 | 必須の属性 |
-| --- | --- |
-| グループ | <li>ListName</li> |
-| メールイン データベース | <li>FullName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li> |
-| Person | <li>LastName</li><li>MailFile</li><li>ShortName</li><li>\_MMS\_Password</li><li>\_MMS\_IDStoreType</li><li>\_MMS\_Certifier</li><li>\_MMS\_IDRegType</li><li>\_MMS\_UseAdminP</li> |
-| 連絡先 (証明者のない Person) | <li>\_MMS\_IDRegType</li> |
-| リソース | <li>FullName</li><li>ResourceType</li><li>ConfDB</li><li>ResourceCapacity</li><li>Site</li><li>DisplayName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li> |
+オブジェクトの種類 | 必須の属性
+--- | ---
+グループ | <li>ListName</li>
+メールイン データベース | <li>FullName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li>
+Person | <li>LastName</li><li>MailFile</li><li>ShortName</li><li>\_MMS\_Password</li><li>\_MMS\_IDStoreType</li><li>\_MMS\_Certifier</li><li>\_MMS\_IDRegType</li><li>\_MMS\_UseAdminP</li>
+連絡先 (証明者のない Person) | <li>\_MMS\_IDRegType</li>
+リソース | <li>FullName</li><li>ResourceType</li><li>ConfDB</li><li>ResourceCapacity</li><li>Site</li><li>DisplayName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li>
 
 ## お問い合わせの多い問題および質問
 
@@ -539,4 +539,4 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 
 -	コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「[How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

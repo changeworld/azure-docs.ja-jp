@@ -28,6 +28,6 @@ Azure サブスクリプション内の Data Factory | 50 | [サポートにお�
 
 ### Web サービス呼び出しの制限
 
-Azure リソース マネージャーでは、API 呼び出しの制限があります。API の呼び出しは、[Azure リソース マネージャーの API 制限](../azure-subscription-service-limits/#resource-group-limits)内の割合で実行できます。
+Azure リソース マネージャーでは、API 呼び出しの制限があります。API の呼び出しは、[Azure リソース マネージャーの API 制限](../azure-subscription-service-limits.md#resource-group-limits)内の割合で実行できます。
 
-
+<!---HONumber=AcomDC_0525_2016-->

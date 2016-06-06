@@ -26,7 +26,7 @@ App Service では、サード パーティの ID プロバイダーがアカウ
 
 すぐに開始する場合は、以下のチュートリアルのいずれかを参照してください。
 
-- [iOS アプリに認証を追加する][iOS]\(または [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova])
+- [iOS アプリに認証を追加する][iOS] (または [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova])
 - [Azure App Service の API Apps でのユーザー認証][apia-user]
 - [Azure App Service の使用 - 第 2 部][web-getstarted]
 
@@ -102,7 +102,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 任意の言語またはフレームワークで記述されたコードで、これらのヘッダーから必要な情報を取得できます。ASP.NET 4.6 アプリの場合は、**ClaimsPrincipal** が自動的に適切な値に設定されます。
 
-アプリケーションでは、HTTP GET を介してアプリケーションの `/.auth/me` エンドポイントで、その他のユーザー詳細も取得できます。要求に含まれている有効なトークンにより、使用されているプロバイダー、基になっているプロバイダー トークン、およびその他のユーザー情報に関する詳細を含む JSON ペイロードが返されます。Mobile Apps サーバー SDK には、このデータを操作するためのヘルパー メソッドが用意されています。詳細については、「[Azure Mobile Apps Node.js SDK の使用方法](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md/#howto-tables-getidentity)」および「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md/#user-info)」を参照してください。
+アプリケーションでは、HTTP GET を介してアプリケーションの `/.auth/me` エンドポイントで、その他のユーザー詳細も取得できます。要求に含まれている有効なトークンにより、使用されているプロバイダー、基になっているプロバイダー トークン、およびその他のユーザー情報に関する詳細を含む JSON ペイロードが返されます。Mobile Apps サーバー SDK には、このデータを操作するためのヘルパー メソッドが用意されています。詳細については、「[Azure Mobile Apps Node.js SDK の使用方法](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)」と「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)」を参照してください。
 
 ## ドキュメントおよびその他のリソース
 
@@ -174,8 +174,8 @@ Azure Active Directory のクライアント主導のフローを使用する場
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 
-[ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md/#adal
-[ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md/#adal
-[ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md/#adal
+[ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
+[ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
+[ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

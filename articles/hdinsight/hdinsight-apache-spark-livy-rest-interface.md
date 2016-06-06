@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/14/2016"
+	ms.date="05/24/2016"
 	ms.author="nitinme"/>
 
 
 # Livy を使用した Linux での HDInsight Spark クラスターへの Spark ジョブのリモート送信 (プレビュー)
 
-Azure HDInsight の Apache Spark クラスターには、Livy が含まれています。これは、任意の場所から Spark クラスターにリモートでジョブを送信するための REST インターフェイスです。詳細なドキュメントについては、[Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server) に関するページを参照してください。
+Azure HDInsight の Apache Spark クラスターには、Livy が含まれています。これは、Spark クラスターにリモートでジョブを送信するための REST インターフェイスです。詳細なドキュメントについては、[Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server) に関するページを参照してください。
 
 Livy を使用すると、対話型の Spark シェルを実行したり、Spark で実行されるバッチ ジョブを送信したりすることができます。この記事では、Livy を使用してバッチ ジョブを送信する方法について説明します。以下の構文では、Curl を使用して、Livy エンドポイントへの REST 呼び出しを行います。
 
@@ -69,6 +69,14 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 **例**:
 
 	curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/{batchId}"
+
+## Livy と高可用性
+
+Livy は、クラスター上で実行される Spark ジョブに対する高可用性を提供します。いくつかの例を次に示します。
+
+* リモートから Spark クラスターにジョブを送信した後で Livy サービスがダウンした場合、そのジョブはバックグラウンドで引き続き実行されます。Livy が再度稼働状態に戻ると、ジョブの状態を復元してその旨を報告します。
+
+* HDInsight の Jupyter Notebook は、バックエンドで Livy が機能しています。ノートブックで Spark ジョブを実行中に Livy サービスが再起動された場合、コード セルは引き続き実行されます。
 
 ## 実際の例
 
@@ -179,7 +187,7 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -189,4 +197,4 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

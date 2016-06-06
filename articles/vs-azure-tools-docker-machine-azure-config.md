@@ -107,4 +107,4 @@ docker-machine を使用して、個々の Docker ホストの検証のために
 
 Visual Studio を使用した .NET Core アプリケーションの開発については、「[Docker Tools for Visual Studio (Visual Studio 用 Docker ツール)](http://aka.ms/DockerToolsForVS)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

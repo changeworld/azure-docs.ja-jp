@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="05/20/2016"
 	ms.author="jeffstok" />
 
 
@@ -59,8 +59,14 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 
 サンプル受信通話メタデータを生成し、それを Event Hub にプッシュするクライアント アプリケーションが提供されています。次の手順に従って、このアプリケーションを設定します。
 
-1.	[TelcoGenerator.zip ファイル](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip)をダウンロードします。
+1.	[TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) ファイルをダウンロードします。次に、このファイルをディレクトリに解凍します。
+
+    **注**: ダウンロードされた zip ファイルが Windows によってブロックされる可能性があります。ファイルを右クリックし、[プロパティ] をクリックします。"このファイルは他のコンピューターから取得したものです。このコンピューターを保護するため、このファイルへのアクセスはブロックされる可能性があります" というメッセージが表示されたら、[ブロック解除] ボックスをオンにして、zip ファイルで [適用] をクリックします。
+
 2.	**telcodatagen.exe.config** 内の Microsoft.ServiceBus.ConnectionString 値と EventHubName 値を、Event Hub の接続文字列と名前に置き換えます。
+
+    **注**: Azure ポータルからコピーされた接続文字列によって、接続の名前が最後に配置されます。add key= フィールドからは ";EntityPath=<value>" を必ず削除してください。
+
 3.	アプリケーションを起動します。使用方法は次のとおりです。
 
    telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]
@@ -259,4 +265,4 @@ Blob Storage 用のコンテナーがまだない場合は、次の手順に従�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

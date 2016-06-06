@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="02/28/2016"
+	ms.date="05/19/2016"
 	ms.author="heidist"/>
 
 # Azure Search サービスの制限
@@ -59,4 +59,4 @@ Api キーは、サービスの認証に使用されます。次の 2 つの種�
 
 Standard レベルでは、より多くのパラメーターを制御できるため、さらに厳密に QPS を見積もることができます。ワークロードの QPS を計算する方法のガイダンスについては、「[Microsoft Azure で検索サービスを管理する](search-manage.md)」のベスト プラクティス セクションをご覧ください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="12/02/2015"
+   ms.date="05/24/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスのデプロイメントのトラブルシューティング
@@ -21,7 +21,7 @@
 
 この記事は、Microsoft Azure StorSimple のデプロイに役立つトラブルシューティングのガイダンスです。StorSimple の構成時に発生する可能性のある問題の解決に役立つ、一般的な問題、考えられる原因、推奨手順について説明します。この情報は、StorSimple のオンプレミスの物理デバイスと StorSimple 仮想デバイスの両方に当てはまります。
 
-> [AZURE.NOTE]デバイスの構成に関する問題は、デバイスを初めてデプロイするときやデバイスが省略可能な場合は、後ほど発生することがあります。この記事では、初回デプロイメントでの問題のトラブルシューティングについて説明します。運用デバイスのトラブルシューティングを行うには、[運用デバイスの問題のトラブルシューティング](storsimple-troubleshoot-operational-device.md)に関するページを参照してください。
+> [AZURE.NOTE] デバイスの構成に関する問題は、デバイスを初めてデプロイするときやデバイスが省略可能な場合は、後ほど発生することがあります。この記事では、初回デプロイメントでの問題のトラブルシューティングについて説明します。運用デバイスのトラブルシューティングを行うには、[運用デバイスの問題のトラブルシューティング](storsimple-troubleshoot-operational-device.md)に関するページを参照してください。
 
 この記事ではまた、StorSimple のデプロイのトラブルシューティングのためのツールについて説明し、トラブルシューティングの手順の例を示します。
 
@@ -51,7 +51,7 @@
   - デバイス管理者のパスワードは、デバイスへのログオンに使用します。デバイスの既定のパスワードは **Password1** です。
   - StorSimple Snapshot Manager のパスワードは、StorSimple Snapshot Manager を使用するための構成をデバイスに対して行う際に必要となります。このパスワードは、セットアップ ウィザードで最初に設定しておく必要があります。その後、StorSimple Manager サービスから設定したり変更したりすることができます。StorSimple Snapshot Manager に対しては、このパスワードによってデバイスが認証されます。
  
-    > [AZURE.IMPORTANT]パスワードは登録前に収集されますが、適用されるのは、デバイスの登録に成功した後になります。パスワードの適用に失敗した場合、必要な (複雑さの要件を満たした) パスワードが収集されるまで、パスワードを再入力するように求められます。
+    > [AZURE.IMPORTANT] パスワードは登録前に収集されますが、適用されるのは、デバイスの登録に成功した後になります。パスワードの適用に失敗した場合、必要な (複雑さの要件を満たした) パスワードが収集されるまで、パスワードを再入力するように求められます。
 
 4. デバイスの登録: 最後に、Microsoft Azure 内で実行されている StorSimple Manager サービスにデバイスを登録します。登録するには、Azure クラシック ポータルから[サービス登録キーを取得](storsimple-manage-service.md#get-the-service-registration-key)し、セットアップ ウィザードにキーを入力する必要があります。デバイスが正常に登録されると、サービス データ暗号化キーが支給されます。この暗号化キーは以後、他のすべてのデバイスをサービスに登録する際に必要となります。安全な場所に保管しておいてください。
 
@@ -117,7 +117,7 @@ Windows Server ホスト上で実行されている StorSimple Snapshot Manager 
 
 パスワードは、デバイスの登録前に収集されますが、適用されるのは、登録に成功した後になります。パスワード復元ワークフローを使用するには、デバイスが登録されている必要があります。
 
-> [AZURE.IMPORTANT]通常、パスワードを適用できなかった場合、成功するまで繰り返しパスワードの入力を求められます。まれに、パスワードを適用できないことがあります。その場合、デバイスを登録して続行することもできますが、パスワードは変更されません。変更されなかったのがデバイス管理者のパスワードなのか、StorSimple Snapshot Manager のパスワードなのかは通知されません。この状況が生じた場合は、両方のパスワードを変更することをお勧めします。
+> [AZURE.IMPORTANT] 通常、パスワードを適用できなかった場合、成功するまで繰り返しパスワードの入力を求められます。まれに、パスワードを適用できないことがあります。その場合、デバイスを登録して続行することもできますが、パスワードは変更されません。変更されなかったのがデバイス管理者のパスワードなのか、StorSimple Snapshot Manager のパスワードなのかは通知されません。この状況が生じた場合は、両方のパスワードを変更することをお勧めします。
 
 Azure クラシック ポータルで StorSimple Manager サービスを使用してパスワードをリセットできます。詳細については、次を参照してください。
 
@@ -163,7 +163,7 @@ StorSimple には、StorSimple ソリューションのトラブルシューテ�
   1. Windows クライアントで **eventvwr** コマンドを実行します。イベント ビューアーが起動します。
   2. **[操作]** ウィンドウで、**[保存されたログを開く]** をクリックし、etvx/etw の形式のログ ファイル (サポート パッケージ) を参照します。これで、ファイルを表示できます。ファイルを開いた後、ファイルを右クリックし、テキストとして保存できます。
    
-    > [AZURE.IMPORTANT]また、Windows PowerShell の **Get-WinEvent** コマンドレットを使用して、これらのファイルを開くこともできます。詳細については、Windows PowerShell コマンドレット リファレンス ドキュメントの「[Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx)」を参照してください。
+    > [AZURE.IMPORTANT] また、Windows PowerShell の **Get-WinEvent** コマンドレットを使用して、これらのファイルを開くこともできます。詳細については、Windows PowerShell コマンドレット リファレンス ドキュメントの「[Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx)」を参照してください。
 
 5. イベント ビューアーでログを開いたら、デバイスの構成に関連する問題を含む次のログを探します。
 
@@ -261,7 +261,7 @@ StorSimple デバイスで Update 1 を実行している場合、次の診断�
 
 `Test-Connection` コマンドレットの次の出力サンプルをご覧ください。
 
-> [AZURE.NOTE]最初のサンプルでは、デバイスで DNS が正しく構成されていません。2 番目のサンプルでは、DNS が正しく構成されています。
+> [AZURE.NOTE] 最初のサンプルでは、デバイスで DNS が正しく構成されていません。2 番目のサンプルでは、DNS が正しく構成されています。
  
 **出力の例 – 正しくない DNS**
 
@@ -328,7 +328,7 @@ StorSimple Manager サービスに既に接続され、登録されているデ�
 
 このコマンドレットを使用する方法の詳細については、Windows PowerShell のリファレンス ドキュメントの「[Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx)」をご覧ください。
 
-> [AZURE.IMPORTANT]このコマンドレットは、アクティブとパッシブの両方のコントローラーに対して実行できます。
+> [AZURE.IMPORTANT] このコマンドレットは、アクティブとパッシブの両方のコントローラーに対して実行できます。
  
 `Test-HcsmConnection` コマンドレットの次の出力サンプルをご覧ください。
 
@@ -537,11 +537,11 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 
 1. デバイス構成を確認します。アクティブ コントローラーで `Invoke-HcsSetupWizard` を実行します。
 
-     >[AZURE.NOTE]セットアップ ウィザードはアクティブ コントローラー上で実行する必要があります。アクティブ コントローラーに接続されているかどうかは、シリアル コンソールに表示されるバナーを見て確認できます。接続先がコントローラー 0 であるかコントローラー 1 であるか、また、コントローラーがアクティブであるかパッシブであるかがバナーに表示されます。詳細については、「[デバイスでのアクティブなコントローラーの識別](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」を参照してください。
+     > [AZURE.NOTE] セットアップ ウィザードはアクティブ コントローラー上で実行する必要があります。アクティブ コントローラーに接続されているかどうかは、シリアル コンソールに表示されるバナーを見て確認できます。接続先がコントローラー 0 であるかコントローラー 1 であるか、また、コントローラーがアクティブであるかパッシブであるかがバナーに表示されます。詳細については、「[デバイスでのアクティブなコントローラーの識別](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」を参照してください。
  
 2. デバイスが正しく配線されていることを確認します。デバイスのバック プレーンでネットワークのケーブル配線を確認します。ケーブル配線はデバイスのモデルによって異なります。詳細については、「[StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md)」または「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」をご覧ください。
 
-     >[AZURE.NOTE]10 GbE ネットワーク ポートを使用する場合は、提供されている QSFP-SFP アダプターと SFP ケーブルを使用する必要があります。詳細については、[Mellanox ポートの OEM サプライヤー推奨ケーブル、スイッチ、トランシーバーの一覧](http://www.mellanox.com/page/cables?mtag=cable_overview)を参照してください。
+     > [AZURE.NOTE] 10 GbE ネットワーク ポートを使用する場合は、提供されている QSFP-SFP アダプターと SFP ケーブルを使用する必要があります。詳細については、[Mellanox ポートの OEM サプライヤー推奨ケーブル、スイッチ、トランシーバーの一覧](http://www.mellanox.com/page/cables?mtag=cable_overview)を参照してください。
  
 3. ネットワーク インターフェイスの状態を確認します。
 
@@ -559,7 +559,7 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
   - セットアップ ウィザードを再実行し (**Invoke-HcsSetupWizard** を実行する)、エラーがないように値をもう一度入力します。 
   - 使用している登録キーを確認します。StorSimple Manager サービスには、同じ登録キーを使用して複数のデバイスを接続できます。「[サービス登録キーの取得](storsimple-manage-service.md#get-the-service-registration-key)」の手順に従って、正しい登録キーを使用しているかどうかを確認してください。
 
-    > [AZURE.IMPORTANT]複数のサービスを実行している場合、適切なサービスの登録キーを使用してデバイスを登録する必要があります。デバイスを間違った StorSimple Manager サービスで登録している場合、[Microsoft サポート](storsimple-contact-microsoft-support.md)に対処法を問い合わせる必要があります。場合によっては、デバイスを出荷時の設定にリセットしたうえで、目的のサービスに接続する必要があります。その場合は、データが失われる可能性があります。
+    > [AZURE.IMPORTANT] 複数のサービスを実行している場合、適切なサービスの登録キーを使用してデバイスを登録する必要があります。デバイスを間違った StorSimple Manager サービスで登録している場合、[Microsoft サポート](storsimple-contact-microsoft-support.md)に対処法を問い合わせる必要があります。場合によっては、デバイスを出荷時の設定にリセットしたうえで、目的のサービスに接続する必要があります。その場合は、データが失われる可能性があります。
 
 6. Test-Connection コマンドレットを使用して、外部のネットワークとの接続を確認します。詳細については、「[Test-Connection コマンドレットを使用したトラブルシューティング](#troubleshoot-with-the-test-connection-cmdlet)」を参照してください。
 
@@ -577,4 +577,4 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 [1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
 [2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0525_2016-->

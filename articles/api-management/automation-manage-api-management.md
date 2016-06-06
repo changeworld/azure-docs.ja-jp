@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/18/2016"
+	ms.date="05/24/2016"
 	ms.author="csand"/>
 
 
@@ -42,6 +42,6 @@ Automation で API Management を使用する例については、次を参照�
 
 ここまでは、Azure Automation の基本と Azure Automation を使用して Azure API Management を管理する方法について説明しました。詳細については、次の各リンクを参照してください。
 
-* Azure Automation の[作業開始のチュートリアル](../automation/automation-first-runbook-graphical)を参照してください。
+* Azure Automation の[作業開始のチュートリアル](../automation/automation-first-runbook-graphical.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

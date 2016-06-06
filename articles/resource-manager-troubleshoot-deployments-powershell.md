@@ -1,6 +1,6 @@
 <properties
-   pageTitle="PowerShell でのデプロイのトラブルシューティング | Microsoft Azure"
-   description="Azure PowerShell を使用して、リソース マネージャーのデプロイからの問題を修正する方法について説明します。"
+   pageTitle="PowerShell でのデプロイ操作の表示 | Microsoft Azure"
+   description="Azure PowerShell を使用して、リソース マネージャーのデプロイからの問題を検出する方法について説明します。"
    services="azure-resource-manager,virtual-machines"
    documentationCenter=""
    tags="top-support-issue"
@@ -14,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-multiple"
    ms.workload="infrastructure"
-   ms.date="03/21/2016"
+   ms.date="05/19/2016"
    ms.author="tomfitz"/>
 
-# Azure PowerShell でのリソース グループのデプロイのトラブルシューティング
+# Azure PowerShell でのデプロイ操作の表示
 
 > [AZURE.SELECTOR]
 - [ポータル](resource-manager-troubleshoot-deployments-portal.md)
@@ -25,7 +25,7 @@
 - [Azure CLI](resource-manager-troubleshoot-deployments-cli.md)
 - [REST API](resource-manager-troubleshoot-deployments-rest.md)
 
-リソースを Azure にデプロイするときにエラーを受け取った場合は、発生した問題のトラブルシューティングを行う必要があります。Azure PowerShell では、簡単にエラーを見つけ、可能性のある修正を確認することができるように、コマンドレットを提供します。
+Azure にリソースをデプロイするときにエラーが発生した場合、実行したデプロイ操作に関して、より詳しい情報が必要になることがあります。Azure PowerShell では、簡単にエラーを見つけ、可能性のある修正を確認することができるように、コマンドレットを提供します。
 
 [AZURE.INCLUDE [resource-manager-troubleshoot-introduction](../includes/resource-manager-troubleshoot-introduction.md)]
 
@@ -144,4 +144,4 @@
 - 他の種類のアクションを監視するために監査ログを使用する方法については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
 - デプロイを実行する前に検証するには、「[Azure Resource Manager のテンプレートを使用したリソースのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

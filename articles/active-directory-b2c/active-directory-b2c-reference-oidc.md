@@ -30,7 +30,7 @@ OAuth 2.0 を拡張したものなので、アプリで安全に **access\_token
 
 Azure AD B2C は、単純な認証と権限付与以上のことができるように標準の OpenID Connect プロトコルを拡張したものです。[**ポリシー パラメーター**](active-directory-b2c-reference-policies.md)を導入しており、このパラメーターにより、OpenID Connect を利用し、サインアップ、サインイン、プロファイル管理などのユーザー操作をアプリに追加できます。ここでは、OpenID Connect とポリシーを使用して、Web アプリケーションに各種のユーザー操作を導入する方法について説明します。Web API にアクセスするための access\_token を取得する方法についても説明します。
 
-下の HTTP 要求例では、サンプル B2C ディレクトリの **fabrikamb2c.onmicrosoft.com**、サンプル アプリケーションの **https://aadb2cplayground.azurewebsites.net**、ポリシーを利用します。これらの値を利用して、要求を自由に試すことができます。または、独自の値で置換できます。[独自の B2C テナント、アプリケーション、ポリシーの取得方法](#use-your-own-b2c-directory)について学習してください。
+下の HTTP 要求例では、サンプル B2C ディレクトリの **fabrikamb2c.onmicrosoft.com**、サンプル アプリケーションの ****https://aadb2cplayground.azurewebsites.net**、ポリシーを利用します。これらの値を利用して、要求を自由に試すことができます。または、独自の値で置換できます。[独自の B2C テナント、アプリケーション、ポリシーの取得方法](#use-your-own-b2c-directory)について学習してください。
 
 ## 認証要求を送信する
 Web アプリでユーザーを認証し、ポリシーを実行する必要があるときは、ユーザーを `/authorize` エンドポイントにリダイレクトさせます。これはフローの対話部分であり、実際、ユーザーはポリシーに基づいて操作します。
@@ -168,16 +168,10 @@ Web アプリに必要なことがポリシーの実行だけであれば、以�
 ```
 POST fabrikamb2c.onmicrosoft.com/v2.0/oauth2/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-	"grant_type": "authorization_code",
-	"client_id": "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6",
-	"scope": "openid offline_access",
-	"code": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...",
-	"redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
-	"client_secret": "<your-application-secret>"
-}
+grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
+
 ```
 
 | パラメーター | 必須 | 説明 |
@@ -247,16 +241,9 @@ id\_token は短命です。リソースに引き続きアクセスできるよ�
 ```
 POST fabrikamb2c.onmicrosoft.com/v2.0/oauth2/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-	"grant_type": "refresh_token",
-	"client_id": "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6",
-	"scope": "openid offline_access",
-	"refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...",
-	"redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
-	"client_secret": "<your-application-secret>"
-}
+grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 ```
 
 | パラメーター | 必須 | 説明 |
@@ -355,4 +342,4 @@ image goes here
 
 -->
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -41,7 +41,7 @@ Security Center で暗号化が必要と識別された Azure Virtual Machines �
 
 [Azure Virtual Machines の暗号化](security-center-disk-encryption.md)では、次の手順を段階的に説明します。このトピックでは、ディスク暗号化を構成するクライアント コンピューターとして Windows 10 を使用していることを想定しています。
 
-必須コンポーネントの設定と Azure 仮想マシンの暗号化の構成に使用できる方法は多数あります。既に Azure PowerShell または Azure CLI についてよく知っている方は、他の方法を好む場合もあります。他の手法の詳細については、「[Azure ディスク暗号化](../azure-security-disk-encryption.md)」を参照してください。
+必須コンポーネントの設定と Azure 仮想マシンの暗号化の構成に使用できる方法は多数あります。既に Azure PowerShell または Azure CLI についてよく知っている方は、他の方法を好む場合もあります。こうした方法の詳細については、「[Azure Disk Encryption](../security/azure-security-disk-encryption.md)」を参照してください。
 
 
 
@@ -51,7 +51,7 @@ Security Center で暗号化が必要と識別された Azure Virtual Machines �
 
 - 「[Encryption and key management with Azure Key Vault (Azure Key Vault を使用した暗号化とキー管理)](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/)」(動画、36 分 39 秒) -- IaaS VM と Azure Key Vault のディスク暗号化管理を使用し、データを保護する方法について説明しています。
 - [Azure Virtual Machines の暗号化](security-center-disk-encryption.md) (ドキュメント) -- Azure Virtual Machines を暗号化する方法について説明します。
-- 「[Windows および Linux IaaS VM プレビューの Azure Disk Encryption](../azure-security-disk-encryption.md)」(ドキュメント) -- Windows と Linux VM のディスク暗号化を有効にする方法について説明しています。
+- 「[Azure Disk Encryption](../security/azure-security-disk-encryption.md)」(ドキュメント) -- Windows と Linux VM のディスク暗号化を有効にする方法について説明しています。
 
 セキュリティ センターの詳細については、次を参照してください。
 
@@ -67,4 +67,4 @@ Security Center で暗号化が必要と識別された Azure Virtual Machines �
 <!--Image references-->
 [1]: ./media/security-center-apply-disk-encryption/apply-disk-encryption.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

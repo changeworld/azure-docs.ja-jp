@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management でロールをアクティブ化または非アクティブ化する方法
@@ -22,7 +22,7 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 
 この記事は、Azure AD Privileged Identity Management (PIM) でロールをアクティブ化する必要のある管理者を対象とし、アクセス許可が必要になったときにロールをアクティブ化して、作業が終わったときにロールを非アクティブ化する手順について説明します。
 
-管理ロールが割り当てられている場合は、そのロールが必要なタスクを実行する必要のあるときにロールをアクティブにできます。たとえば、ときどき Office 365 のみを管理する必要がある場合は、組織のセキュリティ管理者に永続的な管理者を割り当ててもらう必要はありません。代わりに、セキュリティ管理者は、あなたを Azure AD でグローバル管理者ロールまたは Exchange Online 管理者ロールの候補に指定します。つまり、このような権限が必要な場合には一時的なロールの割り当てを要求すると、事前に定義された期間だけ Office 365 の管理コントロールが付与されます。
+管理ロールが割り当てられている場合は、そのロールが必要なタスクを実行する必要のあるときにロールをアクティブにできます。たとえば、Office 365 をたまに管理するだけでよい場合は、組織の特権ロール管理者に永続的な管理者ロールを割り当ててもらう必要はありません。代わりに、セキュリティ管理者は、あなたを Azure AD でグローバル管理者ロールまたは Exchange Online 管理者ロールの候補に指定します。つまり、このような権限が必要な場合には一時的なロールの割り当てを要求すると、事前に定義された期間だけ Office 365 の管理コントロールが付与されます。
 
 
 ## Privileged Identity Management アプリケーションの追加
@@ -46,7 +46,7 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 3. アクティブ化するロールを選択します。
 4. **[アクティブ化]** を選択します。**[ロール アクティブ化要求]** ブレードが表示されます。
 5. グローバル管理者などの一部のロールでは、ロールをアクティブ化する際に Multi-Factor Authentication (MFA) が要求されます。ログイン時に MFA を実行しなかった場合は、ロールをアクティブ化する際に実行する必要があります。
-6. テキスト フィールドにアクティブ化要求の理由を入力します。セキュリティ管理者から、トラブル チケット番号を提示するよう求められる場合があります。
+6. テキスト フィールドにアクティブ化要求の理由を入力します。特権ロール管理者から、トラブル チケット番号を提示するよう求められる場合もあります。
 7. **[OK]** を選択します。ロールがアクティブ化され、ロールの変更が Microsoft Online Services に表示されます。
 
 ## ロールの非アクティブ化
@@ -63,4 +63,4 @@ Azure AD Privileged Identity Management の詳細を、次のリンクで確認�
 
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

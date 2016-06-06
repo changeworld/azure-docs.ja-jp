@@ -1,19 +1,19 @@
 <properties
    pageTitle="Azure の ID 管理と Access Control セキュリティのベスト プラクティス | Microsoft Azure"
    description="この記事では、Azure の組み込み機能を利用した ID 管理とアクセス制御に関する一連のベスト プラクティスについて説明します。"
-   services="virtual-machines, cloud-services, storage"
+   services="security"
    documentationCenter="na"
    authors="YuriDio"
    manager="swadhwa"
    editor="TomSh"/>
 
 <tags
-   ms.service="azure-security"
+   ms.service="security"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/06/2016"
+   ms.date="05/23/2016"
    ms.author="yuridio"/>
 
 # Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
@@ -38,7 +38,7 @@ ID はセキュリティの新しい境界レイヤーであり、従来のネ�
 - シングル サインオン (SSO) を有効にする
 - パスワード管理をデプロイする
 - 多要素認証 (MFA) をユーザーに適用する
-- ロールベースのアクセス制御 (RBAC) を使用する 
+- ロールベースのアクセス制御 (RBAC) を使用する
 - リソース マネージャーを使用してリソースが作成される場所を制御する
 - SaaS アプリの ID 機能を利用するよう開発者に指示する
 - 疑わしいアクティビティを能動的に監視する
@@ -88,28 +88,28 @@ Azure AD の SSO の詳細については、「[Azure AD Connect を使用した
 
 認証全体をオンプレミスで管理する必要がある場合は、代わりに [Azure Multi-Factor Authentication Server](./multi-factor-authentication/multi-factor-authentication-get-started-server.md) (MFA オンプレミスとも呼ばれます) を利用できます。この手法を利用すると、オンプレミスに MFA サーバーを置いていても、多要素認証を適用することができます。
 
-Azure MFA の詳細については、「[クラウドでの Azure Multi-Factor Authentication Server の概要](./multi-factor-authentication/multi-factor-authentication-get-started-cloud)」を参照してください。
+Azure MFA の詳細については、「[クラウドでの Azure Multi-Factor Authentication Server の概要](./multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)」を参照してください。
 
 ## ロールベースのアクセス制御 (RBAC) を使用する
- 
+
 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。Azure のロールベースのアクセス制御 (RBAC) を使用して、特定のスコープ内のユーザー、グループ、アプリケーションにアクセス許可を割り当てることができます。ロール割り当てのスコープには、サブスクリプション、リソース グループ、または単独のリソースを指定できます。
- 
+
 Azure の[組み込み RBAC ロール](./active-directory/role-based-access-built-in-roles.md)を利用して、ユーザーに権限を割り当てることができます。クラウド事業者は、ストレージ アカウントを管理する必要がある場合は*ストレージ アカウント作成協力者*ロール、従来のストレージ アカウントを管理する場合は*従来のストレージ アカウント作成協力者*ロールの使用を検討してください。VM とストレージ アカウントを管理する必要があるクラウド事業者は、それを*仮想マシン作成協力者*ロールに追加することを検討してください。
 
 RBAC などの機能を利用したデータ アクセス制御を適用しない場合、ユーザーに必要以上の権限が付与される可能性があります。これにより、ユーザーがアクセスする必要のない種類のデータ (ビジネスへの影響が高いものなど) にアクセスできるようになり、データのセキュリティ侵害につながる恐れがあります。
- 
+
 Azure RBAC の詳細については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
 
 ## リソース マネージャーを使用してリソースが作成される場所を制御する
 
 クラウド事業者がタスクを実行できるようにする一方で、組織のリソースの管理に必要な規則に違反しないようにすることが、非常に重要です。リソースが作成される場所を制御する必要のある組織では、これらの場所をハード コードする必要があります。
- 
+
 そのためには、明示的に拒否されるアクションまたはリソースが記述されている定義を含むセキュリティ ポリシーを作成できます。サブスクリプション、リソース グループ、個別リソースなど、任意の範囲でポリシー定義を割り当てます。
 
 > [AZURE.NOTE] これは RBAC と同じことではなく、実際には RBAC を利用して、リソースを作成する権限を持つユーザーを認証します。
 
 適切なコスト センターが関連付けられている場合にだけ操作を許可し、それ以外の要求は拒否する場合も、[Azure Resource Manager](resource-group-overview.md) を利用してカスタム ポリシーを作成します。
- 
+
 リソースの作成方法を制御しないと、ユーザーは必要量より多くのリソースを作成することによってサービスを不正使用する可能性が高くなります。リソースの作成プロセスを強化することは、マルチ テナントのシナリオをセキュリティ保護するための重要な手順です。
 
 Azure Resource Manager でのポリシー作成の詳細については、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」を参照してください。
@@ -134,4 +134,4 @@ SaaS アプリの認証シナリオの詳細については、「[Azure AD の�
 
 ID システムを能動的に監視しないと、ユーザーの資格情報が侵害されるリスクがあります。侵害された資格情報を用いた疑わしい活動が行われていることを把握しないと、この種の脅威を緩和することはできません。Azure Identity Protection の詳細については、「[Azure Active Directory Identity Protection](./active-directory/active-directory-identityprotection.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

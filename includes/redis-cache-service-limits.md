@@ -1,7 +1,7 @@
 | リソース | 制限 |
 |---------------------------------------------|----------------------------------------|
 | キャッシュ サイズ | 530 GB (詳細については、[お問い合わせ](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)ください) |
-| データベース | 16 |
+| データベース | 64 |
 | 接続されている最大クライアント数 | 40,000 |
 | Redis Cache のレプリカ (高可用性向け) | 1 |
 | クラスタリングを使用した Premium キャッシュ内のシャード | 10 |
@@ -12,4 +12,4 @@ Azure Redis Cache 構成の制限については、「[既定の Redis サーバ
 
 Azure Redis Cache インスタンスの構成と管理は Microsoft によって行われるため、すべての Redis コマンドが Azure Redis Cache でサポートされるわけではありません。詳細については、[Azure Redis Cache でサポートされない Redis コマンド]((redis-cache/cache-configure.md#redis-commands-not-supported-in-azure-redis-cache) を参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0525_2016-->

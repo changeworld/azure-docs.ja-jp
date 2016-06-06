@@ -1,12 +1,12 @@
 <properties
-	pageTitle="ロジック アプリに SQL Azure API を追加する | Microsoft Azure"
-	description="SQL Azure API と REST API パラメーターの概要"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="ロジック アプリに SQL Azure コネクタを追加する | Microsoft Azure"
+    description="SQL Azure コネクタと REST API パラメーターの概要"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,14 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/16/2016"
+   ms.date="05/19/2016"
    ms.author="mandia"/>
 
 
-# SQL Azure API の概要
+# SQL Azure コネクタの使用
 Azure SQL Database に接続して、行の挿入、テーブルの取得など、テーブルと行を管理します。
 
-Azure SQL Database API は、次のアプリから使用できます。
+Azure SQL Database コネクタは、次のアプリから使用できます。
 
 - Logic Apps (このトピックで説明)
 - PowerApps (詳細な一覧については、[PowerApps 接続リスト](https://powerapps.microsoft.com/tutorials/connections-list/)を参照してください)
@@ -43,14 +43,12 @@ SQL には、次のアクションがあります。トリガーはありませ�
 --- | ---
 なし | <ul><li>1 行を取得する</li><li>複数行を取得す</li><li>行を挿入する</li><li>行を削除する</li><li>テーブルを取得する</li><li>行を更新する</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## SQL への接続を作成する
-この API をロジック アプリに追加するときに、次の値を入力します。
 
-|プロパティ| 必須|説明|
-| ---|---|---|
-|SQL 接続文字列|あり|Azure SQL Database 接続文字列を入力します|
+>[AZURE.INCLUDE [SQL への接続を作成する手順](../../includes/connectors-create-api-sqlazure.md)]
+
 
 接続を作成したら、テーブル名など、SQL のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
@@ -228,4 +226,4 @@ SQL テーブルの既存の行を更新します。```PATCH: /datasets/default/
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

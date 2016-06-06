@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="05/25/2016"
 	ms.author="sdanie"/>
 
 # 複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
@@ -40,7 +40,7 @@ API Management サービス インスタンスの Azure クラシック ポー�
 
 ![リージョンの追加][api-management-add-region]
 
-リージョンを選択したら、**[ユニット\]** ボックスの一覧から新しいリージョンのユニット数を選択します。
+リージョンを選択したら、[ユニット] ボックスの一覧から新しいリージョンのユニット数を選択します。
 
 ![ユニットの指定][api-management-select-units]
 
@@ -75,4 +75,4 @@ API Management サービス インスタンスの Azure クラシック ポー�
 [ユニット]: http://azure.microsoft.com/pricing/details/api-management/
 [Premium]: http://azure.microsoft.com/pricing/details/api-management/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure クラシック ポータルを使用した Azure SQL Database の管理"
-	description="Azure クラシック ポータルを使用して、クラウド内のリレーショナル データベースを管理する方法について説明します。"
+	pageTitle="Azure ポータルを使用した Azure SQL データベースの管理"
+	description="Azure ポータルを使用して、クラウド内のリレーショナル データベースを管理する方法について説明します。"
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
@@ -13,7 +13,7 @@
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
-	ms.date="05/10/2016"
+	ms.date="05/20/2016"
 	ms.author="sstein"/>
 
 
@@ -74,4 +74,4 @@ Azure SQL Database は、コミットされたトランザクションをセカ�
 
 - [SQL Database](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

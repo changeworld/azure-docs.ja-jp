@@ -24,14 +24,14 @@
 
 [Azure 仮想マシン スケール セット](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)は、自動スケールと負荷分散のためのオプションを簡単に組み込んで、同様の仮想マシンを一元的にデプロイし、管理するための Azure コンピューティング リソースです。VM スケール セットのプロビジョニングとデプロイは、[Azure リソース マネージャー (ARM) テンプレート](https://github.com/Azure/azure-quickstart-templates)を使って行うことができます。ARM テンプレートは、Azure CLI、PowerShell、REST を使ってデプロイできるほか、Visual Studio から直接デプロイすることもできます。Visual Studio には、"Azure リソース グループの配置" プロジェクトの一環としてデプロイできるサンプル テンプレート一式が用意されています。
 
-Azure リソース グループとしてデプロイすることによって、関連する一連の Azure リソースを集約し、1 回のデプロイ操作で発行することができます。詳細については、「[Visual Studio での Azure リソース グループの作成とデプロイ](../vs-azure-tools-resource-groups-deployment-projects-create-deploy/)」を参照してください。
+Azure リソース グループとしてデプロイすることによって、関連する一連の Azure リソースを集約し、1 回のデプロイ操作で発行することができます。詳細については、「[Visual Studio での Azure リソース グループの作成とデプロイ](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
 
 ## 前提条件
 
 Visual Studio で VM スケール セットをデプロイするには、次のものが必要です。
 
 - Visual Studio 2013 または 2015
-- Azure SDK 2.7 または 2.8
+- Azure SDK 2.7、2.8、または 2.9
 
 注: 以降の手順は、Visual Studio 2015 と [Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/) を使用していることを前提としています。
 
@@ -85,7 +85,7 @@ Visual Studio で VM スケール セットをデプロイするには、次の�
 
 ## VM スケール セットについて
 
-デプロイが完了すると、Visual Studio の**クラウド エクスプローラー**で新しい VM スケール セットを確認できます (一覧を最新の情報に更新してください)。アプリケーションの開発中に、Visual Studio からクラウド エクスプローラーを使って Azure のリソースを管理できます。VM スケール セットは、Azure ポータルや Azure リソース エクスプローラーで表示することもできます。
+デプロイが完了すると、Visual Studio の**クラウド エクスプローラー**で新しい VM スケール セットを確認できます (一覧を最新の情報に更新してください)。アプリケーションの開発中に、Visual Studio からクラウド エクスプローラーを使って Azure のリソースを管理できます。VM スケール セットは、[Azure ポータル](https://portal.azure.com)や [Azure リソース エクスプローラー](https://resources.azure.com/)で表示することもできます。
 
 ![Cloud Explorer][cloud_explorer]
 
@@ -107,4 +107,4 @@ Visual Studio を使って VM スケール セットを正常にデプロイし�
 [output_window]: ./media/virtual-machine-scale-sets-vs-create/9-Output.png
 [cloud_explorer]: ./media/virtual-machine-scale-sets-vs-create/12-CloudExplorer.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

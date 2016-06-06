@@ -87,9 +87,9 @@ SQL Data Warehouse は、SQL Server がサポートするほぼすべての T-SQ
 [コードの移行]: ./sql-data-warehouse-migrate-code.md
 [create a SQL Data Warehouse database instance]: ./sql-data-warehouse-get-started-provision.md
 [bcp をインストール]: ./sql-data-warehouse-load-with-bcp.md
-[sqlcmd をインストール]: ./sql-data-warehouse-get-started-connect-query-sqlcmd.md
+[sqlcmd をインストール]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
 
 <!--Other Web references-->
 [SQL Data Warehouse の Adventure Works サンプル スクリプト]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

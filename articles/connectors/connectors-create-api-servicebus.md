@@ -1,10 +1,10 @@
 <properties
-pageTitle="Logic Apps での Azure Service Bus API の使用 | Microsoft Azure"
-description="Microsoft Azure App Service Logic Apps で Azure Service Bus API (コネクタ) の使用を開始する"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="ロジック アプリでの Azure Service Bus コネクタの使用 | Microsoft Azure"
+description="Microsoft Azure App Service Logic Apps で Azure Service Bus コネクタの使用を開始する"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,10 +14,10 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="03/16/2016"
+ms.date="05/23/2016"
 ms.author="deonhe"/>
 
-# Azure Service Bus API の概要
+# Azure Service Bus コネクタの使用 
 
 Azure Service Bus に接続して、メッセージを送受信します。キューに送信、トピックに送信、キューから受信、サブスクリプションから受信などのアクションを実行できます。
 
@@ -31,9 +31,9 @@ Azure Service Bus では、次の操作を実行できます。
 
 ## トリガーとアクション
 
-Azure Service Bus API はアクションとして使用できます。これにはトリガーがあります。すべての API は、JSON および XML 形式のデータに対応します。
+Azure Service Bus コネクタは、アクションとして使用できます。これにはトリガーがあります。すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
- Azure Service Bus API では、次のアクションやトリガーを使用できます。
+ Azure Service Bus コネクタでは、次のアクションやトリガーを使用できます。
 
 ### Azure Service Bus アクション
 実行できるアクションは以下のとおりです。
@@ -51,22 +51,9 @@ Azure Service Bus API はアクションとして使用できます。これに�
 
 
 ## Azure Service Bus への接続を作成する
-Azure Service Bus API を使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。
+Azure Service Bus コネクタを使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。
 
-|プロパティ| 必須|説明|
-| ---|---|---|
-|ConnectionString|あり|Azure Service Bus 接続文字列の指定|  
-
-次の手順に従って、ロジック アプリで使用できる Service Bus **接続**を作成します。
-
-1. **[繰り返し]** を選択します。
-2. **[頻度]** を選択し、**[間隔]** を入力します。![Service Bus の構成][1] 
-3. **[アクションの追加]** を選択します。![Service Bus の構成][2]   
-4. 検索ボックスに「**Service Bus**」と入力し、名前に Service Bus が含まれたすべてのエントリが返されるまで待ちます。
-5. **[Service Bus - メッセージの送信]** を選択します。![Service Bus の構成][3]
-7. **接続名**と**接続文字列**を入力し、**[接続の作成]** をクリックします。![Service Bus の構成][4]
-7. 接続が作成されると、**[メッセージの送信]** ダイアログが表示されます。メッセージを送信するために必要な情報をすべて入力します。![Service Bus の構成][5]
-8. 上部のメニューにある **[保存]** ボタンをクリックして、作業内容を保存します。    
+>[AZURE.INCLUDE [ServiceBus への接続を作成する手順](../../includes/connectors-create-api-servicebus.md)]
 
 >[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
@@ -158,11 +145,4 @@ ContentTransferEncoding
 ## 次のステップ
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-[1]: ./media/connectors-create-api-servicebus/connectionconfig1.png
-[2]: ./media/connectors-create-api-servicebus/connectionconfig2.png
-[3]: ./media/connectors-create-api-servicebus/connectionconfig3.png
-[4]: ./media/connectors-create-api-servicebus/connectionconfig4.png
-[5]: ./media/connectors-create-api-servicebus/connectionconfig5.png
-[6]: ./media/connectors-create-api-servicebus/connectionconfig6.png
-
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

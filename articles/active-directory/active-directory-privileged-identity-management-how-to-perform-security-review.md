@@ -13,16 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management でセキュリティ レビューを実行する方法
 
 Azure Active Directory (AD) Privileged Identity Management を使用すると、企業における特権 ID と、Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへのアクセスの管理が簡略化されます。
 
-既に管理者ロールに割り当てられているユーザーは、組織のセキュリティ管理者から、自分の業務にそのロールがまだ必要であるかどうかを確認するよう求められることがあります。リンクが記載された電子メールが届く場合もあれば、直接 [Azure ポータル](https://portal.azure.com)にアクセスすることもできます。この記事に記載された手順に従って、割り当てられたロールの自己レビューを実行することができます。
+既に管理者ロールに割り当てられているユーザーは、組織の特権ロール管理者から、自分の業務にそのロールがまだ必要であるかどうかを定期的に確認するよう求められることがあります。リンクが記載された電子メールが届く場合もあれば、直接 [Azure ポータル](https://portal.azure.com)にアクセスすることもできます。この記事に記載された手順に従って、割り当てられたロールの自己レビューを実行することができます。
 
-セキュリティ管理者としてセキュリティ レビューに関心がある場合は、「[セキュリティ レビューを開始する方法](active-directory-privileged-identity-management-how-to-start-security-review.md)」で詳細を確認できます。
+特権ロール管理者としてセキュリティ レビューに関心がある場合は、[セキュリティ レビューを開始する方法](active-directory-privileged-identity-management-how-to-start-security-review.md)に関するページで詳細を確認できます。
 
 ## Privileged Identity Management アプリケーションの追加
 
@@ -49,4 +49,4 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

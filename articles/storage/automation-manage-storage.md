@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/23/2016"
 	ms.author="jolevy"/>
 
 
@@ -50,4 +50,4 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 Azure Automation チュートリアル「[Azure Automation での Runbook の作成またはインポート](../automation/automation-creating-importing-runbook.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0525_2016-->

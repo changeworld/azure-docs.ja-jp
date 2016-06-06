@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="05/24/2016"
 	ms.author="ricksal"/>
 
 
@@ -57,9 +57,9 @@ Android 用 Mobile Services SDK は Android バージョン 2.2 以降をサポ�
 
 2. 次のコードを、*モジュール アプリ* レベルの **build.gradle** ファイルの *dependencies* タグ内に追加します。
 
-		compile 'com.microsoft.azure:azure-mobile-android:3.1'
+		compile 'com.microsoft.azure:azure-mobile-android:3.1.0'
 
-	現在の最新バージョンは 3.1 です。サポートされているバージョンの一覧については、[こちら](http://go.microsoft.com/fwlink/p/?LinkID=717034)を参照してください。
+	現在の最新バージョンは 3.1.0 です。サポートされているバージョンの一覧については、[こちら](http://go.microsoft.com/fwlink/p/?LinkID=717034)を参照してください。
 
 ###<a name="enable-internet"></a>インターネット アクセス許可を有効にする
 Azure にアクセスするには、アプリで INTERNET アクセス許可が有効になっている必要があります。まだ有効になっていない場合は、次のコード行を **AndroidManifest.xml** ファイルに追加します。
@@ -95,24 +95,24 @@ SQL Azure テーブルにさらに列が含まれる場合は、対応するフ�
 
 たとえば、整数の Priority 列がある場合は、次のフィールドと共にその getter および setter メソッドを追加します。
 
-		private Integer priority;
+	private Integer priority;
 
-	    /**
-	     * Returns the item priority
-	     */
-	    public Integer getPriority() {
-	        return mPriority;
-	    }
-
-	    /**
-	     * Sets the item priority
-	     *
-	     * @param priority
-	     *            priority to set
-	     */
-	    public final void setPriority(Integer priority) {
-	        mPriority = priority;
-	    }
+	/**
+	* Returns the item priority
+	*/
+	public Integer getPriority() {
+	return mPriority;
+	}
+	
+	/**
+	* Sets the item priority
+	*
+	* @param priority
+	*            priority to set
+	*/
+	public final void setPriority(Integer priority) {
+	mPriority = priority;
+	}
 
 Mobile Apps バックエンドに追加のテーブルを作成する方法については、「[方法: テーブル コントローラーを定義する](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-define-a-table-controller)」(.NET バックエンド) または「[方法: 動的スキーマを使用してテーブルを定義する](app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations)」(Node.js バックエンド) を参照してください。Node.js バックエンドでは、[Azure ポータル]の **[テーブルの簡単操作]** 設定を使用することもできます。
 
@@ -121,8 +121,8 @@ Mobile Apps バックエンドに追加のテーブルを作成する方法に�
 次のコードは、モバイル アプリ バックエンドにアクセスするために使用される **MobileServiceClient** オブジェクトを作成します。このコードは、**MAIN** アクションと **LAUNCHER** カテゴリとして *AndroidManifest.xml* で指定された **Activity** クラスの `onCreate` メソッドにあります。Quickstart のコードの場合は、**ToDoActivity.java** ファイルにあります。
 
 		MobileServiceClient mClient = new MobileServiceClient(
-				"MobileAppUrl", // Replace with the above Site URL
-				this)
+			"MobileAppUrl", // Replace with the above Site URL
+			this)
 
 このコードで、`MobileAppUrl` をモバイル アプリ バックエンドの URL に置き換えます。この URL は、[Azure ポータル](https://portal.azure.com/)のモバイル アプリ バックエンド用ブレードで確認できます。このコード行をコンパイルするには、次の **import** ステートメントも追加する必要があります。
 
@@ -132,7 +132,7 @@ Mobile Apps バックエンドに追加のテーブルを作成する方法に�
 
 Java は厳密に型指定された言語であるため、バックエンドのデータを照会または変更する最も簡単な方法は、*型指定されたプログラミング モデル*を使用する方法です (後で*型指定のない*モデルについて説明します)。このモデルは、クライアント オブジェクトとバックエンドの Azure SQL のテーブルの間でデータを送信するときに、[gson](http://go.microsoft.com/fwlink/p/?LinkId=290801) ライブラリを使用して JSON のシームレスなシリアル化と非シリアル化を提供します。開発者は何も作業する必要がありません。フレームワークによってすべてが処理されます。
 
-テーブルにアクセスするには、最初に [**MobileServiceClient**](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html) の **getTable** メソッドを呼び出して [MobileServiceTable](http://go.microsoft.com/fwlink/p/?LinkId=296835) オブジェクトを作成します。このメソッドには 2 つのオーバーロードがあります。
+テーブルにアクセスするには、最初に [MobileServiceClient](http://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html) の **getTable** メソッドを呼び出して [MobileServiceTable](http://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/table/MobileServiceTable.html) オブジェクトを作成します。このメソッドには 2 つのオーバーロードがあります。
 
 	public class MobileServiceClient {
 	    public <E> MobileServiceTable<E> getTable(Class<E> clazz);
@@ -141,14 +141,14 @@ Java は厳密に型指定された言語であるため、バックエンドの
 
 次のコードで、*mClient* は MobileServiceClient オブジェクトへの参照です。
 
-[1 つ目のオーバーロード](http://go.microsoft.com/fwlink/p/?LinkId=296839)は、クラス名とテーブル名が同じ場合に使用され、Quickstart で使用されているものです。
+[1 つ目のオーバーロード](http://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html#getTable-java.lang.String-)は、クラス名とテーブル名が同じ場合に使用され、Quickstart で使用されているものです。
 
-		MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable(ToDoItem.class);
+	MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable(ToDoItem.class);
 
 
-[2 つ目のオーバーロード](http://go.microsoft.com/fwlink/p/?LinkId=296840)は、テーブル名とクラス名が異なる場合に使用されます。1 番目のパラメーターはテーブル名です。
+[2 つ目のオーバーロード](http://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html#getTable-java.lang.String-java.lang.Class-)は、テーブル名とクラス名が異なる場合に使用されます。1 番目のパラメーターはテーブル名です。
 
-		MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
+	MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
 
 ###<a name="binding"></a>方法: データをユーザー インターフェイスにバインドする
 
@@ -174,7 +174,6 @@ Java は厳密に型指定された言語であるため、バックエンドの
         android:layout_height="wrap_content"
         tools:listitem="@layout/row_list_to_do" >
     </ListView>
-
 
 前のコードで、*listitem* 属性は、リスト内の個々の行のレイアウトの ID を指定します。次にそのコードを示します。チェック ボックスとそれに関連付けられたテキストを指定しています。これは、リスト内のそれぞれの項目に対して 1 回インスタンス化されます。このレイアウトでは **id** フィールドが表示されないため、さらに複雑なレイアウトで、表示する追加のフィールドを指定します。このコードは、**row\_list\_to\_do.xml** ファイルに含まれています。
 
@@ -259,9 +258,6 @@ Android アプリでのこれらの非同期 API の使用方法、およびデ�
 
 これで、データ バインドを使用する準備が整いました。次のコードでは、モバイル サービス テーブルの項目を取得した後、アダプターをクリアしています。次に、アダプターの *add* メソッドを呼び出して、返された項目をアダプターに設定しています。
 
-
-**TBD**: このコードをテストすること!!
-
     public void showAll(View view) {
         AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
             @Override
@@ -320,7 +316,7 @@ Android アプリでのこれらの非同期 API の使用方法、およびデ�
 
 テーブル参照で **where** メソッド呼び出しを使用してフィルターを定義します。次に **field** メソッドを呼び出し、その次に論理述語を指定するメソッドを呼び出します。使用できる述語メソッドとしては、**eq** (等しい)、**ne** (等しくない)、**gt** (より大きい)、**ge** (以上)、**lt** (より小さい)、**le** (以下) などがあります。これらのメソッドを使用して、数値フィールドおよび文字列フィールドを特定の値と比較できます。
 
-日付をフィルター処理できます。**year**、**month**、**day**、**hour**、**minute**、**second** の各メソッドを使用して、日付フィールド全体または日付の一部を比較できます。次の例では、期限 (*due*) が 2013 に等しい項目のフィルターを追加しています。
+日付をフィルター処理できます。次のメソッドを使用して、日付フィールド全体または日付の一部を比較できます。**year**、**month**、**day**、**hour**、**minute**、**second**。次の例では、期限 (*due*) が 2013 に等しい項目のフィルターを追加しています。
 
 	mToDoTable.where().year("due").eq(2013).execute().get();
 
@@ -461,7 +457,7 @@ Mobile Apps では、各テーブルに **id** という名前の列がある必
 
 ### <a name="json_instance"></a>方法: 型指定のないテーブルのインスタンスを作成する
 
-型指定されたモデルと同様、テーブル参照を取得することから始めますが、このケースでのオブジェクトは**MobileServicesJsonTable** です。次のように、クライアントのインスタンスで **getTable** メソッドを呼び出して、参照を取得します。
+型指定されたモデルと同様、テーブル参照を取得することから始めますが、このケースでのオブジェクトは**MobileServicesJsonTable** です。次のように、クライアントのインスタンスで **getTable()** メソッドを呼び出して、参照を取得します。
 
     private MobileServiceJsonTable mJsonToDoTable;
 	//...
@@ -597,14 +593,14 @@ App Service は、Facebook、Google、Microsoft アカウント、Twitter、Azur
 
 認証トークンをキャッシュするには、ユーザー ID と認証トークンをデバイスにローカルで保存する必要があります。アプリケーションが次回起動されたときに、キャッシュを確認し、これらの値が存在する場合はログイン手順をスキップし、クライアントに再度このデータを渡します。ただし、このデータは慎重な扱いを要する情報であり、電話の盗難に備えて安全のために暗号化して保存する必要があります。
 
-認証トークンをキャッシュする方法の完全な例については、「[クライアントに認証トークンをキャッシュする](app-service-mobile-android-get-started-users.md#cache-tokens)」セクションを参照してください。
+認証トークンをキャッシュする方法の完全な例については、「[方法: 認証トークンをキャッシュする](app-service-mobile-android-get-started-users.md#cache-tokens)」セクションを参照してください。
 
 期限切れトークンを使用しようとすると、"*401 許可されていません*" 応答が返されます。ユーザーは、ログインして新しいトークンを取得する必要があります。Mobile Services の呼び出しと Mobile Services からの応答を取得するフィルターを使用すると、アプリケーション内でモバイル サービスを呼び出すすべての場所にこれを処理するコードを書かずに済みます。フィルター コードは、401 の応答の有無をテストし、必要に応じてログイン プロセスをトリガーし、401 を生成した要求を再開します。トークンを調べて期限切れを確認することもできます。
 
 
 ## <a name="adal"></a>方法: Active Directory 認証ライブラリを使用してユーザーを認証する
 
-Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。これにより、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、多くの場合、`loginAsync()` メソッドを使用する方法よりも推奨されます。
+Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。これはよりネイティブ UX の感覚を提供し、さらなるカスタマイズが可能なため、多くの場合、`loginAsync()` メソッドの使用よりも推奨されます。
 
 1. 「[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](app-service-mobile-how-to-configure-active-directory-authentication.md)」のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
 
@@ -616,7 +612,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 
 * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は https://login.windows.net/contoso.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル] の Azure Active Directory の [ドメイン] タブからコピーできます。
 
-* **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。これは、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
+* **INSERT-RESOURCE-ID-HERE** をモバイル アプリ バックエンドのクライアント ID に置き換えます。これは、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブから取得できます。
 
 * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
 
@@ -682,7 +678,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 
 ## 方法: アプリにプッシュ通知を追加する
 
-Microsoft Azure Notification Hubs によるさまざまなプッシュ通知のサポート方法については、[概要](notification-hubs-overview.md/#integration-with-app-service-mobile-apps)をご確認ください。
+Microsoft Azure Notification Hubs によるさまざまなプッシュ通知のサポート方法については、[概要](../notification-hubs/notification-hubs-overview.md#integration-with-app-service-mobile-apps)をご確認ください。
 
 [このチュートリアル](app-service-mobile-android-get-started-push.md)では、レコードが挿入されるたびに、プッシュ通知が送信されます。
 
@@ -841,4 +837,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [Android アプリに認証を追加する]: app-service-mobile-android-get-started-users.md
 [認証の使用]: app-service-mobile-android-get-started-users.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

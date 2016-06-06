@@ -24,11 +24,11 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 以下は、関連トピックの一覧です。
 
-| トピック | |
-| --------- | --------- |
-| Azure AD Connect からのアップグレード手順 | Azure AD Connect の[以前のバージョンから最新バージョンにアップグレード](active-directory-aadconnect-upgrade-previous-version.md)するさまざまな方法を説明しています。 |
-| 必要なアクセス許可 | 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。 |
-| ダウンロード| [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771) |
+トピック |  
+--------- | --------- |
+Azure AD Connect からのアップグレード手順 | Azure AD Connect の[以前のバージョンから最新バージョンにアップグレード](active-directory-aadconnect-upgrade-previous-version.md)するさまざまな方法を説明しています。
+必要なアクセス許可 | 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。
+ダウンロード| [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
 
 ## 1\.1.180.0
 リリース日: 2016 年 5 月
@@ -37,7 +37,7 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 - Azure AD Connect 実行前にドメインの確認が行われなかった場合に、ドメインの確認について警告し、必要なヘルプ情報を提供します。
 - [Microsoft Cloud Germany](active-directory-aadconnect-instances.md#microsoft-cloud-germany) のサポートが追加されました。
-- 新しい URL 要件を持つ最新の [Microsoft Azure Government クラウド](active-directory-aadconnect-instances.md#microsoft-azure-government-cloud) インフラストラクチャのサポートが追加されました。
+- 新しい URL 要件を含む最新の [Microsoft Azure Government クラウド](active-directory-aadconnect-instances.md#microsoft-azure-government-cloud) インフラストラクチャのサポートが追加されました。
 
 **修正された問題と機能強化:**
 
@@ -51,7 +51,7 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 **新機能:**
 
-- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)に、複数の値を持つ属性のサポートが追加されました。
+- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)に、複数値の属性のサポートが追加されました。
 - アップグレードの対象と見なされる[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)の構成バリエーションが増えました。
 - [カスタム スケジューラ](active-directory-aadconnectsync-feature-scheduler.md#custom-scheduler)にコマンドレットがいくつか追加されました。
 
@@ -71,7 +71,7 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 - インストールが既定の **C:\\Program Files** フォルダーにない場合、以前のリリースからのアップグレードが機能しない。
 - インストール時に、インストール ウィザードの最後で **[...同期処理を開始してください]** をオフにした場合、インストール ウィザードを再実行しても、スケジューラが有効にならない。
-- 日付と時刻の形式が US-en ではない場合、スケジューラはサーバーで予想どおりに機能しません。また、正しい時刻を返す `Get-ADSyncScheduler` もブロックされる。
+- 日付と時刻の形式が US-en ではない場合、スケジューラはサーバーで予想どおりに機能しません。また、`Get-ADSyncScheduler` によって正しい時刻を返すこともできなくなる。
 - サインイン オプションおよびアップグレードとして ADFS を使用して以前のリリースの Azure AD Connect をインストールした場合、インストール ウィザードを再度実行することはできません。
 
 ## 1\.1.105.0
@@ -79,7 +79,7 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 **新機能:**
 
-- 簡単設定のお客様向けの[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)機能。
+- 簡単設定ユーザー向けの[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)機能。
 - インストール ウィザードで MFA と PIM を使用するグローバル管理者のサポート。
     - MFA を使用する場合は、https://secure.aadcdn.microsoftonline-p.com へのトラフィックも許可するようにプロキシを設定する必要があります。
     - MFA を正しく動作させるには、信頼済みサイトの一覧に https://secure.aadcdn.microsoftonline-p.com を追加する必要があります。
@@ -89,8 +89,8 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 
 **プレビューから GA に昇格した機能:**
 
-- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)
-- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)
+- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)。
+- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)。
 
 **新しいプレビュー機能:**
 
@@ -284,4 +284,4 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

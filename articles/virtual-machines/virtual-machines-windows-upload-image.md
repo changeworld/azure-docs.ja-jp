@@ -3,7 +3,7 @@
 	description="Resource Manager デプロイメント モデルで使用する Windows の仮想マシン イメージをアップロードする方法を説明します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="dsk-2015"
+	authors="cynthn"
 	manager="timlt"
 	editor="tysonn"
 	tags="azure-resource-manager"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="05/06/2016"
-	ms.author="dkshir"/>
+	ms.author="cynthn"/>
 
 # Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする
 
@@ -261,4 +261,4 @@ Azure PowerShell で次の手順を行って、ストレージ アカウント�
 
 Azure PowerShell を使用して新しい仮想マシンを管理する方法については、「[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

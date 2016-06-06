@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management におけるロール
@@ -32,7 +32,8 @@ Azure AD Privileged Identity Management (PIM) は、Azure AD でのユーザー�
 Privileged Identity Management を使用して、以下を含む共通の管理者ロールにユーザーを割り当てることができます。
 
 
-- **グローバル管理者** (企業の管理者とも呼ばれます) は、すべての管理機能にアクセスできます。組織内のグローバル管理者を複数にすることができます。Office 365 の購入にサインアップするユーザーが、自動的にグローバル管理者になります。
+- **全体管理者** (会社の管理者とも呼ばれます) は、すべての管理機能にアクセスできます。組織内のグローバル管理者を複数にすることができます。Office 365 の購入にサインアップするユーザーが、自動的にグローバル管理者になります。
+- **特権ロール管理者**は、Azure AD PIM を管理し、他のユーザーへのロールの割り当てを更新します。  
 - **課金管理者**は、購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
 - **パスワード管理者**は、パスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。パスワード管理者は、ユーザーのパスワードのリセットのみできます。
 - **サービス管理者**は、サービス要求の管理とサービス正常性の監視を行います。
@@ -40,27 +41,27 @@ Privileged Identity Management を使用して、以下を含む共通の管理�
   > [AZURE.NOTE] Office 365 を使用している場合、サービス管理者ロールをユーザーに割り当てる前に、ユーザー管理権限を Exchange Online などのサービスに割り当ててください。
 
 - **ユーザー管理の管理者**は、パスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、およびサービス要求の管理を行います。ユーザー管理の管理者は、グローバル管理者の削除、他の管理者ロールの作成、または課金管理者、グローバル管理者、サービス管理者のパスワードのリセットを行うことができません。
-- **Exchange 管理者**は、Exchange 管理センター (EAC) から Exchange Online への管理アクセスがあり、Exchange Online でほぼすべてのタスクを実行することができます。
-- **SharePoint 管理者**は、SharePoint Online 管理センターから SharePoint Online への管理アクセスがあり、SharePoint Online でほぼすべてのタスクを実行することができます。
-- **Skype for Business 管理者**は、Skype for Business 管理センターから Skype for Business への管理アクセスがあり、Skype for Business Online でほぼすべてのタスクを実行することができます。
+- **Exchange 管理者**は、Exchange 管理センター (EAC) を通じた Exchange Online への管理アクセスが可能で、Exchange Online でのほぼすべてのタスクを実行できます。
+- **SharePoint 管理者**は、SharePoint Online 管理センターを通じた SharePoint Online への管理アクセスが可能で、SharePoint Online でのほぼすべてのタスクを実行できます。
+- **Skype for Business 管理者**は、Skype for Business 管理センターを通じた Skype for Business への管理アクセスが可能で、Skype for Business Online でのほぼすべてのタスクを実行できます。
 
-[Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)および [Office 365 での管理ロールの割り当て](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504)の詳細については、これらの記事を参照してください。
+[Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)および [Office 365 での管理者ロールの割り当て](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504)の詳細については、これらの記事を参照してください。
 
 <!--**PLACEHOLDER: The above article may not be the one we want since PIM gets roles from places other that Office 365**-->
 
 
-PIM から、[これらのロールを一時的にユーザーに割り当てて](active-directory-privileged-identity-management-how-to-add-role-to-user.md)、ユーザーが[必要なときにロールをアクティブ化](active-directory-privileged-identity-management-how-to-activate-role.md)できるようにすることができます。
+ユーザーが[必要なときにロールをアクティブ化](active-directory-privileged-identity-management-how-to-activate-role.md)できるように、PIM から[これらのロールを一時的にユーザーに割り当てる](active-directory-privileged-identity-management-how-to-add-role-to-user.md)ことができます。
 
-PIM 自体で管理する別のユーザー アクセス権を付与する場合に PIM でユーザーに必要なロールは、[PIM へのアクセス権を付与する方法](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)に関する記事で詳しく説明されています。
+PIM 自体で管理するためのアクセス権を別のユーザーに付与する場合に PIM でユーザーに必要なロールについては、[PIM へのアクセス権を付与する方法](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)に関する記事で詳しく説明されています。
 
 
 <!-- ## The PIM Security Administrator Role **PLACEHOLDER: Need description of the Security Administrator role.**-->
 
 ## PIM で管理されないロール
 
-Exchange Online または SharePoint Online 内のロールについて、上述以外のロールは Azure AD で表示されないため、PIM でも表示されません。これらの Office 365 サービスでのきめ細かなロールの割り当てを変更する方法について詳しくは、「[Office 365 の権限](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d)」を参照してください。
+Exchange Online または SharePoint Online 内のロールについて、上述以外のロールは Azure AD で表示されないため、PIM でも表示されません。これらの Office 365 サービスでのきめ細かなロールの割り当てを変更する方法の詳細については、「[Office 365 の権限](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d)」を参照してください。
 
-Azure サブスクリプションとリソース グループも、Azure AD では表示されません。Azure サブスクリプションを管理するには「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を、Azure RBAC について詳しくは、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
+Azure サブスクリプションとリソース グループも、Azure AD では表示されません。Azure サブスクリプションを管理するには「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を、Azure RBAC の詳細については、[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)に関するページを参照してください。
 
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 
@@ -74,7 +75,7 @@ Microsoft Online Services へのアクセスでは、ユーザーがサービス
 
 ## Azure AD でのユーザーへのライセンスの割り当て
 
-1. 全体管理者アカウントまたは共同管理者アカウントで、[Azure クラシックポータル](http://manage.windowsazure.com)にサインインします。
+1. 全体管理者アカウントまたは共同管理者アカウントで、[Azure クラシック ポータル](http://manage.windowsazure.com)にサインインします。
 2. メイン メニューから、**[すべてのアイテム]** を選択します。
 3. ライセンスが関連付けられていて使用するディレクトリを選択します。
 4. **[ライセンス]** を選択します。利用可能なライセンスの一覧が表示されます。
@@ -87,4 +88,4 @@ Microsoft Online Services へのアクセスでは、ユーザーがサービス
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

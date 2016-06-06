@@ -1,12 +1,12 @@
 <properties
-	pageTitle="ロジック アプリに SFTP API を追加する | Microsoft Azure"
-	description="SFTP API と REST API パラメーターの概要"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="ロジック アプリに SFTP コネクタを追加する | Microsoft Azure"
+    description="SFTP コネクタと REST API パラメーターの概要"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="02/25/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# SFTP API の概要
-SFTP サーバーに接続して、ファイルを管理します。SFTP サーバーでは、ファイルのアップロード、ファイルの削除など、さまざまなタスクを実行できます。SFTP API は次のツールから使用できます。
+# SFTP コネクタの使用 
+SFTP サーバーに接続して、ファイルを管理します。SFTP サーバーでは、ファイルのアップロード、ファイルの削除など、さまざまなタスクを実行できます。SFTP コネクタは、次のツールから使用できます。
 
 - Logic Apps
 
@@ -34,17 +34,17 @@ SFTP では、次の操作を実行できます。
 
 
 ## トリガーとアクション
-SFTP では、次のトリガーとアクションを使用できます。
+SFTP コネクタでは、次のトリガーとアクションを使用できます。
 
 トリガー | アクション
 --- | ---
 <ul><li>ファイルの作成時または変更時</li></ul> | <ul><li>ファイルを作成する</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>フォルダーを抽出する</li><li>ファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>ファイルを更新する</li><li>ファイルの作成時または変更時</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 
 ## SFTP への接続を作成する
-この API をロジック アプリに追加するときに、次の値を入力します。
+このコネクタをロジック アプリに追加するときに、次の値を入力します。
 
 |プロパティ| 必須|説明|
 | ---|---|---|
@@ -53,7 +53,11 @@ SFTP では、次のトリガーとアクションを使用できます。
 |パスワード | あり | ユーザー名のパスワードを入力します。|
 |SSH サーバー ホスト キーのフィンガー プリント | あり | SSH サーバーのパブリック ホスト キーのフィンガープリントを入力します。<br/><br/>通常、サーバー管理者からこのキーを付与できます。```WinSCP``` または ```ssh-keygen-g3 -F``` ツールを使用して、キーのフィンガー プリントを取得することもできます。 | 
 
-接続を作成したら、フォルダー パスやファイルなど、SFTP のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
+接続を作成する具体的な手順は、次のとおりです。
+
+>[AZURE.INCLUDE [SFTP への接続を作成する手順](../../includes/connectors-create-api-sftp.md)]
+
+接続を作成したら、フォルダー パスやファイルなど、SFTP のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
 >[AZURE.TIP] 他のロジック アプリでも、この同じ SFTP 接続を使用できます。
 
@@ -105,7 +109,7 @@ SFTP のファイルを削除します。```DELETE: /datasets/default/files/{id}
 |default|操作に失敗しました。|
 
 ### フォルダーを抽出する
-SFTP を使用して、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。```POST: /datasets/default/extractFolderV2```
+SFTP を使用して、フォルダーにアーカイブ ファイル (例: .zip) を展開します。```POST: /datasets/default/extractFolderV2```
 
 | 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
@@ -250,4 +254,4 @@ SFTP のファイルが変更されたときにフローをトリガーします
 ## 次のステップ
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

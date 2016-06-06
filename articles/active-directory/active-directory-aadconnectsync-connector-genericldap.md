@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="03/16/2016"
+   ms.date="05/24/2016"
    ms.author="andkjell"/>
 
 # Generic LDAP コネクタに関するテクニカル リファレンス
@@ -36,12 +36,12 @@ IETF RFC では、特定の操作やスキーマ要素 (たとえば、差分イ
 
 包括的な観点から見た場合、コネクタの現在のリリースでサポートされている機能は次のとおりです。
 
-| 機能 | サポート |
-| --- | --- |
-| 接続先のデータ ソース | コネクタはすべての LDAP v3 サーバー (RFC 4510 準拠) でサポートされています。次のデータ ソースでテスト済みです。<li>Microsoft Active Directory ライトウェイト ディレクトリ サービス (AD LDS)</li><li>Microsoft Active Directory グローバル カタログ (AD GC)</li><li>389 Directory Server</li><li>Apache Directory Server</li><li>IBM Tivoli DS</li><li>Isode Directory</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Open DJ</li><li>Open DS</li><li>Open LDAP (openldap.org)</li><li>Oracle (以前は Sun) Directory Server Enterprise Edition</li><li>RadiantOne Virtual Directory Server (VDS)</li><li>Sun One Directory Server</li>**ただし、次のディレクトリはサポートされていません。**<li>Microsoft Active Directory ドメイン サービス (AD DS) [代わりに組み込みの Active Directory コネクタを使用]</li><li>Oracle Internet Directory (OID)</li> |
-| シナリオ | <li>オブジェクトのライフサイクル管理</li><li>グループ管理</li><li>パスワード管理</li> |
-| 操作 |すべての LDAP ディレクトリで次の操作がサポートされています。<li>フル インポート</li><li>エクスポート</li>次の操作は特定のディレクトリでのみサポートされています。<li>差分インポート</li><li>パスワードの設定、パスワードの変更</li> |
-| スキーマ | <li>スキーマは LDAP スキーマで検出されます (RFC3673 および RFC4512/4.2)</li><li>構造型クラス、aux クラス、および extensibleObject オブジェクト クラスをサポートします (RFC4512/4.3)</li>
+機能 | サポート
+--- | --- |
+接続先のデータ ソース | コネクタはすべての LDAP v3 サーバー (RFC 4510 準拠) でサポートされています。次のデータ ソースでテスト済みです。<li>Microsoft Active Directory ライトウェイト ディレクトリ サービス (AD LDS)</li><li>Microsoft Active Directory グローバル カタログ (AD GC)</li><li>389 Directory Server</li><li>Apache Directory Server</li><li>IBM Tivoli DS</li><li>Isode Directory</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Open DJ</li><li>Open DS</li><li>Open LDAP (openldap.org)</li><li>Oracle (以前は Sun) Directory Server Enterprise Edition</li><li>RadiantOne Virtual Directory Server (VDS)</li><li>Sun One Directory Server</li>**ただし、次のディレクトリはサポートされていません。**<li>Microsoft Active Directory ドメイン サービス (AD DS) [代わりに組み込みの Active Directory コネクタを使用]</li><li>Oracle Internet Directory (OID)</li>
+シナリオ | <li>オブジェクトのライフサイクル管理</li><li>グループ管理</li><li>パスワード管理</li>
+操作 |すべての LDAP ディレクトリで次の操作がサポートされています。<li>フル インポート</li><li>エクスポート</li>次の操作は特定のディレクトリでのみサポートされています。<li>差分インポート</li><li>パスワードの設定、パスワードの変更</li>
+スキーマ | <li>スキーマは LDAP スキーマで検出されます (RFC3673 および RFC4512/4.2)</li><li>構造型クラス、aux クラス、および extensibleObject オブジェクト クラスをサポートします (RFC4512/4.3)</li>
 
 ### 差分インポートおよびパスワード管理のサポート
 
@@ -205,19 +205,19 @@ RFC4522 構文を使用してスキーマに属性を定義する場合は、**[
 
 既定の変更ログ DN の一覧を次に示します。
 
-| Directory | 差分変更ログ |
-| --- | --- |
-| Microsoft AD LDS および AD GC | 自動的に検出されます。USNChanged。 |
-| Apache Directory Server | 使用できません。 |
-| Directory 389 | 変更ログ。使用する既定値: **cn=changelog** |
-| IBM Tivoli DS | 変更ログ。使用する既定値: **cn=changelog** |
-| Isode Directory | 変更ログ。使用する既定値: **cn=changelog**
-| Novell/NetIQ eDirectory | 使用できません。タイムスタンプ。コネクタは、前回の更新の日時を使用して、追加されたレコードおよび更新されたレコードを取得します。 |
-| Open DJ/DS | 変更ログ。使用する既定値: **cn=changelog** |
-| Open LDAP | アクセス ログ。使用する既定値: **cn=accesslog** |
-| Oracle DSEE | 変更ログ。使用する既定値: **cn=changelog** |
-| RadiantOne VDS | 仮想ディレクトリ。VDS に接続されているディレクトリに依存します。 |
-| Sun One Directory Server | 変更ログ。使用する既定値: **cn=changelog** |
+Directory | 差分変更ログ
+--- | ---
+Microsoft AD LDS および AD GC | 自動的に検出されます。USNChanged。
+Apache Directory Server | 使用できません。
+Directory 389 | 変更ログ。使用する既定値: **cn=changelog**
+IBM Tivoli DS | 変更ログ。使用する既定値: **cn=changelog**
+Isode Directory | 変更ログ。使用する既定値: **cn=changelog**
+Novell/NetIQ eDirectory | 使用できません。タイムスタンプ。コネクタは、前回の更新の日時を使用して、追加されたレコードおよび更新されたレコードを取得します。
+Open DJ/DS | 変更ログ。使用する既定値: **cn=changelog**
+Open LDAP | アクセス ログ。使用する既定値: **cn=accesslog**
+Oracle DSEE | 変更ログ。使用する既定値: **cn=changelog**
+RadiantOne VDS | 仮想ディレクトリ。VDS に接続されているディレクトリに依存します。
+Sun One Directory Server | 変更ログ。使用する既定値: **cn=changelog**
 
 パスワード属性は、パスワード変更およびパスワード設定の操作でパスワードを設定する場合に、コネクタで使用する必要がある属性の名前です。この名前は既定で **userPassword** に設定されますが、特定のLDAP システムについては必要に応じて変更することができます。
 
@@ -249,19 +249,19 @@ RFC4522 構文を使用してスキーマに属性を定義する場合は、**[
 
 使用する LDAP サーバーとアンカーの一覧を次に示します。
 
-| Directory | アンカー属性 |
-| --- | --- |
-| Microsoft AD LDS および AD GC | objectGUID |
-| 389 Directory Server | dn |
-| Apache Directory | dn |
-| IBM Tivoli DS | dn |
-| Isode Directory | dn |
-| Novell/NetIQ eDirectory | GUID |
-| Open DJ/DS | dn |
-| Open LDAP | dn |
-| Oracle ODSEE | dn |
-| RadiantOne VDS | dn |
-| Sun One Directory Server | dn |
+Directory | アンカー属性
+--- | ---
+Microsoft AD LDS および AD GC | objectGUID
+389 Directory Server | dn
+Apache Directory | dn
+IBM Tivoli DS | dn
+Isode Directory | dn
+Novell/NetIQ eDirectory | GUID
+Open DJ/DS | dn
+Open LDAP | dn
+Oracle ODSEE | dn
+RadiantOne VDS | dn
+Sun One Directory Server | dn
 
 ## 他の注意事項
 
@@ -279,4 +279,4 @@ Novell eDirectory の場合、差分インポートでオブジェクトの削�
 
 -	コネクタのトラブルシューティングを行うためにログ記録を有効にする方法については、「[How to Enable ETW Tracing for Connectors (コネクタの ETW トレースを有効にする方法)](http://go.microsoft.com/fwlink/?LinkId=335731)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

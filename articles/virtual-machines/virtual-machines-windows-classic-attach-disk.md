@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/03/2016"
+	ms.date="05/17/2016"
 	ms.author="cynthn"/>
 
 # クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにデータ ディスクをアタッチする
@@ -23,17 +23,16 @@
 
 データ ディスクを追加する必要がある場合は、空のディスクまたはデータを含む既存のディスクを仮想マシンにアタッチできます。どちらの場合も、ディスクは Azure ストレージ アカウントにある .vhd ファイルです。新しいディスクの場合は、ディスクをアタッチした後で、Windows VM で使用できるように初期化する必要もあります。
 
-仮想マシンのデータを格納するには、1 つ以上の個別のディスクを使用することをお勧めします。Azure 仮想マシンを作成する場合は、オペレーティング システムのディスクを C ドライブにマップし、一時ディスクを D ドライブにマップします。**データの保存に一時ディスクを使用しないでください**。名前が示すとおり、一時ディスクは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
+ディスクの詳細については、[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](virtual-machines-windows-about-disks-vhds.md) を参照してください。
 
 ## ビデオ チュートリアル
 
-以下には、このチュートリアルのステップが記載されています。
+[こちら](https://azure.microsoft.com/documentation/videos/attaching-a-data-disk-to-a-windows-vm/)で、このチュートリアルのビデオをご覧いただけます。
 
-[AZURE.VIDEO attaching-a-data-disk-to-a-windows-vm]
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-windows-linux.md)]
 
-## <a id="initializeinWS"></a>方法: Windows Server で新しいデータ ディスクを初期化する
+## ディスクの初期化
 
 1. 仮想マシンへの接続詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法][logon]」を参照してください。
 
@@ -61,4 +60,4 @@
 
 [logon]: virtual-machines-windows-classic-connect-logon.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

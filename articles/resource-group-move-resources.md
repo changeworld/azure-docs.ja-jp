@@ -32,7 +32,7 @@
 リソースを移動する前に実行すべき重要な手順がいくつかあります。これらの条件を確認することにより、エラーの発生を回避できます。
 
 1. サービスでリソースの移動機能をサポートしている必要があります。[リソースの移動をサポートしているサービス](#services-that-support-move)については、下記の一覧を参照してください。
-2. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。登録しないと、**リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。この問題は、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。登録ステータスを確認し、リソース プロバイダーを登録する方法については、「[リソース プロバイダーと種類](../resource-manager-supported-services/#resource-providers-and-types)」を参照してください。
+2. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。登録しないと、**リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。この問題は、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。登録ステータスを確認し、リソース プロバイダーを登録する方法については、「[リソース プロバイダーと種類](../resource-manager-supported-services.md#resource-providers-and-types)」を参照してください。
 3. Azure PowerShell または Azure CLI を使用している場合は、最新バージョンを使用してください。使用しているバージョンを更新するには、Microsoft Web プラットフォーム インストーラーを実行し、新しいバージョンがあるかどうかを確認します。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」と「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
 4. App Service アプリを移動する場合は、「[App Service の制限事項](#app-service-limitations)」を確認しておく必要があります。
 5. クラシック モデルを使用してデプロイされたリソースを移動する場合は、「[クラシック デプロイメントの制限事項](#classic-deployment-limitations)」を確認しておく必要があります。
@@ -49,6 +49,7 @@
 - CDN
 - Cloud Services - 「[クラシック デプロイメントの制限事項](#classic-deployment-limitations)」を参照してください
 - Data Factory
+- DNS
 - DocumentDB
 - HDInsight クラスター
 - Key Vault
@@ -268,8 +269,8 @@ Web アプリがその App Service プランとは異なるリソース グル�
 
 ## 次のステップ
 - サブスクリプションを管理するための PowerShell コマンドレットについては、「[Azure Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。
-- サブスクリプションを管理するための Azure CLI コマンドについては、「[Azure Resource Manager での、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
+- サブスクリプションを管理するための Azure CLI コマンドについては、[Resource Manager での Azure CLI の使用](xplat-cli-azure-resource-manager.md)に関するページを参照してください。
 - サブスクリプションを管理するためのポータル機能については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](./azure-portal/resource-group-portal.md)」を参照してください。
 - リソースを論理的に整理する方法については、「[タグを使用した Azure リソースの整理](resource-group-using-tags.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

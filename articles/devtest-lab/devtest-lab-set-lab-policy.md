@@ -44,13 +44,13 @@ DevTest ラボでは、ラボとその VM を使用する方法を制御する�
 
 	- [許可される VM サイズ](#set-allowed-vm-sizes) - ラボで使用できる VM サイズの一覧を選択します。ユーザーは、この一覧からのみ VM を作成できます。
 
-	- [ユーザーごとの VM の最大数](#set-maximum-vms-per-user) - ラボで作成できる VM の最大数と、ユーザーが作成できる VM の最大数を指定します。
+	- [ユーザーごとの VM の最大数](#set-maximum-vms-per-user) - ユーザーが作成できる VM の最大数を指定します。
 
-	- [許可される合計 VM 数](#set-total-vms-allowed) - ラボで作成できる VM の最大数と、ユーザーが作成できる VM の最大数を指定します。
+	- [許可される合計 VM 数](#set-total-vms-allowed) - ラボに作成できる VM の最大数を指定します。
 
-	- [自動シャットダウン](#set-auto-shutdown) - 現在のラボの VM をシャットダウンする必要がある時刻を指定します。
+	- [自動シャットダウン](#set-auto-shutdown) - 現在のラボの VM を自動的にシャットダウンする時刻を指定します。
 
-	- [自動開始](#set-auto-start) - 現在のラボの VM をシャットダウンする必要がある時刻を指定します。
+	- [自動開始](#set-auto-start) - 現在のラボの VM を自動的に開始する時刻を指定します。
 
 ## 許可される VM サイズの設定
 
@@ -135,4 +135,4 @@ DevTest ラボでは、ラボとその VM を使用する方法を制御する�
 - [Marketplace イメージを構成する](./devtest-lab-configure-marketplace-images.md) - DevTest ラボでは、Azure Marketplace イメージを基にした新しい VM を作成することができます。この記事では、ラボで新しい VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。
 - [ラボで VM を作成する](./devtest-lab-add-vm-with-artifacts.md) - ベース イメージ (カスタムまたは Marketplace) から新しい VM を作成する方法と、VM でアーティファクトを操作する方法について説明します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

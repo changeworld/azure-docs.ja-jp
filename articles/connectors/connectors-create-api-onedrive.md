@@ -1,10 +1,10 @@
 <properties
-pageTitle="PowerApps Enterprise とロジック アプリに OneDrive API を追加する | Microsoft Azure"
-description="OneDrive API と REST API パラメーターの概要"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="PowerApps Enterprise とロジック アプリに OneDrive コネクタを追加する | Microsoft Azure"
+description="OneDrive コネクタと REST API パラメーターの概要"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,12 +14,12 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="05/12/2016"
+ms.date="05/18/2016"
 ms.author="mandia"/>
 
-# OneDrive API の概要
+# OneDrive コネクタの使用
 
-OneDrive に接続して、ファイルのアップロード、取得、削除など、ファイルを管理します。OneDrive API は次のツールから使用できます。
+OneDrive に接続して、ファイルのアップロード、取得、削除など、ファイルを管理します。OneDrive コネクタは、次のツールから使用できます。
 
 - Logic Apps 
 - PowerApps
@@ -37,24 +37,24 @@ OneDrive では、次の操作を実行できます。
 - OneDrive から取得したデータに基づいてビジネス フローを構築できます。 
 - ファイルを作成または更新するときにトリガーを使用できます。
 - ファイルの作成、ファイルの削除などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、OneDrive で新しいファイルを作成すると、Office 365 を使用してそのファイルを電子メールで送信できます。
-- PowerApps Enterprise に OneDrive API を追加できます。追加すると、ユーザーはアプリ内で API を使用できるようになります。 
+- PowerApps Enterprise に OneDrive コネクタを追加できます。追加すると、ユーザーはアプリ内でコネクタを使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
+PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
 
 ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 ## トリガーとアクション
-OneDrive API には、次のトリガーとアクションがあります。
+OneDrive コネクタには、次のトリガーとアクションがあります。
 
 | トリガー | アクション|
 | --- | --- |
 |<ul><li>ファイルの作成時</li><li>ファイルの変更時</li></ul> | <ul><li>ファイルを作成する</li><li>フォルダー内のファイルを一覧表示する</li><li>ファイルの作成時</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>フォルダーを抽出する</li><li>ID を使用してファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ID を使用してファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>ルート フォルダーを表示する</li><li>ファイルを更新する</li><li>ファイルの変更時</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## OneDrive への接続を作成する
 
-ロジック アプリにこの API を追加するとき、OneDrive に接続するロジック アプリを承認する必要があります。
+ロジック アプリにこのコネクタを追加するとき、OneDrive に接続するロジック アプリを承認する必要があります。
 
 1. OneDrive アカウントにサインインします。
 2. ロジック アプリが OneDrive に接続して使用することを許可します。 
@@ -312,4 +312,4 @@ OneDrive にフォルダーを抽出します。```POST: /datasets/default/extra
 [6]: ./media/connectors-create-api-onedrive/onedrive-new-app.png
 [7]: ./media/connectors-create-api-onedrive/onedrive-app-api-settings.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

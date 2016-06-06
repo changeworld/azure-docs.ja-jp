@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="05/24/2016"
 	ms.author="sdanie"/>
 
 # Azure Active Directory と API Management で Web API バックエンドを保護する方法
@@ -362,7 +362,7 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 
 ## 次のステップ
 -	API Management についてのその他の[ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management)をご覧ください。
--	バックエンド サービスを保護するその他の方法については、「[相互証明書認証](api-management-howto-mutual-certificates.md)」と「[VPN または ExpressRoute を経由する接続 ](api-management-howto-setup-vpn)」をご覧ください。
+-	バックエンド サービスを保護するその他の方法については、「[相互証明書認証](api-management-howto-mutual-certificates.md)」と「[VPN または ExpressRoute を経由する接続 ](api-management-howto-setup-vpn.md)」をご覧ください。
 
 [api-management-management-console]: ./media/api-management-howto-protect-backend-with-aad/api-management-management-console.png
 
@@ -413,4 +413,4 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 [API Management インスタンスの作成]: api-management-get-started.md#create-service-instance
 [Azure API Management での最初の API の管理]: api-management-get-started.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

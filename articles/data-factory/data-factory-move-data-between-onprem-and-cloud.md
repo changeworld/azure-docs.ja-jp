@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/09/2016" 
+	ms.date="05/18/2016" 
 	ms.author="spelluru"/>
 
 # Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
@@ -82,7 +82,7 @@ Data Management Gateway 構成マネージャーの [更新] タブには、更�
 ## 自動更新機能を無効/有効にするには
 次の手順で、自動更新機能を無効/有効にすることができます。
 
-1. ゲートウェイ コンピューターで Windows PowerShell を起動します。 
+1. ゲートウェイ コンピューターで管理者として Windows **PowerShell** を起動します (**[管理者として実行]**)。 
 2. C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\PowerShellScript フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。   
 
@@ -104,12 +104,7 @@ Azure Data Factory とその他のクラウド サービスとのゲートウェ
 
 | ドメイン名 | ポート | 説明 |
 | ------ | --------- | ------------ |
-| *.servicebus.windows.net | 443, 80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | 
-| *.servicebus.windows.net | 9350-9354 | TCP 経由での任意の Service Bus Relay| 
-| *.core.windows.net | 443 | HTTPS | 
-| *.clouddatahub.net | 443 | HTTPS | 
-| graph.windows.net | 443 | HTTPS | 
-| login.windows.net | 443 | HTTPS | 
+| **.servicebus.windows.net | 443, 80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | | *.servicebus.windows.net | 9350-9354, 5671 | TCP 経由での任意の Service Bus Relay| | *.core.windows.net | 443 | HTTPS | | *.clouddatahub.net | 443 | HTTPS | | graph.windows.net | 443 | HTTPS | | login.windows.net | 443 | HTTPS | 
 
 Windows のファイアウォール レベルでは、通常これらの送信ポートが有効になっています。有効でない場合は、ゲートウェイ コンピューターに応じたドメインとポートを構成することができます。
 
@@ -165,7 +160,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 
 - 詳細な情報は、Windows イベント ログのゲートウェイ ログで確認できます。Windows の **[イベント ビューアー]**、**[アプリケーションとサービス ログ]**、**[Data Management Gateway]** を使用してログを確認できます。ゲートウェイ関連の問題のトラブルシューティングでは、イベント ビューアーでエラー レベルのイベントを調べてください。
 - **証明書を変更**した後でゲートウェイの動作が停止した場合は、Microsoft Data Management Gateway 構成マネージャー ツールまたは [サービス] コントロール パネル アプレットを使って **Data Management Gateway サービス**を再起動 (停止してから起動) します。エラーが表示された場合は、Data Management Gateway サービスのユーザーが証明書マネージャー (certmgr.msc) で証明書にアクセスするための明示的なアクセス許可を付与する必要がある場合があります。サービスの既定のユーザー アカウントは、**NT Service\\DIAHostService** です。 
-- データ ストア接続またはドライバーに関係するエラーがある場合は、ゲートウェイ コンピューター上で **Data Management Gateway 構成マネージャー**を起動し、**[診断]** タブをクリックし、**[このゲートウェイを使用してオンプレミスのデータ ソースへの接続をテストします]** グループの各フィールドに適切な値を選択または入力します。**[接続テスト]** をクリックして、接続情報と資格情報を使用して、ゲートウェイ コンピューターからオンプレミスのデータ ソースに接続できることを確認します。ドライバーのインストール後も接続テストが失敗する場合は、最新の変更を認識できるようにゲートウェイを再起動します。  
+- データ ストア接続またはドライバーに関係するエラーがある場合は、ゲートウェイ コンピューター上で **Data Management Gateway 構成マネージャー**を起動し、**[診断]** タブをクリックして、**[このゲートウェイを使用してオンプレミスのデータ ソースへの接続をテストします]** グループの各フィールドで適切な値を選択または入力します。**[接続テスト]** をクリックし、接続情報と資格情報を使用して、ゲートウェイ コンピューターからオンプレミスのデータ ソースに接続できることを確認します。ドライバーのインストール後も接続テストが失敗する場合は、最新の変更を認識できるようにゲートウェイを再起動します。  
 
 	![接続テスト](./media/data-factory-move-data-between-onprem-and-cloud/TestConnection.png)
 		
@@ -205,7 +200,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 5. **[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
 	![タイルの作成とデプロイ](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png) 
-6.	Data Factory エディターのツールバーの **[...] \(省略記号)** をクリックし、**[新しいデータ ゲートウェイ]** をクリックします。 
+6.	Data Factory エディターのツールバーの **[...] (省略記号)** をクリックし、**[新しいデータ ゲートウェイ]** をクリックします。 
 
 	![ツールバーでのデータ ゲートウェイの新規作成](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
 2. **[作成]** ブレードで、**名前**に「**adftutorialgateway**」と入力し、**[OK]** をクリックします。 	
@@ -219,9 +214,9 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	> 
 	> Chrome を使用する場合は、[Chrome Web ストア](https://chrome.google.com/webstore/)に移動し、"ClickOnce" キーワードで検索して、ClickOnce 拡張子のいずれかを選択してインストールします。
 	>  
-	> Firefox についても、同じ操作を実行する必要があります (アドインをインストール)。ツールバーの **[メニューを開く]** ボタン (右上隅にある **3 本の横線**) をクリックして、**[アドオン]** をクリックし、"ClickOnce" キーワードを使用して検索し、ClickOnce の拡張機能のいずれかを選択してインストールします。
+	> Firefox についても、同じ操作を実行する必要があります (アドインをインストール)。ツール バーの **[メニューを開く]** ボタン (右上隅にある **3 本の横線**) をクリックして、**[アドオン]** をクリックし、"ClickOnce" キーワードを使用して検索し、ClickOnce の拡張機能のいずれかを選択してインストールします。
 
-	![ゲートウェイ - 構成 ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
+	![[ゲートウェイ - 構成 ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
 	これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。**Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。実行可能ファイル **ConfigManager.exe** は **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared** フォルダーにあります。
 
@@ -276,6 +271,8 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
             		"userName": "<Specify user name if you are using Windows Authentication. Example: <domain>\<user>",
             		"password": "<Specify password for the user account>"
         		}
+                
+            > [AZURE.NOTE] Windows 認証を使用している場合 (IntegratedSecurity=true)、ユーザー名とパスワードの指定は任意です。これらのプロパティが指定されなかった場合、Data Management Gateway は、ゲートウェイ コンピューターにログインしているユーザーの資格情報を使用してデータベースにアクセスします。異なる資格情報をゲートウェイからデータベースへのアクセスに使用する場合は、ユーザー名とパスワードを明示的に指定してください。
 
 	4. SQL 認証を使用している場合:
 		1. データベースの **[connectionString]** にデータベースの**サーバー名**、**データベース名**、**ユーザー ID**、**パスワード**を指定します。       
@@ -428,7 +425,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 1.	**[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
 	![タイルの作成とデプロイ](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png) 
-2.	コマンド バーの **[新しいパイプライン]** をクリックします。このボタンが表示されない場合は、**[...] \(省略記号)** をクリックしてコマンド バーを展開します。
+2.	コマンド バーの **[新しいパイプライン]** をクリックします。このボタンが表示されない場合は、**[...] (省略記号)** をクリックしてコマンド バーを展開します。
 2.	右側のウィンドウの JSON を次のテキストに置き換えます。   
 
 
@@ -480,7 +477,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
 	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
-	- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
+- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
@@ -691,4 +688,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 5.	ゲートウェイは、同じ証明書で資格情報を復号化し、適切な認証の種類を使用してオンプレミスのデータ ストアに接続します。
 6.	ゲートウェイは、データ パイプラインでのコピー アクティビティの構成方法に応じて、オンプレミスのストアからクラウドのストレージに、またはクラウドのストレージからオンプレミスのデータ ストアに、データをコピーします。注: この手順では、ゲートウェイは、セキュリティで保護された (HTTPS) チャネルを使用して、クラウド ベースのストレージ サービス (例: Azure BLOB、Azure SQL など) と直接通信します。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

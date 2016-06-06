@@ -13,16 +13,16 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="05/16/2016"
+	ms.date="05/20/2016"
 	ms.author="kgremban"/>
 
 #RBAC: 組み込みのロール
 
-## 組み込みのロール
-
 Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが用意されています。組み込みのロールの定義は変更できません。ただし、組織の具体的なニーズに合うように [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)を作成することができます。
 
-次の表には、組み込みのロールについての簡単な説明を示します。ロール名をクリックすると、そのロールの **actions** と **not actions** の詳細な一覧を確認できます。**actions** プロパティは、Azure リソースに対して許可するアクションを指定します。アクションの文字列にワイルドカード文字を使用できます。**not actions** プロパティは、許可するアクションから除外されるアクションを指定します。
+## Azure におけるロール
+
+次の表には、組み込みのロールについての簡単な説明を示します。ロール名をクリックすると、そのロールの **actions** と **notactions** の詳細な一覧を確認できます。**actions** プロパティは、Azure リソースに対して許可するアクションを指定します。アクションの文字列にワイルドカード文字を使用できます。**notactions** プロパティは、許可するアクションから除外されるアクションを指定します。
 
 >[AZURE.NOTE] Azure のロール定義は常に進化しています。この記事は、最新の状態であることを心掛けておりますが、Azure PowerShell で常に最新のロール定義を見つけることができます。適宜、コマンドレット `(get-azurermroledefinition "<role name>").actions` または `(get-azurermroledefinition "<role name>").notactions` を使用します。
 
@@ -57,6 +57,9 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [従来のネットワークの共同作業者](#classic-network-contributor) | 従来の仮想ネットワークと予約済み IP を管理できます |
 | [Web プランの共同作業者](#web-plan-contributor) | Web プランを管理できます |
 | [Web サイトの共同作業者](#website-contributor) | Web サイトを管理できますが、その接続先の Web プランは管理できません |
+
+## ロールのアクセス許可
+以降の表は、各ロールに割り当てられている具体的なアクセス許可の説明です。アクセス許可を与える **Actions** のほか、それらを制限する **NotActions** が含まれている場合があります。
 
 ### API Management サービスの共同作業者
 API Management サービスを管理できます
@@ -142,7 +145,7 @@ ClearDB MySQL データベースを管理できます
 | ------- | ------ |
 | * | あらゆる種類のリソースの作成と管理 |
 
-| **not actions** ||
+| **NotActions** ||
 | ------- | ------ |
 | Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません |
 | Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
@@ -153,7 +156,7 @@ Data Factory を管理できます
 | **アクション** ||
 | ------- | ------ |
 | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-| Microsoft.DataFactory/dataFactories/* | Data Factory の作成と管理 |
+| Microsoft.DataFactory/dataFactories/* | Data Factory の管理 |
 | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
@@ -324,7 +327,7 @@ SQL データベースを管理できますが、そのセキュリティ関連�
 | Microsoft.Sql/servers/read | SQL Server の読み取り |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
-| **not actions** ||
+| **NotActions** ||
 | ------- | ------ |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | 監査ポリシーを編集することはできません |
 | Microsoft.Sql/servers/databases/auditingSettings/* | 監査設定を編集することはできません |
@@ -370,7 +373,7 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Sql/servers/* | SQL サーバーの作成と管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
-| **not actions** ||
+| **NotActions** ||
 | ------- | ------ |
 | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーは編集できません |
 | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定は編集できません |
@@ -412,8 +415,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 
 | **アクション** ||
 | ------- | ------ |
-| */read | 機密データを除くあらゆる種類のリソースの読み取り |
-| Microsoft.Authorization/* | 承認の読み取り |
+| */read | 機密データを除くあらゆる種類のリソースの読み取り | | Microsoft.Authorization/* | 承認の読み取り |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### 従来の仮想マシンの共同作業者
@@ -510,9 +512,9 @@ Web サイトを管理できますが、接続されている Web プランは�
 | Microsoft.Web/sites/* | Web サイトの作成と管理 |
 
 ## 関連項目
-- [Azure Active Directory リソースへのアクセスをロールの割り当てによって管理する](role-based-access-control-configure.md): Azure ポータルでの RBAC の基本。
+- [ロール ベースのアクセス制御](role-based-access-control-configure.md): Azure ポータルでの RBAC の基本。
 - [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md): アクセスのニーズに合わせてカスタム ロールを作成する方法について説明します。
 - [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
 - [ロールベースのアクセス制御のトラブルシューティング](role-based-access-control-troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

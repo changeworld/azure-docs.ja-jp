@@ -1,10 +1,10 @@
 <properties
-pageTitle="ロジック アプリで Slack API を使用する | Microsoft Azure"
-description="Microsoft Azure App Service のロジック アプリで Slack API (コネクタ) を使用する方法の概要について説明します"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="ロジック アプリで Slack コネクタを使用する | Microsoft Azure"
+description="Microsoft Azure App Service Logic Apps で Slack コネクタを使用する方法の概要について説明します"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,10 +14,10 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="03/16/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Slack API の概要
+# Slack コネクタの使用
 
 Slack はチーム コミュニケーション ツールです。チームのすべてのコミュニケーションが 1 個所にまとめられ、どこにいてもすぐに検索、使用できるようになります。
 
@@ -42,7 +42,7 @@ Slack コネクタは、アクションとして使用できます。トリガ�
 |--- | ---|
 |PostMessage|指定したチャネルにメッセージを投稿します。|
 ## Slack への接続を作成する
-Slack API を使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。
+Slack コネクタを使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。
 
 |プロパティ| 必須|説明|
 | ---|---|---|
@@ -481,4 +481,4 @@ MessageItem の必須のプロパティ:
 [5]: ./media/connectors-create-api-slack/connectionconfig5.png
 [6]: ./media/connectors-create-api-slack/connectionconfig6.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

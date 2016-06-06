@@ -104,7 +104,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 4. マルウェア対策ソリューションに関する追加情報が表示されます。**[作成]** を選択します。
 5. **[拡張機能の追加]** ブレードで必要な構成設定を入力し、**[OK]** を選択します。![][6]
 
-[Microsoft マルウェア対策](../azure-security-antimalware.md)が、選択した仮想マシンでアクティブになります。
+[Microsoft マルウェア対策](../security/azure-security-antimalware.md)が、選択した仮想マシンでアクティブになります。
 
 
 ## 次のステップ
@@ -124,4 +124,4 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 [5]: ./media/security-center-recommendations/select-enable-antimalware.png
 [6]: ./media/security-center-recommendations/install-antimalware.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

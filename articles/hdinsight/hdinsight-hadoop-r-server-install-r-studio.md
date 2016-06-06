@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/29/2016"
+   ms.date="05/24/2016"
    ms.author="jeffstok"/>
 
 
@@ -27,7 +27,7 @@
 
 ## 前提条件
 
-* R Server がインストールされた Azure HDInsight クラスター。手順については、[HDInsight の R Server クラスターの概要](hdinsight-hadoop-r-server-get-started.mdulet)に関するページを参照してください。
+* R Server がインストールされた Azure HDInsight クラスター。手順については、[HDInsight の R Server クラスターの概要](hdinsight-hadoop-r-server-get-started.md)に関するページを参照してください。
 * SSH クライアント。Linux および UNIX のディストリビューション、または Macintosh OS X の場合、オペレーティング システムに `ssh`コマンドが用意されています。Windows の場合は、[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をお勧めします。 
 
 
@@ -36,7 +36,7 @@
 1. クラスターのエッジ ノードを特定します。R Server がインストールされた HDInsight クラスターの場合、ヘッド ノードとエッジ ノードには次の命名規則があります。
 
 	* ヘッド ノード - `CLUSTERNAME-ssh.azurehdinsight.net`
-	* エッジ ノード - `rserver.CLUSTERNAME.ssh.azurehdinsight.net` 
+	* エッジ ノード - `r-server.CLUSTERNAME-ssh.azurehdinsight.net` 
 
 3. 上記の命名パターンを使用して、クラスターのエッジ ノードに SSH でログインします。
  
@@ -75,7 +75,7 @@
 
 	* ([Cygwin](http://www.redhat.com/services/custom/cygwin/) を使用する) Linux クライアントまたは Windows クライアントで、ターミナル セッションを開き、次のコマンドを実行します。
 
-			ssh -L localhost:8787:localhost:8787 USERNAME@rserver.CLUSTERNAME.ssh.azurehdinsight.net
+			ssh -L localhost:8787:localhost:8787 USERNAME@r-server.CLUSTERNAME-ssh.azurehdinsight.net
 			
 		**USERNAME** は、実際の HDInsight クラスターの SSH ユーザーに置き換えます。また、**CLUSTERNAME** は、HDInsight クラスターの名前に置き換えます。
 
@@ -124,4 +124,4 @@
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

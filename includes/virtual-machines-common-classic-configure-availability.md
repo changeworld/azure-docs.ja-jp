@@ -5,7 +5,7 @@
 
 アプリケーションをいつでも利用できるようにするだけでなく、効率的に実行できるようにするためには、可用性セットと負荷分散エンドポイントの両方を使用することをお勧めします。負荷分散されたエンドポイントの詳細については、「[Azure インフラストラクチャ サービスの負荷分散][]」を参照してください。
 
-クラシック デプロイ モデルでは、次の 2 つの方法のいずれかを使用して、仮想マシンを可用性セットに割り当てることができます。
+クラシック仮想マシンを可用性セットに追加するには、次の 2 つのオプションがあります。
 
 - [オプション 1: 仮想マシンと可用性セットを同時に作成する][]。この後で、新しい仮想マシンを作成する場合には、ここで作成した可用性セットに追加します。
 - [オプション 2: 既存の仮想マシンを可用性セットに追加する][]。
@@ -14,57 +14,55 @@
 
 ## <a id="createset"> </a>オプション 1: 仮想マシンと可用性セットを同時に作成する##
 
-Azure クラシック ポータルを使用する方法と、Azure PowerShell コマンドを使用する方法があります。
+Azure ポータルを使用する方法と、Azure PowerShell コマンドを使用する方法があります。
 
-Azure クラシック ポータルを使用するには:
+Azure ポータルを使用するには。
 
-1. まだサインインしていない場合は、Azure クラシック ポータルにサインインします。
+1. まだサインインしていない場合は、Azure ポータルにサインインします。
 
-2. コマンド バーで、**[新規]** をクリックします。
+2. ハブ メニューで **[+新規]**、**[仮想マシン]** の順にクリックします。
+    
+    ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/ChooseVMImage.png)
 
-3. **[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+3. 使用する Marketplace 仮想マシン イメージを選択します。Linux または Windows の仮想マシンを作成することができます。
 
-4. 最初の 2 つの画面で、イメージ、ユーザー名、パスワードなどを選択します。詳細については、「[Windows を実行する仮想マシンの作成][]」を参照してください。
+4. 選択した仮想マシンについて、デプロイメント モデルが **[クラシック]** に設定されていることを確認し、**[作成]** をクリックします。
+    
+    ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)
 
-5. 3 番目の画面では、リソースのネットワーク、ストレージ、可用性を構成できます。以下の手順を実行します。
+5. 仮想マシン名と、ユーザー名とパスワード (Windows コンピューターの場合) または SSH 公開キー (Linux コンピューターの場合) を入力します。
 
-	1. 適切なクラウド サービス名を選択します。ここでは、**[新しいクラウド サービスの作成]** に設定します (ただし、新しい仮想マシンを既存の仮想マシン クラウド サービスに追加する場合を除く)。**[クラウド サービス DNS 名]** で、名前を入力します。DNS 名は、仮想マシンに接続するために使用される URI の一部になります。クラウド サービスは、通信および分離グループとしての機能があります。すべての仮想マシンが同じクラウド サービス内に属していれば、相互の通信、負荷分散設定、同一可用性セットへの割り当てができます。
+6. VM のサイズを選び、**[選択]** をクリックして続行します。
 
-	2. 仮想ネットワークを使用する場合には、**[リージョン/アフィニティ グループ/仮想ネットワーク]** で、使用する仮想ネットワークを指定します。**重要**: 仮想マシンで仮想ネットワークを使用する場合は、仮想マシンを作成時に仮想ネットワークに参加させる必要があります。作成後に仮想マシンを仮想ネットワークに参加させることはできません。詳細については、「[Virtual Network の概要][]」を参照してください。
+7. **[オプションの構成] > [可用性セット]** を選択し、仮想マシンを追加する可用性セットを選択します。
+    
+    ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/ChooseAvailabilitySet.png)
 
-	3. 可用性セットを作成します。**[可用性セット]** で、**[可用性セットの作成]** が選択されたままにします。次に、可用性セットの名前を入力します。
+8. 構成設定を確認します。完了したら、**[作成]** をクリックします。
 
-	4. 既定のエンドポイントを作成し、必要に応じてエンドポイントを追加します。エンドポイントは後で追加することもできます。
+9. Azure が仮想マシンを作成している間の進捗状況は、ハブ メニューの **[仮想マシン]** で追跡できます。
 
-	![新しい仮想マシンの可用性セットを作成する](./media/virtual-machines-common-classic-configure-availability/VMavailabilityset.png)
-
-6. 4 番目の画面で、インストールする拡張機能をクリックします。拡張機能には、マルウェア対策の実行やパスワードのリセットなどの機能が用意されており、仮想マシンの管理に役立ちます。詳細については、「[Azure VM Agent and VM Extensions (Azure VM エージェントおよび VM 拡張機能)](../articles/virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md)」を参照してください。
-
-7.	矢印をクリックして、仮想マシンと可用性セットを作成します。
-
-	新しい仮想マシンのダッシュボードで **[構成]** をクリックし、仮想マシンが新しい可用性セットに属していることを確認します。
-
-Azure PowerShell コマンド使用して Azure 仮想マシンを作成し、新規または既存の可用性セットに追加する方法については、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md)」を参照してください。
+Azure PowerShell コマンド使用して Azure 仮想マシンを作成し、新規または既存の可用性セットに追加する方法については、[Azure PowerShell を使用した Windows ベースの仮想マシンの作成および事前構成](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md)に関するページをご覧ください。
 
 ## <a id="addmachine"> </a>オプション 2: 既存の仮想マシンを可用性セットに追加する##
 
-Azure クラシック ポータルでは、既存の仮想マシンを既存の可用性セットに追加することも、既存の仮想マシン用に新しい可用性セットを作成することもできます(同じ可用性セット内の仮想マシンは同じクラウド サービスに属する必要がある点に留意してください)。 いずれの場合も、手順はほとんど同じです。Azure PowerShell では、既存の仮想マシンを既存の可用性セットに追加できます。
+Azure ポータルでは、既存のクラシック仮想マシンを可用性セットに追加することも、既存の仮想マシン用に新しい可用性セットを作成することもできます (同じ可用性セット内の仮想マシンは同じクラウド サービスに属する必要がある点に留意してください)。 いずれの場合も、手順はほとんど同じです。Azure PowerShell では、既存の仮想マシンを既存の可用性セットに追加できます。
 
-1. まだサインインしていない場合は、Azure クラシック ポータルにサインインします。
+1. まだサインインしていない場合は、Azure ポータルにサインインします。
 
-2. コマンド バーで **[Virtual Machines]** をクリックします。
+2. ハブ メニューで **[仮想マシン (クラシック)]** をクリックします。
+    
+    ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
 
 3. 仮想マシンの一覧から、既存の可用性セットに追加する仮想マシンの名前を選択します。
 
-4. 仮想マシン名の下のタブの中から、**[構成]** をクリックします。
+4. 仮想マシンの **[設定]** から **[可用性セット]** を選択します。
+    
+    ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetSettings.png)
 
-5. [設定] セクションで、**[可用性セット]** を探します。次のいずれかを実行します。
-
-	A.**[可用性セットの作成]** を選択し、セットの名前を入力します。
-
-	B.**[可用性セットの選択]** を選択し、一覧から目的の可用性セットを選択します。
-
-	![既存の仮想マシンの可用性セットを作成する](./media/virtual-machines-common-classic-configure-availability/VMavailabilityExistingVM.png)
+5. 仮想マシンを追加する可用性セットを選択します。仮想マシンは、可用性セットと同じクラウド サービスに属している必要があります。
+    
+    ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetPicker.png)
 
 6. **[保存]** をクリックします。
 
@@ -85,8 +83,8 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 [Azure インフラストラクチャ サービスの負荷分散]: ../articles/virtual-machines/virtual-machines-linux-load-balance.md
 [仮想マシンの可用性管理]: ../articles/virtual-machines/virtual-machines-linux-manage-availability.md
 
-[Windows を実行する仮想マシンの作成]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
-[Virtual Network の概要]: ../articles/virtual-network/virtual-networks-overview.md
+[Create a virtual machine running Windows]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
+[Virtual Network overview]: ../articles/virtual-network/virtual-networks-overview.md
 [クラシック仮想マシンに関する記事]: https://azure.microsoft.com/documentation/articles/?tag=azure-service-management&service=virtual-machines
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->
