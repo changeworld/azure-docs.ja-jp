@@ -14,7 +14,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="03/02/2016"
+ ms.date="05/25/2016"
  ms.author="dobett"/>
 
 # Azure IoT Suite の構成済みソリューションとは
@@ -28,14 +28,13 @@ Azure IoT Suite の構成済みソリューションとは、サブスクリプ�
 
 Azure にソリューションをデプロイして実行するだけでなく、完全なソース コードをダウンロードして、特定の IoT 要件を満たすようにソリューションをカスタマイズして拡張することができます。
 
-> [AZURE.NOTE] 構成済みソリューションのいずれかをデプロイするには、[Microsoft Azure IoT Suite][lnk-azureiotsuite] にアクセスしてください。記事「[IoT 事前構成済みソリューションの使用][lnk-preconf-get-started]」では、ソリューションのいずれかをデプロイして実行する方法について詳しく説明しています。
+> [AZURE.NOTE] 構成済みソリューションのいずれかをデプロイするには、[Microsoft Azure IoT Suite][lnk-azureiotsuite] にアクセスしてください。[IoT 事前構成済みソリューションの使用][lnk-preconf-get-started]に関する記事では、ソリューションのいずれかをデプロイして実行する方法について詳しく説明しています。
 
 次の表は、ソリューションが特定の IoT 機能にどのようにマップされるかを示しています。
 
 | 解決策 | データの取り込み | デバイス ID | コマンドと制御 | ルールとアクション | 予測分析 |
 |------------------------|-----|-----|-----|-----|-----|
-| [リモート監視][lnk-remote-monitoring] | あり | あり | あり | あり | - | 
-| [予測的なメンテナンス][lnk-predictive-maintenance] | あり | あり | あり | あり | あり |
+| [リモート監視][lnk-preconf-get-started] | あり | あり | あり | あり | - | | [予測的なメンテナンス][lnk-predictive-maintenance] | あり | あり | あり | あり | あり |
 
 - *データの取り込み*: クラウドへの大規模なデータの取り込み。
 - *デバイス ID*: すべての接続されたデバイスの一意の ID を管理します。
@@ -124,17 +123,16 @@ IoT の構成済みソリューションの詳細については、次のリソ�
 
 [img-remote-monitoring-arch]: ./media/iot-suite-what-are-preconfigured-solutions/remote-monitoring-arch1.png
 [img-dashboard]: ./media/iot-suite-what-are-preconfigured-solutions/dashboard.png
-[lnk-remote-monitoring]: iot-suite-remote-monitoring-sample-walkthrough.md
 [lnk-what-is-azure-iot]: iot-suite-what-is-azure-iot.md
 [lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
-[lnk-event-processor]: event-hubs-programming-guide.md#event-processor-host
-[lnk-web-job]: web-sites-create-web-jobs.md
+[lnk-event-processor]: ../event-hubs/event-hubs-programming-guide.md#event-processor-host
+[lnk-web-job]: ../app-service-web/web-sites-create-web-jobs.md
 [lnk-document-db]: https://azure.microsoft.com/documentation/services/documentdb/
-[lnk-identity-registry]: iot-hub-devguide.md#device-identity-registry
+[lnk-identity-registry]: ../iot-hub/iot-hub-devguide.md#device-identity-registry
 [lnk-suite-overview]: iot-suite-overview.md
 [lnk-preconf-get-started]: iot-suite-getstarted-preconfigured-solutions.md
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0601_2016-->

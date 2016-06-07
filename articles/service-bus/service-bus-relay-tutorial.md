@@ -76,7 +76,7 @@
 
 	>[AZURE.IMPORTANT] このチュートリアルでは、C# の名前空間 **Microsoft.ServiceBus.Samples** を使用します。これは、コントラクトのマネージ型の名前空間で、「[WCF クライアントを構成する](#configure-the-wcf-client)」の手順に出てくる構成ファイルで使用されます。このサンプルをビルドするときに必要な名前空間を指定できますが、それに応じて、アプリケーション構成ファイルでコントラクトとサービスの名前空間を変更しない限り、このチュートリアルは機能しません。App.config ファイルで指定する名前空間は、C# ファイルで指定した名前空間と同じである必要があります。
 
-1. `Microsoft.ServiceBus.Samples` 名前空間の宣言の直後 (ただし、名前空間内部) に、`IEchoContract` という名前の新しいインターフェイスを定義し、名前空間の値が **http://samples.microsoft.com/ServiceModel/Relay/** のインターフェイスに `ServiceContractAttribute` 属性を適用します。この名前空間の値は、コードのスコープ全体で使用する名前空間とは異なります。代わりに、この名前空間の値は、このコントラクトの一意の識別子として使用されます。名前空間を明示的に指定すると、既定の名前空間値がコントラクト名に追加されなくなります。
+1. `Microsoft.ServiceBus.Samples` 名前空間の宣言の直後 (ただし、名前空間内部) に、`IEchoContract` という名前の新しいインターフェイスを定義し、名前空間の値が ****http://samples.microsoft.com/ServiceModel/Relay/** のインターフェイスに `ServiceContractAttribute` 属性を適用します。この名前空間の値は、コードのスコープ全体で使用する名前空間とは異なります。代わりに、この名前空間の値は、このコントラクトの一意の識別子として使用されます。名前空間を明示的に指定すると、既定の名前空間値がコントラクト名に追加されなくなります。
 
 	```
 	[ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -94,7 +94,7 @@
 	string Echo(string text);
 	```
 
-1. 次に示すように、`IEchoContract` インターフェイスの定義の直後に、`IEchoChannel` と `IClientChannel` の両方を継承するチャネルを宣言します。
+1. 次に示すように、`IEchoContract` インターフェイスの定義の直後に、`IEchoContract` インターフェイスと `IClientChannel` インターフェイスの両方から継承するチャネルを宣言します。
 
 	```
     public interface IEchoChannel : IEchoContract, IClientChannel { }
@@ -783,4 +783,4 @@ Service Bus の詳細については、次のトピックを参照してくだ�
 [5]: ./media/service-bus-relay-tutorial/set-projects.png
 [6]: ./media/service-bus-relay-tutorial/set-depend.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

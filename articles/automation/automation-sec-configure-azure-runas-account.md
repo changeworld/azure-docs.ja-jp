@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/16/2016"
+    ms.date="06/01/2016"
     ms.author="magoedte"/>
 
 # Azure 実行アカウントを使用した Runbook の認証
@@ -68,13 +68,10 @@ AzureRunAsConnection|Automation アカウントの作成時に実行アカウン
 
 以降の手順に進む前に、次のことを確認してください。
 
-1. [Windows PowerShell 用 Azure Active Directory モジュール (64 ビット バージョン)](http://go.microsoft.com/fwlink/p/?linkid=236297) をダウンロードしてインストール済みであること。
-2. Automation アカウントが作成済みであること。このアカウントは、以下のスクリプトの –AutomationAccountName パラメーターと -ApplicationDisplayName パラメーターの値として参照されます。
-3. [Azure Automation Authoring Toolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.2) がインストール済みであること。
+1. Windows 7 を実行している場合は、[Windows Management Framework (WMF) 4.0](https://www.microsoft.com/download/details.aspx?id=40855) をダウンロードしてインストール済みであること。Windows Server 2012 R2、Windows Server 2012、Windows 2008 R2、Windows 8.1、および Windows 7 SP1 を実行している場合は、[Windows Management Framework 5.0](https://www.microsoft.com/download/details.aspx?id=50395) をインストールできます。
+2. Azure PowerShell 1.0このリリースとそのインストール方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。 
+3. Automation アカウントが作成済みであること。このアカウントは、以下のスクリプトの –AutomationAccountName パラメーターと -ApplicationDisplayName パラメーターの値として参照されます。
 
-```
-Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser
-```
 
 この PowerShell スクリプトで構成の対象となる要素は次のとおりです。
 
@@ -246,4 +243,4 @@ AzureAutomationTutorial のサンプル Runbook から次の更新済みサン�
 - サービス プリンシパルの詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)」を参照してください。
 - Azure Automation におけるロールベースのアクセス制御の詳細については、「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

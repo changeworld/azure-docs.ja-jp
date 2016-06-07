@@ -3,7 +3,7 @@
 	description="Azure ポータルで、クラウド内で大規模な並列ワークロードを実行する Azure Batch アカウントを作成する方法について説明します"
 	services="batch"
 	documentationCenter=""
-	authors="dlepow"
+	authors="mmacy"
 	manager="timlt"
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/12/2016"
+	ms.date="05/26/2016"
 	ms.author="marsma"/>
 
 # Azure ポータルで Azure Batch アカウントを作成して管理する
@@ -22,19 +22,19 @@
 - [Azure ポータル](batch-account-create-portal.md)
 - [Batch Management .NET](batch-management-dotnet.md)
 
-[Azure ポータル][azure_portal]には、Azure Batch アカウントの作成と管理に必要なツールが用意されています。これらのツールを使用して、大規模な並列ワークロードを処理することができます。この記事では、ポータルを使用して Batch アカウントを作成する手順について説明すると共に、Batch アカウントの重要な設定とプロパティの一部を説明します。たとえば、Batch を使用して開発するアプリケーションやサービスには、Batch サービスと通信するためにアカウントの URL とアクセス キーが必要です。どちらも Azure ポータル内にあります。
+[Azure ポータル][azure_portal]には、Azure Batch アカウントの作成と管理に必要なツールが用意されています。これらのツールを使用して、大規模な並列ワークロードを処理することができます。この記事では、ポータルを使用して Batch アカウントを作成する手順について説明し、さらに Batch アカウントの重要な設定とプロパティについて取り上げます。たとえば、Batch を使用して開発するアプリケーションやサービスには、Batch サービスと通信するためにアカウントの URL とアクセス キーが必要です。どちらも Azure ポータル内にあります。
 
->[AZURE.NOTE] 現時点で、Azure ポータルは、アカウントの作成、アカウント設定とプロパティの管理など、Batch サービスで利用できる機能のサブセットをサポートしています。ジョブとタスクの作成と実行など、Batch の完全な機能セットは、開発者向けに Batch API を通じて提供されています。
+>[AZURE.NOTE] Azure ポータルでは、現時点でアカウントの作成、Batch アカウントの設定とプロパティの管理、プールとジョブの作成および監視など、Batch サービスで利用できる機能の一部をサポートしています。開発時は、Batch API を介して Batch の全機能を利用できます。
 
 ## Batch アカウントを作成する
 
 1. [Azure ポータル][azure_portal]にサインインします。
 
-2. **[新規]**、**[Compute]**、**[Batch Service]** の順にクリックします。
+2. **[新規]**、**[Virtual Machines]**、**[Batch サービス]** の順にクリックします。
 
 	![Marketplace での Batch][marketplace_portal]
 
-3. **[Batch サービス]** ブレードの内容を確認し、**[作成]** をクリックします。デプロイ モデルの選択は無効になります。Batch では、リソース グループ デプロイ モデルのみが使用されるためです。
+3. **[Batch サービス]** ブレードの内容を確認し、**[作成]** をクリックします。Batch では、Resource Manager デプロイ モデルのみが使用される点に注意してください。
 
 	![Batch Service create blade in Azure portal][3]
 
@@ -42,15 +42,15 @@
 
     ![Batch アカウントを作成する][account_portal]
 
-	a.**アカウント名** -- Batch アカウントの一意の名前を指定します。この名前は、アカウントが作成されている Azure リージョン内で一意である必要があります (下の「*場所*」を参照してください)。アカウント名に含めることができるのは、英小文字と数字のみで、文字数は 3 ～ 24 文字にする必要があります。
+	a.**アカウント名** -- Batch アカウントの一意の名前。この名前は、アカウントが作成されている Azure リージョン内で一意である必要があります (下の「*場所*」を参照してください)。アカウント名に含めることができるのは、英小文字と数字のみで、文字数は 3 ～ 24 文字にする必要があります。
 
-	b.**サブスクリプション** -- Batch アカウントを作成するサブスクリプションを選択します。サブスクリプションが 1 つのみの場合は、既定でそのサブスクリプションが選択されます。
+	b.**サブスクリプション** -- Batch アカウントを作成するサブスクリプション。サブスクリプションが 1 つのみの場合は、既定でそのサブスクリプションが選択されます。
 
-	c.**リソース グループ** -- 新しい Batch アカウント用にリソース グループを選択するか、サブスクリプションにリソース グループがない場合は新規作成します。
+	c.**リソース グループ** -- 新しい Batch アカウント用のリソース グループ。必要に応じて、新しく作成することもできます。
 
-	d.**場所** -- Batch アカウントを作成する Azure リージョンを選択します。サブスクリプションとリソース グループでサポートされているリージョンのみがオプションとして表示されます。
+	d.**場所** -- Batch アカウントを作成する Azure リージョン。サブスクリプションとリソース グループでサポートされているリージョンのみがオプションとして表示されます。
 
-    e.**ストレージ アカウント** (省略可能) -- **汎用**のストレージ アカウントを新しい Batch アカウントに関連付ける (リンクする) ことができます。Batch の[アプリケーション パッケージ](batch-application-packages.md)機能では、リンクされたストレージ アカウントを使用してアプリケーション パッケージの保存と取得を行います。この機能の詳細については、「[Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md)」を参照してください。
+    e.**ストレージ アカウント** (省略可能) -- 新しい Batch アカウントに関連付ける (リンクする) **汎用**のストレージ アカウント。Batch の[アプリケーション パッケージ](batch-application-packages.md)機能では、リンクされたストレージ アカウントを使用してアプリケーション パッケージの保存と取得を行います。この機能の詳細については、「[Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md)」を参照してください。
 
      > [AZURE.TIP] リンクされたストレージ アカウント内のキーを再生成する際は、特に注意が必要な点があります。詳細については、下の「[Batch アカウントに関する注意点](#considerations-for-batch-accounts)」を参照してください。
 
@@ -64,15 +64,15 @@
 
 * **Batch アカウント URL** -- [Batch REST][api_rest] API や [Batch .NET][api_net] クライアント ライブラリなどの API を使用している場合は、この URL で Batch アカウントにアクセスできます。URL の形式は次のとおりです。
 
-  `https://<account_name>.<region>.batch.azure.com`
+    `https://<account_name>.<region>.batch.azure.com`
 
 * **アクセス キー** -- Batch アカウントのアクセス キーの表示や管理を行うには、鍵アイコンをクリックして **[キーの管理]** ブレードを開くか、**[すべての設定]**、**[キー]** の順にクリックします。アクセス キーは、[Batch REST][api_rest] や [Batch .NET][api_net] クライアント ライブラリなどの Batch サービス API と通信する際に必要になります。
 
- ![Batch アカウント キー][account_keys]
+    ![Batch アカウント キー][account_keys]
 
 * **すべての設定** -- Batch アカウントのすべての設定を管理したり、そのプロパティを表示したりするには、**[すべての設定]** をクリックして **[設定]** ブレードを開きます。このブレードから、アカウント クォータの表示、Batch アカウントにリンクする Azure ストレージ アカウントの選択、ユーザーの管理など、アカウントのすべての設定とプロパティを利用できます。
 
- ![Batch account settings and properties blades][5]
+    ![Batch account settings and properties blades][5]
 
 ## Batch アカウントに関する注意点
 
@@ -109,4 +109,4 @@
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
 [account_keys]: ./media/batch-account-create-portal/account_keys.PNG
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

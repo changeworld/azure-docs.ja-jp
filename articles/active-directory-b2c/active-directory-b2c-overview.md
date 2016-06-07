@@ -63,4 +63,8 @@ Azure Active Directory B2C プレビューの特定の機能を使用する方�
 - [Azure Active Directory B2C の FAQ](active-directory-b2c-faqs.md) をご覧ください。
 - [Azure Active Directory B2C のサポート要求を提出する方法](active-directory-b2c-support.md)
 
-<!---HONumber=AcomDC_0330_2016-->
+## Microsoft 製品のセキュリティ更新プログラムの取得
+
+セキュリティの問題が発生したときに通知を受け取ることをお勧めします。[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知の受信登録を行ってください。
+
+<!---HONumber=AcomDC_0601_2016-->

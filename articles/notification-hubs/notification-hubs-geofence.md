@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/16/2016"
+	ms.date="05/31/2016"
 	ms.author="dendeli"/>
     
 # Azure Notification Hubs と Bing の空間データを使用したジオフェンス型プッシュ通知
@@ -26,7 +26,7 @@
 ##前提条件
 まず、前提条件として以下のソフトウェアとサービスがすべて揃っていることを確認してください。
 
-* [Visual Studio 2015 Update 1](https://www.visualstudio.com/ja-JP/downloads/download-visual-studio-vs.aspx) 以降 ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409) も使用可)。 
+* [Visual Studio 2015 Update 1](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) 以降 ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409) も使用可)。 
 * 最新バージョンの [Azure SDK](https://azure.microsoft.com/downloads/)。 
 * [Bing マップ デベロッパー センター アカウント](https://www.bingmapsportal.com/)。アカウントの作成は無料です。作成したアカウントは Microsoft アカウントに関連付けることができます。 
 
@@ -378,8 +378,8 @@ UWP アプリでユーザーの位置情報を取得する方法について詳�
 
 第 2 に、適切な参加者に対して確実に通知を配信するために、[タグ付け](notification-hubs-routing-tag-expressions.md)によってターゲットを指定する必要があります。
 
-ここで紹介したソリューションのシナリオは多様なターゲット プラットフォームを想定しており、システム固有の機能にジオフェンスを限定することはしていません。しかし、ユニバーサル Windows プラットフォームには、[細かい設定なしにジオフェンスを検出](msdn.microsoft.com/ja-JP/windows/uwp/maps-and-location/set-up-a-geofence)する機能が備わっています。
+ここで紹介したソリューションのシナリオは多様なターゲット プラットフォームを想定しており、システム固有の機能にジオフェンスを限定することはしていません。しかし、ユニバーサル Windows プラットフォームには、[細かい設定なしにジオフェンスを検出](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence)する機能が備わっています。
 
 Notification Hubs の機能について詳しくは、[ドキュメント ポータル](https://azure.microsoft.com/documentation/services/notification-hubs/)をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -1,14 +1,14 @@
 キャッシュを作成するには、まず [Azure ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
 
+>[AZURE.NOTE] Azure アカウントがない場合は、数分あれば [Azure アカウントを無料で作成](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)することができます。
+
+![新しいキャッシュ](media/redis-cache-create/redis-cache-new-cache-menu.png)
+
 >[AZURE.NOTE] キャッシュは、Azure ポータルだけでなく、ARM テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。
 >
 >-	ARM テンプレートを使用してキャッシュを作成する方法については、「[テンプレートを使用して Redis Cache を作成する](../articles/redis-cache/cache-redis-cache-arm-provision.md)」をご覧ください。
 >-	Azure PowerShell を使用してキャッシュを作成する方法については、「[Azure PowerShell を使用した Azure Redis Cache の管理](../articles/redis-cache/cache-howto-manage-redis-cache-powershell.md)」をご覧ください。
 >-	Azure CLI を使用してキャッシュを作成する方法については、「[Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法](../articles/redis-cache/cache-manage-cli.md)」を参照してください。
-
-![新しいキャッシュ](media/redis-cache-create/redis-cache-new-cache-menu.png)
-
->[AZURE.NOTE] Azure アカウントがない場合は、数分あれば [Azure アカウントを無料で作成](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)することができます。
 
 **[Redis Cache の新規作成]** ブレードで、必要なキャッシュ構成を指定します。
 
@@ -27,3 +27,4 @@
 
 ![作成されたキャッシュ](media/redis-cache-create/redis-cache-cache-created.png)
 
+<!---HONumber=AcomDC_0601_2016-->
