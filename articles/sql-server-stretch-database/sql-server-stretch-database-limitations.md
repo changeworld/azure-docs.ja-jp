@@ -30,7 +30,7 @@ Stretch が有効なテーブルの制限事項を次に示します。
 
 ### DML 操作
 
--   Stretch が有効なテーブル、または Stretch が有効なテーブルが含まれるビューでは行を更新または削除できません。
+-   Stretch が有効なテーブル、または Stretch が有効なテーブルが含まれるビューでは、移行されている行、または移行する資格がある行は、更新も削除できません。
 
 -   リンクされているサーバーの Stretch が有効なテーブルに行を挿入することはできません。
 
@@ -96,4 +96,4 @@ Stretch が有効なテーブルの制限事項を次に示します。
 
 [テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

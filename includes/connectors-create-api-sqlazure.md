@@ -1,14 +1,13 @@
-### Prerequisites
+### 前提条件
 
-- A [SQL Azure](https://www.microsoft.com/sql) account  
+- [SQL Azure](https://www.microsoft.com/sql) アカウント  
 
 
-Before you can use your SQL Azure account in a Logic app, you must authorize the Logic app to connect to your SQL Azure account.Fortunately, you can do this easily from within your Logic app on the Azure Portal.  
+ロジック アプリで SQL Azure アカウントを使用するには、SQL Azure アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
-Here are the steps to authorize your Logic app to connect to your SQL Azure account:  
-1. To create a connection to SQL Azure, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *SQL Azure* in the search box. Select the trigger or action you'll like to use:  
-![SQL Azure connection creation step](./media/connectors-create-api-sql/sql-1.png)  
-2. If you haven't created any connections to SQL Azure before, you'll get prompted to provide your SQL Azure credentials. These credentials will be used to authorize your Logic app to connect to, and access your SQL Azure account's data:  
-![SQL Azure connection creation step](./media/connectors-create-api-sql/sql-2.png)  
-3. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
-![SQL Azure connection creation step](./media/connectors-create-api-sql/sql-3.png)  
+SQL Azure アカウントに接続するロジック アプリを承認する手順を次に示します。
+1. SQL Azure への接続を作成するには、ロジック アプリ デザイナーのドロップダウン リストから **[Show Microsoft managed APIs (Microsoft Managed API を表示)]** を選択し、検索ボックスに「*SQL Azure*」と入力します。使用するトリガーまたはアクションを選択します。![SQL Azure の接続の作成手順](./media/connectors-create-api-sql/sql-1.png)  
+2. これまでに SQL Azure への接続を作成したことがない場合は、SQL Azure の資格情報の入力を求められます。この資格情報を使用して、接続するロジック アプリの承認と、SQL Azure アカウントのデータへのアクセスが行われます。![SQL Azure の接続の作成手順](./media/connectors-create-api-sql/sql-2.png)  
+3. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。![SQL Azure の接続の作成手順](./media/connectors-create-api-sql/sql-3.png)  
+
+<!---HONumber=AcomDC_0525_2016-->

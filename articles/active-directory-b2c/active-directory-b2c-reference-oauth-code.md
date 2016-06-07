@@ -124,15 +124,10 @@ authorization\_code を取得できたので、`POST` 要求を `/token` エン�
 ```
 POST fabrikamb2c.onmicrosoft.com/v2.0/oauth2/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-	"grant_type": "authorization_code",
-	"client_id": "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6",
-	"scope": "openid offline_access",
-	"code": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...",
-	"redirect_uri": "urn:ietf:wg:oauth:2.0:oob"
-}
+grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
+
 ```
 
 | パラメーター | 必須 | 説明 |
@@ -201,15 +196,9 @@ id\_token は短命です。リソースに引き続きアクセスできるよ�
 ```
 POST fabrikamb2c.onmicrosoft.com/v2.0/oauth2/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 
-{
-	"grant_type": "refresh_token",
-	"client_id": "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6",
-	"scope": "openid offline_access",
-	"refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...",
-	"redirect_uri": "urn:ietf:wg:oauth:2.0:oob"
-}
+grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
 | パラメーター | 必須 | 説明 |
@@ -277,4 +266,4 @@ Here is the entire flow for a native app; each request is detailed in the sectio
 - [アプリケーションを作成し](active-directory-b2c-app-registration.md)、アプリケーション ID と redirect\_uri を取得します。アプリに**ネイティブ クライアント**を追加します。
 - [ポリシーを作成し](active-directory-b2c-reference-policies.md)、ポリシー名を取得します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

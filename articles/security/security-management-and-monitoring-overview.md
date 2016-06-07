@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="05/19/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティの管理と監視の概要
@@ -46,6 +46,7 @@ Microsoft クラウド サービスのセキュリティは、パートナーシ
 ロールベースのアクセス制御 (RBAC) は、Azure リソースのアクセス権を詳細に管理できるようにします。RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。RBAC は、ユーザーが組織を離れるときに、クラウド内のリソースへのアクセス権を失うようにするためにも役立ちます。
 
 詳細情報:
+
 - [RBAC に関する Active Directory チームのブログ](http://i1.blogs.technet.com/b/ad/archive/2015/10/12/azure-rbac-is-ga.aspx)
 - [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
 
@@ -60,6 +61,7 @@ Microsoft マルウェア対策は、PaaS ロールと仮想マシンの両方�
 Symantec End Point Protection (SEP) も、Azure でサポートされています。ポータルの統合により、お客様は SEP を VM 内で使用するように指定できます。SEP は、Azure ポータルを通じて新規の VM にインストールすることができます。また、PowerShell を使用して既存の VM にインストールすることもできます。
 
 詳細情報:
+
 - [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 - [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](../azure-security-antimalware.md)
 - [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../virtual-machines/virtual-machines-windows-classic-install-trend.md)
@@ -71,6 +73,7 @@ Symantec End Point Protection (SEP) も、Azure でサポートされていま�
 Azure Multi-Factor Authentication (MFA) は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションに重要な 2 つ目のセキュリティ レイヤーを追加する認証方法です。MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OATH トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
 
 詳細情報:
+
 - [多要素認証](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 - [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)
 - [Azure Multi-Factor Authentication のしくみ](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
@@ -80,6 +83,7 @@ Azure Multi-Factor Authentication (MFA) は、複数の確認方法の使用を�
 Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft クラウドに拡張できます。ExpressRoute では、Microsoft Azure、Office 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。ExpressRoute 接続では、公共のインターネットを利用できません。それにより、ExpressRoute 接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。
 
 詳細情報:
+
 - [ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)
 
 ## 仮想ネットワーク ゲートウェイ
@@ -87,7 +91,8 @@ Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提
 VPN Gateway (Azure Virtual Netwok ゲートウェイとも呼ばれます) は、仮想ネットワークとオンプレミスの場所の間でネットワーク トラフィックを送信するために使用されます。また、Azure 内で複数の仮想ネットワーク間のトラフィック送信にも使用されます (VNet 間)。VPN ゲートウェイは、Azure とお使いのインフラストラクチャの間の安全なクロスプレミス接続を提供します。
 
 詳細情報:
-- [VPN ゲートウェイについて](../vpn-gateway/vpn-gateway-about-vpngateways.md) - VPN ゲートウェイに関連する項目の詳細について説明します
+
+- [VPN ゲートウェイについて](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 - [Azure のネットワーク セキュリティの概要](security-network-overview.md)
 
 ## Privileged Identity Management
@@ -97,6 +102,7 @@ VPN Gateway (Azure Virtual Netwok ゲートウェイとも呼ばれます) は�
 Privileged Identity Management には、ロールの一時的な管理者または "ジャスト イン タイム" 管理者アクセスという概念が導入されています。一時的な管理者となるユーザーは、割り当てられたロールのアクティブ化プロセスを完了する必要があります。このアクティブ化プロセスによって、Azure AD におけるユーザーへのロールの割り当てが、8 時間などの指定された期間だけ、非アクティブからアクティブに変更されます。
 
 詳細情報:
+
 - [Azure AD Privileged Identity Management](../active-directory/active-directory-privileged-identity-management-configure.md)
 - [Azure AD Privileged Identity Management の使用](../active-directory/active-directory-privileged-identity-management-getting-started.md)
 
@@ -107,6 +113,7 @@ Azure Active Directory (AD) Identity Protection は、ビジネスを保護す�
 Identity Protection は、通知と推奨される修復を提供することで、リスクをリアルタイムで軽減できるようにします。ユーザーのリスクの重大度が計算されるので、ユーザーはリスク ベースのポリシーを構成して、アプリケーションのアクセスが将来の脅威から自動的に保護されるようにすることができます。
 
 詳細情報:
+
 - [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)
 - [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
@@ -115,14 +122,16 @@ Identity Protection は、通知と推奨される修復を提供することで
 Azure Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 Security Center は、Azure リソースのセキュリティの最適化と監視に役立つ次の機能を備えています。
+
 - セキュリティに関する会社のニーズ、および各サブスクリプションでのアプリケーションのタイプやデータの機密度に合わせて、Azure サブスクリプション リソースのポリシーを定義できます。
 - Azure 仮想マシン、ネットワーク、およびアプリケーションの状態を監視します。
 - 統合されたパートナー ソリューションからの警告など、優先順位の付いたセキュリティの警告の一覧を提供します。また、すぐに調査するために必要な情報や、攻撃を受けたものを修復する方法についての推奨事項も表示します。
 
 詳細情報:
+
 - [Azure Security Center 入門](../security-center/security-center-intro.md)
 
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

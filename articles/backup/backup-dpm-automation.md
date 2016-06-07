@@ -4,7 +4,7 @@
 	services="backup"
 	documentationCenter=""
 	authors="AnuragMehrotra"
-	manager="jwhit"
+	manager=""
 	editor=""/>
 
 <tags
@@ -13,11 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/20/2016"
+	ms.date="05/23/2016"
 	ms.author="jimpark; aashishr; anuragm"/>
 
 
 # PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
+
+> [AZURE.SELECTOR]
+- [ARM](backup-dpm-automation.md)
+- [クラシック](backup-dpm-automation-classic.md)
 
 この記事では、PowerShell を使用して、DPM サーバー上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
 
@@ -52,28 +56,64 @@ PS C:\> Switch-AzureMode AzureResourceManager
 
 PowerShell を使用して次のセットアップおよび登録タスクを自動化できます。
 
-- バックアップ コンテナーの作成
+- Recovery Services コンテナーを作成する
 - Microsoft Azure Backup エージェントのインストール
 - Microsoft Azure Backup サービスへの登録
 - ネットワークの設定
 - 暗号化の設定
 
-### バックアップ コンテナーの作成
+## Recovery Services コンテナーの作成
 
-> [AZURE.WARNING] 顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。これは、Register-AzureProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
+次の手順では、Recovery Services コンテナーの作成について説明します。Recovery Services コンテナーは Backup コンテナーとは異なります。
 
-**New-AzureRMBackupVault** コマンドレットを使用すると、新しいバックアップ コンテナーを作成できます。バックアップ コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
+1. Azure Backup を初めて使用する場合、**Register-AzureRMResourceProvider** コマンドレットを使って Azure Recovery Services プロバイダーをサブスクリプションに登録する必要があります。
+
+    ```
+    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    ```
+
+2. Recovery Services コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。新しいリソース グループを作成する場合、リソース グループの名前と場所を指定します。
+
+    ```
+    PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
+    ```
+
+3. **New-AzureRmRecoveryServicesVault** コマンドレットを使用して新しいコンテナーを作成します。リソース グループに使用したのと同じコンテナーの場所を指定してください。
+
+    ```
+    PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
+    ```
+
+4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/storage-redundancy.md#locally-redundant-storage) または [geo 冗長ストレージ (GRS)](../storage/storage-redundancy.md#geo-redundant-storage) を使用できます。次に示す例では、testVault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
+
+    > [AZURE.TIP] Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。このため、Backup Recovery Services コンテナー オブジェクトを変数に格納すると便利です。
+
+    ```
+    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testVault"
+    PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
+    ```
+
+
+
+## サブスクリプション内のコンテナーの表示
+**Get-AzureRmRecoveryServicesVault** を使用して、現在のサブスクリプション内のすべてのコンテナーを一覧表示します。このコマンドは、新しく作成したコンテナーを確認したり、サブスクリプション内の利用可能なコンテナーを確認したりするのに使用できます。
+
+Get-AzureRmRecoveryServicesVault コマンドを実行すると、サブスクリプション内のすべてのコンテナーが一覧表示されます。
 
 ```
-PS C:\> New-AzureResourceGroup –Name “test-rg” -Region “West US”
-PS C:\> $backupvault = New-AzureRMBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “West US” –Storage GRS
+PS C:\> Get-AzureRmRecoveryServicesVault
+Name              : Contoso-vault
+ID                : /subscriptions/1234
+Type              : Microsoft.RecoveryServices/vaults
+Location          : WestUS
+ResourceGroupName : Contoso-docs-rg
+SubscriptionId    : 1234-567f-8910-abc
+Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-**Get-AzureRMBackupVault** コマンドレットを使用して、特定のサブスクリプション内のすべてのバックアップ コンテナーの一覧を取得できます。
 
-
-### DPM サーバーへの Microsoft Azure Backup エージェントのインストール
-Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)またはバックアップ コンテナーの [ダッシュボード] ページから入手することができます。インストーラーを、*C:\\Downloads* などの、簡単にアクセスできる場所に保存します。
+## DPM サーバーへの Microsoft Azure Backup エージェントのインストール
+Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)または Recovery Services コンテナーの [ダッシュボード] ページから入手することができます。インストーラーを、*C:\\Downloads* などの、簡単にアクセスできる場所に保存します。
 
 エージェントをインストールするには、**DPM サーバー**の管理者特権の PowerShell コンソールで、次のコマンドを実行します。
 
@@ -87,7 +127,7 @@ PS C:\> MARSAgentInstaller.exe /q
 
 ![インストールされているエージェント](./media/backup-dpm-automation/installed-agent-listing.png)
 
-#### インストール オプション
+### インストール オプション
 コマンドラインで利用可能なすべてのオプションを表示するには、次のコマンドを使用します。
 
 ```
@@ -98,45 +138,33 @@ PS C:\> MARSAgentInstaller.exe /?
 
 | オプション | 詳細 | 既定値 |
 | ---- | ----- | ----- |
-| /q | サイレント インストール | - |
-| /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent |
-| /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
-| /m | Microsoft Update のオプトイン | - |
-| /nu | インストールの完了後に更新プログラムを確認しない | - |
-| /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - |
-| /ph | プロキシ ホストのアドレス | - |
-| /po | プロキシ ホストのポート番号 | - |
-| /pu | プロキシ ホストのユーザー名 | - |
-| /pw | プロキシ パスワード | - |
+| /q | サイレント インストール | - | | /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent | | /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch | | /m | Microsoft Update のオプトイン | - | | /nu | インストールの完了後に更新プログラムを確認しない | - | | /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - | | /ph | プロキシ ホストのアドレス | - | | /po | プロキシ ホストのポート番号 | - | | /pu | プロキシ ホストのユーザー名 | - | | /pw | プロキシ パスワード | - |
 
-### Microsoft Azure Backup サービスへの登録
-Microsoft Azure Backup サービスへの登録を実行する前に、[前提条件](backup-azure-dpm-introduction.md)が満たされていることを確認する必要があります。前提条件は、以下のとおりです。
+## Recovery Services コンテナーへの DPM の登録
 
-- 有効な Azure サブスクリプションがあること
-- バックアップ コンテナーがあること
-
-コンテナーの資格情報をダウンロードするには、Azure PowerShell コンソールで **Get-AzureBackupVaultCredentials** コマンドレットを実行し、*C:\\Downloads* などのアクセスしやすい場所に保管します。
+Recovery Services コンテナーを作成したら、最新のエージェントとコンテナーの資格情報をダウンロードし、C:\\Downloads のような便利な場所に保管します。
 
 ```
-PS C:\> $credspath = "C:"
-PS C:\> $credsfilename = Get-AzureRMBackupVaultCredentials -Vault $backupvault -TargetLocation $credspath
+PS C:\> $credspath = "C:\downloads"
+PS C:\> $credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
 PS C:\> $credsfilename
-f5303a0b-fae4-4cdb-b44d-0e4c032dde26_backuprg_backuprn_2015-08-11--06-22-35.VaultCredentials
+C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
 
-コンテナーへのマシンの登録は、[Start-DPMCloudRegistration](https://technet.microsoft.com/library/jj612787) コマンドレットを使用して実行します。
+DPM サーバーで [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) コマンドレットを実行し、コンピューターをコンテナーに登録します。
 
 ```
 PS C:\> $cred = $credspath + $credsfilename
-PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredentialsFilePath $cred
+PS C:\> Start-OBRegistration-VaultCredentials $cred -Confirm:$false
+CertThumbprint      :7a2ef2caa2e74b6ed1222a5e89288ddad438df2
+SubscriptionID      : ef4ab577-c2c0-43e4-af80-af49f485f3d1
+ServiceResourceName: testvault
+Region              :West US
+Machine registration succeeded.
 ```
 
-これにより、"TestingServer" という名前の DPM サーバーは、Microsoft Azure Backup コンテナーに、指定されたコンテナーの資格情報を使用して登録されます。
-
-> [AZURE.IMPORTANT] コンテナーの資格情報ファイルを指定する際には、相対パスは使用しないでください。このコマンドレットへの入力には、絶対パスを指定する必要があります。
-
 ### 初期構成の設定
-DPM サーバーが Azure Backup 資格情報コンテナーに登録されると、既定のサブスクリプション設定で起動されます。これらのサブスクリプションの設定には、ネットワーク、暗号化、およびステージング領域が含まれます。サブスクリプション設定の変更を開始するには、まず既存 (既定) の設定のハンドルを [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) コマンドレットを使用して取得する必要があります。
+DPM サーバーが Recovery Services コンテナーに登録されると、既定のサブスクリプション設定で起動されます。これらのサブスクリプションの設定には、ネットワーク、暗号化、およびステージング領域が含まれます。サブスクリプション設定の変更を開始するには、まず既存 (既定) の設定のハンドルを [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) コマンドレットを使用して取得する必要があります。
 
 ```
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
@@ -148,7 +176,7 @@ $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
 ```
 
-### ネットワーク
+## ネットワーク
 インターネット上の DPM コンピューターの Azure Backup サービスの接続にプロキシ サーバーを使用している場合、続行するには、プロキシ サーバーの設定を指定する必要があります。これを行うには、```-ProxyServer```、```-ProxyPort```、```-ProxyUsername```、および ```ProxyPassword``` パラメーターと [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) コマンドレットを使用します。この例では、プロキシ サーバーがないため、プロキシ関連の情報はないことを明示的に示しています。
 
 ```
@@ -161,7 +189,7 @@ PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -Subscrip
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoThrottle
 ```
 
-### ステージング領域の構成
+## ステージング領域の構成
 DPM サーバーで実行されている Microsoft Azure Backup エージェントには、クラウドから復元されるデータ用の一時的なストレージ (ローカル ステージング領域) が必要です。[Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) コマンドレットと ```-StagingAreaPath``` パラメーターを使用してステージング領域を構成します。
 
 ```
@@ -336,4 +364,4 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 
 - Azure DPM Backup の詳細については、「[DPM Backup の概要](backup-azure-dpm-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

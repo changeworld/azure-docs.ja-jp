@@ -19,6 +19,21 @@
 # Azure Data Factory - .NET API の変更ログ 
 この記事では、特定のバージョンの Azure Data Factory SDK の変更に関する情報を提供します。Azure Data Factory の最新の Nuget パッケージについては、[こちら](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)をご覧ください。
 
+## Version 4.7.0
+リリース日: 2016-05-20
+
+### 機能の追加
+* Optimized Row Columnar (ORC) 形式でファイルをコピーするための新しい StorageFormat タイプ ([OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx)) を追加しました。
+* [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) プロパティと PolyBaseSettings プロパティを SqlDWSink に追加しました。
+    * PolyBase を使用して SQL Data Warehouse にデータをコピーすることができます。
+
+## Version 4.6.1
+リリース日: 2016-04-26
+
+### バグの修正
+* アクティビティ ウィンドウをリストするための HTTP 要求を修正します。
+    * リソース グループの名前とデータ ファクトリの名前を要求のペイロードから削除します。
+
 ## バージョン 4.6.0
 リリース日: 2016.04.14
 
@@ -51,7 +66,7 @@
 ### 機能の追加
 
 - 次のリンクされたサービスの種類が、コピー アクティビティのデータ ソースおよびシンクとして追加されています。
-	- [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx).概念情報と例については、「[Azure Storage SAS Linked Service (Azure Storage SAS のリンクされたサービス)](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service)」を参照してください。 
+	- [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx)。概念情報と例については、「[Azure Storage SAS Linked Service (Azure Storage SAS のリンクされたサービス)](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service)」を参照してください。 
 
 ## バージョン 4.3.0
 リリース日: 2015 年 11 月 25 日
@@ -149,4 +164,4 @@ SqlServerDataset | [SqlServerTableDataset](https://msdn.microsoft.com/library/mi
 
 - コピー アクティビティの一環として、Azure SQL Database ソースと Azure SQL Data Warehouse ソースに対するストアド プロシージャの実行がサポートされるようになりました。[SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) クラスと [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) クラスには、これをサポートするプロパティとして、**SqlReaderStoredProcedureName** と **StoredProcedureParameters** があります。これらのプロパティの詳細については、Azure.com の [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) と [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

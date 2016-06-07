@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="03/08/2016"
+   	ms.date="05/20/2016"
    	ms.author="larryfr"/>
 
 #Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成
@@ -58,54 +58,51 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
 
         azure config mode arm
 
-4. HDInsight クラスターのテンプレートを作成します。基本的なテンプレートの例を次に示します。
+4. 新しいリソース グループを作成します。ここに、HDInsight クラスターおよび関連するストレージ アカウントを追加することになります。
 
-    * [Linux ベースのクラスター、SSH パブリック キーを使用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-publickey)
-    * [Linux ベースのクラスター、SSH アカウントのパスワードを使用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password)
+        azure group create groupname location
+        
+    * __groupname__ は、グループの一意の名前に置き換えます。 
+    * __location__ には、グループの作成先となる地理的領域を指定します。 
+    
+        グループの作成先として有効な場所は、`azure locations list` コマンドで一覧表示できます。__Name__ 列に表示されるいずれかの場所を使用してください。
 
-    これらのテンプレートのいずれでも、HDInsight が使用する既定の Azure ストレージ アカウントが作成されます。
+5. 新しいストレージ アカウントを作成します。これが、HDInsight クラスターの既定のストレージとして使用されます。
 
-    必要なファイルは、__azuredeploy.json__ と __azuredeploy.parameters.json__ です。続行する前に、これらのファイルをローカルにコピーします。
+        azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage --access-tier hot storagename
+        
+     * __groupname__ には、前の手順で作成したグループの名前を指定します。
+     * __location__ には、前の手順で使用した場所を指定します。 
+     * __storagename__ には、ストレージ アカウントの一意の名前を指定します。
+     
+     > [AZURE.NOTE] このコマンドのパラメーターの詳細については、「`azure storage account create -h`」と入力してコマンドのヘルプを表示してください。
 
-5. __azuredeploy.parameters.json__ ファイルをエディターで開き、`parameters` セクションの項目に値を指定します。
+5. ストレージ アカウントにアクセスするためのキーを取得します。
 
-    * __location__: リソースが作成されるデータ センター。許可される場所の一覧については、__azuredeploy.json__ ファイルの `location` セクションを参照してください。
-    * __clusterName__: HDInsight クラスターの名前。この名前は一意にする必要があります。一意にしなければデプロイメントは失敗します。
-    * __clusterStorageAccountName__: HDInsight に対して作成される Azure Storage のアカウント名。この名前は一意にする必要があります。一意にしなければデプロイメントは失敗します。
-    * __clusterLoginPassword__: クラスターの管理者ユーザーのパスワード。これは Web サイトやクラスターの REST サービスのアクセスに使用されるので、安全なパスワードにする必要があります。
-    * __sshUserName__: このクラスターに作成する最初の SSH ユーザーの名前。SSH はこのアカウントでクラスターにリモート アクセスするために使用されます。
-    * __sshPublicKey__: SSH 公開キーを必要とするテンプレートを使用している場合、この行に公開キーを追加する必要があります。パブリック キーを生成し、それを使用する方法については、次の記事を参照してください。
+        azure storage account keys list -g groupname storagename
+        
+    * __groupname__ には、リソース グループ名を指定します。
+    * __storagename__ には、ストレージ アカウントの名前を指定します。
+    
+    返されたデータから、__key1__ の __key__ 値を保存します。
 
-        * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-        * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+6. 新しい HDInsight クラスターを作成します。
 
-    * __sshPassword__: SSH パスワードを必要とするテンプレートを使用している場合、この行にパスワードを追加する必要があります。
+        azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 2 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
 
-    完了後、ファイルを保存し、終了します。
+    * __groupname__ には、リソース グループ名を指定します。
+    * __location__ には、前の手順で使用した場所を指定します。
+    * __storagename__ には、ストレージ アカウントの名前を指定します。
+    * __storagekey__ には、前の手順で取得したキーを指定します。 
+    * `--defaultStorageContainer` パラメーターには、クラスターに使用している名前と同じ名前を指定します。
+    * __admin__ と __httppassword__ には、HTTPS でクラスターにアクセスするときに使用する名前とパスワードを指定します。
+    * __sshuser__ と __sshuserpassword__ には、SSH でクラスターにアクセスするときに使用するユーザー名とパスワードを指定します。
 
-5. 次を利用して空のリソース グループを作成します。__RESOURCEGROUPNAME__ をこのグループに使用する名前に置き換えます。__LOCATION__ を HDInsight クラスターを作成するデータ センターに置き換えます。
-
-        azure group create RESOURCEGROUPNAME LOCATION
-
-    > [AZURE.NOTE] 場所の名前にスペースが含まれる場合は、名前を引用符で囲みます。たとえば、"South Central US" のようになります。
-
-6. 次のコマンドを利用し、このリソース グループの最初のデプロイメントを作成します。__PATHTOTEMPLATE__ を __azuredeploy.json__ テンプレート ファイルのパスに置き換えます。__PATHTOPARAMETERSFILE__ を __azuredeploy.parameters.json__ ファイルのパスに置き換えます。__RESOURCEGROUPNAME__ を前の手順で作成したグループの名前に置き換えます。
-
-        azure group deployment create -f PATHTOTEMPLATE -e PATHTOPARAMETERSFILE -g RESOURCEGROUPNAME -n InitialDeployment
-
-    デプロイメントが承認されると、"`group deployment create command ok`" のようなメッセージが表示されます。
-
-7. デプロイメントの完了には約 15 分かかることがあります。次のコマンドでデプロイメントに関する情報を表示できます。__RESOURCEGROUPNAME__ を前の手順で使用したリソース グループの名前に置き換えます。
-
-        azure group log show -l RESOURCEGROUPNAME
-
-    デプロイメントが完了すると、__Status__ フィールドに __Succeeded__.という値が表示されます。デプロイメント中にエラーが発生した場合、次のコマンドでエラーに関する詳細を取得できます。
-
-        azure group log show -l -v RESOURCEGROUPNAME
+    クラスターの作成処理は、完了までに数分かかる場合があります。通常は約 15 です。
 
 ##次のステップ
 
-HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックをご覧ください。
+Azure CLI を使用して HDInsight クラスターを作成したら、クラスターの使用方法について、以下のトピックを参照してください。
 
 ###Hadoop クラスター
 
@@ -124,4 +121,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

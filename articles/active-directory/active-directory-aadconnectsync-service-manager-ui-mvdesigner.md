@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/03/2016"
+	ms.date="05/19/2016"
 	ms.author="andkjell"/>
 
 
 # Azure AD Connect 同期: Synchronization Service Manager
 
-| [操作](active-directory-aadconnectsync-service-manager-ui-operations.md) | [コネクタ](active-directory-aadconnectsync-service-manager-ui-connectors.md) | [メタバース デザイナー](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md) | [メタバース検索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md) |
-| --- | --- | --- | --- |
+[操作](active-directory-aadconnectsync-service-manager-ui-operations.md) | [コネクタ](active-directory-aadconnectsync-service-manager-ui-connectors.md) | [メタバース デザイナー](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md) | [メタバース検索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)
+--- | --- | --- | ---
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvdesigner.png)
 
@@ -31,4 +31,4 @@
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/04/2016"
+   ms.date="05/19/2016"
    ms.author="larryfr"/>
 
 
@@ -77,6 +77,12 @@ Azure HDInsight は場所ベースの仮想ネットワークのみをサポー�
 Windows ベースのクラスターでは、v1 (クラシック) Virtual Network が必要で、Linux ベースのクラスターでは、v2 (Azure リソース マネージャー) Virtual Network が必要です。ネットワークの種類が正しくない場合、クラスターの作成には使用できません。
 
 作成を計画しているクラスターでは使用できない Virtual Network 上にリソースがある場合、クラスターで使用できる新しい Virtual Network を作成し、それを互換性のない Virtual Network に接続できます。その後、必要なネットワーク バージョンでクラスターを作成し、2 つは結合されているので別のネットワークのリソースにアクセスが可能となります。従来の Virtual Network と新しい Virtual Network を接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+
+###カスタム DNS
+
+仮想ネットワークを作成するとき、そのネットワークにインストールされている Azure サービス (HDInsight) には Azure によって既定の名前解決が行われます。ただしクロス ネットワーク ドメイン名解決など、状況によっては独自のドメイン ネーム システム (DNS) を使用しなければならないこともあります。たとえば、参加している 2 つの仮想ネットワークに置かれているサービス間の通信が挙げられます。HDInsight は、Azure Virtual Network との組み合わせで、Azure の既定の名前解決に加え、カスタム DNS もサポートしています。
+
+Azure Virtual Network での独自の DNS サーバーの使用について詳しくは、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)」ドキュメントの「__独自 DNS サーバー使用の名前解決__」セクションを参照してください。
 
 ###セキュリティで保護された Virtual Networks
 
@@ -303,4 +309,4 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

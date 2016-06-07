@@ -234,7 +234,7 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-Service Bus キューでは、最大 256 KB までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズの上限は 5 GB です。クォータの詳細については、「[Service Bus のクォータ][]」を参照してください。
+Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。トピックで保持されるメッセージ数には上限がありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。このトピック サイズの上限は 5 GB です。クォータの詳細については、「[Service Bus のクォータ][]」を参照してください。
 
 ## サブスクリプションからメッセージを受信する
 
@@ -338,4 +338,4 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 [require-once]: http://php.net/require_once
 [Service Bus のクォータ]: service-bus-quotas.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

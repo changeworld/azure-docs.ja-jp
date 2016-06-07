@@ -1,10 +1,10 @@
 <properties
-pageTitle="ロジック アプリで Twilio API を追加する | Microsoft Azure"
-description="Twilio API と REST API パラメーターの概要"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="ロジック アプリに Twilio コネクタを追加する | Microsoft Azure"
+description="Twilio コネクタと REST API パラメーターの概要"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,10 +14,10 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="05/12/2016"
+ms.date="05/18/2016"
 ms.author="mandia"/>
 
-# Twilio API の使用
+# Twilio コネクタの使用
 
 Twilio に接続し、グローバル SMS、MMS、IP メッセージを送受信します。
 
@@ -31,16 +31,16 @@ Twilio では次のことができます。
 ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 ## トリガーとアクション
-Twilio API には、次のアクションがあります。トリガーはありません。
+Twilio コネクタには、次のアクションがあります。トリガーはありません。
 
 | トリガー | アクション|
 | --- | --- |
 |なし| <ul><li>メッセージを取得する</li><li>メッセージを一覧表示する</li><li>メッセージを送信する</li></ul>|
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## Twilio への接続を作成する
-この API をロジック アプリに追加するときに、次の Twilio 値を入力します。
+このコネクタをロジック アプリに追加するときに、次の Twilio 値を入力します。
 
 |プロパティ| 必須|説明|
 | ---|---|---|
@@ -248,4 +248,4 @@ Twilio API には、次のアクションがあります。トリガーはあり
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

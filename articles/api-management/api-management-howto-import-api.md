@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/25/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API の定義を操作と共にインポートする方法
@@ -95,4 +95,4 @@ API を作成して操作をインポートした後は、追加の設定を確�
 [Azure API Management で API を作成する方法]: api-management-howto-create-apis.md
 [API 設定を構成する方法]: api-management-howto-create-apis.md#configure-api-settings
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

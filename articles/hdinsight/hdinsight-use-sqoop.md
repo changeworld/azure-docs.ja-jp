@@ -14,32 +14,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="05/24/2016"
 	ms.author="jgao"/>
 
-#HDInsight の Hadoop での Sqoop の使用 (Windows)
+#HDInsight の Hadoop での Sqoop の使用
 
 [AZURE.INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
 HDInsight で Sqoop を使用して、HDInsight クラスターと Azure SQL Database または SQL Server データベース間でインポートとエクスポートを実行する方法について説明します。
-
-> [AZURE.NOTE] この記事の手順は、Windows ベースまたは Linux ベースの HDInsight クラスターで使用できます。ただし、これらの手順は Windows クライアントでのみ機能します。
->
-> Linux、OS X、または Unix クライアントと Linux ベースの HDInsight サーバーを使用している場合は、「[HDInsight の Hadoop での Sqoop の使用 (SSH)](hdinsight-use-sqoop-mac-linux.md)」を参照してください。
 
 Hadoop はログやファイルなどの非構造化データおよび半構造化データを処理する場合に自然な選択ですが、リレーショナル データベースに格納された構造化データを処理する必要が生じることもあります。
 
 [Sqoop][sqoop-user-guide-1.4.4] は、Hadoop クラスターとリレーショナル データベース間でデータを転送するためのツールです。このツールを使用して、SQL Server、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Hive を使用して Hadoop のデータを変換してから、そのデータを RDBMS にエクスポートして戻したりできます。このチュートリアルでは、リレーショナル データベースとして SQL Server データベースを使用します。
 
 HDInsight クラスターでサポートされている Sqoop のバージョンについては、「[HDInsight で提供されるクラスター バージョンの新機能][hdinsight-versions]」を参照してください。
-
-###前提条件
-
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
-
-- **Azure PowerShell を実行できるワークステーション**。
-
-    [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 ##シナリオの理解
 
@@ -129,7 +117,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
         * SQL Server を Azure 仮想マシンで使用する際に、SQL Server をホストする仮想マシンが HDInsight と同じ仮想ネットワークに属している場合は、任意の仮想ネットワーク構成を使用できます。
 
-    * 仮想ネットワークに HDInsight クラスターを作成する場合は、「[HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-provision-clusters.md)」を参照してください。
+    * 仮想ネットワークに HDInsight クラスターを作成する場合は、[カスタム オプションを使用した HDInsight での Hadoop クラスターの作成](hdinsight-provision-clusters.md)に関するページをご覧ください。
 
     > [AZURE.NOTE] SQL Server では認証を許可する必要もあります。この記事の手順を実行するには、SQL Server ログインを使用する必要があります。
 
@@ -211,7 +199,7 @@ PowerShell のサンプルでは、次の手順を実行します。
 	> [AZURE.NOTE] 接続文字列情報を除き、このセクションの手順は、Azure SQL データベースまたは SQL Server で動作します。これらの手順は次の構成を使用してテスト済みです。
 	>
 	> * **Azure Virtual Network ポイント対サイト構成**: HDInsight クラスターをプライベート データセンター内の SQL Server に接続する仮想ネットワーク。詳細については、「[管理ポータルでのポイント対サイト VPN の構成](../vpn-gateway/vpn-gateway-point-to-site-create.md)」を参照してください。
-	> * **Azure HDInsight 3.1**: 仮想ネットワークでのクラスターの作成については、「[HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-provision-clusters.md)」を参照してください。
+	> * **Azure HDInsight 3.1**: 仮想ネットワークでのクラスターの作成については、[カスタム オプションを使用した HDInsight での Hadoop クラスターの作成](hdinsight-provision-clusters.md)に関するページをご覧ください。
 	> * **SQL Server 2014**: 仮想ネットワークに安全に接続するために、認証と、VPN クライアント構成パッケージの実行を許可する構成。
 
 7. Azure SQL Database に Hive テーブルをエクスポートします。
@@ -405,9 +393,9 @@ PowerShell のサンプルでは、次の手順を実行します。
 		-Type Standard_LRS
 	
 	# Create the default Blob container
-	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey `
+	$defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
 									-ResourceGroupName $resourceGroupName `
-									-Name $defaultStorageAccountName |  %{ $_.Key1 }
+									-Name $defaultStorageAccountName)[0].Value
 	$defaultStorageAccountContext = New-AzureStorageContext `
 										-StorageAccountName $defaultStorageAccountName `
 										-StorageAccountKey $defaultStorageAccountKey 
@@ -635,4 +623,4 @@ PowerShell のサンプルでは、次の手順を実行します。
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

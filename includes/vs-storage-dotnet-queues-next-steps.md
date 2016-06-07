@@ -8,6 +8,6 @@
 - Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   - Azure Storage のテーブルを操作する方法については、「[.NET を使用して Azure Table Storage を使用する](../articles/storage/storage-dotnet-how-to-use-tables.md)」を参照してください。
   - Azure Storage の BLOB を操作する方法については、「[.NET を使用して Azure Blob Storage を使用する](../articles/storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。
-  - リレーショナル データを格納する方法については、「[.NET アプリケーションで Azure SQL Database を使用する方法](../articles/sql-database/sql-database-dotnet-how-to-use.md)」を参照してください。
+  - リレーショナル データを格納する方法については、「[.NET (C#) を使用して SQL Database に接続する](../articles/sql-database/sql-database-develop-dotnet-simple.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0525_2016-->

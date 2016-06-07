@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/14/2016"
+   ms.date="05/18/2016"
    ms.author="sonyama;barbkess;mausher"/>
 
 # SQL Data Warehouse の PowerShell コマンドレットと REST API
 
-SQL Data Warehouse の管理タスクの多くは、Azure PowerShell コマンドレットまたは REST API を使用して管理できます。以下に示す例では、PowerShell コマンドを使用して、SQL Data Warehouse で一般的なタスクを自動化する方法を示しています。同じ作業を自動化する REST API の一覧については、「[Azure SQL データベースの操作][]」をご覧ください。
+SQL Data Warehouse の管理タスクの多くは、Azure PowerShell コマンドレットまたは REST API を使用して管理できます。以下に示す例では、PowerShell コマンドを使用して、SQL Data Warehouse で一般的なタスクを自動化する方法を示しています。適切な REST の例については、記事「[Azure SQL Data Warehouse のスケーラビリティ管理タスク (REST)][]」を参照してください。
 
 > [AZURE.NOTE]  SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0.3 以降をインストールする必要があります。**Get-Module -ListAvailable -Name Azure** を実行することで、バージョンを確認できます。最新バージョンは、[Microsoft Web プラットフォーム インストーラー][]からインストールできます。最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」をご覧ください。
 
@@ -87,15 +87,16 @@ PowerShell のその他の例については、次のトピックをご覧くだ
 - [SQL Data Warehouse でのデータベースのユーザー エラーからの復旧][]
 - [SQL Data Warehouse でのデータベースの障害からの復旧][]
 
-PowerShell で自動化できるタスクの一覧については、「[Azure SQL Database Cmdlets (Azure SQL Database コマンドレット)][]」をご覧ください。
+PowerShell で自動化できるタスクの一覧については、「[Azure SQL Database Cmdlets (Azure SQL Database コマンドレット)][]」をご覧ください。REST で自動化できるタスクの一覧については、「[Azure SQL データベースの操作][]」をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[Azure PowerShell のインストールおよび構成方法]: powershell-install-configure.md
-[PowerShell を使用して SQL Data Warehouse を作成する]: sql-data-warehouse-get-started-provision-powershell.md
-[SQL Data Warehouse でのデータベースのユーザー エラーからの復旧]: sql-data-warehouse-backup-and-restore-from-snapshot.md
-[SQL Data Warehouse でのデータベースの障害からの復旧]: sql-data-warehouse-backup-and-restore-from-geo-restore-snapshot.md
+[Azure PowerShell のインストールおよび構成方法]: ./powershell-install-configure.md
+[PowerShell を使用して SQL Data Warehouse を作成する]: ./sql-data-warehouse-get-started-provision-powershell.md
+[SQL Data Warehouse でのデータベースのユーザー エラーからの復旧]: ./sql-data-warehouse-backup-and-restore-from-snapshot.md
+[SQL Data Warehouse でのデータベースの障害からの復旧]: ./sql-data-warehouse-backup-and-restore-from-geo-restore-snapshot.md
+[Azure SQL Data Warehouse のスケーラビリティ管理タスク (REST)]: ./sql-data-warehouse-manage-scale-out-tasks-rest-api.md
 
 <!--MSDN references-->
 [Azure SQL Database Cmdlets (Azure SQL Database コマンドレット)]: https://msdn.microsoft.com/library/mt574084.aspx
@@ -106,8 +107,8 @@ PowerShell で自動化できるタスクの一覧については、「[Azure SQ
 [New-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619339.aspx
 [Remove-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619368.aspx
 [Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
-[Resume-AzureRmSqlDatabase]: http://msdn.microsoft.com/library/mt619347.aspx
-[Suspend-AzureRmSqlDatabase]: http://msdn.microsoft.com/library/mt619347.aspx
+[Resume-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619347.aspx
+[Suspend-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619347.aspx
 <!-- It appears that Select-AzureRmSubscription isn't documented, so this points to Select-AzureSubscription -->
 [Select-AzureRmSubscription]: https://msdn.microsoft.com/library/dn722499.aspx
 [Set-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619433.aspx
@@ -116,4 +117,4 @@ PowerShell で自動化できるタスクの一覧については、「[Azure SQ
 <!--Other Web references-->
 [Microsoft Web プラットフォーム インストーラー]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

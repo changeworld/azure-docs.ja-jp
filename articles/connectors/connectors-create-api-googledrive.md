@@ -1,13 +1,13 @@
 <properties
-	pageTitle="PowerApps またはロジック アプリに Google Drive API を追加する | Microsoft Azure"
-	description="Google Drive API と REST API パラメーターの概要"
-	services=""
+    pageTitle="PowerApps またはロジック アプリに Google Drive コネクタを追加する | Microsoft Azure"
+    description="Google Drive コネクタと REST API パラメーターの概要"
+    services=""
     suite=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -15,11 +15,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="03/16/2016"
+   ms.date="05/18/2016"
    ms.author="mandia"/>
 
-# Google Drive API の概要
-Google Drive に接続して、ファイルの作成、行の取得などを行います。Google Drive API は次のツールから使用できます。
+# Google Drive コネクタの使用
+Google Drive に接続して、ファイルの作成、行の取得などを行います。Google Drive コネクタは、次のツールから使用できます。
 
 - Logic Apps 
 - PowerApps
@@ -32,9 +32,9 @@ Google Drive では、次の操作を実行できます。
 
 - 検索から取得したデータに基づいてビジネス フローを構築することができます。 
 - 画像、ニュースなどを検索するアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、動画を検索し、Twitter を使用して Twitter フィードに動画を投稿することができます。
-- PowerApps Enterprise に Google Drive API を追加できます。追加すると、ユーザーはアプリ内で API を使用できるようになります。 
+- PowerApps Enterprise に Google Drive コネクタを追加できます。追加すると、ユーザーはアプリ内でコネクタを使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
+PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
 
 Logic Apps に操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
 
@@ -46,15 +46,14 @@ Google Drive には、次のアクションがあります。トリガーはあ�
 --- | ---
 なし | <ul><li>ファイルを作成する</li><li>行を挿入する</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>行を削除する</li><li>アーカイブをフォルダーに抽出する</li><li>ID を使用してファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ID を使用してファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>行を取得する</li><li>ファイルを更新する</li><li>行を更新する</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 
 ## Google Drive への接続を作成する
 
-ロジック アプリにこの API を追加するとき、Google Drive に接続するロジック アプリを承認する必要があります。
+ロジック アプリにこのコネクタを追加するとき、Google Drive に接続するロジック アプリを承認する必要があります。
 
-1. Google Drive アカウントにサインインします。
-2. ロジック アプリが Google Drive に接続して使用することを許可します。 
+>[AZURE.INCLUDE [Google Drive への接続を作成する手順](../../includes/connectors-create-api-googledrive.md)]
 
 接続を作成したら、フォルダー パスやファイル名など、Google Drive のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
@@ -356,4 +355,4 @@ Google シート内の行を更新します。```PATCH: /datasets/{dataset}/tabl
 [13]: ./media/connectors-create-api-googledrive/configure-consent-screen.png
 [14]: ./media/connectors-create-api-googledrive/create-client-id.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

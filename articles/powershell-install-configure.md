@@ -32,7 +32,7 @@ Azure PowerShell は、以下に示す 2 つの方法でインストールでき
 
 Azure PowerShell 1.0 以降は、0.9.x までと同じ方法で WebPI からインストールすることができます。[Azure Powershell](http://aka.ms/webpi-azps) をダウンロードして、インストールを開始します。Azure PowerShell 0.9.x がインストールされている場合は、アップグレードの一環としてバージョン 0.9.x がアンインストールされます。Azure PowerShell モジュールが PowerShell ギャラリーからインストールされた場合は、Azure PowerShell 環境の整合性を確保するために、インストール前にモジュールが自動的に削除されます。
 
-> [AZURE.NOTE] PowerShell ギャラリーから以前にインストールされた Azure モジュールは、自動的に削除されます。これは、インストールしたモジュールとその場所に関して混乱を防ぐための措置です。PowerShell ギャラリーのモジュールは通常では **%ProgramFiles%\\WindowsPowerShell\\Modules** にインストールされます。これに対し、WebPI インストーラーを使用した場合、Azure モジュールは **%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\PowerShell** にインストールされます。インストール中にエラーが発生した場合は、**%ProgramFiles%\\WindowsPowerShell\\Modules** フォルダーから Azure* フォルダーを手動で削除してから、インストールをもう一度試みます。
+> [AZURE.NOTE] PowerShell ギャラリーから以前にインストールされた Azure モジュールは、自動的に削除されます。これは、インストールしたモジュールとその場所に関して混乱を防ぐための措置です。PowerShell ギャラリーのモジュールは通常では **%ProgramFiles%\WindowsPowerShell\Modules** にインストールされます。これに対し、WebPI インストーラーを使用した場合、Azure モジュールは **%ProgramFiles(x86)%\Microsoft SDKs\Azure\PowerShell** にインストールされます。インストール中にエラーが発生した場合は、**%ProgramFiles%\WindowsPowerShell\Modules** フォルダーから Azure* フォルダーを手動で削除してから、インストールをもう一度試みます。
 
 インストールが完了したら、Azure PowerShell コマンドレットを含むディレクトリが ```$env:PSModulePath``` の設定に含まれている必要があります。
 
@@ -52,9 +52,11 @@ Azure PowerShell 1.0 以降は、0.9.x までと同じ方法で WebPI からイ�
         + FullyQualifiedErrorId : CommandNotFoundException
 ```
 
-This can be corrected by restarting the machine or importing the cmdlets from C:\Program Files\WindowsPowerShell\Modules\Azure\XXXX\ as following (where XXXX is the version of PowerShell installed:
+この問題は、コンピューターを再起動するか、次のように C:\Program Files\WindowsPowerShell\Modules\Azure\XXXX\ (XXXX はインストールされている PowerShell のバージョン) からコマンドレットをインポートすることによって修正できます。
 ```
-import-module "C:\\Program Files\\WindowsPowerShell\\Modules\\Azure\\XXXX\\azure.psd1" import-module "C:\\Program Files\\WindowsPowerShell\\Modules\\Azure\\XXXX\\expressroute\\expressroute.psd1" ```
+import-module "C:\Program Files\WindowsPowerShell\Modules\Azure\XXXX\azure.psd1"
+import-module "C:\Program Files\WindowsPowerShell\Modules\Azure\XXXX\expressroute\expressroute.psd1"
+```
 
 ###PowerShell ギャラリーから Azure PowerShell をインストールする
 
@@ -68,7 +70,7 @@ PowerShell ギャラリーから、管理者特権の Windows PowerShell また�
 
 ####前述のコマンドの詳細
 
-- **Install-Module AzureRM** は、Azure Resource Manager のコマンドレットのロールアップ モジュールをインストールします。AzureRM モジュールは、Azure Resource Manager の各モジュールの特定のバージョン範囲に依存します。バージョン範囲が含まれていることにより、同じメジャー バージョンの AzureRM モジュールをインストールするときに、互換性を破るモジュール変更は含まれません。AzureRM モジュールをインストールするときには、以前にインストールしていない Azure Resource Manager モジュールをダウンロードして、PowerShell ギャラリーからインストールします。Azure PowerShell モジュールで使用されるセマンティック バージョニングの詳細については、[semver.org](http://semver.org) をご覧ください。 
+- **Install-Module AzureRM** は、Azure Resource Manager のコマンドレットのロールアップ モジュールをインストールします。AzureRM モジュールは、Azure Resource Manager の各モジュールの特定のバージョン範囲に依存します。バージョン範囲が含まれていることにより、同じメジャー バージョンの AzureRM モジュールをインストールするときに、互換性を破るモジュール変更は含まれません。AzureRM モジュールをインストールするときには、以前にインストールしていない Azure Resource Manager モジュールをダウンロードして、PowerShell ギャラリーからインストールします。Azure PowerShell モジュールで使用されるセマンティック バージョニングの詳細については、[semver.org](http://semver.org) を参照してください。 
 - **Install-Module Azure** は、Azure モジュールをインストールします。これは、Azure PowerShell 0.9.x のサービス管理モジュールとなります。大きな変更はなく、以前のバージョンの Azure モジュールと互換性があります。
 
 ## 手順 2: 起動
@@ -171,10 +173,10 @@ Azure サブスクリプションを表示するには、「**Get-AzureRmSubscri
 
 コマンドレットの使用方法の詳細については、次のリソースを参照してください。
 
-Windows PowerShell の基本的な使用手順については、「[Windows PowerShell を使用する](http://go.microsoft.com/fwlink/p/?LinkId=321939)」をご覧ください。
+Windows PowerShell の基本的な使用手順については、「[Windows PowerShell を使用する](http://go.microsoft.com/fwlink/p/?LinkId=321939)」を参照してください。
 
-コマンドレットのリファレンスについては、「[Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/windowsazure/jj554330.aspx)」をご覧ください。
+コマンドレットのリファレンスについては、「[Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/windowsazure/jj554330.aspx)」を参照してください。
 
-スクリプトを使用した Azure の管理に役立つサンプル スクリプトと手順については、「[スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=321940)」をご覧ください。
+スクリプトを使用した Azure の管理に役立つサンプル スクリプトと手順については、「[スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=321940)」を参照してください。
 
 <!---HONumber=AcomDC_0518_2016-->

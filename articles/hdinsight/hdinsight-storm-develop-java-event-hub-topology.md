@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/01/2016"
+   ms.date="05/18/2016"
    ms.author="larryfr"/>
 
 # HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java)
@@ -26,13 +26,15 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 
 * HDInsight クラスター上の Apache Storm。基本について説明した次のいずれかの記事を参照してクラスターを作成します。
 
-    - [Linux ベースのクラスター](hdinsight-apache-storm-tutorial-get-started-linux.md): SSH を使用して、Linux、Unix、OS X、または Windows クライアントからクラスターを操作する場合に選択します
+    - [HDInsight クラスター上の Linux ベースの Storm](hdinsight-apache-storm-tutorial-get-started-linux.md): SSH を使用して、Linux、Unix、OS X、または Windows クライアントからクラスターを操作する場合に選択します
 
-    - [Windows ベースのクラスター](hdinsight-apache-storm-tutorial-get-started.md): PowerShell を使用して、Windows クライアントからクラスターを操作する場合に選択します
+    - [HDInsight クラスター上の Windows ベースの Storm](hdinsight-apache-storm-tutorial-get-started.md): PowerShell を使用して、Windows クライアントからクラスターを操作する場合に選択します
 
-    > [AZURE.NOTE] 2 つのクラスターの違いは、SSH を使用してトポロジを送信する先がクラスターか Web フォームか、という点のみです。
+    > [AZURE.NOTE] このドキュメントの手順は、HDInsight クラスター (3.3 以降) 上の Storm を前提としています。これらのクラスターには Storm 0.10.0 と Hadoop 2.7 が用意されており、ここで取り上げている例を正しく動作させるために必要な手順数が少なくて済みます。
+    >
+    > HDInsight 3.2 上で Storm 0.9.3 を使用した場合の例については、この例のリポジトリの [Storm v0.9.3](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub/tree/Storm_v0.9.3) ブランチを参照してください。
 
-* [Azure Event Hub](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)。
+* [Azure Event Hub](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 * [Oracle Java Developer Kit (JDK) バージョン 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) または同等のバージョン ([OpenJDK](http://openjdk.java.net/) など)
 
@@ -71,77 +73,64 @@ Event Hub スパウトとボルトの内部書式のしくみを利用せずに�
 ####EventHubs Storm スパウトの依存関係
 
     <dependency>
-      <groupId>com.microsoft.eventhubs</groupId>
-      <artifactId>eventhubs-storm-spout</artifactId>
-      <version>0.9.3</version>
+      <groupId>org.apache.storm</groupId>
+      <artifactId>storm-eventhubs</artifactId>
+      <version>0.10.0</version>
     </dependency>
 
-eventhubs-storm-spout パッケージの依存関係が加わります。このパッケージには、Event Hubs からの読み取りに使うスパウトと書き込みに使うボルトの両方が含まれます。
+storm-eventhubs パッケージの依存関係が加わります。このパッケージには、Event Hubs からの読み取りに使うスパウトと書き込みに使うボルトの両方が含まれます。
 
-> [AZURE.NOTE] このパッケージは、Maven では使用できません。後の手順で、ローカルの Maven リポジトリに手動でインストールします。
+> [AZURE.NOTE] このパッケージは、Storm バージョン 0.10.0 以上でのみ利用できます。Storm 0.9.3 を使用するときは、Microsoft から提供されているスパウト パッケージを手動でインストールする必要があります。Storm 0.9.3 を使用した場合の例については、この例のリポジトリの [Storm v0.9.3](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub/tree/Storm_v0.9.3) ブランチを参照してください。
 
 ####HdfsBolt および WASB コンポーネント
 
 通常、HdfsBolt は、Hadoop Distributed File System HDFS にデータを格納するために使用されます。一方、HDInsight クラスターは Azure Storage (WASB) を既定のデータ ストアとして使用するので、HdfsBolt が WASB ファイル システムを理解できるようにするコンポーネントをいくつか読み込む必要があります。
 
       <!--HdfsBolt stuff -->
-      <dependency>
+        <dependency>
         <groupId>org.apache.storm</groupId>
         <artifactId>storm-hdfs</artifactId>
         <exclusions>
-          <exclusion>
+            <exclusion>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
-          </exclusion>
-          <exclusion>
+            </exclusion>
+            <exclusion>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-hdfs</artifactId>
-          </exclusion>
+            </exclusion>
         </exclusions>
-        <version>0.9.3</version>
-      </dependency>
-      <!--
-     This is a temporary workaround to make HdfsBolt work with WASB through hadoop-azure project.
-     For now, we have to build hadoop-client, hadoop-hdfs and hadoop-azure from Hadoop trunk
-     (which defaults to 3.0.0-SNAPSHOT version). And push those jars and dependencies to local
-     mvn repo (take a look at push_lib_mvn.ps1).
+        <version>0.10.0</version>
+        </dependency>
+    <!--So HdfsBolt knows how to talk to WASB -->
+    <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-client</artifactId>
+        <version>2.7.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-hdfs</artifactId>
+        <version>2.7.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-azure</artifactId>
+        <version>2.7.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-common</artifactId>
+        <version>2.7.1</version>
+        <exclusions>
+        <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </exclusion>
+        </exclusions>
+    </dependency>
 
-     Once Hadoop 2.7 is released, we can just switch to that version.
-     Note that hadoop-azure is added to Hadoop on Hadoop 2.7.
-     -->
-     <dependency>
-       <groupId>org.apache.hadoop</groupId>
-       <artifactId>hadoop-client</artifactId>
-       <version>3.0.0-SNAPSHOT</version>
-     </dependency>
-     <dependency>
-       <groupId>org.apache.hadoop</groupId>
-       <artifactId>hadoop-hdfs</artifactId>
-       <version>3.0.0-SNAPSHOT</version>
-     </dependency>
-     <dependency>
-       <groupId>org.apache.hadoop</groupId>
-       <artifactId>hadoop-azure</artifactId>
-       <version>3.0.0-SNAPSHOT</version>
-     </dependency>
-     <dependency>
-       <groupId>org.apache.hadoop</groupId>
-       <artifactId>hadoop-common</artifactId>
-       <version>3.0.0-SNAPSHOT</version>
-       <exclusions>
-         <exclusion>
-           <groupId>org.slf4j</groupId>
-           <artifactId>slf4j-log4j12</artifactId>
-         </exclusion>
-       </exclusions>
-     </dependency>
-     <dependency>
-       <groupId>com.microsoft.windowsazure.storage</groupId>
-       <artifactId>microsoft-windowsazure-storage-sdk</artifactId>
-       <version>0.6.0</version>
-     </dependency>
-
-> [AZURE.NOTE] WASB を有効にするパッケージは、Maven リポジトリで使用できません。後の手順で手動でインストールします。
+> [AZURE.NOTE] 以前のバージョンの HDInsight (バージョン 3.2 など) を使用する場合は、これらのコンポーネントを手動で登録する必要があります。この例および以前の HDInsight クラスターに必要なカスタム ビットについては、この例のリポジトリの [Storm v0.9.3](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub/tree/Storm_v0.9.3) ブランチを参照してください。
 
 ####maven-compiler-plugin
 
@@ -159,15 +148,17 @@ eventhubs-storm-spout パッケージの依存関係が加わります。この�
 
 ####maven-shade-plugin
 
+      <!-- build an uber jar -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
         <version>2.3</version>
         <configuration>
-          <!-- Keep us from getting a can't overwrite file error -->
           <transformers>
-            <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
-            </transformer>
+            <!-- Keep us from getting a can't overwrite file error -->
+            <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer"/>
+            <!-- Keep us from getting errors when trying to use WASB from the storm-hdfs bolt -->
+            <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
           </transformers>
           <!-- Keep us from getting a bad signature error -->
           <filters>
@@ -179,7 +170,7 @@ eventhubs-storm-spout パッケージの依存関係が加わります。この�
                     <exclude>META-INF/*.RSA</exclude>
                 </excludes>
             </filter>
-        </filters>
+          </filters>
         </configuration>
         <executions>
           <execution>
@@ -195,7 +186,9 @@ eventhubs-storm-spout パッケージの依存関係が加わります。この�
 
 * 依存関係のライセンス ファイル名を変更する: この処理を実行しないと、Windows ベースの HDInsight クラスターで実行時にエラーが発生する可能性があります。
 
-* セキュリティ/署名を除外する: この処理を実行しないと、HDInsight クラスターで実行時にエラーが発生する可能性があります
+* セキュリティ/署名を除外する: この処理を実行しないと、HDInsight クラスターで実行時にエラーが発生する可能性があります。
+
+* 同じインターフェイスの複数の実装は、1 つのエントリにマージする必要があります。そのようになっていないと、WASB ファイル システムとの通信方法を Storm-HDFS ボルトが認識できないというエラーが発生します。
 
 ####exec-maven-plugin
 
@@ -295,29 +288,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
 1. GitHub からプロジェクトをダウンロードします ([hdinsight-java-storm-eventhub](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub))。パッケージを zip アーカイブとしてダウンロードするか、[git](https://git-scm.com/) を使用してローカルにプロジェクトの複製を作成します。
 
-2. 次のコマンドを使用して、プロジェクトに含まれるパッケージをローカルの Maven リポジトリにインストールします。その結果、Event Hub スパウトとボルトが有効になるだけでなく、HdfsBolt を使用して Azure Storage (WASB) に出力できるようになります。
-
-		mvn -q install:install-file -Dfile=lib/eventhubs/eventhubs-storm-spout-0.9.3-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9.3 -Dpackaging=jar
-
-		mvn -q org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=lib/hadoop/hadoop-azure-3.0.0-SNAPSHOT.jar
-
-		mvn -q org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=lib/hadoop/hadoop-client-3.0.0-SNAPSHOT.jar
-
-		mvn -q org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=lib/hadoop/hadoop-hdfs-3.0.0-SNAPSHOT.jar
-
-		mvn -q org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=lib/hadoop/hadoop-common-3.0.0-SNAPSHOT.jar -DpomFile=lib/hadoop/hadoop-common-3.0.0-SNAPSHOT.pom
-
-		mvn -q org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=lib/hadoop/hadoop-project-dist-3.0.0-SNAPSHOT.pom -DpomFile=lib/hadoop/hadoop-project-dist-3.0.0-SNAPSHOT.pom
-
-		mvn -q org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=lib/hadoop/hadoop-project-3.0.0-SNAPSHOT.pom -DpomFile=lib/hadoop/hadoop-project-3.0.0-SNAPSHOT.pom
-
-		mvn -q org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile=lib/hadoop/hadoop-main-3.0.0-SNAPSHOT.pom -DpomFile=lib/hadoop/hadoop-main-3.0.0-SNAPSHOT.pom
-
-	> [AZURE.NOTE] PowerShell を使用している場合、`-D`パラメーターは引用符で囲む必要があります。たとえば、「`"-Dfile=lib/hadoop/hadoop-main-3.0.0-SNAPSHOT.pom"`」のように入力します。
-
-	また、これらのファイルは https://github.com/hdinsight/hdinsight-storm-examplesにも掲載されています。最新バージョンはこちらを参照してください。
-
-3. 次のコマンドを使用して、プロジェクトをビルドしてパッケージ化します。
+2. 次のコマンドを使用して、プロジェクトをビルドしてパッケージ化します。
 
         mvn package
 
@@ -415,7 +386,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
     [送信] をクリックして EventHubReader トポロジを開始します。
 
-6. 数分待つと、トポロジでイベントを生成し、Azure Storage に格納できるようになります。次に、__[Storm ダッシュボード]__ ページの上部にある __[クエリ コンソール]__ タブを選択します。
+6. 数分待つと、トポロジでイベントを生成し、Azure Storage に格納できるようになります。次に、__[Storm ダッシュボード]__ ページの上部にある __[Hadoop Query Console]__ (Hadoop クエリ コンソール) タブを選択します。
 
 7. __[クエリ コンソール]__ の __[Hive エディター]__ を選択し、既定の `select * from hivesampletable`を次の値で置き換えます。
 
@@ -460,7 +431,7 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 
 * **stormmeta\_delete.cmd**: Zookeeper からのすべての Storm メタデータを削除します。
 
-インポートのエクスポートにより、クラスターを削除する必要がある一方で、新しいクラスターを再びオンラインにする際にハブの現在のオフセットから処理を再開する場合、チェックポイントのデータを保持できます。
+インポートのエクスポートにより、クラスターを削除する必要がある一方で、新しいクラスターを再びオンラインにするときにハブの現在のオフセットから処理を再開する場合、チェックポイントのデータを保持できます。
 
 > [AZURE.NOTE] データは既定のストレージ コンテナーに保存されるため、新しいクラスターで以前のクラスターと同じストレージ アカウントとコンテナーを使用する**必要があります**。
 
@@ -482,4 +453,4 @@ Storm UI の詳細な使用方法については、次のトピックを参照�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

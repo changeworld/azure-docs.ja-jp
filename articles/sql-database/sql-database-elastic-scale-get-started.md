@@ -3,7 +3,7 @@
 	description="実行が容易なサンプル アプリケーションを含む、Azure SQL Database の Elastic Database ツール機能の基本説明です。" 
 	services="sql-database" 
 	documentationCenter="" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="ddove" 
 	editor="sidneyh"/>
 
@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/22/2016" 
-	ms.author="ddove;sidneyh"/>
+	ms.date="05/24/2016" 
+	ms.author="sidneyh"/>
 
 # Elastic Database ツールの概要
 
 このドキュメントでは、サンプル アプリを実行して開発作業について説明します。サンプルでは単純なシャーディング アプリケーションを作成し、Elastic Database ツールの主な機能について詳しく見て行きます。サンプルでは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の機能が実演されます。
+
+ライブラリをインストールするには、[Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) に移動します。ライブラリは、次に示すサンプル アプリと共にインストールされることに注意してください。
 
 ## 前提条件
 
@@ -83,6 +85,7 @@ Elastic Database ツールの詳細については、以下のページを参照
 -    ブログ: [Elastic Scale の発表](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
 -    チャンネル 9: [Elastic Scale の概要に関するビデオ](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 -    ディスカッション フォーラム: [Azure SQL Database フォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+-    パフォーマンスを測定するには: [シャード マップ マネージャーのパフォーマンス カウンター](sql-database-elastic-database-client-library.md)
 
 
 <!--Anchors-->
@@ -98,4 +101,4 @@ Elastic Database ツールの詳細については、以下のページを参照
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

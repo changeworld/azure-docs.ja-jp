@@ -1,10 +1,10 @@
 <properties
-pageTitle="ロジック アプリで Yammer API を追加する | Microsoft Azure"
-description="Yammer API と REST API パラメーターの概要"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="ロジック アプリに Yammer コネクタを追加する | Microsoft Azure"
+description="Yammer コネクタと REST API パラメーターの概要"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,10 +14,10 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="03/16/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Yammer API の使用
+# Yammer コネクタの使用
 
 Yammer に接続し、エンタープライズ ネットワークの会話にアクセスします。
 
@@ -38,10 +38,10 @@ Yammer には、次のトリガーとアクションが含まれています。
 --- | ---
 <ul><li>グループに新しいメッセージがあるとき</li><li>フォローしているフィードに新しいメッセージがあるとき</li></ul>| <ul><li>すべてのメッセージを取得する</li><li>グループのメッセージを取得する</li><li>自分がフォローしているフィードからメッセージを取得する</li><li>メッセージを投稿する</li><li>グループに新しいメッセージがあるとき</li><li>自分がフォローしているフィードに新しいメッセージがあるとき</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## Yammer への接続を作成する
-Yammer API を使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。
+Yammer コネクタを使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。
 
 |プロパティ| 必須|説明|
 | ---|---|---|
@@ -195,4 +195,4 @@ Yammer Web インターフェイスの "すべて" の会話に対応します�
 [4]: ./media/connectors-create-api-yammer/connectionconfig4.png
 [5]: ./media/connectors-create-api-yammer/connectionconfig5.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

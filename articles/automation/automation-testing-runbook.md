@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Azure Automation での Runbook のテスト"
+	pageTitle="Azure Automation での Runbook のテスト | Microsoft Azure"
 	description="Azure Automation で Runbook を発行する前にテストを行い、期待どおりに動作することを確認できます。この記事では、Runbook のテスト方法と出力の見方について説明します。"
 	services="automation"
 	documentationCenter=""
 	authors="mgoedtel"
-	manager="stevenka"
+	manager="jwhit"
 	editor="tysonn" />
 <tags 
 	ms.service="automation"
@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="02/23/2016"
+	ms.date="05/24/2016"
 	ms.author="magoedte;bwren" />
 
 # Azure Automation での Runbook のテスト
@@ -27,32 +27,20 @@ Runbook のテスト時には[ドラフト バージョン](automation-creating-
 
 Azure ポータルではすべての[種類の Runbook ](automation-runbook-types.md)を使用することができます。
 
-1. [テキスト エディター](automation-editing-a-runbook#Portal)または[グラフィカル エディター](automation-graphical-authoring-intro.md)のどちらかで、ドラフト バージョンの Runbook を開きます。
+1. [テキスト エディター](automation-editing-a-runbook.md#Portal)または[グラフィカル エディター](automation-graphical-authoring-intro.md)のどちらかで、ドラフト バージョンの Runbook を開きます。
 2. **[テスト]** ボタンをクリックして [テスト] ブレードを開きます。
 3. Runbook にパラメーターがある場合は左側のウィンドウに表示され、そこでテストに使用する値を指定することができます。
-4. [Hybrid Runbook Worker](automation-hybrid) に対してテストを実施する場合は、**[実行設定]** を**[ハイブリッド worker]** に変更して対象グループの名前を選択します。それ以外の場合は、既定の **[Azure]** をそのまま使用してクラウドでテストを実行します。
+4. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) に対してテストを実施する場合は、**[実行設定]** を**[ハイブリッド worker]** に変更して対象グループの名前を選択します。それ以外の場合は、既定の **[Azure]** をそのまま使用してクラウドでテストを実行します。
 5. **[開始]** をクリックしてテストを開始します。
 6. Runbook が [PowerShell ワークフロー](automation-runbook-types.md#powershell-workflow-runbooks)または[グラフィカル](automation-runbook-types.md#graphical-runbooks)の場合、[出力] ウィンドウの下にあるボタンを使用して、テスト中に Runbook を停止または中断することができます。Runbook は、中断される場合は中断前に現在のアクティビティを完了します。Runbook を中断した後で、停止または再開できます。
 7. [出力] ウィンドウで Runbook の出力を確認します。
 
 
+## 次のステップ
 
-## Azure ポータルで Runbook をテストするには
+- Runbook を作成またはインポートする方法については、「[Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)」を参照してください。
+- グラフィカル作成の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
+- PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
+- ステータス メッセージやエラーを返すように Runbook を構成する方法と、推奨されるベスト プラクティスの詳細については、「[Azure Automation での Runbook の出力およびメッセージ](automation-runbook-output-and-messages.md)」を参照してください。
 
-Azure ポータルで使用できるのは [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) だけです。
-
-
-1. [ドラフト バージョンの Runbook を開きます](automation-edit-textual-runbook.md#to-edit-a-runbook-with-the-azure-portal)。
-2. **[テスト]** をクリックしてテストを開始します。Runbook にパラメーターがある場合は、テストに使用する値を指定するダイアログ ボックスが表示されます。
-6. [出力] ウィンドウの下にあるボタンを使用して、テスト中に Runbook を停止または中断することができます。Runbook は、中断される場合は中断前に現在のアクティビティを完了します。Runbook を中断した後で、停止または再開できます。
-7. [出力] ウィンドウで Runbook の出力を確認します。
-
-
-## 関連記事:
-
-- [Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)
-- [Azure Automation のグラフィカル Runbook](automation-graphical-authoring-intro.md)
-- [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
-- [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
-
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0525_2016-->

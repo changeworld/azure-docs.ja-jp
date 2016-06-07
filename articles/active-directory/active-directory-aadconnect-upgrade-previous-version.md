@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="Identity"
-   ms.date="05/12/2016"
+   ms.date="05/19/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする
@@ -23,11 +23,11 @@ DirSync からアップグレードする場合は、代わりに「[Azure AD Co
 
 Azure AD Connect のアップグレードには複数の方法があります。
 
-| メソッド | 説明 |
-| --- | --- |
-| [自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md) | 高速インストールのユーザーの場合、これは最も簡単な方法です。 |
-| [インプレース アップグレード](#in-place-upgrade) | サーバーが 1 台だけの場合は、同じサーバーでインストールをインプレース アップグレードします。 |
-| [スウィング移行](#swing-migration) | 2 台のサーバーを用意し、一方に新しいリリースを準備して、アクティブなサーバーを変更します。
+メソッド | 説明
+--- | ---
+[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md) | 高速インストールのユーザーの場合、これは最も簡単な方法です。
+[インプレース アップグレード](#in-place-upgrade) | サーバーが 1 台だけの場合は、同じサーバーでインストールをインプレース アップグレードします。
+[スウィング移行](#swing-migration) | 2 台のサーバーを用意し、一方に新しいリリースを準備して、アクティブなサーバーを変更します。
 
 必要なアクセス許可については、[アップグレードに必要なアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)を参照してください。
 
@@ -85,4 +85,4 @@ Azure AD Connect のアップグレードには複数の方法があります。
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

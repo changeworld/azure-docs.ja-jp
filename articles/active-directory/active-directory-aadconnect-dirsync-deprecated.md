@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="05/19/2016"
 	ms.author="andkjell"/>
 
 
@@ -29,20 +29,20 @@ Azure AD Connect は DirSync と Azure AD Sync の後継となります。Azure 
 
 ## 廃止のスケジュール
 
-|日付 | コメント |
-| --- | --- |
-| 2016 年 4 月13 日 | Windows Azure Active Directory Sync (“DirSync”) と Azure Active Directory Sync (“Azure AD Sync”) の廃止が発表されます。 |
-| 2017 年 4 月 13 日 | サポートが終了します。Azure AD Connect にアップグレードしていないと、サポート ケースを開くことができなくなります。 |
+日付 | コメント
+ --- | ---
+2016 年 4 月13 日 | Windows Azure Active Directory Sync (“DirSync”) と Azure Active Directory Sync (“Azure AD Sync”) の廃止が発表されます。
+2017 年 4 月 13 日 | サポートが終了します。Azure AD Connect にアップグレードしていないと、サポート ケースを開くことができなくなります。
 
 ## Azure AD Connect へ移行する方法
 DirSync を実行している場合、2 つのアップグレード方法 (インプレース アップグレードと並列デプロイメント) があります。通常、最新のオペレーティング システムを使用しており、オブジェクトの数が 50,000 未満の場合は、インプレース アップグレードをお勧めします。それ以外の場合は、並列デプロイメントを実行することをお勧めします。この方法では、Azure AD Connect を実行している新しいサーバーに DirSync の構成が移行されます。
 
 Azure AD Sync を使用している場合、インプレース アップグレードをお勧めします。目的に応じて、並列で新しい Azure AD Connect サーバーをインストールし、Azure AD Sync サーバーから Azure AD Connect へのスウィング移行を実行することもできます。
 
-| 解決策 | シナリオ |
-| ----- | ----- |
-| [DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md) | <li>既存の DirSync サーバーが既に実行されている場合に使用します。</li>
-| [Azure AD Sync からのアップグレード](active-directory-aadconnect-upgrade-previous-version.md)| <li>Azure AD Sync から移行する場合に使用します。</li>
+解決策 | シナリオ
+----- | -----
+[DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md) | <li>既存の DirSync サーバーが既に実行されている場合に使用します。</li>
+[Azure AD Sync からのアップグレード](active-directory-aadconnect-upgrade-previous-version.md)| <li>Azure AD Sync から移行する場合に使用します。</li>
 
 DirSync から Azure AD Connect へのインプレース アップグレードを実行する方法を確認するには、チャネル 9 ビデオをご覧ください。
 
@@ -61,4 +61,4 @@ DirSync から Azure AD Connect へのインプレース アップグレード�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

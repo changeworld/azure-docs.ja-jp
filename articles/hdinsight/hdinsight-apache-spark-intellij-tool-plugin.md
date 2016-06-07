@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/14/2016" 
+	ms.date="05/18/2016"
 	ms.author="nitinme"/>
 
 
@@ -40,7 +40,7 @@
 
 ## IntelliJ IDEA 用の HDInsight Tools プラグインのインストール
 
-1. IntelliJ IDEA の [Welcome] \(ようこそ) 画面が表示されたら、**[Configure]** (構成) をクリックし、**[Plugins]** (プラグイン) をクリックします。
+1. IntelliJ IDEA の [Welcome] (ようこそ) 画面が表示されたら、**[Configure]** (構成) をクリックし、**[Plugins]** (プラグイン) をクリックします。
 
 2. 次の画面の左下隅にある **[Browse Repositories]** (リポジトリの参照) をクリックします。**[Browse Repositories]** (リポジトリの参照) ダイアログ ボックスが開いたら、**HDInsight** を検索し、**[Microsoft Azure HDInsight Tools for IntelliJ (Preview)]** (Microsoft Azure HDInsight Tools for IntelliJ (プレビュー)) を選択して、**[Install]** (インストール) をクリックします。プラグインは、Scala プラグインに依存しています。そのため、Scala プラグインがインストールされていない場合は、Scala プラグインもインストールするように求められます。
 
@@ -80,7 +80,7 @@
 
 		![JAR の作成](./media/hdinsight-apache-spark-intellij-tool-plugin/create-jar-1.png)
 
-	3. JAR ファイルの名前を入力します (例: **MyClusterApp**)。[Available Elements] \(使用可能な要素) ウィンドウで、**['MyClusterApp' compile output]** ('MyClusterApp' コンパイル出力) を右クリックし、**[Put into Output Root]** (出力ルートに入れる) をクリックします。
+	3. JAR ファイルの名前を入力します (例: **MyClusterApp**)。[Available Elements] (使用可能な要素) ウィンドウで、**['MyClusterApp' compile output]** ('MyClusterApp' コンパイル出力) を右クリックし、**[Put into Output Root]** (出力ルートに入れる) をクリックします。
 
 		![JAR の作成](./media/hdinsight-apache-spark-intellij-tool-plugin/create-jar-2.png)
 
@@ -216,6 +216,34 @@ HDInsight ツール プラグインに対応するように、IntelliJ IDEA で�
 
 4. 変更を保存します。これで、アプリケーションは HDInsight ツール プラグインと互換性を持つようになります。これをテストするには、Project Explorer でプロジェクト名を右クリックします。ポップアップ メニューで、**[Submit Spark Application to HDInsight]** (HDInsight への Spark アプリケーションの送信) のオプションが表示されるようになったはずです。
 
+
+## トラブルシューティング
+
+### ローカル実行でエラーが発生しヒープ サイズを増やすように求められた場合
+
+Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカル実行時に、次のようなエラーが発生することがあります。
+
+    Exception in thread "main" java.lang.IllegalArgumentException: System memory 259522560 must be at least 4.718592E8. Please use a larger heap size.
+    	at org.apache.spark.memory.UnifiedMemoryManager$.getMaxMemory(UnifiedMemoryManager.scala:193)
+    	at org.apache.spark.memory.UnifiedMemoryManager$.apply(UnifiedMemoryManager.scala:175)
+    	at org.apache.spark.SparkEnv$.create(SparkEnv.scala:354)
+    	at org.apache.spark.SparkEnv$.createDriverEnv(SparkEnv.scala:193)
+    	at org.apache.spark.SparkContext.createSparkEnv(SparkContext.scala:288)
+    	at org.apache.spark.SparkContext.<init>(SparkContext.scala:457)
+    	at LogQuery$.main(LogQuery.scala:53)
+    	at LogQuery.main(LogQuery.scala)
+    	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+    	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    	at java.lang.reflect.Method.invoke(Method.java:606)
+    	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)
+
+このエラーは単純に、ヒープ サイズが不足しているために Spark を実行できない、という理由で発生します。Spark には少なくとも 471 MB のヒープが必要となります (詳細については [SPARK-12081](https://issues.apache.org/jira/browse/SPARK-12081) を参照)。簡単な解決方法としては、64 ビットの Java SDK を使用することが考えられます。または、IntelliJ で JVM 設定に以下のオプションを追加します。
+
+    -Xms128m -Xmx512m -XX:MaxPermSize=300m -ea
+
+![Spark Application local run result](./media/hdinsight-apache-spark-intellij-tool-plugin/change-heap-size.png)
+
 ## フィードバックと既知の問題
 
 現在、Spark の出力を直接表示することはサポートされておらず、その実現に取り組んでいます。
@@ -253,4 +281,4 @@ HDInsight ツール プラグインに対応するように、IntelliJ IDEA で�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

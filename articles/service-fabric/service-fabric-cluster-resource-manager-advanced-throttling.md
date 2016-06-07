@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric クラスター リソース マネージャーの概要 | Microsoft Azure"
-   description="Service Fabric クラスター リソース マネージャーについての概要。"
+   pageTitle="Service Fabric クラスター リソース マネージャーのスロットル | Microsoft Azure"
+   description="Service Fabric クラスター リソース マネージャーで使用可能なスロットルの構成について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/10/2016"
+   ms.date="05/20/2016"
    ms.author="masnider"/>
 
 
@@ -43,4 +43,4 @@
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、[負荷分散](service-fabric-cluster-resource-manager-balancing.md)に関する記事を参照してください。
 - クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

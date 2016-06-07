@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/18/2016" 
+	ms.date="05/23/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache のスケーリング方法
@@ -33,7 +33,7 @@ Azure Redis Cache の[監視](cache-how-to-monitor.md)機能を使用して、�
 -	ネットワーク帯域幅
 -	CPU 使用率
 
-現在のキャッシュがアプリケーションの要件を満たさないと判断した場合は、ご利用のアプリケーションにとって適切な価格レベルのキャッシュに変更できます。使用するキャッシュの価格レベルを決定する方法の詳細については、「[Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
+現在のキャッシュがアプリケーションの要件を満たさないと判断した場合は、ご利用のアプリケーションにとって適切な価格レベルのキャッシュに変更できます。使用するキャッシュの価格レベルを決定する方法の詳細については、「[Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」をご覧ください。
 
 ## キャッシュのスケーリング
 キャッシュをスケーリングするには、[Azure ポータル](https://portal.azure.com)で[キャッシュを参照](cache-configure.md#configure-redis-cache-settings)し、**[設定]**、**[価格レベル]** の順にクリックします。
@@ -55,7 +55,7 @@ Azure Redis Cache の[監視](cache-how-to-monitor.md)機能を使用して、�
 >-	**Basic** キャッシュから直接 **Premium** キャッシュにスケーリングすることはできません。1 回のスケーリング操作で **Basic** から **Standard** にスケーリングし、その後の操作で **Standard** から **Premium** にスケーリングする必要があります。
 >-	**C0 (250 MB)** サイズにそれより大きなサイズからスケールダウンすることはできません。
 
-キャッシュを新しい価格レベルにスケーリングする際に、**[Redis Cache]** ブレードで状態が **[拡大中]** と表示されます。
+キャッシュを新しい価格レベルにスケーリングするときに、**[Redis Cache]** ブレードで状態が **[拡大中]** と表示されます。
 
 ![スケーリング][redis-cache-scaling]
 
@@ -75,13 +75,13 @@ PowerShell を使用して Azure Redis Cache インスタンスをスケーリ�
 
 	Set-AzureRmRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
-PowerShell によるスケーリングの詳細については、[Powershell を使用した Redis キャッシュのスケーリングに関するページ](cache-howto-manage-redis-cache-powershell.md#scale)を参照してください。
+PowerShell によるスケーリングの詳細については、[Powershell を使用した Redis キャッシュのスケーリングに関するページ](cache-howto-manage-redis-cache-powershell.md#scale)をご覧ください。
 
 ### Azure CLI を使用したスケーリング
 
 Azure CLI を使用して Azure Redis Cache インスタンスをスケーリングするには、`azure rediscache set` コマンドを呼び出し、必要なスケーリング操作に基づいて、新しいサイズ、sku、またはクラスター サイズを含む必要な構成変更を指定します。
 
-Azure CLI によるスケーリングの詳細については、「[既存の Redis Cache の設定を変更する](cache-manage-cli.md#scale)」を参照してください。
+Azure CLI によるスケーリングの詳細については、「[既存の Redis Cache の設定を変更する](cache-manage-cli.md#scale)」をご覧ください。
 
 ### MAML を使用したスケーリング
 
@@ -105,7 +105,7 @@ Azure CLI によるスケーリングの詳細については、「[既存の Re
         client.Redis.CreateOrUpdate(resourceGroupName,cacheName, redisParams);
     }
 
-詳細については、[MAML を使用した Redis Cache の管理に関するページ](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML)のサンプルを参照してください。
+詳細については、[MAML を使用した Redis Cache の管理に関するページ](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML)のサンプルをご覧ください。
 
 ## スケーリングに関する FAQ
 
@@ -115,6 +115,7 @@ Azure CLI によるスケーリングの詳細については、「[既存の Re
 -	[スケーリング後にキャッシュ名やアクセス キーを変更する必要はありますか](#after-scaling-do-i-have-to-change-my-cache-name-or-access-keys)
 -	[スケーリングはどのように処理されますか](#how-does-scaling-work)
 -	[スケーリング中にキャッシュからデータは失われますか](#will-i-lose-data-from-my-cache-during-scaling)
+-	[スケーリング中に影響を受けるカスタム データベース](#is-my-custom-databases-setting-affected-during-scaling)
 -	[スケーリング中にキャッシュを使用できますか](#will-my-cache-be-available-during-scaling)
 -	[サポートされていない処理](#operations-that-are-not-supported)
 -	[スケーリングにはどのくらいの時間がかかりますか](#how-long-does-scaling-take)
@@ -128,7 +129,7 @@ Azure CLI によるスケーリングの詳細については、「[既存の Re
 -	**Basic** キャッシュから直接 **Premium** キャッシュにスケーリングすることはできません。まずは 1 回のスケーリング操作で **Basic** から **Standard** にスケーリングし、その後の操作で **Standard** から **Premium** にスケーリングする必要があります。
 -	**Premium** キャッシュを作成しているときにクラスタリングを有効にした場合、[クラスター サイズを変更](cache-how-to-premium-clustering.md#cluster-size)できます。現時点では、クラスタリングを使わずに作成された既存のキャッシュでクラスタリングを有効にすることはできません。
 
-    詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
+    詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」をご覧ください。
 
 ### スケーリング後にキャッシュ名やアクセス キーを変更する必要はありますか
 
@@ -138,14 +139,23 @@ Azure CLI によるスケーリングの詳細については、「[既存の Re
 
 -	**Basic** キャッシュを別のサイズにスケーリングすると、キャッシュはシャット ダウンされて新しいキャッシュが新しいサイズでプロビジョニングされます。この間キャッシュは使用できず、キャッシュ内のすべてのデータは失われます。
 -	**Basic** キャッシュを **Standard** キャッシュにスケーリングすると、レプリカ キャッシュがプロビジョニングされ、データがプライマリ キャッシュからレプリカ キャッシュにコピーされます。スケーリングの処理中、キャッシュは引き続き使用できます。
--	**Standard** キャッシュを別のサイズまたは **Premium** キャッシュにスケーリングすると、一方のレプリカはシャットダウンし、新しいサイズに再プロビジョニングされてデータが転送されます。もう一方のレプリカは、キャッシュ ノードの 1 つでエラーが発生した際に実行される処理と同様に、フェールオーバーを実行してから、再プロビジョニングされます。
+-	**Standard** キャッシュを別のサイズまたは **Premium** キャッシュにスケーリングすると、一方のレプリカはシャットダウンし、新しいサイズに再プロビジョニングされてデータが転送されます。もう一方のレプリカは、キャッシュ ノードの 1 つでエラーが発生したときに実行される処理と同様に、フェールオーバーを実行してから、再プロビジョニングされます。
 
 ### スケーリング中にキャッシュからデータは失われますか
 
 -	新しいサイズに **Basic** キャッシュをスケーリングすると、すべてのデータが失われ、スケーリング処理中にキャッシュは使用できなくなります。
 -	**Basic** キャッシュを **Standard** キャッシュにスケーリングする場合、通常、キャッシュのデータは保存されます。
--	**Standard** キャッシュをより大きいサイズまたは価格レベルにスケールアップする場合や、**Premium** キャッシュをより大きいサイズにスケールアップする場合、通常はすべてのデータが保持されます。**Standard** または **Premium** キャッシュをより小さいサイズにスケールダウンする場合、キャッシュ内のデータ量と新しいサイズの関係によっては、スケーリング時にデータが失われる可能性があります。スケールダウンの際にデータが失われた場合、[allkeys-lru](http://redis.io/topics/lru-cache) 削除ポリシーを使用してキーが削除されます。 
+-	**Standard** キャッシュをより大きいサイズまたは価格レベルにスケールアップする場合や、**Premium** キャッシュをより大きいサイズにスケールアップする場合、通常はすべてのデータが保持されます。**Standard** または **Premium** キャッシュをより小さいサイズにスケールダウンする場合、キャッシュ内のデータ量と新しいサイズの関係によっては、スケーリング時にデータが失われる可能性があります。スケールダウンのときにデータが失われた場合、[allkeys-lru](http://redis.io/topics/lru-cache) 削除ポリシーを使用してキーが削除されます。 
 
+### スケーリング中に影響を受けるカスタム データベース
+
+価格レベルによってさまざまな[データベースの制限](cache-configure.md#databases)があるため、キャッシュの作成中に `databases` の設定にカスタム値を設定する場合、スケーリング時の考慮事項がいくつかあります。
+
+-	現在のレベルより低い `databases` の制限で価格レベルをスケーリングする場合:
+	-	すべての価格レベルが 16 の `databases` の既定の数を使用している場合、データは失われません。
+	-	スケーリングしているレベルの制限範囲に含まれるユーザー設定の数値の `databases` を使用している場合、この `databases` の設定は保持され、データは失われません。
+	-	新しいレベルの制限を超えるユーザー設定の数値の `databases` を使用している場合、`databases` の設定は新しいレベルの制限より低くなり、削除されたデータベースのすべてのデータが失われます。
+-	現在のレベル以上の `databases` の制限を持つ価格レベルにスケーリングする場合、`databases` の設定は保持され、データは失われません。
 
 Standard および Premium キャッシュには可用性について 99.9% の SLA がある一方で、データの喪失については SLA がありませんのでご注意ください。
 
@@ -189,4 +199,4 @@ Standard および Premium キャッシュには可用性について 99.9% の 
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

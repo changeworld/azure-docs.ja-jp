@@ -1,12 +1,12 @@
 <properties
-	pageTitle="PowerApps Enterprise または Logic Apps に Office 365 Outlook API を追加する | Microsoft Azure"
-	description="Office 365 Outlook API と REST API パラメーターの概要"
-	services=""	
-	documentationCenter="" 	
-	authors="msftman"	
-	manager="erikre"	
-	editor="" 
-	tags="connectors" />
+    pageTitle="PowerApps Enterprise またはロジック アプリに Office 365 Outlook コネクタを追加する | Microsoft Azure"
+    description="Office 365 Outlook コネクタと REST API パラメーターの概要"
+    services=""    
+    documentationCenter=""     
+    authors="msftman"    
+    manager="erikre"    
+    editor="" 
+    tags="connectors" />
 
 <tags
 ms.service="multiple"
@@ -14,12 +14,12 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="03/16/2016"
+ms.date="05/18/2016"
 ms.author="mandia"/>
 
-# Office 365 Outlook API の概要 
+# Office 365 Outlook コネクタの使用 
 
-Office 365 Outlook に接続して、メールの取得、メールの返信、予定表と連絡先の更新などを行います。Office 365 Outlook API は、以下のツールから使用できます。
+Office 365 Outlook に接続して、メールの取得、メールの返信、予定表と連絡先の更新などを行います。Office 365 Outlook コネクタは、次のツールから使用できます。
 
 - Logic Apps 
 - PowerApps
@@ -37,26 +37,26 @@ Office 365 Outlook では、次のことができます。
 - Office 365 Outlook から取得したデータに基づいてビジネス フローを構築できます。 
 - 新しいメールの着信時や新しい連絡先の作成時などに、トリガーを使用できます。
 - メールへの返信、新しい予定表イベントの作成などの各種操作を使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Salesforce に新しいオブジェクトがある場合は、そのオブジェクトを取得し、Office 365 Outlook の連絡先を更新できます。 
-- PowerApps Enterprise に Office 365 Outlook API を追加します。追加すると、ユーザーはアプリ内で API を使用できるようになります。 
+- PowerApps Enterprise に Office 365 Outlook コネクタを追加します。追加すると、ユーザーはアプリ内でコネクタを使用できるようになります。 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」をご覧ください。
+PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
 
 ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 ## トリガーとアクション
 
-Office 365 Outlook API では、次のトリガーとアクションを使用できます。
+Office 365 Outlook コネクタでは、次のトリガーとアクションを使用できます。
 
 | トリガー | アクション|
 | --- | --- |
 |<ul><li>イベントが間もなく開始されるとき</li><li>新しい電子メールの着信時</li><li>新しい項目の作成時</li><li>項目の更新時</li></ul>| <ul><li>連絡先を作成する</li><li>イベントを作成する</li><li>承認の電子メールを送信する</li><li>電子メールを送信する</li><li>連絡先を削除する</li><li>電子メールを削除する</li><li>イベントを削除する</li><li>添付ファイルを取得する</li><li>予定表を取得する</li><li>連絡先を取得する</li><li>連絡先フォルダーを取得する</li><li>連絡先を取得する</li><li>電子メールを取得する</li><li>イベントを取得する</li><li>複数のイベントを取得する</li><li>既読としてマークする</li><li>イベントが間もなく開始されるとき</li><li>新しい電子メールの着信時</li><li>新しい項目の作成時</li><li>項目の更新時</li><li>メッセージに返信する</li><li>オプションを指定して電子メールを送信する</li><li>連絡先を更新する</li><li>イベントを更新する</li></ul> |
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 
 ## Office 365 への接続を作成する
 
-この API をロジック アプリに追加する場合は、Office 365 Outlook アカウントにサインインして、ロジック アプリでアカウントに接続できるようにする必要があります。
+このコネクタをロジック アプリに追加する場合は、Office 365 Outlook アカウントにサインインして、ロジック アプリでアカウントに接続できるようにする必要があります。
 
 1. Office 365 Outlook アカウントにサインインします。
 2. ロジック アプリが Office 365 アカウントに接続して使用することを許可します。 
@@ -768,4 +768,4 @@ ID を指定してメッセージの添付ファイルを取得します。```GE
 [12]: ./media/connectors-create-api-office365-outlook/contoso-aad-app-delegate-office365-outlook.png
 [13]: ./media/connectors-create-api-office365-outlook/contoso-aad-app-delegate-office365-outlook-permissions.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016-->

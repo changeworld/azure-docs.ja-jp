@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="05/22/2016" 
 	ms.author="bradsev;garye" />
 
 
@@ -133,14 +133,14 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 図 9:二項分類モデルのクロス検証の結果。
 
 ##多クラス分類モデルの評価##
-この実験では、3 種類のあやめの事例が含まれている有名な [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "あやめ") データセットを使います。事例ごとに 4 つの特徴値 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。前の実験では、同じデータセットを使ってモデルのトレーニングとテストを行いました。今回は、[[分割]][split] モジュールを使ってデータのサブセットを 2 つ作成し、最初のサブセットでトレーニングを行い、2 つ目のセブセットでスコア付けと評価を行います。Iris データセットは [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) で公開されており、[[リーダー]][reader] モジュールを使ってダウンロードできます。
+この実験では、3 種類のあやめの事例が含まれている有名な [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "あやめ") データセットを使います。事例ごとに 4 つの特徴値 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。前の実験では、同じデータセットを使ってモデルのトレーニングとテストを行いました。今回は、[[データの分割]][split] モジュールを使ってデータのサブセットを 2 つ作成し、最初のサブセットでトレーニングを行い、2 つ目のセブセットでスコア付けと評価を行います。Iris データセットは [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) で公開されており、[[データのインポート]][reader] モジュールを使ってダウンロードできます。
 
 ###実験の作成###
 Azure Machine Learning Studio で以下のモジュールをワークスペースに追加します。
 
-- [閲覧者][reader]
+- [データのインポート][reader]
 - [多クラス決定フォレスト][multiclass-decision-forest]
-- [分割][split]
+- [データの分割][split]
 - [モデルのトレーニング][train-model]
 - [モデルのスコア付け][score-model]
 - [モデルの評価][evaluate-model]
@@ -149,9 +149,9 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 
 [[モデルのトレーニング]][train-model] モジュールのラベル列のインデックスを 5 に設定します。このデータセットにはヘッダー行がありませんが、クラス ラベルが第 5 列にあります。
 
-[[リーダー]][reader] モジュールをクリックして、*データ ソース* プロパティを *HTTP 経由でWeb URL* に設定し、*URL* を http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data に設定します。
+[[データのインポート]][reader] モジュールをクリックして、*データ ソース* プロパティを *HTTP 経由で Web URL* に設定し、*URL* を http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data に設定します。
 
-[[分割]][split] モジュールでトレーニングに使用する事例の割合を設定します (0.7 など)。
+[[データの分割]][split] モジュールでトレーニングに使用する事例の割合を設定します (0.7 など)。
  
 ![多クラス分類モデルの評価](media/machine-learning-evaluate-model-performance/10.png)
 
@@ -189,4 +189,4 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 [two-class-logistic-regression]: https://msdn.microsoft.com/library/azure/b0fd7660-eeed-43c5-9487-20d9cc79ed5d/
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0525_2016-->

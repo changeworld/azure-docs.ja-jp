@@ -114,17 +114,47 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 
 ## スライス - FAQ
 
+### 入力スライスが準備完了状態にならない 
+一般的なミスとして、入力データがデータ ファクトリの外部に存在する (データ ファクトリによって生成されたものでない) ときに、入力データセットの **external** プロパティが **true** に設定されていないことが挙げられます。
+
+次の例では、**dataset1** のみ、**external** を true に設定する必要があります。
+
+**DataFactory1** Pipeline 1: dataset1 -> activity1 -> dataset2 -> activity2 -> dataset3 Pipeline 2: dataset3-> activity3 -> dataset4
+
+別のデータ ファクトリに dataset4 (データ ファクトリ 1 のパイプライン 2 で生成) を受け取るパイプラインがある場合、dataset4 は、外部のデータセットとして指定する必要があります。dataset4 は異なるデータ ファクトリ (DataFactory2 ではなく DataFactory1) によって生成されたものであるためです。
+
+**DataFactory2** Pipeline 1: dataset4->activity4->dataset5
+
+external プロパティが適切に設定されている場合は、入力データセットの定義で指定された場所に入力データが存在しているかどうかを確認してください。
+
+### スライスを毎日生成している場合、午前 0 時以外の時刻にスライスを実行するにはどうすればよいですか。
+**offset** プロパティを使用して、スライスを生成する時刻を指定します。このプロパティの詳細については、「[データセットの可用性](data-factory-create-datasets.md#Availability)」セクションを参照してください。以下に簡単な例を示します。
+
+	"availability":
+	{
+	    "frequency": "Day",
+	    "interval": 1,
+	    "offset": "06:00:00"
+	}
+
+既定の設定である午前 0 時ではなく、毎日**午前 6 時**にスライスを開始する例です。
+
 ### スライスを再実行するにはどうすればよいですか。
 スライスを再実行するには、次のどちらかの方法を使用します。
 
-- ポータルのスライスの **[データ スライス]** ブレードで、コマンド バーの **[実行]** をクリックします。 
-- スライスの状態を **Waiting** に設定して、**AzureRmDataFactorySliceStatus** コマンドレットを実行します。   
+- 監視と管理アプリを使用して、アクティビティ ウィンドウまたはスライスを再実行します。「[選択したアクティビティ ウィンドウを再実行する](data-factory-monitor-manage-app.md#re-run-selected-activity-windows)」を参照してください。   
+- ポータルのスライスの **[データ スライス]** ブレードで、コマンド バーの **[実行]** をクリックします。
+- スライスの状態を **Waiting** に設定して、**Set-AzureRmDataFactorySliceStatus** コマンドレットを実行します。   
 	
 		Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00" 
 
 コマンドレットの詳細については、[Set-AzureDataFactorySliceStatus][set-azure-datafactory-slice-status] に関するページをご覧ください。
 
 ### スライスの処理にかかった時間を調べるにはどうすればよいですか。
+データ スライスの処理に要した時間は、監視と管理アプリのアクティビティ ウィンドウ エクスプローラーを使用して調べます。詳細については、[アクティビティ ウィンドウ エクスプローラー](data-factory-monitor-manage-app.md#activity-window-explorer)に関するページを参照してください。
+
+同じことは、Azure ポータルから次の手順で行うこともできます。
+
 1. データ ファクトリの **[データ ファクトリ]** ブレードの **[データセット]** タイルをクリックします。
 2. **[データセット]** ブレードの特定のデータセットをクリックします。
 3. **[テーブル]** ブレードの **[最近使用したスライス]** ボックスの一覧で、目的のスライスを選択します。
@@ -152,4 +182,4 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

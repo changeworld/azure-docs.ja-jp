@@ -20,8 +20,8 @@
 # PowerShell を使用した Azure VM のバックアップのデプロイおよび管理
 
 > [AZURE.SELECTOR]
-- [ARM VM PowerShell](backup-azure-vms-automation.md)
-- [クラシック VM PowerShell](backup-azure-vms-classic-automation.md)
+- [ARM](backup-azure-vms-automation.md)
+- [クラシック](backup-azure-vms-classic-automation.md)
 
 この記事では、Azure の IaaS の VM をバックアップおよび回復するために Azure PowerShell を使用する方法を示します。
 
@@ -342,4 +342,4 @@ $DAILYBACKUPSTATS | Out-GridView
 
 このレポート出力にグラフ作成機能を追加する場合は、TechNet ブログ投稿「[Charting with PowerShell (PowerShell でのグラフ作成)](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

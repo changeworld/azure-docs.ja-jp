@@ -3,7 +3,7 @@
     description="多数のデータベースでリソースを共有できるように、C# データベース開発手法を使用して、Azure SQL Database にスケーラブルなエラスティック データベース プールを作成します。"
     services="sql-database"
     documentationCenter=""
-    authors="sidneyh"
+    authors="srinia"
     manager="jhubbard"
     editor=""/>
 
@@ -13,8 +13,8 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="04/28/2016"
-    ms.author="sidneyh"/>
+    ms.date="05/27/2016"
+    ms.author="srinia"/>
 
 # C&#x23; による新しい Elastic Database プールの作成
 
@@ -251,4 +251,4 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 - [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -42,21 +42,34 @@ SQL Server IaaS Agent 拡張機能は、次の管理タスクをサポートし�
 
 VM で SQL Server IaaS Agent 拡張機能を使用するための要件:
 
-- Azure VM ゲスト エージェント (BGInfo 拡張機能は新しい Azure VM に自動的にインストールされます)。
-- Windows Server 2012、Windows Server 2012 R2、またはそれ以降。
-- SQL Server 2012、SQL Server 2014、またはそれ以降。
+**オペレーティング システム**:
 
-Powershell コマンドレットを使用するための要件:
+- Windows Server 2012
+- Windows Server 2012 R2
 
-- 最新の Azure PowerShell ([ここから入手可能](../powershell-install-configure.md))。
+**SQL Server のバージョン**:
+
+- SQL Server 2012
+- SQL Server 2014
+- SQL Server 2016
+
+**Azure PowerShell**:
+
+- [最新の Azure PowerShell コマンドをダウンロードして構成します](../powershell-install-configure.md)
+
+**仮想マシン ゲスト エージェント**:
+
+- BGInfo 拡張機能は新しい Azure VM に自動的にインストールされます。
 
 ## インストール
 
 SQL Server IaaS Agent 拡張機能は、SQL Server 仮想マシン ギャラリー イメージのいずれかをプロビジョニングしたときに自動的にインストールされます。
 
-OS 専用の Windows Server 仮想マシンを作成する場合は、**Set-AzureVMSqlServerExtension** PowerShell コマンドレットを使用して、拡張機能を手動でインストールできます。このコマンドを使用して、エージェントのいずれかのサービス (自動修正など) を構成します。VM は、エージェントがインストールされていない場合はそれをインストールします。
+OS 専用の Windows Server 仮想マシンを作成する場合は、**Set-AzureVMSqlServerExtension** PowerShell コマンドレットを使用して、拡張機能を手動でインストールできます。このコマンドを使用して、エージェントのいずれかのサービス (自動修正など) を構成します。VM は、エージェントがインストールされていない場合はそれをインストールします。**Set-AzureVMSqlServerExtension** PowerShell の使用方法については、この記事の「[サポートされているサービス](#supported-services)」セクションを参照してください。
 
->[AZURE.NOTE] **Set-AzureVMSqlServerExtension** PowerShell の使用方法については、この記事の「[サポートされているサービス](#supported-services)」セクションを参照してください。
+最新バージョンの SQL IaaS Agent 拡張機能に更新する場合は、拡張機能の更新後、仮想マシンを再起動する必要があります。
+
+>[AZURE.NOTE] SQL Server IaaS Agent 拡張機能を VM で手動でインストールする場合は、PowerShell コマンドを使用して、その機能を使用および管理する必要があります。このシナリオでは、ポータルのインターフェイスは使用できません。
 
 ## 状態
 
@@ -70,7 +83,7 @@ OS 専用の Windows Server 仮想マシンを作成する場合は、**Set-Azur
 
 ## 削除   
 
-Azure ポータルで、仮想マシンのプロパティの **[拡張機能]** ブレード上の省略記号をクリックすることで拡張機能をアンインストールできます。その後、[**削除**] をクリックします。
+Azure ポータルで拡張機能をアンインストールするには、仮想マシンのプロパティの **[拡張機能]** ブレードにある省略記号をクリックします。その後、**[削除]** をクリックします。
 
 ![Azure ポータルで SQL Server IaaS Agent 拡張機能をアンインストールします](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-uninstall.png)
 
@@ -80,8 +93,8 @@ Azure ポータルで、仮想マシンのプロパティの **[拡張機能]** 
 
 ## 次のステップ
 
-拡張機能によってサポートされるいずれかのサービスの使用を開始します。詳細については、この記事の「[サポートされているサービス](#supported-services)」を参照してください。
+拡張機能によってサポートされるいずれかのサービスの使用を開始します。詳細については、この記事の「[サポートされているサービス](#supported-services)」で参照されているトピックをご覧ください。
 
 Azure Virtual Machines で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016--->

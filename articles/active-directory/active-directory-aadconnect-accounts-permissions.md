@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="04/14/2016"
+   ms.date="05/19/2016"
    ms.author="andkjell;billmath"/>
 
 
@@ -28,18 +28,18 @@ Azure AD Connect インストール ウィザードには次の 2 つの別の�
 ## 関連ドキュメント
 [オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関するドキュメントをまだお読みでない方のために、次の表に関連トピックへのリンクを示します。
 
-| トピック | |
-| --------- | --------- |
-| 簡単設定を使用したインストール | [Azure AD Connect の高速インストール](active-directory-aadconnect-get-started-express.md) |
-| カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md) |
-| DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md) |
+トピック |  
+--------- | ---------
+簡単設定を使用したインストール | [Azure AD Connect の高速インストール](active-directory-aadconnect-get-started-express.md)
+カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)
+DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 
 
 ## 簡単設定を使用したインストール
 簡単設定では、オンプレミスの Active Directory を Azure AD Connect に必要なアクセス許可で構成できるように、インストール ウィザードで AD DS エンタープライズ管理者の資格情報が求められます。DirSync からアップグレードする場合は、AD DS エンタープライズ管理者の資格情報を使用して、DirSync で使用されるアカウントのパスワードをリセットします。Azure AD グローバル管理者の資格情報も必要になります。
 
 ウィザード ページ | 収集される資格情報 | 必要なアクセス許可| 用途
-------------- | ------------- |------------- |------------- |
+------------- | ------------- |------------- |-------------
 該当なし|インストール ウィザードを実行するユーザー| ローカル サーバーの管理者| <li>[同期エンジン サービス アカウント](#azure-ad-connect-sync-service-account)として使用するローカル アカウントを作成します。
 Azure への接続| Azure AD ディレクトリの資格情報 | Azure AD でのグローバル管理者ロール | <li>Azure AD ディレクトリの同期を有効にします。</li> <li>Azure AD で進行中の同期操作に使用する [Azure AD アカウント](#azure-ad-service-account)を作成します。</li>
 AD DS に接続 | オンプレミスの Active Directory の資格情報 | Active Directory 内の Enterprise Admins (EA) グループのメンバー| <li>Active Directory で[アカウント](#active-directory-account)を作成し、それに対するアクセス許可を付与します。この作成されたアカウントは、同期中にディレクトリ情報を読み取るまたは書き込むために使用されます。</li>
@@ -51,16 +51,16 @@ AD DS に接続 | オンプレミスの Active Directory の資格情報 | Activ
 これらの資格情報はインストール中にのみ使用されます。インストールの完了後には使用されません。この資格情報は、Azure AD への変更の同期に使用される [Azure AD アカウント](#azure-ad-service-account)を作成するために使用します。また、このアカウントにより、同期は Azure AD の機能として有効化されます。
 
 ### 簡単設定用に作成された AD DS アカウントのアクセス許可
-AD DS の読み取りおよび書き込み用に作成された[アカウント](#active-directory-account)は、簡単設定によって作成された場合、以下のアクセス許可を持ちます。
+AD DS の読み取りと書き込み用に作成された[アカウント](#active-directory-account)は、簡単設定によって作成された場合、以下のアクセス許可を持ちます。
 
-| アクセス許可 | 使用対象 |
-| ---- | ---- |
-| <li>ディレクトリの変更のレプリケート</li><li>ディレクトリの変更をすべてにレプリケート | パスワードの同期 |
-| すべてのプロパティの読み取り/書き込み (ユーザー) | インポートおよび Exchange ハイブリッド |
-| すべてのプロパティの読み取り/書き込み (iNetOrgPerson) | インポートおよび Exchange ハイブリッド |
-| すべてのプロパティの読み取り/書き込み (グループ) | インポートおよび Exchange ハイブリッド |
-| すべてのプロパティの読み取り/書き込み (連絡先) | インポートおよび Exchange ハイブリッド |
-| パスワードのリセット | パスワード ライトバックを有効にするための準備 |
+アクセス許可 | 使用対象
+---- | ----
+<li>ディレクトリの変更のレプリケート</li><li>ディレクトリの変更をすべてにレプリケート | パスワードの同期
+すべてのプロパティの読み取り/書き込み (ユーザー) | インポートおよび Exchange ハイブリッド
+すべてのプロパティの読み取り/書き込み (iNetOrgPerson) | インポートおよび Exchange ハイブリッド
+すべてのプロパティの読み取り/書き込み (グループ) | インポートおよび Exchange ハイブリッド
+すべてのプロパティの読み取り/書き込み (連絡先) | インポートおよび Exchange ハイブリッド
+パスワードのリセット | パスワード ライトバックを有効にするための準備
 
 ## カスタム設定を使用したインストール
 カスタム設定を使用した場合、Active Directory への接続に使用するアカウントをインストール前に作成する必要があります。このアカウントに付与する必要があるアクセス許可については、「[AD DS アカウントの作成](#create-the-ad-ds-account)」を参照してください。
@@ -81,22 +81,22 @@ Azure AD Connect をインストールした場合、「**ディレクトリの�
 
 必要なアクセス許可は、有効にしたオプションの機能によって異なります。複数のドメインがある場合は、フォレスト内のすべてのドメインにアクセス許可を付与する必要があります。これらのいずれの機能も有効にしなかった場合、既定の**ドメイン ユーザー** アクセス許可で十分対応できます。
 
-| 機能 | アクセス許可 |
-| ------ | ------ |
-| パスワードの同期 | <li>ディレクトリの変更のレプリケート</li> <li>ディレクトリの変更をすべてにレプリケート |
-| Exchange ハイブリッドのデプロイメント | ユーザー、グループ、連絡先用の「[Exchange ハイブリッドの書き戻し](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)」に記載された属性へのアクセス許可の書き込み。 |
-| パスワードの書き戻し | ユーザー向けの「[パスワード管理の概要](active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions)」に記載された属性へのアクセス許可の書き込み。 |
-| デバイスの書き戻し | 「[デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)」に説明されているように、PowerShell スクリプトを使用して付与されたアクセス許可。|
-| グループの書き戻し | 配布グループが配置されている OU 内のグループ オブジェクトの読み取り、作成、更新、および削除。|
+機能 | アクセス許可
+------ | ------
+パスワードの同期 | <li>ディレクトリの変更のレプリケート</li> <li>ディレクトリの変更をすべてにレプリケート
+Exchange ハイブリッドのデプロイメント | ユーザー、グループ、連絡先用の「[Exchange ハイブリッドの書き戻し](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)」に記載された属性へのアクセス許可の書き込み。
+パスワードの書き戻し | ユーザー向けの「[パスワード管理の概要](active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions)」に記載された属性へのアクセス許可の書き込み。
+デバイスの書き戻し | 「[デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)」に説明されているように、PowerShell スクリプトを使用して付与されたアクセス許可。
+グループの書き戻し | 配布グループが配置されている OU 内のグループ オブジェクトの読み取り、作成、更新、および削除。
 
 ## アップグレード
 Azure AD Connect のいずれかのバージョンから新しいリリースにアップグレードする場合、次のアクセス許可が必要です。
 
-| プリンシパル | 必要なアクセス許可 | 使用対象 |
-| ---- | ---- | ---- |
-| インストール ウィザードを実行するユーザー | ローカル サーバーの管理者 | バイナリを更新します。 |
-| インストール ウィザードを実行するユーザー | ADSyncAdmins のメンバー | 同期規則などの構成を変更します。 |
-| インストール ウィザードを実行するユーザー | 完全バージョンの SQL Server を使用している場合: 同期エンジン データベースの DBO (または類似のもの) | 新しい列でテーブルを更新するなど、データベース レベルを変更します。 |
+プリンシパル | 必要なアクセス許可 | 使用対象
+---- | ---- | ----
+インストール ウィザードを実行するユーザー | ローカル サーバーの管理者 | バイナリを更新します。
+インストール ウィザードを実行するユーザー | ADSyncAdmins のメンバー | 同期規則などの構成を変更します。
+インストール ウィザードを実行するユーザー | 完全バージョンの SQL Server を使用している場合: 同期エンジン データベースの DBO (または類似のもの) | 新しい列でテーブルを更新するなど、データベース レベルを変更します。
 
 ## 作成されたアカウントの詳細情報
 
@@ -107,7 +107,7 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 ![AD アカウント](./media/active-directory-aadconnect-accounts-permissions/adsyncserviceaccount.png)
 
 ### Azure AD Connect 同期サービス アカウント
-ローカル サービス アカウントはインストール ウィザードで作成します (カスタム設定で使用するアカウントを指定しない限り)。アカウントは、先頭に **AAD\_** が付き、実際の同期サービスがそのアカウントで実行されます。Azure AD Connect をドメイン コントローラーにインストールした場合、アカウントはドメインに作成されます。SQL Server を実行しているリモート サーバーを使用するか、または認証を必要とするプロキシを使用する場合は、**AAD\_** サービス アカウントをドメインに配置する必要があります。
+ローカル サービス アカウントはインストール ウィザードで作成します (カスタム設定で使用するアカウントを指定しない限り)。アカウントは、先頭に **AAD\_** が付き、実際の同期サービスがそのアカウントで実行されます。Azure AD Connect をドメイン コントローラーにインストールした場合、アカウントはドメインに作成されます。SQL Server を実行しているリモート サーバーを使用するか、認証を必要とするプロキシを使用する場合は、**AAD\_** サービス アカウントをドメイン内に配置する必要があります。
 
 ![同期サービス アカウント](./media/active-directory-aadconnect-accounts-permissions/syncserviceaccount.png)
 
@@ -134,4 +134,4 @@ Azure AD のアカウントは、同期サービスで使用するために作�
 
 「[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

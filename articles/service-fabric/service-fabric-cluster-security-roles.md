@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/13/2016"
+   ms.date="05/18/2016"
    ms.author="subramar"/>
 
 
@@ -112,4 +112,4 @@ Azure Service Fabric では、Service Fabric クラスターに接続される�
 
 [Service Fabric クラスターの作成](service-fabric-cluster-creation-via-portal.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

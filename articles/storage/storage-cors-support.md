@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/19/2016"
+	ms.date="05/23/2016"
 	ms.author="tamram"/>
 
 # Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート
@@ -195,4 +195,4 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 
 [W3C のクロス オリジン リソース共有の仕様](http://www.w3.org/TR/cors/)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0525_2016-->

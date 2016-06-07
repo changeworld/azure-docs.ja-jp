@@ -4,7 +4,7 @@
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
-   manager="stevenka"
+   manager="jwhit"
    editor="tysonn" />
 <tags 
    ms.service="automation"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/23/2016"
+   ms.date="05/24/2016"
    ms.author="magoedte;bwren;sngun"/>
 
 # Azure Automation Webhook
@@ -270,6 +270,6 @@ Azure アラートを通知システムとして使用するだけでなく、�
 
 - Runbook を開始するさまざまな方法については、「[Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)」を参照してください。
 - Runbook ジョブの状態の表示については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」を参照してください。
-- [Using Azure Automation to take actions on Azure Alerts (Azure Automation を使用した Azure アラートに対するアクションの実行)](https://azure.microsoft.com/blog/using-azure-automation-to-take-actions-on-azure-alerts/)
+- Azure Automation を使用して Azure アラートに対処する方法については、[Automation Runbook での Azure VM アラートの修復](automation-azure-vm-alert-integration.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0525_2016-->

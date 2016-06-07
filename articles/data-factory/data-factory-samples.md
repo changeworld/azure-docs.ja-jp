@@ -13,13 +13,31 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/07/2016" 
+	ms.date="05/23/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory - サンプル
 
 ## GitHub のサンプル
 [GitHub の Azure-DataFactory リポジトリ](https://github.com/azure/azure-datafactory)には、Azure Data Factory サービスを迅速に導入sしたり、スクリプトを変更して独自のアプリケーションで使用したりするのに役立ついくつかのサンプルがあります。Samples\\JSON フォルダーには、一般的なシナリオ用の JSON スニペットが含まれています。
+
+| サンプル | 説明 |
+| :----- | :---------- | 
+| [ADF チュートリアル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) | このサンプルでは、Azure Data Factory を使用したログ ファイルの処理によってログ ファイルのデータから知見を得る方法をエンド ツー エンドでわかりやすく解説します。<br/><br/>このチュートリアルでは、Data Factory パイプラインでサンプル ログを収集、処理します。ログから得たデータを参照データで補強し、そのデータを変換することによって、最近開始されたマーケティング キャンペーンの有効性を評価します。 |
+| [JSON のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) | 一般的なシナリオにおける JSON の使用例を紹介したサンプルです。 | 
+| [Http Data Downloader サンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) | カスタム .NET アクティビティを使用して HTTP エンドポイントから Azure Blob Storage にデータをダウンロードするサンプルです。 |
+| [Cross AppDomain Dot Net Activity サンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) | ADF ランチャーで使用されているアセンブリ バージョン (WindowsAzure.Storage v4.3.0、Newtonsoft.Json v6.0.x など) に限定されないカスタム .NET アクティビティを作成することができます。 |
+| [R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) | RScript.exe の呼び出しに使用できる Data Factory カスタム アクティビティが含まれています。このサンプルは、既に R がインストールされている独自の (オンデマンドではない) HDInsight クラスターでのみ正しく動作します。 |
+| [HDInsight Hadoop クラスターでの Spark ジョブの呼び出し](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark) | MapReduce アクティビティを使用して Spark プログラムを起動する方法を紹介するサンプルです。Spark プログラムは、単に、1 つの Azure BLOB コンテナーから別のコンテナーにデータをコピーします。 |
+| [Azure Machine Learning バッチ スコアリング アクティビティを使用した Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-AzureMLBatchScoringActivity) | Twitter のセンチメント分析、スコア付け、予測などを実行する Azure Machine Learning モデルを AzureMLBatchScoringActivity で呼び出す方法について紹介したサンプルです。 |
+| [カスタム アクティビティを使用した Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) | Twitter のセンチメント分析、スコア付け、予測などを実行する Azure Machine Learning モデルをカスタム .NET アクティビティで呼び出す方法について紹介したサンプルです。 |
+| [Azure Machine Learning のパラメーター化パイプライン](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ParameterizedPipelinesForAzureML/) | それぞれ異なるリージョン パラメーターを使ってスコア付けと再トレーニングを行う N 個のパイプラインをデプロイするエンド ツー エンドの C# コードを紹介したサンプルです。一連のリージョンは、このサンプルに含まれている parameters.txt ファイルから取得します。 | 
+| [Azure Stream Analytics ジョブのリファレンス データの更新](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs) | Azure Data Factory と Azure Stream Analytics を連携させ、リファレンス データを使ってクエリを実行したり、リファレンス データの定期的更新をセットアップしたりする方法を紹介するサンプルです。 |
+| [オンプレミスの Hortonworks Hadoop を使用したハイブリッド パイプライン](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HybridPipelineWithOnPremisesHortonworksHadoop) | Data Factory でジョブを実行するためのコンピューティング ターゲットとしてオンプレミスの Hadoop クラスターを使用するサンプルです。HDInsight ベースの Hadoop クラスターなど、他のコンピューティング ターゲットをクラウドに追加する感覚でオンプレミスの Hadoop クラスターを使用します。 |
+| [JSON 変換ツール](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSONConversionTool) | 2015-07-01-preview 未満のバージョンの JSON を最新または 2015-07-01-preview (既定) に変換するツールです。 |  
+| [U-SQL サンプル入力ファイル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) | このサンプル ファイルは、U-SQL アクティビティで使用します。 | 
+
+
 
 ## Azure ポータルのサンプル
 データ ファクトリのホーム ページにある **[パイプラインのサンプル]** タイルを使用して、パイプラインのサンプルおよび関連付けられているエンティティ (データセットおよびリンクされたサービス) をデータ ファクトリにデプロイできます。
@@ -100,4 +118,4 @@
 
 Visual Studio を使用して Data Factory エンティティを作成し、Azure に発行する方法の詳細については、「[Visual Studio を使用した初めての Azure Data Factory パイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

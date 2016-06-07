@@ -22,7 +22,51 @@
 
 このガイドでは、Service Bus のトピックとサブスクリプションの使用方法について説明します。サンプルは Java で記述され、[Azure SDK for Java][] を利用しています。ここでは、**トピックとサブスクリプションの作成**、**サブスクリプション フィルターの作成**、**トピックへのメッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。
 
-[AZURE.INCLUDE [service-bus-java-how-to-create-topic](../../includes/service-bus-java-how-to-create-topic.md)]
+## Service Bus トピックとサブスクリプションとは
+
+Service Bus のトピックとサブスクリプションは、メッセージ通信の*発行/サブスクライブ* モデルをサポートします。トピックとサブスクリプションを使用すると、分散アプリケーションのコンポーネントが互いに直接通信することがなくなり、仲介者の役割を果たすトピックを介してメッセージをやり取りすることになります。
+
+![TopicConcepts](./media/service-bus-java-how-to-use-topics-subscriptions/sb-topics-01.png)
+
+各メッセージが 1 つのコンシューマーによって処理される Service Bus キューとは異なり、トピックとサブスクリプションでは、発行/サブスクライブ パターンを使用した "1 対多" 形式の通信を行います。複数のサブスクリプションを 1 つのトピックに登録できます。トピックに送信されたメッセージはサブスクリプションに渡され、各サブスクリプションで独立して処理できます。
+
+トピックにとってのサブスクリプションは、トピックに送信されたメッセージのコピーを受け取る仮想キューのようなものです。トピックに対するフィルター ルールをサブスクリプション単位で登録することもできます。これを使用すると、トピックに送信されるどのメッセージをどのトピック サブスクリプションで受信するかのフィルター処理や制限ができます。
+
+Service Bus のトピックとサブスクリプションを使用すると、多数のユーザーとアプリケーションの間でやり取りされる膨大な数のメッセージを処理することもできます。
+
+## サービス名前空間の作成
+
+Azure Service Bus トピックとサブスクリプションを使用するには、最初にサービス名前空間を作成する必要があります。名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
+
+名前空間を作成するには:
+
+1.  [Azure クラシック ポータル][]にログオンします。
+
+2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
+
+3.  ポータルの下のウィンドウで、**[作成]** をクリックします。![][0]
+
+4.  **[新しい名前空間を追加する]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。![][2]
+
+5.  入力した名前空間の名前が利用できることを確認できたら、名前空間をホストする国またはリージョンを選択します (コンピューティング リソースを展開する国またはリージョンと同じ国またはリージョンを必ず使用してください)。
+
+	重要: アプリケーションをデプロイする予定の国またはリージョンと**同じ国/リージョン**を選択してください。そうすることで、パフォーマンスが最高になります。
+
+6. 	ダイアログ ボックスの他のフィールドは、既定値 (**[メッセージング]** と **[標準階層]**) のままにして、チェック マークをクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
+
+## 名前空間の既定の管理資格情報の取得
+
+新規作成した名前空間に対してトピックやサブスクリプションの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。これらの資格情報は Azure ポータルから取得できます。
+
+### ポータルから管理資格情報を取得するには
+
+1.  左側のナビゲーション ウィンドウで **[Service Bus]** ノードをクリックして、利用可能な名前空間の一覧を表示します。![][0]
+
+2.  表示された一覧から先ほど作成した名前空間を選択します。 ![][3]
+
+3.  **[構成]** をクリックして、名前空間の共有アクセス ポリシーを表示します。![](./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-14.png)
+
+4.  プライマリ キーを書き留めておくか、クリップボードにコピーしておいてください。
 
 ## Service Bus を使用するようにアプリケーションを構成する
 
@@ -67,7 +111,7 @@ Service Bus トピックの管理処理は**ServiceBusContract** クラスを使
 		System.exit(-1);
 	}
 
-**TopicInfo** には、トピックのプロパティを設定できるメソッドが用意されています (たとえば、トピックに送信されるメッセージに対して既定の有効期間 (TTL) 値が適用されるように設定できます)。次の例では、名前が `TestTopic`、最大サイズが 5 GB であるトピックを作成する方法を示しています。
+**TopicInfo** には、トピックのプロパティを設定できるメソッドが用意されています。たとえば、トピックに送信されるメッセージに対して既定の有効期間 (TTL) 値が適用されるように設定できます。次の例では、名前が `TestTopic`、最大サイズが 5 GB であるトピックを作成する方法を示しています。
 
     long maxSizeInMegabytes = 5120;  
 	TopicInfo topicInfo = new TopicInfo("TestTopic");  
@@ -146,7 +190,7 @@ service.sendTopicMessage("TestTopic", message);
 }
 ```
 
-Service Bus トピックでは、最大 256 MB までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 MB です)。トピックで保持されるメッセージ数には上限がありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。
+Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。トピックで保持されるメッセージ数には上限がありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。
 
 ## サブスクリプションからメッセージを受信する方法
 
@@ -239,10 +283,14 @@ service.deleteTopic("TestTopic");
 
   [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
   [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
-  [Azure classic portal]: http://manage.windowsazure.com/
+  [Azure クラシック ポータル]: http://manage.windowsazure.com/
   [Service Bus のキュー、トピック、サブスクリプション]: service-bus-queues-topics-subscriptions.md
   [SqlFilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
   [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
+  
+  [0]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-13.png
+  [2]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-04.png
+  [3]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-09.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/10/2016"
+   ms.date="05/20/2016"
    ms.author="masnider"/>
 
 # Service Fabric サービスの配置ポリシー
-Service Fabric のクラスターが複数のデータセンターや Azure のリージョンなど、地理的に離れた場所に広がっていたり、環境が地政学的な管理の異なる領域に広がっていたり (もしくは法的、政策的な境界について考慮しなければならない) する場合、最終的に考慮する可能性があるルールが多数あります。これらの多くはノード プロパティおよび (先に述べた) 配置の制約によって構成できますが、なかには非常に複雑なものもあります。どの場合でも、配置の制約と同様に次のようなショートカットが提供されており、配置ポリシーをサービスごとに構成できます。
+Service Fabric のクラスターが複数のデータセンターや Azure のリージョンなど、地理的に離れた場所に広がっている場合や、環境が地政学的な管理の異なる領域に広がっている場合 (もしくは法的、政策的な境界について考慮しなければならない場合や、こうした距離がパフォーマンス/待機時間に実際に影響を与える場合) には、ほかにも最終的に考慮する必要のあるさまざまなルールがあります。こうしたルールの多くはノード プロパティおよび配置の制約によって構成できますが、なかには非常に複雑なものもあります。どのような場合でも、配置の制約と同様に次のようなショートカットが提供されており、配置ポリシーを名前付きサービス インスタンスごとに構成できます。
 
 ## 無効なドメインを指定する
-invalidDomain 配置ポリシーでは、特定の障害ドメインがこのワークロードに対して無効になるように指定できます。地政学的または企業のポリシー上の理由などにより、特定の地域で特定のサービスが実行されないようにできます。複数の無効なドメインを指定できます。
+invalidDomain 配置ポリシーでは、特定の障害ドメインがこのワークロードに対して無効になるように指定できます。地政学的または企業のポリシー上の理由などにより、特定の地域で特定のサービスが実行されないようにできます。無効なドメインは複数指定できます。
 
 ![無効なドメインの例][Image1]
 
@@ -98,4 +98,4 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 [Image2]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png
 [Image3]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-preferred-primary-domain.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

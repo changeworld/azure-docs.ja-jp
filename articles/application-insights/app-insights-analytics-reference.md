@@ -22,28 +22,31 @@
 
 [AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
 
-
 | | | | | 
 |---|---|---|---|---
-|[ago](#ago)|[dayofweek](#dayofweek)|[let 句](#let-clause)|[rand](#rand)|[sum](#sum)
-|[任意](#any)|[dcount](#dcount)|[limit 演算子](#limit-operator)|[range](#range)|[summarize 演算子](#summarize-operator)
-|[argmax](#argmax)|[let 句の動的オブジェクト](#dynamic-objects-in-let-clauses)|[log](#log)|[range 演算子](#range-operator)|[take 演算子](#take-operator)
-|[argmin](#argmin)|[exp](#exp)|[makelist](#makelist)|[reduce 演算子](#reduce-operator)|[todatetime](#todatetime)
-|[算術演算子](#arithmetic-operators)|[extend 演算子](#extend-operator)|[makeset](#makeset)|[render ディレクティブ](#render-directive)|[todouble](#todouble)
-|[配列とオブジェクトのリテラル](#array-and-object-literals)|[extract](#extract)|[max](#max)|[replace](#replace)|[todynamic](#todynamic)
-|[arraylength](#arraylength)|[extractjson](#extractjson)|[min](#min)|[restrict 句](#restrict-clause)|[toint](#toint)
-|[avg](#avg)|[floor](#floor)|[mvexpand 演算子](#mvexpand-operator)|[スカラーの比較](#scalar-comparisons)|[tolong](#tolong)
-|[bin](#bin)|[getmonth](#getmonth)|[notempty](#notempty)|[sort 演算子](#sort-operator)|[tolower](#tolower)
-|[ブール型リテラル](#boolean-literals)|[gettype](#gettype)|[notnull](#notnull)|[split](#split)|[top 演算子](#top-operator)
-|[ブール演算子](#boolean-operators)|[getyear](#getyear)|[now](#now)|[sqrt](#sqrt)|[totimespan](#totimespan)
-|[buildschema](#buildschema)|[hash](#hash)|[数値リテラル](#numeric-literals)|[startofmonth](#startofmonth)|[toupper](#toupper)
-|[キャスト](#casts)|[iff](#iff)|[難読化された文字列リテラル](#obfuscated-string-literals)|[startofyear](#startofyear)|[treepath](#treepath)
-|[count](#count)|[isempty](#isempty)|[parse 演算子](#parse-operator)|[stdev](#stdev)|[union 演算子](#union-operator)
-|[count 演算子](#count-operator)|[isnotempty](#isnotempty)|[parsejson](#parsejson)|[strcat](#strcat)|[variance](#variance)
-|[countif](#countif)|[isnotnull](#isnotnull)|[percentile](#percentile)|[文字列の比較](#string-comparisons)|[where 演算子](#where-operator)
-|[countof](#countof)|[isnull](#isnull)|[percentiles](#percentiles)|[文字列リテラル](#string-literals)
-|[日付と時刻の式](#date-and-time-expressions)|[join 演算子](#join-operator)|[project 演算子](#project-operator)|[strlen](#strlen)
-|[日付と時刻のリテラル](#date-and-time-literals)|[JSON パス式](#json-path-expressions)|[project-away 演算子](#project-away-operator)|[substring](#substring)
+|[abs](#abs)|[dayofweek](#dayofweek)|[isnull](#isnull)|[rand](#rand)|[summarize 演算子](#summarize-operator)
+|[ago](#ago)|[dayofyear](#dayofyear)|[join 演算子](#join-operator)|[range](#range)|[take 演算子](#take-operator)
+|[任意](#any)|[dcount](#dcount)|[JSON パス式](#json-path-expressions)|[range 演算子](#range-operator)|[todatetime](#todatetime)
+|[argmax](#argmax)|[dcountif](#dcountif)|[let 句](#let-clause)|[reduce 演算子](#reduce-operator)|[todouble](#todouble)
+|[argmin](#argmin)|[let 句の動的オブジェクト](#dynamic-objects-in-let-clauses)|[limit 演算子](#limit-operator)|[render ディレクティブ](#render-directive)|[todynamic](#todynamic)
+|[算術演算子](#arithmetic-operators)|[endofday](#endofday)|[log](#log)|[replace](#replace)|[toint](#toint)
+|[配列とオブジェクトのリテラル](#array-and-object-literals)|[endofmonth](#endofmonth)|[makelist](#makelist)|[restrict 句](#restrict-clause)|[tolong](#tolong)
+|[arraylength](#arraylength)|[endofweek](#endofweek)|[makeset](#makeset)|[スカラーの比較](#scalar-comparisons)|[tolower](#tolower)
+|[avg](#avg)|[endofyear](#endofyear)|[max](#max)|[sort 演算子](#sort-operator)|[top 演算子](#top-operator)
+|[bin](#bin)|[exp](#exp)|[min](#min)|[split](#split)|[top-nested op](#top-nested-operator)
+|[ブール型リテラル](#boolean-literals)|[extend 演算子](#extend-operator)|[mvexpand 演算子](#mvexpand-operator)|[sqrt](#sqrt)|[toscalar](#toscalar)
+|[ブール演算子](#boolean-operators)|[extract](#extract)|[notempty](#notempty)|[startofday](#startofday)|[totimespan](#totimespan)
+|[buildschema](#buildschema)|[extractjson](#extractjson)|[notnull](#notnull)|[startofmonth](#startofmonth)|[toupper](#toupper)
+|[キャスト](#casts)|[floor](#floor)|[now](#now)|[startofweek](#startofweek)|[treepath](#treepath)
+|[count](#count)|[getmonth](#getmonth)|[数値リテラル](#numeric-literals)|[startofyear](#startofyear)|[union 演算子](#union-operator)
+|[count 演算子](#count-operator)|[gettype](#gettype)|[難読化された文字列リテラル](#obfuscated-string-literals)|[stdev](#stdev)|[variance](#variance)
+|[countif](#countif)|[getyear](#getyear)|[parse 演算子](#parse-operator)|[strcat](#strcat)|[weekofyear](#weekofyear)
+|[countof](#countof)|[hash](#hash)|[parsejson](#parsejson)|[文字列の比較](#string-comparisons)|[where 演算子](#where-operator)
+|[日付と時刻の式](#date-and-time-expressions)|[iff](#iff)|[percentile](#percentile)|[文字列リテラル](#string-literals)
+|[日付と時刻のリテラル](#date-and-time-literals)|[isempty](#isempty)|[percentiles](#percentiles)|[strlen](#strlen)
+|[datepart](#datepart)|[isnotempty](#isnotempty)|[project 演算子](#project-operator)|[substring](#substring)
+|[dayofmonth](#dayofmonth)|[isnotnull](#isnotnull)|[project-away 演算子](#project-away-operator)|[sum](#sum)
+
 
 
 ## クエリおよび演算子
@@ -625,7 +628,7 @@ Traces
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-各間隔 ([0,10.0]、[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
+各間隔 ([0,10.0]、 [10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
 
 
 **構文**
@@ -685,6 +688,26 @@ Traces
 **ヒント**
 
 `top 5 by name` は表面的には `sort by name | take 5` と同等です。しかし、こちらの方が高速で、常に並べ替えられた結果を返します。`take` にはこのような保証がありません。
+
+### top-nested 演算子
+
+    requests 
+    | top-nested 5 of name by count()  
+    , top-nested 3 of performanceBucket by count() 
+    , top-nested 3 of client_CountryOrRegion by count()
+    | render barchart 
+
+各レベルが前のレベルからのドリルダウンである、階層型の結果を生成します。これは、"上位 5 件のリクエストは何か。そのそれぞれについて、上位 3 つのパフォーマンス バケットはどのようなものか。さらにそのそれぞれについて、リクエストの出された上位 3 つの国はどこか" というような質問に答える場合に便利です。
+
+**構文**
+
+   T | top-nested N of COLUMN by AGGREGATION [, ...]
+
+**引数**
+
+* N:int - 返す行または次のレベルに渡す行の数。3 レベルのクエリ (N が 5、3、3) では、行の合計数は 45 になります。
+* COLUMN - 集計のためにグループ化する列。 
+* AGGREGATION - 行の各グループに適用する[集計関数](#aggregations)。これらの集計の結果により、表示される上位のグループが決まります。
 
 
 ### union 演算子
@@ -968,7 +991,7 @@ traces
 
 グループ内にある*式*の個別の値の概数を返します (個別の値のリストを表示するには、[`makeset`](#makeset) を使用します)。
 
-*精度* を指定した場合は、速度と精度のバランスが制御されます。
+*Accuracy* を指定した場合は、速度と精度のバランスが制御されます。
 
  * `0` = 精度は最も低くなりますが、計算速度は最高になります。
  * `1` = 既定値です。精度と計算時間のバランスをとります。エラー率は約 0.8% です。
@@ -981,6 +1004,26 @@ traces
       by client_CountryOrRegion
 
 ![](./media/app-insights-analytics-reference/dcount.png)
+
+
+### dcountif
+
+    dcountif( Expression, Predicate [ ,  Accuracy ])
+
+*Predicate* が true であるグループ内にある行の*式*の個別の値の概数を返します (個別の値のリストを表示するには、[`makeset`](#makeset) を使用します)。
+
+*Accuracy* を指定した場合は、速度と精度のバランスが制御されます。
+
+ * `0` = 精度は最も低くなりますが、計算速度は最高になります。
+ * `1` = 既定値です。精度と計算時間のバランスをとります。エラー率は約 0.8% です。
+ * `2` = 精度は最も高くなりますが、計算速度は最低になります。エラー率は約 0.4% です。
+
+**例**
+
+    pageViews 
+    | summarize cities=dcountif(client_City, client_City startswith "St") 
+      by client_CountryOrRegion
+
 
 ### makelist
 
@@ -1096,7 +1139,7 @@ traces
 
 ## スカラー
 
-[キャスト](#casts) | [比較](#scalar-comparisons) <br/> [gettype](#gettype) | [hash](#hash) | [iff](#iff)| [isnull](#isnull) | [isnotnull](#isnotnull) | [notnull](#notnull)
+[キャスト](#casts) | [比較](#scalar-comparisons) <br/> [gettype](#gettype) | [hash](#hash) | [iff](#iff) | [isnull](#isnull) | [isnotnull](#isnotnull) | [notnull](#notnull) | [toscalar](#toscalar)
 
 サポートされている型は次のとおりです。
 
@@ -1126,6 +1169,11 @@ traces
     tostring(42.5)
     todynamic("{a:10, b:20}")
 
+文字列を特定の型に変換できるかどうかを調べます。
+
+    iff(notnull(todouble(customDimensions.myValue)),
+       ..., ...)
+
 ### スカラーの比較
 
 ||
@@ -1154,7 +1202,7 @@ traces
 ---|---
 `gettype("a")` |`"string" `
 `gettype(111)` |`"long" `
-`gettype(1==1)` |`"int8" (*) `
+`gettype(1==1)` |`"int8"`
 `gettype(now())` |`"datetime" `
 `gettype(1s)` |`"timespan" `
 `gettype(parsejson('1'))` |`"int" `
@@ -1164,8 +1212,7 @@ traces
 `gettype(123.45)` |`"real" `
 `gettype(guid(12e8b78d-55b4-46ae-b068-26d7a0080254))` |`"guid"` 
 `gettype(parsejson(''))` |`"null"`
-
-
+`gettype(1.2)==real` | `true`
 
 ### hash
 
@@ -1253,6 +1300,30 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
     T | summarize count(PossiblyNull)
 
+### toscalar
+
+クエリまたは式を評価し、結果を単一の値として返します。この関数は段階的な計算に便利です。たとえば、イベントの総数を計算した後で、それをベースラインとして使用する場合などです。
+
+**構文**
+
+    toscalar(query)
+    toscalar(scalar)
+
+**戻り値**
+
+評価された引数。引数がテーブルの場合は、最初の行の最初の列を返します(引数に列と行がそれぞれ 1 つだけ含まれるように調整することをお勧めします)。
+
+**例**
+
+```AIQL
+
+    // Get the count of requests 5 days ago:
+    let baseline = toscalar(requests  
+        | where floor(timestamp, 1d) == floor(ago(5d),1d) | count);
+    // List the counts relative to that baseline:
+    requests | summarize daycount = count() by floor(timestamp, 1d)  
+    | extend relative = daycount - baseline
+```
 
 
 
@@ -1274,7 +1345,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 ## 数値
 
-[bin](#bin) | [floor](#floor) | [rand](#rand) | [range](#range) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
+[abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) |[log](#log) | [rand](#rand) | [range](#range) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
 
 ### 数値リテラル
 
@@ -1288,22 +1359,25 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 || |
 |---|-------------|
 | + | [追加] のいずれかを |
-| - | 減算 | 
-| * | 乗算 | 
-| / | 除算 | 
-| % | 剰余 | 
-|| 
-|`<` |小さい 
-|`<=`|小さいまたは等しい 
-|`>` |大きい 
-|`>=`|大きいまたは等しい 
-|`<>`|等しくない 
-|`!=`|等しくない
+| - | 減算 | | * | 乗算 | | / | 除算 | | % | 剰余 | || |`<` |小さい |`<=`|小さいか等しい |`>` |大きい |`>=`|大きいか等しい |`<>`|等しくない |`!=`|等しくない
 
 
+### abs
 
+**構文**
 
-### bin
+	abs(x)
+
+**引数**
+
+* x - 整数、実数、または期間
+
+**戻り値**
+
+    iff(x>0, x, -x)
+
+<a name="bin"></a><a name="floor"></a>
+### bin、floor
 
 値を切り捨てて、指定された bin サイズの倍数である整数にします。[`summarize by`](#summarize-operator) クエリでよく使用されます。値が分散している場合に、特定の値ごとの小さなセットにグループ化されます。
 
@@ -1312,6 +1386,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 **構文**
 
      bin(value, roundTo)
+     floor(value, roundTo)
 
 **引数**
 
@@ -1339,6 +1414,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
     T | summarize Hits=count() by bin(Duration, 1s)
 ```
+
 ### exp
 
     exp(v)   // e raised to the power v
@@ -1421,7 +1497,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 ## 日付と時刻
 
 
-[ago](#ago) | [dayofweek](#dayofweek) | [getmonth](#getmonth)| [getyear](#getyear) | [now](#now) | [startofmonth](#startofmonth) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan)
+[ago](#ago) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) |[datepart](#datepart) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth)| [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
 ### 日付と時刻のリテラル
 
@@ -1492,6 +1568,39 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
     T | where timestamp > ago(1h)
 ```
 
+### datepart
+
+    datepart("Day", datetime(2015-12-14)) == 14
+
+日付の指定された部分を整数として抽出します。
+
+**構文**
+
+    datepart(part, datetime)
+
+**引数**
+
+* `part:String` - {"Year", "Month", "Day", "Hour", "Minute", "Second", "Millisecond", "Microsecond", "Nanosecond"}
+* `datetime`
+
+**戻り値**
+
+指定された部分を表す長整数型の値。
+
+
+### dayofmonth
+
+    dayofmonth(datetime("2016-05-15")) == 15 
+
+月初から数えた日の序数。
+
+**構文**
+
+    dayofmonth(a_date)
+
+**引数**
+
+* `a_date`: `datetime`。
 
 
 ### dayofweek
@@ -1518,6 +1627,32 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 dayofweek(1947-11-29 10:00:05)  // time(6.00:00:00), indicating Saturday
 dayofweek(1970-05-11)           // time(1.00:00:00), indicating Monday
 ```
+
+### dayofyear
+
+    dayofyear(datetime("2016-05-31")) == 152 
+    dayofyear(datetime("2016-01-01")) == 1 
+
+年初から数えた日の序数。
+
+**構文**
+
+    dayofyear(a_date)
+
+**引数**
+
+* `a_date`: `datetime`。
+
+<a name="endofday"></a><a name="endofweek"></a><a name="endofmonth"></a><a name="endofyear"></a>
+### endofday、endofweek、endofmonth、endofyear
+
+    dt = datetime("2016-05-23 12:34")
+
+    endofday(dt) == 2016-05-23T23:59:59.999
+    endofweek(dt) == 2016-05-28T23:59:59.999 // Saturday
+    endofmonth(dt) == 2016-05-31T23:59:59.999 
+    endofyear(dt) == 2016-12-31T23:59:59.999 
+
 
 ### getmonth
 
@@ -1568,17 +1703,16 @@ datetime から年を取得します。
 T | where ... | extend Elapsed=now() - timestamp
 ```
 
-### startofmonth
+<a name="startofday"></a><a name="startofweek"></a><a name="startofmonth"></a><a name="startofyear"></a>
+### startofday、startofweek、startofmonth、startofyear
 
-    startofmonth(date)
+    date=datetime("2016-05-23 12:34:56")
 
-該当月の最初の日付。
+    startofday(date) == datetime("2016-05-23")
+    startofweek(date) == datetime("2016-05-22") // Sunday
+    startofmonth(date) == datetime("2016-05-01")
+    startofyear(date) == datetime("2016-01-01")
 
-### startofyear
-
-    startofyear(date)
-
-該当年の最初の日付。
 
 
 ### todatetime
@@ -1587,11 +1721,17 @@ T | where ... | extend Elapsed=now() - timestamp
 
      todatetime("2016-03-28")
      todatetime("03/28/2016")
-     todatetime("2016-03-28 14:34")
+     todatetime("2016-03-28 14:34:00")
      todatetime("03/28/2016 2:34pm")
      todatetime("2016-03-28T14:34.5Z")
-     todatetime(a[0])  // cast a dynamic type
-     todatetime(b.c)   // cast a dynamic type
+     todatetime(a[0]) 
+     todatetime(b.c) 
+
+文字列が有効な日付であるかどうかを確認します。
+
+     iff(notnull(todatetime(customDimensions.myDate)),
+         ..., ...)
+
 
 ### totimespan
 
@@ -1600,6 +1740,14 @@ T | where ... | extend Elapsed=now() - timestamp
     totimespan("21d")
     totimespan("21h")
     totimespan(request.duration)
+
+### weekofyear
+
+    weekofyear(datetime("2016-05-14")) == 21
+    weekofyear(datetime("2016-01-03")) == 1
+    weekofyear(datetime("2016-12-31")) == 53
+
+整数の結果は、ISO 8601 標準での週数を表します。週の最初の曜日は日曜日で、年の最初の週はその年の最初の木曜日を含む週です(したがって、年の最後の数日に次の年の第 1 週の数日が含まれるか、年の最初の数日に前の年の第 52 週と第 53 週の数日が含まれる可能性があります)。
 
 
 ## String
@@ -2233,4 +2381,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

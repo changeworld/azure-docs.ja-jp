@@ -92,11 +92,11 @@ IP アドレス *10.0.0.7* が *TestVnet* という VNet で使用可能かど�
 
 ## 次のステップ
 
-[予約済み IP](virtual-networks-reserved-public-ip)
+[予約済み IP](virtual-networks-reserved-public-ip.md)
 
-[インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip)
+[インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md)
 
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0525_2016-->

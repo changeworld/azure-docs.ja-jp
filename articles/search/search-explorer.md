@@ -12,7 +12,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/10/2016"
+    ms.date="05/31/2016"
     ms.author="ashmaka"
 />
 # Azure ポータルを使用した Azure Search インデックスの照会
@@ -28,7 +28,7 @@
 
 ## I.Azure Search ブレードに移動する
 1. [Azure ポータル](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)の左側のメニューで [すべてのリソース] をクリックします。
-2. Azure Search サービスを選択します。
+2. Azure Search サービスを選択する
 
 ## II.検索するインデックスを選択する
 1. [インデックス] タイルから、検索するインデックスを選択します。
@@ -47,4 +47,4 @@
 
 ![](./media/search-explorer/search-bar.png)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0601_2016-->

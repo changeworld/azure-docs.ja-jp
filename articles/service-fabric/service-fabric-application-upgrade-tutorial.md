@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/13/2016"
+   ms.date="05/18/2016"
    ms.author="subramar"/>
 
 
@@ -87,4 +87,4 @@ VisualObjects ソリューション内の VisualObjects.ActorService プロジ�
 [image3]: media/service-fabric-application-upgrade-tutorial/upgrade5.png
 [image4]: media/service-fabric-application-upgrade-tutorial/upgrade6.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -184,4 +184,4 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!-----HONumber=AcomDC_0511_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="05/19/2016"
 	ms.author="andkjell;markvi"/>
 
 # Azure AD Connect 同期サービスの機能
@@ -33,23 +33,23 @@ Azure AD ディレクトリ内の構成を確認するには、`Get-MsolDirSyncF
 
 以下の設定は、`Set-MsolDirSyncFeature` で設定できます。
 
-| DirSyncFeature | コメント |
-| --- | --- |
-| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) | エクスポート時に、別のオブジェクトとの重複がある場合、オブジェクト全体が失敗するのではなく、属性を検疫できます。 |
-| [EnableSoftMatchOnUpn](#userprincipalname-soft-match) | プライマリ SMTP アドレスに加えて userPrincipalName でオブジェクトを結合できます。 |
-| [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) | 同期エンジンに管理対象ユーザー/ライセンス ユーザー (非フェデレーション ユーザー) の userPrincipalName 属性の更新を許可します。 |
+DirSyncFeature | コメント
+--- | ---
+ [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) | エクスポート時に、別のオブジェクトとの重複がある場合、オブジェクト全体が失敗するのではなく、属性を検疫できます。
+[EnableSoftMatchOnUpn](#userprincipalname-soft-match) | プライマリ SMTP アドレスに加えて userPrincipalName でオブジェクトを結合できます。
+[SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) | 同期エンジンに管理対象ユーザー/ライセンス ユーザー (非フェデレーション ユーザー) の userPrincipalName 属性の更新を許可します。
 
 いったん機能を有効にすると、後でもう一度無効にすることはできません。
 
 以下の設定は、Azure AD Connect によって構成されており、`Set-MsolDirSyncFeature` で変更することはできません。
 
-| DirSyncFeature | コメント |
-| --- | --- |
-| DeviceWriteback | [Azure AD Connect: デバイスの書き戻しの有効化](active-directory-aadconnect-feature-device-writeback.md) |
-| DirectoryExtensions | [Azure AD Connect 同期: ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md) |
-| PasswordSync | [Azure AD Connect Sync によるパスワード同期の導入](active-directory-aadconnectsync-implement-password-synchronization.md) |
-| UnifiedGroupWriteback | [プレビュー: グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback) |
-| UserWriteback | 現在、サポートされていません。 |
+DirSyncFeature | コメント
+--- | ---
+DeviceWriteback | [Azure AD Connect: デバイスの書き戻しの有効化](active-directory-aadconnect-feature-device-writeback.md)
+DirectoryExtensions | [Azure AD Connect 同期: ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)
+PasswordSync | [Azure AD Connect Sync によるパスワード同期の導入](active-directory-aadconnectsync-implement-password-synchronization.md)
+UnifiedGroupWriteback | [プレビュー: グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback)
+UserWriteback | 現在、サポートされていません。
 
 ## 重複属性の回復性
 UPN や proxyAddress が重複している場合、そのオブジェクトのプロビジョニングが失敗する代わりに、重複している属性を "検疫" し、必要に応じて一時的な値を割り当てます。競合が解決されると、一時的な UPN は適切な値に自動的に修正されます。この動作は、UPN と proxyAddress に個別に有効にできます。詳細については、「[ID 同期と重複属性の回復性](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)」を参照してください。
@@ -100,4 +100,4 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 
 - [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -3,8 +3,8 @@
 	description="Azure Mobile Apps 向け Apache Cordova プラグインの使用方法"
 	services="app-service\mobile"
 	documentationCenter="javascript"
-	authors="adrianhall"
-	manager="dwrede"
+	authors="ggailey777"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="03/07/2016"
-	ms.author="adrianha"/>
+	ms.date="05/23/2016"
+	ms.author="ggailey"/>
 
 # Azure Mobile Apps 向け Apache Cordova クライアント ライブラリの使用方法
 
@@ -137,4 +137,4 @@ pushHandler.on('error', function (error) {
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [query オブジェクト]: https://msdn.microsoft.com/ja-JP/library/azure/jj613353.aspx
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -20,22 +20,22 @@
 
 # Microsoft Azure Machine Learning Studio の機械学習アルゴリズム チート シート
 
-**Microsoft Azure Machine Learning のアルゴリズム チート シート**を使用すると、Microsoft Azure Machine Learning のアルゴリズム ライブラリから、予測分析ソリューションに適した機械学習アルゴリズムを選択できます。
+**Microsoft Azure Machine Learning チート シート**を使用すると、予測分析モデルに最適なアルゴリズムを選択できます。
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) には、予測分析ソリューションの構築に使用できる多くの機械学習アルゴリズムが用意されています。これらのアルゴリズムは、一般的な機械学習のカテゴリ (***回帰***、***分類***、***クラスタリング***、***異常検出***) に分類され、それぞれが別の種類の機械学習の問題に対応するように設計されています。
+[Azure Machine Learning Studio](https://studio.azureml.net/) には、***regression***、***classification***、***clustering***、***anomaly detection*** ファミリの多様なアルゴリズムのライブラリがあります。各アルゴリズムは、異なる種類の機械学習の問題に対処するために設計されています。
 
-> [AZURE.NOTE] このチート シートを使用する詳細なガイドについては、「[Microsoft Azure Machine Learning のアルゴリズムを選択する方法](machine-learning-algorithm-choice.md)」をご覧ください。
 
-## 機械学習アルゴリズム チート シートのダウンロード
+## ダウンロード: 機械学習アルゴリズム チート シート
 
-Machine Learning アルゴリズム チート シートをダウンロードし、ソリューションに適した機械学習アルゴリズムの選択方法を確認するのに役立てます。チート シートをタブロイド サイズ (11 x 17 インチ) で印刷し、手元に置いておくことができます。
-
-**チート シートをダウンロードする: [Microsoft Azure Machine Learning Algorithm Cheat Sheet](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
+**チート シートをダウンロードする: [Machine Learning アルゴリズム チート シート (11 x 17 インチ)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
 
 ![Machine Learning Algorithm Cheat Sheet : Machine Learning アルゴリズムの選択方法][cheat-sheet]
 
 [cheat-sheet]: ./media/machine-learning-algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
+Machine Learning アルゴリズム チート シートをダウンロードし、タブロイド サイズで印刷すると、手元に保管しやすくなり、アルゴリズムを選択するときに役立ちます。
+
+> [AZURE.NOTE] このチート シートを使用する詳細なガイドについては、「[Microsoft Azure Machine Learning のアルゴリズムを選択する方法](machine-learning-algorithm-choice.md)」をご覧ください。
 
 ## アルゴリズムに関するその他のヘルプ
 
@@ -79,7 +79,7 @@ Machine Learning アルゴリズム チート シートをダウンロードし�
 <a href="http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet.pdf">
 <img src="C:\Users\garye\azure-content-pr\articles\media\machine-learning-algorithm-cheat-sheet\cheat-sheet-small.png">
 </a>
---> 
+-->
 
 <!-- Module References -->
 [a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx
@@ -87,4 +87,4 @@ Machine Learning アルゴリズム チート シートをダウンロードし�
 [k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
 [one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0525_2016-->

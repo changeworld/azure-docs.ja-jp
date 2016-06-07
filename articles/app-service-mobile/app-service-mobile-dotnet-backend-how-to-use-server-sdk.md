@@ -180,6 +180,14 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 
 Azure SQL Database のデータへのアクセスに Entity Framework を使用するテーブル コントローラーの例については、Azure ポータル からダウンロードしたクイックスタート サーバー プロジェクトの **TodoItemController** クラスを参照してください。
 
+### 方法: テーブルのページング サイズを調整する
+
+既定では、Azure Mobile Apps は、要求ごとに 50 個のレコードを返します。これにより、クライアントが長期間 UI スレッドまたはサーバーを占有することがなくなるため、優れたユーザー エクスペリエンスが保証されます。テーブルのページング サイズの変更を有効にするには、サーバー側の "許可されているクエリ サイズ" とクライアント側のページ サイズを大きくする必要があります。ページング サイズを大きくするには、次の行を使用してテーブル コントローラーを調整します。
+
+    [EnableQuery(PageSize = 500)]
+
+PageSize が、クライアントから要求されるサイズ以上になるようにしてください。クライアントのページ サイズを変更する方法の詳細については、特定のクライアントのハウツー ドキュメントを参照してください。
+
 ## 方法: カスタム API コントローラーを定義する
 
 カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。[MobileAppController] 属性を使用して、モバイル固有の API コント ローラーを登録できます。この属性は、ルートを登録し、Mobile Apps JSON シリアライザーも設定します。
@@ -325,10 +333,6 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 
 **GetAppServiceIdentityAsync** 拡張メソッドを動作させるには、`System.Security.Principal` の using ステートメントを追加する必要があります。
 
-###<a name="authorize"></a>方法: 承認されたユーザーに対するデータ アクセスを制限する
-
-多くの場合、特定の認証されたユーザーに返されるデータを制限する必要があります。このようなデータ パーティション分割は、テーブルに userId 列を追加し、データの挿入時にユーザーの SID を格納して行います。
-
 ## 方法: サーバー プロジェクトにプロジェクトを追加する
 
 **MobileAppConfiguration** オブジェクトを拡張し、Notification Hubs クライアントを作成すると、サーバー プロジェクトにプッシュ通知を追加することができます。[Microsoft.Azure.Mobile.Server.Quickstart] パッケージをインストールし、**UseDefaultConfiguration** 拡張メソッドを呼び出している場合は、手順 3 に進むことができます。
@@ -461,4 +465,4 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

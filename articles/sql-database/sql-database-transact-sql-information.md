@@ -49,7 +49,7 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 - ユーザー: [CREATE](https://msdn.microsoft.com/library/ms173463.aspx)/[ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)
 - ビュー: [CREATE](https://msdn.microsoft.com/library/ms187956.aspx)/[ALTER VIEW](https://msdn.microsoft.com/library/ms173846.aspx)
 
-## SQL Database で部分的にサポートされる機能
+## SQL Database でサポートされていない機能
 
 - システム オブジェクトの照合順序
 - 関連接続: エンドポイント ステートメント、ORIGINAL\_DB\_NAMEWindows 認証はログインまたは包含データベース ユーザーには利用できません。

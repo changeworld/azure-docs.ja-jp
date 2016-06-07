@@ -5,7 +5,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -14,19 +14,18 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="csharp"
    ms.workload="data-management"
-   ms.date="03/24/2016"
+   ms.date="05/26/2016"
    ms.author="sstein"/>
 
-# SQL Database を試す: C&#x23; を使用して SQL Database Library for .NET で SQL Database を作成する
+# SQL Database を試す: C# を使用して SQL Database Library for .NET で SQL Database を作成する
 
-**1 つのデータベース**
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-get-started.md)
 - [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
-C# コマンドを使用して、[Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) で Azure SQL Database を作成する方法について説明します。SQL と C# で 1 つのデータベースを作成して、SQL Database を試してみます。エラスティック データベース プールを作成するには、「[Azure ポータルで SQL Database のスケーラブルなエラスティック データベース プールを作成する](sql-database-elastic-pool-create-portal.md)」を参照してください。各コード スニペットはわかりやすさを重視し、細かく分けて説明しています。また、サンプルのコンソール アプリケーションのすべてのコマンドは、この記事の下部にまとめられています。
+C# コマンドを使用して、[Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) で Azure SQL Database を作成する方法について説明します。SQL と C# で 1 つのデータベースを作成して、SQL Database を試してみます。エラスティック データベース プールを作成するには、[エラスティック データベース プールの作成](sql-database-elastic-pool-create-portal.md)に関する記事を参照してください。各コード スニペットはわかりやすさを重視し、細かく分けて説明しています。また、サンプルのコンソール アプリケーションのすべてのコマンドは、この記事の下部にまとめられています。
 
 Azure SQL Database Library for .NET は、[リソース マネージャー ベースの SQL Database REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) をラップする [Azure リソース マネージャー](../resource-group-overview.md) ベースの API を提供します。このクライアント ライブラリは、リソース マネージャー ベースのクライアント ライブラリの一般的なパターンに従います。リソース マネージャーでは、リソース グループ、および [Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (AAD) を使用した認証が必要です。
 
@@ -47,7 +46,7 @@ Azure SQL Database Library for .NET は、[リソース マネージャー ベ�
 C# を使用して SQL データベースを設定するには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリック) で次のパッケージをインストールし、必要な管理ライブラリを入手します。
 
     Install-Package Microsoft.Azure.Management.Sql –Pre
-    Install-Package Microsoft.Azure.Management.Resources –Pre
+    Install-Package Microsoft.Azure.Management.ResourceManager –Pre
     Install-Package Microsoft.Azure.Common.Authentication –Pre
 
 
@@ -80,7 +79,7 @@ C# を使用して SQL データベースを設定するには、Visual Studio �
 
     ![SQL C# アプリケーションのリダイレクト URL を追加します。][8]
 
-7. アプリの作成を完了し、**[構成]** をクリックして、**[クライアント ID]** をコピーします (クライアント ID は、後でコードで必要になります)。
+7. アプリの作成を完了し、**[構成]** をクリックして、**[クライアント ID]** をコピーします (クライアント ID は、後からコードで必要になります)。
 
     ![SQL C# アプリケーションのクライアント ID を取得します。][9]
 
@@ -268,8 +267,8 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
 
     using Microsoft.Azure;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.Azure.Management.Sql;
     using Microsoft.Azure.Management.Sql.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -457,4 +456,4 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Logic Apps で SMTP API を追加する | Microsoft Azure"
-	description="SMTP API と REST API パラメーターの概要"
-	services=""
-	documentationCenter="" 
-	authors="MandiOhlinger"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="ロジック アプリに SMTP コネクタを追加する | Microsoft Azure"
+    description="SMTP コネクタと REST API パラメーターの概要"
+    services=""
+    documentationCenter="" 
+    authors="MandiOhlinger"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/16/2016"
+   ms.date="05/19/2016"
    ms.author="mandia"/>
 
-# SMTP API を使ってみる
-SMTP サーバーに接続して、電子メールを送信します。SMTP API は次のツールから使用できます。
+# SMTP コネクタの使用
+SMTP サーバーに接続して、電子メールを送信します。SMTP コネクタは、次のツールから使用できます。
 
 - Logic Apps (このトピックで説明)
 - PowerApps (詳細な一覧については、[PowerApps 接続リスト](https://powerapps.microsoft.com/tutorials/connections-list/)を参照してください)
@@ -33,22 +33,17 @@ SMTP では次の操作を実行できます。
 ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
 
 ## トリガーとアクション
-SMTP API で利用できるアクションは次のとおりです。トリガーはありません。
+SMTP コネクタで利用できるアクションは、次のとおりです。トリガーはありません。
 
 |トリガー | アクション|
 |--- | ---|
 |なし | 電子メールの送信|
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## SMTP への接続を作成する
-この API をロジック アプリに追加するときに、次の値を入力します。
 
-|プロパティ| 必須|説明|
-| ---|---|---|
-| SMTP Server Name | はい | 完全修飾ドメイン (FQDN) または SMTP サーバーの IP アドレスを入力します。|
-| ユーザー名 |はい |ユーザー名を入力して、SMTP サーバーに接続します。 |
-| パスワード | あり|ユーザー名のパスワードを入力します。 |
+>[AZURE.INCLUDE [SMTP 接続を作成する手順](../../includes/connectors-create-api-smtp.md)]
 
 接続を作成したら、To、CC の値など、SMTP プロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
@@ -95,4 +90,4 @@ SMTP API で利用できるアクションは次のとおりです。トリガ�
 ## 次のステップ
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

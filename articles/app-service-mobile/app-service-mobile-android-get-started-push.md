@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="05/24/2016"
 	ms.author="yuaxu;ricksal"/>
 
 # プッシュ通知を Android アプリに追加する
@@ -80,4 +80,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 [Google Play Services SDK のセットアップに関するページ]: https://developers.google.com/android/guides/setup
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

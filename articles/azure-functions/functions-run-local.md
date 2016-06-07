@@ -142,6 +142,8 @@ WebJobs.SDK プロジェクトに貢献することが目的の場合は、条�
 		Host.Functions.TimerTrigger-CSharp
 		Job host started
 
+	WebHost プロジェクトを開始すると、対応するベース URL で提供するコンテンツがそのプロジェクトには存在しないため、空のブラウザー ページが表示されます。HTTP トリガー関数に使用する URL については、[API キー](#apikeys)のセクションを参照してください。
+
 ## 関数の出力の確認
 
 関数呼び出しとそのログ出力を確認するには、関数アプリのダッシュボードに移動します。
@@ -199,6 +201,10 @@ API キーは、WebJobs.Script.WebHost プロジェクトの [App\_Data/secrets]
 }
 ```
 
+## NuGet パッケージの参照を関数内で使用する  
+
+現在 NuGet の参照に適用される処理の形式上、必ずホストの実行中に *project.json* ファイルに "触れる" ようにしてください。ホストはファイルの変更を監視し、変更が検出されたときに復元を開始します。また、*NuGet.exe* (3.3.0 を推奨) は、実際のパスで指定するか、または *NuGet.exe* へのパスが AzureWebJobs\_NuGetPath という名前の環境変数に設定されている必要があります。
+
 ## トラブルシューティング
 
 Visual Studio の実行中に行われた環境変数の変更は自動的に反映されません。Visual Studio の起動後に環境変数を追加または変更した場合は、最新の値が反映されるように、Visual Studio をシャットダウンしてから再起動してください。
@@ -214,6 +220,6 @@ Visual Studio の実行中に行われた環境変数の変更は自動的に反
 * [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)
 * [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
-* [Azure Functions のトリガーとバインド](functions-triggers-bindings.md)に関する記事
+* [Azure Functions のトリガーとバインドに関する記事](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

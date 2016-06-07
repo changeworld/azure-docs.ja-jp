@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/11/2016"
+   ms.date="05/24/2016"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager MMC スナップインのデプロイ
@@ -205,7 +205,7 @@ StorSimple Snapshot Manager データベースのコピーを作成して保存�
 
         ![Stop the StorSimple Manager service](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
 
-2. C:\ProgramData\Microsoft\StorSimple\BACatalog を参照します。
+2. C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
 
     >[AZURE.NOTE] ProgramData は隠しフォルダーです。
 
@@ -237,7 +237,7 @@ StorSimple Snapshot Manager を再インストールするには、「[StorSimpl
 
     4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスの停止]** をクリックします。
 
-2. C:\ProgramData\Microsoft\StorSimple\BACatalog を参照します。
+2. C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
 
      >[AZURE.NOTE] ProgramData は隠しフォルダーです。
 
@@ -259,4 +259,4 @@ StorSimple Snapshot Manager を再インストールするには、「[StorSimpl
 
 - StorSimple Snapshot Manager の使用方法については、「[StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

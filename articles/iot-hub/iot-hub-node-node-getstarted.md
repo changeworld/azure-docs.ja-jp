@@ -248,7 +248,7 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 2. コマンド プロンプトで、**simulateddevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device-amqp** パッケージをインストールします。
 
     ```
-    npm install azure-iot-device-amqp --save
+    npm install azure-iot-device azure-iot-device-amqp --save
     ```
 
 3. テキスト エディターを使用して、**simulateddevice** フォルダーに新しい **SimulatedDevice.js** ファイルを作成します。
@@ -367,4 +367,4 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

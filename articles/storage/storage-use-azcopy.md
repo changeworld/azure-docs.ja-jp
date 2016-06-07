@@ -374,7 +374,7 @@ BLOB コンテナーに、Azure Table を表す JSON ファイルと、それに
 
 ### 宛先に存在しないデータのみをコピーする
 
-`/XO` パラメーターを指定すると古いソース リソースを、`/XN` パラメーターを指定すると新しいソース リソースをコピー対象から除外できます。宛先に存在しないソース リソースのみをコピーする場合は、AzCopy コマンドに両方のパラメーターを指定します。
+`/XO` パラメーターを指定すると古いソース リソースを、`/XN` パラメーターを指定すると新しいソース リソースをコピー対象から除外できます。ソースまたは宛先がテーブルの場合、この操作はサポートされていません。宛先に存在しないソース リソースのみをコピーする場合は、AzCopy コマンドに両方のパラメーターを指定します。
 
 	/Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:<sourcekey> /S /XO /XN
 
@@ -864,4 +864,4 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 - [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

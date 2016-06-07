@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="04/26/2016"
 	ms.author="drewm"/>
 
 # Azure での Linux 仮想マシンに対する計画的なメンテナンス
@@ -35,4 +35,4 @@ Microsoft Azure は、世界各地で定期的に更新を行い、仮想マシ�
 
 [AZURE.INCLUDE [virtual-machines-common-planned-maintenance](../../includes/virtual-machines-common-planned-maintenance.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

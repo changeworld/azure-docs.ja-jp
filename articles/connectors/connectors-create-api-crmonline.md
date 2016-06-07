@@ -1,10 +1,10 @@
 <properties
-pageTitle="PowerApps Enterprise またはロジック アプリに Dynamic CRM Online API を追加する | Microsoft Azure"
-description="CRM Online API と REST API パラメーターの概要"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="PowerApps Enterprise またはロジック アプリに Dynamic CRM Online コネクタを追加する | Microsoft Azure"
+description="CRM Online コネクタと REST API パラメーターの概要"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor="" tags="connectors" />
 
 <tags
@@ -13,13 +13,13 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="03/16/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# CRM API の概要
-Dynamics CRM Online に接続して、新しいレコードの作成、項目の更新などを行います。CRM Online API は、以下のツールから使用できます。
+# CRM コネクタの使用
+Dynamics CRM Online に接続して、新しいレコードの作成、項目の更新などを行います。CRM Online コネクタは、次のツールから使用できます。
 
-- ロジック アプリ
+- Logic Apps
 - PowerApps
 
 > [AZURE.SELECTOR]
@@ -32,22 +32,22 @@ CRM Online では、次の操作を実行できます。
 - レコードの削除、エンティティの取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、CRM で項目を更新するときに、Office 365 を使用して電子メールを送信できます。
 
 
-PowerApps Enterprise に API を追加する方法については、「[Microsoft 管理の API または IT 管理の API を登録する](../power-apps/powerapps-register-from-available-apis.md)」を参照してください。
+PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
 
 ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリを作成します。](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 ## トリガーとアクション
-CRM API には、次のアクションがあります。トリガーはありません。
+CRM コネクタには、次のアクションがあります。トリガーはありません。
 
 | トリガー | アクション|
 | --- | --- |
 |なし| <ul><li>新しいレコードを作成する</li><li>レコードを取得する</li><li>レコードを削除する</li><li>レコードを取得する</li><li>エンティティを取得する</li><li>項目を更新する</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
 ## CRM Online への接続を作成する
 
-この API をロジック アプリに追加する場合、Dynamics CRM Online にサインインする必要があります。次の手順に従って、CRM Online にサインインし、ロジック アプリの**接続**の構成を完了します。
+このコネクタをロジック アプリに追加する場合、Dynamics CRM Online にサインインする必要があります。次の手順に従って、CRM Online にサインインし、ロジック アプリの**接続**の構成を完了します。
 
 1. ロジック アプリで、**[アクションの追加]**を選択します。 ![CRM Online の構成][13]
 4. 検索ボックスに CRM を入力し、名前に CRM を含むすべてのエントリが戻されるまで検索を待機します。
@@ -268,4 +268,4 @@ CRM インスタンスに存在するエンティティの一覧を取得する�
 [14]: ./media/connectors-create-api-crmonline/crmconfig2.png
 [15]: ./media/connectors-create-api-crmonline/crmconfig3.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management でセキュリティ レビューを開始する方法
 
-ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。このような古いロールの割り当てに関連するリスクを軽減するために、セキュリティ管理者は、ユーザーに与えられているロールを定期的に確認する必要があります。このドキュメントでは、Azure AD Privileged Identity Management (PIM) でセキュリティ レビューを開始する手順を説明します。
+ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。このような古くなったロールの割り当てに関連するリスクを軽減するために、特権ロール管理者は、ユーザーに与えられているロールを定期的に確認する必要があります。このドキュメントでは、Azure AD Privileged Identity Management (PIM) でセキュリティ レビューを開始する手順を説明します。
 
 ## セキュリティ レビューを開始する
 > [AZURE.NOTE] Azure ポータルのダッシュボードに PIM アプリケーションをまだ追加していない場合は、「[Azure Privileged Identity Management の使用](active-directory-privileged-identity-management-getting-started.md)」の手順を参照してください。
@@ -34,8 +34,8 @@ PIM アプリケーションのメイン ページには、セキュリティ �
 ### レビューするロールを選択する
 
 1. **[レビューする役割を選択する]** ブレードのロールの一覧でロールを選択します。一度に 1 つのロールのみ選択できます。**[レビューするロールの選択]** ブレードが **[レビュー担当者の選択]** ブレードに変わります。レビュー担当者を選択するときは 2 つのオプションがあります。
-  - [Me] \(自分) - 他の管理者の関与なしでセキュリティ レビューの動作を確認する場合は、このオプションを使用します。
-  - [Self review by role members] \(ロールのメンバーによる自己レビュー) - ユーザーに自分のロール割り当てを確認してもらう場合は、このオプションを使用します。
+  - [Me] (自分) - 他の管理者の関与なしでセキュリティ レビューの動作を確認する場合は、このオプションを使用します。
+  - [Self review by role members] (ロールのメンバーによる自己レビュー) - ユーザーに自分のロール割り当てを確認してもらう場合は、このオプションを使用します。
 2. どちらかを選択して、レビューの詳細に関する作業を始めます。**[既定値の変更]** ブレードが表示されます。
 
 ### 自分でレビューする
@@ -64,4 +64,4 @@ PIM アプリケーションのメイン ページには、セキュリティ �
 ## PIM の内容一覧
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

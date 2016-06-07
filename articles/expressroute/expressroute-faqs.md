@@ -4,7 +4,7 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags
    ms.service="expressroute"
@@ -248,4 +248,4 @@ ExpressRoute がサポートされているパートナーと地域の一覧に�
 ### ExpressRoute 接続経由で Dynamics AX にアクセスできますか。
 いいえ。それはサポートされていません。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

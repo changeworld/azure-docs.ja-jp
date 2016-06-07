@@ -13,16 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/10/2016"
+   ms.date="05/20/2016"
    ms.author="masnider"/>
 
 # Service Fabric のリソース使用量と負荷をメトリックで管理する
 メトリックとは、サービスが動作するために必要なリソースを表す、Service Fabric の一般的な用語です。一般的に、メトリックは、サービスのパフォーマンスを調整するためにリソースの観点から管理する必要があるすべての要素を指します。
 
-上記の例すべてで、メトリックは明示せずに言及されています。たとえば、メモリ、ディスク、CPU 使用率などは、すべてメトリックです。これは物理的なメトリック、つまり管理する必要があるノード上の物理リソースに対応するリソースです。メトリックには論理的なメトリックもあります。たとえば、アプリケーションで定義され、特定のレベルのリソース消費に対応する (ただし、アプリケーションからはそれを実際には認識できない、またはそれを測定するがない)、"MyWorkQueueDepth" のような要素が考えられます。
+上記の例すべてで、メトリックは明示せずに言及されています。たとえば、メモリ、ディスク、CPU 使用率などは、すべてメトリックです。これは物理的なメトリック、つまり管理する必要があるノード上の物理リソースに対応するリソースです。メトリックには論理的なメトリックもあります。たとえば、アプリケーションで定義され、特定のレベルのリソース消費に対応する (ただし、アプリケーションからはそれを実際には認識できない、またはそれを測定するがない)、"MyWorkQueueDepth" のような要素が考えられます。実際には、ユーザーが使うほとんどのメトリックは論理メトリックです。これにはさまざまな理由が考えられますが、最も一般的な理由としては、今日、多くのお客様がマネージド コードでサービスを書き込んでおり、特定のステートレス サービス インスタンスやステートフル サービス レプリカ オブジェクトからは実際の物理リソースの消費の測定が困難なことが挙げられます。独自のメトリックをレポートすることの複雑さも、構成済みの既定のメトリックを提供している理由の 1 つです。
 
 ## Default metrics
-たとえば、今後利用するリソース、または重要になりそうなリソースがわからないまま、作業を開始する必要があるとします。そこで、メトリックを指定せずに、とりあえず実装してからサービスを作成することにします。それでも、何も問題ありません。 メトリックは自動的に選択されます。現在、ユーザーが独自のメトリックを指定しなかった場合に自動的に適用される既定のメトリックは、PrimaryCount、ReplicaCount、および Count です (Count という名前がまぎらわしいという問題は、こちらでも認識しています)。 次の表に、各メトリックで既定で追跡される負荷量を示しています。
+たとえば、今後利用するリソース、または重要になりそうなリソースがわからないまま、作業を開始する必要があるとします。そこで、メトリックを指定せずに、とりあえず実装してからサービスを作成することにします。それでも、何も問題ありません。 メトリックは自動的に選択されます。現在、ユーザーが独自のメトリックを指定しなかった場合に自動的に適用される既定のメトリックは、PrimaryCount、ReplicaCount、および Count です (Count という名前がまぎらわしいという問題は、こちらでも認識しています)。 次の表に、各メトリックの負荷がどの程度各サービス オブジェクトに関連付けられているかについて示します。
 
 | メトリック | ステートレス インスタンス負荷 |	ステートフル セカンダリ負荷 |	ステートフル プライマリ負荷 |
 |--------|--------------------------|-------------------------|-----------------------|
@@ -42,14 +42,16 @@
 
 優秀な結果です。
 
-すばらしい環境ですが、利用している多様なサービスのすべてのプライマリが、現時点で本当に同じ量の負荷を処理している可能性はあるのでしょうか。 さらに、特定のサービスに対する負荷が長期間一定である可能性はどれくらいあるのでしょうか。 現実的なワークロードの場合、実際にはその可能性は低いと言えます。
+すばらしい環境ですが、選択したパーティション分割構成によって、完全に均等にすべてのパーティションで使用されるようになるのでしょうか。 さらに、特定のサービスに対する負荷が長期間一定であるか、少なくとも今と同じである可能性はどれくらいあるのでしょうか。 現実的なワークロードの場合、実際にはその可能性は低いと言えます。そのため、クラスターを最大限に活用するには、カスタム メトリックを検討することをお勧めします。
 
-現実的には、確かに既定のメトリックまたは少なくとも静的なカスタム メトリックを使用して実行することはできますが、そうした場合、通常はクラスターの使用率が想定よりも低くなります (レポートに適応性がないためです)。最悪の場合、一部のノードに負荷の割り当てが集中し、パフォーマンスが低下することもあります。この問題は、カスタム メトリックと動的な負荷レポートを使用することで改善できます。以降のセクションで、カスタム メトリックと動的な負荷について説明します。
+現実的には、確かに既定のメトリックまたは少なくとも静的なカスタム メトリックを使用して実行することはできますが、そうした場合、通常はクラスターの使用率が想定よりも低くなります (レポートに適応性がないためです)。最悪の場合、一部のノードに負荷の割り当てが集中し、パフォーマンスが低下することもあります。この問題は、カスタム メトリックと動的な負荷レポートを使用することで改善できます。
+
+以降のセクションで、カスタム メトリックと動的な負荷について説明します。
 
 ## カスタム メトリック
-これまで、物理的なメトリックと論理的なメトリックの両方を使用できること、およびユーザーが独自のメトリックを定義できることについて説明してきました。では、独自のメトリックはどのように定義できるでしょうか。 難しいことではありません。 サービスを作成するときに、メトリックと既定の初期負荷を構成するだけです。 メトリックと既定値のセットは、サービスを作成するときに、サービス インスタンスごとに構成できます。
+これまで、物理的なメトリックと論理的なメトリックの両方を使用できること、およびユーザーが独自のメトリックを定義できることについて説明してきました。では、独自のメトリックはどのように定義できるでしょうか。 難しいことではありません。 サービスを作成するときに、メトリックと既定の初期負荷を構成するだけです。 メトリックと既定値のセットは、サービスを作成するときに、名前付きサービス インスタンスごとに構成できます。
 
-サービスの負荷分散も行う必要がある場合には、カスタム メトリックの定義を開始するときに、既定のメトリックを明示的に再適用する必要があることに注意してください。これは、既定のメトリックとカスタム メトリックの関係についてユーザーの意図を明確に示す必要があるからです。ユーザーによっては、プライマリの分散よりもメモリの割り当て方法を重視することもあれば、いくつかのメトリックと既定のメトリックを組み合わせる場合もあります。
+サービスの負荷分散も行う必要がある場合には、カスタム メトリックの定義を開始するときに、既定のメトリックを明示的に再適用する必要があることに注意してください。これは、既定のメトリックとカスタム メトリックの関係についてユーザーの意図を明確に示す必要があるからです。ユーザーによっては、プライマリの分散よりもメモリの消費や WorkQueueDepth を重視することがあります。
 
 たとえば、既定のメトリックに加えて、"Memory" という名前のメトリックをレポートするようにサービスを構成するとします。Memory については、基本的な測定を何度か行ったことがあり、通常はそのサービスのプライマリ レプリカが 20 MB、同じサービスのセカンダリ レプリカが 5 MB のメモリを使用することを把握しているとします。Memory はこの特定のサービスのパフォーマンスを管理するうえで最も重要なメトリックであることはわかっていますが、一部のノードまたは障害ドメインが失われたときに膨大な数のプライマリ レプリカが停止する事態を避けるために、プライマリ レプリカの負荷も調整する必要があるとします。それ以外については、既定のメトリックを採用するとします。
 
@@ -59,25 +61,25 @@
 
 ```csharp
 StatefulServiceDescription serviceDescription = new StatefulServiceDescription();
-ServiceLoadMetricDescription memoryMetric = new ServiceLoadMetricDescription();
+StatefulServiceLoadMetricDescription memoryMetric = new StatefulServiceLoadMetricDescription();
 memoryMetric.Name = "MemoryInMb";
 memoryMetric.PrimaryDefaultLoad = 20;
 memoryMetric.SecondaryDefaultLoad = 5;
 memoryMetric.Weight = ServiceLoadMetricWeight.High;
 
-ServiceLoadMetricDescription primaryCountMetric = new ServiceLoadMetricDescription();
+StatefulServiceLoadMetricDescription primaryCountMetric = new StatefulServiceLoadMetricDescription();
 primaryCountMetric.Name = "PrimaryCount";
 primaryCountMetric.PrimaryDefaultLoad = 1;
 primaryCountMetric.SecondaryDefaultLoad = 0;
 primaryCountMetric.Weight = ServiceLoadMetricWeight.Medium;
 
-ServiceLoadMetricDescription replicaCountMetric = new ServiceLoadMetricDescription();
+StatefulServiceLoadMetricDescription replicaCountMetric = new StatefulServiceLoadMetricDescription();
 replicaCountMetric.Name = "ReplicaCount";
 replicaCountMetric.PrimaryDefaultLoad = 1;
 replicaCountMetric.SecondaryDefaultLoad = 1;
 replicaCountMetric.Weight = ServiceLoadMetricWeight.Low;
 
-ServiceLoadMetricDescription totalCountMetric = new ServiceLoadMetricDescription();
+StatefulServiceLoadMetricDescription totalCountMetric = new StatefulServiceLoadMetricDescription();
 totalCountMetric.Name = "Count";
 totalCountMetric.PrimaryDefaultLoad = 1;
 totalCountMetric.SecondaryDefaultLoad = 1;
@@ -110,7 +112,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 負荷とは、一部のサービス インスタンスまたは特定のノード上のレプリカによって使用される特定のメトリックの量を表す一般的な概念です。
 
 ## 既定の負荷
-既定の負荷とは、このサービスの各サービス インスタンスまたはレプリカが実際のサービス インスタンスまたはレプリカから更新を受け取るまでに消費する負荷の想定量です。単純なサービスの場合、最終的にこの数値は動的に更新されることがない静的な定義になるため、サービスの有効期間に使用されます。既定の負荷は、特定のリソースを特定のワークロード専用に割り当てるという従来の手法とまったく同じ考え方であるため、単純な容量計画であれば非常に有効ですが、そのメリットは、少なくとも現時点では、マイクロサービスの考え方で運用する点にあります。マイクロサービスでは、リソースが実際には特定のワークロードに静的に割り当てられず、ユーザーが意思決定ループに参加しません。
+既定の負荷とは、クラスター リソース マネージャーが想定する、このサービスの各サービス インスタンスまたはレプリカが実際のサービス インスタンスまたはレプリカから更新を受け取るまでに消費する負荷の量です。単純なサービスの場合、最終的にこの数値は動的に更新されることがない静的な定義になるため、サービスの有効期間に使用されます。既定の負荷は、特定のリソースを特定のワークロード専用に割り当てるという従来の手法とまったく同じ考え方であるため、単純な容量計画であれば非常に有効ですが、そのメリットは、少なくとも現時点では、マイクロサービスの考え方で運用する点にあります。マイクロサービスでは、リソースが実際には特定のワークロードに静的に割り当てられず、ユーザーが意思決定ループに参加しません。
 
 ステートフル サービスでは、プライマリとセカンダリの両方に既定の負荷を指定できます。現実的には、多くのサービスではプライマリ レプリカとセカンダリ レプリカで実行されるワークロードが異なるため、この数値は異なることになります。また、通常はプライマリ レプリカが読み取りと書き込み (さらに計算負荷の大部分) を受け持つため、プライマリ レプリカの既定の負荷はセカンダリ レプリカよりも大きくなります。
 
@@ -185,10 +187,10 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 メトリックの重みを考慮することで、メトリックの平均重みに基づいてグローバルなバランスが算出されます。サービス単位で定義されたメトリックの重みに応じて、サービスのバランスを取るのです。
 
 ## 次のステップ
-- サービスの公正で利用できるその他のオプションに関する詳細については、「[サービスの構成について学習する](service-fabric-cluster-resource-manager-configure-services.md)」にあるその他のクラスター リソース マネージャーに関するトピックを参照してください。
+- サービスの構成に利用できるその他のオプションの詳細については、[サービスの構成の詳細に関する記事](service-fabric-cluster-resource-manager-configure-services.md)にある、その他のクラスター リソース マネージャーのトピックを参照してください。
 - 最適化メトリックの定義は、負荷を分散するのではなく、ノードで統合する方法の 1 つです。最適化を構成する方法については、[この記事](service-fabric-cluster-resource-manager-defragmentation-metrics.md)を参照してください。
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、[負荷分散](service-fabric-cluster-resource-manager-balancing.md)に関する記事を参照してください。
-- 最初から開始し、[Service Fabric クラスター リソース マネージャーの概要を確認する](service-fabric-cluster-resource-manager-introduction.md)
+- 最初から開始して、[Service Fabric クラスター リソース マネージャーの概要を確認するにはこちらを参照してください](service-fabric-cluster-resource-manager-introduction.md)。
 - 移動コストは、特定のサービスが他のサービスよりも高額になっていることをクラスター リソース マネージャーに警告する信号の 1 つです。移動コストの詳細については、[この記事](service-fabric-cluster-resource-manager-movement-cost.md)を参照してください。
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-cluster-layout-with-default-metrics.png
@@ -196,4 +198,4 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 [Image3]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-metric-weights-impact.png
 [Image4]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-global-vs-local-balancing.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0525_2016-->

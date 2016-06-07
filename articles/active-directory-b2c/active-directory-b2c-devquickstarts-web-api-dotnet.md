@@ -58,19 +58,21 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[ポ�
 
 ## コードのダウンロード
 
+[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-devquickstarts-bug-fix.md)]
+
 このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet) で管理されています。手順に従ってサンプルを構築するには、[スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/skeleton.zip)します。スケルトンを複製することもできます。
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet.git
 ```
 
-また、完成済みのアプリも、[.zip ファイルとして入手する](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip)か、同じリポジトリの `complete` ブランチで利用できます。
+また、完成済みのアプリも、[.zip ファイルとして入手する](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip)か、同じリポジトリの `complete` ブランチで入手できます。
 
 サンプル コードをダウンロードした後、Visual Studio の .sln ファイルを開いて作業を開始します。ソリューションに `TaskWebApp` プロジェクトと `TaskService` プロジェクトの 2 つのプロジェクトがあることに注意してください。`TaskWebApp` は、ユーザーが対話する Windows Presentation Foundation (WPF) Web アプリ フロントエンドです。`TaskService` は、各ユーザーの To-Do List を格納する、アプリのバックエンド Web API です。
 
 ## タスク サービスを構成する
 
-`TaskService` は `TaskWebApp` から要求を受け取ると、要求を認証するための有効なアクセス トークンを確認します。アクセス トークンを検証するには、アプリに関する情報を `TaskService` に提供する必要があります。`TaskService` プロジェクトで、プロジェクトのルートにある `web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。
+`TaskService` は `TaskWebApp` から要求を受け取ると、要求を認証するために有効なアクセス トークンを確認します。アクセス トークンを検証するには、アプリに関する情報を `TaskService` に提供する必要があります。`TaskService` プロジェクトで、プロジェクトのルートにある `web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。
 
 ```
 <appSettings>
@@ -88,13 +90,11 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-Web
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 
-この記事では、`TaskService` のセキュリティ保護方法の詳細は説明しません。Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、
-[Web API の概要についての記事](active-directory-b2c-devquickstarts-api-dotnet.md)を参照してください。
+この記事では、`TaskService` のセキュリティ保護方法の詳細は説明しません。Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、[Web API の概要についての記事](active-directory-b2c-devquickstarts-api-dotnet.md)を参照してください。
 
 ## タスク Web アプリの構成
 
-`TaskWebApp` が Azure AD B2C と通信できるようにするために、一般的なパラメーターをいくつか指定する必要があります。`TaskWebApp` プロジェクトで、プロジェクトのルートにある 
-`web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。これらの値は、Web アプリ全体で使用されます。
+`TaskWebApp` が Azure AD B2C と通信できるようにするために、一般的なパラメーターをいくつか指定する必要があります。`TaskWebApp` プロジェクトで、プロジェクトのルートにある `web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。これらの値は、Web アプリ全体で使用されます。
 
 ```
 <appSettings>
@@ -136,7 +136,7 @@ public class TasksController : Controller
 
 ## アクセス トークンの取得とタスク API の呼び出し
 
-このセクションでは、Microsoft のライブラリとフレームワークを使用して、Web アプリで OAuth 2.0 トークンの交換を完了する方法を説明します。認証コードとアクセス トークンについて詳しくない場合は、「[OpenID Connect プロトコルのリファレンス](active-directory-b2c-reference-protocols.md)」に目を通すことをお勧めします。
+このセクションでは、Microsoft のライブラリとフレームワークを使用して、Web アプリで OAuth 2.0 トークンの交換を完了する方法を説明します。認証コードとアクセス トークンについて詳しく理解していない場合は、[OpenID Connect プロトコルのリファレンス](active-directory-b2c-reference-protocols.md)に関するページに目を通すことをお勧めします。
 
 ### 承認コードの取得
 
@@ -372,9 +372,9 @@ public void SignOut()
 
 ## サンプル アプリを実行する
 
-最後に、`TaskClient` と `TaskService` を構築して実行します。アプリにサインアップしてサインインします。サインインしたユーザーのタスクを作成します。サインアウトし、別のユーザーとしてサインインします。そのユーザーのタスクを作成します。API でタスクがユーザーごとに保存されたことを確認します。これは、API が、受信したアクセス トークンからユーザーID を抽出したためです。
+最後に、`TaskClient` と `TaskService` を両方ともビルドして実行します。アプリにサインアップしてサインインします。サインインしたユーザーのタスクを作成します。サインアウトし、別のユーザーとしてサインインします。そのユーザーのタスクを作成します。API でタスクがユーザーごとに保存されたことを確認します。これは、API が、受信したアクセス トークンからユーザーID を抽出したためです。
 
-参照用に、完成したサンプルが[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip)。GitHub から複製することもできます。
+参照用の完成済みサンプルが、[こちらに .zip ファイルとして提供されています](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip)。GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet.git```
 
@@ -390,4 +390,4 @@ You can now move on to more advanced B2C topics. You might try:
 
 -->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

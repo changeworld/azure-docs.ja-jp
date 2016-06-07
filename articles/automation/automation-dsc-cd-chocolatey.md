@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="03/04/2016"
+   ms.date="05/24/2016"
    ms.author="golive"/>
 
 # 使用例: Automation DSC と Chocolatey を使用した仮想マシンへの継続的なデプロイ
@@ -171,7 +171,7 @@ New-ConfigurationScript.ps1:
 
 ## メモ
 
-この使用例では、Azure ギャラリーにある一般的な Windows 2012 R2 イメージから VM を開始します。格納された任意のイメージから開始し、そこから DSC 構成での微調整に進むことができます。ただし、イメージに組み込まれている構成を微調整するのは、DSC を使用して構成を動的に更新するよりもはるかに困難です。
+この使用例では、Azure ギャラリーにある一般的な Windows 2012 R2 イメージから VM を開始します。格納されている任意のイメージから開始し、DSC 構成で微調整を行うことができます。ただし、イメージに組み込まれている構成を変更するのは、DSC を使用して構成を動的に更新するよりもはるかに困難です。
 
 VM でこの手法を使用する際に、ARM テンプレートや VM 拡張機能を使用する必要はありません。また、VM は、CD 管理下の Azure にある必要はありません。必要なのは、Chocolatey をインストールし、プル サーバーの場所を認識するように VM で LCM を構成することだけです。
 
@@ -185,4 +185,4 @@ VM でこの手法を使用する際に、ARM テンプレートや VM 拡張機
 - [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 - [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

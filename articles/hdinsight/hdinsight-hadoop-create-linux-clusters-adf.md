@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/16/2016"
+   ms.date="05/18/2016"
    ms.author="jgao"/>
 
 # Azure Data Factory を使用した HDInsight でのオンデマンドの Linux ベースの Hadoop クラスターの作成
@@ -136,9 +136,9 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
         -type Standard_LRS `
         -Location $location 
 
-    $destStorageAccountKey = Get-AzureRmStorageAccountKey `
+    $destStorageAccountKey = (Get-AzureRmStorageAccountKey `
         -ResourceGroupName $resourceGroupName `
-        -Name $destStorageAccountName |  %{ $_.Key1 }
+        -Name $destStorageAccountName)[0].Value
 
     $sourceContext = New-AzureStorageContext `
         -StorageAccountName $sourceStorageAccountName `
@@ -322,7 +322,7 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
 
 1. 次の画像をクリックして Azure にサインインし、Azure ポータルで ARM テンプレートを開きます。テンプレートは、https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json にあります。 
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. 前のセクションで作成したアカウントの **DATAFACTORYNAME**、**STORAGEACCOUNTNAME**、**STORAGEACCOUNTKEY** を入力し、**[OK]** をクリックします。データ ファクトリ名は、グローバルに一意である必要があります。
 3. **[リソース グループ]** で、前のセクションで使用したのと同じリソース グループを選択します。
@@ -438,4 +438,4 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
 - [HDInsight のドキュメント](https://azure.microsoft.com/documentation/services/hdinsight/)
 - [データ ファクトリのドキュメント](https://azure.microsoft.com/documentation/services/data-factory/)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

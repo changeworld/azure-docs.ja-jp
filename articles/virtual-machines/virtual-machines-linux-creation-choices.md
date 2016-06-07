@@ -21,8 +21,6 @@
 
 多様なユーザーや目的に対応するために、Azure には、Resource Manager デプロイ モデルを使用して VM を作成するためのさまざまな方法が用意されています。この記事は、それらの違いと、Linux 仮想マシン (VM) を作成する場合の選択肢をまとめたものです。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 ## ツールの選択肢
 
 ### コマンド シェル: Azure CLI 
@@ -67,4 +65,4 @@ CLI から、Azure コマンド ライン インターフェイスを使用し�
 
 * [パスワードや SSH キーをリセットしたりユーザーを管理したりするための手順](virtual-machines-linux-using-vmaccess-extension.md)を参照します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

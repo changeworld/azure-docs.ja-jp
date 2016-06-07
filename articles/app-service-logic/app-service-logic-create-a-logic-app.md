@@ -20,9 +20,9 @@
 
 | クイック リファレンス |
 | --------------- |
-| [Logic Apps の定義言語](https://msdn.microsoft.com/library/azure/dn948512.aspx?f=255&MSPPError=-2147217396) |
-| [Logic Apps コネクターのドキュメント](https://azure.microsoft.com/documentation/articles/app-service-logic-connectors-list/) |
-| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurelogicapps) |
+| [Logic Apps の定義言語](https://msdn.microsoft.com/library/azure/mt643789.aspx) |
+| [Logic Apps コネクターのドキュメント](../connectors/apis-list.md) |
+| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) |
 
 このトピックでは、初めての方に向けて [App Service Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。今回は、興味を持ったツイートをメールボックスに保存できるようにするまでの流れを見ていきます。
 
@@ -67,4 +67,4 @@
 [Azure portal]: https://portal.azure.com
 [ロジック アプリの機能を使用する]: app-service-logic-create-a-logic-app.md
 
-<!------HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -13,7 +13,7 @@
    ms.workload="search"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.date="03/09/2016"
+   ms.date="05/18/2016"
    ms.author="brjohnst"/>
 
 # Azure Search .NET SDK バージョン 1.1 へのアップグレード
@@ -181,7 +181,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
     var sp = new SearchParameters();
     sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
-    sp.ScoringParameters = new[] { "featuredParam:featured", "mapCenterParam:" + lon + "," + lat };
+    sp.ScoringParameters = new[] { "featuredParam-featured", "mapCenterParam-" + lon + "," + lat };
 
 この場合、次のように変更することでビルド エラーを解決できます。
 
@@ -190,7 +190,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
     sp.ScoringParameters =
         new[]
         {
-            new ScoringParameter("featuredParam", "featured"),
+            new ScoringParameter("featuredParam", new[] { "featured" }),
             new ScoringParameter("mapCenterParam", GeographyPoint.Create(lat, lon))
         };
 
@@ -391,4 +391,4 @@ SDK についてのご意見をお待ちしております。問題が発生し�
 
 Azure Search をお使いいただきありがとうございます。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

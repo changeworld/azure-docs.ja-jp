@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="tbd" 
-	ms.date="02/10/2016"
+	ms.date="05/16/2016"
 	ms.author="himad"/>
 
 
@@ -42,4 +42,4 @@ Azure Machine Learning では、発行された Web サービスに対して複�
  
  Studio またはここにエンドポイントを追加してある場合、そこから既定のエンドポイントを削除することはできないことに注意してください。エラーがスローされます。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0525_2016-->

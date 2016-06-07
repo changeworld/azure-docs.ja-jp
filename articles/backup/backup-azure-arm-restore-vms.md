@@ -153,7 +153,7 @@ Backup サービスを使用してデータを保護するには、定義され�
 
 ディスクへの復元後に仮想マシンを完全に再作成するには、次の手順を実行します。
 
-1. [PowerShell](backup-azure-vms-automation.md/#restore-an-azure-vm) を使用して、Recovery Services コンテナーからディスクを復元します。
+1. [PowerShell](../backup-azure-vms-automation.md#restore-an-azure-vm) を使用して、Recovery Services コンテナーからディスクを復元します。
 
 2. PowerShell コマンドレットを使用して、ロード バランサー、複数の NIC、複数の予約済み IP に必要な VM 構成を作成し、その構成を使用して、目的の構成の VM を作成します。
 	- [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用してクラウド サービスに VM を作成する
@@ -167,4 +167,4 @@ Backup サービスを使用してデータを保護するには、定義され�
 - [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
 - [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

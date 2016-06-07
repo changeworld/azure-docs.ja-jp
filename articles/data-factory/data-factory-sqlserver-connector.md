@@ -412,8 +412,10 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 	    "properties":
 	    {
 	        "type": "OnPremisesSqlLinkedService",
-	        "connectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=False;User ID=<username>;Password=<password>;",
-	        "gatewayName": "<gateway name>"
+			"typeProperties": {
+	        	"connectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=False;User ID=<username>;Password=<password>;",
+	        	"gatewayName": "<gateway name>"
+			}
 	    }
 	}
 
@@ -426,10 +428,12 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 	     "Properties":
 	     {
 	         "type": "OnPremisesSqlLinkedService",
-	         "ConnectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=True;",
-	         "username": "<domain\\username>",
-	         "password": "<password>",
-	         "gatewayName": "<gateway name>"
+			 "typeProperties": {
+	         	"ConnectionString": "Data Source=<servername>;Initial Catalog=MarketingCampaigns;Integrated Security=True;",
+	         	"username": "<domain\\username>",
+	         	"password": "<password>",
+	         	"gatewayName": "<gateway name>"
+			}
 	     }
 	}
 
@@ -642,4 +646,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

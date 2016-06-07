@@ -258,17 +258,42 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 ## File Storage を使用した開発
 
-File Storage をプログラミングする場合、.NET と Java のストレージ クライアント ライブラリまたは Azure Storage の REST API を使用できます。このセクションの例では、デスクトップで実行する単純なコンソール アプリケーションから、[.NET 用 Azure ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/mt347887.aspx)を使用してファイル共有を操作する方法を示します。
+File Storage を呼び出すコードを作成する場合、.NET と Java のストレージ クライアント ライブラリまたは Azure Storage の REST API を使用できます。このセクションの例では、デスクトップで実行する単純なコンソール アプリケーションから、[.NET 用 Azure ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/mt347887.aspx)を使用してファイル共有を操作する方法を示します。
 
-[AZURE.INCLUDE [storage-dotnet-install-library-include](../../includes/storage-dotnet-install-library-include.md)]
+### コンソール アプリケーションの作成とアセンブリの取得
 
-[AZURE.INCLUDE [storage-dotnet-save-connection-string-include](../../includes/storage-dotnet-save-connection-string-include.md)]
+Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage Client Library を含む NuGet パッケージをインストールするには、次の手順を実行します。
+
+1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から [コンソール アプリケーション]**をクリックします。
+2. コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
+3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンラインで検索し、**[インストール]** をクリックして Azure Storage Client Library for .NET のパッケージと依存関係をインストールします。
+
+また、この記事のコード例では、[Microsoft Azure Configuration Manager Library](https://msdn.microsoft.com/library/azure/mt634646.aspx) も使用して、コンソール アプリケーションの app.config ファイルからストレージ接続文字列を取得します。Azure Configuration Manager を使用すると、アプリケーションが Microsoft Azure で実行されているか、デスクトップ、モバイル、Web アプリケーションから実行されているかに関係なく、実行時に接続文字列を取得できます。
+
+Azure Configuration Manager パッケージをインストールするには、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。"ConfigurationManager" をオンラインで検索し、**[インストール]** をクリックしてパッケージをインストールします。
+
+Azure Configuration Manager の使用はオプションです。また、.NET Framework の [ConfigurationManager クラス](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx)などの API を使用することもできます。
+
+### ストレージ アカウントの資格情報を app.config ファイルに保存
+
+次に、プロジェクトの app.config ファイルに資格情報を保存します。次の例のようになるように app.config ファイルを編集します。ここで、`myaccount` は実際のストレージ アカウント名に置き換え、`mykey` は実際のストレージ アカウント キーに置き換えてください。
+
+	<?xml version="1.0" encoding="utf-8" ?>
+	<configuration>
+	    <startup>
+	        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+	    </startup>
+	    <appSettings>
+	        <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=StorageAccountKeyEndingIn==" />
+	    </appSettings>
+	</configuration>
+
 
 > [AZURE.NOTE] 最新バージョンの Azure ストレージ エミュレーターでは、File Storage がサポートされません。File Storage を使用するには、接続文字列は、クラウド内の Azure ストレージ アカウントを対象とする必要があります。
 
 ### 名前空間宣言の追加
 
-ソリューション エクスプローラーで `program.cs` ファイルを開き、このファイルに次の名前空間宣言を追加します。
+ソリューション エクスプローラーで `program.cs` ファイルを開き、このファイルの先頭に次の名前空間宣言を追加します。
 
 	using Microsoft.Azure; // Namespace for Azure Configuration Manager
 	using Microsoft.WindowsAzure.Storage; // Namespace for Storage Client Library
@@ -403,7 +428,7 @@ Shared Access Signature の作成および使用の詳細については、「[S
 
 Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。次のセクションでは、プログラムを使用してこれらのコピー操作を実行する方法を示します。
 
-また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。「[AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)」を参照してください。
+また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
 > [AZURE.NOTE] BLOB をファイルにコピーしたり、ファイルを BLOB にコピーしたりする場合は、同じストレージ アカウント内でコピーする場合でも、Shared Access Signature (SAS) を使用してソース オブジェクトを認証する必要があります。
 
@@ -513,7 +538,7 @@ Azure ストレージ分析で File Storage のメトリックがサポートさ
 	using Microsoft.WindowsAzure.Storage.File.Protocol;
 	using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 
-BLOB、テーブル、キューのストレージは `Microsoft.WindowsAzure.Storage.Shared.Protocol` 名前空間の共有 `ServiceProperties` タイプを使用しますが、File Storage はその独自のタイプ、`Microsoft.WindowsAzure.Storage.File.Protocol` 名前空間の `FileServiceProperties` タイプを使用することに注意してください。ただし、両方の名前空間は、次のコードのコンパイルのため、自身のコードから参照される必要があります。
+Blob Storage、Table Storage、Queue Storage は `Microsoft.WindowsAzure.Storage.Shared.Protocol` 名前空間の共有 `ServiceProperties` タイプを使用しますが、File Storage はその独自のタイプ、`Microsoft.WindowsAzure.Storage.File.Protocol` 名前空間の `FileServiceProperties` タイプを使用することに注意してください。ただし、両方の名前空間は、次のコードのコンパイルのため、自身のコードから参照される必要があります。
 
     // Parse your storage connection string from your application's configuration file.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -609,7 +634,7 @@ BLOB、テーブル、キューのストレージは `Microsoft.WindowsAzure.Sto
 
 13. **Azure Files の低パフォーマンスの問題を解決するためにリリースされた修正プログラム**
 
-	Windows チームは先日、ユーザーが Windows 8.1 または Windows Server 2012 R2 から Azure Files Storage にアクセスする際に生じる低パフォーマンスの問題を解決するための修正プログラムをリリースしました。詳細については、関連するサポート技術情報の記事「[Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files Storage にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/ja-JP/kb/3114025)」を参照してください。
+	Windows チームは先日、ユーザーが Windows 8.1 または Windows Server 2012 R2 から Azure Files Storage にアクセスする際に生じる低パフォーマンスの問題を解決するための修正プログラムをリリースしました。詳細については、関連するサポート技術情報の記事「[Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files Storage にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/en-us/kb/3114025)」を参照してください。
 
 14. **IBM MQ での Azure File Storage の使用**
 
@@ -642,4 +667,4 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0601_2016-->

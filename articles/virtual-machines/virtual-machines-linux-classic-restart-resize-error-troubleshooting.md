@@ -10,7 +10,7 @@
 
 <tags
    ms.service="virtual-machines-linux"
-   ms.topic="article"
+   ms.topic="support-article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="required"
    ms.date="05/12/2016"
@@ -81,4 +81,4 @@ VM サイズを小さくできない場合は、次の手順に従います。
 
 既存のクラウド サービスがリージョン ベースの仮想ネットワークに関連付けられていない場合は、既存のクラウド サービス内の VM を削除し、ディスクから新しいクラウド サービスに VM を再作成する必要があります。ただし、新しいクラウド サービスには新しい名前と VIP が割り当てられるので、既存のクラウド サービスでこれらの情報を現在使用しているすべての依存関係について、情報を更新する必要があります。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

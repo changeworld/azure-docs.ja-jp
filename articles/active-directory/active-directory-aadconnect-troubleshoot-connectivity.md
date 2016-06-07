@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="05/19/2016"
 	ms.author="andkjell"/>
 
 # Azure AD Connect での接続に関する問題のトラブルシューティング
@@ -33,17 +33,17 @@ Microsoft 以外の一部のブログでは、machine.config ではなく miiser
 
 その中でも、次の表に記載したものは Azure AD への接続に最低限必要な URL です。この一覧には、パスワード ライトバックや Azure AD Connect Health のようなオプション機能は含まれていません。ここには、初期構成に関するトラブルシューティングに役立つものが記載されています。
 
-| URL | ポート | 説明 |
-| ---- | ---- | ---- |
-| mscrl.microsoft.com | HTTP/80 | CRL リストのダウンロードに使用します。 |
-| *.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。 | 
-| *.entrust.com | HTTP/80 | MFA の CRL リストのダウンロードに使用します。 | 
-| *.windows.net | HTTPS/443 | Azure AD へのサインインに使用します。 | 
-| secure.aadcdn.microsoftonline-p.com | HTTPS/443 | MFA に使用します。 | 
-| *.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリを構成し、データをインポートまたはエクスポートするために使用します。 |
+URL | ポート | 説明
+---- | ---- | ----
+mscrl.microsoft.com | HTTP/80 | CRL リストのダウンロードに使用します。
+\*.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。
+\*.entrust.com | HTTP/80 | MFA の CRL リストのダウンロードに使用します。
+\*.windows.net | HTTPS/443 | Azure AD へのサインインに使用します。
+secure.aadcdn.microsoftonline-p.com | HTTPS/443 | MFA に使用します。
+\*.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリの構成とデータのインポート/エクスポートに使用します。
 
 ## ウィザードでのエラー
-インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。**[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用しています。**[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に変更します。ここで行うプロキシ構成はコンピューターに対してグローバルになるため、構成になんらかの問題があると、ほとんどの場合はすぐにウィザードの **[Azure AD に接続]** ページに反映されることになります。
+インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。**[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用します。**[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に変更します。ここで行うプロキシ構成はコンピューターに対してグローバルになるため、構成に何らかの問題があると、ほとんどの場合はすぐにウィザードの **[Azure AD に接続]** ページに反映されることになります。
 
 インストール ウィザードに表示される最も一般的なエラーを次に示します。
 
@@ -54,8 +54,7 @@ Microsoft 以外の一部のブログでは、machine.config ではなく miiser
 - 正しいようであれば、「[プロキシ接続を検証する](#verify-proxy-connectivity)」の手順に従って、ウィザード外部でも同じように問題が発生するかどうかを確認してください。
 
 ### MFA エンドポイントに到達できない
-このエラーは、エンドポイント **https://secure.aadcdn.microsoftonline-p.com** に到達できず、グローバル管理者が MFA を有効にしている場合に表示されます。 
-![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
+このエラーは、エンドポイント **https://secure.aadcdn.microsoftonline-p.com** に到達できず、全体管理者が MFA を有効にしている場合に表示されます。 ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
 
 - これが表示された場合は、エンドポイント secure.aadcdn.microsoftonline-p.com がプロキシに追加されていることを確認します。
 
@@ -65,7 +64,7 @@ Microsoft 以外の一部のブログでは、machine.config ではなく miiser
 - そのパスワードは一時パスワードで、変更が必要ではないでしょうか。 また、本当に正しいパスワードでしょうか。 Azure AD Connect サーバーとは別のコンピューターで https://login.microsoftonline.com へのサインインを試し、アカウントが使用可能であることを確認してください。
 
 ### プロキシ接続を検証する
-Azure AD Connect サーバーがプロキシおよびインターネットと実際に接続できているかどうかを検証するには、いくつかの PowerShell を使用して、プロキシが Web 要求を許可しているかどうかを確認します。PowerShell プロンプトで、`Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` を実行します (厳密には、最初に呼び出すのは https://login.microsoftonline.com で、同様に機能しますが、応答が速いのは前述の URI です)。
+Azure AD Connect サーバーがプロキシおよびインターネットと実際に接続できているかどうかを検証するには、いくつかの PowerShell を使用して、プロキシが Web 要求を許可しているかどうかを確認します。PowerShell プロンプトで、`Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` を実行します (厳密には、最初に呼び出すのは https://login.microsoftonline.com で、同様に機能しますが、応答が速いのは前の URI です)。
 
 PowerShell は、machine.config 内の構成を使用してプロキシに接続します。winhttp や netsh 内の設定値がこれらのコマンドレットに影響することはありません。
 
@@ -75,15 +74,15 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 
 プロキシが正しく構成されていない場合、次のエラーが表示されます。 ![proxy200](./media/active-directory-aadconnect-troubleshoot-connectivity/invokewebrequest403.png) ![proxy407](./media/active-directory-aadconnect-troubleshoot-connectivity/invokewebrequest407.png)
 
-| エラー | エラー テキスト | コメント |
-| ---- | ---- | ---- |
-| 403 | 許可されていません | 要求された URL に対してプロキシが開かれていません。プロキシ構成を再検討し、[URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) が開かれていることを確認してください。 |
-| 407 | プロキシの認証が必要です | プロキシ サーバーがサインイン情報を要求しましたが、何も指定されていません。お使いのプロキシ サーバーで認証が必要な場合は、それが machine.config ファイル内で構成されているようにしてください。また、サービス アカウントだけでなく、ウィザードを実行しているユーザーにドメイン アカウントを使用していることを確認してください。 |
+エラー | エラー テキスト | コメント
+---- | ---- | ---- |
+403 | 許可されていません | 要求された URL に対してプロキシが開かれていません。プロキシ構成を再検討し、[URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) が開かれていることを確認してください。
+407 | プロキシの認証が必要です | プロキシ サーバーがサインイン情報を要求しましたが、何も指定されていません。お使いのプロキシ サーバーで認証が必要な場合は、それが machine.config ファイル内で構成されているようにしてください。また、サービス アカウントだけでなく、ウィザードを実行しているユーザーにドメイン アカウントを使用していることを確認してください。
 
 ## Azure AD Connect と Azure AD の間の通信パターン
 上記の手順をすべて実行しても接続できない場合は、その時点でネットワーク ログを確認することをお勧めします。このセクションでは、通常の成功を示す接続パターンについて記載しています。また、ネットワーク ログを確認する場合に無視できる情報についても一覧にまとめています。
 
-- https://dc.services.visualstudio.com への呼び出しがあります。インストールを正常に実行するうえで、この URL をプロキシで開いておくことは必須ではないため、これらの呼び出しは無視できます。
+- https://dc.services.visualstudio.com への呼び出しが行われます。インストールを正常に実行するうえで、この URL をプロキシで開いておくことは必須ではないため、これらの呼び出しは無視できます。
 - DNS 解決によって DNS 名前空間の nsatc.net、および microsoftonline.com に属していない他の名前空間に含まれる実際のホストが一覧表示されます。ただし、実際のサーバー名に対する Web サービス要求は発生しないため、これらをプロキシに追加する必要はありません。
 - エンドポイントの adminwebservice と provisioningapi (下のログを参照) は検出エンドポイントであり、実際に使用するエンドポイントを見つけるために使用されるため、リージョンによって異なります。
 
@@ -154,7 +153,7 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
 認証に成功しました。全体管理者ではありません。
 
 ### PrivilegedIdentityManagement
-認証に成功しました。Privileged Identity Management が有効になっており、現時点では全体管理者ではありません。詳細については、「[Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)」を参照してください。
+認証に成功しました。Privileged Identity Management が有効になっており、現時点では全体管理者ではありません。詳細については、[Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) に関するページを参照してください。
 
 ### CompanyInfoUnavailable
 認証に成功しました。Azure AD から会社情報を取得できませんでした。
@@ -176,4 +175,4 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

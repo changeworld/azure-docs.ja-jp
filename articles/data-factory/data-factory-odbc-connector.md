@@ -352,9 +352,20 @@ Data Factory ソリューションで GE Historian ストアを使用する前�
 
 コピー操作で ODBC データ ストアをソース データ ストアとして使用する方法の詳細については、記事を最初からお読みください。
 
-[AZURE.INCLUDE [data-factory-troubleshoot-connectivity](../../includes/data-factory-troubleshoot-connectivity.md)]
+## 接続の問題のトラブルシューティング
+接続の問題をトラブルシューティングするには、**Data Management Gateway 構成マネージャー**の **[診断]** タブを使用します。
+
+1. **Data Management Gateway 構成マネージャー**を起動します。"C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared\\ConfigManager.exe" を直接実行することも、次の図で示されているように、**Gateway** を検索し、**Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。 
+
+	![Search gateway](./media/data-factory-odbc-connector/search-gateway.png)
+2. **[診断]** タブに切り替えます。
+
+	![Gateway diagnostics](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png) 
+3. データ ストアの**種類** (リンクされたサービス) を選択します。 
+4. **[認証]** を指定し、**資格情報**を入力します。または、**接続文字列**を入力して、データ ストアに接続します。 
+5. **[接続テスト]** をクリックして、データ ストアへの接続をテストします。 
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

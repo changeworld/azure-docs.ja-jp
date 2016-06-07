@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="05/24/2016" 
 	ms.author="sdanie"/>
 
 # テンプレートを使用し、Web アプリと Redis Cache を作成する
@@ -43,7 +43,7 @@
 
 ## 名前用の変数
 
-このテンプレートでは、リソースの名前を作成する変数を使用します。[uniqueString](../resource-group-template-functions/#uniquestring) 関数を使用し、リソース グループの ID に基づく値を構築します。
+このテンプレートでは、リソースの名前を作成する変数を使用します。[uniqueString](../resource-group-template-functions.md#uniquestring) 関数を使用し、リソース グループの ID に基づく値を構築します。
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -132,4 +132,4 @@ Redis Cache との連動を可能にするアプリ設定プロパティで Web 
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

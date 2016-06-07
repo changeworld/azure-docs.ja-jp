@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/16/2016"
+   ms.date="05/26/2016"
    ms.author="cherylmc"/>
 
 
@@ -103,7 +103,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 
 **注:** 既定のルートをアドバタイズすると、Windows およびその他の VM のライセンスの認証に失敗します。これを回避する方法については、[このページ](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)を参照してください。
 
-## BGP コミュニティのサポート (近日対応予定)
+## BGP コミュニティのサポート
 
 
 ここでは、ExpressRoute で BGP コミュニティがどのように使用されるかについて概説します。Microsoft は、パブリックおよび Microsoft ピアリング パスのルートに適切なコミュニティ値をタグ付けしてアドバタイズします。その理由とコミュニティ値の詳細については以降に示します。ただし、Microsoft は、Microsoft にアドバタイズされるルートにタグ付けされたすべてのコミュニティ値を無視します。
@@ -116,7 +116,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 
 地理的リージョンごとに複数の ExpressRoute 回線を購入できます。複数の接続を持つことで、geo 冗長性による高可用性が確保される大きなメリットがあります。複数の ExpressRoute 回線がある場合、パブリック ピアリングおよび Microsoft ピアリング パスで Microsoft からアドバタイズされたプレフィックスの同じセットを受け取ります。これは、ネットワークから Microsoft へのパスが複数あることを意味します。これは、ネットワーク内で十分に最適化されないルーティングの決定が行われる可能性があることを示します。その結果、さまざまなサービスの接続エクスペリエンスが十分に最適化されない可能性があります。
 
-Microsoft は、パブリック ピアリングと Microsoft ピアリングを介してアドバタイズされるプレフィックスに適切な BGP コミュニティ値をタグ付けして、プレフィックスがホストされるリージョンを示します。ユーザーは、このコミュニティ値に依存して、最適なルーティングを顧客に提供するための適切なルーティングの決定を行うことができます。
+Microsoft は、パブリック ピアリングと Microsoft ピアリングを介してアドバタイズされるプレフィックスに適切な BGP コミュニティ値をタグ付けして、プレフィックスがホストされるリージョンを示します。ユーザーは、このコミュニティ値に依存して、[最適なルーティングを顧客に](expressroute-optimize-routing.md)提供するための適切なルーティングの決定を行うことができます。
 
 | **地理的リージョン** | **Microsoft Azure リージョン** | **BGP コミュニティ値** |
 |---|---|---|
@@ -163,10 +163,7 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 | **CRM Online** | 12076:5040 |
 | **その他の Office 365 サービス** | 12076:5100 |
 
-
-### ルーティングの基本設定の操作
-
-Microsoft は、ユーザーによって設定されたすべての BGP コミュニティ値を無視します。ユーザーは、ピアリングごとに BGP セッションのペアをセットアップして、[可用性 SLA](https://azure.microsoft.com/support/legal/sla/) が満たされていることを保証する必要があります。ただし、標準的な BGP ルートの操作手法に依存して、ネットワークで優先するリンクを構成できます。各リンクにそれぞれ異なる BGP ローカル基本設定を適用して、ネットワークと Microsoft の間で優先するパスを設定できます。ルートのアドバタイズの先頭に「AS-PATH」を付加して、Microsoft からネットワークへのトラフィック フローに影響を与えることができます。
+>[AZURE.NOTE] Microsoft は、Microsoft にアドバタイズされるルートに設定されたすべての BGP コミュニティ値を無視します。
 
 ## 次のステップ
 
@@ -176,4 +173,4 @@ Microsoft は、ユーザーによって設定されたすべての BGP コミ�
 	- [クラシック デプロイメント モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[Resource Manager デプロイメント モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
 	- [クラシック VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[Resource Manager VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

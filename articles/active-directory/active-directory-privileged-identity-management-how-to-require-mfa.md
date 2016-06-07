@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management で MFA を要求する方法
@@ -26,7 +26,7 @@ MFA チャレンジは、ユーザーがサインインしたときに完了す�
 
 ## Azure AD Privileged Identity Management での MFA の要求
 
-セキュリティ管理者として PIM で ID を管理していると、特権アカウントの MFA を推奨するアラートが表示されることがあります。PIM ダッシュボードでそのセキュリティ アラートをクリックすると、MFA を必要とする管理者アカウントの一覧が新しいブレードに表示されます。MFA を要求するには、複数のロールを選択して **[修正]** ボタンをクリックするか、個別のロールの横にある省略記号をクリックして **[修正]** ボタンをクリックします。
+特権ロール管理者として PIM で ID を管理していると、特権アカウントの MFA を推奨するアラートが表示されることがあります。PIM ダッシュボードでそのセキュリティ アラートをクリックすると、MFA を必要とする管理者アカウントの一覧が新しいブレードに表示されます。MFA を要求するには、複数のロールを選択して **[修正]** ボタンをクリックするか、個別のロールの横にある省略記号をクリックして **[修正]** ボタンをクリックします。
 
 > [AZURE.IMPORTANT] 現在、Microsoft アカウント (@outlook.com、@live.com、@hotmail.com など) では Azure MFA に登録することはできないため、高い特権ロールの一時的な管理者として許可されません。Microsoft アカウントを使用してワークロードの管理を続行する必要がある場合は、ここで永続的な管理者に変換してください。
 
@@ -45,4 +45,4 @@ MFA チャレンジは、ユーザーがサインインしたときに完了す�
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

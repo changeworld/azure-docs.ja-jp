@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="03/07/2016"
+ms.date="05/20/2016"
 ms.author="larryfr"/>
 
 #HDInsight クラスターを削除する方法
@@ -34,8 +34,6 @@ HDInsight クラスターは、クラスターが作成されたときに開始�
 
 ##Azure PowerShell
 
-[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
-
 クラスターを削除するには、PowerShell プロンプトで次のコマンドを実行します。
 
     Remove-AzureRmHDInsightCluster -ClusterName CLUSTERNAME
@@ -44,12 +42,10 @@ __CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き�
 
 ##Azure CLI
 
-[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
-
 クラスターを削除するには、プロンプトで次のコマンドを実行します。
 
     azure hdinsight cluster delete CLUSTERNAME
     
 __CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き換えます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

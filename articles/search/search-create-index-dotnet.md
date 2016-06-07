@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/10/2016"
+    ms.date="05/31/2016"
     ms.author="brjohnst"/>
 
 # .NET SDK を使用した Azure Search インデックスの作成
@@ -123,4 +123,4 @@ serviceClient.Indexes.Delete("hotels");
 ## 次へ
 Azure Search インデックスを作成すると、データの検索を開始できるように[インデックスにコンテンツをアップロードする](search-what-is-data-import.md)準備が完了します。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0601_2016-->

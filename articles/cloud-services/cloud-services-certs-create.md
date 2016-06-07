@@ -57,10 +57,15 @@ Windows で証明書を作成する簡単な方法として、`makecert.exe` ユ
 
 ### Makecert.exe
 
-このユーティリティは、Visual Studio 2013/2015 でインストール済みです。これは、証明書を作成してインストールできるコンソール ユーティリティです。Visual Studio のインストール時に作成される **[Developer Command Prompt for VS2015]** ショートカットを起動すると、パス内にこのツールを持つコマンド プロンプトが表示されます。
+このユーティリティは廃止されたため、ここに記載されなくなりました。詳細については、[こちらの MSDN 記事](https://msdn.microsoft.com/library/windows/desktop/aa386968)を参照してください。
 
-    makecert -sky exchange -r -n "CN=[CertificateName]" -pe -a sha1 -len 2048 -ss My -sv [CertificateName].pvk [CertificateName].cer
+### PowerShell
 
+```
+$cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My"
+$password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
+Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
+```
 
 ### インターネット インフォメーション サービス (IIS)
 
@@ -74,10 +79,10 @@ Java を使用して[証明書を作成](../app-service-web/java-create-azure-we
 
 ## 次のステップ
 
-[Azure クラシック ポータル にサービス証明書をアップロードします](cloud-services-configure-ssl-certificate.md)(または [Azure ポータル](cloud-services-configure-ssl-certificate-portal.md))。
+[Azure クラシック ポータル (または [Azure ポータル](cloud-services-configure-ssl-certificate-portal.md)) にサービス証明書をアップロードします](cloud-services-configure-ssl-certificate.md)。
 
 [管理 API 証明書](../azure-api-management-certs.md)を Azure クラシック ポータルにアップロードします。
 
 >[AZURE.NOTE] Azure ポータルは、API へのアクセスに管理証明書を使用しないで、代わりにユーザー アカウントを使用します。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

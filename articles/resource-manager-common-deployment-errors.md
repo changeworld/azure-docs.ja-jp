@@ -1,9 +1,9 @@
 <properties
-   pageTitle="一般的な Azure デプロイ エラー | Microsoft Azure"
+   pageTitle="Azure へのデプロイで発生する一般的なエラーのトラブルシューティング | Microsoft Azure"
    description="Azure Resource Manager でデプロイ時に発生する一般的なエラーを解決する方法について説明します。"
    services="azure-resource-manager"
    documentationCenter=""
-   tags=""
+   tags="top-support-issue"
    authors="tfitzmac"
    manager="timlt"
    editor="tysonn"/>
@@ -14,14 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/19/2016"
+   ms.date="05/18/2016"
    ms.author="tomfitz"/>
 
-# Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーを解決する
+# Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーをトラブルシューティングする
 
-このトピックでは、リソースを Azure にデプロイするときに発生する可能性がある一般的なエラーの解決方法について説明します。デプロイのトラブルシューティングの詳細については、[リソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
-
-一部のエラーは、デプロイ前にテンプレートとパラメーターを確認することで回避できます。テンプレートの確認例については、「[Azure リソース マネージャーのテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)」を参照してください。
+このトピックでは、リソースを Azure にデプロイするときに発生する可能性がある一般的なエラーの解決方法について説明します。エラーについて説明するメッセージが確認できていることを前提としています。デプロイに失敗した理由についてさらに詳しい情報が必要な場合は、[デプロイ操作の表示](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
 
 ## 無効なテンプレートまたはリソース
 
@@ -211,7 +209,7 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
     ...
     info:    provider list command OK
 
-リソース プロバイダーを登録するには、`azure provider register` コマンドを使用し、登録する *namespace* を指定します。
+リソース プロバイダーを登録するには、`azure provider register` コマンドを使用し、登録する*名前空間*を指定します。
 
     azure provider register Microsoft.Cdn
 
@@ -225,6 +223,10 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 
 カスタム スクリプト拡張機能で仮想マシンのデプロイ時にエラーが発生した場合は、「[Azure Windows VM 拡張機能のエラーのトラブルシューティング](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)」または「[Azure Linux VM 拡張機能のエラーのトラブルシューティング](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md)」をご覧ください。
 
+## 仮想マシンのプロビジョニング エラーと割り当てエラー
+
+仮想マシンをデプロイしようとしているときに、OS イメージのプロビジョニング エラーまたは割り当てエラーが発生した場合は、[新しい VM の作成で発生した問題のトラブルシューティング](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)と[割り当てエラーのトラブルシューティング](./virtual-machines/virtual-machines-windows-allocation-failure.md)に関するページを参照してください。
+
 ## デプロイの準備が完了したタイミングを把握する 
 
 すべてのプロバイダーがデプロイから正常に戻ると、Azure Resource Manager からデプロイの成功がレポートされます。ただし、レポートだけでは、リソース グループが "アクティブで、ユーザーが使用できる状態" であるとは判断できません。たとえば、アップグレードのダウンロード、非テンプレート リソースの待機、複雑なスクリプトのインストール、プロバイダーが追跡しているアクティビティではないため Azure が認識していない他の実行可能なアクティビティのインストールなどがデプロイに必要なことがあります。このような場合、リソースが実際に使用できる状態になるまで時間がかかります。その結果、デプロイメントが使用できるまでのある時にデプロイメントが成功の状態になることを予期する必要があります。
@@ -234,6 +236,8 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 ## 次のステップ
 
 - 監査アクションについては、「[リソース マネージャーの監査操作](resource-group-audit.md)」をご覧ください。
-- デプロイ時に発生するエラーを判断するアクションについては、[リソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)に関するページをご覧ください。
+- デプロイ時にエラーが発生した場合の対応については、[デプロイ操作の確認](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
+- Windows ベースの仮想マシンに対するリモート デスクトップ プロトコルのエラーのトラブルシューティングについては、[リモート デスクトップ接続のトラブルシューティング](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)に関するページを参照してください。
+- Linux ベースの仮想マシンに対する SSH (Secure Shell) エラーのトラブルシューティングについては、[SSH (Secure Shell) 接続のトラブルシューティング](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

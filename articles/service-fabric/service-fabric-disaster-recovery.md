@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/03/2016"
+   ms.date="05/25/2016"
    ms.author="seanmck"/>
 
 # Service Fabric での障害復旧
@@ -38,7 +38,7 @@ Azure で Service Fabric クラスターを作成するときは、クラスタ�
 
 ### 地理的な分散
 
-現在、世界中に 22 の Azure リージョンがあり、既にさらに 5 つが発表されています。個々のリージョンは、さまざまな要因の中でも特に需要と適切な場所の可用性に応じて、1 つまたは複数の物理的データ センターを持つことができます。ただし、複数の物理データ センターを持つリージョンであっても、クラスターの VM がこれらの物理的な場所に均等に分散されるという保証はありません。実際、現時点では、特定のクラスターのすべての VM は 1 つの物理サイトにプロビジョニングされます。
+現在、[世界中に 25 の Azure リージョンがあり][azure-regions]、さらに追加のリージョンが発表されています。個々のリージョンは、さまざまな要因の中でも特に需要と適切な場所の可用性に応じて、1 つまたは複数の物理的データ センターを持つことができます。ただし、複数の物理データ センターを持つリージョンであっても、クラスターの VM がこれらの物理的な場所に均等に分散されるという保証はありません。実際、現時点では、特定のクラスターのすべての VM は 1 つの物理サイトにプロビジョニングされます。
 
 ## 障害への対処
 
@@ -56,7 +56,7 @@ Azure で Service Fabric クラスターを作成するときは、クラスタ�
 
 #### クォーラムの損失
 
-ステートフル サービスのパーティションのレプリカの過半数がダウンした場合、そのパーティションは "クォーラム損失" と呼ばれる状態になります。この時点で、Service Fabric はそのパーティションへの書き込み許可を停止し、パーティションの一貫性と信頼性が保たれるようにします。実際には、クライアントのデータが本当は保存されていないのに保存されたものとしてクライアントに通知されないよう、使用不可能な期間を受け入れるようになっています。管理者がそのステートフル サービスのセカンダリ レプリカからの読み取りを許可している場合、この状態の間も読み取り操作の実行を続けられることに注意してください。十分な数のレプリカが復旧するまで、またはクラスターの管理者が [Repair-ServiceFabricPartition API](repair-partition-ps).を使って強制的にシステムを使用できるようにするまで、パーティションはクォーラム損失状態のままになります。プライマリ レプリカがダウンしたときにこの操作を実行すると、データの損失が発生します。
+ステートフル サービスのパーティションのレプリカの過半数がダウンした場合、そのパーティションは "クォーラム損失" と呼ばれる状態になります。この時点で、Service Fabric はそのパーティションへの書き込み許可を停止し、パーティションの一貫性と信頼性が保たれるようにします。実際には、クライアントのデータが本当は保存されていないのに保存されたものとしてクライアントに通知されないよう、使用不可能な期間を受け入れるようになっています。管理者がそのステートフル サービスのセカンダリ レプリカからの読み取りを許可している場合、この状態の間も読み取り操作の実行を続けられることに注意してください。十分な数のレプリカが復旧するまで、またはクラスターの管理者が [Repair-ServiceFabricPartition API][repair-partition-ps].を使って強制的にシステムを使用できるようにするまで、パーティションはクォーラム損失状態のままになります。プライマリ レプリカがダウンしたときにこの操作を実行すると、データの損失が発生します。
 
 システム サービスでもクォーラム損失が発生する可能性があり、その影響は問題のあるサービスに固有です。たとえば、ネーム サービスでクォーラム損失が発生すると名前の解決に影響があり、フェールオーバー マネージャー サービスの場合は新しいサービスの作成とフェールオーバーがブロックされます。ユーザー独自のサービスとは異なり、システム サービスは*修復しない*ことをお勧めします。代わりに、単にダウンしたレプリカが復旧するまで待つことをお勧めします。
 
@@ -68,7 +68,7 @@ Azure で Service Fabric クラスターを作成するときは、クラスタ�
 
 ### データ センターの停止または破壊
 
-まれに、停電やネットワーク切断のために、物理的なデータ センターが一時的に使用できなくなることがあります。このような場合は、Service Fabric クラスターとアプリケーションも同様に使用できなくなりますが、データは保存されます。Azure で実行されているクラスターの場合、[Azure ステータス ページ](azure-status-dashboard)で停止時の更新を確認できます。
+まれに、停電やネットワーク切断のために、物理的なデータ センターが一時的に使用できなくなることがあります。このような場合は、Service Fabric クラスターとアプリケーションも同様に使用できなくなりますが、データは保存されます。Azure で実行されているクラスターの場合、[Azure ステータス ページ][azure-status-dashboard]で停止時の更新を確認できます。
 
 極めてまれなことですが、データ センター全体が物理的に破棄された場合、そこでホストされている Service Fabric クラスターはその状態と共に失われます。
 
@@ -82,7 +82,6 @@ protected virtual Task<bool> OnDataLoss(CancellationToken cancellationToken)
 }
 ```
 
->[AZURE.NOTE] 現在、バックアップと復元は Reliable Services API に対してのみ使用できます。Reliable Actors 用のバックアップと復元は、今後のリリースで使用可能になります。
 
 ### ソフトウェア障害およびデータ損失の他の原因
 
@@ -90,22 +89,23 @@ protected virtual Task<bool> OnDataLoss(CancellationToken cancellationToken)
 
 ## 次のステップ
 
-- [Testability フレームワーク](service-fabric-testability-overview.md)を使用してさまざまな障害をシミュレートする方法を学習します
+- [Testability フレームワーク](service-fabric-testability-overview.md)を使用してさまざまな障害をシミュレートする方法について説明します
 - 障害復旧と高可用性に関する他のリソースを読みます。Microsoft は、これらのトピックに関して多数のガイダンスを公開しています。これらのドキュメントの一部は他の製品で使用するための具体的な方法に関するものですが、Service Fabric にも適用できる多くの一般的なベスト プラクティスが含まれます。
- - [可用性のチェックリスト](azure-availability-checklist)
- - [障害復旧訓練の実行](disaster-recovery-drill)
- - [Azure アプリケーションの障害復旧と高可用性](dr-ha-guide)
+ - [可用性のチェックリスト](../best-practices-availability-checklist.md)
+ - [障害復旧訓練の実行](../sql-database/sql-database-disaster-recovery-drills.md)
+ - [Azure アプリケーションの障害復旧と高可用性][dr-ha-guide]
 
 
 <!-- External links -->
 
-[repair-partition-ps]: https://msdn.microsoft.com/ja-JP/library/mt163522.aspx
-[azure-status-dashboard]: https://azure.microsoft.com/ja-JP/status/
-[azure-availability-checklist]: https://azure.microsoft.com/ja-JP/documentation/articles/best-practices-availability-checklist/
-[disaster-recovery-drill]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-database-disaster-recovery-drills/
+[repair-partition-ps]: https://msdn.microsoft.com/library/mt163522.aspx
+[azure-status-dashboard]: https://azure.microsoft.com/status/
+[azure-regions]: https://azure.microsoft.com/regions/
+[dr-ha-guide]: https://msdn.microsoft.com/library/azure/dn251004.aspx
+
 
 <!-- Images -->
 
 [sfx-cluster-map]: ./media/service-fabric-disaster-recovery/sfx-clustermap.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -13,20 +13,56 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/08/2016"
+	ms.date="05/18/2016"
 	ms.author="jroth" />
 
 # Azure Virtual Machines での SQL Server の自動修正 (クラシック)
 
-自動修正では、SQL Server 2012 または 2014 を実行している Azure 仮想マシンのメンテナンス期間が設定されます。このメンテナンス期間にのみ、自動更新プログラムをインストールできます。これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。これは SQL Server IaaS エージェントに依存します。
+> [AZURE.SELECTOR]
+- [リソース マネージャー](virtual-machines-windows-sql-automated-patching.md)
+- [クラシック](virtual-machines-windows-classic-sql-automated-patching.md)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+自動修正では、SQL Server を実行している Azure 仮想マシンのメンテナンス期間が設定されます。このメンテナンス期間にのみ、自動更新プログラムをインストールできます。これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。自動修正は、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-classic-sql-server-agent-extension.md)に依存します。
 
-## Azure ポータルでの自動修正の構成
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+リソース マネージャー モデル。この記事の Resource Manager バージョンを確認するには、[Azure Virtual Machines での SQL Server の自動修正 (Resource Manager)](virtual-machines-windows-sql-automated-patching.md) に関するページをご覧ください。
 
-新しい SQL Server 仮想マシンを作成するときに、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkID=525040&clcid=0x409)を使用して、自動修正を構成できます。
+## 前提条件
 
->[AZURE.NOTE] 自動修正は、SQL Server IaaS エージェントに依存します。このエージェントをインストールして構成するには、ターゲット仮想マシン上で Azure VM エージェントが実行されている必要があります。仮想マシン ギャラリーの最近のイメージでは、このオプションが既定で有効になっていますが、既存の VM では、Azure VM エージェントが存在しない可能性があります。独自の VM イメージを使用している場合は、SQL Server IaaS エージェントもインストールする必要があります。詳細については、「[VM エージェントと拡張機能 – パート 2](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」をご覧ください。
+自動修正を使用するには、次の前提条件を検討してください。
+
+**オペレーティング システム**:
+
+- Windows Server 2012
+- Windows Server 2012 R2
+
+**SQL Server のバージョン**:
+
+- SQL Server 2012
+- SQL Server 2014
+- SQL Server 2016
+
+**Azure PowerShell**:
+
+- [最新の Azure PowerShell コマンドをインストールします](../powershell-install-configure.md) (PowerShell で自動修正を構成する場合)。
+
+>[AZURE.NOTE] 自動修正は、SQL Server IaaS Agent 拡張機能に依存します。現在の SQL 仮想マシン ギャラリー イメージでは、既定でこの拡張機能が追加されます。詳細については、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-classic-sql-server-agent-extension.md)に関するページをご覧ください。
+
+## Settings
+
+自動修正で構成できるオプションを次の表に示します。実際の構成手順は、Azure ポータルと Azure Windows PowerShell コマンドのどちらを使用するかによって異なります。
+
+|設定|指定できる値|説明|
+|---|---|---|
+|**自動修正**|有効/無効 (無効)|Azure 仮想マシンの自動修正を有効または無効にします。|
+|**メンテナンス スケジュール**|毎日、月曜日、火曜日、水曜日、木曜日、金曜日、土曜日、日曜日|仮想マシンの Windows、SQL Server、および Microsoft の更新プログラムをダウンロードしてインストールするスケジュール。|
+|**メンテナンスの開始時間**|0 ～ 24|仮想マシンを更新するローカルの開始時刻。|
+|**メンテナンス時間**|30 ～ 180|更新プログラムのダウンロードとインストールを完了するのに許可されている時間 (分単位)|
+|**パッチのカテゴリ**|重要|ダウンロードしてインストールする更新プログラムのカテゴリ。|
+
+## ポータルでの構成
+
+クラシック デプロイメント モデルで新しい SQL Server 仮想マシンを作成するときに、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkID=525040&clcid=0x409)を使用して、自動修正を構成できます。
 
 次の Azure ポータルのスクリーンショットは、**[オプションの構成]** の **[SQL 自動修正]** の各オプションを示しています。
 
@@ -36,9 +72,9 @@
 
 ![Azure ポータルの自動修正構成](./media/virtual-machines-windows-classic-sql-automated-patching/IC792132.jpg)
 
->[AZURE.NOTE] 自動修正を初めて有効にすると、バックグラウンドで SQL Server IaaS エージェントが構成されます。この間、Azure ポータルには自動修正が構成されていることは示されません。エージェントがインストールされ、構成されるまで数分待ちます。その後、Azure ポータルに新しい設定が反映されます。
+>[AZURE.NOTE] 自動修正を初めて有効にすると、バックグラウンドで SQL Server IaaS エージェントが構成されます。この間、自動修正が構成されていることは、Azure ポータルに示されない可能性があります。エージェントがインストールされ、構成されるまで数分待ちます。その後、Azure ポータルに新しい設定が反映されます。
 
-## PowerShell を使用した自動修正の構成
+## PowerShell での構成
 
 PowerShell を使用して自動修正を構成することもできます。
 
@@ -61,36 +97,10 @@ SQL Server IaaS エージェントのインストールと構成には数分か�
 
 自動修正を無効にするには、New-AzureVMSqlServerAutoPatchingConfig の -Enable パラメーターを指定せずに、同じスクリプトを実行します。インストールと同様に、自動修正の無効化には数分かかる場合があります。
 
-## SQL Server IaaS エージェントの無効化とアンインストール
-
-自動バックアップと自動修正で SQL Server IaaS エージェントを無効にするには、次のコマンドを使用します。
-
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -Disable | Update-AzureVM
-
-SQL Server IaaS エージェントをアンインストールするには、次の構文を使用します。
-
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension –Uninstall | Update-AzureVM
-
-**Remove-AzureVMSqlServerExtension** コマンドを使用して、拡張機能をアンインストールすることもできます。
-
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Remove-AzureVMSqlServerExtension | Update-AzureVM
-
-## 互換性
-
-次の製品は、自動修正の SQL Server IaaS エージェント機能と互換性があります。
-
-- Windows Server 2012
-
-- Windows Server 2012 R2
-
-- SQL Server 2012
-
-- SQL Server 2014
-
 ## 次のステップ
 
-Azure の SQL Server VM の関連機能については、「[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-sql-automated-backup.md)」をご覧ください。
+その他の利用可能なオートメーション タスクについては、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-classic-sql-server-agent-extension.md)に関するページをご覧ください。
 
-[Azure Virtual Machines で SQL Server を実行するための他のリソース](virtual-machines-windows-sql-server-iaas-overview.md)を確認します。
+Azure VM で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0525_2016--->

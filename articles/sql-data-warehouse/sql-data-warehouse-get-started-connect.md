@@ -21,13 +21,14 @@
 > [AZURE.SELECTOR]
 - [Visual Studio](sql-data-warehouse-get-started-connect.md)
 - [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
+- [AAD](sql-data-warehouse-get-started-connect-aad-authentication.md)
 
 このチュートリアルでは、Visual Studio の SQL Server Data Tools (SSDT) 拡張機能を使用して、Azure SQL Data Warehouse にわずか数分で接続する方法について説明します。接続後に、簡単なクエリを実行します。
 
 ## 前提条件
 
 + SQL Data Warehouse に含まれる AdventureWorksDW サンプル データ。このデータベースの作成方法については、[SQL Data Warehouse の作成][]に関するページを参照してください。
-+ Visual Studio の SQL Server Data Tools。インストールの手順とオプションの詳細については、[Visual Studio と SSDT のインストール][]に関するページを参照してください。
++ Visual Studio の SQL Server Data Tools。インストールの手順とオプションについては、[Visual Studio と SSDT のインストール][]に関するページを参照してください。
 
 ## 手順 1. Azure SQL サーバーの完全修飾名を検索する
 
@@ -93,12 +94,12 @@ SQL Data Warehouse データベースは、Azure SQL Server に関連付けら�
 
 これで接続してクエリを実行することができます。[Power BI でデータを視覚化][]してみてください。
 
-Windows 認証を使用するように環境を構成する方法については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する][]」を参照してください。
+Windows 認証を使用するように環境を構成する方法については、[Azure Active Directory 認証を使用した SQL Database または SQL Data Warehouse への接続][]に関するページを参照してください。
 
 <!--Arcticles-->
 [SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 [Visual Studio と SSDT のインストール]: sql-data-warehouse-install-visual-studio.md
-[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する]: ../sql-database/sql-database-aad-authentication.md
+[Azure Active Directory 認証を使用した SQL Database または SQL Data Warehouse への接続]: ../sql-data-warehouse/sql-data-warehouse-get-started-connect-aad-authentication.md
 [Power BI でデータを視覚化]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
 
 <!--Other-->
@@ -115,4 +116,4 @@ Windows 認証を使用するように環境を構成する方法については
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

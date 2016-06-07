@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="05/16/2016"
+   	ms.date="06/01/2016"
    	ms.author="jgao"/>
 
 # Azure Marketplace への HDInsight アプリケーションの発行
@@ -63,6 +63,19 @@ HDInsight アプリケーションのインストールに必要なファイル�
 
 - [createUiDefinition.json](#define-application)。
 - mainTemplate.json。「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。
+
+	>[AZURE.IMPORTANT] アプリケーションのインストール スクリプトの名前は以下の形式とし、特定のクラスターにおいて一意であることが必要です。
+	
+	>	name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
+		
+	>スクリプト名は、次の 3 つの部分で構成されていることに注意してください。
+		
+	>	1. A script name prefix, which shall include either the application name or a name relevant to the application.
+	>	2. A "-" for readability.
+	>	3. A unique string function with the application name as the parameter.
+
+	>	An example is the above ends up becoming: hue-install-v0-4wkahss55hlas in the persisted script action list. For a sample JSON payload, see [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+
 - 必要なすべてのスクリプト。
 
 > [AZURE.NOTE] アプリケーション ファイル (もしあれば Web アプリケーション ファイルも含む) は、パブリックにアクセスできる任意のエンドポイントに配置できます。
@@ -72,17 +85,17 @@ HDInsight アプリケーションのインストールに必要なファイル�
 次の手順に従って HDInsight アプリケーションを発行します。
 
 1. [Azure 発行ポータル](https://publish.windowsazure.com/)にサインオンします。
-2. **[Solution templates]** (ソリューション テンプレート) をクリックして新しいソリューション テンプレートを作成します。
-3. **[Create Dev Center account and join the Azure program]** (デベロッパー センター アカウントを作成して Azure プログラムに参加する) をクリックして勤務先の会社を登録します (未登録の場合)。「[Microsoft 開発者アカウントの作成](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)」を参照してください。
-4. **[Define some Topologies to get Started]** (いくつかのトポロジを定義して開始する) をクリックします。ソリューション テンプレートは、作成したすべてのトポロジの 「親」 となります。1 つのプランまたはソリューション テンプレートでは、複数のトポロジを定義できます。プランをステージングにプッシュすると、すべてのトポロジも一緒にプッシュされます。 
+2. **[Solution templates (ソリューション テンプレート)]** をクリックして新しいソリューション テンプレートを作成します。
+3. **[Create Dev Center account and join the Azure program (デベロッパー センター アカウントを作成して Azure プログラムに参加する)]** をクリックして勤務先の会社を登録します (未登録の場合)。「[Microsoft 開発者アカウントの作成](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)」を参照してください。
+4. **[Define some Topologies to get Started (いくつかのトポロジを定義して開始する)]** をクリックします。ソリューション テンプレートは、作成したすべてのトポロジの 「親」 となります。1 つのプランまたはソリューション テンプレートでは、複数のトポロジを定義できます。プランをステージングにプッシュすると、すべてのトポロジも一緒にプッシュされます。 
 5. 新しいバージョンを追加します。
 6. 「[アプリケーションのパッケージ化](#package-application)」で作成した zip ファイルをアップロードします。  
-7. **[証明書の要求]** をクリックします。Microsoft の認定チームがファイルを確認し、トポロジを認定します。
+7. **[Request Certification (証明書の要求)]** をクリックします。Microsoft の認定チームがファイルを確認し、トポロジを認定します。
 
 ## 次のステップ
 
-- [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md)。未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
-- [Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)。スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
-- [ARM テンプレートを使用して Linux ベースの Hadoop クラスターを HDInsight に作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。ARM テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
+- [カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md): 未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
+- [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
+- [ARM テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md): ARM テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

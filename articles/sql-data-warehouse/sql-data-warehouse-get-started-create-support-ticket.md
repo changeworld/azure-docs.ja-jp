@@ -1,5 +1,5 @@
 <properties
-   pageTitle="SQL Data Warehouse のサポート チケットを作成する | Microsoft Azure"
+   pageTitle="SQL Data Warehouse のサポート チケットを作成する方法 | Microsoft Azure"
    description="Azure SQL Data Warehouse でサポート チケットを作成する方法。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -13,16 +13,17 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/17/2016"
+   ms.date="05/29/2016"
    ms.author="sonyam;barbkess;sonyama"/>
 
-# SQL Data Warehouse のサポート チケットを作成する
- この記事では、SQL Data Warehouse のサポート チケットを作成する方法を示します。
+# SQL Data Warehouse のサポート チケットを作成する方法
+ 
+SQL Data Warehouse で問題が発生した場合は、サポート チケットを作成してください。エンジニアリング チームがサポートいたします。
 
-
-## サポート チケットを作成する方法
+## サポート チケットの作成
 
 1. [Azure ポータル][] を開きます。
+
 2. ホーム画面で **[ヘルプとサポート]** タイルをクリックします。
 
     ![ヘルプとサポート](./media/sql-data-warehouse-get-started-create-support-ticket/help-support.png)
@@ -45,10 +46,11 @@
 
 7. **[サポート プラン]** を選択します。
 
-    - 課金とサブスクリプション管理に関連する問題のサポートは、すべてのサポート レベルでご利用いただけます。
-    - 障害対応の問題に関するサポートは、Developer、Standard、Pro-Direct、Premier サポートで提供いたします。障害対応のサポートとは、Azure のご利用に際して発生した、マイクロソフトが原因と想定される問題への対応です。
-    - 開発者支援およびアドバイザリ サービスは、Professional Direct サポートと Premier サポートでご利用いただけます。
-    - スコープ、対応時間、価格等の Azure サポートに関する詳細は、「[Azure のサポート プラン][]」を参照してください。
+    - **課金とサブスクリプション管理に関する**サポートは、すべてのサポート レベルでご利用いただけます。
+    - **障害対応**のサポートは、Developer サポート、Standard サポート、Professional Direct サポート、Premier サポートにより提供されます。**障害対応**のサポートとは、Azure のご利用に際して発生した、マイクロソフトが原因と想定される問題への対応です。
+    - **開発者支援**および**アドバイザリ サービス**は、Professional Direct サポートと Premier サポートでご利用いただけます。
+    
+    サポートの範囲、応答時間、価格など各プランの詳細については、[Azure サポート プラン][]をご覧ください。Azure のサポートに関してよく寄せられる質問については、「[Azure サポートに関する FAQ][]」を参照してください。
 
     ![サポート プラン](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
 
@@ -69,19 +71,22 @@
 11. **[作成]** をクリックしてサポート要求を送信します。
 
 
-## 次のステップ
+## サポート チケットの状態の確認
+
 サポート要求を送信すると、Azure サポート チームから連絡があります。要求の状態と詳細を確認するには、ダッシュボードで **[サポート要求の管理]** をクリックします。
 
 ![状態の確認](./media/sql-data-warehouse-get-started-create-support-ticket/check-status.png)
 
-さらに、[Stack Overflow][] または [Azure SQL Data Warehouse MSDN フォーラム][]で azure-sqldw タグを使用して SQL Data Warehouse のコミュニティと接続できます。
+## その他のリソース
+
+さらに、[Stack Overflow][] または [Azure SQL Data Warehouse MSDN フォーラム][]で SQL Data Warehouse のコミュニティと交流することができます。
 
 <!-- External links -->
-
 [Azure ポータル]: https://portal.azure.com/
-[Azure のサポート プラン]: http://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
+[Azure サポート プラン]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
+[Azure サポートに関する FAQ]: https://azure.microsoft.com/support/faq/
 [Microsoft Premier オンライン ポータル]: https://premier.microsoft.com/
-[Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw/
+[Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL Data Warehouse MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

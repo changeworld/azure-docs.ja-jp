@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/05/2016"
+   ms.date="05/19/2016"
    ms.author="alkohli" />
 
 # StorSimple Virtual Array の StorSimple Manager サービスのデプロイ
@@ -38,7 +38,7 @@ StorSimple Manager のランディング ページには、StorSimple ストレ�
 - サービス登録キーを取得する
 - サービス登録キーを再生成する
 
-このチュートリアルでは、これらの各タスクの実行方法を説明します。
+このチュートリアルでは、これらの各タスクの実行方法を説明します。この記事に記載されている内容は、StorSimple Virtual Array にのみ適用されます。StorSimple 8000 シリーズの詳細については、「[StorSimple Manager サービスをデプロイする](storsimple-manage-service.md)」を参照してください。
 
 ## サービスの作成
 
@@ -51,6 +51,8 @@ StorSimple デバイスをデプロイする場合は、**[簡易作成]** オ�
 サービスの作成時に既定のストレージ アカウントを生成することもできます。
 
 単一のサービスで複数のデバイスを管理できます。ただし、1 つのデバイスを複数のサービスに割り当てることはできません。大企業は、そのようなサービス インスタンスを複数持つことで、さまざまなサブスクリプション、組織、デプロイの場所に対応することができます。
+
+> [AZURE.NOTE] StorSimple 8000 シリーズ デバイスと StorSimple Virtual Array の管理には、StorSimple Manager サービスの個別のインスタンスが必要です。
 
 サービスを作成するには、次の手順を実行します。
 
@@ -74,7 +76,7 @@ StorSimple デバイスをデプロイする場合は、**[簡易作成]** オ�
 
 ## サービス登録キーを取得する
 
-正常にサービスを作成した後、そのサービスに StorSimple デバイスを登録します。初めて StorSimple デバイスを登録する場合は、サービス登録キーが必要です。既存の StorSimple サービスに追加のデバイスを登録するには、登録キーとサービス データ暗号化キー (最初のデバイスの登録中に生成される) の両方が必要です。サービス データ暗号化キーの詳細については、[ローカル Web UI からのサービス データ暗号化キーの入手](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)に関するトピックを参照してください。
+正常にサービスを作成した後、そのサービスに StorSimple デバイスを登録します。初めて StorSimple デバイスを登録する場合は、サービス登録キーが必要です。既存の StorSimple サービスに追加のデバイスを登録するには、登録キーとサービス データ暗号化キー (最初のデバイスの登録中に生成される) の両方が必要です。サービス データ暗号化キーの詳細については、[ローカル Web UI からのサービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)に関するトピックを参照してください。
 
 次の手順を実行して、サービス登録キーを取得します。
 
@@ -111,4 +113,4 @@ StorSimple デバイスをデプロイする場合は、**[簡易作成]** オ�
 
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0525_2016-->

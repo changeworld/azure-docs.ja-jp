@@ -1,19 +1,19 @@
 <properties
    pageTitle="Microsoft Azure セキュリティの概要 | Microsoft Azure"
    description="この記事では、Microsoft Azure のセキュリティ機能の概要と、クラウド プロバイダーにアセットを移行しようとする組織の一般的な考慮事項について説明します。"
-   services="virtual-machines, cloud-services, storage"
+   services="security"
    documentationCenter="na"
    authors="YuriDio"
    manager="swadhwa"
    editor="TomSh"/>
 
 <tags
-   ms.service="azure-security"
+   ms.service="security"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/04/2016"
+   ms.date="05/23/2016"
    ms.author="yuridio"/>
 
 #Microsoft Azure セキュリティの概要
@@ -241,4 +241,4 @@ Azure には、脅威の緩和を実装し、お客様の環境での潜在的�
 
 [Active Directory のブログ](http://blogs.technet.com/b/ad/)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0525_2016-->

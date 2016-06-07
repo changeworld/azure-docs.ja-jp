@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/13/2016"
+	ms.date="05/25/2016"
 	ms.author="larryfr"/>
 
 # スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
@@ -26,6 +26,14 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 ## スクリプト アクションについて
 
 スクリプト アクションは、URL とパラメーターの指定先の Bash スクリプトにすぎず、HDInsight クラスター ノードで実行されます。スクリプト アクションの特性と機能を次に示します。
+
+* HDInsight クラスターからアクセスできる URI に保存されている必要があります。たとえば保存スペースとして、次の場所を使用できます。
+
+    * Blob Storage アカウント (HDInsight クラスターのプライマリ ストレージ アカウントまたはセカンダリ ストレージ アカウント)。HDInsight には、両方のタイプのストレージ アカウントに対するアクセス権がクラスターの作成時に付与されます。これによりパブリックではないスクリプト アクションの使用が可能となります。
+    
+    * パブリックに読み取り可能な URI (Azure BLOB、GitHub、OneDrive、Dropbox など)。
+    
+    BLOB コンテナーに保存されたスクリプト用の (パブリックに読み取り可能な) URI の例については、「[スクリプト アクションのスクリプト例](#example-script-action-scripts)」セクションを参照してください。
 
 * ヘッド ノードや worker ノードなど、__特定のノード タイプでのみ実行__できます。
 
@@ -135,7 +143,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 #### 開始する前に
 
-* コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。
+* コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。
 * ARM テンプレートを作成する方法の手順については、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
 * リソース マネージャーで Azure PowerShell を使用したことがない場合は、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
@@ -426,13 +434,11 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 1. [Azure ポータル](https://portal.azure.com)で HDInsight クラスターを選択します。
 
-2. HDInsight クラスター ブレードで、__[設定]__ を選択します。
+2. [HDInsight クラスター] ブレードから __[スクリプト アクション]__ タイルを選択します。
 
-    ![Settings icon](./media/hdinsight-hadoop-customize-cluster-linux/settingsicon.png)
+    ![Script actions tile](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionstile.png)
 
-3. [設定] ブレードで、__[スクリプト アクション]__ を選択します。
-
-    ![Script Actions link](./media/hdinsight-hadoop-customize-cluster-linux/settings.png)
+    > [AZURE.NOTE] __[すべての設定]__ を選択した後、[設定] ブレードから __[スクリプト アクション]__ を選択してもかまいません。
 
 4. [スクリプト アクション] ブレードの上部で、__[新規で送信]__ を選択します。
 
@@ -479,7 +485,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ### 実行中のクラスターに Azure CLI からスクリプト アクションを適用する
 
-次に進む前に、Azure CLI をインストールして構成したことを確認します。詳細については、「[Azure CLI のインストール](../xplat-cli-install.md)」を参照してださい。
+次に進む前に、Azure CLI をインストールして構成したことを確認します。詳細については、「[Azure CLI のインストール](../xplat-cli-install.md)」を参照してください。
 
 	[AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)] 
 
@@ -684,4 +690,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター作成時の段階"
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0525_2016-->

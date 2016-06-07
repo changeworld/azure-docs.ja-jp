@@ -78,6 +78,7 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利
 * [データを削除する](#deleting)
 * [競合の解決とオプティミスティック同時実行制御](#optimisticconcurrency)
 * [Windows ユーザー インターフェイスへのバインド](#binding)
+* [ページ サイズを変更する](#pagesize)
 
 ###<a name="instantiating"></a>方法: テーブル参照を作成する
 
@@ -150,7 +151,7 @@ Server SDK によって次のように SQL クエリに変換されます。
 
 この 2 つの方法は等価であり、区別しないで使用できます。複数の述語を 1 つのクエリに連結する前のオプションが、よりコンパクトでありお勧めです。
 
-`Where` 句は、OData サブセットに変換される操作をサポートします。これには、関係演算子 (==、! =、<、<=、>、>=)、算術演算子 (+、-、/、*、%)、数の精度 (Math.Floor、Math.Ceiling)、文字列関数 (Length、Substring、Replace、IndexOf、StartsWith、EndsWith)、日付プロパティ (Year、Month、Day、Hour、Minute、Second)、オブジェクトのアクセス プロパティ、これらすべてを組み合わせた式が含まれます。Server SDK のサポート対象を考慮する際に、[OData バージョン 3 のドキュメント]を検討することができます。
+`Where` 句は、OData サブセットに変換される操作をサポートします。これには、関係演算子 (==、! =、<、<=、>、>=)、算術演算子 (+、-、/、*、%)、数の精度 (Math.Floor、Math.Ceiling)、文字列関数 (Length、Substring、Replace、IndexOf、StartsWith、EndsWith)、日付プロパティ (Year、Month、Day、Hour、Minute、Second)、オブジェクトのアクセス プロパティ、これらすべてを組み合わせた式が含まれます。Server SDK のサポート対象を考慮する際に、[OData v3 のドキュメント]を検討することができます。
 
 ###<a name="sorting"></a>方法: 返されるデータを並べ替える
 
@@ -278,7 +279,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 
 	await todoTable.UpdateAsync(todoItem);
 
-型指定されていないデータを挿入するには、次のような [Json.NET] を利用できます。
+型指定されていないデータを挿入するには、次のように [Json.NET] を利用できます。
 
 	JObject jo = new JObject();
 	jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
@@ -300,7 +301,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 	jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
 	await table.DeleteAsync(jo);
 
-削除要求を行うときは、ID を指定する必要があります。それ以外のプロパティは、サービスに渡されないか、またはサービスで無視されます。通常、`DeleteAsync` の呼び出しの結果は `null` です。渡す ID は、`InsertAsync` の呼び出しの結果から取得できます。`id` フィールドに値を指定せず項目を削除しようとすると、`MobileServiceInvalidOperationException` がスローされます。
+削除要求を行うときは、ID を指定する必要があります。それ以外のプロパティは、サービスに渡されないか、またはサービスで無視されます。通常、`DeleteAsync` の呼び出しの結果は `null` です。渡す ID は、`InsertAsync` の呼び出しの結果から取得できます。`id` フィールドに値を指定せずに項目を削除しようとすると、`MobileServiceInvalidOperationException` がスローされます。
 
 ###<a name="optimisticconcurrency"></a>方法: 競合解決にオプティミスティック同時実行制御を使用する
 
@@ -331,7 +332,7 @@ Mobile Apps はオプティミスティック同時実行制御をサポート�
 	//Enable optimistic concurrency by retrieving version
 	todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
-オプティミスティック同時実行制御を有効にすることに加えて、[UpdateAsync] の呼び出し時にコード内で起きた `MobileServicePreconditionFailedException<T>` 例外をキャッチすることも必要です。更新されるレコードに正確な `version` を適用して競合を解決し、解決済みのレコードで [UpdateAsync] を呼び出します。次のコードは、書き込み競合が検出された場合にそれを解決する方法を示しています。
+オプティミスティック同時実行制御を有効にする以外に、[UpdateAsync] を呼び出すときはコードで `MobileServicePreconditionFailedException<T>` 例外をキャッチすることも必要です。更新されるレコードに正確な `version` を適用して競合を解決し、解決済みのレコードで [UpdateAsync] を呼び出します。次のコードは、書き込み競合が検出された場合にそれを解決する方法を示しています。
 
 	private async void UpdateToDoItem(TodoItem item)
 	{
@@ -422,6 +423,17 @@ Windows Phone 8 と "Silverlight" アプリで新しいコレクションを使�
 
 最後に、テーブルには多くのフィールドが存在するものの、コントロールにはその一部のみを表示する必要があるとします。UI に表示する特定の列を選ぶ際には、前のセクション「[特定の列を選択する](#selecting)」のガイダンスを参考にしてください。
 
+###<a name="pagesize"></a>ページ サイズの変更
+
+Azure Mobile Apps は、既定で、要求ごとに最大 50 個の項目を返します。この動作を変更するには、サーバー側で最大ページ サイズを大きくし、クライアント側で要求されたページ サイズを大きくします。要求されたページ サイズを大きくするには、`PullAsync` のオーバーロードを使用すると、`PullOptions` を指定できるようになります。
+
+    PullOptions pullOptions = new PullOptions
+		{
+			MaxPageSize = 100
+		};
+
+サーバー内で PageSize に 100 以上の値を設定した場合は、各要求で最大 100 個の項目が返されます。
+
 ##<a name="#customapi"></a>カスタム API の使用
 
 カスタム API を使用してカスタム エンドポイントを定義することにより、insert、update、delete、read のいずれの操作にも関連しないサーバー機能を公開することができます。カスタム API を使用することによって、HTTP メッセージ ヘッダーの読み取りや設定、JSON 以外のメッセージ本文形式の定義など、メッセージングをより柔軟に制御することができます。
@@ -439,7 +451,7 @@ Mobile Apps は、Facebook、Google、Microsoft アカウント、Twitter、Azur
 
 _サーバー フロー_と_クライアント フロー_という 2 つの認証フローがサポートされます。サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。クライアント フローでは、プロバイダー固有とデバイス固有の SDK を利用することから、デバイス固有の機能との統合がさらに進みます。
 
-いずれの場合でも、アプリケーションを ID プロバイダーに登録する必要があります。ID プロバイダーは、クライアント ID とクライアント シークレットを提示します。その後、ID プロバイダーが提示したクライアント ID とクライアント シークレットで、Azure App Service 認証/承認を構成する必要があります。詳細については、「[Windows アプリに認証を追加する]」の詳しい説明に従ってください。
+いずれの場合でも、アプリケーションを ID プロバイダーに登録する必要があります。ID プロバイダーは、クライアント ID とクライアント シークレットを提示します。その後、ID プロバイダーが提示したクライアント ID とクライアント シークレットで、Azure App Service 認証/承認を構成する必要があります。詳細については、[アプリに認証を追加する]チュートリアルの詳しい手順を参照してください。
 
 ###<a name="serverflow"></a>サーバー フロー
 ID プロバイダーを登録した後は、プロバイダーの [MobileServiceAuthenticationProvider] 値で MobileServiceClient.[LoginAsync メソッド] を呼び出します。たとえば、次のコードは、Facebook を使用してサーバー フローのサインインを開始します。
@@ -599,9 +611,9 @@ Windows Phone アプリの場合は、[ProtectedData] クラスを使用して�
 
 ### <a name="adal"></a>Active Directory 認証ライブラリを使用してユーザーを認証する
 
-Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。これにより、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、多くの場合、`loginAsync()` メソッドを使用する方法よりも推奨されます。
+Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。これはよりネイティブ UX の感覚を提供し、さらなるカスタマイズが可能なため、多くの場合、`loginAsync()` メソッドの使用よりも推奨されます。
 
-1. 「[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法]」のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
+1. [Active Directory ログインを使用するように App Service を構成する方法]のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
 
 2. Visual Studio または Xamarin Studio で、プロジェクトを開き、`Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet パッケージへの参照を追加します。検索時に、プレリリース版を含めます。
 
@@ -609,7 +621,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 
 * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は https://login.windows.net/contoso.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル](https://manage.windowsazure.com/) の Azure Active Directory の [ドメイン] タブからコピーできます。
 
-* **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。これは、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
+* **INSERT-RESOURCE-ID-HERE** をモバイル アプリ バックエンドのクライアント ID に置き換えます。これは、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブから取得できます。
 
 * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
 
@@ -725,7 +737,7 @@ Mobile Apps クライアントでは、Azure Notification Hubs によるプッ�
 
 WNS に対するプッシュを行う場合は、Windows ストア パッケージ SID (下記) を取得する必要があります。この例では、登録で 2 つのタグが含められます。テンプレート登録に登録する方法を含む Windows アプリの詳細については、「[アプリにプッシュ通知を追加する]」を参照してください。
 
-クライアントからのタグ要求はサポートされていません。タグ要求は、通告なく登録から削除されます。タグと共にデバイスを登録したい場合は、Notification Hubs API を使用するカスタム API を作成し、登録を代行させます。`RegisterNativeAsync()` メソッドの代わりに、[カスタム API](#customapi) を呼び出します。
+クライアントからのタグ要求はサポートされていません。タグ要求は、通告なく登録から削除されます。タグと共にデバイスを登録したい場合は、Notification Hubs API を使用するカスタム API を作成し、登録を代行させます。`RegisterNativeAsync()` メソッドの代わりに、[カスタム API を呼び出します](#customapi)。
 
 ###<a name="package-sid"></a>方法: Windows ストアのパッケージ SID を取得する
 
@@ -782,7 +794,7 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 
 セキュリティのためにタグはすべて取り除かれるので注意してください。インストールまたはインストール内のテンプレートにタグを追加する方法については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作]」を参照してください。
 
-これらの登録済みテンプレートを使用して通知を送信するには、[Notification Hubs API] を参照します。
+これらの登録済みテンプレートを使用して通知を送信する方法については、[Notification Hubs API] に関するページを参照してください。
 
 ##<a name="misc"></a>その他のトピック
 
@@ -805,7 +817,7 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 		}
 	}
 
-エラー状況を処理する他の例は、[Mobile Apps ファイル サンプル]で確認することができます - [LoggingHandler] の例では、ログ記録代理ハンドラー (下記参照) を使用して、バックエンドに対する要求を記録します。この方法では、Fiddler に頼るよりも容易に、Xamarin アプリケーションをデバッグできます。
+エラー状況を処理する他の例は、[Mobile Apps ファイル サンプル]で確認することができます。[LoggingHandler] の例では、ログ記録代理ハンドラー (下記参照) を使用して、バックエンドに対する要求を記録します。この方法では、Fiddler に頼るよりも容易に、Xamarin アプリケーションをデバッグできます。
 
 ###<a name="headers"></a>方法: 要求ヘッダーをカスタマイズする
 
@@ -853,7 +865,7 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 <!-- Internal URLs. -->
 [Azure Mobile Apps のクイックスタート]: app-service-mobile-windows-store-dotnet-get-started.md
 [Azure Mobile Apps クイックスタート]: app-service-mobile-windows-store-dotnet-get-started.md
-[Windows アプリに認証を追加する]: app-service-mobile-windows-store-dotnet-get-started-users.md
+[アプリに認証を追加する]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [アプリへの認証の追加]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [Work with .NET backend SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
@@ -863,7 +875,7 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 [Azure Mobile Apps でのオフライン データ同期]: app-service-mobile-offline-data-sync.md
 [アプリにプッシュ通知を追加する]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Microsoft アカウント ログインを使用するためのアプリケーションの登録]: app-service-mobile-how-to-configure-microsoft-authentication.md
-[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法]: app-service-mobile-how-to-configure-active-directory-authentication.md
+[Active Directory ログインを使用するように App Service を構成する方法]: app-service-mobile-how-to-configure-active-directory-authentication.md
 
 <!-- Microsoft URLs. -->
 [Azure Mobile Apps .NET クライアント リファレンス]: https://msdn.microsoft.com/ja-JP/library/azure/mt419521(v=azure.10).aspx
@@ -907,10 +919,10 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 
 <!-- External URLs -->
 [JsonPropertyAttribute]: http://www.newtonsoft.com/json/help/html/Properties_T_Newtonsoft_Json_JsonPropertyAttribute.htm
-[OData バージョン 3 のドキュメント]: http://www.odata.org/documentation/odata-version-3-0/
+[OData v3 のドキュメント]: http://www.odata.org/documentation/odata-version-3-0/
 [Fiddler]: http://www.telerik.com/fiddler
 [Json.NET]: http://www.newtonsoft.com/json
 [SymbolSource]: http://www.symbolsource.org/
 [SymbolSource の説明]: http://www.symbolsource.org/Public/Wiki/Using
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

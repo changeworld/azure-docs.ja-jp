@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="05/19/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management のロールのアクティブ化設定を管理する方法
 
-セキュリティ管理者は、一時的なロールの割り当てをアクティブ化しているユーザーの操作性を変更するなど、組織の Azure AD Privileged Identity Management (PIM) をカスタマイズできます。
+特権ロール管理者は、一時的なロールの割り当てをアクティブ化しているユーザーの操作性を変更するなど、組織の Azure AD Privileged Identity Management (PIM) をカスタマイズできます。
 
 ## ロールのアクティブ化の設定を管理する
 
@@ -32,7 +32,8 @@
 8. **[保存]** をクリックします。
 
 次のような、Azure AD および Office365 の高い特権ロールに対しては、MFA を無効にすることはできません。
-- グローバル管理者  
+- グローバル管理者
+- 特権ロール管理者   
 - ユーザー アカウント管理者  
 - ディレクトリ ライター  
 - パートナー レベル 1 のサポート  
@@ -53,4 +54,4 @@ PIM での MFA の使用に関する詳細は、「[MFA を要求する方法](a
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0525_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Script Action を使った HDInsight クラスターのカスタマイズ | Microsoft Azure"
+	pageTitle="スクリプト アクションを使った HDInsight クラスターのカスタマイズ | Microsoft Azure"
 	description="Script Action を使って HDInsight クラスターをカスタマイズする方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="05/18/2016"
 	ms.author="nitinme"/>
 
 # Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする
@@ -39,7 +39,7 @@ Script Action は、クラスターが作成中にのみ使用されます。次
 
 スクリプトの出力とエラー ログは、クラスター用に指定した既定のストレージ アカウントに格納されます。ログは、**u<\\cluster-name-fragment><\\time-stamp>setuplog** という名前のテーブルに格納されます。これらは、クラスター内のすべてのノード (ヘッドノードとワーカー ノード) で実行されるスクリプトから取得される集計ログです。
 
-各クラスターは、指定された順序で呼び出される複数の Script Action を受け取ることができます。スクリプトはヘッド ノード、ワーカー ノード、またはその両方で実行できます。
+各クラスターは、指定された順序で呼び出される複数のスクリプト アクションを受け取ることができます。スクリプトはヘッド ノード、ワーカー ノード、またはその両方で実行できます。
 
 HDInsight は、HDInsight クラスターで、次のコンポーネントをインストールするためのいくつかのスクリプトを提供します。
 
@@ -122,9 +122,9 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
         -Name $defaultStorageAccountName `
         -Location $location `
         -Type Standard_GRS
-	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey `
+	$defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
                                     -ResourceGroupName $resourceGroupName `
-                                    -Name $defaultStorageAccountName |  %{ $_.Key1 }
+                                    -Name $defaultStorageAccountName)[0].Value
 	$defaultStorageAccountContext = New-AzureStorageContext `
                                     -StorageAccountName $defaultStorageAccountName `
                                     -StorageAccountKey $storageAccountKey  
@@ -300,7 +300,7 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 2. クラスターのカスタマイズ - クラスター作成時に、追加設定や、クラスター ノードにインストールするカスタム コンポーネントを指定できます。
 3. サンプル - よく利用されるカスタム コンポーネントに対しては、それらを HDInsight クラスターで使用する方法について Microsoft やその他の提供者がサンプルを用意している場合があります。これらのサンプルはサポートなしで提供されます。
 
-## Script Action のスクリプトを開発する
+## スクリプト アクションのスクリプトを開発する
 
 「[HDInsight 用の Script Action スクリプトの開発][hdinsight-write-script]」を参照してください。
 
@@ -323,4 +323,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "クラスター作成時の段階"
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->

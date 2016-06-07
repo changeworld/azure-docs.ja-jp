@@ -1,10 +1,10 @@
 <properties
-pageTitle="ロジック アプリで Office 365 Video API を使用する | Microsoft Azure"
-description="Microsoft Azure App Service のロジック アプリで Office 365 Video API (コネクタ) を使用する方法の概要について説明します"
-services=""	
-documentationCenter="" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="ロジック アプリで Office 365 Video コネクタを使用する | Microsoft Azure"
+description="Microsoft Azure App Service Logic Apps で Office 365 Video コネクタを使用する方法の概要について説明します"
+services=""    
+documentationCenter=""     
+authors="msftman"    
+manager="erikre"    
 editor=""
 tags="connectors"/>
 
@@ -14,38 +14,37 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="03/23/2016"
+ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Office 365 Video API の概要
-Office 365 ビデオに関する情報の取得、ビデオの一覧の取得などを行うには、Office 365 ビデオに接続します。Office 365 Video API は、以下のツールから使用できます。
+# Office 365 Video コネクタの使用
+Office 365 ビデオに関する情報の取得、ビデオの一覧の取得などを行うには、Office 365 ビデオに接続します。Office 365 Video コネクタは、次のツールから使用できます。
 
-- ロジック アプリ 
+- Logic Apps 
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。この API は、以前のスキーマ バージョンではサポートされていません。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。このコネクタは、以前のスキーマ バージョンではサポートされていません。
 
 Office 365 ビデオは、次のことを行えます。
 
 - Office 365 ビデオから取得したデータに基づいてビジネス フローを構築できます。 
-- ビデオ ポータルの状態の確認、チャネル内にあるすべてのビデオの一覧の取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Bing Search API を使用して Office 365 ビデオを検索でき、Office 365 Video API を使用してそのビデオに関する情報を取得できます。ビデオが要件を満たしている場合は、Facebook にこのビデオを投稿できます。 
+- ビデオ ポータルの状態の確認、チャネル内にあるすべてのビデオの一覧の取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Bing Search コネクタを使用して Office 365 ビデオを検索でき、Office 365 Video コネクタを使用してそのビデオに関する情報を取得できます。ビデオが要件を満たしている場合は、Facebook にこのビデオを投稿できます。 
 
 ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 ## トリガーとアクション
 
-Office 365 Video API では、次のアクションを使用できます。トリガーはありません。
+Office 365 Video コネクタでは、次のアクションを使用できます。トリガーはありません。
 
 | トリガー | アクション|
 | --- | --- |
 | なし | <ul><li>ビデオ ポータルの状態を確認します</li><li>表示可能なすべてのチャネルを取得します</li><li>ビデオの Azure Media Services マニフェストの再生の URL を取得します</li><li>ベアラー トークンを取得して、ビデオを復号化するアクセス権を得ます</li><li>特定の Office 365 ビデオを取得します</li><li>チャネル内にあるすべての Office 365 ビデオを一覧表示します</li></ul>
 
-すべての API は、JSON および XML 形式のデータに対応します。
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
-## Office 365 Video API への接続を作成する
-この API をロジック アプリに追加する場合は、Office 365 ビデオ アカウントにサインインして、ロジック アプリでアカウントに接続できるようにする必要があります。
+## Office 365 Video コネクタへの接続を作成する
+このコネクタをロジック アプリに追加する場合は、Office 365 Video アカウントにサインインして、ロジック アプリでアカウントに接続できるようにする必要があります。
 
-1. Office 365 ビデオ アカウントにサインインします。
-2. ロジック アプリが Office 365 アカウントに接続して使用することを許可します。 
+>[AZURE.INCLUDE [Office 365 Video への接続を作成する手順](../../includes/connectors-create-api-office365video.md)]
 
 接続を作成したら、テナント名またはチャネル ID など、Office 365 ビデオ プロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
 
@@ -221,4 +220,4 @@ Office 365 Video API では、次のアクションを使用できます。ト�
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0525_2016-->

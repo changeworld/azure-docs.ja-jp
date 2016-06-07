@@ -1,6 +1,6 @@
 <properties
 	pageTitle="クラシック VM の可用性セットの構成 | Microsoft Azure"
-	description="Azure クラシック ポータルと Azure PowerShell を使用して新規または既存の仮想マシンに対する可用性セットをクラシック デプロイ モデルで構成します。"
+	description="Azure ポータルと Azure PowerShell を使用して新規または既存の仮想マシンに対する可用性セットをクラシック デプロイ モデルで構成します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="cynthn"
@@ -23,4 +23,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-classic-configure-availability](../../includes/virtual-machines-common-classic-configure-availability.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0525_2016-->

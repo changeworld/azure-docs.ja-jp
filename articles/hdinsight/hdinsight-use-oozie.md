@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="05/18/2016"
 	ms.author="jgao"/>
 
 
@@ -146,7 +146,7 @@ RunHiveScript には、変数がいくつかあります。その値は、Azure 
 <tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダーを指定します。これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
 </table>
 
-Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400]\(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332]\(HDInsight バージョン 2.1 の場合) を参照してください。
+Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight バージョン 2.1 の場合) を参照してください。
 
 
 ワークフローの Hive アクションは、HiveQL スクリプト ファイルを呼び出します。このスクリプト ファイルは HiveQL ステートメントを 3 つ含んでいます。
@@ -172,7 +172,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 ##PowerShell を使用して Oozie ジョブを送信する
 
-現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。**Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。Oozie Web サービス API は、HTTP REST JSON API です。Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400]\(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332]\(HDInsight クラスター バージョン 2.1 の場合) を参照してください。
+現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。**Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。Oozie Web サービス API は、HTTP REST JSON API です。Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight クラスター バージョン 2.1 の場合) を参照してください。
 
 このセクションの PowerShell スクリプトでは、次の手順を実行します。
 
@@ -355,9 +355,9 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 		-Type Standard_LRS
 	
 	# Create the default Blob container
-	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey `
+	$defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
 									-ResourceGroupName $resourceGroupName `
-									-Name $defaultStorageAccountName |  %{ $_.Key1 }
+									-Name $defaultStorageAccountName)[0].Value
 	$defaultStorageAccountContext = New-AzureStorageContext `
 										-StorageAccountName $defaultStorageAccountName `
 										-StorageAccountKey $defaultStorageAccountKey 
@@ -602,9 +602,9 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 	$sqlDatabaseTableName = "log4jLogsCount"
 
 	Write-host "Delete the Hive script output file ..." -ForegroundColor Green
-	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey `
+	$defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
                                 -ResourceGroupName $resourceGroupName `
-                                -Name $defaultStorageAccountName |  %{ $_.Key1 }
+                                -Name $defaultStorageAccountName)[0].Value
 	$destContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
 	Remove-AzureStorageBlob -Context $destContext -Blob "tutorials/useoozie/output/000000_0" -Container $defaultBlobContainerName
 
@@ -680,4 +680,4 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0525_2016-->
