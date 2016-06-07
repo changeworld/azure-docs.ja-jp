@@ -159,11 +159,11 @@ App Service では、コードを API アプリにデプロイする方法を数
 
         node server.js
 
-1. ****http://localhost:8000/contacts** を参照すると、連絡先リストの JSON 出力が表示されます (ブラウザーによっては、ダウンロードするように求められます)。
+1. **http://localhost:8000/contacts** を参照すると、連絡先リストの JSON 出力が表示されます (ブラウザーによっては、ダウンロードするように求められます)。
 
     ![すべての Contacts API の呼び出し](media/app-service-api-nodejs-api-app/all-contacts-api-call.png)
 
-1. ****http://localhost:8000/contacts/2** を参照すると、その ID 値が示す連絡先が表示されます。
+1. **http://localhost:8000/contacts/2** を参照すると、その ID 値が示す連絡先が表示されます。
 
     ![特定の Contact API の呼び出し](media/app-service-api-nodejs-api-app/specific-contact-api-call.png)
 
