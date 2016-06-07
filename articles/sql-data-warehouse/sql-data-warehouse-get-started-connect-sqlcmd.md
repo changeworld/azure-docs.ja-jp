@@ -19,8 +19,10 @@
 # SQLCMD を使用した接続とクエリ
 
 > [AZURE.SELECTOR]
-- [Visual Studio][]
-- [SQLCMD][]
+- [Visual Studio](sql-data-warehouse-get-started-connect.md)
+- [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
+- [AAD](sql-data-warehouse-get-started-connect-aad-authentication.md)
+
 
 このチュートリアルでは、sqlcmd.exe ユーティリティを使用して、Azure SQL Data Warehouse データベースへの接続とクエリを数分で実行する方法について説明します。このチュートリアルでは次を行います。
 
@@ -34,7 +36,7 @@
 
 ## 完全修飾 Azure SQL サーバー名を取得します。
 
-データベースに接続するには、接続先のデータベースを含むサーバーの完全名が必要です (****servername**.database.windows.net*)。
+データベースに接続するには、接続先のデータベースを含むサーバーの完全名が必要です (**servername**.database.windows.net*)。
 
 1. [Azure ポータル][]にアクセスします。
 2. 接続先のデータベースを探します。
@@ -77,20 +79,20 @@ sqlcmd の詳細については、[sqlcmd のドキュメント][sqlcmd.exe]を�
 
 これで接続してクエリを実行することができます。[PowerBI で接続][]してみてください。
 
-Windows 認証を使用するように環境を構成する方法については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する][]」を参照してください。
+Windows 認証を使用するように環境を構成する方法については、[Azure Active Directory 認証を使用した SQL Database または SQL Data Warehouse への接続][]に関するページを参照してください。
 
 <!--Articles-->
-[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する]: ../sql-database/sql-database-aad-authentication.md
+[Azure Active Directory 認証を使用した SQL Database または SQL Data Warehouse への接続]: ../sql-data-warehouse/sql-data-warehouse-get-started-connect-aad-authentication.md
 [PowerBI で接続]: ./sql-data-warehouse-integrate-power-bi.md
 [Visual Studio]: ./sql-data-warehouse-get-started-connect.md
 [SQLCMD]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
 
 <!--Other-->
-[sqlcmd.exe]: https://msdn.microsoft.com/ja-JP/library/ms162773.aspx
+[sqlcmd.exe]: https://msdn.microsoft.com/en-us/library/ms162773.aspx
 [Microsoft Command Line Utilities 11 for SQL Server]: http://go.microsoft.com/fwlink/?LinkId=321501
 [Azure ポータル]: https://portal.azure.com
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

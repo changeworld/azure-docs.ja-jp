@@ -1,7 +1,7 @@
 <properties 
-	pageTitle="Azure App Service とは" 
-	description="Azure App Service が Web アプリおよびモバイル アプリを開発するために最適なプラットフォームである理由を説明します。" 
-	keywords="App Service, Azure App Service, App Service のコスト, スケール, スケーラブル, アプリのデプロイメント, Azure App のデプロイメント"
+	pageTitle="Azure App Service とは | Microsoft Azure" 
+	description="Azure App Service を活用して Web アプリとモバイル アプリを開発、デプロイ、管理する方法について説明します。" 
+	keywords="App Service, Azure App Service, App Service のコスト, スケール, スケーラブル, アプリのデプロイ, Azure アプリのデプロイ, PaaS, サービスとしてのプラットフォーム"
 	services="app-service" 
 	documentationCenter="" 
 	authors="omarkmsft" 
@@ -14,49 +14,74 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="01/05/2016" 
+	ms.date="05/25/2016" 
 	ms.author="omark"/>
 
 # Azure App Service とは
-Azure App Service は、任意のプラットフォームおよびデバイス向けに迅速かつ容易に Web アプリやモバイル アプリを構築するのに必要なすべてを統合する唯一のクラウド サービスです。開発者向けに構築された App Service は、完全に管理されたプラットフォームで、組み込み DevOps、Visual Studio Team Services や GitHub との継続的インテグレーション、ステージング環境と運用環境のサポート、修正プログラム適用の自動化などの強力な機能を備えています。
 
-Azure App Service は、Azure Websites、Azure Mobile Services、Azure Biztalk Services の既存の機能をすべて含み、さらに新しい機能を追加した単一のサービスです。これらの既存のサービスと App Service の関連の詳細については、[こちらを参照してください](https://azure.microsoft.com/documentation/services/app-service/)。
+*App Service* は、Microsoft Azure が提供する[サービスとしてのプラットフォーム](https://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS) であり、これを利用すると、Web アプリとモバイル アプリを任意のプラットフォームやデバイス向けに作成することができます。セキュリティ、信頼性、拡張性の厳しいニーズに対応しながら、アプリの SaaS ソリューション (Office 365、Dynamics CRM、Salesforce、Twilio など) との統合やオンプレミスのアプリケーション (SAP、Oracle、Siebel など) との接続、ビジネス プロセスの自動化が簡単に実現できます。
+
+App Service には、以前は Azure Websites および Azure Mobile Services として個別に提供されていた Web 機能とモバイル機能が含まれています。さらに、ビジネス プロセスの自動化やクラウド API のホストに利用できる新しい機能も備えています。
+
+## App Service でのアプリの種類
+
+App Service では、アプリケーション コードまたはワークフロー プロセスの実行用に、次のようなアプリの種類を用意しています。
+
+- [**Web Apps**](../app-service-web/app-service-web-overview.md) - Web サイトと Web アプリケーションをホストするためのアプリの種類。
+
+- [**Mobile Apps**](../app-service-mobile/app-service-mobile-value-prop.md) - モバイル アプリのバック エンドをホストするためのアプリの種類。
+   
+- [**API Apps**](../app-service-api/app-service-api-apps-why-best-platform.md) - クラウド API をホストするためのアプリの種類。
+ 
+- [**Logic Apps**](../app-service-logic/app-service-logic-what-are-logic-apps.md) - コードを記述することなく、クラウド全体のデータへのアクセスと使用を自動化するためのアプリの種類。
+
+単一の統合サービスである App Service では、複数のアプリの種類を 1 つのソリューションへと簡単にまとめることができます。
+
+## App Service プランと環境
+
+[App Service プラン](azure-web-sites-web-hosting-plans-in-depth-overview.md)は、アプリを実行するために使用するコンピューティング リソースを表しています。下位の価格レベルでは、共有の仮想マシン (VM) でアプリを実行します。上位の価格レベルでは、専用の VM でアプリを実行します。複数の VM サイズから選ぶことができ、ダウンタイムなしで価格レベルを変更することもできます。より高い拡張性とネットワークの分離性が必要な場合は、[App Service Environment](../app-service-web/app-service-app-service-environment-intro.md) でアプリを実行することができます。
 
 ## App Service を使用する理由
-ビジネス プロセスの自動化だけでなく、Web アプリやモバイル アプリの迅速な開発にも重点を置いている Azure App Service は、単一の開発エクスペリエンスと管理エクスペリエンスを通じてエンタープライズ機能の統合セットを提供しており、次のような利点があります。
 
-- **Web アプリとモバイル アプリの迅速な構築** - 単一のバックエンドを使用して、従業員や顧客向けに Web アプリやモバイル アプリを迅速に構築、デプロイ、および管理します。.NET、Java、NodeJS、PHP、Python など、既存の言語スキルを使用します。Azure Marketplace に用意されている豊富な API、コネクタ、ロジックのギャラリーへのアクセスにより、開発時間を短縮します。
+App Service のいくつかの主要機能を次に示します。
 
-- **任意のサービスへの接続とデータのロック解除** - 組み込みコネクタを使用して、Web アプリやモバイル アプリをエンタープライズ システムや SaaS に数分で接続します。SAP、Siebel、Oracle などのエンタープライズ システムから Salesforce や Office 365 などの人気のエンタープライズ SaaS サービス、Facebook、Twitter、Dropbox などの人気のインターネット サービスまで、50 を超えるコネクタから選択できます。
+- **完全に管理されたプラットフォーム** - OS とフレームワークへの修正プログラムの自動適用、バックアップと障害復旧のためのビルトイン サポート。 
 
-- **統合をシンプルに** - シンプルなビジュアル デザイン エクスペリエンスを使用して、数分でクラウド全体のデータを統合し、ビジネス プロセスを自動化します。標準 REST API を使用して任意のモバイル アプリや Web アプリをロジックと簡単に統合できます。業界をリードする BizTalk プラットフォームに基づいて、高度なエンタープライズ アプリケーションの統合、EDI を使用した B2B ソリューション、ビジネス ポリシー (ルール エンジン) などを構築します。
+- **ユーザーの既存スキルを活用** - 好みの言語、フレームワーク、開発環境でコーディングできます。App Service では、.NET、Node.js、Java、PHP、Python をサポートしています。
 
-- **他に例を見ない開発者の生産性** - DevOps 用に最適化されており、Visual Studio Team Services と Github の継続的インテグレーションがサポートされているため、インフラストラクチャを気にすることなく、短期間で集中してアプリの機能を向上させることができます。組み込みのステージング、ロールバック、運用環境でのテスト機能を使用してアプリの更新をデプロイします。
+- **高速デプロイ** - 新しいアプリのプロビジョニングと、そのアプリへのコードのデプロイが数秒で完了します。
 
-- **エンタープライズ対応** - エンタープライズ レベルのセキュリティと管理により、安心して使用できます。委任されたロール ベースの管理を提供します。モバイル アプリに送られるデータを簡単にセキュリティ保護して管理し、組み込みのバックアップと復元の機能を使用して資産を保護します。App Service が PCI 準拠であることがわかっているため、信頼感があります。専用環境と、パブリック クラウドおよびプライベート クラウド全体にデプロイする機能を使用してコントロールします。25 年を超える Microsoft の経験とエンタープライズ サービス レベル アグリーメントの恩恵を受けられます。
+- **継続的インテグレーション** - [継続的インテグレーションとデプロイ](../app-service-web/app-service-continous-deployment.md)を、Visual Studio Team Services、GitHub、または BitBucket でセットアップできます。
 
-##App Service の概念
-以下の高レベルの概念は、App Service を使用して実現できることについて説明します。
+- **ステージング環境とテスト環境** - [ステージングされたデプロイ](../app-service-web/web-sites-staged-publishing.md)を実装して、運用環境と同じ運用前環境でコードを検証できます。準備ができたら、スワップ操作を実行することにより、ダウンタイムなしで新しいバージョンのアプリをリリースします。
 
-### アプリの種類
-App Service を使用すると、単一の開発エクスペリエンスで次の種類のアプリを作成することができます。
+- **運用環境でのテスト** - ステージングされたデプロイを次のレベルに移行し、[A/B テストを実行](../app-service-web/app-service-web-test-in-production-get-start.md)して、構成可能な一部のライブ トラフィックで新しいコードを検証します。
 
-- [**Web Apps**](../app-service-web/app-service-web-overview.md) - ビジネスに合わせて拡張できるミッション クリティカルな Web アプリをすばやく作成してデプロイします。
-- [**Mobile Apps**](../app-service-mobile/app-service-mobile-value-prop.md) - あらゆるデバイスを使用する従業員、パートナー、顧客といつでもつながります。
-- [**API Apps**](../app-service-api/app-service-api-apps-why-best-platform.md) - 簡単な操作でクラウド API を作成し、使用します。
-- [**Logic Apps**](../app-service-logic/app-service-logic-what-are-logic-apps.md) - コードを記述することなく、クラウド全体のデータへのアクセスと使用を自動化します。
+- **認証と承認** - コードを変更することなく、アプリを認証されていないアクセスから保護できます。組み込みの認証サービスでは、ユーザー、ユーザーを表すクライアント、またはサービスからのアクセスに対してアプリをセキュリティで保護します。Azure Active Directory、Facebook、Twitter、Google、Microsoft アカウントなどが、ID プロバイダーとしてサポートされています。詳細については、「[Azure App Service での認証および承認](app-service-authentication-overview.md)」を参照してください。
 
-App Service は単一の統合サービスとして、上に挙げた種類のアプリを作成して単一のソリューションにすることを簡単にします。これにより、同じバックエンドを使用して Web クライアントとモバイル クライアントの両方を対象とするアプリを簡単に構築し、Office 365 や salesforce.com などの一般的なサービスと同様に、オンプレミスのシステムとも統合します。
+- **任意のサービスへの接続** - 組み込みの[コネクタ](../connectors/apis-list.md)を使用して、アプリをエンタープライズ システムやサービスとしてのソフトウェア (SaaS) プラットフォームに数分で接続します。SAP、Siebel、Oracle などのエンタープライズ システムから Salesforce や Office 365 などの人気のエンタープライズ SaaS サービス、Facebook、Twitter、Dropbox などの人気のインターネット サービスまで、50 を超えるコネクタから選択できます。
 
-### App Service プラン
-App Service プランは、アプリ間で共有できる一連の機能と容量を表します。App Service プランでは、いくつかの料金レベル (Free、Shared、Basic、Standard、および Premium など) がサポートされています。各レベルには独自の機能があります。アプリがホストされる App Service プランを、ダウンタイムなしですばやく変更できます。[App Service プランの詳細に関するページを参照してください](azure-web-sites-web-hosting-plans-in-depth-overview.md)。
+- **グローバルなスケール** - 顧客からの受信負荷に対処するために、スケール[アップ](../app-service/app-service-scale.md)またはスケール[アウト](../azure-portal/insights-how-to-scale.md)を実行できます。VM の数とサイズを手動で選択するか、負荷またはスケジュールに応じた自動スケールを設定します。Microsoft のグローバル データセンター インフラストラクチャでアプリをホストするため、データやホスティング サービスを複数の場所で簡単にレプリケートできます。
 
-##App Service の使用開始
-App Service をぜひお試しください。 すぐに使用を開始しましょう。
+- **エンタープライズ レベル** - App Service は、安全でミッション クリティカルなアプリケーションを構築およびホストすることを目的に設計されています。オンプレミスのリソースに安全に接続できる Active Directory 統合のビジネス アプリを構築し、それを [ISO、SOC、および PCI 準拠](https://www.microsoft.com/TrustCenter/)の、セキュリティで保護されたクラウド プラットフォーム上でホストします。また、すべてにおいてエンタープライズ レベルの [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) が提供されます。
 
-Azure App Service なら、言語の選択と同じくらい簡単に使用できます。
+- **Azure Marketplace** - 増え続ける[アプリケーション テンプレートのリスト](https://azure.microsoft.com/marketplace/)から選択できます。WordPress、Joomla、Drupal など、OSS アプリ コミュニティのベスト アプリを、ワンクリック インストールで利用できます。
 
-無料ですぐに[新しいアプリを作成できます](http://go.microsoft.com/fwlink/?LinkId=523751)。クレジット カードもコミットメントも不要です。面倒なことはありません。
- 
+- **WebJobs** - App Service VM で[任意のプログラムまたはスクリプトを実行](../app-service-web/web-sites-create-web-jobs.md)できます。スケジュールに従って、またはイベントにトリガーされて、継続的にジョブを実行します。Azure [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) を利用すると、他の Azure サービスやサードパーティ サービスと統合するために、記述するコードを単純化できます。
 
-<!---HONumber=AcomDC_0525_2016-->
+- **ハイブリッド接続** - [ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md)と [Azure Virtual Network](../app-service-web/web-sites-integrate-with-vnet.md) を利用して、オンプレミスのデータにアクセスできます。
+
+- **Visual Studio の統合** - Visual Studio の専用ツールを使うと、Web アプリ、モバイル アプリ、API アプリを作成、デプロイ、使用、デバッグ、管理する作業が効率的になります。
+
+## App Service の使用開始
+
+今すぐ無料で[一時 Web アプリ、モバイル アプリ、またはロジック アプリを作成](http://go.microsoft.com/fwlink/?LinkId=523751)できます。クレジット カードや契約は不要で、手間もかかりません。
+
+または、[無料 Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)を作成し、次のいずれかの入門チュートリアルを試すこともできます。
+
+* [Web Apps](https://azure.microsoft.com/documentation/services/app-service/web/)
+* [Mobile Apps](https://azure.microsoft.com/documentation/services/app-service/mobile/)
+* [API Apps](https://azure.microsoft.com/documentation/services/app-service/api/)
+* [Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/)
+
+<!---HONumber=AcomDC_0601_2016-->

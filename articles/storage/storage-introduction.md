@@ -132,13 +132,40 @@ Shared Access Signature の詳細については、「[Shared Access Signature�
 
 ## レプリケーションによる持続性と高可用性
 
-[AZURE.INCLUDE [storage-replication-options-include](../../includes/storage-replication-options-include.md)]
+Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を確保するために常にレプリケートされており、一時的なハードウェア障害が発生した場合でも [Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/) が満たされます。ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択する必要があります。
+
+- **ローカル冗長ストレージ (LRS)。** ローカル冗長ストレージでは、データのコピーが 3 つ保持されます。LRS は、1 つのリージョンの 1 つの施設内で 3 回複製されます。LRS では、データは通常のハードウェア障害から保護されますが、1 つの施設の障害からは保護されません。  
+  
+	LRS は割引料金で提供されます。持続性を最大限に高めるために、以下で説明する geo 冗長ストレージを使用することをお勧めします。
+
+
+- **ゾーン冗長ストレージ (ZRS)。** ゾーン冗長ストレージでは、データのコピーが 3 つ保持されます。ZRS は、1 つまたは 2 つのリージョン内の 2 ～ 3 つの施設で 3 回複製され、LRS よりも高い持続性を実現します。ZRS では、1 つのリージョン内のデータの持続性が確保されます。
+
+	ZRS は LRS よりも高い持続性を実現しますが、持続性を最大限に高めるために、以下で説明する geo 冗長ストレージを使用することをお勧めします。
+
+	> [AZURE.NOTE] ZRS は現在、ブロック BLOB のみで使用でき、2014-02-14 以降のバージョンでのみサポートされています。
+	> 
+	> ストレージ アカウントを作成し、ZRS を選択すると、他の種類のレプリケーションを使用するように変換することはできません (その逆の変換もできません)。
+
+- **geo 冗長ストレージ (GRS)**。geo 冗長ストレージは、ストレージ アカウントの作成時に、そのアカウントに対して既定で有効になっています。GRS では、データのコピーが 6 つ保持されます。GRS を使用すると、データがプライマリ リージョン内で 3 回複製され、プライマリ リージョンから数百マイル離れたセカンダリ リージョンでも 3 回複製されます。そのため、最も優れたレベルの持続性が実現されます。プライマリ リージョンで障害が発生すると、Azure Storage はセカンダリ リージョンにフェールオーバーします。GRS では、2 つのリージョン内のデータの持続性が確保されます。
+
+
+- **読み取りアクセス geo 冗長ストレージ (RA-GRS)**。読み取りアクセス geo 冗長ストレージは、地理的に離れた 2 次拠点にデータをレプリケートし、2 次拠点にあるデータへの読み取りアクセスも提供します。読み取りアクセス geo 冗長ストレージでは、1 つの場所が使用不可能になった場合に、1 次拠点または 2 次拠点からデータにアクセスできます。
+
+	> [AZURE.IMPORTANT] アカウントを作成したときに ZRS を指定した場合を除き、ストレージ アカウントを作成した後、データのレプリケート方法を変更することはできます。ただし、LRS から GRS、または RA-GRS に切り替えると、一時的に追加のデータ転送コストが生じる可能性があります。
+ 
+ストレージ レプリケーション オプションの詳細については、「[Azure Storage のレプリケーション](storage-redundancy.md)」を参照してください。
+
+ストレージ アカウント レプリケーションの価格情報については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
+
+Azure Storage の持続性に関するアーキテクチャ面での詳細については、「[SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (SOSP ペーパー - Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)」を参照してください。
+
 
 ## Azure Storage との間のデータ転送
 
 AzCopy コマンド ライン ユーティリティを使用して、BLOB、ファイル、テーブルのデータを同じストレージ アカウント内で、または別のストレージ アカウントとの間でコピーすることができます。詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
-AzCopy は [Azure Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) を基盤として構築されていますが、このライブラリは現時点ではプレビューとして公開されています。
+AzCopy は [Azure Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) を基盤として構築されています。このライブラリは現時点ではプレビューとして公開されています。
 
 Azure Import/Export サービスを利用すると、ハード ディスク ドライブを Azure データ センターに送付するという方法で、ストレージ アカウントに BLOB データをインポートする、またはストレージ アカウントからエクスポートすることができます。Import/Export サービスの詳細については、「[Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](storage-import-export-service.md)」を参照してください。
 
@@ -233,4 +260,4 @@ Azure Storage についてさらに学習するには、次のリソースを参
 - [Python から Queue ストレージを使用する方法](storage-python-how-to-use-queue-storage.md)
 - [Python からファイル ストレージを使用する方法](storage-python-how-to-use-file-storage.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

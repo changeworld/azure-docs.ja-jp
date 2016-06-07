@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="03/10/2016"
+    ms.date="05/31/2016"
     ms.author="ashmaka"/>
 
 # REST API を使用した Azure Search へのデータのアップロード
@@ -168,4 +168,4 @@ URL では、サービス名とインデックス名 (この場合は "hotels") 
 ## 次へ
 Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。詳細については、「[Azure Search インデックスの照会](search-query-overview.md)」を参照してください。
 
-<!----HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0601_2016-->

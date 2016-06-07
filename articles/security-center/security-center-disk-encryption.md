@@ -1,19 +1,19 @@
 <properties
    pageTitle="Azure 仮想マシンの暗号化 | Microsoft Azure"
    description="このドキュメントは、Azure Security Center からアラートを受け取った後に Azure 仮想マシンを暗号化する際に役立ちます。"
-   services="security-center"
+   services="security, security-center"
    documentationCenter="na"
    authors="TomShinder"
    manager="swadhwa"
    editor=""/>
 
 <tags
-   ms.service="security-center"
+   ms.service="security"
    ms.devlang="na"
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/19/2016"
+   ms.date="05/27/2016"
    ms.author="tomsh"/>
 
 # Azure 仮想マシンの暗号化
@@ -30,7 +30,7 @@ Azure Security Center で暗号化が必要と識別された Azure 仮想マシ
 - 仮想マシンの暗号化。
 
 このドキュメントの目的は、Azure PowerShell の知識がほとんどまたはまったくない場合でも、仮想マシンを暗号化できるようにすることです。このドキュメントでは、Azure Disk Encryption を構成するクライアント コンピューターとして Windows 10 を使用していることを想定しています。
- 
+
 必須コンポーネントの設定と Azure 仮想マシンの暗号化の構成に使用できる方法は多数あります。既に Azure PowerShell または Azure CLI についてよく知っている方は、他の方法を好む場合もあります。
 
 > [AZURE.NOTE] Azure 仮想マシンの暗号化を構成する他の方法の詳細については、「[Azure Disk Encryption for Windows and Linux Azure Virtual Machines (Windows とLinux の Azure 仮想マシンの Azure Disk Encryption)](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)」を参照してください。
@@ -45,18 +45,18 @@ Azure Disk Encryption の前提条件となる構成スクリプトを使用す�
 1.	[Azure Disk Encryption Prerequisite Setup スクリプト](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)がある GitHub ページにアクセスします。
 2.	GibHub ページで、**[Raw]** (元データ) をクリックします。
 3.	**Ctrl + A** キーを押してそのページのテキストすべてを選択し、**Ctrl + C** キーを押して、選択したテキストをクリップボードにコピーします。
-4.	**メモ帳**を開き、コピーしたテキストをメモ帳に貼り付けます。 
+4.	**メモ帳**を開き、コピーしたテキストをメモ帳に貼り付けます。
 5.	C: ドライブ上に、**AzureADEScript** という名前の新しいフォルダーを作成します。
-6.	メモ帳のファイルを保存します。これには、**[ファイル]** をクリックし、**[名前を付けて保存]** をクリックします。[ファイル名] ボックスに「**"ADEPrereqScript.ps1"**」と入力し、**[保存]** をクリックします (必ず名前を引用符で囲んでください。そうしないと、ファイルは .txt という拡張子付きで保存されます)。 
+6.	メモ帳のファイルを保存します。これには、**[ファイル]** をクリックし、**[名前を付けて保存]** をクリックします。[ファイル名] ボックスに「**"ADEPrereqScript.ps1"**」と入力し、**[保存]** をクリックします (必ず名前を引用符で囲んでください。そうしないと、ファイルは .txt という拡張子付きで保存されます)。
 
 スクリプトの内容が保存されたので、PowerShell ISE でそのスクリプトを開きます。
 
-1.	[スタート] メニューの **[Cortana]** をクリックします。Cortana の検索ボックスに「**PowerShell**」と入力して、**Cortana** に "PowerShell" について質問します。 
+1.	[スタート] メニューの **[Cortana]** をクリックします。Cortana の検索ボックスに「**PowerShell**」と入力して、**Cortana** に "PowerShell" について質問します。
 2.	**[Windows PowerShell ISE]** を右クリックし、**[管理者として実行]** をクリックします。
-3.	**[管理者: Windows PowerShell ISE]** ウィンドウで、**[表示]** をクリックし、**[スクリプト ウィンドウの表示]** をクリックします。 
-4.	ウィンドウの右側に **[コマンド]** ウィンドウが表示される場合は、そのウィンドウの右上隅にある**閉じるボタン**をクリックして閉じます。表示されるテキストが小さすぎる場合は、**Ctrl + プラス記号 (+)** キーを押します。テキストが大きすぎる場合は、**Ctrl + マイナス記号 (-)** キーを押します。 
+3.	**[管理者: Windows PowerShell ISE]** ウィンドウで、**[表示]** をクリックし、**[スクリプト ウィンドウの表示]** をクリックします。
+4.	ウィンドウの右側に **[コマンド]** ウィンドウが表示される場合は、そのウィンドウの右上隅にある**閉じるボタン**をクリックして閉じます。表示されるテキストが小さすぎる場合は、**Ctrl + プラス記号 (+)** キーを押します。テキストが大きすぎる場合は、**Ctrl + マイナス記号 (-)** キーを押します。
 5.	**[ファイル]** をクリックし、**[開く]** をクリックします。**C:\\AzureADEScript** フォルダーに移動し、**ADEPrereqScript** をダブルクリックします。
-6.	**ADEPrereqScript** の内容は PowerShell ISE で表示され、各種コンポーネント (コマンド、パラメーター、変数など) がよりわかりやすくなるように色分けされています。 
+6.	**ADEPrereqScript** の内容は PowerShell ISE で表示され、各種コンポーネント (コマンド、パラメーター、変数など) がよりわかりやすくなるように色分けされています。
 
 次の図のように表示されます。
 
@@ -70,16 +70,16 @@ Azure Disk Encryption の前提条件となるスクリプトでは、スクリ�
 
 - **リソース グループ名** - Key Vault を配置するリソース グループの名前。入力した名前のリソース グループがまだ作成されていない場合は、その名前の付いた新しいリソース グループが作成されます。このサブスクリプションで使用するリソース グループが既にある場合は、そのリソース グループ名を入力します。
 - **Key Vault 名** - 暗号化キーが配置される Key Vault の名前。この名前の Key Vault がまだない場合は、この名前の付いた新しい Key Vault が作成されます。使用する Key Vault が既にある場合は、既存の Key Vault の名前を入力します。
-- **場所** - Key Vault の場所。Key Vault と暗号化する VM が同じ場所にあることを確認します。場所がわからない場合は、その確認方法を説明する手順がこの記事の後半にあります。 
+- **場所** - Key Vault の場所。Key Vault と暗号化する VM が同じ場所にあることを確認します。場所がわからない場合は、その確認方法を説明する手順がこの記事の後半にあります。
 - **Azure Active Directory アプリケーション名** - Key Vault へのシークレットの書き込みに使用される Azure Active Directory アプリケーションの名前。該当するアプリケーションがない場合は、この名前の付いた新しいアプリケーションが作成されます。使用する Azure Active Directory アプリケーションが既にある場合は、その Azure Active Directory アプリケーションの名前を入力します。
 
 > [AZURE.NOTE] Azure Active Directory アプリケーションを作成する必要がある理由について知りたい場合は、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」の「*Azure Active Directory にアプリケーションを登録する*」セクションを参照してください。
 
 Azure 仮想マシンを暗号化するには、次の手順を実行してください。
 
-1.	PowerShell ISE を閉じた場合は、PowerShell ISE のインスタンスを管理者特権で開きます。PowerShell ISE がまだ開いていない場合は、この記事で前に説明した手順に従います。スクリプトを閉じた場合は、**ADEPrereqScript.ps1** を開きます (これには、**[ファイル]**、**[開く]** の順にクリックし、**C:\\AzureADEScript** フォルダーからスクリプトを選択します)。この記事の手順を最初から実行している場合は、そのまま次の手順に進んでください。 
+1.	PowerShell ISE を閉じた場合は、PowerShell ISE のインスタンスを管理者特権で開きます。PowerShell ISE がまだ開いていない場合は、この記事で前に説明した手順に従います。スクリプトを閉じた場合は、**ADEPrereqScript.ps1** を開きます (これには、**[ファイル]**、**[開く]** の順にクリックし、**C:\\AzureADEScript** フォルダーからスクリプトを選択します)。この記事の手順を最初から実行している場合は、そのまま次の手順に進んでください。
 2.	PowerShell ISE のコンソール (PowerShell ISE の下部のウィンドウ) で、「**cd c:\\AzureADEScript**」と入力して **Enter** キーを押すことで、スクリプトの場所にフォーカスを移動します。
-3.	スクリプトを実行できるようにコンピューター上で実行ポリシーを設定します。コンソールで「**Set-ExecutionPolicy Unrestricted**」と入力し、Enter キーを押します。変更による実行ポリシーへの影響を示すダイアログ ボックスが表示されたら、**[すべてはい]** または **[はい]** をクリックします (**[すべてはい]** が表示される場合はそれを選択し、**[すべてはい]** が表示されない場合は **[はい]** をクリックします)。 
+3.	スクリプトを実行できるようにコンピューター上で実行ポリシーを設定します。コンソールで「**Set-ExecutionPolicy Unrestricted**」と入力し、Enter キーを押します。変更による実行ポリシーへの影響を示すダイアログ ボックスが表示されたら、**[すべてはい]** または **[はい]** をクリックします (**[すべてはい]** が表示される場合はそれを選択し、**[すべてはい]** が表示されない場合は **[はい]** をクリックします)。
 4.	Azure アカウントにログインします。コンソールで、「**Login-AzureRmAccount**」と入力し、**Enter** キーを押します。資格情報を入力するダイアログ ボックスが表示されます (仮想マシンを変更する権限を持っていることを確認してください。権限がない場合は、仮想マシンを暗号化することができません。わからない場合は、サブスクリプションの所有者または管理者に問い合わせてください)。自身の **Environment**、**Account**、**TenantId**、**SubscriptionId**、**CurrentStorageAccount** に関する情報が表示されます。**SubscriptionId** をメモ帳にコピーします。これは手順 6. で必要になります。
 5.	仮想マシンが属しているサブスクリプションとその仮想マシンの場所を探します。[https://portal.azure.com](ttps://portal.azure.com) にアクセスしてログインします。ページの左側にある **[Virtual Machines]** をクリックします。仮想マシンとそれが属しているサブスクリプションの一覧が表示されます。
 
@@ -95,14 +95,14 @@ Azure 仮想マシンを暗号化するには、次の手順を実行してく�
 10.	スクリプトにより **location:** の入力が求められます。暗号化する VM がある場所の名前を入力し、**Enter** キーを押します。場所を覚えていない場合は、手順 5. に戻ってください。
 11.	スクリプトにより **aadAppName:** の入力が求められます。使用する *Azure Active Directory* アプリケーションの名前を入力し、**Enter** キーを押します。Azure Active Directory アプリケーションがない場合は、新しい Azure Active Directory アプリケーションに使用する名前を入力します。使用する *Azure Active Directory アプリケーション*が既にある場合は、既存の *Azure Active Directory アプリケーション*の名前を入力します。
 12.	ログイン ダイアログ ボックスが表示されます。資格情報を入力します (一度ログインしていますが、ここでもう一度入力する必要があります)。
-13.	スクリプトが実行され、完了時に、**aadClientID**、**aadClientSecret**、**diskEncryptionKeyVaultUrl**、**keyVaultResourceId** の値をコピーするよう求められます。これらの値をそれぞれクリップボードにコピーし、メモ帳に貼り付けます。 
+13.	スクリプトが実行され、完了時に、**aadClientID**、**aadClientSecret**、**diskEncryptionKeyVaultUrl**、**keyVaultResourceId** の値をコピーするよう求められます。これらの値をそれぞれクリップボードにコピーし、メモ帳に貼り付けます。
 14.	PowerShell ISE に戻り、最後の行の末尾にカーソルを置いて、**Enter** キーを押します。
 
 スクリプトの出力は次の画面のようになります。
 
 ![PowerShell の出力](./media/security-center-disk-encryption\security-center-disk-encryption-fig5.png)
 
-## Azure 仮想マシンの暗号化 
+## Azure 仮想マシンの暗号化
 
 これで、仮想マシンを暗号化する準備が整いました。仮想マシンが Key Vault と同じリソース グループにある場合は、「暗号化の手順」に進むことができます。ただし、仮想マシンが Key Vault と同じリソース グループにない場合は、PowerShell ISE のコンソールに次のコマンドを入力する必要があります。
 
@@ -172,4 +172,4 @@ PowerShell ISE に戻ります。スクリプトが完了すると、次の図�
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

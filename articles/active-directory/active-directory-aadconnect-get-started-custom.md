@@ -4,7 +4,7 @@
 	services="active-directory"
     keywords="Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント"
 	documentationCenter=""
-	authors="billmath"
+	authors="andkjell"
 	manager="stevenpo"
 	editor="curtand"/>
 
@@ -14,25 +14,22 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/19/2016"
+	ms.date="05/31/2016"
 	ms.author="billmath;andkjell"/>
 
 # Azure AD Connect のカスタム インストール
-次のドキュメントは、Azure AD Connect のカスタム インストール オプションの使用について説明します。このオプションは、構成オプションをさらに追加する場合、または高速インストールでは設定されないオプション機能が必要な場合に使用します。
+Azure AD Connect **カスタム設定**は、より多くのインストール オプションが必要な場合に使用します。この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。[**高速インストール**](active-directory-aadconnect-get-started-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
 
-## 関連ドキュメント
-[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関するドキュメントをまだお読みでない方のために、次の表に関連トピックへのリンクを示します。インストールを開始する前に、太字で表示した最初の 3 つのトピックをお読みいただく必要があります。
+Azure AD Connect のインストールを始める前に、必ず [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)し、[Azure AD Connect のハードウェアと前提条件](active-directory-aadconnect-prerequisites.md)に関するページに記載されている前提条件の手順を完了してください。また、「[Azure AD Connect: アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md)」で説明されているとおりに必要なアカウントが利用できることを確認してください。
 
-トピック |  
---------- | ---------
-**Azure AD Connect のダウンロード** | [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
-**ハードウェアと前提条件** | [Azure AD Connect: ハードウェアと前提条件](active-directory-aadconnect-prerequisites.md#hardware-requirements-for-azure-ad-connect)
-**インストールで使用するアカウント** | [Azure AD Connect アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md)
-Express 設定を使用したインストール | [Azure AD Connect の高速インストール](active-directory-aadconnect-get-started-express.md)
-DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
-インストール後 | [インストールの確認とライセンスの割り当て](active-directory-aadconnect-whats-next.md)
+カスタマイズした設定が対象のトポロジに適さない場合は (DirSync をアップグレードする場合など)、「[関連ドキュメント](#related-documentation)」でその他のシナリオを確認してください。
 
-## 必須コンポーネントのインストール
+## Azure AD Connect のカスタム設定を使用したインストール
+
+### 簡単設定
+このページで **[カスタマイズ]** をクリックして、カスタム設定を使用したインストールを開始します。
+
+### 必須コンポーネントのインストール
 同期サービスをインストールするとき、オプションの構成セクションをオフのままにすると、Azure AD Connect によってすべてが自動的に設定されます。これにより、SQL Server 2012 Express LocalDB インスタンスの設定、適切なグループの作成、アクセス許可の割り当てが行われます。既定値を変更する場合は、次の表を利用すると、任意で使用できる構成オプションについて把握することができます。
 
 ![必須コンポーネント](./media/active-directory-aadconnect-get-started-custom/requiredcomponents.png)
@@ -43,7 +40,7 @@ DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) か
 既存のサービス アカウントを使用する | 既定では、同期サービスで使用するローカル サービス アカウントが Azure AD Connect によって作成されます。パスワードは自動的に生成され、Azure AD Connect をインストールしているユーザーには不明です。リモート SQL サーバーを使用する場合、または認証が必要なプロキシを使用する場合は、ドメイン内のサービス アカウントとパスワードが必要です。このような場合は、使用するサービス アカウントを入力します。サービス アカウントのログインを作成するには、SQL の SA がインストールを実行してください。「[Azure AD Connect アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#custom-settings-installation)」を参照してください
 カスタム同期グループを指定する | 既定では、同期サービスのインストール時に、Azure AD Connect によってサーバーに対してローカルな 4 つのグループが作成されます。これらのグループは。管理者グループ、オペレーター グループ、参照グループ、およびパスワード再設定グループです。ここでは独自のグループを指定できます。グループは、サーバー上にローカルに存在する必要があり、ドメイン内に置くことはできません。
 
-## ユーザーのサインイン
+### ユーザーのサインイン
 必要なコンポーネントがインストールされると、ユーザーによるシングル サインオンの方法を選択するように求められます。次の表に、指定できるオプションの簡単な説明を示します。サインイン方法の詳細については、「[ユーザーのサインイン](active-directory-aadconnect-user-signin.md)」を参照してください。
 
 ![ユーザーのサインイン](./media/active-directory-aadconnect-get-started-custom/usersignin.png)
@@ -54,14 +51,14 @@ DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) か
 AD FS とのフェデレーション | ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。ユーザーはサインインのためにオンプレミスの AD FS インスタンスにリダイレクトされ、認証はオンプレミスで行われます。
 構成しない | どちらの機能もインストールおよび構成されません。サード パーティのフェデレーション サーバーまたは別の既存のソリューションが既に設置されている場合は、このオプションを選択します。
 
-## Azure AD に接続
+### Azure AD に接続
 [Azure AD に接続] 画面で、グローバル管理者のアカウントとパスワードを入力します。前のページで **[AD FS とのフェデレーション]** を選択した場合、フェデレーション用に有効にする予定があるドメイン内のアカウントでサインインしないようにしてください。Azure AD ディレクトリに付属する既定の **onmicrosoft.com** ドメイン内のアカウントを使用することをお勧めします。
 
 このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。 ![ユーザーのサインイン](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
 
-グローバル管理者アカウントで MFA が有効にされている場合は、サインイン ポップアップに再度パスワードを入力し、MFA チャレンジを完了する必要があります。MFA チャレンジは確認コードの入力、または音声通話によって行うことができます。 ![ユーザーのサインイン MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
+グローバル管理者アカウントで MFA が有効にされている場合は、サインイン ポップアップに再度パスワードを入力し、MFA チャレンジを完了する必要があります。MFA チャレンジは確認コードの入力か音声通話によって行うことができます。 ![ユーザーのサインイン MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
 
-グローバル管理者アカウントは [Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) も有効にされている可能性があります。
+グローバル管理者アカウントは [Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) も有効になっている可能性があります。
 
 接続の問題によってエラーが発生する場合は、[接続の問題に対するトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)についてのページを参照してください。
 
@@ -75,7 +72,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 ### Azure AD サインインの構成
 このページでは、オンプレミスの AD DS に存在し、Azure AD で検証された UPN ドメインを確認できます。また、userPrincipalName に使用する属性を構成できます。
 
-![Unverified domains](./media/active-directory-aadconnect-get-started-custom/aadsigninconfig.png) **[Not Added]** (追加されていません) と **[Not Verified]** (検証されていません) のマークが付いたドメインをすべて確認します。使用するドメインを Azure AD で検証済みにしてください。対象のドメインを検証済みにしたら、更新シンボルをクリックします。詳細については、[ドメインの追加と検証](active-directory-add-domain.md)に関するページを参照してください。
+![Unverified domains](./media/active-directory-aadconnect-get-started-custom/aadsigninconfig.png) **[Not Added (追加されていません)]** と **[Not Verified (検証されていません)]** のマークが付いたドメインをすべて確認します。使用するドメインを Azure AD で検証済みにしてください。対象のドメインを検証済みにしたら、更新シンボルをクリックします。詳細については、[ドメインの追加と検証](active-directory-add-domain.md)に関するページを参照してください。
 
 **UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサインインするときに使用する属性です。使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。既定の userPrincipalName 属性のままにしておくことをお勧めします。この属性がルーティング不可能で検証できない場合は、別の属性を選択することができます。たとえば、サインイン ID を保持する属性として電子メールを選択することができます。userPrincipalName 以外の属性を使用する方法は、**代替 ID** と呼ばれます。代替 ID の属性値は、RFC822 標準に従う必要があります。代替 ID は、パスワード同期とフェデレーションの両方で使用できます。
 
@@ -246,6 +243,19 @@ AD Connect では、構成段階でドメインの検証を試みます。必要
 
 Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](active-directory-aadconnect-whats-next.md)ことができます。
 
+インストールの結果有効になった機能については、[誤った削除操作を防止する機能](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)と [Azure AD Connect Health](active-directory-aadconnect-health-sync.md) に関する各ページを参照してください。
+
+一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](active-directory-aadconnectsync-feature-scheduler.md)に関するページを参照してください。
+
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+## 関連ドキュメント
+
+トピック |  
+--------- | ---------
+Azure AD Connect の概要 | [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+簡単設定を使用したインストール | [Azure AD Connect の高速インストール](active-directory-aadconnect-get-started-express.md)
+DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
+インストールで使用するアカウント | [Azure AD Connect アカウントとアクセス許可の詳細](active-directory-aadconnect-accounts-permissions.md)
+
+<!---HONumber=AcomDC_0601_2016-->

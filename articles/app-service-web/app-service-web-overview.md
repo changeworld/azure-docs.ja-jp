@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/16/2016"
+	ms.date="05/25/2016"
 	ms.author="tdykstra"/>
 
 # Web Apps の概要
@@ -34,34 +34,44 @@ Web Apps を使用できる一般的なアプリケーション シナリオの�
 
 ## Web Apps を使用する理由
 
-Web Apps の主要な機能を次に示します。
+Web Apps に適用されるいくつかの App Service の主要機能を次に示します。
 
-- **扱いやすく、高速** - 好みの言語、フレームワーク、統合開発環境 (IDE) で、既に持っているスキルを活用してコーディングします。数秒で新しい Web アプリをプロビジョニングし、それらにコードをデプロイできます。
+- **完全に管理されたプラットフォーム** - OS とフレームワークへの修正プログラムの自動適用、バックアップと障害復旧のためのビルトイン サポート。 
 
-- **エンタープライズ レベル** - Web Apps は、安全でミッション クリティカルなアプリケーションの構築およびホスト向けに設計されています。オンプレミス リソースに安全に接続する Active Directory 統合のビジネス アプリを構築し、それを [ISO](https://www.microsoft.com/TrustCenter/Compliance/ISO-IEC-27001)、[SOC](https://www.microsoft.com/TrustCenter/Compliance/SOC)、および [PCI](https://www.microsoft.com/TrustCenter/Compliance/pci) 準拠の、セキュリティで保護されたクラウド プラットフォーム上でホストします。すべてがエンタープライズ レベルの [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) を提供します。
+- **ユーザーの既存スキルを活用** - 好みの言語、フレームワーク、開発環境でコーディングできます。App Service では、.NET、Node.js、Java、PHP、Python をサポートしています。
 
-- **グローバルなスケール** - Web Apps では、将来の顧客負荷に対処するため、スケール[アップ](../app-service/app-service-scale.md)やスケール[アウト](../azure-portal/insights-how-to-scale.md)をすばやく実行できます。VM の数とサイズを手動で選択するか、負荷またはスケジュールに応じた自動スケールを設定します。Microsoft のグローバル データセンター インフラストラクチャは、複数の場所で Web アプリをホストし、データとホスティング サービスを簡単にレプリケートできるようにします。
+- **高速デプロイ** - 新しいアプリのプロビジョニングと、そのアプリへのコードのデプロイが数秒で完了します。
 
-- **Azure Marketplace** - 常に増え続ける [Web アプリケーション テンプレートのリスト](https://azure.microsoft.com/marketplace/)から選択します。Wordpress、Joomla、Drupal など、OSS アプリ コミュニティのベスト アプリを、ワンクリック インストールで利用できます。
+- **継続的インテグレーション** - [継続的インテグレーションとデプロイ](../app-service-web/app-service-continous-deployment.md)を、Visual Studio Team Services、GitHub、または BitBucket でセットアップできます。
 
-- **継続的インテグレーション** - [継続的インテグレーションとデプロイ](app-service-continous-deployment.md)のワークフローを Visual Studio Team Services、GitHub、または BitBucket でセットアップできます。コードのチェックインまたは統合テストが成功するごとに、Web アプリが自動的にビルド、テスト、およびデプロイされます。
+- **ステージング環境とテスト環境** - [ステージングされたデプロイ](../app-service-web/web-sites-staged-publishing.md)を実装して、運用環境と同じ運用前環境でコードを検証できます。準備ができたら、スワップ操作を実行することにより、ダウンタイムなしで新しいバージョンのアプリをリリースします。
 
-- **ステージング環境とテスト環境** - [ステージングされたデプロイ](web-sites-staged-publishing.md)を実装して、運用環境と同じ運用前環境でコードを検証できます。準備ができたら、スワップ操作を実行することにより、ダウンタイムなしで新しいバージョンのアプリをリリースします。
+- **運用環境でのテスト** - ステージングされたデプロイを次のレベルに移行し、[A/B テストを実行](../app-service-web/app-service-web-test-in-production-get-start.md)して、構成可能な一部のライブ トラフィックで新しいコードを検証します。
 
-- **運用環境でのテスト** - ステージングされたデプロイメントを次のレベルに移行し、[A/B テストを実行](app-service-web-test-in-production-get-start.md)して、構成可能な一部のライブ トラフィックで新しいコードを検証します。
+- **認証と承認** - コードを変更することなく、アプリを認証されていないアクセスから保護できます。組み込みの認証サービスでは、ユーザー、ユーザーを表すクライアント、またはサービスからのアクセスに対してアプリをセキュリティで保護します。Azure Active Directory、Facebook、Twitter、Google、Microsoft アカウントなどが、ID プロバイダーとしてサポートされています。詳細については、「[Azure App Service での認証および承認](../app-service/app-service-authentication-overview.md)」を参照してください。
 
-- **WebJobs** - Web Apps VM で[任意のプログラムまたはスクリプトを実行](web-sites-create-web-jobs.md)できます。スケジュールに従って、またはイベントにトリガーされて、継続的にジョブを実行します。Azure [WebJobs SDK](websites-dotnet-webjobs-sdk-get-started.md) は、ストレージ キュー、BLOB、テーブルなどの他の Azure サービスや、Service Bus キューおよびトピックとの統合のために記述するコードを簡略化します。
+- **任意のサービスへの接続** - 組み込みの[コネクタ](../connectors/apis-list.md)を使用して、アプリをエンタープライズ システムやサービスとしてのソフトウェア (SaaS) プラットフォームに数分で接続します。SAP、Siebel、Oracle などのエンタープライズ システムから Salesforce や Office 365 などの人気のエンタープライズ SaaS サービス、Facebook、Twitter、Dropbox などの人気のインターネット サービスまで、50 を超えるコネクタから選択できます。
 
-- **ハイブリッド接続** - [ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md)と [VNET](../app-service-web/web-sites-integrate-with-vnet.md) を使用して、オンプレミスのデータにアクセスします。
+- **グローバルなスケール** - 顧客からの受信負荷に対処するために、スケール[アップ](../app-service/app-service-scale.md)またはスケール[アウト](../azure-portal/insights-how-to-scale.md)を実行できます。VM の数とサイズを手動で選択するか、負荷またはスケジュールに応じた自動スケールを設定します。Microsoft のグローバル データセンター インフラストラクチャでアプリをホストするため、データやホスティング サービスを複数の場所で簡単にレプリケートできます。
 
-- **Visual Studio の統合** - Visual Studio の専用ツールを使えば、Web アプリを作成、デプロイ、使用、デバッグ、管理する作業が効率的になります。詳細については、[Azure SDK 2.8.1 for .NET の発表に関するページ](https://azure.microsoft.com/blog/announcing-azure-sdk-2-8-1-for-net/)を参照してください。
+- **エンタープライズ レベル** - App Service は、安全でミッション クリティカルなアプリケーションを構築およびホストすることを目的に設計されています。オンプレミスのリソースに安全に接続できる Active Directory 統合のビジネス アプリを構築し、それを [ISO、SOC、および PCI 準拠](https://www.microsoft.com/TrustCenter/)の、セキュリティで保護されたクラウド プラットフォーム上でホストします。また、すべてにおいてエンタープライズ レベルの [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) が提供されます。
 
-さらに、Web アプリでは、[API Apps](../app-service-api/app-service-api-apps-why-best-platform.md) で提供される機能 (CORS のサポートなど) と [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) で提供される機能 (プッシュ通知など) を利用できます。その逆も当てはまります。つまり、API アプリまたはモバイル アプリを使用して、Web アプリケーションをホストし、自動スケーリング、ステージング デプロイなどの Web Apps 機能を利用することもできます。これらの 3 つの種類 (API、Web、モバイル) の異なる点は、Azure ポータルでこれらに対して使用する名前とアイコンのみです。App Service でのアプリの種類の詳細については、[Azure App Service の概要](../app-service/app-service-value-prop-what-is.md)に関するページを参照してください。
+- **Azure Marketplace** - 増え続ける[アプリケーション テンプレートのリスト](https://azure.microsoft.com/marketplace/)から選択できます。WordPress、Joomla、Drupal など、OSS アプリ コミュニティのベスト アプリを、ワンクリック インストールで利用できます。
+
+- **WebJobs** - App Service VM で[任意のプログラムまたはスクリプトを実行](../app-service-web/web-sites-create-web-jobs.md)できます。スケジュールに従って、またはイベントにトリガーされて、継続的にジョブを実行します。Azure [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) を利用すると、他の Azure サービスやサードパーティ サービスと統合するために、記述するコードを単純化できます。
+
+- **ハイブリッド接続** - [ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md)と [Azure Virtual Network](../app-service-web/web-sites-integrate-with-vnet.md) を利用して、オンプレミスのデータにアクセスできます。
+
+- **Visual Studio の統合** - Visual Studio の専用ツールを使うと、Web アプリ、モバイル アプリ、API アプリを作成、デプロイ、使用、デバッグ、管理する作業が効率的になります。
+
+さらに、Web アプリでは、[API Apps](../app-service-api/app-service-api-apps-why-best-platform.md) で提供される機能 (CORS のサポートなど) と [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) で提供される機能 (プッシュ通知など) を利用できます。これらの 3 つの種類 (API、Web、モバイル) の異なる点は、Azure ポータルでこれらに対して使用する名前とアイコンのみです。App Service でのアプリの種類の詳細については、[Azure App Service の概要](../app-service/app-service-value-prop-what-is.md)に関するページを参照してください。
+
+App Service の Web Apps に加え、Azure では Web サイトと Web アプリケーションをホストするために利用できるサービスを他にも提供しています。ほとんどの場合は、Web Apps が最適な方法になります。マイクロサービス アーキテクチャ向けには、[Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) を検討してください。また、コードの実行に使用する VM をより細かく制御する必要がある場合は、[Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) をご検討ください。これらの Azure サービスから適切なサービスを選択する方法の詳細については、「[Azure App Service、Cloud Services、Virtual Machines、および Service Fabric の比較](choose-web-site-cloud-service-vm.md)」を参照してください。
 
 ## 使用の開始
 
-まず App Service で新しい Web アプリにサンプル コードをデプロイするには、「[5 分で初めての Web アプリを Azure にデプロイする](app-service-web-get-started.md)」チュートリアルに従ってください。無料の Azure アカウントが必要になります。
+まず App Service で新しい Web アプリにサンプル コードをデプロイするには、チュートリアル「[5 分で初めての Web アプリを Azure にデプロイする](app-service-web-get-started.md)」に従ってください。無料の Azure アカウントが必要になります。
 
-Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

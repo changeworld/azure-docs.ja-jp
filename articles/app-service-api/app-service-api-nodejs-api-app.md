@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="node"
 	ms.topic="get-started-article"
-	ms.date="05/06/2016"
+	ms.date="05/26/2016"
 	ms.author="bradygaster"/>
 
 # Node.js RESTful API をビルドして Azure で API アプリにデプロイする
@@ -24,10 +24,12 @@
 
 ## 前提条件
 
+1. Microsoft Azure アカウント ([こちらから無料アカウントを作成できます](https://azure.microsoft.com/pricing/free-trial/))
 1. [Node.js](http://nodejs.org) のインストール (このサンプルでは Node.js 4.2.2 を想定)
 2. [Git](https://git-scm.com/) のインストール
 1. [GitHub](https://github.com/) アカウント
-1. Microsoft Azure [無料試用版アカウント](https://azure.microsoft.com/pricing/free-trial/)
+
+App Service では、コードを API アプリにデプロイする方法を数多くサポートしていますが、このチュートリアルでは Git を使用した方法を説明しており、Git の操作方法について基本的な知識があることを前提としています。その他のデプロイ方法の詳細については、「[Azure App Service へのアプリのデプロイ](../app-service-web/web-sites-deploy.md)」を参照してください。
 
 ## サンプル コードの取得
 
@@ -39,11 +41,13 @@
 
 	サンプル API には 2 つのエンドポイントがあります。`/contacts` に対して Get 要求を発行すると、名前と電子メール アドレスの一覧が JSON 形式で返されます。`/contacts/{id}` では、選択した連絡先のみが返されます。
 
-## Swagger メタデータに基づく Node.js コードのスキャフォールディング
+## Swagger メタデータに基づく Node.js コードのスキャフォールディング (自動生成)
 
-[Swagger](http://swagger.io/) は、RESTful API を記述するメタデータ用のファイル形式です。Azure App Service は、[Swagger メタデータのビルトイン サポート](app-service-api-metadata.md)を提供しています。このチュートリアルは、API 開発ワークフローをモデル化します。最初に Swagger メタデータを作成し、それを使用して API のサーバー コードをスキャフォールディングします。チュートリアルのこのセクションでは、Swagger メタデータ ファイルに基づいて Node.js サーバー コードをスキャフォールディングする方法について説明します。
+[Swagger](http://swagger.io/) は、RESTful API を記述するメタデータ用のファイル形式です。Azure App Service は、[Swagger メタデータのビルトイン サポート](app-service-api-metadata.md)を備えています。チュートリアルのこのセクションは、API 開発ワークフローをモデルにしています。ここでは最初に Swagger メタデータを作成し、それを使用して API のサーバー コードをスキャフォールディング (自動生成) します。
 
->[AZURE.NOTE] スキャフォールディングの手順を実行しない場合は、「[Azure での API アプリの作成](#createapiapp)」セクションに直接移動して、新しい API アプリにサンプル コードをデプロイする作業だけを行うことができます。
+>[AZURE.NOTE] Node.js コードを Swagger メタデータ ファイルからスキャフォールディングする方法について学ぶ必要がない場合、このセクションはスキップしてかまいません。サンプル コードを新しい API アプリにデプロイするだけでよい場合は、[Azure での API アプリの作成](#createapiapp)に関するセクションに直接移動してください。
+
+### Swaggerize をインストールして実行する
 
 1. 次のコマンドを実行して、**yo** および **generator-swaggerize** NPM モジュールをグローバルにインストールします。
 
@@ -84,11 +88,11 @@
         
     ![Swaggerize UI のインストール](media/app-service-api-nodejs-api-app/swaggerize-ui-install.png)
 
-## スキャフォールディングされたコードのカスタマイズ
+### スキャフォールディングされたコードのカスタマイズ
 
 1. **start** フォルダーの **lib** フォルダーを、スキャフォールダーによって作成された **ContactList** フォルダーにコピーします。 
 
-1. **handlers/contacts.js** ファイルのコードを次のコードで置き換えます。
+1. **handlers/contacts.js** ファイルのコードを次のコードに置き換えます。
 
 	このコードでは、**lib/contactRepository.js** で生成される **lib/contacts.json** ファイルに保存されている JSON データを使用します。新しい contacts.js コードは HTTP 要求に応答して、すべての contact を取得し、JSON ペイロードとして返します。
 
@@ -102,7 +106,7 @@
             }
         };
 
-1. **handlers/contacts/{id}.js** ファイルのコードを次のコードで置き換えます。
+1. **handlers/contacts/{id}.js** ファイルのコードを次のコードに置き換えます。
 
         'use strict';
 
@@ -149,17 +153,17 @@
         server.listen(port, function () { // fifth and final change
         });
 
-## ローカルで実行される API でのテスト
+### ローカルで実行される API でのテスト
 
 1. Node.js コマンドラインの実行可能ファイルを使用して、サーバーを起動します。 
 
         node server.js
 
-1. **http://localhost:8000/contacts** を参照すると、contact 一覧の JSON 出力が表示されます (ブラウザーによっては、ダウンロードするように求められます)。
+1. **http://localhost:8000/contacts** を参照すると、連絡先リストの JSON 出力が表示されます (ブラウザーによっては、ダウンロードするように求められます)。
 
     ![すべての Contacts API の呼び出し](media/app-service-api-nodejs-api-app/all-contacts-api-call.png)
 
-1. **http://localhost:8000/contacts/2** を参照すると、その ID 値が示す contact が表示されます。
+1. **http://localhost:8000/contacts/2** を参照すると、その ID 値が示す連絡先が表示されます。
 
     ![特定の Contact API の呼び出し](media/app-service-api-nodejs-api-app/specific-contact-api-call.png)
 
@@ -171,9 +175,9 @@
 
     ![Swagger UI](media/app-service-api-nodejs-api-app/swagger-ui.png)
 
-## <a id="createapiapp"></a> Azure ポータルでの新しい API アプリの作成
+## <a id="createapiapp"></a> 新しい API アプリを作成する
 
-このセクションでは、新しい空の API アプリを Azure に作成する手順について説明します。その後、次のセクションで、アプリを Git リポジトリに接続し、コードの変更を継続的に配信できるようにします。
+このセクションでは、Azure ポータルを使用して、Azure で新しい API アプリを作成します。この API アプリは、コードを実行するために Azure が提供するコンピューティング リソースを表しています。後のセクションでは、新しい API アプリにコードをデプロイします。
 
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。 
 
@@ -183,11 +187,11 @@
 
 4. *azurewebsites.net* ドメイン内で一意の**アプリ名**を入力します (NodejsAPIApp に番号を付加するなどして一意にします)。
 
-	入力した名前が既に使用されている場合は、右側に緑色のチェック マークではなく赤色の感嘆符が表示されます。この場合、別の名前を入力する必要があります。
+	たとえば、名前が `NodejsAPIApp` である場合、URL は `nodejsapiapp.azurewebsites.net` です。
 
-	Azure では、この名前が API の URL のプレフィックスとして使用されます。URL 全体は、この名前に *.azurewebsites.net* を追加して構成されます。たとえば、名前が `NodejsAPIApp` である場合、URL は `nodejsapiapp.azurewebsites.net` になります。
+	既に他のユーザーによって使用されている名前を入力すると、右側に赤い感嘆符が表示されます。
 
-6. **[リソース グループ]** ドロップダウンで **[新規作成]** をクリックし、**[新しいリソース グループ名]** に「NodejsAPIAppGroup」(またはお好きな名前) を入力します。
+6. **[リソース グループ]** ボックスの一覧の **[新規作成]** をクリックし、**[新しいリソース グループ名]** に「NodejsAPIAppGroup」(またはお好きな名前) を入力します。
 
 	[リソース グループ](../azure-portal/resource-group-portal.md)は、API アプリ、データベース、VM などの Azure リソースをひとまとめにしたものです。このチュートリアルでは、新しいリソース グループを作成すると便利です。チュートリアルのために作成したすべての Azure リソースを 1 回の手順で簡単に削除できるからです。
 
@@ -215,21 +219,19 @@
 
 ## Git デプロイ用の新しい API アプリの設定
 
-チュートリアルのこのセクションでは、デプロイに使用する資格情報と、Azure App Service の API アプリ用の Git リポジトリを作成します。Azure App Service でこのリポジトリにコミットをプッシュすることによって、API アプリにコードをデプロイします。
+Azure App Service で Git リポジトリにコミットをプッシュすることによって、API アプリにコードをデプロイします。チュートリアルのこのセクションでは、Azure でデプロイに使用する資格情報と Git リポジトリを作成します。
 
 1. API アプリが作成されたら、ポータルのホーム ページで **[App Services]** をクリックし、作成した API アプリをクリックします。 
 
 	ポータルに **[API アプリ]** ブレードと **[設定]** ブレードが表示されます。
 
-    ![Portal API app blade](media/app-service-api-nodejs-api-app/portalapiappblade.png)
-
-    ![Portal Settings blade](media/app-service-api-nodejs-api-app/portalsettingsblade.png)
+    ![Portal API app and Settings blade](media/app-service-api-nodejs-api-app/portalapiappblade.png)
 
 1. **[設定]** ブレードで、下へスクロールして **[発行]** セクションを表示し、**[デプロイ資格情報]** をクリックします。
  
 3. **[デプロイ資格情報の設定]** ブレードで、ユーザー名とパスワードを入力し、**[保存]** をクリックします。
 
-	これらの資格情報は、Node.js コードを API アプリに発行するために使用します。次の手順では、API アプリに関連付けられた Azure の Git リポジトリを作成します。
+	これらの資格情報は、Node.js コードを API アプリに発行するために使用します。
 
     ![デプロイメント資格情報](media/app-service-api-nodejs-api-app/deployment-credentials.png)
 
@@ -251,15 +253,9 @@
 
 ## Azure への API コードのデプロイ
 
-このセクションでは、次の手順を実行します。
+このセクションでは、API のサーバー コードを含むローカル Git リポジトリを作成し、そのリポジトリから、前の手順で Azure に作成したリポジトリにコードをプッシュします。
 
-* API のサーバー コードを含むローカル Git リポジトリを作成します。
-* そのリポジトリに、Azure で API アプリ用に作成したリポジトリを指すリモートを作成します。
-* ローカル リポジトリからリモート リポジトリにコードをプッシュします。 
-
-Azure App Service に組み込まれた継続的な配信機能を使用すると、API アプリに関連付けられた Git リポジトリにコミットをプッシュするだけでコードをデプロイできます。
-
-1. このチュートリアルの最初の部分を実行した場合は、Swaggerize Scaffolder を使用して作成した `start\ContactList` フォルダーを他のフォルダーにコピーします。実行していない場合は、`end\ContactList` フォルダーを他のフォルダーにコピーします。
+1. `ContactList` フォルダーを、新しいローカル Git リポジトリとして使用できる場所にコピーします。チュートリアルの最初の部分を実行した場合は `ContactList` を `start` フォルダーからコピーし、そうでない場合は `ContactList` を `end` フォルダーからコピーします。
 
 1. コマンド ライン ツールで、新しいフォルダーに移動し、次のコマンドを実行して新しいローカル Git リポジトリを作成します。
 
@@ -286,7 +282,7 @@ Azure App Service に組み込まれた継続的な配信機能を使用する�
 
 	API アプリへのデプロイが開始されます。
 
-1. ブラウザーで API アプリの **[デプロイ]** ブレードに戻ると、デプロイが実行されていることが表示されます。
+1. ブラウザーで API アプリの **[デプロイ]** ブレードに戻ると、デプロイが実行されていることがわかります。
 
     ![デプロイメントの実行中](media/app-service-api-nodejs-api-app/deployment-happening.png)
 
@@ -302,20 +298,18 @@ Azure App Service に組み込まれた継続的な配信機能を使用する�
 
     ![デプロイメントの完了](media/app-service-api-nodejs-api-app/deployment-completed.png)
 
-1. Postman や Fiddler などの REST API クライアント (または Web ブラウザー) を使用して contacts API 呼び出しの URL を指定します。これは、API アプリの `/contacts` エンドポイントです。
-
-    **注:** URL は `https://{your API app name}.azurewebsites.net/contacts` です。
+1. Postman や Fiddler などの REST API クライアント (または Web ブラウザー) を使用して、Contacts API の呼び出し URL、つまり API アプリの `/contacts` エンドポイントを指定します。URL は `https://{your API app name}.azurewebsites.net/contacts` となります。
 
     このエンドポイントに GET 要求を発行すると、API アプリの JSON 出力が取得されます。
 
     ![Postman に接続する Api](media/app-service-api-nodejs-api-app/postman-hitting-api.png)
 
-2. ブラウザーで `/docs` エンドポイントに移動し、Azure で実行されている Swagger UI を試します。
+2. ブラウザーで `/docs` エンドポイントに移動し、Azure で実行されている Swagger UI を使用してみます。
 
 継続的な配信の設定が完了しているので、コードを変更した後は、Azure の Git リポジトリにコミットをプッシュするだけで、Azure にデプロイできます。
 
 ## 次のステップ
 
-ここでは、Node.js を使用して、初めての API アプリを作成してデプロイしました。次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について学習します。それ以降のチュートリアルでは、認証と承認を実装する方法について説明します。
+この時点で、API アプリの作成と、そのアプリへの Node.js API コードのデプロイが正常に完了しました。次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について説明します。
 
-<!-----HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

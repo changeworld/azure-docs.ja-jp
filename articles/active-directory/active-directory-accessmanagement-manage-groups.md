@@ -1,7 +1,7 @@
 <properties
 
 	pageTitle="Managing groups in Azure Active Directory | Microsoft Azure"
-	description="How to create and manage groups to manage Azure resource access using Azure Active Directory."
+	description="How to create and manage groups to manage Azure users using Azure Active Directory."
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
@@ -14,19 +14,22 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/18/2016"
+	ms.date="05/26/2016"
 	ms.author="curtand"/>
 
 
 # Azure Active Directory におけるグループの管理
 
-Azure Active Directory (Azure AD) の主な機能の 1 つは、リソースへのアクセスを管理することです。そうしたリソースは、ディレクトリ内のオブジェクトとして存在しているほか、SaaS アプリケーションや Azure サービス、SharePoint サイト、オンプレミス リソースなど、ディレクトリの外部に存在するケースもあります。加えてリソース所有者は、リソースへのアクセス権を Azure AD グループに対して割り当てることができます。この場合そのグループのメンバーに、リソースへのアクセス権が付与されます。グループのメンバーシップは、グループの所有者が管理します。実質的にはユーザーをリソースに割り当てる権限が、リソースの所有者からグループの所有者に委任されます。
+Azure Active Directory (Azure AD) ユーザー管理の機能の 1 つに、ユーザーのグループを作成する機能があります。グループを使用して、ライセンスをユーザーのクラスに割り当てることができます。また、グループは次のリソースに対するアクセス許可の割り当てにも使用できます。
+
+- ディレクトリ内のオブジェクトなどのリソース
+- SaaS アプリケーションや Azure サービス、SharePoint サイト、オンプレミスのリソースなど、ディレクトリの外部に存在するリソース
+
+加えてリソース所有者は、リソースへのアクセス権を Azure AD グループに対して割り当てることができます。この場合そのグループのメンバーに、リソースへのアクセス権が付与されます。グループのメンバーシップは、グループの所有者が管理します。実質的にはユーザーをリソースに割り当てる権限が、リソースの所有者からグループの所有者に委任されます。
 
 ## どのようにしてグループを作成しますか?
 
-**グループを作成するには**
-
-この作業には、Office 365 アカウント ポータル、Windows Intune アカウント ポータル、Azure ポータルを使用することができます。自分の組織がサブスクライブしているサービスに応じたポータルを使用してください。ポータルを使用した Azure Active Directory の管理の詳細については、[Azure AD ディレクトリの管理](active-directory-administer.md)に関するページを参照してください。
+この作業には、Office 365 アカウント ポータル、Windows Intune アカウント ポータル、Azure クラシック ポータルを使用することができます。自分の組織がサブスクライブしているサービスに応じたポータルを使用してください。Azure 以外のポータルを使用した Azure Active Directory の管理の詳細については、[Azure AD ディレクトリの管理](active-directory-administer.md)に関するページを参照してください。
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]** を選択し、該当する組織のディレクトリ名を選択します。
 
@@ -72,7 +75,7 @@ Azure AD では、グループのメンバーとして追加するユーザー�
 > [AZURE.NOTE] セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。現在、アプリケーションに対するグループ ベースの割り当てでは入れ子になったグループ メンバーシップはサポートされていません。
 >
 > グループの動的メンバーシップを実行するには、次のユーザーに Azure AD Premium ライセンスが割り当てられている必要があります。
-> 
+>
 > - グループに対するルールを管理する管理者
 > - ルールによってグループのメンバーとして選択されるすべてのユーザー
 
@@ -102,4 +105,4 @@ Azure AD では、グループのメンバーとして追加するユーザー�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

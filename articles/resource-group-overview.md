@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/20/2016"
+   ms.date="05/27/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーの概要
@@ -127,13 +127,13 @@ Azure リソース マネージャーでは、クロス オリジン リソー�
 
 ## 次のステップ
 
-- テンプレート作成の詳細については、[テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
-- 作成したテンプレートをデプロイするには、[テンプレートのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
+- テンプレートの簡単な操作手順については、「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
+- さらに詳しくテンプレートの作成方法を解説したチュートリアルについては、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」を参照してください。
 - テンプレートで使用できる関数については、[テンプレートの関数](resource-group-template-functions.md)に関するページを参照してください。
-- テンプレートのデザインのガイダンスについては、[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](best-practices-resource-manager-design-templates.md)に関するページを参照してください。
+- Visual Studio と Resource Manager の使用については、「[Visual Studio での Azure リソース グループの作成とデプロイ](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
 
 この概要のデモンストレーション ビデオを次に示します。
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

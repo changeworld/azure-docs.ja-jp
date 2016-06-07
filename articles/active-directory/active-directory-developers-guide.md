@@ -99,16 +99,15 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 ### 認証プロトコル
 
-- [SAML 2.0 プロトコル リファレンス](https://msdn.microsoft.com/library/azure/dn195591.aspx): SAML 2.0 プロトコルにより、アプリケーションでユーザーにシングル サインオン エクスペリエンスを提供できます。
+- [Azure Active Directory 認証プロトコル](active-directory-protocols.md): Azure Active Directory でサポートされているさまざまな認証プロトコルと承認プロトコルについて説明されています。
 
+- [SAML 2.0 プロトコル リファレンス](active-directory-saml-protocol-reference.md): SAML 2.0 プロトコルにより、アプリケーションでユーザーにシングル サインオン エクスペリエンスを提供できます。
 
-- [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx): OAuth 2.0 プロトコルを使用して、Azure Active Directory テナントの Web アプリケーションと Web API へのアクセスを承認できます。
+- [Azure AD での OAuth 2.0](active-directory-protocols-oauth-code.md): OAuth 2.0 プロトコルを使用して、Azure Active Directory テナントの Web アプリケーションと Web API へのアクセスを承認できます。
 
+- [OpenID Connect 1.0](active-directory-protocols-openid-connect-code.md): OpenID Connect 1.0 プロトコルは、OAuth 2.0 を拡張し、認証プロトコルとして使用できるようにします。
 
-- [OpenID Connect 1.0](https://msdn.microsoft.com/library/azure/dn645541.aspx): OpenID Connect 1.0 プロトコルは、OAuth 2.0 を拡張し、認証プロトコルとして使用できるようにします。
-
-
-- [WS-Federation 1.2](https://msdn.microsoft.com/library/azure/dn903702.aspx): WS-Federation 1.2 プロトコルは、Web Services Federation バージョン 1.2 仕様で指定されています。
+- [WS-Federation 1.2 プロトコル](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html): Azure Active Directory では、Web Services Federation バージョン 1.2 仕様に準拠して WS-Federation 1.2 がサポートされています。
 
 - [サポートされているトークンと要求の種類](active-directory-token-and-claims.md): このガイドを使用すると、SAML 2.0 トークンと JSON Web Tokens (JWT) トークンの要求を理解し、評価することができます。
 
@@ -140,4 +139,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->
