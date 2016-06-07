@@ -154,7 +154,7 @@ HTTP ベースの負荷分散では、HTTP プロトコルの特性を使用し�
 次の条件に該当する場合は、Azure Application Gateway の利用をお勧めします。
 
 - 同じユーザー/クライアントのセッションからの要求が同じバックエンド仮想マシンに到達する必要があるアプリケーション。この例としては、ショッピング カート アプリや Web メール サーバーなどが挙げられます。
-- Application Gateway の [SSL オフロード](https://f5.com/glossary/ssl-offloading)機能を使用して、Web サーバー ファームを SSL 終端処理のオーバーヘッドから解放する必要があるアプリケーション。
+- Application Gateway の [SSL オフロード](https://f5.com/glossary/ssl-offloading)機能を使用して、Web サーバー ファームを SSL ターミネーションのオーバーヘッドから解放する必要があるアプリケーション。
 - 実行時間の長い同じ TCP 接続で複数の HTTP 要求を異なるバックエンド サーバーにルーティング/負荷分散する必要があるアプリケーション (コンテンツ配信ネットワークなど)。
 
 Azure Application Gateway のしくみと、デプロイメントでの使用方法の詳細については、「[Application Gateway の概要](./application-gateway/application-gateway-introduction.md)」を参照してください。
