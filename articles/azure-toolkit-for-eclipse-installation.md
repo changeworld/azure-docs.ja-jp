@@ -98,4 +98,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [05]: ./media/azure-toolkit-for-eclipse-installation/eclipse-installation-05.png
 [06]: ./media/azure-toolkit-for-eclipse-installation/eclipse-installation-06.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!----HONumber=AcomDC_0525_2016-->

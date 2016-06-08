@@ -81,15 +81,15 @@ Visual Studio Web テスト ファイルをアップロードして、エンド 
 
 Visual Studio Web テスト ファイルをアップロードして実行するには、次の手順に従います。
  
-0. 上記の手順に従って、**[新しいパフォーマンス テスト]** ブレードを開きます。このブレードで [CONFIGFURE TEST USING] (テストの構成に使用する項目) オプションを選択して、**[Configure test using]** (テストの構成に使用する項目) ブレードを開きます。  
+0. 上記の手順に従って、**[新しいパフォーマンス テスト]** ブレードを開きます。このブレードで [CONFIGFURE TEST USING] \(テストの構成に使用する項目) オプションを選択して、**[Configure test using]** (テストの構成に使用する項目) ブレードを開きます。  
 
     ![Opening the Configure load testing blade](./media/app-service-web-app-performance-test/multiple-01-authoring-blade.png)
 
-0. [TEST TYPE] (テストの種類) が **[Visual Studio Web Test]** (Visual Studio Web テスト) に設定されていることを確認し、HTTP アーカイブ ファイルを選択します。"フォルダー" アイコンを使用してファイル選択ダイアログを開きます。
+0. [TEST TYPE] \(テストの種類) が **[Visual Studio Web Test]** (Visual Studio Web テスト) に設定されていることを確認し、HTTP アーカイブ ファイルを選択します。"フォルダー" アイコンを使用してファイル選択ダイアログを開きます。
 
     ![Uploading a multiple URL Visual Studio Web Test file](./media/app-service-web-app-performance-test/multiple-01-authoring-blade2.png)
 
-    ファイルがアップロードされると、テストで使用する URL の一覧が [URL DETAILS] (URL の詳細) セクションに表示されます。
+    ファイルがアップロードされると、テストで使用する URL の一覧が [URL DETAILS] \(URL の詳細) セクションに表示されます。
  
 0. ユーザー ロードとテスト期間を指定し、**[Run test]** (テストの実行) を選択します。
 

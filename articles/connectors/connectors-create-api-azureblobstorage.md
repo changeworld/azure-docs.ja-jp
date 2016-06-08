@@ -230,4 +230,4 @@ Azure Blob Storage のファイルを更新します。```PUT: /datasets/default
 
 [ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!----HONumber=AcomDC_0525_2016-->
