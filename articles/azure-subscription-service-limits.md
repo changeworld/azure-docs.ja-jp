@@ -292,4 +292,4 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 [クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!----HONumber=AcomDC_0525_2016-->
