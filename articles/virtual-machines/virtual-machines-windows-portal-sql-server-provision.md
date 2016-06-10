@@ -249,4 +249,4 @@ Azure での SQL Server の使用に関するその他の情報については�
 
 Azure Virtual Machines 上の SQL Server の概要に関するビデオについては、「[Azure VM is the best platform for SQL Server 2016 (Azure VM は SQL Server 2016 に最適なプラットフォーム)](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)」をご覧ください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!-----HONumber=AcomDC_0601_2016-->
