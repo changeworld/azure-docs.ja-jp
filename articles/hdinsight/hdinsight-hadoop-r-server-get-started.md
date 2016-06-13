@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="05/16/2016"
+   ms.date="05/27/2016"
    ms.author="jeffstok"
 />
 
@@ -110,13 +110,13 @@ HDInsight の Premium レベル サービスには、HDInsight (プレビュー)
 
 SSH を使用して HDInsight クラスターの R Server エッジ ノードに接続します。
 
-    ssh USERNAME@rserver.CLUSTERNAME.ssh.azurehdinsight.net
+    ssh USERNAME@r-server.CLUSTERNAME-ssh.azurehdinsight.net
     
-> [AZURE.NOTE] クラスターを選択し、__[すべての設定]__、__[アプリ]__、__[RServer]__ の順にクリックし、Azure ポータルで `RServer.CLUSTERNAME.ssh.azurehdinsight.net` のアドレスを確認することもできます。これにより、エッジ ノードの SSH エンドポイント情報が表示されます。
+> [AZURE.NOTE] クラスターを選択し、__[すべての設定]__、__[アプリ]__、__[RServer]__ の順にクリックし、Azure ポータルで `R-Server.CLUSTERNAME-ssh.azurehdinsight.net` のアドレスを確認することもできます。これにより、エッジ ノードの SSH エンドポイント情報が表示されます。
 >
 > ![エッジ ノードの SSH エンドポイントの画像](./media/hdinsight-getting-started-with-r/sshendpoint.png)
     
-SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。公開キーを使用している場合、`-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。たとえば、「`ssh -i ~/.ssh/id_rsa USERNAME@RServer.CLUSTERNAME.ssh.azurehdinsight.net`」のように入力します。
+SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。公開キーを使用している場合、`-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。たとえば、「`ssh -i ~/.ssh/id_rsa USERNAME@R-Server.CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
     
 Linux ベースの HDInsight での SSH の使用方法の詳細については、次の記事を参照してください。
 
@@ -353,4 +353,4 @@ Azure Resource Manager テンプレートを使用して HDInsight で R Server 
 
 ARM テンプレートの使用方法の一般的な情報については、「[ARM テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -22,7 +22,7 @@ Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新�
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-
+Azure Resource Manager ベースの Azure PowerShell コマンドレットを使用して Web アプリを管理する方法については、[Azure Resource Manager ベースの Azure Web アプリ用 PowerShell コマンド](app-service-web-app-azure-resource-manager-powershell.md)に関するページを参照してください。
 
 ## 新しい SSL 証明書のアップロードとバインド ##
 
@@ -68,7 +68,8 @@ Web アプリを含むリソース グループの名前、Web アプリ名、�
 	Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com -DeleteCertificate $false
 
 ### 参照 ###
+- [Azure Resource Manager ベースの Azure Web アプリ用 PowerShell コマンド](app-service-web-app-azure-resource-manager-powershell.md)
 - [App Service 環境の概要](app-service-app-service-environment-intro.md)
 - [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0601_2016-->

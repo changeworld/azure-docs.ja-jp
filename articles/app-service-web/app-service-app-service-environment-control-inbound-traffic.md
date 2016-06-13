@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/06/2016" 
+	ms.date="05/26/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境への受信トラフィックを制御する方法
@@ -41,7 +41,7 @@ App Service 環境で使用されるポートの一覧を次に示します。
 - 80: App Service 環境において App Service プランで実行されているアプリへの受信 HTTP トラフィック用の既定のポート
 - 443: App Service 環境において App Service プランで実行されているアプリへの受信 SSL トラフィック用の既定のポート
 - 21: FTP 用のコントロール チャネル。FTP が使用されていない場合は、このポートを安全にブロックできます。
-- 10001 ～ 10020: FTP 用のデータ チャネル。コントロール チャネルと同様、FTP が使用されていない場合は、これらのポートを安全にブロックできます (**注:** FTP データ チャネルはプレビュー期間中に変更される場合があります)。
+- 10001 ～ 10020: FTP 用のデータ チャネル。コントロール チャネルと同様、FTP が使用されていない場合は、これらのポートを安全にブロックできます。   
 - 4016: Visual Studio 2012 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
 - 4018: Visual Studio 2013 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
 - 4020: Visual Studio 2015 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
@@ -56,7 +56,7 @@ App Service 環境では、仮想ネットワーク用に構成された有効�
 -  世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続これには、App Service Environment と同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。  
 -  App Service Environment と同じリージョンにある Sql DB エンドポイントに対する発信ネットワーク接続。SQL DB エンドポイントは、*database.windows.net* ドメインで解決されます。
 -  Azure 管理プレーン エンドポイント (ASM エンドポイントと ARM エンドポイントの両方) に対する発信ネットワーク接続これには、*management.core.windows.net* と *management.azure.com* の両方に対する発信接続が含まれます。 
--  *ocsp.msocsp.com*、*mscrl.microsoft.com*、および *crl.microsoft.com* に対する発信ネットワーク接続。これは、SSL 機能をサポートするために必要です。
+-  *ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl.microsoft.com* に対する発信ネットワーク接続。これは、SSL 機能をサポートするために必要です。
 -  仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。これらのエンドポイントを解決できない場合、App Service Environment の作成処理に失敗し、既存の App Service Environment は異常とマークされます。
 -  カスタム DNS サーバーが VPN ゲートウェイの相手側にある場合、DNS サーバーは App Service Environment を含むサブネットから到達できる必要があります。 
 -  発信ネットワーク パスは、社内プロキシを経由したり、オンプレミスに強制的にトンネリングしたりすることができません。実行した場合、App Service Environment からの発信ネットワーク トラフィックの実質的な NAT アドレスが変わります。App Service Environment の発信ネットワーク トラフィックの NAT アドレスを変更すると、上記の多数のエンドポイントに対して接続エラーが発生します。その結果、App Service Environment の作成処理は失敗し、以前は正常動作していた App Service Environment も異常とマークされます。  
@@ -149,4 +149,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 <!-- IMAGES -->
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -63,10 +63,10 @@ Azure ポータルから直接、システム データおよびパフォーマ�
 
 手順 1.次の内容を含む PrivateConfig.json という名前のファイルを作成します。
 
-	{
-     	"storageAccountName":"the storage account to receive data",
-     	"storageAccountKey":"the key of the account"
-	}
+    {
+        "storageAccountName" : "the storage account to receive data",
+        "storageAccountKey" : "the key of the account"
+    }
 
 手順 2.**azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions 2.* --private-config-path PrivateConfig.json** を実行します。
 
@@ -80,12 +80,15 @@ Azure ポータルから直接、システム データおよびパフォーマ�
 
 Rsyslog データは既定で常に収集されます。
 
-	{
-      	"perfCfg":[
-           	{"query":"SELECT PercentAvailableMemory, AvailableMemory, UsedMemory ,PercentUsedSwap FROM SCX_MemoryStatisticalInformation","table":"LinuxMemory"
-           	}
-          ]
-	}
+    {
+      	"perfCfg":
+      	[
+      	    {
+      	        "query" : "SELECT PercentAvailableMemory, AvailableMemory, UsedMemory ,PercentUsedSwap FROM SCX_MemoryStatisticalInformation",
+      	        "table" : "LinuxMemory"
+      	    }
+      	]
+    }
 
 
 手順 2.**azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** を実行します。
@@ -96,27 +99,29 @@ Rsyslog データは既定で常に収集されます。
 
 手順 1.シナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。次の内容を含む PrivateConfig.json という名前の別のファイルを作成します。
 
-	{
-      	"fileCfg":[
-           	{"file":"/var/log/mysql.err",
-             "table":"mysqlerr"
-           	}
-          ]
-	}
+    {
+        "fileCfg" : 
+        [
+            {
+                "file" : "/var/log/mysql.err",
+                "table" : "mysqlerr"
+             }
+        ]
+    }
 
 
 手順 2.**azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** を実行します。
 
 
 ###   シナリオ 4. 拡張機能によるログ収集を停止する
-このセクションでは、拡張機能によるログ収集を停止する方法について説明します。この再構成を使用しても、監視エージェント プロセスはまだ稼働していることに注意してください。監視エージェント プロセスを完全に停止するには、現在の拡張機能をアンインストールする必要があります。将来的には、拡張機能全体のアンインストールを必要とせずに、拡張機能を無効にする (監視エージェント プロセスも完全に停止する) 構成プロパティを追加する予定です。
+このセクションでは、拡張機能によるログ収集を停止する方法について説明します。この再構成を使用しても、監視エージェント プロセスはまだ稼働していることに注意してください。監視エージェント プロセスを完全に停止するには、拡張機能を無効にします。拡張機能を無効にするコマンドは、**azure vm extension set --disable <vm_name> LinuxDiagnostic Microsoft.OSTCExtensions '2.*'** です。
 
 手順 1.シナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。次の内容を含む PrivateConfig.json という名前の別のファイルを作成します。
 
-	{
-     	"perfCfg":[],
-     	"enableSyslog":"false"
-	}
+    {
+        "perfCfg" : [],
+        "enableSyslog" : "false"
+    }
 
 
 手順 2.**azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** を実行します。
@@ -139,4 +144,4 @@ Rsyslog データは既定で常に収集されます。
 ## 既知の問題
 - バージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

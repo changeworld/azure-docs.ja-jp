@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/28/2016" 
+	ms.date="05/27/2016" 
 	ms.author="huvalo;bradsev" />
 
 
@@ -108,7 +108,7 @@ Python クライアント ライブラリで使用するために Studio で提�
 
 	![ノートブック][ipython-dataset]
 
-### <a name="accessingIntermediateDatasets"></a>Machine Learning 実験から中間データセットにアクセスする
+## <a name="accessingIntermediateDatasets"></a>Machine Learning 実験から中間データセットにアクセスする
 
 Machine Learning Studio で実験が実行されると、モジュールの出力ノードから中間データ セットにアクセスできます。中間データセットは、モデル ツールが実行されているときに中間手順で作成され使用されるデータです。
 
@@ -367,4 +367,4 @@ Python クライアント ライブラリは、Pandas DataFrame を次の形式�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0601_2016-->

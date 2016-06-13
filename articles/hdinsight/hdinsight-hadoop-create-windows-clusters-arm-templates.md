@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/08/2016"
+   ms.date="05/27/2016"
    ms.author="jgao"/>
 
 # ARM テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成
@@ -294,4 +294,4 @@ Visual Studio とリソース グループの使用の概要については、�
         }
     }
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/17/2016"
+	ms.date="05/31/2016"
 	ms.author="stepsic"/>
 	
 # 新しいスキーマ バージョン 2015-08-01-preview
@@ -27,7 +27,9 @@
 
 ## 1\.API 接続への移行
 
-最大の変更は、API を使用するために、Azure サブスクリプションに API アプリをデプロイする必要がなくなった点です。API を使用できる方法には次の 2 種類があります。* マネージ API * カスタム Web API
+最大の変更は、API を使用するために、Azure サブスクリプションに API アプリをデプロイする必要がなくなった点です。API は、次の 2 とおりの方法で使用できます。
+* マネージ API
+* カスタム Web API
 
 これらの API は、管理モデルとホスティング モデルが異なることから、それぞれの処理方法も若干異なります。このモデルのメリットの 1 つは、リソース グループにデプロイされたリソース以外にも、リソースを使用できるようになったことです。
 
@@ -192,7 +194,8 @@ PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/p
 
 独自の API (特に、Microsoft によって管理されていない API) を使用している場合、それを呼び出すには組み込みの **HTTP** アクションを使用する必要があります。最適なユーザー エクスペリエンスを確保するためには、API の swagger エンドポイントを公開する必要があります。これにより、ロジック アプリ デザイナーでは API の入出力を表示できるようになります。swagger がないと、デザイナーでは入出力を不透明な JSON オブジェクトとしてしか表示できません。
 
-新しい `metadata.apiDefinitionUrl` プロパティを次の例に示します。```
+新しい `metadata.apiDefinitionUrl` プロパティを次の例に示します。
+```
 {
    "actions": {
         "mycustomAPI": {
@@ -215,7 +218,8 @@ Web API を **App Service** でホストした場合、デザイナーで利用�
 
 API アプリを事前にデプロイしてある場合、**HTTP** アクションによってそのアプリを呼び出すことができます。
 
-たとえば、Dropbox を使用してファイルを一覧表示する場合、**2014-12-01-preview** のスキーマ バージョン定義の内容は次のようになっていることがあります。```
+たとえば、Dropbox を使用してファイルを一覧表示する場合、**2014-12-01-preview** のスキーマ バージョン定義の内容は次のようになっていることがあります。
+```
 {
     "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2014-12-01-preview/workflowdefinition.json#",
     "contentVersion": "1.0.0.0",
@@ -459,4 +463,4 @@ API アプリを事前にデプロイしてある場合、**HTTP** アクショ�
 ## 近日提供予定: Enterprise Integration API
 現時点では、まだ Enterprise Integration API の管理されたバージョン (AS2 など) は用意できていません。[ロードマップ](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)に記載されているとおり、この API は近日提供予定です。それまでは、前述の「既にデプロイ済みの API アプリを 2015-08-01-preview で使用する」で説明したように、HTTP アクションを通じてデプロイ済みの BizTalk API を使用してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0601_2016-->

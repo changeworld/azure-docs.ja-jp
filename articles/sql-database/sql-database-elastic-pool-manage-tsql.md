@@ -3,18 +3,18 @@
     description="T-SQL を使用してエラスティック プール内に Azure SQL データベースを作成します。または、T-SQL を使用してエラスティック プールにデータベースを移動したり、エラスティック プールからデータベースを移動したりします。" 
 	services="sql-database" 
     documentationCenter="" 
-    authors="sidneyh" 
+    authors="srinia" 
     manager="jhubbard" 
     editor=""/>
 
 <tags
     ms.service="sql-database"
     ms.devlang="NA"
-    ms.topic="get-started-article"
+    ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management" 
-    ms.date="04/28/2016"
-    ms.author="sidneyh"/>
+    ms.date="05/27/2016"
+    ms.author="srinia"/>
 
 # Transact-SQL を使用したエラスティック データベース プールの監視と管理  
 
@@ -31,7 +31,7 @@
 
 
 ## エラスティック プールでの新しいデータベースの作成
-CREATE DATABASE コマンドと共に SERVICE_OBJECTIVE オプションを使用します。
+CREATE DATABASE コマンドと共に SERVICE\_OBJECTIVE オプションを使用します。
 
 	CREATE DATABASE db1 ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3M100] ));
 	-- Create a database named db1 in a pool named S3M100.
@@ -46,13 +46,13 @@ ALTER DATABASE コマンドと共に MODIFY を使用します。SERVICE\_OBJECT
 	-- Move the database named db1 to a pool named P1M125  
 
 ## エラスティック プールへのデータベースの移動 
-ALTER DATABASE コマンドと共に MODIFY を使用します。SERVICE\_OBJECTIVE オプションに ELASTIC_POOL を設定し、name にターゲット プールの名前を設定します。
+ALTER DATABASE コマンドと共に MODIFY を使用します。SERVICE\_OBJECTIVE オプションに ELASTIC\_POOL を設定し、name にターゲット プールの名前を設定します。
 
 	ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3100] ));
 	-- Move the database named db1 to a pool named S3100.
 
 ## エラスティック プールからのデータベースの移動
-ALTER DATABASE コマンドを使用し、SERVICE_OBJECTIVE をいずれかのパフォーマンス レベル (S0、S1 など) に設定します。
+ALTER DATABASE コマンドを使用し、SERVICE\_OBJECTIVE をいずれかのパフォーマンス レベル (S0、S1 など) に設定します。
 
 	ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = 'S1');
 	-- Changes the database into a stand-alone database with the service objective S1.
@@ -84,4 +84,4 @@ ALTER DATABASE コマンドを使用し、SERVICE_OBJECTIVE をいずれかの�
 
 Elastic Database のツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

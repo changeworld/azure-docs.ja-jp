@@ -19,8 +19,6 @@
 
 # 基本構成テスト環境
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 この記事では、リソース マネージャーで作成された仮想マシンコンピューターを使用し、Microsoft Azure Virtual Network 内に基本構成テスト環境を作成する手順について説明します。
 
 完成したテスト環境は、次の用途に使うことができます。
@@ -50,7 +48,7 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 3.	APP1 を構成する。
 4.	CLIENT1 を構成する。
 
-まだ Azure アカウントがない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から無料試用版にサインアップしてください。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」をご覧ください。
+まだ Azure アカウントがない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から無料試用版にサインアップしてください。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
 > [AZURE.NOTE] Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 価格計算ツール](https://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
 
@@ -335,4 +333,4 @@ Azure PowerShell で仮想マシンを順番に起動するには、リソース
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

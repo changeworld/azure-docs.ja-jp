@@ -19,12 +19,9 @@
 
 # 3 ノード Deis クラスターのデプロイ
 
-この記事では Azure での[Deis](http://deis.io/) クラスターのプロビジョニングをについて説明します。必要な証明書の作成から新しくプロビジョニングされたクラスタ上にサンプルの **Go** アプリケーション をデプロイ・スケーリングする手順まで、すべての手順を網羅しています。
+この記事では Azure での[Deis](http://deis.io/) クラスターのプロビジョニングをについて説明します。必要な証明書の作成から新しくプロビジョニングされたクラスタ上にサンプルの **Go** アプリケーション を展開・スケーリングする手順まで、すべての手順を網羅しています。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
-
-次の図は、デプロイ済みシステムのアーキテクチャを示します。システム管理者は**deis** と **deisctl**などの Deis ツールを使ってクラスタを管理します。接続は、クラスター上のメンバーノードの 1 つに、接続を転送をする。Azure ロード バランサーを介して確立されます。同様に Load Balancer を使用してアプリケーションをクライアントがアクセスにデプロイされます。この場合は、Load Balancer は Deis ルーターメッシュへトラフィックを転送します。さらに、クラスターでホストされている、対応する Docker コンテナーへのトラフィックをルートします。
+次の図は、展開済みシステムのアーキテクチャを示します。システム管理者は**deis** と **deisctl**などの Deis ツールを使ってクラスタを管理します。接続は、クラスター上のメンバーノードの 1 つに、接続を転送をする。Azure ロード バランサーを介して確立されます。同様に Load Balancer を使用してアプリケーションをクライアントがアクセスにデプロイされます。この場合は、Load Balancer は Deis ルーターメッシュへトラフィックを転送します。さらに、クラスターでホストされている、対応する Docker コンテナーへのトラフィックをルートします。
 
   ![デプロイ済みの Desis クラスターのアーキテクチャ図](media/virtual-machines-linux-deis-cluster/architecture-overview.png)
 
@@ -260,4 +257,4 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
 [resource-group-overview]: ../resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

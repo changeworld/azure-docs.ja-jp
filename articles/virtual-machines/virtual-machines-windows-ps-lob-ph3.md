@@ -19,8 +19,6 @@
 
 # 基幹業務アプリケーションのワークロード フェーズ 3: SQL Server インフラストラクチャを構成する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイするこのフェーズでは、SQL Server を実行する 2 台のコンピューターとクラスター マジョリティ ノード コンピューターを構成し、Windows Server クラスターに統合します。
 
 [フェーズ 4](virtual-machines-windows-ps-lob-ph4.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-windows-lob-overview.md)」をご覧ください。
@@ -259,4 +257,4 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 - [フェーズ 4](virtual-machines-windows-ps-lob-ph4.md) を使用して、このワークロードを引き続き構成します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

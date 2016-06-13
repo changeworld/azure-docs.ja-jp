@@ -22,8 +22,6 @@
 
 このトピックでは、デプロイする可能性のある場所ごとに、発行元、プラン、SKU、およびバージョンを検索する方法について説明します。たとえば、次のような Windows VM イメージが一般的に使用されます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 ## 一般的に使用される Windows イメージの表
 
 
@@ -47,4 +45,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-cli-ps-findimage](../../includes/virtual-machines-common-cli-ps-findimage.md)]
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0601_2016-->

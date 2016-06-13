@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/19/2016"
+	ms.date="05/27/2016"
 	ms.author="tamram"/>
 
 # BLOB のスナップショットの作成
@@ -66,7 +66,9 @@ Premium Storage でスナップショットを使うには次のルールに従�
 この C# コードの例は、新しいスナップショットを作成し、プライマリの場所の絶対 URI を書き込みます。
 
     //Create the blob service client object.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
     //Get a reference to a container.
@@ -80,6 +82,8 @@ Premium Storage でスナップショットを使うには次のルールに従�
     //Create a snapshot of the blob and write out its primary URI.
     CloudBlockBlob blobSnapshot = blob.CreateSnapshot();
     Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
+
+
 
 ## スナップショットの課金方法について
 
@@ -125,4 +129,4 @@ Premium Storage でスナップショットを使うには次のルールに従�
 
 ![Azure Storage のリソース](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0601_2016-->

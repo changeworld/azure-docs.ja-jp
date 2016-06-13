@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="05/06/2016" 
+	ms.date="06/01/2016" 
 	ms.author="sethm"/>
 
 # Service Bus キューの使用方法
@@ -48,7 +48,7 @@ Service Bus キュー API を使用するには、次の操作を行います。
 > [AZURE.NOTE] この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、**WindowsAzure.php** オートローダー ファイルを参照する必要があります。
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
@@ -74,7 +74,7 @@ Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[D
 ここで概説している例では、接続文字列を直接渡します。
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 
@@ -90,7 +90,7 @@ Service Bus キューの管理処理は **ServiceBusRestProxy** クラスを使�
 次の例では、**ServiceBusRestProxy** をインスタンス化し、**ServiceBusRestProxy->createQueue** を呼び出して、`MySBNamespace` サービス名前空間内で「`myqueue`」という名前のキューを作成する方法を示しています。
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 use WindowsAzure\Common\ServiceException;
@@ -122,7 +122,7 @@ catch(ServiceException $e){
 メッセージを Service Bus キューに送信するには、アプリケーションで **ServiceBusRestProxy->sendQueueMessage** メソッドを呼び出します。次のコードでは、上のコードで `MySBNamespace` サービス名前空間内で作成した `myqueue` キューにメッセージを送信する方法を示しています。
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 use WindowsAzure\Common\ServiceException;
@@ -164,7 +164,7 @@ Service Bus キューでサポートされているメッセージの最大サ�
 次の例では、**PeekLock** モード (既定ではないモード) を使用したメッセージの受信および処理の方法を示しています。
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 use WindowsAzure\Common\ServiceException;
@@ -220,4 +220,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

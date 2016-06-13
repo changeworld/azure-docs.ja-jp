@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="04/25/2016" 
-    ms.author="ddove;sidneyh"/>
+    ms.date="05/27/2016" 
+    ms.author="ddove"/>
 
 # Elastic Database ツールの用語集
 Azure SQL Database の機能である [Elastic Database ツール](sql-database-elastic-scale-introduction.md)に関する用語の定義を次に示します。このツールは、[シャード マップ](sql-database-elastic-scale-shard-map-management.md)の管理に使用するものであり、[クライアント ライブラリ](sql-database-elastic-database-client-library.md)、[分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[クエリ](sql-database-elastic-query-overview.md)が含まれます。
@@ -90,4 +90,4 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0601_2016-->

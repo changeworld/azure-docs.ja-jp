@@ -53,7 +53,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 
 ```
 
-SQL Database の認証の詳細については、「[Azure SQL Database におけるデータベース、ログイン、およびユーザーの管理][]」を参照してください。SQL Data Warehouse の Azure AD プレビューの使用に関する詳細については、「[Azure Active Directory 認証を使用して SQL Data Warehouse に接続する][]」を参照してください。
+SQL Database の認証の詳細については、「[Azure SQL Database におけるデータベース、ログイン、およびユーザーの管理][]」を参照してください。SQL Data Warehouse の Azure AD プレビューの使用に関する詳細については、「[Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication (Azure Active Directory 認証を使用して SQL Data Warehouse に接続する)][]」を参照してください。
 
 
 ## 承認
@@ -101,7 +101,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 [SQL Data Warehouse への接続]: ./sql-data-warehouse-develop-connections.md
 [SQL Database 監査の使用]: ./sql-data-warehouse-overview-auditing.md
 [Transparent Data Encryption (TDE) の概要]: ./sql-data-warehouse-encryption-tde.md
-[Azure Active Directory 認証を使用して SQL Data Warehouse に接続する]: ./sql-data-warehouse-aad-authentication.md
+[Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication (Azure Active Directory 認証を使用して SQL Data Warehouse に接続する)]: ./sql-data-warehouse-get-started-connect-aad-authentication.md
 
 <!--MSDN references-->
 [Azure SQL Database ファイアウォール]: https://msdn.microsoft.com/library/ee621782.aspx
@@ -115,4 +115,4 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 <!--Other Web references-->
 [Azure ポータルでのロール ベースのアクセス制御]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

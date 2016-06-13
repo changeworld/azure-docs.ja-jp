@@ -3,8 +3,8 @@
 	description="Azure Queue ストレージを使用して、キューの作成と削除のほか、メッセージの挿入、取得、削除を行う方法を説明します。サンプルは PHP で記述されています。"
 	documentationCenter="php"
 	services="storage"
-	authors="rmcmurray"
-	manager="wpickett"
+	authors="allclark"
+	manager="douge"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="02/17/2016"
-	ms.author="robmcm"/>
+	ms.date="06/01/2016"
+	ms.author="allclark;yaqiyang"/>
 
 # PHP から Queue ストレージを使用する方法
 
@@ -48,9 +48,9 @@ Azure キュー ストレージで API を使用するには次が必要にな�
 次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
 
 > [AZURE.NOTE]
-この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、`WindowsAzure.php` オートローダー ファイルを参照する必要があります。
+この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でインストールした場合は、`WindowsAzure.php` オートローダー ファイルを参照する必要があります。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
 
 
@@ -78,7 +78,7 @@ Azure キュー ストレージ クライアントをインスタンス化する
 
 ここで概説している例では、接続文字列を直接渡します。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
 
@@ -89,11 +89,11 @@ Azure キュー ストレージ クライアントをインスタンス化する
 
 **QueueRestProxy** オブジェクトの **createQueue** メソッドを使用してキューを作成できます。キューの作成時にキューのオプションを設定できますが、この設定は必須ではありません(次の例では、キューのメタデータを設定する方法を示しています)。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
-	use WindowsAzure\Queue\Models\CreateQueueOptions;
+	use MicrosoftAzure\Storage\Common\ServiceException;
+	use MicrosoftAzure\Storage\Queue\Models\CreateQueueOptions;
 
 	// Create queue REST proxy.
 	$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
@@ -123,11 +123,11 @@ Azure キュー ストレージ クライアントをインスタンス化する
 
 メッセージをキューに追加するには、**QueueRestProxy->createMessage** を使用します。このメソッドにはキュー名、メッセージ テキスト、メッセージ オプション (省略可能) を渡します。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
-	use WindowsAzure\Queue\Models\CreateMessageOptions;
+	use MicrosoftAzure\Storage\Common\ServiceException;
+	use MicrosoftAzure\Storage\Queue\Models\CreateMessageOptions;
 
 	// Create queue REST proxy.
 	$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
@@ -150,11 +150,11 @@ Azure キュー ストレージ クライアントをインスタンス化する
 
 **QueueRestProxy->peekMessages** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。既定では、**peekMessage** メソッドによって 1 つのメッセージが返されますが、その数は **PeekMessagesOptions->setNumberOfMessages** メソッドを使用して変更できます。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
-	use WindowsAzure\Queue\Models\PeekMessagesOptions;
+	use MicrosoftAzure\Storage\Common\ServiceException;
+	use MicrosoftAzure\Storage\Queue\Models\PeekMessagesOptions;
 
 	// Create queue REST proxy.
 	$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
@@ -195,10 +195,10 @@ Azure キュー ストレージ クライアントをインスタンス化する
 
 コードでは、2 つの手順でキューからメッセージを削除します。まず、**QueueRestProxy->listMessages** を呼び出すことです。このメソッドから返されたメッセージは、このキューからメッセージを読み取る他のコードからは参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます(メッセージがこの時間内に削除されない場合、このキュー内で再び参照できるようになります)。 キューからのメッセージの削除を完了するには、**QueueRestProxy->deleteMessage** を呼び出す必要があります。2 段階の手順でメッセージを削除するこの方法では、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。コードでは、メッセージが処理された直後に **deleteMessage** を呼び出します。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create queue REST proxy.
 	$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
@@ -233,10 +233,10 @@ Azure キュー ストレージ クライアントをインスタンス化する
 
 **QueueRestProxy->updateMessage** を呼び出すことで、キュー内のメッセージの内容をインプレースで変更できます。メッセージが作業タスクを表している場合は、この機能を使用して、作業タスクの状態を更新できます。次のコードでは、キュー メッセージを新しい内容に更新し、表示タイムアウトを設定して、60 秒延長します。これにより、メッセージに関連付けられている作業の状態が保存され、クライアントにメッセージの操作を続行する時間が 1 分与えられます。この方法を使用すると、キュー メッセージに対する複数の手順から成るワークフローを追跡でき、ハードウェアまたはソフトウェアの問題が原因で処理手順が失敗した場合に最初からやり直す必要がなくなります。通常は、さらに再試行回数を保持し、メッセージの再試行回数が *n* 回を超えた場合はメッセージを削除するようにします。こうすることで、処理するたびにアプリケーション エラーをトリガーするメッセージから保護されます。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create queue REST proxy.
 	$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
@@ -275,11 +275,11 @@ Azure キュー ストレージ クライアントをインスタンス化する
 
 キューからのメッセージの取得をカスタマイズする方法は 2 つあります。1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、コードで各メッセージを完全に処理できるように、表示タイムアウトの設定を長くまたは短くすることができます。次のコード例では、**getMessages** メソッドを使用して、1 回の呼び出しで 16 個のメッセージを取得します。その後、**for** ループを使用して、各メッセージを処理します。また、各メッセージの非表示タイムアウトを 5 分に設定します。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
-	use WindowsAzure\Queue\Models\ListMessagesOptions;
+	use MicrosoftAzure\Storage\Common\ServiceException;
+	use MicrosoftAzure\Storage\Queue\Models\ListMessagesOptions;
 
 	// Create queue REST proxy.
 	$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
@@ -322,10 +322,10 @@ Azure キュー ストレージ クライアントをインスタンス化する
 
 キュー内のメッセージの概数を取得できます。**QueueRestProxy->getQueueMetadata** メソッドを使用して、キューのメタデータを返すように Queue サービスに要求します。返されたオブジェクトの **getApproximateMessageCount** メソッドを呼び出して、キュー内のメッセージの数を取得します。キュー サービスが要求に応答した後にメッセージが追加または削除される可能性があるため、これらの値は概数にすぎません。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create queue REST proxy.
 	$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
@@ -350,10 +350,10 @@ Azure キュー ストレージ クライアントをインスタンス化する
 
 キューとキューに含まれているすべてのメッセージを削除するには、**QueueRestProxy->deleteQueue** メソッドを呼び出します。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create queue REST proxy.
 	$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
@@ -384,4 +384,4 @@ Azure キュー ストレージ クライアントをインスタンス化する
 [require\_once]: http://www.php.net/manual/en/function.require-once.php
 [Azure Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

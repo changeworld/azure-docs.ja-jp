@@ -3,7 +3,7 @@
     description="C# データベース開発技術を使用して Azure SQL Database エラスティック データベース プールを管理します。"
     services="sql-database"
     documentationCenter=""
-    authors="sidneyh"
+    authors="srinia"
     manager="jhubbard"
     editor=""/>
 
@@ -13,8 +13,8 @@
     ms.topic="article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="04/28/2016"
-    ms.author="sidneyh"/>
+    ms.date="05/27/2016"
+    ms.author="srinia"/>
 
 # C&#x23; でのエラスティック データベース プールの監視と管理 
 
@@ -432,4 +432,4 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
 - [エラスティック データベース プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
 - エラスティック データベース ツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

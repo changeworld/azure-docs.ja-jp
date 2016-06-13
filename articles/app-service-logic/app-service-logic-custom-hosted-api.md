@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Logic Apps でのカスタム API の呼び出し"
+	pageTitle="ロジック アプリでのカスタム API の呼び出し"
 	description="App Service でホストされたカスタム API のロジック アプリでの使用"
 	authors="stepsic-microsoft-com"
 	manager="dwrede"
@@ -13,26 +13,26 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/23/2016"
+	ms.date="05/31/2016"
 	ms.author="stepsic"/>
 
 # App Service でホストされたカスタム API のロジック アプリでの使用
 
-Logic Apps には、さまざまなサービス用に 40 個以上のコネクタの豊富なセットがありますが、独自のカスタム API を呼び出して独自のコードを実行することもできます。独自のカスタム Web API をホストする最も簡単かつスケーラブルな方法の 1 つは、App Service を使用することです。この記事では、App Service の API アプリ、Web アプリ、またはモバイル アプリでホストされる任意の Web API を呼び出す方法について説明します。
+ロジック アプリには、さまざまなサービス用に 40 以上のコネクタの豊富なセットがありますが、独自のカスタム API を呼び出して独自のコードを実行することもできます。独自のカスタム Web API をホストする最も簡単かつスケーラブルな方法の 1 つは、App Service を使用することです。この記事では、App Service の API アプリ、Web アプリ、またはモバイル アプリでホストされる任意の Web API を呼び出す方法について説明します。
 
-Logic Apps 内のトリガーまたはアクションとして API を構築する方法の詳細については、[この記事](app-service-logic-create-api-app.md)をご覧ください。
+ロジック アプリ 内のトリガーまたはアクションとして API を構築する方法の詳細については、[この記事](app-service-logic-create-api-app.md)をご覧ください。
 
 ## Web アプリのデプロイ
 
-最初に、App Service で Web アプリとして API をデプロイする必要があります。「[Azure App Service での ASP.NET Web アプリの作成](../app-service-web/web-sites-dotnet-get-started.md)」に、基本的なデプロイの手順が説明されています。Logic Apps から任意の API を呼び出すことができますが、最適の結果を得るには、Logic Apps アクションと簡単に統合するために Swagger メタデータを追加することをお勧めします。[Swagger の追加](../app-service-api/app-service-api-dotnet-get-started.md/#use-swagger-metadata-and-ui)に関する詳細を確認できます。
+最初に、App Service で Web アプリとして API をデプロイする必要があります。「[Azure App Service での ASP.NET Web アプリの作成](../app-service-web/web-sites-dotnet-get-started.md)」に、基本的なデプロイの手順が説明されています。ロジック アプリ から任意の API を呼び出すことができますが、最適の結果を得るには、ロジック アプリ アクションと簡単に統合するために Swagger メタデータを追加することをお勧めします。[Swagger の追加](../app-service-api/app-service-api-dotnet-get-started.md#use-swagger-api-metadata-and-ui)に関する詳細を確認できます。
 
 ### API 設定
 
-Logic Apps デザイナーで Swagger を解析するには、CORS を有効にし、Web アプリの APIDefinition プロパティを設定することが重要です。これは、Azure ポータル内で簡単に設定できます。Web アプリの設定ブレードを開いて、API セクションで "API の定義" を swagger.json ファイルの URL (通常は https://{name}.azurewebsites.net/swagger/docs/v1)) に設定し、"*" で Logic Apps デザイナーからの要求を許可する CORS ポリシーを追加するだけです。
+ロジック アプリ デザイナーで Swagger を解析するには、CORS を有効にし、Web アプリの APIDefinition プロパティを設定することが重要です。これは、Azure ポータル内で簡単に設定できます。Web アプリの設定ブレードを開いて、API セクションで "API の定義" を swagger.json ファイルの URL (通常は https://{name}.azurewebsites.net/swagger/docs/v1)) に設定し、"*" でロジック アプリ デザイナーからの要求を許可する CORS ポリシーを追加するだけです。
 
 ## API の呼び出し
 
-Logic Apps ポータル内に CORS と API の定義プロパティを設定している場合は、フロー内にカスタム API アクションを簡単に追加できます。デザイナーでは、サブスクリプションの Web サイトを参照して、定義した Swagger URL で Web サイトを一覧表示するよう選択できます。また、HTTP と Swagger アクションを使用して Swagger をポイントして、使用可能なアクションと入力を一覧表示することもできます。最後に、HTTP アクションを使用して、要求をいつでも作成して、Swagger doc のない、または公開しない API を含むすべての API を呼び出すことができます。
+ロジック アプリ ポータル内に CORS と API の定義プロパティを設定している場合は、フロー内にカスタム API アクションを簡単に追加できます。デザイナーでは、サブスクリプションの Web サイトを参照して、定義した Swagger URL で Web サイトを一覧表示するよう選択できます。また、HTTP と Swagger アクションを使用して Swagger をポイントして、使用可能なアクションと入力を一覧表示することもできます。最後に、HTTP アクションを使用して、要求をいつでも作成して、Swagger doc のない、または公開しない API を含むすべての API を呼び出すことができます。
 
 API をセキュリティで保護する場合は、他にもいくつかの方法があります。
 
@@ -169,4 +169,4 @@ Web アプリが既にデプロイされている場合、ポータルでその�
 
 ただし、ロジック アプリのアプリケーション ID を作成して API の呼び出しに使用する場合は、このページの手順に従う必要があります。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

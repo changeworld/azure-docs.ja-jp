@@ -19,8 +19,6 @@
 
 # 基幹業務アプリケーションのワークロード フェーズ 1: Azure を構成する
  
-[AZURE.INCLUDE [learn-about-deployment-models-rm-include](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
- 
 イントラネット専用の高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、Azure のネットワークおよびストレージ インフラストラクチャを構築します。[フェーズ 2](virtual-machines-windows-ps-lob-ph2.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-windows-lob-overview.md)」をご覧ください。
 
 Azure を次の基本的なネットワーク コンポーネントでプロビジョニングする必要があります。
@@ -220,4 +218,4 @@ Azure サブスクリプションを設定します。引用符内のすべて�
 
 - [フェーズ 2](virtual-machines-windows-ps-lob-ph2.md) を使用して、このワークロードを引き続き構成します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

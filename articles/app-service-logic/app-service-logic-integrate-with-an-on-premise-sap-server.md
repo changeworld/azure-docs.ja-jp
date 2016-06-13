@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/18/2016"
+	ms.date="05/31/2016"
 	ms.author="sameerch"/>
 
 
@@ -21,7 +21,7 @@
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
-[SAP コネクタ](app-service-logic-connector-sap.md)を使用すると、Azure App Services を構成する Web アプリ、モバイル アプリ、ロジック アプリを既存の SAP サーバーに接続できます。これにより、RFC、BAPI、tRFC を呼び出すだけでなく、オンプレミス ファイアウォールの背後にある場合でも、SAP サーバーに IDOC を送信することもできます。
+[SAP コネクタ](app-service-logic-connector-sap.md)を使用すると、Azure App Services を構成する Web Apps、Mobile Apps、ロジック アプリを既存の SAP サーバーに接続できます。これにより、RFC、BAPI、tRFC を呼び出すだけでなく、オンプレミス ファイアウォールの背後にある場合でも、SAP サーバーに IDOC を送信することもできます。
 
 オンプレミス SAP サーバーがある場合は、ハイブリッド リスナーを使用して、以下のように SAP コネクタとの接続を確立します。
 
@@ -102,10 +102,10 @@
 ![ハイブリッド接続の状態 - 接続済み][8]
 
 
-## Logic Apps での SAP コネクタの使用
-作成した SAP コネクタは、Logic Apps のワークフローで使用できます。そのためには、**[新規]**、**[Logic Apps]**、**[作成]** の順に選択して、新しい Logic Apps を作成します。ロジック アプリのメタデータを、リソース グループを含めて入力します。
+## ロジック アプリ での SAP コネクタの使用
+作成した SAP コネクタは、ロジック アプリ のワークフローで使用できます。そのためには、**[新規]**、**[ロジック アプリ]**、**[作成]** の順に選択して、新しいロジック アプリ を作成します。ロジック アプリ のメタデータを、リソース グループを含めて入力します。
 
-**[トリガーとアクション]** を選択します。Logic Apps のワークフロー デザイナーが開きます。
+**[トリガーとアクション]** を選択します。ロジック アプリ のワークフロー デザイナーが開きます。
 
 右側のウィンドウで SAP コネクタを選択し、[アクション] タブでアクションを選択します。
 
@@ -124,4 +124,4 @@
 [8]: ./media/app-service-logic-integrate-with-an-on-premise-SAP-server/SAPConnector.HybridConnection.Connected.PNG
 [9]: http://www.microsoft.com/download/details.aspx?id=35552
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0601_2016-->

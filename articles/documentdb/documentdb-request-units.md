@@ -13,11 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="05/31/2016" 
 	ms.author="stbaro"/>
 
 #DocumentDB の要求ユニット
+DocumentDB の[要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)が新たに公開されました。詳細については、「[スループットのニーズの推定](documentdb-request-units.md#estimating-throughput-needs)」を参照してください。
 
+![Throughput calculator][5]
+
+##はじめに
 この記事では、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) の要求ユニットの概要について説明します。
 
 この記事を読むと、次の質問に回答できるようになります。
@@ -45,7 +49,7 @@ DocumentDB コレクション用に予約する要求ユニット数を推定す
 - **ドキュメント プロパティの数**。すべてのプロパティに既定でインデックスが作成されると想定すると、プロパティ数の増加に伴って、ドキュメントの書き込みに使用される単位が増加します。
 - **データ整合性**。Strong または Bounded Staleness のデータの整合性レベルを使用すると、ドキュメントの参照に使用される単位が増加します。
 - **インデックス付きプロパティ**。各コレクションのインデックス ポリシーによって、既定でインデックスが作成されるプロパティが決まります。インデックス付きプロパティの数を制限するか、非同期インデックス作成を有効にして、使用する要求ユニットを削減できます。
-- **ドキュメントのインデックス作成。**各ドキュメントには既定で自動的にインデックスが作成されます。一部のドキュメントにインデックスを作成しないようにすると、使用される要求単位が少なくなります。
+- **ドキュメントのインデックス作成**。各ドキュメントには既定で自動的にインデックスが作成されます。一部のドキュメントにインデックスを作成しないようにすると、使用される要求単位が少なくなります。
 - **クエリのパターン**。クエリの複雑さは、操作で消費される要求ユニット数に影響します。述語の数、述語の特性、プロジェクション、UDF 数、ソース データ セットのサイズのすべてが、クエリ操作のコストに影響します。
 - **スクリプトの使用**。クエリと同様に、ストアド プロシージャとトリガーは、実行する操作の複雑さに基づいて要求ユニットを使用します。アプリケーションを開発するときは、ヘッダーを調べて、各操作で使用される要求単位の量を詳しく把握するようにしてください。
 
@@ -54,6 +58,30 @@ DocumentDB コレクション用に予約する要求ユニット数を推定す
 
 > [AZURE.NOTE] 1 KB のドキュメントに対する 1 つの要求ユニットのベースラインは、ドキュメントの self リンクまたは ID による単純な GET に対応します。
 
+###要求ユニット計算ツールの使用
+スループットをユーザーが緻密に推定できるように、Web ベースの[要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)が用意されています。たとえば以下に示す標準的な操作で必要になる要求ユニットを見積もることができます。
+
+- ドキュメントの作成 (書き込み)
+- ドキュメントの読み取り
+- ドキュメントの削除
+
+ツールの使い方は簡単です。
+
+1. 代表的な JSON ドキュメントを少なくとも 1 つアップロードします。
+
+	![Upload documents to the request unit calculator][2]
+
+2. ドキュメントの作成、読み取り、削除に関して必要な操作数 (毎秒あたり) を入力します。
+
+	![Enter throughput requirements in the request unit calculator][3]
+
+3. 計算ボタンをクリックして結果を確認します。
+
+	![Request unit calculator results][4]
+
+>[AZURE.NOTE]ドキュメントの種類によって、サイズとインデックス付きプロパティの数が大きく異なる場合は、それぞれの*種類*における代表的なドキュメントのサンプルをツールにアップロードしたうえで、結果を計算してください。
+
+###DocumentDB の "要求の使用量" 応答ヘッダーの使用
 DocumentDB サービスからの各応答には、要求で使用される要求ユニットを含むカスタム ヘッダー (x-ms-request-charge) が付きます。このヘッダーには、DocumentDB SDK を介してアクセスすることもできます。.NET SDK では、RequestCharge は ResourceResponse オブジェクトのプロパティです。Azure ポータルの DocumentDB クエリ エクスプローラーは、実行されたクエリに関する要求の使用量情報を示します。
 
 ![Examining RU charges in the Query Explorer][1]
@@ -182,5 +210,9 @@ DocumentDB に関するスケールとパフォーマンスのテストを始め
 
 
 [1]: ./media/documentdb-request-units/queryexplorer.png
+[2]: ./media/documentdb-request-units/RUEstimatorUpload.png
+[3]: ./media/documentdb-request-units/RUEstimatorDocuments.png
+[4]: ./media/documentdb-request-units/RUEstimatorResults.png
+[5]: ./media/documentdb-request-units/RUCalculator2.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

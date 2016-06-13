@@ -20,9 +20,6 @@
 
 # リソース マネージャーのテンプレートとして使用する Linux 仮想マシンをキャプチャする方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-linux-classic-capture-image.md)。
-
-
 Linux を実行する Azure 仮想マシンを Azure コマンド ライン インターフェイス (CLI) を使用してキャプチャし、それを Azure Resource Manager テンプレートとして使用して他の仮想マシンを作成します。このテンプレートでは、仮想マシンに接続された OS ディスクやデータ ディスクが指定されています。このテンプレートには、Azure リソース マネージャー VM を作成する際に必要な仮想ネットワーク リソースは含まれていないので、ほとんどの場合は、テンプレートを使用して別の仮想マシンを作成する前に、目的の仮想ネットワーク リソースを別途セットアップする必要があります。
 
 ## 開始する前に
@@ -197,4 +194,4 @@ VM をプロビジョニングし実行したら、データ ディスクを接�
 
 CLI を使用して VM を管理するには、「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-linux-cli-deploy-templates.md)」に記載のタスクを参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

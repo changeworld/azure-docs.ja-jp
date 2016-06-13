@@ -75,7 +75,17 @@ TLS 1.0 は、次の **clusterSettings** エントリで無効にすることが
             }
         ],
 
+## TLS 暗号スイートの順序変更 ##
+お客様から寄せられるもう 1 つの質問は、サーバーによってネゴシエートされた暗号のリストを変更できるかどうかということです。これは、以下に示したように **clusterSettings** を変更することで実行できます。利用できる暗号スイートのリストは、[こちらの MSDN 記事](https://msdn.microsoft.com/library/windows/desktop/aa374757(v=vs.85).aspx)で確認できます。
 
+        "clusterSettings": [
+            {
+                "name": "FrontEndSSLCipherSuiteOrder",
+                "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
+            }
+        ],
+
+> 注: SChannel が認識できない間違った値を暗号スイートに設定すると、ご利用のサーバーに対するすべての TLS 通信が機能しなくなります。その場合、App Service Environment を再デプロイする必要があり、長時間にわたるダウンタイムが発生し、データが失われる可能性もあります。この機能は慎重に使用してください。
 
 ## 作業開始
 Azure クイック スタート Resource Manager テンプレートのサイトには、[App Service Environment を作成](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)するための基本定義を含むテンプレートが用意されています。
@@ -85,4 +95,4 @@ Azure クイック スタート Resource Manager テンプレートのサイト�
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

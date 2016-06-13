@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/06/2016"
+	ms.date="05/31/2016"
 	ms.author="cabailey"/>
 #Azure Key Vault の HSM 保護キーを生成し、転送する方法
 
@@ -60,8 +60,8 @@ Azure Key Vault の Bring Your Own Key (BYOK) の前提条件の一覧につい�
 
 |要件|詳細情報|
 |---|---|
-|Azure のサブスクリプション|Azure Key Vault を作成するには、Azure サブスクリプションが必要です: [無料試用版に登録する](../../../../pricing/free-trial)|
-|HSM をサポートする Azure Key Vault|Azure Key Vault のサービス層と機能に関する詳細については、[Azure Key Vault 価格](../../../../pricing/details/key-vault/) Web サイトを参照してください。|
+|Azure のサブスクリプション|Azure Key Vault を作成するには、Azure サブスクリプションが必要です: [無料試用版に登録する](https://azure.microsoft.com/pricing/free-trial/)|
+|HSM をサポートする Azure Key Vault|Azure Key Vault のサービス層と機能に関する詳細については、[Azure Key Vault 価格](https://azure.microsoft.com/pricing/details/key-vault/) Web サイトを参照してください。|
 |Thales HSM、スマート カード、サポート ソフトウェア|Thales ハードウェア セキュリティ モジュールにアクセスできることと Thales HSM の基本操作知識が必要です。互換性のあるモデルの一覧については、あるいは所有していない場合に HSM を購入する方法については、「[Thales ハードウェア セキュリティ モジュール](https://www.thales-esecurity.com/msrms/buy)」を参照してください。|
 |次のハードウェアとソフトウェア: <ol><li>Windows 7 以降の Windows OS とバージョン 11.50 以降の Thales nShield ソフトウェアをインストールしているオフライン x64 ワークステーション。<br/><br/>このワークステーションで Windows 7 を実行する場合、[Microsoft .NET Framework 4.5](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe) をインストールする必要があります。</li><li>Windows 7 以降の Windows OS をインストールし、インターネットに接続されているワークステーション。</li><li>空き容量が 16 MB 以上の USB ドライブまたはその他のポータブル ストレージ デバイス。</li></ol>|セキュリティ上の理由から、最初のワークステーションをネットワークに接続しないことをお勧めします。ただし、これはプログラミングでは適用されません<br/><br/>次の手順では、このワークステーションを「未接続ワークステーション」と呼んでいることに注意してください。</p></blockquote><br/>また、テナント キーは本稼動ネットワーク用の場合、2 つ目の別個のワークステーションを利用してツールセットをダウンロードし、テナント キーをアップロードすることをお勧めします。ただし、テスト目的で、1 つ目のワークステーションとして同じワークステーションを使用できます。<br/><br/>次の手順では、この 2 つ目のワークステーションを「ネットワーク接続ワークステーション」と呼んでいることに注意してください。</p></blockquote><br/>|
 
@@ -107,7 +107,7 @@ Microsoft ダウンロード センターにアクセスし、自分の地域リ
 
 KeyVault-BYOK-Tools-UnitedStates.zip
 
-D9FDA9F5A34E1388CD6C9138E5B75B7051FB7D6B11F087AFE0553DC85CCF0E36
+305F44A78FEB750D1D478F6A0C345B097CD5551003302FA465C73D9497AB4A03
 
 ---
 
@@ -115,7 +115,7 @@ D9FDA9F5A34E1388CD6C9138E5B75B7051FB7D6B11F087AFE0553DC85CCF0E36
 
 KeyVault-BYOK-Tools-Europe.zip
 
-81DCA798305B8408C06BAE7B3EFBC1E9EA6113A8D6EC443464F3744896F32C3
+C73BB0628B91471CA7F9ADFCE247561C6016A5103EF1A315D49C3EA23AFC0B9C
 
 ---
 
@@ -123,7 +123,7 @@ KeyVault-BYOK-Tools-Europe.zip
 
 KeyVault-BYOK-Tools-AsiaPacific.zip
 
-0C76967B3AC76687E4EA47EB96174EE6B25AB24E3114E28A90D9B93A2E6ABF6E
+BE9A84B6C76661929F9FDAD627005D892B3B8F9F19F351220BB4F9C356694192
 
 ---
 
@@ -131,7 +131,7 @@ KeyVault-BYOK-Tools-AsiaPacific.zip
 
 KeyVault-BYOK-Tools-LatinAmerica.zip
 	
-B38015990D4D1E522B8367FF78E78E0234BF9592663470426088C44C3CAAAF48
+9E8EE11972DECE8F05CD898AF64C070C375B387CED716FDCB788544AE27D3D23
 
 ---
 
@@ -139,7 +139,7 @@ B38015990D4D1E522B8367FF78E78E0234BF9592663470426088C44C3CAAAF48
 
 KeyVault-BYOK-Tools-Japan.zip
 
-DB512CD9472FDE2FD610522847DF05E4D7CD49A296EE4A2DD74D43626624A113
+E6B88C111D972A02ABA3325F8969C4E36FD7565C467E9D7107635E3DDA11A8B2
 
 ---
 
@@ -147,7 +147,7 @@ DB512CD9472FDE2FD610522847DF05E4D7CD49A296EE4A2DD74D43626624A113
 
 KeyVault-BYOK-Tools-Australia.zip
 
-8EBC69E58E809A67C036B50BB4F1130411AD87A7464E0D61A9E993C797915967
+7660D7A675506737857B14F527232BE51DC269746590A4E5AB7D50EDD220675D
 
 ---
 
@@ -155,7 +155,30 @@ KeyVault-BYOK-Tools-Australia.zip
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
-4DE9B33990099E4197ED67D786316F628E5218FC1EB0C24DCAD8A1851FD345B8
+53801A3043B0F8B4A50E8DC01A935C2BFE61F94EE027445B65C52C1ACC2B5E80
+
+---
+
+**カナダ:**
+
+KeyVault-BYOK-Tools-Canada.zip
+
+A42D9407B490E97693F8A5FA6B60DC1B06B1D1516EDAE7C9A71AA13E12CF1345
+
+---
+
+**ドイツ:**
+
+KeyVault-BYOK-Tools-Germany.zip
+
+4795DA855E027B2CA8A2FF1E7AE6F03F772836C7255AFC68E576410BDD28B48E
+
+---
+**インド:**
+
+KeyVault-BYOK-Tools-India.zip
+
+26853511EB767A33CF6CD880E78588E9BBE04E619B17FBC77A6B00A5111E800C
 
 ---
 
@@ -194,7 +217,7 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 
 1. ダウンロードしたパッケージから任意のフォルダーにファイルを抽出します。
 2. そのフォルダーから vcredist\_x64.exe を実行します。
-3. 指示に従い、Visual Studio 2012 用の Visual C++ ランタイム コンポーネントをインストールします。
+3. 指示に従い、Visual Studio 2013 用の Visual C++ ランタイム コンポーネントをインストールします。
 
 ##手順 3: キーを生成する
 
@@ -243,10 +266,18 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 	- オーストラリア:
 
 			python verifykeypackage.py -k BYOK-KEK-pkg-AUS-1 -w BYOK-SecurityWorld-pkg-AUS-1
-	- [Azure 政府機関](../../../../features/gov/)向けの場合は、Azure の米国政府インスタンスを使用します。
+	- [Azure Government](https://azure.microsoft.com/features/gov/) の場合は、Azure の米国政府インスタンスを使用します。
 
 			python verifykeypackage.py -k BYOK-KEK-pkg-USGOV-1 -w BYOK-SecurityWorld-pkg-USGOV-1
+	- カナダの場合:
 
+			python verifykeypackage.py -k BYOK-KEK-pkg-CANADA-1 -w BYOK-SecurityWorld-pkg-CANADA-1
+	- ドイツの場合:
+
+			python verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
+	- インドの場合:
+
+			python verifykeypackage.py -k BYOK-KEK-pkg-INDIA-1 -w BYOK-SecurityWorld-pkg-INDIA-1
 	>[AZURE.TIP]Thales ソフトウェアの %NFAST\_HOME%\\python\\bin に Python が含まれています。
 
 2.	次の表示を確認します。これは検証の成功を示します: **Result: SUCCESS**
@@ -305,9 +336,19 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 - オーストラリア:
 
 		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1
-- [Azure 政府機関](../../../../features/gov/)向けの場合は、Azure の米国政府インスタンスを使用します。
+- [Azure Government](https://azure.microsoft.com/features/gov/) の場合は、Azure の米国政府インスタンスを使用します。
 
 		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1
+- カナダの場合:
+
+		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-CANADA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-CANADA-1
+- ドイツの場合:
+
+		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
+- インドの場合:
+
+		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1
+
 
 このコマンドを実行するとき、*contosokey* を[キーの生成](#step-3-generate-your-key)手順の「**手順 3.3: 新しいキーを作成する**」で指定した同じ値で置換します。
 
@@ -349,9 +390,19 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 - オーストラリア:
 
 		KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-- [Azure 政府機関](../../../../features/gov/)向けの場合は、Azure の米国政府インスタンスを使用します。
+- [Azure Government](https://azure.microsoft.com/features/gov/) の場合は、Azure の米国政府インスタンスを使用します。
 
 		KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+- カナダの場合:
+
+		KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-CANADA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-CANADA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+- ドイツの場合:
+
+		KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+- インドの場合:
+
+		KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+
 
 このコマンドを実行するとき、次の指示に従います。
 
@@ -380,4 +431,4 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 これでこの HSM 保護キーを Key Vault で使用できます。詳細については、[Azure Key Vault の概要](key-vault-get-started.md)のチュートリアルの「**ハードウェア セキュリティ モジュール (HSM) を使用する場合**」セクションを参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

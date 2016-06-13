@@ -39,8 +39,8 @@ Azure Storage のオブジェクトは、含まれるデータのほかにもシ
 次のコード例では、コンテナーを作成し、プロパティ値の一部をコンソール ウィンドウに書き込みます。
 
     //Parse the connection string for the storage account.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+	const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
 	
 	//Create the service client object for credentialed access to the Blob service.
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
@@ -62,7 +62,7 @@ Azure Storage のオブジェクトは、含まれるデータのほかにもシ
 
 メタデータは、BLOB またはコンテナーのリソースで 1 つ以上の名前と値のペアとして指定できます。メタデータを設定するには、リソースの **Metadata** コレクションに名前と値のペアを追加した後、**SetMetadata** メソッドを呼び出して値をサービスに保存します。
 
-> [AZURE.NOTE]\: メタデータの名前は、C# 識別子の名前付け規則に従う必要があります。
+> [AZURE.NOTE] メタデータの名前は、C# 識別子の名前付け規則に従う必要があります。
  
 次のコード例では、コンテナーでメタデータを設定します。一方の値は、コレクションの **Add** メソッドを使用して設定されます。もう一方の値は、暗黙的なキーと値の構文を使用して設定されます。どちらも有効です。
 
@@ -97,4 +97,4 @@ Azure Storage のオブジェクトは、含まれるデータのほかにもシ
 - [.NET 用 Azure Storage クライアント ライブラリ リファレンス](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
 - [.NET 用 Azure Storage クライアント ライブラリ パッケージ](https://www.nuget.org/packages/WindowsAzure.Storage/) 
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -18,7 +18,7 @@
 
 # Azure ポータルを使用した Azure App Service アプリの複製#
 
-[Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) の複製機能を使用すると、既存の Web アプリを複製して、別のリージョンまたは同じリージョンで新規作成されたアプリにすることができます。これにより、お客様は、リージョンをまたいでさまざまなアプリを迅速かつ簡単にデプロイできるようになります。
+[Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) の複製機能を使用すると、既存の Web アプリを複製して、別のリージョンまたは同じリージョンにアプリを新規作成することができます。これにより、お客様は、リージョンをまたいでさまざまなアプリを迅速かつ簡単にデプロイできるようになります。
 
 アプリの複製は、現在、Premium レベルの App Service プランでのみサポートされています。この新機能には Web アプリのバックアップ機能と同じ制限が適用されます。「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください。
 
@@ -59,6 +59,7 @@ Web アプリの複製を作成するには、その Web アプリが **Premium*
 - 簡単認証の設定は複製されない
 - Kudu 拡張機能は複製されない
 - TiP ルールは複製されない
+- データベースの内容は複製されない
 
 
 ### 参照 ###
@@ -72,4 +73,4 @@ Web アプリの複製を作成するには、その Web アプリが **Premium*
 [1]: ./media/app-service-web-app-cloning-portal/CloningBlade.png
 [2]: ./media/app-service-web-app-cloning-portal/CloneSettings.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

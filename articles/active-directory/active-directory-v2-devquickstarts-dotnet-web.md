@@ -207,4 +207,8 @@ public ActionResult About()
 - [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=AcomDC_0323_2016-->
+## マイクロソフト製品のセキュリティ更新プログラムを取得する
+
+セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
+
+<!---HONumber=AcomDC_0601_2016-->

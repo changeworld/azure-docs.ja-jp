@@ -246,7 +246,7 @@ Storage Client Library for .NET では、アプリケーションで実行され
 
 ストレージ クライアント ライブラリは、要求ごとに固有のクライアント要求 ID を自動生成します。
 
-- ストレージ クライアント ライブラリが作成するクライアント側のログの場合、クライアント要求 ID は、その要求に関連したすべてのログ エントリの [**クライアント要求 ID**] フィールドに表示されます。
+- ストレージ クライアント ライブラリが作成するクライアント側のログの場合、クライアント要求 ID は、その要求に関連したすべてのログ エントリの **[クライアント要求 ID]** フィールドに表示されます。
 - Fiddler などによってキャプチャされたネットワーク トレースの場合、クライアント要求 ID は、要求メッセージの **x-ms-client-request-id** HTTP ヘッダー値として表示されます。
 - サーバー側の Storage Logging ログの場合、クライアント要求 ID は [クライアント要求 ID] 列に表示されます。
 
@@ -267,7 +267,9 @@ Storage サービスにより、サーバー要求 ID が自動生成されま�
 
 以下のコード サンプルは、カスタムの **ClientRequestId** 値を設定する方法を示しています。この場合、**OperationContext** オブジェクトを、Storage サービスに対する要求に接続します。また、応答メッセージから **ServerRequestId** 値を取得する方法も示しています。
 
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    //Parse the connection string for the storage account.
+    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
     // Create an Operation Context that includes custom ClientRequestId string based on constants defined within the application along with a Guid.
@@ -922,4 +924,4 @@ Blob Storage からダウンロードしたストレージ ログ データを E
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-2.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

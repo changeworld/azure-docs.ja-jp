@@ -1,6 +1,6 @@
 <properties
  pageTitle="Excel と SOA 用の HPC Pack クラスター | Microsoft Azure"
- description="Azure で HPC Pack クラスターを開始して大規模な Excel と SOA ワークロードを実行する"
+ description="Azure の HPC Pack クラスターで大規模な Excel と SOA ワークロードを実行する"
  services="virtual-machines-windows"
  documentationCenter=""
  authors="dlepow"
@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="vm-windows"
  ms.workload="big-compute"
- ms.date="02/19/2016"
+ ms.date="05/25/2016"
  ms.author="danlep"/>
 
 # Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する
@@ -382,4 +382,4 @@ SOA クライアント アプリケーションでは、IaaS クラスターの�
 [endpoint]: ./media/virtual-machines-windows-excel-cluster-hpcpack/endpoint.png
 [udf]: ./media/virtual-machines-windows-excel-cluster-hpcpack/udf.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

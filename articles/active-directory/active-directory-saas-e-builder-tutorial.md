@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="04/06/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と e-Builder の統合
@@ -66,7 +66,7 @@
   
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで e-Builder に対する認証を行うことができるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
 1.  Azure AD ポータルの **e-Builder** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
@@ -76,11 +76,11 @@
 
     ![Configure single sign-on](./media/active-directory-saas-e-builder-tutorial/IC777382.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページの **[e-Builder サインイン URL]** ボックスに、"https://\<テナント名>.e-Builder.com" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[e-Builder サインイン URL]** ボックスに、"*https://\<テナント名>.e-Builder.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure app URL](./media/active-directory-saas-e-builder-tutorial/IC777383.png "Configure app URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-e-builder-tutorial/IC777383.png "アプリケーション URL の構成")
 
-4.  **[e-Builder でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、データ ファイルを **c:\\E-BuilderMetaData.xml** としてローカルに保存します。
+4.  **[e-Builder でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、データ ファイルを **c:\\e-BuilderMetaData.xml** としてローカルに保存します。
 
     ![Configure single sign-on](./media/active-directory-saas-e-builder-tutorial/IC777384.png "Configure single sign-on")
 
@@ -110,4 +110,4 @@ e-Builder へのユーザー プロビジョニングの構成にあたって必
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -158,8 +158,8 @@ Shared Access Signature の形式は、次の 2 つのいずれかです。
     static string GetAccountSASToken()
     {
         // To create the account SAS, you need to use your shared key credentials. Modify for your account.
-        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-            Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+	    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+	    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
 
         // Create a new access policy for the account.
         SharedAccessAccountPolicy policy = new SharedAccessAccountPolicy()
@@ -181,8 +181,8 @@ BLOB サービス用にサービスレベルの API にアクセスするため�
     {
         // In this case, we have access to the shared key credentials, so we'll use them
         // to get the Blob service endpoint.
-        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-            Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+	    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+	    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
         // Create new storage credentials using the SAS token.
@@ -226,8 +226,8 @@ BLOB サービス用にサービスレベルの API にアクセスするため�
 次のコード例では、保存されているアクセス ポリシーをコンテナーに作成し、次いでコンテナーのサービス SAS を生成します。その後、クライアントにこの SAS を提供し、このコンテナーの読み取りおよび書き込みアクセス許可を付与できます。独自のアカウント名を使用するようにコードを変更します。
 
     // Parse the connection string for the storage account.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
 
     // Create the storage account with the connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
@@ -318,4 +318,4 @@ Shared Access Signature は、アカウント キーを知らせずに、スト�
 [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
 [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

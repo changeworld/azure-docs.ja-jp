@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""  
 	manager="jhubbard"
-	authors="sidneyh"/>
+	authors="ddove"/>
 
 <tags
 	ms.service="sql-database"
@@ -12,8 +12,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
-	ms.author="sidneyh; ddove" />
+	ms.date="05/23/2016"
+	ms.author="ddove" />
 
 # Elastic Database ジョブの概要
 
@@ -447,4 +447,4 @@ Elastic Database クエリ機能を使用する場合に追加の料金は発生
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

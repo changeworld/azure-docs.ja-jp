@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="03/08/2016"
+   	ms.date="05/27/2016"
    	ms.author="jgao"/>
 
 #.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成
@@ -167,7 +167,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 ## ブートストラップの使用
 
-詳細については、「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap)」を参照してください。
+詳細については、「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)」を参照してください。
 
 [クラスターの作成](#create-clusters)のサンプルを変更し、Hive の設定を構成します。
 
@@ -337,7 +337,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 ##次のステップ
 
-HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックをご覧ください。
+HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックを参照してください。
 
 ###Hadoop クラスター
 
@@ -348,7 +348,7 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 ###HBase クラスター
 
 * [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started-linux.md)
-* [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux)
+* [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux.md)
 
 ###Storm クラスター
 
@@ -371,4 +371,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 - [.NET SDK を使用して HDInsight で Sqoop ジョブを実行する](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
 - [HDInsight で Oozie ジョブを実行する](hdinsight-use-oozie.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

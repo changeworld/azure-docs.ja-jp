@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="03/14/2016"
+   ms.date="05/31/2016"
    ms.author="carlrab"/>
 
 # SSMS を使用して SQL Server データベースを BACPAC ファイルにエクスポートする
@@ -44,11 +44,20 @@
 
 	![Export settings](./media/sql-database-cloud-migrate/MigrateUsingBACPAC02.png)
 
-## 次のステップ: BACPAC ファイルから SQL Database にインポートする
 
-- [SSMS](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
-- [SqlPackage](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
-- [Azure ポータル](sql-database-import.md)
-- [PowerShell](sql-database-import-powershell.md)
+## 次のステップ
 
-<!---HONumber=AcomDC_0413_2016-->
+- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+- [SSMS を使用した Azure SQL Database への BACPAC のインポート](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
+- [SqlPackage を使用した Azure SQL Database への BACPAC のインポート](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
+- [Azure ポータルを使用した Azure SQL Database への BACPAC のインポート](sql-database-import.md)
+- [PowerShell を使用した Azure SQL Database への BACPAC のインポート](sql-database-import-powershell.md)
+
+## 詳細情報
+
+- [SQL Database V12](sql-database-v12-whats-new.md)
+- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
+- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
+
+<!---HONumber=AcomDC_0601_2016-->

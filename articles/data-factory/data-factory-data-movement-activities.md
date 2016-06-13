@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/11/2016" 
+	ms.date="05/31/2016" 
 	ms.author="spelluru"/>
 
 # データ移動アクティビティ
@@ -44,7 +44,7 @@ Data Management Gateway を使用すると、Azure IaaS VM (サービスとし�
 
 | ソース| シンク |
 |:------- | :---- |
-| <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li><li>[オンプレミス/Azure IaaS の Oracle Database](data-factory-onprem-oracle-connector.md)</li><li>[オンプレミス/Azure IaaS の MySQL Database](data-factory-onprem-mysql-connector.md)</li><li>[オンプレミス/Azure IaaS の DB2 Database](data-factory-onprem-db2-connector.md)</li><li>[オンプレミス/Azure IaaS の Teradata Database](data-factory-onprem-teradata-connector.md)</li><li>[オンプレミス/Azure IaaS の Sybase Database](data-factory-onprem-sybase-connector.md)</li><li>[オンプレミス/Azure IaaS の PostgreSQL Database](data-factory-onprem-postgresql-connector.md)</li><li>[オンプレミス/Azure IaaS の ODBC データ ソース](data-factory-odbc-connector.md)</li><li>[オンプレミス/Azure IaaS の Hadoop 分散ファイル システム (HDFS)](data-factory-hdfs-connector.md)</li><li>[OData ソース](data-factory-odata-connector.md)</li><li>[Web テーブル](data-factory-web-table-connector.md)</li><li>[オンプレミス/Azure IaaS の GE Historian](data-factory-odbc-connector.md#ge-historian-store)</li></ul> | <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li></ul> |
+| <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li><li>[オンプレミス/Azure IaaS の Oracle Database](data-factory-onprem-oracle-connector.md)</li><li>[オンプレミス/Azure IaaS の MySQL Database](data-factory-onprem-mysql-connector.md)</li><li>[オンプレミス/Azure IaaS の DB2 Database](data-factory-onprem-db2-connector.md)</li><li>[オンプレミス/Azure IaaS の Teradata Database](data-factory-onprem-teradata-connector.md)</li><li>[オンプレミス/Azure IaaS の Sybase Database](data-factory-onprem-sybase-connector.md)</li><li>[オンプレミス/Azure IaaS の PostgreSQL Database](data-factory-onprem-postgresql-connector.md)</li><li>[オンプレミス/Azure IaaS の ODBC データ ソース](data-factory-odbc-connector.md)</li><li>[オンプレミス/Azure IaaS の Hadoop 分散ファイル システム (HDFS)](data-factory-hdfs-connector.md)</li><li>[OData ソース](data-factory-odata-connector.md)</li><li>[Web テーブル](data-factory-web-table-connector.md)</li><li>[オンプレミス/Azure IaaS の GE Historian](data-factory-odbc-connector.md#ge-historian-store)</li></ul> | <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li><li>[オンプレミス/Azure IaaS の Oracle データベース](data-factory-onprem-oracle-connector.md)</li></ul> |
 
 
 > [AZURE.NOTE] Azure DocumentDB と他の Azure サービス (Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、Azure DocumentDB、Azure Data Lake Store など) との間でのみ移動できます。Azure Document DB の完全なマトリックスも間もなくサポートされます。
@@ -146,7 +146,7 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 #### データをコピーするための直観的でシームレスなウィザード 
 このウィザードでは、次の簡単な手順で数分以内にソースからコピー先にデータを簡単に移動できます。
 
-1.	**ソース**を選択する
+1.	**コピー元**を選択する
 2.	**コピー先**を選択する
 3.	**設定**を構成する
 
@@ -187,7 +187,7 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 	2016/03/01/03
 	...
 
-**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのいずれかのフォルダー、たとえば 2016->03->01->02 に移動し、**[選択]** をクリックします。テキスト ボックスに **2016/03/01/02** と表示されるようになったはずです。ここで、**2016** を **{year}**、**03** を **{month}**、**01** を **{day}**、**02** を **{hour}** に置き換えて、**Tab** を押します。下に示すように、これらの 4 つの変数の**形式**を選択するドロップ ダウン リストが表示されるはずです。
+**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのいずれかのフォルダー、たとえば 2016->03->01->02 に移動し、**[選択]** をクリックします。テキスト ボックスに **2016/03/01/02** と表示されます。ここで、**2016** を **{year}**、**03** を **{month}**、**01** を **{day}**、**02** を **{hour}** に置き換えて、**Tab** を押します。下に示すように、これらの 4 つの変数の**形式**を選択するドロップ ダウン リストが表示されます。
 
 ![システム変数の使用](./media/data-factory-data-movement-activities/blob-standard-variables-in-folder-path.png)
 
@@ -195,4 +195,4 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 ![カスタム変数の使用](./media/data-factory-data-movement-activities/blob-custom-variables-in-folder-path.png)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="02/17/2016"
+    ms.date="05/27/2016"
     ms.author="dineshm"/>
 
 # C++ から Queue ストレージを使用する方法  
@@ -236,4 +236,4 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 -	[C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
 -	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
-<!----HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0601_2016-->

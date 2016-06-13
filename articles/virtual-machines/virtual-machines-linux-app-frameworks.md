@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="02/03/2016"
+   ms.date="05/21/2016"
    ms.author="rasquill"/>
 
 # Azure Resource Manager テンプレートを使用した一般的なアプリケーション フレームワークのデプロイ
 
-通常、ワークロードが設計に従って動作するには多くのリソースが必要です。Azure Resource Manager テンプレートを使用すると、アプリケーションの構成方法だけでなく、構成されたアプリケーションのためにリソースをデプロイする方法も定義できます。ここでは、ギャラリーで最も一般的なテンプレートを紹介し、Azure ポータル、Azure CLI、または PowerShell を使用したそれらのデプロイについて説明します。[このトピックの Windows バージョンを参照](virtual-machines-windows-app-frameworks.md)することもできます。
+通常、ワークロードが設計に従って動作するには多くのリソースが必要です。Azure リソース マネージャー テンプレートを使用すると、アプリケーションの構成方法だけでなく、構成されたアプリケーションのためにリソースをデプロイする方法も定義できます。ここでは、ギャラリーで最も一般的なテンプレートを紹介し、Azure ポータル、Azure CLI、または PowerShell を使用したそれらのデプロイについて説明します。[このトピックの Windows バージョンを参照](virtual-machines-windows-app-frameworks.md)することもできます。
 
 [AZURE.INCLUDE [virtual-machines-common-app-frameworks](../../includes/virtual-machines-common-app-frameworks.md)]
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0601_2016-->

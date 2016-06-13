@@ -3,8 +3,8 @@
 	description="Azure SDK for PHP をダウンロードしてインストールする方法について説明します。"
 	documentationCenter="php"
 	services="app-service\web"
-	authors="rmcmurray"
-	manager="wpickett"
+	authors="allclark"
+	manager="douge"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="12/16/2015"
-	ms.author="robmcm"/>
+	ms.date="06/01/2016"
+	ms.author="allclark;yaqiyang"/>
 
 #Azure SDK for PHP をダウンロードする
 
@@ -31,11 +31,11 @@ Azure SDK for PHP には、Azure 向けの PHP アプリケーションを開発
 
 このトピックの手順では、[PHP][install-php] がインストールされていることを前提としています。
 
-> [AZURE.NOTE] Azure 用 PHP クライアント ライブラリを使用するには、PHP 5.3 以上が必要です。
+> [AZURE.NOTE] Azure 用 PHP クライアント ライブラリを使用するには、PHP 5.5 以上が必要です。
 
 ##Microsoft Azure 用 PHP クライアント ライブラリ
 
-Azure 用 PHP クライアント ライブラリには、任意のオペレーティング システムからデータ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。これらのライブラリは、Composer または PEAR パッケージ マネージャーを使用してインストールすることも、手動でインストールすることもできます。
+Azure 用 PHP クライアント ライブラリには、任意のオペレーティング システムからデータ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。これらのライブラリは、Composer からインストールできます。
 
 Azure 用 PHP クライアント ライブラリを使用する方法については、「[BLOB サービスの使用方法][blob-service]」、「[テーブル サービスの使用方法][table-service]」、および「[キュー サービスの使用方法][queue-service]」を参照してください。
 
@@ -49,18 +49,9 @@ Azure 用 PHP クライアント ライブラリを使用する方法につい�
 2. プロジェクトのルートに **composer.json** という名前のファイルを作成して、次のコードを追加します。
 
         {
-            "repositories": [
-                {
-                    "type": "pear",
-                    "url": "http://pear.php.net"
-                }
-            ],
-            "require": {
-                "pear-pear.php.net/mail_mime" : "*",
-                "pear-pear.php.net/http_request2" : "*",
-                "pear-pear.php.net/mail_mimedecode" : "*",
-                "microsoft/windowsazure": "*"
-            }
+			"require": {
+				"microsoft/windowsazure": "^0.4"
+			}
         }
 
 3. **[composer.phar][composer-phar]** をプロジェクトのルートにダウンロードします。
@@ -68,30 +59,6 @@ Azure 用 PHP クライアント ライブラリを使用する方法につい�
 4. コマンド プロンプトを開き、次のコマンドをプロジェクトのルートで実行します。
 
 		php composer.phar install
-
-###PEAR パッケージとしてインストールする
-
-Azure 向け PHP クライアント ライブラリを PEAR パッケージとしてインストールするには、次のステップに従います。
-
-1. [PEAR をインストールします][install-pear]。
-2. Azure PEAR チャネルをセットアップします。
-
-		pear channel-discover pear.windowsazure.com
-3. PEAR パッケージをインストールします。
-
-		pear install pear.windowsazure.com/WindowsAzure-0.4.1
-
-インストールが完了した後は、アプリケーションからクラス ライブラリを参照できます。
-
-###手動でインストールする
-
-Azure 向け PHP クライアント ライブラリを手動でダウンロードしてインストールするには、次のステップに従います。
-
-1. ライブラリが含まれている .zip アーカイブを [GitHub][php-sdk-github] からダウンロードします。または、リポジトリをフォークして、ローカル コンピューターにその複製を作成します(この 2 つ目の方法では、GitHub アカウントが必要であるほか、Git がローカルにインストールされている必要があります)。
-
-	> [AZURE.NOTE] Azure 向け PHP クライアント ライブラリは、[HTTP\_Request2](http://pear.php.net/package/HTTP_Request2)、[Mail\_mime](http://pear.php.net/package/Mail_mime)、および [Mail\_mimeDecode](http://pear.php.net/package/Mail_mimeDecode) の PEAR パッケージに依存しています。これらの依存関係を解決するには、[PEAR パッケージ マネージャー](http://pear.php.net/manual/en/installation.php)を使用してこれらのパッケージをインストールすることをお勧めします。
-
-2. ダウンロードしたアーカイブの `WindowsAzure` ディレクトリをアプリケーションのディレクトリ構造にコピーし、アプリケーションからクラスを参照します。
 
 ##Azure PowerShell と Azure エミュレーター
 
@@ -113,11 +80,6 @@ Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サー
 [install-php]: http://www.php.net/manual/en/install.php
 [composer-github]: https://github.com/composer/composer
 [composer-phar]: http://getcomposer.org/composer.phar
-[pear-net]: http://pear.php.net/
-[http-request2-package]: http://pear.php.net/package/HTTP_Request2
-[mail-mimedecode-package]: http://pear.php.net/package/Mail_mimeDecode
-[mail-mime-package]: http://pear.php.net/package/Mail_mime
-[install-pear]: http://pear.php.net/manual/en/installation.getting.php
 [nodejs-org]: http://nodejs.org/
 [install-node-linux]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 [download-wpi]: http://go.microsoft.com/fwlink/?LinkId=253447
@@ -130,4 +92,4 @@ Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サー
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

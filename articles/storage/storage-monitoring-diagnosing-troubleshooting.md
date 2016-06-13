@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/29/2016"
+	ms.date="05/27/2016"
 	ms.author="jahogg"/>
 
 # Microsoft Azure Storage の監視、診断、およびトラブルシューティング
@@ -217,7 +217,7 @@ Azure SDK には、開発用ワークステーションで実行できるスト�
 
 Storage Client Library for .NET では、アプリケーションで実行されたストレージ操作に関するクライアント側のログ データを収集できます。クライアント側のログを有効にしてログ データにアクセスする方法の詳細については、MSDN の<a href="http://go.microsoft.com/fwlink/?LinkId=510868" target="_blank">ストレージ クライアント ライブラリを使用したクライアント側のログ</a>に関するページを参照してください。
 
-> [AZURE.NOTE]\(SAS の許可エラーなどの) 状況によっては、サーバー側のストレージ ログには要求データが見つからないエラーを、ユーザーから報告される可能性があります。ストレージ クライアント ライブラリのログ機能を使用して問題の原因がクライアント側にあるか調べたり、ネットワーク監視ツールを使用してネットワークを調べたりできます。
+> [AZURE.NOTE]\(SAS の許可エラーなどの) 状況によっては、サーバー側の ストレージ ログには要求データが見つからないエラーを、ユーザーから報告される可能性があります。ストレージ クライアント ライブラリのログ機能を使用して問題の原因がクライアント側にあるか調べたり、ネットワーク監視ツールを使用してネットワークを調べたりできます。
 
 ### <a name="using-network-logging-tools"></a>ネットワーク ログ ツールの使用
 
@@ -263,7 +263,9 @@ Storage サービスにより、サーバー要求 ID が自動生成されま�
 
 以下のコード サンプルは、カスタムの **ClientRequestId** 値を設定する方法を示しています。この場合、**OperationContext** オブジェクトを、Storage サービスに対する要求に接続します。また、応答メッセージから **ServerRequestId** 値を取得する方法も示しています。
 
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+	//Parse the connection string for the storage account.
+    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
     // Create an Operation Context that includes custom ClientRequestId string based on constants defined within the application along with a Guid.
@@ -922,4 +924,4 @@ Blob Storage からダウンロードしたストレージ ログ データを E
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

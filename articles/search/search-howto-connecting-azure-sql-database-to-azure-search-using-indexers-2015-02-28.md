@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="05/06/2016" 
+	ms.date="05/26/2016" 
 	ms.author="eugenesh"/>
 
 #インデクサーを使用した Azure Search への Azure SQL Database の接続
@@ -68,23 +68,7 @@ Azure SQL インデクサーをセットアップして構成するときは、[
 
 [Azure クラシック ポータル](https://portal.azure.com)から接続文字列を取得し、`ADO.NET connection string` オプションを使用できます。
 
-その後、ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[ポータル UI](https://portal.azure.com) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。ターゲット インデックスのスキーマとソース テーブルのスキーマに互換性があることを確認します。SQL と Azure Search のデータ型のマッピングについては、次の表を参照してください。
-
-## SQL データ型と Azure Search データ型間のマッピング
-
-|SQL データ型 | ターゲット インデックス フィールドに許可される型 |メモ 
-|------|-----|----|
-|ビット|Edm.Boolean、Edm.String| |
-|int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String| |
-| bigint | Edm.Int64、Edm.String | |
-| real、float |Edm.Double、Edm.String | |
-| smallmoney、money decimal numeric | Edm.String| Azure Search では、小数点を Edm.Double に変換できません。精度が失われるためです。 |
-| char、nchar、varchar、nvarchar | Edm.String<br/>Collection(Edm.String)|string 列を Collection(Edm.String) に変換するには、プレビュー API バージョン 2015-02-28-Preview を使用する必要があります。詳細については、[こちらの記事](search-api-indexers-2015-02-28-Preview.md#create-indexer)を参照してください。| 
-|smalldatetime、datetime、datetime2、date、datetimeoffset |Edm.DateTimeOffset、Edm.String| |
-|uniqueidentifer | Edm.String | |
-|地理 | Edm.GeographyPoint | 型が POINT で SRID が 4326 (既定) の地理インスタンスのみがサポートされます。 | | 
-|rowversion| 該当なし |行バージョン列は検索インデックスに保存できませんが、変更追跡に利用できます。 | |
-| time、timespan、binary、varbinary、image、xml、geometry、CLR 型 | 該当なし |サポートされていません |
+その後、ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[ポータル UI](https://portal.azure.com) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。ターゲット インデックスのスキーマとソース テーブルのスキーマに互換性があることを確認してください。詳細については、[SQL と Azure Search のデータ型間のマッピング](#TypeMapping)に関するセクションを参照してください。
 
 最後に、名前を指定し、データ ソースとターゲット インデックスを参照することによって、インデクサーを作成します。
 
@@ -102,6 +86,8 @@ Azure SQL インデクサーをセットアップして構成するときは、[
 
 	POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2015-02-28 
 	api-key: admin-key
+
+インデクサーの動作の一部 (バッチ サイズ、インデクサーの実行が失敗する前にスキップできるドキュメントの数など) をカスタマイズできます。詳細については、[インデクサー API の作成](https://msdn.microsoft.com/library/azure/dn946899.aspx)に関するページを参照してください。
  
 Azure サービスにデータベースへの接続を許可することが必要な場合があります。方法については、「[Azure からの接続](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)」を参照してください。
 
@@ -249,15 +235,32 @@ SQL 統合変更追跡ポリシーが推奨されますが、データがビュ�
 
 **softDeleteMarkerValue** は文字列でなければならないことに注意してください。実際の値の文字列表現を使用してください。たとえば、削除された行が値 1 でマークされる整数列がある場合は、`"1"` を使用します。削除された行がブール型の true 値でマークされる BIT 列がある場合は、`"True"` を使用します。
 
-## Azure SQL インデクサーのカスタマイズ
- 
-インデクサーの動作の一部をカスタマイズできます (たとえば、バッチ サイズ、インデクサーの実行が失敗する前にスキップできるドキュメントの数など)。詳細については、「[Azure Search Indexer のカスタマイズ](search-indexers-customization.md)」を参照してください。
+<a name="TypeMapping"></a>
+## SQL データ型と Azure Search データ型間のマッピング
+
+|SQL データ型 | ターゲット インデックス フィールドに許可される型 |メモ 
+|------|-----|----|
+|ビット|Edm.Boolean、Edm.String| |
+|int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String| |
+| bigint | Edm.Int64、Edm.String | |
+| real、float |Edm.Double、Edm.String | |
+| smallmoney、money decimal numeric | Edm.String| Azure Search では、小数点を Edm.Double に変換できません。精度が失われるためです。 |
+| char、nchar、varchar、nvarchar | Edm.String<br/>Collection(Edm.String)|string 列を Collection(Edm.String) に変換するには、プレビュー API バージョン 2015-02-28-Preview を使用する必要があります。詳細については、[こちらの記事](search-api-indexers-2015-02-28-Preview.md#create-indexer)を参照してください。| 
+|smalldatetime、datetime、datetime2、date、datetimeoffset |Edm.DateTimeOffset、Edm.String| |
+|uniqueidentifer | Edm.String | |
+|地理 | Edm.GeographyPoint | 型が POINT で SRID が 4326 (既定) の地理インスタンスのみがサポートされます。 | | 
+|rowversion| 該当なし |行バージョン列は検索インデックスに保存できませんが、変更追跡に利用できます。 | |
+| time、timespan、binary、varbinary、image、xml、geometry、CLR 型 | 該当なし |サポートされていません |
+
 
 ## よく寄せられる質問
 
 **Q:** Azure の IaaS VM で実行する SQL Database で Azure SQL インデクサーを使用できますか?
 
-A: はい、適切なポートを開いて Azure サービスがデータベースに接続できるようにすれば可能です。
+A: はい。ただし、検索サービスに対してデータベースへの接続を許可する必要があります。
+
+1. 使用する検索サービスの IP アドレスへのアクセスを許可するようにファイアウォールを構成します。 
+2. また、検索サービスがデータベースに対して SSL 接続を開くことができるように、信頼された証明書を使用してデータベースを構成することが必要になる場合もあります。
 
 **Q:** オンプレミスで実行する SQL Database で Azure SQL インデクサーを使用できますか?
 
@@ -275,4 +278,4 @@ A: はい。ただし、1 つのノードで一度に実行できるインデク
 
 A: はい。インデクサーは検索サービス内のノードの 1 つで実行し、そのノードのリソースは、インデックスの作成、クエリ トラフィックの提供、およびその他の API 要求で共有されます。大量のインデックス作成とクエリ ワークロードを実行し、503 エラーが高率で発生するか、または応答時間が長くなる場合は、検索サービスのスケールアップを検討してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

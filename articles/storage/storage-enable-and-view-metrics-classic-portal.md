@@ -65,8 +65,9 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
 
 次の C# スニペットは、.NET 用ストレージ クライアント ライブラリを使用して、BLOB サービスのメトリックとログ記録を有効にする方法を示しています。
 
-	// Parse connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    //Parse the connection string for the storage account.
+    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
 
     // Create service client for credentialed access to the Blob service.
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
@@ -211,4 +212,4 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
 [Storage Analytics ログの有効化とログ データへのアクセス](https://msdn.microsoft.com/library/dn782840.aspx)
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

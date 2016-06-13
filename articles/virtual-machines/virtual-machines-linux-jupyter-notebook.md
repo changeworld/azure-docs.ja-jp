@@ -29,8 +29,6 @@ Azure には、[Jupyter の使用をすぐに開始する](http://blogs.technet.
 
 Notebook サービスが自分のシナリオに合っていない場合でも、この記事を読み進めてください。仮想マシン (VM) を使用して Jupyter Notebook を Microsoft Azure にデプロイする方法の説明があります。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 [AZURE.INCLUDE [create-account-and-vms-note](../../includes/create-account-and-vms-note.md)]
 
 ## Azure での VM の作成と構成
@@ -41,7 +39,7 @@ Notebook サービスが自分のシナリオに合っていない場合でも�
 
 [ここ][portal-vm-linux]に記載されている手順に従って、*Ubuntu* ディストリビューションの仮想マシンを作成します。このチュートリアルでは、Ubuntu Server 14.04 LTS を使用します。ユーザー名は *azureuser* を想定しています。
 
-仮想マシンをデプロイした後、ネットワーク セキュリティ グループに関するセキュリティ規則を開く必要があります。Azure ポータルから **[ネットワーク セキュリティ グループ]** に移動し、VM に対応するセキュリティ グループのタブを開きます。次の設定の受信セキュリティ規則を追加する必要があります。プロトコル: **TCP**、ソース (パブリック) ポート: *****、および宛先 (プライベート) ポート: **9999**。
+仮想マシンをデプロイした後、ネットワーク セキュリティ グループに関するセキュリティ規則を開く必要があります。Azure ポータルから **[ネットワーク セキュリティ グループ]** に移動し、VM に対応するセキュリティ グループのタブを開きます。次の設定の受信セキュリティ規則を追加する必要があります。プロトコル: **TCP**、ソース (パブリック) ポート: **\*** 、および宛先 (プライベート) ポート: **9999**。
 
 ![スクリーンショット](./media/virtual-machines-linux-jupyter-notebook/azure-add-endpoint.png)
 
@@ -124,7 +122,7 @@ Linux で次のコマンドを使用します。
     Verify password:
     sha1:b86e933199ad:a02e9592e59723da722.. (elided the rest for security)
 
-次に、プロファイルの構成ファイルを編集します。このファイルは、現在のディレクトリにある `jupyter_notebook_config.py` ファイルです。このファイルは存在しないことがあります。その場合は作成してください。このファイルにはさまざまなフィールドが含まれ、既定ではいずれもコメント アウトされています。このファイルは、よく使用するテキスト エディターで開くことができます。少なくとも次の内容が含まれていることを確認してください。**構成内の c.NotebookApp.password は、前の手順で取得した sha1 に必ず置き換えてください**。
+次に、プロファイルの構成ファイルを編集します。このファイルは、現在のディレクトリにある `jupyter_notebook_config.py` ファイルです。このファイルは存在しないことがあります。その場合は作成してください。このファイルにはさまざまなフィールドが含まれ、既定ではいずれもコメント アウトされています。このファイルは、よく使用するテキスト エディターで開くことができます。少なくとも次の内容が含まれていることを確認してください。**構成ファイル内の c.NotebookApp.password は、前の手順で取得した sha1 に必ず置き換えてください**。
 
     c = get_config()
 
@@ -189,7 +187,7 @@ IPython のソース コード [リポジトリ][]にアクセスすると、ノ
 
 Jupyter Notebook には、Azure 上で Python エコシステムの機能に対話的にアクセスするための強力なインターフェイスが用意されています。このインターフェイスは幅広い用途 (簡単な調査、Python の学習、データの分析と表示、シミュレーション、並列コンピューティングなど) に対応しています。作成される Notebook のドキュメントには実行された計算処理の完全な記録が含まれており、このドキュメントは他の Jupyter ユーザーと共有できます。Jupyter Notebook はローカル アプリケーションとして使用できますが、Azure でのクラウドのデプロイに最適です。
 
-Jupyter の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介して Visual Studio 内部で使用することもできます。PTVS は、Microsoft が提供する無料のオープン ソース プラグインです。このプラグインによって、Visual Studio を Python の高度な開発環境として利用することができます。この開発環境には、IntelliSense を備えた高度なエディター、デバッグ、プロファイル、並列コンピューティング統合の機能が含まれています。
+Jupyter の主要機能は、[Python Tools for Visual Studio][] \(PTVS) を介して Visual Studio 内部で使用することもできます。PTVS は、Microsoft が提供する無料のオープン ソース プラグインです。このプラグインによって、Visual Studio を Python の高度な開発環境として利用することができます。この開発環境には、IntelliSense を備えた高度なエディター、デバッグ、プロファイル、並列コンピューティング統合の機能が含まれています。
 
 ## 次のステップ
 
@@ -199,4 +197,4 @@ Jupyter の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介し
 [リポジトリ]: https://github.com/ipython/ipython
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

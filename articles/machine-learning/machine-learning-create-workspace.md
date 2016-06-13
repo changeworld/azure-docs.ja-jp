@@ -85,7 +85,7 @@ Machine Learning ワークスペースを作成した後は、ユーザーをワ
 | [Machine Learning Studio] にアクセスする | なし * | あり |
 
 
-> [AZURE.NOTE] * Azure サブスクリプション管理者は、ワークスペースの作成時に自動的にワークスペース所有者になりますが、ワークスペース所有者なのでアクセス権が付与されるのみです。
+> [AZURE.NOTE] * Azure サブスクリプション管理者は、自分がワークスペース所有者として作成するワークスペースに自動的に追加されます。ただし、単に Azure サブスクリプション管理者であるというだけでは、そのサブスクリプションのワークスペースへのアクセスは許可されません。
 
 <!-- ![List of Machine Learning workspaces][2] -->
 
@@ -105,4 +105,4 @@ Machine Learning ワークスペースを作成した後は、ユーザーをワ
 [Machine Learning Studio]: https://studio.azureml.net/
 [Microsoft Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

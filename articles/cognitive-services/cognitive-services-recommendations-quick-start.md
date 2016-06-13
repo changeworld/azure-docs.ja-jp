@@ -3,7 +3,7 @@
 	description="Azure Machine Learning Recommendations - クイック スタート ガイド"
 	services="cognitive-services"
 	documentationCenter=""
-	authors="luisca"
+	authors="luiscabrer"
 	manager="paulettm"
 	editor="cgronlun"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/14/2016"
+	ms.date="05/26/2016"
 	ms.author="luisca"/>
 
 # Cognitive Services の Recommendations API のクイック スタート ガイド
@@ -129,6 +129,8 @@ Recommendations API は、適切に製品を推奨するために、カタログ
 
 1. モデルが作成されたら、**モデル ID** をメモします。運用環境で推奨を要求する際にこの ID が必要になります。
 
+>  ビルドの種類の詳細とビルドの品質を評価する方法については、[こちら](cognitive-services-recommendations-buildtypes.md)を参照してください。
+
 <a name="Ex1Task4"></a>
 ### 運用環境へのモデルの配置 ###
 
@@ -166,4 +168,4 @@ Recommendations API は、適切に製品を推奨するために、カタログ
 ### 次の手順
 これで演習は終了です。 詳細については、完全な [Recommendations API リファレンス](http://go.microsoft.com/fwlink/?LinkId=759348)を参照してください。不明な点があれば、mlapi@microsoft.com までお気軽にお問い合わせください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0601_2016-->

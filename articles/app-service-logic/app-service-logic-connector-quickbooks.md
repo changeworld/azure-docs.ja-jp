@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Logic Apps での QuickBooks コネクタの使用 | Microsoft Azure App Service"
+   pageTitle="ロジック アプリ での QuickBooks コネクタの使用 | Microsoft Azure App Service"
    description="QuickBooks コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="02/10/2016"
+   ms.date="05/31/2016"
    ms.author="sameerch"/>
 
 
@@ -47,18 +47,18 @@ SalesReceipt|このエンティティは、顧客に与えられるレシート�
 ##QuickBooks コネクタの API アプリを作成する##
 1.	Azure ポータルの右下にある [+ 新規] オプションを使用して Azure Marketplace を開きます。
 2.	[Web + モバイル]、[API Apps] の順に移動し、“QuickBooks” を検索します。
-3.	リソース グループにホスティング プランの詳細を入力し、API App の名前を選択して、QuickBooks コネクタを構成します。
+3.	リソース グループにホスティング プランの詳細を入力し、API アプリの名前を選択して、QuickBooks コネクタを構成します。
 
 	![][13]
 4. [パッケージ設定] で、読み取りと書き込みに関心がある QuickBooks エンティティを構成します。
 
-これで、QuickBooks コネクタの API App を作成できます。
+これで、QuickBooks コネクタの API アプリを作成できます。
 
 
-##ロジック アプリの作成##
+##ロジック アプリを作成する##
 QuickBooks にアカウントを作成し、同じアカウントの [カテゴリの種類] を更新する、単純なロジック アプリを作成してみましょう。
 
-1.	Azure ポータルにログインし、[新規作成]、[Web と Mobile]、[Logic App] の順にクリックします。
+1.	Azure ポータルにログインし、[新規作成]、[Web とモバイル]、[ロジック アプリ] の順にクリックします。
 
 	![][1]
 
@@ -73,7 +73,7 @@ QuickBooks にアカウントを作成し、同じアカウントの [カテゴ�
 4.	[このロジックを手動で実行] を選択します。これは、このロジック アプリを手動でのみ起動できることを意味します。
 
 
-5.	ギャラリーで [このリソース グループの API Apps] を展開し、使用可能なすべての API Apps を表示します。ギャラリーから [QuickBooks コネクタ] を選択すると、[QuickBooks コネクタ] がフローに追加されます。
+5.	ギャラリーで [このリソース グループの API アプリ] を展開し、使用可能なすべての API アプリを表示します。ギャラリーから [QuickBooks コネクタ] を選択すると、[QuickBooks コネクタ] がフローに追加されます。
 
 
 6.	QuickBooks がオンラインの場合は、ユーザーの代わりに操作を実行するロジック アプリの認証と承認を行います。承認を開始するには、QuickBooks コネクタの [承認] をクリックします。
@@ -116,7 +116,7 @@ QuickBooks にアカウントを作成し、同じアカウントの [カテゴ�
 
 16. ロジック アプリ エディターの画面で [OK] をクリックし、[作成] をクリックします。作成が完了するまで約 30 秒かかります。
 
-17. 新しく作成された Logic App を参照し、[実行] をクリックして実行します。
+17. 新しく作成されたロジック アプリを参照し、[実行] をクリックして実行します。
 
 18. QuickBooks アカウントに "Contoso" という名前の新しいアカウントが作成されることを確認します。
 
@@ -144,4 +144,4 @@ QuickBooks にアカウントを作成し、同じアカウントの [カテゴ�
 [12]: ./media/app-service-logic-connector-quickbooks/12_Update_Account_Address.png
 [13]: ./media/app-service-logic-connector-quickbooks/13_Create_new_quickbooks_connector.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0601_2016-->

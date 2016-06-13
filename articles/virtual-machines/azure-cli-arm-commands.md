@@ -19,17 +19,15 @@
 
 # Resource Manager モードでの Azure CLI コマンド
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](../virtual-machines-command-line-tools.md).
-
 この記事では、Azure Resource Manager のデプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。
 
-開始するには、まず、職場/学校のアカウント、または Microsoft アカウントID を使用して、[Azure CLI をインストール](../xplat-cli-install.md)し、[Azure サブスクリプションに接続](../xplat-cli-connect.md)します。
+開始するには、まず、[Azure CLI をインストール](../xplat-cli-install.md)し、職場/学校のアカウント、または Microsoft アカウント ID を使用して [Azure サブスクリプションに接続](../xplat-cli-connect.md)します。
 
 リソース マネージャー モードのコマンド ラインでの現在のコマンド構文とオプションについては `azure help` と入力します。特定のコマンドのヘルプを表示するには、`azure help [command]` と入力します。ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
 
 オプション パラメーターは、ブラケットで囲んで表記しています (例 `[parameter]`)。その他のパラメーターはすべて指定する必要があります。
 
-ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。`-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。`--json` オプションを使用すると、結果が raw json 形式で出力されます。
+ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。`-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。`--json` オプションを使用すると、結果が未加工の json 形式で出力されます。
 
 ## リソース マネージャー モードの設定
 
@@ -1874,4 +1872,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="03/04/2016"
+   ms.date="05/27/2016"
    ms.author="jgao"/>
 
 # HDinsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用  
@@ -43,7 +43,7 @@ HBase クラスターに接続するときは、いずれかの Zookeeper に接
 
 **SQLLine を使用するには**
 
-1. SSH を使用したクラスターへの接続手順については、ご使用のクライアント コンピューターの OS に応じて、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」または「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows)」を参照してください。
+1. SSH を使用したクラスターへの接続手順については、ご使用のクライアント コンピューターの OS に応じて、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」または「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」を参照してください。
 
 2. SSH から次のコマンドを実行して、SQLLine を実行します。
 
@@ -95,4 +95,4 @@ HBase クラスターに接続するときは、いずれかの Zookeeper に接
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

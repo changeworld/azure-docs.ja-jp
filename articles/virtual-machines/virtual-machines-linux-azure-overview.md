@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="02/01/2016"
+   ms.date="05/24/2016"
    ms.author="rclaus"/>
 
 # Azure と Linux
@@ -60,4 +60,4 @@ Azure サブスクリプションにはそれぞれ既定のクォータ制限�
 
 無料試用版アカウント。**[こちらから入手](https://azure.microsoft.com/pricing/free-trial/)**してください。 既にお持ちの場合は、早速試してみましょう。まず **[Azure CLI をインストール](../xplat-cli-install.md)**します。それが済んだら、いよいよ [Linux VM の作成](virtual-machines-linux-quick-create-cli.md)に進みます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

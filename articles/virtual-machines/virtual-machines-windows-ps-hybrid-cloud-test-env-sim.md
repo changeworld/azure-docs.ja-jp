@@ -19,8 +19,6 @@
 
 # テスト用のシミュレートされたハイブリッド クラウド環境の設定
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 この記事では、2 つの Azure 仮想ネットワークを使用して、Microsoft Azure でシミュレートされたテスト用のハイブリッド クラウド環境を作成する手順について説明します。インターネットに直接接続できず、利用可能なパブリック IP アドレスがない場合は、「[テスト用のハイブリッド クラウド環境の設定](virtual-machines-windows-ps-hybrid-cloud-test-env-base.md)」の代わりに、この構成を使用してください。完成すると次のような構成になります。
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sim/virtual-machines-windows-ps-hybrid-cloud-test-env-sim-ph4.png)
@@ -44,7 +42,7 @@
 3.	VNet 間 VPN 接続を作成する。
 4.	DC2 を構成する。 
 
-Azure サブスクリプションをまだ取得していない場合は、[Azure の無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」をご覧ください。
+Azure サブスクリプションをまだ取得していない場合は、[Azure の無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
 >[AZURE.NOTE] Azure の仮想マシンと仮想ネットワーク ゲートウェイは、稼働していると継続的に費用が発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンとして実装されます。費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行います。
 
@@ -131,7 +129,7 @@ Azure サブスクリプションを設定します。基本構成をビルド�
  
 ##フェーズ 3: VNet 間接続を作成する
 
-最初に、ランダムな、暗号強度の高い 32 文字の事前共有キーをネットワーク管理者またはセキュリティ管理者から取得します。または、「[Create a random string for an IPsec preshared key (IPsec 事前共有キー用にランダムな文字列を作成する)](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx)」に記載された情報を使用して事前共有キーを取得します。
+最初に、ランダムな、暗号強度の高い 32 文字の事前共有キーをネットワーク管理者またはセキュリティ管理者から取得します。または、「[Create a random string for an IPsec preshared key (IPsec 事前共有キー用にランダムな文字列を作成する)](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx)」に記載されている情報を使用して事前共有キーを取得します。
 
 次に、以下のコマンドを使用して、サイト間 VPN 接続を作成します (完了するまでに時間がかかることがあります)。
 
@@ -215,4 +213,4 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 - この環境に [SharePoint イントラネット ファーム](virtual-machines-windows-ps-hybrid-cloud-test-env-sp.md)、[Web ベース LOB アプリケーション](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md)、または [Office 365 ディレクトリ同期 (DirSync) サーバー](virtual-machines-windows-ps-hybrid-cloud-test-env-dirsync.md)をセットアップします。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

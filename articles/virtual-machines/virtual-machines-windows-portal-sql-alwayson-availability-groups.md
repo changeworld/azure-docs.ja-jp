@@ -24,12 +24,9 @@
 
 <br/>
 
-> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック モデル。
-
-
 この詳細なチュートリアルでは、Azure リソース マネージャー仮想マシンに SQL Server の可用性グループを作成する方法について説明します。このチュートリアルでは、テンプレートの構成に Azure ブレードを使用します。このチュートリアルでは、既定の設定を確認し、必要な設定を入力し、ポータルでブレードを更新します。
 
->[AZURE.NOTE] Microsoft Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、可用性グループに必要なものすべてが自動的に構成されます。詳細については、[Microsoft Azure クラシック ポータル ギャラリーで提供されている SQL Server AlwaysOn](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx) に関するブログを参照してください。
+>[AZURE.NOTE] Microsoft Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、可用性グループに必要なものすべてが自動的に構成されます。詳細については、「[SQL Server AlwaysOn Offering in Microsoft Azure Portal Gallery (Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn)](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)」をご覧ください。
 
 チュートリアルの最後には、次の要素で構成された SQL Server 可用性グループ ソリューションが Azure で完成します。
 
@@ -53,7 +50,7 @@
 
 - Azure アカウントを既に所有している。お持ちでない場合は、[試用版アカウントにサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。
 
-- GUI を使用して、仮想マシン ギャラリーから SQL Server VM をプロビジョニングする方法を知っている。詳細については、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
+- GUI を使用して、仮想マシン ギャラリーから SQL Server VM をプロビジョニングする方法を知っている。詳細については、[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)に関するページをご覧ください。
 
 - 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx)」を参照してください。
 
@@ -76,14 +73,14 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 1. 	アカウントを使用して Azure ポータルにログインします。
 1.	Azure ポータルで **[+新規]** をクリックします。 ポータルで [新規] ブレードが開きます。
 1.	[新規] ブレードで **[AlwaysOn]** を検索します。![AlwaysOn テンプレートを見つける](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
-1.	検索結果から **[SQL Server AlwaysOn クラスター]** を見つけます。![AlwaysOn テンプレート](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
+1.	検索結果から **[SQL Server AlwaysOn Cluster (SQL Server AlwaysOn クラスター)]** を見つけます。![AlwaysOn テンプレート](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
 1.	**[デプロイ モデルの選択]** で **[リソース マネージャー]** を選択します。
 
 ### 基本
 
 **[基本]** をクリックし、次を構成します。
 
-- **[管理者のユーザー名]** は、ドメインの管理者権限を持つユーザー アカウントであり、また SQL Server の両方のインスタンスの SQL Server sysadmin 固定サーバー ロールのメンバーです。このチュートリアルでは **DomainAdmin** を使用します。
+- **[管理者ユーザー名]** は、ドメインの管理者権限を持つユーザー アカウントであり、また SQL Server の両方のインスタンスの SQL Server sysadmin 固定サーバー ロールのメンバーです。このチュートリアルでは **DomainAdmin** を使用します。
 
 - **[パスワード]** は、ドメイン管理者アカウントのパスワードです。複雑なパスワードを使用します。パスワードを確認入力します。
 
@@ -103,19 +100,19 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 
 この Azure ギャラリー テンプレートでは、新しいドメイン コントローラーを持つ新しいドメインを作成します。また、新しいネットワークと 2 つのサブネットも作成します。このテンプレートでは、既存のドメインまたは仮想ネットワークには、サーバーを作成できません。次の手順では、ドメインおよびネットワーク設定を構成します。
 
-**[ドメインおよびネットワークの設定]** ブレードで、ドメインとネットワークの設定の既定値を確認します。
+**[Domain and network settings (ドメインおよびネットワークの設定)]** ブレードで、ドメインとネットワークの設定の既定値を確認します。
 
 - **[フォレスト ルート ドメイン名]** は、クラスターをホストする AD ドメインが使用するドメイン名です。このチュートリアルでは、**contoso.com** を使用します。
 
 - **[仮想ネットワーク名]** は、Azure の仮想ネットワークのネットワーク名です。このチュートリアルでは **autohaVNET** を使用します。
 
-- **[ドメイン コントローラーのサブネット名]** は、ドメイン コントローラーをホストする仮想ネットワークの部分の名前です。このチュートリアルでは **subnet-1** を使用します。このサブネットでは、アドレスのプレフィックスとして **10.0.0.0/24** を使用します。
+- **[Domain Controller subnet name (ドメイン コントローラーのサブネット名)]** は、ドメイン コントローラーをホストする仮想ネットワークの部分の名前です。このチュートリアルでは **subnet-1** を使用します。このサブネットでは、アドレスのプレフィックスとして **10.0.0.0/24** を使用します。
 
 - **[SQL Server のサブネット名]** は、SQL サーバーとファイル共有監視をホストする仮想ネットワークの部分の名前です。このチュートリアルでは **subnet-2** を使用します。このサブネットでは、アドレスのプレフィックスとして **10.0.1.0/26** を使用します。
 
-Azure の仮想ネットワークの詳細については、「[仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
+仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
 
-**[ドメインおよびネットワークの設定]** は次のようになります。
+**[Domain and network settings (ドメインおよびネットワークの設定)]** は次のようになります。
 
 ![ドメインおよびネットワークの設定](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/2-domain.png)
 
@@ -125,9 +122,9 @@ Azure の仮想ネットワークの詳細については、「[仮想ネット�
 
 ###可用性グループの設定
 
-**[可用性グループの設定]** で、事前設定されている可用性グループとリスナーの値を確認します。
+**[availability group settings (可用性グループの設定)]** で、事前設定されている可用性グループとリスナーの値を確認します。
 
-- **[可用性グループ名]** は、可用性グループのクラスター化されたリソース名です。このチュートリアルでは **Contoso-ag** を使用します。
+- **[Availablity group name (可用性グループ名)]** は、可用性グループのクラスター化されたリソース名です。このチュートリアルでは **Contoso-ag** を使用します。
 
 - **[可用性グループ リスナーの名前]** は、クラスターおよび内部ロード バランサーによって使用されます。SQL Server に接続するクライアントは、この名前を使用し、データベースの適切なレプリカに接続できます。このチュートリアルでは **Contoso-listener** を使用します。
 
@@ -141,31 +138,31 @@ Azure の仮想ネットワークの詳細については、「[仮想ネット�
 
 ###VM サイズおよび記憶域の設定
 
-**[VM サイズおよび記憶域の設定]** では、SQL Server の仮想マシンのサイズを選択し、その他の設定を確認します。
+**[VM size, storage settings (VM サイズおよび記憶域の設定)]** では、SQL Server の仮想マシンのサイズを選択し、その他の設定を確認します。
 
-- **[SQL Server 仮想マシンのサイズ]** は、両方の SQL Server の Azure 仮想マシンのサイズです。ワークロードに適した仮想マシンのサイズを選択します。このチュートリアル用に環境を構築する場合は **DS2** を使用します。実稼働ワークロードでは、ワークロードをサポートできる仮想マシンのサイズを選択します。多くの実稼働ワークロードでは、**DS4** 以上が必要です。このテンプレートでは、このサイズの仮想マシンを 2 つ構築し、それぞれに SQL Server をインストールします。詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。
+- **[SQL Server virtual machine size (SQL Server 仮想マシンのサイズ)]** は、両方の SQL Server の Azure 仮想マシンのサイズです。ワークロードに適した仮想マシンのサイズを選択します。このチュートリアル用に環境を構築する場合は **DS2** を使用します。実稼働ワークロードでは、ワークロードをサポートできる仮想マシンのサイズを選択します。多くの実稼働ワークロードでは、**DS4** 以上が必要です。このテンプレートでは、このサイズの仮想マシンを 2 つ構築し、それぞれに SQL Server をインストールします。詳細については、[仮想マシンのサイズ](virtual-machines-linux-sizes.md)に関するページをご覧ください。
 
 >[AZURE.NOTE]Azure によって、SQL Server Enterprise Edition がインストールされます。価格は、エディションと仮想マシンのサイズによって異なります。現在の価格の詳細については、「[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」を参照してください。
 
-- **[ドメイン コントローラーの仮想マシンのサイズ]** は、ドメイン コントローラー用の仮想マシンのサイズです。このチュートリアルでは **D2** を使用します。
+- **[Domain controller virtual machine size (ドメイン コントローラーの仮想マシンのサイズ)]** は、ドメイン コントローラー用の仮想マシンのサイズです。このチュートリアルでは **D2** を使用します。
 
-- **[ファイル共有監視の仮想マシンのサイズ]** は、ファイル共有監視の仮想マシンのサイズです。このチュートリアルでは **A1** を使用します。
+- **[File Share Witness virtual machine size (ファイル共有監視の仮想マシンのサイズ)]** は、ファイル共有監視の仮想マシンのサイズです。このチュートリアルでは **A1** を使用します。
 
-- **[SQL ストレージ アカウント]** は、SQL Server のデータとオペレーティング システム ディスクを保持するストレージ アカウントの名前です。このチュートリアルでは **alwaysonsql01** を使用します。
+- **[SQL Storage account (SQL ストレージ アカウント)]** は、SQL Server のデータとオペレーティング システム ディスクを保持するストレージ アカウントの名前です。このチュートリアルでは **alwaysonsql01** を使用します。
 
-- **[DC ストレージ アカウント]** は、ドメイン コントローラーのストレージ アカウントの名前です。このチュートリアルでは **alwaysondc01** を使用します。
+- **[DC Storage account (DC ストレージ アカウント)]** は、ドメイン コントローラーのストレージ アカウントの名前です。このチュートリアルでは **alwaysondc01** を使用します。
 
-- **[SQL Server のデータ ディスク サイズ]** (単位: TB) は、SQL Server のデータ ディスクの TB 単位でのサイズです。1 から 4 までの数字を指定します。これは各 SQL Server に接続するデータ ディスクのサイズです。このチュートリアルでは **1** を使用します。
+- **[SQL Server data disk size in TB (SQL Server のデータ ディスク サイズ (TB))]** は、SQL Server のデータ ディスクの TB 単位でのサイズです。1 から 4 までの数字を指定します。これは各 SQL Server に接続するデータ ディスクのサイズです。このチュートリアルでは **1** を使用します。
 
-- **[記憶域の最適化]** では、ワークロードの種類に基づいて SQL Server の仮想マシンの特定の記憶域の構成を設定します。このシナリオのすべての SQL Server では、Azure ディスクのホスト キャッシュが読み取り専用に設定された Premium ストレージを使用します。また、次の 3 つのいずれかの設定を選択すると、ワークロード用に SQL Server の設定を最適化できます。
+- **[Storage optimization (記憶域の最適化)]** では、ワークロードの種類に基づいて SQL Server の仮想マシンの特定の記憶域の構成を設定します。このシナリオのすべての SQL Server では、Azure ディスクのホスト キャッシュが読み取り専用に設定された Premium ストレージを使用します。また、次の 3 つのいずれかの設定を選択すると、ワークロード用に SQL Server の設定を最適化できます。
 
-    - **[一般的なワークロード]** では、特定の構成は設定しません
+    - **[General workload (一般的なワークロード)]** では、特定の構成は設定しません
 
-    - **[トランザクション処理]** では、トレース フラグ 1117 と 1118 を設定します
+    - **[Transactional processing (トランザクション処理)]** では、トレース フラグ 1117 と 1118 を設定します
 
-    - **[データ ウェアハウス]** では、トレース フラグ 1117 と 610 を設定します
+    - **[Data warehousing (データ ウェアハウス)]** では、トレース フラグ 1117 と 610 を設定します
 
-このチュートリアルでは、**[一般的なワークロード]** を使用します。
+このチュートリアルでは、**[General workload (一般的なワークロード)]** を使用します。
 
 ![VM サイズの記憶域の設定](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/4-vm.png)
 
@@ -185,7 +182,7 @@ Azure の仮想ネットワークの詳細については、「[仮想ネット�
 
 記憶域スペースおよび記憶域プールの詳細については、次を参照してください。
 
-- [記憶域スペースの概要](http://technet.microsoft.com/library/hh831739.aspx)
+- [記憶域スペースの概要](http://technet.microsoft.com/library/hh831739.aspx)。
 
 - [Windows Server バックアップと記憶域プール](http://technet.microsoft.com/library/dn390929.aspx)
 
@@ -196,17 +193,17 @@ SQL Server の構成のベスト プラクティスについては、「[Azure V
 
 **[SQL Server の設定]** では、SQL Server の VM 名のプレフィックス、SQL Server のバージョン、SQL Server のサービス アカウントとパスワード、および SQL の自動修正メンテナンス スケジュールを確認および変更できます。
 
-- **[SQL Server 名のプレフィックス]** は、各 SQL Server の名前を作成するために使用します。このチュートリアルでは **Contoso-ag** を使用します。SQL Server 名は、*Contoso-ag-0* と *Contoso-ag-1* になります。
+- **[SQL Server Name Prefix (SQL Server 名のプレフィックス)]** は、各 SQL Server の名前を作成するために使用します。このチュートリアルでは **Contoso-ag** を使用します。SQL Server 名は、*Contoso-ag-0* と *Contoso-ag-1* になります。
 
 - **[SQL Server のバージョン]** は、SQL Server のバージョンです。このチュートリアルでは **[SQL Server 2014]** を使用します。**[SQL Server 2012]** または **[SQL Server 2016]** を選択することもできます。
 
-- **[SQL Server サービス アカウント ユーザー名]** は、SQL Server サービスのドメイン アカウント名です。このチュートリアルでは **sqlservice** を使用します。
+- **[SQL Server service account user name (SQL Server サービス アカウント ユーザー名)]** は、SQL Server サービスのドメイン アカウント名です。このチュートリアルでは **sqlservice** を使用します。
 
 - **[パスワード]** は、SQL Server サービス アカウントのパスワードです。複雑なパスワードを使用します。パスワードを確認入力します。
 
-- **[SQL 自動修正メンテナンス スケジュール]** は、Azure が SQL Server に修正を自動的に適用する曜日です。このチュートリアルでは、**[日曜日]** と入力します。
+- **[SQL Auto Patching maintenance schedule (SQL 自動修正メンテナンス スケジュール)]** は、Azure が SQL Server に修正を自動的に適用する曜日です。このチュートリアルでは、「**日曜日**」と入力します。
 
-- **[SQL 自動修正メンテナンスの開始時間]** は、Azure リージョンに自動修正が開始される時間です。
+- **[SQL Auto Patching maintenance start hour (SQL 自動修正メンテナンスの開始時間)]** は、Azure リージョンに自動修正が開始される時間です。
 
 >[AZURE.NOTE]各 VM の修正時間は 1 時間に調整されています。一度に 1 つの仮想マシンにのみ修正が適用され、サービスの中断を防いでいます。
 
@@ -220,7 +217,7 @@ SQL Server の構成のベスト プラクティスについては、「[Azure V
 
 ###購入
 
-この最後のブレードには **[ご契約条件]** と **[プライバシー ポリシー]** があります。この情報を確認します。Azure で仮想マシンと可用性グループに必要なその他のすべてのリソースを作成開始する準備ができたら **[作成]** をクリックします。
+この最後のブレードには **[使用条件]** と **[プライバシー ポリシー]** があります。この情報を確認します。Azure で仮想マシンと可用性グループに必要なその他のすべてのリソースを作成開始する準備ができたら **[作成]** をクリックします。
 
 Azure ポータルによって、リソース グループとすべてのリソースが作成されます。
 
@@ -240,12 +237,12 @@ SQL Server の新しいインスタンスは、インターネットに接続さ
 
 1.	**[リソース]** をクリックします。
 
-1.	**[リソース]** ブレードで、(プライマリ ドメイン コントローラーの仮想マシンのコンピューター名である) **ad-primary-dc** をクリックします。
+1.	**[リソース]** ブレードで、プライマリ ドメイン コントローラーの仮想マシンのコンピューター名である **[ad-primary-dc]** をクリックします。
 
 1.	**ad-primary-dc** のブレードで、**[接続]** をクリックします。リモート接続オブジェクトを開くか保存するか、ブラウザーによって求められます。**[開く]** をクリックします。 ![DC への接続](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/13-ad-primary-dc-connect.png)
 1.	**リモート デスクトップ接続**で、このリモート接続の発行元が識別できないことが通知される場合があります。**[接続]** をクリックします。
 
-1.	Windows のセキュリティによって、プライマリ ドメイン コントローラーの IP アドレスに接続するための資格情報の入力が求められます。**[別のアカウントを使用]** をクリックします。**[ユーザー名]** に **contoso\\DomainAdmin** と入力します。これが管理者のユーザー名に選択するアカウントです。テンプレートを構成したときに選択した複雑なパスワードを使用します。
+1.	Windows のセキュリティによって、プライマリ ドメイン コントローラーの IP アドレスに接続するための資格情報の入力が求められます。**[Use another account (別のアカウントを使用する)]** をクリックします。**[ユーザー名]** に「**contoso\\DomainAdmin**」と入力します。これが管理者のユーザー名に選択するアカウントです。テンプレートを構成したときに選択した複雑なパスワードを使用します。
 
 1.	**リモート デスクトップ**により、セキュリティ証明書の問題のためこのリモート コンピューターを認証できなかったという警告が表示される場合があります。そのセキュリティ証明書の名前が表示されます。チュートリアルに従った場合、名前は **ad-primary-dc.contoso.com** になります。**[はい]** をクリックします。
 
@@ -253,10 +250,10 @@ SQL Server の新しいインスタンスは、インターネットに接続さ
 
 1.	ドメイン コントローラーで **[リモート デスクトップ接続]** を開きます。
 
-1.	**[コンピューター]** には、いずれかの SQL Server の名前を入力します。このチュートリアルでは、**sqlserver-0** と入力します。
+1.	**[コンピューター]** には、いずれかの SQL Server の名前を入力します。このチュートリアルでは、「**sqlserver-0**」と入力します。
 
 1.	ドメイン コントローラーへの RDP 接続に使用したのと同じユーザー アカウントとパスワードを使用します。
 
 これで SQL Server に RDP 接続できました。これで SQL Server Management Studio を開き、SQL Server の既定のインスタンスに接続し、可用性グループが構成済みであることを確認できます。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

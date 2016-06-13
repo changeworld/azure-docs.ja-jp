@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/03/2016"
+     ms.date="05/31/2016"
      ms.author="dobett"/>
 
 # ARM テンプレートと C# プログラムを使用した IoT Hub の作成
@@ -41,7 +41,7 @@ Azure リソース マネージャー (ARM) を使って、Azure IoT Hub をプ�
 
 2. ソリューション エクスプローラーで、プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-3. NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、**Microsoft.Azure.Management.Resources** を検索します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
+3. NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、**Microsoft.Azure.Management.ResourceManager** を検索します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 
 4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 
@@ -51,8 +51,8 @@ Azure リソース マネージャー (ARM) を使って、Azure IoT Hub をプ�
 
     ```
     using System;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
@@ -215,4 +215,4 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 [lnk-storage-account]: ../storage/storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

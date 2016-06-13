@@ -109,9 +109,9 @@ public void ConfigureAuth(IAppBuilder app)
 
 - まず、ADAL のプレビュー バージョンをインストールします。
 
-```PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoList-WebApp -IncludePrerelease``` 
-- 別の `using` ステートメントを ADAL の `App_Start\Startup.Auth.cs` ファイルに追加します。
-- 次に、新しいメソッドとして `OnAuthorizationCodeReceived` イベント ハンドラーを追加します。このハンドラーは、ADAL を使用して To Do List API へのアクセス トークンを取得し、後で使用できるように ADAL のトークン キャッシュに格納します。
+```PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoList-WebApp -IncludePrerelease```
+- ADAL 用の `App_Start\Startup.Auth.cs` ファイルにもう 1 つの `using` ステートメントを追加します。
+- 新しいメソッドとして `OnAuthorizationCodeReceived` イベント ハンドラーを追加します。このハンドラーは、ADAL を使用して To Do List API へのアクセス トークンを取得し、後で使用できるように ADAL のトークン キャッシュに格納します。
 
 ```C#
 private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
@@ -193,6 +193,12 @@ catch (AdalException ee)
 
 ## 次のステップ
 
-その他のリソースについては、以下を参照してください。 - [v2.0 開発者ガイド >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
+その他のリソースについては、以下を参照してください。
+- [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)
+- [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=AcomDC_0224_2016-->
+## マイクロソフト製品のセキュリティ更新プログラムを取得する
+
+セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
+
+<!---HONumber=AcomDC_0601_2016-->

@@ -18,8 +18,6 @@
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
  
 このトピックでは、Microsoft Azure にホストされているパスワードの同期を使用して Office 365 ディレクトリ同期 (DirSync) をテストするためのハイブリッド クラウド環境を作成する手順全体を説明します。完成すると次のような構成になります。
 
@@ -181,4 +179,4 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
 - [実稼働環境](http://technet.microsoft.com/library/dn635310.aspx)で、このワークロードをデプロイします。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

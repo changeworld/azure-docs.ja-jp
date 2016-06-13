@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""  
 	manager="jhubbard"
-	authors="sidneyh"/>
+	authors="torsteng"/>
 
 <tags
 	ms.service="sql-database"
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="05/23/2016"
 	ms.author="torsteng" />
 
 # クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)
@@ -106,4 +106,4 @@ CustomerInformation テーブルの定義に一致する外部テーブルを Or
 
 <!--anchors-->
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

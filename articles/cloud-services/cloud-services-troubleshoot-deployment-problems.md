@@ -3,7 +3,7 @@
  description="クラウド サービスを Azure にデプロイするときに発生しやすい問題がいくつか存在します。この記事では、その解決方法について説明しています。"
    services="cloud-services"
    documentationCenter=""
-   authors="dalechen"
+   authors="simonxjx"
    manager="felixwu"
    editor=""
    tags="top-support-issue"/>
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="04/20/2016"
-   ms.author="daleche" />
+   ms.date="05/26/2016"
+   ms.author="v-six" />
 
 # クラウド サービスのデプロイメントに関する問題のトラブルシューティング
 
@@ -86,4 +86,4 @@ VIP スワップを妨げている原因が自動更新であることを確認�
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

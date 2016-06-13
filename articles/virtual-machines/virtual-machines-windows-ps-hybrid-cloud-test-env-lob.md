@@ -19,8 +19,6 @@
 
 # テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 このトピックでは、Microsoft Azure でホストされる Web ベースの基幹業務 (LOB) アプリケーションをテストするためにハイブリッド クラウド環境を作成する手順について説明します。完成すると次のような構成になります。
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph3.png)
@@ -220,4 +218,4 @@ ping コマンドで IP アドレス 192.168.0.4 からの応答が 4 回成功�
 
 - [運用環境](virtual-machines-windows-lob-overview.md)をデプロイします。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -25,8 +25,6 @@
 
 </br>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。クラシック デプロイ モデルのテンプレートは使用できません。
-
 [AZURE.INCLUDE [virtual-machines-common-cli-deploy-templates](../../includes/virtual-machines-common-cli-deploy-templates.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

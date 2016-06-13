@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="03/04/2016"
+   ms.date="05/27/2016"
    ms.author="jgao"/>
 
 # HDinsight での Windows ベースの HBase クラスターによる Apache Phoenix と SQuirreL の使用  
@@ -308,4 +308,4 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

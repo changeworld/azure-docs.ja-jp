@@ -41,7 +41,7 @@ v2.0 エンドポイントを使用すると、Microsoft の個人および職�
 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
-- アプリ用の**モバイル** プラットフォームを追加します。
+- アプリ用の**モバイル** プラットフォームを追加します。
 - ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
 ## ADAL のインストールと構成
@@ -214,7 +214,12 @@ private async void GetTodoList()
 - When the user is done managing their To-Do List, they may finally sign out of the app by clicking the "Clear Cache" button.
 
 ```C#
-private async void SignIn(object sender = null, RoutedEventArgs args = null) { // If the user clicked the 'clear cache' button, // clear the ADAL token cache and show the user as signed out. // It's also necessary to clear the cookies from the browser // control so the next user has a chance to sign in.
+private async void SignIn(object sender = null, RoutedEventArgs args = null)
+{
+		// If the user clicked the 'clear cache' button,
+		// clear the ADAL token cache and show the user as signed out.
+		// It's also necessary to clear the cookies from the browser
+		// control so the next user has a chance to sign in.
 
 		if (SignInButton.Content.ToString() == "Clear Cache")
 		{
@@ -244,6 +249,12 @@ ADAL では、個人用アカウントと職場アカウントの両方を使用
 
 - [ v2.0 エンドポイントでの TodoListService Web API の保護 >>](active-directory-v2-devquickstarts-dotnet-api.md)
 
-その他のリソースについては、以下を参照してください。 - [v2.0 開発者ガイド >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
+その他のリソースについては、以下を参照してください。
+- [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)
+- [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=AcomDC_0224_2016-->
+## マイクロソフト製品のセキュリティ更新プログラムを取得する
+
+セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
+
+<!---HONumber=AcomDC_0601_2016-->

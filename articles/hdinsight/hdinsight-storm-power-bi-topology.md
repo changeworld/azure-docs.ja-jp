@@ -1,6 +1,6 @@
 <properties
- pageTitle="Apache Storm から Power BI へのデータの書き込み | Microsoft Azure"
- description="HDInsight の Apache Storm クラスター上で実行されている C# トポロジから Power BI にデータを書き込みます。また、Power BI を使用してレポートとリアルタイムのダッシュボードも作成します。"
+ pageTitle="Apache Storm と Power BI の使用 | Microsoft Azure"
+ description="HDInsight 内の Apache Storm クラスター上で実行されている C# トポロジのデータを使用して Power BI レポートを作成します。"
  services="hdinsight"
  documentationCenter=""
  authors="Blackmist"
@@ -14,14 +14,14 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="03/01/2016"
+ ms.date="05/27/2016"
  ms.author="larryfr"/>
 
 # Power BI を使用した Apache Storm トポロジのデータの視覚化
 
-Power BI を使用すると、データをレポートとして表示したり、ダッシュボードに表示したりできます。Power BI REST API によって、HDInsight クラスター上の Apache Storm で実行しているトポロジのデータを Power BI で簡単に使用できます。
+Power BI を使用すると、データをレポートとして視覚的に表すことができます。HDInsight 上の Storm の Visual Studio テンプレートを使用すると、HDInsight クラスター上の Apache Storm で実行されているトポロジから SQL Azure にデータを簡単に保存し、Power BI で視覚化することができます。
 
-このドキュメントでは、Power BI を使用して、Storm トポロジによって作成されたデータから、レポートとダッシュボードを作成する方法について説明します。
+このドキュメントでは、Apache Storm トポロジによって生成されて Azure SQL Database に保存されたデータから、Power BI を使用してレポートを作成する方法について説明します。
 
 ## 前提条件
 
@@ -35,101 +35,116 @@ Power BI を使用すると、データをレポートとして表示したり�
 
     * Visual Studio 2013 ([update 4](http://www.microsoft.com/download/details.aspx?id=44921)) または [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?linkid=517284&clcid=0x409)
 
-    * Visual Studio 2015 [CTP6](http://visualstudio.com/downloads/visual-studio-2015-ctp-vs)
+    * [Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 
 * HDInsight Tools for Visual Studio: インストールの情報については、「[HDInsight Tools for Visual Studio の使用開始](../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
 
 ## 動作のしくみ
 
-この例に含まれる C# Storm トポロジは、文をランダムに生成し、その文を単語に分割し、単語をカウントし、単語とカウントを Power BI REST API に送信します。[PowerBi.Api.Client](https://github.com/Vtek/PowerBI.Api.Client) Nuget パッケージは Power BI との通信に使用されます。
+この例では、Internet Information Services (IIS) のログ データをランダムに生成する C# Storm トポロジを使用しています。このデータは SQL Database に書き込まれ、そこから Power BI でのレポート生成に使用されます。
 
-このプロジェクトの次のファイルによって、Power BI 固有の機能が実装されます。
+この例の主な機能は、以下に示したファイルに実装されています。
 
-* **PowerBiBolt.cs**: Power BI にデータを送信するStorm ボルトを実装します。
+* **SqlAzureBolt.cs**: Storm トポロジで生成された情報を SQL Database に書き込みます。
 
-* **Data.cs**: Power BI に送信されるデータのオブジェクト/行について記述します。
+* **IISLogsTable.sql**: データの格納先となるデータベースを生成するための Transact-SQL ステートメント。
 
-> [AZURE.WARNING] Power BI が、同じ名前を持つ複数のデータセットの作成を許可しているように見える場合があります。これは、データセットが存在しない場合に、トポロジで Power BI ボルトの複数のインスタンスを作成すると生じる可能性があります。これを回避するには、(この例の場合のように) ボルトの並列処理ヒントを 1 に設定するか、トポロジをデプロイする前にデータセットを作成します。
->
-> このソリューションに含まれている **CreateDataset** コンソール アプリケーションは、トポロジ外部でデータセットを作成する方法の例となっています。
-
-## Power BI アプリケーションの登録
-
-1. 「[Power BI のクイック スタート](https://msdn.microsoft.com/library/dn931989.aspx)」に示されている手順に従って、Power BI にサインアップします。
-
-2. 「[アプリの登録](https://msdn.microsoft.com/library/dn877542.aspx)」に示されている手順に従って、アプリケーションの登録を行います。登録情報は、Power BI REST API にアクセスするときに使用します。
-
-    > [AZURE.IMPORTANT] アプリケーション登録に**クライアント ID** を保存します。
+> [AZURE.WARNING] HDInsight クラスター上のトポロジを起動する前に、このテーブルを SQL Database に作成しておく必要があります。
 
 ## 例のダウンロード
 
 [HDInsight C# Storm Power BI の例](https://github.com/Azure-Samples/hdinsight-dotnet-storm-powerbi)をダウンロードします。ダウンロードするには、[git](http://git-scm.com/) を使用してフォーク/複製するか、**ダウンロード** リンクを使用してアーカイブの ZIP ファイルをダウンロードします。
 
+## データベースの作成
+
+1. [SQL Database チュートリアル](../sql-database/sql-database-get-started.md)のドキュメントに記載されている手順で新しい SQL Database を作成します。
+
+2. 「[Visual Studio で SQL Database に接続する](../sql-database/sql-database-connect-query.md)」の手順に従ってデータベースに接続します。
+
+4. オブジェクト エクスプローラーでデータベースを右クリックし、__[新しいクエリ]__ を作成します。ダウンロードしたプロジェクトに含まれている __IISLogsTable.sql__ ファイルの内容をクエリ ウィンドウに貼り付けて、Ctrl + Shift + E キーを押してクエリを実行します。コマンドが正常に完了した旨のメッセージが返されます。
+
+    この作業が完了すると、__IISLOGS__ という名前の新しいテーブルがデータベースに作成されます。
+
 ## サンプルの構成
 
-1. Visual Studio でサンプルを開きます。**ソリューション エクスプローラー**で **App.config** ファイルを開き、**<OAuth .../>** 要素を見つけます。この要素の次のプロパティの値を入力します。
+1. [Azure ポータル](https://portal.azure.com)で SQL データベースを選択します。[SQL Database] ブレードの __[要点]__ セクションから __[データベース接続文字列の表示]__ を選択します。表示された一覧から __ADO.NET (SQL 認証)__ 情報をコピーします。
 
-    * **Client**: 作成済みのアプリケーション登録のクライアント ID。
+1. Visual Studio でサンプルを開きます。**ソリューション エクスプローラー**で **App.config** ファイルを開き、次のエントリを見つけます。
 
-    * **User**: Power BI に対するアクセス権を持つ Azure Active Directory アカウント。
-
-    * **Password**: Azure Active Directory アカウントのパスワード。
-
-2. (省略可能)。このプロジェクトで使用される既定のデータセット名は **Words** です。これを変更する場合、**ソリューション エクスプローラー**で **WordCount** プロジェクトを右クリックし、[**プロパティ**]、[**設定**] の順に選択します。**DatasetName** エントリを必要な値に変更します。
+        <add key="SqlAzureConnectionString" value="##TOBEFILLED##" />
+    
+    __##TOBEFILLED##__ の値は、前の手順でコピーしたデータベースの接続文字列に置き換えてください。__{your\_username}__ と __{your\_password}__ は、データベースのユーザー名とパスワードに置き換えます。
 
 2. ファイルを保存して閉じます。
 
 ## サンプルのデプロイ
 
-1. **ソリューション エクスプローラー**で **WordCount** プロジェクトを右クリックし、[**HDInsight の Storm に送信 (Submit to Storm on HDInsight)**] を選択します。[**Storm クラスター**] ドロップダウン ダイアログから HDInsight クラスターを選択します。
+1. **ソリューション エクスプローラー**で **StormToSQL** プロジェクトを右クリックし、**[Submit to Storm on HDInsight (HDInsight の Storm に送信)]** を選択します。[**Storm クラスター**] ドロップダウン ダイアログから HDInsight クラスターを選択します。
 
     > [AZURE.NOTE] [**Storm クラスター**] ドロップダウンにサーバー名が設定されるには数秒かかることがあります。
     >
     > メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにログインします。
 
-2. トポロジが正常に送信されたら、クラスターの Storm トポロジが表示されます。一覧から [WordCount] トポロジを選択して、実行中のトポロジに関する情報を表示します。
+2. トポロジが正常に送信されたら、クラスターの Storm トポロジが表示されます。一覧から SqlAzureWriterTopology を選択して、実行中のトポロジに関する情報を表示します。
 
-    ![WordCount トポロジが選択されているトポロジ](./media/hdinsight-storm-power-bi-topology/topologysummary.png)
+    ![The topologies, with the topology selected](./media/hdinsight-storm-power-bi-topology/topologyview.png)
 
-    > [AZURE.NOTE] また、サーバー エクスプローラーから Storm トポロジを表示することもできます。その場合、[Azure]、[HDInsight] の順に展開して、HDInsight クラスターの Storm を右クリックして [Storm トポロジの表示 (View Storm Topologies)] を選択します。
+    このビューを使用してトポロジに関する情報を確認できるほか、エントリ (SqlAzureBolt など) をダブルクリックして、トポロジの特定のコンポーネントに固有の情報を表示できます。
 
-3. [**トポロジの概要**] を表示した状態で、[**ボルト (Bolts)**] セクションが表示されるまでスクロールします。このセクションで、**PowerBI** ボルトの [**実行済み (Executed)**] 列に注目します。ページ上部にある [更新] ボタンを使用して、値が 0 以外の値を変更するまで更新を実行します。この数値が増えると、対象項目が Power BI に書き込まれていることを示します。
+3. トポロジを数分間実行した後、データベースの作成に使用した SQL クエリ ウィンドウに戻ります。既存のステートメントを次のように置き換えます。
+
+        select * from iislogs;
+    
+    Ctrl + Shift + E キーを使用してクエリを実行すると、次のような結果が返されます。
+    
+        1	2016-05-27 17:57:14.797	255.255.255.255	/bar	GET	200
+        2	2016-05-27 17:57:14.843	127.0.0.1	/spam/eggs	POST	500
+        3	2016-05-27 17:57:14.850	123.123.123.123	/eggs	DELETE	200
+        4	2016-05-27 17:57:14.853	127.0.0.1	/foo	POST	404
+        5	2016-05-27 17:57:14.853	10.9.8.7	/bar	GET	200
+        6	2016-05-27 17:57:14.857	192.168.1.1	/spam	DELETE	200
+
+    これは、Storm トポロジから書き込まれたデータです。
 
 ## レポートの作成
 
-1. ブラウザーで、[https://PowerBI.com](https://powerbi.com) を表示します。ご使用のアカウントでサインインします。
+1. Power BI 用の [Azure SQL Database コネクタ](https://app.powerbi.com/getdata/bigdata/azure-sql-database-with-live-connect)に接続します。
 
-2. ページの左側にある [**データセット**] を展開します。[**Words**] エントリを選択します。これは、トポロジの例で作成したデータセットです。
+2. __[データベース]__ 内の __[取得]__ を選択します。
 
-    ![Words データセット エントリ](./media/hdinsight-storm-power-bi-topology/words.png)
+3. __[Azure SQL Database]__ を選択し、__[接続]__ を選択します。
 
-3. [**フィールド**] 領域で、[**WordCount**] を展開します。[**カウント (Count)**] エントリと [**単語 (Word)**] エントリをページ中ほどにドラッグします。これにより、対象の単語が何回出現したかを示す棒が単語ごとに表示された新しいグラフが作成されます。
+4. Azure SQL Database に接続するための情報を入力します。この情報は、[Azure ポータル](https://portal.azure.com)にアクセスし、該当する SQL データベースを選択すると確認できます。
 
-    ![WordCount グラフ](./media/hdinsight-storm-power-bi-topology/wordcountchart.png)
+    > [AZURE.NOTE] 接続ダイアログから __[詳細オプションを有効にする]__ を使用して、更新間隔とカスタム フィルターを設定することもできます。
 
-4. ページの左上で、[**保存**] を選択して新しいレポートを作成します。レポートの名前として **Word Count** と入力します。
+5. 接続後、接続先のデータベースと同じ名前の新しいデータセットが表示されます。データセットを選択して、レポートの設計に着手します。
 
-5. Power BI ロゴを選択し、ダッシュボードに戻ります。これで、**Word Count** レポートが [**レポート**] に表示されるようになりました。
+3. __[フィールド]__ から __[IISLOGS]__ エントリを展開します。__[URISTEM]__ のチェック ボックスをオンにします。これで、データベースに記録された URI ステム (/foo、/bar など) を列挙した新しいレポートが作成されます。
 
-## ライブ ダッシュボードの作成
+    ![Creating a report](./media/hdinsight-storm-power-bi-topology/createreport.png)
 
-1. [**ダッシュボード**] の横にある **+** アイコンを選択し、新しいダッシュボードを作成します。新しいダッシュボードの名前を **Live Word Count** とします。
+5. 次に、__[メソッド]__ をレポートにドラッグします。レポートが最新の情報に更新され、HTTP 要求に使用されたステムおよび対応する HTTP メソッドが一覧表示されます。
 
-2. 作成済みの **Word Count** レポートを選択します。表示されたら、グラフを選択し、グラフの右上にあるプッシュピン アイコンを選択します。ピン留めしたことを示す通知をダッシュボードで受信します。
+    ![adding the method data](./media/hdinsight-storm-power-bi-topology/uristemandmethod.png)
 
-    ![プッシュピンが表示されているグラフ](./media/hdinsight-storm-power-bi-topology/pushpin.png)
+4. __[視覚化]__ 列から __[フィールド]__ アイコンを選択し、__[値]__ セクションで __[メソッド]__ の横の下矢印を選択します。表示された一覧から __[カウント]__ を選択します。これで、特定の URI がアクセスされた回数を一覧表示するようにレポートが変更されます。
 
-2. Power BI ロゴを選択し、ダッシュボードに戻ります。**Live Word Count** ダッシュボードを選択します。ダッシュボードに Word Count グラフが含まれるようになり、HDInsight で実行されている WordCount トポロジから Power BI に新しいエントリが送信されるとグラフが更新されます。
+    ![Changing to a count of methods](./media/hdinsight-storm-power-bi-topology/count.png)
 
-    ![ライブ ダッシュボード](./media/hdinsight-storm-power-bi-topology/dashboard.png)
+6. 次に __[積み上げ縦棒グラフ]__ を選択して、情報の表示方法を変更します。
 
-## WordCount トポロジの停止
+    ![Changing to a stacked chart](./media/hdinsight-storm-power-bi-topology/stackedcolumn.png)
+
+7. レポートの体裁が整ったら、メニュー項目の __[保存]__ を使用して名前を入力し、レポートを保存します。
+
+## トポロジを停止する
 
 トポロジの実行は、意図的に停止するか、HDInsight クラスター上で Storm を削除するまで続きます。トポロジを停止するには、以下の手順を実行します。
 
-1. Visual Studio で、WordCount トポロジの [**トポロジの概要**] ウィンドウを開きます。[トポロジの概要] が開いていない場合、**サーバー エクスプローラー**に移動し、[**Azure**] エントリ、[**HDInsight**] エントリの順に展開し、HDInsight クラスター上の Storm を右クリックし、[**Storm トポロジの表示 (View Storm Topologies)**] を選択します。最後に、[**WordCount**] トポロジを選択します。
+1. Visual Studio でトポロジ ビューアーに戻って、トポロジを選択します。
 
-2. [**強制終了 (Kill)**] ボタンを選択して [**WordCount**] トポロジを停止します。
+2. **[強制終了]** ボタンを選択してトポロジを停止します。
 
     ![[トポロジの概要] の [強制終了 (Kill)] ボタン](./media/hdinsight-storm-power-bi-topology/killtopology.png)
 
@@ -139,8 +154,8 @@ Power BI を使用すると、データをレポートとして表示したり�
 
 ## 次のステップ
 
-このドキュメントでは、REST を使用して Strom トポロジのデータを Power BI に送信する方法を説明します。他の Azure テクノロジを使用する方法については、以下をご覧ください。
+このドキュメントでは、Storm トポロジから SQL Database にデータを送信し、Power BI を使って視覚化する方法について説明しました。HDInsight 上の Storm を使用して他の Azure テクノロジと連携する方法については、次のページを参照してください。
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="02/29/2016"
+   ms.date="05/31/2016"
    ms.author="deonhe"/>
 
 # チュートリアル: Azure BizTalk Services を使用して EDIFACT 請求書を処理する
@@ -313,4 +313,4 @@ BizTalk Services EDI ブリッジでは、メッセージを一括送信する�
 [17]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-17.PNG
 [18]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-18.PNG
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0601_2016-->

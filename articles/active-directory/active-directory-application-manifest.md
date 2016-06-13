@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/16/2016"
+   ms.date="05/26/2016"
    ms.author="dkershaw;bryanla"/>
 
 # Azure Active Directory のアプリケーション マニフェストについて
@@ -33,12 +33,13 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 
 したがって、アプリケーション マニフェストの形式とプロパティを理解するには、Graph API の[アプリケーション エンティティ][APPLICATION-ENTITY]に関するドキュメントを参照する必要があります。アプリケーション マニフェストのアップロードによって実行できる更新操作の例を次に示します。
 
-- Web API によって公開されているアクセス許可のスコープ (oauth2Permissions) を宣言する。oauth2Permissions 委任アクセス許可スコープを使用してユーザーの偽装を実装する方法については、「[Azure Active Directory とアプリケーションの統合][INTEGRATING-APPLICATIONS-AAD]」の「他のアプリケーションへの Web API の公開」を参照してください。既に説明したように、すべてのアプリケーション エンティティ プロパティについては、[OAuth2Permission][APPLICATION-ENTITY-OAUTH2-PERMISSION] 型のコレクションである oauth2Permissions プロパティを含む Graph API の[エンティティおよび複合型のリファレンス][APPLICATION-ENTITY]記事にドキュメント化されています。
-- アプリによって公開されるアプリケーション ロール (appRoles) を宣言する。アプリケーション エンティティの appRoles プロパティは、[AppRole][APPLICATION-ENTITY-APP-ROLE] 型のコレクションです。実装例については、[Azure AD を使用したクラウド アプリケーションでのロール ベースのアクセス制御][RBAC-CLOUD-APPS-AZUREAD]に関する記事を参照してください。
-- 既知のクライアント アプリケーション (knownClientApplications) を宣言する。それらによって、指定されたクライアント アプリケーションの同意をリソースや Web API に論理的に関連付けることができます。
-- サインインしているユーザーのグループ メンバーシップ要求 (groupMembershipClaims) を発行するように Azure AD にリクエストする。注: さらに、ユーザーのディレクトリ ロール メンバーシップに関する要求を発行するように構成することもできます。実装例については、[AD グループを使用したクラウド アプリケーションでの承認][AAD-GROUPS-FOR-AUTHORIZATION]に関する記事を参照してください。
-- アプリケーションが OAuth 2.0 の暗黙的な許可フロー (oauth2AllowImplicitFlow) をサポートできるようにする。この種類の許可フローは、埋め込み JavaScript Web ページまたは Single Page Applications (SPA) で使用されます。
-- X509 証明書の秘密キー (keyCredentials) としての使用を可能にする。実装例については、「[Office 365 でのサービスとデーモンのアプリのビルド][O365-SERVICE-DAEMON-APPS]」と「[Azure リソース マネージャー API の権限付与に関する開発者ガイド][DEV-GUIDE-TO-AUTH-WITH-ARM]」を参照してください。
+- Web API によって公開されている**アクセス許可のスコープ (oauth2Permissions) を宣言する**。oauth2Permissions 委任アクセス許可スコープを使用してユーザーの偽装を実装する方法については、「[Azure Active Directory とアプリケーションの統合][INTEGRATING-APPLICATIONS-AAD]」の「他のアプリケーションへの Web API の公開」を参照してください。既に説明したように、すべてのアプリケーション エンティティ プロパティについては、[OAuth2Permission][APPLICATION-ENTITY-OAUTH2-PERMISSION] 型のコレクションである oauth2Permissions プロパティを含む Graph API の[エンティティおよび複合型のリファレンス][APPLICATION-ENTITY]記事にドキュメント化されています。
+- **アプリによって公開されるアプリケーション ロール (appRoles) を宣言する**。アプリケーション エンティティの appRoles プロパティは、[AppRole][APPLICATION-ENTITY-APP-ROLE] 型のコレクションです。実装例については、[Azure AD を使用したクラウド アプリケーションでのロール ベースのアクセス制御][RBAC-CLOUD-APPS-AZUREAD]に関する記事を参照してください。
+- **既知のクライアント アプリケーション (knownClientApplications) を宣言する**。それらによって、指定されたクライアント アプリケーションの同意をリソースや Web API に論理的に関連付けることができます。
+- サインインしているユーザーの**グループ メンバーシップ要求 (groupMembershipClaims) を発行するように Azure AD にリクエストする**。注: さらに、ユーザーのディレクトリ ロール メンバーシップに関する要求を発行するように構成することもできます。実装例については、[AD グループを使用したクラウド アプリケーションでの承認][AAD-GROUPS-FOR-AUTHORIZATION]に関する記事を参照してください。
+- **アプリケーションが OAuth 2.0 の暗黙的な許可フロー (oauth2AllowImplicitFlow) をサポートできるようにする**。この種類の許可フローは、埋め込み JavaScript Web ページまたは Single Page Applications (SPA) で使用されます。
+- **X509 証明書の秘密キー (keyCredentials) としての使用を可能にする**。実装例については、「[Office 365 でのサービスとデーモンのアプリのビルド][O365-SERVICE-DAEMON-APPS]」と「[Azure リソース マネージャー API の権限付与に関する開発者ガイド][DEV-GUIDE-TO-AUTH-WITH-ARM]」を参照してください。
+- アプリケーションの**新しいアプリ ID URI (identifierURIs) を追加する**。アプリ ID URI は、Azure AD テナント内で (または、検証済みカスタム ドメインを使用して修飾される際のマルチ テナント シナリオの場合は、複数の Azure AD テナントで) アプリケーションを一意に識別するために使用します。リソース アプリケーションに対するアクセス許可を要求するとき、またはリソース アプリケーションのアクセス トークンを取得するときに使用します。この要素を更新したときに、対応するサービス プリンシパルの servicePrincipalNames コレクションに同じ更新が加えられます。このコレクションはアプリケーションのホーム テナントに格納されています。
 
 アプリケーション マニフェストは、アプリケーションの登録の状態を追跡するための優れた方法でもあります。アプリケーション マニフェストは JSON 形式で使用できるため、アプリケーションのソース コードと共にファイル表現をソース管理にチェックインできます。
 
@@ -104,7 +105,7 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 
 1. まず、新しい API へのアクセスを追加するクライアント アプリケーションの [構成] ページに移動し、[アプリケーションの追加] ボタンをクリックします。
 2. テナントの登録済みのリソース アプリケーション (API) の一覧が表示されます。リソース アプリケーションの名前の横にあるプラス (+) 記号をクリックして選択します。  
-3. 次に、右下にあるチェック マークをクリックします。
+3. 次に、右下にあるチェック マークをクリックします。 
 4. クライアントの構成ページの [アプリケーションの追加] セクションに戻ると、一覧に新しいリソース アプリケーションが表示されます。その行の右側の [委任されたアクセス許可] セクションにポインターを置くと、ドロップダウン リストが表示されます。一覧をクリックし、クライアントの要求されているアクセス許可の一覧に追加するために、新しいアクセス許可を選択します。注: この新しいアクセス許可は、クライアント アプリケーションの ID 構成の "requiredResourceAccess" コレクション プロパティに格納されます。
 
 ![他のアプリケーションに対するアクセス許可][PERMS-TO-OTHER-APPS]
@@ -145,4 +146,4 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -3,7 +3,7 @@
 	description="エラスティック データベース ツールによる分割とマージ"
 	services="sql-database"  
 	documentationCenter=""
-	authors="sidneyh"
+	authors="ddove"
 	manager="jhubbard"
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="05/27/2016"
 	ms.author="ddove" />
 
 # split-merge サービスのデプロイ 
@@ -339,4 +339,4 @@ Split-Merge サービスはターゲット データベース (またはデー�
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -19,8 +19,6 @@
 
 # 基幹業務アプリケーションのワークロード フェーズ 4: Web サーバーを構成する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、Web サーバーを構築して基幹業務アプリケーションをロードします。
 
 [フェーズ 5](virtual-machines-windows-ps-lob-ph5.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-windows-lob-overview.md)」をご覧ください。
@@ -151,4 +149,4 @@ ASP.NET アプリケーション、または Windows Server 2012 R2 のインタ
 
 - [フェーズ 5](virtual-machines-windows-ps-lob-ph5.md) を使用して、このワークロードの構成を完了します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

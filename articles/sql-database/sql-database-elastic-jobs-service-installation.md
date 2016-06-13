@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/02/2016" 
-	ms.author="ddove;sidneyh"/>
+	ms.date="05/27/2016" 
+	ms.author="ddove"/>
 
 # Elastic Database ジョブのインストールの概要
 
@@ -187,4 +187,4 @@
 [3]: ./media/sql-database-elastic-jobs-service-installation/start-board.png
 [4]: ./media/sql-database-elastic-jobs-service-installation/not-done.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

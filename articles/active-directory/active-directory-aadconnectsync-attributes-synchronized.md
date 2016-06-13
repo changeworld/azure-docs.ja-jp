@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/16/2016"
-	ms.author="markusvi;andkjell"/>
+	ms.date="06/01/2016"
+	ms.author="markvi;andkjell"/>
 
 
 # Azure AD Connect Sync: Azure Active Directory に同期される属性
@@ -469,4 +469,4 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

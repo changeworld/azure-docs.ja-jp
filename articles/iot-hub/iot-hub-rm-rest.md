@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/03/2016"
+     ms.date="05/31/2016"
      ms.author="dobett"/>
 
 # チュートリアル: C# プログラムと REST API を使って IoT Hub を作成する
@@ -40,7 +40,7 @@
 
 2. ソリューション エクスプローラーで、プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-3. NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、**Microsoft.Azure.Management.Resources** を検索します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
+3. NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、**Microsoft.Azure.Management.ResourceManager** を検索します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 
 4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 
@@ -51,8 +51,8 @@
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Newtonsoft.Json;
     using Microsoft.Rest;
@@ -183,4 +183,4 @@
 [lnk-rest-api]: https://msdn.microsoft.com/library/mt589014.aspx
 [lnk-azure-rm-overview]: ../resource-group-overview.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

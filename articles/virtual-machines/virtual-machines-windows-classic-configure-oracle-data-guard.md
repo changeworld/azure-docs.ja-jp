@@ -2,7 +2,8 @@
 	pageTitle="VM で Oracle Data Guard を構成する |Microsoft Azure"
 	description="高可用性と障害復旧のために Oracle Data Guard を Azure 仮想マシンにセットアップして実装するチュートリアルの手順。"
 	services="virtual-machines-windows"
-	authors="bbenz"
+	authors="rickstercdn"
+	manager="timlt"
 	documentationCenter=""
 	tags="azure-service-management"/>
 <tags
@@ -11,15 +12,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="infrastructure-services"
-	ms.date="06/22/2015"
-	ms.author="bbenz" />
+	ms.date="05/17/2016"
+	ms.author="rclaus" />
 
 #Azure 用の Oracle データ保護の構成
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] リソース マネージャー モデル。
 
-
-このチュートリアルでは、高可用性と障害復旧のための Azure Virtual Machines 環境に Oracle Data Guard をセットアップ、実装する方法について説明します。このチュートリアルでは、RAC 以外の Oracle データベースの 1 ウェイレプリケーションの方法について説明します。
+このチュートリアルでは、高可用性と障害復旧のための Azure 仮想マシン環境に Oracle Data Guard をセットアップ、実装する方法について説明します。このチュートリアルでは、RAC 以外の Oracle データベースの 1 ウェイレプリケーションの方法について説明します。
 
 Oracle Data Guard は Oracle データベースのデータの保護および障害復旧をサポートします。シンプルで高パフォーマンスな、障害復旧、データの保護、および Oracle データベース全体の高可用性のすぐに使えるソリューションです。
 
@@ -30,7 +29,7 @@ Oracle Data Guard は Oracle データベースのデータの保護および障
 - 「[Oracle 仮想マシン イメージ - 他の考慮事項](virtual-machines-windows-classic-oracle-considerations.md)」に関するトピックの「高可用性と障害復旧」セクションを既に確認していること。Azure では、スタンドアロンの Oracle Database インスタンスをサポートしていますが、Oracle Real Application Cluster (Oracle RAC) をサポートしていないことにご注意ください。
 
 
-- 同じプラットフォームで提供される Windows Server 上の Oracle Enterprise Edition のイメージを使用して、Azure に 2 つの Virtual Machines (VM) を作成している。詳細については、「[Azure での Oracle Database 12c 仮想マシンの作成](virtual-machines-windows-create-oracle-weblogic-server-12c.md)」と「[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)」をご覧ください。仮想マシンが永続的なプライベート IP アドレスを介して相互にアクセスできるように、[同じクラウド サービス](virtual-machines-windows-load-balance.md)にあり、同じ [Virtual Network](azure.microsoft.com/documentation/services/virtual-network/) にあることを確認します。さらに、VM を同じ[可用性セット](virtual-machines-windows-manage-availability.md)に配置することにより、Azure は個別のフォールト ドメインとアップグレード ドメインに配置できるようになります。Oracle Data Guard は Oracle Database Enterprise Edition でのみ使用可能となっていますのでご注意ください。それぞれのマシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。プラットフォームが提供する VM サイズの最新情報については、[「Azure の仮想マシンおよびクラウド サービスのサイズ」](virtual-machines-windows-sizes.md)を参照してください。VM に追加のディスク ボリュームが必要な場合は、追加のディスクをアタッチすることができます。詳細については、「[How to Attach a Data Disk to a Virtual Machine(データディスクを仮想マシンに追加する方法)](virtual-machines-windows-classic-attach-disk.md)」を参照してください。
+- 同じプラットフォームで提供される Oracle Enterprise Edition のイメージを使用して、Azure に 2 つの Virtual Machines (VM) を作成していること。Virtual Machines が永続的なプライベート IP アドレスを介して相互にアクセスできるように、[同じクラウド サービス](virtual-machines-windows-load-balance.md)にあり、同じ [Virtual Network](azure.microsoft.com/documentation/services/virtual-network/) にあることを確認します。さらに、VM を同じ[可用性セット](virtual-machines-windows-manage-availability.md)に配置することにより、Azure は個別のフォールト ドメインとアップグレード ドメインに配置できるようになります。Oracle Data Guard は Oracle Database Enterprise Edition でのみ使用可能となっていますのでご注意ください。それぞれのマシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。プラットフォームが提供する VM サイズの最新情報については、[「Azure の仮想マシンおよびクラウド サービスのサイズ」](virtual-machines-windows-sizes.md)を参照してください。VM に追加のディスク ボリュームが必要な場合は、追加のディスクをアタッチすることができます。詳細については、「[How to Attach a Data Disk to a Virtual Machine(データディスクを仮想マシンに追加する方法)](virtual-machines-windows-classic-attach-disk.md)」を参照してください。
 
 
 
@@ -631,4 +630,4 @@ SQL * Plus コマンド プロンプト ウィンドウを開き、プライマ�
 ##その他のリソース
 [Azure の Oracle 仮想マシン イメージ](virtual-machines-windows-classic-oracle-images.md)
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->

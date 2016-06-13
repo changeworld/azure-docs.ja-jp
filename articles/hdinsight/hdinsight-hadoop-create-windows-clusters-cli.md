@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/08/2016"
+   ms.date="05/27/2016"
    ms.author="jgao"/>
 
 # Azure CLI を使用した HDInsight での Windows ベースの Hadoop クラスターの作成
@@ -139,4 +139,4 @@ CLI を使用して、ARM テンプレートを呼び出すことによってク
 - [Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)
 - [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](../virtual-machines-command-line-tools.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

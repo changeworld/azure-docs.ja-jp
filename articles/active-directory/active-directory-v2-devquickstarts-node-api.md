@@ -33,20 +33,20 @@ Azure Active Directory v2.0 エンドポイントでは、[OAuth 2.0](active-dir
 完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
 
-## 1. アプリを登録します
+## 1\.アプリを登録します
 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
-- アプリ用の**モバイル** プラットフォームを追加します。
-- ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
+- アプリ用の **モバイル** プラットフォームを追加します。
+- ポータルから **リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
 
-## 2. プラットフォーム用の Node.js をダウンロードする
+## 2\. プラットフォーム用の Node.js をダウンロードする
 このサンプルを正常に使用するには、Node.js の実稼働するインストール環境が必要になります。
 
 Node.js を [http://nodejs.org](http://nodejs.org) からインストールします。
 
-## 3. プラットフォームに MongoDB をインストールする
+## 3\. プラットフォームに MongoDB をインストールする
 
 このサンプルを正常に使用するには、MongoDB の実稼働するインストール環境が必要になります。MongoDB を使用して、REST API がサーバー インスタンス間で持続されるようにします。
 
@@ -54,7 +54,7 @@ MongoDB を [http://mongodb.org](http://www.mongodb.org) からインストー�
 
 > [AZURE.NOTE] このチュートリアルでは、MongoDB の既定のインストール環境およびサーバー エンドポイント (チュートリアルの記述時点では mongodb://localhost) が使用されることを想定しています。
 
-## 4. Web API に Restify モジュールをインストールする
+## 4\. Web API に Restify モジュールをインストールする
 
 Resitfy を使用して REST API を構築します。Resitfy は最小で柔軟性のある Node.js アプリケーション フレームワークで、Connect 上に REST API を構築するための一連の堅牢な機能を備えた Express から派生しています。
 
@@ -765,7 +765,7 @@ Passport は、すべての戦略ライターが従うすべての戦略 (Twitte
 > [AZURE.IMPORTANT]
 上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。これは、自動登録と呼ばれます。運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。これは、Facebook への登録は許可するが、その後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。これがコマンド ライン プログラムでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。これはテスト サーバーなので、単純にユーザーをメモリ内データベースに追加します。
 
-### 2. 最後にいくつかのエンドポイントを保護する
+### 2\.最後にいくつかのエンドポイントを保護する
 
 エンドポイントを保護するには、使用するプロトコルをパラメーターとして、passport.authenticate() 呼び出しを指定します。
 
@@ -851,8 +851,12 @@ Restify と OAuth2 を使用して REST API を実装する方法についての
 
 [v2.0 エンドポイントを使用して Node.js Web アプリをセキュリティ保護する >>](active-directory-v2-devquickstarts-node-web.md)
 
-その他のリソースについては、以下を参照してください。 
-- [v2.0 開発者ガイド >>](active-directory-appmodel-v2-overview.md)
+その他のリソースについては、以下を参照してください。
+- [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=AcomDC_0224_2016-->
+## マイクロソフト製品のセキュリティ更新プログラムを取得する
+
+セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
+
+<!---HONumber=AcomDC_0601_2016-->

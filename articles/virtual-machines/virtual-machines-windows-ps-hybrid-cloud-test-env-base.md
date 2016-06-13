@@ -18,8 +18,6 @@
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウド環境の設定
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
  
 このトピックでは、Microsoft Azure でテスト用のハイブリッド クラウド環境を作成する手順について説明します。完成すると次のような構成になります。
 
@@ -45,7 +43,7 @@
 4.	サイト間 VPN 接続を作成する。
 5.	DC2 を構成する。 
 
-Azure サブスクリプションを持っていない場合は、[Azure の無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)で無料アカウントにサインアップすることもできます。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」をご覧ください。
+Azure サブスクリプションを持っていない場合は、[Azure の試用](https://azure.microsoft.com/pricing/free-trial/)に関するページで無料アカウントにサインアップすることもできます。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
 >[AZURE.NOTE] Azure の仮想マシンと仮想ネットワーク ゲートウェイは、稼働していると継続的に費用が発生します。Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンとして実装されます。詳細については、[Virtual Network 料金](https://azure.microsoft.com/pricing/details/virtual-network/)に関するページを参照してください。VPN Gateway の稼働コストを最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行います。
 
@@ -189,7 +187,7 @@ Azure サブスクリプションを設定します。基本構成をビルド�
 
 表示されている **IPAddress** フィールドの IP アドレスを書き留めておきます。この情報はフェーズ 4 で必要になります。
 
-次に、ランダムな、暗号強度の高い 32 文字の事前共有キーをネットワーク管理者またはセキュリティ管理者から取得します。または、[「Create a random string for an IPsec preshared key」](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx) (IPsec 事前共有キー用にランダムな文字列を作成する) に記載された情報を使用して事前共有キーを取得します。
+次に、ランダムな、暗号強度の高い 32 文字の事前共有キーをネットワーク管理者またはセキュリティ管理者から取得します。または、「[Create a random string for an IPsec preshared key (IPsec 事前共有キー用にランダムな文字列を作成する)](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx)」に記載されている情報を使用して事前共有キーを取得します。
 
 以下のコマンドを使用して、Azure でサイト間 VPN 接続を作成します。
 
@@ -331,4 +329,4 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 - この環境に [SharePoint イントラネット ファーム](virtual-machines-windows-ps-hybrid-cloud-test-env-sp.md)、[Web ベース LOB アプリケーション](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md)、または [Office 365 ディレクトリ同期 (DirSync) サーバー](virtual-machines-windows-ps-hybrid-cloud-test-env-dirsync.md)をセットアップします。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

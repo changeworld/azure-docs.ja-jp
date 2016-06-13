@@ -3,7 +3,7 @@
    description="クラウド サービス ロールが起動に失敗する一般的な原因をいくつか取り上げます。これらの問題に対する解決策も紹介します。"
    services="cloud-services"
    documentationCenter=""
-   authors="dalechen"
+   authors="simonxjx"
    manager="felixwu"
    editor=""
    tags="top-support-issue"/>
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="02/25/2016"
-   ms.author="daleche" />
+   ms.date="05/26/2016"
+   ms.author="v-six" />
 
 # クラウド サービス ロールが起動しないときのトラブルシューティング
 
@@ -167,4 +167,4 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0601_2016-->
