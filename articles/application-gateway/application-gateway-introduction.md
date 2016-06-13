@@ -25,12 +25,12 @@ Microsoft Azure Application Gateway は、レイヤー 7 の負荷分散に基�
 
 - HTTP の負荷分散
 - Cookie ベースのセッション アフィニティ
-- [Secure Sockets Layer (SSL) オフロード](application-gateway-ssl-arm.md)
+- [Secure Sockets Layer \(SSL\) オフロード](application-gateway-ssl-arm.md)
 - [URL ベースのコンテンツ ルーティング](application-gateway-url-route-overview.md) 
 
 ## HTTP レイヤー 7 の負荷分散
 
-Azure では、トランスポート レベル (TCP/UDP) で機能する Azure Load Balancer を介してレイヤー 4 の負荷分散を提供し、すべての受信ネットワーク トラフィックを Application Gateway サービスに負荷分散させます。Application Gateway は、HTTP トラフィックにルーティング ルールを適用してレイヤー 7 (HTTP) の負荷分散を提供します。アプリケーション ゲートウェイを作成すると、エンドポイント (VIP) が関連付けられ、受信ネットワーク トラフィック用のパブリック IP として使用されます。
+Azure では、トランスポート レベル \(TCP/UDP\) で機能する Azure Load Balancer を介してレイヤー 4 の負荷分散を提供し、すべての受信ネットワーク トラフィックを Application Gateway サービスに負荷分散させます。Application Gateway は、HTTP トラフィックにルーティング ルールを適用してレイヤー 7 \(HTTP\) の負荷分散を提供します。アプリケーション ゲートウェイを作成すると、エンドポイント \(VIP\) が関連付けられ、受信ネットワーク トラフィック用のパブリック IP として使用されます。
 
 Application Gateway は、仮想マシン、クラウド サービス、Web アプリ、外部 IP アドレスのいずれであるかに関わらず、その構成に基づいて HTTP トラフィックをルーティングします。
 
@@ -38,7 +38,7 @@ HTTP レイヤー 7 の負荷分散は、次の場合に役立ちます。
 
 - 同じバックエンド仮想マシンに到達するために同じユーザー/クライアントのセッションからの要求を必要とするアプリケーション。この例としては、ショッピング カート アプリや Web メール サーバーなどが挙げられます。
 - Web サーバーのファームを SSL ターミネーションのオーバーヘッドから解放する必要があるアプリケーション。
-- 実行時間の長い同じ TCP 接続で複数の HTTP 要求を異なるバックエンド サーバーにルーティング/負荷分散する必要があるアプリケーション (コンテンツ配信ネットワークなど)。
+- 実行時間の長い同じ TCP 接続で複数の HTTP 要求を異なるバックエンド サーバーにルーティング/負荷分散する必要があるアプリケーション \(コンテンツ配信ネットワークなど\)。
 
  
 ## ゲートウェイのサイズとインスタンス
@@ -72,6 +72,6 @@ REST API や PowerShell コマンドレットを使用して、アプリケー�
 
 Application Gateway について学習すると、[アプリケーション ゲートウェイを作成](application-gateway-create-gateway.md)、または[アプリケーション ゲートウェイ SSL オフロードを作成](application-gateway-ssl.md)して、HTTPS 接続を負荷分散できるようになります。
 
-URL ベースのコンテンツ ルーティングを使用して Application Gateway を作成する方法については、「[Create an application gateway using URL based routing](application-gateway-create-url-route-arm-ps.md)」 (URL ベースのルーティングを使用した Application Gateway の作成) を参照してください。
+URL ベースのコンテンツ ルーティングを使用して Application Gateway を作成する方法については、「[Create an application gateway using URL based routing](application-gateway-create-url-route-arm-ps.md)」 \(URL ベースのルーティングを使用した Application Gateway の作成\) を参照してください。
 
 <!---HONumber=AcomDC_0224_2016-->
