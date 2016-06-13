@@ -18,6 +18,8 @@
 
 # サポートされているトークンとクレームの種類
 
+[AZURE.INCLUDE [active-directory-protocols](../../includes/active-directory-protocols.md)]
+
 このトピックでは、Azure Active Directory (Azure AD) が発行する SAML 2.0 トークンおよび JSON Web Tokens (JWT) トークン内のクレームを理解し評価するのに役立つ情報を提供します。
 
 このトピックでは、各トークン クレームを説明してから、必要に応じて SAML トークンおよび JWT トークン内のクレームの例を示します。プレビュー状態にあるクレームは、別に一覧表示されます。最後に、コンテキスト内のクレームを確認できるように、サンプルのトークンを示します。
@@ -412,4 +414,4 @@ JWT トークンでは、ユーザー プリンシパル名は upn クレーム�
 
 [Azure Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Logic Apps での Azure リソース コネクタの使用 | Microsoft Azure App Service"
+   pageTitle="ロジックアプリでの Azure リソース コネクタの使用 | Microsoft Azure App Service"
    description="Azure リソース コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="02/10/2016"
+   ms.date="05/31/2016"
    ms.author="stepsic"/>
 
 # Azure リソース コネクタの使用開始とロジック アプリへの追加
@@ -28,7 +28,7 @@ Azure リソース コネクタ API アプリを使用するにはまず、そ�
 
 David Ebbo の[ブログ記事](http://blog.davidebbo.com/2014/12/azure-service-principal.html)に、この設定方法が詳しく解説されています。解説されている手順に従って、**テナント ID**、**クライアント ID**、**シークレット**を入手してください。その 3 つのフィールドと**サブスクリプション ID** が、コネクタを構成するうえで必要となります。
 
-## Logic Apps デザイナーでの Azure リソース コネクタの使用
+## ロジック アプリ デザイナーでの Azure リソース コネクタの使用
 ### トリガー
 Azure リソース コネクタでは、2 つのトリガーがサポートされています。
 
@@ -91,11 +91,11 @@ Get metrics | リソース ID のメトリックを取得します。
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
+「[Connectors and API アプリReference (コネクタと API アプリのリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
 <!--References -->
 
 <!--Links -->
-[Creating a Logic App]: app-service-logic-create-a-logic-app.md
+[Creating a Logic app]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->

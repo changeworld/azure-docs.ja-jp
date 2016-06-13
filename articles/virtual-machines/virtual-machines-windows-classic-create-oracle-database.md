@@ -2,7 +2,8 @@
 	pageTitle="Azure クラシック ポータルで Oracle データベース VM を作成する |Microsoft Azure"
 	description="従来のデプロイ モデルと Azure ポータルで、Oracle Database を使用して仮想マシンを作成する方法について説明します。"
 	services="virtual-machines-windows"
-	authors="bbenz"
+	authors="rickstercdn"
+	manager="timlt"
 	documentationCenter=""
 	tags="azure-service-management"/>
 
@@ -12,47 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="Windows"
 	ms.workload="infrastructure-services"
-	ms.date="06/22/2015"
-	ms.author="bbenz" />
+	ms.date="05/17/2016"
+	ms.author="rclaus" />
 
 #Azure で Oracle Database 仮想マシンを作成する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [virtual-machines-common-oracle-support](../../includes/virtual-machines-common-oracle-support.md)]
 
-
-次の例は、Windows Server 2012 で実行しているマイクロソフト提供の Oracle Database のイメージに基づいて、Azure で仮想マシン (VM) を作成する方法を示しています。次の 2 つの手順が含まれます。最初に VM を作成し、VM 内に Oracle Database を作成します。この例で示されているのは Oracle Database バージョン 12c ですが、手順はバージョン 11g とほぼ同じです。
-
-##Azure で Oracle Database VM を作成するには
-
-1.	[Azure ポータル](https://ms.portal.azure.com/)にログインします。
-
-2.	**[Marketplace]**、**[Compute]** をクリックし、続いて検索ボックスに**「Oracle」**と入力します。
-
-3.	使用できる Oracle Database のイメージを 1 つ選択します **(バージョン 11g、バージョン 12c、Standard Edition、Enterprise Edition、または基本的なオプションまたは高度なオプションのバンドルのいずれか)**。 選択したイメージに関する情報 (最小の推奨サイズなど) を確認し、**[次へ]** をクリックします。
-
-4.	VM の**ホスト名**を指定します。
-
-5.	VM の**ユーザー名**を指定します。なお、このユーザーは VM にリモートでログインするためのもので、Oracle データベースのユーザー名ではありませんのでご注意ください。
-
-6.	VM のパスワードを指定し確認するか、または SSH 公開キーを入力します。
-
-7.	**[価格レベル]** を選択。既定では推奨される価格レベルが表示されます。すべての構成オプションを見るには、右上の **[すべて表示]** をクリックします。
-
-8.	必要に応じてオプションの構成を設定します。このとき、次に注意してください。
-
-	a.VM 名で新しいストレージ アカウントを作成するには、**[ストレージ アカウント]** をそのままにします。
-
-	b.**[可用性セット]** を「未構成」のままにします。
-
-	c.この時点では**エンドポイント**を追加しないでください。
-
-9.	リソース グループを選択または作成します。
-
-10. **[サブスクリプション]** を選択します。
-
-11. **[場所]** を選択します。
-
-12. **[作成]** をクリックすると、VM を作成するプロセスが開始します。VM の状態が **[実行中]** になったら、次の手順に進みます。
+次の例は、事前に作成して、Oracle Database バージョン 12c をインストールした Windows Server VM に、Oracle Database を作成する方法を示しています。次の 2 つの手順が含まれます。最初に VM を接続し、VM 内に Oracle Database を作成します。この例で示されているのは Oracle Database バージョン 12c ですが、手順はバージョン 11g とほぼ同じです。
 
 
 ##Azure で Oracle Database VM を使ってデータベースを作成するには
@@ -200,4 +168,4 @@ Oracle Database Enterprise Manager のリモート アクセスを有効にす�
 
 -	[Oracle Database 2 日間 DBA 12c リリース 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

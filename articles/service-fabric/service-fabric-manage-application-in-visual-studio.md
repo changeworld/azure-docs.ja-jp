@@ -3,7 +3,7 @@
    description="Visual Studio を利用し、Service Fabric のアプリケーションとサービスを作成、開発、パッケージ化、デプロイ、デバッグします。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="jessebenson"
+   authors="seanmck"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="02/02/2016"
-   ms.author="jesseb"/>
+   ms.author="seanmck"/>
 
 # Visual Studio を利用すれば、Service Fabric アプリケーションの記述と管理が簡単になりまする
 
@@ -97,4 +97,4 @@ Service Fabric Explorer を使用して、ローカル クラスターからア�
 [preservedata]: ./media/service-fabric-manage-application-in-visual-studio/preservedata.png
 [preservedate]: ./media/service-fabric-manage-application-in-visual-studio/preservedate.png
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0601_2016-->

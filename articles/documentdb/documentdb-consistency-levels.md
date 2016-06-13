@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/24/2016"
+	ms.date="05/27/2016"
 	ms.author="mimig"/>
 
 # 一貫性レベルを使用した DocumentDB の可用性とパフォーマンスの最大化
@@ -66,9 +66,9 @@ Eventual の一貫性は、読み取りの一貫性という点は最も弱い�
 
 	![[設定] アイコンと [既定の整合性] エントリが強調表示されたスクリーン ショット](./media/documentdb-consistency-levels/database-consistency-level-1.png)
 
-5. **[既定の一貫性]** ブレードで、新しい一貫性レベルを選択し、**[保存]** をクリックします。
+5. **[既定の一貫性]** ブレードで、新しい一貫性レベルを選択し、**[OK]** をクリックします。
 
-	![整合性レベルと [保存] ボタンが強調表示されたスクリーン ショット](./media/documentdb-consistency-levels/database-consistency-level-2.png)
+	![Screen shot highlighting the Consistency level and the OK button](./media/documentdb-consistency-levels/database-consistency-level-2.png)
 
 ## クエリの一貫性レベル
 
@@ -91,4 +91,4 @@ Eventual の一貫性は、読み取りの一貫性という点は最も弱い�
 -	Peter Bailis、Shivaram Venkataraman、Michael J. Franklin、Joseph M. Hellerstein、Ion Stoica 著:Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums (現実的なパーシャル クォーラムのための Probabilistic Bounded Staleness (PBS)) [http://vldb.org/pvldb/vol5/p776\_peterbailis\_vldb2012.pdf](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 -	Werner Vogels 著:Eventual Consistent - Revisited (結果的な一貫性 - 改訂版) [http://allthingsdistributed.com/2008/12/eventually\_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0601_2016-->

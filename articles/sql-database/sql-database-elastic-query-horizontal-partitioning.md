@@ -12,8 +12,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/26/2016"
-    ms.author="torsteng;sidneyh" />
+    ms.date="05/27/2016"
+    ms.author="torsteng" />
 
 # スケールアウトされたクラウド データベース全体をレポートする (プレビュー)
 
@@ -208,4 +208,4 @@ sp\_execute\_remote では、起動パラメーターで指定された外部デ
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

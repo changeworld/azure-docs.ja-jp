@@ -1,9 +1,11 @@
-Storage is constrained by disk space or the number of indexes or documents per service, whichever comes first.
+ストレージは、ディスク容量、インデックスの数、またはサービスごとのドキュメント数のうち、先に達したものによって制約されます。
 
-Resource|Free|Basic (Preview)|S1|S2
+リソース|無料|Basic (プレビュー)|S1|S2
 ---|---|---|---|----
-Disk space|50 MB |2 GB per service|25 GB per partition |100 GB per partition (up to a maximum of 1.2 TB per service)
-Document count|10,000 total|1 million per service|15 million per partition (up to 180 million documents per service)|60 million per partition (up to 720 million documents per service)
-Index count|3|5|50|200
-Indexer count|3|5|50|200
-Indexer Data Source count|3|5|50|200
+ディスク領域|50 MB |サービスあたり 2 GB|パーティションあたり 25 GB |パーティションあたり 100 GB (サービスあたり最大 1.2 TB)
+ドキュメント数|合計 10,000|サービスあたり 100 万|パーティションあたり 1,500 万 (サービスあたり最大 1 億 8,000 万ドキュメント)|パーティションあたり 6,000 万 (サービスあたり最大 7 億 2,000 万ドキュメント)
+インデックスの数|3|5|50|200
+インデックスの数|3|5|50|200
+インデクサー データ ソースの数|3|5|50|200
+
+<!---HONumber=AcomDC_0601_2016-->

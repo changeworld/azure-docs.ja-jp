@@ -4,7 +4,7 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 
 <tags 
     ms.service="active-directory" 
@@ -12,7 +12,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="02/29/2016" 
+    ms.date="05/26/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Citrix GoToMeeting の統合  
@@ -33,6 +33,9 @@
 4.  ユーザーの割り当て
 
 ![構成](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768996.png "構成")
+
+
+
 ##Citrix GoToMeeting のアプリケーション統合の有効化
 
 このセクションでは、Citrix GoToMeeting のアプリケーション統合を有効にする方法を説明します。
@@ -79,34 +82,45 @@
     ![Configure single sign-on](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768998.png "シングル サインオンの構成")
 
 
-3. **[アプリ設定の構成]** ページで、**[次へ]** をクリックします。<br><br>![シングル サインオンの有効化](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC7689981.png "Enable single sign-on")
+3. **[アプリ設定の構成]** ページで、**[次へ]** をクリックします。
 
-4.  **[Citrix GoToMeeting でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックしてから証明書ファイルをコンピューターに保存します。
+	![シングル サインオンの有効化](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC7689981.png "Enable single sign-on")
+
+4.  **[Citrix GoToMeeting でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
     ![Configure single sign-on](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768999.png "シングル サインオンの構成")
 
 5.  別のブラウザーのウィンドウで、Citrix Organization Center ([https://account.citrixonline.com/organization/administration/](https://account.citrixonline.com/organization/administration/)) にログインします。
 
-6. **[ID プロバイダー]** タブをクリックしてから、次の手順を実行します。<br><br>![SAML のセットアップ](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC6892321.png "SAML のセットアップ")
+6. **[ID プロバイダー]** タブをクリックしてから、次の手順を実行します。
 
-     6\.1.**[手動]** を選択します。
+	![SAML のセットアップ](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC6892321.png "SAML のセットアップ")
 
-     6\.2.Azure クラシック ポータルで、**[Citrix GoToMeeting でのシングル サインオンの構成]** ダイアログ ページの **[サインイン ページの URL]** の値をコピーし、**[サインイン ページの URL]** ボックスに貼り付けます。
+	a.**[手動]** を選択します。
 
-     6\.3.Azure クラシック ポータルで、**[Citrix GoToMeeting でのシングル サインオンの構成]** ダイアログ ページの **[サインアウト ページの URL]** の値をコピーし、**[サインアウト ページの URL]** ボックスに貼り付けます。
+    
+	b.Azure クラシック ポータルで、**[Citrix GoToMeeting でのシングル サインオンの構成]** ダイアログ ページの **[サインイン ページの URL]** の値をコピーし、**[サインイン ページの URL]** ボックスに貼り付けます。
 
-     6\.4.Azure クラシック ポータルで、**[Citrix GoToMeeting でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[ID プロバイダー エンティティ ID]** ボックスに貼り付けます。
+    
+	c.Azure クラシック ポータルで、**[Citrix GoToMeeting でのシングル サインオンの構成]** ダイアログ ページの **[サインアウト ページの URL]** の値をコピーし、**[サインアウト ページの URL]** ボックスに貼り付けます。
 
-     6\.5.ダウンロードした証明書をアップロードするには、**[証明書のアップロード]** をクリックします。
+    
+	d.Azure クラシック ポータルで、**[Citrix GoToMeeting でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[ID プロバイダー エンティティ ID]** ボックスに貼り付けます。
 
-     6\.6.**[保存]** をクリックします。
+   
+	e.ダウンロードした証明書をアップロードするには、**[証明書のアップロード]** をクリックします。
+
+    
+	f.**[保存]** をクリックします。
 
 6.  Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
     ![シングル サインオンの構成](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769000.png "シングル サインオンの構成")
 
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![SAML のセットアップ](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC7689982.png "SAML のセットアップ")
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+
+	![SAML のセットアップ](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC7689982.png "SAML のセットアップ")
 
 
 
@@ -126,15 +140,19 @@
 
     ![Configure user provisioning](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769002.png "Configure user provisioning")
 
-     2\.1.**[Citrix GoToMeeting 管理ユーザー名]** ボックスに、管理者のユーザー名を入力します。
+	a.**[Citrix GoToMeeting 管理ユーザー名]** ボックスに、管理者のユーザー名を入力します。
 
-     2\.2.**[Citrix GoToMeeting 管理パスワード]** ボックスに、管理者のパスワードを入力します。
+    
+	b.**[Citrix GoToMeeting 管理パスワード]** ボックスに、管理者のパスワードを入力します。
 
-     2\.3.**[次へ]** をクリックします。
+    
+	c.**[次へ]** をクリックします。
 
 3.  **[確認]** ページで、チェックマークをクリックして構成を保存します。
 
 4.  **[検証]** ボタンをクリックして、構成を検証します。
+
+
 ##ユーザーの割り当て
 
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、ユーザーにアプリケーションへのアクセス権を付与する必要があります。
@@ -165,4 +183,4 @@
 
 アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0601_2016-->

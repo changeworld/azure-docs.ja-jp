@@ -3,9 +3,9 @@
 	description="このトピックでは、データベースの操作をバッチ処理で行うことによって、Azure SQL Database アプリケーションの速度とスケーラビリティが大幅に向上することを実証しています。紹介しているバッチ処理手法は SQL Server データベースにも有効ですが、この記事では Azure に焦点を絞って取り上げています。"
 	services="sql-database"
 	documentationCenter="na"
-	authors="carlrabeler"
+	authors="annemill"
 	manager="jhubbard"
-	editor="monicar" />
+	editor="" />
 
 
 <tags
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
 	ms.date="02/04/2016"
-	ms.author="carlrab" />
+	ms.author="annemill" />
 
 # バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法
 
@@ -604,4 +604,4 @@ PurchaseOrderDetail テーブルの OrderID 列は、PurchaseOrder テーブル�
 
 この記事では、バッチ処理に関連したデータベースの設計とコーディングの手法によってアプリケーションのパフォーマンスとスケーラビリティを高める方法を重点的に取り上げました。しかしこれは、全体的な戦略の中の一要素にすぎません。パフォーマンスとスケーラビリティを高めるその他の方法については、「[データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)」と「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->

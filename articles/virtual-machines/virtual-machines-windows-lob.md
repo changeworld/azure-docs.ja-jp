@@ -19,8 +19,6 @@
 
 # Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 Microsoft Azure で、最初または次の、Web ベースでイントラネット専用の基幹業務アプリケーションを設定し、簡単に構成できる機能と、新機能を追加するためにアプリケーションを迅速に拡張する機能を活用します。
  
 Azure インフラストラクチャ サービスの Virtual Machines と Virtual Network を使用すると、組織のユーザーがアクセス可能な基幹業務アプリケーションをすばやくデプロイし、実行できるようになります。たとえば、次のようにセットアップできます。
@@ -85,4 +83,4 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 
 - 構成を開始する前に、実稼働ワークロードの[概要](virtual-machines-windows-lob-overview.md)を入手します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

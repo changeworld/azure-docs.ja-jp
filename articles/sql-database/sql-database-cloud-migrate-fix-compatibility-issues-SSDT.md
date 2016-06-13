@@ -13,10 +13,21 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="03/22/2016"
+   ms.date="05/31/2016"
    ms.author="carlrab"/>
 
-# Visual Studio 用の SQL Server Data Tools を使用して Azure SQL データベースに SQL Server データベースを移行する
+# Visual Studio 用の SQL Server Data Tools を使用して Azure SQL Database に SQL Server データベースを移行する 
+
+> [AZURE.SELECTOR]
+- [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
+- [SqlPackage](sql-database-cloud-migrate-determine-compatibility-sqlpackage.md)
+- [SSMS](sql-database-cloud-migrate-determine-compatibility-ssms.md)
+- [Upgrade Advisor](http://www.microsoft.com/download/details.aspx?id=48119)
+- [SAMW](sql-database-cloud-migrate-fix-compatibility-issues.md)
+
+この記事では、Azure SQL Database に移行する前に Visual Studio 用の SQL Server Data Tools を使用して SQL Server データベースの互換性問題を検出し修正する方法について説明します。
+
+## Visual Studio 用の SQL Server Data Tools を使用する
 
 Visual Studio 用の SQL Server Data Tools ("SSDT") を使用すると、データベース スキーマを Visual Studio データベース プロジェクトにインポートして分析できます。分析するには、SQL Database V12 にプロジェクトのターゲット プラットフォームを指定し、プロジェクトを構築します。構築に成功した場合は、データベースには互換性があります。構築に失敗した場合、SSDT (またはこのトピックで説明したその他のツールのいずれか) を使用してエラーを解決できます。プロジェクトが正常に構築されたら、これをソース データベースのコピーとして発行し、SSDT のデータ比較機能を使用して、ソース データベースから Azure SQL V12 互換のデータベースにデータをコピーできます。その後、更新されたこのデータベースを移行できます。このオプションを使用するには、[最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx) をダウンロードします。
 
@@ -73,6 +84,17 @@ Visual Studio 用の SQL Server Data Tools ("SSDT") を使用すると、デー�
     
 	![alt text](./media/sql-database-migrate-visualstudio-ssdt/14MigrateSSDT.png)
     
-6.	デプロイ方法を選択します。「[互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md)」を参照してください。
+6.	デプロイ方法を選択します。[互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+## 次のステップ
+
+- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+
+## 詳細情報
+
+- [SQL Database V12](sql-database-v12-whats-new.md)
+- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
+- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
+
+<!---HONumber=AcomDC_0601_2016-->

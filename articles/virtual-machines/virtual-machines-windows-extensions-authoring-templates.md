@@ -19,8 +19,6 @@
 
 # Windows VM 拡張機能を使用した Azure Resource Manager テンプレートの作成
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 [AZURE.INCLUDE [virtual-machines-common-extensions-authoring-templates](../../includes/virtual-machines-common-extensions-authoring-templates.md)]
 
 Azure PowerShell では、次の Azure PowerShell コマンドレットを実行します。
@@ -42,7 +40,7 @@ Azure PowerShell では、次の Azure PowerShell コマンドレットを実行
 
 拡張機能のテンプレートを作成する次の手順では、構成パラメーターを指定するための形式を特定します。それぞれの拡張機能では、独自のパラメーター セットがサポートされています。
 
-Windows 拡張機能のサンプル構成については、[Windows 拡張機能のサンプル](virtual-machines-windows-extensions-configuration-samples.md)を参照してください。
+Windows 拡張機能のサンプル構成については、[Windows 拡張機能のサンプル](virtual-machines-windows-extensions-configuration-samples.md)に関するページをご覧ください。
 
 
 VM の拡張機能を使用して完成したテンプレートを取得するには、以下を参照してください。
@@ -52,4 +50,4 @@ VM の拡張機能を使用して完成したテンプレートを取得する�
 
 テンプレートを作成したら、Azure PowerShell を使用してそのテンプレートをデプロイできます。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

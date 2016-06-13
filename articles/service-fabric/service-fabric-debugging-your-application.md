@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="03/31/2016"
-   ms.author="jesseb; mikhegn; vturecek"/>
+   ms.author="vturecek;mikhegn"/>
 
 # Visual Studio による Service Fabric アプリケーションのデバッグ
 
@@ -70,7 +70,7 @@ Service Fabric アプリケーションを Azure の Service Fabric クラスタ
 1. **Cloud Explorer** で目的のクラスターを右クリックし、**[デバッグの有効化]** を選択します。
 
     ![リモート デバッグの有効化][enableremotedebugging]
-    
+
     これにより、必要なネットワーク構成のほか、クラスター ノードでリモート デバッグ拡張機能を有効にするプロセスが開始されます。
 
 2. **Cloud Explorer** でクラスター ノードを右クリックし、**[デバッガーのアタッチ]** を選択します。
@@ -80,20 +80,20 @@ Service Fabric アプリケーションを Azure の Service Fabric クラスタ
 3. **[プロセスにアタッチ]** ダイアログ ボックスで、デバッグするプロセスを選択し、**[アタッチ]** をクリックします。
 
     ![プロセスの選択][chooseprocess]
-    
+
     アタッチするプロセスの名前は、サービス プロジェクト アセンブリ名と同じ名前です。
 
     デバッガーはプロセスを実行するすべてのノードにアタッチされます。
     - ステートレス サービスをデバッグする場合は、全ノード上のサービスのすべてのインスタンスがデバッグ セッションに含まれます。
     - ステートフル サービスをデバッグする場合は、パーティションのプライマリ レプリカのみがアクティブになり、デバッガーによってキャッチされます。デバッグ セッション中にプライマリ レプリカが移動した場合でも、そのレプリカの処理は引き続きデバッグ セッションに含まれます。
     - 関連するパーティションまたは特定のサービスのインスタンスのみをキャッチするために、特定のパーティションまたはインスタンスのみを中断する条件付きブレークポイントを設定できます。
-        
+
     ![条件付きブレークポイント][conditionalbreakpoint]
-    
+
     > [AZURE.NOTE] 現在、サービスの実行可能ファイル名が同名の複数のインスタンスを持つ Service Fabric クラスターのデバッグはサポートされていません。
-    
+
 4. アプリケーションのデバッグが完了したら、**Cloud Explorer** でクラスターを右クリックし、**[デバッグの無効化]** を選択して、リモート デバッグ拡張機能を無効にできます。
-    
+
     ![リモート デバッグの無効化][disableremotedebugging]
 
 ## リモート クラスター ノードからのストリーミング トレース
@@ -108,17 +108,17 @@ Service Fabric アプリケーションを Azure の Service Fabric クラスタ
 1. **Cloud Explorer** で目的のクラスターを右クリックし、**[ストリーミング トレースを有効にする]** を選択します。
 
     ![リモートのストリーミング トレースの有効化][enablestreamingtraces]
-    
+
     これにより、必要なネットワーク構成のほか、クラスター ノードでストリーミング トレース拡張機能を有効にするプロセスが開始されます。
 
 2. **Cloud Explorer** で **[ノード]** を展開し、ストリーミング トレースを実行するノードを右クリックし、**[ストリーミング トレースを表示する]** を選択します。
 
     ![リモートのストリーミング トレースの表示][viewremotestreamingtraces]
-    
+
     トレースを表示するノードの数だけ手順 2. を繰り返します。各ノード ストリームは専用のウィンドウに表示されます。
-    
+
     これで、サービスと Service Fabric によって出力されるトレースを表示できるようになりました。特定のアプリケーションのみを表示するようにイベントをフィルター処理する場合は、フィルターにアプリケーション名を入力します。
-    
+
     ![ストリーミング トレースの表示][viewingstreamingtraces]
 
 4. クラスターからのストリーミング トレースが完了したら、リモートのストリーミング トレースを無効化できます。このためには、**Cloud Explorer** でクラスターを右クリックし、**[ストリーミング トレースを無効にする]** を選択します。
@@ -146,4 +146,4 @@ Service Fabric アプリケーションを Azure の Service Fabric クラスタ
 [viewremotestreamingtraces]: ./media/service-fabric-debugging-your-application/viewremotestreamingtraces.png
 [disablestreamingtraces]: ./media/service-fabric-debugging-your-application/disablestreamingtraces.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0601_2016-->

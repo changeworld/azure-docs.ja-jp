@@ -11,7 +11,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="03/02/2016"
+	ms.date="05/31/2016"
 	ms.author="ashmaka"/>
 
 # Azure Search とは
@@ -83,4 +83,4 @@ Azure Search インデックスを入力したら、REST API または .NET SDK 
 
 Azure アカウントがない場合は、サインアップ不要で 60 分の無料のセッションをお試しいただけます。「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/p/?LinkId=618214)」に移動し、[Web App] を選択します。 次に、[ASP.NET + Azure Search] テンプレートを選択して開始します。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0601_2016-->

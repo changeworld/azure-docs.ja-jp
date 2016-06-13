@@ -26,6 +26,9 @@ NuGet を使って両方のパッケージを取得できます。次の手順�
 3. "ConfigurationManager" をオンラインで検索し、**[インストール]** をクリックして Azure Configuration Manager をインストールします。
 
 >[AZURE.NOTE] ストレージ クライアント ライブラリ パッケージは、[Azure SDK for .NET](https://azure.microsoft.com/downloads/) にも含まれていますが、常に最新バージョンのクライアント ライブラリを使用できるように、NuGet からストレージ クライアント ライブラリもインストールすることをお勧めします。
+>
+>.NET 用ストレージ クライアント ライブラリの ODataLib 依存は、WCF Data Services ではなく、NuGet から入手できる ODataLib (バージョン 5.0.2 以上) パッケージによって解決されます。ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。ストレージ クライアント ライブラリで使用される ODataLib パッケージは、[OData](http://nuget.org/packages/Microsoft.Data.OData/5.0.2)、[Edm](http://nuget.org/packages/Microsoft.Data.Edm/5.0.2)、[Spatial](http://nuget.org/packages/System.Spatial/5.0.2) です。これらのライブラリが Azure テーブル ストレージ クラスで使用されるときは、ストレージ クライアント ライブラリを使用したプログラミングの必須の依存関係です。
+
 
 ### ターゲット環境の決定
 
@@ -65,4 +68,4 @@ Azure .NET 用ストレージ クライアント ライブラリでは、スト�
 
 	<add key="StorageConnectionString" value="UseDevelopmentStorage=true;" />
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

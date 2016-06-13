@@ -3,7 +3,7 @@
     description="PowerShell を使用してエラスティック データベース プールを管理する方法について説明します。"  
 	services="sql-database" 
     documentationCenter="" 
-    authors="stevestein" 
+    authors="srinia" 
     manager="jhubbard" 
     editor=""/>
 
@@ -13,8 +13,8 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="05/10/2016"
-    ms.author="sidneyh"/>
+    ms.date="05/27/2016"
+    ms.author="srinia"/>
 
 # PowerShell でのエラスティック データベース プールの監視と管理 
 
@@ -28,7 +28,7 @@ PowerShell コマンドレットを使用して、[エラスティック デー�
 
 一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」をご覧ください。
 
-プールに関する値については、「[eDTU and storage limits (eDTU とストレージの制限)](sql-database-elastic-pool#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
+プールに関する値については、[eDTU とストレージの制限](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)に関するトピックをご覧ください。
 
 ## 前提条件
 
@@ -44,7 +44,7 @@ PowerShell コマンドレットを使用して、[エラスティック デー�
 
 ## プールのパフォーマンス設定を変更する
 
-パフォーマンスが低下したときは、成長に合わせてプールの設定を変更できます。[Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511.aspx) コマンドレットを使用します。-Dtu パラメーターにプールあたりの eDTU 数を設定します。使用可能な値については、「[eDTU and storage limits (eDTU とストレージの制限)](sql-database-elastic-pool#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
+パフォーマンスが低下したときは、成長に合わせてプールの設定を変更できます。[Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511.aspx) コマンドレットを使用します。-Dtu パラメーターにプールあたりの eDTU 数を設定します。使用可能な値については、[eDTU とストレージの制限](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)に関するセクションをご覧ください。
 
     Set-AzureRmSqlElasticPool –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” –Dtu 1200 –DatabaseDtuMax 100 –DatabaseDtuMin 50 
 
@@ -103,9 +103,70 @@ PowerShell コマンドレットを使用して、[エラスティック デー�
 
     $metrics = (Get-AzureRmMetric -ResourceId /subscriptions/<subscriptionId>/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/databases/myDB -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015") 
 
+## プール リソースへのアラートの追加
+
+リソースにアラート ルールを追加して、設定した使用率のしきい値にリソースが達したときに、[URL エンドポイント](https://msdn.microsoft.com/library/mt718036.aspx)への電子メール通知やアラート文字列の送信を行うことができます。Add-AzureRmMetricAlertRule コマンドレットを使用します。
+
+この例では、プールの eDTU の消費量が一定のしきい値を上回った場合に通知を受け取るようにアラートを追加します。
+
+    # Set up your resource ID configurations
+    $subscriptionId = '<Azure subscription id>'      # Azure subscription ID
+    $location =  '<location'                         # Azure region
+    $resourceGroupName = '<resource group name>'     # Resource Group
+    $serverName = '<server name>'                    # server name
+    $poolName = '<elastic pool name>'                # pool name 
+
+    #$Target Resource ID
+    $ResourceID = '/subscriptions/' + $subscriptionId + '/resourceGroups/' +$resourceGroupName + '/providers/Microsoft.Sql/servers/' + $serverName + '/elasticpools/' + $poolName
+
+    # Create an email action
+    $actionEmail = New-AzureRmAlertRuleEmail -SendToServiceOwners -CustomEmail JohnDoe@contoso.com
+
+    # create a unique rule name
+    $alertName = $poolName + "- DTU consumption rule"
+
+    # Create an alert rule for DTU_consumption_percent
+    Add-AzureRMMetricAlertRule -Name $alertName -Location $location -ResourceGroup $resourceGroupName -TargetResourceId $ResourceID -MetricName "DTU_consumption_percent"  -Operator GreaterThan -Threshold 80 -TimeAggregationOperator Average -WindowSize 00:05:00 -Actions $actionEmail 
+
+## プール内のすべてのデータベースへのアラートの追加
+
+エラスティック プール内のすべてのデータベースにアラート ルールを追加して、リソースがアラートで設定された使用率のしきい値に達したときに電子メール通知やアラート文字列を [URL エンドポイント](https://msdn.microsoft.com/library/mt718036.aspx)に送信することができます。
+
+この例では、データベースの DTU 消費が特定のしきい値を上回った場合に通知を受け取るように、プール内の各データベースにアラートを追加します。
+
+    # Set up your resource ID configurations
+    $subscriptionId = '<Azure subscription id>'      # Azure subscription ID
+    $location = '<location'                          # Azure region
+    $resourceGroupName = '<resource group name>'     # Resource Group
+    $serverName = '<server name>'                    # server name
+    $poolName = '<elastic pool name>'                # pool name 
+
+    # Get the list of databases in this pool.
+    $dbList = Get-AzureRmSqlElasticPoolDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -ElasticPoolName $poolName
+
+    # Create an email action
+    $actionEmail = New-AzureRmAlertRuleEmail -SendToServiceOwners -CustomEmail JohnDoe@contoso.com
+
+    # Get resource usage metrics for a database in an elastic database for the specified time interval.
+    foreach ($db in $dbList)
+    {
+    $dbResourceId = '/subscriptions/' + $subscriptionId + '/resourceGroups/' + $resourceGroupName + '/providers/Microsoft.Sql/servers/' + $serverName + '/databases/' + $db.DatabaseName
+
+    # create a unique rule name
+    $alertName = $db.DatabaseName + "- DTU consumption rule"
+
+    # Create an alert rule for DTU_consumption_percent
+    Add-AzureRMMetricAlertRule -Name $alertName  -Location $location -ResourceGroup $resourceGroupName -TargetResourceId $dbResourceId -MetricName "dtu_consumption_percent"  -Operator GreaterThan -Threshold 80 -TimeAggregationOperator Average -WindowSize 00:05:00 -Actions $actionEmail
+
+    # drop the alert rule
+    #Remove-AzureRmAlertRule -ResourceGroup $resourceGroupName -Name $alertName
+    } 
+
+
+
 ## サブスクリプション内の複数のプールのリソース使用状況データを収集して監視する
 
-サブスクリプションに多数のデータベースがある場合、各エラスティック プールを個別に監視するのは面倒です。代わりに、SQL Database の PowerShell コマンドレットと T-SQL クエリを組み合わせて、複数のプールおよびそのデータベースからリソース使用状況データを収集し、リソースの使用状況を監視および分析できます。そのような PowerShell スクリプトの[実装のサンプル](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools)が、内容と方法についてのドキュメントと共に GitHub の SQL Server サンプル リポジトリにあります。
+サブスクリプションに多数のデータベースがある場合、各エラスティック プールを個別に監視するのは面倒です。代わりに、SQL Database の PowerShell コマンドレットと T-SQL クエリを組み合わせて、複数のプールおよびそのデータベースからリソース使用状況データを収集し、リソースの使用状況を監視および分析できます。そのような一連の PowerShell スクリプトの[実装のサンプル](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools)が、内容と方法についてのドキュメントと共に GitHub の SQL Server サンプル リポジトリにあります。
 
 このサンプル実装を使用するには次のようにします。
 
@@ -209,6 +270,6 @@ Stop- コマンドレットは、一時停止ではなく取り消しを意味�
 ## 次のステップ
 
 - [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブを使用すると、プール内にある任意の数のデータベースに対して T-SQL スクリプトを実行できます。
-- エラスティック データベース ツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
+- Elastic Database のツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

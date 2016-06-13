@@ -26,7 +26,7 @@
 * Azure HDInsight Spark クラスター リソースにアクセスする
 * Scala Spark アプリケーションをローカルで開発して実行する
 
-また、[こちら](https://mix.office.com/watch/1nqkqjt5xonza)のビデオに従って、開始することもできます。
+必要に応じて[こちら](https://mix.office.com/watch/1nqkqjt5xonza)のビデオもご覧ください。
 
 >[AZURE.IMPORTANT] このツールを使用すると、Linux 上で HDInsight Spark クラスター専用のアプリケーションを作成し、送信することができます。
 
@@ -139,7 +139,7 @@
 
 		* **[Submit]** をクリックします。
 
-	3. ウィンドウの下部にある **[Spark Submission]** (Spark 送信) タブで、進行状況の表示が開始されます。\[Spark Submission] (Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
+	3. ウィンドウの下部にある **[Spark Submission]** (Spark 送信) タブで、進行状況の表示が開始されます。[Spark Submission] (Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
 
         ![Spark Application Result](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 
@@ -281,4 +281,4 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -53,11 +53,10 @@
 7. パブリック IP アドレスを要求します。IP アドレスは、ゲートウェイを作成する前に要求されます。使用する IP アドレスは指定できません。IP アドレスは動的に割り当てられます。この IP アドレスは、次の構成セクションで使用します。AllocationMethod は動的である必要があります。
 
 		$pip = New-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
-		$ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 
 8. ゲートウェイの構成を作成します。ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。この手順では、ケーブルの作成時に使用される構成を指定します。この手順では、ゲートウェイ オブジェクトを実際に作成しません。次のサンプルを使用して、ゲートウェイの構成を作成します。
 
-		$gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -SubnetId $subnet.Id -PublicIpAddressId $pip.Id 
+		$ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 
 9. ゲートウェイを作成します。この手順では、**-GatewayType** が特に重要です。値 **ExpressRoute** を使用する必要があります。これらのコマンドレットを実行してからゲートウェイが作成されるまでに 20 分以上かかる可能性があります。
 
@@ -82,4 +81,4 @@
 
 	Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->

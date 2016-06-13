@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="02/29/2016" 
+    ms.date="05/25/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と EmpCenter の統合
@@ -80,8 +80,8 @@
 
     ![Configure App Settings](./media/active-directory-saas-empcenter-tutorial/IC802921.png "Configure App Settings")
 
-    1.  **[サインオン URL]** ボックスに、ユーザーが EmpCenter アプリケーションへのサインオンに使用する URL (例: *https://partner-authenticati.empcenter.com/workforce/SSO.do*)) を入力します。
-    2.  **[次へ]** をクリックします。
+    1.  **[サインオン URL]** ボックスに、ユーザーが EmpCenter アプリケーションへのサインオンに使用する URL (例: **https://partner-authenticati.empcenter.com/workforce/SSO.do*)) を入力します。
+2.  **[次へ]** をクリックします。
 
 4.  **[EmpCenter でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターに保存します。
 
@@ -96,8 +96,7 @@
     ![Configure Single Sign-On](./media/active-directory-saas-empcenter-tutorial/IC802923.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが EmpCenter にログインできるようにするには、そのユーザーを EmpCenter にプロビジョニングする必要があります。  
-EmpCenter の場合、ユーザー アカウントは、EmpCenter サポート チームが作成する必要があります。
+Azure AD ユーザーが EmpCenter にログインできるようにするには、そのユーザーを EmpCenter にプロビジョニングする必要があります。EmpCenter の場合、ユーザー アカウントは、EmpCenter サポート チームが作成する必要があります。
 
 >[AZURE.NOTE] EmpCenter から提供されている他の EmpCenter ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
@@ -115,8 +114,8 @@ EmpCenter の場合、ユーザー アカウントは、EmpCenter サポート �
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-empcenter-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-empcenter-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0601_2016-->

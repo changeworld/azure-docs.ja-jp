@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/16/2016"
+   ms.date="05/26/2016"
    ms.author="dkershaw;bryanla"/>
 
 # Azure Active Directory のアプリケーション マニフェストについて
@@ -33,12 +33,13 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 
 したがって、アプリケーション マニフェストの形式とプロパティを理解するには、Graph API の[アプリケーション エンティティ][APPLICATION-ENTITY]に関するドキュメントを参照する必要があります。アプリケーション マニフェストのアップロードによって実行できる更新操作の例を次に示します。
 
-- Web API によって公開されているアクセス許可のスコープ (oauth2Permissions) を宣言する。oauth2Permissions 委任アクセス許可スコープを使用してユーザーの偽装を実装する方法については、「[Azure Active Directory とアプリケーションの統合][INTEGRATING-APPLICATIONS-AAD]」の「他のアプリケーションへの Web API の公開」を参照してください。既に説明したように、すべてのアプリケーション エンティティ プロパティについては、[OAuth2Permission][APPLICATION-ENTITY-OAUTH2-PERMISSION] 型のコレクションである oauth2Permissions プロパティを含む Graph API の[エンティティおよび複合型のリファレンス][APPLICATION-ENTITY]記事にドキュメント化されています。
-- アプリによって公開されるアプリケーション ロール (appRoles) を宣言する。アプリケーション エンティティの appRoles プロパティは、[AppRole][APPLICATION-ENTITY-APP-ROLE] 型のコレクションです。実装例については、[Azure AD を使用したクラウド アプリケーションでのロール ベースのアクセス制御][RBAC-CLOUD-APPS-AZUREAD]に関する記事を参照してください。
-- 既知のクライアント アプリケーション (knownClientApplications) を宣言する。それらによって、指定されたクライアント アプリケーションの同意をリソースや Web API に論理的に関連付けることができます。
-- サインインしているユーザーのグループ メンバーシップ要求 (groupMembershipClaims) を発行するように Azure AD にリクエストする。注: さらに、ユーザーのディレクトリ ロール メンバーシップに関する要求を発行するように構成することもできます。実装例については、[AD グループを使用したクラウド アプリケーションでの承認][AAD-GROUPS-FOR-AUTHORIZATION]に関する記事を参照してください。
-- アプリケーションが OAuth 2.0 の暗黙的な許可フロー (oauth2AllowImplicitFlow) をサポートできるようにする。この種類の許可フローは、埋め込み JavaScript Web ページまたは Single Page Applications (SPA) で使用されます。
-- X509 証明書の秘密キー (keyCredentials) としての使用を可能にする。実装例については、「[Office 365 でのサービスとデーモンのアプリのビルド][O365-SERVICE-DAEMON-APPS]」と「[Azure リソース マネージャー API の権限付与に関する開発者ガイド][DEV-GUIDE-TO-AUTH-WITH-ARM]」を参照してください。
+- Web API によって公開されている**アクセス許可のスコープ (oauth2Permissions) を宣言する**。oauth2Permissions 委任アクセス許可スコープを使用してユーザーの偽装を実装する方法については、「[Azure Active Directory とアプリケーションの統合][INTEGRATING-APPLICATIONS-AAD]」の「他のアプリケーションへの Web API の公開」を参照してください。既に説明したように、すべてのアプリケーション エンティティ プロパティについては、[OAuth2Permission][APPLICATION-ENTITY-OAUTH2-PERMISSION] 型のコレクションである oauth2Permissions プロパティを含む Graph API の[エンティティおよび複合型のリファレンス][APPLICATION-ENTITY]記事にドキュメント化されています。
+- **アプリによって公開されるアプリケーション ロール (appRoles) を宣言する**。アプリケーション エンティティの appRoles プロパティは、[AppRole][APPLICATION-ENTITY-APP-ROLE] 型のコレクションです。実装例については、[Azure AD を使用したクラウド アプリケーションでのロール ベースのアクセス制御][RBAC-CLOUD-APPS-AZUREAD]に関する記事を参照してください。
+- **既知のクライアント アプリケーション (knownClientApplications) を宣言する**。それらによって、指定されたクライアント アプリケーションの同意をリソースや Web API に論理的に関連付けることができます。
+- サインインしているユーザーの**グループ メンバーシップ要求 (groupMembershipClaims) を発行するように Azure AD にリクエストする**。注: さらに、ユーザーのディレクトリ ロール メンバーシップに関する要求を発行するように構成することもできます。実装例については、[AD グループを使用したクラウド アプリケーションでの承認][AAD-GROUPS-FOR-AUTHORIZATION]に関する記事を参照してください。
+- **アプリケーションが OAuth 2.0 の暗黙的な許可フロー (oauth2AllowImplicitFlow) をサポートできるようにする**。この種類の許可フローは、埋め込み JavaScript Web ページまたは Single Page Applications (SPA) で使用されます。
+- **X509 証明書の秘密キー (keyCredentials) としての使用を可能にする**。実装例については、「[Office 365 でのサービスとデーモンのアプリのビルド][O365-SERVICE-DAEMON-APPS]」と「[Azure リソース マネージャー API の権限付与に関する開発者ガイド][DEV-GUIDE-TO-AUTH-WITH-ARM]」を参照してください。
+- アプリケーションの**新しいアプリ ID URI (identifierURIs) を追加する**。アプリ ID URI は、Azure AD テナント内で (または、検証済みカスタム ドメインを使用して修飾される際のマルチ テナント シナリオの場合は、複数の Azure AD テナントで) アプリケーションを一意に識別するために使用します。リソース アプリケーションに対するアクセス許可を要求するとき、またはリソース アプリケーションのアクセス トークンを取得するときに使用します。この要素を更新したときに、対応するサービス プリンシパルの servicePrincipalNames コレクションに同じ更新が加えられます。このコレクションはアプリケーションのホーム テナントに格納されています。
 
 アプリケーション マニフェストは、アプリケーションの登録の状態を追跡するための優れた方法でもあります。アプリケーション マニフェストは JSON 形式で使用できるため、アプリケーションのソース コードと共にファイル表現をソース管理にチェックインできます。
 
@@ -51,11 +52,11 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 
     ![Select the Azure AD tenant][SELECT-AZURE-AD-TENANT]
 
-3. ディレクトリ ページが表示されたら、ページの上部にある [アプリケーション] \(1) をクリックして、テナントに登録されているアプリケーションの一覧を表示します。次に、更新するアプリケーションを一覧内で見つけてクリックします (2)。
+3. ディレクトリ ページが表示されたら、ページの上部にある [アプリケーション] (1) をクリックして、テナントに登録されているアプリケーションの一覧を表示します。次に、更新するアプリケーションを一覧内で見つけてクリックします (2)。
 
     ![Select the Azure AD tenant][SELECT-AZURE-AD-APP]
 
-4. これで、アプリケーションのメイン ページが選択されました。ここで、ページの下部にある [マニフェストの管理] 機能 (1) に注目してください。このリンクをクリックすると、JSON マニフェスト ファイルをアップロードまたはダウンロードするように求められます。[マニフェストのダウンロード] \(2) をクリックするとダウンロードの確認ページが表示され、[マニフェストのダウンロード] \(3) をクリックして確認するよう求められます。その後、ファイルを開くかローカルに保存するよう求められます (4)。
+4. これで、アプリケーションのメイン ページが選択されました。ここで、ページの下部にある [マニフェストの管理] 機能 (1) に注目してください。このリンクをクリックすると、JSON マニフェスト ファイルをアップロードまたはダウンロードするように求められます。[マニフェストのダウンロード] (2) をクリックするとダウンロードの確認ページが表示され、[マニフェストのダウンロード] (3) をクリックして確認するよう求められます。その後、ファイルを開くかローカルに保存するよう求められます (4)。
 
     ![Manage the manifest, download option][MANAGE-MANIFEST-DOWNLOAD]
 
@@ -92,7 +93,7 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 
     エントリは一意である必要があるため、`"id"` プロパティ用に新しいグローバル一意識別子 (GUID) を生成する必要があります。この場合、`"type": "User"` を指定したので、このアクセス許可は、リソース/API アプリケーションが登録されている Azure AD テナントによって認証された任意のアカウントで同意することができ、アカウントの代わりにアクセスする許可がクライアント アプリケーションに付与されます。同意するときと Azure クラシック ポータルでの表示には、説明および表示名の文字列が使用されます。
 
-6. マニフェストの更新が終わったら、Azure クラシック ポータルの Azure AD アプリケーション ページに戻ります。もう一度 [マニフェストの管理] \(1) をクリックし、次に [マニフェストのアップロード] \(2) を選択します。ダウンロードの場合と同様に、2 つ目のダイアログ ボックスが表示され、JSON ファイルの場所を指定するよう求められます。[ファイルの参照] \(3) をクリックします。次に、[アップロードするファイルの選択] ダイアログ ボックスで JSON ファイル (4) を選択し、[開く] を押します。ダイアログ ボックスが閉じたら、"OK" のチェック マーク (5) を選択します。これで、マニフェストがアップロードされます。
+6. マニフェストの更新が終わったら、Azure クラシック ポータルの Azure AD アプリケーション ページに戻ります。もう一度 [マニフェストの管理] (1) をクリックし、次に [マニフェストのアップロード] (2) を選択します。ダウンロードの場合と同様に、2 つ目のダイアログ ボックスが表示され、JSON ファイルの場所を指定するよう求められます。[ファイルの参照] (3) をクリックします。次に、[アップロードするファイルの選択] ダイアログ ボックスで JSON ファイル (4) を選択し、[開く] を押します。ダイアログ ボックスが閉じたら、"OK" のチェック マーク (5) を選択します。これで、マニフェストがアップロードされます。
 
     ![Manage the manifest, upload option][MANAGE-MANIFEST-UPLOAD]
 
@@ -145,4 +146,4 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -4,7 +4,7 @@
    services="sql-database"
    documentationCenter=""
    authors="carlrabeler"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,14 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="03/14/2016"
+   ms.date="05/31/2016"
    ms.author="carlrab"/>
 
 # SqlPackage.exe を使用して SQL Database の互換性を判定する
 
 > [AZURE.SELECTOR]
+- [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
 - [SqlPackage](sql-database-cloud-migrate-determine-compatibility-sqlpackage.md)
-- [SQL Server Management Studio](sql-database-cloud-migrate-determine-compatibility-ssms.md)
+- [SSMS](sql-database-cloud-migrate-determine-compatibility-ssms.md)
+- [Upgrade Advisor](http://www.microsoft.com/download/details.aspx?id=48119)
+- [SAMW](sql-database-cloud-migrate-fix-compatibility-issues.md)
 
 この記事では、[SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) コマンド プロンプト ユーティリティを使用して、SQL Server データベースを SQL Database に移行するための互換性のあるかどうかを判定します。
 
@@ -47,8 +50,16 @@
 
 	![[タスク] メニューの [データ層アプリケーションのエクスポート]](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage02.png)
 
-## 次のステップ: 互換性の問題の修正
+## 次のステップ
 
-必要に応じて、[データベースの互換性の問題](sql-database-cloud-migrate-fix-compatibility-issues.md)を修正します。
+- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx) [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+- [データベース移行に関する互換性の問題の修正](sql-database-cloud-migrate.md#fix-database-migration-compatibility-issues)
+- [互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)
 
-<!---HONumber=AcomDC_0316_2016-->
+## 詳細情報
+
+- [SQL Database V12](sql-database-v12-whats-new.md)
+- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
+- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
+
+<!---HONumber=AcomDC_0601_2016-->

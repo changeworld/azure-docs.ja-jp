@@ -25,7 +25,7 @@ Skydesk Email と Azure AD の統合には、次の利点があります。
 
 - Skydesk Email にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に Skydesk Email にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Active クラシック ポータル) でアカウントを管理できます。
+- 1 つの中央サイト (Azure Active Directory クラシック ポータル) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
@@ -325,4 +325,4 @@ a.左側のパネルで **[ユーザー アクセス]** をクリックし、自
 [204]: ./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

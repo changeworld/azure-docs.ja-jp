@@ -5,7 +5,7 @@
    documentationCenter=""
    authors="torsteng"
    manager="jhubbard"
-   editor="sidneyh"/>
+   editor="torsteng"/>
 
 <tags
    ms.service="sql-database"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="sql-database"
-   ms.date="02/23/2016"
+   ms.date="05/27/2016"
    ms.author="torsteng"/>
 
 # クラウド データベースにまたがる分散トランザクション
@@ -158,4 +158,4 @@ Azure アプリケーションでエラスティック データベースの機�
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

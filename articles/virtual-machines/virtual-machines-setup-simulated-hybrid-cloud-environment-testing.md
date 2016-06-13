@@ -19,8 +19,6 @@
 
 # テスト用のシミュレートされたハイブリッド クラウド環境の設定
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 この記事では、2 つの Azure 仮想ネットワークを使用して、Microsoft Azure でシミュレートされたテスト用のハイブリッド クラウド環境を作成する手順について説明します。インターネットに直接接続できず、利用可能なパブリック IP アドレスがない場合は、「[テスト用のハイブリッド クラウド環境の設定](virtual-machines-windows-ps-hybrid-cloud-test-env-base.md)」の代わりに、この構成を使用してください。完成すると次のような構成になります。
 
 ![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/virtual-machines-setup-simulated-hybrid-cloud-environment-testing-ph4.png)
@@ -131,7 +129,7 @@ Azure サブスクリプションを設定します。基本構成をビルド�
  
 ##フェーズ 3: VNet 間接続を作成する
 
-最初に、ランダムな、暗号強度の高い 32 文字の事前共有キーをネットワーク管理者またはセキュリティ管理者から取得します。または、「[Create a random string for an IPsec preshared key (IPsec 事前共有キー用にランダムな文字列を作成する)](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx)」に記載された情報を使用して事前共有キーを取得します。
+最初に、ランダムな、暗号強度の高い 32 文字の事前共有キーをネットワーク管理者またはセキュリティ管理者から取得します。または、「[Create a random string for an IPsec preshared key (IPsec 事前共有キー用にランダムな文字列を作成する)](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx)」に記載されている情報を使用して事前共有キーを取得します。
 
 次に、以下のコマンドを使用して、サイト間 VPN 接続を作成します (完了するまでに時間がかかることがあります)。
 
@@ -215,4 +213,4 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 - TestVNET サブネットに[新しい仮想マシンを追加](virtual-machines-windows-create-powershell.md)します (Microsoft SQL Server を実行している仮想マシンなど)。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

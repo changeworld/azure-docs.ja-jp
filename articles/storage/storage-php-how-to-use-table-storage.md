@@ -3,8 +3,8 @@
 	description="PHP から Table サービスを使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。"
 	services="storage"
 	documentationCenter="php"
-	authors="rmcmurray"
-	manager="wpickett"
+	authors="allclark"
+	manager="douge"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="02/17/2016"
-	ms.author="robmcm"/>
+	ms.date="06/01/2016"
+	ms.author="allclark;yaqiyang"/>
 
 
 # PHP から Table ストレージを使用する方法
@@ -48,9 +48,9 @@ Azure Table サービス API を使用するには、次の要件があります
 
 次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
 
-> [AZURE.NOTE] この例 (とこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、<code>WindowsAzure.php</code> オートローダー ファイルを参照する必要があります。
+> [AZURE.NOTE] この例 (とこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でインストールした場合は、<code>WindowsAzure.php</code> オートローダー ファイルを参照する必要があります。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
 
 
@@ -78,7 +78,7 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 ここで概説している例では、接続文字列を直接渡します。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
 
@@ -92,7 +92,7 @@ Azure Table サービス クライアントをインスタンス化するには�
 	require_once 'vendor\autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
@@ -115,12 +115,12 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 エンティティをテーブルに追加するには、新しい **Entity** オブジェクトを作成し、**TableRestProxy->insertEntity** に渡します。エンティティの作成時には `PartitionKey` と `RowKey` を指定する必要があることに注意してください。これらにはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。システムでは `PartitionKey` が使用されて多くのストレージ ノードにテーブルのエンティティが自動的に配布されます。`PartitionKey` が同じエンティティは同じノードで格納されています (同じノードで格納されている複数のエンティティに対する処理は、異なるノードにまたがって格納されているエンティティに対する処理よりもパフォーマンスは高くなります)。 `RowKey` は特定のパーティション内のエンティティの一意の ID です。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
-	use WindowsAzure\Table\Models\Entity;
-	use WindowsAzure\Table\Models\EdmType;
+	use MicrosoftAzure\Storage\Common\ServiceException;
+	use MicrosoftAzure\Storage\Table\Models\Entity;
+	use MicrosoftAzure\Storage\Table\Models\EdmType;
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
@@ -149,12 +149,12 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 **TableRestProxy** クラスには、ほかにもエンティティを挿入する 2 つのメソッド、**insertOrMergeEntity** と **insertOrReplaceEntity** が用意されています。これらのメソッドを使用するには、新しい **Entity** を作成し、いずれかのメソッドにパラメーターとして渡します。各メソッドは、渡されたエンティティが存在しない場合に、そのエンティティを挿入します。エンティティが既に存在する場合、**insertOrMergeEntity** はプロパティ値が既に存在するなら更新し、存在しないなら新しいプロパティを追加します。一方、**insertOrReplaceEntity** は既存のエンティティを完全に置き換えます。次の例は、**insertOrMergeEntity** を使用する方法を示しています。`PartitionKey` が "tasksSeattle" で `RowKey` が "1" であるエンティティがまだ存在しない場合は挿入されます。ただし、既に挿入されている場合 (前の例を参照)、`DueDate` プロパティが更新され、`Status` プロパティが追加されます。`Description` プロパティと `Location` プロパティも更新されますが、値は実際には変更されないままになります。これら後者の 2 つのプロパティは例に示しているように追加されますが、ターゲット エンティティに存在しているため、それらの既存の値は変更されないままになります。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
-	use WindowsAzure\Table\Models\Entity;
-	use WindowsAzure\Table\Models\EdmType;
+	use MicrosoftAzure\Storage\Common\ServiceException;
+	use MicrosoftAzure\Storage\Table\Models\Entity;
+	use MicrosoftAzure\Storage\Table\Models\EdmType;
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
@@ -192,10 +192,10 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 **TableRestProxy->getEntity** メソッドを使用して、その `PartitionKey` と `RowKey` を照会することで、1 つのエンティティを取得できます。次の例では、パーティション キー `tasksSeattle` と行キー `1` を **getEntity** メソッドに渡しています。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
@@ -220,10 +220,10 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 エンティティのクエリはフィルターを使用して作成します (詳細については「[テーブルおよびエンティティのクエリ][filters]」を参照)。パーティション内のすべてのエンティティを取得するには、フィルター "PartitionKey eq *partition\_name*" を使用します。次の例では、フィルターを **queryEntities** メソッドに渡すことで、`tasksSeattle` パーティション内のすべてのエンティティを取得する方法を示しています。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
@@ -252,10 +252,10 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 前の例で示している同じパターンを使用してパーティション内のエンティティのサブセットを取得できます。取得するエンティティのサブセットは、使用するフィルターによって決まります (詳細については、「[テーブルおよびエンティティのクエリ][filters]」を参照)。次の例では、フィルターを使用して、`Location` で指定した場所で、`DueDate` で指定した日付より前のエンティティをすべて取得する方法を示しています。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
@@ -284,11 +284,11 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 クエリを使用してエンティティのプロパティのサブセットを取得できます。*プロジェクション*と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。取得するプロパティを指定するには、プロパティの名前を **Query->addSelectField** メソッドに渡します。このメソッドを複数回呼び出して、ほかのプロパティを追加できます。**TableRestProxy->queryEntities** の実行後、返されるエンティティには選択したプロパティのみ格納されています(テーブル エンティティのサブセットが返されるようにする場合は、前のクエリで示したようにフィルターを使用します)。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
-	use WindowsAzure\Table\Models\QueryEntitiesOptions;
+	use MicrosoftAzure\Storage\Common\ServiceException;
+	use MicrosoftAzure\Storage\Table\Models\QueryEntitiesOptions;
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
@@ -322,12 +322,12 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 既存のエンティティは、エンティティの **Entity->setProperty** および **Entity->addProperty** メソッドを使用した後、**TableRestProxy->updateEntity** を呼び出すことで更新できます。次の例では、エンティティを取得してから、1 つのプロパティの変更、別のプロパティの削除、新しいプロパティの追加を行っています。プロパティの値を **null** に設定して、プロパティを削除できることに注意してください。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
-	use WindowsAzure\Table\Models\Entity;
-	use WindowsAzure\Table\Models\EdmType;
+	use MicrosoftAzure\Storage\Common\ServiceException;
+	use MicrosoftAzure\Storage\Table\Models\Entity;
+	use MicrosoftAzure\Storage\Table\Models\EdmType;
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
@@ -358,10 +358,10 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 エンティティを削除するには、テーブル名、およびエンティティの `PartitionKey` と `RowKey` を **TableRestProxy->deleteEntity** メソッドに渡します。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
@@ -394,13 +394,13 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 次の例では、1 つの要求で **insertEntity** 処理と **deleteEntity** 処理を実行する方法を示しています。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
-	use WindowsAzure\Table\Models\Entity;
-	use WindowsAzure\Table\Models\EdmType;
-	use WindowsAzure\Table\Models\BatchOperations;
+	use MicrosoftAzure\Storage\Common\ServiceException;
+	use MicrosoftAzure\Storage\Table\Models\Entity;
+	use MicrosoftAzure\Storage\Table\Models\EdmType;
+	use MicrosoftAzure\Storage\Table\Models\BatchOperations;
 
  	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
@@ -441,10 +441,10 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 最後に、テーブルを削除するには、テーブル名を **TableRestProxy->deleteTable** メソッドに渡します。
 
-	require_once 'vendor\autoload.php';
+	require_once 'vendor/autoload.php';
 
 	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+	use MicrosoftAzure\Storage\Common\ServiceException;
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
@@ -478,4 +478,4 @@ Azure Table サービス クライアントをインスタンス化するには�
 [filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

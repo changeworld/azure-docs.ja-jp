@@ -26,7 +26,7 @@
 
 このチュートリアルでは、**Azure Resource Manager** デプロイメント モデルと Azure PowerShell コマンドレットを使用して単一の Azure 仮想マシンを作成する方法について説明します。このチュートリアルでは、SQL ギャラリー内のイメージから、単一のディスク ドライブを使用して 1 台の仮想マシンを作成します。仮想マシンで使用するストレージ、ネットワーク、コンピューティング リソース用のプロバイダーは新たに作成します。これらのリソースのプロバイダーが既にある場合は、既存のプロバイダーを使用してもかまいません。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル。同じ作業をクラシック デプロイメント モデルで行う方法については、「[Azure PowerShell での SQL Server 仮想マシンの作成 クラシック](virtual-machines-windows-classic-ps-sql-create.md)」を参照してください。
+同じ作業をクラシック デプロイメント モデルで行う方法については、「[Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (クラシック)](virtual-machines-windows-classic-ps-sql-create.md)」を参照してください。
 
 ## 前提条件
 
@@ -189,7 +189,7 @@ Resource Manager デプロイメント モデルで最初に作成するオブ�
 
 ### ローカル管理者の資格情報の名前とパスワードを保持する資格情報オブジェクトを作成する
 
-仮想マシンに使用するオペレーティング システムのプロパティを設定するには、あらかじめローカル管理者アカウントの資格情報をセキュリティで保護された文字列として指定する必要があります。ここでは、[Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) コマンドレットを使用しています。
+仮想マシンに使用するオペレーティング システムのプロパティを設定するには、あらかじめローカル管理者アカウントの資格情報をセキュリティで保護された文字列として指定する必要があります。ここでは、[Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) コマンドレットを使用します。
 
 次のコマンドレットを実行して、Windows 仮想マシンのローカル管理者アカウントの名前とパスワードを Windows PowerShell の資格情報要求ウィンドウに入力します。
 
@@ -310,4 +310,4 @@ Azure ポータルでこのマシンを表示すると、[対応するパブリ�
 ## 次のステップ
 仮想マシンを作成したら、RDP を使用してその仮想マシンに接続し、接続のセットアップを行うことができます。詳細については、「[Azure での SQL Server 仮想マシンへの接続 (リソース マネージャー)](virtual-machines-windows-sql-connect.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0601_2016-->

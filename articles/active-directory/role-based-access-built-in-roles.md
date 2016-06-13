@@ -415,7 +415,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 
 | **アクション** ||
 | ------- | ------ |
-| */read | 機密データを除くあらゆる種類のリソースの読み取り | | Microsoft.Authorization/* | 承認の読み取り |
+| */read | 機密データを除くあらゆる種類のリソースの読み取り | | Microsoft.Authorization/* | 承認の管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### 従来の仮想マシンの共同作業者
@@ -517,4 +517,4 @@ Web サイトを管理できますが、接続されている Web プランは�
 - [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
 - [ロールベースのアクセス制御のトラブルシューティング](role-based-access-control-troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

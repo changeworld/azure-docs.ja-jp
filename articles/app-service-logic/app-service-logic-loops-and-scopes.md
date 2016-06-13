@@ -16,46 +16,46 @@
    ms.date="05/14/2016"
    ms.author="jehollan"/>
    
-  # Logic Apps のループ、スコープ、分割処理
+# Logic Apps のループ、スコープ、分割処理
   
-  >[AZURE.NOTE] 本記事は、Logic Apps の 2016-04-01-preview 以降のスキーマを対象としています。概念は以前のスキーマに似ていますが、スコープはこのスキーマ以降でのみ使用できます。
+>[AZURE.NOTE] 本記事は、Logic Apps の 2016-04-01-preview 以降のスキーマを対象としています。概念は以前のスキーマに似ていますが、スコープはこのスキーマ以降でのみ使用できます。
   
-  ## ForEach ループと配列
+## ForEach ループと配列
   
-  Logic Apps では、一連のデータをループ処理し、各項目に対してアクションを実行できます。これは、`foreach` アクションを使用して実行できます。デザイナーでは、for each ループの追加を指定できます。反復処理を行う配列を選択した後、アクションの追加を開始できます。現在は、foreach ループにつきアクションは 1 つに制限されていますが、この制限は今後数週間のうち解除される予定です。ループ内では、配列のそれぞれの値で行われる処理を指定できるようになります。
-  
-  コード ビューを使用した場合は、次のように for each ループを指定できます。これは、"microsoft.com" を含む各メール アドレスにメールを送信する for each ループの例です。
-  
-  ```
-  {
-      "forEach_email": {
-          "type": "foreach",
-          "foreach": "@triggerBody()['emails']",
-          "expression": "@contains(item(), 'microsoft.com')",
-          "actions": {
-              "send_email": {
-                  "type": "ApiConnection",
-                  "inputs": {
-                    "body": {
-                        "to": "@item()",
-                        "from": "me@contoso.com",
-                        "message": "Hello, thank you for ordering"
+Logic Apps では、一連のデータをループ処理し、各項目に対してアクションを実行できます。これは、`foreach` アクションを使用して実行できます。デザイナーでは、for each ループの追加を指定できます。反復処理を行う配列を選択した後、アクションの追加を開始できます。現在は、foreach ループにつきアクションは 1 つに制限されていますが、この制限は今後数週間のうち解除される予定です。ループ内では、配列のそれぞれの値で行われる処理を指定できるようになります。
+
+コード ビューを使用した場合は、次のように for each ループを指定できます。これは、"microsoft.com" を含む各メール アドレスにメールを送信する for each ループの例です。
+
+```
+{
+    "forEach_email": {
+        "type": "foreach",
+        "foreach": "@triggerBody()['emails']",
+        "expression": "@contains(item(), 'microsoft.com')",
+        "actions": {
+            "send_email": {
+                "type": "ApiConnection",
+                "inputs": {
+                "body": {
+                    "to": "@item()",
+                    "from": "me@contoso.com",
+                    "message": "Hello, thank you for ordering"
+                }
+                "host": {
+                    "connection": {
+                        "id": "@parameters('$connections')['office365']['connection']['id']"
                     }
-                    "host": {
-                        "connection": {
-                            "id": "@parameters('$connections')['office365']['connection']['id']"
-                        }
-                    }
-                  }
-              }
-          }
-      }
-  }
-  ```
+                }
+                }
+            }
+        }
+    }
+}
+```
   
   `foreach` アクションでは、最大 5,000 行の配列に対して反復処理を実行できます。各反復処理は並列実行できます。そのため、フロー制御が必要な場合は、メッセージをキューに追加することが必要になることがあります。
   
-  ## Until ループ
+## Until ループ
   
   条件が満たされるまで 1 つのアクションまたは一連のアクションを実行できます。この最も一般的なシナリオとして、求めている応答が得られるまでエンドポイントを呼び出す処理があります。デザイナーでは、until ループの追加を指定できます。ループ内にアクションを追加した後、終了条件とループの上限を設定できます。ループのサイクル間には 1 分の遅延があります。
   
@@ -132,4 +132,4 @@ SplitOn は、次の例に示すように、コード ビューで指定でき�
 }
 ```
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

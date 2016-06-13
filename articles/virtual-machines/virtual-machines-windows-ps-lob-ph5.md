@@ -19,8 +19,6 @@
 
 # 基幹業務アプリケーション ワークロード フェーズ 5: 可用性グループを作成してアプリケーション データベースを追加する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこの最終フェーズでは、新しい SQL Server AlwaysOn 可用性グループを作成し、アプリケーションのデータベースを追加します。
 
 全フェーズについては、「[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-windows-lob-overview.md)」をご覧ください。
@@ -119,4 +117,4 @@
 
 - Azure で独自の IT ワークロードをデプロイする場合は、こちらの[ガイドライン](virtual-machines-linux-infrastructure-service-guidelines.md)をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

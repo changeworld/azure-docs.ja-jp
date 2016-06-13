@@ -25,8 +25,6 @@
 
 停止している Azure 仮想マシン (VM) を起動しようとしたとき、または既存の Azure VM のサイズを変更しようとしたときに発生する一般的なエラーは割り当てエラーです。このエラーは、クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできない場合に発生します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## 監査ログの収集
@@ -76,4 +74,4 @@ VM のサイズ変更要求は、クラウド サービスをホストしてい�
   2. すべての VM が停止したら、目的の VM のサイズを大きなサイズに変更します。
   3. サイズ変更した VM を選択して **[起動]** をクリックした後、停止している各 VM を起動します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

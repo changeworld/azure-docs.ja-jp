@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/08/2016"
+   ms.date="05/31/2016"
    ms.author="spyros;sethm" />
 
 # センサーまたはその他のシステムから受信したデータをユーザーに通知する
@@ -33,7 +33,7 @@
 
 Azure Event Hub または IoT Hub にプッシュする重大なイベントがあるという想定で説明を始めます。ハブへのアクセス権を有し、接続文字列がわかっている限り、どのハブも使用できます。
 
-Event Hub または IoT Hub をまだお持ちでない場合は、[Connect The Dots](https://github.com/Azure/connectthedots) プロジェクトにある手順に従って、Arduino シールドおよび Raspberry Pi でテスト ベッドを簡単にセットアップすることができます。Arduino シールドの光センサーは Pi を通して光のレベルを [Azure Event Hub]\(**ehdevices**) に送信します。[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブは受信した光のレベルが重大レベルを下回っている場合、2 番目のイベント ハブ (**ehalerts**) に通知をプッシュします。
+Event Hub または IoT Hub をまだお持ちでない場合は、[Connect The Dots](https://github.com/Azure/connectthedots) プロジェクトにある手順に従って、Arduino シールドおよび Raspberry Pi でテスト ベッドを簡単にセットアップすることができます。Arduino シールドの光センサーは Pi を通して光のレベルを [Azure Event Hub][] (**ehdevices**) に送信します。[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブは受信した光のレベルが重大レベルを下回っている場合、2 番目のイベント ハブ (**ehalerts**) に通知をプッシュします。
 
 **AppToNotify** は起動すると、構成ファイル (App.config) を読み取って、アラートを受信する Event Hub の URL と資格情報を取得します。次に、その Event Hub を継続的に監視して、それを介して渡されたメッセージがないかを確認するプロセスを生成します。Event Hub または IoT Hub の URL および有効な資格情報にアクセスできる限り、この Event Hubs リーダー コードは何が入ってきたかを継続的に読み取ることができます。アプリケーションはまた、起動中に、使用されるメッセージング サービス (電子メール、SMS、電話) の URL と資格情報、送信者の名前とアドレス、および受信者のリストを読み取ります。
 
@@ -83,4 +83,4 @@ Event Hub モニターは、メッセージを検出すると、構成ファイ�
 [1]: ./media/event-hubs-sensors-notify-users/event-hubs-sensor-alert.png
 [2]: ./media/event-hubs-sensors-notify-users/event-hubs-erp-alert.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0601_2016-->

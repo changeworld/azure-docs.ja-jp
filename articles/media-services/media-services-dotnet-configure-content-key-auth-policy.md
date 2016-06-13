@@ -400,6 +400,7 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 ##<a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
 
 ###<a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+
     public enum ContentKeyRestrictionType
     {
         Open = 0,
@@ -442,4 +443,4 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、「[アセットの配信ポリシーの構成方法](media-services-dotnet-configure-asset-delivery-policy.md)」トピックにお進みください。
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->

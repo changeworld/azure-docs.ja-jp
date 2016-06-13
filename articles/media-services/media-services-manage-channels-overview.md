@@ -166,4 +166,4 @@ Media Services においてライブ ストリーミング コンテンツの処
 
 [Media Services の概念](media-services-concepts.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -12,8 +12,8 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="04/26/2016" 
-    ms.author="ddove;sidneyh" />
+    ms.date="05/27/2016" 
+    ms.author="ddove" />
 
 # スケールアウトされたクラウド データベース間のデータ移動
 
@@ -252,4 +252,4 @@ NuGet パッケージで提供される Web ロール用と worker ロール用�
 [3]: ./media/sql-database-elastic-scale-overview-split-and-merge/diagnostics-config.png
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0601_2016-->

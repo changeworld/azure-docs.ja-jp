@@ -3,8 +3,8 @@ pageTitle="Oracle VM イメージを使用するうえでの考慮事項 | Micro
 description="デプロイする前に、Azure の Windows Server 上の Oracle VM でサポートされた考慮事項と制限事項を確認してください。"
 services="virtual-machines-windows"
 documentationCenter=""
-manager=""
-authors="bbenz"
+manager="timlt"
+authors="rickstercdn"
 tags="azure-service-management"/>
 
 <tags
@@ -13,16 +13,14 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="vm-windows"
 ms.workload="infrastructure-services"
-ms.date="06/22/2015"
-ms.author="bbenz" />
+ms.date="05/17/2016"
+ms.author="rclaus" />
 
 #Oracle 仮想マシンのイメージに関するその他の考慮事項
 
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
-
-この記事では、オペレーティング システムとして Windows Server を利用し、Microsoft 提供の Oracle ソフトウェア イメージに基づく Oracle 仮想マシンを Azure で実行することに関する考慮事項について説明します。
+この記事では、Oracle 提供の Oracle ソフトウェア イメージに基づく Oracle 仮想マシンを Azure で実行することに関する考慮事項について説明します。
 
 -  Oracle データベース仮想マシン イメージ
 -  Oracle WebLogic Server 仮想マシン イメージ
@@ -47,13 +45,9 @@ Azure は各仮想マシンに内部 IP アドレスを割り当てます。仮�
 
 読み込み操作、またはデータベースへの書き込み操作のいずれを重視するかに基づいて、複数のディスクを接続する場合に向けて 2 つの手法を検討してください。
 
-- **Oracle ASM のみを使用する場合**は、書き込み操作のパフォーマンスは上がりますが、Windows Server 2012 の記憶域プールを利用する手法と比較して読み取り操作の IOPS が下がります。次の図は理論的にこの組み合わせを示したものです。![](media/virtual-machines-windows-classic-oracle-considerations/image2.png)
+- **Oracle ASM のみを使用する場合**は、書き込み操作のパフォーマンスは上がりますが、ディスク アレイを利用する手法と比較して読み取り操作の IOPS が下がります。次の図は理論的にこの組み合わせを示したものです。![](media/virtual-machines-windows-classic-oracle-considerations/image2.png)
 
-- **Oracle ASM と Windows Server 2012 の記憶域プールを比較する**と、データベースが主に読み取り操作を実行する場合に、または読み取り操作のパフォーマンスを書き込み操作のパフォーマンスより重視する場合に、読み取り操作 IOPS パフォーマンスが上がります。Windows Server 2012 オペレーティング システムに基づくイメージが必要です。記憶域プールに関する詳細は、「[スタンドアロン サーバーに記憶域スペースを展開する](http://technet.microsoft.com/library/jj822938.aspx)」をご覧ください。この配置の場合、接続ディスクの 2 つの等しいサブセットが最初に 2 つの記憶域プール ボリュームの物理ディスクとしてまとめて「ストライプ化」され、そのボリュームが ASM ディスク グループに追加されます。次の図は理論的にこの配置を示したものです。
-
-	![](media/virtual-machines-windows-classic-oracle-considerations/image3.png)
-
->[AZURE.IMPORTANT] 書き込み性能と読み取り性能のトレードオフは個別で評価します。これらの方法を使用すると、実際の結果が変わる可能性があります。
+>[AZURE.IMPORTANT] 書き込み性能と読み取り性能のトレードオフは個別で評価します。これを使用すると、実際の結果が変わる可能性があります。
 
 ### 高可用性と障害復旧に関する考慮
 
@@ -65,7 +59,7 @@ Oracle Data Guard では、1 つの仮想マシンにプライマリ データ�
 
 ##Oracle WebLogic Server 仮想マシン イメージ
 
--  **クラスタリングは Enterprise エディションでのみサポートされています。** WebLogic Server (具体的には、Windows Server をオペレーティング システムとするイメージ) の Microsoft ライセンス イメージを使用している場合は、WebLogic Server の Enterprise エディションを使用している場合にのみ、WebLogic クラスタリングを使用するライセンスが付与されます。WebLogic Server Standard Edition の場合、クラスタリングを使用しないでください。
+-  **クラスタリングは Enterprise エディションでのみサポートされています。** WebLogic Server の Enterprise Edition を使用する場合にのみ、WebLogic クラスタリングを使用するライセンスが許諾されます。WebLogic Server Standard Edition の場合、クラスタリングを使用しないでください。
 
 -  **接続タイムアウト:** アプリケーションが別の Azure のクラウド サービス (データベース層のサービスなど) のパブリック エンドポイントへの接続に依存している場合、4 分間の無活動の後 Azure はこれらの開いている接続を閉じることがあります。無活動時間がこの上限を超えると、接続が無効になるため、接続プールに依存している機能やアプリケーションに影響が及ぼされることがあります。アプリケーションに影響がある場合は、接続プール上の「キープアライブ」 ロジックの有効化を検討してください。
 
@@ -108,4 +102,4 @@ Oracle Data Guard では、1 つの仮想マシンにプライマリ データ�
 ##その他のリソース
 [Azure の Oracle 仮想マシン イメージ](virtual-machines-linux-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

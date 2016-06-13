@@ -34,13 +34,15 @@ API アプリのプロパティでは、その API アプリの Swagger 2.0 JSON
 
 ### Azure リソース マネージャーのプロパティ
 
-API アプリの API 定義 URL は、Azure リソース マネージャーのツール (Azure PowerShell、CLI、[リソース エクスプローラー](https://resources.azure.com/)など) を使って構成することもできます。
+API アプリの API 定義 URL は、[リソース エクスプローラー](https://resources.azure.com/)を使うか、コマンド ライン ツール ([Azure PowerShell](../powershell-install-configure.md)、[Azure CLI](../xplat-cli-install.md) など) から [Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使って、構成することもできます。
 
-`apiDefinition` プロパティは、<site name>/web リソースの Microsoft.Web/sites/config リソース タイプで設定します。たとえば、**リソース エクスプローラー**から **[subscriptions]、{該当するサブスクリプション}、[resourceGroups]、{該当するリソース グループ}、[providers]、[Microsoft.Web]、[sites]、{該当サイト}、[config]、[web]** の順に移動すると、cors プロパティが表示されます。
+**リソース エクスプローラー**から **[subscriptions]、{該当するサブスクリプション}、[resourceGroups]、{該当するリソース グループ}、[providers]、[Microsoft.Web]、[sites]、{該当サイト}、[config]、[web]** の順に移動すると、`apiDefinition` プロパティが表示されます。
 
 		"apiDefinition": {
 		  "url": "https://contactslistapi.azurewebsites.net/swagger/docs/v1"
 		}
+
+`apiDefinition` プロパティを設定する Azure Resource Manager テンプレートの例については、[To-Do List サンプル アプリケーションの azuredeploy.json ファイル](https://github.com/azure-samples/app-service-api-dotnet-todo-list/blob/master/azuredeploy.json)を参照してください。前に示した JSON サンプルのようなテンプレートのセクションがあります。
 
 ### 既定値
 
@@ -58,4 +60,4 @@ API アプリの作成、デプロイ、使用の手順を説明するステッ�
 
 API アプリで Azure API Management を使う場合は、Swagger メタデータを使用して API を API Management にインポートできます。詳細については、「[Azure API Management で API の定義を操作と共にインポートする方法](../api-management/api-management-howto-import-api.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

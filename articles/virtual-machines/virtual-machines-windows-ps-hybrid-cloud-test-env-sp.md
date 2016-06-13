@@ -19,8 +19,6 @@
 
 # テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 このトピックでは、Microsoft Azure でホストされる SharePoint イントラネット ファームをテストするためにハイブリッド クラウド環境を作成する手順について説明します。完成すると次のような構成になります。
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sp/virtual-machines-windows-ps-hybrid-cloud-test-env-sp-ph3.png)
@@ -43,7 +41,7 @@
 2.	SQL Server コンピューター (SQL1) を構成する。
 3.	SharePoint サーバー (SP1) を構成する。
 
-このワークロードには、Azure サブスクリプションが必要です。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」をご覧ください。
+このワークロードには、Azure サブスクリプションが必要です。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
 ## フェーズ 1: ハイブリッド クラウド環境を設定する
 
@@ -209,10 +207,10 @@ ping コマンドで IP アドレス 192.168.0.4 からの応答が 4 回成功�
 11.	**[SharePoint ファームの構成方法を指定してください。]** で **[ウィザードの開始]** をクリックします。
 12.	[SharePoint ファームの構成] ページの **[サービス アカウント]** で、**[既存の管理アカウントを使用する]** をクリックします。
 13.	**[サービス]** で、**[State Service]** の横にあるチェック ボックス以外のすべてのチェック ボックスをオフにし、**[次へ]** をクリックします。完了するまで、[ただいま処理中です] ページがしばらく表示されることがあります。
-14.	[サイト コレクションの作成] ページの **[タイトルと説明]** で、**[タイトル]** に「**Contoso Corporation**」と入力し、URL「**http://sp1**/」を指定して、**[OK]** をクリックします。完了するまで、[ただいま処理中です] ページがしばらく表示されることがあります。これにより、URL http://sp1 にチーム サイトが作成されます。
+14.	[サイト コレクションの作成] ページの **[タイトルと説明]** で、**[タイトル]** に「**Contoso Corporation**」と入力し、URL "****http://sp1**/" を指定して、**[OK]** をクリックします。完了するまで、[ただいま処理中です] ページがしばらく表示されることがあります。これにより、URL http://sp1 にチーム サイトが作成されます。
 15.	[これでファーム構成ウィザードは完了です。] ページで、**[完了]** をクリックします。Internet Explorer のタブに SharePoint 2013 サーバーの全体管理サイトが表示されます。
 16.	CORP\\User1 アカウントの資格情報を使用して CLIENT1 コンピューターにログオンし、Internet Explorer を起動します。
-17.	アドレス バーに「**http://sp1/**」と入力し、Enter キーを押します。Contoso Corporation の SharePoint チーム サイトが表示されます。サイトが表示されるまで時間がかかることがあります。
+17.	アドレス バーに「****http://sp1/**」と入力し、Enter キーを押します。Contoso Corporation の SharePoint チーム サイトが表示されます。サイトが表示されるまで時間がかかることがあります。
 
 現在の構成は次のようになります。
 
@@ -224,4 +222,4 @@ ping コマンドで IP アドレス 192.168.0.4 からの応答が 4 回成功�
 
 - SharePoint ファームを[構成](https://technet.microsoft.com/library/ee836142.aspx)します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

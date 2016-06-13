@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/02/2016"
+   ms.date="05/27/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center で Web アプリケーション ファイアウォールを追加する
@@ -69,4 +69,4 @@ Azure Security Center では、Web アプリケーションを保護するため
 [5]: ./media/security-center-add-web-application-firewall/finalize-waf.png
 [6]: ./media/security-center-add-web-application-firewall/restrict-traffic.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

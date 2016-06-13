@@ -1,12 +1,11 @@
-To create a premium cache, sign-in to the [Azure Portal](https://portal.azure.com) and click **New** > **Data + Storage** > **Redis Cache**.
+Premium キャッシュを作成するには、[Azure ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
 
-![Create cache](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
+![キャッシュの作成](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 
->[AZURE.NOTE] In addition to creating caches in the Azure Portal, you can also create them using ARM templates, PowerShell, or Azure CLI. For more information, see [Create a cache](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+>[AZURE.NOTE] キャッシュは、Azure ポータルだけでなく、ARM テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。詳細については、「[キャッシュの作成](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)」を参照してください。
 
-To configure premium features, first select one of the premium pricing tiers in the **Choose your pricing tier** blade.
+Premium 機能を構成するには、まず **[料金レベルの選択]** ブレードで [Premium] 価格レベルのいずれかを選択します。
 
-![Choose your pricing tier](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
+![価格レベルの選択](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
 
-
-
+<!---HONumber=AcomDC_0601_2016-->

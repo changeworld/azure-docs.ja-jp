@@ -36,6 +36,7 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 -	[ADFS セキュリティを使用して OAuth 2.0 認証サーバーを構成できますか。](#can-i-configure-an-oauth-20-authorization-server-with-adfs-security)
 -	[複数の地理的な場所にデプロイされた場合、API Management はどのようなルーティング方法を使用しますか。](#what-routing-method-does-api-management-use-when-deployed-to-multiple-geographic-locations)
 -	[ARM テンプレートを使用して API Management サービス インスタンスを作成できますか。](#can-i-create-an-api-management-service-instance-using-an-arm-template)
+-	[バックエンドに自己署名 SSL 証明書を使用できますか。](#can-i-use-a-self-signed-ssl-certificate-for-a-backend)
 
 
 
@@ -137,4 +138,12 @@ API Management では[パフォーマンスによるトラフィック ルーテ
 
 はい、「[Azure API Management Service](http://aka.ms/apimtemplate)」クイックスタート テンプレートを参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+### バックエンドに自己署名 SSL 証明書を使用できますか。
+
+はい。以下の手順に従ってください。
+
+1. Management API を使用して[バックエンド](https://msdn.microsoft.com/library/azure/dn935030.aspx) エンティティを作成します
+2. skipCertificateChainValidation プロパティを true に設定します
+3. 自己署名証明書を許可する必要がなくなったときは、バックエンド エンティティを削除するか、または skipCertificateChainValidation プロパティを false に設定します
+
+<!---HONumber=AcomDC_0601_2016-->

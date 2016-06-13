@@ -160,7 +160,10 @@ NuGet パッケージを C# 関数で使用するには、*project.json* ファ�
 }
 ```
 
+.NET Framework 4.6 のみがサポートされているので、次に示すように *project.json* ファイルが `net46` を指定していることを確認します。
+
 *project.json* ファイルをアップロードすると、ランタイムによってパッケージが取得され、パッケージ アセンブリに参照が自動的に追加されます。`#r "AssemblyName"` ディレクティブを追加する必要はありません。NuGet パッケージで定義されている型を使用するには、必要な `using` ステートメントを *run.csx* ファイルに追加するだけです。
+
 
 ### Project.json ファイルをアップロードする方法
 
@@ -168,9 +171,9 @@ NuGet パッケージを C# 関数で使用するには、*project.json* ファ�
 
 	これにより、パッケージのインストール出力が表示されるストリーミング ログへのアクセス権が付与されます。
 
-2. project.json ファイルをアップロードする方法には、「[Azure Functions developer reference topic (Azure Functions 開発者参照トピック)](functions-reference.md#fileupdate)」の「**How to update function app files (関数アプリ ファイルを更新する方法)**」セクションにあるいずれかの方法を利用してください。
+2. project.json ファイルをアップロードするには、「[Azure Functions 開発者向けリファレンス](functions-reference.md#fileupdate)」の「**関数アプリ ファイルを更新する方法**」セクションにあるいずれかの方法を利用してください。
 
-3. *project.json* ファイルがアップロードされた後、関数のストリーミング ログには次の例のような出力があります。
+3. *project.json* ファイルがアップロードされた後、関数のストリーミング ログの出力は次の例のようになります。
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -237,7 +240,7 @@ public static void MyLogger(TraceWriter log, string logtext)
 
 * `#load "mylogger.csx"` によって、関数フォルダーにあるファイルが読み込まれます。
 
-* `#load "loadedfiles\mylogger.csx"` によって、関数フォルダーのフォルダーにあるファイルが読み込まれます。
+* `#load "loadedfiles\mylogger.csx"` によって、関数フォルダー内のフォルダーにあるファイルが読み込まれます。
 
 * `#load "..\shared\mylogger.csx"` によって、関数フォルダーと同じレベル (*wwwroot* の直下) にあるフォルダーのファイルが読み込まれます。
  
@@ -251,4 +254,4 @@ public static void MyLogger(TraceWriter log, string logtext)
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

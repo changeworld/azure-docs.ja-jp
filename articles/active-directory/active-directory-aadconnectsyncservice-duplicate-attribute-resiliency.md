@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="05/26/2016"
 	ms.author="markusvi"/>
 
 
@@ -79,7 +79,7 @@
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict`
 
-これにより、次のような結果が生成されます。 ![Get-MsolDirSyncProvisioningError](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/1.png "Get-MsolDirSyncProvisioningError")
+これにより、次のような結果が生成されます。![Get-MsolDirSyncProvisioningError](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/1.png "Get-MsolDirSyncProvisioningError")
 
 
 #### プロパティの型ごと
@@ -119,24 +119,19 @@
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
 ## Office 365 管理ポータル
-Office 365 ポータルのレポートには、これらのエラーを持つ **User** オブジェクトだけが表示されます。**Group**、**Contact**、または **PublicFolder** の間の競合に関する情報は表示されません。
 
-**Office365 管理ポータルでこれらのエラーを表示するには、次の手順に従います。**
+Office 365 管理センターでは、ディレクトリ同期エラーを表示できます。Office 365 ポータルのレポートには、これらのエラーを持つ **User** オブジェクトだけが表示されます。**Group**、**Contact**、または **PublicFolder** の間の競合に関する情報は表示されません。
 
-1.	**portal.office.com** にテナント管理者としてログインします。
 
-2.	**[ユーザー]、[アクティブ ユーザー]** の順にクリックします。![アクティブ ユーザー](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/2.png "アクティブ ユーザー")
+![アクティブ ユーザー](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/1234.png "アクティブ ユーザー")
 
-3.	テナント内のいずれかのオブジェクトに重複属性エラーがある場合、ページの上部に次のような警告が表示されます。![アクティブ ユーザー](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/3.png "アクティブ ユーザー")
+Office 365 管理センターでディレクトリ同期エラーを表示する方法については、「[Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/ja-JP/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)」を参照してください。
 
-4.	オブジェクト固有の詳細を表示するには、[ビューの選択] ドロップダウンで [エラーのあるユーザー] を選択します。![アクティブ ユーザー](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/4.png "アクティブ ユーザー")
-
-5.	競合の詳細を表示するには、オブジェクトをクリックします。詳細は、画面の右下隅に表示されます。![アクティブ ユーザー](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/5.png "アクティブ ユーザー")
 
 ### ID 同期のエラー レポート
-重複属性の競合があるオブジェクトがこの新しい動作で処理されると、テナントの技術的通知の連絡先に送信される標準の ID 同期のエラー レポート メールに、通知が含められます。ただし、この動作には重要な変更があります。以前は、重複属性の競合に関する情報が、競合が解決されるまで、後続のすべてのエラー レポートに含められました。この新しい動作で、特定の競合のエラー通知は、競合する属性が検疫されたときに 1 回だけ表示されます。
+重複属性の競合があるオブジェクトがこの新しい動作で処理されると、テナントの技術的通知の連絡先に送信される標準の ID 同期のエラー レポート メールに、通知が含められます。ただし、この動作には重要な変更があります。以前は、重複属性の競合に関する情報が、競合が解決されるまで、後続のすべてのエラー レポートに含められました。この新しい動作では、特定の競合のエラー通知は、競合する属性が検疫されたときに 1 回だけ表示されます。
 
-ProxyAddress の競合に関する電子メール通知の例を、次に示します。 ![アクティブ ユーザー](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "アクティブ ユーザー")
+ProxyAddress の競合に関する電子メール通知の例を、次に示します。![アクティブ ユーザー](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "アクティブ ユーザー")
 
 ## 競合の解決
 これらのエラーのトラブルシューティングの方針と解決の方法は、以前の重複属性エラーの処理方法と変わりはありません。唯一の違いは、タイマー タスクがサービス側のテナント全体をスイープして、競合が解決したら問題の属性を適切なオブジェクトに自動的に追加することです。
@@ -200,4 +195,6 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 
 - [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+- [Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/ja-JP/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+
+<!---HONumber=AcomDC_0601_2016-->

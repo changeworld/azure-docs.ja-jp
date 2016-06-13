@@ -42,11 +42,11 @@ SQL Data Warehouse では、論理 SQL サーバーの新しいデータベー�
 
 ### PowerShell をインストールする
 
-SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0 以降をインストールする必要があります。**Get-Module -ListAvailable -Name Azure** を実行することで、バージョンを確認できます。最新バージョンは、[Microsoft Web プラットフォーム インストーラー][]からインストールできます。最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」をご覧ください。
+SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0 以降をインストールする必要があります。**Get-Module -Name Azure -ListAvailable** を実行することで、バージョンを確認できます。最新バージョンは、[Microsoft Web プラットフォーム インストーラー][]からインストールできます。最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」をご覧ください。
 
 ## ライブ データベースの復元
 
-スナップショットからデータベースを復元するには、[Restore-AzureRmSqlDatabase][] PowerShell コマンドレットを使用します。
+スナップショットからデータベースを復元するには、[Restore-AzureRmSqlDatabase][] コマンドレットを使用します。
 
 1. Windows PowerShell を開きます。
 2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
@@ -56,7 +56,7 @@ SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell
 6. 目的の復元ポイントに、データベースを復元します。
 7. 復元されたデータベースがオンラインであることを確認します。
 
-```Powershell
+```PowerShell
 
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
@@ -69,7 +69,7 @@ Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 
 # List the last 10 database restore points
-((Get-AzureRMSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName ($DatabaseName).RestorePointCreationDate)[-10 .. -1]
+((Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName ($DatabaseName).RestorePointCreationDate)[-10 .. -1]
 
 # Or list all restore points
 Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
@@ -103,7 +103,7 @@ $RestoredDatabase.status
 5. その削除済みデータベースを復元します。
 6. 復元されたデータベースがオンラインであることを確認します。
 
-```Powershell
+```PowerShell
 
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
@@ -141,7 +141,7 @@ $RestoredDatabase.status
 5. データベースの復旧要求を作成します。
 6. geo リストアされたデータベースの状態を確認します。
 
-```Powershell
+```PowerShell
 
 Login-AzureRmAccount
 Get-AzureRmSubscription
@@ -193,4 +193,4 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 [Azure Portal]: https://portal.azure.com/
 [Microsoft Web プラットフォーム インストーラー]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

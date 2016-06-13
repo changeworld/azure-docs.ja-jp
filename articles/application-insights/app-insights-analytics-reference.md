@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="05/26/2016" 
 	ms.author="awills"/>
 
 # Analytics のリファレンス
@@ -345,95 +345,129 @@ let 句は、[名前](#names)を表形式の結果、スカラー値、または
 
 ### parse 演算子
 
-    T | parse "I am 63 next birthday" with "I am" Year:int "next birthday"
+    T | parse "I got 2 socks for my birthday when I was 63 years old" 
+    with * "got" counter:long " " present "for" * "was" year:long *
 
-    T | parse kind=regex "My 62nd birthday" 
-        with "My" Year:regex("[0..9]+") regex("..") "birthday"
+
+    T | parse kind="relaxed"
+          "I got no socks for my birthday when I was 63 years old" 
+    with * "got" counter:long " " present "for" * "was" year:long * 
+
+    T |  parse kind=regex "I got socks for my 63rd birthday" 
+    with "(I|She) got" present "for .*?" year:long * 
 
 文字列から値を抽出します。単純な照合または正規表現の照合を使用できます。
 
-`with` 句内の要素は、ソース文字列に対して順番に照合されます。この要素ごとに、ソース テキストのチャンクが処理されます。これがプレーンな文字列である場合、照合カーソルはその一致の範囲内で移動します。型名を持つ列である場合、カーソルは指定された型を解析できる範囲内で移動します(文字列の照合は、次の要素への一致が見つかるまで行われます)。 正規表現である場合、正規表現が照合されます (結果の列は常に文字列型となります)。
-
 **構文**
 
-    T | parse StringExpression with [SimpleMatch | Column:Type] ...
-
-    T | parse kind=regex StringExpression 
-        with [SimpleMatch | Column : regex("Regex")] ...
+    T | parse [kind=regex|relaxed] SourceText 
+        with [Match | Column [: Type [*]] ]  ...
 
 **引数**
 
-* *T:* 入力テーブル。
-* *kind:* simple または regex。既定値は simple です。
-* *StringExpression:* 文字列に評価されるか、文字列に変換できる式。
-* *SimpleMatch:* テキストの次の部分と照合される文字列。
-* *Column:* 一致したものを割り当てる新しい列を指定します。
-* *Type:* ソース文字列の次の部分を解析する方法を指定します。
-* *Regex:* 文字列の次の部分を照合するための正規表現。 
+* `T`: 入力テーブル。
+* `kind`: 
+ * `simple` (既定値): `Match` の文字列はプレーン文字列です。
+ * `relaxed`: テキストが列の型として解析されない場合、その列は null に設定され、解析が続行されます。 
+ * `regex`: `Match` の文字列は正規表現です。
+* `Text`: 文字列に評価されるか、文字列に変換できる列またはその他の式。
+* *Match:* 文字列の次の部分を照合し、破棄します。
+* *Column:* 文字列の次の部分をこの列に割り当てます。この列が存在しない場合は作成されます。
+* *Type:* 文字列の次の部分を指定の型 (int、date、double など) として解析します。 
+
 
 **戻り値**
 
 列のリストに応じて展開された入力テーブル。
 
+`with` 句内の要素は、ソース テキストに対して順番に照合されます。この要素ごとに、ソース テキストのチャンクが処理されます。
+
+* リテラル文字列または正規表現は、照合カーソルをその一致の長さごとに移動します。
+* 正規表現の解析の場合、正規表現で最小化演算子 "?" を使用すると、できるだけ短時間で次の一致に移動できます。
+* 型を持つ列名は、指定した型としてテキストを解析します。kind=relaxed の場合を除き、解析に失敗すると、パターン全体の照合が無効になります。
+* 型を持たない列名または "string" 型の列名では、最小限の文字をコピーして、次の一致に移動します。
+* "*" は、最小限の文字をスキップして、次の一致に移動します。"*" は、パターンの先頭と末尾、文字列以外の型の後、または文字列の一致の間に使用できます。
+
+解析パターンに含まれるすべての要素は正確に一致する必要があります。一致しない場合は、結果が生成されません。この規則の例外として、kind=relaxed の場合に、型指定された変数の解析に失敗すると、解析の残り部分が続行されます。
 
 **例**
 
-`parse` 演算子を使えば、同じ `string` 式に対して複数の `extract` アプリケーションを使えるため、テーブルの `extend` を合理的に行えます。これが最も役に立つのは、個別の列 (開発者のトレース ("`printf`"/"`Console.WriteLine`") ステートメントによって生成された列など) に分割したい複数の値が格納された `string` 列がテーブルに存在する場合です。
-
-以下の例では、テーブル `StormEvents` の列 `EventNarrative` に `{0} at {1} crested at {2} feet around {3} on {4} {5}` という形式の文字列が含まれているものとします。以下の操作では、2 つの列 (`SwathSize` と `FellLocation`) を持つテーブルを展開します。
-
-
-|EventNarrative|
-|---|
-|The Green River (Brownsville) は December 12 の 0930EST 頃に最高水位 (18.8 フィート) に達しました。(The Green River at Brownsville crested at 18.8 feet around 0930EST on December 12.) Brownsville の洪水位は 18 フィートです。(Flood stage at Brownsville is 18 feet.) 小規模な氾濫がこのレベルで発生します。(Minor flooding occurs at this level.) 閘門壁と一部の堤防下部に加えて、農業用の低地の一部に河川の越流が起こります。(The river overflows lock walls and some of the lower banks, along with some agricultural bottom land.)|
-|The Rolling Fork River (Boston) は December 12 の 1700EST 頃に最高水位 (39.3 フィート) に達しました。(The Rolling Fork River at Boston crested at 39.3 feet around 1700EST on December 12.) Boston の洪水位は 35 フィートです。(Flood stage at Boston is 35 feet.) 小規模な氾濫がこのレベルで発生し、農業用の低地の一部が冠水します。(Minor flooding occurs at this level, with some agricultural bottom land covered.)|
-|The Green River (Woodbury) は December 16 の 0600EST 頃に最高水位 (36.7 フィート) に達しました。(The Green River at Woodbury crested at 36.7 feet around 0600EST on December 16.) Woodbury の洪水位は 33 フィートです。(Flood stage at Woodbury is 33 feet.) 小規模な氾濫がこのレベルで発生し、Woodbury の町周辺の低地が冠水します。(Minor flooding occurs at this level, with some lowlands around the town of Woodbury covered with water.)|
-|The Ohio River (Tell City) は December 18 の 7 AM EST 頃に最高水位 (39.0 フィート) に達しました。(The Ohio River at Tell City crested at 39.0 feet around 7 AM EST on December 18.) Tell City の洪水位は 38 フィートです。(Flood stage at Tell City is 38 feet.) このレベルに達すると、量水標を超えて土手に河川の越流が起こります。(At this level, the river begins to overflow its banks above the gage.) インディアナ州道 66 号線はロームとダービー間で氾濫が発生します。(Indiana Highway 66 floods between Rome and Derby.)|
+*Simple の場合:*
 
 ```AIQL
 
-StormEvents 
-|  parse EventNarrative 
-   with RiverName:string 
-        "at" 
-        Location:string 
-        "crested at" 
-        Height:double  
-        "feet around" 
-        Time:string 
-        "on" 
-        Month:string 
-        " " 
-        Day:long 
-        "." 
-        notImportant:string
-| project RiverName , Location , Height , Time , Month , Day
-
+// Test without reading a table:
+ range x from 1 to 1 step 1 
+ | parse "I got 2 socks for my birthday when I was 63 years old" 
+    with 
+     *   // skip until next match
+     "got" 
+     counter: long // read a number
+     " " // separate fields
+     present // copy string up to next match
+     "for" 
+     *  // skip until next match
+     "was" 
+     year:long // parse number
+     *  // skip rest of string
 ```
 
-|RiverName|Location (場所)|高さ|Time|月|日|
-|---|---|---|---|---|---|
-|The Green River | Woodbury |36\.7| 0600EST | December|16|
-|The Rolling Fork River | ボストン |39\.3| 1700EST | December|12|
-|The Green River | Brownsville |18\.8| 0930EST | December|12|
-|The Ohio River | Tell City |39| 7 AM EST | December|18|
+○ | counter | present | Year
+---|---|---|---
+1 | 2 | socks | 63
 
-正規表現を使って照合することもできます。以下のコードでも同じ結果が生成されますが、結果の列はすべて文字列型になります。
+*Relaxed の場合:*
+
+型指定されたすべての列について正確な一致を含む入力の場合、制限の緩い解析では、単純な解析と同じ結果が生成されます。ただし、型指定された列の 1 つが正しく解析されない場合、制限の緩い解析では、残りのパターンの処理が続行されます。その一方で、単純な解析は停止し、結果の生成に失敗します。
+
 
 ```AIQL
 
-StormEvents
-| parse kind=regex EventNarrative 
-  with RiverName:regex("(\\s?[a-zA-Z]+\\s?)+") 
-  "at" Location:regex(".*") 
-  "crested at " Height:regex("\\d+\\.\\d+") 
-  " feet around" Time:regex(".*") 
-  "on " Month:regex("(December|November|October)") 
-   " " Day:regex("\\d+") 
-   "." notImportant:regex(".*")
-| project RiverName , Location , Height , Time , Month , Day
+// Test without reading a table:
+ range x from 1 to 1 step 1 
+ | parse kind="relaxed"
+        "I got several socks for my birthday when I was 63 years old" 
+    with 
+     *   // skip until next match
+     "got" 
+     counter: long // read a number
+     " " // separate fields
+     present // copy string up to next match
+     "for" 
+     *  // skip until next match
+     "was" 
+     year:long // parse number
+     *  // skip rest of string
 ```
 
+
+○ | present | Year
+---|---|---
+1 | socks | 63
+
+
+*Regex の場合:*
+
+```AIQL
+
+// Run a test without reading a table:
+range x from 1 to 1 step 1 
+// Test string:
+| extend s = "Event: NotifySliceRelease (resourceName=Scheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)" 
+// Parse it:
+| parse kind=regex s 
+  with ".*?[a-zA-Z]*=" resource 
+       ", total.*?sliceNumber=" slice:long *
+       "lockTime=" lock
+       ",.*?releaseTime=" release 
+       ",.*?previousLockTime=" previous:date 
+       ".*\)"
+| project-away x, s
+```
+
+resource | slice | lock | release | previous
+---|---|---|---|---
+Scheduler | 16 | 02/17/2016 08:41:00 | 02/17/2016 08:41 | 2016-02-17T08:40:00Z
 
 ### project 演算子
 
@@ -508,7 +542,7 @@ T
 
 **戻り値**
 
-*ColumnName* という 1 つの列を持つテーブルです。その列の値は、*Start*、*Start* + *Step* というように続き、*Stop* までとなります。
+*ColumnName* という 1 つの列を持つテーブル。その列の値は、*Start*、*Start* + *Step* というように続き、*Stop* までとなります。
 
 **例**
 
@@ -537,7 +571,7 @@ range timestamp from ago(4h) to now() step 1m
 | render timechart  
 ```
 
-`range` 演算子を使って小規模でアドホックなディメンション テーブルを作成する方法を示しています。さらに、このテーブルは、ソース データに値がない場合にゼロを取り込むために使用されています。
+`range` 演算子を使って小規模でアドホックなディメンション テーブルを作成する方法を示しています。さらに、このテーブルは、ソース データに値がない場合にゼロを取り込むために使用されます。
 
 ### reduce 演算子
 
@@ -628,7 +662,7 @@ Traces
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-各間隔 ([0,10.0]、 [10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
+各間隔 ([0,10.0]、[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
 
 
 **構文**
@@ -640,21 +674,21 @@ Traces
 
 **引数**
 
-* *Column:* 結果列の省略可能な名前。既定値は式から派生した名前です。[名前](#names)は、大文字と小文字が区別されます。また、名前には、アルファベット、数字、または "\_" 文字を使用できます。キーワードまたは名前を他の文字で囲む場合は、`['...']` または `["..."]` を使います。
-* *Aggregation:* 引数として列名を持つ、`count()` や `avg()` などの集計関数を呼び出します。「[集計](#aggregations)」を参照してください。
-* *GroupExpression:* 列に対する式です。個別の値のセットを示します。通常は、限られた値のセットが既に指定されている列名か、引数として数値列または時間列を持つ `bin()` になります。 
+* *Column:* 結果列の名前 (省略可能)。既定値は式から派生した名前です。[名前](#names)は、大文字と小文字が区別されます。また、名前には、アルファベット、数字、または "\_" 文字を使用できます。キーワードまたは名前を他の文字で囲む場合は、`['...']` または `["..."]` を使います。
+* *Aggregation:* 引数として列名を指定した、`count()` や `avg()` などの集計関数の呼び出し。「[集計](#aggregations)」を参照してください。
+* *GroupExpression:* 列に対する式です。個別の値のセットを示します。通常は、限られた値のセットが既に指定されている列名か、引数として数値列または時間列が指定されている `bin()` になります。 
 
 `bin()` を使用せずに数値式または時間式を指定した場合、Analytics は自動的に `1h` (時間の場合) または `1.0` (数値の場合) の間隔でそれを適用します。
 
-*GroupExpression* を指定しないと、テーブル全体が単一の出力行にまとめられます。
+*GroupExpression* を指定しない場合は、テーブル全体が単一の出力行にまとめられます。
 
 
 
 **戻り値**
 
-入力列は、`by` 式の同じ値を持つグループにまとめられます。次に、指定された集計関数によってグループごとに計算が行われ、各グループに対応する行が生成されます。結果には、`by` 列のほか、計算された各集計に対応する 1 つ以上の列も含まれます(一部の集計関数は複数の列を返します)。
+入力列は、`by` 式の同じ値を持つグループにまとめられます。次に、指定された集計関数によってグループごとに計算が行われ、各グループに対応する行が生成されます。結果には、`by` 列のほか、計算された各集計に対応する 1 つ以上の列も含まれます (一部の集計関数は複数の列を返します)。
 
-結果には、`by` 値の個別の組み合わせと同数の列が含まれます。数値の範囲をまとめる場合は、`bin()` を使って範囲を不連続値に減らしてください。
+結果には、`by` 値の個別の組み合わせと同数の行が含まれます。数値の範囲をまとめる場合は、`bin()` を使って範囲を不連続値に減らしてください。
 
 **注**
 
@@ -680,14 +714,14 @@ Traces
 
 **引数**
 
-* *NumberOfRows:* 返す *T* の行の数。
+* *NumberOfRows:* 返される *T* の行の数。
 * *Sort\_expression:* 行の並べ替えに使用する式。通常は単なる列名です。複数の sort\_expression を指定できます。
-* 選択が実際に範囲の "下限" からのものか "上限" からのものかを制御するために、`asc` または `desc` (既定値) が表示される場合があります。
+* `asc` または `desc` (既定値) は、選択が実際には範囲の "下限" と "上限" のどちらから行われるかを制御すると考えられます。
 
 
 **ヒント**
 
-`top 5 by name` は表面的には `sort by name | take 5` と同等です。しかし、こちらの方が高速で、常に並べ替えられた結果を返します。`take` にはこのような保証がありません。
+`top 5 by name` は表面的には `sort by name | take 5` と同等です。しかし、こちらの方が処理速度が早く、常に並べ替えられた結果を返します。`take` にはこのような保証がありません。
 
 ### top-nested 演算子
 
@@ -782,8 +816,8 @@ exceptions
 
 **引数**
 
-* *T*: フィルター処理するレコードが含まれる表形式の入力。
-* *Predicate:* *T* の列に対する `boolean` [式](#boolean)。*T* 内の各行について評価されます。
+* *T:* フィルター処理するレコードが含まれる表形式の入力。
+* *Predicate:* *T* の列に対する `boolean` [式](#boolean)。*T* 内の行ごとに評価されます。
 
 **戻り値**
 
@@ -817,7 +851,7 @@ Traces
 
 ## 集計
 
-集計とは、[summarize 演算](#summarize-operator)で作成されたグループの値を結合するための関数です。たとえば、次のクエリでは、dcount() が集計関数です。
+集計とは、[summarize 演算](#summarize-operator)で作成されたグループ内の値を結合するための関数です。たとえば、次のクエリでは、dcount() が集計関数です。
 
     requests | summarize dcount(name) by success
 
@@ -971,7 +1005,7 @@ traces
 
 *Predicate* が `true` と評価された行の数を返します。*Predicate* が指定されていない場合は、グループ内のレコードの合計数を返します。
 
-**パフォーマンス ヒント**: `where filter | summarize count()` の代わりに `summarize count(filter)` を使用します。
+**パフォーマンスに関するヒント**: `where filter | summarize count()` の代わりに `summarize count(filter)` を使用してください。
 
 > [AZURE.NOTE] 要求、例外、またはその他の発生したイベントの数を検索する場合は、count() を使用しないでください。[サンプリング](app-insights-sampling.md)の実行中のデータ ポイントの数は、実際のイベントの数より少なくなります。代わりに `summarize sum(itemCount)...` を使用してください。itemCount プロパティには、保持されている各データ ポイントで表される元のイベントの数が反映されます。
 
@@ -981,7 +1015,7 @@ traces
 
 *Predicate* が `true` と評価された行の数を返します。
 
-**パフォーマンス ヒント**: `where filter | summarize count()` の代わりに `summarize countif(filter)` を使用します。
+**パフォーマンスに関するヒント**: `where filter | summarize count()` の代わりに `summarize countif(filter)` を使用してください。
 
 > [AZURE.NOTE] 要求、例外、またはその他の発生したイベントの数を検索する場合は、countif() を使用しないでください。[サンプリング](app-insights-sampling.md)の実行中のデータ ポイントの数は、実際のイベントの数より少なくなります。代わりに `summarize sum(itemCount)...` を使用してください。itemCount プロパティには、保持されている各データ ポイントで表される元のイベントの数が反映されます。
 
@@ -993,9 +1027,9 @@ traces
 
 *Accuracy* を指定した場合は、速度と精度のバランスが制御されます。
 
- * `0` = 精度は最も低くなりますが、計算速度は最高になります。
+ * `0` = 精度は最も低くなりますが、計算速度は最も高くなります。
  * `1` = 既定値です。精度と計算時間のバランスをとります。エラー率は約 0.8% です。
- * `2` = 精度は最も高くなりますが、計算速度は最低になります。エラー率は約 0.4% です。
+ * `2` = 精度は最も高くなりますが、計算速度は最も低くなります。エラー率は約 0.4% です。
 
 **例**
 
@@ -1014,9 +1048,9 @@ traces
 
 *Accuracy* を指定した場合は、速度と精度のバランスが制御されます。
 
- * `0` = 精度は最も低くなりますが、計算速度は最高になります。
+ * `0` = 精度は最も低くなりますが、計算速度は最も高くなります。
  * `1` = 既定値です。精度と計算時間のバランスをとります。エラー率は約 0.8% です。
- * `2` = 精度は最も高くなりますが、計算速度は最低になります。エラー率は約 0.4% です。
+ * `2` = 精度は最も高くなりますが、計算速度は最も低くなります。エラー率は約 0.4% です。
 
 **例**
 
@@ -1031,7 +1065,7 @@ traces
 
 グループ内にある*式*のすべての値の `dynamic` (JSON) 配列を返します。
 
-* *MaxListSize* は、返される要素の最大数に対する省略可能な整数制限です (既定値は *128*)。
+* *MaxListSize* は、返される要素の最大数に対する整数制限です (省略可能、既定値は *128*)。
 
 ### makeset
 
@@ -1039,7 +1073,7 @@ traces
 
 グループ内にある*式*で使用される個別の値セットの `dynamic` (JSON) 配列を返します (ヒント: 単に個別の値をカウントする場合は、[`dcount`](#dcount) を使用します)。
   
-*  *MaxSetSize* は、返される要素の最大数に対する省略可能な整数制限です (既定値は *128*)。
+*  *MaxSetSize* は、返される要素の最大数に対する整数制限です (省略可能、既定値は *128*)。
 
 **例**
 
@@ -1194,7 +1228,7 @@ traces
 
 **戻り値**
 
-単一の引数の基になるストレージ型を表す文字列。これは、`dynamic` のような値がある場合に、特に便利です。この場合、`gettype()` は値がどのようにエンコードされているかを示します。
+単一の引数の基になるストレージ型を表す文字列。これは、種類が `dynamic` の値がある場合に特に便利です。この場合、`gettype()` は値がどのようにエンコードされているかを示します。
 
 **例**
 
@@ -1248,8 +1282,8 @@ hash(datetime("2015-01-01"))    // 1380966698541616202
 **引数**
 
 * *predicate:* `boolean` 値に評価される式。
-* *ifTrue:* *predicate* が `true` に評価された場合に、この式が評価され、その値が関数から返されます。
-* *ifFalse:* *predicate* が `false` に評価された場合に、この式が評価され、その値が関数から返されます。
+* *ifTrue:* *predicate* が `true` に評価された場合に、評価され、その値が関数から返される式。
+* *ifFalse:* *predicate* が `false` に評価された場合に、評価され、その値が関数から返される式。
 
 **戻り値**
 
@@ -1619,7 +1653,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 **戻り値**
 
-前の日曜日の午前 0 時からの `timespan`。日数を示す整数に丸められます。
+前の日曜日の午前 0 時からの `timespan`。日数を示す整数に切り捨てられます。
 
 **例**
 
@@ -1820,7 +1854,7 @@ h"hello"
 **引数**
 
 * *text:* 文字列。
-* *search:* *テキスト*内で一致させるプレーン文字列または正規表現。
+* *search:* *text* 内で照合するプレーン文字列または正規表現。
 * *kind:* `"normal"|"regex"`。既定では `normal`。 
 
 **戻り値**
@@ -1855,8 +1889,8 @@ h"hello"
 
 * *regex:* [正規表現](#regular-expressions)。
 * *captureGroup:* 抽出するキャプチャ グループを示す、正の `int` 定数。0 は一致全体、1 は正規表現の最初のかっこで囲まれた部分と一致した値、2 以上は後続のかっこを示します。
-* *text:* 検索する `string`。
-* *typeLiteral:* オプションの型のリテラル (例: `typeof(long)`)。指定した場合、抽出された部分文字列はこの型に変換されます。 
+* *text:* 検索対象の `string`。
+* *typeLiteral:* オプションの type リテラル (例: `typeof(long)`)。指定した場合、抽出された部分文字列はこの型に変換されます。 
 
 **戻り値**
 
@@ -1866,7 +1900,7 @@ h"hello"
 
 **例**
 
-サンプル文字列 `Trace` で `Duration` の定義が検索されます。一致は `real` に変換され、時間定数 (`1s`) で乗算されて、`Duration` は `timespan` 型になります。この例では、123.45 秒と等しくなります。
+サンプル文字列 `Trace` で `Duration` の定義が検索されます。一致は `real` に変換された後、時間定数 (`1s`) で乗算されて、`Duration` は `timespan` 型になります。この例では、123.45 秒と等しくなります。
 
 ```AIQL
 ...
@@ -1974,7 +2008,7 @@ range x from 1 to 5 step 1
 
 * *source*: 指定された区切り記号に従って分割されるソース文字列。
 * *delimiter*: ソース文字列を分割するために使用される区切り記号。
-* *requestedIndex*: 0 から始まるインデックス `int` (オプション)。指定した場合、返される文字列配列には、要求した部分文字列が含まれます (存在する場合)。 
+* *requestedIndex*: 0 から始まるインデックス `int` (省略可能)。指定した場合、返される文字列配列には、要求した部分文字列が含まれます (存在する場合)。 
 
 **戻り値**
 
@@ -2019,7 +2053,7 @@ split("aabbcc", "bb")         // ["aa","cc"]
 
 * *source:* 部分文字列の取得元となるソース文字列。
 * *startingIndex:* 要求する部分文字列の、0 から始まる開始文字位置。
-* *length:* 要求する部分文字列の文字数を指定するために使用できるオプションのパラメーター。 
+* *length:* 要求する部分文字列の文字数を指定するために使用できる省略可能なパラメーター。 
 
 **戻り値**
 
@@ -2061,7 +2095,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 
 ![](./media/app-insights-analytics-reference/310.png)
 
-**インデックス:** JavaScript と同様に、配列やオブジェクトのインデックスを作成できます。
+**インデックス作成:** JavaScript と同様に、配列やオブジェクトのインデックスを作成できます。
 
     exceptions | take 1
     | extend 
@@ -2140,8 +2174,8 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 
 * `parsejson('[43, 21, 65]')` - 数値の配列
 * `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')` 
-* `parsejson('21')` - 数値を含む、動的な型の単一の値
-* `parsejson('"21"')` - 文字列を含む、動的な型の単一の値
+* `parsejson('21')` - 数値を示す、動的な型の単一の値
+* `parsejson('"21"')` - 文字列を示す、動的な型の単一の値
 
 JavaScript とは異なり、JSON では文字列の前後で二重引用符 (`"`) の使用が必須であることに注意してください。そのため、一般的に、JSON 形式でエンコードされた文字列リテラルを単一引用符 (`'`) で囲む方がより簡単です。
 
@@ -2381,4 +2415,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

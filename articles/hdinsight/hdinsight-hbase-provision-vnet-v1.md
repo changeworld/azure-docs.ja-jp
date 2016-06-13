@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/04/2016"
+   ms.date="05/27/2016"
    ms.author="jgao"/>
 
 # Azure Virtual Network での HBase クラスターのプロビジョニング
@@ -436,4 +436,4 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 [img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "新しい HBase クラスターのプロビジョニングの詳細"
 [img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "スクリプト アクションを使って HBase クラスターをカスタマイズする"
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

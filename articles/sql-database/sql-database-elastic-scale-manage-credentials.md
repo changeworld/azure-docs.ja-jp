@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/03/2016" 
-	ms.author="ddove;sidneyh"/>
+	ms.date="05/27/2016" 
+	ms.author="ddove"/>
 
 # Elastic Database クライアント ライブラリへのアクセスに使用する資格情報
 
@@ -77,4 +77,4 @@
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

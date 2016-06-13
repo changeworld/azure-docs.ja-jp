@@ -4,7 +4,7 @@
    services="sql-database"
    documentationCenter=""
    authors="carlrabeler"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,10 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="03/14/2016"
+   ms.date="05/31/2016"
    ms.author="carlrab"/>
 
 # [データベースの Microsoft Azure Database へのデプロイ] ウィザードを使用して SQL Server データベースを SQL Database に移行する
+
+
+> [AZURE.SELECTOR]
+- [SSMS の移行ウィザード](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)
+- [BACPAC ファイルへのエクスポート](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
+- [BACPAC ファイルからのインポート](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
+- [トランザクション レプリケーション](sql-database-cloud-migrate-compatible-using-transactional-replication.md)
 
 SQL Server Management Studio のデータベースの Microsoft Azure Database へのデプロイ ウィザードは、[互換性のある SQL Server データベース](sql-database-cloud-migrate.md)を Azure SQL Database サーバーに直接移行します。
 
@@ -50,8 +57,15 @@ SQL Server Management Studio のデータベースの Microsoft Azure Database �
 7.	オブジェクト エクスプローラーを使用して、Azure SQL Database サーバーの移行されたデータベースに接続します。
 8.	Azure ポータルを使用して、データベースとそのプロパティを表示します。
 
-## 次のステップ: 互換性の問題の修正
+## 次のステップ
 
-必要に応じて、[データベースの互換性の問題](sql-database-cloud-migrate-fix-compatibility-issues.md)を修正します。
+- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 
-<!---HONumber=AcomDC_0316_2016-->
+## 詳細情報
+
+- [SQL Database V12](sql-database-v12-whats-new.md)
+- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
+- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
+
+<!---HONumber=AcomDC_0601_2016-->

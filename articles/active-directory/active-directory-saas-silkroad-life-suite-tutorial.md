@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/14/2016"
+	ms.date="04/06/2016"
 	ms.author="jeedes"/>
 
 
@@ -34,7 +34,7 @@ SilkRoad Life Suite と Azure AD の統合を構成するには、次のもの�
 - SilkRoad Life Suite でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -88,17 +88,17 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
 5. SilkRoad 企業サイトに管理者としてサインオンします。 
 
 
-    > [AZURE.NOTE]Microsoft Azure AD とフェデレーションを構成するために SilkRoad Life Suite の認証アプリケーションへのアクセス権を取得するには、SilkRoad サポートまたは SilkRoad サービス担当者にお問い合わせください。
+    > [AZURE.NOTE] Microsoft Azure AD とフェデレーションを構成するために SilkRoad Life Suite の認証アプリケーションへのアクセス権を取得するには、SilkRoad サポートまたは SilkRoad サービス担当者にお問い合わせください。
 
 
-6. **[Service Provider]** へ移動して、**[Federation Details]** をクリックします。<br><br>![Azure AD のシングル サインオン][10] <br>
+6. **[サービス プロバイダー]** に移動して、**[フェデレーションの詳細]** をクリックします。<br><br>![Azure AD のシングル サインオン][10] <br>
 
 
 1. **[Download Federation Metadata]** をクリックし、メタデータ ファイルをコンピューターに保存します。<br><br>![Azure AD のシングル サインオン][11] <br>
 
-3. Azure AD ポータルの **SilkRoad Life Suite** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログ ボックスを開きます。<br><br> ![Configure single sign-on][6] <br>
+3. Azure AD ポータルの **SilkRoad Life Suite** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログ ボックスを開きます。<br><br> ![シングル サインオンの構成][6] <br>
 
-2. **[ユーザーの SilkRoad Life Suite へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD のシングル サインオン][7] <br>
+2. **[ユーザーの SilkRoad Life Suite へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD Single Sign-On][7] <br>
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のシングル サインオン][8] <br>
  
@@ -144,9 +144,9 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
 
     a.**[Enabled]** で **[Yes]** を選択します。
 
-    b.**[IdP Description]** ボックスに構成の説明を入力します (例: Azure AD の SSO)。
+    b.**[IdP Description]** ボックスに構成の説明を入力します (例: *Azure AD の SSO*)。
 
-    c.**[IdP Name]** ボックスに、構成の固有の名前を入力します (例: Azure SP)。
+    c.**[IdP Name]** ボックスに、構成の固有の名前を入力します (例: *Azure SP*)。
 
     d.**[保存]** をクリックします。
 
@@ -155,7 +155,7 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
 
 7. Azure AD ポータルの **[シングル サインオンの確認]** ページで、**[次へ]** をクリックします。<br><br>![Azure AD のシングル サインオン][18]
 
-1. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD のシングル サインオン][19]
+1. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Single Sign-On][19]
 
 
 ### Azure AD のテスト ユーザーの作成
@@ -201,7 +201,7 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
  
 ### SilkRoad Life Suite テスト ユーザーの作成
 
-このセクションの目的は、SilkRoad Life Suite で Britta Simon というユーザーを作成することです。Britta は、Azure AD 内の Britta の **emailaddress** に一致する SSO ID (AuthParam と呼ばれることがあります) を持っている必要があります。
+このセクションの目的は、SilkRoad Life Suite で Britta Simon というユーザーを作成することです。Britta は、Azure AD 内の Britta の **emailaddress** に一致する SSO ID (*AuthParam* と呼ばれることがあります) を持っている必要があります。
 
 **SilkRoad Life Suite で Britta Simon というユーザーを作成するには、次の手順に従います。**
 
@@ -271,4 +271,4 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
 [204]: ./media/active-directory-saas-silkroad-life-suite-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-silkroad-life-suite-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0601_2016-->

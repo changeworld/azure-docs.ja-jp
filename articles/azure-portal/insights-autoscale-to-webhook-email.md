@@ -41,8 +41,8 @@ Azure ポータルから Cloud Services とサーバー ファーム (Web Apps) 
 ## Webhook での認証
 認証 URI には、次の 2 つの形式があります。
 
-	1. Token-base authentication, where you save the webhook URI with a token ID as a query parameter. For example, https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
-	2. Basic authentication, where you use a user ID and password. For example, https://userid:password@mysamplealert/webcallback?someparamater=somevalue&parameter=value
+1. トークンベースの認証。クエリ パラメーターとしてトークン ID を使用して Webhook URI を保存します。たとえば、https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue のように指定します。
+2. 基本認証。ユーザー ID とパスワードを使用します。たとえば、https://userid:password@mysamplealert/webcallback?someparamater=somevalue&parameter=value のように指定します。
 
 ## 自動スケール通知の Webhook ペイロード スキーマ
 自動スケール通知が生成されると、次のメタデータが Webhook ペイロードに含まれます。
@@ -93,4 +93,4 @@ Azure ポータルから Cloud Services とサーバー ファーム (Web Apps) 
 |newCapacity|	あり |自動スケールによってリソースがスケールされた後の新しいインスタンス数。|
 |プロパティ|	いいえ|	省略可能。<Key  Value> ペアのセット (例: Dictionary <String  String>)。properties フィールドは省略可能です。カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。|
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0601_2016-->

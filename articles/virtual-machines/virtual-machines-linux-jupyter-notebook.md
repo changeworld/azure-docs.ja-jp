@@ -29,8 +29,6 @@ Azure には、[Jupyter の使用をすぐに開始する](http://blogs.technet.
 
 Notebook サービスが自分のシナリオに合っていない場合でも、この記事を読み進めてください。仮想マシン (VM) を使用して Jupyter Notebook を Microsoft Azure にデプロイする方法の説明があります。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 [AZURE.INCLUDE [create-account-and-vms-note](../../includes/create-account-and-vms-note.md)]
 
 ## Azure での VM の作成と構成
@@ -124,7 +122,7 @@ Linux で次のコマンドを使用します。
     Verify password:
     sha1:b86e933199ad:a02e9592e59723da722.. (elided the rest for security)
 
-次に、プロファイルの構成ファイルを編集します。このファイルは、現在のディレクトリにある `jupyter_notebook_config.py` ファイルです。このファイルは存在しないことがあります。その場合は作成してください。このファイルにはさまざまなフィールドが含まれ、既定ではいずれもコメント アウトされています。このファイルは、よく使用するテキスト エディターで開くことができます。少なくとも次の内容が含まれていることを確認してください。**構成内の c.NotebookApp.password は、前の手順で取得した sha1 に必ず置き換えてください**。
+次に、プロファイルの構成ファイルを編集します。このファイルは、現在のディレクトリにある `jupyter_notebook_config.py` ファイルです。このファイルは存在しないことがあります。その場合は作成してください。このファイルにはさまざまなフィールドが含まれ、既定ではいずれもコメント アウトされています。このファイルは、よく使用するテキスト エディターで開くことができます。少なくとも次の内容が含まれていることを確認してください。**構成ファイル内の c.NotebookApp.password は、前の手順で取得した sha1 に必ず置き換えてください**。
 
     c = get_config()
 
@@ -195,8 +193,8 @@ Jupyter の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介し
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-[portal-vm-linux]: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
+[portal-vm-linux]: https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
 [リポジトリ]: https://github.com/ipython/ipython
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="MongoDB 向けの DocumentDB プロトコル サポート | Microsoft Azure" 
-	description="現在、プレビューでご利用いただける MongoDB 向けの DocumentDB プロトコルについて紹介します。" 
-	keywords="MongoDB プロトコル, MongoDB, Mongo データベース"
+	description="現在、パブリック プレビューでご利用いただける DocumentDB の MongoDB プロトコル対応について紹介します。" 
+	keywords="mongodb"
 	services="documentdb" 
 	authors="stephbaron" 
 	manager="jhubbard" 
@@ -14,46 +14,28 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/31/2016" 
+	ms.date="05/31/2016" 
 	ms.author="stbaro"/>
 
 # MongoDB 向けの DocumentDB プロトコル サポート
 
-Microsoft Azure DocumentDB データベースは、MongoDB 向けに作成されたアプリのデータ ストアとして使用できるようになりました。MongoDB 用の既存のドライバーとこのプレビュー機能を使えば、MongoDB 向けに作成されたアプリケーションは DocumentDB と簡単かつ透過的に通信できます。開発者は、MongoDB 向けの現在のツールとスキル セットを利用して、DocumentDB の完全に管理されたスケーラブルな NoSQL データベースを活用するアプリケーションを構築できます。
+## Azure DocumentDB とは
+Azure DocumentDB は、完全管理された NoSQL データベース サービスです。高速で確実なパフォーマンス、高可用性、自動スケール、開発の容易さを視野に入れて構築されています。その柔軟性に優れたデータ モデルと一貫して低いレイテンシ、多彩なクエリ機能は、Web、モバイル、ゲーム、IoT など、シームレスな拡張性が求められるアプリケーションに最適な選択肢となっています。詳細については、[DocumentDB の概要](documentdb-introduction.md)を参照してください。
 
-現在、この新しい機能について、お客様によるプレビューを受け付けています。プレビューをご希望の場合は、以下の手順でプレビュー プログラムの利用を申し込んでください。お客様の承認後にご連絡を差し上げます。
+## DocumentDB における MongoDB のプロトコル対応とは
+MongoDB 向けに作成されたアプリのデータ ストアとして DocumentDB データベースを使用できるようになりました。多くの場合、接続文字列を変更するだけで、MongoDB 用の既存の[ドライバー](https://docs.mongodb.org/ecosystem/drivers/)を使用して簡単かつ透過的に DocumentDB とやり取りすることができます。まだプレビュー段階ですが、この機能を使用することで、既にある MongoDB のスキルとツールを無駄にすることなく、DocumentDB の完全に管理されたスケーラブルな NoSQL データベースを利用するアプリケーションを簡単に作成し、Azure クラウドで実行することができます。
 
-## 前提条件
-
-プレビュー プログラムの利用を申し込むにあたって、次のものが必要です。
-
-- **Azure サブスクリプション**。「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
-
-## MongoDB プレビュー向けの DocumentDB プロトコル サポートの利用を申し込む  
-
-プレビューの利用を申し込むには、次の手順に従います。
-
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. **[新規]**、**[データ + ストレージ]**、**[すべて表示]**、**[さらに表示]**、**[DocumentDB - MongoDB のプロトコル サポート]** の順にクリックします。
-
-	![Screen shot of the Marketplace and Data + Storage blades, highlighting DocumentDB - Protocol Support for MongoDB, Mongo database](./media/documentdb-protocol-mongodb/marketplacegallery1.png)
-
-3. 代わりに、**[データ + ストレージ]** カテゴリ内を "DocumentDB プロトコル" で検索してもかまいません。
-
-	![Screen shot of the Marketplace and Data + Storage search blades, highlighting DocumentDB - Protocol Support for MongoDB, Mongo database](./media/documentdb-protocol-mongodb/marketplacegallery2.png)
-
-4. **[作成]** をクリックしてプレビューのサインアップ プロセスを開始します。
-
-	![The DocumentDB - Protocol Support for MongoDB blade in the Azure portal](./media/documentdb-protocol-mongodb/marketplacegallery3.png)
-
-5. **[新しい DocumentDB アカウント]** ブレードで、**[プレビューにサインアップ]** をクリックします。情報を確認し、**[OK]** をクリックします。パブリック プレビューに対して Azure サブスクリプションが有効になると、電子メールを受信します。
-
-	![The Sign up to preview today blade for DocumentDB - Protocol Support for MongoDB in the Azure portal](./media/documentdb-protocol-mongodb/registerforpreview.png)
-
+DocumentDB が MongoDB のプロトコルに対応したことで、データの CRUD (Create、Read、Update、Delete) やデータベースの照会などに、MongoDB の主要な API 関数を利用できるようになりました。現在実装されている機能は、一般的なプラットフォーム、フレームワーク、ツールの要件に加え、Azure を評価する大規模 MongoDB ユーザーのクラウド プラットフォームにおけるニーズを反映した優先度に従って決められました。
+  
 
 ## 次のステップ
-- プレビューの利用が承認されたら、アカウントを作成して開始する手順が記載されたウェルカム メールを受信します。
+
+
+- MongoDB のプロトコル対応の DocumentDB アカウントを[作成](documentdb-create-mongodb-account.md)する方法を確認します。
+- MongoDB のプロトコル対応の DocumentDB アカウントに[接続](documentdb-connect-mongodb-account.md)する方法を確認します。
+- MongoDB のプロトコル対応の DocumentDB アカウントで [MongoChef を使用](documentdb-mongodb-mongochef.md)する方法を確認します。
+- MongoDB のプロトコル対応 DocumentDB の[サンプル](documentdb-mongodb-samples.md)を体験します。
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->

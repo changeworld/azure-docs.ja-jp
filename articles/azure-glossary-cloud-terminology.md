@@ -57,7 +57,7 @@ Windows PC からコマンド ラインを使って Azure サービスを管理�
 Microsoft Azure でリソースをデプロイするために使用される 2 つの[デプロイ モデル](resource-manager-deployment-model.md)のうちの 1 つ (もう一方はクラシック デプロイ モデル)。Azure リソースには、一方のモデルでしかデプロイできないものと、両方のモデルでデプロイできるものがあります。リソースのデプロイにどのモデルを使えるかは、個々の Azure リソースのガイダンスに詳しくまとめられています。
 
 
-### <a name="faultdomain"></a>障害ドメイン  
+### <a name="fault-domain"></a>障害ドメイン  
 同時にエラーになる可能性のある可用性セット内の仮想マシンのコレクション。その一例が、共通の電源とネットワーク スイッチを使用する、ラック内のマシンのグループです。Azure では、可用性セット内の仮想マシンは自動的に複数の障害ドメインに分散されます。「[Windows 仮想マシンの可用性の管理](./virtual-machines/virtual-machines-windows-manage-availability.md)」と「[Linux 仮想マシンの可用性管理](./virtual-machines/virtual-machines-linux-manage-availability.md)」もご覧ください。
 
 
@@ -142,7 +142,7 @@ Azure サービスを入手する権利を与える、お客様と Microsoft の
 
 
 ### <a name="vnet"></a>仮想ネットワーク  
-他のどの Azure テナントとも切り離された Azure リソース間の接続を提供するネットワーク。他の Azure 仮想ネットワークには [Azure VPN Gateway](vpn-gateway-about-vpngateways/) を介して接続できます。また、オンプレミスのネットワークには[さまざまな方法](vpn-gateway-cross-premises-options/)で接続できます。このネットワークでは、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。「[Virtual Network の概要](./virtual-network/virtual-networks-overview.md)」もご覧ください。
+他のどの Azure テナントとも切り離された Azure リソース間の接続を提供するネットワーク。他の Azure 仮想ネットワークには [Azure VPN Gateway](./vpn-gateway/vpn-gateway-about-vpngateways.md) を介して接続できます。また、オンプレミスのネットワークには[さまざまな方法](./vpn-gateway/vpn-gateway-cross-premises-options.md)で接続できます。このネットワークでは、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。「[Virtual Network の概要](./virtual-network/virtual-networks-overview.md)」もご覧ください。
 
 ###**関連項目**  
 - [Azure を使ってみる](https://azure.microsoft.com/get-started/)
@@ -150,4 +150,4 @@ Azure サービスを入手する権利を与える、お客様と Microsoft の
 - [ビジネス アプリケーションを Azure で](https://azure.microsoft.com/overview/business-apps-on-azure/)
 - [データセンターに Azure を](https://azure.microsoft.com/overview/business-apps-on-azure/) 
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

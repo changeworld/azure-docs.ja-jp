@@ -58,10 +58,10 @@ ARM テンプレートを使用しなくてもかまいません。プル サー
 
 ## 手順 1: プル サーバーと Automation アカウントを設定する
 
-以下の認証済み (Add-AzureAccount) の PowerShell コマンドラインを使用します (プル サーバーの設定には数分かかる場合があります)。
+以下の認証済み (Add-AzureRmAccount) の PowerShell コマンド ラインを使用します (プル サーバーの設定には数分かかる場合があります)。
 
     New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
-    New-AzureAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT 
+    New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT 
 
 Automation アカウントは、東日本、米国東部 2、西ヨーロッパ、東南アジア、米国中南部のいずれかのリージョン (場所ともいう) に配置できます。
 
@@ -78,16 +78,16 @@ PowerShell ギャラリーは、Azure Automation アカウントに DSC リソ�
 手動による方法もあります。Windows コンピューター用の PowerShell 統合モジュールのフォルダー構造は、Azure Automation で必要なフォルダー構造とは少し異なります。ユーザーが少し調整する必要があります。しかし、難しくはありません。リソースごとに一度行うだけです (将来的にアップグレードする場合を除く)。 PowerShell 統合モジュールの作成の詳細については、この [Azure Automation 用の統合モジュールの作成](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)に関する記事を参照してください。
 
 -   次のように、ワークステーションに必要なモジュールをインストールします。
-    -   [Windows Management Framework v5](http://aka.ms/wmf5latest) をインストールします (Win10 では不要)。
-    -   `Install-Module  –ModuleName MODULENAME` (PowerShell ギャラリーからモジュールを取得します)。 
+    -   [Windows Management Framework v5](http://aka.ms/wmf5latest) をインストールします (Windows 10 では不要)。
+    -   `Install-Module –Name MODULE-NAME` (PowerShell ギャラリーからモジュールを取得します)。 
 -   `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` からモジュール フォルダーを一時フォルダーにコピーします。 
 -   メイン フォルダーからサンプルとドキュメントを削除します。 
--   メイン フォルダーを zip します。zip ファイルにはフォルダーとまったく同じ名前を付けます。 
--   Azure ストレージ アカウントの BLOB ストレージなど、アクセス可能な http の場所に zip ファイルを配置します。
+-   メイン フォルダーを zip 圧縮します。zip ファイルにはフォルダーとまったく同じ名前を付けます。 
+-   Azure ストレージ アカウントの Blob Storage など、アクセス可能な HTTP の場所に zip ファイルを配置します。
 -   以下の PowerShell を実行します。
 
-        New-AzureAutomationModule ``
-            -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT ``
+        New-AzureRmAutomationModule `
+            -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
             -Name MODULE-NAME –ContentLink "https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip"
         
 
@@ -171,7 +171,7 @@ New-ConfigurationScript.ps1:
 
 ## メモ
 
-この使用例では、Azure ギャラリーにある一般的な Windows 2012 R2 イメージから VM を開始します。格納されている任意のイメージから開始し、DSC 構成で微調整を行うことができます。ただし、イメージに組み込まれている構成を変更するのは、DSC を使用して構成を動的に更新するよりもはるかに困難です。
+この使用例では、Azure ギャラリーにある一般的な Windows Server 2012 R2 イメージから VM を開始します。格納されている任意のイメージから開始し、DSC 構成で微調整を行うことができます。ただし、イメージに組み込まれている構成を変更するのは、DSC を使用して構成を動的に更新するよりもはるかに困難です。
 
 VM でこの手法を使用する際に、ARM テンプレートや VM 拡張機能を使用する必要はありません。また、VM は、CD 管理下の Azure にある必要はありません。必要なのは、Chocolatey をインストールし、プル サーバーの場所を認識するように VM で LCM を構成することだけです。
 
@@ -185,4 +185,4 @@ VM でこの手法を使用する際に、ARM テンプレートや VM 拡張機
 - [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 - [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

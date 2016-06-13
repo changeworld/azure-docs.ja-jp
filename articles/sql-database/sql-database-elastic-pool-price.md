@@ -3,15 +3,15 @@
 	description="エラスティック データベース プール固有の価格情報。"
 	services="sql-database"
 	documentationCenter=""
-	authors="sidneyh"
+	authors="srinia"
 	manager="jhubbard"
 	editor=""/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="04/11/2016"
-	ms.author="sidneyh"
+	ms.date="05/27/2016"
+	ms.author="srinia"
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
@@ -41,4 +41,4 @@ eDtu およびサービス レベルについては、[SQL Database のオプシ
 - [SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md)
 - [エラスティック データベース プールに適したデータベースを識別する Powershell スクリプト](sql-database-elastic-pool-database-assessment-powershell.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->

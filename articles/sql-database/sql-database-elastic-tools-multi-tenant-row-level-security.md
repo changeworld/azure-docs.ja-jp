@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/02/2016" 
-	ms.author="thmullan;torsteng;sidneyh" />
+	ms.date="05/27/2016" 
+	ms.author="thmullan;torsteng" />
 
 # 弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション 
 
@@ -312,4 +312,4 @@ GO
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

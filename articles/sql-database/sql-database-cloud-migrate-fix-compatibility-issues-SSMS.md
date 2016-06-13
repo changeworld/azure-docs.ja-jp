@@ -13,24 +13,34 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="03/14/2016"
+   ms.date="05/31/2016"
    ms.author="carlrab"/>
 
 # SQL Database へ移行する前に SQL Server Management Studio を使用して SQL Server データベースの互換性に関する問題を修正する
 
-移行元の SQL Server データベースに互換性がないことがわかった場合は、いくつかのオプションを使用して、データベース互換性の問題を修正します。
-
 > [AZURE.SELECTOR]
 - [SQL Azure 移行ウィザード](sql-database-cloud-migrate-fix-compatibility-issues.md)を使用する
-- [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md) の使用
-- [SSMS](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md) の使用
+- [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md) を使用する
+- [SSMS](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md) を使用する
+
+上級ユーザーは、Azure SQL Database へ移行する前に SQL Server Management Studio を使用して SQL Server データベースの互換性に関する問題を修正できます。
 
 ## SQL Server Management Studio を使用する
 
-SQL Server Management Studio では、**ALTER DATABASE** などの各種 Transact-SQL コマンドを使用して互換性に関する問題を修正できます。
+SQL Server Management Studio では、**ALTER DATABASE** などの各種 Transact-SQL コマンドを使用して互換性に関する問題を修正できます。この方法は主に、ライブ データベースでの Transact-SQL の操作に慣れている上級ユーザーを対象にしています。それ以外の場合は、SSDT を使用することをお勧めします。
 
-## 次のステップ: 移行方法を選択して移行を実行する
 
-[移行方法を選択](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)します。
 
-<!---HONumber=AcomDC_0330_2016------>
+## 次のステップ
+
+- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+- [互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)
+
+## 詳細情報
+
+- [SQL Database V12](sql-database-v12-whats-new.md)
+- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
+- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
+
+<!---HONumber=AcomDC_0601_2016-->

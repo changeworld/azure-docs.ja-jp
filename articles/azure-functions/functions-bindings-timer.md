@@ -47,9 +47,7 @@
 
 ## スケジュール式の形式
 
-スケジュール式には、{second} {minute} {hour} {day} {month} {day of the week} の 6 つのフィールドを含む [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)を指定できます。オンラインで見つかる CRON 式に関するドキュメントの多くは、{second} フィールドが省略されているため、これらのいずれかからコピーする場合は、この追加フィールドを調整する必要があります。
-
-スケジュール式では、*hh:mm:ss* 形式を使用して、関数のトリガー間隔の遅延時間を指定することもできます。
+スケジュール式は、{second} {minute} {hour} {day} {month} {day of the week} の 6 つのフィールドを含む [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)です。オンラインで見つかる CRON 式に関するドキュメントの多くは、{second} フィールドが省略されているため、これらのいずれかからコピーする場合は、この追加フィールドを調整する必要があります。
 
 スケジュール式の例を以下に示します。
 
@@ -67,13 +65,6 @@
 "runOnStartup": true,
 ```
 
-15 秒ごとにトリガーするには、次のように指定します。
-
-```json
-"schedule": "00:00:15",
-"runOnStartup": false,
-```
-
 ## タイマー トリガーの C# コードの例
 
 この C# コードの例では、関数がトリガーされるたびにログを 1 つだけ書き込みます。
@@ -89,4 +80,4 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

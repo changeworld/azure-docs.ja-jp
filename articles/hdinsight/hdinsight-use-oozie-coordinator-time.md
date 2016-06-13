@@ -14,17 +14,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="05/26/2016"
 	ms.author="jgao"/>
 
 
 # HDInsight の Hadoop での時間ベースの Oozie コーディネーターを使用したワークフローの定義とジョブの調整
 
-この記事では、ワークフローとコーディネーターを定義する方法と、時間に基づいてコーディネーター ジョブを起動する方法について説明します。この記事を読む前に、「[HDInsight での Oozie の使用][hdinsight-use-oozie]」を読むと役に立ちます。Azure Data Factory については、「[Data Factory で Pig および Hive を使用する](../data-factory/data-factory-data-transformation-activities.md)」を参照してください。
+この記事では、ワークフローとコーディネーターを定義する方法と、時間に基づいてコーディネーター ジョブを起動する方法について説明します。この記事を読む前に、「[HDInsight での Oozie の使用][hdinsight-use-oozie]」を読むと役に立ちます。ジョブのスケジューリングには、Oozie に加え、Azure Data Factory を使用することもできます。Azure Data Factory については、「[Data Factory で Pig および Hive を使用する](../data-factory/data-factory-data-transformation-activities.md)」を参照してください。
 
 > [AZURE.NOTE] この記事では、Windows ベースの HDInsight クラスターが必要です。Linux ベースのクラスターで Oozie を使用する方法 (時間ベースのジョブを含む) の詳細については、「[Linux ベースの HDInsight での Hadoop と Oozie を使用したワークフローの実行](hdinsight-use-oozie-linux-mac.md)」を参照してください。
 
-##<a id="whatisoozie"></a>Oozie とは
+##Oozie とは
 
 Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。Hadoop スタックと統合されていて、Apache MapReduce、Apache Pig、Apache Hive、Apache Sqoop の Hadoop ジョブをサポートしています。Java プログラムやシェル スクリプトのような、システム特有のジョブのスケジュールを設定するのに使用することもできます。
 
@@ -57,7 +57,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 > [AZURE.NOTE] HDInsight クラスターでサポートされている Oozie のバージョンについては、「[HDInsight で提供されるクラスター バージョンの新機能][hdinsight-versions]」を参照してください。
 
 
-##<a id="prerequisites"></a>前提条件
+##前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
@@ -65,9 +65,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
     [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-    Window PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。詳細については、「[Windows PowerShell スクリプトの実行][powershell-script]」を参照してください。
-
-- **HDInsight クラスター**。HDInsight クラスターの作成については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」または「[HDInsight の概要][hdinsight-get-started]」を参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
+- **HDInsight クラスター**。HDInsight クラスターの作成については、[HDInsight クラスターの作成][hdinsight-provision]または [HDInsight の概要][hdinsight-get-started]に関するページを参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
 
 	<table border = "1">
 	<tr><th>クラスター プロパティ</th><th>Windows PowerShell 変数名</th><th>値</th><th>説明</th></tr>
@@ -94,7 +92,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 > [AZURE.NOTE] テーブルに値を入力します。そうしておくと、このチュートリアルを読み進める際に役に立ちます。
 
 
-##<a id="defineworkflow"></a>Oozie ワークフローと関連 HiveQL スクリプトを定義する
+##Oozie ワークフローと関連 HiveQL スクリプトを定義する
 
 Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書かれています。既定のワークフロー ファイル名は *workflow.xml* です。ワークフロー ファイルはローカルに保存し、このチュートリアルの後半で Azure PowerShell を使用して HDInsight クラスターにデプロイします。
 
@@ -241,7 +239,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 2. ANSI(ASCII) エンコードを使用して、ファイルを **C:\\Tutorials\\UseOozie\\coordinator.xml** として保存します。(テキスト エディターにこのオプションがない場合はメモ帳を使用します。)
 
-##<a id="deploy"></a>Oozie プロジェクトをデプロイしてチュートリアルを準備する
+##Oozie プロジェクトをデプロイしてチュートリアルを準備する
 
 Azure PowerShell スクリプトを実行して、以下を実行します。
 
@@ -378,7 +376,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 	![チュートリアルの準備の出力][img-preparation-output]
 
-##<a id="run"></a>Oozie プロジェクトを実行する
+##Oozie プロジェクトを実行する
 
 現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。**Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。Oozie Web サービス API は、HTTP REST JSON API です。Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight クラスター バージョン 2.1 の場合) を参照してください。
 
@@ -648,7 +646,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 **ジョブのエラー ログを確認するには**
 
-ワークフローのトラブルシューティングを実行するには、クラスター ヘッドノードの C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log にある Oozie のログ ファイルを参照します。RDP の詳細については、「[Administering HDInsight clusters using the Azure portal (Azure ポータルを使用した HDInsight クラスターの管理)][hdinsight-admin-portal]」を参照してください。
+ワークフローのトラブルシューティングを実行するには、クラスター ヘッドノードの C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log にある Oozie のログ ファイルを参照します。RDP の詳細については、[Azure ポータルを使用した HDInsight クラスターの管理][hdinsight-admin-portal]に関する記事を参照してください。
 
 **チュートリアルを再実行するには**
 
@@ -686,7 +684,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 	$conn.close()
 
 
-##<a id="nextsteps"></a>次のステップ
+##次のステップ
 このチュートリアルでは、Oozie ワークフローおよび Oozie コーディネーターを定義する方法と、Azure PowerShell を使用して Oozie コーディネーター ジョブを実行する方法を説明しました。詳細については、次の記事を参照してください。
 
 - [HDInsight の概要][hdinsight-get-started]
@@ -743,4 +741,4 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

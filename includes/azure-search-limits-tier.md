@@ -1,12 +1,10 @@
-Resource|Free|Basic (Preview)|S1|S2
+リソース|無料|Basic (プレビュー)|S1|S2
 ---|---|---|---|----
-Maximum services at each tier per subscription <sup>1</sup>|1 |12 |12  |1
-Maximum scale per tier <sup>2</sup>|N/A|3 SU (up to 3 replicas and 1 partition)|36 SU|36 SU  
+サブスクリプション レベルごとの最大サービス数 <sup>1</sup>|1 |12 |12 |1
+レベルごとの最大スケール <sup>2</sup>|該当なし|3 SU (最大 3 レプリカと 1 パーティション)|36 SU|36 SU  
 
-<sup>1</sup> Each service is provisioned at a given pricing tier, with limits on the number of services you can provision at each tier within a single Azure subscription. During the Preview period, tiers are available at an introductory rate of 50% off the full price.
+<sup>1</sup> サービスはそれぞれ特定の価格レベルでプロビジョニングされ、単一の Azure サブスクリプション内のレベルごとにプロビジョニングできるサービスの数には制限があります。プレビュー期間中、レベルは全額の 50% オフの導入価格で利用できます。
 
-<sup>2</sup> Scale out limits are defined in terms of Search Units (SU) per tier. Search units are the billable unit for either a **replica** or a **partition**. You need both for storage, indexing, and query operations. Visit [Scale resource levels for query and index workloads](../articles/search/search-capacity-planning.md) for valid combinations of replicas and partitions that stay under the maximum limit of 3 or 36 units, for **Basic** and **Standard** respectively. Because **Free** is based on shared resources used by multiple subscribers, scale out is not provided at this level.
+<sup>2</sup> スケール アウトの制限は、レベルあたりの検索ユニット (SU) の観点から定義されます。検索単位数は**レプリカ**または**パーティション**のいずれかの課金対象項目です。ストレージ、インデックス作成と、クエリ操作の両方が必要です。**Basic** と **Standard** それぞれで 3 または 36 ユニットの最大制限内で保持するレプリカとパーティションの有効な組み合わせについては、「[クエリとインデックスのワークロードに関するリソースレベルのスケール](../articles/search/search-capacity-planning.md)」を参照してください。 **Free** は複数のサブスクライバーによって使用される共有リソースに基づいているため、このレベルではスケール アウトは提供されていません。
 
-
-
-
+<!---HONumber=AcomDC_0601_2016-->

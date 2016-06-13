@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Oracle からのデータの移動 | Azure Data Factory" 
+	pageTitle="Data Factory を使用して Oracle との間でデータを移動する | Microsoft Azure" 
 	description="Azure Data Factory を使用してオンプレミスの Oracle データベースとの間でデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -16,15 +16,15 @@
 	ms.date="04/18/2016" 
 	ms.author="spelluru"/>
 
-# Azure Data Factory を使用してオンプレミスの Oracle からデータを移動する 
+# Azure Data Factory を使用してオンプレミスの Oracle との間でデータを移動する 
 
-この記事では、データ ファクトリのコピー アクティビティを使用して Oracle から他のデータ ストアにデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+この記事では、データ ファクトリのコピー アクティビティを使用して Oracle と他のデータ ストアとの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
 ## インストール 
 Azure Data Factory サービスをオンプレミスの Oracle データベースに接続できるようにするには、次をインストールする必要があります。
 
 - データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上にインストールされた Data Management Gateway。Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータをクラウド サービスに接続するソフトウェアです。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。 
-- Oracle Data Provider for .NET。これは、[Oracle Data Access Components for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/index.html) に含まれます。ゲートウェイがインストールされているホスト コンピューターに適切なバージョン (32/64 ビット) をインストールします。[Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降にアクセスできます。
+- Oracle Data Provider for .NET。これは、[Oracle Data Access Components for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/) に含まれます。ゲートウェイがインストールされているホスト コンピューターに適切なバージョン (32/64 ビット) をインストールします。[Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降にアクセスできます。
 
 > [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
 
@@ -159,7 +159,7 @@ Azure Data Factory サービスをオンプレミスの Oracle データベー�
 
 **コピー アクティビティのあるパイプライン:**
 
-上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** 型が **RelationalSource** に設定され、**sink** 型が **BlobSink** に設定されています。**oracleReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
+上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** 型が **OracleSource** に設定され、**sink** 型が **BlobSink** に設定されています。**oracleReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
 	
 	{  
@@ -170,7 +170,7 @@ Azure Data Factory サービスをオンプレミスの Oracle データベー�
 	    "description":"pipeline for copy activity",
 	    "activities":[  
 	      {
-	        "name": "AzureSQLtoBlob",
+	        "name": "OracletoBlob",
 	        "description": "copy activity",
 	        "type": "Copy",
 	        "inputs": [
@@ -216,6 +216,180 @@ Oracle データベースでの日付の構成方法に基づいて、クエリ�
 
 	"oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\')  AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
+## サンプル: Azure BLOB から Oracle にデータをコピーする
+このサンプルは、Azure Blob Storage からオンプレミスの Oracle データベースにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用すると、[ここ](data-factory-data-movement-activities.md#supported-data-stores)に示したいずれかのソースから**直接**データをコピーすることができます。
+ 
+このサンプルでは、次の Data Factory のエンティティがあります。
+
+1.	[OnPremisesOracle](data-factory-onprem-oracle-connector.md#oracle-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4.	[OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。 
+5.	source として [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を、sink として [OracleSink](data-factory-onprem-oracle-connector.md#oracle-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
+
+このサンプルはオンプレミスの Oracle データベース内のテーブルに BLOB から 1 時間ごとにデータをコピーします。下のサンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションの各プロパティのドキュメントを参照してください。
+
+**Oracle のリンクされたサービス:**
+
+	{
+	  "name": "OnPremisesOracleLinkedService",
+	  "properties": {
+	    "type": "OnPremisesOracle",
+	    "typeProperties": {
+	      "ConnectionString": "data source=<data source>;User Id=<User Id>;Password=<Password>;",
+	      "gatewayName": "<gateway name>"
+	    }
+	  }
+	}
+
+**Azure BLOB ストレージのリンクされたサービス:**
+
+	{
+	  "name": "StorageLinkedService",
+	  "properties": {
+	    "type": "AzureStorage",
+	    "typeProperties": {
+	      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<Account key>"
+	    }
+	  }
+	}
+
+**Azure BLOB の入力データセット**
+
+データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。フォルダー パスは開始時間の年、月、日の部分を利用し、ファイル名は開始時間の時刻部分を使用します。「“external”: “true”」設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
+
+	{
+	  "name": "AzureBlobInput",
+	  "properties": {
+	    "type": "AzureBlob",
+	    "linkedServiceName": "StorageLinkedService",
+	    "typeProperties": {
+	      "folderPath": "mycontainer/myfolder/yearno={Year}/monthno={Month}/dayno={Day}",
+	      "fileName": "{Hour}.csv",
+	      "partitionedBy": [
+	        {
+	          "name": "Year",
+	          "value": {
+	            "type": "DateTime",
+	            "date": "SliceStart",
+	            "format": "yyyy"
+	          }
+	        },
+	        {
+	          "name": "Month",
+	          "value": {
+	            "type": "DateTime",
+	            "date": "SliceStart",
+	            "format": "%M"
+	          }
+	        },
+	        {
+	          "name": "Day",
+	          "value": {
+	            "type": "DateTime",
+	            "date": "SliceStart",
+	            "format": "%d"
+	          }
+	        },
+	        {
+	          "name": "Hour",
+	          "value": {
+	            "type": "DateTime",
+	            "date": "SliceStart",
+	            "format": "%H"
+	          }
+	        }
+	      ],
+	      "format": {
+	        "type": "TextFormat",
+	        "columnDelimiter": ",",
+	        "rowDelimiter": "\n"
+	      }
+	    },
+	    "external": true,
+	    "availability": {
+	      "frequency": "Hour",
+	      "interval": 1
+	    },
+	    "policy": {
+	      "externalData": {
+	        "retryInterval": "00:01:00",
+	        "retryTimeout": "00:10:00",
+	        "maximumRetry": 3
+	      }
+	    }
+	  }
+	}
+
+**Oracle 出力データセット:**
+
+このサンプルは、「MyTable」という名前のテーブルが Oracle に作成されていることを前提としています。BLOB CSV ファイルに含めることが予想される数の列で Oracle にテーブルを作成する必要があります。新しい行は 1 時間ごとにテーブルに追加されます。
+
+	{
+	    "name": "OracleOutput",
+	    "properties": {
+	        "type": "OracleTable",
+	        "linkedServiceName": "OnPremisesOracleLinkedService",
+	        "typeProperties": {
+	            "tableName": "MyTable"
+	        },
+	        "availability": {
+	            "frequency": "Hour",
+	            "interval": "1"
+	        }
+	    }
+	}
+
+
+**コピー アクティビティのあるパイプライン:**
+
+上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** 型が **BlobSource** に設定され、**sink** 型が **OracleSink** に設定されています。
+
+	
+	{  
+	    "name":"SamplePipeline",
+	    "properties":{  
+	    "start":"2014-06-01T18:00:00",
+	    "end":"2014-06-01T19:00:00",
+	    "description":"pipeline with copy activity",
+	    "activities":[  
+	      {
+	        "name": "AzureBlobtoOracle",
+	        "description": "Copy Activity",
+	        "type": "Copy",
+	        "inputs": [
+	          {
+	            "name": "AzureBlobInput"
+	          }
+	        ],
+	        "outputs": [
+	          {
+	            "name": "OracleOutput"
+	          }
+	        ],
+	        "typeProperties": {
+	          "source": {
+	            "type": "BlobSource"
+	          },
+	          "sink": {
+	            "type": "OracleSink"
+	          }
+	        },
+	       "scheduler": {
+	          "frequency": "Hour",
+	          "interval": 1
+	        },
+	        "policy": {
+	          "concurrency": 1,
+	          "executionPriorityOrder": "OldestFirst",
+	          "retry": 0,
+	          "timeout": "01:00:00"
+	        }
+	      }
+	      ]
+	   }
+	}
+
 
 ## Oracle のリンクされたサービスのプロパティ
 
@@ -236,7 +410,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-tableName | リンクされたサービスが参照する Oracle データベース インスタンスのテーブルの名前です。 | いいえ (**SqlSource** の **oracleReaderQuery** が指定されている場合)
+tableName | リンクされたサービスが参照する Oracle データベース インスタンスのテーブルの名前です。 | いいえ (**OracleSource** の **oracleReaderQuery** が指定されている場合)
 
 ## Oracle のコピー アクティビティの type プロパティ
 
@@ -246,12 +420,23 @@ tableName | リンクされたサービスが参照する Oracle データベー
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
 
+### OracleSource
 コピー アクティビティで、source の種類が **OracleSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
 プロパティ | 説明 |使用できる値 | 必須
 -------- | ----------- | ------------- | --------
-oracleReaderQuery | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。 
-例: select * from MyTable <br/><br/>指定されていない場合に実行される SQL ステートメント: select * from MyTable | いいえ (**dataset**の **tableName** が指定されている場合)
+oracleReaderQuery | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: select * from MyTable <br/><br/>指定されていない場合に実行される SQL ステートメント: select * from MyTable | いいえ (**dataset**の **tableName** が指定されている場合)
+
+### OracleSink
+**OracleSink** では次のプロパティがサポートされます。
+
+プロパティ | 説明 | 使用できる値 | 必須
+-------- | ----------- | -------------- | --------
+writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | (単位 = 時間) 例: 00:30:00 (30 分) | いいえ
+writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。整数 | (単位 = 行数) | いいえ (既定値 = 10000)  
+sqlWriterCleanupScript | 特定のスライスのデータを消去する方法で実行するコピー アクティビティのユーザー指定のクエリ。 | クエリ ステートメント。 | いいえ
+sliceIdentifierColumnName | コピー アクティビティで、自動生成スライス ID を入力する列のユーザー指定の名前。再実行時、特定のスライスのデータを消去するために使用されます。 | バイナリ (32) のデータ型の列の列名。 | いいえ
+
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -292,7 +477,7 @@ XML | String
 
 ## トラブルシューティングのヒント
 
-**問題:** 次の**エラー メッセージ**が表示される: コピー アクティビティに次の無効なパラメーターがあります: 'UnknownParameterName'、詳細メッセージ: 要求された .Net Framework Data Provider が見つかりません。インストールされていない可能性があります。
+****問題: ** 次の**エラー メッセージ**が表示される: コピー アクティビティに次の無効なパラメーターがあります: 'UnknownParameterName'、詳細メッセージ: 要求された .Net Framework Data Provider が見つかりません。インストールされていない可能性があります。
 
 **考えられる原因**
 
@@ -301,7 +486,7 @@ XML | String
 
 **解決/回避策**
 
-1. Oracle 用の .NET Provider をインストールしていない場合は[インストール](http://www.oracle.com/technetwork/topics/dotnet/downloads/index.html)した後、シナリオをやり直します。 
+1. Oracle 用の .NET Provider をインストールしていない場合は[インストール](http://www.oracle.com/technetwork/topics/dotnet/downloads/)した後、シナリオをやり直します。 
 2. プロバイダーをインストールしてもエラー メッセージが表示される場合は、次の操作を行います。 
 	1. 次のフォルダーから .NET 2.0 のコンピューター構成を開きます。<system disk>:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\CONFIG\\machine.config
 	2. **Oracle Data Provider for .NET** を探します。**system.data** の **DbProviderFactories** の下に次のようなエントリを見つけることができます。“<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />”
@@ -314,6 +499,6 @@ XML | String
 
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

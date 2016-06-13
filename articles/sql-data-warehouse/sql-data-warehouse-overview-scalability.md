@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/28/2016"
+   ms.date="05/26/2016"
    ms.author="barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse のパフォーマンスのスケーラビリティ
@@ -22,7 +22,7 @@
 - [概要](sql-data-warehouse-overview-scalability.md)
 - [ポータル](sql-data-warehouse-manage-scale-out-tasks.md)
 - [PowerShell](sql-data-warehouse-manage-scale-out-tasks-powershell.md)
-- [REST](sql-data-warehouse-manage-scale-out-tasks-rest-api.md)
+- [REST ()](sql-data-warehouse-manage-scale-out-tasks-rest-api.md)
 - [TSQL](sql-data-warehouse-manage-scale-out-tasks-tsql.md)
 
 SQL Data Warehouse のアーキテクチャではストレージとコンピューティングを分離して、それぞれを個別にスケーリングできます。その結果、パフォーマンスのスケールアウト時に、必要な分だけのパフォーマンスにかかる料金を支払うことで、コストを節約できます。
@@ -36,7 +36,7 @@ SQL Data Warehouse のアーキテクチャではストレージとコンピュ�
 
 ## パフォーマンスのスケーリング
 
-SQL Data Warehouse では、CPU、メモリ、および I/O 帯域幅のコンピューティング リソースを増減させることにより、パフォーマンスの拡張と縮小をすばやく行えます。パフォーマンスのスケーリングに必要なことは、SQL Data Warehouse からデータベースに割り当てられている Data Warehouse ユニット (DWU) 数を調整するだけです。SQL Data Warehouse がすばやく変更を行い、ハードウェアやソフトウェアへの基本的な変更をすべて処理します。
+SQL Data Warehouse では、CPU、メモリ、および I/O 帯域幅のコンピューティング リソースを増減させることにより、パフォーマンスの拡張と縮小をすばやく行えます。パフォーマンスのスケーリングに必要なことは、SQL Data Warehouse からデータベースに割り当てられている Data Warehouse ユニット (DWU) の数を調整するだけです。SQL Data Warehouse がすばやく変更を行い、ハードウェアやソフトウェアへの基本的な変更をすべて処理します。
 
 >[AZURE.NOTE] データ ウェアハウスで優れたパフォーマンスを実現するために必要なストレージのタイプ、メモリ量、およびプロセッサのタイプを調査する必要があったのは遠い過去のことになりました。データ ウェアハウスをクラウドに置くことにより、低レベルのハードウェア問題に対処する必要はなくなりました。その代わりに、SQL Data Warehouse ではデータをどの程度高速に分析する必要があるかということが検討事項になります。
 
@@ -56,7 +56,7 @@ DWU の一覧については、[容量制限][]に関する記事のサービス
 
 ### パフォーマンスをスケーリングする方法
 
-コンピューティング能力を臨機応変に調整するには、データベースの Data Warehouse ユニット (DWU) の設定を単に変更します。バックグラウンドでは、SQL Data Warehouse は SQL Database の迅速で簡単なデプロイ機能を使用して CPU とメモリの割り当てを変更します。
+コンピューティング能力を臨機応変に調整するには、データベースの Data Warehouse ユニット (DWU) の設定を単に変更します。バックグラウンドでは、SQL Data Warehouse はインスタンスを停止し、CPU とメモリの割り当てを変更してから、インスタンスを再開します。
 
 DWU は 100 ブロック単位で割り当てられますが、すべてのブロックを使用できるわけではありません。パフォーマンスは DWU の増加に比例して増加します。より高いレベルの DWU では、パフォーマンスに大幅な改善が見られるには、100 個以上の DWU を追加する必要があります。DWU で意味のある改善を選択できるように、最良の結果が得られる DWU レベルが用意されています。
  
@@ -142,13 +142,11 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 [PowerShell によるコンピューティングの再開]: ./sql-data-warehouse-manage-scale-out-tasks-powershell.md#task-3-resume-compute
 [REST API によるコンピューティングの再開]: ./sql-data-warehouse-manage-scale-out-tasks-rest-api.md#task-3-resume-compute
 
-[同時実行モデル]: sql-data-warehouse-develop-concurrency.md
-[テーブルの設計]: sql-data-warehouse-develop-table-design.md
-[テーブルのハッシュ分散キーの選択]: sql-data-warehouse-develop-hash-distribution-key.md
-[パフォーマンスを向上させる統計]: sql-data-warehouse-develop-statistics.md
-[development overview]: sql-data-warehouse-overview-develop.md
-
-
+[同時実行モデル]: ./sql-data-warehouse-develop-concurrency.md
+[テーブルの設計]: ./sql-data-warehouse-develop-table-design.md
+[テーブルのハッシュ分散キーの選択]: ./sql-data-warehouse-develop-hash-distribution-key.md
+[パフォーマンスを向上させる統計]: ./sql-data-warehouse-develop-statistics.md
+[development overview]: ./sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 
@@ -157,4 +155,4 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

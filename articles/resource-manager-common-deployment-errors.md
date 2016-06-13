@@ -19,7 +19,7 @@
 
 # Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーをトラブルシューティングする
 
-このトピックでは、リソースを Azure にデプロイするときに発生する可能性がある一般的なエラーの解決方法について説明します。エラーについて説明するメッセージが確認できていることを前提としています。デプロイに失敗した理由についてさらに詳しい情報が必要な場合は、[デプロイ操作の表示](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
+このトピックでは、リソースを Azure にデプロイするときに発生する可能性がある一般的なエラーの解決方法について説明します。役立つエラー メッセージがすでに表示されているかどうかを確認してください。役立つエラー メッセージが表示されていない場合、またはデプロイが失敗した理由に関する詳細が必要な場合は、まず「[デプロイ操作の表示](resource-manager-troubleshoot-deployments-portal.md)」を参照してからこの記事に戻り、エラーの解決に役立ててください。
 
 ## 無効なテンプレートまたはリソース
 
@@ -33,7 +33,7 @@
 
 ## リソース名が既に存在する
 
-一部のリソース (特にストレージ アカウント、データベース サーバー、Web サイト) には、Azure 全体で一意となるリソース名を指定する必要があります。一意の名前を作成するには、使用している命名規則に、[uniqueString](./resource-group-template-functions/#uniquestring) 関数の結果を連結します。
+一部のリソース (特にストレージ アカウント、データベース サーバー、Web サイト) には、Azure 全体で一意となるリソース名を指定する必要があります。一意の名前を作成するには、使用している命名規則に、[uniqueString](resource-group-template-functions.md#uniquestring) 関数の結果を連結します。
  
     "name": "[concat('contosostorage', uniqueString(resourceGroup().id))]", 
     "type": "Microsoft.Storage/storageAccounts", 
@@ -240,4 +240,4 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 - Windows ベースの仮想マシンに対するリモート デスクトップ プロトコルのエラーのトラブルシューティングについては、[リモート デスクトップ接続のトラブルシューティング](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)に関するページを参照してください。
 - Linux ベースの仮想マシンに対する SSH (Secure Shell) エラーのトラブルシューティングについては、[SSH (Secure Shell) 接続のトラブルシューティング](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

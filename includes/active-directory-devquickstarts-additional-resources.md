@@ -4,4 +4,8 @@
 - [GitHub の Azure AD サンプル](https://github.com/AzureAdSamples)
 - [CloudIdentity.com](http://cloudidentity.com)
 
-<!---HONumber=AcomDC_0413_2016-->
+## マイクロソフト製品のセキュリティ更新プログラムの取得
+
+セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知の受信登録をしてください。
+
+<!---HONumber=AcomDC_0601_2016-->

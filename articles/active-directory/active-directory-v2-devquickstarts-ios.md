@@ -22,5 +22,9 @@ iOS のクイック スタート チュートリアルは、まだ準備がで�
 
 > [AZURE.NOTE]
 	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
+	
+	## Get security updates for our product
 
-<!---HONumber=AcomDC_0224_2016-->
+セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
+
+<!---HONumber=AcomDC_0601_2016-->

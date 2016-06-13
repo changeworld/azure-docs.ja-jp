@@ -14,16 +14,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="05/27/2016" 
 	ms.author="nitinme"/>
 
 
 # Jupyter Notebook をコンピューターにインストールして Azure HDInsight (プレビュー) 上の Apache Spark クラスターに接続する
 
-この記事では、カスタム PySpark (Python の場合) カーネルと Spark (Scala の場合) カーネル、Spark マジックと共に Jupyter Notebook をインストールし、HDInsight クラスターにノートブックを接続する方法について説明します。
-
-Azure HDInsight の Spark クラスターで Jupyter Notebook が既に使用できる状態になっていても、ご使用のコンピューターに Jupyter をインストールすることで、ノートブックをローカルで作成し、稼働中のクラスターに対してアプリケーションをテストしたうえで、クラスターにノートブックをアップロードするという選択肢が得られます。ノートブックをクラスターにアップロードする手段としては、クラスターで実行されている Jupyter Notebook を使用してアップロードする方法と、クラスターに関連付けられているストレージ アカウントの /HdiNotebooks フォルダーにそれらを保存する方法とがあります。クラスターにノートブックを保存する方法の詳細については、「[Notebook の格納場所](hdinsight-apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)」を参照してください。
-
+この記事では、カスタム PySpark (Python の場合) カーネルと Spark (Scala の場合) カーネル、Spark マジックと共に Jupyter Notebook をインストールし、HDInsight クラスターにノートブックを接続する方法について説明します。さまざまな理由から、Jupyter をローカル コンピューターにインストールすることが必要になるケースがあります。またローカル コンピューターへのインストールには、いくつかの課題もあります。これらの理由と課題については、この記事の最後のセクション「[Jupyter をローカル コンピューターにインストールする理由](#why-should-i-install-jupyter-on-my-computer)」を参照してください。
 
 Jupyter と Spark マジックは大きく 3 つの手順でコンピューターにインストールします。
 
@@ -33,12 +30,12 @@ Jupyter と Spark マジックは大きく 3 つの手順でコンピュータ�
 
 HDInsight クラスターの Jupyter Notebook で使用できるカスタム カーネルと Spark マジックの詳細については、[HDInsight の Apache Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)に関するページを参照してください。
 
-**前提条件:**
+##前提条件
 
 ここに記載したのは、Jupyter のインストールに関する前提条件ではありません。Jupyter Notebook のインストール後にノートブックを HDInsight クラスターに接続するための前提条件です。
 
 - Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- HDInsight Linux での Apache Spark クラスター。手順については、「[HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
+- HDInsight Linux での Apache Spark クラスター。手順については、「[Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
 
 ## Jupyter Notebook をコンピューターにインストールする
 
@@ -132,6 +129,18 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
 	>[AZURE.TIP] 別のクラスターに接続するようにノートブックの構成を更新する必要がある場合は、前の手順 3. を参照して、config.json の一連の値を更新してください。
 
+## Jupyter をローカル コンピューターにインストールする理由
+
+Jupyter をローカル コンピューターにインストールし、HDInsight 上の Spark クラスターに接続するケースとしては、さまざまな理由が考えられます。
+
+* Azure HDInsight の Spark クラスターで Jupyter Notebook が既に使用できる状態になっていても、ご使用のコンピューターに Jupyter をインストールすることで、ノートブックをローカルで作成し、稼働中のクラスターに対してアプリケーションをテストしたうえで、クラスターにノートブックをアップロードするという選択肢が得られます。ノートブックをクラスターにアップロードする手段としては、クラスターで実行されている Jupyter Notebook を使用してアップロードする方法と、クラスターに関連付けられているストレージ アカウントの /HdiNotebooks フォルダーにそれらを保存する方法とがあります。クラスターにノートブックを保存する方法の詳細については、[Jupyter Notebook の格納場所](hdinsight-apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)に関するセクションを参照してください。
+* ノートブックがローカルで利用できると、アプリケーションの要件に応じて異なる Spark クラスターに接続することができます。
+* GitHub を使用してソース管理システムを導入し、ノートブックのバージョン管理を行うことができます。複数のユーザーが同じノートブックで作業するコラボレーション環境を実現することもできます。
+* クラスターをセットアップしなくてもローカルでノートブックを使用できます。クラスターは、クラスターとの間でノートブックをテストする目的でのみ必要となります。ノートブックや開発環境を手動で管理するうえでクラスターは必要ありません。
+* 独自のローカル開発環境の方が、クラスター上の Jupyter 環境よりも構成しやすい場合があります。リモートのクラスターを構成しなくても、ローカルにインストールされているすべてのソフトウェアを有効活用することができます。
+
+>[AZURE.WARNING] Jupyter がローカル コンピューターにインストールされている場合、同じ Spark クラスター上で複数のユーザーが同時に同じノートブックを実行できます。そのような状況では、複数の Livy セッションが作成されます。問題が発生してデバッグが必要となった場合、それは Livy セッションとユーザーの対応関係を追跡する複雑な作業となります。
+
 
 
 
@@ -168,4 +177,4 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

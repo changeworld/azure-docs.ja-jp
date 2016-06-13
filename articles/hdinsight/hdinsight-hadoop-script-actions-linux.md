@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Linux ベースの HDInsight での Script Action 開発 | Microsoft Azure"
+    pageTitle="Linux ベースの HDInsight でのスクリプト アクション開発 | Microsoft Azure"
     description="Script Action を使って Linux ベースの HDInsight クラスターをカスタマイズする方法について説明します。"
     services="hdinsight"
     documentationCenter=""
@@ -13,20 +13,20 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="03/14/2016"
+    ms.date="05/31/2016"
     ms.author="larryfr"/>
 
-# HDInsight での Script Action 開発
+# HDInsight でのスクリプト アクション開発
 
-Script Action は、クラスターの構成設定を指定したり、追加のサービス、ツール、その他のソフトウェアをクラスターにインストールしたりして、Azure HDInsight クラスターをカスタマイズする方法です。クラスターの作成時または実行中のクラスターで、Script Action を使用できます。
+スクリプト アクションは、クラスターの構成設定を指定したり、追加のサービス、ツール、その他のソフトウェアをクラスターにインストールしたりして、Azure HDInsight クラスターをカスタマイズする方法です。クラスターの作成時または実行中のクラスターで、Script Action を使用できます。
 
-> [AZURE.NOTE] このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターでの Script Action の使用方法の詳細については、「[HDInsight での Script Action の開発 (Windows)](hdinsight-hadoop-script-actions.md)」を参照してください。
+> [AZURE.NOTE] このドキュメントの情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターでのスクリプト アクションの使用方法の詳細については、[HDInsight (Windows) でのスクリプト アクションの開発](hdinsight-hadoop-script-actions.md)に関するページを参照してください。
 
-## Script Action とは
+## スクリプト アクションとは
 
 Script Action は、Azure がクラスター ノードで実行して、構成の変更やソフトウェアのインストールを行う Bash スクリプトです。Script Action はルートとして実行され、完全なアクセス権をクラスター ノードに提供します。
 
-Script Action は次の方法によって適用できます。
+スクリプト アクションは次の方法によって適用できます。
 
 | これを使用してスクリプトを適用する... | クラスター作成時... | 実行中のクラスターで... |
 | ----- |:-----:|:-----:|
@@ -36,7 +36,7 @@ Script Action は次の方法によって適用できます。
 | HDInsight .NET SDK | ✓ | ✓ |
 | Azure Resource Manager テンプレート | ✓ | &nbsp; |
 
-これらの方法を使用した Script Action の適用の詳細については、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
+これらの方法を使用したスクリプト アクションの適用の詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
 ## <a name="bestPracticeScripting"></a>スクリプトの開発におけるベスト プラクティス
 
@@ -59,7 +59,7 @@ HDInsight のバージョンが異なれば、異なるバージョンの Hadoop
 
 ### <a name="bPS2"></a>スクリプト リソースへの安定したリンクの提供
 
-ユーザーは、スクリプトとスクリプトで使用されるリソースがすべてクラスターの有効期間全体で使用できること、実行中これらのファイルのバージョンが変更されないことを確認する必要があります。これらのリソースは、スケーリング処理中に、新しいノードをクラスターに追加する場合に必要です。
+スクリプトとスクリプトで使用されるリソースがクラスターの有効期間全体で使用できること、実行中これらのファイルのバージョンが変更されないことを確認する必要があります。これらのリソースは、スケーリング処理中に、新しいノードをクラスターに追加する場合に必要です。
 
 ベスト プラクティスとして、すべてをダウンロードして、Azure ストレージ アカウントのサブスクリプションにアーカイブする方法があります。
 
@@ -69,7 +69,7 @@ HDInsight のバージョンが異なれば、異なるバージョンの Hadoop
 
 ### <a name="bPS4"></a>プリコンパイル済みリソースの使用
 
-スクリプトの実行にかかる時間を最小限に抑えるために、ソース コードからリソースをコンパイルする操作を行わないようにしてください。代わりに、リソースを事前にコンパイルし、バイナリ バージョンを Azure Blob ストレージに格納して、スクリプトからクラスターにすばやくダウンロードできるようにします。
+スクリプトの実行にかかる時間を短縮するために、ソース コードからリソースをコンパイルする操作を行わないようにしてください。代わりに、リソースを事前にコンパイルし、バイナリ バージョンを Azure Blob ストレージに格納して、スクリプトからクラスターにすばやくダウンロードできるようにします。
 
 ### <a name="bPS3"></a>クラスターのカスタマイズ スクリプトはべき等にする
 
@@ -79,9 +79,9 @@ HDInsight のバージョンが異なれば、異なるバージョンの Hadoop
 
 ### <a name="bPS5"></a>クラスターのアーキテクチャの高可用性を確保
 
-Linux ベースの HDInsight クラスターは、クラスター内で有効な 2 つのヘッド ノードを提供し、Script Action がその両方のノードで実行されます。インストールするコンポーネントで 1 つのヘッド ノードしか期待されない場合は、そのコンポーネントがクラスターの 2 つのヘッド ノードのいずれかにしかインストールされないスクリプトを設計する必要があります。
+Linux ベースの HDInsight クラスターは、クラスター内で有効な 2 つのヘッド ノードを提供し、スクリプト アクションがその両方のノードで実行されます。インストールするコンポーネントで 1 つのヘッド ノードしか期待されない場合は、そのコンポーネントがクラスターの 2 つのヘッド ノードのいずれかにしかインストールされないスクリプトを設計する必要があります。
 
-> [AZURE.IMPORTANT] HDInsight の一部としてインストールされている既定のサービスは必要に応じて 2 つのヘッド ノードの間でフェールオーバーされるように設計されていますが、この機能は Script Action でインストールされるカスタム コンポーネントには拡張されません。Script Action からインストールされるコンポーネントを高可用性にする必要がある場合は、使用可能な 2 つのヘッド ノードを使用する独自のフェールオーバー メカニズムを実装する必要があります。
+> [AZURE.IMPORTANT] HDInsight の一部としてインストールされている既定のサービスは必要に応じて 2 つのヘッド ノードの間でフェールオーバーされるように設計されていますが、この機能はスクリプト アクションでインストールされるカスタム コンポーネントには拡張されません。スクリプト アクションからインストールされるコンポーネントを高可用性にする必要がある場合は、使用可能な 2 つのヘッド ノードを使用する独自のフェールオーバー メカニズムを実装する必要があります。
 
 ### <a name="bPS6"></a>Azure BLOB ストレージを使用するカスタム コンポーネントの構成
 
@@ -95,7 +95,7 @@ Linux ベースの HDInsight クラスターは、クラスター内で有効な
 
 スクリプトの実行時に STDOUT および STDERR に書き込まれる情報はログに記録され、Ambari の Web UI を使用して表示することができます。
 
-> [AZURE.NOTE] Ambari は、クラスターが正常に作成された場合にのみ使用できます。クラスターの作成時に Script Action を使用し、作成が失敗した場合は、ログに記録された情報にアクセスする他の方法について、トラブルシューティング セクション「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)」をご覧ください。
+> [AZURE.NOTE] Ambari は、クラスターが正常に作成された場合にのみ使用できます。クラスターの作成時にスクリプト アクションを使用して作成に失敗した場合は、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)に関するトラブルシューティング セクションで、ログに記録された情報にアクセスする他の方法を確認してください。
 
 ほとんどのユーティリティとインストール パッケージは情報を STDOUT および STDERR に書き込みますが、ログ記録を追加することもできます。STDOUT にテキストを送信するには、`echo` を使用します。次に例を示します。
 
@@ -107,7 +107,7 @@ Linux ベースの HDInsight クラスターは、クラスター内で有効な
 
 これにより、STDOUT (既定の 1 であるため記載していません) に送信された情報が STDERR (2) にリダイレクトされます。IO リダイレクトの詳細については、[http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html) を参照してください。
 
-スクリプト アクションによってログに記録される情報の表示の詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)」を参照してください。
+スクリプト アクションによってログに記録される情報の表示の詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)に関するページを参照してください。
 
 ###<a name="bps8"></a>LF 行の終わりで、ファイルを ASCII として保存する
 
@@ -118,7 +118,7 @@ Bash スクリプトは、行が LF で終了する ASCII 形式で保存する�
 
 ## <a name="helpermethods"></a>カスタム スクリプトのためのヘルパー メソッド
 
-Script Action ヘルパー メソッドは、カスタム スクリプトの記述で利用できるユーティリティです。これらは [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) で定義されており、次を使用してスクリプトに含めることができます。
+スクリプト アクションのヘルパー メソッドは、カスタム スクリプトの記述で利用できるユーティリティです。これらは [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) で定義されており、次を使用してスクリプトに含めることができます。
 
     # Import the helper method module.
     wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh && source /tmp/HDInsightUtilities-v01.sh && rm -f /tmp/HDInsightUtilities-v01.sh
@@ -181,7 +181,7 @@ VARIABLENAME は、変数の名前です。この後に変数にアクセスす�
 
 ## <a name="runScriptAction"></a>Script Action の実行方法
 
-Script Action を使用して、Azure ポータル、Azure PowerShell、Azure Resource Manager (ARM) テンプレート、または HDInsight .NET SDK によって HDInsight クラスターをカスタマイズすることができます。手順については、「[Script Action の使用方法](hdinsight-hadoop-customize-cluster-linux.md)」に関するページをご覧ください。
+スクリプト アクションを使用して、Azure ポータル、Azure PowerShell、Azure Resource Manager (ARM) テンプレート、または HDInsight .NET SDK によって HDInsight クラスターをカスタマイズすることができます。手順については、[スクリプト アクションの使用方法](hdinsight-hadoop-customize-cluster-linux.md)に関するページをご覧ください。
 
 ## <a name="sampleScripts"></a>カスタム スクリプトのサンプル
 
@@ -227,10 +227,10 @@ _解決_: ファイルを ASCII として、または BOM なしの UTF-8 とし
 
 ## <a name="seeAlso"></a>次のステップ
 
-* [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)方法を理解します。
+* [スクリプト アクションを使って HDInsight クラスターをカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)する方法について説明します。
 
 * [HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx)を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。
 
 * [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0601_2016-->
