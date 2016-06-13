@@ -148,7 +148,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
     b.ダウンロードした Azure メタデータ ファイルをアップロードするには、**[参照]** をクリックし、目的のファイルに移動し、**[メタデータのアップロード]** をクリックします。
 
-    c.**[Email]** テキスト ボックスに「****http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
+    c.**[Email]** テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
 
     d.**[名]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
 

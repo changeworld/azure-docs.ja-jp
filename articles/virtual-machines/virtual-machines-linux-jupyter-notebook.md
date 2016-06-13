@@ -39,7 +39,7 @@ Notebook サービスが自分のシナリオに合っていない場合でも�
 
 [ここ][portal-vm-linux]に記載されている手順に従って、*Ubuntu* ディストリビューションの仮想マシンを作成します。このチュートリアルでは、Ubuntu Server 14.04 LTS を使用します。ユーザー名は *azureuser* を想定しています。
 
-仮想マシンをデプロイした後、ネットワーク セキュリティ グループに関するセキュリティ規則を開く必要があります。Azure ポータルから **[ネットワーク セキュリティ グループ]** に移動し、VM に対応するセキュリティ グループのタブを開きます。次の設定の受信セキュリティ規則を追加する必要があります。プロトコル: **TCP**、ソース (パブリック) ポート: *****、および宛先 (プライベート) ポート: **9999**。
+仮想マシンをデプロイした後、ネットワーク セキュリティ グループに関するセキュリティ規則を開く必要があります。Azure ポータルから **[ネットワーク セキュリティ グループ]** に移動し、VM に対応するセキュリティ グループのタブを開きます。次の設定の受信セキュリティ規則を追加する必要があります。プロトコル: **TCP**、ソース (パブリック) ポート: **\*** 、および宛先 (プライベート) ポート: **9999**。
 
 ![スクリーンショット](./media/virtual-machines-linux-jupyter-notebook/azure-add-endpoint.png)
 
@@ -187,13 +187,13 @@ IPython のソース コード [リポジトリ][]にアクセスすると、ノ
 
 Jupyter Notebook には、Azure 上で Python エコシステムの機能に対話的にアクセスするための強力なインターフェイスが用意されています。このインターフェイスは幅広い用途 (簡単な調査、Python の学習、データの分析と表示、シミュレーション、並列コンピューティングなど) に対応しています。作成される Notebook のドキュメントには実行された計算処理の完全な記録が含まれており、このドキュメントは他の Jupyter ユーザーと共有できます。Jupyter Notebook はローカル アプリケーションとして使用できますが、Azure でのクラウドのデプロイに最適です。
 
-Jupyter の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介して Visual Studio 内部で使用することもできます。PTVS は、Microsoft が提供する無料のオープン ソース プラグインです。このプラグインによって、Visual Studio を Python の高度な開発環境として利用することができます。この開発環境には、IntelliSense を備えた高度なエディター、デバッグ、プロファイル、並列コンピューティング統合の機能が含まれています。
+Jupyter の主要機能は、[Python Tools for Visual Studio][] \(PTVS) を介して Visual Studio 内部で使用することもできます。PTVS は、Microsoft が提供する無料のオープン ソース プラグインです。このプラグインによって、Visual Studio を Python の高度な開発環境として利用することができます。この開発環境には、IntelliSense を備えた高度なエディター、デバッグ、プロファイル、並列コンピューティング統合の機能が含まれています。
 
 ## 次のステップ
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-[portal-vm-linux]: https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
+[portal-vm-linux]: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
 [リポジトリ]: https://github.com/ipython/ipython
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 

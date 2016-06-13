@@ -84,7 +84,8 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利
 
 バックエンド テーブルのデータにアクセスする、またはデータを変更するすべてのコードは、`MobileServiceTable` オブジェクトに対して関数を呼び出します。次のように、`MobileServiceClient` のインスタンスで [GetTable] メソッドを呼び出して、テーブルへの参照を取得します。
 
-    IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
+    IMobileServiceTable<TodoItem> todoTable = 
+    	client.GetTable<TodoItem>();
 
 これは、型指定されたシリアル化モデルです。型指定されていないシリアル化モデルもサポートされます。次のコードは、[型指定されていないテーブルへの参照を作成します]。
 
@@ -128,7 +129,8 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利
 
 	// This query filters out completed TodoItems where Text isn't null
 	List<TodoItem> items = await todoTable
-	   .Where(todoItem => todoItem.Complete == false && todoItem.Text != null)
+	   .Where(todoItem => todoItem.Complete == false 
+	   	&& todoItem.Text != null)
 	   .ToListAsync();
 
 Server SDK によって次のように SQL クエリに変換されます。
@@ -933,7 +935,7 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 [UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Where]: https://msdn.microsoft.com/ja-JP/library/azure/dn250579(v=azure.10).aspx
 [Azure ポータル]: https://portal.azure.com/
-[[Azure クラシック ポータル]]: https://manage.windowsazure.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/ja-JP/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx

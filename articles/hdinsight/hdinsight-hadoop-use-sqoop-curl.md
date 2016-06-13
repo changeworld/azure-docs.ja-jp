@@ -58,7 +58,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
     * **-u**: 要求の認証に使用するユーザー名とパスワード
     * **-G**: GET 要求であることを示します。
 
-    URL の先頭は ****https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。
+    URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。
 
 2. 次のコマンドを使用して sqoop ジョブを送信します。
 
@@ -87,7 +87,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
     > [AZURE.NOTE] この Curl 要求では、ジョブに関する情報が記載された JavaScript Object Notation (JSON) ドキュメントが返されます。状態値のみを取得するには jq を使用します。
 
-4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、****wasb:///example/curl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
+4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、**wasb:///example/curl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
 
     これらのファイルを一覧表示およびダウンロードするには [Azure CLI](../xplat-cli-install.md) を使用します。たとえば、**example/curl** 内のファイルを一覧表示するには、次のコマンドを使用します。
 

@@ -203,7 +203,8 @@
 ![ユーザーの割り当て](./media/active-directory-saas-dropboxforbusiness-tutorial/IC769523.png "ユーザーの割り当て")
 
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。
+アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
 
 

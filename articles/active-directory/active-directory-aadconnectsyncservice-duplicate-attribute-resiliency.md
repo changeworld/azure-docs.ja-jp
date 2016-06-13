@@ -145,7 +145,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 
 1. 特定の属性構成を持つユーザーは、検疫されている属性ではなく、エクスポート エラーを受信し続けます。次に例を示します。
 
-    a.AD で、UPN を ****Joe@contoso.com**、ProxyAddress を **smtp:Joe@contoso.com** として新しいユーザーが作成されました。
+    a.AD で、UPN を **Joe@contoso.com**、 ProxyAddress を **smtp:Joe@contoso.com** として新しいユーザーが作成されました。
 
     b.このオブジェクトのプロパティが、ProxyAddress が **SMTP:Joe@contoso.com** である既存の Group と競合します。
 
@@ -153,9 +153,9 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 
 2. 解決された重複属性の競合を探すタイマー タスクは、UPN 競合と他の UPN 競合だけを比較します。そのため、次のシナリオの手順 4. に示すような問題が発生します。
 
-    a. ****UserA@contoso.com** の UPN が、他のオブジェクトの ProxyAddress と同じ値であるため、一意ではありません。
+    a. **UserA@contoso.com** の UPN が、他のオブジェクトの ProxyAddress と同じ値であるため、一意ではありません。
 
-    b.UserA に一時的な **MOERA UPN** である ****UserA1234@contoso.onmicrosoft.com** が付与され、実際の UPN 値は検疫されます (期待どおり)。
+    b.UserA に一時的な **MOERA UPN** である **UserA1234@contoso.onmicrosoft.com** が付与され、実際の UPN 値は検疫されます (期待どおり)。
 
     c.他の競合しているオブジェクトでは、後で ProxyAddress が削除されます。
 
@@ -183,9 +183,9 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 
     b.**ユーザー B** が次に **UPN = User@contoso.com** で同期を試行します。
 
-    c.**ユーザー B** の UPN が ****User1234@contoso.onmicrosoft.com** に変更され、****User@contoso.com** が **DirSyncProvisioningErrors** に追加されます。
+    c.**ユーザー B** の UPN が **User1234@contoso.onmicrosoft.com** に変更され、**User@contoso.com** が **DirSyncProvisioningErrors** に追加されます。
 
-    d.**ユーザー B** のエラー メッセージは、**ユーザー A** が既に ****User@contoso.com** を UPN として持っていることを示すべきですが、**ユーザー B** 自身の displayName が表示されます。
+    d.**ユーザー B** のエラー メッセージは、**ユーザー A** が既に **User@contoso.com** を UPN として持っていることを示すべきですが、**ユーザー B** 自身の displayName が表示されます。
 
 3. レポートは、**UPN** 競合があるユーザーの詳細なエラー情報だけを表示できます。**ProxyAddress** エラーがあるユーザーの情報は表示できません (これが一般的な問題なのか環境の問題なのかは、まだ調査中です)。
 

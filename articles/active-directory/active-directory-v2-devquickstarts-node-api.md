@@ -37,8 +37,8 @@ Azure Active Directory v2.0 エンドポイントでは、[OAuth 2.0](active-dir
 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
-- アプリ用の**モバイル** プラットフォームを追加します。
-- ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
+- アプリ用の **モバイル** プラットフォームを追加します。
+- ポータルから **リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
 
 ## 2\. プラットフォーム用の Node.js をダウンロードする
@@ -645,7 +645,8 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
 次に、ディレクトリを変更し、curl コマンドを実行してコンテンツを取得します。
 
-`$ cd azuread` `$ node server.js`
+`$ cd azuread`
+`$ node server.js`
 
 `$ curl -isS http://127.0.0.1:8080 | json`
 

@@ -45,7 +45,7 @@ git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
 
 この Visual Studio ソリューションには、単純な WPF アプリである "TodoListClient" も含まれています。TodoListClient は、ユーザーがどのようにサインインし、クライアントが Web API にどのように要求を発行するかを示すために使用されます。ここでは、TodoListClient と TodoListService の両方に同じアプリが使用されています。TodoListClient を構成するために、以下のことも行う必要があります。
 
-- アプリ用の**モバイル** プラットフォームを追加します。
+- アプリ用の **モバイル** プラットフォームを追加します。
 - ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
 
