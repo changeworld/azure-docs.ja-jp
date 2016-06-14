@@ -4,15 +4,15 @@
 	keywords="エラスティック データベース、SQL データベース"
 	services="sql-database"
 	documentationCenter=""
-	authors="sidneyh"
+	authors="srinia"
 	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/23/2016"
-	ms.author="sidneyh"
+	ms.date="05/27/2016"
+	ms.author="srinia"
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
@@ -22,7 +22,7 @@
 
 エラスティック プールは、多種多様な予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理するための、簡単でコスト効率に優れたソリューションを提供します。
 
-> [AZURE.NOTE] エラスティック プールは、現在プレビューの段階の米国中北部、ブラジル南部、インド西部、インド南部、中国北部を除く、すべての Azure リージョンで一般公開 (GA) されています。プレビュー段階のリージョンでも、できるだけ早く一般公開される予定です。
+> [AZURE.NOTE] エラスティック プールは、現在プレビューの段階の米国中北部、ブラジル南部、インド西部、中国北部を除く、すべての Azure リージョンで一般公開 (GA) されています。プレビュー段階のリージョンでも、できるだけ早く一般公開される予定です。
 
 ## 動作のしくみ
 
@@ -104,4 +104,4 @@ Geo リストアで提供可能なものより高いリカバリ要件のある�
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

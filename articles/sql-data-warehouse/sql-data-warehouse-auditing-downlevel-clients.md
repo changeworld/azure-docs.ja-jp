@@ -13,13 +13,13 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="03/03/2016" 
+   ms.date="05/31/2016" 
    ms.author="rortloff;barbkess;sonyama"/>
 
 # SQL Data Warehouse - 監査と動的データ マスキングのためのダウンレベル クライアントのサポート
 
 
-[監査](sql-data-warehouse-auditing-get-started.md)は TDS リダイレクションに対応する SQL クライアントと連動します。
+[監査](sql-data-warehouse-auditing-overview.md)は TDS リダイレクションに対応する SQL クライアントと連動します。
 
 TDS 7.4 を実装するクライアントもリダイレクトをサポートします。この例外には一部のリダイレクション機能に対応していない JDBC 4.0 とリダイレクションが実装されていない Tedious for Node.JS があります。
 
@@ -38,4 +38,4 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 
 **注記:** 上のサーバー FDQN 変更は SQL サーバー レベル監査ポリシーの適用にも役に立ちます。データベースごとの構成が必要ありません (一時的な軽減)。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

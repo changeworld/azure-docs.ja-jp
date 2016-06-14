@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/05/2016"
+   ms.date="06/07/2016"
    ms.author="joaoma"/>
 
 
@@ -81,7 +81,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 	- **name**。リソースの名前です。**[parameters('applicationGatewayName')]** が使用されているため、名前はデプロイメント中にユーザーまたはパラメーター ファイルによって入力されます。
 	- **properties**。リソースのプロパティの一覧です。このテンプレートは、Application Gateway の作成の過程で、仮想ネットワークとパブリック IP アドレスを使用します。
 
-7. https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create/ に戻ります。
+7. [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-create) に戻ります。
 8. **[azuredeploy-paremeters.json]**、**[RAW]** の順にクリックします。
 9. お使いのコンピューター上のローカル フォルダーにファイルを保存します。
 10. 保存したファイルを開き、パラメーターの値を編集します。次の値を使用して、このシナリオで説明した Application Gateway をデプロイします。
@@ -116,7 +116,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 
 ## PowerShell を使用した Azure リソース マネージャー テンプレートのデプロイ
 
-Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照し、このページにある手順をすべて最後まで実行して、Azure にサインインしてサブスクリプションを選択します。
 
 ### 手順 1.
 
@@ -130,7 +130,7 @@ Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のイ
 
 		get-AzureRmSubscription
 
-資格情報を使用して認証を行うよう求められます。<BR>
+資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
 
 ### 手順 3.
 
@@ -191,7 +191,7 @@ Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のイ
 
 Azure CLI を使用してダウンロードした Azure リソース マネージャー テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストールと構成](../xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
 		azure config mode arm
@@ -200,7 +200,7 @@ Azure CLI を使用してダウンロードした Azure リソース マネー�
 
 		info:	New mode is arm
 
-3. 必要に応じて、次のように **azure group create** コマンドで新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示されるリストは、使用されたパラメーターについての説明です。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
+3. 必要に応じて、次のように **azure group create** コマンドで新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示されるリストは、使用されたパラメーターについての説明です。リソース グループの詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
 
 		azure group create -n appgatewayRG -l eastus
 
@@ -275,13 +275,13 @@ Azure CLI を使用してダウンロードした Azure リソース マネー�
 
 ## 次のステップ
 
-SSL オフロードを構成する場合は、「[SSL オフロードの Application Gateway の構成](application-gateway-ssl.md)」を参照してください。
+SSL オフロードを構成する場合は、「[クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する](application-gateway-ssl.md)」を参照してください。
 
-内部ロード バランサーとともに使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用した Application Gateway の作成](application-gateway-ilb.md)」を参照してください。
+内部ロード バランサーと共に使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
 
 負荷分散のオプション全般の詳細については、次を参照してください。
 
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

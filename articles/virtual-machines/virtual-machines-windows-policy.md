@@ -19,8 +19,6 @@
 
 # Azure Resource Manager 仮想マシンにポリシーを適用する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル
-
 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。この記事では、Azure Resource Manager ポリシーを使用して、組織の仮想マシンの望ましい行動を定義する方法について説明します。
 
 これを実現するための手順の概要を、以下に示します
@@ -108,4 +106,4 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 
 * [ポリシーの作成](../resource-manager-policy.md#applying-a-policy)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

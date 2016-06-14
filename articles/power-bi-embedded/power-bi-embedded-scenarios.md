@@ -25,7 +25,6 @@
 - 新しいアプリケーション トークン認証モデルを使用して、Power BI Desktop で作成された完全な対話型のレポートを独自のアプリケーションに組み込むことができます。
 - 顧客向けアプリケーションを構築する独立系ソフトウェア ベンダーやお客様は、**Power BI Embedded** サービスと Power BI SDK を使用して、対話型のレポートを組み込むことができます。この方法の詳細については、「[Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューを使ってみる)](power-bi-embedded-get-started.md)」をご覧ください。
 - 開発者は、Power BI ビジュアル化フレームワークを使用して、独自のアプリで使用できるカスタム ビジュアルを作成できます。「[カスタム ビジュアルで Power BI をさらにパワーアップ](https://powerbi.microsoft.com/custom-visuals/)」をご覧ください。
-- アプリケーション内で対話型のレポートを常に最新の状態に維持します。**Power BI Embedded** を使用して、対話型の Power BI レポートが含まれた独自のリアルタイム ダッシュボードを作成できます。これにより、ISV はデバイス、センサー、アプリケーションの最新の洞察を顧客に提供できます。
 
 ## 関連項目
 
@@ -33,4 +32,4 @@
 - [サンプルを使ってみる](power-bi-embedded-get-started.md)
 - [カスタム ビジュアルで Power BI をさらにパワーアップ](https://powerbi.microsoft.com/custom-visuals/)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

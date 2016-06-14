@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="TBD"
-   ms.date="02/12/2016"
+   ms.date="05/25/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスの CHAP の構成
@@ -54,6 +54,7 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
 	3. パスワードを確認入力します。
 
 4. **[保存]** をクリックします。確認メッセージが表示されます。**[OK]** をクリックして変更を保存します。
+
 #### Windows ホスト サーバーで一方向認証を構成するには
 
 1. Windows ホスト サーバーで、iSCSI イニシエーターを開始します。
@@ -197,4 +198,4 @@ CHAP の構成が正しくない場合、**"認証エラー"** というエラ�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0601_2016-->

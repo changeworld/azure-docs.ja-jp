@@ -18,9 +18,6 @@
 
 # Azure AD B2C プレビュー: Windows デスクトップ アプリを作成する
 
-
-<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-native-switcher](../../includes/active-directory-b2c-devquickstarts-native-switcher.md)]-->
-
 Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順でデスクトップ アプリに追加できます。この記事では、ユーザーのサインアップ、サインイン、プロファイル管理などの処理を含む .NET Windows Presentation Foundation (WPF) の "To-Do List" アプリの作成方法について説明します。このアプリには、ユーザー名または電子メールを使用したサインアップとサインインのサポートが含まれます。また、Facebook や Google などのソーシャル アカウントを使用したサインアップとサインインのサポートも含まれます。
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
@@ -46,7 +43,7 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[ポ�
 - ID プロバイダーのブレードで、**[ユーザー ID サインアップ]** または **[電子メール サインアップ]** を選択します。
 - サインアップ ポリシーで、**[表示名]** と他のサインアップ属性を選択します。
 - すべてのポリシーで、アプリケーション要求として **[表示名]** 要求と **[オブジェクト ID]** 要求を選択します。その他のクレームも選択できます。
-- ポリシーの作成後、各ポリシーの **[名前]** をコピーしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名は後で必要になります。
+- ポリシーの作成後、各ポリシーの**名前**をコピーしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名は後で必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
@@ -54,19 +51,19 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[ポ�
 
 ## コードのダウンロード
 
-このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet) で管理されています。手順に従ってサンプルを構築するには、[スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip)します。スケルトンを複製することもできます。
+このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet) で管理されています。手順に従ってサンプルをビルドする場合は、[スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip)できます。スケルトンを複製することもできます。
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git
 ```
 
-また、完成済みのアプリも、[.zip ファイルとして入手する](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip)か、同じリポジトリの `complete` ブランチで利用できます。
+また、完成済みのアプリも、[.zip ファイルとして入手する](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip)か、同じリポジトリの `complete` ブランチで入手できます。
 
-サンプル コードをダウンロードした後、Visual Studio の .sln ファイルを開いて作業を開始します。ソリューション ファイルには、2 つのプロジェクト `TaskClient` と `TaskService` が含まれます。`TaskClient` は、ユーザーが対話する WPF デスクトップ アプリケーションです。`TaskService` は、各ユーザーの To-Do List を格納する、アプリのバックエンド Web API です。ここでは、`TaskClient` と `TaskService` の両方が単一のアプリケーション ID で表されます。これは、これらが 1 つの論理アプリケーションを構成するためです。
+サンプル コードをダウンロードした後、Visual Studio の .sln ファイルを開いて作業を開始します。ソリューションには 2 つのプロジェクト `TaskClient` と `TaskService` が含まれます。`TaskClient` は、ユーザーが対話する WPF デスクトップ アプリケーションです。`TaskService` は、各ユーザーの To-Do List を格納する、アプリのバックエンド Web API です。ここでは、`TaskClient` と `TaskService` の両方が単一のアプリケーション ID で表されます。これは、これらが 1 つの論理アプリケーションを構成するためです。
 
 ## タスク サービスを構成する
 
-`TaskService` は `TaskClient` から要求を受け取ると、要求を認証するための有効なアクセス トークンを確認します。アクセス トークンを検証するには、アプリに関する情報を `TaskService` に提供する必要があります。`TaskService` プロジェクトで、プロジェクトのルートにある `web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。
+`TaskService` は `TaskClient` から要求を受け取ると、要求を認証するために有効なアクセス トークンを確認します。アクセス トークンを検証するには、アプリに関する情報を `TaskService` に提供する必要があります。`TaskService` プロジェクトで、プロジェクトのルートにある `web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。
 
 ```
 <appSettings>
@@ -274,7 +271,7 @@ private async void GetTodoList()
 	...
 ```
 
-`AcquireTokenAsync(...)` の呼び出しが成功し、トークンがキャッシュ内で見つかった場合、トークンを HTTP 要求の `Authorization` ヘッダーに追加します。これにより、`TaskService` は要求を認証してユーザーの To-Do List を読み取ることができます。
+`AcquireTokenAsync(...)` の呼び出しが成功し、トークンがキャッシュ内で見つかった場合、トークンを HTTP 要求の `Authorization` ヘッダーに追加できます。これにより、`TaskService` は要求を認証してユーザーの To-Do List を読み取ることができます。
 
 ```C#
 	...
@@ -312,7 +309,7 @@ private void SignOut(object sender, RoutedEventArgs e)
 
 ## サンプル アプリを実行する
 
-最後に、`TaskClient` と `TaskService` を構築して実行します。電子メール アドレスまたはユーザー名を使用して、アプリにサインアップします。サインアウトし、同じユーザーとしてもう一度サインインします。そのユーザーのプロファイルを編集します。サインアウトし、別のユーザーとしてサインアップします。
+最後に、`TaskClient` と `TaskService` を両方ともビルドして実行します。電子メール アドレスまたはユーザー名を使用して、アプリにサインアップします。サインアウトし、同じユーザーとしてもう一度サインインします。そのユーザーのプロファイルを編集します。サインアウトし、別のユーザーとしてサインアップします。
 
 ## ソーシャル IDP を追加する
 
@@ -325,11 +322,11 @@ private void SignOut(object sender, RoutedEventArgs e)
 - [Amazon を IDP として設定する](active-directory-b2c-setup-amzn-app.md)
 - [LinkedIn を IDP として設定する](active-directory-b2c-setup-li-app.md)
 
-ID プロバイダーを B2C ディレクトリに追加した後、3 つの各ポリシーを編集し、[ポリシーに関するリファレンス記事](active-directory-b2c-reference-policies.md)で説明されているように、新しい IDP を加える必要があります。ポリシーを保存した後、再度アプリを実行します。各 ID エクスペリエンスに、サインインおよびサインアップの選択肢として新しい IDP が追加されていることがわかります。
+ID プロバイダーを B2C ディレクトリに追加した後、3 つのポリシーをそれぞれ編集し、[ポリシーに関するリファレンス記事](active-directory-b2c-reference-policies.md)で説明されているように、新しい IDP を加える必要があります。ポリシーを保存した後、再度アプリを実行します。各 ID エクスペリエンスに、サインインおよびサインアップの選択肢として新しい IDP が追加されていることがわかります。
 
 いろいろなポリシーを試して、サンプル アプリへの影響を確認できます。ID を追加または削除したり、アプリケーションの要求を操作したり、サインアップ属性を変更してみます。ポリシー、認証要求、および ADAL すべてが互いにどのように結び付いているかを理解できるまで、いろいろ試してみてください。
 
-参照用に、完成したサンプルが[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip)。GitHub から複製することもできます。
+参照用の完成済みサンプルが、[こちらに .zip ファイルとして提供されています](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip)。GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git```
 
@@ -345,4 +342,4 @@ You can now move on to more advanced B2C topics. You may try:
 
 -->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

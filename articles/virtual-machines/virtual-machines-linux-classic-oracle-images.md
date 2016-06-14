@@ -3,8 +3,8 @@
   description="Azure ギャラリーで Oracle イメージの一覧を取得し、Oracle 仮想マシンを作成する方法について説明します。"
   services="virtual-machines-linux"
   documentationCenter=""
-  authors="bbenz"
-  manager=""
+  authors="rickstercdn"
+  manager="timlt"
   editor=""
   tags="azure-service-management, azure-resource-manager"/>
 
@@ -14,8 +14,8 @@
   ms.topic="article"
   ms.tgt_pltfrm="vm-linux"
   ms.workload="infrastructure-services"
-  ms.date="06/22/2015"
-  ms.author="bbenz" />
+  ms.date="05/17/2016"
+  ms.author="rclaus" />
 
 #Oracle 仮想マシン イメージの一覧
 
@@ -23,4 +23,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-classic-oracle-images](../../includes/virtual-machines-common-classic-oracle-images.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0601_2016-->

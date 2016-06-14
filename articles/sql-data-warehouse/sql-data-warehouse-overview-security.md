@@ -99,7 +99,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 <!--Article references-->
 [SQL Data Warehouse への接続]: sql-data-warehouse-develop-connections.md
-[SQL Database 監査の使用]: sql-database-auditing-get-started.md
+[SQL Database 監査の使用]: sql-database-auditing-overview.md
 
 <!--MSDN references-->
 [Azure SQL Database ファイアウォール]: https://msdn.microsoft.com/library/ee621782.aspx
@@ -113,4 +113,4 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 <!--Other Web references-->
 [Azure ポータルでのロール ベースのアクセス制御]: http://azure.microsoft.com/documentation/articles/role-based-access-control-configure.aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -25,8 +25,8 @@ Windows Server をソフトウェア アシュアランス付きで使用して�
 ## 前提条件
 Windows Server VM 向けの Azure Hybrid Use Benefit を Azure で利用するには、次の 2 つの前提条件があります。
 
-- Azure PowerShell モジュールをインストールすること
-- Azure Storage に Windows Server VHD をアップロードすること
+- Azure PowerShell モジュールがインストールされている
+- Windows Server VHD が Azure Storage にアップロードされている
 
 ### Azure PowerShell をインストールするには
 最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択し、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。VM を Resource Manager テンプレートを使用してデプロイする場合でも、Windows Server VHD をアップロードする (次の手順を参照) ために Azure PowerShell をインストールする必要があります。
@@ -164,4 +164,4 @@ New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm 
 
 [Resource Manager テンプレートの使用方法](../resource-group-overview.md)の詳細を参照します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

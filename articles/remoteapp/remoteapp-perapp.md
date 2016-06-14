@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="03/01/2016"
+   ms.date="05/31/2016"
    ms.author="piotrci"/>
 
 # Azure RemoteApp コレクション (プレビュー) で個々のユーザーにアプリケーションを発行する
@@ -102,4 +102,4 @@ AclLevel プロパティには、次の値が表示されます。
 ## プレビュー機能を試す機会がなかった場合
 プレビューにまだ参加していない方は、こちらの[アンケート](http://www.instant.ly/s/AY83p)を使って利用を申し込んでください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

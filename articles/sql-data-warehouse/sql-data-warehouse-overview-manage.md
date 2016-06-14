@@ -39,7 +39,7 @@ SQL Data Warehouse では、さまざまなツールを使用してデータベ�
 ### Azure ポータル
 [Azure ポータル][]は、データベースの作成、更新、削除、およびデータベース リソースの監視を行うことができる Web ベースの管理ポータルです。このツールは、Azure を使い始めたばかりの場合や、管理対象のデータ ウェアハウス データベースの数が少ない場合、またはすばやく作業を行う必要がある場合に便利です。
 
-Azure ポータルの使用については、[SQL Data Warehouse の作成 (Azure ポータル)][]に関する記事をご覧ください。
+Azure ポータルの使用については、[SQL Data Warehouse の作成 (Azure ポータル)][] に関する記事をご覧ください。
 
 ### Visual Studio での SQL Server Data Tools
 Visual Studio の [SQL Server Data Tools][] \(SSDT) を使用すると、データベースへの接続、管理、および開発を行うことができます。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
@@ -139,4 +139,4 @@ geo リストア機能の使用については、「[Geo-restore from snapshot (
 <!--Other web references-->
 [Azure ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

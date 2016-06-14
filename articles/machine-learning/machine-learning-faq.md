@@ -85,7 +85,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 - SMOTE モジュール
 - スクリプト モジュール: R、Python、SQL
 - 出力データ サイズが入力データ サイズを超えるモジュール ("結合"、"特徴ハッシュ" など)。
-- イテレーションの数が非常に大きい場合のクロス検証、パラメーターの掃引、順序回帰、一対全多クラス。
+- イテレーションの数が非常に大きい場合のクロス検証、調整モデル ハイパーパラメーター、順序回帰、一対全多クラス。
 
 数 GB を超えるデータセットの場合は、ローカル ファイルから直接アップロードするのではなく、Azure Storage または Azure SQL Database にデータをアップロードするか、HDInsight を使用する必要があります。
 
@@ -95,7 +95,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **Amazon S3 からデータを読み取ることはできますか。**
 
-少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。
+少量のデータがあり、http URL 経由でこれを公開する場合は、[データのインポート][import-data] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[データのインポート][import-data] モジュールを使用して実験に取り込みます。
 <!--
 <SEE CLOUD DS PROCESS>
 -->
@@ -227,7 +227,7 @@ Retraining API を使用することもできます。詳細については、�
 
 **RRS/BES の出力を確認できまる場所はありますか。**
 
-RRS の場合は通常、Web サービスの応答に結果が表示されます。また、Azure Blob Storage に書き込むこともできます。BES の場合、既定では BLOB に出力が書き込まれます。また、[データのエクスポート][writer] モジュールを使用してデータベースやテーブルに出力を書き込むこともできます。
+RRS の場合は通常、Web サービスの応答に結果が表示されます。また、Azure Blob Storage に書き込むこともできます。BES の場合、既定では BLOB に出力が書き込まれます。また、[データのエクスポート][export-data] モジュールを使用してデータベースやテーブルに出力を書き込むこともできます。
 
 **Web サービスを作成できるのは Machine Learning Studio で作成されたモデルからのみですか?**
 
@@ -326,10 +326,10 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [join]: https://msdn.microsoft.com/library/azure/124865f7-e901-4656-adac-f4cb08248099/
 [machine-learning-modules]: https://msdn.microsoft.com/library/azure/6d9e2516-1343-4859-a3dc-9673ccec9edc/
 [partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[writer]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[export-data]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
 [counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

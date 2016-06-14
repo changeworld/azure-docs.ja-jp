@@ -21,9 +21,6 @@
 
 仮想マシンは多様なユーザーや目的に適しているため、Azure には仮想マシンを作成するためのさまざまな方法が用意されています。これは、仮想マシンとその作成方法について、いくつかの選択を行う必要があることを意味します。この記事には、これらの選択肢の概要と、手順へのリンクが記載されています。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
-
 ## Azure ポータル
 
 Azure ポータルを使用すれば、特に Azure を初めて使用する場合に、仮想マシンを簡単に試すことができます。
@@ -47,4 +44,4 @@ Azure ポータルを使用すれば、特に Azure を初めて使用する場�
 
 [Compute、Network、および Storage の .NET ライブラリを使用した Azure リソースのデプロイ](virtual-machines-windows-csharp.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

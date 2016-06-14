@@ -63,11 +63,11 @@ Stretch Database は、大量の履歴データがあるトランザクション
 
 SQL Server 2016 のテンポラル テーブルを使用している場合、Stretch Database を使用して、関連する履歴テーブルのすべてまたは一部をコスト効率のよい Azure の記憶域に移行します。詳細については、[システム バージョン管理されたテンポラル テーブルで履歴データのリテンション期間を管理する方法](https://msdn.microsoft.com/library/mt637341.aspx)のページを参照してください。
 
-SQL Server 2016 Upgrade Advisor の 1 機能である Stretch Database Advisor を使用して、Stretch Database のデータベースとテーブルを特定します。詳細については、「[Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)」を参照してください。潜在的なブロックの問題の詳細については、「[Stretch Database のセキュリティ制約とブロック問題](sql-server-stretch-database-limitations.md)」を参照してください。
+SQL Server 2016 Upgrade Advisor の 1 機能である Stretch Database Advisor を使用して、Stretch Database のデータベースとテーブルを特定します。詳細については、「[Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)」を参照してください。潜在的なブロックの問題の詳細については、「[Stretch Database の制限事項](sql-server-stretch-database-limitations.md)」を参照してください。
 
 ## <a name="FAQ"></a>Stretch Database についてよく寄せられる質問
 **Stretch Database は &lt;SQL Server の機能名&gt; と連携しますか?**
--   Stretch に適していないテーブルになる SQL Server 機能の一覧については、「[Stretch Database のセキュリティ制約とブロック問題](sql-server-stretch-database-limitations.md)」を参照してください。
+-   Stretch に適していないテーブルになる SQL Server 機能の一覧については、「[Stretch Database の制限事項](sql-server-stretch-database-limitations.md)」を参照してください。
 
 -   必要に応じて、SQL Server 2016 Upgrade Advisor をダウンロードし、Stretch Database Advisor を実行して、Stretch Database の候補となるデータベースとテーブルを特定します。詳細については、「[Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)」を参照してください。
 
@@ -123,4 +123,4 @@ Stretch Database は、既存のデータベースのアクセス許可モデル
 [StretchOverviewImage2]: ./media/sql-server-stretch-database-overview/StretchDBOverview1.png
 [StretchOverviewImage3]: ./media/sql-server-stretch-database-overview/StretchDBOverview2.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

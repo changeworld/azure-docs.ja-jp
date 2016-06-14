@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -46,29 +46,9 @@
 
 
 
-## 資格情報を構成してサブスクリプションを選択
+## SQL データベースのコピー
 
-まず、Azure アカウントへのアクセスを確立する必要があるため、PowerShell を起動してから以下のコマンドレットを実行します。ログイン画面で、Azure クラシック ポータルへのサインインに使用しているものと同じ電子メールとパスワードを入力します。
-
-	Add-AzureAccount
-
-正常にサインインすると、サインインしている ID や使用中の Azure サブスクリプションを含む情報が画面に表示されます。
-
-
-### Azure サブスクリプションを選択します。
-
-サブスクリプションを選択するには、サブスクリプション ID またはサブスクリプション名 (**-SubscriptionName**) が必要になります。サブスクリプション ID は前の手順で示された情報からコピーできます。または、複数のサブスクリプションがあり、詳しい情報が必要な場合は、**Get-AzureSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。ご利用のサブスクリプションを取得したら次のコマンドレットを実行します。
-
-	Select-AzureSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
-
-**Select-AzureSubscription** を正常に実行すると、PowerShell プロンプトに戻ります。サブスクリプションが複数ある場合は、**Get-AzureSubscription** を実行して、使用するサブスクリプションが **IsCurrent: True** と表示されていることを確認できます。
-
-
-## 特定の環境用の変数の設定
-
-変数には、例の値を、使用するデータベースとサーバーの特定の値に置き換える必要があるものがいくつかあります。
-
-プレースホルダー値をお使いの環境の値で置き換えます。
+変数には、例の値を、使用するデータベースとサーバーの特定の値に置き換える必要があるものがいくつかあります。プレースホルダー値をお使いの環境の値で置き換えます。
 
     # The name of the server on which the source database resides.
     $ServerName = "sourceServerName"
@@ -86,14 +66,14 @@
 
 
 
-## SQL データベースを同じサーバーにコピーする
+### SQL データベースを同じサーバーにコピーする
 
 このコマンドでは、サービスにデータベースのコピー要求を送信します。データベースのサイズに応じて、コピー操作の完了に時間がかかる場合があります。
 
     # Copy a database to the same server
     Start-AzureSqlDatabaseCopy -ServerName $ServerName -DatabaseName $DatabaseName -PartnerDatabase $PartnerDatabaseName
 
-## SQL データベースを別のサーバーにコピーする
+### SQL データベースを別のサーバーにコピーする
 
 このコマンドでは、サービスにデータベースのコピー要求を送信します。データベースのサイズに応じて、コピー操作の完了に時間がかかる場合があります。
 
@@ -109,7 +89,7 @@
     Get-AzureSqlDatabaseOperation -ServerName $ServerName -DatabaseName $DatabaseName
 
 
-## SQL Database のコピーの PowerShell スクリプト
+## PowerShell サンプル スクリプト
 
     # The name of the server where the source database resides
     $ServerName = "sourceServerName"
@@ -146,4 +126,4 @@
 - [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0601_2016-->

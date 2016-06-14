@@ -1,12 +1,14 @@
-You open a port, or create an endpoint, in Azure by creating a network filter that allows traffic to your chosen port on a subnet or virtual machine (VM) network interface. These filters, which control both inbound and outbound traffic, are placed in a Network Security Group and attached to the resource that will receive the traffic.
+サブネットまたは仮想マシン (VM) ネットワークポ インターフェイス上の選択したポートへのトラフィックを許可するネットワーク フィルターを作成して、Azure でポートを開くかエンドポイントを作成します。着信および発信の両方のトラフィックを制御するこれらのフィルターは、ネットワーク セキュリティ グループに配置され、トラフィックを受信するリソースに接続されます。
 
-Let's use a common example of web traffic on port 80. Once you have a VM that is configured to serve web requests on the standard TCP port 80 (remember to start the appropriate services and open any OS firewall rules on the VM as well), you will:
+ポート 80 での Web トラフィックの一般的な例を使用して説明します。標準の TCP ポート 80 の Web 要求を処理するように構成されている仮想マシンがある場合 (適切なサービスを開始し、仮想マシン上の OS ファイアウォール規則を開いてください) の手順は、以下のとおりとなります。
 
-1. Create a Network Security Group.
-2. Create an inbound rule allowing traffic with:
-  - the destination port range of "80"
-  - the source port range of "*" (allowing any source port)
-  - a priority value of less 65,500 (to be higher in priority than the default catch-all deny inbound rule)
-3. Associate the Network Security Group with the VM network interface or subnet.
+1. ネットワーク セキュリティ グループを作成します。
+2. 以下によってトラフィックを許可する受信の規則を作成します。
+  - 宛先ポート範囲 "80"
+  - 発信元ポート範囲"*"(任意のポートを許可)
+  - 65,500 より小さな優先順位値 (既定の包括的な受信拒否規則より優先されるように設定)
+3. ネットワーク セキュリティ グループと仮想マシンのネットワーク インターフェイスまたはサブネットを関連付けます。
     
-You can create very complex network configurations to secure your environment using Network Security Groups and rules, rather than only one or two rules that allow HTTP traffic or remote management. For more information, see the ['More Information'](#more-information-on-network-security-groups) section below or [What is a Network Security Group?](../articles/virtual-network/virtual-networks-nsg.md)
+HTTP トラフィックやリモート管理を許可する 1 つまたは 2 つの規則のみではなく、ネットワーク セキュリティ グループと規則を使用して、非常に複雑なネットワーク構成を作成して環境を保護することができます。詳細については、後述の「[詳細情報](#more-information-on-network-security-groups)」、または「[ネットワーク セキュリティ グループについて](../articles/virtual-network/virtual-networks-nsg.md)」を参照してください。
+
+<!---HONumber=AcomDC_0601_2016-->

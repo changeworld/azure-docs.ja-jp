@@ -35,8 +35,8 @@
      ![新しいサーバー レベルのファイアウォール](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-5.png)
  
      
- ## 接続に関するエラーのトラブルシューティング
+## ## 接続に関するエラーのトラブルシューティング
 
 接続の失敗の最も一般的な原因は、サーバー名、ユーザー名 (<*servername*> はデータベースではなく論理サーバーの名前です)、パスワードの間違いや、サーバーがセキュリティ上の理由で接続を許可しないといったものです。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -104,10 +104,10 @@ Power BI を使用して AdventureWorksDW サンプル データを分析する�
 [移行]: ./sql-data-warehouse-overview-migrate.md
 [開発]: ./sql-data-warehouse-overview-develop.md
 [ロード]: ./sql-data-warehouse-overview-load.md
-[サンプル データを手動で読み込む]: ./sql-data-warehouse-get-started-manually-load-samples.md
+[サンプル データを手動で読み込む]: ./sql-data-warehouse-get-started-load-sample-databases.md
 [Azure ポータル]: https://portal.azure.com/
 [Power BI]: http://www.powerbi.com/
 [connecting to SQL Data Warehouse]: ./sql-data-warehouse-integrate-power-bi.md
 [Create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

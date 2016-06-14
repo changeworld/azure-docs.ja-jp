@@ -229,4 +229,8 @@ v2.0 エンドポイントについての学習を続けるには、[v2.0 開発
 - [Stack Overflow の Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 - [Azure.com](https://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
 
-<!---HONumber=AcomDC_0323_2016-->
+## マイクロソフト製品のセキュリティ更新プログラムを取得する
+
+セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
+
+<!---HONumber=AcomDC_0601_2016-->

@@ -2,7 +2,8 @@
 	pageTitle="Oracle WebLogic Server 12c VM の作成 | Microsoft Azure"
 	description="リソース マネージャーのデプロイ モデルを使用して、Windows Server 2012 で実行する Oracle WebLogic Server 12c 仮想マシンを Microsoft Azure で作成します。"
 	services="virtual-machines-windows"
-	authors="bbenz"
+	authors="rickstercdn"
+	manager="timlt"
 	documentationCenter=""
 	tags="azure-resource-manager"/>
 
@@ -12,43 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="06/22/2015"
-	ms.author="bbenz" />
+	ms.date="05/17/2016"
+	ms.author="rclaus" />
 
 #Azure での Oracle WebLogic Server 12c 仮想マシンの作成
-次の例は、Windows Server 2012 で実行しているマイクロソフト提供の WebLogic Server 12c のイメージに基づいて、Azure で仮想マシンを作成する方法を示しています。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+[AZURE.INCLUDE [virtual-machines-common-oracle-support](../../includes/virtual-machines-common-oracle-support.md)]
 
-
-
-##Azure で Oracle WebLogic Server 12c 仮想マシンを作成するには
-
-1. [Azure ポータル](https://ms.portal.azure.com/)にログインします。
-
-2. **[Marketplace]**、**[Compute]** をクリックし、続いて検索ボックスに**「Oracle」**と入力します。
-
-3.	**[Windows Server 2012 での Oracle WebLogic Server 12c Standard Edition]** または **[Windows Server 2012 での Oracle WebLogic Server 12c Enterprise Edition]** のイメージを選択します。このイメージに関する情報 (最小の推奨サイズなど) を確認し、**[次へ]** をクリックします。
-
-4.	VM の**ホスト名**を指定します。
-
-5.	VM の**ユーザー名**を指定します。なお、このユーザーは VM にリモートログインするためのもので、Oracle データベースのユーザー名ではありませんのでご注意ください。
-
-6.	VM のパスワードを指定し確認するか、または SSH 公開キーを入力します。
-
-7.	**[価格レベル]** を選択。既定では推奨される価格レベルが表示されます。すべての構成オプションを見るには、右上の **[すべて表示]** をクリックします。
-
-8.	必要に応じてオプションの構成を設定します。このとき、次に注意してください。
-	1. VM 名で新しいストレージ アカウントを作成するには、**[ストレージ アカウント]** をそのままにします。
-	2. **[可用性セット]** を「未構成」のままにします。
-	3. この時点では**エンドポイント**を追加しないでください。
-
-9.	[[リソース グループ]](../azure-portal/resource-group-portal.md) を選択または作成
-
-10. **[サブスクリプション]** を選択
-
-11. **[場所]** を選択
-
+次の例は、事前に作成した VM で実行されている WebLogic Server 12c を、Azure で作成する方法を示しています。この事前に作成した VM には、作成後に、Windows Server 2012 で実行されている Oracle WebLogic 12c をインストールしてあります。
 
 ##Azure で Oracle WebLogic Server 12c 仮想マシンを構成するには
 
@@ -187,4 +159,4 @@
 
 -	[Azure の Oracle 仮想マシン イメージ](virtual-machines-linux-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -42,7 +42,7 @@ Azure Data Factory を理解するには、「[Azure Data Factory サービス�
 
    + **Azure Storage BLOB**: このチュートリアルでは、Azure Data Factory パイプラインのデータ ソースとして Azure Storage BLOB を使用します。したがって、サンプル データを格納するためのストレージ アカウントが必要です。まだお持ちでない場合は、「[ストレージ アカウントの作成][]」を参照してください。
 
-   + **SQL Data Warehouse**: このチュートリアルでは、Azure Storage BLOB から SQL Data Warehouse にデータを移動します。したがって、AdventureWorksDW サンプル データを読み込むデータ ウェアハウスをオンラインにする必要があります。データ ウェアハウスがまだない場合は、[データ ウェアハウスをプロビジョニング][Create a SQL Data Warehouse]する方法を学習してください。データ ウェアハウスはあっても、それをサンプル データでまだプロビジョニングしていない場合は、[サンプル データを手動で読み込む][Load sample data into SQL Data Warehouse]ことができます。
+   + **SQL Data Warehouse**: このチュートリアルでは、Azure Storage BLOB から SQL Data Warehouse にデータを移動します。したがって、AdventureWorksDW サンプル データを読み込むデータ ウェアハウスをオンラインにする必要があります。データ ウェアハウスがまだない場合は、[データ ウェアハウスをプロビジョニング][Create a SQL Data Warehouse]する方法を学習してください。データ ウェアハウスはあっても、サンプル データでプロビジョニングしなかった場合は、[サンプル データを手動で読み込む][Load sample data into SQL Data Warehouse]ことができます。
 
    + **Azure Data Factory**: Azure Data Factory によって実際の読み込みが実行されるので、データ移動パイプラインの作成に使用できるデータ ファクトリが必要です。まだ適切なデータ ファクトリがない場合は、「[Data Factory Editor を使用した初めての Azure Data Factory パイプラインの作成][]」の手順 1. に従って作成してください。
 
@@ -226,7 +226,7 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 [Data Factory]: sql-data-warehouse-get-started-load-with-azure-data-factory.md
 [Data Factory Editor を使用した初めての Azure Data Factory パイプラインの作成]: ../data-factory/data-factory-build-your-first-pipeline-using-editor.md
 [Azure Data Factory サービスの概要]: ../data-factory/data-factory-introduction.md
-[Load sample data into SQL Data Warehouse]: sql-data-warehouse-get-started-manually-load-samples.md
+[Load sample data into SQL Data Warehouse]: sql-data-warehouse-load-sample-databases.md
 [Move data to and from Azure SQL Data Warehouse using Azure Data Factory]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
 [PolyBase]: sql-data-warehouse-get-started-load-with-polybase.md
 [実際のシナリオのチュートリアル]: ../data-factory/data-factory-tutorial.md
@@ -240,4 +240,4 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 [Azure ポータル]: https://portal.azure.com
 [サンプル データをダウンロードします]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

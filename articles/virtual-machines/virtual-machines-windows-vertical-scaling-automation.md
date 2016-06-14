@@ -19,8 +19,6 @@
 
 # Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル
-
 垂直方向のスケーリングは、ワークロードへの応答時にコンピューターのリソースを増減するプロセスです。Azure では、仮想マシンのサイズを変更することで実行できます。これは、次のようなシナリオで役立ちます。
 
 - 仮想マシンが頻繁に使用されていない場合、より小さなサイズに変更して、毎月のコストを削減することができます
@@ -90,4 +88,4 @@ Webhook のダイアログを閉じる前に、Webhook をコピーしてくだ�
 
 ![アラートを仮想マシン 2 に追加](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

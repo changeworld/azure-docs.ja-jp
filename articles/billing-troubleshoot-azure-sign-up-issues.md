@@ -14,11 +14,13 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="05/26/2016"
 	ms.author="cjiang"/>
 
 # Azure サインアップに関する問題のトラブルシューティング
 この記事は、Azure にサインアップする際に発生の可能性がある問題について、その一般的な原因を探るのに役立ちます。
+
+[AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
 
 ## 情報を入力してサインアップすると、エラーが発生します。
 アカウント プロファイルの情報は正確ですか? プロファイルの詳細は課金明細書の生成に使用されるため、自分の情報を正確に入力することが重要です。正しくないフィールドの例として、
@@ -59,9 +61,9 @@
   - [MSDN アカウント ページ](https://msdn.microsoft.com/subscriptions/manage/default.aspx)で資格の状態を確認します。
   - 状態を確認できない場合は、[MSDN サブスクリプション カスタマー サービス センター](https://msdn.microsoft.com/subscriptions/contactus.aspx)にお問い合わせください。
 - MPN
-  - [MPN ポータル](https://mspartner.microsoft.com/en/us/Pages/Locale.aspx)にサインインし、資格の状態を確認します。該当する[クラウド プラットフォーム コンピテンシー](https://mspartner.microsoft.com/en/us/pages/membership/cloud-platform-competency.aspx)をお持ちの場合は、追加の特典を受ける資格がある場合があります。
+  - [MPN ポータル](https://mspartner.microsoft.com/en/us/Pages/Locale.aspx)にサインインし、資格の状態を確認します。該当する[クラウド プラットフォーム コンピテンシー](https://mspartner.microsoft.com/en/us/pages/membership/cloud-platform-competency.aspx)をお持ちの場合、追加特典の資格を与えられることがあります。
   - 状態を確認できない場合は、[MPN サポート](https://mspartner.microsoft.com/en/us/Pages/Support/Premium/contact-support.aspx)にお問い合わせください。
-- Bizpark:
+- BizSpark:
   - [BizSpark ポータル](https://www.microsoft.com/bizspark/default.aspx#start-two)にサインインし、BizSpark と BizSpark Plus の資格の状態を確認します。自分の資格の状態を確認できない場合は、[BizSpark サポート チーム](mailto:bizspark@microsoft.com?subject=BizSpark%20Support&body=Thank%20you%20for%20contacting%20BizSpark.%20Please%20provide%20as%20much%20of%20the%20following%20information%20as%20possible,%20as%20it%20will%20help%20expedite%20our%20response%20to%20you.%0aContact%20name:%0aStartup%20name:%0aMicrosoft%20Account/Live%20ID:%0aSpecific%20description%20of%20issue%20experienced%20or%20question:%0a%0aThank%20you,%0a%0aThe%20BizSpark%20Team)に電子メールを送信して BizSpark サポートにお問い合わせください。
 
 ご提案:
@@ -79,7 +81,4 @@
 ご提案:
 - 過去に Azure サブスクリプションをアクティブ化しているために無料試用版をアクティブ化できない場合は、従量課金サブスクリプションの購入をご検討ください。特典を受ける資格をお持ちの可能性があります。Azure 無料試用版プランではなく、[Microsoft Azure プランの詳細に関するページ](https://azure.microsoft.com/support/legal/offer-details/)を参照してください。福利厚生制度には特定の前提条件が必要となりますので注意してください。
 
-## まだサインアップできませんか?
-サインアップに関する問題がまだ解決しない場合、または発生している問題がこの記事で扱われていない場合は、[Azure サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。
-
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

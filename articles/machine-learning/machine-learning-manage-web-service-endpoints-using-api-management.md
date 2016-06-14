@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/02/2016"
+	ms.date="05/27/2016"
 	ms.author="roalexan" />
 
 
@@ -72,7 +72,7 @@ API は API パブリッシャー ポータルから作成され、構成され�
 
 ![api-management-menu](./media/machine-learning-manage-web-service-endpoints-using-api-management/api-management-menu.png)
 
-**[Web API 名]** として「**AzureML Demo API**」と入力します。**[Web サービス URL]** として「****https://ussouthcentral.services.azureml.net**」と入力します。**[Web API URL サフィックス]** として「**azureml-demo**」と入力します。**[Web API URL]** として **[HTTPS]** を選択します。**[製品]** として **[スターター]** を選択します。完了したら、**[保存]** をクリックして、API を作成します。
+**[Web API 名]** として「**AzureML Demo API**」と入力します。**[Web サービス URL]** として「**https://ussouthcentral.services.azureml.net**」と入力します。**[Web API URL サフィックス]** として「**azureml-demo**」と入力します。**[Web API URL]** として **[HTTPS]** を選択します。**[製品]** として **[スターター]** を選択します。完了したら、**[保存]** をクリックして、API を作成します。
 
 ![add-new-api](./media/machine-learning-manage-web-service-endpoints-using-api-management/add-new-api.png)
 
@@ -384,4 +384,4 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 	return
 	invokeBatchExecutionService()
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

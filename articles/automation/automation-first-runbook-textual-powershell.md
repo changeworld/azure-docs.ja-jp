@@ -13,12 +13,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="05/16/2016"
+    ms.date="06/02/2016"
     ms.author="magoedte;sngun"/>
 
 # 初めての PowerShell Runbook
 
-> [AZURE.SELECTOR] - [Graphical](automation-first-runbook-graphical.md) - [PowerShell Workflow](automation-first-runbook-textual.md) - [PowerShell](automation-first-runbook-textual-PowerShell.md)
+> [AZURE.SELECTOR] - [Graphical](automation-first-runbook-graphical.md) - [PowerShell](automation-first-runbook-textual-PowerShell.md) - [PowerShell Workflow](automation-first-runbook-textual.md)
 
 このチュートリアルでは、Azure Automation で [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) を作成する手順について説明します。簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を説明します。その後、実際に Azure リソースを管理するように Runbook を変更し、ここでは Azure 仮想マシンを開始します。そして、Runbook のパラメーターを追加することによって、Runbook をいっそう堅牢にします。
 
@@ -60,7 +60,7 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 1.	**[テスト ウィンドウ]** をクリックして、テスト ウィンドウを開きます。  
 	![Test Pane](media/automation-first-runbook-textual-powershell/automation-testpane.png)  
 2.	**[開始]** をクリックしてテストを開始します。有効なオプションはこれだけです。
-3.	[Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態が表示されます。  
+3.	[Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態が表示されます。
 	最初のジョブの状態は *キューに設定* であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると *開始中* になり、Runbook が実際に実行を開始すると *実行中* になります。  
 4.	Runbook ジョブが完了すると、その出力が表示されます。この例では、*Hello World* と表示されます。  
 	![Test Pane Output](media/automation-first-runbook-textual-powershell/automation-testpane-output.png)  
@@ -75,12 +75,12 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 2.	**[Runbook]** ウィンドウで左にスクロールして Runbook を表示すると、**[作成状態]** は **[発行済]** になっています。
 3.	右へスクロールして戻り、**MyFirstRunbook-PowerShell** のウィンドウを表示します。  
 	上部のオプションを使用すると、Runbook の開始、Runbook の表示、将来の開始スケジュールの設定を行ったり、HTTP 呼び出しで開始できるように [Webhook](automation-webhooks.md) を作成したりすることができます。
-4.	ここでは Runbook を開始するだけであるため、**[開始]** をクリックし、[Runbook の開始] ブレードが開いたら **[OK]** をクリックします。
+4.	ここでは Runbook を開始するだけであるため、**[開始]** をクリックし、[Runbook の開始] ブレードが開いたら **[OK]** をクリックします。  
 	![Start button](media/automation-first-runbook-textual-powershell/automation-start-button.png)  
 5.	作成した Runbook ジョブのジョブ ウィンドウが開かれます。このウィンドウは閉じてもかまいませんが、ここではジョブの進行状況を確認できるように開いたままにします。
 6.	ジョブの状態が **[ジョブの概要]** に表示され、Runbook をテストしたときに確認した状態と一致しています。  
 	![ジョブの概要](media/automation-first-runbook-textual-powershell/automation-job-summary.png)  
-7.	Runbook の状態が *[完了]* になったら、**[出力]** をクリックします。[出力] ウィンドウが開き、「*Hello World*」と表示されます。  
+7.	Runbook の状態が *[完了]* になったら、**[出力]** をクリックします。[出力] ウィンドウが開き、「 *Hello World* 」と表示されます。  
 	![ジョブの出力](media/automation-first-runbook-textual-powershell/automation-job-output.png)
 8.	[出力] ウィンドウを閉じます。
 9.	**[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。出力ストリームでは *Hello World* だけが表示されますが、Runbook が詳細やエラーに書き込んでいる場合は、これらの Runbook ジョブの他のストリームも表示できます。  
@@ -165,4 +165,4 @@ PowerShell Runbook のライフサイクル、機能、および管理は、Powe
 -	Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 -	PowerShell スクリプトのサポート機能の詳細については、[Azure Automation でのネイティブ PowerShell スクリプトのサポート](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)に関するブログを参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

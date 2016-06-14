@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/26/2016"
-   ms.author="spyros;spyrossak" />
+   ms.date="05/31/2016"
+   ms.author="spyros;sethm" />
 
 # SQL から Azure Event Hub へのデータのプル
 
@@ -42,4 +42,4 @@ SqlToEventHub ソリューションが起動すると、ソリューションは
 
 ソリューションをデプロイするには、SqlToEventHub アプリケーションを複製またはダウンロードし、App.config ファイルを編集して、アプリケーションをビルドし、最後に発行します。アプリケーションを発行したら、Cloud Services の Azure クラシック ポータルでアプリケーションの実行を確認できるほか、イベント ハブで受信したイベントを監視できます。頻度は 2 つの条件により決まります。1 つは SQL テーブルに対する更新の頻度です。もう 1 つはアプリケーションの構成ファイルで指定したスリープ間隔です。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0601_2016-->

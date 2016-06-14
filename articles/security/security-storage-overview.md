@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/19/2016"
+   ms.date="05/26/2016"
    ms.author="terrylan"/>
 
 # Azure Storage のセキュリティの概要
@@ -28,7 +28,7 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
 
 この記事では、Azure Storage で使用できる各コア セキュリティ機能の概要について説明します。各機能の詳細について説明する記事へのリンクが用意されているため、さらに詳しく学習できます。
 
-Azure Storage でのセキュリティの詳細については、「[Azure Storage セキュリティ ガイド](https://azure.microsoft.com/documentation/articles../storage/storage-security-guide.md)」を参照してください。
+Azure Storage でのセキュリティの詳細については、「[Azure Storage セキュリティ ガイド](../storage/storage-security-guide.md)」を参照してください。
 
 この記事では、以下の主要機能について扱います。
 
@@ -160,4 +160,4 @@ Storage Analytics ログで確認できるもう 1 つのデータは、誰か�
 - [Azure ポータルでのストレージ アカウントの監視](../storage/storage-monitor-storage-account.md)
 - [Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング](../storage/storage-e2e-troubleshooting.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

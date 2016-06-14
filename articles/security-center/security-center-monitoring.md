@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/10/2016"
+   ms.date="06/06/2016"
    ms.author="yurid"/>
 
 #Azure セキュリティ センターでのセキュリティ ヘルスの監視
@@ -34,7 +34,7 @@
 
 **[リソースのセキュリティ ヘルス]** タイルで、リソースのセキュリティの状態を監視することができます。次の例では、注意を必要とする、重大度が高レベルと中レベルの問題を多数確認できます。有効になっているセキュリティ ポリシーが、監視されているコントロールのタイプに影響します。
 
-![リソース ヘルス](./media/security-center-monitoring/security-center-monitoring-fig1-new2.png)
+![リソース ヘルス](./media/security-center-monitoring/security-center-monitoring-fig1-new3.png)
 
 セキュリティ更新プログラムが適用されていない VM や[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)がないサブネットなど、対処する必要がある脆弱性がセキュリティ センターによって特定された場合、ここに表示されます。
 
@@ -100,56 +100,66 @@
 ###仮想ネットワークの監視
 **[リソースのセキュリティ ヘルス]** タイルで **[ネットワーク]** をクリックすると、**[ネットワーク]** ブレードが開き、次のような詳細が表示されます。
 
-![ネットワーク](./media/security-center-monitoring/security-center-monitoring-fig9-new.png)
+![ネットワーク](./media/security-center-monitoring/security-center-monitoring-fig9-new3.png)
 
 ####ネットワークの推奨事項
 
 仮想マシンのリソースのヘルス情報と同様に、このブレードでは、上部に問題をまとめた一覧、下部に監視対象のネットワークの一覧が表示されます。
 
-![Networking blade](./media/security-center-monitoring/security-center-monitoring-fig9-new2.png)
-
 ネットワーク状態の内訳のセクションには、潜在的なセキュリティの問題と推奨事項の一覧が表示されます。次のような問題が発生する可能性があります。
 
+- 次世代ファイアウォール (NGFW) がインストールされていない
 - サブネット上のネットワーク セキュリティ グループ (NSG) が有効になっていない
 - VM 上の NSG が有効になっていない
 - パブリックの外部エンドポイントを通じた外部アクセスが制限される
-- 正常なサブネット
+- インターネット接続エンドポイントが正常である
 
 これらの推奨事項のいずれかをクリックすると、次の例に示すように、新しいブレードが開き、推奨事項に関する詳細が表示されます。
 
 ![エンドポイントの制限](./media/security-center-monitoring/security-center-monitoring-fig11-new2.png)
 
-この例では、**[Configure Missing Network Security Groups for Subnets]** (サブネットの欠落しているネットワーク セキュリティ グループを構成) ブレードには NSG 保護が欠落しているサブネットと仮想マシンの一覧が表示されています。NSG を適用するサブネットをクリックすると、別のブレードが開きます。
+この例では、**[Configure Missing Network Security Groups for Subnets (サブネットの欠落しているネットワーク セキュリティ グループを構成)]** ブレードには NSG 保護が欠落しているサブネットと仮想マシンの一覧が表示されています。NSG を適用するサブネットをクリックすると、別のブレードが開きます。
 
 **[ネットワーク セキュリティ グループの選択]** ブレードでは、サブネットに最適なネットワーク セキュリティ グループを選択するか、新しいネットワーク セキュリティ グループを作成できます。
 
-####[ネットワーク] セクション
+####[Internet facing endpoints (インターネット接続エンドポイント)] セクション
 
-**[ネットワーク]** セクションには、次のようにリソースが階層として表示されます。
+**[Internet facing endpoints (インターネット接続エンドポイント)]** セクションでは、インターネット接続エンドポイントで現在構成されている VM とその現在の状態を確認できます。
 
-![ネットワーク ツリー](./media/security-center-monitoring/security-center-monitoring-fig121-new2.png)
+![Internet facing endpoint](./media/security-center-monitoring/security-center-monitoring-fig121-new5.png)
+
+この表には、VM を表すエンドポイント名、インターネット接続 IP アドレス、NSG と NGFW の現在の重要度ステータスが示されています。この表は、次に示す重要度によって並べ替えられています。
+- 赤 (最上位): 優先度が高く、直ちに対処する必要があります 
+- オレンジ: 優先度は中位で、できるだけ早く対処する必要があります
+- 緑 (最下位): 正常な状態です
+
+####[Networking topology (ネットワーク トポロジ)] セクション
+
+**[Networking topology (ネットワーク トポロジ)]** セクションには、次のようにリソースが階層として表示されます。
+
+![Networking topology](./media/security-center-monitoring/security-center-monitoring-fig121-new4.png)
 
 このテーブルでは、次に示す重要度によって VM とサブネットが並べ替えられています。
 - 赤 (最上位): 優先度が高く、直ちに対処する必要があります 
 - オレンジ: 優先度は中位で、できるだけ早く対処する必要があります
 - 緑 (最下位): 正常な状態です
 
-この階層では、最初のレベルに[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)、[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-site-to-site-create.md)、[仮想ネットワーク (クラシック)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) が含まれます。2 番目のレベルにはサブネット、3 番目のレベルにはそれらのサブネットに属している VM が含まれます。右側の列には、これらのリソースのネットワーク セキュリティ グループ (NSG) の現在の状態が表示されます。次の例は、VM の VM-CL-W1 を選択した場合の結果です。
+このトポロジ表示では、最初のレベルに[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)、[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-site-to-site-create.md)、[仮想ネットワーク (クラシック)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) が含まれます。2 番目のレベルにはサブネット、3 番目のレベルにはそれらのサブネットに属している VM が含まれます。右側の列には、これらのリソースのネットワーク セキュリティ グループ (NSG) の現在の状態が表示されます。次の例は、VM の VM-CL-W1 を選択した場合の結果です。
 
 ![ネットワーク ツリー](./media/security-center-monitoring/security-center-monitoring-fig13-new2.png)
 
 このブレードの下部には、上記の推奨事項に似た、この VM に対する推奨事項が表示されます。推奨事項をクリックして詳細を確認するか、必要なセキュリティ制御/構成を適用することができます。
 
 ###SQL リソースの監視
-**[Resources security health]** (リソースのセキュリティ正常性) タイルの **[SQL]** をクリックすると、[SQL] ブレードが開き、監査や透過的なデータ暗号化が有効でないなどの問題に関する推奨事項が示されます。また、データベースの全般的なヘルス状態に関する推奨事項も示されます。
+**[Resources security health (リソースのセキュリティ正常性)]** タイルの **[SQL]** をクリックすると、[SQL] ブレードが開き、監査や透過的なデータ暗号化が有効でないなどの問題に関する推奨事項が示されます。また、データベースの全般的なヘルス状態に関する推奨事項も示されます。
 
 ![SQL リソース ヘルス](./media/security-center-monitoring/security-center-monitoring-fig15-new.png)
 
-これらの推奨事項のいずれかをクリックすると、問題を解決するためのさらなるアクションに関する詳細を表示することができます。次の例では、**[Database Auditing not enabled]** (データベースの監査が有効でない) という推奨事項を展開した状態が示されています。
+これらの推奨事項のいずれかをクリックすると、問題を解決するためのさらなるアクションに関する詳細を表示することができます。次の例では、**[Database Auditing not enabled (データベースの監査が有効でない)]** という推奨事項を展開した状態が示されています。
 
 ![SQL リソース ヘルス](./media/security-center-monitoring/security-center-monitoring-fig16-new.png)
 
-**[Enable Auditing on SQL databases]** (SQL データベースの監査を有効にする) ブレードには、次の情報が表示されます。
+**[Enable Auditing on SQL databases (SQL データベースの監査を有効にする)]** ブレードには、次の情報が表示されます。
 
 - SQL データベースの一覧
 - SQL データベースが配置されているサーバー
@@ -172,7 +182,7 @@ Azure ワークロードに、[Resource Manager の VM](../resource-manager-depl
 
 ![アプリケーション](./media/security-center-monitoring/security-center-monitoring-fig19-new.png)
 
-**[Unsecured Web Applications]** (セキュリティで保護されていない Web アプリケーション) ブレードには、安全でないと見なされたアプリケーションが存在するすべての VM の一覧が表示されます。この一覧には、VM 名、問題の現在の状態、問題の重大度が表示されます。この Web アプリケーションをクリックすると、**[Add a Web Application Firewall]** (Web アプリケーション ファイアウォールを追加する) ブレードが開き、次に示すように、サード パーティの WAF (Web アプリケーション ファイアウォール) をインストールするためのオプションが表示されます。
+**[Unsecured Web Applications (セキュリティで保護されていない Web アプリケーション)]** ブレードには、安全でないと見なされたアプリケーションが存在するすべての VM の一覧が表示されます。この一覧には、VM 名、問題の現在の状態、問題の重大度が表示されます。この Web アプリケーションをクリックすると、**[Add a Web Application Firewall (Web アプリケーション ファイアウォールを追加する)]** ブレードが開き、次に示すように、サード パーティの WAF (Web アプリケーション ファイアウォール) をインストールするためのオプションが表示されます。
 
 ![WAF の追加](./media/security-center-monitoring/security-center-monitoring-fig20-new.png)
 
@@ -181,8 +191,8 @@ Azure ワークロードに、[Resource Manager の VM](../resource-manager-depl
 
 - 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 – Azure セキュリティ センターでのセキュリティ設定を構成する方法について
 - 「[Azure セキュリティ センターでのセキュリティのアラートの管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および対応について
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 - パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

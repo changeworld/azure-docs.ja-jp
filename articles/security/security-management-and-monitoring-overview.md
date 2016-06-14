@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/19/2016"
+   ms.date="05/26/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティの管理と監視の概要
@@ -28,7 +28,7 @@ Microsoft クラウド サービスのセキュリティは、パートナーシ
 
 ![Shared responsibility][1]
 
-セキュリティ管理の詳細については、「[Azure のセキュリティ管理](../azure-security-management.md)」を参照してください。
+セキュリティ管理の詳細については、「[Azure のセキュリティ管理](azure-security-management.md)」を参照してください。
 
 この記事では、以下の主要機能について扱います。
 
@@ -134,4 +134,4 @@ Security Center は、Azure リソースのセキュリティの最適化と監�
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/24/2016"
+   ms.date="05/26/2016"
    ms.author="alkohli" />
 
 # StorSimple Virtual Array への Update 0.1 のインストール
@@ -87,7 +87,7 @@ Azure クラシック ポータルを利用できない場合は、ローカル 
 
 3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号 (**3160441** など) を入力して、**[検索]** をクリックします。
 
-    "**Microsoft Azure StorSimple Virtual Array Update 0.1**" のような修正プログラムの一覧が表示されます。
+    "**StorSimple Virtual Array Update 0.1**" など、修正プログラムの一覧が表示されます。
 
     ![カタログの検索](./media/storsimple-ova-install-update-01/download1.png)
 
@@ -128,4 +128,4 @@ Azure クラシック ポータルを利用できない場合は、ローカル 
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

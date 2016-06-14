@@ -132,9 +132,9 @@ FROM [dbo].[vTargetMail]
 <!--Article references-->
 [Azure Machine Learning studio]: https://studio.azureml.net/
 [Microsoft Azure での機械学習の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
-[サンプル データを手動で読み込む]: sql-data-warehouse-get-started-manually-load-samples.md
+[サンプル データを手動で読み込む]: sql-data-warehouse-get-started-load-sample-databases.md
 [SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 [Power BI]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
 [Azure Machine Learning]: ./sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

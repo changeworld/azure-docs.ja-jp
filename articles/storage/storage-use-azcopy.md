@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/06/2016"
+	ms.date="05/26/2016"
 	ms.author="micurd"/>
 
 # AzCopy コマンド ライン ユーティリティを使用してデータを転送する
@@ -374,13 +374,15 @@ BLOB コンテナーに、Azure Table を表す JSON ファイルと、それに
 
 ### 宛先に存在しないデータのみをコピーする
 
-`/XO` パラメーターを指定すると古いソース リソースを、`/XN` パラメーターを指定すると新しいソース リソースをコピー対象から除外できます。ソースまたは宛先がテーブルの場合、この操作はサポートされていません。宛先に存在しないソース リソースのみをコピーする場合は、AzCopy コマンドに両方のパラメーターを指定します。
+`/XO` パラメーターを指定すると古いソース リソースを、`/XN` パラメーターを指定すると新しいソース リソースをコピー対象から除外できます。宛先に存在しないソース リソースのみをコピーする場合は、AzCopy コマンドに両方のパラメーターを指定します。
 
 	/Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:<sourcekey> /S /XO /XN
 
 	/Source:C:\myfolder /Dest:http://myaccount.file.core.windows.net/myfileshare /DestKey:<destkey> /S /XO /XN
 
 	/Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:http://myaccount.blob.core.windows.net/mycontainer1 /SourceKey:<sourcekey> /DestKey:<destkey> /S /XO /XN
+
+注: ソースまたは宛先がテーブルの場合、この操作はサポートされていません。
 
 ### コマンド ライン パラメーターを指定するための応答ファイルの使用
 
@@ -501,13 +503,13 @@ AzCopy の操作を再開する場合:
 
 コピー元となるソース データを指定します。ソースには、ファイル システムのディレクトリ、BLOB コンテナー、BLOB 仮想ディレクトリ、ストレージ ファイル共有、ストレージ ファイルのディレクトリ、または Azure テーブルを指定できます。
 
-**適用対象:** BLOB、File、Table
+**適用対象:** BLOB、ファイル、テーブル
 
 ### /Dest:"destination"
 
 コピー先を指定します。コピー先には、ファイル システムのディレクトリ、BLOB コンテナー、BLOB 仮想ディレクトリ、ストレージ ファイル共有、ストレージ ファイル ディレクトリ、または Azure テーブルを指定できます。
 
-**適用対象:** BLOB、File、Table
+**適用対象:** BLOB、ファイル、テーブル
 
 ### /Pattern:"file-pattern"
 
@@ -521,15 +523,15 @@ AzCopy の操作を再開する場合:
 
 AzCopy では、/Source が BLOB コンテナーまたは BLOB 仮想ディレクトリである場合は大文字と小文字を区別する照合が行われ、その他の場合はすべて大文字と小文字を区別しない照合が行われます。
 
-ファイル パターンを指定しない場合、ファイル システム上の場所で使用される既定のファイル パターンは *.* です。また、Azure Storage 上の場所の場合は空のプレフィックスです。複数のファイル パターンを指定することはサポートされていません。
+ファイル パターンが指定されていないときに使用される既定のファイル パターンは、ファイル システム上の場所の場合は *.* です。また、Azure Storage 上の場所の場合は空のプレフィックスです。複数のファイル パターンを指定することはサポートされていません。
 
-**適用対象:** BLOB、File
+**適用対象:** BLOB、ファイル
 
 ### /DestKey:"storage-key"
 
 宛先リソースのストレージのアカウント キーを指定します。
 
-**適用対象:** BLOB、File、Table
+**適用対象:** BLOB、ファイル、テーブル
 
 ### /DestSAS:"sas-token"
 
@@ -539,13 +541,13 @@ AzCopy では、/Source が BLOB コンテナーまたは BLOB 仮想ディレ�
 
 ソースと宛先がどちらも BLOB の場合は、宛先 BLOB がソース BLOB と同じストレージ アカウント内に存在している必要があります。
 
-**適用対象:** BLOB、File、Table
+**適用対象:** BLOB、ファイル、テーブル
 
 ### /SourceKey:"storage-key"
 
 ソース リソースのストレージのアカウント キーを指定します。
 
-**適用対象:** BLOB、File、Table
+**適用対象:** BLOB、ファイル、テーブル
 
 ### /SourceSAS:"sas-token"
 
@@ -555,13 +557,13 @@ AzCopy では、/Source が BLOB コンテナーまたは BLOB 仮想ディレ�
 
 ソースがファイル共有またはテーブルの場合は、キーまたは SAS を指定する必要があります。
 
-**適用対象:** BLOB、File、Table
+**適用対象:** BLOB、ファイル、テーブル
 
 ### /S
 
 コピー操作の再帰モードを指定します。再帰モードでは、AzCopy は指定のファイル パターンに一致するすべての BLOB またはファイル (サブフォルダー内を含む) をコピーします。
 
-**適用対象:** BLOB、File
+**適用対象:** BLOB、ファイル
 
 ### /BlobType:"block" | "page" | "append"
 
@@ -577,7 +579,7 @@ Azure ストレージでは、BLOB またはファイルに対して格納され
 
 AzCopy は、Azure BLOB またはファイルをサービスにアップロードした後、常にその Content-MD5 プロパティを設定します。
 
-**適用対象:** BLOB、File
+**適用対象:** BLOB、ファイル
 
 ### /Snapshot
 
@@ -595,7 +597,7 @@ AzCopy は、Azure BLOB またはファイルをサービスにアップロー�
 
 既定では、詳細なログ ファイル名は AzCopyVerbose.log で、`%LocalAppData%\Microsoft\Azure\AzCopy` に出力されます。このオプションで既存のファイルの場所を指定すると、そのファイルに詳細なログが追加されます。
 
-**適用対象:** BLOB、File、Table
+**適用対象:** BLOB、ファイル、テーブル
 
 ### /Z:[journal-file-folder]
 
@@ -613,7 +615,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 以前のバージョンの AzCopy で作成されたジャーナル ファイルによる操作の再開はサポートされていません。
 
-**適用対象:** BLOB、File、Table
+**適用対象:** BLOB、ファイル、テーブル
 
 ### /@:"parameter-file"
 
@@ -625,13 +627,13 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 複数の応答ファイルを指定できます。ただし、入れ子になった応答ファイルはサポートされません。
 
-**適用対象:** BLOB、File、Table
+**適用対象:** BLOB、ファイル、テーブル
 
 ### /Y
 
 AzCopy のすべての確認プロンプトを表示しません。
 
-**適用対象:** BLOB、File、Table
+**適用対象:** BLOB、ファイル、テーブル
 
 ### /L
 
@@ -643,31 +645,31 @@ AzCopy のすべての確認プロンプトを表示しません。
 
 AzCopy では、このオプションを使用するときに、このソースの場所の LIST および READ アクセス許可が必要です。
 
-**適用対象:** BLOB、File
+**適用対象:** BLOB、ファイル
 
 ### /MT
 
 ダウンロードしたファイルの最後の変更時刻をソースの BLOB またはファイルと同じ値に設定します。
 
-**適用対象:** BLOB、File
+**適用対象:** BLOB、ファイル
 
 ### /XN
 
 新しいソース リソースを除外します。ソースが最後に変更された時刻が宛先と同じか、それよりも後である場合、リソースはコピーされません。
 
-**適用対象:** BLOB、File
+**適用対象:** BLOB、ファイル
 
 ### /XO
 
 古いソース リソースを除外します。ソースが最後に変更された時刻が宛先と同じか、それよりも前である場合、リソースはコピーされません。
 
-**適用対象:** BLOB、File
+**適用対象:** BLOB、ファイル
 
 ### /A
 
 Archive 属性が設定済みのファイルのみアップロードします。
 
-**適用対象:** BLOB、File
+**適用対象:** BLOB、ファイル
 
 ### /IA:[RASHCNETOI]
 
@@ -686,7 +688,7 @@ Archive 属性が設定済みのファイルのみアップロードします。
 - O = オフラインのファイル
 - I = インデックス付きでないファイル
 
-**適用対象:** BLOB、File
+**適用対象:** BLOB、ファイル
 
 ### /XA:[RASHCNETOI]
 
@@ -705,7 +707,7 @@ Archive 属性が設定済みのファイルのみアップロードします。
 - O = オフラインのファイル
 - I = インデックス付きでないファイル
 
-**適用対象:** BLOB、File
+**適用対象:** BLOB、ファイル
 
 ### /Delimiter:"delimiter"
 
@@ -725,19 +727,19 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 同時操作の上限は 512 です。
 
-**適用対象:** BLOB、File、Table
+**適用対象:** BLOB、ファイル、テーブル
 
 ### /SourceType:"Blob" | "Table"
 
-ストレージ エミュレーターで実行されている、ローカル開発環境で利用可能な BLOB を `source` リソースに指定します。
+`source` リソースが、ストレージ エミュレーターで実行されている、ローカル開発環境で利用可能な BLOB であると指定します。
 
-**適用対象:** BLOB、Table
+**適用対象:** BLOB、テーブル
 
 ### /DestType:"Blob" | "Table"
 
-ストレージ エミュレーターで実行されている、ローカル開発環境で利用可能な BLOB を `destination` リソースに指定します。
+`destination` リソースが、ストレージ エミュレーターで実行されている、ローカル開発環境で利用可能な BLOB であると指定します。
 
-**適用対象:** BLOB、Table
+**適用対象:** BLOB、テーブル
 
 ### /PKRS:"key1#key2#key3#..."
 
@@ -753,7 +755,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
   [bb, last-partition-key]
 
-**適用対象:** Table
+**適用対象:** テーブル
 
 ### /SplitSize:"file-size"
 
@@ -763,7 +765,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 テーブル データを BLOB にエクスポートする場合、エクスポートされるファイルのサイズが BLOB サイズの上限である 200 GB に達していると、このオプションが指定されていなくても、エクスポートされるファイルが分割されます。
 
-**適用対象:** Table
+**適用対象:** テーブル
 
 ### /EntityOperation:"InsertOrSkip" | "InsertOrMerge" | "InsertOrReplace"
 
@@ -775,7 +777,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 - InsertOrReplace - テーブルにエンティティが存在する場合は置換し、存在しない場合は新しいエンティティを挿入します。
 
-**適用対象:** Table
+**適用対象:** テーブル
 
 ### /Manifest:"manifest-file"
 
@@ -785,7 +787,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 このオプションは、データ ファイルを検索するためのインポート操作中に必要です。
 
-**適用対象:** Table
+**適用対象:** テーブル
 
 ### /SyncCopy
 
@@ -795,7 +797,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 このオプションは、ファイルを BLOB ストレージ内またはファイル ストレージ内でコピーする場合や、BLOB ストレージからファイル ストレージ、またはファイル ストレージから BLOB ストレージにコピーする場合に使用できます。
 
-**適用対象:** BLOB、File
+**適用対象:** BLOB、ファイル
 
 ### /SetContentType:"content-type"
 
@@ -805,7 +807,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 このオプションで値を指定しない場合、AzCopy は各 BLOB またはファイルのコンテンツの種類をそのファイルの拡張子に応じて設定します。
 
-**適用対象:** BLOB、File
+**適用対象:** BLOB、ファイル
 
 ### /PayloadFormat:"JSON" | "CSV"
 
@@ -813,7 +815,7 @@ AzCopy は既定で、データ転送のスループットを向上するため�
 
 このオプションが指定されていない場合、AzCopy では既定で JSON 形式でテーブル データ ファイルがエクスポートされます。
 
-**適用対象:** Table
+**適用対象:** テーブル
 
 ## 既知の問題とベスト プラクティス
 
@@ -864,4 +866,4 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 - [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

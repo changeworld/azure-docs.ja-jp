@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="05/26/2016"
 	ms.author="jeedes"/>
 
 
@@ -76,12 +76,12 @@ Azure AD への HPE SaaS の統合を構成するには、ギャラリーから�
 	![アプリケーション][4]
 
 6. 検索ボックスに、「**HPE SaaS**」と入力します。
-	
+
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hpesaas-tutorial/tutorial_hpesaas_01.png)
 
 7. 結果ウィンドウで **[HPE SaaS]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hpesaas-tutorial/tutorial_hpesaas_02.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hpesaas-tutorial/tutorial_hpesaas_02.png)
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、HPE SaaS で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -117,11 +117,9 @@ HPE SaaS で Azure AD のシングル サインオンを構成してテストす
 	![Configure Single Sign-On](./media/active-directory-saas-hpesaas-tutorial/tutorial_hpesaas_04.png)
 
 
-    a.**[サインオン URL]** ボックスに、`https://<tenant name>.saas.hpe.com` の形式で、HPE SaaS アプリケーションにサインオンする際にユーザーが使用する URL を入力します。
+    a.**[サインオン URL]** ボックスに、**“https://login.saas.hpe.com/msg”** の形式で、HPE SaaS アプリケーションにサインオンする際にユーザーが使用する URL を入力します。お客様がこれをアプリケーションに固有の URL に変更することもできます。
 
-    b.**[応答 URL]** ボックスに、`https://<tenant name>.saas.hpe.com/sp/ACS.saml2` の形式で URL を入力します。
-
-    c.**[次へ]** をクリックします。
+    b.**[次へ]** をクリックします。
 
 
 4. **[HPE SaaS でのシングル サインオンの構成]** ページで、次の手順を実行します。
@@ -147,8 +145,7 @@ HPE SaaS で Azure AD のシングル サインオンを構成してテストす
 
 
 ### Azure AD のテスト ユーザーの作成
-
-このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。ユーザーの一覧で **[Britta Simon]** を選択します。
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
 ![Azure AD ユーザーの作成][20]
 
@@ -156,7 +153,7 @@ HPE SaaS で Azure AD のシングル サインオンを構成してテストす
 
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hpesaas-tutorial/create_aaduser_09.png)
+![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hpesaas-tutorial/create_aaduser_09.png)
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -164,9 +161,11 @@ HPE SaaS で Azure AD のシングル サインオンを構成してテストす
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hpesaas-tutorial/create_aaduser_03.png)
 
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hpesaas-tutorial/create_aaduser_04.png)
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hpesaas-tutorial/create_aaduser_04.png)
+
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hpesaas-tutorial/create_aaduser_05.png)
 
@@ -270,4 +269,4 @@ HPE SaaS で Azure AD のシングル サインオンを構成してテストす
 [204]: ./media/active-directory-saas-hpesaas-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-hpesaas-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

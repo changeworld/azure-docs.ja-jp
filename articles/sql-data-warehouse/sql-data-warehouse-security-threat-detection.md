@@ -1,6 +1,6 @@
 <properties
    pageTitle="SQL Data Warehouse の脅威の検出の概要"
-   description="SQL Data Warehouse の脅威の検出の使用を開始する方法"
+   description="脅威の検出を開始する方法"
    services="sql-data-warehouse"
    documentationCenter=""
    authors="lodipalm"
@@ -13,17 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="05/31/2016"
    ms.author="lodipalm;sonyama;barbkess"/>
 
 
-# SQL Data Warehouse の脅威の検出の概要
+# 脅威の検出の概要
 
 ## 概要
 
 脅威の検出は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。脅威の検出はプレビュー状態であり、SQL Data Warehouse でサポートされます。
 
-脅威の検出で提供される新しいセキュリティ階層は、異常なアクティビティに対するセキュリティ アラートを提供することによって、発生する可能性のある脅威をユーザーが検出して対応できるようにします。ユーザーは、[Azure SQL Data Warehouse の監査]sql-data-warehouse-auditing-get-started.md) を使用して疑わしいイベントを調査し、データ ウェアハウス内のデータに対するアクセス、侵害、または悪用の試行による結果かどうかを判断できます。脅威の検出を使用するとデータ ウェアハウスに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
+脅威の検出で提供される新しいセキュリティ階層は、異常なアクティビティに対するセキュリティ アラートを提供することによって、発生する可能性のある脅威をユーザーが検出して対応できるようにします。ユーザーは、[Azure SQL Data Warehouse の監査](sql-data-warehouse-auditing-overview.md)を使用して疑わしいイベントを調査し、データ ウェアハウス内のデータに対するアクセス、侵害、または悪用の試行による結果かどうかを判断できます。脅威の検出を使用するとデータ ウェアハウスに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
 
 たとえば、脅威の検出は、SQL インジェクションの可能性を示す特定の異常なデータベース アクティビティを検出します。SQL インジェクションはインターネットでの一般的な Web アプリケーションのセキュリティの問題の 1 つであり、データ駆動型アプリケーションの攻撃に使用されます。攻撃者は、アプリケーションの脆弱性を利用してアプリケーションの入力フィールドに悪意のある SQL ステートメントを挿入し、データベースのデータを侵害または変更します。
 
@@ -34,7 +34,7 @@
 
 2. 監視する SQL Data Warehouse の構成ブレードに移動します。[設定] ブレードで、**[監査と脅威の検出]** を選択します。
 
-	![ナビゲーション ウィンドウ][1]
+	![Navigation pane][1]
 
 3. **[監査と脅威の検出]** 構成ブレードで、監査を **[ON]** にすると、脅威の検出の設定が表示されます。
 
@@ -89,4 +89,4 @@
 [8]: ./media/sql-data-warehouse-security-threat-detection/8_td_excel_fast_combine.png
 [9]: ./media/sql-data-warehouse-security-threat-detection/9_td_excel_parameters.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

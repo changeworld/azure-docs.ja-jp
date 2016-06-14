@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure App Service、Cloud Services、Virtual Machines、および Service Fabric の比較"
-	description="Web アプリケーションをホストするにあたり、どのようなときにどのサービス (Azure App Service、Cloud Services、Virtual Machines、Service Fabric) を使用するかについて説明します。"
+	pageTitle="Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較 | Microsoft Azure"
+	description="Web アプリケーションをホストするにあたり、使用するサービス (Azure App Service、Virtual Machines、Service Fabric、Cloud Services) を選択する方法について説明します。"
 	services="app-service\web, virtual-machines, cloud-services"
 	documentationCenter=""
 	authors="tdykstra"
@@ -16,21 +16,17 @@
 	ms.date="02/22/2016"
 	ms.author="tdykstra"/>
 
-# Azure App Service、Cloud Services、Virtual Machines、および Service Fabric の比較
+# Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
 
 ## 概要
 
-Azure には、Web サイトをホストするための方法がいくつかあります ([Azure App Service][]、[Cloud Services][]、[Virtual Machines][]、[Service Fabric][])。それぞれの選択肢についてこの記事で理解を深め、実際の Web アプリケーションに適した方法をお選びください。
+Azure には、Web サイトをホストするための方法がいくつかあります ([Azure App Service][]、[Virtual Machines][]、[Service Fabric][]、[Cloud Services][])。それぞれの選択肢についてこの記事で理解を深め、実際の Web アプリケーションに適した方法をお選びください。
 
 Azure App Service は、ほとんどの Web アプリに適しています。デプロイと管理機能がそのプラットフォームに統合され、トラフィックの負荷に応じてサイトのスケールを機敏に調整できるほか、組み込みの負荷分散機能と Traffic Manager によって高い可用性が得られます。既にあるサイトは、[オンライン移行ツール](https://www.migratetoazure.net/)を使用して簡単に Azure App Service へ移行することができます。Web アプリケーション ギャラリーからオープン ソースのアプリケーションを使用したり、好きなフレームワークとツールを使用して新しいサイトを作成したりできます。[Web ジョブ][]機能を使用すると、バックグラウンド ジョブの処理を簡単に、App Service Web アプリに追加できます。
 
-サーバーへのリモート アクセス、サーバーのスタートアップ タスクの構成など、Web サーバー環境をもっと細かく制御する必要がある場合は、Azure Cloud Services が通常、最善の選択肢となります。
+Service Fabric は、新しいアプリを作成する場合やマイクロサービス アーキテクチャを使用するように既存のアプリを書き換える場合にお勧めします。共有プールのマシン上で動作するアプリは、小規模から開始し、必要に応じて数百または数千ものコンピューターを含む非常に大きなスケールまで拡張することができます。ステートフル サービスによってアプリの状態を一貫して確実に格納することが容易になり、Service Fabric はサービスのパーティション分割、スケーリング、可用性を自動的に管理します。また、Service Fabric は、Open Web Interface for .NET (OWIN) と ASP.NET Core を使用した Web API もサポートします。App Service に比べて、Service Fabric は基になるインフラストラクチャへのより細かい制御 (直接アクセス) も提供します。サーバーにリモート接続したり、サーバーのスタートアップ タスクを構成したりできます。Cloud Services は、制御の程度と使いやすさにおいて Service Fabric と似ていますが、現在ではレガシ サービスになりつつあり、新しい開発には Service Fabric をお勧めします。
 
-既にあるアプリケーションを Azure App Service や Azure Cloud Services で実行するためには、かなりの修正が必要という場合、Azure Virtual Machines を選ぶことで、クラウドへの移行を単純化できる場合があります。ただし、VM の構成、セキュリティ対策、メンテナンスを正しく行うためには、Azure App Service や Cloud Services と比べて、はるかに時間がかかり、IT に関する豊富な知識と経験が要求されます。Azure Virtual Machines を選択する場合は、VM 環境に対する修正プログラムの適用、更新、管理に伴って日々発生するメンテナンスの労力を考慮してください。
-
-以上に挙げた Azure の Web ホスティング方法ごとに、制御の柔軟性と使いやすさの相対的な度合いを示したのが次の図です。
-
-![ChoicesDiagram][ChoicesDiagram]
+既存のアプリケーションを App Service や Service Fabric で実行するためにはかなりの修正が必要という場合、Virtual Machines を選ぶことで、クラウドへの移行を単純化できる場合があります。ただし、VM の構成、セキュリティ保護、メンテナンスを正しく行うためには、Azure App Service や Service Fabric と比べて、はるかに時間がかかり、IT に対する豊富な知識と経験が要求されます。Azure Virtual Machines を選択する場合は、VM 環境に対する修正プログラムの適用、更新、管理に伴って日々発生するメンテナンスの労力を考慮してください。
 
 ##<a name="scenarios"></a>シナリオと推奨事項
 
@@ -100,9 +96,9 @@ Web 開発者とデザイナーのために、Azure App Service は、Git や FT
 
 データベースに接続する Web サーバーなど多層アプリケーションを実行する用途において、Azure SQL Database と緊密に連係する Azure App Service は良い選択といえます。Web ジョブ機能を使用してバックエンド プロセスを実行することもできます。
 
-サーバーへのリモート アクセス、サーバーのスタートアップ タスクの構成など、さらに細かくサーバー環境を制御する必要がある場合は、1 つまたは複数の階層に Cloud Services を使用してください。
+サーバーへのリモート アクセス、サーバーのスタートアップ タスクの構成など、さらに細かくサーバー環境を制御する必要がある場合は、1 つ以上の階層で Service Fabric を使用します。
 
-独自のコンピューター イメージの使用を希望される場合や、Cloud Services 上で構成することのできないサーバー ソフトウェア (またはサーバー サービス) を使用する必要がある場合は、1 つまたは複数の階層に Virtual Machines を使用してください。
+独自のマシン イメージを使用する場合や、Service Fabric 上で構成できないサーバー ソフトウェアやサーバー サービスを実行する場合は、1 つ以上の階層で Virtual Machines を使用します。
 
 ### <a id="custom"></a>使用しているアプリケーションが、高度にカスタマイズされた Windows または Linux 環境に依存しています。そのアプリケーションをクラウドに移行したいのですが。
 
@@ -119,22 +115,20 @@ Web 開発者とデザイナーのために、Azure App Service は、Git や FT
 - WordPress、Drupal、Umbraco、DNN、および多くのサード パーティ製 Web アプリケーションをセットアップできます。
 - 既存のアプリケーションを移行することも、アプリケーション ギャラリーから新規アプリケーションを作成することもできます。
 
-ご利用のオープン ソース フレームワークが App Service でサポートされていない場合は、他の 2 つの Azure Web ホスティング方法をご利用ください。Cloud Services を使用する場合、スタートアップ タスクを使用して、必要なオープン ソース ソフトウェア (Windows 上で動作) をインストールおよび構成します。Virtual Machines を使用する場合、Windows または Linux ベースのマシン イメージにソフトウェアをインストールして構成します。
+ご利用のオープン ソース フレームワークが App Service でサポートされていない場合は、他の Azure Web ホスティング方法のいずれかで実行できます。Virtual Machines を使用する場合、Windows または Linux ベースのマシン イメージにソフトウェアをインストールして構成します。
 
 ### <a id="lob"></a>社内ネットワークに接続する必要がある基幹業務アプリケーションがあります。
 
-基幹業務アプリケーションを作成する場合は、Web サイトから社内ネットワーク上のサービスやデータに直接アクセスすることが必要な場合があります。これは、App Service、Cloud Services、および Virtual Machines で、[Azure Virtual Network サービス](/services/virtual-network/)を使用して実現できます。App Service 上では、[VNET 統合機能](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)を使用して、見かけ上、社内ネットワークで動作しているかのように Azure アプリケーションを実行することができます。
+基幹業務アプリケーションを作成する場合は、Web サイトから社内ネットワーク上のサービスやデータに直接アクセスすることが必要な場合があります。これは、App Service、Service Fabric、Virtual Machines で、[Azure Virtual Network サービス](/services/virtual-network/)を使用して実現できます。App Service 上では、[VNET 統合機能](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)を使用して、見かけ上、社内ネットワークで動作しているかのように Azure アプリケーションを実行することができます。
 
 ### <a id="mobile"></a>モバイル クライアント向けの REST API や Web サービスをホストします。
 
 HTTP ベースの Web サービスを使用すると、モバイル クライアントを含めて広範囲のクライアントをサポートすることができます。ASP.NET Web API のようなフレームワークは、REST サービスを作成および使用しやすくするために Visual Studio と統合されています。これらのサービスは Web エンドポイントから公開されるため、Azure での Web ホスト手法を使用してこのシナリオをサポートすることができます。ただし、REST API をホストするためには App Service が適切な選択です。App Service を使用すると、次のことができます。
 
-- Web アプリを迅速に作成して、Azure のグローバルに分散したデータ センターの 1 つで HTTP Web サービスをホストすることができます。
+- [モバイル アプリ](../app-service-mobile/app-service-mobile-value-prop.md)や [API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)を迅速に作成して、グローバルに分散した Azure のデータセンターの 1 つで HTTP Web サービスをホストします。
 - 既にあるサービスを移行したり、新しいサービスを作成したりすることができます。
 - 1 つのインスタンスで可用性の SLA を実現するか、または複数の専用コンピューターにスケールアウトします。
 - 発行済みのサイトを使用して、モバイル クライアントを含む HTTP クライアントに REST API を提供します。
-
-また、Azure App Service には REST API 向けの新しいプレビュー機能、API Apps が用意されています。API Apps の詳細については、「[API Apps とは](../app-service-api/app-service-api-apps-why-best-platform.md)」を参照してください。
 
 ##<a name="features"></a>機能の比較
 
@@ -165,7 +159,7 @@ TFS によるコードのデプロイ|○|○|○|○|
 [Azure Traffic Manager](/services/traffic-manager/) のサポート|○|○|○|○|
 統合エンドポイント監視|○|○|○||
 サーバーへのリモート デスクトップ アクセス||○|○|○|
-カスタム MSI のインストール||○|○|○|Service Fabric を使用すると、任意のゲスト実行可能ファイルを 1 つの[ゲスト実行可能ファイル](../service-fabric/service-fabric-deploy-existing-app.md)としてホストしたり、任意のアプリを VM にインストールしたりできます。
+カスタム MSI のインストール||○|○|○|Service Fabric を使用すると、任意の実行可能ファイルを[ゲスト実行可能ファイル](../service-fabric/service-fabric-deploy-existing-app.md)としてホストしたり、任意のアプリを VM にインストールしたりできます。
 スタートアップ タスクの定義と実行||○|○|○|
 ETW イベントのリッスン||○|○|○|
 
@@ -203,4 +197,4 @@ ETW イベントのリッスン||○|○|○|
   [sqldatabase]: http://www.windowsazure.com/documentation/services/sql-database/
   [Storage]: http://www.windowsazure.com/documentation/services/storage/
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0601_2016-->

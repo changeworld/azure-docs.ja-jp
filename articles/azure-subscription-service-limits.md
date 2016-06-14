@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/24/2016"
+	ms.date="05/25/2016"
 	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -75,6 +75,7 @@
 - [サブスクリプション](#subscription-limits)
 - [Traffic Manager](#traffic-manager-limits)
 - [Virtual Machines](#virtual-machines-limits)
+- [仮想マシン スケール セット](#virtual-machine-scale-sets-limits)
 
 
 ### サブスクリプションの制限
@@ -92,7 +93,6 @@
 
 [AZURE.INCLUDE [azure-resource-groups-limits](../includes/azure-resource-groups-limits.md)]
 
-
 ### Virtual Machines の制限
 #### 仮想マシンの制限
 [AZURE.INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
@@ -104,6 +104,9 @@
 
 [AZURE.INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
+### 仮想マシン スケールセットの制限
+
+[AZURE.INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]
 
 ### ネットワークの制限
 
@@ -185,13 +188,19 @@
 
 価格レベルによって、容量と検索サービスの制限が決定されます。レベルは次のとおりです。
 
-- **Free**: 他の Azure サブスクライバーと共有する、評価および小規模の開発プロジェクトのためのマルチ テナント サービス。
-- **Basic (プレビュー)**: 小規模の運用環境のワークロード専用のコンピューティング リソースを提供します。このレベルは現在プレビュー段階であり、割引料金で提供されます。
-- **Standard (S1 および S2)**: 運用環境のワークロード向けです。大容量バージョン (**S2**) は、要求すれば利用できます (azuresearch_contact@microsoft.com) に電子メールで要求します)。
+- *Free*: 他の Azure サブスクライバーと共有する、評価および小規模の開発プロジェクトのためのマルチ テナント サービス。
+- *Basic (プレビュー)* は、小規模の運用環境のワークロード専用のコンピューティング リソースを提供します。このレベルは現在プレビュー段階であり、割引料金で提供されます。
+- *Standard (S1 および S2)*: 運用環境のワークロード向けです。大容量バージョン (*S2*) は、要求すれば利用できます (サポートまたは azuresearch_contact@microsoft.com に問い合わせます)。
 
-[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-all.md)]
+**レベル制限**
 
-ドキュメントのサイズ、キー数、要求数、応答数など、他の制限の詳細については、「[Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」を参照してください。
+[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-tier.md)]
+
+**ストレージの制限**
+
+[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-storage.md)]
+
+ドキュメントのサイズ、1 秒あたりのクエリ数、キー数、要求数、応答数など、他の制限の詳細については、「[Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」を参照してください。
 
 ### Media Services の制限
 
@@ -292,4 +301,4 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 [クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0601_2016-->

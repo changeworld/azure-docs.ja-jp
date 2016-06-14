@@ -11,7 +11,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="03/10/2016"
+	ms.date="05/31/2016"
 	ms.author="ashmaka"/>
 
 # Azure ポータルを使用した Azure Search サービスの作成
@@ -74,4 +74,4 @@ Azure サービスとして Azure Search は、世界中のデータ センタ�
 ## 次へ
 Azure Search サービスをプロビジョニングしたら、データをアップロードし、検索できるように、[Azure Search インデックスを定義する](search-what-is-an-index.md)準備ができます。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0601_2016-->

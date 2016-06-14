@@ -8,8 +8,7 @@
 サブスクリプションあたりの SQL Database サーバー数|6|150
 サブスクリプションあたりの DNS サーバー数|9|100
 サブスクリプションあたりの予約済み IP 数|20|100
-サブスクリプションあたりの ExpressRoute 専用回線数|10|25
-サブスクリプションあたりのホストされるサービスの証明書数|400|400
+サブスクリプションあたりのホステッド サービスの証明書数|400|400
 サブスクリプションあたりの[アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md)数|256|256
 サブスクリプションあたりのリージョンごとの [Batch](https://azure.microsoft.com/services/batch/) アカウント数|1|50
 サブスクリプションあたりのアラート ルール数|250|250
@@ -18,4 +17,4 @@
 
 <sup>2</sup>これには、Standard および Premium ストレージ アカウントの両方が含まれます。必要なストレージ アカウントが 100 個を超える場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)からリクエストを送信してください。Azure Storage チームがビジネス ケースを確認します。承認された場合、最大 250 個のストレージ アカウントが与えられます。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0601_2016-->

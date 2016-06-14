@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="02/25/2016"
+    ms.date="05/31/2016"
     ms.author="mbaldwin" />
 
 
@@ -35,4 +35,4 @@
 
 >[AZURE.NOTE] これはデモ用に制御された環境であるため、発行されたデモ アプリケーションから外部へのインターネット アクセスは有効になっていません。そのため、OneDrive などのサービスにはアクセスできません。また、クリップボードの共有 (コピーと貼り付け)、USB やプリンターへのリダイレクトも無効になっています。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0608_2016-->

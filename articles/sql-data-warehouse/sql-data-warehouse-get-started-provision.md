@@ -17,7 +17,7 @@
    ms.date="05/05/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
-# SQL Data Warehouse の作成
+# Azure SQL Data Warehouse の作成
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-data-warehouse-get-started-provision.md)
@@ -44,7 +44,7 @@
 
 	- **[データベース名]**: SQL Data Warehouse の参照に使用される名前です。サーバーに対して一意にする必要があります。
 	
-    - **[パフォーマンス]**: 最初は 400 DWU にすることをお勧めします。スライダーを左または右に移動して、データ ウェアハウスのパフォーマンスを調整したり、作成後にスケールアップまたはスケールダウンしたりすることができます。DWU の詳細については、[スケーリング](./sql-data-warehouse-overview-scalability.md)に関するドキュメントまたは[料金のページ](https://azure.microsoft.com/ja-JP/pricing/details/sql-data-warehouse/)を参照してください。
+    - **[パフォーマンス]**: 最初は 400 DWU にすることをお勧めします。スライダーを左または右に移動して、データ ウェアハウスのパフォーマンスを調整したり、作成後にスケールアップまたはスケールダウンしたりすることができます。DWU の詳細については、[スケーリング](./sql-data-warehouse-manage-compute-overview.md)に関するドキュメントまたは[料金のページ](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)を参照してください。
 
     - **[サブスクリプション]**: この SQL Data Warehouse の課金先のサブスクリプションを選択します。
 
@@ -68,4 +68,4 @@ SQL Data Warehouse へのデータの読み込みについては、[読み込み
 
 既存のデータベースを SQL Data Warehouse に移行する場合、[移行の概要](./sql-data-warehouse-overview-migrate.md)に関するページを参照するか、[移行ユーティリティ](./sql-data-warehouse-migrate-migration-utility.md)を使用してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

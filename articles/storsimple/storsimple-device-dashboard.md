@@ -31,7 +31,7 @@ StorSimple Manager デバイス ダッシュボードでは、Microsoft Azure St
 
 	 グラフは、次のように構成できます。
 
-	 - ある期間にわたって使用されたクラウド ストレージの量を表示するには、**[使用されているクラウド ストレージ]** オプションを選択します。ホストによって書き込まれたストレージの合計を表示するには、**[PRIMARY TIERED STORAGE USED]** (使用されているプライマリ階層化ストレージ) と **[PRIMARY LOCALLY PINNED STORAGE USED]** (使用されているプライマリ ローカル固定ストレージ) を選択します。図では両方のオプションが選択されているため、グラフには、クラウド ストレージとプライマリ ストレージの両方について記憶容量が表示されています。Update 2 をインストールする前に使用されていたプライマリ ストレージは、**[PRIMARY TIERED STORAGE USED]** (使用されているプライマリ階層化ストレージ) 行で表されます。
+	 - ある期間にわたって使用されたクラウド ストレージの量を表示するには、**[使用されているクラウド ストレージ]** オプションを選択します。ホストによって書き込まれたストレージの合計を表示するには、**[PRIMARY TIERED STORAGE USED (使用されているプライマリ階層化ストレージ)]** と **[PRIMARY LOCALLY PINNED STORAGE USED (使用されているプライマリ ローカル固定ストレージ)]** を選択します。図では両方のオプションが選択されているため、グラフには、クラウド ストレージとプライマリ ストレージの両方について記憶容量が表示されています。Update 2 をインストールする前に使用されていたプライマリ ストレージは、**[PRIMARY TIERED STORAGE USED (使用されているプライマリ階層化ストレージ)]** 行で表されます。
 	 - グラフの右上隅にあるドロップダウン メニューを使用して、1 週間、1 か月、3 か月、または 1 年間の期間を指定できます。最上位レベルのグラフは 1 日に 1 度しか更新されないため、前日の総量を表していることに注意してください。
 
      詳細については、「[StorSimple Manager サービスを使用した StorSimple デバイスの監視](storsimple-monitor-device.md)」を参照してください。
@@ -100,4 +100,4 @@ StorSimple デバイスでチャレンジ ハンドシェイク認証プロト�
 - [StorSimple Manager サービスのダッシュボードの詳細](storsimple-service-dashboard.md)
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->

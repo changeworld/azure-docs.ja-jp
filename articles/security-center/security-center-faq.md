@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/02/2016"
+   ms.date="05/31/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティ センターのよく寄せられる質問 (FAQ)
@@ -108,12 +108,25 @@ Azure セキュリティ センターは、ロール ベースのアクセスを
 
 セキュリティ ポリシーを編集するには、そのサブスクリプションの所有者または共同作業者である必要があります。
 
+## Virtual Machines
+
 ### サポートされる仮想マシンのタイプは何ですか。
-[クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-classic-rm.md)を使用して作成された仮想マシンがサポートされています。これには Azure Service Fabric クラスターの一部である仮想マシンも含まれます。
+[クラシック デプロイメント モデルと Resource Manager デプロイメント モデル](../azure-classic-rm.md)を使用して作成された仮想マシンがサポートされています。これには Azure Service Fabric クラスターの一部である仮想マシンも含まれます。
 
 アクセス制御リストに関する推奨事項は、現在はクラシック仮想マシンに適用されます。ネットワーク セキュリティ グループは、現在は Resource Manager の仮想マシンにのみ適用されます。
 
-### Linux 仮想マシンはサポートされていますか。
-Azure セキュリティ センターでは、Linux 仮想マシン (Ubuntu バージョン 12.04、14.04、14.10、および 15.04 の場合のみ) 用にベースライン監視が提供されています。将来的には、追加のセキュリティ ヘルスの監視とデータの収集/分析が利用できるようになり、追加の Linux ディストリビューションもサポートされるようになります。
+サポートされている Windows 仮想マシンを次に示します。
 
-<!---HONumber=AcomDC_0504_2016-->
+- Windows Server 2008 R2
+- Windows Server 2012
+- Windows Server 2012 R2
+
+サポートされている Linux 仮想マシンを次に示します。
+
+- Ubuntu バージョン 12.04、14.04、15.10、16.04
+- Debian バージョン 7.0、8.0
+- CentOS バージョン 6.0、7.0
+- Red Hat Enterprise Linux (RHEL) バージョン 6、7
+- SUSE Linux Enterprise Server (SLES) バージョン 11、12
+
+<!---HONumber=AcomDC_0601_2016-->

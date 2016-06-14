@@ -24,10 +24,11 @@ Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新�
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
+Azure Resource Manager ベースの Azure PowerShell コマンドレットを使用して Web アプリを管理する方法については、[Azure Resource Manager ベースの Azure Web アプリ用 PowerShell コマンド](app-service-web-app-azure-resource-manager-powershell.md)に関するページを参照してください。
 
 ## 既存のアプリの複製 ##
 
-シナリオ: 米国中南部リージョンに既存の Web アプリがあり、ユーザーはそのコンテンツを米国中北部の新しい Web アプリに複製したいと考えています。これを実現するには、PowerShell コマンドレットの ARM バージョンを使用して新しい Web アプリを作成します (-SourceWebApp オプションを指定)。
+シナリオ: 米国中南部リージョンに既存の Web アプリがあり、ユーザーはそのコンテンツを米国中北部の新しい Web アプリに複製したいと考えています。これを実現するには、PowerShell コマンドレットの Azure Resource Manager バージョンを使用して新しい Web アプリを作成します (-SourceWebApp オプションを指定)。
 
 ソース Web アプリを含むリソース グループの名前がわかっていれば、次の PowerShell コマンドを使ってソース Web アプリの情報を取得できます (この場合の名前は source-webapp)。
 
@@ -77,17 +78,17 @@ ASE の名前と、ASE が属するリソース グループの名前がわか�
 
 ## アプリの複製時における Traffic Manager の構成 ##
 
-複数リージョンの Web アプリを作成し、トラフィックをそのすべての Web アプリにルーティングするように Azure Traffic Manager を構成することは、顧客のアプリの高可用性を確保するための重要なシナリオです。既存の Web アプリを複製する際に、両方の Web アプリを新しい Traffic Manager プロファイルと既存の Traffic Manager プロファイルのいずれかに関連付けることができます。サポートされているのは ARM バージョンの Traffic Manager のみであることに注意してください。
+複数リージョンの Web アプリを作成し、トラフィックをそのすべての Web アプリにルーティングするように Azure Traffic Manager を構成することは、顧客のアプリの高可用性を確保するための重要なシナリオです。既存の Web アプリを複製する際に、両方の Web アプリを新しい Traffic Manager プロファイルと既存の Traffic Manager プロファイルのいずれかに関連付けることができます。サポートされているのは Azure Resource Manager バージョンの Traffic Manager のみであることに注意してください。
 
 ### アプリの複製時における新しい Traffic Manager プロファイルの作成 ###
 
-シナリオ: ユーザーは、Web アプリを別のリージョンに複製しつつ、両方の Web アプリを含む ARM Traffic Manager マネージャー プロファイルを構成したいと考えています。新しい Traffic Manager プロファイルを構成しつつ、ソース Web アプリの複製を新しい Web アプリに作成するコードを次に示します。
+シナリオ: ユーザーは、Web アプリを別のリージョンに複製しつつ、両方の Web アプリを含む Azure Resource Manager Traffic Manager プロファイルを構成したいと考えています。新しい Traffic Manager プロファイルを構成しつつ、ソース Web アプリの複製を新しい Web アプリに作成するコードを次に示します。
 
     $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileName newTrafficManagerProfile
 
 ### 既存の Traffic Manager プロファイルへの新しい複製 Web アプリの追加 ###
 
-シナリオ: ユーザーは、既に ARM Traffic Manager プロファイルを作成しており、両方の Web アプリをエンドポイントとして追加したいと考えています。そのためには、まず既存の Traffic Manager プロファイル ID を構成する必要があります。その際、サブスクリプション ID、リソース グループ名、既存の Traffic Manager プロファイル名が必要になります。
+シナリオ: ユーザーは、既に Azure Resource Manager Traffic Manager プロファイルを作成しており、両方の Web アプリをエンドポイントとして追加したいと考えています。そのためには、まず既存の Traffic Manager プロファイル ID を構成する必要があります。その際、サブスクリプション ID、リソース グループ名、既存の Traffic Manager プロファイル名が必要になります。
 
     $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<Your resource group name goes here>/providers/Microsoft.TrafficManagerProfiles/ExistingTrafficManagerProfileName"
 
@@ -106,13 +107,15 @@ Traffic Manager ID を構成した後で、ソース Web アプリの複製を�
 - 簡単認証の設定は複製されない
 - Kudu 拡張機能は複製されない
 - TiP ルールは複製されない
+- データベースの内容は複製されない
 
 
 ### 参照 ###
+- [Azure Resource Manager ベースの Azure Web アプリ用 PowerShell コマンド](app-service-web-app-azure-resource-manager-powershell.md)
 - [Azure ポータルを使用した Web アプリの複製](app-service-web-app-cloning-portal.md)
 - [Azure App Service での Web アプリのバックアップ](web-sites-backup.md)
 - [Azure リソース マネージャーによる Azure Traffic Manager プレビューのサポート](../../articles/traffic-manager/traffic-manager-powershell-arm.md)
 - [App Service 環境の概要](app-service-app-service-environment-intro.md)
 - [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0601_2016-->

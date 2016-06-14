@@ -3,8 +3,8 @@
    description="この記事では、PowerShell に慣れている作成者を対象に、PowerShell と PowerShell ワークフローの具体的な違いについて簡単に説明します。"
    services="automation"
    documentationCenter=""
-   authors="bwren"
-   manager="stevenka"
+   authors="mgoedtel"
+   manager="jwhit"
    editor="tysonn" />
 <tags 
    ms.service="automation"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/03/2016"
+   ms.date="05/26/2016"
    ms.author="bwren" />
 
 # Windows PowerShell ワークフローについて
@@ -211,7 +211,7 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 
 ## チェックポイント
 
-*チェックポイント* は、変数の現在の値と、そのポイントに生成された出力を含むワークフローの現在の状態のスナップショットです。ワークフローがエラーで終了した場合、または[中断](suspending-a-workflow)した場合、次の実行時には、ワークフローの先頭からではなく、最後のチェックポイントから開始されます。**Checkpoint-Workflow** アクティビティを使用してワークフローにチェックポイントを設定できます。
+*チェックポイント* は、変数の現在の値と、そのポイントに生成された出力を含むワークフローの現在の状態のスナップショットです。ワークフローがエラーで終了した場合、または中断した場合、次の実行時には、ワークフローの先頭からではなく、最後のチェックポイントから開始されます。**Checkpoint-Workflow** アクティビティを使用してワークフローにチェックポイントを設定できます。
 
 次のサンプル コードでは、Activity2 の後に例外が発生し、ワークフローが終了します。ワークフローを再実行すると、設定された最後のチェックポイントの直後に Activity2 があるため、まず Activity2 が実行されます。
 
@@ -240,13 +240,11 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 	}
 
 
-
 チェックポイントの詳細については、「[スクリプト ワークフローへのチェックポイントの追加](http://technet.microsoft.com/library/jj574114.aspx)」を参照してください。
 
 
+## 次のステップ
 
-## 関連記事:
+- PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。 
 
-- [Windows PowerShell ワークフローの概要](http://technet.microsoft.com/library/jj134242.aspx) 
-
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0601_2016-->

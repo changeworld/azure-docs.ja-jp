@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/08/2016" 
+	ms.date="05/31/2016" 
 	ms.author="bradsev;gopitk" />
 
 
@@ -87,8 +87,13 @@ Cortana Analytics Process の分析環境はいくつかの要素で構成され
 
 CAP は、特定の種類の**ドキュメント** アーティファクトを規定するものではありません。データの調査、モデリング、評価の結果を記録し、必要なときにその分析を再現できるよう、関連する体系を保存するためのベスト プラクティスです。これによって、同様のデータや予測タスクを伴う他のアプリケーションに取り組むときに、同じ分析作業を再利用することができます。
 
-また、**特定のシナリオ**のプロセスに伴うすべての段階をリハーサル的に最初から最後まで実証することも可能です。「[Cortana Analytics Process の活用: SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)」と「[Cortana Analytics Process の活用: HDInsight Hadoop クラスターを使用する](machine-learning-data-science-process-hive-walkthrough.md)」を参照してください。
+また、**特定のシナリオ**のプロセスに伴うすべての段階をリハーサル的に最初から最後まで実証することも可能です。たとえば、次を参照してください。
+
+- [Cortana Analytics Process の活用: SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)
+- [Cortana Analytics Process の活用: HDInsight Hadoop クラスターを使用する](machine-learning-data-science-process-hive-walkthrough.md)
+- [Azure HD.mdnsight 上の Spark を使用したデータ サイエンス](machine-learning-data-science-spark-overview.md)
+- [Azure Data Lake のスケーラブルなデータ サイエンス: エンドツーエンド チュートリアル](machine-learning-data-science-process-data-lake-walkthrough.md)
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0601_2016-->

@@ -14,21 +14,22 @@
    ms.topic="campaign-page"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="na"
-   ms.date="05/04/2016"
+   ms.date="05/30/2016"
    ms.author="hermannd"/>
 
-# Microsoft Azure SUSE Linux VM での SAP NetWeaver のテスト
+# Microsoft Azure SUSE Linux VM での SAP NetWeaver の実行
 
 
-この記事では、Microsoft Azure SUSE Linux 仮想マシン (VM) で SAP NetWeaver をテストする際のさまざまな考慮事項について説明します。現時点では、このような仮想マシンに関する公式な SAP サポートは発表されていません。ただし、公式な SAP サポートに依存していない場合は、テストやデモ、プロトタイプの作成を行うことができます。
+この記事では、Microsoft Azure SUSE Linux 仮想マシン (VM) で SAP NetWeaver を実行する際のさまざまな考慮事項について説明します。2016 年 5 月 19 日 の時点で、SAP NetWeaver は Azure 上の SUSE Linux VM で正式にサポートされています。Linux のバージョンや SAP カーネルのバージョンなど、すべての詳細については、SAP Note 1928533「SAP Applications on Azure: Supported Products and Azure VM types (Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類)」を参照してください。Linux VM における SAP に関するその他のドキュメントについては、「[Linux 仮想マシン (VM) における SAP の使用](virtual-machines-linux-sap-get-started.md)」を参照してください。
+
 
 以下の情報は、失敗の可能性を回避するために役立ちます。
 
-## Azure で SAP をテストするための SUSE イメージ
+## Azure で SAP を実行するための SUSE イメージ
 
-Azure での SAP テストでは、SUSE Linux Enterprise Server (SLES) 11 SP4 および SLES 12 のみを使用します。Azure Marketplace には、特殊な SUSE イメージ ("SLES 11 SP3 for SAP CAL") がありますが、これは一般的な使用を目的としたものではありません。このイメージは [SAP Cloud Appliance Library](https://cal.sap.com/) ソリューション用に予約されているため、使用しないでください。
+Azure で SAP NetWeaver を実行するには、SUSE Linux Enterprise Server SLES 12 (SPx) のみを使用してください。SAP Note 1928533 も参照してください。Azure Marketplace には、特殊な SUSE イメージ ("SLES 11 SP3 for SAP CAL") がありますが、これは一般的な使用を目的としたものではありません。このイメージは [SAP Cloud Appliance Library](https://cal.sap.com/) ソリューション用に予約されているため、使用しないでください。
 
-Azure でのすべての新しいテストには、Azure リソース マネージャーを使用する必要があります。Azure PowerShell または Azure コマンドライン インターフェイス (CLI) を使用して SUSE SLES イメージおよびバージョンを検索するには、次のコマンドを使用します。この出力は、新しい SUSE Linux VM をデプロイするために JSON テンプレートで OS イメージを定義することなどに使用できます。以下の PowerShell コマンドは、バージョン 1.0.1 以降の Azure PowerShell で有効です。
+Azure でのすべての新しいテストとインストールには、Azure Resource Manager を使用する必要があります。Azure PowerShell または Azure コマンドライン インターフェイス (CLI) を使用して SUSE SLES イメージおよびバージョンを検索するには、次のコマンドを使用します。この出力は、新しい SUSE Linux VM をデプロイするために JSON テンプレートで OS イメージを定義することなどに使用できます。以下の PowerShell コマンドは、バージョン 1.0.1 以降の Azure PowerShell で有効です。
 
 * SUSE を含む既存の発行元を検索:
 
@@ -68,6 +69,10 @@ WALinuxAgent というエージェントは、Azure Marketplace の SLES イメ�
 
 - [SUSE](https://www.suse.com/communities/blog/suse-linux-enterprise-server-configuration-for-windows-azure/)
 
+## SAP の "拡張された監視機能"
+
+SAP の "拡張された監視機能" は、Azure で SAP を実行するうえで必須の前提条件です。詳細については、SAP Note 2191498「SAP on Linux with Azure: Enhanced Monitoring (Azure を使用した Linux 上の SAP: 拡張された監視機能)」を確認してください。
+
 ## Azure Linux VM への Azure データ ディスクの接続
 
 デバイス ID を使用して Azure データ ディスクを Azure Linux VM にマウントしないでください。代わりに、汎用一意識別子 (UUID) を使用します。たとえば、グラフィカル ツールを使用して Azure データ ディスクをマウントする場合には注意してください。/etc/fstab 内のエントリを再確認してください。
@@ -78,7 +83,7 @@ UUID によるマウントに関する唯一の例外として、次のセクシ
 
 ## アクセスできなくなった SUSE VM のトラブルシューティング
 
-起動プロセス中に Azure 上の SUSE VM が停止する状況が発生することがあります (ディスクのマウントに関連するエラーなど)。この問題は、Azure ポータルの Azure Virtual Machines v2 の起動診断機能を使用して検証できます。詳細については、「[Boot Diagnostics for Virtual Machines v2 (Virtual Machines v2 の起動の診断)](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)」を参照してください。
+起動プロセス中に Azure 上の SUSE VM が停止する状況が発生することがあります (ディスクのマウントに関連するエラーなど)。この問題は、Azure ポータルの Azure Virtual Machines v2 の起動診断機能を使用して検証できます。詳細については、[起動診断](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)に関するページをご覧ください。
 
 問題を解決するための 1 つの方法として、破損している VM から Azure 上の別の SUSE VM に OS ディスクを接続します。その後、次のセクションで説明するように、/etc/fstab の編集やネットワーク udev 規則の削除など、適切な変更を加えます。
 
@@ -86,12 +91,12 @@ UUID によるマウントに関する唯一の例外として、次のセクシ
 
 この回避方法は次の 2 とおりあります。
 
-* トラブルシューティング VM に別の Azure Marketplace イメージを使用する (SLES 11 SP4 の代わりに SLES 12 など)。
+* トラブルシューティング用の VM に別の Azure Marketplace イメージを使用する (SLES 12 の代わりに SLES 11 SPx など)。
 * UUID を使用して別の VM から破損した OS ディスクを接続せずに、他のものを使用する。
 
 ## オンプレミスから Azure への SUSE VM のアップロード
 
-SUSE VM をオンプレミスから Azure にアップロードする手順については、「[Prepare a SLES or openSUSE virtual machine for Azure (Azure 用の SLES または openSUSE 仮想マシンの準備)](virtual-machines-linux-create-upload-vhd-suse.md)」を参照してください。
+SUSE VM をオンプレミスから Azure にアップロードする手順については、「[Azure 用の SLES または openSUSE 仮想マシンの準備](virtual-machines-linux-create-upload-vhd-suse.md)」を参照してください。
 
 最後にプロビジョニング解除手順を使用せずに VM をアップロードする場合 (たとえば、既存の SAP インストールやホスト名を保持する場合) は、次の項目を確認してください。
 
@@ -118,7 +123,7 @@ CLI と Azure Resource Manager の詳細については、「[Azure Resource Man
 
 ## SAP のライセンスとハードウェア キー
 
-正式な SAP-Azure 証明書のために、SAP ライセンスに使用される SAP ハードウェア キーを計算するための新しいメカニズムが導入されました。SAP カーネルはこれを利用するように適合させる必要がありました。Linux 向けの SAP カーネルの現在のバージョンには、このコード変更が含まれていません。そのため、特定の状況 (Azure VM のサイズ変更など) では、SAP ハードウェア キーが変更され、SAP のライセンスが有効でなくなる場合があります。
+正式な SAP-Azure 証明書のために、SAP ライセンスに使用される SAP ハードウェア キーを計算するための新しいメカニズムが導入されました。SAP カーネルはこれを利用するように適合させる必要がありました。Linux 向けの SAP カーネルの以前のバージョンには、このコード変更が含まれていませんでした。そのため、特定の状況 (Azure VM のサイズ変更など) では、SAP ハードウェア キーが変更され、SAP のライセンスが無効になりました。これは、最新の SAP Linux のカーネルで解決されています。詳細については、SAP Note 1928533 を確認してください。
 
 ## SUSE の sapconf パッケージ
 
@@ -130,7 +135,7 @@ SUSE には、一連の SAP 固有の設定を管理する、"sapconf" と呼ば
 
 ## 論理ボリューム
 
-論理ボリューム マネージャー (LVM) は、Azure で完全には検証されていません。複数の Azure データ ディスクにまたがる大規模な論理ボリュームが必要な場合 (SAP データベース用など) は、mdadm を使用する必要があります。mdadm を使用して Azure で Linux RAID を設定する方法については、「[Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)」を参照してください。
+従来、複数の Azure データ ディスクで大容量の論理ボリュームが必要になった場合は (SAP データベース用など)、lvm の一部が Azure で検証されていなかったため、mdadm を使用することが推奨されていました。mdadm を使用して Azure で Linux RAID を設定する方法については、「[Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)」を参照してください。一方、2016 年 5 月初めの時点で、lvm も Azure で完全にサポートされ、mdadm の代わりに使用できます。Azure における lvm に関するその他の情報については、「[Azure で Linux VM の LVM を構成する](virtual-machines-linux-configure-lvm.md)」を参照してください。
 
 
 ## Azure SUSE リポジトリ
@@ -161,4 +166,4 @@ Gnome デスクトップを使用して、1 つの VM 内に SAP GUI、ブラウ
 
 仮想化環境では、Linux 上の Oracle にはサポートの制約があります。これは Azure 固有のトピックではありませんが、理解しておくことが重要です。Azure のようなパブリック クラウドでは、SAP は SUSE または Red Hat 上の Oracle をサポートしません。このトピックについては、直接 Oracle にお問い合わせください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0601_2016-->
