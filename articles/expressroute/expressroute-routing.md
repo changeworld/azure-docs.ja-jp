@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/26/2016"
+   ms.date="06/01/2016"
    ms.author="cherylmc"/>
 
 
@@ -103,7 +103,7 @@ ExpressRoute をトランジット ルーターとして構成することはで
 
 **注:** 既定のルートをアドバタイズすると、Windows およびその他の VM のライセンスの認証に失敗します。これを回避する方法については、[このページ](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)を参照してください。
 
-## BGP コミュニティのサポート
+## BGP コミュニティのサポート (プレビュー)
 
 
 ここでは、ExpressRoute で BGP コミュニティがどのように使用されるかについて概説します。Microsoft は、パブリックおよび Microsoft ピアリング パスのルートに適切なコミュニティ値をタグ付けしてアドバタイズします。その理由とコミュニティ値の詳細については以降に示します。ただし、Microsoft は、Microsoft にアドバタイズされるルートにタグ付けされたすべてのコミュニティ値を無視します。
@@ -173,4 +173,4 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 	- [クラシック デプロイメント モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[Resource Manager デプロイメント モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
 	- [クラシック VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[Resource Manager VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -69,26 +69,50 @@ Azure DNS 内に DNS ゾーンを作成した後は、Azure DNS がゾーンの�
 
 たとえば、ドメイン "contoso.com" を購入し、Azure DNS に "contoso.com" という名前のゾーンを作成するとします。レジストラーは、ドメインの所有者として、ドメインのネーム サーバー アドレス (つまり、NS レコード) を構成するオプションを提供します。レジストラーはこれらの NS レコードを親ドメイン (この場合は ".com") に格納します。その後、世界中のクライアントは、"contoso.com" 内の DNS レコードを解決しようとすると、Azure DNS ゾーン内のドメインに転送されます。
 
-### 委任を設定するには
+### ネーム サーバー名の特定
 
-委任を設定するには、ゾーンのネーム サーバー名を把握する必要があります。Azure DNS は、ゾーンが作成されるたびに、プールからネーム サーバーを割り当て、ゾーン内で自動的に作成される権限のある NS レコードにこれらを格納します。ネーム サーバー名を確認するには、これらのレコードを取得するだけです。
+DNS ゾーンを Azure DNS に委任するには、事前にゾーンのネーム サーバー名を把握する必要があります。Azure DNS は、ゾーンが作成されるたびに、プールからネーム サーバーを割り当てます。
 
-Azure PowerShell を使用して、次のようにして権限のある NS レコードを取得できます。レコード名 "@" を使用して、ゾーンの頂点にあるレコードを参照することに注意してください。この例では、ゾーン "contoso.com" に、ネーム サーバー "ns1-04.azure-dns.com"、"ns2-04.azure-dns.net"、"ns3-04.azure-dns.org"、"ns4-04.azure-dns.info" が割り当てられています。
+ゾーンに割り当てられたネーム サーバーを把握する最も簡単な方法は、Azure ポータルの表示を確認することです。この例では、ゾーン "contoso.net" に、ネーム サーバー "ns1-01.azure-dns.com"、"ns2-01.azure-dns.net"、"ns3-01.azure-dns.org"、"ns4-01.azure-dns.info" が割り当てられています。
 
+ ![Dns-nameserver](./media/dns-domain-delegation/viewzonens500.png)
 
-	$zone = Get-AzureRmDnsZone –Name contoso.com –ResourceGroupName MyAzureResourceGroup
-	Get-AzureRmDnsRecordSet –Name “@” –RecordType NS –Zone $zone
+割り当てられたネーム サーバーが含まれたゾーンに、権限のある NS レコードが自動的に作成されます。Azure PowerShell または Azure CLI を使用してネーム サーバー名を確認する際は、これらのレコードを取得するだけで済みます。
+
+Azure PowerShell を使用して、次のようにして権限のある NS レコードを取得できます。レコード名 "@" を使用して、ゾーンの頂点にあるレコードを参照することに注意してください。
+
+	PS> $zone = Get-AzureRmDnsZone –Name contoso.net –ResourceGroupName MyResourceGroup
+	PS> Get-AzureRmDnsRecordSet –Name “@” –RecordType NS –Zone $zone
 
 	Name              : @
-	ZoneName          : contoso.com
+	ZoneName          : contoso.net
 	ResourceGroupName : MyResourceGroup
 	Ttl               : 3600
 	Etag              : 5fe92e48-cc76-4912-a78c-7652d362ca18
 	RecordType        : NS
-	Records           : {ns1-04.azure-dns.com, ns2-04.azure-dns.net, ns3-04.azure-dns.org,
-                     ns4-04.azure-dns.info}
+	Records           : {ns1-01.azure-dns.com, ns2-01.azure-dns.net, ns3-01.azure-dns.org,
+                        ns4-01.azure-dns.info}
 	Tags              : {}
 
+また、クロスプラット フォームの Azure CLI を使用して、権限のある NS レコードを取得し、ゾーンに割り当てられたネーム サーバーを検出することができます。
+
+	C:\> azure network dns record-set show MyResourceGroup contoso.net @ NS
+	info:    Executing command network dns record-set show
+		+ Looking up the DNS Record Set "@" of type "NS"
+	data:    Id                              : /subscriptions/.../resourceGroups/MyResourceGroup/providers/Microsoft.Network/dnszones/contoso.net/NS/@
+	data:    Name                            : @
+	data:    Type                            : Microsoft.Network/dnszones/NS
+	data:    Location                        : global
+	data:    TTL                             : 172800
+	data:    NS records
+	data:        Name server domain name     : ns1-01.azure-dns.com.
+	data:        Name server domain name     : ns2-01.azure-dns.net.
+	data:        Name server domain name     : ns3-01.azure-dns.org.
+	data:        Name server domain name     : ns4-01.azure-dns.info.
+	data:
+	info:    network dns record-set show command OK
+
+### 委任を設定するには
 
 各レジストラーは独自の DNS 管理ツールを所有していて、ドメインのネーム サーバー レコードを変更します。レジストラーの DNS 管理ページで、NS レコードを編集し、その NS レコードを、Azure DNS で作成されたレコードに置き換えます。
 
@@ -126,10 +150,9 @@ Azure PowerShell を使用して、次のようにして権限のある NS レ�
 3. 子ゾーンを指す親ゾーンで NS レコードを構成することで、子ゾーンを委任します。
 
 
-
 ### サブドメインを委任するには
 
-これを PowerShell で行う例を次に示します。
+これを PowerShell で行う例を次に示します。同じ手順を、Azure ポータルまたはクロスプラットフォームの Azure CLI を使用して実行できます。
 
 #### 手順 1.親ゾーンと子ゾーンを作成する
 
@@ -140,7 +163,7 @@ Azure PowerShell を使用して、次のようにして権限のある NS レ�
 
 #### 手順 2.NS レコードを取得する
 
-次に、次の例で示すように、子ゾーンから権限のある NS レコードを取得します。
+次に、次の例で示すように、子ゾーンから権限のある NS レコードを取得します。このレコードに、子ゾーンに割り当てられたネーム サーバーが記載されています。
 
 	$child_ns_recordset = Get-AzureRmDnsRecordSet -Zone $child -Name "@" -RecordType NS
 
@@ -176,4 +199,4 @@ Azure PowerShell を使用して、次のようにして権限のある NS レ�
 
 [DNS レコードの管理](dns-operations-recordsets.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

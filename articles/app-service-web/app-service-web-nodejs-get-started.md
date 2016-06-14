@@ -13,43 +13,44 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="get-started-article"
-	ms.date="03/31/2016"
-	ms.author="cephalin;robmcm"/>
+	ms.date="06/01/2016"
+	ms.author="cephalin"/>
 
 # Azure App Service での Node.js Web アプリの使用
 
 [AZURE.INCLUDE [タブ](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-このチュートリアルでは、簡単な [Node.js](http://nodejs.org) アプリケーションを作成し、cmd.exe や bash などのコマンド ラインを使用して [Azure App Service](../app-service/app-service-value-prop-what-is.md) の [Web アプリ](app-service-web-overview.md)にデプロイする方法について説明します。このチュートリアルの手順は、Node.js を実行できる任意のオペレーティング システムで使用できます。
+このチュートリアルでは、簡単な [Node.js][NODEJS] アプリケーションを作成し、cmd.exe や bash などのコマンド ライン環境を使用して [Azure App Service] の [Web アプリ]にデプロイする方法について説明します。このチュートリアルの手順は、Node.js を実行できる任意のオペレーティング システムで使用できます。
 
-<a name="prereq"/>
+<a name="prereq"></a>
 ## 前提条件
 
-- Node.js。インストール用のバイナリは[こちら](https://nodejs.org/)にあります。
-- Yeoman。インストールの手順については、[こちら](http://yeoman.io/)を参照してください。
-- Gitインストール用のバイナリは[こちら](http://www.git-scm.com/downloads)にあります。
-- Azure CLI。インストールの手順については、[こちら](../xplat-cli-install.md)を参照してください。
-- Microsoft Azure アカウント。アカウントを持っていない場合は、[無料試用版にサインアップする](/pricing/free-trial/?WT.mc_id=A261C142F)か [Visual Studio サブスクライバー特典を有効](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
+- **Node.js** ([インストールするにはここをクリック][NODEJS])
+- **Bower** ([インストールするにはここをクリック][BOWER])
+- **Yeoman** ([インストールするにはここをクリック][YEOMAN])
+- **Git** ([インストールするにはここをクリック][GIT])
+- **Azure CLI** ([インストールするにはここをクリック][Azure CLI])
+- Microsoft Azure アカウント。アカウントを持っていない場合は、[無料試用版にサインアップする]か、または [Visual Studio サブスクライバー特典を有効にする]ことができます。
 
 ## 単純な Node.js Web アプリの作成とデプロイ
 
-1. 任意のコマンド ライン ターミナルを開いて、[Express generator for Yeoman](https://github.com/petecoop/generator-express) をインストールします。
+1. 任意のコマンド ライン ターミナルを開いて、[Express generator for Yeoman] をインストールします。
 
         npm install -g generator-express
 
-2. `CD` で作業ディレクトリに移動し、次のように express アプリを生成します。
+2. `CD` で作業ディレクトリに移動し、次の構文を使用して、express アプリを生成します。
 
         yo express
         
     プロンプトで次のオプションを選択します。
 
-    `? Would you like to create a new directory for your project?` **Yes** `? Enter directory name` **&lt;appname>** `? Select a version to install:` **MVC** `? Select a view engine to use:` **Jade** `? Select a css preprocessor to use (Sass Requires Ruby):` **None** `? Select a database to use:` **None** `? Select a build tool to use:` **Grunt**
+    `? Would you like to create a new directory for your project?` **Yes** `? Enter directory name` **{appname}** `? Select a version to install:` **MVC** `? Select a view engine to use:` **Jade** `? Select a css preprocessor to use (Sass Requires Ruby):` **None** `? Select a database to use:` **None** `? Select a build tool to use:` **Grunt**
 
 3. `CD` で新しいアプリのルート ディレクトリに移動し、アプリを起動して開発環境で動作することを確認します。
 
         npm start
 
-    ブラウザーで [http://localhost:3000](http://localhost:3000) に移動し、Express のホーム ページが表示されることを確認します。アプリが適切に実行されることを確認したら、`Ctrl-C` を使用してアプリを停止します。
+    ブラウザーで <http://localhost:3000> に移動し、Express のホーム ページが表示されることを確認します。アプリが適切に実行されることを確認したら、`Ctrl-C` を使用してアプリを停止します。
     
 1. 次のようにして Azure にログインします (この操作には [Azure CLI](#prereq) が必要です)。
 
@@ -57,13 +58,13 @@
 
     画面の指示に従い、Azure サブスクリプションのある Microsoft アカウントを使用してブラウザーでログイン操作を進めます。
 
-2. まだアプリのルート ディレクトリにいることを確認します。次のコマンドを使用し、一意のアプリ名で Azure に App Service アプリ リソースを作成します。Web アプリの URL は http://&lt;appname>.azurewebsites.net になります。
+2. まだアプリのルート ディレクトリにいることを確認し、次のコマンドを使用して、一意のアプリ名で Azure に App Service アプリ リソースを作成します。例: http://{appname}.azurewebsites.net
 
-        azure site create --git <appname>
+        azure site create --git {appname}
 
-    プロンプトに従って、デプロイ先の Azure リージョンを選択します。まだ Azure サブスクリプションに Git/FTP デプロイの資格情報を設定していない場合は、資格情報を作成するように求められます。
+    プロンプトに従って、デプロイ先の Azure リージョンを選択します。Azure サブスクリプションの Git/FTP デプロイの資格情報を設定したことがない場合は、資格情報の作成も求められます。
 
-3. config/config.js を開いて運用環境のポートを `process.env.port` に変更します。運用環境の JSON オブジェクトは次のようになります。
+3. アプリケーションのルートから ./config/config.js ファイルを開き、運用環境のポートを `process.env.port` に変更します。`config` オブジェクトの `production` プロパティは次の例のようになります。
 
         production: {
             root: rootPath,
@@ -78,18 +79,18 @@
 4. 変更内容を保存し、git を使用してアプリを Azure にデプロイします。
 
         git add .
-        git commit -m "<your commit message>"
+        git commit -m "{your commit message}"
         git push azure master
 
     Express ジェネレーターによって .gitignore ファイルがあらかじめ提供されているため、`git push` が node\_modules/ ディレクトリのアップロードを試みることによる帯域幅の消費は発生しません。
 
-5. 後は、ブラウザーで実稼働用の Azure アプリを起動します。
+5. 最後に、ブラウザーでライブ Azure アプリを起動します。
 
         azure site browse
 
     これで対象の Node.js Web アプリが Azure App Service でライブ実行されていることを確認できます。
     
-    ![](./media/app-service-web-nodejs-get-started/deployed-express-app.png)
+    ![Example of browsing to the deployed application.][deployed-express-app]
 
 ## Node.js Web アプリの更新
 
@@ -97,7 +98,7 @@ App Service で実行されている Node.js Web アプリを更新するには�
      
 ## App Service における Node.js アプリのデプロイ
 
-Azure App Service では、Node.js アプリを実行するために [iisnode](https://github.com/tjanczuk/iisnode/wiki) が使用されます。Node.js アプリの開発とデプロイは、Azure CLI と Kudu エンジン (Git デプロイ) を組み合わせることでコマンド ラインから効率的に行うことができます。
+Azure App Service では、Node.js アプリを実行するために [iisnode] が使用されます。Node.js アプリの開発とデプロイは、Azure CLI と Kudu エンジン (Git デプロイ) を組み合わせることでコマンド ラインから効率的に行うことができます。
 
 - `azure site create --git` は、server.js または app.js の一般的な Node.js パターンを認識し、iisnode.yml をルート ディレクトリに作成します。このファイルを使用して iisnode をカスタマイズできます。
 - `git push azure master` では、次のデプロイ タスクが Kudu によって自動化されます。
@@ -108,13 +109,13 @@ Azure App Service では、Node.js アプリを実行するために [iisnode](h
     
 ## Node.js フレームワークの使用
 
-[Sails.js](http://sailsjs.org/) や [MEAN.js](http://meanjs.org/) などの広く使われている Node.js フレームワークを使用して開発したアプリは、App Service にデプロイすることができます。広く使われている Node.js フレームワークには、それぞれ独自のくせがあり、パッケージの依存関係も絶えず更新されます。しかし App Service では、stdout と stderr のログが利用できるようになっているため、アプリで起こっていることを正確に把握し、それに応じた変更を加えることができます。詳細については、「[iisnode から stdout ログと stderr ログを取得する](#iisnodelog)」を参照してください。
+[Sails.js][SAILSJS] や [MEAN.js][MEANJS] などの広く使われている Node.js フレームワークを使用して開発したアプリは、App Service にデプロイすることができます。広く使われている Node.js フレームワークには、それぞれ独自のくせがあり、パッケージの依存関係も絶えず更新されます。しかし App Service では、stdout と stderr のログが利用できるようになっているため、アプリで起こっていることを正確に把握し、それに応じた変更を加えることができます。詳細については、「[iisnode から stdout ログと stderr ログを取得する](#iisnodelog)」を参照してください。
 
-以下のチュートリアルには、App Service における特定のフレームワークの使用方法がわかりやすく解説されています。
+以下のチュートリアルには、App Service における特定のフレームワークの使用方法が解説されています。
 
-- [Deploy a Sails.js web app to Azure App Service (Sails.js Web アプリを Azure App Service にデプロイする)](app-service-web-nodejs-sails.md)
-- [Azure App Service での Socket.IO を使用する Node.js チャット アプリケーションの構築](web-sites-nodejs-chat-app-socketio.md)
-- [Azure App Service Web Apps で io.js を使用する方法](web-sites-nodejs-iojs.md)
+- [Deploy a Sails.js web app to Azure App Service (Sails.js Web アプリを Azure App Service にデプロイする)]
+- [Azure App Service での Socket.IO を使用する Node.js チャット アプリケーションの構築]
+- [Azure App Service Web Apps で io.js を使用する方法]
 
 ## 特定の Node.js エンジンの使用
 
@@ -130,12 +131,14 @@ Kudu デプロイ エンジンは、使用する Node.js エンジンを次の�
 - 次に package.json を参照し、`engines` オブジェクトに `"node": "..."` が指定されているかどうかを確認します。指定されている場合はそれを使用します。
 - 特に指定されていない場合、既定の Node.js バージョンを選択します。
 
-<a name="iisnodelog" />
+<a name="iisnodelog"></a>
 ## iisnode から stdout ログと stderr ログを取得する
 
-iisnode ログを読み取るには、次の手順を実行します。
+iisnode ログを確認するには、次の手順を実行してください。
 
-1. Azure CLI によって生成された iisnode.yml ファイルを開きます。
+> [AZURE.NOTE] 次の手順を完了した後も、エラーが発生するまでログ ファイルが生成されない場合があります。
+
+1. Azure CLI に用意されている iisnode.yml ファイルを開きます。
 
 2. 次の 2 つのパラメーターを設定します。
 
@@ -147,27 +150,28 @@ iisnode ログを読み取るには、次の手順を実行します。
 3. 次の Git コマンドで変更内容を保存し、Azure にプッシュします。
 
         git add .
-        git commit -m "<your commit message>"
+        git commit -m "{your commit message}"
         git push azure master
    
    これで iisnode の構成は完了です。以下、これらのログにアクセスする方法を説明します。
      
 4. ブラウザーでアプリの Kudu デバッグ コンソールにアクセスします。URL は次のとおりです。
 
-        https://<appname>.scm.azurewebsites.net/DebugConsole 
+        https://{appname}.scm.azurewebsites.net/DebugConsole 
+
+    この URL は、Web アプリの URL とは異なるもので、DNS 名に "*.scm.*" が追加されています。この追加部分を URL から省くと、404 エラーが表示されます。
 
 5. D:\\home\\site\\wwwroot\\iisnode に移動します。
 
-    ![](./media/app-service-web-nodejs-get-started/iislog-kudu-console-navigate.png)
+    ![Navigating to the location of the iisnode log files.][iislog-kudu-console-find]
 
-6. 読み取り対象ログの **[編集]** アイコンをクリックします。必要に応じて **[ダウンロード]** または **[削除]** をクリックすることもできます。
+6. 確認するログの **[編集]** アイコンをクリックします。必要に応じて **[ダウンロード]** または **[削除]** をクリックすることもできます。
 
-    ![](./media/app-service-web-nodejs-get-started/iislog-kudu-console-open.png)
+    ![Opening an iisnode log file.][iislog-kudu-console-open]
 
     これでログを参照できるようになりました。ログを基に App Service のデプロイをデバッグすることができます。
     
-    ![](./media/app-service-web-nodejs-get-started/iislog-kudu-console-read.png)
-
+    ![Examining an iisnode log file.][iislog-kudu-console-read]
 
 ## Node-Inspector によるアプリのデバッグ
 
@@ -183,16 +187,16 @@ Node-Inspector を有効にするには、次の手順を実行します。
 3. 次の Git コマンドで変更内容を保存し、Azure にプッシュします。
 
         git add .
-        git commit -m "<your commit message>"
+        git commit -m "{your commit message}"
         git push azure master
    
 4. 後は、package.json 内の起動スクリプトで指定されたアプリの起動ファイルに移動するだけです。URL の最後に /debug を付けてください。たとえば、次のように入力します。
 
-        http://<appname>.azurewebsites.net/server.js/debug
+        http://{appname}.azurewebsites.net/server.js/debug
     
     または、
     
-        http://<appname>.azurewebsites.net/app.js/debug
+        http://{appname}.azurewebsites.net/app.js/debug
 
 ## その他のリソース
 
@@ -202,5 +206,33 @@ Node-Inspector を有効にするには、次の手順を実行します。
 - [Azure App Service Web Apps: Node.js](http://blogs.msdn.com/b/silverlining/archive/2012/06/14/windows-azure-websites-node-js.aspx)
 - [Node.js デベロッパー センター](/develop/nodejs/)
 - [Azure App Service での Web アプリの使用](app-service-web-get-started.md)
+- [優れた Kudu デバッグ コンソールの詳細]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!-- URL List -->
+
+[Azure CLI]: ../xplat-cli-install.md
+[Azure App Service]: ../app-service/app-service-value-prop-what-is.md
+[Visual Studio サブスクライバー特典を有効にする]: http://go.microsoft.com/fwlink/?LinkId=623901
+[BOWER]: http://bower.io/
+[Azure App Service での Socket.IO を使用する Node.js チャット アプリケーションの構築]: ./web-sites-nodejs-chat-app-socketio.md
+[Deploy a Sails.js web app to Azure App Service (Sails.js Web アプリを Azure App Service にデプロイする)]: ./app-service-web-nodejs-sails.md
+[優れた Kudu デバッグ コンソールの詳細]: /documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Express generator for Yeoman]: https://github.com/petecoop/generator-express
+[GIT]: http://www.git-scm.com/downloads
+[Azure App Service Web Apps で io.js を使用する方法]: ./web-sites-nodejs-iojs.md
+[iisnode]: https://github.com/tjanczuk/iisnode/wiki
+[MEANJS]: http://meanjs.org/
+[NODEJS]: http://nodejs.org
+[SAILSJS]: http://sailsjs.org/
+[無料試用版にサインアップする]: http://go.microsoft.com/fwlink/?LinkId=623901
+[Web アプリ]: ./app-service-web-overview.md
+[YEOMAN]: http://yeoman.io/
+
+<!-- IMG List -->
+
+[deployed-express-app]: ./media/app-service-web-nodejs-get-started/deployed-express-app.png
+[iislog-kudu-console-find]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-navigate.png
+[iislog-kudu-console-open]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-open.png
+[iislog-kudu-console-read]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-read.png
+
+<!---HONumber=AcomDC_0608_2016-->

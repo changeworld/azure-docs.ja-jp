@@ -44,7 +44,7 @@ Azure Functions は、データの処理、システムの統合、モノのイ�
 Functions には、次のような主要なシナリオを開始するためのテンプレートが用意されています。
 
 * **BlobTrigger** - Azure Storage BLOB がコンテナーに追加されたときに、それを処理します。これは画像のサイズ変更に利用できます。
-* **EventHubTrigger** - IoT デバイスで発生するイベントに応答します。
+* **EventHubTrigger** - Azure イベント ハブに送信されたイベントに応答します。アプリケーションのインストルメンテーション、ユーザー エクスペリエンスやワークフローの処理、モノのインターネット (IoT) のシナリオで、特に役立ちます。
 * **汎用 webhook** - webhook をサポートする任意のサービスからの webhook HTTP 要求を処理します。
 * **GitHub webhook** - GitHub リポジトリで発生するイベントに応答します。例については、「[webhook または API Azure Function を作成する](functions-create-a-web-hook-or-api-function.md)」をご覧ください。
 * **HTTPTrigger** - HTTP 要求を使用して、コードの実行をトリガーします。
@@ -87,4 +87,4 @@ Azure Functions には 2 種類の料金プランがあり、ニーズに合わ�
 + [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。 
 + [Azure App Service とは](../app-service/app-service-value-prop-what-is.md) Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service プラットフォームを活用しています。 
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

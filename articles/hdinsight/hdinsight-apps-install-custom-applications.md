@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="05/24/2016"
+   	ms.date="06/07/2016"
    	ms.author="jgao"/>
 
 # カスタム HDInsight アプリケーションのインストール
@@ -71,6 +71,8 @@ HDInsight アプリケーションは、クラスターを作成するときに�
 
 2. 手順に従ってクラスターを作成し、Hue をインストールします。HDInsight クラスターの作成の詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
+Azure ポータルのほか、[Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-powershell) や [Azure CLI](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-azure-cli) を使用して ARM テンプレートを呼び出すこともできます。
+
 ## インストールを検証する
 
 Azure ポータルでアプリケーションのステータスを確認し、アプリケーションが正しくインストールされていることを確認できます。さらに、すべての HTTP エンドポイントが正しく設定されていること、また Web ページが存在する場合は正しく表示されることを確認することもできます。
@@ -88,6 +90,7 @@ Azure ポータルでアプリケーションのステータスを確認し、�
 
 アプリケーションのインストールの状態は、ポータル通知で確認できます (ポータル上部のベル アイコンをクリック)。
 
+
 アプリケーションのインストールが失敗した場合は、エラー メッセージとデバッグ情報を次の 3 つの場所で確認できます。
 
 - HDInsight アプリケーション: 一般的なエラー情報です。
@@ -104,13 +107,39 @@ Azure ポータルでアプリケーションのステータスを確認し、�
     
 - Ambari Web UI: インストール スクリプトがエラーの原因であった場合は、Ambari Web UI を使用して、インストール スクリプトの完全なログを確認します。
 
-    詳細については、「[トラブルシューティング](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)」セクションを参照してください。
+    詳細については、「[トラブルシューティング](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)」を参照してください。
+
+## HDInsight アプリケーションの削除
+
+HDInsight アプリケーションを削除する方法は複数あります。
+
+### ポータルの使用
+
+**ポータルを使用してアプリケーションを削除するには**
+
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. 左側のメニューの **[HDInsight クラスター]** をクリックします。表示されない場合は、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックしてください。
+3. アプリケーションをインストールしたクラスターをクリックします。
+4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。インストールされているアプリケーションの一覧が表示されます。このチュートリアルでは、**[インストール済みアプリ]** ブレードの一覧に **hue** が表示されます。
+5. 削除するアプリケーションを右クリックし、**[削除]** をクリックします。
+6. **[はい]** をクリックして確定します。
+
+ポータルからは、クラスターを削除したり、アプリケーションが含まれているリソース グループを削除したりすることもできます。
+
+### Azure PowerShell の使用
+
+Azure PowerShell を使用して、クラスターを削除したり、リソース グループを削除したりできます。[Azure PowerShell を使用したクラスターの削除](hdinsight-administer-use-powershell.md#delete-clusters)に関するセクションを参照してください。
+
+### Azure CLI の使用
+
+Azure CLI を使用して、クラスターを削除したり、リソース グループを削除したりできます。[Azure CLI を使用したクラスターの削除](hdinsight-administer-use-command-line.md#delete-clusters)に関するセクションを参照してください。
+
 
 ## 次のステップ
 
-- [MSDN: Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションをデプロイするための ARM テンプレートの作成方法を確認します。
-- [HDInsight アプリケーションの発行](hdinsight-apps-publish-applications.md)に関する記事: カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法を確認します。
-- [Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
-- [ARM テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md): ARM テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
+- [MSDN 記事を参照して HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションをデプロイするための ARM テンプレートの作成方法について説明します。
+- [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。
+- [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法について説明します。
+- [ARM テンプレートを使用して Linux ベースの Hadoop クラスターを HDInsight に作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md): ARM テンプレートを呼び出して HDInsight クラスターを作成する方法について説明します。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

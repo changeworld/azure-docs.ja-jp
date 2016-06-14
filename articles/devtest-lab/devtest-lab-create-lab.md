@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # Azure DevTest Labs でのラボの作成
@@ -29,11 +29,11 @@
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** をタップします。
+1. **[参照]** を選択します。
 
-1. 一覧から **[DevTest ラボ]** をタップします。
+1. 一覧から **[DevTest ラボ]** を選択します。
 
-1. **[DevTest ラボ]** ブレードで **[追加]** をタップします。
+1. **[DevTest ラボ]** ブレードで **[追加]** を選択します。
 
     ![Add a lab](./media/devtest-lab-create-lab/add-lab-button.png)
 
@@ -42,7 +42,7 @@
     1. 新しいラボの **[ラボ名]** を入力します。
     1. ラボに関連付ける **[サブスクリプション]** を選択します。
     1. ラボを格納する **[場所]** を選択します。
-    1. **[作成]** をタップします。
+    1. **[作成]** を選択します。
 
     ![Create a lab blade](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
@@ -60,4 +60,4 @@
 
 - [アーティファクトを含む VM をラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -71,4 +71,4 @@ Site Recovery は、障害が発生した場合にワークロードとアプリ
 - Site Recovery のアーキテクチャの詳細については、「[Azure Site Recovery のしくみ](site-recovery-components.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -1,29 +1,29 @@
 <properties 
-   pageTitle="Service Bus ブローカー メッセージングの REST チュートリアル | Microsoft Azure"
-   description="ブローカー メッセージングの REST チュートリアル。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Service Bus ブローカー メッセージングの REST チュートリアル | Microsoft Azure"
+    description="ブローカー メッセージングの REST チュートリアル。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="09/15/2015"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="06/03/2016"
+    ms.author="sethm" />
 
 # Service Bus ブローカー メッセージングの REST チュートリアル
 
-このチュートリアルでは、基本的な REST ベースの Azure Service Bus のキューおよびトピック/サブスクリプション サービスを作成する方法を示します。
+このチュートリアルでは、基本的な REST ベースの Azure Service Bus のキューおよびトピック/サブスクリプションを作成する方法を示します。
 
 ## 手順 1: 名前空間を作成する
 
 最初の手順では、サービス名前空間を作成し、[Shared Access Signature](service-bus-sas-overview.md) (SAS) キーを取得します。サービス名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。サービス名前空間が作成された時点で、SAS キーが生成されます。サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
-### 名前空間を作成し、共有シークレット キーを取得する
+### 名前空間を作成し、SAS キーを取得する
 
 1. サービス名前空間を作成するには、[Azure クラシック ポータル][]にアクセスします。左側にある **[Service Bus]** をクリックし、**[作成]** をクリックします。名前空間の名前を入力して、チェック マークをクリックします。
 
@@ -186,17 +186,19 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 // Uses HTTP PUT to create the queue
 private static string CreateQueue(string queueName, string token)
 {
-    // Create the URI of the new queue, note that this uses the HTTPS schemestring queueAddress = baseAddress + queueName;
+    // Create the URI of the new queue, note that this uses the HTTPS scheme
+    string queueAddress = baseAddress + queueName;
     WebClient webClient = new WebClient();
     webClient.Headers[HttpRequestHeader.Authorization] = token;
 
     Console.WriteLine("\nCreating queue {0}", queueAddress);
-    // Prepare the body of the create queue requestvar putData = @"<entry xmlns=""http://www.w3.org/2005/Atom"">
-                                  <title type=""text"">" + queueName + @"</title>
-                                  <content type=""application/xml"">
-                                    <QueueDescription xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"" />
-                                  </content>
-                                </entry>";
+    // Prepare the body of the create queue request
+    var putData = @"<entry xmlns=""http://www.w3.org/2005/Atom"">
+                          <title type=""text"">" + queueName + @"</title>
+                          <content type=""application/xml"">
+                            <QueueDescription xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"" xmlns=""http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"" />
+                          </content>
+                        </entry>";
 
     byte[] response = webClient.UploadData(queueAddress, "PUT", Encoding.UTF8.GetBytes(putData));
     return Encoding.UTF8.GetString(response);
@@ -633,4 +635,4 @@ namespace Microsoft.ServiceBus.Samples
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0608_2016-->

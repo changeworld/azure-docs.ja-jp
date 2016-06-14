@@ -13,15 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/01/2016"
+    ms.date="06/07/2016"
     ms.author="magoedte"/>
 
 # Azure 実行アカウントを使用した Runbook の認証
-このトピックでは、Azure ポータルから新しい実行アカウント機能 (サービス プリンシパル) を使用して Automation アカウントを構成し、サブスクリプション内の Azure Resource Manager (ARM) リソースに Automation Runbook でアクセスする方法について説明します。Azure ポータルで新しい Automation アカウントを作成すると、新しいサービス プリンシパルが自動的に作成され、サブスクリプションに含まれるロールベース アクセス制御 (RBAC) の Contributor ロールに既定で割り当てられます。これによって必要な作業が単純化され、オートメーションのニーズを満たす Runbook をすぐに作成し、デプロイすることができます。
+このトピックでは、Azure ポータルから新しい実行アカウント機能 (サービス プリンシパル) を使用して Automation アカウントを構成し、サブスクリプション内の Azure Resource Manager リソースに Automation Runbook でアクセスする方法について説明します。Azure ポータルで新しい Automation アカウントを作成すると、新しいサービス プリンシパルが自動的に作成され、サブスクリプションに含まれるロールベース アクセス制御 (RBAC) の Contributor ロールに既定で割り当てられます。これによって必要な作業が単純化され、オートメーションのニーズを満たす Runbook をすぐに作成し、デプロイすることができます。
 
 サービス プリンシパルを使用して次のことができます。
 
-* Runbook を使用した Azure ARM リソース管理に、Azure を使用した標準的な認証方法を取り入れる。
+* Runbook を使用した Azure Resource Manager リソース管理に、Azure を使用した標準的な認証方法を取り入れる。
 * Azure アラート内で構成されるグローバル Runbook の使用を自動化する。
 
 
@@ -45,7 +45,7 @@ Azure ポータルから Automation アカウントを作成する方法と、Az
 
     ![Add Automation Account Warning](media/automation-sec-configure-azure-runas-account/add-account-decline-create-runas-msg.png)
 
-    >[AZURE.NOTE] 実行アカウントを作成しなかった場合 (先ほどのオプションで **[いいえ]** を選択した場合)、**[Automation アカウントの追加]** ブレードに警告メッセージが表示されます。アカウントが作成されてサブスクリプションの**共同作成者**ロールに割り当てられますが、サブスクリプションのディレクトリ サービスには対応する認証 ID が割り当てられず、サブスクリプション内のリソースにアクセスすることはできません。このアカウントを参照する Runbook は認証を通過できず、ARM リソースに対するタスクを実行することができません。
+    >[AZURE.NOTE] 実行アカウントを作成しなかった場合 (先ほどのオプションで **[いいえ]** を選択した場合)、**[Automation アカウントの追加]** ブレードに警告メッセージが表示されます。アカウントが作成されてサブスクリプションの**共同作成者**ロールに割り当てられますが、サブスクリプションのディレクトリ サービスには対応する認証 ID が割り当てられず、サブスクリプション内のリソースにアクセスすることはできません。このアカウントを参照する Runbook は認証を通過できず、Azure Resource Manager リソースに対するタスクを実行することができません。
 
     ![Add Automation Account Warning](media/automation-sec-configure-azure-runas-account/add-automation-acct-properties-error.png)
 
@@ -85,7 +85,7 @@ AzureRunAsConnection|Automation アカウントの作成時に実行アカウン
 1. ご使用のコンピューターに次のスクリプトを保存します。この例では、**New-AzureServicePrincipal.ps1** というファイル名で保存します。  
 
     ```
-    #Requires - RunAsAdministrator
+    #Requires -RunAsAdministrator
     Param (
     [Parameter(Mandatory=$true)]
     [String] $ResourceGroup,
@@ -97,7 +97,7 @@ AzureRunAsConnection|Automation アカウントの作成時に実行アカウン
     [String] $ApplicationDisplayName,
 
     [Parameter(Mandatory=$true)]
-    [String] $SubscriptionName,
+    [String] $SubscriptionId,
 
     [Parameter(Mandatory=$true)]
     [String] $CertPlainPassword,
@@ -108,7 +108,7 @@ AzureRunAsConnection|Automation アカウントの作成時に実行アカウン
 
     Login-AzureRmAccount
     Import-Module AzureRM.Resources
-    Select-AzureRmSubscription -SubscriptionName $SubscriptionName
+    Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
     $CurrentDate = Get-Date
     $EndDate = $CurrentDate.AddMonths($NoOfMonthsUntilExpired)
@@ -143,14 +143,14 @@ AzureRunAsConnection|Automation アカウントの作成時に実行アカウン
     {
       # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
       Sleep 5
-      New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId | Write-Verbose
+      New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
       Sleep 5
       $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $Application.ApplicationId -ErrorAction SilentlyContinue
       $Retries++;
     }
 
     # Get the tenant id for this subscription
-    $SubscriptionInfo = Get-AzureRmSubscription
+    $SubscriptionInfo = Get-AzureRmSubscription -SubscriptionId $SubscriptionId
     $TenantID = $SubscriptionInfo | Select TenantId -First 1
 
     # Create the automation resources
@@ -158,20 +158,19 @@ AzureRunAsConnection|Automation アカウントの作成時に実行アカウン
 
     # Create a Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
     $ConnectionAssetName = "AzureRunAsConnection"
-    $SubscriptionId = $SubscriptionInfo | Select SubscriptionId -First 1
     Remove-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -Force -ErrorAction SilentlyContinue
     $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Cert.Thumbprint; "SubscriptionId" = $SubscriptionId.SubscriptionId}
     New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
     ```
 <br>
 2. コンピューターの**スタート**画面から、昇格されたユーザー権限で **Windows PowerShell** を起動します。
-3. 昇格された PowerShell コマンドライン シェルから、手順 1. で作成したスクリプトが格納されているフォルダーに移動してスクリプトを実行します。*–ResourceGroup*、*-AutomationAccountName*、*-ApplicationDisplayName*、*-SubscriptionName*、*-CertPlainPassword* の各パラメーターの値は適宜変更してください。<br>
+3. 昇格された PowerShell コマンドライン シェルから、手順 1. で作成したスクリプトが格納されているフォルダーに移動してスクリプトを実行します。*–ResourceGroup*、*-AutomationAccountName*、*-ApplicationDisplayName*、*-SubscriptionId*、*-CertPlainPassword* の各パラメーターの値は適宜変更してください。<br>
 
     ```
-    .\New-AzureServicePrincipal.ps1 -ResourceGroup <ResourceGroupName> `
+    .\New-AzureServicePrincipal.ps1 -ResourceGroup <ResourceGroupName> 
      -AutomationAccountName <NameofAutomationAccount> `
      -ApplicationDisplayName <DisplayNameofAutomationAccount> `
-     -SubscriptionName <SubscriptionName> `
+     -SubscriptionId <SubscriptionId> `
      -CertPlainPassword "<StrongPassword>"
     ```   
 <br>
@@ -204,9 +203,9 @@ AzureRunAsConnection|Automation アカウントの作成時に実行アカウン
 13. **[PowerShell Runbook の編集]** ブレードを閉じます。
 14. **[Test-SecPrin-Runbook]** ブレードを閉じます。
 
-## ARM リソースで認証を行うサンプル コード
+## Resource Manager リソースで認証を行うサンプル コード
 
-AzureAutomationTutorial のサンプル Runbook から次の更新済みサンプル コードを取得して使用することで、実行アカウントを使用して認証を行い、Runbook で ARM リソースを管理することができます。
+AzureAutomationTutorial のサンプル Runbook から次の更新済みサンプル コードを取得して使用することで、実行アカウントを使用して認証を行い、Runbook で Resource Manager リソースを管理することができます。
 
    ```
    $connectionName = "AzureRunAsConnection"
@@ -243,4 +242,4 @@ AzureAutomationTutorial のサンプル Runbook から次の更新済みサン�
 - サービス プリンシパルの詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)」を参照してください。
 - Azure Automation におけるロールベースのアクセス制御の詳細については、「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->
