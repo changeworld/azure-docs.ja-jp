@@ -190,7 +190,7 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
     import java.util.logging.*;
     ```
 
-7. 次のクラスレベルの変数を **App** クラスに追加します。**{youriothubkey}**、**{youreventhubcompatiblenamespace}**、**{youreventhubcompatiblename}** を先にメモした値に置き換えます。**{youreventhubcompatiblenamespace}** プレースホルダーの値は、**イベント ハブと互換性のあるエンドポイント**から取得され、**xyznamespace** の形式になります (つまり、ポータルのイベント ハブと互換性のあるエンドポイントの ****sb://** プレフィックスと **.servicebus.windows.net** サフィックスを削除します)。
+7. 次のクラスレベルの変数を **App** クラスに追加します。**{youriothubkey}**、**{youreventhubcompatiblenamespace}**、**{youreventhubcompatiblename}** を先にメモした値に置き換えます。**{youreventhubcompatiblenamespace}** プレースホルダーの値は、**イベント ハブと互換性のあるエンドポイント**から取得され、**xyznamespace** の形式になります (つまり、ポータルのイベント ハブと互換性のあるエンドポイントの **sb://** プレフィックスと **.servicebus.windows.net** サフィックスを削除します)。
 
     ```
     private static String namespaceName = "{youreventhubcompatiblenamespace}";

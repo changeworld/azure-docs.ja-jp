@@ -376,7 +376,7 @@ def create_job(batch_service_client, job_id, pool_id):
 
 Batch の**タスク**は、コンピューティング ノードで実行される独立した作業単位です。タスクはコマンド ラインを持ち、スクリプト (またはそのコマンド ラインに指定された実行可能ファイル) を実行します。
 
-実際に作業を実行するには、タスクをジョブに追加する必要があります。コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][py_resource_file] (プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][py_task] を構成します。このサンプルでは、各タスクで処理するファイルは 1 つだけです。したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
+実際に作業を実行するには、タスクをジョブに追加する必要があります。コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][py_resource_file] \(プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][py_task] を構成します。このサンプルでは、各タスクで処理するファイルは 1 つだけです。したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
 
 ```python
 def add_tasks(batch_service_client, job_id, input_files,
