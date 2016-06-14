@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="hero-article"
-	ms.date="05/05/2016"
+	ms.date="05/27/2016"
 	ms.author="wesmc"/>
 
 # Azure Notification Hubs から Android へのプッシュ通知の送信
@@ -74,13 +74,13 @@
 
 ###Azure Notification Hubs ライブラリを追加する
 
-1. [Bintray の Notification-Hubs-Android-SDK](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) にある **[Files]** タブから `notification-hubs-0.4.jar` ファイルをダウンロードします。プロジェクト ディレクトリの **[libs]** フォルダーにファイルをドラッグします。
 
-2. **[app]** の `Build.Gradle` ファイルの **[dependencies]** セクションに次の行を追加します。
+1. **[app (アプリ)]** の `Build.Gradle` ファイルの **[dependencies (依存関係)]** セクションに次の行を追加します。
 
-	    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+		compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
+		compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
 
-	**[dependencies]** セクションの後に次のリポジトリを追加します。
+2. **[dependencies]** セクションの後に次のリポジトリを追加します。
 
 		repositories {
 		    maven {
@@ -93,7 +93,7 @@
 
 1. GCM をサポートするには、[Google のインスタンス ID API](https://developers.google.com/instance-id/) を利用し、[登録トークンの取得](https://developers.google.com/cloud-messaging/android/client#sample-register)に使用されるインスタンス ID リスナー サービスをコードに実装する必要があります。このチュートリアルでは、クラスに `MyInstanceIDService` という名前を付けます。 
  
-	次のサービス定義を AndroidManifest.xml ファイルに追加します。`<application>` タグの中に追加します。`<your package>` プレースホルダーを、`AndroidManifest.xml` ファイルの先頭にある実際のパッケージ名に置き換えます。
+	次のサービス定義を AndroidManifest.xml ファイルの `<application>` タグ内に追加します。`<your package>` プレースホルダーを、`AndroidManifest.xml` ファイルの先頭にある実際のパッケージ名に置き換えます。
 
 		<service android:name="<your package>.MyInstanceIDService" android:exported="false">
 		    <intent-filter>
@@ -102,7 +102,7 @@
 		</service>
 
 
-2. インスタンス ID API から GCM 登録トークンを受け取ったら、それを使用して [Azure 通知ハブに登録](notification-hubs-registration-management.md)します。この登録は、`RegistrationIntentService` という名前の `IntentService` を利用してバックグラウンドでサポートします。このサービスは [GCM 登録トークンの更新](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)も行います。
+2. インスタンス ID API から GCM 登録トークンを受け取ったら、それを使用して [Azure 通知ハブに登録](notification-hubs-registration-management.md)します。この登録は、`RegistrationIntentService` という名前の `IntentService` を利用してバックグラウンドでサポートされます。このサービスは [GCM 登録トークンの更新](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)も行います。
  
 	次のサービス定義を AndroidManifest.xml ファイルの `<application>` タグ内に追加します。`<your package>` プレースホルダーを、`AndroidManifest.xml` ファイルの先頭にある実際のパッケージ名に置き換えます。
 
@@ -147,7 +147,7 @@
 
 	以下の `NotificationSettings` クラスのコード内にある 3 つのプレースホルダーを忘れずに更新してください。
 	* **SenderId**: [Google Cloud Console](http://cloud.google.com/console) で取得しておいたプロジェクト番号。
-	* **HubListenConnectionString**: ハブの **DefaultListenAccessSignature** 接続文字列。接続文字列をコピーするには、[Azure ポータル]でハブの **[設定]** ブレードにある **[アクセス ポリシー]** をクリックします。
+	* **HubListenConnectionString**: ハブの **DefaultListenAccessSignature** 接続文字列。接続文字列をコピーするには、[Azure ポータル]で、ハブの **[設定]** ブレードにある **[アクセス ポリシー]** をクリックします。
 	* **HubName**: [Azure ポータル]のハブ ブレードに表示される通知ハブの名前を使用します。
 
 	`NotificationSettings` のコードは次のとおりです。
@@ -263,14 +263,14 @@
 		import android.widget.TextView;
 		import android.widget.Toast;
 
-5. クラスの最上位に、次のプライベート メンバーを追加します。これらを利用し、[Google の推奨に従って Google Play サービスの可用性を確認](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk)します。
+5. クラスの最上位に、次のプライベート メンバーを追加します。これらを利用し、[Google の推奨事項に従って Google Play サービスが利用可能かどうかを確認](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk)します。
 
 	    public static MainActivity mainActivity;
     	public static Boolean isVisible = false;	
 		private GoogleCloudMessaging gcm;
 	    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
-6. `MainActivity` クラスで、Google Play サービスの可用性に次のメソッドを追加します。
+6. `MainActivity` クラスに次のメソッドを追加して、Google Play サービスが利用可能かどうかを確認します。
 
 	    /**
 	     * Check the device to make sure it has the Google Play Services APK. If
@@ -295,7 +295,7 @@
 	    }
 
 
-7. `MainActivity` クラスに次のコードを追加します。このコードでは、Google Play サービスを確認してから、`IntentService` を呼び出して GCM 登録トークンを取得し、通知ハブに登録します。
+7. `MainActivity` クラスに次のコードを追加します。このコードは、Google Play サービスを確認してから、`IntentService` を呼び出して GCM 登録トークンを取得し、通知ハブに登録します。
 
 	    public void registerWithNotificationHubs()
 	    {
@@ -322,7 +322,7 @@
 	    }
 
 
-9. アプリの状態を確認してアプリ内で報告するために、次の追加メソッドを `MainActivity` に追加します。
+9. 次の追加メソッドを `MainActivity` に追加して、アプリの状態を確認してアプリ内で報告します。
 
 	    @Override
 	    protected void onStart() {
@@ -423,7 +423,7 @@
 		}
 
 
-14. Android Studio のメニュー バーで、**[Build]** (ビルド)、**[Rebuild Project]** (プロジェクトのリビルド) の順にクリックし、コードにエラーがないことを確認します。
+14. Android Studio のメニュー バーで、**[Build (ビルド)]**、**[Rebuild Project (プロジェクトのリビルド)]** の順にクリックし、コードにエラーがないことを確認します。
 
 ##プッシュ通知を送信する
 
@@ -437,7 +437,7 @@
 
 通常は、バックエンド サーバーを使用して通知を送信します。場合によっては、クライアント アプリケーションから直接プッシュ通知を送信できることが必要になります。このセクションでは、[Azure Notification Hubs REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx) を使用してクライアントから通知を送信する方法を説明します。
 
-1. Android Studio の [プロジェクト] ビューで **[アプリ]**、**[src]**、**[main]**、**[res]**、**[layout]** の順に展開します。`activity_main.xml` レイアウト ファイルを開き、**[Text]** (テキスト) タブをクリックしてファイルのテキストの内容を更新します。次のコードで更新します。これにより、通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールが追加されます。このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
+1. Android Studio の [プロジェクト] ビューで **[アプリ]**、**[src]**、**[main]**、**[res]**、**[layout]** の順に展開します。`activity_main.xml` レイアウト ファイルを開き、**[Text (テキスト)]** タブをクリックしてファイルのテキストの内容を更新します。次のコードで更新します。これにより、通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールが追加されます。このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
 
 	    <Button
         android:layout_width="wrap_content"
@@ -521,7 +521,7 @@
 	    }
 
 
-7. `MainActivity.java` で、SaS 認証トークンを作成する次のメソッドを `MainActivity` クラスに追加します。
+7. `MainActivity.java` で、SAS 認証トークンを作成する次のメソッドを `MainActivity` クラスに追加します。
 
 	    /**
 	     * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx to
@@ -577,7 +577,7 @@
 
 
 
-8. `MainActivity.java` で、**[通知の送信]** ボタン クリックを処理し、組み込みの REST API を使用してハブにプッシュ通知メッセージを送信する次のメソッドを `MainActivity` クラスに追加します。
+8. `MainActivity.java` で、次のメソッドを `MainActivity` クラスに追加します。このメソッドは **[Send Notification (通知の送信)]** ボタンのクリックを処理し、組み込みの REST API を使用してハブにプッシュ通知メッセージを送信します。
 
 	    /**
 	     * Send Notification button click handler. This method parses the
@@ -724,4 +724,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

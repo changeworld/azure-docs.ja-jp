@@ -12,9 +12,13 @@
    	![](./media/mobile-services-enable-google-cloud-messaging/notification-hubs-utilities-and-more.png)
 
 
-4. プロジェクトのダッシュボードで、**[Mobile APIs]** の **[Google Cloud Messaging]** をクリックし、次のページで **[Enable]** をクリックします。
+4. プロジェクトのダッシュボードで、**[Mobile APIs (Mobile API)]** の **[Google Cloud Messaging (Google Cloud Messaging)]** をクリックし、次のページで **[Enable API (API を有効にする)]** をクリックし、サービス使用条件に同意します。
 
-5. プロジェクト ダッシュボードで、 **[Credentials]**、**[Create Credential]**、**[API Key]** の順にクリックします。
+	![Enabling GCM](./media/mobile-services-enable-google-cloud-messaging/enable-GCM.png)
+
+	![Enabling GCM](./media/mobile-services-enable-google-cloud-messaging/enable-gcm-2.png)
+
+5. プロジェクト ダッシュボードで、**[Credentials (認証情報)]**、**[Create Credential (認証情報の作成)]**、**[API Key (API キー)]** の順にクリックします。
 
    	![](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-create-server-key.png)
 
@@ -24,4 +28,4 @@
 
 	この API キー値を使用して、Azure が GCM で認証し、アプリの代わりにプッシュ通知を送信できるようにします。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

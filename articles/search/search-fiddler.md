@@ -13,16 +13,16 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="02/18/2016"
+	ms.date="06/08/2016"
 	ms.author="heidist"/>
 
 # Fiddler を使用して Azure Search REST API を評価およびテストする
 > [AZURE.SELECTOR]
-- [Overview](search-query-overview.md)
-- [Search Explorer](search-explorer.md)
+- [概要](search-query-overview.md)
+- [Search エクスプローラー](search-explorer.md)
 - [Fiddler](search-fiddler.md)
 - [.NET](search-query-dotnet.md)
-- [REST](search-query-rest-api.md)
+- [REST ()](search-query-rest-api.md)
 
 この記事では、コードを記述することなく、[Telerik から無料でダウンロードできる](http://www.telerik.com/fiddler) Fiddler を利用し、Azure Search REST API を使用して HTTP 要求を発行し、応答を表示する方法について説明します。Azure Search は、Microsoft Azure の完全に管理されたホステッド クラウド検索サービスで、.NET API および REST API を使用して簡単にプログラミングできます。Azure Search サービス REST API については、[MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) を参照してください。
 
@@ -47,33 +47,33 @@
 
     URL 全体は、次の例のようになります。
 
-         https://my-app.search.windows.net/indexes/hotels?api-version=2015-02-28
+         	https://my-app.search.windows.net/indexes/hotels?api-version=2015-02-28
 
 4.	ホストと API キーをサービスに有効な値で置き換え、要求ヘッダーを指定します。
 
-        User-Agent: Fiddler
-        host: my-app.search.windows.net
-        content-type: application/json
-        api-key: 1111222233334444
+	        User-Agent: Fiddler
+	        host: my-app.search.windows.net
+	        content-type: application/json
+	        api-key: 1111222233334444
 
 5.	要求の本文には、インデックス定義を構成するフィールドを貼り付けます。
-
-         {
-        "name": "hotels",  
-        "fields": [
-          {"name": "hotelId", "type": "Edm.String", "key":true, "searchable": false},
-          {"name": "baseRate", "type": "Edm.Double"},
-          {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-          {"name": "hotelName", "type": "Edm.String"},
-          {"name": "category", "type": "Edm.String"},
-          {"name": "tags", "type": "Collection(Edm.String)"},
-          {"name": "parkingIncluded", "type": "Edm.Boolean"},
-          {"name": "smokingAllowed", "type": "Edm.Boolean"},
-          {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
-          {"name": "rating", "type": "Edm.Int32"},
-          {"name": "location", "type": "Edm.GeographyPoint"}
-         ]
-        }
+		    
+		     {
+		    "name": "hotels",  
+		    "fields": [
+		      {"name": "hotelId", "type": "Edm.String", "key":true, "searchable": false},
+		      {"name": "baseRate", "type": "Edm.Double"},
+		      {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
+		      {"name": "hotelName", "type": "Edm.String"},
+		      {"name": "category", "type": "Edm.String"},
+		      {"name": "tags", "type": "Collection(Edm.String)"},
+		      {"name": "parkingIncluded", "type": "Edm.Boolean"},
+		      {"name": "smokingAllowed", "type": "Edm.Boolean"},
+		      {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
+		      {"name": "rating", "type": "Edm.Int32"},
+		      {"name": "location", "type": "Edm.GeographyPoint"}
+		     ]
+		    }
 
 6.	**[実行]** をクリックします。
 
@@ -91,77 +91,77 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 2.	HTTPS で始まる URL の後に自分のサービス URL、次に「/indexes/<'indexname'>/docs/index?api-version=2015-02-28」と入力します。URL 全体は、次の例のようになります。
 
-        https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
+        	https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2015-02-28
 
 3.	要求ヘッダーは前と同じにします。ホストと API キーはサービスで有効な値に置き換えたことを思い出してください。
 
-        User-Agent: Fiddler
-        host: my-app.search.windows.net
-        content-type: application/json
-        api-key: 1111222233334444
+	        User-Agent: Fiddler
+	        host: my-app.search.windows.net
+	        content-type: application/json
+	        api-key: 1111222233334444
 
 4.	要求の本文には、hotels インデックスに追加する 4 つのドキュメントが含まれています。
 
-        {
-        "value": [
-        {
-        	"@search.action": "upload",
-        	"hotelId": "1",
-        	"baseRate": 199.0,
-        	"description": "Best hotel in town",
-        	"hotelName": "Fancy Stay",
-        	"category": "Luxury",
-        	"tags": ["pool", "view", "wifi", "concierge"],
-        	"parkingIncluded": false,
-        	"smokingAllowed": false,
-        	"lastRenovationDate": "2010-06-27T00:00:00Z",
-        	"rating": 5,
-        	"location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
-          },
-          {
-        	"@search.action": "upload",
-        	"hotelId": "2",
-        	"baseRate": 79.99,
-        	"description": "Cheapest hotel in town",
-        	"hotelName": "Roach Motel",
-        	"category": "Budget",
-        	"tags": ["motel", "budget"],
-        	"parkingIncluded": true,
-        	"smokingAllowed": true,
-        	"lastRenovationDate": "1982-04-28T00:00:00Z",
-        	"rating": 1,
-        	"location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
-          },
-          {
-        	"@search.action": "upload",
-        	"hotelId": "3",
-        	"baseRate": 279.99,
-        	"description": "Surprisingly expensive",
-        	"hotelName": "Dew Drop Inn",
-        	"category": "Bed and Breakfast",
-        	"tags": ["charming", "quaint"],
-        	"parkingIncluded": true,
-        	"smokingAllowed": false,
-        	"lastRenovationDate": null,
-        	"rating": 4,
-        	"location": { "type": "Point", "coordinates": [-122.33207, 47.60621] }
-          },
-          {
-        	"@search.action": "upload",
-        	"hotelId": "4",
-        	"baseRate": 220.00,
-        	"description": "This could be the one",
-        	"hotelName": "A Hotel for Everyone",
-        	"category": "Basic hotel",
-        	"tags": ["pool", "wifi"],
-        	"parkingIncluded": true,
-        	"smokingAllowed": false,
-        	"lastRenovationDate": null,
-        	"rating": 4,
-        	"location": { "type": "Point", "coordinates": [-122.12151, 47.67399] }
-          }
-         ]
-        }
+	        {
+	        "value": [
+	        {
+	        	"@search.action": "upload",
+	        	"hotelId": "1",
+	        	"baseRate": 199.0,
+	        	"description": "Best hotel in town",
+	        	"hotelName": "Fancy Stay",
+	        	"category": "Luxury",
+	        	"tags": ["pool", "view", "wifi", "concierge"],
+	        	"parkingIncluded": false,
+	        	"smokingAllowed": false,
+	        	"lastRenovationDate": "2010-06-27T00:00:00Z",
+	        	"rating": 5,
+	        	"location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
+	          },
+	          {
+	        	"@search.action": "upload",
+	        	"hotelId": "2",
+	        	"baseRate": 79.99,
+	        	"description": "Cheapest hotel in town",
+	        	"hotelName": "Roach Motel",
+	        	"category": "Budget",
+	        	"tags": ["motel", "budget"],
+	        	"parkingIncluded": true,
+	        	"smokingAllowed": true,
+	        	"lastRenovationDate": "1982-04-28T00:00:00Z",
+	        	"rating": 1,
+	        	"location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
+	          },
+	          {
+	        	"@search.action": "upload",
+	        	"hotelId": "3",
+	        	"baseRate": 279.99,
+	        	"description": "Surprisingly expensive",
+	        	"hotelName": "Dew Drop Inn",
+	        	"category": "Bed and Breakfast",
+	        	"tags": ["charming", "quaint"],
+	        	"parkingIncluded": true,
+	        	"smokingAllowed": false,
+	        	"lastRenovationDate": null,
+	        	"rating": 4,
+	        	"location": { "type": "Point", "coordinates": [-122.33207, 47.60621] }
+	          },
+	          {
+	        	"@search.action": "upload",
+	        	"hotelId": "4",
+	        	"baseRate": 220.00,
+	        	"description": "This could be the one",
+	        	"hotelName": "A Hotel for Everyone",
+	        	"category": "Basic hotel",
+	        	"tags": ["pool", "wifi"],
+	        	"parkingIncluded": true,
+	        	"smokingAllowed": false,
+	        	"lastRenovationDate": null,
+	        	"rating": 4,
+	        	"location": { "type": "Point", "coordinates": [-122.12151, 47.67399] }
+	          }
+	         ]
+	        }
 
 8.	**[実行]** をクリックします。
 
@@ -176,17 +176,17 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 1.	**[GET]** を選択します。
 
 2.	HTTPS で始まる URL の後に自分のサービス URL、次に「/indexes/<'indexname'>/docs?」、クエリ パラメーターの順に入力します。例として、サンプル ホスト名をサービスで有効な値に置き換えた、次の URL を使用します。
-
-        https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2015-02-28
+	
+	        https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2015-02-28
 
     このクエリは、用語 "motel" を検索し、評価のファセット カテゴリを取得します。
 
 3.	要求ヘッダーは前と同じにします。ホストと API キーはサービスで有効な値に置き換えたことを思い出してください。
 
-        User-Agent: Fiddler
-        host: my-app.search.windows.net
-        content-type: application/json
-        api-key: 1111222233334444
+	        User-Agent: Fiddler
+	        host: my-app.search.windows.net
+	        content-type: application/json
+	        api-key: 1111222233334444
 
 応答コードは 200 で、応答出力は次のスクリーン ショットのようになります。
 
@@ -212,14 +212,14 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 2.	次のように、サービスの URL の後に「/indexes/hotels/stats?api-version=2015-02-28」を続けて URL を入力します。
 
-        https://my-app.search.windows.net/indexes/hotels/stats?api-version=2015-02-28
+        	https://my-app.search.windows.net/indexes/hotels/stats?api-version=2015-02-28
 
 3.	ホストと API キーをサービスに有効な値で置き換え、要求ヘッダーを指定します。
 
-        User-Agent: Fiddler
-        host: my-app.search.windows.net
-        content-type: application/json
-        api-key: 1111222233334444
+	        User-Agent: Fiddler
+	        host: my-app.search.windows.net
+	        content-type: application/json
+	        api-key: 1111222233334444
 
 4.	要求の本文は空のままにします。
 
@@ -239,4 +239,4 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 [4]: ./media/search-fiddler/AzureSearch_Fiddler4_QueryResults.png
 [5]: ./media/search-fiddler/AzureSearch_Fiddler5_QueryStats.png
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -83,7 +83,7 @@ FROM [dbo].[vTargetMail]
 データを 80 対 20 に分割し、80% を機械学習モデルのトレーニングに、20% をモデルのテストに使用します。今回の二項分類の問題には "2 クラス" アルゴリズムを使用します。
 
 1. **[分割]** モジュールをキャンバスにドラッグします。
-2. [プロパティ] ウィンドウの [Fraction of rows in the first output dataset] \(最初の出力データセットにおける列の割合) に「0.8」と入力します。![データをトレーニング セットとテスト セットに分割する][6]
+2. [プロパティ] ウィンドウの [Fraction of rows in the first output dataset] (最初の出力データセットにおける列の割合) に「0.8」と入力します。![データをトレーニング セットとテスト セットに分割する][6]
 3. **[2 クラス ブースト デシジョン ツリー]** モジュールをキャンバスにドラッグします。
 4. **[モデルのトレーニング]** モジュールをキャンバスにドラッグし、入力内容を指定します。次に、[プロパティ] ウィンドウで **[Launch column selector]** (列セレクターの起動) をクリックします。
       - 1 つ目の入力: ML アルゴリズム。
@@ -99,9 +99,9 @@ FROM [dbo].[vTargetMail]
 3. [モデルのトレーニング] モジュールと [モデルのスコア付け] モジュールをコピーしてキャンバスに貼り付けます。
 4. **[モデルの評価]** モジュールをキャンバスにドラッグし、2 つのアルゴリズムを比較します。
 5. 実験を**実行**します。![実験を実行する][10]
-6. [Evaluate Model] \(モデルの評価) モジュールの下部にある出力ポートをクリックし、[Visualize] \(視覚化) をクリックします。![評価結果を視覚化する][11]
+6. [Evaluate Model] (モデルの評価) モジュールの下部にある出力ポートをクリックし、[Visualize] (視覚化) をクリックします。![評価結果を視覚化する][11]
 
-指定されているメトリックは、ROC 曲線、精度/再現率図、およびリフト曲線です。これらのメトリックを見ると、最初に実行されたモデルの方が 2 つ目のモデルよりもパフォーマンスが優れていることがわかります。1 つ目のモデルが予測した内容を確認するには、[Score Model] \(モデルのスコア付け) の出力ポートをクリックし、[Visualize] \(視覚化) をクリックします。![スコア結果を視覚化する][12]
+指定されているメトリックは、ROC 曲線、精度/再現率図、およびリフト曲線です。これらのメトリックを見ると、最初に実行されたモデルの方が 2 つ目のモデルよりもパフォーマンスが優れていることがわかります。1 つ目のモデルが予測した内容を確認するには、[Score Model] (モデルのスコア付け) の出力ポートをクリックし、[Visualize] (視覚化) をクリックします。![スコア結果を視覚化する][12]
 
 テスト データセットに追加された 2 つの列が表示されます。
 
@@ -132,9 +132,9 @@ FROM [dbo].[vTargetMail]
 <!--Article references-->
 [Azure Machine Learning studio]: https://studio.azureml.net/
 [Microsoft Azure での機械学習の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
-[サンプル データを手動で読み込む]: sql-data-warehouse-get-started-manually-load-samples.md
+[サンプル データを手動で読み込む]: sql-data-warehouse-get-started-load-sample-databases.md
 [SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 [Power BI]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
 [Azure Machine Learning]: ./sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

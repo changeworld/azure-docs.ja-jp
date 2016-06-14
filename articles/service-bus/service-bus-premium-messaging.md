@@ -56,6 +56,6 @@ Service Bus メッセージングの詳細については、次のトピック�
 - [Azure Service Bus Premium メッセージングの概要(Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 - [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 - [Azure Service Bus アーキテクチャの概要](service-bus-fundamentals-hybrid-solutions.md)
-- [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
+- [Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -37,7 +37,7 @@ CLI から、Azure コマンド ライン インターフェイスを使用し�
 
 [Azure ポータル](https://portal.azure.com)のグラフィカル ユーザー インターフェイスを使用すると VM を手軽に試すことができます。ご利用のシステムには何もインストールする必要がないので、特に Azure を初めて使用する場合には有利な方法です。Azure ポータルを使用して VM を作成する方法については、以下のページを参照してください。
 
-* [Linux を実行する仮想マシンを Azure ポータルを使用して作成する](virtual-machines-linux-portal-create.md) 
+* [Linux を実行する仮想マシンを Azure ポータルを使用して作成する](virtual-machines-linux-quick-create-portal.md) 
 
 ## オペレーティング システムとイメージの選択肢
 
@@ -59,10 +59,10 @@ CLI から、Azure コマンド ライン インターフェイスを使用し�
 
 ## 次のステップ
 
-* いずれかのチュートリアルを読んで、[ポータル](virtual-machines-linux-portal-create.md)、[CLI](virtual-machines-linux-quick-create-cli.md)、Azure Resource Manager [テンプレート](virtual-machines-linux-cli-deploy-templates.md)のいずれかの方法で Linux VM を作成してみましょう。
+* いずれかのチュートリアルを読んで、[ポータル](virtual-machines-linux-quick-create-portal.md)、[CLI](virtual-machines-linux-quick-create-cli.md)、Azure Resource Manager [テンプレート](virtual-machines-linux-cli-deploy-templates.md)のいずれかの方法で Linux VM を作成してみましょう。
 
 * Linux VM の作成後、簡単に[データ ディスクを追加](virtual-machines-linux-add-disk.md)できます。
 
 * [パスワードや SSH キーをリセットしたりユーザーを管理したりするための手順](virtual-machines-linux-using-vmaccess-extension.md)を参照します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

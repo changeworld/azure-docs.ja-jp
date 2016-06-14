@@ -1,6 +1,6 @@
 <properties
-	pageTitle="ストレージ エクスプローラー (プレビュー) を使用した Azure ストレージ リソースの管理 | Microsoft Azure"
-	description="Microsoft Azure ストレージ エクスプローラー (プレビュー) を使用して Azure ストレージ リソースを作成して管理する方法について説明します。"
+	pageTitle="ストレージ エクスプローラー (プレビュー) の概要 | Microsoft Azure"
+	description="ストレージ エクスプローラー (プレビュー) を使用した Azure ストレージ リソースの管理"
 	services="visual-studio-online"
 	documentationCenter="na"
 	authors="TomArcher"
@@ -10,176 +10,284 @@
  <tags
 	ms.service="visual-studio-online"
 	ms.devlang="multiple"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="05/08/2016"
+	ms.date="06/05/2016"
 	ms.author="tarcher" />
 
-# ストレージ エクスプローラー (プレビュー) を使用した Azure ストレージ リソースの管理
+# ストレージ エクスプローラー (プレビュー) の概要
 
-Microsoft Azure ストレージ エクスプローラー (プレビュー) は、Azure ストレージ アカウントを簡単に管理できるスタンドアロン ツールです。Visual Studio でアプリを開発しているときなど、Azure ポータルの外部からストレージをスピーディに管理したい場合に便利です。このプレビュー版では、Blob Storage を簡単に操作できます。コンテナーの作成と削除、BLOB のアップロード、ダウンロード、および削除、すべてのコンテナーと BLOB に対する検索を実行できます。高度な機能では、開発者や運用担当者が SAS キーとポリシーを操作できます。Windows 開発者は、Azure ストレージ エミュレーターを使用して、ローカル開発ストレージ アカウントを用いたコード テストを実行することもできます。
+## 概要 
 
-ストレージ エクスプローラーでストレージ リソースの表示や管理を実行するには、サブスクリプションと外部ストレージ アカウントのいずれかで Azure ストレージ アカウントにアクセスできる必要があります。ストレージ アカウントをお持ちでない場合は、数分でアカウントを作成できます。MSDN サブスクリプションをお持ちの場合は、[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)に関するページをご覧ください。お持ちでない場合は、[1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
+Microsoft Azure ストレージ エクスプローラー (プレビュー) は、Windows、OSX、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。この記事では、Azure ストレージ アカウントへの接続と管理に関するさまざまな方法を紹介します。
 
-## Azure アカウントと Azure サブスクリプションの管理
+## 前提条件
 
-ストレージ エクスプローラーで Azure ストレージ リソースを表示するには、1 つ以上の有効なサブスクリプションを持つ Azure アカウントにログインする必要があります。複数の Azure アカウントがある場合は、ストレージ エクスプローラーでそれらのアカウントを追加し、ストレージ エクスプローラーのリソース ビューで追加するサブスクリプションを選択します。これまでに Azure を使用したことがない場合、または必要なアカウントを Visual Studio に追加していない場合は、Azure アカウントにログインするように求められます。
+- [ストレージ エクスプローラー (プレビュー) をダウンロードしてインストールする](http://go.microsoft.com/fwlink/?LinkId=708343)
 
-### Azure アカウントをストレージ エクスプローラーに追加する
+## ストレージ アカウントまたはサービスに接続する
 
-1.	ストレージ エクスプローラーのツール バーの **[設定]** (歯車) アイコンを選択します。
-1.	**[アカウントの追加]** リンクを選択します。参照するストレージ リソースを所有する Azure アカウントにログインします。ここで追加したアカウントは、アカウントを選択するドロップダウン リストで選択する必要があります。選択したアカウントのすべてのサブスクリプションが、アカウント項目の下に表示されます。
+ストレージ エクスプローラー (プレビュー) には、ストレージ アカウントへの多数の接続方法が用意されています。たとえば、Azure サブスクリプションに関連付けられているストレージ アカウントへの接続、他の Azure サブスクリプションから共有されているストレージ アカウントおよびサービスへの接続、Azure ストレージ エミュレーターを使ったローカル ストレージへの接続と管理などです。
+
+- [Azure サブスクリプションに接続する](#connect-to-an-azure-subscription) - Azure サブスクリプションに属するストレージ リソースを管理します。
+- [ローカル ストレージに接続する](#connect-to-local-storage) - Azure ストレージ エミュレーターを使ってローカル ストレージを管理します。 
+- [外部ストレージにアタッチする](#attach-or-detach-an-external-storage-account) - ストレージ アカウントのアカウント名とキーを使って、別の Azure サブスクリプションに属するストレージ リソースを管理します。
+- [SAS を使ってアカウントをアタッチする](#attach-account-using-sas) - SAS を使って、別の Azure サブスクリプションに属するストレージ リソースを管理します。
+- [SAS を使ってサービスをアタッチする](#attach-service-using-sas) - SAS を使って、別の Azure サブスクリプションに属する特定のストレージ サービス (BLOB コンテナー、キュー、またはテーブル) を管理します。
+
+## Azure サブスクリプションに接続する
+
+> [AZURE.NOTE] Azure アカウントを持っていない場合は、[無料試用版にサインアップする](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)か、[Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
+
+1. ストレージ エクスプローラー (プレビュー) を起動します。 
+
+1. ストレージ エクスプローラー (プレビュー) を初めて実行する場合や、これまでにストレージ エクスプローラー (プレビュー) を実行したことはあっても Azure アカウントに接続したことがない場合は、Azure アカウントに接続するための情報バーが表示されます。
 
 	![][0]
+	
+1. **[Microsoft Azure への接続]** を選択し、ダイアログに従って、少なくとも 1 つのアクティブな Azure サブスクリプションと関連付けられている Microsoft アカウントでサインインします。
 
-1.	参照するアカウントのサブスクリプションのチェック ボックスをオンにし、**[適用]** をクリックします。
+Microsoft アカウントで正常にサインインすると、ストレージ エクスプローラー (プレビュー) の左側のウィンドウに、すべてのストレージ アカウント (Microsoft アカウントに関連付けられているすべての Azure サブスクリプションに関連付けられているもの) が表示されます。
+
+### Azure サブスクリプションをフィルター処理する
+
+ストレージ エクスプローラー (プレビュー) では、サインインしている Microsoft アカウントに関連付けられている Azure サブスクリプションをフィルター処理し、左側のウィンドウに表示されるストレージ アカウントを絞り込むことができます。
+
+1. **[設定]** (歯車) アイコンを選択します。
 
 	![][1]
 
-	選択したサブスクリプションの Azure ストレージ リソースがストレージ エクスプローラーに表示されます。
-
-### 外部ストレージをアタッチする
-
-1. アタッチするストレージ アカウントのアカウント名とキーを取得します。
-	1.	[Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で、アタッチするストレージ アカウントを選択します。
-	1.	**[設定]** ウィンドウの **[管理]** セクションで、**[キー]** をクリックします。
-	1.	**[ストレージ アカウント名]** と **[プライマリ アクセス キー]** の値をコピーします。
-
-		![][2]
-
-1.	ストレージ エクスプローラーの **[ストレージ アカウント]** ノードでショートカット メニューの **[外部ストレージのアタッチ]** クリックします。
+1. 	左側のウィンドウの上部に、サインインしたすべての Microsoft アカウントが含まれたドロップダウン リストが表示されます。
 
 	![][3]
-
-1. **[アカウント名]** ボックスにストレージ アカウント名を入力し、**[アカウント キー]** ボックスにプライマリ アクセス キーを入力します。**[OK]** をクリックして続行します。
+	 
+1.	ドロップダウン リストの横にある下向き矢印を選択して、サインインしているすべての Microsoft アカウントのほか、Microsoft アカウントを追加するための (さらにサインインするための) リンクを表示します。
 
 	![][4]
 
-	外部ストレージが、ストレージ エクスプローラーに表示されます。
+1.	ドロップダウン リストで目的の Microsoft アカウントを選択します。
+
+1. 	左側のウィンドウに、選択した Microsoft アカウントに関連付けられているすべての Azure サブスクリプションが表示されます。各 Azure サブスクリプションの左側にあるチェック ボックスでは、その Azure サブスクリプションに関連付けられているすべてのストレージ アカウントをストレージ エクスプローラー (プレビュー) に一覧表示するかどうかを指定することができます。**[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure サブスクリプションがすべて選択された状態と、1 つも選択されていない状態とを切り替えることができます。
+
+	![][2]
+
+1.	管理する Azure サブスクリプションを選択し終えたら、**[適用]** を選択します。左側のウィンドウが更新され、現在の Microsoft アカウントに対して選択された各 Azure サブスクリプションに関連付けられているすべてのストレージ アカウントが一覧表示されます。
+
+### Microsoft アカウントを追加する
+
+次の手順では、新たに別の Microsoft アカウントに接続して、各アカウントの Azure サブスクリプションとストレージ アカウントを表示します。
+
+1.	**[設定]** (歯車) アイコンを選択します。
+
+	![][1]
+
+1. 	左側のウィンドウの上部に、現在選択されているすべての Microsoft アカウントが含まれたドロップダウン リストが表示されます。
+
+	![][3]
+	 
+1.	ドロップダウン リストの横にある下向き矢印を選択して、サインインしているすべての Microsoft アカウントのほか、Microsoft アカウントを追加するための (さらにサインインするための) リンクを表示します。
+
+	![][4]
+
+1.	**[アカウントの追加]** を選択し、ダイアログに従って、少なくとも 1 つのアクティブな Azure サブスクリプションに関連付けられているアカウントにサインインします。
+
+1.	参照する Azure サブスクリプションのチェック ボックスをオンにします。
+
+	![][2]
+
+1.	**[適用]** を選択します。
+
+### Microsoft アカウントを切り替える
+
+複数の Microsoft アカウントに接続できる場合、左側のウィンドウには、1 つの (現在の) Microsoft アカウントのサブスクリプションに関連付けられているストレージ アカウントのみが表示されます。複数の Microsoft アカウントに接続する場合は、次の手順を実行してアカウントを切り替えることができます。
+
+1.	**[設定]** (歯車) アイコンを選択します。
+
+	![][1]
+
+1. 	左側のウィンドウの上部に、現在選択されているすべての Microsoft アカウントが含まれたドロップダウン リストが表示されます。
+
+	![][3]
+	 
+1.	ドロップダウン リストの横にある下向き矢印を選択して、サインインしているすべての Microsoft アカウントのほか、Microsoft アカウントを追加するための (さらにサインインするための) リンクを表示します。
+
+	![][4]
+
+1.	目的の Microsoft アカウントを選択します。
+
+1.	参照する Azure サブスクリプションのチェック ボックスをオンにします。
+
+	![][2]
+
+1.	**[適用]** を選択します。
+  
+## ローカル ストレージに接続する
+
+ストレージ エクスプローラー (プレビュー) では、Azure ストレージ エミュレーターを使ってローカル ストレージを操作することができます。そのため、Azure にデプロイされたストレージ アカウントがなくても、ストレージ関連のコードを記述したり、ストレージをテストしたりできます (ストレージ アカウントが Azure ストレージ エミュレーターによってエミュレートされるため)。
+
+>[AZURE.NOTE] 現時点では、Azure ストレージ エミュレーターは Windows に対してのみサポートされています。
+
+1. ストレージ エクスプローラー (プレビュー) を起動します。 
+
+1. 左側のウィンドウで **[(開発)]** ノードを展開します。
+
+	![][21]
+
+1. Azure ストレージ エミュレーターをインストールしていない場合は、情報バーを使用してインストールするよう求められます。情報バーが表示されている場合は、**[最新バージョンのダウンロード]** を選択し、エミュレーターをインストールします。
+
+	![][22]
+
+1. エミュレーターがインストールされたら、ローカルの BLOB、キュー、テーブルを作成および操作できるようになります。それぞれの種類のストレージ アカウントを操作する方法については、以下の該当するリンクを選択して確認してください。
+
+	- [Azure Blob Storage リソースの管理](./vs-azure-tools-storage-explorer-blobs.md)
+	- Azure Queue Storage リソースの管理 - *近日公開予定*
+	- Azure Table Storage リソースの管理 - *近日公開予定*
+
+## 外部ストレージ アカウントをアタッチまたはデタッチする
+
+ストレージ エクスプローラー (プレビュー) には、ストレージ アカウントを簡単に共有できるように、外部ストレージ アカウントにアタッチする機能が用意されています。このセクションでは、外部ストレージ アカウントにアタッチ (または外部ストレージ アカウントからデタッチ) する方法について説明します。
+
+### ストレージ アカウントの資格情報を取得する
+
+外部ストレージ アカウントを共有するには、まずそのアカウントの所有者がアカウントの資格情報 (アカウント名とキー) を取得し、その情報を、その (外部) アカウントへのアタッチを望んでいるユーザーと共有する必要があります。ストレージ アカウントの資格情報は、Azure ポータルを使って次の手順で取得できます。
+
+1.	[Azure ポータル](https://portal.azure.com)にサインインします。
+1.	**[参照]** を選択します。
+1.	**[ストレージ アカウント]** を選択します。
+1.	**[ストレージ アカウント]** ブレードで目的のストレージ アカウントを選択します。
+1.	選択したストレージ アカウントの **[設定]** ブレードで、**[アクセス キー]** を選択します。
 
 	![][5]
-
-1. 外部ストレージを削除するには、外部ストレージのショートカット メニューの [デタッチ] をクリックします。
+	
+1.	**[アクセス キー]** ブレードで、ストレージ アカウントにアタッチするときに使用する**ストレージ アカウント名**と**キー 1** の値をコピーします。
 
 	![][6]
 
-## ストレージ リソースの表示と移動
+### 外部ストレージ アカウントにアタッチする
 
-ストレージ エクスプローラーで Azure ストレージ リソースに移動してその情報を表示するには、ストレージの種類を展開して、リソースを選択します。ストレージ エクスプローラーの下部にある **[アクション]** タブと **[プロパティ]** タブに、選択したリソースに関する情報が表示されます。
+1.	ストレージ エクスプローラー (プレビュー) で、**[ストレージ アカウント]** を右クリックし、コンテキスト メニューの **[外部ストレージのアタッチ]** を選択します。
 
-![][7]
+	![][7]
+	
+1.	セクション「*ストレージ アカウントの資格情報を取得する*」に、ストレージ アカウント名とキー 1 の値を取得する方法が記載されています。これらの値はこの手順で使います。**[外部ストレージのアタッチ]** ダイアログで、**[アカウント名]** ボックスにストレージ アカウント名を入力し、**[アカウント キー]** ボックスにキー 1 の値を入力します。完了したら、**[OK]** を選択します。
 
--	**[アクション]** タブには、選択したストレージ リソースに対してストレージ エクスプローラーで実行できるアクション (開く、コピー、削除など) が表示されます。アクションは、リソースのショートカット メニューにも表示されます。
+	![][8]
 
--	**[プロパティ]** タブには、ストレージ リソースのプロパティ (種類、ロケール、関連付けられているリソース グループ、URL など) が表示されます。
+	アタッチされると、ストレージ アカウント名に "**(外部)**" というテキストが追加された状態で外部ストレージ アカウントが表示されます。
 
-すべてのストレージ アカウントには、**[ポータルから開く]** というアクションがあります。このアクションを選択すると、ストレージ エクスプローラーで選択したストレージ アカウントが、Azure プレビュー ポータルで表示されます。
+	![][9]
 
-その他のアクションとプロパティの値も、選択したリソースに基づいて表示されます。たとえば、BLOB コンテナー、キュー、テーブルのノードには、いずれも **[作成]** アクションがあります。各項目 (BLOB コンテナーなど) には、**[開く]**、**[削除]**、**[Shared Access Signature の取得]** などのアクションがあります。BLOB エディターを開くアクションは、ストレージ アカウント BLOB を選択すると表示されます。
+### 外部ストレージ アカウントからデタッチする
 
-## ストレージ アカウントと BLOB コンテナーの検索
-
-Azure アカウントのサブスクリプションで特定の名前のストレージ アカウントや BLOB コンテナーを検索するには、ストレージ エクスプローラーの **[検索]** ボックスに名前を入力します。
-
-![][8]
-
-**[検索]** ボックスに文字を入力すると、その文字に一致するストレージ アカウントや BLOB コンテナーのみがリソース ツリーに表示されます。検索をクリアするには、**[検索]** ボックスの **[x]** ボタンをクリックします。
-
-## ストレージ アカウントの編集
-
-ストレージ アカウントの内容を追加または変更するには、そのストレージの種類の **[エディターを開く]** をクリックします。選択した項目のショートカット メニューか、ストレージ エクスプローラーの下部にある **[アクション]** タブで、アクションを選択します。
-
-![][9]
-
-BLOB コンテナー、キュー、テーブルの作成と削除を実行できます。**[BLOB コンテナー エディターを開く]** アクションを選択して、ストレージ エクスプローラー内で BLOB を編集することもできます。
-
-### BLOB コンテナーを削除する
-
-1.	**[BLOB コンテナー エディターを開く]** アクションを選択します。BLOB コンテナー エディターが右側のペインに表示されます。
+1. 	デタッチする外部ストレージ アカウントを右クリックし、コンテキスト メニューの **[デタッチ]** を選択します。
 
 	![][10]
 
-1.	**[アップロード]** をクリックし、**[ファイルのアップロード]** をクリックします。
-
-	![][11]
-
-	アップロードする複数のファイルが 1 つのフォルダー内にある場合は、[フォルダーのアップロード] を使用できます。
-
-1. **[ファイルのアップロード]** ダイアログ ボックスで、[ファイル] ボックスの右側にある省略記号 (**[...]**) をクリックし、アップロードするファイルを選択します。次に、アップロードする BLOB の種類 (ブロック、ページ、または追加) を選択します。必要に応じて、BLOB コンテナー内のフォルダーにファイルをアップロードすることもできます。**[フォルダーへのアップロード (省略可能)]** ボックスにフォルダーの名前を入力します。フォルダーが存在しない場合は、作成されます。
+1.	確認のメッセージ ボックスが表示されたら、**[はい]** を選択して外部ストレージ アカウントからのデタッチを確定します。
 
 	![][12]
 
-	次のスクリーンショットでは、3 つのイメージ ファイルが、**[イメージ]** BLOB コンテナー内の **My New Files** という新しいフォルダーにアップロードされています。
+## SAS を使ってアカウントをアタッチする
+
+Azure サブスクリプションの管理者は、SAS (Shared Access Signature) を使うことで、Azure サブスクリプションの資格情報を提供しなくてもストレージ アカウントへのアクセスを一時的に許可できます。
+
+これをわかりやすく説明するために、Azure サブスクリプションの管理者である UserA が UserB に特定のアクセス許可を付与し、一時的にストレージ アカウントへのアクセスを許可する場面を考えてみます。
+
+1. UserA は、目的のアクセス許可と一定の期間が設定された SAS (ストレージ アカウントへの接続文字列で構成) を生成します。
+1. UserA は、ストレージ アカウントへのアクセスを希望しているユーザー (この例では UserB) と SAS を共有します。  
+1. UserB は、ストレージ エクスプローラー (プレビュー) で、提供された SAS を使って UserA に属するアカウントにアタッチします。 
+
+### 共有するアカウント用の SAS を取得する
+
+1.	ストレージ エクスプローラー (プレビュー) を起動します。
+1.	左側のウィンドウで、共有するストレージ アカウントを右クリックし、コンテキスト メニューの **[Get Shared Access Signature (Shared Access Signature の取得)]** を選択します。
 
 	![][13]
 
-	BLOB エディターのツール バーのボタンを使用して、ファイルの選択、ダウンロード、開く、コピー、削除などの操作を実行できます。ダイアログ ボックスの下部にある **[アクティビティ]** ペインには、操作が成功したかどうかが表示され、成功したアクティビティのみをビューから削除したり、ペインの表示内容をすべてクリアしたりすることができます。アップロードしたファイルの横にある **[+]** アイコンをクリックすると、アップロードしたファイルの詳細な一覧が表示されます。
-
-## Shared Access Signature (SAS) の作成
-
-一部の操作では、ストレージ リソースにアクセスするために SAS が必要になることがあります。SAS はストレージ エクスプローラーを使用して作成できます。
-
-1.	SAS を作成する項目を選択し、**[アクション]** ペインまたは項目のショートカット メニューで **[Shared Access Signature の取得]** をクリックします。
+1. **[Shared Access Signature]** ダイアログで、アカウントに対して期間とアクセス許可を指定し、**[作成]** を選択します。
 
 	![][14]
+ 
+1. 2 つ目の **[Shared Access Signature]** ダイアログが表示され、SAS が示されます。**[接続文字列]** の横にある **[コピー]** を選択してクリップボードにコピーします。**[閉じる]** を選択してダイアログを閉じます。
 
-1.	**[Shared Access Signature]** ダイアログ ボックスで、ポリシー、開始日と終了日、タイム ゾーンを選択します。また、読み取り専用、読み取り/書き込みなど、リソースに必要なアクセス レベルのチェック ボックスをオンにします。完了したら、**[作成]** をクリックして SAS を作成します。
+### SAS を使って共有アカウントにアタッチする
 
-	![][15]
+1.	ストレージ エクスプローラー (プレビュー) を起動します。
+1.	左側のウィンドウで **[ストレージ アカウント]** を右クリックし、コンテキスト メニューの **[Attach Account using SAS (SAS を使用してアカウントをアタッチ)]** を選択します。![][15]
 
-1.	**[Shared Access Signature]** ダイアログ ボックスに、コンテナーと共に、ストレージ リソースへのアクセスに使用できる URL とクエリ文字列が一覧表示されます。**[コピー]** をクリックして、文字列をコピーします。
+1. **[Attach account using SAS (SAS を使用してアカウントをアタッチ)]** ダイアログで以下の操作を行います。
 
+	- **アカウント名** - このアカウントに関連付ける名前を入力します。**注:** このアカウント名は、SAS が生成された元のストレージ アカウント名と一致していなくてもかまいません。 
+ 	- **接続文字列** - 先ほどコピーした接続文字列を貼り付けます。
+ 	- 完了したら、**[OK]** を選択します。
+	
 	![][16]
 
-## SAS とアクセス許可の管理
+アタッチされると、指定したアカウント名に "(SAS)" というテキストが追加された状態でストレージ アカウントが表示されます。
 
-BLOB コンテナーへのアクセスを制御するには、**[アクセス制御リストの管理]** と **[パブリック アクセス レベルの設定]** を使用します。
+![][17]
 
--	[アクセス制御リストの管理] を使用すると、選択した BLOB コンテナーに対するアクセス ポリシー (ユーザーに読み取りや書き込みなどを許可するかどうか) の追加、編集、削除を実行できます。
--	[パブリック アクセス レベルの設定] を使用すると、パブリック ユーザーにリソースへのアクセスをどの程度許可するかを決定できます。  
+## SAS を使ってサービスをアタッチする
 
--
+セクション「[SAS を使ってアカウントをアタッチする](#attach-account-using-sas)」では、Azure サブスクリプションの管理者がストレージ アカウントの SAS を生成 (および共有) してストレージ アカウントへの一時的なアクセスを許可する方法が示されています。同様に、SAS は、ストレージ アカウント内の特定のサービス (BLOB コンテナー、キュー、またはテーブル) に対して生成できます。
 
-1.	BLOB コンテナーを選択し、ショートカット メニューまたは **[アクション]** ペインで **[アクセス制御リストの管理]** をクリックします。
+### 共有するサービスの SAS を生成する
 
-	![][17]
+この場合のサービスは、BLOB、コンテナー、キュー、またはテーブルです。次のセクションで、一覧にあるサービスの SAS を生成する方法を説明します。
 
-1.	**[アクセス制御リスト]** ダイアログ ボックスで、**[追加]** をクリックし、アクセス ポリシーを追加します。アクセス ポリシーを選択し、必要なアクセス許可を選択します。終了したら、**[保存]** をクリックします。
+- [BLOB コンテナーの SAS を取得する](./vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
+- キューの SAS を取得する - *近日公開予定*
+- テーブルの SAS を取得する - *近日公開予定*
 
-	![][18]
+### SAS を使って共有アカウント サービスにアタッチする
 
-1.	BLOB コンテナーのアクセス レベルを設定するには、ストレージ エクスプローラーで BLOB コンテナーを選択し、ショートカット メニューまたは **[アクション]** ペインで **[パブリック アクセス レベルの設定]** をクリックします。
+1.	ストレージ エクスプローラー (プレビュー) を起動します。
+1.	左側のウィンドウで **[ストレージ アカウント]** を右クリックし、コンテキスト メニューの **[Attach Service using SAS (SAS を使用してサービスをアタッチ)]** を選択します。![][18]
+
+1. **[Attach Account using SAS (SAS を使用してアカウントをアタッチ)]** ダイアログで、先ほどコピーした SAS URI を貼り付け、**[OK]** を選択します。
 
 	![][19]
 
-1.	**[コンテナーのパブリック アクセス レベルの設定]** ダイアログ ボックスで、パブリック ユーザーに許可するアクセス レベルに対応するオプション ボタンを選択し、**[適用]** をクリックします。
+アタッチされると、新たにアタッチされたサービスが **[(Service SAS) ((サービス SAS))]** ノードに表示されます。
 
-	![][20]
+![][20]
+
+## ストレージ アカウントを検索する
+
+多数のストレージ アカウントがある場合は、左側のウィンドウの上部にある検索ボックスを使用すると、特定のストレージ アカウントをすばやく見つけることができます。
+
+検索ボックスへの入力中、左側のウィンドウには、その時点で入力してある検索の値に一致するストレージ アカウントのみが表示されます。次のスクリーンショットは、ストレージ アカウント名に "tarcher" というテキストが含まれるすべてのストレージ アカウントを検索したときの例です。
+
+![][11]
+	
+検索をクリアするには、検索ボックスの **[x]** ボタンを選択します。
 
 ## 次のステップ
-「[Microsoft Azure Storage の概要](./storage/storage-introduction.md)」の記事を読んで、Azure Storage サービスの機能をご確認ください。
+- [ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理](./vs-azure-tools-storage-explorer-blobs.md)
 
-[0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AddAccount1c.png
-[1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AddAccount2c.png
-[2]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/External1c.png
-[3]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/External2c.png
-[4]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/External3c.png
-[5]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/External4c.png
-[6]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/External5c.png
-[7]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Navigatec.png
-[8]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Searchc.png
-[9]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Edit1c.png
-[10]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Edit2c.png
-[11]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Edit3c.png
-[12]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Edit4c.png
-[13]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Edit5c.png
-[14]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/SAS1c.png
-[15]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/SAS2c.png
-[16]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/SAS3c.png
-[17]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS1c.png
-[18]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS2c.png
-[19]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS3c.png
-[20]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS4c.png
+[0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure.png
+[1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/settings-gear.png
+[2]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/filter-subscriptions.png
+[3]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/filter-accounts.png
+[4]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/accounts-drop-down.png
+[5]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/access-keys.png
+[6]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/access-keys-copy.png
+[7]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-external-storage.png
+[8]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-external-storage-dlg.png
+[9]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/external-storage-account.png
+[10]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/detach-external-storage.png
+[11]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/storage-account-search.png
+[12]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/detach-external-storage-confirmation.png
+[13]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/get-sas-context-menu.png
+[14]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/get-sas-dlg1.png
+[15]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-account-using-sas-context-menu.png
+[16]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-account-using-sas-dlg.png
+[17]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-account-using-sas-finished.png
+[18]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-service-using-sas-context-menu.png
+[19]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-service-using-sas-dlg.png
+[20]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-service-using-sas-finished.png
+[21]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/local-storage-drop-down.png
+[22]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/download-storage-emulator.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

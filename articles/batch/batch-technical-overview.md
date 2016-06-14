@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/20/2016"
+	ms.date="06/02/2016"
 	ms.author="marsma"/>
 
 # Azure Batch の基礎
@@ -69,7 +69,7 @@ Batch ソリューションを開発するとき、Microsoft Azure で次のア�
 | **Batch REST** | [MSDN][batch_rest] | 該当なし | [MSDN][batch_rest] |
 | **Batch .NET** | [MSDN][api_net] | [NuGet][api_net_nuget] | [GitHub][api_sample_net] |
 | **Batch Python** | [readthedocs.io][api_python] | [PyPI][api_python_pypi] |[GitHub][api_sample_python] |
-| **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - |
+| **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - | | **Batch Java** (プレビュー) | [github.io][api_java] | [Maven スナップショット リポジトリ][api_java_jar] | - |
 
 ### Batch リソース管理
 
@@ -130,6 +130,8 @@ Batch シナリオの例をご覧に入れました。次は、サービスに�
 - [Batch ラーニング パス][learning_path]では、Batch の使用方法を学習する際に利用できるリソースを確認できます。
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
+[api_java]: http://azure.github.io/azure-sdk-for-java/
+[api_java_jar]: http://adxsnapshots.azurewebsites.net/?dir=com%5cmicrosoft%5cazure%5cazure-batch
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_nuget]: https://www.nuget.org/packages/Azure.Batch/
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
@@ -153,4 +155,4 @@ Batch シナリオの例をご覧に入れました。次は、サービスに�
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

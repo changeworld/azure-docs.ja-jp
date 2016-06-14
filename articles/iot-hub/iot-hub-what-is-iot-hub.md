@@ -13,7 +13,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/29/2016"
+ ms.date="06/06/2016"
  ms.author="dobett"/>
 
 # Azure IoT Hub とは
@@ -70,7 +70,7 @@ Azure IoT Hub は、次の方法でデバイスの接続の課題に対処しま
 
 -   **クラウドからデバイスへの信頼性の高いメッセージング (または*コマンド*)。** ソリューション バック エンドでは、IoT Hub を使用して、最低 1 回の配信保証で個々のデバイスにメッセージを送信できます。各メッセージには個別の有効期限設定があり、バックエンドでは配信と有効期限の両方の受信通知を要求し、クラウドからデバイスへのメッセージのライフサイクルの完全な可視性を保証します。これにより、デバイス上で実行される操作を含むビジネス ロジックの実装が可能になります。
 
-また、IoT 固有の機能を IoT Hub で利用して、ファイルのアップロードやダウンロードなどの他の一般的なパターンを実装することもできます。そうした機能には、一貫性のあるデバイス ID 管理、接続の監視、スケールなどがあります。
+-   **クラウドへのファイルとキャッシュされたセンサー データのアップロード。** IoT Hub によって自動的に管理される SAS URI を使用して、デバイスから Azure Storage にファイルをアップロードできます。IoT Hub は、クラウドにファイルが届いたときに通知を生成して、バックエンドでそのファイルを処理できるようにします。
 
 ## ゲートウェイ
 
@@ -121,4 +121,4 @@ Azure IoT Hub の詳細については、次のリンクを参照してくださ
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

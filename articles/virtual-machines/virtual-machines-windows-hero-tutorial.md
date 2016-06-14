@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/05/2016"
+	ms.date="06/07/2016"
 	ms.author="cynthn"/>
 
 # Azure ポータルで初めての Windows 仮想マシンを作成する
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 2. VM にローカル アカウントを作成する際に使用する**ユーザー名**と強力な**パスワード**を入力します。VM へのログオンと VM の管理にはローカル アカウントを使用します。
 
-	パスワードは、8 ～ 123 文字で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字のうち、少なくとも 3 つを含める必要があります。
+	パスワードは、12 ～ 123 文字で指定する必要があります。また、少なくとも 1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字を含める必要があります。
 
 
 3. 既存の[リソース グループ](../resource-group-overview.md#resource-groups)を選択するか、新しいリソース グループの名前を入力します。Azure データセンターの**場所** (**米国西部**など) を入力します。
@@ -116,4 +116,4 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 * [Powershell を使用して Windows VM を作成する](virtual-machines-windows-ps-create.md)ことも、Azure CLI を使用して [Linux 仮想マシンを作成する](virtual-machines-linux-quick-create-cli.md)こともできます。
 
-<!------HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

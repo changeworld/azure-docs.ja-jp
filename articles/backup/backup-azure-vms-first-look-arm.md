@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure Backup を使用して ARM VM を保護する | Microsoft Azure"
-	description="Azure Backup サービスを使用して ARM VM を保護します。ARM VM と Premium Storage VM のバックアップを使用してデータを保護します。Recovery Services コンテナーを作成および登録します。Azure で VM の登録、ポリシーの作成、VM の保護を行います。"
+	pageTitle="Resource Manager でデプロイされた VM を Azure Backup を使用して保護する | Microsoft Azure"
+	description="Resource Manager でデプロイされた VM を Azure Backup サービスを使用して保護します。Resource Manager でデプロイされた VM と Premium Storage VM のバックアップを使用してデータを保護します。Recovery Services コンテナーを作成および登録します。Azure で VM の登録、ポリシーの作成、VM の保護を行います。"
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
-	manager="jwhit"
+	manager="cfreeman"
 	editor=""
 	keyword="backups; vm backup"/>
 
@@ -14,26 +14,26 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="03/31/2016"
+	ms.date="06/03/2016"
 	ms.author="markgal; jimpark"/>
 
 
-# 最初に: ARM VM の Recovery Services コンテナーへのバックアップ
+# 最初に: Resource Manager でデプロイされた VM の Recovery Services コンテナーへのバックアップ
 
 > [AZURE.SELECTOR]
-- [ARM VM のバックアップ](backup-azure-vms-first-look-arm.md)
+- [Resource Manager でデプロイされた VM をバックアップする](backup-azure-vms-first-look-arm.md)
 - [クラシック モード VM のバックアップ](backup-azure-vms-first-look.md)
 
 このチュートリアルでは、Recovery Services コンテナーの作成と Azure 仮想マシン (VM) のバックアップの手順について説明します。Recovery Services コンテナーの保護:
 
-- Azure Resource Manager (ARM) VM
+- Azure Resource Manager でデプロイされた VM
 - クラシック VM
 - Standard Storage VM
 - Premium Storage VM
 
 Premium Storage VM の保護の詳細については、[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#back-up-and-restore-premium-storage-vms)のセクションを参照してください。
 
->[AZURE.NOTE] このチュートリアルでは、既に Azure サブスクリプション内に VM があることと、バックアップ サービスが VM にアクセスできるようにしてあることを前提としています。Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager デプロイ モデルとクラシック デプロイ モデル](../resource-manager-deployment-model.md)です。この記事は、Resource Manager と ARM ベースの VM を使用するためのものです。
+>[AZURE.NOTE] このチュートリアルでは、既に Azure サブスクリプション内に VM があることと、バックアップ サービスが VM にアクセスできるようにしてあることを前提としています。Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。この記事は、Resource Manager と Resource Manager でデプロイされた VM を使用するためのものです。
 
 手順の概要は次のとおりです。
 
@@ -189,35 +189,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     バックアップ ジョブが完了すると、状態は *[完了]* になります。
 
-## バックアップ ポリシーの定義
-
-バックアップ ポリシーは、データのスナップショットをいつ取得し、それらのスナップショットをいつまで保持するかのマトリックスを定義します。VM をバックアップするためのポリシーを定義するときに、バックアップ ジョブを *1 日に 1 回*トリガーできます。新しいポリシーを作成すると、コンテナーに適用されます。バックアップ ポリシーのインターフェイスは、次のようになります。
-
-![Backup policy](./media/backup-azure-vms-first-look-arm/backup-policy-daily-raw.png)
-
-ポリシーを作成するには、次の手順に従います。
-
-1. **[ポリシー名]** でポリシーに名前を付けます。
-
-2. データのスナップショットは、毎日または毎週の間隔で取得できます。**[バックアップの頻度]** ボックスを使用して、データのスナップショットを毎日取得するか毎週取得するかを選択します。
-
-    - 間隔として毎日を選択する場合は、強調表示されているコントロールを使用して、スナップショットの時刻を選択します。時刻を変更するには、時刻の選択を解除し、新しい時刻を選択します。
-
-    ![Daily backup policy](./media/backup-azure-vms-first-look-arm/backup-policy-daily.png) <br/>
-
-    - 間隔として毎週を選択する場合は、強調表示されているコントロールを使用して、スナップショットを取得する曜日と時刻を選択します。曜日のメニューでは、1 つ以上の曜日を選択します。時刻のメニューでは、1 つの時刻を選択します。時刻を変更するには、時刻の選択を解除し、新しい時刻を選択します。
-
-    ![Weekly backup policy](./media/backup-azure-vms-first-look-arm/backup-policy-weekly.png)
-
-3. 既定では、すべての **[リテンション期間]** オプションが選択されています。使用しない保持期間のチェック ボックスをオフにします。
-
-    >[AZURE.NOTE] VM を保護する場合、バックアップ ジョブは 1 日に 1 回実行されます。バックアップが実行される時刻は、どの保持期間でも同じです。
-
-    対応するコントロールで、使用する間隔を指定します。月および年単位の保持期間では、週単位または日単位の増分に基づいてスナップショットを指定できます。
-
-4. ポリシーのすべてのオプションを設定したら、ブレードの下部にある **[OK]** をクリックします。
-
-    Recovery Services コンテナーの設定が完了した後、新しいポリシーがコンテナーに適用されるように設定されます。「[シナリオの選択、ポリシーの設定、保護する項目の定義を行う](backup-azure-vms-first-look-arm.md#step-2---select-scenario-set-policy-and-define-items-to-protect)」セクションの手順 6. に戻ります。
+[AZURE.INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
 ## 仮想マシンに VM エージェントをインストールする
 
@@ -230,7 +202,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
 | VM エージェントのインストール | <li>[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。インストールを実行するには、管理者特権が必要です。<li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。 | <li>GitHub から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent)をインストールします。インストールを実行するには、管理者特権が必要です。<li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。 |
-| VM エージェントの更新 | VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 | [Linux VM エージェントの更新](../virtual-machines-linux-update-agent.md)に関する手順に従います。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
+| VM エージェントの更新 | VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 | [Linux VM エージェントの更新](../virtual-machines-linux-update-agent.md)に関する手順に従ってください。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
 | VM エージェントのインストールの検証 | <li>Azure VM で *C:\\WindowsAzure\\Packages* フォルダーに移動します。<li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして、**[プロパティ]** をクリックした後、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。 | 該当なし |
 
 
@@ -247,4 +219,4 @@ VM エージェントが仮想マシンにインストールされると、Azure
 ## 疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -45,12 +45,10 @@ Mobile Engagement はアプリ内メッセージング機能を提供し、Googl
 
 ###次のステップ:
 
-[Azure Mobile Engagement アプリケーションの作成](mobile-engagement-create.md)
-
 [Mobile Engagement を作成するためのベスト プラクティスとプロセス](mobile-engagement-getting-started-best-practices.md)
 
-[概要チュートリアル (マーケティング担当者)](mobile-engagement-define-your-mobile-engagement-strategy.md)
+[作業の開始](/documentation/services/mobile-engagement/)
 
-[概要チュートリアル (開発者)](/documentation/services/mobile-engagement/)
+[ソース コード付きのデモ アプリのダウンロード](https://aka.ms/azmedemoapps)
 
-<!---HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0608_2016-->

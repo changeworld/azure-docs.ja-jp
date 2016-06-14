@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/24/2016"
+	ms.date="06/06/2016"
 	ms.author="casoper"/>
 
 # Azure Content Delivery Network (CDN) の概要
@@ -56,6 +56,7 @@ Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standa
 | HTTPS のサポート | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | 負荷分散 | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | DDOS 保護 | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| IPv4/IPv6 デュアルスタック | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | [カスタム ドメイン名のサポート](cdn-map-content-to-custom-domain.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | [クエリ文字列のキャッシュ](cdn-query-string.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | [国のフィルタリング](cdn-restrict-access-by-country.md) | | **&#x2713;** | **&#x2713;** |
@@ -78,4 +79,6 @@ CDN の概要については、「[Azure CDN の使用](./cdn-create-new-endpoin
 
 料金情報については、[CDN の料金](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+Azure CDN に搭載してほしい機能がありましたら、 [ぜひご意見をお聞かせください](https://feedback.azure.com/forums/169397-cdn)。
+
+<!---HONumber=AcomDC_0608_2016-->
