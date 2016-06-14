@@ -497,7 +497,12 @@ Azure Data Factory とその他のクラウド サービスとのゲートウェ
 
 | ドメイン名 | ポート | 説明 |
 | ------ | --------- | ------------ |
-| **.servicebus.windows.net | 443, 80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | | *.servicebus.windows.net | 9350-9354, 5671 | TCP 経由での任意の Service Bus Relay| | *.core.windows.net | 443 | HTTPS | | *.clouddatahub.net | 443 | HTTPS | | graph.windows.net | 443 | HTTPS | | login.windows.net | 443 | HTTPS | 
+| *.servicebus.windows.net | 443, 80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | 
+| *.servicebus.windows.net | 9350-9354, 5671 | TCP 経由での任意の Service Bus Relay| 
+| *.core.windows.net | 443 | HTTPS | 
+| *.clouddatahub.net | 443 | HTTPS | 
+| graph.windows.net | 443 | HTTPS | 
+| login.windows.net | 443 | HTTPS | 
 
 Windows のファイアウォール レベルでは、通常これらの送信ポートが有効になっています。有効でない場合は、ゲートウェイ コンピューターに応じたドメインとポートを構成することができます。
 
