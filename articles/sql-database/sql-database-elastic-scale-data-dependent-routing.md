@@ -85,11 +85,11 @@
 
 **OpenConnectionForKey** メソッドは、正しいデータベースに対し、既に開いている接続を新たに返します。この方法で接続した場合も引き続き ADO.Net 接続プールの利点を最大限に活用できます。トランザクションと要求を満たすことができるのが 1 回に 1 つのシャードである限り、ADO.Net を既に使用しているアプリケーションで必要な変更はこれだけです。
 
-アプリケーションが ADO.Net との非同期プログラミングを使用する場合は、**[OpenConnectionForKeyAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)** メソッドも使用できます。その動作は、ADO.Net の [Connection.OpenAsync] (https://msdn.microsoft.com/library/hh223688(v=vs.110).aspx)**) メソッドと同等のデータ依存型ルーティングです。
+アプリケーションが ADO.Net との非同期プログラミングを使用する場合は、**[OpenConnectionForKeyAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)** メソッドも使用できます。その動作は、ADO.Net の **[Connection.OpenAsync](https://msdn.microsoft.com/library/hh223688(v=vs.110).aspx))** メソッドと同等のデータ依存型ルーティングです。
 
 ## 一時的な障害処理との統合 
 
-クラウドでのデータ アクセス アプリケーション開発のベスト プラクティスは、一時的な障害をアプリケーションで確実に捕捉し、エラーがスローされる前に操作を確実にリトライすることです。クラウド アプリケーションにおける一時的な障害処理の詳細については、一時的な障害処理に関するページ (https://msdn.microsoft.com/library/dn440719(v=pandp.60).aspx)) を参照してください。
+クラウドでのデータ アクセス アプリケーション開発のベスト プラクティスは、一時的な障害をアプリケーションで確実に捕捉し、エラーがスローされる前に操作を確実にリトライすることです。クラウド アプリケーションにおける一時的な障害処理の詳細については、[一時的な障害処理に関するページ](https://msdn.microsoft.com/library/dn440719(v=pandp.60).aspx)) を参照してください。
  
 一時的な障害処理は、データ依存ルーティングのパターンと自然に共存できます。そのための主な要件は、データ依存ルーティング接続を取得した **using** ブロックを含めたデータ アクセス要求全体をリトライすることです。上記の例は、次のように書き換えることができます (変更箇所が強調表示されています)。
 
