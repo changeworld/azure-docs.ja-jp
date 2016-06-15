@@ -29,21 +29,21 @@
 
 このチュートリアルを最後まで行うには、以下のものが必要です。
 
--として機能します。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-account/" target="_blank">[無料アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
--[Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)
--Azure 仮想マシン。マシンを停止して起動するので、運用環境のものは使用しないでください。
+-	として機能します。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-account/" target="_blank">[無料アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+-	[Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)
+-	Azure 仮想マシン。マシンを停止して起動するので、運用環境のものは使用しないでください。
 
 
 ## 手順 1 - 新しい Runbook を作成する
 
 最初に、*Hello World* というテキストを出力する簡単な Runbook を作成します。
 
-1.Azure ポータルで、Automation アカウントを開きます。  
-Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。既に資産がいくつかあります。これらのほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。[前提条件](#prerequisites)で説明されている資格情報資産も必要です。
-2.**[Runbook]** タイルをクリックして、Runbook の一覧を開きます。<br> ![Runbook の制御](media/automation-first-runbook-graphical/runbooks-control.png)
-3.**[Runbook の追加]** ボタンをクリックし、次に **[新しい Runbook の作成]** をクリックして、新しい Runbook を作成します
-4.Runbook の名前を *MyFirstRunbook-Graphical* に設定します。
-5.ここでは[グラフィカルな Runbook](automation-graphical-authoring-intro.md) を作成するため、**[Runbook の種類]** では **[グラフィカル]** を選択します。<br>![新しい Runbook](media/automation-first-runbook-graphical/create-new-runbook.png)<br>
+1.	Azure ポータルで、Automation アカウントを開きます。  
+	Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。既に資産がいくつかあります。これらのほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。[前提条件](#prerequisites)で説明されている資格情報資産も必要です。
+2.	**[Runbook]** タイルをクリックして、Runbook の一覧を開きます。<br> ![Runbook の制御](media/automation-first-runbook-graphical/runbooks-control.png)
+3.	**[Runbook の追加]** ボタンをクリックし、次に **[新しい Runbook の作成]** をクリックして、新しい Runbook を作成します
+4.	Runbook の名前を *MyFirstRunbook-Graphical* に設定します。
+5.	ここでは[グラフィカルな Runbook](automation-graphical-authoring-intro.md) を作成するため、**[Runbook の種類]** では **[グラフィカル]** を選択します。<br>![新しい Runbook](media/automation-first-runbook-graphical/create-new-runbook.png)<br>
 6.	**[作成]** をクリックして Runbook を作成し、グラフィカル エディターを開きます。
 
 ## 手順 2 - Runbook にアクティビティを追加する

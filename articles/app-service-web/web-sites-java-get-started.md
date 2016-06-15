@@ -121,11 +121,11 @@
 
 	![Web Mobile Jetty][webmobilejetty]
 
-6. 最初の **[Apache Tomcat]** ブレードまたは **[Jetty]** ブレードで、**[作成]** をクリックします。
+6. 最初の **[Apache Tomcat]** ブレードまたは **\[Jetty]** ブレードで、**[作成]** をクリックします。
 
 	![Jetty Portal Blade][jettyblade]
 
-7. 次の **[Apache Tomcat]** ブレードまたは **[Jetty]** ブレードで、**[Web アプリ]** ボックスに Web アプリの名前を入力します。
+7. 次の **[Apache Tomcat]** ブレードまたは **\[Jetty]** ブレードで、**[Web アプリ]** ボックスに Web アプリの名前を入力します。
 
 	Web アプリの URL は {name}.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
 
