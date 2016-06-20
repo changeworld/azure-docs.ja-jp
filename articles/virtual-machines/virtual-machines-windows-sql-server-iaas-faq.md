@@ -4,7 +4,7 @@
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="v-shysun"
-	manager="msmets"
+	manager="felixwu"
 	editor=""
 	tags="azure-service-management"/>
 
@@ -14,26 +14,28 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/27/2016"
+	ms.date="06/03/2016"
 	ms.author="v-shysun"/>
 
 # Azure Virtual Machines における SQL Server に関する FAQ
 
 このトピックでは、[Azure Virtual Machines における SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) に関して特に多く寄せられる質問への回答を示します。
 
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
 ## よく寄せられる質問
 
 1. **SQL Server で Azure 仮想マシンを作成するにはどうするのですか?**
 
-	2 つの方法があります。最も簡単な解決方法は、SQL Server を含む仮想マシンを作成することです。Azure にサインアップして、ポータルから SQL VM を作成するチュートリアルについては、「[Azure ポータルでの SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。VM に手動で SQL Server をインストールして、「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」によってオンプレミスのライセンスを再利用するオプションもあります。
+	2 つの方法があります。最も簡単な解決方法は、SQL Server を含む仮想マシンを作成することです。Azure にサインアップして、ポータルから SQL VM を作成するチュートリアルについては、「[Azure ポータルでの SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」をご覧ください。VM に手動で SQL Server をインストールして、「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」によってオンプレミスのライセンスを再利用するオプションもあります。
 
 1. **SQL VM と SQL Database サービスの違いは何ですか?**
 
-	概念上、Azure 仮想マシンで SQL Server を実行することは、リモート データ センターで SQL Server を実行することと違いません。これに対し、[SQL Database](../sql-database/sql-database-technical-overview.md) はサービスとしてデータベースを提供します。SQL Database では、データベースをホストするマシンにアクセスできません。完全な比較については、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/media/data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。
+	概念上、Azure 仮想マシンで SQL Server を実行することは、リモート データ センターで SQL Server を実行することと違いません。これに対し、[SQL Database](../sql-database/sql-database-technical-overview.md) はサービスとしてデータベースを提供します。SQL Database では、データベースをホストするマシンにアクセスできません。完全な比較については、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/media/data-management-azure-sql-database-and-sql-server-iaas.md)」をご覧ください。
 
-1. **オンプレミス SQL Server データベースをクラウドに移行するにはどうすればよいですか?**
+1. ** オンプレミス SQL Server データベースをクラウドに移行するにはどうすればよいですか?**
 
-	まず SQL Server インスタンスで、Azure 仮想マシンを作成します。次に、オンプレミス データベースをそのインスタンスに移行します。データ移行の方法については、「[Azure VM の SQL Server への SQL Server データベースの移行](virtual-machines-windows-migrate-sql.md)」を参照してください。
+	まず SQL Server インスタンスで、Azure 仮想マシンを作成します。次に、オンプレミス データベースをそのインスタンスに移行します。データ移行の方法については、「[Azure VM の SQL Server への SQL Server データベースの移行](virtual-machines-windows-migrate-sql.md)」をご覧ください。
 
 2. **インストールされている機能を変更したり、同じ VM に SQL Server の 2 つ目のインスタンスをインストールしたりできますか?**
 
@@ -65,7 +67,7 @@
 
 ## Resources
 
-Azure Virtual Machines 上の SQL Server の概要については、ビデオ「[Azure VM is the best platform for SQL Server 2016 (Azure VM は SQL Server 2016 に最適なプラットフォーム)](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)」をご覧ください。トピック「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」も優れた入門書です。
+Azure Virtual Machines 上の SQL Server の概要については、ビデオ「[Azure VM is the best platform for SQL Server 2016 (Azure VM は SQL Server 2016 に最適なプラットフォーム)](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)」をご覧ください。[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するトピックも優れた入門書です。
 
 その他のリソースには次のものがあります。
 
@@ -75,4 +77,4 @@ Azure Virtual Machines 上の SQL Server の概要については、ビデオ「
 - [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	ms.author="dastrock"/>
 
 # v2.0 トークンのリファレンス
@@ -154,4 +154,4 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 | 承認コード (職場または学校アカウント) | 10 分 | 承認コードは有効期間が意図的に短くされており、受け取ったらすぐにアクセス トークンまたは更新トークンに利用する必要があります。 |
 | 承認コード (個人アカウント) | 5 分 | 承認コードは有効期間が意図的に短くされており、受け取ったらすぐにアクセス トークンまたは更新トークンに利用する必要があります。また、個人アカウントの代わりに発行された承認コードを使用できるのは 1 回限りです。 |
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0608_2016-->

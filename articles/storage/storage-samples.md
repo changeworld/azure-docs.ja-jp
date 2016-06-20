@@ -1,19 +1,19 @@
 <properties
-   pageTitle="Azure Storage のサンプル | Microsoft Azure"
-   description="Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。.NET、Java、Node.js、C++ のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。"
-   services="storage"
-   documentationCenter="na"
-   authors="tamram"
-   manager="na"
-   editor="tysonn" />
+	pageTitle="Azure Storage のサンプル | Microsoft Azure"
+	description="Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。.NET、Java、Node.js、C++ のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。"
+	services="storage"
+	documentationCenter="na"
+	authors="tamram"
+	manager="na"
+	editor="tysonn" />
 <tags
-   ms.service="storage"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="storage"
-   ms.date="02/21/2016"
-   ms.author="tamram" />
+	ms.service="storage"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="storage"
+	ms.date="06/01/2016"
+	ms.author="tamram" />
 
 # Azure Storage のサンプル
 
@@ -24,16 +24,21 @@
 
 [Azure のコード サンプル ライブラリ](https://azure.microsoft.com/documentation/samples/?service=storage)には、ダウンロードしてローカルで実行できる Azure Storage のサンプルが用意されています。コード サンプル ライブラリでは、サンプル コードが .zip 形式で提供されます。また、各サンプルの GitHub リポジトリを参照して複製することもできます。
 
+## 入門サンプル
+
+* [Azure Storage を 5 分で使い始める](storage-getting-started-guide.md)
+* [Azure Storage の Visual Studio クイック スタート](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts)
+
 ## .NET のサンプル
 
 .NET のサンプルを調べるには、NuGet から [.NET ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)をダウンロードします。.NET ストレージ クライアント ライブラリは、[Azure SDK for .NET のページ](https://azure.microsoft.com/downloads/)にも用意されています。
 
-* [Azure Storage を 5 分で使い始める](storage-getting-started-guide.md)
-* [Azure Storage での同時実行制御の管理 - サンプル アプリケーション](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)
-* [BLOB の使用](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts/DataBlobStorage)
-* [テーブルの使用](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts/DataTableStorage)
-* [キューの使用](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts/DataStorageQueue)
-* [ファイルの使用](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage)
+* [.Net での Azure BLOB サービスの概要](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)
+* [.Net での Azure Queue サービスの概要](https://azure.microsoft.com/documentation/samples/storage-queue-dotnet-getting-started/)
+* [.Net での Azure Table サービスの概要](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/)
+* [.Net での Azure File サービスの概要](https://azure.microsoft.com/documentation/samples/storage-file-dotnet-getting-started/)
+* [Azure Blob Storage のフォト ギャラリーの Web アプリケーション](https://azure.microsoft.com/documentation/samples/storage-blobs-dotnet-webapp/)
+* [Azure Storage での同時実行制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)
 
 ## Java のサンプル
 
@@ -85,4 +90,4 @@ C++ のサンプルを調べるには、NuGet から [C++ ストレージ クラ
 - [C++ ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-cpp)
 - [C++ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp/)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0608_2016-->

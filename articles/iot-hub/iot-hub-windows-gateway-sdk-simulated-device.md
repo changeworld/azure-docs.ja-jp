@@ -51,7 +51,7 @@
     [ 
         {
             "module name" : "IoTHub",
-            "module path" : "C:\\azure-iot-gateway-sdk\\modules\\iothub_http\\Debug\\iothub_http_hl.dll",
+            "module path" : "C:\\azure-iot-gateway-sdk\\modules\\iothubhttp\\Debug\\iothubhttp_hl.dll",
             "args" : 
             {
                 "IoTHubName" : "{Your IoT hub name}",
@@ -60,7 +60,7 @@
         },
         {
             "module name" : "mapping",
-            "module path" : "C:\\azure-iot-gateway-sdk\\modules\\mac_iothub_id_map\\Debug\\mac_iothub_id_map_hl.dll",
+            "module path" : "C:\\azure-iot-gateway-sdk\\modules\\identitymap\\Debug\\identitymap_hl.dll",
             "args" : 
             [
                 {
@@ -128,4 +128,4 @@ Gateway SDK の使用方法の詳細については、GitHub の「[Azure IoT Ga
 [lnk-explorer-tools]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

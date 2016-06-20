@@ -3,7 +3,7 @@
 	description="Azure Mobile Apps を使用して Android アプリにプッシュ通知を送信する方法について説明します。"
 	services="app-service\mobile"
 	documentationCenter="android"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	authors="ysxu"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="05/24/2016"
+	ms.date="06/07/2016"
 	ms.author="yuaxu;ricksal"/>
 
 # プッシュ通知を Android アプリに追加する
@@ -37,7 +37,7 @@
 
 ## Google Cloud Messaging を有効にする
 
-[AZURE.INCLUDE [mobile-services-enable-google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
+[AZURE.INCLUDE [mobile-services-enable-google-cloud-messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]
 
 ##プッシュ要求を送信するように Mobile App バックエンドを構成する
 
@@ -80,4 +80,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 [Google Play Services SDK のセットアップに関するページ]: https://developers.google.com/android/guides/setup
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

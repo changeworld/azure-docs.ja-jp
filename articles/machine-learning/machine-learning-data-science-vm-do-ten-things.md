@@ -198,7 +198,7 @@ Azure Machine Learning R ライブラリの詳細については、[こちら](h
 
 DSVM を使用すると、仮想マシンに対してローカルに分析ソリューションを構築できるだけでなく、Microsoft Azure クラウド上のさまざまなサービスを利用することができます。Azure には、コンピューティング サービス、ストレージ サービス、データ分析サービスなど、DSVM から管理してアクセスできるさまざまなサービスが用意されています。
 
-Azure サブスクリプションとクラウド リソースは、ブラウザーから [Azure ポータル](portal.azure.com)にアクセスして管理できます。Azure PowerShell スクリプトを使って、Azure サブスクリプションとリソースを管理することもできます。Azure PowerShell は、デスクトップ上のショートカットから実行できるほか、"Microsoft Azure Powershell" というスタート メニューから実行できます。Windows PowerShell スクリプトを使って Azure サブスクリプションとリソースを管理する方法の詳細については、[Microsoft Azure PowerShell のドキュメント](../powershell-azure-resource-manager.md)を参照してください。
+Azure サブスクリプションとクラウド リソースは、ブラウザーから [Azure ポータル](https://portal.azure.com)にアクセスして管理できます。Azure PowerShell スクリプトを使って、Azure サブスクリプションとリソースを管理することもできます。Azure PowerShell は、デスクトップ上のショートカットから実行できるほか、"Microsoft Azure Powershell" というスタート メニューから実行できます。Windows PowerShell スクリプトを使って Azure サブスクリプションとリソースを管理する方法の詳細については、[Microsoft Azure PowerShell のドキュメント](../powershell-azure-resource-manager.md)を参照してください。
 
 
 ## 5\.共有ファイル システムで記憶域を拡張する
@@ -268,7 +268,7 @@ Azure BLOB は、大規模データにも小規模データにも対応する信
 
 **前提条件**
 
-- **[Azure ポータル](http://portal.azure.com)から Azure BLOB ストレージ アカウントを作成します。**
+- **[Azure ポータル](https://portal.azure.com)から Azure BLOB ストレージ アカウントを作成します。**
 
 ![Create\_Azure\_Blob](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
@@ -287,7 +287,7 @@ Azure BLOB は、大規模データにも小規模データにも対応する信
 
 	AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 
-**C:\\myfolder** は対象ファイルが保存されているパスに、**mystorageaccount** は BLOB ストレージ アカウント名に、**mycontainer** はコンテナー名に、**storage account key** は BLOB ストレージ アクセス キーにそれぞれ置き換えてください。ストレージ アカウントの資格情報は、[Azure ポータル](http://portal.azure.com)で確認できます。
+**C:\\myfolder** は対象ファイルが保存されているパスに、**mystorageaccount** は BLOB ストレージ アカウント名に、**mycontainer** はコンテナー名に、**storage account key** は BLOB ストレージ アクセス キーにそれぞれ置き換えてください。ストレージ アカウントの資格情報は、[Azure ポータル](https://portal.azure.com)で確認できます。
 
 ![StorageAccountCredential\_v2](./media/machine-learning-data-science-vm-do-ten-things/StorageAccountCredential_v2.png)
 
@@ -318,7 +318,7 @@ Azure ストレージ エクスプローラーを使用して、VM 内のロー�
 
 **Azure BLOB からのデータの読み取り (AML のリーダー モジュール)**
 
-Azure Machine Learning Studio では、**リーダー モジュール**を使用して BLOB からデータを読み取ることができます。
+Azure Machine Learning Studio では、**データのインポート モジュール**を使用して BLOB からデータを読み取ることができます。
 
 
 ![AML\_ReaderBlob\_Module\_v3](./media/machine-learning-data-science-vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
@@ -379,7 +379,7 @@ Azure Data Lake Storage は、ビッグ データの分析ワークロード用�
 
 **前提条件**
 
-- [Azure ポータル](http://portal.azure.com)で Azure Data Lake Analytics を作成します。
+- [Azure ポータル](https://portal.azure.com)で Azure Data Lake Analytics を作成します。
 
 ![Azure\_Data\_Lake\_Create\_v2](./media/machine-learning-data-science-vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
@@ -404,7 +404,7 @@ Azure Data Lake Storage は、ビッグ データの分析ワークロード用�
 ![](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 
-Visual Studio では、Blob Storage からのデータ読み取り、各種データ操作、特徴エンジニアリングを実行するほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。Blob Storage 内のデータを参照するときは **wasb://** を、Azure Data Lake 内のデータを参照するときは **swbhdfs://** を使用します。
+Visual Studio では、Blob Storage からのデータ読み取り、各種データ操作、特徴エンジニアリングを実行するほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。Blob Storage 内のデータを参照するときは ****wasb://** を、Azure Data Lake 内のデータを参照するときは ****swbhdfs://** を使用します。
 
 ![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
@@ -474,7 +474,7 @@ Azure HDInsight は、クラウド上で管理されている Apache Hadoop、Sp
 
 **前提条件**
 
-- [Azure ポータル](http://portal.azure.com)から Azure BLOB ストレージ アカウントを作成します。HDInsight クラスターのデータは、このストレージ アカウントを使用して格納されます。
+- [Azure ポータル](https://portal.azure.com)から Azure BLOB ストレージ アカウントを作成します。HDInsight クラスターのデータは、このストレージ アカウントを使用して格納されます。
 
 ![](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
@@ -910,4 +910,4 @@ DSVM から DocumentDB にアクセスするには、以下の前提条件を満
 ## まとめ
 ここで紹介したのは、Microsoft データ サイエンス仮想マシンでできることの一例にすぎません。他にもさまざまな手段で分析環境を強化することができます。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

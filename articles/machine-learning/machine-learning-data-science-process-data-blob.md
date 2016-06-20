@@ -110,7 +110,7 @@
 	
 次のように、Python を使用して特徴を生成できます。
 
-###<a name="blob-countfeature"></a>インジケーター値ベースの特徴の生成
+###<a name="blob-countfeature">インジケーター値ベースの特徴の生成</a>
 
 カテゴリの特徴は、次のように作成できます。
 
@@ -180,7 +180,7 @@
 	    except:	        
 		    print ("Something went wrong with uploading blob:"+BLOBNAME)
 
-3. これで、次の画面に示すように、Azure Machine Learning の[リーダー][reader] モジュールを使用して BLOB からデータを読み取ることができます。
+3. これで、次の画面に示すように、Azure Machine Learning の[データのインポート][import-data] モジュールを使用して BLOB からデータを読み取ることができます。
  
 ![リーダー BLOB][1]
 
@@ -188,7 +188,7 @@
 
 
 <!-- Module References -->
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

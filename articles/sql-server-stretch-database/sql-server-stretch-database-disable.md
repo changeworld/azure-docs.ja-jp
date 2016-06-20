@@ -24,9 +24,9 @@
 
 -   **無効にする | Azure にデータを残す**。テーブルの Stretch Database を無効にします。Azure のテーブルのリモート データを破棄します。
 
-テーブルの Stretch Database を無効にすると、データ移行が停止し、クエリ結果にリモート テーブルからの結果が含まれなくなります。
-
 Transact-SQL を利用し、テーブルまたはデータベースの Stretch Database を無効にすることもできます。
+
+テーブルの Stretch Database を無効にすると、データ移行が停止し、クエリ結果にリモート テーブルからの結果が含まれなくなります。
 
 データ移行を一時停止する場合、「[Pause and resume Stretch Database (Stretch Database を一時停止し、再開する)](sql-server-stretch-database-pause.md)」を参照してください。
 
@@ -98,4 +98,4 @@ ALTER DATABASE <database name>
 
 [Stretch Database を一時停止し、再開します。](sql-server-stretch-database-pause.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

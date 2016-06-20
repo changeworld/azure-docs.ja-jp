@@ -1,6 +1,6 @@
 
 <properties
-   pageTitle="SSMS を使用して SQL Server データベースを BACPAC ファイルにエクスポートする"
+   pageTitle="SQL Server Management Studio を使用して SQL Server データベースを BACPAC ファイルにエクスポートする | Microsoft Azure"
    description="Microsoft Azure SQL Database、データベースの移行、データベースのエクスポート、BACPAC ファイルのエクスポート、データ層アプリケーションのエクスポート ウィザード"
    services="sql-database"
    documentationCenter=""
@@ -17,7 +17,7 @@
    ms.date="05/31/2016"
    ms.author="carlrab"/>
 
-# SSMS を使用して SQL Server データベースを BACPAC ファイルにエクスポートする
+# SQL Server Management Studio を使用して SQL Server データベースを BACPAC ファイルにエクスポートする
 
 > [AZURE.SELECTOR]
 - [SSMS](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
@@ -60,4 +60,4 @@
 - [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

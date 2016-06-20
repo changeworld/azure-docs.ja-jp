@@ -13,14 +13,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="na"
-	ms.date="04/19/2016"
+	ms.date="06/03/2016"
 	ms.author="marsma" />
 
 # Azure Batch プールの Linux コンピューティング ノードのプロビジョニング
 
 Azure Batch を使用すると、Linux と Windows の両方の仮想マシンで並列コンピューティング ワークロードを実行できます。この記事では、[Batch Python][py_batch_package] と [Batch .NET][api_net] の両方のクライアント ライブラリを使用して、Batch サービスで Linux コンピューティング ノードのプールを作成する方法について説明します。
 
-> [AZURE.NOTE] Batch の Linux サポートは現在プレビュー段階です。ここで説明する機能の一部は、一般公開前に変更される可能性があります。[アプリケーション パッケージ](batch-application-packages.md)と[マルチインスタンス タスク](batch-mpi.md)は、Linux コンピューティング ノードでは**現在サポートされていません**。
+> [AZURE.NOTE] Batch の Linux サポートは現在プレビュー段階です。ここで説明する機能の一部は、一般公開前に変更される可能性があります。[アプリケーション パッケージ](batch-application-packages.md)は、Linux コンピューティング ノードでは**現在サポートされていません**。
 
 ## 仮想マシンの構成
 
@@ -198,7 +198,7 @@ ImageReference imageReference = new ImageReference(
 
 ## 仮想マシン イメージの一覧
 
-**この記事の執筆時点では**、使用可能な Batch ノード エージェントと互換性のある Marketplace 仮想マシン イメージの一覧を次の表に示します。イメージとノード エージェントは随時追加または削除される可能性があるため、これは最終的な一覧ではないことに注意してください。Batch アプリケーションとサービスでは、常に [list\_node\_agent\_skus][py_list_skus] \(Python) と [ListNodeAgentSkus][net_list_skus] \(Batch .NET) を使用して、現在利用可能な SKU を確認してから選択することをお勧めします。
+**この記事の執筆時点では**、使用可能な Batch ノード エージェントと互換性のある Marketplace 仮想マシン イメージの一覧を次の表に示します。イメージとノード エージェントは随時追加または削除される可能性があるため、これは最終的な一覧ではないことに注意してください。Batch アプリケーションとサービスでは、常に [list\_node\_agent\_skus][py_list_skus] (Python) と [ListNodeAgentSkus][net_list_skus] (Batch .NET) を使用して、現在利用可能な SKU を確認してから選択することをお勧めします。
 
 > [AZURE.WARNING] 次の一覧は随時変更される可能性があります。Batch ジョブを実行するときに、Batch API で使用できる **ListNodeAgentSkus** メソッドを常に使用して、互換性のある仮想マシンとノード エージェント SKU を一覧表示してから選択します。
 
@@ -210,11 +210,13 @@ ImageReference imageReference = new ImageReference(
 | Canonical | UbuntuServer | 14\.04.3-LTS | 最新 | batch.node.ubuntu 14.04 |
 | Canonical | UbuntuServer | 14\.04.4-LTS | 最新 | batch.node.ubuntu 14.04 |
 | Canonical | UbuntuServer | 15\.10 | 最新 | batch.node.debian 8 |
+| Canonical | UbuntuServer | 16\.04.0-LTS | 最新 | batch.node.ubuntu 16.04 |
 | Credativ | Debian | 8 | 最新 | batch.node.debian 8 |
 | OpenLogic | CentOS | 7\.0 | 最新 | batch.node.centos 7 |
 | OpenLogic | CentOS | 7\.1 | 最新 | batch.node.centos 7 |
 | OpenLogic | CentOS | 7\.2 | 最新 | batch.node.centos 7 |
-| Oracle | Oracle-Linux-7 | OL70 | 最新 | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7\.1 | 最新 | batch.node.centos 7 |
+| Oracle | Oracle-Linux | 7\.0 | 最新 | batch.node.centos 7 |
 | SUSE | SLES | 12 | 最新 | batch.node.opensuse 42.1 |
 | SUSE | SLES | 12-SP1 | 最新 | batch.node.opensuse 42.1 |
 | SUSE | SLES-HPC | 12 | 最新 | batch.node.opensuse 42.1 |
@@ -283,9 +285,13 @@ Azure Batch は Azure Cloud Services と Azure Virtual Machines テクノロジ�
 
 ## 次のステップ
 
+### Batch Python のチュートリアル
+
+Python を使用したバッチ処理の操作に関するより詳細なチュートリアルについては、「[Azure Batch Python クライアントの概要](batch-python-tutorial.md)」を参照してください。ヘルパー関数、`get_vm_config_for_distro` を含む関連ドキュメントの[コード サンプル][github_samples_pyclient]では、仮想マシンの構成を取得するためのもう 1 つの方法を紹介しています。
+
 ### Batch Python コード サンプル
 
-プール、ジョブ、タスクの作成などの一般的な Batch 操作の実行方法を示すさまざまなスクリプトについては、GitHub の [azure-batch-samples][github_samples] リポジトリにある [Python コード サンプル][github_samples_py]を参照してください。Python サンプルに付属する [README][github_py_readme] には、必要なパッケージのインストール方法の詳細が記載されています。
+プール、ジョブ、タスクの作成などの一般的な Batch 操作の実行方法を示すさまざまなスクリプトについては、GitHub の [azure-batch-samples][github_samples] リポジトリにあるその他の [Python コード サンプル][github_samples_py]を参照してください。Python サンプルに付属する [README][github_py_readme] には、必要なパッケージのインストール方法の詳細が記載されています。
 
 ### Batch フォーラム
 
@@ -299,6 +305,7 @@ MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッシ�
 [github_py_readme]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/README.md
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_py]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch
+[github_samples_pyclient]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/python_tutorial_client.py
 [portal]: https://portal.azure.com
 [net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [net_computenodeuser]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenodeuser.aspx
@@ -320,4 +327,4 @@ MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッシ�
 
 [1]: ./media/batch-application-packages/app_pkg_01.png "Application packages high-level diagram"
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

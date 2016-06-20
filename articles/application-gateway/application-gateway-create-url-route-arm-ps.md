@@ -22,7 +22,7 @@ URL パス ベースのルーティングを使用すると、HTTP 要求の URL
 
 URL ベースのルーティングでは、新しいルールの種類が Application Gateway に導入されています。Application Gateway には、basic と PathBasedRouting という 2 つのルールの種類があります。basic は、バックエンド プールに対してラウンドロビン サービスを提供します。一方、PathBasedRouting はラウンドロビン サービスに加えて、バックエンド プールを選択しながら要求 URL のパス パターンも考慮に入れます。
 
->[AZURE.IMPORTANT] PathPattern: これは照合するパス パターンの一覧です。それぞれ / で始まる必要があり、* が許可されるのは末尾の '/' の後だけです。パス照合に提供する文字列には最初の ? または # の後にテキストを含めません (これらの文字は、許可されません)。
+>[AZURE.IMPORTANT] PathPattern: これは照合するパス パターンの一覧です。それぞれ / で始まる必要があり、* が許可されるのは末尾だけです。有効な例としては /xyz、/xyz*、または /xyz/* があります。パス照合に提供する文字列には最初の ? または # の後にテキストを含めません (これらの文字は、許可されません)。
 
 ## シナリオ
 次の例で、Application Gateway は、2 つのバックエンド サーバー プール (ビデオ サーバー プールとイメージ サーバー プール) を使用して contoso.com のトラフィックを処理します。
@@ -194,6 +194,6 @@ Application Gateway のインスタンス数とサイズを構成します。
 	$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG -Location "West US" -BackendAddressPools $pool1,$pool2 -BackendHttpSettingsCollection $poolSetting01, $poolSetting02 -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener -UrlPathMaps $urlPathMap -RequestRoutingRules $rule01 -Sku $sku
 
 ## Application Gateway の取得
-	$getgw =  Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+	$getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

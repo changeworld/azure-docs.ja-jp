@@ -20,11 +20,11 @@
 # SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計
 
 
-> [AZURE.NOTE] すべてのレベルのすべてのデータベースで [Active Geo-Replication](sql-database-geo-replication-overview.md) を使用できるようになりました。
+> [AZURE.NOTE] [Active Geo-Replication]すべてのレベルのすべてのデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
 
 
 
-ここでは、SQL Database の [geo レプリケーション](sql-database-geo-replication-overview.md)を使用して、リージョンの障害や致命的な停止に対して回復性の高いデータベース アプリケーションを設計する方法について説明します。ビジネス継続性の計画では、アプリケーションのデプロイ トポロジ、目標とするサービス レベル アグリーメント、トラフィック待機時間、コストを考慮します。この記事では一般的なアプリケーション パターンを紹介したうえで、それぞれの選択肢の利点とトレードオフについて説明します。
+ここでは、SQL Database の[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用して、リージョンの障害や致命的な停止に対して回復性の高いデータベース アプリケーションを設計する方法について説明します。ビジネス継続性の計画では、アプリケーションのデプロイ トポロジ、目標とするサービス レベル アグリーメント、トラフィック待機時間、コストを考慮します。この記事では一般的なアプリケーション パターンを紹介したうえで、それぞれの選択肢の利点とトレードオフについて説明します。
 
 ## 設計パターン 1: アクティブ/パッシブ デプロイとデータベースの併置によるクラウド障害復旧
 
@@ -44,7 +44,7 @@
 
 この構成の機能停止前の状態を示したのが次の図です。
 
-![SQL Database geo-replication configuration.Cloud disaster recovery.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-1.png)
+![SQL Database の geo レプリケーションの構成。Cloud disaster recovery.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-1.png)
 
 プライマリ リージョンの機能が停止すると、プライマリ データベースにアクセスできないことを監視アプリケーションが検出し、アラートを発生させます。監視プローブが何回失敗したらデータベースの機能停止と見なすかは、アプリケーションの SLA に応じて指定してください。アプリケーションのエンド ポイントとデータベースの同時フェールオーバーを実現するためには、監視アプリケーションで次の手順を実行する必要があります。
 
@@ -54,7 +54,7 @@
 フェールオーバー後は、ユーザー要求がセカンダリ リージョンで処理されますが、その時点でプライマリ データベースはセカンダリ リージョンに切り替わっているため、アプリケーションとデータベースは併置されたままになります。これを示したのが次の図です。すべての図において実線はアクティブな接続を、点線は中断状態の接続を、通行止めの標識はアクション トリガーを示しています。
 
 
-![Geo-replication: Failover to secondary database.App data backup.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-2.png)
+![geo レプリケーション: セカンダリ データベースへのフェールオーバー。App data backup.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-2.png)
 
 セカンダリ リージョンの機能が停止した場合、プライマリ データベースとセカンダリ データベース間のレプリケーション リンクが中断状態となり、監視アプリケーションは、プライマリ データベースがレプリケーションされていないことを示すアラートを生成します。この点がアプリケーションのパフォーマンスに影響を及ぼすことはありませんが、レプリケーションされていない状態で運用されることから、両方のリージョンに相次いで障害が発生した場合、リスクは増大します。
 
@@ -97,7 +97,7 @@
 
 いずれかのセカンダリ リージョンの機能が停止した場合、Traffic Manager は、そのリージョンのオフライン エンド ポイントをルーティング テーブルから自動的に削除します。そのリージョンのセカンダリ データベースへのレプリケーション チャンネルが中断状態となります。残っているリージョンへのユーザー トラフィックが増えるという点で、機能が停止している間はアプリケーション パフォーマンスに影響が生じる可能性があります。停止していた機能が復旧すると、影響のあったリージョンのセカンダリ データベースがプライマリ データベースと直ちに同期されます。同期対象のデータの量によっては、プライマリのパフォーマンスが同期中やや低下する場合があります。次の図は、セカンダリ リージョンの 1 つで機能が停止した場合の例です。
 
-![Outage in secondary region.Cloud disaster recovery - geo-replication.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-3.png)
+![Outage in secondary region.クラウドの障害復旧 - geo レプリケーション。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-3.png)
 
 この設計パターンの主な**利点**は、アプリケーション ワークロードを複数のセカンダリにスケールして最適なエンド ユーザー パフォーマンスを実現できることです。このオプションの**トレードオフ**は次のとおりです。
 
@@ -163,4 +163,4 @@ Traffic Manager は、プライマリ リージョンへの接続障害を検出
 - [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
 - [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

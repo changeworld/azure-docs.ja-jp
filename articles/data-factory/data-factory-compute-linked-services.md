@@ -336,7 +336,12 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
  
 
 ## Azure SQL のリンクされたサービス
-
 Azure SQL のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。このリンクされたサービスの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+## Azure SQL Data Warehouse のリンクされたサービス
+Azure SQL Data Warehouse のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。このリンクされたサービスの詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#azure-sql-data-warehouse-linked-service-properties)に関する記事をご覧ください。
+
+## SQL Server のリンクされたサービス
+SQL Server のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。このリンクされたサービスの詳細については、[SQL Server コネクタ](data-factory-sqlserver-connector.md#sql-server-linked-service-properties)に関する記事をご覧ください。
+
+<!---HONumber=AcomDC_0608_2016-->

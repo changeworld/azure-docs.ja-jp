@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/02/2016"
+   ms.date="06/02/2016"
    ms.author="sonyama;barbkess"/>
 
-# SQL Data Warehouse のベスト プラクティス
+# Azure SQL Data Warehouse のベスト プラクティス
 
 この記事には、Azure SQL Data Warehouse で最適なコスト パフォーマンスを実現するためのさまざまなベスト プラクティスがまとめられています。この記事で取り上げている概念には、非常に基本的なため、簡単に説明できるものから、高度なため、この記事では軽く紹介するだけのものまであります。この記事の目的は、基本的なガイダンスを提供し、データ ウェアハウスを構築する際に考慮する必要がある重要な事項に対する認識を高めることです。各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
 
@@ -121,9 +121,9 @@ SQL Data Warehouse の**機能の提案**がある場合は、[Azure SQL Data Wa
 [DMV を利用してワークロードを監視する]: sql-data-warehouse-manage-monitor.md
 [Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
 [SQL Data Warehouse のトランザクションの最適化]: sql-data-warehouse-develop-best-practices-transactions.md
-[コンピューティング リソースの一時停止]: sql-data-warehouse-overview-scalability.md#pause-compute-bk
-[コンピューティング リソースの再開]: sql-data-warehouse-overview-scalability.md#resume-compute-bk
-[コンピューティング リソースのスケール]: sql-data-warehouse-overview-scalability.md#scale-performance-bk
+[コンピューティング リソースの一時停止]: sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
+[コンピューティング リソースの再開]: sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
+[コンピューティング リソースのスケール]: sql-data-warehouse-manage-compute-overview.md#scale-performance-bk
 [Table design in SQL Data Warehouse]: sql-data-warehouse-develop-table-design.md
 [SQL Data Warehouse のテーブル パーティション]: sql-data-warehouse-develop-table-partitions.md
 [SQL Data Warehouse の一時テーブル]: sql-data-warehouse-develop-temporary-tables.md
@@ -157,4 +157,4 @@ SQL Data Warehouse の**機能の提案**がある場合は、[Azure SQL Data Wa
 [Azure SQL Data Warehouse Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Azure SQL Data Warehouse loading patterns and strategies (Azure SQL Data Warehouse の読み込みパターンと戦略)]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/06/azure-sql-data-warehouse-loading-patterns-and-strategies
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

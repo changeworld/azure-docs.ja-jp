@@ -47,7 +47,7 @@ Upgrade Advisor を[ここ](http://go.microsoft.com/fwlink/?LinkID=613421)から
 
 2.  **[分析結果]** ブレード上の推奨テーブルの一覧で、推奨テーブルのいずれかを選択し、**[テーブル結果]** ブレードを表示します。
 
-    **[テーブル結果]** ブレードには、選択されたテーブルのブロック問題が一覧表示されます。Stretch Database Advisor によって検出されるブロック問題については、「[Stretch Database のセキュリティ制約とブロック問題](sql-server-stretch-database-limitations.md)」をご覧ください。
+    **[テーブル結果]** ブレードには、選択されたテーブルのブロック問題が一覧表示されます。Stretch Database Advisor によって検出されるブロック問題については、「[Stretch Database の制限事項](sql-server-stretch-database-limitations.md)」をご覧ください。
 
 3.  **[テーブル結果]** ブレード上のブロック問題の一覧で、問題のいずれかを選択し、**[ルール結果]** ブレードを表示します。
 
@@ -62,10 +62,10 @@ Stretch Database を有効にします。
 
 ## 関連項目
 
-[Stretch Database のセキュリティ制約とブロック問題](sql-server-stretch-database-limitations.md)
+[Stretch Database の制限事項](sql-server-stretch-database-limitations.md)
 
 [データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-database.md)
 
 [テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

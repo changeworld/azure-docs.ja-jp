@@ -64,7 +64,7 @@
 
 6.  [Azure Machine Learning Studio](https://studio.azureml.net/) にサインインします。
 
-7.  [リーダー][reader] モジュールを使用して、Azure BLOB からデータを読み取ります。
+7.  [データのインポート][import-data] モジュールを使用して、Azure BLOB からデータを読み取ります。
 
 8. 統合されたデータセットで始まる Azure Machine Learning の実験フローを構築します。
 
@@ -90,7 +90,7 @@
 
 8. [Azure Machine Learning Studio](https://studio.azureml.net/) にサインインします。
 
-9. [リーダー][reader] モジュールを使用して、Azure BLOB からデータを読み取ります。
+9. [データのインポート][import-data] モジュールを使用して、Azure BLOB からデータを読み取ります。
 
 10. 統合されたデータセットで始まる Azure ML の実験フローを構築します。
 
@@ -132,7 +132,7 @@
 
 9. [Azure Machine Learning Studio](https://studio.azureml.net/) にサインインします。
 
-10. [リーダー][reader] モジュールを使用して、SQL Server から直接データを読み取ります。フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[リーダー][reader] クエリに貼り付けます。
+10. [データのインポート][import-data] モジュールを使用して、SQL Server から直接データを読み取ります。フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 
 11. 統合されたデータセットで始まる Azure ML の実験フローを構築します。
 
@@ -176,7 +176,7 @@
 
 7.  [Azure Machine Learning Studio](https://studio.azureml.net/) にサインインします。
 
-8. [リーダー][reader] モジュールを使用して、SQL Server から直接データを読み取ります。フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[リーダー][reader] クエリに貼り付けます。
+8. [データのインポート][import-data] モジュールを使用して、SQL Server から直接データを読み取ります。フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 
 9. アップロードされたデータセットで始まる Azure ML の実験フローを構築します。
 
@@ -216,7 +216,7 @@
 
 7.  [Azure Machine Learning Studio](https://studio.azureml.net/) にサインインします。
 
-8. [リーダー][reader] モジュールを使用して、SQL Server から直接データを読み取ります。フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[リーダー][reader] クエリに貼り付けます。
+8. [データのインポート][import-data] モジュールを使用して、SQL Server から直接データを読み取ります。フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 
 9. アップロードされたデータセットで始まる Azure ML の実験フローを構築します。
 
@@ -228,11 +228,11 @@
 
 SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを 1 つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。これは、SQL Server Management Studio のオブジェクト エクスプローラー GUI か、同等の TRANSACT-SQL コマンドを使用して行います。
 
-1. ソースの場所にあるデータベースをデタッチします。詳細については、[データベースのデタッチ](https://technet.microsoft.com/library/ms191491(v=sql.110).aspx)をご覧ください。
+1. ソースの場所にあるデータベースをデタッチします。詳細については、「データベースのデタッチhttps://technet.microsoft.com/library/ms191491(v=sql.110).aspx)」をご覧ください。
 2. Windows エクスプローラーや Windows コマンド プロンプト ウィンドウで、デタッチされたデータベース ファイルとログ ファイルを Azure の SQL Server VM 上のターゲットの場所にコピーします。
-3. コピーしたファイルを対象の SQL Server インスタンスにアタッチします。詳細については、[データベースのアタッチ](https://technet.microsoft.com/library/ms190209(v=sql.110).aspx)をご覧ください。
+3. コピーしたファイルを対象の SQL Server インスタンスにアタッチします。詳細については、「データベースのアタッチhttps://technet.microsoft.com/library/ms190209(v=sql.110).aspx)」をご覧ください。
 
-[デタッチとアタッチを使用してデータベースを移動する (Transact-SQL)](https://technet.microsoft.com/library/ms187858(v=sql.110).aspx)
+デタッチとアタッチを使用してデータベースを移動する (Transact-SQL)https://technet.microsoft.com/library/ms187858(v=sql.110).aspx
 
 ## <a name="largedbtohive"></a>シナリオ #7: ローカル ファイルのビッグ データ (Azure HDInsight Hadoop クラスターの Hive データベースを対象)
 
@@ -280,7 +280,7 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 
 8.  [Azure Machine Learning Studio](https://studio.azureml.net/) にサインインします。
 
-9. [リーダー][reader] モジュールを使用して、`Hive Queries` から直接データを読み取ります。フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[リーダー][reader] クエリに貼り付けます。
+9. [データのインポート][import-data] モジュールを使用して、`Hive Queries` から直接データを読み取ります。フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 
 10. アップロードされたデータセットで始まる Azure ML の実験フローを構築します。
 
@@ -312,6 +312,6 @@ Advanced Analytics Process and Technology とパブリック データセット�
 
 
 <!-- Module References -->
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="06/06/2016"
 	ms.author="carlasab"/>
 
 
@@ -55,11 +55,11 @@
 
 | メソッド | 移行元データベースのバージョン | 移行先データベースのバージョン | 移行元データベースのバックアップ サイズ制限 | メモ |
 |---|---|---|---|---|
-| [Microsoft Azure VM への SQL Server データベースのデプロイ ウィザードを使用する](#azure-vm-deployment-wizard-tutorial) | SQL Server 2005 以降 | SQL Server 2014 以降 | > 1 TB | 最も高速で簡単な方法。Azure 仮想マシンの新規または既存の SQL Server インスタンスに移行するときにいつでも使用できます。 | 
+| [Microsoft Azure VM への SQL Server データベースのデプロイ ウィザードを使用する](#azure-vm-deployment-wizard-tutorial) | SQL Server 2005 以降 | SQL Server 2014 以降 | 1 TB まで | 最も高速で簡単な方法。Azure 仮想マシンの新規または既存の SQL Server インスタンスに移行するときにいつでも使用できます。 | 
 | [Azure レプリカの追加ウィザードを使用する](virtual-machines-windows-classic-sql-onprem-availability.md) | SQL Server 2012 以降 | SQL Server 2012 以降 | [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | ダウンタイムが最小限になります。AlwaysOn のオンプレミスのデプロイがあるときに使います。 |
 | [SQL Server のトランザクション レプリケーションを使用する](https://msdn.microsoft.com/library/ms151176.aspx) | SQL Server 2005 以降 | SQL Server 2005 以降 | [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | ダウンタイムを最小限にする必要があり、AlwaysOn のオンプレミスのデプロイがないときに使います。 |
 | [圧縮機能を使用してオンプレミスのバックアップの実行し、そのバックアップ ファイルを Azure 仮想マシンに手動でコピーする](#backup-to-file-and-copy-to-vm-and-restore) | SQL Server 2005 以降 | SQL Server 2005 以降 | [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | ウィザードを使用できない場合にのみ使用。たとえば、移行先データベースのバージョンが SQL Server 2012 SP1 CU2 より以前の場合や、データベースのバックアップ サイズが 1 TB (SQL Server 2016 の場合は 12.8 TB) を超えている場合は、ウィザードを使用できません。 |
-| [URL へのバックアップを実行し、その URL から Azure 仮想マシンに復元する](#backup-to-url-and-restore) | SQL Server 2012 SP1 CU2 以上 | SQL Server 2012 SP1 CU2 以上 | > 1 TB (SQL Server 2016 の場合は < 12.8 TB) | 一般的に、[URL へのバックアップ](https://msdn.microsoft.com/library/dn435916.aspx)は、パフォーマンスについてはウィザードを使用する場合と同等で、それほど簡単ではありません。 |
+| [URL へのバックアップを実行し、その URL から Azure 仮想マシンに復元する](#backup-to-url-and-restore) | SQL Server 2012 SP1 CU2 以上 | SQL Server 2012 SP1 CU2 以上 | SQL Server 2016 の場合は 12.8 TBまで、それ以外の場合は 1 TB まで | 一般的に、[URL へのバックアップ](https://msdn.microsoft.com/library/dn435916.aspx)は、パフォーマンスについてはウィザードを使用する場合と同等で、それほど簡単ではありません。 |
 | [データとログ ファイルをデタッチしてから、Azure BLOB ストレージにコピーし、その後、URL から Azure 仮想マシンの SQL Server にアタッチする](#detach-and-copy-to-url-and-attach-from-url) | SQL Server 2005 以降 | SQL Server 2014 以降 | [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | この方法は、特にデータベースのサイズが非常に大きい場合に、[Azure BLOB ストレージ サービスを使用してこれらのファイルを格納](https://msdn.microsoft.com/library/dn385720.aspx)し、Azure VM で実行されている SQL Server にファイルをアタッチするときに使用します。 |
 | [オンプレミスのマシンを HYPER-V VHD に変換して Azure BLOB ストレージにアップロードし、アップロードしたその VHD を使用して、新しい仮想マシンをデプロイする](#convert-to-vm-and-upload-to-url-and-deploy-as-new-vm) | SQL Server 2005 以降 | SQL Server 2005 以降 | [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | [ご自身の SQL Server ライセンスを使用する](../data-management-azure-sql-database-and-sql-server-iaas/)場合、古いバージョンの SQL Server で実行するデータベースを移行する場合、または他のユーザー データベースやシステム データベースに応じて、データベースの移行の一環として、データベース システムとユーザー データベースを一緒に移行する場合に使用します。 |
 | [Windows の Import/Export サービスを使用して、ハード ドライブを発送する](#ship-hard-drive) | SQL Server 2005 以降 | SQL Server 2005 以降 | [Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | [Windows の Import/Export サービス](../storage/storage-import-export-service.md)は、データベースのサイズが非常に大きい場合など、手動でのコピーが遅すぎるときに使用します。 |
@@ -145,7 +145,7 @@ SQL Server 2014 より前の SQL Server に移行する場合、またはバッ�
 
 1.	オンプレミスの場所へのデータベースの完全バックアップを実行します。
 2.	必要な SQL Server バージョンを使用して、仮想マシンを作成またはアップロードします。
-3.	「[Azure での SQL Server 仮想マシンのプロビジョニング](../virtual-machines-provision-sql-server/#SSMS)」の手順を使用して、仮想マシンをプロビジョニングします。
+3.	要件に基づいて接続をセットアップします。「[Connect to a SQL Server Virtual Machine on Azure (Resource Manager) (Azure での SQL Server 仮想マシンへの接続 (Resource Manager))](virtual-machines-windows-sql-connect.md)」をご覧ください。
 4.	リモート デスクトップ、Windows エクスプローラー、またはコマンド プロンプトのコピー コマンドを使用して、バックアップ ファイルを VM にコピーします。
 
 ## URL へのバックアップと復元
@@ -178,4 +178,4 @@ SQL Server 2014 より前の SQL Server に移行する場合、またはバッ�
 
 Azure Virtual Machines で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

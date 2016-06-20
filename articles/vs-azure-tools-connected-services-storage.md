@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="mobile"
-   ms.date="05/08/2016"
+   ms.date="06/01/2016"
    ms.author="tarcher" />
 
 # Visual Studio 接続済みサービスを使用した Azure ストレージの追加
@@ -48,7 +48,7 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
     ![Add Connected Service dialog box - Storage](./media/vs-azure-tools-connected-services-storage/IC796703.png)
 
-1. **[Azure Storage]** ダイアログ ボックスで、既存のストレージ アカウントを選択し、**[追加]** をクリックします。
+1. **[Azure Storage]** ダイアログ ボックスで、既存のストレージ アカウントを選択し、**[追加]** を選択します。
 
     新しいストレージ アカウントを作成する必要がある場合は、次の手順に進みます。必要ない場合は、手順 6 に進みます。
 
@@ -64,7 +64,7 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
         **[Azure Storage]** ダイアログ ボックスに戻ると、新しいストレージが一覧に表示されます。
 
-    1. 一覧の中から新しいストレージを選択し、**[追加]** をクリックします。
+    1. 一覧の中から新しいストレージを選択し、**[追加]** を選択します。
 
 1. WebJob プロジェクトの [サービス参照] ノードの下に、ストレージの接続済みサービスが表示されます。
 
@@ -94,4 +94,4 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
      - [Storage のドキュメント (azure.microsoft.com)](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

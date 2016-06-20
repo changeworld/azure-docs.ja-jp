@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="06/07/2016"
 	ms.author="jgao"/>
 
 # .NET SDK を使用した HDInsight での Hadoop クラスターの管理
@@ -35,70 +35,80 @@
 
 次の Nuget パッケージが必要です。
 
-	Install-Package Microsoft.Azure.Common.Authentication -Pre
-	Install-Package Microsoft.Azure.Management.ResourceManager -Pre
+	Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
+    Install-Package Microsoft.Azure.Management.ResourceManager -Pre
 	Install-Package Microsoft.Azure.Management.HDInsight
 
 次のコード サンプルは、Azure サブスクリプションで HDInsight クラスターを管理する前に Azure に接続する方法を示しています。
 
-	using System;
-	using System.Security;
-	using Microsoft.Azure;
-	using Microsoft.Azure.Common.Authentication;
-	using Microsoft.Azure.Common.Authentication.Factories;
-	using Microsoft.Azure.Common.Authentication.Models;
-	using Microsoft.Azure.Management.HDInsight;
-	using Microsoft.Azure.Management.HDInsight.Models;
-	using Microsoft.Azure.Management.ResourceManager;
+    using System;
+    using Microsoft.Azure;
+    using Microsoft.Azure.Management.HDInsight;
+    using Microsoft.Azure.Management.HDInsight.Models;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    using Microsoft.Rest;
+    using Microsoft.Rest.Azure.Authentication;
 
 	namespace HDInsightManagement
 	{
 		class Program
 		{
 			private static HDInsightManagementClient _hdiManagementClient;
-			private static Guid SubscriptionId = new Guid("<Your Azure Subscription ID>");
+            // Replace with your AAD tenant ID if necessary
+            private const string TenantId = UserTokenProvider.CommonTenantId; 
+			private const string SubscriptionId = "<Your Azure Subscription ID>";
+            // This is the GUID for the PowerShell client. Used for interactive logins in this example.
+            private const string ClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
 
 			static void Main(string[] args)
-			{
-				var tokenCreds = GetTokenCloudCredentials();
-				var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
-				
-				var svcClientCreds = new TokenCredentials(tokenCreds.Token); 
-				var resourceManagementClient = new ResourceManagementClient(svcClientCreds);
-				var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
+            {
+                // Authenticate and get a token
+                var authToken = Authenticate(TenantId, ClientId, SubscriptionId);
+                // Flag subscription for HDInsight, if it isn't already.
+                EnableHDInsight(authToken);
+                // Get an HDInsight management client
+                _hdiManagementClient = new HDInsightManagementClient(authToken);
 
-				_hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
+                // insert code here
 
-				// insert code here
+                System.Console.WriteLine("Press ENTER to continue");
+                System.Console.ReadLine();
+            }
 
-				System.Console.WriteLine("Press ENTER to continue");
-				System.Console.ReadLine();
-			}
-
-			public static TokenCloudCredentials GetTokenCloudCredentials(string username = null, SecureString password = null)
-			{
-				var authFactory = new AuthenticationFactory();
-
-				var account = new AzureAccount { Type = AzureAccount.AccountType.User };
-
-				if (username != null && password != null)
-					account.Id = username;
-
-				var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
-
-				var accessToken =
-					authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto)
-						.AccessToken;
-
-				return new TokenCloudCredentials(accessToken);
-			}
-
-			public static SubscriptionCloudCredentials GetSubscriptionCloudCredentials(TokenCloudCredentials creds, Guid subId)
-			{
-				return new TokenCloudCredentials(subId.ToString(), creds.Token);
-			}
-		}
-	}
+            /// <summary>
+            /// Authenticate to an Azure subscription and retrieve an authentication token
+            /// </summary>
+            /// <param name="TenantId">The AAD tenant ID</param>
+            /// <param name="ClientId">The AAD client ID</param>
+            /// <param name="SubscriptionId">The Azure subscription ID</param>
+            /// <returns></returns>
+            static TokenCloudCredentials Authenticate(string TenantId, string ClientId, string SubscriptionId)
+            {
+                var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + TenantId);
+                var tokenAuthResult = authContext.AcquireToken("https://management.core.windows.net/", 
+                    ClientId, 
+                    new Uri("urn:ietf:wg:oauth:2.0:oob"), 
+                    PromptBehavior.Always, 
+                    UserIdentifier.AnyUser);
+                return new TokenCloudCredentials(SubscriptionId, tokenAuthResult.AccessToken);
+            }
+            /// <summary>
+            /// Marks your subscription as one that can use HDInsight, if it has not already been marked as such.
+            /// </summary>
+            /// <remarks>This is essentially a one-time action; if you have already done something with HDInsight
+            /// on your subscription, then this isn't needed at all and will do nothing.</remarks>
+            /// <param name="authToken">An authentication token for your Azure subscription</param>
+            static void EnableHDInsight(TokenCloudCredentials authToken)
+            {
+                // Create a client for the Resource manager and set the subscription ID
+                var resourceManagementClient = new ResourceManagementClient(new TokenCredentials(authToken.Token));
+                resourceManagementClient.SubscriptionId = SubscriptionId;
+                // Register the HDInsight provider
+                var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
+            }
+        }
+    }
 
 このプログラムを実行すると、プロンプトが表示されます。プロンプトを表示しない場合は、「[非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)」をご覧ください。
 
@@ -279,4 +289,4 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-flight]: hdinsight-analyze-flight-delay-data.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

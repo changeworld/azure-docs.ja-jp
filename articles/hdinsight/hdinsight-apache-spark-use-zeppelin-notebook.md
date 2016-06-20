@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="06/06/2016" 
 	ms.author="nitinme"/>
 
 
-# HDInsight Linux の Spark クラスターで Zeppelin Notebook を使用する (プレビュー)
+# HDInsight Linux の Apache Spark クラスターで Zeppelin Notebook を使用する
 
-Spark クラスターに Zeppelin Notebook をインストールする方法と、Zeppelin Notebook を使用する方法について説明します。
+Apache Spark クラスターに Zeppelin Notebook をインストールする方法と、Zeppelin Notebook を使用して Spark ジョブを実行する方法について説明します。
 
 > [AZURE.IMPORTANT] HDInsight の Spark クラスター向けの Zeppelin Notebook では、Azure HDInsight の Spark 環境で Zeppelin を使用する方法を紹介しています。HDInsight の Spark と連携して Notebook を使用する場合は、代わりに Jupyter Notebook を使用することをお勧めします。また、Jupyter Notebook では、Scala などの別のカーネル オプションも提供し、継続して機能が向上されます。HDInsight の Spark で Jupyter Notebook を使用する方法の詳細については、「[Jupyter Notebook を使用して Spark SQL クエリを実行する](hdinsight-apache-spark-jupyter-spark-sql.md#jupyter)」を参照してください。
 
 **前提条件:**
 
 * このチュートリアルを開始する前に、Azure サブスクリプションが必要です。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* Apache Spark クラスター。手順については、[Azure HDInsight での Apache Spark クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+* Apache Spark クラスター。手順については、[Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 * SSH クライアントLinux および UNIX のディストリビューション、または Macintosh OS X の場合、オペレーティング システムに `ssh`コマンドが用意されています。Windows の場合は [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をお勧めします。
 
 	> [AZURE.NOTE] `ssh`または PuTTY 以外の SSH クライアントを使用する場合は、クライアントのマニュアルで SSH トンネルの確立方法を確認してください。
@@ -37,9 +37,9 @@ Spark クラスターに Zeppelin Notebook をインストールする方法と�
 
 	> [AZURE.WARNING] FoxyProxy などのプラグインを使用しない場合、ブラウザー経由で送信されたすべての要求が、トンネル経由でルーティングされる場合があります。その結果、ブラウザーの Web ページの読み込みが低速になる可能性があります。
 
-## クラスター作成の一部としての Zeppelin のインストール
+## Spark クラスターへの Zeppelin のインストール
 
-Zeppelin は、スクリプト アクションを使用して Spark クラスターにインストールできます。スクリプト アクションは、既定で使用できないクラスターにコンポーネントをインストールするためにカスタム スクリプトを使用します。HDInsight .NET SDK を使用するか、または Azure PowerShell を使用すると、カスタム スクリプトを使用して、Azure ポータルから Zeppelin をインストールできます。
+Zeppelin は、スクリプト アクションを使用して Spark クラスターにインストールできます。スクリプト アクションは、既定で使用できないクラスターにコンポーネントをインストールするためにカスタム スクリプトを使用します。HDInsight .NET SDK を使用するか、または Azure PowerShell を使用すると、カスタム スクリプトを使用して、Azure ポータルから Zeppelin をインストールできます。スクリプトによる Zeppelin のインストールは、クラスター作成の一環として、またはクラスターの稼働後に実行できます。これを行う方法については、以降のセクションのリンクで説明します。
 
 ### Azure ポータルの使用
 
@@ -201,7 +201,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	* **[パターン名]** - **zeppelinnotebook** - パターンのフレンドリ名です。
 
-	* **URL パターン** - **\*hn0*\** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン **hn0** を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
+	* **URL パターン** - ***hn0*** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン **hn0** を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
 
 		![foxyproxy のパターン](./media/hdinsight-apache-spark-use-zeppelin-notebook/foxypattern.png)
 
@@ -323,13 +323,21 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+
+* [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+
+* [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
 ### リソースの管理
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
+
+* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
 
 [hdinsight-versions]: hdinsight-component-versioning.md
@@ -342,4 +350,4 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

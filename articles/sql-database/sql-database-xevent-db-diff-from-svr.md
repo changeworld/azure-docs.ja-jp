@@ -15,12 +15,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/25/2016"
+	ms.date="06/07/2016"
 	ms.author="genemi"/>
 
 
 # SQL Database の拡張イベント
 
+[AZURE.INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
 このトピックでは、Azure SQL Database での拡張イベントの実装が Microsoft SQL Server の拡張イベントの場合と若干異なる点について説明します。
 
@@ -36,6 +37,12 @@
 > [AZURE.NOTE] 2015 年 10 月より、Azure SQL Database において拡張イベント セッション機能がプレビュー レベルでアクティブ化します。完全一般公開 (GA) の日付はまだ設定されていません。
 >
 > GA のお知らせの際は、Azure の[サービス更新](https://azure.microsoft.com/updates/?service=sql-database)ページに投稿されます。
+
+
+Azure SQL Database と Microsoft SQL Server の拡張イベントについては、次のトピックをご覧ください。
+
+- [クイック スタート: SQL Server の拡張イベント](http://msdn.microsoft.com/library/mt733217.aspx)
+- [拡張イベント](http://msdn.microsoft.com/library/bb630282.aspx)
 
 
 ## 前提条件
@@ -269,4 +276,4 @@ Azure Storage BLOB にデータを保持する際に、**イベント ファイ�
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

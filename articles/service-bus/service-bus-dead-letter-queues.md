@@ -89,6 +89,6 @@ while(true)
 Service Bus キューの詳細については、次の記事を参照してください。
 
 - [Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-- [Service Bus キュー](service-bus-dotnet-how-to-use-queues.md)の使用方法
+- [Service Bus キュー](service-bus-dotnet-get-started-with-queues.md)の使用方法
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

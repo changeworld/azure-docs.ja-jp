@@ -154,7 +154,7 @@ Site Recovery のプロセス サーバーは、vSphere ホストまたはホス
 ## Recovery Services コンテナーを作成する
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. **[新規]**、**[ハイブリッド統合]**、**[Recovery Services]** の順にクリックします。または、**[参照]**、**[Recovery Services コンテナー]**、**[追加]** の順にクリックします。
+2. **[新規]**、**[管理]**、**[Backup and Site Recovery (OMS) (バックアップと Site Recovery (OMS))]** の順にクリックします。または、**[参照]**、**[Recovery Services コンテナー]**、**[追加]** の順にクリックします。
 
 	![新しいコンテナー](./media/site-recovery-vmware-to-azure/new-vault3.png)
 
@@ -533,8 +533,7 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 ソース オペレーティング システム | モビリティ サービスのインストール ファイル
 --- | ---
 Windows Server (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_Windows\_* release.exe
-CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz 
-SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
+CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
 Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
 
 
@@ -614,7 +613,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 1. **[Step 2: Replicate application]** (ステップ 2: アプリケーションをレプリケートする)、**[ソース]** の順にクリックします。レプリケーションを初めて有効にした後は、コンテナーで **[+ レプリケート]** をクリックして、追加のマシンのレプリケーションを有効にします。
 2. **[ソース]** ブレードで **[ソース]** をクリックし、構成サーバーを選択します。
 3. **[Machine type]** (マシンの種類) で、**[仮想マシン]** または **[物理マシン]** を選択します。
-4. **[vCenter/vSphere Hypervisor]** (vCenter/vSphere ハイパーバイザー) で、vSphere ホストを管理する vCenter サーバーを選択するか、ホストを選択します。物理マシンをレプリケートする場合、この設定は関係ありません。
+4. **[vCenter/vSphere Hypervisor] ** (vCenter/vSphere ハイパーバイザー) で、vSphere ホストを管理する vCenter サーバーを選択するか、ホストを選択します。物理マシンをレプリケートする場合、この設定は関係ありません。
 5. プロセス サーバーを選択します。追加のプロセス サーバーを作成していない場合、これは構成サーバーの名前になります。次に、 **[OK]** をクリックします
 
 	![Enable replication](./media/site-recovery-vmware-to-azure/enable-replication2.png)
@@ -832,4 +831,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

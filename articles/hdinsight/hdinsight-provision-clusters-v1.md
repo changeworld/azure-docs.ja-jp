@@ -20,11 +20,11 @@
 
 HDInsight クラスターのプロビジョニングを計画する方法について説明します。
 
-> [AZURE.IMPORTANT] このドキュメントの手順では、Azure クラシック ポータルを使用します。新しいサービスを作成する際は、クラシック ポータルを使用しないことをお勧めします。Azure ポータルの利点の詳細については、「[Microsoft Azure ポータル](https://azure.microsoft.com/features/azure-portal/)」をご覧ください。
+> [AZURE.IMPORTANT] このドキュメントの手順では、Azure クラシック ポータルを使用します。新しいサービスを作成するときは、クラシック ポータルを使用しないことをお勧めします。Azure ポータルの利点の詳細については、「[Microsoft Azure ポータル](https://azure.microsoft.com/features/azure-portal/)」を参照してください。
 >
-> このドキュメントでは、Azure PowerShell と Azure CLI の使用方法についても説明します。ここで示すスニペットは、Azure サービス管理 (ASM) を使用して HDInsight で機能するコマンドに基づいていますが、これらのコマンドは__推奨されていません__。これらのコマンドは、2017 年 1 月 1 日までに削除される予定です。
+> このドキュメントでは、Azure PowerShell、Azure CLI、および .NET SDK for HDInsight の使用方法についても説明します。ここで示すスニペットは、Azure サービス管理 (ASM) を使用して HDInsight で機能するコマンドに基づいていますが、これらのコマンドは__推奨されていません__。これらのコマンドは、2017 年 1 月 1 日までに削除される予定です。
 >
->Azure Resource Manager (ARM) を使用する PowerShell および Azure CLI のスニペットと共に、Azure ポータルを使用するこのドキュメントのバージョンについては、[HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)に関する記事をご覧ください。
+>Azure Resource Manager (ARM) を使用する PowerShell、Azure CLI、および .NET SDK for HDInsight のスニペットと、Azure ポータルを使用するこのドキュメントのバージョンについては、[HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)に関する記事をご覧ください。
 
 **前提条件:**
 
@@ -300,7 +300,7 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 ### Azure PowerShell の使用
 Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できる強力なスクリプティング環境です。このセクションでは、Azure PowerShell を使用して HDInsight クラスターをプロビジョニングする方法について説明します。ワークステーションを構成して HDInsight Windows Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。HDInsight で Azure PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」をご覧ください。HDInsight Windows PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn858087.aspx)」をご覧ください。
 
-> [AZURE.NOTE] このセクションのスクリプトは、Azure 仮想ネットワークの HDInsight クラスターの構成に使用できますが、Azure 仮想ネットワークは作成されません。Azure 仮想ネットワークの作成の詳細については、「[仮想ネットワークの構成タスク](../services/virtual-machines/)」をご覧ください。
+> [AZURE.NOTE] このセクションのスクリプトは、Azure 仮想ネットワークの HDInsight クラスターの構成に使用できますが、Azure 仮想ネットワークは作成されません。Azure 仮想ネットワークの作成の詳細については、「[仮想ネットワークの構成タスク](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」をご覧ください。
 
 Azure PowerShell を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
@@ -534,7 +534,7 @@ Azure CLI は NPM または Windows インストーラーを使用してイン�
 
 **Windows インストーラーを使用して Azure CLI をインストールするには**
 
-1.	ブラウザーで **http://azure.microsoft.com/downloads/** を開きます。
+1.	ブラウザーで ****http://azure.microsoft.com/downloads/** を開きます。
 2.	下へスクロールして、**[コマンド ライン ツール]** セクションの **[Azure コマンド ライン インターフェイス]** をクリックし、Web プラットフォーム インストーラーのウィザードの指示に従います。
 
 **発行設定をダウンロードしてインポートするには**
@@ -815,4 +815,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

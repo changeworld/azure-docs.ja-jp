@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/08/2016"
+	ms.date="06/01/2016"
 	ms.author="stefsch"/>
 
 # App Service Environment のカスタム構成設定
@@ -85,7 +85,7 @@ TLS 1.0 は、次の **clusterSettings** エントリで無効にすることが
             }
         ],
 
-> 注: SChannel が認識できない間違った値を暗号スイートに設定すると、ご利用のサーバーに対するすべての TLS 通信が機能しなくなります。その場合、App Service Environment を再デプロイする必要があり、長時間にわたるダウンタイムが発生し、データが失われる可能性もあります。この機能は慎重に使用してください。
+> [AZURE.WARNING]  SChannel が認識できない間違った値を暗号スイートに設定すると、ご利用のサーバーに対するすべての TLS 通信が機能しなくなります。この場合は、**clusterSettings** から *FrontEndSSLCipherSuiteOrder* エントリを削除し、更新された ARM テンプレートを送信して、既定の暗号スイート設定に戻す必要があります。この機能は慎重に使用してください。
 
 ## 作業開始
 Azure クイック スタート Resource Manager テンプレートのサイトには、[App Service Environment を作成](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)するための基本定義を含むテンプレートが用意されています。
@@ -95,4 +95,4 @@ Azure クイック スタート Resource Manager テンプレートのサイト�
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

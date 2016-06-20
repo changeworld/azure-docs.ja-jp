@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	ms.author="dastrock"/>
 
 # v2.0 エンドポイントを使用してアプリケーションを登録する方法
@@ -30,7 +30,8 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 サインアップできましたか? おそらく空の Microsoft アプリの一覧が表示されているはずです。これを変更してみましょう。
 
-**[アプリの追加]** をクリックし、名前を付けます。ポータルにより、アプリにグローバルに一意のアプリケーション ID が割り当てられます。これは、後ほどコードで使用します。アプリに API を呼び出すためのアクセス トークンが必要なサーバー側コンポーネントが含まれる場合 (Office、Azure、独自の Web API など)、**アプリケーションのシークレット**を作成することもできます。<!-- TODO: Link for app secrets -->
+**[アプリの追加]** をクリックし、名前を付けます。ポータルにより、アプリにグローバルに一意のアプリケーション ID が割り当てられます。これは、後ほどコードで使用します。アプリに API を呼び出すためのアクセス トークンが必要なサーバー側コンポーネントが含まれる場合 (Office、Azure、独自の Web API など)、**アプリケーションのシークレット**を作成することもできます。
+<!-- TODO: Link for app secrets -->
 
 次に、アプリで使用するプラットフォームを追加します。
 
@@ -46,4 +47,4 @@ Microsoft アプリを構築したら、いずれかの v2.0 クイック スタ
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-v2-quickstart-table.md)]
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0608_2016-->

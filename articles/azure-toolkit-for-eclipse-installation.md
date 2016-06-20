@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/19/2016" 
+	ms.date="06/07/2016" 
 	ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690946.aspx -->
@@ -36,9 +36,9 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 
     ![Azure Toolkit for Eclipse のインストール][01]
 
-1. **[Available Software]** ダイアログで、**[Work with]** ボックスに「**http://dl.microsoft.com/eclipse**」と入力し、**Enter** キーを押します。
+1. **[Available Software]** ダイアログで、**[Work with]** ボックスに「****http://dl.microsoft.com/eclipse**」と入力し、**Enter** キーを押します。
 
-1. **[Name]** ウィンドウで、**\[Azure Toolkit for Eclipse]** をオンにし、**[Contact all update sites during install to find required software]** をオフにします。画面は次のようになります。
+1. **[Name]** ウィンドウで、**[Azure Toolkit for Eclipse]** をオンにし、**[Contact all update sites during install to find required software]** をオフにします。画面は次のようになります。
 
     ![Azure Toolkit for Eclipse のインストール][02]
 
@@ -74,20 +74,28 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 
 ## 関連項目
 
-[Azure Toolkit for Eclipse]
+Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
 
-[Eclipse で Azure 用の Hello World Web アプリを作成する]
-
-[Azure Toolkit for Eclipse の新機能]
+- [Azure Toolkit for Eclipse]
+  - *Azure Toolkit for Eclipse のインストール (この記事）*
+  - [Eclipse で Azure 用の Hello World Web アプリを作成する]
+  - [Azure Toolkit for Eclipse の新機能]
+- [Azure Toolkit for IntelliJ]
+  - [Azure Toolkit for IntelliJ のインストール]
+  - [IntelliJ で Azure 用の Hello World Web アプリを作成する]
 
 Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
 
 <!-- URL List -->
 
 [Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse.md
-[Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
+[Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij.md
 [Eclipse で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
+[IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
 [Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
+
+[Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
 
 <!-- IMG List -->
 
@@ -98,4 +106,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [05]: ./media/azure-toolkit-for-eclipse-installation/eclipse-installation-05.png
 [06]: ./media/azure-toolkit-for-eclipse-installation/eclipse-installation-06.png
 
-<!----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

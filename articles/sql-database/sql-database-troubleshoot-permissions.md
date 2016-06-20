@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="v-shysun"
-	manager="msmets"
+	manager="felixwu"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="06/03/2016"
 	ms.author="v-shysun"/>
 
 # Azure SQL Database の一般的な管理タスクを実行する方法
@@ -21,7 +21,9 @@ Azure SQL Database へのアクセスの付与および削除を行う簡単な�
 
 - [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
 - [SQL Database の保護](sql-database-security.md)
-- [SQL Server データベース エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
+- [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
+
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ##論理サーバーの管理パスワードを変更するには
 - [Azure ポータル](https://portal.azure.com)で **[SQL Server]** をクリックし、一覧からサーバーを選択して、**[パスワードのリセット]** をクリックします。
@@ -29,12 +31,12 @@ Azure SQL Database へのアクセスの付与および削除を行う簡単な�
 - 「[方法: ファイアウォール設定を構成する (SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 ##ユーザー データベースに包含データベース ユーザーを作成するには
-- [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) ステートメントを使用し、「[包含データベース ユーザー - データベースの移植性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
+- [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) ステートメントを使用し、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」をご覧ください。
 
 ## Azure Active Directory を使用して包含データベース ユーザーを認証するには
-- 「[Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)」を参照してください。
+- [Azure Active Directory の認証を使用した SQL Database への接続](sql-database-aad-authentication.md)に関するページをご覧ください。
 
 ## 仮想マスター データベースで高い特権を持つユーザーの追加ログインを作成するには
 - [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) ステートメントを使用し、「[Azure SQL Database におけるデータベースとログインを管理する](sql-database-manage-logins.md)」の「ログイン管理」のセクションで詳細を確認してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

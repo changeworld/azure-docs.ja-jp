@@ -38,7 +38,7 @@ azure group show TestRG --json | jq '.'
 ストレージ アカウントの作成
 
 ```bash
-azure storage account create -g TestRG -l westeurope --type GRS computeteststore
+azure storage account create -g TestRG -l westeurope --kind Storage --sku-name GRS computeteststore
 ```
 
 JSON パーサーを使用したストレージの確認
@@ -259,7 +259,7 @@ info:    group create command OK
 azure storage account create \  
 --location westeurope \
 --resource-group TestRG \
---type GRS \
+--kind Storage --sku-name GRS \
 computeteststore
 ```
 
@@ -1234,4 +1234,4 @@ info:    vm show command OK
 
 これで、複数のネットワーク コンポーネントと VM を操作する準備が整いました。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

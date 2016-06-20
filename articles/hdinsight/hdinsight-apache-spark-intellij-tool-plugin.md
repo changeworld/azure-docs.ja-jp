@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="06/06/2016"
 	ms.author="nitinme"/>
 
 
-# IntelliJ IDEA 用の HDInsight Tools プラグインを使用して HDInsight Spark Linux クラスター向けの Spark Scala アプリケーションを作成する (プレビュー)
+# IntelliJ IDEA 用の HDInsight Tools プラグインを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する
 
 この記事では、IntelliJ IDEA 用の HDInsight プラグインを使用して、Scala で記述された Spark アプリケーションを開発し、HDInsight Spark クラスターに送信するための詳細な手順を説明します。このプラグインは、次のような使い方があります。
 
@@ -31,7 +31,7 @@
 >[AZURE.IMPORTANT] このツールを使用すると、Linux 上で HDInsight Spark クラスター専用のアプリケーションを作成し、送信することができます。
 
 
-**前提条件**
+##前提条件
 
 * Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * HDInsight Linux での Apache Spark クラスター。手順については、「[Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
@@ -40,9 +40,9 @@
 
 ## IntelliJ IDEA 用の HDInsight Tools プラグインのインストール
 
-1. IntelliJ IDEA の [Welcome] \(ようこそ) 画面が表示されたら、**[Configure]** (構成) をクリックし、**[Plugins]** (プラグイン) をクリックします。
+1. IntelliJ IDEA の [Welcome] (ようこそ) 画面が表示されたら、**[Configure]** (構成) をクリックし、**[Plugins]** (プラグイン) をクリックします。
 
-2. 次の画面の左下隅にある **[Browse Repositories]** (リポジトリの参照) をクリックします。**[Browse Repositories]** (リポジトリの参照) ダイアログ ボックスが開いたら、**HDInsight** を検索し、**[Microsoft Azure HDInsight Tools for IntelliJ (Preview)]** (Microsoft Azure HDInsight Tools for IntelliJ (プレビュー)) を選択して、**[Install]** (インストール) をクリックします。プラグインは、Scala プラグインに依存しています。そのため、Scala プラグインがインストールされていない場合は、Scala プラグインもインストールするように求められます。
+2. 次の画面の左下隅にある **[Browse Repositories]** (リポジトリの参照) をクリックします。**[リポジトリの参照]** ダイアログ ボックスが開いたら、**HDInsight** を検索し、**[Microsoft Azure HDInsight Tools for IntelliJ]** を選択し、**[インストール]** をクリックします。プラグインは、Scala プラグインに依存しています。そのため、Scala プラグインがインストールされていない場合は、Scala プラグインもインストールするように求められます。
 
 	![HDInsight プラグインのインストール](./media/hdinsight-apache-spark-intellij-tool-plugin/install-hdinsight-plugin.png)
 
@@ -73,18 +73,14 @@
 
 	* **[完了]** をクリックします。
 
-3. Spark プロジェクトでは、アーティファクトが自動的に作成されます。また、次の手順に従って、独自のアーティファクトを作成することもできます。
+3. Spark プロジェクトでは、アーティファクトが自動的に作成されます。アーティファクトを表示するには、次の手順に従います。
 
 	1. **[File (ファイル)]** メニューの **[Project Structure (プロジェクトの構造)]** をクリックします。
-	2. **[Project Structure (プロジェクトの構造)]** ダイアログ ボックスで、**[Artifacts (アーティファクト)]** をクリックし、プラス記号をクリックします。ポップアップ ダイアログ ボックスで、**[JAR]** をクリックし、**[Empty]** (空) をクリックします。
+	2. **[Project Structure]** (プロジェクトの構造) ダイアログ ボックスの **[Artifacts]** (アーティファクト) をクリックし、作成された既定のアーティファクトを確認します。
 
-		![JAR の作成](./media/hdinsight-apache-spark-intellij-tool-plugin/create-jar-1.png)
+		![JAR の作成](./media/hdinsight-apache-spark-intellij-tool-plugin/default-artifact.png)
 
-	3. JAR ファイルの名前を入力します (例: **MyClusterApp**)。[Available Elements] \(使用可能な要素) ウィンドウで、**['MyClusterApp' compile output]** ('MyClusterApp' コンパイル出力) を右クリックし、**[Put into Output Root]** (出力ルートに入れる) をクリックします。
-
-		![JAR の作成](./media/hdinsight-apache-spark-intellij-tool-plugin/create-jar-2.png)
-
-	4. **[Apply]** (適用) をクリックし、**[OK]** をクリックします。
+	上の図で強調表示されている **+** アイコンをクリックすれば、独自のアーティファクトを作成することができます。
 
 4. アプリケーション ソース コードを追加します。
 
@@ -125,8 +121,6 @@
 
 	2. Azure サブスクリプションの資格情報を入力するよう求められます。**[Spark Submission]** (Spark 送信) ダイアログ ボックスで、次の値を入力します。
 
-		![Spark アプリケーションの送信](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
-
 		* **[Spark clusters (Linux only)]** (Spark クラスター (Linux のみ)) では、アプリケーションを実行する HDInsight Spark クラスターを選択します。
 
 		* IntelliJ プロジェクトからアーティファクトを選択するか、ハード ディスクからアーティファクトを選択する必要があります。
@@ -137,9 +131,13 @@
 
 		* この例のアプリケーション コードでは、コマンドライン引数を必要とせず、JAR またはファイルを参照することもないので、残りのテキスト ボックスは空のままでかまいません。
 
+		* すべての入力を指定すると、ダイアログ ボックスは次の図のようになります。
+
+			![Spark アプリケーションの送信](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
+
 		* **[Submit]** をクリックします。
 
-	3. ウィンドウの下部にある **[Spark Submission]** (Spark 送信) タブで、進行状況の表示が開始されます。\[Spark Submission] (Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
+	3. ウィンドウの下部にある **[Spark Submission]** (Spark 送信) タブで、進行状況の表示が開始されます。[Spark Submission] (Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
 
         ![Spark Application Result](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 
@@ -161,6 +159,18 @@ HDInsight プラグインを使用してさまざまな操作を実行できま�
 	![クラスター ストレージへのアクセス](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-access-storage.png)
 
 4. クラスターに関連付けられているストレージ コンテナー名をクリックします。右側のウィンドウに、**HVACOut** という名前のフォルダーが表示されます。フォルダーをダブルクリックして開くと、**part-*** ファイルが表示されます。それらのファイルのいずれかを開いて、アプリケーションの出力を確認します。
+
+### プラグインでジョブ ビューに直接アクセスする
+
+1. **HDInsight Explorer** から Spark クラスター名を展開し、**[Job]** (ジョブ) をクリックします。
+
+2. 右側のウィンドウの **[Spark Job View]** (Spark ジョブ ビュー) タブに、クラスター上で実行されていたすべてのアプリケーションが表示されます。詳細情報を確認したいアプリケーション名をクリックします。
+
+	![ジョブ ビューへのアクセス](./media/hdinsight-apache-spark-intellij-tool-plugin/view-job-logs.png)
+
+3. **[Error Message]** (エラー メッセージ)、**[Job Output]** (ジョブの出力)、**[Livy Job Logs]** (Livy ジョブ ログ)、および **[Spark Driver Logs]** (Spark ドライバー ログ) の各ボックスに、選択したアプリケーションに応じた値が入力されます。
+
+4. 画面の上部にあるボタンをクリックして、**[Spark History UI]** (Spark 履歴 UI) と **[YARN UI]** を開くこともできます (アプリケーション レベル)。
 
 ### Spark History Server へのアクセス
 
@@ -195,9 +205,25 @@ Windows コンピューターでローカル Spark Scala アプリケーショ�
 	* 右側のウィンドウで、**[Spark on HDInsight Local Run Sample (Scala)]** (HDInsight の Spark のローカル実行サンプル (Scala)) を選択します。
 	* **[次へ]** をクリックします。
 
-2. 「HDInsight Spark クラスターでの Spark Scala アプリケーションの実行」セクションの手順に従って、必要な設定を構成します。
+2. 次のウィンドウで、プロジェクトの詳細を指定します。
 
-3. ワークステーションでアプリケーションをローカルに実行します。Scala アプリケーションを右クリックし、**[Run 'LogQuery']** ('LogQuery' の実行) をクリックします。下部の **[Run]** (実行) タブに次のような出力が表示されます。
+	* プロジェクト名とプロジェクトの場所を指定します。
+	* **Project SDK** の場合、Java のバージョンは必ず 7 より新しいものを指定します。
+	* **Scala SDK** の場合、**[Create]** (作成) をクリックし、**[Download]** (ダウンロード) をクリックして、使用する Scala のバージョンを選択します。**バージョン 2.11.x は使用しないでください**。このサンプルでは、バージョン **2.10.6** を使用します。
+
+		![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
+
+	* **Spark SDK** の場合は、[ここ](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)から SDK をダウンロードして使用してください。これを無視し、代わりに [Spark Maven リポジトリ](http://mvnrepository.com/search?q=spark)を使用できますが、Spark アプリケーションの開発に適した maven リポジトリがインストールされていることを確認してください (たとえば、Spark ストリーミングを使用する場合は、Spark ストリーミング部分がインストールされていることを確認する必要があります。また、Scala 2.10 とマークされているリポジトリを使用していることを確認してください。Scala 2.11 とマークされているリポジトリは使用しないでください)。
+
+		![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-create-project.png)
+
+	* **[完了]** をクリックします。
+
+3. テンプレートは、コンピューターでローカルに実行することができるサンプル コード (**LogQuery**) を **src** フォルダーの下に追加します。
+
+	![ローカル Scala アプリケーション](./media/hdinsight-apache-spark-intellij-tool-plugin/local-app.png)
+
+4.  **LogQuery** アプリケーションを右クリックし、**[Run 'LogQuery']** ('LogQuery' の実行) をクリックします。下部の **[Run]** (実行) タブに次のような出力が表示されます。
 
 	![Spark Application local run result](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-run-result.png)
 
@@ -238,7 +264,7 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
     	at java.lang.reflect.Method.invoke(Method.java:606)
     	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)
 
-このエラーは単純に、ヒープ サイズが不足しているために Spark を実行できない、という理由で発生します。Spark には少なくとも 471 MB のヒープが必要となります (詳細については [SPARK-12081](https://issues.apache.org/jira/browse/SPARK-12081) を参照)。簡単な解決方法としては、64 ビットの Java SDK を使用することが考えられます。または、IntelliJ で JVM 設定に以下のオプションを追加します。
+このエラーはヒープ サイズが不足しているために Spark を実行できない、という理由で発生します。Spark には少なくとも 471 MB のヒープが必要となります (詳細については [SPARK-12081](https://issues.apache.org/jira/browse/SPARK-12081) を参照)。簡単な解決方法としては、64 ビットの Java SDK を使用することが考えられます。または、IntelliJ で JVM 設定に以下のオプションを追加します。
 
     -Xms128m -Xmx512m -XX:MaxPermSize=300m -ea
 
@@ -269,16 +295,26 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 
 ### アプリケーションの作成と実行
 
+* [Scala を使用してスタンドアロン アプリケーションを作成する](hdinsight-apache-spark-create-standalone-application.md)
+
 * [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### ツールと拡張機能
+
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 
+* [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+
+* [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+
 ### リソースの管理
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
+
+<!---HONumber=AcomDC_0608_2016-->

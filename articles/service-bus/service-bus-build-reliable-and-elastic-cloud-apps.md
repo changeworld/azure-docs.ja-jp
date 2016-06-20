@@ -29,7 +29,7 @@
  
 ## 構築
 
-- [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md) 
+- [Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md) 
 - [Deadlettering in Service Bus Brokered Messaging (Service Bus のブローカー メッセージングでの配信不能) (2011 年 10 月 21 日のブログ投稿)](http://geekswithblogs.net/asmith/articles/147398.aspx) 
 - [Service Bus の停止と障害に対する Service Bus アプリケーションを隔離するベスト プラクティス](service-bus-outages-disasters.md)
 - [ブローカー メッセージング: 要求応答のサンプル](https://code.msdn.microsoft.com/Brokered-Messaging-Request-0ce8fcaf) 
@@ -46,4 +46,4 @@
 - [Cloud Services](https://azure.microsoft.com/services/cloud-services/) 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

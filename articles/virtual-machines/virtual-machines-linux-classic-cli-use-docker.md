@@ -23,11 +23,11 @@
 
 
 
-このトピックでは、任意のプラットフォーム上のサービス管理 (asm) モードの Azure CLI から Docker VM 拡張機能を使用して VM を作成する方法について説明します。[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。[Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)に対して Docker VM 拡張機能を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。コンテナーとその利点に関する概要については、「[Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
+このトピックでは、任意のプラットフォーム上のサービス管理 (asm) モードの Azure CLI から Docker VM 拡張機能を使用して VM を作成する方法について説明します。[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。Docker VM 拡張機能と [Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)を使用して、Azure 上でアプリケーション用に任意の数のコンテナーをホストする Docker VM を作成することができます。コンテナーとその利点に関する概要については、「[Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
 
 
 ##Azure で Docker VM 拡張機能を使用する方法
-Azure で Docker VM 拡張機能を使用するには、バージョン 0.8.6 以降の [Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-sdk-tools-xplat) (Azure CLI) をインストールする必要があります (この記事の執筆時点で最新バージョンは 0.8.10 です)。Azure CLI は Mac、Linux、Windows のいずれにもインストールできます。
+Azure で Docker VM 拡張機能を使用するには、バージョン 0.8.6 以降の [Azure コマンド ライン インターフェイス](https://github.com/Azure/azure-sdk-tools-xplat) (Azure CLI) をインストールする必要があります (この記事の執筆時点で最新バージョンは 0.10.0 です)。Azure CLI は Mac、Linux、Windows のいずれにもインストールできます。
 
 
 Azure 上で Docker を使用するためのプロセスはシンプルです。
@@ -41,7 +41,7 @@ Azure 上で Docker を使用するためのプロセスはシンプルです。
 
 Azure CLI のインストールと構成の方法については、[Azure コマンド ライン インターフェイスのインストール方法](../xplat-cli-install.md)に関するページを参照してください。インストールを確認するために、コマンド プロンプトで「`azure`」と入力します。しばらくすると、Azure CLI の ASCII アートが表示され、使用可能な基本コマンドが一覧表示されます。インストールが正常に行われていれば、「`azure help vm`」と入力したときに、一覧表示されたコマンドに "docker" が含まれています。
 
-> [AZURE.NOTE] Docker には [Boot2Docker](https://docs.docker.com/installation/windows/) という Windows 用セットアップ プログラムが用意されています。このプログラムでは、Docker クライアントの作成を自動化することもできます。作成された Docker クライアントは Docker ホストとして Azure VM との連携に使用できます。
+> [AZURE.NOTE] Docker には [Docker Machine](https://docs.docker.com/installation/windows/) という Windows 用ツールが用意されています。このプログラムでは、Docker クライアントの作成を自動化することもできます。作成された Docker クライアントは Docker ホストとして Azure VM との連携に使用できます。
 
 ### Azure アカウントへの Azure CLI の接続
 Azure CLI を使用する前に、プラットフォーム上で Azure アカウントの資格情報を Azure CLI に関連付ける必要があります。[Azure サブスクリプションに接続する方法](../xplat-cli-connect.md)に関するセクションに、**.publishsettings** ファイルをダウンロードしてインポートする方法と Azure CLI コマンド ラインを組織 ID に関連付ける方法が説明されています。
@@ -63,10 +63,10 @@ bash またはターミナル セッションから、次の Azure CLI コマン
 
 `azure vm image list | grep Ubuntu-14_04`
 
-`b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-ja-JP-30GB` など、イメージ名のいずれかを選び、次のコマンドを入力して、そのイメージを使用した新しい VM を作成します。
+`b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-ja-JP-30GB` など、イメージ名のいずれかを選び、次のコマンドを入力して、そのイメージを使用した新しい VM を作成します。
 
 ```
-azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140724-ja-JP-30GB" <username> <password>
+azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-ja-JP-30GB" <username> <password>
 ```
 
 各値の説明:
@@ -173,4 +173,4 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

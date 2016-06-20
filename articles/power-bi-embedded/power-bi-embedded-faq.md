@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="03/29/2016"
+   ms.date="06/01/2016"
    ms.author="derrickv"/>
 
 # Power BI Embedded FAQ
@@ -50,7 +50,7 @@
 
     Power BI Embedded サービスは、BUILD 2016 (米国中南部データ センター) でお知らせしたように北米で使用できます。他の Azure データ センターにおいても近日サービスの提供を開始することを予定しています。
 
-9.	**サービスで利用可能な SLA は何ですか。**
+9. **サービスで利用可能な SLA は何ですか。**
 
     Power BI Embedded は、現在プレビューの Azure サービスとして利用できますが、正式な SLA は提供されておりません。サービスがプレビューから一般公開リリースへ移行する際に、SLA が提供されます。
 
@@ -61,7 +61,8 @@
 
     ユーザーが開発したアプリケーションが (1) 当社のサービスに重要かつ有意な機能を追加しており、主に Power BI サービスの代用ではなく、(2) 外部ユーザーに対して単体で提供されている場合にのみ、そのアプリケーションで Power BI Embedded サービスを利用できます。社内用のビジネス アプリケーション内では Power BI Embedded サービスを使用できません。
 
-    ![](media\power-bi-embedded-faq\price.png)
+
+   ![](media\power-bi-embedded-faq\price.png)
 
 11.	**レンダーとは何ですか? また、レンダーはどのように請求されますか?**
 
@@ -87,11 +88,11 @@
 
 15.	**アプリケーションのエンドユーザーに Power BI ライセンスは必要ですか。**
 
-    いいえ。アプリケーションのエンドユーザーは、アプリ内のデータの視覚エフェクトを利用する際に、個別の Power BI サブスクリプションを購入する必要はありません。Power BI Embedded モデルでは、Azure の従量課金メーターにを通じて、アプリケーション プロバイダーが請求されます。詳細については、[料金とライセンス](http://go.microsoft.com/fwlink/?LinkId=760527) ページを参照してください。
+    いいえ。アプリケーションのエンドユーザーは、アプリ内のデータの視覚エフェクトを利用する際に、個別の Power BI サブスクリプションを購入する必要はありません。Power BI Embedded モデルでは、Azure の従量課金メーターにを通じて、アプリケーション プロバイダーが請求されます。詳細については、[料金とライセンス](http://go.microsoft.com/fwlink/?LinkId=760527)に関するページをご覧ください。
 
 16.	**どのように Power BI Embedded のユーザー認証は処理されますか?**
 
-    Power BI Embedded サービスでは、明示的なエンドユーザー認証ではなく、アプリケーション トークンを使用して認証と承認を行います。アプリケーション トークン モデルでは、アプリケーションがエンドユーザーの認証と承認を管理します。次に、アプリケーションは、必要に応じてアプリケーション トークンを作成して送信し、要求されたレポートをレンダリングするようサービスに伝えます。この設計では、アプリケーションでユーザーの認証と承認に Azure Active Directory を使用する必要はありません (ただし、Azure Active Directory を使用することもできます)。アプリケーションのトークンの詳細については、[アプリ トークン](https://azure.microsoft.com/documentation/articles/power-bi-embedded-get-started-sample/#key-flow) ドキュメント ページを参照してください。
+    Power BI Embedded サービスでは、明示的なエンドユーザー認証ではなく、アプリケーション トークンを使用して認証と承認を行います。アプリケーション トークン モデルでは、アプリケーションがエンドユーザーの認証と承認を管理します。次に、アプリケーションは、必要に応じてアプリケーション トークンを作成して送信し、要求されたレポートをレンダリングするようサービスに伝えます。この設計では、アプリケーションでユーザーの認証と承認に Azure Active Directory を使用する必要はありません (ただし、Azure Active Directory を使用することもできます)。アプリ トークンの詳細については、[アプリ トークン](https://azure.microsoft.com/ja-JP/documentation/articles/power-bi-embedded-get-started-sample/#key-flow) ドキュメント ページをご覧ください。
 
 17.	**Power BI Embedded では現在どのようなデータ ソースがサポートされていますか?**
 
@@ -101,19 +102,19 @@
 
     Power BI Embedded モデルでは、Azure Active Directory (Azure AD) テナントを顧客向けに使用するための明示的な条件はありません。顧客向けに Azure AD を提供するかどうか選択することができます。結果として、アプリケーションとインフラストラクチャのアーキテクチャによって、Power BI Embedded でテナント モデルが必要となるかが決定されます。
 
-    アプリケーションの開発に取り組んでいる開発者または従業員は、Azure ポータルを使用して Azure サブスクリプションとワークスペースのコレクションを管理できるよう、Azure AD ユーザー アカウントを所有している必要があります。開発者は、プログラムの API を使用し、レポートをインポートし、接続文字列を変更することができます。また、代わりに、埋め込み用 URL を取得し、認証用のアプリトークンを使用することも可能です。結果として、Azure AD は不要となります。API と Azure ポータルを使用する方法の詳細については、[Azure.com の Power BI Embedded ドキュメント ページ](https://azure.microsoft.com/documentation/services/power-bi-embedded/)を参照してください。
+    アプリケーションの開発に取り組んでいる開発者または従業員は、Azure ポータルを使用して Azure サブスクリプションとワークスペースのコレクションを管理できるよう、Azure AD ユーザー アカウントを所有している必要があります。開発者は、プログラムの API を使用し、レポートをインポートし、接続文字列を変更することができます。また、代わりに、埋め込み用 URL を取得し、認証用のアプリトークンを使用することも可能です。結果として、Azure AD は不要となります。API と Azure ポータルを使用する方法の詳細については、[Azure.com の Power BI Embedded ドキュメント ページ](https://azure.microsoft.com/ja-JP/documentation/services/power-bi-embedded/)をご覧ください。
 
 19.	**詳細情報を得るには?**
 
-    [Power BI Embedded ドキュメント ページ](http://go.microsoft.com/fwlink/?LinkId=760526)を参照してください。このサービスの最新情報については、[Power BI の開発者向けブログ](http://blogs.msdn.com/powerbidev) か Power BI デベロッパー センター (dev.powerbi.com) を参照してください。[Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi) で質問することも可能です。
+    [Power BI Embedded ドキュメント ページ](http://go.microsoft.com/fwlink/?LinkId=760526)をご覧ください。このサービスの最新情報については、[Power BI の開発者向けブログ](http://blogs.msdn.com/powerbidev)か Power BI デベロッパー センター (dev.powerbi.com) をご覧ください。[Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi) で質問することも可能です。
 
 20.	**開始するには?**
 
-    今すぐ無料で開始できます。 Azure サブスクリプションを所有している場合は、Azure ポータルから直接 Power BI Embedded をプロビジョニングできます。また、[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成することも可能です。Power BI Embedded サービスをプロビジョニングしたら、簡単に Power BI REST API を直接使用したり、[GitHub](http://go.microsoft.com/fwlink/?LinkID=746472) で提供されている Developer SDK を使用できます。Developer SDK を活用する方法については、サンプルが提供されます。
+    今すぐ無料で開始できます。 Azure サブスクリプションを所有している場合は、Azure ポータルから直接 Power BI Embedded をプロビジョニングできます。また、[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成することも可能です。Power BI Embedded サービスをプロビジョニングしたら、簡単に Power BI REST API を直接使用したり、[GitHub](http://go.microsoft.com/fwlink/?LinkID=746472) で提供されている Developer SDK を使用したりすることができます。Developer SDK を活用する方法については、サンプルが提供されます。
 
 ## 関連項目
 
-- [Microsoft Power BI Embedded とは](power-bi-embedded-what-is-power-bi-embedded.md)
+- [What is Microsoft Power BI Embedded (Microsoft Power BI Embedded とは)](power-bi-embedded-what-is-power-bi-embedded.md)
 - [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューの使用を開始する)](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

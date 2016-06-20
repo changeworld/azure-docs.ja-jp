@@ -68,8 +68,7 @@
 - [方法: MySQL のインストールと実行](virtual-machines-linux-classic-mysql-on-opensuse.md)
 
 ### CoreOS
-- [方法: Azure での CoreOS の使用](virtual-machines-linux-classic-coreos-howto.md)
-- [方法: Azure 上の CoreOS での fleet と Docker の使用](virtual-machines-linux-classic-coreos-fleet-get-started.md)
+- [方法: Azure での CoreOS の使用](https://coreos.com/os/docs/latest/booting-on-azure.html)
 
 
 ## 計画
@@ -193,4 +192,4 @@
 
 - [Azure 用のプラグインの packer](https://github.com/msopentech/packer-azure)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

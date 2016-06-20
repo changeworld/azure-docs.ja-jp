@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="09/22/2015"
+	ms.date="05/27/2016"
 	ms.author="rasquill"/>
 
 
@@ -32,7 +32,8 @@
 
 > [AZURE.NOTE] 現時点では、2014 年 7 月以降の Ubuntu 14.04 LTS イメージのみが Docker VM 拡張機能をサポートしています。
 
-![新しい Ubuntu イメージの作成](./media/virtual-machines-linux-classic-portal-use-docker/ChooseUbuntu.png)
+![新しい Ubuntu イメージの作成  
+](./media/virtual-machines-linux-classic-portal-use-docker/ChooseUbuntu.png)
 
 ## Docker 証明書の作成
 
@@ -45,12 +46,12 @@ VM の作成が完了したら、クライアント コンピューターに Doc
 コマンド ラインで **`base64`** を使用するか、別の使い慣れたエンコード ツールを使用して、Base64 でエンコードされたトピックを作成します。証明書とキー ファイルのシンプルなセットをしてこの操作を行った場合、次のようになります。
 
 ```
- ~/.docker$ l
+ ~/.docker$ ls
  ca-key.pem  ca.pem  cert.pem  key.pem  server-cert.pem  server-key.pem
  ~/.docker$ base64 ca.pem > ca64.pem
  ~/.docker$ base64 server-cert.pem > server-cert64.pem
  ~/.docker$ base64 server-key.pem > server-key64.pem
- ~/.docker$ l
+ ~/.docker$ ls
  ca64.pem    ca.pem    key.pem            server-cert.pem   server-key.pem
  ca-key.pem  cert.pem  server-cert64.pem  server-key64.pem
 ```
@@ -79,11 +80,11 @@ Docker VM 拡張機能を選択します。この操作により、Docker の説
 > [AZURE.NOTE] (上のイメージに示すように) 既定で 2376 が入力されています。ここに任意のエンドポイントを入力できますが、次のステップで、一致するエンドポイントを開く必要があります。既定値を変更した場合は、必ず、次のステップで一致するエンドポイントを開いてください。
 
 ## Docker 通信エンドポイントの追加
-前に作成したリソース グループの VM が表示されているときに、下へスクロールして **[エンドポイント]** をクリックすると、下に示すように VM 上のエンドポイントが表示されます。
+作成したリソース グループを表示するとき、VM に関連付けられているネットワーク セキュリティ グループを選択し、**[受信セキュリティ規則]** をクリックして、次に示すようにルールを表示します。
 
 ![](./media/virtual-machines-linux-classic-portal-use-docker/AddingEndpoint.png)
 
-**[+ 新規]** をクリックするとエンドポイントが 1 つ追加されます。既定で、エンドポイントの名前 (この例では **docker**) と、プライベート ポートおよびパブリック ポートとして 2376 が入力されています。**[TCP]** と表示されているプロトコルの値はそのままにし、**[OK]** をクリックして、エンドポイントを作成します。
+**[+ 新規]** をクリックするとルールが 1 つ追加されます。既定で、エンドポイントの名前 (この例では **Docker**) と、[宛先ポート範囲] に「2376」が入力されています。**[TCP]** と表示されているプロトコルの値を設定し、**[OK]** をクリックして、ルールを作成します。
 
 ![](./media/virtual-machines-linux-classic-portal-use-docker/AddEndpointFormFilledOut.png)
 
@@ -147,4 +148,4 @@ WARNING: No swap limit support
 [HTTPS を使用した Docker の実行]: http://docs.docker.com/articles/https/
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

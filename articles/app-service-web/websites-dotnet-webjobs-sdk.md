@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/14/2016" 
+	ms.date="06/01/2016" 
 	ms.author="tdykstra"/>
 
 # Azure Web ジョブ SDK とは
@@ -22,7 +22,7 @@
 
 この記事では、Web ジョブ SDK の特徴を紹介すると共に、一般的な用途を確認し、コードでの使い方の概要を示します。
 
-[Web ジョブ](websites-webjobs-resources.md)は、Web アプリ、API アプリ、またはモバイル アプリと同じコンテキストでプログラムやスクリプトを実行できる Azure App Service の機能です。[Web ジョブ SDK](websites-webjobs-resources.md) の目的は、Web ジョブで実行できる一般的な作業 (画像処理、キュー処理、RSS 情報集約、ファイル管理、電子メールの送信など) を単純なコードで記述できるようにすることです。Web ジョブ SDK には、Azure Storage や Service Bus の操作、タスクのスケジューリング、エラー処理など、一般的な用途に対応した各種の機能が組み込まれています。拡張性にも優れた設計となっており、[拡張機能のオープン ソース リポジトリ](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)が存在します。
+[Web ジョブ](websites-webjobs-resources.md)は、Web アプリ、API アプリ、またはモバイル アプリと同じコンテキストでプログラムやスクリプトを実行できる Azure App Service の機能です。[Web ジョブ SDK](websites-webjobs-resources.md) の目的は、Web ジョブで実行できる一般的な作業 (画像処理、キュー処理、RSS 情報集約、ファイル管理、電子メールの送信など) を単純なコードで記述できるようにすることです。WebJobs SDK には、Azure Storage や Service Bus の操作、タスクのスケジューリング、エラー処理など、一般的な用途に対応した各種の機能が組み込まれています。また、拡張できるように設計されています。[Web ジョブ SDK はオープン ソース](https://github.com/Azure/azure-webjobs-sdk/)であり、[拡張機能のオープン ソース リポジトリ](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)が用意されています。
 
 Web ジョブ SDK には次のコンポーネントが含まれています。
 
@@ -180,4 +180,4 @@ Web ジョブ SDK の詳細については、「[Azure WebJobs Recommended Resou
 Web ジョブ SDK の最新の機能強化については、「[リリース ノート](https://github.com/Azure/azure-webjobs-sdk/wiki/Release-Notes)」を参照してください。
  
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0608_2016-->

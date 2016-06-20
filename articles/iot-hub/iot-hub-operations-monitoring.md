@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/18/2016"
+ ms.date="06/06/2016"
  ms.author="nberdy"/>
 
 # 操作の監視の概要
@@ -122,6 +122,25 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつデバイス�
          "deviceId": "device-ID"
     }
 
+### ファイルのアップロード
+
+ファイルのアップロード カテゴリでは、IoT Hub で発生し、かつファイルのアップロード機能に関連しているエラーを追跡します。これには、SAS URI で発生したエラー (デバイスがアップロード完了をハブに通知する前に期限切れになった、など)、デバイスによって報告されたアップロード エラー、IoT Hub 通知メッセージの作成中、ストレージでファイルが見つからない、などのエラーが含まれます。デバイスがファイルをストレージにアップロードしているときに直接発生したエラーについては、このカテゴリではキャッチできないことに注意してください。
+
+    {
+         "authType": "{"scope":"hub","type":"sas","issuer":"iothub"}",
+         "protocol": "HTTP",
+         "time": " UTC timestamp",
+         "operationName": "ingress",
+         "category": "fileUpload",
+         "level": "Error",
+         "statusCode": 4XX,
+         "statusType": 4XX001,
+         "statusDescription": "MessageDescription",
+         "deviceId": "device-ID",
+         "blobUri": "http//bloburi.com",
+         "durationMs": 1234
+    }
+
 ## 次のステップ
 
 操作の監視の概要については以上です。詳細については、以下のリンク先にアクセスしてください。
@@ -139,4 +158,4 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつデバイス�
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

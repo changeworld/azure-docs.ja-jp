@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="06/03/2016"
 	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -189,18 +189,18 @@
 価格レベルによって、容量と検索サービスの制限が決定されます。レベルは次のとおりです。
 
 - *Free*: 他の Azure サブスクライバーと共有する、評価および小規模の開発プロジェクトのためのマルチ テナント サービス。
-- *Basic (プレビュー)* は、小規模の運用環境のワークロード専用のコンピューティング リソースを提供します。このレベルは現在プレビュー段階であり、割引料金で提供されます。
-- *Standard (S1 および S2)*: 運用環境のワークロード向けです。大容量バージョン (*S2*) は、要求すれば利用できます (サポートまたは azuresearch_contact@microsoft.com に問い合わせます)。
+- *Basic*: 小規模環境で運用ワークロードに対して専用コンピューティング リソースを提供します。高可用性のクエリ ワークロード用に最大 3 つのレプリカを備えています。
+- *Standard (S1、S2、S3、S3 High Density)*: 大規模な運用ワークロード向けです。Standard レベルは、シナリオごとにリソース構成を選択できるように複数のレベルに分かれています。
 
-**レベル制限**
+**サブスクリプションあたりの制限**
 
-[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-tier.md)]
+[AZURE.INCLUDE [azure-search-limits-per-subscription](../includes/azure-search-limits-per-subscription.md)]
 
-**ストレージの制限**
+**Search サービスあたりの制限**
 
-[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-storage.md)]
+[AZURE.INCLUDE [azure-search-limits-per-service](../includes/azure-search-limits-per-service.md)]
 
-ドキュメントのサイズ、1 秒あたりのクエリ数、キー数、要求数、応答数など、他の制限の詳細については、「[Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」を参照してください。
+ドキュメント サイズ、1 秒あたりのクエリ数、キー数、要求数、応答数など、他の制限の詳細については、「[Azure Search サービスの制限](search/search-limits-quotas-capacity.md)」をご覧ください。
 
 ### Media Services の制限
 
@@ -301,4 +301,4 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 [クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

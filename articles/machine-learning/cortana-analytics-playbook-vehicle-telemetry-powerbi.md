@@ -302,13 +302,16 @@ Power BI では、新しいデータセットが生成されます。**Connected
 
 注: エンド ツー エンドのバッチ処理パイプラインの実行が完了し、1 年分の生成済みデータが処理されるまでに、(デプロイの正常な完了から) 約 2 時間かかります。次のステップに進む前に、しばらくお待ちください。
 
-**PowerBI デザイナー ファイルのダウンロード** • 事前に構成された PowerBI デザイナー ファイルは、デプロイの一部として含まれています。 • ダイアグラム ビューで PowerBI ノードをクリックし、プロパティ ウィンドウの "Download the PowerBI designer file" リンクをクリックします。![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9.5-download-powerbi-designer.png)
+**PowerBI デザイナー ファイルのダウンロード**
+-	事前に構成された PowerBI デザイナー ファイルは、デプロイの一部として含まれています
+-	ダイアグラム ビューで PowerBI ノードをクリックし、プロパティ ウィンドウで "Download the PowerBI designer" ファイル リンクをクリックします![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9.5-download-powerbi-designer.png)
 
-• ローカルに保存します。
+-	ローカルに保存します
 
-**PowerBI レポートの構成** • PowerBI Desktop を使用して、デザイナー ファイル "VehicleTelemetryAnalytics - Desktop Report.pbix" を開きます。PowerBI Desktop をまだ持っていない場合は、[PowerBI Desktop インストール サイト](http://www.microsoft.com/download/details.aspx?id=45331)でインストールします。
+**PowerBI レポートの構成**
+-	PowerBI Desktop を使用して、デザイナー ファイル "VehicleTelemetryAnalytics - Desktop Report.pbix" を開きます。PowerBI Desktop をまだ持っていない場合は、[PowerBI Desktop インストール サイト](http://www.microsoft.com/download/details.aspx?id=45331)でインストールします。 
 
-• **[クエリを編集]** をクリックします。
+-	**[クエリを編集]** をクリックします。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/10-edit-powerbi-query.png)
 
@@ -364,12 +367,12 @@ Power BI では、新しいデータセットが生成されます。**Connected
 ![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard2.png)
  
 
-**ページ 3 から**、以下のものをピン留めします。
+**ページ 3 から**、以下のものをピン留めします
 1.	Count of VIN ![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard3.png) 
 
 2.	Aggressively driven vehicles by model – ウォーター フォール図 ![Vehicle Telemetry - Pin Charts 4](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard4.png)
 
-**ページ 5 から**、以下のものをピン留めします。
+**ページ 5 から**、以下のものをピン留めします
 1.	Count of vin ![Vehicle Telemetry - Pin Charts 5](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)  
 2.	Fuel efficient vehicles by model : 集合縦棒グラフ ![Vehicle Telemetry - Pin Charts 6](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard6.png)
 
@@ -393,4 +396,4 @@ Power BI では、新しいデータセットが生成されます。**Connected
 
 お疲れさまでした。 レポートとダッシュボードが正常に作成され、車両の状態と運転の習慣に関するリアルタイム情報や予測情報を一括して把握できるようになりました。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

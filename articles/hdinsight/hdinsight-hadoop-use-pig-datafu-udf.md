@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="03/18/2016"
+ms.date="06/06/2016"
 ms.author="larryfr"/>
 
 #HDInsight の Pig で DataFu を使用する
@@ -107,4 +107,4 @@ DataFu または Pig の詳細については、次のドキュメントを参�
 
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

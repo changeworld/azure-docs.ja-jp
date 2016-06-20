@@ -131,7 +131,7 @@ V12 では、目標復旧時点 (PRO) と推定復旧時間 (ERT) が大幅に�
 | ビジネス継続性に関係する機能 | 以前のバージョン | V12 |
 | :-- | :-- | :-- |
 | geo リストア | • RPO は 24 時間未満。<br/>• ERT は 12 時間未満。 | • RPO は 1 時間未満。<br/>• ERT は 12 時間未満。 |
-| アクティブ geo レプリケーション | • RPO は 5 分未満。<br/>• ERT は 1 時間未満。 | • RPO は 5 秒未満。<br/>• ERT は 30 秒未満。 |
+| アクティブ geo レプリケーションを選択するとき | • RPO は 5 分未満。<br/>• ERT は 1 時間未満。 | • RPO は 5 秒未満。<br/>• ERT は 30 秒未満。 |
 
 
 詳細については、[SQL Database のビジネス継続性](sql-database-business-continuity.md)に関するページを参照してください。
@@ -183,4 +183,4 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 
 [Microsoft Azure プレビューの使用条件に関する補足](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

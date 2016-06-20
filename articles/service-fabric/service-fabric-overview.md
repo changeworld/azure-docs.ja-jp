@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="03/24/2016"
-   ms.author="msfussell"/>
+   ms.author="mfussell"/>
 
 # Service Fabric の概要
 Service Fabric は、スケーラブルで信頼性の高いマイクロサービスの簡単なパッケージ化、デプロイ、管理を実現する分散システム プラットフォームで、クラウド アプリケーションの開発や管理での大きな課題に対処します。Service Fabric を使用することで、開発者と管理者は複雑なインフラストラクチャの問題を解決する必要がなくなり、代わりにミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。こうしたワークロードは、スケーラブルで信頼性が高く管理しやすいからです。Service Fabric は、これらのエンタープライズ クラスの Tier-1 クラウド スケール アプリケーションを構築して管理するための次世代のミドルウェア プラットフォームの代表例です。
@@ -110,4 +110,4 @@ Service Fabric を使用すると、次の操作を実行できます。
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0608_2016-->

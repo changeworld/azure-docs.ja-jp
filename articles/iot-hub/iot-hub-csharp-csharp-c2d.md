@@ -20,9 +20,9 @@
 
 ## はじめに
 
-Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立できる、完全に管理されたサービスです。「[IoT Hub の概要]」チュートリアルには、IoT Hub の作成方法、IoT Hub でデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレーション済みデバイスをコード化する方法が示されています。
+Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。「[IoT Hub の概要]」チュートリアルには、IoT Hub の作成方法、IoT Hub でデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレーション済みデバイスをコード化する方法が示されています。
 
-このチュートリアルは「[IoT Hub の概要]」に基づいて作成されており、クラウドからデバイスへのメッセージを単一のデバイスに送信する方法、IoT Hub から送信確認 (*フィードバック*) を要求する方法、およびアプリケーション クラウド バックエンドからそれを受け取る方法を示します。
+このチュートリアルは「[IoT Hub の概要]」に基づいて作成されており、クラウドからデバイスへのメッセージを単一のデバイスに送信し、IoT Hub から送信確認 (*フィードバック*) を要求して、アプリケーション クラウド バックエンドからそれを受け取る方法を示します。
 
 クラウドからデバイスへのメッセージの詳細については、「[IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」をご覧ください。
 
@@ -31,13 +31,13 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 * **SimulatedDevice**。「[IoT Hub の概要]」で作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
 * **SendCloudToDevice**。これは、クラウドからデバイスへのメッセージを IoT Hub を介してシミュレーション済みデバイスに送信し、その配信確認を受け取ります。
 
-> [AZURE.NOTE] IoT Hub には、Azure IoT デバイス SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター]を参照してください。Java および Node 用の Azure IoT サービス SDK は、近日リリース予定です。
+> [AZURE.NOTE] IoT Hub には、Azure IoT device SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター]をご覧ください。
 
-このチュートリアルを完了するには、以下が必要になります。
+このチュートリアルを完了するには、次のものが必要です。
 
-+ Microsoft Visual Studio 2015、
++ Microsoft Visual Studio 2015
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料アカウントを数分で作成することができます。詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fc2d%2F target="\_blank")」 を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fc2d%2F target="\_blank") を参照してください。
 
 [AZURE.INCLUDE [iot-hub-c2d-device-csharp](../../includes/iot-hub-c2d-device-csharp.md)]
 
@@ -48,7 +48,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。次のチュートリアルで IoT Hub の機能やシナリオをさらに詳しく調べることができます。
 
-- [デバイスからクラウドへのメッセージの処理]に関するページには、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
+- 「[デバイスからクラウドへのメッセージの処理]」には、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
 - 「[デバイスからのファイルのアップロード]」では、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用したパターンについて説明しています。
 
 IoT Hub に関するその他の情報:
@@ -81,4 +81,4 @@ IoT Hub に関するその他の情報:
 [Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
 [Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0608_2016-->

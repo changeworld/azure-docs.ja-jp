@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/21/2016"
+   ms.date="05/31/2016"
    ms.author="magoedte;bwren" />
 
 # Azure Automation での子 Runbook
@@ -30,9 +30,19 @@ Runbook を発行する場合、呼び出される子 Runbook はすべて発行
 
 インラインで呼び出された子 Runbook のパラメーターは、複雑なオブジェクトを含め任意のデータ型を使用できるほか、Microsoft Azure 管理ポータルや Start-AzureRmAutomationRunbook コマンドレットを使用して Runbook が起動されるため、[JSON のシリアル化](automation-starting-a-runbook.md#runbook-parameters)は行われません。
 
+
 ### Runbook の種類
 
-[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) または[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) をインライン実行を使用して [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) の子として使用することはできません。同様に、PowerShell Runbook を PowerShell ワークフロー Runbook またはグラフィカル Runbook のインライン実行で子として使用することはできません。PowerShell Runbook は別の PowerShell のみを子として使用できます。グラフィカル Runbook と PowerShell ワークフロー Runbook は、相互に相手を子 Runbook として使用できます。
+相互に呼び出すことができる種類:
+
+- [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) と [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) は、相互にインラインで呼び出すことができます (両方とも PowerShell ベースです)。
+- [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) とグラフィカル PowerShell ワークフロー Runbook は、相互にインラインで呼び出すことができます (両方とも PowerShell ワークフロー ベースです)
+- PowerShell の型と PowerShell ワークフローの型は、相互にインラインで呼び出すことはできません。また、Start-AzureRmAutomationRunbook を使用する必要があります。
+	
+発行順序が重要になる状況:
+
+- Runbook の発行順序は、PowerShell ワークフロー Runbook とグラフィカル PowerShell ワークフロー Runbook に対してのみ重要です。
+
 
 インライン実行を使用してグラフィカル Runbook または PowerShell ワークフロー Runbook を子として呼び出すときは、Runbook の名前だけを使用します。PowerShell の子 Runbook を呼び出すときは、名前の前に *.\* を付けて、そのスクリプトがローカル ディレクトリにあることを指定する必要があります。
 
@@ -52,7 +62,7 @@ Runbook を発行する場合、呼び出される子 Runbook はすべて発行
 
 ##  コマンドレットを使用して子 Runbook を開始する
 
-「[Windows PowerShell で Runbook を開始する](../automation-starting-a-runbook.md#starting-a-runbook-with-windows-powershell)」で説明されているように、[Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) コマンドレットを使用して Runbook を開始できます。このコマンドレットの使用には 2 つのモードがあります。一方のモードでは、コマンドレットは、子 Runbook の子ジョブが作成されるとすぐにジョブ ID を返します。**-wait** を指定すると有効になる他のモードでは、コマンドレットは、子ジョブが完了して子 Runbook からの出力を返すまで待機します。
+[Windows PowerShell での Runbook の開始](../automation-starting-a-runbook.md#starting-a-runbook-with-windows-powershell)に関するトピックで説明されているように、[Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) コマンドレットを使用して Runbook を開始できます。このコマンドレットの使用には 2 つのモードがあります。一方のモードでは、コマンドレットは、子 Runbook の子ジョブが作成されるとすぐにジョブ ID を返します。**-wait** を指定すると有効になる他のモードでは、コマンドレットは、子ジョブが完了して子 Runbook からの出力を返すまで待機します。
 
 コマンドレットで開始した子 Runbook のジョブは、親 Runbook とは別のジョブで実行されます。これにより、インラインで Runbook を呼び出す場合よりも多くのジョブが実行されるため、追跡が困難になります。親は、それぞれの子 Runbook の完了を待たずに、複数の子 Runbook を非同期に開始できます。複数の子 Runbook をインラインで同じように並列実行するには、親 Runbook で [parallel キーワード](automation-powershell-workflow.md#parallel-processing)を使用する必要があります。
 
@@ -84,4 +94,4 @@ Runbook を発行する場合、呼び出される子 Runbook はすべて発行
 - [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
 - [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

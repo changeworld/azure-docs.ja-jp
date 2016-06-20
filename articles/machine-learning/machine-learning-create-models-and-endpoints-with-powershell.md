@@ -36,13 +36,13 @@ ms.author="garye;haining"/>
 
 >[AZURE.NOTE] この例に沿って理解するためには、無料ワークスペースではなく標準のワークスペースを使用する必要があります。エンドポイントは顧客ごとに 1 つ作成します (合計 10 エンドポイント)。無料のワークスペースはエンドポイント数が 3 個に限定されているため、標準のワークスペースが必要となります。無料のワークスペースしかない場合は、拠点数が 3 つのみとなるように以下のスクリプトを変更してください。
 
-この実験では **Reader** モジュールを使用して、Azure ストレージ アカウントからトレーニング データセット *customer001.csv* をインポートします。トレーニング データセットを自転車レンタルの全拠点から収集し、*rentalloc001.csv* ～ *rentalloc10.csv* のファイル名で同じ Blob Storage の場所に保存したとします。
+この実験では**データのインポート** モジュールを使用して、Azure ストレージ アカウントからトレーニング データセット *customer001.csv* をインポートします。トレーニング データセットを自転車レンタルの全拠点から収集し、*rentalloc001.csv* ～ *rentalloc10.csv* のファイル名で同じ Blob Storage の場所に保存したとします。
 
 ![image](./media/machine-learning-create-models-and-endpoints-with-powershell/reader-module.png)
 
 **Train Model** モジュールに **Web Service Output** モジュールが追加されていることに注目してください。この実験を Web サービスとしてデプロイすると、その出力に関連付けられているエンドポイントから、トレーニング済みのモデルが .ilearner ファイル形式で返されます。
 
-また、**Reader** モジュールで使用する URL の Web サービス パラメーターを設定しています。このパラメーターを使用することで、拠点ごとのモデルをトレーニングするためのトレーニング データセットを個別に指定することができます。同じことは他の方法で行うこともできます。たとえば、Web サービス パラメーターを持った SQL クエリを使用して SQL Azure データベースからデータを取り込んだり、単に **Web Service Input** モジュールを使用してデータセットを Web サービスに渡したりすることができます。
+また、**データのインポート** モジュールで使用する URL の Web サービス パラメーターを設定しています。このパラメーターを使用することで、拠点ごとのモデルをトレーニングするためのトレーニング データセットを個別に指定することができます。同じことは他の方法で行うこともできます。たとえば、Web サービス パラメーターを持った SQL クエリを使用して SQL Azure データベースからデータを取り込んだり、単に **Web Service Input** モジュールを使用してデータセットを Web サービスに渡したりすることができます。
 
 ![image](./media/machine-learning-create-models-and-endpoints-with-powershell/web-service-output.png)
 
@@ -159,4 +159,4 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 	    Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
 	}
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

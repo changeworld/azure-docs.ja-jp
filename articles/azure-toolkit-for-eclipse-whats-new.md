@@ -24,11 +24,13 @@
 
 この記事では、Azure Toolkit for Eclipse の各種リリースと最新情報について記載しています。
 
+> [AZURE.NOTE] IntelliJ IDE 用の Azure Toolkit もあります。詳細については、「[Azure Toolkit for IntelliJ]」をご覧ください。
+
 ### 2016 年 4 月 12 日
 
 Azure Toolkit for Eclipse - April 2016 リリースでは、次の点が強化されています。
 
-* **Azure SDK 2.9.0 のサポート**。最新バージョンの Azure SDK が、Azure Toolkit for Eclipse を使用するための最低限の前提条件になりました。
+* **Azure SDK v2.9.0 のサポート**。最新バージョンの Azure SDK が、Azure Toolkit for Eclipse を使用するための最低限の前提条件になりました。
 * **Azure Web アプリのサポートに関連する、その他の操作性、応答性、およびパフォーマンスの強化**。Toolkit が Azure と通信する際のパフォーマンスがさまざまな点で最適化されたため、より応答性の高い UI となっています。
 * **Eclipse 内から Azure の既存の Web アプリケーション コンテナーを削除する機能**。Azure Toolkit for Eclipse を使用して、Eclipse を離れることなく既存の Azure Web コンテナーを削除できるようになりました。
 
@@ -297,22 +299,31 @@ Azure Plugin for Eclipse - December 2011 CTP がリリースされました。�
 
 ## 関連項目 ##
 
-[Azure Toolkit for Eclipse]
+Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
 
-[Azure Toolkit for Eclipse のインストール]
+- [Azure Toolkit for Eclipse]
+  - [Azure Toolkit for Eclipse のインストール]
+  - [Eclipse で Azure 用の Hello World Web アプリを作成する]
+  - *Azure Toolkit for Eclipse の新機能 (この記事)*
+- [Azure Toolkit for IntelliJ]
+  - [Azure Toolkit for IntelliJ のインストール]
+  - [IntelliJ で Azure 用の Hello World Web アプリを作成する]
 
-[Azure 向け Hello World アプリケーションを Eclipse で作成する]
-
-Java での Azure の使用方法の詳細については、「[Azure Java Developer Center]」を参照してください。
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
 
 <!-- URL List -->
 
+[Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse.md
+[Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij.md
+[Eclipse で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
+[IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[Installing the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
+
 [Azul Systems の Zulu OpenJDK に関する Web ページ]: http://go.microsoft.com/fwlink/?LinkId=402457
-[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure のサービス エンドポイント]: http://go.microsoft.com/fwlink/?LinkID=699526
 [Azure ストレージ アカウントの一覧]: http://go.microsoft.com/fwlink/?LinkID=699528
-[Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure Toolkit for IntelliJ]: https://plugins.jetbrains.com/plugin/8053
 [コンポーネントのプロパティ]: http://go.microsoft.com/fwlink/?LinkID=699525#components_properties
 [Azure 向け Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
 [Eclipse での Azure アプリケーションのデバッグ]: http://go.microsoft.com/fwlink/?LinkID=699535
@@ -342,4 +353,4 @@ Java での Azure の使用方法の詳細については、「[Azure Java Devel
 [ic710882]: ./media/azure-toolkit-for-eclipse-whats-new/ic710882.png
 [ic710883]: ./media/azure-toolkit-for-eclipse-whats-new/ic710883.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

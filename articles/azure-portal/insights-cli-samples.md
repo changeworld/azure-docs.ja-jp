@@ -24,7 +24,7 @@
 
 ## 前提条件
 
-Azure CLI をまだインストールしていない場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。Azure CLI を使い慣れていない場合、その詳細について、「[Azure Resource Manager での、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」を確認してください。
+Azure CLI をまだインストールしていない場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。Azure CLI を使い慣れていない場合、その詳細について、「[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」を確認してください。
 
 
 Windows では、[Node.js Web サイト](https://nodejs.org/)から npm をインストールします。インストールが完了したら、管理者特権で CMD.exe を使用し、npm のインストール フォルダーから次を実行します。
@@ -61,7 +61,7 @@ azure account show
 azure account set "subscription ID or subscription name"
 ```
 
-Azure Resource Manager と Azure Insights コマンドを使用するには、ARM モードにする必要があります。
+Azure Resource Manager と Azure Insights コマンドを使用するには、ARM モードにする必要があります
 
 ```
 azure config mode arm
@@ -221,4 +221,4 @@ node bin\azure insights autoscale setting list montest2 -n setting2
 node bin\azure insights autoscale setting set montest2 -n setting2 --settingSpec
 ```
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

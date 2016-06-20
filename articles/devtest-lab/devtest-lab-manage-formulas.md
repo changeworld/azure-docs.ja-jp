@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # VM を作成するための DevTest ラボの数式の管理
@@ -42,21 +42,21 @@ DevTest ラボの*ユーザー* アクセス許可が付与されていればだ
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
+1. **[参照]** を選択し、一覧の **[DevTest ラボ]** を選択します。
 
-1. ラボの一覧で目的のラボをタップします。
+1. ラボの一覧で目的のラボを選択します。
 
 1. 選択したラボの **[設定]** ブレードが表示されます。
 
-1. ラボの **[設定]** ブレードで、**[Formulas]** (数式) をタップします。
+1. ラボの **[設定]** ブレードで、**[Formulas]** (数式) を選択します。
 
     ![Formula menu](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 
-1. **[Lab formulas]** (ラボ数式) ブレードで、**[+ 追加]** をタップします。
+1. **[Lab formulas]** (ラボ数式) ブレードで、**[+ Add]** (+ 追加) を選択します。
 
     ![Add a new formula](./media/devtest-lab-manage-formulas/add-formula.png)
 
-1. **[Choose a base]** (ベースの選択) ブレードで、数式を作成する際のベースにするカスタム イメージまたは Marketplace イメージをタップします。
+1. **[Choose a base]** (ベースの選択) ブレードで、数式を作成する際のベースにするカスタム イメージまたは Marketplace イメージを選択します。
 
     ![Base list](./media/devtest-lab-manage-formulas/base-list.png)
 
@@ -65,15 +65,15 @@ DevTest ラボの*ユーザー* アクセス許可が付与されていればだ
 	- **Formula name** (数式の名前) - 数式の名前を入力します。この値は、VM を作成する際に基本イメージの一覧に表示されます。入力した名前は検証され、有効でない場合は有効な名前の要件を示すメッセージが表示されます。
 	- **説明** - 数式のわかりやすい説明を入力します。この値は、VM を作成する際に数式のコンテキスト メニューに表示されます。
 	- **イメージ** - このフィールドには、前のブレードで選択した基本イメージの名前が表示されます。 
-	- **VM サイズ** - 作成する VM のプロセッサ コア、RAM サイズ、ハード ドライブ サイズを、定義済みの項目から選んでタップして指定します。
-	- **仮想ネットワーク** - 目的の仮想ネットワークを選んでタップします。
-	- **サブネット** - 目的のサブネットを選んでタップします。
+	- **[VM サイズ]** - 定義済みの項目の中から、作成する VM のプロセッサ コア、RAM サイズ、ハード ドライブ サイズを指定するものを選びます。
+	- **[仮想ネットワーク]** - 目的の仮想ネットワークを選びます。
+	- **[サブネット]** - 目的のサブネットを選びます。
 	- **パブリック IP アドレス** - 選択したサブネットに対してパブリック IP アドレスを許可するようにラボのポリシーが設定されている場合は、**[はい]** または **[いいえ]** を選択して IP アドレスをパブリックにするかどうかを指定します。パブリック IP アドレスを許可するように設定されていない場合、このオプションは無効になっており、**[いいえ]** が選択されています。
-	- **アーティファクト** - 基本イメージに追加するアーティファクトをアーティファクトの一覧から選んでタップし、構成します。数式ではセキュリティで保護された文字列の値を保存しないため、セキュリティで保護された文字列であるアーティファクト パラメーターは表示されないことに注意してください。 
+	- **[アーティファクト]** - アーティファクトの一覧から基本イメージに追加するアーティファクトを選択して構成します。数式ではセキュリティで保護された文字列の値を保存しないため、セキュリティで保護された文字列であるアーティファクト パラメーターは表示されないことに注意してください。 
 
     	![Create formula](./media/devtest-lab-manage-formulas/create-formula.png)
 
-1. **[作成]** をタップすると、数式が作成されます。数式が正常に作成されると、**[Lab formulas]** (ラボ数式) ブレードに一覧表示されます。
+1. **[作成]** を選択すると、数式が作成されます。数式が正常に作成されると、**[Lab formulas]** (ラボ数式) ブレードに一覧表示されます。
 
 	![Newly created formula](./media/devtest-lab-manage-formulas/newly-created-formula.png)
 
@@ -84,19 +84,19 @@ DevTest ラボの*ユーザー* アクセス許可が付与されていればだ
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
+1. **[参照]** を選択し、一覧の **[DevTest ラボ]** を選択します。
 
-1. ラボの一覧で目的のラボをタップします。
+1. ラボの一覧で目的のラボを選択します。
 
-1. ラボ ブレードの **[My VMs]** (マイ VM) というタイトルのセクションを見つけ、新しい数式の作成のベースにする VM をクリックします。
+1. ラボ ブレードの **[My VMs]** (マイ VM) というタイトルのセクションを見つけ、新しい数式の作成のベースにする VM を選択します。
 
 	![Labs VMs](./media/devtest-lab-manage-formulas/my-vms.png)
 
-1. VM の **[設定]** ブレードで、**[Create Formula]** (数式の作成) をタップします。
+1. VM の **[設定]** ブレードで、**[Create Formula]** (数式の作成) を選択します。
 
 	![Create formula](./media/devtest-lab-manage-formulas/create-formula-menu.png)
 
-1. **[Create Formula]** (数式の作成) ブレードで、新しい数式の**名前**と**説明**を入力し、**[OK]** をタップします。数式が正常に作成されると、**[Lab formulas]** (ラボ数式) ブレードに一覧表示されます。
+1. **[Create Formula]** (数式の作成) ブレードで、新しい数式の**名前**と**説明**を入力し、**[OK]** を選択します。数式が正常に作成されると、**[Lab formulas]** (ラボ数式) ブレードに一覧表示されます。
 
 	![[Create Formula] (数式の作成) ブレード](./media/devtest-lab-manage-formulas/create-formula-blade.png)
 
@@ -105,32 +105,32 @@ DevTest ラボの*ユーザー* アクセス許可が付与されていればだ
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
+1. **[参照]** を選択し、一覧の **[DevTest ラボ]** を選択します。
 
-1. ラボの一覧で目的のラボをタップします。
+1. ラボの一覧で目的のラボを選択します。
 
-1. ラボの **[設定]** ブレードで、**[Formulas]** (数式) をタップします。
+1. ラボの **[設定]** ブレードで、**[Formulas]** (数式) を選択します。
 
     ![Formula menu](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 
-1. **[Lab formulas]** (ラボ数式) ブレードで、変更する数式をタップします。
+1. **[Lab formulas]** (ラボ数式) ブレードで、変更する数式を選択します。
 
-1. **[Update formula]** (数式の更新) ブレードで、必要な編集を行い、**[更新]** をタップします。
+1. **[Update formula]** (数式の更新) ブレードで、必要な編集を行い、**[更新]** を選択します。
 
 ## 数式の削除 
 数式を削除するには、次の手順に従います。
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
+1. **[参照]** を選択し、一覧の **[DevTest ラボ]** を選択します。
 
-1. ラボの一覧で目的のラボをタップします。
+1. ラボの一覧で目的のラボを選択します。
 
-1. ラボの **[設定]** ブレードで、**[Formulas]** (数式) をタップします。
+1. ラボの **[設定]** ブレードで、**[Formulas]** (数式) を選択します。
 
     ![Formula menu](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 
-1. **[Lab formulas]** (ラボ数式) ブレードで、削除する数式の右側にある省略記号をクリックします。
+1. **[Lab formulas]** (ラボ数式) ブレードで、削除する数式の右側にある省略記号を選択します。
 
     ![Formula menu](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
 
@@ -138,11 +138,11 @@ DevTest ラボの*ユーザー* アクセス許可が付与されていればだ
 
     ![Formula context menu](./media/devtest-lab-manage-formulas/formula-delete-context-menu.png)
 
-1. 削除の確認のダイアログ ボックスで **[はい]** をタップします。
+1. 削除の確認のダイアログ ボックスで **[はい]** を選択します。
 
     ![Formula context menu](./media/devtest-lab-manage-formulas/formula-delete-confirmation.png)
 
 ## 次のステップ
 VM の作成時に使用する数式を作成したら、次は [VM をラボに追加](./devtest-lab-add-vm-with-artifacts.md)します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

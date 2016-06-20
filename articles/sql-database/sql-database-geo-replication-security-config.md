@@ -19,7 +19,7 @@
 
 # 障害復旧後にセキュリティを管理する方法
 
->[AZURE.NOTE] すべてのサービス階層のデータベースで [Active Geo-Replication](sql-database-geo-replication-overview.md) を使用できるようになりました。
+>[AZURE.NOTE] [Active Geo-Replication]すべてのサービス階層のデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
 
 ## 障害復旧の認証要件の概要
 
@@ -100,4 +100,4 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 - [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
 - [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -1,7 +1,6 @@
 <properties 
-	pageTitle="DocumentDB の制限とクォータ | Microsoft Azure" 
-	description="DocumentDB の制限とクォータの適用について説明します。Azure データベース サービスの使用に備えてクォータを確認します。"
-	keywords="クォータ, データベース, documentdb, azure, Microsoft azure"
+	pageTitle="DocumentDB の既定のクォータ | Microsoft Azure" 
+	description="DocumentDB によって割り当てられる既定のクォータについて説明します。"
 	services="documentdb" 
 	authors="mimig1" 
 	manager="jhubbard" 
@@ -14,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/19/2016" 
+	ms.date="05/27/2016" 
 	ms.author="arramac"/>
 
 
-# DocumentDB の制限とクォータ
+# DocumentDB の既定のクォータ
 
-以下の表は、DocumentDB に適用される制限とクォータについて説明したものです。
+次の表では、DocumentDB リソースの既定のクォータについて説明します。
 
 [AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
 
 アスタリスク (*) 付きで表示されているクォータは、[Azure サポートに問い合わせて調整できます](documentdb-increase-limits.md)。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

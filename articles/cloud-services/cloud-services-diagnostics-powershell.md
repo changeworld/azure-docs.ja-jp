@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="06/07/2016"
 	ms.author="adegeo"/>
 
 
@@ -127,4 +127,4 @@ Cloud Service で診断を無効にするには、[Remove-AzureServiceDiagnostic
 - [診断構成スキーマ](https://msdn.microsoft.com/library/azure/dn782207.aspx)に関するページでは、診断拡張機能の各種 xml 構成オプションについて説明しています。
 - Virtual Machines の診断拡張機能を有効にする方法については、「[Create a Windows Virtual machine with monitoring and diagnostics using Azure Resource Manager Template (Azure リソース マネージャー テンプレートを使用した監視および診断機能を備えた Windows 仮想マシンの作成)](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)」をご覧ください。  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/26/2016" 
+	ms.date="06/07/2016" 
 	ms.author="awills"/>
 
 # Analytics のリファレンス
@@ -22,30 +22,32 @@
 
 [AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
 
-| | | | | 
-|---|---|---|---|---
-|[abs](#abs)|[dayofweek](#dayofweek)|[isnull](#isnull)|[rand](#rand)|[summarize 演算子](#summarize-operator)
-|[ago](#ago)|[dayofyear](#dayofyear)|[join 演算子](#join-operator)|[range](#range)|[take 演算子](#take-operator)
-|[任意](#any)|[dcount](#dcount)|[JSON パス式](#json-path-expressions)|[range 演算子](#range-operator)|[todatetime](#todatetime)
-|[argmax](#argmax)|[dcountif](#dcountif)|[let 句](#let-clause)|[reduce 演算子](#reduce-operator)|[todouble](#todouble)
-|[argmin](#argmin)|[let 句の動的オブジェクト](#dynamic-objects-in-let-clauses)|[limit 演算子](#limit-operator)|[render ディレクティブ](#render-directive)|[todynamic](#todynamic)
-|[算術演算子](#arithmetic-operators)|[endofday](#endofday)|[log](#log)|[replace](#replace)|[toint](#toint)
-|[配列とオブジェクトのリテラル](#array-and-object-literals)|[endofmonth](#endofmonth)|[makelist](#makelist)|[restrict 句](#restrict-clause)|[tolong](#tolong)
-|[arraylength](#arraylength)|[endofweek](#endofweek)|[makeset](#makeset)|[スカラーの比較](#scalar-comparisons)|[tolower](#tolower)
-|[avg](#avg)|[endofyear](#endofyear)|[max](#max)|[sort 演算子](#sort-operator)|[top 演算子](#top-operator)
-|[bin](#bin)|[exp](#exp)|[min](#min)|[split](#split)|[top-nested op](#top-nested-operator)
-|[ブール型リテラル](#boolean-literals)|[extend 演算子](#extend-operator)|[mvexpand 演算子](#mvexpand-operator)|[sqrt](#sqrt)|[toscalar](#toscalar)
-|[ブール演算子](#boolean-operators)|[extract](#extract)|[notempty](#notempty)|[startofday](#startofday)|[totimespan](#totimespan)
-|[buildschema](#buildschema)|[extractjson](#extractjson)|[notnull](#notnull)|[startofmonth](#startofmonth)|[toupper](#toupper)
-|[キャスト](#casts)|[floor](#floor)|[now](#now)|[startofweek](#startofweek)|[treepath](#treepath)
-|[count](#count)|[getmonth](#getmonth)|[数値リテラル](#numeric-literals)|[startofyear](#startofyear)|[union 演算子](#union-operator)
-|[count 演算子](#count-operator)|[gettype](#gettype)|[難読化された文字列リテラル](#obfuscated-string-literals)|[stdev](#stdev)|[variance](#variance)
-|[countif](#countif)|[getyear](#getyear)|[parse 演算子](#parse-operator)|[strcat](#strcat)|[weekofyear](#weekofyear)
-|[countof](#countof)|[hash](#hash)|[parsejson](#parsejson)|[文字列の比較](#string-comparisons)|[where 演算子](#where-operator)
-|[日付と時刻の式](#date-and-time-expressions)|[iff](#iff)|[percentile](#percentile)|[文字列リテラル](#string-literals)
-|[日付と時刻のリテラル](#date-and-time-literals)|[isempty](#isempty)|[percentiles](#percentiles)|[strlen](#strlen)
-|[datepart](#datepart)|[isnotempty](#isnotempty)|[project 演算子](#project-operator)|[substring](#substring)
-|[dayofmonth](#dayofmonth)|[isnotnull](#isnotnull)|[project-away 演算子](#project-away-operator)|[sum](#sum)
+## Index
+
+|クエリおよび演算子|集計|スカラー|数値|日付と時刻|String|配列、オブジェクト、および動的
+|---|---|---|---|---|---|---
+|[count](#count-operator)|[任意](#any)|[ブール型リテラル](#boolean-literals)|[算術演算子](#arithmetic-operators)|[日付と時刻の式](#date-and-time-expressions)|[GUID](#guids)|[配列とオブジェクトのリテラル](#array-and-object-literals)
+|[extend](#extend-operator)|[argmax](#argmax)|[ブール演算子](#boolean-operators)|[数値リテラル](#numeric-literals)|[日付と時刻のリテラル](#date-and-time-literals)|[難読化された文字列リテラル](#obfuscated-string-literals)|[動的オブジェクトの関数](#dynamic-object-functions)
+|[join](#join-operator)|[argmin](#argmin)|[キャスト](#casts)|[abs](#abs)|[ago](#ago)|[文字列リテラル](#string-literals)|[let 句の動的オブジェクト](#dynamic-objects-in-let-clauses)
+|[let 句](#let-clause)|[avg](#avg)|[スカラーの比較](#scalar-comparisons)|[bin](#bin)|[datepart](#datepart)|[文字列の比較](#string-comparisons)|[JSON パス式](#json-path-expressions)
+|[limit](#limit-operator)|[buildschema](#buildschema)|[gettype](#gettype)|[exp](#exp)|[dayofmonth](#dayofmonth)|[countof](#countof)|[名前](#names)
+|[mvexpand](#mvexpand-operator)|[count](#count)|[hash](#hash)|[floor](#floor)|[dayofweek](#dayofweek)|[extract](#extract)|[arraylength](#arraylength)
+|[parse](#parse-operator)|[countif](#countif)|[iff](#iff)|[log](#log)|[dayofyear](#dayofyear)|[isempty](#isempty)|[extractjson](#extractjson)
+|[project](#project-operator)|[dcount](#dcount)|[isnotnull](#isnotnull)|[rand](#rand)|[endofday](#endofday)|[isnotempty](#isnotempty)|[parsejson](#parsejson)
+|[project-away](#project-away-operator)|[dcountif](#dcountif)|[isnull](#isnull)|[sqrt](#sqrt)|[endofmonth](#endofmonth)|[notempty](#notempty)|[range](#range)
+|[range](#range-operator)|[makelist](#makelist)|[notnull](#notnull)|[todouble](#todouble)|[endofweek](#endofweek)|[replace](#replace)|[todynamic](#todynamic)
+|[reduce](#reduce-operator)|[makeset](#makeset)|[toscalar](#toscalar)|[toint](#toint)|[endofyear](#endofyear)|[split](#split)|[treepath](#treepath)
+|[render ディレクティブ](#render-directive)|[max](#max)||[tolong](#tolong)|[getmonth](#getmonth)|[strcat](#strcat)|
+|[restrict 句](#restrict-clause)|[min](#min)|||[getyear](#getyear)|[strlen](#strlen)|
+|[sort](#sort-operator)|[percentile](#percentile)|||[now](#now)|[substring](#substring)|
+|[summarize](#summarize-operator)|[percentiles](#percentiles)|||[startofday](#startofday)|[tolower](#tolower)|
+|[take](#take-operator)|[stdev](#stdev)|||[startofmonth](#startofmonth)|[toupper](#toupper)|
+|[top](#top-operator)|[sum](#sum)|||[startofweek](#startofweek)||
+|[top-nested](#top-nested-operator)|[variance](#variance)|||[startofyear](#startofyear)||
+|[union](#union-operator)||||[todatetime](#todatetime)||
+|[各値の説明:](#where-operator)||||[totimespan](#totimespan)||
+|||||[weekofyear](#weekofyear)||
+
 
 
 
@@ -61,7 +63,7 @@ requests // The request table starts this pipeline.
 | count 
 ```
     
-パイプ文字 `|` が先頭に配置された各フィルターは、いくつかのパラメーターが設定される*演算子*のインスタンスです。この演算子への入力は、前のパイプラインの結果であるテーブルです。ほとんどの場合、パラメーターは入力の列に対する[スカラー式](##scalars)ですが、まれに、入力列の名前である場合や、2 つ目のテーブルである場合もあります。列と行が 1 つずつしかなくても、クエリの結果は常にテーブルです。
+パイプ文字 `|` が先頭に配置された各フィルターは、いくつかのパラメーターが設定される*演算子*のインスタンスです。この演算子への入力は、前のパイプラインの結果であるテーブルです。ほとんどの場合、パラメーターは入力の列に対する[スカラー式](#scalars)ですが、まれに、入力列の名前である場合や、2 つ目のテーブルである場合もあります。列と行が 1 つずつしかなくても、クエリの結果は常にテーブルです。
 
 クエリは、単一の改行を含めることができますが、空白行で終了します。クエリでは、`//` と行末の間に注釈が含まれる場合があります。
 
@@ -761,7 +763,7 @@ Traces
 * *Table1*, *Table2* ...
  *  テーブルの名前 (`requests` など)、または [let 句](#let-clause)で定義されたテーブルの名前
  *  クエリ式 (`(requests | where success=="True")` など)
- *  ワイルドカードで指定されたテーブルのセット。たとえば、`e*` は、"exceptions" テーブルと共に、前述の let 句で定義された、名前が "e" で始まるすべてのテーブルの和集合を形成します。
+ *  ワイルドカードで指定されたテーブルのセット。たとえば、`e*` は、"exceptions" テーブルと共に、前に示した let 句で定義された、名前が "e" で始まるすべてのテーブルの和集合を形成します。
 * `kind`: 
  * `inner` - 結果には、すべての入力テーブルに共通する列のサブセットが含まれます。
  * `outer` - 結果には、入力のいずれかに存在するすべての列が含まれます。入力行で定義されていなかったセルは `null` に設定されます。
@@ -1007,7 +1009,7 @@ traces
 
 **パフォーマンスに関するヒント**: `where filter | summarize count()` の代わりに `summarize count(filter)` を使用してください。
 
-> [AZURE.NOTE] 要求、例外、またはその他の発生したイベントの数を検索する場合は、count() を使用しないでください。[サンプリング](app-insights-sampling.md)の実行中のデータ ポイントの数は、実際のイベントの数より少なくなります。代わりに `summarize sum(itemCount)...` を使用してください。itemCount プロパティには、保持されている各データ ポイントで表される元のイベントの数が反映されます。
+> [AZURE.NOTE] 要求、例外、またはその他の発生したイベントの数を検索する場合は、count() を使用しないでください。[サンプリング](app-insights-sampling.md)の実行中、Application Insights に保持されるデータ ポイントの数は、元のイベントの数より少なくなります。代わりに `summarize sum(itemCount)...` を使用してください。itemCount プロパティには、保持されている各データ ポイントで表される元のイベントの数が反映されます。
 
 ### countif
 
@@ -1361,7 +1363,6 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 
 
-## Boolean 
 
 ### ブール型リテラル
 
@@ -1393,17 +1394,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 || |
 |---|-------------|
 | + | [追加] のいずれかを |
-| - | 減算 | 
-| * | 乗算 | 
-| / | 除算 | 
-| % | 剰余 | 
-|| 
-|`<` |小さい 
-|`<=`|小さいか等しい 
-|`>` |大きい 
-|`>=`|大きいか等しい 
-|`<>`|等しくない 
-|`!=`|等しくない
+| - | 減算 | | * | 乗算 | | / | 除算 | | % | 剰余 | || |`<` |小さい |`<=`|小さいか等しい |`>` |大きい |`>=`|大きいか等しい |`<>`|等しくない |`!=`|等しくない
 
 
 ### abs
@@ -1485,8 +1476,8 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 乱数ジェネレーター。
 
-* `rand()` - 0.0 から 1.0 の範囲の実数
-* `rand(n)` - 0 から n-1 の範囲の整数
+* `rand()` - 0.0 ～ 1.0 の範囲の実数
+* `rand(n)` - 0 ～ n-1 の範囲の整数
 
 
 
@@ -2091,7 +2082,7 @@ substring("ABCD", 0, 2)       // AB
 
 
 
-## GUID
+### GUID
 
     guid(00000000-1111-2222-3333-055567f333de)
 
@@ -2199,7 +2190,7 @@ T
 ```
 
 
-## 動的オブジェクトの関数
+### 動的オブジェクトの関数
 
 |||
 |---|---|
@@ -2217,7 +2208,7 @@ T
 ### let 句の動的オブジェクト
 
 
-[let 句](#let-clause)には動的値が文字列として格納されるため、以下の 2 つの句は同等で、どちらも使用前に `parsejson` (または `todynamic`) が必要です。
+[let 句](#let-clause)には動的な値が文字列として格納されるため、以下の 2 つの句は同等で、どちらも使用前に `parsejson` (または `todynamic`) が必要です。
 
     let list1 = '{"a" : "somevalue"}';
     let list2 = parsejson('{"a" : "somevalue"}');
@@ -2400,7 +2391,7 @@ range(1, 8, 3)
 
 "[0]" は配列の存在を示しますが、特定のパスで使用されるインデックスを指定しないことに注意してください。
 
-## 名前
+### 名前
 
 名前の最大長は 1024 文字です。大文字と小文字が区別され、アルファベット、数字、およびアンダースコア (`_`) を含めることができます。
 
@@ -2425,4 +2416,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

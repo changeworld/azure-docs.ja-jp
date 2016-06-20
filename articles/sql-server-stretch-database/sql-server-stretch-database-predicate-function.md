@@ -24,7 +24,7 @@
 
 フィルター述語を指定しない場合、テーブル全体が移行されます。
 
-Stretch Database の有効化ウィザードを実行するときに、テーブル全体を移行することも、ウィザードで日付に基づく単純なフィルター述語を指定することもできます。別のフィルター述語を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
+Stretch Database の有効化ウィザードを実行する際に、テーブル全体を移行することも、ウィザードで単純な述語を指定することもできます。別の種類のフィルター述語を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
 
 -   ウィザードを終了し、ALTER TABLE ステートメントを実行してテーブルの Stretch を有効にし、述語を指定します。
 
@@ -32,7 +32,7 @@ Stretch Database の有効化ウィザードを実行するときに、テーブ
 
 述語を追加するための ALTER TABLE 構文については、このトピックの後の方で説明しています。
 
-## インライン テーブル値関数の基本要件
+## フィルター述語の基本的な要件
 Stretch Database フィルター述語に必要なインライン テーブル値関数は次の例のようになります。
 
 ```tsql
@@ -155,6 +155,58 @@ ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
 -   関数で使用される列にスキーマがバインドされます。テーブルでそのフィルター述語として関数が使用されている限り、これらの列は変更できません。
 
 テーブルでそのフィルター述語として関数が使用されている限り、インライン テーブル値関数は削除できません。
+
+>   [AZURE.NOTE] フィルター関数のパフォーマンスを向上させるには、関数で使用される列にインデックスを作成します。
+
+### フィルター述語に列名を渡す
+テーブルにフィルター関数を割り当てる場合は、フィルター関数に渡す列名を 1 部構成の名前で指定します。列名を渡す際に 3 部構成の名前を指定すると、Stretch が有効なテーブルに対するその後のクエリが失敗します。
+
+たとえば、次の例に示すような 3 部構成の名前を指定すると、ステートメントは正常に実行されますが、テーブルに対するその後のクエリが失敗します。
+
+```tsql
+ALTER TABLE SensorTelemetry
+  SET ( REMOTE_DATA_ARCHIVE = ON (
+    FILTER_PREDICATE=dbo.fn_stretchpredicate(dbo.SensorTelemetry.ScanDate),
+    MIGRATION_STATE = OUTBOUND )
+  )
+```
+
+代わりに、次の例に示すような 1 部構成の名前のフィルター関数を指定 します。
+
+```tsql
+ALTER TABLE SensorTelemetry
+  SET ( REMOTE_DATA_ARCHIVE = ON  (
+    FILTER_PREDICATE=dbo.fn_stretchpredicate(ScanDate),
+    MIGRATION_STATE = OUTBOUND )
+  )
+```
+
+## <a name="addafterwiz"></a>ウィザードの実行後にフィルター述語を追加する  
+
+**[Stretch Database を有効にする] ** ウィザードで作成できない述語を使用する場合は、ウィザードを終了してから ALTER TABLE ステートメントを実行して述語を指定します。ただしこの場合は、述語を適用する前に、既に進行中のデータ移行を停止して、移行されたデータを元に戻す必要があります。(これが必要な理由の詳細については、「[Replace an existing filter predicate](#replacePredicate)」(既存のフィルター述語を置き換える)を参照してください。
+
+1. 移行の方向を逆にして、既に移行されたデータを元に戻します。開始後にこの操作をキャンセルすることはできません。また、Azure での送信データ転送 (送信) の料金が発生します。詳細については「[Azure の料金体系について](https://azure.microsoft.com/pricing/details/data-transfers/)」を参照してください。  
+
+    ```tsql  
+    ALTER TABLE <table name>  
+         SET ( REMOTE_DATA_ARCHIVE ( MIGRATION_STATE = INBOUND ) ) ;   
+    ```  
+
+2. データ移行が完了するまで待ちます。SQL Server Management Studio から**Stretch Database Monitor**でデータ移行の状態を確認するか、もしくは **sys.dm\_db\_rda\_migration\_status** ビューをクエリします。詳細については、「[Monitor and troubleshoot data migration ](sql-server-stretch-database-monitor.md) 」(データ移行の監視とトラブルシューティング) または 「[sys.dm\_db\_rda\_migration\_status](https://msdn.microsoft.com/library/dn935017.aspx)」を参照してください。
+
+3. テーブルに適用するフィルター述語を作成します。
+
+4. テーブルに述語を追加して Azure へのデータ移行を再開します。
+
+    ```tsql  
+    ALTER TABLE <table name>  
+        SET ( REMOTE_DATA_ARCHIVE  
+            (           
+                FILTER_PREDICATE = <predicate>,  
+                MIGRATION_STATE = OUTBOUND  
+            )  
+        );   
+    ```  
 
 ## 日付で行をフィルター処理する
 次の例では、**date** 列に 2016 年 1 月 1 日より前の値を含む列が移行されます。
@@ -405,7 +457,7 @@ SELECT * FROM stretch_table_name CROSS APPLY fn_stretchpredicate(column1, column
 ```
 関数が行に空ではない結果を返す場合、行は移行の対象となります。
 
-## 既存のフィルター述語を置き換える
+## <a name="replacePredicate"></a>既存のフィルター述語を置き換える
 ALTER TABLE ステートメントをもう一度実行し、FILTER\_PREDICATE パラメーターに新しい値を指定することで、以前に指定したフィルター述語を置換できます。次に例を示します。
 
 ```tsql
@@ -504,8 +556,15 @@ ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
 ## テーブルに適用されたフィルター述語を確認する
 テーブルに適用されたフィルター述語を確認するには、カタログ ビュー **sys.remote\_data\_archive\_tables** を開き、**filter\_predicate** 列の値を確認します。値が null の場合、テーブル全体がアーカイブの対象になります。詳細については、「[sys.remote\_data\_archive\_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx)」を参照してください。
 
+## フィルター述語のセキュリティに関する注意事項  
+db\_owner 権限を持つ危害を受けたアカウントによって、次のことが行われる可能性があります。
+
+-   大量のサーバー リソースの消費、あるいは長期間の待機後に、サービス拒否を発生させるテーブル値関数の作成と適用。  
+
+-   ユーザーの読み取りアクセスが明示的に拒否される原因となる、テーブル内容の推測を可能にするテーブル値関数の作成と適用。
+
 ## 関連項目
 
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->
