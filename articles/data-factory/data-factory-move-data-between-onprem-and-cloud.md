@@ -67,7 +67,7 @@ Azure Data Factory を使用すると、[サポートされているオンプレ
 5. **[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
 	![タイルの作成とデプロイ](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png) 
-6.	Data Factory エディターのツールバーの **[...] (省略記号)** をクリックし、**[新しいデータ ゲートウェイ]** をクリックします。 
+6.	Data Factory エディターのツールバーの **[...] \(省略記号)** をクリックし、**[新しいデータ ゲートウェイ]** をクリックします。 
 
 	![ツールバーでのデータ ゲートウェイの新規作成](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
 2. **[作成]** ブレードで、**名前**に「**adftutorialgateway**」と入力し、**[OK]** をクリックします。 	
@@ -83,7 +83,7 @@ Azure Data Factory を使用すると、[サポートされているオンプレ
 	>  
 	> Firefox についても、同じ操作を実行する必要があります (アドインをインストール)。ツール バーの **[メニューを開く]** ボタン (右上隅にある **3 本の横線**) をクリックして、**[アドオン]** をクリックし、"ClickOnce" キーワードを使用して検索し、ClickOnce の拡張機能のいずれかを選択してインストールします。
 
-	![[ゲートウェイ - 構成 ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
+	![ゲートウェイ - 構成 ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
 	これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。**Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。実行可能ファイル **ConfigManager.exe** は **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared** フォルダーにあります。
 
@@ -292,7 +292,7 @@ Azure Data Factory を使用すると、[サポートされているオンプレ
 1.	**[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
 	![タイルの作成とデプロイ](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png) 
-2.	コマンド バーの **[新しいパイプライン]** をクリックします。このボタンが表示されない場合は、**[...] (省略記号)** をクリックしてコマンド バーを展開します。
+2.	コマンド バーの **[新しいパイプライン]** をクリックします。このボタンが表示されない場合は、**[...] \(省略記号)** をクリックしてコマンド バーを展開します。
 2.	右側のウィンドウの JSON を次のテキストに置き換えます。   
 
 
@@ -393,7 +393,7 @@ Azure Data Factory を使用すると、[サポートされているオンプレ
 	-  **Set-AzureRmDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 	-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
  
-	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
+	一覧のタイトルをクリックするか、**[...] \(省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
 	
 	代わりに、スライスの開始時刻と終了時刻で並べ替えられたデータ スライスを表示するには、**[データ スライス (スライスの時刻別)]** タイルをクリックします。
 

@@ -251,7 +251,7 @@ OpenID Connect 認証プロトコルを使用して v2.0 エンドポイント�
 
 ```JavaScript
 
-//Routes (Section 4)
+// ルート (セクション 4)
 
 app.get('/', function(req, res){
   res.render('index', { user: req.user });
@@ -286,12 +286,12 @@ app.get('/logout', function(req, res){
 
 ```JavaScript
 
-// Simple route middleware to ensure user is authenticated. (Section 4)
+// ユーザーが認証されることを保証する単純なルート ミドルウェアです。(セクション 4)
 
-//   Use this route middleware on any resource that needs to be protected.  If
-//   the request is authenticated (typically via a persistent login session),
-//   the request will proceed.  Otherwise, the user will be redirected to the
-//   login page.
+//   保護する必要がある任意のリソースでこのルート ミドルウェアを使用します。  If
+//   要求が認証された場合 (通常は永続的なログイン セッションを経由します)、
+//   要求は先に進みます。それ以外の場合、ユーザーは
+//   ログインページにリダイレクトされます。
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')

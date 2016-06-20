@@ -59,7 +59,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 		hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-	これは、**hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として ****wasb://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は ****wasb:///example/data/WordCountOutput** に格納されます。
+	これは、**hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasb://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は **wasb:///example/data/WordCountOutput** に格納されます。
 
 	> [AZURE.NOTE] この MapReduce ジョブとサンプル データの詳細については、「[HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」をご覧ください。
 
@@ -70,7 +70,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 		File Output Format Counters
         Bytes Written=337623
 
-3. ジョブが完了したら、次のコマンドを使用して ****wasb://example/data/WordCountOutput** に格納されている出力ファイルを一覧表示します。
+3. ジョブが完了したら、次のコマンドを使用して **wasb://example/data/WordCountOutput** に格納されている出力ファイルを一覧表示します。
 
 		hdfs dfs -ls wasb:///example/data/WordCountOutput
 
@@ -82,7 +82,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 		hdfs dfs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
-	ここでは、****wasb://example/data/gutenberg/davinci.txt** ファイルに含まれる単語の一覧と、各単語が発生した回数が表示されます。ファイルに含まれるデータの例を次に示します。
+	ここでは、**wasb://example/data/gutenberg/davinci.txt** ファイルに含まれる単語の一覧と、各単語が発生した回数が表示されます。ファイルに含まれるデータの例を次に示します。
 
 		wreathed        3
 		wreathing       1

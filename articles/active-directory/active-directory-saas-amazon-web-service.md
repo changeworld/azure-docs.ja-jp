@@ -224,7 +224,7 @@ Amazon Web Service (AWS) との Azure AD シングル サインオンを構成�
 
 	![Configure Single Sign-On][24]
 
-    a.**[属性名]** ボックスに、「****https://aws.amazon.com/SAML/Attributes/Role**」と入力します。
+    a.**[属性名]** ボックスに、「**https://aws.amazon.com/SAML/Attributes/Role**」と入力します。
 
     b.**[属性値]** ボックスに、**[Role の ARN 値] と [Trusted Entity の ARN 値]** を入力します。
 
@@ -242,7 +242,7 @@ Amazon Web Service (AWS) との Azure AD シングル サインオンを構成�
 	![Configure Single Sign-On][25]
 
 
-     a.**[属性名]** ボックスに、「****https://aws.amazon.com/SAML/Attributes/RoleSessionName**」と入力します。
+     a.**[属性名]** ボックスに、「**https://aws.amazon.com/SAML/Attributes/RoleSessionName**」と入力します。
 
      b.**[属性名]** ボックスに、「**userprincipalname**」と入力します。
 

@@ -48,7 +48,7 @@
 
 - [2 クラス サポート ベクター マシン][two-class-support-vector-machine]
 - 接続されている[モデルのトレーニング][train-model] モジュールと[モデルのスコア付け][score-model]モジュール
-- [データの正規化][normalize-data] (両方)
+- [データの正規化][normalize-data] \(両方)
 - [モデルの評価][evaluate-model]
 
 モジュールを選択して Delete キーを押すか、モジュールを右クリックして **[削除]**を選択します。

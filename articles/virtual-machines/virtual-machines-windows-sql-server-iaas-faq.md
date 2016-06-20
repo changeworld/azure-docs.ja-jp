@@ -33,7 +33,7 @@
 
 	概念上、Azure 仮想マシンで SQL Server を実行することは、リモート データ センターで SQL Server を実行することと違いません。これに対し、[SQL Database](../sql-database/sql-database-technical-overview.md) はサービスとしてデータベースを提供します。SQL Database では、データベースをホストするマシンにアクセスできません。完全な比較については、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/media/data-management-azure-sql-database-and-sql-server-iaas.md)」をご覧ください。
 
-1. ** オンプレミス SQL Server データベースをクラウドに移行するにはどうすればよいですか?**
+1. **オンプレミス SQL Server データベースをクラウドに移行するにはどうすればよいですか?**
 
 	まず SQL Server インスタンスで、Azure 仮想マシンを作成します。次に、オンプレミス データベースをそのインスタンスに移行します。データ移行の方法については、「[Azure VM の SQL Server への SQL Server データベースの移行](virtual-machines-windows-migrate-sql.md)」をご覧ください。
 

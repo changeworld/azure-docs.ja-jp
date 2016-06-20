@@ -233,7 +233,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 1.  Azure クラシック ポータルで (または前の手順から)、**[仮想マシン]** を選択します。
 
-2.  **[仮想マシン インスタンス]** ページの **[DNS 名]** 列で、****http://** から始まる仮想マシンの DNS 名を探してコピーします。(名前全体がユーザー インターフェイスに表示されないことがありますが、右クリックしてコピーすることができます)。
+2.  **[仮想マシン インスタンス]** ページの **[DNS 名]** 列で、**http://** から始まる仮想マシンの DNS 名を探してコピーします。(名前全体がユーザー インターフェイスに表示されないことがありますが、右クリックしてコピーすることができます)。
 
 ##<a name="cde"></a>別のコンピューターからデータベース エンジンに接続する
 
@@ -267,7 +267,7 @@ Cortana Analytics Process の後半に、[Azure Machine Learning Studio](https:/
 
 Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用しないときに課金されないようにするには、**[停止 (割り当て解除)]** 状態にする必要があります。
 
-> [AZURE.NOTE] (Windows 電源オプションを使用して) 内部から仮想マシンをシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。請求されないようにするには、必ず [Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その際、ShutdownRoleOperation 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
+> [AZURE.NOTE] \(Windows 電源オプションを使用して) 内部から仮想マシンをシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。請求されないようにするには、必ず [Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その際、ShutdownRoleOperation 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 

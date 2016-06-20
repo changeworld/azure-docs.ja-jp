@@ -169,7 +169,7 @@ SAML アサーションを構成する前に、HR2day サポート チーム ([s
 5. お使いのアプリケーション用に構成された SSO を取得するために、ダウンロードした証明書ファイルを電子メールに添付して、HR2day by Merces のサポート チーム ([servicedesk@merces.nl](emailTo:servicedesk@merces.nl)) に問い合わせます。SAML SSO URL、サインアウト URL、発行元 URL もお知らせください。サポート チームが SSO 統合で設定します。
 
 
-> [AZURE.NOTE] Merces チームに、この統合ではエンティティ ID を ****https://hr2day.force.com/INSTANCENAME** というパターンで設定する必要があることをお伝えください。
+> [AZURE.NOTE] Merces チームに、この統合ではエンティティ ID を **https://hr2day.force.com/INSTANCENAME** というパターンで設定する必要があることをお伝えください。
 
 
 

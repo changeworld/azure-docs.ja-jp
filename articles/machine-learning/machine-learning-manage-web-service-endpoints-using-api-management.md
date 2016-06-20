@@ -72,7 +72,7 @@ API は API パブリッシャー ポータルから作成され、構成され�
 
 ![api-management-menu](./media/machine-learning-manage-web-service-endpoints-using-api-management/api-management-menu.png)
 
-**[Web API 名]** として「**AzureML Demo API**」と入力します。**[Web サービス URL]** として「****https://ussouthcentral.services.azureml.net**」と入力します。**[Web API URL サフィックス]** として「**azureml-demo**」と入力します。**[Web API URL]** として **[HTTPS]** を選択します。**[製品]** として **[スターター]** を選択します。完了したら、**[保存]** をクリックして、API を作成します。
+**[Web API 名]** として「**AzureML Demo API**」と入力します。**[Web サービス URL]** として「**https://ussouthcentral.services.azureml.net**」と入力します。**[Web API URL サフィックス]** として「**azureml-demo**」と入力します。**[Web API URL]** として **[HTTPS]** を選択します。**[製品]** として **[スターター]** を選択します。完了したら、**[保存]** をクリックして、API を作成します。
 
 ![add-new-api](./media/machine-learning-manage-web-service-endpoints-using-api-management/add-new-api.png)
 

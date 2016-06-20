@@ -183,7 +183,7 @@ ALTER TABLE SensorTelemetry
 
 ## <a name="addafterwiz"></a>ウィザードの実行後にフィルター述語を追加する  
 
-**[Stretch Database を有効にする] ** ウィザードで作成できない述語を使用する場合は、ウィザードを終了してから ALTER TABLE ステートメントを実行して述語を指定します。ただしこの場合は、述語を適用する前に、既に進行中のデータ移行を停止して、移行されたデータを元に戻す必要があります。(これが必要な理由の詳細については、「[Replace an existing filter predicate](#replacePredicate)」(既存のフィルター述語を置き換える)を参照してください。
+**[Stretch Database を有効にする]** ウィザードで作成できない述語を使用する場合は、ウィザードを終了してから ALTER TABLE ステートメントを実行して述語を指定します。ただしこの場合は、述語を適用する前に、既に進行中のデータ移行を停止して、移行されたデータを元に戻す必要があります。(これが必要な理由の詳細については、「[Replace an existing filter predicate](#replacePredicate)」(既存のフィルター述語を置き換える)を参照してください。
 
 1. 移行の方向を逆にして、既に移行されたデータを元に戻します。開始後にこの操作をキャンセルすることはできません。また、Azure での送信データ転送 (送信) の料金が発生します。詳細については「[Azure の料金体系について](https://azure.microsoft.com/pricing/details/data-transfers/)」を参照してください。  
 

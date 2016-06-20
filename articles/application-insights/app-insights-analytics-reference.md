@@ -152,7 +152,7 @@ traces
 
 **構文**
 
-    Table1 | join [kind=Kind] (Table2) on CommonColumn [, ...]
+    Table1 | join [kind=Kind] \(Table2) on CommonColumn [, ...]
 
 **引数**
 
@@ -664,7 +664,7 @@ Traces
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-各間隔 ([0,10.0]、[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
+各間隔 ([0,10.0]、\[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
 
 
 **構文**
