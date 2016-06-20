@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/12/2016" 
+	ms.date="05/31/2016" 
 	ms.author="bharaths"/>
 
 # Azure Marketplace への Azure Machine Learning Web サービスの発行 
@@ -109,4 +109,4 @@ Azure Machine Learning Web サービスを Azure Marketplace に発行するた�
 [odata]: ./media/machine-learning-publish-web-service-to-azure-marketplace/odata.png
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="12/04/2015"
+   ms.date="05/31/2016"
    ms.author="mbaldwin"/>
 
 # トラブルシューティング: Active Directory 項目が不足しているか使用できない
@@ -40,7 +40,7 @@ Active Directory 項目は、次のいずれかの条件が満たされている
 
     または
 
-* Azure テナントが少なくとも 1 つの Azure Multi-factor Authentication プロバイダーを持っている。詳細については、「[Administering Azure Multi-Factor Authentication Providers (Azure Multi-Factor Authentication プロバイダーの管理)](multi-factor-authentication-get-started-cloud.md/creating-an-azure-multi-factor-auth-provider)」を参照してください。
+* Azure テナントが少なくとも 1 つの Azure Multi-factor Authentication プロバイダーを持っている。詳細については、「[Administering Azure Multi-Factor Authentication Providers (Azure Multi-Factor Authentication プロバイダーの管理)](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)」を参照してください。
 
 Access Control 名前空間または Multi-factor Authentication プロバイダーを作成するには、**[新規]**、**[App Services]**、**[Active Directory]** の順にクリックします。
 
@@ -54,4 +54,4 @@ Access Control 名前空間または Multi-factor Authentication プロバイダ
 
 ![画面ショット: Active Directory を使用できない](./media/active-directory-troubleshooting/not-available.png)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0608_2016-->

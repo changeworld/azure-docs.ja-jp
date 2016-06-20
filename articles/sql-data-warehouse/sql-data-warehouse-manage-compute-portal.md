@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/06/2016"
+   ms.date="06/01/2016"
    ms.author="barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse のコンピューティング能力の管理 (Azure ポータル)
 
 > [AZURE.SELECTOR]
-- [概要](sql-data-warehouse-overview-manage-compute.md)
+- [概要](sql-data-warehouse-manage-compute-overview.md)
 - [ポータル](sql-data-warehouse-manage-compute-portal.md)
 - [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 - [REST ()](sql-data-warehouse-manage-compute-rest-api.md)
@@ -34,7 +34,7 @@
 - コンピューティングの一時停止
 - コンピューティングの再開
 
-これについては、[コンピューティング能力の管理の概要][]に関するページをご覧ください。
+これについては、[コンピューティングの管理の概要][]に関するページをご覧ください。
 
 <a name="scale-performance-bk"></a> <a name="scale-compute-bk"></a>
 
@@ -112,7 +112,7 @@
 
 <!--Article references-->
 [管理の概要]: ./sql-data-warehouse-overview-manage.md
-[コンピューティング能力の管理の概要]: ./sql-data-warehouse-overview-manage-compute.md
+[コンピューティングの管理の概要]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 
@@ -121,4 +121,4 @@
 
 [Azure ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

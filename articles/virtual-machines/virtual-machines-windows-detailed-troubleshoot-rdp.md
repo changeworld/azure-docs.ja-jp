@@ -14,18 +14,18 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="support-article"
-	ms.date="04/06/2016"
+	ms.date="06/07/2016"
 	ms.author="iainfou"/>
 
 # Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関する詳細なトラブルシューティング
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 この記事では、Windows ベースの Azure 仮想マシンの複雑なリモート デスクトップのエラーを診断して修正するための詳細なトラブルシューティング手順を説明します。
 
 > [AZURE.IMPORTANT] 先に進む前に、リモート デスクトップのより一般的なエラーを解消するために、必ず[リモート デスクトップの基本的なトラブルシューティングの記事](virtual-machines-windows-troubleshoot-rdp-connection.md)をお読みください。
 
-[基本的なリモート デスクトップのトラブルシューティング ガイド](virtual-machines-windows-troubleshoot-rdp-connection.md)で説明されているどのエラー メッセージとも似ていないリモート デスクトップ エラー メッセージが表示される場合は、以下の手順に従って、リモート デスクトップ ([RDP](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol)) クライアントが Azure VM 上の RDP サービスに接続できない理由を調べてみることができます。
+[基本的なリモート デスクトップのトラブルシューティング ガイド](virtual-machines-windows-troubleshoot-rdp-connection.md)で説明されているどのエラー メッセージとも似ていないリモート デスクトップ エラー メッセージが表示される場合は、以下の手順に従って、リモート デスクトップ (RDP) クライアントが Azure VM 上の RDP サービスに接続できない理由を調べてみることができます。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](https://azure.microsoft.com/support/faq/)」を参照してください。
 
@@ -47,7 +47,7 @@
 詳細なトラブルシューティングに進む前に、以下の操作を実行します。
 
 - Azure クラシック ポータルまたは Azure ポータルで、仮想マシンの状態に明らかな問題があるかどうかを確認します。
-- [基本的なトラブルシューティング ガイドの一般的な RDP エラーに対する応急処置の手順](virtual-machines-windows-troubleshoot-rdp-connection.md#quickfixrdp)に従います。
+- [基本的なトラブルシューティング ガイドの一般的な RDP エラーに対する応急処置の手順](virtual-machines-windows-troubleshoot-rdp-connection.md)に従います。
 
 
 これらの手順を実行してから、リモート デスクトップを介して VM に再接続してみてください。
@@ -102,7 +102,7 @@
 
 > [AZURE.NOTE] リソース マネージャーで作成された仮想マシンについては、「[ソース 4: ネットワーク セキュリティ グループ](#nsgs)」はスキップしてください。
 
-同じクラウド サービスまたは仮想ネットワーク内に別の仮想マシンがない場合は、「[Azure 上で Windows を実行する仮想マシンの作成](virtual-machines-windows-hero-tutorial.md)」の手順を使用して、新しい仮想マシンを作成できます。テストが完了した後は、余分な仮想マシンを削除します。
+同じクラウド サービスまたは仮想ネットワーク内に別の仮想マシンがない場合は、[Azure 上での Windows を実行する仮想マシンの作成](virtual-machines-windows-hero-tutorial.md)に関するページの手順を使用して、新しい仮想マシンを作成できます。テストが完了した後は、余分な仮想マシンを削除します。
 
 同じクラウド サービスまたは仮想ネットワーク内の仮想マシンにリモート デスクトップ経由で接続できる場合は、以下を確認してください。
 
@@ -133,7 +133,7 @@
 - Windows ファイアウォールまたは他のローカルのファイアウォールで、リモート デスクトップのトラフィックを妨げている送信ルールが設定されている。
 - Azure 仮想マシンで実行されている侵入検出ソフトウェアまたは監視ソフトウェアが、リモート デスクトップ接続を妨げている。
 
-クラシック デプロイメント モデルを使用して作成された VM の場合は、Azure 仮想マシンへのリモート Azure PowerShell セッションを使用できます。最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。「[Azure Virtual Machines への安全なリモート PowerShell アクセスを構成する](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)」を参照し、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上にダウンロードします。
+クラシック デプロイメント モデルを使用して作成された VM の場合は、Azure 仮想マシンへのリモート Azure PowerShell セッションを使用できます。最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。[Azure Virtual Machines への安全なリモート PowerShell アクセスの構成](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)に関するページを参照し、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上にダウンロードします。
 
 次に、まだ Azure PowerShell がインストールされていなければ、インストールします。「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
@@ -148,7 +148,7 @@
 
 正しいサブスクリプション名は、**Get-AzureSubscription** コマンドで表示される _SubscriptionName_ プロパティから取得できます。仮想マシンのクラウド サービス名は、**Get-AzureVM** コマンドに表示される _ServiceName_ 列から取得できます。
 
-新しい証明書があることを確認し、現在のユーザー用の証明書スナップインを開き、**[信頼されたルート証明機関] > [証明書]** フォルダーを調べます。クラウド サービスの DNS 名が付けられた証明書が、[発行先] 列に表示されます (例: cloudservice4testing.cloudapp.net)、、
+新しい証明書があることを確認し、現在のユーザー用の証明書スナップインを開き、**Trusted Root Certification Authorities\\Certificates** フォルダーを調べます。クラウド サービスの DNS 名が付けられた証明書が、[発行先] 列に表示されます (例: cloudservice4testing.cloudapp.net)、、
 
 次に以下のコマンドを使用して、リモート Azure PowerShell セッションを開始します。
 
@@ -195,4 +195,4 @@ Azure VM のリモート デスクトップのエンドポイントでも、内�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

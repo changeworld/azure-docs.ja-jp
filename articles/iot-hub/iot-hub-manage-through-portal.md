@@ -13,7 +13,7 @@
 	 ms.topic="article"
 	 ms.tgt_pltfrm="na"
 	 ms.workload="na"
-	 ms.date="03/14/2016"
+	 ms.date="06/06/2016"
 	 ms.author="nasing"/>
 
 # Azure ポータルを使用した IoT Hub の管理
@@ -120,6 +120,24 @@ IoT Hub を作成したら、既存の設定を変更できます。IoT Hub の�
 
 ![][11]
 
+## ファイルのアップロード
+
+IoT Hub でファイルのアップロード機能を使用するには、最初に Azure Storage アカウントとハブを関連付ける必要があります。**[ファイルのアップロード]** 設定を選択して、変更対象の IoT Hub のファイル アップロード プロパティのリストを表示します。
+
+**ストレージ アカウント**: ポータルを使用して現在のサブスクリプションのストレージ アカウントを選択し、IoT Hub に関連付けます。IoT Hub は、ファイルをアップロードするときにデバイスで使用する SAS URI をこのストレージ アカウントから生成します。
+
+![][14]
+
+**Receive notifications for uploaded files (アップロードされたファイルに関する通知を受け取る)**: トグル ボタンを使用して、ファイルのアップロードに関する通知を有効または無効にします。
+
+**SAS TTL**: IoT Hub によりデバイスに返される SAS URI の有効期間を設定します。既定で 1 時間に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
+
+**File notification settings default TTL (ファイルの通知設定 既定の TTL)**: 有効期限が切れるまでのファイルのアップロード通知の有効期間です。既定で 1 日に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
+
+**File notification maximum delivery count (ファイルの通知設定 最大配信回数)**: IoT Hub がファイルのアップロード通知の配信を試行する回数です。既定で 10 に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
+
+![][13]
+
 ## 価格とスケール
 
 既存の IoT Hub の価格は **[価格]** 設定を介して変更できますが、次の例外があります。
@@ -149,8 +167,10 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
   [10]: ./media/iot-hub-manage-through-portal/shared-access-policies.png
   [11]: ./media/iot-hub-manage-through-portal/messaging-settings.png
   [12]: ./media/iot-hub-manage-through-portal/pricing-error.png
+  [13]: ./media/iot-hub-manage-through-portal/file-upload-settings.png
+  [14]: ./media/iot-hub-manage-through-portal/file-upload-container-selection.png
 
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [What is Azure IoT Hub? (Azure IoT Hub とは)]: iot-hub-what-is-iot-hub.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0608_2016-->

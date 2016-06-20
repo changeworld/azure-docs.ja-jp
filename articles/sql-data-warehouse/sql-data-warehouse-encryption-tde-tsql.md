@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="03/23/2016"
+   ms.date="06/07/2016"
    ms.author="rortloff;barbkess;sonyama"/>
 
 # Transparent Data Encryption (TDE) の概要
@@ -23,7 +23,7 @@
 
 Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。
 
-TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。SQL Database では、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。組み込みのサーバー証明書は、SQL Database サーバーごとに一意です。Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的にローテーションします。TDE の一般的な説明については、「[透過的なデータ暗号化 (TDE)]」を参照してください。
+TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。SQL Database では、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。組み込みのサーバー証明書は、SQL Database サーバーごとに一意です。Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的にローテーションします。SQL Data Warehouse で使用される暗号化アルゴリズムは AES-256 です。TDE の一般的な説明については、「[透過的なデータ暗号化 (TDE)]」を参照してください。
 
 ##暗号化の有効化
 
@@ -64,13 +64,19 @@ FROM
 
 結果が ```1``` の場合はデータベースが暗号化されていることを示し、```0``` の場合は暗号化されていないことを示します。
 
+##暗号化の DMV  
+
+- [sys.databases][] 
+- [sys.dm\_pdw\_nodes\_database\_encryption\_keys][]
+
 
 <!--Anchors-->
 [透過的なデータ暗号化 (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-
+[sys.databases]: http://msdn.microsoft.com/library/ms178534.aspx
+[sys.dm\_pdw\_nodes\_database\_encryption\_keys]: https://msdn.microsoft.com/library/mt203922.aspx
 
 <!--Image references-->
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

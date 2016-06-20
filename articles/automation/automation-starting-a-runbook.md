@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/23/2016"
+   ms.date="06/06/2016"
    ms.author="magoedte;bwren"/>
 
 # Azure Automation での Runbook の開始
@@ -25,7 +25,7 @@
 | [Windows PowerShell](https://msdn.microsoft.com/library/dn690259.aspx) | <li>Windows PowerShell コマンドレットを使用してコマンドラインから呼び出します。<br> <li>複数のステップで自動化されたソリューションに含めることができます。<br> <li>証明書または OAuth ユーザー プリンシパル/サービス プリンシパルで要求が認証されます。<br> <li>単純および複雑なパラメーター値を提供します。<br> <li>ジョブの状態を追跡できます。<br> <li>PowerShell コマンドレットをサポートするために必要なクライアントです。 |
 | [Azure Automation API](https://msdn.microsoft.com/library/azure/mt662285.aspx) | <li>最も柔軟性の高い方法ですが、最も複雑でもあります。<br> <li>HTTP 要求を発行することが可能なあらゆるカスタム コードから呼び出せます。<br> <li>証明書または OAuth ユーザー プリンシパル/サービス プリンシパルでの認証を要求します。<br> <li>単純および複雑なパラメーター値を提供します。<br> <li>ジョブの状態を追跡できます。 |
 | [Webhook](automation-webhooks.md) | <li>1 つの HTTP 要求で Runbook を開始します。<br> <li>URL のセキュリティ トークンを使用して認証します。<br> <li>クライアントは Webhook の作成時に指定されたパラメーター値を上書きできません。Runbook は、HTTP 要求の詳細が含まれる 1 つのパラメーターを定義できます。<br> <li>Webhook URL でジョブの状態を追跡することはできません。 |
-| [Azure アラートに応答する](automation-webhooks.md) | <li>Azure アラートに応答して Runbook を開始します。<br> <li>runbook 用の Webhook とアラートへのリンクを構成します。<br> <li>URL のセキュリティ トークンを使用して認証します。<br> <li>現時点ではメトリックに関するアラートのみサポートします。 |
+| [Azure アラートに応答する](../log-analytics/log-analytics-alerts.md) | <li>Azure アラートに応答して Runbook を開始します。<br> <li>runbook 用の Webhook とアラートへのリンクを構成します。<br> <li>URL のセキュリティ トークンを使用して認証します。<br> <li>現時点ではメトリックに関するアラートのみサポートします。 |
 | [スケジュール](automation-scheduling-a-runbook.md) | <li>時間、日、週の単位のスケジュールで Runbook を自動的に開始できます。<br> <li>Azure ポータル、PowerShell コマンドレット、または Azure API を使用してスケジュールを設定します。<br> <li>スケジュールで使用するパラメーター値を提供します。 |
 | [別の Runbook から](automation-child-runbooks.md) | <li>別の Runbook の活動として、Runbook を使用します。<br> <li>複数の Runbook で使用する機能に役立ちます。<br> <li>子 Runbook にパラメーター値を指定し、出力を親 Runbook で使用します。 |
 
@@ -193,4 +193,4 @@ jsmith
 
 -	この記事の Runbook アーキテクチャでは、ハイブリッド Runbook の概要について説明しています。詳細については、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/10/2016"
+   ms.date="05/25/2016"
    ms.author="alkohli"/>
 
 # StorSimple ソフトウェア、高可用性、ネットワークの要件
@@ -85,7 +85,7 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 | URL パターン | コンポーネント/機能 | デバイスの IP |
 |------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus| クラウド対応のネットワーク インターフェイス |
-|`http://*.backup.windowsazure.com`|デバイス登録| DATA 0 のみ|
+|`https://*.backup.windowsazure.com`|デバイス登録| DATA 0 のみ|
 |`http://crl.microsoft.com/pki/*` |証明書の失効 |クラウド対応のネットワーク インターフェイス |
 | `https://*.core.windows.net/*` | Azure ストレージ アカウントと監視 | クラウド対応のネットワーク インターフェイス |
 | `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update サーバー<br> | コントローラーの固定 IP のみ |
@@ -281,4 +281,4 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

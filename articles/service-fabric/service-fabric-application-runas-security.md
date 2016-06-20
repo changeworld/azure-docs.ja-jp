@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="03/24/2016"
-   ms.author="msfussell"/>
+   ms.author="mfussell"/>
 
 # RunAs: 異なるセキュリティ アクセス許可での Service Fabric アプリケーションの実行
 Azure Service Fabric では、**RunAs** と呼ばれる別のユーザー アカウントを使用して、クラスターで実行しているアプリケーションをセキュリティで保護できます。また、そのユーザー アカウントを使用するアプリケーションによって使用されるファイル、ディレクトリ、証明書などのリソースも保護されます。
@@ -155,14 +155,14 @@ PowerShell ファイルで、システム環境変数を設定するために次
 ~~~
 
 **注:** 既定では、バッチ ファイルが実行されると、**work** と呼ばれるアプリケーション フォルダーでファイルを検索します。この場合、MySetup.bat を実行するときに、アプリケーションの**コード パッケージ** フォルダーである同じフォルダー内に MySetup.ps1 を見つける必要があります。このフォルダーを変更するには、次に示すように作業フォルダーを設定します。
-    
+
 ~~~
 <SetupEntryPoint>
     <ExeHost>
     <Program>MySetup.bat</Program>
     <WorkingFolder>CodePackage</WorkingFolder>
     </ExeHost>
-</SetupEntryPoint> 
+</SetupEntryPoint>
 ~~~
 
 ## エントリ ポイントのローカル デバッグにコンソール リダイレクト ポリシーを使用する
@@ -179,13 +179,13 @@ PowerShell ファイルで、システム環境変数を設定するために次
     <WorkingFolder>CodePackage</WorkingFolder>
     <ConsoleRedirection FileRetentionCount="10"/>
     </ExeHost>
-</SetupEntryPoint> 
+</SetupEntryPoint>
 ~~~
 
 ここで **Echo** コマンドを書き込むように、MySetup.ps1 ファイルを変更する場合、これはデバッグのために出力ファイルを書き込みます。
 
 ~~~
-Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to" 
+Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to"
 ~~~
 
 **自分のスクリプトをデバッグしたら、すぐにこのコンソール リダイレクト ポリシーを削除してください**
@@ -351,4 +351,4 @@ HTTPS エンドポイントの場合、クライアントに返す証明書の�
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0608_2016-->

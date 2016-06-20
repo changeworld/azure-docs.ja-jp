@@ -1,8 +1,8 @@
 > [AZURE.SELECTOR]
-- [ASP.NET](../articles/application-insights/app-insights-start-monitoring-app-health-usage.md)
+- [ASP.NET](../articles/application-insights/app-insights-asp-net.md)
 - [Java](../articles/application-insights/app-insights-java-get-started.md)
+- [Node.JS](../articles/application-insights/app-insights-nodejs.md)
 - [JavaScript](../articles/application-insights/app-insights-javascript.md)
-- [Windows](../articles/application-insights/app-insights-windows-desktop.md)
-- [Other](../articles/application-insights/app-insights-platforms.md)
+- [その他](../articles/application-insights/app-insights-platforms.md)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0608_2016-->

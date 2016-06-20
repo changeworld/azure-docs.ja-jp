@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/05/2016"
-   ms.author="elfish;barbkess;sonyama"/>
+   ms.date="06/01/2016"
+   ms.author="elfish;barbkess;sonyama;kevin"/>
 
 # Azure SQL Data Warehouse でのデータベースのバックアップと復元 (PowerShell)
 
@@ -30,7 +30,6 @@ Azure SQL Data Warehouse でデータベースを復元するための PowerShel
 
 - ライブ データベースの復元
 - 削除されたデータベースの復元
-- アクセスできないデータベースを地理的に異なる Azure リージョンから復元
 
 [AZURE.INCLUDE [SQL Data Warehouse のバックアップ保持ポリシー](../../includes/sql-data-warehouse-backup-retention-policy.md)]
 
@@ -130,45 +129,6 @@ $RestoredDatabase.status
 
 復元が完了したら、[復旧されたデータベースの最終処理][]に関するガイドに従って、復旧されたデータベースを構成できます。
 
-## Azure 地理的リージョンからの復元
-
-データベースを復旧するには、[Restore-AzureRmSqlDatabase][] コマンドレットを使用します。
-
-1. Windows PowerShell を開きます。
-2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
-3. 復元するデータベースを含むサブスクリプションを選択します。
-4. 復旧するデータベースを取得します。
-5. データベースの復旧要求を作成します。
-6. geo リストアされたデータベースの状態を確認します。
-
-```Powershell
-
-Login-AzureRmAccount
-Get-AzureRmSubscription
-Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
-
-# Get the database you want to recover
-$GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>"
-
-# Recover database
-$GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "<YourResourceGroupName>" -ServerName "<YourTargetServer>" -TargetDatabaseName "<NewDatabaseName>" –ResourceId $GeoBackup.ResourceID
-
-# Verify that the geo-restored database is online
-$GeoRestoredDatabase.status
-
-```
-
-### geo リストアの実行後にデータベースを構成する
-復旧後のデータベースをすぐ運用できるようにするためのチェックリストです。
-
-1. **接続文字列を更新する**: クライアント ツールの接続文字列が新しく復旧したデータベースを指していることを確認します。
-2. **ファイアウォール規則を変更する**: ターゲット サーバーのファイアウォール規則を確認し、クライアント コンピューターまたは Azure からサーバーおよび新しく復旧されたデータベースへの接続が有効になっていることを確認します。
-3. **サーバー ログインとデータベース ユーザーを確認する**: アプリケーションで使用するすべてのログインが、復旧されたデータベースをホストしているサーバー上に存在することを確認します。不足しているログインを再作成し、復旧されたデータベースに対する適切なアクセス許可を与えます。 
-4. **監査を有効にする**: データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。
-
-ソース データベースの TDE が有効な場合、復旧したデータベースも TDE が有効になります。
-
-
 ## 次のステップ
 詳細については、[Azure SQL Database のビジネス継続性の概要][]および[管理の概要][]に関するページをご覧ください。
 
@@ -194,4 +154,4 @@ $GeoRestoredDatabase.status
 [Azure Portal]: https://portal.azure.com/
 [Microsoft Web プラットフォーム インストーラー]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

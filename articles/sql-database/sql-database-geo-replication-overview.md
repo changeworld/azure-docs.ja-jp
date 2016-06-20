@@ -30,7 +30,7 @@
 
 アクティブ geo レプリケーションの主な利点の 1 つは、復旧に要する時間が非常に短い、データベース レベルの障害復旧ソリューションが提供されることです。別のリージョン内のサーバーにセカンダリ データベースを配置すると、アプリケーションの回復力が最大になります。リージョン間で冗長性が確保されるため、自然災害、致命的なヒューマン エラー、または悪意のある行為によってデータセンター全体またはその一部の機能が完全に失われた場合でも、アプリケーションを復旧できます。次の図は、プライマリが米国西部リージョン、セカンダリが米国東部リージョンにある Premium データベース上に構成されたアクティブ Geo レプリケーションの例を示しています。
 
-![geo レプリケーション関係](./media/sql-database-active-geo-replication/geo-replication-relationship.png)
+![geo レプリケーションのリレーションシップ](./media/sql-database-active-geo-replication/geo-replication-relationship.png)
 
 もう 1 つの主要なメリットは、セカンダリ データベースが読み取り可能であり、ジョブを報告するなどの読み取り専用ワークロードの負荷を軽減するために使用できるということです。セカンダリ データベースを負荷分散のためのみに使用する場合は、プライマリと同じリージョンに作成できます。ただし、この場合、致命的な障害に対するアプリケーションの回復力は増加しません。
 
@@ -44,7 +44,7 @@
 ## アクティブ geo レプリケーションの機能
 アクティブ geo レプリケーションには、次の重要な機能が用意されています。
 
-- **自動非同期レプリケーション**: セカンダリ データベースは、既存のデータベースに追加することによってのみ作成できます。セカンダリは、別の Azure SQL Database サーバーにのみ作成できます。作成した後、プライマリ データベースからコピーしたデータをセカンダリ データベースに設定できます。このプロセスはシード処理と呼ばれます。オンライン セカンダリ データベースが作成およびシードされた後、プライマリ データベースの更新がセカンダリ データベースに非同期で自動的にレプリケートされます。つまり、トランザクションはプライマリ データベースでコミットされた後に、セカンダリ データベースにレプリケートされます。SQL Database では、シード処理が完了すると、セカンダリ データベースのトランザクション一貫性が常に保証されます。セカンダリ データベースの作成の詳細については、「[Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-transact-sql.md)」と「[PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-powershell.md)」を参照してください。Azure ポータルを使用したセカンダリ データベースの作成については、「[Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-portal.md)」を参照してください。
+- **自動非同期レプリケーション**: セカンダリ データベースは、既存のデータベースに追加することによってのみ作成できます。セカンダリは、別の Azure SQL Database サーバーにのみ作成できます。作成した後、プライマリ データベースからコピーしたデータをセカンダリ データベースに設定できます。このプロセスはシード処理と呼ばれます。オンライン セカンダリ データベースが作成およびシードされた後、プライマリ データベースの更新がセカンダリ データベースに非同期で自動的にレプリケートされます。つまり、トランザクションはプライマリ データベースでコミットされた後に、セカンダリ データベースにレプリケートされます。SQL Database では、シード処理が完了すると、セカンダリ データベースのトランザクション一貫性が常に保証されます。セカンダリ データベースの作成の詳細については、「[Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-transact-sql.md)」と「[PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-powershell.md)」を参照してください。Azure ポータルを使用したセカンダリ データベースの作成については、「[Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-portal.md)」をご覧ください。
 
 - **複数のセカンダリ データベース**: 2 つ以上のセカンダリ データベースを使用すると、プライマリ データベースとアプリケーションの冗長性が向上し、保護レベルが強化されます。セカンダリ データベースが複数存在する場合、セカンダリ データベースのいずれかに障害が発生しても、アプリケーションは保護された状態が維持されます。セカンダリ データベースが 1 つしか存在しない場合に障害が発生すると、新しいセカンダリ データベースが作成されるまで、アプリケーションは高いリスクにさらされます。
 
@@ -52,7 +52,7 @@
 
 >[AZURE.NOTE] セカンダリがプライマリから受け取るスキーマの更新がある場合、セカンダリ データベース上にスキーマ ロックが必要であるため、セカンダリでのログの再生は遅延します。
 
-- **エラスティック プール データベースのアクティブ geo レプリケーション**: Elastic Database プールでは、任意のデータベースに対して、アクティブ geo レプリケーションを構成することができます。セカンダリ データベースは、別の Elastic Database プールで指定できます。通常のデータベースの場合、サービス階層が同じであれば、セカンダリが Elastic Database プールになったり、その逆になったりすることができます。エラスティック プールでの geo レプリケーションの構成の詳細については、「[Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-transact-sql.md)」と「[PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-powershell.md)」を参照してください。  
+- **エラスティック プール データベースのアクティブ geo レプリケーション**: エラスティック データベース プールでは、任意のデータベースに対して、アクティブ geo レプリケーションを構成することができます。セカンダリ データベースは、別の Elastic Database プールで指定できます。通常のデータベースの場合、サービス階層が同じであれば、セカンダリが Elastic Database プールになったり、その逆になったりすることができます。エラスティック プール データベースの geo レプリケーションの構成の詳細については、[Transact-SQL を使用した Azure SQL Database の geo レプリケーション](sql-database-geo-replication-transact-sql.md)に関するページと [PowerShell を使用した Azure SQL Database の geo レプリケーション](sql-database-geo-replication-powershell.md)に関するページをご覧ください。  
 
 - **セカンダリ データベースの構成可能なパフォーマンス レベル**: セカンダリ データベースは、プライマリよりも下位のパフォーマンス レベルで作成することができます。プライマリとセカンダリ、両方のデータベースが同じサービス階層を持つ必要があります。このオプションは、データベース書き込みアクティビティが高いアプリケーションにはお勧めできません。結果的にレプリケーション遅延が増大する可能性があり、したがって、フェールオーバー後に深刻なデータ損失のリスクが高くなるためです。さらに、フェールオーバー後に、新しいプライマリがより高いパフォーマンス レベルにアップグレードされるまで、アプリケーションのパフォーマンスに影響が生じます。Azure ポータル上のログ IO の割合グラフを使用すると、レプリケーションの負荷を維持するために必要なセカンダリの最小パフォーマンス レベルを適切に見積もれます。たとえば、プライマリ データベースが P6 (1000 DTU) で、ログ IO の割合が 50% の場合、セカンダリは P4 (500 DTU) 以上である必要があります。ログ IO データは、[sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) または [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) データベース ビューを使用しても取得できます。SQL データベースのパフォーマンス レベルの詳細については、「[SQL Database のオプションとパフォーマンス](sql-database-service-tiers.md)」を参照してください。セカンダリ データベース例のパフォーマンス レベルの構成の詳細については、「[Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-transact-sql.md)」と「[PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-powershell.md)」を参照してください。
 
@@ -60,7 +60,7 @@
 
 - **資格情報とファイアウォール ルールの同期を保つ**: geo レプリケートされたデータベースには、[データベースのファイアウォール規則](sql-database-firewall-configure.md)の使用をお勧めします。これらのルールがデータベースとともにレプリケートされて、すべてのセカンダリ データベースのファイアウォールの構成がプライマリと同じになるようにするためです。これにより、プライマリとセカンダリ データベースの両方をホストするサーバー上で、顧客がファイアウォール規則を手動で構成、管理する必要性がなくなります。同様に、データのアクセスに[包含データベース ユーザー](sql-database-manage-logins.md)を使用することにより、プライマリとセカンダリの両方のデータベースが、確実に常に同じユーザー資格情報を持つようにして、フェールオーバーが発生した場合に、ログインとパスワードの不一致により中断が発生しないようにできます。[Azure Active Directory](../active-directory/active-directory-whatis.md) の顧客を追加すると、プライマリおよびセカンダリ データベースへのユーザー アクセスを管理でき、データベース内で資格情報を管理する必要が完全になくなります。
 
-- **Azure リソース マネージャー API とロール ベース セキュリティ**: アクティブ geo レプリケーションには、管理のための[ Azure Resource Manager (ARM) API](https://msdn.microsoft.com/library/azure/mt163571.aspx) 一式 ([ARM ベースの PowerShell コマンドレット](sql-database-geo-replication-powershell.md)など) が含まれています。これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。アクセス ロールの実装方法の詳細については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
+- **Azure Resource Manager API とロール ベース セキュリティ**: アクティブ geo レプリケーションには、管理のための[ Azure Resource Manager (ARM) API](https://msdn.microsoft.com/library/azure/mt163571.aspx) 一式 ([ARM ベースの PowerShell コマンドレット](sql-database-geo-replication-powershell.md)など) が含まれています。これらの API は、リソース グループの使用を必要とし、ロール ベース セキュリティ (RBAC) をサポートします。アクセス ロールの実装方法の詳細については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
 >[AZURE.NOTE] アクティブ geo レプリケーションの多くの新機能は [Azure Resource Manager (ARM)](../resource-group-overview.md) ベースの [Azure SQL REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) と [Azure SQL Database PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)を使用する場合のみサポートされます。既存の [Azure SQL のサービス管理 (クラシック) REST API](https://msdn.microsoft.com/library/azure/dn505719.aspx) と [Azure SQL Database (クラシック) コマンドレット](https://msdn.microsoft.com/library/azure/dn546723.aspx)では、後方互換性がサポートされているため、ARM ベースの API の使用が推奨されています。
 
@@ -76,4 +76,4 @@
 - [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

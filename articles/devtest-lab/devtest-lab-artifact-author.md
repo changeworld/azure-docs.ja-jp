@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 #DevTest ラボ VM のカスタム アーティファクトの作成
 
-> [AZURE.NOTE] この記事の付属のビデオを表示するには、次のリンクをクリックします。[How to author custom artifacts](/documentation/videos/how-to-author-custom-artifacts) (カスタム アーティファクトを作成する方法)
+> [AZURE.NOTE] この記事の付属の[カスタム アーティファクトの作成方法](/documentation/videos/how-to-author-custom-artifacts)に関するビデオをご覧ください
 
 ## 概要
 **アーティファクト**は、VM のプロビジョニング後にアプリケーションをデプロイして構成するために使用します。アーティファクトは、Git リポジトリ内のフォルダーに格納されているアーティファクト定義ファイルとその他のスクリプト ファイルで構成されます。アーティファクト定義ファイルは、VM にインストールするものを指定するのに使用できる JSON と式で構成されます。たとえば、アーティファクトの名前、実行するコマンド、コマンド実行時に使用可能なパラメーターを定義できます。アーティファクト定義ファイル内では、他のスクリプト ファイルを名前で参照できます。
@@ -125,4 +125,4 @@
 
 - [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -12,12 +12,12 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="05/02/2016" 
+ms.date="06/07/2016" 
 ms.author="adegeo"/>
 
 # .NET で Web または Worker ロールのライフサイクルをカスタマイズする
 
-worker ロールを作成する際に、[RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) クラスを拡張します。このクラスは、ライフサイクル イベントに応答できるようオーバーライドするメソッドを提供します。Web ロールの場合、このクラスは任意であり、必要に応じてライフサイクル イベントへの応答に使用します。
+worker ロールを作成する際に、[RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) クラスを拡張します。このクラスは、ライフサイクル イベントに応答できるようオーバーライドするメソッドを提供します。Web ロールの場合、このクラスは任意であり、必要に応じてライフサイクル イベントへの応答に使用する必要があります。
 
 ## RoleEntryPoint クラスを拡張する
 
@@ -80,4 +80,4 @@ Web ロールの初期化とシャットダウン シーケンスを管理する
 ## 次のステップ
 [クラウド サービス パッケージを作成する方法](cloud-services-model-and-package.md)について説明します。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

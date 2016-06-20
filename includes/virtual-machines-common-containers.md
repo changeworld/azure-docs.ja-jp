@@ -97,7 +97,7 @@ IT コンテナーと仮想マシンの組み合わせは、オペレーショ�
 
 ここまでお読みになって、設計者、開発者、IT オペレーション スペシャリストの皆さんはこう思っているのではないでしょうか。「これなら何でも自動化できる。これこそ真の DCaaS (Data-Center-As-A-Service) だ」と。
 
-その通りです。コンテナーにはそれだけの可能性があります。Azure VM のグループを管理したり、スクリプトを使用してカスタム コードを挿入できるシステムは既に多数存在しています (その多くは [CustomScriptingExtension for Windows](https://msdn.microsoft.com/library/azure/dn781373.aspx) や [CustomScriptingExtension for Linux](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用したものです)。既に使用している方もいらっしゃるかもしれませんが、PowerShell や Azure CLI のスクリプトを使用すれば、Azure デプロイメントを自動化することもできます (詳しい方法は[こちら](../articles/virtual-machines/virtual-machines-windows-create-powershell.md))。
+その通りです。コンテナーにはそれだけの可能性があります。Azure VM のグループを管理したり、スクリプトを使用してカスタム コードを挿入できるシステムは既に多数存在しています (その多くは [CustomScriptingExtension for Windows](https://msdn.microsoft.com/library/azure/dn781373.aspx) や [CustomScriptingExtension for Linux](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用したものです)。既に使用している方もいらっしゃるかもしれませんが、PowerShell や Azure CLI のスクリプトを使用すれば、Azure デプロイメントを自動化することもできます (詳しい方法は[こちら](../articles/virtual-machines/virtual-machines-windows-ps-create.md))。
 
 また多くの場合、これらの機能は [Puppet](https://puppetlabs.com/) や [Chef](https://www.chef.io/) などのツールに移行され、VM の作成や構成を柔軟に自動化する目的に使用されます。(Azure でこれらのツールを使用する方法については、[こちら](#tools-for-working-with-containers)のリンクを参照してください。)
 
@@ -122,7 +122,7 @@ Docker は、独自の VM 作成ツール セット ([docker-machine](../article
 
 [Deis](http://deis.io/overview/) は、独自のサーバー上アプリケーションを簡単にデプロイして管理できる、オープン ソースの PaaS (Platform-as-a-Service) です。Deis はDocker と CoreOS をベースとしており、それによって、Heroku 風のワークフローを使用した軽量な PaaS を実現しています。Azure では、[3 ノードの Azure VM グループを簡単に作成して Deis をインストール](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md)した後、[Hello World Go アプリケーションをインストール](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md#deploy-and-scale-a-hello-world-application)できます。
 
-[CoreOS](../articles/virtual-machines/virtual-machines-linux-classic-coreos-howto.md) は、最適なフット プリントと Docker サポート、および独自のコンテナー システム ([rkt](https://github.com/coreos/rkt)) を備えた Linux ディストリビューションで、[fleet](../articles/virtual-machines/virtual-machines-linux-classic-coreos-fleet-get-started.md) というコンテナー グループ管理ツールも備えています。
+[CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html) は、最適なフット プリントと Docker サポート、および独自のコンテナー システム ([rkt](https://github.com/coreos/rkt)) を備えた Linux ディストリビューションで、[fleet](https://coreos.com/using-coreos/clustering/) というコンテナー グループ管理ツールも備えています。
 
 Ubuntu も非常にポピュラーな Linux ディストリビューションで、Docker のサポートに優れているほか、[Linux (LXC スタイル) クラスター](https://help.ubuntu.com/lts/serverguide/lxc.html)もサポートしています 。
 
@@ -174,11 +174,11 @@ Docker on Microsoft Azure:
 
 Linux ディストリビューションと Azure での導入例:
 
-- [CoreOS](../articles/virtual-machines/virtual-machines-linux-classic-coreos-howto.md)
+- [CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html)
 
 構成、クラスター管理、およびコンテナー オーケストレーション:
 
-- [CoreOS の Fleet](../articles/virtual-machines/virtual-machines-linux-classic-coreos-fleet-get-started.md)
+- [CoreOS の Fleet](https://coreos.com/using-coreos/clustering/)
 
 -	Deis
 	- [3 ノードの Azure VM グループを作成し、Deis をインストールして、Hello World Go アプリケーションを起動する方法](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md)
@@ -216,4 +216,4 @@ Linux ディストリビューションと Azure での導入例:
 [マイクロサービス]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

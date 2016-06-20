@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ポータルを使用して Azure Data Lake Store で HDInsight Hadoop クラスターを作成する | Azure"
-   description="Azure ポータルを使用して、Azure Data Lake Store で HDInsight Hadoop クラスターを作成し、使用します。"
+   pageTitle="ポータルを使用して Azure Data Lake Store で HDInsight クラスターを作成する | Azure"
+   description="Azure ポータルを使用して、Azure Data Lake Store で HDInsight クラスターを作成し、使用します"
    services="data-lake-store,hdinsight" 
    documentationCenter=""
    authors="nitinme"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/11/2016"
+   ms.date="06/03/2016"
    ms.author="nitinme"/>
 
 # Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する
@@ -23,15 +23,15 @@
 - [PowerShell の使用](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 
-Azure ポータルを使用して、Azure Data Lake Store にアクセスするように HDInsight クラスター (Hadoop、HBase、または Storm) を作成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
+Azure ポータルを使用して、Azure Data Lake Store にアクセスするように HDInsight クラスター (Hadoop、HBase、Spark、または Storm) を作成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
 
-* **Hadoop クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure Storage BLOB (WASB) のままです。
+* **Spark クラスター (Linux) と Hadoop クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure Storage BLOB (WASB) のままです。
 
 * **Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、Storm トポロジからデータを書き込むために使用できます。Data Lake Store は、Storm トポロジから読み取ることができる、参照データを格納するために使用することもできます。詳細については、「[Storm トポロジで Data Lake Store を使用する](#use-data-lake-store-in-a-storm-topology)」を参照してください。
 
 * **HBase クラスター (Windows および Linux) の場合**、Data Lake Store を既定のストレージまたは追加ストレージとして使用できます。詳細については、「[HBase クラスターで Data Lake Store を使用する](#use-data-lake-store-with-hbase-clusters)」を参照してください。
 
-> [AZURE.NOTE] Data Lake Store にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight バージョン 3.2 (Windows および Linux 用) でのみ使用できます。
+> [AZURE.NOTE] Data Lake Store にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight バージョン 3.2 と 3.4 でのみ使用できます (Windows と Linux の Hadoop、HBase、および Storm クラスターの場合)。Linux の Spark クラスターの場合、このオプションは HDInsight 3.4 クラスターでのみ使用できます。
 
 
 ## 前提条件
@@ -258,4 +258,4 @@ HBase クラスターでは、Data Lake Store を既定のストレージとし�
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

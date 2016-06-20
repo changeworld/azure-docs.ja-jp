@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="05/24/2016"
 	ms.author="jgao"/>
 
 # Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理
@@ -60,14 +60,19 @@ Azure PowerShell バージョン 0.9x をインストールしている場合は
 	Get-AzureRmHDInsightCluster -ClusterName <Cluster Name>
 
 ##クラスターの削除
+
 クラスターを削除するには、次のコマンドを使用します。
 
 	Remove-AzureRmHDInsightCluster -ClusterName <Cluster Name>
 
+クラスターが含まれるリソース グループを削除して、クラスターを削除することもできます。グループを削除すると、既定のストレージ アカウントを含め、グループ内のすべてのリソースが削除されることに注意してください。
+
+	Remove-AzureRmResourceGroup -Name <Resource Group Name>
+			
 ##クラスターのスケール
 クラスターのスケール設定機能を使用すると、Azure HDInsight で実行しているクラスターによって使用される worker ノードの数を、クラスターを再作成することなく、変更できます。
 
->[AZURE.NOTE] HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスターの一覧と表示](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)」を参照してください。
+>[AZURE.NOTE] HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。「[クラスターの一覧と表示](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)」をご覧ください。
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
@@ -94,7 +99,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
 	* Storm Web UI
 	* コマンド ライン インターフェイス (CLI) ツール
 
-	詳細については、[Apache Storm に関するドキュメント](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)を参照してください。
+	詳細については、[Apache Storm に関するドキュメント](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)をご覧ください。
 
 	Storm Web UI は、HDInsight クラスターで使用できます。
 
@@ -234,4 +239,4 @@ ARM モードでは、各 HDInsight クラスターは Azure リソース グル
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

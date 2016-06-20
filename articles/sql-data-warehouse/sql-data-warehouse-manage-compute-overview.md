@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/06/2016"
+   ms.date="06/01/2016"
    ms.author="barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)
 
 > [AZURE.SELECTOR]
-- [概要](sql-data-warehouse-overview-manage-compute.md)
+- [概要](sql-data-warehouse-manage-compute-overview.md)
 - [ポータル](sql-data-warehouse-manage-compute-portal.md)
 - [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 - [REST ()](sql-data-warehouse-manage-compute-rest-api.md)
@@ -128,19 +128,20 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 
 <!--Article references-->
 
-[Azure ポータルによるコンピューティング能力のスケーリング]: ./sql-data-warehouse-manage-compute-tasks-portal.md#task-1-scale-performance
-[PowerShell によるコンピューティング能力のスケーリング]: ./sql-data-warehouse-manage-compute-tasks-powershell.md#task-1-scale-performance
-[REST API によるコンピューティング能力のスケーリング]: ./sql-data-warehouse-manage-compute-tasks-rest-api.md#task-1-scale-performance
-[TSQL によるコンピューティング能力のスケーリング]: ./sql-data-warehouse-manage-compute-tasks-tsql.md
+[Azure ポータルによるコンピューティング能力のスケーリング]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-bk
+[PowerShell によるコンピューティング能力のスケーリング]: ./sql-data-warehouse-manage-compute-powershell.md#scale-compute-bk
+[REST API によるコンピューティング能力のスケーリング]: ./sql-data-warehouse-manage-compute-rest-api.md#scale-compute-bk
+[TSQL によるコンピューティング能力のスケーリング]: ./sql-data-warehouse-manage-compute-tsql.md#scale-compute-bk
 
 [容量制限]: ./sql-data-warehouse-service-capacity-limits.md
 
-[Azure ポータルによるコンピューティングの一時停止]: ./sql-data-warehouse-manage-scale-out-tasks.md#task-2-pause-compute
-[PowerShell によるコンピューティングの一時停止]: ./sql-data-warehouse-manage-scale-out-tasks-powershell.md#task-2-pause-compute
-[REST API によるコンピューティングの一時停止]: ./sql-data-warehouse-manage-scale-out-tasks-rest-api.md#task-2-pause-compute
-[Azure ポータルによるコンピューティングの再開]: ./sql-data-warehouse-manage-scale-out-tasks.md#task-3-resume-compute
-[PowerShell によるコンピューティングの再開]: ./sql-data-warehouse-manage-scale-out-tasks-powershell.md#task-3-resume-compute
-[REST API によるコンピューティングの再開]: ./sql-data-warehouse-manage-scale-out-tasks-rest-api.md#task-3-resume-compute
+[Azure ポータルによるコンピューティングの一時停止]: ./sql-data-warehouse-manage-compute-portal.md#pause-compute-bk
+[PowerShell によるコンピューティングの一時停止]: ./sql-data-warehouse-manage-compute-powershell.md#pause-compute-bk
+[REST API によるコンピューティングの一時停止]: ./sql-data-warehouse-manage-compute-rest-api.md#pause-compute-bk
+
+[Azure ポータルによるコンピューティングの再開]: ./sql-data-warehouse-manage-compute-portal.md#resume-compute-bk
+[PowerShell によるコンピューティングの再開]: ./sql-data-warehouse-manage-compute-powershell.md#resume-compute-bk
+[REST API によるコンピューティングの再開]: ./sql-data-warehouse-manage-compute-rest-api.md#resume-compute-bk
 
 [同時実行モデル]: sql-data-warehouse-develop-concurrency.md
 [テーブルの設計]: sql-data-warehouse-develop-table-design.md
@@ -157,4 +158,4 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

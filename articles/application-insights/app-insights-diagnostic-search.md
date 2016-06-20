@@ -12,14 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/26/2016" 
+	ms.date="06/03/2016" 
 	ms.author="awills"/>
  
 # Application Insights の診断検索の使用
 
-[診断検索] は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights][start] のブレードです。診断検索を使用すると、作成したログ トレースやイベントを表示できます。
+[診断検索] は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights][start] の機能です。診断検索を使用すると、作成したログ トレースやイベントを表示できます。
 
-## 診断検索が表示されるタイミング
+## 診断検索が表示される場所
 
 
 ### Azure ポータルで次の操作を行います。
@@ -52,10 +52,11 @@ Visual Studio で [検索] ウィンドウを開きます。
 ![](./media/app-insights-diagnostic-search/34.png)
 
 
-### サンプリング
+## サンプリング
 
 (ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。
-> [サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
+
+[サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
 
 
 ## 個々の項目の確認
@@ -157,8 +158,8 @@ New Delay|w d|new<br/>delay<br/>n* AND d*
 サンプル クエリ | 効果 
 ---|---
 slow|日付範囲内でフィールドに "slow" という語句が含まれるすべてのイベントを検索します
-database??|database01、databaseAB などに一致します。<br/>? は、検索語句の先頭に使用できません。
-database*|database、database01、databaseNNNN に一致します。<br/>* は、検索語句の先頭に使用できません。
+database|database01、databaseAB などに一致します。<br/>? は、検索語句の先頭に使用できません。
+database* |database、database01、databaseNNNN に一致します。<br/>* は、検索語句の先頭に使用できません
 apple AND banana|両方の語句を含むイベントを検索します。"and" ではなく大文字の "AND" を使用します。
 apple OR banana<br/>apple banana|どちらかの語句を含むイベントを検索します。"or" ではなく "OR" を使用します。</br/>短縮形。
 apple NOT banana<br/>apple -banana|ある用語を含む一方で他方の用語を含まないイベントを検索します。<br/>短縮形。
@@ -216,8 +217,8 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 [trace]: app-insights-search-diagnostic-logs.md
-[track]: app-insights-spi-custom-events-metrics.md
+[track]: app-insights-api-custom-events-metrics.md
 
  
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0608_2016-->

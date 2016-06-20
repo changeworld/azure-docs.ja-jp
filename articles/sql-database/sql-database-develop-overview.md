@@ -53,7 +53,7 @@ SQL Database への接続中に一時エラーが発生した場合は、コー�
 
 ## ネットワークに関する考慮事項
 * クライアント プログラムをホストするコンピューターのファイアウォールで、ポート 1433 での発信 TCP が許可されていることを確認します。詳細: [方法: Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings.md)
-* クライアントが Azure 仮想マシン (VM) で実行されているときに、クライアント プログラムが SQL Database V12 に接続する場合、VM で特定のポートを開く必要があります。詳細: [ADO.NET 4.5 および SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
+* クライアントが Azure 仮想マシン (VM) で実行されているときに、クライアント プログラムが SQL Database V12 に接続する場合、VM で特定のポートの範囲を開く必要があります。詳細: [ADO.NET 4.5 および SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
 * Azure SQL Database V12 へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。1433 以外のポートが重要になります。詳細: [ADO.NET 4.5 および SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
 
 ## Elastic Scale によるデータ シャーディング
@@ -62,4 +62,4 @@ Elastic Scale は、スケール アウト (およびスケール イン) のプ
 * [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
 * [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

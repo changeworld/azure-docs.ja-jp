@@ -123,7 +123,8 @@ public Task<string> OpenAsync(CancellationToken cancellationToken)
 
     this.listeningAddress = string.Format(
                 CultureInfo.InvariantCulture,
-                "http://+:{0}/");
+                "http://+:{0}/",
+                port);
                         
     this.publishAddress = this.listeningAddress.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
             
@@ -281,4 +282,4 @@ var result = await myServicePartitionClient.InvokeWithRetryAsync(async (client) 
 
  - [Reliable Services を使用した WCF 通信](service-fabric-reliable-services-communication-wcf.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/11/2016"
+	ms.date="06/02/2016"
 	ms.author="daleche"/>
 
 
@@ -67,4 +67,4 @@ SQL Database のデータを誤って変更してしまい、影響を受けた 
 ## 確認手順
 1. 新しくコピーしたテーブルをクエリしてテストし、データが正しいことを確認します。確認できたら、**[準備手順]** セクションで名前を変更したテーブルを削除できます (例: &lt;テーブル名&gt;\_old)。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0608_2016-->

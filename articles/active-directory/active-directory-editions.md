@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="06/07/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory のエディション
@@ -163,7 +163,7 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 
 | Free エディション| Basic エディション| Premium Edition| Office 365 アプリのみ |
 | :-: | :-: | :-: | :-: |
-| 10 個のアプリ (ユーザーあたり) [1] (事前統合済みの SaaS アプリおよび開発者が統合したアプリ)| 10 個のアプリ (ユーザーあたり) [1] (Free レベル + アプリケーション プロキシ アプリ) | 制限なし [2] (Free、Basic レベル + セルフサービスのアプリ統合テンプレート)| 10 個のアプリ (ユーザーあたり) [1] (事前統合済みの SaaS アプリおよび開発者が統合したアプリ)|
+| 10 個のアプリ (ユーザーあたり) [1] \(事前統合済みの SaaS アプリおよび開発者が統合したアプリ)| 10 個のアプリ (ユーザーあたり) [1] \(Free レベル + アプリケーション プロキシ アプリ) | 制限なし [2] \(Free、Basic レベル + セルフサービスのアプリ統合テンプレート)| 10 個のアプリ (ユーザーあたり) [1] \(事前統合済みの SaaS アプリおよび開発者が統合したアプリ)|
 
 [1] Azure AD Free と Azure AD Basic で、SaaS アプリへのアクセス権が割り当てられているエンド ユーザーは、アクセス パネルで最大 10 個のアプリを表示でき、アプリへの SSO アクセスを取得できます。管理者は SSO を構成して、Free と Basic のユーザーに対して、SaaS アプリへのアクセス権を何個でも割り当てることができますが、エンド ユーザーはアクセス パネルで一度に 10 個のアプリしか表示できません。
 
@@ -454,6 +454,20 @@ Microsoft Identity Manager サーバー ソフトウェアの使用権は、Wind
 | | | ![○][12]| |
 
 
+#### Enterprise State Roaming
+
+**種類:** Azure Active Directory Join – Windows 10 のみの関連機能
+
+
+**可用性:**
+
+| Free エディション| Basic エディション| Premium Edition| Office 365 アプリのみ |
+| :-: | :-: | :-: | :-: |
+| | | ![○][12]| |
+
+**詳細:**
+
+- [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
 
 
 ## Azure AD プレビュー機能
@@ -465,7 +479,6 @@ Azure AD には、Free、Basic、Premium エディションの一般提供され
 - [管理単位](active-directory-administrative-units-management.md)
 - Privileged Identity Management
 - [HR アプリケーションの統合](active-directory-saas-workday-inbound-tutorial.md)
-- [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
 
@@ -482,4 +495,4 @@ Azure AD には、Free、Basic、Premium エディションの一般提供され
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

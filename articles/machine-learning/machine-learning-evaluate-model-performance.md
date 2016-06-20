@@ -133,12 +133,12 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 図 9:二項分類モデルのクロス検証の結果。
 
 ##多クラス分類モデルの評価##
-この実験では、3 種類のあやめの事例が含まれている有名な [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "あやめ") データセットを使います。事例ごとに 4 つの特徴値 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。前の実験では、同じデータセットを使ってモデルのトレーニングとテストを行いました。今回は、[[データの分割]][split] モジュールを使ってデータのサブセットを 2 つ作成し、最初のサブセットでトレーニングを行い、2 つ目のセブセットでスコア付けと評価を行います。Iris データセットは [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) で公開されており、[[データのインポート]][reader] モジュールを使ってダウンロードできます。
+この実験では、3 種類のあやめの事例が含まれている有名な [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "あやめ") データセットを使います。事例ごとに 4 つの特徴値 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。前の実験では、同じデータセットを使ってモデルのトレーニングとテストを行いました。今回は、[[データの分割]][split] モジュールを使ってデータのサブセットを 2 つ作成し、最初のサブセットでトレーニングを行い、2 つ目のセブセットでスコア付けと評価を行います。Iris データセットは [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) で公開されており、[[データのインポート]][import-data] モジュールを使ってダウンロードできます。
 
 ###実験の作成###
 Azure Machine Learning Studio で以下のモジュールをワークスペースに追加します。
 
-- [データのインポート][reader]
+- [データのインポート][import-data]
 - [多クラス決定フォレスト][multiclass-decision-forest]
 - [データの分割][split]
 - [モデルのトレーニング][train-model]
@@ -149,7 +149,7 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 
 [[モデルのトレーニング]][train-model] モジュールのラベル列のインデックスを 5 に設定します。このデータセットにはヘッダー行がありませんが、クラス ラベルが第 5 列にあります。
 
-[[データのインポート]][reader] モジュールをクリックして、*データ ソース* プロパティを *HTTP 経由で Web URL* に設定し、*URL* を http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data に設定します。
+[[データのインポート]][import-data] モジュールをクリックして、*データ ソース* プロパティを *HTTP 経由で Web URL* に設定し、*URL* を http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data に設定します。
 
 [[データの分割]][split] モジュールでトレーニングに使用する事例の割合を設定します (0.7 など)。
  
@@ -182,11 +182,11 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
 [multiclass-decision-forest]: https://msdn.microsoft.com/library/azure/5e70108d-2e44-45d9-86e8-94f37c68fe86/
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-logistic-regression]: https://msdn.microsoft.com/library/azure/b0fd7660-eeed-43c5-9487-20d9cc79ed5d/
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

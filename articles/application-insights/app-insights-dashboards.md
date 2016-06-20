@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Application Insights ポータルのダッシュボード"
-	description="ダッシュボードで、アプリケーションの複数のコンポーネントからのテレメトリを表示します。"
+	pageTitle="Application Insights ポータルの使用"
+	description="Application Insights ポータルのメトリック、ダッシュボード、および設定。"
 	services="application-insights"
     documentationCenter=""
 	authors="alancameronwills"
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="multiple"
 	ms.topic="article" 
-	ms.date="04/25/2016"
+	ms.date="06/03/2016"
 	ms.author="awills"/>
 
 # Application Insights ポータルのナビゲーションおよびダッシュボード
@@ -34,11 +34,12 @@
 
 次の機能を利用できます。
 
-* **グラフやタイル**をクリックすると、詳細が表示されます。
-* **[設定]** をクリックすると、他のメトリックの定義済みページが表示されます。
+* **グラフやタイル**をクリックすると、グラフに表示されているアイテムの詳細が表示されます。
+* **[設定]** をクリックすると、他のメトリックの定義済みブレードと、構成ページが表示されます。
 * [**[メトリックス エクスプ ローラー]**](app-insights-metrics-explorer.md) をクリックすると、選択したメトリックのページが作成されます。
 * [**[検索]**](app-insights-diagnostic-search.md) をクリックすると、要求、例外、またはログ トレースなど、特定のイベントのインスタンスを見つけることができます。
 * [**[分析]**](app-insights-analytics.md) をクリックすると、テレメトリに対して強力なクエリを実行することができます。
+* [**[Live Stream (ライブ ストリーム)]**](app-insights-metrics-explorer.md#live-stream) をクリックすると、ほぼ即時メトリックの固定セットが表示されます。これは、新しいビルドを展開するとき、またはデバッグのときに便利です。
 
 
 ![テレメトリを表示する主な方法](./media/app-insights-dashboards/010-oview.png)
@@ -52,7 +53,7 @@
 
 ## ダッシュボード
 
-[Microsoft Azure ポータル](https://portal.azure.com)にサインインすると、ダッシュボードがまず表示されます。ここでは、[Visual Studio Application Insights](app-insights-overview.md) のテレメトリなどを含む、すべての Azure リソースから最も重要なグラフをまとめて表示することができます。
+[Microsoft Azure ポータル](https://portal.azure.com)にサインインすると、まず、ダッシュボードが表示されます。ここでは、[Visual Studio Application Insights](app-insights-overview.md) のテレメトリなどを含む、すべての Azure リソースから最も重要なグラフをまとめて表示することができます。
  
 
 ![カスタマイズされたダッシュボード](./media/app-insights-dashboards/30.png)
@@ -68,13 +69,13 @@
 
 ![グラフをピン留めするには、マウスでポイントし、ヘッダーの [...] をクリックします。](./media/app-insights-dashboards/33.png)
 
-グラフはタイルにグループ化されます。タイルには、複数のグラフを含めることができます。タイル全体をダッシュボードにピン留めします。
+グラフはタイルにグループ化されます。1 つのタイルに複数のグラフを含めることができます。タイル全体をダッシュボードにピン留めします。
 
 ## ダッシュボード上のタイルの調整
 
 タイルをダッシュボード上に追加すると、タイルを調整することができます。
 
-![グラフ編集するには、そのグラフ上にポインターを置きます。](./media/app-insights-dashboards/36.png)
+![グラフを編集するには、そのグラフ上にポインターを置きます。](./media/app-insights-dashboards/36.png)
 
 1. タイルにグラフを追加します。 
 2. メトリック、グループ化ディメンションおよびグラフのスタイル (テーブル、グラフ) を設定します。
@@ -107,6 +108,6 @@
 
 ![ダッシュボードのヘッダーで [共有] をクリックします](./media/app-insights-dashboards/41.png)
 
-[ロールとアクセス制御](app-insights-resources-roles-access-control.md)の詳細については、こちらを参照してください。
+詳細については、[ロールとアクセス制御](app-insights-resources-roles-access-control.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

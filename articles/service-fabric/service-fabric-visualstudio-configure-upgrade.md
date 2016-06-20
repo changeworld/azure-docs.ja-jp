@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="04/14/2016"
-   ms.author="cawaMS" />
+   ms.author="cawa" />
 
 # Visual Studio での Service Fabric アプリケーションのアップグレードの構成
 
@@ -28,7 +28,7 @@ Visual Studio Service Fabric ツールは、ローカルまたはリモート �
 
 標準とアップグレードの 2 種類のデプロイメントから選択できます。標準デプロイメントではクラスター上の以前のデプロイメント情報とデータが消去され、アップグレード デプロイメントではこれらが保持されます。Visual Studio で Service Fabric アプリケーションをアップグレードするときには、アプリケーション アップグレード パラメーターと正常性チェック ポリシーを提供する必要があります。アプリケーション アップグレード パラメーターによってアップグレードが制御され、正常性チェック ポリシーによってアップグレードが成功したかどうかが判断されます。詳細については、「[アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)」を参照してください。
 
-*Monitored*、 *UnmonitoredAuto*、*UnmonitoredManual* の 3 種類のアップグレード モードがあります。
+*Monitored*、*UnmonitoredAuto*、*UnmonitoredManual* の 3 種類のアップグレード モードがあります。
 
   - Monitored アップグレードでは、アップグレードとアプリケーションの正常性チェックが自動化されます。
 
@@ -94,4 +94,4 @@ Service Fabric アプリケーションの各サービスでは、既定値を�
 ## 次のステップ
 アプリケーションのデプロイの詳細については、「[Azure Service Fabric への既存のアプリケーションのデプロイ](service-fabric-deploy-existing-app.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

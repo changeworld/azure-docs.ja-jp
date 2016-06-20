@@ -256,39 +256,40 @@ Premium Storage 上で Linux VM を設定するときは、次の重要な手順
 	<td><strong>ディストリビューション</strong></td>
 	<td><strong>バージョン</strong></td>
 	<td><strong>サポートされるカーネル</strong></td>
-	<td><strong>サポートされるイメージ</strong></td>
+	<td><strong>詳細</strong></td>
 </tr>
 <tr>
-	<td rowspan="4"><strong>Ubuntu</strong></td>
+	<td rowspan="2"><strong>Ubuntu</strong></td>
 	<td>12.04</td>
-	<td>3.2.0-75.110</td>
+	<td>3.2.0-75.110+</td>
 	<td>Ubuntu-12_04_5-LTS-amd64-server-20150119-ja-JP-30GB</td>
 </tr>
 <tr>
-	<td>14.04</td>
-	<td>3.13.0-44.73</td>
+	<td>14.04+</td>
+	<td>3.13.0-44.73+</td>
 	<td>Ubuntu-14_04_1-LTS-amd64-server-20150123-ja-JP-30GB</td>
 </tr>
 <tr>
-	<td>14.10</td>
-	<td>3.16.0-29.39</td>
-	<td>Ubuntu-14_10-amd64-server-20150202-ja-JP-30GB</td>
+	<td><strong>Debian</strong></td>
+	<td>7.x、8.x</td>
+	<td>3.16.7-ckt4-1+</td>
+    <td> </td>
 </tr>
 <tr>
-	<td>15.04</td>
-	<td>3.19.0-15</td>
-	<td>Ubuntu-15_04-amd64-server-20150422-ja-JP-30GB</td>
-</tr>
-<tr>
-	<td><strong>SUSE</strong></td>
+	<td rowspan="2"><strong>SUSE</strong></td>
 	<td>SLES 12</td>
-	<td>3.12.36-38.1</td>
+	<td>3.12.36-38.1+</td>
 	<td>suse-sles-12-priority-v20150213<br>suse-sles-12-v20150213</td>
 </tr>
 <tr>
+	<td>SLES 11 SP4</td>
+    <td>3.0.101-0.63.1+</td>
+    <td> </td>
+</tr>
+<tr>
 	<td><strong>CoreOS</strong></td>
-	<td>584.0.0</td>
-	<td>3.18.4</td>
+	<td>584.0.0+</td>
+	<td>3.18.4+</td>
 	<td>CoreOS 584.0.0</td>
 </tr>
 <tr>
@@ -296,29 +297,40 @@ Premium Storage 上で Linux VM を設定するときは、次の重要な手順
 	<td>6.5、6.6、6.7、7.0</td>
 	<td></td>
 	<td>
-		<a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (必須)</a> </br>
-		*下記の注参照
+		<a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS4 が必須</a> <br/>
+		*下記の注参照*
 	</td>
 </tr>
 <tr>
-	<td>7.1</td>
-	<td>3.10.0-229.1.2.el7</td>
+	<td>7.1+</td>
+	<td>3.10.0-229.1.2.el7+</td>
 	<td>
-		<a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS 4.0 を推奨</a> <br/>
-		*下記の注参照
+		<a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS4 が推奨</a> <br/>
+		*下記の注参照*
 	</td>
 </tr>
-
 <tr>
-	<td rowspan="2"><strong>Oracle</strong></td>
-	<td>6.4.</td>
+	<td><strong>RHEL</strong></td>
+	<td>6.8+、7.2+</td>
+	<td> </td>
 	<td></td>
-	<td><a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (必須)</a></td>
 </tr>
 <tr>
-	<td>7.0</td>
+	<td rowspan="3"><strong>Oracle</strong></td>
+    <td>6.8+、7.2+</td>
+    <td> </td>
+    <td> UEK4 または RHCK </td>
+
+</tr>
+<tr>
+	<td>7.0-7.1</td>
+	<td> </td>
+	<td>UEK4 または RHCK と <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS 4.1 +</a></td>
+</tr>
+<tr>
+	<td>6.4-6.7</td>
 	<td></td>
-	<td>詳細についてはサポートにお問い合わせください。</td>
+	<td>UEK4 または RHCK と <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS 4.1 +</a></td>
 </tr>
 </tbody>
 </table>
@@ -550,4 +562,4 @@ Azure Premium Storage の詳細については、以下の記事を参照して�
 
 [Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

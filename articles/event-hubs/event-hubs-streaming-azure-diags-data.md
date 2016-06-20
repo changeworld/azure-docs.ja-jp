@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/08/2016"
+   ms.date="06/01/2016"
    ms.author="tarcher" />
 
 # Event Hubs を利用し、ホット パスの Azure 診断データをストリーム配信する
@@ -64,7 +64,7 @@ Event Hubs シンクは、*.wadcfgx* 構成ファイルの **PrivateConfig** セ
 	    <EventHub Url="https://diags-mycompany-ns.servicebus.windows.net/diageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="9B3SwghJOGEUvXigc6zHPInl2iYxrgsKHZoy4nm9CUI=" />
 	  </PrivateConfig>
 
-**SharedAccessKeyName** は **ServiceBus/EventHub** 名前空間に定義されている SAS のキーとポリシーに一致する必要があります。一致させるには、[クラシック Azure ポータル](https://manage.windowsazure.com)のイベント ハブ ダッシュボードに移動し、**[構成]** タブをクリックし、*[送信]* アクセス許可のある名前付きポリシー (“SendRule” など) を設定します。**StorageAccount** は **PrivateConfig** でも宣言されています。正常に動作している場合、ここでは値を変更する必要はありません。この例では、値を空のまま残しました。これはダウンストリームの資産により値が設定されることを意味します。たとえば、*ServiceConfiguration.Cloud.cscfg* 環境構成ファイルにより環境に適した名前とキーが設定されます。
+**SharedAccessKeyName** は **ServiceBus/EventHub** 名前空間に定義されている SAS のキーとポリシーに一致する必要があります。一致させるには、[クラシック Azure ポータル](https://manage.windowsazure.com)のイベント ハブ ダッシュボードに移動し、**[構成]** タブを選択し、*[送信]* アクセス許可のある名前付きポリシー (“SendRule” など) を設定します。**StorageAccount** は **PrivateConfig** でも宣言されています。正常に動作している場合、ここでは値を変更する必要はありません。この例では、値を空のまま残しました。これはダウンストリームの資産により値が設定されることを意味します。たとえば、*ServiceConfiguration.Cloud.cscfg* 環境構成ファイルにより環境に適した名前とキーが設定されます。
 
 >[AZURE.WARNING] イベント ハブ SAS キーは *.wadcfgx* ファイルにプレーン テキストで保存されることに注意してください。多くの場合、ソース コード管理に、またはビルド サーバーの資産としてチェックインされます。そのため、適切に保護する必要があります。ここでは *[送信のみ]* アクセス許可で SAS キーを使用することが推奨されます。悪意のあるユーザーはイベント ハブに書き込むことができても、リッスンしたり、操作したりすることはできません。
 
@@ -295,4 +295,4 @@ Event Hubs シンク構成と共にアプリケーションをデプロイする
 <!-- Images. -->
 [0]: ./media/event-hubs-streaming-azure-diags-data/dashboard.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

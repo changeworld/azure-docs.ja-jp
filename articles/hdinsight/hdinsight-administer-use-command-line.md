@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/05/2016"
+	ms.date="05/24/2016"
 	ms.author="jgao"/>
 
 # Azure CLI を使用した HDInsight での Hadoop クラスターの管理
@@ -61,9 +61,14 @@
 
 
 ##クラスターの削除
+
 クラスターを削除するには、次のコマンドを使用します。
 
 	azure hdinsight cluster delete <Cluster Name>
+
+クラスターが含まれるリソース グループを削除して、クラスターを削除することもできます。グループを削除すると、既定のストレージ アカウントを含め、グループ内のすべてのリソースが削除されることに注意してください。
+
+	azure group delete <Resource Group Name>
 
 ##クラスターのスケール
 
@@ -108,4 +113,4 @@ Hadoop クラスターのサイズを変更するには:
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

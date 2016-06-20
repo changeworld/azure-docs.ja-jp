@@ -36,14 +36,14 @@
 
 	ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
 
-このメソッドは、次のパフォーマンス カウンターを作成します。
+[この](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) PowerShell スクリプトを使用してメソッドを実行することもできます。このメソッドは、次のパフォーマンス カウンターを作成します。
 
 * **キャッシュされたマッピング**: シャード マップ用にキャッシュされたマッピングの数。
 *  **DDR 操作数/秒**: シャード マップ用のデータ依存ルーティング操作の割合。このカウンターは、[OpenConnectionForKey()](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) に対する呼び出しで宛先のシャードへの接続が成功したときに更新されます。 
 *  **マッピングのキャッシュ検索ヒット数/秒**: シャード マップでのマッピングで成功したキャッシュ検索操作の割合。 
 *  **マッピングのキャッシュ検索ミス数/秒**: シャード マップでのマッピングで失敗したキャッシュ検索操作の割合。
 *  **キャッシュに追加または更新されたマッピング数/秒**: シャード マップ用のキャッシュに追加または更新されたマッピングの割合。 
-*  **キャッシュから削除されたマッピング/秒**: シャード マップ用のキャッシュから削除されたマッピングの割合。 
+*  **キャッシュから削除されたマッピング数/秒**: シャード マップ用のキャッシュから削除されたマッピングの割合。 
 
 パフォーマンス カウンターは、それぞれのキャッシュされたシャード マップで、プロセスごとに作成されます。
 
@@ -73,4 +73,4 @@
 <!--Anchors-->
 <!--Image references-->
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -24,7 +24,7 @@ Stretch Database のテーブルを設定するには、SQL Server Management St
 
 -   テーブルに過去と現在の両方のデータが含まれている場合、移行する行を選択するフィルター述語を指定できます。
 
-**前提条件**。テーブルに **[Stretch]、[有効化]** を選択したとき、データベースの Stretch Database を有効にしていない場合、ウィザードにより Stretch Database のデータベースが最初に設定されます。このトピックの手順ではなく、「[[Stretch Database を有効にする] ウィザード](sql-server-stretch-database-wizard.md)」の手順に従ってください。
+**前提条件**。テーブルに **[Stretch]、[有効化]** を選択したとき、データベースの Stretch Database を有効にしていない場合、ウィザードにより Stretch Database のデータベースが最初に設定されます。このトピックの手順ではなく、「[[Enable Database for Stretch (Stretch Database を有効にする)] ウィザードを実行する方法の概要](sql-server-stretch-database-wizard.md)」の手順に従ってください。
 
 **アクセス許可**。データベースまたはテーブルで Stretch Database を有効にするには、db\_owner アクセス許可が必要です。テーブルで Stretch Database を有効にするには、テーブルの ALTER アクセス許可も必要です。
 
@@ -43,11 +43,11 @@ Stretch Database のテーブルを設定するには、SQL Server Management St
 
 有効にするテーブルが表示され、選択されていることを確認します。
 
-テーブル全体を移行することも、ウィザードで日付に基づく単純なフィルター述語を指定することもできます。別のフィルター述語を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
+テーブル全体を移行することも、ウィザードで単純なフィルター述語を指定することもできます。別の種類のフィルター述語を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
 
 -   ウィザードを終了し、ALTER TABLE ステートメントを実行してテーブルの Stretch を有効にし、述語を指定します。
 
--   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、述語を指定します。
+-   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、述語を指定します。必要な手順については、「[Add a filter predicate after running the Wizard (ウィザードの実行後にフィルター述語を追加する)](sql-server-stretch-database-predicate-function.md#addafterwiz)」をご覧ください。
 
 ALTER TABLE 構文については、このトピックの後の方で説明しています。
 
@@ -65,14 +65,14 @@ Transact-SQL を利用し、既存のテーブルで Stretch Database を有効�
 ### オプション
 CREATE TABLE または ALTER TABLE を実行し、テーブルで Stretch Database を有効にするとき、次のオプションを利用します。
 
--   テーブルに履歴データと現行データの両方が含まれている場合、`FILTER_PREDICATE = <predicate>` 句を使用し、移行する行を選択する述語を指定することもできます。述語では、インライン テーブル値関数を呼び出す必要があります。詳細については、[フィルター述語による移行対象の行の選択 (Stretch Database)](sql-server-stretch-database-predicate-function.md) に関するページを参照してください。フィルター述語を指定しない場合、テーブル全体が移行されます。
+-   テーブルに履歴データと現行データの両方が含まれている場合、`FILTER_PREDICATE = <predicate>` 句を使用し、移行する行を選択する述語を指定することもできます。述語では、インライン テーブル値関数を呼び出す必要があります。詳細については、[移行する行の選択におけるフィルター述語の使用](sql-server-stretch-database-predicate-function.md)に関するページをご覧ください。フィルター述語を指定しない場合、テーブル全体が移行されます。
 
     >   [AZURE.NOTE] 指定したフィルター述語のパフォーマンスが悪いと、データ移行のパフォーマンスも悪くなります。Stretch Database は CROSS APPLY 演算子を利用し、テーブルにフィルター述語を適用します。
 
 -   データの移行をすぐに開始する場合は `MIGRATION_STATE = OUTBOUND` を指定し、データの移行の開始を先送りする場合は `MIGRATION_STATE = PAUSED` を指定します。
 
 ### 既存テーブルの Stretch Database を有効にする
-既存テーブルの Stretch Database を設定するには、ALTER TABLE コマンドを実行します。
+既存テーブルを Stretch Database 用に設定するには、ALTER TABLE コマンドを実行します。
 
 テーブル全体を移行し、データ移行をすぐに開始する例を次に示します。
 
@@ -80,7 +80,7 @@ CREATE TABLE または ALTER TABLE を実行し、テーブルで Stretch Databa
 ALTER TABLE <table name>
     SET ( REMOTE_DATA_ARCHIVE = ON ( MIGRATION_STATE = OUTBOUND ) ) ;
 ```
-`dbo.fn_stretchpredicate` インライン テーブル値関数で特定される行のみを移行し、データ移行を先送りする例は次のようになります。フィルター述語の詳細については、「[移行する行の選択にフィルター述語を使用する (Stretch Database)](sql-server-stretch-database-predicate-function.md)」を参照してください。
+`dbo.fn_stretchpredicate` インライン テーブル値関数で特定される行のみを移行し、データ移行を先送りする例は次のようになります。フィルター述語の詳細については、[移行する行の選択におけるフィルター述語の使用](sql-server-stretch-database-predicate-function.md)に関するページをご覧ください。
 
 ```tsql
 ALTER TABLE <table name>
@@ -89,7 +89,7 @@ ALTER TABLE <table name>
         MIGRATION_STATE = PAUSED ) );
 ```
 
-詳細については、「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」を参照してください。
+詳細については、「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」をご覧ください。
 
 ### 新しいテーブルを作成し、Stretch Database を有効にする
 新しいテーブルを作成し、Stretch Database を有効にするには、CREATE TABLE コマンドを実行します。
@@ -100,7 +100,7 @@ ALTER TABLE <table name>
 CREATE TABLE <table name> ...
     WITH ( REMOTE_DATA_ARCHIVE = ON ( MIGRATION_STATE = OUTBOUND ) ) ;
 ```
-`dbo.fn_stretchpredicate` インライン テーブル値関数で特定される行のみを移行し、データ移行を先送りする例は次のようになります。フィルター述語の詳細については、「[移行する行の選択にフィルター述語を使用する (Stretch Database)](sql-server-stretch-database-predicate-function.md)」を参照してください。
+`dbo.fn_stretchpredicate` インライン テーブル値関数で特定される行のみを移行し、データ移行を先送りする例は次のようになります。フィルター述語の詳細については、[移行する行の選択におけるフィルター述語の使用](sql-server-stretch-database-predicate-function.md)に関するページをご覧ください。
 
 ```tsql
 CREATE TABLE <table name> ...
@@ -109,7 +109,7 @@ CREATE TABLE <table name> ...
         MIGRATION_STATE = PAUSED ) );
 ```
 
-詳細については、「[CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)」を参照してください。
+詳細については、「[CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)」をご覧ください。
 
 
 ## 関連項目
@@ -118,4 +118,4 @@ CREATE TABLE <table name> ...
 
 [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

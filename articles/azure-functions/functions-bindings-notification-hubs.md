@@ -3,7 +3,7 @@
 	description="Azure Functions で Azure Notification Hub のバインドを使用する方法について説明します。"
 	services="functions"
 	documentationCenter="na"
-	authors="christopheranderson"
+	authors="wesmc7777"
 	manager="erikre"
 	editor=""
 	tags=""
@@ -16,7 +16,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
 	ms.date="05/16/2016"
-	ms.author="chrande"/>
+	ms.author="wesmc"/>
 
 # Azure Functions における通知ハブの出力バインド
 
@@ -24,7 +24,7 @@
 
 [AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-関数を使用して、構成された Azure Notification Hub でほんの数行のコードを使ってプッシュ通知を送信できます。ただし、通知ハブは、使用するプラットフォーム通知サービス (PNS) 用に構成する必要があります。Azure Notification Hub の構成方法や、通知用に登録するクライアント アプリケーションの開発方法の詳細については、「[Notification Hubs の使用](../notification-hubs/notification-hubs-windows-store-dotnet-get-started.md)」を参照して、上部の目的のクライアント プラットフォームをクリックしてください。
+関数を使用して、構成された Azure Notification Hub でほんの数行のコードを使ってプッシュ通知を送信できます。ただし、通知ハブは、使用するプラットフォーム通知サービス (PNS) 用に構成する必要があります。Azure Notification Hub の構成方法や、通知を受け取るために登録するクライアント アプリケーションの開発方法の詳細については、[Notification Hubs の使用](../notification-hubs/notification-hubs-windows-store-dotnet-get-started.md)に関するページを参照して、上部の目的のクライアント プラットフォームをクリックしてください。
 
 ## Azure Notification Hub 出力バインドの function.json
 
@@ -155,4 +155,4 @@ project.json ファイルのアップロードの詳細については、「[pro
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

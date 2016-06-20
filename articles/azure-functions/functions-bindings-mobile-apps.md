@@ -3,7 +3,7 @@
 	description="Azure Functions で Azure Mobile Apps のバインドを使用する方法について説明します。"
 	services="functions"
 	documentationCenter="na"
-	authors="christopheranderson"
+	authors="ggailey777"
 	manager="erikre"
 	editor=""
 	tags=""
@@ -15,8 +15,8 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
-	ms.author="chrande"/>
+	ms.date="06/02/2016"
+	ms.author="glenga"/>
 
 # Azure Functions における Mobile Apps のバインド
 
@@ -26,9 +26,27 @@
 
 Azure App Service Mobile Apps を使用すると、テーブル エンドポイント データをモバイル クライアントに公開できます。この同じ表形式のデータは、Azure Functions の入力バインドと出力バインドの両方で使用できます。動的スキーマをサポートしているため、Node.js バックエンドのモバイル アプリは、関数で使用するために表形式のデータを公開するのに最適です。動的スキーマは既定で有効になっていますが、運用環境のモバイル アプリでは無効にする必要があります。Node.js バックエンドにおけるテーブル エンドポイントの詳細については、「[概要: テーブル操作](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations)」を参照してください。Mobile Apps では、Node.js バックエンドは、ポータル内の参照とテーブルの編集をサポートします。詳細については、Node.js SDK トピックの「[ポータルでの編集](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#in-portal-editing)」を参照してください。Azure Functions で .NET バックエンドのモバイル アプリを使用する場合は、関数からの必要に応じて、データ モデルを手動で更新する必要があります。.NET バックエンドのモバイル アプリのテーブル エンドポイントの詳細については、.NET バックエンドの SDK トピックの「[方法: テーブル コントローラーを定義する](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller)」を参照してください。
 
+## モバイル アプリ バックエンドの URL の環境変数を作成する
+
+現在、モバイル アプリのバインドでは、モバイル アプリ バックエンド自体の URL を返す環境変数を作成する必要があります。[Azure ポータル](https://portal.azure.com)でモバイル アプリを検索してブレードを開くと、この URL を見付けることができます。
+
+![Azure ポータルの Mobile Apps ブレード](./media/functions-bindings-mobile-apps/mobile-app-blade.png)
+
+この URL を環境変数として関数アプリに設定するには、次の手順に従います。
+
+1. [[Azure Functions]](https://functions.azure.com/signin) ポータルの関数アプリで、**[Function App Settings (関数アプリの設定)]**、**[Go to App Service Settings (App Service の設定に移動)]** の順にクリックします。 
+
+	![関数アプリの設定のブレード](./media/functions-bindings-mobile-apps/functions-app-service-settings.png)
+
+2. 関数アプリで、**[すべての設定]** をクリックして **[アプリケーションの設定]** までスクロールし、**[アプリ設定]** で新しい**名前** を環境変数に入力して、URL を **[値]** に貼り付けます。HTTPS スキームが使用できることを確認したら、**[保存]** をクリックして関数アプリのブレードを閉じ、Functions ポータルに戻ります。
+
+	![アプリ設定の環境変数を追加する](./media/functions-bindings-mobile-apps/functions-app-add-app-setting.png)
+
+この新しい環境変数が*接続*フィールドとしてバインドに設定されます。
+
 ## <a id="mobiletablesapikey"></a>API キーを使用した Mobile Apps テーブル エンドポイントへの安全なアクセス
 
-Azure Functions のモバイル テーブルのバインドでは、API キーを指定できます。これは、関数以外のアプリからの望ましくないアクセスを回避するために使用できる共有シークレットです。Mobile Apps には、API キー認証向けのサポートが組み込まれていません。ただし、「[API キーを実装する Azure App Service Mobile Apps バックエンド](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)」の例に従って、Node.js バックエンド モバイル アプリに API キーを実装できます。同様に、[.NET バックエンドのモバイル アプリ](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)に API キーを実装することができます。
+Azure Functions のモバイル テーブルのバインドでは、API キーを指定できます。これは、関数以外のアプリからの望ましくないアクセスを回避するために使用できる共有シークレットです。Mobile Apps には、API キー認証向けのサポートが組み込まれていません。ただし、「[Azure App Service Mobile Apps backend implementing an API key (API キーを実装する Azure App Service Mobile Apps バックエンド)](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)」の例に従って、Node.js バックエンド モバイル アプリに API キーを実装できます。同様に、[.NET バックエンドのモバイル アプリ](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)に API キーを実装することができます。
 
 >[AZURE.IMPORTANT] この API キーはモバイル アプリ クライアントで配布する必要があり、Azure Functions のようなサービス側のクライアントにのみ安全に配布する必要があります。
 
@@ -40,12 +58,12 @@ Azure Functions のモバイル テーブルのバインドでは、API キー�
 
 *function.json* ファイルは、次のプロパティをサポートします。
 
-- `name`: 新しいレコードの関数コードで使用される変数名。
-- `type`: バインドの型は *mobileTable* に設定する必要があります。
-- `tableName`: 新しいレコードの作成先のテーブル。
-- `id`: 取得するレコードの ID。このプロパティは、`{queueTrigger}` と同様のバインドをサポートします。ここでは、レコード ID としてキュー メッセージの文字列値を使用します。
-- `apiKey`: モバイル アプリ用のオプションの API キーを指定するアプリケーション設定である文字列。これは、モバイル アプリが API キーを使用してクライアント アクセスを制限するときに必要です。
-- `connection`: モバイル アプリの URI を指定するアプリケーション設定である文字列。
+- `name` : 新しいレコードの関数コードで使用される変数名。
+- `type` : バインドの型は *mobileTable* に設定する必要があります。
+- `tableName` : 新しいレコードの作成先のテーブル。
+- `id` : 取得するレコードの ID。このプロパティは、`{queueTrigger}` と同様のバインドをサポートします。ここでは、レコード ID としてキュー メッセージの文字列値を使用します。
+- `apiKey` : モバイル アプリ用のオプションの API キーを指定するアプリケーション設定である文字列。これは、モバイル アプリが API キーを使用してクライアント アクセスを制限するときに必要です。
+- `connection` : モバイル アプリ バックエンドの URL を指定するアプリケーションの設定で、環境変数の名前を示す文字列。
 - `direction`: バインドの方向。*in* に設定する必要があります。
 
 *function.json* ファイルの例:
@@ -57,7 +75,7 @@ Azure Functions のモバイル テーブルのバインドでは、API キー�
 	      "type": "mobileTable",
 	      "tableName": "MyTable",
 	      "id" : "{queueTrigger}",
-	      "connection": "My_MobileApp_Uri",
+	      "connection": "My_MobileApp_Url",
 	      "apiKey": "My_MobileApp_Key",
 	      "direction": "in"
 	    }
@@ -98,12 +116,12 @@ Azure Functions のモバイル テーブルのバインドでは、API キー�
 
 function.json ファイルは、次のプロパティをサポートします。
 
-- `name`: 新しいレコードの関数コードで使用される変数名。
-- `type`: *mobileTable* に設定する必要があるバインドの型。
-- `tableName`: 新しいレコードが作成されるテーブル。
-- `apiKey`: モバイル アプリ用のオプションの API キーを指定するアプリケーション設定である文字列。これは、モバイル アプリが API キーを使用してクライアント アクセスを制限するときに必要です。
-- `connection`: モバイル アプリの URI を指定するアプリケーション設定である文字列。
-- `direction`: バインドの方向。*out* に設定する必要があります。
+- `name` : 新しいレコードの関数コードで使用される変数名。
+- `type` : *mobileTable* に設定する必要があるバインドの型。
+- `tableName` : 新しいレコードが作成されるテーブル。
+- `apiKey` : モバイル アプリ用のオプションの API キーを指定するアプリケーション設定である文字列。これは、モバイル アプリが API キーを使用してクライアント アクセスを制限するときに必要です。
+- `connection` : モバイル アプリ バックエンドの URL を指定するアプリケーションの設定で、環境変数の名前を示す文字列。
+- `direction` : バインドの方向。*out* に設定する必要があります。
 
 function.json の例:
 
@@ -113,7 +131,7 @@ function.json の例:
 	      "name": "record",
 	      "type": "mobileTable",
 	      "tableName": "MyTable",
-	      "connection": "My_MobileApp_Uri",
+	      "connection": "My_MobileApp_Url",
 	      "apiKey": "My_MobileApp_Key",
 	      "direction": "out"
 	    }
@@ -149,4 +167,4 @@ function.json の例:
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

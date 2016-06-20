@@ -139,7 +139,7 @@
 [planning-guide-3.2.2]: virtual-machines-linux-sap-planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 "アップグレード ドメイン"
 [planning-guide-3.2.3]: virtual-machines-linux-sap-planning-guide.md#18810088-f9be-4c97-958a-27996255c665 "Azure の可用性セット"
 [planning-guide-3.3.2]: virtual-machines-linux-sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 "Azure Premium Storage"
-[planning-guide-5.1.1]: virtual-machines-linux-sap-planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 "汎用でないディスクを使用する Azure への VM の移動"
+[planning-guide-5.1.1]: virtual-machines-linux-sap-planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 "汎用化されていないディスクを使用してオンプレミスから Microsoft Azure に VM を移動する"
 [planning-guide-5.1.2]: virtual-machines-linux-sap-planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c "顧客固有のイメージを使用する VM のデプロイ"
 [planning-guide-5.2]: virtual-machines-linux-sap-planning-guide.md#6ffb9f41-a292-40bf-9e70-8204448559e7 "Azure 用の VM と SAP の準備"
 [planning-guide-5.2.1]: virtual-machines-linux-sap-planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef "オンプレミスから汎用でないディスクを使用する Azure に VM を移動する準備"
@@ -276,7 +276,7 @@
 [virtual-machines-azure-resource-manager-architecture]: virtual-machines-azure-resource-manager-architecture.md
 [virtual-machines-windows-tutorial]: virtual-machines-windows-hero-tutorial.md
 [virtual-networks-create-vnet-arm-pportal]: virtual-networks-create-vnet-arm-pportal.md
-[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]: virtual-machines-windows-create-powershell.md
+[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]: virtual-machines-windows-ps-create.md
 [virtual-machines-linux-tutorial]: virtual-machines-linux-quick-create-cli.md
 
 [msdn-set-azurermvmaemextension]: https://msdn.microsoft.com/library/azure/mt670598.aspx
@@ -442,7 +442,7 @@ Azure Marketplace のイメージを使用して新しい仮想マシンを作�
 ウィザードを完了すると、選択したリソース グループに仮想マシンがデプロイされます。
 
 #### テンプレートを使用した仮想マシンの作成
-[azure-quickstart-templates github repository][azure-quickstart-templates-github] で公開されている SAP テンプレートを使用してデプロイメントを作成することもできます。また、[Azure ポータル][virtual-machines-windows-tutorial]、[PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]、[AZURE-CLI][virtual-machines-linux-tutorial] を使用して仮想マシンを作成することもできます。
+[azure-quickstart-templates github repository][azure-quickstart-templates-github] で公開されている SAP テンプレートを使用してデプロイメントを作成することもできます。また、[Azure ポータル][virtual-machines-windows-tutorial]、[PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]、[Azure CLI][virtual-machines-linux-tutorial] を使用して手動で仮想マシンを作成することもできます。
 
 * 1 台のみの仮想マシンを使用して 2 層システムを作成する場合、[2 層構成 (仮想マシン 1 台のみ) のテンプレート][sap-templates-2-tier-marketplace-image]を使用します。
 * 複数の仮想マシンを使用して 3 層システムを作成する場合、[3 層構成 (仮想マシン 1 台のみ) のテンプレート][sap-templates-3-tier-marketplace-image]を使用します。
@@ -938,4 +938,4 @@ Azure のパフォーマンス メトリックの収集は、複数のソース�
 
 SAP ノート [1999351] を使用したトラブルシューティングで問題が解決しない場合、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章の説明に従って、構成スクリプト Set-AzureRmVMAEMExtension を再実行してください。ストレージ分析または診断カウンターは、有効になった直後には作成されない場合があるため、1 時間待機しなくてはならない場合があります。問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

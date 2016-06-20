@@ -28,7 +28,7 @@ Stretch Database のデータベースを設定するには、SQL Server Managem
 
 -   Stretch のデータベースを設定する前に、Stretch Database Advisor を実行し、Stretch の対象となるデータベースとテーブルを特定することが推奨されます。Stretch Database Advisor はブロック問題も特定します。詳細については、「[Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)」を参照してください。
 
--   「[Surface area limitations and blocking issues for Stretch Database (Stretch Database のセキュリティ制約とブロック問題)](sql-server-stretch-database-limitations.md)」をご覧ください。
+-   「[Stretch Database の制限事項](sql-server-stretch-database-limitations.md)」を確認します。
 
 -   Stretch Database はデータを Azure に移行します。そのため、請求のために Azure アカウントとサブスクリプションが必要になります。Azure アカウントを取得するには、[ここをクリック](http://azure.microsoft.com/pricing/free-trial/)してください。
 
@@ -52,7 +52,7 @@ GO
 詳細については、「[Configure the remote data archive Server Configuration Option (サーバー設定オプションの remote data archive を設定する)](https://msdn.microsoft.com/library/mt143175.aspx)」と「[sp\_configure (Transact-SQL)](https://msdn.microsoft.com/library/ms188787.aspx)」を参照してください。
 
 ## <a name="Wizard"></a>ウィザードを使用し、データベースで Stretch Database を有効にする
-入力する情報と選択肢を含む、[Stretch Database を有効にする] ウィザードの詳細については、「[Enable Database for Stretch Wizard ([Stretch Database を有効にする] ウィザード)](sql-server-stretch-database-wizard.md)」を参照してください。
+入力する情報と選択肢を含む、[Stretch Database を有効にする] ウィザードの詳細については、「[[Enable Database for Stretch (Stretch Database を有効にする)] ウィザードを実行する方法の概要](sql-server-stretch-database-wizard.md)」をご覧ください。
 
 ## <a name="EnableTSQLDatabase"></a>Transact-SQL を使用し、データベースで Stretch Database を有効にする
 個々のテーブルで Stretch Database を有効にする前に、データベースでそれを有効にする必要があります。
@@ -123,9 +123,9 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 
 -   [Stretch Database を一時停止し、再開します](sql-server-stretch-database-pause.md)。
 
--   [Stretch Database を管理し、問題を解決します](sql-server-stretch-database-manage.md)。
+-   [Stretch Database を管理し、問題を解決します。](sql-server-stretch-database-manage.md)
 
--   [Stretch 対応データベースをバックアップし、復元します](sql-server-stretch-database-backup.md)。
+-   [Stretch 対応データベースをバックアップします。](sql-server-stretch-database-backup.md)
 
 ## 関連項目
 
@@ -133,4 +133,4 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 
 [ALTER DATABASE SET のオプション (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

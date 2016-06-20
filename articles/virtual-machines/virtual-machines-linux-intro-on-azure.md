@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/01/2016"
+	ms.date="05/27/2016"
 	ms.author="szark"/>
 
 #Azure での Linux 入門
@@ -69,7 +69,7 @@ Azure Linux エージェントには、この名前の変更を自動的に検�
  - [カスタム データを挿入する方法](virtual-machines-windows-classic-inject-custom-data.md)
  - [Microsoft Azure のカスタム データと Cloud-Init](https://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/)
  - [Cloud-Init を使用した Azure スワップ パーティションの作成](https://wiki.ubuntu.com/AzureSwapPartitions)
- - [Azure で CoreOS を使用する方法 ](virtual-machines-linux-classic-coreos-howto.md)
+ - [Azure で CoreOS を使用する方法 ](https://coreos.com/os/docs/latest/booting-on-azure.html)
 
 
 ## 仮想マシン イメージのキャプチャ
@@ -98,4 +98,4 @@ Linux では、データ ディスクはカーネルによって `/dev/sdc` と�
 
  - **関連項目:** [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

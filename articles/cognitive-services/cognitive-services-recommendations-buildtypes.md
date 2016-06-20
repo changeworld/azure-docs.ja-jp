@@ -21,7 +21,10 @@
 <a name="TypeofBuilds"></a>
 ## 使用すべき推奨ビルドの種類 ##
 
-現時点では、*Recommendation* ビルドと *FBT* ビルドの 2 種類のビルドがサポートされています。これらはそれぞれ異なるアルゴリズムを使用してビルドされます。また、互いに異なる長所を備えています。
+現時点では、*Recommendation* ビルドと *FBT* ビルドの 2 種類のビルドがサポートされています。これらはそれぞれ異なるアルゴリズムを使用してビルドされます。また、互いに異なる長所を備えています。このドキュメントでは、こうしたビルドと、生成されるモデルの品質を比較するための手法について説明します。
+
+
+> [クイック スタート ガイド](cognitive-services-recommendations-quick-start.md)をまだ完了していない場合は、完了しておくことをお勧めします。
 
 <a name="RecommendationBuild"></a>
 ### Recommendation ビルド タイプ ###
@@ -238,4 +241,4 @@ Lumia 650 フォンの例では、あるスマートフォン X は、それが 
     "IsFaulted": false
     }
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

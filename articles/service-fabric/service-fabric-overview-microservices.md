@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="03/24/2016"
-   ms.author="msfussell"/>
+   ms.author="mfussell"/>
 
 # マイクロサービスの手法でアプリケーションを構築する理由は何ですか。
 ソフトウェア開発者にとって、アプリケーションを構成要素化することは新しい手法ではありません。これは、オブジェクト指向、ソフトウェア抽象化、コンポーネント化の中心的なパラダイムです。今日、この要素化はクラスや共有ライブラリとテクノロジ層のインターフェイスという形態を取り、一般的に、バックエンド ストア、ミドル層ビジネス ロジック、フロントエンド UI による階層型手法で行われています。ここ数年で変化*した*ことは、開発者がビジネス主導のクラウドのために分散アプリケーションを構築しているということです。
@@ -148,4 +148,4 @@ Service Fabric の目的は、マイクロサービス手法によるアプリ�
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

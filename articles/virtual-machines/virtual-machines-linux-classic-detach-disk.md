@@ -14,20 +14,20 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/04/2016"
+	ms.date="06/07/2016"
 	ms.author="iainfou"/>
 
 # Linux 仮想マシンからディスクを切断する方法
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
-
 [AZURE.INCLUDE [howto-detach-disk-windows-linux](../../includes/howto-detach-disk-linux.md)]
 
-## その他のリソース
+## 次のステップ
+以下の記事で、Linux VM の使用方法について詳しい情報を得ることができます。
 
-[データ ディスクを Linux 仮想マシンに接続する方法](virtual-machines-linux-classic-attach-disk.md)
+- [データ ディスクを Linux 仮想マシンに接続する方法](virtual-machines-linux-classic-attach-disk.md)
 
-[サービス管理 API での Azure CLI の使用](../virtual-machines-command-line-tools.md)
+- [クラシック デプロイ モデルでの Azure CLI の使用](../virtual-machines-command-line-tools.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

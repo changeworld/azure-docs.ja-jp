@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	ms.author="dastrock"/>
 
 # v2.0 の認証プロトコルに対する重要な更新
@@ -67,7 +67,8 @@ v2.0 エンドポイントは、トークンに関連するメタデータを含
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
 
-応答は、次の JSON オブジェクトのようになります。```
+応答は、次の JSON オブジェクトのようになります。
+```
 { 
 	"token_type": "Bearer",
 	"expires_in": 3599,
@@ -216,4 +217,4 @@ https://login.microsoftonline.com/{some-guid}/v2.0
 
 Microsoft ID 部門
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0608_2016-->

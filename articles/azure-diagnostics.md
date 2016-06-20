@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="06/02/2016"
 	ms.author="robb"/>
 
 
@@ -56,6 +56,7 @@ Web Apps では Azure 診断が使用されないので注意してください�
 - [Set up Azure Diagnostics in a Cloud Services Application(Cloud Services アプリケーションで Azure 診断を設定する)](./cloud-services/cloud-services-dotnet-diagnostics.md)
 
 詳細なトピックについては、次を参照してください。
+
 - [Using Azure Diagnostics with Application Insights for Cloud Services (Cloud Services 向けの Application Insights での Azure 診断の使用)](./application-insights/app-insights-cloudservices.md)
 - [Azure 診断で Cloud Services アプリケーションのフローをトレースする](./cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 - [Use PowerShell to set up diagnostics on Cloud Services (PowerShell を使用して Cloud Services で診断を設定する)](./virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md)
@@ -66,6 +67,7 @@ Web Apps では Azure 診断が使用されないので注意してください�
 - [Set up Azure Diagnostics on an Azure Virtual Machine (Azure 仮想マシンで Azure 診断を設定する)](./virtual-machines-dotnet-diagnostics.md)
 
 詳細なトピックについては、次を参照してください。
+
 - [Use PowerShell to set up diagnostics on Azure Virtual Machines (PowerShell を使用して Azure Virtual Machines で診断を設定する)](./virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md)
 - [Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](./virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
 
@@ -79,4 +81,4 @@ Web Apps では Azure 診断が使用されないので注意してください�
 - [Application Insights への Azure 診断情報の送信](./azure-diagnostics-configure-applicationinsights.md)について説明します。　
 - Azure Storage テーブルでの診断の開始またはデータの検索に問題がある場合は、「[TroubleShooting Azure Diagnostics (Azure 診断のトラブルシューティング)](./azure-diagnostics-troubleshooting.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

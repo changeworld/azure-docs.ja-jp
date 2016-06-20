@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/19/2016" 
+	ms.date="06/07/2016" 
 	ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694271.aspx -->
@@ -23,6 +23,8 @@
 Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリケーションを簡単に作成、開発、テスト、またデプロイできるテンプレートと機能を提供します。これはオープン ソース プロジェクトであり、そのソース コードは、プロジェクト サイトから MIT License で入手できます。URL は次のとおりです。
 
 * <https://github.com/microsoft/azure-tools-for-java>
+
+> [AZURE.NOTE] IntelliJ IDE 用の Azure Toolkit もあります。詳細については、「[Azure Toolkit for IntelliJ]」をご覧ください。
 
 ## Azure Toolkit for Eclipse の概要
 
@@ -54,25 +56,40 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 
 ## 関連項目
 
+Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
+
+- *Azure Toolkit for Eclipse (この記事)*
+  - [Azure Toolkit for Eclipse のインストール]
+  - [Eclipse で Azure 用の Hello World Web アプリを作成する]
+  - [Azure Toolkit for Eclipse の新機能]
+- [Azure Toolkit for IntelliJ]
+  - [Azure Toolkit for IntelliJ のインストール]
+  - [IntelliJ で Azure 用の Hello World Web アプリを作成する]
+
 Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
 
 <!-- URL List -->
 
+[Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij.md
+[Eclipse で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
+[IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[Azure Toolkit for Eclipse のインストール]: ./azure-toolkit-for-eclipse-installation.md
+[Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
+[Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
+
 [Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
+
 [Azure プロジェクトのプロパティ]: ./azure-toolkit-for-eclipse-azure-project-properties.md
 [Azure ロールのプロパティ]: ./azure-toolkit-for-eclipse-azure-role-properties.md
 [Azure サービス エンドポイント]: ./azure-toolkit-for-eclipse-azure-service-endpoints.md
 [Azure ストレージ アカウントの一覧]: ./azure-toolkit-for-eclipse-azure-storage-account-list.md
 [Azure 向け Hello World クラウド サービスを Eclipse で作成する]: ./azure-toolkit-for-eclipse-creating-a-hello-world-application.md
-[Eclipse で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Eclipse での Azure アプリケーションのデバッグ]: ./azure-toolkit-for-eclipse-debugging-azure-applications.md
 [大規模なデプロイ]: ./azure-toolkit-for-eclipse-deploying-large-deployments.md
 [Java 用 Azure ライブラリ パッケージの Javadoc コンテンツの Eclipse での表示]: ./azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries.md
 [Azure デプロイ用にリモート アクセスを Eclipse で有効にする方法]: ./azure-toolkit-for-eclipse-enabling-remote-access-for-azure-deployments.md
 [How to Authenticate Web Users with Azure Access Control Service Using Eclipse]: ./active-directory/active-directory-java-authenticate-users-access-control-eclipse.md
-[Azure Toolkit for Eclipse のインストール]: ./azure-toolkit-for-eclipse-installation.md
 [セッション アフィニティを有効にする]: ./azure-toolkit-for-eclipse-enable-session-affinity.md
-[Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
 
 <!-- [How to Maintain Session Data with Session Affinity]: http://go.microsoft.com/fwlink/?LinkID=699539 -->
 <!-- [How to Use Co-located Caching]: http://go.microsoft.com/fwlink/?LinkID=699542 -->
@@ -82,4 +99,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 <!-- [SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699549 -->
 <!-- [Using the Azure Service Runtime Library in JSP]: http://go.microsoft.com/fwlink/?LinkID=699551 -->
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

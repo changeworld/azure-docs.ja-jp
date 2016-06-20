@@ -156,15 +156,12 @@ Azure Files 共有をマウントするには、次のコマンドを実行し�
     clusrun /nodegroup:LinuxNodes "echo //<saname>.file.core.windows.net/<sharename> /hpcdata cifs vers=2.1,username=<saname>,password='<sakey>',dir_mode=0777,file_mode=0777 >> /etc/fstab"
 ```
 
-## Linux ドライバーの更新
-Linux コンピューティング ノードにインストールされている InfiniBand のドライバーは、いずれ更新が必要となります。詳細については、「[SLES 12 用 Linux RDMA ドライバーの更新](virtual-machines-linux-classic-rdma-cluster.md/#update-the-linux-rdma-drivers-for-sles-12)」を参照してください。
-
 ## STAR-CCM+ のインストール
 Azure VM のインスタンス A8 とインスタンス A9 は InfiniBand に対応し、RDMA の機能を備えています。Azure Marketplace において、これらの機能に必要なカーネル ドライバーが利用できるのは、Windows Server 2012 R2、SUSE 12、CentOS 6.5、および CentOS 7.1 の各イメージです。Azure には、これらのドライバーをサポートする MPI ライブラリとして、Microsoft MPI と Intel MPI (リリース 5.x) の 2 つがあります。
 
 CD-adapco STAR-CCM+ リリース 11.x 以降には、Intel MPI Version 5.x が同梱されているため、Azure の InfiniBand に対応します。
 
-Linux64 STAR-CCM+ パッケージは、[CD adapco ポータル](https://steve.cd-adapco.com)から入手できます。ここでは、混合精度のバージョン 11.02.010 を使用しました。
+Linux64 STAR-CCM+ パッケージは、[CD-adapco のポータル](https://steve.cd-adapco.com)から入手できます。ここでは、混合精度のバージョン 11.02.010 を使用しました。
 
 ヘッド ノードの **/hpcdata** (Azure Files 共有) で、以下の内容を含んだ **setupstarccm.sh** という名前のシェル スクリプトを作成します。このスクリプトが個々のコンピューティング ノードで実行され、STAR-CCM+ がローカルにセットアップされます。
 
@@ -301,11 +298,11 @@ STAR-CCM+ はメモリの帯域幅を使い切ってしまう可能性がある�
 
 各値の説明:
 
-* `<Number of nodes>` は、このジョブに割り当てるノードの数。
+* `<Number of nodes>` は、このジョブに割り当てるノードの数です。
 
-* `<Name of node_n_...>` は、このジョブに割り当てる各ノードの名前。
+* `<Name of node_n_...>` は、このジョブに割り当てる各ノードの名前です。
 
-* `<Cores of node_n_...>` は、このジョブに割り当てるノードのコア数。
+* `<Cores of node_n_...>` は、このジョブに割り当てるノードのコア数です。
 
 さらに、(パラメーター **$NBCORESPERNODE** で指定された) ノードごとのコア数と、ノード数 (**$NBNODES**) とに基づいて、コア数 (**$NBCORES**) が計算されます。
 
@@ -348,4 +345,4 @@ Azure 上の Intel MPI では、MPI 関連のオプションを次のように�
 [hndeploy]: ./media/virtual-machines-linux-classic-hpcpack-cluster-starccm/hndeploy.png
 [clustermanager]: ./media/virtual-machines-linux-classic-hpcpack-cluster-starccm/ClusterManager.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

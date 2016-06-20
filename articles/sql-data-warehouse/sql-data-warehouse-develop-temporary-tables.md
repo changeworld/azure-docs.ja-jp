@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
-   ms.author="mausher;jrj;barbkess;sonyama"/>
+   ms.date="06/06/2016"
+   ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の一時テーブル
 特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが非常に役立ちます。SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。一時テーブルはローカル一時テーブルとして定義されますが、SQL Server テーブルとは異なり、セッション内のどこからでもアクセスできます。
@@ -248,10 +248,10 @@ SQL Data Warehouse では、一時テーブルを実装するときに制限事�
 <!--Image references-->
 
 <!--Article references-->
-[開発の概要]: sql-data-warehouse-overview-develop.md
+[開発の概要]: ./sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0608_2016-->

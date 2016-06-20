@@ -61,6 +61,7 @@ Docker Registry を[構成][registry-config]するには 2 つの方法があり
 わかりやすくするため、このトピックでは環境変数を使用する 2 番目のオプションを使用します。
 
 次に該当する Docker Registry インスタンスを実行するには:
+
 * イメージを保存するために Azure ストレージ アカウントを使用する、
 * 仮想マシンのポート 5000 をリッスンする、
 * 認証が構成されていない (推奨しません。下記のメモを参照してください)
@@ -99,4 +100,4 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 [registry-config]: http://docs.docker.com/registry/configuration/
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -22,7 +22,7 @@
 ## クイック コマンド
 ネットワーク セキュリティ グループとルールを作成するには、リソース マネージャー モード (`azure config mode arm`) の [Azure CLI](../xplat-cli-install.md) が必要になります。
 
-次のように、独自の名前と場所を適宜入力してネットワーク セキュリティ グループを作成します。
+独自の名前と場所を適宜入力してネットワーク セキュリティ グループを作成します。
 
 ```
 azure network nsg create --resource-group TestRG --name TestNSG --location westus
@@ -61,4 +61,4 @@ azure network vnet subnet set --resource-group TestRG --name TestSubnet --networ
 - [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
 - [ロード バランサーのための Azure Resource Manager の概要](../load-balancer2 /load-balancer-arm.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

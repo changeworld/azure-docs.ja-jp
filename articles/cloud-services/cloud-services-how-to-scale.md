@@ -1,6 +1,6 @@
 <properties
 	pageTitle="ポータルでのクラウド サービスの自動スケール | Microsoft Azure"
-	description="ポータルを使用して、Azure でクラウド サービスの Web ロールおよび worker ロールの自動スケール ルールを構成する方法について説明します。"
+	description="(クラシック) クラシック ポータルを使用して、Azure でクラウド サービスの Web ロールおよび worker ロールの自動スケール ルールを構成する方法について説明します。"
 	services="cloud-services"
 	documentationCenter=""
 	authors="Thraka"
@@ -19,9 +19,13 @@
 
 # クラウド サービスの自動スケールの方法
 
+> [AZURE.SELECTOR]
+- [Azure ポータル](cloud-services-how-to-scale-portal.md)
+- [Azure クラシック ポータル](cloud-services-how-to-scale.md)
+
 Azure クラシック ポータルの [スケール] ページで、Web ロールまたは worker ロールの規模を手動で設定したり、CPU の負荷やメッセージ キューに基づいて自動スケールを有効にしたりすることができます。
 
->[AZURE.NOTE] この記事では、クラウド サービスの Web ロールと worker ロールについて説明します。仮想マシンを直接作成する場合、仮想マシンはクラウド サービスでホストされています。この情報の一部は、このような種類の仮想マシンに適用されます。仮想マシンの可用性セットのスケーリングは、実際には構成したスケール ルールに基づいて、仮想マシンをアップダウンしているだけです。仮想マシンと可用性セットの詳細については、「[仮想マシンの可用性管理](../virtual-machines/virtual-machines-windows-classic-configure-availability.md)」を参照してください。
+>[AZURE.NOTE] この記事では、クラウド サービスの Web ロールと worker ロールについて説明します。仮想マシンを直接作成した場合 (クラシック)、その仮想マシンはクラウド サービスでホストされます。この情報の一部は、このような種類の仮想マシンに適用されます。仮想マシンの可用性セットのスケーリングは、実際には構成したスケール ルールに基づいて、仮想マシンをアップダウンしているだけです。仮想マシンと可用性セットの詳細については、[仮想マシンの可用性の管理](../virtual-machines/virtual-machines-windows-classic-configure-availability.md)に関するページをご覧ください
 
 アプリケーションの規模の設定を構成する前に、以下に示す情報を考慮してください。
 
@@ -147,4 +151,4 @@ Azure クラシック ポータルの [スケール] ページで、Web ロー�
 [scale_popup]: ./media/cloud-services-how-to-scale/schedules-dialog.png
 [linked_resource]: ./media/cloud-services-how-to-scale/linked-resources.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

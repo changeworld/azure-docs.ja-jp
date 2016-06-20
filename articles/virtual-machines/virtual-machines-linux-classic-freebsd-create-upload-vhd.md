@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="01/12/2016"
+   ms.date="06/07/2016"
    ms.author="kyliel"/>
 
 # FreeBSD VHD の作成と Azure へのアップロード
@@ -68,39 +68,57 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 		# pkg install sudo
 
-5. Azure エージェントの前提条件
+5. **Azure エージェントの前提条件**
 
-    5\.1 **Python をインストールする**
-
-		# pkg install python27
-		# ln -s /usr/local/bin/python2.7 /usr/bin/python
-
-    5\.2 **wget をインストールする**
-
-		# pkg install wget
+		# pkg install python27  
+		# pkg install Py27-setuptools27   
+		# ln -s /usr/local/bin/python2.7 /usr/bin/python   
+		# pkg install git 
 
 6. **Azure エージェントをインストールする**
 
-    Azure エージェントの最新版は常に [GitHub](https://github.com/Azure/WALinuxAgent/releases) にあります。FreeBSD 10 以降を正式にサポートしているのは、2.0.10 以降のバージョンです。FreeBSD の Azure エージェントの最新バージョンは 2.0.16 です。
+    Azure エージェントの最新版は常に [GitHub](https://github.com/Azure/WALinuxAgent/releases) にあります。バージョン 2.0.10 以降は FreeBSD 10 および 10.1 を正式にサポートし、バージョン 2.1.4 は FreeBSD 10.2 以降のリリースを正式にサポートします。
 
-		# wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-2.0.10/waagent --no-check-certificate
-		# mv waagent /usr/sbin
-		# chmod 755 /usr/sbin/waagent
-		# /usr/sbin/waagent -install
+		# git clone https://github.com/Azure/WALinuxAgent.git  
+		# cd WALinuxAgent  
+		# git tag  
+		…
+		WALinuxAgent-2.0.16
+		…
+		v2.1.4
+		v2.1.4.rc0
+		v2.1.4.rc1
+   
+    2\.0 については、ここで例として 2.0.16 を使用します。
+    
+		# git checkout WALinuxAgent-2.0.16
+		# python setup.py install  
+		# ln -sf /usr/local/sbin/waagent /usr/sbin/waagent  
 
-    **重要**: インストール後に、稼働していることを念のため確認してください。
+    2\.1 については、ここで例として 2.1.4 を使用します。
+    
+		# git checkout v2.1.4
+		# python setup.py install  
+		# ln -sf /usr/local/sbin/waagent /usr/sbin/waagent  
+		# ln -sf /usr/local/sbin/waagent2.0 /usr/sbin/waagent2.0
+   
+    **重要**: インストール後は、そのバージョンと、実行されているかどうかを二重にチェックすることができます。
 
+		# waagent -version
+		WALinuxAgent-2.1.4 running on freebsd 10.3
+		Python: 2.7.11
 		# service –e | grep waagent
 		/etc/rc.d/waagent
 		# cat /var/log/waagent.log
 
-    これで VM を**シャットダウン**できます。手順 7. を実行してからシャットダウンすることもできますが、これは任意です。
+7. **プロビジョニングを解除する**
 
-7. プロビジョニングの解除は任意です。システムをクリーンアップし、再プロビジョニングに適した状態にする場合に行います。
+    システムをクリーンアップし、再プロビジョニングに適した状態にする場合に行います。以下のコマンドは前回プロビジョニングされたユーザー アカウントおよび関連付けられたデータも削除します。
 
-    以下のコマンドは前回プロビジョニングされたユーザー アカウントおよび関連付けられたデータも削除します。
-
-		# waagent –deprovision+user
+		# echo "y" |  /usr/local/sbin/waagent -deprovision+user  
+		# echo  'waagent_enable="YES"' >> /etc/rc.conf
+    
+    これで VM を**シャットダウン**できます。
 
 ## 手順 2. Azure にストレージ アカウントを作成する ##
 
@@ -120,7 +138,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 	- ストレージ アカウントの**場所またはアフィニティ グループ**を選択します。アフィニティ グループを使用すると、クラウド サービスとストレージを同じデータセンターに配置できます。
 
-	- ストレージ アカウントの **geo レプリケーション**を使用するかどうかを決定します。geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。ストレージ アカウントの geo レプリケーションを管理する方法の詳細については、「[Azure ストレージ アカウントについて](../storage-create-storage-account/#replication-options)」をご覧ください。
+	- ストレージ アカウントの **geo レプリケーション**を使用するかどうかを決定します。geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。ストレージ アカウントの geo レプリケーションを管理する方法の詳細については、[ストレージ アカウントの作成、管理、または削除](../storage-create-storage-account/#replication-options)に関する記事をご覧ください。
 
 	![ストレージ アカウントの詳細の入力](./media/virtual-machines-linux-classic-freebsd-create-upload-vhd/Storage-create-account.png)
 
@@ -177,7 +195,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
    詳細については、「[Microsoft Azure コマンドレットの概要](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx)」を参照してください。
 
-   PowerShell のインストールと構成の詳細については、[Microsoft Azure PowerShell のインストールおよび構成の方法](../install-configure-powershell.md)に関するページを参照してください。
+   PowerShell のインストールと構成の詳細については、[Microsoft Azure PowerShell のインストールおよび構成の方法](../powershell-install-configure.md)に関するページを参照してください。
 
 ## ステップ 4: .vhd ファイルをアップロードする ##
 
@@ -209,4 +227,4 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 	![Azure での FreeBSD イメージ](./media/virtual-machines-linux-classic-freebsd-create-upload-vhd/freebsdimageinazure.png)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->
