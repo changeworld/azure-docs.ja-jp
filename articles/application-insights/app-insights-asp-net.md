@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/25/2016" 
+	ms.date="06/08/2016" 
 	ms.author="awills"/>
 
 
@@ -31,7 +31,6 @@
 関心をお持ちの場合は、他にも次のような記事をご覧いただけます。
 
 * [実行時の Web アプリのインストルメント化](app-insights-monitor-performance-live-website-now.md)
-* [ASP.NET Core](app-insights-asp-net-core.md)
 * [Azure Cloud Services](app-insights-cloudservices.md)
 
 ## <a name="ide"></a> 1.Application Insights SDK の追加
@@ -51,6 +50,7 @@ Visual Studio で新しいプロジェクトを作成するときに、Applicati
 
 ![[Application Insights の追加] を選択する](./media/app-insights-asp-net/appinsights-03-addExisting.png)
 
+* ASP.NET Core プロジェクトの場合 - [これらの手順に従って、コード行をいくつか修正します](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started#add-application-insights-instrumentation-code-to-startupcs)。 
 
 
 
@@ -88,7 +88,7 @@ Visual Studio で、ログに記録されたイベント数が表示されます
 
 ポータルを開くと、アプリのテレメトリが表示されます。 ![](./media/app-insights-asp-net/66.png)
 
-* 個々のイベントは **[検索]** (1) に表示されます。データはまずここ (およびライブ ストリーム内) に表示されます。イベントをクリックすると、そのプロパティが表示されます。 
+* 個々のイベントは **[検索]** (1) に表示されます。データはまずここ (および[ライブ メトリックス ストリーム](app-insights-metrics-explorer.md#live-metrics-stream)内) に表示されます。イベントをクリックすると、そのプロパティが表示されます。 
 * メトリックの集計値はグラフ (2) に表示されます。データがここに表示されるまで、1 ～ 2 分かかる場合があります。グラフをクリックすると、詳細を含むブレードが開きます。
 
 [Azure ポータルでの Application Insights の使用方法の詳細については、こちらを参照してください](app-insights-dashboards.md)。
@@ -105,7 +105,7 @@ Application Insights によって、アプリのテレメトリが (Microsoft Az
 2. [Azure ポータル](https://portal.azure.com/)で、Application Insights のリソースを作成する。ここにデータが表示されます。リソースを識別する*インストルメンテーション キー*を取得します。
 3. `ApplicationInsights.config` にインストルメンテーション キーを挿入し、SDK がポータルにテレメトリを送信できるようにする。
 
-必要な場合は、[これらの手順を手動で実行する](app-insights-asp-net-manual.md)こともできます。
+必要な場合は、[ASP.NET 4](app-insights-asp-net-manual.md) または [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started) 向けにこれらの手順を手動で実行することもできます。
 
 
 ## 次の手順
@@ -116,4 +116,4 @@ Application Insights によって、アプリのテレメトリが (Microsoft Az
 |**[Application Insights ポータルを操作する](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-asp-net/62.png)
 |**[さらにデータを追加する](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外を監視します。ログ記録フレームワークからのトレースを統合します。カスタム テレメトリを記述します。 | ![Visual studio](./media/app-insights-asp-net/64.png)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

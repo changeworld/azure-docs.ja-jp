@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/20/2016"
+	ms.date="06/10/2016"
 	ms.author="awills"/>
 
 # Web サイトの可用性と応答性の監視
@@ -234,10 +234,18 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 個々のテストを開くと、テストを編集したり無効にしたりできます。
 
-![Web テストの編集または無効化  
-](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+![Web テストの編集または無効化](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
 
 たとえば、サービスのメンテナンスを行うときは Web テストを無効にします。
+
+## パフォーマンス テスト
+
+Web サイトに対してロード テストを実行できます。可用性テストと同じように、世界各地の複数のポイントから単純な要求または複数手順の要求を送信できます。可用性テストとは異なり、複数の同時ユーザーをシミュレートするために、多数の要求が送信されます。
+
+[概要] ブレードで、**[設定]**、**[Performance Tests (パフォーマンス テスト)]** の順に開きます。テストを作成するときに、Visual Studio Team Services アカウントへの接続を求められるか、Visual Studio Team Services アカウントを作成します。
+
+テストが完了すると、応答時間と成功率が表示されます。
+
 
 ## Automation
 
@@ -422,4 +430,4 @@ Web テストを許可するためにファイアウォールを開く必要が�
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

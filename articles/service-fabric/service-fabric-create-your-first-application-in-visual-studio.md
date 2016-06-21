@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/27/2016"
+   ms.date="06/09/2016"
    ms.author="ryanwi"/>
 
 # Visual Studio で最初の Azure Service Fabric アプリケーションを作成する
@@ -46,7 +46,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
 	![Visual Studio の [新しいサービス] ダイアログ][2]
 
-	>[AZURE.NOTE] オプションの詳細については、「[フレームワークの選択](service-fabric-choose-framework.md)」を参照してください。
+	>[AZURE.NOTE] オプションの詳細については、「[Service Fabric プログラミング モデルの概要](service-fabric-choose-framework.md)」を参照してください。
 
 	Visual Studio によって、アプリケーション プロジェクトとステートフル サービス プロジェクトが作成され、ソリューション エクスプ ローラーに表示されます。
 
@@ -110,31 +110,19 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
     ![フェールオーバー後の診断イベント ビューアー][diagnostic-events-viewer-detail-post-failover]
 
-### クリーンアップしています
+## クリーンアップしています
 
-  まとめに入る前に、ローカル クラスターが非常に現実的であることを覚えておくことが重要です。デバッガーを停止し、Visual Studio を閉じた後でも、アプリケーションはバック グラウンドで実行し続けます。アプリケーションの性質によっては、このバックグラウンド アクティビティはコンピューター上の大量のリソースを占有する場合があります。この問題は、いくつかのオプションで管理することができます。
+  まとめに入る前に、ローカル クラスターが非常に現実的であることを覚えておくことが重要です。デバッガーを停止すると、アプリケーション インスタンスが削除され、アプリケーションの種類の登録が解除されます。ただし、クラスターは引き続きバックグラウンドで実行されます。この問題は、いくつかのオプションで管理することができます。
 
-  1. 個々のアプリケーションとそのデータすべてを削除するには、Service Fabric Explorer で **[アプリケーションの削除]** アクションを実行します。これは、**[アクション]** メニューから実行するか、左側のウィンドウにあるアプリケーション リスト ビューのコンテキスト メニューから実行します。
+  1. クラスターをシャットダウンしても、アプリケーションのデータとトレースは保持するという場合は、システム トレイ アプリで **[Stop Local Cluster (ローカル クラスターの停止)]** をクリックします。
 
-    ![Delete an application is Service Fabric Explorer][sfe-delete-application]
-
-  2. クラスターからアプリケーションを削除すると、そのアプリケーションについて **[種類のプロビジョニング解除]** を選択できます。これにより、クラスターのイメージ ストアからアプリケーションのパッケージ (コードと構成を含む) が削除されます。
-  3. クラスターをシャットダウンしても、アプリケーションのデータとトレースは保持するという場合は、システム トレイ アプリで **[ローカル クラスターの停止]** をクリックします。
-
-  4. クラスターを完全に削除するには、システム トレイ アプリで **[ローカル クラスターの削除]** をクリックします。このオプションを使用すると、次回 Visual Studio で F5 キーを押したときに、デプロイメントがさらに遅くなることに注意してください。しばらくの間、ローカル クラスターを使用しない場合や、リソースを解放する必要がある場合にのみこれを使用してください。
-
-
+  2. クラスターを完全に削除するには、システム トレイ アプリで **[Remove Local Cluster (ローカル クラスターの削除)]** をクリックします。このオプションを使用すると、次回 Visual Studio で F5 キーを押したときに、デプロイメントがさらに遅くなることに注意してください。しばらくの間、ローカル クラスターを使用しない場合や、リソースを解放する必要がある場合にのみこれを使用してください。
 
 ## 次のステップ
 
-<!--
-Temporarily removing this link because we have removed the ASP.NET template.
-
- - [See how you can expose your services to the Internet with a web service front end](service-fabric-add-a-web-frontend.md)
--->
-- [Azure でクラスターを作成する方法の説明](service-fabric-cluster-creation-via-portal.md)
-- [Reliable Services の詳細](service-fabric-reliable-services-quick-start.md)
-- [Reliable Actors プログラミング モデルを使用してサービスを作成してみる](service-fabric-reliable-actors-get-started.md)
+- [Azure でのクラスター](service-fabric-cluster-creation-via-portal.md)または [Windows でのスタンドアロン クラスター](service-fabric-cluster-creation-for-windows-server.md)を作成する方法について説明します。
+- [Reliable Services](service-fabric-reliable-services-quick-start.md) または [Reliable Actors](service-fabric-reliable-actors-get-started.md) プログラミング モデルを使用してサービスを作成してみます。
+- [Web サービス フロント エンド](service-fabric-add-a-web-frontend.md)を使用してインターネットにサービスを公開する方法について説明します。
 
 <!-- Image References -->
 
@@ -150,4 +138,4 @@ Temporarily removing this link because we have removed the ASP.NET template.
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -95,10 +95,10 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
     import java.net.URISyntaxException;
     ```
 
-7. 次のクラスレベルの変数を **App** クラスに追加し、**{yourhubname}** と **{yourhubkey}** を先にメモした値に置き換えます。
+7. 次のクラスレベルの変数を **App** クラスに追加し、**{yourhostname}** と **{yourhubkey}** を先にメモした値に置き換えます。
 
     ```
-    private static final String connectionString = "HostName={yourhubname}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={yourhubkey}";
+    private static final String connectionString = "HostName={yourhostname};SharedAccessKeyName=iothubowner;SharedAccessKey={yourhubkey}";
     private static final String deviceId = "javadevice";
     
     ```
@@ -190,14 +190,10 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
     import java.util.logging.*;
     ```
 
-7. 次のクラスレベルの変数を **App** クラスに追加します。**{youriothubkey}**、**{youreventhubcompatiblenamespace}**、**{youreventhubcompatiblename}** を先にメモした値に置き換えます。**{youreventhubcompatiblenamespace}** プレースホルダーの値は、**イベント ハブと互換性のあるエンドポイント**から取得され、**xyznamespace** の形式になります (つまり、ポータルのイベント ハブと互換性のあるエンドポイントの **sb://** プレフィックスと **.servicebus.windows.net** サフィックスを削除します)。
+7. 次のクラスレベルの変数を **App** クラスに追加します。**{youriothubkey}**、**{youreventhubcompatibleendpoint}**、**{youreventhubcompatiblename}** を先にメモした値に置き換えます。
 
     ```
-    private static String namespaceName = "{youreventhubcompatiblenamespace}";
-    private static String eventHubName = "{youreventhubcompatiblename}";
-    private static String sasKeyName = "iothubowner";
-    private static String sasKey = "{youriothubkey}";
-    private static long now = System.currentTimeMillis();
+    private static String connStr = "Endpoint={youreventhubcompatibleendpoint};EntityPath={youreventhubcompatiblename};SharedAccessKeyName=iothubowner;SharedAccessKey={youriothubkey}";
     ```
 
 8. 次の **receiveMessages** メソッドを **App** クラスに追加します。このメソッドは **EventHubClient** インスタンスを作成してイベント ハブと互換性のあるエンドポイントに接続し、**PartitionReceiver** インスタンスを非同期的に作成してイベント ハブ パーティションから読み取ります。これは、アプリケーションが終了するまでループを続け、メッセージの詳細を出力します。
@@ -207,8 +203,7 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
     {
       EventHubClient client = null;
       try {
-        ConnectionStringBuilder connStr = new ConnectionStringBuilder(namespaceName, eventHubName, sasKeyName, sasKey);
-        client = EventHubClient.createFromConnectionString(connStr.toString()).get();
+        client = EventHubClient.createFromConnectionStringSync(connStr);
       }
       catch(Exception e) {
         System.out.println("Failed to create client: " + e.getMessage());
@@ -225,7 +220,7 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
             System.out.println("** Created receiver on partition " + partitionId);
             try {
               while (true) {
-                Iterable<EventData> receivedEvents = receiver.receive().get();
+                Iterable<EventData> receivedEvents = receiver.receive(100).get();
                 int batchSize = 0;
                 if (receivedEvents != null)
                 {
@@ -261,7 +256,7 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 
     > [AZURE.NOTE] 受信側が実行開始後、IoT Hub に送信されたメッセージのみを読み込むように、このメソッドは受信側の構築時にフィルターを称します。現在の一連のメッセージを確認できるので、テスト環境ではこれは便利ですが、運用環境の場合、コードですべてのメッセージが処理されることを確認する必要があります。詳細については、[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
 
-9. **main** メソッドのシグネチャを変更し、下の例外を追加します。
+9. **main** メソッドのシグネチャを、以下の例外を含むように変更します。
 
     ```
     public static void main( String[] args ) throws IOException
@@ -428,7 +423,7 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 
     このメソッドは、IoT Hub が前のメッセージを確認してから 1 秒後に新しい「デバイスからクラウドへの」メッセージを送信します。このメッセージには、JSON 形式でシリアル化されたオブジェクトが、デバイス ID、ランダムに生成された番号と共に含まれ、これによって風速センサーがシミュレートされます。
 
-11. **main** メソッドを、デバイスからクラウドへのメッセージを IoT Hub に送信するスレッドを作成する次のコードに置き換えます。
+11. **main** メソッドを次のコードに置き換えます。このコードでは、デバイスからクラウドへのメッセージを IoT Hub に送信するスレッドを作成します。
 
     ```
     public static void main( String[] args ) throws IOException, URISyntaxException {
@@ -515,4 +510,4 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

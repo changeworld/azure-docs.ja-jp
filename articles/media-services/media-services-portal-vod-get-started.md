@@ -17,7 +17,7 @@
 	ms.author="juliako"/>
 
 
-# Azure ポータルを使用したオンデマンド コンテンツ配信の概要 (プレビュー)
+# Azure ポータルを使用したオンデマンド コンテンツ配信の概要
 
 このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Azure ポータルを使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。
 
@@ -229,4 +229,4 @@ URL が**発行された URL** の一覧に追加されます。
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -32,21 +32,25 @@
 4. Data Factory を作成し、リンクされたサービス、テーブル、パイプラインをデプロイする。    
 
 ## 前提条件
-「[チュートリアルの概要](data-factory-get-started.md)」という記事を参照し、前提条件の手順を完了してから、このチュートリアルを実行してください。
 
-コンピューターに以下がインストールされている必要があります。
-- Visual Studio 2013
-- Azure SDK for Visual Studio 2013 をダウンロードします。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
+1. 先に進む前に、「[チュートリアルの概要](data-factory-get-started.md)」に目を通し、前提条件の手順を完了する**必要があります**。
+2. Data Factory エンティティを Azure Data Factory に発行できる **Azure サブスクリプションの管理者**である必要があります。これは、現時点での制限です。この要件に変更があった場合は、すぐにお知らせします。 
+3. コンピューターに以下がインストールされている必要があります。 
+	- Visual Studio 2013 または Visual Studio 2015
+	- Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
+	- Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。Visual Studio 2013 を使用している場合は、メニューで **[ツール]**、**[拡張機能と更新プログラム]**、**[オンライン]**、**[Visual Studio ギャラリー]**、**[Microsoft Azure Data Factory Tools for Visual Studio]**、**[更新]** の順にクリックして、プラグインを更新することもできます。 
+ 
+
 
 ## Visual Studio プロジェクトの作成 
 1. **Visual Studio 2013** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
 2. **[新しいプロジェクト]** ダイアログ ボックスで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。DataFactory テンプレートが表示されない場合は、Visual Studio を終了し、Azure SDK for Visual Studio 2013 をインストールし、Visual Studio を再度開きます。  
 
-	![新しいプロジェクト ダイアログ ボックス](./media/data-factory-get-started-using-vs/new-project-dialog.png)
+	![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-get-started-using-vs/new-project-dialog.png)
 
 3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
 
-	![ソリューション エクスプローラー  ](./media/data-factory-get-started-using-vs/solution-explorer.png)
+	![ソリューション エクスプローラー](./media/data-factory-get-started-using-vs/solution-explorer.png)
 
 ## リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。
@@ -209,7 +213,7 @@
 	2. **[名前]** に「**VSTutorialFactory**」と入力します。  
 	
 		> [AZURE.NOTE]  
-		>Azure Data Factory の名前はグローバルに一意にする必要があります。発行時にデータ ファクトリの名前に関するエラーが発生した場合は、そのデータ ファクトリの名前を変更して (yournameVSTutorialFactory など)、発行し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
+		Azure Data Factory の名前はグローバルに一意にする必要があります。発行時にデータ ファクトリの名前に関するエラーが発生した場合は、そのデータ ファクトリの名前を変更して (yournameVSTutorialFactory など)、発行し直してください。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則](data-factory-naming-rules.md)に関するトピックを参照してください。
 		
 	3. **[サブスクリプション]** フィールドで適切なサブスクリプションを選択します。
 	4. 作成するデータ ファクトリの**リソース グループ**を選択します。 
@@ -269,6 +273,6 @@ Azure ポータルを使用して、このチュートリアルで作成した�
 | [スケジュールと実行](data-factory-scheduling-and-execution.md) | この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
 | [パイプライン](data-factory-create-pipelines.md) | この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
-| [監視アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事 | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
+| [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

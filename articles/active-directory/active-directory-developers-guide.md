@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/02/2016"
+   ms.date="06/06/2016"
    ms.author="mbaldwin"/>
 
 
@@ -97,15 +97,17 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 - [Graph API Permission Scopes (Graph API のアクセス許可スコープ)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): OAuth 2.0 のアクセス許可スコープは、アプリケーションに付与されている、テナント内のディレクトリ データに対するアクセス権を制御するために使用されます。
 
-### 認証プロトコル
+### 認証および承認のプロトコル
 
-- [Azure Active Directory 認証プロトコル](active-directory-protocols.md): Azure Active Directory でサポートされているさまざまな認証プロトコルと承認プロトコルについて説明されています。
+- [Azure Active Directory の認証と承認プロトコル](active-directory-protocols.md): Azure Active Directory でサポートされているさまざまな認証プロトコルと承認プロトコルについて説明しています。
+
+- [OAuth 2.0 プロトコルでの承認コード付与の使用](active-directory-protocols-oauth-code.md): OAuth 2.0 プロトコルの承認コード付与を使用して、Azure Active Directory テナントの Web アプリケーションと Web API へのアクセスを承認できます。
+
+- [OAuth 2.0 プロトコルでの暗黙的な許可に関する解説](active-directory-dev-understanding-oauth2-implicit-grant.md): 暗黙的な許可についての概要と、この許可の方法に適したアプリケーションの種類について解説しています。
+
+- [OpenID Connect 1.0 プロトコルでのサインインと認証](active-directory-protocols-openid-connect-code.md): OpenID Connect 1.0 プロトコルは、OAuth 2.0 を拡張し、認証プロトコルとして使用できるようにします。クライアント アプリケーションでは、id\_token を受信してサインイン プロセスを管理できるほか、承認コード フローを強化して id\_token と承認コードの両方を受信することもできます。
 
 - [SAML 2.0 プロトコル リファレンス](active-directory-saml-protocol-reference.md): SAML 2.0 プロトコルにより、アプリケーションでユーザーにシングル サインオン エクスペリエンスを提供できます。
-
-- [Azure AD での OAuth 2.0](active-directory-protocols-oauth-code.md): OAuth 2.0 プロトコルを使用して、Azure Active Directory テナントの Web アプリケーションと Web API へのアクセスを承認できます。
-
-- [OpenID Connect 1.0](active-directory-protocols-openid-connect-code.md): OpenID Connect 1.0 プロトコルは、OAuth 2.0 を拡張し、認証プロトコルとして使用できるようにします。
 
 - [WS-Federation 1.2 プロトコル](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html): Azure Active Directory では、Web Services Federation バージョン 1.2 仕様に準拠して WS-Federation 1.2 がサポートされています。
 
@@ -139,4 +141,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

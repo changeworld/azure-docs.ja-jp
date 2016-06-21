@@ -30,19 +30,13 @@
 ## 前提条件
 
 1. 先に進む前に、「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」に目を通し、前提条件の手順を完了する**必要があります**。
-2. この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、[Azure Data Factory の概要](data-factory-introduction.md)に関するページを参照することをお勧めします。  
-
-## Data Factory エンティティの作成とデプロイ  
-
-### 前提条件
-
-コンピューターに以下がインストールされている必要があります。
-
-- Visual Studio 2013 または Visual Studio 2015
-- Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
-- Visual Studio 用の最新の Azuer Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。Visual Studio 2013 を使用している場合は、メニューで **[ツール]**、**[拡張機能と更新プログラム]**、**[オンライン]**、**[Visual Studio ギャラリー]**、**[Microsoft Azure Data Factory Tools for Visual Studio]**、**[更新]** の順にクリックして、プラグインを更新することもできます。 
-	
-	
+2. Data Factory エンティティを Azure Data Factory に発行できる **Azure サブスクリプションの管理者**である必要があります。これは、現時点での制限です。この要件に変更があった場合は、すぐにお知らせします。 
+3. コンピューターに以下がインストールされている必要があります。 
+	- Visual Studio 2013 または Visual Studio 2015
+	- Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
+	- Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。Visual Studio 2013 を使用している場合は、メニューで **[ツール]**、**[拡張機能と更新プログラム]**、**[オンライン]**、**[Visual Studio ギャラリー]**、**[Microsoft Azure Data Factory Tools for Visual Studio]**、**[更新]** の順にクリックして、プラグインを更新することもできます。 
+ 
+次のチュートリアルでは、Data Factory エンティティを作成して、デプロイする方法について説明します。
 
 ## Visual Studio プロジェクトの作成 
 1. **Visual Studio 2013** または **Visual Studio 2015** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
@@ -52,7 +46,7 @@
 
 3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
 
-	![ソリューション エクスプローラー](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
+	![Solution Explorer](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
 ## リンクされたサービスの作成
 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。パイプラインには、1 つまたは複数のアクティビティを含めることができます。たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティなどを含めることができます。後で Data Factory ソリューションを発行するときに、データ ファクトリの名前と設定を指定します。
@@ -101,13 +95,13 @@
 
 	以下の点に注意してください。
 	
-	- Data Factory は、上記の JSON で **Windows ベース**の HDInsight クラスターを自動的に作成します。**Linux ベース**の HDInsight クラスターを作成させることもできます。詳細については、「[On-demand HDInsight Linked Service (オンデマンド HDInsight のリンクされたサービス)](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」を参照してください。 
-	- オンデマンド HDInsight クラスターの代わりに、**独自の HDInsight クラスター**を使用できます。詳細については、「[HDInsight Linked Service (HDInsight のリンクされたサービス)](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)」を参照してください。
-	- HDInsight クラスターは、JSON (**linkedServiceName**) で指定した Blob Storage に**既定のコンテナー**を作成します。クラスターを削除しても、HDInsight はこのコンテナーを削除しません。これは設計によるものです。オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成されて、処理が終了すると削除されます。
+	- Data Factory は、上記の JSON で **Windows ベース**の HDInsight クラスターを自動的に作成します。**Linux ベース**の HDInsight クラスターを作成させることもできます。詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。 
+	- オンデマンド HDInsight クラスターの代わりに、**独自の HDInsight クラスター**を使用できます。詳細については、[HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に関するセクションを参照してください。
+	- HDInsight クラスターは、JSON (**linkedServiceName**) で指定した Blob Storage に**既定のコンテナー**を作成します。クラスターを削除しても、HDInsight はこのコンテナーを削除しません。これは設計によるものです。オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
 	
-		処理されるスライスが多いほど、Azure Blob Storage 内のコンテナーも増えます。ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。コンテナーの名前は、"adf**<Data Factory 名>**-**<リンクされたサービス名>**-<日時スタンプ>" というパターンになります。Azure Blob Storage 内のコンテナーを削除するには、[Microsoft ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用します。
+		処理されるスライスが多いほど、Azure Blob Storage 内のコンテナーも増えます。ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。コンテナーの名前は、"adf**Data Factory 名**-**リンクされたサービス名**-日時スタンプ" というパターンになります。Azure Blob Storage 内のコンテナーを削除するには、[Microsoft ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用します。
 
-	詳細については、「[On-demand HDInsight Linked Service (オンデマンド HDInsight のリンクされたサービス)](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」を参照してください。 
+	詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。 
 4. **HDInsightOnDemandLinkedService1.json** ファイルを保存します。
 
 ## データセットを作成する
@@ -341,7 +335,7 @@
 
 Azure ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するセクションを参照してください。
 
-データ パイプラインは、監視と管理アプリを使用して監視することもできます。このアプリケーションの使い方について詳しくは、「[新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)」を参照してください。
+データ パイプラインは、監視と管理アプリを使用して監視することもできます。このアプリケーションの使い方の詳細については、[新しい監視アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
 
 > [AZURE.IMPORTANT] 入力ファイルは、スライスが正常に処理された時点で削除されます。そのためスライスを取得したり、このチュートリアルをもう一度行ったりする場合は、adfgetstarted コンテナーの inputdata フォルダーに入力ファイル (input.log) をアップロードしてください。
  
@@ -453,9 +447,9 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 
 構成ファイルを使用して Azure Data Factory プロジェクトのエンティティを発行するには、次の手順を実行します。
 
-1. Data Factory プロジェクトを右クリックして **[発行]** をクリックし、**[項目の発行]** ダイアログ ボックスを表示します。 
-2. **[データ ファクトリの構成]** ページで、既存のデータ ファクトリを選択するか、新しいデータ ファクトリを作成するために値を指定して、**[次へ]** をクリックします。   
-3. **[項目の発行]** ページのドロップダウン リストに、**[デプロイ構成の選択]** フィールドで使用できる構成が表示されます。
+1. Data Factory プロジェクトを右クリックして **[発行]** をクリックし、**[Publish Items (項目の発行)]** ダイアログ ボックスを表示します。 
+2. **[Configure data factory (データ ファクトリの構成)]** ページで、既存のデータ ファクトリを選択するか、新しいデータ ファクトリを作成するために値を指定して、**[次へ]** をクリックします。   
+3. **[Publish Items (項目の発行)]** ページのドロップダウン リストに、**[Select Deployment Config (デプロイ構成の選択)]** フィールドで使用できる構成が表示されます。
 
 	![Select config file](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
 
@@ -486,6 +480,6 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 | [スケジュールと実行](data-factory-scheduling-and-execution.md) | この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
 | [パイプライン](data-factory-create-pipelines.md) | この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
-| [監視アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事 | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
+| [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

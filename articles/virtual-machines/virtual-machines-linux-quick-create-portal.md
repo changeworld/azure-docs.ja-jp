@@ -23,14 +23,14 @@
 
 この記事では、[Azure ポータル](https://portal.azure.com/)を使用して Linux 仮想マシンを簡単に作成する方法を示します。唯一の要件は、[Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)および [SSH 公開キーと秘密キーのファイル](virtual-machines-linux-mac-create-ssh-keys.md)です。
 
-[AZURE.NOTE] VM へのアクセスをセキュリティで保護するためにパスワードを使用する場合、パスワードは 13 文字以上にし、1 つ以上の大文字、1 つ以上の小文字、1 つ以上の特殊文字、および 1 つ以上の数字を含める必要があります。
+> [AZURE.NOTE] VM へのアクセスをセキュリティで保護するためにパスワードを使用する場合、パスワードは 13 文字以上にし、1 つ以上の大文字、1 つ以上の小文字、1 つ以上の特殊文字、および 1 つ以上の数字を含める必要があります。
 
 
 1. Azure アカウント ID で Azure ポータルにサインインし、左上隅にある **[+ 新規]** をクリックします。
 
     ![screen1](../media/virtual-machines-linux-quick-create-portal/screen1.png)
 
-2. **[Marketplace]** で **[Virtual Machines]** をクリックし、**[おすすめアプリ]** イメージ リストから **[Ubuntu Server 14.04 LTS]** をクリックします。下部でデプロイメント モデルとして `Resource Manager` が選択されていることを確認してから、**[作成]** をクリックします。
+2. **[Marketplace]** で **[Virtual Machines]** をクリックし、**[おすすめアプリ]** イメージ リストから **[Ubuntu Server 14.04 LTS]** をクリックします。下部でデプロイ モデルとして `Resource Manager` が選択されていることを確認してから、**[作成]** をクリックします。
 
     ![screen2](../media/virtual-machines-linux-quick-create-portal/screen2.png)
 
@@ -49,7 +49,7 @@
 
     ![screen4](../media/virtual-machines-linux-quick-create-portal/screen4.png)
 
-5. **[設定]** の Storage と Network の値は既定値のままにし、**[OK]** をクリックして概要を表示します。DS1 を選択するとディスクの種類が Premium SSD に設定されることに注意してください。**S** は SSD を示します。
+5. **[設定]** の [ストレージ] と [ネットワーク] の値は既定値のままにし、**[OK]** をクリックして概要を表示します。DS1 を選択するとディスクの種類が Premium SSD に設定されることに注意してください。**S** は SSD を示します。
 
     ![screen5](../media/virtual-machines-linux-quick-create-portal/screen5.png)
 
@@ -81,4 +81,4 @@ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
 
 これらの記事を読むと、Azure インフラストラクチャの構築を始めることができ、独自またはオープン ソースのインフラストラクチャ デプロイ、構成、オーケストレーション ツールを使用できます。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

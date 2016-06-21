@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/09/2016"
+	ms.date="06/10/2016"
 	ms.author="garye"/>
 
 # Azure Machine Learning Studio とは
@@ -47,6 +47,7 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 
 **[スタジオ]** タブをクリックすると、Microsoft アカウントを使用するか職場または学校アカウントを使用してサインインするように求められます。サインインすると、次のタブが左側に表示されます。
 
+- **[PROJECTS (プロジェクト)]** - 単一のプロジェクトを表す実験、データセット、ノートブック、およびその他のリソースがまとめられています。
 - **実験** - 作成済み、実行済み、ドラフトとして保存済みの実験です。
 - **[Web サービス]** - 実験からデプロイした Web サービスです。
 - **[ノートブック]** - 作成済みの Jupyter ノートブックです。
@@ -56,9 +57,9 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 
 ### ギャラリー
 
-**[ギャラリー]** タブをクリックすると、Cortana Intelligence ギャラリーに移動します。ギャラリーは、データ サイエンティストや開発者のコミュニティが、Cortana Intelligence Suite のコンポーネントを使用してソリューションを共有できる場です。
+**[Gallery (ギャラリー)]** タブをクリックすると、Cortana Intelligence ギャラリーに移動します。ギャラリーは、データ サイエンティストや開発者のコミュニティが、Cortana Intelligence Suite のコンポーネントを使用してソリューションを共有できる場です。
 
-ギャラリーの詳細については、「[Cortana Analytics ギャラリーのソリューションを共有および検出する](machine-learning-gallery-how-to-use-contribute-publish.md)」を参照してください。
+ギャラリーの詳細については、「[Cortana Intelligence ギャラリーでソリューションを共有および発見する](machine-learning-gallery-how-to-use-contribute-publish.md)」を参照してください。
 
 ## 実験の構成要素
 
@@ -115,4 +116,4 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0615_2016-->

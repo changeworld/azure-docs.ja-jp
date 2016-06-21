@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発
@@ -69,7 +69,7 @@ U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析す�
 
 **リンクされている Azure BLOB ストレージ アカウントにファイルをアップロードするには**
 
-1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、使用する Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開します。既定の Data Lake ストレージ アカウント、リンクされている Data Lake ストレージ アカウント、リンクされている Azure ストレージ アカウントが表示されます。
+1. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]**、使用する Data Lake Analytics アカウント、**[ストレージ アカウント]** の順に展開します。既定の Data Lake ストレージ アカウント、リンクされている Data Lake ストレージ アカウント、リンクされている Azure ストレージ アカウントが表示されます。 
 2. Azure ストレージ アカウントを展開します。
 3. ファイルをアップロードするコンテナーを右クリックして、**[エクスプローラー]** をクリックします。コンテナーがない場合、Azure ポータル、Azure PowerShell、その他のツールを使用して最初にコンテナーを作成する必要があります。
 4. ファイルをアップロードするフォルダーを参照します。
@@ -132,8 +132,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 
     - **列の展開**
 
-        * の右側をクリックすると、* の下に青い線が表示されます。青い下線にマウス カーソルをポイントし、下矢印をクリックします。
-	![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
+        * の右側をクリックすると、* の下に青い線が表示されます。青い下線にマウス カーソルをポイントし、下矢印をクリックします。![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
         **[列の展開]** をクリックすると、* が列名に置き換えられます。
 
@@ -175,7 +174,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 
 	* [ジョブの概要]。現在のジョブの概要情報が表示されます (状態、進行状況、実行時間、ランタイムの名前、送信者など)。   
 	* [ジョブの詳細]。このジョブに関する詳細情報が表示されます (スクリプト、リソース、頂点実行ビューなど)。
-	* [ジョブ グラフ]。ジョブの情報が 4 つのグラフで視覚的に提供されます (進行状況、データの読み取り、データの書き込み、実行時間、ノードごとの平均実行時間、入力スループット、出力スループット)。
+	* [ジョブ グラフ]。ジョブの情報 (進行状況、データの読み取り、データの書き込み、実行時間、ノードごとの平均実行時間、入力スループット、出力スループット) が 4 つのグラフで視覚的に提供されます。
 	* [メタデータ操作]。すべてのメタデータ操作が表示されます。
 	* [状態の履歴]。
 	* [診断]。Data Lake Tools for Visual Studio がジョブの実行を自動的に診断します。エラーやパフォーマンスの問題がジョブにある場合、アラートが表示されます。詳細についてはジョブの診断 (リンクは TBD) を参照してください。
@@ -236,7 +235,7 @@ Visual Studio で U-SQL をローカル実行し、次のことができます�
 
     - スクリプト入力で (EXTRACT * FROM “/path/abc”) - DataRoot パスとスクリプト パスの両方が検索されます。
     - スクリプト出力で (OUTPUT TO “path/abc”): DataRoot パスが出力フォルダーとして使用されます。
-    - アセンブリ登録で (CRREATE ASSEMBLY xyz FROM “/path/abc”): スクリプト パスが検索されます。DataRoot パスではありません。
+    - アセンブリ登録で (CREATE ASSEMBLY xyz FROM “/path/abc”): スクリプト パスが検索されます。DataRoot パスではありません。
     - 登録された TVF/View または他のメタデータ エンティティで: DataRoot パスが検索されます。スクリプト パスではありません。
 
     Data Lake サービスで実行されたスクリプトの場合、既定のストレージ アカウントがルート フォルダーとして使用され、適宜検索されます。
@@ -343,7 +342,7 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
 
     #region - prepare the source data
     Write-Host "Import the source data ..."  -ForegroundColor Green
-    $localFolder = "C:\Tutorials\Downloads\" # A temp location for the file.
+    $localFolder = "C:\Tutorials\Downloads" # A temp location for the file.
     $storageAccount = "adltutorials"  # Don't modify this value.
     $container = "adls-sample-data"  #Don't modify this value.
 
@@ -362,4 +361,4 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->
