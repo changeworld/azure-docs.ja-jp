@@ -231,7 +231,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
 
 
-他の Azure サービスによるサーバーへのアクセスを許可するには、ファイアウォール規則を追加し、StartIpAddress と EndIpAddress を 0.0.0.0 に設定します。これにより、 *任意* の Azure サブスクリプションからの Azure トラフィックがサーバーへアクセスできるようになる点に注意してください。
+他の Azure サービスによるサーバーへのアクセスを許可するには、ファイアウォール規則を追加し、StartIpAddress と EndIpAddress を 0.0.0.0 に設定します。これにより、*任意*の Azure サブスクリプションからの Azure トラフィックがサーバーへアクセスできるようになる点に注意してください。
 
 
 ## C&#x23; を使用した SQL データベースの作成
@@ -456,4 +456,4 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

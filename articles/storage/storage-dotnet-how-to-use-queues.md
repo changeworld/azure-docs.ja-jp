@@ -1,6 +1,6 @@
 <properties
 	pageTitle=".NET を使用して Azure Queue Storage を使用する | Microsoft Azure"
-	description="Azure Queue Storage を使用するアプリケーション コンポーネント間で非同期的にメッセージを送受信します。キューの作成と削除、およびキュー メッセージの追加、読み取り、削除を含む単純な Queue Storage 操作を開始します。"
+	description="Azure Queue は、アプリケーション コンポーネント間の信頼性の高い非同期メッセージングを提供します。クラウド メッセージングにより、アプリケーション コンポーネントのスケールを個別に変更できます。"
 	services="storage"
 	documentationCenter=".net"
 	authors="robinsh"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="04/07/2016"
+	ms.date="06/09/2016"
 	ms.author="gusapost"/>
 
 # .NET を使用して Azure Queue Storage を使用する
@@ -22,7 +22,7 @@
 
 ## 概要
 
-Azure Queue Storage は、クラウド内のメッセージ キューを提供するサービスです。拡張性を重視してアプリケーションを設計する場合、通常、アプリケーション コンポーネントを個別に拡張できるように分離します。キュー ストレージでは、アプリケーション コンポーネントがクラウド、デスクトップ、オンプレミスのサーバー、モバイル デバイスのいずれで実行されている場合でも、信頼性の高いメッセージング ソリューションによって、アプリケーション コンポーネント間の非同期通信が実行されます。Queue Storage ではまた、非同期タスクの管理とプロセス ワークフローの構築もサポートします。
+Azure Queue Storage は、アプリケーション コンポーネント間のクラウド メッセージングを提供します。拡張性を重視してアプリケーションを設計する場合、通常、アプリケーション コンポーネントを個別に拡張できるように分離します。Queue Storage は、アプリケーション コンポーネントがクラウド、デスクトップ、オンプレミスのサーバー、モバイル デバイスのいずれで実行されている場合でも、アプリケーション コンポーネント間の通信に非同期メッセージングを提供します。Queue Storage ではまた、非同期タスクの管理とプロセス ワークフローの構築もサポートします。
 
 ### このチュートリアルについて
 
@@ -275,4 +275,4 @@ Azure Queue Storage は、クラウド内のメッセージ キューを提供�
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

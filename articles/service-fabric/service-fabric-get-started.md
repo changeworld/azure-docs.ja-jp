@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/18/2016"
+   ms.date="06/15/2016"
    ms.author="ryanwi"/>
 
 # 開発環境を準備する
@@ -34,7 +34,7 @@
 
 Web Platform Installer には、Service Fabric 開発用に 3 つの構成が用意されています。
 
-- [Visual Studio 2015 用の Service Fabric ランタイム、SDK、ツールをインストールする][full-bundle-vs2015]
+- [Visual Studio 2015 Update 2 用の Service Fabric ランタイム、SDK、ツールをインストールする][full-bundle-vs2015]
 - [Visual Studio "15" プレビュー用の Service Fabric ランタイム、SDK、ツールをインストールする][full-bundle-dev15]
 - [Service Fabric ランタイムと SDK のみをインストールする (Visual Studio Tools はインストールしない)][core-sdk]
 
@@ -59,9 +59,9 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 [1]: http://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI link"
-[full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI link"
-[core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK "Core SDK WebPI link"
+[full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015-2_1 "VS 2015 WebPI link"
+[full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15-2_1 "Dev15 WebPI link"
+[core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK_2_1 "Core SDK WebPI link"
 [powershell5-download]: https://www.microsoft.com/ja-JP/download/details.aspx?id=50395
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

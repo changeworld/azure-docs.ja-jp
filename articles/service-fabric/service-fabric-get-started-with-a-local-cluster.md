@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/12/2016"
+   ms.date="06/09/2016"
    ms.author="ryanwi"/>
 
 # ローカル クラスターでアプリケーションのデプロイおよびアップグレードを開始する
@@ -66,7 +66,7 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
     cd c:\ServiceFabric\
     ```
 
-4. 作成した場所に、[WordCount アプリケーションをダウンロード](http://aka.ms/servicefabric-wordcountapp)します。
+4. 作成した場所に、[WordCount アプリケーションをダウンロード](http://aka.ms/servicefabric-wordcountapp)します。注: Microsoft Edge ブラウザーでは、ファイルが *.zip* 拡張子付きで保存されます。ファイル拡張子を *.sfpkg* に変更する必要があります。
 
 5. 次のように、ローカル クラスターに接続します。
 
@@ -88,7 +88,7 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
 
     ![デプロイされたアプリケーション UI][deployed-app-ui]
 
-    WordCount アプリケーションは非常に単純です。これには、ランダムな 5 文字の "単語" を生成するクライアント側の JavaScript コードが含まれます。生成された単語は ASP.NET Web API 経由でアプリケーションに中継されます。ステートフル サービスは、単語のカウントを追跡します。単語の最初の文字に基づいてパーティション分割されます。
+    WordCount アプリケーションは非常に単純です。これには、ランダムな 5 文字の "単語" を生成するクライアント側の JavaScript コードが含まれます。生成された単語は ASP.NET Web API 経由でアプリケーションに中継されます。ステートフル サービスは、単語のカウントを追跡します。単語の最初の文字に基づいてパーティション分割されます。[入門サンプル](https://azure.microsoft.com/documentation/samples/service-fabric-dotnet-getting-started/)で WordCount アプリケーションのソース コードを見つけることができます。
 
     デプロイしたアプリケーションには 4 つのパーティションがあります。このため、A ～ G で始まる単語は最初のパーティションに格納され、H ～ N で始まる単語は 2 番目のパーティションに格納されるといった具合になります。
 
@@ -168,6 +168,33 @@ Service Fabric では、クラスター全体にロールアウトされると�
 
     ![ブラウザーでアプリケーションの新しいバージョンを表示する][deployed-app-ui-v2]
 
+## クリーンアップしています
+
+まとめに入る前に、ローカル クラスターが非常に現実的であることを覚えておくことが重要です。アプリケーションは、削除するまで、バックグラウンドで実行を継続します。アプリの性質によっては、実行中のアプリがコンピューター上の大量のリソースを占有する場合があります。この問題は、いくつかのオプションで管理することができます。
+
+1. 個々のアプリケーションとそのすべてのデータを削除するには、次の手順を実行します。
+
+    ```powershell
+    Unpublish-ServiceFabricApplication -ApplicationName "fabric:/WordCount"
+    ```
+
+    または、Service Fabric Explorer で **[アプリケーションの削除]** アクションを実行します。これは、**[アクション]** メニューから実行するか、左側のウィンドウにあるアプリケーション リスト ビューのコンテキスト メニューから実行します。
+
+    ![Delete an application is Service Fabric Explorer][sfe-delete-application]
+
+2. クラスターからアプリケーションを削除すると、WordCount アプリケーションの種類のバージョン 1.0.0 と 2.0.0 の登録を解除できます。これにより、コードと構成を含むアプリケーション パッケージがクラスターのイメージ ストアから削除されます。
+
+    ```powershell
+    Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 2.0.0
+    Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 1.0.0
+    ```
+
+    または、Service Fabric Explorer で、そのアプリケーションについて **[Unprovision Type (種類のプロビジョニング解除)]** を選択します。
+
+3. クラスターをシャットダウンしても、アプリケーションのデータとトレースは保持するという場合は、システム トレイ アプリで **[Stop Local Cluster (ローカル クラスターの停止)]** をクリックします。
+
+4. クラスターを完全に削除するには、システム トレイ アプリで **[Remove Local Cluster (ローカル クラスターの削除)]** をクリックします。このオプションを使用すると、次回 Visual Studio で F5 キーを押したときに、デプロイメントがさらに遅くなることに注意してください。しばらくの間、ローカル クラスターを使用しない場合や、リソースを解放する必要がある場合にのみこれを使用してください。
+
 ## 次のステップ
 - いくつかのビルド済みのアプリケーションをデプロイし、アップグレードしたので、今度は [Visual Studio で自身のアプリケーションをビルドしてみます](service-fabric-create-your-first-application-in-visual-studio.md)。
 - この記事の中でローカル クラスターに対して実行したアクションはすべて、[Azure クラスター](service-fabric-cluster-creation-via-portal.md)に対しても実行することができます。
@@ -189,5 +216,6 @@ Service Fabric では、クラスター全体にロールアウトされると�
 [ps-getsfsvc-postupgrade]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFSvc-PostUpgrade.png
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
+[sfe-delete-application]: ./media/service-fabric-get-started-with-a-local-cluster/sfe-delete-application.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

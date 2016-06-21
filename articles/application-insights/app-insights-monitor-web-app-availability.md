@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/20/2016"
+	ms.date="06/10/2016"
 	ms.author="awills"/>
 
 # Web サイトの可用性と応答性の監視
@@ -50,7 +50,8 @@ Web テストには次の 2 種類があります。
 
 Application Insights のリソースで、可用性のタイルを見つけます。これをクリックして、アプリケーションの Web テスト ブレードを開き、Web テストを追加します。
 
-![少なくとも自分の Web サイトの URL を入力](./media/app-insights-monitor-web-app-availability/13-availability.png)
+![少なくとも自分の Web サイトの URL を入力  
+](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
 - **URL** はパブリック インターネットから認識できる必要があります。これにはクエリ文字列を含めることができます。したがって、たとえば限られた範囲でデータベースを実行できます。URL が解決されてリダイレクトする場合、それに続いて最大で 10 個リダイレクトを使用できます。
 - **[依存する要求の解析]**: 画像、スクリプト、スタイル ファイルなど、ページのリソースがテストの一環として要求されます。テスト全体のタイムアウト時間内にこれらすべてのリソースを正常にダウンロードできない場合、テストは失敗します。
@@ -80,7 +81,8 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 1 ～ 2 分後に、可用性/Web テスト ブレードで **[更新]** をクリックします(自動的には更新されません)。
 
-![ホーム ブレード上の概要結果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+![ホーム ブレード上の概要結果  
+](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
 その期間のより詳しいビューを表示するには、上部の概要グラフの棒をクリックします。
 
@@ -117,7 +119,8 @@ Web ページのイメージ、スタイル シート、スクリプトとその
 
 その結果をクリックしてポータルで評価し、失敗した理由をご確認ください。
 
-![Web テスト実行結果](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
+![Web テスト実行結果  
+](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
 
 
 代わりに、結果ファイルをダウンロードして Visual Studio で詳しく調べることもできます。
@@ -238,6 +241,15 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 ](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
 
 たとえば、サービスのメンテナンスを行うときは Web テストを無効にします。
+
+## パフォーマンス テスト
+
+Web サイトに対してロード テストを実行できます。可用性テストと同じように、世界各地の複数のポイントから単純な要求または複数手順の要求を送信できます。可用性テストとは異なり、複数の同時ユーザーをシミュレートするために、多数の要求が送信されます。
+
+[概要] ブレードで、**[設定]**、**[Performance Tests (パフォーマンス テスト)]** の順に開きます。テストを作成するときに、Visual Studio Team Services アカウントへの接続を求められるか、Visual Studio Team Services アカウントを作成します。
+
+テストが完了すると、応答時間と成功率が表示されます。
+
 
 ## Automation
 
@@ -422,4 +434,4 @@ Web テストを許可するためにファイアウォールを開く必要が�
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

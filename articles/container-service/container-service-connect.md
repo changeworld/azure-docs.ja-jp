@@ -21,7 +21,7 @@
 
 # Azure コンテナー サービス クラスターに接続する
 
-Azure コンテナー サービスによってデプロイされている DC/OS クラスターと Swarm クラスターは、REST エンドポイントを公開しています。ただし、これらのエンドポイントは外部には開放されていません。これらのエンドポイントを扱うためには、Secure Shell (SSH) トンネルを作成する必要があります。SSH トンネルが確立されると、クラスター エンドポイントに対してコマンドを実行し、独自のシステムでブラウザー経由でクラスター UI を表示できます。このドキュメントでは、Linux、OS X、Windows から SSH トンネルを作成する手順を紹介します。
+Azure コンテナー サービスによってデプロイされている DC/OS クラスターと Docker Swarm クラスターは、REST エンドポイントを公開しています。ただし、これらのエンドポイントは外部には開放されていません。これらのエンドポイントを扱うためには、Secure Shell (SSH) トンネルを作成する必要があります。SSH トンネルが確立されると、クラスター エンドポイントに対してコマンドを実行し、独自のシステムでブラウザー経由でクラスター UI を表示できます。このドキュメントでは、Linux、OS X、Windows から SSH トンネルを作成する手順を紹介します。
 
 >[AZURE.NOTE] SSH セッションは、クラスター管理システムとの間で作成することができます。ただし、これは推奨されません。管理システムで直接作業すると、構成を意図せず変更してしまうおそれがあります。
 
@@ -71,7 +71,7 @@ Swarm エンドポイントへのトンネルを開くには、次のような�
 ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
-これで DOCKER\_HOST 環境変数を次のように設定し、通常どおり Docker コマンドライン インターフェイス (CLI) の使用を継続できます。
+これで、DOCKER\_HOST 環境変数を次のように設定できます。通常どおり、Docker コマンド ライン インターフェイス (CLI) を使用し続けることができます。
 
 ```bash
 export DOCKER_HOST=:2375
@@ -87,11 +87,11 @@ Windows システムに PuTTY をダウンロードし、実行します。
 
 ![PuTTY configuration 1](media/putty1.png)
 
-`SSH` と `Authentication` を選択します。認証のためにプライベート キー ファイルを追加します。
+**[SSH]** と **[Authentication (認証)]** を選択します。認証のためにプライベート キー ファイルを追加します。
 
 ![PuTTY configuration 2](media/putty2.png)
 
-`Tunnels` を選択し、次のように転送ポートを構成してください。
+**[Tunnels (トンネル)]** を選択し、次のように転送ポートを構成します。
 - **[接続元ポート]** には、DC/OS の場合は 80、Swarm の場合は 2375 を指定します。
 - **[ターゲット]** には、DC/OS の場合は localhost:80、Swarm の場合は localhost:2375 を指定します。
 
@@ -117,6 +117,7 @@ Docker Swarm のトンネルを構成したら、Docker CLI から Swarm クラ�
 
 コンテナーをデプロイし、DC/OS または Swarm で管理します。
 
-[REST API を使用したコンテナー管理](container-service-mesos-marathon-rest.md) [Docker Swarm でのコンテナーの管理](container-service-docker-swarm.md)
+- [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
+- [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

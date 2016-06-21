@@ -172,6 +172,7 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 ## 次のステップ
 
-[Mesos HTTP エンドポイントの詳細](http://mesos.apache.org/documentation/latest/endpoints/)。[Marathon REST API の詳細](https://mesosphere.github.io/marathon/docs/rest-api.html)。
+- [Mesos HTTP エンドポイントの詳細](http://mesos.apache.org/documentation/latest/endpoints/)。
+- [Marathon REST API の詳細](https://mesosphere.github.io/marathon/docs/rest-api.html)。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

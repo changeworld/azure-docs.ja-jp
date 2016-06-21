@@ -12,7 +12,7 @@
 <tags
    ms.service="functions"
    ms.devlang="multiple"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
    ms.date="05/07/2016"
@@ -67,8 +67,7 @@ Azure Functions では、イベント ドリブンでオンデマンドのコン
 
 	![新しい GitHub webhook 関数を作成する](./media/functions-create-a-web-hook-or-api-function/functions-create-new-github-webhook-3.png)
 
-この時点で、GitHub の webhook は、新しい問題のコメントが追加された場合に関数をトリガーするよう構成されます。
-では、テストしてみましょう。
+この時点で、GitHub の webhook は、新しい問題のコメントが追加された場合に関数をトリガーするよう構成されます。では、テストしてみましょう。
 
 ##関数をテストする
 
@@ -83,14 +82,11 @@ Azure Functions では、イベント ドリブンでオンデマンドのコン
 
 Azure Functions の詳細については、次のトピックを参照してください。
 
-+ [Azure Functions 開発者向けリファレンス](functions-reference.md)  
-関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
-+ [Azure Functions のテスト](functions-test-a-function.md)  
-関数をテストするための各種ツールと手法について説明します。
-+ [Azure Functions のスケーリング方法](functions-scale.md)  
-Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。  
++ [Azure Functions 開発者向けリファレンス](functions-reference.md) 関数のコーディングに関するプログラマ向けリファレンスです。
++ [Azure Functions のテスト](functions-test-a-function.md) 関数をテストするための各種ツールと手法について説明します。
++ [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。  
 
 
 [AZURE.INCLUDE [概要のメモ](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->
