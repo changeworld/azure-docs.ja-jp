@@ -3,7 +3,7 @@
    description="Visual Studio を使用して、Windows 上で Web アプリを作成し、Docker にデプロイする際に発生する問題のトラブルシューティングを行います。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="TomArcher"
+   authors="allclark"
    manager="douge"
    editor="" />
 <tags
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/15/2016"
-   ms.author="tarcher" />
+   ms.date="06/08/2016"
+   ms.author="allclark" />
 
 # Docker エラーのトラブルシューティング
 
@@ -22,6 +22,7 @@ Docker Preview 用 Visual Studio ツールを使用する場合は、プレビ�
 ##Docker サポートのための Program.cs の構成に失敗する
 
 Docker サポートを追加するときに、`.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_SERVER.URLS"))` を WebHostBuilder() に追加する必要があります。Program.cs の Main() 関数または新しい WebHostBuilder が見つからない場合は、警告が表示されます。Docker コンテナー内で実行する localhost 以外で Kestrel が受信トラフィックを待機できるようにするには.UseUrls() が必要です。完了すると、一般的なコードは次のようになります。
+
 ```
 public class Program
 {
@@ -39,31 +40,41 @@ public class Program
     }
 }
 ```
+
 UseUrls() が WebHost で受信 URL トラフィックを待機するように構成します。[Visual Studio 用 Docker ツール](http://aka.ms/DockerToolsForVS)により、dockerfile.debug/release mode の環境変数が次のように構成されます。
+
 ```
 # Configure the listening port to 80
 ENV ASPNETCORE_SERVER.URLS http://*:80
 ```
+
 ## ボリューム マッピングが機能しない
 編集と更新の機能を有効にするには、プロジェクトのソース コードがコンテナー内の .app フォルダーで共有されるように、ボリューム マッピングを構成します。 ホスト コンピューター上でファイルが変更されると、コンテナーの /app ディレクトリは同じディレクトリを使用します。docker-compose.debug.yml では、次の構成によりボリューム マッピングが有効になります。
+
 ```
     volumes:
       - ..:/app
 ```
+
 ボリューム マッピングが機能しているかどうかをテストするには、次のコマンドを試してください。
 
 **Windows から**
+
 ```
 docker run -it -v /c/Users/Public:/wormhole busybox
 cd wormhole
 / # ls
 ```
+
 ユーザー/パブリック フォルダーのディレクトリ一覧が表示されます。/C/ユーザー/パブリック フォルダーが空でないにもかかわらず、ファイルが表示されない場合は、ボリューム マッピングが正しく構成されていません。
+
 ```
 bin       etc       proc      sys       usr       wormhole
 dev       home      root      tmp       var
 ```
+
 ワームホール ディレクトリに移動して、`/c/Users/Public` ディレクトリの内容を確認します。
+
 ```
 / # cd wormhole/
 /wormhole # ls
@@ -72,6 +83,7 @@ Desktop          Host             NuGet.Config     a.txt
 Documents        Libraries        Pictures         desktop.ini
 /wormhole #
 ```
+
 **注:** *Linux VM を使用する場合、コンテナーのファイル システムでは大文字と小文字が区別されます*。
 
 内容が表示されない場合は、以下を試します。
@@ -92,10 +104,10 @@ Documents        Libraries        Pictures         desktop.ini
 
 Microsoft Edge ブラウザーを使用している場合、IP アドレスがセキュリティで保護されていないと見なされるため、サイトが表示されないことがあります。この問題を解決するには、次の手順を実行します。
 1. Windows の [ファイル名を指定して実行] ボックスに「`Internet Options`」と入力します。
-2. **[インターネット オプション]** が表示されたらタップします。 
-2. **[セキュリティ]** タブをタップします。
+2. **[インターネット オプション]** が表示されたら選択します。 
+2. **[セキュリティ]** タブを選択します。
 3. **[ローカル イントラネット]** ゾーンを選択します。
-4. **[サイト]** をタップします。 
+4. **[サイト]** を選択します。 
 5. 一覧に仮想マシンの IP (この場合は Docker ホスト) を追加します。 
 6. Edge でページを更新すると、サイトが実行されていることがわかります。 
 7. この問題の詳細については、Scott Hanselman のブログ記事「[Microsoft Edge can't see or open VirtualBox-hosted local web sites (VirtualBox にホストされたローカル Web サイトを Microsoft Edge で表示したり開いたりできない)](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx)」を参照してください。 
@@ -107,7 +119,8 @@ Microsoft Edge ブラウザーを使用している場合、IP アドレスが�
 
 これは、`docker-compose-up` の実行中のエラーであると考えられます。このエラーを表示するには、次の手順を実行します。
 
-1. ファイル `Properties\launchSettings.json` を開きます。Docker エントリを見つけます。
+1. `Properties\launchSettings.json` ファイルを開きます。
+1. Docker エントリを見つけます。
 1. 次の内容で始まる行を見つけます。
 
     "commandLineArgs": "-ExecutionPolicy RemoteSigned …”
@@ -116,4 +129,4 @@ Microsoft Edge ブラウザーを使用している場合、IP アドレスが�
 
 	"commandLineArgs": "-noexit -ExecutionPolicy RemoteSigned …”
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

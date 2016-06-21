@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/05/2016"
+   ms.date="06/02/2016"
    ms.author="elfish;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse でのデータベースのバックアップと復元 (Azure ポータル)
@@ -30,8 +30,6 @@ Azure SQL Data Warehouse でデータベースを復元するための Azure ポ
 
 - ライブ データベースの復元
 - 削除されたデータベースの復元
-- アクセスできないデータベースを地理的に異なる Azure リージョンから復元
-
 
 ## 開始する前に
 
@@ -63,16 +61,6 @@ SQL Database の DTU 容量を確認するSQL Data Warehouse では、論理 SQL
 6. データベースの復元処理が開始され、**[通知]** を使用して処理を監視することができます。
 
 
-## Azure 地理的リージョンからの復元
-
-geo リストアを実行するには:
-
-1. [Azure ポータル][]にログインします
-2. 画面の左側にある **[新規]** を選択し、**[データ + ストレージ]**、**[SQL Data Warehouse]** の順に選択します。
-3. ソースとして **[バックアップ]** を選択し、復元する geo 冗長バックアップを選択します。
-4. データベースのプロパティの残りの部分を指定して **[作成]** をクリックします。
-5. データベースの復元処理が開始され、**[通知]** を使用して処理を監視することができます
-
 ## 次のステップ
 詳細については、[Azure SQL Database のビジネス継続性の概要][]および[管理の概要][]に関するページをご覧ください。
 
@@ -80,7 +68,6 @@ geo リストアを実行するには:
 
 <!--Article references-->
 [Azure SQL Database のビジネス継続性の概要]: sql-database-business-continuity.md
-[Finalize a recovered database]: sql-database-recovered-finalize.md
 [How to install and configure Azure PowerShell]: powershell-install-configure.md
 [管理の概要]: sql-data-warehouse-overview-manage.md
 
@@ -92,4 +79,4 @@ geo リストアを実行するには:
 <!--Other Web references-->
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

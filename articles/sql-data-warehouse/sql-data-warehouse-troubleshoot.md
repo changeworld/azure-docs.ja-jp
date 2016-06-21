@@ -1,6 +1,6 @@
 <properties
-   pageTitle="トラブルシューティング |Microsoft Azure"
-   description="SQL Data Warehouse のトラブルシューティングを行います。"
+   pageTitle="Azure SQL Data Warehouse のトラブルシューティング | Microsoft Azure"
+   description="Azure SQL Data Warehouse のトラブルシューティングを行います。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="sonyam"
@@ -16,8 +16,8 @@
    ms.date="05/15/2016"
    ms.author="mausher;sonyama;barbkess"/>
 
-# トラブルシューティング
-次のトピックでは、Azure SQL Data Warehouse で発生するいくつかの一般的な問題を示します。
+# Azure SQL Data Warehouse のトラブルシューティング
+このトピックでは、Azure SQL Data Warehouse で発生するいくつかの一般的な問題を示します。
 
 ## 接続
 一般的な接続に関する問題は次のとおりです。
@@ -33,13 +33,13 @@ SQL Data Warehouse では、[Visual Studio 2013 または 2015][] を使用し�
 
 ## クエリのパフォーマンス
 
-SQL Data Warehouse で最適なクエリ パフォーマンスを実現するために、データベース設計で実行できることは複数あります。クエリを実行する方法を把握するには、まず、[クエリを監視する方法][]に関する記事をご覧ください。[SQL Data Warehouse をスケーリング][]して、コンピューティング能力をクエリに追加するだけで、クエリをより高速に実行できる場合があります。こうした最適化の方法の多くは、「[SQL Data Warehouse のベスト プラクティス][]」で確認することができます。
+SQL Data Warehouse で最適なクエリ パフォーマンスを実現するために、データベース設計で実行できることは複数あります。クエリを実行する方法を把握するには、まず、[クエリを監視する方法][]に関する記事をご覧ください。[SQL Data Warehouse をスケーリング][]して、コンピューティング能力をクエリに追加するだけで、クエリをより高速に実行できる場合があります。こうした最適化の方法の多くは、[SQL Data Warehouse のベスト プラクティス][]に関する記事で確認することができます。
 
 クエリのパフォーマンスに関する問題の原因として最も一般的なものをいくつか次に示します。
 
 ### 統計
 
-テーブルの[統計][]には、データベースの列または列の組み合わせの値の、範囲と頻度に関する情報が含まれます。クエリ エンジンは、これらの統計情報を使用してクエリの実行を最適化し、クエリのパフォーマンスを向上させます。SQL Server や SQL DB とは異なり、SQL Data Warehouse では、統計情報が自動的には作成または更新されません。このため、どのテーブルも、統計情報を手動で管理する必要があります。統計情報を管理し、統計情報を必要とするテーブルを特定する方法については、「[SQL Data Warehouse での統計の管理][]」をご覧ください。
+テーブルの[統計][]には、データベースの列または列の組み合わせの値の、範囲と頻度に関する情報が含まれます。クエリ エンジンは、これらの統計情報を使用してクエリの実行を最適化し、クエリのパフォーマンスを向上させます。SQL Server や SQL Database とは異なり、SQL Data Warehouse では、統計情報が自動的には作成または更新されません。このため、どのテーブルも、統計情報を手動で管理する必要があります。統計情報を管理し、統計情報を必要とするテーブルを特定する方法については、「[SQL Data Warehouse での統計の管理][]」をご覧ください。
 
 ### テーブル設計
 
@@ -109,7 +109,7 @@ SQL Data Warehouse ソリューションを最適化する方法の詳細につ�
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse をスケーリング]: ./sql-data-warehouse-overview-scalability.md
+[SQL Data Warehouse をスケーリング]: ./sql-data-warehouse-manage-compute-overview.md
 [テーブル設計]: ./sql-data-warehouse-develop-table-design.md
 [テーブルに適したハッシュ分散キー]: ./sql-data-warehouse-develop-hash-distribution-key
 [development overview]: ./sql-data-warehouse-overview-develop.md
@@ -126,4 +126,4 @@ SQL Data Warehouse ソリューションを最適化する方法の詳細につ�
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

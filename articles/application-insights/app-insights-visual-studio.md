@@ -65,7 +65,11 @@ Application Insights サーバー テレメトリが生成されると、診断�
 スタック トレースを取得するには、例外をクリックします。Visual Studio でアプリのコードが開かれている場合は、コードの該当する行をスタック トレースからクリックできます。
 
 
-![](./media/app-insights-visual-studio/17.png)
+![Exception stack trace](./media/app-insights-visual-studio/17.png)
+
+さらに、各メソッドの上にある CodeLens 行には、Application Insights によって記録された過去 24 時間の例外の数が表示されます。
+
+![Exception stack trace](./media/app-insights-visual-studio/21.png)
 
 
 ## ローカル監視
@@ -83,8 +87,6 @@ Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレ�
 
  * アプリからポータルにテレメトリを送信している場合でも、[検索] ウィンドウの [設定] に用意されているオプションでローカルの診断を検索できます。
  * ポータルへのテレメトリの送信を中止するには、ApplicationInsights.config から `<instrumentationkey>...` 行をコメント アウトしてください。もう一度ポータルにテレメトリを送信する準備ができたら、コメント解除します。
-
-
 
 
 
@@ -106,4 +108,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

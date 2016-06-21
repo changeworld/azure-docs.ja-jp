@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # 月間推定コスト傾向
@@ -28,15 +28,15 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
+1. **[参照]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
-1. ラボの一覧で目的のラボをタップします。
+1. ラボの一覧で目的のラボを選択します。
 
-1. **[設定]** をタップします。
+1. **[設定]** を選択します。
 
 	![Settings](./media/devtest-lab-configure-cost-management/lab-blade-settings.png)
 
-1. ラボの **[設定]** ブレードの **[Cost Management]** (コスト管理) で、**[しきい値]** をクリックします。
+1. ラボの **[設定]** ブレードの **[Cost Management (コスト管理)]** で、**[しきい値]** をクリックします。
 
 	![メニュー](./media/devtest-lab-configure-cost-management/menu.png)
  
@@ -69,4 +69,4 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
 - [Marketplace イメージを構成する](./devtest-lab-configure-marketplace-images.md) - DevTest ラボでは、Azure Marketplace イメージを基にした新しい VM を作成することができます。この記事では、ラボで新しい VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。
 - [ラボで VM を作成する](./devtest-lab-add-vm-with-artifacts.md) - ベース イメージ (カスタムまたは Marketplace) から新しい VM を作成する方法と、VM でアーティファクトを操作する方法について説明します。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

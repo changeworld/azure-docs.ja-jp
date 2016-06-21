@@ -131,7 +131,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 
 ##<a name="SSMS"></a>SQL Server Management Studio に接続し、混合モード認証を有効にする
 
-ドメイン環境がない場合、SQL Server Database エンジンで Windows 認証を使用することはできません。別のコンピューターからデータベース エンジンに接続するには、混合モード認証用に SQL Server を構成します。混合モード認証では、SQL Server 認証と Windows 認証の両方が許可されますリーダー モジュールを使用して [Azure Machine Learning Studio](https://studio.azureml.net) で SQL Server VM データベースからデータを直接取り込むには、SQL 認証モードが必要です。
+ドメイン環境がない場合、SQL Server Database エンジンで Windows 認証を使用することはできません。別のコンピューターからデータベース エンジンに接続するには、混合モード認証用に SQL Server を構成します。混合モード認証では、SQL Server 認証と Windows 認証の両方が許可されますデータのインポート モジュールを使用して [Azure Machine Learning Studio](https://studio.azureml.net) で SQL Server VM データベースからデータを直接取り込むには、SQL 認証モードが必要です。
 
 1.  リモート デスクトップを使用して仮想マシンに接続している間に、Windows **[検索]** ウィンドウを使用して「**SQL Server Management Studio** (SMSS)」と入力します。クリックして SQL Server Management Studio (SSMS) を開始します。SSMS のショートカットをデスクトップ上に作成して、将来使用することができます。
 
@@ -251,9 +251,9 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 ##<a name="amlconnect"></a>Azure Machine Learning からデータベース エンジンに接続します
 
-Cortana Analytics Process の後半に、[Azure Machine Learning Studio](https://studio.azureml.net) を使用して機械学習モデルを構築し、デプロイします。トレーニングまたはスコアリングのために SQL Server VM データベースから Azure Machine Learning にデータを直接取り込むには、[Azure Machine Learning Studio](https://studio.azureml.net) の新しい実験で**リーダー** モジュールを使用します。このトピックの詳細は Cortana Analytics Process のガイド リンクに記載されています。概要については、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
+Cortana Analytics Process の後半に、[Azure Machine Learning Studio](https://studio.azureml.net) を使用して機械学習モデルを構築し、デプロイします。トレーニングまたはスコアリングのために SQL Server VM データベースから Azure Machine Learning にデータを直接取り込むには、[Azure Machine Learning Studio](https://studio.azureml.net) の新しい実験で**データのインポート** モジュールを使用します。このトピックの詳細は Cortana Analytics Process のガイド リンクに記載されています。概要については、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
 
-2.	[リーダー モジュール](https://msdn.microsoft.com/library/azure/dn905997.aspx)の **[プロパティ]** ウィンドウで、**[データ ソース]** ドロップダウン リストから **[Azure SQL Database]** を選択します。
+2.	[データのインポート モジュール](https://msdn.microsoft.com/library/azure/dn905997.aspx)の **[プロパティ]** ウィンドウで、**[データ ソース]** ドロップダウン リストから **[Azure SQL Database]** を選択します。
 
 3.	**[データベース サーバー名]** テキスト ボックスに、「`tcp:<DNS name of your virtual machine>,1433`」と入力します。
 
@@ -261,7 +261,7 @@ Cortana Analytics Process の後半に、[Azure Machine Learning Studio](https:/
 
 5.	**[サーバーのユーザー アカウント パスワード]** テキスト ボックスに SQL ユーザーのパスワードを入力します。
 
-	![Azure ML リーダー][13]
+	![Azure ML データのインポート][13]
 
 ##<a name="shutdown"></a>使用されていないときは仮想マシンをシャット ダウンし割り当てを解除する
 
@@ -306,4 +306,4 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

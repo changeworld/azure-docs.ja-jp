@@ -30,7 +30,7 @@ Stream Analytics では、他のクラウドベースのテクノロジと同様
 
 このビジュアライザーにアクセスするには、Stream Analytics ジョブの [設定] ブレードで [診断図] をクリックします。
 
-![stream-analytics-troubleshoot-visualization-diagnosis-diagram](./media/stream-analytics-troubleshoot-visualization/stream-analytics-troubleshoot-visualization-diagnosis-diagram.png)
+![stream-analytics-troubleshoot-visualization-diagnosis-diagram](./media/stream-analytics-troubleshoot-visualization/stream-analytics-troubleshoot-visualization-diagnosis-diagram1.png)
 
 次に示すように、すべての入力と出力が色分けされ、そのコンポーネントの現在の状態が示されます。
 
@@ -51,4 +51,4 @@ Stream Analytics では、他のクラウドベースのテクノロジと同様
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -120,7 +120,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 
 ###<a name="sql-aml"></a>Azure Machine Learning への接続
 
-新しく生成された特徴は、既存のテーブルに列として追加するか、新しいテーブルに格納して機械学習の元のテーブルと結合することができます。特徴は生成できるほか、作成済みであれば、次に示すように、Azure Machine Learning の[データのインポート][reader] モジュールを使用してアクセスすることができます。
+新しく生成された特徴は、既存のテーブルに列として追加するか、新しいテーブルに格納して機械学習の元のテーブルと結合することができます。特徴は生成できるほか、作成済みであれば、次に示すように、Azure Machine Learning の[データのインポート][import-data] モジュールを使用してアクセスすることができます。
 
 ![Azure ML リーダー][1]
 
@@ -149,7 +149,7 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 
 
 <!-- Module References -->
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

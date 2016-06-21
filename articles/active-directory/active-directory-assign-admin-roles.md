@@ -28,11 +28,15 @@
 
 - **グローバル管理者**: すべての管理機能にアクセスできます。Azure アカウントにサインアップしたユーザーがグローバル管理者になります。他の管理者ロールを割り当てることができるのはグローバル管理者だけです。会社に複数のグローバル管理者が存在してかまいません。
 
+	> [AZURE.NOTE] Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "会社の管理者" として識別されます。
+
 - **パスワード管理者**: パスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。パスワード管理者がリセットできるのは、ユーザーと他のパスワード管理者のパスワードだけです。
 
-- **サービス管理者**: サービス要求の管理とサービス正常性の監視を行います。
+	> [AZURE.NOTE] Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "ヘルプデスクの管理者" として識別されます。
 
-	> [AZURE.NOTE] サービス管理者のロールをユーザーに割り当てるには、グローバル管理者がまずサービスで管理権限をユーザーに割り当て、次に Azure クラシック ポータルでサービス管理者ロールをそのユーザーに割り当ててください。
+- **サービス管理者**: サービス要求の管理とサービス正常性の監視を行います。
+> [AZURE.NOTE]
+> サービス管理者のロールをユーザーに割り当てるには、グローバル管理者がまずサービスで管理権限をユーザーに割り当て、次に Azure クラシック ポータルでサービス管理者ロールをそのユーザーに割り当ててください。
 
 - **ユーザー管理者**: パスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、およびサービス要求の管理を行います。ユーザー管理の管理者の権限には、いくつかの制限が適用されます。たとえば、この管理者は、グローバル管理者を削除することも、他の管理者を作成することもできません。また、課金管理者、グローバル管理者、サービス管理者のパスワードをリセットすることもできません。
 
@@ -90,11 +94,11 @@
 
 ## 次のステップ
 
-- Azure サブスクリプションの管理者を変更する方法の詳細については、「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を参照してください。
+- Azure サブスクリプションの管理者を変更する方法の詳細については、「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を参照してください
 
-- Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)」を参照してください。
+- Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)」を参照してください
 
-- Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください。
+- Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください
 
 - [ユーザーの管理](active-directory-create-users.md)
 
@@ -102,4 +106,4 @@
 
 - [グループの管理](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -14,11 +14,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="04/04/2016"
+   ms.date="06/07/2016"
    ms.author="iainfou"/>
 
 # Azure ポータルでの完全修飾ドメイン名の作成
+Resource Manager デプロイメント モデルを使用して [Azure ポータル](https://portal.azure.com)で仮想マシン (VM) を作成すると、仮想マシン用のパブリック IP リソースが自動的に作成されます。この IP アドレスを使用して、VM にリモートでアクセスできます。ポータルでは、既定では[完全修飾ドメイン名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) が作成されませんが、VM の作成後に非常に簡単に作成できます。この記事では、DNS 名または FQDN を作成する手順を示します。
 
 [AZURE.INCLUDE [virtual-machines-common-portal-create-fqdn](../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-<!---HONumber=AcomDC_0601_2016-->
+リモート デスクトップ プロトコル (RDP) 用など、この DNS 名を使用して、VM にリモートで接続できるようになります。
+
+## 次のステップ
+これで、VM がパブリック IP と DNS 名を持つようになったため、IIS、SQL、SharePoint などの、共通のアプリケーション フレームワークやサービスをデプロイできるようになりました。
+
+Azure デプロイメントの構築に関するヒントについては、[Resource Manager の使用](../resource-group-overview.md)に関する記事から確認することもできます。
+
+<!---HONumber=AcomDC_0608_2016-->

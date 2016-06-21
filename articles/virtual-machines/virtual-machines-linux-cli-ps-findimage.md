@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="03/14/2016"
+   ms.date="06/06/2016"
    ms.author="rasquill"/>
 
 # CLI または Powershell を使用した Azure での Linux 仮想マシン イメージへの移動と選択
@@ -27,12 +27,15 @@
 
 | 発行元 | プラン | SKU |
 |:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
-| OpenLogic | CentOS | 7 |
+| RedHat | RHEL | 7\.2 |
+| credativ | Debian | 8 | 
+| SUSE | openSUSE | 13\.2 |
+| SUSE | SLES | 12-SP1 |
 | OpenLogic | CentOS | 7\.1 |
-| Canonical | UbuntuServer | 12\.04.5-LTS |
-| Canonical | UbuntuServer | 14\.04.2-LTS |
+| Canonical | UbuntuServer | 14\.04.4-LTS |
+| CoreOS | CoreOS | 安定版 |
 
 
 [AZURE.INCLUDE [virtual-machines-common-cli-ps-findimage](../../includes/virtual-machines-common-cli-ps-findimage.md)]
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0608_2016-->

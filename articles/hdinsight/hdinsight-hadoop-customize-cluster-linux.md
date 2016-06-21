@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="06/03/2016"
 	ms.author="larryfr"/>
 
 # スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
@@ -22,6 +22,8 @@
 HDInsight には、クラスターをカスタマイズするカスタム スクリプトを呼び出す**スクリプト アクション**という構成オプションがあります。こうしたスクリプトは、クラスターの作成時、または既に実行されているクラスターで使用できるほか、その他のコンポーネントのインストールや構成設定の変更にも使用されます。
 
 > [AZURE.NOTE] 既に実行されているクラスター上でスクリプト アクションを使用する機能は、Linux ベースの HDInsight クラスターでのみ使用できます。Windows ベースのクラスターでスクリプト アクションを使用する方法の詳細については、「[スクリプト アクションを使用して Windows ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」を参照してください。
+
+スクリプト アクションは、HDInsight アプリケーションとして Azure Marketplace にも発行することができます。このドキュメントの例では、PowerShell と .NET SDK からスクリプト アクション コマンドを使用して HDInsight アプリケーションをインストールする方法を示します。HDInsight のアプリケーションの詳細については、「[Azure Marketplace への HDInsight アプリケーションの発行](hdinsight-apps-publish-applications.md)」を参照してください。
 
 ## スクリプト アクションについて
 
@@ -33,9 +35,11 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
     
     * パブリックに読み取り可能な URI (Azure BLOB、GitHub、OneDrive、Dropbox など)。
     
-    BLOB コンテナーに保存されたスクリプト用の (パブリックに読み取り可能な) URI の例については、「[スクリプト アクションのスクリプト例](#example-script-action-scripts)」セクションを参照してください。
+    BLOB コンテナーに保存されたスクリプト用の (パブリックに読み取り可能な) URI の例については、「[スクリプト アクションのサンプル スクリプト](#example-script-action-scripts)」セクションを参照してください。
 
 * ヘッド ノードや worker ノードなど、__特定のノード タイプでのみ実行__できます。
+
+    > [AZURE.NOTE] HDInsight Premium で使用する場合は、エッジ ノードでスクリプトを使用するように指定できます。
 
 * __保存__することも、__アドホック__に使うこともできます。
 
@@ -140,6 +144,8 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 ### Azure リソース マネージャーのテンプレートからスクリプト アクションを使用する
 
 このセクションでは、Azure リソース マネージャー (ARM) テンプレートを使用して HDInsight クラスターを作成します。また、スクリプト アクションを使用してクラスターにカスタム コンポーネント (この例では R) をインストールします。このセクションでは、スクリプト アクションを使用してクラスターを作成する ARM テンプレートの例を示します。
+
+> [AZURE.NOTE] このセクションの手順では、スクリプト アクションを使ってクラスターを作成する方法について示します。HDInsight アプリケーションを使用して ARM テンプレートからクラスターを作成する例については、「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。
 
 #### 開始する前に
 
@@ -468,7 +474,8 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
         $saName = "<ScriptActionName>"                  # Name of the script action
         $saURI = "<URI to the script>"                  # The URI where the script is located
         $nodeTypes = "headnode", "workernode"
-
+        
+    > [AZURE.NOTE] HDInsight Premium のクラスターを使用する場合は、`"edgenode"` の nodetype を使用してエッジ ノードでスクリプトを実行できます。
 
 2. 次のコマンドを使用して、スクリプトをクラスターに適用します。
 
@@ -593,6 +600,8 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 .NET SDK を使用してクラスターからスクリプトの履歴を取得し、スクリプトを昇格または降格する例については、[https://github.com/Azure-Samples/hdinsight-dotnet-script-action](https://github.com/Azure-Samples/hdinsight-dotnet-script-action) を参照してください。
 
+> [AZURE.NOTE] この例では、.NET SDK を使用して HDInsight アプリケーションをインストールする方法も示します。
+
 ## トラブルシューティング
 
 Ambari の Web UI を使用すると、スクリプト アクションによってログに記録された情報を表示できます。スクリプトを使用してクラスターを作成しているときに、そのスクリプトで発生したエラーが原因でクラスターの作成に失敗した場合は、クラスターに関連付けられた既定のストレージ アカウントのログを利用することもできます。このセクションでは、これら両方のオプションを使用してログを取得する方法について説明します。
@@ -690,4 +699,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター作成時の段階"
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -1,11 +1,11 @@
 <properties 
 	pageTitle="Azure App Service での Web アプリの構成" 
 	description="Azure App Service での Web アプリの構成方法" 
-	services="app-service" 
+	services="app-service\web" 
 	documentationCenter="" 
-	authors="erikre" 
+	authors="rmcmurray" 
 	manager="wpickett" 
-	editor="jimbe"/>
+	editor=""/>
 
 <tags 
 	ms.service="app-service" 
@@ -13,23 +13,22 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/26/2016" 
-	ms.author="tdykstra"/>
-
+	ms.date="06/02/2016" 
+	ms.author="robmcm"/>
 
 # Azure App Service での Web アプリの構成 #
 
-このトピックでは、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で Web アプリを構成する方法について説明します。
+このトピックでは、[Azure ポータル]で Web アプリを構成する方法について説明します。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## アプリケーションの設定
 
-1. [Azure ポータル](https://portal.azure.com)で、Web アプリのブレードを開きます。
+1. [Azure ポータル]で、Web アプリのブレードを開きます。
 2. **[すべての設定]** をクリックします。
 3. **[アプリケーションの設定]** をクリックします。
 
-![](./media/web-sites-configure/configure01.png)
+![アプリケーションの設定][configure01]
 
 **[アプリケーション設定]** ブレードには、いくつかのカテゴリにグループ化された設定があります。
 
@@ -46,19 +45,17 @@
 
 <a name="platform"></a> **プラットフォーム**。Web アプリが 32 ビット環境で実行されるか 64 ビット環境で実行されるかを選択します。64 ビット環境では Basic モードまたは Standard モードを使用する必要があります。Free モードと Shared モードは常に 32 ビット環境で実行されます。
 
-**[Web ソケット]**。WebSocket プロトコルを有効にするには、**[オン]** を設定します (たとえば、Web アプリで [ASP.NET SignalR](http://www.asp.net/signalr) または [socket.io](web-sites-nodejs-chat-app-socketio.md) を使用する場合)。
+**[Web ソケット]**。WebSocket プロトコルを有効にするには、**[オン]** を設定します (たとえば、Web アプリで [ASP.NET SignalR] または [socket.io] を使用する場合)。
 
 <a name="alwayson"></a>**常時接続**。既定では、アイドル状態がしばらく続くと Web アプリはアンロードされます。これにより、システムではリソースを節約できます。基本モードと標準モードでは、**[常時接続]** を有効にすると、アプリが常に読み込まれた状態になります。アプリで継続的な Web ジョブを実行する場合は、**[常時接続]** を有効にする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。
 
-**マネージ パイプライン バージョン**。IIS [パイプライン モード](http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application)を設定します。この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合] \(既定) のままにしておきます。
+**マネージ パイプライン バージョン**。IIS [パイプライン モード]を設定します。この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合] \(既定) のままにしておきます。
 
 **自動スワップ**。デプロイ スロットの自動スワップを有効にした場合、App Service は、スロットに対して更新をプッシュしたときに、Web アプリを運用環境に自動的にスワップします。詳細については、[Azure App Service の Web アプリに対するステージング スロットへのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
-
 
 ### デバッグ
 
 **リモート デバッグ**。リモート デバッグを有効にします。これを有効にすると、Visual Studio でリモート デバッガーを使用して、Web アプリに直接接続できます。リモート デバッグは 48 時間有効です。
-
 
 ### アプリケーション設定
 
@@ -76,10 +73,10 @@
 
 PHP、Python、Java、および Node アプリケーションの場合、実行時にこれらの設定が環境変数として使用できるようになり、環境変数にはプレフィックスとして接続の種類が付加されます。環境変数使用されるプレフィックスは次のとおりです。
 
-- SQL Server: SQLCONNSTR\_
-- MySQL: MYSQLCONNSTR\_
-- SQL Database: SQLAZURECONNSTR\_
-- カスタム: CUSTOMCONNSTR\_
+- SQL Server: `SQLCONNSTR_`
+- MySQL: `MYSQLCONNSTR_`
+- SQL Database: `SQLAZURECONNSTR_`
+- カスタム: `CUSTOMCONNSTR_`
 
 たとえば、MySql の接続文字列が `connectionstring1` という名前であれば、`MYSQLCONNSTR_connectionString1` という環境変数でアクセスされます。
 
@@ -129,52 +126,67 @@ Web アプリでは、静的コンテンツを提供する代わりに URL に�
 3. ユーザー名とパスワードを入力します。
 4. **[保存]** をクリックします。
 
-![](./media/web-sites-configure/configure03.png)
-
+![デプロイメント資格情報の設定][configure03]
 
 完全な FTP ユーザー名は "app\\username" です。*app* は Web アプリの名前です。username は Web アプリ ブレードの **[Essentials]** の下に表示されます。
 
-![](./media/web-sites-configure/configure02.png)
+![FTP デプロイ資格情報][configure02]
 
 ## その他の 構成タスク
 
 ### SSL 
 
-基本モードまたは標準モードでは、カスタム ドメインの SSL 証明書をアップロードすることができます。詳細については、[Web アプリに対する HTTPS の有効化](web-sites-configure-ssl-certificate.md)に関するページをご覧ください。
+基本モードまたは標準モードでは、カスタム ドメインの SSL 証明書をアップロードすることができます。詳細については、Web アプリに対する HTTPS の有効化に関するページをご覧ください。
 
 アップロードされた証明書を表示するには、**[すべての設定]** > **[カスタム ドメインと SSL]** をクリックします。
 
 ### ドメイン名
 
-Web アプリのカスタム ドメイン名を追加します。詳細については、[Azure App Service での Web アプリのカスタム ドメイン名の構成](web-sites-custom-domain-name.md)に関するページをご覧ください。
+Web アプリのカスタム ドメイン名を追加します。詳細については、Azure App Service での Web アプリのカスタム ドメイン名の構成に関するページをご覧ください。
 
 ドメイン名を表示するには、**[すべての設定]** > **[カスタム ドメインと SSL]** をクリックします。
 
 ### デプロイメント
 
-- 継続的なデプロイを設定します。「[Azure App Service での Git を使用した Web Apps のデプロイ](web-sites-publish-source-control.md)」を参照してください。
-- デプロイメント スロット:[Azure App Service での Web Apps のステージング環境へのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
+- 継続的なデプロイを設定します。「[Azure App Service での Git を使用した Web Apps のデプロイ]」を参照してください。
+- デプロイメント スロット:[Azure App Service での Web Apps のステージング環境へのデプロイ]に関するページをご覧ください。
 
 デプロイ スロットを表示するには、**[すべて設定]** > **[デプロイ スロット]** をクリックします。
-
 
 ### 監視
 
 基本モードまたは標準モードでは、最大 3 つの地理的に分散した場所から HTTP または HTTPS エンドポイントの可用性をテストすることができます。HTTP 応答コードがエラー (4xx または 5xx) である場合、または、応答に 30 秒以上かかる場合、監視テストは失敗します。すべての指定した場所から監視テストが成功した場合、エンドポイントは利用可能と見なされます。
 
-詳細については、「[方法: Web エンドポイントの状態を監視する](http://go.microsoft.com/fwLink/?LinkID=279906&clcid=0x409)」をご覧ください。
+詳細については、「[方法: Web エンドポイントの状態を監視する]」をご覧ください。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用]に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 次のステップ
 
-- [カスタム ドメイン名の構成](web-sites-custom-domain-name.md)
-- [HTTPS の有効化](web-sites-configure-ssl-certificate.md)
-- [Azure App Service での Web アプリの拡張](web-sites-scale.md)
-- [Azure App Service での Web Apps の監視の基本](web-sites-monitor.md)
+- [Azure App Service のカスタム ドメイン名の構成]
+- [アプリに対する HTTPS を Azure App Service で有効にする]
+- [Azure App Service での Web アプリの拡張]
+- [Azure App Service での Web Apps の監視の基本]
 
-## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
- 
+<!-- URL List -->
 
-<!---HONumber=AcomDC_0518_2016-->
+[ASP.NET SignalR]: http://www.asp.net/signalr
+[Azure ポータル]: https://portal.azure.com/
+[Azure App Service のカスタム ドメイン名の構成]: ./web-sites-custom-domain-name.md
+[Azure App Service での Web Apps のステージング環境へのデプロイ]: ./web-sites-staged-publishing.md
+[アプリに対する HTTPS を Azure App Service で有効にする]: ./web-sites-configure-ssl-certificate.md
+[方法: Web エンドポイントの状態を監視する]: http://go.microsoft.com/fwLink/?LinkID=279906
+[Azure App Service での Web Apps の監視の基本]: ./web-sites-monitor.md
+[パイプライン モード]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
+[Azure App Service での Web アプリの拡張]: ./web-sites-scale.md
+[socket.io]: ./web-sites-nodejs-chat-app-socketio.md
+[App Service の試用]: http://go.microsoft.com/fwlink/?LinkId=523751
+[Azure App Service での Git を使用した Web Apps のデプロイ]: ./web-sites-publish-source-control.md
+
+<!-- IMG List -->
+
+[configure01]: ./media/web-sites-configure/configure01.png
+[configure02]: ./media/web-sites-configure/configure02.png
+[configure03]: ./media/web-sites-configure/configure03.png
+
+<!---HONumber=AcomDC_0608_2016-->

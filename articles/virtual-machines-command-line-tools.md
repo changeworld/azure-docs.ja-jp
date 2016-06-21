@@ -1880,13 +1880,15 @@ Service Bus 名前空間が有効で利用可能であることを確認しま�
 + **-d** または **--description** &lt;description>: ストレージ アカウントの説明。
 + **-l** または **--location** &lt;name>: ストレージ アカウントを作成するリージョン。
 + **-a** または **--affinity-group** &lt;name>: ストレージ アカウントと関連付けるアフィニティ グループ。
-+ **--type**: 作成するアカウントの種類を示します。冗長性オプション付きの Standard Storage (LRS、ZRS、GRS、RAGRS) または Premium Storage (PLRS)。
++ **--kind**: アカウントの種類: ストレージまたはストレージ BLOB。 
++ **--sku-name**: 作成するアカウントの種類を示します。冗長性オプション付きの Standard Storage (LRS、ZRS、GRS、RAGRS) または Premium Storage (PLRS)。
++ **--access-tier**: ストレージ層を指定します。ホットまたはクール。
 
 **storage account set [options] <name>**
 
 このコマンドは、指定されたストレージ アカウントを更新します。
 
-	~$ azure storage account set mybasestorage --type GRS
+	~$ azure storage account set mybasestorage --kind Storage --sku-name GRS
 	info:    Executing command storage account set
 	+ Updating storage account
 	info:    storage account set command OK
@@ -1896,7 +1898,8 @@ Service Bus 名前空間が有効で利用可能であることを確認しま�
 + **-e** または **--label** &lt;label>: ストレージ アカウントのラベル。
 + **-d** または **--description** &lt;description>: ストレージ アカウントの説明。
 + **-l** または **--location** &lt;name>: ストレージ アカウントを作成するリージョン。
-+ **--type**: アカウントの新しい種類を示します。冗長性オプション付きの Standard Storage (LRS、ZRS、GRS、RAGRS) または Premium Storage (PLRS)。
++ **--sku-name**: アカウントの新しい種類を示します。冗長性オプション付きの Standard Storage (LRS、ZRS、GRS、RAGRS) または Premium Storage (PLRS)。
++ **--access-tier**: ストレージ層を指定します。ホットまたはクール。
 
 **storage account delete [options] <name>**
 
@@ -2350,4 +2353,4 @@ Virtual Network の詳細を表示します。
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

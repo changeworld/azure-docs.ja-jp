@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/19/2016"
+   ms.date="06/13/2016"
    ms.author="cherylmc"/>
 
 
@@ -20,14 +20,16 @@
 
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、以下のセクションにある前提条件を満たしていることを確認する必要があります。
 
+[AZURE.INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
+
 ## Azure アカウント
 
 - 有効でアクティブな Microsoft Azure アカウント。これは ExpressRoute 回線のセットアップに必要です。ExpressRoute 回線は Azure サブスクリプション内のリソースです。Azure サブスクリプションは、Office 365 や CRM Online など、非 Azure Microsoft クラウド サービスに接続が制限される場合でも、要件となります。
 - アクティブな Office 365 サブスクリプション (Office 365 サービスを利用する場合)。詳細については、この記事の「[Office 365 固有の要件](#office-365-specific-requirements)」セクションを参照してください。
 
 ## 接続プロバイダー
-- [ExpressRoute 接続パートナー](expressroute-locations.md#partners)と連携して Microsoft クラウドに接続することができます。[3 とおりの方法](expressroute-introduction.md#howtoconnect)でオンプレミス ネットワークと Microsoft の間に接続をセットアップできます。 
-- プロバイダーが ExpressRoute 接続パートナーではない場合でも、[クラウド エクスチェンジ プロバイダー](expressroute-locations.md#nonpartners)を通じて Microsoft クラウドに接続できます。
+- [ExpressRoute 接続パートナー](expressroute-locations.md#partners)と連携して Microsoft Cloud に接続することができます。[3 とおりの方法](expressroute-introduction.md#howtoconnect)でオンプレミス ネットワークと Microsoft の間に接続をセットアップできます。 
+- プロバイダーが ExpressRoute 接続パートナーではない場合でも、[クラウド エクスチェンジ プロバイダー](expressroute-locations.md#nonpartners)を通じて Microsoft Cloud に接続できます。
 
 ## ネットワークの要件
 - **接続の冗長性**: プロバイダーとの物理接続に対する冗長性の要件はありません。Microsoft の要件では、[クラウド エクスチェンジへの物理接続が 1 つ](expressroute-faqs.md#onep2plink)しかない場合でも、Microsoft のルーターとピアリング ルーターの間に冗長 BGP セッションを設定することが必要です。 
@@ -63,4 +65,4 @@ ExpressRoute で CRM Online を有効にする予定がある場合は、以下�
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

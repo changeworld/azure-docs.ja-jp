@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="06/01/2016"
 	ms.author="tamram"/>
 
 # Azure Storage のレプリケーション
@@ -36,6 +36,7 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 | 1 次拠点に加えて 2 次拠点からもデータの読み取り可能 | いいえ | いいえ | いいえ | はい |
 | 個別のノードで保持されるデータ コピーの数 | 3 | 3 | 6 | 6 |
 
+さまざまな冗長オプションの料金情報については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
 
 ## ローカル冗長ストレージ
 
@@ -67,32 +68,8 @@ GRS が有効なストレージ アカウントでは、更新は最初にプラ
 
 > [AZURE.NOTE] GRS を使用すると、データ書き込み要求がセカンダリ リージョンに非同期にレプリケートされます。GRS を選択しても、プライマリ リージョンに対して実行される要求の待機時間には影響を与えない点に注意してください。ただし、非同期レプリケーションには遅延が伴うため、地域的な災害が発生した場合にデータをプライマリ リージョンから復旧できないと、セカンダリ リージョンにまだレプリケートされていない変更は失われる可能性があります。
  
-ストレージ アカウントの作成時に、アカウントのプライマリ リージョンを選択します。セカンダリ リージョンはプライマリ リージョンに基づいて決定され、変更することはできません。次の表に、プライマリ リージョンとセカンダリ リージョンのペアを示します。
+ストレージ アカウントの作成時に、アカウントのプライマリ リージョンを選択します。セカンダリ リージョンはプライマリ リージョンに基づいて決定され、変更することはできません。プライマリ リージョンとセカンダリ リージョンのペアに関する最新の情報については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」をご覧ください。
  
-| プライマリ | セカンダリ |
-|---------------------|---------------------|
-| 米国中北部 | 米国中南部 |
-| 米国中南部 | 米国中北部 |
-| 米国東部 | 米国西部 |
-| 米国西部 | 米国東部 |
-| 米国東部 2 | 米国中部 |
-| 米国中部 | 米国東部 2 |
-| 北ヨーロッパ | 西ヨーロッパ |
-| 西ヨーロッパ | 北ヨーロッパ |
-| 東南アジア | 東アジア |
-| 東アジア | 東南アジア |
-| 中国東部 | 中国北部 |
-| 中国北部 | 中国東部 |
-| 東日本 | 西日本 |
-| 西日本 | 東日本 |
-| ブラジル南部 | 米国中南部 |
-| オーストラリア東部 | オーストラリア南東部 |
-| オーストラリア南東部 | オーストラリア東部 |
-| インド南部 | インド中部 |
-| インド中部 | インド南部 |
-| 米国政府アイオワ州 | 米国政府バージニア州 |
-| 米国政府バージニア州 | 米国政府アイオワ州 |
-
 ## 読み取りアクセス geo 冗長ストレージ
 
 読み取りアクセス geo 冗長ストレージ (RA-GRS) では、GRS が提供する 2 つのリージョンにまたがるレプリケーションに加えて、2 次拠点のデータにも読み取り専用アクセスを提供することで、ストレージ アカウントの可用性が最大限に発揮されます。プライマリ リージョンでデータが使用不可能になった場合、アプリケーションはセカンダリ リージョンからデータを読み取ることができます。
@@ -101,10 +78,10 @@ GRS が有効なストレージ アカウントでは、更新は最初にプラ
 
 ## 次のステップ
 
+- [Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)
 - [Azure ストレージ アカウントについて](storage-create-storage-account.md)
 - [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)
 - [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)  
-- [RA-GRS を使用した Microsoft Azure ストレージ エミュレーター 3.1](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/08/microsoft-azure-storage-emulator-3-1-with-ra-grs.aspx)
 - [SOSP ペーパー - Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

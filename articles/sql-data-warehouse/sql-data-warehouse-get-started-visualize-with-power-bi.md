@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/18/2016"
+   ms.date="06/11/2016"
    ms.author="lodipalm;barbkess;sonyama" />
 
 # Power BI でデータを視覚化する
@@ -21,16 +21,18 @@
 > [AZURE.SELECTOR]
 - [Power BI][]
 - [Azure Machine Learning][]
+- [SQLCMD][] 
 
 このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
 
-> [AZURE.NOTE] このチュートリアルを完了するには、AdventureWorksDW サンプル データベースを事前に読み込まれている SQL Data Warehouse データベースが必要です。「[Create a SQL Data Warehouse (SQL Data Warehouse の作成)](sql-data-warehouse-get-started-provision.md)」では、作成方法が示されています。
->
-> SQL Data Warehouse データベースは既にあっても、サンプル データがない場合は、[サンプル データを手動で読み込む][]ことができます。
-
 > [AZURE.VIDEO azure-sql-data-warehouse-sample-data-and-powerbi]
 
-## AdventureWorksDW に接続する
+## 前提条件
+
+このチュートリアルを完了するには、AdventureWorksDW サンプル データベースが事前に読み込まれている SQL Data Warehouse が必要です。新しい SQL Data Warehouse を作成するときは、空のデータベースか AdventureWorks サンプル データを含むデータベースを作成できます。また、別のデータベースのバックアップを復元することもできます。サンプル データが事前に読み込まれた SQL Data Warehouse を作成する方法については、「[SQL Data Warehouse の作成][]」を参照してください。使用する SQL Data Warehouse が既にあってもサンプル データがない場合は、[サンプル データを手動で読み込む方法][]に関するページの手順に従ってください。
+
+
+## データベースへの接続
 
 Power BI を開き、AdventureWorksDW データベースに接続するには:
 
@@ -51,13 +53,13 @@ Power BI を開き、AdventureWorksDW データベースに接続するには:
 
     ![Power BI sign in][4]
 
-1. Power BI にサインインしたら、左側のブレードの AdventureWorksDW データセットをクリックします。これでデータベースが開きます。
+7. Power BI にサインインしたら、左側のブレードの AdventureWorksDW データセットをクリックします。これでデータベースが開きます。
 
     ![Power BI open AdventureWorksDW][5]
 
 
 
-## Power BI レポートを作成してサンプル データを分析する
+## レポートの作成
 
 Power BI を使用して AdventureWorksDW サンプル データを分析する準備が整いました。分析を実行するため、AdventureWorksDW には AggregateSales という名前のビューがあります。このビューには、会社の売上高を分析するための重要なメトリックがいくつか含まれています。
 
@@ -108,14 +110,16 @@ Power BI を使用して AdventureWorksDW サンプル データを分析する�
 [移行]: ./sql-data-warehouse-overview-migrate.md
 [開発]: ./sql-data-warehouse-overview-develop.md
 [ロード]: ./sql-data-warehouse-overview-load.md
-[サンプル データを手動で読み込む]: ./sql-data-warehouse-get-started-load-sample-databases.md
+[サンプル データを手動で読み込む方法]: ./sql-data-warehouse-load-sample-databases.md
 [connecting to SQL Data Warehouse]: ./sql-data-warehouse-integrate-power-bi.md
 [Create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
 [Power BI]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
 [Azure Machine Learning]: ./sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
+[SQLCMD]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
+[SQL Data Warehouse の作成]: ./sql-data-warehouse-get-started-provision.md
 
 <!--Other-->
 [Azure ポータル]: https://portal.azure.com/
 [Power BI の Web サイト]: http://www.powerbi.com/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

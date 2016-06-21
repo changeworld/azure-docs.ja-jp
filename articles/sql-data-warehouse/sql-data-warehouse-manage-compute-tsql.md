@@ -19,7 +19,7 @@
 # Azure SQL Data Warehouse のコンピューティング能力の管理 (T-SQL)
 
 > [AZURE.SELECTOR]
-- [概要](sql-data-warehouse-overview-manage-compute.md)
+- [概要](sql-data-warehouse-manage-compute-overview.md)
 - [ポータル](sql-data-warehouse-manage-compute-portal.md)
 - [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 - [REST ()](sql-data-warehouse-manage-compute-rest-api.md)
@@ -86,7 +86,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 <!--Article references-->
 [Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 [管理の概要]: ./sql-data-warehouse-overview-manage.md
-[コンピューティング能力の管理の概要]: ./sql-data-warehouse-overview-manage-compute-power.md
+[コンピューティング能力の管理の概要]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 
@@ -97,4 +97,4 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

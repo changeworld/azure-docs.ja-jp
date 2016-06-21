@@ -18,7 +18,7 @@
 
 # SQL Data Warehouse の PowerShell コマンドレットと REST API
 
-SQL Data Warehouse の管理タスクの多くは、Azure PowerShell コマンドレットまたは REST API を使用して管理できます。以下に示す例では、PowerShell コマンドを使用して、SQL Data Warehouse で一般的なタスクを自動化する方法を示しています。適切な REST の例については、記事「[Azure SQL Data Warehouse のスケーラビリティ管理タスク (REST)][]」を参照してください。
+SQL Data Warehouse の管理タスクの多くは、Azure PowerShell コマンドレットまたは REST API を使用して管理できます。以下に示す例では、PowerShell コマンドを使用して、SQL Data Warehouse で一般的なタスクを自動化する方法を示しています。適切な REST の例については、[REST を使用したのスケーラビリティの管理][]に関する記事をご覧ください。
 
 > [AZURE.NOTE]  SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0.3 以降をインストールする必要があります。**Get-Module -ListAvailable -Name Azure** を実行することで、バージョンを確認できます。最新バージョンは、[Microsoft Web プラットフォーム インストーラー][]からインストールできます。最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」をご覧ください。
 
@@ -84,22 +84,20 @@ Azure SQL Data Warehouse でよく使用される PowerShell コマンドレッ�
 PowerShell のその他の例については、次のトピックをご覧ください。
 
 - [PowerShell を使用して SQL Data Warehouse を作成する][]
-- [SQL Data Warehouse でのデータベースのユーザー エラーからの復旧][]
-- [SQL Data Warehouse でのデータベースの障害からの復旧][]
+- [データベースの復元][]
 
-PowerShell で自動化できるタスクの一覧については、「[Azure SQL Database Cmdlets (Azure SQL Database コマンドレット)][]」をご覧ください。REST で自動化できるタスクの一覧については、「[Azure SQL データベースの操作][]」をご覧ください。
+PowerShell で自動化できるタスクの一覧については、「[Azure SQL Database コマンドレット][]」をご覧ください。REST で自動化できるタスクの一覧については、「[Azure SQL データベースの操作][]」をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
 [Azure PowerShell のインストールおよび構成方法]: ./powershell-install-configure.md
 [PowerShell を使用して SQL Data Warehouse を作成する]: ./sql-data-warehouse-get-started-provision-powershell.md
-[SQL Data Warehouse でのデータベースのユーザー エラーからの復旧]: ./sql-data-warehouse-backup-and-restore-from-snapshot.md
-[SQL Data Warehouse でのデータベースの障害からの復旧]: ./sql-data-warehouse-backup-and-restore-from-geo-restore-snapshot.md
-[Azure SQL Data Warehouse のスケーラビリティ管理タスク (REST)]: ./sql-data-warehouse-manage-scale-out-tasks-rest-api.md
+[データベースの復元]: ./sql-data-warehouse-manage-database-restore-powershell.md
+[REST を使用したのスケーラビリティの管理]: ./sql-data-warehouse-manage-compute-rest-api.md
 
 <!--MSDN references-->
-[Azure SQL Database Cmdlets (Azure SQL Database コマンドレット)]: https://msdn.microsoft.com/library/mt574084.aspx
+[Azure SQL Database コマンドレット]: https://msdn.microsoft.com/library/mt574084.aspx
 [Azure SQL データベースの操作]: https://msdn.microsoft.com/library/azure/dn505719.aspx
 [Get-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt603648.aspx
 [Get-AzureRmSqlDeletedDatabaseBackup]: https://msdn.microsoft.com/library/mt693387.aspx
@@ -117,4 +115,4 @@ PowerShell で自動化できるタスクの一覧については、「[Azure SQ
 <!--Other Web references-->
 [Microsoft Web プラットフォーム インストーラー]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

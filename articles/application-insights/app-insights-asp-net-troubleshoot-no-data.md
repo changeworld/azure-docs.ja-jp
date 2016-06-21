@@ -12,15 +12,21 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/17/2016" 
+	ms.date="05/27/2016" 
 	ms.author="awills"/>
  
 # データが存在しない場合のトラブルシューティング - Application Insights for .NET
 
+## テレメトリの一部が見つからない
+
+*Application Insights で、アプリによって生成されているイベントのごく一部しか表示されません。*
+
+* 同じ部分が常に表示される場合は、アダプティブ [サンプリング](app-insights-sampling.md)が原因である可能性があります。これを確認するには、([概要] ブレードから) [検索] を開き、要求やその他のイベントのインスタンスを確認します。プロパティ セクションの下部で、[...] をクリックし、すべてのプロパティの詳細を取得します。要求数が > 1 の場合は、サンプリングが実行中です。 
+* それ以外の場合、料金プランの[データ速度の上限](app-insights-pricing.md#limits-summary)に達してる可能性があります。これらの制限は分単位で適用されます。
 
 ## 状態モニターの問題
 
-*既存のアプリを監視するための[状態モニター](app-insights-monitor-performance-live-website-now.md)を Web サーバーにインストールしたのですが、結果がまったく表示されません。*
+*既存のアプリを監視するための [Status Monitor](app-insights-monitor-performance-live-website-now.md) を Web サーバーにインストールしたのですが、結果がまったく表示されません。*
 
 「[Status Monitor のトラブルシューティング](app-insights-monitor-performance-live-website-now.md#troubleshooting)」を参照してください。最も頻繁に問題になるのは、ファイアウォールのポートです。
 
@@ -139,9 +145,9 @@ Application Insights をインストールしているとき、またはログ �
 
     ![](./media/app-insights-asp-net-troubleshoot-no-data/output-window.png)
 
-+ Application Insights ポータルで[診断検索](app-insights-diagnostic-search.md)を開きます通常、まずここにデータが表示されます。
++ Application Insights ポータルで[診断検索](app-insights-diagnostic-search.md)を開きます。通常、まずここにデータが表示されます。
 + [更新] ボタンをクリックします。ブレードは周期的に自動で更新されますが、手動でも更新できます。時間範囲が広いと、更新間隔は長くなります。
-+ インストルメンテーション キーが一致していることを確認します。Application Insights ポータルから、対象アプリのメイン ブレードで **[要点]** ボックスの一覧に表示される **[インストルメンテーション キー]** を確認します。次に、Visual Studio からプロジェクトの ApplicationInsights.config を開き、`<instrumentationkey>` を探します。2 つのキーが等しいことを確認してください。等しくない場合は、次の作業を行います。
++ インストルメンテーション キーが一致していることを確認します。Application Insights ポータルから、対象アプリのメイン ブレードで **[要点]** ドロップダウン リストに表示される **[インストルメンテーション キー]** を確認します。次に、Visual Studio からプロジェクトの ApplicationInsights.config を開き、`<instrumentationkey>` を探します。2 つのキーが等しいことを確認してください。等しくない場合は、次の作業を行います。
  + ポータルで [Application Insights] をクリックし、適切なキーのアプリ リソースを探します。または、
  + Visual Studio のソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights]、[構成] の順に選択します。適切なリソースにテレメトリを送信するようにアプリをリセットします。
  + 一致するキーが見つからない場合は、ポータルにサインインするときと同じ資格情報を Visual Studio で使用していることを確認してください。
@@ -169,7 +175,7 @@ Application Insights をインストールしているとき、またはログ �
 
 ## パフォーマンス データが表示されない
 
-パフォーマンス データ (CPU、IO レートなど) の対象となるのは、[Java Web サービス](app-insights-java-collectd.md)、[Windows デスクトップ アプリ](app-insights-windows-desktop.md)、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](app-insights-monitor-performance-live-website-now.md)、[Azure Cloud Services](app-insights-azure.md) であり、[設定]、[サーバー] の順に移動すると確認できます。
+パフォーマンス データ (CPU、IO レートなど) は、[Java Web サービス](app-insights-java-collectd.md)、[Windows デスクトップ アプリ](app-insights-windows-desktop.md)、[IIS Web アプリおよびサービス (Status Monitor がインストールされている場合)](app-insights-monitor-performance-live-website-now.md)、[Azure Cloud Services](app-insights-azure.md) で利用でき、[設定]、[サーバー] の順に移動すると確認できます。
 
 Azure Web サイトのパフォーマンス データは表示されません。
 
@@ -189,7 +195,7 @@ Azure Web サイトのパフォーマンス データは表示されません。
 
 ## 予期しているデータがすべて表示されません
 
-アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、[アダプティブ サンプリング](app-insights-sampling.md)機能が動作して、一定の割合のテレメトリのみが送信される可能性があります。
+アプリケーションが送信するデータ量が多く、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、[アダプティブ サンプリング](app-insights-sampling.md)機能が動作して、テレメトリの一定の割合のみが送信される可能性があります。
 
 その機能を無効にすることもできますがお勧めしません。サンプリングは、関連するテレメトリが診断用途で正しく送信されるように設計されています。
 
@@ -205,4 +211,4 @@ Azure Web サイトのパフォーマンス データは表示されません。
 
 * [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-JP/home?forum=ApplicationInsights)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

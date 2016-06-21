@@ -3,7 +3,7 @@
    description="Docker マシンを利用し、Azure で Docker ホストを作成する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="SteveLas"
+   authors="allclark"
    manager="douge"
    editor="" />
 <tags
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/16/2016"
-   ms.author="stevelas" />
+   ms.date="06/08/2016"
+   ms.author="allclark;stevelas" />
 
 # Docker マシンを利用し、Azure で Docker ホストを作成する
 
@@ -27,14 +27,13 @@
 
 `azure` ドライバーを使用する `docker-machine create` コマンドを使用して、Azure に Docker ホスト VM を作成します。
 
-Azure ドライバーにはサブスクリプション ID が必要になります。[Azure CLI](xplat-cli-install.md) または [Azure ポータル](https:/portal.azure.com)を使用して、Azure サブスクリプションを取得することができます。
+Azure ドライバーにはサブスクリプション ID が必要になります。[Azure CLI](xplat-cli-install.md) または [Azure ポータル](https://portal.azure.com)を使用して、Azure サブスクリプションを取得することができます。
 
 **Azure ポータルの使用**
 - 左側のナビゲーション ページからサブスクリプションを選択し、サブスクリプション ID をコピーします。
 
 **Azure CLI の使用**
 - 「```azure account list```」と入力し、サブスクリプション ID をコピーします。
-
 
 「`docker-machine create --driver azure`」と入力し、オプションとその既定値を表示します。[Docker の Azure ドライバー ドキュメント](https://docs.docker.com/machine/drivers/azure/)で詳細を確認することもできます。
 
@@ -47,11 +46,13 @@ docker-machine create -d azure --azure-subscription-id <Your AZURE_SUBSCRIPTION_
 ## docker-machine で Docker ホストを選択する
 ホストの docker-machine に入力が行われていると、docker コマンドを実行する際に既定のホストを設定することができます。
 ##PowerShell の使用
+
 ```powershell
 docker-machine env MyDockerHost | Invoke-Expression 
 ```
 
 ##Bash の使用
+
 ```bash
 eval $(docker-machine env MyDockerHost)
 ```
@@ -95,6 +96,7 @@ d5b78f27b335        nginx               "nginx -g 'daemon off"   5 minutes ago  
 ```
 
 実行中のコンテナーを確認します。「`docker-machine ip <VM name>`」と入力すると、ブラウザーに入力する IP アドレスが見つかります。
+
 ```
 PS C:\> docker-machine ip MyDockerHost
 191.237.46.90
@@ -107,4 +109,4 @@ docker-machine を使用して、個々の Docker ホストの検証のために
 
 Visual Studio を使用した .NET Core アプリケーションの開発については、「[Docker Tools for Visual Studio (Visual Studio 用 Docker ツール)](http://aka.ms/DockerToolsForVS)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

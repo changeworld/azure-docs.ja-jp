@@ -171,7 +171,7 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 - [パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート]
 - [Windows Server 用 Service Bus の AMQP]
 
-  [Service Bus キューの使用方法]: service-bus-dotnet-how-to-use-queues.md
+  [Service Bus キューの使用方法]: service-bus-dotnet-get-started-with-queues.md
   [DataContractSerializer]: https://msdn.microsoft.com/library/azure/system.runtime.serialization.datacontractserializer.aspx
   [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
   [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: https://msdn.microsoft.com/library/azure/jj657638.aspx
@@ -203,4 +203,4 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 [パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

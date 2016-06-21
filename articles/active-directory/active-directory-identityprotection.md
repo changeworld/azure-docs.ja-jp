@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="06/06/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection 
@@ -35,7 +35,7 @@ Azure Active Directory Identity Protection のプレビューには、フェデ�
 
 - セキュリティ ポリシーはフェデレーション ドメインに対しては動作しません
 
-- リスク イベントは、Azure Active Directory とフェデレーションしているアプリに対してのみ検出されます。
+- リスク イベントは、Azure Active Directory とフェデレーションを行っているアプリに対してのみ検出されます。
 
 ##Getting Started (概要)
 
@@ -410,4 +410,4 @@ Azure AD Identity Protection を使用すると、多要素認証の登録の展
  - [Azure Active Directory Identity Protection プレイブック](active-directory-identityprotection-playbook.md)
  - [Azure Active Directory Identity Protection 用語集](active-directory-identityprotection-glossary.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="04/29/2016"
+	ms.date="06/09/2016"
 	ms.author="tamram"/>
 
 
@@ -463,4 +463,4 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

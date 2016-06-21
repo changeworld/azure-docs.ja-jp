@@ -19,8 +19,6 @@
 
 # Azure Windows VM 拡張機能のエラーのトラブルシューティング
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
-
 [AZURE.INCLUDE [virtual-machines-common-extensions-troubleshoot](../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
 ## 拡張機能の状態表示
@@ -70,4 +68,4 @@ VM でカスタム スクリプト拡張機能を使用してスクリプトを�
 
 拡張機能を削除した後、テンプレートを再実行して、VM 上でスクリプトを実行できます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="05/27/2016"
 	ms.author="wesmc"/>
 
 # Azure Notification Hubs と Node.js でのプッシュ通知の送信
@@ -51,19 +51,7 @@ Azure Notification Hubs を使用するには、Node.js[ azure パッケージ](
 
 1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Linux) などのコマンド ライン インターフェイスを使用して、空のアプリケーションを作成したフォルダーに移動します。
 
-2.  コマンド ウィンドウに「**npm install azure**」と入力すると、次のような出力が生成されます (バージョン番号は変動します)。
-
-        azure@0.7.0 node_modules\azure
-		|-- dateformat@1.0.2-1.2.3
-		|-- xmlbuilder@0.4.2
-		|-- node-uuid@1.2.0
-		|-- mime@1.2.9
-		|-- underscore@1.4.4
-		|-- validator@0.4.28
-		|-- tunnel@0.0.2
-		|-- wns@0.5.3
-		|-- xml2js@0.2.6 (sax@0.4.2)
-		|-- request@2.16.6 (forever-agent@0.2.0, aws-sign@0.2.0, tunnel-agent@0.2.0, oauth-sign@0.2.0, json-stringify-safe@3.0.0, cookie-jar@0.2.0, node-uuid@1.4.0, qs@0.5.5, hawk@0.10.2, form-data@0.0.7)
+2.  コマンド ウィンドウに「**npm install azure-sb**」と入力します。
 
 3.  手動で **ls** または **dir** コマンドを実行して、**node\_modules** フォルダーが作成されたことを確認できます。そのフォルダーで **azure** パッケージを探します。このパッケージには、Notification Hubs にアクセスするために必要なライブラリが含まれています。
 
@@ -132,7 +120,7 @@ Azure Notification Hubs を使用するには、Node.js[ azure パッケージ](
 上で説明した Android アプリケーションと同様に、**ApnsService** オブジェクトには、iOS アプリケーションにプッシュ通知を送信するために使用される **send** メソッドが用意されています。**send** メソッドは、次のパラメーターを受け取ります。
 
 * **Tags** - タグ識別子。タグが指定されない場合、通知はすべてのクライアントに送信されます。
-* **Payload** - メッセージの JSON または文字列ペイロード
+* **Payload** - メッセージの JSON または文字列ペイロード。
 * **Callback** - コールバック関数。
 
 ペイロード形式の詳細については、「[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html)」ドキュメントの「**Notification Payload (通知ペイロード)**」のセクションを参照してください。
@@ -153,7 +141,7 @@ Azure Notification Hubs を使用するには、Node.js[ azure パッケージ](
 **MpnsService** オブジェクトには、Windows Phone アプリにプッシュ通知を送信するために使用される **send** メソッドが用意されています。**send** メソッドは、次のパラメーターを受け取ります。
 
 * **Tags** - タグ識別子。タグが指定されない場合、通知はすべてのクライアントに送信されます。
-* **Payload** - メッセージの XML ペイロード
+* **Payload** - メッセージの XML ペイロード。
 * **TargetName** - トースト通知の場合は `toast`。タイル通知の場合は `token`。
 * **NotificationClass** - 通知の優先度。有効な値については、「[Push notifications from a server (サーバーからのプッシュ通知)](http://msdn.microsoft.com/library/hh221551.aspx)」の「**HTTP Header Elements** (HTTP ヘッダー要素)」のセクションを参照してください。
 * **Options** - 省略可能な要求ヘッダー。
@@ -223,11 +211,11 @@ Azure Notification Hubs を使用するには、Node.js[ azure パッケージ](
   [Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
   [SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
   [WebMatrix を使用した Web サイト]: /develop/nodejs/tutorials/web-site-with-webmatrix/
-  [Node.js Cloud Service]: ../cloud-services-nodejs-develop-deploy-app.md
+  [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
   [nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
   [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
   [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
   [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0608_2016-->

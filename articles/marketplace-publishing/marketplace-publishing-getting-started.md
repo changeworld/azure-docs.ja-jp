@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/29/2016"
+   ms.date="06/01/2016"
    ms.author="hascipio" />
 
 # Azure Marketplace へのプランの発行方法
@@ -44,11 +44,12 @@
 | **ステップ 4: Marketplace へのプランのデプロイ** | [Marketplace へのプランのデプロイ][link-pushprod] | プライベート プレビュー | [Marketplace へのプランのデプロイ][link-pushprod] | [Marketplace へのプランのデプロイ][link-pushprod] |
 
 ## サポート
-- [Get support as a publisher (発行元としてサポートを受ける)][suppt-general]
+- [仮想マシン プランの作成後ガイド](marketplace-publishing-vm-image-post-publishing.md)
 - [Understanding seller insights reporting (Seller Insights レポートを理解する)][suppt-rpt-insights]
 - [Understanding Payout reporting (支払いレポートを理解する)][suppt-rpt-payouts]
 - [How to change your Cloud Solution Provider reseller incentive (Cloud Solution Provider のリセラー インセンティブを変更する方法)](marketplace-publishing-csp-incentive.md)
 - [Troubleshooting Common Publishing Problems in the Marketplace (Marketplace での発行に関してよくある問題のトラブルシューティング)][suppt-common]
+- [Get support as a publisher (発行元としてサポートを受ける)][suppt-general]
 
 ## その他のリソース
 - 使用されるポータルの詳細については、「[必要なポータル](marketplace-publishing-portals.md)」を参照してください。
@@ -82,4 +83,4 @@
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 [link-pushprod]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

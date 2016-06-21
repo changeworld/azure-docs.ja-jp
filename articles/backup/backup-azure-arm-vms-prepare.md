@@ -1,10 +1,10 @@
 <properties
-	pageTitle="ARM 仮想マシンをバックアップする環境の準備 | Microsoft Azure"
+	pageTitle="Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備 | Microsoft Azure"
 	description="Azure で仮想マシンをバックアップするための環境を準備する方法について説明します"
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
-	manager="jwhit"
+	manager="cfreeman"
 	editor=""
 	keywords="バックアップ, バックアップする,"/>
 
@@ -14,23 +14,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/03/2016"
+	ms.date="06/03/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 
-# ARM 仮想マシンをバックアップする環境の準備
+# Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備
 
 > [AZURE.SELECTOR]
 - [Resource Manager モデル](backup-azure-arm-vms-prepare.md)
 - [クラシック モデル](backup-azure-vms-prepare.md)
 
-この記事では、Azure Resource Manager (ARM) 仮想マシン (VM) をバックアップできるように環境を準備する手順について説明します。手順の各ステップでは、Azure ポータルを使用します。
+この記事では、Resource Manager でデプロイされた仮想マシン (VM) をバックアップできるように環境を準備する手順について説明します。手順の各ステップでは、Azure ポータルを使用します。
 
-Azure Backup サービスでは、VM を保護するために 2 種類のコンテナー (バックアップ コンテナーと Recovery Services コンテナー) を用意しています。バックアップ コンテナーでは、クラシック デプロイメント モデルを使用してデプロイされた VM を保護します。Recovery Services コンテナーでは、**クラシック デプロイメント モデルでデプロイされた VM と ARM によってデプロイされた VM の両方**を保護します。ARM でデプロイされた VM を保護するには、Recovery Services コンテナーを使用する必要があります。
+Azure Backup サービスでは、VM を保護するために 2 種類のコンテナー (バックアップ コンテナーと Recovery Services コンテナー) を用意しています。バックアップ コンテナーでは、クラシック デプロイメント モデルを使用してデプロイされた VM を保護します。Recovery Services コンテナーでは、**クラシック デプロイメント モデルでデプロイされた VM と Resource Manager でデプロイされた VM の両方**を保護します。Resource Manager でデプロイされた VM を保護するには、Recovery Services コンテナーを使用する必要があります。
 
 >[AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。クラシック デプロイメント モデル VM の操作方法の詳細については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-vms-prepare.md)」を参照してください。
 
-ARM 仮想マシン (VM) の保護またはバックアップを行うには、事前に次の前提条件を満たしておく必要があります。
+Resource Manager でデプロイされた仮想マシン (VM) の保護またはバックアップを行うには、事前に次の前提条件を満たしておく必要があります。
 
 - *VM と同じ場所に* Recovery Services コンテナーを作成します (または、既存の Recovery Services コンテナーを識別します)。
 - シナリオを選択し、バックアップ ポリシーを定義し、保護する項目を定義します。
@@ -238,11 +238,11 @@ HTTP プロキシを使用してパブリック インターネットとの通�
      ```
     Internet Explorer のウィンドウが開きます。
 3. [ツール]、[インターネット オプション]、[接続]、[LAN の設定] の順に進みます。
-4. システム アカウントのプロキシ設定を確認します。プロキシの IP アドレスとポートを設定します。 
+4. システム アカウントのプロキシ設定を確認します。プロキシの IP アドレスとポートを設定します。
 5. Internet Explorer を閉じます。
 
 これにより、コンピューター全体のプロキシ構成が設定され、すべての発信 HTTP/ HTTPS トラフィックに使用されます。
-   
+
 現在のユーザー アカウント (ローカル システム アカウントではなく) にプロキシ サーバーを設定した場合は、次のスクリプトを使用して、SYSTEMACCOUNT にそれらを適用します。
 
 ```
@@ -256,7 +256,7 @@ HTTP プロキシを使用してパブリック インターネットとの通�
 
 >[AZURE.NOTE] プロキシ サーバーのログに "(407) プロキシ認証が必要です" というメッセージが記録されている場合は、認証が正しく設定されているか確認します。
 
-######Linux マシンの場合 
+######Linux マシンの場合
 
 次の行を ```/etc/environment``` ファイルに追加します。
 
@@ -265,7 +265,7 @@ http_proxy=http://<proxy IP>:<proxy port>
 ```
 
 次の行を ```/etc/waagent.conf``` ファイルに追加します。
-   
+
 ```
 HttpProxy.Host=<proxy IP>
 HttpProxy.Port=<proxy port>
@@ -309,7 +309,7 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 *これらの手順では、この例の特定の名前と値を使用しています。実際のコードに対して詳細の入力、切り取り、貼り付けを行う場合は、実際のデプロイの名前と値を使用してください。*
 
 
-これでネットワークに接続できることがわかったので、VM をいつでもバックアップすることができます。「[Back up Azure Resource Manager (ARM) VMs (Azure Resource Manager (ARM) VM をバックアップする)](backup-azure-arm-vms.md)」を参照してください。
+これでネットワークに接続できることがわかったので、VM をいつでもバックアップすることができます。[Resource Manager でデプロイされた VM のバックアップ](backup-azure-arm-vms.md)に関するページをご覧ください。
 
 ## 疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
@@ -321,4 +321,4 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 - [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

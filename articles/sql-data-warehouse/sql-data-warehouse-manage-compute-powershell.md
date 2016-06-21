@@ -19,7 +19,7 @@
 # Azure SQL Data Warehouse のコンピューティング能力の管理 (PowerShell)
 
 > [AZURE.SELECTOR]
-- [概要](sql-data-warehouse-overview-manage-compute.md)
+- [概要](sql-data-warehouse-manage-compute-overview.md)
 - [ポータル](sql-data-warehouse-manage-compute-portal.md)
 - [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 - [REST ()](sql-data-warehouse-manage-compute-rest-api.md)
@@ -34,7 +34,7 @@
 - コンピューティングの一時停止
 - コンピューティングの再開
 
-これについては、[コンピューティング能力の管理の概要][]に関するページをご覧ください。
+これについては、コンピューティングの管理の概要に関するページをご覧ください。
 
 
 ## 開始する前に
@@ -124,7 +124,7 @@ $resultDatabase
 <!--Article references-->
 [Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 [管理の概要]: ./sql-data-warehouse-overview-manage.md
-[Performance scalability overview]: ./sql-data-warehouse-overview-scalability.md
+
 
 <!--MSDN references-->
 [Resume-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619347.aspx
@@ -136,4 +136,4 @@ $resultDatabase
 
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

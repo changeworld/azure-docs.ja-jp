@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/04/2016" 
+	ms.date="06/03/2016" 
 	ms.author="mimig"/>
 
 # Azure リソース マネージャーのテンプレートと Azure CLI を利用し、DocumentDB アカウントを自動作成する
@@ -37,7 +37,7 @@ Azure リソース グループで Azure CLI を使用するには、適切な A
 
 ### Azure CLI のバージョンを更新する
 
-コマンド プロンプトで、「`azure --version`」と入力し、バージョン 0.9.11 以降が既にインストールされているかどうかを確認します。
+コマンド プロンプトで、「`azure --version`」と入力し、バージョン 0.9.11 以降が既にインストールされているかどうかを確認します。この手順で Microsoft Azure CLI のデータ収集に参加するように求められる場合があります。y または n を選択して、オプトインまたはオプトアウトできます。
 
 	azure --version
     0.9.11 (node: 0.12.7)
@@ -56,8 +56,7 @@ Azure リソース管理テンプレートを使用するには、職場のア�
 
     info:    Executing command login
     |info:    To sign in, use a web browser to open the page https://aka.ms/devicelogin. 
-    Enter the code E1A2B3C4D to authenticate. If you're signing in as an Azure
-    AD application, use the --username and --password parameters.
+    Enter the code E1A2B3C4D to authenticate.
 
 > [AZURE.NOTE] Azure アカウントを持っていない場合、別の種類のアカウントが必要であることを示すエラー メッセージが表示されます。現在の Azure アカウントから作成する方法については、「[Azure Active Directory で職場または学校の ID を作成する](../virtual-machines/virtual-machines-windows-create-aad-work-id.md)」を参照してください。
 
@@ -78,7 +77,7 @@ Azure リソース管理テンプレートを使用するには、職場のア�
     /info:    Added subscription Visual Studio Ultimate with MSDN
     info:    Setting subscription "Visual Studio Ultimate with MSDN" as default
     +
-    info:    login command OKK
+    info:    login command OK
 
 ここで説明する対話式のログイン方法以外に、Azure CLi でログインする方法もあります。他の方法と複数のサブスクリプションを処理する方法に関する詳細については、「[Azure コマンド ライン インターフェイス (Azure CLI) から Azure サブスクリプションに接続する](../xplat-cli-connect.md)」を参照してください。
 
@@ -94,7 +93,7 @@ Azure リソース管理テンプレートを使用するには、職場のア�
     info:    New mode is arm
     info:    config mode command OK
 
-`azure config mode asm` と入力することで、既定のコマンド セットに戻すことができます。
+必要に応じて、「`azure config mode asm`」と入力することで、既定のコマンド セットに戻すことができます。
 
 ## <a id="quick-create-documentdb-account"></a>作業: Azure CLI を利用して DocumentDB アカウントを作成する
 
@@ -226,7 +225,7 @@ Azure リソース グループとその機能の詳細については、「[Azu
         }
     }
 
-azuredeploy.parameters.json ファイルで、「samplearmacct」という値を使用するデータベース名に変更し、ファイルを保存します。`<databaseAccountName>` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。
+azuredeploy.parameters.json ファイルで、「samplearmacct」という値を使用するデータベース名に変更し、ファイルを保存します。`"databaseAccountName"` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。
 
 ### 手順 2: リソース グループを作成または取得する
 
@@ -298,15 +297,21 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
     + Creating a deployment
     info:    Created template deployment "azuredeploy"
     + Waiting for deployment to complete
+    + 
+    + 
+    info:    Resource 'new_res_group' of type 'Microsoft.DocumentDb/databaseAccounts' provisioning status is Running
+    + 
+    info:    Resource 'new_res_group' of type 'Microsoft.DocumentDb/databaseAccounts' provisioning status is Succeeded
     data:    DeploymentName     : azuredeploy
     data:    ResourceGroupName  : new_res_group
     data:    ProvisioningState  : Succeeded
     data:    Timestamp          : 2015-11-30T18:50:23.6300288Z
     data:    Mode               : Incremental
+    data:    CorrelationId      : 4a5d4049-c494-4053-bad4-cc804d454700
+    data:    DeploymentParameters :
     data:    Name                 Type    Value
     data:    -------------------  ------  ------------------
     data:    databaseAccountName  String  samplearmacct
-    data:    location             String  West US
     info:    group deployment create command OK
 
 エラーが発生した場合、「[トラブルシューティング](#troubleshooting)」を参照してください。
@@ -354,4 +359,4 @@ DocumentDB の詳細については、以下の資料を参照してください
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="06/06/2016"
 	ms.author="jeedes"/>
 
 
@@ -62,7 +62,7 @@ Azure AD への Showpad の統合を構成するには、ギャラリーから�
 
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
 
-	![Active Directory][1]
+	![アプリケーション][1]
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
@@ -80,10 +80,11 @@ Azure AD への Showpad の統合を構成するには、ギャラリーから�
 
 6. 検索ボックスに、「**Showpad**」と入力します。
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_01.png)
+	![アプリケーション](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_01.png)
 
 7. 結果ウィンドウで **[Showpad]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
+	![アプリケーション](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_02.png)
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Showpad で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
@@ -121,9 +122,9 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
 	![Configure Single Sign-On](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_04.png)
 
 
-    a.**[サインオン URL]** ボックスに、`https://<company name>.showpad.biz/login` というパターンで、ユーザーが Showpad アプリケーションへのサインオンに使用する URL を入力します。
+    a.**[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Showpad アプリケーションへのサインオンに使用する URL を入力します。`https://<company name>.showpad.biz/login`
 
-	b.**[識別子]** ボックスに、`https://<company name>.showpad.biz` のパターンで URL を入力します。
+	b.**[識別子]** ボックスに、次のパターンを使用して URL を入力します。`https://<company name>.showpad.biz`
 
 	c.**[次へ]** をクリックします。
 
@@ -139,25 +140,25 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
 
 5. Showpad テナントに管理者としてサインオンします。
 
-6. 上部のメニューで **[設定]** をクリックします。
+6. 上部のメニューで **[Settings]** をクリックします。
 
 	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_001.png)
 
-7. **[シングル サインオン]** に移動して **[有効]** をクリックします。
+7. **[Single Sign-On]** に移動して **[Enable]** をクリックします。
  
 	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_002.png)
 
-8. **[SAML 2.0 サービスの追加]** ダイアログで、次の手順を実行します。
+8. **[Add a SAML 2.0 Service ]** ダイアログで、次の手順を実行します。
 
 	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_003.png)
 
-	a.**[名前]** ボックスに、ID プロバイダーの名前 (会社名など) を入力します。
+	a.**[Name]** ボックスに、ID プロバイダーの名前 (会社名など) を入力します。
 
-	b.**[メタデータ ソース]** として、**[XML]** を選択します。
+	b.**[Metadata Source]** として、**[XML]** を選択します。
 
-	c.ダウンロードしたメタデータ XML ファイルの内容をコピーし、**[メタデータ XML]** ボックスに貼り付けます。
+	c.ダウンロードしたメタデータ XML ファイルの内容をコピーし、**[Metadata XML]** ボックスに貼り付けます。
 
-	d.**[ログイン時に新しいユーザーのアカウントを自動的にプロビジョニングする]** を選択します。
+	d.**[Auto-provision accounts for new users when they log in]** を選択します。
 
 	e.**[Submit]** をクリックします。
 
@@ -197,7 +198,7 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-showpad-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-showpad-tutorial/create_aaduser_05.png)
 
@@ -255,7 +256,7 @@ Showpad では、ジャストインタイム プロビジョニングがサポ�
 
 	![ユーザーの割り当て][201]
 
-2. アプリケーションの一覧で **[Showpad]** を選択します。
+2. アプリケーションの一覧で **[Showpad]** をクリックします。
 
 	![Configure Single Sign-On](./media/active-directory-saas-showpad-tutorial/tutorial_showpad_50.png)
 
@@ -303,4 +304,4 @@ Showpad では、ジャストインタイム プロビジョニングがサポ�
 [204]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

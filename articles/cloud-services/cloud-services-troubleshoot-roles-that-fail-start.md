@@ -13,27 +13,23 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="05/26/2016"
+   ms.date="06/03/2016"
    ms.author="v-six" />
 
 # クラウド サービス ロールが起動しないときのトラブルシューティング
 
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
 
-## Azure カスタマー サポートへの問い合わせ
-
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
-
-または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## DLL または依存コンポーネントの欠落
 
-ロールが応答しない、**初期化**、**ビジー**、**停止**の状態を繰り返す、といった症状は、DLL やアセンブリの不足が原因で起こる場合があります。
+ロールが応答しない、**[初期化しています]**、**[ビジー]**、**[停止しています]** の状態を繰り返す、といった症状は、DLL やアセンブリの不足が原因で起こる場合があります。
 
 DLL やアセンブリの不足は、次のような症状を引き起こします。
 
-- ロール インスタンスが**初期化** / **ビジー** / **停止**の状態を繰り返す。
-- ロール インスタンスが**準備完了**状態に移行したにもかかわらず、Web アプリケーションにアクセスしてもページが表示されない。
+- ロール インスタンスが **[初期化しています]**、**[ビジー]**、**[停止しています]** の状態を繰り返す。
+- ロール インスタンスが **[準備完了]** 状態に移行したにもかかわらず、Web アプリケーションにアクセスしてもページが表示されない。
 
 これらの問題に関して推奨される調査方法がいくつかあります。
 
@@ -133,7 +129,7 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 
 3. インスタンスが起動したら、**サーバー エクスプローラー**を開きます。
 
-4. **Azure\\Cloud Services** ノードを展開し、対象のデプロイメントを特定します。
+4. **Azure\\Cloud Services** ノードを展開し、対象のデプロイを特定します。
 
 5. ロール インスタンスが表示されるまでデプロイメントを展開します。いずれかのインスタンスを右クリックします。
 
@@ -151,7 +147,7 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 
 1. Visual Studio でソリューションを開きます。
 
-2. **ソリューション エクスプローラー**で **[参照設定]** フォルダーを開きます。
+2. **ソリューション エクスプローラー**で **[参照]** フォルダーを開きます。
 
 3. エラーに表示されているアセンブリをクリックします。
 
@@ -163,8 +159,8 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 
 ## 次のステップ
 
-クラウド サービスの他の[トラブルシューティングに関する記事](..\?tag=top-support-issue&service=cloud-services)を参照します。
+クラウド サービスの他の[トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services)を参照します。
 
-Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)を参照してください。
+Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

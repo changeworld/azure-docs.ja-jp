@@ -26,57 +26,57 @@ Azure コンテナー サービスでは、人気のオープン ソースのコ
 
 ## Azure ポータルを使用してサービスを作成する
 
-Azure ポータルにログインし、新規を選択し、**Azure コンテナー サービス**の Azure Marketplace を検索します。
+Azure ポータルにサインインし、**[新規]** を選択して、Azure Marketplace で **Azure コンテナー サービス**を検索します。
 
-![Create deployment](media/acs-portal1.png) <br />
+![Create deployment 1](media/acs-portal1.png) <br />
 
-**[Azure コンテナー サービス]** を選択し、**[作成]** をクリックします。
+**[Azure Container Service (Azure コンテナー サービス)]** を選択し、**[作成]** をクリックします。
 
-![Create deployment](media/acs-portal2.png) <br />
+![Create deployment 2](media/acs-portal2.png) <br />
 
 次の情報を入力します。
 
-- ユーザー名: Azure コンテナー サービス クラスターのそれぞれの仮想マシンと仮想マシン スケール セットのアカウントに使用されるユーザー名です。
-- サブスクリプション: Azure サブスクリプションを選択します。
-- リソース グループ: 既存のリソース グループを選択するか、新しいリソース グループを作成します。
-- 場所: Azure コンテナー サービスのデプロイの Azure リージョンを選択します。
-- SSH 公開キー: Azure コンテナー サービスの Virtual Machines に対する認証に使用する公開キーを追加します。このキーには改行を含めないでください。また、先頭に 'ssh-rsa'、末尾に 'username@domain' を付ける必要があります。たとえば、"**ssh-rsa AAAAB3Nz...SNIPPEDCONTENT...UcyupgH azureuser@linuxvm**" のようになります。SSH キーの作成方法については、[Linux の記事](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/) と [Windows の記事](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/)を参照してください。
+- **[ユーザー名]**: Azure コンテナー サービス クラスターの各仮想マシンと仮想マシン スケール セットのアカウントに使用されるユーザー名です。
+- **[サブスクリプション]**: Azure サブスクリプションを選択します。
+- **[リソース グループ]**: 既存のリソース グループを選択するか、新しいリソース グループを作成します。
+- **[場所]**: Azure コンテナー サービスのデプロイの Azure リージョンを選択します。
+- **[SSH 公開キー]**: Azure コンテナー サービスの Virtual Machines に対する認証に使用する公開キーを追加します。このキーには改行を含めないでください。また、先頭に 'ssh-rsa'、末尾に 'username@domain' を付ける必要があります。**ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm** のようになります。Secure Shell (SSH) キーの作成方法については、[Linux の記事](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/)と [Windows の記事](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/)を参照してください。
 
 準備が完了したら、**[OK]** をクリックします。
 
-![Create deployment](media/acs-portal3.png) <br />
+![Create deployment 3](media/acs-portal3.png) <br />
 
 オーケストレーションの種類を選択します。オプションは次のとおりです。
 
-- DC/OS: DC/OS クラスターをデプロイします。
-- Swarm: Docker Swarm クラスターをデプロイします。
+- **[DC/OS]**: DC/OS クラスターをデプロイします。
+- **[Swarm]**: Docker Swarm クラスターをデプロイします。
 
 準備が完了したら、**[OK]** をクリックします。
 
-![Create deployment](media/acs-portal4.png) <br />
+![Create deployment 4](media/acs-portal4.png) <br />
 
 次の情報を入力します。
 
-- マスター数: クラスターのマスター数。
-- エージェント数: Docker Swarm の場合、エージェント スケール セットのエージェントの初期数です。DC/OS の場合、プライベート スケール セットのエージェントの初期数です。また、事前に決められた数のエージェントを含むパブリック スケール セットが作成されます。このパブリック スケール セットのエージェント数は、クラスターに作成されたマスター数 (1 マスターに 1 パブリック エージェント、3 または 5 マスターに 2 パブリック エージェント) によって決まります。
-- エージェント仮想マシン サイズ: エージェント仮想マシンのサイズ。
-- DNS プレフィックス: サービス名の完全修飾ドメイン名の主要部分の先頭に付ける世界で一位の名前。 
+- **[Master count (マスター数)]**: クラスターのマスター数。
+- **[Agent count (エージェント数)]**: Docker Swarm の場合、エージェント スケール セットのエージェントの初期数です。DC/OS の場合、プライベート スケール セットのエージェントの初期数です。また、事前に決められた数のエージェントを含むパブリック スケール セットが作成されます。このパブリック スケール セットのエージェント数は、クラスターに作成されたマスター数によって決まります (1 マスターに 1 パブリック エージェント、3 または 5 マスターに 2 パブリック エージェント)。
+- **[Agent virtual machine size (エージェント仮想マシン サイズ)]**: エージェント仮想マシンのサイズ。
+- **[DNS プレフィックス]**: サービス名の完全修飾ドメイン名の主要部分の先頭に付ける世界で一意の名前。
 
 準備が完了したら、**[OK]** をクリックします。
 
-![Create deployment](media/acs-portal5.png) <br />
+![Create deployment 5](media/acs-portal5.png) <br />
 
 サービスの検証が完了したら、**[OK]** をクリックします。
 
-![Create deployment](media/acs-portal6.png) <br />
+![Create deployment 6](media/acs-portal6.png) <br />
 
 **[作成]** をクリックしてデプロイ プロセスを開始します。
 
-![Create deployment](media/acs-portal7.png) <br />
+![Create deployment 7](media/acs-portal7.png) <br />
 
 デプロイを Azure ポータルに固定した場合、デプロイの状態を確認できます。
 
-![Create deployment](media/acs-portal8.png) <br />
+![Create deployment 8](media/acs-portal8.png) <br />
 
 デプロイが完了したら、Azure コンテナー サービス クラスターを利用できます。
 
@@ -110,10 +110,10 @@ azure config mode arm
 
 - **RESOURCE\_GROUP** は、このサービスで使用するリソース グループの名前です。
 - **LOCATION** は、リソース グループと Azure コンテナー サービスのデプロイを作成する Azure リージョンです。
-- **TEMPLATE\_URI** はデプロイ ファイルの場所です。**注** - これは RAW ファイルになります。GitHub UI のポインターではありません。この URL を見つけるには、GitHub で azuredeploy.json ファイルを選択し、RAW ボタンをクリックします。
+- **TEMPLATE\_URI** は、デプロイ ファイルの場所です。これは Raw ファイルになります。GitHub UI のポインターではありません。この URL を見つけるには、GitHub で azuredeploy.json ファイルを選択し、**[Raw]** ボタンをクリックします。
 
-> 注 - このコマンドを実行すると、シェルからデプロイのパラメーター値の入力が求められます。
- 
+> [AZURE.NOTE] このコマンドを実行すると、シェルからデプロイのパラメーター値の入力が求められます。
+
 ```bash
 # sample deployment
 
@@ -130,7 +130,7 @@ azure group create -n RESOURCE_GROUP DEPLOYMENT_NAME -l LOCATION --template-uri 
 azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI -p '{ "param1": "value1" … }'
  ```
 
-あるいは、`-e` スイッチを利用し、JSON で書式設定されたパラメーターを指定できます。
+または、`-e` スイッチを利用し、JSON で書式設定されたパラメーターを指定できます。
 
  ```bash
  # sample deployment
@@ -188,9 +188,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-Templa
 ```
 
 ## 次のステップ
- 
-これでクラスターが機能します。接続と管理の詳細については、次のドキュメントを参照してください。
- 
-[Azure コンテナー サービス クラスターに接続する](container-service-connect.md) [REST API を使用したコンテナー管理](container-service-mesos-marathon-rest.md) [Docker Swarm でのコンテナーの管理](container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+これでクラスターが機能します。接続と管理の詳細については、次のドキュメントを参照してください。
+
+- [Azure コンテナー サービス クラスターに接続する](container-service-connect.md)
+- [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
+- [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
+
+<!---HONumber=AcomDC_0615_2016-->

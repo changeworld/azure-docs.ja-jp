@@ -60,7 +60,7 @@ Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/)
 
 ###<a name="sql-aml"></a>Azure Machine Learning への接続
 
-Azure ML リーダー モジュールで上記のサンプル クエリを直接使用し、データをその場でダウンサンプリングして Azure ML の実験で使用できます。リーダー モジュールを使用してサンプリングされたデータを読み取るスクリーン ショットを次に示します。
+Azure ML データのインポート モジュールで上記のサンプル クエリを直接使用し、データをその場でダウンサンプリングして Azure ML の実験で使用できます。リーダー モジュールを使用してサンプリングされたデータを読み取るスクリーン ショットを次に示します。
    
 ![リーダー SQL][1]
 
@@ -83,7 +83,7 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 
 ###<a name="python-aml"></a>Azure Machine Learning への接続
 
-次のサンプル コードを使用すると、ダウンサンプリングされたデータをファイルに保存し、Azure BLOB にアップロードすることができます。BLOB 内のデータは、リーダー モジュールを使用して Azure ML Experiment に直接読み込むことができます。手順は次のとおりです。
+次のサンプル コードを使用すると、ダウンサンプリングされたデータをファイルに保存し、Azure BLOB にアップロードすることができます。BLOB 内のデータは、*データのインポート* モジュールを使用して Azure ML Experiment に直接読み込むことができます。手順は次のとおりです。
 
 1. Pandas データ フレームをローカル ファイルに書き込む
 
@@ -111,7 +111,7 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 	    except:	        
 		    print ("Something went wrong with uploading blob:"+BLOBNAME)
 
-3. 次のスクリーン ショットに示すように、Azure ML のリーダー モジュールを使用して Azure BLOB からデータを読み取ります。
+3. 次のスクリーン ショットに示すように、Azure ML の*データのインポート* モジュールを使用して Azure BLOB からデータを読み取ります。
  
 ![リーダー BLOB][2]
 
@@ -124,4 +124,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

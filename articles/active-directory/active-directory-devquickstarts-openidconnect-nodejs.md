@@ -13,7 +13,7 @@
   ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="02/25/2016"
+	ms.date="05/31/2016"
 	ms.author="brandwe"/>
 
 # Azure AD を使用した Web アプリのサインインおよびサインアウト
@@ -243,7 +243,7 @@ app.post('/auth/openid/return',
   });
   ```
 
-## 4.Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
+## 4\.Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
 
 OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと通信するように、アプリが適切に構成されました。認証メッセージの作成、Azure AD からのトークンの検証、ユーザー セッションの維持などの細かな処理は、すべて `passport-azure-ad` が行います。残っているのは、サインインとサインアウトを行う方法をユーザーに提示することと、ログインしているユーザーに関する追加情報を収集することです。
 
@@ -251,7 +251,7 @@ OpenID Connect 認証プロトコルを使用して v2.0 エンドポイント�
 
 ```JavaScript
 
-//Routes (Section 4)
+// ルート (セクション 4)
 
 app.get('/', function(req, res){
   res.render('index', { user: req.user });
@@ -286,12 +286,12 @@ app.get('/logout', function(req, res){
 
 ```JavaScript
 
-// Simple route middleware to ensure user is authenticated. (Section 4)
+// ユーザーが認証されることを保証する単純なルート ミドルウェアです。(セクション 4)
 
-//   Use this route middleware on any resource that needs to be protected.  If
-//   the request is authenticated (typically via a persistent login session),
-//   the request will proceed.  Otherwise, the user will be redirected to the
-//   login page.
+//   保護する必要がある任意のリソースでこのルート ミドルウェアを使用します。  If
+//   要求が認証された場合 (通常は永続的なログイン セッションを経由します)、
+//   要求は先に進みます。それ以外の場合、ユーザーは
+//   ログインページにリダイレクトされます。
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')
@@ -307,7 +307,7 @@ app.listen(3000);
 ```
 
 
-## 5.Web サイトにユーザーを表示する express のビューとルートを作成する
+## 5\.Web サイトにユーザーを表示する express のビューとルートを作成する
 
 `app.js` が完成しました。次に実行する必要があるのは、取得した情報をユーザーに表示するルートとビューを追加し、作成した `/logout` ルートと `/login` ルートを処理することだけです。
 
@@ -414,4 +414,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0608_2016-->

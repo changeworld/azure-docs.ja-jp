@@ -55,4 +55,4 @@ SQL Database の他の機能についてはホーム ページを[ぜひご確�
  
 [SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

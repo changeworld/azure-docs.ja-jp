@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="v-shysun"
-	manager="msmets"
+	manager="felixwu"
 	editor=""/>
 
 <tags
@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="06/03/2016"
 	ms.author="v-shysun"/>
 
 # サーバー間、サブスクリプション間、および Azure の内外にデータベースを移動する
+
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 ##同じサブスクリプション内の別のサーバーにデータベースを移動するには
 - [Azure ポータル](https://portal.azure.com)で **[SQL データベース]** をクリックし、一覧からデータベースを選択してから、**[コピー]** をクリックします。詳細については、「[Azure SQL データベースのコピー](sql-database-copy.md)」を参照してください。
 
@@ -29,4 +31,4 @@
 ## Azure の外部で使用するためにデータベースのコピーを作成するには
 - [BACPAC ファイルをエクスポートします。](sql-database-export.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

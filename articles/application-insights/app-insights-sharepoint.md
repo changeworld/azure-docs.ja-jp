@@ -18,8 +18,6 @@
 # Application Insights で SharePoint を監視する
 
 
-[AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
-
 Visual Studio Application Insights を使うと、アプリの可用性、パフォーマンス、利用状況を監視できます。ここでは、SharePoint サイトのために Application Insights を設定する方法について学習します。
 
 
@@ -175,4 +173,4 @@ function onRequestFail(sender, args) {
 
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0608_2016-->

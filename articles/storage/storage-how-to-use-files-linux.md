@@ -40,10 +40,11 @@ File Storage は現在一般に提供されており、SMB 2.1 と SMB 3.0 の�
 
 Azure で Linux 仮想マシンを作成するときに、Azure イメージ ギャラリーの SMB 2.1 以降をサポートする Linux イメージを指定できます。推奨される Linux イメージの一覧を次に示します。
 
-- Ubuntu Server 14.04
-- Ubuntu Server 15.04
-- CentOS 7.1
-- Open SUSE 13.2
+- Ubuntu Server 14.04+
+- RHEL 7+
+- CentOS 7+
+- Debian 8
+- openSUSE 13.2+
 - SUSE Linux Enterprise Server 12
 - SUSE Linux Enterprise Server 12 (Premium Image)
 
@@ -126,7 +127,7 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 ### File Storage 用のツールのサポート
 
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
-- Azure CLI を使用した[ファイル共有の作成と管理](storage-azure-cli.md#create-and-manage-file-shares)
+- Azure CLI を使用して[ファイル共有を作成および管理する](storage-azure-cli.md#create-and-manage-file-shares)
 
 ### リファレンス
 
@@ -139,4 +140,4 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0608_2016-->

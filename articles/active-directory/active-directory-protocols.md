@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/31/2016"
 	ms.author="priyamo"/>
 
 # Active Directory の認証プロトコル
@@ -37,4 +37,4 @@ Azure Active Directory (Azure AD) では、最も広く使用されている認�
 - [認証プロトコルのトラブルシューティング](active-directory-error-handling.md): OAuth 2.0 と Azure AD の使用時に発生する最も一般的なエラーを解釈し、解決する方法について説明します。
 - [Azure AD での OAuth 2.0 のベスト プラクティス](active-directory-oauth-best-practices.md): Azure AD で OAuth 2.0 を使用する場合のベスト プラクティスと、よくある落とし穴の回避方法について説明します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

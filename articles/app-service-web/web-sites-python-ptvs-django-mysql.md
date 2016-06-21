@@ -67,25 +67,25 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure Ta
 
 1. これにより、Django Management Console が開き、プロジェクト フォルダーに SQLite データベースが作成されます。プロンプトに従ってユーザーを作成します。
 
-        ![Django Management Console ウィンドウ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
+    ![Django Management Console ウィンドウ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
 
 1. `F5` キーを押して、アプリケーションが動作することを確認します。
 
 1. 上部にあるナビゲーション バーで、**[ログイン]** をクリックします。
 
-        ![Django Navigation Bar](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserLocalMenu.png)
+    ![Django Navigation Bar](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserLocalMenu.png)
 
 1. データベースを同期したときに作成したユーザーの資格情報を入力します。
 
-        ![Log In Form](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserLocalLogin.png)
+    ![Log In Form](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserLocalLogin.png)
 
 1. **[サンプル投票の作成]** をクリックします。
 
-    	![Create Sample Polls](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserNoPolls.png)
+    ![Create Sample Polls](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserNoPolls.png)
 
 1.  投票をクリックして投票します。
 
-        ![Voting in Sample Polls](./media/web-sites-python-ptvs-django-mysql/PollsDjangoSqliteBrowser.png)
+    ![Voting in Sample Polls](./media/web-sites-python-ptvs-django-mysql/PollsDjangoSqliteBrowser.png)
 
 ## MySQL Database を作成する
 
@@ -137,13 +137,13 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure Ta
 
 1. **easy\_install** を使用してパッケージ `mysql-python` をインストールします。
 
-        ![Install Package ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLInstallPackage.png)
+    ![Install Package ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLInstallPackage.png)
 
 1. **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックして **[Python]** を選択し、**[Django Sync DB]** を選択します。
 
     これにより、前のセクションで作成した MySQL データベースのテーブルが作成されます。表示される手順に従ってユーザーを作成してください。この記事の最初のセクションで作成した SQLite データベースのユーザーと一致させる必要はありません。
 
-        ![Django Management Console ウィンドウ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
+    ![Django Management Console ウィンドウ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoConsole.png)
 
 1.  `F5` キーでアプリケーションを実行します。**[サンプル投票の作成]** で作成された投票と、投票によって送信されたデータは、MySQL データベースでシリアル化されます。
 
@@ -153,7 +153,7 @@ Azure .NET SDK を使用すると、Web アプリを Azure App Service に簡単
 
 1.  **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックし、**[発行]** をクリックします。
 
-        ![Publish Web ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsCommonPublishWebSiteDialog.png)
+    ![Publish Web ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsCommonPublishWebSiteDialog.png)
 
 1.  **[Microsoft Azure Web Apps]** をクリックします。
 

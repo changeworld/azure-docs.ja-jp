@@ -42,7 +42,7 @@
 
 ## Django をホストする Azure の仮想マシンの作成と構成
 
-1. [ここ](virtual-machines-linux-portal-create.md)に記載されている手順に従って、*Ubuntu Server 14.04 LTS* ディストリビューションの Azure 仮想マシンを作成します。必要に応じて、SSH 公開キーではなくパスワード認証を選択できます。
+1. [ここ](virtual-machines-linux-quick-create-portal.md)に記載されている手順に従って、*Ubuntu Server 14.04 LTS* ディストリビューションの Azure 仮想マシンを作成します。必要に応じて、SSH 公開キーではなくパスワード認証を選択できます。
 
 1. ポート 80 への受信 http トラフィックが許可されるように、[ここ](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)にある手順に従って、ネットワーク セキュリティ グループを編集します。
 
@@ -126,4 +126,4 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 
 このチュートリアルが終了したら、新しく作成した Azure の仮想マシンをシャットダウンまたは削除して、他のチュートリアル用にリソースを解放し、Azure に対する利用料金の発生を回避します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

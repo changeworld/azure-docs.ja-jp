@@ -659,9 +659,9 @@ _図 6: 分析要件とストレージ要件に基づくデータのパーティ
 - [Azure: Telemetry Basics and Troubleshooting (Azure: 製品利用統計情報の基本とトラブルシューティング)](http://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx)
 - [Azure のクラウド サービスおよび仮想マシンの診断機能](./cloud-services/cloud-services-dotnet-diagnostics.md)
 - [Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)、および [HDInsight](https://azure.microsoft.com/services/hdinsight/) に関するページ
-- [Service Bus キューの使用方法](./service-bus/service-bus-dotnet-how-to-use-queues.md)
+- [Service Bus キューの使用方法](./service-bus/service-bus-dotnet-get-started-with-queues.md)
 - [Azure Virtual Machines での SQL Server Business Intelligence](./virtual-machines/virtual-machines-windows-classic-ps-sql-bi.md)
 - 「[アラート通知の受信](./azure-portal/insights-receive-alert-notifications.md)」と「[サービス正常性を追跡する](./azure-portal/insights-service-health.md)」
 - [Application Insights](./application-insights/app-insights-get-started.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

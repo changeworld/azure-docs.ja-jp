@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/11/2016"
+   ms.date="06/02/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -29,6 +29,15 @@ Azure Active Directory チームは、Azure AD Connect を新機能で定期的�
 Azure AD Connect からのアップグレード手順 | Azure AD Connect の[以前のバージョンから最新バージョンにアップグレード](active-directory-aadconnect-upgrade-previous-version.md)するさまざまな方法を説明しています。
 必要なアクセス許可 | 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。
 ダウンロード| [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
+
+## 1\.1.189.0
+リリース日: 2016 年 6 月
+
+**修正された問題と機能強化:**
+
+- Azure AD Connect を FIPS 準拠のサーバーにインストールできます。
+    - パスワードの同期については、「[パスワード同期と FIPS](active-directory-aadconnectsync-implement-password-synchronization.md#password-synchronization-and-fips)」を参照してください
+- NetBIOS 名が Active Directory コネクタの FQDN に解決できないという問題が修正されました。
 
 ## 1\.1.180.0
 リリース日: 2016 年 5 月
@@ -69,9 +78,9 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の[以
 
 **修正された問題:**
 
-- インストールが既定の **C:\\Program Files** フォルダーにない場合、以前のリリースからのアップグレードが機能しない。
-- インストール時に、インストール ウィザードの最後で **[...同期処理を開始してください]** をオフにした場合、インストール ウィザードを再実行しても、スケジューラが有効にならない。
-- 日付と時刻の形式が US-en ではない場合、スケジューラはサーバーで予想どおりに機能しません。また、`Get-ADSyncScheduler` によって正しい時刻を返すこともできなくなる。
+- インストールが既定の **C:\\Program Files** フォルダーにない場合、以前のリリースからのアップグレードが機能しません。
+- インストール時に、インストール ウィザードの最後で **[...同期処理を開始してください]** をオフにした場合、インストール ウィザードを再実行しても、スケジューラが有効になりません。
+- 日付と時刻の形式が US-en ではない場合、スケジューラはサーバーで予想どおりに機能しません。また、正しい時刻を返す `Get-ADSyncScheduler` もブロックされます。
 - サインイン オプションおよびアップグレードとして ADFS を使用して以前のリリースの Azure AD Connect をインストールした場合、インストール ウィザードを再度実行することはできません。
 
 ## 1\.1.105.0
@@ -284,4 +293,4 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

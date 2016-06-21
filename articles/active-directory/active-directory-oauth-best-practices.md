@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/31/2016"
 	ms.author="priyamo"/>
 
 
@@ -78,4 +78,4 @@ HTTP 500 番台のエラーを受信した場合、クライアントは、要�
 
 [Active Directory Authentication Libraries (ADAL) (Azure Active Directory 認証ライブラリ (ADAL))](active-directory-authentication-libraries.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->
