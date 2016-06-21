@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/31/2016"
 	ms.author="priyamo"/>
 
 
@@ -38,4 +38,4 @@ Azure Active Directory は、テナント固有および共通 (テナント独�
 
 Azure AD で発行されるフェデレーション メタデータ ドキュメントについては、「[フェデレーション メタデータ](active-directory-federation-metadata.md)」を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

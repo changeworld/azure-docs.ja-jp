@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="v-shysun"
-	manager="msmets"
+	manager="felixwu"
 	editor=""/>
 
 <tags
@@ -13,11 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="06/03/2016"
 	ms.author="v-shysun"/>
 
 # Azure SQL Database におけるデータベース パフォーマンスを評価および改善する方法
 単一データベースの[サービス レベル](sql-database-service-tiers.md)を変更するか、エラスティック データベース プールの eDTU を増やすことで、いつでもパフォーマンスを高めることができますが、最初にクエリのパフォーマンスを改善または最適化する機会を特定する必要があります。データベースのパフォーマンスが悪い一般的な理由は、インデックスの欠落や最適化が不十分なクエリです。
+
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## データベースのパフォーマンスを評価し、チューニングする手順
 1.	[Azure ポータル](https://portal.azure.com)で、**[SQL データベース]** をクリックし、データベースを選択してから、監視グラフを使用して上限に近づいているリソースを見つけます。DTU 消費は、既定で表示されます。**[編集]** をクリックして、表示される時間の範囲と値を変更します。
@@ -28,6 +30,4 @@
 1.	単一のデータベースの場合は、[サービス レベルの変更](sql-database-scale-up.md)をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。
 2.	複数のデータベースの場合は、リソースを自動的にスケーリングするための[エラスティック データベース プール](sql-database-elastic-pool-guidance.md)の使用を検討してください。
 
-パフォーマンスの問題が続く場合は、サポートに連絡してサポート ケースを登録してください。
-
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

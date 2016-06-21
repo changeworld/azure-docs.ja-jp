@@ -100,4 +100,4 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 - [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
 - [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -100,24 +100,20 @@
 
 15. 任意で、Service **Fabric クラスター設定**を設定します。これは詳細オプションなので、Service Fabric クラスターの既定の設定を変更できます。アプリケーションまたはクラスターに必要な場合を除き、既定の設定を変更しないことをお勧めします。
 
-
-
 ## 手順 3 - セキュリティの構成
 
-現時点では、Service Fabric は X509 証明書によるクラスターの保護のみをサポートします。このプロセスを開始する前に、Key Vault に証明書をアップロードする必要があります。この方法の詳細については、「[Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)」を参照してください。
+セキュリティのシナリオと概念については、[Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)に関するページをご覧ください。この時点では、Service Fabric は、X509 証明書経由でのみクラスターをセキュリティで保護することができます。その方法については、「[Secure a Service Fabric cluster on Azure using certificates (証明書を使用した Azure の Service Fabric クラスターのセキュリティ保護)](service-fabric-secure-azure-cluster-with-certs.md)」をご覧ください。
 
 クラスターのセキュリティ保護はオプションですが、強くお勧めします。クラスターをセキュリティで保護しない場合は、**[セキュリティ モード]** を **[セキュリティ保護なし]** に切り替える必要があります。セキュリティ保護のないクラスターを後でセキュリティ保護のあるクラスターに変更することは**できない**ことにご留意ください。
-
-セキュリティの考慮事項と手順については、「[Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)」を参照してください。
 
 ![Azure ポータルのセキュリティ構成のスクリーン ショット。][SecurityConfigs]
 
 
 ## 手順 4 - クラスターの作成を完了する
 
-クラスターの作成を完了するには、**[概要]** をクリックして設定した構成を確認するか、クラスターのデプロイに使用する Azure リソース マネージャー テンプレートをダウンロードします。必須の設定を指定すると、**[OK]** ボタンが有効になります。このボタンをクリックして、クラスター作成プロセスを開始できます。
+クラスターの作成を完了するには、**[概要]** をクリックして設定した構成を確認するか、クラスターのデプロイに使用する Azure Resource Manager テンプレートをダウンロードします。必須の設定を指定すると、**[OK]** ボタンが有効になります。このボタンをクリックして、クラスター作成プロセスを開始できます。
 
-通知には作成の進行状況が表示されます(画面の右上にあるステータス バーの近くの "ベル" アイコンをクリックします)。 クラスターの作成中に **[スタート画面にピン留めする]** をクリックした場合、**[Service Fabric クラスターのデプロイ]** が**スタート**画面にピン留めされます。
+通知には作成の進行状況が表示されます(画面の右上にあるステータス バーの近くの "ベル" アイコンをクリックします)。 クラスターの作成中に **[スタート画面にピン留めする]** をクリックした場合、**[Deploying Service Fabric Cluster (Service Fabric クラスターのデプロイ)]** が**スタート**画面にピン留めされます。
 
 !["Service Fabric クラスターのデプロイ中" が表示されているスタート画面のスクリーン ショット。][Notifications]
 
@@ -127,13 +123,11 @@
 
 1. **[参照]** に移動し、**[Service Fabric クラスター]** をクリックします。
 
-2. クラスターを探してクリックします。
+2. クラスターを探してクリックします。![ポータルでクラスターを検索するスクリーン ショット。][BrowseCluster]
 
-![ポータルでクラスターを検索するスクリーン ショット。][BrowseCluster]
-3. これにより、クラスターのパブリック IP アドレスなどのクラスターに関する詳細が、ダッシュボードに表示されます。**[クラスター パブリック IP アドレス]** の上にポインターを移動するとクリップボードが開き、アドレスをクリックしてコピーできます。
+3. これにより、クラスターのパブリック IP アドレスなどのクラスターに関する詳細が、ダッシュボードに表示されます。**[クラスター パブリック IP アドレス]** の上にポインターを移動するとクリップボードが開き、アドレスをクリックしてコピーできます。![ダッシュボードのクラスターの詳細のスクリーン ショット。][ClusterDashboard]
 
-![ダッシュボードのクラスターの詳細のスクリーン ショット。][ClusterDashboard]
-  クラスターのダッシュボード ブレードの **[ノード モニター]** セクションには、正常な VM 数と正常ではない VM 数が表示されます。クラスターの正常性の詳細については、「[Service Fabric の正常性モニタリングの概要](service-fabric-health-introduction.md)」を参照してください。
+  クラスターのダッシュボード ブレードの **[ノード モニター]** セクションには、正常な VM 数と正常ではない VM 数が表示されます。クラスターの正常性の詳細については、[Service Fabric の正常性モデルの概要](service-fabric-health-introduction.md)に関するページをご覧ください。
 
 >[AZURE.NOTE] Service Fabric クラスターが可用性を維持し、状態を保持するには、一定数のノードが常にアップしている必要があります。これは、「維持クォーラム」と呼ばれます。そのため、先に[状態の完全なバックアップ](service-fabric-reliable-services-backup-restore.md)を実行しない限り、クラスター内のすべてのコンピューターをシャットダウンするのは一般に安全ではありません。
 
@@ -209,7 +203,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 -KeepAlive
 
 ## 仮想マシン スケール セット インスタンスまたはクラスター ノードにリモート接続する
 
-クラスターで指定する NodeType ごとに、VM スケール セットがセットアップされます。詳細については、[VM スケール セットのインスタンスへのリモート接続](service-fabric-cluster-nodetypes.md#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node)に関する記事を参照してください。
+クラスターで指定する NodeType ごとに、VM スケール セットがセットアップされます。詳細については、[VM スケール セットのインスタンスへのリモート接続](service-fabric-cluster-nodetypes.md#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node)に関する記事をご覧ください。
 
 ## 次のステップ
 
@@ -231,4 +225,4 @@ Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 -KeepAlive
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

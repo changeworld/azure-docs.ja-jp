@@ -4,7 +4,7 @@
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
-	manager="mblythe" 
+	manager="paulettm" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="02/04/2016" 
+	ms.date="06/08/2016" 
 	ms.author="heidist"/>
 
 # Azure Search 管理 REST API の使用
@@ -38,7 +38,7 @@ Azure Search REST 管理 API は、ポータルでプログラムを使用して
 
 このチュートリアルは C# で記述された Windows のコンソール アプリケーションを基にしていて、Visual Studio 2012 または 2013 で実行することができます。
 
-クライアント アプリケーションは、Codeplex の [Azure Search Management API Demo](https://github.com/Azure-Samples/search-dotnet-management-api/) にあります。
+クライアント アプリケーションは、Github の「[Azure Search .NET Management API Demo (Azure Search .NET 管理 API デモ)](https://github.com/Azure-Samples/search-dotnet-management-api/)」にあります。
 
 
 ##アプリケーションの構成
@@ -208,4 +208,4 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0608_2016-->

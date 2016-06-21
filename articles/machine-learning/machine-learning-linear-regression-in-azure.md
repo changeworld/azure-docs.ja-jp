@@ -51,7 +51,7 @@ Excel 回帰は、Excel Analysis ToolPak で見つかった標準的な線形回
 次の手順に従って、Azure ML で実験を作成しました。
 
 1.	データセットを csv ファイルとして Azure ML にアップロードしました (非常に小さいファイル)
-2.	Excel で使用したのと同じデータ特徴を選ぶために、新しい実験を作成し、[Project 列][project-columns]モジュールを使用しました   
+2.	Excel で使用したのと同じデータ特徴を選ぶために、新しい実験を作成し、[データセット内の列の選択][select-columns]モジュールを使用しました   
 3.	[データ分割][split]モジュール (*相対式*モードで) を使用して、Excel で実行されたのと同じトレーニング セットにデータを分割しました  
 4.	[線形回帰][linear-regression]モジュール (既定のオプションのみ) で実験、文書化し、Excel の回帰モデルと結果を比較しました
 
@@ -155,8 +155,8 @@ Excel の回帰と Azure Machine Learning の実験を並行して実行する�
 [boosted-decision-tree-regression]: https://msdn.microsoft.com/library/azure/0207d252-6c41-4c77-84c3-73bdf1ac5960/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

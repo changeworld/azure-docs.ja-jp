@@ -3,7 +3,7 @@
    description="編集と更新を使用して、ローカルの Docker コンテナーで実行されているアプリに変更を加え、デバッグのブレークポイントを設定する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="AllenClark"
+   authors="allclark"
    manager="douge"
    editor="" />
 <tags
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/13/2016"
+   ms.date="06/08/2016"
    ms.author="allclark" />
 
 # ローカルの Docker コンテナーでアプリをデバッグする
@@ -29,7 +29,7 @@ Visual Studio Tools for Docker を使用すると、一貫した方法でアプ�
 - [Microsoft ASP .NET Core RC 2](http://go.microsoft.com/fwlink/?LinkId=798481)
 - [Visual Studio 2015 Tools for Docker](https://aka.ms/DockerToolsForVS)
 
-ローカルで Docker コンテナーを実行するには、ローカルの Docker クライアントが必要です。Hyper-V を無効にして、リリース済みの [Docker Toolbox](https://www.docker.com/products/overview#/docker_toolbox) を使用するか、または Hyper-V を使用し、Windows 10 が必要な [Docker for Windows Beta](https://beta.docker.com) を使用することができます。
+ローカルで Docker コンテナーを実行するには、ローカルの Docker クライアントが必要です。Hyper-V を無効にして、リリース済みの [Docker Toolbox](https://www.docker.com/products/overview#/docker_toolbox) を使用するか、または Hyper-V を使用し、Windows 10 が必要な [Docker for Windows のベータ版](https://beta.docker.com)を使用することができます。
 
 Docker Toolbox を使用する場合は、[Docker クライアントを構成する](./vs-azure-tools-docker-setup.md)必要があります
 
@@ -56,14 +56,18 @@ ASP .NET Core RC2 Web アプリの開発に Visual Studio 2015 Tools for Docker 
 
 	![][1]
 
-> [AZURE.NOTE] [Docker for Windows Beta](https://beta.docker.com) を使用している場合は、Properties\\Docker.props を開き、既定値を削除して、Visual Studio を再起動すると、値が反映されます。![][2]
+> [AZURE.NOTE] [Docker for Windows のベータ版](https://beta.docker.com)を使用している場合は、Properties\\Docker.props を開き、既定値を削除して、Visual Studio を再起動すると、値が反映されます。
+>
+> ![][2]
 
 ##編集と更新
 変更をすばやく反復処理するには、コンテナー内でアプリケーションを起動して変更を行うと、IIS Express を使用する場合のように表示できます。
 
-1. ソリューション構成を `Debug` に設定して **&lt;CTRL + F5>** を押すと、Docker イメージが作成され、ローカルで実行されます。ビルドを使用するか、次の方法で出力ウィンドウを確認します
+1. ソリューション構成を `Debug` に設定して **Ctrl + F5** を押すと、Docker イメージが作成され、ローカルで実行されます。
 
-1. コンテナー イメージが作成されて Docker コンテナーで実行されると、Visual Studio は既定のブラウザーでその Web アプリの起動を試みます。Microsoft Edge ブラウザーを使用している場合、またはエラーが発生している場合は、「[トラブルシューティング](vs-azure-tools-docker-troubleshooting-docker-errors.md)」セクションを参照してください。
+    コンテナー イメージが作成されて Docker コンテナーで実行されると、Visual Studio は既定のブラウザーでその Web アプリを起動します。Microsoft Edge ブラウザーを使用している場合、またはエラーが発生している場合は、「[トラブルシューティング](vs-azure-tools-docker-troubleshooting-docker-errors.md)」セクションを参照してください。
+
+1. [About] ページに移動して、変更を加えます。
 
 1. Visual Studio に戻り、`Views\Home\About.cshtml` を開きます。
 
@@ -73,9 +77,14 @@ ASP .NET Core RC2 Web アプリの開発に Visual Studio 2015 Tools for Docker 
 	<h1>Hello from a Docker Container!</h1>
 	```
 
-1.	出力ウィンドウで .NET ビルドが完了したことを確認し、`Application started. Press Ctrl+C to shut down` が表示されたら、お使いのブラウザーに戻り、ページを更新します。
+1.	出力ウィンドウで .NET ビルドが完了したことを確認し、次の行が表示されたら、お使いのブラウザーに戻り、[About] ページを更新します。
 
-1.	変更が適用されたことが表示されます。
+    ```
+    Now listening on: http://*:80
+    Application started. Press Ctrl+C to shut down
+    ```
+
+1.	変更が適用されました。
 
 ##ブレークポイントのデバッグ
 多くの場合、変更にはさらなる検査が必要になります。この場合、Visual Studio のデバッグ機能を活用します。
@@ -91,7 +100,7 @@ ASP .NET Core RC2 Web アプリの開発に Visual Studio 2015 Tools for Docker 
 
 1.  ブレークポイントを `string message`... 行の左側に設定します。
 
-1.  **&lt;F5>** キーを押して、デバッグを開始します。
+1.  **F5** キーを押して、デバッグを開始します。
 
 1.  [About] ページに移動して、ブレークポイントを探します。
 
@@ -111,7 +120,7 @@ ASP .NET Core RC2 Web アプリの開発に Visual Studio 2015 Tools for Docker 
 - [Visual Studio Team Services 用 Docker ツール](http://aka.ms/dockertoolsforvsts) - Docker コンテナーの構築およびデプロイ
 - [Visual Studio Code 用 Docker ツール](http://aka.ms/dockertoolsforvscode) - Docker ファイルを編集するための言語サービス (e2e シナリオは増加予定)
 - [Windows コンテナー情報](http://aka.ms/containers) - Windows Server および Nano Server の情報
-- [Azure Container Service](https://azure.microsoft.com/services/container-service/) - [Azure Container Service の内容](http://aka.ms/AzureContainerService)
+- [Azure コンテナー サービス](https://azure.microsoft.com/services/container-service/) - [Azure コンテナー サービスの内容](http://aka.ms/AzureContainerService)
 
 ## さまざまな Docker ツール
 
@@ -132,4 +141,4 @@ ASP .NET Core RC2 Web アプリの開発に Visual Studio 2015 Tools for Docker 
 [2]: ./media/vs-azure-tools-docker-edit-and-refresh/docker-props.png
 [3]: ./media/vs-azure-tools-docker-edit-and-refresh/breakpoint.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

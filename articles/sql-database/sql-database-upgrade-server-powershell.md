@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="06/06/2016"
 	ms.author="sstein"/>
 
 # PowerShell を使用した Azure SQL Database V12 へのアップグレード
@@ -201,4 +201,4 @@ ElasticPoolCollection と DatabaseCollection parameters は省略可能です。
 - [Start-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt619403.aspx)
 - [Stop-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603589.aspx)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

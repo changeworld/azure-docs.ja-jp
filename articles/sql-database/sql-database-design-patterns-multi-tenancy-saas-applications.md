@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン"
+   pageTitle="Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン | Microsoft Azure" 
    description="この記事では、クラウド環境で実行されるマルチテナント SaaS (サービスとしてのソフトウェア) のデータベース アプリケーションで考慮する必要がある要件、一般的なデータ アーキテクチャ パターン、およびこれらのパターンに関連するさまざまなトレードオフについて説明します。さらに、エラスティック データベース プールとエラスティック ツールを備えた Azure SQL Database サービスを使用して、妥協のない方法でこれらの要件に対応する方法についても説明します。"
    keywords=""
    services="sql-database"
@@ -13,8 +13,8 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="data-management"
-   ms.date="03/22/2016"
+   ms.workload="sqldb-design"
+   ms.date="06/07/2016"
    ms.author="carlrab"/>
 
 # Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン
@@ -172,4 +172,4 @@ Azure SQL Database では、テナントの分離とテナントのデータベ�
 
 	
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

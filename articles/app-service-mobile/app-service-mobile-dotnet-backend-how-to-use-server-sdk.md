@@ -303,7 +303,7 @@ App Service Authentication/Authorization プロバイダーの中に使用した
     var claimsPrincipal = this.User as ClaimsPrincipal;
     string sid = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-SID はプロバイダー固有のユーザー ID から派生し、特定のユーザーとログイン プロバイダーに対して静的です。
+SID はプロバイダー固有のユーザー ID から派生し、特定のユーザーとログイン プロバイダーに対して静的です。ユーザーが匿名でエンドポイントにアクセスすると、User プロパティは null を返します。
 
 App Service では、ログイン プロバイダーからの特定の要求を行うこともできます。これにより、Facebook Graph API を使用したりして、プロバイダーからの詳細情報を要求することができます。ポータルのプロバイダー ブレードで、要求を指定できます。いくつかの要求では、プロバイダーの追加の構成が必要です。
 
@@ -332,6 +332,19 @@ App Service では、ログイン プロバイダーからの特定の要求を�
     }
 
 **GetAppServiceIdentityAsync** 拡張メソッドを動作させるには、`System.Security.Principal` の using ステートメントを追加する必要があります。
+
+### <a name="authorize"></a>方法: 承認されたユーザーに対するデータ アクセスを制限する
+
+前のセクションでは、認証されたユーザーのユーザー ID を取得する方法について説明しました。この値に基づいて、データとその他のリソースへのアクセスを制限できます。たとえば、UserId 列をテーブルに追加して、ユーザー ID によってユーザーのクエリの結果をフィルター処理すると、承認されたユーザーだけにデータが返されるように簡単に制限できます。次のコードは、現在のユーザーの ID が、TodoItem テーブルの UserId 列の値と一致する場合にのみデータ行を返します。
+
+    // Get the SID of the current user.
+    var claimsPrincipal = this.User as ClaimsPrincipal;
+    string sid = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier).Value;
+    
+    // Only return data rows that belong to the current user.
+    return Query().Where(t => t.UserId == sid);
+
+またシナリオによっては、特定のユーザーのアクセスを許可するエンドポイントなど、より詳細なユーザーの承認情報を確認するために、ユーザーまたはロールのテーブルを作成することもできます。
 
 ## 方法: サーバー プロジェクトにプロジェクトを追加する
 
@@ -389,7 +402,7 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
 	    }
 	});
 
-インストールを作成するときは、プッシュ通知の登録時にクライアントから提供されたタグはすべてバックエンドでは無視されることに注意してください。クライアントがインストールにタグを追加できるようにするには、上記のパターンを使用してタグを追加する新しいカスタム API を作成する必要があります。クライアントがインストールにタグを追加できるようにするカスタム API コントローラーの例については、「App Service Mobile Apps completed quickstart sample for .NET backend (.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプル)」の「[Client-added push notification tags (クライアントが追加したプッシュ通知タグ)](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags)」を参照してください。
+インストールを作成するときは、プッシュ通知の登録時にクライアントから提供されたタグはすべてバックエンドでは無視されることに注意してください。クライアントがインストールにタグを追加できるようにするには、上記のパターンを使用してタグを追加する新しいカスタム API を作成する必要があります。クライアントがインストールにタグを追加できるようにするカスタム API コントローラーの例については、「App Service Mobile Apps completed quickstart sample for .NET backend (.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプル)」の「[Client-added push notification tags (クライアントが追加したプッシュ通知タグ)](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags)」をご覧ください。
 
 ##<a name="push-user"></a>方法: 認証されたユーザーにプッシュ通知を送信する
 
@@ -406,7 +419,7 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
     // Send a template notification to the user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
 
-認証されたクライアントからプッシュ通知を登録する場合は、登録を試みる前に、認証が完了していることを確認します。詳細については、「App Service Mobile Apps completed quickstart sample for .NET backend (.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプル)」の「[Push to users (ユーザーへのプッシュ)](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users)」を参照してください。
+認証されたクライアントからプッシュ通知を登録する場合は、登録を試みる前に、認証が完了していることを確認します。詳細については、「App Service Mobile Apps completed quickstart sample for .NET backend (.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプル)」の「[Push to users (ユーザーへのプッシュ)](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users)」をご覧ください。
 
 ## 方法: .NET サーバー SDK のデバッグとトラブルシューティングを実行する
 
@@ -465,4 +478,4 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

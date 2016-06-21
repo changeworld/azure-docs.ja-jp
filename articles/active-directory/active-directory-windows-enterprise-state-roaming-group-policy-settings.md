@@ -5,7 +5,7 @@
     keywords="Enterprise State Roaming 用のグループ ポリシーと MDM 設定とは, Enterprise State Roaming, Windows クラウド"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor="curtand"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/04/2016"
+	ms.date="06/07/2016"
 	ms.author="femila"/>
 
 # グループ ポリシーと MDM の設定
@@ -24,20 +24,20 @@
 会社の管理下にない個人用デバイスのローミングを管理する必要がある場合は、グループ ポリシーや MDM ではなく Azure ポータルを使用して、ローミングを有効または無効にしてください。利用可能なポリシー設定を以下の表で説明します。
 
 ## MDM の設定
-MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適用されます。
+MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適用されます。Windows 10 Mobile のサポートは、ユーザーの OneDrive アカウントによる Microsoft アカウント ベースのローミングに対してのみ存在します。Azure AD ベースの同期用にサポートされているデバイスの詳細については、「デバイスとエンドポイント」をご覧ください。
 
 | 名前 | 説明 |
 |------------------------------------|----------------------------------------------------------------------|
 | Microsoft アカウントの接続を許可 | デバイスの Microsoft アカウントを使った認証をユーザーに許可します。 |
-| ユーザー設定の同期を許可 | Windows の設定データとアプリ データのローミングをユーザーに許可します。 |
- 
+| ユーザー設定の同期を許可 | Windows の設定データとアプリ データのローミングをユーザーに許可します。このポリシーを無効にすると、モバイル デバイスでの同期とバックアップが無効になります |
+
 ## グループ ポリシーの設定
-グループ ポリシーの設定は、Active Directory ドメインに参加している Windows 10 デバイスに適用されます。既存の設定の中には、同期設定の管理用に見えるものの実際には Windows 10 の Enterprise State Roaming では正しく機能しないものがあります。それらの設定を以下の表に示します。
+グループ ポリシーの設定は、Active Directory ドメインに参加している Windows 10 デバイスに適用されます。以下の表には、同期設定の管理用に見えるものの、実際には Windows 10 の Enterprise State Roaming では正しく機能しない既存の設定も記載されています。こうした設定には "使用しないでください" と記されています。
 
 | 名前 | 説明 |
 |-------------------------------------|-------------|
 | アカウント: Microsoft アカウントをブロックします |このコンピューターにユーザーが新しい Microsoft アカウントを追加できないようにするポリシー設定です。|
-| 同期しない |Windows の設定データとアプリ データのローミングをユーザーに許可します。|
+| 同期しない |ユーザーが Windows の設定データとアプリ データをローミングできないようにします。|
 | パーソナル設定を同期しない |"テーマ" グループの同期を無効にします。|
 | ブラウザーの設定を同期しない |"Internet Explorer" グループの同期を無効にします。|
 | パスワードを同期しない |"パスワード" グループの同期を無効にします。|
@@ -55,4 +55,4 @@ MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適�
 - [設定とデータのローミングに関する FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
 - [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0608_2016-->

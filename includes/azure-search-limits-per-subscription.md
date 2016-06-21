@@ -1,22 +1,20 @@
-You can create multiple services within a subscription, each one provisioned at a specific tier, limited only by the number of services allowed at each tier within a single Azure subscription. Maximum services per tier are noted below. As indicated, you could create up to 12 services at the Basic tier and another 12 services at the S1 tier within the same subscription. 
+サブスクリプション内で複数のサービスを、特定のレベルでプロビジョニングされるそれぞれについて作成できます。これは、1 つの Azure サブスクリプション内の各レベルで許可されているサービスの数によってのみ制限されます。レベルごとの最大サービス数については、次に説明します。次に示すように、Basic レベルで最大 12 のサービスと、同じサブスクリプション内の S1 レベルで別の 12 のサービスを作成できます。
 
-Other tiers are one per subscription. You can contact Azure Support if you need more than one S2, S3, or S3 HD per subscription.
+その他のレベルはサブスクリプションごとに 1 つです。サブスクリプションごとに複数の S2、S3、または S3 HD が必要な場合は、Azure サポートにお問い合わせください。
 
-Resource|Free|Basic|S1|S2|S3 <sup>1</sup> <br/>(Preview) |S3 HD <sup>1</sup> <br/>(Preview) 
+リソース|無料|Basic|S1|S2|S3 <sup>1</sup> <br/>(プレビュー) |S3 HD <sup>1</sup> <br/>(プレビュー) 
 ---|---|---|---|----|---|----
-Maximum services |1 |12 |12  |1 |1 |1 
-Maximum scale in SU <sup>2</sup>|N/A <sup>3</sup>|3 SU <sup>4</sup> |36 SU|36 SU|36 SU|12 SU <sup>5</sup>
+最大サービス数 |1 |12 |12 |1 |1 |1 
+SU の最大スケール <sup>2</sup>|該当なし <sup>3</sup>|3 SU <sup>4</sup> |36 SU|36 SU|36 SU|12 SU <sup>5</sup>
 
-<sup>1</sup> **Preview** tiers are billed at an introductory rate of 50% off the full price. Prior to general availability (GA) tiers are introduced as a Preview feature. During Preview, there is no service level agreement (SLA). See [Choose a SKU or tier for Azure Search](../articles/search/search-sku-tier.md) for more information about tiers.
+<sup>1</sup> **プレビュー** レベルは正規料金の 50% オフの導入価格で課金されます。一般公開 (GA) に先だって、複数のレベルがプレビュー機能として導入されました。プレビュー期間中、サービス レベル アグリーメント (SLA) はありません。レベルの詳細については、「[Choose a SKU or tier for Azure Search (Azure Search 用の SKU またはレベルの選択)](../articles/search/search-sku-tier.md)」を参照してください。
 
-<sup>2</sup> **Search units (SU)** are billable units per service, allocated as either a **replica** or a **partition**. You need both resource types for storage, indexing, and query operations. See [Scale resource levels for query and index workloads](../articles/search/search-capacity-planning.md) for valid combinations that stay under the maximum limits. 
+<sup>2</sup> **Search 単位 (SU)** は、**レプリカ**または**パーティション**のいずれかとして割り当てられているサービスごとの課金単位です。ストレージ、インデックス作成、およびクエリ操作については、両方のリソースの種類が必要です。上限未満の有効な組み合わせについては、[クエリとインデックスのワークロードに応じたリソース レベルのスケール](../articles/search/search-capacity-planning.md)に関する記事を参照してください。
 
-<sup>3</sup> **Free** is based on shared resources used by multiple subscribers. At this tier, there are no dedicated resources for an individual subscriber. For this reason, scalability is not supported.
+<sup>3</sup> **Free** は、複数のサブスクライバーで使用される共有リソースに基づいています。このレベルでは、各サブスクライバーの専用リソースはありません。このため、スケーラビリティはサポートされていません。
 
-<sup>4</sup> **Basic** has one fixed partition. SUs are used to allocate replicas for scaling query workloads.
+<sup>4</sup> **Basic** には、1 つの固定パーティションがあります。SU を使用して、クエリのワークロードを拡張するためのレプリカを割り当てます。
 
-<sup>5</sup> **S3 HD** is based on the same hardware as S3, but in a configuration that's optimized for a large number of smaller indexes. It has 1 very large partition instead of 12 smaller partitions, and it has a maximum of 12 replicas, similar to S3.
+<sup>5</sup> **S3 HD** は、S3 と同じハードウェアに基づいていますが、その構成は多数の小さなインデックス向けに最適化されています。12 の小さなパーティションではなく、1 つの非常に大きなパーティションがあり、S3 のような最大で 12 のレプリカがあります。
 
-
-
-
+<!---HONumber=AcomDC_0608_2016-->

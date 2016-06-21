@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
-	ms.date="05/31/2016" 
+	ms.date="06/09/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の使用方法
@@ -59,21 +59,7 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 <a name="NuGet"></a>
 ## キャッシュ クライアントの構成
 
-Azure Redis Cache を使用して構成されたキャッシュは、あらゆる Azure アプリケーションからアクセスできます。Visual Studio で開発した .NET アプリケーションであれば、**StackExchange.Redis** キャッシュ クライアントを使用できます。NuGet パッケージを使用すると、このキャッシュ クライアント アプリケーションを簡単に構成できます。
-
->[AZURE.NOTE] 詳細については、GitHub の [StackExchange.Redis に関するページ][]と [StackExchange.Redis キャッシュ クライアントのドキュメント][]を参照してください。
-
-Visual Studio で StackExchange.Redis NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-
-![Manage NuGet packages][NuGetMenu]
-
-検索ボックスに「**StackExchange.Redis**」または「**StackExchange.Redis.StrongName**」と入力し、結果の中から必要なバージョンを選択して、**[インストール]** をクリックします。
-
->[AZURE.NOTE] 厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**\[StackExchange.Redis]** を選択します。
-
-![StackExchange.Redis NuGet package][StackExchangeNuget]
-
-クライアント アプリケーションから StackExchange.Redis Cache クライアントを使用して Azure Redis Cache にアクセスするために必要なアセンブリ参照が NuGet パッケージによってダウンロードされ追加されます。
+[AZURE.INCLUDE [redis-cache-configure](../../includes/redis-cache-configure-stackexchange-redis-nuget.md)]
 
 クライアント プロジェクトをキャッシュ用に構成できたら、以降のセクションで説明されている、キャッシュを操作するための技法を使用できます。
 
@@ -290,7 +276,6 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 [Using Resource groups to manage your Azure resources]: http://azure.microsoft.com/documentation/articles/resource-group-overview/
 
 [StackExchange.Redis]: http://github.com/StackExchange/StackExchange.Redis
-[StackExchange.Redis に関するページ]: http://github.com/StackExchange/StackExchange.Redis
 [StackExchange.Redis キャッシュ クライアントのドキュメント]: http://github.com/StackExchange/StackExchange.Redis#documentation
 
 [Redis]: http://redis.io/documentation
@@ -299,4 +284,4 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 [How Application Strings and Connection Strings Work (アプリケーション文字列と接続文字列の動作)]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

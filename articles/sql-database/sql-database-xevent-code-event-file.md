@@ -15,12 +15,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/28/2016" 
+	ms.date="06/03/2016" 
 	ms.author="genemi"/>
 
 
 # SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
 
+[AZURE.INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
 拡張イベントに関する情報を確かな方法で取得し、レポートするための完全なコード サンプルが必要です。
 
@@ -597,4 +598,4 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

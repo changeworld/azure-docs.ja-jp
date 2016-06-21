@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/06/2016" 
+	ms.date="06/08/2016" 
 	ms.author="ccompy"/>
 
 # App Service 環境の作成方法 #
@@ -36,7 +36,7 @@ ASE を作成するには、次の情報を提供する必要があります。
 - ASE で作成されるすべてのアプリは、ASE 自体と同じサブスクリプションに含まれます。
 - ASE の作成に使用されたサブスクリプションへのアクセス権がない場合、ASE を使用してアプリを作成することはできません。
 - ASE をホストするために使用されている VNET は、地域クラシック "v1" VNET である必要があります。 
-- ASE をホストするために使用されているサブネットに、他のコンピューティング リソースを含めることはできません。
+- **ASE をホストするために使用されているサブネットに、他のコンピューティング リソースを含めることはできません。**
 - サブネットに存在できる ASE は 1 つに限られます。
 - 現時点では、RFC1918 アドレス空間 (プライベート アドレス) を持つ仮想ネットワークのみがサポートされています。
 
@@ -135,7 +135,7 @@ ASE を作成した後は、次の項目を調整できます。
 - 使用する VNET
 - 使用するサブネット
 
-App Service 環境の手動スケーリング、管理、および監視の詳細については、[App Service 環境の構成方法][ASEConfig]に関するページをご覧ください。
+App Service Environment の手動スケーリング、管理、および監視の詳細については、[App Service Environment の構成方法][ASEConfig]に関するページをご覧ください
 
 自動スケーリングの詳細については、[App Service 環境の自動スケールの構成方法][ASEAutoscale]に関するページを参照してください。
 
@@ -165,4 +165,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0608_2016-->

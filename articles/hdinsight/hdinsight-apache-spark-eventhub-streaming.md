@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/14/2016" 
+	ms.date="06/07/2016" 
 	ms.author="nitinme"/>
 
 
-# Spark ストリーミング: Azure Event Hubs からイベントを HDInsight Linux で Apache Spark を使用して処理する (プレビュー)
+# Spark ストリーミング: HDInsight Linux で Apache Spark クラスターを使用して Azure Event Hubs からのイベントを処理する
 
 Spark ストリーミングは、コア Spark API を拡張して、スケーラビリティ、高スループット、フォールト トレランスを備えたストリーム処理アプリケーションを構築します。多くのソースからデータを取り込むことができます。この記事では、Azure Event Hubs を使用してデータを取り込みます。Event Hubs は、スケーラブルなインジェスト システムであり、1 秒間に数百万件のイベントを取り込むことができます。
 
@@ -112,39 +112,46 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 	![プロジェクト ビュー](./media/hdinsight-apache-spark-eventhub-streaming/project-view.png)
 	
-4. Pom.xml を開き、Spark のバージョンが正しいことを確認します。<properties> ノードで、次のスニペットを検索し、Spark のバージョンを確認します。
+4. **pom.xml** を開き、Spark のバージョンが正しいことを確認します。<properties> ノードで、次のスニペットを検索し、Spark のバージョンを確認します。
 
 		<scala.version>2.10.4</scala.version>
     	<scala.compat.version>2.10.4</scala.compat.version>
     	<scala.binary.version>2.10</scala.binary.version>
-    	<spark.version>1.5.1</spark.version>
+    	<spark.version>1.6.1</spark.version>
 
 	**spark.version** の値が **1.5.1** に設定されていることを確認します。
 
 5. アプリケーションでは、次の 2 つの依存関係 jar が必要です。
 
-	* **EventHub receiver jar**。Spark で Event Hub からメッセージを受信するために必要です。この jar は、Spark Linux クラスター (`/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.2.2.3.3.1-7-jar-with-dependencies.jar`) で入手できます。pscp を使用すると、jar をローカル コンピューターにコピーできます。(注: 一部のインスタンスは、`/usr/hdp/2.4.1.0-327/spark/lib` の下にファイルがあります)
+	* **EventHub receiver jar**。Spark で Event Hub からメッセージを受信するために必要です。この jar を含めるには、次の `<repositories>..</repositories>` 要素間のテキストを挿入して **pom.xml** を更新します。`<repositories>` 要素が存在しない場合は、`<properties>` と同じレベルに作成します。
 
-			pscp sshuser@mysparkcluster-ssh.azurehdinsight.net:/usr/hdp/current/spark-client/lib/spark-streaming-eventhubs-example-1.5.2.2.3.3.1-7-jar-with-dependencies.jar C:/eventhubjar
+			  <repository>
+			  	<id>spark-eventhubs</id>
+			  	<url>https://raw.github.com/hdinsight/spark-eventhubs/maven-repo/</url>
+			  	<snapshots>
+					<enabled>true</enabled>
+					<updatePolicy>always</updatePolicy>
+			  	</snapshots>
+			  </repository>
+			
 
-		これにより、Spark クラスターからローカル コンピューターに jar ファイルがコピーされます。
+		また、次の `<dependencies>` の下を追加します。
 
-	* **JDBC driver jar**。Event Hub から受信したメッセージを Azure SQL データベースに書き込むために必要です。この jar ファイルの v4.1 以降を、[ここ](https://msdn.microsoft.com/ja-JP/sqlserver/aa937724.aspx)からダウンロードできます。
-	
+			<dependency>
+			  <groupId>com.microsoft.azure</groupId>
+			  <artifactId>spark-streaming-eventhubs_2.10</artifactId>
+			  <version>1.0.0</version>
+			</dependency> 
 
-		プロジェクト ライブラリ内のこれらの jar への参照を追加します。次の手順に従います。
+	* **JDBC driver jar**。Event Hub から受信したメッセージを Azure SQL データベースに書き込むために必要です。この jar ファイルの v4.1 以降を、[ここ](https://msdn.microsoft.com/sqlserver/aa937724.aspx)からダウンロードできます。プロジェクト ライブラリでこの jar への参照を追加します。次の手順に従います。
 
 		1. アプリケーションが開かれている IntelliJ IDEA ウィンドウで、**[File (ファイル)]**、**[Project Structure (プロジェクトの構造)]**、**[Libraries (ライブラリ)]** の順にクリックします。 
+		
+		2. 追加アイコン (![追加アイコン](./media/hdinsight-apache-spark-eventhub-streaming/add-icon.png)) をクリックし、**[Java]** をクリックして、JDBC driver jar をダウンロードした場所に移動します。画面の指示に従って、Jar ファイルをプロジェクト ライブラリに追加します。
 
 			![不足している依存関係の追加](./media/hdinsight-apache-spark-eventhub-streaming/add-missing-dependency-jars.png "不足している依存関係 jar の追加")
 
-			追加アイコン (![追加アイコン](./media/hdinsight-apache-spark-eventhub-streaming/add-icon.png)) をクリックし、**[Java]** をクリックして、EventHub receiver jar をダウンロードした場所に移動します。画面の指示に従って、Jar ファイルをプロジェクト ライブラリに追加します。
-
-		1. 前の手順を繰り返して、JDBC jar もプロジェクト ライブラリに追加します。
-	
-			![不足している依存関係の追加](./media/hdinsight-apache-spark-eventhub-streaming/add-missing-dependency-jars.png "不足している依存関係 jar の追加")
-
-		1. **[Apply]** をクリックします。
+		3. **[Apply]** をクリックします。
 
 6. 出力 jar ファイルを作成します。次の手順に従います。
 	1. **[Project Structure (プロジェクトの構造)]** ダイアログ ボックスで、**[Artifacts (アーティファクト)]** をクリックし、プラス記号をクリックします。ポップアップ ダイアログ ボックスで、**[JAR]** をクリックし、**[From modules with dependencie (依存関係を持つモジュールから)]** をクリックします。
@@ -167,11 +174,11 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 		**[Build on make]** ボックスが選択されていることを確認します。それにより、プロジェクトがビルドまたは更新されるたびに jar が確実に作成されます。**[Apply]** をクリックし、**[OK]** をクリックします。
 
-	1. **[Output Layout (出力レイアウト)]** タブで、右側にある [Available Elements (使用可能な要素)] ボックスの下部に、前にプロジェクト ライブラリに追加した 2 つの依存関係 jar があります。これらは [Output Layout (出力レイアウト)] タブに追加する必要があります。各 jar ファイルを右クリックし、**[Extract Into Output Root (出力ルートに抽出)]** をクリックします。
+	1. **[Output Layout (出力レイアウト)]** タブで、右側にある **[利用可能な要素]** ボックスの下部に、前にプロジェクト ライブラリに追加した SQL JDBC jar があります。これは **[Output Layout (出力レイアウト)]** タブに追加する必要があります。jar ファイルを右クリックし、**[Extract Into Output Root (出力ルートに抽出)]** をクリックします。
 
 		![依存関係 jar の抽出](./media/hdinsight-apache-spark-eventhub-streaming/extract-dependency-jar.png)
 
-		他方の依存関係 jar についても、この手順を繰り返します。これで、**[Output Layout (出力レイアウト)]** タブは次のようになります。
+		これで、**[Output Layout (出力レイアウト)]** タブは次のようになります。
 
 		![[最終出力] タブ](./media/hdinsight-apache-spark-eventhub-streaming/final-output-tab.png)
 
@@ -179,7 +186,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 	1. メニュー バーの **[Build (ビルド)]** をクリックし、**[Make Project (プロジェクトの作成)]** をクリックします。**[Build Artifact (アーティファクトのビルド)]** をクリックして、jar を作成することもできます。出力 jar が **\\out\\artifacts** の下に作成されます。
 
-		![JAR の作成](./media/hdinsight-apache-spark-create-standalone-application/output.png)
+		![JAR の作成](./media/hdinsight-apache-spark-eventhub-streaming/output.png)
 
 ## Livy を使用して Spark クラスターでアプリケーションをリモートで実行する
 
@@ -312,7 +319,7 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 
 	{ "file":"wasb:///example/jars/microsoft-spark-streaming-examples.jar", "className":"com.microsoft.spark.streaming.examples.workloads.EventhubsToAzureSQLTable", "args":["--eventhubs-namespace", "mysbnamespace", "--eventhubs-name", "myeventhub", "--policy-name", "myreceivepolicy", "--policy-key", "<put-your-key-here>", "--consumer-group", "$default", "--partition-count", 10, "--batch-interval-in-seconds", 20, "--checkpoint-directory", "/EventCheckpoint", "--event-count-folder", "/EventCount/EventCount10", "--sql-server-fqdn", "<database-server-name>.database.windows.net", "--sql-database-name", "mysparkdatabase", "--database-username", "sparkdbadmin", "--database-password", "<put-password-here>", "--event-sql-table", "EventContent" ], "numExecutors":20, "executorMemory":"1G", "executorCores":1, "driverMemory":"2G" }
 
-アプリケーションが正常に実行していることを確認するには、SQL Server Management Studio を使用して Azure SQL データベースに接続します。手順については、「[Connect to SQL Database with SQL Server Management Studio (SQL Server Management Studio を使用して SQL Database に接続する)](sql-database/sql-database-connect-query-ssms)」を参照してください。データベースに接続したら、ストリーミング アプリケーションによって作成された **EventContent** テーブルに移動します。簡単なクエリを実行してテーブルからデータを取得します。次のクエリを実行します。
+アプリケーションが正常に実行していることを確認するには、SQL Server Management Studio を使用して Azure SQL データベースに接続します。手順については、「[Connect to SQL Database with SQL Server Management Studio (SQL Server Management Studio を使用して SQL Database に接続する)](../sql-database/sql-database-connect-query-ssms.md)」を参照してください。データベースに接続したら、ストリーミング アプリケーションによって作成された **EventContent** テーブルに移動します。簡単なクエリを実行してテーブルからデータを取得します。次のクエリを実行します。
 
 	SELECT * FROM EventCount
 
@@ -355,15 +362,23 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 
+* [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+
+* [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+
 ### リソースの管理
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
+
+* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
 
 [hdinsight-versions]: hdinsight-component-versioning.md
@@ -376,4 +391,4 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

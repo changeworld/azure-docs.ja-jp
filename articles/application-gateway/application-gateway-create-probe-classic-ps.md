@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/22/2016"
+   ms.date="06/07/2016"
    ms.author="joaoma" />
 
 # PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する
@@ -110,7 +110,8 @@ Application Gateway を作成するには:
             <Timeout>15</Timeout>
             <UnhealthyThreshold>5</UnhealthyThreshold>
         </Probe>
-    <BackendAddressPools>
+      </Probes>
+     <BackendAddressPools>
         <BackendAddressPool>
             <Name>pool1</Name>
             <IPAddresses>
@@ -222,4 +223,4 @@ Secure Sockets Layer (SSL) オフロードを構成する場合は、「[SSL オ
 
 内部ロード バランサーとともに使用するようにアプリケーション ゲートウェイを構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0608_2016-->

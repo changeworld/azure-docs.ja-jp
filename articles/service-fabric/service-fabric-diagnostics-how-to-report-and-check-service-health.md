@@ -3,8 +3,8 @@
    description="サービス コードから正常性レポートを送信し、Azure Service Fabric に用意されている正常性監視ツールを使用してサービスの正常性をチェックする方法について説明します。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="punewa"
-   manager="timlt"
+   authors="toddabel"
+   manager="mfussell"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/18/2016"
+   ms.date="06/07/2016"
    ms.author="toddabel"/>
 
 # サービス正常性のレポートとチェック
@@ -86,7 +86,7 @@ Visual Studio の Service Fabric プロジェクト テンプレートには、�
     ```
     ステートフル サービスからレポートされているため、レプリカの正常性がレポートされます。`HealthInformation` パラメーターには、レポートされている正常性の問題に関する情報が格納されます。
 
-    ステートレス サービスの場合は、次のコードを使用します。
+    ステートレス サービスを作成した場合は、次のコードを使用します。
 
     ```csharp
     if (!result.HasValue)
@@ -156,4 +156,4 @@ activationContext.ReportApplicationHealth(healthInformation);
 ## 次のステップ
 [Service Fabric の正常性の詳細情報](service-fabric-health-introduction.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0608_2016-->

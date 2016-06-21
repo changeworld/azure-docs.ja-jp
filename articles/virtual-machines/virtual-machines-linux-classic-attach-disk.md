@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/04/2016"
+	ms.date="06/07/2016"
 	ms.author="iainfou"/>
 
 # データ ディスクを Linux 仮想マシンに接続する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。[Resource Manager デプロイ モデルを使用してデータディスクを接続する](virtual-machines-linux-add-disk.md)方法を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。[Resource Manager デプロイメント モデルを使用してデータ ディスクを接続する](virtual-machines-linux-add-disk.md)こともできます。
 
 空のディスクと、データが含まれているディスクのどちらも Azure VM に接続できます。どちらの種類のディスクも、Azure ストレージ アカウントの .vhd ファイルです。Linux マシンへのディスクの追加では、ディスクを接続した後、初期化とフォーマットを行って使用できるようにする必要があります。この記事では、空のディスクと、データが含まれているディスクの両方を Azure VM に接続し、新しいディスクを初期化してフォーマットする方法について詳しく説明します。
 
@@ -160,15 +160,17 @@
 
 >[AZURE.NOTE] この後、fstab を編集せずにデータ ディスクを削除すると VM は起動できません。これが頻繁に発生する場合、大部分のディストリビューションでは `nofail` または `nobootwait` fstab オプションが提供されます。これによって、起動時にディスクのマウントが失敗してもシステムを起動することができます。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
 
-## その他のリソース
-[Linux を実行する仮想マシンにログオンする方法][Logon]
+## 次のステップ
+以下の記事で、Linux VM の使用方法について詳しい情報を得ることができます。
 
-[Linux 仮想マシンからディスクを切断する方法](virtual-machines-linux-classic-detach-disk.md)
+- [Linux を実行する仮想マシンにログオンする方法][Logon]
 
-[サービス管理 API での Azure CLI の使用](../virtual-machines-command-line-tools.md)
+- [Linux 仮想マシンからディスクを切断する方法](virtual-machines-linux-classic-detach-disk.md)
+
+- [クラシック デプロイ モデルでの Azure CLI の使用](../virtual-machines-command-line-tools.md)
 
 <!--Link references-->
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-classic-log-on.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

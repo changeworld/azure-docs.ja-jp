@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="05/19/2016" 
+	ms.date="06/07/2016" 
 	ms.author="robmcm"/>
 
 # Eclipse で Azure 用の Hello World Web アプリを作成する
@@ -36,7 +36,7 @@
 
 最初に、Java プロジェクトを作成します。
 
-1. Eclipse を起動し、メニューから **[File]**、**[New]**、**[Dynamic Web Project]** の順にクリックします(**[File]** と **[New]** のクリック後、使用可能なプロジェクトとして **[Dynamic Web Project]** が表示されない場合は、**[File]**、**[New]**、**[Project]** の順にクリックし、**[Web]** を展開して、**[Dynamic Web Project]**、**[Next]** の順にクリックします)。
+1. Eclipse を起動し、メニューから **[File]** (ファイル) 、**[New]** (新規)、**[Dynamic Web Project]** (Dynamic Web Project) の順にクリックします(**[File]** (ファイル) と **[New]** (新規) のクリック後、使用可能なプロジェクトとして **[Dynamic Web Project]** (Dynamic Web Project) が表示されない場合は、**[File]** (ファイル)、**[New]** (新規)、**[Project]** (プロジェクト) の順にクリックし、**[Web]** を展開して、**[Dynamic Web Project]** (Dynamic Web Project) 、**[Next]** (次へ) の順にクリックします)。
 
 1. このチュートリアルでは、プロジェクトに **MyHelloWorld** という名前を付けます画面は次のようになります。
 
@@ -139,7 +139,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
       * **[Instance Size]** (インスタンス サイズ) ドロップダウン メニューで、プランに適したインスタンス サイズを選択します。テスト目的の場合は、**[Small]** (Small) を選択できます。
 
-  1. これらの手順をすべて完了すると、[New Web App Container] ダイアログ ボックスは次の図のようになります。
+  1. これらの手順をすべて完了すると、[New Web App Container] \(新しい Web アプリ コンテナー) ダイアログ ボックスは次の図のようになります。
 
         ![][10]
 
@@ -193,18 +193,32 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
 ## 次のステップ
 
-詳細については、次のリンクを参照してください。
+Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
 
-* [Java デベロッパー センター]
-* [Web Apps の概要]
+- [Azure Toolkit for Eclipse]
+  - [Azure Toolkit for Eclipse のインストール]
+  - *Eclipse で Azure 用の Hello World Web アプリを作成する (この記事)*
+  - [Azure Toolkit for Eclipse の新機能]
+- [Azure Toolkit for IntelliJ]
+  - [Azure Toolkit for IntelliJ のインストール]
+  - [IntelliJ で Azure 用の Hello World Web アプリを作成する]
+
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
+
+Azure Web Apps の作成の詳細については、「[Web Apps の概要]」をご覧ください。
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- URL List -->
 
 [Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md
+[Azure Toolkit for IntelliJ]: ../azure-toolkit-for-intellij.md
+[IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web-intellij-create-hello-world-web-app.md
 [Azure Toolkit for Eclipse のインストール]: ../azure-toolkit-for-eclipse-installation.md
-[Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
+[Azure Toolkit for IntelliJ のインストール]: ../azure-toolkit-for-intellij-installation.md
+[Azure Toolkit for Eclipse の新機能]: ../azure-toolkit-for-eclipse-whats-new.md
+
+[Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
 [Web Apps の概要]: ./app-service-web-overview.md
 
 <!-- IMG List -->
@@ -225,4 +239,4 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 [14]: ./media/app-service-web-eclipse-create-hello-world-web-app/14-publishDropdownButton.png
 [15]: ./media/app-service-web-eclipse-create-hello-world-web-app/15-New-Azure-Web-Container.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -4,7 +4,7 @@
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
-   manager="stevenka"
+   manager="jwhit"
    editor="tysonn" />
 <tags
    ms.service="automation"
@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/03/2016"
+   ms.date="06/08/2016"
    ms.author="magoedte;bwren" />
 
 # Azure Automation での Runbook の出力および メッセージ
 
 Azure Automation のほとんどの Runbook では、ユーザーに対するエラー メッセージや別のワークフローで使用するための複合オブジェクトなど、いくつかの出力形式が含まれます。Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための[複数のストリーム](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx)が提供されます。Azure Automation はこれらのストリームごとに異なる方法で対応するため、Runbook を作成する場合は、それぞれの使用法のベスト プラクティスに従ってください。
 
-以下の表に、公開された Runbook の実行時と [Runbook のテスト](http://msdn.microsoft.com/library/azure/dn879147.aspx)時の両方の場合の、Azure 管理ポータルでの各ストリームとその動作の簡単な説明を示します。各ストリームの詳細については、後続のセクションで説明します。
+以下の表に、公開された Runbook の実行時と [Runbook のテスト](automation-testing-runbook.md)時の両方の場合の、Azure 管理ポータルでの各ストリームとその動作の簡単な説明を示します。各ストリームの詳細については、後続のセクションで説明します。
 
 | ストリーム | 説明 | 公開先 | テスト|
 |:---|:---|:---|:---|
@@ -32,7 +32,7 @@ Azure Automation のほとんどの Runbook では、ユーザーに対するエ
 
 ## 出力ストリーム
 
-出力ストリームはスクリプトまたはワークフローが正しく実行された場合に作成されるオブジェクト出力のためのものです。Azure Automation では、このストリームは、[現在の Runbook を呼び出す親 Runbook](automation-child-runbooks.md) が使用するオブジェクトに主に使用されます。親 Runbook から [Runbook をインラインで呼び出す](automation-child-runbooks.md/#InlineExecution)と、出力ストリームのデータが親に返されます。ユーザーに一般情報を返すときは、その Runbook が別の Runbook から呼び出されないことがわかっている場合にのみ、出力ストリームを使用してください。ただし通常は、ベストプラクティスとして、[詳細ストリーム](#Verbose)を使用してユーザーに一般情報を伝えてください。
+出力ストリームはスクリプトまたはワークフローが正しく実行された場合に作成されるオブジェクト出力のためのものです。Azure Automation では、このストリームは、[現在の Runbook を呼び出す親 Runbook](automation-child-runbooks.md) が使用するオブジェクトに主に使用されます。親 Runbook から [Runbook をインラインで呼び出す](automation-child-runbooks.md#InlineExecution)と、出力ストリームのデータが親に返されます。ユーザーに一般情報を返すときは、その Runbook が別の Runbook から呼び出されないことがわかっている場合にのみ、出力ストリームを使用してください。ただし通常は、ベストプラクティスとして、[詳細ストリーム](#Verbose)を使用してユーザーに一般情報を伝えてください。
 
 出力ストリームへのデータの書き込みは、[Write-Output](http://technet.microsoft.com/library/hh849921.aspx) を使用するか、Runbook の行にオブジェクトを配置することで実行できます。
 
@@ -102,7 +102,7 @@ Runbook ジョブの詳細ストリームは次のようになります。
 
 詳細メッセージ ストリームは、Runbook の操作に関する一般情報用です。Runbook では[デバッグ ストリーム](#Debug)を使用できないため、デバッグ情報には詳細メッセージを使用します。既定では、公開された Runbook の詳細メッセージはジョブ履歴に格納されません。詳細メッセージを格納するには、Microsoft Azure 管理ポータルの Runbook の [構成] タブで、公開された Runbook を詳細レコードを記録するように構成します。ほとんどの場合、パフォーマンス上の理由から、詳細レコードを記録しないというRunbook の既定の設定を保持する必要があります。このオプションを有効にするのは、Runbook のトラブルシューティングやデバッグをする場合のみです。
 
-[Runbook のテスト時](http://msdn.microsoft.com/library/azure/dn879147.aspx)には、Runbook が詳細レコードを記録するように構成されている場合でも、詳細メッセージは表示されません。[Runbook のテスト時](http://msdn.microsoft.com/library/azure/dn879147.aspx)に詳細メッセージを表示するには、$VerbosePreference 変数を Continue に設定する必要があります。この変数が設定されると、Azure 管理ポータルの [テスト出力] ペインに詳細メッセージが表示されます。
+[Runbook のテスト時](automation-testing-runbook.md)には、Runbook が詳細レコードを記録するように構成されている場合でも、詳細メッセージは表示されません。[Runbook のテスト時](automation-testing-runbook.md)に詳細メッセージを表示するには、$VerbosePreference 変数を Continue に設定する必要があります。この変数が設定されると、Azure ポータルの [テスト出力] ペインに詳細メッセージが表示されます。
 
 詳細メッセージを作成するには、[Write-Verbose](http://technet.microsoft.com/library/hh849951.aspx) コマンドレットを使用します。
 
@@ -116,7 +116,7 @@ Runbook ジョブの詳細ストリームは次のようになります。
 
 ## 進捗状況レコード
 
-Runbook を (Azure 管理ポータルの Runbook の [構成] タブで) 進捗状況レコードが記録されるように構成すると、各アクティビティの実行前後にレコードがジョブ履歴に書き込まれます。ほとんどの場合、パフォーマンスを最大化するために、進行状況レコードを記録しないという Runbook の既定の設定を保持する必要があります。このオプションは、Runbook のトラブルシューティングやデバッグを行うためにのみ有効にします。Runbook のテスト時には、Runbook が進歩状況レコードを記録するように構成されている場合でも、進歩状況メッセージは表示されません。
+Runbook を (Azure ポータルの Runbook の [構成] タブで) 進捗状況レコードが記録されるように構成すると、各アクティビティの実行前後にレコードがジョブ履歴に書き込まれます。ほとんどの場合、パフォーマンスを最大化するために、進行状況レコードを記録しないという Runbook の既定の設定を保持する必要があります。このオプションは、Runbook のトラブルシューティングやデバッグを行うためにのみ有効にします。Runbook のテスト時には、Runbook が進歩状況レコードを記録するように構成されている場合でも、進歩状況メッセージは表示されません。
 
 [Write-Progress](http://technet.microsoft.com/library/hh849902.aspx) コマンドレットは、対話ユーザー向けに使用するものであるため、Runbook では無効です。
 
@@ -142,26 +142,29 @@ Windows PowerShell では[ユーザー設定変数](http://technet.microsoft.com
 
 ## Runbook の出力とメッセージの取得
 
-### Azure 管理ポータル
+### Azure ポータル
 
-Runbook ジョブの詳細は、Azure 管理ポータルの Runbook の [ジョブ] タブで参照できます。ジョブの [概要] には、ジョブと例外 (発生した場合) の一般情報だけでなく、入力パラメーターと[出力ストリーム](#Output)も表示されます。詳細レコードおよび進捗状況レコードを記録するように Runbook が構成されている場合は、[履歴] に、[詳細ストリーム](#Verbose)と[進捗状況レコード](#Progress)だけでなく、[出力ストリーム](#Output)と[警告およびエラー ストリーム](#WarningError)からのメッセージも含まれます。
+Runbook ジョブの詳細は、Azure ポータルの Runbook の [ジョブ] タブで参照できます。ジョブの [概要] には、ジョブと例外 (発生した場合) の一般情報だけでなく、入力パラメーターと[出力ストリーム](#Output)も表示されます。詳細レコードおよび進捗状況レコードを記録するように Runbook が構成されている場合は、[履歴] に、[詳細ストリーム](#Verbose)と[進捗状況レコード](#Progress)だけでなく、[出力ストリーム](#Output)と[警告およびエラー ストリーム](#WarningError)からのメッセージも含まれます。
 
 ### Windows PowerShell
 
-Windows Powershell では、[Get-AzureAutomationJobOutput](http://msdn.microsoft.com/library/dn690268.aspx) コマンドレットを使用して、Runbook から出力とメッセージを取得できます。このコマンドレットにはジョブの ID が必要であり、返すストリームを指定する Stream と呼ばれるパラメーターがあります。[Any] を指定して、ジョブのすべてのストリームを返すことができます。
+Windows Powershell では、[Get-AzureAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx) コマンドレットを使用して、Runbook から出力とメッセージを取得できます。このコマンドレットにはジョブの ID が必要であり、返すストリームを指定する Stream と呼ばれるパラメーターがあります。[Any] を指定して、ジョブのすべてのストリームを返すことができます。
 
 次の例は、サンプル Runbook を開始し、完了するまで待機します。完了すると、その出力ストリームがジョブから収集されます。
 
-	$job = Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
+	$job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
+    –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
 
 	$doLoop = $true
 	While ($doLoop) {
-	   $job = Get-AzureAutomationJob –AutomationAccountName "MyAutomationAccount" -Id $job.Id
+	   $job = Get-AzureRmAutomationJob -ResourceGroupName "ResourceGroup01" `
+       –AutomationAccountName "MyAutomationAccount" -Id $job.JobId
 	   $status = $job.Status
 	   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped")
 	}
 
-	Get-AzureAutomationJobOutput –AutomationAccountName "MyAutomationAccount" -Id $job.Id –Stream Output
+	Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Output
 
 ### グラフィカル作成
 
@@ -185,9 +188,9 @@ Windows Powershell では、[Get-AzureAutomationJobOutput](http://msdn.microsoft
 
     ![グラフィカル作成の[ログ記録とトレース] ブレード](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-## 関連記事:
+## 次のステップ
 
-- [Runbook ジョブの追跡](automation-runbook-execution.md)
-- [子 Runbook](http://msdn.microsoft.com/library/azure/dn857355.aspx)
+- Runbook の実行、Runbook ジョブの監視方法、およびその他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページをご覧ください
+- 子 Runbook を設計および使用する方法については、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」を参照してください
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0608_2016-->

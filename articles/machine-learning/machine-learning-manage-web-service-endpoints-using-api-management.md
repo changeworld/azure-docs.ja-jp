@@ -162,15 +162,15 @@ This is a good day | 1 1 2 2 0 2 0 1
 
 ![simple-feature-hashing-experiment](./media/machine-learning-manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
-**[データ操作]** と **[操作]** を展開し、**[プロジェクト列]** を実験にドラッグします。**[Amazon の書評]** を **[プロジェクト列]** に接続します。
+**[データ操作]** と **[操作]** を展開し、**[データセット内の列の選択]** を実験にドラッグします。**[Amazon の書評]** を **[データセット内の列の選択]** に接続します。
 
-![project-columns](./media/machine-learning-manage-web-service-endpoints-using-api-management/project-columns.png)
+![select-columns](./media/machine-learning-manage-web-service-endpoints-using-api-management/project-columns.png)
 
-**[プロジェクト列]** をクリックし、次に **[列セレクターの起動]** をクリックし、**Col2** を選択します。チェック マークをクリックして、これらの変更を適用します。
+**[データセット内の列の選択]** をクリックし、次に **[列セレクターの起動]** をクリックし、**Col2** を選択します。チェック マークをクリックして、これらの変更を適用します。
 
 ![select-columns](./media/machine-learning-manage-web-service-endpoints-using-api-management/select-columns.png)
 
-**[テキスト分析]** を展開し、**[特徴ハッシュ]** を実験にドラッグします。**[プロジェクト列]** を **[特徴ハッシュ]** に接続します。
+**[テキスト分析]** を展開し、**[特徴ハッシュ]** を実験にドラッグします。**[データセット内の列の選択]** を **[特徴ハッシュ]** に接続します。
 
 ![connect-project-columns](./media/machine-learning-manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
@@ -384,4 +384,4 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 	return
 	invokeBatchExecutionService()
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

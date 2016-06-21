@@ -18,13 +18,11 @@
 
 # Azure App Service での API Apps の認証と承認
 
-[AZURE.INCLUDE [セレクター](../../includes/app-service-api-auth-selector.md)]
-
 ## 概要 
 
-> [AZURE.NOTE] このトピックは、Web、モバイル、および API Apps に関する説明が記載された「[Azure App Service での認証および承認](../app-service/app-service-authentication-overview.md)」トピックに統合される予定です。
+> [AZURE.NOTE] このトピックは、Web、モバイル、および API Apps に関する説明が記載された[App Service の認証/承認](../app-service/app-service-authentication-overview.md)に関する記事に統合される予定です。
 
-Azure App Service は、[OAuth 2.0](#oauth) と [OpenID Connect](#oauth) を実装する、組み込み認証機能と承認サービスを提供します。この記事では、Azure App Service の API Apps に使用可能なサービスとオプションについて説明します。
+Azure App Service は、[OAuth 2.0](#oauth) と [OpenID Connect](#oauth) を実装する、組み込みの認証および承認サービスを提供します。この記事では、Azure App Service の API Apps に使用可能なサービスとオプションについて説明します。
 
 次の図は、App Service の認証の鍵となるいくつかの特性を示しています。
 
@@ -71,7 +69,7 @@ App Service は、API アプリに対する匿名 HTTP 要求の到達を禁止�
 
 ![](./media/app-service-api-authentication/authblade.png)
 
-1 つ目と 2 つ目の選択肢については、**[App Service 認証]** をオンにし、**[要求が認証されない場合に実行するアクション]** ボックスの一覧で **[ログイン]** または **[要求の許可 (操作不要)]** を選択します。**[ログイン]** を選択した場合は、認証プロバイダーを選んで、その構成を行う必要があります。
+1 つ目と 2 つ目の選択肢については、**[App Service 認証]** をオンにし、**[要求が認証されなかったときに実行する処理]** ドロップダウン リストの **[ログイン]** または **[要求を許可 (何もしない)]** を選択します。**[ログイン]** を選択した場合は、認証プロバイダーを選んで、その構成を行う必要があります。
 
 ![](./media/app-service-api-authentication/actiontotake.png)
 
@@ -83,13 +81,13 @@ App Service 認証では、内部的なシナリオ (API アプリから別の A
 
 サービス間シナリオでは、呼び出し先の API アプリを Azure Active Directory で保護し、その API アプリを呼び出すときに AAD サービス プリンシパル承認トークンを提供します。クライアント ID とクライアント シークレットを AAD アプリケーションから提供して、トークンを取得します。Mobile Services Zumo トークンの処理で使用されていたような Azure 専用の特殊なコードは不要です。このシナリオについて、ASP.NET API アプリを使った例が、[API Apps のサービス プリンシパル認証](app-service-api-dotnet-service-principal-auth.md)に関するチュートリアルで紹介されています。
 
-App Service 認証を使わずにサービス間の認証を行う場合、クライアント証明書または基本認証を利用することができます。Azure のクライアント証明書の詳細については、「[Web Apps の TLS 相互認証を構成する方法](../app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。ASP.NET での基本認証の詳細については、「[Authentication Filters in ASP.NET Web API 2 (ASP.NET Web API 2 の認証フィルター)](http://www.asp.net/web-api/overview/security/authentication-filters)」を参照してください。
+App Service 認証を使わずにサービス間の認証を行う場合、クライアント証明書または基本認証を利用することができます。Azure のクライアント証明書の詳細については、「[Web Apps の TLS 相互認証を構成する方法](../app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。ASP.NET での基本認証の詳細については、「[ASP.NET Web API 2 での認証フィルター](http://www.asp.net/web-api/overview/security/authentication-filters)」を参照してください。
 
 App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、「[App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」で説明されています。
 
 ## モバイル クライアント認証
 
-モバイル クライアントから認証を処理する方法の詳細については、[モバイル アプリの認証に関するドキュメント](../app-service-mobile/app-service-mobile-ios-get-started-users.md)を参照してください。App Service 認証は、モバイル アプリと API アプリと同じ方法で処理されます。
+モバイル クライアントから認証を処理する方法の詳細については、「[モバイル アプリの認証に関するドキュメント](../app-service-mobile/app-service-mobile-ios-get-started-users.md)」を参照してください。App Service 認証は、モバイル アプリと API アプリと同じ方法で処理されます。
   
 ## 詳細情報
 
@@ -114,4 +112,4 @@ Azure Active Directory の詳細については、次のリソースを参照し
 
 この記事では、API アプリに使用できる App Service の認証と承認の機能について説明しました。入門シリーズの次のチュートリアルでは、[App Service API Apps にユーザー認証](app-service-api-dotnet-user-principal-auth.md)を実装する方法について説明します。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

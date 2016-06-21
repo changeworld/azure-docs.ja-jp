@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # ラボで Azure Marketplace イメージの設定を構成する
@@ -26,13 +26,13 @@ DevTest ラボでは、実際のラボで使用する Azure Marketplace イメ�
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** をタップし、一覧の **[DevTest ラボ]** をタップします。
+1. **[参照]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
-1. ラボの一覧で目的のラボをタップします。
+1. ラボの一覧で目的のラボを選択します。
 
 1. 選択したラボの **[設定]** ブレードが表示されます。
 
-1. **[設定]** ブレードで、**[Marketplace イメージ]** をタップします。
+1. **[設定]** ブレードで、**[Marketplace images (Marketplace イメージ)]** を選択します
 
 	![Azure Marketplace イメージの使用方法を構成する](./media/devtest-lab-configure-marketplace-images/lab-settings-marketplace-images.png)
 
@@ -54,4 +54,4 @@ DevTest ラボでは、実際のラボで使用する Azure Marketplace イメ�
 
 VM を作成するときに Azure Marketplace イメージを使用できるようにする方法を構成したら、次は [VM をラボに追加](./devtest-lab-add-vm-with-artifacts.md)します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

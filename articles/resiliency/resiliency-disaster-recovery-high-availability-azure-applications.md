@@ -76,7 +76,7 @@ Azure のようなクラウド プラットフォームでは、リージョン�
 目標復旧時点 (RPO) とは、復旧プロセスに起因して失われたデータの許容時間枠です。たとえば、RPO が 1 時間の場合、少なくとも 1 時間おきにデータを完全にバックアップまたは複製する必要があります。代替リージョンでアプリケーションを起動したとき、最大 1 時間分のデータがバックアップされていなくてもそれは許容されます。RTO と同様に、重大なアプリケーションの場合、目標とする RPO を低めに設定します。
 
 ##チェック リスト
-この記事 (と Azure アプリケーションの[高可用性](./resiliency-high-availability-azure-applications.md)と[障害復旧](./resiliency-disaster-recovery-azure-applications.md)に関する記事) で取り上げた要点を整理しましょう。このまとめは、可用性と障害復旧を自分で計画するとき、考慮事項のチェックリストとして利用できます。ソリューションを真剣に成功させたいお客様にとって役立つベスト プラクティスになっています。この種のソリューションは実際に効果があり、システムが故障しても、遅延なく完全に復元できます。
+この記事 (と Azure アプリケーションの[高可用性](resiliency-high-availability-azure-applications.md)と[障害復旧](resiliency-disaster-recovery-azure-applications.md)に関する記事) で取り上げた要点を整理しましょう。このまとめは、可用性と障害復旧を自分で計画するとき、考慮事項のチェックリストとして利用できます。ソリューションを真剣に成功させたいお客様にとって役立つベスト プラクティスになっています。この種のソリューションは実際に効果があり、システムが故障しても、遅延なく完全に復元できます。
 
 1. アプリケーションごとにリスクを評価します。アプリケーションごとに要件が異なるためです。一部のアプリケーションは他のアプリケーションより重要であり、障害復旧の設計に追加費用がかかっても当然と見なされます。
 1. この情報を使用し、アプリケーションごとの RTO と RPO を定義してください。
@@ -99,11 +99,11 @@ Azure はさまざまな障害を検出し、処理しますが、アプリケ�
 アプリケーションの可用性と障害復旧の計画を作成するとき、アプリケーションの障害が業務に与える影響を考慮します。大惨事の後で重大なシステムを復旧するためのプロセス、ポリシー、プロシージャの定義には、時間、計画、専心が求められます。計画を立てても、それで終わりではありません。アプリケーション ポートフォリオ、ビジネス ニーズ、利用可能な手法に基づき、計画を定期的に分析し、試験し、継続的に改善する必要があります。Azure は、難しい仕事ではありますが、障害に耐える堅牢なアプリケーションを作成するための新しい機能を提供します。
 
 ##その他のリソース
-[Microsoft Azure 上に構築されたアプリケーションの高可用性](./resiliency-high-availability-azure-applications.md)
+[Microsoft Azure 上に構築されたアプリケーションの高可用性](resiliency-high-availability-azure-applications.md)
 
-[Microsoft Azure 上に構築されたアプリケーションの障害復旧](./resiliency-disaster-recovery-azure-applications.md)
+[Microsoft Azure 上に構築されたアプリケーションの障害復旧](resiliency-disaster-recovery-azure-applications.md)
 
-[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)
+[Azure の回復性技術ガイダンス](resiliency-technical-guidance.md)
 
 [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](../sql-database/sql-database-business-continuity.md)
 
@@ -114,6 +114,6 @@ Azure はさまざまな障害を検出し、処理しますが、アプリケ�
 [Azure Cloud Services で大規模なサービスを設計するためのベスト プラクティス](https://azure.microsoft.com/blog/best-practices-for-designing-large-scale-services-on-windows-azure/)
 
 ##次のステップ
-この記事は、Azure アプリケーションの障害復旧と高可用性に関する一連の記事に属しています。このシリーズの次の記事は、「[High availability for applications built on Microsoft Azure (Microsoft Azure 上で構築されたアプリケーションの高可用性)](./resiliency-high-availability-azure-applications.md)」です。
+この記事は、Azure アプリケーションの障害復旧と高可用性に関する一連の記事に属しています。このシリーズの次の記事は、「[Microsoft Azure 上に構築されたアプリケーションの高可用性](resiliency-high-availability-azure-applications.md)」です。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

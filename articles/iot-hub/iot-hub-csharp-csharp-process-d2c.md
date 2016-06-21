@@ -96,7 +96,7 @@ IoT Hub に関するその他の情報:
 [Azure Blob storage]: ../storage/storage-dotnet-how-to-use-blobs.md
 [Azure Data Factory]: https://azure.microsoft.com/documentation/services/data-factory/
 [HDInsight (Hadoop)]: https://azure.microsoft.com/documentation/services/hdinsight/
-[Service Bus Queue]: ../service-bus/service-bus-dotnet-how-to-use-queues/
+[Service Bus Queue]: ../service-bus/service-bus-dotnet-get-started-with-queues.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 
 
@@ -115,11 +115,10 @@ IoT Hub に関するその他の情報:
 [IoT Hub のガイダンス]: iot-hub-guidance.md
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
 [IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
-[IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
 [Supported devices]: iot-hub-tested-configurations.md
 [Azure IoT デベロッパー センター]: https://azure.microsoft.com/develop/iot
 [lnk-service-fabric]: https://azure.microsoft.com/documentation/services/service-fabric/
 [lnk-stream-analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [lnk-event-hubs]: https://azure.microsoft.com/documentation/services/event-hubs/
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

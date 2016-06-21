@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="06/03/2016" 
 	ms.author="awills"/>
  
 # Application Insights を使用したメトリックの探索
@@ -176,6 +176,16 @@
 
 ![メトリックス エクスプローラーの上部にあるボタン](./media/app-insights-metrics-explorer/17-reset.png)
 
+## ライブ ストリーム: 詳細な監視のインスタント メトリック
+
+ライブ ストリームには、まさにこの瞬間のアプリケーション メトリックが、ほぼリアルタイム (1 秒の待機時間) で表示されます。これは、新しいビルドをリリースしており、すべてが正常に動作していることを確認する必要があるとき、またはリアルタイムでインシデントを調査しているときに非常に便利です。
+
+![概要ブレードで、[Live Stream (ライブ ストリーム)] をクリックします](./media/app-insights-metrics-explorer/live-stream.png)
+
+メトリックス エクスプローラーとは異なり、ライブ ストリームにはメトリックの固定セットが表示されます。データは、グラフが表示されている場合にのみ保持され、その後破棄されます。
+
+ライブ ストリームは、Application Insights SDK for ASP.NET バージョン 2.1.0 以降で使用できます。
+
 ## アラートの設定
 
 すべてのメトリックの異常な値を電子メールで通知するには、アラートを追加します。アカウント管理者または特定の電子メール アドレスのいずれかに電子メールを送信することを選択できます。
@@ -197,7 +207,7 @@
 
 *現時点では、Internet Explorer と Chrome でのみエクスポートできます。その他のブラウザーについてもサポートの追加に向けて対処しています。*
 
-### 連続エクスポート
+## 連続エクスポート
 
 データを外部で処理できるように連続してエクスポートする場合は、[連続エクスポート](app-insights-export-telemetry.md)の使用を検討してください。
 
@@ -218,7 +228,7 @@
     グラフごとに異なるフィルターを設定する場合は、それぞれ異なるブレードでグラフを作成し、個別のお気に入りとして保存します。その場合、グラフを並べて表示できるように、グラフをダッシュボードに固定できます。
 
 * メトリックで定義されていないプロパティでグラフをグループ化すると、グラフに何も表示されなくなります。"group by" をクリアするか、別のグループ化プロパティを選択してみます。
-* パフォーマンス データ (CPU、IO レートなど) は、Java Web サービス、Windows デスクトップ アプリ、[IIS Web アプリおよびサービス (状態モニターがインストールされている場合)](app-insights-monitor-performance-live-website-now.md)、[Azure Cloud Services](app-insights-azure.md) で利用できます。Azure Web サイトでは利用できません。
+* パフォーマンス データ (CPU、IO レートなど) は、Java Web サービス、Windows デスクトップ アプリ、[IIS Web アプリおよびサービス (状態モニターがインストールされている場合)](app-insights-monitor-performance-live-website-now.md)、および [Azure Cloud Services](app-insights-azure.md) で利用できます。Azure Web サイトでは利用できません。
 
 
 
@@ -236,4 +246,4 @@
 
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

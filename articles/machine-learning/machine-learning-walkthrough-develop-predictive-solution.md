@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/09/2016"
+	ms.date="06/10/2016"
 	ms.author="garye"/>
 
 
@@ -27,6 +27,8 @@
 ここでは、Machine Learning Studio での予測分析モデルの開発プロセスに従って作業した後、モデルを Machine Learning Web サービスにデプロイします。公開されているクレジット リスク データを使用して、データに基づいた予測モデルを開発してトレーニングし、次に、他のユーザーが信用リスクの評価目的に使用できる Web サービスとしてモデルをデプロイします。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+
+<!-- -->
 
 >[AZURE.TIP] Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」ご覧ください。
 
@@ -41,4 +43,4 @@
 
 このチュートリアルは、[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)にある「[Binary Classfication: Credit risk prediction (二項分類: 信用リスク予測)](http://go.microsoft.com/fwlink/?LinkID=525270)」のサンプル実験の簡略版に基づいています。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0615_2016-->

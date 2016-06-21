@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="04/20/2016"
+ ms.date="06/03/2016"
  ms.author="larryfr"/>
 
 #Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続します。
@@ -161,15 +161,15 @@ __症状__: バージョン 3.3 または 3.4 の HDInsight クラスターに�
     at java.util.concurrent.FutureTas...(FutureTask.java:122)
     at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
-__原因__: このエラーの原因は、SQuirreL で使用される common-codec.jar ファイルと、HDInsight クラスターからダウンロードした Hive JDBC コンポーネントで必要な common-codec.jar ファイルのバージョンの不一致です。
+__原因__: このエラーの原因は、SQuirreL で使用される commons-codec.jar ファイルと、HDInsight クラスターからダウンロードした Hive JDBC コンポーネントで必要な commons-codec.jar ファイルのバージョンの不一致です。
 
 __解決策__: このエラーを解決するには、次の手順を使用します。
 
-1. HDInsight クラスターから common-codec jar ファイルをダウンロードします。
+1. HDInsight クラスターから commons-codec jar ファイルをダウンロードします。
 
-        scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/common-codec*.jar ./common-codec.jar
+        scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-codec*.jar ./commons-codec.jar
 
-2. SQuirreL を終了し、SQuirreL がインストールされているシステム上のディレクトリに移動します。SquirreL ディレクトリ内の `lib` ディレクトリにある既存の common-codec jar を、HDInsight クラスターからダウンロードしたファイルに置き換えます。
+2. SQuirreL を終了し、SQuirreL がインストールされているシステム上のディレクトリに移動します。SquirreL ディレクトリ内の `lib` ディレクトリにある既存の commons-codec jar を、HDInsight クラスターからダウンロードしたファイルに置き換えます。
 
 3. SQuirreL を再起動します。これで、HDInsight の Hive に接続するときにエラーが発生しなくなります。
 
@@ -182,4 +182,4 @@ __解決策__: このエラーを解決するには、次の手順を使用し�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

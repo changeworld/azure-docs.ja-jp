@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/05/2016"
+   ms.date="06/09/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
@@ -85,7 +85,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** | サポートされています | サポートされています | アムステルダム、ロンドン |
 | **Telefonica** | 近日対応予定 | 近日対応予定 | サンパウロ+ |
 | **Telenor** | サポートされています | サポートされています | アムステルダム、ロンドン |
-| **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** | サポートされています | サポートされていません | メルボルン、シドニー |
+| **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** | サポートされています | 近日対応予定 | メルボルン、シドニー |
 | **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
 | **Vodafone** | サポートされています | サポートされていません | ロンドン | 
 | **[Zayo Group](http://www.zayo.com/solutions/industries/connect-to-cloud-data-centers/cloud-connectivity/microsoft-expressroute/)** | サポートされています | サポートされています | シカゴ、ロサンゼルス、ニューヨーク、シリコン バレー、トロント、ワシントン DC |
@@ -161,4 +161,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Location map"
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

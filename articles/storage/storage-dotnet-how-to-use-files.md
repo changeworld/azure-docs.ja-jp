@@ -12,7 +12,7 @@
       ms.tgt_pltfrm="na"
       ms.devlang="dotnet"
       ms.topic="hero-article"
-	  ms.date="04/11/2016"
+	ms.date="06/09/2016"
       ms.author="minet" />
 
 # Windows で Azure File Storage を使用する
@@ -634,7 +634,7 @@ Blob Storage、Table Storage、Queue Storage は `Microsoft.WindowsAzure.Storage
 
 13. **Azure Files の低パフォーマンスの問題を解決するためにリリースされた修正プログラム**
 
-	Windows チームは先日、ユーザーが Windows 8.1 または Windows Server 2012 R2 から Azure Files Storage にアクセスする際に生じる低パフォーマンスの問題を解決するための修正プログラムをリリースしました。詳細については、関連するサポート技術情報の記事「[Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files Storage にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/en-us/kb/3114025)」を参照してください。
+	Windows チームは先日、ユーザーが Windows 8.1 または Windows Server 2012 R2 から Azure Files Storage にアクセスする際に生じる低パフォーマンスの問題を解決するための修正プログラムをリリースしました。詳細については、関連するサポート技術情報の記事「[Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files Storage にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/ja-JP/kb/3114025)」を参照してください。
 
 14. **IBM MQ での Azure File Storage の使用**
 
@@ -667,4 +667,4 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

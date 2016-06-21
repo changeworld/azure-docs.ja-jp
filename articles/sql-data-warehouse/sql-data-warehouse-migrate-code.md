@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/14/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+   ms.date="06/03/2016"
+   ms.author="lodipalm;barbkess;sonyama;jrj"/>
 
 # SQL Data Warehouse への SQL コードの移行
 
@@ -80,7 +80,7 @@ SQL Data Warehouse での共通テーブル式の制限事項を次に示しま�
 
 再帰 CTE は、SQL Data Warehouse ではサポートされていません。再帰 CTE の移行は複雑であるため、複数の手順に分けて実行することをお勧めします。通常、再帰的な中間クエリの反復処理時に、ループを使用したり、一時テーブルに値を取り込んだりできます。一時テーブルに値が取り込まれたら、単一の結果セットとしてデータを戻すことができます。[group by 句と rollup / cube / grouping sets オプション][]に関する記事でも `GROUP BY WITH CUBE` の解決に同様のアプローチを採用しています。
 
-### システム関数
+## システム関数
 
 また、サポートされていないシステム関数もいくつかあります。データ ウェアハウジングで一般的に使用されている主なものを次に示します。
 
@@ -103,34 +103,35 @@ AND     request_id IN
                     (   SELECT TOP 1    request_id
                         FROM            sys.dm_pdw_exec_requests
                         WHERE           session_id = SESSION_ID()
+                        AND             resource_class IS NOT NULL
                         ORDER BY end_time DESC
                     )
 ;
 ```
 
 ## 次のステップ
-コード開発について詳しくは、[開発の概要][]に関するページを参照してください。
+サポートされているすべての T-SQL ステートメントの一覧については、「[Transact-SQL トピック][]」をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[更新での ANSI の JOIN]: sql-data-warehouse-develop-ctas.md
-[削除での ANSI の JOIN]: sql-data-warehouse-develop-ctas.md
-[MERGE ステートメント]: sql-data-warehouse-develop-ctas.md
-[INSERT..EXEC]: sql-data-warehouse-develop-temporary-tables.md
+[更新での ANSI の JOIN]: ./sql-data-warehouse-develop-ctas.md
+[削除での ANSI の JOIN]: ./sql-data-warehouse-develop-ctas.md
+[MERGE ステートメント]: ./sql-data-warehouse-develop-ctas.md
+[INSERT..EXEC]: ./sql-data-warehouse-develop-temporary-tables.md
+[Transact-SQL トピック]: ./sql-data-warehouse-reference-tsql-statements.md
 
-[カーソル]: sql-data-warehouse-develop-loops.md
-[SELECT..INTO]: sql-data-warehouse-develop-ctas.md
-[group by 句と rollup / cube / grouping sets オプション]: sql-data-warehouse-develop-group-by-options.md
-[rollup / cube / grouping セット オプションによる句ごとのグループ化]: sql-data-warehouse-develop-group-by-options.md
-[8 を超えるの入れ子のレベル]: sql-data-warehouse-develop-transactions.md
-[ビューを使用した更新]: sql-data-warehouse-develop-views.md
-[変数代入のための SELECT の使用]: sql-data-warehouse-develop-variable-assignment.md
-[動的 SQL 文字列の MAX 以外のデータ型]: sql-data-warehouse-develop-dynamic-sql.md
-[開発の概要]: sql-data-warehouse-overview-develop.md
+[カーソル]: ./sql-data-warehouse-develop-loops.md
+[SELECT..INTO]: ./sql-data-warehouse-develop-ctas.md
+[group by 句と rollup / cube / grouping sets オプション]: ./sql-data-warehouse-develop-group-by-options.md
+[rollup / cube / grouping セット オプションによる句ごとのグループ化]: ./sql-data-warehouse-develop-group-by-options.md
+[8 を超えるの入れ子のレベル]: ./sql-data-warehouse-develop-transactions.md
+[ビューを使用した更新]: ./sql-data-warehouse-develop-views.md
+[変数代入のための SELECT の使用]: ./sql-data-warehouse-develop-variable-assignment.md
+[動的 SQL 文字列の MAX 以外のデータ型]: ./sql-data-warehouse-develop-dynamic-sql.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

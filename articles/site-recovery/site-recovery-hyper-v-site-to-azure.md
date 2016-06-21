@@ -224,7 +224,7 @@ Azure Site Recovery Provider とエージェントは、次のコマンド ラ�
 
 			C:\ASR> setupdr.exe /i
 
-4. 次のコマンドを実行して、サーバーをコンテナーに登録します。CD C:\Program Files\Microsoft Azure Site Recovery Provider\ C:\Program Files\Microsoft Azure Site Recovery Provider> DRConfigurator.exe /r /Friendlyname <friendly name of the server> /Credentials <path of the credentials file>
+4. 次のコマンドを実行して、サーバーをコンテナーに登録します。CD C:\\Program Files\\Microsoft Azure Site Recovery Provider\\ C:\\Program Files\\Microsoft Azure Site Recovery Provider> DRConfigurator.exe /r /Friendlyname <friendly name of the server> /Credentials <path of the credentials file>
 
 - **/Credentials**: 登録キー ファイルが配置されている場所を指定する必須パラメーターです。  
 - **/Friendlyname**: Azure Site Recovery ポータルに表示される、Hyper-V ホスト サーバーの名前を表す必須パラメーターです。
@@ -280,7 +280,7 @@ Azure Site Recovery Provider とエージェントは、次のコマンド ラ�
 Site Recovery が備えている Capacity Planner を使用して、ソース環境、Site Recovery のコンポーネント、ネットワーク、およびストレージに適切なリソースを割り当てることができます。このキャパシティ プランニング ツールは、VM、ディスク、およびストレージの平均数に基づく見積もりを使用するクイック モードか、ワークロード レベルで数値を入力する詳細モードで実行できます。開始する前に、次のことを行う必要があります。
 
 - VM、VM あたりのディスク数、ディスクあたりのストレージなど、レプリケーション環境の情報を収集する。
-- レプリケートされたデータの 1 日の変更 (チャーン) 率を見積もる。この見積もりには、[Capacity Planner for Hyper-V Replica](https://www.microsoft.com/download/details.aspx?id=39057) が役立ちます。
+- レプリケートされたデータの 1 日の変更 (チャーン) 率を見積もる。この見積もりには、[Capacity planner for Hyper-V Replica](https://www.microsoft.com/download/details.aspx?id=39057) が役立ちます。
 
 1.	**[ダウンロード]** をクリックしてツールをダウンロードし、実行する。ツールに付随する[こちらの記事をご覧ください](site-recovery-capacity-planner.md)。
 2.	作業が完了したら、**[Have you run the Capacity Planner?]** (Capacity Planner を実行しましたか?) で **[はい]** を選択する。
@@ -468,4 +468,4 @@ Site Recovery デプロイメントの構成設定、状態、および正常性
 
 デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの[詳細を確認](site-recovery-failover.md)します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

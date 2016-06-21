@@ -14,13 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="03/28/2016"
+   ms.date="06/01/2016"
    ms.author="jeffstok"
 />
 
 # HDInsight の R Server (プレビュー) の Azure Storage オプション
 
-HDInsight の R Server (プレビュー) は、データ、コード、分析の結果オブジェクトなどを保持するための手段として、Azure BLOB と (間もなく) Azure Data Lake ストレージの両方にアクセスできます。
+HDInsight の R Server (プレビュー) は、データ、コード、分析の結果オブジェクトなどを保持するための手段として、Azure BLOB と [Azure Data Lake ストレージ](https://azure.microsoft.com/services/data-lake-store/)の両方にアクセスできます。
 
 HDInsight で Hadoop クラスターを作成するときに、Azure Storage アカウントを指定します。そのアカウントの特定の Blob Storage コンテナーが、作成したクラスターのファイル システム (つまり、Hadoop 分散ファイル システム (HDFS)) を保持するように指定されます。パフォーマンス上の理由から、HDInsight クラスターは、指定したプライマリ ストレージ アカウントと同じデータ センターに作成されます。詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md "HDInsight での Azure BLOB ストレージの使用")」をご覧ください。
 
@@ -32,11 +32,17 @@ HDInsight で Hadoop クラスターを作成するときに、Azure Storage ア
 1.	"storage1" というストレージ アカウント名で、既定のコンテナー "container1" を持つ HDInsight クラスターを作成するとします。さらに、追加のストレージ アカウント "storage2" も指定します。  
 2.	そして "mycsv.csv" ファイルを "/share" ディレクトリにコピーし、このファイルに対して分析を実行します。  
 
-    hadoop fs –mkdir /share hadoop fs –copyFromLocal myscsv.scv /share
+````
+hadoop fs –mkdir /share
+hadoop fs –copyFromLocal myscsv.scv /share  
+````
 
-3.	R コードで、名前ノードを "default" に設定し、ディレクトリと処理するファイルを設定します。
+3.	R コードで、名前ノードを "default" に設定し、ディレクトリと処理するファイルを設定します。  
 
-    myNameNode <- "default" myPort <- 0
+````
+myNameNode <- "default"
+myPort <- 0
+````
 
   データの場所
 
@@ -95,6 +101,70 @@ R コードで、名前ノード参照を "storage2" ストレージ アカウ�
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
+## Azure Data Lake Store の使用
+
+HDInsight アカウントで Azure Data Lake Store を使用するには、使用する各 Azure Data Lake Store にクラスター アクセスを許可する必要があります。次に上記で説明したセカンダリ Azure Storage アカウントを使用する場合と同じ方法で R スクリプトでストアを参照します。
+
+## Azure Data Lake Store へのクラスター アクセスの追加
+
+Azure Data Lake Store へのアクセスは、HDInsight クラスターに関連付けられている Azure Active Directory (AAD) サービス プリンシパルを使用して確立されます。HDInsight クラスターを作成する場合にサービス プリンシパルを追加するには、[データ ソース] タブから [クラスター AAD ID] オプションをクリックして、サービス プリンシパルの [新規作成] をクリックします。名前とパスワードを設定すると新しいタブが開き、サービス プリンシパルを Azure Data Lake Store と関連付けることができます。
+
+Azure Data Lake Store へのアクセスを後から追加するには、Azure ポータルで Azure Data Lake Store を開いて、[データ エクスプローラー]、[アクセス] の順に移動します。サービス プリンシパルを作成して、"rkadl11" Azure Data Lake Store と関連付けるサンプル ダイアログを以下に示します。
+
+![ADL Store のサービス プリンシパルを作成する 1](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp1.png)
+
+
+![ADL Store のサービス プリンシパルを作成する 2](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp2.png)
+
+## R Server と Azure Data Lake Store の使用
+クラスターのサービス プリンシパルを使用して Azure Data Lake Store へのアクセスを付与すると、セカンダリの Azure Storage アカウントと同じ方法で、HDInsight での R Server で使用することができます。唯一の違いとして、wasb:// プレフィックスが adl:// などに変わります。
+
+````
+# point to the ADL store (e.g. ADLtest) 
+myNameNode <- "adl://rkadl1.azuredatalakestore.net"
+myPort <- 0
+
+# Location of the data (assumes a /share directory on the ADL account) 
+bigDataDirRoot <- "/share"  
+
+# define Spark compute context
+mySparkCluster <- RxSpark(consoleOutput=TRUE)
+
+# set compute context
+rxSetComputeContext(mySparkCluster)
+
+# define HDFS file system
+hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
+
+# specify the input file in HDFS to analyze
+inputFile <-file.path(bigDataDirRoot,"AirlineDemoSmall.csv")
+
+# create Factors for days of the week
+colInfo <- list(DayOfWeek = list(type = "factor",
+               levels = c("Monday", "Tuesday", "Wednesday", "Thursday",
+                          "Friday", "Saturday", "Sunday")))
+
+# define the data source 
+airDS <- RxTextData(file = inputFile, missingValueString = "M",
+                    colInfo  = colInfo, fileSystem = hdfsFS)
+
+# Run a linear regression
+model <- rxLinMod(ArrDelay~CRSDepTime+DayOfWeek, data = airDS)
+````
+
+> [AZURE.NOTE] RevoShare ディレクトリを含む Azure Data Lake Storage アカウントを構成し、上記例のサンプル CSV ファイルを追加するコマンドを次に示します。
+
+````
+hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user 
+hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user/RevoShare 
+hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user/RevoShare/<user>
+
+hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/share
+
+hadoop fs -copyFromLocal /usr/lib64/R Server-7.4.1/library/RevoScaleR/SampleData/AirlineDemoSmall.csv adl://rkadl1.azuredatalakestore.net/share
+
+hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
+````
 
 ## エッジ ノードでの Azure Files の使用 
 
@@ -110,4 +180,4 @@ R コードで、名前ノード参照を "storage2" ストレージ アカウ�
 - [HDInsight Premium への RStudio Server の追加](hdinsight-hadoop-r-server-install-r-studio.md)
 - [HDInsight Premium での R Server のコンピューティング コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

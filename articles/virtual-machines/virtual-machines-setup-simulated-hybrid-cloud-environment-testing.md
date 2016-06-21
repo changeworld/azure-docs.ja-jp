@@ -211,6 +211,6 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 ## 次のステップ
 
-- TestVNET サブネットに[新しい仮想マシンを追加](virtual-machines-windows-create-powershell.md)します (Microsoft SQL Server を実行している仮想マシンなど)。
+- TestVNET サブネットに[新しい仮想マシンを追加](virtual-machines-windows-ps-create.md)します (Microsoft SQL Server を実行している仮想マシンなど)。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -32,7 +32,9 @@ Microsoft Identity プラットフォームと Microsoft Identity SDK を利用�
 
 * Azure Active Directory
 * Azure Active Directory B2C
-* Azure Active Directory B2B。以下の説明では、[従来のポータルで Azure Active Directory 用にアプリケーションをプロビジョニングする](active-directory-how-to-integrate.md)方法と、アプリケーションを [Microsoft Identity Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) と統合する方法についての知識があることを前提としています。
+* Azure Active Directory B2B
+
+以下の説明では、[従来のポータルで Azure Active Directory 用にアプリケーションをプロビジョニングする](active-directory-how-to-integrate.md)方法と、アプリケーションを [Microsoft Identity Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) と統合する方法についての知識があることを前提としています。
 
 ## Microsoft Identity プラットフォームでの SSO の概念
 
@@ -202,7 +204,7 @@ App3 のリダイレクト URI: `msauth://com.example.userapp2/Pt85PxIyvbLkbKUtB
 
 #### 手順 2: Android で共有ストレージを構成する
 
-`SharedUserID` の設定についてはこのドキュメントでは説明していませんが、Google Android ドキュメントの「[Manifest](http://developer.android.com/guide/topics/manifest/manifest-element.html)」を読んで学習できます。重要なのは、sharedUserID が何と呼ばれるかを決め、すべてのアプリケーションにわたってそれを使用することです。
+`SharedUserID` の設定についてはこのドキュメントでは説明していませんが、Google Android ドキュメントの [Manifest](http://developer.android.com/guide/topics/manifest/manifest-element.html) に関するページで学習できます。重要なのは、sharedUserID が何と呼ばれるかを決め、すべてのアプリケーションにわたってそれを使用することです。
 
 すべてのアプリケーションに `SharedUserID` を設定したら、SSO を使用することができます。
 
@@ -240,7 +242,7 @@ AuthenticationSettings.Instance.setUseBroker(true);
 
 例: **msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
-このリダイレクト URI は、[Azure クラシック ポータル](https://manage.windowsazure.com/)を使用して、アプリ登録に指定する必要があります。Azure AD のアプリ登録の詳細については、「[Azure Active Directory との統合](active-directory-how-to-integrate.md)」を参照してください。
+このリダイレクト URI は、[Azure クラシック ポータル](https://manage.windowsazure.com/)を使用して、アプリ登録に指定する必要があります。Azure AD のアプリ登録の詳細については、「[Azure Active Directory との統合](active-directory-how-to-integrate.md)」をご覧ください。
 
 
 #### 手順 3: アプリケーションで適切なアクセス許可をセットアップする
@@ -259,4 +261,4 @@ MANAGE_ACCOUNTS
 
 これで、Microsoft Identity SDK が自動的に複数のアプリケーションにわたって資格情報を共有し、デバイスにブローカーがあればそれを呼び出すようになります。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

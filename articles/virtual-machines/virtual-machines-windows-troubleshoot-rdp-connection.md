@@ -20,86 +20,92 @@
 
 # Windows を実行する Azure 仮想マシンへの Remote Desktop 接続に関するトラブルシューティング
 
-Windows ベースの Azure 仮想マシンに対するリモート デスクトップ プロトコル (RDP) 接続は、さまざまな理由で失敗する可能性があります。VM 上のリモート デスクトップ サービス、ネットワーク接続、またはホスト コンピューター上のリモート デスクトップ クライアントに問題がある可能性があります。この記事は、エラーの理由を発見してエラーを修正するために役立ちます。
-
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
-
-この記事は、Windows を実行している Azure 仮想マシンに適用されます。Linux を実行している Azure 仮想マシンでは、「[Linux ベースの Azure 仮想マシンに対する Secure Shell 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md)」を参照してください。
+Windows ベースの Azure 仮想マシン (VM) に対するリモート デスクトップ プロトコル (RDP) 接続は、さまざまな理由で失敗する可能性があります。VM 上のリモート デスクトップ サービス、ネットワーク接続、またはホスト コンピューター上のリモート デスクトップ クライアントに問題がある可能性があります。この記事では、RDP の接続問題を解決する、最も一般的な方法について説明します。ここに掲載された以外の問題、あるいはまだ RDP 経由で VM に接続できない場合は、[RDP トラブルシューティングの考え方と手順 ](virtual-machines-windows-detailed-troubleshoot-rdp.md) に関する記事を参照してください。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
 
 <a id="quickfixrdp"></a>
 
-## リモート デスクトップの一般的なエラーを修正する
+## Resource Manager デプロイ モデルを使用して作成された VM のトラブルシューティング
 
-このセクションでは、一般的なリモート デスクトップ接続の問題をすばやく修正するための手順を示します。
-
-### クラシック デプロイ モデルを使用して作成した仮想マシンのトラブルシューティング
-
-次の手順は、クラシック デプロイ モデルを使用して作成された Azure 仮想マシンのリモート デスクトップ接続に関する一般的なエラーの大半を解決するために役立つ可能性があります。各手順を実行した後、VM に再接続してみてください。
-
-- RDP サーバーでの起動の問題を解決するには、[Azure ポータル](https://portal.azure.com)からリモート デスクトップ サービスをリセットします。**[参照]**、**[仮想マシン (クラシック)]**、*ご使用の Windows 仮想マシン*、**[リモートのリセット]** の順に選択します。
-
-- その他の起動の問題に対処するには仮想マシンを再起動します。**[参照]**、**[仮想マシン (クラシック)]**、*ご使用の Windows 仮想マシン*、**[再起動]** の順に選択します。
-
-- 仮想マシンを新しい Azure ノードに再デプロイします。「[新しい Azure ノードへの仮想マシンの再デプロイ](virtual-machines-windows-redeploy-to-new-node.md)」を参照してください。
-
-	この操作を行うと、一時ディスクのデータが失われ、仮想マシンに関連付けられている動的 IP アドレスが更新されることに注意してください。
-
-- 起動の問題を修正するには、VM のコンソール ログまたはスクリーンショットを確認してください。**[参照]**、**[仮想マシン (クラシック)]**、*ご使用の Windows 仮想マシン*、**[設定]**、**[起動の診断]** の順に選択します。
-
-
-- プラットフォームの問題の有無について VM のリソースの状態を確認します。**[参照]**、**[仮想マシン (クラシック)]**、*ご使用の Windows 仮想マシン*、**[設定]**、**[正常性の確認]** の順に選択します。
-
-
-### Resource Manager デプロイ モデルを使用して作成された仮想マシンのトラブルシューティング
-
-次の手順は、Resource Manager デプロイ モデルを使用して作成された Azure 仮想マシンのリモート デスクトップ接続に関する一般的なエラーの大半を解決するために役立つ可能性があります。各手順を実行した後、VM に再接続してみてください。
+トラブルシューティングの各手順を実行した後、VM に再接続してみてください。
 
 > [AZURE.TIP] ポータルの [接続] ボタンが灰色表示され、[Express Route](../expressroute/expressroute-introduction.md) や[サイト間 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 接続で Azure に接続されない場合は、VM を作成してパブリック IP アドレスを割り当ててから RDP を使用する必要があります。[Azure におけるパブリック IP アドレス](../virtual-network/virtual-network-ip-addresses-overview-arm.md)に関するページをご覧ください。
 
 - Powershell を使用してリモート アクセスをリセットします。
-	- まだインストールしていない場合は、[PowerShell をインストール](../powershell-install-configure.md)し、Azure Active Directory メソッドを使用して Azure サブスクリプションに接続します。PowerShell のバージョン 1.0.x では Resource Manager モードに切り替える必要はありません。
+	- まだインストールしていない場合は、[最新の Azure PowerShell をインストールして構成します](../powershell-install-configure.md)。
 
-	- 次の PowerShell コマンドのいずれかを使用して、RDP 接続をリセットします。`myRG`、`myVM`、`myVMAccessExtension`、および場所を、自分のセットアップに関連する値に置き換えます。
+	- 次の PowerShell コマンドのいずれかを使用して、RDP 接続をリセットします。`myRG`、`myVM`、`myVMAccessExtension`、場所を、自分のセットアップに関連する値に置き換えます。
 
 	```
-	Set-AzureRmVMExtension -ResourceGroupName "myRG" -VMName "myVM" -Name "myVMAccessExtension" -ExtensionType "VMAccessAgent" -Publisher "Microsoft.Compute" -typeHandlerVersion "2.0" -Location Westus
+	Set-AzureRmVMExtension -ResourceGroupName "myRG" -VMName "myVM" `
+		-Name "myVMAccessExtension" -ExtensionType "VMAccessAgent" `
+		-Publisher "Microsoft.Compute" -typeHandlerVersion "2.0" `
+		-Location Westus
 	```
 	または
 
   	```
-	Set-AzureRmVMAccessExtension -ResourceGroupName "myRG" -VMName "myVM" -Name "myVMAccess" -Location Westus
+	Set-AzureRmVMAccessExtension -ResourceGroupName "myRG" `
+		-VMName "myVM" -Name "myVMAccess" -Location Westus
 	```
 
-	> [AZURE.NOTE] これが RDP 接続の初めてのリセットの場合、VMAccessAgent はおそらく存在していません。上記の例で、`myVMAccessExtension` または `MyVMAccess` は、プロセスの一部としてインストールされる新しい拡張機能に対して指定する名前です。多くの場合、これは、VM の名前を設定するだけです。VMAccessAgent を前に操作したことがある場合は、`Get-AzureRmVM -ResourceGroupName "myRG" -Name "myVM"` を使用して VM のプロパティをチェックすることで、既存の名前を取得できます。出力の 'Extensions' セクションを調べます。１ 台の VM には VMAccessAgent が 1 つだけ存在できるため、`Set-AzureRmVMExtension.` を使用するときに `-ForceReRun` パラメーターも追加する必要があります。これにより、エージェントが強制的に再登録されます。
+	> [AZURE.NOTE] 上記の例で、`myVMAccessExtension` または `MyVMAccess` は、プロセスの一部としてインストールされる新しい拡張機能に対して指定する名前です。多くの場合、これは、VM の名前を設定するだけです。VMAccessAgent を前に操作したことがある場合は、`Get-AzureRmVM -ResourceGroupName "myRG" -Name "myVM"` を使用して VM のプロパティをチェックすることで、既存の拡張名を取得できます。出力の 'Extensions' セクションを調べます。1 台の VM には VMAccessAgent が 1 つだけ存在できるため、`Set-AzureRmVMExtension` を使用するときに `-ForceReRun` パラメーターも追加する必要があります。これにより、エージェントが強制的に再登録されます。
 
-- その他の起動の問題に対処するには仮想マシンを再起動します。**[参照]**、**[仮想マシン]**、*ご使用の Windows 仮想マシン*、**[再起動]** の順に選択します。
+- その他のスタートアップの問題に対処するには VM を再起動します。**[参照]** 、**[仮想マシン]** 、 **ご使用の Windows 仮想マシン** 、**[再起動]**の順に選択します。
 
-- ホストの問題を解決するには、VM のサイズを変更します。**[すべて参照]**、**[仮想マシン]**、*ご使用の Windows 仮想マシン*、**[設定]**、**[サイズ]** の順に選択します。
+- [新しい Azure ノードに仮想マシンを再デプロイします](virtual-machines-windows-redeploy-to-new-node.md)。
 
-- 起動の問題を修正するには、VM のコンソール ログまたはスクリーンショットを確認します。**[参照]**、**[仮想マシン]**、*ご使用の Windows 仮想マシン*、**[設定]**、**[起動の診断]** の順に選択します。
+	この操作を行うと、一時ディスクのデータが失われ、仮想マシンに関連付けられている動的 IP アドレスが更新されることに注意してください。
+	
+- [ネットワーク セキュリティ グループの規則](../virtual-network/virtual-networks-nsg.md) を確認して、RDP トラフィック (TCP ポート 3389) を許可します。
+
+- 起動の問題を修正するには、VM のコンソール ログまたはスクリーンショットを確認してください。**[参照]**、**[仮想マシン]**、**ご使用の Windows 仮想マシン**、**[サポートとトラブルシューティング]**、**[起動の診断]** の順に選択します。
+
+- [VM のパスワードをリセットします](virtual-machines-windows-reset-rdp.md)。
+
+- まだ RDP の問題が発生する場合は、[サポート リクエストを送る](https://azure.microsoft.com/support/options/) か、あるいは[RDP トラブルシューティングの考え方と手順](virtual-machines-windows-detailed-troubleshoot-rdp.md)に関する記事を参照してください。
 
 
-リモート デスクトップ接続エラーが上記の手順で解決しなかった場合は、次のセクションに進んでください。
+## クラシック デプロイメント モデルを使用して作成された VM のトラブルシューティング
+
+トラブルシューティングの各手順を実行した後、VM に再接続してみてください。
+
+- リモート デスクトップ サービスを [Azure ポータル](https://portal.azure.com)からリセットします。**[参照]**、**[仮想マシン (クラシック)]**、**ご使用の Windows 仮想マシン**、**[リモートのリセット]** の順に選択します。
+
+- その他のスタートアップの問題に対処するには VM を再起動します。**[参照]**、**[仮想マシン (クラシック)]**、 **ご使用の Windows 仮想マシン**、**[再起動]**の順に選択します。
+
+- [新しい Azure ノードに仮想マシンを再デプロイします](virtual-machines-windows-redeploy-to-new-node.md)。
+
+	この操作を行うと、一時ディスクのデータが失われ、仮想マシンに関連付けられている動的 IP アドレスが更新されることに注意してください。
+	
+- [Cloud Services エンドポイントが RDP トラフィックを許可する](../cloud-services/cloud-services-role-enable-remote-desktop.md)ことを確認します。
+
+- 起動の問題を修正するには、VM のコンソール ログまたはスクリーンショットを確認してください。**[参照]** 、**[仮想マシン (クラシック)]**、**ご使用の Windows 仮想マシン** 、**[設定]** 、**[起動の診断]**の順に選択します。
+
+- プラットフォームの問題の有無について VM のリソースの状態を確認します。**[参照]** 、**[仮想マシン (クラシック)]**、 **ご使用の Windows 仮想マシン** 、**[設定]** 、**[正常性の確認]**の順に選択します。
+
+- [VM のパスワードをリセットします](virtual-machines-windows-reset-rdp.md)。
+
+- まだ RDP の問題が発生する場合は、[サポート リクエストを送る](https://azure.microsoft.com/support/options/) か、あるいは[RDP トラブルシューティングの考え方と手順](virtual-machines-windows-detailed-troubleshoot-rdp.md)に関する記事を参照してください。
+
 
 ## 特定のリモート デスクトップ接続エラーのトラブルシューティング
 
-リモート デスクトップを使用してAzure 仮想マシンに接続しようとしたときに発生する可能性がある一般的なエラーは次のとおりです。
+お使いの VM に RDP 経由で接続しようとすると、特定のエラーが表示される場合があります。一般的なエラー メッセージは次の通りです。
 
-- [Remote Desktop 接続エラー: ライセンスを提供する Remote Desktop ライセンス サーバーがないため、リモート セッションが切断されました](#rdplicense)。
+- [ライセンスを提供するためのリモート デスクトップ ライセンス サーバーがないため、リモート セッションは切断されました](#rdplicense)。
 
-- [Remote Desktop 接続エラー: Remote Desktop は、コンピューター "name" を見つけることができません](#rdpname)。
+- [Remote Desktop は、コンピューター "name" を見つけることができません](#rdpname)。
 
-- [Remote Desktop 接続エラー: 認証エラーが発生しました。ローカル セキュリティ機関にアクセスできません。](#rdpauth)
+- [認証エラーが発生しました。ローカル セキュリティ機関にアクセスできません。](#rdpauth)
 
 - [Windows セキュリティ エラー: 資格情報が正しくありません](#wincred)。
 
-- [Remote Desktop 接続エラー: このコンピューターはリモート コンピューターに接続できません](#rdpconnect)。
+- [このコンピューターはリモート コンピューターに接続できません](#rdpconnect)。
 
 <a id="rdplicense"></a>
-### Remote Desktop 接続エラー: ライセンスを提供する Remote Desktop ライセンス サーバーがないため、リモート セッションが切断されました。
+### ライセンスを提供するためのリモート デスクトップ ライセンス サーバーがないため、リモート セッションは切断されました。
 
 原因: リモート デスクトップ サーバー ロールの 120 日間のライセンス有効期限が切れているため、ライセンスをインストールする必要がある。
 
@@ -112,7 +118,7 @@ VM に対して 2 つ以上のリモート デスクトップ接続が同時に�
 詳細については、ブログ投稿「[Azure VM fails with "No Remote Desktop License Servers available"](http://blogs.msdn.com/b/wats/archive/2014/01/21/rdp-to-azure-vm-fails-with-quot-no-remote-desktop-license-servers-available-quot.aspx)」 (Azure VM が "使用できるリモート デスクトップ ライセンス サーバーがありません" で失敗する) も参照してください。
 
 <a id="rdpname"></a>
-### Remote Desktop 接続エラー: Remote Desktop は、コンピューター "name" を見つけることができません。
+### Remote Desktop は、コンピューター "name" を見つけることができません。
 
 原因: コンピューター上のリモート デスクトップ クライアントが、RDP ファイルで設定されたコンピューターの名前を解決できない。
 
@@ -131,11 +137,11 @@ VM に対して 2 つ以上のリモート デスクトップ接続が同時に�
 - リモート デスクトップ トラフィックの外部 TCP ポート (55919)。
 
 <a id="rdpauth"></a>
-### Remote Desktop 接続エラー: 認証エラーが発生しました。ローカル セキュリティ機関にアクセスできません。
+### 認証エラーが発生しました。ローカル セキュリティ機関にアクセスできません。
 
 原因: ターゲット VM が、資格情報のユーザー名の部分でセキュリティ機関を見つけることができません。
 
-ユーザー名が *SecurityAuthority*\*UserName* という形式 (例: CORP\\User1) の場合、*SecurityAuthority* の部分は、仮想マシンのコンピューター名 (ローカル セキュリティ機関) または Active Directory ドメイン名になります。
+ユーザー名が *SecurityAuthority*\*UserName* という形式 (例: CORP\\User1) の場合、*SecurityAuthority* の部分は、VM のコンピューター名 (ローカル セキュリティ機関) または Active Directory ドメイン名になります。
 
 考えられる解決策:
 
@@ -164,7 +170,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 ローカル管理者アカウントのパスワードを変更する必要がある場合は、「[Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-rdp.md)」をご覧ください。
 
 <a id="rdpconnect"></a>
-### Remote Desktop 接続エラー: このコンピューターはリモート コンピューターに接続できません。
+### このコンピューターはリモート コンピューターに接続できません。
 
 原因: 接続に使用しているアカウントに、リモート デスクトップ サインイン権限がありません。
 
@@ -174,7 +180,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 ## 一般的なリモート デスクトップ エラーのトラブルシューティング
 
-上記のエラーが発生していないにもかかわらず、リモート デスクトップを介して VM に接続できない場合は、「[リモート デスクトップ接続に関する詳細なトラブルシューティング](virtual-machines-windows-detailed-troubleshoot-rdp.md)」を参照してください。
+上記のエラーが発生していないにもかかわらず、リモート デスクトップを介して VM に接続できない場合は、[リモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-detailed-troubleshoot-rdp.md)に関する記事を参照してください。
 
 
 ## その他のリソース
@@ -189,4 +195,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

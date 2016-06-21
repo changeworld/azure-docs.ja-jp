@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
@@ -515,15 +515,15 @@ Dashboard の接続文字列を null に設定すると、ログを無効にで�
 		    logger.WriteLine("TextWriter - " + logMessage);
 		}
 
-Web ジョブ SDK ダッシュボードで特定の関数呼び出しのページに移動し、**[出力切り替え]** をクリックすると、**TextWriter** オブジェクトからの出力が表示されます。
+Web ジョブ SDK ダッシュボードで特定の関数呼び出しのページに移動し、**[出力切り替え]** を選択すると、**TextWriter** オブジェクトからの出力が表示されます。
 
-![関数呼び出しのリンクをクリックします](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
+![呼び出しのリンク](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
 
 ![関数の呼び出しページのログ](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-Web ジョブのページ (特定の関数呼び出しのページではなく) に移動して、**[出力切り替え]** をクリックすると、Web ジョブ SDK のダッシュボードでアプリケーション ログの最新 100 件が表示されます。
+Web ジョブのページ (特定の関数呼び出しのページではなく) に移動して、**[出力切り替え]** を選択すると、Web ジョブ SDK ダッシュボードでコンソール出力の最新 100 件が表示されます。
 
-![[出力切り替え] をクリックします](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
+![出力切り替え](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
 連続的な Web ジョブでは、Web アプリのファイル システム内の /data/jobs/continuous/*{webjobname}*/job\_log.txt にアプリケーション ログが表示されます。
 
@@ -543,4 +543,4 @@ Azure テーブルでは **Console.Out** および **Console.Error** ログが�
 
 この記事では、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブおよび Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブのドキュメント リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

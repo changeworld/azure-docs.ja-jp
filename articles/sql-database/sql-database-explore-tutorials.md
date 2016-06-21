@@ -1,5 +1,5 @@
 <properties
-   pageTitle="SQL Database チュートリアルの確認"
+   pageTitle="Azure SQL Database チュートリアルの確認 | Microsoft Azure"
    description="SQL Database の機能について説明します。"
    keywords=""
    services="sql-database"
@@ -14,12 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="05/04/2016"
+   ms.date="06/01/2016"
    ms.author="carlrab"/>
    
-# SQL Database チュートリアルの確認
+# Azure SQL Database チュートリアルの確認
 
-以下のリンクで、記載されている各機能領域の概要とその領域のクイック スタート チュートリアルを提供します。
+以下のリンクで、記載されている各機能領域の概要とその領域のクイック スタート チュートリアルを提供します。実世界のシナリオに基づく、完全なソリューションで SQL Database の利用方法を実演するソリューション中心のクイック スタートについては、「[Azure SQL Database Solution Quick Starts](sql-database-solution-quick-starts.md)」 (Azure SQL Database ソリューション クイック スタート) を参照してください。
 
 ## SQL Server Management Studio を使用する
 
@@ -97,7 +97,7 @@
 | [Azure ポータルを使用して BACPAC ファイルを Azure SQL Database にインポートする](sql-database-import.md) | このチュートリアルでは、Azure ポータルを使用して、Azure BLOB に格納されている BACPAC ファイルから Azure SQL Database にデータベースをインポートする方法を学習します。|
 | [PowerShell を使用して BACPAC ファイルを Azure SQL Database にインポートする](sql-database-import-powershell.md) | このチュートリアルでは、PowerShell を使用して、BACPAC ファイルから Azure SQL Database にデータベースをインポートする方法を学習します。|
 | [Azure ポータルを使用して Azure SQL Database をアーカイブする](sql-database-export.md#export-your-database) | このチュートリアルでは、Azure ポータルを使用して、Azure SQL Database を BACPAC ファイルにアーカイブする方法を学習します。 |
-| [PowerShell を使用して Azure SQL Database をアーカイブする](sql-database-export-powershell.md) | このチュートリアルでは、PowerShell を使用して、Azure SQL Database を BACPAC ファイルにアーカイブする方法を学習します。 |
+| [PowerShell を使用して Azure SQL Database をアーカイブする](sql-database-export-powershell.md) | このチュートリアルでは、PowerShell を使用し、Azure SQL Database を BACPAC ファイルにアーカイブする方法を学習します。 |
 | [Azure ポータルを使用した Azure SQL Database のコピー](sql-database-copy.md#copy-your-sql-database) | このチュートリアルでは、Azure ポータルを使用して Azure SQL Database をコピーする方法を学習します。 |
 | [PowerShell を使用した Azure SQL Database のコピー](sql-database-copy-powershell#copy-your-sql-database) | このチュートリアルでは、PowerShell を使用して Azure SQL Database をコピーする方法を学習します。 |
 | [Transact-SQL を使用した Azure SQL Database のコピー](sql-database-copy-transact-sql.md#copy-your-sql-database) | このチュートリアルでは、Transact-SQL を使用して Azure SQL Database をコピーする方法を学習します。 |
@@ -176,4 +176,8 @@
 | [Azure SQL データ同期の概要 (プレビュー)](sql-database-get-started-sql-data-sync.md) | このチュートリアルでは、Azure クラシック ポータルを使用して、Azure SQL データ同期の基礎を学習します。 |
 ||||
 
-<!---HONumber=AcomDC_0518_2016-->
+## 次のステップ
+
+[Azure SQL Database ソリューション クイック スタート ガイド](sql-database-solution-quick-starts.md)
+
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/19/2016" 
+	ms.date="06/07/2016" 
 	ms.author="robmcm"/>
 
 # Azure Toolkit for IntelliJ
@@ -21,6 +21,8 @@
 Azure Toolkit for IntelliJ は、IntelliJ 開発環境を使って Azure アプリケーションを簡単に作成、開発、テスト、デプロイできるテンプレートと機能を提供します。これはオープン ソース プロジェクトであり、そのソース コードは、プロジェクト サイトから MIT License で入手できます。URL は次のとおりです。
 
 * <https://github.com/microsoft/azure-tools-for-java>
+
+> [AZURE.NOTE] Eclipse IDE 用の Azure Toolkit もあります。詳細については、「[Azure Toolkit for Eclipse]」をご覧ください。
 
 ## Azure Toolkit for IntelliJ の概要
 
@@ -31,12 +33,27 @@ Azure Toolkit for IntelliJ は、IntelliJ 開発環境を使って Azure アプ�
 
 ## 関連項目
 
+Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
+
+- [Azure Toolkit for Eclipse]
+  - [Azure Toolkit for Eclipse のインストール]
+  - [Eclipse で Azure 用の Hello World Web アプリを作成する]
+  - [Azure Toolkit for Eclipse の新機能]
+- *Azure Toolkit for IntelliJ (この記事)*
+  - [Azure Toolkit for IntelliJ のインストール]
+  - [IntelliJ で Azure 用の Hello World Web アプリを作成する]
+
 Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
 
 <!-- URL List -->
 
-[Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
+[Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse.md
+[Eclipse で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[Azure Toolkit for Eclipse のインストール]: ./azure-toolkit-for-eclipse-installation.md
 [Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
+[Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
 
-<!---HONumber=AcomDC_0525_2016-->
+[Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
+
+<!---HONumber=AcomDC_0608_2016-->

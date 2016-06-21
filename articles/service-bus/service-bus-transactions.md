@@ -81,6 +81,6 @@ Service Bus キューの詳細については、次の記事を参照してく�
 - [自動転送のサンプル](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AutoForward)
 - [Service Bus を使用したアトミック トランザクションのサンプル](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/AtomicTransactions)
 - [Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-- [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
+- [Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="06/01/2016"
 	ms.author="tdykstra"/>
 
 # Azure App Service に .NET Web ジョブを作成する
@@ -36,7 +36,13 @@
 
 このチュートリアルは、Visual Studio 2015 でも使用できますが、アプリケーションをローカルで実行する前に、Web.config ファイルと App.config ファイルで SQL Server LocalDB 接続文字列の `Data Source` 部分を `Data Source=(localdb)\v11.0` から `Data Source=(LocalDb)\MSSQLLocalDB` に変更する必要があります。
 
-[AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note2.md)]
+> [AZURE.NOTE] <a name="note"></a>このチュートリアルを完了するには、Azure アカウントが必要です。
+  >
+  > + [無料で Azure アカウントを開く](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。
+  >
+  > + [MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。MSDN サブスクリプションにより、有料の Azure サービスを使用できるクレジットが毎月提供されます。
+  >
+  >Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## <a id="learn"></a>学習内容
 
@@ -822,4 +828,4 @@ https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 
 詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?LinkId=390226)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

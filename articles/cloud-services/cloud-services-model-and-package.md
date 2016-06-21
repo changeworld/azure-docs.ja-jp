@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="03/11/2016"
+    ms.date="06/07/2016"
     ms.author="adegeo"/>
 
 # クラウド サービス モデルとそのパッケージ化について
@@ -201,7 +201,7 @@ Azure では、Web ロールに 1 つのエントリ ポイントのみを使用
 ## ServicePackage.cspkg
 Azure のクラウド サービスとしてアプリケーションをデプロイするには、まず適切な形式でアプリケーションをパッケージ化する必要があります。**CSPack** コマンドライン ツール ([Azure SDK](https://azure.microsoft.com/downloads/) にインストール済み) を使用して、Visual Studio に代わる方法として、パッケージ ファイルを作成できます。
 
-**CSPack** はサービス定義ファイルとサービス構成ファイルの内容を使用して、パッケージの内容を定義します。**CSPack** は、[Azure ポータル](cloud-services-how-to-create-deploy-portal.md/#create-and-deploy)を使用してAzure にアップロードできるアプリケーション パッケージ ファイル (.cspkg) を生成します。既定では、パッケージの名前は `[ServiceDefinitionFileName].cspkg` ですが、**CSPack** の `/out` オプションを使用して別の名前を指定することもできます。
+**CSPack** はサービス定義ファイルとサービス構成ファイルの内容を使用して、パッケージの内容を定義します。**CSPack** は、[Azure ポータル](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)を使用して Azure にアップロードできるアプリケーション パッケージ ファイル (.cspkg) を生成します。既定では、パッケージの名前は `[ServiceDefinitionFileName].cspkg` ですが、**CSPack** の `/out` オプションを使用して別の名前を指定することもできます。
 
 **CSPack** は一般に `C:\Program Files\Microsoft SDKs\Azure\.NET SDK[sdk-version]\bin` に置かれます。
 
@@ -267,4 +267,4 @@ Visual Studio を使用しているのですが...
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0608_2016-->

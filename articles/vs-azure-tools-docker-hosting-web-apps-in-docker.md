@@ -3,7 +3,7 @@
    description="Visual Studio Tools for Docker を使用して、ASP.NET 5 Web アプリを Azure Docker ホスト マシンで実行されている Docker コンテナーに発行する方法を説明します。"   
    services="visual-studio-online"
    documentationCenter=".net"
-   authors="tomarcher"
+   authors="allclark"
    manager="douge"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/08/2016"
-   ms.author="tarcher"/>
+   ms.date="06/08/2016"
+   ms.author="allclark"/>
 
 # リモート Docker ホストへの ASP.NET コンテナーのデプロイ
 
@@ -57,13 +57,13 @@ Visual Studio から Azure にアプリケーションをデプロイする前�
 
     1.  [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)に移動します。 
     
-    1.  **[仮想マシン]** をタップします。
+    1.  **[仮想マシン]** を選択します。
     
     1.  Docker ホスト仮想マシンを選択します。
     
-    1.  **[エンドポイント]** タブをタップします。
+    1.  **[エンドポイント]** タブを選択します。
     
-    1.  ページの下部にある **[追加]** をタップします。
+    1.  (ページの下部にある) **[追加]** を選択します。
     
     1.  指示に従って、ポート 80 を公開します。これは、既定でデプロイ スクリプトで使用されます。
 
@@ -83,7 +83,7 @@ Visual Studio から Azure にアプリケーションをデプロイする前�
 
 1.  起動ターゲットを **[Docker]** に変更します。
 
-1.  **[Docker]** アイコンをタップし、アプリケーションをビルドして実行します。
+1.  **[Docker]** アイコンを選択し、アプリケーションをビルドして実行します。
 
 ![アプリを起動する][2]
 
@@ -96,4 +96,4 @@ Visual Studio から Azure にアプリケーションをデプロイする前�
 [2]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

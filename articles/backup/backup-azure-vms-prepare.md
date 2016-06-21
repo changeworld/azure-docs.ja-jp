@@ -4,7 +4,7 @@
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
-	manager="jwhit"
+	manager="cfreeman"
 	editor=""
 	keywords="バックアップ, バックアップする,"/>
 
@@ -14,15 +14,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="06/03/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 
 # Azure 仮想マシンをバックアップする環境の準備
 
 > [AZURE.SELECTOR]
-- [ARM VM のバックアップの準備](backup-azure-arm-vms-prepare.md)
-- [Azure VM のバックアップの準備](backup-azure-vms-prepare.md)
+- [Resource Manager モデル](backup-azure-arm-vms-prepare.md)
+- [クラシック モデル](backup-azure-vms-prepare.md)
 
 Azure 仮想マシン (VM) をバックアップするには、事前に 3 つの条件を満たしておく必要があります。
 
@@ -133,11 +133,11 @@ HTTP プロキシを使用してパブリック インターネットとの通�
      ```
     Internet Explorer のウィンドウが開きます。
 3. [ツール]、[インターネット オプション]、[接続]、[LAN の設定] の順に進みます。
-4. システム アカウントのプロキシ設定を確認します。プロキシの IP アドレスとポートを設定します。 
+4. システム アカウントのプロキシ設定を確認します。プロキシの IP アドレスとポートを設定します。
 5. Internet Explorer を閉じます。
 
 これにより、コンピューター全体のプロキシ構成が設定され、すべての発信 HTTP/ HTTPS トラフィックに使用されます。
-   
+
 現在のユーザー アカウント (ローカル システム アカウントではなく) にプロキシ サーバーを設定した場合は、次のスクリプトを使用して、SYSTEMACCOUNT にそれらを適用します。
 
 ```
@@ -151,7 +151,7 @@ HTTP プロキシを使用してパブリック インターネットとの通�
 
 >[AZURE.NOTE] プロキシ サーバーのログに "(407) プロキシ認証が必要です" というメッセージが記録されている場合は、認証が正しく設定されているか確認します。
 
-######Linux マシンの場合 
+######Linux マシンの場合
 
 次の行を ```/etc/environment``` ファイルに追加します。
 
@@ -160,7 +160,7 @@ http_proxy=http://<proxy IP>:<proxy port>
 ```
 
 次の行を ```/etc/waagent.conf``` ファイルに追加します。
-   
+
 ```
 HttpProxy.Host=<proxy IP>
 HttpProxy.Port=<proxy port>
@@ -238,4 +238,4 @@ VM が実行されている場合、バックアップ拡張機能がインス�
 - [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

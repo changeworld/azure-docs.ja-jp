@@ -183,7 +183,7 @@
 [dbms-guide-2]: virtual-machines-linux-sap-dbms-guide.md#65fa79d6-a85f-47ee-890b-22e794f51a64 "RDBMS デプロイの構造"
 [dbms-guide-2.1]: virtual-machines-linux-sap-dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f "VM と VHD のキャッシング"
 [dbms-guide-2.2]: virtual-machines-linux-sap-dbms-guide.md#c8e566f9-21b7-4457-9f7f-126036971a91 "ソフトウェア RAID"
-[dbms-guide-2.3]: virtual-machines-linux-sap-dbms-guide.md#10b041ef-c177-498a-93ed-44b3441ab152 "Microsoft Azure Storage"
+[dbms-guide-2.3]: virtual-machines-linux-sap-dbms-guide.md#10b041ef-c177-498a-93ed-44b3441ab152 "Microsoft Azure ストレージ"
 [dbms-guide-3]: virtual-machines-linux-sap-dbms-guide.md#871dfc27-e509-4222-9370-ab1de77021c3 "Azure VM の高可用性と障害復旧"
 [dbms-guide-5]: virtual-machines-linux-sap-dbms-guide.md#3264829e-075e-4d25-966e-a49dad878737 "SQL Server RDBMS の詳細"
 [dbms-guide-5.5.1]: virtual-machines-linux-sap-dbms-guide.md#0fef0e79-d3fe-4ae2-85af-73666a6f7268 "SQL Server 2012 SP1 CU4 以降"
@@ -322,7 +322,7 @@ Microsoft Azure Virtual Machines サービスを通じて、マイクロソフ�
 * ARM : Azure Resource Manager
 * SAP コンポーネント: 個別の SAP アプリケーション (ECC、BW、Solution Manager EP など)。SAP コンポーネントは、従来の ABAP または Java テクノロジか、ビジネス オブジェクトなどの非 NetWeaver ベース アプリケーションに基づいて作成できます。
 * SAP 環境: 開発、QAS、トレーニング、DR または実稼働などのビジネス機能を実行するために論理的にグループ化された、1 つまたは複数の SAP コンポーネント。
-* SAP ランドス ケープ: これは、お客様の IT 環境内にある SAP 資産全体を指します。SAP ランドス ケープには、運用環境と非運用環境のすべてが含まれます。
+* SAP ランドスケープ: これは、お客様の IT 環境内にある SAP 資産全体を指します。SAP ランドス ケープには、運用環境と非運用環境のすべてが含まれます。
 * SAP システム: DBMS 層とアプリケーション層を組み合わせたシステム (SAP ERP 開発システム、SAP BW テスト システム、SAP CRM 運用システムなど)。Azure デプロイメントでは、オンプレミスと Azure 間でこれら 2 つの層を分割することはできません。つまり、SAP システムはオンプレミスか Azure のいずれかにデプロイされます。ただし、SAP ランドス ケープの異なるシステムを Azure かオンプレミスのいずれかにデプロイすることはできます。たとえば、SAP CRM の開発システムとテスト システムを Azure にデプロイし、SAP CRM 運用システムをオンプレミスにデプロイすることは可能です。
 * クラウドのみのデプロイメント: Azure サブスクリプションが、サイト間接続または ExpressRoute 接続経由でオンプレミス ネットワーク インフラストラクチャに接続されていないデプロイメントです。この種のデプロイメントは、共通の Azure ドキュメントでもクラウドのみのデプロイメントとして説明されています。この方法でデプロイされた仮想マシンは、インターネットと、Azure 内の VM に割り当てられたパブリック IP アドレスやパブリック DNS 名を使用してアクセスされます。Microsoft Windows の場合、オンプレミスの Active Directory (AD) と DNS は、これらのタイプのデプロイメントでは Azure に拡張されません。そのため、VM はオンプレミスの Active Directory の一部にはなりません。OpenLDAP と Kerberos などを使用した Linux 実装についても同じことが言えます。
 
@@ -1157,7 +1157,7 @@ ___
 
 OS と、推奨する SAP のバイナリおよびデータベース (基本 VM) とを含む VHD は、上限が 127 GB ではなくなったことに留意してください。現在は 1 TB が最大サイズです。SAP バッチ ジョブのログを含め、必要なすべてのファイルを保持するのに十分な領域があります。
 
-その他のヒントと詳細情報については (特に DBMS VM について)、[DBMS Deployment Guid][dbms-guide] (DBMS デプロイメント ガイド) を参照してください。
+その他のヒントと詳細情報については (特に DBMS VM について)、[DBMS Deployment Guid][dbms-guide] \(DBMS デプロイメント ガイド) を参照してください。
 
 
 #### ディスクの扱い
@@ -1396,7 +1396,7 @@ azure group create $rgName "North Europe"
 * 新しいストレージ アカウントの作成
 
 ```
-azure storage account create --resource-group $rgName --location "North Europe" --type LRS $rgNameLower
+azure storage account create --resource-group $rgName --location "North Europe" --kind Storage --sku-name LRS $rgNameLower
 ```
 
 * すべてのトレーニング/デモ ランドスケープの新しい仮想ネットワークを作成して、同じホスト名と IP アドレスの使用を有効にします。仮想ネットワークは、ポート 3389 へのトラフィックのみを許可して、SSH 向けにリモート デスクトップ アクセスとポート 22 を有効にするネットワーク セキュリティ グループによって保護されます。 
@@ -1600,8 +1600,8 @@ SAP Change and Transport System (TMS) は、ランドスケープでシステム
 
 方法:
 
-* シナリオでは、オンプレミスの QAS システムを CTS ドメイン コントローラーとして使用します。トランザクション STMS を呼び出します。[TMS] ダイアログ ボックスが表示されます。[Configure Transport Domain] (移送ドメインの構成) ダイアログ ボックスが表示されます。(このダイアログ ボックスは、移送ドメインをまだ構成していない場合にのみ表示されます。)
-* 自動作成されたユーザー TMSADM が承認されていることを確認します ([SM59] -> [ABAP Connection] (ABAP 接続) -> [TMSADM@E61.DOMAIN_E61] -> [Details] (詳細) -> [Utilities(M)](ユーティリティ(M)) -> [Authorization Test] (承認テスト))。トランザクション STMS の初期画面に、次に示すように、この SAP システムが現在移送ドメインのコントローラーとして機能していることが示されます。
+* シナリオでは、オンプレミスの QAS システムを CTS ドメイン コントローラーとして使用します。トランザクション STMS を呼び出します。[TMS] ダイアログ ボックスが表示されます。[Configure Transport Domain] \(移送ドメインの構成) ダイアログ ボックスが表示されます。(このダイアログ ボックスは、移送ドメインをまだ構成していない場合にのみ表示されます。)
+* 自動作成されたユーザー TMSADM が承認されていることを確認します ([SM59] -> [ABAP Connection] \(ABAP 接続) -> [TMSADM@E61.DOMAIN_E61] -> [Details] \(詳細) -> [Utilities(M)]\(ユーティリティ(M)) -> [Authorization Test] \(承認テスト))。トランザクション STMS の初期画面に、次に示すように、この SAP システムが現在移送ドメインのコントローラーとして機能していることが示されます。
  
 ![Initial screen of transaction STMS on the domain controller (ドメイン コントローラー上のトランザクション STMS の初期画面)][planning-guide-figure-2300]
 
@@ -1609,8 +1609,8 @@ SAP Change and Transport System (TMS) は、ランドスケープでシステム
 
 移送ドメインに SAP システムを含めるシーケンスは次のようになります。
 
-* Azure の DEV システムで移送システム (Client 000) に移動し、トランザクション STMS を呼び出します。ダイアログ ボックスから [Other Configuration] (その他の構成) を選択し、[Include System in Domain] (ドメインにシステムを含める) で続行します。ターゲット ホストとしてドメイン コントローラーを指定します (「[移送ドメインに SAP システムを含める](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)」)。移送ドメインに含められるのをシステムが待機します。
-* 次に、セキュリティ上の理由から、ドメイン コントローラーに戻って要求を確認する必要があります。待機中のシステムの [System Overview] (システムの概要) と [Approve] (承認) を選択します。次に、プロンプトを確認すると、構成が配布されます。
+* Azure の DEV システムで移送システム (Client 000) に移動し、トランザクション STMS を呼び出します。ダイアログ ボックスから [Other Configuration] (その他の構成) を選択し、[Include System in Domain] \(ドメインにシステムを含める) で続行します。ターゲット ホストとしてドメイン コントローラーを指定します (「[移送ドメインに SAP システムを含める](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)」)。移送ドメインに含められるのをシステムが待機します。
+* 次に、セキュリティ上の理由から、ドメイン コントローラーに戻って要求を確認する必要があります。待機中のシステムの [System Overview] \(システムの概要) と [Approve] (承認) を選択します。次に、プロンプトを確認すると、構成が配布されます。
 
 これで、SAP システムに、移送ドメイン内の他のすべての SAP システムに関する必要な情報が含まれました。同時に、新しい SAP システムのアドレス データが他のすべての SAP システムに送信され、SAP システムが、移送コントロール プログラムの移送プロファイルに入力されました。RFC と、ドメインの移送ディレクトリへのアクセスが起動するかどうかを確認します。
 
@@ -1620,7 +1620,7 @@ SAP Change and Transport System (TMS) は、ランドスケープでシステム
 
 * オンプレミスの STMS が正しく構成されていることを確認します。
 * 移送ドメイン コントローラーのホスト名を Azure 上の仮想マシンで解決できること、またその逆で解決できることを確認します。
-* トランザクション STMS -> [Other Configuration] (その他の構成) -> [Include System in Domain] (ドメインにシステムを含める) を呼び出します。
+* トランザクション STMS -> [Other Configuration] \(その他の構成) -> [Include System in Domain] \(ドメインにシステムを含める) を呼び出します。
 * オンプレミスの TMS システムの接続を確認します。
 * 通常どおり、移送ルート、グループ、階層を構成します。
 
@@ -1930,4 +1930,4 @@ Azure での SAP システムの高可用性における重要なポイントは
 * SAP ダイアログ インスタンスのバックアップは、通常単にダイアログ インスタンスを再デプロイするほうが速いため、ほとんど意味がありません。
 * SAP システムのグローバル ディレクトリを含む VM を異なるインスタンスのすべてのプロファイルと共にバックアップすることは合理的であり、これは、Windows Backup (または Linux 上の tar など) で実行する必要があります。Windows Server 2008 (R2) と Windows Server 2012 (R2) にはいくつかの違いがあり、このため最新の Windows Server リリースを使用したバックアップのほうが簡単であるため、Windows Server 2012 (R2) を Windows ゲスト オペレーティング システムとして実行することをお勧めします。 
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

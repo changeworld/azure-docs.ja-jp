@@ -16,7 +16,7 @@
 	ms.date="05/15/2016"
 	ms.author="glenga"/>
 
-# Windows Runtime 8.1 ユニバーサル アプリへのプッシュ通知の追加
+# Windows アプリにプッシュ通知を追加する
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
@@ -213,4 +213,4 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 <!-- Images. -->
 ))) )
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

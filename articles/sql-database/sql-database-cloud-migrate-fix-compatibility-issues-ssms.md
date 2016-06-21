@@ -1,5 +1,5 @@
 <properties
-   pageTitle="SQL Database へ移行する前に SQL Server データベースの互換性に関する問題を修正する"
+   pageTitle="SQL Database へ移行する前に SQL Server Management Studio を使用して SQL Server データベースの互換性に関する問題を修正する | Microsoft Azure"
    description="Microsoft Azure SQL Database、データベースの移行、互換性、SQL Azure の移行ウィザード"
    services="sql-database"
    documentationCenter=""
@@ -12,8 +12,8 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="data-management"
-   ms.date="05/31/2016"
+   ms.workload="sqldb-migrate"
+   ms.date="06/07/2016"
    ms.author="carlrab"/>
 
 # SQL Database へ移行する前に SQL Server Management Studio を使用して SQL Server データベースの互換性に関する問題を修正する
@@ -43,4 +43,4 @@ SQL Server Management Studio では、**ALTER DATABASE** などの各種 Transac
 - [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

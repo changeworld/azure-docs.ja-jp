@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	ms.author="dastrock"/>
 
 # MVC Web API をセキュリティで保護する
@@ -45,7 +45,7 @@ git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
 
 この Visual Studio ソリューションには、単純な WPF アプリである "TodoListClient" も含まれています。TodoListClient は、ユーザーがどのようにサインインし、クライアントが Web API にどのように要求を発行するかを示すために使用されます。ここでは、TodoListClient と TodoListService の両方に同じアプリが使用されています。TodoListClient を構成するために、以下のことも行う必要があります。
 
-- アプリ用の **モバイル** プラットフォームを追加します。
+- アプリ用の**モバイル** プラットフォームを追加します。
 - ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
 
@@ -167,4 +167,4 @@ Todo List Service の動作を確認できるようにするには、Todo List C
 
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -342,4 +342,8 @@ $DAILYBACKUPSTATS | Out-GridView
 
 このレポート出力にグラフ作成機能を追加する場合は、TechNet ブログ投稿「[Charting with PowerShell (PowerShell でのグラフ作成)](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx)」をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+## 次のステップ
+
+PowerShell を使用して Azure リソースを操作する場合は、Windows Server の保護について記載されている、[Windows Server のバックアップのデプロイおよび管理](./backup-client-automation-classic.md)に関する PowerShell の記事をご覧ください。[DPM のバックアップのデプロイと管理](./backup-dpm-automation-classic.md)に関する PowerShell の記事で、DPM バックップの管理について確認することもできます。両方の記事で、Resource Manager デプロイメントとクラシック デプロイメントの両方のモデルについて説明しています。
+
+<!---HONumber=AcomDC_0608_2016-->

@@ -19,7 +19,7 @@
 # SQL Database アクティブ geo レプリケーションを使用したクラウド アプリケーションのローリング アップグレードの管理
 
 
-> [AZURE.NOTE] [Active Geo-Replication](sql-database-geo-replication-overview.md) すべてのレベルのすべてのデータベースで を使用できるようになりました。
+> [AZURE.NOTE] [Active Geo-Replication]すべてのレベルのすべてのデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
 
 
 SQL Database で [geo レプリケーション](sql-database-geo-replication-overview.md)を使用してクラウド アプリケーションのローリング アップグレードを有効にする方法について説明します。アップグレードは中断を伴う作業であるため、ビジネス継続性の計画と設計の一部として組み込む必要があります。この記事では、アップグレード処理を編成する 2 種類の方法を確認し、方法ごとにメリットとトレードオフを説明します。この記事では、データ層として単一のデータベースに接続されている Web サイトで構成される単純なアプリケーションを使用します。ここでの目的は、エンド ユーザー エクスペリエンスに大幅な影響を及ぼさずにアプリケーションをバージョン 1 からバージョン 2 にアップグレードすることです。
@@ -40,7 +40,7 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 
 > [AZURE.NOTE] 準備の手順は運用スロットのアプリケーションに影響を与えず、アプリケーションはフル アクセス モードで動作できます。
 
-![SQL Database geo-replication configuration.Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
+![SQL Database Go-Replication configuration.Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
 
 準備の手順が完了すると、アプリケーションを実際にアップグレードできるようになります。次の図は、アップグレード処理で必要な手順を示しています。
 
@@ -48,14 +48,14 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 2. 計画終了モードを使用して、セカンダリ データベースを切断します (4)。これにより、完全に同期されたプライマリ データベースの独立したコピーが作成されます。このデータベースがアップグレードされます。
 3. プライマリ データベースで読み取り/書き込みモードを有効にして、ステージング スロットでアップグレード スクリプトを実行します (5)。     
 
-![SQL Database geo-replication configuration.Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option1-2.png)
+![SQL Database の geo レプリケーションの構成。Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option1-2.png)
 
 アップグレードが正常に完了すると、エンドユーザーをアプリケーションのステージング コピーに切り替えられるようになります。これがアプリケーションの運用スロットになります。これには、次の図に示すように、いくつかの手順がさらに必要になります。
 
 1. WATM プロファイルのオンライン エンドポイントを <i>contoso-2.azurewebsites.net</i> に切り替えます。このエンドポイントは、V2 バージョンの Web サイトを表します (6)。これが、V2 アプリケーションを備えた運用スロットになり、エンド ユーザー トラフィックがここに直接転送されます。  
 2. V1 アプリケーション コンポーネントが不要になった場合は、その V1 アプリケーション コンポーネントを安全に削除できます (7)。   
 
-![SQL Database geo-replication configuration.Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option1-3.png)
+![SQL Database の geo レプリケーションの構成。Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option1-3.png)
 
 アップグレード スクリプトのエラーなどによりアップグレード処理が失敗した場合は、ステージング スロットが侵害されたと見なされます。アプリケーションをアップグレード前の状態にロールバックするには、単純に運用スロットのアプリケーションをフル アクセスに戻します。必要な手順は、次の図に示すとおりです。
 
@@ -66,7 +66,7 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 
 > [AZURE.NOTE] <i>contoso-1.azurewebsites.net</i> をアクティブなエンドポイントとして既に指しているため、ロールバックでは WATM プロファイルの変更は不要です。
 
-![SQL Database geo-replication configuration.Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option1-4.png)
+![SQL Database の geo レプリケーションの構成。Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option1-4.png)
 
 この方法の主な**メリット**は、一連の簡単な手順を使用して単一のリージョンでアプリケーションをアップグレードできる点です。アップグレードのコストは比較的安価になります。主な**トレードオフ**は、アップグレード中に致命的なエラーが発生した場合、アップグレード前の状態に回復するには、別のリージョンでアプリケーションを再度デプロイし、geo リストアを使用してバックアップからデータベースを復元する必要がある点です。この処理により、大幅なダウンタイムが生じます。
 
@@ -86,7 +86,7 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 
 > [AZURE.NOTE] 準備の手順は運用スロットのアプリケーションに影響を与えず、アプリケーションはフル アクセス モードで動作できます。
 
-![SQL Database geo-replication configuration.Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option2-1.png)
+![SQL Database の geo レプリケーションの構成。Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option2-1.png)
 
 準備の手順が完了すると、ステージング スロットでアップグレードの用意ができます。次の図は、アップグレードの手順を示します。
 
@@ -94,14 +94,14 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 2. 計画された終了モードを使用して、同じリージョンのセカンダリ データベースを切断します (7)。これにより、完全に同期されたプライマリ データベースの独立したコピーが作成されます。これは、終了後に自動的にプライマリになります。このデータベースがアップグレードされます。
 3. ステージング スロットのプライマリ データベースで読み取り/書き込みモードを有効にして、アップグレード スクリプトを実行します (8)。    
 
-![SQL Database geo-replication configuration.Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option2-2.png)
+![SQL Database の geo レプリケーションの構成。Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option2-2.png)
 
 アップグレードが正常に完了すると、エンドユーザーを V2 バージョンのアプリケーションに切り替えられるようになります。次の図に、必要な手順を示します。
 
 1. WATM プロファイルのアクティブ エンドポイントを <i>contoso-2.azurewebsites.net</i> に切り替えます。このエンドポイントは、V2 バージョンの Web サイトを指します (9)。これが、V2 アプリケーションを持つ運用スロットになり、エンド ユーザー トラフィックがここに転送されます。 
 2. V1 アプリケーションが不要になった場合は、そのV1 アプリケーションを安全に削除できます (10 および 11)。  
 
-![SQL Database geo-replication configuration.Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option2-3.png)
+![SQL Database の geo レプリケーションの構成。Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option2-3.png)
 
 アップグレード スクリプトのエラーなどによりアップグレード処理が失敗した場合は、ステージング スロットが侵害されたと見なされます。アプリケーションをアップグレード前の状態にロールバックするには、フル アクセスを持つ運用スロットのアプリケーションを使用するように戻すだけです。必要な手順は、次の図に示すとおりです。
 
@@ -112,7 +112,7 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 
 > [AZURE.NOTE] <i>contoso-1.azurewebsites.net</i> をアクティブなエンドポイントとして既に指しているため、ロールバックでは WATM プロファイルの変更は不要です。
 
-![SQL Database geo-replication configuration.Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option2-4.png)
+![SQL Database の geo レプリケーションの構成。Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option2-4.png)
 
 この方法の主な**メリット**は、アップグレード中にビジネス継続性を損なうことなく、アプリケーションと geo 冗長性を持つコピーの両方を並行してアップグレードできる点です。主な**トレードオフ**は、各アプリケーション コンポーネントが 2 倍の冗長性を必要とするため、コストが増加する点です。また、より複雑なワークフローが必要になります。
 
@@ -131,4 +131,4 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 - [データベースのコピー](https://msdn.microsoft.com/library/azure/mt603644.aspx)
 - [読み取り専用モードまたは読み取り/書き込みモードへのデータベースの設定](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

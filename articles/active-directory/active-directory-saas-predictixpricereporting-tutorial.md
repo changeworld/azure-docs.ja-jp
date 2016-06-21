@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="06/06/2016"
 	ms.author="jeedes"/>
 
 
@@ -62,7 +62,7 @@ Azure AD への Predictix Price Reporting の統合を構成するには、ギ�
 
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-	![Active Directory][1]
+	![アプリケーション][1]
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
 3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
@@ -79,10 +79,11 @@ Azure AD への Predictix Price Reporting の統合を構成するには、ギ�
 
 6. 検索ボックスに「**Predictix Price Reporting**」と入力します。
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_01.png)
+	![アプリケーション](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_01.png)
+
 7. 結果ウィンドウで **[Predictix Price Reporting]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-
+	![アプリケーション](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_02.png)
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Predictix Price Reporting で Azure AD のシングル サインオンを構成し、テストします。
@@ -118,9 +119,9 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 
 	![Configure Single Sign-On](./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_predictixpricereporting_04.png)
 
-    a.**[サインオン URL]** ボックスに、ユーザーが Predictix Price Reporting アプリケーションへのサインオンに使用する URL を入力します。その際、**https://\<company name-pricing>.predictix.com/sso/request** のパターンを使用します。
+    a.**[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Predictix Price Reporting アプリケーションへのサインオンに使用する URL を入力します。`https://<company name-pricing>.predictix.com/sso/request`
 	
-	**[次へ]** をクリックします。
+	b. **[次へ]** をクリックします
  
 4. **[Predictix Price Reporting でのシングル サインオンの構成]** ページで、次の手順に従います。
 
@@ -269,4 +270,4 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 [204]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0608_2016-->

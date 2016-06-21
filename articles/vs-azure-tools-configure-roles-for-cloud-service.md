@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="06/01/2016"
    ms.author="tarcher" />
 
 # Visual Studio で Azure クラウド サービスのロールを構成する
@@ -235,7 +235,7 @@ Visual Studio で新しい Azure クラウド サービスを作成すると、�
 
 1. (省略可能) クラウド サービスをローカルで実行するときに作成したこのファイルを表示するには、次の手順に従います。
 
-  1. Web ロールを実行し、**[Button1]** をクリックして、`Button1_Click` 内のコードが呼び出されることを確認します。
+  1. Web ロールを実行し、**[Button1]** を選択して、`Button1_Click` 内のコードが呼び出されることを確認します。
 
   1. 通知領域で、Azure アイコンのショートカット メニューを開き、**[コンピューティング エミュレーター UI の表示]** を選択します。**[Azure コンピューティング エミュレーター]** ダイアログ ボックスが表示されます。
 
@@ -376,4 +376,4 @@ HTTPS エンドポイントを追加する場合、SSL 証明書を使用する�
 ## 次のステップ
 Visual Studio における Azure プロジェクトの詳細については、「[Azure プロジェクトの構成](vs-azure-tools-configuring-an-azure-project.md)」を参照してください。クラウド サービスのスキーマの詳細については、「[スキーマ リファレンス](https://msdn.microsoft.com/library/azure/dd179398)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0608_2016-->

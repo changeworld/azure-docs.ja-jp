@@ -13,14 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # チュートリアル: Azure PowerShell で Azure Data Lake Analytics の使用を開始する
 
 [AZURE.INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを作成し、[U-SQL](data-lake-analytics-u-sql-get-started.md) で Data Lake Analytics ジョブを定義して、Data Lake Analtyic アカウントにジョブを送信する方法について説明します。Data Lake Analytics の詳細については、「[Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
+Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを作成し、[U-SQL](data-lake-analytics-u-sql-get-started.md) で Data Lake Analytics ジョブを定義して、Data Lake Analytics アカウントにジョブを送信する方法について説明します。Data Lake Analytics の詳細については、「[Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
 このチュートリアルでは、タブ区切り値 (TSV) ファイルを読み取り、それをコンマ区切り値 (CSV) ファイルに変換するジョブを開発します。サポートされている他のツールを使用する同じチュートリアルを読み進めるには、このセクションの上部にあるタブをクリックします。
 
@@ -105,7 +105,7 @@ Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを�
 
 	$dataLakeStoreName = "<The default Data Lake Store account name>"
 	
-	$localFolder = "C:\Tutorials\Downloads\" # A temp location for the file. 
+	$localFolder = "C:\Tutorials\Downloads" # A temp location for the file. 
 	$storageAccount = "adltutorials"  # Don't modify this value.
 	$container = "adls-sample-data"  #Don't modify this value.
 
@@ -133,7 +133,7 @@ Data Lake Analytics は、Azure BLOB ストレージにもアクセスできま�
 
 ##Data Lake Analytics ジョブを送信する
 
-Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の詳細については、[U-SQL 言語の概要](data-lake-analytics-u-sql-get-started.md)に関する記述と「[U SQL 言語リファレンス](http://go.microsoft.com/fwlink/?LinkId=691348)」を参照してください。
+Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」と「[U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/?LinkId=691348)」に関する記述を参照してください。
 
 **Data Lake Analytics ジョブ スクリプトを作成するには**
 
@@ -186,7 +186,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 		
 		Get-AzureRmDataLakeAnalyticsJob -AccountName $dataLakeAnalyticsName -JobId $job.JobId
 
-	このスクリプトでは、U-SQL スクリプト ファイルが c:\tutorials\data-lake-analytics\copyFile.usql に格納されます。適宜、ファイル パスを更新してください。
+	このスクリプトでは、U-SQL スクリプト ファイルが c:\\tutorials\\data-lake-analytics\\copyFile.usql に格納されます。適宜、ファイル パスを更新してください。
  
 ジョブが完了したら、以下のコマンドレットを使用し、ファイルをリストしてダウンロードできます。
 	
@@ -203,10 +203,10 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 ## 関連項目
 
 - 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
-- より複雑なクエリを表示する場合は、「[チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」を参照してください。
-- U-SQL アプリケーションの開発を開始する場合は、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
+- より複雑なクエリを表示する場合は、「[チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
+- U-SQL アプリケーションの開発を開始する場合は、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」をご覧ください。
 - U-SQL の詳細については、「[Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

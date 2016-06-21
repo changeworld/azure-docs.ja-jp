@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # チュートリアル: Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics の使用を開始する
@@ -33,7 +33,7 @@ Azure CLI を使用して、Azure Data Lake Analytics アカウントを作成�
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 - **Azure CLI**。「[Azure CLI のインストールと構成](../xplat-cli-install.md)」をご覧ください。
-	- このデモを完了するためには、**プレリリース版の ** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases)をダウンロードしてインストールします。
+	- このデモを完了するためには、**プレリリース版の** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases)をダウンロードしてインストールします。
 - **認証**。次のコマンドを使用します。
 
 		azure login
@@ -156,10 +156,10 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 ## 関連項目
 
 - 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
-- より複雑なクエリを表示する場合は、「[チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」を参照してください。
-- U-SQL アプリケーションの開発を開始する場合は、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
+- より複雑なクエリを表示する場合は、「[チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
+- U-SQL アプリケーションの開発を開始する場合は、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」をご覧ください。
 - U-SQL の詳細については、「[Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

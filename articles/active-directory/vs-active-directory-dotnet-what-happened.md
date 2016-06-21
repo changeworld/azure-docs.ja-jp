@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="06/01/2016"
 	ms.author="tarcher"/>
 
 # MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
@@ -171,4 +171,4 @@ Azure Active Directory アプリが更新され、*ディレクトリ データ�
 
 [Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0608_2016-->

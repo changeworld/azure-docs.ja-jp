@@ -344,7 +344,7 @@ Azure Data Factory を使用すると、[サポートされているオンプレ
 	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
 	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
-	- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
+- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
@@ -497,12 +497,7 @@ Azure Data Factory とその他のクラウド サービスとのゲートウェ
 
 | ドメイン名 | ポート | 説明 |
 | ------ | --------- | ------------ |
-| *.servicebus.windows.net | 443, 80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | 
-| *.servicebus.windows.net | 9350-9354, 5671 | TCP 経由での任意の Service Bus Relay| 
-| *.core.windows.net | 443 | HTTPS | 
-| *.clouddatahub.net | 443 | HTTPS | 
-| graph.windows.net | 443 | HTTPS | 
-| login.windows.net | 443 | HTTPS | 
+| **.servicebus.windows.net | 443, 80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | | *.servicebus.windows.net | 9350-9354, 5671 | TCP 経由での任意の Service Bus Relay| | *.core.windows.net | 443 | HTTPS | | *.clouddatahub.net | 443 | HTTPS | | graph.windows.net | 443 | HTTPS | | login.windows.net | 443 | HTTPS | 
 
 Windows のファイアウォール レベルでは、通常これらの送信ポートが有効になっています。有効でない場合は、ゲートウェイ コンピューターに応じたドメインとポートを構成することができます。
 
@@ -520,6 +515,8 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 ファイアウォール ルールが企業ファイアウォール上で、Windows ファイアウォールがゲートウェイ コンピューター上で適切に有効化されていること、およびデータ ストア自体が適切に有効化されていることを確認する必要があります。これにより、ゲートウェイはソースとシンクの両方に正常に接続されます。コピー操作に関連するデータ ストアごとにルールを有効にする必要があります。
 
 たとえば、**Azure SQL Database シンクまたは Azure SQL Data Warehouse シンクにオンプレミスのデータ ストア**からコピーするために、送信 **TCP** 通信を Windows ファイアウォールと企業ファイアウォールの両方に対してポート **1433** 上で許可する必要があり、許可された IP アドレスの一覧にゲートウェイ コンピューターの IP アドレスを追加するために、Azure SQL サーバーのファイアウォール設定を構成する必要があります。
+
+データを SQL Data Warehouse に読み込む場合、企業のファイアウォールで追加のポートが開かないようにするには、[ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)機能を使用します。
 
 ### プロキシ サーバーに関する考慮事項
 既定では、Data Management Gateway は、Internet Explorer からプロキシ設定を利用し、アクセスするために既定の資格情報を使用します。このケースに合わない場合は、ゲートウェイが Azure Data Factory に接続できることを確認するために、次に示すように **[プロキシ サーバー設定]** をさらに構成できます。
@@ -539,7 +536,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 			      </defaultProxy>
 			</system.net>
 
-	追加のプロパティは、プロキシ タグ内で scriptLocation のように必要な設定を指定することが許可されます。構文の[プロキシ要素 (ネットワーク設定)](https://msdn.microsoft.com/library/sa91de1e.aspx) を参照してください。
+	追加のプロパティは、プロキシ タグ内で scriptLocation のように必要な設定を指定することが許可されます。構文の[プロキシ要素 (ネットワーク設定)](https://msdn.microsoft.com/library/sa91de1e.aspx) をご覧ください。
 
 			<proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
 
@@ -558,7 +555,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 
 - 詳細な情報は、Windows イベント ログのゲートウェイ ログで確認できます。Windows の **[イベント ビューアー]**、**[アプリケーションとサービス ログ]**、**[Data Management Gateway]** を使用してログを確認できます。ゲートウェイ関連の問題のトラブルシューティングでは、イベント ビューアーでエラー レベルのイベントを調べてください。
 - **証明書を変更**した後でゲートウェイの動作が停止した場合は、Microsoft Data Management Gateway 構成マネージャー ツールまたは [サービス] コントロール パネル アプレットを使って **Data Management Gateway サービス**を再起動 (停止してから起動) します。エラーが表示された場合は、Data Management Gateway サービスのユーザーが証明書マネージャー (certmgr.msc) で証明書にアクセスするための明示的なアクセス許可を付与する必要がある場合があります。サービスの既定のユーザー アカウントは、**NT Service\\DIAHostService** です。 
-- データ ストア接続またはドライバーに関係するエラーがある場合は、ゲートウェイ コンピューター上で **Data Management Gateway 構成マネージャー**を起動し、**[診断]** タブをクリックして、**[このゲートウェイを使用してオンプレミスのデータ ソースへの接続をテストします]** グループの各フィールドで適切な値を選択または入力します。**[接続テスト]** をクリックし、接続情報と資格情報を使用して、ゲートウェイ コンピューターからオンプレミスのデータ ソースに接続できることを確認します。ドライバーのインストール後も接続テストが失敗する場合は、最新の変更を認識できるようにゲートウェイを再起動します。  
+- データ ストア接続またはドライバーに関係するエラーがある場合は、ゲートウェイ コンピューター上で **Data Management Gateway 構成マネージャー**を起動し、**[診断]** タブをクリックして、**[このゲートウェイを使用してオンプレミスのデータ ソースへの接続をテストします]** グループの各フィールドで適切な値を選択または入力します。**[テスト接続]** をクリックし、接続情報と資格情報を使用して、ゲートウェイ コンピューターからオンプレミスのデータ ソースに接続できることを確認します。ドライバーのインストール後も接続テストが失敗する場合は、最新の変更を認識できるようにゲートウェイを再起動します。  
 
 	![接続テスト](./media/data-factory-move-data-between-onprem-and-cloud/TestConnection.png)
 		
@@ -602,8 +599,8 @@ Data Factory エディターで資格情報を暗号化するには、次の操�
 1. ツリー ビューの既存の**リンクされたサービス**をクリックしてその JSON 定義を参照するか、または Data Management Gateway を必要とするリンクされたサービスを新規に作成します (例: SQL Server または Oracle)。 
 2. JSON エディターで、**gatewayName** プロパティに、ゲートウェイの名前を入力します。 
 3. **connectionString** の **Data Source** プロパティにサーバー名を入力します。
-4. **connectionString** の **Initial Catalog** プロパティにデータベース名を入力します。    
-5. コマンド バーの **[暗号化]** をクリックします。**[資格情報の設定]** ダイアログ ボックスが表示されます。![[資格情報の設定] ダイアログ](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png)
+4. **connectionString** の **初期カタログ** プロパティにデータベース名を入力します。    
+5. コマンド バーの **[暗号化]** をクリックします。**[Setting Credentials (資格情報の設定)]** ダイアログ ボックスが表示されます。![[資格情報の設定] ダイアログ](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png)
 6. **[資格情報の設定]** ダイアログ ボックスで、次の手順を実行します。  
 	1.	Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。 
 	2.	**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。 
@@ -625,7 +622,7 @@ Data Factory エディターで資格情報を暗号化するには、次の操�
 
 ゲートウェイ コンピューターとは異なるコンピューターからポータルにアクセスする場合は、資格情報マネージャー アプリケーションがゲートウェイ コンピューターに接続できることを確認する必要があります。アプリケーションがゲートウェイ コンピューターにアクセスできない場合、データ ソースの資格情報を設定したり、データ ソースへの接続をテストしたりすることはできません。
 
-Microsoft Azure ポータルから起動した **[資格情報の設定]** アプリケーションを使用してオンプレミスのデータ ソースの資格情報を設定すると、ポータルは、ユーザーがゲートウェイ コンピューターの **Data Management Gateway Configuration Manager** の **[証明書]** タブで指定した証明書で資格情報を暗号化します。
+Microsoft Azure ポータルから起動した **[Setting Credentials (資格情報の設定)]** アプリケーションを使用してオンプレミスのデータ ソースの資格情報を設定すると、ポータルは、ユーザーがゲートウェイ コンピューターの **Data Management Gateway 構成マネージャー**の **[証明書]** タブで指定した証明書で資格情報を暗号化します。
 
 API を使用して資格情報を暗号化した方がよい場合は、[New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用して資格情報を暗号化できます。コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。このコマンドレットによって返される資格情報を、[New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) コマンドレットで使用する JSON ファイルの **connectionString** の **EncryptedCredential** 要素や、ポータルの Data Factory エディターで JSON スニペットに追加できます。
 
@@ -687,4 +684,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 	
 	Remove-AzureRmDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force 
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/22/2016"
+	ms.date="06/06/2016"
 	ms.author="tdykstra"/>
 
 # Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
@@ -197,4 +197,4 @@ ETW イベントのリッスン||○|○|○|
   [sqldatabase]: http://www.windowsazure.com/documentation/services/sql-database/
   [Storage]: http://www.windowsazure.com/documentation/services/storage/
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

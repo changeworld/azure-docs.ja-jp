@@ -3,7 +3,7 @@
    description="Docker マシンと VirtualBox を使用して既定の Docker インスタンスを構成する詳細な手順"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="TomArcher"
+   authors="allclark"
    manager="douge"
    editor="" />
 <tags
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="03/27/2016"
-   ms.author="tarcher" />
+   ms.date="06/08/2016"
+   ms.author="allclark" />
 
 # VirtualBox を使用した Docker ホストの構成
 
@@ -56,4 +56,4 @@ Docker クライアントを構成するには、Windows PowerShell を開き、
 [0]: ./media/vs-azure-tools-docker-setup/docker-machine-ls.png
 [1]: ./media/vs-azure-tools-docker-setup/docker-ps.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0608_2016-->

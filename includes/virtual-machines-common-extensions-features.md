@@ -45,7 +45,7 @@ VM 拡張機能では、パスワードのリセットや RDP の構成などの
 |**McAfeeEndpointSecurity**|悪意のあるソフトウェアから VM を保護します。|[McAfee](https://www.mcafeeasap.com/MarketingContent/default.aspx)|
 |**TrendMicroDSA**|侵入の検知と防止、ファイアウォール、マルウェア対策、Web レピュテーション、ログの検査、および整合性監視を提供する Trend Micro Deep Security プラットフォームを有効にします。|[Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../articles/virtual-machines/virtual-machines-windows-classic-install-trend.md)|
 |**PortalProtectExtension**|Microsoft SharePoint 環境を脅威から保護します。|[Securing Your SharePoint Deployment on Azure (Azure 上への SharePoint のデプロイの保護)](http://blog.trendmicro.com/securing-sharepoint-deployment-azure/)|
-|**IaaSAntimalware**|Azure Cloud Services および Virtual Machines 向けの Microsoft マルウェア対策は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するリアルタイム保護機能であり、既知のマルウェアや不要なソフトウェアがシステムへのインストールまたは実行を試みた場合に警告する構成可能なアラートを備えています。|[マルウェア対策についてのドキュメントをダウンロードする](http://go.microsoft.com/fwlink/?linkid=398023&clcid=0x409)|
+|**IaaSAntimalware**|Azure Cloud Services および Virtual Machines 向けの Microsoft マルウェア対策は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するリアルタイム保護機能であり、既知のマルウェアや不要なソフトウェアがシステムへのインストールまたは実行を試みた場合に警告する構成可能なアラートを備えています。|[Azure Cloud Services および Virtual Machines 向けマルウェア対策](../articles/azure-security-antimalware.md)|
 |**SymantecEndpointProtection**|Symantec Endpoint Protection 12.1.4 により、物理システムと仮想システム間でのセキュリティとパフォーマンスを有効にします。|[Azure VM に Symantec Endpoint Protection をインストールし、構成する方法](../articles/virtual-machines/virtual-machines-windows-classic-install-symantec.md)
 
 ##VM の操作と管理
@@ -78,7 +78,7 @@ VM 拡張機能では、パスワードのリセットや RDP の構成などの
 
 |VM 拡張機能の名前|機能の説明|詳細情報|
 |---|---|---|
-|**BGInfo**|RDP の使用時に、有用なサーバー情報を統合した図をデスクトップに表示します。|[BGInfo 拡張機能](https://msdn.microsoft.com/library/dn606289.aspx)|
+|**BGInfo**|RDP の使用時に、有用なサーバー情報を統合した図をデスクトップに表示します。|[BGInfo 拡張機能](https://msdn.microsoft.com/library/mt589195.aspx)|
 |**HpcVmDrivers**|Windows Server 2012 R2 または Windows Server 2012 を実行しているサイズが A8 または A9 の VM で、リモート ダイレクト メモリ アクセス (RDMA) ネットワーク デバイスのドライバーのインストール、構成、管理を行います。クラスター化された A8 または A9 の VM で、並列 MPI アプリケーション の実行中に RDMA ネットワークを使用できるようになります。|[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0608_2016-->

@@ -69,4 +69,4 @@ Michael Smith が msmith@hotmail.com で Azure にサインインしていると
 ## 次のステップ
 サブスクリプションとディレクトリの関係の詳細については、[サブスクリプションをディレクトリに関連付ける方法](active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!-----HONumber=AcomDC_0608_2016-->

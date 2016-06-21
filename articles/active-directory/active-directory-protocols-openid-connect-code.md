@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/31/2016"
 	ms.author="priyamo"/>
 
 
@@ -58,7 +58,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | パラメーター | | 説明 |
 | ----------------------- | ------------------------------- | --------------- |
 | テナント | 必須 | 要求パスの `{tenant}` 値を使用して、アプリケーションにサインインできるユーザーを制御できます。使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です。 |
-| client\_id | 必須 | Azure AD への登録時にアプリに割り当てられたアプリケーション ID。これは Azure クラシック ポータルで見つけることができます。**[Active Directory]** をクリックしてディレクトリをクリックし、アプリケーションをクリックしてから **[構成]** をクリックします。 |
+| client\_id | 必須 | Azure AD への登録時にアプリに割り当てられたアプリケーション ID。値は Azure クラシック ポータルにあります。**[Active Directory]** をクリックしてディレクトリをクリックし、アプリケーションをクリックしてから **[構成]** をクリックします。 |
 | response\_type | 必須 | OpenID Connect サインインでは、`id_token` を指定する必要があります。`code` などの他の response\_types が含まれていてもかまいません。 |
 | scope | 必須 | スコープのスペース区切りリスト。OpenID Connect では、スコープ `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。同意を求めるこの要求には他のスコープが含まれていてもかまいません。 |
 | nonce | 必須 | アプリによって生成された、要求に含まれる値。この値が、最終的な `id_token` に要求として含まれます。アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。通常、この値はランダム化された一意の文字列または GUID になっており、要求の送信元を特定する際に使用できます。 |
@@ -197,4 +197,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 承認の `code` と `id_token` を取得した後は、ユーザーをサインインさせ、代わりにアクセス トークンを取得できます。ユーザーをサインインさせるには、前に説明したように `id_token` を厳密に検証する必要があります。アクセス トークンは、[OAuth プロトコルのドキュメント](active-directory-protocols-oauth-code.md#Use-the-Authorization-Code-to-Request-an-Access-Token)に記載されている手順に従って取得できます。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

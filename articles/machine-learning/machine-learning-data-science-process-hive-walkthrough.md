@@ -543,20 +543,20 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 **警告:** ファイル サイズが大きい場合、`copyToLocal` の処理に時間がかかる可能性があるため、大きなファイルではこのコマンドを使用しないことをお勧めします。
 
-Azure BLOB にこのデータがあることの主な利点は、[リーダー][reader] モジュールを使って Azure Machine Learning 内でデータを探索できることです。
+Azure BLOB にこのデータがあることの主な利点は、[データのインポート][import-data] モジュールを使って Azure Machine Learning 内でデータを探索できることです。
 
 
 ## <a name="#downsample"></a>Azure Machine Learning でデータをダウンサンプリングしてモデルを作成する
 
 **注:** これは、通常、**データ サイエンティスト** タスクです。
 
-探索的データ分析フェーズが終了したら、Azure Machine Learning.でデータをダウンサンプリングし、モデルを作成できます。このセクションでは、Hive クエリを使って、Azure Machine Learning の[リーダー][reader] モジュールからアクセスするデータをダウンサンプリングする方法を説明します。
+探索的データ分析フェーズが終了したら、Azure Machine Learning.でデータをダウンサンプリングし、モデルを作成できます。このセクションでは、Hive クエリを使って、Azure Machine Learning の[データのインポート][import-data] モジュールからアクセスするデータをダウンサンプリングする方法を説明します。
 
 ### データをダウンサンプリングする
 
 これには、2 つの手順があります。まず、すべてのレコードに存在する 3 つのキー ("medallion"、"hack\_license"、"pickup\_datetime") で、**nyctaxidb.trip** テーブルと **nyctaxidb.fare** テーブルを結合します。その後、二項分類ラベル **tipped** と多クラス分類ラベル **tip\_class** を作成します。
 
-Azure Machine Learning の[リーダー][reader] モジュールからダウンサンプリングされたデータを直接使用できるようにするには、上記のクエリの結果を内部の Hive テーブルに格納する必要があります。以下では、内部の Hive テーブルを作成し、結合されダウンサンプリングされたデータでその内容を設定します。
+Azure Machine Learning の[データのインポート][import-data] モジュールからダウンサンプリングされたデータを直接使用できるようにするには、上記のクエリの結果を内部の Hive テーブルに格納する必要があります。以下では、内部の Hive テーブルを作成し、結合されダウンサンプリングされたデータでその内容を設定します。
 
 クエリでは、標準の Hive 関数を直接適用して、"pickup\_datetime" フィールドから時間、1 年の週、曜日 (1 は月曜日、7 は日曜日の略) を生成し、乗車場所と降車場所の直線距離も生成します。標準の Hive 関数の一覧は、「[LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)」に記載されています。
 
@@ -689,13 +689,13 @@ Azure Machine Learning でモデル作成用データを準備する *sample\_hi
 
 	hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
-これで、Azure Machine Learning で [リーダー][reader] モジュールを使ってアクセスできる内部テーブル "nyctaxidb.nyctaxi\_downsampled\_dataset" ができました。さらに、このデータセットを使って Machine Learning モデルを作成できます。
+これで、Azure Machine Learning で[データのインポート][import-data] モジュールを使ってアクセスできる内部テーブル "nyctaxidb.nyctaxi\_downsampled\_dataset" ができました。さらに、このデータセットを使って Machine Learning モデルを作成できます。
 
-### Azure Machine Learning のリーダー モジュールを使ってダウンサンプリングされたデータにアクセスする
+### Azure Machine Learning のデータのインポート モジュールを使ってダウンサンプリングされたデータにアクセスする
 
-Azure Machine Learning の[リーダー][reader] モジュールで Hive クエリを発行する前提条件として、Azure Machine Learning ワークスペースにアクセスし、クラスターの資格情報とクラスターに関連付けられたストレージ アカウントにアクセスする必要があります。
+Azure Machine Learning の[データのインポート][import-data] モジュールで Hive クエリを発行する前提条件として、Azure Machine Learning ワークスペースにアクセスし、クラスターの資格情報とクラスターに関連付けられたストレージ アカウントにアクセスする必要があります。
 
-[リーダー][reader] モジュールと入力するパラメーターの詳細は次のとおりです。
+[データのインポート][import-data] モジュールと入力するパラメーターの詳細は次のとおりです。
 
 **HCatalog サーバー URI**: クラスター名が abc123 の場合、単に https://abc123.azurehdinsight.net となります。
 
@@ -709,7 +709,7 @@ Azure Machine Learning の[リーダー][reader] モジュールで Hive クエ�
 
 **Azure コンテナー名**: クラスターの既定のコンテナー名。通常はクラスター名と同じです。"abc123" というクラスターの場合、これは abc123 になります。
 
-**重要な注意事項:** **Azure Machine Learning で [リーダー][reader] モジュールを使ってクエリするすべてのテーブルは、内部テーブルである必要があります。** D.db データベース内のテーブル T が内部テーブルかどうかを判断するヒントを次に示します。
+**重要な注意事項:** **Azure Machine Learning で[データのインポート][import-data] モジュールを使ってクエリするすべてのテーブルは、内部テーブルである必要があります。** D.db データベース内のテーブル T が内部テーブルかどうかを判断するヒントを次に示します。
 
 Hive ディレクトリ プロンプトで次のコマンドを発行します。
 
@@ -717,7 +717,7 @@ Hive ディレクトリ プロンプトで次のコマンドを発行します�
 
 テーブルが内部テーブルであり、テーブルにデータが設定されている場合は、その内容がここで表示される必要があります。テーブルが内部テーブルかどうかを判断する別の方法は、Azure ストレージ エクスプローラーを使用することです。Azure ストレージ エクスプローラーを使用してクラスターの既定のコンテナー名に移動し、テーブル名でフィルターします。テーブルとその内容が表示されれば、内部テーブルであることがわかります。
 
-Hive クエリと[リーダー][reader] モジュールのスナップショットを次に示します。
+Hive クエリと[データのインポート][import-data] モジュールのスナップショットを次に示します。
 
 ![](./media/machine-learning-data-science-process-hive-walkthrough/1eTYf52.png)
 
@@ -733,7 +733,7 @@ Hive クエリと[リーダー][reader] モジュールのスナップショッ�
 
 **使用する学習者: **2 クラスのロジスティック回帰
 
-a.この問題では、ターゲット (またはクラス) ラベルは "tipped" です元のダウンサンプリングされたデータセットには、この分類実験用のターゲット リークであるいくつかの列があります。具体的には、tip\_class、tip\_amount、total\_amount では、テスト時に利用できないターゲット ラベルについての情報が表示されます。ここでは、[プロジェクト列][project-columns]モジュールを使ってこれらの列を考慮事項から除外します。
+a.この問題では、ターゲット (またはクラス) ラベルは "tipped" です元のダウンサンプリングされたデータセットには、この分類実験用のターゲット リークであるいくつかの列があります。具体的には、tip\_class、tip\_amount、total\_amount では、テスト時に利用できないターゲット ラベルについての情報が表示されます。ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を考慮事項から除外します。
 
 次のスナップショットは、特定の乗車でチップが支払われたかどうかを予測するための実験を示しています。
 
@@ -753,7 +753,7 @@ b.この実験では、ターゲット ラベルの分布がほぼ 1:1 です。
 
 **使用する学習者: **多クラスのロジスティック回帰
 
-a.この問題では、ターゲット (またはクラス) ラベルは、5 つの値 (0,1,2,3,4) のいずれかを取ることができる "tip\_class" になります。二項分類の場合と同様に、この実験用のターゲット リークであるいくつかの列があります。具体的には、tipped、tip\_amount、total\_amount では、テスト時に利用できないターゲット ラベルについての情報が表示されます。ここでは、[プロジェクト列][project-columns]モジュールを使ってこれらの列を削除します。
+a.この問題では、ターゲット (またはクラス) ラベルは、5 つの値 (0,1,2,3,4) のいずれかを取ることができる "tip\_class" になります。二項分類の場合と同様に、この実験用のターゲット リークであるいくつかの列があります。具体的には、tipped、tip\_amount、total\_amount では、テスト時に利用できないターゲット ラベルについての情報が表示されます。ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を削除します。
 
 次のスナップショットは、チップが少なくなる可能性の高い箱 ( クラス 0: チップ = $0、クラス 1 : チップ > $0 とチップ <= $5、クラス 2 : チップ > $5 とチップ <= $10、クラス 3 : チップ > $10 とチップ <= $20、クラス 4 : チップ > $20) を予測する実験を示しています。
 
@@ -774,7 +774,7 @@ b.この実験では、混同行列を使って、予測精度を確認します
 
 **使用する学習者:** ブースト デシジョン ツリー
 
-a.この問題では、ターゲット (またはクラス) ラベルは "tip\_amount" です。この場合のターゲット リークは、tipped、tip\_class、total\_amount です。これらの変数はすべて、通常はテスト時に利用できないチップの金額についての情報を表示します。ここでは、[プロジェクト列][project-columns]モジュールを使ってこれらの列を削除します。
+a.この問題では、ターゲット (またはクラス) ラベルは "tip\_amount" です。この場合のターゲット リークは、tipped、tip\_class、total\_amount です。これらの変数はすべて、通常はテスト時に利用できないチップの金額についての情報を表示します。ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を削除します。
 
 次のスナップショットは、支払われるチップの金額を予測する実験を示しています。
 
@@ -807,7 +807,7 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 [15]: ./media/machine-learning-data-science-process-hive-walkthrough/amlreader.png
 
 <!-- Module References -->
-[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

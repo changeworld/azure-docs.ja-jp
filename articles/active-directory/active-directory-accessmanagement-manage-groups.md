@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/03/2016"
+	ms.date="06/14/2016"
 	ms.author="curtand"/>
 
 
@@ -106,10 +106,12 @@ Azure AD では、グループのメンバーとして追加するユーザー�
 
 * [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
 
+* [グループの設定を構成するための Azure Active Directory コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
+
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
 * [Azure Active Directory とは](active-directory-whatis.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -208,7 +208,13 @@ Analytics でこれらの値を抽出するには、次のようにします。
 
 ## サンプリングされたデータのカウント
 
-イベントのカウントには、`sum(itemCount)` 集計を使うことをお勧めします。多くの場合、itemCount==1 であるため、この関数を使用すると単にグループ内の行数がカウントされます。ただし、[サンプリング](app-insights-sampling.md)を実行中の場合、元のイベントの一部のみが Application Insights のデータ ポイントとして保持されます。そのため、表示される各データ ポイントに複数の `itemCount` イベントが存在します。したがって、itemCount を合計することによって、元のイベント数の正確な見積もりが得られます。
+イベントのカウントには、`sum(itemCount)` 集計を使うことをお勧めします。多くの場合、itemCount==1 であるため、この関数を使用すると単にグループ内の行数がカウントされます。ただし、[サンプリング](app-insights-sampling.md)を実行中の場合、元のイベントの一部のみが Application Insights のデータ ポイントとして保持されます。そのため、表示される各データ ポイントに複数の `itemCount` イベントが存在します。
+
+たとえば、サンプリングによって元のイベントの 75% が破棄された場合、保持されているレコードでは itemCount == 4 になります。つまり、保持されているすべてのレコードについて、それぞれ 4 つの元のレコードが存在していました。
+
+アダプティブ サンプリングでは、アプリケーションの使用頻度が高い期間に itemCount が増えます。
+
+したがって、itemCount を合計することによって、元のイベント数の正確な見積もりが得られます。
 
 
 ![](./media/app-insights-analytics-tour/510.png)
@@ -220,7 +226,6 @@ Analytics でこれらの値を抽出するには、次のようにします。
 
 
 ## 結果のグラフ表示
-
 
 
 ```AIQL
@@ -244,7 +249,7 @@ Analytics でこれらの値を抽出するには、次のようにします。
 
 ## [where](app-insights-analytics-reference.md#where-operator): 条件に基づいてフィルター処理する
 
-Application Insights 監視をアプリの[クライアント](app-insights-javascript.md)側とサーバー側の両方に対して設定した場合、データベース内のテレメトリの一部はブラウザーからのものです。
+Application Insights 監視をアプリの[クライアント](app-insights-javascript.md)側とサーバー側の両方に対して設定した場合、データベース内のテレメトリの一部はブラウザーから取得されます。
 
 ブラウザーからレポートされた例外のみを見てみましょう。
 
@@ -264,7 +269,7 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
  * `==`、`<>`: 等しい、等しくない
  * `=~`、`!=`: 等しい、等しくない (大文字と小文字が区別されない文字列の場合)。文字列比較演算子にはさらに多くの種類があります。
 
-詳細については、[スカラー式](app-insights-analytics-reference.md#scalars)に関する記述を参照してください。
+詳細については、[スカラー式](app-insights-analytics-reference.md#scalars)に関する記述をご覧ください。
 
 ### イベントのフィルター処理
 
@@ -469,4 +474,4 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

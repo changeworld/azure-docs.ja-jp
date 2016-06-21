@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="na" 
-   ms.date="05/05/2016"
-   ms.author="eslesar"/>
+   ms.date="06/06/2016"
+   ms.author="magoedte;eslesar"/>
    
 
 # Azure Automation DSC の使用
@@ -27,7 +27,7 @@
 
 このトピックの例を完了するには、次のものが必要です。
 
-- Azure Automation アカウント。Azure Automation アカウントの作成手順については、[Azure Automation の構成](automation-configuring.md)に関するページを参照してください。
+- Azure Automation アカウント。Azure Automation 実行アカウントの作成手順については、[Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)に関するページをご覧ください。
 - Windows Server 2008 R2 以降を実行している Azure Resource Manager VM (クラシックではない)。VM の作成手順については、「[Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」を参照してください。
 
 ## DSC 構成を作成する
@@ -266,4 +266,4 @@ Azure Automation DSC が管理対象ノードの整合性チェックを実行�
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="05/31/2016"
 	ms.author="hawong"/>
 
 # DocumentDB 用の Power BI チュートリアル: Power BI コネクタでデータを視覚化する
@@ -194,4 +194,4 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 - Power BI の詳細については、[ここ](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)をクリックしてください。
 - DocumentDB の詳細については、[ここ](https://azure.microsoft.com/documentation/services/documentdb/)をクリックしてください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0608_2016-->

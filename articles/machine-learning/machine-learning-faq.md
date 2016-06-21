@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/18/2016"
+	ms.date="06/13/2016"
 	ms.author="garye"/>
 
 # Azure Machine Learning に関してよく寄せられる質問 (FAQ): 課金、機能、制限、サポート
@@ -51,7 +51,9 @@ Machine Learning API サービスでは、Machine Learning Studio に組み込�
 
 **Azure Machine Learning に無料試用版はありますか。**
 
- Azure の無料試用版にサインアップすると、1 か月間すべての Azure サービスを試すことができます。Azure 無料試用版の詳細については、「[Azure 無料試用版の FAQ](/pricing/free-trial-faq/)」をご覧ください。
+ Azure Machine Learning には、無料サブスクリプションのオプション (詳細については、「[Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)」を参照) が用意されており、Machine Learning Studio では、8 時間の簡易評価用の試用版が利用できます (この試用版を利用するには、[Machine Learning Studio](https://studio.azureml.net/?selectAccess=true&o=2) にログインしてください)。
+ 
+ さらに、Azure の無料試用版にサインアップすると、1 か月間すべての Azure サービスを試すことができます。Azure 無料試用版の詳細については、「[Azure 無料試用版の FAQ](/pricing/free-trial-faq/)」を参照してください。
 
 ## Machine Learning Studio に関する質問
 
@@ -59,7 +61,7 @@ Machine Learning API サービスでは、Machine Learning Studio に組み込�
 
 **実験グラフ用のバージョン管理や Git 統合はありますか。**
 
-いいえ。ただし、Machine Learning Studio は、他のユーザーによって変更できない実験の各イテレーションを保持します。詳細については、「[Machine Learning Studio での実験イテレーションの管理](machine-learning-manage-experiment-iterations.md)」をご覧ください。
+いいえ。ただし、Machine Learning Studio は、他のユーザーによって変更できない実験の各イテレーションを保持します。詳細については、「[Machine Learning Studio での実験イテレーションの管理](machine-learning-manage-experiment-iterations.md)」を参照してください。
 
 ### Machine Learning 用データのインポートとエクスポート
 
@@ -102,18 +104,18 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **組み込みイメージの入力機能はありますか。**
 
-イメージの入力機能については、「[Import Images (イメージをインポートする)][image-reader]」をご覧ください。
+イメージの入力機能については、「[Import Images (イメージのインポート)][image-reader]」を参照してください。
 
 ### モジュール
 
 **探しているアルゴリズム、データ ソース、データ形式、データ変換操作が Azure Machine Learning Studio で見つかりません。どうすればいいでしょうか?**
 
-[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)にアクセスすると、追跡中の機能の要求を参照できます。探している機能が既に要求されている場合は、その要求に投票を追加できます。探している機能が存在しない場合は、新しい要求を作成します。このフォーラムでの要求の状態も参照できます。この一覧はこまめに追跡され、機能の提供状況は頻繁に更新されます。さらに、R と Python の組み込みのサポートを使用して、必要に応じてカスタム変換を作成できます。
+[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)にアクセスすると、機能に関する追跡中の要望をご覧いただけます。探している機能が既に要求されている場合は、その要求に投票を追加できます。探している機能が存在しない場合は、新しい要求を作成します。このフォーラムでの要求の状態も参照できます。この一覧はこまめに追跡され、機能の提供状況は頻繁に更新されます。さらに、R と Python の組み込みのサポートを使用して、必要に応じてカスタム変換を作成できます。
 
 
 **既存のコードを Machine Learning Studio に取り込むことはできますか?**
 
-はい。Machine Learning Studio に既存の R コードまたは Python コードを取り込み、それを Azure Machine Learning の学習ツールと同じ実験で実行し、Azure Machine Learning 経由で Web サービスとしてソリューションをデプロイすることができます。詳細については、「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」および「[Azure Machine Learning Studio での Python Machine Learning スクリプトの実行](machine-learning-execute-python-scripts.md)」をご覧ください。
+はい。Machine Learning Studio に既存の R コードまたは Python コードを取り込み、それを Azure Machine Learning の学習ツールと同じ実験で実行し、Azure Machine Learning 経由で Web サービスとしてソリューションをデプロイすることができます。詳細については、「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」および「[Azure Machine Learning Studio での Python Machine Learning スクリプトの実行](machine-learning-execute-python-scripts.md)」を参照してください。
 
 **[PMML](http://en.wikipedia.org/wiki/Predictive_Model_Markup_Language) などを使用してモデルを定義することはできますか。**
 
@@ -196,7 +198,7 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。詳細�
 
 **プログラムで Machine Learning のモデルを再トレーニングするにはどうすればよいですか?**
 
-再トレーニング API を使用します。詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」をご覧ください。サンプル コードは、「[Microsoft Azure Maching Learning Retraining Demo (Microsoft Azure Maching Learning 再トレーニング デモ)](https://azuremlretrain.codeplex.com/)」にもあります。
+再トレーニング API を使用します。詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」を参照してください。サンプル コードは、「[Microsoft Azure Maching Learning Retraining Demo (Microsoft Azure Maching Learning 再トレーニング デモ)](https://azuremlretrain.codeplex.com/)」にもあります。
 
 ### 作成
 
@@ -219,11 +221,11 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。詳細�
 
 既にデプロイされたサービスの予測モデルの更新は、トレーニング済みのモデルの作成および保存に使用される実験の変更および再実行と同じくらい簡単です。新しいバージョンのトレーニング済みのモデルが使用できるようになると、Machine Learning Studio は Web サービスを更新するかどうかをたずねます。デプロイされた Web サービスを更新する方法の詳細については、「[Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
 
-Retraining API を使用することもできます。詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」をご覧ください。サンプル コードは、「[Microsoft Azure Maching Learning Retraining Demo (Microsoft Azure Maching Learning 再トレーニング デモ)](https://azuremlretrain.codeplex.com/)」にもあります。
+Retraining API を使用することもできます。詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」を参照してください。サンプル コードは、「[Microsoft Azure Maching Learning Retraining Demo (Microsoft Azure Maching Learning 再トレーニング デモ)](https://azuremlretrain.codeplex.com/)」にもあります。
 
 **運用環境にデプロイされた Web サービスはどのように監視できますか?**
 
-予測モデルがデプロイされると、Azure クラシック ポータルから監視できます。デプロイされた各サービスには専用のダッシュボードがあり、ここでそのサービスについての監視情報を参照できます。
+予測モデルがデプロイされると、Azure クラシック ポータルから監視できます。デプロイされた各サービスには専用のダッシュボードがあり、ここでそのサービスについての監視情報を参照できます。デプロイされた Web サービスの管理方法の詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」を参照してください。
 
 **RRS/BES の出力を確認できまる場所はありますか。**
 
@@ -235,7 +237,7 @@ RRS の場合は通常、Web サービスの応答に結果が表示されます
 
 **エラー コードの詳細はどこで入手できますか?**
 
-エラー コードと説明の一覧は、「[Machine Learning Module Error Codes (Machine Learning モジュールのエラー コード)](https://msdn.microsoft.com/library/azure/dn905910.aspx)」をご覧ください。
+エラー コードと説明の一覧は、「[Machine Learning Module Error Codes (Machine Learning モジュールのエラー コード)](https://msdn.microsoft.com/library/azure/dn905910.aspx)」を参照してください。
 
 ## 拡張性
 
@@ -302,7 +304,7 @@ Machine Learning Studio は、ワークフローを実行する際に中間デ�
 
 ## Azure Marketplace
 
-「[Machine Learning Marketplace でのアプリの公開と使用に関する FAQ](machine-learning-marketplace-faq.md)」を参照してください。
+[Machine Learning Marketplace でのアプリの公開と使用に関する FAQ](machine-learning-marketplace-faq.md) のページを参照してください。
 
 ## サポートとトレーニング
 
@@ -310,13 +312,13 @@ Machine Learning Studio は、ワークフローを実行する際に中間デ�
 
 [Azure Machine Learning ドキュメント センター](https://azure.microsoft.com/services/machine-learning/)に、ハウツー ガイドやビデオ チュートリアルが用意されています。順を追ったハウツー ガイドでは、サービスの概要に加え、データのインポートから、データのクリーニング、予測モデルの構築、Azure Machine Learning を使用した運用環境へのデプロイまで、データ技術のライフ サイクルを説明します。
 
-Machine Learning Center には継続的に新しい資料が追加されます。Machine Learning Center に追加の教材が必要な場合は、[ユーザー フィードバック フォーラム](https://windowsazure.uservoice.com/forums/257792-machine-learning)で要求を送信できます。
+Machine Learning Center には継続的に新しい資料が追加されます。Machine Learning Center に追加の学習用資料が必要な場合は、[ユーザー フィードバック フォーラム](https://windowsazure.uservoice.com/forums/257792-machine-learning)でご要望をご投稿いただけます。
 
 [Microsoft Virtual Academy](http://www.microsoftvirtualacademy.com/training-courses/getting-started-with-microsoft-azure-machine-learning) でトレーニングを検索することもできます。
 
 **どのようにして Azure Machine Learning のサポートを受けることができますか。**
 
-Azure Machine Learning のテクニカル サポートを受けるには、[[Azure サポート]](/support/options/) に進み、**[Machine Learning]** を選択します。
+Azure Machine Learning のテクニカル サポートを受けるには、「[Azure のサポート](/support/options/)」に移動し、**[Machine Learning]** を選択します。
 
 Azure Machine Learning については、MSDN にコミュニティ フォーラムがあり、ここで、Azure Machine Learning に関連する質問をすることができます。このフォーラムは Azure Machine Learning チームが監視しています。[Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning)にアクセスしてください。
 
@@ -332,4 +334,4 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
 [counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

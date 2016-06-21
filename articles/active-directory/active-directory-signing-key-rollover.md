@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="05/31/2016"
 	ms.author="priyamo"/>
 
 # Azure Active Directory の署名キーのロールオーバー
@@ -228,4 +228,4 @@ namespace JWTValidation
 
 これで、Azure AD の公開キーとして使用される X509 証明書が作成されました。サムプリントや有効期限などの証明書の詳細を使用すると、アプリケーションで現在使用されている証明およびサムプリントが有効であるかどうかを手動またはプログラムによってチェックすることができます。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

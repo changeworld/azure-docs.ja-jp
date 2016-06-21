@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search"
-   ms.date="05/27/2016"
+   ms.date="06/01/2016"
    ms.author="brjohnst"/>
 
 # Azure Search サービス REST API: バージョン 2015-02-28-Preview
@@ -52,6 +52,10 @@ Azure Search サービス API は、API 操作に簡単な構文と OData 構文
 [インデックス統計の取得](#GetIndexStats)
 
     GET /indexes/[index name]/stats?api-version=2015-02-28-Preview
+
+[アナライザーのテスト](#TestAnalyzer)
+
+    GET /indexes/[index name]/analyze?api-version=2015-02-28-Preview
 
 [インデックスの削除](#DeleteIndex)
 
@@ -168,6 +172,7 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
 - このインデックスにフィードされる `fields`。そのフィールドで許可されるアクションを定義する名前、データ型、プロパティを含みます。
 - オート コンプリートまたは先行入力クエリに使用される `suggesters`。
 - カスタム検索スコア ランキングに使用される `scoringProfiles`。詳細については、「[検索インデックスにスコア付けプロファイルを追加する](https://msdn.microsoft.com/library/azure/dn798928.aspx)」を参照してください。
+- ドキュメントまたはクエリをインデックス可能または検索可能なトークンに分割する方法を定義するために使用される `analyzers`、`charFilters`、`tokenizers`、`tokenFilters`。MSDN の「[Analysis in Azure Search (Azure Search での分析)](https://aka.ms//azsanalysis)」を参照してください。
 - 既定のスコアリング動作を上書きするために使用される `defaultScoringProfile`。
 - インデックスに対するクロス オリジン クエリを可能にする `corsOptions`。
 
@@ -233,6 +238,10 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
             "sum (default) | average | minimum | maximum | firstMatching"
         }
       ],
+	  "analyzers":(optional)[ ... ],
+	  "charFilters":(optional)[ ... ],
+	  "tokenizers":(optional)[ ... ],
+	  "tokenFilters":(optional)[ ... ],
       "defaultScoringProfile": (optional) "...",
       "corsOptions": (optional) {
         "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
@@ -734,7 +743,7 @@ HTTPS はすべてのサービス要求に必要です。**Update Index** 要求
 次の一覧は、必須と任意の要求ヘッダーについてまとめたものです。
 
 - `Content-Type`: 必須。これを `application/json` に設定します
-- `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Update Index** 要求は、(クエリ キーではなく) 管理者キーに設定された `api-key` ヘッダーを含む必要があります。
+- `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Update Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
 
 要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
@@ -804,6 +813,10 @@ HTTPS はすべてのサービス要求に必要です。**Update Index** 要求
             "sum (default) | average | minimum | maximum | firstMatching"
         }
       ],
+	  "analyzers":(optional)[ ... ],
+	  "charFilters":(optional)[ ... ],
+	  "tokenizers":(optional)[ ... ],
+	  "tokenFilters":(optional)[ ... ],
       "defaultScoringProfile": (optional) "...",
       "corsOptions": (optional) {
         "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
@@ -817,6 +830,14 @@ HTTPS はすべてのサービス要求に必要です。**Update Index** 要求
 要求が成功した場合: 204 コンテンツがありません。
 
 既定では、応答本文は空になります。ただし、`Prefer` 要求ヘッダーを `return=representation` に設定した場合は、応答本文には更新されたインデックス定義の JSON が含まれます。この場合、成功の状態コードは "200 OK" になります。
+
+**カスタム アナライザーを含むインデックスの定義の更新**
+
+アナライザー、トークナイザー、トークン フィルターまたは char 型フィルターは、1 度定義すると変更できません。インデックスの更新要求で `allowIndexDowntime` フラグが true に設定されている場合に限り、既存のインデックスに新しい定義を追加できます。
+
+`PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true`
+
+この操作によりインデックスが少なくとも数秒間オフラインになるため、インデックス作成とクエリ要求が失敗することに注意してください。インデックスを更新すると、インデックスのパフォーマンスと書き込み可用性が数分にわたり損なわれる場合があります。インデックスが非常に大きい場合、その時間も長くなります。
 
 <a name="ListIndexes"></a>
 ## インデックスの一覧取得
@@ -989,6 +1010,100 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 	  "storageSize": number (size of the index in bytes)
     }
 
+<a name="TestAnalyzer"></a>
+## アナライザーのテスト
+
+**Analyze API** は、アナライザーがテキストをトークンに分割する方法を示しています。
+
+    POST https://[service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
+    Content-Type: application/json
+    api-key: [admin key]
+
+**要求**
+
+すべてのサービス要求には HTTPS が必要です。**Analyze API** 要求は、POST メソッドを使用して作成できます。
+
+`api-version=[string]` (必須)。プレビュー バージョンは `api-version=2015-02-28-Preview` です。詳細および代替バージョンについては、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
+
+
+**要求ヘッダー**
+
+次の一覧は、必須と任意の要求ヘッダーについてまとめたものです。
+
+- `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Analyze API** 要求の `api-key` には (クエリ キーではなく) 管理者キーを設定する必要があります。
+
+要求 URL を作成するには、インデックス名とサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+
+**要求本文**
+
+    {
+      "text": "Text to analyze",
+      "analyzer": "analyzer_name"
+    }
+
+または
+
+    {
+      "text": "Text to analyze",
+      "tokenizer": "tokenizer_name",
+      "tokenFilters": (optional) [ "token_filter_name" ],
+      "charFilters": (optional) [ "char_filter_name" ]
+    }
+
+`analyzer_name`、`tokenizer_name`、`token_filter_name`、`char_filter_name` には、インデックス用に定義済みまたはカスタムのアナライザー、トークナイザ、トークン フィルター、char 型フィルターの有効な名前を指定する必要があります。字句解析のプロセスの詳細については、「[Analysis in Azure Search (Azure Search での分析)](https://aka.ms/azsanalysis)」を参照してください。
+
+**応答**
+
+状態コード: 応答の成功に対して「200 OK」が返されます。
+
+応答本文の形式は次のとおりです。
+
+    {
+      "tokens": [
+        {
+          "token": string (token),
+          "startOffset": number (index of the first character of the token),
+          "endOffset": number (index of the last character of the token),
+          "position": number (position of the token in the input text)
+        },
+        ...
+      ]
+    }
+
+**Analyze API の例**
+
+**要求**
+
+    {
+      "text": "Text to analyze",
+      "analyzer": "standard"
+    }
+
+**応答**
+
+    {
+      "tokens": [
+        {
+          "token": "text",
+          "startOffset": 0,
+          "endOffset": 4,
+          "position": 0
+        },
+        {
+          "token": "to",
+          "startOffset": 5,
+          "endOffset": 7,
+          "position": 1
+        },
+        {
+          "token": "analyze",
+          "startOffset": 8,
+          "endOffset": 15,
+          "position": 2
+        }
+      ]
+    }
+
 ________________________________________
 <a name="DocOps"></a>
 ## ドキュメントの操作
@@ -1045,7 +1160,7 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
       ]
     }
 
-> [AZURE.NOTE] ドキュメント キーには、英字、数字、ダッシュ ("-")、アンダースコア ("\_")、等号 ("=") のみを含めることができます。詳細については、「[名前付け規則](https://msdn.microsoft.com/library/azure/dn857353.aspx)」をご覧ください。
+> [AZURE.NOTE] ドキュメント キーには、英字、数字、ダッシュ ("-")、アンダースコア ("\_")、等号 ("=") のみを含めることができます。詳細については、「[名前付け規則](https://msdn.microsoft.com/library/azure/dn857353.aspx)」を参照してください。
 
 **ドキュメント アクション**
 
@@ -1159,7 +1274,7 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
 	</tr>
 </table> 
 
-**注**: クライアント コードで頻繁に 207 応答が発生する場合、考えられる理由の 1 つはシステムの負荷が高いことです。これは、`statusCode` プロパティが 503 になっているかどうかをチェックすることで確認できます。負荷が高い場合は、***インデックス作成の要求を調整する***ことをお勧めします。調整しないでインデックス作成トラフィックが減らない場合、システムは 503 エラーですべての要求を拒否し始めることがあります。
+**注**: クライアント コードで頻繁に 207 応答が発生する場合、考えられる理由の 1 つはシステムの負荷が高いことです。これを確認するには、503 の `statusCode` プロパティを調べます。負荷が高い場合は、***インデックス作成の要求を調整する***ことをお勧めします。調整しないでインデックス作成トラフィックが減らない場合、システムは 503 エラーですべての要求を拒否し始めることがあります。
 
 状態コード 429 は、インデックスあたりのドキュメント数に対するクォータを超過したことを示します。新しいインデックスを作成するか、またはさらに高い処理能力の限界にアップグレードする必要があります。
 
@@ -1227,7 +1342,7 @@ ________________________________________
 
 HTTP GET を使用して **Search** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーションでは、非常に大規模なクエリまたは OData フィルター式が生成されます。このようなアプリケーションでは、HTTP POST を使用する方がより適切です。GET より大規模なフィルターおよびクエリを使用できるためです。POST 要求のサイズ制限がほぼ 16 MB であるため、POST を使用する場合は、クエリのサイズそのものではなく、クエリに含まれる語または句の数が制限要因になります。
 
-> [AZURE.NOTE] POST 要求のサイズ制限が非常に大きいとはいえ、検索のクエリとフィルター式を任意に複雑にすることはできません。検索クエリとフィルターにおける複雑さの制限の詳細については、[Lucene クエリの構文](https://msdn.microsoft.com/library/mt589323.aspx)と[OData 式の構文](https://msdn.microsoft.com/library/dn798921.aspx)の説明を参照してください。**要求**
+> [AZURE.NOTE] POST 要求のサイズ制限が非常に大きいとはいえ、検索のクエリとフィルター式を任意に複雑にすることはできません。検索クエリおよびフィルターにおける複雑さの制限の詳細については、[Lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)および [OData 式の構文](https://msdn.microsoft.com/library/dn798921.aspx)に関するページをご覧ください。**要求**
 
 サービス要求には HTTPS が必要です。**Search** 要求は、GET メソッドまたは POST メソッドを使用して作成できます。
 
@@ -1250,7 +1365,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 **Search** は、クエリ条件を提供して検索の動作も指定するいくつかのパラメーターを受け取ります。これらのパラメーターは、GET を介して **Search** を呼び出すときは URL クエリ文字列に指定します。POST を介して **Search** を呼び出すときは要求本文に JSON プロパティとして指定します。いくつかのパラメーターの構文は、GET および POST の間で多少異なります。その違いは、以下で随時説明しています。
 
-`search=[string]` (省略可能) - 検索するテキスト。`searchFields` を指定しないと、既定ですべての `searchable` フィールドが検索されます。`searchable` フィールドを検索するときは、検索テキスト自体がトークン化されるため、複数の語句を空白で区切ることができます (例: `search=hello world`)。任意の語句と一致させるには、`*` を使用します (これはブール型フィルターのクエリに便利です)。このパラメーターを省略することは、`*` に設定するのと同じ効果を持ちます。検索構文の詳細については、[簡単なクエリ構文](https://msdn.microsoft.com/library/dn798920.aspx)に関するページを参照してください。
+`search=[string]` (省略可能) - 検索するテキスト。`searchFields` を指定しないと、既定ですべての `searchable` フィールドが検索されます。`searchable` フィールドを検索するときは、検索テキスト自体がトークン化されるので、複数の語句を空白で区切ることができます (例: `search=hello world`)。任意の語句と一致させるには、`*` を使用します (これはブール型フィルターのクエリに便利です)。このパラメーターを省略することは、`*` に設定するのと同じ効果を持ちます。検索構文の詳細については、[簡単なクエリ構文](https://msdn.microsoft.com/library/dn798920.aspx)に関するページを参照してください。
 
   - **注**: `searchable` フィールドをクエリすると、予想外の結果になることがあります。トークナイザーには、アポストロフィ、数値内のコンマなど、英語テキストで一般的なケースを処理するロジックが含まれています。たとえば、英語ではコンマは大きな数の桁区切り記号として使用されるので、`search=123,456` は、個別の語句 123 および 456 ではなく、1 つの語句 123,456 と一致します。このため、`search` パラメーターで語句を区切るには区切り記号ではなく空白文字を使用することをお勧めします。
 
@@ -1720,7 +1835,7 @@ Suggestion 要求はターゲット ドキュメントの検索候補を示す�
 
 HTTP GET を使用して **Suggestions** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーション、具体的には OData フィルター式では、非常に大きなクエリが生成されます。このようなアプリケーションでは、HTTP POST を使用する方がより適切です。GET より大規模なフィルターを使用できるためです。POST 要求のサイズ制限がほぼ 16 MB であるため、POST を使用する場合は、フィルター文字列のサイズそのものではなく、フィルターに含まれる句の数が制限要因になります。
 
-> [AZURE.NOTE] POST 要求のサイズ制限が非常に大きいとはいえ、フィルター式を任意に複雑にすることはできません。フィルターにおける複雑さの制限の詳細については、[OData 式の構文](https://msdn.microsoft.com/library/dn798921.aspx)のページをご覧ください。
+> [AZURE.NOTE] POST 要求のサイズ制限が非常に大きいとはいえ、フィルター式を任意に複雑にすることはできません。フィルターにおける複雑さの制限の詳細については、[OData 式の構文](https://msdn.microsoft.com/library/dn798921.aspx)に関するページをご覧ください。
 
 **要求**
 
@@ -1853,4 +1968,4 @@ POST の場合:
       "suggesterName": "sg"
     }
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -1,0 +1,17 @@
+.NET アプリケーションでは **StackExchange.Redis** キャッシュ クライアントを使用できます。キャッシュ クライアント アプリケーションの構成は、Visual Studio で NuGet パッケージを使用すると簡単です。
+
+>[AZURE.NOTE] 詳細については、GitHub の [StackExchange.Redis に関するページ](http://github.com/StackExchange/StackExchange.Redis)と [StackExchange.Redis キャッシュ クライアントのドキュメント](http://github.com/StackExchange/StackExchange.Redis#documentation)を参照してください。
+
+Visual Studio で StackExchange.Redis NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+
+![Manage NuGet packages](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-manage-nuget-menu.png)
+
+検索ボックスに「**StackExchange.Redis**」または「**StackExchange.Redis.StrongName**」と入力し、結果の中から必要なバージョンを選択して、**[インストール]** をクリックします。
+
+>[AZURE.NOTE] 厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**[StackExchange.Redis]** を選択します。
+
+![StackExchange.Redis NuGet package](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-stackexchange-redis.png)
+
+クライアント アプリケーションから StackExchange.Redis Cache クライアントを使用して Azure Redis Cache にアクセスするために必要なアセンブリ参照が NuGet パッケージによってダウンロードされ追加されます。
+
+<!---HONumber=AcomDC_0615_2016-->

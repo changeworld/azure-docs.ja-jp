@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/23/2016" 
+	ms.date="06/06/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure BLOB との間でのデータの移動
@@ -387,7 +387,7 @@ Azure BLOB ストレージを Azure Data Factory にリンクするために使�
 | folderPath | BLOB ストレージのコンテナーとフォルダーのパス。例: myblobcontainer\\myblobfolder\\ | あり |
 | fileName | blob. fileName の名前は省略可能です。この名前は大文字と小文字が区別されます。<br/><br/>fileName を指定した場合、アクティビティ (コピーを含む) は特定の BLOB で機能します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべての BLOB が含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) の形式になります。 | いいえ |
 | partitionedBy | partitionedBy は任意のプロパティです。これを使用し、時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。詳細と例については、「[partitionedBy プロパティの活用](#Leveraging-partitionedBy-property)」セクションを参照してください。 | いいえ
-| BlobSink の format | **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat** の 4 種類の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定する必要があります。形式が TextFormat のとき、形式に追加で任意のプロパティを指定できます。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」を参照してください。 | いいえ
+| BlobSink の format | **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat** の 4 種類の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定する必要があります。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」を参照してください。ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。| いいえ
 | compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点で、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
 
 ### partitionedBy プロパティの活用
@@ -470,4 +470,4 @@ false | mergeFiles | ソース フォルダー Folder1 が次のような構造�
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

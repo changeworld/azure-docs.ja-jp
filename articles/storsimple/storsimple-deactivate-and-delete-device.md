@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/29/2016"
-   ms.author="v-sharos" />
+   ms.date="06/01/2016"
+   ms.author="anoobbacker" />
 
 # StorSimple デバイスの非アクティブ化と削除
 
@@ -105,4 +105,4 @@ StorSimple 仮想デバイスの場合、非アクティブ化すると仮想マ
 
 - StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0608_2016-->

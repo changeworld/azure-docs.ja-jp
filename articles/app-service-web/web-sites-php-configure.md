@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="06/03/2016"
 	ms.author="robmcm"/>
 
 #Azure App Service Web Apps での PHP の構成方法
@@ -160,14 +160,34 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 
 	![構成設定を保存する][save-button]
 
+<a name="composer" />
+## 方法: Azure で Composer 自動化を有効にする
+
+既定では、PHP プロジェクトに composer.json があっても、App Service で処理されません。[Git デプロイ](app-service-web-php-get-started.md)を使用する場合、`git push` で composer.json の処理を有効にするには、Composer 拡張機能を有効にします。
+
+>[AZURE.NOTE] [こちらで App Service の優れた Composer サポートに投票](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)できます。
+
+1. [Azure ポータル](https://portal.azure.com)の PHP Web アプリのブレードで、**[ツール]**、**[拡張機能]** の順にクリックします。
+
+    ![Azure でのComposer 自動化を有効にする Azure ポータルの設定のブレード](./media/web-sites-php-configure/composer-extension-settings.png)
+
+2. **[追加]**、**[Composer]** の順にクリックします。
+
+    ![Azure で Composer 拡張機能を追加して Composer 自動化を有効にする](./media/web-sites-php-configure/composer-extension-add.png)
+    
+3. **[OK]** をクリックして法律条項に同意します。もう一度 **[OK]** をクリックすると、拡張機能が追加されます。
+
+    これで、**[インストールされている拡張機能]** ブレードに Composer 拡張機能が表示されるようになります。![Azure で法律条項に同意して Composer 自動化を有効にする](./media/web-sites-php-configure/composer-extension-view.png)
+    
+4. 前のセクションと同様に、`git add`、`git commit`、`git push` を実行します。composer.json で定義されている依存関係が Composer によってインストールされていることを確認できます。
+
+    ![Azure での Composer 自動化を使用した Git デプロイ](./media/web-sites-php-configure/composer-extension-success.png)
+
 ## 次のステップ
 
 詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-
-## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 [無料試用版]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: http://php.net/manual/en/function.phpinfo.php
@@ -188,4 +208,4 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0608_2016-->

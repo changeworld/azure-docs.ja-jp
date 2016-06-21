@@ -13,18 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="05/26/2016"
+   ms.date="06/03/2016"
    ms.author="v-six" />
 
 # ロールのリサイクルを引き起こす一般的な問題
 
 この記事では、デプロイメントに伴う問題の一般的な原因と問題解決に役立つトラブルシューティングのヒントを紹介します。アプリケーションに存在する問題の兆候として、ロール インスタンスが起動に失敗したり、初期化、ビジー、停止という状態を繰り返したりすることが挙げられます。
 
-## Azure カスタマー サポートへの問い合わせ
-
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
-
-または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## ランタイムの依存コンポーネントの不足
 
@@ -66,13 +62,13 @@ Azure は 64 ビット環境です。そのため、32 ビット ターゲット
 
 ## エクスポートした証明書に秘密キーが含まれていない
 
-Web ロールを SSL で実行する場合は、エクスポートした管理証明書に秘密キーが含まれていることを確認してください。*Windows 証明書マネージャー*を使用して証明書をエクスポートする場合は必ず、**[秘密キーをエクスポートします]** オプションに **[はい]** を選択してください。証明書は PFX 形式でエクスポートする必要があります。現在サポートされている形式はこれだけです。
+Web ロールを SSL で実行する場合は、エクスポートした管理証明書に秘密キーが含まれていることを確認してください。*Windows 証明書マネージャー*を使用して証明書をエクスポートする場合は必ず、**[Export the private key (秘密キーをエクスポートします)]** オプションに **[はい]** を選択してください。証明書は PFX 形式でエクスポートする必要があります。現在サポートされている形式はこれだけです。
 
 ## 次のステップ
 
-クラウド サービスの他の[トラブルシューティングに関する記事](..\?tag=top-support-issue&service=cloud-services)を参照します。
+クラウド サービスの他の[トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services)を参照します。
 
-他のロール リサイクル シナリオを確認するには、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)を参照してください。
+他のロール リサイクル シナリオを確認するには、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
 
 
 
@@ -82,4 +78,4 @@ Web ロールを SSL で実行する場合は、エクスポートした管理�
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Run]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

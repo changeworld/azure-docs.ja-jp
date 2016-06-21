@@ -79,7 +79,7 @@ Azure Machine Learning には、これらの種類の分類をそれぞれ処理
 
 図 3: あやめの 2 クラス分類問題のスコア付け実験
 
-今度は、Web サービスの入力と出力を設定する必要があります。入力は、[モデルのスコア付け][score-model]の右の入力ポートであることは明らかです。これは、あやめの特徴の入力です。出力の選択は、予測されたクラス (スコア付けラベル)、スコア付け確率、その両方のどれを使用するかによって異なります。ここでは両方を使用します。目的の出力列を選ぶには、[プロジェクト列][project-columns]モジュールを使用する必要があります。[プロジェクト列][project-columns]モジュールをクリックし、右パネルで **[列セレクターの起動]** をクリックしたら、**[Scored Labels]** と **[Scored Probabilities]** を選択します。[プロジェクト列][project-columns]モジュールの出力ポートを設定し、もう一度実行したら、下部にある **[PUBLISH WEB SERVICE]** ボタンをクリックすれば、スコア付け実験を Web サービスとして発行する準備が完了します。最終的な実験は、図 4 のようになります。
+今度は、Web サービスの入力と出力を設定する必要があります。入力は、[モデルのスコア付け][score-model]の右の入力ポートであることは明らかです。これは、あやめの特徴の入力です。出力の選択は、予測されたクラス (スコア付けラベル)、スコア付け確率、その両方のどれを使用するかによって異なります。ここでは両方を使用します。目的の出力列を選ぶには、[データセット内の列の選択][select-columns]モジュールを使用する必要があります。[データセット内の列の選択][select-columns]モジュールをクリックし、右パネルで **[列セレクターの起動]** をクリックしたら、**[Scored Labels]** と **[Scored Probabilities]** を選択します。[データセット内の列の選択][select-columns]モジュールの出力ポートを設定し、もう一度実行したら、下部にある **[Web サービスの発行]** ボタンをクリックすれば、スコア付け実験を Web サービスとして発行する準備が完了します。最終的な実験は、図 4 のようになります。
  
 ![screenshot\_of\_experiment](./media/machine-learning-interpret-model-results/4.png)
 
@@ -116,7 +116,7 @@ Web サービスを実行し、テスト インスタンスの特徴の値を入
 
 **Web サービスの発行**
 
-この例では、[プロジェクト列][project-columns]で Web サービスの出力としていくつかの列を選ぶのではなく、各エントリのスコア付けラベルと、スコア付けラベルの確率を取得します。基本的なロジックは、すべてのスコア付け確率の中から最も高い確率を見つけることです。そのためには、[R スクリプトの実行][execute-r-script]モジュールを使用する必要があります。図 8 に R コードを、図 9 に実験を示します。
+この例では、[データセット内の列の選択][select-columns]で Web サービスの出力としていくつかの列を選ぶのではなく、各エントリのスコア付けラベルと、スコア付けラベルの確率を取得します。基本的なロジックは、すべてのスコア付け確率の中から最も高い確率を見つけることです。そのためには、[R スクリプトの実行][execute-r-script]モジュールを使用する必要があります。図 8 に R コードを、図 9 に実験を示します。
  
 ![screenshot\_of\_experiment](./media/machine-learning-interpret-model-results/8.png)
 
@@ -302,11 +302,11 @@ Web サービスを実行して返された結果は、図 14 のようになり
 <!-- Module References -->
 [assign-to-clusters]: https://msdn.microsoft.com/library/azure/eed3ee76-e8aa-46e6-907c-9ca767f5c114/
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [score-matchbox-recommender]: https://msdn.microsoft.com/library/azure/55544522-9a10-44bd-884f-9a91a9cec2cd/
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
 [train-clustering-model]: https://msdn.microsoft.com/library/azure/bb43c744-f7fa-41d0-ae67-74ae75da3ffd/
 [train-matchbox-recommender]: https://msdn.microsoft.com/library/azure/fa4aa69d-2f1c-4ba4-ad5f-90ea3a515b4c/
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->

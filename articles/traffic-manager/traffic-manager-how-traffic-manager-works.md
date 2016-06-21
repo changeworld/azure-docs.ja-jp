@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/25/2016"
+   ms.date="06/07/2016"
    ms.author="jonatul"/>
 
 # Traffic Manager のしくみ
@@ -64,14 +64,71 @@ Contoso Corp が、新しいパートナー ポータルを開発しました。
 
 再帰 DNS サービスでは、エンドユーザー デバイスの DNS クライアントと同様、受信した DNS 応答がキャッシュされます。キャッシュのデータを使用することで、後続の DNS クエリに対する応答が迅速になります。他のネーム サーバーにクエリを実行する必要はありません。キャッシュの期間は、各 DNS レコードの "Time-to-Live" (TTL) プロパティによって決まります。この値を減らすと、キャッシュの有効期限までの期間が短くなるため、Traffic Manager へのラウンドトリップが増えます。この値を増やすと、障害が発生したエンドポイントからトラフィックが離れるまでの時間が長くなる場合があります。Traffic Manager を使用すると、Traffic Manager DNS 応答で使用された TTL を構成して、アプリケーションのニーズの最適なバランスを実現する値を選択できます。
 
+## FAQ
+
+### Traffic Manager ではどの IP アドレスが使用されますか。
+
+「Traffic Manager のしくみ」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。Traffic Manager では、DNS 応答を使用して、クライアントを適切なサービス エンドポイントに転送します。クライアントはサービス エンドポイントに、Traffic Manager 経由ではなく、直接接続します。
+
+そのため、Traffic Manager では、クライアントが接続するエンドポイントまたは IP アドレスが提供されません。静的 IP アドレスなどが必要な場合には、Traffic Manager ではなくサービス側で構成する必要があります。
+
+### Traffic Manager では "スティッキー" セッションはサポートされていますか。
+
+[前述のとおり](#how-clients-connect-using-traffic-manager)、Traffic Manager は DNS レベルで動作します。Traffic Manager では、DNS 応答を使用して、クライアントを適切なサービス エンドポイントに転送します。クライアントはサービス エンドポイントに、Traffic Manager 経由ではなく、直接接続します。そのため、Traffic Manager では、Cookie を含め、クライアントとサーバーの間の HTTP トラフィックが把握されません。
+
+また、Traffic Manager が受信する DNS クエリの発信元 IP アドレスは、クライアントの IP アドレスではなく、再帰 DNS サービスの IP アドレスになることに注意してください。
+
+そのため、Traffic Manager は、個々のクライアントを識別または追跡することはできず、"スティッキー" セッションを実装することはできません。これは、DNS ベースのトラフィック管理システムすべてに共通の仕様であり、Traffic Manager の利用による制約ではありません。
+
+### Traffic Manager を使用していると HTTP エラーが表示されました。なぜですか。
+
+[前述のとおり](#how-clients-connect-using-traffic-manager)、Traffic Manager は DNS レベルで動作します。Traffic Manager では、DNS 応答を使用して、クライアントを適切なサービス エンドポイントに転送します。クライアントはサービス エンドポイントに、Traffic Manager 経由ではなく、直接接続します。
+
+そのため、Traffic Manager ではクライアントとサーバーの間の HTTP トラフィックは把握されず、HTTP レベルのエラーは生成できません。表示された HTTP エラーは、アプリケーションによって生成されたものと考えられます。クライアントはアプリケーションに接続しているため、このエラーは、Traffic Manager の役割を含む DNS 解決が完了している必要があることも意味しています。
+
+そのため、詳細な調査はアプリケーションを対象とする必要があります。
+
+一般的に問題となるのは、Traffic Manager を使用している場合、ブラウザーからアプリケーションに渡される "ホスト" HTTP ヘッダーに、ブラウザーで使用されるドメイン名が表示される点です。このドメイン名は、テスト時に Traffic Manager ドメイン名 (例: myprofile.trafficmanager.net) を使用している場合はそのドメイン名になることもあれば、Traffic Manager ドメイン名を指すように構成されているバニティ ドメインの CNAME になることもあります。いずれにしても、アプリケーションがこのホスト ヘッダーを受け入れるよう構成されていることを確認してください。
+
+アプリケーションが Azure App Service でホストされている場合は、「[Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する](../app-service-web/web-sites-traffic-manager-custom-domain-name.md)」を参照してください。
+
+### Traffic Manager を使用すると、パフォーマンスにどのような影響がありますか。
+
+[前述のとおり](#how-clients-connect-using-traffic-manager)、Traffic Manager は DNS レベルで動作します。Traffic Manager では、DNS 応答を使用して、クライアントを適切なサービス エンドポイントに転送します。クライアントはサービス エンドポイントに、Traffic Manager 経由ではなく、直接接続します。
+
+クライアントはサービス エンドポイントに直接接続するため、接続の確立後は、Traffic Manager の使用に伴うパフォーマンスへの影響は発生しません。
+
+Traffic Manager は DNS レベルでアプリケーションと統合されるため、追加の DNS 参照を DNS 解決チェーンに挿入する必要はありません (詳細については、「[Traffic Manager の例](#traffic-manager-example)」を参照してください)。Traffic Manager が DNS 解決時間に与える影響は最小限です。Traffic Manager では、ネーム サーバーのグローバル ネットワークが使用されます。また、エニーキャスト ネットワーキングが使用されるため、DNS クエリは常に、使用可能な最も近いネーム サーバーにルーティングされます。さらに、DNS 応答がキャッシュされるため、Traffic Manager の使用に伴って発生する DNS 待機時間の増加がごく一部のセッションにしか適用されなくなります。
+
+結果として、Traffic Manager をアプリケーションに組み込むことによるパフォーマンス全体への影響は最小限に抑えられます。
+
+また、Traffic Manager の ["パフォーマンス" トラフィック ルーティング方法](traffic-manager-routing-methods.md#performance-traffic-routing-method)が使用されている場合は、エンド ユーザーを使用可能な最も近いエンドポイントにルーティングすることで、DNS 待機時間の増加を相殺して余りあるパフォーマンスの向上が達成されます。
+
+### Traffic Manager ではどのようなアプリケーション プロトコルを使用できますか。
+[前述のとおり](#how-clients-connect-using-traffic-manager)、Traffic Manager は DNS レベルで動作します。DNS 参照が完了すると、クライアントはアプリケーション エンドポイントに Traffic Manager 経由ではなく直接接続します。そのため、この接続では、任意のアプリケーション プロトコルを使用できます。
+
+ただし、Traffic Manager のエンドポイント正常性チェックには、HTTP エンドポイントか HTTPS エンドポイントが必要です。このエンドポイントとして、クライアントが接続するアプリケーション エンドポイントとは別のエンドポイントを指定できます。これを行うには、Traffic Manager プロファイル正常性チェックの設定で別の TCP ポートまたは URI パスを指定します。
+
+### "ネイキッド" (www のない) ドメイン名で Traffic Manager を使用することはできますか。
+
+現時点では変更できません。
+
+DNS 名どうしのマッピング作成には、レコードの種類として DNS CNAME が使用されます。「[Traffic Manager の例](#traffic-manager-example)」の説明にあるとおり、Traffic Manager では、バニティ DNS 名 (例: www.contoso.com) を Traffic Manager プロファイルの DNS 名 (例: contoso.trafficmanager.net) にマッピングするために DNS CNAME レコードが必要です。また、Traffic Manager プロファイル自体も、クライアントが接続するエンドポイントを示すために、別の DNS CNAME を返します。
+
+しかし、DNS 標準では、CNAME が同じ種類の他の DNS レコードと共存することは許可されていません。DNS ゾーンの頂点 (またはルート) には常に既存の DNS レコードが 2 つ (SOA レコードと権限のある NS レコード) 格納されているため、ゾーンの頂点で CNAME レコードを作成すると DNS 標準に違反します。
+
+この問題を回避するために、ネイキッド (www のない) ドメインが使用されるサービスで Traffic Manager を使用する場合は、HTTP リダイレクトを使用してトラフィックをネイキッド ドメインから別の URL に転送することをお勧めします。こうすることで、Traffic Manager を使用できるようになります。たとえば、ネイキッド ドメイン "contoso.com" でユーザーを "www.contoso.com" にリダイレクトすると、Traffic Manager を使用できるようになります。
+
+Traffic Manager におけるネイキッド ドメインの完全サポートは、開発待ちの機能として登録されています。この機能に関心をお持ちの場合は、[コミュニティ フィードバック サイトの投票](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly)で、ぜひ支持を表明してください。
+
 ## 次のステップ
 
-Traffic Manager の[エンドポイントの監視と自動フェールオーバー](traffic-manager-monitoring.md)の詳細を確認します。
+Traffic Manager の[エンドポイントの監視と自動フェールオーバー](traffic-manager-monitoring.md)の詳細を確認する。
 
-Traffic Manager の[トラフィック ルーティング方法](traffic-manager-routing-methods.md)の詳細を確認します。
+Traffic Manager の[トラフィック ルーティング方法](traffic-manager-routing-methods.md)の詳細を確認する。
 
 <!--Image references-->
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png
 [2]: ./media/traffic-manager-how-traffic-manager-works/flow.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0608_2016-->

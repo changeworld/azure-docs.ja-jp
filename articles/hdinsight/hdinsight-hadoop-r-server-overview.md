@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/29/2016"
+   ms.date="06/01/2016"
    ms.author="jeffstok"/>
 
 
@@ -31,7 +31,9 @@ HDInsight クラスターに R Server を組み込むには、Azure ポータル
 
 ## データ ストレージ オプション
 
-HDInsight クラスターの既定のストレージは、HDFS ファイル システムが BLOB コンテナーにマップされている Azure Blob (WASB) 上にあります。これにより、分析中にクラスター ストレージにアップロードされるデータまたは書き込まれるデータがどのようなものであっても永続性が保たれます。[AzCopy](../storage/storage-use-azcopy/) ユーティリティは BLOB との間でデータをコピーするための便利な方法です。
+HDInsight クラスターの既定のストレージは、HDFS ファイル システムが BLOB コンテナーにマップされている Azure Blob (WASB) 上にあります。これにより、分析中にクラスター ストレージにアップロードされるデータまたは書き込まれるデータがどのようなものであっても永続性が保たれます。[AzCopy](../storage/storage-use-azcopy.md) ユーティリティは BLOB との間でデータをコピーするための便利な方法です。
+
+BLOB に加えて、[Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) (ADLS) の使用をクラスターに追加するオプションもあります。ADLS の使用を追加した場合は、HDFS ストレージ用に BLOB と ADLS の両方を組み合わせて使用することができます。
 
 エッジ ノードで使用するストレージ オプションとして [Azure Files](../storage/storage-how-to-use-files-linux.md) を使用することもできます。Azure Files では、Azure Storage アカウントで作成したファイル共有を Linux ファイル システムにマウントできます。HDInsight クラスターの R Server 用のデータ ストレージ オプションの詳細については、[HDInsight クラスターの R Server 用のストレージ オプション](hdinsight-hadoop-r-server-storage.md)に関する記事を参照してください。
   
@@ -41,7 +43,7 @@ R Server でクラスターを作成したら、SSH/Putty を介してクラス�
 
 ## R スクリプトの開発と実行
 
-ユーザーが作成および実行する R スクリプトでは、ScaleR ライブラリの並列化された分散ルーチンに加え、8000 を超えるオープン ソース パッケージを使用できます。エッジ ノードの R Serverで実行されるスクリプトは R インタープリターを使用して実行されますが、コンピューティング コンテキストが Hadoop Map Reduce (RxHadoopMR) または Spark (RxSpark) に設定された ScaleR 関数を呼び出すステップについては例外です。この場合、関数は参照先データに関連付けられたクラスターのデータ (タスク) ノード間に分散した形で実行されます。各種コンピューティング コンテキスト オプションの詳細については、「[Compute context options for R Server on HDInsight Premium (HDInsight Premium での R Server のコンピューティング コンテキストのオプション)](hdinsight-hadoop-r-server-compute-contexts.md)」を参照してください。
+ユーザーが作成および実行する R スクリプトでは、ScaleR ライブラリの並列化された分散ルーチンに加え、8000 を超えるオープン ソース パッケージを使用できます。エッジ ノードの R Serverで実行されるスクリプトは R インタープリターを使用して実行されますが、コンピューティング コンテキストが Hadoop Map Reduce (RxHadoopMR) または Spark (RxSpark) に設定された ScaleR 関数を呼び出すステップについては例外です。この場合、関数は参照先データに関連付けられたクラスターのデータ (タスク) ノード間に分散した形で実行されます。各種コンピューティング コンテキスト オプションの詳細については、「[Compute context options for R Server on HDInsight Premium](hdinsight-hadoop-r-server-compute-contexts.md)」 (HDInsight Premium での R Server のコンピューティング コンテキストのオプション) を参照してください。
 
 ## モデルの運用化
 
@@ -109,4 +111,4 @@ HDInsight クラスターで R Server を使用する方法の詳細について
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0608_2016-->

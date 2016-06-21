@@ -26,20 +26,20 @@
 - [PowerShell](dns-getstarted-create-recordset.md)
 - [Azure CLI](dns-getstarted-create-recordset-cli.md)
 
-この記事では、PowerShell を使用してレコードとレコード セットを作成する手順を説明します。DNS ゾーンを作成した後は、ドメインの DNS レコードを追加する必要があります。そのために、まずは DNS レコードとレコード セットについて理解することが必要です。
+この記事では、Windows PowerShell を使用してレコードとレコード セットを作成する手順を説明します。DNS ゾーンを作成した後は、ドメインの DNS レコードを追加します。そのために、まずは DNS レコードとレコード セットについて理解することが必要です。
 
 [AZURE.INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
-## 開始する前に
+## 最新バージョンの PowerShell を使用していることを確認する
 
 Azure Resource Manager PowerShell コマンドレットの最新版がインストールされていることを確認します。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 ## レコード セットとレコードの作成
 
-このセクションでは、レコード セットとレコードの作成方法を示します。
+このセクションでは、レコード セットとレコードの作成方法を説明します。
 
 
-### 1\.サブスクリプションへの接続 
+### 1\.サブスクリプションへの接続
 
 PowerShell コンソールを開き、アカウントに接続します。接続するには、次のサンプルを参照してください。
 
@@ -47,7 +47,7 @@ PowerShell コンソールを開き、アカウントに接続します。接続
 
 アカウントのサブスクリプションを確認します。
 
-	Get-AzureRmSubscription 
+	Get-AzureRmSubscription
 
 使用するサブスクリプションを指定します。
 
@@ -58,11 +58,11 @@ PowerShell の使用方法の詳細については、「[リソース マネー�
 
 ### 2\.レコード セットの作成
 
-レコード セットは、`New-AzureRmDnsRecordSet` コマンドレットを使用して作成します。レコード セットを作成するとき、レコード セット名、ゾーン、Time-to-Live (TTL)、レコードの種類を指定する必要があります。
+レコード セットは、`New-AzureRmDnsRecordSet` コマンドレットを使用して作成します。レコード セットを作成するとき、レコード セット名、ゾーン、time to live (TTL)、レコードの種類を指定する必要があります。
 
 ゾーンの頂点 (この場合は "contoso.com") にレコード セットを作成するには、レコード名 "@" (引用符を含みます) を使用します。これは、一般的な DNS の規則です。
 
-下の例では、DNS ゾーン *contoso.com* に相対名 *www* を持つレコード セットを作成します。レコードの完全修飾名は *www.contoso.com* になります。レコードの種類は *A* です。TTL は 60 秒です。この手順を完了すると、空の *www* レコード セットが作成され、変数 *$rs* に割り当てられます。
+下の例では、DNS ゾーン "contoso.com" に相対名 "www" を持つレコード セットを作成します。レコード セットの完全修飾名は、"www.contoso.com" になります。レコードの種類は"A" で、TTL は 60 秒です。この手順を完了すると、空の "www" レコード セットが作成され、変数 *$rs* に割り当てられます。
 
 	$rs = New-AzureRmDnsRecordSet -Name "www" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 60
 
@@ -74,7 +74,7 @@ PowerShell の使用方法の詳細については、「[リソース マネー�
 	$rs = New-AzureRmDnsRecordSet -Name www -RecordType A -Ttl 300 -ZoneName contoso.com -ResouceGroupName MyAzureResouceGroup [-Tag $tags] [-Overwrite] [-Force]
 
 
-上の例では、ゾーンはゾーン名とリソース グループ名を使用して指定されています。あるいは、`Get-AzureRmDnsZone` または `New-AzureRmDnsZone` で返されるゾーン オブジェクトを指定できます。
+この例では、ゾーン名とリソース グループ名を使用してゾーンを指定します。あるいは、`Get-AzureRmDnsZone` または `New-AzureRmDnsZone` で返されるゾーン オブジェクトを指定できます。
 
 	$zone = Get-AzureRmDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
 	$rs = New-AzureRmDnsRecordSet -Name www -RecordType A -Ttl 300 –Zone $zone [-Tag $tags] [-Overwrite] [-Force]
@@ -83,7 +83,7 @@ PowerShell の使用方法の詳細については、「[リソース マネー�
 
 ### 3\.レコードの追加
 
-新しく作成した *www* レコード セットを使用できるようにするには、レコードをそれに追加する必要があります。下の例を利用し、IPv4 *A* レコードを *www* レコード セットに追加できます。この例は、前の手順で設定した変数の $rs に依存しています。
+新しく作成した"www" レコード セットを使用するには、レコードを追加する必要があります。次の例を使用して、IPv4 *A* レコードを "www" レコード セットに追加できます。この例は、前の手順で設定した変数の *$rs* に依存しています。
 
 `Add-AzureRmDnsRecordConfig` を使用してレコード セットにレコードを追加する操作はオフライン操作です。ローカル変数 *$rs* のみが更新されます。
 
@@ -115,9 +115,9 @@ PowerShell の使用方法の詳細については、「[リソース マネー�
 	Tags              : {}
 
 
-nslookup や他の DNS ツールを使用して、新しいレコード セットを照会することもできます。
+nslookup ツールや他の DNS ツールを使用して、新しいレコード セットを照会することもできます。
 
-まだドメインを Azure DNS ネーム サーバーに委任していない場合、ゾーンのネーム サーバー アドレスを明示的に指定する必要があります。
+まだドメインを Azure DNS ネーム サーバーに委任していない場合、ゾーンの名前、サーバー、およびアドレスを明示的に指定する必要があります。
 
 
 	nslookup www.contoso.com ns1-01.azure-dns.com
@@ -129,21 +129,20 @@ nslookup や他の DNS ツールを使用して、新しいレコード セッ�
 	Addresses:  134.170.185.46
     	        134.170.188.221
 
-## その他のレコードの種類の例
+## 1 つのレコードを含む各種のレコード セットを作成する
 
 
-次の例では、それぞれ 1 つのレコードを含む各種のレコード セットを作成する方法を示します。
+次の例では、各種のレコード セットを作成する方法を示します。各レコード セットには、1 つのレコードが含まれています。
 
 [AZURE.INCLUDE [dns-add-record-ps-include](../../includes/dns-add-record-ps-include.md)]
 
 
 ## 次のステップ
 
-[DNS ゾーンの管理方法](dns-operations-dnszones.md)
+[PowerShell を使用して DNS ゾーンを管理する方法](dns-operations-dnszones.md)
 
-[DNS レコードの管理方法](dns-operations-recordsets.md)
+[PowerShell を使用した DNS レコードとレコード セットの管理](dns-operations-recordsets.md)
 
 [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)
- 
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0608_2016-->

@@ -63,4 +63,4 @@
 - [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
 - [ロード バランサー用の Azure Resource Manager の概要](../load-balancer/load-balancer-arm.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0608_2016-->
