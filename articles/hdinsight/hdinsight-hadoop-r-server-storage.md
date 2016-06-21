@@ -176,7 +176,7 @@ hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 ここでは、R Server を含む新しい HDInsight クラスターを作成する方法と、SSH セッションから R コンソールを使用する方法の基本を説明しました。次のリンクを使用して、HDInsight で R Server を使用するための他の方法を見てみましょう。
 
 - [Hadoop での R Server の概要](hdinsight-hadoop-r-server-overview.md)
-- [Hadoop での R Server の概要](hdinsight-hadoop-r-server-get-started.md)
+- [Hadoop での R Server の使用開始](hdinsight-hadoop-r-server-get-started.md)
 - [HDInsight Premium への RStudio Server の追加](hdinsight-hadoop-r-server-install-r-studio.md)
 - [HDInsight Premium での R Server のコンピューティング コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
 
