@@ -104,8 +104,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 5. **[作成]** をクリックします。
 
-	![新しいストレージ アカウント  
-](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
+	![新しいストレージ アカウント](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
 
 ## <a id="download"></a> アプリケーションのダウンロード
 
@@ -144,8 +143,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 3. **[プロパティ]** ウィンドウで **[ストレージ アカウント キー]** をクリックし、省略記号ボタンをクリックします。
 
-	![新しいストレージ アカウント  
-](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
+	![新しいストレージ アカウント](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
 
 4. **接続文字列**をコピーします。
 
@@ -828,4 +826,4 @@ https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 
 詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?LinkId=390226)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!----HONumber=AcomDC_0608_2016-->
