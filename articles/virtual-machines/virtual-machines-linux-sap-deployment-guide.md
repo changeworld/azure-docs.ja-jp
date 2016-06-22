@@ -843,7 +843,7 @@ azperflib.exe の戻り値のいずれかが、設定されているすべての
             * 「python /var/lib/waagent/Microsoft.OSTCExtensions.LinuxDiagnostic-2.0.92/diagnostic.py -daemon」のようなエントリが 1 つ表示されます。
     * Azure Enhanced Monitoring Extension がインストールおよび開始されていることを確認します。
         * sudo ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/
-    * Azure Enhanced Monitoring Extension ディレクトリの内容が一覧表示されます。
+            * Azure Enhanced Monitoring Extension ディレクトリの内容が一覧表示されます。
         * ps -ax | grep AzureEnhanced
             * 「python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon」のようなエントリが 1 つ表示されます。
 * SAP ノート 1031096 の説明に従って SAP Host Agent をインストールし、saposcol の出力を確認します。
