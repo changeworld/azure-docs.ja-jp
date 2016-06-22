@@ -284,4 +284,4 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 [How Application Strings and Connection Strings Work (アプリケーション文字列と接続文字列の動作)]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!-------HONumber=AcomDC_0615_2016-->
