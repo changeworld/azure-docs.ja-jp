@@ -30,7 +30,7 @@
 
         ReceiveC2dAsync();
 
-> [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。運用環境のコードでは、MSDN の記事「Transient Fault Handling (一時的な障害の処理)」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
+> [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。運用環境のコードでは、MSDN の記事「[Transient Fault Handling](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx) \(一時的な障害の処理)」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
 <!-- Links -->
 [IoT Hub Developer Guide - C2D]: ../articles/iot-hub/iot-hub-devguide.md#c2d
