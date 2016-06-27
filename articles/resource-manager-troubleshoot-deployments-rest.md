@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-multiple"
    ms.workload="infrastructure"
-   ms.date="05/19/2016"
+   ms.date="06/13/2016"
    ms.author="tomfitz"/>
 
 # Azure Resource Manager REST API でのデプロイ操作の表示
@@ -28,6 +28,8 @@
 Azure にリソースをデプロイするときにエラーが発生した場合、実行したデプロイ操作に関して、より詳しい情報が必要になることがあります。REST API では、エラーを見つけて、可能性のある修正を確認できるように、操作を提供します。
 
 [AZURE.INCLUDE [resource-manager-troubleshoot-introduction](../includes/resource-manager-troubleshoot-introduction.md)]
+
+デプロイの前にテンプレートおよびインフラストラクチャを検証して、いくつかのエラーを回避できます。後からトラブルシューティングに役立つと思われるデプロイメント中の追加の要求および応答の情報を記録することもできます。検証、 ログ記録の要求および応答の情報については、「[Azure リソース マネージャーのテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy-rest.md)」を参照してください。
 
 ## REST API を使用したトラブルシューティング
 
@@ -109,8 +111,8 @@ Azure にリソースをデプロイするときにエラーが発生した場�
 
 ## 次のステップ
 
-- 特定のデプロイ エラーの解決については、「[Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーを解決する](resource-manager-common-deployment-errors.md)」を参照してください。
-- 他の種類のアクションを監視するために監査ログを使用する方法については、「[リソース マネージャーの監査操作](resource-group-audit.md)」を参照してください。
-- デプロイを実行する前に検証するには、「[Azure リソース マネージャーのテンプレートを使用してリソース グループをデプロイ](resource-group-template-deploy.md)」を参照してください。
+- 特定のデプロイ エラーの解決については、[Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
+- 他の種類のアクションを監視するために監査ログを使用する方法については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
+- デプロイを実行する前に検証するには、「[Azure Resource Manager のテンプレートを使用したリソースのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

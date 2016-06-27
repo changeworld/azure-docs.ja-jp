@@ -34,7 +34,7 @@ Microsoft Azure StorSimple ソリューションで問題が発生した場合�
 
 	![クラシック ポータルでの MS サポートへの問い合わせ](./media/storsimple-contact-microsoft-support/Ibiza1.png)
 
-2. 新しい Azure ポータル (ms.portal.azure.com) にリダイレクトされます。**[新しいサポート要求]** タイルをクリックします。
+2. 新しい Azure ポータル (portal.azure.com) にリダイレクトされます。**[新しいサポート要求]** タイルをクリックします。
 
 	![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-contact-microsoft-support/Ibiza2.png)
 
@@ -102,4 +102,4 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 
 > [AZURE.IMPORTANT] サポートへのアクセスは、`Disable-HcsSupportAccess` を実行して無効にできます。また、StorSimple デバイスでは、セッションの開始後 8 時間が経過すると、サポートへのアクセスが無効になります。サポート セッションを開始した後、StorSimple デバイスの資格情報を変更することをお勧めします。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0615_2016-->

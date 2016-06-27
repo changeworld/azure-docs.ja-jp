@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="03/28/2016"
+   ms.date="06/14/2016"
    ms.author="larryfr"/>
 
 # Linux での HDInsight の使用方法
@@ -257,4 +257,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Data Warehouse でのデータベースの復元 (PowerShell) | Microsoft Azure"
-   description="Azure SQL Data Warehouse でライブ データベース、削除済みデータベース、またはアクセスできないデータベースを復元するための PowerShell のタスク。"
+   pageTitle="Azure SQL Data Warehouse の復元 (PowerShell) | Microsoft Azure"
+   description="Azure SQL Data Warehouse を復元するための PowerShell タスク。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="elfisher"
@@ -13,38 +13,30 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/05/2016"
+   ms.date="06/11/2016"
    ms.author="elfish;barbkess;sonyama"/>
 
-# Azure SQL Data Warehouse でのデータベースのバックアップと復元 (PowerShell)
+# Azure SQL Data Warehouse の復元 (PowerShell)
 
 > [AZURE.SELECTOR]
-- [概要](sql-data-warehouse-overview-manage-database-restore.md)
-- [ポータル](sql-data-warehouse-manage-database-restore-portal.md)
-- [PowerShell](sql-data-warehouse-manage-database-restore-powershell.md)
-- [REST ()](sql-data-warehouse-manage-database-restore-rest-api.md)
+- [概要][]
+- [ポータル][]
+- [PowerShell][]
+- [REST ()][]
 
-SQL Data Warehouse でライブ データベース、削除済みデータベース、またはアクセスできないデータベースを復元するための PowerShell のタスク。
-
-このトピックのタスク:
-
-- ライブ データベースの復元
-- 削除されたデータベースの復元
-- アクセスできないデータベースを地理的に異なる Azure リージョンから復元
-
-[AZURE.INCLUDE [SQL Data Warehouse のバックアップ保持ポリシー](../../includes/sql-data-warehouse-backup-retention-policy.md)]
-
+この記事では、PowerShell を使用して Azure SQL Data Warehouse を復元する方法について説明します。
 
 ## 開始する前に
 
 ### SQL Database の DTU 容量を確認する 
-SQL Data Warehouse では、論理 SQL サーバーの新しいデータベースに復元されるため、復元先 SQL サーバーに、新しいデータベース用の DTU 容量が十分にあることを確認することが重要です。詳細については、[DTU クォータを表示および増量する方法][]に関するブログ投稿記事をご覧ください。
+
+各 SQL Data Warehouse は SQL サーバーの論理サーバーでホストされます。この論理サーバーには容量制限があり、DTU 単位で測定されます。SQL Data Warehouse を復元する前に、データベースをホストしている SQL サーバーの論理サーバーに、データベースを復元するために十分な DTU 容量があるか確認する必要があります。詳細については、[DTU クォータを表示および増量する方法][]に関するブログ投稿記事をご覧ください。
 
 ### PowerShell をインストールする
 
-SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0 以降をインストールする必要があります。**Get-Module -ListAvailable -Name Azure** を実行することで、バージョンを確認できます。最新バージョンは、[Microsoft Web プラットフォーム インストーラー][]からインストールできます。最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」をご覧ください。
+SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0 以降をインストールする必要があります。**Get-Module -ListAvailable -Name Azure** を実行することで、バージョンを確認できます。最新バージョンは、[Microsoft Web Platform Installer][] からインストールできます。最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」を参照してください。
 
-## ライブ データベースの復元
+## アクティブまたは一時停止中のデータベースを復元する
 
 スナップショットからデータベースを復元するには、[Restore-AzureRmSqlDatabase][] PowerShell コマンドレットを使用します。
 
@@ -88,8 +80,6 @@ $RestoredDatabase.status
 
 ```
 
->[AZURE.NOTE] サーバーが foo.database.windows.net の場合、上記の PowerShell コマンドレットで -ServerName として "foo" を使用します。
-
 復元が完了したら、[復旧されたデータベースの最終処理][]に関するガイドに従って、復旧されたデータベースを構成できます。
 
 ## 削除されたデータベースの復元
@@ -126,8 +116,6 @@ $RestoredDatabase.status
 
 ```
 
->[AZURE.NOTE] サーバーが foo.database.windows.net の場合、上記の PowerShell コマンドレットで -ServerName として "foo" を使用します。
-
 復元が完了したら、[復旧されたデータベースの最終処理][]に関するガイドに従って、復旧されたデータベースを構成できます。
 
 ## Azure 地理的リージョンからの復元
@@ -159,6 +147,7 @@ $GeoRestoredDatabase.status
 ```
 
 ### geo リストアの実行後にデータベースを構成する
+
 復旧後のデータベースをすぐ運用できるようにするためのチェックリストです。
 
 1. **接続文字列を更新する**: クライアント ツールの接続文字列が新しく復旧したデータベースを指していることを確認します。
@@ -170,7 +159,7 @@ $GeoRestoredDatabase.status
 
 
 ## 次のステップ
-詳細については、[Azure SQL Database のビジネス継続性の概要][]および[管理の概要][]に関するページをご覧ください。
+Azure SQL Database の各エディションのビジネス継続性機能については、[Azure SQL Database のビジネス継続性の概要][]に関するページをご覧ください。
 
 <!--Image references-->
 
@@ -178,13 +167,12 @@ $GeoRestoredDatabase.status
 [Azure SQL Database のビジネス継続性の概要]: sql-database-business-continuity.md
 [復旧されたデータベースの最終処理]: sql-database-recovered-finalize.md
 [Azure PowerShell のインストールおよび構成方法]: powershell-install-configure.md
-[管理の概要]: sql-data-warehouse-overview-manage.md
+[概要]: ./sql-data-warehouse-restore-database-overview.md
+[ポータル]: ./sql-data-warehouse-restore-database-portal.md
+[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
+[REST ()]: ./sql-data-warehouse-restore-database-rest-api.md
 
 <!--MSDN references-->
-[Create database restore request]: https://msdn.microsoft.com/library/azure/dn509571.aspx
-[Database operation status]: https://msdn.microsoft.com/library/azure/dn720371.aspx
-[Get restorable dropped database]: https://msdn.microsoft.com/library/azure/dn509574.aspx
-[List restorable dropped databases]: https://msdn.microsoft.com/library/azure/dn509562.aspx
 [Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
 
 <!--Blog references-->
@@ -192,6 +180,6 @@ $GeoRestoredDatabase.status
 
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/
-[Microsoft Web プラットフォーム インストーラー]: https://aka.ms/webpi-azps
+[Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

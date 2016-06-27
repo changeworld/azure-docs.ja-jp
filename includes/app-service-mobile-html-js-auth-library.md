@@ -58,11 +58,13 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
 
 ###<a name="auth-getinfo"></a>方法: 認証されたユーザーに関する情報の取得
 
-現在のユーザーの認証情報は、AJAX メソッドを使用して `/.auth/me` エンドポイントから取得できます。たとえば、次のフェッチ API を使用します。
+現在のユーザーの認証情報は、AJAX メソッドを使用して `/.auth/me` エンドポイントから取得できます。`X-ZUMO-AUTH` ヘッダーを認証トークンに設定していることを確認してください。認証トークンは `client.currentUser.mobileServiceAuthenticationToken` に格納されています。たとえば、次のフェッチ API を使用します。
 
 ```
 var url = client.applicationUrl + '/.auth/me';
-fetch(url)
+var headers = new Headers();
+headers.append('X-ZUMO-AUTH', client.currentUser.mobileServiceAuthenticationToken);
+fetch(url, { headers: headers })
     .then(function (data) {
         return data.json()
     }).then(function (user) {
@@ -70,6 +72,6 @@ fetch(url)
     });
 ```
 
-jQuery または別の AJAX API を使用して情報を取得することも可能です。データは JSON オブジェクトとして取得されます。
+フェッチは npm パッケージとして、または CDNJS からのブラウザーのダウンロードに使用できます。jQuery または別の AJAX API を使用して情報を取得することも可能です。データは JSON オブジェクトとして取得されます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

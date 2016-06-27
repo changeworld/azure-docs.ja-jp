@@ -30,7 +30,7 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 
 ## 前提条件
 
-1. Split-Merge ステータス データベースとして使用する Azure SQL DB を作成します。[Azure ポータル](https://ms.portal.azure.com)にアクセスします。新しい **SQL Database** を作成します。データベースに名前を付けて、新しい管理者とパスワードを作成します。今後の使用のために、パスワードと名前を必ず記録しておいてください。
+1. Split-Merge ステータス データベースとして使用する Azure SQL DB を作成します。[Azure ポータル](https://portal.azure.com)にアクセスします。新しい **SQL Database** を作成します。データベースに名前を付けて、新しい管理者とパスワードを作成します。今後の使用のために、パスワードと名前を必ず記録しておいてください。
 
 2. Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。ポータルの **[ファイアウォール設定]** で、**[Azure サービスへのアクセスを許可する]** 設定が **[オン]** に設定されていることを確認してください。[保存] アイコンをクリックします。
 
@@ -339,4 +339,4 @@ Split-Merge サービスはターゲット データベース (またはデー�
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

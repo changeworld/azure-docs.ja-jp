@@ -173,7 +173,7 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
             Console.WriteLine("Creation of pool " + epool.ElasticPool.Name + ": " + epool.Status.ToString());
 
             // Open the portal so we can see our operations in action
-            string portalPage = @"https://ms.portal.azure.com/#resource/subscriptions/"
+            string portalPage = @"https://portal.azure.com/#resource/subscriptions/"
                 + subscriptionId
                 + @"/resourceGroups/"
                 + resourceGroupName
@@ -432,4 +432,4 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
 - [エラスティック データベース プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
 - エラスティック データベース ツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

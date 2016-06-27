@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="05/03/2016"
+	ms.date="06/13/2016"
 	ms.author="jeffstok"/>
 
 
@@ -432,28 +432,32 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 
 **出力**:
 
-| StartFault | EndFault | FaultDurationSeconds |
-| --- | --- | --- |
-| 2015-01-01T00:00:01.0000000Z | 2015-01-01T00:00:08.0000000Z | 7 |
-| 2015-01-01T00:00:01.0000000Z | 2015-01-01T00:00:08.0000000Z | 7 |
-| 2015-01-01T00:00:01.0000000Z | 2015-01-01T00:00:08.0000000Z | 7 |
-| 2015-01-01T00:00:01.0000000Z | 2015-01-01T00:00:08.0000000Z | 7 |
-| 2015-01-01T00:00:01.0000000Z | 2015-01-01T00:00:08.0000000Z | 7 |
-| 2015-01-01T00:00:01.0000000Z | 2015-01-01T00:00:08.0000000Z | 7 |
+| StartFault | EndFault |
+| --- | --- |
+| 2015-01-01T00:00:02.000Z | 2015-01-01T00:00:07.000Z |
 
 **解決策**:
 
 ````
-SELECT 
-    LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN weight < 20000 ) [StartFault],
-    [time] [EndFault]
-FROM input
-WHERE
-    [weight] < 20000
-    AND LAG(weight) OVER (LIMIT DURATION(hour, 24)) > 20000
+	WITH SelectPreviousEvent AS
+	(
+	SELECT
+	*,
+		LAG([time]) OVER (LIMIT DURATION(hour, 24)) as previousTime,
+		LAG([weight]) OVER (LIMIT DURATION(hour, 24)) as previousWeight
+	FROM input TIMESTAMP BY [time]
+	)
+
+	SELECT 
+    	LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN previousWeight < 20000 ) [StartFault],
+    	previousTime [EndFault]
+	FROM SelectPreviousEvent
+	WHERE
+    	[weight] < 20000
+	    AND previousWeight > 20000
 ````
 
-**説明**: LAG を使用して 24 時間の入力ストリームに着目し、重量の上限を 20000 として、その境界を StartFault と StopFault とし、該当する項目を探しています。
+**説明**: LAG を使用して 24 時間の入力ストリームに着目し、重量の上限を 20000 として、StartFault と StopFault の範囲で該当するインスタンスを探します。
 
 ## クエリ例: 欠落値を入力する
 **説明**: 欠落値があるイベントのストリームの場合、定期的な間隔でイベントのストリームを生成します。たとえば、最近検出されたデータ ポイントを報告する 5 秒ごとのイベントを生成します。
@@ -510,4 +514,4 @@ WHERE
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

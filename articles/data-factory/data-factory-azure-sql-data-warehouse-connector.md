@@ -485,7 +485,7 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
     }
 
 ## PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む
-**PolyBase** は、高いスループットで Azure BLOB ストレージから Azure SQL Data Warehouse に大量のデータを読み込む際に効率的な手段です。既定の BULKINSERT メカニズムではなく PolyBase を使用することで、スループットが大幅に向上することがわかります。
+**PolyBase** を使用すると、高いスループットで Azure SQL Data Warehouse に大量のデータを読み込むことができます。既定の BULKINSERT メカニズムではなく PolyBase を使用することで、スループットが大幅に向上することがわかります。
 
 次の例に示すように、Azure Data Factory で PolyBase を使用して Azure SQL Data Warehouse にデータをコピーするために、**allowPolyBase** プロパティを **true** に設定します。allowPolyBase を true に設定すると、**polyBaseSettings** プロパティ グループを使用して PolyBase 固有のプロパティを指定できます。polyBaseSettings で使用できるプロパティの詳細については、前述の「[SqlDWSink](#SqlDWSink)」セクションを参照してください。
 
@@ -504,18 +504,17 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
     }
 
 ### PolyBase を使用して直接コピーする
-ソース データが次の条件を満たす場合は、PolyBase を使用してソース データ ストアから Azure SQL Data Warehouse に直接コピーできます。それ以外の場合、ソース データ ストアから次の条件を満たすステージング Azure BLOB ストレージにデータをコピーし、PolyBase を使用して Azure SQL Data Warehouse にデータを読み込むことができます。ステージング コピーの詳細については、「[PolyBase を使用してステージング コピーする](#staged-copy-using-polybase)」を参照してください。
+ソース データが次の条件を満たす場合は、上記のサンプル構成を参照する PolyBase を使用して、PolyBase を使用してソース データ ストアから Azure SQL Data Warehouse に直接コピーできます。それ以外の場合は、[PolyBase を使用したステージング コピー](#staged-copy-using-polybase)を利用できます。
 
 Azure Data Factory が設定を確認し、要件が満たされない場合は、データ移動には自動的に BULKINSERT メカニズムが使用されるように戻ることに注意してください。
 
 1.	**ソースのリンクされたサービス**の種類が **Azure Storage** で、SAS (Shared Access Signature) 認証を使用するように構成されていないこと。詳細については、「[Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)」を参照してください。  
-2. **入力データセット**の種類が **Azure BLOB** で、データセットの type プロパティが次の要件を満たしていること。 
-	1. **type** が **TextFormat** または **OrcFormat** である。 
-	2. **rowDelimiter** が **\\n** である。 
-	3. **nullValue** が**空の文字列** ("") に設定されている。 
-	4. **encodingName** が **utf-8** に設定されている。これは**既定**値であるため、別の値に設定しないでください。 
-	5. **escapeChar** と **quoteChar** が指定されていない。 
-	6. **Compression** が **BZIP2** ではない。
+2. **入力データセット**の種類が **Azure BLOB** で、type プロパティの形式の種類が次の構成の **OrcFormat** または **TextFormat** であること。
+	1. **rowDelimiter** が **\\n** である。 
+	2. **nullValue** が**空の文字列** ("") に設定されている。 
+	3. **encodingName** が **utf-8** に設定されている。これは**既定**値であるため、別の値に設定しないでください。 
+	4. **escapeChar** と **quoteChar** が指定されていない。 
+	5. **Compression** が **BZIP2** ではない。
 	 
 			"typeProperties": {
 				"folderPath": "<blobpath>",
@@ -536,7 +535,9 @@ Azure Data Factory が設定を確認し、要件が満たされない場合は�
 5.	関連付けられたコピー アクティビティでは、**columnMapping** が使用されていないこと。 
 
 ### PolyBase を使用してステージング コピーする
-PolyBase メカニズムには、ソース データが Azure BLOB ストレージにあり、サポートされている形式 (制限付き DELIMITEDTEXT、RCFILE、ORC、PARQUET) のいずれかである必要があります。ソース データが前のセクションで紹介した条件を満たしていない場合は、中間ステージング Azure BLOB ストレージ経由でデータのコピーを有効にすることができます。その場合、Azure Data Factory は PolyBase のデータ形式の要件を満たすためにデータの変換を実行し、PolyBase を使用して SQL Data Warehouse にデータを読み込みます。ステージング Azure BLOB 経由でデータをコピーする通常の操作方法の詳細については、「[ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)」を参照してください。
+ソース データが前のセクションで紹介した条件を満たしていない場合は、中間ステージング Azure BLOB ストレージ経由でデータのコピーを有効にすることができます。その場合、Azure Data Factory は PolyBase のデータ形式の要件を満たすためにデータの変換を実行し、PolyBase を使用して SQL Data Warehouse にデータを読み込みます。ステージング Azure BLOB 経由でデータをコピーする通常の操作方法の詳細については、「[Staged Copy (ステージング コピー)](data-factory-copy-activity-performance.md#staged-copy)」を参照してください。
+
+> [AZURE.IMPORTANT] オンプレミスのデータ ストアから PolyBase を使用して Azure SQL Data Warehouse にデータをコピーし、ステージングする場合は、ソース データを適切な形式に変換するために使用するゲートウェイ コンピューターに JRE (Java ランタイム環境) をインストールする必要があります。64 ビットのゲートウェイでは 64 ビットの JRE が必要になり、32 ビットのゲートウェイでは 32 ビットの JRE が必要になります。どちらのバージョンも[このページ](http://go.microsoft.com/fwlink/?LinkId=808605)で入手できます。適切なバージョンを選択してください。
 
 この機能を使用するには、中間 BLOB ストレージがある Azure Storage アカウントを参照する [Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)を作成し、次に示すように、コピー アクティビティの **enableStaging** および **stagingSettings** プロパティを指定します。
 
@@ -555,16 +556,12 @@ PolyBase メカニズムには、ソース データが Azure BLOB ストレー�
 				"allowPolyBase": true
 			},
     		"enableStaging": true,
-				"stagingSettings": {
+			"stagingSettings": {
 				"linkedServiceName": "MyStagingBlob"
 			}
 		}
 	}
 	]
-
-
-注: オンプレミスのデータ ストアから PolyBase を使用して Azure SQL Data Warehouse にデータをコピーし、ステージングする場合は、ソース データを適切な形式に変換するために使用するゲートウェイ コンピューターに JRE (Java ランタイム環境) をインストールする必要があります。
-
 
 
 ### PolyBase を使用する際のベスト プラクティス
@@ -655,6 +652,6 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

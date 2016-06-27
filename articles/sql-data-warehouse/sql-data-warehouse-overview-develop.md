@@ -62,7 +62,6 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 [ラベル]: sql-data-warehouse-develop-label.md
 [ループ]: sql-data-warehouse-develop-loops.md
 [データのピボット]: sql-data-warehouse-develop-pivot-unpivot.md
-[オブジェクトの名前変更]: sql-data-warehouse-develop-rename.md
 [統計]: sql-data-warehouse-develop-statistics.md
 [ストアド プロシージャ]: sql-data-warehouse-develop-stored-procedures.md
 [テーブル設計]: sql-data-warehouse-develop-table-design.md
@@ -76,7 +75,8 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 [Transact-SQL リファレンス]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
+[オブジェクトの名前変更]: https://msdn.microsoft.com/library/mt631611.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0615_2016-->

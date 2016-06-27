@@ -65,15 +65,6 @@ hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundEx
 
 Jupyter Notebook に関連する既知の問題を以下に示します。
 
-### .ipynb 形式で Jupyter Notebook をダウンロードできない
-
-HDInsight Spark 向けの Jupyter Notebook の最新バージョンを実行中に、Jupyter Notebook のユーザー インターフェイスから Notebook のコピーを **.ipynb** ファイルとしてダウンロードしようとすると、内部サーバー エラーが発生することがあります。
-
-**対応策:**
-
-1.	.ipynb 以外の形式 (.txt など) で Notebook をダウンロードすると成功します。  
-2.	.ipynb ファイルが必要な場合は、ストレージ アカウントのクラスター コンテナーである **/HdiNotebooks** からダウンロードできます。この方法は、ストレージ アカウントでの Notebook のバックアップがサポートされている HDInsight 向けの Jupyter Notebook の最新バージョンでのみ利用できます。ただし、HDInsight Spark 向けの Jupyter Notebook の以前のバージョンでは、この問題は発生しません。
-
 
 ### ファイル名での非 ASCII 文字の使用
 
@@ -112,10 +103,6 @@ Spark クラスターがリソース不足になると、Jupyter Notebook の Sp
     - YARN から他の Spark アプリケーションを停止する。
 
 2. スタートアップしようとしていた Notebook を再起動します。今度は、セッションを作成するために十分なリソースが使用可能になっている必要があります。
-
-### チェックポイントに戻す操作が失敗する
-
-以前のバージョンの Jupyter Notebook に戻す必要がある場合に備えて、Notebook でチェックポイントを作成できます。ただし、Notebook の現在の状態に自動視覚化が適用される SQL クエリが含まれている場合、以前に保存したチェックポイントに戻すと、エラーが発生します。
 
 ##関連項目
 
@@ -159,4 +146,4 @@ Spark クラスターがリソース不足になると、Jupyter Notebook の Sp
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -145,4 +145,4 @@ nslookup ツールや他の DNS ツールを使用して、新しいレコード
 
 [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

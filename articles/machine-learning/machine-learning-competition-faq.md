@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/11/2016"
+	ms.date="06/05/2016"
 	ms.author="haining;chlovel;garye"/>
 
 # Microsoft Cortana Intelligence コンペティションの FAQ
@@ -115,4 +115,4 @@ Microsoft は、プライベート スコアボードの結果を確認し、お
 
 ユーザーのエントリは、受賞ソリューションを特定するための評価目的でのみ保持されます。詳細については、[契約条件](http://aka.ms/comptermsandconditions)を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

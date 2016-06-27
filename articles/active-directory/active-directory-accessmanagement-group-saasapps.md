@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/17/2016"
+	ms.date="06/14/2016"
 	ms.author="curtand"/>
 
 
@@ -48,10 +48,12 @@ Azure Active Directory (Azure AD) の Azure AD Premium ライセンスまたは 
 
 * [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
 
-* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)
+* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+
+* [グループの設定を構成するための Azure Active Directory コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
 
 * [Azure Active Directory とは](active-directory-whatis.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0615_2016-->

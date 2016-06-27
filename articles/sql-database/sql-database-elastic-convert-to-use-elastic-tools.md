@@ -173,7 +173,13 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 
 マルチテナント モデルとシングルテナント モデルの間でデータを移動するには、分割/マージ ツールを使用します。[分割/マージ ツール](sql-database-elastic-scale-get-started.md)を参照してください。
 
-[AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+## その他のリソース
+
+マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」をご覧ください。
+
+## 質問と機能に関する要望
+
+質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png
@@ -181,4 +187,4 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 [3]: ./media/sql-database-elastic-convert-to-use-elastic-tools/multipleonsingledb.png
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

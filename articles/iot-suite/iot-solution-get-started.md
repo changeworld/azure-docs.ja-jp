@@ -2,16 +2,16 @@
 	pageTitle="MyDriving Azure IoT の例 - クイック スタート | Microsoft Azure"
 	description="Microsoft Azure を使用して、Stream Analytics、Machine Learning、Event Hubs などの IoT システムを設計する方法を総合的に示すアプリを初めて使用します。"
 	services=""
-    documentationCenter=""
-    suite="iot-suite"
+    documentationCenter=".net"
+    suite=""
 	authors="alancameronwills"
 	manager="douge"/>
 
 <tags
-	ms.service="iot-suite"
+	ms.service="multiple"
 	ms.workload="tbd"
 	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
+	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="03/25/2016"
 	ms.author="awills"/>
@@ -170,4 +170,4 @@ MyDriving アプリ内では、組み込みの HockeyApp フィードバック �
   [HockeyApp ポータル]: https://rink.hockeyapp.org
   [GitHub の Issue (イシュー)]: https://github.com/Azure-Samples/MyDriving/issues
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -24,7 +24,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 このチュートリアルでは、Azure Event Hubs を作成する方法、Java のコンソール アプリケーションを使用して Event Hubs にメッセージを取り込む方法、および Scala で記述された Spark アプリケーションを使用してメッセージを並列に取得する方法について説明します。このアプリケーションでは、Event Hubs を通してストリーミングされたデータを処理し、さまざまな出力 (Azure Storage BLOB、Hive テーブル、および SQL テーブル) にルーティングします。
 
-> [AZURE.NOTE] この記事の手順に従うには、両方のバージョンの Azure ポータルを使用する必要があります。イベント ハブを作成するには、[Azure クラシック ポータル](https://manage.windowsazure.com)を使用します。HDInsight Spark クラスターを操作するには、[Azure ポータル](https://ms.portal.azure.com/)を使用します。
+> [AZURE.NOTE] この記事の手順に従うには、両方のバージョンの Azure ポータルを使用する必要があります。イベント ハブを作成するには、[Azure クラシック ポータル](https://manage.windowsazure.com)を使用します。HDInsight Spark クラスターを操作するには、[Azure ポータル](https://portal.azure.com/)を使用します。
 
 **前提条件:**
 
@@ -391,4 +391,4 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

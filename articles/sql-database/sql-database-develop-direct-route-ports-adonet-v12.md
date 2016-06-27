@@ -112,7 +112,7 @@ Azure クラウド境界内でクライアントを実行している場合、�
 - [TDS プロトコルのバージョンの一覧](http://www.freetds.org/userguide/tdshistory.htm)
 
 
-- [SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン](sql-database-connect-central-recommendations.md)
+- [SQL Database の開発: 概要](sql-database-develop-overview.md)
 
 
 - [Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)
@@ -120,4 +120,4 @@ Azure クラウド境界内でクライアントを実行している場合、�
 
 - [方法: ファイアウォール設定を構成する (SQL データベース)](sql-database-configure-firewall-settings.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -28,7 +28,7 @@
 この例で使用するサブスクリプションには、以下のものが含まれています。
 
 - 3 つのクラウド サービス: “SecSvc001”、“FrontEnd001”、“BackEnd001”
-- 3 つのサブネット ("SecNet"、"FrontEnd"、"BackEnd") を含む Virtual Network "CorpNetwork"
+- 3 つのサブネット ("SecNet"、"FrontEnd"、"BackEnd") を含む仮想ネットワーク "CorpNetwork"
 - SecNet サブネットに接続されたネットワーク仮想アプライアンス (この例ではファイアウォール)
 - アプリケーション Web サーバーを表す Windows サーバー ("IIS01")
 - アプリケーション バックエンド サーバーを表す 2 つの Windows サーバー ("AppVM01"、"AppVM02")
@@ -110,22 +110,22 @@ VNETLocal は、特定のネットワークの VNet に対して必ず定義さ�
 
 2.	ルート テーブルの作成後、具体的なユーザー定義ルートを追加できます。このスニペットでは、すべてのトラフィック (0.0.0.0/0) が仮想アプライアンスを通じてルーティングされます (スクリプトの前半で仮想アプライアンスの作成時に割り当てた IP アドレスを変数 $VMIP[0] で渡しています)。フロントエンド テーブルにも対応するルールをスクリプトで作成します。
 
-		Get-AzureRouteTable $BERouteTableName |`
+		Get-AzureRouteTable $BERouteTableName | `
 		    Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
 		    -NextHopType VirtualAppliance `
 		    -NextHopIpAddress $VMIP[0]
 
 3. 既定の "0.0.0.0/0" ルートは先ほどのルート エントリによって上書きされますが、既定の 10.0.0.0/16 ルールは依然として存在します。このルールによって、VNet 内のトラフィックがネットワーク仮想アプライアンスにではなく直接宛先にルーティングされる可能性があります。この動作を修正するために、次のルールを追加する必要があります。
 
-	    Get-AzureRouteTable $BERouteTableName `
-	        |Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
+	    Get-AzureRouteTable $BERouteTableName | `
+	        Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
 	        -NextHopType VirtualAppliance `
 	        -NextHopIpAddress $VMIP[0]
 
 4. ここで検討事項が生じます。上の 2 つのルートでは、同じサブネット内のトラフィックも含め、すべてのトラフィックがファイアウォールにルーティングされて評価されます。場合によってはそれでも問題ありませんが、トラフィックの発信元と宛先とが同じサブネットであるときに、ファイアウォールを介さずローカルでルーティングする場合には、最も具体性のある第 3 のルールを追加します。このルート指定 (NextHopType = VNETLocal) によって、ローカル サブネット宛てのアドレスはすべてそのサブネット内で直接ルーティングすることができます。
 
-	    Get-AzureRouteTable $BERouteTableName `
-	        |Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
+	    Get-AzureRouteTable $BERouteTableName | `
+	        Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
 	        -NextHopType VNETLocal
 
 5.	ルーティング テーブルを作成し、ユーザー定義ルートを設定したら、最後にそのテーブルをサブネットにバインドする必要があります。フロント エンド用のルート テーブルも、このスクリプトでフロントエンド サブネットにバインドします。以下に示したのは、バックエンド サブネット用のバインディング スクリプトです。
@@ -145,8 +145,8 @@ IP 転送の設定は、VM の作成時に単一のコマンドで実行でき�
 
 1.	仮想アプライアンスである VM インスタンス (このケースではファイアウォール) を呼び出し、IP 転送を有効にします (注: ドル記号で始まる赤色の項目 (例: $VMName[0]) はユーザー定義変数です。このドキュメントの「参照」セクションのスクリプトで宣言されています。角かっこで囲まれたゼロ ([0]) は、VM の配列の先頭に格納されている VM を表します。このサンプル スクリプトが修正なしで正常に機能するためには、1 番目の VM (VM 0) がファイアウォールである必要があります)。
 
-		Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] `
-		   |Set-AzureIPForwarding -Enable
+		Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
+		   Set-AzureIPForwarding -Enable
 
 ## ネットワーク セキュリティ グループ (NSG)
 この例では、NSG グループを作成し、そこに単一のルールを設定します。このグループは、(SecNet を除いた) フロントエンドとバックエンドのサブネットにのみバインドします。ここで作成しているルールの内容は次のとおりです。
@@ -941,4 +941,4 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 [HOME]: ../best-practices-network-security.md
 [SampleApp]: ./virtual-networks-sample-app.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0615_2016-->

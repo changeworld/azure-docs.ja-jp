@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="05/10/2016"
+	ms.date="06/13/2016"
 	ms.author="pratshar"/>
 
 # Azure Site Recovery で Active Directory と DNS を保護する
@@ -121,4 +121,4 @@ DNS がドメイン コントローラーと同じ仮想マシン上にない場
 
 Azure Site Recovery によるエンタープライズ ワークロード保護の詳細については、「[Azure Site Recovery で保護できるワークロード](../site-recovery/site-recovery-workload.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

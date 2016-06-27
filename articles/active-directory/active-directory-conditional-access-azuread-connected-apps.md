@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""/>
 
 <tags
@@ -13,30 +13,30 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="06/15/2016"
 	ms.author="femila"/>
 
 # Azure Conditional Access Preview for SaaS Apps
 
-Azure Conditional Access Preview for SaaS Apps は、パブリック プレビューで利用できます。プレビューでは、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークにないユーザーのアクセスをブロックする機能を構成できます。
+Azure Conditional Access Preview for SaaS Apps は、パブリック プレビューで利用できます。プレビューでは、アプリケーションごとの Multi-Factor Authentication (MFA) のアクセス規則と、信頼されたネットワークにないユーザーのアクセスをブロックする機能を構成できます。
 
 Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。これらの機能は、Azure Active Directory Premium ライセンスを購入したお客様に提供されます。
 
 ## シナリオの前提条件
-* Azure Active Directory Premium のサブスクリプション
+* Azure Active Directory Premium のライセンス
 
 * フェデレーションまたは管理対象 Azure Active Directory テナント
 
-* フェデレーション テナントでは、Multi-Factor Authentication (MFA) を有効にする必要があります。
+* フェデレーション テナントでは、Multi-Factor Authentication を有効にする必要があります。
 
 ## このプレビュー リリースの既知の問題
-このプレビューは、事前に統合されたフェデレーション SaaS アプリケーション、パスワード シングル サインオンを使用するアプリケーション、登録済みの開発された基幹業務アプリケーション、および Azure AD アプリケーション プロキシに適用されます。一部の他のアプリケーションがまだ有効になっています。
+このプレビューは、事前に統合されたフェデレーション SaaS アプリケーション、パスワード シングル サインオンを使用するアプリケーション、登録済みの開発された基幹業務アプリケーション、および Azure AD アプリケーション プロキシに適用されます。他のアプリケーションがまだ有効になっています。
 
-##アプリケーションごとのアクセス規則の構成
+## アプリケーションごとのアクセス規則の構成
 
 ここでは、アプリケーションごとのアクセス規則を構成する方法について説明します。
 
-1. Microsoft Azure ポータルに管理者としてサインインします。
+1. Azure AD のグローバル管理者であるアカウントを使用して Azure クラシック ポータルにサインインします。
 2. 左ウィンドウで、**[Active Directory]** を選択します。
 3. [ディレクトリ] タブで、ディレクトリを選択します。
 4. **[アプリケーション]** タブを選択します。
@@ -58,19 +58,19 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 
 ![MFA による条件付きアクセス規則の設定](./media/active-directory-conditional-access/conditionalaccess-saas-apps.png)
 
-##MFA による条件付きアクセス規則
-ユーザーごとの Multi-Factor Authentication 機能を使用してユーザーが構成されている場合は、そのユーザーのこの設定がアプリの Multi-Factor Authentication 規則に優先します。これは、たとえ、それらのユーザーがアプリケーションの Multi-Factor Authentication 規則から除外されていたとしても、Multi-Factor Authentication を実行するには、ユーザーごとの Multi-Factor Authentication で構成されたユーザーが必要になることを意味します。Multi-Factor Authentication とユーザーごとの設定に関する詳細を参照してください。
+## MFA による条件付きアクセス規則
+ユーザーごとの Multi-Factor Authentication 機能を使用してユーザーが構成されている場合は、そのユーザーのこの設定がアプリの Multi-Factor Authentication 規則と組み合わされます。これは、たとえ、それらのユーザーがアプリケーションの Multi-Factor Authentication 規則から除外されていたとしても、Multi-Factor Authentication を実行するには、ユーザーごとの Multi-Factor Authentication で構成されたユーザーが必要になることを意味します。Multi-Factor Authentication とユーザーごとの設定に関する詳細を参照してください。
 
-###アクセス規則のオプション
+### アクセス規則のオプション
 現在のプレビューでは、次のオプションがサポートされています。
 
 * **多要素認証が必要です**: このオプションを使用した場合、アクセス規則が適用されるユーザーは、ポリシーが適用されるアプリケーションにアクセスする前に Multi-Factor Authentication を完了する必要があります。
 
-* **作業中でない場合、多要素認証が必要です**: このオプションを使用した場合、信頼できる IP からのユーザーは、Multi-Factor Authentication を実行する必要はありません。Multi-Factor Authentication の設定ページでは、信頼できる IP の範囲を構成できます。
+* **作業中でない場合、多要素認証が必要です**: このオプションを使用した場合、信頼できる IP アドレスからのユーザーは、Multi-Factor Authentication を実行する必要はありません。Multi-Factor Authentication の設定ページまたはディレクトリの [構成] タブのパブリック IP アドレス範囲の構成を使用して、信頼できる IP アドレスの範囲を構成できます。
 
-* **作業中でない場合、アクセスをブロック**: このオプションを使用した場合、信頼できる IP 以外からのユーザーはブロックされます。Multi-Factor Authentication の設定ページでは、信頼できる IP の範囲を構成できます。
+* **作業中でない場合、アクセスをブロック**: このオプションを使用した場合、信頼できる IP アドレス以外からのユーザーはブロックされます。Multi-Factor Authentication の設定ページでは、信頼できる IP アドレスの範囲を構成できます。
 
-###規則の状態の設定
+### 規則の状態の設定
 アクセス規則の状態により、規則を有効または無効にすることができます。アクセス規則が無効の場合は、Multi-Factor Authentication の要件は適用されません。
 
 ### アクセス規則の評価
@@ -87,9 +87,9 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 
 このフラグの設定に加えて、Multi-Factor Authentication が実行されるように、フェデレーション テナントの AD FS インスタンスを構成する必要があります。オンプレミスの Azure Multi-Factor Authentication のデプロイの手順に従ってください。
 
-##関連記事
+## 関連記事
 
 - [Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0615_2016-->

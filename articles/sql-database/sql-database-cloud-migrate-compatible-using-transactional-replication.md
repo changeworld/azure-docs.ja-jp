@@ -58,11 +58,11 @@
 - [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
 - [SQL Server 2016 Preview](http://www.microsoft.com/server-cloud/products/sql-server-2016/)
 
-## 詳細情報
+## その他のリソース
 
 - [トランザクション レプリケーション](https://msdn.microsoft.com/library/mt589530.aspx)
 - [SQL Database V12](sql-database-v12-whats-new.md)
 - [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

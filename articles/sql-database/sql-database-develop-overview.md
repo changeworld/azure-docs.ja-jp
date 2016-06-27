@@ -59,7 +59,9 @@ SQL Database への接続中に一時エラーが発生した場合は、コー�
 ## Elastic Scale によるデータ シャーディング
 Elastic Scale は、スケール アウト (およびスケール イン) のプロセスを簡略化します。
 
+[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン]
+* (./sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
 * [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

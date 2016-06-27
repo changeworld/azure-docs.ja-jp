@@ -3,8 +3,8 @@
     description="この記事では、Azure Automation Runbook で Azure Virtual Machine アラートを統合し、問題を自動修復する方法について説明します"
     services="automation"
     documentationCenter=""
-    authors="csand-msft"
-    manager="stevenka"
+    authors="mgoedtel"
+    manager="jwhit"
     editor="tysonn" />    
 <tags
     ms.service="automation"
@@ -12,10 +12,10 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="infrastructure-services"
-    ms.date="04/24/2016"
+    ms.date="06/14/2016"
     ms.author="csand;magoedte" />
 
-# Azure Automation ソリューション - Azure VM アラートを修復する
+# Azure Automation シナリオ - Azure VM アラートを修復する
 
 Azure Automation および Azure Virtual Machines 向けに、Automation Runbook を実行するように仮想マシン (VM) アラートを構成できる新機能がリリースされました。この新しい機能では、VM の再起動や停止など、VM アラートに応じて標準の修復を自動的に実行できます。
 
@@ -172,4 +172,4 @@ Azure VM でアラートを構成する場合、アラートがトリガー時�
 - PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
 - Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

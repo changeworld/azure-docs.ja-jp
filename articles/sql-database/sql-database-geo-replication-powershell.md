@@ -13,31 +13,29 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="04/27/2016"
+    ms.date="06/14/2016"
     ms.author="sstein"/>
 
 # PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する
 
-
-
 > [AZURE.SELECTOR]
+- [概要](sql-database-geo-replication-overview.md)
 - [Azure ポータル](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
-- [Transact-SQL](sql-database-geo-replication-transact-sql.md)
+- [T-SQL](sql-database-geo-replication-transact-sql.md)
 
-
-この記事では、PowerShell を使用して SQL Database の geo レプリケーションを構成する方法を示します。
+この記事では、PowerShell を使用して SQL Database のアクティブ geo レプリケーションを構成する方法について説明します。
 
 フェールオーバーを開始する方法については、[Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-powershell.md)に関する記事をご覧ください。
 
 >[AZURE.NOTE] すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
 
-同じまたは異なるデータ センターの場所 (リージョン) に最大 4 つの読み取り可能なセカンダリ データベースを構成できます。セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合に使用できます。
 
-geo レプリケーションを構成するには、次のものが必要です。
 
-- Azure サブスクリプション。Azure サブスクリプションがない場合は、このページの上部にある "**無料アカウント**" をクリックしてサブスクリプションを作成してから、この記事に戻って最後まで完了してください。
-- Azure SQL Database データベース。別の地理的リージョンにレプリケートするプライマリ データベースです。
+PowerShell を使用してアクティブ geo レプリケーションを構成するには、次のものが必要です。
+
+- Azure サブスクリプション。 
+- Azure SQL Database - レプリケートするプライマリ データベースです。
 - Azure PowerShell 1.0 以降。Azure PowerShell モジュールをダウンロードしてインストールするには、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 
@@ -165,4 +163,4 @@ sys.geo\_replication\_links のカタログ ビューに表示される順方向
 - [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

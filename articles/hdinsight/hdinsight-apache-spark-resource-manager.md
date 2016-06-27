@@ -31,7 +31,7 @@
 
 ## Ambari Web UI の起動方法
 
-1. [Azure ポータル](https://ms.portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。 
+1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。 
  
 2. Spark クラスター ブレードで、**[ダッシュ ボード]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
 
@@ -43,7 +43,7 @@
 
 ## Spark History Server の起動方法
 
-1. [Azure ポータル](https://ms.portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。
+1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。
 
 2. クラスター ブレードの **[クイック リンク]** で、**[クラスター ダッシュボード]** をクリックします。**[クラスター ダッシュボード]** ブレードで **[Spark History Server]** をクリックします。
 
@@ -212,4 +212,4 @@ Spark の動的割り当てを使用するため、Thrift サーバーから利�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

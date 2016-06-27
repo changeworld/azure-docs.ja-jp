@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/29/2016"
+	ms.date="06/10/2016"
 	ms.author="piyushjo" />
 
 # Azure Mobile Engagement デモ アプリ
@@ -37,7 +37,7 @@
 - **Windows ユニバーサル デモ アプリの場合**:
 
 	- [Windows ストア](https://www.microsoft.com/ja-JP/store/apps/azure-mobile-engagement/9nblggh4qmh2)でアプリをダウンロードします。
-	- アプリは、Windows 10 ユニバーサル アプリとして開発されました。ソース コードは [Github](https://github.com/Azure/azure-mobile-engagement-app-ios) から入手できます。
+	- アプリは、Windows 10 ユニバーサル アプリとして開発されました。ソース コードは [GitHub](https://github.com/Azure/azure-mobile-engagement-app-windows) から入手できます。
 
 - **iOS デモ アプリの場合:**
 
@@ -185,4 +185,4 @@
 [32]: ./media/mobile-engagement-demo-apps/notification-poll.png
 [33]: ./media/mobile-engagement-demo-apps/notification-data-push.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用
@@ -112,7 +112,7 @@ Duration フィールドのデータ型の横にある疑問符に注目して�
         TO "/output/SearchLog-transform-rowsets.csv"
         USING Outputters.Csv();
 
-WHERE 句では [C# ブール式](https://msdn.microsoft.com/library/6a71f45d.aspx)を使用します。C# 式言語を使用して、独自の式と関数を実行することができます。論理積 (and) および論理和 (or) と組み合わせることによって、より複雑なフィルター処理を実行することもできます。
+WHERE 句では [C# ブール式](https://msdn.microsoft.com/library/6a71f45d.aspx)を使用します。C# 式言語を使用して、独自の式と関数を実行することができます。論理積 (AND) および論理和 (OR) と組み合わせることによって、より複雑なフィルター処理を実行することもできます。
 
 次のスクリプトでは、DateTime.Parse() メソッドと論理積を使用します。
 
@@ -247,7 +247,7 @@ U-SQL でサポートされるのは、ANSI 準拠の結合構文である Rowse
 
 U-SQL では、データベースおよびスキーマのコンテキストでデータを使用することができます。そのため、ファイルに対して常に読み取りまたは書き込みを行う必要はありません。
 
-すべての U-SQL スクリプトが、その既定のコンテキストとして、既定のデータベース (master) と既定のスキーマ (dbo) で実行されます。独自のデータベースやスキーマを作成することができます。コンテキストを変更する場合は、**USE** ステートメントを使用してコンテキストを変更します。
+すべての U-SQL スクリプトが、その既定のコンテキストとして、既定のデータベース (master) と既定のスキーマ (DBO) で実行されます。独自のデータベースやスキーマを作成することができます。コンテキストを変更する場合は、**USE** ステートメントを使用してコンテキストを変更します。
 
 
 ### テーブル値関数 (TVF) の作成
@@ -409,7 +409,7 @@ U-SQL では、データベースおよびスキーマのコンテキストで�
 
 - [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 - [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
-- [Azure Data Lake Analytics ジョブに U-SQL ウィンドウ関数を使用する](data-lake-analytics-use-window-functions.md)
+- [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)
 - [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 ## 意見の投稿
@@ -419,4 +419,4 @@ U-SQL では、データベースおよびスキーマのコンテキストで�
 - [フォーラムでサポートを受ける](http://aka.ms/adlaforums)
 - [U-SQL に関するフィードバックの提供](http://aka.ms/usqldiscuss)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

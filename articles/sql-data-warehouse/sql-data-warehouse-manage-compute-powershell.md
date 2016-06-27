@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/06/2016"
+   ms.date="06/13/2016"
    ms.author="barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse のコンピューティング能力の管理 (PowerShell)
@@ -41,7 +41,7 @@
 
 ### Azure PowerShell の最新バージョンのインストール
 
-> [AZURE.NOTE]  SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell バージョン 1.0.3 以降が必要です。現在のバージョンを確認するには、**Get-Module -ListAvailable -Name Azure** コマンドを実行します。最新バージョンは、"Microsoft Web プラットフォーム インストーラー" からインストールすることができます。詳細については、「Azure PowerShell のインストールと構成の方法」を参照してください。
+> [AZURE.NOTE]  SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell バージョン 1.0.3 以降が必要です。現在のバージョンを確認するには、**Get-Module -ListAvailable -Name Azure** コマンドを実行します。最新バージョンは、[Microsoft Web Platform Installer][] からインストールできます。詳細については、「[Azure PowerShell のインストールと構成の方法][]」を参照してください。
 
 ### Azure PowerShell コマンドレットの使用開始
 
@@ -124,16 +124,15 @@ $resultDatabase
 <!--Article references-->
 [Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 [管理の概要]: ./sql-data-warehouse-overview-manage.md
-
+[Azure PowerShell のインストールと構成の方法]: ./powershell-install-configure.md
 
 <!--MSDN references-->
 [Resume-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619347.aspx
 [Suspend-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619337.aspx
 [Set-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619433.aspx
 
-
 <!--Other Web references-->
-
+[Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

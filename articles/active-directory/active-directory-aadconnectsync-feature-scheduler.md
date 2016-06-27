@@ -38,6 +38,8 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
 ![GetSyncScheduler](./media/active-directory-aadconnectsync-feature-scheduler/getsynccyclesettings.png)
 
+このコマンドレットを実行するときに「**sync コマンドまたはコマンドレットを使用できません**」と表示される場合、PowerShell モジュールが読み込まれません。これは、PowerShell 制限レベルが既定の設定よりも高いドメイン コント ローラーまたはサーバーで Azure AD Connect を実行する場合に発生する可能性があります。このエラーが発生する場合、`Import-Module ADSync` を実行してコマンドレットを使用できるようにします。
+
 - **AllowedSyncCycleInterval**。Azure AD で同期の実行が許可される最大の頻度です。これよりも頻繁に同期してサポートを受けることはできません。
 - **CurrentlyEffectiveSyncCycleInterval**。現時点で有効になっているスケジュールです。AllowedSyncInterval よりも高い頻度でない場合は、CustomizedSyncInterval と同じ値になります (設定されている場合)。CustomizedSyncCycleInterval を変更すると、次回の同期サイクルの後に有効になります。
 - **CustomizedSyncCycleInterval**。既定の 30 分以外の頻度でスケジューラを実行する場合は、この設定を構成します。上の図では、スケジューラは 1 時間ごとに実行されるように設定されています。これを AllowedSyncInterval より低い値に設定すると、その値が使用されます。
@@ -142,4 +144,4 @@ Get-ADSyncConnectorRunStatus
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

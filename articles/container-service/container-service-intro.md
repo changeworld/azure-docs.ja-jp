@@ -101,4 +101,8 @@ Azure Container Service の概要:
 
 > [AZURE.VIDEO connect-2015-getting-started-developing-with-docker-and-azure-container-service]
 
-<!---HONumber=AcomDC_0525_2016-->
+Building Applications Using the Azure Container Service (Azure コンテナー サービスを使用したアプリケーションの構築)
+
+> [https://channel9.msdn.com/Events/Build/2016/B822]
+
+<!---HONumber=AcomDC_0615_2016-->

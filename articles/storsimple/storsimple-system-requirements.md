@@ -86,7 +86,7 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 |------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus| クラウド対応のネットワーク インターフェイス |
 |`https://*.backup.windowsazure.com`|デバイス登録| DATA 0 のみ|
-|`http://crl.microsoft.com/pki/*` |証明書の失効 |クラウド対応のネットワーク インターフェイス |
+|`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|証明書の失効 |クラウド対応のネットワーク インターフェイス |
 | `https://*.core.windows.net/*` | Azure ストレージ アカウントと監視 | クラウド対応のネットワーク インターフェイス |
 | `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update サーバー<br> | コントローラーの固定 IP のみ |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |コントローラーの固定 IP のみ |
@@ -96,7 +96,7 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 
 ルーティング メトリックは、指定したネットワークにデータをルーティングするインターフェイスとゲートウェイに関連付けられています。ルーティング プロトコルによって、指定された宛先への最適なパスを計算するために使用されます (同じ宛先への複数のパスが存在することがわかった場合)。ルーティング メトリックが低いと、優先順位が高くなります。
 
-StorSimple のコンテキストで、複数のネットワーク インターフェイスとゲートウェイがトラフィックを伝送するように構成されている場合、ルーティング メトリックはインターフェイスの相対的な使用順序を決定する役割を果たします。ルーティング メトリックをユーザーが変更することはできません。ただし、`Get-HcsRoutingTable` コマンドレットを使用して、StorSimple デバイスのルーティング テーブル (およびメトリック) を出力することはできます。Get-HcsRoutingTable コマンドレットの詳細については、「[StorSimple デバイスのデプロイメントのトラブルシューティング](storsimple-troubleshoot-deployment.md)」を参照してください。
+StorSimple のコンテキストで、複数のネットワーク インターフェイスとゲートウェイがトラフィックを伝送するように構成されている場合、ルーティング メトリックはインターフェイスの相対的な使用順序を決定する役割を果たします。ルーティング メトリックをユーザーが変更することはできません。ただし、`Get-HcsRoutingTable` コマンドレットを使用して、StorSimple デバイスのルーティング テーブル (およびメトリック) を出力することはできます。Get-HcsRoutingTable コマンドレットの詳細については、[StorSimple デプロイメントのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページをご覧ください。
 
 ルーティング メトリックのアルゴリズムは、StorSimple デバイスで実行されているソフトウェアのバージョンによって異なります。
 
@@ -159,7 +159,8 @@ Update 2 にはいくつかのネットワーク関連の機能強化があり�
 
 - 再試行に関しては、クラウドよりも iSCSI が優先されます。
 
-	次の例で考えてみましょう。StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっているとします。Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
+	次の例で考えてみましょう。
+	StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっているとします。Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
 
 	Data 1 が失敗した場合、これが最後の iSCSI ネットワーク インターフェイスであるため、他のコントローラー上の Data 1 に対するコントローラー フェールオーバーが発生します。
 
@@ -259,7 +260,7 @@ StorSimple デバイス モデル 8600 には、主エンクロージャに加�
 
 - EBOD エンクロージャ コントローラー モジュールで故障が発生した場合は、該当するモジュールを交換する前に、もう 1 つのコントローラー モジュールがアクティブ状態であることを確認します。コントローラーがアクティブであることを確認するには、「[デバイスのアクティブなコントローラーを識別する](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」を参照してください。
 
-- EBOD コントローラー モジュールの交換中に、**[メンテナンス]**、**[ハードウェア状態]** の順にアクセスして、StorSimple Manager サービスのコンポーネントの状態を継続して監視します。
+- EBOD コントローラー モジュールの交換中に、**[メンテナンス]**、**[ハードウェアの状態]** の順にアクセスして、StorSimple Manager サービスのコンポーネントの状態を継続して監視します。
 
 - SAS ケーブルの障害または交換が必要な場合 (Microsoft サポートはこのような判断にかかわる必要があります)、交換が必要な SAS ケーブルのみを取り外すようにします。
 
@@ -281,4 +282,4 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

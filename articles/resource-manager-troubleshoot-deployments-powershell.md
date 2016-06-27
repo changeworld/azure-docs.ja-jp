@@ -29,6 +29,8 @@ Azure にリソースをデプロイするときにエラーが発生した場�
 
 [AZURE.INCLUDE [resource-manager-troubleshoot-introduction](../includes/resource-manager-troubleshoot-introduction.md)]
 
+デプロイの前にテンプレートおよびインフラストラクチャを検証して、いくつかのエラーを回避できます。後からトラブルシューティングに役立つと思われるデプロイメント中の追加の要求および応答の情報を記録することもできます。検証、 ログ記録の要求および応答の情報については、「[Azure リソース マネージャーのテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)」を参照してください。
+
 ## 監査ログを使用してトラブルシューティングを行う
 
 [AZURE.INCLUDE [resource-manager-audit-limitations](../includes/resource-manager-audit-limitations.md)]
@@ -99,7 +101,7 @@ Azure にリソースをデプロイするときにエラーが発生した場�
 
 2. 通常、各デプロイメントは、それぞれの操作がデプロイメント処理の 1 手順を示す、複数の操作で構成されています。デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。操作の状態は、**Get-AzureRmResourceGroupDeploymentOperation** で確認できます。
 
-        Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment | Format-List
+        Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
         
     これにより、次の形式で操作が返されます。
         
@@ -140,8 +142,8 @@ Azure にリソースをデプロイするときにエラーが発生した場�
 
 ## 次のステップ
 
-- 特定のデプロイ エラーの解決については、「[Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーを解決する](resource-manager-common-deployment-errors.md)」を参照してください。
+- 特定のデプロイ エラーの解決については、[Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
 - 他の種類のアクションを監視するために監査ログを使用する方法については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
 - デプロイを実行する前に検証するには、「[Azure Resource Manager のテンプレートを使用したリソースのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

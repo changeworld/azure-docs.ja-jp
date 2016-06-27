@@ -31,7 +31,7 @@ VM を移動するには、次の例をテンプレートとして使用して�
 	| Set-AzureSubnet –SubnetNames Subnet-2 `
 	| Update-AzureVM
 
-VM に対して静的 DIP が指定されている場合は、VM を新しいサブネットに移動する前に、その設定を解除する必要があります。この場合、以下のように指定します。
+VM に対して静的内部プライベート IP が指定されている場合は、VM を新しいサブネットに移動する前に、その設定を解除する必要があります。この場合、以下のように指定します。
 
 	Get-AzureVM -ServiceName TestVMCloud -Name TestVM `
 	| Remove-AzureStaticVNetIP `
@@ -53,4 +53,4 @@ VM に対して静的 DIP が指定されている場合は、VM を新しいサ
 	    </AddressAssignments>
 	</NetworkConfiguration> 
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0615_2016-->

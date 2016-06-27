@@ -3,7 +3,7 @@
 	description="コンテンツ同期を使用してクラウド フォルダーから Azure App Service にアプリをデプロイする方法を説明します。"
 	services="app-service"
 	documentationCenter=""
-	authors="dariac"
+	authors="dariagrigoriu"
 	manager="wpickett"
 	editor="mollybos"/>
 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
-	ms.author="dariac"/>
+	ms.date="06/13/2016"
+	ms.author="dariagrigoriu"/>
     
 # クラウド フォルダーから Azure App Service へのコンテンツの同期
 
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) のデプロイ オプションの 1 つとして、Dropbox や OneDrive などの一般的なクラウド ストレージ サービスからコンテンツを同期できます。
+このチュートリアルでは、Dropbox や OneDrive などの一般的なクラウド ストレージ サービスからコンテンツを同期することによって [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) をデプロイする方法について説明します。
 
 ## <a name="overview"></a>コンテンツ同期デプロイの概要
 
@@ -39,6 +39,6 @@
 
     ![デプロイ履歴](./media/app-service-deploy-content-sync/onedrive_sync.png)
  
-Dropbox デプロイの詳細については、「[New! Deploy to Microsoft Azure Web Sites from Dropbox](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx)」 (新規: Dropbox から Microsoft Azure Web Sites へのデプロイ) を参照してください。
+Dropbox デプロイの詳細については、[Dropbox からのデプロイ](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx)に関する記事を参照してください。
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

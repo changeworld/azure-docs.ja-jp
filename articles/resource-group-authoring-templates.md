@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="06/13/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの作成
@@ -52,10 +52,11 @@ Visual Studio には、テンプレートの作成を支援するためのツー
        "outputs": {  }
     }
 
-| 要素名| 必須 | 説明
+| 要素名  | 必須 | 説明
 | :------------: | :------: | :----------
 | $schema | はい | テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。上記の URL を使用する必要があります。
-| contentVersion | はい | テンプレートのバージョン (1.0.0.0 など)。この要素には任意の値を指定できます。テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。
+| contentVersion | はい | テンプレートのバージョン (1.0.0.0 など)。この要素には任意の値を指定できます。テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。  
+
 | parameters | いいえ | リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。
 | variables | いいえ | テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値。
 | resources | はい | リソース グループ内でデプロイまたは更新されるリソースの種類。
@@ -91,8 +92,6 @@ Visual Studio には、テンプレートの作成を支援するためのツー
 
 テンプレート全体でこれらのパラメーター値を使用して、デプロイ済みのリソースに値を設定できます。テンプレートの他のセクションで使用できるのは、パラメーター セクションで宣言されるパラメーターだけです。
 
-パラメーター セクション内では、パラメーター値を使用して別のパラメーター値は構築できません。新しい値は variables セクションで構築します。
-
 次の構造でパラメーターを定義します。
 
     "parameters": {
@@ -110,9 +109,10 @@ Visual Studio には、テンプレートの作成を支援するためのツー
        }
     }
 
-| 要素名  | 必須 | 説明
+| 要素名 | 必須 | 説明
 | :------------: | :------: | :----------
-| parameterName | はい | パラメーターの名前。有効な JavaScript 識別子で指定する必要があります。
+| parameterName | はい | パラメーターの名前。有効な JavaScript 識別子で指定する必要があります。  
+
 | type | はい | パラメーター値の型。使用できる型については、下にある一覧を参照してください。
 | defaultValue | いいえ | パラメーターに値が指定されない場合のパラメーターの既定値。
 | allowedValues | いいえ | 適切な値が確実に指定されるように、パラメーターに使用できる値の配列。
@@ -130,7 +130,7 @@ Visual Studio には、テンプレートの作成を支援するためのツー
 - object または secureObject - 有効な JSON オブジェクト
 - array - 有効な JSON 配列
 
-パラメーターを省略可能に指定するには、defaultValue を空の文字列に設定します。
+パラメーターを省略可能に指定するには、defaultValue を設定します (空の文字列を指定できます)。
 
 指定したパラメーター名が、テンプレートをデプロイするコマンドのパラメーターのいずれかと一致する場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞が **FromTemplate** であるパラメーター (**ResourceGroupNameFromTemplate** など) に値を指定するよう求められます。一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
 
@@ -139,40 +139,40 @@ Visual Studio には、テンプレートの作成を支援するためのツー
 次の例では、パラメーターを定義する方法を示します。
 
     "parameters": {
-       "siteName": {
-          "type": "string",
-          "minLength": 2,
-          "maxLength": 60
-       },
-       "siteLocation": {
-          "type": "string",
-          "minLength": 2
-       },
-       "hostingPlanName": {
-          "type": "string"
-       },  
-       "hostingPlanSku": {
-          "type": "string",
-          "allowedValues": [
-            "Free",
-            "Shared",
-            "Basic",
-            "Standard",
-            "Premium"
-          ],
-          "defaultValue": "Free"
-       },
-       "instancesCount": {
-          "type": "int",
-          "maxValue": 10
-       },
-       "numberOfWorkers": {
-          "type": "int",
-          "minValue": 1
-       }
+      "siteName": {
+        "type": "string",
+        "defaultValue": "[concat('site', uniqueString(resourceGroup().id))]"
+      },
+      "hostingPlanName": {
+        "type": "string",
+        "defaultValue": "[concat(parameters('siteName'),'-plan')]"
+      },
+      "skuName": {
+        "type": "string",
+        "defaultValue": "F1",
+        "allowedValues": [
+          "F1",
+          "D1",
+          "B1",
+          "B2",
+          "B3",
+          "S1",
+          "S2",
+          "S3",
+          "P1",
+          "P2",
+          "P3",
+          "P4"
+        ]
+      },
+      "skuCapacity": {
+        "type": "int",
+        "defaultValue": 1,
+        "minValue": 1
+      }
     }
 
-デプロイ時にパラメーター値を入力する方法については、「[Azure Resource Manager のテンプレートを使用したリソースのデプロイ](resource-group-template-deploy.md#parameter-file)」をご覧ください。
+デプロイ時にパラメーター値を入力する方法については、[Azure Resource Manager テンプレートを使用したリソースのデプロイ](resource-group-template-deploy.md#parameter-file)に関するページをご覧ください。
 
 ## 変数
 
@@ -246,18 +246,18 @@ resources セクションでは、デプロイまたは更新されるリソー�
        }
     ]
 
-| 要素名  | 必須 | 説明
-| :----------------------: | :------:| :----------
+| 要素名| 必須 | 説明
+| :----------------------: | :------: | :----------
 | apiVersion | はい | リソースの作成に使用する REST API バージョン。特定のリソース タイプの使用できるバージョン番号を特定するには、「[サポートされている API バージョン](resource-manager-supported-services.md#supported-api-versions)」を参照してください。
 | type | はい | リソースの種類。この値は、リソース プロバイダーの名前空間と、リソース プロバイダーがサポートするリソースの種類の組み合わせです。
 | name | はい | リソースの名前。この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。
 また、リソース名を外部に公開する Azure サービスは、名前が別の ID になりすますことがないように、その名前を検証します。「[Check resource name (リソース名を確認する)](https://msdn.microsoft.com/library/azure/mt219035.aspx)」をご覧ください。
- 
 | location | 多様 | 指定されたリソースのサポートされている地理的な場所。対象となる場所については、「[サポートされているリージョン](resource-manager-supported-services.md#supported-regions)」をご覧ください。ほとんどのリソースの種類では場所が必要となりますが、場所を必要としない種類 (ロールの割り当てなど) もあります。
-| tags | いいえ | リソースに関連付けられたタグ。
+| tags | いいえ | リソースに関連付けられたタグ。  
+
 | コメント | いいえ | テンプレート内にドキュメント化するリソースについてのメモ。
 | dependsOn | いいえ | 定義されているリソースが依存するリソース。リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。相互依存していないリソースは、平行してデプロイされます。値には、リソース名またはリソースの一意識別子のコンマ区切りリストを指定できます。
-| properties | いいえ | リソース固有の構成設定。 properties の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値とまったく同じです。リソース スキーマのドキュメントまたは REST API へのリンクについては、「[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)」をご覧ください。
+| properties | いいえ | リソース固有の構成設定。properties の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値とまったく同じです。リソース スキーマのドキュメントまたは REST API へのリンクについては、「[リソース マネージャーのプロバイダー、リージョン、API のバージョン、およびスキーマ](resource-manager-supported-services.md)」を参照してください。
 | resources | いいえ | 定義されているリソースに依存する子リソース。親リソースのスキーマで許可されているリソースの種類のみを指定することができます。子リソースの種類の完全修飾名には親リソースの種類 (**Microsoft.Web/sites/extensions** など) が含まれます。親リソースへの依存関係は暗黙的に示されないため、明示的に定義する必要があります。 
 
 
@@ -292,7 +292,7 @@ resources セクションには、デプロイの対象となる一連のリソ�
 
 
 
-次の例は、**Microsoft.Web/serverfarms** リソースと、子の **Extensions** リソースを含む **Microsoft.Web/sites** リソースを示しています。サイトがサーバー ファームに依存するリソースとして指定されている点に注意してください。これは、サーバー ファームが存在して初めてサイトをデプロイできるためです。また、**Extensions** リソースがサイトの子になっている点にも注意してください。
+次の例では、**Microsoft.Web/serverfarms** リソースと、入れ子になった **Extensions** リソースを含む **Microsoft.Web/sites** リソースを示しています。サイトがサーバー ファームに依存するリソースとして指定されている点に注意してください。これは、サーバー ファームが存在して初めてサイトをデプロイできるためです。また、**Extensions** リソースがサイトの子になっている点にも注意してください。
 
     "resources": [
       {
@@ -370,7 +370,7 @@ resources セクションには、デプロイの対象となる一連のリソ�
 | :------------: | :------: | :----------
 | outputName | はい | 出力値の名前。有効な JavaScript 識別子で指定する必要があります。
 | type | はい | 出力値の型。出力値では、テンプレート入力パラメーターと同じ型がサポートされています。
-| 値 | はい | 評価され、出力値として返されるテンプレート言語式。
+| 値 | はい | 評価され、出力値として返されるテンプレート言語式。  
 
 
 
@@ -386,13 +386,11 @@ resources セクションには、デプロイの対象となる一連のリソ�
 
 ## 次のステップ
 - さまざまな種類のソリューションのテンプレートについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
-- テンプレート内から使用できる関数の詳細については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」をご覧ください。
+- テンプレート内から使用できる関数の詳細については、「[Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」を参照してください。
 - デプロイ中に複数のテンプレートを結合するには、「[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」をご覧ください。
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 - 別のリソース グループ内に存在するリソースの使用が必要になる場合があります。  
 これは、複数のリソース グループ間で共有されているストレージ アカウントまたは仮想ネットワークを使用している場合は一般的です。  
-詳細については、「[resourceId 関数](resource-group-template-functions.md#resourceid)」をご覧ください。
+詳細については、[resourceId 関数](resource-group-template-functions.md#resourceid)に関するセクションをご覧ください。
 
-
-
-<!----HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

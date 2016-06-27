@@ -14,14 +14,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="05/31/2016"
+   ms.date="06/09/2016"
    ms.author="rickbyh;barbkess;sonyama"/>
 
 # Azure Active Directory 認証を使用して SQL Data Warehouse に接続する
 
 > [AZURE.SELECTOR]
 - [Visual Studio](sql-data-warehouse-get-started-connect.md)
-- [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
 - [AAD](sql-data-warehouse-get-started-connect-aad-authentication.md)
 
 
@@ -52,10 +51,10 @@ Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を�
 5. Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成する
 6. Azure AD の ID を使用してデータ ウェアハウスに接続する
 
-Azure Active Directory 認証の使用して Azure SQL Data Warehouse に接続する場合、Azure SQL Database と主に違うのは、SQL Server Management Studio ではなく SQL Server Data Tools を使用しする点です。SQL Data Warehouse には、April 2016 (バージョン 14.0.60311.1) 以降の SQL Server Data Tools for Visual Studio 2015 が必要です。現在、Azure Active Directory ユーザーは SSDT のオブジェクト エクスプローラーに表示されません。代替策として、[sys.database\_principals](https://msdn.microsoft.com/library/ms187328.aspx) でユーザーを表示してください。
+Azure Active Directory 認証の使用して Azure SQL Data Warehouse に接続する場合、Azure SQL Database と主に違うのは、SQL Server Management Studio ではなく SQL Server Data Tools を使用しする点です。SQL Data Warehouse には、April 2016 (バージョン 14.0.60311.1) 以降の SQL Server Data Tools for Visual Studio 2015 が必要です。現在、Azure Active Directory ユーザーは SSDT のオブジェクト エクスプローラーに表示されません。代わりに、[sys.database\_principals](https://msdn.microsoft.com/library/ms187328.aspx) でユーザーを表示してください。
   
 ## 次のステップ 
 - 詳細な手順を実行します。Azure Active Directory 認証を構成および使用する詳細な手順は、Azure SQL Database と Azure SQL Data Warehouse ではほぼ同じです。詳細な手順については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](../sql-database/sql-database-aad-authentication.md)」を参照してください。
 - カスタム データベース ロールを作成し、ロールにユーザーを追加します。その後、ロールに詳細なアクセス許可を付与します。詳細については、「[データベース エンジンの権限の概要](https://msdn.microsoft.com/library/mt667986.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

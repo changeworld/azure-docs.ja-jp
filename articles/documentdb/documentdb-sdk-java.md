@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="05/02/2016" 
+	ms.date="06/14/2016" 
 	ms.author="andrl"/>
 
 # DocumentDB SDK
@@ -35,6 +35,11 @@
 </table></br>
 
 ## リリース ノート
+
+### <a name="1.8.0"/>[1\.8.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.8.0)
+  - 複数リージョンのデータベース アカウントのサポートを追加しました。
+  - 最大再試行回数と最大再試行待機時間をカスタマイズするオプションと共に、調整された要求での自動再試行のサポートを追加しました。RetryOptions と ConnectionPolicy.getRetryOptions() をご覧ください。 
+  - IPartitionResolver に基づくカスタム パーティション分割コードを廃止しました。大量のストレージとスループットを必要とする場合、パーティション分割コレクションをお使いください。 
 
 ### <a name="1.7.1"/>[1\.7.1](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.7.1)
 - スロットルのための再試行ポリシー サポートを追加しました。  
@@ -83,6 +88,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
+| [1\.8.0](#1.8.0) | 2016 年 6 月 14 日|--- 
 | [1\.7.1](#1.7.1) | 2016 年 4 月 30 日 |--- 
 | [1\.7.0](#1.7.0) | 2016 年 4 月 27 日 |--- 
 | [1\.6.0](#1.6.0) | 2016 年 3 月 29 日 |--- 
@@ -108,4 +114,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

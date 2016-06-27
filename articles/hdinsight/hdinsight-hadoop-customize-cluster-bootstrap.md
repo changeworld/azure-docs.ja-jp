@@ -14,19 +14,28 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="06/09/2016"
 	ms.author="jgao"/>
 
 # ブートストラップを使って HDInsight クラスターをカスタマイズする
 
 次を含む構成ファイルを構成することが必要な場合があります。
 
+- clusterIdentity.xml
 - core-site.xml
+- gateway.xml
+- hbase-env.xml
+- hbase-site.xml
 - hdfs-site.xml
-- mapred-site.xml
-- yarn-site.xml
+- hive-env.xml
 - hive-site.xml
+- mapred-site
 - oozie-site.xml
+- oozie-env.xml
+- storm-site.xml
+- tez-site.xml
+- webhcat-site.xml
+- yarn-site.xml
 
 再イメージ化により、クラスターは変更を保持できません。再イメージ化については、「[Role Instance Restarts Due to OS Upgrades (OS のアップグレードに伴うロール インスタンスの再起動)](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)」を参照してください。クラスターの有効期間中に変更を保持するには、作成プロセスで HDInsight クラスターのカスタマイズを使用します。これはクラスターの構成を変更するための推奨方法であり、変更は Azure 再イメージ化再起動イベントを越えて存続します。これらの構成の変更はサービスが起動される前に適用されるため、サービスを再起動する必要はありません。
 
@@ -69,12 +78,12 @@
 		-HttpCredential $httpCredential `
 		-Config $config 
 
-完全な作業 PowerShell スクリプトについては、「[付録 A](#hdinsight-hadoop-customize-cluster-bootstrap.md/appx-a:-powershell-sample) 」を参照してください。
+完全な作業 PowerShell スクリプトについては、「[付録 A](#hdinsight-hadoop-customize-cluster-bootstrap.md/appx-a:-powershell-sample)」を参照してください。
 
 **接続を確認するには:**
 
 1. [Azure ポータル](https://portal.azure.com)にサインオンします。
-2. 左側のウィンドウで、**[参照]** をクリックし、 **[HDInsight クラスター]** をクリックします。
+2. 左側のウィンドウで、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックします。
 3. PowerShell スクリプトを使用して作成したクラスターをクリックします。
 4. ブレードの上部から **[ダッシュボード]** をクリックし、Ambari UI を開きます。
 5. 左側のメニューで **[Hive]** をクリックします。
@@ -103,7 +112,7 @@
 
 ## .NET SDK の使用
 
-「[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk#use-bootstrap)」を参照してください。
+「[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap)」をご覧ください。
 
 ## Azure ARM テンプレートの使用
 
@@ -252,4 +261,4 @@ ARM テンプレートでは、ブートストラップを使用できます。
 
     #endregion
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

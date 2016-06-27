@@ -112,9 +112,9 @@ Azure クラシック ポータルで、次の手順に従って、HTTP 経由�
 
 7. 次のコマンドを入力して、デバイスの Windows PowerShell セッションを開始します。
 
-     `Enter-pssession -Credential $cred -ConfigurationName SSAdminConsole -ComputerName <device_ip>`
+     `Enter-PSSession -Credential $cred -ConfigurationName SSAdminConsole -ComputerName <device_ip>`
 
-     >[AZURE.NOTE] StorSimple 仮想デバイスで使用する Windows PowerShell セッションを作成するには、`–port` パラメーターを追加し、StorSimple 仮想アプライアンスのリモート処理で構成したパブリック ポートを指定します。
+     >[AZURE.NOTE] StorSimple 仮想デバイスで使用する Windows PowerShell セッションを作成するには、`–Port` パラメーターを追加し、StorSimple 仮想アプライアンスのリモート処理で構成したパブリック ポートを指定します。
 
      この時点で、デバイスに対するアクティブなリモート Windows PowerShell セッションが確立されます。
 
@@ -250,15 +250,15 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 
 3. 次のように入力して、新しい資格情報を作成します。
 
-     `$cred = new-object pscredential @("<IP of target device>\SSAdmin", (convertto-securestring -force -asplaintext "<Device Administrator Password>"))`
+     `$cred = New-Object pscredential @("<IP of target device>\SSAdmin", (ConvertTo-SecureString -Force -AsPlainText "<Device Administrator Password>"))`
 
     <*IP of target device*> はデバイスの DATA 0 の IP アドレスです。たとえば、前に示した hosts ファイルの画面の **10.126.173.90** です。デバイスの管理者パスワードも指定します。
 
 4. 次のように入力して、セッションを作成します。
 
-     `$session = new-pssession -usessl -CN <Serial number of target device> -credential $cred -configurationname "SSAdminConsole"`
+     `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
 
-    コマンドレットの CN 名には、<*serial number of target device*> を指定します。このシリアル番号は、リモート ホストの hosts ファイルで、DATA 0 の IP アドレスにマップしたものです。たとえば、次の図に示す **SHX0991003G44MT** です。
+    コマンドレットの -ComputerName パラメーターには、<*ターゲット デバイスのシリアル番号*> を指定します。このシリアル番号は、リモート ホストの hosts ファイルで、DATA 0 の IP アドレスにマップしたものです。たとえば、次の図に示す **SHX0991003G44MT** です。
 
 5. 次のコマンドを入力します。
 
@@ -274,4 +274,4 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)の詳細を確認する。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0615_2016-->

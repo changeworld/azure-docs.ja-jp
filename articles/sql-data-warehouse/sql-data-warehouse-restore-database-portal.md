@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Data Warehouse でのデータベースの復元 (ポータル) | Microsoft Azure"
-   description="Azure SQL Data Warehouse でライブ データベースまたは削除済みデータベースを復元するための Azure ポータルのタスク。"
+   pageTitle="Azure SQL Data Warehouse の復元 (ポータル) | Microsoft Azure"
+   description="Azure SQL Data Warehouse を復元するための Azure ポータル タスク。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="elfisher"
@@ -13,30 +13,25 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/04/2016"
+   ms.date="06/11/2016"
    ms.author="elfish;barbkess;sonyama"/>
 
-# Azure SQL Data Warehouse でのデータベースの復元 (ポータル)
+# Azure SQL Data Warehouse の復元 (ポータル)
 
 > [AZURE.SELECTOR]
-- [概要](sql-data-warehouse-restore-database-overview.md)
-- [ポータル](sql-data-warehouse-restore-database-portal.md)
-- [PowerShell](sql-data-warehouse-restore-database-powershell.md)
-- [REST ()](sql-data-warehouse-manage-restore-database-rest-api.md)
+- [概要][]
+- [ポータル][]
+- [PowerShell][]
+- [REST ()][]
 
-Azure SQL Data Warehouse でライブ データベースまたは削除済みデータベースを復元するための PowerShell のタスク。
-
-このトピックのタスク:
-
-- ライブ データベースの復元
-- 削除されたデータベースの復元
+この記事では、Azure ポータルを使用して Azure SQL Data Warehouse を復元する方法について説明します。
 
 ## 開始する前に
 
-SQL Database の DTU 容量を確認するSQL Data Warehouse では、論理 SQL サーバーの新しいデータベースに復元されるため、復元先 SQL サーバーに、新しいデータベース用の DTU 容量が十分にあることを確認することが重要です。詳細については、[DTU クォータを表示および増量する方法][]に関するブログ投稿記事をご覧ください。
+**DTU 容量を確認します。** 各 SQL Data Warehouse は SQL サーバーの論理サーバーでホストされます。この論理サーバーには容量制限があり、DTU 単位で測定されます。SQL Data Warehouse を復元する前に、データベースをホストしている SQL サーバーの論理サーバーに、データベースを復元するために十分な DTU 容量があるか確認する必要があります。詳細については、[DTU クォータを表示および増量する方法][]に関するブログ投稿記事をご覧ください。
 
 
-## ライブ データベースの復元
+## アクティブまたは一時停止中のデータベースを復元する
 
 データベースを復元するには:
 
@@ -47,7 +42,6 @@ SQL Database の DTU 容量を確認するSQL Data Warehouse では、論理 SQL
 5. 新しい**データベース名**を指定し、**[復元ポイント]** を選択して、**[作成]** をクリックします。
 6. データベースの復元処理が開始され、**[通知]** を使用して処理を監視することができます。
 
-
 ## 削除されたデータベースの復元
 
 削除されたデータベースを復元するには:
@@ -55,21 +49,23 @@ SQL Database の DTU 容量を確認するSQL Data Warehouse では、論理 SQL
 1. [Azure ポータル][]にログインします。
 2. 画面の左側にある **[参照]** をクリックし、**[SQL Server]** を選択します。
 3. 目的のサーバーに移動して選択します。
-4. サーバーのブレードで下にスクロールして [操作] を表示し、**[削除済みデータベース]** タイルをクリックします。
+4. サーバーのブレードで下へスクロールして [操作] を表示し、**[削除済みデータベース]** タイルをクリックします。
 5. 復元する削除済みデータベースを選択します。
 5. 新しい**データベース名**を指定し、**[作成]** をクリックします。
 6. データベースの復元処理が開始され、**[通知]** を使用して処理を監視することができます。
 
 
 ## 次のステップ
-詳細については、[Azure SQL Database のビジネス継続性の概要][]および[管理の概要][]に関するページをご覧ください。
+Azure SQL Database の各エディションのビジネス継続性機能については、[Azure SQL Database のビジネス継続性の概要][]に関するページをご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[Azure SQL Database のビジネス継続性の概要]: sql-database-business-continuity.md
-[How to install and configure Azure PowerShell]: powershell-install-configure.md
-[管理の概要]: sql-data-warehouse-overview-manage.md
+[Azure SQL Database のビジネス継続性の概要]: ./sql-database-business-continuity.md
+[概要]: ./sql-data-warehouse-restore-database-overview.md
+[ポータル]: ./sql-data-warehouse-restore-database-portal.md
+[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
+[REST ()]: ./sql-data-warehouse-restore-database-rest-api.md
 
 <!--MSDN references-->
 
@@ -79,4 +75,4 @@ SQL Database の DTU 容量を確認するSQL Data Warehouse では、論理 SQL
 <!--Other Web references-->
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

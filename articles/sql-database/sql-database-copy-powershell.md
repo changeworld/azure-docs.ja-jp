@@ -29,7 +29,7 @@
 
 次の手順では、PowerShell で SQL データベースをコピーする方法を説明します。このデータベース コピー操作では、[Start-AzureSqlDatabaseCopy](https://msdn.microsoft.com/library/dn720220.aspx) コマンドレットを利用し、SQL データベースを新しいデータベースにコピーします。コピーは、同じサーバーか別のサーバーで作成するデータベースのスナップショット バックアップです。
 
-> [AZURE.NOTE] Azure SQL Database では、復元できるすべてのユーザー データベースのバックアップが自動的に作成され、保守されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
+> [AZURE.NOTE] Azure SQL Database では、復元できるすべてのユーザー データベースの[バックアップが自動的に作成され、保守](sql-database-automated-backups.md)されます。
 
 コピー プロセスが完了すると、新しいデータベースは、コピー元のデータベースに依存せずに完全に機能するデータベースになります。コピーの完了時点で、新しいデータベースのトランザクションはコピー元のデータベースと同じになります。データベース コピーのサービス レベルとパフォーマンス レベル (価格レベル) はコピー元のデータベースと同じになります。コピーの完了後、コピーは完全に機能する独立したデータベースになります。ログイン、ユーザー、アクセス許可は非依存で管理できます。
 
@@ -125,4 +125,4 @@
 - [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

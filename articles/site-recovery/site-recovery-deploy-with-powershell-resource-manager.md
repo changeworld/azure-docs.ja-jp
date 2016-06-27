@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="backup-recovery"
-	ms.date="03/16/2016"
+	ms.date="06/13/2016"
 	ms.author="bsiva"/>
 
 # PowerShell と Azure Resource Manager を使用して、オンプレミスの Hyper-V 仮想マシンと Azure 間でレプリケートする
@@ -47,7 +47,7 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Az
 
 次の前提条件を満たしていることを確認してください。
 
-- [Microsoft Azure](https://azure.microsoft.com/) アカウント。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。また、「[Azure Site Recovery Manager の料金](https://azure.microsoft.com/pricing/details/site-recovery/)」も参照してください。
+- [Microsoft Azure](https://azure.microsoft.com/) アカウント。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。また、「[Azure Site Recovery Manager の料金](https://azure.microsoft.com/pricing/details/site-recovery/)」も参照してください。
 - Azure PowerShell 1.0このリリースとそのインストール方法については、[Azure PowerShell 1.0](https://azure.microsoft.com/) に関するページを参照してください。
 - [AzureRM.SiteRecovery](https://www.powershellgallery.com/packages/AzureRM.SiteRecovery/) モジュールと [AzureRM.RecoveryServices](https://www.powershellgallery.com/packages/AzureRM.RecoveryServices/) モジュール。最新版のモジュールを [PowerShell ギャラリー](https://www.powershellgallery.com/)から入手できます。
 
@@ -261,4 +261,9 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Az
 
     	$TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
 
-<!---HONumber=AcomDC_0518_2016-->
+
+##次のステップ
+
+Azure Site Recovery と Azure Resource Manager PowerShell コマンドレットの[詳細を確認します](https://msdn.microsoft.com/library/azure/mt637930.aspx)。
+
+<!---HONumber=AcomDC_0615_2016-->

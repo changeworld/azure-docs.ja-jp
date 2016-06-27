@@ -23,43 +23,49 @@
 
 ## はじめに
 
-Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM を監視するのに役立ちます。次の機能があります。
+Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM を監視するのに役立ちます。次の機能が用意されています。
 
-- Linux VM のシステム パフォーマンス、診断、syslog データを収集して、ユーザーのストレージ テーブルにアップロードします。
+- 診断や syslog 情報を含むシステムのパフォーマンス情報を Linux VM から収集して、ユーザーのストレージ テーブルにアップロードします。
 - ユーザーは収集およびアップロードされるデータ メトリックをカスタマイズできます。
 - ユーザーは指定したログ ファイルを指定したストレージ テーブルにアップロードできます。
 
 バージョン 2.0 では、以下のデータが含まれます。
 
 - システム、セキュリティ、アプリケーション ログを含む、すべての Linux Rsyslog ログ。
-- この[ドキュメント](https://scx.codeplex.com/wikipage?title=xplatproviders")で指定されているすべてのシステム データ。
+- [System Center Cross Platform Solutions のサイト](https://scx.codeplex.com/wikipage?title=xplatproviders)で指定されているすべてのシステム データ。
 - ユーザーが指定したログ ファイル。
 
-この拡張機能は、クラシック モデルとリソース マネージャーのデプロイ モデルの両方で機能します。
+この拡張機能は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方で機能します。
 
 
-## 拡張機能を有効にする方法
-拡張機能は、[Azure ポータル](https://ms.portal.azure.com/#)、Azure PowerShell、または Azure CLI スクリプトから有効にできます。
+## 拡張機能を有効にする
+この拡張機能は、[Azure ポータル](https://portal.azure.com/#)、Azure PowerShell、または Azure CLI スクリプトから有効にできます。
 
-Azure ポータルから直接、システム データおよびパフォーマンス データを表示および構成するには、こちらの[手順](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/ "Windows ブログの URL"/)に従ってください。
+Azure ポータルから直接、システム データおよびパフォーマンス データを表示および構成するには、[Azure ブログのこちらの手順](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/ "Windows ブログの URL"/) に従ってください。
 
 
-この記事では、Azure CLI コマンドを使用して拡張機能を有効化および構成する方法を説明します。直接ストレージ テーブルからデータを読み取って表示できます。ここで説明する構成方法は、Azure ポータルでは機能しないことに注意してください。Azure ポータルからシステムとパフォーマンス データを直接表示および構成するには、前の段落で説明したように、この拡張機能を Azure ポータルから有効にする必要があります。
+この記事では、Azure CLI コマンドを使用して、拡張機能を有効にして構成する方法を説明します。これにより、ストレージ テーブルからデータを直接読み込んで表示することができます。
+
+ここで説明する構成方法は、Azure ポータルでは機能しないことに注意してください。Azure ポータルからシステムとパフォーマンス データを直接表示および構成するには、この拡張機能を Azure ポータルから有効にする必要があります。
 
 
 ## 前提条件
-- Microsoft Azure Linux エージェント バージョン 2.0.6 またはそれ以降。大部分の Azure VM Linux ギャラリー イメージにはバージョン 2.0.6 以降が含まれています。**WAAgent -version** を実行して、VM にインストールされているバージョンを確認できます。VM が 2.0.6 より前のバージョンを実行している場合は、[こちらの説明](https://github.com/Azure/WALinuxAgent "説明")に従って更新できます。
-- [Azure CLI](../xplat-cli-install.md)。[このガイダンス](../xplat-cli-install.md)に従って、コンピューターに Azure CLI 環境をセットアップしてください。Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、Command プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。たとえば、詳細な使用法を確認するには **azure vm extension set --help** を、Azure にログインするには **azure login** を、Azure にあるすべての仮想マシンを一覧表示するには **azure vm list** を実行します。
-- データを格納するためのストレージ アカウント。データをストレージにアップロードするには、事前にストレージ アカウント名とアクセス キーを作成しておく必要があります。
+- **Azure Linux エージェント バージョン 2.0.6 またはそれ以降**。大部分の Azure VM Linux ギャラリー イメージにはバージョン 2.0.6 以降が含まれています。**WAAgent -version** を実行して、VM にインストールされているバージョンを確認できます。VM が 2.0.6 より前のバージョンを実行している場合は、[GitHub のこちらの説明](https://github.com/Azure/WALinuxAgent "説明")に従って更新できます。
+
+- **Azure CLI**。[このガイダンスの CLI のインストール手順](../xplat-cli-install.md)に従って、コンピューターに Azure CLI 環境をセットアップします。Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、ターミナル、またはコマンド プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。次に例を示します。
+	- ヘルプ情報の詳細については、**azure vm extension set --help** を実行します。
+	- Azure にサインインするには、**azure login** を実行します。
+	- Azure に存在するすべての仮想マシンの一覧を表示するには、**azure vm list** を実行します。
+- データを格納するためのストレージ アカウント。データをストレージにアップロードするには、事前に作成したストレージ アカウント名と、アクセス キーが必要になります。
 
 
 ## Azure CLI コマンドを使用して Linux 診断拡張機能を有効にする
 
-###  シナリオ 1. 既定のデータ セットで拡張機能を有効にする
+### シナリオ 1. 既定のデータ セットで拡張機能を有効にする
 バージョン 2.0 以降では、以下のデータが既定で収集されます。
 
 - すべての Rsyslog 情報 (システム ログ、セキュリティ ログ、アプリケーション ログ)。  
-- 基本システム データのコア セット。完全なデータ セットについては、この[ドキュメント](https://scx.codeplex.com/wikipage?title=xplatproviders)を参照してください。追加のデータを有効にする場合は、シナリオ 2 および 3 の手順を続行してください。
+- 基本システム データのコア セット。データ セット全体の説明については、[System Center Cross Platform Solutions のサイト](https://scx.codeplex.com/wikipage?title=xplatproviders)をご覧ください。追加のデータを有効にする場合は、シナリオ 2 および 3 の手順を続行してください。
 
 手順 1.次の内容を含む PrivateConfig.json という名前のファイルを作成します。
 
@@ -74,9 +80,9 @@ Azure ポータルから直接、システム データおよびパフォーマ�
 ###   シナリオ 2. パフォーマンス モニターのメトリックをカスタマイズする  
 このセクションでは、パフォーマンスと診断データのテーブルをカスタマイズする方法について説明します。
 
-手順 1.上のシナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。さらに、次の例に示されている PrivateConfig.json という名前のファイルを作成します。収集する特定のデータを指定します。
+手順 1.シナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。PublicConfig.json という名前のファイルも作成します。収集する特定のデータを指定します。
 
-サポートされているすべてのプロバイダーと変数については、この[ドキュメント](https://scx.codeplex.com/wikipage?title=xplatproviders)を参照してください。スクリプトにさらにクエリを追加することにより、複数のクエリを使用して複数のテーブルにそれを格納することができます。
+サポートされているすべてのプロバイダーと変数については、[System Center Cross Platform Solutions のサイト](https://scx.codeplex.com/wikipage?title=xplatproviders)をご覧ください。スクリプトにさらにクエリを追加することにより、複数のクエリを使用して複数のテーブルにそれを格納することができます。
 
 Rsyslog データは既定で常に収集されます。
 
@@ -95,12 +101,12 @@ Rsyslog データは既定で常に収集されます。
 
 
 ###   シナリオ 3. 独自のログ ファイルをアップロードする
-このセクションでは、ストレージ アカウントに特定のログ ファイルを収集およびアップロードする方法について説明します。ログ ファイルのパスを指定し、ログを格納するテーブル名を指定する必要があります。複数の file/table エントリをスクリプトに追加することで、複数のログ ファイルを使用できます。
+このセクションでは、ストレージ アカウントに特定のログ ファイルを収集およびアップロードする方法について説明します。ログ ファイルのパスと、ログを格納するテーブルの名前を指定する必要があります。複数の file/table エントリをスクリプトに追加することで、複数のログ ファイルを作成できます。
 
-手順 1.シナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。次の内容を含む PrivateConfig.json という名前の別のファイルを作成します。
+手順 1.シナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。その後、次の内容を含む PublicConfig.json という名前の別のファイルを作成します。
 
     {
-        "fileCfg" : 
+        "fileCfg" :
         [
             {
                 "file" : "/var/log/mysql.err",
@@ -116,7 +122,7 @@ Rsyslog データは既定で常に収集されます。
 ###   シナリオ 4. 拡張機能によるログ収集を停止する
 このセクションでは、拡張機能によるログ収集を停止する方法について説明します。この再構成を使用しても、監視エージェント プロセスはまだ稼働していることに注意してください。監視エージェント プロセスを完全に停止するには、拡張機能を無効にします。拡張機能を無効にするコマンドは、**azure vm extension set --disable <vm_name> LinuxDiagnostic Microsoft.OSTCExtensions '2.*'** です。
 
-手順 1.シナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。次の内容を含む PrivateConfig.json という名前の別のファイルを作成します。
+手順 1.シナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。次の内容を含む PublicConfig.json という名前の別のファイルを作成します。
 
     {
         "perfCfg" : [],
@@ -128,20 +134,19 @@ Rsyslog データは既定で常に収集されます。
 
 
 ## データを確認する
-パフォーマンスと診断のデータが Azure Storage テーブルに保存されます。[この記事](../storage/storage-ruby-how-to-use-table-storage.md)を確認して、Azure CLI スクリプトを使用してストレージ テーブル内のデータにアクセスする方法を学習します。
+パフォーマンスと診断のデータが Azure Storage テーブルに保存されます。「[Azure Ruby から Table Storage を使用する方法](../storage/storage-ruby-how-to-use-table-storage.md)」を確認して、Azure CLI スクリプトを使用してストレージ テーブルのデータにアクセスする方法を学びます。
 
 さらに、次の UI ツールを使用してデータにアクセスすることもできます。
 
-1.	Visual Studio のサーバー エクスプローラーを使用します。ストレージ アカウントに移動します。VM を約 5 分間稼働した後、既定のテーブル「LinuxCpu」、「LinuxDisk」、「LinuxMemory」、および「Linuxsyslog」を確認する必要があります。データを表示するには、テーブル名をダブルクリックします。
-2.	[Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")を使用してデータにアクセスします。
+1. Visual Studio のサーバー エクスプローラー。ストレージ アカウントに移動します。VM を約 5 分間実行した後に、既定のテーブル「LinuxCpu」、「LinuxDisk」、「LinuxMemory」、および「Linuxsyslog」が表示されます。データを表示するには、テーブル名をダブルクリックします。
+
+2. [Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")。
 
 ![image](./media/virtual-machines-linux-classic-diagnostic-extension/no1.png)
 
-シナリオ 2 および 3 で指定した fileCfg または perfCfg を有効にした場合、前述のツールを使用して既定以外のデータを表示することもできます。
-
-
+(シナリオ 2 および 3 の説明に従って) fileCfg または perfCfg を有効にした場合は、Visual Studio サーバー エクスプローラーと Azure ストレージ エクスプローラーを使用して、既定以外のデータを表示することができます。
 
 ## 既知の問題
-- バージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
+- Linux 診断拡張機能のバージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

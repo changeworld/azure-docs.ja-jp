@@ -1,18 +1,11 @@
-<properties 
-   pageTitle="Azure Automation の変数資産 | Microsoft Azure"
-   description="変数アセットとは、Azure Automation のすべての Runbook と DSC 構成に使用できる値です。この記事では、変数の詳細およびテキスト作成とグラフィカル作成の両方で変数を使用する方法について説明します。"
-   services="automation"
-   documentationCenter=""
-   authors="mgoedtel"
-   manager="stevenka"
-   editor="tysonn" />
-<tags 
+<properties pageTitle="Azure Automation の変数資産 | Microsoft Azure" description="変数資産とは、Azure Automation のすべての Runbook と DSC 構成に使用できる値です。この記事では、変数の詳細およびテキスト作成とグラフィカル作成の両方で変数を使用する方法について説明します。" services="automation" documentationCenter="" authors="mgoedtel" manager="jwhit"" editor="tysonn" />
+<tags  
    ms.service="automation"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/23/2016"
+   ms.date="05/24/2016"
    ms.author="magoedte;bwren" />
 
 # Azure Automation での変数アセット
@@ -69,7 +62,7 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 
 ### Azure ポータルで新しい変数を作成するには
 
-1. Automation アカウントから、**[資産]** 部分をクリックして **[資産]** ブレードを開きます。
+1. オートメーション アカウントから、**[資産]** 部分をクリックして **[資産]** ブレードを開きます。
 1. **[変数]** 部分をクリックして **[変数]** ブレードを開きます。
 1. ブレード上部の **[変数の追加]** をクリックします。
 1. フォームに入力し、**[作成]** をクリックして新しい変数を保存します。
@@ -183,9 +176,9 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 ![フィルター処理された複合変数の取得](media/automation-variables/get-complex-variable-filter.png)
 
 
-## 関連記事:
+## 次のステップ
 
-- [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
- 
+- グラフィカル作成でアクティビティを接続する方法については、[グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)に関するセクションを参照してください。
+- グラフィカルな Runbook の使用を開始するには、「[初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)」を参照してください。 
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0615_2016-->

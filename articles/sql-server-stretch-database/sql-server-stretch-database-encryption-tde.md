@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="05/17/2016"
+   ms.date="06/14/2016"
    ms.author="douglaslMS"/>
 
 # Azure での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化
@@ -58,4 +58,4 @@ Stretch 対応 SQL Server データベースから移行したデータを格納
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

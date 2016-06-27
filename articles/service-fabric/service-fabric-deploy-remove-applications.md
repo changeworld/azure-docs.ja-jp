@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/03/2016"
+   ms.date="06/14/2016"
    ms.author="ryanwi"/>
 
 # アプリケーションをデプロイする
@@ -30,7 +30,9 @@
 
 アプリケーション パッケージをアップロードすると、そのパッケージは内部 Service Fabric コンポーネントがアクセスできる場所に保存されます。PowerShell を使用してアップロードを実行できます。この記事の PowerShell コマンドを実行する前に、必ず最初に **Connect-ServiceFabricCluster** で Service Fabric クラスターに接続してください。
 
-必要なアプリケーション マニフェストとサービス マニフェストのほか、コード パッケージ、構成パッケージ、データ パッケージが含まれている *MyApplicationType* という名前のフォルダーがあるとします。**Copy-ServiceFabricApplicationPackage** コマンドは、パッケージをアップロードします。次に例を示します。
+必要なアプリケーション マニフェストとサービス マニフェストのほか、コード パッケージ、構成パッケージ、データ パッケージが含まれている *MyApplicationType* という名前のフォルダーがあるとします。**Copy-ServiceFabricApplicationPackage** コマンドは、クラスター イメージ ストアにパッケージをアップロードします。Service Fabric SDK PowerShell モジュールの一部である **Get-ImageStoreConnectionStringFromClusterManifest** コマンドレットは、イメージ ストアの接続文字列の取得に使用します。SDK モジュールをインポートするには、*Import-Module "$ENV:ProgramFiles\\Microsoft SDKs\\Service Fabric\\Tools\\PSModule\\ServiceFabricSDK\\ServiceFabricSDK.psm1"* を実行します。
+
+次の例では、パッケージをアップロードします。
 
 ~~~
 PS D:\temp> dir
@@ -175,12 +177,6 @@ DefaultParameters      : {}
 PS D:\temp>
 ~~~
 
-<!--
-## Next steps
-
-TODO [Upgrade applications][11]
--->
-
 ## トラブルシューティング
 
 ### Copy-ServiceFabricApplicationPackage がImageStoreConnectionString を求める
@@ -225,4 +221,4 @@ PS D:\temp>
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

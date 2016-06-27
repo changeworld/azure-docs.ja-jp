@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/13/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の監視方法
@@ -54,7 +54,7 @@ Azure Redis Cache には診断データをストレージ アカウントに格�
 
 診断設定の構成が完了したら、**[保存]** をクリックして構成を保存します。変更が有効になるまでに数分かかる場合があります。
 
->[AZURE.IMPORTANT] 同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ アカウントを共有するため、構成が変更されるとそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。
+>[AZURE.IMPORTANT] 同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ設定を共有するため、構成が変更される (診断が有効/無効に設定される、またはストレージ アカウントが変更される) と、その変更がそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。
 
 格納されたメトリックを表示するには、ストレージ アカウントにあるテーブルで `WADMetrics` で始まる名前を確認します。Azure ポータル外に格納されたメトリックにアクセスする方法の詳細については、[Redis Cache の監視データへのアクセスに関するページ](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)のサンプルを参照してください。
 
@@ -259,4 +259,4 @@ Azure のアラートの詳細については、「[アラート通知の受信]
 
 [redis-cache-premium-point-shard]: ./media/cache-how-to-monitor/redis-cache-premium-point-shard.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->
