@@ -20,7 +20,11 @@
 
 # Azure Functions NodeJS 開発者向けリファレンス
 
-Azure Functions の Node/JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインドを介してデータを送受信を行ったりする場合に `context` オブジェクトが渡される関数を簡単にエクスポートできます。
+> [AZURE.SELECTOR]
+- [C# スクリプト](../articles/azure-functions/functions-reference-csharp.md)
+- [Node.JS](../articles/azure-functions/functions-reference-node.md)
+
+Azure Functions の Node/JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインドを介してデータの送受信を行ったりする場合に `context` オブジェクトが渡される関数を簡単にエクスポートできます。
 
 この記事では、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
 
@@ -144,7 +148,7 @@ Node のバージョンは、現在、`5.9.1` にロックされています。�
 
 1. `https://<function_app_name>.scm.azurewebsites.net` に移動します。
 
-2. **[デバッグ コンソール] > [CMD]** の順にクリックします。
+2. **[デバッグ コンソール]、[CMD]** の順にクリックします。
 
 3. `D:\home\site\wwwroot<function_name>` に移動します。
 
@@ -196,4 +200,4 @@ function GetEnvironmentVariable(name)
 * [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
 * [Azure Functions のトリガーとバインドに関する記事](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

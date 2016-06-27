@@ -3,7 +3,7 @@
 	description="Azure App Service への継続的なデプロイを有効にする方法を説明します。"
 	services="app-service"
 	documentationCenter=""
-	authors="dariac"
+	authors="dariagrigoriu"
 	manager="wpickett"
 	editor="mollybos"/>
 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/15/2016"
-	ms.author="dariac"/>
+	ms.date="06/13/2016"
+	ms.author="dariagrigoriu"/>
     
 # Azure App Service への継続的なデプロイ
 
-[Azure App Service] と BitBucket、GitHub、Visual Studio Team Services (VSTS) との統合では、Azure で、これらのサービスのいずれかに発行されたプロジェクトから最新の更新プログラムを取り込む場合に、継続的なデプロイのワークフローを有効にすることができます。複数の頻繁に発生する投稿を統合する場合、継続的なデプロイはプロジェクトに最適なオプションとなります。
+このチュートリアルでは、 [Azure App Service] アプリ向けに継続的なデプロイ ワークフローを構成する方法について説明します。App Service と BitBucket、GitHub、Visual Studio Team Services (VSTS) との統合では、Azure で、これらのサービスのいずれかに発行されたプロジェクトから最新の更新プログラムを取り込む場合に、継続的なデプロイのワークフローを有効にすることができます。複数の頻繁に発生する投稿を統合する場合、継続的なデプロイはプロジェクトに最適なオプションとなります。
 
 ## <a name="overview"></a>継続的なデプロイの有効化
 
@@ -30,6 +30,8 @@
 
 	![](./media/app-service-continous-deployment/cd_options.png)
 	
+    > [AZURE.NOTE] App Service の VSTS アカウントを構成するには、[チュートリアル](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)を参照してください。
+    
 3. 認証ワークフロー実行する
 
 4. **[デプロイ ソース]** ブレードで、デプロイ元としてプロジェクトと分岐を選択します。完了したら **[OK]** をクリックします。
@@ -50,7 +52,7 @@ Visual Studio ソリューションを Azure App Service にプッシュする�
 
 Visual Studio ソリューションを App Service にプッシュする手順は、ソリューションとリポジトリを次のように構成するのであれば、[前のセクション](#overview)と同じです。
 
--	下図に示す Visual Studio のソース制御オプションを使用して `.gitignore` ファイルを生成するか、または [.gitignore サンプル](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore) に類似したコンテンツを含む `.gitignore` ファイルを手動でリポジトリ ルートに追加します。 
+-	下図に示す Visual Studio のソース制御オプションを使用して `.gitignore` ファイルを生成するか、または [.gitignore サンプル](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore)に類似したコンテンツを含む `.gitignore` ファイルを手動でリポジトリ ルートに追加します。 
 
     ![](./media/app-service-continous-deployment/VS_source_control.png)
  
@@ -81,7 +83,7 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 [Azure ポータル]: https://portal.azure.com
 [VSTS Portal]: https://www.visualstudio.com/ja-JP/products/visual-studio-team-services-vs.aspx
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)]: ../articles/install-configure-powershell.md
+[How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)]: ../articles/powershell-install-configure.md
 [Mac および Linux 用 Azure コマンド ライン ツールの使用方法]: ../articles/xplat-cli-install.md
 [Git に関するドキュメント]: http://git-scm.com/documentation
 
@@ -90,4 +92,4 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 [Get started with VSTS (VSTS で作業を始める)]: https://www.visualstudio.com/get-started/overview-of-get-started-tasks-vs
 [Continuous delivery to Azure using Visual Studio Team Services]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

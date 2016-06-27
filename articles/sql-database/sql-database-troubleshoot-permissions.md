@@ -23,20 +23,25 @@ Azure SQL Database へのアクセスの付与および削除を行う簡単な�
 - [SQL Database の保護](sql-database-security.md)
 - [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
 
+
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-##論理サーバーの管理パスワードを変更するには
+
+## 論理サーバーの管理パスワードを変更するには
+
+
 - [Azure ポータル](https://portal.azure.com)で **[SQL Server]** をクリックし、一覧からサーバーを選択して、**[パスワードのリセット]** をクリックします。
-##権限のある IP アドレスのみがサーバーへのアクセスを許可されるようにするには
+
+## 権限のある IP アドレスのみがサーバーへのアクセスを許可されるようにするには
 - 「[方法: ファイアウォール設定を構成する (SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
-##ユーザー データベースに包含データベース ユーザーを作成するには
+## ユーザー データベースに包含データベース ユーザーを作成するには
 - [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) ステートメントを使用し、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」をご覧ください。
 
 ## Azure Active Directory を使用して包含データベース ユーザーを認証するには
-- [Azure Active Directory の認証を使用した SQL Database への接続](sql-database-aad-authentication.md)に関するページをご覧ください。
+- 「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」をご覧ください。
 
 ## 仮想マスター データベースで高い特権を持つユーザーの追加ログインを作成するには
-- [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) ステートメントを使用し、「[Azure SQL Database におけるデータベースとログインを管理する](sql-database-manage-logins.md)」の「ログイン管理」のセクションで詳細を確認してください。
+- [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) ステートメントを使用し、[Azure SQL Database でのデータベースとログインの管理](sql-database-manage-logins.md)に関するページのログイン管理セクションで詳細を確認してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

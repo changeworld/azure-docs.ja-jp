@@ -37,6 +37,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
 ```
 
+<a id="connectsecurecluster"></a>
 ## PowerShell を使用して、セキュリティで保護されたクラスターに接続する
 
 次の PowerShell コマンドを実行して、セキュリティで保護されたクラスターに接続します。証明書の詳細は、クラスター ノード上の証明書と一致する必要があります。
@@ -60,7 +61,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azu
 ```
 
 ## FabricClient API を使用して、セキュリティで保護されたクラスターに接続する
-次の[FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx)です。クラスター内のノードには、[FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx)で設定された[RemoteCommonNames プロパティ](https://msdn.microsoft.com/library/azure/system.fabric.x509credentials.remotecommonnames.aspx)に、共通名もしくは SAN の DNS 名が表示される、有効な証明書が必要です。これにより、クライアントとクラスター ノード間の相互認証が可能になります。
+次の [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) です。クラスター内のノードには、[FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) で設定された [RemoteCommonNames プロパティ](https://msdn.microsoft.com/library/azure/system.fabric.x509credentials.remotecommonnames.aspx)に共通名または SAN の DNS 名が表示される、有効な証明書が必要です。これにより、クライアントとクラスター ノード間の相互認証が可能になります。
 
 ```csharp
 string thumb = "C179E609BBF0B227844342535142306F3913D6ED";
@@ -108,4 +109,4 @@ static X509Credentials GetCredentials(string thumb, string name)
 - [Service Fabric の正常性モデルの概要](service-fabric-health-introduction.md)
 - [アプリケーションのセキュリティと RunAs](service-fabric-application-runas-security.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

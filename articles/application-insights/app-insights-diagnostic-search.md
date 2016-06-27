@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="診断検索の使用" 
+	pageTitle="診断検索の使用 |Microsoft Azure" 
 	description="個々のイベント、要求、ログ トレースを検索し、フィルター選択します。" 
 	services="application-insights" 
     documentationCenter=""
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/03/2016" 
+	ms.date="06/09/2016" 
 	ms.author="awills"/>
  
 # Application Insights の診断検索の使用
@@ -63,9 +63,22 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 任意のテレメトリ項目を選択すると、キー フィールドと関連項目が表示されます。フィールドの完全なセットを表示するには、[...] をクリックします。
 
-![Open diagnostic search](./media/app-insights-diagnostic-search/10-detail.png)
+
+![新しい作業項目をクリックし、フィールドを編集して [OK] をクリックします。](./media/app-insights-diagnostic-search/10-detail.png)
 
 フィールドの完全なセットを検索するには、ワイルドカードを含まない単純な文字列を使用します。使用できるフィールドは、テレメトリの種類に依存します。
+
+## 作業項目を作成する
+
+任意のテレメトリ項目の詳細を使用して、Visual Studio Team Services でバグを作成できます。
+
+![新しい作業項目をクリックし、フィールドを編集して [OK] をクリックします。](./media/app-insights-diagnostic-search/42.png)
+
+これを初めて行う場合は、Team Services のアカウントおよびプロジェクトへのリンクを構成するように求められます。
+
+![Team Services サーバーとプロジェクト名の URL を入力し、[承認] をクリックします](./media/app-insights-diagnostic-search/41.png)
+
+([設定] > [作業項目] から構成ブレードに移動することもできます。)
 
 ## イベントの種類のフィルター選択
 
@@ -221,4 +234,4 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

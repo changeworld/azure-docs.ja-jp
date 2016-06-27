@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure SQL Data Warehouse でのデータベースの復元 (概要) | Microsoft Azure"
+   pageTitle="Azure SQL Data Warehouse の復元 (概要) | Microsoft Azure"
    description="Azure SQL Data Warehouse でデータベースを復旧するためのデータベース復元オプションの概要。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -13,58 +13,63 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/04/2016"
+   ms.date="06/14/2016"
    ms.author="elfish;barbkess;sonyama"/>
 
 
-# Azure SQL Data Warehouse でのデータベースの復元 (概要)
+# Azure SQL Data Warehouse の復元 (概要)
 
 > [AZURE.SELECTOR]
-- [概要](sql-data-warehouse-restore-database-overview.md)
-- [ポータル](sql-data-warehouse-restore-database-portal.md)
-- [PowerShell](sql-data-warehouse-restore-database-powershell.md)
-- [REST ()](sql-data-warehouse-manage-restore-database-rest-api.md)
+- [概要][]
+- [ポータル][]
+- [PowerShell][]
+- [REST ()][]
 
-Azure SQL Data Warehouse でデータベースを復元するオプションについて説明します。ライブ データ ウェアハウスおよび削除されたデータ ウェアハウスの復元を対象とします。ライブ データ ウェアハウスおよび削除されたデータ ウェアハウスは、すべてのデータ ウェアハウスから作成された自動スナップショットから復元されます。
+Azure SQL Data Warehouse は、ローカル冗長ストレージと自動バックアップの両方を使用してデータを保護します。自動バックアップでは、管理を必要としない方法で、データベースを偶発的な破損や削除から保護できます。ユーザーが意図せずに、または偶発的にデータを変更または削除するような場合には、それ以前の任意の時点にデータベースを復元することで、ビジネスの継続性を確保できます。SQL Data Warehouse では、ダウンタイムなしでデータベースをシームレスにバックアップするために、Azure Storage のスナップショットを使用しています。
 
-## 復旧のシナリオ
+## 自動バックアップ
 
-**インフラストラクチャの障害からの回復:** このシナリオは、ディスク障害などのインフラストラクチャ問題からの回復を示します。お客様は、フォールト トレラントで、可用性の高いインフラストラクチャによってビジネス継続性を実現したいと考えます。
+**アクティブな**データベースは、最低でも 8 時間ごとに 1 回の自動バックアップが行われ、7 日間保持されます。これによって、アクティブなデータベースを過去 7 日間にわたる複数の復元ポイントのいずれかに復元できるようになります。
 
-**ユーザー エラーからの回復:** このシナリオは、意図しない、または偶発的なデータの破損または削除からの回復を示します。ユーザーが意図せずに、または偶発的にデータを変更または削除した場合、顧客は以前の任意の時点にデータベースを復元することで、ビジネスの継続性を確保したいと考えます。
+データベースが一時停止すると、新しいスナップショットの作成は停止し、それ以前のスナップショットは保持期間が 7 日に達したものから順に削除されます。データベースの一時停止期間が 7 日を超えた場合は最後のスナップショットが保存されるため、常に少なくとも 1 つのスナップショットが確保されることになります。
 
-## スナップショット ポリシー
+データベースが削除されると、最後のスナップショットは 7 日間保存されます。
 
-[AZURE.INCLUDE [SQL Data Warehouse のバックアップ保持ポリシー](../../includes/sql-data-warehouse-backup-retention-policy.md)]
+次のクエリを実行すると、インスタンスで最後のバックアップがいつ作成されたのかを確認することができます。
 
+```sql
+select top 1 *
+from sys.pdw_loader_backup_runs 
+order by run_id desc;
+```
 
-## データベース復元機能
+バックアップを 7 日間より長く保持する必要がある場合は、いずれかの復元ポイントを新しいデータベースに復元します。その後は、保持しているバックアップのストレージ領域のみが課金されるように、必要に応じてそのデータベースを一時停止することができます。
 
-前述のシナリオで、SQL Data Warehouse によってデータベースの信頼性を高め、回復性と継続的な操作を行うことができるようにする方法について説明します。
+## データの冗長性
 
+SQL Data Warehouse では、バックアップに加えて、[ローカル冗長 (LRS)][] Azure Premium Storage でデータを保護することもできます。複数の同期されたデータ コピーがローカル データ センターに保持され、ローカルで障害が発生した場合には透過的なデータ保護が保証されます。データの冗長性により、ディスク障害などのインフラストラクチャの問題でデータを失う心配がなくなります。データの冗長性を確保することで、フォールト トレラントで可用性の高いインフラストラクチャによるビジネス継続性が実現できます。
 
-### データの冗長性
+## データベースを復元する
 
-SQL Data Warehouse には、[ローカル冗長 (LRS)](../storage/storage-redundancy.md) な Azure Premium Storage にすべてのデータが格納され、データの 3 つのコピーが保持されます。
+SQL Data Warehouse の復元操作は簡単で、Azure ポータルで行うか、PowerShell または REST API を使用して自動的に行うことができます。
 
-### データベースの復元
-
-データベースの復元は、以前の任意の時点にデータベースが復元されるように設計されます。Azure SQL Data Warehouse サービスは、少なくとも 8 時間ごとにストレージのスナップショットを自動的に取得し、それらを 7 日間保持して復元ポイントの個別セットを用意することで、すべてのデータベースを保護します。自動スナップショットおよび復元機能では、管理作業ゼロで、偶発的な破損や削除からデータベースを保護します。データベースの復元の詳細については、[データベースの復元作業][]に関するページをご覧ください。
 
 ## 次のステップ
-他の重要な管理タスクについては、[管理の概要][]に関するページをご覧ください。
+Azure SQL Database の各エディションのビジネス継続性機能については、[Azure SQL Database のビジネス継続性の概要][]に関するページをご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[Azure storage redundancy options]: ../storage/storage-redundancy.md#read-access-geo-redundant-storage
-[Backup and restore tasks]: sql-data-warehouse-database-restore-portal.md
-[管理の概要]: sql-data-warehouse-overview-management.md
-[データベースの復元作業]: sql-data-warehouse-manage-database-restore-portal.md
+[Azure SQL Database のビジネス継続性の概要]: ./sql-database-business-continuity.md
+[ローカル冗長 (LRS)]: ../storage/storage-redundancy.md
+[概要]: ./sql-data-warehouse-restore-database-overview.md
+[ポータル]: ./sql-data-warehouse-restore-database-portal.md
+[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
+[REST ()]: ./sql-data-warehouse-restore-database-rest-api.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/15/2016"
+   ms.date="06/13/2016"
    ms.author="mausher;sonyama;barbkess"/>
 
 # Azure SQL Data Warehouse のトラブルシューティング
@@ -26,7 +26,7 @@
 - サポートされていないツール/プロトコルを使用している
 
 ### ファイアウォール ルール
-Azure SQL Database は、既知の IP アドレスのみがデータベースにアクセスできるように、サーバーとデータベース レベルのファイアウォールによって保護されています。ファイアウォールは、既定でセキュリティ保護されています。つまり、接続する前に、IP アドレスまたはアドレス範囲を明示的に有効にする必要があります。アクセスできるようにファイアウォールを構成するには、[プロビジョニング手順][]に関するページの、[クライアント IP に対するサーバー ファイアウォール アクセスの構成][]に関するトピックの手順に従ってください。
+Azure SQL Database は、既知の IP アドレスのみがデータベースにアクセスできるように、サーバーとデータベース レベルのファイアウォールによって保護されています。ファイアウォールは、既定でセキュリティ保護されています。つまり、接続する前に、IP アドレスまたはアドレス範囲を明示的に有効にする必要があります。アクセスできるようにファイアウォールを構成するには、[プロビジョニング手順][]に関するページの、[クライアント IP 用のサーバー ファイアウォール アクセスの構成][]に関するトピックの手順に従ってください。
 
 ### サポートされていないツール/プロトコルを使用している
 SQL Data Warehouse では、[Visual Studio 2013 または 2015][] を使用してデータのクエリを実行することをお勧めします。クライアント接続については、[SQL Server Native Client 10/11 (ODBC)][] をお勧めします。SQL Server Management Studio (SSMS) はまだサポートされていません。部分的には動作しますが、オブジェクト エクスプ ローラー ツリーは SQL Data Warehouse では機能しません。クエリは、エラー メッセージをいくつか無視すると機能することがあります。
@@ -116,7 +116,7 @@ SQL Data Warehouse ソリューションを最適化する方法の詳細につ�
 [クエリを監視する方法]: ./sql-data-warehouse-manage-monitor.md
 [SQL Data Warehouse での統計の管理]: ./sql-data-warehouse-develop-statistics.md
 [プロビジョニング手順]: ./sql-data-warehouse-get-started-provision.md
-[クライアント IP に対するサーバー ファイアウォール アクセスの構成]: ./sql-data-warehouse-get-started-provision.md/#create-a-new-azure-sql-server-level-firewall
+[クライアント IP 用のサーバー ファイアウォール アクセスの構成]: ./sql-data-warehouse-get-started-provision.md#create-a-new-azure-sql-server-level-firewall
 [Visual Studio 2013 または 2015]: ./sql-data-warehouse-get-started-connect.md
 [SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
 [統計]: ./sql-data-warehouse-develop-statistics.md
@@ -126,4 +126,4 @@ SQL Data Warehouse ソリューションを最適化する方法の詳細につ�
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

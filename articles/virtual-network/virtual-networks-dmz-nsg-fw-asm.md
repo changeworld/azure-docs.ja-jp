@@ -28,7 +28,7 @@
 この例で使用するサブスクリプションには、以下のものが含まれています。
 
 - 2 つのクラウド サービス: "FrontEnd001" と "BackEnd001"
-- 2 つのサブネット ("FrontEnd" と "BackEnd") を含む Virtual Network "CorpNetwork"
+- 2 つのサブネット ("FrontEnd" と "BackEnd") を含む仮想ネットワーク "CorpNetwork"
 - 両方のサブネットに適用される単一のネットワーク セキュリティ グループ
 - フロントエンド サブネットに接続されたネットワーク仮想アプライアンス (この例では Barracuda NextGen Firewall)
 - アプリケーション Web サーバーを表す Windows サーバー ("IIS01")
@@ -566,4 +566,4 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 [SampleApp]: ./virtual-networks-sample-app.md
 [Example1]: ./virtual-networks-dmz-nsg-asm.md
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0615_2016-->

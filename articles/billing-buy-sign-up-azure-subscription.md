@@ -61,11 +61,11 @@ Azure 無料試用版のサブスクリプションにサインアップする�
  ![cardverify](./media/billing-buy-sign-up-azure-subscription/VardVerify.png)</br>
 6. **[契約]** セクションで、サブスクリプション契約、プランの詳細、プライバシーに関する声明に同意する場合は、チェック ボックスをオンにします。その後、**[サインアップ]** を選択します。サンプルのスクリーンショットは英語版の契約です。契約フォームは、国によって異なる場合があります。
 
- ![サインアップ](./media/billing-buy-sign-up-azure-subscription/Signup.png)</br></br>サブスクリプションの設定に数分かかることがあります。サブスクリプションの設定が 15 分で完了しない場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。</br>エラー メッセージが表示された場合は、メッセージ内の手順に従って問題を解決してください。一般的なエラー メッセージは次のとおりです。
+ ![サインアップ](./media/billing-buy-sign-up-azure-subscription/Signup.png)</br></br>サブスクリプションの設定に数分かかることがあります。サブスクリプションの設定が 15 分で完了しない場合は、[Azure サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。</br>エラー メッセージが表示された場合は、メッセージ内の手順に従って問題を解決してください。一般的なエラー メッセージは次のとおりです。
 
  **申し訳ありません。操作を完了できませんでした。後で再度試すか、Web ページを読み込み直してください。** </br>
 
- この場合は、別のブラウザーを使用してサインアップ プロセスを完了してください。問題が引き続き発生する場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。</br>
+ この場合は、別のブラウザーを使用してサインアップ プロセスを完了してください。問題が引き続き発生する場合は、[Azure サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。</br>
 7. サブスクリプションの準備が完了したら、**[サービスの管理を開始する]** を選択して開始します。</br> ![startservice](./media/billing-buy-sign-up-azure-subscription/startservice.png)
 
 <a name="UpgradeFreeToPYG"></a>
@@ -88,4 +88,4 @@ Azure イン オープン プランのクレジットをリセラーから購入
 
 3. プロダクト キーを入力し、契約オプションを確認します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0615_2016-->

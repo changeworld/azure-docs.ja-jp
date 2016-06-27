@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure VM での AlwaysOn 可用性グループの構成 | Microsoft Azure"
+	pageTitle="PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成"
 	description="このチュートリアルでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用し、PowerShell を使用して Azure で AlwaysOn 可用性グループを作成します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
@@ -13,14 +13,16 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/04/2016"
+	ms.date="06/09/2016"
 	ms.author="mikeray" />
 
-# Azure VM での AlwaysOn 可用性グループの構成 (PowerShell)
+# PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成
 
 > [AZURE.SELECTOR]
-- [ポータル](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
-- [PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
+- [Resource Manager: 自動](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+- [Resource Manager: 手動](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
+- [クラシック: UI](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
+- [クラシック: PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
 
 <br/>
 
@@ -629,4 +631,4 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

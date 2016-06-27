@@ -1,12 +1,8 @@
-The following table lists quotas and limits specific to Azure Event Hubs. For more information about Event Hubs, see [Event Hubs Pricing](https://azure.microsoft.com/pricing/details/event-hubs/). For information about pricing and other quotas for Service Bus, see the [Service Bus Pricing](https://azure.microsoft.com/pricing/details/service-bus/) overview.
+次の表に、Azure Event Hubs に固有のクォータと制限を示します。Event Hubs の詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。Service Bus の料金やその他のクォータについては、「[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)」の概要を参照してください。
 
-| Limit                                            | Scope       | Type   | Behavior when exceeded                                                                                                 | Value    |
+| 制限 | スコープ | 型 | 超過したときの動作 | 値 |
 |--------------------------------------------------|-------------|--------|------------------------------------------------------------------------------------------------------------------------|----------|
-| Number of Event Hubs per namespace               | Namespace   | Static | Subsequent requests for creation of a new namespace will be rejected.                                                  | 10       |
-| Number of partitions per Event Hub               | Entity      | Static |  -                                                                                                                      | 32       |
-| Number of consumer groups per Event Hub          | Entity      | Static |  -                                                                                                                      | 20       |
-| Number of AMQP connections per namespace         | Namespace   | Static | Subsequent requests for additional connections will be rejected and an exception will be received by the calling code. | 5,000    |
-| Maximum event size                               | System-wide | Static |  -                                                                                                                      | 256KB    |
-| Number of non-epoch receivers per consumer group | Entity      | Static |  -                                                                                                                      | 5        |
-| Maximum retention period of event data           | Entity      | Static |  -                                                                                                                      | 1-7 days |
-| Maximum throughput units           | Namespace      | Static | Exceeding the throughput unit limit will cause your data to be throttled and generate a **ServerBusyException**. You can request a larger number of throughput units for a Standard tier by filing a support ticket. Additional throughput units are available in blocks of twenty on a committed purchase basis.                                                                                                                       | 20 |
+| 名前空間あたりの Event Hubs の数 | 名前空間 | 静的 | 以後、新しい名前空間の作成要求は拒否されます。 | 10 |
+| イベント ハブあたりのパーティションの数 | エンティティ | 静的 | - | 32 | | イベント ハブあたりのコンシューマー グループの数 | エンティティ | 静的 | - | 20 | | 名前空間あたりの AMQP 接続の数 | 名前空間 | 静的 | その後の接続要求は拒否され、呼び出し元のコードが例外を受け取ります。 | 5,000 | | 最大イベント サイズ | システム全体 | 静的 | - | 256 KB | | コンシューマー グループあたりの非エポック受信者の数 | エンティティ | 静的 | - | 5 | | イベント データの最大リテンション期間 | エンティティ | 静的 | - | 1 - 7日 | | 最大スループット ユニット | 名前空間 | 静的 | スループット ユニット制限を超えるとデータは調整され、 **ServerBusyException** を生成します。サポート チケットを申請することによって、Standard レベルの追加のスループット ユニットをリクエストできます。追加スループット ユニットは、20 個単位で購入できます。 | 20 |
+
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="06/13/2016"
    ms.author="jrj;barbkess"/>
 
 # SQL Data Warehouse のトランザクションの最適化
@@ -420,7 +420,7 @@ Azure SQL Data Warehouse では、データ ウェアハウスの一時停止、
 - [テーブル パーティション][]
 - [同時実行][]
 - [CTAS][]
-- [RENAME OBJECT][]
+- [RENAME (Transact-SQL)][]
 
 <!--Image references-->
 
@@ -431,9 +431,10 @@ Azure SQL Data Warehouse では、データ ウェアハウスの一時停止、
 [table partition]: sql-data-warehouse-develop-table-partitions.md
 [同時実行]: sql-data-warehouse-develop-concurrency.md
 [CTAS]: sql-data-warehouse-develop-ctas.md
-[RENAME OBJECT]: sql-data-warehouse-develop-rename.md
+
 
 <!--MSDN references-->
-[alter index]: https://msdn.microsoft.com/ja-JP/library/ms188388.aspx
+[alter index]: https://msdn.microsoft.com/library/ms188388.aspx
+[RENAME (Transact-SQL)]: https://msdn.microsoft.com/library/mt631611.aspx
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0615_2016-->

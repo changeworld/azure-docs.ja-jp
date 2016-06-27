@@ -268,7 +268,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 よく使用されるオプションがいくつかあります。
 
--   **SetBatching** (ブール値): **true** の場合、IoT Hub に送信されるデータはバッチで送信されます。**false** の場合は、メッセージは個別に送信されます。既定値は **false** です。
+-   **SetBatching** (ブール値): **true** の場合、IoT Hub に送信されるデータはバッチで送信されます。**false** の場合は、メッセージは個別に送信されます。既定値は **false** です。**SetBatching** オプションが適用されるのは HTTP プロトコルだけであることに注意してください。AMQP プロトコルや MQTT プロトコルには適用されません。
 
 -   **Timeout** (符号なし整数): この値はミリ秒単位で表現されます。HTTP 要求の送信や応答の受信にこの時間より長くかかる場合は、接続がタイムアウトします。
 
@@ -278,4 +278,4 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 この記事は、**C 用 Azure IoT デバイス SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。[次の記事](iot-hub-device-sdk-c-serializer.md)では、**serializer** ライブラリについて同様に詳細を紹介します。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

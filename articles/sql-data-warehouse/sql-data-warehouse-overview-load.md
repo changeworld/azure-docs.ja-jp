@@ -35,6 +35,7 @@ PolyBase を使用して Azure Blob Storage からデータを読み込むと、
 2. データを Azure Blob Storage に移動し、テキスト ファイルに格納します。
 3. SQL Data Warehouse で外部オブジェクトを構成して、データの場所とデータ形式を定義します。
 4. 新しいデータベース テーブルへのデータ読み込みを並列処理する T-SQL コマンドを実行します。
+
 <!-- 5. Schedule and run a loading job. --> 
 
 チュートリアルについては、「[Load data from Azure blob storage to SQL Data Warehouse (PolyBase) (Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase))][]」をご覧ください。
@@ -133,4 +134,4 @@ Integration Services (SSIS) パッケージを使用して SQL Server に読み�
 <!--Other Web references-->
 [Import/Export]: https://azure.microsoft.com/documentation/articles/storage-import-export-service/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

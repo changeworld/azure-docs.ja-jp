@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="06/14/2016"
 	ms.author="aelnably"/>
 
 # Azure Resource Manager ベースの PowerShell を使用して Azure Web アプリを管理する#
@@ -42,11 +42,22 @@ Web アプリの管理に使用される Azure Resource Manager PowerShell コ�
 
     New-AzureRmAppServicePlan -Name ContosoAppServicePlan -Location "South Central US" -ResourceGroupName ContosoAzureResourceGroup -Tier Premium -WorkerSize Large -NumberofWorkers 10
 
+### App Service Environment で App Service プラン を作成する ###
+App Service Environment (ASE) で新しい App Service プランを作成するには、同じ **New-AzureRmAppServicePlan** コマンドに別途パラメーターを追加し、ASE の名前とその ASE が属するリソース グループの名前を指定します。
+
+コマンドレットの使用例:
+
+    New-AzureRmAppServicePlan -Name ContosoAppServicePlan -Location "South Central US" -ResourceGroupName ContosoAzureResourceGroup -AseName constosoASE -AseResourceGroupName contosoASERG -Tier Premium -WorkerSize Large -NumberofWorkers 10
+
+App Service Environment の詳細については、「[App Service Environment の概要](app-service-app-service-environment-intro.md)」を参照してください。
+
 ### 既存の App Service プランの一覧表示 ###
 
 既存の App Service プランを一覧表示するには、**Get-AzureRmAppServicePlan** コマンドレットを使用します。
 
-自分のサブスクリプションのすべての App Service プランを一覧表示するには、**Get-AzureRmAppServicePlan** を使用します。
+自分のサブスクリプションのすべての App Service プランを一覧表示するには、次のように入力します。
+
+    Get-AzureRmAppServicePlan
 
 特定のリソース グループのすべての App Service プランを一覧表示するには、次のように入力します。
 
@@ -110,7 +121,7 @@ App Service Environment (ASE) に新しい Web アプリを作成するには、
 
     New-AzureRmWebApp -Name ContosoWebApp -AppServicePlan ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Location "South Central US"  -ASEName ContosoASEName -ASEResourceGroupName ContosoASEResourceGroupName
 
-App Service Environment の詳細については、「[App Service 環境の概要](app-service-app-service-environment-intro.md)」を参照してください。
+App Service Environment の詳細については、「[App Service Environment の概要](app-service-app-service-environment-intro.md)」を参照してください。
 
 ### 既存の Web アプリの削除 ###
 
@@ -137,7 +148,7 @@ App Service Environment の詳細については、「[App Service 環境の概�
 
 ### 既存の Web アプリの構成 ###
 
-既存の Web アプリの設定と構成を変更するには、**Set-AzureRmWebApp** コマンドレットを使用します。全パラメーターの一覧については、[コマンドレット リファレンス リンク](https://msdn.microsoft.com/library/mt652487.aspx)を参照してください。
+既存の Web アプリの設定と構成を変更するには、**Set-AzureRmWebApp** コマンドレットを使用します。全パラメーターの一覧については、[コマンドレットのリファレンス リンク](https://msdn.microsoft.com/library/mt652487.aspx)を参照してください。
 
 例 (1): 接続文字列を変更する
 
@@ -204,4 +215,4 @@ Web アプリの証明書を管理する方法については、[PowerShell を�
 - PowerShell を使用した App Service SSL 証明書の管理については、[PowerShell を使用した SSL 証明書のバインド](app-service-web-app-powershell-ssl-binding.md)に関するページを参照してください。
 - Azure Web Apps に使用する Azure Resource Manager ベースの PowerShell コマンドレットの全一覧については、[Azure Resource Manager の PowerShell コマンドレットを使って Web アプリを管理するための Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/mt619237.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

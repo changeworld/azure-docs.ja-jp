@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/17/2016"
-   ms.author="bscholl"/>
+   ms.date="06/06/2016"
+   ms.author="bscholl;mikhegn"/>
 
 
 # 複数のゲスト実行可能ファイルのデプロイ
@@ -66,6 +66,8 @@ Service Fabric のパッケージを手動で作成する方法については�
 - **/exe** は、Service Fabric が開始する実行可能ファイルを定義します (この例では `node.exe`)。
 - **/ma** は、実行可能ファイルの起動に使用される引数を定義します。Node.js がインストールされていないため、Service Fabric は、`node.exe bin/www` を実行して Node.js Web サーバーを起動する必要があります。`/ma:'bin/www'` と定義することで、パッケージ化ツールは `bin/ma` を node.exe の引数として使用します。
 - **/AppType** は、Service Fabric アプリケーションの種類の名前を定義します。
+
+>[AZURE.NOTE] Visual Studio を使用して、アプリケーション プロジェクトの一部としてアプリケーション パッケージを作成することもできます。Visual Studio プロジェクトでソースをリンクした場合、Visual Studio ソリューションをビルドすると、アプリケーション パッケージは、ソースの変更に応じて常に最新の状態になります。
 
 /target パラメーターで指定したディレクトリを参照すると、次に示すように、完全に機能する Service Fabric パッケージがツールによって作成されていることを確認できます。
 
@@ -135,6 +137,8 @@ PowerShell またはコマンド シェルで、次のパラメーターを使�
 
 MongoDB を Service Fabric アプリケーション パッケージに追加するには、アプリケーション マニフェストと Node.js アプリケーションが配置されているのと同じディレクトリを /target パラメーターが指していることを確認する必要があります。また、同じ ApplicationType 名を使用しているかどうかも確認してください。
 
+>[AZURE.NOTE] Visual Studio を使用して、アプリケーション プロジェクトの一部としてアプリケーション パッケージを作成することもできます。Visual Studio プロジェクトでソースをリンクした場合、Visual Studio ソリューションをビルドすると、アプリケーション パッケージは、ソースの変更に応じて常に最新の状態になります。
+
 ディレクトリを参照して、ツールによって作成された内容を確認してみましょう。
 
 ```
@@ -190,6 +194,8 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
+>[AZURE.NOTE] Visual Studio を使用すると、デバッグ (F5) または発行ウィザードによって、ローカルでアプリケーションを発行できます。
+
 アプリケーションがローカル クラスターに正常に発行されると、Node.js アプリケーションのサービス マニフェストに入力したポート (この例では http://localhost:3000) で Node.js アプリケーションにアクセスできます。
 
 このチュートリアルでは、2 つの既存のアプリケーションを 1 つの Service Fabric アプリケーションとして簡単にパッケージ化する方法について説明しました。また、高可用性やヘルス システムとの統合など、Service Fabric の機能の一部を活用できるように、Service Fabric にデプロイする方法についても説明しました。
@@ -198,4 +204,4 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 
 - [ゲスト アプリケーションを手動でパッケージ化する](service-fabric-deploy-existing-app.md)方法について学習します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

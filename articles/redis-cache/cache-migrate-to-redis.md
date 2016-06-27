@@ -1,10 +1,10 @@
 <properties 
-    pageTitle="Redis へのキャッシュの移行"
+    pageTitle="Redis キャッシュへの移行 | Microsoft Azure"
     description="Managed Cache Service アプリケーションを Azure Redis Cache に移行する方法を説明します"
     services="redis-cache"
     documentationCenter="na"
     authors="steved0x"
-    manager="erikre"
+    manager="douge"
     editor="tysonn" />
 <tags 
     ms.service="cache"
@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="cache-redis"
     ms.workload="tbd"
-    ms.date="03/17/2016"
+    ms.date="06/09/2016"
     ms.author="sdanie" />
 
 # Managed Cache Service から Azure Redis Cache への移行
@@ -41,7 +41,7 @@ Azure Managed Cache Service と Azure Redis Cache は似ていますが、一部
 
 |Managed Cache Service の機能|Managed Cache Service のサポート|Azure Redis Cache のサポート|
 |---|---|---|
-|名前付きキャッシュ|既定のキャッシュが構成され、Standard および Premium キャッシュ プランでは、必要に応じて最大 9 個の名前付きキャッシュを追加構成できます。|Azure Redis キャッシュには 16 個のデータベースがあり、名前付きキャッシュに似た機能の実装に使用できます。詳細については、「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。|
+|名前付きキャッシュ|既定のキャッシュが構成され、Standard および Premium キャッシュ プランでは、必要に応じて最大 9 個の名前付きキャッシュを追加構成できます。|Azure Redis キャッシュには、名前付きキャッシュに似た機能の実装に使用できるデータベースがあります (データベースの数は既定で 16 個ですが、構成できます)。詳細については、「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」を参照してください。|
 |高可用性|Standard および Premium キャッシュ プランでは、キャッシュ内のアイテムの高可用性が提供されます。アイテムが障害によって失われた場合でも、キャッシュ内のアイテムのバックアップ コピーを使用できます。セカンダリ キャッシュへの書き込みは同期的に行われます。|高可用性は Standard および Premium キャッシュ プランで利用でき、2 ノードのプライマリ/レプリカ構成を使用します (Premium キャッシュではシャードごとにプライマリ/レプリカ ペアがあります)。レプリカへの書き込みは非同期的に行われます。詳細については、[Azure Redis Cache の価格に関するページ](https://azure.microsoft.com/pricing/details/cache/)を参照してください。|
 |通知|名前付きキャッシュでさまざまなキャッシュ操作が発生したとき、クライアントは非同期の通知を受け取ることができます。|クライアント アプリケーションは、Redis のパブリッシュ/サブスクライブまたは[キースペース通知](cache-configure.md#keyspace-notifications-advanced-settings)を使用して、同様の通知機能を実現できます。|
 |ローカル キャッシュ|特に高速のアクセスのため、キャッシュされたオブジェクトのコピーをクライアントにローカルに格納します。|クライアント アプリケーションは、ディクショナリまたは類似のデータ構造を使用してこの機能を実装する必要があります。|
@@ -65,14 +65,7 @@ Microsoft Azure Redis Cache には、次のレベルがあります。
 
 ## キャッシュを作成する
 
-Azure Redis Cache のキャッシュは、[Azure ポータル](https://portal.azure.com)で、または ARM テンプレート、PowerShell、Azure CLI を使用して作成できます。
-
--	Azure ポータルでキャッシュを作成する方法については、「[キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)」をご覧ください。
--	ARM テンプレートを使用してキャッシュを作成する方法については、「[テンプレートを使用して Redis Cache を作成する](cache-redis-cache-arm-provision.md)」をご覧ください。
--	Azure PowerShell を使用してキャッシュを作成する方法については、「[Azure PowerShell を使用した Azure Redis Cache の管理](cache-howto-manage-redis-cache-powershell.md)」をご覧ください。
--	Azure CLI を使用してキャッシュを作成する方法については、「[Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法](cache-manage-cli.md)」を参照してください。
-
->[AZURE.NOTE] Azure Redis Cache を使用するには、Azure アカウントが必要です。アカウントがない場合は、無料アカウントを数分で作成できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)を参照してください。
+[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 ## キャッシュ クライアントを構成する
 
@@ -118,17 +111,7 @@ Managed Cache Service の構成を削除した後は、次のセクションで�
 
 ### StackExchange.Redis NuGet パッケージを使用してキャッシュ クライアントを構成する
 
-Visual Studio で開発された .NET アプリケーションは、StackExchange.Redis キャッシュ クライアントを使用してキャッシュにアクセスできます。Visual Studio で StackExchange.Redis NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-
-![Azure Redis Cache Manage NuGet Packages](./media/cache-migrate-to-redis/IC729541.png)
-
-**[オンライン検索]** ボックスに「**StackExchange.Redis**」と入力し、結果の中からそれを選択して **[インストール]** をクリックします。
-
-![Azure Redis Cache StackExchange.Redis NuGet パッケージ](./media/cache-migrate-to-redis/IC746253.png)
-
-クライアント アプリケーションから StackExchange.Redis Cache クライアントを使用して Azure Redis Cache にアクセスするために必要なアセンブリ参照が NuGet パッケージによってダウンロードされ追加されます。
-
-詳細については、「[キャッシュ クライアントの構成](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)」を参照してください。
+[AZURE.INCLUDE [redis-cache-configure](../../includes/redis-cache-configure-stackexchange-redis-nuget.md)]
 
 ## Managed Cache Service のコードを移行する
 
@@ -196,4 +179,4 @@ Azure Redis Cache には、ASP.NET セッション状態とページ出力キャ
 
 [Azure Redis Cache ドキュメント](https://azure.microsoft.com/documentation/services/cache/)のチュートリアル、サンプル、ビデオ、その他をご覧ください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -150,7 +150,9 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 
 ## 次のステップ
 
-「[Docker ユーザー ガイド]」にアクセスして Docker VM の使用を開始する準備が整いました。新しいポータルで Docker 対応 VM を作成する方法については、「[Using the Docker VM Extension with the Azure Portal (Azure ポータルでの Docker VM 拡張機能の使用)]」を参照してください。
+* 「[Docker ユーザー ガイド]」にアクセスして Docker VM の使用を開始する準備が整いました。新しいポータルで Docker 対応 VM を作成する方法については、「[Using the Docker VM Extension with the Azure Portal (Azure ポータルでの Docker VM 拡張機能の使用)]」を参照してください。
+
+* Azure の Docker VM 拡張機能は、Docker Compose もサポートします。Docker Compose は、宣言型 YAML ファイルを使用して、開発者が構築したアプリケーションを環境全体で有効にし、一貫性のあるデプロイを生成します。「[Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する]」をご覧ください。
 
 <!--Anchors-->
 [Subheading 1]: #subheading-1
@@ -172,5 +174,6 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
  
+[Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する]: virtual-machines-linux-docker-compose-quickstart.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

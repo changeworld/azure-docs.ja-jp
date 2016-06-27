@@ -13,23 +13,137 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/07/2016"
+   ms.date="06/14/2016"
    ms.author="nicw;barbkess;sonyama"/>
 
-# Premium Storage への既存の Azure SQL Data Warehouse の移行
+# Premium Storage への移行の詳細
+SQL Data Warehouse には最近、[パフォーマンス予測可能性の向上を目的とした Premium Storage][] が導入されました。これにより、現在 Standard Storage 上に存在する Data Warehouse を Premium Storage に移行できるようになりました。ここでは、自動移行のしくみと移行時期のほか、ダウンタイムの発生タイミングを制御したい場合に手動で移行する方法について詳細を説明します。
 
-このコンテンツは近日対応予定です。
+Data Warehouse が複数ある場合は、以下の[自動移行スケジュール][]を参照して、それらの移行時期についても確認してください。
 
+## 自動移行の詳細
+データベースの移行は、既定では以下の[自動移行スケジュール][]に示した期間内のいずれかの時点において、ご自身のリージョンの現地時刻で午後 6 時 ～ 午前 6 時の間に行われます。移行中は、既存の Data Warehouse が使用できなくなります。移行にかかる時間は、各 Data Warehouse で 1 TB ストレージあたり約 1 時間と推定されています。また、移行中のどの段階においても課金は行われません。
+
+> [AZURE.NOTE] 既存の Data Warehouse は、移行中には使用できなくなります。移行が完了すると、Data Warehouse はオンラインに戻ります。
+
+以下に示す詳細は、移行を完了させるため、ユーザーに代わって Microsoft が実行する手順であり、ユーザー側での操作は必要ありません。この例では、現在 Standard Storage 上に "MyDW" という名前の DW が存在していると仮定します。
+
+1.	Microsoft により、この名前は "MyDW" から "MyDW\_ DO\_NOT\_USE\_[タイムスタンプ]" に変更されます。
+2.	Microsoft により、"MyDW\_ DO\_NOT\_USE\_[タイムスタンプ]" が一時停止されます。一時停止中にバックアップが作成されます。この処理の実行中に何らかの問題が発生すると、一時停止と再開が何度も繰り返される可能性があります。
+3.	Microsoft により、上記の手順 2. で作成したバックアップから "MyDW" という名前の新しい DW が Premium Storage 上に作成されます。"MyDW" は、復元が完了するまで表示されません。
+4.	復元が完了すると、"MyDW" は移行前と同じレベルの DWU に戻り、一時停止またはアクティブ状態になります。
+5.	移行が完了すると、Microsoft によって "MyDW\_DO\_NOT\_USE\_[タイムスタンプ]" が削除されます。
+	
+> [AZURE.NOTE] 移行処理の一部として、次の各設定が引き継がれることはありません。
+> 
+>	-  Auditing at the Database level will need to be re-enabled
+>	-  Firewall rules at the Database level will need to be re-added
+
+### 自動移行スケジュール
+自動移行は、次の一覧に示した停止スケジュール期間内のいずれかの時点で、午後 6 時～午前 6 時 (該当するリージョンの現地時刻) の間に行われます。
+
+| リージョン | 開始予定日 | 終了予定日 |
+| :------------------ | :--------------------------- | :--------------------------- |
+| オーストラリア東部 | 未定 | 未定 |
+| オーストラリア南東部 | 未定 | 未定 |
+| カナダ中部 | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
+| カナダ東部 | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
+| 米国中央部 | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
+| 中国 (東部) | 未定 | 未定 |
+| 東アジア | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
+| 米国東部 | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
+| 米国東部 2 | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
+| インド中部 | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
+| インド南部 | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
+| 東日本 | 未定 | 未定 |
+| 西日本 | 未定 | 未定 |
+| 米国中北部 | 未定 | 未定 |
+| 北ヨーロッパ | 未定 | 未定 |
+| 米国中南部 | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
+| 東南アジア | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
+| 西ヨーロッパ | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
+| 米国西部 | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
+
+## Premium Storage への手動移行
+ダウンタイムの発生するタイミングを制御する必要がある場合は、以下の手順に従って Standard Storage 上の既存の Data Warehouse を Premium Storage に移行することができます。手動移行を選択した場合、自動移行によって競合が引き起こされる危険を回避するために、対象のリージョンで自動移行が開始する前に手動移行を完了する必要があります ([自動移行スケジュール][]を参照)。
+
+> [AZURE.NOTE] Premium Storage での SQL Data Warehouse は、現在のところ geo 冗長ではありません。つまり、Data Warehouse を Premium Storage に移行すると、データは現在のリージョンのみに存在することになります。Geo-Backup が利用可能になると、Data Warehouse は 24 時間ごとに [Azure ペア リージョン][]にコピーされるため、Geo-Backup から Azure の任意のリージョンにデータを復元できるようになります。手動移行で Geo-Backup 機能が利用できるようになった際は、[メイン ドキュメント サイト][]で発表される予定です。一方で、自動移行にはこのような制限はありません。
+
+### ストレージの種類を確認する
+次に示す日付より前に DW を作成した場合、現在は Standard Storage を使用していることになります。
+
+| リージョン | この日付より前に DW を作成 |
+| :------------------ | :-------------------------------- |
+| オーストラリア東部 | Premium Storage はまだ利用できません |
+| オーストラリア南東部 | Premium Storage はまだ利用できません |
+| カナダ中部 | 2016 年 5 月 25 日 |
+| カナダ東部 | 2016 年 5 月 26 日 |
+| 米国中央部 | 2016 年 5 月 26 日 |
+| 中国 (東部) | Premium Storage はまだ利用できません |
+| 東アジア | 2016 年 5 月 25 日 |
+| 米国東部 | 2016 年 5 月 26 日 |
+| 米国東部 2 | 2016 年 5 月 27 日 |
+| インド中部 | 2016 年 5 月 27 日 |
+| インド南部 | 2016 年 5 月 26 日 |
+| 東日本 | Premium Storage はまだ利用できません |
+| 西日本 | Premium Storage はまだ利用できません |
+| 米国中北部 | Premium Storage はまだ利用できません |
+| 北ヨーロッパ | Premium Storage はまだ利用できません |
+| 米国中南部 | 2016 年 5 月 27 日 |
+| 東南アジア | 2016 年 5 月 24 日 |
+| 西ヨーロッパ | 2016 年 5 月 25 日 |
+| 米国西部 | 2016 年 5 月 26 日 |
+
+
+### 手動移行の手順
+ダウンタイムを制御する必要がある場合は、バックアップと復元を利用して Data Warehouse を手動で移行します。移行処理の復元部分にかかる時間は、各 DW で 1 TB ストレージあたり約 1 時間と予想されています。移行後に同じ名前を維持する必要がある場合は、以下の[名前変更の回避策][]の手順に従ってください。
+
+1.	自動バックアップを実行する DW を[一時停止][]します。
+2.	最新のスナップショットから[復元][]します。
+3.	Standard Storage 上の既存の DW を削除します。**この手順を行わないと、両方の DW に対して課金されることになります。**
+
+> [AZURE.NOTE] 移行処理の一部として、次の各設定が引き継がれることはありません。
+> 
+>	-  Auditing at the Database level will need to be re-enabled
+>	-  Firewall rules at the Database level will need to be re-added
+
+#### 省略可能: 名前変更の回避策 
+同じ論理サーバー上の 2 つのデータベースが同じ名前を持つことはできません。SQL Data Warehouse では、現時点で DW の名前の変更機能はサポートされていません。以下の手順を実行することで、手動移行時に、この機能の不足に対応することができます (注: 自動移行にはこのような制限はありません)。
+
+この例では、現在 Standard Storage 上に "MyDW" という名前の DW が存在していると仮定します。
+
+1.	自動バックアップを実行する "MyDW" を[一時停止][]します
+2.	最新のスナップショットから "MyDWTemp" のような別の名前を持つ新しいデータベースを[復元][]します
+3.	"MyDW" を削除します。**この手順を行わないと、両方の DW に対して課金されることになります。**
+4.	"MyDWTemp" は新しく作成された DW であることから、しばらくの間、復元に使用するバックアップを作成することができません。"MyDWTemp" を引き続き数時間使用してから、手順 5. と手順 6. に進むことをお勧めします。
+5.	自動バックアップを実行する "MyDWTemp" を[一時停止][]します。
+6.	"MyDWTemp" の最新のスナップショットから "MyDW" という名前の新しいデータベースを[復元][]します。
+7.	"MyDWTemp" を削除します。**この手順を行わないと、両方の DW に対して課金されることになります。**
+
+> [AZURE.NOTE] 移行処理の一部として、次の各設定が引き継がれることはありません。
+> 
+>	-  Auditing at the Database level will need to be re-enabled
+>	-  Firewall rules at the Database level will need to be re-added
 
 ## 次のステップ
+Data Warehouse で問題が発生した場合は、[サポート チケットを作成][]し、考えられる原因を "Premium Storage への移行" としてください。
 
 <!--Image references-->
 
 <!--Article references-->
+[自動移行スケジュール]: #automatic-migration-schedule
+[self-migration to Premium Storage]: #self-migration-to-premium-storage
+[サポート チケットを作成]: ./sql-data-warehouse-get-started-create-support-ticket.md
+[Azure ペア リージョン]: ./best-practices-availability-paired-regions.md
+[メイン ドキュメント サイト]: ./services/sql-data-warehouse.md
+[一時停止]: ./sql-data-warehouse-manage-compute-portal.md/#pause-compute
+[復元]: ./sql-data-warehouse-manage-database-restore-portal.md
+[名前変更の回避策]: #optional-rename-workaround
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
+[パフォーマンス予測可能性の向上を目的とした Premium Storage]: https://azure.microsoft.com/ja-JP/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

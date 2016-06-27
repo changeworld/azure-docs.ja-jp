@@ -60,4 +60,4 @@ Visual Studio 2015 でプロジェクトを作成した場合、Application Insi
 
 [コードを読んで協力してください。](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

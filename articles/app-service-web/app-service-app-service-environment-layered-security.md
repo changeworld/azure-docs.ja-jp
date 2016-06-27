@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/28/2016" 
+	ms.date="06/14/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境によるレイヤード セキュリティ アーキテクチャの実装
@@ -89,6 +89,8 @@ App Service Environment は、Virtual Network にデプロイされる分離さ�
 
 
 ## その他のリンクおよび情報 ##
+App Service 環境に関するすべての記事と作業方法は [Application Service Environments の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
+
 クラシック仮想ネットワークに対する[ネットワーク セキュリティ グループ][NetworkSecurityGroupsClassic]の構成
 
 [送信 IP アドレス][NetworkArchitecture]と App Service Environment について
@@ -109,4 +111,4 @@ App Service Environment で使用される[ネットワーク ポート][Inbound
 [ConceptualArchitecture]: ./media/app-service-app-service-environment-layered-security/ConceptualArchitecture-1.png
 [NSGConfiguration]: ./media/app-service-app-service-environment-layered-security/NSGConfiguration-1.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0615_2016-->

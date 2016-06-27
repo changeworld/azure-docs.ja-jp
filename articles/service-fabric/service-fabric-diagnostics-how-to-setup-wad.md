@@ -47,7 +47,9 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 
 ![ポータルでのクラスター作成のための Azure 診断設定](./media/service-fabric-diagnostics-how-to-setup-wad/portal-cluster-creation-diagnostics-setting.png)
 
-サポート要求の登録後、Azure サポート チームがそれを解決するためにサポート ログが**必要**になります。これらのログはリアルタイムで収集され、リソース グループで作成されたストレージ アカウントの 1 つに保存されます。診断設定により、[アクター](service-fabric-reliable-actors-diagnostics.md) イベントや [Reliable Service](service-fabric-reliable-services-diagnostics.md) イベントなどのアプリケーション レベル イベントと一部のシステム レベルの Service Fabric イベントは、Azure Storage に保存されるように構成されます。[Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品や独自のプロセスで、ストレージ アカウントからイベントを選択できます。現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。テーブルからイベントを削除するプロセスが実装されていない場合、テーブルは増加を続けます。ポータルを利用してクラスターを作成する場合、デプロイの完了後にテンプレートをエクスポートすることが推奨されます。テンプレートは次の方法でポータルからエクスポートできます。
+サポート要求の登録後、Azure サポート チームがそれを解決するためにサポート ログが**必要**になります。これらのログはリアルタイムで収集され、リソース グループで作成されたストレージ アカウントの 1 つに保存されます。診断設定により、[アクター](service-fabric-reliable-actors-diagnostics.md) イベントや [Reliable Service](service-fabric-reliable-services-diagnostics.md) イベントなどのアプリケーション レベル イベントと一部のシステム レベルの Service Fabric イベントは、Azure Storage に保存されるように構成されます。[Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品や独自のプロセスで、ストレージ アカウントからイベントを選択できます。現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。テーブルからイベントを削除するプロセスが実装されていない場合、テーブルは増加を続けます。
+
+ポータルを使用してクラスターを作成する場合、*[OK] をクリックしてクラスターを作成する前に*テンプレートをダウンロードすることを強くお勧めします。詳細については、「[Azure Resource Manager テンプレートを使用して Service Fabric クラスターをセットアップする](service-fabric-cluster-creation-via-arm.md)」を参照してください。これにより、作成するクラスターに、使用可能な ARM テンプレートが提供されます。これは、後で変更を行うために必要です。ポータルを使用してすべての変更を行うことができるとは限りません。テンプレートは次の手順を使用してポータルからエクスポートできますが、これらのテンプレートは使いづらい場合があります。値の指定が必要にな null 値が多数含まれていたり、必須情報が不足していたりする場合があるためです。
 
 1. リソース グループを開きます。
 2. [設定] を選択し、[設定] パネルを表示します。
@@ -56,7 +58,7 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 5. [テンプレートのエクスポート] を選択し、[テンプレート] パネルを表示します。
 6. [保存] を選択し、テンプレート、パラメーター、PowerShell ファイルを含む .zip ファイルをエクスポートします。
 
-ファイルのエクスポート後、変更が必要になります。**parameters.json** ファイルを編集し、**adminPassword** 要素を削除します。これでデプロイ スクリプトの実行時にパスワードが要求されます。ダウンロードしたテンプレートを使用して構成を更新するには
+ファイルのエクスポート後、変更が必要になります。**parameters.json** ファイルを編集し、**adminPassword** 要素を削除します。これでデプロイ スクリプトの実行時にパスワードが要求されます。デプロイ スクリプトの実行時に、null パラメーター値の修正が必要になる場合があります。ダウンロードしたテンプレートを使用して構成を更新するには
 
 1. ローカル コンピューター上のフォルダーに内容を展開します。
 2. 新しい構成を反映するように内容を変更します。
@@ -67,7 +69,7 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 ### Azure リソース マネージャー を使用してクラスター作成の一環で診断拡張機能をデプロイする
 リソース マネージャーを使用してクラスターを作成するには、診断の構成 JSON を完全なクラスターのリソース マネージャー テンプレートに追加してから、クラスターを作成します。ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。このサンプルは、Azure サンプル ギャラリーの「[Five-node cluster with Diagnostics Resource Manager template sample](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)」で参照できます。Resource Manager テンプレートの診断設定を確認するには、**azuredeploy.json** ファイルを開き、**IaaSDiagnostics** を検索します。このテンプレートを使用してクラスターを作成するには、上のリンクにある **[Azure にデプロイ]** ボタンをクリックしてください。
 
-または、リソース マネージャー サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzureRmResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。コマンドで渡す必要があるパラメーターについては、後述します。PowerShell を利用してリソース グループをデプロイする方法については、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](../resource-group-template-deploy.md)に関するページを参照してください。
+または、リソース マネージャー サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzureRmResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。コマンドで渡す必要があるパラメーターについては、後述します。PowerShell を利用してリソース グループをデプロイする方法については、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](../resource-group-template-deploy.md)に関する記事を参照してください。
 
 ```powershell
 
@@ -177,11 +179,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $
 }
 ```
 
-説明したように **template.json** ファイルを変更したら、ARM テンプレートを再発行します。テンプレートのエクスポート後、**deploy.ps1** ファイルを実行すると、テンプレートが再発行されます。デプロイ後、*[ProvisioningState]* が *[成功]* になります。
+前述のように **template.json** ファイルを変更したら、ARM テンプレートを再発行します。テンプレートのエクスポート後、**deploy.ps1** ファイルを実行すると、テンプレートが再発行されます。デプロイ後、*ProvisioningState* が *Succeeded* になっていることを確認します。
 
 
 ## 新しい EventSource チャネルのログを収集およびアップロードするように診断を更新する
-デプロイする予定の新しいアプリケーションを示す新しい EventSource チャネルのログを収集するように診断を更新するには、既存のクラスターに対する診断の設定について説明した[前述のセクション](#deploywadarm)と同じ手順を実行する必要があります。**template.json** の *EtwEventSourceProviderConfiguration* セクションを更新し、新しい EventSource のエントリを追加してから、*New-AzureRmResourceGroupDeployment* PowerShell コマンドで構成の更新を適用する必要があります。
+デプロイする予定の新しいアプリケーションを示す新しい EventSource チャネルのログを収集するように診断を更新するには、既存のクラスターに対する診断の設定について説明した[前述のセクション](#deploywadarm)と同じ手順を実行する必要があります。**template.json** の *EtwEventSourceProviderConfiguration* セクションを更新し、新しい EventSource のエントリを追加してから、*New-AzureRmResourceGroupDeployment* PowerShell コマンドで構成の更新を適用する必要があります。イベント ソースの名前は、Visual Studio で生成された **ServiceEventSource.cs** ファイル内でコードの一部として定義されます。
 
 
 ## 次のステップ
@@ -191,4 +193,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $
 ## 関連記事:
 * [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

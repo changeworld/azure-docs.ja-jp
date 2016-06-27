@@ -53,7 +53,7 @@ ADF を使用すると、既存のデータ処理サービスを、可用性が�
 * **Azure SQL Database** へのアクセス権。Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、「[最初の Azure SQL データベースを作成する](../sql-database/sql-database-get-started.md)」をご覧ください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。手順については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
-> [AZURE.NOTE] この手順では、[Azure ポータル](https://ms.portal.azure.com/)を使用します。
+> [AZURE.NOTE] この手順では、[Azure ポータル](https://portal.azure.com/)を使用します。
 
 
 ##<a name="upload-data"></a>オンプレミスの SQL Server にデータをアップロードする
@@ -66,7 +66,7 @@ ADF を使用すると、既存のデータ処理サービスを、可用性が�
 
 ##<a name="create-adf"></a>Azure Data Factory を作成する
 
-[Azure ポータル](https://ms.portal.azure.com/)に新しい Azure Data Factory とリソース グループを作成するための手順については、「[Azure Data Factory を作成する](../data-factory/data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory)」を参照してください。新しい ADF インスタンスに *adfdsp* という名前を付け、作成されたリソース グループに *adfdsprg* という名前を付けます。
+[Azure ポータル](https://portal.azure.com/)に新しい Azure Data Factory とリソース グループを作成するための手順については、「[Azure Data Factory を作成する](../data-factory/data-factory-build-your-first-pipeline-using-editor.md#step-1-creating-the-data-factory)」を参照してください。新しい ADF インスタンスに *adfdsp* という名前を付け、作成されたリソース グループに *adfdsprg* という名前を付けます。
 
 
 ## Data Management Gateway をインストールして構成する
@@ -310,4 +310,4 @@ Azure クラシック ポータルで (図をクリックすると) ADF 上に�
 
 ADF が提供するデータを段階的にパイプ処理する機能をまだ活用していないことに注意してください。これを行う方法と ADF が提供するその他の機能の詳細については、[ADF のドキュメント](https://azure.microsoft.com/services/data-factory/)を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

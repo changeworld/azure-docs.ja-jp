@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="06/08/2016" 
 	ms.author="tomfitz"/>
 
 # 新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -66,20 +66,18 @@
 - SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。SQL Server を移動すると、そのデータベースもすべて移動されます。
 - Virtual Machines
 - Virtual Machines (クラシック) - 「[クラシック デプロイメントの制限事項](#classic-deployment-limitations)」を参照してください
-
-## 移動を部分的にサポートするサービス
-
-新しいリソース グループへの移動をサポートし、新しいサブスクリプションへの移動はサポートしないサービスは、次のとおりです。
-
 - Virtual Networks
 
 ## 移動をサポートしないサービス
 
 現在リソースの移動をサポートしていないサービスは、次のとおりです。
 
+- Application Gateway
 - アプリケーション インサイト
 - ExpressRoute
+- Virtual Machines スケール セット
 - Virtual Networks (クラシック) - 「[クラシック デプロイメントの制限事項](#classic-deployment-limitations)」を参照してください
+- VPN Gateway
 
 ## App Service の制限事項
 
@@ -275,4 +273,4 @@ Web アプリがその App Service プランとは異なるリソース グル�
 - サブスクリプションを管理するためのポータル機能については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](./azure-portal/resource-group-portal.md)」を参照してください。
 - リソースを論理的に整理する方法については、「[タグを使用した Azure リソースの整理](resource-group-using-tags.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

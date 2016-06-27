@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/03/2016"
+   ms.date="06/10/2016"
    ms.author="nitinme"/>
 
 # Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターを作成する
@@ -29,7 +29,7 @@ Azure PowerShell を使用して、Azure Data Lake Store にアクセスする�
 
 * **HBase クラスター (Windows および Linux) の場合**、Data Lake Store を既定のストレージまたは追加ストレージとして使用できます。
 
-> [AZURE.NOTE] Data Lake Store にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight バージョン 3.2 (Windows および Linux 用) でのみ使用できます。
+> [AZURE.NOTE] Data Lake Store にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight バージョン 3.2 と 3.4 でのみ使用できます (Windows と Linux の Hadoop、HBase、および Storm クラスターの場合)。Linux の Spark クラスターの場合、このオプションは HDInsight 3.4 クラスターでのみ使用できます。
 
 
 この記事では、追加のストレージとして Data Lake Store を使用して Hadoop クラスターをプロビジョニングします。
@@ -380,4 +380,4 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

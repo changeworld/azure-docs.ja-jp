@@ -51,7 +51,7 @@ Azure SQL Database には、お客様からのフィードバックに基づい�
 
 フェデレーション機能が Web および Business Edition で提供終了となります。データベースをスケールアウトする必要があるお客様は、[Azure SQL Database](sql-database-elastic-scale-get-started.md) 用の [エラスティック データベース ツール](sql-database-elastic-scale-get-started.md)を使用するか、それに移行してください。これにより、シャーディングを使用するアプリケーションの構築および管理が簡単になります。アプリケーションで .NET クライアント ライブラリを使用すると、データをシャードにマッピングして OLTP リクエストを適切なデータベースにルーティングする方法を定義できます。データをシャードにどのように割り振るかを再構成する管理操作に役立つように、お客様の Azure サブスクリプションの中でご利用いただける Azure クラウド サービス テンプレートが付属しています。Microsoft では、[エラスティック データベース ツール](sql-database-elastic-scale-get-started.md)に加え、お客様との密接な関わりから学んだことに基づく[カスタムのシャーディング パターンおよび実施のガイダンス](https://msdn.microsoft.com/library/azure/dn764977.aspx)を継続して作成および公開していきます。機能のスケールアウトを必要とする新しいお客様は、「[エラスティック データベース ツール](sql-database-elastic-scale-get-started.md)」を確認するか、Microsoft サポートに問い合わせて選択肢を評価してください。
 
-また、Premium データベースのデータベースのコピー操作も変わります。以前は、Premium データベースのクォータは制限されており、T-SQL で CREATE DATABASE … AS A COPY OF を実行すると、リソースの予約なしで Suspended Premium データベースが作成されていました。このデータベースには Business データベースと同じ料金が加算されていました。現在では、Premium クォータはより自由に使用できるようになり、Suspended Premium はサポートされなくなりました。これからは、データベースのコピーは、ソースと同じエディションとパフォーマンス レベルで作成され、それに応じて課金されます。必要に応じて、コピーされたデータベースを別のサービス階層やパフォーマンス レベルにダウングレードしてコストを下げることができます。今回のリリースの一環として、既存の Suspended Premium データベースは Business Edition に変換される予定です。ポイントインタイム リストアの導入により、データベースのバックアップ コピーを作成する必要性が軽減されると予想されます。
+また、Premium データベースのデータベースのコピー操作も変わります。以前は、Premium データベースのクォータは制限されており、T-SQL で CREATE DATABASE … AS A COPY OF を実行すると、リソースの予約なしで Suspended Premium データベースが作成されていました。このデータベースには Business データベースと同じ料金が加算されていました。現在では、Premium クォータはより自由に使用できるようになり、Suspended Premium はサポートされなくなりました。これからは、データベースのコピーは、ソースと同じエディションとパフォーマンス レベルで作成され、それに応じて課金されます。必要に応じて、コピーされたデータベースを別のサービス階層やパフォーマンス レベルにダウングレードしてコストを下げることができます。今回のリリースの一環として、既存の Suspended Premium データベースは Business Edition に変換される予定です。[ポイントインタイム リストア](sql-database-point-in-time-restore.md)の導入により、データベースのバックアップ コピーを作成する必要性が軽減されると予想されます。
 
 ## Basic、Standard、および Premium での課金処理に改善はありますか
 
@@ -68,4 +68,4 @@ Basic、Standard、Premium の Azure SQL Database は時間単位で課金され
 
 [Azure SQL Database V12 へのアップグレード](sql-database-upgrade-server-portal.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

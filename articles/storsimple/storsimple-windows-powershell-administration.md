@@ -130,8 +130,8 @@ Windows PowerShell リモート処理を使用して StorSimple デバイスに�
 
 HTTP または HTTPS を使用して Windows PowerShell リモート処理経由で接続できます。次のチュートリアルの手順を使用してください。
 
-- [Http を使用してリモート接続する](storsimple-remote-connect.md#connect-through-http)
-- [Https を使用してリモート接続する](storsimple-remote-connect.md#connect-through-https)
+- [HTTP を使用してリモート接続する](storsimple-remote-connect.md#connect-through-http)
+- [HTTPS を使用してリモート接続する](storsimple-remote-connect.md#connect-through-https)
 
 ## 接続のセキュリティに関する考慮事項
 
@@ -175,7 +175,7 @@ Windows PowerShell インターフェイスで取得できるヘルプの種類�
 
 - 任意のコマンドレットのオンライン ヘルプを取得するには、上のコマンドレットと `-Online`パラメーターを使用します。`Get-Help <cmdlet-name> -Online`
 
-- ヘルプ全体を取得するには、–Full パラメーターと、たとえば `–Examples`パラメーターを使用します。
+- ヘルプ全体を取得するには、`–Full` パラメーターを使用します。たとえば `–Examples` パラメーターを使用します。
 
 #### ヘルプを更新するには
 
@@ -197,4 +197,4 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 ## 次のステップ
 上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「[StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

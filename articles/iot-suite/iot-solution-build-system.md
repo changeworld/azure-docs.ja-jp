@@ -2,16 +2,16 @@
 	pageTitle="MyDriving Azure IoT の例: ビルドする |Microsoft Azure"
 	description="Microsoft Azure を使用して、Stream Analytics、Machine Learning、Event Hubs などの IoT システムを設計する方法を総合的に示すアプリを構築します。"
 	services=""
-    documentationCenter=""
-    suite="iot-suite"
+    documentationCenter=".net"
+    suite=""
 	authors="alancameronwills"
 	manager="douge"/>
 
 <tags
-	ms.service="iot-suite"
+	ms.service="multiple"
 	ms.workload="tbd"
 	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
+	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="03/25/2016"
 	ms.author="awills"/>
@@ -285,7 +285,7 @@ scenario\_complete.json での操作:
 
 ### テンプレートの実行
 
-テンプレートの実行方法の詳細は、**scripts/README.md** に記載されています。
+テンプレートの実行方法の詳細は、**scripts/README.md ** に記載されています。
 
 このスクリプトを使用して自分の Azure アカウントのすべてのサービスをプロビジョニングするには、次のいずれかの操作を行います。
 
@@ -438,7 +438,7 @@ MyDriving の開発構成を設定するコストの大まかな見積もりを�
 
 詳細については、次を参照してください。
 
--   [Azure サービスのクォータと制限](../azure-subscription-service-limits/#iot-hub-limits)の概要
+-   [Azure サービスのクォータと制限](../azure-subscription-service-limits.md#iot-hub-limits)の概要
 
 -   [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
@@ -462,4 +462,4 @@ MyDriving は、独自の IoT システムの開発を支援するために作�
 
 システムとそのコンポーネントの設計の包括的な説明である「[MyDriving リファレンス ガイド](http://aka.ms/mydrivingdocs)」をお勧めします。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

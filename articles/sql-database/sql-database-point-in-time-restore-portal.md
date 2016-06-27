@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/10/2016"
+	ms.date="06/09/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -21,12 +21,11 @@
 
 
 > [AZURE.SELECTOR]
+- [概要](sql-database-point-in-time-restore.md)
 - [Azure ポータル](sql-database-point-in-time-restore-portal.md)
 - [PowerShell](sql-database-point-in-time-restore-powershell.md)
 
-この記事では、Azure ポータルを使用して以前の時点にデータベースを復元する方法について説明します。
-
-セルフサービス機能である[**ポイントインタイム リストア**](sql-database-point-in-time-restore.md)を使用すると、すべてのデータベースに対して自動作成されたバックアップから、データベースのリテンション期間内の任意のポイントにデータベースを復元できます。データベースのリテンション期間の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページをご覧ください。
+この記事では、Azure ポータルを使用して、[SQL Database 自動バックアップ](sql-database-automated-backups.md)から以前の時点にデータベースを復元する方法について説明します。
 
 ## 以前の時点に復元するデータベースの選択
 
@@ -47,13 +46,16 @@ Azure ポータルでデータベースを復元するには、次の手順を�
 ## 次のステップ
 
 - [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
-
-
+- [ポイントインタイム リストア](sql-database-point-in-time-restore.md)
+- [REST API を使用したポイントインタイム リストア](https://msdn.microsoft.com/library/azure/mt163685.aspx)
+- [SQL Database 自動バックアップ](sql-database-automated-backups.md)
 
 ## その他のリソース
 
+- [削除されたデータベースの復元](sql-database-restore-deleted-database.md)
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
+- [geo リストア](sql-database-geo-restore.md)
+- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
+- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

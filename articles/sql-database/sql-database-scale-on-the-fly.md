@@ -48,10 +48,10 @@ SQL Database の他の機能についてはホーム ページを[ぜひご確�
 
 [無料の Azure サブスクリプション](https://azure.microsoft.com/get-started/)を入手し、[最初の Azure SQL Database を作成](sql-database-get-started.md)します。
 
-## 詳細情報
+## その他のリソース
 
 [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
  
 [SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

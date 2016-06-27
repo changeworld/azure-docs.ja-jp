@@ -24,7 +24,7 @@ Docker は軽量のコンテナー エンジンで、アプリケーションと
 ## 1\.前提条件
 このチュートリアルを完了するには、以下が必要です。
 
-- 「[Azure で docker マシンを使用する方法](./virtual-machines/virtual-machines-linux-classic-docker-machine.md)」の説明に従って、Azure Docker ホスト VM を作成する
+- 「[Azure で docker マシンを使用する方法](./virtual-machines/virtual-machines-linux-docker-machine.md)」の説明に従って、Azure Docker ホスト VM を作成する
 - [Visual Studio 2015 のインストール](https://www.visualstudio.com/ja-JP/downloads/download-visual-studio-vs.aspx)
 - [Visual Studio 2015 Tools for Docker - Preview](http://aka.ms/DockerToolsForVS) のインストール
 
@@ -96,4 +96,4 @@ Visual Studio から Azure にアプリケーションをデプロイする前�
 [2]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

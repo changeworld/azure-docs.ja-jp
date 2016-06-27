@@ -23,7 +23,7 @@
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-geo-replication-failover-portal.md)
 - [PowerShell](sql-database-geo-replication-failover-powershell.md)
-- [Transact-SQL](sql-database-geo-replication-failover-transact-sql.md)
+- [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
 
 
 この記事では、PowerShell を使用して、SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーを開始する方法について説明します。geo レプリケーションを構成する場合は、[Azure SQL Database の geo レプリケーションの構成](sql-database-geo-replication-powershell.md)に関するページをご覧ください。
@@ -87,4 +87,4 @@
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 - [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

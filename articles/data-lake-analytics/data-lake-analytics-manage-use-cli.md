@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics を管理する
@@ -28,7 +28,7 @@ Azure を使用して、Azure Data Lake Analytics のアカウント、データ
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 - **Azure CLI**。「[Azure CLI のインストールと構成](../xplat-cli-install.md)」をご覧ください。
-	- このデモを完了するためには、**プレリリース版の** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases)をダウンロードしてインストールします。
+	- このデモを完了するためには、**プレリリース版の ** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases)をダウンロードしてインストールします。
 - **認証**。次のコマンドを使用します。
 
 		azure login
@@ -173,7 +173,7 @@ U-SQL カタログを使用して、U-SQL スクリプトで共有できるよ�
 	#List tables
 	azure datalake analytics catalog list -n "<Data Lake Analytics Account Name>" -t table
 	
-タイプには、データベース、スキーマ、アセンブリ、externaldatasource、テーブル、tablevaluedfunction、または tablestatistics が含まれます。
+タイプには、データベース、スキーマ、アセンブリ、外部データ ソース、テーブル、テーブル値関数、またはテーブルの統計情報が含まれます。
 
 ###カタログ シークレットの作成
 
@@ -214,4 +214,4 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 - [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
 - [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

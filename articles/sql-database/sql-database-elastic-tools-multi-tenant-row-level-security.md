@@ -18,7 +18,9 @@
 
 # 弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション 
 
-[弾力性データベース ツール](sql-database-elastic-scale-get-started.md)と [Row-Level Security (RLS)](https://msdn.microsoft.com/library/dn765131) は、Azure SQL Database を使用するマルチテナント アプリケーションのデータ層を柔軟かつ効率的にスケーリングできる強力な機能セットを提供します。この記事では、これらのテクノロジを使用して、**ADO.NET SqlClient** と **Entity Framework** を使用してマルチテナントのシャードをサポートする拡張性の高いデータ層を持つアプリケーションを構築する方法について説明します。
+[弾力性データベース ツール](sql-database-elastic-scale-get-started.md)と [Row-Level Security (RLS)](https://msdn.microsoft.com/library/dn765131) は、Azure SQL Database を使用するマルチテナント アプリケーションのデータ層を柔軟かつ効率的にスケーリングできる強力な機能セットを提供します。詳細については、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」をご覧ください。
+
+この記事では、これらのテクノロジを使用して、**ADO.NET SqlClient** と **Entity Framework** を使用してマルチテナントのシャードをサポートする拡張性の高いデータ層を持つアプリケーションを構築する方法について説明します。
 
 * **弾力性データベース ツール**を使用すると、.NET ライブラリと Azure のサービス テンプレートのセットを使用して、業界標準のシャーディング手法に従ってアプリケーションのデータ層をスケール アウトすることができます。弾力性データベース クライアント ライブラリを使用してシャードを管理することは、一般的にシャーディングに関連するインフラストラクチャ タスクの多くを自動化および効率化するうえで役立ちます。 
 
@@ -48,8 +50,8 @@
 
 RLS はシャード データベースでまだ有効になっていないため、これらの各テストで問題点が明らかになります。テナントは、そのテナントに属さないブログを表示できます。また、アプリケーションは、不適切なテナントにブログを挿入できます。この記事の残りの部分では、RLS によるテナントの分離を適用してこれらの問題を解決する方法について説明します。次の 2 つの手順が含まれます。
 
-1. **アプリケーション層**: アプリケーション コードを変更し、接続を開いた後で常に現在の TenantId を SESSION\_CONTEXT に設定します。サンプル プロジェクトでは、この手順は既に完了しています。 
-2. **データ層**: 各シャード データベースで、SESSION\_CONTEXT に格納されている TenantId に基づいて行をフィルター選択するための RLS セキュリティ ポリシーを作成します。この手順は、それぞれのシャード データベースに対して実行する必要があります。そうでないと、マルチテナント シャード内の行がフィルター選択されません。 
+1. **アプリケーション層**: アプリケーション コードを変更し、接続を開いた後で、常に現在の TenantId を SESSION\_CONTEXT に設定します。サンプル プロジェクトでは、この手順は既に完了しています。 
+2. **データ層**: 各シャード データベースで、SESSION\_CONTEXT に格納されている TenantId に基づいて行をフィルター処理するための RLS セキュリティ ポリシーを作成します。この手順は、それぞれのシャード データベースに対して実行する必要があります。そうでないと、マルチテナント シャード内の行がフィルター選択されません。 
 
 
 ## ステップ 1) アプリケーション層: TenantId を SESSION\_CONTEXT に設定する
@@ -295,16 +297,27 @@ GO
 
 ### メンテナンス 
 
-* **新しいシャードの追加**: すべての新しいシャードで RLS を有効にするための T-SQL スクリプトを実行する必要があります。この操作を行わないと、これらのシャードに対するクエリはフィルター選択されません。
+* **新しいシャードの追加**: すべての新しいシャードで RLS を有効にするための T-SQL スクリプトを実行する必要があります。この操作を行わないと、これらのシャードに対するクエリはフィルター処理されません。
 
-* **新しいテーブルの追加**: 新しいテーブルを作成するたびに、すべてのシャードのセキュリティ ポリシーにフィルター述語とブロック述語を追加する必要があります。この操作を行わないと、新しいテーブルに対するクエリはフィルター選択されません。この操作は、DDL トリガーを使用して自動化できます。詳細については、[新しく作成したテーブルに自動的に行レベルのセキュリティを適用する](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)方法に関するブログ記事を参照してください。
+* **新しいテーブルの追加**: 新しいテーブルを作成するたびに、すべてのシャードのセキュリティ ポリシーにフィルター述語とブロック述語を追加する必要があります。この操作を行わないと、新しいテーブルに対するクエリはフィルター処理されません。この操作は、DDL トリガーを使用して自動化できます。詳細については、[新しく作成したテーブルに自動的に行レベルのセキュリティを適用する](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)方法に関するブログ記事を参照してください。
 
 
 ## 概要 
 
-弾力性データベース ツールと行レベルのセキュリティを組み合わせると、アプリケーションのデータ層をスケール アウトして、マルチテナントのシャードと単一テナントのシャードの両方をサポートできます。マルチテナントのシャードは、データをより効率的に格納するために使用できます (特に、少数のデータ行を保持するテナントが多数ある場合)。一方、単一テナントのシャードは、より厳密なパフォーマンス要件と分離要件を持つ "プレミアム" テナントをサポートするために使用できます。詳細については、「[行レベルのセキュリティ](https://msdn.microsoft.com/library/dn765131)」を参照してください。
+弾力性データベース ツールと行レベルのセキュリティを組み合わせると、アプリケーションのデータ層をスケール アウトして、マルチテナントのシャードと単一テナントのシャードの両方をサポートできます。マルチテナントのシャードは、データをより効率的に格納するために使用できます (特に、少数のデータ行を保持するテナントが多数ある場合)。一方、単一テナントのシャードは、より厳密なパフォーマンス要件と分離要件を持つ "プレミアム" テナントをサポートするために使用できます。詳細については、「[行レベルのセキュリティ](https://msdn.microsoft.com/library/dn765131)」をご覧ください。
 
-[AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+## その他のリソース
+
+- [Azure エラスティック データベース プールの概要](sql-database-elastic-pool.md)
+- [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
+- [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+- [Azure AD および OpenID Connect を使用したマルチテナント アプリでの認証](../guidance/guidance-multitenant-identity-authenticate.md)
+- [Tailspin Surveys アプリケーション](../guidance/guidance-multitenant-identity-tailspin.md)
+
+## 質問と機能に関する要望
+
+質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
+
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-tools-multi-tenant-row-level-security/blogging-app.png
@@ -312,4 +325,4 @@ GO
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

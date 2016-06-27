@@ -58,7 +58,7 @@
 - [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](virtual-machines-linux-classic-cli-use-docker.md)
 - [Azure ポータルでの Docker VM 拡張機能の使用](virtual-machines-linux-classic-portal-use-docker.md)
 - [Azure Marketplace で Docker をすばやく開始する](virtual-machines-linux-classic-docker-quickstart.md)
-- [Azure で docker マシンを使用する方法](virtual-machines-linux-classic-docker-machine.md)
+- [Azure で docker マシンを使用する方法](virtual-machines-linux-docker-machine.md)
 
 ### Ubuntu
 - [方法: MySQL クラスター](virtual-machines-linux-classic-mysql-cluster.md)
@@ -192,4 +192,4 @@
 
 - [Azure 用のプラグインの packer](https://github.com/msopentech/packer-azure)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

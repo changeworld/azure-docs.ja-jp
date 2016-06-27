@@ -3,7 +3,7 @@
  description="Azure IoT Hub デバイス管理の概要: デバイス ツイン、デバイス クエリ、デバイス ジョブ"
  services="iot-hub"
  documentationCenter=""
- authors="ellenfosborne"
+ authors="juanjperez"
  manager="timlt"
  editor=""/>
 
@@ -14,7 +14,7 @@
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="04/29/2016"
- ms.author="elfarber"/>
+ ms.author="juanpere"/>
 
 # Azure IoT Hub デバイス管理の概要 (プレビュー)
 
@@ -24,7 +24,7 @@ Azure IoT のデバイス管理には 3 つの主な概念があります。
 
 1.  **デバイス ツイン:** IoT Hub の物理デバイスの表現。
 
-2.  **デバイス クエリ**: デバイス ツインを検索し、デバイス ツインの総合的な理解を生み出すことができます。たとえば、1.0 のファームウェア バージョンですべてのデバイス ツインを検索できます。
+2.  **デバイス クエリ**: デバイス ツインを検索し、複数のデバイス ツインの総合的な理解を生み出すことができます。たとえば、1.0 のファームウェア バージョンですべてのデバイス ツインを検索するクエリを実行できます。
 
 3.  **デバイス ジョブ**: ファームウェアの更新、再起動、および出荷時の設定へのリセットなど、1 つ以上の物理デバイス上で実行するアクション。
 
@@ -105,15 +105,7 @@ DM クライアント ライブラリは、デバイス管理において主な�
 
 ## 次のステップ
 
-Azure IoT Hub デバイス管理機能の詳細については、次のチュートリアルに進んでください。
-
-- [Azure IoT Hub デバイス管理の使用][lnk-get-started]
-
-- [デバイス ツインの使用方法][lnk-tutorial-twin]
-
-- [クエリを使用したデバイス ツインの検索方法][lnk-tutorial-queries]
-
-- [デバイス ジョブを使用して、デバイスのファームウェアを更新する方法][lnk-tutorial-jobs]
+Azure IoT Hub デバイス管理機能について学習を継続するには、[Azure IoT Hub デバイス管理の概要][lnk-get-started]のチュートリアルを参照してください。
 
 <!-- Images and links -->
 [img-twin]: media/iot-hub-device-management-overview/image1.png
@@ -124,9 +116,7 @@ Azure IoT Hub デバイス管理機能の詳細については、次のチュー
 [lnk-library-c]: iot-hub-device-management-library.md
 [lnk-get-started]: iot-hub-device-management-get-started.md
 [lnk-tutorial-twin]: iot-hub-device-management-device-twin.md
-[lnk-tutorial-queries]: iot-hub-device-management-device-query.md
-[lnk-tutorial-jobs]: iot-hub-device-management-device-jobs.md
 [lnk-apidocs]: http://azure.github.io/azure-iot-sdks/
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

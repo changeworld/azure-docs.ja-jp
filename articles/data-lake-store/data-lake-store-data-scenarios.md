@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="05/27/2016"
+   ms.date="06/14/2016"
    ms.author="nitinme"/>
 
-# Azure Data Lake Store に関するデータ シナリオ
+# ビッグ データの要件に対する Azure Data Lake Store の使用
 
 ビッグ データの処理には主に 4 つの段階があります。
 
@@ -24,7 +24,6 @@
 * データの処理
 * データのダウンロード
 * データの視覚化
-
 
 この記事では、Azure Data Lake Store に関してこれらの段階について説明し、お客様のビッグ データのニーズを満たすために使用できるオプションとツールを確認します。
 
@@ -81,15 +80,25 @@ Web サーバー ログ データをアップロードする場合、または�
 * [AdlCopy サービス](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store)
 
+### オンプレミスまたは IaaS Hadoop クラスターに格納されているデータ
+
+大量のデータが既存の Hadoop クラスターの HDFS を使用するコンピューターにローカルに格納されている場合があります。Hadoop クラスターは、オンプレミスのデプロイ内にある場合も、Azure の IaaS クラスター内にある場合もあります。このようなデータを 1 回限りまたは定期的に Azure Data Lake Store にコピーする要件が存在します。これを実現するために、さまざまな方法を使用できます。以下の表に、それぞれの方法とそのトレードオフを示します。
+
+| アプローチ | 詳細 | 長所 | 考慮事項 |
+|-----------|---------|--------------|-----------------|
+| Azure Data Factory (ADF) を使用して Hadoop クラスターから Azure Data Lake Store にデータを直接コピーする。 | [ADF ではデータ ソースとして HDFS をサポートしている。](../data-factory/data-factory-hdfs-connector.md) | ADF では、HDFS が最初からサポートされており、ファースト クラスのエンド ツー エンドの管理と監視が提供される。 | Data Management Gateway をオンプレミスまたは IaaS クラスターにデプロイする必要がある。 |
+| Hadoop からデータをファイルとしてエクスポートする。次に、適切なメカニズムを使用してファイルを Azure Data Lake Store にコピーする。 | 次のいずれかを使用してファイルを Azure Data Lake Store にコピーできる。<ul><li>[Azure PowerShell (Windows OS)](data-lake-store-get-started-powershell.md)</li><li>[Azure クロスプラットフォーム CLI (Windows OS 以外)](data-lake-store-get-started-cli.md)</li><li>Data Lake Store SDK を使用するカスタム アプリ</li></ul> | 手軽に開始できる。カスタマイズしたアップロードを行うことができる。 | 複数のテクノロジを含む複数ステップのプロセス。カスタマイズされたツールという性質上、時間の経過と共に管理と監視が困難になる。 |
+| Distcp を使用して、Hadoop から Azure Storage にデータをコピーする。次に、適切なメカニズムを使用してデータを Azure Storage から Azure Data Lake Store にコピーする。 | 次のいずれかを使用してデータを Azure Storage から Data Lake Store にコピーできる。<ul><li>[Azure Data Factory](../data-factory/data-factory-data-movement-activities.md)</li><li>[AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight クラスター上で実行されている Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)</li></ul>| オープン ソースのツールを使用できる。 | 複数のテクノロジを含む複数ステップのプロセス。 |
+
 ### 非常に大規模なデータセット
 
 数 TB に及ぶデータセットをアップロードする場合、上記の方法では速度が遅く、コストがかかることがあります。このような場合は、次のオプションを使用できます。
 
-* **データの "オフライン" アップロード**。[Azure Import/Export サービス](../storage/storage-import-export-service.md)を利用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送すると、データは Azure Storage Blob にアップロードされます。その後、[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store) または [AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)を使って、Azure Storage Blob から Data Lake Store にデータを移動できます。
+* **データの "オフライン" アップロード**。[Azure Import/Export サービス](../storage/storage-import-export-service.md)を利用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送すると、データは Azure Storage BLOB にアップロードされます。その後、[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store) または [AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)を使って、Azure Storage BLOB から Data Lake Store にデータを移動できます。
 
 	>[AZURE.NOTE] Import/Export サービスを利用する場合、Azure データ センターに送るディスク上のファイル サイズは 200 GB 以下である必要があります。
 
-* **Azure ExpressRoute の使用**。Azure ExpressRoute を使用すると、Azure データ センターとお客様のオンプレミスのインフラストラクチャとの間でプライベート接続を作成できます。これにより、大量のデータを転送するための信頼性の高いオプションが提供されます。詳細については、「[Azure ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
+* **Azure ExpressRoute の使用**。Azure ExpressRoute を使用すると、Azure データ センターとお客様のオンプレミスのインフラストラクチャとの間でプライベート接続を作成できます。これにより、大量のデータを転送するための信頼性の高いオプションが提供されます。詳細については、[Azure ExpressRoute のドキュメント](../expressroute/expressroute-introduction.md)を参照してください。
 
 ## Data Lake Store に格納されているデータの処理
 
@@ -134,4 +143,4 @@ Data Lake Store でデータが利用できるようになったら、サポー�
 * まず、[Azure Data Factory を使って、Data Lake Store から Azure SQL Data Warehouse にデータを移動](../data-factory/data-factory-data-movement-activities.md#supported-data-stores)します。
 * その後、[Power BI を Azure SQL Data Warehouse と統合](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md)して、データを視覚的に表現することができます。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

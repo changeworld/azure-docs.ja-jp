@@ -220,7 +220,7 @@ ErrorCancelingTask|タスクをキャンセルしようとして失敗したと�
 TransientError|一時的な問題に関するエラーのカテゴリ (Azure Storage の一時的なネットワークの問題など)
 
 
-**Media Services** チームのサポートを受けるには、[サポート チケット](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を開いてください。
+**Media Services** チームのサポートを受けるには、[サポート チケット](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を開いてください。
 
 
 
@@ -242,4 +242,4 @@ TransientError|一時的な問題に関するエラーのカテゴリ (Azure Sto
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

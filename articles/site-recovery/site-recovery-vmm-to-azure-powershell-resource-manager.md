@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/15/2016"
+	ms.date="06/13/2016"
 	ms.author="rajanaki"/>
 
 # PowerShell と Azure Resource Manager を使用して VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする
@@ -186,7 +186,7 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 
 ## ステップ 6: Azure Recovery Services エージェントをインストールする
 
-1. [http:/aka.ms/latestmarsagent](http:/aka.ms/latestmarsagent "http:/aka.ms/latestmarsagent") から Azure Recovery Services エージェントをダウンロードし、保護する VMM クラウドに配置されている各 Hyper-V ホスト サーバーにインストールします。
+1. [http://aka.ms/latestmarsagent](http://aka.ms/latestmarsagent) から Azure Recovery Services エージェントをダウンロードし、保護する VMM クラウドに配置されている各 Hyper-V ホスト サーバーにインストールします。
 
 2. すべての VMM ホストで次のコマンドを実行します。
 
@@ -238,7 +238,7 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 
 ネットワーク マッピングを開始する前に、ソース VMM サーバー上の仮想マシンが VM ネットワークに接続されていることを確認してください。さらに、1 つまたは複数の Azure 仮想ネットワークを作成します。
 
-Azure Resource Manager と PowerShell を使用して仮想ネットワークを作成する方法の詳細については、「[PowerShell と Azure Resource Manager を使用してサイト間 VPN 接続で仮想ネットワークを作成する](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell/)」を参照してください。
+Azure Resource Manager と PowerShell を使用して仮想ネットワークを作成する方法の詳細については、「[PowerShell と Azure Resource Manager を使用してサイト間 VPN 接続で仮想ネットワークを作成する](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)」を参照してください。
 
 複数の仮想マシン ネットワークを 1 つの Azure ネットワークにマップできることに注意してください。ターゲット ネットワークに複数のサブネットがあり、そのサブネットのいずれかが、ソースの仮想マシンが配置されているサブネットと同じ名前である場合、フェールオーバー後、レプリカの仮想マシンはそのターゲット サブネットに接続されます。ターゲットのサブネットで名前が一致するものがなければ、仮想マシンはネットワークの最初のサブネットに接続されます。
 
@@ -266,7 +266,7 @@ Azure Resource Manager と PowerShell を使用して仮想ネットワークを
 
  以下の点に注意してください。
 
- - 仮想マシンは Azure 要件を満たしている必要があります。計画ガイドの「[Azure Site Recovery のデプロイの準備](../site-recovery-best-practices)」で確認してください。
+ - 仮想マシンは Azure 要件を満たしている必要があります。計画ガイドの[前提条件とサポート](site-recovery-best-practices.md)に関するページで確認してください。
 
  - オペレーティング システムとオペレーティング システム ディスクの保護を有効にするには、仮想マシンのプロパティを設定する必要があります。仮想マシン テンプレートを使用して VMM 内で仮想マシンを作成する際に、プロパティを設定できます。また、仮想マシンのプロパティの **[全般]** タブと **[ハードウェア構成]** タブで既存の仮想マシンに対してこれらのプロパティを設定することもできます。VMM でこれらのプロパティを設定していない場合は、Azure Site Recovery ポータルで構成できます。
 
@@ -343,6 +343,6 @@ Azure Resource Manager と PowerShell を使用して仮想ネットワークを
 
 ## 次のステップ
 
-Azure Site Recovery PowerShell コマンドレットの詳細を[確認します](https://msdn.microsoft.com/library/dn850420.aspx)</a>。
+Azure Site Recovery と Azure Resource Manager PowerShell コマンドレットの[詳細を確認します](https://msdn.microsoft.com/library/azure/mt637930.aspx)。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

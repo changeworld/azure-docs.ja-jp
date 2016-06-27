@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="multiple"
 	ms.topic="article" 
-	ms.date="06/03/2016"
+	ms.date="06/14/2016"
 	ms.author="awills"/>
 
 # Application Insights ポータルのナビゲーションおよびダッシュボード
@@ -79,7 +79,7 @@
 
 1. タイルにグラフを追加します。 
 2. メトリック、グループ化ディメンションおよびグラフのスタイル (テーブル、グラフ) を設定します。
-3. タイルのグラフに、期間とフィルターのプロパティを設定します。
+3. タイルのグラフに、期間とフィルターのプロパティを設定します。グラフの独自の期間を設定したり、ダッシュ ボードの期間を継承したりすることができます。
 4. タイルのタイトルを設定します。
 
 メトリックス エクスプ ローラーのブレードからピン留めされたタイルには、概要ブレードからピン留めされたタイルよりも多くの編集オプションがあります。
@@ -110,4 +110,40 @@
 
 詳細については、[ロールとアクセス制御](app-insights-resources-roles-access-control.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0608_2016-->
+## Settings
+
+[概要] ブレードの [設定] ボタンは、構成に関するものだけでなく、複数の種類のグラフを設定することもできます。
+
+* **監査ログ** - アラートと、アプリ リソース上で実行されたアクションを確認します。
+* [新しいサポート要求](app-insights-get-dev-support.md) - Azure のさまざまな側面が記載されたヘルプのオプションです。Application Insights では、ウィンドウの右上にある [スマイリー] ボタンを使用してヘルプを取得することもできます。
+* [アプリケーション マップ](app-insights-dependencies.md#application-map) - 依存関係情報から取得されるアプリケーションのコンポーネントを示すアクティブ マップです。
+* [ライブ メトリック ストリーム](app-insights-metrics-explorer.md#live-metrics-stream) - 新しいリリースを監視するための、待機時間が約 1 秒の重要なメトリックです。
+* **エラー** - 失敗した要求、失敗した依存関係の呼び出し、例外です。[編集可能なメトリック ブレード](app-insights-metrics-explorer.md)です。
+* **パフォーマンス** - 応答時間および依存関係の応答時間です。[編集可能なメトリック ブレード](app-insights-metrics-explorer.md)です。
+* [サーバー](app-insights-web-monitor-performance.md) - パフォーマンス カウンターです。[Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)している場合に使用できます。
+* **ブラウザー** - ページ ビューと AJAX パフォーマンスです。[Web ページをインストルメント化](app-insights-javascript.md)している場合に使用できます。
+* **使用状況** - ページ ビュー、ユーザーおよびセッションの数です。[Web ページをインストルメント化](app-insights-javascript.md)している場合に使用できます。
+* **作業の開始** - インライン チュートリアルです。
+* **プロパティ** - インストルメンテーション キー、サブスクリプションおよびリソース ID です。
+* [状態](app-insights-monitor-web-app-availability.md) - Web テストの構成と結果です。
+* [アラート](app-insights-alerts.md) - メトリック アラートの構成です。
+* [連続エクスポート](app-insights-export-telemetry.md) - Azure ストレージへのテレメトリのエクスポートを構成します。
+* [パフォーマンス テスト](app-insights-monitor-web-app-availability.md#performance-tests) - Web サイトでの代理負荷を設定します。
+* [クォータと価格](app-insights-pricing.md)および[インジェスト サンプリング](app-insights-sampling.md)。
+* **API アクセス** - 現在は、[リリース注釈](app-insights-annotations.md)の作成とデータ アクセス API で使用されています。
+* [**作業項目**](app-insights-diagnostic-search.md#create-work-item) - テレメトリを確認しながらバグを作成できるように、作業項目追跡システムに接続します。
+* [**ユーザー**](app-insights-resources-roles-access-control.md) - アプリ リソースにアクセスできるユーザーを管理します。
+* [**ロール**](app-insights-resources-roles-access-control.md) - ユーザーができることを管理します。
+* [**タグ**](..\resource-group-using-tags.md) - Azure リソースを整理します。
+* [**ロック**](..\resource-group-lock-resources.md) - Azure リソースをロックします。
+* [**テンプレートのエクスポート**](app-insights-powershell.md) - 新しいリソースを作成するテンプレートとして使用できるように、Azure リソースの定義をエクスポートします。
+
+## 次の手順
+
+||
+|---|---
+|[メトリックス エクスプ ローラー](app-insights-metrics-explorer.md)<br/>メトリックのフィルター処理と分割|![検索例](./media/app-insights-dashboards/64.png)
+|[診断検索](app-insights-diagnostic-search.md)<br/>イベントや関連イベントを検索して確認し、バグを作成 |![検索例](./media/app-insights-dashboards/61.png)
+|[Analytics](app-insights-analytics.md)<br/>強力なクエリ言語| ![検索例](./media/app-insights-dashboards/63.png)
+
+<!---HONumber=AcomDC_0615_2016-->

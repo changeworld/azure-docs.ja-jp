@@ -22,6 +22,7 @@
 
 
 > [AZURE.SELECTOR]
+- [概要](sql-database-firewall-configure.md)
 - [Azure ポータル](sql-database-configure-firewall-settings.md)
 - [TSQL](sql-database-configure-firewall-settings-tsql.md)
 - [PowerShell](sql-database-configure-firewall-settings-powershell.md)
@@ -73,4 +74,4 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

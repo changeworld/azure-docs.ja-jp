@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/21/2016"
+	ms.date="06/13/2016"
 	ms.author="tomfitz"/>
 
 # リソース マネージャーの監査操作
@@ -125,4 +125,4 @@ Azure ポータル、Azure PowerShell、Azure CLI、Insights REST API、また�
 - デプロイのトラブルシューティングに使用するコマンドについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)」をご覧ください。
 - すべてのユーザーのリソースに対する削除を回避する方法については、「[Azure Resource Manager によるリソースのロック](resource-group-lock-resources.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0615_2016-->

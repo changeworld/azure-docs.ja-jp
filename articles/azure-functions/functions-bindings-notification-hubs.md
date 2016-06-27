@@ -131,7 +131,7 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 	  }
 	}
 
-project.json ファイルのアップロードの詳細については、「[project.json ファイルのアップロード](http://stackoverflow.com/questions/36411536/how-can-i-use-nuget-packages-in-my-azure-functions)」を参照してください。
+project.json ファイルのアップロードの詳細については、「[project.json ファイルのアップロード](functions-reference.md#fileupdate)」を参照してください。
 
 コード例:
 
@@ -155,4 +155,4 @@ project.json ファイルのアップロードの詳細については、「[pro
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

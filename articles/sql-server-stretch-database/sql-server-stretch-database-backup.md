@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="06/14/2016"
 	ms.author="douglasl"/>
 
 # Stretch 対応のデータベースをバックアップする
@@ -64,4 +64,4 @@ Stretch Database が現在、ステージング テーブルに一時的に保�
 
 [SQL Server データベースのバックアップと復元](https://msdn.microsoft.com/library/ms187048.aspx)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

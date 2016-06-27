@@ -156,7 +156,7 @@
 
 **推定所要時間:** 10 分。
 
-1. [Azure ポータル](https://ms.portal.azure.com/#)のエラスティック データベース プールのダッシュボード ビューで、**[ジョブの作成]** をクリックします。
+1. [Azure ポータル](https://portal.azure.com/#)のエラスティック データベース プールのダッシュボード ビューで、**[ジョブの作成]** をクリックします。
 2. 初めてジョブを作成する場合は、**[プレビュー版の使用条件]** をクリックして、**Elastic Database ジョブ**をインストールする必要があります。
 3. チェック ボックスをクリックして条項に同意します。
 4. [サービスのインストール] ビューで、**[ジョブの資格情報]** をクリックします。
@@ -187,4 +187,4 @@
 [3]: ./media/sql-database-elastic-jobs-service-installation/start-board.png
 [4]: ./media/sql-database-elastic-jobs-service-installation/not-done.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

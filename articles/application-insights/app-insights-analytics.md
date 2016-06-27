@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Analytics - Application Insights の強力な検索ツール" 
+	pageTitle="Analytics - Application Insights の強力な検索ツール | Microsoft Azure" 
 	description="Application Insights の強力な診断検索ツールである Analytics の概要。" 
 	services="application-insights" 
     documentationCenter=""
@@ -21,7 +21,6 @@
 
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
-[AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
 
  
 一般的なクエリでは、*ソース* テーブルの後に、一連の*演算子*を `|` で区切って記載します。
@@ -82,4 +81,4 @@
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

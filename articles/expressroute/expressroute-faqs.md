@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/07/2016"
+   ms.date="06/13/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute の FAQ
@@ -61,6 +61,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 	- CDN
 	- Visual Studio Team Services のロード テスト
 	- Multi-factor Authentication
+	- Traffic Manager
 
 ## データおよび接続
 
@@ -177,7 +178,7 @@ BGP セッションが切断されます。プレフィックス数が上限未�
 ### ExpressRoute Premium とは何ですか。
 ExpressRoute Premium は、次に示す機能で構成されたサービスです。
 
- - パブリック ピアリングおよびプライベート ピアリング用ルートの上限が 4,000 から 10,000 に増加されたルーティング テーブル。
+ - プライベート ピアリング用ルートの上限が 4,000 から 10,000 に増加されたルーティング テーブル。
  - ExpressRoute 回線に接続できる数が増加された VNET (既定は 10)。詳細については、下の表を参照してください。
  - Microsoft のコア ネットワーク経由のグローバル接続。ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになります。**例:** 西ヨーロッパで作成された VNET をシリコン バレーで作成された ExpressRoute 回線に接続できます。
  - Office 365 サービスおよび CRM Online への接続。
@@ -217,6 +218,8 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 
 ## ExpressRoute と、Office 365 サービスおよび CRM Online
 
+[AZURE.INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
+
 ### Office 365 サービスおよび CRM Online に接続する ExpressRoute 回線はどのようにして作成しますか。
 
 1. 「[ExpressRoute の前提条件](expressroute-prerequisites.md)」ページを参照して、要件を満たしていることを確認します。
@@ -248,4 +251,4 @@ ExpressRoute がサポートされているパートナーと地域の一覧に�
 ### ExpressRoute 接続経由で Dynamics AX にアクセスできますか。
 いいえ。それはサポートされていません。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

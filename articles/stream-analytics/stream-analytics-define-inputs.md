@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="06/15/2016"
 	ms.author="jeffstok"/>
 
 # データ接続: Stream Analytics に対するイベントのデータ ストリーム入力の概要
@@ -40,7 +40,7 @@ Stream Analytics で Event Hubs から返されるイベントの既定のタイ
 
 Stream Analytics イベント ハブの各入力は、独自のコンシューマー グループを持つように構成する必要があります。ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。これは 1 つのコンシューマー グループの閲覧者数に影響を与えます。閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とするイベント ハブの上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。Event Hub ごとに 20 個のコンシューマー グループという制限もある点に注意してください。詳細については、「[Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」を参照してください。
 
-## 入力データ ストリームとしてイベント ハブを構成する
+### 入力データ ストリームとしてイベント ハブを構成する
 
 次の表に、[イベント ハブ入力] タブの各プロパティとその説明を示しています。
 
@@ -77,11 +77,13 @@ FROM Input
 
 Azure IoT Hub は、IoT シナリオ向けに最適化されたスケーラブルな発行/サブスクライブ イベント インジェスターです。Stream Analytics で IoT Hub から返されるイベントの既定のタイムスタンプは、このイベントが IoT Hub に到達したときのタイムスタンプであることに注意することが重要です。このタイムスタンプが EventEnqueuedUtcTime です。イベント ペイロードのタイムスタンプを利用してデータを処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
 
+> [AZURE.NOTE] DeviceClient プロパティを使用して送信されたメッセージだけを処理できます。
+
 ### コンシューマー グループ
 
 Stream Analytics IoT Hub の各入力は、独自のコンシューマー グループを持つように構成する必要があります。ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。これは 1 つのコンシューマー グループの閲覧者数に影響を与えます。閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とする IoT Hub の上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。
 
-## データ ストリーム入力として IoT Hub を構成する
+### データ ストリーム入力として IoT Hub を構成する
 
 次の表に、IoT Hub の入力タブの各プロパティとその説明を示しています。
 
@@ -209,4 +211,4 @@ FROM Input
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

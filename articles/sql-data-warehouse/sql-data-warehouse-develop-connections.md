@@ -17,7 +17,7 @@
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse への接続
-SQL Data Warehouse に接続するには、認証のためのセキュリティ資格情報を渡す必要があります。接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されているのがわかります。セキュリティ、および SQL Data Warehouse への接続を有効にする方法の詳細については、「[SQL Data Warehouse でのデータベース保護][]」をご覧ください。
+SQL Data Warehouse に接続するには、認証のためのセキュリティ資格情報を渡す必要があります。接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されているのがわかります。セキュリティの詳細、および SQL Data Warehouse への接続を有効にする方法の詳細については、「[SQL Data Warehouse でのデータベース保護][]」をご覧ください。
 
 この記事では、SQL Data Warehouse への接続に関する次の点について説明します。
 
@@ -155,10 +155,10 @@ WHERE   s.[session_id] <> SESSION_ID()
 <!--Azure.com references-->
 [接続およびクエリ]: ./sql-data-warehouse-get-started-connect.md
 [Table design in SQL Data Warehouse (SQL Data Warehouse でのテーブルの デザイン)]: ./sql-data-warehouse-develop-table-design.md
-[SQL Data Warehouse でのデータベース保護]: ./sql-data-warehouse-overview-security.md
+[SQL Data Warehouse でのデータベース保護]: ./sql-data-warehouse-overview-manage-security.md
 
 <!--MSDN references-->
 
 <!--Other references-->
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

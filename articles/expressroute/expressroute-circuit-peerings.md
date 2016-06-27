@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="03/21/2016"
+   ms.date="06/13/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute 回線とルーティング ドメイン
@@ -61,6 +61,8 @@ Azure Storage、SQL Database、Websites などのサービスは、パブリッ�
  
 ### Microsoft ピアリング
 
+[AZURE.INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
+
 上記以外の Microsoft Online Services (Office 365 サービスなど) への接続はすべて Microsoft ピアリングを経由します。Microsoft ピアリング ルーティング ドメイン経由で、ご使用の WAN と Microsoft クラウド サービスの双方向接続を実現できます。お客様または接続プロバイダーが所有するパブリック IP アドレスのみを使用して Microsoft クラウド サービスに接続する必要があり、定義されてするすべての規則を遵守する必要があります。詳細については、[ExpressRoute の前提条件](expressroute-prerequisites.md)に関するページを参照してください。
 
 サポートされるサービス、料金、および構成の詳細については、[FAQ のページ](expressroute-faqs.md)を参照してください。Microsoft ピアリングのサポートを提供している接続プロバイダーの一覧については、[ExpressRoute の場所](expressroute-locations.md)に関するページを参照してください。
@@ -83,11 +85,11 @@ ExpressRoute 回線の一部として 1 つ以上のルーティング ドメイ
 
 ## 次のステップ
 
-- サービス プロバイダーを検索します。[ExpressRoute のサービス プロバイダーと提供地域](expressroute-locations.md)に関するページを参照してください。
+- サービス プロバイダーを検索します。[ExpressRoute のサービス プロバイダーと提供地域](expressroute-locations.md)に関するページをご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 - ExpressRoute 接続を構成します。
 	- [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)
 	- [ルーティング (回線ピアリング) の構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

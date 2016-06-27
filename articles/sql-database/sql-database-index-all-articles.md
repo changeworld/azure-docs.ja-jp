@@ -103,7 +103,7 @@
 | 44 | [Node.js を使用して SQL Database に接続する](sql-database-develop-nodejs-simple.md) | Azure SQL Database への接続に使用できる Node.js コード サンプルについて説明します。 |
 | 45 | [Python を使用して SQL Database に接続する](sql-database-develop-python-simple.md) | Azure SQL Database への接続に使用できる Python コード サンプルについて説明します。 |
 | 46 | [Ruby を使用して SQL Database に接続する](sql-database-develop-ruby-simple.md) | Azure SQL Database に接続するための Ruby コード サンプルを提供します。 |
-| 47 | [SQL Database への接続: ベスト プラクティスと設計のガイドライン](sql-database-connect-central-recommendations.md) | ADO.NET や PHP などのテクノロジから Azure SQL Database に接続するクライアント プログラムのリンクとベスト プラクティスの推奨事項を集めた、開始点となるトピック。 |
+| 47 | [SQL Database の開発: 概要](sql-database-develop-overview.md) | ADO.NET や PHP などのテクノロジから Azure SQL Database に接続するクライアント プログラムのリンクとベスト プラクティスの推奨事項を集めた、開始点となるトピック。 |
 | 48 | [メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET Web フォーム アプリケーションを作成して Azure App Service にデプロイする](web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database.md) | このチュートリアルでは、SQL Database と連動するセキュリティ保護された ASP.NET 4.5 Web フォーム Web アプリケーションを開発する方法と、このアプリケーションを Azure にデプロイする方法について説明します。 |
 | 49 | [コードから SQL Database に接続するためのクライアント ID とキーを取得する](sql-database-client-id-keys.md) | コードから SQL Database にアクセスするためのクライアント ID とキーを取得します。 |
 | 50 | [Azure SQL Database のテンポラル テーブルの概要](sql-database-temporal-tables.md) | Azure SQL Database のテンポラル テーブルの使い方について基本的な事柄を説明します。 |
@@ -351,7 +351,7 @@
 | 180 | [Azure SQL Database のリソース制限](sql-database-resource-limits.md) | このページでは、Azure SQL Database に対するいくつかの一般的なリソース制限について説明します。 |
 | 181 | [Azure SQL Database の Transact-SQL の相違点](sql-database-transact-sql-information.md) | Azure SQL Database では完全にサポートされない Transact-SQL ステートメント |
 | 182 | [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md) | クライアント プログラムが Azure SQL Database または Microsoft SQL Server に接続する際に使用できる各ドライバーの最小バージョン番号を示します。Microsoft ではなくコミュニティからリリースされているドライバーに関するバージョン情報へのリンクが用意されています。 |
-| 183 | [フィルターを使用した検索](https://azure.microsoft.com/documentation/articles/?service=sql-database) | Azure SQL Database に関するドキュメント記事のフィルターを使用して検索します。 |
+| 183 | [フィルターを使用した検索](https://azure.microsoft.com/ja-JP/documentation/articles/?service=sql-database) | Azure SQL Database に関するドキュメント記事のフィルターを使用して検索します。 |
 
 
 ## その他
@@ -378,4 +378,4 @@
 
 - ラーニング パスの図: [sql-database-elastic-scale](http://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

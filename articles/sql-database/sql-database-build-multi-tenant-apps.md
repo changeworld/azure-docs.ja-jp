@@ -47,11 +47,11 @@ Basic、Standard、Premium プールは、さまざまなパフォーマンス�
 
 エラスティック プールだけでなく、複数のデータベースにまたがる運用アクティビティの管理に役立つ SQL Database の機能があります。
 
-**複数のデータベースにまたがるクエリとレポートを実行する。** [エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用すると、エラスティック プール内の複数のデータベースに対するクエリとレポートを実行し、プールの多くのデータベースに格納されているデータに同時にリモート アクセスすることができます。
+** 複数のデータベースにまたがるクエリとレポートを実行する。 ** [エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用すると、エラスティック プール内の複数のデータベースに対するクエリとレポートを実行し、プールの多くのデータベースに格納されているデータに同時にリモート アクセスすることができます。
 
-**複数のデータベースのトランザクションを実行する。** [エラスティック データベース トランザクション](sql-database-elastic-transactions-overview.md)を使用すると、SQL Database の複数のデータベースにまたがるトランザクションと操作を実行できます (たとえば、複数のデータベースで金融トランザクションを処理するとき、または 1 つのデータベースと注文で在庫を更新するとき)。
+** 複数のデータベースのトランザクションを実行する。 ** [エラスティック データベース トランザクション](sql-database-elastic-transactions-overview.md)を使用すると、SQL Database の複数のデータベースにまたがるトランザクションと操作を実行できます (たとえば、複数のデータベースで金融トランザクションを処理するとき、または 1 つのデータベースと注文で在庫を更新するとき)。
 
-**複数のデータベースに対して同じ操作を実行する。** [エラスティック データベース ジョブ](sql-database-elastic-jobs-overview.md)は、エラスティック プール内の各データベースに対してインデックスの再構築やスキーマの更新などの管理操作を実行します。
+** 複数のデータベースに対して同じ操作を実行する。 ** [エラスティック データベース ジョブ](sql-database-elastic-jobs-overview.md)は、エラスティック プール内の各データベースに対してインデックスの再構築やスキーマの更新などの管理操作を実行します。
 
 SQL Database の他の機能についてはホーム ページを参照してください。[ぜひご確認ください。](https://azure.microsoft.com/services/sql-database/)
 
@@ -59,10 +59,10 @@ SQL Database の他の機能についてはホーム ページを参照してく
 
 [無料の Azure サブスクリプション](https://azure.microsoft.com/get-started/)を入手し、[最初の Azure SQL Database を作成](sql-database-get-started.md)します。
 
-## 詳細情報
+## その他のリソース
 
 [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)のすべてを確認します。
  
 [SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->
