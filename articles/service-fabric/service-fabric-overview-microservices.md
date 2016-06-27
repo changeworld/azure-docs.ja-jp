@@ -146,7 +146,7 @@ Service Fabric の目的は、マイクロサービス手法によるアプリ�
 
 * 詳細:
     * [Service Fabric の概要](service-fabric-overview.md)
-    * [Microservices: An application revolution powered by the cloud (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/ja-JP/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+    * [Microservices: An application revolution powered by the cloud (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

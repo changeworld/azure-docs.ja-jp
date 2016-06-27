@@ -88,7 +88,9 @@ DocumentDB アカウントを作成すると、2 つのマスター アクセス
 
 1. [Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
 2. **[DocumentDB アカウント]** ブレードの **[要点]** バーで、**[キー]** をクリックします。
-3. **[キー]** ブレードで、コピー対象のキーの右側にある **[コピー]** ボタンをクリックします。![Azure ポータルの [キー] ブレードでアクセス キーを表示およびコピーする](./media/documentdb-manage-account/copykeys.png)
+3. **[キー]** ブレードで、コピー対象のキーの右側にある **[コピー]** ボタンをクリックします。
+
+	![Azure ポータルの [キー] ブレードでアクセス キーを表示およびコピーする](./media/documentdb-manage-account/copykeys.png)
 
 ### アクセス キーを再生成する
 
@@ -136,7 +138,7 @@ DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
 [consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
-[azureregions]: https://azure.microsoft.com/ja-JP/regions/#services
-[offers]: https://azure.microsoft.com/ja-JP/pricing/details/documentdb/
+[azureregions]: https://azure.microsoft.com/regions/#services
+[offers]: https://azure.microsoft.com/pricing/details/documentdb/
 
 <!---HONumber=AcomDC_0615_2016-->

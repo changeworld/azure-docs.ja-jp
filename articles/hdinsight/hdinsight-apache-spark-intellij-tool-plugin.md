@@ -40,7 +40,7 @@
 
 ## IntelliJ IDEA 用の HDInsight Tools プラグインのインストール
 
-1. IntelliJ IDEA の [Welcome] (ようこそ) 画面が表示されたら、**[Configure]** (構成) をクリックし、**[Plugins]** (プラグイン) をクリックします。
+1. IntelliJ IDEA の [Welcome] \(ようこそ) 画面が表示されたら、**[Configure]** (構成) をクリックし、**[Plugins]** (プラグイン) をクリックします。
 
 2. 次の画面の左下隅にある **[Browse Repositories]** (リポジトリの参照) をクリックします。**[リポジトリの参照]** ダイアログ ボックスが開いたら、**HDInsight** を検索し、**[Microsoft Azure HDInsight Tools for IntelliJ]** を選択し、**[インストール]** をクリックします。プラグインは、Scala プラグインに依存しています。そのため、Scala プラグインがインストールされていない場合は、Scala プラグインもインストールするように求められます。
 
@@ -141,7 +141,7 @@
 
 		* **[Submit]** をクリックします。
 
-	3. ウィンドウの下部にある **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。[Spark Submission] (Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
+	3. ウィンドウの下部にある **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。[Spark Submission] \(Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
 
         ![Spark Application Result](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 

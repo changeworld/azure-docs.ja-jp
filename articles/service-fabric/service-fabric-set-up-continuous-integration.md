@@ -194,7 +194,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
 
 1.	agent.zip をダウンロードします。これを行うには、次の手順を実行します。
 
-    a.****https://[your-VSTS-account-name].visualstudio.com** などのチーム プロジェクトにサインインします。
+    a.**https://[your-VSTS-account-name].visualstudio.com** などのチーム プロジェクトにサインインします。
 
     b.画面の右上隅にある歯車アイコンを選択します。
 
@@ -401,7 +401,7 @@ Azure PowerShell をインストールするには、前のセクション「Azu
     |スクリプトのファイル名|**[…]** ボタンをクリックし、アプリケーション プロジェクト内の **[スクリプト]** ディレクトリに移動します。`Deploy-FabricApplication.ps1` を選択します。|
     |引数|`-PublishProfileFile path/to/MySolution/MyApplicationProject/PublishProfiles/MyPublishProfile.xml -ApplicationPackagePath path/to/MySolution/MyApplicationProject/pkg/$(BuildConfiguration)`|
 
->[AZURE.NOTE] 作業用の発行プロファイル xml ファイルを作成する簡単な方法は、https://azure.microsoft.com/ja-JP/documentation/articles/service-fabric-publish-app-remote-cluster に示すように Visual Studio で作成することです。
+>[AZURE.NOTE] 作業用の発行プロファイル xml ファイルを作成する簡単な方法は、https://azure.microsoft.com/documentation/articles/service-fabric-publish-app-remote-cluster に示すように Visual Studio で作成することです。
 
 >[AZURE.NOTE] 既存のアプリケーションをアップグレードする代わりに上書きすることでクラスターへのアプリケーションのデプロイをサポートする場合は、Powershell 引数 "-OverwriteBehavior SameAppTypeAndVersion" を追加します。さらに、選択した発行プロファイルがアップグレードを有効にするように構成されないようにしてください。これにより、新しいビルドをインストールする前に、まず既存の ApplicationType が削除されます。
 

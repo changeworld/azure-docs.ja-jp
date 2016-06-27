@@ -26,7 +26,7 @@
 
 <br/>
 
-> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] リソース マネージャー モデル。
 
 
 このエンド ツー エンドのチュートリアルでは、Azure 仮想マシンで実行されている SQL Server AlwaysOn を使用して可用性グループを実装する方法について説明します。

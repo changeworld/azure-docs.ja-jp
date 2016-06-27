@@ -109,7 +109,7 @@ C:\\code など、短いパス名のフォルダーにファイルを解凍し�
 
 または、最新の状態に保持するか、コードを投稿する場合は、次のようにリポジトリを複製します。
 
-****git clone https://github.com/Azure-Samples/MyDriving.git**
+**git clone https://github.com/Azure-Samples/MyDriving.git**
 
 ## Bing マップ API キーの取得
 
@@ -285,7 +285,7 @@ scenario\_complete.json での操作:
 
 ### テンプレートの実行
 
-テンプレートの実行方法の詳細は、**scripts/README.md ** に記載されています。
+テンプレートの実行方法の詳細は、**scripts/README.md** に記載されています。
 
 このスクリプトを使用して自分の Azure アカウントのすべてのサービスをプロビジョニングするには、次のいずれかの操作を行います。
 
