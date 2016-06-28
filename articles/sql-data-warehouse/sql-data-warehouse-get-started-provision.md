@@ -44,7 +44,7 @@
 
 	- **[データベース名]**: SQL Data Warehouse の参照に使用される名前です。サーバーに対して一意にする必要があります。
 	
-    - **[パフォーマンス]**: 最初は 400 DWU にすることをお勧めします。スライダーを左または右に移動して、データ ウェアハウスのパフォーマンスを調整したり、作成後にスケールアップまたはスケールダウンしたりすることができます。DWU の詳細については、[スケーリング](./sql-data-warehouse-manage-compute-overview.md)に関するドキュメントまたは[料金のページ](https://azure.microsoft.com/ja-JP/pricing/details/sql-data-warehouse/)を参照してください。
+    - **[パフォーマンス]**: 最初は 400 DWU にすることをお勧めします。スライダーを左または右に移動して、データ ウェアハウスのパフォーマンスを調整したり、作成後にスケールアップまたはスケールダウンしたりすることができます。DWU の詳細については、[スケーリング](./sql-data-warehouse-manage-compute-overview.md)に関するドキュメントまたは[料金のページ](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)を参照してください。
 
     - **[サブスクリプション]**: この SQL Data Warehouse の課金先のサブスクリプションを選択します。
 

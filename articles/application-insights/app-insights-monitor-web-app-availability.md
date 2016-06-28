@@ -50,8 +50,7 @@ Web テストには次の 2 種類があります。
 
 Application Insights のリソースで、可用性のタイルを見つけます。これをクリックして、アプリケーションの Web テスト ブレードを開き、Web テストを追加します。
 
-![少なくとも自分の Web サイトの URL を入力  
-](./media/app-insights-monitor-web-app-availability/13-availability.png)
+![少なくとも自分の Web サイトの URL を入力](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
 - **URL** はパブリック インターネットから認識できる必要があります。これにはクエリ文字列を含めることができます。したがって、たとえば限られた範囲でデータベースを実行できます。URL が解決されてリダイレクトする場合、それに続いて最大で 10 個リダイレクトを使用できます。
 - **[依存する要求の解析]**: 画像、スクリプト、スタイル ファイルなど、ページのリソースがテストの一環として要求されます。テスト全体のタイムアウト時間内にこれらすべてのリソースを正常にダウンロードできない場合、テストは失敗します。
@@ -81,8 +80,7 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 1 ～ 2 分後に、可用性/Web テスト ブレードで **[更新]** をクリックします(自動的には更新されません)。
 
-![ホーム ブレード上の概要結果  
-](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+![ホーム ブレード上の概要結果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
 その期間のより詳しいビューを表示するには、上部の概要グラフの棒をクリックします。
 
@@ -119,8 +117,7 @@ Web ページのイメージ、スタイル シート、スクリプトとその
 
 その結果をクリックしてポータルで評価し、失敗した理由をご確認ください。
 
-![Web テスト実行結果  
-](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
+![Web テスト実行結果](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
 
 
 代わりに、結果ファイルをダウンロードして Visual Studio で詳しく調べることもできます。

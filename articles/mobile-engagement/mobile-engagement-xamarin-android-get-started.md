@@ -61,7 +61,7 @@ Xamarin Studio で、Mobile Engagement の統合先のアプリが作成され�
 
 ###アプリを Mobile Engagement のバックエンドに接続する
 
-1. [Solution] (ソリューション) ウィンドウの **Packages** フォルダーを右クリックし、**[Add Packages]** (パッケージの追加) を選択します。
+1. [Solution] \(ソリューション) ウィンドウの **Packages** フォルダーを右クリックし、**[Add Packages]** (パッケージの追加) を選択します。
 
     ![][5]
 
@@ -82,7 +82,7 @@ Xamarin Studio で、Mobile Engagement の統合先のアプリが作成され�
 
 ###アクセス権限とサービス宣言を追加する
 
-1. Properties フォルダーの下にある **Manifest.xml** ファイルを開きます。[Source] (ソース) タブを選択して、XML ソースを直接更新します。
+1. Properties フォルダーの下にある **Manifest.xml** ファイルを開きます。[Source] \(ソース) タブを選択して、XML ソースを直接更新します。
  
 2. 次のアクセス権限を、プロジェクトの Manifest.xml 内の `<application>` タグの直前または直後に追加します (Manifest.xml は **Properties** フォルダーの下にあります)。
 
