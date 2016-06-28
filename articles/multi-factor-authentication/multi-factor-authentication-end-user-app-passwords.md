@@ -44,11 +44,11 @@
 
 多要素認証の使用方法|説明
 :------------- | :------------- | 
-[Office 365 で使用する](#Office 365 でのアプリ パスワードの作成と削除)| これは、Office 365 ポータルでアプリ パスワードを作成することを意味します。
+<a href="#で使用する">Office 365 で使用する</a>| これは、Office 365 ポータルでアプリ パスワードを作成することを意味します。
 [わからない](#creating-and-deleting-app-passwords-with-myapps-portal)|これは、[https://myapps.microsoft.com](https://myapps.microsoft.com) でアプリ パスワードを作成することを意味します。
-[Microsoft Azure で使用する](#Azure ポータルでアプリ パスワードを作成する)| これは、Azure ポータルでアプリ パスワードを作成することを意味します。
+<a href="#で使用するs">Microsoft Azure で使用する</a>| これは、Azure ポータルでアプリ パスワードを作成することを意味します。
 
-## Office 365 でのアプリ パスワードの作成と削除 
+<h2 id="で使用する">Office 365 でのアプリ パスワードの作成と削除</h2> 
 
 Office 365 で多要素認証を使用している場合は、Office 365 ポータルでアプリ パスワードを作成し、削除します。
 
@@ -81,7 +81,7 @@ Office 365 で多要素認証を使用している場合は、Office 365 ポー�
 9. アプリ パスワードを削除したら、**[閉じる]** をクリックできます。![閉じる](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
 
-## Myapps ポータルでのアプリ パスワードの作成と削除
+<h2 id="で使用するs">Myapps ポータルでのアプリ パスワードの作成と削除</h2>
 多要素認証を使用する方法がわからない場合、いつでも Myapps ポータルでアプリ パスワードを作成し、削除できます。
 
 ### Myapps ポータルでアプリ パスワードを作成するには
