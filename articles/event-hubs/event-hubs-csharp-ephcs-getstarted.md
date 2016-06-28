@@ -28,14 +28,13 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 このチュートリアルを完了するには、以下が必要になります。
 
-+ Microsoft Visual Studio 2013 以降、Microsoft Visual Studio Express for Windows。この記事の例では Visual Studio 2015 を使用します。
++ [Microsoft Visual Studio](http://visualstudio.com)
 
-+ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料アカウントを数分で作成できます。詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F target="\_blank")」 を参照してください。
++ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料アカウントを数分で作成できます。詳細については、「Azure の無料試用版サイト」(https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F target="\_blank") を参照してください。
 
 [AZURE.INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-send-csharp](../../includes/service-bus-event-hubs-get-started-send-csharp.md)]
-
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-ephcs](../../includes/service-bus-event-hubs-get-started-receive-ephcs.md)]
 
@@ -45,17 +44,17 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 1. Visual Studio で、前に作成した **Receiver** プロジェクトを開きます。
 
-2. **[Receiver]** ソリューションを右クリックし、**[追加]**、**[既存のプロジェクト]** の順にクリックします。
+2. **Receiver** ソリューションを右クリックし、**[追加]**、**[既存のプロジェクト]** の順にクリックします。
  
 3. 既存の Sender.csproj ファイルを見つけ、ダブルクリックしてソリューションに追加します。
  
-4. **[Receiver]** ソリューションをもう一度右クリックし、**[プロパティ]** をクリックします。**Receiver** プロパティ ページが表示されます。
+4. **Receiver** ソリューションをもう一度右クリックし、**[プロパティ]** をクリックします。**Receiver** プロパティ ページが表示されます。
 
-5. **[スタートアップ プロジェクト]** をクリックし、**[マルチ スタートアップ プロジェクト]** ボタンをクリックします。**[Receiver]** プロジェクトと **[Sender]** プロジェクトの両方の **[アクション]** ボックスを、**[開始]** に設定します。
+5. **[スタートアップ プロジェクト]** をクリックし、**[マルチ スタートアップ プロジェクト]** をクリックします。**[Receiver]** プロジェクトと **[Sender]** プロジェクトの両方の **[アクション]** ボックスを、**[開始]** に設定します。
 
 	![][19]
 
-6. **[プロジェクトの依存関係]** をクリックします。**[プロジェクト]** ボックスで、**[Sender]** をクリックします。**[依存先]** ボックスで、**[Receiver]** がオンになっていることを確認します。
+6. **[プロジェクトの依存関係]** をクリックします。**[プロジェクト]** ボックスで、**[Sender]** をクリックします。**[依存先]** ボックスで、**[Receiver]** チェック ボックスがオンになっていることを確認します。
 
 	![][20]
 
@@ -95,4 +94,4 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!-----HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

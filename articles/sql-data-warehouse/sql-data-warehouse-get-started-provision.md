@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/05/2016"
+   ms.date="06/20/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse の作成
@@ -44,7 +44,7 @@
 
 	- **[データベース名]**: SQL Data Warehouse の参照に使用される名前です。サーバーに対して一意にする必要があります。
 	
-    - **[パフォーマンス]**: 最初は 400 DWU にすることをお勧めします。スライダーを左または右に移動して、データ ウェアハウスのパフォーマンスを調整したり、作成後にスケールアップまたはスケールダウンしたりすることができます。DWU の詳細については、[スケーリング](./sql-data-warehouse-manage-compute-overview.md)に関するドキュメントまたは[料金のページ](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)を参照してください。
+    - **[パフォーマンス]**: 最初は 400 DWU にすることをお勧めします。スライダーを左または右に移動して、データ ウェアハウスのパフォーマンスを調整したり、作成後にスケールアップまたはスケールダウンしたりすることができます。DWU の詳細については、[スケーリング](./sql-data-warehouse-manage-compute-overview.md)に関するドキュメントまたは[料金のページ](https://azure.microsoft.com/ja-JP/pricing/details/sql-data-warehouse/)を参照してください。
 
     - **[サブスクリプション]**: この SQL Data Warehouse の課金先のサブスクリプションを選択します。
 
@@ -62,10 +62,10 @@
 
 ## 次のステップ
 
-SQL Data Warehouse の作成は以上で完了です。いつでも[接続](./sql-data-warehouse-get-started-connect.md)して、クエリを実行することができます。
+SQL Data Warehouse の作成は以上で完了です。いつでも[接続](./sql-data-warehouse-connect-overview.md)して、クエリを実行することができます。
 
 SQL Data Warehouse へのデータの読み込みについては、[読み込みの概要](./sql-data-warehouse-overview-load.md)に関するページを参照してください。
 
 既存のデータベースを SQL Data Warehouse に移行する場合、[移行の概要](./sql-data-warehouse-overview-migrate.md)に関するページを参照するか、[移行ユーティリティ](./sql-data-warehouse-migrate-migration-utility.md)を使用してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

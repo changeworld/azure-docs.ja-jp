@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-compute"
-	ms.date="06/08/2016"
+	ms.date="06/17/2016"
 	ms.author="marsma"/>
 
 # Azure Batch Python クライアントの概要
@@ -59,10 +59,6 @@ Batch パッケージと Storage パッケージをインストールするに�
 または、[azure-batch][pypi_batch] と [azure-storage][pypi_storage] の Python パッケージを手動でインストールしてもかまいません。
 
 > [AZURE.TIP] 特権のないアカウントを使用する場合 (推奨)、「`sudo pip install -r requirements.txt`」のように、コマンドの前に「`sudo`」を入力する必要があります。Python パッケージのインストールの詳細については、readthedocs.io の「[Installing Packages (パッケージのインストール)][pypi_install]」を参照してください。
-
-### (省略可能) Azure Batch Explorer
-
-[Azure Batch Explorer][github_batchexplorer] は、GitHub の [azure-batch-samples][github_samples] リポジトリにある無料ユーティリティです。このチュートリアルには必要ありませんが、Batch ソリューションの開発とデバッグに有効活用してください。
 
 ## Batch Python チュートリアルのコード サンプル
 
@@ -176,7 +172,7 @@ Batch には、Azure Storage とやり取りするための組み込みのサポ
      for file_path in input_file_paths]
 ```
 
-リストを利用してコレクション内の各ファイルについて `upload_file_to_container` 関数を呼び出し、2 つの [ResourceFile][py_resource_file] コレクションにデータを読み込みます。`upload_file_to_container` 関数は次のとおりです。
+リストの内包表記を使用し、コレクション内の各ファイルについて `upload_file_to_container` 関数を呼び出し、2 つの [ResourceFile][py_resource_file] コレクションにデータを投入します。`upload_file_to_container` 関数は次のとおりです。
 
 ```
 def upload_file_to_container(block_blob_client, container_name, file_path):
@@ -376,7 +372,7 @@ def create_job(batch_service_client, job_id, pool_id):
 
 Batch の**タスク**は、コンピューティング ノードで実行される独立した作業単位です。タスクはコマンド ラインを持ち、スクリプト (またはそのコマンド ラインに指定された実行可能ファイル) を実行します。
 
-実際に作業を実行するには、タスクをジョブに追加する必要があります。コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][py_resource_file] \(プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][py_task] を構成します。このサンプルでは、各タスクで処理するファイルは 1 つだけです。したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
+実際に作業を実行するには、タスクをジョブに追加する必要があります。コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][py_resource_file] (プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][py_task] を構成します。このサンプルでは、各タスクで処理するファイルは 1 つだけです。したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
 
 ```python
 def add_tasks(batch_service_client, job_id, input_files,
@@ -420,7 +416,7 @@ def add_tasks(batch_service_client, job_id, input_files,
     batch_service_client.task.add_collection(job_id, tasks)
 ```
 
-> [AZURE.IMPORTANT] `$AZ_BATCH_NODE_SHARED_DIR` などの環境変数にアクセスする場合や、ノードの `PATH` にないアプリケーションを実行する場合は、タスク コマンド ラインの先頭に `/bin/bash` (Linux) または `cmd /c` (Windows) を付ける必要があります。これにより、明示的にコマンド シェルが実行され、コマンドの実行後に終了するようそのコマンド シェルに指示が与えられます。タスクで実行するのがノードの `PATH` に存在するアプリケーション (たとえば上のスニペットでは *python*) である場合、この要件は不要です。
+> [AZURE.IMPORTANT] `$AZ_BATCH_NODE_SHARED_DIR` などの環境変数にアクセスする場合や、ノードの `PATH` にないアプリケーションを実行する場合は、`/bin/sh -c MyTaskApplication $MY_ENV_VAR` を使用するなど、タスク コマンド ラインからシェルを明示的に呼び出す必要があります。タスクがノードの `PATH` 内にあるアプリケーションを実行し、環境変数を参照しない場合、この要件は不要です。
 
 上記のコード スニペットの `for` ループ内では、5 つのコマンド ライン引数を *python\_tutorial\_task.py* が受け取るようにタスクのコマンド ラインが構成されています。
 
@@ -558,7 +554,7 @@ if query_yes_no('Delete pool?') == 'yes':
 
 ## サンプル スクリプトの実行
 
-*python\_tutorial\_client.py* スクリプトを実行すると、コンソールの出力は次のようになります。プールのコンピューティング ノードを作成するときや起動するとき、またはプールの起動タスクのコマンドを実行しているときに、画面に `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` と表示されて待機状態になります。実行中や実行後は、[Azure ポータル][azure_portal]または [Batch Explorer][github_batchexplorer] を使用して、プールやコンピューティング ノード、ジョブ、タスクを監視してください。アプリケーションで作成された Storage リソース (コンテナーと BLOB) を表示するには、[Azure ポータル][azure_portal]または [Microsoft Azure ストレージ エクスプローラー][storage_explorer]を使用します。
+*python\_tutorial\_client.py* スクリプトを実行すると、コンソールの出力は次のようになります。プールのコンピューティング ノードを作成するときや起動するとき、またはプールの起動タスクのコマンドを実行しているときに、画面に `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` と表示されて待機状態になります。実行中と実行後のプール、コンピューティング ノード、ジョブ、タスクを監視するには、[Azure ポータル][azure_portal]を使用します。アプリケーションで作成された Storage リソース (コンテナーと BLOB) を表示するには、[Azure ポータル][azure_portal]または [Microsoft Azure ストレージ エクスプローラー][storage_explorer]を使用します。
 
 既定の構成でアプリケーションを実行する場合、通常の実行時間は**約 5 ～ 7 分間**です。
 
@@ -592,7 +588,7 @@ Press ENTER to exit...
 
 ## 次のステップ
 
-コンピューティングに関するさまざまなシナリオを試すために、*python\_tutorial\_client.py* と *python\_tutorial\_task.py* は自由に変更を加えてください。たとえば、*python\_tutorial\_task.py* に実行遅延を追加して、実行時間が長いタスクをシミュレートし、Batch Explorer の*ヒート マップ*機能を使用して監視することができます。タスクを追加したり、コンピューティング ノード数を調整したりすることもできます。実行時間を短縮するためには、既存のプールの使用をチェックしたり許可したりするためのロジックを追加します。
+コンピューティングに関するさまざまなシナリオを試すために、*python\_tutorial\_client.py* と *python\_tutorial\_task.py* は自由に変更を加えてください。たとえば、*python\_tutorial\_task.py* に実行遅延を追加して、実行時間が長いタスクをシミュレートし、ポータルで監視することができます。タスクを追加したり、コンピューティング ノード数を調整したりすることもできます。実行時間を短縮するためには、既存のプールの使用をチェックしたり許可したりするためのロジックを追加します。
 
 Batch ソリューションの基本的なワークフローを理解したところで、次は Batch サービスのその他の機能を掘り下げてみましょう。
 
@@ -603,10 +599,8 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [azure_batch]: https://azure.microsoft.com/services/batch/
 [azure_free_account]: https://azure.microsoft.com/free/
 [azure_portal]: https://portal.azure.com
-[batch_explorer_blog]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 [batch_learning_path]: https://azure.microsoft.com/documentation/learning-paths/batch/
 [blog_linux]: http://blogs.technet.com/b/windowshpc/archive/2016/03/30/introducing-linux-support-on-azure-batch.aspx
-[github_batchexplorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_common]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/Common
 [github_samples_zip]: https://github.com/Azure/azure-batch-samples/archive/master.zip
@@ -664,4 +658,4 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [10]: ./media/batch-dotnet-get-started/credentials_storage_sm.png "ポータルの Storage の資格情報"
 [11]: ./media/batch-dotnet-get-started/batch_workflow_minimal_sm.png "Batch ソリューション ワークフロー (最小限の図)"
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

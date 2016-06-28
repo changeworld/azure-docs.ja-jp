@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/01/2016"
+   ms.date="06/20/2016"
    ms.author="ganesr"/>
 
 # クラシック デプロイメント モデルから Resource Manager デプロイメント モデルへの ExpressRoute 回線の移行
@@ -110,4 +110,4 @@ ExpressRoute 回線は、クラシック デプロイメント モデルと Reso
 	- [ルーティングの構成](expressroute-howto-routing-arm.md)
 	- [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0622_2016-->

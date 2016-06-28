@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/25/2016" 
+	ms.date="06/21/2016" 
 	ms.author="awills"/>
 
 
@@ -88,14 +88,15 @@ Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレ�
  * アプリからポータルにテレメトリを送信している場合でも、[検索] ウィンドウの [設定] に用意されているオプションでローカルの診断を検索できます。
  * ポータルへのテレメトリの送信を中止するには、ApplicationInsights.config から `<instrumentationkey>...` 行をコメント アウトしてください。もう一度ポータルにテレメトリを送信する準備ができたら、コメント解除します。
 
+## 傾向
 
+傾向とは、時間経過に伴うアプリの動作を視覚化するためのツールです。
 
-## 新しいバージョンの SDK にアップグレードするには
+Application Insights のツール バー ボタンか [Application Insights の検索] ウィンドウから、**[テレメトリの傾向を調べる]** を選択します。5 つの一般的なクエリから 1 つ選択して開始します。テレメトリの種類、時間範囲、およびその他のプロパティに基づき、さまざまなデータセットを分析できます。
 
-[SDK の新しいリリース](app-insights-release-notes-dotnet.md)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。[Microsoft.ApplicationInsights.Web]、[アップグレード] の順に選択します。
+データ内の異常を見つけるには、[ビューの種類] ボックスでいずれかの異常オプションを選択します。ウィンドウの下部にあるフィルター オプションを使用すると、テレメトリの特定の部分に対象を絞り込みやすくなります。
 
-ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておき、後から新しいバージョンに変更をマージします。
-
+![Trends](./media/app-insights-visual-studio/51.png)
 
 
 ## 次の手順
@@ -103,9 +104,9 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 ||
 |---|---
 |**[さらにデータを追加する](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外を監視します。ログ記録フレームワークからのトレースを統合します。カスタム テレメトリを記述します。 | ![Visual studio](./media/app-insights-asp-net/64.png)
-|**[Application Insights ポータルを操作する](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-asp-net/62.png)
+|**[Application Insights ポータルを使用する](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-asp-net/62.png)
 
 
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

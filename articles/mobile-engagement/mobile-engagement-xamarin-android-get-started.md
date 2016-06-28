@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
+	ms.date="06/16/2016"
 	ms.author="piyushjo" />
 
 # Xamarin.Android アプリ用 Azure Mobile Engagement の使用
@@ -61,7 +61,7 @@ Xamarin Studio で、Mobile Engagement の統合先のアプリが作成され�
 
 ###アプリを Mobile Engagement のバックエンドに接続する
 
-1. [Solution] \(ソリューション) ウィンドウの **Packages** フォルダーを右クリックし、**[Add Packages]** (パッケージの追加) を選択します。
+1. [Solution] (ソリューション) ウィンドウの **Packages** フォルダーを右クリックし、**[Add Packages]** (パッケージの追加) を選択します。
 
     ![][5]
 
@@ -108,6 +108,20 @@ Xamarin Studio で、Mobile Engagement の統合先のアプリが作成され�
 データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面を Mobile Engagement のバックエンドに送信する必要があります。これを行うには、`MainActivity` が `Activity` ではなく `EngagementActivity` から継承するようにします。
 
 	public class MainActivity : EngagementActivity
+	
+`EngagementActivity` からの継承ができない場合は、`.StartActivity` メソッドと `.EndActivity` メソッドを、それぞれ `OnResume` と `OnPause` に追加する必要があります。
+
+		protected override void OnResume()
+	        {
+	            EngagementAgent.StartActivity(EngagementAgentUtils.BuildEngagementActivityName(Java.Lang.Class.FromType(this.GetType())), null);
+	            base.OnResume();             
+	        }
+	
+	        protected override void OnPause()
+	        {
+	            EngagementAgent.EndActivity();
+	            base.OnPause();            
+	        }
 
 ##<a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 
@@ -131,4 +145,4 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 [5]: ./media/mobile-engagement-xamarin-android-get-started/5.png
 [6]: ./media/mobile-engagement-xamarin-android-get-started/6.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

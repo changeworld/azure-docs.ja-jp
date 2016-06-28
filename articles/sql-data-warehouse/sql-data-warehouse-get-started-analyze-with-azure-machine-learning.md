@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Machine Learning を使用したデータの分析 | Microsoft Azure"
-   description="ソリューション開発のための、Azure SQL Data Warehouse での Azure Machine Learning の使用に関するヒント。"
+   description="Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="shivaniguptamsft"
@@ -13,30 +13,29 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/09/2016"
+   ms.date="06/16/2016"
    ms.author="shigu;barbkess;sonyama"/>
 
 # Azure Machine Learning を使用したデータの分析
 
 > [AZURE.SELECTOR]
-- [Power BI][]
-- [Azure Machine Learning][]
-- [SQLCMD][]
+- [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+- [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+- [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
 
-このチュートリアルでは、Azure SQL Data Warehouse のデータを使用して Azure Machine Learning の機械学習予測モデルを作成する方法を使用します。このチュートリアルでは、顧客が自転車を購入する可能性があるかどうかを予測することで、Adventure Works のターゲット マーケティング キャンペーン (自転車店) を作成します。
+このチュートリアルでは、Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。具体的には、顧客が自転車を購入する可能性があるかどうかを予測することで、Adventure Works (自転車店) のターゲット マーケティング キャンペーンを作成します。
 
 > [AZURE.VIDEO integrating-azure-machine-learning-with-azure-sql-data-warehouse]
 
+
 ## 前提条件
-このチュートリアルを進めるには、次のものが必要です。
+このチュートリアルを進めるには、次が必要です。
 
-- AdventureWorksDW サンプル データベースが含まれた SQL Data Warehouse
+- AdventureWorksDW サンプル データが事前に読み込まれた SQL Data Warehouse。これをプロビジョニングするには、[SQL Data Warehouse の作成][]に関するページを参照し、サンプル データの読み込みを選択してください。データ ウェアハウスは既にあってもサンプル データがない場合は、[サンプル データを手動で読み込む][]ことができます。
 
-[SQL Data Warehouse の作成][]に関するページに、サンプル データを設定したデータベースのプロビジョニング方法が示されています。SQL Data Warehouse データベースは既にあってもサンプル データがない場合は、[サンプル データを手動で読み込む][]ことができます。
-
-
-## 手順 1. データを取得する
-AdventureWorksDW データベースの dbo.vTargetMail ビューからデータを読み取ります。
+## 1\.データを取得する
+このデータは、AdventureWorksDW データベースの dbo.vTargetMail ビューにあります。このデータを読み取るには、次の手順を実行します。
 
 1. [Azure Machine Learning Studio][] にサインインし、[実験] をクリックします。
 2. **[+ 新規]** をクリックし、**[空の実験]** を選択します。
@@ -71,8 +70,8 @@ FROM [dbo].[vTargetMail]
 実験の実行が正常に終了したら、[リーダー] モジュールの下部にある出力ポートをクリックし、**[視覚化]** を選択して、インポートしたデータを表示します。![インポート済みデータを表示する][3]
 
 
-## 手順 2. データをクリーニングする
-モデルとの関連性が低い列をいくつか削除します。
+## 2\.データを整理する
+データを整理するには、モデルとの関連性が低い列をいくつか削除します。これを行うには、次の手順を実行します。
 
 1. **[プロジェクト列]** モジュールをキャンバスにドラッグします。
 2. [プロパティ] ウィンドウの **[列セレクターの起動]** をクリックし、削除する列を指定します。![プロジェクト列][4]
@@ -80,7 +79,7 @@ FROM [dbo].[vTargetMail]
 3. CustomerAlternateKey と GeographyKey の 2 つの列を除外します。![不要な列を削除する][5]
 
 
-## 手順 3. モデルを作成する
+## 3\.モデルを構築する
 データを 80 対 20 に分割し、80% を機械学習モデルのトレーニングに、20% をモデルのテストに使用します。今回の二項分類の問題には "2 クラス" アルゴリズムを使用します。
 
 1. **[分割]** モジュールをキャンバスにドラッグします。
@@ -92,7 +91,7 @@ FROM [dbo].[vTargetMail]
 5. 予測する列として **[BikeBuyer]** 列を選択します。![予測する列を選択する][8]
 
 
-## 手順 4. モデルにスコアを付ける
+## 4\.モデルにスコアを付ける
 ここでは、テスト データに対するモデルのパフォーマンスをテストします。選択したアルゴリズムを別のアルゴリズムと比較し、どちらのパフォーマンスが優れているかを評価します。
 
 1. **[モデルのスコア付け]** モジュールをキャンバスにドラッグします。1 つ目の入力: トレーニング済みのモデル、2 つ目の入力: テスト データ。![モデルにスコアを付ける][9]
@@ -113,30 +112,27 @@ FROM [dbo].[vTargetMail]
 
 ## 次のステップ
 
-予測機械学習モデルの作成の詳細については、「[Microsoft Azure での機械学習の概要][]」を参照してください。
+予測機械学習モデルの構築の詳細については、[Azure での機械学習の概要][]に関するページを参照してください。
 
 <!--Image references-->
-[1]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1_reader.png
-[2]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img2_visualize.png
-[3]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3_readerdata.png
-[4]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4_projectcolumns.png
-[5]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5_columnselector.png
-[6]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6_split.png
-[7]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7_train.png
-[8]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8_traincolumnselector.png
-[9]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9_score.png
-[10]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10_evaluate.png
-[11]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11_evalresults.png
-[12]: ./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12_scoreresults.png
+[1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1_reader.png
+[2]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img2_visualize.png
+[3]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3_readerdata.png
+[4]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4_projectcolumns.png
+[5]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5_columnselector.png
+[6]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6_split.png
+[7]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7_train.png
+[8]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8_traincolumnselector.png
+[9]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9_score.png
+[10]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10_evaluate.png
+[11]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11_evalresults.png
+[12]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12_scoreresults.png
 
 
 <!--Article references-->
 [Azure Machine Learning studio]: https://studio.azureml.net/
-[Microsoft Azure での機械学習の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
+[Azure での機械学習の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
 [サンプル データを手動で読み込む]: sql-data-warehouse-get-started-load-sample-databases.md
 [SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
-[Power BI]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
-[Azure Machine Learning]: ./sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
-[SQLCMD]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

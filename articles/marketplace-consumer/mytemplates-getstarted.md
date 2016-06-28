@@ -131,4 +131,4 @@ Azure ポータルで**テンプレート** リソースを作成する方法は
 - Resource Manager テンプレートで使用できる関数を理解するには、[テンプレートの関数](../resource-group-template-functions.md)に関するページを参照してください。
 - テンプレートのデザインのガイダンスについては、[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](../best-practices-resource-manager-design-templates.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->
