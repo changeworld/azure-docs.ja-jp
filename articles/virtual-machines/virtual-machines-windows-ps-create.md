@@ -33,34 +33,36 @@
 
 1. リソースを作成できる場所の一覧を取得します。
 
-	    Get-AzureLocation | sort Name | Select Name
+	    Get-AzureRmLocation | sort Location | Select Location
         
     次のような結果が表示されます。
     
-        Name
-        ----
-        Australia East
-        Australia Southeast
-        Brazil South
-        Central India
-        Central US
-        East Asia
-        East US
-        East US 2
-        Japan East
-        Japan West
-        North Central US
-        North Europe
-        South Central US
-        South India
-        Southeast Asia
-        West Europe
-        West India
-        West US
+        Location
+        --------
+        australiaeast
+        australiasoutheast
+        brazilsouth
+        canadacentral
+        canadaeast
+        centralindia
+        centralus
+        eastasia
+        eastus
+        eastus2
+        japaneast
+        japanwest
+        northcentralus
+        northeurope
+        southcentralus
+        southeastasia
+        southindia
+        westeurope
+        westindia
+        westus
 
 2. **$locName** の値を一覧の場所に置き換えます。変数を作成します。
 
-        $locName = "Central US"
+        $locName = "centralus"
         
 3. **$rgName** の値を、新しいリソース グループの名前に置き換えます。変数とリソース グループを作成します。
 
@@ -74,13 +76,13 @@
 1. **$stName** の値は、ストレージ アカウントの名前に置き換えます。名前の一意性をテストします。
 
         $stName = "mystorage1"
-        Test-AzureName -Storage $stName
+        Get-AzureRmStorageAccountNameAvailability $stName
 
-    このコマンドで **False** が返された場合は、提案した名前は Azure 内で一意です。ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
+    このコマンドで **True** が返された場合は、提案した名前は Azure 内で一意です。ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
     
 2. 次のコマンドを実行して、ストレージ アカウントを作成します。
     
-        $storageAcc = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -Type "Standard_LRS" -Location $locName
+        $storageAcc = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -SkuName "Standard_LRS" -Kind "Storage" -Location $locName
         
 ## 手順 4: 仮想ネットワークを作成する
 
@@ -170,4 +172,4 @@
 - 作成した仮想マシンの管理方法については、[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関する記事を参照してください。
 - テンプレートを使用して仮想マシンを作成する方法については、「[Resource Manager テンプレートで Windows 仮想マシンを作成する](virtual-machines-windows-ps-template.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,26 +13,12 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="03/22/2016"
+     ms.date="06/16/2016"
      ms.author="dobett"/>
 
 # Azure IoT Hub for .NET の使用
 
 [AZURE.INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
-
-## はじめに
-
-Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバイスとソリューション バックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。IoT プロジェクトが直面する最も大きな課題の 1 つは、ソリューション バックエンドにデバイスを確実かつ安全に接続する方法です。この課題に対応するために、IoT Hub は次の機能を備えています。
-
-- 非常にスケール性が高く信頼性に優れた、デバイスとクラウド間の双方向メッセージングを提供します。
-- デバイスごとのセキュリティ資格情報とアクセス制御を使用して、セキュリティで保護された通信を可能します。
-- 最も一般的な言語とプラットフォームのデバイスのライブラリが含まれます。
-
-このチュートリアルでは、次の操作方法について説明します。
-
-- Azure ポータルを使用して IoT Hub を作成する。
-- IoT Hub におけるデバイス ID を作成する。
-- クラウド バックエンドへのテレメトリの送信とクラウド バックエンドからのコマンドの受信をシミュレーション対象デバイスを作成する。
 
 このチュートリアルの最後には、次の 3 つの Windows コンソール アプリケーションが作成されています。
 
@@ -93,7 +79,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
             Console.WriteLine("Generated device key: {0}", device.Authentication.SymmetricKey.PrimaryKey);
         }
 
-	これは、**myFirstDevice** という ID で新しいデバイスを作成するメソッドです (そのデバイス ID が既にレジストリに存在する場合は、単にその既存のデバイス情報を取得します)。 続けてその ID のプライマリ キーが表示されます。シミュレーション対象デバイスでこのキーを使用して IoT Hub に接続することになります。
+	これは、**myFirstDevice** という ID で新しいデバイスを作成するメソッドです(そのデバイス ID が既にレジストリに存在する場合は、単にその既存のデバイス情報を取得します)。 続けてその ID のプライマリ キーが表示されます。シミュレーション対象デバイスでこのキーを使用して IoT Hub に接続することになります。
 
 7. 最後に、**Main** メソッドに次の行を追加します。
 
@@ -109,7 +95,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 
 ## デバイスからクラウドへのメッセージの受信
 
-このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Windows コンソール アプリケーションを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るための、[Azure Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。大規模な環境でデバイスからクラウドへのメッセージを処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。Event Hubs からのメッセージを処理する方法について詳しくは、「[Event Hubs の使用][lnk-eventhubs-tutorial]」のチュートリアルを参照してください。このチュートリアルは、IoT Hub Event Hubs と互換性のあるエンドポイントで応用できます。
+このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Windows コンソール アプリケーションを作成します。IoT Hub は、デバイスからクラウドへのメッセージを読み取るための、[Azure Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。大規模な環境でデバイスからクラウドへのメッセージを処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。Event Hubs からのメッセージを処理する方法の詳細については、「[Event Hubs の使用][lnk-eventhubs-tutorial]」のチュートリアルを参照してください。このチュートリアルは、IoT Hub Event Hubs と互換性のあるエンドポイントで応用できます。
 
 > [AZURE.NOTE] 常に、Event Hubs と互換性のあるエンドポイントは、デバイスからクラウドへのメッセージを読み取るために AMQPS プロトコルを使用します。
 
@@ -119,7 +105,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 
 2. ソリューション エクスプローラーで、**[ReadDeviceToCloudMessages]** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **WindowsAzure.ServiceBus** を検索し、**[インストール]** を選択して、使用条件に同意します。これによって、[Azure Service Bus][lnk-servicebus-nuget] への参照がすべての依存関係と共にダウンロード、インストール、追加されます。このパッケージは、アプリケーションが IoT Hub で Event Hubs と互換性のあるエンドポイントに接続できるようにします。
+3. **[NuGet パッケージ マネージャー]** ウィンドウで **WindowsAzure.ServiceBus** を検索し、**[インストール]** を選択して、使用条件に同意します。これによって、[Azure Service Bus][lnk-servicebus-nuget] のダウンロードとインストールが実行され、その参照とすべての依存関係が追加されます。このパッケージは、アプリケーションが IoT Hub で Event Hubs と互換性のあるエンドポイントに接続できるようにします。
 
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
@@ -232,7 +218,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
         SendDeviceToCloudMessagesAsync();
         Console.ReadLine();
 
-  既定では、**Create** メソッドは、IoT Hub と通信するために AMQP プロトコルを使用する **DeviceClient** インスタンスを作成します。HTTPS プロトコルを使用するには、プロトコルを引数として受け取る、**Create** メソッドのオーバーライドを使用します。HTTPS プロトコルを使用するように選択する場合は、**Microsoft.AspNet.WebApi.Client** NuGet パッケージをプロジェクトに追加して、**System.Net.Http.Formatting** 名前空間を含める必要もあります。
+  既定では、**Create** メソッドは、IoT Hub と通信するために AMQP プロトコルを使用する **DeviceClient** インスタンスを作成します。HTTPS プロトコルを使用するには、プロトコルを引数として受け取る、**Create** メソッドのオーバーライドを使用します。HTTPS プロトコルを使用する場合は、**Microsoft.AspNet.WebApi.Client** NuGet パッケージをプロジェクトに追加して、**System.Net.Http.Formatting** 名前空間を含める必要もあります。
 
 このチュートリアルでは、IoT Hub デバイス クライアントを作成する手順について説明します。Visual Studio 拡張機能である [Connected Service for Azure IoT Hub][lnk-connected-service] を使用して、デバイス クライアント アプリケーションに必要なコードを追加することもできます。
 
@@ -243,7 +229,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 
 これで、アプリケーションを実行する準備が整いました。
 
-1.	Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** をクリックします。**[マルチ スタートアップ プロジェクト]** を選択し、**ProcessDeviceToCloudMessages** プロジェクトと **SimulatedDevice** プロジェクト両方のアクションとして **[開始]** を選択します。
+1.	Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** をクリックします。**[マルチ スタートアップ プロジェクト]** を選択し、**ProcessDeviceToCloudMessages** プロジェクトと **SimulatedDevice** プロジェクトの両方のアクションとして **[開始]** を選択します。
 
    	![Startup project properties][41]
 
@@ -262,7 +248,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 
 - 「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信][lnk-c2d-tutorial]」には、デバイスにメッセージを送信し、IoT Hub によって生成される配信フィードバックを処理する方法が示されています。
 - 「[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]」には、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
-- 「[デバイスからのファイルのアップロード][lnk-upload-tutorial]」では、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用したパターンについて説明しています。
+- [デバイスからのファイルのアップロード][lnk-upload-tutorial]に関する記事には、デバイスからファイルをアップロードする方法が示されています。
 
 <!-- Images. -->
 [41]: ./media/iot-hub-csharp-csharp-getstarted/run-apps1.png
@@ -291,4 +277,4 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-connected-service]: https://visualstudiogallery.msdn.microsoft.com/e254a3a5-d72e-488e-9bd3-8fee8e0cd1d6
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

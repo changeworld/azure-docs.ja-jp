@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/14/2016"
+	ms.date="06/21/2016"
 	ms.author="carlrab"/>
 
 # クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server
@@ -154,5 +154,6 @@ SQL Database と Azure VM 上の SQL Server で実行されるアプリケーシ
 - SQL Database の基本的な使い方については、「[SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」を参照してください。
 - 「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 - Azure VM での SQL Server の基本的な使い方については、[Azure での SQL Server 仮想マシンのプロビジョニング](../virtual-machines/virtual-machines-windows-portal-sql-server-provision.md)に関する記事を参照してください。
+- 「[Azure Virtual Machine における SQL Server: ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

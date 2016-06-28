@@ -46,9 +46,7 @@
 
 > [AZURE.NOTE]
 >
-
 - ブランド化を構成した Azure クラシック ポータルの **[Active Directory]** にある **[ディレクトリ]** の **[ドメイン]** セクションで、ドメイン名が "アクティブ" と表示されます。
-
 - サインイン ページのブランド化は、Microsoft のコンシューマー向けサインイン ページには継承されません。個人の Microsoft アカウントでサインインしているユーザーには、Azure AD によってレンダリングされるユーザー タイルのブランド化された一覧が表示される可能性がありますが、組織のブランドは Microsoft アカウントのサインイン ページには適用されません。
 
 
@@ -221,4 +219,4 @@ Azure AD でカスタマイズ可能な要素には、複数のユース ケー�
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0622_2016-->

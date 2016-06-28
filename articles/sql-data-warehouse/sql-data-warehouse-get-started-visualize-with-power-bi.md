@@ -13,15 +13,16 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/11/2016"
+   ms.date="06/16/2016"
    ms.author="lodipalm;barbkess;sonyama" />
 
 # Power BI でデータを視覚化する
 
 > [AZURE.SELECTOR]
-- [Power BI][]
-- [Azure Machine Learning][]
-- [SQLCMD][] 
+- [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+- [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+- [Visual Studio](sql-data-warehouse-query-visual-studio.md)
+- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
 
 このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
 
@@ -29,10 +30,12 @@
 
 ## 前提条件
 
-このチュートリアルを完了するには、AdventureWorksDW サンプル データベースが事前に読み込まれている SQL Data Warehouse が必要です。新しい SQL Data Warehouse を作成するときは、空のデータベースか AdventureWorks サンプル データを含むデータベースを作成できます。また、別のデータベースのバックアップを復元することもできます。サンプル データが事前に読み込まれた SQL Data Warehouse を作成する方法については、「[SQL Data Warehouse の作成][]」を参照してください。使用する SQL Data Warehouse が既にあってもサンプル データがない場合は、[サンプル データを手動で読み込む方法][]に関するページの手順に従ってください。
+このチュートリアルを進めるには、次が必要です。
+
+- AdventureWorksDW データベースが事前に読み込まれている SQL Data Warehouse。これをプロビジョニングするには、[SQL Data Warehouse の作成][]に関するページを参照し、サンプル データの読み込みを選択してください。データ ウェアハウスは既にあってもサンプル データがない場合は、[サンプル データを手動で読み込む][]ことができます。
 
 
-## データベースへの接続
+## 1\.データベースに接続する
 
 Power BI を開き、AdventureWorksDW データベースに接続するには:
 
@@ -59,7 +62,7 @@ Power BI を開き、AdventureWorksDW データベースに接続するには:
 
 
 
-## レポートの作成
+## 2\.レポートの作成
 
 Power BI を使用して AdventureWorksDW サンプル データを分析する準備が整いました。分析を実行するため、AdventureWorksDW には AggregateSales という名前のビューがあります。このビューには、会社の売上高を分析するための重要なメトリックがいくつか含まれています。
 
@@ -93,33 +96,29 @@ Power BI を使用して AdventureWorksDW サンプル データを分析する�
 いくつかサンプル データを挙げて、どのようにして[開発][]、[ロード][]、[移行][]するかを確認しながらウォーミングアップしていきます。または、[Power BI の Web サイト][]を参照してください。
 
 <!--Image references-->
-[1]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
-[2]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-button.png
-[3]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-connect-to-azure.png
-[4]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-sign-in.png
-[5]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-open-adventureworks.png
-[6]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-aggregatesales.png
-[7]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-map.png
-[8]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-chooseaxis.png
-[9]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-bar.png
-[10]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-prepare-line.png
-[11]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-line.png
-[12]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-save.png
+[1]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
+[2]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-button.png
+[3]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-connect-to-azure.png
+[4]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-sign-in.png
+[5]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-open-adventureworks.png
+[6]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-aggregatesales.png
+[7]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-map.png
+[8]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-chooseaxis.png
+[9]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-bar.png
+[10]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-prepare-line.png
+[11]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-line.png
+[12]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-save.png
 
 <!--Article references-->
-[移行]: ./sql-data-warehouse-overview-migrate.md
-[開発]: ./sql-data-warehouse-overview-develop.md
-[ロード]: ./sql-data-warehouse-overview-load.md
-[サンプル データを手動で読み込む方法]: ./sql-data-warehouse-load-sample-databases.md
-[connecting to SQL Data Warehouse]: ./sql-data-warehouse-integrate-power-bi.md
-[Create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Power BI]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
-[Azure Machine Learning]: ./sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
-[SQLCMD]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
-[SQL Data Warehouse の作成]: ./sql-data-warehouse-get-started-provision.md
+[移行]: sql-data-warehouse-overview-migrate.md
+[開発]: sql-data-warehouse-overview-develop.md
+[ロード]: sql-data-warehouse-overview-load.md
+[サンプル データを手動で読み込む]: sql-data-warehouse-load-sample-databases.md
+[connecting to SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
+[SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 
 <!--Other-->
 [Azure ポータル]: https://portal.azure.com/
 [Power BI の Web サイト]: http://www.powerbi.com/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

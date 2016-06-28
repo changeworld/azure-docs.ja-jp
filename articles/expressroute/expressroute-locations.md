@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/09/2016"
+   ms.date="06/17/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
@@ -31,7 +31,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |---|---|---|
 |**北米**|米国東部、米国西部、米国東部 2、米国中部、米国中南部、米国中北部、カナダ中部、カナダ東部|アトランタ、シカゴ、ダラス、ラスベガス+、ロサンゼルス、ニューヨーク、シアトル、シリコン バレー、ワシントン DC、モントリオール+、ケベックシティ+、トロント|
 |**南アメリカ**|ブラジル南部|サンパウロ|
-|**ヨーロッパ**|北ヨーロッパ、西ヨーロッパ|アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)+、パリ+|
+|**ヨーロッパ**|北ヨーロッパ、西ヨーロッパ|アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)+、パリ|
 |**アジア**|東アジア、東南アジア|香港、シンガポール|
 |**日本**|西日本、東日本|大阪、東京|
 |**オーストラリア**|オーストラリア東部、オーストラリア南東部|メルボルン、シドニー|
@@ -62,16 +62,18 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
 |**CenturyLink** | 近日対応予定 | 近日対応予定| シリコン バレー |
 |**China Telecom Global** | サポートされています | サポートされていません | 香港 |
-|**Cologix** | サポートされています | 近日対応予定 | モントリオール+、トロント |
+|**[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** | サポートされています | 近日対応予定 | モントリオール+、トロント |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされています | アムステルダム、ダブリン、ロンドン、東京 |
 | **Comcast** | サポートされています | サポートされています | シカゴ、シリコン バレー、ワシントン DC |
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** | サポートされています | サポートされています | ロサンゼルス | 
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされています | アムステルダム、アトランタ、シカゴ、ダラス、香港、ロンドン、ロサンゼルス、メルボルン、ニューヨーク、大阪、サンパウロ、シアトル、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
 | **euNetworks** | サポートされています | サポートされています | アムステルダム |
+| **GÉANT** | 近日対応予定 | 近日対応予定 | アムステルダム+ |
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** | サポートされています | サポートされています | 大阪、東京 |
 | **[InterCloud](https://www.intercloud.com/)** | サポートされています | サポートされています | アムステルダム、ロンドン、シンガポール、ワシントン DC |
 | **Internet Solutions - Cloud Connect** | サポートされています | サポートされています | アムステルダム、ロンドン |
-| **Interxion** | サポートされています | サポートされています | アムステルダム、ロンドン |
+| **Interxion** | サポートされています | サポートされています | アムステルダム、ロンドン、パリ |
+| **Jisc** | 近日対応予定 | 近日対応予定 | ロンドン+ | 
 | **[レベル 3 通信](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされています | アムステルダム、シカゴ、ダラス、ラスベガス+、ロンドン、シアトル、シリコン バレー、ワシントン DC |
 | **Megaport** | サポートされています | サポートされています | ダラス、ラスベガス+、ロサンゼルス、メルボルン、ニューヨーク、シアトル、シンガポール、シドニー、ワシントン DC |
 | **MTN** | サポートされています | サポートされています | ロンドン |
@@ -99,9 +101,9 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **サービス プロバイダー** |**Microsoft Azure** | **Office 365** | **場所** |
 |-----------------------|--------------------|----------------|---------------|
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされています | シカゴ、ワシントン DC |
-| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされています | シカゴ、ニューヨーク、ワシントン DC |
+| **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされています | シカゴ、ダラス+、ニューヨーク、ワシントン DC |
 | **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | 近日対応予定 | シカゴ、ニューヨーク+、ワシントン DC |
-| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされています | シカゴ、ニューヨーク、ワシントン DC |
+| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされています | シカゴ、ダラス+、ニューヨーク、ワシントン DC |
 
 #### 中国
 
@@ -130,6 +132,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 	- [InterXion](http://www.interxion.com/)
 	- [NextDC](http://www.nextdc.com/)
 	- [CoreSite](http://www.coresite.com/)
+	- [Cologix](http://www.cologix.com/)
 - その接続プロバイダーに、選択したピアリングの場所までネットワークを拡張してもらいます。
 	- 単一障害点がないように、接続プロバイダーが可用性の高い方法で接続を拡張していることを確認します。
 - Microsoft に接続するために、接続プロバイダーとしてその Exchange で ExpressRoute 回線を要求します。
@@ -148,7 +151,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |---|---|
 |**[Avanade Inc.](http://www.avanade.com/)**| アジア、ヨーロッパ、米国 |
 |**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**| ヨーロッパ |
-|**[Nimbo](http://www.nimbo.com/)**|米国||
+|**[Equinix Professional Services](http://www.equinix.com/services/consulting/)**|米国||
 |**[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** | アジア |
 |**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 米国 |
 |**[Project Leadership](http://www.projectleadership.net/azure)** | 米国 |
@@ -161,4 +164,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Location map"
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

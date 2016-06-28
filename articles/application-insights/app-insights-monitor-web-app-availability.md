@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/10/2016"
+	ms.date="06/21/2016"
 	ms.author="awills"/>
 
 # Web サイトの可用性と応答性の監視
@@ -69,7 +69,7 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 - **アラート** は、既定では、エラーが 3 つの場所で 5 分を超えて存在する場合に送信されます。エラーが 1 つの場所で発生している場合は、サイトでの問題ではなく、ネットワークの問題である可能性が高くなります。ただし、しきい値は上げ下げでき、電子メールの送信先を変更することもできます。
 
-    アラートが発生したときに呼び出される [webhook](../azure-portal/insights-webhooks-alerts.md) を設定できます。
+    アラートが発生したときに呼び出される [webhook](../azure-portal/insights-webhooks-alerts.md) を設定できます。(ただし、現時点でクエリ パラメーターはプロパティとしては渡されないという点に注意してください)。
 
 #### 他の URL のテスト
 
@@ -234,7 +234,8 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 個々のテストを開くと、テストを編集したり無効にしたりできます。
 
-![Web テストの編集または無効化](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+![Web テストの編集または無効化  
+](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
 
 たとえば、サービスのメンテナンスを行うときは Web テストを無効にします。
 
@@ -430,4 +431,4 @@ Web テストを許可するためにファイアウォールを開く必要が�
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

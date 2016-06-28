@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/31/2016"
+	ms.date="06/21/2016"
 	ms.author="curtand;viviali"/>
 
 # 新しいユーザーまたは Microsoft アカウントを持つユーザーを Azure Active Directory に追加する
@@ -86,4 +86,4 @@ Azure クラシック ポータルで **[構成]** タブを開くには、**[Ac
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
 
-<!-----HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0622_2016-->

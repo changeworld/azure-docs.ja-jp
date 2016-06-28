@@ -56,13 +56,13 @@ Azure AD Connect Health for Sync は、オンプレミスの Active Directory �
 
 次のビデオでは、Azure AD Connect Health for Sync の概要について説明します。
 
-[Azure Active Directory Connect Health: Monitoring the sync engine (Azure Active Directory Connect Health: 同期エンジンの監視)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-Health-Monitoring-the-sync-engine)
+>[AZURE.VIDEO azure-active-directory-connect-health-monitoring-the-sync-engine]
 
 
 ## Azure AD Connect Health の使用開始
 Azure AD Connect Health は簡単に使用を開始できます。次の手順に従ってください。
 
-1. [Azure AD Premium を入手](active-directory-get-started-premium)するか、[試用版の利用を開始](https://azure.microsoft.com/trial/get-started-active-directory/)します。
+1. [Azure AD Premium を入手](active-directory-get-started-premium.md)するか、[試用版の利用を開始](https://azure.microsoft.com/trial/get-started-active-directory/)します。
 
 2. [Azure AD Connect Health エージェントをダウンロードし、ID サーバーにインストール](#download-and-install-azure-ad-connect-health-agent)します。
 
@@ -80,7 +80,7 @@ Azure AD Connect Health は簡単に使用を開始できます。次の手順�
 
 
 ## Azure AD Connect Health Portal
-Azure AD Connect Health ポータルを使用すると、アラート、パフォーマンスの監視、使用状況の分析を表示できます。https://aka.ms/aadconnecthealth から Azure AD Connect Health のメイン ブレードに移動できます。ブレードは、ウィンドウと考えることができます。メイン ブレードでは、[クイック スタート]、Azure AD Connect Health で提供されるサービス、その他の構成オプションが表示されます。スクリーン ショットの下に、それぞれの簡単な説明を示します。エージェントのデプロイ後、Azure AD Connect Health によって監視されているサービスが識別されます。
+Azure AD Connect Health ポータルを使用すると、アラート、パフォーマンスの監視、使用状況の分析を表示できます。https://aka.ms/aadconnecthealth から Azure AD Connect Health のメイン ブレードに移動できます。ブレードは、ウィンドウと考えることができます。メイン ブレードでは、[クイック スタート]、Azure AD Connect Health で提供されるサービス、その他の構成オプションが表示されます。スクリーン ショットの下に、それぞれの簡単な説明を示します。エージェントのデプロイ後、Azure AD Connect Health で監視されているサービスが、Health サービスによって自動的に識別されます。
 
 ![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/portal2.png)
 
@@ -106,4 +106,4 @@ Azure AD Connect Health ポータルを使用すると、アラート、パフ�
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0622_2016-->
