@@ -44,9 +44,9 @@
 
 多要素認証の使用方法|説明
 :------------- | :------------- | 
-[Office 365 で使用する](#creating-and-deleting-app-passwords-with-office-365)| これは、Office 365 ポータルでアプリ パスワードを作成することを意味します。
+[Office 365 で使用する](#Office 365 でのアプリ パスワードの作成と削除)| これは、Office 365 ポータルでアプリ パスワードを作成することを意味します。
 [わからない](#creating-and-deleting-app-passwords-with-myapps-portal)|これは、[https://myapps.microsoft.com](https://myapps.microsoft.com) でアプリ パスワードを作成することを意味します。
-[Microsoft Azure で使用する](#create-app-passwords-in-the-azure-portal)| これは、Azure ポータルでアプリ パスワードを作成することを意味します。
+[Microsoft Azure で使用する](#Azure ポータルでアプリ パスワードを作成する)| これは、Azure ポータルでアプリ パスワードを作成することを意味します。
 
 ## Office 365 でのアプリ パスワードの作成と削除 
 
