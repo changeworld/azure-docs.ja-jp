@@ -24,7 +24,8 @@
 
 ## 前提条件
 
-orchestrator の種類が DC/OS の [Azure コンテナー サービスのインスタンスをデプロイ](container-service-deployment.md)し、[クライアントがクラスターに接続](container-service-connect.md)できるようにします。また、次の手順を実行します。[AZURE.INCLUDE [DC/OS コマンド ライン インターフェイス (CLI) のインストール](../../includes/container-service-install-dcos-cli-include.md)]
+orchestrator の種類が DC/OS の [Azure コンテナー サービスのインスタンスをデプロイ](container-service-deployment.md)し、[クライアントがクラスターに接続](container-service-connect.md)できるようにします。また、次の手順を実行します。
+[AZURE.INCLUDE [DC/OS コマンド ライン インターフェイス (CLI) のインストール](../../includes/container-service-install-dcos-cli-include.md)]
 
 
 ## 負荷分散

@@ -145,7 +145,7 @@ Site Recovery のプロセス サーバーは、vSphere ホストまたはホス
 1.	構成サーバーに使用するマシンが[前提条件](#configuration-server-prerequisites)に準拠していることを確認します。具体的には、マシンが次の設定でインターネットに接続されていることを確認します。
 
 	- *.hypervrecoverymanager.windowsazure.com、*.accesscontrol.windows.net、*.backup.windowsazure.com、*.blob.core.windows.net、*.store.core.windows.net の各 URL へのアクセスを許可
-- MySQL をダウンロードするために [http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi](http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi) へのアクセスを許可
+	- MySQL をダウンロードするために [http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi](http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi) へのアクセスを許可
 	- [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (433) プロトコルを使用した Azure へのファイアウォール通信を許可
 
 2.	構成サーバーに [VMware vSphere PowerCLI 6.0](https://developercenter.vmware.com/tool/vsphere_powercli/6.0) をダウンロードしてインストールします。
