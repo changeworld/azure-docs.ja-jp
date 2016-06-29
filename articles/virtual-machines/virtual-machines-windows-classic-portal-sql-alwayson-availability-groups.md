@@ -1,5 +1,5 @@
 <properties
-	pageTitle="AlwaysOn 可用性グループの構成 (GUI) | Microsoft Azure"
+	pageTitle="Azure VM での AlwaysOn 可用性グループの構成 - クラシック"
 	description="Azure Virtual Machines で AlwaysOn 可用性グループを作成します。このチュートリアルでは、スクリプトではなく、主にユーザー インターフェイスとツールを使用します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
@@ -13,23 +13,23 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/04/2016"
+	ms.date="06/09/2016"
 	ms.author="mikeray" />
 
-# Azure VM での AlwaysOn 可用性グループの構成 (GUI)
+# Azure VM での AlwaysOn 可用性グループの構成 - クラシック
 
 > [AZURE.SELECTOR]
-- [ポータル](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
-- [PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
+- [Resource Manager: 自動](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+- [Resource Manager: 手動](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
+- [クラシック: UI](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
+- [クラシック: PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
 
 <br/>
 
-> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] リソース マネージャー モデル。
 
 
 このエンド ツー エンドのチュートリアルでは、Azure 仮想マシンで実行されている SQL Server AlwaysOn を使用して可用性グループを実装する方法について説明します。
-
->[AZURE.NOTE] Microsoft Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、AlwaysOn 可用性グループに必要なものがすべて自動的に構成されます。詳細については、[Microsoft Azure クラシック ポータル ギャラリーで提供されている SQL Server AlwaysOn](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx) に関するブログをご覧ください。PowerShell を使用する場合は、「[Azure VM での AlwaysOn 可用性グループの構成 (PowerShell)](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)」で同じシナリオのチュートリアルをご覧ください。
 
 チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
 
@@ -57,7 +57,7 @@
 
 - AlwaysOn 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。
 
->[AZURE.NOTE] SharePoint での SQL Server AlwaysOn 可用性グループの使用に関心がある場合は、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」をご覧ください。
+>[AZURE.NOTE] SharePoint での AlwaysOn 可用性グループの使用に関心がある場合は、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」をご覧ください。
 
 ## Virtual Network とドメイン コントローラー サーバーの作成
 
@@ -548,4 +548,4 @@
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

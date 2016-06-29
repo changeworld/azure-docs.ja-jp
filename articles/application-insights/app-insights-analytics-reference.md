@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Application Insights の Analytics のリファレンス。" 
+	pageTitle="Application Insights の Analytics のリファレンス | Microsoft Azure" 
 	description="Application Insights の強力な検索ツールである Analytics の正規表現のリファレンス。" 
 	services="application-insights" 
     documentationCenter=""
@@ -20,33 +20,22 @@
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
 
-[AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
-
 ## Index
 
-|クエリおよび演算子|集計|スカラー|数値|日付と時刻|String|配列、オブジェクト、および動的
-|---|---|---|---|---|---|---
-|[count](#count-operator)|[任意](#any)|[ブール型リテラル](#boolean-literals)|[算術演算子](#arithmetic-operators)|[日付と時刻の式](#date-and-time-expressions)|[GUID](#guids)|[配列とオブジェクトのリテラル](#array-and-object-literals)
-|[extend](#extend-operator)|[argmax](#argmax)|[ブール演算子](#boolean-operators)|[数値リテラル](#numeric-literals)|[日付と時刻のリテラル](#date-and-time-literals)|[難読化された文字列リテラル](#obfuscated-string-literals)|[動的オブジェクトの関数](#dynamic-object-functions)
-|[join](#join-operator)|[argmin](#argmin)|[キャスト](#casts)|[abs](#abs)|[ago](#ago)|[文字列リテラル](#string-literals)|[let 句の動的オブジェクト](#dynamic-objects-in-let-clauses)
-|[let 句](#let-clause)|[avg](#avg)|[スカラーの比較](#scalar-comparisons)|[bin](#bin)|[datepart](#datepart)|[文字列の比較](#string-comparisons)|[JSON パス式](#json-path-expressions)
-|[limit](#limit-operator)|[buildschema](#buildschema)|[gettype](#gettype)|[exp](#exp)|[dayofmonth](#dayofmonth)|[countof](#countof)|[名前](#names)
-|[mvexpand](#mvexpand-operator)|[count](#count)|[hash](#hash)|[floor](#floor)|[dayofweek](#dayofweek)|[extract](#extract)|[arraylength](#arraylength)
-|[parse](#parse-operator)|[countif](#countif)|[iff](#iff)|[log](#log)|[dayofyear](#dayofyear)|[isempty](#isempty)|[extractjson](#extractjson)
-|[project](#project-operator)|[dcount](#dcount)|[isnotnull](#isnotnull)|[rand](#rand)|[endofday](#endofday)|[isnotempty](#isnotempty)|[parsejson](#parsejson)
-|[project-away](#project-away-operator)|[dcountif](#dcountif)|[isnull](#isnull)|[sqrt](#sqrt)|[endofmonth](#endofmonth)|[notempty](#notempty)|[range](#range)
-|[range](#range-operator)|[makelist](#makelist)|[notnull](#notnull)|[todouble](#todouble)|[endofweek](#endofweek)|[replace](#replace)|[todynamic](#todynamic)
-|[reduce](#reduce-operator)|[makeset](#makeset)|[toscalar](#toscalar)|[toint](#toint)|[endofyear](#endofyear)|[split](#split)|[treepath](#treepath)
-|[render ディレクティブ](#render-directive)|[max](#max)||[tolong](#tolong)|[getmonth](#getmonth)|[strcat](#strcat)|
-|[restrict 句](#restrict-clause)|[min](#min)|||[getyear](#getyear)|[strlen](#strlen)|
-|[sort](#sort-operator)|[percentile](#percentile)|||[now](#now)|[substring](#substring)|
-|[summarize](#summarize-operator)|[percentiles](#percentiles)|||[startofday](#startofday)|[tolower](#tolower)|
-|[take](#take-operator)|[stdev](#stdev)|||[startofmonth](#startofmonth)|[toupper](#toupper)|
-|[top](#top-operator)|[sum](#sum)|||[startofweek](#startofweek)||
-|[top-nested](#top-nested-operator)|[variance](#variance)|||[startofyear](#startofyear)||
-|[union](#union-operator)||||[todatetime](#todatetime)||
-|[各値の説明:](#where-operator)||||[totimespan](#totimespan)||
-|||||[weekofyear](#weekofyear)||
+**クエリおよび演算子**: [count](#count-operator) | [extend](#extend-operator) | [join](#join-operator) | [let 句](#let-clause) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict 句](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator)
+
+**集計**: [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
+
+**スカラー**: [ブール型リテラル](#boolean-literals) | [ブール演算子](#boolean-operators) | [キャスト](#casts) | [スカラーの比較](#scalar-comparisons) | [gettype](#gettype) | [hash](#hash) | [iff](#iff) | [isnotnull](#isnotnull) | [isnull](#isnull) | [notnull](#notnull) | [toscalar](#toscalar)
+
+**数値**: [算術演算子](#arithmetic-operators) | [数値リテラル](#numeric-literals) | [abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) | [log](#log) | [rand](#rand) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
+
+**日付と時刻**: [日付と時刻の式](#date-and-time-expressions) | [日付と時刻のリテラル](#date-and-time-literals) | [ago](#ago) | [datepart](#datepart) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth) | [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
+
+**文字列**: [GUID](#guids) | [難読化された文字列リテラル](#obfuscated-string-literals) | [文字列リテラル](#string-literals) | [文字列の比較](#string-comparisons) | [countof](#countof) | [extract](#extract) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
+
+**配列、オブジェクト、および動的**: [配列とオブジェクトのリテラル](#array-and-object-literals) | [動的オブジェクトの関数](#dynamic-object-functions) | [let 句の動的オブジェクト](#dynamic-objects-in-let-clauses) | [JSON パス式](#json-path-expressions) | [名前](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
+
 
 
 
@@ -65,9 +54,9 @@ requests // The request table starts this pipeline.
     
 パイプ文字 `|` が先頭に配置された各フィルターは、いくつかのパラメーターが設定される*演算子*のインスタンスです。この演算子への入力は、前のパイプラインの結果であるテーブルです。ほとんどの場合、パラメーターは入力の列に対する[スカラー式](#scalars)ですが、まれに、入力列の名前である場合や、2 つ目のテーブルである場合もあります。列と行が 1 つずつしかなくても、クエリの結果は常にテーブルです。
 
-クエリは、単一の改行を含めることができますが、空白行で終了します。クエリでは、`//` と行末の間に注釈が含まれる場合があります。
+クエリは、単一の改行を含めることができますが、空白行で終了します。クエリでは、`//` と行末の間に注釈を含めることができます。
 
-クエリの前には 1 つ以上の [let 句](#let-clause)が配置されることがあります。これは、クエリ内で使用できるスカラー、テーブル、関数を定義するものです。
+クエリの前には、クエリ内で使用できるスカラー、テーブル、関数を定義する [let 句](#let-clause)を 1 つまたは複数配置することができます。
 
 ```AIQL
 
@@ -129,7 +118,7 @@ requests | count
 
 **ヒント**
 
-* 複数の列を削除するか、複数の列の名前を変更する場合は、[`project`](#project-operator) を代わりに使います。
+* 複数の列を削除するか複数の列の名前を変更する場合は、[`project`](#project-operator) を代わりに使います。
 * 長い式で使う短い名前を取得するためだけに `extend` を使うのは避けてください。`...| extend x = anonymous_user_id_from_client | ... func(x) ...` 
 
     テーブルのネイティブ列のインデックスは既に作成されていますが、新しい名前により、インデックスが作成されていない追加の列が定義されるため、クエリの実行速度が低下する可能性があります。
@@ -152,7 +141,7 @@ traces
 
 **構文**
 
-    Table1 | join [kind=Kind] \(Table2) on CommonColumn [, ...]
+    Table1 | join [kind=Kind] (Table2) on CommonColumn [, ...]
 
 **引数**
 
@@ -166,7 +155,7 @@ traces
 次の要素が含まれるテーブル:
 
 * 照合キーを含め、2 つのテーブルそれぞれのすべての列に対応する列。名前が競合している場合は、右側の列の名前が自動的に変更されます。
-* 入力テーブル間でのすべての一致に対応する行。もう一方のテーブルとすべての `on` フィールドの値が同じであるテーブルから選択された行です。 
+* 入力テーブル間でのすべての一致に対応する行。片方のテーブルから選択された、もう一方のテーブルに含まれる 1 つの行とすべての `on` フィールドの値が同じである行です。 
 
 * `Kind` が未指定の場合
 
@@ -239,8 +228,8 @@ let 句は、[名前](#names)を表形式の結果、スカラー値、または
 
     let name = (parameterName : type [, ...]) { plain_query }; query
 
-* *型:* `bool`、`int`、`long`、`double`、`string`、`timespan`、`datetime`、`guid`、[`dynamic`](#dynamic-type)
-* *plain\_query:* let 句のプレフィックスが付いていないクエリ。
+* *type:* `bool`、`int`、`long`、`double`、`string`、`timespan`、`datetime`、`guid`、[`dynamic`](#dynamic-type)
+* *plain\_query:* 先頭に let 句が置かれていないクエリ。
 
 **例**
 
@@ -265,7 +254,7 @@ let 句は、[名前](#names)を表形式の結果、スカラー値、または
 
 指定の数を上限に、入力テーブルから行を返します。どのレコードが返されるかはわかりません(特定のレコードを返すには、[`top`](#top-operator) を使います)。
 
-**エイリアス** `take`
+**エイリアス**: `take`
 
 **構文**
 
@@ -351,7 +340,7 @@ let 句は、[名前](#names)を表形式の結果、スカラー値、または
     with * "got" counter:long " " present "for" * "was" year:long *
 
 
-    T | parse kind="relaxed"
+    T | parse kind=relaxed
           "I got no socks for my birthday when I was 63 years old" 
     with * "got" counter:long " " present "for" * "was" year:long * 
 
@@ -537,10 +526,10 @@ T
 
 * *ColumnName:* 出力テーブル内の 1 つの列の名前。
 * *Start:* 出力の最小値。
-* *Stop:* 出力で生成される最高値 (*step* によって最高値を超過する場合は、限度内の最高値)。
+* *Stop:* 出力で生成される最高値 (*step* でこの値をステップオーバーする場合は、限度内の最高値)。
 * *Step:* 2 つの連続する値の差異。 
 
-この引数は、数値、日付、または期間の値である必要があります。テーブルの列を参照することはできません(入力テーブルに基づいて範囲を計算する場合は、[range *関数*](#range)を使います。その際は、[mvexpand 演算子](#mvexpand-operator)も組み合わせて使うことになると思われます)。
+この引数は、数値、日付、または期間の値である必要があります。テーブルの列を参照することはできません(入力テーブルに基づいて範囲を計算する場合は、[range *関数*](#range)を使います。場合によっては、[mvexpand 演算子](#mvexpand-operator)も組み合わせて使います)。
 
 **戻り値**
 
@@ -573,7 +562,7 @@ range timestamp from ago(4h) to now() step 1m
 | render timechart  
 ```
 
-`range` 演算子を使って小規模でアドホックなディメンション テーブルを作成する方法を示しています。さらに、このテーブルは、ソース データに値がない場合にゼロを取り込むために使用されます。
+`range` 演算子を使って小規模でアドホックなディメンション テーブルを作成する方法を示しています。さらに、このテーブルは、ソース データに値がない場合にゼロを取り込むために使用されています。
 
 ### reduce 演算子
 
@@ -630,7 +619,7 @@ render では、テーブルの表示方法をプレゼンテーション層に�
 
 入力テーブルの行を 1 つ以上の列の順序で並べ替えます。
 
-**エイリアス** `order`
+**エイリアス**: `order`
 
 **構文**
 
@@ -638,7 +627,7 @@ render では、テーブルの表示方法をプレゼンテーション層に�
 
 **引数**
 
-* *T:* 並べ替えるテーブルの入力。
+* *T:* 並べ替える入力テーブル。
 * *Column:* 並べ替えに使用する *T* の列。値の型は、数値、日付、時刻、または文字列にする必要があります。
 * `asc`: 昇順で (小さい値から大きい値へ) 並べ替えます。既定値は `desc` で、降順 (大きい値から小さい値へ) です。
 
@@ -649,7 +638,7 @@ Traces
 | where ActivityId == "479671d99b7b"
 | sort by Timestamp asc
 ```
-特定の `ActivityId` を持つ Traces テーブルのすべての行。タイムスタンプの順で並べ替えられています。
+特定の `ActivityId` を持つ Traces テーブルのすべての行が、タイムスタンプの順で並べ替えられます。
 
 ### summarize 演算子
 
@@ -677,10 +666,10 @@ Traces
 **引数**
 
 * *Column:* 結果列の名前 (省略可能)。既定値は式から派生した名前です。[名前](#names)は、大文字と小文字が区別されます。また、名前には、アルファベット、数字、または "\_" 文字を使用できます。キーワードまたは名前を他の文字で囲む場合は、`['...']` または `["..."]` を使います。
-* *Aggregation:* 引数として列名を指定した、`count()` や `avg()` などの集計関数の呼び出し。「[集計](#aggregations)」を参照してください。
+* *Aggregation:* 引数として列名を指定して、`count()` や `avg()` などの集計関数を呼び出します。「[集計](#aggregations)」を参照してください。
 * *GroupExpression:* 列に対する式です。個別の値のセットを示します。通常は、限られた値のセットが既に指定されている列名か、引数として数値列または時間列が指定されている `bin()` になります。 
 
-`bin()` を使用せずに数値式または時間式を指定した場合、Analytics は自動的に `1h` (時間の場合) または `1.0` (数値の場合) の間隔でそれを適用します。
+`bin()` を使用せずに数値式または時間式を指定した場合、Analytics は自動的に `1h` (時間の場合) または `1.0` (数値の場合) の間隔でその式を適用します。
 
 *GroupExpression* を指定しない場合は、テーブル全体が単一の出力行にまとめられます。
 
@@ -718,12 +707,12 @@ Traces
 
 * *NumberOfRows:* 返される *T* の行の数。
 * *Sort\_expression:* 行の並べ替えに使用する式。通常は単なる列名です。複数の sort\_expression を指定できます。
-* `asc` または `desc` (既定値) は、選択が実際には範囲の "下限" と "上限" のどちらから行われるかを制御すると考えられます。
+* `asc` または `desc` (既定値) は、実際には、選択が実際に範囲の "下限" と "上限" のどちらから行われるかを制御します。
 
 
 **ヒント**
 
-`top 5 by name` は表面的には `sort by name | take 5` と同等です。しかし、こちらの方が処理速度が早く、常に並べ替えられた結果を返します。`take` にはこのような保証がありません。
+`top 5 by name` は、表面的には `sort by name | take 5` と同等です。しかし、こちらの方が処理速度が早く、常に並べ替えられた結果を返します。`take` にはこのような保証がありません。
 
 ### top-nested 演算子
 
@@ -767,7 +756,7 @@ Traces
 * `kind`: 
  * `inner` - 結果には、すべての入力テーブルに共通する列のサブセットが含まれます。
  * `outer` - 結果には、入力のいずれかに存在するすべての列が含まれます。入力行で定義されていなかったセルは `null` に設定されます。
-* `withsource=`*ColumnName:* 指定されている場合は、各行の基になっているソース テーブルを示す値が格納された列 (名前は *ColumnName*) が出力に含まれます。
+* `withsource=`*ColumnName:* これを指定した場合は、各行の基になっているソース テーブルを示す値が格納された列 (名前は *ColumnName*) が出力に含まれます。
 
 **戻り値**
 
@@ -810,7 +799,7 @@ exceptions
 
 述語の条件を満たす行のサブセットにテーブルをフィルター処理します。
 
-**エイリアス** `filter`
+**エイリアス**: `filter`
 
 **構文**
 
@@ -1098,19 +1087,27 @@ traces
 
 *式*の最小値を計算します。
 
-**ヒント**: これで最小値または最大値 (最高価格または最低価格など) をそれぞれ単独で計算できます。ただし、行に他の列 (最低価格を提示するサプライヤーの名前など) が必要な場合は、[argmin または argmax](#argmin-argmax) を使用します。
+**ヒント**: これで最小値または最大値 (最高価格または最低価格など) をそれぞれ単独で計算できます。ただし、行の他の列 (最低価格を提示するサプライヤーの名前など) が必要な場合は、[argmin または argmax](#argmin-argmax) を使用します。
 
 
-<a name="percentile"></a> <a name="percentiles"></a>
-### percentile、percentiles
+<a name="percentile"></a> <a name="percentiles"></a> <a name="percentilew"></a> <a name="percentilesw"></a>
+### percentile、percentiles、percentilew、percentilesw
 
     percentile(Expression, Percentile)
 
 グループ内にある指定されたパーセンタイルの*式*の推定値を返します。精度は、パーセンタイル リージョンの人口密度によって異なります。
     
-    percentiles(Expression, Percentile1 [ , Percentile2 ] )
+    percentiles(Expression, Percentile1 [ , Percentile2 ...] )
 
 `percentile()` に似ていますが、複数のパーセンタイル値を計算します (各パーセンタイルを個別に計算するより高速)。
+
+    percentilew(Expression, WeightExpression, Percentile)
+
+重み付けされたパーセンタイルです。事前に集計したデータに対して使用します。`WeightExpression` は、集計済みの各行で表される元の行の数を指定する整数です。
+
+    percentilesw(Expression, WeightExpression, Percentile1, [, Percentile2 ...])
+
+`percentilew()` に似ていますが、複数のパーセンタイル値を計算します。
 
 **例**
 
@@ -1135,7 +1132,6 @@ traces
 
 結果には、/Events/Index 要求の場合、要求の 5% の応答が 2.44 秒未満、50% の応答が 3.52 秒、5% が 6.85 秒より遅いことが示されています。
 
-
 複数の統計値を計算する場合は次のようになります。
 
     requests 
@@ -1145,7 +1141,43 @@ traces
         percentiles(Duration, 5, 50, 95)
       by name
 
-##### パーセンタイル単位の推定エラー
+#### 重み付きパーセンタイル
+
+重み付きパーセンタイルの関数は、データが事前に集計されている場合に使用します。
+
+たとえば、アプリケーションで 1 秒間に数千回の操作が行われており、それらの待機時間を知りたいとします。単純な方法としては、各操作に対して Application Insights の要求またはカスタム イベントを生成することが考えられます。この方法では、アダプティブ サンプリングにより緩和されるものの、大量のトラフィックが生成されます。そこで、より良い解決策として、データを Application Insights に送信する前にアプリケーション内で集計するコードを作成してみましょう。概要が定期的に集計されて送信されるため、データ レートが 1 秒あたり数ポイント程度に抑えられます。
+
+このコードでは、待機時間の測定値 (ミリ秒単位) のストリームを受け入れます。次に例を示します。
+    
+     { 15, 12, 2, 21, 2, 5, 35, 7, 12, 22, 1, 15, 18, 12, 26, 7 }
+
+測定値は、`{ 10, 20, 30, 40, 50, 100 }` というビン単位でカウントします。
+
+定期的に、バケットごとに対して一連の TrackEvent 呼び出しを作成し、各呼び出しにカスタムの測定値を含めます。
+
+    foreach (var latency in bins.Keys)
+    { telemetry.TrackEvent("latency", null, 
+         new Dictionary<string, double>
+         ({"latency", latency}, {"opCount", bins[latency]}}); }
+
+Analytics では、次のようなイベントのグループがあるとします。
+
+`opCount` | `latency`| 意味
+---|---|---
+8 | 10 | = 10 ミリ秒のビン含まれる操作は 8 件
+6 | 20 | = 20 ミリ秒のビン含まれる操作は 6 件
+3 | 30 | = 30 ミリ秒のビン含まれる操作は 3 件
+1 | 40 | = 40 ミリ秒のビン含まれる操作は 1 件
+
+元のイベント待機時間の正確な分布図を得るには、`percentilesw` を使用します。
+
+    customEvents | summarize percentilesw(latency, opCount, 20, 50, 80)
+
+結果は、元の測定値のセットに対して単純な `percentiles` を使用した場合と同じになります。
+
+> [AZURE.NOTE] 重み付きパーセンタイルは[サンプリングされたデータ](app-insights-sampling.md)には適していません。この場合、サンプリングされた各行は、ビンではなく元の行のランダム サンプルを表すからです。サンプリングされたデータには、単純なパーセンタイル関数が適しています。
+
+#### パーセンタイル単位の推定エラー
 
 パーセンタイル集計では、[T-Digest](https://github.com/tdunning/t-digest/blob/master/docs/t-digest-paper/histo.pdf) を使用して概算値を算出できます。
 
@@ -1184,7 +1216,7 @@ traces
 | `bool` | `boolean` | `System.Boolean` |
 | `datetime`| `date` | `System.DateTime` |
 | `dynamic` | | `System.Object` |
-| `guid` | `uuid`、`uniqueid` | `System.Guid` |
+| `guid` | `uuid`, `uniqueid` | `System.Guid` |
 | `int` | | `System.Int32` |
 | `long` | | `System.Int64` |
 | `double` | `real` | `System.Double` |
@@ -1283,13 +1315,13 @@ hash(datetime("2015-01-01"))    // 1380966698541616202
 
 **引数**
 
-* *predicate:* `boolean` 値に評価される式。
-* *ifTrue:* *predicate* が `true` に評価された場合に、評価され、その値が関数から返される式。
-* *ifFalse:* *predicate* が `false` に評価された場合に、評価され、その値が関数から返される式。
+* *predicate:* `boolean` 値で評価される式。
+* *ifTrue:* *predicate* が `true` と評価された場合に、評価されてその値が関数から返される式。
+* *ifFalse:* *predicate* が `false` と評価された場合に、評価されてその値が関数から返される式。
 
 **戻り値**
 
-この関数は、*predicate* が `true` に評価された場合に *ifTrue* の値を返し、それ以外の場合に *ifFalse* の値を返します。
+この関数は、*predicate* が `true` と評価された場合に *ifTrue* の値を返し、それ以外の場合に *ifFalse* の値を返します。
 
 **例**
 
@@ -1394,11 +1426,11 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 || |
 |---|-------------|
 | + | [追加] のいずれかを |
-| - | 減算 | 
-| * | 乗算 | 
-| / | 除算 | 
-| % | 剰余 | 
-|| 
+| - | 減算 |
+| * | 乗算 |
+| / | 除算 |
+| % | 剰余 |
+||
 |`<` |小さい 
 |`<=`|小さいか等しい 
 |`>` |大きい 
@@ -1426,7 +1458,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 値を切り捨てて、指定された bin サイズの倍数である整数にします。[`summarize by`](#summarize-operator) クエリでよく使用されます。値が分散している場合に、特定の値ごとの小さなセットにグループ化されます。
 
-エイリアス `floor`。
+エイリアス: `floor`。
 
 **構文**
 
@@ -1436,7 +1468,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 **引数**
 
 * *value:* 数値、日付、または期間。 
-* *roundTo:* "bin サイズ"。*value* を除算する数値、日付、または期間。 
+* *roundTo:* "bin のサイズ"。*value* を分割する数値、日付、または期間です。 
 
 **戻り値**
 
@@ -1762,7 +1794,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 ### todatetime
 
-エイリアス `datetime()`。
+エイリアス: `datetime()`。
 
      todatetime("2016-03-28")
      todatetime("03/28/2016")
@@ -1780,7 +1812,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 ### totimespan
 
-エイリアス `timespan()`。
+エイリアス: `timespan()`。
 
     totimespan("21d")
     totimespan("21h")
@@ -1806,7 +1838,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 文字列は、単一引用符または二重引用符で囲むことがあります。
 
-バックスラッシュ (``) は、`\t` (タブ)、`\n` (改行)、文字列を囲む引用符などの文字をエスケープするために使用されます。
+`\t` (タブ)、`\n` (改行)、文字列を囲む引用符などの文字をエスケープするには、バックスラッシュ (``) を使用します。
 
 * `'this is a "string" literal in single \' quotes'`
 * `"this is a 'string' literal in double " quotes"`
@@ -1842,7 +1874,7 @@ h"hello"
 `matches regex`|LHS には RHS との一致が含まれている|あり| `"Fabrikam" matches regex "b.*k"`
 
 
-語彙全体があるかどうかをテストしている場合は、`has` または `in` を使用します。語彙全体とは、非英数字またはフィールドの先頭か末尾によって囲まれた、記号または英数字から成る単語を意味します。`has` は、`contains` または `startswith` より速く動作します。以下のクエリでは、最初の方が処理速度は速くなります。
+語彙全体があるかどうかをテストする場合は、`has` または `in` を使用します。語彙全体とは、非英数字またはフィールドの先頭か末尾によって囲まれた、記号または英数字から成る単語を意味します。`has` は、`contains` または `startswith` より速く動作します。以下のクエリでは、最初の方が処理速度は速くなります。
 
     EventLog | where continent has "North" | count;
 	EventLog | where continent contains "nor" | count
@@ -1911,7 +1943,7 @@ h"hello"
 
 **例**
 
-サンプル文字列 `Trace` で `Duration` の定義が検索されます。一致は `real` に変換された後、時間定数 (`1s`) で乗算されて、`Duration` は `timespan` 型になります。この例では、123.45 秒と等しくなります。
+サンプル文字列 `Trace` で `Duration` の定義を検索します。一致は `real` に変換された後、時間定数 (`1s`) で乗算されて、`Duration` は `timespan` 型になります。この例では、123.45 秒と等しくなります。
 
 ```AIQL
 ...
@@ -2291,7 +2323,7 @@ arraylength(parsejson('21')) == null
 
 **パフォーマンスに関するヒント**
 
-* `extractjson()` を使用する前に、where 句を適用します。
+* `extractjson()` を使用する前に where 句を適用してください。
 * 代わりに、[extract](#extract) による正規表現の一致を使用することを検討してください。こちらの方が実行速度が非常に速く、JSON がテンプレートから生成される場合に効率的です。
 * JSON から複数の値を抽出する必要がある場合は、`parsejson()` を使用してください。
 * 列の型が動的になるように宣言することによって、取り込み時に JSON が解析されるようにすることを検討してください。
@@ -2426,4 +2458,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

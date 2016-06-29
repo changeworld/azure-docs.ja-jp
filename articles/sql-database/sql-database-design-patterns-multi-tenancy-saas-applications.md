@@ -150,13 +150,17 @@ Azure SQL Database では、テナントの分離とテナントのデータベ�
 
 ツールを使用するように既存のデータベースを変換する方法については、「[既存のデータベースを移行してスケールアウト](sql-database-elastic-convert-to-use-elastic-tools.md)」を参照してください。
 
-新しいプールを作成するには、[チュートリアル](sql-database-elastic-pool-create-portal.md)に従います。
+新しいプールの作成については、[エラスティック プールの作成チュートリアル](sql-database-elastic-pool-create-portal.md)に関するページをご覧ください。
 
-## 詳細情報
+エラスティック データベース プールの監視と管理については、[エラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-portal.md)に関するページをご覧ください。
 
-[Azure エラスティック データベース プールの概要](sql-database-elastic-pool.md)
+## その他のリソース
 
-[Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
+- [Azure エラスティック データベース プールの概要](sql-database-elastic-pool.md)
+- [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
+- [弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション](sql-database-elastic-tools-multi-tenant-row-level-security.md)
+- [Azure AD および OpenID Connect を使用したマルチテナント アプリでの認証](../guidance/guidance-multitenant-identity-authenticate.md)
+- [Tailspin Surveys アプリケーション](../guidance/guidance-multitenant-identity-tailspin.md)
 
 ## 質問と機能に関する要望
 
@@ -172,4 +176,4 @@ Azure SQL Database では、テナントの分離とテナントのデータベ�
 
 	
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/17/2016"
+   ms.date="06/10/2016"
    ms.author="joaoma" />
 
 # Traffic Manager エンドポイントの無効化または有効化
@@ -44,4 +44,4 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

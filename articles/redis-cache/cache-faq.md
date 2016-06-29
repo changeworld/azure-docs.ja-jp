@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/20/2016" 
+	ms.date="06/13/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -47,21 +47,21 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 -	Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。たとえば、10 シャードの P4 クラスターを作成した場合、使用可能なスループットは 250 万 (250 K * 10) RPS となります。
 -	キー サイズを大きくしたときのスループットは、Standard レベルより Premium レベルのほうが高い。
 
-| [価格レベル] | サイズ | 使用可能な帯域幅 | 1 KB のキーのサイズ |
-|----------------------|--------|----------------------------|--------------------------------|
-| **Standard のキャッシュ サイズ** | &nbsp; |**メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** | **1 秒あたりの要求数 (RPS)** |
-| C0 | 250 MB | 5 / 0.625 | 600 |
-| C1 | 1 GB | 100 / 12.5 | 12200 |
-| C2 | 2\.5 GB | 200 / 25 | 24000 |
-| C3 | 6 GB | 400 / 50 | 49000 |
-| C4 | 13 GB | 500 / 62.5 | 61000 |
-| C5 | 26 GB | 1000 / 125 | 115000 |
-| C6 | 53 GB | 2000 / 250 | 150000 |
-| **Premium のキャッシュ サイズ** | &nbsp; | &nbsp; | **1 秒あたりの要求数 (RPS)、シャードあたり** |
-| P1 | 6 GB | 1000 / 125 | 140000 |
-| P2 | 13 GB | 2000 / 250 | 220000 |
-| P3 | 26 GB | 2000 / 250 | 220000 |
-| P4 | 53 GB | 4000 / 500 | 250000 |
+| [価格レベル] | サイズ | CPU コア数 | 使用可能な帯域幅 | 1 KB のキーのサイズ |
+|--------------------------|--------|-----------|--------------------------------------------------------|------------------------------------------|
+| **Standard のキャッシュ サイズ** | | | **メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** | **1 秒あたりの要求数 (RPS)** |
+| C0 | 250 MB | 共有 | 5 / 0.625 | 600 |
+| C1 | 1 GB | 1 | 100 / 12.5 | 12200 |
+| C2 | 2\.5 GB | 2 | 200 / 25 | 24000 |
+| C3 | 6 GB | 4 | 400 / 50 | 49000 |
+| C4 | 13 GB | 2 | 500 / 62.5 | 61000 |
+| C5 | 26 GB | 4 | 1000 / 125 | 115000 |
+| C6 | 53 GB | 8 | 2000 / 250 | 150000 |
+| **Premium のキャッシュ サイズ** | | **シャードあたりの CPU コア数** | | **1 秒あたりの要求数 (RPS)、シャードあたり** |
+| P1 | 6 GB | 2 | 1000 / 125 | 140000 |
+| P2 | 13 GB | 4 | 2000 / 250 | 220000 |
+| P3 | 26 GB | 4 | 2000 / 250 | 220000 |
+| P4 | 53 GB | 8 | 4000 / 500 | 250000 |
 
 
 `redis-benchmark.exe` などの Redis ツールのダウンロードの詳細については、「[Redis コマンドの実行方法](#cache-commands)」セクションを参照してください。
@@ -139,7 +139,7 @@ ConnectTimeout|接続操作のタイムアウト (ミリ秒単位)。|
 
 CLR ThreadPool には、2 種類のスレッド - 「Worker」と「I/O 完了ポート」 (別名 IOCP) スレッドがあります。
 
--	`Task.Run(…)` メソッドや `ThreadPool.QueueUserWorkItem(…)` メソッドの処理などには、Worker スレッドが使用されます。これらのスレッドは、バック グラウンド スレッドで作業が発生する必要がある場合に、CLR でさまざまなコンポーネントによっても使用されます。
+-	`Task.Run(…)` メソッドや `ThreadPool.QueueUserWorkItem(…)` メソッドの処理などには、worker スレッドが使用されます。これらのスレッドは、バック グラウンド スレッドで作業が発生する必要がある場合に、CLR でさまざまなコンポーネントによっても使用されます。
 -	IOCP スレッドは、非同期 IO が発生したときに使用されます(ネットワークからの読み取りなど)。  
 
 スレッド プールは、各種のスレッドについて「最小」設定に達するまで、新しい worker スレッドまたは I/O 完了スレッドをオンデマンドで (スロットルなしで) 提供します。既定では、スレッドの最小数はシステム上のプロセッサの数に設定されます。
@@ -228,7 +228,7 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 <a name="cache-emulator"></a>
 ## Azure Redis Cache のローカル エミュレーターがない場合
 
-Azure Redis Cache のローカル エミュレーターがなくても、ローカル コンピューターの [Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/)から、redis server.exe の MSOpenTech のバージョンを実行して接続し、以下の例のように、ローカル キャッシュ エミュレーターと同じような使い心地を得ることができます。
+Azure Redis Cache のローカル エミュレーターがなくても、ローカル コンピューターの [Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/)から、redis-server.exe の MSOpenTech のバージョンを実行して接続し、以下の例のように、ローカル キャッシュ エミュレーターと同じような使い心地を得ることができます。
 
 	private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
 	{
@@ -244,7 +244,7 @@ Azure Redis Cache のローカル エミュレーターがなくても、ロー�
 	    }
 	}
 
-必要に応じて [redis.conf](http://redis.io/topics/config) を構成し、オンラインの Azure Redis Cache の[既定のキャッシュ設定](cache-configure.md#default-redis-server-configuration)とより厳密に一致させます。
+必要に応じて [redis.conf](http://redis.io/topics/config) ファイルを構成し、オンラインの Azure Redis Cache の[既定のキャッシュ設定](cache-configure.md#default-redis-server-configuration)とより厳密に一致させます。
 
 <a name="cache-common-patterns"></a>
 ## いくつかの一般的なキャッシュ パターンと考慮事項
@@ -285,4 +285,4 @@ Azure Redis Cache の使用方法については、「[Azure Redis Cache の使�
 
 ["minIoThreads" 構成設定]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

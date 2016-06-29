@@ -15,6 +15,15 @@ Premium Storage ディスク タイプ | P10 | P20 | P30
 ディスク サイズ | 128 GiB | 512 GiB | 1024 GiB (1 TB)
 ディスクあたりの最大 IOPS | 500 | 2300 | 5000
 ディスクあたりの最大スループット | 100 MB/秒 | 150 MB/秒 | 200 MB/秒
-ストレージ アカウントあたりの最大ディスク数 | 280 | 140 | 35
+ストレージ アカウントあたりの最大ディスク数 | 280 | 70 | 35
 
-<!---HONumber=AcomDC_0413_2016-->
+**仮想マシンのディスク: VM あたりの上限**
+
+リソース|既定の制限
+---|---
+VM あたりの最大 IOPS|GS5 VM<sup>1</sup> で 80,000 IOPS
+VM あたりの最大スループット|GS5 VM<sup>1</sup> で 2,000 MB/秒
+
+<sup>1</sup>他の VM サイズに制限については、「[VM サイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
+
+<!---HONumber=AcomDC_0615_2016-->

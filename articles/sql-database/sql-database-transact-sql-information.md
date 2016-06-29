@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="05/12/2016"
+   ms.date="06/13/2016"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure SQL Database の Transact-SQL の相違点
@@ -36,7 +36,7 @@
 
 ## SQL Database V12 で部分的にサポートされる機能
 
-SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメントに存在する引数の全部ではなく一部がサポートされています。たとえば、CREATE PROCEDURE ステートメントは利用できますが、CREATE PROCEDURE の WITH ENCRYPTION オプションは利用できません。各ステートメントのサポートされる領域については、リンクされている構文トピックを参照してください。
+SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメントに存在する引数の全部ではなく一部がサポートされています。たとえば、CREATE PROCEDURE ステートメントは利用できますが、CREATE PROCEDURE のすべてのオプションを利用できるわけではありません。各ステートメントのサポートされる領域については、リンクされている構文トピックを参照してください。
 
 - データベース: [CREATE](https://msdn.microsoft.com/library/dn268335.aspx)/[ALTER](https://msdn.microsoft.com/library/ms174269.aspx)
 - DMV は一般的に利用できる機能で利用できます
@@ -64,7 +64,7 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 - イベント: イベント、イベント通知、クエリ通知
 - Microsoft Azure により自動的に管理されるデータベース ファイル置換、サイズ、データベース ファイルに関連する機能。
 - Microsoft Azure アカウントを使用して管理される高可用性に関連する機能: バックアップ、復元、AlwaysOn、データベース ミラーリング、ログ配布、復旧モード。詳細については、「Azure SQL Database のバックアップと復元」を参照してください。
-- ログ リーダーに依存する機能: レプリケーション、変更データ キャプチャ。
+- SQL Database で実行されているログ リーダーに依存する機能: プッシュ レプリケーション、変更データ キャプチャ。
 - SQL Server Agent または MSDB データベースに依存する機能: ジョブ、警告、演算子、ポリシーベースの管理、データベース メール、中央管理サーバー。
 - FILESTREAM
 - 関数: fn\_get\_sql, fn\_virtualfilestats、fn\_virtualservernodes
@@ -108,4 +108,4 @@ TRANSACT-SQL リファレンスには、SQL Server 2008 以降のバージョン
 
 場合によっては、トピックの一般的な項目を製品で使用できますが、製品の間には若干の違いがあります。相違点は、必要に応じてトピックの中で指示されます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

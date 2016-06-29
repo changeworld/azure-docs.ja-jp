@@ -81,14 +81,12 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 
 リソース プロバイダー | 機能
 ---------- | ------------
-コンピューティング | ブート診断。
 コンピューティング | 関連付けのない仮想マシン ディスク。
 コンピューティング | 仮想マシン イメージ。
 ネットワーク | 関連付けのない予約済み IP (VM に接続されていない場合)。VM に接続されている予約済み IP はサポートされます。
 ネットワーク | 関連付けのないネットワーク セキュリティ グループ (仮想ネットワークやネットワーク インターフェイスに接続されていない場合)。仮想ネットワークによって参照される NSG はサポートされます。
 ネットワーク | エンドポイント ACL。
 ネットワーク | 仮想ネットワーク ゲートウェイ (サイト間、Azure ExpressRoute、ポイント対サイト)。
-Storage | ストレージ アカウント。
 
 ### サポートされていない構成
 
@@ -103,7 +101,6 @@ Storage | ストレージ アカウント。
 コンピューティング | XML VM 拡張機能 (Visual Studio デバッガー、Web デプロイ、およびリモート デバッグ) | これはサポートされていません。仮想マシンからこれらの拡張機能を削除して、移行を続行することをお勧めします。
 コンピューティング | Web/worker ロールを含む Cloud Services | 現在これはサポートされていません。
 ネットワーク | 仮想マシンと Web/worker ロールを含む仮想ネットワーク | 現在これはサポートされていません。
-ネットワーク | 名前にスペースを含むサブネット | 現在これはサポートされていません。
 Azure App Service | App Service 環境を含む仮想ネットワーク | 現在これはサポートされていません。
 Azure HDInsight | HDInsight サービスを含む仮想ネットワーク | 現在これはサポートされていません。
 Microsoft Dynamics Lifecycle Services | Dynamics Lifecycle Services によって管理される仮想マシンを含む仮想ネットワーク | 現在これはサポートされていません。
@@ -226,4 +223,4 @@ Resource Manager での VM の Azure Site Recovery および Backup サポート
 - [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](virtual-machines-linux-cli-migration-classic-resource-manager.md)
 - [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

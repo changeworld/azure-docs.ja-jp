@@ -53,7 +53,7 @@
 ## 復元
 | 操作 | エラーの詳細 | 対処法 |
 | -------- | -------- | -------|
-| 復元 | クラウドの内部エラーの復元に失敗しました | <ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。<br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production" Get-AzureDns -DnsSettings $deployment.DnsSettings<br> を確認します。構成済みのアドレスがある場合は、DNS 設定が構成されていることを意味します。<br> <li>復元を試みているクラウド サービスが ReservedIP で構成されています。<br>次の PowerShell コマンドレットを使用して、クラウド サービスに予約済み IP があることを確認できます。<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>次の特殊なネットワーク構成の仮想マシンを同じクラウド サービスに復元しようとしています。<br>- ロード バランサー構成の仮想マシン (内部と外部)<br>- 複数の予約済み IP がある仮想マシン<br>- 複数の NIC がある仮想マシン<br>UI で新しいクラウド サービスを選択するか、特殊なネットワーク構成の VM の[復元に関する考慮事項](backup-azure-restore-vms.md/#restoring-vms-with-special-network-configurations)を参照してください</ol> |
+| 復元 | クラウドの内部エラーの復元に失敗しました | <ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。<br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production" Get-AzureDns -DnsSettings $deployment.DnsSettings<br> を確認します。構成済みのアドレスがある場合は、DNS 設定が構成されていることを意味します。<br> <li>復元を試みているクラウド サービスが ReservedIP で構成されています。<br>次の PowerShell コマンドレットを使用して、クラウド サービスに予約済み IP があることを確認できます。<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>次の特殊なネットワーク構成の仮想マシンを同じクラウド サービスに復元しようとしています。<br>- ロード バランサー構成の仮想マシン (内部と外部)<br>- 複数の予約済み IP がある仮想マシン<br>- 複数の NIC がある仮想マシン<br>UI で新しいクラウド サービスを選択するか、特殊なネットワーク構成の VM の[復元に関する考慮事項](./backup-azure-arm-restore-vms.md/#restoring-vms-with-special-network-configurations)を参照してください</ol> |
 | 復元 | 選択した DNS 名は既に使用されています - 別の DNS 名を指定してからやり直してください。 | この場合、DNS 名はクラウド サービス名 (通常、末尾に cloudapp.net が付いています) を表します。これは一意である必要があります。このエラーが発生した場合は、復元中に別の VM の名前を選択する必要があります。<br><br> このエラーは Azure ポータルのユーザーのみに表示されることに注意してください。PowerShell による復元操作は、ディスクを復元するだけで、VM を作成しないため、成功します。ディスクの復元操作後に VM を明示的に作成すると、このエラーが発生します。 |
 | 復元 | 指定された仮想ネットワークの構成が正しくありません - 別の仮想ネットワークの構成を指定してからやり直してください。 | なし |
 | 復元 | 指定したクラウド サービスでは、復元対象の仮想マシンの構成と一致しない予約済み IP が使用されています - 予約済み IP を使用していない別のクラウド サービスを指定するか、復元元に別の回復ポイントを選択してください。 | なし |
@@ -140,4 +140,4 @@ Backup 拡張機能は、他の拡張機能と同様に、パブリックなイ�
 
 >[AZURE.NOTE] IaaS VM Backup が正しく機能するためには、ゲスト内で DHCP が有効になっている必要があります。静的プライベート IP が必要な場合は、プラットフォームを通じて構成する必要があります。VM 内の DHCP オプションは有効のままにしておいてください。詳細については、[静的内部プライベート IP の設定](../virtual-network/virtual-networks-reserved-private-ip.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

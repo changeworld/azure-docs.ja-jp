@@ -37,7 +37,7 @@ Azure の Service Fabric プラットフォームは、次のカテゴリのア�
 ## ステートレスとステートフルなマイクロサービスから成るアプリケーションを設計する
 Azure Cloud Service worker ロールでのアプリケーションの構築は、ステートレス サービスの一例です。対照的に、ステートフルなマイクロサービスは、要求とその応答を超える権限のある状態を維持します。正しい処理をレプリケーションでバックアップするシンプルな API 経由で状態の高可用性と一貫性が実現します。Service Fabric のステートフルなサービスでは、高可用性を平等に実現可能にすることで、データベースなどのデータ ストアだけでなく、すべての種類のアプリケーションに高可用性をもたらします。これは自然な進展です。アプリケーションは既に、高可用性のための純粋なリレーショナル データベースから NoSQL データベースに移っています。アプリケーション自体を「ホット」な状態にして、データを中で管理し、信頼性、一貫性、可用性を犠牲にすることなく、パフォーマンスを上げることができるようになりました。
 
-マイクロサービスで構成されるアプリケーションを構築するとき、通常、ステートレスに呼び出すステートレスな Web アプリ (ASP.NET、node.js など) と Service Fabric デプロイメント コマンドを使ってすべてが同じ Service Fabric クラスターにデプロイされたステートフルなビジネス中間層サービスの組み合わせがあります。これらのサービスは、スケール、信頼性、およびソース使用率について、それぞれ独立性を有しているため、開発環境とライフサイクル管理で機敏性が大幅に向上します。
+マイクロサービスで構成されるアプリケーションを構築するとき、通常、ステートレスに呼び出すステートレスな Web アプリ (ASP.NET、Node.js など) と Service Fabric デプロイ コマンドを使ってすべてが同じ Service Fabric クラスターにデプロイされたステートフルなビジネス中間層サービスの組み合わせがあります。これらのサービスは、スケール、信頼性、およびソース使用率について、それぞれ独立性を有しているため、開発環境とライフサイクル管理で機敏性が大幅に向上します。
 
 純粋にステートレスなアプリケーションの可用性と待機時間の要件に対応するために従来必要だった追加のキューとキャッシュは、ステートフル マイクロサービスでは不要になるため、アプリケーション設計が単純化されます。ステートフル サービスは高可用性と低待機時間を特徴とするため、アプリケーション全体では管理すべき変動要素が少なくなります。次の図では、ステートレスとステートフルなアプリケーション設計の違いを示しています。[信頼性の高いサービス](service-fabric-reliable-services-introduction.md)と[信頼性の高いアクター](service-fabric-reliable-actors-introduction.md) プログラミング モデルを利用することで、高スループットと低待機時間を実現しながら、ステートフル サービスによりアプリケーションの複雑さが軽減されます。
 
@@ -50,22 +50,15 @@ Azure Cloud Service worker ロールでのアプリケーションの構築は�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 
-
-Service Fabric の[信頼性の高いサービス](service-fabric-reliable-services-quick-start.md)と[信頼性の高いアクター](service-fabric-reliable-actors-get-started.md) プログラミング モデルで、ステートレス サービスとステートフル サービスの構築を始めます。
-
-次のトピックもご覧ください。
-
-[マイクロサービスについて](service-fabric-overview-microservices.md)
-
-[サービスの状態を定義し、管理する](service-fabric-concepts-state.md)
-
-[Service Fabric サービスの可用性](service-fabric-availability-services.md)
-
-[Service Fabric サービスのスケーリング](service-fabric-concepts-scalability.md)
-
-[Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
+* Service Fabric の [Reliable Services](service-fabric-reliable-services-quick-start.md) プログラミング モデルと [Reliable Actors](service-fabric-reliable-actors-get-started.md) プログラミング モデルで、ステートレス サービスとステートフル サービスの構築を始めます。
+* 次のトピックもご覧ください。
+    * [マイクロサービスについて](service-fabric-overview-microservices.md)
+    * [サービスの状態を定義し、管理する](service-fabric-concepts-state.md)
+    * [Service Fabric サービスの可用性](service-fabric-availability-services.md)
+    * [Service Fabric サービスのスケーリング](service-fabric-concepts-scalability.md)
+    * [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
 
 [Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.jpg
 [Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.jpg
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0615_2016-->

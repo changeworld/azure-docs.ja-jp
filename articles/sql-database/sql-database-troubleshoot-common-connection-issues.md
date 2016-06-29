@@ -26,7 +26,7 @@ Azure SQL Database との接続に失敗すると、 [エラー メッセージ]
 
 接続の問題が発生した原因としては、次のいずれかが考えられます。
 
-- アプリケーション デザインのプロセスで、[ベスト プラクティスと設計のガイドライン ](sql-database-connect-central-recommendations.md) が適用されていない。
+- アプリケーションの設計プロセスで、ベスト プラクティスと設計のガイドラインが適用されていない。開始するには、「[SQL Database の開発: 概要](sql-database-develop-overview.md)」をご覧ください。
 - SQL Azure データベースの再構成
 - ファイアウォールの設定
 - 接続のタイムアウト
@@ -79,7 +79,7 @@ Azure SQL Database との接続に失敗すると、 [エラー メッセージ]
 | 5 | [「サーバー &lt;y&gt; 上のデータベース &lt;x&gt; は現在使用できません。後で接続を再試行してください」エラーのトラブルシューティング](sql-database-troubleshoot-connection.md) | 40613 エラーの特定と解決の方法を説明します: 「サーバー &lt;y&gt; 上のデータベース &lt;x&gt; は現在使用できません。後で接続を再試行してください。」 |
 | 6 | [SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md) | よくあるデータベース接続エラー、データベース コピーの問題、一般エラーなど、SQL Database クライアント アプリケーションの SQL エラー コードについて説明します。 |
 | 7 | [データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md) | お使いのアプリケーションに適したサービス レベルを判断する際に役立つガイダンスを紹介しています。お使いの Azure SQL Database を最大限に活用するための、アプリケーションの調整に関する推奨事項も掲載しています。 |
-| 8 | [SQL Database への接続: ベスト プラクティスとデザインのガイドライン](sql-database-connect-central-recommendations.md) | ここには、Azure SQL Database に接続して対話的に作業するためのさまざまなテクノロジのコード サンプルへのリンクがあります。 |
+| 8 | [SQL Database の開発: 概要](sql-database-develop-overview.md) | ここには、Azure SQL Database に接続して対話的に作業するためのさまざまなテクノロジのコード サンプルへのリンクがあります。 |
 | 9 | Azure SQL Database V12 へのアップグレード ([Azure ポータル](sql-database-upgrade-server-portal.md)、[PowerShell](sql-database-upgrade-server-powershell.md)) | 既存の Azure SQL Database V11 サーバーとデータベースを、Azure ポータルまたはPowerShell を使用して、Azure SQL Database V12 にアップグレードする方法について説明します。 |
 
 
@@ -92,12 +92,12 @@ Azure SQL Database との接続に失敗すると、 [エラー メッセージ]
 - [Azure SQL Database サービスの更新情報](http://azure.microsoft.com/updates/?service=sql-database)
 
 
-## 詳細情報
+## その他のリソース
 
-- [SQL Database への接続: ベスト プラクティスとデザインのガイドライン](sql-database-connect-central-recommendations.md)
+- [SQL Database の開発: 概要](sql-database-develop-overview.md)
 - [一時的なエラーに対処するための一般的なガイダンス](../best-practices-retry-general.md)
 - [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 - [SQL Database トレーニング: Azure SQL Database について](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database)
 - [SQL Database - Elastic Database 機能とツールの使用](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale) 
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

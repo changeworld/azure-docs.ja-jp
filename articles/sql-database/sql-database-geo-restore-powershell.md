@@ -19,18 +19,18 @@
 # PowerShell を使用した geo 冗長バックアップからの Azure SQL Database の復元
 
 > [AZURE.SELECTOR]
+- [概要](sql-database-geo-restore.md)
 - [Azure ポータル](sql-database-geo-restore-portal.md)
 - [PowerShell](sql-database-geo-restore-powershell.md)
 
-この記事では、PowerShell で geo リストアを使用して新しいサーバーにデータベースを復元する方法について説明します。
 
-[geo リストア](sql-database-geo-restore.md)を利用すると、geo 冗長バックアップからデータベースを復元して新しいデータベースを作成できます。データベースは任意の Azure リージョンの任意のサーバーに作成できます。ソースとして geo 冗長バックアップが使用されるため、障害によってデータベースにアクセスできない場合でも、それを使用してデータベースを復旧できます。geo リストアは、追加料金なしですべてのサービス層に対して自動的に有効になります。
+この記事では、PowerShell で geo リストアを使用して新しいサーバーにデータベースを復元する方法について説明します。
 
 [AZURE.INCLUDE [PowerShell セッションの開始](../../includes/sql-database-powershell.md)]
 
 ## スタンドアロン データベースへのデータベースの geo リストア
 
-1. [Get AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx) コマンドレットを使用して、復元するデータベースの geo 冗長バックアップを取得します。
+1. [Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx) コマンドレットを使用して、復元するデータベースの geo 冗長バックアップを取得します。
 
         $GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database01"
 
@@ -41,7 +41,7 @@
 
 ## エラスティック データベース プールへのデータベースの geo リストア
 
-1. [Get AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx) コマンドレットを使用して、復元するデータベースの geo 冗長バックアップを取得します。
+1. [Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx) コマンドレットを使用して、復元するデータベースの geo 冗長バックアップを取得します。
 
         $GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database01"
 
@@ -60,4 +60,4 @@
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

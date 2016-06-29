@@ -26,14 +26,13 @@
 
 ## タイマー トリガーの function.json
 
-*function.json* ファイルには、スケジュール式と、関数をすぐにトリガーする必要があるかどうかを示すスイッチが含まれています。
+*function.json* ファイルには、スケジュールの式が記述されています。
 
 ```json
 {
   "bindings": [
     {
       "schedule": "0 * * * * *",
-      "runOnStartup": true,
       "name": "myTimer",
       "type": "timerTrigger",
       "direction": "in"
@@ -54,15 +53,13 @@
 5 分に 1 回トリガーするには、次のように指定します。
 
 ```json
-"schedule": "0 */5 * * * *",
-"runOnStartup": false,
+"schedule": "0 */5 * * * *"
 ```
 
-すぐにトリガーし、その後は 2 時間ごとにトリガーするには、次のように指定します。
+2 時間に 1 回トリガーするには、次のように指定します。
 
 ```json
 "schedule": "0 0 */2 * * *",
-"runOnStartup": true,
 ```
 
 ## タイマー トリガーの C# コードの例
@@ -80,4 +77,4 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

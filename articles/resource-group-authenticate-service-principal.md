@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="05/26/2016"
+   ms.date="06/13/2016"
    ms.author="tomfitz"/>
 
 # リソースにアクセスできる Active Directory アプリケーションを Azure PowerShell で作成する
@@ -115,7 +115,7 @@ Active Directory アプリケーションとそのアプリケーション用の
 
 このセクションでは、証明書を使用して AD アプリケーションを作成する手順を実行します。
 
-1. 自己署名証明書を作成します。
+1. 自己署名証明書を作成します。Windows 10 または Windows Server 2016 Technical Preview をお使いの場合は、次のコマンドを実行します。 
 
         $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleapp" -KeySpec KeyExchange
        
@@ -126,6 +126,12 @@ Active Directory アプリケーションとそのアプリケーション用の
         Thumbprint                                Subject
         ----------                                -------
         724213129BD2B950BB3F64FAB0C877E9348B16E9  CN=exampleapp
+
+     Windows 10 または Windows Server 2016 Technical Preview をお使いでない場合は、[Self-signed certificate generator](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6) PowerShell スクリプトをダウンロードしてください。証明書を生成するには、次のコマンドを実行します。
+     
+        Import-Module -Name c:\New-SelfSignedCertificateEx.ps1
+        New-SelfSignedCertificateEx -Subject "CN=exampleapp" -KeySpec "Exchange" -FriendlyName "exampleapp"
+        $cert = Get-ChildItem -Path cert:\CurrentUser\My* -DnsName exampleapp
 
 2. 証明書からキーの値を取得します。
 
@@ -205,8 +211,8 @@ Active Directory アプリケーションとそのアプリケーション用の
   
 - .NET 認証の例については、「[Azure Resource Manager SDK for .NET](resource-manager-net-sdk.md)」を参照してください。
 - Java 認証の例については、「[Azure Resource Manager SDK for Java](resource-manager-java-sdk.md)」を参照してください。 
-- Python 認証の例については、「[Resource Management Authentication for Python (Python 向けリソース管理認証)](https://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementauthentication.html)」を参照してください。
+- Python 認証の例については、[Python 向けリソース管理認証](https://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementauthentication.html)に関するページを参照してください。
 - REST 認証の例については、「[Resource Manager REST API](resource-manager-rest-api.md)」を参照してください。
 - アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「[Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

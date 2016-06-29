@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="article"
-	ms.date="03/03/2016"
+	ms.date="06/09/2016"
     ms.author="awills"/>
 
 # Application Insights のリリース注釈
@@ -96,4 +96,4 @@ Application Insights リソースから `applicationId` と `apiKey` を取得�
 
 ![任意のリリース注釈マーカーをクリックします。](./media/app-insights-annotations/60.png)
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0615_2016-->

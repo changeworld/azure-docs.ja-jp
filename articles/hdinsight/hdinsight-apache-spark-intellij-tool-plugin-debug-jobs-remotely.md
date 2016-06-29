@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="06/09/2016"
 	ms.author="nitinme"/>
 
 
@@ -130,7 +130,11 @@
 
 	上の図で強調表示されている **+** アイコンをクリックして、独自のアーティファクトを作成することもできます。
 
-4. プロジェクトにライブラリを追加します。ライブラリを追加するには、プロジェクト ツリーのプロジェクト名を右クリックし、**[Open Module Settings (モジュール設定を開く)]** をクリックします。**[Project Structure (プロジェクト構造)]** ダイアログ ボックスの左側のウィンドウで、**[Libraries (ライブラリ)]**、(+) 記号、**[From Maven (Maven から)]** の順にクリックします。
+4. **[Project Structure (プロジェクトの構造)]** ダイアログ ボックスの **[Project (プロジェクト)]** をクリックします。**[Project SDK (プロジェクト SDK)]** が 1.8 に設定されている場合、**[Project language level (プロジェクト言語レベル)]** が **[7 - Diamonds, ARM, multi-catch, etc (7 - Diamonds、ARM、マルチキャッチなど)]** に設定されていることを確認してください。
+
+	![Set project language level](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/set-project-language-level.png)
+
+4. プロジェクトにライブラリを追加します。ライブラリを追加するには、プロジェクト ツリーのプロジェクト名を右クリックし、**[Open Module Settings (モジュール設定を開く)]** をクリックします。**[Project Structure (プロジェクトの構造)]** ダイアログ ボックスの左側のウィンドウで、**[Libraries (ライブラリ)]**、(+) 記号、**[From Maven (Maven から)]** の順にクリックします。
 
 	![Add library](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/add-library.png)
 
@@ -203,7 +207,7 @@
 		  }
 		}
 
-10. 上の手順 7. と手順 8. を繰り返して、`SparkSample` という名前の新しい Scala オブジェクトを追加します。このクラスには次のコードを追加します。このコードは HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取り、CSV の 7 番目の列で 1 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に書き込みます。
+10. 上の手順 8. と手順 9. を繰り返して、`SparkSample` という名前の新しい Scala オブジェクトを追加します。このクラスには次のコードを追加します。このコードは HVAC.csv (すべての HDInsight Spark クラスターで使用可能) からデータを読み取り、CSV の 7 番目の列で 1 桁の数字のみが含まれる行を取得し、出力をクラスター用の既定のストレージ コンテナーの下にある **/HVACOut** に書き込みます。
 
 		import org.apache.spark.SparkContext
 	
@@ -223,7 +227,7 @@
 		
 		}
 
-11. 上の手順 7. と手順 8. を繰り返して、`RemoteClusterDebugging` という名前の新しいクラスを追加します。このクラスは、アプリケーションのデバッグに使用する Spark テスト フレームワークを実装します。次のコードを `RemoteClusterDebugging` クラスに追加します。
+11. 上の手順 8. と手順 9. を繰り返して、`RemoteClusterDebugging` という名前の新しいクラスを追加します。このクラスは、アプリケーションのデバッグに使用する Spark テスト フレームワークを実装します。次のコードを `RemoteClusterDebugging` クラスに追加します。
 
 		import org.apache.spark.{SparkConf, SparkContext}
 		import org.scalatest.FunSuite
@@ -340,4 +344,4 @@
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

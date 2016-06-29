@@ -3,7 +3,7 @@
 	description="VMware VM または Windows/Linux 物理サーバーを Azure Site Recovery を使用してセカンダリ サイトにレプリケートする場合は、この記事を参照してください。"
 	services="site-recovery"
 	documentationCenter=""
-	authors="rayne-wiselman"
+	authors="nsoneji"
 	manager="jwhit"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
-	ms.author="raynew"/>
+	ms.date="06/14/2016"
+	ms.author="nisoneji"/>
 
 
 # オンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする
@@ -57,52 +57,86 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 3. プロセス サーバー
 3. マスター ターゲット サーバー
 4. vContinuum サーバー
+5. ソース サーバー (Windows サーバーの場合のみ)
 
 次のようにインストールします。
 
-1. [更新プログラム](http://aka.ms/scoutupdates)の zip ファイルをダウンロードします。この zip ファイルには、次のファイルが含まれています。
+1. [更新プログラム](https://aka.ms/asr-scout-update3)の zip ファイルをダウンロードします。この zip ファイルには、次のファイルが含まれています。
 
-	-  RX\_8.0.1.0\_GA\_Update\_1\_3279231\_23Jun15.tar.gz
-	-  CX\_Windows\_8.0.2.0\_GA\_Update\_2\_4306954\_21Aug15.exe
-	-  UA\_Windows\_8.0.1.0\_GA\_Update\_1\_3259401\_23Jun15.exe
-	-  UA\_RHEL6-64\_8.0.1.0\_GA\_Update\_1\_3259401\_23Jun15.tar.gz
-	-  vCon\_Windows\_8.0.1.0\_GA\_Update\_1\_3259523\_23Jun15.exe
+	-  RX\_8.0.3.0\_GA\_Update\_3\_6684045\_17Mar16.tar.gz
+	-  CX\_Windows\_8.0.3.0\_GA\_Update\_3\_5048668\_16Mar16.exe
+	-  UA\_Windows\_8.0.3.0\_GA\_Update\_3\_7101745\_04Apr16.exe
+	-  UA\_RHEL6-64\_8.0.3.0\_GA\_Update\_3\_7101745\_04Apr16.zip
+	-  vCon\_Windows\_8.0.3.0\_GA\_Update\_3\_6873369\_16Mar16.exe
+
 2. zip ファイルを抽出します。
-2. **RX server**: **RX\_8.0.1.0\_GA\_Update\_1\_3279231\_23Jun15.tar.gz** を RX サーバーにコピーし、抽出します。抽出したフォルダで、**/Install** を実行します。
-2. **Configuration server/process server**: **CX\_Windows\_8.0.2.0\_GA\_Update\_2\_4306954\_21Aug15.exe** を構成サーバーとプロセス サーバーにコピーします。ダブルクリックして実行します。
-3. **Windows マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA\_Windows\_8.0.1.0\_GA\_Update\_1\_3259401\_23Jun15.exe** をマスター ターゲット サーバーにコピーします。ダブルクリックして実行します。Windows 用の統合エージェントは、ソース サーバーでは適用できません。これは、Windows マスター ターゲット サーバーのみにインストールしてください。
-4. **Linux マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA\_RHEL6-64\_8.0.1.0\_GA\_Update\_1\_3259401\_23Jun15.tar.gz** をマスター ターゲット サーバーにコピーし、抽出します。抽出したフォルダで、**/Install** を実行します。
-5. **vContinuum サーバー**: **vCon\_Windows\_8.0.1.0\_GA\_Update\_1\_3259523\_23Jun15.exe** を vContinuum サーバーにコピーします。vContinuum ウィザードを閉じたことを確認してください。ファイルをダブルクリックして実行します。
+3. **RX サーバー**: **RX\_8.0.3.0\_GA\_Update\_3\_6684045\_17Mar16.tar.gz** を RX サーバーにコピーし、展開します。抽出したフォルダで、**/Install** を実行します。
+4. **サーバー/プロセス サーバー**: **CX\_Windows\_8.0.3.0\_GA\_Update\_3\_5048668\_16Mar16.exe** を構成サーバーとプロセス サーバーにコピーします。ダブルクリックして実行します。
+5. **Windows マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA\_Windows\_8.0.3.0\_GA\_Update\_3\_7101745\_04Apr16.exe** をマスター ターゲット サーバーにコピーします。ダブルクリックして実行します。統合エージェントも、ソース サーバーに適用できます。これは、以下で説明するように、ソース サーバーにもインストールする必要があります。
+6. **Linux マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA\_RHEL6-64\_8.0.3.0\_GA\_Update\_3\_7101745\_04Apr16.zip** をマスター ターゲット サーバーにコピーし、展開します。抽出したフォルダで、**/Install** を実行します。
+7. **vContinuum サーバー**: **vCon\_Windows\_8.0.3.0\_GA\_Update\_3\_6873369\_16Mar16.exe** を vContinuum サーバーにコピーします。vContinuum ウィザードを閉じたことを確認してください。ファイルをダブルクリックして実行します。
+8. **Windows ソース サーバー**: 統合エージェントを更新するには、**UA\_Windows\_8.0.3.0\_GA\_Update\_3\_7101745\_04Apr16.exe** をソース サーバーにコピーします。ダブルクリックして実行します。 
 
 ## 手順 4: レプリケーションの設定
-5. ソースとターゲットの VMware サイト間にレプリケーションを設定します。
-6. 手順については、製品と共にダウンロードされる InMage Scout の資料をご覧ください。または、次から資料にアクセスすることもできます。
+1. ソースとターゲットの VMware サイト間にレプリケーションを設定します。
+2. 手順については、製品と共にダウンロードされる InMage Scout の資料をご覧ください。または、次から資料にアクセスすることもできます。
 
-	- [リリース ノート](http://download.microsoft.com/download/4/5/0/45008861-4994-4708-BFCD-867736D5621A/InMage_Scout_Standard_Release_Notes.pdf)
-	- [互換性対応表](http://download.microsoft.com/download/C/D/A/CDA1221B-74E4-4CCF-8F77-F785E71423C0/InMage_Scout_Standard_Compatibility_Matrix.pdf)
-	- [ユーザー ガイド](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)
-	- [RX ユーザー ガイド](http://download.microsoft.com/download/A/7/7/A77504C5-D49F-4799-BBC4-4E92158AFBA4/InMage_ScoutCloud_RX_User_Guide_8.0.1.pdf)
-	- [クイック インストール ガイド](http://download.microsoft.com/download/6/8/5/685E761C-8493-42EB-854F-FE24B5A6D74B/InMage_Scout_Standard_Quick_Install_Guide.pdf)
+	- [リリース ノート](https://aka.ms/asr-scout-release-notes)
+	- [互換性対応表](https://aka.ms/asr-scout-cm)
+	- [ユーザー ガイド](https://aka.ms/asr-scout-user-guide)
+	- [RX ユーザー ガイド](https://aka.ms/asr-scout-rx-user-guide)
+	- [クイック インストール ガイド](https://aka.ms/asr-scout-quick-install-guide)
 
 
 ## 更新プログラム
 
-### ASR Scout 8.0.1 更新プログラム 03Dec15
+### ASR Scout 8.0.1 更新プログラム 3
+更新プログラム 3 には、以下のバグの修正と機能強化が含まれています。
 
-修正プログラムの更新プログラム 03-Dec-15 には次が含まれます。
+1. プロキシを経由する場合、構成サーバーと RX は ASR コンテナーへの登録に失敗します。
+2. RPO が満たされていない時間数が、正常性レポートで更新されません。
+3. ESX ハードウェアの詳細またはネットワークの詳細に UTF-8 文字が含まれている場合、構成サーバーが RX と同期しません。
+4. Windows 2008 Server R2 DC コンピューターが、復旧後に起動できません。
+5. オフライン同期が正常に動作しません。 
+6. VM のフェールオーバー後、レプリケーション ペアの削除が長時間 CX UI にとどまるため、ユーザーがフェールバック再開操作を実行できません。
+7. SQL クライアントのようにアプリケーション接続の切断を減らすために整合性ジョブによって行われる全体スナップショット操作が最適化されました。
+8. Windows でのスナップショットの作成に必要なメモリ使用量が減少したことで、VACP のパフォーマンスが向上しました。
+9. パスワードが 16 文字を超える場合、プッシュ インストール サービスがクラッシュします。
+10. 資格情報が変更された場合、vContinuum が新しい vCenter 資格情報を確認せず、入力も求めません。
+11. Linux マスター ターゲットのキャッシュ マネージャー (cachemgr) がプロセス サーバーからファイルをダウンロードしないため、レプリケーション ペアの調整が発生します。
+12. 物理 MSCS クラスター ディスクの順序がすべてのノードで同じでない場合、一部のクラスター ボリュームでレプリケーションが設定されません。<br/>注: この修正プログラムを利用できるようにするには、クラスターが再保護する必要があります。  
+13. RX が Scout 7.1 から Scout 8.0.1 にアップグレードされた後、SMTP 機能が正常に動作しません。
+14. ロールバック操作が完了までの時間を追跡するために、より多くの統計がログに追加されました。
+15. ソース サーバーでは、次の Linux オペレーティング システムのサポートが追加されました。 
+	- RHEL 6 update 7
+	- CentOS 6 update 7 
+16. CX および RX UI では、ビットマップ モードに移行するペアについての通知が表示されるようになりました。
+17. 次のセキュリティ修正プログラムが RX に追加されています。
+
+**#**|**問題の説明**|**実装手順**
+---|---|---
+1\. |パラメーターの改ざんによる承認のバイパス|アクセスを該当しないユーザーに限定
+2\. |クロスサイト リクエスト フォージェリ|ページごとにランダムに生成されるページ トークンの概念を実装。<br/>これによって、次のものが表示されます。<br/>1) 同じユーザーに対する 1 つだけのログイン インスタンス。<br/>2) ページの更新が機能しないため、ダッシュボードにリダイレクトされます。<br/>
+3\. |安全でないファイルのアップロード|特定の拡張子にファイルを限定。許可されている拡張子: 7z、aiff、asf、avi、bmp、csv、doc、docx、fla、flv、gif、gz、gzip、jpeg、jpg、log、mid、mov、mp3、mp4、mpc、mpeg、mpg、ods、odt、pdf、png、ppt、pptx、pxd、qt、ram、rar、rm、rmi、rmvb、rtf、sdc、sitd、swf、sxc、sxw、tar、tgz、tif、tiff、txt、vsd、wav、wma、wmv、xls、xlsx、xml、zip
+4\. | 永続的なクロスサイト スクリプティング | 入力検証を追加
+
+
+>[AZURE.NOTE]
+>
+>-	ASR のすべての更新プログラムは累積的です。更新プログラム 3 には、更新プログラム 1 と更新プログラム 2 のすべての修正点が含まれています。更新プログラム 3 は、8.0.1 GA に直接適用できます。
+>-	CS および RX の更新プログラムは、システムに適用後はロールバックできません。
+
+### ASR Scout 8.0.1 更新プログラム 03Dec15 (更新プログラム 2)
+
+更新プログラム 2 の修正内容は次のとおりです。
 
 - **構成サーバー**: 構成サーバーが Site Recovery に登録される際に、31 日間の無料計測機能が予期どおりに動作しない問題が修正されます。
 - **統合エージェント**: Master Target の Update 1 の問題が修正され、Master Target サーバーがバージョン 8.0 から 8.0.1 にアップグレードされる際に、アップグレードがインストールされないようにします。
 
->[AZURE.NOTE]
->
->-	ASR のすべての更新プログラムは累積的です。
->-	CS および RX の更新プログラムは、システムに適用後はロールバックできません。
-
 
 ### ASR Scout 8.0.1 更新プログラム 1
 
-この最新の更新プログラムには、バグ修正と新機能が含まれています。
+更新プログラム 1 には、以下のバグ修正と新機能が含まれています。
 
 - サーバー インスタンスあたり、31 日間の無料保護が提供されます。これにより、機能をテストしたり、概念実証を設定したりすることができます。
 	- フェールオーバーとフェールバックを含む、サーバー上のすべての操作は、サーバーが ASR Scout を使用して最初に保護された時点から 31 日間は無料で使用できます。
@@ -130,4 +164,4 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0615_2016-->

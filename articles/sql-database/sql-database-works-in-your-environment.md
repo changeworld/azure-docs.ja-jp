@@ -29,7 +29,7 @@
 
 データベースを選択するときに、新しい言語を学ぶ必要はありません。SQL Database には、Linux、Mac OS、Windows などのプラットフォーム向けコード サンプルが多数用意されており、作業を開始するときに使用できます。また、Microsoft Azure 管理ポータル、PowerShell、および REST API も、開発時の生産性向上に役立ちます。
 
-[ドキュメントを読む](https://msdn.microsoft.com/library/mt654049%28v=sql.1%29.aspx)
+[ドキュメントを読む](sql-database-develop-overview.md)
 
 ## ジョブに最適なツール
 
@@ -39,7 +39,7 @@ SQL Database でアプリケーションを開発するにあたり、新しい�
 
 保証されたリソース、最初の SQL Database を作成するためのチュートリアル、クエリに関するトラブルシューティング、およびクイック スタート コード サンプルによって、データベースに関する質問の回答をすぐに得ることができます。
 
-[ドキュメントを読む](sql-database-connect-central-recommendations.md)
+[ドキュメントを読む](sql-database-technical-overview.md)
 
 SQL Database の他の機能についてはホーム ページを[ぜひご確認ください。](https://azure.microsoft.com/services/sql-database/)
 
@@ -47,10 +47,10 @@ SQL Database の他の機能についてはホーム ページを[ぜひご確�
 
 [無料の Azure サブスクリプション](https://azure.microsoft.com/get-started/)を入手し、[最初の Azure SQL Database を作成](sql-database-get-started.md)します。
 
-## 詳細情報
+## その他のリソース
 
 [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
  
 [SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

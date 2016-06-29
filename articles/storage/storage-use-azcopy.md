@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="06/14/2016"
 	ms.author="micurd"/>
 
 # AzCopy コマンド ライン ユーティリティを使用してデータを転送する
@@ -357,7 +357,7 @@ BLOB にテーブルをエクスポートすると、AzCopy は Table エンテ�
 
 インポート シナリオでは、オプション `/PKRS` を指定できません。同時操作を開始するためにオプション `/PKRS` を指定する必要があるエクスポート シナリオとは違って、テーブルをインポートすると、AzCopy の既定で同時操作が開始されます。開始される同時操作の既定数は、コア プロセッサの数と同じです。ただし、オプション `/NC` を使用して別の同時操作数を指定できます。詳細については、コマンド ラインに「`AzCopy /?:NC`」と入力してください。
 
-AzCopy は、CSV ではなく、JSON のインポートのみをサポートしています。
+AzCopy は、CSV ではなく、JSON のインポートのみをサポートしています。AzCopy では、ユーザーが作成した JSON およびマニフェスト ファイルからのテーブル インポートはサポートされていません。これらのファイルは両方とも、AzCopy テーブル エクスポートから取得する必要があります。エラーが発生しないように、エクスポートされた JSON またはマニフェスト ファイルは変更しないでください。
 
 ### BLOB を使用してエンティティをテーブルにインポートする
 
@@ -866,4 +866,4 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 - [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

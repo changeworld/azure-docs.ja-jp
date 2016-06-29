@@ -37,4 +37,8 @@
 * [ADO.NET を使用した SQL 接続の概念実証](https://msdn.microsoft.com/library/mt718320.aspx)
 * [ADO.NET を使用して SQL に弾性的に接続する](https://msdn.microsoft.com/library/mt703195.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+## その他のリソース
+
+マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」をご覧ください。
+
+<!---HONumber=AcomDC_0615_2016-->

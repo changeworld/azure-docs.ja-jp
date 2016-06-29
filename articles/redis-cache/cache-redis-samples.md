@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Azure Redis Cache のサンプル" 
+	pageTitle="Azure Redis Cache のサンプル | Microsoft Azure" 
 	description="Azure Redis Cache の使用方法について説明します" 
 	services="redis-cache" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="03/22/2016" 
+	ms.date="06/09/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache のサンプル 
@@ -74,4 +74,4 @@
 
 「[帯域幅モニター](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor)」サンプルでは、クライアントで使用されている帯域幅を監視できます。帯域幅を測定するには、キャッシュ クライアント コンピューターでサンプルを実行し、キャッシュを呼び出し、帯域幅モニターのサンプルで報告された帯域幅を観察します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

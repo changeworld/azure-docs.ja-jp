@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Analytics の使用 - Application Insights の強力な検索ツール" 
+	pageTitle="Analytics の使用 - Application Insights の強力な検索ツール | Microsoft Azure" 
 	description="Application Insights の強力な診断検索ツールである Analytics を使用します。" 
 	services="application-insights" 
     documentationCenter=""
@@ -23,7 +23,6 @@
 
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
-[AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
 
 ## Analytics を開く
 
@@ -104,4 +103,4 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

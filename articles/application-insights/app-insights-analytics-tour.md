@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Application Insights の Analytics のツアー" 
+	pageTitle="Application Insights の Analytics のツアー | Microsoft Azure" 
 	description="Analytics のすべてのメイン クエリの短いサンプル、Application Insights の強力な検索ツール。" 
 	services="application-insights" 
     documentationCenter=""
@@ -22,8 +22,6 @@
 
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
-
-[AZURE.INCLUDE [app-insights-analytics-top-index](../../includes/app-insights-analytics-top-index.md)]
  
 作業を開始するための基本的なクエリをいくつか見てみましょう。
 
@@ -474,4 +472,4 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

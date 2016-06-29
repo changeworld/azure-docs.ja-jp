@@ -23,7 +23,7 @@
 
 ここでは、クラシック デプロイメント モデルで Linux ベースの仮想マシンを作成および管理するために必要なすべてのドキュメントを紹介します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] リソース マネージャー モデル。
 
 ## 作業の開始
 - [Azure での Linux 入門](virtual-machines-linux-intro-on-azure.md)
@@ -58,7 +58,7 @@
 - [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](virtual-machines-linux-classic-cli-use-docker.md)
 - [Azure ポータルでの Docker VM 拡張機能の使用](virtual-machines-linux-classic-portal-use-docker.md)
 - [Azure Marketplace で Docker をすばやく開始する](virtual-machines-linux-classic-docker-quickstart.md)
-- [Azure で docker マシンを使用する方法](virtual-machines-linux-classic-docker-machine.md)
+- [Azure で docker マシンを使用する方法](virtual-machines-linux-docker-machine.md)
 
 ### Ubuntu
 - [方法: MySQL クラスター](virtual-machines-linux-classic-mysql-cluster.md)
@@ -192,4 +192,4 @@
 
 - [Azure 用のプラグインの packer](https://github.com/msopentech/packer-azure)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

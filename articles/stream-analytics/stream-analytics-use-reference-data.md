@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="06/13/2016"
 	ms.author="jeffstok"/>
 
 # Stream Analytics の入力ストリームでの参照データまたはルックアップ テーブルの使用
@@ -72,9 +72,16 @@
 
 ## スケジュールに従った参照データの生成
 
-参照データが変更頻度の低いデータセットである場合、参照データの更新をサポートするには、{date} および {time} トークンを使用する入力構成でパス パターンを指定します。Stream Analytics はこのパス パターンに基づいて、更新された参照データ定義を取得します。たとえば、日付形式が "YYYY-MM-DD" で、時刻形式が "HH:mm" の ````"/sample/{date}/{time}/products.csv"```` は、更新された BLOB ````"/sample/2015-04-16/17:30/products.csv"```` を UTC タイム ゾーンの 2015 年 4 月 16 日の午後 5:30 に回収するように Stream Analytics に通知します。
+参照データが変更頻度の低いデータセットである場合、参照データの更新をサポートするには、{date} および {time} 置換トークンを使用する入力構成でパス パターンを指定します。Stream Analytics はこのパス パターンに基づいて、更新された参照データ定義を取得します。たとえば、日付形式が "**YYYY-MM-DD**" で、時刻形式が "**HH:mm**" の `sample/{date}/{time}/products.csv` は、更新された BLOB `sample/2015-04-16/17:30/products.csv` を UTC タイム ゾーンの 2015 年 4 月 16 日の午後 5 時 30 分に回収するように Stream Analytics に指示します。
 
-> [AZURE.NOTE] 現在、Stream Analytics のジョブは、コンピューター時間が BLOB の名前でエンコードされた時刻と一致する場合にのみ、BLOB の更新を検索します。たとえば、ジョブは、/sample/2015-04-16/17:30/products.csv を、2015 年 4 月 16 日 UTC タイム ゾーンの午後 5 時 30 分と午後 5 時 30 分 59.9 秒の間に検索します。マシン クロックが 5:31PM になると、/sample/2015-04-16/17:30/products.csv の検索は停止され、/sample/2015-04-16/17:31/products.csv の検索が開始されます。これに対する例外は、ジョブが時間をさかのぼってデータを再処理する必要がある場合、またはジョブが最初に開始される場合です。開始時点で、ジョブは、指定されたジョブ開始時刻より前に生成された最新の BLOB を探します。これは、ジョブの開始時に空ではない参照データ セットが必ず存在するようにするために実行されます。それが見つからない場合、ジョブは失敗し、診断通知がユーザーに表示されます。
+> [AZURE.NOTE] 現在、Stream Analytics のジョブは、コンピューター時間が、BLOB の名前でエンコードされた時刻まで進んだ場合にのみ、BLOB の更新を検索します。たとえば、ジョブは、`sample/2015-04-16/17:30/products.csv` を、できるだけ早く、ただし、2015 年 4 月 16 日 UTC タイム ゾーンの午後 5 時 30 分以降に検索します。ファイルのエンコードされた時刻が、検出された最新時刻よりも前の場合、そのファイルは*決して*検索されません。
+> 
+> たとえば、ジョブによって BLOB `sample/2015-04-16/17:30/products.csv` が検索されると、エンコードされた日付が 2015 年 4 月 16 日午後 5 時 30 分より前のファイルはすべて無視されます。したがって、到着が遅れた `sample/2015-04-16/17:25/products.csv` BLOB が同じコンテナーに作成されると、その BLOB はジョブでは使用されません。
+> 
+> 同様に、`sample/2015-04-16/17:30/products.csv` が 2015 年 4 月 16 日午後 10 時 03 分にのみ生成され、同じコンテナーに前の日付の BLOB が存在しない場合、2015 年 4 月 16 日午後 10 時 03分以降はこのファイルを使用し、その時点までは前の参照データを使用します。
+> 
+> これに対する例外は、ジョブが時間をさかのぼってデータを再処理する必要がある場合、またはジョブが最初に開始される場合です。開始時点で、ジョブは、指定されたジョブ開始時刻より前に生成された最新の BLOB を探します。これにより、ジョブの開始時に、**空ではない**参照データ セットが必ず存在するようになります。見つからない場合は、ジョブによって次の診断が表示されます: `Initializing input without a valid reference data blob for UTC time <start time>`。
+
 
 [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) を使用して Stream Analytics で必要な更新された BLOB を作成するタスクを調整し、参照データ定義を更新することができます。Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。Data Factory は、[クラウド ベースとオンプレミスの多数のデータ ストアへの接続](../data-factory/data-factory-data-movement-activities.md)、および指定された定期的なスケジュールに基づく簡単なデータの移動をサポートします。事前に定義されたスケジュールで更新される Stream Analytics の参照データを生成するために Data Factory パイプラインを設定する方法の詳細とステップ バイ ステップのガイダンスについては、この [GitHub のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs)を確認してください。
 
@@ -103,4 +110,4 @@
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

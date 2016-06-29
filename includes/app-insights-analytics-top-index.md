@@ -1,7 +1,8 @@
 > [AZURE.SELECTOR]
 - [概要](../articles/application-insights/app-insights-analytics.md)
-- [Analytics について](../articles/application-insights/app-insights-analytics-tour.md)
-- [Analytics の使用](../articles/application-insights/app-insights-analytics-using.md)
+- [ツアー](../articles/application-insights/app-insights-analytics-tour.md)
+- [キューにメッセージがないときに](../articles/application-insights/app-insights-analytics-using.md)
 - [言語のリファレンス](../articles/application-insights/app-insights-analytics-reference.md)
+- [トラブルシューティング](../articles/application-insights/app-insights-analytics-troubleshooting.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

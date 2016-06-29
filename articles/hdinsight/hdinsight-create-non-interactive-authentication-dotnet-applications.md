@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/23/2016"
+	ms.date="06/13/2016"
 	ms.author="jgao"/>
 
 # 非対話型認証 .NET HDInsight アプリケーションを作成する
@@ -89,7 +89,7 @@ Active Directory アプリケーションを作成すると、アプリケーシ
 
 ##HDInsight クライアント アプリケーションを開発する
 
-[HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically/#submit-hivepigsqoop-jobs-using-hdinsight-net-sdk)に関するページの指示に従って、C# .NET コンソール アプリケーションを作成します。次に、GetTokenCloudCredentials メソッドを次のように置き換えます。
+[HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md#submit-hivepigsqoop-jobs-using-hdinsight-net-sdk)に関するページの指示に従って、C# .NET コンソール アプリケーションを作成します。次に、GetTokenCloudCredentials メソッドを次のように置き換えます。
 
     public static TokenCloudCredentials GetTokenCloudCredentials(string tenantId, string clientId, SecureString secretKey)
     {
@@ -122,4 +122,4 @@ PowerShell 経由でテナント ID を取得するには:
 - [Azure Resource Manager でサービス プリンシパルを認証する](../resource-group-authenticate-service-principal.md)
 - [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0615_2016-->

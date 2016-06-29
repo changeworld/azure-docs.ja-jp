@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="06/13/2016"
 	ms.author="guybo"/>
 
 # Visual Studio を利用して仮想マシン スケールをデプロイする
@@ -75,7 +75,7 @@ Visual Studio で VM スケール セットをデプロイするには、次の�
 
 	![New Resource Group][new_resource]
 
-9. 次に、**[パラメーターの編集]** ボタンを選択して、テンプレートに渡すパラメーターを入力します。デプロイを作成するには、所定の値 (OS のユーザー名とパスワードなど) を入力する必要があります。
+9. 次に、**[パラメーターの編集]** ボタンを選択して、テンプレートに渡すパラメーターを入力します。デプロイを作成するには、所定の値 (OS のユーザー名とパスワードなど) を入力する必要があります。PowerShell Tools for Visual Studio をインストールしていない場合は、隠された PowerShell コマンド ライン プロンプトを回避するために [パスワードの保存] チェック ボックスをオンにするか、[KeyVault のサポート](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/)を使用します。
 
 	![Edit Parameters][edit_parameters]
 
@@ -107,4 +107,4 @@ Visual Studio を使って VM スケール セットを正常にデプロイし�
 [output_window]: ./media/virtual-machine-scale-sets-vs-create/9-Output.png
 [cloud_explorer]: ./media/virtual-machine-scale-sets-vs-create/12-CloudExplorer.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

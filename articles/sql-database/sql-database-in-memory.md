@@ -507,7 +507,7 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
  - [インメモリ OLTP でサポートされていない Transact-SQL の構造](http://msdn.microsoft.com/library/dn246937.aspx)
 
 
-## 以降のステップ
+## 次のステップ
 
 
 - [既存の Azure SQL アプリケーションでインメモリ OLTP](sql-database-in-memory-oltp-migration.md) を試します。
@@ -537,4 +537,4 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 - インメモリ OLTP のために[インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

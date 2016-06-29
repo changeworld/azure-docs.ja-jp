@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/03/2016" 
+	ms.date="06/08/2016" 
 	ms.author="genemi"/>
 
 
@@ -87,12 +87,13 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
 
 
 ```
-## TODO: Before running, find all 'TODO' and make each edit!
+## TODO: Before running, find all 'TODO' and make each edit!!
 
 #--------------- 1 -----------------------
 
 
-# You can comment out or skip this Add-AzureAccount command after the first run.
+# You can comment out or skip this Add-AzureAccount
+# command after the first run.
 # Current PowerShell environment retains the successful outcome.
 
 'Expect a pop-up window in which you log in to Azure.'
@@ -107,7 +108,10 @@ Add-AzureAccount
 TODO: Edit the values assigned to these variables, especially the first few!
 '
 
-$subscriptionName       = 'YOUR_SUBSCRIPTION_NAME'
+# Ensure the current date is between
+# the Expiry and Start time values that you edit here.
+
+$subscriptionName    = 'YOUR_SUBSCRIPTION_NAME'
 $policySasExpiryTime = '2016-01-28T23:44:56Z'
 $policySasStartTime  = '2015-08-01'
 
@@ -116,7 +120,7 @@ $storageAccountName     = 'gmstorageaccountxevent'
 $storageAccountLocation = 'West US'
 $contextName            = 'gmcontext'
 $containerName          = 'gmcontainerxevent'
-$policySasToken      = 'gmpolicysastoken'
+$policySasToken         = 'gmpolicysastoken'
 
 
 # Leave this value alone, as 'rwl'.
@@ -288,6 +292,12 @@ PowerShell スクリプトの終了時に、名前付きの値がいくつか出
 &nbsp;
 
 
+> [AZURE.WARNING] 前述の PowerShell スクリプトによって生成された SAS キーの値は、"?" (疑問符) で始まる場合があります。次の T-SQL スクリプトで SAS キーを使用する場合は、先頭の "?" を削除する必要があります。
+
+
+&nbsp;
+
+
 ```
 ---- TODO: First, run the PowerShell portion of this two-part code sample.
 ---- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
@@ -296,7 +306,6 @@ PowerShell スクリプトの終了時に、名前付きの値がいくつか出
 
 
 SET NOCOUNT ON;
-
 GO
 
 
@@ -598,4 +607,4 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

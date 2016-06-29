@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
-   ms.date="04/29/2016"
+   ms.date="06/08/2016"
    ms.author="danlep"/>
 
 # Azure における大規模なコンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース
@@ -34,11 +34,11 @@ Azure の大規模なコンピューティング オプションについて説�
 
 * [ドキュメント](https://azure.microsoft.com/documentation/services/batch/)
 
-* [.NET](https://msdn.microsoft.com/library/azure/mt348682.aspx)、[Python](http://azure-sdk-for-python.readthedocs.io/latest/)、[Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/)、および [REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) API リファレンス
+* [.NET](https://msdn.microsoft.com/library/azure/mt348682.aspx)、[Python](http://azure-sdk-for-python.readthedocs.io/latest/)、[Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/)、[Java](http://azure.github.io/azure-sdk-for-java/)、および [REST](https://msdn.microsoft.com/library/azure/dn820158.aspx) API リファレンス
 
 * [Batch Management .NET ライブラリ](https://msdn.microsoft.com/library/mt463120.aspx) リファレンス
 
-* [チュートリアル: .NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)
+* チュートリアル: [.NET 向け Azure Batch ライブラリ](batch-dotnet-get-started.md)および [Batch Python クライアント](batch-python-tutorial.md)の概要
 
 * [Batch フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurebatch)
 
@@ -122,7 +122,7 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 
 ## アーキテクチャの設計図
 
-* [Azure Batch と Azure Data Factory を使用した HPC とデータのオーケストレーション](http://go.microsoft.com/fwlink/?linkid=717686) (PDF) と[記事](../data-factory/data-factory-data-processing-using-batch.md)
+* [HPC and data orchestration using Azure Batch and Azure Data Factory (Azure Batch と Azure Data Factory を使用した HPC とデータのオーケストレーション)](http://go.microsoft.com/fwlink/?linkid=717686) (PDF) と[記事](../data-factory/data-factory-data-processing-using-batch.md)
 
 ## 業界のソリューション
 
@@ -157,4 +157,4 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](https://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](https://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

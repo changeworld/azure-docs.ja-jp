@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="01/20/2016"
+ ms.date="06/06/2016"
  ms.author="elioda"/>
 
 # IoT Hub と Event Hubs の比較
@@ -25,7 +25,7 @@
 | 領域 | IoT Hub | Event Hubs |
 | ---- | ------- | ---------- |
 | 通信パターン | デバイスからクラウドおよびクラウドからデバイスへのメッセージを有効にします。 | イベント イングレスのみを有効にします (通常はデバイスからクラウドへのシナリオの対象になります)。 |
-| デバイスのプロトコルのサポート | AMQP、AMQP over WebSocket、MQTT、および HTTP/1 をサポートします。さらに、IoT Hub は [Azure IoT プロトコル ゲートウェイ][lnk-azure-protocol-gateway] \(カスタム プロトコルをサポートする、カスタマイズ可能なプロトコル ゲートウェイの実装) でも動作します。 | AMQP、AMQP over WebSockets、および HTTP/1 をサポートします。 |
+| デバイスのプロトコルのサポート | AMQP、AMQP over WebSocket、MQTT、および HTTP/1 をサポートします。さらに、IoT Hub は [Azure IoT プロトコル ゲートウェイ][lnk-azure-protocol-gateway] (カスタム プロトコルをサポートする、カスタマイズ可能なプロトコル ゲートウェイの実装) でも動作します。 | AMQP、AMQP over WebSockets、および HTTP/1 をサポートします。 |
 | セキュリティ | デバイスごとの ID と取り消し可能なアクセス制御を提供します。IoT Hub 開発者ガイドの「[セキュリティ]」セクションを参照してください。 | Event Hubs 全体の[共有アクセス ポリシー][Event Hub - security]を提供します。[発行元のポリシー][Event Hub publisher policies]による取り消しが限定的にサポートされます。IoT ソリューションでは、デバイスごとの資格情報となりすまし対策をサポートするために、カスタム ソリューションの実装が求められることがよくあります。 |
 | 操作の監視 | デバイス ID 管理および接続の豊富なイベント (個々のデバイス認証エラー、スロットル、および不適切な形式の例外など) を、IoT ソリューションでサブスクライブできるようにします。これらのイベントを使用すれば、個々のデバイス レベルで接続の問題をすばやく識別することができます。 | 集計メトリックのみを公開します。 |
 | スケール | 同時接続された数百万のデバイスをサポートするように最適化されています。 | 制限された数の同時接続をサポートできます。[Azure Service Bus のクォータ][]に基づいて最大 5,000 の AMQP 接続をサポートします。一方、Event Hubs を使用すると、送信される各メッセージのパーティションを指定できます。 |
@@ -53,4 +53,4 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 [What is Azure IoT Hub? (Azure IoT Hub とは)]: iot-hub-what-is-iot-hub.md
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

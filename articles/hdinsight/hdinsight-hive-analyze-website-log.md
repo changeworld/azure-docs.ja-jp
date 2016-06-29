@@ -39,7 +39,7 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 
 ##サンプルを実行するには
 
-1. [Azure ポータル](https://ms.portal.azure.com/)のスタート画面 (ここにクラスターをピン留めした場合) で、サンプルを実行するクラスターのタイルをクリックします。
+1. [Azure ポータル](https://portal.azure.com/)のスタート画面 (ここにクラスターをピン留めした場合) で、サンプルを実行するクラスターのタイルをクリックします。
 
 2. クラスターのブレードの **[クイック リンク]** で **[クラスター ダッシュボード]** をクリックし、**[クラスター ダッシュボード**] ブレードで **[HDInsight クラスター ダッシュボード]** をクリックします。または、次に示す URL を使用してダッシュボードを直接開くこともできます。
 
@@ -61,4 +61,4 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 [img-hdi-weblogs-sample]: ./media/hdinsight-hive-analyze-website-log/hdinsight-weblogs-sample.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

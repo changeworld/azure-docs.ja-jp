@@ -22,8 +22,8 @@
 
 
 > [AZURE.SELECTOR]
-- [セキュリティの概要](sql-database-get-started-security.md)
-- [アクセス権を付与する](sql-database-manage-logins.md)
+- [Notification Hubs の使用](sql-database-get-started-security.md)
+- [アクセス権の付与](sql-database-manage-logins.md)
 
 
 管理者、管理者以外、およびロールの SQL Database のアクセスの概念の概要については、最初にこのページをお読みください。
@@ -42,7 +42,7 @@
 ### ファイアウォールの構成
 サーバー レベルのファイアウォールを構成すると、Azure SQL Database サブスクライバー アカウントと Azure Active Directory アカウントは、仮想 master データベースとすべてのユーザー データベースに接続できます。サーバー レベルのファイアウォールは、ポータルで構成できます。接続の確立後、サーバー レベルのファイアウォール規則を追加で構成することもできます。それには、[sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) Transact-SQL ステートメントを使用します。ファイアウォールの構成の詳細については、[Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する方法](sql-database-configure-firewall-settings.md)に関する記事を参照してください。
 
-### 管理者のアクセス パス
+### Administrator access path
 
 サーバー レベルのファイアウォールが正しく構成されている場合、SQL Database サブスクライバー アカウントと Azure Active Directory SQL Server 管理者は、SQL Server Management Studio や SQL Server Data Tools などのクライアント ツールを使用して接続できます。すべての機能を提供しているのは、最新のツールだけです。次の図は、2 つの管理者アカウントの標準的な構成を示しています。![Administrator access path](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
 
@@ -117,7 +117,7 @@ GRANT ALTER ANY USER TO Mary;
 
 ベスト プラクティスとして、管理者以外のユーザーは、使用するデータベースにファイアウォール経由でのみアクセスできるようにすることをお勧めします。サーバー レベルのファイアウォール経由で IP アドレスを承認し、すべてのデータベースへのアクセスを許可するのではなく、[sp\_set\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270010.aspx) ステートメントを使用して、データベース レベルのファイアウォールを構成してください。データベース レベルのファイアウォールは、ポータルを使用して構成することはできません。
 
-### 管理者以外のアクセス パス
+### Non-administrator access path
 
 データベース レベルのファイアウォールが正しく構成されると、データベース ユーザーは SQL Server Management Studio や SQL Server Data Tools などのクライアント ツールを使用して接続できます。すべての機能を提供しているのは、最新のツールだけです。次の図は、管理者以外の標準的なアクセス パスを示しています。![Non-administrator access path](./media/sql-database-manage-logins/2sql-db-nonadmin-access.png)
  
@@ -137,12 +137,6 @@ SQL Server 認証を使用している場合は、次のようにします。
 SQL Database では、個別に許可または拒否できるアクセス許可が 100 個を超えています。これらのアクセス許可の多くは、入れ子になっています。たとえば、スキーマに対する `UPDATE` アクセス許可には、そのスキーマ内の各テーブルに対する `UPDATE` アクセス許可が含まれています。ほとんどのアクセス許可システムと同様に、アクセス許可の拒否は許可より優先されます。入れ子になっている性質と、アクセス許可の数により、データベースを正しく保護するのに適切なアクセス許可システムを設計するには、慎重な調査を行う場合があります。まずは「[権限 (データベース エンジン)](https://msdn.microsoft.com/library/ms191291.aspx)」でアクセス許可の一覧を確認し、アクセス許可の [ポスター サイズの図](http://go.microsoft.com/fwlink/?LinkId=229142)も確認してください。
 
 
-### 詳細情報
-
-[SQL Database の保護](sql-database-security.md)
-
-[SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589.aspx)
-
 ## 次のステップ
 
 [SQL Database の保護](sql-database-security.md)
@@ -157,4 +151,11 @@ SQL Database では、個別に許可または拒否できるアクセス許可�
 
 [データベース オブジェクトへのアクセス権の付与](https://msdn.microsoft.com/library/ms365327.aspx)
 
-<!---HONumber=AcomDC_0608_2016-->
+
+## その他のリソース
+
+[SQL Database の保護](sql-database-security.md)
+
+[SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589.aspx)
+
+<!---HONumber=AcomDC_0615_2016-->

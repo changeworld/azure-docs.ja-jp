@@ -127,7 +127,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 Azure ポータルで、アプリケーションのブレードに戻ります。
 
-最初のイベントが、ライブ ストリーム ウィンドウに表示されます。
+最初のイベントが、[ライブ メトリックス ストリーム](app-insights-metrics-explorer.md#live-metrics-stream) ウィンドウに表示されます。
 
 
 ## 永続化チャネル 
@@ -256,4 +256,4 @@ namespace ConsoleApplication1
 [CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

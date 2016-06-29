@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/22/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # チュートリアル: Java SDK で Azure Data Lake Analytics の使用を開始する
@@ -40,7 +40,7 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
 
 このチュートリアルが動作するには、アプリケーションに対して、Azure でリソースを作成するためのアクセス許可を付与する必要があります。このチュートリアルの目的においては、このアプリケーションの共同作成者に対して、Azure サブスクリプションの未使用で新しい空のリソース グループへのアクセス許可のみを付与することを**強くお勧めします**。
 
-## Java アプリケーションを作成する
+## Java アプリケーションの作成
 
 1. IntelliJ を開き、**コマンド ライン アプリ** テンプレートを使用して新しい Java プロジェクトを作成します。
 
@@ -75,7 +75,17 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
 	        <dependency>
 	            <groupId>com.microsoft.azure</groupId>
 	            <artifactId>azure-client-authentication</artifactId>
-	            <version>1.0.0-SNAPSHOT</version>
+	            <version>1.0.0-20160513.000802-24</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>com.microsoft.azure</groupId>
+	            <artifactId>azure-client-runtime</artifactId>
+	            <version>1.0.0-20160513.000812-28</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>com.microsoft.rest</groupId>
+	            <artifactId>client-runtime</artifactId>
+	            <version>1.0.0-20160513.000825-29</version>
 	        </dependency>
 	        <dependency>
 	            <groupId>com.microsoft.azure</groupId>
@@ -95,7 +105,9 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
 5. **Main.java** を開き、既存のコード ブロックを次のコードに置き換えます。また、**localFolderPath**、**\_adlaAccountName**、**\_adlsAccountName**、**\_resourceGroupName** などのコード スニペットで呼び出されたパラメーターの値を入力し、**CLIENT-ID**、**CLIENT-SECRET**、**TENANT-ID**、および **SUBSCRIPTION-ID** のプレースホルダーを置き換えます。
 
 	このコードでは、Data Lake Store と Data Lake Analytics のアカウントの作成、ストアでのファイルの作成、ジョブの状態の取得、ジョブ出力のダウンロード、最後にアカウントの削除のプロセスを行います。
- 
+
+>[AZURE.NOTE] 現時点で、Azure Data Lake Service の既知の問題があります。サンプル アプリケーションが中断されたり、エラーが発生した場合は、スクリプトによって作成された Data Lake Store と Data Lake Analytics のアカウントを手動で削除することが必要になる場合があります。ポータルに慣れていない場合は、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」から始めることをお勧めします。
+
 
 		package com.company;
 
@@ -255,6 +267,8 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
 		        adlaParameters.setName(_adlaAccountName);
 		        adlaParameters.setProperties(adlaProperties);
 		
+				/* If this line generates an error message like "The deep update for property 'DataLakeStoreAccounts' is not supported", please delete the ADLS and ADLA accounts via the portal and re-run your script. */
+ 
 		        _adlaClient.getAccountOperations().create(_resourceGroupName, _adlaAccountName, adlaParameters);
 		    }
 		
@@ -383,10 +397,10 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
 ## 関連項目
 
 - 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
-- より複雑なクエリを表示する場合は、「[チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」を参照してください。
+- より複雑なクエリを表示する場合は、「[チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
 - U-SQL アプリケーションの開発を開始する場合は、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
-- U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」および「[U SQL 言語リファレンス](http://go.microsoft.com/fwlink/?LinkId=691348)」を参照してください。
+- U-SQL の詳細については、「[チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」および「[U-SQL language reference (U-SQL 言語リファレンス)](http://go.microsoft.com/fwlink/?LinkId=691348)」を参照してください。
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

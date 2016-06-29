@@ -3,7 +3,7 @@
 	description="開発者分析用 Visual Studio ツールの更新内容。"
 	services="application-insights"
     documentationCenter=""
-	authors="aruna"
+	authors="acearun"
 	manager="douge"/>
 <tags
 	ms.service="application-insights"
@@ -11,11 +11,26 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="06/09/2016"
 	ms.author="acearun"/>
 
 # リリース ノート - Developer Analytics Tools
 ##### Visual Studio での Application Insights と HockeyApp の分析
+## バージョン 7.0.1
+Application Insights により、Visual Studio で ASP.NET Core RC2 プロジェクトがサポートされるようになりました。Application Insights は、[新しいプロジェクト] ダイアログから新しい ASP.NET Core RC2 プロジェクトに追加することができます。既存のプロジェクトに追加するには、ソリューション エクスプローラーでそのプロジェクトを右クリックし、[Application Insights テレメトリの追加...] を選択します。
+
+![.NET コアのサポート](./media/app-insights-release-notes-vsix/NetCoreSupport.PNG)
+
+ASP.NET 5 RC1 と ASP.NET Core RC2 プロジェクトには、診断ツール ウィンドウでの新しいサポートもあります。お使いの PC でローカルにデバッグ中に、ASP.NET アプリケーションから要求や例外などの Application Insights のイベントが表示されます。[検索] をクリックすると、各イベントの詳細についてドリルダウンできます。
+
+![診断ツールのサポート](./media/app-insights-release-notes-vsix/DiagnosticTools.PNG)
+
+その他の新機能:
+
+* 自動的に適用することによって時間範囲と詳細のフィルターを選択すると高速かつに、Application Insights の検索がより素早く直感的になりました
+* Application Insights の検索では、要求テレメトリから [コードに移動] オプションを使用できます
+* HockeyApp サインイン エクスペリエンスが向上しました。
+
 ## バージョン 5.2
 Visual Studio に HockeyApp シナリオを導入することになりました。最初に有効にした統合は、Visual Studio でのユニバーサル Windows アプリと Windows フォーム アプリのベータ版配布です。
 
@@ -85,13 +100,13 @@ Windows フォーム プロジェクト ノードのコンテキスト メニュ
 NLog、Log4Net や System.Diagnostics のトレースを既に使用している場合は、AI へのすべてのトレースの移動について心配する必要はありません。通常の構成エクスペリエンスと Application Insights のログ記録アダプターが統合されました。既にこれらのログ記録フレームワークを構成してある場合は、次の手順でトレースを移動できます。
 ####既に Application Insights を追加してある場合
 - プロジェクト ノードを右クリックし、[Application Insights]、[Application Insights の構成] の順に選択します。構成ウィンドウで、正しいアダプターを追加するオプションが設定されていることを確認します。
-- または、ソリューションをビルドするときに、画面右上に表示されるポップアップに気付いて、[構成] をクリックします。![ログイン トースト](./media/app-insights-release-notes-vsix/LoggingToast.png)
+- または、ソリューションをビルドするときに、画面右上に表示されるポップアップの [構成] をクリックします。![ログイン トースト](./media/app-insights-release-notes-vsix/LoggingToast.png)
 
 ログ アダプターをインストールした後、アプリケーションを実行することができ、[診断ツール] タブに次のようにデータが表示されます。![トレース](./media/app-insights-release-notes-vsix/Traces.png)
 ###- テレメトリ イベント プロパティが生成されるコードへの移動、またはこれらのコードの検索が可能に
 新しいリリースでは、ユーザーはイベント詳細の任意の値をクリックすることで、現在開いているソリューション内で一致する文字列を検索できます。結果は、Visual Studio の [検索結果] リストに次のように表示されます。![一致の検索](./media/app-insights-release-notes-vsix/FindMatch.png)
 ###- サインインしていないユーザーに表示される [検索] ウィンドウの新しい画面
-[検索] ウィンドウの外観が機能強化され、実稼働環境でのデータ検索手順をユーザーにガイドするようになりました。![[検索] ウィンドウ](./media/app-insights-release-notes-vsix/SearchWindow.png)
+[検索] ウィンドウの外観が改善され、実稼働環境でのデータ検索手順をユーザーにガイドするようになりました。![[検索] ウィンドウ](./media/app-insights-release-notes-vsix/SearchWindow.png)
 ###- イベントに関連するすべてのテレメトリ イベントが表示可能に
 イベント詳細の横に新しいタブが追加されました。このタブには、ユーザーが表示しているテレメトリ イベントに関連するすべてのデータを表示する定義済みクエリが含まれています。例: 要求には操作 ID と呼ばれるフィールドがあり、この要求に関連付けられているすべてのイベントは同じ操作 ID を持ちます。そのために、たとえば、要求の処理中に例外が発生した場合は、要求と同じ操作 ID を受け取るため、例外を見つけやすくなります。要求を見ているユーザーが、[この操作のすべてのテレメトリ] をクリックすると、新しい検索結果を含む新しいタブが開くようになりました。![関連項目](./media/app-insights-release-notes-vsix/RelatedItems.png)
 ### - 検索の前/後の履歴を追加
@@ -149,4 +164,4 @@ Application Insights ポータルでの検索と同じように、イベント�
 
 Application Insights 拡張機能の今後のリリースでは、HockeyApp と Visual Studio のエクスペリエンスをさらに統合するための新しい機能を導入する予定です。現時点では、NuGet 参照を追加するだけで HockeyApp を開始できます。詳細については、[ドキュメント](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone)を参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="06/14/2016"
 	ms.author="douglasl"/>
 
 # Stretch Database の制限事項
@@ -96,4 +96,4 @@ Stretch が有効なテーブルの制限事項を次に示します。
 
 [テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

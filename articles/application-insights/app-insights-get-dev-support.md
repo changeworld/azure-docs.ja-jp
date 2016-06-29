@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Application Insights 開発チームによるテクニカル サポートを利用する方法" 
+	pageTitle="Application Insights 開発チームによるテクニカル サポートを利用する方法 | Microsoft Azure" 
 	description="Application Insights 開発チームからの特別なサポートが必要な問題が発生した場合に、詳細を送信してサポートを受ける方法を紹介します。" 
 	services="application-insights" 
     documentationCenter=""
@@ -42,7 +42,7 @@
 
 1. [Application Insights ポータル](https://portal.azure.com)で、右上隅にあるスマイル アイコンをクリックします。  
 
-    ![image](./media/app-insights-get-dev-support/01.png)
+    ![フィードバック ボタン](./media/app-insights-get-dev-support/01.png)
 
 2. コメント ボックスで、最初の行に **AppInsights** を指定した後、次の情報を含めるようにしてください。
 
@@ -51,17 +51,16 @@
     AppInsights   
     ikey: <instrumentation key>   
     sdk: <SDK that you are using, including name and version>  
-    email: <email address that we should use to contact you. This is the most important field>  
     issue: <please describe the problem you are having>
 
     ```   
 
-    ![image](./media/app-insights-get-dev-support/02.png)
+    ![フィードバックのダイアログ](./media/app-insights-get-dev-support/02.png)
 
 3. [はい、このフィードバックに関してメールをお送りいただいてもかまいません] チェック ボックスをオンにします。
 
-    ![イメージ](./media/app-insights-get-dev-support/03.png)
+    ![送信セクション](./media/app-insights-get-dev-support/03.png)
 
 Application Insights チームのエンジニアからすぐに連絡が来ます。Microsoft では、このサービスの提供に最善を尽くしている最中のため、現時点では正式な SLA を提供できません。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

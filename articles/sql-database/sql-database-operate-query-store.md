@@ -89,7 +89,7 @@ Azure SQL Database は、収集されたデータを使用して、次の操作�
 
 [SQL Database Performance Insight](sql-database-performance.md)
 
-## 詳細情報
+## その他のリソース
 
 詳細については、次の記事を参照してください。
 
@@ -101,4 +101,4 @@ Azure SQL Database は、収集されたデータを使用して、次の操作�
 
 - [クエリ ストアを使用したパフォーマンスの監視](https://msdn.microsoft.com/library/dn817826.aspx)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

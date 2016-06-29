@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Service Fabric クラスターをオンプレミスまたはクラウドに作成する | Microsoft Azure"
-   description="Windows Server が実行されている任意のマシン (物理コンピューターまたは仮想マシン) に Azure Service Fabric クラスターを作成する方法について説明します。クラスターの作成先は、オンプレミスでも、クラウドでもかまいません。"
+   pageTitle="Azure Service Fabric クラスターをオンプレミスまたは任意のクラウドに作成する | Microsoft Azure"
+   description="Windows Server が実行されている任意のマシン (物理コンピューターまたは仮想マシン) に Azure Service Fabric クラスターを作成する方法について説明します。クラスターの作成先は、オンプレミスでも、任意のクラウドでもかまいません。"
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/12/2016"
+   ms.date="06/14/2016"
    ms.author="chackdan"/>
 
 
@@ -23,9 +23,13 @@ Azure Service Fabric クラスターは、Windows Server を実行するあら�
 
 この記事では、Service Fabric のスタンドアロン パッケージを使用して、オンプレミスにクラスターを作成する手順について説明していますが、他の環境 (他のクラウドなど) にも簡単に応用することができます。
 
+>[AZURE.NOTE] このスタンドアロン パッケージは、現在プレビュー段階です。EULA のコピーがすぐに必要という場合は、[こちらをクリック](http://go.microsoft.com/fwlink/?LinkID=733084)してダウンロードしてください。
+
+<a id="downloadpackage"></a>
 ## Service Fabric スタンドアロン パッケージのダウンロード
 
-[Service Fabric for Windows Server 2012 R2 用のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)してください。*Microsoft.Azure.ServiceFabric.WindowsServer.&lt;version&gt;.zip* という名前です。
+
+[Service Fabric for Windows Server 2012 R2 用のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)してください。*Microsoft.Azure.ServiceFabric.WindowsServer.&lt;バージョン&gt;.zip* という名前です。
 
 ダウンロード パッケージには、次のファイルが含まれています。
 
@@ -80,8 +84,9 @@ Azure Service Fabric クラスターは、Windows Server を実行するあら�
 - "upgradeDomain": "Blue"
 
 ### 手順 5: Service Fabric for Windows Server のスタンドアロン パッケージをダウンロードする
-[Service Fabric for Windows Server のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)し、クラスターに属していないデプロイ用のマシンか、これからクラスターに追加するいずれかのマシンにパッケージ ファイルを解凍します。
+[Service Fabric for Windows Server のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)し、クラスターに属していないデプロイ用のマシンか、これからクラスターに追加するマシンのいずれかにパッケージ ファイルを解凍します。
 
+<a id="createcluster"></a>
 ## クラスターの作成
 
 前出の計画と準備のセクションで説明した手順を実行したら、いよいよクラスターを作成することになります。
@@ -115,4 +120,4 @@ JSON ファイル内のクラスター構成に変更を加え、すべてのノ
 Azure クラスターとスタンドアロン クラスターについて詳しく知る:
 - [スタンドアロン クラスター作成機能の概要および Azure によって管理されたクラスターとの比較](service-fabric-deploy-anywhere.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

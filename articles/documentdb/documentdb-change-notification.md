@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="rest-api" 
     ms.topic="article" 
-    ms.date="03/17/2016" 
+    ms.date="06/14/2016" 
     ms.author="b-hoedid"/>
 
 # Logic Apps を使用した DocumentDB リソースの新規作成や変更の通知
@@ -624,7 +624,7 @@ QueryDocuments アクションは、API アプリへの HTTP POST 操作を実�
 
 このコードは、デザイナーのアクションから生成されたものです。コードに変更を加える必要はありません。
 
-Azure BLOB API の使用に慣れていない場合は、「[Get started with the Azure blob storage API (Azure Blob Storage API の使用)](../connectors/connectors-create-api-azureblobstorage.md)」をご覧ください。
+Azure BLOB API の使用に慣れていない場合は、「[Get started with the Azure blob storage API](../connectors/connectors-create-api-azureblobstorage.md)」 (Azure BLOB Storage API の使用) をご覧ください。
 
 #### 操作
 
@@ -1156,4 +1156,4 @@ Patient BLOB ファイル情報が次のように表示されます。
 
 DocumentDB をさらに詳しく知りたい場合は、こちらの[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)をご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

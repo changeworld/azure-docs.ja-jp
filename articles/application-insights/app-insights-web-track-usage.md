@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="06/12/2016" 
 	ms.author="awills"/>
  
 # Application Insights による Web アプリケーションの利用状況の分析
@@ -154,32 +154,22 @@ Application Insights は、合成トラフィックを自動的に判定して�
 
 ## カスタム イベント
 
-カスタム イベントを使用できます。カスタム イベントは、デバイスのアプリ、Web ページ、または Web サーバーから送信できます。
-
-*JavaScript*
+特定のイベントのログを記録するためのカスタム テレメトリを記述します。特に、シングル ページ アプリで、ユーザーが特定の操作を実行する、または特定の目的を達成する頻度を確認する必要があります。
 
     appInsights.trackEvent("GameEnd");
 
-*C#*
+たとえば、リンクのクリックをログに記録する場合は、次のようになります。
 
-    var tc = new Microsoft.ApplicationInsights.TelemetryClient(); 
-    tc.TrackEvent("GameEnd");
-
-*VB*
-
-    Dim tc = New Microsoft.ApplicationInsights.TelemetryClient()
-    tc.TrackEvent("GameEnd")
+    <a href="target.htm" onclick="appInsights.trackEvent('linkClick');return true;">my link</a>
 
 
-最もよく使用されるカスタム イベントは、概要ブレードに示されます。
+## カスタム イベントのカウントを表示する
 
-![概要ブレードで、下へスクロールし、[カスタム イベント] をクリックします。](./media/app-insights-web-track-usage/04-events.png)
-
-テーブルの先頭をクリックすると、イベントの合計数が表示されます。イベント名などのさまざまな属性によって、グラフを分割することができます。
+メトリックス エクスプローラー を開き、イベントを表示するグラフを追加します。名前別に分割します。
 
 ![1 つのメトリックのみを示すグラフを選択します。[グループ] をオンにします。プロパティを選択します。使用できないプロパティもあります。](./media/app-insights-web-track-usage/06-eventsSegment.png)
 
-タイムラインには、変化を他のメトリックやイベントに関連付けることができるという便利な機能があります。たとえば、プレイするゲームが多くなると、破棄されたゲームも多くなると予想されます。しかし、破棄されたゲーム数の増加率には偏りがあります。そこで、高い負荷が原因となってユーザーが許容できない問題が発生しているかどうかを確認してみましょう。
+
 
 ## 特定のイベントのドリルダウン
 
@@ -378,4 +368,4 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

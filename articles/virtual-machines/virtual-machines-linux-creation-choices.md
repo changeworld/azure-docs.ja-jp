@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Linux VM を作成するさまざまな方法 | Microsoft Azure"
-	description="Azure で Linux 仮想マシンを作成するさまざまな方法を紹介し、手順へのリンクを提供します。"
+	description="Azure で Linux 仮想マシンを作成するさまざまな方法のほか、各方法のツールとチュートリアルへのリンクを紹介します。"
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="iainfoulds"
@@ -14,18 +14,16 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="04/12/2016"
+	ms.date="06/14/2016"
 	ms.author="iainfou"/>
 
 # リソース マネージャーで Linux 仮想マシンを作成する各種の方法
 
 多様なユーザーや目的に対応するために、Azure には、Resource Manager デプロイ モデルを使用して VM を作成するためのさまざまな方法が用意されています。この記事は、それらの違いと、Linux 仮想マシン (VM) を作成する場合の選択肢をまとめたものです。
 
-## ツールの選択肢
+## Azure CLI 
 
-### コマンド シェル: Azure CLI 
-
-CLI から、Azure コマンド ライン インターフェイスを使用します。[こちら](../xplat-cli-install.md)のページで、npm、Docker コンテナー、インストール スクリプトを使用して Azure CLI をインストールする方法について詳しく説明しています。Azure CLI の使用例については、次のチュートリアルを参照してください。
+[こちら](../xplat-cli-install.md)のページで、npm、Docker コンテナー、インストール スクリプトを使用して Azure CLI をインストールする方法について詳しく説明しています。Azure CLI の使用例については、次のチュートリアルを参照してください。
 
 * [開発用とテスト用の Linux VM を Azure CLI から作成する](virtual-machines-linux-quick-create-cli.md) 
 
@@ -33,7 +31,7 @@ CLI から、Azure コマンド ライン インターフェイスを使用し�
 
 * [Azure CLI を使用して新しく Linux VM を作成する](virtual-machines-linux-create-cli-complete.md)
 
-### GUI: Azure ポータル
+## Azure ポータル
 
 [Azure ポータル](https://portal.azure.com)のグラフィカル ユーザー インターフェイスを使用すると VM を手軽に試すことができます。ご利用のシステムには何もインストールする必要がないので、特に Azure を初めて使用する場合には有利な方法です。Azure ポータルを使用して VM を作成する方法については、以下のページを参照してください。
 
@@ -65,4 +63,4 @@ CLI から、Azure コマンド ライン インターフェイスを使用し�
 
 * [パスワードや SSH キーをリセットしたりユーザーを管理したりするための手順](virtual-machines-linux-using-vmaccess-extension.md)を参照します。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

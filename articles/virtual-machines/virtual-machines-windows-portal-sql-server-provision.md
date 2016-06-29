@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/08/2016"
+	ms.date="06/21/2016"
 	ms.author="jroth" />
 
 # Azure ポータルでの SQL Server 仮想マシンのプロビジョニング
@@ -251,4 +251,6 @@ Azure での SQL Server の使用に関するその他の情報については�
 
 Azure 仮想マシン上の SQL Server の概要に関するビデオについては、「[Azure VM is the best platform for SQL Server 2016 (Azure VM は SQL Server 2016 に最適なプラットフォーム)](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)」をご覧ください。
 
-<!---HONumber=AcomDC_0608_2016-->
+Azure 仮想マシン上の SQL Server の[ラーニング パスを調べます](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/)。
+
+<!---HONumber=AcomDC_0622_2016-->

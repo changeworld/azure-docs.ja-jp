@@ -13,32 +13,27 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management"
-    ms.date="04/27/2016"
+    ms.date="06/14/2016"
     ms.author="carlrab"/>
 
 # Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する
 
-
-
 > [AZURE.SELECTOR]
+- [概要](sql-database-geo-replication-overview.md)
 - [Azure ポータル](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
-- [Transact-SQL](sql-database-geo-replication-transact-sql.md)
+- [T-SQL](sql-database-geo-replication-transact-sql.md)
 
-
-この記事では、Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する方法について説明します。
+この記事では、Transact-SQL を使用して Azure SQL Database のアクティブ geo レプリケーションを構成する方法について説明します。
 
 フェールオーバーを開始する方法については、[Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-transact-sql.md)に関する記事をご覧ください。
 
 >[AZURE.NOTE] すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
 
-同じまたは異なるデータ センターの場所 (リージョン) に最大 4 つの読み取り可能なセカンダリ データベースを構成できます。セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合に使用できます。
+Transact-SQL を使用してアクティブ geo レプリケーションを構成するには、次のものが必要です。
 
-
-geo レプリケーションを構成するには、次のものが必要です。
-
-- Azure サブスクリプション - Azure サブスクリプションをお持ちでない場合、この記事の上部の **[無料試用版]** をクリックしてからこの記事に戻り、最後までお読みください。
-- Azure SQL Database 論理サーバー <MyLocalServer> と SQL データベース <MyDB> - 別の地理的リージョンにレプリケートするプライマリ データベースです。
+- Azure サブスクリプション。
+- Azure SQL Database 論理サーバー <MyLocalServer> と SQL データベース <MyDB> - レプリケートするプライマリ データベースです。
 - 1 つ以上の Azure SQL Database 論理サーバー <MySecondaryServer(n)> - セカンダリ データベースの作成先であるパートナー サーバーとなる論理サーバーです。
 - プライマリ上の DBManager であるログイン。geo レプリケートするローカル データベースの db\_ownership を所有し、geo レプリケーションを構成するパートナー サーバー上の DBManager になります。
 - 最新バージョンの SQL Server Management Studio - 最新バージョンの SQL Server Management Studio (SSMS) を入手するには、[SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx) ページに移動します。SQL Server Management Studio を使用した Azure SQL Database の論理サーバーとデータベースの管理については、「[SQL Server Management Studio を使用した Azure SQL Database の管理](sql-database-manage-azure-ssms.md)」を参照してください。
@@ -57,7 +52,7 @@ geo レプリケーションを構成するには、次のものが必要です�
 
 1. バージョン 13.0.600.65 以降の SQL Server Management Studio を使用します。
 
- 	 > [AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。常に最新バージョンの Management Studio を使用して、Azure ポータルの更新プログラムとの同期を維持することをお勧めします。
+ 	 > [AZURE.IMPORTANT] [最新]( https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。常に最新バージョンの Management Studio を使用して、Azure ポータルの更新プログラムとの同期を維持することをお勧めします。
 
 
 2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
@@ -184,4 +179,4 @@ geo レプリケーション パートナーシップを監視するには、次
 - [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

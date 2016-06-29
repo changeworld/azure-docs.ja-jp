@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="06/14/2016"
 	ms.author="douglasl"/>
 
 # Stretch Database Advisor を実行して Stretch Database のデータベースとテーブルを特定する
@@ -68,4 +68,4 @@ Stretch Database を有効にします。
 
 [テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->
