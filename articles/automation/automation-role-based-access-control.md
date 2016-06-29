@@ -3,8 +3,8 @@
    description="Azure のリソースに対するアクセスは、ロールベースのアクセス制御 (RBAC) で管理できます。この記事では、Azure Automation における RBAC の設定方法について説明します。"
    services="automation"
    documentationCenter=""
-   authors="SnehaGunda"
-   manager="stevenka"
+   authors="mgoedtel"
+   manager="jwhit"
    editor="tysonn"
    keywords="Automation RBAC, ロールベースのアクセス制御, Azure RBAC" />
 <tags 
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/10/2016"
+   ms.date="06/20/2016"
    ms.author="magoedte;sngun"/>
 
 # Azure Automation におけるロールベースのアクセス制御
@@ -30,11 +30,100 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 |:--- |:---|
 | 所有者 | Automation アカウント内のすべてのリソースおよびアクションへのアクセスは、所有者ロールによって許可されます。Automation アカウントを管理するためのアクセス権を他のユーザー、グループ、アプリケーションに付与することもできます。 |
 | 共同作成者 | Automation アカウントに対する他のユーザーのアクセス権に変更を加えることを除くすべての作業は共同作成者ロールで行うことができます。 |
-| 閲覧者 | 閲覧者ロールでは、Automation アカウントのすべてのリソースを表示できますが、それらに変更を加えることはできません。 |
-| Automation オペレーター | ジョブの開始、停止、一時停止、再開、スケジュール設定といった運用タスクは、Automation オペレーター ロールで実行できます。Automation アカウントのリソース (資格情報アセットや Runbook など) を閲覧したり改変したりできないよう保護したうえで、同じ組織のメンバーにのみ、それらの Runbook の実行を許可する必要がある場合、このロールを活用できます。Automation アカウントとそのリソースに対して Automation オペレーター ロールでサポートされる一連の操作については、[「Automation オペレーター」の「アクション」](../active-directory/role-based-access-built-in-roles.md#automation-operator)を参照してください。 |
+| 閲覧者 | 閲覧者ロールでは、Automation アカウントのすべてのリソースを表示できますが、それらに変更を加えることはできません。|
+| オートメーション オペレーター | ジョブの開始、停止、一時停止、再開、スケジュール設定などの運用タスクは、Automation オペレーター ロールで実行できます。Automation アカウントのリソース (資格情報アセットや Runbook など) を閲覧したり改変したりできないよう保護したうえで、同じ組織のメンバーにのみ、それらの Runbook の実行を許可する必要がある場合、このロールを活用できます。 |
 | ユーザーアクセスの管理者 | Azure Automation アカウントに対するユーザー アクセスは、ユーザー アクセスの管理者ロールで管理できます。 |
 
-この記事では、Azure Automation における RBAC の設定方法について説明します。
+>[AZURE.NOTE] Automation アカウント内のリソースとアクションにのみアクセス権を付与することができ、特定の Runbook には付与できません。
+
+この記事では、Azure Automation における RBAC の設定方法について説明します。ただし、まずは共同作成者、閲覧者、Automation オペレーター、ユーザー アクセスの管理者に付与される個々のアクセス許可について詳しく見ていきましょう。そうすることで、実際に Automation アカウントへのアクセス権をユーザーに付与する前に、十分な理解が得られます。前もって理解しておかないと、意図しない結果や望ましくない結果を招くこともあります。
+
+## 共同作成者ロールのアクセス許可
+
+次の表には、Automation の共同作成者ロールで実行できる特定のアクションを示します。
+
+| **リソースの種類** | **読み取り** | **書き込み** | **削除** | **その他のアクション** |
+|:--- |:---|:--- |:---|:--- |
+| Azure Automation アカウント | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | 
+| Automation の証明書資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | |
+| Automation の接続資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | 
+| Automation 接続の種類の資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | 
+| Automation の資格情報資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | |
+| Automation スケジュール資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | |
+| Automation の変数資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | |
+| Automation Desired State Configuration | | | | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) |
+| Hybrid Runbook Worker リソースの種類 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | 
+| Azure Automation ジョブ | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | 
+| Automation ジョブ ストリーム | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| Automation ジョブ スケジュール | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | |
+| Automation モジュール | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | |
+| Azure Automation Runbook | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) |
+| Automation Runbook のドラフト | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) |
+| Automation Runbook のドラフトのテスト ジョブ | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | 
+| Automation Webhook | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) |
+
+## 閲覧者ロールのアクセス許可
+
+次の表には、Automation の閲覧者ロールで実行できる特定のアクションを示します。
+
+| **リソースの種類** | **読み取り** | **書き込み** | **削除** | **その他のアクション** |
+|:--- |:---|:--- |:---|:--- |
+| 従来のサブスクリプション管理者 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
+| 管理ロック | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
+| アクセス許可 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | |
+| プロバイダー操作 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
+| ロール割り当て | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
+| ロール定義 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
+
+## Automation オペレーター ロールのアクセス許可
+
+次の表には、Automation の Automation オペレーター ロールで実行できる特定のアクションを示します。
+
+| **リソースの種類** | **読み取り** | **書き込み** | **削除** | **その他のアクション** |
+|:--- |:---|:--- |:---|:--- |
+| Azure Automation アカウント | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | 
+| Automation の証明書資産 | | | |
+| Automation の接続資産 | | | |
+| Automation 接続の種類の資産 | | | |
+| Automation の資格情報資産 | | | |
+| Automation スケジュール資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | |
+| Automation の変数資産 | | | |
+| Automation Desired State Configuration | | | | |
+| Hybrid Runbook Worker リソースの種類 | | | | | 
+| Azure Automation ジョブ | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | 
+| Automation ジョブ ストリーム | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | |  
+| Automation ジョブ スケジュール | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | |
+| Automation モジュール | | | |
+| Azure Automation Runbook | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Runbook のドラフト | | | |
+| Automation Runbook のドラフトのテスト ジョブ | | | |  
+| Automation Webhook | | | |
+
+詳細については、[Automation オペレーターのアクション](../active-directory/role-based-access-built-in-roles.md#automation-operator)に関するセクションで、Automation アカウントとそのリソースに対して Automation オペレーター ロールでサポートされる操作の一覧を参照してください。
+
+## ユーザー アクセスの管理者ロールのアクセス許可
+
+次の表には、Automation のユーザー アクセスの管理者ロールで実行できる特定のアクションを示します。
+
+| **リソースの種類** | **読み取り** | **書き込み** | **削除** | **その他のアクション** |
+|:--- |:---|:--- |:---|:--- |
+| Azure Automation アカウント | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation の証明書資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation の接続資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation 接続の種類の資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation の資格情報資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation スケジュール資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation の変数資産 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Desired State Configuration | | | | |
+| Hybrid Runbook Worker リソースの種類 | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| Azure Automation ジョブ | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| Automation ジョブ ストリーム | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| Automation ジョブ スケジュール | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation モジュール | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Azure Automation Runbook | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Runbook のドラフト | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Automation Runbook のドラフトのテスト ジョブ | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| Automation Webhook | ![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | |
 
 ## Azure ポータルを使用して Automation アカウントの RBAC を構成する
 
@@ -44,7 +133,7 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 
     ![Access button](media/automation-role-based-access-control/automation-01-access-button.png)
 
->[AZURE.NOTE]  **[サブスクリプション管理]** は、既定のユーザーとして最初から存在します。Active Directory のサブスクリプション管理グループには、Azure サブスクリプションのサービス管理者と共同管理者が含まれます。サービス管理者は、Azure サブスクリプションとそのリソースの所有者であり、Automation アカウントにも所有者ロールが継承されます。つまり、サブスクリプションの**サービス管理者と共同管理者**のアクセス権が**継承**されます。それ以外のユーザーについてはアクセス権を**割り当てる**ことになります。**[サブスクリプション管理]** をクリックすると、その権限の詳細が表示されます。
+>[AZURE.NOTE] **[サブスクリプション管理]** は、既定のユーザーとして最初から存在します。Active Directory のサブスクリプション管理グループには、Azure サブスクリプションのサービス管理者と共同管理者が含まれます。サービス管理者は、Azure サブスクリプションとそのリソースの所有者であり、Automation アカウントにも所有者ロールが継承されます。つまり、サブスクリプションの**サービス管理者と共同管理者**のアクセス権が**継承**されます。それ以外のユーザーについてはアクセス権を**割り当てる**ことになります。**[サブスクリプション管理]** をクリックすると、その権限の詳細が表示されます。
 
 ### 新しいユーザーの追加とロールの割り当て
 
@@ -56,23 +145,25 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 
     ![Select role](media/automation-role-based-access-control/automation-03-select-role.png)
 
-3.	**[ユーザーの追加]** をクリックして **[ユーザーの追加]** ブレードを開きます。サブスクリプションを管理するためのユーザー、グループ、またはアプリケーションを既に追加してある場合は、それらのユーザーが一覧に表示されるので、それらを選択してアクセス権を追加することができます。ユーザーがまったく表示されない場合、または追加しようとするユーザーが表示されない場合は、**[招待]** をクリックして **[ゲストを招待する]** ブレードを開きます。有効な Microsoft アカウントの電子メール アドレス (Outlook.com、OneDrive、Xbox Live の ID など) を持つユーザーを招待できます。ユーザーの電子メール アドレスを入力したら、**[選択]** をクリックしてユーザーを追加し、**[OK]** をクリックします。
+3.	**[ユーザーの追加]** をクリックして **[ユーザーの追加]** ブレードを開きます。サブスクリプションを管理するためのユーザー、グループ、またはアプリケーションを既に追加してある場合は、それらのユーザーが一覧に表示されるので、それらを選択してアクセス権を追加することができます。ユーザーがまったく表示されない場合、または追加しようとするユーザーが表示されない場合は、**[招待する]** をクリックして **[ゲストを招待する]** ブレードを開きます。有効な Microsoft アカウントの電子メール アドレス (Outlook.com、OneDrive、Xbox Live の ID など) を持つユーザーを招待できます。ユーザーの電子メール アドレスを入力したら、**[選択]** をクリックしてユーザーを追加し、**[OK]** をクリックします。
 
     ![Add users](media/automation-role-based-access-control/automation-04-add-users.png)
  
-**[ユーザー]** ブレードに目的のユーザーが追加され、**閲覧者**ロールが割り当てられていることを確認できます。
+    **[ユーザー]** ブレードに目的のユーザーが追加され、**閲覧者**ロールが割り当てられていることを確認できます。
 
-![List users](media/automation-role-based-access-control/automation-05-list-users.png)
+    ![List users](media/automation-role-based-access-control/automation-05-list-users.png)
 
-**[ロール]** ブレードから、ユーザーにロールを割り当てることもできます。[ユーザー] ブレードから **[ロール]** をクリックして **[ロール]** ブレードを開きます。このブレードでは、ロールの名前と、そのロールに割り当てられているユーザー数およびグループ数を確認できます。
+    **[ロール]** ブレードから、ユーザーにロールを割り当てることもできます。
 
-![Assign role from users blade](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
+1. [ユーザー] ブレードから **[ロール]** をクリックして **[ロール]** ブレードを開きます。このブレードでは、ロールの名前と、そのロールに割り当てられているユーザー数およびグループ数を確認できます。
+
+    ![Assign role from users blade](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
    
->[AZURE.NOTE] ロールベースのアクセス制御は、Automation アカウント レベルでのみ設定できます。Automation アカウントより下のリソース レベルで設定することはできません。
+    >[AZURE.NOTE] ロールベースのアクセス制御は、Automation アカウント レベルでのみ設定できます。Automation アカウントより下のリソース レベルで設定することはできません。
 
-ロールは、単一のユーザー、グループ、またはアプリケーションに複数割り当てることができます。たとえば、**Automation オペレーター** ロールと**閲覧者ロール**をユーザーに追加した場合、そのユーザーは、すべての Automation リソースを表示することに加え、Runbook ジョブを実行することができます。ドロップダウンを展開すると、ユーザーに割り当てられているロールの一覧を表示できます。
+    ロールは、単一のユーザー、グループ、またはアプリケーションに複数割り当てることができます。たとえば、**Automation オペレーター** ロールと**閲覧者ロール**をユーザーに追加した場合、そのユーザーは、すべての Automation リソースを表示することに加え、Runbook ジョブを実行することができます。ドロップダウンを展開すると、ユーザーに割り当てられているロールの一覧を表示できます。
 
-![View multiple roles](media/automation-role-based-access-control/automation-07-view-multiple-roles.png)
+    ![View multiple roles](media/automation-role-based-access-control/automation-07-view-multiple-roles.png)
  
 ### ユーザーの削除
 
@@ -80,7 +171,7 @@ Automation アカウントの管理に関与しないユーザーや既に退社
 
 1.	**[ユーザー]** ブレードで、削除するロールの割り当てを選択します。
 
-2.	[割り当ての詳細] ブレードで、**[削除]** ボタンをクリックします。
+2.	割り当ての詳細ブレードで、**[削除]** ボタンをクリックします。
 
 3.	**[はい]** をクリックして削除を確定します。
 
@@ -88,13 +179,13 @@ Automation アカウントの管理に関与しないユーザーや既に退社
 
 ## ロールが割り当てられているユーザー
 
-ロールに割り当てられているユーザーがその Automation アカウントにログインすると、**既定のディレクトリ**の一覧に所有者のアカウントが表示されていることに気付きます。自分が追加されている Automation アカウントを確認するには、既定のディレクトリを所有者の既定のディレクトリに切り替える必要があります。
+ロールに割り当てられているユーザーがその Automation アカウントにログインすると、**既定のディレクトリ**の一覧に所有者のアカウントが表示されていることが確認できます。自分が追加されている Automation アカウントを確認するには、既定のディレクトリを所有者の既定のディレクトリに切り替える必要があります。
 
 ![既定のディレクトリ](media/automation-role-based-access-control/automation-09-default-directory-in-role-assigned-user.png)
 
 ### Automation オペレーター ロールのユーザー エクスペリエンス
 
-Automation オペレーター ロールに割り当てられているユーザーが、その割り当て先となっている Automation アカウントを表示したときに見えるのは、その Automation アカウントで作成された Runbook、Runbook ジョブ、およびスケジュールの一覧のみで、それらの定義は表示されません。これらのユーザーは、Runbook ジョブの開始、停止、一時停止、再開、スケジュール設定を実行することができます。Automation の構成、ハイブリッド worker グループ、DSC ノードなど、他のリソースにアクセスすることはできません。
+Automation オペレーター ロールに割り当てられているユーザーが、その割り当て先となっている Automation アカウントを表示した場合、実際に表示されるのはその Automation アカウントで作成された Runbook、Runbook ジョブ、およびスケジュールの一覧のみで、それらの定義は表示されません。これらのユーザーは、Runbook ジョブの開始、停止、一時停止、再開、スケジュール設定を実行することができます。Automation の構成、ハイブリッド worker グループ、DSC ノードなど、他のリソースにアクセスすることはできません。
 
 ![No access to resourcres](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
@@ -114,30 +205,30 @@ Runbook に関連付けられている Webhook を表示するアクセス権も
 
 Automation アカウントに対するロールベースのアクセス制御は、次の [Azure PowerShell コマンドレット](../active-directory/role-based-access-control-manage-access-powershell.md)を使用して構成することもできます。
 
-• [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx): Azure Active Directory RBAC で利用できるすべてのロールを一覧表示します。このコマンドに **Name** プロパティを組み合わせることで、特定のロールに割り当てられているすべてのユーザーを一覧表示できます。**例:** ![Get role definition](media/automation-role-based-access-control/automation-14-get-azurerm-role-definition.png)
+• [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx): Azure Active Directory で利用できるすべての RBAC ロールを一覧表示します。このコマンドに **Name** プロパティを組み合わせることで、特定のロールで実行できるすべてのアクションを一覧表示できます。**例:** ![Get role definition](media/automation-role-based-access-control/automation-14-get-azurerm-role-definition.png)
 
-• [Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx): 特定のスコープにおける Azure RBAC ロールの割り当てを一覧表示します。このコマンドにパラメーターを指定しなかった場合、対象サブスクリプションで行われたすべてのロールの割り当てが返されます。指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを一覧表示するには、**ExpandPrincipalGroups** パラメーターを使用します。**例:** Automation アカウント内のすべてのユーザーとそのロールを一覧表示するには、次のコマンドを使用します。
+• [Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx): 特定のスコープにおける Azure AD RBAC ロールの割り当てを一覧表示します。このコマンドにパラメーターを指定しなかった場合、対象サブスクリプションで行われたすべてのロールの割り当てが返されます。指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを一覧表示するには、**ExpandPrincipalGroups** パラメーターを使用します。**例:** Automation アカウント内のすべてのユーザーとそのロールを一覧表示するには、次のコマンドを使用します。
 
     Get-AzureRMRoleAssignment -scope “/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>” 
 
 ![Get role assignment](media/automation-role-based-access-control/automation-15-get-azurerm-role-assignment.png)
 
-• [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx): 特定のスコープのユーザー、グループ、アプリケーションにアクセス権を付与します。**例:** Automation アカウント スコープのユーザーに対して新しいロール "Automation Operator" を作成するには、次のコマンドを使用します。
+• [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx): 特定のスコープのユーザー、グループ、アプリケーションにアクセス権を割り当てます。**例:** Automation アカウント スコープのユーザーに対して "Automation Operator" ロールを割り当てるには、次のコマンドを使用します。
 
     New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName "Automation operator" -Scope “/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>”  
 
 ![New role assignment](media/automation-role-based-access-control/automation-16-new-azurerm-role-assignment.png)
 
-• [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx): 特定のスコープの指定したユーザー、グループ、またはアプリケーションのアクセス権を削除します。**例:** Automation アカウント スコープのユーザーに対して新しいロール "Automation Operator" を作成するには、次のコマンドを使用します。
+• [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx): 特定のスコープの指定したユーザー、グループ、またはアプリケーションのアクセス権を削除します。**例:** Automation アカウント スコープの "Automation Operator" ロールからユーザーを削除するには、次のコマンドを使用します。
 
-    Remove-AzureRmRoleAssignment -SignInName "<sign-in Id of a user you wish to remove>" -RoleDefinitionName "Automation Operator" -Scope “/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>”
+    Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName "Automation Operator" -Scope “/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>”
 
-上記のコマンドレットのサインイン名、サブスクリプション ID、リソース グループ名、Automation アカウント名は、実際のアカウント情報に置き換えてください。ロールの割り当てを削除するかどうかの確認を求められるので、続行する場合は **yes** を選択してください。
+上の例での**サインイン ID**、**サブスクリプション ID**、**リソース グループ名**、**Automation アカウント名**は、実際のアカウント情報に置き換えてください。ユーザー ロールの割り当ての削除を続行する前に確認を求められた場合は、**[はい]** を選択します。
 
 
 ## 次のステップ
--  Azure Automation に対して RBAC を構成する各種の方法については、[Azure PowerShell を使用した RBAC の管理](../active-directory/role-based-access-control-manage-access-powershell.md)に関する記事を参照してください。
-- Runbook を開始するさまざまな方法の詳細については、[Runbook の開始](automation-starting-a-runbook.md)に関する記事を参照してください。
-- 種類については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
+-  Azure Automation の RBAC を構成する各種の方法については、[Azure PowerShell を使用した RBAC の管理](../active-directory/role-based-access-control-manage-access-powershell.md)に関する記事を参照してください。
+- Runbook を開始するさまざまな方法については、[Runbook の開始](automation-starting-a-runbook.md)に関する記事を参照してください。
+- Runbook のさまざまな種類については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

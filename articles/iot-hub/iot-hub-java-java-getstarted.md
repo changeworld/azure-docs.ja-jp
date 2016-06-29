@@ -13,32 +13,18 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="06/06/2016"
+     ms.date="06/16/2016"
      ms.author="dobett"/>
 
 # Azure IoT Hub for Java の使用
 
 [AZURE.INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-## はじめに
+このチュートリアルの最後には、次の 3 つの Java コンソール アプリケーションが完成します。
 
-Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバイスとソリューション バック エンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。IoT プロジェクトが直面する最も大きな課題の 1 つは、ソリューション バックエンドにデバイスを確実かつ安全に接続する方法です。この課題に対応するために、IoT Hub は次の機能を備えています。
-
-- 非常にスケール性が高く信頼性に優れた、デバイスとクラウド間の双方向メッセージングを提供します。
-- デバイスごとのセキュリティ資格情報とアクセス制御を使用して、セキュリティで保護された通信を可能します。
-- 最も一般的な言語とプラットフォームのデバイスのライブラリが含まれます。
-
-このチュートリアルでは、次の操作方法について説明します。
-
-- Azure ポータルを使用して IoT Hub を作成する。
-- IoT Hub におけるデバイス ID を作成する。
-- クラウド バックエンドにテレメトリを送信するシミュレーション対象デバイスを作成する。
-
-このチュートリアルの最後には、次の 3 つの Java コンソール アプリケーションが作成されています。
-
-* **create-device-identity**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイスを接続します。
+* **create-device-identity**。デバイス ID と、関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイスを接続します。
 * **read-d2c-messages**。シミュレーション対象デバイスから送信されたテレメトリを表示します。
-* **simulated-device**。以前に作成したデバイス ID で IoT ハブに接続し、AMQPS プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
+* **simulated-device**。以前に作成したデバイス ID で IoT Hub に接続し、AMQPS プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
 
 > [AZURE.NOTE] デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの作成に利用できる各種 SDK に関する情報は、「[IoT Hub SDK][lnk-hub-sdks]」の記事で取り上げています。
 
@@ -48,15 +34,15 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 
 + Maven 3。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」には、このチュートリアルのために Maven をインストールする方法があります。Windows と Linux の両方が対象となっています。
 
-+ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
++ アクティブな Azure アカウント。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、[Azure の無料試用版][lnk-free-trial]サイトを参照してください。
 
 [AZURE.INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-最後の手順として、[IoT Hub] ブレードの **[設定]** をクリックし、**[設定]** ブレードの **[メッセージング]** をクリックします。**[メッセージング]** ブレードで、**[イベント ハブと互換性のある名前]** と **[イベント ハブと互換性のあるエンドポイント]** をメモします。この値は **read-d2c-messages** アプリケーションを作成するときに必要になります。
+最後の手順として、[IoT Hub] ブレードの **[設定]** をクリックし、**[設定]** ブレードの **[メッセージング]** をクリックします。**[メッセージング]** ブレードで、**Event Hub と互換性のある名前**と **Event Hub と互換性のあるエンドポイント**をメモします。この値は **read-d2c-messages** アプリケーションを作成するときに必要になります。
 
 ![][6]
 
-これで IoT Hub が作成され、このチュートリアルの残りを完了するために必要な IoT Hub ホスト名、IoT Hub 接続文字列、Event Hub 対応名、Event Hub 対応エンドポイントが与えられました。
+これで IoT Hub が作成され、このチュートリアルの残りを完了するために必要な IoT Hub ホスト名、IoT Hub 接続文字列、Event Hubs と互換性のある名前、Event Hubs と互換性のあるエンドポイントが入手できました。
 
 ## デバイス ID の作成
 
@@ -148,9 +134,9 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 
 ## デバイスからクラウドへのメッセージの受信
 
-このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Java コンソール アプリケーションを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るための、[イベント ハブ][lnk-event-hubs-overview]と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを規模を拡大して処理する方法を紹介しています。「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub のイベント ハブと互換性のあるエンドポイントに当てはまります。
+このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Java コンソール アプリケーションを作成します。IoT Hub は、デバイスからクラウドへのメッセージを読み取るための、[イベント ハブ][lnk-event-hubs-overview]と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを規模を拡大して処理する方法を紹介しています。「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub のイベント ハブと互換性のあるエンドポイントに適用されます。
 
-> [AZURE.NOTE] Event Hubs と互換性のあるエンドポイントは、常に、デバイスからクラウドへのメッセージを読み取るために AMQPS プロトコルを使用します。
+> [AZURE.NOTE] 常に、Event Hubs と互換性のあるエンドポイントは、デバイスからクラウドへのメッセージを読み取るために AMQPS プロトコルを使用します。
 
 1. コマンド プロンプトで次のコマンドを実行し、「*デバイス ID の作成*」セクションで作成した iot-java-get-started フォルダーに **read-d2c-messages** という名前の Maven プロジェクトを新しく作成します。これは 1 つの長いコマンドです。
 
@@ -160,7 +146,7 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 
 2. コマンド プロンプトで、新しい「read-d2c-messages」フォルダーに移動します。
 
-3. テキスト エディターを使用して、read-d2c-messages フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。これで、アプリケーションの eventhubs-client パッケージを利用して、イベント ハブと互換性のあるエンドポイントから読み込めるようにすることができます。
+3. テキスト エディターを使用して、read-d2c-messages フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。これで、アプリケーションの eventhubs-client パッケージを利用し、Event Hubs と互換性のあるエンドポイントから読み込めるようにできます。
 
     ```
     <dependency> 
@@ -196,7 +182,7 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
     private static String connStr = "Endpoint={youreventhubcompatibleendpoint};EntityPath={youreventhubcompatiblename};SharedAccessKeyName=iothubowner;SharedAccessKey={youriothubkey}";
     ```
 
-8. 次の **receiveMessages** メソッドを **App** クラスに追加します。このメソッドは **EventHubClient** インスタンスを作成してイベント ハブと互換性のあるエンドポイントに接続し、**PartitionReceiver** インスタンスを非同期的に作成してイベント ハブ パーティションから読み取ります。これは、アプリケーションが終了するまでループを続け、メッセージの詳細を出力します。
+8. 次の **receiveMessages** メソッドを **App** クラスに追加します。このメソッドは **EventHubClient** インスタンスを作成して Event Hubs と互換性のあるエンドポイントに接続し、**PartitionReceiver** インスタンスを非同期的に作成してイベント ハブ パーティションから読み取ります。これは、アプリケーションが終了するまでループを続け、メッセージの詳細を出力します。
 
     ```
     private static EventHubClient receiveMessages(final String partitionId)
@@ -486,7 +472,7 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 
 - 「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信][lnk-c2d-tutorial]」には、デバイスにメッセージを送信し、IoT Hub によって生成される配信フィードバックを処理する方法が示されています。
 - 「[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]」には、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
-- 「[デバイスからのファイルのアップロード][lnk-upload-tutorial]」では、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用したパターンについて説明しています。
+- [デバイスからのファイルのアップロード][lnk-upload-tutorial]に関する記事には、デバイスからファイルをアップロードする方法が示されています。
 
 <!-- Images. -->
 [6]: ./media/iot-hub-java-java-getstarted/create-iot-hub6.png
@@ -501,7 +487,7 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 [lnk-devguide-identity]: iot-hub-devguide.md#identityregistry
 [lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/java/device/doc/devbox_setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/java-devbox-setup.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-upload-tutorial]: iot-hub-csharp-csharp-file-upload.md
@@ -510,4 +496,4 @@ Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバ�
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

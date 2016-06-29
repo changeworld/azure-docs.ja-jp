@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="06/10/2016"
 	ms.author="davidmu"/>
 
 # 仮想マシン スケール セットでのマシンの自動スケール
@@ -37,11 +37,9 @@
 
 リソース マネージャーのリソースの詳細については、「[Azure リソース マネージャーにおける Compute、Network、Storage プロバイダー](../virtual-machines/virtual-machines-windows-compare-deployment-models.md)」を参照してください。
 
-このチュートリアルで作成するテンプレートは、テンプレート ギャラリーにあるテンプレートと似ています。詳細については、[Windows VM と Jumpbox を使った単純な VM スケール セットのデプロイ](https://azure.microsoft.com/documentation/templates/201-vmss-windows-jumpbox/)に関するページを参照してください。
-
 ## 手順 1. Azure PowerShell をインストールする
 
-最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。
+最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 ## 手順 2: リソース グループとストレージ アカウントを作成する
 
@@ -94,9 +92,8 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
     
 3. 絶えず値が変化する場合や、複数のパラメーター値を組み合わせて値を作成する必要がある場合は、テンプレートの中で変数を使用して指定できます。これらの変数は、テンプレートに追加した variables を親要素として、その下に追加します。
 
-        "apiVersion": "2016-03-30"
-        "dnsName1": "[concat(parameters('resourcePrefix'),'dn1')] ",
-        "dnsName2": "[concat(parameters('resourcePrefix'),'dn2')] ",
+        "dnsName1": "[concat(parameters('resourcePrefix'),'dn1')]",
+        "dnsName2": "[concat(parameters('resourcePrefix'),'dn2')]",
         "vmSize": "Standard_A0",
         "imagePublisher": "MicrosoftWindowsServer",
         "imageOffer": "WindowsServer",
@@ -118,10 +115,10 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
         "frontEndIPConfigID": "[concat(variables('lbID'),'/frontendIPConfigurations/loadBalancerFrontEnd')]",
         "storageAccountType": "Standard_LRS",
         "storageAccountSuffix": [ "a", "g", "m", "s", "y" ],
-        "diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'saa')]",
+        "diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'a')]",
         "accountid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/', resourceGroup().name,'/providers/','Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
 	    "wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB="4096" xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter="Error"/> <WindowsEventLog scheduledTransferPeriod="PT1M" > <DataSource name="Application!*[System[(Level = 1 or Level = 2)]]" /> <DataSource name="Security!*[System[(Level = 1 or Level = 2)]]" /> <DataSource name="System!*[System[(Level = 1 or Level = 2)]]" /></WindowsEventLog>",
-        "wadperfcounter": "<PerformanceCounters scheduledTransferPeriod="PT1M"><PerformanceCounterConfiguration counterSpecifier="\\Processor(_Total)\\% Processor Time" sampleRate="PT15S" unit="Percent"><annotation displayName="CPU utilization" locale="ja-JP"/></PerformanceCounterConfiguration>",
+        "wadperfcounter": "<PerformanceCounters scheduledTransferPeriod="PT1M"><PerformanceCounterConfiguration counterSpecifier="\\Processor(_Total)\\% Processor Time" sampleRate="PT15S" unit="Percent"><annotation displayName="CPU utilization" locale="ja-JP"/></PerformanceCounterConfiguration></PerformanceCounters>",
         "wadcfgxstart": "[concat(variables('wadlogs'),variables('wadperfcounter'),'<Metrics resourceId="')]",
         "wadmetricsresourceid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name ,'/providers/','Microsoft.Compute/virtualMachineScaleSets/',parameters('vmssName'))]",
         "wadcfgxend": "[concat('"><MetricAggregation scheduledTransferPeriod="PT1H"/><MetricAggregation scheduledTransferPeriod="PT1M"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
@@ -153,7 +150,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 5. 仮想ネットワーク リソースを追加します。詳細については、「[ネットワーク リソース プロバイダー](../virtual-network/resource-groups-networking.md)」を参照してください。
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2015-06-15",
           "type": "Microsoft.Network/virtualNetworks",
           "name": "[variables('virtualNetworkName')]",
           "location": "[resourceGroup().location]",
@@ -177,7 +174,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 6. ロード バランサーとネットワーク インターフェイスによって使用されるパブリック IP アドレス リソースを追加します。
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Network/publicIPAddresses",
           "name": "[variables('publicIP1')]",
           "location": "[resourceGroup().location]",
@@ -189,7 +186,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
           }
         },
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Network/publicIPAddresses",
           "name": "[variables('publicIP2')]",
           "location": "[resourceGroup().location]",
@@ -204,7 +201,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 7. スケール セットで使用するロード バランサー リソースを追加します。詳細については、「[Azure リソース マネージャーによるロード バランサーのサポート](../load-balancer/load-balancer-arm.md)」を参照してください。
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2015-06-15",
           "name": "[variables('loadBalancerName')]",
           "type": "Microsoft.Network/loadBalancers",
           "location": "[resourceGroup().location]",
@@ -247,7 +244,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 8. 個別の仮想マシンで使用するネットワーク インターフェイス リソースを追加します。仮想マシン スケール セット内のマシンは、パブリック IP アドレスで直接アクセスすることはできません。そのため、スケール セットと同じ仮想ネットワークに個別の仮想マシンを作成し、仮想マシンを使用して、そのスケール セット内のマシンにリモートからアクセスすることになります。
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Network/networkInterfaces",
           "name": "[variables('nicName1')]",
           "location": "[resourceGroup().location]",
@@ -276,7 +273,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 9. 同じネットワーク内の個別の仮想マシンをスケール セットとして追加します。
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Compute/virtualMachines",
           "name": "[parameters('vmName')]",
           "location": "[resourceGroup().location]",
@@ -302,7 +299,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
               "osDisk": {
                 "name": "osdisk1",
                 "vhd": {
-                  "uri":  "[concat('https://',parameters('resourcePrefix'),'saa.blob.core.windows.net/vhds/',parameters('resourcePrefix'),'osdisk1.vhd')]"
+                  "uri":  "[concat('https://',parameters('resourcePrefix'),'sa.blob.core.windows.net/vhds/',parameters('resourcePrefix'),'osdisk1.vhd')]"
                 },
                 "caching": "ReadWrite",
                 "createOption": "FromImage"        
@@ -322,7 +319,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 
             {
               "type": "Microsoft.Compute/virtualMachineScaleSets",
-              "apiVersion": "[variables('apiVersion')]",
+              "apiVersion": "2016-03-30",
               "name": "[parameters('vmSSName')]",
               "location": "[resourceGroup().location]",
               "dependsOn": [
@@ -343,11 +340,11 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
                   "storageProfile": {
                     "osDisk": {
                       "vhdContainers": [
-                        "[concat('https://', parameters('resourcePrefix'), 'saa.blob.core.windows.net/vmss')]",
-                        "[concat('https://', parameters('resourcePrefix'), 'sag.blob.core.windows.net/vmss')]",
-                        "[concat('https://', parameters('resourcePrefix'), 'sam.blob.core.windows.net/vmss')]",
-                        "[concat('https://', parameters('resourcePrefix'), 'sas.blob.core.windows.net/vmss')]",
-                        "[concat('https://', parameters('resourcePrefix'), 'say.blob.core.windows.net/vmss')]"
+                        "[concat('https://', parameters('resourcePrefix'), 'a.blob.core.windows.net/vmss')]",
+                        "[concat('https://', parameters('resourcePrefix'), 'g.blob.core.windows.net/vmss')]",
+                        "[concat('https://', parameters('resourcePrefix'), 'm.blob.core.windows.net/vmss')]",
+                        "[concat('https://', parameters('resourcePrefix'), 's.blob.core.windows.net/vmss')]",
+                        "[concat('https://', parameters('resourcePrefix'), 'y.blob.core.windows.net/vmss')]"
                       ],
                       "name": "vmssosdisk",
                       "caching": "ReadOnly",
@@ -410,7 +407,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
                           },
                           "protectedSettings": {
                             "storageAccountName": "[variables('diagnosticsStorageAccountName')]",
-                            "storageAccountKey": "[listkeys(variables('accountid'), variables('apiVersion')).key1]",
+                            "storageAccountKey": "[listkeys(variables('accountid'), '2015-06-15').key1]",
                             "storageAccountEndPoint": "https://core.windows.net"
                           }
                         }
@@ -567,7 +564,9 @@ Azure で使用されるリソースに対して課金されるため、不要�
     
 ## 次のステップ
 
-- 「[Manage virtual machines in a Virtual Machine Scale Set (仮想マシン スケール セットで仮想マシンを管理する)](virtual-machine-scale-sets-windows-manage.md)」を参照して、作成したスケール セットを管理します。
-- 「[仮想マシン スケール セットの使用を開始する](virtual-machine-scale-sets-vertical-scale-reprovision.md)」で垂直スケーリングの詳細を確認します。
+- 「[仮想マシン スケール セットで仮想マシンを管理する](virtual-machine-scale-sets-windows-manage.md)」を参照して、作成したスケール セットを管理します。
+- 「[仮想マシン スケール セットを使用した垂直方向の自動スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)」で垂直スケーリングの詳細を確認します。
+- Azure Insights の監視機能の例を「[Azure Insights の PowerShell クイック スタート サンプル](../azure-portal/insights-powershell-samples.md)」で確認します。
+- 通知機能について、「[Azure Insights で自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../azure-portal/insights-autoscale-to-webhook-email.md)」と「[Azure Insights で監査ログを使用して電子メールと Webhook アラート通知を送信する](../azure-portal/insights-auditlog-to-webhook-email.md)」を参照します。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/14/2016"
+   ms.date="06/09/2016"
    ms.author="ganesr" />
 
 # ExpressRoute 回線への仮想ネットワークのリンク
@@ -75,8 +75,8 @@
 次のコマンドレット スニペットは、承認を作成する方法を示しています。
 
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
-	Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization1"
-	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
+	Add-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization1"
+	Set-AzureRmExpressRouteCircuit -Circuit $circuit
 
 	$auth1 = Get-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization1"
 		
@@ -105,8 +105,8 @@
 回線所有者は、次のコマンドレットを使用して承認を追加できます。
 
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
-	Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization2"
-	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
+	Add-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization2"
+	Set-AzureRmExpressRouteCircuit -Circuit $circuit
 	
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 	$authorizations = Get-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit
@@ -117,7 +117,7 @@
 回線所有者は、次のコマンドレットを実行して、ユーザーに対する承認を取り消したり削除したりすることができます。
 
 	Remove-AzureRmExpressRouteCircuitAuthorization -Name "MyAuthorization2" -ExpressRouteCircuit $circuit
-	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit	
+	Set-AzureRmExpressRouteCircuit -Circuit $circuit	
 
 ### 回線ユーザーの操作
 
@@ -138,4 +138,4 @@ ExpressRoute 回線を仮想ネットワークにリンクしている接続を�
 
 ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

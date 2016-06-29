@@ -1,10 +1,10 @@
 <properties 
 	pageTitle="Azure Automation での仮想マシンの起動と停止 - PowerShell ワークフロー | Microsoft Azure"
-	description="クラシック仮想マシンを起動および停止するための Runbook を含む Azure Automation ソリューションのグラフィカル バージョン。"
+	description="クラシック仮想マシンを起動および停止するための Runbook を含む Azure Automation シナリオのグラフィカル バージョン。"
 	services="automation"
 	documentationCenter=""
-	authors="bwren"
-	manager="stevenka"
+	authors="mgoedtel"
+	manager="jwhit"
 	editor="tysonn" />
 <tags 
 	ms.service="automation"
@@ -12,12 +12,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="01/27/2016"
+	ms.date="06/14/2016"
 	ms.author="bwren" />
 
-# Azure Automation ソリューション - 仮想マシンの起動と停止
+# Azure Automation シナリオ - 仮想マシンの起動と停止
 
-この Azure Automation ソリューションには、クラシック仮想マシンを起動および停止するための Runbook が含まれています。このソリューションを次のいずれかの場合に使用できます。
+この Azure Automation シナリオには、クラシック仮想マシンを起動および停止するための Runbook が含まれています。このシナリオは、次のいずれかの場合に使用できます。
 
 - 独自の環境で Runbook を変更せずに使用する場合。 
 - カスタマイズされた機能を実行するために Runbook を変更する場合。  
@@ -25,14 +25,14 @@
 - Runbook の作成概念を学習するためのチュートリアルとして Runbook を使用する場合。 
 
 > [AZURE.SELECTOR]
-- [Graphical](automation-solution-startstopvm-graphical.md)
-- [PowerShell Workflow](automation-solution-startstopvm-psworkflow.md)
+- [グラフィカル](automation-solution-startstopvm-graphical.md)
+- [PowerShell ワークフロー](automation-solution-startstopvm-psworkflow.md)
 
-これは、このソリューションの Runbook の PowerShell ワークフロー バージョンです。[グラフィカル Runbook](automation-solution-startstopvm-graphical.md) を使用して利用することもできます。
+これは、このシナリオの Runbook の PowerShell ワークフロー バージョンです。[グラフィカル Runbook](automation-solution-startstopvm-graphical.md) を使用して利用することもできます。
 
-## ソリューションの取得
+## シナリオの取得
 
-このソリューションは、次のリンクからダウンロード可能な 2 つの PowerShell ワークフロー Runbook で構成されています。グラフィカル Runbook へのリンクについては、このソリューションの[グラフィカル バージョン](automation-solution-startstopvm-graphical.md)を参照してください。
+このシナリオは、次のリンクからダウンロード可能な 2 つの PowerShell ワークフロー Runbook で構成されています。グラフィカル Runbook へのリンクについては、このシナリオの[グラフィカル バージョン](automation-solution-startstopvm-graphical.md)を参照してください。
 
 | Runbook | リンク | 型 | 説明 |
 |:---|:---|:---|:---|
@@ -40,7 +40,7 @@
 | Stop-AzureVMs | [Azure クラシック VM の停止](https://gallery.technet.microsoft.com/Stop-Azure-Classic-VMs-7a4ae43e) | PowerShell ワークフロー | Azure アカウントのすべての仮想マシンまたは特定のサービス名を持つすべての仮想マシンを停止します。 |
 
 
-## ソリューションのインストール
+## シナリオのインストールと構成
 
 ### 1\.Runbook をインストールする
 
@@ -57,7 +57,7 @@ Runbook には以下の資産が必要です。これらを作成し、適切な
 | 資格情報 | AzureCredential | Azure サブスクリプションの仮想マシンを起動および停止する権限を持つアカウントの資格情報が含まれています。代わりに別の資格情報資産を **Add-AzureAccount** アクティビティの **Credential** パラメーターで指定することもできます。 |
 | 変数 | AzureSubscriptionId | Azure サブスクリプションのサブスクリプション ID が含まれています。 |
 
-## ソリューションの使用
+## シナリオの使用
 
 ### パラメーター
 
@@ -66,12 +66,12 @@ Runbook にはそれぞれ以下のパラメーターがあります。すべて
 | パラメーター | 型 | 必須 | 説明 |
 |:---|:---|:---|:---|
 | ServiceName | string | いいえ | 値が指定されている場合、そのサービス名を持つすべての仮想マシンが起動または停止します。値が指定されていない場合、Azure サブスクリプションのすべてのクラシック仮想マシンが起動または停止します。 |
-| AzureSubscriptionIdAssetName | string | いいえ | Azure サブスクリプションのサブスクリプション ID を含む[変数資産](#installing-the-solution)の名前が含まれています。値を指定しない場合、*AzureSubscriptionId* が使用されます。 |
-| AzureCredentialAssetName | string | いいえ | 使用する Runbook の資格情報を含む[資格情報資産](#installing-the-solution)の名前が含まれます。値を指定しない場合、*AzureCredential* が使用されます。 |
+| AzureSubscriptionIdAssetName | string | いいえ | Azure サブスクリプションのサブスクリプション ID を含む[変数資産](#installing-and-configuring-the-scenario)の名前が含まれています。値を指定しない場合、*AzureSubscriptionId* が使用されます。 |
+| AzureCredentialAssetName | string | いいえ | 使用する Runbook の資格情報を含む[資格情報資産](#installing-and-configuring-the-scenario)の名前が含まれます。値を指定しない場合、*AzureCredential* が使用されます。 |
 
 ### Runbook の開始
 
-「[Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)」に示されているメソッドのいずれかを使用して、このソリューションで Runbook のいずれかを開始できます。
+「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」に示されている方法のいずれかを使用して、このシナリオの Runbook のいずれかを開始できます。
 
 次のサンプル コマンドでは、Windows PowerShell を使用して **StartAzureVMs** を実行し、*MyVMService* というサービス名のすべての仮想マシンを起動します。
 
@@ -106,7 +106,7 @@ Runbook は各仮想マシンに対して[メッセージを出力](automation-r
 
 ## 詳細な内訳
 
-このソリューションでの Runbook の詳細な内訳を以下に示します。この情報を、Runbook をカスタマイズする場合や、学習のみの目的で使用することができます。
+このシナリオでの Runbook の詳細な内訳を以下に示します。Runbook をカスタマイズする場合や、独自の自動化シナリオの作成方法の学習のみの目的でこの情報を使用することができます。
 
 ### パラメーター
 
@@ -121,7 +121,7 @@ Runbook は各仮想マシンに対して[メッセージを出力](automation-r
         [String] $ServiceName
     )
 
-ワークフローは[入力パラメーター](#using-the-solution)の値の取得から始まります。資産名が指定されていない場合は、既定の名前が使用されます。
+ワークフローは[入力パラメーター](#using-the-scenario)の値の取得から始まります。資産名が指定されていない場合は、既定の名前が使用されます。
 
 ### Output
 
@@ -188,9 +188,9 @@ Runbook で使用する仮想マシンを取得する場合は、**Get-AzureVM**
 次の行では、各仮想マシンを順に確認します。まず、仮想マシンの **PowerState** を調べ、Runbook に応じて、既に実行されているか停止しているかを確認します。既に対象の状態になっている場合は、メッセージが出力に送信されてから、Runbook が終了します。対象の状態でない場合は、**Start-AzureVM** または **Stop-AzureVM** を使用して、変数に格納されている要求の結果に応じて仮想マシンの起動または停止を試みます。その後、起動または停止要求が正常に送信されたかどうかを示すメッセージが出力に送信されます。
 
 
-## 関連記事:
+## 次のステップ
 
 - [Azure Automation での子 Runbook](automation-child-runbooks.md) 
 - [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0615_2016-->

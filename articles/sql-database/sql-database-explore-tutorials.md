@@ -105,7 +105,7 @@
 
 ##開発
 
-以下のチュートリアルでは、[Azure SQL Database へのクライアント接続](sql-database-connect-central-recommendations.md)と[接続ライブラリ](sql-database-libraries.md)の使用について学習します。
+以下のチュートリアルでは、[SQL Database の開発](sql-database-develop-overview.md)と[接続ライブラリ](sql-database-libraries.md)の使用について学習します。
 
 | チュートリアル | 説明 |
 |---|---|---|
@@ -180,4 +180,4 @@
 
 [Azure SQL Database ソリューション クイック スタート ガイド](sql-database-solution-quick-starts.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

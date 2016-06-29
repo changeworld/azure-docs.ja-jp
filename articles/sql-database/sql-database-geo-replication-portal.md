@@ -13,29 +13,27 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management" 
-    ms.date="04/27/2016"
+    ms.date="06/14/2016"
     ms.author="sstein"/>
 
 # Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する
 
 
 > [AZURE.SELECTOR]
+- [概要](sql-database-geo-replication-overview.md)
 - [Azure ポータル](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
-- [Transact-SQL](sql-database-geo-replication-transact-sql.md)
+- [T-SQL](sql-database-geo-replication-transact-sql.md)
 
-
-この記事では、[Azure ポータル](http://portal.azure.com)を使用して SQL Database の geo レプリケーションを構成する方法を示します。
+この記事では、[Azure ポータル](http://portal.azure.com)を使用して SQL Database のアクティブ geo レプリケーションを構成する方法について説明します。
 
 フェールオーバーを開始する方法については、[Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-portal.md)に関する記事をご覧ください。
 
 >[AZURE.NOTE] すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
 
-同じまたは異なるデータ センターの場所 (リージョン) に最大 4 つの読み取り可能なセカンダリ データベースを構成できます。セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合に使用できます。
+Azure ポータルを使用して geo レプリケーションを構成するには、次のものが必要です。
 
-geo レプリケーションを構成するには、次のものが必要です。
-
-- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
+- Azure サブスクリプション。 
 - Azure SQL Database データベース。別の地理的リージョンにレプリケートするプライマリ データベースです。
 
 
@@ -135,4 +133,4 @@ geo レプリケーションを構成するには、次のものが必要です�
 [9]: ./media/sql-database-geo-replication-portal/seeding-complete.png
 [10]: ./media/sql-database-geo-replication-portal/failover.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

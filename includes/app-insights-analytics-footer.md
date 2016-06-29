@@ -14,5 +14,6 @@
  - Analytics の使用。
 - [言語のリファレンス](../articles/application-insights/app-insights-analytics-reference.md)
  - 1 ページのリファレンス。
+- [トラブルシューティング](../articles/application-insights/app-insights-analytics-troubleshooting.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

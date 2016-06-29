@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/15/2016"
+	ms.date="06/10/2016"
 	ms.author="jgao"/>
 
 # HDInsight ログの分析
@@ -341,4 +341,4 @@ Azure ポータルから、HDInsight HBase クラスター名をクリックし�
 - [Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 - [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0615_2016-->

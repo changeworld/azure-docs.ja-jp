@@ -38,7 +38,7 @@
 
 要するに、拡張性の高いサービスを提供するための考慮事項が多数ありながら、多くのマルチテナント アプリケーション間に共通する目標と要件も多数あります。一部の目標と要件はシナリオに固有のものではなく、それらの重要性がシナリオによって変わります。マルチテナント アプリケーションのプロバイダーとして、そのほかにも目標と要件が生じます。たとえば、テナントの目標と要件の達成、収益性、課金、複数のサービス レベル、プロビジョニング、保守容易性の監視、自動化などです。
 
-マルチテナント アプリケーションのその他の設計上の考慮事項の詳細については、「[Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト)][]」を参照してください。
+マルチテナント アプリケーションのその他の設計上の考慮事項の詳細については、「[Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト)][]」を参照してください。マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](./sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
 
 Azure には、マルチテナント システムの設計時に発生する主要な問題に対処できる、多数の機能が用意されています。
 
@@ -95,4 +95,4 @@ Azure には、アプリケーション用に新しいテナントをプロビ�
 [Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト)]: http://msdn.microsoft.com/library/hh534480.aspx
 [Designing Multitenant Applications on Azure]: http://msdn.microsoft.com/library/windowsazure/hh689716
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0615_2016-->

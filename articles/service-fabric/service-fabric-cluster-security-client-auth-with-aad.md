@@ -14,38 +14,36 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/22/2016"
+   ms.date="06/13/2016"
    ms.author="seanmck"/>
 
-# プレビュー: クライアント認証用に Azure Active Directory を使用する Service Fabric クラスターを作成する
+# クライアント認証用に Azure Active Directory を使用する Service Fabric クラスターを作成する
 
 Azure Active Directory (AAD) を使用して Service Fabric クラスターの管理エンドポイントへのアクセスをセキュリティで保護することができます。この記事では、必要な AAD アーティファクトを作成する方法、クラスターの作成中にそれらを設定する方法、その後これらのクラスターに接続する方法について説明します。
-
->[AZURE.IMPORTANT] AAD と Service Fabric クラスターの統合は現在プレビュー段階にあります。この記事の内容はすべて Service Fabric 5.0 ランタイムに適用されますが、現時点では運用環境のクラスターでは使用しないことをお勧めします。
 
 ## AAD での Service Fabric クラスターのモデル化
 
 組織 (テナントと呼ばれます) は、AAD を使用してアプリケーションへのユーザー アクセスを管理できます。アプリケーションは、Web ベースのログイン UI を持つものとネイティブ クライアント エクスペリエンスを提供するものに分類されます。このドキュメントでは、すでにテナントを作成していることを前提としています。作成していない場合は、「[Azure Active Directory テナントを取得する方法](../active-directory/active-directory-howto-tenant.md)」を読むことから始めてください。
 
-Service Fabric クラスターでは、Web ベースの [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) と [Visual Studio](service-fabric-manage-application-in-visual-studio.md) を含むさまざまなエントリ ポイントから管理機能にアクセスできます。このため、クラスターへのアクセスを制御するには、2 つの AAD アプリケーション (Web アプリケーションとネイティブ アプリケーション) を作成します。
+Service Fabric クラスターでは、Web ベースの [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) や [Visual Studio](service-fabric-manage-application-in-visual-studio.md) など、さまざまなエントリ ポイントから管理機能にアクセスできます。このため、クラスターへのアクセスを制御するには、2 つの AAD アプリケーション (Web アプリケーションとネイティブ アプリケーション) を作成します。
 
 AAD の Service Fabric クラスターでの構成に関する手順の一部を簡略化するため、一連の Windows PowerShell スクリプトが作成されています。
 
->[AZURE.NOTE] これらの手順は、クラスターを作成する*前に*実行する必要があります。これは、スクリプトでクラスター名とエンドポイントの使用が発生した場合に、すでに作成した値ではなく、予定された値にする必要があるためです。
+>[AZURE.NOTE] これらの手順は、クラスターを作成する*前に*実行する必要があります。これは、スクリプトでクラスター名とエンドポイントの使用が発生した場合に、既に作成した値ではなく、予定された値にする必要があるためです。
 
 1. コンピューターに[スクリプトをダウンロードします][sf-aad-ps-script-download]。
 
-2. zip ファイルを右クリックして、**[プロパティ]** を選択して、**[ブロックの解除]** チェックボックスをオンにして適用します。
+2. zip ファイルを右クリックして、**[プロパティ]** を選択し、**[ブロックの解除]** チェック ボックスをオンにして適用します。
 
 3. zip ファイルを解凍します。
 
-4. `SetupApplications.ps1` を実行します。パラメーターとして、TenantId、ClusterName、および WebApplicationReplyUrl を指定します。次に例を示します。
+4. `SetupApplications.ps1` を実行します。パラメーターとして、TenantId、ClusterName、WebApplicationReplyUrl を指定します。次に例を示します。
 
     ```powershell
     .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
     ```
 
-    **TenantId** は、Azure クラシック ポータルでテナントの URL を見ればわかります。その URL に埋め込まれている GUID が TenantId です。次に例を示します。
+    **TenantId** は、Azure クラシック ポータルでテナントの URL を見るとわかります。その URL に埋め込まれている GUID が TenantId です。次に例を示します。
 
     https://<i></i>manage.windowsazure.com/microsoft.onmicrosoft.com#Workspaces/ActiveDirectoryExtension/Directory/**690ec069-8200-4068-9d01-5aaf188e557a**/users
 
@@ -80,7 +78,7 @@ AAD は、クラスターに対するクライアント認証にのみ使用さ�
   }
 ```
 
-clusterApplication は、前のセクションで作成した Web アプリケーションを参照します。その ID は、SetupApplication スクリプトの出力の中で見つけることができ、そこで `WebAppId` として参照されています。clientApplication はネイティブ アプリケーションを参照し、そのクライアント ID は SetupApplication の出力の中で NativeClientAppId として入手できます。
+clusterApplication は、前のセクションで作成した Web アプリケーションを参照します。その ID は、SetupApplication スクリプトの出力の中で見つけることができます (`WebAppId` として参照されています)。clientApplication はネイティブ アプリケーションを参照し、そのクライアント ID は SetupApplication の出力の中で NativeClientAppId として入手できます。
 
 ## ユーザーをロールに割り当てる
 
@@ -141,12 +139,12 @@ Visual Studio や PowerShell などのネイティブ クライアントから�
 
 *応答アドレス http://localhost/ が、アプリケーション &lt;クラスターのクライアント アプリケーションの GUID&gt; 用に構成された応答アドレスと一致しません*
 
-この問題を回避するには、既に存在するアドレス 'urn:ietf:wg:oauth:2.0:oob' に加え、**http://<i></i>localhost** をクラスターのクライアント アプリケーション定義に対するリダイレクト URI として AAD に追加します。
+この問題を回避するには、既に存在するアドレス "urn:ietf:wg:oauth:2.0:oob" に加え、**http://<i></i>localhost** をクラスターのクライアント アプリケーション定義に対するリダイレクト URI として AAD に追加します。
 
 ## 次のステップ
 
-- 「[Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)」で詳細を確認する
-- [Visual Studio を使用してリモート クラスターにアプリケーションを発行する](service-fabric-publish-app-remote-cluster.md)方法を知る
+- [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)の詳細を確認する
+- [Visual Studio を使用してリモート クラスターにアプリケーションを発行する](service-fabric-publish-app-remote-cluster.md)方法を確認する
 
 <!-- Links -->
 [sf-aad-ps-script-download]: http://servicefabricsdkstorage.blob.core.windows.net/publicrelease/MicrosoftAzureServiceFabric-AADHelpers.zip
@@ -160,4 +158,4 @@ Visual Studio や PowerShell などのネイティブ クライアントから�
 [setupapp-script-output]: ./media/service-fabric-cluster-security-client-auth-with-aad/setupapp-script-arm-json-output.png
 [vs-publish-aad-login]: ./media/service-fabric-cluster-security-client-auth-with-aad/vs-login-prompt.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

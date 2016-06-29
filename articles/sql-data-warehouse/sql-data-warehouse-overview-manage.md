@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/05/2016"
+   ms.date="06/13/2016"
    ms.author="barbkess;sonyama;"/>
 
 # Azure SQL Data Warehouse でのデータベースの管理
@@ -42,7 +42,7 @@ SQL Data Warehouse では、さまざまなツールを使用してデータベ�
 Azure ポータルの使用については、[SQL Data Warehouse の作成 (Azure ポータル)][] に関する記事をご覧ください。
 
 ### Visual Studio での SQL Server Data Tools
-Visual Studio の [SQL Server Data Tools][] \(SSDT) を使用すると、データベースへの接続、管理、および開発を行うことができます。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
+Visual Studio の [SQL Server Data Tools][] (SSDT) を使用すると、データベースへの接続、管理、および開発を行うことができます。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
 
 SSDT には SQL Server Object Explorer が含まれており、これを使用して SQL Data Warehouse データベースに対する視覚化、接続、およびスクリプト実行を行うことができます。SQL Data Warehouse にすばやく接続するには、Azure クラシック ポータルにデータベース詳細が表示されているときに、コマンド バーで [**Visual Studio で開く**] ボタンをクリックするだけです。
 
@@ -89,10 +89,10 @@ Data Warehouse ユニット (DWU) のスケーリングの詳細については�
 
 ## バックアップと復元
 
-信頼性の高いデータのバックアップは、あらゆる実稼働データベースで必要不可欠です。SQL Data Warehouse では、一定の間隔でアクティブなデータベースを自動的にバックアップして、データを安全に保ちます。データが破損したときや、データまたはデータベースを誤って削除したときは、これらのバックアップを使用して復旧することができます。データのバックアップ スケジュールとリテンション期間ポリシーについては、[高い信頼性][]に関する記事をご覧ください。データベースの復元方法の詳細については、[スナップショットからの復元][]に関するページをご覧ください。
+信頼性の高いデータのバックアップは、あらゆる実稼働データベースで必要不可欠です。SQL Data Warehouse では、一定の間隔でアクティブなデータベースを自動的にバックアップして、データを安全に保ちます。データが破損したときや、データまたはデータベースを誤って削除したときは、これらのバックアップを使用して復旧することができます。データのバックアップ スケジュール、保持ポリシー、データベースの復元方法については、[スナップショットからの復元][]に関するページを参照してください。
 
 ## 次のステップ
-優れたデータベース設計方針を使用することにより、SQL Data Warehouse でのデータベース管理が容易になります。詳細については、「[開発の概要][]」をご覧ください。
+優れたデータベース設計方針を使用することにより、SQL Data Warehouse でのデータベース管理が容易になります。詳細については、[開発の概要][]に関する記事をご覧ください。
 
 <!--Image references-->
 
@@ -103,13 +103,12 @@ Data Warehouse ユニット (DWU) のスケーリングの詳細については�
 [Visual Studio で SQL Data Warehouse に接続する]: sql-data-warehouse-get-started-connect.md
 [SQLCMD を使用した接続とクエリ]: sql-data-warehouse-get-started-connect-sqlcmd.md
 [開発の概要]: sql-data-warehouse-overview-development.md
-[高い信頼性]: sql-data-warehouse-overview-expectations.md#high-reliability
 [DMV を利用してワークロードを監視する]: sql-data-warehouse-manage-monitor.md
 [コンピューティングの一時停止]: sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
-[スナップショットからの復元]: sql-data-warehouse-backup-and-restore-from-snapshot.md
+[スナップショットからの復元]: sql-data-warehouse-restore-database-overview.md
 [コンピューティングの再開]: sql-data-warehouse-manage-compute-overview.md#resume-compute-performance-bk
 [パフォーマンスのスケーリング]: sql-data-warehouse-manage-compute-overview.md#scale-performance-bk
-[セキュリティの概要]: sql-data-warehouse-overview-security.md
+[セキュリティの概要]: sql-data-warehouse-overview-manage-security.md
 [SQL Data Warehouse Best Practices (SQL Data Warehouse のベスト プラクティス)]: sql-data-warehouse-best-practices.md
 [SQL Data Warehouse のシステム ビュー]: sql-data-warehouse-reference-tsql-system-views.md
 
@@ -119,4 +118,4 @@ Data Warehouse ユニット (DWU) のスケーリングの詳細については�
 <!--Other web references-->
 [Azure ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

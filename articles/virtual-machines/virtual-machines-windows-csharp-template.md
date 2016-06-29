@@ -37,7 +37,7 @@
 
 すべてのリソースをリソース グループにデプロイする必要があります。詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
 
-1. リソースの作成に使用できる場所の一覧を取得します。
+1. リソースを作成できる場所の一覧を取得します。
 
 	    Get-AzureLocation | sort Name | Select Name
 
@@ -454,8 +454,8 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
           credential,
           groupName",
           storageName,
-          deploymentName}",
-          subscriptionId}");
+          deploymentName,
+          subscriptionId);
         Console.ReadLine();
 
 ##手順 7: リソースを削除するコードを追加する
@@ -497,4 +497,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 - デプロイに問題がある場合は、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
 - 「[Manage virtual machines using Azure Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md)」 (Azure Resource Manager と PowerShell を使用した仮想マシンの管理) で、作成した仮想マシンを管理する方法を確認します。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

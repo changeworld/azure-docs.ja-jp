@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="05/31/2016"
 	ms.author="john.dehavilland"/>
 
 # MSDeploy、カスタム ホスト名、SSL 証明書を使用した Web アプリケーションのデプロイ
@@ -197,4 +197,4 @@ MSDeploy リソースは、次のように定義された **packageUri** プロ�
 
 この時点でアプリケーションがデプロイされているので、https://www.yourcustomdomain.com から参照できます。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0615_2016-->

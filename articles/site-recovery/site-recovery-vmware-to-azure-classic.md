@@ -461,7 +461,8 @@ VMware VM をレプリケートする場合、vCenter サーバー (または ES
 ソース オペレーティング システム | モビリティ サービスのインストール ファイル
 --- | ---
 Windows Server (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_Windows\_* release.exe
-CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
+CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz 
+SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
 Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
 
 

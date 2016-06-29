@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/05/2016"
+   ms.date="06/20/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse の作成
@@ -62,10 +62,10 @@
 
 ## 次のステップ
 
-SQL Data Warehouse の作成は以上で完了です。いつでも[接続](./sql-data-warehouse-get-started-connect.md)して、クエリを実行することができます。
+SQL Data Warehouse の作成は以上で完了です。いつでも[接続](./sql-data-warehouse-connect-overview.md)して、クエリを実行することができます。
 
 SQL Data Warehouse へのデータの読み込みについては、[読み込みの概要](./sql-data-warehouse-overview-load.md)に関するページを参照してください。
 
 既存のデータベースを SQL Data Warehouse に移行する場合、[移行の概要](./sql-data-warehouse-overview-migrate.md)に関するページを参照するか、[移行ユーティリティ](./sql-data-warehouse-migrate-migration-utility.md)を使用してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

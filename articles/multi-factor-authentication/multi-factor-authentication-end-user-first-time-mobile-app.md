@@ -31,7 +31,7 @@ Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/j
 ![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/mobileapp.png)
 
 - [通知] または [ワンタイム パスワード] のいずれかを選択し、[設定] をクリックします。
-- Azure Authenticator アプリがインストールされている電話でアプリを起動し、[バーコードのスキャン] をクリックします。Azure MFA を既に使用しているアカウントまたはサードパーティのアカウントを追加する場合は、「[手動でのアカウントの追加](#adding-an-account-manually)」をご覧ください。
+- Azure Authenticator アプリがインストールされている電話でアプリを起動し、[バーコードのスキャン] をクリックします。Azure MFA を既に使用しているアカウントまたはサードパーティのアカウントを追加する場合は、「[手動でのアカウントの追加](#手動でのアカウントの追加)」をご覧ください。
 
 ![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan.png)
 

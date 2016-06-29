@@ -1,6 +1,6 @@
 <properties
-	pageTitle="方法: SQL Database ファイアウォールの構成 | Microsoft Azure"
-	description="Azure SQL データベースにアクセスする IP アドレス用のファイアウォールの構成方法を説明します。"
+	pageTitle="方法: SQL サーバーのファイアウォールを構成する | Microsoft Azure"
+	description="Azure SQL サーバーにアクセスする IP アドレス用のファイアウォールの構成方法を説明します。"
 	services="sql-database"
 	documentationCenter=""
 	authors="BYHAM"
@@ -14,22 +14,25 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article" 
-	ms.date="04/14/2016"
+	ms.date="06/10/2016"
 	ms.author="rickbyh;carlrab"/>
 
 
-# 方法: Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する
+# 方法: Azure ポータルを使用して Azure SQL サーバーのファイアウォールを構成する
 
 
 > [AZURE.SELECTOR]
+- [概要](sql-database-firewall-configure.md)
 - [Azure ポータル](sql-database-configure-firewall-settings.md)
 - [TSQL](sql-database-configure-firewall-settings-tsql.md)
 - [PowerShell](sql-database-configure-firewall-settings-powershell.md)
 - [REST API](sql-database-configure-firewall-settings-rest.md)
 
-Azure SQL Server では、サーバーとデータベースの接続許可に、ファイアウォール規則を使用します。データベースへのアクセスを選択的に許可するには、Azure SQL Server 論理サーバーのマスター データベースまたはユーザー データベースに、サーバーレベルおよびデータベースレベルのファイアウォール設定を定義します。
+Azure SQL Server では、サーバーとデータベースの接続許可に、ファイアウォール規則を使用します。データベースへのアクセスを選択的に許可するには、Azure SQL Server 論理サーバーのマスター データベースまたはユーザー データベースに、サーバーレベルおよびデータベースレベルのファイアウォール設定を定義します。このトピックでは、サーバーレベルのファイアウォール規則について説明します。
 
-> [AZURE.IMPORTANT] Azure のアプリケーションから Azure SQL Server に接続を許可するには、Azure の接続を有効にする必要があります。ファイアウォール規則の機能については、「[Azure SQL Database ファイアウォールを構成する方法](sql-database-firewall-configure.md)」を参照してください。Azure クラウド境界内で接続を行う場合は、追加の TCP ポートをいくつか開かなければならない場合があります。詳細については、「[ADO.NET 4.5 と SQL Database V12 の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」の「**SQL Database V12: 外部と内部**」を参照してください。
+> [AZURE.IMPORTANT] Azure のアプリケーションから Azure SQL Server に接続を許可するには、Azure の接続を有効にする必要があります。ファイアウォール規則の働きを理解するには、[Azure SQL サーバーのファイアウォールの構成方法の概要](sql-database-firewall-configure.md)に関するページを参照してください。Azure クラウド境界内で接続を行う場合は、追加の TCP ポートをいくつか開かなければならない場合があります。詳細については、「[ADO.NET 4.5 と SQL Database V12 の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」の「**SQL Database V12: 外部と内部**」を参照してください。
+
+**推奨:** アクセス要件が同じデータベースが多数存在し、それぞれのデータベースの設定に時間を費やしたくない場合は、管理者向けのサーバー レベルのファイアウォール規則を使用してください。セキュリティとデータベースの移植性を高めるため、可能な限り、データベース レベルのファイアウォール規則を使用することをお勧めします。
 
 [AZURE.INCLUDE [SQL Database データベースを作成する](../../includes/sql-database-create-new-server-firewall-portal.md)]
 
@@ -46,9 +49,9 @@ Azure SQL Server では、サーバーとデータベースの接続許可に、
 
 ## 次のステップ
 
-サーバーのファイアウォール規則は、Azure SQL Server 上のすべての SQL Database に影響があります。1 つのデータベースにのみ影響するデータベース レベルのファイアウォール規則を構成するには、「[sp\_set\_database\_firewall\_rule (SQL データベース)](https://msdn.microsoft.com/library/dn270010.aspx")」をご覧ください。
+サーバーのファイアウォール規則は、Azure SQL Server 上のすべての SQL Database に影響があります。1 つのデータベースにのみ影響するデータベース レベルのファイアウォール規則を構成するには、「[sp\_set\_database\_firewall\_rule (Azure SQL データベース)](https://msdn.microsoft.com/library/dn270010.aspx")」を参照してください。
 
-データベース作成のチュートリアルについては、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照してください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、「[プログラムで Azure SQL Database に接続するためのガイドライン](https://msdn.microsoft.com/library/azure/ee336282.aspx)」を参照してください。データベースに移動する方法の詳細については、「[Azure SQL Database におけるデータベース、ログインの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)」を参照してください。
+データベース作成のチュートリアルについては、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照してください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、「[プログラムで Azure SQL Database に接続するためのガイドライン](https://msdn.microsoft.com/library/azure/ee336282.aspx)」を参照してください。データベースへの接続を承認する方法については、「[SQL Database のセキュリティ: データベースのアクセスとログインのセキュリティの管理](sql-database-manage-logins.md)」を参照してください。
 
 <!--Image references-->
 [1]: ./media/sql-database-configure-firewall-settings/AzurePortalBrowseForFirewall.png
@@ -57,4 +60,4 @@ Azure SQL Server では、サーバーとデータベースの接続許可に、
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

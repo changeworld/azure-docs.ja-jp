@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/24/2016"
+	ms.date="05/16/2016"
 	ms.author="inqiu;yijichen;ilanr9"/>
 
 # エネルギーの需要予測のための Cortana Intelligence ソリューション テンプレートに関する技術ガイド
@@ -198,11 +198,11 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 1.  Azure Stream Analytics (ASA) に Power BI 出力を追加します。
 
-    -  Azure Stream Analytics ジョブの出力を Power BI ダッシュボードとして設定するには、「[Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード](stream-analytics\stream-analytics-power-bi-dashboard.md)」の手順に従う必要があります。
+    -  Azure Stream Analytics ジョブの出力を Power BI ダッシュボードとして設定するには、「[Azure Stream Analytics & Power BI: ストリーミング データをリアルタイムで表示するリアルタイム分析ダッシュボード](stream-analytics-power-bi-dashboard.md)」の手順に従う必要があります。
 
 	- [Azure 管理ポータル](https://manage.windowsazure.com)で Stream Analytics ジョブを見つけます。ジョブの名前は、<ソリューション名> + "streamingjob" + <ランダムな数字> + "asapbi" となっています (例: demostreamingjob123456asapbi)。
 
-	- ASA クエリの出力 (**PBIoutput**) を設定します。**[出力エイリアス]** の値がクエリ内と同じであることを確認します。**[データセット名]** と **[テーブル名]** には「**EnergyStreamData**」と設定できます。出力を追加したら、ページの下部にある **[開始]** をクリックして Stream Analytics ジョブを開始します。確認メッセージが表示されます (*例*: "Stream Analytics ジョブ 'myteststreamingjob12345asablob' が正常に開始されました")。
+	- ASA ジョブに PowerBI 出力を追加します。**［出力のエイリアス］** を「**PBIoutput**」に設定します。**[データセット名]** と **[テーブル名]** を「**EnergyStreamData**」に設定します。出力を追加したら、ページの下部にある **[開始]** をクリックして Stream Analytics ジョブを開始します。確認メッセージが表示されます (*例*: "Stream Analytics ジョブ 'myteststreamingjob12345asablob' が正常に開始されました")。
 
 2. [Power BI オンライン](http://www.powerbi.com)にログインします。
 
@@ -225,7 +225,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 	-	ダッシュボードのこのタイルにマウス ポインターを置き、右上隅の [編集] アイコンをクリックして、そのタイトルを "Demand by Timestamp" に変更します。
 
-4.	適切なデータセットに基づいて他のダッシュボード タイルを作成します。最終的なダッシュボードの表示を次に示します。![](media\cortana-analytics-technical-guide-demand-forecast\PowerBIpic5.png)
+4.	適切なデータセットに基づいて他のダッシュボード タイルを作成します。最終的なダッシュボードの表示を次に示します。![](media\cortana-analytics-technical-guide-demand-forecast\PBIFullScreen.png)
 
 
 ### コールド パス ダッシュボードの設定
@@ -280,6 +280,9 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 	-   必要に応じて更新をスケジュールします。詳細については、「[Power BI でのデータの更新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)」をご覧ください。
 
 
+## **ソリューションを削除する方法**
+データ ジェネレーターはコストを上げるので、ソリューションを活発に使用していないときはデータ ジェネレーターを停止してください。使用していない場合、ソリューションを削除してください。ソリューションを削除すると、ソリューションのデプロイ時にサブスクリプションにプロビジョニングされたすべてのコンポーネントが削除されます。ソリューションを削除するには、ソリューション テンプレートの左パネルでソリューション名をクリックし、[削除] をクリックします。
+
 ## **コスト見積もりツール**
 
 各自のサブスクリプションでエネルギーの需要予測ソリューション テンプレートを実行する場合に関連する合計コストを詳しく知るために役立つ次の 2 つのツールがあります。
@@ -288,4 +291,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 -   [Microsoft Azure 料金計算ツール (デスクトップ)](http://www.microsoft.com/download/details.aspx?id=43376)
 
-<!---HONumber=AcomDC_0413_2016-->
+## **謝辞**
+この記事は、Microsoft のデータ サイエンティスト Yijing Chen およびソフトウェア エンジニア Qiu Min によって作成されています。
+
+<!---HONumber=AcomDC_0615_2016-->

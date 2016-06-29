@@ -3,7 +3,7 @@
    description="Azure SQL Database のビジネス継続性と障害復旧における組み込み機能とオプション機能に関する一般的な質問と回答です。" 
    services="sql-database" 
    documentationCenter="" 
-   authors="elfisher" 
+   authors="carlrabeler" 
    manager="jhubbard" 
    editor="monicar"/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
    ms.date="04/25/2016"
-   ms.author="elfish"/>
+   ms.author="carlrab"/>
 
 # ビジネス継続性に関する FAQ
 
@@ -54,4 +54,4 @@
 
 [sys.dm\_geo\_replication\_link\_status](https://msdn.microsoft.com/library/mt575504.aspx) 動的管理ビュー (DMV) を使用して、前回のレプリケーション時刻や前回のレプリケーション遅延など、レプリケーション リンクに関する情報を取得します。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

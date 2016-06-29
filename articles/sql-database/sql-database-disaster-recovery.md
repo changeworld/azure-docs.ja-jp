@@ -3,7 +3,7 @@
    description="Azure SQL Database のアクティブ geo レプリケーションと geo リストア機能を使用して、地域のデータ センターの停止や障害からデータベースを復旧する方法について説明します。" 
    services="sql-database" 
    documentationCenter="" 
-   authors="elfisher" 
+   authors="carlrabeler" 
    manager="jhubbard" 
    editor="monicar"/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
    ms.date="05/10/2016"
-   ms.author="elfish"/>
+   ms.author="carlrab"/>
 
 # Azure SQL Database を復元する、またはセカンダリにフェールオーバーする
 
@@ -72,7 +72,7 @@ geo リストア オプションの geo レプリケーション フェールオ
 
 復旧後のデータベースは別のサーバーに存在するため、そのサーバーを示すようにアプリケーションの接続文字列を更新する必要があります。
 
-接続文字列を変更する方法の詳細については、「[SQL Database への接続: ベスト プラクティスと設計のガイドライン](sql-database-connect-central-recommendations.md)」を参照してください。
+接続文字列の変更の詳細については、[接続ライブラリ](sql-database-libraries.md)の適切な開発言語をご覧ください。
 
 ### ファイアウォール規則を構成する
 
@@ -110,4 +110,4 @@ geo リストア オプションの geo レプリケーション フェールオ
 - [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
 - [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

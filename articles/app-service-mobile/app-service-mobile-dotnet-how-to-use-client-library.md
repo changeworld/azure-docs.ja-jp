@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="06/11/2016"
 	ms.author="glenga"/>
 
 # Azure Mobile Apps 用の管理されたクライアントの使用方法
@@ -47,13 +47,25 @@
 
 [JsonPropertyAttribute] を使用してクライアントの型とテーブルの間の *PropertyName* のマッピングが定義されていることに注意してください。
 
-Mobile Apps バックエンドに新しいテーブルを作成する方法については、「[方法: テーブル コントローラーを定義する](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller)」(.NET Server SDK) または「[方法: 動的スキーマを使用してテーブルを定義する](app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-dynamicschema)」(Node.js Server SDK) の情報を参照してください。Azure ポータルでクイックスタートを使用して Mobile App バックエンドを作成した場合は、[Azure ポータル]で **Easy tables** 設定を使用することもできます。
+Mobile Apps バックエンドに新しいテーブルを作成する方法については、[.NET Server SDK に関するトピック](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller)または [Node.js Server SDK に関するトピック](app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-dynamicschema)を参照してください。Azure ポータルでクイックスタートを使用して Mobile App バックエンドを作成した場合は、[Azure ポータル]で **Easy tables** 設定を使用することもできます。
+
+###方法: 管理されたクライアント SDK パッケージをインストールする
+
+[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
+
++ **Visual Studio**プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.Mobile.Client` を見つけ、**[インストール]** をクリックします。
+
++ **Xamarin Studio**プロジェクトを右クリックし、**[Add (追加)]** > **[Add NuGet Packages (NuGet パッケージの追加)]** の順にクリックして `Microsoft.Azure.Mobile.Client ` を見つけ、**[Add Package (パッケージの追加)]** をクリックします。
+
+必ず、メイン アクティビティ ファイルに以下の **using** 文を追加してください。
+
+	using Microsoft.WindowsAzure.MobileServices;
 
 ###<a name="symbolsource"></a>方法: Visual Studio でデバッグ シンボルを使用する
 
 Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利用できます。SymbolSource と Visual Studio を統合するには、[SymbolSource の説明]を参照してください。
 
-##<a name="create-client"></a>Mobile App クライアントの作成
+##<a name="create-client"></a>Mobile Apps クライアントの作成
 
 次のコードは、Mobile App バックエンドへのアクセスに使用する [MobileServiceClient] オブジェクトを作成します。
 
@@ -84,7 +96,7 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利
 
 バックエンド テーブルのデータにアクセスする、またはデータを変更するすべてのコードは、`MobileServiceTable` オブジェクトに対して関数を呼び出します。次のように、`MobileServiceClient` のインスタンスで [GetTable] メソッドを呼び出して、テーブルへの参照を取得します。
 
-    IMobileServiceTable<TodoItem> todoTable = 
+    IMobileServiceTable<TodoItem> todoTable =
     	client.GetTable<TodoItem>();
 
 これは、型指定されたシリアル化モデルです。型指定されていないシリアル化モデルもサポートされます。次のコードは、[型指定されていないテーブルへの参照を作成します]。
@@ -151,7 +163,7 @@ Server SDK によって次のように SQL クエリに変換されます。
 
 この 2 つの方法は等価であり、区別しないで使用できます。複数の述語を 1 つのクエリに連結する前のオプションが、よりコンパクトでありお勧めです。
 
-`Where` 句は、OData サブセットに変換される操作をサポートします。これには、関係演算子 (==、! =、<、<=、>、>=)、算術演算子 (+、-、/、*、%)、数の精度 (Math.Floor、Math.Ceiling)、文字列関数 (Length、Substring、Replace、IndexOf、StartsWith、EndsWith)、日付プロパティ (Year、Month、Day、Hour、Minute、Second)、オブジェクトのアクセス プロパティ、これらすべてを組み合わせた式が含まれます。Server SDK のサポート対象を考慮する際に、[OData v3 のドキュメント]を検討することができます。
+`Where` 句は、OData サブセットに変換される操作をサポートします。これには、関係演算子 (==、! =、<、<=、>、>=)、算術演算子 (+、-、/、*、%)、数の精度 (Math.Floor、Math.Ceiling)、文字列関数 (Length、Substring、Replace、IndexOf、StartsWith、EndsWith)、日付プロパティ (Year、Month、Day、Hour、Minute、Second)、オブジェクトのアクセス プロパティ、これらすべてを組み合わせた式が含まれます。Server SDK のサポート対象については、[OData v3 のドキュメント]を参照してください。
 
 ###<a name="sorting"></a>方法: 返されるデータを並べ替える
 
@@ -287,7 +299,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 	jo.Add("Complete", false);
 	var inserted = await table.UpdateAsync(jo);
 
-更新を行うときは `id` フィールドを指定する必要があります。バックエンドはそれによって更新するインスタンスを識別します。`id` フィールドは、`InsertAsync` の呼び出しの結果から取得できます。`id` の値を指定せずに項目を更新しようとすると、`ArgumentException` が発生します。
+更新を行うときは、`id` フィールドを指定する必要があります。バックエンドはそれによって更新するインスタンスを識別します。`id` フィールドは、`InsertAsync` の呼び出しの結果から取得できます。`id` の値を指定せずに項目を更新しようとすると、`ArgumentException` が発生します。
 
 ###<a name="deleting"></a>方法: モバイル アプリ バックエンドのデータを削除する
 
@@ -309,7 +321,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 
 Mobile Apps はオプティミスティック同時実行制御をサポートしており、モバイル アプリ バックエンドで各テーブルに定義されている `version` システム プロパティ列を使用して各項目の変更を追跡します。レコードが更新されるたびに、Mobile Apps はそのレコードの `version` プロパティを新しい値に設定します。各更新要求の際に、要求に含まれているレコードの `\version` プロパティが、サーバー上のレコードの同じプロパティと比較されます。要求で渡されたバージョンがバックエンドと一致しない場合、クライアント ライブラリは `MobileServicePreconditionFailedException<T>` 例外を生成します。例外に含まれている型は、レコードのサーバー側のバージョンを含んでいるバックエンドのレコードです。アプリケーションはこの情報を使用して、バックエンドからの正しい `version` 値で更新要求をもう一度実行して変更をコミットするかどうかを判断できます。
 
-オプティミスティック同時実行制御を有効にするために、たとえば次のように、テーブル クラスに `version` システム プロパティ用の列を定義します。
+オプティミスティック同時実行制御を有効にするには、たとえば次のように、テーブル クラスに `version` システム プロパティ用の列を定義します。
 
     public class TodoItem
     {
@@ -332,7 +344,7 @@ Mobile Apps はオプティミスティック同時実行制御をサポート�
 	//Enable optimistic concurrency by retrieving version
 	todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
-オプティミスティック同時実行制御を有効にする以外に、[UpdateAsync] を呼び出すときはコードで `MobileServicePreconditionFailedException<T>` 例外をキャッチすることも必要です。更新されるレコードに正確な `version` を適用して競合を解決し、解決済みのレコードで [UpdateAsync] を呼び出します。次のコードは、書き込み競合が検出された場合にそれを解決する方法を示しています。
+オプティミスティック同時実行制御を有効にすることに加えて、[UpdateAsync] の呼び出し時にコード内で起きた `MobileServicePreconditionFailedException<T>` 例外をキャッチすることも必要です。更新対象のレコードに正確な `version` を適用して競合を解決し、解決済みのレコードで [UpdateAsync] を呼び出します。次のコードは、書き込み競合が検出された場合にそれを解決する方法を示しています。
 
 	private async void UpdateToDoItem(TodoItem item)
 	{
@@ -425,7 +437,7 @@ Windows Phone 8 と "Silverlight" アプリで新しいコレクションを使�
 
 ###<a name="pagesize"></a>ページ サイズの変更
 
-Azure Mobile Apps は、既定で、要求ごとに最大 50 個の項目を返します。この動作を変更するには、サーバー側で最大ページ サイズを大きくし、クライアント側で要求されたページ サイズを大きくします。要求されたページ サイズを大きくするには、`PullAsync` のオーバーロードを使用すると、`PullOptions` を指定できるようになります。
+Azure Mobile Apps は、既定で、要求ごとに最大 50 個の項目を返します。この動作を変更するには、サーバー側で最大ページ サイズを大きくし、クライアント側で要求されたページ サイズを大きくします。要求されたページ サイズを大きくするには、`PullOptions` を指定できる `PullAsync` のオーバーロードを使用します。
 
     PullOptions pullOptions = new PullOptions
 		{
@@ -453,7 +465,7 @@ Mobile Apps は、Facebook、Google、Microsoft アカウント、Twitter、Azur
 
 >[AZURE.NOTE] 運用環境のアプリでは、クライアント側管理フローをお勧めします。
 
-認証をセットアップするには、少なくとも 1 つの ID プロバイダーにアプリを登録する必要があります。ID プロバイダーによって、アプリのクライアント ID とクライアント シークレットが生成され、それらがバックエンドで設定されることによって、その ID プロバイダーを使用した Azure App Service の認証/承認が可能となります。詳細については、[アプリに認証を追加する]チュートリアルの詳しい手順を参照してください。
+認証をセットアップするには、少なくとも 1 つの ID プロバイダーにアプリを登録する必要があります。ID プロバイダーによって、アプリのクライアント ID とクライアント シークレットが生成され、それらがバックエンドで設定されることによって、その ID プロバイダーを使用した Azure App Service の認証/承認が可能となります。詳細については、「[アプリケーションに認証を追加する]」のチュートリアルの手順を参照してください。
 
 このセクションでは、次のトピックについて説明します。
 
@@ -481,7 +493,7 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
 
 3. ご使用のプラットフォームに応じて、以下のコードをアプリケーションに追加します。それぞれで、次の置換を行います。
 
-	* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は https://login.windows.net/contoso.onmicrosoft.com である必要があります。この値は、[[Azure クラシック ポータル]] の Azure Active Directory の [ドメイン] タブからコピーできます。
+	* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は https://login.windows.net/contoso.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル] の Azure Active Directory の [ドメイン] タブからコピーできます。
 	
 	* **INSERT-RESOURCE-ID-HERE** をモバイル アプリ バックエンドのクライアント ID に置き換えます。これは、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブから取得できます。
 	
@@ -746,7 +758,7 @@ Xamarin アプリは、[Xamarin.Auth](https://components.xamarin.com/view/xamari
 	await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 
 
-##<a name="pushnotifications">プッシュ通知
+##<a name="pushnotifications"></a>プッシュ通知
 
 以下のトピックでは、プッシュ通知について説明します。
 
@@ -897,8 +909,8 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 <!-- Internal URLs. -->
 [Azure Mobile Apps のクイックスタート]: app-service-mobile-windows-store-dotnet-get-started.md
 [Azure Mobile Apps クイックスタート]: app-service-mobile-windows-store-dotnet-get-started.md
-[アプリに認証を追加する]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [アプリへの認証の追加]: app-service-mobile-windows-store-dotnet-get-started-users.md
+[アプリケーションに認証を追加する]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [Work with .NET backend SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [How to use the Node.js backend SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
@@ -957,4 +969,4 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 [SymbolSource]: http://www.symbolsource.org/
 [SymbolSource の説明]: http://www.symbolsource.org/Public/Wiki/Using
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

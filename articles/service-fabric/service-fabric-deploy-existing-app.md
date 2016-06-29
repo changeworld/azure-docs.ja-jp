@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Service Fabric への既存の実行可能ファイルのデプロイ | Microsoft Azure"
-   description="既存のアプリケーションを Azure Service Fabric クラスターにデプロイできるようにパッケージ化する方法のチュートリアル"
+   description="既存のアプリケーションを Azure Service Fabric クラスターにデプロイできるようにゲスト実行可能ファイルとしてパッケージ化する方法のチュートリアル"
    services="service-fabric"
    documentationCenter=".net"
    authors="bmscholl"
@@ -12,13 +12,13 @@
    ms.devlang="dotnet"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="05/17/2016"
-   ms.author="bscholl"/>
+   ms.workload="na"
+   ms.date="06/06/2016"
+   ms.author="bscholl;mikhegn"/>
 
 # Service Fabric へのゲスト実行可能ファイルのデプロイ
 
-Node.js アプリケーション、Java アプリケーション、Azure Service Fabric のネイティブなアプリケーションなど、あらゆる種類のアプリケーションを実行できます。Service Fabric では、この種のアプリケーションをゲスト実行可能ファイルと呼びます。Service Fabric は、ゲスト実行可能ファイルをステートレス サービスと同様に扱います。その結果、ゲスト実行可能ファイルは、可用性とその他のメトリックに基づいて、クラスター内のノードに配置されます。この記事では、ゲスト実行可能ファイルをパッケージ化して Service Fabric クラスターにデプロイする方法について説明します。
+Node.js アプリケーション、Java アプリケーション、Azure Service Fabric のネイティブなアプリケーションなど、あらゆる種類のアプリケーションを実行できます。Service Fabric では、この種のアプリケーションをゲスト実行可能ファイルと呼びます。Service Fabric は、ゲスト実行可能ファイルをステートレス サービスと同様に扱います。その結果、ゲスト実行可能ファイルは、可用性とその他のメトリックに基づいて、クラスター内のノードに配置されます。この記事では、Visual Studio やコマンド ライン ユーティリティを使用して、ゲスト実行可能ファイルをパッケージ化し、Service Fabric クラスターにデプロイする方法について説明します。
 
 ## Service Fabric でゲスト実行可能ファイルを実行するメリット
 
@@ -31,25 +31,21 @@ Service Fabric クラスターでゲスト実行可能ファイルを実行す�
 
 この記事では、ゲスト実行可能ファイルをパッケージ化し、Service Fabric にデプロイするための基本的な手順について説明します。
 
-
 ## アプリケーション マニフェスト ファイルとサービス マニフェスト ファイルの概要
 
-ゲスト実行可能ファイルのデプロイの詳細に入る前に、Service Fabric のパッケージ化とデプロイメントのモデルについて理解しておく必要があります。Service Fabric パッケージ化デプロイ モデルは、主に 2 つのファイルに依存しています。アプリケーション マニフェストとサービス マニフェストです。ApplicationManifest.xml と ServiceManifest.xml ファイルのスキーマ定義は、Service Fabric SDK およびツールと共に *C:\\Program Files\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd* にインストールされます。
-
+ゲスト実行可能ファイルのデプロイの一環として、Service Fabric のパッケージ化とデプロイのモデルについて理解しておくと役立ちます。Service Fabric パッケージ化デプロイ モデルは、主に 2 つのファイルに依存しています。アプリケーション マニフェストとサービス マニフェストです。ApplicationManifest.xml と ServiceManifest.xml ファイルのスキーマ定義は、Service Fabric SDK およびツールと共に *C:\\Program Files\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd* にインストールされます。
 
 * **アプリケーション マニフェスト**
 
-  アプリケーション マニフェストは、アプリケーションの説明に使用されます。アプリケーション マニフェストには、含まれるサービスや、サービスのデプロイ方法 (インスタンス数など) の定義に使用されるその他のパラメーターが列挙されます。
+  アプリケーション マニフェストは、アプリケーションの説明に使用されます。アプリケーション マニフェストには、アプリケーションを構成するサービスと、サービスのデプロイ方法の定義に使用されるその他のパラメーター (インスタンス数など) が列挙されます。
 
-  Service Fabric では、アプリケーションは "アップグレード可能なユニット" です。 アプリケーションは 1 つのユニットとしてアップグレードすることができます。エラー (およびロールバック) が発生した場合でも、このプラットフォームで 1 つのユニットとして管理されます。プラットフォームはアップグレード プロセスの正常完了を保証します。プロセスが失敗しても、アプリケーションは不明または不安定な状態になりません。
-
+  Service Fabric では、アプリケーションは "アップグレード可能なユニット" です。 アプリケーションは 1 つのユニットとしてアップグレードすることができます。エラー (およびロールバック) が発生した場合でも、このプラットフォームで 1 つのユニットとして管理されます。プラットフォームは、アップグレード プロセスが正常完了した場合だけでなく、失敗した場合でも、アプリケーションが不明または不安定な状態にならないことを保証します。
 
 * **サービス マニフェスト**
 
   サービス マニフェストには、サービスのコンポーネントを記述します。マニフェストには、サービスの名前や種類 (Service Fabric がサービスの管理に使用する情報)、そのコード、構成、データ コンポーネントなどのデータが含まれます。また、サービスのデプロイ後の構成に使用できるその他のパラメーターも含まれます。
 
-  ここでは、サービス マニフェストで使用できるすべてのパラメーターについて詳しく説明しません。Service Fabric でゲスト実行可能ファイルを実行できるようにするために必要なパラメーターの一部について説明します。
-
+  ここでは、サービス マニフェストで使用できるすべてのパラメーターについて詳しく説明しません。Service Fabric でゲスト実行可能ファイルを実行するために必要なパラメーターの一部について説明します。
 
 ## アプリケーション パッケージ ファイルの構造
 Service Fabric にアプリケーションをデプロイするには、そのアプリケーションが次の定義済みディレクトリ構造に従っている必要があります。この構造の例を次に示します。
@@ -59,9 +55,9 @@ Service Fabric にアプリケーションをデプロイするには、その�
 	|-- code
 		|-- existingapp.exe
 	|-- config
-		|--Settings.xml
-    |--data    
-    |-- ServiceManifest.xml
+		|-- Settings.xml
+  |-- data    
+  |-- ServiceManifest.xml
 |-- ApplicationManifest.xml
 ```
 
@@ -75,7 +71,9 @@ root には、アプリケーションを定義する ApplicationManifest.xm フ
 
 ## 既存のアプリをパッケージ化するプロセス
 
-ゲスト実行可能ファイルをパッケージ化するプロセスは、次の手順に基づいています。
+ゲスト実行可能ファイルをパッケージ化する場合は、Visual Studio プロジェクト テンプレートを使用するか、アプリケーション パッケージを手動で作成するかを選択できます。Visual Studio を使用すると、アプリケーション パッケージの構造とマニフェスト ファイルは新しいプロジェクト ウィザードによって作成されます。Visual Studio を使用してゲスト実行可能ファイルをパッケージ化する詳細な手順については、以下を参照してください。
+
+ゲスト実行可能ファイルを手動でパッケージ化するプロセスは、次の手順に基づいています。
 
 1. パッケージ ディレクトリ構造を作成します。
 2. アプリケーションのコードと構成ファイルを追加します。
@@ -105,8 +103,7 @@ Service Fabric では、アプリケーション ルート ディレクトリの
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ServiceManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-Name="NodeApp" Version="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ServiceManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="NodeApp" Version="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceTypes>
       <StatelessServiceType ServiceTypeName="NodeApp" UseImplicitHost="true"/>
    </ServiceTypes>
@@ -164,7 +161,7 @@ CodePackage 要素には、サービスのコードの場所 (およびバージ
 ```
 SetupEntrypoint 要素を使用して、サービスのコードが起動される前に実行する必要がある実行可能ファイルまたはバッチ ファイルを指定します。これはオプションの要素なので、必要な初期化/セットアップが存在しない場合は追加する必要はありません。SetupEntryPoint は、サービスを再起動するたびに実行されます。
 
-SetupEntrypoint は 1 つだけのため、アプリケーションのセットアップ/構成に複数のスクリプトが必要な場合は、セットアップ/構成スクリプトを 1 つのバッチ ファイルにバンドルする必要があります。Entrypoint 要素と同様に、SetupEntrypoint は、あらゆる種類のファイル (実行可能ファイル、バッチ ファイル、PowerShell コマンドレット) を実行できます。上記の例では、SetupEntrypoint は、Code ディレクトリの `scripts` サブディレクトリにあるバッチ ファイル LaunchConfig.cmd に基づいています (WorkingDirectory 要素が Code に設定されている場合)。
+SetupEntrypoint は 1 つだけのため、アプリケーションのセットアップ/構成に複数のスクリプトが必要な場合は、セットアップ/構成スクリプトを 1 つのバッチ ファイルにバンドルする必要があります。SetupEntryPoint 要素と同様に、SetupEntrypoint はあらゆる種類のファイル (実行可能ファイル、バッチ ファイル、PowerShell コマンドレット) を実行できます。上の例では、SetupEntrypoint は code ディレクトリの `scripts` サブディレクトリにあるバッチ ファイル LaunchConfig.cmd に基づいています (WorkingFolder 要素が code に設定されている場合)。
 
 ### Entrypoint
 
@@ -185,7 +182,7 @@ SetupEntrypoint は 1 つだけのため、アプリケーションのセット�
 - `WorkingFolder` には、開始するプロセスの作業ディレクトリを指定します。次の 2 つの値を指定できます。
 	- `CodeBase` には、作業ディレクトリをアプリケーション パッケージ内の Code ディレクトリに設定することを指定します (次に示す構造の `Code` ディレクトリ)。
 	- `CodePackage` には、作業ディレクトリをアプリケーション パッケージのルートに設定することを指定します (`MyServicePkg`)。
-- `WorkingDirectory` は、アプリケーション スクリプトまたは初期化スクリプトのいずれかが相対パスを使用できるように、正しい作業ディレクトリを設定するのに便利です。
+- `WorkingFolder` は、アプリケーション スクリプトまたは初期化スクリプトのいずれかが相対パスを使用できるように、正しい作業ディレクトリを設定するのに便利です。
 
 ### エンドポイント
 
@@ -283,12 +280,30 @@ Service Fabric エクスプローラーで、サービスが実行されてい�
 
 ![ログの場所](./media/service-fabric-deploy-existing-app/loglocation.png)
 
+## Visual Studio を使用して既存のアプリケーションをパッケージ化する
+
+Visual Studio には、ゲスト実行可能ファイルを Service Fabric クラスターにデプロイするときに役立つ Service Fabric サービスのテンプレートが用意されています。発行を完了するには、次の手順を実行する必要があります。
+
+1. [ファイル]、[新しいプロジェクト] の順に選択して、新しい Service Fabric アプリケーションを作成します。
+2. サービス テンプレートとしてゲスト実行可能ファイルを選択します。
+3. [参照] をクリックして実行可能ファイルを含むフォルダーを選択し、残りのパラメーターを入力して新しいサービスを作成します。
+  - *コード パッケージの動作*は、フォルダー内の内容をすべて Visual Studio プロジェクトにコピーするように設定できます。これは、実行可能ファイルが変更されない場合に便利です。実行可能ファイルが変更されることが予想され、新しいビルドを動的に取得する機能が必要な場合は、フォルダーにリンクすることもできます。
+  - *Program* には、サービスを開始するために実行する必要がある実行可能ファイルを選択します。
+  - *Arguments* には、実行可能ファイルに渡す引数を指定します。引数を含むパラメーターの一覧を指定することもできます。
+  - *WorkingFolder* には、開始するプロセスの作業ディレクトリを選択します。次の 2 つの値を指定できます。
+  	- *CodeBase* は、作業ディレクトリがアプリケーション パッケージ内のコード ディレクトリ (次に示す構造の `Code` ディレクトリ) に設定されるように指定します。
+    - *CodePackage* は、作業ディレクトリがアプリケーション パッケージのルート (`MyServicePkg`) に設定されるように指定します。
+4. サービスに名前を付けて、[OK] をクリックします。
+5. サービスに通信用のエンドポイントが必要な場合は、ServiceManifest.xml ファイルに Protocol、Port、Type を追加できます (例: ```<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" Type="Input" />```)。
+6. Visual Studio でソリューションをデバッグすることにより、ローカル クラスターに対してパッケージ化と発行の操作を試すことができます。準備ができたら、アプリケーションをリモート クラスターに発行するか、ソリューションをソース管理にチェックインすることができます。
+
+>[AZURE.NOTE] Visual Studio でアプリケーション プロジェクトを作成する場合は、リンクされたフォルダーを使用できます。これにより、プロジェクト内からソースの場所にリンクされるため、ソースのリンク先でゲスト実行可能ファイルを更新できるようになり、これらの更新はビルド時にアプリケーション パッケージの一部になります。
 
 ## 次のステップ
 この記事では、ゲスト実行可能ファイルをパッケージ化し、Service Fabric にデプロイする方法について説明しました。次のステップとして、このトピックに関する他のコンテンツを確認できます。
 
-- [ゲスト実行可能ファイルをパッケージ化し、デプロイするためのサンプルが GitHub で入手できます。](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)これには、パッケージ化ツールのプレリリース版のリンクが含まれています。
+- [ゲスト実行可能ファイルをパッケージ化し、デプロイするためのサンプルを GitHub で入手できます。](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)これには、パッケージ化ツールのプレリリース版のリンクが含まれています。
 - [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
 - [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

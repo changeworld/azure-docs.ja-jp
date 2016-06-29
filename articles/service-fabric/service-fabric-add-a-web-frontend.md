@@ -1,6 +1,6 @@
 <properties
    pageTitle="アプリケーション用の Web フロントエンドの作成 | Microsoft Azure"
-   description="ASP.NET 5 Web API プロジェクト、および ServiceProxy を介したサービス間通信を使用して、Web に Service Fabric アプリケーションを公開します。"
+   description="ASP.NET Core Web API プロジェクト、および ServiceProxy を介したサービス間通信を使用して、Web に Service Fabric アプリケーションを公開します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
@@ -13,74 +13,73 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/05/2016"
+   ms.date="06/10/2016"
    ms.author="seanmck"/>
 
 
 # アプリケーション用の Web サービス フロントエンドの構築
 
->[AZURE.WARNING] ASP.NET Core RC2 における変更により、この記事で参照されているプロジェクト テンプレートが SDK から削除されたため、この記事は一時的に正確ではなくなっています。この記事は、ASP.NET Core RC2 のリリース時に更新されます。それまでの間、「[はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)」で説明するステートレス Web API テンプレートを使用できます。
-
 既定では、Azure Service Fabric サービスには、Web に対するパブリック インターフェイスがありません。HTTP クライアントにアプリケーションの機能を公開するには、エントリ ポイントとして機能する Web プロジェクトを作成し、そこから個々のサービスと通信する必要があります。
 
-このチュートリアルでは、ステートフル サービス プロジェクト テンプレートに基づく信頼性の高いサービスが既に含まれるアプリケーションに ASP.NET 5 Web API フロントエンドを追加する方法を説明します。「[Creating your first application in Visual Studio (Visual Studio での初めてのアプリケーションの作成)](service-fabric-create-your-first-application-in-visual-studio.md)」をまだ行っていない場合は、このチュートリアルを始める前に行うことをお勧めします。
+このチュートリアルでは、[Visual Studio での初めてのアプリケーションの作成](service-fabric-create-your-first-application-in-visual-studio.md)に関するチュートリアルで取り上げなかった部分について説明し、ステートフルなカウンター サービスの前に Web サービスを追加します。Visual Studio での初めてのアプリケーションの作成に関するチュートリアルをまだ終了していない場合は、先にそちらのチュートリアルを進めてください。
 
+## アプリケーションへの ASP.NET Core サービスの追加
 
-## アプリケーションへの ASP.NET 5 サービスの追加
+ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。ASP.NET Web API プロジェクトを既存のアプリケーションに追加してみましょう。
 
-ASP.NET 5 は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。ASP.NET Web API プロジェクトを既存のアプリケーションに追加してみましょう。
+>[AZURE.NOTE] このチュートリアルを実行するには、[.NET Core RC2 をインストール][dotnetcore-install]する必要があります。
 
-1. ソリューション エクスプローラーで、アプリケーション プロジェクトの **[サービス]** を右クリックして、**[Fabric サービスの追加]** を選択します。
+1. ソリューション エクスプローラーで、アプリケーション プロジェクトの **[サービス]** を右クリックし、**[追加]、[Service Fabric サービスの新規作成]** の順に選択します。
 
 	![既存アプリケーションへの新しいサービスの追加][vs-add-new-service]
 
-2. **[サービスの作成]** ページで、**[ASP.NET 5]** を選択し、名前を付けます。
+2. **サービスの作成**ページで、**[ASP.NET Core]** を選択し、名前を付けます。
 
 	![Choosing ASP.NET web service in the new service dialog][vs-new-service-dialog]
 
-3. 次のページには、一連の ASP.NET 5 プロジェクト テンプレートが表示されます。これらは、Service Fabric アプリケーションの外部で ASP.NET 5 プロジェクトを作成した場合に表示されるテンプレートと同じです。このチュートリアルでは、**[Web API]** を選択します。ただし、完全な Web アプリケーションの作成にも同じ概念を適用できます。
+3. 次のページには、一連の ASP.NET Core プロジェクト テンプレートが表示されます。これらは、Service Fabric アプリケーションの外部で ASP.NET Core プロジェクトを作成した場合に表示されるテンプレートと同じです。このチュートリアルでは、**[Web API]** を選択します。ただし、完全な Web アプリケーションの作成にも同じ概念を適用できます。
 
 	![ASP.NET プロジェクトの種類の選択][vs-new-aspnet-project-dialog]
 
     作成した Web API プロジェクトでは、2 つのサービスがアプリケーションに含まれます。アプリケーションの作成を続けながら、まったく同じ方法でさらにサービスを追加することができます。それぞれを個別にバージョン管理およびアップグレードできます。
 
->[AZURE.NOTE] Service Fabric の 11 月のパブリック プレビュー リリースでは、ASP.NET プロジェクトを処理する際にパスが長いと既知の問題が生じることがわかりました。このようなプロジェクトを作成する際は、問題を回避するために、コードと構成パッケージ名だけでなく、アプリケーションとサービスの種類にも短い名前を選ぶことをお勧めします。
+>[AZURE.TIP] ASP.NET Core サービスの構築の詳細については、[ASP.NET Core のドキュメント](https://docs.asp.net)を参照してください。
 
 ## アプリケーションの実行
 
-手順を把握できるように、新しいアプリケーションをデプロイし、ASP.NET 5 Web API テンプレートによって提供される既定の動作を見てみます。
+手順を把握できるように、新しいアプリケーションをデプロイし、ASP.NET Core Web API テンプレートによって提供される既定の動作を見てみます。
 
 1. Visual Studio で F5 キーを押してアプリをデバッグします。
 
-2. デプロイが完了すると、Visual Studio はブラウザーを起動して ASP.NET Web API サービスのルート (例: http://localhost:33003) を開きます。ポート番号はランダムに割り当てられるため、お使いのコンピューターでは異なる場合があります。ASP.NET 5 Web API テンプレートではルートの既定の動作が指定されないため、ブラウザーでエラーが発生します。
+2. デプロイが完了すると、Visual Studio はブラウザーを起動して ASP.NET Web API サービスのルート (例: http://localhost:33003) を開きます。ポート番号はランダムに割り当てられるため、お使いのコンピューターでは異なる場合があります。ASP.NET Core Web API テンプレートではルートの既定の動作が指定されないため、ブラウザーでエラーが発生します。
 
-3. ブラウザーの場所に `/api/values` を追加します。こうすることで、Web API テンプレート内の ValuesController に対して `Get` メソッドが呼び出されます。テンプレートで指定される既定の応答として、2 つの文字列を格納する JSON 配列が返されます。
+3. ブラウザーの場所に `/api/values` を追加します。これにより、Web API テンプレート内の ValuesController に対して `Get` メソッドが呼び出されます。テンプレートで指定される既定の応答として、2 つの文字列を格納する JSON 配列が返されます。
 
-    ![ASP.NET 5 Web API テンプレートから返される既定値][browser-aspnet-template-values]
+    ![Default values returned from ASP.NET Core Web API template][browser-aspnet-template-values]
 
     チュートリアルの最後では、これらの既定値をステートフル サービスからの最新のカウンター値で置き換えます。
 
 
 ## サービスへの接続
 
-Service Fabric は、Reliable Services との通信方法において完全な柔軟性を提供します。1 つのアプリケーション内には、TCP 経由でアクセスできるサービスもあれば、HTTP REST API 経由でアクセスできるサービスもあります。また、Web ソケットを使用してアクセスできるサービスもまだあります。使用可能なオプションとトレードオフについては、「[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)」をご覧ください。このチュートリアルでは、より簡単な方法の 1 つに従い、SDK で提供される `ServiceProxy`/`ServiceRemotingListener` クラスを使用します。
+Service Fabric は、Reliable Services との通信方法において完全な柔軟性を提供します。1 つのアプリケーション内には、TCP 経由でアクセスできるサービスもあれば、HTTP REST API 経由でアクセスできるサービスもあります。また、Web ソケットを使用してアクセスできるサービスもまだあります。使用可能なオプションとトレードオフについては、[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)に関する記事を参照してください。このチュートリアルでは、より簡単な方法の 1 つに従い、SDK で提供される `ServiceProxy`/`ServiceRemotingListener` クラスを使用します。
 
 (リモート プロシージャ コール (RPC) でモデル化された) `ServiceProxy` アプローチで、サービスのパブリック コントラクトとして機能するインターフェイスを定義します。次に、そのインターフェイスを使用して、サービスと対話するためのプロキシ クラスを生成します。
 
 
 ### インターフェイスの作成
 
-最初に、ステートフル サービスとそのクライアントの間のコントラクトとして機能する、ASP.NET 5 プロジェクトを含むインターフェイスを作成します。
+最初に、ステートフル サービスとそのクライアント (ASP.NET Core プロジェクトなど) の間のコントラクトとして機能するインターフェイスを作成します。
 
 1. ソリューション エクスプローラーでソリューションを右クリックし、**[追加]**、**[新しいプロジェクト]** の順に選択します。
 
-2. 左側のナビゲーション ウィンドウで **[Visual C#]** エントリを選択し、**[クラス ライブラリ]** テンプレートを選択します。.NET Framework のバージョンが **4.5.1** に設定されていることを確認します。
+2. 左側のナビゲーション ウィンドウで **[Visual C#]** エントリを選択し、**[クラス ライブラリ]** テンプレートを選択します。.NET Framework のバージョンが **4.5.2** に設定されていることを確認します。
 
     ![ステートフル サービス用のインターフェイス プロジェクトの作成][vs-add-class-library-project]
 
 3. インターフェイスを `ServiceProxy` で使用可能にするには、そのインターフェイスが IService インターフェイスから派生している必要があります。このインターフェイスは、Service Fabric NuGet パッケージの 1 つに含まれます。パッケージを追加するには、新しいクラス ライブラリ プロジェクトを右クリックして、**[NuGet パッケージの管理]** を選択します。
 
-4. **[プレリリースを含める]** チェック ボックスがオンになっていることを確認した後、**Microsoft.ServiceFabric.Services** パッケージを検索してインストールします。
+4. **Microsoft.ServiceFabric.Services** パッケージを探してインストールします。
 
     ![Services NuGet パッケージの追加][vs-services-nuget-package]
 
@@ -130,14 +129,14 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 
         using (var tx = this.StateManager.CreateTransaction())
         {          
-            var result = await myDictionary.TryGetValueAsync(tx, "Counter-1");
+            var result = await myDictionary.TryGetValueAsync(tx, "Counter");
             return result.HasValue ? result.Value : 0;
         }
     }
     ```
 
 
-### ServiceRemotingListener を使用したステートフル サービスの公開
+### サービス リモート処理リスナーを使用したステートフル サービスの公開
 
 `ICounter` インターフェイスを実装した後、ステートフル サービスを他のサービスから呼び出すことができるようにする最後の手順は、通信チャネルを開くことです。ステートフル サービスのために、Service Fabric には、`CreateServiceReplicaListeners` というオーバーライド可能なメソッドが用意されています。このメソッドを使用すると、サービスに対して有効にする通信の種類に基づき、1 つ以上の通信リスナーを指定できます。
 
@@ -155,8 +154,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     return new List<ServiceReplicaListener>()
     {
         new ServiceReplicaListener(
-            (initParams) =>
-                new ServiceRemotingListener<ICounter>(initParams, this))
+            (context) =>
+                this.CreateServiceRemotingListener(context))
     };
 }
 ```
@@ -181,7 +180,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     public async Task<IEnumerable<string>> Get()
     {
         ICounter counter =
-            ServiceProxy.Create<ICounter>(0, new Uri("fabric:/MyApp/MyStatefulService"));
+            ServiceProxy.Create<ICounter>(0, new Uri("fabric:/MyApplication/MyStatefulService"));
 
         long count = await counter.GetCountAsync();
 
@@ -195,7 +194,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
     サービス名は、fabric:/&lt;アプリケーション名&gt;/&lt;サービス名&gt; の形式の URI です。
 
-    これら 2 つの情報により、Service Fabric は要求送信先のコンピューターを一意に識別できます。また、`ServiceProxy` クラスは、ステートフル サービス パーティションをホストするコンピューターで障害が発生し、別のコンピューターを昇格させて引き継ぐ必要がある状況を、シームレスに処理します。この抽象化により、他のサービスを処理するクライアント コードの作成が大幅に簡略化されます。
+    これら 2 つの情報により、Service Fabric は要求送信先のコンピューターを一意に識別できます。また、`ServiceProxy` クラスは、ステートフル サービス パーティションをホストするコンピューターで障害が発生したため、別のコンピューターを昇格させてその代わりにする必要がある状況をシームレスに処理します。この抽象化により、他のサービスを処理するクライアント コードの作成が大幅に簡略化されます。
 
     プロキシを作成した後は、`GetCountAsync` メソッドを呼び出して結果を返すだけです。
 
@@ -239,4 +238,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!-- external links -->
+[dotnetcore-install]: https://www.microsoft.com/net/core#windows
+
+<!---HONumber=AcomDC_0615_2016-->

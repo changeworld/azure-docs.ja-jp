@@ -52,7 +52,7 @@
 
 ゲートウェイを構成する前に、仮想ネットワークを作成する必要があります。クロスプレミス接続用の仮想ネットワークを作成する手順については、「[サイト間 VPN 接続を使用したVirtual Network の構成](vpn-gateway-site-to-site-create.md)」または「[Azure Virtual Network へのポイント対サイト VPN 接続の構成](vpn-gateway-point-to-site-create.md)」を参照してください。次に、下記の手順で VPN ゲートウェイを構成し、VPN デバイスの構成に必要な情報を収集します。
 
-既に構成されている VPN ゲートウェイの種類を変更する場合は、「[VPN ゲートウェイの種類を変更する方法](#how-to-change-your-vpn-gateway-type)」を参照してください。
+既に構成されている VPN ゲートウェイのルーティングの種類を変更する場合は、「[ゲートウェイの VPN ルーティングの種類を変更する方法](#how-to-change-the-vpn-routing-type-for-your-gateway)」をご覧ください。
 
 ## VPN ゲートウェイの作成
 
@@ -168,4 +168,4 @@ VPN デバイスの構成完了後は、更新された接続情報を VNet の�
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

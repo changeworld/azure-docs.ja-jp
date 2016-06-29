@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="04/26/2016" 
+	ms.date="06/14/2016" 
 	ms.author="rnagpal"/>
 
 # DocumentDB SDK
@@ -35,6 +35,9 @@
 </table></br>
 
 ## リリース ノート
+
+### <a name="1.8.0"/>[1\.8.0](https://pypi.python.org/pypi/pydocumentdb/1.8.0)
+  - 複数リージョンのデータベース アカウントのサポートを追加しました。
 
 ### <a name="1.7.0"/>[1\.7.0](https://pypi.python.org/pypi/pydocumentdb/1.7.0)
 - ドキュメントの有効期限 (TTL) 機能のサポートを追加しました。
@@ -80,6 +83,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
+| [1\.8.0](#1.8.0) | 2016 年 6 月 14 日 |--- 
 | [1\.7.0](#1.7.0) | 2016 年 4 月 26 日 |--- 
 | [1\.6.1](#1.6.1) | 2016 年 4 月 08 日 |--- 
 | [1\.6.0](#1.6.0) | 2016 年 3 月 29 日 |--- 
@@ -103,4 +107,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

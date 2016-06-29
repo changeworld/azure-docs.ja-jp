@@ -110,7 +110,7 @@ Data Lake Analytics アカウントと AdlCopy を使用するには、ソース
 
 ## AdlCopy の使用に関する注意点
 
-* AdlCopy では、1000 以上のファイルとフォルダーをまとめたソースからのデータのコピーをサポートしていません。別の方法として、異なるサブフォルダーにファイルやフォルダーを分散し、代わりにソースとしてこれらのサブフォルダーへのパスを使用します。
+* AdlCopy (バージョン 1.0.4) では、合計で数千個を超えるファイルとフォルダーがあるソースからのデータのコピーをサポートしています。ただし、大規模なデータセットをコピーする際に問題が発生する場合は、ファイルやフォルダーを異なるサブフォルダーに分散し、代わりにこれらのサブフォルダーへのパスをソースとして使用します。
 
 ## 次のステップ
 
@@ -118,4 +118,4 @@ Data Lake Analytics アカウントと AdlCopy を使用するには、ソース
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0615_2016-->

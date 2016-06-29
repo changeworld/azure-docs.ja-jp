@@ -20,13 +20,17 @@
 
 # Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
+> [AZURE.SELECTOR]
+- [C# スクリプト](../articles/azure-functions/functions-reference-csharp.md)
+- [Node.JS](../articles/azure-functions/functions-reference-node.md)
+ 
 Azure Functions の C# エクスペリエンスは、Azure WebJobs SDK に基づいています。データは、メソッドの引数を使用して C# 関数に渡されます。引数名は `function.json` で指定され、関数のロガーやキャンセル トークンなどにアクセスするための定義済みの名前があります。
 
 この記事では、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
 
 ## .csx のしくみ
 
-`.csx` の形式では、 "定型" の記述が少なく、C# 関数のみの記述に重点が置かれています。Azure Functions の場合、通常通りに上部に表示する任意のアセンブリ参照と名前空間を含め、すべてを名前空間とクラスにラッピングする代わりに、`Run` メソッドの定義だけを行います。POCO オブジェクトを定義する場合など、クラスを含める必要がある場合は、同じファイル内にクラスを含めることができます。
+`.csx` の形式では、"定型" の記述が少なく、C# 関数のみの記述に重点が置かれています。Azure Functions の場合、通常どおりに上部に表示する任意のアセンブリ参照と名前空間を含め、すべてを名前空間とクラスにラッピングする代わりに、`Run` メソッドの定義だけを行います。POCO オブジェクトを定義する場合など、クラスを含める必要がある場合は、同じファイル内にクラスを含めることができます。
 
 ## 引数へのバインド
 
@@ -52,7 +56,7 @@ public class MyClass
 ```csharp
 public static void Run(string myBlob, TraceWriter log)
 {
-    log.Verbose($"C# Blob trigger function processed: {myBlob}");
+    log.Info($"C# Blob trigger function processed: {myBlob}");
 }
 ```
 
@@ -123,7 +127,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 
 次のアセンブリは、Azure Functions をホストしている環境によって自動的に追加されます。
 
-* `mscorlib`,
+* `mscorlib`
 * `System`
 * `System.Core`
 * `System.Xml`
@@ -254,4 +258,4 @@ public static void MyLogger(TraceWriter log, string logtext)
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

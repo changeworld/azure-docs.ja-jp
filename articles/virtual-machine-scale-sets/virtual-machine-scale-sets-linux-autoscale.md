@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="06/10/2016"
 	ms.author="davidmu"/>
 
 # 仮想マシン スケール セットでの Linux マシンの自動スケール
@@ -37,23 +37,21 @@
 
 リソース マネージャーのリソースの詳細については、「[Azure リソース マネージャーにおける Compute、Network、Storage プロバイダー](../virtual-machines/virtual-machines-linux-compare-deployment-models.md)」を参照してください。
 
-このチュートリアルで作成するテンプレートは、テンプレート ギャラリーにあるテンプレートと似ています。詳細については、[Linux VM と Jumpbox を使った単純な VM スケール セットのデプロイ](https://azure.microsoft.com/documentation/templates/201-vmss-linux-jumpbox/)に関するページを参照してください。
-
 このチュートリアルの手順を開始する前に、[Azure CLI をインストール](../xplat-cli-install.md)してください。
 
 ## 手順 1: リソース グループとストレージ アカウントの作成
 
-1. **Microsoft Azure にサインインする** - コマンド ライン インターフェイス (Bash、端末、コマンド プロンプト) で、「`azure config mode arm`」と入力して Resource Manager モードになっていることを確認します。次に、「`azure login`」と入力して[会社または学校用の ID を使用してログイン](../xplat-cli-connect.md#use-the-log-in-method)し、使用する Azure アカウントの対話型ログイン エクスペリエンス用のプロンプトに従います。
+1. **Microsoft Azure にサインインします**。コマンド ライン インターフェイス (Bash、ターミナル、コマンド プロンプト) で、「`azure config mode arm`」と入力して Resource Manager モードになっていることを確認します。次に、「`azure login`」と入力し、使用する Azure アカウントの対話型ログイン エクスペリエンス用のプロンプトに従って、[会社または学校用の ID を使用してログイン](../xplat-cli-connect.md#use-the-log-in-method)します。
 
 	> [AZURE.NOTE] 職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、職場または学校の ID と共に `azure login -u` を使うと、対話型セッションを使わずにログインできます。職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成](../virtual-machines/resource-group-create-work-id-from-personal.md)できます。
 
 2. **リソース グループを作成します**。リソースはすべてリソース グループにデプロイする必要があります。このチュートリアルでは、リソース グループに **vmsstest1** という名前を付けます。
 
-        azure group create vmsstestrg1 westus
+        azure group create vmsstestrg1 centralus
 
 3. **ストレージ アカウントを新しいリソース グループにデプロイします**。仮想マシン スケール セットを単純化するために、このチュートリアルでは、いくつかのストレージ アカウントを使用しています。**vmsstestsa** という名前のストレージ アカウントを作成します。この後の手順に備えて、コマンド インターフェイス ウィンドウは開いたままにしておいてください。
 
-        azure storage account create --type LRS -g vmsstestrg1 -l westus vmsstestsa
+        azure storage account create -g vmsstestrg1 -l centralus --kind Storage --sku-name LRS vmsstestsa
 
 ## 手順 2: テンプレートの作成
 Azure リソース マネージャー テンプレートを使用すると、Azure リソースとそれに関連するデプロイ パラメーターを JSON 形式で記述することによって、それらのリソースをまとめてデプロイし、管理することができます。
@@ -92,7 +90,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
           "type": "string"
         }
             
-	- スケール セット内のマシンにアクセスするために使用する個別仮想マシンの名前。
+	- スケール セット内のマシンにアクセスするために使用する個別の仮想マシンの名前。
 	- テンプレートの保存先となるストレージ アカウントの名前。
 	- スケール セットに最初に作成する仮想マシンのインスタンス数。
 	- 仮想マシンの管理者アカウントの名前とパスワード。
@@ -100,9 +98,8 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 
 3. 絶えず値が変化する場合や、複数のパラメーター値を組み合わせて値を作成する必要がある場合は、テンプレートの中で変数を使用して指定できます。これらの変数は、テンプレートに追加した variables を親要素として、その下に追加します。
 
-        "apiVersion": "2016-03-30"
-        "dnsName1": "[concat(parameters('resourcePrefix'),'dn1')] ",
-        "dnsName2": "[concat(parameters('resourcePrefix'),'dn2')] ",
+        "dnsName1": "[concat(parameters('resourcePrefix'),'dn1')]",
+        "dnsName2": "[concat(parameters('resourcePrefix'),'dn2')]",
         "vmSize": "Standard_A0",
         "imagePublisher": "Canonical",
         "imageOffer": "UbuntuServer",
@@ -124,10 +121,10 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
         "frontEndIPConfigID": "[concat(variables('lbID'),'/frontendIPConfigurations/loadBalancerFrontEnd')]",
         "storageAccountType": "Standard_LRS",
         "storageAccountSuffix": [ "a", "g", "m", "s", "y" ],
-        "diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'saa')]",
+        "diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'a')]",
         "accountid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/', resourceGroup().name,'/providers/','Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
         "wadlogs": "<WadCfg><DiagnosticMonitorConfiguration>",
-        "wadperfcounter": "<PerformanceCounters scheduledTransferPeriod="PT1M"><PerformanceCounterConfiguration counterSpecifier="\\Processor\\PercentProcessorTime" sampleRate="PT15S" unit="Percent"><annotation displayName="CPU percentage guest OS" locale="ja-JP"/></PerformanceCounterConfiguration>",
+        "wadperfcounter": "<PerformanceCounters scheduledTransferPeriod="PT1M"><PerformanceCounterConfiguration counterSpecifier="\\Processor\\PercentProcessorTime" sampleRate="PT15S" unit="Percent"><annotation displayName="CPU percentage guest OS" locale="ja-JP"/></PerformanceCounterConfiguration></PerformanceCounters>",
         "wadcfgxstart": "[concat(variables('wadlogs'),variables('wadperfcounter'),'<Metrics resourceId="')]",
         "wadmetricsresourceid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name ,'/providers/','Microsoft.Compute/virtualMachineScaleSets/',parameters('vmssName'))]",
         "wadcfgxend": "[concat('"><MetricAggregation scheduledTransferPeriod="PT1H"/><MetricAggregation scheduledTransferPeriod="PT1M"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
@@ -144,7 +141,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 
         {
           "type": "Microsoft.Storage/storageAccounts",
-          "name": "[concat(parameters('resourcePrefix'), parameters('storageAccountSuffix')[copyIndex()])]",
+          "name": "[concat(parameters('resourcePrefix'), variables('storageAccountSuffix')[copyIndex()])]",
           "apiVersion": "2015-06-15",
           "copy": {
             "name": "storageLoop",
@@ -159,7 +156,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 5. 仮想ネットワーク リソースを追加します。詳細については、「[ネットワーク リソース プロバイダー](../virtual-network/resource-groups-networking.md)」を参照してください。
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2015-06-15",
           "type": "Microsoft.Network/virtualNetworks",
           "name": "[variables('virtualNetworkName')]",
           "location": "[resourceGroup().location]",
@@ -183,7 +180,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 6. ロード バランサーとネットワーク インターフェイスによって使用されるパブリック IP アドレス リソースを追加します。
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Network/publicIPAddresses",
           "name": "[variables('publicIP1')]",
           "location": "[resourceGroup().location]",
@@ -195,7 +192,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
           }
         },
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Network/publicIPAddresses",
           "name": "[variables('publicIP2')]",
           "location": "[resourceGroup().location]",
@@ -210,7 +207,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 7. スケール セットで使用するロード バランサー リソースを追加します。詳細については、「[Azure リソース マネージャーによるロード バランサーのサポート](../load-balancer/load-balancer-arm.md)」を参照してください。
         
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2015-06-15",
           "name": "[variables('loadBalancerName')]",
           "type": "Microsoft.Network/loadBalancers",
           "location": "[resourceGroup().location]",
@@ -250,10 +247,10 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
           }
         },
 
-8. 個別仮想マシンで使用するネットワーク インターフェイス リソースを追加します。仮想マシン スケール セット内のマシンは、パブリック IP アドレスで直接アクセスすることはできません。そのため、スケール セットと同じ仮想ネットワークに個別仮想マシンを作成し、Jumpbox 仮想マシンを使用して、その スケール セット内のマシンにリモートからアクセスすることになります。
+8. 個別の仮想マシンで使用するネットワーク インターフェイス リソースを追加します。仮想マシン スケール セット内のマシンは、パブリック IP アドレスで直接アクセスすることはできません。そのため、スケール セットと同じ仮想ネットワークに個別の仮想マシンを作成し、仮想マシンを使用して、そのスケール セット内のマシンにリモートからアクセスすることになります。
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Network/networkInterfaces",
           "name": "[variables('nicName1')]",
           "location": "[resourceGroup().location]",
@@ -279,10 +276,10 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
           }
         },
 
-9. 同じネットワーク内の個別仮想マシンをスケール セットとして追加します。
+9. 同じネットワーク内の個別の仮想マシンをスケール セットとして追加します。
 
         {
-          "apiVersion": "[variables('apiVersion')]",
+          "apiVersion": "2016-03-30",
           "type": "Microsoft.Compute/virtualMachines",
           "name": "[parameters('vmName')]",
           "location": "[resourceGroup().location]",
@@ -309,7 +306,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
               "osDisk": {
                 "name": "osdisk1",
                 "vhd": {
-                  "uri":  "[concat('https://',parameters('resourcePrefix'),'saa.blob.core.windows.net/vhds/',parameters('resourcePrefix'),'osdisk1.vhd')]"
+                  "uri":  "[concat('https://',parameters('resourcePrefix'),'sa.blob.core.windows.net/vhds/',parameters('resourcePrefix'),'osdisk1.vhd')]"
                 },
                 "caching": "ReadWrite",
                 "createOption": "FromImage"
@@ -329,7 +326,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 
             {
               "type": "Microsoft.Compute/virtualMachineScaleSets",
-              "apiVersion": "[variables('apiVersion')]",
+              "apiVersion": "2016-03-30",
               "name": "[parameters('vmSSName')]",
               "location": "[resourceGroup().location]",
               "dependsOn": [
@@ -350,11 +347,11 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
                   "storageProfile": {
                     "osDisk": {
                       "vhdContainers": [
-                        "[concat('https://', parameters('resourcePrefix'), 'saa.blob.core.windows.net/vmss')]",
-                        "[concat('https://', parameters('resourcePrefix'), 'sag.blob.core.windows.net/vmss')]",
-                        "[concat('https://', parameters('resourcePrefix'), 'sam.blob.core.windows.net/vmss')]",
-                        "[concat('https://', parameters('resourcePrefix'), 'sas.blob.core.windows.net/vmss')]",
-                        "[concat('https://', parameters('resourcePrefix'), 'say.blob.core.windows.net/vmss')]"
+                        "[concat('https://', parameters('resourcePrefix'), 'a.blob.core.windows.net/vmss')]",
+                        "[concat('https://', parameters('resourcePrefix'), 'g.blob.core.windows.net/vmss')]",
+                        "[concat('https://', parameters('resourcePrefix'), 'm.blob.core.windows.net/vmss')]",
+                        "[concat('https://', parameters('resourcePrefix'), 's.blob.core.windows.net/vmss')]",
+                        "[concat('https://', parameters('resourcePrefix'), 'y.blob.core.windows.net/vmss')]"
                       ],
                       "name": "vmssosdisk",
                       "caching": "ReadOnly",
@@ -417,7 +414,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
                           },
                           "protectedSettings": {
                             "storageAccountName":"[variables('diagnosticsStorageAccountName')]",
-                            "storageAccountKey":"[listkeys(variables('accountid'), variables('apiVersion')).key1]",
+                            "storageAccountKey":"[listkeys(variables('accountid'), '2015-06-15').key1]",
                             "storageAccountEndPoint":"https://core.windows.net"
                           }
                         }
@@ -502,7 +499,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
 		export AZURE_STORAGE_ACCOUNT={account_name}
 		export AZURE_STORAGE_ACCESS_KEY={key}
 
-	キーは、Azure ポータルでストレージ アカウント リソースを表示しているときにキー アイコンをクリックすることで取得できます。Windows コマンド プロンプトを使用する場合は、「export」の代わりに「**set**」 と入力します。
+	キーは、Azure ポータルでストレージ アカウント リソースを表示しているときにキー アイコンをクリックすることで取得できます。Windows コマンド プロンプトを使用する場合は、「export」の代わりに「**set**」と入力します。
 
 2. テンプレートを格納するコンテナーを作成します。
 
@@ -546,7 +543,7 @@ Enter キーを押すと、先ほど割り当てた変数の値を入力する�
 
  - 通常の仮想マシンに接続するときと同じように Jumpbox 仮想マシンに接続し、スケール セット内の仮想マシンにリモートからアクセスして個々のプロセスを監視することができます。
 
->[AZURE.NOTE]スケール セットに関する情報を得ることができる REST API の一覧については、[仮想マシン スケール セット](https://msdn.microsoft.com/library/mt589023.aspx)に関するページを参照してください。
+>[AZURE.NOTE]スケール セットに関する情報を得ることができる REST API の一覧については、「[仮想マシン スケール セット](https://msdn.microsoft.com/library/mt589023.aspx)」をご覧ください。
 
 ## 手順 6: リソースの削除
 
@@ -556,6 +553,8 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 ## 次のステップ
 
-[Ubuntu/Apache/PHP アプリを実行する VM スケールセットの自動スケール](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) テンプレートをチェックアウトします (これは仮想マシン スケール セットの自動スケール機能を使用するように LAMP スタックをセットアップするテンプレートです)。
+- Azure Insights の監視機能の例を「[Azure Insights クロスプラットフォーム CLI のクイック スタート サンプル](../azure-portal/insights-cli-samples.md)」で確認します。
+- 通知機能について「[Azure Insights で自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../azure-portal/insights-autoscale-to-webhook-email.md)」と「[Azure Insights で監査ログを使用して電子メールと Webhook アラート通知を送信する](../azure-portal/insights-auditlog-to-webhook-email.md)」を参照します。
+- 仮想マシン スケール セットの自動スケール機能を使うための LAMP スタックをセットアップする [Ubuntu/Apache/PHP アプリを実行する VM スケール セットの自動スケール](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) テンプレートを確認します。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

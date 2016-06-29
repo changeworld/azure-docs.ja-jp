@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="04/26/2016" 
+	ms.date="06/14/2016" 
 	ms.author="andrl"/>
 
 # DocumentDB SDK
@@ -37,11 +37,16 @@
 
 ##リリース ノート
 
+###<a name="1.8.0"/>1.8.0</a>
+
+  - 複数リージョンのデータベース アカウントのサポートを追加しました。
+
 ###<a name="1.7.0"/>1.7.0</a>
 
 - ドキュメントの有効期限 (TTL) 機能のサポートを追加しました。
 
 ###<a name="1.6.0"/>1.6.0</a>
+
 - [パーティション分割コレクション](documentdb-partition-data.md)と[ユーザー定義のパフォーマンス レベル](documentdb-performance-levels.md)を実装しました。 
 
 ###<a name="1.5.6"/>1.5.6</a>
@@ -62,7 +67,7 @@
 
 ###<a name="1.5.2"/>1.5.2</a>
 
-- 問題 [#95](https://github.com/Azure/azure-documentdb-node/issues/95) を修正します - EventEmitter リスナー リーク警告の問題を修正します
+- 問題 [#95](https://github.com/Azure/azure-documentdb-node/issues/95) を修正します - EventEmitter リスナー リーク警告の問題を修正します。
 
 ###<a name="1.5.1"/>1.5.1</a>
 
@@ -132,6 +137,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
+| [1\.8.0](#1.8.0) | 2016 年 6 月 14 日 |--- 
 | [1\.7.0](#1.7.0) | 2016 年 4 月 26 日 |--- 
 | [1\.6.0](#1.6.0) | 2016 年 3 月 29 日 |--- 
 | [1\.5.6](#1.5.6) | 2016 年 3 月 08 日 |--- 
@@ -165,4 +171,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

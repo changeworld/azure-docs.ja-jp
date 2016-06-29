@@ -49,7 +49,7 @@ Azure RemoteApp のコレクションを最大限に活用するために必要�
 - オンプレミスのネットワークと Azure VNET へのフル アクセスを提供します。
 - アプリとデータのドメイン参加アクセスが含まれています。リモート アプリケーションは、オンプレミスの Active Directory に対する認証ができます。これで、ドメイン内のリソースにアクセスできます。
 - System Center ソリューションおよび Windows グループ ポリシーにより、(Windows Server 2012 R2 上に構築されたカスタムのイメージを使用して) 高度な監視および管理を有効にします。
-- Azure VNET をローカルの VNET に接続するための [Express Route](https://azure.microsoft.com/services/expressroute/) をサポートしています。
+- Azure VNET をローカルの VNET に接続するための [ExpressRoute](https://azure.microsoft.com/services/expressroute/) をサポートしています。
 
 **[VNET で作成]** オプションで作成し、ドメインへの参加を選択してください。
 
@@ -57,7 +57,7 @@ Azure RemoteApp のコレクションを最大限に活用するために必要�
 Azure RemoteApp は、Microsoft アカウントと Azure Active Directory アカウントの両方をサポートしていますが、すべてのコレクションがすべてのメソッドをサポートしているわけではありません。
 
 | アカウントの種類 | | クラウド | クラウド + VNET | ハイブリッド |
-|-----------------------------------|-------------------------------------------------------------|-------|--------------|-------|
+|-----------------------------------|-------------------------------------------------------------|-------|--------------|--------|
 | Microsoft アカウント | | あり | はい | いいえ |
 | Azure Active Directory (Azure AD) | | | | |
 | | Azure AD のみ | あり | はい | いいえ |
@@ -91,4 +91,4 @@ Azure AD および Active Directory の構成に必要な手順については�
 
 「[クラウドのコレクションを作成する](remoteapp-create-cloud-deployment.md)」または「[ハイブリッドのコレクションを作成する](remoteapp-create-hybrid-deployment.md)」で作成してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

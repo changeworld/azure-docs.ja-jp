@@ -12,14 +12,14 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="03/16/2016"
+    ms.date="06/13/2016"
     ms.author="sethm" />
 
 # Service Bus の料金と課金
 
 Service Bus は、Basic、Standard、[Premium](service-bus-premium-messaging.md) の各階層で提供されます。作成する Service Bus サービスの名前空間ごとにサービス階層を選択でき、その名前空間内で作成されるすべてのキュー、トピック/サブスクリプション、リレー、Event Hubs にこの階層選択が適用されます。
 
->[AZURE.NOTE] Service Bus の現在の料金については、「[Azure Service Bus の料金のページ](https://azure.microsoft.com/pricing/details/service-bus/)」および「[Service Bus の料金に関する FAQ](service-bus-pricing-faq.md)」をご覧ください。
+>[AZURE.NOTE] Service Bus の現在の価格については、「[Azure Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」および「[Service Bus に関する FAQ](service-bus-faq.md#service-bus-pricing)」を参照してください。
 
 Service Bus では、キューとトピック/サブスクリプションに次の 2 つのメーターが使用されます。
 
@@ -106,7 +106,7 @@ Basic 階層には Service Bus 名前空間あたり 100 個の仲介型接続�
 |---|
 |Premium 階層では、仲介型接続は料金がかかりません。|
 
-仲介型接続の詳細については、後の「[FAQ](#FAQ)」セクションをご覧ください。
+仲介型接続の詳細については、後の「[FAQ](#faq)」セクションをご覧ください。
 
 ## リレー
 
@@ -121,7 +121,7 @@ Basic 階層には Service Bus 名前空間あたり 100 個の仲介型接続�
 
 ### リレー時間のメーターはどのようにして計算されますか
 
-[こちらのトピック](service-bus-pricing-faq.md#How-is-the-Relay-Hours-meter-calculated?)をご覧ください。
+[こちらのトピック](service-bus-faq.md#how-is-the-relay-hours-meter-calculated)をご覧ください。
 
 ### 仲介型接続とはどのようなもので、どのように課金されますか
 
@@ -147,8 +147,8 @@ Basic 階層には Service Bus 名前空間あたり 100 個の仲介型接続�
 
 - Service Bus の価格の詳細については、「[Azure Service Bus の料金のページ](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 
-- Service Bus の価格および課金に関してよく寄せられる質問については、「[Service Bus の料金に関する FAQ](service-bus-pricing-faq.md)」を参照してください。
+- Service Bus の価格および課金に関してよく寄せられる質問については、「[Service Bus に関する FAQ](service-bus-faq.md#service-bus-pricing)」を参照してください。
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

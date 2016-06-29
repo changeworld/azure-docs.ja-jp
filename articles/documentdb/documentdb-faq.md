@@ -13,7 +13,7 @@
 	ms.workload="data-services" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="get-started-article" 
+	ms.topic="article" 
 	ms.date="03/30/2016" 
 	ms.author="mimig"/>
 
@@ -48,7 +48,7 @@ DocumentDB ではスループットの単位として要求ユニット (RU) を
 DocumentDB の各コレクションは、1 秒あたりのスループットという要求ユニットを単位として、プロビジョニング済みスループットを予約できます。アプリケーションの場合は、規模を問わず、個々の要求のベンチマークを実行して要求ユニットの値を測定し、すべての要求の要求ユニットの合計に対処できるようコレクションをプロビジョニングすることができます。アプリケーションのニーズの進化に合わせて、コレクションのスループットをスケールアップしたりスケールダウンしたりすることもできます。要求ユニットの詳細や、コレクションが必要とする要求ユニット量を判断するためのサポートについては、[パフォーマンスと容量の管理](documentdb-manage.md)に関する記事をご覧ください。
 
 ### DocumentDB HIPAA は準拠していますか?
-はい、DocumentDB は HIPAA は準拠しています。HIPAA は、個別に識別できる医療情報の使用、開示、および保護するための要件を確立しています。詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA)をご覧ください。
+はい、DocumentDB は HIPAA は準拠しています。HIPAA は、個別に識別できる医療情報の使用、開示、および保護するための要件を確立しています。詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/ja-JP/TrustCenter/Compliance/HIPAA)をご覧ください。
 
 ### DocumentDB のストレージ制限とは何ですか? 
 DocumentDB でコレクションが格納できる合計データ量には、理論上の制限はありません。1 つのコレクション内に 250 GB を超えるデータを格納する必要がある場合は、[サポートに連絡して](documentdb-increase-limits.md)、アカウント クォータの増加を依頼してください。
@@ -120,4 +120,4 @@ DocumentDB にドキュメントを一括挿入するには 3 つの方法があ
 [query]: documentdb-sql-query.md
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0615_2016-->

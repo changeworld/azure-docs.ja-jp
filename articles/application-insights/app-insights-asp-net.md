@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="06/08/2016" 
+	ms.date="06/21/2016" 
 	ms.author="awills"/>
 
 
@@ -107,13 +107,20 @@ Application Insights によって、アプリのテレメトリが (Microsoft Az
 
 必要な場合は、[ASP.NET 4](app-insights-asp-net-manual.md) または [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started) 向けにこれらの手順を手動で実行することもできます。
 
+## 新しいバージョンの SDK にアップグレードするには
+
+[SDK の新しいリリース](app-insights-release-notes-dotnet.md)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。[Microsoft.ApplicationInsights.Web]、[アップグレード] の順に選択します。
+
+ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておき、後から新しいバージョンに変更をマージします。
+
+
 
 ## 次の手順
 
 | | 
 |---|---
-|**[Visual Studio で Application Insights を操作する](app-insights-visual-studio.md)**<br/>テレメトリを使用したデバッグ、診断検索、コードのドリル スルー。|![Visual studio](./media/app-insights-asp-net/61.png)
-|**[Application Insights ポータルを操作する](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-asp-net/62.png)
+|**[Visual Studio で Application Insights を使用する](app-insights-visual-studio.md)**<br/>テレメトリを使用したデバッグ、診断検索、コードのドリル スルー。|![Visual studio](./media/app-insights-asp-net/61.png)
+|**[Application Insights ポータルを使用する](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-asp-net/62.png)
 |**[さらにデータを追加する](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外を監視します。ログ記録フレームワークからのトレースを統合します。カスタム テレメトリを記述します。 | ![Visual studio](./media/app-insights-asp-net/64.png)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

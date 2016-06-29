@@ -4,7 +4,7 @@
    services="security"
    documentationCenter="na"
    authors="TomShinder"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/24/2016"
+   ms.date="06/14/2016"
    ms.author="yurid"/>
 
 # セキュリティ アーキテクチャの概要
@@ -24,6 +24,6 @@ Azure のソリューション デプロイをセキュリティで保護する�
 
 - [Data Classification for Cloud Readiness (クラウドに備えたデータの分類)](azure-security-data-classification.md)
 - [Microsoft Azure のアプリケーションのアーキテクチャ](security-application-architecture-on-azure.md)
-- [Azure セキュリティのベスト プラクティスとパターン](azure-security-best-practices-and-patterns.md)
+- [Azure セキュリティのベスト プラクティスとパターン](security-best-practices-and-patterns.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0615_2016-->

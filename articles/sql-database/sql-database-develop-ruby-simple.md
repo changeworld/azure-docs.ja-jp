@@ -40,4 +40,8 @@
 
 [Ruby を使用した SQL 接続の概念実証](http://msdn.microsoft.com/library/mt715797.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+## その他のリソース
+
+マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」をご覧ください。
+
+<!---HONumber=AcomDC_0615_2016-->

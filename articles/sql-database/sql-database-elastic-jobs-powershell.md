@@ -17,7 +17,7 @@
 # PowerShell を使用した SQL Database のエラスティック データベース ジョブの作成と管理 (プレビュー)
 
 > [AZURE.SELECTOR]
-- [Azure クラシック ポータル](sql-database-elastic-jobs-create-and-manage.md)
+- [Azure ポータル](sql-database-elastic-jobs-create-and-manage.md)
 - [PowerShell](sql-database-elastic-jobs-powershell.md)
 
 
@@ -238,21 +238,7 @@
 
 ([エラスティック データベース クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用して作成された) シャード セット内のすべてのデータベースに対してジョブを実行するには、データベース ターゲットとしてシャード マップを使用します。この例は、エラスティック データベース クライアント ライブラリを使用して作成されたシャード アプリケーションがあることを前提としています。「[エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」を参照してください。
 
-###サンプル アプリケーションを使用してシャード マップ マネージャーを作成する
-
-この例では、シャード マップ マネージャーといくつかのシャードを作成し、シャードにデータを挿入します。
-
-1. 「**「エラスティック データベース ツールの概要**」に示されているサンプル アプリケーションをビルドして実行します。セクション「[サンプル アプリケーションのダウンロードと実行](sql-database-elastic-scale-get-started.md#Getting-started-with-elastic-database-tools)」の手順 7 まで実行します。手順 7 を終了すると、次のコマンド プロンプトが表示されます。
-
-	![コマンド プロンプト][1]
-
-2.  コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。「3」を入力し、**Enter** キーを押します。この操作を 4 回を繰り返します。これにより、サンプルのデータ行がシャードに挿入されます。
-  
-3.  [Azure ポータル](https://portal.azure.com) に、v12 サーバーにある次の 3 つの新しいデータベースが表示されるはずです。
-
-	![Visual Studio の確認][2]
-
-[**New-AzureSqlJobCredential コマンドレット**](https://msdn.microsoft.com/library/mt346063.aspx)を使用してシャード マップ ターゲットを作成します。シャード マップ マネージャー データベースをデータベース ターゲットとして設定する必要があります。そのうえで、特定のシャード マップをターゲットとして設定してください。
+シャード マップ マネージャー データベースをデータベース ターゲットとして設定する必要があります。そのうえで、特定のシャード マップをターゲットとして設定してください。
 
 	$shardMapCredentialName = "{Credential Name}"
 	$shardMapDatabaseName = "{ShardMapDatabaseName}" #example: ElasticScaleStarterKit_ShardMapManagerDb
@@ -694,4 +680,4 @@ DACPAC の作成については、[データ層アプリケーション](https:/
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

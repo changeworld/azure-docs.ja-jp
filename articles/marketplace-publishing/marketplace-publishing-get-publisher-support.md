@@ -23,7 +23,7 @@
 
 - Azure Marketplace の発行元であり、まだ VM の開発中である場合は、Microsoft のオンボード チームまたはコンピューティング チームに連絡する必要があります。
 
-- Marketplace の発行元であり、お客様から質問を受けた場合は、お客様に https://ms.portal.azure.com/ のサポート リンクからサポートを依頼するように伝えてください。
+- Marketplace の発行元であり、お客様から質問を受けた場合は、お客様に https://portal.azure.com/ のサポート リンクからサポートを依頼するように伝えてください。
 
 - Marketplace の発行元であり、アプリケーションまたはサービスに関する質問がある場合は、以下を参照してください。
 
@@ -79,7 +79,9 @@ https://publish.windowsazure.com/ に移動し、Microsoft アカウントの資
 
 送信した問題は 24 時間以内に受信確認が行われ、問題に優先順位と重大度が割り当てられます。サービス レベル アグリーメントの応答時間に従って、サポート エンジニアの専門チームが解決を支援します。
 
-![確認][6] + 問題についてチームに確認することがある場合は、すべてのやり取りに確認番号を使用してください。また、問題に関する進捗はいつでも確認できます。
+![確認][6]
++ 問題についてチームに確認することがある場合は、すべてのやり取りに確認番号を使用してください。
++ また、問題に関する進捗はいつでも確認できます。
 
 ## 次のステップ
 
@@ -92,4 +94,4 @@ https://publish.windowsazure.com/ に移動し、Microsoft アカウントの資
 [5]: ./media/marketplace-publishing-get-publisher-support/step5.png
 [6]: ./media/marketplace-publishing-get-publisher-support/step6.png
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="06/15/2016"
 	ms.author="cynthn"/>
 
 #Azure の Linux 仮想マシンについて
@@ -38,4 +38,4 @@ Azure Virtual Machine は、仮想マシンを実行する物理的なハード�
 
 これらのチュートリアルには、仮想マシンをすばやく作成できるよう、仮想マシンを作成するときに使用できる多くのツールを取り上げるのではなく、仮想マシン作成の方法をひとつだけ重点的に紹介しています。これらのツールの概要と手順へのリンクについては、[Linux 仮想マシンを作成するための各種方法](virtual-machines-linux-creation-choices.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0615_2016-->

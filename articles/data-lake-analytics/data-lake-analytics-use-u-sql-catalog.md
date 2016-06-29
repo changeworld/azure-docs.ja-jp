@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/26/2016"
+   ms.date="05/16/2016"
    ms.author="edmaca"/>
 
 # U-SQL カタログの使用
@@ -73,7 +73,7 @@ Data Lake Tools for Visual Studio を使用して、カタログを管理でき�
 - U-SQL と開発
     - [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
     - [Azure Data Lake Analytics ジョブに U-SQL ウィンドウ関数を使用する](data-lake-analytics-use-window-functions.md)
-    - [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analtyics-u-sql-user-defined-operators.md)
+    - [Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-Analytics-u-sql-user-defined-operators.md)
 
 - 管理
     - [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-use-portal.md)
@@ -84,4 +84,4 @@ Data Lake Tools for Visual Studio を使用して、カタログを管理でき�
     - [Azure Data Lake Analytics の対話型チュートリアルの使用](data-lake-analytics-use-interactive-tutorials.md)
     - [Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

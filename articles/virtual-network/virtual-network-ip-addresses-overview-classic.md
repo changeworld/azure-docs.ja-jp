@@ -134,7 +134,7 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 
 ## 制限
 
-サブスクリプションごとに Azure で IP アドレスを指定する際に課せられる IP の制限を下表に示します。ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、[サポートにお問い合わせ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+サブスクリプションごとに Azure で IP アドレスを指定する際に課せられる IP の制限を下表に示します。ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、[サポートにお問い合わせください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ||既定の制限|上限|
 |---|---|---|
@@ -166,4 +166,4 @@ Azure における[ネットワークの制限](azure-subscription-service-limit
 ## 次のステップ
 - クラシック ポータルを使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-classic-pportal.md)します。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

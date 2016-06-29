@@ -13,7 +13,7 @@ ms.workload="data-services"
 ms.tgt_pltfrm="na"
 ms.devlang="na"
 ms.topic="article"
-ms.date="05/25/2016"
+ms.date="06/14/2016"
 ms.author="garye;krishnan"/>
 
 # オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning で高度な分析を実行する
@@ -57,7 +57,7 @@ Data Management Gateway のセットアップと使用の際には、以下の�
 
 - 他のデータ用に Azure ExpressRoute を使用している場合でも、Azure Machine Learning 用に Data Management Gateway を使用する必要があります。ExpressRoute を使用する場合であっても、ファイアウォールの背後にあるオンプレミスのデータ ソースとしてデータ ソースを取り扱い、Data Management Gateway を使用して Machine Learning とデータ ソースの間の接続を確立する必要があります。
 
-インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../data-factory/data-factory-move-data-between-onprem-and-cloud.md)」という記事の冒頭のセクションを参照してください。
+インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#considerations-for-using-data-management-gateway)」という記事の「[Data Management Gateway を使用する上で考慮すること](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#considerations-for-using-data-management-gateway)」セクション以降を参照してください。
 
 ## <span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>オンプレミスの SQL Server データベースから Azure Machine Learning にデータを受信する
 
@@ -88,7 +88,7 @@ Data Management Gateway のセットアップと使用の際には、以下の�
 
 6.  <span id="note-1" class="anchor"></span>まだ Microsoft Data Management Gateway をダウンロードしてインストールしていない場合は、**[Download data management gateway (データ管理ゲートウェイのダウンロード)]** をクリックします。Microsoft ダウンロード センターに移動するので、必要なゲートウェイのバージョンを選択し、それをダウンロードしてインストールします。インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../data-factory/data-factory-move-data-between-onprem-and-cloud.md)」という記事の冒頭のセクションを参照してください。
 
-7.  ゲートウェイがインストールされると、Data Management Gateway 構成マネージャーが開かれ、**[ゲートウェイの登録]** ダイアログが表示されます。クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[登録]** をクリックします。
+7.  ゲートウェイがインストールされると、Data Management Gateway 構成マネージャーが開き、**[ゲートウェイの登録]** ダイアログが表示されます。クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[登録]** をクリックします。
 
 8.  既にゲートウェイがインストールされている場合は、Data Management Gateway 構成マネージャーを実行し、**[キーの変更]** をクリックして、クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[OK]** をクリックします。
 
@@ -104,7 +104,7 @@ Data Management Gateway のセットアップと使用の際には、以下の�
 
     -   **[状態]** が **[開始]** に設定されます。
 
-    -   下部のステータス バーには、緑色のチェック マークと共に "**Data Management Gateway クラウド サービスに接続しました**" と表示されます。
+    -   下部のステータス バーには、緑色のチェック マークと共に "**Data Management Gateway クラウド サービスに接続済み**" と表示されます。
 
     ![](media/machine-learning-use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
 
@@ -162,4 +162,4 @@ Studio で各ワークスペースに対して複数のゲートウェイを作�
 
 実験の開発が完了したら、モデルをデプロイし、運用可能にすることができます。**データのインポート** モジュールで構成されているオンプレミス SQL Server データベースのデータは、Batch Execution Service を使用して読み取られ、スコア付けに使用されます。オンプレミス データのスコア付けには Request Response Service を使用できますが、代わりに [Excel アドイン](machine-learning-excel-add-in-for-web-services.md)を使用することをお勧めします。現時点では、**データのエクスポート**によるオンプレミス SQL Server データベースへの書き込みは、実験でも公開済み Web サービスでもサポートされていません。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0615_2016-->

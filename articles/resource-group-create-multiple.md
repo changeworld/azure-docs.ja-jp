@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/09/2016"
+   ms.date="06/13/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでリソースの複数のインスタンスを作成する
@@ -488,4 +488,4 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 - テンプレートで使用できるすべての関数については、「[Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)」を参照してください。
 - テンプレートをデプロイする方法については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0615_2016-->

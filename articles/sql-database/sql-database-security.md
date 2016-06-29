@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="04/25/2016"
+   ms.date="06/09/2016"
    ms.author="thmullan;jackr"/>
 
 
@@ -85,10 +85,6 @@ Azure クラシック ポータルまたは Azure リソース マネージャ�
 Azure SQL Database では、[透過的なデータ暗号化](http://go.microsoft.com/fwlink/?LinkId=526242)を使用して、データが "静止" 状態のとき、またはデータベース ファイルやバックアップに格納されているときに、そのデータを暗号化することによりデータを保護できます。データベースを暗号化するには、データベースの所有者として接続し、次のコマンドを実行します。
 
 ```
-CREATE DATABASE ENCRYPTION KEY
-   WITH ALGORITHM = AES_256
-   ENCRYPTION BY SERVER CERTIFICATE ##MS_TdeCertificate##;
-
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
@@ -108,4 +104,4 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 アプリケーションがさまざまなセキュリティ コンプライアンスの要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database は定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)」を参照してください。ここから最新の[SQL Database コンプライアンス証明書](https://azure.microsoft.com/support/trust-center/services/)の一覧を入手できます。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

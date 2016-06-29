@@ -28,6 +28,7 @@ Azure Service Fabric クラスターは、ユーザーが所有するリソー�
 2. Azure Key Vault に証明書をアップロードします。
 3. Service Fabric クラスターの作成プロセスで、証明書の場所と詳細を指定します。
 
+<a id="acquirecerts"></a>
 ## 手順 1: X.509 証明書を取得する
 
 運用ワークロードを実行するクラスターの場合、[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) で署名された X.509 証明書を使用してクラスターをセキュリティで保護する必要があります。これらの証明書を取得する方法の詳細については、「[方法 : 証明書 (WCF) を取得する](http://msdn.microsoft.com/library/aa702761.aspx)」を参照してください。
@@ -97,13 +98,13 @@ Login-AzureRmAccount
 Set-AzureRmKeyVaultAccessPolicy -VaultName <Name of the Vault> -ResourceGroupName <string> -EnabledForDeployment
 ```
 
-次のスクリプトは、リソース グループや Key Vault がない場合、それを新しく作成し、自己署名証明書を作成して Key Vault にアップロードし、新しい証明書を *OutputPath* に出力します。
+次のスクリプトは、リソース グループや Key Vault がない場合に新しく作成し、自己署名証明書を作成して Key Vault にアップロードし、新しい証明書を *OutputPath* に出力します。
 
 ```powershell
 Login-AzureRmAccount
 Invoke-AddCertToKeyVault -SubscriptionId <you subscription id> -ResourceGroupName <string> -Location <region> -VaultName <Name of the Vault> -CertificateName <Name of the Certificate> -Password <Certificate password> -CreateSelfSignedCertificate -DnsName <string- see note below.> -OutputPath <Full path to the .pfx file>
 ```
-*DnsName* 文字列には、コピーする証明書が CloneCert パラメーターで指定されていない場合に、証明書のサブジェクト代替名拡張に設定する 1 つ以上の DNS 名を指定します。最初の DNS 名は、サブジェクト名としても保存されます。自己署名証明書を指定しない場合、最初の DNS 名は発行者名としても保存されます。*Invoke-AddCertToKeyVault* コマンドレットは [New-SelfSignedCertificate cmdlet](https://technet.microsoft.com/library/hh848633.aspx) を使用して自己署名証明書を作成します。
+*DnsName* 文字列には、コピーする証明書が CloneCert パラメーターで指定されていない場合に、証明書のサブジェクト代替名拡張に設定する 1 つ以上の DNS 名を指定します。最初の DNS 名は、サブジェクト名としても保存されます。自己署名証明書を指定しない場合、最初の DNS 名は発行者名としても保存されます。*Invoke-AddCertToKeyVault* コマンドレットは [New-SelfSignedCertificate](https://technet.microsoft.com/library/hh848633.aspx) コマンドレットを使用して自己署名証明書を作成します。
 
 実際の値を入力したスクリプトの例は次のようになります。
 
@@ -124,7 +125,7 @@ Certificate URL /URL to the certificate location in the key vault: https://chack
 
 ## 手順 3: セキュリティで保護されたクラスターを設定する
 
-Azure Key Vault に証明書がアップロードされたら、その証明書でセキュリティ保護されたクラスターを作成できます。この手順はクラスター作成プロセスの「[Step 3: Configure security](service-fabric-cluster-creation-via-portal.md#step-3--configure-security)」 (手順 3: セキュリティの構成) に相当し、セキュリティ構成の設定方法を示します。
+Azure Key Vault に証明書がアップロードされたら、その証明書でセキュリティ保護されたクラスターを作成できます。この手順は、クラスター作成プロセスの「[手順 3: セキュリティの構成](service-fabric-cluster-creation-via-portal.md#step-3--configure-security)」に相当し、セキュリティ構成の設定方法を示します。
 
 >[AZURE.NOTE]
 必要な証明書は、[セキュリティ構成] のノード タイプ レベルで指定します。クラスター内のすべてのノード タイプについて、証明書を指定する必要があります。このドキュメントではポータルを使用した手順について説明していますが、Azure リソース マネージャー テンプレートを使用して実行することもできます。
@@ -133,15 +134,15 @@ Azure Key Vault に証明書がアップロードされたら、その証明書�
 
 ### 必須のパラメーター
 
-- **セキュリティ モード** **X509 証明書**を選択し、X.509 証明書でセキュリティ保護されたクラスターを設定します。
-- **クラスター保護レベル** 各値の意味については、「[保護レベルの理解](https://msdn.microsoft.com/library/aa347692.aspx)」を参照してください。ここでは 3 つの値 (EncryptAndSign、Sign、None) を利用できますが、確実でない場合は既定の EncryptAndSign をそのまま選択してください。
-- **ソース コンテナー** これは Key Vault のリソース ID を示します。形式は次のとおりです。
+- **[セキュリティ モード]**: **[X509 証明書]** を選択し、X.509 証明書でセキュリティ保護されたクラスターを設定します。
+- **[Cluster protection level (クラスター保護レベル)]**: 各値の意味については、「[保護レベルの理解](https://msdn.microsoft.com/library/aa347692.aspx)」を参照してください。ここでは 3 つの値 (EncryptAndSign、Sign、None) を利用できますが、確実でない場合は既定の EncryptAndSign をそのまま選択してください。
+- **[Source Vault (ソース コンテナー)]**: これは Key Vault のリソース ID を示します。形式は次のとおりです。
 
     ```
     /subscriptions/<Sub ID>/resourceGroups/<Resource group name>/providers/Microsoft.KeyVault/vaults/<vault name>
     ```
 
-- **証明書 URL** これは証明書がアップロードされた Key Vault の場所の URL を指します。形式は次のとおりです。
+- **[証明書 URL]**: これは証明書がアップロードされた Key Vault の場所の URL を示します。形式は次のとおりです。
 
     ```
     https://<name of the vault>.vault.azure.net:443/secrets/<exact location>
@@ -150,32 +151,32 @@ Azure Key Vault に証明書がアップロードされたら、その証明書�
     https://chackdan-kmstest-eastus.vault.azure.net:443/secrets/MyCert/6b5cc15a753644e6835cb3g3486b3812
     ```
 
-- **証明書の拇印** これは上の手順で指定した URL にある証明書の拇印を指します。
+- **[証明書の拇印]**: これは上の手順で指定した URL にある証明書の拇印を示します。
 
 ### 省略可能なパラメーター
 
  必要に応じて、クラスターに対する操作に使用するクライアント コンピューターに追加の証明書を指定することができます。既定では、必須のパラメーターで指定した拇印が、クライアント操作に許可されている承認済み拇印の一覧に追加されます。
 
-**管理クライアント** この情報は、クラスター管理エンドポイントに接続しているクライアントが、クラスターに対して管理者の読み取り専用の操作を実行できる適切な資格情報を示していることを検証します。管理操作の承認に使用する証明書は複数指定できます。
+**[Admin Client (管理クライアント)]**: この情報を使用して、クラスター管理エンドポイントに接続しているクライアントが、クラスターに対して管理者の読み取り専用の操作を実行できる適切な資格情報を示していることを検証します。管理操作の承認に使用する証明書は複数指定できます。
 
-- **承認者** この証明書を検索する際に、サブジェクト名を使用するか拇印を指定するかを Service Fabric に示します。承認にサブジェクト名を使用することは推奨されませんが、柔軟性が与えられます。
-- **サブジェクト名** これはサブジェクト名による承認を指定した場合にのみ必要です。
-- **発行者の拇印** クライアントからサーバーに対して資格情報を提示するときにサーバー側で実行可能なチェック レベルを追加できます。
+- **[Authorize By (承認方法)]**: この証明書を検索する際に、サブジェクト名を使用するか拇印を使用するかを Service Fabric に示します。承認にサブジェクト名を使用することは推奨されませんが、柔軟性が与えられます。
+- **[サブジェクト名]**: これはサブジェクト名による承認を指定した場合にのみ必要です。
+- **[発行者の拇印]**: クライアントからサーバーに対して資格情報を提示するときにサーバー側で実行可能なチェック レベルを追加できます。
 
-**読み取り専用クライアント** この情報は、クラスター管理エンドポイントに接続しているクライアントが、クラスターに対して読み取り専用の操作を実行できる適切な資格情報を示していることを検証します。読み取り専用操作を許可する証明書を複数指定できます。
+**[Read Only Client (読み取り専用クライアント)]**: この情報を使用して、クラスター管理エンドポイントに接続しているクライアントが、クラスターに対して読み取り専用の操作を実行できる適切な資格情報を示していることを検証します。読み取り専用操作を許可する証明書を複数指定できます。
 
-- **承認者** この証明書を検索する際に、サブジェクト名を使用するか拇印を指定するかを Service Fabric に示します。承認にサブジェクト名を使用することは推奨されませんが、柔軟性が与えられます。
-- **サブジェクト名** これはサブジェクト名による承認を指定した場合にのみ必要です。
-- **発行者の拇印** クライアントからサーバーに対して資格情報を提示するときにサーバー側で実行可能なチェック レベルを追加できます。
+- **[Authorize By (承認方法)]**: この証明書を検索する際に、サブジェクト名を使用するか拇印を使用するかを Service Fabric に示します。承認にサブジェクト名を使用することは推奨されませんが、柔軟性が与えられます。
+- **[サブジェクト名]**: これはサブジェクト名による承認を指定した場合にのみ必要です。
+- **[発行者の拇印]**: クライアントからサーバーに対して資格情報を提示するときにサーバー側で実行可能なチェック レベルを追加できます。
 
 ## 次のステップ
-クラスターで証明書セキュリティを構成したら、クラスター作成プロセスの「[Step 4: Complete the cluster creation](service-fabric-cluster-creation-via-portal.md#step-4--complete-the-cluster-creation)」 (手順 4: クラスター作成の完了) を再開します。
+クラスターで証明書セキュリティを構成したら、クラスター作成プロセスの「[手順 4: クラスターの作成を完了する](service-fabric-cluster-creation-via-portal.md#step-4--complete-the-cluster-creation)」を再開してください。
 
-証明書でセキュリティ保護されたクラスターが作成されたら、後で[証明書を更新](service-fabric-cluster-security-update-certs-azure.md)できます。
+クラスターで証明書セキュリティが作成されたら、後で[証明書を更新](service-fabric-cluster-security-update-certs-azure.md)できます。
 
 
 <!--Image references-->
 [SecurityConfigurations_01]: ./media/service-fabric-cluster-azure-secure-with-certs/SecurityConfigurations_01.png
 [SecurityConfigurations_02]: ./media/service-fabric-cluster-azure-secure-with-certs/SecurityConfigurations_02.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

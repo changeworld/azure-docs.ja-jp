@@ -39,10 +39,10 @@
 - [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 - [互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)
 
-## 詳細情報
+## その他のリソース
 
 - [SQL Database V12](sql-database-v12-whats-new.md)
 - [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="web"
-   ms.date="02/26/2016"
+   ms.date="05/31/2016"
    ms.author="sumuth"/>
 
 # Web アプリに対して DevOps 環境を効果的に使用する
@@ -442,4 +442,4 @@ Web アプリとデータベースの両方をスワップすることのメリ�
 
 [運用環境以外のデプロイメント スロットへの Web アクセスを禁止する方法](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0615_2016-->

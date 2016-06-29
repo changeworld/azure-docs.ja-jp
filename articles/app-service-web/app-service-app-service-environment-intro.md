@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/28/2016"
+	ms.date="06/14/2016"
 	ms.author="stefsch"/>
 
 # App Service 環境の概要
@@ -30,13 +30,15 @@ App Service 環境は、以下を必要とするアプリケーション ワー�
 
 App Service 環境は、単一の顧客のアプリケーションだけを実行するために分離され、常に仮想ネットワークにデプロイされます。顧客は、受信および送信アプリケーション ネットワーク トラフィックをきめ細かく制御できます。また、アプリケーションは、オンプレミスの企業リソースへの仮想ネットワーク経由のセキュリティで保護された高速接続を確立できます。
 
+App Service 環境に関するすべての記事と作業方法は [Application Service Environments の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
+
 App Service 環境で高スケールおよびセキュリティで保護されたネットワーク アクセスを有効にする方法の概要については、App Service 環境の [AzureCon の詳細][AzureConDeepDive]に関する記述を参照してください。
 
 複数の App Service 環境を使用する水平方向のスケーリングの詳細については、[地理的に分散されたアプリのフットプリント][GeodistributedAppFootprint]のセットアップ方法に関する記事を参照してください。
 
 AzureCon Deep Dive に示されたセキュリティ アーキテクチャがどのように構成されたかを確認するには、App Service 環境での[レイヤード セキュリティ アーキテクチャ](app-service-app-service-environment-layered-security.md)のインプリメントに関する記事を参照してください。
 
-App Service 環境で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール \(WAF\) などのアップ ストリーム デバイスによって制限できます。このシナリオについては、記事「[App Service 環境の Web アプリケーション ファイアウォール \(WAF\) を構成する](app-service-app-service-environment-web-application-firewall.md)」で説明します。
+App Service 環境で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール (WAF) などのアップ ストリーム デバイスによって制限できます。このシナリオについては、記事「[App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する](app-service-app-service-environment-web-application-firewall.md)」で説明します。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -49,14 +51,14 @@ App Service 環境は、1 つのフロントエンド コンピューティン�
 
 各ワーカー プールには、[App Service プラン][AppServicePlan]に割り当てられたコンピューティング リソースが含まれ、コンピューティング リソースには 1 つ以上の Azure App Service アプリが含まれます。App Service 環境には、異なるワーカー プールを 3 つまで配置できるため、ワーカー プールごとに異なるコンピューティング リソースを柔軟に選択できます。
 
-たとえば、これにより、開発アプリまたはテスト アプリ向けの App Service プランでは、性能の低いコンピューティング リソースを含むワーカー プールを 1 つ作成できます。2 番目 \(または 3 番目\) のワーカー プールでは、実稼働アプリを実行する App Service プラン向けにより性能の高いコンピューティング リソースを使用することができます。
+たとえば、これにより、開発アプリまたはテスト アプリ向けの App Service プランでは、性能の低いコンピューティング リソースを含むワーカー プールを 1 つ作成できます。2 番目 (または 3 番目) のワーカー プールでは、実稼働アプリを実行する App Service プラン向けにより性能の高いコンピューティング リソースを使用することができます。
 
 フロントエンドとワーカー プールで使用可能なコンピューティング リソースの量の詳細については、[App Service 環境の構成方法][HowToConfigureanAppServiceEnvironment]に関するページを参照してください。
 
 App Service 環境でサポートされる使用可能なコンピューティング リソースのサイズの詳細については、[App Service の料金][AppServicePricing]のページで、Premium 価格レベルの App Service 環境で使用できるオプションを確認してください。
 
 ## Virtual Network のサポート ##
-App Service 環境は、既存の地域クラシック "v1" 仮想ネットワーク内でも、新しい地域クラシック "v1" 仮想ネットワーム内でも作成できます \([仮想ネットワークの詳細][MoreInfoOnVirtualNetworks]\)。App Service 環境は常に地域仮想ネットワーク \(もっと正確に言えば、地域仮想ネットワークのサブネット内\) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。
+App Service 環境は、既存の地域クラシック "v1" 仮想ネットワーク内でも、新しい地域クラシック "v1" 仮想ネットワーム内でも作成できます ([仮想ネットワークの詳細][MoreInfoOnVirtualNetworks])。App Service 環境は常に地域仮想ネットワーク (もっと正確に言えば、地域仮想ネットワークのサブネット内) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。
 
 [ネットワーク セキュリティ グループ][NetworkSecurityGroups]を使用して、受信ネットワーク通信を、App Service 環境が存在するサブネットに制限できます。これによって、Web アプリケーション ファイアウォールやネットワーク SaaS プロバイダーなど、アップストリーム デバイスおよびサービスの背後でアプリを実行できます。
 
@@ -106,4 +108,4 @@ ExpressRoute での App Service 環境の使用方法の詳細については、
 
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0615_2016-->

@@ -28,9 +28,6 @@ Azure ポータルを使用して、Azure Data Lake Analytics のアカウント
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-
-
-
 <!-- ################################ -->
 <!-- ################################ -->
 ## アカウントの管理
@@ -293,4 +290,4 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 - [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-powershell.md)
 - [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0615_2016-->

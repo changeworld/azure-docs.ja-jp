@@ -40,6 +40,6 @@
 
 支払い方法としてクレジット カードやデビット カードを設定している場合、支払いは自動的に行われます。カードはいつでも変更できますが、その方法は「[Azure サブスクリプションの支払いまたはクレジットを変更する](billing-how-to-change-credit-card.md)」で確認してください。
 
-請求書モードの支払いを利用している場合、請求書の下部に記載されている場所に支払いを送付します。サポートが必要な場合、[Microsoft サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
+請求書モードの支払いを利用している場合、請求書の下部に記載されている場所に支払いを送付します。サポートが必要な場合、[Microsoft サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0615_2016-->

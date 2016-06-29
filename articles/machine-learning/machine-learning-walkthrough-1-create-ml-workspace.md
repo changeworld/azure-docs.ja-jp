@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/09/2016"
+	ms.date="06/10/2016"
 	ms.author="garye"/>
 
 
@@ -51,4 +51,4 @@ Machine Learning ワークスペースが作成されると、Azure クラシッ
 
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0615_2016-->

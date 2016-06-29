@@ -114,7 +114,7 @@ Azure では先ごろ、[Azure リソース管理](../articles/virtual-machines/
 
 複数の VM グループを一括でデプロイし、それらのデプロイメントに Docker (またはその他の Linux コンテナー ホスト システム) をインストールして、自動化可能なグループにするための主なシステムを紹介します。ダイレクト リンクは、[コンテナーとツール](#containers-and-vm-technologies)のセクションを参照してください。機能の範囲はシステムによって異なります。また、ここに挙げるものがこの種のシステムのすべてというわけではありません。どのシステムが便利かは、ユーザーのスキル セットやシナリオによって変わってきます。
 
-Docker は、独自の VM 作成ツール セット ([docker-machine](../articles/virtual-machines/virtual-machines-linux-classic-docker-machine.md)) と、負荷分散に対応した Docker コンテナー クラスター管理ツール ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)) を提供しています。また [Azure Docker VM Extension](https://github.com/Azure/azure-docker-extension/blob/master/README.md) では、構成済みのアプリケーション コンテナーを複数のコンテナーにわたってデプロイできる、[`docker-compose`](https://docs.docker.com/compose/) が既定でサポートされています。
+Docker は、独自の VM 作成ツール セット ([docker-machine](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)) と、負荷分散に対応した Docker コンテナー クラスター管理ツール ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)) を提供しています。また [Azure Docker VM Extension](https://github.com/Azure/azure-docker-extension/blob/master/README.md) では、構成済みのアプリケーション コンテナーを複数のコンテナーにわたってデプロイできる、[`docker-compose`](https://docs.docker.com/compose/) が既定でサポートされています。
 
 [Mesosphere のデータ センター オペレーティング システム (DCOS)](http://docs.mesosphere.com/install/azurecluster/) も有効なシステムです。DCOS は、[Mesos](http://mesos.apache.org/) というオープン ソースの "分散システム カーネル" をベースにしています、このカーネルでは、データ センターが 1 つのアドレス可能サービスとして扱われます。DCOS には、いくつかの重要なシステム ([Spark](http://spark.apache.org/) や [Kafka](http://kafka.apache.org/) など) に対応した組み込みパッケージが備わっているほか、[Marathon](https://mesosphere.github.io/marathon/) (コンテナー管理システム) や [Chronos](https://mesosphere.github.io/chronos/) (分散スケジューラー) などの組み込みサービスも含まれています。Mesos は、Twitter、AirBnb、およびその他の Web スケール ビジネスに影響を受けて開発されたものです。
 
@@ -165,7 +165,7 @@ Docker on Microsoft Azure:
 - [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md)
 - [Azure ポータルでの Docker VM 拡張機能の使用](../articles/virtual-machines/virtual-machines-linux-classic-portal-use-docker.md)
 - [Azure Marketplace で Docker をすばやく開始する](../articles/virtual-machines/virtual-machines-linux-classic-docker-quickstart.md)
-- [Azure で docker マシンを使用する方法](../articles/virtual-machines/virtual-machines-linux-classic-docker-machine.md)
+- [Azure で docker マシンを使用する方法](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)
 - [Azure 上の Swarm における Docker の使用方法](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)
 - [Azure での Docker および Compose の概要](../articles/virtual-machines/virtual-machines-linux-docker-compose-quickstart.md)
 - [Azure のリソース グループ テンプレートを使用して Azure 上に Docker ホストをすばやく作成する方法](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)
@@ -216,4 +216,4 @@ Linux ディストリビューションと Azure での導入例:
 [マイクロサービス]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

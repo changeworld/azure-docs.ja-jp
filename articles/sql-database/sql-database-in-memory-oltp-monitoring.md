@@ -56,6 +56,6 @@ Azure [ポータル](https://portal.azure.com/)で、インメモリ ストレ�
 - メモリ最適化テーブルにデータを残す必要がある場合は、十分なインメモリ ストレージがあるサービス階層にアップグレードします。
 
 ## 次のステップ
-「[動的管理ビューを使用した Azure SQL Database の監視](sql-database-monitoring-with-dmvs.md)」で詳細を確認する
+その他のリソースとして「[動的管理ビューを使用した Azure SQL Database の監視](sql-database-monitoring-with-dmvs.md)」を参照する
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

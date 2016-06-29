@@ -18,18 +18,19 @@
 
 # 概要: SQL Database の geo リストア
 
+> [AZURE.SELECTOR]
+- [概要](sql-database-geo-restore.md)
+- [Azure ポータル](sql-database-geo-restore-portal.md)
+- [PowerShell](sql-database-geo-restore-powershell.md)
+
 geo リストアを使用すると、最新の日次バックアップから SQL データベースを復元できます。geo リストアは、追加コストなしにすべてのサービス階層で自動的に有効になります。geo リストアではソースとして geo 冗長バックアップが使用され、障害によってデータベースまたはデータセンターにアクセスできない場合でも、geo リストアを使用してデータベースを復旧できます。
 
 geo リストアを開始すると新しい SQL データベースが作成されます。このデータベースは、任意の Azure リージョン内のサーバーに作成できます。
 
-
-|タスク (ポータル) | PowerShell | REST () |
-|:--|:--|:--|
-| [異なるリージョンのコピーから SQL Database を復旧する](sql-database-geo-restore-portal.md) | [PowerShell](sql-database-geo-restore-powershell.md) | [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) |
+> [AZURE.NOTE] [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用することもできます
 
 
-
-geo リストアは、データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合にも既定の復旧オプションを提供します。[ポイントインタイム リストア](sql-database-point-in-time-restore.md)と同様に、geo リストアも geo 冗長 Azure Storage のデータベースのバックアップに依存します。geo レプリケーション バックアップ コピーからリストアするため、プライマリ リージョンにおけるストレージの障害に対する回復力があります。
+geo リストアは、データベースがホストされているリージョンでのインシデントが原因でデータベースが利用できない場合の既定の復旧オプションです。データベースは任意の Azure リージョンの任意のサーバーに作成できます。geo リストアは、geo 冗長 Azure ストレージの[自動データベース バックアップ](sql-database-automated-backups.md)に依存しており、geo レプリケーション バックアップ コピーからリストアを行うので、プライマリ リージョンにおけるストレージの障害に対して回復力があります。
 
 
 
@@ -54,7 +55,13 @@ geo リストアはポイントインタイム リストアと同じテクノロ
 
 ## 概要
 
-geo リストアはすべてのサービス階層で使用できますが、RPO と推定復旧時間 (ERT) が最も長い SQL Database で使用できる障害復旧ソリューションが最も基本です。最大サイズが 2 GB の Basic データベースでは、geo リストアは ERT が 12 時間である妥当な障害復旧ソリューションを提供します。さらに大きい Standard または Premium データベースでは、大幅に短い復旧間隔が必要な場合、またはデータ損失の可能性を下げる場合は、アクティブ geo レプリケーションの使用を検討する必要があります。アクティブ geo レプリケーションでは、継続的にレプリケートされるセカンダリへのフェールオーバーを開始することだけが必要なので、RPO と ERT が大きく短縮されます。詳細については、「[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)」を参照してください。
+geo リストアはすべてのサービス階層で使用できますが、RPO と推定復旧時間 (ERT) が最も長い SQL Database で使用できる障害復旧ソリューションが最も基本です。最大サイズが 2 GB の Basic データベースでは、geo リストアは ERT が 12 時間である妥当な障害復旧ソリューションを提供します。さらに大きい Standard または Premium データベースでは、大幅に短い復旧間隔が必要な場合、またはデータ損失の可能性を下げる場合は、アクティブ geo レプリケーションの使用を検討する必要があります。アクティブ geo レプリケーションでは、継続的にレプリケートされるセカンダリへのフェールオーバーを開始することだけが必要なので、RPO と ERT が大きく短縮されます。詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関するページをご覧ください。
+
+## 次のステップ
+
+- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
+- [Azure ポータルを使用した geo リストア](sql-database-geo-restore-portal.md)
+- [PowerShell を使用した geo リストア](sql-database-geo-restore-powershell.md)
 
 ## その他のリソース
 
@@ -63,6 +70,5 @@ geo リストアはすべてのサービス階層で使用できますが、RPO 
 - [Overview: SQL Database Point-in-Time Restore (概要: SQL Database のポイントインタイム リストア)](sql-database-point-in-time-restore.md)
 - [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
 - [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

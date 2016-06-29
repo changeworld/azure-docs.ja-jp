@@ -5,33 +5,30 @@
 
 1. [Google Cloud Console](https://console.developers.google.com/project) に移動し、Google アカウントの資格情報でサインインします。
 
-2. **[プロジェクトに移動]** をクリックし、**[プロジェクトの作成]** をクリックします。
-<!--
-   	![](./media/mobile-engagement-enable-google-cloud-messaging/new-project.png)
+2. **[All Projects (すべてのプロジェクト)]** に移動し、**[プロジェクトの作成]** をクリックします。
 
-   	![](./media/mobile-engagement-enable-google-cloud-messaging/new-project-2.png)   
--->
-3. プロジェクト名を入力します。
+3. **[プロジェクト名]** に入力し、**[作成]** をクリックします。
 
-4. **[プロジェクト名]** テキスト ボックスの下に表示されるプロジェクト番号を書き留めます。この番号は、チュートリアルの後半で Android マニフェスト ファイルを設定する際に必要になります。![](./media/mobile-engagement-enable-google-cloud-messaging/project-number.png)
-5. **[作成]** をクリックします。
+4. プロジェクトが作成されたら、桁数の多い**プロジェクト番号**を必ずメモしてください。プロジェクト番号は、プロジェクトの **[設定]** の **[IAM と管理] セクション**に表示され、後で必要になります。
+ 
+	![](./media/mobile-engagement-enable-google-cloud-messaging/project-number.png)
 
-6. 左側の列で **[概要]** が選択されていることを確認し、[Mobile API] の下にある **[Google Cloud Messaging]** をクリックします。次のページで、**[有効にする]** をクリックします。
+5. 次に、Google Cloud Messaging プラットフォームで使用するキーを作成します。このキーは Android デバイスに通知を送信するために Microsoft のプラットフォームによって使用されます。**[API Manager]** セクションに移動し、**[Mobile API]** 内の **[Google Cloud Messaging]** をクリックします。
+
+	![](./media/mobile-engagement-enable-google-cloud-messaging/gcm.png)
+
+6. 次のページで、**[有効にする]** ボタンをクリックします。ダッシュボードで、認証情報の作成を求められます。**[認証情報に進む]** ボタンをクリックします。
 
 	![](./media/mobile-engagement-enable-google-cloud-messaging/enable-GCM.png)
-<!--
-	![](./media/mobile-engagement-enable-google-cloud-messaging/enable-gcm-2.png)
--->
-7. 次のページで **[認証情報に進む]** をクリックします。その次のページの最初のドロップダウン リストから **[Google Cloud Messaging]** を選択し、次のドロップダウン リストから **[ウェブサーバー]** を選択して、**[必要な認証情報]** をクリックします。
+
+6. 最初のドロップダウン リストから **[Google Cloud Messaging]** を選択し、次のドロップダウン リストから **[ウェブサーバー]** を選択して、**[必要な認証情報]** をクリックします。
 
    	![](./media/mobile-engagement-enable-google-cloud-messaging/create-server-key.png)
 
-8. **[プロジェクトへの認証情報の追加]** ページで **[API キーを作成する]** をクリックします。
+7. **[プロジェクトへの認証情報の追加]** ページで **[API キーを作成する]** をクリックします。
 
    	![](./media/mobile-engagement-enable-google-cloud-messaging/create-server-key5.png)
-<!--
-   	![](./media/mobile-engagement-enable-google-cloud-messaging/create-server-key6.png)
--->
-9. **[API KEY]** の値をメモしておきます。この API キーの値は、後で [ネイティブ プッシュ通知] セクションで構成する際に使用するされます。**[完了]** をクリックします。
 
-<!---HONumber=AcomDC_0608_2016-->
+8. **[API KEY]** の値をメモしておきます。この API キーの値は、後で [ネイティブ プッシュ通知] セクションで構成する際に使用するされます。**[完了]** をクリックします。
+
+<!---HONumber=AcomDC_0622_2016-->

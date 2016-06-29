@@ -3,8 +3,8 @@
    description="Azure Automation の資格情報資産には、Runbook または DSC 構成によってアクセスされるリソースの認証に使用できるセキュリティ資格情報が含まれます。この記事では、資格情報資産を作成し、Runbook または DSC 構成でそれを使用する方法について説明します。"
    services="automation"
    documentationCenter=""
-   authors="bwren"
-   manager="stevenka"
+   authors="mgoedtel"
+   manager="jwhit"
    editor="tysonn" />
 <tags 
    ms.service="automation"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/27/2016"
+   ms.date="06/09/2016"
    ms.author="bwren" />
 
 # Azure Automation での資格情報資産
@@ -27,7 +27,7 @@ Windows PowerShell で Automation 資格情報資産を作成および管理す�
 
 |コマンドレット|説明|
 |:---|:---|
-|[Get-AzureAutomationCredential](http://msdn.microsoft.com/library/dn913781.aspx)|資格情報資産に関する情報を取得します。**Get-AutomationCredential** アクティビティから取得できるのは、資格情報自体のみです。|
+|[Get-AzureAutomationCredential](http://msdn.microsoft.com/library/dn913781.aspx)|資格情報資産に関する情報を取得します。**Get-AutomationPSCredential** アクティビティから取得できるのは、資格情報自体のみです。|
 |[New-AzureAutomationCredential](http://msdn.microsoft.com/library/azure/jj554330.aspx)|新しい Automation 資格情報を作成します。|
 |[Remove-AzureAutomationCredential](http://msdn.microsoft.com/library/azure/jj554330.aspx)|Automation 資格情報を削除します。|
 |[Set-AzureAutomationCredential](http://msdn.microsoft.com/library/azure/jj554330.aspx)|既存の Automation 資格情報のプロパティを設定します。|
@@ -42,10 +42,10 @@ Windows PowerShell で Automation 資格情報資産を作成および管理す�
 
 >[AZURE.NOTE] Get-AutomationPSCredential の –Name パラメーターを使用すると、設計時に Runbook または DSC 構成と資格情報資産の間の依存関係の検出が複雑になる可能性があるため、使用しないようにする必要があります。
 
-## 新しい資格情報の作成
+## 新しい資格情報資産の作成
 
 
-### Azure クラシック ポータルで新しい変数を作成するには
+### Azure クラシック ポータルで新しい資格情報資産を作成するには
 
 1. Automation アカウントから、ウィンドウの上部にある **[資産]** をクリックします。
 1. ウィンドウの下部にある **[設定の追加]** をクリックします。
@@ -54,7 +54,7 @@ Windows PowerShell で Automation 資格情報資産を作成および管理す�
 1. ウィザードを完了し、チェック ボックスをクリックして新しい資格情報を保存します。
 
 
-### Azure ポータルで新しい資格情報を作成するには
+### Azure ポータルで新しい資格情報資産を作成するには
 
 1. Automation アカウントから、**[資産]** 部分をクリックして **[資産]** ブレードを開きます。
 1. **[資格情報]** 部分をクリックして、**[資格情報]** ブレードを開きます。
@@ -62,7 +62,7 @@ Windows PowerShell で Automation 資格情報資産を作成および管理す�
 1. フォームに入力し、**[作成]** をクリックして新しい資格情報を保存します。
 
 
-### Windows PowerShell を使用して新しい PowerShell 資格情報を作成するには
+### Windows PowerShell で新しい資格情報資産を作成するには
 
 次のサンプル コマンドでは、新しい Automation 資格情報を作成する方法について説明します。最初に名前とパスワードで PSCredential オブジェクトを作成し、それを使用して資格情報資産を作成します。または、**Get-Credential** コマンドレットを使用し、プロンプトに従って名前とパスワードを入力することもできます。
 
@@ -92,17 +92,20 @@ Runbook または DSC 構成で資格情報資産を取得するには、**Get-A
 
 ![キャンバスに資格情報を追加する](media/automation-credentials/credential-add-canvas.png)
 
-次の図は、グラフィカルな Runbook で資格情報を使用する例を示したものです。この例では、[Azure リソースへの認証の構成](automation-configuring.md)で説明されているように、Runbook 用の認証を Azure リソースに提供するために使用されています。最初のアクティビティは、Azure サブスクリプションへのアクセス権を持つ資格情報を取得します。その後、**Add-AzureAccount** アクティビティはこの資格情報を使用して、その後にあるすべてのアクティビティに認証を提供します。**Get-AutomationPSCredential** は 1 つのオブジェクトを受け取るので、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#links-and-workflow)を使用します。
+次の図は、グラフィカルな Runbook で資格情報を使用する例を示したものです。この例では、「[Authenticate Runbooks with Azure AD User account (Azure AD ユーザー アカウントでの Runbook の認証)](automation-sec-configure-aduser-account.md)」で説明されているように、Runbook 用の認証を Azure リソースに提供するために使用されています。最初のアクティビティは、Azure サブスクリプションへのアクセス権を持つ資格情報を取得します。その後、**Add-AzureAccount** アクティビティはこの資格情報を使用して、その後にあるすべてのアクティビティに認証を提供します。**Get-AutomationPSCredential** は 1 つのオブジェクトを受け取るので、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#links-and-workflow)を使用します。
 
 ![キャンバスに資格情報を追加する](media/automation-credentials/get-credential.png)
 
 ## DSC での PowerShell 資格情報の使用
 Azure Automation の DSC 構成では **Get-AutomationPSCredential** を使用して資格情報資産を参照できますが、必要に応じて、パラメーターを使用して資格情報資産を渡すこともできます。詳細については、「[Azure Automation DSC での構成のコンパイル](automation-dsc-compile.md#credential-assets)」を参照してください。
 
-## 関連記事:
+## 次のステップ
 
-- [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
+- グラフィカル作成でのリンクの詳細については、「[グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)」を参照してください。
+- Automation のさまざまな認証方法を理解するには、「[Azure Automation のセキュリティ](automation-security-overview.md)」を参照してください。
+- グラフィカルな Runbook の使用を開始するには、「[初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)」を参照してください。
+- PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。 
 
  
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0615_2016-->

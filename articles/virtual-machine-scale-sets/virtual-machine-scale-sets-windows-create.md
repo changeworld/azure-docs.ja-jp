@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="06/10/2016"
 	ms.author="davidmu"/>
 
 # Azure PowerShell を使用した Windows 仮想マシン スケール セットの作成
@@ -84,7 +84,7 @@
 
 ### ストレージ アカウント
 
-スケール セットに作成した仮想マシンには、関連付けられているディスクを保存するストレージ アカウントが必要です。
+ストレージ アカウントは、オペレーティング システム ディスクとスケーリングに使用する診断データを格納する目的で、仮想マシンによって使用されます。可能であれば、スケール セットに作成した仮想マシンごとにストレージ アカウントを所有することをお勧めします。不可能な場合は、ストレージ アカウントあたりの VM を 20 個以下で計画します。この記事では、1 つのスケール セット内の 3 つの仮想マシンに 3 つのストレージ アカウントを作成する例を説明します。
 
 1. **$rgName** の値をストレージ アカウントに使用する名前に置き換えた後、変数を作成します。 
 
@@ -127,6 +127,8 @@
         Tags                : {}
         Context             : Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext
 
+5. 手順 1. から 4. を繰り返して、たとえば myst1、myst2、myst3 の 3 つのストレージ アカウントを作成します。
+
 ### Virtual Network
 
 仮想ネットワークは、スケール セット内の仮想マシンのために必要です。
@@ -165,7 +167,7 @@
 
     **True** が返された場合、提案した名前は一意です。
 
-3. **$pipName** の値を、パブリック IP に使用する名前に置き換えた後、変数を作成します。
+3. **$pipName** の値を、パブリック IP アドレスに使用する名前に置き換えた後、変数を作成します。
 
         $pipName = "public ip address name"
         
@@ -205,7 +207,7 @@
 
         $vmss = New-AzureRmVmssConfig -Location $locName -SkuCapacity 3 -SkuName "Standard_A0" -UpgradePolicyMode "manual"
         
-    この例では、3 つの仮想マシンを使用して作成されるスケール セットを示しています。スケール セットの容量について詳しくは、「[仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」をご覧ください。この手順では、セット内の仮想マシンのサイズ (SkuName と呼ばれます) も設定します。[仮想マシンのサイズ](..\virtual-machines\virtual-machines-windows-sizes.md)を確認し、自分のニーズに応じたサイズを調べます。
+    この例では、3 つの仮想マシンを使用して作成されるスケール セットを示しています。スケール セットの容量について詳しくは、「[仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」をご覧ください。この手順では、セット内の仮想マシンのサイズ (SkuName と呼ばれます) も設定します。[仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)に関するページを確認し、自分のニーズに応じたサイズを調べます。
     
 4. ネットワーク インターフェイス構成をスケール セット構成に追加します。
         
@@ -226,15 +228,15 @@
 
 #### オペレーティング システム プロファイル
 
-1. **$computerName** の値を使用するコンピューター名プレフィックスに置き換えた後、変数を作成します。 
+1. **$computerName** の値を、使用するコンピューター名プレフィックスに置き換えた後、変数を作成します。 
 
         $computerName = "computer name prefix"
         
-2. **$adminName** の値を仮想マシンの管理者アカウント名に置き換えた後、変数を作成します。
+2. **$adminName** の値を、仮想マシンの管理者アカウント名に置き換えた後、変数を作成します。
 
         $adminName = "administrator account name"
         
-3. **$adminPassword** の値をアカウント パスワードに置き換えた後、変数を作成します。
+3. **$adminPassword** の値を、アカウント パスワードに置き換えた後、変数を作成します。
 
         $adminPassword = "password for administrator accounts"
         
@@ -244,7 +246,7 @@
 
 #### ストレージ プロファイル
 
-1. **$storageProfile** の値をストレージ プロファイルに使用する名前に置き換えた後、変数を作成します。  
+1. **$storageProfile** の値を、ストレージ プロファイルに使用する名前に置き換えた後、変数を作成します。  
 
         $storeProfile = "storage profile name"
         
@@ -254,15 +256,15 @@
         $imageOffer = "WindowsServer"
         $imageSku = "2012-R2-Datacenter"
         
-    使用する他のイメージについて詳しくは、「[Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](..\virtual-machines\virtual-machines-windows-cli-ps-findimage.md)」をご覧ください。
+    使用する他のイメージについて詳しくは、[Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md)に関するページをご覧ください。
         
-3. **$vhdContainer** の値を仮想ハード ディスクが格納されているパス (https://mystorage.blob.core.windows.net/vhds など) に置き換えてから、変数を作成します。
+3. **$vhdContainers** の値を、仮想ハード ディスクが格納されているパス (https://mystorage.blob.core.windows.net/vhds など) を含むリストに置き換えた後、変数を作成します。
        
-        $vhdContainer = "URI of storage container"
+        $vhdContainers = @("https://myst1.blob.core.windows.net/vhds","https://myst2.blob.core.windows.net/vhds","https://myst3.blob.core.windows.net/vhds")
         
 4. ストレージ プロファイルを作成します。
 
-        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storeProfile -VhdContainer $vhdContainer -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
+        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storeProfile -VhdContainer $vhdContainers -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
 
 ### 仮想マシン スケール セット
 
@@ -299,11 +301,16 @@
 - Azure PowerShell - 次のコマンドを使用して情報を得ることができます。
 
         Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
+        
+        Or 
+        
+        Get-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
+        
 
 ## 次のステップ
 
-- 「[Manage virtual machines in a Virtual Machine Scale Set (仮想マシン スケール セットで仮想マシンを管理する)](virtual-machine-scale-sets-windows-manage.md)」を参照して、作成したスケール セットを管理します。
-- 「[自動スケールと仮想マシン スケール セット](virtual-machine-scale-sets-autoscale-overview.md)」の情報を使って、スケール セットの自動スケールを設定することを検討してください。
-- 「[仮想マシン スケール セットの使用を開始する](virtual-machine-scale-sets-vertical-scale-reprovision.md)」で垂直スケーリングの詳細を確認します。
+- 「[仮想マシン スケール セットで仮想マシンを管理する](virtual-machine-scale-sets-windows-manage.md)」の情報を参照して、作成したスケール セットを管理します。
+- 「[自動スケールと仮想マシン スケール セット](virtual-machine-scale-sets-autoscale-overview.md)」の情報を使用して、スケール セットの自動スケールを設定することを検討します。
+- 「[仮想マシン スケール セットを使用した垂直方向の自動スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)」で垂直スケーリングの詳細を確認します。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0615_2016-->

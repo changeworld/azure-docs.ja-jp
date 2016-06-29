@@ -171,10 +171,9 @@ WebSource でサポートされるプロパティの一覧については、「[
 | -------- | ----------- | -------- | 
 | type | type プロパティを **Web** に設定する必要があります。 | あり | 
 | Url | Web ソースへの URL | あり |
+| authenticationType | Anonymous または Basic。 | はい |
 | userName | 基本認証のユーザー名。 | はい (基本認証用)
 | パスワード | 基本認証のパスワード。 | はい (基本認証用)
-| authenticationType | 匿名、基本、WebApi。 | あり |
-| apiKey | WebApi 認証の ApiKey。 | はい (WebApi 認証用)|   
 
 ### 匿名認証を使用する
 
@@ -218,7 +217,7 @@ WebSource でサポートされるプロパティの一覧については、「[
 
 プロパティ | 説明 | 必須
 :-------- | :----------- | :--------
-type | データセットの型を **WebTable** に設定する必要があります。 | あり
+type | データセットの型。**WebTable** に設定する必要があります。 | あり
 path | テーブルを含むリソースの相対 URL。 | いいえ。パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 
 Index | リソースのテーブルのインデックス。HTML ページのテーブルのインデックスを取得する方法については、「[HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page)」を参照してください。 | あり
 
@@ -253,22 +252,22 @@ Index | リソースのテーブルのインデックス。HTML ページのテ�
 ## HTML ページのテーブルのインデックスを取得する
 
 1. **Excel 2016** を起動し、**[データ]** タブに切り替えます。  
-2. ツールバーの **[新しいクエリ]** をクリックし、**[その他のデータ ソースから]** をポイントし、**[Web から]** をクリックします。
+2. ツール バーの **[新しいクエリ]** をクリックし、**[その他のソースから]** をポイントし、**[Web から]** をクリックします。
 	
 	![Power Query メニュー](./media/data-factory-web-table-connector/PowerQuery-Menu.png) 
-3. **[Web から]** ダイアログ ボックスで、リンクされたサービスの JSON で使用する **URL** を入力し (例: https://en.wikipedia.org/wiki/)、データセットに指定するパスを入力し (例: AFI%27s\_100\_Years...100\_Movies)、**[OK]** をクリックします。 
+3. **[From Web (Web から)]** ダイアログ ボックスで、リンクされたサービスの JSON で使用する **URL** を入力し (例: https://en.wikipedia.org/wiki/)、データセットに指定するパスを入力し (例: AFI%27s\_100\_Years...100\_Movies)、**[OK]** をクリックします。 
 
 	![Web ダイアログから](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
 	この例で使用される URL: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies 
-4.  **[Access Web コンテンツ]** ダイアログ ボックスが表示された場合、適切な **[URL]**、**[認証]** を選択し、**[接続]** をクリックします。 
+4.  **[Web コンテンツへのアクセス]** ダイアログ ボックスが表示された場合、適切な **URL** と**認証**を選択し、**[接続]** をクリックします。 
 
 	![[Access Web コンテンツ] ダイアログ ボックス](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
-5.  ツリー ビューの**テーブル** アイテムをクリックしてテーブルのコンテンツを表示し、一番下にある **[編集]** ボタンをクリックします。  
+5.  ツリー ビューの**テーブル** アイテムをクリックしてテーブルのコンテンツを表示し、一番下にある **[編集]** をクリックします。  
 
 	![[ナビゲーター] ダイアログ](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
 
-5. **[クエリ エディター]** ウィンドウで、ツールバーの **[詳細エディター]** ボタンをクリックします。
+5. **[クエリ エディター]** ウィンドウで、ツール バーの **[詳細エディター]** をクリックします。
 
 	![[詳細エディター] ボタン](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)
 
@@ -284,6 +283,6 @@ Excel 2013 を使用している場合、[Microsoft Power Query for Excel](https
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0615_2016-->

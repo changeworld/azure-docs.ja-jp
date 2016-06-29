@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/10/2016"
+	ms.date="06/09/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -19,16 +19,10 @@
 
 # Azure ポータルを使用した、削除済み Azure SQL データベースの復元
 
-
 > [AZURE.SELECTOR]
+- [概要](sql-database-restore-deleted-database.md)
 - [Azure ポータル](sql-database-restore-deleted-database-portal.md)
 - [PowerShell](sql-database-restore-deleted-database-powershell.md)
-
-この記事では、削除済みの Azure SQL データベースを復元する方法について説明します。
-
-データベースが削除された場合、Azure SQL Database では、削除されたデータベースを削除された時点の状態に復元できます。Azure SQL Database では、データベースの保持期間にわたり、削除されたデータベースのバックアップを格納します。
-
-削除されたデータベースの保持期間は、データベースのサービス階層に基づく日数とデータベースが存在していた日数のどちらか短い方になります。データベースのリテンション期間の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページをお読みください。
 
 ## 復元するデータベースの選択 
 
@@ -46,13 +40,17 @@ Azure ポータルでデータベースを復元するには、次の手順を�
 ## 次のステップ
 
 - [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
-
-
+- [削除されたデータベースの復元](sql-database-restore-deleted-database.md)
+- [PowerShell を使用して削除済みデータベースを復元する](sql-database-restore-deleted-database-powershell.md)
+- [REST API を使用して削除済みデータベースを復元する](https://msdn.microsoft.com/library/azure/mt163685.aspx)
+- [SQL Database 自動バックアップ](sql-database-automated-backups.md)
 
 ## その他のリソース
 
+- [ポイントインタイム リストア](sql-database-point-in-time-restore.md)
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
+- [geo リストア](sql-database-geo-restore.md)
+- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
+- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->

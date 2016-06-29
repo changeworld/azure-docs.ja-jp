@@ -23,7 +23,8 @@
 
 この記事では、**監視と管理アプリ**を使用して、パイプラインを監視、管理、デバッグする方法、およびアラートを作成して障害について通知を受け取る方法について説明します。監視と管理アプリの使用方法の詳細については、次のビデオを視聴することもできます。
    
-> [AZURE.VIDEO how-to-monitor--manage-big-data-pipelines-with-azure-data-factory]
+
+> [AZURE.VIDEO azure-data-factory-monitoring-and-managing-big-data-piplines]
       
 ## 監視と管理アプリの起動
 監視と管理アプリを起動するには、該当するデータ ファクトリの **[DATA FACTORY]** ブレードで **[監視と管理]** タイルをクリックします。
@@ -313,4 +314,4 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
     
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0615_2016-->

@@ -111,4 +111,4 @@ Azure が一時ディスクを使用する方法については、[Microsoft Azu
 ## 次のステップ
 - [追加のデータ ディスクをアタッチする](virtual-machines-windows-attach-disk-portal.md)ことで、仮想マシンに使用できる記憶域を増やすことができます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0615_2016-->

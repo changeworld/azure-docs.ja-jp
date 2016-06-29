@@ -22,6 +22,7 @@
 
 
 > [AZURE.SELECTOR]
+- [概要](sql-database-firewall-configure.md)
 - [Azure ポータル](sql-database-configure-firewall-settings.md)
 - [TSQL](sql-database-configure-firewall-settings-tsql.md)
 - [PowerShell](sql-database-configure-firewall-settings-powershell.md)
@@ -52,11 +53,11 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
  
 		EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
  
- このストアド プロシージャの詳細については、[sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) に関するページと [sp\_delete\_firewall\_rule](https://msdn.microsoft.com/library/dn270024.aspx) に関するページをご覧ください。
+ このストアド プロシージャの詳細については、[sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) に関するページと [sp\_delete\_firewall\_rule](https://msdn.microsoft.com/library/dn270024.aspx) に関するページを参照してください。
 
 ## データベース レベルのファイアウォール規則
 
-**CONTROL** 権限が付与されているデータベース ユーザー (データベース所有者など) のみが、データベース レベルのファイアウォール ルールを作成できます。
+**CONTROL** 権限が付与されているデータベース ユーザー (データベース所有者など) のみが、データベース レベルのファイアウォール規則を作成できます。
 
 1. サーバーレベルのファイアウォールを IP アドレスで作成した後、クラシック ポータルまたは SQL Server Management Studio からクエリ ウィンドウを起動します。
 2. データベースレベルのファイアウォール規則を作成するデータベースに接続します。
@@ -70,10 +71,10 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
  
 		EXEC sp_delete_database_firewall_rule @name = N'ContosoFirewallRule'
 
-このストアド プロシージャの詳細については、[sp\_set\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270010.aspx) に関するページと [sp\_delete\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270030.aspx) に関するページをご覧ください。
+このストアド プロシージャの詳細については、[sp\_set\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270010.aspx) に関するページと [sp\_delete\_database\_firewall\_rule](https://msdn.microsoft.com/library/dn270030.aspx) に関するページを参照してください。
 
 ## 次のステップ
 
-データベース作成のチュートリアルについては、「[SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」をご覧ください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、[クライアントから SQL Database にすばやく接続するためのコード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関するページをご覧ください。データベースに移動する方法については、[データベースのアクセスとログイン セキュリティの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)に関するページをご覧ください。
+データベース作成のチュートリアルについては、「[SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」を参照してください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、[クライアントから SQL Database にすばやく接続するためのコード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関するページを参照してください。データベースに移動する方法については、[データベースへのアクセスとログイン セキュリティの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0615_2016-->
