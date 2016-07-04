@@ -51,7 +51,7 @@ Application Insights は、開発チームを支援することを目的とし�
 
 SDK は増え続けるプラットフォームに対応します。最新の一覧を次に示します。
 
- * [ASP.NET サーバー][greenbrown] (Azure または IIS サーバー上)
+ * [ASP.NET サーバー][greenbrown] \(Azure または IIS サーバー上)
  * [Azure Cloud Services](app-insights-cloudservices.md)
  * [J2EE サーバー][java]
  * [Web ページ][client]\: HTML+JavaScript

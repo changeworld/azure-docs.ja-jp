@@ -70,11 +70,11 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 Azure BLOB ストレージが HDInsight の既定のストレージであるため、HiveQL から **/example/data/sample.log** を使用してファイルにアクセスすることもできます。
 
-> [AZURE.NOTE] 上の構文 ****wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、****wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log** のように指定します。
+> [AZURE.NOTE] 上の構文 **wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、**wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log** のように指定します。
 
 ##<a id="job"></a>サンプル ジョブ: 区切られたデータへの列の投影
 
-次の HiveQL ステートメントは、****wasb:///example/data** ディレクトリに格納されている区切りデータに列を投影します。
+次の HiveQL ステートメントは、**wasb:///example/data** ディレクトリに格納されている区切りデータに列を投影します。
 
     set hive.execution.engine=tez;
 	DROP TABLE log4jLogs;

@@ -281,8 +281,7 @@ Basic、Standard、および Premium 階層を使用している場合は、管�
     WHERE database_name = 'todoitem_db'
     ORDER BY start_time DESC
 
-> [AZURE.NOTE]
-このクエリは、サーバー上の **master** データベースで実行してください。**sys.resource\_stats** ビューは、master データベースにのみ存在します。
+> [AZURE.NOTE]このクエリは、サーバー上の **master** データベースで実行してください。**sys.resource\_stats** ビューは、master データベースにのみ存在します。
 
 結果には、CPU (階層の制限の割合 (%))、ストレージ (MB)、物理データの読み取り (階層の制限の割合 (%))、ログの書き込み (階層の制限の割合 (%))、メモリ (階層の制限の割合 (%))、worker 数、セッション数などの有用なメトリックが含まれます。
 
@@ -295,8 +294,7 @@ Basic、Standard、および Premium 階層を使用している場合は、管�
     and event_type like 'throttling%'
     order by start_time desc
 
-> [AZURE.NOTE]
-このクエリは、サーバー上の **master** データベースで実行してください。**sys.event\_log** ビューは、master データベースにのみ存在します。
+> [AZURE.NOTE]このクエリは、サーバー上の **master** データベースで実行してください。**sys.event\_log** ビューは、master データベースにのみ存在します。
 
 <a name="AdvancedIndexing" ></a>
 ### 高度なインデックス作成
@@ -309,8 +307,7 @@ Basic、Standard、および Premium 階層を使用している場合は、管�
 
 現実の世界にたとえるには、本や技術マニュアルを考えてみてください。各ページの内容がレコード、ページ番号がクラスター化インデックス、本の末尾の索引が非クラスター化インデックスです。索引の各エントリはページ番号 (クラスター化インデックス) を指しています。
 
-> [AZURE.NOTE]
-既定では、Azure Mobile Services の JavaScript バックエンドは、**\_createdAt** をクラスター化インデックスとして設定します。この列を削除する場合や、別のクラスター化インデックスが必要な場合は、以下の[クラスター化インデックスの設計ガイドライン](#ClusteredIndexes)に必ず従ってください。.NET バックエンドでは、`EntityData` クラスにより、`[Index(IsClustered = true)]` 注釈を使用して `CreatedAt` がクラスター化インデックスとして定義されます。
+> [AZURE.NOTE]既定では、Azure Mobile Services の JavaScript バックエンドは、**\_createdAt** をクラスター化インデックスとして設定します。この列を削除する場合や、別のクラスター化インデックスが必要な場合は、以下の[クラスター化インデックスの設計ガイドライン](#ClusteredIndexes)に必ず従ってください。.NET バックエンドでは、`EntityData` クラスにより、`[Index(IsClustered = true)]` 注釈を使用して `CreatedAt` がクラスター化インデックスとして定義されます。
 
 <a name="ClusteredIndexes"></a>
 #### クラスター化インデックスの設計ガイドライン

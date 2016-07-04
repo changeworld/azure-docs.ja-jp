@@ -385,7 +385,7 @@ Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前
 	#LOAD LIBRARIES​
 	from pyspark.mllib.regression import LinearRegressionWithSGD, LinearRegressionModel
 	
-	# LOAD MODEL AND SCORE USING ** SCALED VARIABLES **
+	# LOAD MODEL AND SCORE USING **SCALED VARIABLES**
 	savedModel = LinearRegressionModel.load(sc, linearRegFileLoc)
 	predictions = oneHotTESTregScaled.map(lambda features: (float(savedModel.predict(features))))
 	
@@ -547,7 +547,7 @@ BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression\_2016-05-0317\_23\_
 
 Spark には、Livy と呼ばれるコンポーネントを使用して、REST インターフェイス経由でバッチ ジョブや対話型クエリをリモートから送信できるメカニズムが備えられています。HDInsight Spark クラスターでは Livy が既定で有効になっています。Livy の詳細については、「[Livy を使用して Spark ジョブをリモートで送信する](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。
 
-Livy を使用して、Azure BLOB に格納されているファイルをバッチ処理でスコア付けし、結果を別の BLOB に書き込むジョブをリモートから送信できます。それには、[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。**Microsoft Azure Storage Explorer** や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。この例では、スクリプトを ******wasb:///example/python/ConsumeGBNYCReg.py*** にアップロードしています。
+Livy を使用して、Azure BLOB に格納されているファイルをバッチ処理でスコア付けし、結果を別の BLOB に書き込むジョブをリモートから送信できます。それには、[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。**Microsoft Azure Storage Explorer** や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。この例では、スクリプトを ***wasb:///example/python/ConsumeGBNYCReg.py*** にアップロードしています。
 
 
 >[AZURE.NOTE] 必要なアクセス キーは、Spark クラスターに関連付けられているストレージ アカウント用のポータルで見つけることができます。

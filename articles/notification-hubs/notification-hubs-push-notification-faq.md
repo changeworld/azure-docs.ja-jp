@@ -197,7 +197,7 @@ Azure Notification Hubs では [Azure クラシック ポータル]でテレメ�
 [登録の一括エクスポートと変更]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com
 [完全なサンプル]: https://github.com/Azure/azure-notificationhubs-samples
-[Azure Mobile Apps]: https://azure.microsoft.com/ja-JP/services/app-service/mobile/
-[App Service の価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
+[Azure Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
+[App Service の価格]: https://azure.microsoft.com/pricing/details/app-service/
 
 <!---HONumber=AcomDC_0622_2016-->

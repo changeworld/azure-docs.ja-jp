@@ -221,11 +221,11 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 
 [2] Wikipedia の記事: [Accuracy and precision (正確性と精度)](http://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド (http://www.the-modeling-agency.com/crisp-dm.pdf)
+\[3] [CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド](http://www.the-modeling-agency.com/crisp-dm.pdf)
 
-[4] Big Data Marketing : Engage Your Customers More Effectively and Drive Value (ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する) (http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+\[4] [ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する ](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] 「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリー)](http://gallery.cortanaintelligence.com/)」 (http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) の「Telco churn model template (Telco の顧客離れモデルのテンプレート)」
+\[5] 「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリーの)](http://gallery.cortanaintelligence.com/)」 「[Telco churn model template (Telco の顧客離れモデルのテンプレート)](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5)」
 ##付録
 
 ![][10]

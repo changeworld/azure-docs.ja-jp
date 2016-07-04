@@ -241,7 +241,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 
 `PutCbsToken()` メソッドは、サービスに対する TCP 接続を表す *connection* ([AMQP .NET Lite ライブラリ](https://github.com/Azure/amqpnetlite)に用意されている AMQP Connection クラス インスタンス) と、送信する SAS トークンである *sasToken* パラメーターを受け取ります。
 
-> [AZURE.NOTE] (SAS トークンを送信する必要がないときに使用されるユーザー名とパスワードを含む既定の PLAIN ではなく) **EXTERNAL に設定された SASL 認証メカニズム**を使用して、接続が作成されている点に注意してください。
+> [AZURE.NOTE] \(SAS トークンを送信する必要がないときに使用されるユーザー名とパスワードを含む既定の PLAIN ではなく) **EXTERNAL に設定された SASL 認証メカニズム**を使用して、接続が作成されている点に注意してください。
 
 次に、発行元は、SAS トークンの送信とサービスからの応答 (トークンの検証結果) の受信に使用される 2 つの AMQP リンクを作成します。
 

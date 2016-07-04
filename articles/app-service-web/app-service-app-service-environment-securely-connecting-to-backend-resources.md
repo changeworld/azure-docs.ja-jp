@@ -46,7 +46,7 @@ SQL Server の構成には一般的に、ポート 1433 でリッスンしてい
 このエンドポイントへのトラフィックを制限する方法は 2 つあります。
 
 
-- [ネットワーク アクセス制御リスト][NetworkAccessControlLists] (ネットワーク ACL)
+- [ネットワーク アクセス制御リスト][NetworkAccessControlLists] \(ネットワーク ACL)
 
 - [ネットワーク セキュリティ グループ][NetworkSecurityGroups]
 

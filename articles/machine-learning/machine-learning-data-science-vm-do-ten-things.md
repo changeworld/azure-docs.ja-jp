@@ -404,7 +404,7 @@ Azure Data Lake Storage は、ビッグ データの分析ワークロード用�
 ![](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 
-Visual Studio では、Blob Storage からのデータ読み取り、各種データ操作、特徴エンジニアリングを実行するほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。Blob Storage 内のデータを参照するときは ****wasb://** を、Azure Data Lake 内のデータを参照するときは ****swbhdfs://** を使用します。
+Visual Studio では、Blob Storage からのデータ読み取り、各種データ操作、特徴エンジニアリングを実行するほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。Blob Storage 内のデータを参照するときは **wasb://** を、Azure Data Lake 内のデータを参照するときは ****swbhdfs://** を使用します。
 
 ![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
