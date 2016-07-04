@@ -2,16 +2,16 @@
     pageTitle="チュートリアル: Azure Active Directory と Zoho Mail の統合 | Microsoft Azure" 
     description="Azure Active Directory で Zoho Mail を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
+    ms.date="06/20/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と Zoho Mail の統合
@@ -38,7 +38,7 @@
 
 ###Zoho Mail のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-zoho-mail-tutorial/IC700993.png "Active Directory")
 
@@ -66,11 +66,11 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Zoho Mail に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (バイナリ証明書をテキスト ファイルに変換する方法)」をご覧ください。
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Zoho Mail に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[Zoho Mail]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **[Zoho Mail]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-zoho-mail-tutorial/IC789603.png "Configure Single Sign-On")
 
@@ -78,9 +78,14 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-zoho-mail-tutorial/IC789604.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Zoho Mail サインオン URL]** テキストボックスに、"**http://company.ZohoMail.com*"" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-zoho-mail-tutorial/IC789605.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-zoho-mail-tutorial/IC789605.png "アプリケーション URL の構成")
+
+	a.**[Zoho Mail サインオン URL]** ボックスに、`http://<company name>.ZohoMail.com` という形式で URL を入力します。
+
+	b.**[次へ]** をクリックします。
+
 
 4.  **[Zoho Mail でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -100,18 +105,18 @@
 
     ![SAML 認証の詳細](./media/active-directory-saas-zoho-mail-tutorial/IC789609.png "SAML 認証の詳細")
 
-    1.  Azure ポータルの **[Zoho Mail でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーして、**[ログイン URL]** テキストボックスに貼り付けます。
-    2.  Azure ポータルの **[Zoho Mail でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーして、**[ログアウト URL]** テキストボックスに貼り付けます。
-    3.  Azure ポータルの **[Zoho Mail でのシングル サインオンの構成]** ダイアログ ページで **[パスワード変更 URL]** の値をコピーして、**[パスワード変更 URL]** テキストボックスに貼り付けます。
+    1.  Azure クラシック ポータルの **[Zoho Mail でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーして、**[ログイン URL]** テキスト ボックスに貼り付けます。
+    2.  Azure クラシック ポータルの **[Zoho Mail でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーして、**[ログアウト URL]** テキスト ボックスに貼り付けます。
+    3.  Azure クラシック ポータルの **[Zoho Mail でのシングル サインオンの構成]** ダイアログ ページで **[パスワード変更 URL]** の値をコピーして、**[パスワード変更 URL]** テキスト ボックスに貼り付けます。
     4.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
-        >[AZURE.TIP]詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
+        >[AZURE.TIP] 詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
     5.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[公開キー]** テキストボックスに貼り付けます。
     6.  **[アルゴリズム]** として **[RSA]** を選択します。
     7.  **[OK]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-zoho-mail-tutorial/IC789610.png "Configure Single Sign-On")
 
@@ -123,22 +128,22 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
 1.  **Zoho Mail** 企業サイトに管理者としてログインします。
 
-2.  **[Control Panel] > [Mail & Docs]** に移動します。
+2.  **[コントロール パネル] > [メールとドキュメント]** に移動します。
 
-3.  **[User Details] > [Add User]** に移動します。
+3.  **[ユーザーの詳細]、[ユーザーの追加]** の順に移動します。
 
     ![ユーザーの追加](./media/active-directory-saas-zoho-mail-tutorial/IC789611.png "ユーザーの追加")
 
-4.  **[Add users]** ダイアログで、次の手順を実行します。
+4.  **[ユーザーの追加]** ダイアログで、次の手順を実行します。
 
     ![ユーザーの追加](./media/active-directory-saas-zoho-mail-tutorial/IC789612.png "ユーザーの追加")
 
     1.  関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**名**、**姓**、**電子メール ID**、**パスワード**を入力します。
     2.  **[OK]** をクリックします。  
 
-        >[AZURE.NOTE]Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
+        >[AZURE.NOTE] Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
 
->[AZURE.NOTE]Zoho Mail から提供されている他の Zoho Mail ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Zoho Mail から提供されている他の Zoho Mail ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -146,7 +151,7 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
 ###ユーザーを Zoho Mail に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Zoho Mail** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -158,4 +163,4 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0622_2016-->

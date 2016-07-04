@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="sql-database"
-	ms.workload="sql-database"
+	ms.workload="drivers"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/20/2016"
+	ms.date="06/16/2016"
 	ms.author="tobiast"/>
 
 # .NET (C#) を使用して SQL Database に接続する
@@ -37,8 +37,16 @@
 * [ADO.NET を使用した SQL 接続の概念実証](https://msdn.microsoft.com/library/mt718320.aspx)
 * [ADO.NET を使用して SQL に弾性的に接続する](https://msdn.microsoft.com/library/mt703195.aspx)
 
-## その他のリソース
+## 次のステップ
 
-マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」をご覧ください。
+* [認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)
+* [Mobile Services .NET バックエンドによる既存の SQL データベースを使用するサービスの作成](../mobile-services/mobile-services-dotnet-backend-use-existing-sql-database.md)
+* 「[SQL Database の開発: 概要](sql-database-develop-overview.md)」の確認
+* [Microsoft ADO.Net Driver for SQL Server](https://msdn.microsoft.com/library/mt657768.aspx) の詳細
 
-<!---HONumber=AcomDC_0615_2016-->
+## その他のリソース 
+
+* [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* すべての [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)を確認
+
+<!---HONumber=AcomDC_0622_2016-->

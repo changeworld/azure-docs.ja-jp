@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="fashah;garye;bradsev" />
 
 #Pandas を使用して Azure BLOB ストレージのデータを探索する
@@ -115,4 +115,4 @@
 		#correlation between column_a and column_b
 		dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

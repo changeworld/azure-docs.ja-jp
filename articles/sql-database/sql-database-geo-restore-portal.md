@@ -10,9 +10,9 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/10/2016"
+	ms.date="06/17/2016"
 	ms.author="sstein"
-	ms.workload="data-management"
+	ms.workload="sqldb-bcdr"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
 
@@ -41,14 +41,12 @@ Azure ポータルでデータベースを復元するには、次の手順を�
 
 ## 次のステップ
 
-- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
-- [災害復旧訓練](sql-database-disaster-recovery-drills.md)
-
+- Azure ポータルを使用して geo 冗長バックアップから Azure SQL Database を復元する方法の詳細な手順については、[Azure ポータルを使用した geo リストア](sql-database-geo-restore-portal.md)に関するページをご覧ください。
+- geo 冗長バックアップから Azure SQL Database を復元する方法の詳細な手順については、「[PowerShell を使用した geo リストア](sql-database-geo-restore.md)」をご覧ください。
+- 障害から回復する方法の詳細については、[障害からの回復](sql-database-disaster-recovery.md)に関するページをご覧ください。
 
 ## その他のリソース
 
-- [geo リストア](sql-database-geo-restore.md)
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
+- [ビジネス継続性のシナリオ](sql-database-business-continuity-scenarios.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

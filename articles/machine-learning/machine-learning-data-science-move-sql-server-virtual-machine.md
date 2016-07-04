@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="fashah;bradsev" />
 
 # Azure 仮想マシン上の SQL Server にデータを移動する
 
-このトピックでは、フラット ファイル (CSV 形式または TSV 形式) またはオンプレミスの SQL Server から、Azure 仮想マシン上の SQL Server にデータを移動するためのオプションについて説明します。クラウドにデータを移動するためのこれらのタスクは、Azure で提供される Cortana Analytics Process の一部です。
+このトピックでは、フラット ファイル (CSV 形式または TSV 形式) またはオンプレミスの SQL Server から、Azure 仮想マシン上の SQL Server にデータを移動するためのオプションについて説明します。このクラウドへのデータ移動タスクは、Team Data Science Process の一部です。
 
 Machine Learning 用に Azure SQL データベースにデータを移動するためのオプションに関する説明は、「[Azure Machine Learning 用に Azure SQL データベースにデータを移動する](machine-learning-data-science-move-sql-azure.md)」を参照してください。
 
-次の**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
+次の**メニュー**は、Team Data Science Process (TDSP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
 
 [AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
@@ -57,7 +57,7 @@ Machine Learning 用に Azure SQL データベースにデータを移動する�
 3. [SQL Server のグラフィカル組み込みユーティリティ (インポート/エクスポート、SSIS)](#sql-builtin-utilities)
 
 
-### <a name="insert-tables-bcp"></a>コマンド ライン一括コピー ユーティリティ (BCP)
+### <a name="insert-tables-bcp">コマンド ライン一括コピー ユーティリティ (BCP)</a>
 
 BCP は、SQL Server と一緒にインストールされるコマンド ライン ユーティリティであり、データを移動する最も簡単な方法の 1 つです。これは、3 つの異なる SQL Server (オンプレミスの SQL Server、SQL Azure、および Azure での SQL Server VM) すべて機能します。
 
@@ -129,7 +129,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 	Set-ExecutionPolicy Restricted #reset the execution policy
 
 
-### <a name="insert-tables-bulkquery"></a>一括挿入 SQL クエリ
+### <a name="insert-tables-bulkquery">一括挿入 SQL クエリ</a>
 
 [一括挿入 SQL クエリ](https://msdn.microsoft.com/library/ms188365)は、行/列ベースのファイルからデータをデータベースにインポートする場合に使用できます (サポートされるタイプについては「[一括エクスポートまたは一括インポートのデータの準備 (SQL Server)](https://msdn.microsoft.com/library/ms188609)」のトピックで説明されています)。
 
@@ -152,7 +152,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
     	)
  	  
 
-### <a name="sql-builtin-utilities"></a>SQL Server の組み込みユーティリティ
+### <a name="sql-builtin-utilities">SQL Server の組み込みユーティリティ</a>
 
 SQL Server 統合サービス (SSIS) を使用して、フラット ファイルから Azure の SQL Server VM にデータをインポートすることができます。SSIS は 2 つの Studio 環境で使用できます。詳細については、「[統合サービス (SSIS) と Studio 環境](https://technet.microsoft.com/library/ms140028.aspx)」を参照してください:。
 
@@ -198,7 +198,7 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 	
 4. 「[ファイル ソースからのデータの移動](#filesource_to_sqlonazurevm)」セクションで説明されているいずれかの方法を使用して、フラット ファイルのデータを SQL Server に移動します。
 
-### <a name="sql-migration"></a>SQL Database 移行ウィザード
+### <a name="sql-migration">SQL Database 移行ウィザード</a>
 
 [SQL Server データベース移行ウィザード](http://sqlazuremw.codeplex.com/)は、2 つの SQL server インスタンス間でデータを移動するための使いやすい方法を提供します。これにより、ユーザーは、ソースと移動先テーブルの間のデータ スキーマをマップし、列のタイプおよびその他のさまざまな機能を選択できます。これは、内部で一括コピー (BCP) を使用します。次に、SQL データベースの移行ウィザードのようこそ画面のスクリーン ショットを示します。
 
@@ -224,4 +224,4 @@ SQL Server は以下のものをサポートします。
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

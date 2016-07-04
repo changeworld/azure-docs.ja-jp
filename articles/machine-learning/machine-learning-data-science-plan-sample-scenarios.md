@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Machine Learning の Advanced Analytics Process and Technology 用のシナリオ | Microsoft Azure"
-	description="Azure Machine Learning で高度な予測分析プロセスを行うための適切なシナリオを選択します。"
+	description="Team Data Science Process での高度な予測分析の実行に適したシナリオを選択します。"
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="bradsev" />
 
 
 # Azure Machine Learning での高度な分析のシナリオ
 
-この記事では、Cortana Analytics Process で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。データの特性、ソースの場所、および Azure でのターゲット リポジトリによって決まる、シーケンス処理で使用できるオプションを示します。
+この記事では、Team Data Science Process (TDSP) で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。TDSP は、チームが共同でインテリジェントなアプリケーションを構築するための体系的手法を提供します。ここで示すシナリオでは、データ処理ワークフローで使用できるオプションを紹介します。このオプションは、データの特性、ソースの場所、および Azure でのターゲット リポジトリによって異なります。
 
 最後のセクションに、データと目標に適したサンプル シナリオを選択するための**デシジョン ツリー**を示します。
 
@@ -228,11 +228,11 @@
 
 SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを 1 つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。これは、SQL Server Management Studio のオブジェクト エクスプローラー GUI か、同等の TRANSACT-SQL コマンドを使用して行います。
 
-1. ソースの場所にあるデータベースをデタッチします。詳細については、 [データベースのデタッチ](https://technet.microsoft.com/library/ms191491(v=sql.110).aspx) をご覧ください。
+1. ソースの場所にあるデータベースをデタッチします。詳細については、「データベースのデタッチhttps://technet.microsoft.com/library/ms191491(v=sql.110).aspx)」をご覧ください。
 2. Windows エクスプローラーや Windows コマンド プロンプト ウィンドウで、デタッチされたデータベース ファイルとログ ファイルを Azure の SQL Server VM 上のターゲットの場所にコピーします。
-3. コピーしたファイルを対象の SQL Server インスタンスにアタッチします。詳細については、[データベースのアタッチ](https://technet.microsoft.com/library/ms190209(v=sql.110).aspx)をご覧ください。
+3. コピーしたファイルを対象の SQL Server インスタンスにアタッチします。詳細については、「データベースのアタッチhttps://technet.microsoft.com/library/ms190209(v=sql.110).aspx)」をご覧ください。
 
-[デタッチとアタッチを使用してデータベースを移動する (Transact-SQL)](https://technet.microsoft.com/library/ms187858(v=sql.110).aspx)
+デタッチとアタッチを使用してデータベースを移動する (Transact-SQL)https://technet.microsoft.com/library/ms187858(v=sql.110).aspx
 
 ## <a name="largedbtohive"></a>シナリオ #7: ローカル ファイルのビッグ データ (Azure HDInsight Hadoop クラスターの Hive データベースを対象)
 
@@ -296,8 +296,8 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 Advanced Analytics Process and Technology とパブリック データセットを使用する Azure Machine Learning の完全な チュートリアルについては、以下を参照してください。
 
 
-* [Cortana Analytics Process の活用: SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)
-* [Cortana Analytics Process の活用: HDInsight Hadoop クラスターを使用する](machine-learning-data-science-process-hive-walkthrough.md)
+* [Team Data Science Process の活用: SQL Sever の使用](machine-learning-data-science-process-sql-walkthrough.md)。
+* [Team Data Science Process の活用: HDInsight Hadoop クラスターの使用](machine-learning-data-science-process-hive-walkthrough.md)。
 
 
 [1]: ./media/machine-learning-data-science-plan-sample-scenarios/dsp-plan-small-in-aml.png
@@ -314,4 +314,4 @@ Advanced Analytics Process and Technology とパブリック データセット�
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

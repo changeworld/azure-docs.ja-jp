@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/28/2016" 
+	ms.date="06/04/2016" 
 	ms.author="ireiter"/>
 
 
@@ -290,4 +290,4 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 [6]: ./media/machine-learning-r-csharp-binomial-distribution/binomial_6.png
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0622_2016-->

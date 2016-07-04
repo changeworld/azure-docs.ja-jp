@@ -88,7 +88,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 **前提条件** | **詳細**
 --- | ---
-**構成サーバー**| Windows Server 2012 R2 を実行しているオンプレミスの物理マシンまたは仮想マシンが必要です。すべてのオンプレミス Site Recovery コンポーネントがこのマシンにインストールされます。<br/><br/>VMware VM のレプリケーションでは、高可用性 VMware VM としてこのサーバーをデプロイすることをお勧めします。物理マシンをレプリケートする場合は、このマシンを物理サーバーにすることができます。<br/><br/> VM と物理サーバーのどちらをフェールオーバーしたかに関係なく、Azure からオンプレミス サイトへのフェールバック先は常に VMware VM になります。構成サーバーを VMware VM としてデプロイしていない場合、フェールバックのトラフィックを受信するために、別のマスター ターゲット サーバーを VMware VM としてセットアップする必要があります。<br/><br/>サーバーが VMware VM の場合、ネットワーク アダプターの種類が VMXNET3 である必要があります。別の種類のネットワーク アダプターを使用している場合、vSphere 5.5 サーバーに [VMware アップデート](https://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&docType=kc&externalId=2110245&sliceId=1&docTypeID=DT_KB_1_1&dialogID=26228401&stateId=1)をインストールする必要があります。<br/><br/>サーバーには、静的 IP アドレスが必要です。<br/><br/>サーバーはドメインコントローラーであってはなりません。<br/><br/>サーバーのホスト名は、15 文字以内で指定します。<br/><br/>オペレーティング システムは英語版に限定されます。<br/><br/> 構成サーバーに VMware vSphere PowerCLI 6.0 をインストールする必要があります。<br/><br/>構成サーバーは、インターネットにアクセスできる必要があります。次のような発信アクセスが必要です。<br/><br/>Site Recovery コンポーネントのセットアップ中に実行される HTTP 80 での一時的なアクセス (MySQL をダウンロードするため)<br/><br/>レプリケーション管理のための HTTPS 443 での継続的な発信アクセス<br/><br/>レプリケーション トラフィックのための HTTPS 9443 での継続的な発信アクセス (このポートは変更可能)<br/><br/>サーバーには、Azure に接続できるように、*.hypervrecoverymanager.windowsazure.com、*.accesscontrol.windows.net、*.backup.windowsazure.com、*.blob.core.windows.net、*.store.core.windows.net の各 URL へのアクセスも必要となります。<br/><br/>サーバーで IP アドレス ベースのファイアウォール規則を使用する場合、規則で Azure への通信が許可されていることを確認します。[Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (433) プロトコルを許可する必要があります。<br/><br/>ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します。<br/><br/>MySQL をダウンロードするために、.http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi を許可します。
+**構成サーバー**| Windows Server 2012 R2 を実行しているオンプレミスの物理マシンまたは仮想マシンが必要です。すべてのオンプレミス Site Recovery コンポーネントがこのマシンにインストールされます。<br/><br/>VMware VM のレプリケーションでは、高可用性 VMware VM としてこのサーバーをデプロイすることをお勧めします。物理マシンをレプリケートする場合は、このマシンを物理サーバーにすることができます。<br/><br/> VM と物理サーバーのどちらをフェールオーバーしたかに関係なく、Azure からオンプレミス サイトへのフェールバック先は常に VMware VM になります。構成サーバーを VMware VM としてデプロイしていない場合、フェールバックのトラフィックを受信するために、別のマスター ターゲット サーバーを VMware VM としてセットアップする必要があります。<br/><br/>サーバーが VMware VM の場合、ネットワーク アダプターの種類が VMXNET3 である必要があります。別の種類のネットワーク アダプターを使用している場合、vSphere 5.5 サーバーに [VMware アップデート](https://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&docType=kc&externalId=2110245&sliceId=1&docTypeID=DT_KB_1_1&dialogID=26228401&stateId=1)をインストールする必要があります。<br/><br/>サーバーには、静的 IP アドレスが必要です。<br/><br/>サーバーはドメインコントローラーであってはなりません。<br/><br/>サーバーのホスト名は、15 文字以内で指定します。<br/><br/>オペレーティング システムは英語版に限定されます。<br/><br/> 構成サーバーに VMware vSphere PowerCLI 6.0 をインストールする必要があります。<br/><br/>構成サーバーは、インターネットにアクセスできる必要があります。次のような発信アクセスが必要です。<br/><br/>Site Recovery コンポーネントのセットアップ中に実行される HTTP 80 での一時的なアクセス (MySQL をダウンロードするため)<br/><br/>レプリケーション管理のための HTTPS 443 での継続的な発信アクセス<br/><br/>レプリケーション トラフィックのための HTTPS 9443 での継続的な発信アクセス (このポートは変更可能)<br/><br/>サーバーには、Azure に接続できるように、*.hypervrecoverymanager.windowsazure.com、*.accesscontrol.windows.net、*.backup.windowsazure.com、*.blob.core.windows.net、*.store.core.windows.net の各 URL へのアクセスも必要となります。<br/><br/>サーバーで IP アドレス ベースのファイアウォール規則を使用する場合、規則で Azure への通信が許可されていることを確認します。[Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) プロトコルを許可する必要があります。<br/><br/>ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します。<br/><br/>MySQL をダウンロードするために、http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi を許可します。
 
 
 ## VMware vCenter/vSphere ホストの前提条件
@@ -145,10 +145,10 @@ Site Recovery のプロセス サーバーは、vSphere ホストまたはホス
 1.	構成サーバーに使用するマシンが[前提条件](#configuration-server-prerequisites)に準拠していることを確認します。具体的には、マシンが次の設定でインターネットに接続されていることを確認します。
 
 	- *.hypervrecoverymanager.windowsazure.com、*.accesscontrol.windows.net、*.backup.windowsazure.com、*.blob.core.windows.net、*.store.core.windows.net の各 URL へのアクセスを許可
-	- MySQL をダウンロードするために [http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi](http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi) へのアクセスを許可
-	- [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (433) プロトコルを使用した Azure へのファイアウォール通信を許可
+- MySQL をダウンロードするために [http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi](http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi) へのアクセスを許可
+	- [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) プロトコルを使用した Azure へのファイアウォール通信を許可
 
-2.	構成サーバーに [VMware vSphere PowerCLI 6.0](https://developercenter.vmware.com/tool/vsphere_powercli/6.0) をダウンロードしてインストールします。
+2.	構成サーバーに [VMware vSphere PowerCLI 6.0](https://developercenter.vmware.com/tool/vsphere_powercli/6.0) をダウンロードしてインストールします。(現在、バージョン 6.0 の R リリースを含む PowerCLI の他のバージョンはサポートされていません。)
 
 
 ## Recovery Services コンテナーを作成する
@@ -532,10 +532,9 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 
 ソース オペレーティング システム | モビリティ サービスのインストール ファイル
 --- | ---
-Windows Server (64 ビットのみ) | Microsoft-ASR_UA_9.*.0.0_Windows_* release.exe
-CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR_UA_9.*.0.0_RHEL6-64_*release.tar.gz
-SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR_UA_9.*.0.0_SLES11-SP3-64_*release.tar.gz
-Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR_UA_9.*.0.0_OL6-64_*release.tar.gz
+Windows Server (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_Windows\_* release.exe
+CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
+Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
 
 
 #### Windows サーバーに手動でインストールする
@@ -614,7 +613,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 1. **[Step 2: Replicate application]** (ステップ 2: アプリケーションをレプリケートする)、**[ソース]** の順にクリックします。レプリケーションを初めて有効にした後は、コンテナーで **[+ レプリケート]** をクリックして、追加のマシンのレプリケーションを有効にします。
 2. **[ソース]** ブレードで **[ソース]** をクリックし、構成サーバーを選択します。
 3. **[Machine type]** (マシンの種類) で、**[仮想マシン]** または **[物理マシン]** を選択します。
-4. **[vCenter/vSphere Hypervisor]** (vCenter/vSphere ハイパーバイザー) で、vSphere ホストを管理する vCenter サーバーを選択するか、ホストを選択します。物理マシンをレプリケートする場合、この設定は関係ありません。
+4. **[vCenter/vSphere Hypervisor] ** (vCenter/vSphere ハイパーバイザー) で、vSphere ホストを管理する vCenter サーバーを選択するか、ホストを選択します。物理マシンをレプリケートする場合、この設定は関係ありません。
 5. プロセス サーバーを選択します。追加のプロセス サーバーを作成していない場合、これは構成サーバーの名前になります。次に、 **[OK]** をクリックします
 
 	![Enable replication](./media/site-recovery-vmware-to-azure/enable-replication2.png)
@@ -834,4 +833,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

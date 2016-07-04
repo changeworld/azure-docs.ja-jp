@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="04/29/2016"
+   ms.date="06/16/2016"
    ms.author="sashan"/>
 
 # SQL Database エラスティック プールを使用した、アプリケーションの障害復旧戦略 
 
-長年にわたって、私たちはクラウド サービスが絶対確実なものではなく、壊滅的な状況になる可能性があることを学んできました。SQL Database には、そのような状況が発生した場合にアプリケーションのビジネス継続性を提供するための多くの機能があります。エラスティック プールとスタンドアロン データベースは、同様の障害復旧機能をサポートしています。この記事では、SQL Database のこれらのビジネス継続性機能を活用する、エラスティック プールのいくつかの DR 戦略について説明します。
+長年にわたって、私たちはクラウド サービスが絶対確実なものではなく、壊滅的な状況になる可能性があることを学んできました。SQL Database には、そのような状況が発生した場合にアプリケーションのビジネス継続性を提供するための多くの機能があります。[エラスティック プール](sql-database-elastic-pool.md)とスタンドアロン データベースは、同様の障害復旧機能をサポートしています。この記事では、SQL Database のこれらのビジネス継続性機能を活用する、エラスティック プールのいくつかの DR 戦略について説明します。
 
 この記事の目的のために、次のような標準的な SaaS ISV アプリケーション パターンを使用します。
 
@@ -75,7 +75,7 @@
 
 プライマリ リージョンで障害が発生した場合にアプリケーションをオンラインにするための復旧手順を、次の図に示します。
 
-![Figure 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
+![図 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
 - すぐに管理データベースを DR リージョンにフェールオーバーします (3)。
 - アプリケーションの接続文字列を、DR リージョンを示す文字列に変更します。これで、新しいアカウントとテナント データベースがすべて DR リージョンに作成されるようになります。既存の試用版の顧客は、一時的にデータを使用できなくなります。
@@ -118,7 +118,7 @@ DR リージョンでアプリケーションを復元した*後*で、Azure に
 
 次の図は、リージョン A で障害が発生した場合に実行する復旧手順を示しています。
 
-![Figure 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
+![図 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
 - すぐに管理データベースをリージョン B にフェールオーバーします (3)。
 - アプリケーションの接続文字列を、リージョン B 内の管理データベースを示す文字列に変更します。管理データベースに変更を施し、新しいアカウントとテナント データベースがリージョン B に作成されるようにすると共に、既存のテナント データベースもそこで見つかるようにします。既存の試用版の顧客は、一時的にデータを使用できなくなります。
@@ -161,6 +161,9 @@ DR リージョンでアプリケーションを復元した*後*で、Azure に
 
 この記事では、SaaS ISV マルチテナント アプリケーションで使用されるデータベース層の障害復旧戦略に焦点を当てています。戦略は、ビジネス モデル、顧客に提供する SLA、予算の制約など、アプリケーションのニーズに基づいて選択する必要があります。各戦略のメリットとトレードオフの概要が説明されているため、それを参考にして判断できます。また、アプリケーションによっては、他の Azure コンポーネントが含まれることがあります。したがって、ビジネス継続性ガイダンスを確認し、こうしたコンポーネントとデータベース層の復旧を調整する必要があります。Azure でデータベース アプリケーションの復旧を管理する方法の詳細については、[障害復旧のためのクラウド ソリューションの設計](./sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページを参照してください。
 
+
+## 次のステップ
+
 各シナリオに必要な各ステップで、大量のデータベースを操作する必要があります。SQL Database エラスティック ジョブを使用して、こうした大規模な操作を管理することを検討してください。詳細については、[スケールアウトされたクラウド データベースの管理](./sql-database-elastic-jobs-overview.md)に関するページをご覧ください。以下のページでは、この記事の各シナリオを実装するために必要な個別の操作について学べます。
 
 - [セカンダリ データベースの追加](https://msdn.microsoft.com/library/azure/mt603689.aspx) 
@@ -169,4 +172,15 @@ DR リージョンでアプリケーションを復元した*後*で、Azure に
 - [データベースの削除](https://msdn.microsoft.com/library/azure/mt619368.aspx)
 - [データベースのコピー](https://msdn.microsoft.com/library/azure/mt603644.aspx)
 
-<!---HONumber=AcomDC_0511_2016-->
+## その他のリソース
+
+- [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](sql-database-business-continuity.md)
+- [Overview: SQL Database Point-in-Time Restore (概要: SQL Database のポイントインタイム リストア)](sql-database-point-in-time-restore.md)
+- [geo リストア](sql-database-geo-restore.md)
+- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
+- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
+- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
+- [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
+
+<!---HONumber=AcomDC_0622_2016-->

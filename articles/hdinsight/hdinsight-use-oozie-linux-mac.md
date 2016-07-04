@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/07/2016"
+	ms.date="06/17/2016"
 	ms.author="larryfr"/>
 
 
-# Hadoop で Oozie を使用して Linux ベースの HDInsight でワークフローを定義して実行する (プレビュー)
+# Hadoop で Oozie を使用して Linux ベースの HDInsight でワークフローを定義して実行する
 
 [AZURE.INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
@@ -64,9 +64,9 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 ##作業ディレクトリの作成
 
-Oozie では、ジョブに必要なリソースを同じディレクトリに保存する必要があります。この例では、**wasb:///tutorials/useoozie** を使用します。次のコマンドを使用して、このディレクトリと、このワークフローで作成される新しい Hive テーブルを保持する data ディレクトリを作成します。
+Oozie では、ジョブに必要なリソースを同じディレクトリに保存する必要があります。この例では、****wasb:///tutorials/useoozie** を使用します。次のコマンドを使用して、このディレクトリと、このワークフローで作成される新しい Hive テーブルを保持する data ディレクトリを作成します。
 
-	hadoop fs -mkdir -p /tutorials/useoozie/data
+	hdfs dfs -mkdir -p /tutorials/useoozie/data
 
 > [AZURE.NOTE] `-p` パラメーターを指定すると、ディレクトリがまだ存在しない場合に、すべてのディレクトリがこのパスに作成されます。**data** ディレクトリは、**useooziewf.hql** スクリプトで使用するデータを保持するために使用されます。
 
@@ -80,7 +80,7 @@ Oozie では、ジョブに必要なリソースを同じディレクトリに�
 
 このワークフローでは、Sqoop を使用してデータを SQL Database にエクスポートするため、SQL Database との対話に使用する JDBC ドライバーのコピーを提供する必要があります。次のコマンドを使用して、ドライバーを作業ディレクトリにコピーします。
 
-	hadoop fs -copyFromLocal /usr/share/java/sqljdbc_4.1/enu/sqljdbc4.jar /tutorials/useoozie/sqljdbc4.jar
+	hdfs dfs -copyFromLocal /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
 
 ワークフローで他のリソース (MapReduce アプリケーションを含む jar など) を使用する場合は、これらのリソースも追加する必要があります。
 
@@ -114,9 +114,9 @@ Oozie では、ジョブに必要なリソースを同じディレクトリに�
 
 2. Ctrl + X キーを押してエディターを終了します。メッセージが表示されたら、**Y** を選択してファイルを保存し、**Enter** キーを押して、ファイル名として **useooziewf.hql** を使用します。
 
-3. 次のコマンドを使用して、**useooziewf.hql** を **wasb:///tutorials/useoozie/useooziewf.hql** にコピーします。
+3. 次のコマンドを使用して、**useooziewf.hql** を ****wasb:///tutorials/useoozie/useooziewf.hql** にコピーします。
 
-		hadoop fs -copyFromLocal useooziewf.hql /tutorials/useoozie/useooziewf.hql
+		hdfs dfs -copyFromLocal useooziewf.hql /tutorials/useoozie/useooziewf.hql
 
 	これらのコマンドにより、このクラスターに関連付けられている Azure ストレージ アカウントに **useooziewf.hql** ファイルが保存されるため、クラスターが削除されてもファイルは保持されます。これにより、ジョブとワークフローを維持しながら、使用されていないクラスターを削除することでコストを削減できます。
 
@@ -130,56 +130,56 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 1. nano エディターが開いたら、ファイルの内容として次のコードを入力します。
 
-		<workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
-		  <start to = "RunHiveScript"/>
-		  <action name="RunHiveScript">
-		    <hive xmlns="uri:oozie:hive-action:0.2">
-		      <job-tracker>${jobTracker}</job-tracker>
-		      <name-node>${nameNode}</name-node>
-		      <configuration>
-		        <property>
-		          <name>mapred.job.queue.name</name>
-		          <value>${queueName}</value>
-		        </property>
-		      </configuration>
-		      <script>${hiveScript}</script>
-		      <param>hiveTableName=${hiveTableName}</param>
-		      <param>hiveDataFolder=${hiveDataFolder}</param>
-		    </hive>
-		    <ok to="RunSqoopExport"/>
-		    <error to="fail"/>
-		  </action>
-		  <action name="RunSqoopExport">
-		    <sqoop xmlns="uri:oozie:sqoop-action:0.2">
-		      <job-tracker>${jobTracker}</job-tracker>
-		      <name-node>${nameNode}</name-node>
-		      <configuration>
-		        <property>
-		          <name>mapred.compress.map.output</name>
-		          <value>true</value>
-		        </property>
-		      </configuration>
-		      <arg>export</arg>
-		      <arg>--connect</arg>
-		      <arg>${sqlDatabaseConnectionString}</arg>
-		      <arg>--table</arg>
-		      <arg>${sqlDatabaseTableName}</arg>
-		      <arg>--export-dir</arg>
-		      <arg>${hiveDataFolder}</arg>
-		      <arg>-m</arg>
-		      <arg>1</arg>
-		      <arg>--input-fields-terminated-by</arg>
-		      <arg>"\t"</arg>
-		      <archive>sqljdbc4.jar</archive>
-		      </sqoop>
-		    <ok to="end"/>
-		    <error to="fail"/>
-		  </action>
-		  <kill name="fail">
-		    <message>Job failed, error message[${wf:errorMessage(wf:lastErrorNode())}] </message>
-		  </kill>
-		  <end name="end"/>
-		</workflow-app>
+        <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
+            <start to = "RunHiveScript"/>
+            <action name="RunHiveScript">
+            <hive xmlns="uri:oozie:hive-action:0.2">
+                <job-tracker>${jobTracker}</job-tracker>
+                <name-node>${nameNode}</name-node>
+                <configuration>
+                <property>
+                    <name>mapred.job.queue.name</name>
+                    <value>${queueName}</value>
+                </property>
+                </configuration>
+                <script>${hiveScript}</script>
+                <param>hiveTableName=${hiveTableName}</param>
+                <param>hiveDataFolder=${hiveDataFolder}</param>
+            </hive>
+            <ok to="RunSqoopExport"/>
+            <error to="fail"/>
+            </action>
+            <action name="RunSqoopExport">
+            <sqoop xmlns="uri:oozie:sqoop-action:0.2">
+                <job-tracker>${jobTracker}</job-tracker>
+                <name-node>${nameNode}</name-node>
+                <configuration>
+                <property>
+                    <name>mapred.compress.map.output</name>
+                    <value>true</value>
+                </property>
+                </configuration>
+                <arg>export</arg>
+                <arg>--connect</arg>
+                <arg>${sqlDatabaseConnectionString}</arg>
+                <arg>--table</arg>
+                <arg>${sqlDatabaseTableName}</arg>
+                <arg>--export-dir</arg>
+                <arg>${hiveDataFolder}</arg>
+                <arg>-m</arg>
+                <arg>1</arg>
+                <arg>--input-fields-terminated-by</arg>
+                <arg>"\t"</arg>
+                <archive>sqljdbc41.jar</archive>
+                </sqoop>
+            <ok to="end"/>
+            <error to="fail"/>
+            </action>
+            <kill name="fail">
+            <message>Job failed, error message[${wf:errorMessage(wf:lastErrorNode())}] </message>
+            </kill>
+            <end name="end"/>
+        </workflow-app>
 
 	このワークフローでは、2 つのアクションが定義されています。
 
@@ -187,7 +187,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 	- **RunSqoopExport**: Sqoop を使用して、作成されたデータを Hive スクリプトから SQL Database にエクスポートします。このアクションは、**RunHiveScript** アクションが正常に実行された場合にのみ実行されます。
 
-		> [AZURE.NOTE] Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400]\(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332]\(HDInsight バージョン 2.1 の場合) を参照してください。
+		> [AZURE.NOTE] Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight バージョン 2.1 の場合) を参照してください。
 
 	このワークフローには、このドキュメントで後述するジョブ定義で使用する値に置き換えられる複数のエントリ (`${jobTracker}` など) が含まれています。
 
@@ -195,40 +195,13 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 2. Ctrl + X キーを押した後、**Y** キーと **Enter** キーを押してファイルを保存します。
 
-3. 次のコマンドを使用して、**workflow.xml** ファイルを **wasb:///tutorials/useoozie/workflow.xml** にコピーします。
+3. 次のコマンドを使用して、**workflow.xml** ファイルを ****wasb:///tutorials/useoozie/workflow.xml** にコピーします。
 
-		hadoop fs -copyFromLocal workflow.xml wasb:///tutorials/useoozie/workflow.xml
+		hdfs dfs -copyFromLocal workflow.xml /tutorials/useoozie/workflow.xml
 
 ##データベースの作成
 
-次の手順では、データのエクスポート先となる Azure SQL Database を作成します。
-
-> [AZURE.IMPORTANT] これらの手順を実行する前に、[Azure CLI をインストールして構成する](../xplat-cli-install.md)必要があります。CLI のインストールとデータベースを作成する手順は、HDInsight クラスターまたはローカル ワークステーションから実行できます。
-
-1. 次のコマンドを使用して、新しい Azure SQL Database サーバーを作成します。
-
-        azure sql server create <adminLogin> <adminPassword> <region>
-
-    たとえば、`azure sql server create admin password "West US"` です。
-
-    コマンドが完了したら、次のような応答が返されます。
-
-        info:    Executing command sql server create
-        + Creating SQL Server
-        data:    Server Name i1qwc540ts
-        info:    sql server create command OK
-
-    > [AZURE.IMPORTANT] このコマンドによって返されるサーバー名 (上記の例では **i1qwc540ts**) に注意してください。 これは、作成された SQL Database サーバーの短い名前です。完全修飾ドメイン名 (FQDN) は **&lt;shortname&gt;.database.windows.net** です。上記の例の場合、FQDN は **i1qwc540ts.database.windows.net** になります。
-
-2. 次のコマンドを使用して、SQL Database サーバーに **oozietest** という名前のデータベースを作成します。
-
-        azure sql db create [options] <serverName> oozietest <adminLogin> <adminPassword>
-
-    コマンドが完了すると、"OK" というメッセージが返されます。
-
-	> [AZURE.NOTE] アクセスできないことを示すエラーが返された場合、次のコマンドを使用して、システムの IP アドレスを SQL Database ファイアウォールに追加することが必要になる場合があります。
-    >
-    > `sql firewallrule create [options] <serverName> <ruleName> <startIPAddress> <endIPAddress>`
+[SQL Database の作成](../sql-database/sql-database-get-started.md)に関するドキュメントに記載されている手順に従って、新しいデータベースを作成します。データベースを作成するときに、データベース名として __oozietest__ を使用します。この名前はデータベース サーバーで使用されます。これは次のセクションで必要となるため、メモしておいてください。
 
 ###テーブルを作成する
 
@@ -240,7 +213,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 4. FreeTDS がインストールされると、次のコマンドを使用して、以前に作成した SQL Database サーバーに接続できます。
 
-        TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D oozietest
+        TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -P <sqlPassword> -p 1433 -D oozietest
 
     次のような出力が返されます。
 
@@ -286,7 +259,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		<name>fs.defaultFS</name>
 		<value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
 
-	次の手順で **wasb://mycontainer@mystorageaccount.blob.core.windows.net** 値を使用するので、この値を保存します。
+	次の手順で ****wasb://mycontainer@mystorageaccount.blob.core.windows.net** 値を使用するので、この値を保存します。
 
 2. 次のコマンドを使用して、クラスターのヘッド ノードの FQDN を取得します。これは、クラスターの JobTracker アドレスに使用されます。これは構成ファイルですぐに使用されます。
 
@@ -363,7 +336,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		  </property>
 		</configuration>
 
-	* **wasb://mycontainer@mystorageaccount.blob.core.windows.net** のすべてのインスタンスを、前に返された値に置き換えます。
+	* ****wasb://mycontainer@mystorageaccount.blob.core.windows.net** のすべてのインスタンスを、前に返された値に置き換えます。
 
 	> [AZURE.WARNING] パスの一部としてコンテナーとストレージ アカウントが含まれた完全な WASB パスを使用する必要があります。短い形式 (wasb:///) を使用すると、ジョブを開始したときに RunHiveScript アクションが失敗します。
 
@@ -394,7 +367,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		<name>oozie.base.url</name>
 		<value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
 
-	**http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie** の部分が Oozie コマンドで使用する URL です。
+	****http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie** の部分が Oozie コマンドで使用する URL です。
 
 2. 次のコマンドを使用して、URL の環境変数を作成します。すべてのコマンドでこれを入力する必要があるわけではありません。
 
@@ -481,7 +454,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
 1. HDInsight クラスターへの SSH トンネルを作成します。これを実行する方法の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
-2. トンネルが作成されたら、Web ブラウザーで Ambari Web UI を開きます。Ambari サイトの URI は、**https://CLUSTERNAME.azurehdinsight.net** です。**CLUSTERNAME** を、Linux ベースの HDInsight クラスターの名前に置き換えます。
+2. トンネルが作成されたら、Web ブラウザーで Ambari Web UI を開きます。Ambari サイトの URI は、****https://CLUSTERNAME.azurehdinsight.net** です。**CLUSTERNAME** を、Linux ベースの HDInsight クラスターの名前に置き換えます。
 
 3. ページの左側で **[Oozie]** を選択し、**[Quick Links]**、**[Oozie Web UI]** の順にクリックします。
 
@@ -658,13 +631,13 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 たとえば、このドキュメントのジョブの場合、次の手順に従います。
 
-1. sqljdbc4.jar ファイルを /tutorials/useoozie ディレクトリにコピーします。
+1. sqljdbc4.1.jar ファイルを /tutorials/useoozie ディレクトリにコピーします。
 
-		 hadoop fs -copyFromLocal /usr/share/java/sqljdbc_4.1/enu/sqljdbc4.jar /tutorials/useoozie/sqljdbc4.jar
+		 hadoop fs -copyFromLocal /usr/share/java/sqljdbc_4.1/enu/sqljdbc41.jar /tutorials/useoozie/sqljdbc41.jar
 
 2. workflow.xml を変更して、`</sqoop>` の上の新しい行に次の内容を追加します。
 
-		<archive>sqljdbc4.jar</archive>
+		<archive>sqljdbc41.jar</archive>
 
 ##次のステップ
 このチュートリアルでは、Oozie ワークフローを定義する方法と Oozie ジョブを実行する方法について説明しました。HDInsight の使用方法の詳細については、次の記事をご覧ください。
@@ -722,4 +695,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

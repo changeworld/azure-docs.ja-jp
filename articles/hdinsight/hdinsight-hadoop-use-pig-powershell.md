@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/23/2016"
+   ms.date="06/16/2016"
    ms.author="larryfr"/>
 
 #PowerShell を使用した Pig ジョブの実行
@@ -73,15 +73,14 @@ Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行で
         -ResourceGroupName $resourceGroup)[0].Value
 
         #Store the Pig Latin into $QueryString
-        $QueryString =  @"
-        LOGS = LOAD 'wasb:///example/data/sample.log';
-        LEVELS = foreach LOGS generate REGEX_EXTRACT(`$0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
-        FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
-        GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
-        FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
-        RESULT = order FREQUENCIES by COUNT desc;
-        DUMP RESULT;
-        "@
+        $QueryString =  "LOGS = LOAD 'wasb:///example/data/sample.log';" +
+        "LEVELS = foreach LOGS generate REGEX_EXTRACT(`$0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;" +
+        "FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;" +
+        "GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;" +
+        "FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;" +
+        "RESULT = order FREQUENCIES by COUNT desc;" +
+        "DUMP RESULT;"
+
 
         #Create a new HDInsight Pig Job definition
         $pigJobDefinition = New-AzureRmHDInsightPigJobDefinition `
@@ -97,35 +96,20 @@ Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行で
 
         # Wait for the Pig job to complete
         Write-Host "Wait for the Pig job to complete ..." -ForegroundColor Green
-        $jobStatus = Wait-AzureRmHDInsightJob `
+        Wait-AzureRmHDInsightJob `
             -ClusterName $clusterName `
             -JobId $pigJob.JobId `
             -HttpCredential $creds
-            
-        if($jobStatus.State -eq "SUCCEEDED") {
-            # Success!
-            # Display the output of the Pig job.
-            Write-Host "Display the standard output ..." -ForegroundColor Green
-            Get-AzureRmHDInsightJobOutput `
-                -ClusterName $clusterName `
-                -JobId $pigJob.JobId `
-                -DefaultContainer $container `
-                -DefaultStorageAccountName $storageAccountName `
-                -DefaultStorageAccountKey $storageAccountKey `
-                -HttpCredential $creds
-        } else {
-            # Something went wrong, display error output
-            # Print the output of the Pig job.
-            Write-Host "Display the standard error output ..." -ForegroundColor Green
-            Get-AzureRmHDInsightJobOutput `
-                -Clustername $clusterName `
-                -JobId $pigJob.JobId `
-                -DefaultContainer $container `
-                -DefaultStorageAccountName $storageAccountName `
-                -DefaultStorageAccountKey $storageAccountKey `
-                -HttpCredential $creds `
-                -DisplayOutputType StandardError
-        }
+
+        # Display the output of the Pig job.
+        Write-Host "Display the standard output ..." -ForegroundColor Green
+        Get-AzureRmHDInsightJobOutput `
+            -ClusterName $clusterName `
+            -JobId $pigJob.JobId `
+            -DefaultContainer $container `
+            -DefaultStorageAccountName $storageAccountName `
+            -DefaultStorageAccountKey $storageAccountKey `
+            -HttpCredential $creds
 
 2. 新しい Windows PowerShell コマンド プロンプトを開きます。ディレクトリを **pigjob.ps1** ファイルの場所に変更し、次のコマンドを使用してスクリプトを実行します。
 
@@ -178,4 +162,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

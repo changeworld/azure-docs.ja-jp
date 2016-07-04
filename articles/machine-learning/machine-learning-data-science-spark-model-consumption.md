@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="06/14/2016"
 	ms.author="deguhath;bradsev" />
 
 # Spark で構築した機械学習モデルのスコア付け 
@@ -120,7 +120,7 @@ Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前
 
 このセクションでは、スコア付けするデータの取り込みに必要な一連のタスクを実行するコードを紹介します。タクシーの乗車データと料金ファイル (.tsv ファイルとして保存されています) を結合した 0.1% サンプルを読み取り、データの形式を設定して、クリーンなデータ フレームを作成します。
 
-タクシーの乗車データと料金ファイルは、「[Cortana Analytics Process の活用: HDInsight Hadoop クラスターを使用する](machine-learning-data-science-process-hive-walkthrough.md)」で説明されている手順に基づいて結合されています。
+タクシーの乗車データと料金ファイルは、「[Team Data Science Process の活用: HDInsight Hadoop クラスターの使用](machine-learning-data-science-process-hive-walkthrough.md)」で説明されている手順に基づいて結合されています。
 
 	# INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -385,7 +385,7 @@ Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前
 	#LOAD LIBRARIES​
 	from pyspark.mllib.regression import LinearRegressionWithSGD, LinearRegressionModel
 	
-	# LOAD MODEL AND SCORE USING **SCALED VARIABLES**
+	# LOAD MODEL AND SCORE USING ** SCALED VARIABLES **
 	savedModel = LinearRegressionModel.load(sc, linearRegFileLoc)
 	predictions = oneHotTESTregScaled.map(lambda features: (float(savedModel.predict(features))))
 	
@@ -547,7 +547,7 @@ BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression\_2016-05-0317\_23\_
 
 Spark には、Livy と呼ばれるコンポーネントを使用して、REST インターフェイス経由でバッチ ジョブや対話型クエリをリモートから送信できるメカニズムが備えられています。HDInsight Spark クラスターでは Livy が既定で有効になっています。Livy の詳細については、「[Livy を使用して Spark ジョブをリモートで送信する](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。
 
-Livy を使用して、Azure BLOB に格納されているファイルをバッチ処理でスコア付けし、結果を別の BLOB に書き込むジョブをリモートから送信できます。それには、[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。**Microsoft Azure Storage Explorer** や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。この例では、スクリプトを ***wasb:///example/python/ConsumeGBNYCReg.py*** にアップロードしています。
+Livy を使用して、Azure BLOB に格納されているファイルをバッチ処理でスコア付けし、結果を別の BLOB に書き込むジョブをリモートから送信できます。それには、[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。**Microsoft Azure Storage Explorer** や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。この例では、スクリプトを ******wasb:///example/python/ConsumeGBNYCReg.py*** にアップロードしています。
 
 
 >[AZURE.NOTE] 必要なアクセス キーは、Spark クラスターに関連付けられているストレージ アカウント用のポータルで見つけることができます。
@@ -610,4 +610,4 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 
 **クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

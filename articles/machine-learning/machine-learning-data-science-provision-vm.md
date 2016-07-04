@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="bradsev" />
 
 
@@ -144,7 +144,7 @@ VM には複数の Azure ツールがインストールされます。
 * [スタート] メニューをクリックし、メニューに一覧表示されたツールを確認して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを検討できます。
 * **C:\\Program Files\\Microsoft\\MRO-for-RRE\\8.0\\R-3.2.2\\library\\RevoScaleR\\demoScripts** に移動し、エンタープライズ規模でのデータ分析をサポートする R で RevoScaleR ライブラリを使用して、サンプルを入手します。  
 * 「[データ サイエンス仮想マシンでできる 10 のこと](http://aka.ms/dsvmtenthings)」を参照してください。
-* [データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
+* [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します
 * [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)では、Cortana Intelligence Suite を使用して機械学習やデータ分析のサンプルを入手できます。アクセスしやすいように、[スタート] メニューや仮想マシンのデスクトップにもアイコンが用意されています。 
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

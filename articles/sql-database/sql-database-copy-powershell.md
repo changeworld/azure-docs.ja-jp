@@ -21,20 +21,12 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](sql-database-copy.md)
+- [概要](sql-database-copy.md)
+- [Azure ポータル](sql-database-copy-portal.md)
 - [PowerShell](sql-database-copy-powershell.md)
 - [T-SQL](sql-database-copy-transact-sql.md)
 
-
-
-次の手順では、PowerShell で SQL データベースをコピーする方法を説明します。このデータベース コピー操作では、[Start-AzureSqlDatabaseCopy](https://msdn.microsoft.com/library/dn720220.aspx) コマンドレットを利用し、SQL データベースを新しいデータベースにコピーします。コピーは、同じサーバーか別のサーバーで作成するデータベースのスナップショット バックアップです。
-
-> [AZURE.NOTE] Azure SQL Database では、復元できるすべてのユーザー データベースの[バックアップが自動的に作成され、保守](sql-database-automated-backups.md)されます。
-
-コピー プロセスが完了すると、新しいデータベースは、コピー元のデータベースに依存せずに完全に機能するデータベースになります。コピーの完了時点で、新しいデータベースのトランザクションはコピー元のデータベースと同じになります。データベース コピーのサービス レベルとパフォーマンス レベル (価格レベル) はコピー元のデータベースと同じになります。コピーの完了後、コピーは完全に機能する独立したデータベースになります。ログイン、ユーザー、アクセス許可は非依存で管理できます。
-
-
-データベースを同じ論理サーバーにコピーすると、両方のデータベースで同じログインを利用できます。データベースをコピーするために使用するセキュリティ プリンシパルが、新しいデータベースのデータベース所有者 (DBO) になります。すべてのデータベース ユーザー、アクセス許可、セキュリティ識別子 (SID) がデータベースのコピーにコピーされます。
+次の手順では、PowerShell を使用して、同じサーバーまたは別のサーバーに SQL データベースをコピーする方法を説明します。このデータベースのコピー操作では、[Start-AzureSqlDatabaseCopy](https://msdn.microsoft.com/library/dn720220.aspx) コマンドレットを利用します。
 
 
 この記事を完了するには、以下が必要です。
@@ -87,6 +79,10 @@
 
     Get-AzureSqlDatabaseOperation -ServerName $ServerName -DatabaseName $DatabaseName
 
+## ログインの解決
+
+コピー操作が完了した後にログインを解決するには、[ログインの解決](sql-database-copy-transact-sql.md#resolve-logins-after-the-copy-operation-completes)に関するページをご覧ください。
+
 
 ## PowerShell サンプル スクリプト
 
@@ -115,14 +111,18 @@
 
 ## 次のステップ
 
-- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
-- [データベースを BACPAC にエクスポートする](sql-database-export-powershell.md)
+- Azure SQL Database のコピーの概要については、「[Azure SQL Database のコピー](sql-database-copy.md)」をご覧ください。
+- Azure ポータルを使用してデータベースをコピーするには、「[Copy an Azure SQL database using the Azure Portal (Azure ポータルを使用した Azure SQL Database のコピー)](sql-database-copy-portal.md)」をご覧ください。
+- Transact-SQL を使用してデータベースをコピーするには、「[T-SQL を使用した Azure SQL Database のコピー](sql-database-copy-transact-sql.md)」をご覧ください。
+- 別の論理サーバーにデータベースをコピーする場合のユーザーおよびログインの管理の詳細については、「[障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」をご覧ください。
 
 
 ## その他のリソース
 
+- [ログインの管理](sql-database-manage-logins.md)
+- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
+- [データベースを BACPAC にエクスポートする](sql-database-export.md)
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -247,8 +247,7 @@ Azure IoT アーキテクチャに示したカテゴリごとに、マイクロ�
 その他の情報については、次の記事を参照してください。
 
 - [SDL Threat Modeling Tool](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
-
 - [Microsoft Azure IoT リファレンス アーキテクチャ](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

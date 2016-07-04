@@ -14,12 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/18/2016"
+   ms.date="06/15/2016"
    ms.author="tomfitz"/>
 
 # Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーをトラブルシューティングする
 
-このトピックでは、リソースを Azure にデプロイするときに発生する可能性がある一般的なエラーの解決方法について説明します。役立つエラー メッセージがすでに表示されているかどうかを確認してください。役立つエラー メッセージが表示されていない場合、またはデプロイが失敗した理由に関する詳細が必要な場合は、まず「[デプロイ操作の表示](resource-manager-troubleshoot-deployments-portal.md)」を参照してからこの記事に戻り、エラーの解決に役立ててください。
+このトピックでは、リソースを Azure にデプロイするときに発生する可能性がある一般的なエラーの解決方法について説明します。デプロイが失敗した理由について詳しい情報が必要な場合は、まず「[デプロイ操作の表示](resource-manager-troubleshoot-deployments-portal.md)」をお読みください。その後、再度こちらの記事を参照し、エラーの解決に役立ててください。
 
 ## 無効なテンプレートまたはリソース
 
@@ -31,7 +31,7 @@
 
 欠落した文字がテンプレート内のどこに位置するかに応じて、テンプレートまたはリソースのいずれかが無効であることを示すエラーが発生します。また、エラーによって、デプロイ プロセスでテンプレート言語式を処理できなかったことが通知されることもあります。この種類のエラーが発生したら、式の構文を慎重に確認してください。
 
-## リソース名が既に存在する
+## リソース名が既に存在する、または既に別のリソースによって使用されている
 
 一部のリソース (特にストレージ アカウント、データベース サーバー、Web サイト) には、Azure 全体で一意となるリソース名を指定する必要があります。一意の名前を作成するには、使用している命名規則に、[uniqueString](resource-group-template-functions.md#uniquestring) 関数の結果を連結します。
  
@@ -52,60 +52,73 @@ Resource Manager は、可能であれば複数のリソースを並列して作
       ...
     }
 
-## リソースに場所を使用できない
+## Could not find member 'copy' on object (オブジェクトにメンバー 'copy' が見つかりません)
 
-リソースの場所を指定するには、リソースをサポートする場所のいずれかを使用する必要があります。リソースの場所を入力する前に、次のいずれかのコマンドを使用して、その場所がリソースの種類をサポートしていることを確認します。
+このエラーは、**copy** 要素がサポートされていないテンプレート部分にこの要素を適用すると発生します。copy 要素を適用できるのは、リソース タイプだけです。リソース タイプ内のプロパティに copy を適用することはできません。たとえば、copy を仮想マシンに適用することはできますが、仮想マシンの OS ディスクに適用することはできません。場合によっては、子リソースを親リソースに変換して、copy のループを作成することができます。copy の使用について詳しくは、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
+
+## SKU not available (SKU が利用できません)
+
+リソース (通常は仮想マシン) をデプロイするときに、次のエラー コードとエラー メッセージが表示される場合があります。
+
+    Code: SkuNotAvailable
+    Message: The requested tier for resource '<resource>' is currently not available in location '<location>' for subscription '<subscriptionID>'. Please try another tier or deploy to a different location.
+
+このエラーは、選択したリソースの SKU (VM サイズなど) が、選択した地域で利用できない場合に発生します。この問題を解決するには、次の 2 とおりの方法があります。
+
+1.	ポータルにログインし、UI から新しいリソースを追加します。値を設定するときに、そのリソースで利用可能な SKU が表示されます。 
+
+    ![available skus](./media/resource-manager-common-deployment-errors/view-sku.png)
+
+2.	UI に表示されたリージョン (またはビジネス ニーズを満たすその他のリージョン) に適切な SKU が見つからない場合は、[Azure サポート](https://portal.azure.com/#create/Microsoft.Support)にお問い合わせください。
+
+
+## No registered provider found (登録済みのプロバイダーが見つかりません)
+
+リソースをデプロイするときに、次のエラー コードとメッセージが表示される場合があります。
+
+    Dode: NoRegisteredProviderFound
+    Message: No registered resource provider found for location '<location>' and API version '<api-version>' for type '<resource-type>'.
+
+このエラーの原因として、次の 3 つの理由のいずれかが考えられます。
+
+1. リソース タイプでサポートされた場所に該当しない
+2. リソース タイプでサポートされた API バージョンに該当しない
+3. サブスクリプションに対してリソース プロバイダーが登録されていない
+
+サポートされる場所や API バージョンがエラー メッセージに提示されます。提示されたいずれかの値を使用するようにテンプレートを変更してください。ほとんどのプロバイダーは、Azure ポータルまたはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。まだ使ったことがないリソース プロバイダーについては、手動で登録しなければならない場合があります。リソース プロバイダーについてのさらに詳しい情報は、以下に示したコマンドで検出できます。
 
 ### PowerShell
 
-特定のリソース プロバイダーでサポートされる種類と場所を取得するには、**Get-AzureRmResourceProvider** を使用します。
+登録の状態を確認するには、**Get-AzureRmResourceProvider** を使用します。
 
-    Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web
+    Get-AzureRmResourceProvider -ListAvailable
 
-そのリソース プロバイダーに対応するリソースの種類の一覧が取得されます。
+プロバイダーを登録するには、**Register-AzureRmResourceProvider** を使用し、登録するリソース プロバイダーの名前を指定します。
 
-    ProviderNamespace RegistrationState ResourceTypes               Locations
-    ----------------- ----------------- -------------               ---------
-    Microsoft.Web     Registered        {sites/extensions}          {Brazil South, ...
-    Microsoft.Web     Registered        {sites/slots/extensions}    {Brazil South, ...
-    Microsoft.Web     Registered        {sites/instances}           {Brazil South, ...
-    ...
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 
-次のコマンドを使用して、指定したリソースの種類に対応する場所に集中することができます。
+特定のタイプのリソースでサポートされている場所を取得するには、次のコマンドを使用します。
 
     ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 
-このコマンドは、次のサポートされる場所を返します。
+特定のタイプのリソースでサポートされている API バージョンを取得するには、次のコマンドを使用します。
 
-    Brazil South
-    East Asia
-    East US
-    Japan East
-    Japan West
-    North Central US
-    North Europe
-    South Central US
-    West Europe
-    West US
-    Southeast Asia
+    ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 
 ### Azure CLI
 
-Azure CLI の場合は、**azure location list** を使用します。場所の一覧は長くなることがあり、多数のプロバイダーがあるため、ツールを使用して、まだ使用可能でない場所を使用する前に、プロバイダーと場所を確認します。次のスクリプトでは、**jq** を使用して、Azure Virtual Machines のリソース プロバイダーが使用可能な場所を探索します。
+プロバイダーが登録されているかどうかを確認するには、`azure provider list` コマンドを使用します。
 
-    azure location list --json | jq '.[] | select(.name == "Microsoft.Compute/virtualMachines")'
+    azure provider list
+        
+リソース プロバイダーを登録するには、`azure provider register` コマンドを使用し、登録する*名前空間*を指定します。
+
+    azure provider register Microsoft.Cdn
+
+特定のリソース プロバイダーでサポートされている場所と API バージョンを確認するには、次のコマンドを使用します。
+
+    azure provider show -n Microsoft.Compute --json > compute.json
     
-このコマンドは、次のサポートされる場所を返します。
-    
-    {
-      "name": "Microsoft.Compute/virtualMachines",
-      "location": "East US,East US 2,West US,Central US,South Central US,North Europe,West Europe,East Asia,Southeast Asia,Japan East,Japan West"
-    }
-
-### REST API
-
-REST API の場合、「[リソース プロバイダーの情報の取得](https://msdn.microsoft.com/library/azure/dn790534.aspx)」をご覧ください。
-
 ## クォータを超過した
 
 デプロイがクォータを超過すると、問題が発生する場合があります。クォータは、リソース グループごと、サブスクリプションごと、アカウントごと、その他のスコープごとに指定されている可能性があります。たとえば、リージョンのコア数を制限するようにサブスクリプションが構成されていることがあります。上限を超えたコア数の仮想マシンをデプロイしようとすると、クォータを超過したというエラーが発生します。クォータに関する完全な情報については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md)」をご覧ください。
@@ -158,74 +171,35 @@ REST API の場合、「[リソース プロバイダーの情報の取得](http
 
 デプロイ アクションは、ロールベースのアクセス制御だけでなく、サブスクリプションのポリシーによって制限されることがあります。管理者は、ポリシーを使用して、サブスクリプションにデプロイされるすべてのリソースに規約を課すことができます。たとえば、管理者は、あるリソースの種類について、特定のタグ値を必須にすることができます。そのポリシーの要件を満たしていないと、デプロイ時にエラーが発生します。ポリシーについては、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」をご覧ください。
 
-## リソース プロバイダーの登録を確認する
+## 仮想マシンのトラブルシューティング 
 
-リソースはリソース プロバイダーによって管理されているので、特定のプロバイダーを使用するようにアカウントやサブスクリプションを登録する必要があります。ほとんどのプロバイダーは、Azure ポータルまたはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。
+| エラー | 記事 |
+| -------- | ----------- |
+| カスタム スクリプト拡張機能のエラー | [Windows VM 拡張機能のエラー](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)<br />または<br />[Linux VM 拡張機能のエラー](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md) | 
+| OS イメージのプロビジョニング エラー | [新しい Windows VM の作成時のエラー](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)<br />または<br />[新しい Linux VM の作成時のエラー](./virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md) | 
+| 割り当ての失敗 | [Windows VM の割り当てエラー](./virtual-machines/virtual-machines-windows-allocation-failure.md)<br />または<br />[Linux VM の割り当てエラー](./virtual-machines/virtual-machines-linux-allocation-failure.md) | 
+| 接続を試行するときの Secure Shell (SSH) エラー | [Linux VM への Secure Shell 接続](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md) | 
+| VM で実行されているアプリケーションへの接続時に発生するエラー | [Windows VM で実行中のアプリケーション](./virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md)<br />または<br />[Linux VM で実行中のアプリケーション](./virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md) | 
+| リモート デスクトップ接続のエラー | [Windows VM へのリモート デスクトップ接続](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md) | 
+| 再デプロイによって解決する接続エラー | [新しい Azure ノードへの仮想マシンの再デプロイ](./virtual-machines/virtual-machines-windows-redeploy-to-new-node.md) | 
+| クラウド サービスのエラー | [クラウド サービスのデプロイの問題](./cloud-services/cloud-services-troubleshoot-deployment-problems.md) | 
 
-### PowerShell
+## その他のサービスのトラブルシューティング 
 
-登録の状態を確認するには、**Get-AzureRmResourceProvider** を使用します。
+以下の表は、Azure のトラブルシューティング トピックを網羅したものではありません。リソースのデプロイまたは構成に関連した問題を中心に掲載しています。リソースに関して実行時に発生する問題のトラブルシューティングについてご不明な点がある場合は、対応する Azure サービスのドキュメントを参照してください。
 
-    Get-AzureRmResourceProvider -ListAvailable
-
-このコマンドは、すべての使用できるリソース プロバイダーと登録の状態が返されます。
-
-    ProviderNamespace               RegistrationState ResourceTypes
-    -----------------               ----------------- -------------
-    Microsoft.ApiManagement         Unregistered      {service, validateServiceName, checkServiceNameAvailability}
-    Microsoft.AppService            Registered        {apiapps, appIdentities, gateways, deploymenttemplates...}
-    Microsoft.Batch                 Registered        {batchAccounts}
-
-プロバイダーを登録するには、**Register-AzureRmResourceProvider** を使用し、登録するリソース プロバイダーの名前を指定します。
-
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
-
-登録の確認が求められ、状態が返されます。
-
-    Confirm
-    Are you sure you want to register the provider 'Microsoft.Cdn'
-    [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-
-    ProviderNamespace RegistrationState ResourceTypes
-    ----------------- ----------------- -------------
-    Microsoft.Cdn     Registering       {profiles, profiles/endpoints,...
-
-### Azure CLI
-
-Azure CLI を使用してプロバイダーが登録されているかどうかを確認するには、`azure provider list` コマンドを使用します (切り捨てられた出力の例を次に示します)。
-
-    azure provider list
-        
-このコマンドは、すべての使用できるリソース プロバイダーと登録の状態が返されます。
-        
-    info:    Executing command provider list
-    + Getting ARM registered providers
-    data:    Namespace                        Registered
-    data:    -------------------------------  -------------
-    data:    Microsoft.Compute                Registered
-    data:    Microsoft.Network                Registered  
-    data:    Microsoft.Storage                Registered
-    data:    microsoft.visualstudio           Registered
-    ...
-    info:    provider list command OK
-
-リソース プロバイダーを登録するには、`azure provider register` コマンドを使用し、登録する*名前空間*を指定します。
-
-    azure provider register Microsoft.Cdn
-
-### REST API
-
-登録の状態を取得するには、「[リソース プロバイダーの情報の取得](https://msdn.microsoft.com/library/azure/dn790534.aspx)」を参照してください。
-
-プロバイダーを登録するには、「[リソース プロバイダーへのサブスクリプションの登録](https://msdn.microsoft.com/library/azure/dn790548.aspx)」を参照してください。
-
-## カスタム スクリプト拡張機能のエラー
-
-カスタム スクリプト拡張機能で仮想マシンのデプロイ時にエラーが発生した場合は、「[Azure Windows VM 拡張機能のエラーのトラブルシューティング](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)」または「[Azure Linux VM 拡張機能のエラーのトラブルシューティング](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md)」をご覧ください。
-
-## 仮想マシンのプロビジョニング エラーと割り当てエラー
-
-仮想マシンをデプロイしようとしているときに、OS イメージのプロビジョニング エラーまたは割り当てエラーが発生した場合は、[新しい VM の作成で発生した問題のトラブルシューティング](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)と[割り当てエラーのトラブルシューティング](./virtual-machines/virtual-machines-windows-allocation-failure.md)に関するページを参照してください。
+| サービス | 記事 |
+| -------- | -------- |
+| Automation | [Azure Automation の共通エラーのトラブルシューティングのヒント](./automation/automation-troubleshooting-automation-errors.md) | 
+| Azure Stack | [Microsoft Azure Stack のトラブルシューティング](./azure-stack/azure-stack-troubleshooting.md) | 
+| Azure Stack | [Web Apps と Azure Stack](./azure-stack/azure-stack-webapps-troubleshoot-known-issues.md) | 
+| Data Factory | [Data Factory のトラブルシューティング](./data-factory/data-factory-troubleshoot.md) | 
+| Service Fabric | [Azure Service Fabric でサービスをデプロイするときの一般的な問題のトラブルシューティング](./service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) | 
+| Site Recovery | [仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング](./site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
+| Storage | [Microsoft Azure Storage の監視、診断、およびトラブルシューティング](./storage/storage-monitoring-diagnosing-troubleshooting.md) |
+| StorSimple | [StorSimple デバイスのデプロイメントのトラブルシューティング](./storsimple/storsimple-troubleshoot-deployment.md) | 
+| SQL Database | [Azure SQL Database との接続に関する一般的な問題のトラブルシューティング](./sql-database/sql-database-troubleshoot-common-connection-issues.md) | 
+| SQL Data Warehouse | [Azure SQL Data Warehouse のトラブルシューティング](./sql-data-warehouse/sql-data-warehouse-troubleshoot.md) | 
 
 ## デプロイの準備が完了したタイミングを把握する 
 
@@ -237,7 +211,5 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 
 - 監査アクションについては、「[リソース マネージャーの監査操作](resource-group-audit.md)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、[デプロイ操作の確認](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
-- Windows ベースの仮想マシンに対するリモート デスクトップ プロトコルのエラーのトラブルシューティングについては、[リモート デスクトップ接続のトラブルシューティング](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)に関するページを参照してください。
-- Linux ベースの仮想マシンに対する SSH (Secure Shell) エラーのトラブルシューティングについては、[SSH (Secure Shell) 接続のトラブルシューティング](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

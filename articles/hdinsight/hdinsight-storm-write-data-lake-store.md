@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="01/28/2016"
+ms.date="06/17/2016"
 ms.author="larryfr"/>
 
 #HDInsight で Apache Storm によって Azure Data Lake Store を使用する
@@ -27,9 +27,9 @@ Azure Data Lake Store は、データの高スループット、可用性、耐�
 * [Java JDK 1.7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 以上
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 * Azure サブスクリプション
-* HDInsight クラスターの Storm。HDInsight クラスターに新しい Storm を作成するには、[Azure での HDInsight と Data Lake Store の使用](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するドキュメントの手順に従います。このドキュメントの手順では、新しい HDInsight クラスターと Azure Data Lake Store の作成手順を説明します。  
+* HDInsight クラスター バージョン 3.2 の Storm。HDInsight クラスターに新しい Storm を作成するには、[Azure での HDInsight と Data Lake Store の使用](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)に関するドキュメントの手順に従います。このドキュメントの手順では、新しい HDInsight クラスターと Azure Data Lake Store の作成手順を説明します。  
 
-    > [AZURE.IMPORTANT] HDInsight クラスターを作成するときに、クラスターの種類として __Storm__ を選択する必要があります。OS には、Windows または Linux を指定できます。
+    > [AZURE.IMPORTANT] HDInsight クラスターを作成するときに、クラスターの種類として __Storm__ を選択し、バージョンとして __3.2__ を選択する必要があります。OS には、Windows または Linux を指定できます。
 
 ###環境変数を構成する
 
@@ -53,7 +53,7 @@ Azure Data Lake Store は、データの高スループット、可用性、耐�
 
 * __PartialCount__: TickSpout によって生成されたイベントをカウントします。
 
-* __FinalCount__: PartialCount からのカウント データを集計します。
+* __FinalCount__: PartialCount のカウント データを集計します。
 
 * __ADLStoreBolt__: [HdfsBolt](http://storm.apache.org/javadoc/apidocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) コンポーネントを使用して Azure Data Lake Store にデータを書き込みます。
 
@@ -107,13 +107,13 @@ Data Lake Store への書き込みは、HdfsBolt を使用し、URL を変更す
         mvn compile
         mvn package
     
-    ビルドとパッケージ化が完了すると、`target` という名前の新しいディレクトリができます。このディレクトリには、`StormToDataLakeStore-1.0-SNAPSHOT.jar` という名前のファイルが含まれています。このファイルに、コンパイルされたトポロジが含まれています。
+    ビルドとパッケージ化が完了すると、`target` という名前の新しいディレクトリが作成されます。このディレクトリには、`StormToDataLakeStore-1.0-SNAPSHOT.jar` という名前のファイルが含まれています。このファイルに、コンパイルされたトポロジが含まれています。
 
 ##Linux ベースの HDInsight でデプロイおよび実行する
 
 HDInsight クラスターで Linux ベースの Storm を作成した場合は、次の手順に従って、トポロジをデプロイおよび実行します。
 
-1. 次のコマンドを使用して、トポロジを HDInsight クラスターにコピーします。__USER__ を、クラスター作成時に使用した SSH ユーザー名に置き換えます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
+1. 次のコマンドを使用して、トポロジを HDInsight クラスターにコピーします。__USER__ を、クラスターの作成時に使用した SSH ユーザー名に置き換えます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
 
         scp target\StormToDataLakeStore-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToDataLakeStore-1.0-SNAPSHOT.jar
     
@@ -121,13 +121,13 @@ HDInsight クラスターで Linux ベースの Storm を作成した場合は�
     
     > [AZURE.NOTE] 開発に Windows クライアントを使用している場合、`scp` コマンドがないことがあります。その場合は、`pscp` を使用できます。このコマンドは、[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) で入手できます。
 
-2. アップロードが完了したら、次のようにして、SSH を使用して HDInsight クラスターに接続します。__USER__ を、クラスター作成時に使用した SSH ユーザー名に置き換えます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
+2. アップロードが完了したら、次のようにして、SSH を使用して HDInsight クラスターに接続します。__USER__ を、クラスターの作成時に使用した SSH ユーザー名に置き換えます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
 
         ssh USER@CLUSTERNAME-ssh.azurehdinsight.net
 
     メッセージが表示されたら、クラスターの SSH ユーザーの作成時に使用したパスワードを入力します。パスワードではなく公開キーを使用している場合は、`-i` パラメーターを使用して、対応する秘密キーのパスを指定することが必要な場合があります。
     
-    > [AZURE.NOTE] 開発に Windows クライアントを使用している場合は、クラスターへの接続に PuTTY クライアントを使用するための情報について、[SSH による Windows から Linux ベースの HDInsight への接続](hdinsight-hadoop-linux-use-ssh-windows.md)に関するページを参照してください。
+    > [AZURE.NOTE] 開発に Windows クライアントを使用している場合は、クラスターへの接続に PuTTY クライアントを使用するための情報について、[SSH による Windows から Linux ベースの HDInsight への接続](hdinsight-hadoop-linux-use-ssh-windows.md)に関するページをご覧ください。
     
 3. 接続したら、次のコマンドを使用してトポロジを開始します。
 
@@ -137,7 +137,7 @@ HDInsight クラスターで Linux ベースの Storm を作成した場合は�
 
 ##Windows ベースの HDInsight でデプロイおよび実行する
 
-1. Web ブラウザーを開き、HTTPS://CLUSTERNAME.azurehdinsight.net に移動します。__CLUSTERNAME__ は、HDInsight クラスターの名前です。メッセージが表示されたら、管理者ユーザー名 (`admin`) と、クラスターの作成時にこのアカウントのために使用したパスワードを指定します。
+1. Web ブラウザーを開き、HTTPS://CLUSTERNAME.azurehdinsight.net に移動します。__CLUSTERNAME__ は、HDInsight クラスターの名前です。メッセージが表示されたら、管理者ユーザー名 (`admin`) と、クラスターの作成時にこのアカウントに使用したパスワードを指定します。
 
 2. Storm ダッシュボードの __[Jar ファイル]__ ドロップダウンで __[参照]__ を選択し、`target` ディレクトリの StormToDataLakeStore-1.0-SNAPSHOT.jar ファイルを選択します。フォームの他のエントリには、以下の値を使用します。
 
@@ -146,7 +146,7 @@ HDInsight クラスターで Linux ベースの Storm を作成した場合は�
     
     ![image of storm dashboard](./media/hdinsight-storm-write-data-lake-store/submit.png)
 
-3. __[送信]__ ボタンを選択して、トポロジをアップロードおよび開始します。トポロジが開始されると、__[送信]__ ボタンの下にある結果フィールドに、次のような情報が表示されます。
+3. __[送信]__ ボタンをクリックして、トポロジをアップロードおよび開始します。トポロジが開始されると、__[送信]__ ボタンの下にある結果フィールドに、次のような情報が表示されます。
 
         Process exit code: 0
         Currently running topologies:
@@ -162,9 +162,9 @@ HDInsight クラスターで Linux ベースの Storm を作成した場合は�
 
 * __[Azure ポータル](https://portal.azure.com)から__: ポータルで、HDInsight で使用した Azure Data Lake Store を選択します。
 
-    > [AZURE.NOTE] Data Lake Store を Azure ポータル ダッシュボードにピン留めしなかった場合は、左側の一覧の下部にある __[参照]__、__[Data Lake Store]__ の順に選択し、ストアを探して選択することができます。
+    > [AZURE.NOTE] Data Lake Store を Azure ポータル ダッシュボードにピン留めしなかった場合は、左側の一覧の下部にある __[参照]__ をクリックして __[Data Lake Store]__ を選択し、ストアを探して選択することができます。
     
-    Data Lake Store の上部にあるアイコンで、__[データ エクスプローラー]__ を選択します。
+    Data Lake Store の上部にあるアイコンの中から、__[データ エクスプローラー]__ を選択します。
     
     ![data explore icon](./media/hdinsight-storm-write-data-lake-store/dataexplorer.png)
     
@@ -174,7 +174,7 @@ HDInsight クラスターで Linux ベースの Storm を作成した場合は�
     
     いずれかのファイルを選択して、その内容を表示します。
 
-* __クラスターから__: HDInsight クラスターへの接続に SSH (Linux クラスター) またはリモート デスクトップ (Windows クラスター) を使用した場合は、以下の方法でデータを表示できます。__DATALAKE__ を Data Lake Store の名前に置き換えます。
+* __クラスターから__: SSH (Linux クラスター) またはリモート デスクトップ (Windows クラスター) を使用して HDInsight クラスターに接続している場合は、次の方法でデータを表示できます。__DATALAKE__ を Data Lake Store の名前に置き換えます。
 
         hdfs dfs -cat adl://DATALAKE.azuredatalakestore.net/stormdata/*.txt
 
@@ -219,6 +219,6 @@ __Windows ベースの HDInsight の場合__:
 
 ##次のステップ
 
-これで、Storm を使用して Azure Data Lake Store に書き込む方法を学習しました。他の [HDInsight 用 Storm サンプル](hdinsight-storm-example-topology.md)もご覧ください。
+ここでは、Storm を使用して Azure Data Lake Store に書き込む方法を学習しました。他の [HDInsight 用 Storm サンプル](hdinsight-storm-example-topology.md)もご覧ください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0622_2016-->

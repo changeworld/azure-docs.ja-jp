@@ -52,15 +52,18 @@ Transact-SQL を利用し、テーブルまたはデータベースの Stretch D
 
 ### Transact-SQL を利用し、テーブルの Stretch Database を無効にする
 
--   テーブルの Stretch を無効にして Azure から SQL Server にテーブルのリモート データをコピーするには、次のコマンドを実行します。このコマンドはキャンセルできません。
+-   テーブルの Stretch を無効にして Azure から SQL Server にテーブルのリモート データをコピーするには、次のコマンドを実行します。Azure から SQL Server にすべてのリモート データがコピーされると、テーブルの Stretch が無効になります。
+
+    このコマンドはキャンセルできません。
 
     ```tsql
-    ALTER TABLE <table name>
+	USE <Stretch-enabled database name>;
+    GO
+    ALTER TABLE <Stretch-enabled table name>  
        SET ( REMOTE_DATA_ARCHIVE ( MIGRATION_STATE = INBOUND ) ) ;
+    GO
     ```
     >   [AZURE.NOTE] Azure から SQL Server にテーブルのリモート データをコピーすると、データ転送コストが発生します。詳細については、「[Data Transfers (データ転送) の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)」をご覧ください。
-
-    Azure から SQL Server にすべてのリモート データがコピーされると、テーブルの Stretch が無効になります。
 
 -   テーブルの Stretch を無効にしてリモート データを破棄するには、次のコマンドを実行します。
 
@@ -98,4 +101,4 @@ ALTER DATABASE <database name>
 
 [Stretch Database を一時停止し、再開します。](sql-server-stretch-database-pause.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

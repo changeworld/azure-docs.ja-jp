@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="03/16/2016"
+    ms.date="06/22/2016"
     ms.author="darosa;sethm"/>
 
 # Shared Access Signature
@@ -182,17 +182,17 @@ ContentType: application/atom+xml;type=entry;charset=utf-8
 
 ## Shared Access Signature の使用 (AMQP レベル)
 
-前のセクションでは、データを Service Bus に送信するために、HTTP POST 要求を使用して SAS トークンを使用する方法について説明しました。ご存じのように、Service Bus へのアクセスには、AMQP (Advanced Message Queue Protocol) を使用できます。AMQP は、多くのシナリオでパフォーマンス上の理由から好まれているプロトコルです。SAS トークンと AMQP の併用については、[AMQP Claim-Based Security Version 1.0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) のドキュメントを参照してください。このドキュメントは、2013 年から執筆されているドラフトですが、現在 Azure でもサポートされています。
+前のセクションでは、データを Service Bus に送信するために、HTTP POST 要求を使用して SAS トークンを使用する方法について説明しました。ご存じのように、Service Bus へのアクセスには、AMQP (Advanced Message Queuing Protocol) を使用できます。AMQP は、多くのシナリオでパフォーマンス上の理由から好まれているプロトコルです。SAS トークンと AMQP の併用については、[AMQP Claim-Based Security Version 1.0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) のドキュメントを参照してください。このドキュメントは、2013 年から執筆されているドラフトですが、現在 Azure でもサポートされています。
 
 Service Bus へのデータ送信を開始する前に、発行元から適切に定義された **"$cbs"** という AMQP ノードに対して、AMQP メッセージ内で SAS トークンを送信する必要があります (すべての SAS トークンを取得して検証するためにサービスで使用される "特別な" キューと考えることができます)。発行元は、AMQP メッセージ内で **"ReplyTo"** フィールドを指定する必要があります。これは、サービスから発行元に対してトークンの検証結果を返信するノードです (発行元とサービス間の簡単な要求/応答のパターン)。この応答ノードは、AMQP 1.0 仕様に記載されているように、"リモート ノードの動的作成" について話すことで "その場で" 作成されます。発行元は SAS トークンが有効であることを確認した後に、次の処理に進み、サービスに対してデータを送信できるようになります。
 
-次の手順は、[AMQP.Net Lite](https://github.com/Azure/amqpnetlite) ライブラリを使用して、AMQP プロトコルで SAS トークンを送信する方法を示しています。この方法は、C&#35; で開発する公式の Service Bus SDK (WinRT、.Net Compact Framework、.Net Micro Framework、Mono など) を使用できない場合に有効です。当然ながら、HTTP レベル ("Authorization" ヘッダー内で送信される HTTP POST 要求と SAS トークン) の場合と同様に、要求ベースのセキュリティが AMQP レベルでどのように機能するかを理解するためにもこのライブラリは役立ちます。AMQP についてこのような詳しい知識が不要な場合は、公式の Service Bus SDK と処理を自動的に実行する .NET Framework アプリケーションを利用できます。
+次の手順は、[AMQP.Net Lite](https://github.com/Azure/amqpnetlite) ライブラリを使用して、AMQP プロトコルで SAS トークンを送信する方法を示しています。この方法は、C&#35; で開発する公式の Service Bus SDK (WinRT、.Net Compact Framework、.Net Micro Framework、Mono など) を使用できない場合に有効です。当然ながら、HTTP レベル ("Authorization" ヘッダー内で送信される HTTP POST 要求と SAS トークン) の場合と同様に、要求ベースのセキュリティが AMQP レベルでどのように機能するかを理解するためにもこのライブラリは役立ちます。AMQP についてこのような詳しい知識が不要な場合は、公式の Service Bus SDK と .NET Framework アプリケーションを利用できます。これがその役割を果たします。
 
 ### C (&) #35；
 
 ```
 /// <summary>
-/// Send Claim Based Security (CBS) token
+/// Send claim-based security (CBS) token
 /// </summary>
 /// <param name="shareAccessSignature">Shared access signature (token) to send</param>
 private bool PutCbsToken(Connection connection, string sasToken)
@@ -259,4 +259,4 @@ Service Bus 認証の詳細については、「[Service Bus の認証と承認]
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0622_2016-->

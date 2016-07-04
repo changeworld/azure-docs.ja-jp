@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="03/24/2016"
+	ms.date="06/21/2016"
 	ms.author="jroth" />
 
 # Azure での SQL Server 仮想マシンへの接続 (リソース マネージャー)
@@ -96,6 +96,8 @@ Azure 仮想マシンで実行されている SQL Server にリソース マネ�
 
 Azure の仮想マシンで実行されている SQL Server のセキュリティに関するベスト プラクティスをすべて確認することが重要です。詳細については、「[Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-windows-sql-security.md)」をご覧ください。
 
+Azure 仮想マシン上の SQL Server の[ラーニング パスを調べます](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/)。
+
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

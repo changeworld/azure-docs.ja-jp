@@ -10,11 +10,11 @@
 
 <tags
 	ms.service="sql-database"
-	ms.workload="data-management"
+	ms.workload="drivers"
 	ms.tgt_pltfrm="na"
 	ms.devlang="php"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="06/16/2016"
 	ms.author="meetb"/>
 
 
@@ -48,11 +48,13 @@
 
 ## 次のステップ
 
+* 「[SQL Database の開発: 概要](sql-database-develop-overview.md)」の確認
+* [Microsoft PHP Driver for SQL Server](https://msdn.microsoft.com/library/dn865013.aspx) の詳細
+* PHP のインストールと使用に関する詳細については、「[Accessing SQL Server Databases with PHP (PHP を使用して SQL Server のデータベースにアクセスする)](http://social.technet.microsoft.com/wiki/contents/articles/1258.accessing-sql-server-databases-from-php.aspx)」をご覧ください。
 
-PHP のインストールと使用に関する詳細については、「[Accessing SQL Server Databases with PHP (PHP を使用して SQL Server のデータベースにアクセスする)](http://social.technet.microsoft.com/wiki/contents/articles/1258.accessing-sql-server-databases-from-php.aspx)」をご覧ください。
+## その他のリソース 
 
-## その他のリソース
+* [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべての確認
 
-マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」をご覧ください。
-
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

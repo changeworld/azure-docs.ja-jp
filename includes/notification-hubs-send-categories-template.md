@@ -3,7 +3,7 @@
 
 Mobile Apps を使用している場合は、「[Windows Runtime 8.1 ユニバーサル アプリへのプッシュ通知の追加](../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)」チュートリアルを参照し、上部でプラットフォームを選択してください。
 
-Java または PHP を使用する場合は、「[How to use Notification Hubs from Java/PHP (Java/PHP から Notification Hubs を使用する方法)](../articles/notification-hubs/notification-hubs-java-backend-how-to.md)」を参照してください。[Notification Hub REST インターフェイス](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)を使用することで、バックエンドから通知を送信できます。
+Java または PHP を使用する場合は、「[How to use Notification Hubs from Java/PHP (Java/PHP から Notification Hubs を使用する方法)](../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md)」を参照してください。[Notification Hub REST インターフェイス](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)を使用することで、バックエンドから通知を送信できます。
 
 「[Notification Hubs の使用][get-started]」を実行したときに、通知を送信するためにコンソール アプリケーションを作成した場合は、ステップ 1. ～ 3. はスキップします。
 
@@ -70,7 +70,7 @@ Java または PHP を使用する場合は、「[How to use Notification Hubs f
 [16]: ./media/notification-hubs-back-end/notification-hub-scheduler2.png
 
 <!-- URLs. -->
-[get-started]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started.md
+[get-started]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Use Notification Hubs to send notifications to users]: ../articles/tutorial-notify-users-mobileservices.md
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
@@ -78,4 +78,4 @@ Java または PHP を使用する場合は、「[How to use Notification Hubs f
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0622_2016-->

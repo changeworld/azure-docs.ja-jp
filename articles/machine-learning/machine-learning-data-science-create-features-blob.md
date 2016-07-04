@@ -13,16 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
-	ms.author="fashah;garye;bradsev" />
+	ms.date="06/14/2016" 
+	ms.author="bradsev;garye" />
 
 #Pandas を使用して Azure BLOB ストレージ データの特徴を作成する
 
 このドキュメントでは、[Pandas](http://pandas.pydata.org/) Python パッケージを使用して Azure BLOB コンテナーに格納されているデータの特徴を作成する方法について説明します。まず Panda データ フレームにデータを読み込む方法を概説し、その後、Python スクリプトからインジケーター値を使用してカテゴリ特徴を生成し、特徴をビン分割する方法について説明します。
 
-[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
-
-この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Cortana Analytics Process (CAP)]( https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
+[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
 
 
 ## 前提条件
@@ -62,7 +60,7 @@
 	
 次の 2 つのセクションでは、Python スクリプトを使用して、インジケーター値を持つカテゴリ特徴を生成し、特徴をビン分割する方法について説明します。
 
-###<a name="blob-countfeature"></a>インジケーター値ベースの特徴の生成
+###<a name="blob-countfeature">インジケーター値ベースの特徴の生成</a>
 
 カテゴリの特徴は、次のように作成できます。
 
@@ -138,4 +136,4 @@
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

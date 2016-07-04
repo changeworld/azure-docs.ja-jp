@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="06/20/2016" 
 	ms.author="anhoh"/>
 
 # DocumentDB 階層型リソース モデルと概念
@@ -410,7 +410,7 @@ DocumentDB を使用して、指定のユーザーの e ブックに関連した
 -	アプリケーションは、各ユーザーのメタデータを個別のドキュメントとして格納できます。つまり、book1 についての Joe のメタデータは、/colls/joe/docs/book1 で参照されるドキュメントに格納されます。 
 -	指定のブックのコンテンツのページをポイントする添付ファイルは、対応する /colls/joe/docs/book1/chapter1、/colls/joe/docs/book1/chapter2 などのドキュメントに格納されます。 
 
-この例では、リソースの階層を伝えるのにわかりやすい ID を使用しています。リソースは一意のリソース ID を使用した REST API を通じてアクセスされます。
+上記の例では、リソースの階層を把握しやすい ID が使用されています。リソースは一意のリソース ID を使用した REST API を通じてアクセスされます。
 
 DocumentDB で管理されるメディアでは、添付ファイルの \_media プロパティでメディアの URI が参照されます。DocumentDB は、未処理の参照がすべてドロップされると、メディアのガベージ コレクションを実施します。新しいメディアをアップロードし、その新たに追加されたメディアをポイントする \_media を設定すると、DocumentDB はその添付ファイルを自動作成します。管理するリモート BLOB ストア (OneDrive、Azure Storage、DropBox など) にメディアを格納する場合は、メディアを参照するために添付ファイルを引き続き使用できます。この場合は、自分自身で添付ファイルを作成し、添付ファイルの \_media プロパティを設定してください。
 
@@ -448,4 +448,4 @@ HTTP コマンドを使用したリソースの操作の詳細については、
 [2]: media/documentdb-resources/resources2.png
 [3]: media/documentdb-resources/resources3.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0622_2016-->

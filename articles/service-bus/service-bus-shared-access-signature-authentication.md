@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Service Bus による Shared Access Signature 認証 | Microsoft Azure"
-   description="Service Bus による SAS 認証について詳しく説明します。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" />
+    pageTitle="Service Bus による Shared Access Signature 認証 | Microsoft Azure"
+    description="Service Bus による SAS 認証について詳しく説明します。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="03/09/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="06/22/2016"
+    ms.author="sethm" />
 
 # Service Bus による Shared Access Signature 認証
 
@@ -25,7 +25,7 @@ Service Bus の SAS 認証サポートは、Azure SDK バージョン 2.0 以降
 
 Service Bus の SAS 認証には、Service Bus リソースに対する関連した権限を使用した暗号化キーの構成が伴います。クライアントは SAS トークンを渡して Service Bus のリソースへのアクセスを要求します。このトークンは、アクセスされるリソース URI と、構成されたキーで署名された有効期限で構成されます。
 
-Shared Access Signature の承認規則は、Service Bus の[リレー](service-bus-fundamentals-hybrid-solutions.md#relays)、[キュー](service-bus-fundamentals-hybrid-solutions.md#queues)、[トピック](service-bus-fundamentals-hybrid-solutions.md#topics)、[Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) で構成できます。
+Shared Access Signature の承認規則は、Service Bus の[リレー](service-bus-fundamentals-hybrid-solutions.md#relays)、[キュー](service-bus-fundamentals-hybrid-solutions.md#queues)、[トピック](service-bus-fundamentals-hybrid-solutions.md#topics)、[Event Hubs](service-bus-fundamentals-hybrid-solutions.md#event-hubs) で構成できます。
 
 SAS 認証では、次の要素が使用されます。
 
@@ -35,7 +35,7 @@ SAS 認証では、次の要素が使用されます。
 
 ## Shared Access Signature 認証の構成
 
-[SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 規則は、Service Bus の名前空間、キュー、トピックに構成できます。Service Bus サブスクリプションに対する [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) の構成は現在サポートされていませんが、名前空間またはトピックに構成されている規則を使用して、サブスクリプションへのアクセスをセキュリティで保護できます。この手順を示す作業サンプルについては、[Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](http://code.msdn.microsoft.com/windowsazure/Using-Shared-Access-e605b37c)に関するサンプルを参照してください。
+[SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) 規則は、Service Bus の名前空間、キュー、トピックに構成できます。Service Bus サブスクリプションに対する [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) の構成は現在サポートされていませんが、名前空間またはトピックに構成されている規則を使用して、サブスクリプションへのアクセスをセキュリティで保護できます。この手順を示す作業サンプルについては、[Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)に関するサンプルを参照してください。
 
 Service Bus の名前空間、キュー、トピックでは、このような規則を最大 12 個構成できます。Service Bus 名前空間に構成されている規則は、その名前空間内のすべてのエンティティに適用されます。
 
@@ -52,7 +52,7 @@ Service Bus の名前空間、キュー、トピックでは、このような�
 |*SecondaryKey*|SAS トークンの署名と検証用の Base64 でエンコードされた 256 ビットのセカンダリ キー。|
 |*AccessRights*|承認規則によって付与されたアクセス権限の一覧。これらの権限には、Listen、Send、Manage 権限の任意のコレクションを指定できます。|
 
-Service Bus 名前空間がプロビジョニングされると、**RootManageSharedAccessKey** に設定された [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) と [KeyName](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.keyname.aspx) が既定で作成されます。また、既定の 2 つの [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) オブジェクトは通知ハブ用に構成されます。1 つは Listen、Send、Manage 権限で構成され、もう 1 つは Listen 権限のみで構成されます。
+Service Bus 名前空間がプロビジョニングされると、**RootManageSharedAccessKey** に設定された [SharedAccessAuthorizationRule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.aspx) と [KeyName](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sharedaccessauthorizationrule.keyname.aspx) が既定で作成されます。
 
 ## 共有アクセス承認規則のキーの再生成と取り消し
 
@@ -94,7 +94,7 @@ SAS トークン内の [KeyName](https://msdn.microsoft.com/library/azure/micros
 
 ## 名前空間の共有アクセス承認規則へのアクセス
 
-Service Bus 名前空間のルートに対する操作では、証明書の認証が必要です。Azure サブスクリプションの管理証明書をアップロードする必要があります。管理証明書をアップロードするには、[Azure クラシック ポータル][]の左側のウィンドウにある **[設定]** をクリックします。Azure 管理証明書の詳細については、「[Azure 証明書の概要](../cloud-services/cloud-services-certs-create.md#what-are-management-certificates)」を参照してください。
+Service Bus 名前空間のルートに対する操作では、証明書の認証が必要です。Azure サブスクリプションの管理証明書をアップロードする必要があります。管理証明書をアップロードするには、[Azure クラシック ポータル][]の左側のウィンドウにある **[設定]** をクリックします。Azure 管理証明書の詳細については、[Azure 証明書の概要](../cloud-services/cloud-services-certs-create.md#what-are-management-certificates)に関するセクションを参照してください。
 
 Service Bus 名前空間の共有アクセス承認規則にアクセスするためのエンドポイントは次のようになります。
 
@@ -258,4 +258,4 @@ Service Bus 認証の背景の詳細については、「[Service Bus の認証�
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -6,7 +6,7 @@ Event Hubs の Java クライアント ライブラリは、[Maven セントラ�
 <dependency>
 	<groupId>com.microsoft.azure</groupId>
 	<artifactId>azure-eventhubs</artifactId>
-	<version>0.6.9</version>
+	<version>0.7.2</version>
 </dependency>
 ```
  
@@ -33,7 +33,7 @@ public class Send
 	{
 ```
 
-名前空間と Event Hub の名前を、Event Hub の作成時に使用した値に置き換えます。`sasKeyName` と `sasKey` は、作成済みの Send 規則の名前とキーにそれぞれ対応します。この情報を使用して、接続文字列を作成します。
+名前空間と Event Hub の名前を、Event Hub の作成時に使用した値に置き換えます。
 
 ``` Java
 	final String namespaceName = "----ServiceBusNamespaceName-----";
@@ -56,3 +56,5 @@ public class Send
 }
 
 ``` 
+
+<!---HONumber=AcomDC_0622_2016-->

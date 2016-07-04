@@ -15,8 +15,8 @@ RDP または SSH を使用した VM への接続で問題が発生している�
 
 - 仮想マシンを再起動します。
 - Recreate the エンドポイント/ファイアウォール規則/ネットワーク セキュリティ グループ (NSG) 規則を再作成します。
-	- [Cloud Services エンドポイントの管理](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
-	- [ネットワーク セキュリティ グループの管理](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+	- [従来のモデル - Cloud Services エンドポイントの管理](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
+	- [リソース マネージャー モデル - ネットワーク セキュリティ グループの管理](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 - 別の Azure 仮想ネットワークなどの別の場所から接続します。
 - 仮想マシンを再デプロイします。
 	- [Windows VM のデプロイ](../articles/virtual-machines/virtual-machines-windows-redeploy-to-new-node.md)
@@ -74,8 +74,8 @@ Windows ベースと Linux ベースの両方の仮想マシンで、 **netstat-
 - ターゲット VM 上のホスト ファイアウォールで、リクエスト受信と応答送信のトラフィックが許可されている。
 - ターゲット VM で実行されている侵入検出ソフトウェアやネットワーク監視ソフトウェアで、トラフィックが許可されている。
 - Cloud Services エンドポイントまたはネットワーク セキュリティ グループでトラフィックが許可されている。
-	- [Cloud Services エンドポイントの管理](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
-	- [ネットワーク セキュリティ グループの管理](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+	- [従来のモデル - Cloud Services エンドポイントの管理](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
+	- [リソース マネージャー モデル - ネットワーク セキュリティ グループの管理](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 - テスト VM と VM 間のパスにある VM 内で実行されている別のコンポーネント (ロード バランサーやファイアウォールなど) で、トラフィックが許可されている。
 
 Windows ベースの仮想マシンについては、セキュリティ強化機能搭載 Windows ファイアウォールを使用して、ファイアウォール規則がアプリケーションの受信トラフィックと送信トラフィックを除外していないかどうかを確認してください。
@@ -90,12 +90,14 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 アプリケーションにアクセスできない場合は、次の点を確認してください。
 
-- クラシック デプロイ モデルを使用して作成された VM の場合、VM のエンドポイント構成で、受信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうか。
+- クラシック デプロイメント モデルを使用して作成された VM:
+	- VM のエンドポイント構成で、着信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうか。
+	- エンドポイント上のアクセス制御リスト (ACL) によって、インターネットからの着信トラフィックが遮断されていないかどうか。
 	- 詳細については、「[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
-- クラシック デプロイ モデルを使用して作成された VM の場合、エンドポイント上のアクセス制御リスト (ACL) によって、インターネットからの着信トラフィックが遮断されていないかどうか。
-	- 詳細については、「[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
-- リソース マネージャー デプロイ モデルを使用して作成された VM の場合、VM の受信 NAT ルール構成で、受信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうか。
-- ネットワーク セキュリティ グループで、リクエスト受信と応答送信のトラフィックが許可されているかどうか。
+	
+- Resource Manager デプロイメント モデルを使用して作成された VM:
+	- VM の受信 NAT 規則構成で、着信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうか。
+	- ネットワーク セキュリティ グループで、リクエスト受信と応答送信のトラフィックが許可されているかどうか。
 	- 詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../articles/virtual-network/virtual-networks-nsg.md)」を参照してください。
 
 仮想マシンまたはエンドポイントが負荷分散セットのメンバーである場合:
@@ -115,3 +117,5 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](../articles/virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md)
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)
+
+<!---HONumber=AcomDC_0622_2016-->

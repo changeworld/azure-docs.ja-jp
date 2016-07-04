@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="06/14/2016"
 	ms.author="bradsev;weig;gopitk"/>
 
 
@@ -158,7 +158,7 @@ U-SQL を実行するには、Visual Studio を開き、**[ファイル]、[新�
 
 ### <a name="ingest"></a>データの取り込み: パブリック BLOB からデータを読み込む
 
-Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** と指定して参照します。**Extractors.Csv()** を使用して展開することができます。次のスクリプトで wasb アドレスの container_name@blob_storage_account_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。ファイル名は同じ形式なので、**trip\_data\_{*}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。
+Azure BLOB のデータの場所は、****wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** と指定して参照します。**Extractors.Csv()** を使用して展開することができます。次のスクリプトで wasb アドレスの container_name@blob_storage_account_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。ファイル名は同じ形式なので、**trip\_data\_{*}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。
 
 	///Read in Trip data
 	@trip0 =
@@ -181,7 +181,7 @@ Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_accou
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-1 行目にヘッダーがあるので、ヘッダーを削除し、列を適切な種類に変更する必要があります。処理したデータは **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ を使用して Azure Data Lake ストレージに保存するか、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** を使用して Azure BLOB ストレージ アカウントに保存することができます。
+1 行目にヘッダーがあるので、ヘッダーを削除し、列を適切な種類に変更する必要があります。処理したデータは ****swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ を使用して Azure Data Lake ストレージに保存するか、****wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** を使用して Azure BLOB ストレージ アカウントに保存することができます。
 
 	// change data types
 	@trip =
@@ -658,7 +658,7 @@ Azure Machine Learning Studio では、Azure Data Lake Store から直接デー�
  ![21](./media/machine-learning-data-science-process-data-lake-walkthrough/21-Hive-Query-Editor-v2.PNG)
 
 
-次の Hive スクリプトを貼り付けてテーブルを作成します。データ ソースの場所は Azure Data Lake Store 内であり、**adl://data_lake_store_name.azuredatalakestore.net:443/folder_name/file_name** のように参照できます。
+次の Hive スクリプトを貼り付けてテーブルを作成します。データ ソースの場所は Azure Data Lake Store 内であり、****adl://data_lake_store_name.azuredatalakestore.net:443/folder_name/file_name** のように参照できます。
 
 	CREATE EXTERNAL TABLE nyc_stratified_sample
 	(
@@ -734,11 +734,11 @@ Web サービス ダッシュボードがすぐに表示されます。
 
 ## 次の手順
 
-[Cortana Analytics Process (CAP)](http://aka.ms/datascienceprocess) のラーニング パスには、高度な分析プロセスの各手順を説明するトピックへのリンクが用意されています。「**データ サイエンス プロセスの完全実行**」ノードからリンクされている、一連のチュートリアルがあります。それらのチュートリアルでは、Cortana スイートのさまざまな予測分析シナリオでリソースとサービスを使用する方法が示されています。
+[Team Data Science Process (TDSP)](http://aka.ms/datascienceprocess) のラーニング パスには、高度な分析プロセスの各手順を説明するトピックへのリンクが用意されています。「[Team Data Science Process walkthroughs (Team Data Science Process のチュートリアル)](data-science-process-walkthroughs.md)」ページには一連のチュートリアルがあります。チュートリアルには、さまざまな予測分析シナリオでリソースとサービスを使用する方法が示されています。
 
-- [Cortana Analytics Process の活用: SQL Data Warehouse を使用する](machine-learning-data-science-process-sqldw-walkthrough.md)
-- [Cortana Analytics Process の活用: HDInsight Hadoop クラスターを使用する](machine-learning-data-science-process-hive-walkthrough.md)
-- [Cortana Analytics Process の活用: SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)
-- [Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](machine-learning-data-science-spark-overview.md)
+- [Team Data Science Process の活用: SQL Data Warehouse の使用](machine-learning-data-science-process-sqldw-walkthrough.md)
+- [Team Data Science Process の活用: HDInsight Hadoop クラスターの使用](machine-learning-data-science-process-hive-walkthrough.md)
+- [Team Data Science Process: SQL Sever の使用](machine-learning-data-science-process-sql-walkthrough.md)
+- [Azure HDInsight 上の Spark を使用したデータ サイエンス プロセスの概要](machine-learning-data-science-spark-overview.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

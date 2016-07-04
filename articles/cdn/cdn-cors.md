@@ -65,7 +65,7 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
  
 > [AZURE.TIP] **Azure CDN from Verizon** では、正規表現を作成するエンジンとして [Perl Compatible Regular Expressions](http://pcre.org/) を使用します。正規表現を検証するには、[Regular Expressions 101](https://regex101.com/) などのツールを使用できます。スラッシュ (/) は正規表現で有効であり、エスケープする必要はありません。ただし、この文字のエスケープはベスト プラクティスだと考えられており、一部の正規表現検証ツールではエスケープするよう想定されていることに注意してください。
 
-正規表現に一致すると、CDN エッジのルールが、(もしあれば) オリジンからの **Access-Control-Allow-Origin** ヘッダーを要求の送信元のオリジンに置き換えます。**Access-Control-Allow-Methods** などのその他の CORS ヘッダーを追加することもできます。
+正規表現に一致すると、ルールによって、オリジンの **Access-Control-Allow-Origin** ヘッダーが (存在する場合)、要求の送信元のオリジンに置き換えられます。**Access-Control-Allow-Methods** などのその他の CORS ヘッダーを追加することもできます。
 
 ![Rules example with regular expression](./media/cdn-cors/cdn-cors-regex.png)
  
@@ -81,4 +81,4 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
 
 Azure CDN Standard プロファイルでは、ワイルドカード オリジンを使用せずに複数のオリジンを許可するメカニズムは、[クエリ文字列のキャッシュ](cdn-query-string.md)を使用する方法だけです。CDN エンドポイントのクエリ文字列設定を有効にしたうえで、許可される各ドメインからの要求について一意のクエリ文字列を使用する必要があります。これを行うと、CDN で一意のクエリ文字列ごとに個別のオブジェクトがキャッシュされるようになります。この手法は最適ではありませんが、CDN でキャッシュされた同じファイルのコピーが複数得られるようになります。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

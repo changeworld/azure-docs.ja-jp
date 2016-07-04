@@ -131,7 +131,7 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
 
 | エイリアス名 | 説明 |
 | ---------- | ----------- |
-| {resourceType}/sku.name | サポートされているリソースの種類: Microsoft.Compute/virtualMachines、<br />Microsoft.Storage/storageAccounts、<br />Microsoft.Scheduler/jobcollections、<br />Microsoft.DocumentDB/databaseAccounts、<br />Microsoft.Cache/Redis、<br />Microsoft..CDN/profiles |
+| {resourceType}/sku.name | サポートされているリソースの種類: Microsoft.Compute/virtualMachines、<br />Microsoft.Storage/storageAccounts、<br />Microsoft.Web/serverFarms、<br /> Microsoft.Scheduler/jobcollections、<br />Microsoft.DocumentDB/databaseAccounts、<br />Microsoft.Cache/Redis、<br />Microsoft..CDN/profiles |
 | {resourceType}/sku.family | サポートされているリソースの種類: Microsoft.Cache/Redis |
 | {resourceType}/sku.capacity | サポートされているリソースの種類: Microsoft.Cache/Redis |
 | Microsoft.Compute/virtualMachines/imagePublisher | |
@@ -140,9 +140,15 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
 | Microsoft.Compute/virtualMachines/imageVersion | |
 | Microsoft.Cache/Redis/enableNonSslPort | |
 | Microsoft.Cache/Redis/shardCount | |
+| Microsoft.SQL/servers/version | |
+| Microsoft.SQL/servers/databases/requestedServiceObjectiveId | |
+| Microsoft.SQL/servers/databases/requestedServiceObjectiveName | |
+| Microsoft.SQL/servers/databases/edition | |
+| Microsoft.SQL/servers/databases/elasticPoolName | |
+| Microsoft.SQL/servers/elasticPools/dtu | |
+| Microsoft.SQL/servers/elasticPools/edition | |
 
-
-アクションの詳細については、「[RBAC - 組み込みのロール](active-directory/role-based-access-built-in-roles.md)」を参照してください。現時点では、ポリシーは、PUT 要求でのみ機能します。
+現時点では、ポリシーは、PUT 要求でのみ機能します。
 
 ## 効果
 ポリシーでは、**deny**、**audit**、**append** の 3 種類の効果がサポートされています。
@@ -462,4 +468,4 @@ Get-AzureRmPolicyDefinition、Set-AzureRmPolicyDefinition、および Remove-Azu
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

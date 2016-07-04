@@ -12,7 +12,7 @@
 	ms.devlang="NA"
 	ms.date="06/09/2016"
 	ms.author="sstein"
-	ms.workload="data-management"
+	ms.workload="sqldb-bcdr"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
 
@@ -49,11 +49,10 @@
 
 ## 次のステップ
 
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [削除されたデータベースの復元](sql-database-restore-deleted-database.md)
-- [Azure ポータルを使用して削除済みデータベースを復元する](sql-database-restore-deleted-database-portal.md)
-- [REST API を使用して削除済みデータベースを復元する](https://msdn.microsoft.com/library/azure/mt163685.aspx)
-- [SQL Database 自動バックアップ](sql-database-automated-backups.md)
+- Azure ポータルを使用して、削除されたデータベースを復元する方法の詳細な手順については、[Azure ポータルを使用した削除済みデータベースの復元](sql-database-restore-deleted-database-portal.md)に関するページをご覧ください。
+- 削除されたデータベースを復元する方法については、[REST API を使用した削除済みデータベースの復元](https://msdn.microsoft.com/library/azure/mt163685.aspx)に関するページをご覧ください。
+- 削除されたデータベースの復元に関する詳細については、[削除されたデータベースの復元](sql-database-restore-deleted-database.md)に関するページをご覧ください。
+- Azure SQL Database 自動バックアップの詳細については、「 [SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」をご覧ください。
 
 ## その他のリソース
 
@@ -63,4 +62,4 @@
 - [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
 - [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

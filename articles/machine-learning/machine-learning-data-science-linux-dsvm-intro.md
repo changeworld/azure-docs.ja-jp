@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="gokuma;bradsev" />
 
 # Linux データ サイエンス仮想マシンのプロビジョニング 
@@ -177,7 +177,7 @@ Jupyter Notebook サーバーは、どのホストからでもアクセスでき
 
 **VIM** と **Emacs** はテキスト ベースのエディターです。Emacs に関しては、Emacs エディター内で R を簡単に利用できるようにする Emacs Speaks Statistics (ESS) というアドオン パッケージがインストールされています。詳細については、[ESS](http://ess.r-project.org/) に関するページで確認できます。
 
-**Eclipse** は、複数の言語をサポートする拡張可能なオープン ソースの IDE です。VM にインストールされているインスタンスは、Java 開発者用のエディションです。一般的な言語向けのプラグインがいくつか用意されています。それらのプラグインをインストールすると、Eclipse 環境を拡張できます。また、Eclipse には、**Azure Toolkit for Eclipse** というプラグインもインストールされています。このプラグインを使用すると、Java などの言語をサポートする Eclipse 開発環境を使用して、Azure アプリケーションを簡単に作成、開発、テスト、デプロイできます。また、**Azure SDK for Java** を使用すると、Java 環境内からさまざまな Azure サービスにアクセスすることができます。Azure Toolkit for Eclipse の詳細については、「[Azure Toolkit for Eclipse](../azure-toolkit-for-eclipse/)」を参照してください。
+**Eclipse** は、複数の言語をサポートする拡張可能なオープン ソースの IDE です。VM にインストールされているインスタンスは、Java 開発者用のエディションです。一般的な言語向けのプラグインがいくつか用意されています。それらのプラグインをインストールすると、Eclipse 環境を拡張できます。また、Eclipse には、**Azure Toolkit for Eclipse** というプラグインもインストールされています。このプラグインを使用すると、Java などの言語をサポートする Eclipse 開発環境を使用して、Azure アプリケーションを簡単に作成、開発、テスト、デプロイできます。また、**Azure SDK for Java** を使用すると、Java 環境内からさまざまな Azure サービスにアクセスすることができます。Azure Toolkit for Eclipse の詳細については、「[Azure Toolkit for Eclipse](../azure-toolkit-for-eclipse.md)」を参照してください。
 
 **LaTex** は、texlive パッケージによって、Emacs アドオンである [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) パッケージと共にインストールされています。auctex を使用すると、Emacs 内で LaTex ドキュメントを簡単に作成できます。
 
@@ -228,7 +228,7 @@ Python と R には、データベースにアクセスするためのライブ�
 ### Azure ツール 
 VM には、次の Azure ツールがインストールされています。
 
-- **Azure コマンド ライン インターフェイス**: Azure コマンド ライン インターフェイス (CLI) では、シェル コマンドを使用して Azure リソースを作成および管理できます。Azure ツールを起動するには、「***azure help***」と入力します。詳細については、[Azure CLI ドキュメント ページ](../virtual-machines-command-line-tools/)を参照してください。
+- **Azure コマンド ライン インターフェイス**: Azure コマンド ライン インターフェイス (CLI) では、シェル コマンドを使用して Azure リソースを作成および管理できます。Azure ツールを起動するには、「***azure help***」と入力します。詳細については、[Azure CLI ドキュメント ページ](../virtual-machines-command-line-tools.md)を参照してください。
 - **Microsoft Azure Storage Explorer**: Microsoft Azure Storage Explorer は、Azure ストレージ アカウントに保存したオブジェクトを参照したり、Azure BLOB のデータをアップロード/ダウンロードしたりするために使用するグラフィカル ツールです。Storage Explorer には、デスクトップのショートカット アイコンからアクセスできます。シェル プロンプトから「***StorageExplorer***」と入力して起動することもできます。X2Go クライアントからログインしているか、X11 転送を設定済みである必要があります。 
 - **Azure ライブラリ**: インストールされており、利用可能なライブラリのいくつかを次に示します。
 
@@ -354,7 +354,7 @@ Rattle と R を終了できます。これで、生成された R スクリプ�
 引き続き学習や調査に役立つ手順をいくつか紹介します。
 
 * この記事で説明しているツールを試して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを確認します。VM にインストールされているツールの基本的な概要と詳細情報を入手できる場所は、仮想マシン内のシェルで *dsvm-more-info* を実行して確認することもできます。  
-* [データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
+* [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します
 * [Cortana Analytics ギャラリー](http://gallery.cortanaanalytics.com)では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。 
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

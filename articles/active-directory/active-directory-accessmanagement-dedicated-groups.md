@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""
 	/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/17/2016"
+	ms.date="06/21/2016"
 	ms.author="curtand"/>
 
 # Azure Active Directory の専用グループ
@@ -55,4 +55,4 @@ All Users 専用グループには、ゲストや外部ユーザーを含む、�
 * [Azure Active Directory とは](active-directory-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0622_2016-->

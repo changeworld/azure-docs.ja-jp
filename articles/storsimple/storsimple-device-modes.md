@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/22/2016"
+   ms.date="06/17/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスのデバイス モードの変更
@@ -98,4 +98,4 @@ StorSimple デバイスを (通常モードから) メンテナンス モード�
 
 StorSimple デバイスに[通常モードとメンテナンス モードの更新プログラムを適用](storsimple-update-device.md)する方法について説明します。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0622_2016-->

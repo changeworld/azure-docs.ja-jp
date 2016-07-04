@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="04/06/2016" 
+    ms.date="06/21/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と TeamSeer の統合
@@ -38,7 +38,7 @@
 
 ###TeamSeer のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-teamseer-tutorial/IC700993.png "Active Directory")
 
@@ -70,7 +70,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **TeamSeer** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **TeamSeer** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-teamseer-tutorial/IC789621.png "Configure Single Sign-On")
 
@@ -78,7 +78,7 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-teamseer-tutorial/IC789628.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページで、**[サインイン URL]** テキスト ボックスに、"**http://www.teamseer.com/companyid**" というパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、**[サインイン URL]** テキスト ボックスに、"**http://www.teamseer.com/companyid*" というパターンで URL を入力し、**[次へ]** をクリックします。
 
     ![Configure App URL](./media/active-directory-saas-teamseer-tutorial/IC789629.png "アプリケーション URL の構成")
 
@@ -104,7 +104,7 @@
 
     ![SAML 設定](./media/active-directory-saas-teamseer-tutorial/IC789637.png "SAML 設定")
 
-    1.  Azure ポータルの **[TeamSeer でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[URL]** テキスト ボックスに貼り付けます。
+    1.  Azure クラシック ポータルの **[TeamSeer でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[URL]** テキスト ボックスに貼り付けます。
     2.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
         >[AZURE.TIP] 詳細については、「[バイナリ証明書をテキスト ファイルに変換する方法](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
@@ -119,7 +119,7 @@
     2.  **[Issuer]**テキスト ボックスに、サービス プロバイダーの発行元 URL を入力します。
     3.  **[保存]** をクリックします。
 
-11. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+11. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-teamseer-tutorial/IC789639.png "Configure Single Sign-On")
 
@@ -155,7 +155,7 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
 
 ###ユーザーを TeamSeer に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **TeamSeer** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -167,4 +167,4 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

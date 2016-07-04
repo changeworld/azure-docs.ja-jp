@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="06/20/2016" 
 	ms.author="spelluru"/>
 
 # Azure Machine Learning アクティビティを使用して予測パイプラインを作成する   
@@ -772,4 +772,4 @@ AzureMLBatchScoring アクティビティを引き続き使用する場合は、
 
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/04/2016" 
+	ms.date="06/21/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境を使用した geo 分散スケール
@@ -107,6 +107,8 @@ Traffic Manager と DNS を構成すると、最終的に、*www.scalableasedemo
 ![DNS Lookup][DNSLookup]
 
 ## その他のリンクおよび情報 ##
+App Service 環境に関するすべての記事と作業方法は [Application Service Environments の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
+
 Powershell を使用した [Azure リソース マネージャー (ARM) による Traffic Manager のサポート][ARMTrafficManager] (プレビュー) に関するドキュメント
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
@@ -116,7 +118,7 @@ Powershell を使用した [Azure リソース マネージャー (ARM) によ�
 <!-- LINKS -->
 [AzureTrafficManagerProfile]: https://azure.microsoft.com/documentation/articles/traffic-manager-manage-profiles/
 [ARMTrafficManager]: https://azure.microsoft.com/documentation/articles/traffic-manager-powershell-arm/
-[RegisterCustomDomain]: https://azure.microsoft.com/documentation/articles/web-sites-custom-domain-name/
+[RegisterCustomDomain]: https://azure.microsoft.com/ja-JP/documentation/articles/web-sites-custom-domain-name/
 
 
 <!-- IMAGES -->
@@ -125,4 +127,4 @@ Powershell を使用した [Azure リソース マネージャー (ARM) によ�
 [DNSLookup]: ./media/app-service-app-service-environment-geo-distributed-scale/DNSLookup-1.png
 [CustomDomain]: ./media/app-service-app-service-environment-geo-distributed-scale/CustomDomain-1.png
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0622_2016-->

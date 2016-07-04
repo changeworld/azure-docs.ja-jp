@@ -1,6 +1,6 @@
 <properties
-	pageTitle="障害復旧後にセキュリティを管理する方法"
-	description="このトピックでは、SQL Database のアクティブ geo レプリケーションのシナリオを管理するためのセキュリティに関する考慮事項について説明します。"
+	pageTitle="データベースを新しいサーバーに復元した後、またはセカンダリ データベースのコピーにデータベースをフェールオーバーした後にセキュリティを管理する方法 |Microsoft Azure"
+	description="このトピックでは、データベースの復元またはフェールオーバー後にセキュリティを管理する際のセキュリティに関する考慮事項について説明します。"
 	services="sql-database"
 	documentationCenter="na"
 	authors="carlrabeler"
@@ -14,12 +14,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="05/10/2016"
+	ms.date="06/16/2016"
 	ms.author="carlrab" />
 
 # 障害復旧後にセキュリティを管理する方法
 
->[AZURE.NOTE] すべてのサービス階層のデータベースで [Active Geo-Replication](sql-database-geo-replication-overview.md) を使用できるようになりました。
+>[AZURE.NOTE] [Active Geo-Replication]すべてのサービス階層のデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
 
 ## 障害復旧の認証要件の概要
 
@@ -27,7 +27,7 @@
 
 ## 包含ユーザーによる障害復旧
 
-[Azure SQL Database の V12 バージョン](sql-database-v12-whats-new.md)で、包含ユーザーがサポートされるようになりました。従来のユーザーは master データベース内のログインにマップする必要がありましたが、包含ユーザーは、データベース自体で完全に管理されます。これには 2 つ利点があります。障害復旧のシナリオでは、データベースがユーザーを管理するため、ユーザーは追加の構成なしで、新しいプライマリ データベースまたは geo リストアを使用して復旧されたデータベースに引き続き接続できます。また、ログインの観点からは、この構成を使用することで、スケーラビリティとパフォーマンスを向上できる可能性があります。詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
+従来のユーザーは master データベース内のログインにマップする必要がありましたが、包含ユーザーは、データベース自体で完全に管理されます。これには 2 つ利点があります。障害復旧のシナリオでは、データベースがユーザーを管理するため、ユーザーは追加の構成なしで、新しいプライマリ データベースまたは geo リストアを使用して復旧されたデータベースに引き続き接続できます。また、ログインの観点からは、この構成を使用することで、スケーラビリティとパフォーマンスを向上できる可能性があります。詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 
 主なトレードオフは、大規模な障害復旧プロセスの管理が困難になることです。同じログインを使用するデータベースが複数ある場合、複数のデータベースで包含ユーザーを使用して資格情報を維持すると、包含ユーザーの利点が損なわれる場合があります。たとえば、パスワード ローテーション ポリシーでは、マスター データベースで 1 回だけログイン用パスワードを変更するのではなく、複数のデータベースで一貫して変更を行う必要があります。このような理由から、同じユーザー名とパスワードを使用するデータベースが複数ある場合、包含ユーザーの使用は推奨されません。
 
@@ -46,7 +46,6 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 >[AZURE.NOTE] ログイン アクセスが適切に構成されていないサーバーにフェールオーバーまたは geo リストアする場合は、サーバー管理者アカウントに制限されます。
 
 ターゲット サーバーでのログインの設定には、以下に示す 3 つの手順が含まれます。
-
 
 #### 1\.プライマリ データベースにアクセスできるログインを特定する:
 このプロセスの最初の手順は、ターゲット サーバー上に複製するログインを特定することです。そのために、ソース サーバーの論理 master データベースとプライマリ データベースでそれぞれ 1 回ずつ SELECT ステートメントを実行します。
@@ -91,13 +90,18 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 
 - データベースへのアクセスとログインの管理の詳細については、「[SQL Database のセキュリティ: データベースのアクセスとログインのセキュリティの管理](sql-database-manage-logins.md)」を参照してください。
 - 包含データベース ユーザーの詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
+- アクティブ geo レプリケーションの使用および構成の方法については、「[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)」をご覧ください。
+- geo リストアの使用方法については、「[geo リストア](sql-database-geo-restore.md)」をご覧ください。
 
 ## その他のリソース
 
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
+- [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](sql-database-business-continuity.md)
+- [Overview: SQL Database Point-in-Time Restore (概要: SQL Database のポイントインタイム リストア)](sql-database-point-in-time-restore.md)
+- [geo リストア](sql-database-geo-restore.md)
 - [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
 - [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
+- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
 - [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

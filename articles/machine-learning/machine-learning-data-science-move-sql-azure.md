@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="fashah;bradsev" />
 
 # Azure Machine Learning 用にデータを Azure SQL Database に移動する
 
-このトピックでは、フラット ファイル (CSV 形式または TSV 形式) のデータまたはオンプレミスの SQL Server に格納されているデータを、Azure SQL Database に移動するためのオプションについて説明します。クラウドにデータを移動するためのこれらのタスクは、Azure で提供される Cortana Analytics Process の一部です。
+このトピックでは、フラット ファイル (CSV 形式または TSV 形式) のデータまたはオンプレミスの SQL Server に格納されているデータを、Azure SQL Database に移動するためのオプションについて説明します。このクラウドへのデータ移動タスクは、Team Data Science Process の一部です。
 
 Machine Learning 用にオンプレミスの SQL Server にデータを移動するためのオプションについては、「[Azure Virtual Machine 上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」をご覧ください。
 
-次の**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
+次の**メニュー**は、Team Data Science Process (TDSP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
 
 [AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
@@ -85,4 +85,4 @@ Azure Data Factory (ADF) を使用して Azure SQL Database にデータを移�
 
 オンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオで、継続的にデータを移行する必要がある場合、および移行の過程で、データを処理する場合や、データに変更を加えたりビジネス ロジックを付加したりする必要がある場合には、ADF の使用を検討してください。ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。ADF には他にも、複雑な操作のサポートなどの機能があります。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

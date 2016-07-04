@@ -24,7 +24,7 @@
 
 [AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-関数を使用して、構成された Azure Notification Hub でほんの数行のコードを使ってプッシュ通知を送信できます。ただし、通知ハブは、使用するプラットフォーム通知サービス (PNS) 用に構成する必要があります。Azure Notification Hub の構成方法や、通知を受け取るために登録するクライアント アプリケーションの開発方法の詳細については、[Notification Hubs の使用](../notification-hubs/notification-hubs-windows-store-dotnet-get-started.md)に関するページを参照して、上部の目的のクライアント プラットフォームをクリックしてください。
+関数を使用して、構成された Azure Notification Hub でほんの数行のコードを使ってプッシュ通知を送信できます。ただし、通知ハブは、使用するプラットフォーム通知サービス (PNS) 用に構成する必要があります。Azure Notification Hub の構成方法や、通知を受け取るために登録するクライアント アプリケーションの開発方法の詳細については、[Notification Hubs の使用](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)に関するページを参照して、上部の目的のクライアント プラットフォームをクリックしてください。
 
 ## Azure Notification Hub 出力バインドの function.json
 
@@ -32,7 +32,7 @@ function.json ファイルは、次のプロパティを提供します。
 
 - `name`: 通知ハブ メッセージの関数コードで使用される変数名。
 - `type`: *"notificationHub"* に設定する必要があります。
-- `tagExpression`: タグ式。これにより、タグ式に一致する通知を受信するように登録した一連のデバイスに通知を配信するように指定できます。詳細については、「[ルーティングとタグ式](../notification-hubs/notification-hubs-routing-tag-expressions.md)」を参照してください。
+- `tagExpression`: タグ式。これにより、タグ式に一致する通知を受信するように登録した一連のデバイスに通知を配信するように指定できます。詳細については、「[Routing and tag expressions (ルーティングとタグ式)](../notification-hubs/notification-hubs-tags-segment-push-message.md)」を参照してください。
 - `hubName`: Azure ポータル内の通知ハブ リソースの名前。
 - `connection`: この接続文字列は、使用している通知ハブの *DefaultFullSharedAccessSignature* 値に設定された**アプリケーション設定**接続文字列である必要があります。
 - `direction`: *"out"* に設定する必要があります。 
@@ -68,7 +68,7 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 
 ## Azure Notification Hub のコード例 (Node.js タイマー トリガー) 
 
-この例では、`location` と `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates.md)の通知を送信します。
+この例では、`location` と `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 	module.exports = function (context, myTimer) {
 	    var timeStamp = new Date().toISOString();
@@ -87,7 +87,7 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 
 ## Azure Notification Hub のコード例 (C# キュー トリガー)
 
-この例では、`message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates.md)の通知を送信します。
+この例では、`message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 
 	using System;
@@ -107,7 +107,7 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 	    return templateProperties;
 	}
 
-この例では、有効な JSON 文字列を使用して `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates.md)の通知を送信します。
+この例では、有効な JSON 文字列を使用して `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 	using System;
 	 
@@ -155,4 +155,4 @@ project.json ファイルのアップロードの詳細については、「[pro
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

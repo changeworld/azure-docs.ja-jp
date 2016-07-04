@@ -3,7 +3,7 @@
    description="Azure Resource Health の概要"
    services="Resource health"
    documentationCenter="dev-center-name"
-   authors="bernardm"
+   authors="BernardoAMunoz"
    manager=""
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="Supportability"
    ms.date="06/01/2016"
-   ms.author="bernardm"/>
+   ms.author="BernardoAMunoz"/>
 
 # Azure Resource Health の概要
 
@@ -59,22 +59,28 @@ Azure ポータルへのログイン後、[リソース正常性] ブレード�
 ![Resource health tile](./media/resource-health-overview/resourceHealthTile.png)
 
 ### Resource Health API
-リソースの正常性は、Azure ポータルでの操作に加え、API を使用して照会することもできます。この API を呼び出すことで、さまざまなリソース (サブスクリプションに含まれる全リソース、リソース グループに含まれる全リソース、特定のリソース) の正常性を把握することができます。
+リソースの正常性は、Azure ポータルでの操作に加え、一連の API を使用して照会できます。使用可能な API により、ユーザーが、サブスクリプションに含まれるすべてのリソース、リソース グループに含まれるすべてのリソース、または 1 つのリソースの現在の正常性を要求することができます。
 
-API を使用してリソースの正常性を照会するには、あらかじめ次の URL に POST 要求を送信して、サービスにサブスクリプションを登録する必要があります。
+また、別の API を使って、1 つのリソースの正常性の履歴を要求することも可能です。この場合、過去 14 日間のリソースの正常性状態のコレクションが応答として返されます。リソースは、公表されている障害の影響を受けている可能性がある場合、正常性の状態には、障害の詳細が serviceImpactingEvents と呼ばれる注釈として追加されます。
 
-        https://management.azure.com/subscriptions/<SubID>/providers/Microsoft.ResourceHealth/register?api-version=2015-01-01
+API を使用してリソースの正常性を照会するには、あらかじめ次の URL: volume に POST 要求を送信して、サービスにサブスクリプションを登録する必要があります
+ 
+        //Register the subscription with the Resource health resource provider
+        https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ResourceHealth/register?api-version=2015-01-01
         
 以下に、Resource Health API の呼び出し方の例を示します。
 
         // GET health of all resources in a subscription:
-        https://management.azure.com/subscriptions/<SubID>/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
+        https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
         
         //GET health of all resources in a resource group:
-        https://management.azure.com/subscriptions/<SubID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
+        https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
         
         //GET the health of a single resource:
-        https://management.azure.com/subscriptions/<SubID>/resourceGroups/<ResourceGroupName>/providers/<ResourceProvider>/<ResourceType>/<ResourceName>/providers/Microsoft.ResourceHealth/availabilityStatuses/current?api-version=2015-01-01
+        https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/providers/Microsoft.ResourceHealth/availabilityStatuses/current?api-version=2015-01-01
+        
+        //GET the historical health of a single resource:
+        https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/providers/Microsoft.ResourceHealth/availabilityStatuses?api-version=2015-01-01
 
 
 ## [リソース正常性] に表示されるステータスの意味
@@ -111,7 +117,7 @@ API を使用してリソースの正常性を照会するには、あらかじ�
 ![Resource health is unknown](./media/resource-health-overview/unknown.png)
 
 ## リソースに影響するサービス イベント
-リソースに影響するサービス イベントが発生中である場合、[リソース正常性] ブレードの上部にバナーが表示されます。このバナーをクリックすると、[監査イベント] ブレードが表示され、機能停止に関する詳しい情報を把握できます。
+リソースに影響するサービス イベントが発生中である場合、[リソース正常性] ブレードの上部にバナーが表示されます。このバナーをクリックすると、[監査イベント] ブレードが開き、その障害に関する詳しい情報が表示されます。
 
 ![Resource health may be impacted by a SIE](./media/resource-health-overview/serviceImpactingEvent.png)
 
@@ -124,6 +130,6 @@ Resource Health に情報を提供する信号には、最大 15 分の遅れが
 Resource Health から報告されるのは、SQL Server のステータスではなく、SQL データベースのステータスです。その方が、より実態に近い正常性情報が得られる反面、データベースの正常性を判断するためには、複数のコンポーネントとサービスを考慮に入れる必要があります。現在の信号の基になっているのはデータベースへのログインです。つまり、定期的にログイン (クエリの実行要求が届いていることも含む) されているデータベースの場合、正常性ステータスが定期的に表示されます。アクセスが途絶えて 10 分以上経過すると、データベースが不明状態に移行します。かといってデータベースが使用不可というわけではありません。ログインが実行されていないために信号が生成されていないというだけです。データベースに接続してクエリを実行すると、その正常性ステータスの判断と更新に必要な信号が生成されます。
 
 ## フィードバック
-ご意見とご提案をお待ちしております。 あなたの[提案](https://feedback.azure.com/forums/266794-support-feedback)をお寄せください。また、[Twitter](https://twitter.com/azuresupport) や [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure)でマイクロソフトの最新情報をご覧いただけます。
+ご意見とご提案をお待ちしております。 あなたの[提案](https://feedback.azure.com/forums/266794-support-feedback)をお寄せください。[Twitter](https://twitter.com/azuresupport) や [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure)でも、マイクロソフトの最新情報をご覧いただけます。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

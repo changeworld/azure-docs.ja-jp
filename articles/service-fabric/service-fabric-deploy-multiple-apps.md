@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/06/2016"
+   ms.date="06/20/2016"
    ms.author="bscholl;mikhegn"/>
 
 
@@ -67,7 +67,7 @@ Service Fabric のパッケージを手動で作成する方法については�
 - **/ma** は、実行可能ファイルの起動に使用される引数を定義します。Node.js がインストールされていないため、Service Fabric は、`node.exe bin/www` を実行して Node.js Web サーバーを起動する必要があります。`/ma:'bin/www'` と定義することで、パッケージ化ツールは `bin/ma` を node.exe の引数として使用します。
 - **/AppType** は、Service Fabric アプリケーションの種類の名前を定義します。
 
->[AZURE.NOTE] Visual Studio を使用して、アプリケーション プロジェクトの一部としてアプリケーション パッケージを作成することもできます。Visual Studio プロジェクトでソースをリンクした場合、Visual Studio ソリューションをビルドすると、アプリケーション パッケージは、ソースの変更に応じて常に最新の状態になります。
+>[AZURE.NOTE] Visual Studio を使用して、アプリケーション プロジェクトの一部としてアプリケーション パッケージを作成することもできます。Visual Studio プロジェクトでソースをリンクした場合、Visual Studio ソリューションをビルドすると、アプリケーション パッケージは、ソースの変更に応じて常に最新の状態になります。[Visual Studio を使用して既存のアプリケーションをパッケージ化する](service-fabric-deploy-existing-app.md#using-visual-studio-to-package-an-existing-application)
 
 /target パラメーターで指定したディレクトリを参照すると、次に示すように、完全に機能する Service Fabric パッケージがツールによって作成されていることを確認できます。
 
@@ -137,7 +137,7 @@ PowerShell またはコマンド シェルで、次のパラメーターを使�
 
 MongoDB を Service Fabric アプリケーション パッケージに追加するには、アプリケーション マニフェストと Node.js アプリケーションが配置されているのと同じディレクトリを /target パラメーターが指していることを確認する必要があります。また、同じ ApplicationType 名を使用しているかどうかも確認してください。
 
->[AZURE.NOTE] Visual Studio を使用して、アプリケーション プロジェクトの一部としてアプリケーション パッケージを作成することもできます。Visual Studio プロジェクトでソースをリンクした場合、Visual Studio ソリューションをビルドすると、アプリケーション パッケージは、ソースの変更に応じて常に最新の状態になります。
+>[AZURE.NOTE] Visual Studio を使用して、アプリケーション プロジェクトの一部としてアプリケーション パッケージを作成することもできます。Visual Studio プロジェクトでソースをリンクした場合、Visual Studio ソリューションをビルドすると、アプリケーション パッケージは、ソースの変更に応じて常に最新の状態になります。[Visual Studio を使用して既存のアプリケーションをパッケージ化する](service-fabric-deploy-existing-app.md#using-visual-studio-to-package-an-existing-application)
 
 ディレクトリを参照して、ツールによって作成された内容を確認してみましょう。
 
@@ -204,4 +204,4 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 
 - [ゲスト アプリケーションを手動でパッケージ化する](service-fabric-deploy-existing-app.md)方法について学習します。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

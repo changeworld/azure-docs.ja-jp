@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="xibingao;bradsev" />
 
 # 高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する
@@ -233,7 +233,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 1.  Azure クラシック ポータルで (または前の手順から)、**[仮想マシン]** を選択します。
 
-2.  **[仮想マシン インスタンス]** ページの **[DNS 名]** 列で、**http://** から始まる仮想マシンの DNS 名を探してコピーします。(名前全体がユーザー インターフェイスに表示されないことがありますが、右クリックしてコピーすることができます)。
+2.  **[仮想マシン インスタンス]** ページの **[DNS 名]** 列で、****http://** から始まる仮想マシンの DNS 名を探してコピーします。(名前全体がユーザー インターフェイスに表示されないことがありますが、右クリックしてコピーすることができます)。
 
 ##<a name="cde"></a>別のコンピューターからデータベース エンジンに接続する
 
@@ -251,7 +251,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 ##<a name="amlconnect"></a>Azure Machine Learning からデータベース エンジンに接続します
 
-Cortana Analytics Process の後半に、[Azure Machine Learning Studio](https://studio.azureml.net) を使用して機械学習モデルを構築し、デプロイします。トレーニングまたはスコアリングのために SQL Server VM データベースから Azure Machine Learning にデータを直接取り込むには、[Azure Machine Learning Studio](https://studio.azureml.net) の新しい実験で**データのインポート** モジュールを使用します。このトピックの詳細は Cortana Analytics Process のガイド リンクに記載されています。概要については、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
+この後の Team Data Science Process 手順で、[Azure Machine Learning Studio](https://studio.azureml.net) を使用して機械学習モデルを構築し、デプロイします。トレーニングまたはスコアリングのために SQL Server VM データベースから Azure Machine Learning にデータを直接取り込むには、[Azure Machine Learning Studio](https://studio.azureml.net) の新しい実験で**データのインポート** モジュールを使用します。このトピックの詳細は、Team Data Science Process のガイド リンクに記載されています。概要については、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
 
 2.	[データのインポート モジュール](https://msdn.microsoft.com/library/azure/dn905997.aspx)の **[プロパティ]** ウィンドウで、**[データ ソース]** ドロップダウン リストから **[Azure SQL Database]** を選択します。
 
@@ -267,7 +267,7 @@ Cortana Analytics Process の後半に、[Azure Machine Learning Studio](https:/
 
 Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用しないときに課金されないようにするには、**[停止 (割り当て解除)]** 状態にする必要があります。
 
-> [AZURE.NOTE] \(Windows 電源オプションを使用して) 内部から仮想マシンをシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。請求されないようにするには、必ず [Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その際、ShutdownRoleOperation 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
+> [AZURE.NOTE] (Windows 電源オプションを使用して) 内部から仮想マシンをシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。請求されないようにするには、必ず [Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その際、ShutdownRoleOperation 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 
@@ -285,9 +285,9 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 
 ## Azure SQL Server VM を使用する準備ができました。次のステップは ...
 
-これで、仮想マシンをデータ サイエンス演習で使用する準備ができました。また、仮想マシンを IPython Notebook サーバーとして使用し、データの探索と処理など、Azure Machine Learning および Cortana Analytics Process (CAP) に関連するタスクを行う準備もできました。
+これで、仮想マシンをデータ サイエンス演習で使用する準備ができました。また、仮想マシンを IPython Notebook サーバーとして使用し、データの探索と処理など、Azure Machine Learning および Team Data Science Process (TDSP) に関連するタスクを行う準備もできました。
 
-データ サイエンス プロセスにおける次のステップは、「[学習ガイド: Azure での高度なデータ処理](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)」に示されています。これには、HDInsight にデータを移動して、Azure Machine Learning でデータから知見を得るための準備としてデータを処理してサンプリングするための手順が含まれています。
+データ サイエンス プロセスの次のステップは、「[Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)」に示されています。HDInsight にデータを移動し、Azure Machine Learning でデータの情報を取得する準備としてデータを処理してサンプリングする手順などがあります。
 
 
 [1]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/selectsqlvmimg.png
@@ -306,4 +306,4 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

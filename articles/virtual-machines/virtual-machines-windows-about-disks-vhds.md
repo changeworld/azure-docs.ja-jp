@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="06/16/2016"
 	ms.author="cynthn"/>
 
 # Azure 仮想マシン用のディスクと VHD について
@@ -30,4 +30,4 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 -  新しい VM の作成時に使用する [Windows VM イメージを Azure にアップロード](virtual-machines-windows-upload-image.md)します。
 -  D: ドライブをデータに使用できるよう、[Windows 一時ディスクのドライブ文字を変更](virtual-machines-windows-classic-change-drive-letter.md)します。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="06/14/2016"
 	ms.author="bradsev" />
 
 # Azure HDInsight 上の Spark を使用したデータ サイエンスの概要
@@ -107,7 +107,7 @@ Jupyter Notebook は Azure ポータルから起動できます。ダッシュ�
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
 
-ブラウザーから ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** で Jupyter Notebook にアクセスすることもできます。この URL の CLUSTERNAME の部分は、実際のクラスターの名前に置き換えてください。ノートブックにアクセスするには、管理者アカウントのパスワードが必要です。
+ブラウザーから ******https://CLUSTERNAME.azurehdinsight.net/jupyter*** で Jupyter Notebook にアクセスすることもできます。この URL の CLUSTERNAME の部分は、実際のクラスターの名前に置き換えてください。ノートブックにアクセスするには、管理者アカウントのパスワードが必要です。
 
 ![](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
 
@@ -145,4 +145,4 @@ HDInsight Spark クラスターが設定され、Jupyter Notebook がアップ�
 
 **クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

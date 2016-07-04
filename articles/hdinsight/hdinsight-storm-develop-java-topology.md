@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/11/2016"
+   ms.date="06/17/2016"
    ms.author="larryfr"/>
 
 #HDInsight で Apache Storm と Maven を使用する基本的なワード カウント アプリケーションの Java ベースのトポロジの開発
@@ -471,4 +471,4 @@ Trident アプリケーションの例については、「[HDInsight での Apa
 
 Storm トポロジ例をさらにご覧になる場合、「[HDInsight での Storm トポロジの例](hdinsight-storm-example-topology.md)」をご確認ください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

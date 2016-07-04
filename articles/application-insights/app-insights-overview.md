@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Application Insights による分析" 
+	pageTitle="Application Insights による分析 | Microsoft Azure" 
 	description="デバイスと Web アプリの分析。ライブ Web アプリケーションの使用状況とパフォーマンスを追跡します。問題を検出し、優先順位を付け、診断します。継続的に監視し、ユーザーが満足するように改善します。" 
 	services="application-insights" 
     documentationCenter=""
@@ -128,6 +128,7 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
 ## ビデオ
 
+[![Animated introduction](./media/app-insights-overview/video-front-1.png)](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
 
 > [AZURE.VIDEO 218]
 
@@ -157,4 +158,4 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

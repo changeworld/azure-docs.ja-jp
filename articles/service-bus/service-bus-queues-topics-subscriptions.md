@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Service Bus のキュー、トピック、サブスクリプション | Microsoft Azure"
-   description="Service Bus メッセージング エンティティの概要です。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Service Bus のキュー、トピック、サブスクリプション | Microsoft Azure"
+    description="Service Bus メッセージング エンティティの概要です。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="tysonn" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="03/09/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="06/20/2016"
+    ms.author="sethm" />
 
 # Service Bus のキュー、トピック、サブスクリプション
 
@@ -75,15 +75,15 @@ while ((message = myQueueClient.Receive(new TimeSpan(hours: 0, minutes: 0, secon
 
 [PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) モードでは、メッセージの受信処理は 2 段階になります。これにより、メッセージが失われることを許容できないアプリケーションに対応することができます。Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにそのメッセージを返します。アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) を呼び出して受信処理の第 2 段階を完了します。Service Bus は、[Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) の呼び出しを確認すると、メッセージを読み取り済みとしてマークします。
 
-アプリケーションがなんらかの理由によってメッセージを処理できない場合には、受信したメッセージに対して ([Complete](https://msdn.microsoft.com/library/azure/hh181837.aspx) の代わりに) [Abandon](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) メソッドを呼び出すことができます。このメソッドが呼び出されると、Service Bus によってメッセージのロックが解除され、同じコンシューマーまたは競合する別のコンシューマーが再度そのメッセージを受信できるようになります。第二に、ロックに関連付けられたタイムアウトがあります。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、Service Bus によってメッセージのロックが解除され、再度受信できるようになります。
+アプリケーションがなんらかの理由によってメッセージを処理できない場合には、受信したメッセージに対して ([Complete](https://msdn.microsoft.com/library/azure/hh181837.aspx) の代わりに) [Abandon](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) メソッドを呼び出すことができます。このメソッドが呼び出されると、Service Bus によってメッセージのロックが解除され、同じコンシューマーまたは競合する別のコンシューマーが再度そのメッセージを受信できるようになります。第二に、ロックに関連付けられたタイムアウトがあります。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、Service Bus によってメッセージのロックが解除され、再度受信できるようになります (基本的に既定で [Abandon](https://msdn.microsoft.com/library/azure/hh181837.aspx) 操作を実行します)。
 
 メッセージが処理された後、[Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。一般的に、この動作は "*1 回以上*" の処理と呼ばれます。つまり、各メッセージは 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。重複した処理を許容できないシナリオでは、メッセージの **MessageId** プロパティに基づいて実現可能な重複を検出するための追加のロジックがアプリケーションで必要になります。このプロパティはメッセージが再配信されても変わりません。これは "*厳密に 1 回*" の処理と呼ばれます。
 
-メッセージを作成してキューとの間で送受信する方法の詳細と実際の例については、「[Service Bus 仲介型メッセージング .NET チュートリアル](https://msdn.microsoft.com/library/azure/hh367512.aspx)」を参照してください。
+メッセージを作成してキューとの間で送受信する方法の詳細と実際の例については、「[Service Bus ブローカー メッセージング .NET チュートリアル](service-bus-brokered-tutorial-dotnet.md)」を参照してください。
 
 ## トピックとサブスクリプション
 
-各メッセージが 1 つのコンシューマーによって処理されるキューとは異なり、トピックとサブスクリプションでは、*パブリッシュ/サブスクライブ* パターンを使用した 1 対多形式の通信が行われます。パブリッシュされた各メッセージは、これは非常に多くの受信者を対象とする場合に便利であり、トピックに登録している各サブスクリプションで使用できます。メッセージは、トピックに送信された後、サブスクリプションごとに設定できるフィルター規則に基づいて、関連付けられている 1 つ以上のサブスクリプションに配信されます。サブスクリプションでは、追加のフィルターを使用して、受信するメッセージを限定できます。メッセージは、キューに送信される場合と同じようにトピックに送信されますが、トピックからメッセージを直接受信することはありません。代わりに、メッセージはサブスクリプションから受信します。トピック サブスクリプションは、トピックに送信されたメッセージのコピーを受け取る仮想キューのようなものです。メッセージは、キューから受信する場合と同じ方法でサブスクリプションから受信します。
+各メッセージが 1 つのコンシューマーによって処理されるキューとは異なり、*トピック*と*サブスクリプション*では、*パブリッシュ/サブスクライブ* パターンを使用した 1 対多形式の通信が行われます。パブリッシュされた各メッセージは、これは非常に多くの受信者を対象とする場合に便利であり、トピックに登録している各サブスクリプションで使用できます。メッセージは、トピックに送信された後、サブスクリプションごとに設定できるフィルター規則に基づいて、関連付けられている 1 つ以上のサブスクリプションに配信されます。サブスクリプションでは、追加のフィルターを使用して、受信するメッセージを限定できます。メッセージは、キューに送信される場合と同じようにトピックに送信されますが、トピックからメッセージを直接受信することはありません。代わりに、メッセージはサブスクリプションから受信します。トピック サブスクリプションは、トピックに送信されたメッセージのコピーを受け取る仮想キューのようなものです。メッセージは、キューから受信する場合と同じ方法でサブスクリプションから受信します。
 
 比較として、キューのメッセージ送信機能はそのままトピックに相当し、メッセージ受信機能はサブスクリプションに相当します。特に、これは、サブスクリプションでは、競合コンシューマー、一時的な切り離し、負荷平滑化、負荷分散など、キューに関してこのセクションで既に説明したのと同じパターンがサポートされることを意味します。
 
@@ -154,11 +154,11 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 
 このサブスクリプション フィルターを適用すると、`StoreName` プロパティが `Store1` に設定されているメッセージだけが、`Dashboard` サブスクリプションの仮想キューにコピーされます。
 
-使用可能なフィルター値の詳細については、[SqlFilter](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx) クラスと [SqlRuleAction](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlruleaction.aspx) クラスのドキュメントを参照してください。また、[仲介型メッセージングの高度なフィルター](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)のサンプルも参照してください。
+使用可能なフィルター値の詳細については、[SqlFilter](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx) クラスと [SqlRuleAction](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlruleaction.aspx) クラスのドキュメントを参照してください。また、「[Brokered Messaging: Advanced Filters (ブローカー メッセージング: 高度なフィルター)](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)」と[トピック フィルター](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)に関するページのサンプルも参照してください。
 
 ## Event Hubs
 
-[Event Hubs](https://azure.microsoft.com/services/event-hubs/) は、Azure への大規模なイベントとテレメトリ受信をわずかな遅延と高い信頼性で提供するために使用される、イベント処理サービスです。このサービスは、他のダウンストリーム サービスと共に使用した場合、特に、アプリケーションのインストルメンテーション、ユーザー エクスペリエンスやワークフローの処理、モノのインターネット(IoT) などのシナリオで役立ちます。
+[Event Hubs](https://azure.microsoft.com/services/event-hubs/) は、Azure への大規模なイベントとテレメトリ受信をわずかな遅延と高い信頼性で提供するために使用される、イベント処理サービスです。このサービスは、他のダウンストリーム サービスと共に使用した場合、特に、アプリケーションのインストルメンテーション、ユーザー エクスペリエンスやワークフローの処理、[モノのインターネット(IoT)](https://azure.microsoft.com/services/iot-hub/) などのシナリオで役立ちます。
 
 イベント ハブは、メッセージ ストリーミングの構造体であり、キューやトピックに似ているように見られる場合もありますが、実際には非常に異なる特性を持っています。たとえば、イベント ハブには、メッセージの TTL、配信不能、トランザクション、受信確認の機能がありません。これらは、従来の仲介型メッセージング機能であり、ストリーミング機能ではないためです。イベント ハブには、パーティション分割、順序の保持、ストリーム再生など、ストリーム関連のその他の機能が用意されています。
 
@@ -171,6 +171,7 @@ Service Bus の仲介型メッセージング エンティティの使用の詳�
 - [Service Bus ブローカー メッセージングの REST チュートリアル](service-bus-brokered-tutorial-rest.md)
 - [Event Hubs のドキュメント](https://azure.microsoft.com/documentation/services/event-hubs/)
 - [Event Hubs 開発者ガイド](../event-hubs/event-hubs-programming-guide.md)
-- [仲介型メッセージング: 高度なフィルター](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
+- [トピック フィルターのサンプル](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)
+- [「Brokered Messaging: Advanced Filters sample (ブローカー メッセージング: 高度なフィルター)」のサンプル](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0622_2016-->

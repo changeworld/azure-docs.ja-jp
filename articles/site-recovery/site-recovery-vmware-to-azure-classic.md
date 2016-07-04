@@ -239,11 +239,11 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 ## 手順 5: 管理サーバーをインストールする
 > [AZURE.TIP] 管理サーバーからこれらの URL にアクセスできるようにします。
 >
-- *.hypervrecoverymanager.windowsazure.com
-- *.accesscontrol.windows.net
-- *.backup.windowsazure.com
-- *.blob.core.windows.net
-- *.store.core.windows.net
+- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
 - https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi
 - https://www.msftncsi.com/ncsi.txt
 
@@ -461,8 +461,7 @@ VMware VM をレプリケートする場合、vCenter サーバー (または ES
 ソース オペレーティング システム | モビリティ サービスのインストール ファイル
 --- | ---
 Windows Server (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_Windows\_* release.exe
-CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz 
-SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
+CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
 Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
 
 
@@ -758,4 +757,4 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 Azure で実行しているフェールオーバーされたマシンをオンプレミス環境に戻す[フェールバックの詳細についてはこちら](site-recovery-failback-azure-to-vmware-classic.md)を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

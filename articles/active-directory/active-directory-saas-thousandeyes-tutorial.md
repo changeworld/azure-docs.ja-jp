@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と ThousandEyes の統合 | Microsoft Azure" 
     description="Azure Active Directory で ThousandEyes を使用してシングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="06/21/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と ThousandEyes の統合
   
@@ -38,7 +38,7 @@
 
 ###ThousandEyes のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-thousandeyes-tutorial/IC700993.png "Active Directory")
 
@@ -68,9 +68,9 @@
   
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure Active Directory でのユーザーのアカウントで ThousandEyes に対する認証を行えるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[ThousandEyes]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **[ThousandEyes]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-thousandeyes-tutorial/IC790062.png "シングル サインオンの構成")
 
@@ -80,7 +80,7 @@
 
 3.  **[アプリケーション URL の構成]** ページの **[ThousandEyes のサインオン URL]** テキストボックスに、ユーザーが ThousandEyes アプリケーションにサインオンするときに使用する URL (例: **https://app.thousandeyes.com/login/sso*")) を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-thousandeyes-tutorial/IC790064.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-thousandeyes-tutorial/IC790064.png "Configure App URL")
 
 4.  **[ThousandEyes でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
@@ -105,13 +105,13 @@
     ![シングル サインオンの設定](./media/active-directory-saas-thousandeyes-tutorial/IC790069.png "シングル サインオンの設定")
 
     1.  **[Enable Single Sign-On]** を選択します。
-    2.  Microsoft Azure ポータルの **[ThousandEyes でのシングル サインオンの構成]** ページで、**[リモート ログイン URL]** 値をコピーして、**[ログイン ページの URL]** テキストボックスに貼り付けます。
-    3.  Microsoft Azure ポータルの **[ThousandEyes でのシングル サインオンの構成]** ページで、**[リモート ログアウト URL]** 値をコピーして、**[ログアウト ページの URL]** テキストボックスに貼り付けます。
-    4.  Microsoft Azure ポータルの **[ThousandEyes でのシングル サインオンの構成]** ページで、**[発行者の URL]** 値をコピーして、**[ID プロバイダーの発行者]** テキストボックスに貼り付けます。
-    5.  **[ID プロバイダー証明書]** で **[ファイルの選択]** をクリックし、Microsoft Azure ポータルからダウンロードした証明書をアップロードします。
+    2.  Microsoft Azure クラシック ポータルの **[ThousandEyes でのシングル サインオンの構成]** ページで、**[リモート ログイン URL]** 値をコピーして、**[ログイン ページの URL]** テキスト ボックスに貼り付けます。
+    3.  Microsoft Azure クラシック ポータルの **[ThousandEyes でのシングル サインオンの構成]** ページで、**[リモート ログアウト URL]** 値をコピーして、**[ログアウト ページの URL]** テキスト ボックスに貼り付けます。
+    4.  Microsoft Azure クラシック ポータルの **[ThousandEyes でのシングル サインオンの構成]** ページで、**[発行者の URL]** 値をコピーして、**[ID プロバイダーの発行者]** テキスト ボックスに貼り付けます。
+    5.  **[ID プロバイダー証明書]** で **[ファイルの選択]** をクリックし、Microsoft Azure クラシック ポータルからダウンロードした証明書をアップロードします。
     6.  **[保存]** をクリックします。
 
-10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-thousandeyes-tutorial/IC790070.png "シングル サインオンの構成")
 
@@ -142,9 +142,9 @@ Azure AD ユーザーが ThousandEyes にログインできるようにするに
     1.  プロビジョニングする有効な Azure Active Directory アカウントの**[Name]**、**[Email]**、その他の詳細を該当するボックスに入力します。
     2.  **[Add New User to Account]** をクリックします。
 
-        >[AZURE.NOTE]AAD アカウントの所有者にアカウントの確認およびアクティブ化用のリンクを含む電子メールが送信されます。
+        >[AZURE.NOTE] AAD アカウントの所有者にアカウントの確認およびアクティブ化用のリンクを含む電子メールが送信されます。
 
->[AZURE.NOTE]ThousandEyes から提供されている他の ThousandEyes ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] ThousandEyes から提供されている他の ThousandEyes ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -152,7 +152,7 @@ Azure AD ユーザーが ThousandEyes にログインできるようにするに
 
 ###ユーザーを ThousandEyes に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **ThousandEyes** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -164,4 +164,4 @@ Azure AD ユーザーが ThousandEyes にログインできるようにするに
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="StevenPo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,11 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="06/22/2016"
 	ms.author="kgremban"/>
 
 # 条件付きアクセスの使用
-> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 アクセス規則を構成することによって、アプリケーション プロキシを使用して発行されたアプリケーションへの条件付きアクセスを許可できます。これを使用すると、次のことができます。
 
@@ -44,7 +43,7 @@
 
   - 規則からセキュリティ グループを明示的に除外するには、**[除外]** をオンにし、1 つ以上のグループを指定します。除外一覧内のグループのメンバーであるユーザーに、Multi-Factor Authentication を実行する必要はありません。  
 
-  - ユーザーごとの Multi-Factor Authentication を使用してユーザーが構成されている場合は、この設定がアプリケーションの Multi-Factor Authentication 規則に優先します。これは、たとえ、それらのユーザーがアプリケーションの Multi-Factor Authentication 規則から除外されていたとしても、Multi-Factor Authentication を実行するには、ユーザーごとの Multi-Factor Authentication で構成されたユーザーが必要になることを意味します。[Multi-Factor Authentication とユーザーごとの設定](../multi-factor-authentication/multi-factor-authentication.md)に関する詳細をご覧ください。
+  - ユーザーごとの Multi-Factor Authentication を使用してユーザーが構成されている場合は、この設定がアプリケーションの Multi-Factor Authentication 規則に優先します。これは、たとえ、それらのユーザーがアプリケーションの Multi-Factor Authentication 規則から除外されていたとしても、Multi-Factor Authentication を実行するには、ユーザーごとの Multi-Factor Authentication で構成されたユーザーが必要になることを意味します。[Multi-Factor Authentication とユーザーごとの設定](../multi-factor-authentication/multi-factor-authentication.md)に関する詳細を参照してください。
 
 6. 設定するアクセス規則を選択します。
 	- **Multi-Factor Authentication が必要です**: アクセス規則が適用されるユーザーは、規則が適用されるアプリケーションにアクセスする前に Multi-Factor Authentication を完了する必要があります。
@@ -67,6 +66,6 @@
 - [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
 - [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
 
-最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
+最新のニュースと更新情報については、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

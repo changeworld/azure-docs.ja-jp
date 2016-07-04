@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="vm-windows"
    ms.devlang="na"
    ms.workload="required"
-   ms.date="05/12/2016"
+   ms.date="06/16/2016"
    ms.author="delhan"/>
 
 # Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング
@@ -74,4 +74,8 @@ VM のサイズ変更要求は、クラウド サービスをホストしてい�
   2. すべての VM が停止したら、目的の VM のサイズを大きなサイズに変更します。
   3. サイズ変更した VM を選択して **[起動]** をクリックした後、停止している各 VM を起動します。
 
-<!---HONumber=AcomDC_0608_2016-->
+## 次のステップ
+
+Azure で新しい Windows VM を作成するときに問題が発生する場合は、[Azure での新しい Windows 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](../virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)を参照してください。
+
+<!---HONumber=AcomDC_0622_2016-->

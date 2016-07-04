@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/26/2016"
+    ms.date="06/17/2016"
     ms.author="spelluru"/>
 # Azure Batch と Data Factory を使用した HPC とデータのオーケストレーション
 
@@ -380,7 +380,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 	![](./media/data-factory-data-processing-using-batch/image5.png)
 
-13.  **MyDotNetActivity.zip** を BLOB として **customactvitycontainer** にアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内の **StorageLinkedService** リンク サービスが使用する Azure BLOB ストレージ内にあります。BLOB コンテナー **customactivitycontainer** が既に存在していなければ、作成します。
+13.  **MyDotNetActivity.zip** を BLOB として **customactivitycontainer** にアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内の **StorageLinkedService** リンク サービスが使用する Azure BLOB ストレージ内にあります。BLOB コンテナー **customactivitycontainer** が既に存在していなければ、作成します。
 
 ### Execute メソッド
 
@@ -543,7 +543,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
     4.  **batchUri** JSON プロパティにバッチ URI を入力します。
     
-		> [AZURE.IMPORTANT] **[Azure Batch アカウント] ブレード**の **URL** は、次の形式です: \<accountname\>.\<region\>.batch.azure.com。JSON の **batchUri** プロパティでは、URL から **"accountname." を削除**する必要があります。例: "batchUri": "https://eastus.batch.azure.com"。
+		> [AZURE.IMPORTANT] **[Azure Batch アカウント] ブレード**の **URL** は、次の形式です: <accountname>.<region>.batch.azure.com。JSON の **batchUri** プロパティでは、URL から **"accountname." を削除**する必要があります。例: "batchUri": "https://eastus.batch.azure.com"。
 
         ![](./media/data-factory-data-processing-using-batch/image9.png)
 
@@ -702,7 +702,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 > [AZURE.IMPORTANT] BLOB コンテナー内の入力フォルダーに **file.txt** をまだアップロードしていない場合は、パイプラインを作成する前に行ってください。**isPaused** プロパティがパイプラインの JSON で false に設定されているため、パイプラインは **start** の日を過ぎると、すぐに実行されます。
 
-1.  Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] \(省略記号)** をクリックすると表示されます。
+1.  Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] (省略記号)** をクリックすると表示されます。
 
 2.  右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。
 
@@ -754,11 +754,11 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 	-   **AssemblyName** を DLL の名前 (**MyDotNetActivity.dll**) に設定します。
 
-	-   **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。基本的に、コード内の \<namespace\>.\<classname\> です。
+	-   **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。基本的に、コード内の <namespace>.<classname> です。
 
 	-   **PackageLinkedService** は **StorageLinkedService** に設定されます。これは、カスタム アクティビティの zip ファイルを含む Blob Storage を示します。入力/出力ファイルとカスタム アクティビティ zip ファイルに別の Azure Storage アカウントを使用している場合、Azure Storage のリンクされたサービスを別に作成する必要があります。この記事では、同じ Azure Storage アカウントを使用している前提で説明します。
 
-	-   **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。形式は \<containerforthezip\>/\<nameofthezip.zip\> です。
+	-   **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。形式は <containerforthezip>/<nameofthezip.zip> です。
 
 	-   カスタム アクティビティは入力として **InputDataset**、出力として **OutputDataset** を使用します。
 
@@ -797,11 +797,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
     ![](./media/data-factory-data-processing-using-batch/image13.png)
 
-6.  [Azure Batch エクスプローラー](http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx)を使用して、**スライス**に関連付けられている**タスク**を表示し、各スライスが実行された VM を表示します。ジョブが **adf-<poolname>** という名前で作成されていることを確認します。このジョブには、スライスごとにタスクがあります。この例では、スライスが 5 個あるため、Azure Batch には 5 個のタスクがあります。Azure Data Factory のパイプラインの JSON の **concurrency** を **5** に、VM を **2** 個持つ Azure Batch プールの **[VM ごとの最大タスク]** を **2** に設定すると、タスクが高速で実行されます (**作成** 時刻を参照)。
-
-    ![](./media/data-factory-data-processing-using-batch/image14.png)
-
-	> [AZURE.NOTE] [Azure Batch Explorer ツール][batch-explorer]のソース コードをダウンロードし、コンパイルしてから Batch プールの作成および監視に使用します。Azure Batch Explorer の使用手順については、[Azure Batch Explorer サンプル チュートリアル][batch-explorer-walkthrough]のページを参照してください。
+6.  Azure ポータルを使用して、**スライス**に関連付けられている**タスク**を表示し、各スライスが実行された VM を表示します。詳細については、「[Data Factory と Batch の統合](#data-factory-and-batch-integration)」を参照してください。
 
 7.  Azure Blob Storage の **mycontainer** の **outputfolder** に、出力ファイルが表示されます。
 
@@ -833,6 +829,19 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 
     **注:** 5 つの入力ファイルを試す前に、出力ファイル 2015-11-16-01.txt を削除していない場合は、以前に実行したスライスから 1 行と、現在実行しているスライスから 5 行表示されます。既定では、コンテンツが既に存在している場合、出力ファイルに追加されます。
+
+### Data Factory と Batch の統合
+Data Factory サービスによって、Azure Batch に **adf-poolname:job-xxx** という名前のジョブが作成されます。
+
+![Azure Data Factory - Batch ジョブ](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
+
+スライスのアクティビティの実行ごとに、1 つのタスクがジョブに作成されます。10 個のスライスを処理する準備ができたとき、ジョブには 10 個のタスクが作成されています。プール内に複数のコンピューティング ノードがある場合、複数のスライスを並列して実行することができます。コンピューティング ノードごとの最大タスクが 1 より大きな値に設定されている場合、同じコンピューティング ノードで複数のスライスを実行することもできます。
+
+この例では、スライスが 5 個あるため、Azure Batch には 5 個のタスクがあります。Azure Data Factory のパイプラインの JSON の **concurrency** を **5** に、VM を **2** 個持つ Azure Batch プールの **[VM ごとの最大タスク]** を **2** に設定すると、タスクは高速で実行されます (タスクの開始時刻と終了時刻を確認)。
+
+ポータルを使用して、**スライス**に関連付けられている Batch ジョブとそのタスクを表示し、各スライスが実行された VM を表示します。
+
+![Azure Data Factory - Batch ジョブのタスク](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
 
 ## パイプラインのデバッグ
 
@@ -879,7 +888,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
     **注:** **adfjobs** という名前の Azure Blob Storage に、**コンテナー**が表示されます。このコンテナーは自動的に削除されませんが、ソリューションのテストを完了した後に、安全に削除することができます。同様に、Data Factory ソリューションでは、**adf-<pool ID/name>:job-0000000001** という名前の Azure Batch **ジョブ**を作成します。必要な場合は、ソリューションのテストを実行した後、このジョブを削除することができます。
 7. このカスタム アクティビティでは、パッケージ内の **app.config** ファイルは使用されません。そのためこの構成ファイルから接続文字列を読み取るようにコードを記述した場合、実行時に正しく機能しません。Azure Batch を使用するときは、すべてのシークレットを **Azure KeyVault** に格納し、証明書ベースのサービス プリンシパルを使用してその Key Vault を保護したうえで、Azure Batch プールに証明書を配布することをお勧めします。こうすることで .NET カスタム アクティビティが実行時に KeyVault 内のシークレットにアクセスすることができます。これは一般的な手法であり、接続文字列に限らず、あらゆる種類のシークレットに応用できます。
 
-	最善の方法ではありませんが、同じことをもっと簡単に行うこともできます。**Azure SQL のリンクされたサービス**を接続文字列の設定で新たに作成し、そのリンクされたサービスを使用するデータセットを作成して、カスタム .NET アクティビティにダミーの入力データセットとしてチェーンする方法です。リンクされたサービスの接続文字列にカスタム アクティビティのコード内からアクセスすれば、実行時に適切に機能します。
+	最善の方法ではありませんが、同じことをもっと簡単に行うこともできます。**Azure SQL のリンクされたサービス**を接続文字列の設定で新しく作成し、そのリンクされたサービスを使用するデータセットを作成して、カスタム .NET アクティビティにダミーの入力データセットとしてチェーンする方法です。リンクされたサービスの接続文字列にカスタム アクティビティのコード内からアクセスすれば、実行時に適切に機能します。
 
 ### サンプルの拡張
 
@@ -940,4 +949,4 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

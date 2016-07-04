@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="na"
-   ms.date="03/02/2016"
+   ms.date="06/07/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用した StorSimple Virtual Array のジョブの表示
@@ -72,4 +72,4 @@ StorSimple Virtual Array でジョブが進行しているときや、デバイ�
 
 [ローカル Web UI を使用して、StorSimple Virtual Array を管理する方法を確認します](storsimple-ova-web-ui-admin.md)。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0622_2016-->

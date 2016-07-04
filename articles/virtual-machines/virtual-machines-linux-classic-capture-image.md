@@ -14,14 +14,13 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/12/2016"
+	ms.date="06/14/2016"
 	ms.author="iainfou"/>
 
 
 # 従来の Linux 仮想マシンをイメージとしてキャプチャする方法
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-linux-capture-image.md).
-
 
 ここでは、Linux を実行する従来の Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際にイメージとして使用する方法を示します。このイメージには、仮想マシンに接続された OS ディスクやデータ ディスクが含まれます。ネットワーク構成は含まれないため、イメージから他の仮想マシンを作成するときは、ネットワーク構成を行う必要があります。
 
@@ -34,7 +33,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 
 ## 仮想マシンをキャプチャする
 
-1. 任意の SSH クライアントを使用して、仮想マシンに接続します。詳細については、「[Linux を実行する仮想マシンにログオンする方法][]」を参照してください。
+1. 任意の SSH クライアントを使用して、[仮想マシンに接続](virtual-machines-linux-classic-log-on.md)します。
 
 2. SSH のウィンドウで、次のコマンドを入力します。`waagent` からの出力はこのユーティリティのバージョンによって多少異なる場合があることに注意してください。
 
@@ -55,7 +54,6 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 3. 「**y**」と入力して続行します。`-force` パラメーターを追加すると、この確認手順を省略できます。
 
 4. 「**Exit**」と入力して、SSH クライアントを閉じます。
-
 
 	>[AZURE.NOTE] 次の手順は、クライアント コンピューターに既に [Azure CLI がインストールされている](../xplat-cli-install.md)ことを前提としています。次の手順はすべて、[Azure クラシック ポータル][]でも実行できます。
 
@@ -92,10 +90,9 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 **関連項目:** [Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
-[Linux を実行する仮想マシンにログオンする方法]: virtual-machines-linux-classic-log-on.md
 [Azure の仮想マシン イメージについて]: virtual-machines-linux-classic-about-images.md
 [カスタム仮想マシンの作成方法]: virtual-machines-linux-classic-create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]: virtual-machines-windows-classic-attach-disk.md
 [カスタム Linux VM を作成する方法]: virtual-machines-linux-classic-create-custom.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0622_2016-->

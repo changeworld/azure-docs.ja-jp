@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="06/20/2016" 
 	ms.author="spelluru"/>
 
 # 使用事例 - 製品に関する推奨事項 
@@ -60,4 +60,4 @@ Azure Data Factory は、ソリューション アクセラレータの Cortana 
 
   
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0622_2016-->

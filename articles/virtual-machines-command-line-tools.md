@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/08/2016"
+	ms.date="06/15/2016"
 	ms.author="danlep"/>
 
 # Azure サービス管理 (asm) モードでの Azure CLI コマンド
@@ -25,19 +25,19 @@
 
 最初に、[Azure CLI をインストール](xplat-cli-install.md)し、[Azure サブスクリプションに接続](xplat-cli-connect.md)します。
 
-サービス管理モードのコマンド ラインでの現在のコマンド構文とオプションについては `azure help` と入力します。特定のコマンドのヘルプを表示するには、`azure help [command]` と入力します。ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
+ASM モードのコマンド ラインでの現在のコマンド構文とオプションについては `azure help` と入力します。特定のコマンドのヘルプを表示するには、`azure help [command]` と入力します。ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
 
 オプション パラメーターは、ブラケットで囲んで表記しています (例 `[parameter]`)。その他のパラメーターはすべて指定する必要があります。
 
 ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。`-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。`--json` オプションを使用すると、結果が raw json 形式で出力されます。
 
-## サービス管理モードの設定
+## ASM モードの設定
 
-現在のところ、CLI を最初にインストールしたとき、既定ではサービス管理モードは有効になります。必要に応じて、次のコマンドを使用して Azure CLI サービス管理コマンドを有効にします。
+現在のところ、CLI を最初にインストールしたとき、既定では ASM モードは有効になります。ASM モードを設定する必要がある場合は、次のコマンドを使用してください。
 
 	azure config mode asm
 
->[AZURE.NOTE] Azure リソース マネージャー モードと Azure サービス管理モードは互いに排他的です。つまり、どちらか一方のモードで作成されたリソースは、他方のモードは管理できません。
+>[AZURE.NOTE] CLI の Azure Resource Manager モードと ASM モードは互いに排他的な関係にあります。つまり、どちらか一方のモードで作成されたリソースは、他方のモードは管理できません。
 
 ## アカウント情報および発行設定の管理
 CLI でアカウントに接続する方法の 1 つは、Azure サブスクリプションの情報を使用するものです(他の方法については、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](xplat-cli-connect.md)」を参照してください)。 この情報は、以下に説明するとおり、Azure クラシック ポータルから発行設定ファイルとして入手できます。発行設定ファイルは永続的なローカル構成設定としてインポートすることができます。インポートすると、CLI の以降の操作にはこの発行設定ファイルが使用されます。発行設定のインポートは 1 回だけ行う必要があります。
@@ -1879,10 +1879,8 @@ Service Bus 名前空間が有効で利用可能であることを確認しま�
 + **-e** または **--label** &lt;label>: ストレージ アカウントのラベル。
 + **-d** または **--description** &lt;description>: ストレージ アカウントの説明。
 + **-l** または **--location** &lt;name>: ストレージ アカウントを作成するリージョン。
-+ **-a** または **--affinity-group** &lt;name>: ストレージ アカウントと関連付けるアフィニティ グループ。
-+ **--kind**: アカウントの種類: ストレージまたはストレージ BLOB。 
-+ **--sku-name**: 作成するアカウントの種類を示します。冗長性オプション付きの Standard Storage (LRS、ZRS、GRS、RAGRS) または Premium Storage (PLRS)。
-+ **--access-tier**: ストレージ層を指定します。ホットまたはクール。
++ **-a** または **--affinity-group** &lt;name>: ストレージ アカウントと関連付けるアフィニティ グループ。 
++ **--type**: 作成するアカウントの種類を示します。冗長性オプション付きの Standard Storage (LRS、ZRS、GRS、RAGRS) または Premium Storage (PLRS)。
 
 **storage account set [options] <name>**
 
@@ -1898,8 +1896,7 @@ Service Bus 名前空間が有効で利用可能であることを確認しま�
 + **-e** または **--label** &lt;label>: ストレージ アカウントのラベル。
 + **-d** または **--description** &lt;description>: ストレージ アカウントの説明。
 + **-l** または **--location** &lt;name>: ストレージ アカウントを作成するリージョン。
-+ **--sku-name**: アカウントの新しい種類を示します。冗長性オプション付きの Standard Storage (LRS、ZRS、GRS、RAGRS) または Premium Storage (PLRS)。
-+ **--access-tier**: ストレージ層を指定します。ホットまたはクール。
++ **--type**: アカウントの新しい種類を示します。冗長性オプション付きの Standard Storage (LRS、ZRS、GRS、RAGRS) または Premium Storage (PLRS)。
 
 **storage account delete [options] <name>**
 
@@ -2353,4 +2350,4 @@ Virtual Network の詳細を表示します。
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

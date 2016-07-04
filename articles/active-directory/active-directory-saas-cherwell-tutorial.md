@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="03/16/2016" 
+    ms.date="06/17/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Cherwell の統合
@@ -78,8 +78,8 @@
 
     ![Configure App URL](./media/active-directory-saas-cherwell-tutorial/IC798992.png "アプリケーション URL の構成")
 
-    1.  **[サインオン URL]** ボックスに、ユーザーが **Cherwell** へのサインオンに使用する URL を入力します (例: *https://pictdev.cherwellondemand.com/cherwellclient*)。
-    2.  **[次へ]** をクリックします。
+    1.  **[サインオン URL]** ボックスに、ユーザーが **Cherwell** へのサインオンに使用する URL を入力します (例: **https://pictdev.cherwellondemand.com/cherwellclient*)。
+2.  **[次へ]** をクリックします。
 
 4.  **[Cherwell でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
@@ -92,16 +92,14 @@
 
 5.  ダウンロードした証明書、**ID プロバイダー URL**、**シングル サインオン サービス URL** を、Cherwell サポート チームに送信します。
 
-    >[AZURE.NOTE] Cherwell サポート チームが、実際に SSO を構成する必要があります。
-    ご使用のサブスクリプションで SSO が有効になると通知されます。
+    >[AZURE.NOTE] Cherwell サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
 
 6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-cherwell-tutorial/IC798994.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
 
-Azure AD ユーザーが Cherwell にログインできるようにするには、ユーザーを Cherwell にプロビジョニングする必要があります。  
-Cherwell の場合、Cherwell サポート チームがユーザー アカウントを作成する必要があります。
+Azure AD ユーザーが Cherwell にログインできるようにするには、ユーザーを Cherwell にプロビジョニングする必要があります。Cherwell の場合、Cherwell サポート チームがユーザー アカウントを作成する必要があります。
 
 >[AZURE.NOTE] Cherwell から提供されている他の Cherwell ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
@@ -123,5 +121,4 @@ Cherwell の場合、Cherwell サポート チームがユーザー アカウン
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!----HONumber=AcomDC_0316_2016-->
-
+<!---HONumber=AcomDC_0622_2016-->

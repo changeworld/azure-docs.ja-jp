@@ -56,7 +56,7 @@
 
 このセクションでは、スタンドアロンの Windows クラスターをセキュリティで保護するために必要なすべての証明書に関する情報が示されています。証明書ベースのセキュリティを有効にするには、**ClusterCredentialType** と **ServerCredentialType** の値を *X509* に設定します。
 
->[AZURE.NOTE] [拇印](https://en.wikipedia.org/wiki/Public_key_fingerprint)は、証明書のプライマリ ID です。作成する証明書の拇印を確認するには、[証明書の拇印を取得する方法](https://msdn.microsoft.com/library/ms734695(v=vs.110).aspx)に関する記事を参照してください。
+>[AZURE.NOTE] [拇印](https://en.wikipedia.org/wiki/Public_key_fingerprint)は、証明書のプライマリ ID です。作成する証明書の拇印を確認するには、[証明書の拇印を取得する方法](https://msdn.microsoft.com/library/ms734695.aspx)に関する記事を参照してください。
 
 次の表は、クラスターのセットアップに必要な実際の証明書の一覧です。
 
@@ -64,13 +64,13 @@
 |-----------------------|--------------------------|
 |ClusterCertificate|クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。2 つの異なる証明書を使用できます。プライマリ証明書と、障害発生時のためのセカンダリ証明書です。プライマリ証明書の拇印は **Thumbprint** セクションで設定し、セカンダリ証明書の拇印は **ThumbprintSecondary** 変数で設定します。|
 |ServerCertificate|この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。利便性を考えて、*ClusterCertificate* と *ServerCertificate* に同じ証明書を使用することもできます。2 つの異なるサーバー証明書を使用できます。プライマリ証明書と、障害発生時のためのセカンダリ証明書です。プライマリ証明書の拇印は **Thumbprint** セクションで設定し、セカンダリ証明書の拇印は **ThumbprintSecondary** 変数で設定します。 |
-|ClientCertificateThumbprints|認証されたクライアントにインストールする証明書のセットです。クラスターとクラスター上で実行されているアプリケーションへのアクセスを許可するコンピューターには、いくつかの異なるクライアント証明書をインストールできます。各証明書の拇印は **CertificateThumbprint** 変数で設定します。**IsAdmin** を *true* に設定した場合、この証明書がインストールされたクライアントは、クラスターに対してさまざまな管理操作を実行できるようになります。**IsAdmin** が *false* の場合、クラスター上で実行中のアプリケーションにしか接続できません。|
-|ClientCertificateCommonNames|**CertificateCommonName** には、最初のクライアント証明書の共通名を設定します。**CertificateIssuerThumbprint** は、この証明書の発行者の拇印です。共通名と発行者の詳細については、「[証明書の使用](https://msdn.microsoft.com/library/ms731899(v=vs.110).aspx)」を参照してください。|
+|ClientCertificateThumbprints|認証されたクライアントにインストールする証明書のセットです。クラスターとクラスター上で実行されているアプリケーションへのアクセスを許可するコンピューターには、いくつかの異なるクライアント証明書をインストールできます。各証明書の拇印は **CertificateThumbprint** 変数で設定します。**IsAdmin** を *true* に設定した場合、この証明書がインストールされたクライアントは、クラスターに対してさまざまな管理操作を実行できるようになります。**IsAdmin** が *false* の場合、クラスターで実行中のアプリケーションにしか接続できません。|
+|ClientCertificateCommonNames|**CertificateCommonName** には、最初のクライアント証明書の共通名を設定します。**CertificateIssuerThumbprint** は、この証明書の発行者の拇印です。共通名と発行者の詳細については、「[証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx)」を参照してください。|
 
 
 ## 証明書のインストール
 
-クラスター間の通信をセキュリティで保護するには、最初にクラスター ノード用の X.509 証明書を取得する必要があります。さらに、承認されたコンピューターまたはユーザーだけがそのクラスターに接続できるように制限するには、該当するクライアント コンピューター用に証明書を取得し、インストールする必要があります。X.509 証明書を取得する手順については、[証明書の取得](https://msdn.microsoft.com/library/aa702761.aspx)に関する記事を参照してください。秘密キーを格納できるようにするには、**.pfx** 証明書を作成する必要があります。Azure サブスクリプションをお持ちの場合は、[X.509 証明書の取得](service-fabric-secure-azure-cluster-with-certs.md#acquirecerts)に関するセクションを参照して証明書を作成することもできます。証明書が用意できたら、次の手順でクラスター ノードにインストールできます。次の手順は、最新の Windows PowerShell 3.x が既にノードにインストールされていることを前提としています。ノードごとに次の手順を繰り返してください。クラスターおよびサーバー証明書と、それぞれのセカンダリ証明書について実行する必要があります。
+クラスター間の通信をセキュリティで保護するには、最初にクラスター ノード用の X.509 証明書を取得する必要があります。さらに、承認されたコンピューターまたはユーザーだけがそのクラスターに接続できるように制限するには、該当するクライアント コンピューター用に証明書を取得し、インストールする必要があります。X.509 証明書を取得する手順については、[証明書の取得](https://msdn.microsoft.com/library/aa702761.aspx)に関する記事を参照してください。秘密キーを格納できるようにするには、**.pfx** 証明書を作成する必要があります。または、Azure サブスクリプションをお持ちの場合は、[X.509 証明書の取得](service-fabric-secure-azure-cluster-with-certs.md#acquirecerts)に関するセクションを参照して証明書を作成することもできます。証明書が用意できたら、次の手順でクラスター ノードにインストールできます。次の手順は、最新の Windows PowerShell 3.x が既にノードにインストールされていることを前提としています。ノードごとに次の手順を繰り返してください。クラスターおよびサーバー証明書と、それぞれのセカンダリ証明書について実行する必要があります。
 
 - .pfx ファイルをノードにコピーします。
 
@@ -79,7 +79,7 @@
 		Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My `
 		-FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $password -AsPlainText -Force)
 
-*$password* を、その証明書の作成に使用したパスワードに置き換えます。$PfxFilePath を、そのノードにコピーした .pfx の完全なパスに置き換えます。
+*$password* を、この証明書の作成に使用したパスワードに置き換えます。$PfxFilePath を、そのノードにコピーした .pfx の完全なパスに置き換えます。
 
 - 次のスクリプトを実行してこの証明書に対するアクセス制御を設定し、Service Fabric プロセスがそれを使用できるようにします。
 
@@ -110,6 +110,6 @@ ClusterConfig.X509.json ファイルの **security** セクションを構成し
 	.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.json -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab -AcceptEULA $true -Verbose
 
 
-セキュリティで保護されたスタンドアロンの Windows クラスターを正常に実行し、認証されたクライアントがそのクラスターに接続できるようにセットアップしたら、「[Connect to a secure cluster using PowerShell (PowerShell を使用して、セキュリティで保護されたクラスターに接続する)](service-fabric-connect-to-secure-cluster.md#connectsecurecluster)」セクションを参考に、クラスターに接続してください。
+セキュリティで保護されたスタンドアロンの Windows クラスターを正常に実行し、認証されたクライアントがそのクラスターに接続できるようにセットアップしたら、「[PowerShell を使用して、セキュリティで保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md#connectsecurecluster)」セクションを参考に、クラスターに接続してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->
