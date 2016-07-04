@@ -148,7 +148,7 @@
 
 **iOS**、**Android**
 
-> [AZURE.NOTE] サンプル通知画面の **[Click here for instructions on how to send these notifications from Mobile Engagement platform]** (Mobile Engagement プラットフォームからこれらの通知を送信する手順についてはここをクリック) をクリックすると、これらの通知の詳細な手順を確認できます。
+> [AZURE.NOTE] サンプル通知画面の **[Click here for instructions on how to send these notifications from Mobile Engagement platform (Mobile Engagement プラットフォームからこれらの通知を送信する手順についてはここをクリック) ]** をクリックすると、これらの通知の詳細な手順を確認できます。
 
 
 [1]: ./media/mobile-engagement-demo-apps/home-windows.png
