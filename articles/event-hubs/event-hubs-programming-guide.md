@@ -23,7 +23,7 @@
 
 イベントは、HTTP POST か AMQP 1.0 接続のいずれかを利用して Event Hub に送信されます。何をいつ利用するかは、解決対象の具体的なシナリオによります。AMQP 1.0 接続は Service Bus の仲介型接続として課金され、頻繁にメッセージ量が多くなり、低遅延の要件があるシナリオに適しています。固定のメッセージング チャンネルが提供されるためです。
 
-Event Hubs は [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスで作成され、管理されます。.NET のマネージ API を使用する場合、Event Hubs にデータを発行するための主な構成要素は [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) クラスと [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスになります。[EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) は、イベントが Event Hub に送信されるときに使われる AMQP 通信チャンネルを提供します。[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスはイベントを表し、Event Hub にメッセージを発行するために使用されます。このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。その他のプロパティは [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) オブジェクトに追加され、Event Hub に渡されます。
+Event Hubs は [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスで作成され、管理されます。.NET のマネージ API を使用する場合、Event Hubs にデータを発行するための主なコンストラクトは [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) クラスと [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスになります。[EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) は、イベントが Event Hub に送信されるときに使われる AMQP 通信チャンネルを提供します。[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスはイベントを表し、Event Hub にメッセージを発行するために使用されます。このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。その他のプロパティは [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) オブジェクトに追加され、Event Hub に渡されます。
 
 ## 作業開始
 
@@ -107,7 +107,7 @@ public void SendBatch(IEnumerable<EventData> eventDataList);
 
 ## 非同期送信と大規模送信
 
-Event Hub にイベントを非同期送信することもできます。非同期送信を利用すると、クライアントがイベントを送信する速度が上がります。[Send](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.send.aspx) メソッドと [SendBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.sendbatch.aspx) メソッドの両方で [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) オブジェクトを返す非同期バージョンを利用できます。この手法ではスループットが上がりますが、Event Hubs でスロットリングされていてもクライアントがイベントの送信を続けるので、適切に実装されていない場合、クライアントに障害が発生したり、メッセージが失われたりすることがあります。また、クライアントの [RetryPolicy](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.cliententity.retrypolicy.aspx) プロパティを使用し、クライアント側の再試行オプションを制御できます。
+Event Hub にイベントを非同期送信することもできます。非同期送信を利用すると、クライアントがイベントを送信する速度が上がります。[Send](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.send.aspx) メソッドと [SendBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.sendbatch.aspx) メソッドの両方で [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) オブジェクトを返す非同期バージョンを利用できます。この手法ではスループットが上がりますが、Event Hubs でスロットルされていてもクライアントがイベントの送信を続けるので、適切に実装されていない場合、クライアントに障害が発生したり、メッセージが失われたりすることがあります。また、クライアントの [RetryPolicy](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.cliententity.retrypolicy.aspx) プロパティを使用し、クライアント側の再試行オプションを制御できます。
 
 ## パーティション送信元の作成
 
