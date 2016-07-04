@@ -77,7 +77,7 @@
 
 	c.プライマリ ノード タイプの最低 VM 数は、選択した信頼性レベルによって決まります。既定の信頼性レベルは Silver です。Service Fabric クラスターの信頼性と耐久性を選択する方法については[こちら](service-fabric-cluster-capacity.md)でご確認いただけます。
 
-	c.ノードのタイプの VM 数を選択します。後であるノード タイプの VM 数を増減できますが、プライマリのノード タイプの場合、選択した信頼性レベルによって最小値が決まります。他のノード タイプの場合、VM 数の最小値に 1 を設定できます。
+	c.ノードのタイプの VM 数を選択します。後であるノード タイプの VM 数を増減できますが、プライマリのノード タイプの場合、選択した信頼性レベルによって最小値が決まります。他のノード タイプには、VM 数に最小値の 1 を設定できます。
 
 
   	![ノードのタイプのスクリーン ショット。][CreateNodeType]
@@ -225,4 +225,4 @@ Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 -KeepAlive
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

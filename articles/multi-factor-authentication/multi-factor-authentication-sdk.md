@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="06/16/2016" 
 	ms.author="billmath"/>
 
 # カスタム アプリに Multi-Factor Authentication を構築する (SDK)
+
+> [AZURE.IMPORTANT]  SDK をダウンロードする場合は、Azure MFA、AAD Premium、EMS ライセンスを所有していても、Azure Multi-Factor Auth プロバイダーを作成する必要があります。この目的で Azure Multi-Factor Auth プロバイダーを作成する予定で、かつ各種ライセンスを既に所有している場合、プロバイダーを**有効化されたユーザーごと**のモデルで作成し、それを Azure MFA、Azure AD Premium、EMS ライセンスを含むディレクトリにリンクする必要があります。これで、SDK を利用する一意のユーザー数が所有ライセンス数を上回らない限り、課金されないようになります。
 
 Azure Multi-Factor Authentication ソフトウェア開発キット (SDK) では、Azure AD テナントにあるアプリケーションのサインインおよびトランザクション プロセスに通話とテキスト メッセージの検証を直接作成することができます。
 
@@ -33,7 +35,7 @@ API は Azure Active Directory に登録されているユーザーにアクセ�
 
 ## Azure Multi-Factor Authentication SDK のダウンロード 
 
-Azure Multi-Factor Authentication SDK は 2 とおりの方法でダウンロードできます。どちらも Azure ポータルから実行できます。1 つ目の方法では、Multi-Factor Authentication プロバイダーを直接管理します。2 つ目の方法では、サービス設定を使用します。2 つ目の方法には、Multi-Factor Auth プロバイダー、あるいは Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスが必要です。
+Azure Multi-Factor SDK のダウンロードには、[Azure Multi-Factor Auth プロバイダー](multi-factor-authentication-get-started-auth-provider.md)が必要です。これには、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスを所有している場合でも、完全な Azure サブスクリプションが必要です。SDK をダウンロードするには、Multi-Factor Auth プロバイダーを直接管理するか、MFA サービスの設定ページで **[ポータルに移動する]** リンクをクリックして、Multi-Factor 管理ポータルに移動する必要があります。
 
 
 ### Azure ポータルから Azure Multi-Factor Authentication SDK をダウンロードするには
@@ -191,4 +193,4 @@ SDK 内には、次の項目があります。
 	    }
 	}
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

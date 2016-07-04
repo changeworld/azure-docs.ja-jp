@@ -403,7 +403,7 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 
 **フェールオーバー後に Azure VM で行う操作**:
 
-- RDP プロトコル (ポート 3389) のパブリック エンドポイントを追加し、ログインの資格情報を指定します。
+- Azure VM に関連付けられている NIC にパブリック IP アドレスを追加して、RDP を許可します。
 - パブリック アドレスを使用する仮想マシンへの接続を妨げるドメイン ポリシーを使用していないことを確認します。
 - 接続を試みます。接続できない場合は、VM が実行されていることを確認します。トラブルシューティングのヒントについては、[こちらの記事](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)をご覧ください。
 
@@ -468,4 +468,4 @@ Site Recovery デプロイメントの構成設定、状態、および正常性
 
 デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの[詳細を確認](site-recovery-failover.md)します。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

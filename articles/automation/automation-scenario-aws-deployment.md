@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/13/2016"
+   ms.date="06/21/2016"
    ms.author="tiandert; bwren" />
 
-# Azure Automation ソリューション - AWS 仮想マシンのプロビジョニング 
+# Azure Automation シナリオ - AWS 仮想マシンのプロビジョニング 
 
 この記事では、Azure Automation を利用して仮想マシンを Amazon Web Service (AWS) サブスクリプションにプロビジョニングし、その VM に特別な名前を付ける方法 (AWS では "タグ付け" と呼びます) について説明します。
 
@@ -72,14 +72,14 @@ AWS PowerShell モジュールのデプロイが終わったら、PowerShell ス
 		#Sample to get the AWS VM available images
 		#Please provide the path where you have downloaded the AWS PowerShell module
 		Import-Module AWSPowerShell
-		$AWSRegion = "us-west-2"
+		$AwsRegion = "us-west-2"
 		$AwsCred = Get-Credential
 		$AwsAccessKeyId = $AwsCred.UserName
 		$AwsSecretKey = $AwsCred.GetNetworkCredential().Password
 
 		# Set up the environment to access AWS
-		Set-AWSCredentials -AccessKey $AwsAccessKeyId -SecretKey $AwsSecretKey -StoreAs AWSProfile
-		Set-DefaultAWSRegion -Region $AWSRegion
+		Set-AwsCredentials -AccessKey $AwsAccessKeyId -SecretKey $AwsSecretKey -StoreAs AWSProfile
+		Set-DefaultAWSRegion -Region $AwsRegion
 
 		Get-EC2ImageByName -ProfileName AWSProfile
 次の出力が返されます。<br> ![AWS イメージの取得](./media/automation-scenario-aws-deployment/powershell-ise-output.png)  
@@ -88,9 +88,9 @@ AWS PowerShell モジュールのデプロイが終わったら、PowerShell ス
 
 
 ### AWS VM Runbook のテスト
-Runbook のテストに進む前に、確認する必要がある事柄がいくつかあります。具体的に言うと、次の事柄です。
+Runbook のテストに進む前に、確認する必要がある事柄がいくつかあります。具体的には次の処理が行われます。
 
-   -  AWS に対して認証される資産を作成し、**AWScred** という名前を付けたこと、または使用中の資格情報資産の名前を参照するようにスクリプトを更新したこと。  
+   -  AWS に対して認証される **AWScred** という資産を作成したこと、または使用中の資格情報資産の名前を参照するようにスクリプトを更新したこと。  
    -  AWS PowerShell モジュールを Azure Automation にインポートしたこと。
    -  新しい Runbook を作成し、パラメーターの値を確認して適宜更新したこと。
    -  Runbook の設定の **[ログ記録とトレース]**下の **[詳細レコードの記録]** と (必要に応じて)**[進行状況レコードの記録]** を**[オン]** に設定したこと。<br> ![Runbook のログ記録とトレース](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png)
@@ -107,4 +107,4 @@ Runbook のテストに進む前に、確認する必要がある事柄がいく
 -	Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 -	PowerShell スクリプトのサポート機能の詳細については、「[Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)」 (Azure Automation でのネイティブ PowerShell スクリプトのサポート) を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

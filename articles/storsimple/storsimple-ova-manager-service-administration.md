@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/01/2016"
+   ms.date="06/17/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用した StorSimple Virtual Array の管理
@@ -96,4 +96,4 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 ##次のステップ
 Web UI とその使用方法については、「[StorSimple Web UI を使用した StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0622_2016-->

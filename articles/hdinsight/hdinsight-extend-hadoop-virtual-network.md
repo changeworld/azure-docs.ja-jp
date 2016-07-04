@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/19/2016"
+   ms.date="06/20/2016"
    ms.author="larryfr"/>
 
 
@@ -68,10 +68,6 @@ Virtual Network の機能、利点の詳細については、「[Azure 仮想ネ
 
 Azure HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在取り扱っていません。
 
-###サブネット
-
-各 HDInsight クラスターには単一のサブネットを作成することを強くお勧めします。
-
 ###クラシックまたは v2 Virtual Network
 
 Windows ベースのクラスターでは、v1 (クラシック) Virtual Network が必要で、Linux ベースのクラスターでは、v2 (Azure リソース マネージャー) Virtual Network が必要です。ネットワークの種類が正しくない場合、クラスターの作成には使用できません。
@@ -82,7 +78,7 @@ Windows ベースのクラスターでは、v1 (クラシック) Virtual Network
 
 仮想ネットワークを作成するとき、そのネットワークにインストールされている Azure サービス (HDInsight) には Azure によって既定の名前解決が行われます。ただしクロス ネットワーク ドメイン名解決など、状況によっては独自のドメイン ネーム システム (DNS) を使用しなければならないこともあります。たとえば、参加している 2 つの仮想ネットワークに置かれているサービス間の通信が挙げられます。HDInsight は、Azure Virtual Network との組み合わせで、Azure の既定の名前解決に加え、カスタム DNS もサポートしています。
 
-Azure Virtual Network での独自の DNS サーバーの使用について詳しくは、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)」ドキュメントの「__独自 DNS サーバー使用の名前解決__」セクションを参照してください。
+Azure Virtual Network で独自の DNS サーバーを使用する方法の詳細については、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)」の「__独自 DNS サーバー使用の名前解決__」をご覧ください。
 
 ###セキュリティで保護された Virtual Networks
 
@@ -173,7 +169,7 @@ __Azure PowerShell の使用__
 
 __Azure CLI の使用__
 
-1. 次のコマンドを使用して、`hdisecure` という名前の新しいネットワーク セキュリティ グループを作成します。__RESOURCEGROUPNAME__ と __LOCATION__ を、Azure Virtual Network を含むリソース グループと、グループの作成場所 (リージョン) に置き換えます。
+1. 次のコマンドを使用して、`hdisecure` という名前の新しいネットワーク セキュリティ グループを作成します。__RESOURCEGROUPNAME__ と __LOCATION__ を、Azure Virtual Network が含まれているリソース グループと、グループの作成場所 (リージョン) に置き換えます。
 
         azure network nsg create RESOURCEGROUPNAME hdisecure LOCATION
     
@@ -201,7 +197,7 @@ __Azure CLI の使用__
 > * Azure PowerShell - ```Add-AzureRmNetworkSecurityRuleConfig -Name "SSSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 304 -Direction Inbound```
 > * Azure CLI - ```azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "22" -f "*" -e "VirtualNetwork" -c "Allow" -y 304 -r "Inbound"```
 
-ネットワーク セキュリティ グループの詳細については、「[ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md)」を参照してください。Azure Virtual Network でルーティングを制御する方法については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
+ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md)に関する記事をご覧ください。Azure Virtual Network でルーティングを制御する方法については、[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)に関する記事をご覧ください。
 
 ##<a id="tasks"></a>タスクと情報
 
@@ -309,4 +305,4 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

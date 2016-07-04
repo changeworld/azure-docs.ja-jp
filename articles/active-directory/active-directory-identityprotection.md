@@ -5,7 +5,7 @@
 	keywords="Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="06/17/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection 
@@ -409,5 +409,6 @@ Azure AD Identity Protection を使用すると、多要素認証の登録の展
  - [Azure Active Directory Identity Protection のフロー](active-directory-identityprotection-flows.md)
  - [Azure Active Directory Identity Protection プレイブック](active-directory-identityprotection-playbook.md)
  - [Azure Active Directory Identity Protection 用語集](active-directory-identityprotection-glossary.md)
+ - [Azure Active Directory Identity Protection と Microsoft Graph の基本](active-directory-identityprotection-graph-getting-started.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/22/2016"
+   ms.date="06/17/2016"
    ms.author="v-sharos" />
 
 # Government Portal でのオンプレミスの StorSimple デバイスのデプロイ
@@ -279,4 +279,4 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 - [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0622_2016-->

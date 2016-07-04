@@ -81,11 +81,13 @@ Azure ポータルを使用して、別の Azure リージョンで Azure デー
 
 	-   リモート データのコピーを作成して、そのコピーに接続するかを指定します (推奨)。
 
-	```tsql  
-	DECLARE @credentialName nvarchar(128);   
-	SET @credentialName = N'<existing_database_scoped_credential_name>';   
-	EXEC sp_rda_reauthorize_db @credential = @credentialName, @with_copy = 1;  
-
+    ```tsql  
+    USE <Stretch-enabled database name>;
+	GO
+	EXEC sp_rda_reauthorize_db
+	    @credential = N'<existing_database_scoped_credential_name>',
+		@with_copy = 1 ;  
+	GO
 	```  
 
 ## 関連項目
@@ -96,4 +98,4 @@ Azure ポータルを使用して、別の Azure リージョンで Azure デー
 
 [SQL Server データベースのバックアップと復元](https://msdn.microsoft.com/library/ms187048.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

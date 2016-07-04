@@ -1,14 +1,13 @@
-1. From the Visual Studio menu, select **File > New > Project**. 
+1. Visual Studio のメニューで、**[ファイル]、[新規作成]、[プロジェクト]** の順に選択します。 
 
-1. Under the **Templates** section of the **New Project** dialog box, select **Visual C# > .NET Core**.
+1. **[新しいプロジェクト]** ダイアログ ボックスの **[テンプレート]** セクションで、**[Visual C#]、[.NET Core]** の順に選択します。
 
-1. Select **ASP.NET Core Web Application (.NET Core)**.
-	![New Project dialog](./media/vs-docker-create-aspnetcore-app/create-new-project.png)
+1. **ASP.NET Core Web アプリケーション (.NET Core)** を選択します。![[新しいプロジェクト] ダイアログ](./media/vs-docker-create-aspnetcore-app/create-new-project.png)
 
-1. Give your new application a name (or take the default) and Tap **OK**.  
+1. 新しいアプリケーションに名前を設定 (または、既定の名前をそのまま使用) して、**[OK]** をタップします。
 
-1. Under **ASP.NET Core Templates**, select **.NET Core**.
-	![New ASP.NET Project dialog](./media/vs-docker-create-aspnetcore-app/aspnet-core-template.png)
+1. **[ASP.NET Core テンプレート]** で、**[.NET Core]** を選択します。![[新しい ASP.NET プロジェクト] ダイアログ](./media/vs-docker-create-aspnetcore-app/aspnet-core-template.png)
 
-1. Deselect **Host in the cloud** as you'll be using Docker as your deployment solution.
+1. Docker をデプロイ ソリューションで使用するため、**[クラウドでのホスト]** の選択を解除します。
 
+<!---HONumber=AcomDC_0622_2016-->

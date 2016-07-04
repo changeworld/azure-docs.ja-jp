@@ -20,7 +20,7 @@
 
 ## Azure Automation DSC でマシンを管理する理由
 
-[PowerShell Desired State Configuration](https://technet.microsoft.com/library/dn249912.aspx) と同様、Azure Automation Desired State Configuration は、すべてのクラウドまたはオンプレミス データセンターの DSC ノード (物理および仮想マシン) のシンプルでありながら強力な構成管理サービスです。これにより、一元化された安全な場所から、何千ものマシンでの迅速かつ簡単なスケーラビリティが可能になります。マシンのオンボード、宣言型構成の割り当て、指定した必要な状態に準拠した各マシンを示すレポートの表示を簡単に行うことができます。Azure Automation DSC 管理レイヤーは、Azure Automation 管理レイヤーが PowerShell スクリプトに対応する DSC に対応します。つまり、Azure Automation を使用して、PowerShell スクリプトを管理するのと同様に DSC 構成も管理できます。Azure Automation DSC を使用するメリットの詳細については、「[Azure Automation DSC の概要](automation-dsc-overview/)」をご覧ください。
+[PowerShell Desired State Configuration](https://technet.microsoft.com/library/dn249912.aspx) と同様、Azure Automation Desired State Configuration は、すべてのクラウドまたはオンプレミス データセンターの DSC ノード (物理および仮想マシン) のシンプルでありながら強力な構成管理サービスです。これにより、一元化された安全な場所から、何千ものマシンでの迅速かつ簡単なスケーラビリティが可能になります。マシンのオンボード、宣言型構成の割り当て、指定した必要な状態に準拠した各マシンを示すレポートの表示を簡単に行うことができます。Azure Automation DSC 管理レイヤーは、Azure Automation 管理レイヤーが PowerShell スクリプトに対応する DSC に対応します。つまり、Azure Automation を使用して、PowerShell スクリプトを管理するのと同様に DSC 構成も管理できます。Azure Automation DSC を使用するメリットの詳細については、「[Azure Automation DSC の概要](automation-dsc-overview.md)」をご覧ください。
 
 以下のさまざまなマシンを管理する際に、Azure Automation DSC を使用できます。
 
@@ -104,7 +104,7 @@ Azure Automation DSC では、Azure ポータルまたは PowerShell を使用�
      -VM $vm `
      -Publisher Microsoft.Powershell `
      -ExtensionName DSC `
-     -Version 2.15 `
+     -Version 2.19 `
      -PublicConfiguration $PublicConfiguration `
      -PrivateConfiguration $PrivateConfiguration `
      -ForceUpdate
@@ -379,4 +379,4 @@ Azure Automation DSC に DSC ノードとしてマシンを登録した後も、
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

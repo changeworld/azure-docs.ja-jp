@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na" 
-    ms.date="03/16/2016"
+    ms.date="06/21/2016"
     ms.author="clemensv;sethm"/>
 
 # Service Bus の配信不能キューの概要
@@ -45,7 +45,7 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 
 ## MaxDeliveryCount の超過
 
-キューおよびサブスクリプションにはそれぞれ [QueueDescription.MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) と [SubscriptionDescription.MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount.aspx) プロパティがあり、既定値は 10 です。メッセージがロック状態で配信されたが ([ReceiveMode.PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx))、明示的に破棄されたか、ロックが期限切れになった場合は常に、メッセージの [BrokeredMessage.DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) が増えます。[DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) が [MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) を超えると、メッセージは DLQ に移動にされ、`MaxDeliveryCountExceeded` 理由コードが示されます。
+キューおよびサブスクリプションにはそれぞれ [QueueDescription.MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) および [SubscriptionDescription.MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount.aspx) プロパティがあり、既定値は 10 です。メッセージがロック状態で配信されたが ([ReceiveMode.PeekLock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx))、明示的に破棄されたか、ロックが期限切れになった場合は常に、メッセージの [BrokeredMessage.DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) が増えます。[DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) が [MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) を超えると、メッセージは DLQ に移動にされ、`MaxDeliveryCountExceeded` 理由コードが示されます。
 
 この動作を無効にすることはできませんが、[MaxDeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.maxdeliverycount.aspx) を非常に大きい数に設定することはできます。
 
@@ -88,7 +88,7 @@ while(true)
 
 Service Bus キューの詳細については、次の記事を参照してください。
 
+- [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 - [Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-- [Service Bus キュー](service-bus-dotnet-get-started-with-queues.md)の使用方法
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

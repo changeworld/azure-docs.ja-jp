@@ -43,6 +43,10 @@ Microsoft Azure Media Services にアクセスする際には、Azure Access Con
 
 	この場合、続けて、https://wamsbayclus001rest-hs.cloudapp.net/api/ へ API コールを行う必要があります。
 
+##アクセス制御アドレス
+
+Media Services のアクセス制御のアドレスは https://wamsprodglobal001acs.accesscontrol.windows.net です。ただし、中国北部リージョンを除きます。このリージョンのアドレスは https://wamsprodglobal001acs.accesscontrol.chinacloudapi.cn です。
+
 ##アクセス トークンの取得
 
 REST API から直接 Media Services にアクセスするには、ACS からアクセス トークンを取得して、Media Services に行う各 HTTP 要求で使用します。このトークンは、OAuth v2 プロトコルを使用して、HTTP 要求のヘッダーで提供されるアクセス要求に基づいて ACS で提供されるその他のトークンに似ています。Media Services に直接接続するための前提条件は、これ以外にはありません。
@@ -173,4 +177,4 @@ Media Services のルート URI は https://media.windows.net/ です。まず�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0622_2016-->

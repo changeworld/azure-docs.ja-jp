@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Cortana Analytics Process の活用: Hadoop クラスターを使用する | Microsoft Azure"
-	description="HDInsight Hadoop クラスターを使用したエンド ツー エンドのシナリオで Advanced Analytics Process and Technology (ADAPT) を使用し、公開されているデータセットを使ってモデルを作成してデプロイします。"
+	pageTitle="Team Data Science Process の活用: Hadoop クラスターの使用 | Microsoft Azure"
+	description="HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、公開されているデータセットを使ってモデルを構築してデプロイします。"
 	services="machine-learning,hdinsight"
 	documentationCenter=""
 	authors="bradsev"
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="hangzh;bradsev" />
 
 
-# Cortana Analytics Process の活用: HDInsight Hadoop クラスターを使用する
+# Team Data Science Process の活用: HDInsight Hadoop クラスターの使用
 
-このチュートリアルでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用したエンド ツー エンドのシナリオで Cortana Analytics Process を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの格納、探索、特徴エンジニアリング、ダウンサンプリングを行います。データのモデルは、Azure Machine Learning を使用して作成され、二項分類、多クラス分類、回帰予測タスクを処理します。
+このチュートリアルでは、[Azure HDInsight Spark クラスター](https://azure.microsoft.com/services/hdinsight/)によるエンド ツー エンドのシナリオで Team Data Science Process を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットでデータを格納、調査し、特徴エンジニアリングとダウンサンプリングを行います。データのモデルは、Azure Machine Learning を使用して作成され、二項分類、多クラス分類、回帰予測タスクを処理します。
 
-HDInsight Hadoop クラスターを使用したデータ処理の同様のシナリオで、より大きなサイズ (1 テラバイト) のデータセットを処理する方法については、「[Cortana Analytics Process の活用 - 1 TB (テラバイト) データセットで Azure HDInsight Hadoop クラスターを使用する](machine-learning-data-science-process-hive-criteo-walkthrough.md)」をご覧ください。
+HDInsight Hadoop クラスターを使用したデータ処理の同様のシナリオで、より大きなサイズ (1 テラバイト) のデータセットを処理する方法については、「[Team Data Science Process - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](machine-learning-data-science-process-hive-criteo-walkthrough.md)」を参照してください。
 
 IPython Notebook を使用して、このチュートリアルで説明する 1 TB のデータセットを使用したタスクを実行することもできます。この方法を試してみたい方は、「[Criteo walkthrough using a Hive ODBC connection (Hive ODBC の接続を使用した Criteo チュートリアル)](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)」のトピックをご覧ください。
 
@@ -810,4 +810,4 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

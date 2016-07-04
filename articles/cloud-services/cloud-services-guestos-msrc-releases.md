@@ -13,12 +13,41 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="04/18/2016"
+   ms.date="06/21/2016"
    ms.author="yuemlu"/>
 
 # Azure ゲスト OS 
 
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## June ゲスト OS 
+
+| セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
+| MS16-035 | [3141780] | セキュリティ機能のバイパスに対処する .NET Framework 用のセキュリティ更新プログラム | 4\.33、3.40、2.52 | 2016 年 6 月 14 日 |
+| アドバイザリ | [3155527] | FalseStart 用の暗号スイートの更新プログラム | 4\.33、3.40 | 2016 年 6 月 14 日 |
+| MS16-063 | [3163649] | Internet Explorer 用の累積的なセキュリティ更新プログラム | 4\.33、3.40、2.52 | 2016 年 6 月 14 日 |
+| MS16-069 | [3163640] | JScript および VBScript 用の累積的なセキュリティ更新プログラム | 2\.52 | 2016 年 6 月 14 日 |
+| MS16-071 | [3164065] | Microsoft Windows DNS Server 用のセキュリティ更新プログラム | 4\.33、3.40 | 2016 年 6 月 14 日 |
+| MS16-072 | [3163622] | グループ ポリシー用のセキュリティ更新プログラム | 4\.33、3.40、2.52 | 2016 年 6 月 14 日 |
+| MS16-073 | [3164028] | カーネル モード ドライバー用のセキュリティ更新プログラム | 4\.33、3.40、2.52 | 2016 年 6 月 14 日 |
+| MS16-074 | [3164036] | Microsoft グラフィックス コンポーネント用のセキュリティ更新プログラム | 4\.33、3.40、2.52 | 2016 年 6 月 14 日 |
+| MS16-075 | [3164038] | Windows SMB サーバー用のセキュリティ更新プログラム | 4\.33、3.40、2.52 | 2016 年 6 月 14 日 |
+| MS16-076 | [3167691] | Netlogon 用のセキュリティ更新プログラム | 4\.33 | 2016 年 6 月 14 日 |
+| MS16 077 | [3165191] | WPAD 用のセキュリティ更新プログラム | 4\.33、3.40、2.52 | 2016 年 6 月 14 日 |
+| MS16-080 | [3164302] | Microsoft Windows PDF 用のセキュリティ更新プログラム | 4\.33、3.40 | 2016 年 6 月 14 日 |
+| MS16-081 | [3160352] | Active Directory 用のセキュリティ更新プログラム | 4\.33、3.40、2.52 | 2016 年 6 月 14 日 |
+| | [2922223] | Windows で RealTimeIsUniversal レジストリ エントリが有効になっているときに、システム時刻を変更できない | 2\.52 | 2016 年 6 月 14 日 |
+| | [3121255] | FsRtlNotifyFilterReportChange で "0x00000024" 停止エラーが発生し、Windows でファイルのコピーが失敗することがある | 2\.52 | 2016 年 6 月 14 日 |
+| | [3125424] | LSASS デッドロックにより Windows Server 2012 R2 または Windows Server 2012 が応答しなくなる | 4\.33、3.40 | 2016 年 6 月 14 日 |
+| | [3125574] | Windows 7 SP1 および Windows Server 2008 R2 SP1 用の便利なロールアップ更新プログラム | 2\.52 | 2016 年 6 月 14 日 |
+| | [3140245] | Windows で WinHTTP の既定の安全なプロトコルとして TLS 1.1 と TLS 1.2 を有効にする更新プログラム | 3\.40、2.52 | 2016 年 6 月 14 日 |
+| | [3146604] | Windows Server 2012 R2 または Windows Server 2012 で WMI サービスがランダムにクラッシュする | 4\.33、3.40 | 2016 年 6 月 14 日 |
+| | [3149157] | Windows 8.1 および Windows Server 2012 R2 における TCP/IP の信頼性と拡張性の向上 | 4\.33 | 2016 年 6 月 14 日 |
+| | [3156416] | Windows Server 2012 用の 2016年 5 月の更新プログラム ロールアップ | 3\.40 | 2016 年 6 月 14 日 |
+| | [3156418] | Windows RT 8.1、Windows 8.1、および Windows Server 2012 R2 用の 2016 年 5 月の更新プログラム ロールアップ | 4\.33 | 2016 年 6 月 14 日 |
+| | [3153731] | アゼルバイジャン、チリ、ハイチ、およびモロッコを対象とした Windows の 2016 年 5 月の DST 更新プログラム | 4\.33、3.40、2.52 | 2016 年 6 月 14 日 |
+
 
 ## May ゲスト OS 
 
@@ -288,6 +317,32 @@
 | 該当なし | [2999802][2999802] | 点線ではなく実線が Windows で印刷される | 4\.15、3.22、2.34 | 2015 年 1 月 13 日 |
 | 該当なし | [2896881][2896881] | Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い | 4\.15、3.22、2.34 | 2015 年 1 月 13 日 |
 
+
+[3141780]: http://support.microsoft.com/kb/3141780
+[3155527]: http://support.microsoft.com/kb/3155527
+[3163649]: http://support.microsoft.com/kb/3163649
+[3163640]: http://support.microsoft.com/kb/3163640
+[3164065]: http://support.microsoft.com/kb/3164065
+[3163622]: http://support.microsoft.com/kb/3163622
+[3164028]: http://support.microsoft.com/kb/3164028
+[3164036]: http://support.microsoft.com/kb/3164036
+[3164038]: http://support.microsoft.com/kb/3164038
+[3167691]: http://support.microsoft.com/kb/3167691
+[3165191]: http://support.microsoft.com/kb/3165191
+[3164302]: http://support.microsoft.com/kb/3164302
+[3160352]: http://support.microsoft.com/kb/3160352
+[2922223]: http://support.microsoft.com/kb/2922223
+[3121255]: http://support.microsoft.com/kb/3121255
+[3125424]: http://support.microsoft.com/kb/3125424
+[3125574]: http://support.microsoft.com/kb/3125574
+[3140245]: http://support.microsoft.com/kb/3140245
+[3146604]: http://support.microsoft.com/kb/3146604
+[3149157]: http://support.microsoft.com/kb/3149157
+[3156416]: http://support.microsoft.com/kb/3156416
+[3156418]: http://support.microsoft.com/kb/3156418
+[3153731]: http://support.microsoft.com/kb/3153731
+
+
 [3155533]: http://support.microsoft.com/kb/3155533
 [3156764]: http://support.microsoft.com/kb/3156764
 [3156754]: http://support.microsoft.com/kb/3156754
@@ -489,4 +544,4 @@
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

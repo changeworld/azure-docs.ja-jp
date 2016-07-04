@@ -13,8 +13,8 @@
   ms.workload="na"
   ms.tgt_pltfrm="vm-linux"
   ms.devlang="na"
-  ms.topic="support-article"
-  ms.date="05/06/2016"
+  ms.topic="article"
+  ms.date="06/20/2016"
   ms.author="cjiang"/>
 
 # Azure での新しい Linux 仮想マシンの作成に関するクラシック デプロイメントの問題のトラブルシューティング
@@ -81,4 +81,7 @@ Azure ポータルで、**[参照]**、**[仮想マシン]**、*対象の Window
 - 新しい仮想ネットワークに、新しい VM を作成します。
 - 新しい仮想ネットワークに[、既存の仮想ネットワークを接続](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)します。詳細については、「[リージョン仮想ネットワーク](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」を参照してください。または、[アフィニティ グループ ベースの仮想ネットワークをリージョン仮想ネットワークに移行](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)し、その後に新しい VM を作成します。
 
-<!---HONumber=AcomDC_0525_2016-->
+## 次のステップ
+Azure での停止していた Linux VM の再起動または既存の Linux VM のサイズ変更に問題が発生する場合は、[Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-linux-classic-restart-resize-error-troubleshooting.md)を参照してください。
+
+<!---HONumber=AcomDC_0622_2016-->

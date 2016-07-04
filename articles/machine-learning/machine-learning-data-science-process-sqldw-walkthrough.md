@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Cortana Analytics Process の活用: SQL Data Warehouse を使用する | Microsoft Azure"
+	pageTitle="Team Data Science Process の活用: SQL Data Warehouse の使用 | Microsoft Azure"
 	description="Advanced Analytics Process and Technology の活用"  
 	services="machine-learning"
 	documentationCenter=""
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="bradsev;hangzh;weig"/>
 
 
-# Cortana Analytics Process の活用: SQL Data Warehouse を使用する
+# Team Data Science Process の活用: SQL Data Warehouse の使用
 
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
 
-手順は、[Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) ワークフローに従います。データ サイエンス環境のセットアップ方法、SQL DW にデータを読み込む方法、SQL DW または IPython Notebook を使用してデータを探索し、特徴をエンジニアリングする方法について説明します。次に、Azure Machine Learning でのモデルのビルドとデプロイ方法について説明します。
+この手順は、[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) ワークフローに従っています。データ サイエンス環境のセットアップ方法、SQL DW にデータを読み込む方法、SQL DW または IPython Notebook を使用してデータを探索し、特徴をエンジニアリングする方法について説明します。次に、Azure Machine Learning でのモデルのビルドとデプロイ方法について説明します。
 
 
 ## <a name="dataset"></a>NYC タクシー乗車データセット
@@ -91,7 +91,7 @@ Azure データ サイエンス環境をセット アップするには、以下
 
 **Visual Studio 2015 および SQL Server Data Tools をインストールします。** 手順については、「[SQL Data Warehouse 用に Visual Studio 2015 または SSDT をインストールする](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)」を参照してください。
 
-**Visual Studio で Azure SQL DW に接続します。** 手順については、「[Visual Studio で SQL Data Warehouse に接続する](../sql-data-warehouse/sql-data-warehouse-get-started-connect.md)」の手順 1 と 2 を参照してください。
+**Visual Studio で Azure SQL DW に接続します。** 手順については、[Visual Studio での SQL Data Warehouse への接続](../sql-data-warehouse/sql-data-warehouse-connect-overview.md)に関するページの手順 1 と 2 をご覧ください。
 
 >[AZURE.NOTE] SQL Data Warehouse で作成したデータベースに対して (接続に関するトピックの手順 3 で示されているクエリではなく) 次の SQL クエリを実行して、**マスター キーを作成します**。
 
@@ -920,7 +920,7 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 
 
 ## 概要
-このチュートリアルで行ったことをまとめると、Azure のデータ サイエンス環境を作成し、データの取得からモデルのトレーニング、Azure Machine Learning Web サービスのデプロイメントまでを通して、Cortana Analytics Process を活用して大規模な公開されているデータセットを操作したことになります。
+このチュートリアルで行ったことをまとめると、Azure のデータ サイエンス環境を作成し、データの取得からモデルのトレーニング、Azure Machine Learning Web サービスのデプロイメントまでを通して、Team Data Science Process を活用して大規模な公開されているデータセットを操作したことになります。
 
 ### ライセンス情報
 
@@ -964,4 +964,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

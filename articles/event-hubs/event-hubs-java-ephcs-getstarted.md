@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/13/2016"
+	ms.date="06/16/2016"
 	ms.author="sethm"/>
 
 # Event Hubs の使用
@@ -32,14 +32,13 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 + Java 開発環境。このチュートリアルでは、[Eclipse](https://www.eclipse.org/) を想定しています。
 
-+ Microsoft Visual Studio Express for Windows
++ [Microsoft Visual Studio](http://visualstudio.com)
 
-+ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
++ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料アカウントを数分で作成できます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
 
 [AZURE.INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-send-java](../../includes/service-bus-event-hubs-get-started-send-java.md)]
-
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-ephcs](../../includes/service-bus-event-hubs-get-started-receive-ephcs.md)]
 
@@ -51,7 +50,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 	![][21]
 
-2.	**Sender** プロジェクトを実行し、コンソール ウィンドウで **Enter** キーを押すと、レシーバーのウィンドウにイベントが表示されます。
+2.	**Sender** プロジェクトを実行します。
 
 	![][22]
 
@@ -67,10 +66,10 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 
 <!-- Images. -->
 [21]: ./media/event-hubs-java-ephcs-getstarted/run-csharp-ephcs1.png
-[22]: ./media/event-hubs-java-ephcs-getstarted/run-csharp-ephcs2.png
+[22]: ./media/event-hubs-java-ephcs-getstarted/java-send.png
 
 <!-- Links -->
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Azure classic portal]: https://manage.windowsazure.com/
 [イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: event-hubs-overview.md
 [Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
@@ -78,4 +77,4 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

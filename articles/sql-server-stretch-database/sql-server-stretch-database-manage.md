@@ -28,7 +28,10 @@ Stretch が有効になっている SQL Server のデータベースとテーブ
 SQL Server で Stretch を有効にしたテーブルにより使用されている領域の量を表示するには、次のステートメントを実行します。
 
  ```tsql
- EXEC sp_spaceused '<table name>', 'true', 'LOCAL_ONLY';
+USE <Stretch-enabled database name>;
+GO
+EXEC sp_spaceused '<Stretch-enabled table name>', 'true', 'LOCAL_ONLY';
+GO
  ```
 ## データ移行を管理する
 
@@ -47,6 +50,15 @@ SQL Server Management Studio でデータベースに **[タスク]、[Stretch]�
 
 ### <a name="RemoteInfo"></a>Stretch Database で使用されるリモートのデータベースとテーブルに関する情報を取得する
 移行されたデータが保存されているリモートのデータベースとテーブルに関する情報を確認するには、カタログ ビューの **sys.remote\_data\_archive\_databases** と **sys.remote\_data\_archive\_tables** を開きます。詳細については、「[sys.remote\_data\_archive\_databases (Transact-SQL)](https://msdn.microsoft.com/library/dn934995.aspx)」と「[sys.remote\_data\_archive\_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx)」を参照してください。
+
+Azure で Stretch を有効にしたテーブルにより使用されている領域の量を表示するには、次のステートメントを実行します。
+
+ ```tsql
+USE <Stretch-enabled database name>;
+GO
+EXEC sp_spaceused '<Stretch-enabled table name>', 'true', 'REMOTE_ONLY';
+GO
+ ```
 
 ### 移行したデータを削除する  
 既に Azure に移行されているデータを削除するには、[sys.sp\_rda\_reconcile\_batch](https://msdn.microsoft.com/library/mt707768.aspx) の手順に従います。
@@ -95,7 +107,10 @@ Stretch Database に構成された大規模テーブルでインデックスを
 たとえば、次のクエリはローカル結果のみを返します。
 
  ```tsql  
-SELECT * FROM Stretch_enabled_table WITH (REMOTE_DATA_ARCHIVE_OVERRIDE = LOCAL_ONLY) WHERE ...  
+ USE <Stretch-enabled database name>;
+ GO
+ SELECT * FROM <Stretch_enabled table name> WITH (REMOTE_DATA_ARCHIVE_OVERRIDE = LOCAL_ONLY) WHERE ... ;
+ GO
 ```  
 
 ## <a name="adminHints"></a>管理上の更新と削除  
@@ -114,4 +129,4 @@ SELECT * FROM Stretch_enabled_table WITH (REMOTE_DATA_ARCHIVE_OVERRIDE = LOCAL_O
 
 [Stretch 対応のデータベースを復元する](sql-server-stretch-database-restore.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="StevenPo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,11 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="06/22/2016"
 	ms.author="kgremban"/>
 
 # Azure AD アプリケーション プロキシでのカスタム ドメインの使用
-> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 既定のドメインを使用すると、アプリケーションにアクセスするための内部 URL と外部 URL として同じ URL を設定できるため、ユーザーはアプリケーションにどこからアクセスするかに関係なく、覚えておく必要がある URL が 1 つだけで済みます。また、アプリケーションのアクセス パネルに作成するショートカットも 1 つで済みます。Azure AD アプリケーション プロキシによって提供される既定のドメインを使用する場合、独自のドメインを有効にするために必要な追加の構成はありません。カスタム ドメインを使用する場合は、アプリケーション プロキシがドメインを認識し、証明書を検証できるようにするために必要な操作がいくつかあります。
 
@@ -65,6 +64,6 @@ Q: テナントのすべての証明書が表示される場所はあります�
 - [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
 - [Azure AD にカスタム ドメイン名を追加する](active-directory-add-domain.md)
 
-最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
+最新のニュースと更新情報については、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

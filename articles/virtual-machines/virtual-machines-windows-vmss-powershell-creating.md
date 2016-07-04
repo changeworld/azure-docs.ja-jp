@@ -43,7 +43,7 @@ $rgname = 'mynewrgwu';
 ```
 $stoname = 'sto' + $rgname;
 $stotype = 'Standard_LRS';
- New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+ New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -Kind "Storage";
 
 $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
 ```
@@ -208,4 +208,4 @@ VM1 : pubipmynewrgwu.westus.cloudapp.azure.com:3361
 VM2 : pubipmynewrgwu.westus.cloudapp.azure.com:3362
 ```
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0622_2016-->

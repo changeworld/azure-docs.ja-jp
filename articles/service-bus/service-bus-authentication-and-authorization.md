@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Service Bus の認証と承認 | Microsoft Azure"
-   description="Shared Access Signature (SAS) 認証の概要です。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="Service Bus の認証と承認 | Microsoft Azure"
+    description="Shared Access Signature (SAS) 認証の概要です。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="03/09/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="06/22/2016"
+    ms.author="sethm" />
 
 # Service Bus の認証と承認
 
@@ -67,10 +67,10 @@ Service Bus の ACS 認証サポートは、Azure .NET SDK バージョン 2.0 �
 
 ## 次のステップ
 
-SAS の詳細については、「[Service Bus での Shared Access Signature 認証](service-bus-shared-access-signature-authentication.md)」を引き続きお読みください。
+SAS の詳細については、「[Service Bus による Shared Access Signature 認証](service-bus-shared-access-signature-authentication.md)」を引き続きお読みください。
 
 Service Bus における SAS の概要については、「[Shared Access Signature](service-bus-sas-overview.md)」を参照してください。
 
 ACS トークンの詳細については、「[方法: OAuth WRAP プロトコルを使用して ACS からのトークンを要求する](https://msdn.microsoft.com/library/hh674475.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0622_2016-->

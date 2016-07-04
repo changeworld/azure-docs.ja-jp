@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="06/16/2016"
 	ms.author="cynthn"/>
 
 # Windows 仮想マシンのデータ ドライブとしての D ドライブの使用 
@@ -111,4 +111,4 @@ Azure が一時ディスクを使用する方法については、[Microsoft Azu
 ## 次のステップ
 - [追加のデータ ディスクをアタッチする](virtual-machines-windows-attach-disk-portal.md)ことで、仮想マシンに使用できる記憶域を増やすことができます。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

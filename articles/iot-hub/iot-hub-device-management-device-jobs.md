@@ -3,7 +3,7 @@
 	description="Azure IoT Hub デバイス管理チュートリアルは、デバイス ジョブを使用してリモート ファームウェア更新などの操作を実行する方法について説明します。"
 	services="iot-hub"
 	documentationCenter=".net"
-	authors="ellenfosborne"
+	authors="juanjperez"
 	manager="timlt"
 	editor=""/>
 
@@ -14,7 +14,7 @@
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="04/29/2016"
- ms.author="elfarber"/>
+ ms.author="juanpere"/>
 
 # チュートリアル: デバイスのジョブを使用して、デバイスのファームウェア を更新する方法 (プレビュー)
 
@@ -178,4 +178,4 @@ Azure IoT Hub デバイス管理機能の詳細については、次のチュー
 [lnk-github-firmware]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/c/iotdm_client/samples/iotdm_simple_sample/iotdm_simple_sample.c
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

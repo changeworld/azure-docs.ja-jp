@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/15/2016"
+   ms.date="06/20/2016"
    ms.author="bscholl"/>
 
 # Service Fabric Reliable Services のパーティション分割
@@ -124,15 +124,15 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 3. プロジェクトに "AlphabetPartitions" と名前を付けます
 4. **[サービスの作成]** ダイアログ ボックスで **[ステートフル サービス]** を選択し、下図のように "Alphabet.Processing" と名前を付けます。
 
-    ![ステートフル サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetstatefulnew.png)
+    ![ステートフル サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/createstateful.png)
 
-5. パーティション数を設定します。AlphabetPartitions プロジェクトの ApplicationManifest.xml ファイルを開き、下図のようにパラメーター Processing\_PartitionCount を 26 に更新します。
+5. パーティション数を設定します。AlphabetPartitions プロジェクトの ApplicationPackageRoot フォルダーにある ApplicationManifest.xml ファイルを開き、下図のようにパラメーター Processing\_PartitionCount を 26 に更新します。
 
     ```xml
     <Parameter Name="Processing_PartitionCount" DefaultValue="26" />
     ```
-
-    また、次のように StatefulService 要素の LowKey と HighKey プロパティも更新する必要があります。
+    
+    また、次のように ApplicationManifest.xml の StatefulService 要素の LowKey と HighKey プロパティも更新する必要があります。
 
     ```xml
     <Service Name="Processing">
@@ -145,7 +145,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 6. サービスにアクセスできるようにするために、次のように、Alphabet.Processing サービスの ServiceManifest.xml (PackageRoot フォルダーにあります) のエンドポイント要素を追加して、ポートのエンドポイントを開きます。
 
     ```xml
-    <Endpoint Name="ProcessingServiceEndpoint" Protocol="http" Type="Internal" />
+    <Endpoint Name="ProcessingServiceEndpoint" Port="8089" Protocol="http" Type="Internal" />
     ```
 
     以上の手順で、26 個のパーティションがある内部エンドポイントをリッスンするようにサービスが構成されました。
@@ -163,23 +163,24 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     ```CSharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
     {
-        return new[] { new ServiceReplicaListener(CreateInternalListener, "Internal", false) };
+         return new[] { new ServiceReplicaListener(context => this.CreateInternalListener(context))};
     }
-    private ICommunicationListener CreateInternalListener(StatefulServiceInitializationParameters args)
+    private ICommunicationListener CreateInternalListener(ServiceContext context)
     {
-        EndpointResourceDescription internalEndpoint = args.CodePackageActivationContext.GetEndpoint("ProcessingServiceEndpoint");
+            
+         EndpointResourceDescription internalEndpoint = context.CodePackageActivationContext.GetEndpoint("ProcessingServiceEndpoint");
+         string uriPrefix = String.Format(
+                "{0}://+:{1}/{2}/{3}-{4}/",
+                internalEndpoint.Protocol,
+                internalEndpoint.Port,
+                context.PartitionId,
+                context.ReplicaOrInstanceId,
+                Guid.NewGuid());
 
-        string uriPrefix = String.Format(
-            "{0}://+:{1}/{2}/{3}-{4}/",
-            internalEndpoint.Protocol,
-            internalEndpoint.Port,
-            this.ServiceInitializationParameters.PartitionId,
-            this.ServiceInitializationParameters.ReplicaId,
-            Guid.NewGuid());
+         string nodeIP = FabricRuntime.GetNodeContext().IPAddressOrFQDN;
 
-        string nodeIP = FabricRuntime.GetNodeContext().IPAddressOrFQDN;
-        string uriPublished = uriPrefix.Replace("+", nodeIP);
-        return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInternalRequest);
+         string uriPublished = uriPrefix.Replace("+", nodeIP);
+         return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInternalRequest);
     }
     ```
 
@@ -234,31 +235,31 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 10. プロジェクトにステートレス サービスを追加して、特定のパーティションを呼び出す方法を見てみましょう。
 
     このサービスは、姓をクエリ文字列パラメーターとして受け取り、パーティション キーを決定し、Alphabet.Processing サービスに送信して処理するという、単純な Web インターフェイスとして機能します。
-
-11. **[サービスの作成]** ダイアログ ボックスで **[ステートレス サービス]** を選択し、次のように "Alphabet.WebApi" と名前を付けます。
-
-    ![ステートレス サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetstatelessnew.png)
+    
+11. **[サービスの作成]** ダイアログ ボックスで **[ステートレス サービス]** を選択し、次のように "Alphabet.Web" と名前を付けます。
+    
+    ![ステートレス サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/createnewstateless.png)
 
 12. Alphabet.WebApi サービスの ServiceManifest.xml のエンドポイント情報を更新し、次のようにポートを開きます。
 
     ```xml
-    <Endpoint Name="WebApiServiceEndpoint" Protocol="http" Port="8090"/>
+    <Endpoint Name="WebApiServiceEndpoint" Protocol="http" Port="8081"/>
     ```
 
-13. ServiceInstanceListeners のコレクションを返す必要があります。ここでも、単純な HttpCommunicationListener を実装することができます。
+13. クラス Web で ServiceInstanceListeners のコレクションを返す必要があります。ここでも、単純な HttpCommunicationListener を実装することができます。
 
     ```CSharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
-        return new[] {new ServiceInstanceListener(this.CreateInputListener, "Input")};
+        return new[] {new ServiceInstanceListener(context => this.CreateInputListener(context))};
     }
-    private ICommunicationListener CreateInputListener(StatelessServiceInitializationParameters args)
+    private ICommunicationListener CreateInputListener(ServiceContext context)
     {
         // Service instance's URL is the node's IP & desired port
-        EndpointResourceDescription inputEndpoint = args.CodePackageActivationContext.GetEndpoint("WebApiServiceEndpoint")
+        EndpointResourceDescription inputEndpoint = context.CodePackageActivationContext.GetEndpoint("WebApiServiceEndpoint")
         string uriPrefix = String.Format("{0}://+:{1}/alphabetpartitions/", inputEndpoint.Protocol, inputEndpoint.Port);
-        var uriPublished = uriPrefix.Replace("+", m_nodeIP);
-        return new HttpCommunicationListener(uriPrefix, uriPublished, ProcessInputRequest);
+        var uriPublished = uriPrefix.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
+        return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInputRequest);
     }
     ```
 
@@ -272,12 +273,13 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
         {
             string lastname = context.Request.QueryString["lastname"];
             char firstLetterOfLastName = lastname.First();
-            int partitionKey = Char.ToUpper(firstLetterOfLastName) - 'A';
+            ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
 
             ResolvedServicePartition partition = await this.servicePartitionResolver.ResolveAsync(alphabetServiceUri, partitionKey, cancelRequest);
             ResolvedServiceEndpoint ep = partition.GetEndpoint();
+                
             JObject addresses = JObject.Parse(ep.Address);
-            string primaryReplicaAddress = addresses["Endpoints"].First()["Value"].Value<string>();
+            string primaryReplicaAddress = (string)addresses["Endpoints"].First();
 
             UriBuilder primaryReplicaUriBuilder = new UriBuilder(primaryReplicaAddress);
             primaryReplicaUriBuilder.Query = "lastname=" + lastname;
@@ -285,7 +287,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
             string result = await this.httpClient.GetStringAsync(primaryReplicaUriBuilder.Uri);
 
             output = String.Format(
-                    "Result: {0}. Partition key: '{1}' generated from the first letter '{2}' of input value '{3}'. Processing service partition ID: {4}. Processing service replica address: {5}",
+                    "Result: {0}. <p>Partition key: '{1}' generated from the first letter '{2}' of input value '{3}'. <br>Processing service partition ID: {4}. <br>Processing service replica address: {5}",
                     result,
                     partitionKey,
                     firstLetterOfLastName,
@@ -312,13 +314,13 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     ```CSharp
     string lastname = context.Request.QueryString["lastname"];
     char firstLetterOfLastName = lastname.First();
-    int partitionKey = Char.ToUpper(firstLetterOfLastName) - 'A';
+    ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
     ```
 
     この例では、1 パーティションに 1 つのパーティション キーがある 26 個のパーティションを使用しています。次に、`servicePartitionResolver` オブジェクトに対して `ResolveAsync` メソッドを使用して、このキーのサービス パーティション `partition` を取得します。`servicePartitionResolver` は次のように定義されます。
 
     ```CSharp
-    private static readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
+    private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
 
     `ResolveAsync` メソッドには、サービス URI、パーティション キー、キャンセル トークンのパラメーターがあります。処理サービスのサービス URI は `fabric:/AlphabetPartitions/Processing` です。次に、パーティションのエンドポイントを取得します。
@@ -331,7 +333,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 
     ```CSharp
     JObject addresses = JObject.Parse(ep.Address);
-    string primaryReplicaAddress = addresses["Endpoints"].First()["Value"].Value<string>();
+    string primaryReplicaAddress = (string)addresses["Endpoints"].First();
 
     UriBuilder primaryReplicaUriBuilder = new UriBuilder(primaryReplicaAddress);
     primaryReplicaUriBuilder.Query = "lastname=" + lastname;
@@ -351,12 +353,12 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     ```
 
 16. デプロイが完了したら、Service Fabric Explorer でサービスとそのすべてのパーティションを確認できます。
-
-    ![Service Fabric Explorer のスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetservicerunning.png)
-
-17. ブラウザーで `http://localhost:8090/?lastname=somename` を入力してパーティション分割ロジックをテストできます。同じ文字で始まる各姓が同じパーティションに格納されていることがわかります。
-
-    ![ブラウザーのスクリーン ショット](./media/service-fabric-concepts-partitioning/alphabetinbrowser.png)
+    
+    ![Service Fabric Explorer のスクリーン ショット](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
+    
+17. ブラウザーで `http://localhost:8081/?lastname=somename` を入力してパーティション分割ロジックをテストできます。同じ文字で始まる各姓が同じパーティションに格納されていることがわかります。
+    
+    ![ブラウザーのスクリーン ショット](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
 サンプルの完全なソース コードについては、[Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions) を参照してください。
 
@@ -372,4 +374,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0622_2016-->

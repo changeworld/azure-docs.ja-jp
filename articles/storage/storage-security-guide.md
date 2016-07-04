@@ -13,40 +13,40 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="06/16/2016"
 	ms.author="robinsh"/>
 
 #Azure Storage セキュリティ ガイド
 
 ##概要
 
-Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。ストレージ アカウント自体は、ロールベースのアクセス制御と Azure Active Directory を使用して保護できます。アプリケーションと Azure の間で送信されるデータは、[クライアント側暗号化](storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。[Storage Service Encryption](storage-service-encryption.md) を使用して Azure Storage に書き込むときに、データが自動的に暗号化されるように設定することができます。仮想マシンに使用する OS とデータ ディスクは、[Azure Disk Encryption](../azure-security-disk-encryption.md) を使用して暗号化されるように設定できます。Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権は、[Shared Access Signature](storage-dotnet-shared-access-signature-part-1.md) を使用して付与できます。
+Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。ストレージ アカウント自体は、ロールベースのアクセス制御と Azure Active Directory を使用して保護できます。アプリケーションと Azure の間で送信されるデータを、[クライアント側暗号化](storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。[Storage Service Encryption (SSE)](storage-service-encryption.md) を使用して Azure Storage に書き込むときに、データが自動的に暗号化されるように設定することができます。仮想マシンに使用する OS とデータ ディスクは、[Azure Disk Encryption](../azure-security-disk-encryption.md) を使用して暗号化されるように設定できます。Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権は、[Shared Access Signature](storage-dotnet-shared-access-signature-part-1.md) を使用して付与できます。
 
 この記事では、Azure Storage で使用できる各セキュリティ機能の概要について説明します。また、各トピックの詳細を簡単に調べられるように、各機能の詳細を説明した記事のリンクも紹介します。
 
 この記事では次のトピックについて扱います。
 
--   管理プレーンのセキュリティ - ストレージ アカウントのセキュリティ保護
+-   [管理プレーンのセキュリティ](#management-plane-security) - ストレージ アカウントのセキュリティ保護
 
-    管理プレーンは、ストレージ アカウントの管理に使用するリソースが構成されます。このセクションでは、Azure Resource Manager (ARM) デプロイ モデルと、ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントへのアクセスを制御する方法について説明します。また、ストレージ アカウント キーの管理とその再生成方法についても説明します。
+    管理プレーンは、ストレージ アカウントの管理に使用するリソースが構成されます。このセクションでは、Azure Resource Manager デプロイメント モデルと、ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントへのアクセスを制御する方法について説明します。また、ストレージ アカウント キーの管理とその再生成方法についても説明します。
 
--   データ プレーンのセキュリティ - データへのアクセスのセキュリティ保護
+-   [データ プレーンのセキュリティ](#data-plane-security) - データへのアクセスのセキュリティ保護
 
     このセクションでは、Shared Access Signature と Stored Access Policy を使用して、BLOB、ファイル、キュー、テーブルなど、ストレージ アカウントの実際のデータ オブジェクトに対してアクセスを許可する方法について説明します。サービスレベルの SAS とアカウントレベルの SAS の両方が対象です。また、特定の IP アドレス (または IP アドレスの範囲) に対するアクセスを制限する方法、HTTPS に使用されるプロトコルを制限する方法、Shared Access Signature が期限切れになる前に無効にする方法についても説明します。
 
--   転送中の暗号化
+-   [転送中の暗号化](#encryption-in-transit)
 
     このセクションでは、Azure Storage とのデータの送受信時にデータをセキュリティで保護する方法について説明します。Azure のファイル共有用の SMB 3.0 に使用される HTTPS と暗号化の推奨される使用方法について説明します。また、クライアント側の暗号化についても取り上げます。クライアント側の暗号化の場合、クライアント アプリケーションで Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化することができます。
 
--   保存時の暗号化
+-   [保存時の暗号化](#encryption-at-rest)
 
-    Storage Service Encryption と、ストレージ アカウントで Storage Service Encryption を有効にして、Azure Storage への書き込み時にブロック BLOB とページ BLOB が自動的に暗号化されるようにする方法について説明します。また、Azure Disk Encryption の使用方法についても取り上げ、Disk Encryption、Storage Service Encryption、およびクライアント側認証の基本的な違いと、例についても説明します。さらに、米国政府のコンピューターの FIPS 準拠についても簡単に取り上げます。
+    Storage Service Encryption (SSE) と、ストレージ アカウントで Storage Service Encryption を有効にして、Azure Storage への書き込み時にブロック BLOB、ページ BLOB、および追加 BOB が自動的に暗号化されるようにする方法について説明します。また、Azure Disk Encryption の使用方法についても取り上げ、Disk Encryption、SSE、およびクライアント側認証の基本的な違いと、例についても説明します。さらに、米国政府のコンピューターの FIPS 準拠についても簡単に取り上げます。
 
--   Storage Analytics を使用して Azure Storage のアクセスを監査する
+-   [Storage Analytics](#storage-analytics) を使用して Azure Storage のアクセスを監査する
 
     ここでは、要求のストレージ分析ログから情報を検索する方法について説明します。実際のストレージ分析ログ データを見て、要求の作成元がストレージ アカウント キー、Shared Access Signature、または匿名のいずれであるか、要求が成功したか失敗したかを特定する方法を確認します。
 
--   CORS を使用してブラウザーベースのクライアントを有効にする
+-   [CORS を使用してブラウザーベースのクライアントを有効にする](#Cross-Origin-Resource-Sharing-CORS)
 
     このセクションでは、クロス オリジン リソース共有 (CORS) を許可する方法について説明します。また、クロスドメインアクセスと、Azure Storage に組み込まれている CORS 機能を使用して処理する方法について話します。
 
@@ -56,7 +56,7 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 
 新しいストレージ アカウントを作成するときに、クラシックまたは Resource Manager のデプロイ モデルを選択します。Azure にリソースを作成するクラシック モデルでは、サブスクリプション (つまりストレージ アカウント) に対するオールオアナッシング形式のアクセス権のみを許可します。
 
-このガイドでは、ストレージ アカウント作成で推奨される手法である Resource Manager モデルを中心に説明します。Azure Resource Manager (ARM) ストレージ アカウントでは、サブスクリプション全体にアクセス権を付与するのではなく、ロールベースのアクセス制御 (RBAC) を使用して、より細かいレベルで管理プレーンに対するアクセス権を制御できます。
+このガイドでは、ストレージ アカウント作成で推奨される手法である Resource Manager モデルを中心に説明します。Resource Manager ストレージ アカウントでは、サブスクリプション全体にアクセス権を付与するのではなく、ロールベースのアクセス制御 (RBAC) を使用して、より細かいレベルで管理プレーンに対するアクセス権を制御できます。
 
 ###ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法
 
@@ -86,7 +86,7 @@ Resource Manager モデルでは、Azure Active Directory を使用して、リ�
 
     -	閲覧者 - シークレットを除き、ストレージ アカウントに関する情報を読み取ることができます。たとえば、ストレージ アカウントの閲覧者アクセス許可を持つロールを誰かに割り当てると、そのユーザーはストレージ アカウントのプロパティを読み取ることができますが、プロパティを変更したり、ストレージ アカウント キーを読み取ったりすることはできません。
 
-    -	ストレージ アカウント共同作成者 - ストレージ アカウントを管理できます。また、サブスクリプションのリソース グループとリソースを読み取り、サブスクリプションのリソース グループ デプロイを作成および管理することができます。ストレージ アカウント キーにアクセスすることはできません。したがって、データ プレーンにもアクセスできません。
+    -	ストレージ アカウント共同作成者 - ストレージ アカウントを管理できます。また、サブスクリプションのリソース グループとリソースを読み取り、サブスクリプションのリソース グループ デプロイを作成および管理することができます。ストレージ アカウント キーにアクセスすることもできます。したがって、データ プレーンにもアクセスできます。
 
     -	ユーザー アクセス管理者 - ストレージ アカウントに対するユーザー アクセスを管理できます。たとえば、特定のユーザーに対して閲覧者アクセス権を付与できます。
 
@@ -116,7 +116,7 @@ Resource Manager モデルでは、Azure Active Directory を使用して、リ�
 
 -   [Azure リソース マネージャーにおける Compute、Network、Strage プロバイダー](../virtual-machines/virtual-machines-windows-compare-deployment-models.md)
 
-    この記事では、ARM モデルでの Azure Compute、Network、Storage プロバイダーの動作について説明しています。
+    この記事では、Resource Manager モデルでの Azure Compute、Network、Storage プロバイダーの動作について説明しています。
 
 -   [REST API を使用したロールベースのアクセス制御の管理](../active-directory/role-based-access-control-manage-access-rest.md)
 
@@ -128,7 +128,7 @@ Resource Manager モデルでは、Azure Active Directory を使用して、リ�
 
 -   [Developer’s guide to auth with Azure Resource Manager API (Azure Resource Manager API を使用して認証するための開発者ガイド)](http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/)
 
-	この記事では、ARM API を使用して認証する方法について説明しています。
+	この記事では、 Resource Manager API を使用して認証する方法について説明しています。
 
 -   [Role-Based Access Control for Microsoft Azure from Ignite (Ignite での Microsoft Azure 向けロールベースのアクセス制御の説明)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
 
@@ -184,7 +184,7 @@ Azure Key Vault を使用するもう 1 つの利点は、Azure Active Directory
 
 -   [Azure Storage Resource Provider REST API リファレンス](https://msdn.microsoft.com/library/mt163683.aspx)
 
-	この記事では、REST API を使用した Azure アカウントのストレージ アカウント キーの取得および再生成に関する記事のリンクを紹介しています。注: ARM ストレージ アカウント向けの記事です。
+	この記事では、REST API を使用した Azure アカウントのストレージ アカウント キーの取得および再生成に関する記事のリンクを紹介しています。注: Resource Manager ストレージ アカウント向けの記事です。
 
 -   [Operations on storage accounts (ストレージ アカウントに対する操作)](https://msdn.microsoft.com/library/ee460790.aspx)
 
@@ -212,7 +212,7 @@ Azure Key Vault を使用するもう 1 つの利点は、Azure Active Directory
 
 ###Shared Access Signature と Stored Access Policy を使用してアカウントのオブジェクトに対するアクセス権を委任する方法
 
-Shared Access Signature は、セキュリティ トークンを含む文字列です。セキュリティ トークンを URI にアタッチすることで、ストレージ オブジェクトへのアクセスを委任し、アクセス許可やアクセスの日時の範囲などの制限を指定することができます。
+Shared Access Signature は、セキュリティ トークンを含む文字列です。セキュリティ トークンを URI にアタッチすることで、ストレージ オブジェクトへのアクセスを委任し、アクセス許可やアクセスの日時の範囲などの制約を指定することができます。
 
 BLOB、コンテナー、キュー メッセージ、ファイル、テーブルに対してアクセス権を付与できます。テーブルの場合、実際にテーブル内のエンティティの範囲に対してアクセス許可を付与するには、ユーザーにアクセス権を持たせるパーティションと行キーの範囲を指定します。たとえば、地理的な状態のパーティション キーが格納されたデータがある場合、カリフォルニア州のデータに対するアクセス権のみを特定のユーザーに付与することができます。
 
@@ -356,25 +356,25 @@ Azure ファイル共有は Unix で使用できますが、Linux SMB クライ�
 
 クライアント アプリケーションと Storage 間でデータが転送されるときにセキュリティで保護するためのもう 1 つのオプションは、クライアント側の暗号化です。データは暗号化されてから、Azure Storage に転送されます。Azure Storage からデータを取得するときは、クライアント側で受け取った後にデータが暗号化されます。データの転送時に暗号化される場合でも、HTTPS も使用することをお勧めします。データ整合性チェックが組み込まれるので、データの整合性に影響があるネットワーク エラーを軽減することができます。
 
-クライアント側の暗号化は、データが暗号化された形式で保存されるので、保存データを暗号化する方法でもあります。詳細については、「[保存時の暗号化](#encryption-at-rest)」を参照してください。
+クライアント側の暗号化は、データが暗号化された形式で保存されるので、保存データを暗号化する方法でもあります。詳細については、「[保存時の暗号化](#encryption-at-rest)」をご覧ください。
 
 ##保存時の暗号化
 
-Azure には、保存時の暗号化を提供する機能が 3 つあります。Azure Disk Encryption は、IaaS Virtual Machines の OS ディスクとデータ ディスクの暗号化に使用されます。これ以外の 2 つの機能は、クライアント側の暗号化機能と Storage Service Encryption 機能で、どちらも Azure Storage 内のデータの暗号化に使用されます。各機能について取り上げ、比較し、各機能が使用される場合について説明します。
+Azure には、保存時の暗号化を提供する機能が 3 つあります。Azure Disk Encryption は、IaaS Virtual Machines の OS ディスクとデータ ディスクの暗号化に使用されます。これ以外の 2 つの機能は、クライアント側の暗号化機能と SSE 機能で、どちらも Azure Storage 内のデータの暗号化に使用されます。各機能について取り上げ、比較し、各機能が使用される場合について説明します。
 
-クライアント側の暗号化を使用して転送中のデータ (Storage に暗号化された形式でも保存されます) を暗号化する場合、単に転送中は HTTPS を使用し、保存時は自動的にデータを暗号化するという方法もあります。この処理には、Azure Disk Encryption と Storage Service Encryption という 2 つの方法があります。前者は、OS 上のデータや VM に使用されるデータ ディスク上のデータを直接暗号化するために使用され、後者は、Azure Blob Storage に書き込まれたデータを暗号化するために使用されます。
+クライアント側の暗号化を使用して転送中のデータ (Storage に暗号化された形式でも保存されます) を暗号化する場合、単に転送中は HTTPS を使用し、保存時は自動的にデータを暗号化するという方法もあります。この処理には、Azure Disk Encryption と SSE という 2 つの方法があります。前者は、OS 上のデータや VM に使用されるデータ ディスク上のデータを直接暗号化するために使用され、後者は、Azure Blob Storage に書き込まれたデータを暗号化するために使用されます。
 
-###Storage Service Encryption
+###Storage Service Encryption (SSE)
 
-Storage Service Encryption は新しい Azure Storage 機能です。現在、パブリック プレビュー段階です。この機能を使用すると、Storage サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。Azure Storage からデータを読み取ると、Storage サービスによって復号化されてから、返されます。そのため、データをセキュリティで保護するためにコードを変更したり、アプリケーションにコードを追加したりする必要はありません。
+SSE は新しい Azure Storage 機能です。現在、パブリック プレビュー段階です。この機能を使用すると、Storage サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。Azure Storage からデータを読み取ると、Storage サービスによって復号化されてから、返されます。そのため、データをセキュリティで保護するためにコードを変更したり、アプリケーションにコードを追加したりする必要はありません。
 
-これは、ストレージ アカウント全体に適用される設定です。この機能の設定値を変更すると、有効または無効に切り替えることができます。変更には、Azure ポータル、PowerShell、Azure CLI、Storage Resource Provider REST API、または .NET ストレージ クライアント ライブラリを使用できます。既定では、Storage Service Encryption は無効です。
+これは、ストレージ アカウント全体に適用される設定です。この機能の設定値を変更すると、有効または無効に切り替えることができます。変更には、Azure ポータル、PowerShell、Azure CLI、Storage Resource Provider REST API、または .NET ストレージ クライアント ライブラリを使用できます。既定では、SSE はオフになっています。
 
 現時点で、暗号化に使用されるキーは Microsoft が管理しています。Microsoft 社内ポリシーの定義に従って、キーを生成し、キーの安全な保存と定期的な循環を管理しています。将来的には、ユーザーが独自の暗号化キーを管理し、Microsoft が管理するキーからユーザーが管理するキーに移行する機能を追加する予定です。
 
-この機能は、ARM デプロイ モデルを使用して、2016/3/30 午前 12:00 PST を越えて作成された Standard および Premium Storage アカウントで使用できるようになります。Storage Service Encryption は、ブロック BLOB とページ BLOB にのみ適用されます。テーブル、キュー、ファイルなど、他の種類のデータは暗号化されません。
+この機能は、Resource Manager デプロイ モデルを使用して、2016/3/30 午前 12:00 PST を越えて作成された Standard および Premium Storage アカウントで使用できるようになります。SSE は、ブロック BLOB、ページ BLOB、および追加 BLOB にのみ適用されます。テーブル、キュー、ファイルなど、他の種類のデータは暗号化されません。
 
-データが暗号化されるのは、Storage Service Encryption が有効で、データが Blob Storage に書き込まれるときのみです。Storage Service Encryption の有効/無効を切り替えても、既存のデータに影響はありません。つまり、この暗号化を有効にしても、既存のデータがさかのぼって暗号化されることはありません。また、Storage Service Encryption を無効にしても、既存のデータは復号化されません。
+データが暗号化されるのは、SSE が有効で、データが Blob Storage に書き込まれるときのみです。SSE の有効/無効を切り替えても、既存のデータに影響はありません。つまり、この暗号化を有効にしても、既存のデータがさかのぼって暗号化されることはありません。また、SSE を無効にしても、既存のデータは復号化されません。
 
 前述の日付の前に作成したストレージ アカウント、つまりクラシック ストレージ アカウントでこの機能を試すには、新しいストレージ アカウントを作成し、AzCopy を使用してデータを新しいアカウントにコピーします。プレビューの後は、このような操作は不要になります。
 
@@ -410,9 +410,11 @@ Azure Disk Encryption ソリューションでは、次の 3 つのユーザー�
 
 -   ユーザーが暗号化した VHD ファイルおよびユーザーが提供した暗号化キーから作成した新しい IaaS VM で暗号化を有効にして、キーを Azure Key Vault に保存します。
 
--   Azure ギャラリーから作成された新しい IaaS VM での暗号化を有効にします。
+-   Azure Marketplace から作成された新しい IaaS VM での暗号化を有効にします。
 
 -   Azure で既に実行されている既存の IaaS VM での暗号化を有効にします。
+
+>[AZURE.NOTE] Azure で既に実行されている Linux VM または Azure Marketplace のイメージから作成された新しい Linux VM では、OS ディスクの暗号化は現在サポートされていません。Linux VM の OS ボリュームの暗号化は、オンプレミスで暗号化されて Azure にアップロードされた VM でのみサポートされます。この制限は OS ディスクにのみ適用されます。Linux VM のデータ ボリュームの暗号化はサポートされています。
 
 ソリューションでは、Microsoft Azure で有効になっている場合、パブリック プレビュー リリースの IaaS VM で以下がサポートされます。
 
@@ -432,39 +434,39 @@ Azure Disk Encryption ソリューションでは、次の 3 つのユーザー�
 
     この記事では、Azure Disk Encryption のプレビュー リリースについて説明し、ホワイト ペーパーをダウンロードするリンクを紹介します。
 
-###Azure Disk Encryption、Storage Service Encryption、クライアント側の暗号化の比較
+###Azure Disk Encryption、SSE、クライアント側の暗号化の比較
 
 ####IaaS VM とその VHD ファイル
 
-IaaS VM に使用するディスクの場合、Azure Disk Encryption を使用することをお勧めします。Storage Service Encryption を有効にして VHD ファイルを暗号化し、そのデータを Azure Storage のディスクに使用できますが、新しく書き込まれるデータのみが暗号化されます。つまり、VM を作成してから、VHD ファイルを保持するストレージ アカウントで Storage Service Encryption を有効にすると、元の VHD ファイルではなく、変更のみが暗号化されます。
+IaaS VM に使用するディスクの場合、Azure Disk Encryption を使用することをお勧めします。SSE を有効にして VHD ファイルを暗号化し、そのデータを Azure Storage のディスクに使用できますが、新しく書き込まれるデータのみが暗号化されます。つまり、VM を作成してから、VHD ファイルを保持するストレージ アカウントで SSE を有効にすると、元の VHD ファイルではなく、変更のみが暗号化されます。
 
-Azure Marketplace から VM を作成する場合、Azure Storage でストレージ アカウントにシャロー コピーを実行すると、Storage Service Encryption を有効にしている場合でも、暗号化されません。この後に作成された新しいデータのみが暗号化されます。そのため、完全に暗号化するには、Azure Marketplace のイメージから作成した VM で Azure Disk Encryption を使用することをお勧めします。
+Azure Marketplace のイメージを使用して VM を作成する場合、Azure は Azure Storage のストレージ アカウントにイメージの[シャロー コピー](https://en.wikipedia.org/wiki/Object_copying)を実行し、SSE を有効にしている場合でも、イメージが暗号化されません。VM を作成し、イメージの更新を開始すると、SSE はデータの暗号化を開始します。そのため、完全に暗号化するには、Azure Marketplace のイメージから作成した VM で Azure Disk Encryption を使用することをお勧めします。
 
 事前に暗号化した VM をオンプレミスから Azure に移行する場合、暗号化キーを Azure Key Vault にアップロードし、オンプレミスで使用していた VM に引き続き暗号化を使用できるようになります。Azure Disk Encryption を有効にすると、このシナリオに対応できます。
 
-オンプレミスの暗号化されていない VHD がある場合、カスタム イメージとしてギャラリーにアップロードし、そこから VM をプロビジョニングできます。この処理に Azure Resource Manager (ARM) テンプレートを使用する場合、VM の起動時に Azure Disk Encryption を有効にするように指示できます。
+オンプレミスの暗号化されていない VHD がある場合、カスタム イメージとしてギャラリーにアップロードし、そこから VM をプロビジョニングできます。この処理に Resource Manager テンプレートを使用する場合、VM の起動時に Azure Disk Encryption を有効にするように指示できます。
 
 データ ディスクを追加し、VM にマウントするときに、そのデータ ディスクで Azure Disk Encryption を有効にすることができます。有効にすると、まずそのデータ ディスクがローカルで暗号化され、サービス管理層でストレージに対して遅延書き込みが行われるので、ストレージ コンテンツは暗号化されます。
 
 ####クライアント側の暗号化####
 
-クライアント側の暗号化は、転送前に暗号化し、保存データも暗号化するので、データを暗号化する上で最も安全な方法です。ただし、ストレージを使用してアプリケーションにコードを追加する必要があります。ストレージを追加したくない場合は、転送中のデータに HTTPS を使用し、Storage Service Encryption を使用して保存データを暗号化する方法があります。
+クライアント側の暗号化は、転送前に暗号化し、保存データも暗号化するので、データを暗号化する上で最も安全な方法です。ただし、ストレージを使用してアプリケーションにコードを追加する必要があります。ストレージを追加したくない場合は、転送中のデータに HTTPS を使用し、SSE を使用して保存データを暗号化する方法があります。
 
-クライアント側の暗号化では、テーブル エンティティ、キュー メッセージ、BLOB を暗号化できます。Storage Service Encryption では、BLOB のみを暗号化できます。テーブルとキュー データを暗号化する必要がある場合は、クライアント側の暗号化を使用してください。
+クライアント側の暗号化では、テーブル エンティティ、キュー メッセージ、BLOB を暗号化できます。SSE では、BLOB のみを暗号化できます。テーブルとキュー データを暗号化する必要がある場合は、クライアント側の暗号化を使用してください。
 
 クライアント側の暗号化は、アプリケーションによって完全に管理されています。これが最も安全なアプローチですが、アプリケーションのプログラムを変更し、キー管理プロセスを組み込む必要があります。転送中にセキュリティを向上する場合、および保存されているデータを暗号化する場合に利用してください。
 
 クライアント側の暗号化は、クライアントにかかる負荷が増加するため、スケーラビリティの計画でこの点を考慮する必要があります。特に、大量のデータを暗号化したり転送したりする場合に重要です。
 
-####Storage Service Encryption
+####Storage Service Encryption (SSE)
 
-Storage Service Encryption は、Azure Storage で管理されているので、簡単に管理できます。Storage Service Encryption を使用しても、転送中のデータはセキュリティで保護されませんが、Azure Storage に書き込まれるときのデータは暗号化されます。この機能を使用してもパフォーマンスに影響はありません。
+SSE は、Azure Storage で管理されているので、簡単に管理できます。SSE を使用しても、転送中のデータはセキュリティで保護されませんが、Azure Storage に書き込まれるときのデータは暗号化されます。この機能を使用してもパフォーマンスに影響はありません。
 
-Storage Service Encryption を使用して、ブロック BLOB、追加 BLOB、ページ BLOB のみを暗号化できます。テーブル データまたはキュー データを暗号化する必要がある場合、クライアント側の暗号化の使用を検討してください。
+SSE を使用して、ブロック BLOB、追加 BLOB、ページ BLOB のみを暗号化できます。テーブル データまたはキュー データを暗号化する必要がある場合、クライアント側の暗号化の使用を検討してください。
 
-新しい仮想マシンを作成する際の基礎として使用する VHD ファイルのアーカイブまたはライブラリがある場合、新しいストレージ アカウントを作成し、Storage Service Encryption を有効にしてから、VHD ファイルをそのアカウントにアップロードします。これらの VHD ファイルは Azure Storage によって暗号化されます。
+新しい仮想マシンを作成する際の基礎として使用する VHD ファイルのアーカイブまたはライブラリがある場合、新しいストレージ アカウントを作成し、SSE を有効にしてから、VHD ファイルをそのアカウントにアップロードします。これらの VHD ファイルは Azure Storage によって暗号化されます。
 
-VM 内のディスクに対して Azure Disk Encryption を有効にして、VHD ファイルを保持しているストレージ アカウントで Storage Service Encryption を有効にしている場合、新しく書き込まれるデータは 2 回暗号化されます。
+VM 内のディスクに対して Azure Disk Encryption を有効にして、VHD ファイルを保持しているストレージ アカウントで SSE を有効にしている場合、新しく書き込まれるデータは 2 回暗号化されます。
 
 ##Storage Analytics
 
@@ -606,12 +608,10 @@ CORS と CORS を有効にする方法については、次のリソースを参
 
 1.  **HTTPS プロトコルを使用できない場合、Azure Storage で送受信される BLOB の整合性を検証するにはどうすればよいですか**
 
-	REST API を使用して Azure Blob Storage を操作するときに、MD5 チェックは、PUT 操作と GET 操作の両方に使用できます。何らかの理由で、HTTPS ではなく HTTP を使用する場合は、MD5 チェックを使用することをお勧めします。MD5 値を格納しておくと、後日 HTTP を使用して BLOB をダウンロードするときに使用できます。HTTPS のみを使用する予定の場合、HTTPS はトランスポート レベルのセキュリティを提供するので、MD5 チェックを使用する必要はありません。
+	何らかの理由で HTTPS ではなく HTTP を使用する必要があり、ブロック BLOB を使用している場合、MD5 チェックを使用して、転送中の BLOB の整合性を検証することができます。これは、ネットワーク/トランスポート層のエラーからの保護には役立ちますが、中間攻撃には必ずしも役立つとは言えません。
 
-	ブロック BLOB は、次のように動作します。BLOB を送信する前に、BLOB ビットの MD5 ハッシュを計算します。Azure BLOB サービスを呼び出して BLOB を配置するときに、その MD5 ハッシュ値を含めます。BLOB サービスが MD5 ハッシュ値を受け取ると、受け取ったデータの MD5 ハッシュを計算し、指定した値と比較します。ハッシュが一致しない場合、BLOB は転送中に破損したことを示し、エラー コード 400 (Bad Request) を返します。
-
-	BLOB を取得し、MD5 値が格納されている場合、要求のヘッダーで返されます。次に受け取ったデータの MD5 ハッシュ値を計算し、格納されている MD5 値と比較します。ハッシュが一致しない場合、BLOB は転送中に破損したことを示します。
-
+	トランスポート レベルのセキュリティを提供する HTTPS を使用できる場合は、MD5 チェックを使用することは冗長となり、不要です。
+	
 	詳細については、「[Azure Blob MD5 Overview (Azure BLOB MD5 の概要)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx)」を参照してください。
 
 2.  **米国政府の FIPS 準拠はどうなっていますか**
@@ -634,4 +634,4 @@ CORS と CORS を有効にする方法については、次のリソースを参
 
 	この記事では、旧バージョンの Windows コンピューターで FIPS モードを使用する場合について説明しています。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

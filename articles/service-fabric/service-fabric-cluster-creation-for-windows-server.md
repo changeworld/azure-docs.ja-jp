@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/14/2016"
+   ms.date="06/21/2016"
    ms.author="chackdan"/>
 
 
@@ -36,11 +36,19 @@ Azure Service Fabric クラスターは、Windows Server を実行するあら�
 |**ファイル名**|**簡単な説明**|
 |-----------------------|--------------------------|
 |MicrosoftAzureServiceFabric.cab|クラスター内の各マシンにデプロイされるバイナリを含んだ CAB ファイル。|
-|ClusterConfig.JSON|クラスター構成ファイル。クラスターに属している各マシンの情報を含め、クラスターのすべての設定が含まれています。|
-|EULA.txt|Microsoft Azure Service Fabric の Service Fabric スタンドアロン パッケージの使用に関するライセンス条項。EULA のコピーがすぐに必要という場合は、[こちらをクリック](http://go.microsoft.com/fwlink/?LinkID=733084)してダウンロードしてください。|
+|ClusterConfig.Unsecure.DevCluster.JSON|クラスター構成ファイルのサンプル。クラスターに属している各マシンの情報を含め、安全でない、3 つのノードと 1 つの VM/マシンを持つ開発クラスターのすべての設定が含まれています。 |
+|ClusterConfig.Unsecure.MultiMachine.JSON|クラスター構成ファイルのサンプル。安全でない複数の VM/マシンを持つクラスターに属している各マシンの情報を含め、クラスターのすべての設定が含まれています。|
+|ClusterConfig.Windows.DevCluster.JSON|クラスター構成ファイルのサンプル。クラスターに属している各マシンの情報を含め、安全な、3 つのノードと 1 つの VM/マシンを持つ開発クラスターのすべての設定が含まれています。クラスターは [Windows ID](https://msdn.microsoft.com/library/ff649396.aspx) を使用して保護されます。|
+|ClusterConfig.Windows.MultiMachine.JSON|クラスター構成ファイルのサンプル。安全な複数の VM/マシンを持つクラスターに属している各マシンの情報を含め、安全なクラスターのすべての設定が含まれています。クラスターは [Windows ID](https://msdn.microsoft.com/library/ff649396.aspx) を使用して保護されます。|
+|ClusterConfig.x509.DevCluster.JSON|クラスター構成ファイルのサンプル。クラスターに属している各マシンの情報を含め、安全な、3 つのノードと 1 つの VM/マシンを持つ開発クラスターのすべての設定が含まれています。クラスターは Windows x509 証明書を使用して保護されます。|
+|ClusterConfig.x509.MultiMachine.JSON|クラスター構成ファイルのサンプル。安全な複数の VM/マシンを持つクラスターに属している各マシンの情報を含め、安全なクラスターのすべての設定が含まれています。クラスターは x509 証明書を使用して保護されます。|
+|EULA.txt|Microsoft Azure Service Fabric の Service Fabric スタンドアロン パッケージの使用に関するライセンス条項。EULA のコピーをすぐにダウンロードする必要がある場合は、[こちらをクリック](http://go.microsoft.com/fwlink/?LinkID=733084)してください。|
 |Readme.txt|リリース ノートや基本的なインストール手順へのリンク。このページに記載されているインストラクションの内容も一部含まれています。|
 |CreateServiceFabricCluster.ps1|ClusterConfig.JSON ファイル内の設定を使用してクラスターを作成する PowerShell スクリプト。|
 |RemoveServiceFabricCluster.ps1|ClusterConfig.JSON 内の設定を使用してクラスターを削除する PowerShell スクリプト。|
+|AddNode.ps1|ノードを既存のクラスターに追加するための PowerShell スクリプト|
+|RemoveNode.ps1|ノードをクラスターから削除するための PowerShell スクリプト|
+
 
 ## クラスターのデプロイ計画と準備
 以降の手順は、クラスターを作成する前に行う必要があります。
@@ -76,7 +84,7 @@ Azure Service Fabric クラスターは、Windows Server を実行するあら�
 
 障害ドメインは計画の範囲外の障害の単位、アップグレード ドメインは計画の範囲内のメンテナンスの単位であると考えると理解しやすいでしょう。
 
-アップグレード ドメインの名前は、*ClusterConfig.JSON* にアップグレード ドメインを指定するときに選びます。その例を次に示します。
+アップグレード ドメインの名前は、*ClusterConfig.JSON** にアップグレード ドメインを指定するときに選びます。その例を次に示します。
 
 - "upgradeDomain": "UD0"
 - "upgradeDomain": "UD1A"
@@ -96,8 +104,8 @@ Azure Service Fabric クラスターは、Windows Server を実行するあら�
 
 |**構成設定**|**説明**|
 |-----------------------|--------------------------|
-|NodeTypes|クラスター ノードは、ノードのタイプでグループ分けすることができます。クラスターには少なくとも 1 つの NodeType が必要です。グループ内のすべてのノードは、次の特性を共有します。<br> *Name* - ノードのタイプの名前です。<br>*EndPoints* - ノード タイプには、さまざまな名前付きエンド ポイント (ポート) が関連付けられます。このマニフェスト内の他のポート番号と競合せず、なおかつ同じマシン/VM 上の他のプログラムでまだ使われていなければ、どのポート番号でも使用できます。<br> *PlacementProperties* - このノード タイプの特性を表します。この特性が、後でシステム サービスや独自のサービスを配置するうえでの制約としての性質を帯びます。これらの特性は、特定のノードを補足するメタデータとして、ユーザー定義のキー/値のペアで記述されます。ノードのプロパティとしては、たとえばハード ドライブやグラフィック カードの有無やハード ディスク ドライブ内のスピンドル数、コア数といった物理的な特性があります。<br> *Capacities* - 特定のノード用に確保されている特定のリソースの名前と量を定義します。たとえば、"MemoryInMb" と呼ばれるメトリックに対して既定で 2,048 MB のメモリを使用できるようにノードの容量を定義できます。実行時にはこの容量に基づき、特定のリソース量を必要とするサービスが確実に、そのリソースに空きのあるノードに配置されます。|
-|Nodes|クラスターに参加するノードごとの詳しい情報 (ノード タイプとノード名、ノードの IP アドレス、障害ドメイン、アップグレード ドメイン)。ここには、クラスターの作成先となるマシンとその IP アドレスを列挙する必要があります。<br> すべてのノードに同じ IP アドレスを使用した場合、ワンボックス クラスターが作成されます。ワンボックス クラスターはあくまでテスト用です。運用環境のワークロードをデプロイする用途には使用しないでください。|
+|NodeTypes|クラスター ノードは、ノードのタイプでグループ分けすることができます。クラスターには少なくとも 1 つの NodeType が必要です。グループ内のすべてのノードは、次の特性を共有します。<br> *Name* - ノードのタイプの名前です。<br>*EndPoints* - ノード タイプには、さまざまな名前付きエンド ポイント (ポート) が関連付けられます。このマニフェスト内の他のポート番号と競合せず、なおかつ同じマシン/VM 上の他のプログラムでまだ使われていなければ、どのポート番号でも使用できます。<br> *PlacementProperties* - このノード タイプの特性を表します。この特性が、後でシステム サービスや独自のサービスを配置するうえでの制約としての性質を帯びます。これらの特性は、特定のノードを補足するメタデータとして、ユーザー定義のキー/値のペアで記述されます。ノードのプロパティとしては、たとえばハード ドライブやグラフィック カードの有無やハード ディスク ドライブ内のスピンドル数、コア数といった物理的な特性があります。<br> *Capacities* - ノード容量は、特定のノードで使用できるように確保されている特定のリソースの名前と量を定義します。たとえば、"MemoryInMb" と呼ばれるメトリックに対して既定で 2,048 MB のメモリを使用できるようにノードの容量を定義できます。実行時にはこの容量に基づき、特定のリソース量を必要とするサービスが確実に、そのリソースに空きのあるノードに配置されます。|
+|Nodes|クラスターに参加するノードごとの詳しい情報 (ノード タイプとノード名、ノードの IP アドレス、障害ドメイン、アップグレード ドメイン)。ここには、クラスターの作成先となるマシンとその IP アドレスを列挙する必要があります。<br> すべてのノードに同じ IP アドレスを使用した場合、ワンボックス クラスターが作成されます。ワンボックス クラスターはテストに使用できます。運用環境のワークロードをデプロイする用途には使用しないでください。|
 
 ### 手順 2: クラスター スクリプトを作成する
 JSON ファイル内のクラスター構成に変更を加え、すべてのノード情報を追加したら、パッケージ フォルダーにあるクラスター作成スクリプトを PowerShell で実行します。構成ファイルのパスと、そのパッケージ ルートの場所を引数として指定してください。
@@ -105,19 +113,47 @@ JSON ファイル内のクラスター構成に変更を加え、すべてのノ
 このスクリプトは、クラスター構成ファイルにノードとして列挙されているすべてのマシンに管理アクセスできれば、どのマシンでも実行できます。このスクリプトを実行するマシンが、クラスターに属していなくてもかまいません。
 
 ```
-.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath C:\Microsoft.Azure.ServiceFabric.WindowsServer.5.0.135.9590\ClusterConfig.JSON -MicrosoftServiceFabricCabFilePath C:\Microsoft.Azure.ServiceFabric.WindowsServer.5.0.135.9590\MicrosoftAzureServiceFabric.cab
+.\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.JSON -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab
 ```
 
+>[AZURE.NOTE] デプロイ ログは、CreateServiceFabricCluster PowerShell を実行した VM/マシンのローカルで利用できます。デプロイ ログは、PS コマンドを実行したフォルダー内の "DeploymentTraces" という名前のサブフォルダーにあります。
+
+## すべてのノードを Service Fabric クラスターに追加する 
+
+1. クラスターに追加する VM/マシンを準備します (「クラスターのデプロイ計画と準備」セクションの手順 2. を参照)。 
+2. この VM/マシンを追加する障害ドメインとアップグレード ドメインについて計画します。
+3. [Service Fabric for Windows Server のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)し、クラスターに追加する予定の VM/マシンにパッケージを解凍します。 
+4. Powershell 管理プロンプトを開き、解凍したパッケージのある場所に移動します。
+5. AddNode.PS1 を実行します。
+
+```
+.\AddNode.ps1 -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClusterConnectionEndPoint 182.17.34.52:19000 -UpgradeDomain UD1 -FaultDomain FD1
+```
+
+## Service Fabric クラスターからノードを削除する 
+
+1. クラスターから削除する VM/マシンに TS を実行します。
+2. Powershell 管理プロンプトを開き、解凍したパッケージのある場所に移動します。
+5. RemoveNode.PS1 を実行します。
+
+```
+.\RemoveNode.ps1 -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab -ExistingClusterConnectionEndPoint 182.17.34.52:19000
+```
+
+## Service Fabric クラスターを削除する 
+1. クラスターに含まれる VM/マシンのいずれかに TS を実行します。
+2. Powershell 管理プロンプトを開き、解凍したパッケージのある場所に移動します。
+5. RemoveNode.PS1 を実行します。
+
+```
+.\RemoveNode.ps1 -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab -ExistingClusterConnectionEndPoint 182.17.34.52:19000
+```
+
+
 ## 次のステップ
-
-作成したクラスターにセキュリティを確保する:
-- [クラスターのセキュリティ](service-fabric-cluster-security.md)
-
-アプリの開発とデプロイを行うためにまず必要なことを知る:
+- [クラスターのセキュリティについて](service-fabric-cluster-security.md)
 - [Service Fabric SDK と概要](service-fabric-get-started.md)
 - [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)。
-
-Azure クラスターとスタンドアロン クラスターについて詳しく知る:
 - [スタンドアロン クラスター作成機能の概要および Azure によって管理されたクラスターとの比較](service-fabric-deploy-anywhere.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

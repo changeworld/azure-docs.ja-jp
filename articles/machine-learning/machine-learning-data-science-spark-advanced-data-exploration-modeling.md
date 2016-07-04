@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="06/14/2016"
 	ms.author="deguhath;bradsev" />
 
 # Spark を使用した高度なデータ探索とモデリング 
@@ -1496,4 +1496,4 @@ Spark MlLib を使用して回帰モデルと分類モデルを作成しまし�
 
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、[Spark で構築した機械学習モデルのスコア付けと評価](machine-learning-data-science-spark-model-consumption.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

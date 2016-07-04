@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="support-article"
-	ms.date="04/12/2016"
+	ms.date="06/14/2016"
 	ms.author="iainfou"/>
 
 # Windows を実行する Azure 仮想マシンへの Remote Desktop 接続に関するトラブルシューティング
@@ -195,4 +195,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

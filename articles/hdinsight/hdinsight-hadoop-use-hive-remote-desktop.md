@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/03/2016"
+   ms.date="06/16/2016"
    ms.author="larryfr"/>
 
 # リモート デスクトップによる HDInsight での Hive と Hadoop の使用
@@ -51,6 +51,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
 3. CLI を使用して次のステートメントを入力し、サンプル データを使用して **log4jLogs** という名前の新しいテーブルを作成します。
 
+        set hive.execution.engine=tez;
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
         ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
@@ -149,4 +150,4 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 [Powershell-install-configure]: ../powershell-install-configure.md
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0622_2016-->

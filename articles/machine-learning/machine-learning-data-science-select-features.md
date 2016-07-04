@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Cortana Analytics Process の特徴選択 | Microsoft Azure" 
+	pageTitle="Team Data Science Process の特徴選択 | Microsoft Azure" 
 	description="特徴選択の目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。"
 	services="machine-learning"
 	documentationCenter=""
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="zhangya;bradsev" />
 
 
-# Cortana Analytics Process の特徴選択
+# Team Data Science Process (TDSP) の特徴選択
 
 このトピックでは、特徴選択の目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。例は、Azure Machine Learning Studio で描画しています。
 
@@ -26,7 +26,7 @@
 
 このトピックでは、特徴選択の目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。例は、Azure Machine Learning Studio で描画しています。
 
-エンジニアリングと特徴選択は、CAP プロセスの一部です。CAP の概要については、「[Cortana Analytics Process (CAP) とは何か](machine-learning-data-science-the-cortana-analytics-process.md)」を参照してください。 特徴エンジニアリングと特徴選択は、CAP の**特徴の開発**ステップの一部です。
+特徴のエンジニアリングと選択は TDSP の一部です。TDSP の概要については、「[What is the Team Data Science Process? (Team Data Science Process について)](data-science-process-overview.md)」を参照してください 特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。
 * **特徴エンジニアリング**: このプロセスは、データ内の既存の生の特徴から、関連する特徴を作成し、学習アルゴリズムの予測力を高めようとします。
 * **特徴選択**: このプロセスは、トレーニング問題の次元を削減するために、元のデータの特徴のキーのサブセットを選択します。
 
@@ -74,4 +74,4 @@ Azure Machine Learning Studio には、特徴選択に提供されるモジュ�
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

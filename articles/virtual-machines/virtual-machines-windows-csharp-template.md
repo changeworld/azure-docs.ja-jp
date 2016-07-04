@@ -39,9 +39,9 @@
 
 1. リソースを作成できる場所の一覧を取得します。
 
-	    Get-AzureLocation | sort Name | Select Name
-
-2. **$locName** の値を一覧の場所に置き換えます (例: **Central US**)。変数を作成します。
+	    Get-AzureRmLocation | sort Location | Select Location
+        
+2. **$locName** の値を一覧の場所に置き換えます (例: **centralus**)。変数を作成します。
 
         $locName = "location name"
         
@@ -65,13 +65,13 @@
 1. $stName の値を、ストレージ アカウントの名前 (小文字と数字のみ) に置き換えます。名前の一意性をテストします。
 
         $stName = "storage account name"
-        Test-AzureName -Storage $stName
+        Get-AzureRmStorageAccountNameAvailability $stName
 
-    このコマンドで **False** が返された場合は、提案した名前は一意です。
+    このコマンドで **True** が返された場合は、提案した名前は一意です。
     
 2. 次のコマンドを実行して、ストレージ アカウントを作成します。
     
-        New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -Type "Standard_LRS" -Location $locName
+        New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -SkuName "Standard_LRS" -Kind "Storage" -Location $locName
         
 3. {blob-storage-endpoint} を、アカウントの BLOB ストレージのエンドポイントに置き換えます。{storage-account-name} をストレージ アカウントの名前に置き換えます。{primary-storage-key} をプライマリ アクセス キーに置き換えます。これらのコマンドを実行して、ファイルが格納されるコンテナーを作成します。エンドポイントとキーの値は、Azure ポータルから取得できます。
 
@@ -497,4 +497,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 - デプロイに問題がある場合は、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
 - 「[Manage virtual machines using Azure Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md)」 (Azure Resource Manager と PowerShell を使用した仮想マシンの管理) で、作成した仮想マシンを管理する方法を確認します。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

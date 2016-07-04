@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="06/20/2016" 
 	ms.author="spelluru"/>
 
 # Data Factory .NET SDK を使用して Azure Data Factory を作成、監視、管理する
@@ -393,4 +393,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

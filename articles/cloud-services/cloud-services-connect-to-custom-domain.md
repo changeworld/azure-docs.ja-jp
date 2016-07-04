@@ -13,18 +13,18 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="03/25/2016"
+    ms.date="06/22/2016"
     ms.author="adegeo"/>
 
 # Azure でホストされているカスタム AD ドメイン コントローラーへの Azure Cloud Services ロールの接続
 
-最初に、Azure に Virtual Network (VNET) を設定します。次に、(Azure 仮想マシンでホストされている) Active Directory ドメイン コントローラーを VNET に追加します。次に、事前に作成した VNET に既存のクラウド サービス ロールを追加した後、それらをドメイン コントローラーに接続します。
+最初に、Azure に Virtual Network (VNet) を設定します。次に、(Azure 仮想マシンでホストされている) Active Directory ドメイン コントローラーを VNet に追加します。次に、事前に作成した VNet に既存のクラウド サービス ロールを追加した後、それらをドメイン コントローラーに接続します。
 
 作業を開始するにあたり、いくつか注意することがあります。
 
 1.	このチュートリアルでは PowerShell を使用します。Azure PowerShell がインストールされ、使用する準備が整っていることを確認してください。Azure PowerShell の設定方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
-2.	AD ドメイン コントローラーと Web ロールまたは worker ロールのインスタンスは VNET 内にある必要があります。
+2.	AD ドメイン コントローラーと Web ロールまたは worker ロールのインスタンスは VNet 内にある必要があります。
 
 このステップ バイ ステップ ガイドに従って作業しているときに問題が発生した場合はコメントを残してください。私たちはコメントを必ず読んでいるので、だれかが対応します。
 
@@ -95,7 +95,7 @@ VM にログインした後、[カスタム AD ドメイン コントローラ�
 
 ## クラウド サービスを Virtual Network に追加する
 
-次に、先ほど作成した VNET にクラウド サービス デプロイメントを追加する必要があります。そのためには、Visual Studio または任意のエディターを使用して cscfg に該当するセクションを追加して、クラウド サービスの cscfg を変更します。
+次に、先ほど作成した VNet にクラウド サービス デプロイメントを追加する必要があります。そのためには、Visual Studio または任意のエディターを使用して cscfg に該当するセクションを追加して、クラウド サービスの cscfg を変更します。
 
 ```xml
 <ServiceConfiguration serviceName="[hosted-service-name]" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="[os-family]" osVersion="*">
@@ -110,7 +110,7 @@ VM にログインした後、[カスタム AD ドメイン コントローラ�
     </Dns>
     <!--optional-->
 
-    <!--VNET settings-->
+    <!--VNet settings-->
     <VirtualNetworkSite name="[virtual-network-name]" />
     <AddressAssignments>
         <InstanceAddress roleName="[role-name]">
@@ -119,7 +119,7 @@ VM にログインした後、[カスタム AD ドメイン コントローラ�
         </Subnets>
         </InstanceAddress>
     </AddressAssignments>
-    <!--VNET settings-->
+    <!--VNet settings-->
 
     </NetworkConfiguration>
 </ServiceConfiguration>
@@ -156,4 +156,4 @@ help New-AzureServiceADDomainExtensionConfig
 
 私たちは、仮想マシンをドメイン コントローラーに昇格させる拡張機能の有用性に関して皆さんからのご意見を募集しています。このような拡張機能が便利だと思われる方は、コメントを残してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0622_2016-->

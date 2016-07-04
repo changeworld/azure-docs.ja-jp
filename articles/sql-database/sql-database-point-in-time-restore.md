@@ -12,24 +12,37 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="data-management"
-   ms.date="05/10/2016"
+   ms.workload="sqldb-bcdr"
+   ms.date="06/17/2016"
    ms.author="sstein"/>
 
 # 概要: SQL Database のポイントインタイム リストア
 
 > [AZURE.SELECTOR]
-- [概要](sql-database-point-in-time-restore.md)
+- [ビジネス継続性の概要](sql-datbase-business-continuity.md)
+- [ポイントインタイム リストア](sql-database-point-in-time-restore.md)
+- [削除済みデータベースの復元](sql-database-restore-deleted-database.md)
+- [geo リストア](sql-database-geo-restore.md)
+- [アクティブ geo レプリケーションを選択するとき](sql-database-geo-replication-overview.md)
+- [ビジネス継続性のシナリオ](sql-database-business-continuity-scenarios.md)
+
+ポイントインタイム リストアでは、[SQL Database 自動バックアップ](sql-database-automated-backups.md)を使用して、既存のデータベースを新しいデータベースとして、同じ論理サーバー上の以前の時点に復元できます。既存のデータベースを上書きすることはできません。以前の時点への復元には、[Azure ポータル](sql-database-point-in-time-restore-portal.md)、[PowerShell](sql-database-point-in-time-restore-powershell.md)、または [REST API](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用できます。
+
+> [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-point-in-time-restore-portal.md)
 - [PowerShell](sql-database-point-in-time-restore-powershell.md)
 
-ポイントインタイム リストアでは、[SQL Database 自動バックアップ](sql-database-automated-backups.md)を使用して、データベースを以前の特定の時点に復元できます。以前の時点への復元には、[Azure ポータル](sql-database-point-in-time-restore-portal.md)、[PowerShell](sql-database-point-in-time-restore-powershell.md)、または [REST API](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用できます。
+データベースは、任意のパフォーマンス レベルまたはエラスティック プールに復元できます。復元によって新しいデータベースが作成される点や、復元されるデータベースのサービス レベルとパフォーマンス レベルが、現在実行中のデータベースの状態とは異なる点を考慮して、サーバーまたはプールに十分な DTU クォータがあることを確認する必要があります。復元が完了すると、復元されたデータベースは、通常の完全にアクセス可能なオンライン データベースになり、サービス レベルとパフォーマンス レベルに基づいて通常料金が発生します。
 
-データベースは、任意のパフォーマンス レベルまたはエラスティック プールに復元できます。復元によって新しいデータベースが作成される点や、復元されるデータベースのサービス レベルとパフォーマンス レベルが、現在実行中のデータベースの状態とは異なる点を考慮して、サーバーまたはプールに十分な DTU クォータがあることを確認する必要があります。復元が完了すると、復元されたデータベースは、通常の完全にアクセス可能なオンライン データベースになり、サービス レベルとパフォーマンス レベルに基づいて通常料金が発生します。復旧の目的でデータベースを復元する場合、復元されたデータベースを元のデータベースの代わりとして扱うか、データを取得し、元のデータベースを更新するために使用することができます。復元されたデータベースを元のデータベースの代わりに使用する場合、パフォーマンス レベルやサービス レベルが適切であることを確認し、必要に応じてデータベースをスケールしてください。T-SQL の ALTER DATABASE コマンドを使用して、元のデータベース名を変更し、復元したデータベースに元の名前を付けます。復元されたデータベースからデータを取得する場合、何らかのデータ復旧スクリプトを作成し、実行する必要があります。復元操作が完了するまでに時間がかかる可能性がありますが、データベース一覧全体でデータベースが表示されるようになります。復元中にデータベースを削除すると、操作は取り消され、料金はかかりません。
+利用できる最も古い復元ポイントを検索するには、[Get Database](https://msdn.microsoft.com/library/dn505708.aspx) (*RecoveryPeriodStartDate*) を使用して、最も古い復元ポイント (geo レプリケーションの復元ポイント以外) を取得します。
+
+復旧の目的でデータベースを復元する場合、復元されたデータベースを元のデータベースの代わりとして扱うか、データを取得し、元のデータベースを更新するために使用することができます。復元されたデータベースを元のデータベースの代わりに使用する場合、パフォーマンス レベルやサービス レベルが適切であることを確認し、必要に応じてデータベースをスケールしてください。T-SQL の ALTER DATABASE コマンドを使用して、元のデータベース名を変更し、復元したデータベースに元の名前を付けます。
+
+復元されたデータベースからデータを取得する場合、何らかのデータ復旧スクリプトを作成し、実行する必要があります。復元操作が完了するまでに時間がかかる可能性がありますが、データベース一覧全体でデータベースが表示されるようになります。復元中にデータベースを削除すると、操作は取り消され、料金はかかりません。
 
 ## ポイントインタイム リストアの復旧時間
 
-データベースの復元にかかる時間は、データベースのサイズ、選択した時点、選択した時点の状態を再構築するために再生する必要があるアクティビティ数など、多くの要因で変わります。大規模なデータベースや、アクティビティ数が多いデータベースの場合、復元に数時間かかることがあります。データベースを復元すると、常に元のデータベースと同じサーバー上に新しいデータベースが作成されます。そのため、復元されるデータベースには、新しい名前を付ける必要があります。
+データベースの復元にかかる時間は、データベースのサイズ、トランザクション ログの数、選択した時点、選択した時点の状態を再構築するために再生する必要があるアクティビティ数など、多くの要因で変わります。大規模なデータベースや、アクティビティ数が多いデータベースの場合、復元に数時間かかることがあります。データベースの復元のほとんどは、12 時間以内に完了します。
 
 ## バックアップ/復元とコピー/エクスポート/インポート
 
@@ -43,19 +56,13 @@
 
 ## 次のステップ
 
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [Azure ポータルを使用したポイントインタイム リストア](sql-database-point-in-time-restore-portal.md)
-- [PowerShell を使用したポイントインタイム リストア](sql-database-point-in-time-restore-powershell.md)
-- [REST API を使用したポイントインタイム リストア](https://msdn.microsoft.com/library/azure/mt163685.aspx)
-- [SQL Database 自動バックアップ](sql-database-automated-backups.md)
-
+- Azure ポータルを使用して特定の時点に復旧する詳細な手順については、[Azure ポータルを使用したポイントインタイム リストア](sql-database-point-in-time-restore-portal.md)に関するページをご覧ください。
+- PowerShell を使用して特定の時点に復旧する詳細な手順については、[PowerShell を使用したポイントインタイム リストア](sql-database-point-in-time-restore-powershell.md)に関するページをご覧ください。
+- REST API を使用して特定の時点に復旧する詳細な手順については、[REST API を使用したポイントインタイム リストア](https://msdn.microsoft.com/library/azure/mt163685.aspx)に関するページをご覧ください。
+- ユーザー エラーまたはアプリケーション エラーから復旧する方法の詳細については、[ユーザー エラーの復旧](sql-database-user-error-recovery.md)に関するページをご覧ください。
 
 ## その他のリソース
 
-- [削除されたデータベースの復元](sql-database-restore-deleted-database.md)
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [geo リストア](sql-database-geo-restore.md)
-- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
-- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [ビジネス継続性のシナリオ](sql-database-business-continuity-scenarios.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

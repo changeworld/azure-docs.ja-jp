@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/06/2016" 
+	ms.date="06/21/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境からバックエンド リソースへの安全な接続 #
@@ -34,9 +34,7 @@ App Service 環境から仮想ネットワーク内のエンドポイントへ�
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## 発信接続と DNS の要件 ##
-App Service 環境を適切に機能させるには、Azure Storage ワールドワイドへの発信アクセスだけでなく、同じ Azure リージョン内の SQL Database への接続も必要であることに注意してください。仮想ネットワーク内で発信インターネット アクセスがブロックされている場合、App Service 環境はこれらの Azure エンドポイントにアクセスすることはできません。
-
-顧客の仮想ネットワーク内にカスタム DNS サーバーが構成されていることもあります。App Service 環境は、*.database.windows.net、*.file.core.windows.net、および *.blob.core.windows.net の Azure エンドポイントを解決できる必要があります。
+App Service Environment が正常に機能するためには、さまざまなエンドポイントへの発信アクセスが必要となります。[ExpressRoute を使用した環境のネットワーク構成](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity)の記事の「必要なネットワーク接続」というセクションに、App Service Environment で使用されるすべての外部エンドポイントが掲載されています。
 
 また、App Service 環境を作成する前に、仮想ネットワーク上のカスタム DNS サーバーをセットアップしておくことをお勧めします。App Service 環境の作成中に仮想ネットワークの DNS 構成が変更された場合、App Service 環境の作成プロセスは失敗します。VPN ゲートウェイの他端にカスタム DNS サーバーが存在していて、その DNS サーバーが到達不能または使用できない場合、App Service 環境の作成プロセスも失敗します。
 
@@ -48,7 +46,7 @@ SQL Server の構成には一般的に、ポート 1433 でリッスンしてい
 このエンドポイントへのトラフィックを制限する方法は 2 つあります。
 
 
-- [ネットワーク アクセス制御リスト][NetworkAccessControlLists] (ネットワーク ACL)
+- [ネットワーク アクセス制御リスト][NetworkAccessControlLists] \(ネットワーク ACL)
 
 - [ネットワーク セキュリティ グループ][NetworkSecurityGroups]
 
@@ -88,6 +86,7 @@ VNet 間の内部トラフィックのみにアクセスを制限すると、ネ
 
 
 ## 使用の開始
+App Service 環境に関するすべての記事と作業方法は [Application Service Environments の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
 
 App Service 環境の使用を開始するには、「[App Service 環境の概要][IntroToAppServiceEnvironment]」を参照してください。
 
@@ -116,4 +115,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0622_2016-->

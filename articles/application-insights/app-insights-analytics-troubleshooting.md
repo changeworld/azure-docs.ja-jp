@@ -72,9 +72,7 @@
 
     Web サイトの一覧で、次の URL のいずれかが含まれている場合、他の URL も追加します。
 
-    * https://login.microsoftonline.com
-    * https://login.windows.net
-    * https://analytics.applicationinsights.io 
+    https://analytics.applicationinsights.io<br/> https://login.microsoftonline.com<br/> https://login.windows.net
 
 
 ## 404 ...リソースが見つかりません
@@ -126,4 +124,4 @@ URL が無効です。
  
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

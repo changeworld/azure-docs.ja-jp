@@ -1,5 +1,5 @@
 <properties
-	pageTitle="方法: SQL Database ファイアウォールの構成 | Microsoft Azure"
+	pageTitle="T-SQL を使用した、Azure SQL Database のサーバー レベルおよびデータベース レベルのファイアウォール規則 | Microsoft Azure"
 	description="Azure SQL データベースにアクセスする IP アドレス用のファイアウォールの構成方法を説明します。"
 	services="sql-database"
 	documentationCenter=""
@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article" 
-	ms.date="04/26/2016"
+	ms.date="06/15/2016"
 	ms.author="rickbyh"/>
 
 
-# 方法: TSQL を使用して Azure SQL Database ファイアウォールを構成する
+# TSQL を使用して Azure SQL Database ファイアウォールを構成する
 
 
 > [AZURE.SELECTOR]
@@ -75,6 +75,18 @@ Microsoft Azure SQL Database では、サーバーとデータベースの接続
 
 ## 次のステップ
 
-データベース作成のチュートリアルについては、「[SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」を参照してください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、[クライアントから SQL Database にすばやく接続するためのコード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関するページを参照してください。データベースに移動する方法については、[データベースへのアクセスとログイン セキュリティの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)に関するページをご覧ください。
+他の方法でサーバー レベルのファイアウォール規則を作成する方法については、次の記事をご覧ください。
 
-<!---HONumber=AcomDC_0615_2016-->
+- [Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings.md)
+- [PowerShell を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を構成する](sql-database-configure-firewall-settings-powershell.md)
+- [REST API を使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings-rest.md)
+
+データベース作成のチュートリアルについては、「[SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」をご覧ください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、[クライアントから SQL Database にすばやく接続するためのコード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関するページをご覧ください。データベースに移動する方法については、[データベースへのアクセスとログイン セキュリティの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)に関するページをご覧ください。
+
+
+## その他のリソース
+
+- [データベースの保護](sql-database-security.md)
+- [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
+
+<!---HONumber=AcomDC_0622_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/08/2016"
+   ms.date="06/21/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスにリモート接続する
@@ -274,4 +274,4 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)の詳細を確認する。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

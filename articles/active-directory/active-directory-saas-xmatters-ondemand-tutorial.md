@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="04/06/2016" 
+    ms.date="06/20/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と xMatters OnDemand の統合
@@ -38,7 +38,7 @@
 
 ###xMatters OnDemand のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-xmatters-ondemand-tutorial/IC700993.png "Active Directory")
 
@@ -68,9 +68,9 @@
   
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで xMatters OnDemand に対する認証を行うことができるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **xMatters OnDemand** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **xMatters OnDemand** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776791.png "Configure single sign-on")
 
@@ -78,9 +78,14 @@
 
     ![Configure single sign-on](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776792.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページの **[xMatters OnDemand サインイン URL]** ボックスに、"*https://\<tenant-name>.Jitbit.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776793.png "アプリケーション URL の構成")
+
+	a.**[xMatters OnDemand サインイン URL]** ボックスに、`https://<tenant-name>.XMattersOnDemandapp.com` という形式で URL を入力します。
+
+	b.**[次へ]** をクリックします。
+
 
 4.  **[xMatters OnDemand でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、証明書ファイルをローカルで **c:\\XMatters OnDemand.cer** としてコンピューターに保存します。
 
@@ -98,13 +103,13 @@
 
     ![SAML の構成](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML の構成")
 
-    1.  **[SAML の有効化]** を選択します。
-    2.  Azure ポータルの **[XMatters OnDemand でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの ID]** 値をコピーして、**[ID プロバイダーの URL]** テキストボックスに貼り付けます。
-    3.  Azure ポータルの **[XMatters OnDemand でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[シングル サインオン サービス URL]** テキストボックスに貼り付けます。
-    4.  Azure ポータルの **[XMatters OnDemand でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインアウト サービス URL]** の値をコピーし、**[シングル ログアウト URL]** テキストボックスに貼り付けます。
+    1.  **[Enable SAML]** を選択します。
+    2.  Azure クラシック ポータルの **[XMatters OnDemand でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの ID]** 値をコピーして、**[ID プロバイダーの URL]** テキスト ボックスに貼り付けます。
+    3.  Azure クラシック ポータルの **[XMatters OnDemand でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[シングル サインオン サービス URL]** テキスト ボックスに貼り付けます。
+    4.  Azure クラシック ポータルの **[XMatters OnDemand でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインアウト サービス URL]** の値をコピーし、**[シングル ログアウト URL]** テキスト ボックスに貼り付けます。
     5.  [会社の詳細] ページで、上部にある **[変更の保存]** をクリックします。![会社の詳細情報](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "会社の詳細情報")
 
-8.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+8.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの有効化](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776798.png "シングル サインオンの有効化")
 
@@ -139,7 +144,7 @@ Azure AD ユーザーが XMatters OnDemand にログインできるようにす�
 
 ###ユーザーを XMatters OnDemand に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **XMatters OnDemand** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -151,4 +156,4 @@ Azure AD ユーザーが XMatters OnDemand にログインできるようにす�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/14/2016"
+   ms.date="06/07/2016"
    ms.author="alkohli"/>
 
 # StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー
@@ -82,9 +82,9 @@ DR が正常に完了すると、ソース デバイスのクラウド データ
 > 
 > デバイスは使用できなくなりますが、ホスト システムにプロビジョニングした仮想マシンは引き続きリソースを消費します。DR が正常に完了したら、ホスト システムからこの仮想マシンを削除できます。
 
-## 仮想デバイスへのフェールオーバー
+## 仮想アレイへのフェールオーバー
 
-この手順を実行する前に、ローカル Web UI を使用して StorSimple 仮想デバイスをプロビジョニングして構成し、StorSimple Manager サービスに登録しておくことをお勧めします。
+この手順を実行する前に、ローカル Web UI を使用して他の StorSimple 仮想アレイをプロビジョニングして構成し、StorSimple Manager サービスに登録しておくことをお勧めします。
 
 
 > [AZURE.IMPORTANT]
@@ -175,4 +175,4 @@ DR が開始された後、デバイスの復元が完了する前にクラウ�
 
 [ローカル Web UI を使用して StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法の詳細を確認します。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0622_2016-->

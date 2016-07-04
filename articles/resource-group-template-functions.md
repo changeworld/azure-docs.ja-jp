@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/06/2016"
+   ms.date="06/16/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの関数
@@ -93,30 +93,6 @@
     }
 
 
-<a id="length" />
-### length
-
-**length(配列または文字列)**
-
-配列の要素数または文字列の文字数を返します。この関数を配列と共に使用して、リソースを作成するときのイテレーション数を指定できます。次の例では、**siteNames** パラメーターは、Web サイトの作成時に使用する名前の配列を参照します。
-
-    "copy": {
-        "name": "websitescopy",
-        "count": "[length(parameters('siteNames'))]"
-    }
-
-この関数を配列と共に使用する方法の詳細については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
-
-次のように、文字列と共に使用することもできます。
-
-    "parameters": {
-        "appName": { "type": "string" }
-    },
-    "variables": { 
-        "nameLength": "[length(parameters('appName'))]"
-    }
-
-
 <a id="mod" />
 ### mod
 
@@ -163,6 +139,7 @@
 
 - [base64](#base64)
 - [concat](#concat)
+- [length](#length)
 - [padLeft](#padleft)
 - [replace](#replace)
 - [split](#split)
@@ -465,11 +442,96 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 リソース マネージャーには、配列値を操作する関数がいくつか用意されています。
 
-複数の配列を結合して 1 つの配列にするには、[concat](#concat) を使用します。
+- [concat](#concat)
+- [length](#length)
+- [take](#take)
+- [skip](#skip)
+- [split](#split)
 
-配列内の要素の数を取得するには、[length](#length) を使用します。
+<a id="length" />
+### length
 
-1 つの文字列値を分割して文字列値の配列にするには、[split](#split) を使用します。
+**length(配列または文字列)**
+
+配列の要素数または文字列の文字数を返します。この関数を配列と共に使用して、リソースを作成するときのイテレーション数を指定できます。次の例では、**siteNames** パラメーターは、Web サイトの作成時に使用する名前の配列を参照します。
+
+    "copy": {
+        "name": "websitescopy",
+        "count": "[length(parameters('siteNames'))]"
+    }
+
+この関数を配列と共に使用する方法の詳細については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
+
+次のように、文字列と共に使用することもできます。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "nameLength": "[length(parameters('appName'))]"
+    }
+
+<a id="take" />
+### take
+**take(originalValue, numberToTake)**
+
+開始位置を起点として指定された要素数の配列または開始位置を起点として指定された文字数の文字列を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| originalValue | あり | 要素または文字の取得元となる配列または文字列。
+| numberToTake | あり | 取得する要素数または文字数。この値が 0 以下である場合、空の配列または空の文字列が返されます。指定された配列または文字列の長さを超える場合、その配列または文字列のすべての要素が返されます。
+
+指定した数の要素を配列から取得する例を次に示します。
+
+    "parameters": {
+      "first": {
+        "type": "array",
+        "defaultValue": [ "one", "two", "three" ]
+      },
+      "second": {
+        "type": "int"
+      }
+    },
+    "resources": [
+    ],
+    "outputs": {
+      "return": {
+        "type": "array",
+        "value": "[take(parameters('first'),parameters('second'))]"
+      }
+    }
+
+<a id="skip" />
+### skip
+**skip(originalValue, numberToSkip)**
+
+配列内の指定位置より後ろにあるすべての要素を含んだ配列または文字列内の指定位置より後ろにあるすべての文字を含んだ文字列を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| originalValue | あり | 要素または文字のスキップに使用する配列または文字列。
+| numberToSkip | あり | スキップする要素数または文字数。この値が 0 以下である場合、配列または文字列のすべての要素が返されます。配列または文字列の長さを超える場合は、空の配列または空の文字列が返されます。 
+
+指定した数の配列要素をスキップする例を次に示します。
+
+    "parameters": {
+      "first": {
+        "type": "array",
+        "defaultValue": [ "one", "two", "three" ]
+      },
+      "second": {
+        "type": "int"
+      }
+    },
+    "resources": [
+    ],
+    "outputs": {
+      "return": {
+        "type": "array",
+        "value": "[skip(parameters('first'),parameters('second'))]"
+      }
+    }
 
 ## デプロイの値関数
 
@@ -815,4 +877,4 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

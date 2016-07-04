@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Cortana Analytics Process の Hadoop クラスターをカスタマイズする | Microsoft Azure" 
+	pageTitle="Team Data Science Process 用に Hadoop クラスターをカスタマイズ | Microsoft Azure" 
 	description="一般的な Python モジュールは、カスタムの Azure HDInsight Hadoop クラスターで利用できます。"
 	services="machine-learning" 
 	documentationCenter="" 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="hangzh;bradsev" />
 
-# Cortana Analytics Process の Azure HDInsight Hadoop クラスターをカスタマイズする 
+# Team Data Science Process 用に Azure HDInsight Hadoop クラスターをカスタマイズ 
 
 この記事では、HDInsight サービスでクラスターをプロビジョニングするときに各ノードで 64 ビット Anaconda (Python 2.7) をインストールして、HDInsight Hadoop クラスターをカスタマイズする方法について説明します。また、クラスターにカスタム ジョブを送信するためにヘッドノードにアクセスする方法も示します。このカスタマイズでは、便宜上 Anaconda に含まれる多くの一般的な Python モジュールを、クラスター内のハイブ レコードを処理するように設計されたユーザー定義関数 (UDF) で使用できるようにします。このシナリオで用いている手順については、「[Hive クエリを送信する方法](machine-learning-data-science-move-hive-tables.md#submit)」を参照してください。
 
-次のメニューは、Cortana Analytics Process (CAP) によって使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
+次のメニューは、Team Data Science Process (TDSP) によって使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
 
 [AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
@@ -80,10 +80,10 @@
 
 ![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-3.png)
 
-高度な分析プロセスの次のステップは、「[Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)」に示されています。HDInsight にデータを移動し、Azure Machine Learning でデータの情報を取得する準備としてデータを処理してサンプリングする手順などがあります。
+高度な分析プロセスの次のステップは、「[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)」に示されています。HDInsight にデータを移動し、Azure Machine Learning でデータの情報を取得する準備としてデータを処理してサンプリングする手順などがあります。
 
 Hive レコードを処理するために使用されるクラスターに格納されたユーザー定義関数 (UDF) で、クラスターのヘッド ノードから Anaconda に含まれる Python モジュールにアクセスする方法については、「[Hive クエリを送信する方法](machine-learning-data-science-move-hive-tables.md#submit)」をご覧ください。
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -3,7 +3,7 @@
    description="SQL Database 組み込みバックアップについて説明します。この機能を使用すると、Azure SQL Database を以前の時点にロールバックしたり、データベースを地理的リージョン内の新しいデータベースにコピーしたりすることができます (最大 35 日)。"
    services="sql-database"
    documentationCenter=""
-   authors="stevestein"
+   authors="carlrabeler"
    manager="jhubbard"
    editor="monicar"/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sqldb-features"
-   ms.date="06/09/2016"
-   ms.author="sstein"/>
+   ms.date="06/16/2016"
+   ms.author="carlrab"/>
 
 # 概要: SQL Database 自動バックアップ
 
@@ -30,11 +30,20 @@ Microsoft Azure SQL Database は、バックアップ ストレージとして�
 
 Basic、Standard、Premium のすべてのデータベースは、自動バックアップで保護されています。完全バックアップが毎週作成され、差分バックアップは毎日作成されます。ログのバックアップは 5 分間隔で実行されます。初回の完全バックアップは、データベースの作成直後にスケジュールされます。通常、完全バックアップにかかる時間は 30 分ですが、長くかかることもあります。データベースのサイズが大きな場合 (たとえば、データベースのコピーや、大きなデータベースからの復元で作成されたデータベースの場合)、初回の完全バックアップに長い時間がかかる可能性があります。初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。完全バックアップと差分バックアップの正確なタイミングは、全体的な負荷のバランスに応じてシステムが決定します。バックアップ ファイルは、障害復旧時に可用性を確保するために、読み取りアクセス権 (RA-GRS) を持つ geo 冗長ストレージ アカウントで格納されます。
 
-## その他のリソース
+## 次のステップ
 
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
+- [削除されたデータベースの復元](sql-database-restore-deleted-database.md)
+- [ポイントインタイム リストア](sql-database-point-in-time-restore.md)
 - [geo リストア](sql-database-geo-restore.md)
 - [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
+- [データベースのコピー](sql-database-copy.md)
+
+## その他のリソース
+
+- [障害からの回復](sql-database-disaster-recovery.md)
+- [ユーザー エラーからの復旧](sql-database-user-error-recovery.md)
+- [障害復旧訓練の実行](sql-database-disaster-recovery-drills.md)
 - [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

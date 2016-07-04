@@ -294,4 +294,4 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 ## **謝辞**
 この記事は、Microsoft のデータ サイエンティスト Yijing Chen およびソフトウェア エンジニア Qiu Min によって作成されています。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->
