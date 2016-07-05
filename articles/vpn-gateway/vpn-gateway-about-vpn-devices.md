@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/29/2016"
+   ms.date="06/29/2016"
    ms.author="cherylmc" />
 
 # サイト間 VPN Gateway 接続の VPN デバイスについて
@@ -47,7 +47,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Check Point | セキュリティ ゲートウェイ | R75.40、R75.40VS | [構成の手順](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) | [構成の手順](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco | ASA | 8\.3 | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) | 互換性なし |
 | Cisco | ASR | IOS 15.1 (ポリシー ベース)、IOS 15.2 (ルート ベース) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco | ISR | IOS 15.0 (ポリシー ベース)、IOS 15.1 (ルート ベース) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco | ISR | IOS 15.0 (ポリシー ベース)、IOS 15.1 (ルート ベース) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) | [Cisco のサンプル*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix | CloudBridge MPX アプライアンス、または VPX 仮想アプライアンス | 該当なし | [統合の手順](https://www.citrix.com/welcome.html?resource=%2Fdownloads%2Fcloudbridge%2Fbetas-and-tech-previews%2Fcloudbridge-azure-integration) | 互換性なし |
 | Dell SonicWALL | TZ シリーズ、NSA シリーズ、SuperMassive シリーズ、E-class NSA シリーズ | SonicOS 5.8.x、[SonicOS 5.9.x](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=850)、[SonicOS 6.x](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=646) | [指示 - SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [指示 - SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) | [指示 - SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [指示 - SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | F5 | BIG-IP シリーズ | 該当なし | [構成の手順](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) | 互換性なし |
@@ -63,6 +63,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Palo Alto Networks | PAN-OS を実行しているすべてのデバイス | PAN-OS 6.1.5 以降 (ポリシー ベース)、PAN-OS 7.0.5 以降 (ルート ベース) | [構成の手順](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) | [構成の手順](https://live.paloaltonetworks.com/t5/Integration-Articles/Configuring-IKEv2-VPN-for-Microsoft-Azure-Environment/ta-p/60340) |
 | Watchguard | すべて | Fireware XTM v11.x | [構成の手順](http://customers.watchguard.com/articles/Article/Configure-a-VPN-connection-to-a-Windows-Azure-virtual-network/) | 互換性なし |
 
+(*) ISR 7200 シリーズのルーターは、ポリシー ベースの VPN だけをサポートしています。
 
 ## 未検証の VPN デバイス
 
@@ -76,7 +77,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 **サンプルを編集するには:**
 
 1. メモ帳を使用してサンプルを開きます。 
-1. お使いの環境に関連する値を含む <*テキスト*> 文字列をすべて検索して置き換えます。< and > を必ず含めてください。名前を指定する場合、選択する名前は一意である必要があります。コマンドが機能しない場合は、デバイスの製造元のドキュメントを参照してください。
+1. お使いの環境に関連する値を含む <*テキスト*> 文字列をすべて検索して置き換えます。< と > を必ず含めてください。名前を指定する場合、選択する名前は一意である必要があります。コマンドが機能しない場合は、デバイスの製造元のドキュメントを参照してください。
 
 | **サンプル テキスト** | **次に変更** |
 |----------------------------------|----------------------------------------------------------------------------------------------------------------------|
@@ -152,4 +153,4 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 - インターネット経由のクロスプレミス接続では、重要な通信のセキュリティを確保するため、上記の表にある暗号化およびハッシュ アルゴリズムによる既定の Azure VPN Gateway 設定を使用してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

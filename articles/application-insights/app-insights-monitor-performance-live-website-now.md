@@ -143,24 +143,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ### 接続エラー
 
-Status Monitor が動作するように、サーバーのファイアウォールでいくつかの送信ポートを開く必要があります。
-
-+ テレメトリ - 次のものは常に必要です。
- +	`dc.services.visualstudio.com:80`
- +	`dc.services.visualstudio.com:443`
- +	`dc.applicationinsights.microsoft.com`
-+ 構成 - 変更を加える場合にのみ必要です。
- -	`management.core.windows.net:443`
- -	`management.azure.com:443`
- -	`login.windows.net:443`
- -	`login.microsoftonline.com:443`
- -	`secure.aadcdn.microsoftonline-p.com:443`
- -	`auth.gfx.ms:443`
- -	`login.live.com:443`
-+ インストール
- +	`packages.nuget.org:443`
-
-この一覧は時々変更される場合があります。
+Status Monitor が動作するように、サーバーのファイアウォールで[いくつかの送信ポート](app-insights-ip-addresses.md#outgoing-ports)を開く必要があります。
 
 ### テレメトリが見つかりませんか?
 
@@ -244,7 +227,7 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`
 
 * `-Name`: IIS に存在する Web アプリの名前。
-* `-InstrumentationKey` (省略可能) アプリのテレメトリの送信先となるリソースを変更する場合に使用します。
+* `-InstrumentationKey` (省略可能)。 アプリのテレメトリの送信先となるリソースを変更する場合に使用します。
 * このコマンドレットの機能を次に示します。
  * 最近このマシンにダウンロードされた SDK バージョンに、指定されたアプリをアップグレードします (`SdkState==EnabledAfterDeployment` の場合にのみ機能します)。
  * インストルメンテーション キーが指定された場合、そのキーを持ったリソースにテレメトリを送信するよう、指定されたアプリを再構成します (`SdkState != Disabled` の場合に機能します)。
@@ -301,4 +284,4 @@ Web アプリが Azure に存在するとき、Azure Resource Manager テンプ�
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

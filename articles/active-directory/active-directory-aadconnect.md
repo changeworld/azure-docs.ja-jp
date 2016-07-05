@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/19/2016"
+	ms.date="06/27/2016"
 	ms.author="andkjell;billmath"/>
 
 # オンプレミス ID と Azure Active Directory の統合
@@ -161,4 +161,4 @@ Azure AD Connect Health を使用した監視 | [Azure AD Connect Health](active
 
 >[AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!-----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

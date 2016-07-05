@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/09/2016"
+	ms.date="06/23/2016"
 	ms.author="robinsh"/>
 
 
@@ -51,7 +51,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になります。http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
 
-また、カスタム ドメイン名もストレージ アカウントを使用するように構成することができます。従来のストレージ アカウントの詳細については、「[Blob Storage エンドポイントのカスタム ドメイン名の構成](storage-custom-domain-name.md)」を参照してください。ARM ストレージ アカウントの場合、この機能は [Azure ポータル](https://portal.azure.com)でサポートされていませんが、PowerShell で構成することができます。詳細については、「[Set-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607146.aspx)」を参照してください。
+また、カスタム ドメイン名もストレージ アカウントを使用するように構成することができます。従来のストレージ アカウントの詳細については、「[Blob Storage エンドポイントのカスタム ドメイン名の構成](storage-custom-domain-name.md)」を参照してください。Resource Manager ストレージ アカウントの場合、この機能は [Azure ポータル](https://portal.azure.com)でサポートされていませんが、PowerShell で構成することができます。詳細については、「[Set-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607146.aspx)」を参照してください。
 
 ## ストレージ アカウントの作成
 
@@ -79,7 +79,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 7. 新しいストレージ アカウントを作成するサブスクリプションを選択します。
 
-8. 新しいリソース グループを指定するか、既定のリソース グループを選択します。リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](../azure-portal/resource-group-portal.md)」を参照してください。
+8. 新しいリソース グループを指定するか、既定のリソース グループを選択します。リソース グループの詳細については、[Azure ポータルを使用した Azure リソースの管理](../azure-portal/resource-group-portal.md)に関するページを参照してください。
 
 9. ストレージ アカウントの地理的な場所を選択します。どのリージョンでどのサービスを使用できるかについては、「[Azure のリージョン](https://azure.microsoft.com/regions/#services)」を参照してください。
 
@@ -139,9 +139,9 @@ Azure 仮想マシンに関連付けられているストレージ アカウン�
 
     Failed to delete storage account <vm-storage-account-name>. Unable to delete storage account <vm-storage-account-name>: 'Storage account <vm-storage-account-name> has some active image(s) and/or disk(s). Ensure these image(s) and/or disk(s) are removed before deleting this storage account.'.
 
-ストレージ アカウントでクラシック デプロイ モデルが使用されている場合は、[Azure ポータル](https://manage.windowsazure.com)で以下の手順を実行して仮想マシン ディスクを削除することができます。
+ストレージ アカウントでクラシック デプロイ モデルが使用されている場合は、[Azure ポータル](https://manage.windowsazure.com)で以下の手順を実行して、仮想マシン ディスクを削除することができます。
 
-1. [クラシック ポータル](https://manage.windowsazure.com)に移動します。
+1. [クラシック Azure ポータル](https://manage.windowsazure.com)に移動します。
 2. [Virtual Machines] タブに移動します。
 3. [ディスク] タブをクリックします。
 4. データ ディスクを選択し、[ディスクの削除] をクリックします。
@@ -157,4 +157,4 @@ Azure 仮想マシンに関連付けられているストレージ アカウン�
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

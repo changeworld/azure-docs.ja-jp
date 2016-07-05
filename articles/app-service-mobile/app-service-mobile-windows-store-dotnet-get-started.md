@@ -82,7 +82,7 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 
 * [アプリにプッシュ通知を追加する](app-service-mobile-windows-store-dotnet-get-started-push.md) アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使用してプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
 
-* [Windows アプリのオフライン同期を有効にする](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) Mobile App バックエンドを使用して、オフライン サポートをアプリに追加する方法について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリとやり取りできます。
+* [アプリのオフライン同期を有効にする](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) Mobile App バックエンドを使用して、オフライン サポートをアプリに追加する方法について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリとやり取りできます。
 
 <!-- Anchors. -->
 <!-- Images. -->
@@ -91,4 +91,4 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2015]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!-----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

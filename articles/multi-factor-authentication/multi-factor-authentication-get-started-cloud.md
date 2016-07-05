@@ -30,7 +30,7 @@
 
 
 - [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/pricing/free-trial/) - Azure サブスクリプションをまだ取得していない場合は、サインアップが必要です。Azure MFA を開始して使ってみるだけの場合、評価版のサブスクリプションを使用できます。
-2. [Multi-Factor Auth プロバイダーを作成](multi-factor-authentication-get-started-auth-provider.md)して自分のディレクトリに割り当てるか、[ライセンスをユーザーに割り当てる](multi-factor-authentication-get-started-assign-licenses.md) 
+2. [Multi-Factor Auth プロバイダーを作成](multi-factor-authentication-get-started-auth-provider.md)して自分のディレクトリに割り当てるか、[ライセンスをユーザーに割り当てる](multi-factor-authentication-get-started-assign-licenses.md)
 
 > [AZURE.NOTE]  ライセンスの使用は、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite (EMS) を所有するユーザーが対象となります。MFA は Azure AD Premium と EMS に含まれています。ライセンスが足りている場合は、認証プロバイダーの作成は不要です。
 		
@@ -57,12 +57,12 @@
 
 ## PowerShell を使用して多要素認証の有効化を自動化する
 
-[Azure AD PowerShell](powershell-install-configuremd) を使用して[状態](multi-factor-authentication-whats-next.md)を変更するには、次のようにします。`$st.State` は、次のいずれかの状態と一致するように変更できます。
+[Azure AD PowerShell](../powershell-install-configure.md) を使用して[状態](multi-factor-authentication-whats-next.md)を変更するには、次のようにします。`$st.State` は、次のいずれかの状態と一致するように変更できます。
 
 
 - 有効
 - 適用
-- 無効  
+- 無効
 
 > [AZURE.IMPORTANT]  Disabled の状態から Enforced の状態に直接変更した場合は、ユーザーによる MFA 登録と[アプリ パスワード](multi-factor-authentication-whats-next.md#app-passwords)の取得が行われていないため、最新ではない認証クライアントは処理を停止するという点に注意してください。お使いの認証クライアントが最新ではなく、アプリ パスワードを必要とする場合は、Disabled から Enabled に状態を変更することをお勧めします。これにより、ユーザーはアプリ パスワードの登録と取得を行うことができます。
 		
@@ -90,4 +90,4 @@
 ## 次のステップ
 クラウド側の多要素認証を設定したら、デプロイ側の構成とセットアップを行います。「Azure Multi-Factor Authentication の構成」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

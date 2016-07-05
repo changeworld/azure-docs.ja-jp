@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
- 	ms.date="05/03/2016" 
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -48,13 +48,13 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 以下では、Media Services ライセンス配信サービスと動的暗号化を使用して、PlayReady で資産を保護するときに実行する必要のある一般的な手順について説明します。
 
-1. 資産を作成し、その資産にファイルをアップロードします。 
+1. 資産を作成し、その資産にファイルをアップロードします。
 1. ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードします。
-1. コンテンツ キーを作成し、それをエンコードした資産に関連付けます。Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。 
+1. コンテンツ キーを作成し、それをエンコードした資産に関連付けます。Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。
 1. コンテンツ キーの承認ポリシーを構成します。コンテンツ キー承認ポリシーを構成する必要があります。コンテンツ キーがクライアントに配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。
 
-	コンテンツ キー承認ポリシーを作成するときは、配信方法 (PlayReady または Widevine)、制限 (オープンまたはトークン)、クライアントへのキー配信方法を定義するキー配信種類に固有の情報 ([PlayReady](media-services-playready-license-template-overview.md) または [Widevine](media-services-widevine-license-template-overview.md) ライセンス テンプレート) を指定する必要があります。 
-1. 資産の配信ポリシーを構成します。配信ポリシーの構成には、配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはそのすべて)、動的暗号化の種類 (たとえば、共通暗号化)、PlayReady または Widevine のライセンス取得 URL が含まれます。 
+	コンテンツ キー承認ポリシーを作成するときは、配信方法 (PlayReady または Widevine)、制限 (オープンまたはトークン)、クライアントへのキー配信方法を定義するキー配信種類に固有の情報 ([PlayReady](media-services-playready-license-template-overview.md) または [Widevine](media-services-widevine-license-template-overview.md) ライセンス テンプレート) を指定する必要があります。
+1. 資産の配信ポリシーを構成します。配信ポリシーの構成には、配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはそのすべて)、動的暗号化の種類 (たとえば、共通暗号化)、PlayReady または Widevine のライセンス取得 URL が含まれます。
  
 	同じ資産の各プロトコルに異なるポリシーを適用できます。たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES Envelope を HLS に適用できます。配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。ただし、資産配信ポリシーをまったく定義していない場合は例外となります。この場合、すべてのプロトコルが平文で許可されます。
 1. ストリーミング URL を取得するために OnDemand ロケーターを作成します。
@@ -103,9 +103,9 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 資産の配信ポリシーを構成します。資産の配信ポリシーの構成には、次の内容が含まれます。
 
-- DRM ライセンス取得 URL 
-- 資産配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはすべて)。 
-- 動的暗号化のタイプ (この場合は、共通暗号化) 
+- DRM ライセンス取得 URL
+- 資産配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはすべて)。
+- 動的暗号化のタイプ (この場合は、共通暗号化)
 
 詳細については、[資産の配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)に関するページを参照してください。
 
@@ -626,4 +626,4 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 [Azure Media Services での Google Widevine ライセンス配信サービスのお知らせ](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
 
-<!-----HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->
