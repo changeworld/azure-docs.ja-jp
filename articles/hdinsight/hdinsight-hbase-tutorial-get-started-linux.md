@@ -41,9 +41,9 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 以下の手順では、Azure ARM テンプレートを使用して HBase クラスターを作成します。この手順で使用するパラメーターとその他のクラスター作成方法について理解するには、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
-1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。ARM テンプレートはパブリック BLOB コンテナー内にあります。
+1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。ARM テンプレートはパブリック BLOB コンテナー内にあります。 
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. **[パラメーター]** ブレードで、次の各項目を入力します。
 
@@ -181,12 +181,12 @@ Hive を使用して HBase テーブルのデータを照会できます。こ�
 
 	次のような応答を受け取ります。
 
-		{"status":"ok","version":"v1"}
+    {"status":"ok","version":"v1"}
 
-	このコマンドで使用されるパラメーターの意味は次のとおりです。
+  このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-	* **-u**: 要求の認証に使用するユーザー名とパスワード
-	* **-G**: GET 要求であることを示します。
+    * **-u**: 要求の認証に使用するユーザー名とパスワード
+    * **-G**: GET 要求であることを示します。
 
 2. 次のコマンドを使用して、既存の HBase テーブルを一覧表示します。
 
@@ -238,7 +238,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 
 **SSH トンネリング セッションを確立するには**
 
-1. **PuTTY** を開きます。
+1. **PuTTY** を開きます。  
 2. 作成プロセスでユーザー アカウントの作成時に SSH キーを指定した場合は、次の手順に従って、クラスターへの認証時に使用する秘密キーを選択する必要があります。
 
 	**[カテゴリ]** で **[接続]**、**[SSH]** の順に展開し、**[認証]** を選択します。最後に、**[参照]** をクリックし、プライベート キーが含まれた .ppk ファイルを選択します。
@@ -247,7 +247,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 4. PuTTY セッション画面の基本オプションで、次の値を入力します。
 
 	- **ホスト名**: [ホスト名 (または IP アドレス)] フィールドの HDInsight サーバーの SSH アドレス。SSH アドレスは、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (*mycluster-ssh.azurehdinsight.net* など)。
-	- **ポート**: 22。ヘッド ノード 0 の SSH ポートは 22 です。
+	- **ポート**: 22。ヘッド ノード 0 の SSH ポートは 22 です。  
 5. ダイアログの左にある **[カテゴリ]** セクションで、**[接続]**、**[SSH]** の順に展開し、**[トンネル]** をクリックします。
 6. [SSH ポートの転送を管理するオプション] フォームに次の情報を入力します。
 
