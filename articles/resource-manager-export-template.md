@@ -13,12 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/10/2016"
+	ms.date="06/28/2016"
 	ms.author="tomfitz"/>
 
 # 既存のリソースから Azure Resource Manager テンプレートをエクスポートする
 
-Azure Resource Manager テンプレートの作成方法を覚えるのは簡単ではありません。しかしその作業には、Resource Manager を有効活用できます。サブスクリプションの既存のリソースからテンプレートをエクスポートすることが可能です。この生成されたテンプレートを使用すると、テンプレートの構文を学習したり、必要に応じてソリューションの再デプロイを自動化したりすることができます。
+Resource Manager を使用すると、サブスクリプション内の既存のリソースから Resource Manager テンプレートをエクスポートできます。この生成されたテンプレートを使用すると、テンプレートの構文を学習したり、必要に応じてソリューションの再デプロイを自動化したりすることができます。
+
+テンプレートのエクスポートには 2 つの異なる方法があることに注意する必要があります。
+
+- デプロイに使用した実際のテンプレートをエクスポートできます。エクスポートしたテンプレートには、元のテンプレートで定義されたのと同じパラメーターと変数がすべて含まれます。この方法は、ポータル経由でリソースをデプロイしてあり、これらのリソースを作成するためのテンプレートを構築する方法を確認したいと考えている場合に、特に役立ちます。
+- リソース グループの現在の状態を表すテンプレートをエクスポートできます。エクスポートしたテンプレートは、デプロイに使用したテンプレートに基づいていません。代わりに、リソース グループのスナップショットであるテンプレートが作成されます。エクスポートしたテンプレートにはハードコーディングされた多くの値が含まれ、おそらく、通常定義するのと同程度のパラメーターは含まれません。この方法は、ポータルまたはスクリプトでリソース グループを修正してあり、そのリソース グループをテンプレートとしてキャプチャする必要が生じた場合に役に立ちます。
+
+このトピックでは、両方の方法を紹介します。記事「[エクスポートした Azure Resource Manager テンプレートのカスタマイズ](resource-manager-customize-template.md)」では、リソース グループの現在の状態から生成されたテンプレートを取得し、ソリューションの再デプロイに活用する方法について確認できます。
 
 このチュートリアルではまず、Azure ポータルにサインインし、ストレージ アカウントを作成して、そのストレージ アカウントのテンプレートをエクスポートします。次に、仮想ネットワークを追加してリソース グループに変更を加えます。最後に、その最新の状態を表す新しいテンプレートをエクスポートしたいと思います。この記事では、単純なインフラストラクチャを扱っていますが、より複雑なソリューションのテンプレートのエクスポートにも、同様の手順を使用できます。
 
@@ -34,7 +41,7 @@ Azure Resource Manager テンプレートの作成方法を覚えるのは簡単
 
 デプロイが完了すると、サブスクリプションにストレージ アカウントが含まれた状態になります。
 
-## デプロイ用のテンプレートのエクスポート
+## デプロイ履歴からのテンプレートのエクスポート
 
 1. 新しいリソース グループのリソース グループ ブレードに移動します。一覧に直前のデプロイの結果が表示されています。そのリンクを選択します。
 
@@ -50,15 +57,11 @@ Azure Resource Manager テンプレートの作成方法を覚えるのは簡単
 
 4. Resource Manager によって、次の 5 つのファイルが取得されます。
 
-   - ソリューションのインフラストラクチャを定義するテンプレート。ポータルでストレージ アカウントを作成したときに、Resource Manager はテンプレートを使用してそれをデプロイし、今後参照できるようにテンプレートを保存しました。
-
-   - デプロイ中に値を渡すために使用できるパラメーター ファイル。最初のデプロイ中に指定した値が含まれていますが、テンプレートを再デプロイするときに任意の値を変更することができます。
-
-   - テンプレートをデプロイするために使用することができる Azure PowerShell スクリプト ファイル。
-
-   - テンプレートをデプロイするために使用することができる Azure CLI (コマンド ライン インターフェイス) スクリプト ファイル。
-
-   - テンプレートをデプロイするために使用することができる .NET クラス。
+   1. **Template** - ソリューションのインフラストラクチャを定義するテンプレート。ポータルでストレージ アカウントを作成したときに、Resource Manager はテンプレートを使用してそれをデプロイし、今後参照できるようにテンプレートを保存しました。
+   2. **Parameters** - デプロイ中に値を渡すために使用できるパラメーター ファイル。最初のデプロイ中に指定した値が含まれていますが、テンプレートを再デプロイするときに任意の値を変更することができます。
+   3. **CLI** - テンプレートをデプロイするために使用できる Azure CLI (コマンド ライン インターフェイス) スクリプト ファイル。
+   4. **PowerShell** - テンプレートをデプロイするために使用できる Azure PowerShell スクリプト ファイル。
+   5. **.NET** - テンプレートをデプロイするために使用できる .NET クラス。
 
      ファイルは、ブレードのリンクを通じて使用できます。既定では、テンプレートが選択されています。
 
@@ -107,24 +110,27 @@ Azure Resource Manager テンプレートの作成方法を覚えるのは簡単
             }
           ]
         }
+ 
+これは、ストレージ アカウントの作成に使用した実際のテンプレートです。さまざまな種類のストレージ アカウントをデプロイできるパラメーターが含まれていることに注目してください。テンプレートの構造の詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。テンプレートで使用できる関数の完全な一覧については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」を参照してください。
 
-     ストレージ アカウントの名前、種類、場所のパラメーターが定義されていることに注目してください。さらに、暗号化を有効にするかどうかが指定され、既定値は **false** に指定されています。**resources** セクション内に、デプロイするストレージ アカウントの定義が表示されます。
-
-デプロイ時に評価される式が、角かっこで囲まれています。このテンプレートで示されている角かっこで囲まれている式は、デプロイ時にパラメーター値を取得するために使用されます。使用できる式は他にも多くあり、この記事の後の方にも、その他の式の例が出てきます。完全な一覧については、「[Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」を参照してください。
-
-テンプレートの構造の詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
 ## 仮想ネットワークの追加
 
 前のセクションでダウンロードしたテンプレートは、元のデプロイのインフラストラクチャを表していますが、デプロイ後の変更には対応できません。この問題をわかりやすく示すために、ポータルで仮想ネットワークを追加して、リソース グループを変更してみましょう。
 
-1. リソース グループ ブレードで **[追加]** を選択し、使用可能なリソースの中から **[仮想ネットワーク]** を選択します。
+1. リソース グループのブレードで、**[追加]** を選択します。
+
+      ![リソースの追加](./media/resource-manager-export-template/add-resource.png)
+
+2. 利用可能なリソースから、**[Virtual Network]** を選択します。
+
+      ![select virtual network](./media/resource-manager-export-template/select-vnet.png)
 
 2. 仮想ネットワークの名前を **VNET** にし、その他のプロパティには既定値を使用します。**[作成]** を選択します。
 
       ![set alert](./media/resource-manager-export-template/create-vnet.png)
 
-3. 仮想ネットワークがリソース グループに正常にデプロイされた後で、デプロイの履歴を見直してください。今度は 2 つのデプロイが表示されます。最新のデプロイを選択します。
+3. 仮想ネットワークがリソース グループに正常にデプロイされた後で、デプロイの履歴を見直してください。今度は 2 つのデプロイが表示されます。2 つ目のデプロイが表示されない場合は、リソース グループのブレードを閉じてもう一度開く必要があります。最新のデプロイを選択します。
 
       ![deployment history](./media/resource-manager-export-template/deployment-history.png)
 
@@ -133,13 +139,17 @@ Azure Resource Manager テンプレートの作成方法を覚えるのは簡単
 一般的には、デプロイにいくつものテンプレートを使用するのではなく、ソリューションのすべてのインフラストラクチャを 1 回の操作でデプロイするテンプレートを使用することをお勧めします。
 
 
-## リソース グループのテンプレートのエクスポート
+## リソース グループからのテンプレートのエクスポート
 
 各デプロイには、リソース グループに対して行った変更のみが表示されますが、いつでもテンプレートをエクスポートしてリソース グループ全体の属性を表示できます。
 
 1. リソース グループのテンプレートを表示するには、**[テンプレートのエクスポート]** を選択します。
 
       ![リソース グループのエクスポート](./media/resource-manager-export-template/export-resource-group.png)
+
+     テンプレート関数のエクスポートは、すべてのリソースの種類でサポートされているわけではありません。この記事で紹介するストレージ アカウントと仮想ネットワークのみがリソース グループに含まれる場合、エラーは表示されません。しかし、他のリソースの種類を作成した場合、エクスポートに関する問題が存在することを示すエラーが表示される可能性があります。これらの問題に対処する方法については、「[エクスポートの問題の修正](#fixing-export-issues)」セクションで説明します。
+
+      
 
 2. ソリューションを再デプロイするために使用できる 5 個のファイルが再び表示されますが、今度のテンプレートは少し異なります。このテンプレートには、パラメーターが 2 つだけあります (ストレージ アカウント名用が 1 つと、仮想ネットワーク名用が 1 つ)。
 
@@ -154,7 +164,7 @@ Azure Resource Manager テンプレートの作成方法を覚えるのは簡単
           }
         },
 
-     Resource Manager は、デプロイ時に使用されたテンプレートを取得しませんでした。代わりに、リソースの現在の構成に基づいて、新しいテンプレートを生成しました。Resource Manager は、どの値がパラメーターとして渡されるかを判断できないため、リソース グループ内の値に基づいて、ほとんどの値をハードコーディングします。たとえば、ストレージ アカウントの場所とレプリケーションの値が、次のように設定されます。
+     Resource Manager は、デプロイ時に使用されたテンプレートを取得しませんでした。代わりに、リソースの現在の構成に基づいて、新しいテンプレートを生成しました。たとえば、ストレージ アカウントの場所とレプリケーションの値が、次のように設定されます。
 
         "location": "northeurope",
         "tags": {},
@@ -168,12 +178,168 @@ Azure Resource Manager テンプレートの作成方法を覚えるのは簡単
 
 4. ダウンロードした .zip ファイルを検索し、内容を展開します。このダウンロードしたテンプレートは、インフラストラクチャを再デプロイするために使用できます。
 
+## エクスポートの問題の修正
+
+テンプレート関数のエクスポートは、すべてのリソースの種類でサポートされているわけではありません。リソースの種類によっては、機密データの公開を防止するためにエクスポートされないものもあります。たとえば、サイトの構成内に接続文字列がある場合、エクスポートしたテンプレートにそれが表示されるのは望ましくありません。この問題は、欠けているリソースを対象のテンプレートに手動で追加することで回避できます。
+
+> [AZURE.NOTE] エクスポートの問題は、リソース グループからエクスポートする場合にのみ発生します。デプロイ履歴からのエクスポートでは発生しません。最後のデプロイがリソース グループの現在の状態を正確に表しているようであれば、リソース グループからではなく、デプロイ履歴からテンプレートをエクスポートすることをお勧めします。単一のテンプレートで定義されていない変更をリソース グループに加えた場合にのみ、リソース グループからエクスポートしてください。
+
+たとえば、Web アプリ、SQL Database、サイト構成内の接続文字列が含まれたリソース グループのテンプレートをエクスポートすると、次のようなメッセージが表示されます。
+
+![show error](./media/resource-manager-export-template/show-error.png)
+
+メッセージを選択すると、エクスポートされなかったリソースの種類が正確に表示されます。
+     
+![show error](./media/resource-manager-export-template/show-error-details.png)
+
+一般的な修正をいくつか以下に示します。これらのリソースを実装するには、パラメーターをテンプレートに追加する必要があります。詳細については、[エクスポートしたテンプレートのカスタマイズと再デプロイ](resource-manager-customize-template.md)に関するページを参照してください。
+
+### 接続文字列
+
+Web サイト リソースで、接続文字列の定義をデータベースに追加します。
+
+```
+{
+  "type": "Microsoft.Web/sites",
+  ...
+  "resources": [
+    {
+      "apiVersion": "2015-08-01",
+      "type": "config",
+      "name": "connectionstrings",
+      "dependsOn": [
+          "[concat('Microsoft.Web/Sites/', parameters('<site-name>'))]"
+      ],
+      "properties": {
+          "DefaultConnection": {
+            "value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', parameters('<database-server-name>'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('<database-name>'), ';User Id=', parameters('<admin-login>'), '@', parameters('<database-server-name>'), ';Password=', parameters('<admin-password>'), ';')]",
+              "type": "SQLServer"
+          }
+      }
+    }
+  ]
+}
+```    
+
+### Web サイト拡張機能
+
+Web サイト リソースで、インストールするコードの定義を追加します。
+
+```
+{
+  "type": "Microsoft.Web/sites",
+  ...
+  "resources": [
+    {
+      "name": "MSDeploy",
+      "type": "extensions",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2015-08-01",
+      "dependsOn": [
+        "[concat('Microsoft.Web/sites/', parameters('<site-name>'))]"
+      ],
+      "properties": {
+        "packageUri": "[concat(parameters('<artifacts-location>'), '/', parameters('<package-folder>'), '/', parameters('<package-file-name>'), parameters('<sas-token>'))]",
+        "dbType": "None",
+        "connectionString": "",
+        "setParameters": {
+          "IIS Web Application Name": "[parameters('<site-name>')]"
+        }
+      }
+    }
+  ]
+}
+```
+
+### 仮想マシン拡張機能
+
+仮想マシン拡張機能の例については、「[Azure Windows VM 拡張機能の構成サンプル](./virtual-machines/virtual-machines-windows-extensions-configuration-samples.md)」を参照してください。
+
+### 仮想ネットワーク ゲートウェイ
+
+仮想ネットワーク ゲートウェイのリソースの種類を追加します。
+
+```
+{
+  "type": "Microsoft.Network/virtualNetworkGateways",
+  "name": "[parameters('<gateway-name>')]",
+  "apiVersion": "2015-06-15",
+  "location": "[resourceGroup().location]",
+  "properties": {
+    "gatewayType": "[parameters('<gateway-type>')]",
+    "ipConfigurations": [
+      {
+        "name": "default",
+        "properties": {
+          "privateIPAllocationMethod": "Dynamic",
+          "subnet": {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('<vnet-name>'), parameters('<new-subnet-name>'))]"
+          },
+          "publicIpAddress": {
+            "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('<new-public-ip-address-Name>'))]"
+          }
+        }
+      }
+    ],
+    "enableBgp": false,
+    "vpnType": "[parameters('<vpn-type>')]"
+  },
+  "dependsOn": [
+    "Microsoft.Network/virtualNetworks/codegroup4/subnets/GatewaySubnet",
+    "[concat('Microsoft.Network/publicIPAddresses/', parameters('<new-public-ip-address-Name>'))]"
+  ]
+},
+```
+
+### ローカル ネットワーク ゲートウェイ
+
+ローカル ネットワーク ゲートウェイのリソースの種類を追加します。
+
+```
+{
+    "type": "Microsoft.Network/localNetworkGateways",
+    "name": "[parameters('<local-network-gateway-name>')]",
+    "apiVersion": "2015-06-15",
+    "location": "[resourceGroup().location]",
+    "properties": {
+      "localNetworkAddressSpace": {
+        "addressPrefixes": "[parameters('<address-prefixes>')]"
+      }
+    }
+}
+```
+
+### 接続
+
+接続のリソースの種類を追加します。
+
+```
+{
+    "apiVersion": "2015-06-15",
+    "name": "[parameters('<connection-name>')]",
+    "type": "Microsoft.Network/connections",
+    "location": "[resourceGroup().location]",
+    "properties": {
+        "virtualNetworkGateway1": {
+        "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('<gateway-name>'))]"
+      },
+      "localNetworkGateway2": {
+        "id": "[resourceId('Microsoft.Network/localNetworkGateways', parameters('<local-gateway-name>'))]"
+      },
+      "connectionType": "IPsec",
+      "routingWeight": 10,
+      "sharedKey": "[parameters('<shared-key>')]"
+    }
+},
+```
+
+
 ## 次のステップ
 
 ご利用ありがとうございます。 ポータルで作成したリソースからテンプレートをエクスポートする方法について説明しました。
 
 - このチュートリアルのパート 2 では、ダウンロードしたテンプレートにパラメーターを追加してカスタマイズし、スクリプトで再デプロイします。[エクスポートしたテンプレートのカスタマイズと再デプロイ](resource-manager-customize-template.md)に関するページを参照してください。
 - PowerShell を使用してテンプレートをエクスポートする方法を確認するには、「[Azure Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。
-- Azure CLI を使用してテンプレートをエクスポートする方法を確認するには、「[Azure Resource Manager での Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
+- Azure CLI を使用してテンプレートをエクスポートする方法を確認するには、「[Azure Resource Manager での、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure クラシック ポータルを使用したオンデマンド コンテンツ配信の概要 | Microsoft Azure"
+	pageTitle=" Azure クラシック ポータルを使用したオンデマンド コンテンツ配信の概要 | Microsoft Azure"
 	description="このチュートリアルでは、Azure Media Services と Azure クラシック ポータルを使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順を紹介します。"
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/25/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -34,7 +34,7 @@
 2.  ストリーミング エンドポイントを構成する
 1.  ビデオ ファイルをアップロードする
 1.  一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
-1.  資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する  
+1.  資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
 1.  コンテンツの再生
 
 
@@ -73,7 +73,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
-- メザニン (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードします (エンコードの手順は、このチュートリアルの後半で説明しています)。  
+- メザニン (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードします (エンコードの手順は、このチュートリアルの後半で説明しています)。
 - コンテンツ配信元となる*ストリーミング エンドポイント*のストリーミング ユニットを少なくとも 1 つ取得します。
 
 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
@@ -107,7 +107,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 	![UploadContentDialog][uploadcontent]
 
 5. **[コンテンツのアップロード]** ダイアログ ボックスで、チェック ボタンをクリックして、**ファイル**と**コンテンツ名**をそのまま使用します。
-6. アップロードが開始され、進捗状況はポータルの下部で確認できます。  
+6. アップロードが開始され、進捗状況はポータルの下部で確認できます。
 
 	![JobStatus][status]
 
@@ -253,4 +253,4 @@ Azure クラシック ポータルには、ビデオのテストに使用でき�
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-portal-get-started/media-services-portal-player.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

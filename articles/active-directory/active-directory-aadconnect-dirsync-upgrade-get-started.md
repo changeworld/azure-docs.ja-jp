@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="get-started-article"
-   ms.date="05/31/2016"
+   ms.date="06/27/2016"
    ms.author="andkjell;shoatman;billmath"/>
 
 # Azure AD Connect: DirSync からのアップグレード
@@ -79,7 +79,7 @@ DirSync がサービス アカウントで使用したパスワードは取得�
 1. Azure AD Connect インストーラー (MSI) を起動します。
 2. ライセンス条項とプライバシーに関する声明を確認し、同意します。![Azure AD へようこそ](./media/active-directory-aadconnect-dirsync-upgrade-get-started/Welcome.png)
 3. [次へ] をクリックして、既存の DirSync インストールを分析します。![既存のディレクトリ同期のインストールの分析](./media/active-directory-aadconnect-dirsync-upgrade-get-started/Analyze.png)
-4. 分析が完了すると、続行方法の推奨事項が提示されます。  
+4. 分析が完了すると、続行方法の推奨事項が提示されます。
     - SQL Server Express を使用しており、オブジェクトの数が 50,000 未満である場合は、次の画面が表示されます。 ![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReady.png)
     - DirSync に完全バージョンの SQL Server を使用する場合、代わりに次のページが表示されます。![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png) DirSync で使用されている既存の SQL Server データベースのサーバーに関する情報が表示されます。必要に応じて、適切に調整を行います。**[次へ]** をクリックしてインストールを続行します。
     - オブジェクトの数が 50,000 を超える場合は、代わりに次のページが表示されます。![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png) インプレース アップグレードを続行するには、**[このコンピューターの DirSync のアップグレードを続行します]** の横のチェック ボックスをオンにします。 代わりに[並列デプロイ](#parallel-deployment)を行うには、DirSync の構成設定をエクスポートして、新しいサーバーに移します。
@@ -160,8 +160,8 @@ Azure AD Connect が DirSync からの引き継ぎの準備を完了している
 
 ### DirSync (古いサーバー) をアンインストールする
 
-- **[プログラムと機能]** で **[Microsoft Azure Active Directory 同期ツール]** を見つけます。
-- **Microsoft Azure Active Directory 同期ツール**をアンインストールします。
+- **[プログラムと機能]** で **[Windows Azure Active Directory 同期ツール]** を見つけます。
+- **Windows Azure Active Directory 同期ツール**をアンインストールします。
 - アンインストールが完了するまで 15 分ほどかかる場合があります。
 
 DirSync がアンインストールされていると、アクティブなサーバーが Azure AD にエクスポートされません。オンプレミスの Active Directory のすべての変更が引き続き Azure AD に同期されるには、次の手順を完了する必要があります。
@@ -202,4 +202,4 @@ Azure AD Connect の概要 | [オンプレミス ID と Azure Active Directory �
 カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)
 インストールで使用するアカウント | [Azure AD Connect アカウントとアクセス許可の詳細](active-directory-aadconnect-accounts-permissions.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

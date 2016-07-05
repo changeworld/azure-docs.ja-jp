@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
- 	ms.date="06/05/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 
@@ -28,7 +28,7 @@ Azure ポータルの Azure Media Services は現在、プレビュー版です�
 
 チュートリアルを完了するには次のものが必要です。
 
-- Azure アカウント。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
+- Azure アカウント。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 - Media Services アカウント。Media Services アカウントを作成するには、「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。
 - Web カメラ。たとえば、 [Telestream Wirecast エンコーダー](http://www.telestream.net/wirecast/overview.htm)。
 
@@ -48,10 +48,10 @@ Azure ポータルの Azure Media Services は現在、プレビュー版です�
 	この手順は、チャネルを作成した後でも実行できます。
 
 1. パススルー チャネルを作成し、開始します。
-1. チャネルの取り込み URL を取得します。 
+1. チャネルの取り込み URL を取得します。
 
 	取り込み URL は、ライブ エンコーダーがチャネルにストリームを送信する際に使用されます。
-1. チャネルのプレビュー URL を取得します。 
+1. チャネルのプレビュー URL を取得します。
 
 	この URL を使用して、チャネルがライブ ストリームを正常に受信できることを確認します。
 
@@ -63,7 +63,7 @@ Azure ポータルの Azure Media Services は現在、プレビュー版です�
 1. ストリーミングとアーカイブを開始する準備ができたら、イベントまたはプログラムを開始します。
 2. 必要に応じて、ライブ エンコーダーは、広告の開始を信号通知できます。広告が出力ストリームに挿入されます。
 1. イベントのストリーミングとアーカイブを停止するには、任意のタイミングでイベントまたはプログラムを停止します。
-1. イベントまたはプログラムを削除し、必要に応じて資産も削除します。     
+1. イベントまたはプログラムを削除し、必要に応じて資産も削除します。
 
 >[AZURE.IMPORTANT] オンプレミスのエンコーダーとパススルー チャネルを使用したライブ ストリーミングに関する概念と考慮事項については、「[オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-live-streaming-with-onprem-encoders.md)」を参照してください。
 
@@ -81,7 +81,7 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 
 ストリーミング予約ユニットを作成したり、数を変更したりするには、以下の手順を実行します。
 
-1. **[設定]** ウィンドウで **[ストリーミング エンドポイント]** をクリックします。 
+1. **[設定]** ウィンドウで **[ストリーミング エンドポイント]** をクリックします。
 
 2. 既定のストリーミング エンドポイントをクリックします。
 
@@ -121,7 +121,7 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 
 パススルー チャネルの詳細については、「[オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-live-streaming-with-onprem-encoders.md)」を参照してください。
 
-1. **[設定]** ウィンドウで、**[Live streaming (ライブ ストリーミング)]**をクリックします。 
+1. **[設定]** ウィンドウで、**[Live streaming (ライブ ストリーミング)]**をクリックします。
 
 	![使用の開始](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
 	
@@ -130,7 +130,7 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 3. **[簡易作成]** をクリックして、RTMP 取り込みプロトコルを備えたパススルー チャネルを作成します。
 
 	**[CREATE A NEW CHANNEL (新しいチャネルの作成)]** ウィンドウが表示されます。
-4. 新しいチャネルに名前を付け、**[作成]** をクリックします。 
+4. 新しいチャネルに名前を付け、**[作成]** をクリックします。
 
 	これで、RTMP 取り込みプロトコルを備えたパススルー チャネルが作成されます。
 
@@ -175,4 +175,4 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -3,7 +3,7 @@
    description="Microsoft Power BI Embedded プレビュー - レポートをアプリに統合するための基本コード、Power BI Embedded アプリ トークンの認証方法、レポートの取得方法"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="dvana"
+   authors="minewiskan"
    manager="NA"
    editor=""
    tags=""/>
@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="05/16/2016"
-   ms.author="derrickv"/>
+   ms.date="06/28/2016"
+   ms.author="owend"/>
 
 # IFrame を使用した Power BI レポートの埋め込み
 この記事では、**Power BI Embedded** REST API、アプリ トークン、IFrame、およびいくつかの JavaScript を使用して、アプリへのレポートの統合または埋め込みを行うための基本コードについて説明します。
@@ -228,4 +228,4 @@ $filter=Store/Chain%20eq%20'Lindseys'
 - [System.IdentityModel.Tokens.JwtSecurityTokenHandler](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
 - [Get Reports](https://msdn.microsoft.com/library/mt711510.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

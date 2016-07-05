@@ -33,7 +33,7 @@
 - **テンプレート**は、Resource Manager テンプレートと追加のメタデータを保持する、カプセル化したリソースです。その動作は、Marketplace のアイテムとよく似ています。主な違いは、これがパブリックの Marketplace アイテムではなく、プライベートなアイテムであるという点です。
 - **テンプレート** ライブラリは、デプロイをカスタマイズする必要があるユーザーに役立ちます。
 - **テンプレート**は、Azure 内に単純なリポジトリを必要とするユーザーに役立ちます。
-- まずは、既存の Resource Manager テンプレートから使用します。テンプレートは、[GitHub](https://github.com/Azure/azure-quickstart-templates) で探すか、既存のリソース グループから[エクスポート](https://azure.microsoft.com/blog/export-template/)してください。
+- まずは、既存の Resource Manager テンプレートから使用します。テンプレートは、[GitHub](https://github.com/Azure/azure-quickstart-templates) で探すか、既存のリソース グループから[エクスポート](../resource-manager-export-template.md)してください。
 - **テンプレート**は、そのテンプレートを発行したユーザーに関連付けられます。発行者の名前は、そのテンプレートへの読み取りアクセス権を持つすべてのユーザーに表示されます。
 - **テンプレート**は Resource Manager のリソースであるため、発行後に名前を変更することはできません。
 
@@ -44,7 +44,7 @@ Azure ポータルで**テンプレート** リソースを作成する方法は
 ### 方法 1: 実行中のリソース グループから新しいテンプレート リソースを作成する
 
 1. Azure ポータルで既存のリソース グループに移動します。**[設定]** で **[テンプレートのエクスポート]** を選択します。
-2. Resource Manager テンプレートをエクスポートしたら、**[Save Template]** (テンプレートの保存) ボタンをクリックして、そのテンプレートを **[テンプレート]** リポジトリに保存します。[テンプレートのエクスポート] の詳細については、[こちら](https://azure.microsoft.com/blog/export-template/)を参照してください。<br /><br /> ![Resource group export](media/rg-export-portal1.PNG) <br />
+2. Resource Manager テンプレートをエクスポートしたら、**[Save Template]** (テンプレートの保存) ボタンをクリックして、そのテンプレートを **[テンプレート]** リポジトリに保存します。[テンプレートのエクスポート] の詳細については、[こちら](../resource-manager-export-template.md)を参照してください。<br /><br /> ![Resource group export](media/rg-export-portal1.PNG) <br />
 
 3. **[Save to Template]** (テンプレートに保存) ボタンをクリックします。<br /><br />
 
@@ -131,4 +131,4 @@ Azure ポータルで**テンプレート** リソースを作成する方法は
 - Resource Manager テンプレートで使用できる関数を理解するには、[テンプレートの関数](../resource-group-template-functions.md)に関するページを参照してください。
 - テンプレートのデザインのガイダンスについては、[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](../best-practices-resource-manager-design-templates.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

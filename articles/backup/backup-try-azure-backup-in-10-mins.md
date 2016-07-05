@@ -14,10 +14,10 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="hero-article"
-   ms.date="05/10/2016"
+   ms.date="06/27/2016"
    ms.author="jimpark;"/>
 
-# 最初に: Resource Manager デプロイメント モデルを使用して Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする
+# 最初に: Resource Manager デプロイメント モデルを使用して Azure Backup でファイルやフォルダーをバックアップする
 
 この記事では、Resource Manager を使用して、Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする方法について説明します。基本事項に関するチュートリアルです。この記事は、Azure Backup を始めて使用する場合に適しています。
 
@@ -203,4 +203,4 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 - ファイルとフォルダーをバックアップしたので、[コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
 - バックアップを復元する必要がある場合は、[Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->
