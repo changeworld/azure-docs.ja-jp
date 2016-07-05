@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/10/2016"
+	ms.date="06/16/2016"
 	ms.author="cynthn"/>
 
 # Azure 仮想マシン用のディスクと VHD について
@@ -31,4 +31,4 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 -  冗長性を持たせるための[ソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)。
 -  追加の VM を短時間でデプロイできるようにするための [Linux 仮想マシンのキャプチャ](virtual-machines-linux-classic-capture-image.md)。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

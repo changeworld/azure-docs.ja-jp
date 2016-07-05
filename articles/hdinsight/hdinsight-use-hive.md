@@ -15,7 +15,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="05/03/2016"
+	ms.date="06/16/2016"
 	ms.author="larryfr"/>
 
 # HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する
@@ -76,6 +76,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 
 次の HiveQL ステートメントは、**wasb:///example/data** ディレクトリに格納されている区切りデータに列を投影します。
 
+    set hive.execution.engine=tez;
 	DROP TABLE log4jLogs;
     CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
@@ -83,6 +84,10 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
     SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
 前の例では、HiveQL ステートメントは次のアクションを実行します。
+
+* __set hive.execution.engine=tez;__: Tez を使用するように実行エンジンを設定します。MapReduce ではなく Tez を使用すると、クエリ パフォーマンスを向上させることができます。Tez の詳細については、「[パフォーマンスを改善するための Apache Tez の使用方法](#usetez)」をご覧ください。
+
+    > [AZURE.NOTE] このステートメントは、Windows ベースの HDInsight クラスターの使用時にのみ必要となります。Tez は、Linux ベースの HDInsight の既定の実行エンジンです。
 
 * **DROP TABLE**: テーブルが既存の場合にテーブルとデータ ファイルを削除します。
 * **CREATE EXTERNAL TABLE**: Hive に新しい**外部**テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは元の場所に元の形式で残します。
@@ -97,10 +102,11 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 
 外部テーブルを作成したら、次のステートメントを使用して、**内部**テーブルを作成します。
 
+    set hive.execution.engine=tez;
 	CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
 	STORED AS ORC;
 	INSERT OVERWRITE TABLE errorLogs
-	SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
+	SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
 
 これらのステートメントは次のアクションを実行します。
 
@@ -206,4 +212,4 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="03/25/2016" 
+ms.date="06/22/2016" 
 ms.author="adegeo"/>
 
 # Azure におけるロール インスタンスの通信の有効化
@@ -359,4 +359,4 @@ namespace WorkerRole1
 ## 次のステップ
 Cloud Service [モデル](cloud-services-model-and-package.md)の詳細について参照できます。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0622_2016-->

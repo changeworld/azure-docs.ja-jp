@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="04/04/2016"
+	ms.date="06/21/2016"
 	ms.author="carlrab" />
 
 # Azure SQL Database ベンチマークの概要
@@ -130,4 +130,4 @@ Azure SQL Database ベンチマークは、利用可能なサービス階層と�
 
 [Azure SQL Database performance guidance for single databases (データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス)](sql-database-performance-guidance.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

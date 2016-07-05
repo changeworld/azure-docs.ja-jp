@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="StevenPo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,16 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="06/22/2016"
 	ms.author="kgremban"/>
 
 
 # コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する
 
-> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
-
 コネクタ グループは、以下をはじめとする、さまざまなシナリオで役立ちます。
-
 
 - 複数のデータセンターが相互接続されたサイト。この場合、データセンター間リンクは一般的にコストがかかり低速であるため、できるだけ多くのトラフィックをデータセンター内に留める必要があります。各データセンターにコネクタをデプロイし、データセンター内にあるアプリケーションのみにサービスを提供できます。この方法で、データセンター間のリンクを最小限に抑えて、ユーザーに完全に透過的なエクスペリエンスを提供できます。
 - メインの企業ネットワークに属していない分離されたネットワークにインストールされているアプリケーションの管理。コネクタ グループを使用して、分離されたネットワークに専用のコネクタをインストールし、そのネットワークに対してアプリケーションの分離も実現できます。
@@ -61,6 +58,6 @@
 - [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
 - [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
 
-最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
+最新のニュースと更新情報については、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

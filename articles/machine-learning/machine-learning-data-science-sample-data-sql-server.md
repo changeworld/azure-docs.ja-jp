@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="fashah;garye;bradsev" />
 
 #<a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
@@ -25,13 +25,13 @@ Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/)
 
 >[AZURE.NOTE] このドキュメントにあるサンプルの SQL コードは、データが Azure の SQL Server に存在することを前提としています。SQL Server にデータが存在しない場合、データを Azure の SQL Server に移動する方法については、「[Azure 仮想マシン上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」をご覧ください。
 
-**データをサンプリングする理由** 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
+**データをサンプリングする理由** 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Team Data Science Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
 
 次の**メニュー**は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。
 
 [AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
-このサンプリング タスクは、[Cortana Analytics Process (CAP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
+このサンプリング タスクは、[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
 
 ##<a name="SQL"></a>SQL の使用
 
@@ -115,13 +115,13 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
  
 ![リーダー BLOB][2]
 
-## Cortana Analytics Process の活用例
+## Team Data Science Process の活用例
 
-パブリック データセットを使用した Cortana Analytics Process のエンドツーエンドのチュートリアル例については、「[Cortana Analytics Process の活用: SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
+パブリック データセットを使用した Team Data Science Process のエンド ツー エンドのチュートリアル例については、「[Team Data Science Process の活用: SQL Server の使用](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
 
 [1]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_blob.png
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

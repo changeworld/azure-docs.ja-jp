@@ -958,7 +958,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 
 	通知を実装する場合は、次のオプションがあります。
 
-	- Azure Notification Hubs を使用して、非同期応答をクライアント アプリケーションにプッシュする。詳細については、Microsoft Web サイトの「[Azure Notification Hubs によるユーザーへの通知](notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-notify-users.md)」をご覧ください。
+	- Azure Notification Hubs を使用して、非同期応答をクライアント アプリケーションにプッシュする。詳細については、Microsoft Web サイトの「[Azure Notification Hubs によるユーザーへの通知](notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)」をご覧ください。
 
 	- Comet モデルを使用して、クライアントと Web API をホストするサーバー間の永続的なネットワーク接続を保持し、この接続を使用してサーバーからのメッセージをクライアントにプッシュする。ソリューションの例については、MSDN マガジンの記事「[Microsoft .NET Framework でシンプルな Comet アプリケーションをビルドする](https://msdn.microsoft.com/magazine/jj891053.aspx)」をご覧ください。
 
@@ -1143,7 +1143,7 @@ API Management サービスを使用して Web API を公開した場合、Micro
 - ASP.NET Web API での HTTP 例外の処理の詳細については、Microsoft Web サイトの「[Exception Handling in ASP.NET Web API (ASP.NET Web API での例外処理)](http://www.asp.net/web-api/overview/error-handling/exception-handling)」をご覧ください。
 - Web API でグローバルなエラー処理とログを実装する方法については、Microsoft Web サイトの [Web API でのグローバルなエラー処理](http://www.asp.net/web-api/overview/error-handling/web-api-global-error-handling)に関する記事をご覧ください。
 - Microsoft Azure Websites で WebJobs を使用してバックグラウンド操作を実行する方法と例については、Microsoft Web サイトの「[Web ジョブでバックグラウンド タスクを実行する](../articles/app-service-web/web-sites-create-web-jobs.md)」をご覧ください。
-- Azure Notification Hubs を使用して非同期応答をクライアント アプリケーションにプッシュする方法については、Microsoft Web サイトの「[Azure Notification Hubs によるユーザーへの通知](notification-hubs-aspnet-backend-windows-dotnet-notify-users.md)」をご覧ください。
+- Azure Notification Hubs を使用して非同期応答をクライアント アプリケーションにプッシュする方法については、Microsoft Web サイトの「[Azure Notification Hubs によるユーザーへの通知](notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)」をご覧ください。
 - Web API への制御された安全なアクセスを提供する成果物を発行する方法については、Microsoft Web サイトの「[API Management](https://azure.microsoft.com/services/api-management/)」をご覧ください。
 - API Management REST API を使用して、カスタム管理アプリケーションを構築する方法については、Microsoft Web サイトの「[Azure API Management REST API リファレンス](https://msdn.microsoft.com/library/azure/dn776326.aspx)」をご覧ください。
 - Azure Traffic Manager を使用して、Web API をホストする Web サイトの複数のインスタンスに要求の負荷を分散する方法の概要については、Microsoft Web サイトの「[Traffic Manager のルーティング方法](../articles/traffic-manager/traffic-manager-routing-methods.md)」をご覧ください。
@@ -1151,4 +1151,4 @@ API Management サービスを使用して Web API を公開した場合、Micro
 - Visual Studio を使用した単体テストの作成と管理の詳細については、Microsoft Web サイトの「[単体テストを使用したコードの検証](https://msdn.microsoft.com/library/dd264975.aspx)」をご覧ください。
 - Visual Studio Ultimate を使用して、Web パフォーマンスおよびロード テスト プロジェクトを作成する方法については、Microsoft Web サイトの[リリース前のアプリケーションでのパフォーマンス テストの実行](https://msdn.microsoft.com/library/dn250793.aspx)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

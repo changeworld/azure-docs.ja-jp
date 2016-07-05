@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="fashah;bradsev" />
 
 
@@ -21,7 +21,7 @@
 
 このトピックでは、Azure Data Factory (ADF) を使用して、オンプレミスの SQL Server データベースから Azure BLOB ストレージを経由して SQL Azure データベースにデータを移動する方法を説明します。
 
-次の**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
+次の**メニュー**は、Team Data Science Process (TDSP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
 
 [AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
@@ -310,4 +310,4 @@ Azure クラシック ポータルで (図をクリックすると) ADF 上に�
 
 ADF が提供するデータを段階的にパイプ処理する機能をまだ活用していないことに注意してください。これを行う方法と ADF が提供するその他の機能の詳細については、[ADF のドキュメント](https://azure.microsoft.com/services/data-factory/)を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

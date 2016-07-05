@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と Workday の統合 | Microsoft Azure" 
     description="Azure Active Directory で Workday を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="06/20/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Workday の統合
   
@@ -36,7 +36,7 @@
 
 ###Workday のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-workday-tutorial/IC700993.png "Active Directory")
 
@@ -66,24 +66,25 @@
 
 1.  **[Workday]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-workday-tutorial/IC782920.png "シングル サインオンの構成")
+    ![シングル サインオンの構成](./media/active-directory-saas-workday-tutorial/IC782920.png "Configure single sign-on")
 
 2.  **[ユーザーの Workday へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-workday-tutorial/IC782921.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782921.png "Configure single sign-on")
 
 3.  **[アプリケーション URL の構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-workday-tutorial/IC782957.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-workday-tutorial/IC782957.png "アプリケーション URL の構成")
 
-    1.  **[サインオン URL]** ボックスに、ユーザーが Workday へのサインオンに使用する URL を入力します (例: *https://impl.workday.com/\<tenant>/login-saml2.htmld*)。
-    2.  **[Workday 応答 URL]** ボックスに、Workday 応答 URL (例: *https://impl.workday.com/\<tenant>/login-saml.htmld*) を入力します。
+	a.**[サインオン URL]** ボックスに、ユーザーが Workday へのサインオンに使用する URL を `https://impl.workday.com/<tenant>/login-saml2.htmld` という形式で入力します。
 
-        >[AZURE.NOTE]応答 URL には必ずサブドメインを入れます (例: www、wd2、wd3、wd3-impl、wd5、wd5-impl)。「**http://www.myworkday.com*」のようなものは動作しますが、「**http://myworkday.com*」は動作しません。
+	b.**[Workday 応答 URL]** ボックスに、`https://impl.workday.com/<tenant>/login-saml.htmld` という形式で Workday 応答 URL を入力します。
+
+	>[AZURE.NOTE] 応答 URL には必ずサブドメインを入れます (例: www、wd2、wd3、wd3-impl、wd5、wd5-impl)。「**http://www.myworkday.com*」のようなものは動作しますが、「**http://myworkday.com*」は動作しません。
  
 4.  **[Workday でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-workday-tutorial/IC782922.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782922.png "シングル サインオンの構成")
 
 5.  別の Web ブラウザー ウィンドウで、Workday 企業サイトに管理者としてログインします。
 
@@ -103,81 +104,101 @@
 
     ![リダイレクト URL](./media/active-directory-saas-workday-tutorial/IC7829581.png "リダイレクト URL")
 
-     9\.1.**[行の追加]** をクリックします。
+	a.**[行の追加]** をクリックします。
 
-     9\.2.**[ログイン リダイレクトの URL]** ボックスと **[モバイル リダイレクトの URL]** ボックスに、Azure ポータルの **[アプリケーション URL の構成]** で **[Workday テナント URL]** に入力した URL を入力します。
+	b.**[ログイン リダイレクトの URL]** ボックスと **[モバイル リダイレクトの URL]** ボックスに、Azure クラシック ポータルの **[アプリケーション URL の構成]** で **[Workday テナント URL]** に入力した URL を入力します。
     
-     9\.3.Azure ポータルで、**[Workday でのシングル サインオンの構成]** ダイアログ ページの **[シングル サインアウト サービス URL]** をコピーし、**[ログアウト リダイレクト URL]** ボックスに貼り付けます。
+	c.Azure クラシック ポータルで、**[Workday でのシングル サインオンの構成]** ダイアログ ページの **[シングル サインアウト サービス URL]** をコピーし、**[ログアウト リダイレクト URL]** ボックスに貼り付けます。
 
-     9\.4.**[環境]** テキスト ボックスに、環境の名前を入力します。
+	d.**[環境]** テキスト ボックスに、環境の名前を入力します。
 
 
-       >[AZURE.NOTE] [環境] 属性の値がテナント URL の値に関連付けられている: > >- Workday テナント URL のドメイン名が impl で始まる場合 (例: *https://impl.workday.com/\<tenant>/login-saml2.htmld*)、**[環境]** 属性を [実装] に設定する必要があります。 >- ドメイン名がそれ以外で始まる場合、Workday に問い合わせ、一致する **[環境]** 値を取得する必要があります。
+	>[AZURE.NOTE] [環境] 属性の値が、テナント URL の値に関連付けられます。
+	>
+    >-   Workday テナント URL のドメイン名が impl で始まる場合 (例: *https://impl.workday.com/\<tenant>/login-saml2.htmld*)、**[環境]** 属性を "実装" に設定する必要があります。
+    >-   ドメイン名が impl 以外で始まる場合は、Workday に問い合わせて、対応する **[環境]** の値を取得してください。
 
 10. **[SAML 設定]** セクションで、次の手順を実行します。
 
     ![SAML のセットアップ](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML のセットアップ")
 
-     10\.1.**[SAML 認証を有効にする]** を選択します。
+	a.**[Enable SAML Authentication]** を選択します。
 
-     10\.2.**[行の追加]** をクリックします。
+	b.**[行の追加]** をクリックします。
 
 11. [SAML ID プロバイダー] セクションで、次の手順に従います。
 
     ![SAML ID プロバイダー](./media/active-directory-saas-workday-tutorial/IC7829271.png "SAML ID プロバイダー")
 
-     11\.1.[ID プロバイダー名] テキスト ボックスに、プロバイダー名を入力します (例: *SPInitiatedSSO*)。
+	a.[ID プロバイダー名] テキスト ボックスに、プロバイダー名を入力します (例: *SPInitiatedSSO*)。
 
-     11\.2.Azure ポータルで、**[Workday でのシングル サインオンの構成]** ダイアログ ページの **[ID プロバイダーの ID]** の値をコピーし、**[発行者]** テキスト ボックスに貼り付けます。
+    b.Azure クラシック ポータルで、**[Workday でのシングル サインオンの構成]** ダイアログ ページの **[ID プロバイダーの ID]** の値をコピーし、**[発行者]** テキスト ボックスに貼り付けます。
 
-     11\.3.**[Workday 始動ログアウトを有効にする]** を選択します。
+    c.**[Workday 始動ログアウトを有効にする]** を選択します。
 
-     11\.4.Azure ポータルで、**[Workday でのシングル サインオンの構成]** ダイアログ ページの **[シングル サインアウト サービス URL]** 値をコピーし、**[ログアウト要求 URL]** ボックスに貼り付けます。
+    d.Azure クラシック ポータルで、**[Workday でのシングル サインオンの構成]** ダイアログ ページの **[シングル サインアウト サービス URL]** 値をコピーし、**[ログアウト要求 URL]** ボックスに貼り付けます。
 
 
-     11\.3.**[ID プロバイダーの公開鍵証明書]** をクリックし、**[作成]** をクリックします。<br><br> ![作成](./media/active-directory-saas-workday-tutorial/IC782928.png "作成")
+    e.**[ID プロバイダーの公開鍵証明書]** をクリックし、**[作成]** をクリックします。
 
-     11\.4.**[x509 公開鍵の作成]** をクリックします。 <br><br> ![作成](./media/active-directory-saas-workday-tutorial/IC782929.png "作成")
+	![作成](./media/active-directory-saas-workday-tutorial/IC782928.png "作成")
 
-     11\.5.**[x509 公開鍵の表示]** セクションで、次の手順を実行します。 <br><br> ![X509 公開鍵の表示](./media/active-directory-saas-workday-tutorial/IC782930.png "X509 公開鍵の表示") <br>
+    f.**[x509 公開鍵の作成]** をクリックします。
+        
+	![作成](./media/active-directory-saas-workday-tutorial/IC782929.png "作成")
 
-      1.  **[名前]** テキスト ボックスに、証明書の名前を入力します (例: *PPE\_SP*)。
-      2.  **[有効期間の開始日]** テキスト ボックスに、証明書の有効期間の開始日を示す属性の値を入力します。
-      3.  **[有効期間の終了日]** テキスト ボックスに、証明書の有効期間の終了日を示す属性の値を入力します。
+
+1. **[x509 公開鍵の表示]** セクションで、次の手順を実行します。
+
+	![X509 公開鍵の表示](./media/active-directory-saas-workday-tutorial/IC782930.png "X509 公開鍵の表示")
+
+	a.**[名前]** テキスト ボックスに、証明書の名前を入力します (例: *PPE\_SP*)。
+    	
+	b.**[有効期間の開始日]** テキスト ボックスに、証明書の有効期間の開始日を示す属性の値を入力します。
+    
+	c.**[有効期間の終了日]** テキスト ボックスに、証明書の有効期間の終了日を示す属性の値を入力します。
 		
-           >[AZURE.NOTE]有効期間の開始日と終了日は、ダウンロードした証明書をダブルクリックして確認できます。日付は **[詳細]** タブに表示されます。
+    >[AZURE.NOTE] 有効期間の開始日と終了日は、ダウンロードした証明書をダブルクリックして確認できます。日付は **[詳細]** タブに表示されます。
 
-      4.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
+	d.ダウンロードした証明書から **Base-64 でエンコードされた**ファイルを作成します。
 
-		>[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+	>[AZURE.TIP] 詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
-      5.  Base 64 でエンコードされた証明書をメモ帳で開き、その内容をコピーします。
-      6.  **[証明書]** テキスト ボックスに、クリップボードの内容を貼り付けます。
-      7.  **[OK]** をクリックします。
+	e.Base 64 でエンコードされた証明書をメモ帳で開き、その内容をコピーします。
+    
+	f.**[証明書]** テキスト ボックスに、クリップボードの内容を貼り付けます。
+    
+	g.**[OK]** をクリックします。
 
-12.  次の手順に従います。 <br><br> ![SSO 構成](./media/active-directory-saas-workday-tutorial/IC7829351111.png "SSO 構成")
+12.  次の手順に従います。
 
-     12\.1.**[x509 秘密鍵のペア]** を有効にします。
+	![SSO 構成](./media/active-directory-saas-workday-tutorial/IC7829351111.png "SSO 構成")
 
-     12\.2.**[サービス プロバイダー ID]** テキスト ボックスに「****http://www.workday.com**」と入力します。
+	a.**[x509 秘密鍵のペア]** を有効にします。
 
-     12\.3.**[SP によって開始された SAML 認証を有効にする]** を選択します。
+	b.**[サービス プロバイダー ID]** テキスト ボックスに「**http://www.workday.com**」と入力します。
 
-     12\.4.Azure ポータルの **[Workday でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[IdP SSO サービス URL]** テキスト ボックスに貼り付けます。
+	c.**[SP によって開始された SAML 認証を有効にする]** を選択します。
+
+	d.Azure クラシック ポータルの **[Workday でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[IdP SSO サービス URL]** テキスト ボックスに貼り付けます。
      
-     12\.5 **[SP によって開始された認証要求を圧縮しない]** を選択します。
+	e.**[SP によって開始された認証要求を圧縮しない]** を選択します。
 
-     12\.6.**[認証要求署名方法]** として **[SHA256]** を選択します。 <br><br> ![認証要求署名方法](./media/active-directory-saas-workday-tutorial/IC782932.png "認証要求署名方法") <br><br>
+    f.**[認証要求署名方法]** として **[SHA256]** を選択します。
+        
+	![認証要求署名方法](./media/active-directory-saas-workday-tutorial/IC782932.png "認証要求署名方法")
  
-     12\.7 **[OK]** をクリックします。 <br><br>![OK](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
+	g.**[OK]** をクリックします。
+        
+	![OK](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
 
-12. Azure AD ポータルの **[Workday でのシングル サインオンの構成]** ページで、**[次へ]** をクリックします。 <br><br>
+12. Azure クラシック ポータルの **[Workday でのシングル サインオンの構成]** ページで、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-workday-tutorial/IC782934.png "シングル サインオンの構成")
+    ![シングル サインオンの構成](./media/active-directory-saas-workday-tutorial/IC782934.png "Configure single sign-on")
 
-13. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。 <br><br>
+13. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-workday-tutorial/IC782935111.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782935111.png "シングル サインオンの構成")
 
 
 
@@ -191,7 +212,7 @@ Workday にテスト ユーザーをプロビジョニングするには、Workd
 
 ###ユーザーを Workday に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Workday** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -203,4 +224,4 @@ Workday にテスト ユーザーをプロビジョニングするには、Workd
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0622_2016-->

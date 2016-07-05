@@ -248,7 +248,7 @@
 
 1. **$storageProfile** の値を、ストレージ プロファイルに使用する名前に置き換えた後、変数を作成します。  
 
-        $storeProfile = "storage profile name"
+        $storageProfile = "storage profile name"
         
 2. 使用するイメージを定義する変数を作成します。
       
@@ -264,7 +264,7 @@
         
 4. ストレージ プロファイルを作成します。
 
-        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storeProfile -VhdContainer $vhdContainers -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
+        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storageProfile -VhdContainer $vhdContainers -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
 
 ### 仮想マシン スケール セット
 
@@ -313,4 +313,4 @@
 - 「[自動スケールと仮想マシン スケール セット](virtual-machine-scale-sets-autoscale-overview.md)」の情報を使用して、スケール セットの自動スケールを設定することを検討します。
 - 「[仮想マシン スケール セットを使用した垂直方向の自動スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)」で垂直スケーリングの詳細を確認します。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

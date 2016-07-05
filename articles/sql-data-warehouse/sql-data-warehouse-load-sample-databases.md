@@ -13,16 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="06/17/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 #SQL Data Warehouse へのサンプル データのロード
 
-[SQL Data Warehouse データベース インスタンス][create a SQL Data Warehouse database instance]を作成したら、次にテーブルを作成してロードします。SQL Data Warehouse 用に作成されている Adventure Works サンプル スクリプトを使用して、架空の会社 Adventure Works のテーブルを作成してロードできます。これらのスクリプトは、sqlcmd を使用して SQL を実行し、bcp を使用してデータをロードします。まだこれらのツールをインストールしていない場合は、リンクに従って [bcp をインストール][]し、[sqlcmd をインストール][]します。
+次の簡単な手順で Adventure Works サンプル データベースをロードしてクエリを実行します。これらのスクリプトでは、まず sqlcmd を使用して、テーブルとビューを作成する SQL を実行します。テーブルが作成されると、スクリプトは bcp を使用してデータを読み込みます。まだ sqlcmd と bcp をインストールしていない場合は、リンクに従って [bcp をインストール][]し、[sqlcmd をインストール][]します。
 
-次の簡単な手順で Adventure Works サンプル データベースを SQL DW にロードします。
+##サンプル データの読み込み
 
-1. [SQL Data Warehouse の Adventure Works サンプル スクリプト][]をダウンロードします。
+1. [SQL Data Warehouse の Adventure Works サンプル スクリプト][]の zip ファイルをダウンロードします。
 
 2. ダウンロードした zip からローカル コンピューターのディレクトリにファイルを抽出します。
 
@@ -85,11 +85,10 @@ SQL Data Warehouse は、SQL Server がサポートするほぼすべての T-SQ
 [ロード]: ./sql-data-warehouse-overview-load.md
 [接続]: ./sql-data-warehouse-get-started-connect.md
 [コードの移行]: ./sql-data-warehouse-migrate-code.md
-[create a SQL Data Warehouse database instance]: ./sql-data-warehouse-get-started-provision.md
 [bcp をインストール]: ./sql-data-warehouse-load-with-bcp.md
 [sqlcmd をインストール]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
 
 <!--Other Web references-->
 [SQL Data Warehouse の Adventure Works サンプル スクリプト]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

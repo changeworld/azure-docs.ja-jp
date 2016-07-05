@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/21/2016"
+   ms.date="06/21/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスへの Update 2 のインストール
@@ -91,4 +91,4 @@ Update 2 にすると、Microsoft はデバイスから追加の診断情報を�
 
 詳細については、[Update 2 リリース](storsimple-update2-release-notes.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0622_2016-->

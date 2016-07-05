@@ -3,7 +3,7 @@
 	description="異常検出 API は、Microsoft Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="pingf" 
+	authors="alokkirpal" 
 	manager="paulettm"
 	editor="cgronlun" />
 
@@ -13,8 +13,8 @@
 	ms.topic="reference" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="multiple" 
-	ms.date="06/01/2016" 
-	ms.author="pingf"/>
+	ms.date="06/21/2016" 
+	ms.author="alokkirpal"/>
 
 
 # Machine Learning 異常検出サービス#
@@ -89,4 +89,4 @@ API は時系列データでこれらの検出を実行し、時系列の各ポ�
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

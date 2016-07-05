@@ -12,11 +12,16 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
-    ms.workload="data-management" 
-    ms.date="06/09/2016"
+    ms.workload="sqldb-bcdr" 
+    ms.date="06/17/2016"
     ms.author="sstein"/>
 
 # PowerShell で以前の時点に Azure SQL Database を復元する
+
+> [AZURE.SELECTOR]
+- [概要](sql-database-point-in-time-restore.md)
+- [Azure ポータル](sql-database-point-in-time-restore-portal.md)
+- [PowerShell](sql-database-point-in-time-restore-powershell.md)
 
 この記事では、PowerShell を使用して、[SQL Database 自動バックアップ](sql-database-automated-backups.md)から以前の時点にデータベースを復元する方法について説明します。
 
@@ -45,18 +50,13 @@
 
 ## 次のステップ
 
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [ポイントインタイム リストア](sql-database-point-in-time-restore.md)
-- [Azure ポータルを使用したポイントインタイム リストア](sql-database-point-in-time-restore-portal.md)
-- [REST API を使用したポイントインタイム リストア](https://msdn.microsoft.com/library/azure/mt163685.aspx)
-- [SQL Database 自動バックアップ](sql-database-automated-backups.md)
+- Azure ポータルを使用して特定の時点に復旧する詳細な手順については、[Azure ポータルを使用したポイントインタイム リストア](sql-database-point-in-time-restore-portal.md)に関するページをご覧ください。
+- REST API を使用して特定の時点に復旧する詳細な手順については、[REST API を使用したポイントインタイム リストア](https://msdn.microsoft.com/library/azure/mt163685.aspx)に関するページをご覧ください。
+- ポイントイン タイム リストアの概要については、[ポイントインタイム リストア](sql-database-point-in-time-restore.md)に関するページをご覧ください。
+- ユーザー エラーまたはアプリケーション エラーから復旧する方法の詳細については、[ユーザー エラーの復旧](sql-database-user-error-recovery.md)に関するページをご覧ください。
 
 ## その他のリソース
 
-- [削除されたデータベースの復元](sql-database-restore-deleted-database.md)
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [geo リストア](sql-database-geo-restore.md)
-- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
-- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [ビジネス継続性のシナリオ](sql-database-business-continuity-scenarios.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

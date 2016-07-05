@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="06/14/2016"
 	ms.author="gokuma;weig;bradsev" />
 
 # データ サイエンス仮想マシンでできる 10 のこと
@@ -404,7 +404,7 @@ Azure Data Lake Storage は、ビッグ データの分析ワークロード用�
 ![](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 
-Visual Studio では、Blob Storage からのデータ読み取り、各種データ操作、特徴エンジニアリングを実行するほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。Blob Storage 内のデータを参照するときは **wasb://** を、Azure Data Lake 内のデータを参照するときは **swbhdfs://** を使用します。
+Visual Studio では、Blob Storage からのデータ読み取り、各種データ操作、特徴エンジニアリングを実行するほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。Blob Storage 内のデータを参照するときは **wasb://** を、Azure Data Lake 内のデータを参照するときは ****swbhdfs://** を使用します。
 
 ![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
@@ -910,4 +910,4 @@ DSVM から DocumentDB にアクセスするには、以下の前提条件を満
 ## まとめ
 ここで紹介したのは、Microsoft データ サイエンス仮想マシンでできることの一例にすぎません。他にもさまざまな手段で分析環境を強化することができます。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

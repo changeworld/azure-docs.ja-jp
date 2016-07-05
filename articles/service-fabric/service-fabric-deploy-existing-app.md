@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="na"
-   ms.date="06/06/2016"
+   ms.date="06/20/2016"
    ms.author="bscholl;mikhegn"/>
 
 # Service Fabric へのゲスト実行可能ファイルのデプロイ
@@ -284,15 +284,17 @@ Service Fabric エクスプローラーで、サービスが実行されてい�
 
 Visual Studio には、ゲスト実行可能ファイルを Service Fabric クラスターにデプロイするときに役立つ Service Fabric サービスのテンプレートが用意されています。発行を完了するには、次の手順を実行する必要があります。
 
+>[AZURE.NOTE] この機能には [SDK バージョン 2.1.150](https://blogs.msdn.microsoft.com/azureservicefabric/2016/06/13/release-of-service-fabric-sdk-2-1-150-and-runtime-5-1-150/) が必要です
+
 1. [ファイル]、[新しいプロジェクト] の順に選択して、新しい Service Fabric アプリケーションを作成します。
 2. サービス テンプレートとしてゲスト実行可能ファイルを選択します。
 3. [参照] をクリックして実行可能ファイルを含むフォルダーを選択し、残りのパラメーターを入力して新しいサービスを作成します。
-  - *コード パッケージの動作*は、フォルダー内の内容をすべて Visual Studio プロジェクトにコピーするように設定できます。これは、実行可能ファイルが変更されない場合に便利です。実行可能ファイルが変更されることが予想され、新しいビルドを動的に取得する機能が必要な場合は、フォルダーにリンクすることもできます。
-  - *Program* には、サービスを開始するために実行する必要がある実行可能ファイルを選択します。
+  - *Code Package Behavior* は、フォルダー内の内容をすべて Visual Studio プロジェクトにコピーするように設定できます。これは、実行可能ファイルが変更されない場合に便利です。実行可能ファイルが変更されることが予想され、新しいビルドを動的に取得する機能が必要な場合は、フォルダーにリンクすることもできます。
+  - *Program* では、サービスを開始するために実行する必要がある実行可能ファイルを選択します。
   - *Arguments* には、実行可能ファイルに渡す引数を指定します。引数を含むパラメーターの一覧を指定することもできます。
   - *WorkingFolder* には、開始するプロセスの作業ディレクトリを選択します。次の 2 つの値を指定できます。
   	- *CodeBase* は、作業ディレクトリがアプリケーション パッケージ内のコード ディレクトリ (次に示す構造の `Code` ディレクトリ) に設定されるように指定します。
-    - *CodePackage* は、作業ディレクトリがアプリケーション パッケージのルート (`MyServicePkg`) に設定されるように指定します。
+    - *CodePackage* は、作業ディレクトリがアプリケーション パッケージ (`MyServicePkg`) のルートに設定されるように指定します。
 4. サービスに名前を付けて、[OK] をクリックします。
 5. サービスに通信用のエンドポイントが必要な場合は、ServiceManifest.xml ファイルに Protocol、Port、Type を追加できます (例: ```<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" Type="Input" />```)。
 6. Visual Studio でソリューションをデバッグすることにより、ローカル クラスターに対してパッケージ化と発行の操作を試すことができます。準備ができたら、アプリケーションをリモート クラスターに発行するか、ソリューションをソース管理にチェックインすることができます。
@@ -306,4 +308,4 @@ Visual Studio には、ゲスト実行可能ファイルを Service Fabric ク�
 - [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
 - [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

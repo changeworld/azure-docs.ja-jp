@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と Thirdlight の統合 | Microsoft Azure" 
     description="Azure Active Directory で Thirdlight を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="06/21/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Thirdlight の統合
   
@@ -38,7 +38,7 @@
 
 ###Thirdlight のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-thirdlight-tutorial/IC700993.png "Active Directory")
 
@@ -68,9 +68,9 @@
   
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Thirdlight に対する認証を行うことができるようにする方法を説明します。Thirdlight のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書のサムプリント値を取得する方法)](http://youtu.be/YKQF266SAxI)」を参照してください。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[Thirdlight]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **[Thirdlight]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-thirdlight-tutorial/IC805839.png "Configure Single Sign-On")
 
@@ -80,7 +80,7 @@
 
 3.  **[アプリケーション URL の構成]** ページの **[Thirdlight のサインイン URL]** ボックスに、ユーザーが Thirdlight アプリケーションにサインオンする際に使用する URL (例: **http://azuresso2.thirdlight.com/*")) を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-thirdlight-tutorial/IC805841.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-thirdlight-tutorial/IC805841.png "アプリケーション URL の構成")
 
 4.  **[Thirdlight でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックし、コンピューターでメタデータ ファイルをローカルに保存します。
 
@@ -101,7 +101,7 @@
     3.  ダウンロードしたメタデータ ファイルを開き、内容をコピーしてから、**[IdP Metadata XML]** テキストボックスに貼り付けます。
     4.  **[Save SAML2 settings]** をクリックします。
 
-8.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+8.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-thirdlight-tutorial/IC805845.png "Configure Single Sign-On")
 
@@ -123,7 +123,7 @@ Azure AD ユーザーが Thirdlight にログインできるようにするに�
 
 6.  **[作成]** をクリックします。
 
->[AZURE.NOTE]Thirdlight から提供されている他の Thirdlight ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Thirdlight から提供されている他の Thirdlight ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -131,7 +131,7 @@ Azure AD ユーザーが Thirdlight にログインできるようにするに�
 
 ###ユーザーを Thirdlight に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Thirdlight** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -143,4 +143,4 @@ Azure AD ユーザーが Thirdlight にログインできるようにするに�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0622_2016-->

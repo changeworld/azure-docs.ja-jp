@@ -1,77 +1,53 @@
+## IoT Hub への Azure Storage アカウントの関連付け
+
+シミュレーションされたデバイスが Azure Storage BLOB にファイルをアップロードするため、IoT Hub に関連付けられている Azure Storage アカウントが必要です。既存のストレージ アカウントを使用することも、[Azure ストレージ アカウントについて]に関するページの手順に従って新しいアカウントを作成することもできます。「[Azure ポータルを使用した IoT Hub の管理]」の手順に従って、Azure Storage アカウントを IoT Hub に関連付けることができます。
+
 ## シミュレーションされたデバイスからのファイルのアップロード
 
-このセクションでは、「IoT Hub を使用したクラウドからデバイスへのメッセージの送信」で作成したシミュレーション済みデバイス アプリケーションを変更して、クラウドからデバイスへのメッセージを IoT Hub から受信します。
+このセクションでは、「IoT Hub でクラウドからデバイスへのメッセージの送信」で作成したシミュレーション済みデバイス アプリケーションを変更して、クラウドからデバイスへのメッセージを IoT Hub から受信します。
 
-1. Visual Studio で **SimulatedDevice** プロジェクトを右クリックし、**[NuGet パッケージの管理...]** をクリックします。 
+1. Visual Studio で **SimulatedDevice** プロジェクトを右クリックして **[追加]** をクリックし、**[既存の項目]** をクリックします。イメージ ファイルに移動し、プロジェクトに含めます。このチュートリアルでは、イメージ名が `image.jpg` という前提で説明します。
 
-    [NuGet パッケージの管理] ウィンドウが表示されます。
+2. イメージを右クリックし、**[プロパティ]** をクリックします。**[出力ディレクトリにコピー]** が **[常にコピーする]** に設定されていることを確認します。
 
-2. `WindowsAzure.Storage` を検索し、**[インストール]** をクリックして、使用条件に同意します。
-
-    これにより、[Microsoft Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage/) のダウンロード、インストール、およびリファレンスの追加が行われます。
+    ![][1]
 
 3. **Program.cs** ファイルの先頭に、次のステートメントを追加します。
 
         using System.IO;
-        using Microsoft.WindowsAzure.Storage;
-        using Microsoft.WindowsAzure.Storage.Blob;
 
-4. **Program** クラスで、**ReceiveC2dAsync** メソッドを次の方法で変更します。
+4. **Program** クラスに次のメソッドを追加します。
          
-        private static async void ReceiveC2dAsync()
+        private static async void SendToBlobAsync()
         {
-            Console.WriteLine("\nReceiving cloud to device messages from service");
-            while (true)
+            string fileName = "image.jpg";
+            Console.WriteLine("Uploading file: {0}", fileName);
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            using (var sourceData = new FileStream(@"image.jpg", FileMode.Open))
             {
-                Message receivedMessage = await deviceClient.ReceiveAsync();
-                if (receivedMessage == null) continue;
-
-                if (receivedMessage.Properties.ContainsKey("command") && receivedMessage.Properties["command"] == "FileUpload")
-                {
-                    UploadFileToBlobAsync(receivedMessage);
-                    continue;
-                }
-
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Received message: {0}", Encoding.ASCII.GetString(receivedMessage.GetBytes()));
-                Console.ResetColor();
+                await deviceClient.UploadToBlobAsync(fileName, sourceData);
             }
+
+            watch.Stop();
+            Console.WriteLine("Time to upload file: {0}ms\n", watch.ElapsedMilliseconds);
         }
 
-    これにより、`command` プロパティが `FileUpload` に設定され、**ReceiveC2dAsync** によってメッセージが識別されるようになります。これは、**UploadFileToBlobAsync** メソッドによって処理されます。
+    `UploadToBlobAsync` メソッドは、アップロードするファイルのファイル名とストリーム ソースを取り込み、ストレージへのアップロードを処理します。コンソール アプリケーションには、ファイルのアップロードにかかる時間が表示されます。
 
-    以下のメソッドを追加して、ファイル アップロード コマンドを処理します。
-   
-        private static async Task UploadFileToBlobAsync(Message fileUploadCommand)
-        {
-            var fileUri = fileUploadCommand.Properties["fileUri"];
-            var blob = new CloudBlockBlob(new Uri(fileUri));
+5. **Main** メソッドの `Console.ReadLine()` 行の直前に次のメソッドを追加します。
 
-            byte[] data = new byte[10 * 1024 * 1024];
-            Random rng = new Random();
-            rng.NextBytes(data);
+        SendToBlobAsync();
 
-            MemoryStream msWrite = new MemoryStream(data);
-            msWrite.Position = 0;
-            using (msWrite)
-            {
-                await blob.UploadFromStreamAsync(msWrite);
-            }
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Uploaded file to: {0}", fileUri);
-            Console.ResetColor();
-
-            await deviceClient.CompleteAsync(fileUploadCommand);
-        }
-
-    このメソッドでは、Azure Storage SDK を使用してランダムに生成された 10Mb の BLOB が、指定された URI にアップロードされます。BLOB のアップロード方法については、「[Azure Storage - How to use blobs (Azure ストレージ - BLOB の使用方法)]」をご覧ください。
-
-> [AZURE.NOTE] シミュレーション済みデバイスのこの実装によって、BLOB がアップロードされた後にのみ、クラウドからデバイスへのメッセージが処理されるという方法に留意してください。この方法では、配信の受信確認によってアップロードされたファイルを処理できるかどうかが示されるため、バックエンドでのアップロード済みファイルの処理が簡略化されます。ただし、「[IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」で説明されているように、*表示タイムアウト* (通常は 1 分) までに完了しなかったメッセージはデバイス キューに戻され、**ReceiveAsync()** メソッドによってもう一度受信されます。ファイル アップロードに時間がかかるシナリオの場合、シミュレーション済みデバイスで現在のアップロード ジョブの永続的ストアを保持するほうが良い場合があります。このようにすると、シミュレーション済みデバイスは、ファイルのアップロードが完了する前にクラウドからデバイスへのメッセージを完了し、バックエンドに完了を通知するデバイスからクラウドへのメッセージを送信できるようになります。
+> [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。運用コードでは、MSDN の記事「[Transient Fault Handling (一時的な障害の処理)]」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
 <!-- Links -->
-[IoT Hub Developer Guide - C2D]: ../articles/iot-hub/iot-hub-devguide.md#c2d
-[Azure Storage - How to use blobs (Azure ストレージ - BLOB の使用方法)]: ../articles/storage/storage-dotnet-how-to-use-blobs.md#upload-a-blob-into-a-container
+[IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
+[Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Azure ストレージ アカウントについて]: ../storage/storage-create-storage-account.md#create-a-storage-account
+[Azure ポータルを使用した IoT Hub の管理]: ../articles/iot-hub-manage-through-portal/#file-upload
 
 <!-- Images -->
+[1]: ../articles/iot-hub/media/iot-hub-csharp-csharp-file-upload/image-properties.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

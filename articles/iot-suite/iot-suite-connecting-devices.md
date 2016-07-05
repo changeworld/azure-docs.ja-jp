@@ -311,6 +311,7 @@ IoT Hub クライアント ライブラリでは、モデルを使用して、�
     ```
     
     起動時に IoT Hub に送信される **DeviceInfo** メッセージの例:
+
     ```
     {
       "ObjectType":"DeviceInfo",
@@ -329,11 +330,13 @@ IoT Hub クライアント ライブラリでは、モデルを使用して、�
     ```
     
     IoT Hub に送信される**テレメトリ** メッセージの例:
+
     ```
     {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}
     ```
     
     IoT Hub から受信する**コマンド**の例:
+    
     ```
     {
       "Name":"SetHumidity",
@@ -361,4 +364,4 @@ IoT Hub クライアント ライブラリでは、モデルを使用して、�
 
 [lnk-setup-windows]: https://github.com/azure/azure-iot-sdks/blob/develop/c/doc/devbox_setup.md#windows
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

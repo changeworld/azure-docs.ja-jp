@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-services"
-    ms.date="03/09/2016"
+    ms.date="06/20/2016"
     ms.author="anhoh"/>
 
 #インデクサーを使用した DocumentDB と Azure Search の接続
@@ -21,6 +21,9 @@
 DocumentDB データの優れた検索機能を実装する場合は、DocumentDB の Azure Search インデクサーをご使用ください。 この記事では、インデックス作成のインフラストラクチャを保守するコードを記述することなく Azure DocumentDB と Azure Search を統合する方法を説明します。
 
 このセットアップを行うには、[Azure Search アカウントをセットアップ](../search/search-create-service-portal.md)し (標準の検索のアップグレードは不要です)、[Azure Search REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) を呼び出して DocumentDB **データ ソース**とそのデータ ソースの**インデクサー**を作成する必要があります。
+
+REST API とやり取りするために要求を送信するには、[Postman](https://www.getpostman.com/)、[Fiddler](http://www.telerik.com/fiddler) など、任意のツールを自由に使用できます。
+
 
 ##<a id="Concepts"></a>Azure Search インデクサーの概念
 
@@ -42,11 +45,11 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
     Content-Type: application/json
     api-key: [Search service admin key]
 
-`api-version` は必須です。有効な値には `2015-02-28` 以降のバージョンが含まれます。
+`api-version` は必須です。有効な値には `2015-02-28` 以降のバージョンが含まれます。サポートされているすべての Search API バージョンについては、「[Azure Search の API バージョン](../search/search-api-versions.md)」を参照してください。
 
 要求の本文には、次のフィールドを含むデータ ソースの定義が含まれている必要があります。
 
-- **name**: データ ソースの名前。
+- **name**: DocumentDB データベースを表す名前を選択します。
 
 - **type**: `documentdb` を使用。
 
@@ -56,13 +59,15 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 - **container**:
 
-    - **name**: 必須。インデックスを作成する DocumentDB コレクションを指定します。
+    - **name**: 必須。インデックスを作成する DocumentDB コレクションの ID を指定します。
 
     - **query**: 省略可能。任意の JSON ドキュメントを、Azure Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。
 
 - **dataChangeDetectionPolicy**: 省略可能。以下の[データ変更の検出ポリシーに関するセクション](#DataChangeDetectionPolicy)を参照してください。
 
 - **dataDeletionDetectionPolicy**: 省略可能。以下の[データ削除の検出ポリシーに関するセクション](#DataDeletionDetectionPolicy)を参照してください。
+
+以下の[要求本文の例](#CreateDataSourceExample)を参照してください。
 
 ###<a id="DataChangeDetectionPolicy"></a>ドキュメントの変更のキャプチャ
 
@@ -75,7 +80,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 さらに、クエリのプロジェクションと `WHERE` 句にも `_ts` を追加する必要があります。次に例を示します。
 
-    SELECT s.id, s.Title, s.Abstract, s._ts FROM Sessions s WHERE s._ts > @HighWaterMark
+    SELECT s.id, s.Title, s.Abstract, s._ts FROM Sessions s WHERE s._ts >= @HighWaterMark
 
 
 ###<a id="DataDeletionDetectionPolicy"></a>ドキュメントの削除のキャプチャ
@@ -88,7 +93,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
 
-> [AZURE.NOTE] カスタムのプロジェクションを使用している場合は、SELECT 句にプロパティを含める必要があります。
+> [AZURE.NOTE] カスタムのプロジェクションを使用している場合は、SELECT 句に softDeleteColumnName プロパティを含める必要があります。
 
 ###<a id="CreateDataSourceExample"></a>要求本文の例
 
@@ -121,7 +126,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 ##<a id="CreateIndex"></a>手順 2: インデックスを作成する
 
-ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[Azure ポータル UI](../search/search-get-started.md#test-service-operations) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。
+ターゲットの Azure Search インデックスがまだない場合は、インデックスを作成します。これは、[Azure ポータル UI](../search/search-create-index-portal.md) から、または[インデックス作成 API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して行うことができます。
 
 	POST https://[Search service name].search.windows.net/indexes?api-version=[api-version]
 	Content-Type: application/json
@@ -265,8 +270,8 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
 
 ご利用ありがとうございます。 DocumentDB のインデクサーを使用して、Azure DocumentDB を Azure Search と統合する方法についての説明は以上で終了です。
 
- - Azure DocumentDB の詳細については、「[DocumentDB サービス ページ](https://azure.microsoft.com/services/documentdb/)」を参照してください。
+ - Azure DocumentDB の詳細については、[DocumentDB サービス ページ](https://azure.microsoft.com/services/documentdb/)を参照してください。
 
- - Azure Search の詳細については、「[Search サービス ページ](https://azure.microsoft.com/services/search/)」を参照してください。
+ - Azure Search の詳細については、[Search サービス ページ](https://azure.microsoft.com/services/search/)を参照してください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0622_2016-->

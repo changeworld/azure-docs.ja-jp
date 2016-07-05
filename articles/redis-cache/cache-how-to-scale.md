@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/23/2016" 
+	ms.date="06/16/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache のスケーリング方法
@@ -199,4 +199,4 @@ Standard および Premium キャッシュには可用性について 99.9% の 
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

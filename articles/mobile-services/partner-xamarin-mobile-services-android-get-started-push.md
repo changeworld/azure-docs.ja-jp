@@ -72,7 +72,7 @@ Mobile Services と Notification Hubs については次のトピックを参照
 
 * [認証の使用](mobile-services-android-get-started-users.md) <br/>Mobile Services を使用して別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
 
-* [Notification Hubs とは](../notification-hubs/notification-hubs-overview.md) <br/>Notification Hubs がすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
+* [Notification Hubs とは](../notification-hubs/notification-hubs-push-notification-overview.md) <br/>Notification Hubs がすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
 * [Notification Hubs のデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630) </br>Notification Hubs ソリューションのトラブルシューティングとデバッグについて説明します。
 
@@ -86,4 +86,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
 [Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

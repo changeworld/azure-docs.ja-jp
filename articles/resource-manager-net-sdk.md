@@ -13,42 +13,92 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="06/21/2016"
    ms.author="navale;tomfitz;"/>
 
 # Azure Resource Manager SDK for .NET  
-Azure Resource Manager (ARM) プレビューの SDK は、複数の言語とプラットフォームで利用できます。これらの言語実装はそれぞれ、エコシステム パッケージ マネージャーと GitHub を介して入手できます。
+Azure Resource Manager の SDK は、複数の言語とプラットフォームで利用できます。これらの言語実装はそれぞれ、エコシステム パッケージ マネージャーと GitHub を介して入手できます。
 
 これらの SDK のコードはそれぞれ、[Azure REST ベースの API 仕様](https://github.com/azure/azure-rest-api-specs)から生成されます。これらの仕様はオープン ソースであり、Swagger v2 仕様に基づいています。SDK コードは、[AutoRest](https://github.com/azure/autorest) と呼ばれるオープン ソース プロジェクトを使用して生成されたコードです。AutoRest では、これらの REST ベースの API 仕様が、複数の言語でクライアント ライブラリに変換されます。SDK で生成されたコードに改善する箇所がある場合、広範に適用されている API 仕様形式に基づく、SDK を作成するためのツール全体が自由に使用できます。
 
-Azure SDK for .NET は、Azure Resource Manager によって公開された API の大半を呼び出す際に役立つ、NuGet パッケージのセットとして提供されています。必要な機能が SDK で公開されていない場合は、バックグラウンドで SDK と通常の ARM REST API の呼び出しを簡単に組み合わせることができます。
+[Azure SDK for .NET](https://azure.microsoft.com/downloads/) は、Azure Resource Manager によって公開された API の大半を呼び出す際に役立つ、NuGet パッケージのセットとして提供されています。必要な機能が SDK で公開されていない場合は、バックグラウンドで SDK と通常の ARM REST API の呼び出しを簡単に組み合わせることができます。
 
 このドキュメントは、Azure SDK for .NET、Azure ARM API、または Visual Studio を包括的に説明するものではなく、これらを使い始めるための入門編的な内容になっています。
 
 以降で使用するすべてのコード スニペットの引用元である完全なサンプル プロジェクトは、[こちら](https://github.com/dx-ted-emea/Azure-Resource-Manager-Documentation/tree/master/ARM/SDKs/Samples/Net)からダウンロードできます。
 
+## NuGet パッケージのインストール
+
+このトピックの例は、Azure SDK for .NET の他に 2 つの NuGet パッケージを必要とします。Visual Studio でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択してください。
+
+1. **Microsoft.IdentityModel.Clients.ActiveDirectory** を探し、最新の安定したバージョンのパッケージをインストールします。
+2. **Microsoft.Azure.Management.ResourceManager** を探し、**[リリース前のパッケージを含める]** を選択します。最新のプレビュー バージョン (1.1.2-preview など) をインストールしてください。
+
 ## 認証
-ARM の認証は、Azure Active Directory (AD) によって処理されます。任意の API に接続するには、最初に Azure AD で認証を行って認証トークンを受信する必要があります。この認証トークンは、すべての要求に対して渡すことができます。このトークンを取得するには、まず Azure AD アプリケーションと、ログインに使用するサービス プリンシパルを作成する必要があります。手順については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](resource-group-create-service-principal-portal.md)」を参照してください。
+Resource Manager の認証は、Azure Active Directory (AD) によって処理されます。任意の API に接続するには、最初に Azure AD で認証を行って認証トークンを受信する必要があります。この認証トークンは、すべての要求に対して渡すことができます。このトークンを取得するには、まず Azure AD アプリケーションと、ログインに使用するサービス プリンシパルを作成する必要があります。具体的な方法については、「[リソースにアクセスできる Active Directory アプリケーションを Azure PowerShell で作成する](resource-group-authenticate-service-principal.md)」、「[リソースにアクセスできる Active Directory アプリケーションを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md)」、「[リソースにアクセスできる Active Directory アプリケーションをポータルで作成する](resource-group-create-service-principal-portal.md)」のいずれかの手順に従ってください。
 
 サービス プリンシパルを作成すると、次の項目が準備できたことになります。
-* クライアント ID (GUID)
-* クライアント シークレット (文字列)
-* テナント ID (GUID) またはドメイン名 (文字列)
+
+- クライアント ID またはアプリケーション ID (GUID)
+- クライアント シークレットまたはパスワード (文字列)
+- テナント ID (GUID) またはドメイン名 (文字列)
 
 ### コードから AccessToken を受け取る
 認証トークンは、次のコード行を使用して簡単に取得できます。このコード行では、Azure AD テナント ID、Azure AD アプリケーション クライアント ID、および Azure AD アプリケーション クライアント シークレットのみを渡します。トークンは、既定で 1 時間有効なため、いくつかの要求のために取っておきます。
 
 ```csharp
-private static AuthenticationResult GetAccessToken(string tenantId, string clientId, string clientSecret)
+private static async Task<AuthenticationResult> GetAccessTokenAsync(string tenantId, string clientId, string clientSecret)
 {
     Console.WriteLine("Aquiring Access Token from Azure AD");
     AuthenticationContext authContext = new AuthenticationContext
         ("https://login.windows.net/" /* AAD URI */
-            + $"{tenantId}.onmicrosoft.com" /* Tenant ID or AAD domain */);
+            + $"{tenantId}" /* Tenant ID */);
 
     var credential = new ClientCredential(clientId, clientSecret);
 
-    AuthenticationResult token = authContext.AcquireToken("https://management.azure.com/", credential);
+    var token = await authContext.AcquireTokenAsync("https://management.azure.com/", credential);
+
+    Console.WriteLine($"Token: {token.AccessToken}");
+    return token;
+}
+```
+
+ログインには、テナント ID を使わずに、次のように Active Directory ドメインを使用することができます。この方法を使用する場合、テナント ID の代わりにドメイン名を受け取るようにメソッドのシグネチャを変更する必要があります。
+
+```csharp
+AuthenticationContext authContext = new AuthenticationContext
+    ("https://login.windows.net/" /* AAD URI */
+    + $"{domain}.onmicrosoft.com");
+```
+
+証明書を使って認証を行う Active Directory アプリのアクセス トークンは、次のようにして取得できます。
+
+```csharp
+private static async Task<AuthenticationResult> GetAccessTokenFromCertAsync(string tenantId, string clientId, string certName)
+{
+    Console.WriteLine("Aquiring Access Token from Azure AD");
+    AuthenticationContext authContext = new AuthenticationContext
+        ("https://login.windows.net/" /* AAD URI */
+        + $"{tenantId}" /* Tenant ID or AAD domain */);
+
+    X509Certificate2 cert = null;
+    X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+
+    try
+    {
+        store.Open(OpenFlags.ReadOnly);
+        var certCollection = store.Certificates;
+        var certs = certCollection.Find(X509FindType.FindBySubjectName, certName, false);
+        cert = certs[0];
+    }
+    finally
+    {
+        store.Close();
+    }
+
+    var certCredential = new ClientAssertionCertificate(clientId, cert);
+
+    var token = await authContext.AcquireTokenAsync("https://management.azure.com/", certCredential);
 
     Console.WriteLine($"Token: {token.AccessToken}");
     return token;
@@ -88,7 +138,7 @@ async private static Task<List<string>> GetSubscriptionsAsync(string token)
 }
 ```
 
-ここでは、Azure から JSON 応答を取得することに注目してください。これは、その後、ID の一覧を返すためにサブスクリプション ID を抽出します。このドキュメントでこの後に続く Azure ARM API の呼び出しでは 1 つの Azure サブスクリプション ID のみを使用します。そのため、アプリケーションが複数のサブスクリプションに関連付けられている場合は、その中から適切なサブスクリプションを選択し、パラメーターとして渡してください。
+ここでは、Azure から JSON 応答を取得することに注目してください。これは、その後、ID の一覧を返すためにサブスクリプション ID を抽出します。このドキュメントでこの後に続く Azure Resource Manager API の呼び出しでは 1 つの Azure サブスクリプション ID を使用します。そのため、アプリケーションが複数のサブスクリプションに関連付けられている場合は、その中から適切なサブスクリプションを選択し、パラメーターとして渡してください。
 
 これ以降、Azure API に対して行うすべての呼び出しでは Azure SDK for .NET を使用するため、コードは若干異なって見えます。
 
@@ -99,8 +149,14 @@ async private static Task<List<string>> GetSubscriptionsAsync(string token)
 var credentials = new TokenCredentials(token);
 ```
 
+所有している Resource Manager NuGet パッケージが以前のバージョン (名前が **Microsoft.Azure.Management.Resources**) である場合、次のコードを使用する必要があります。
+
+```csharp
+var credentials = new TokenCloudCredentials(subscriptionId, token.AccessToken);
+```
+
 ## リソース グループの作成
-Azure では常にリソース グループが中心になるため、リソース グループを作成することから始めましょう。一般的なリソースおよびリソース グループは *ResourceManagementClient* によって処理されます。ここで使用するより特化した管理クライアントのように、作業対象のサブスクリプションを識別するには、サブスクリプション ID のほかに資格情報を提供する必要があります。
+Azure では常にリソース グループが中心になるため、リソース グループを作成することから始めましょう。一般的なリソースおよびリソース グループは *ResourceManagementClient* によって処理されます。ここで使用するより特化した管理クライアントのように、作業対象のサブスクリプションを識別するには、サブスクリプション ID の他に資格情報を提供する必要があります。
 
 ```csharp
 private static async Task<ResourceGroup> CreateResourceGroupAsync(TokenCredentials credentials, string subscriptionId, string resourceGroup, string location)
@@ -274,7 +330,7 @@ private static async Task<VirtualMachine> CreateVirtualMachineAsync(TokenCredent
 ```
 
 ### テンプレート化されたデプロイの使用
-テンプレートをデプロイする詳しい手順については、「[#C と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ](./virtual-machines/virtual-machines-windows-csharp-template.md)」チュートリアルを参照してください。
+テンプレートをデプロイする詳しい手順については、[.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](./virtual-machines/virtual-machines-windows-csharp-template.md)に関するチュートリアルを参照してください。
 
 簡単に言えば、テンプレートのデプロイは、手動によるリソースのプロビジョニングよりもはるかに簡単です。次のコードでは、テンプレートとパラメーター ファイルのある URI を指定してこれを行う方法を示しています。
 
@@ -298,4 +354,4 @@ private static async Task<DeploymentExtended> CreateTemplatedDeployment(TokenCre
  
    
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

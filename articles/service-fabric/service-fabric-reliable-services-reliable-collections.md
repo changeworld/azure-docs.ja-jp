@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="03/25/2016"
+   ms.date="06/14/2016"
    ms.author="mcoskun"/>
 
 # Azure Service Fabric ステートフル サービスの Reliable Collection の概要
@@ -102,6 +102,8 @@ Reliable Collection は、常に排他ロックを取得します。読み取り
 - 読み取り操作 (`TryPeekAsync` や `TryGetValueAsync` など) によって返されるカスタム型のオブジェクトを変更しないでください。Reliable Collection は、同時実行コレクションのように、コピーではなくオブジェクトへの参照を返すからです。
 - 返されたカスタム型のオブジェクトは、変更する前に詳細コピーしてください。構造体型と組み込み型は値渡しであるため、詳細コピーを実行する必要はありません。
 - タイムアウトに `TimeSpan.MaxValue` を使用しないでください。タイムアウトはデッドロックの検出に使用してください。
+- コミット、中止、または破棄された後に、トランザクションを使用しないでください。
+- トランザクション スコープ内で構築した列挙子は、トランザクション スコープ外で使用しないでください。
 - 別のトランザクションの `using` ステートメント内にトランザクションを作成しないでください。デッドロックを引き起こす可能性があるためです。
 - `IComparable<TKey>` の実装が正しいことを確認してください。システムでは、チェックポイントを結合するため、これについての依存関係を取得します。
 - 障害復旧を行うには、バックアップと復元の機能の使用を検討します。
@@ -123,4 +125,4 @@ Reliable Collection は、常に排他ロックを取得します。読み取り
 - [Reliable Service プログラミング モデルの詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
 - [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

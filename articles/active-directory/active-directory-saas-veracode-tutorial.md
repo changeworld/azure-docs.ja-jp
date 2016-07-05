@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と Veracode の統合 | Microsoft Azure" 
     description="Azure Active Directory で Veracode を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="06/21/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Veracode の統合
   
@@ -38,7 +38,7 @@
 
 ###Veracode のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-veracode-tutorial/IC700993.png "Active Directory")
 
@@ -70,9 +70,9 @@
 
 ![属性](./media/active-directory-saas-veracode-tutorial/IC802906.png "属性")
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[Veracode]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **[Veracode]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802907.png "Configure Single Sign-On")
 
@@ -92,7 +92,7 @@
 
 6.  上部のメニューで、**[設定]**、**[管理者]** の順にクリックします。
 
-    ![管理](./media/active-directory-saas-veracode-tutorial/IC802911.png "管理")
+    ![Administration](./media/active-directory-saas-veracode-tutorial/IC802911.png "管理")
 
 7.  **[SAML]** タブをクリックします。
 
@@ -100,7 +100,7 @@
 
     ![管理](./media/active-directory-saas-veracode-tutorial/IC802912.png "管理")
 
-    1.  Azure ポータルの **[Veracode でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、それを **[発行者]** テキストボックスに貼り付けます。
+    1.  Azure クラシック ポータルの **[Veracode でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、それを **[発行者]** テキスト ボックスに貼り付けます。
     2.  ダウンロードした証明書をアップロードするには、**[ファイルの選択]** をクリックします。
     3.  **[自己登録を有効にする]** を選択します。
 
@@ -122,7 +122,7 @@
         -   **チームのメンバーシップ**
         -   **既定のチーム**
 
-10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802914.png "Configure Single Sign-On")
 
@@ -156,7 +156,7 @@ Azure AD ユーザーが Veracode にログインできるようにするには�
   
 最初のシングル サインオンの試行中に、必要に応じてユーザーが自動的に作成されます。
 
->[AZURE.NOTE]Veracode から提供されている他の Veracode ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Veracode から提供されている他の Veracode ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -164,7 +164,7 @@ Azure AD ユーザーが Veracode にログインできるようにするには�
 
 ###ユーザーを Veracode に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Veracode** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -176,4 +176,4 @@ Azure AD ユーザーが Veracode にログインできるようにするには�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0622_2016-->

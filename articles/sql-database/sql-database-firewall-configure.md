@@ -15,10 +15,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="06/10/2016"
+   ms.date="06/22/2016"
    ms.author="rickbyh"/>
 
-# Azure SQL サーバー ファイアウォールを構成する方法 - 概要
+# Azure SQL Database ファイアウォール規則の構成 - 概要
 
 
 > [AZURE.SELECTOR]
@@ -68,17 +68,17 @@ Azure からアプリケーションがデータベース サーバーに接続�
 
 Azure からの接続は、2 つの方法で有効にすることができます。
 
-- [Microsoft Azure ポータル](https://portal.azure.com/)では、新しいサーバーを作成するときに、**[Azure サービスにサーバーへのアクセスを許可する]** チェック ボックスをオンにします。
+- [Microsoft Azure ポータル](https://portal.azure.com/)では、新しいサーバーを作成するときに、**[Azure サービスにサーバーへのアクセスを許可する]** チェック ボックスをオンにします。**重要:** このオプションは、ファイアウォールを構成して、他のお客様のサブスクリプションからの接続を含むすべての接続を許可します。このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
 
 - [クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=161793)では、サーバーの **[構成]** タブの、**[使用できるサービス]** セクションで、**Microsoft Azure サービス**に対し、**[はい]** をクリックします。
 
 ## 最初のサーバー レベルのファイアウォール規則の作成
 
-最初のサーバー レベルのファイアウォール設定は、[Azure ポータル](https://portal.azure.com/)、またはプログラムで REST API または Azure PowerShell を使用して作成できます。それ以降のサーバー レベルのファイアウォール規則もこれらの方法で作成および管理できます。また、Transact-SQL を介しても実行できます。サーバー レベルのファイアウォール規則の詳細については、[Azure ポータルを使用して Azure SQL サーバー ファイアウォールを構成する方法](sql-database-configure-firewall-settings.md)に関するページをご覧ください。
+最初のサーバー レベルのファイアウォール設定は、[Azure ポータル](https://portal.azure.com/)、またはプログラムで REST API または Azure PowerShell を使用して作成できます。それ以降のサーバー レベルのファイアウォール規則もこれらの方法で作成および管理できます。また、Transact-SQL を介しても実行できます。サーバー レベルのファイアウォール規則の詳細については、「[方法: Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings.md)」を参照してください。
 
 ## データベース レベルのファイアウォール規則の作成
 
-最初のサーバー レベルのファイアウォールを構成した後、特定のデータベースへのアクセスを制限することがあります。サーバー レベルのファイアウォール規則で指定された範囲外にあるデータベース レベルのファイアウォール規則で IP アドレスの範囲を指定した場合、データベース レベルの範囲の IP アドレスを持つクライアントのみがデータベースにアクセスできます。データベースに対し、最大 128 のデータベース レベルのファイアウォール規則を持つことができます。マスターおよびユーザーのデータベースに対するデータベース レベルのファイアウォール規則は、Transact-SQL を介して作成、および管理できます。データベース レベルのファイアウォールの構成の詳細については、「[sp\_set\_database\_firewall\_rule (SQL データベース)](https://msdn.microsoft.com/library/dn270010.aspx)」をご覧ください。
+最初のサーバー レベルのファイアウォールを構成した後、特定のデータベースへのアクセスを制限することがあります。サーバー レベルのファイアウォール規則で指定された範囲外にあるデータベース レベルのファイアウォール規則で IP アドレスの範囲を指定した場合、データベース レベルの範囲の IP アドレスを持つクライアントのみがデータベースにアクセスできます。データベースに対し、最大 128 のデータベース レベルのファイアウォール規則を持つことができます。マスターおよびユーザーのデータベースに対するデータベース レベルのファイアウォール規則は、Transact-SQL を介して作成、および管理できます。データベース レベルのファイアウォール規則の構成の詳細については、「[sp\_set\_database\_firewall\_rule (Azure SQL データベース)](https://msdn.microsoft.com/library/dn270010.aspx)」を参照してください。
 
 ## ファイアウォール規則のプログラムによる管理
 
@@ -135,13 +135,25 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
 
  - 動的 IP アドレスの代わりに、静的 IP アドレスを取得し、ファイアウォール規則として、IP アドレス範囲を追加してください。
 
-## 関連項目
+## 次のステップ
 
-[方法: Azure ポータルを使用して Azure SQL サーバー ファイアウォールを構成する](sql-database-configure-firewall-settings.md)
+サーバー レベルおよびデータベース レベルのファイアウォール規則を作成する方法については、次の記事をご覧ください。
 
-[SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
+- [Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings.md)
+- [TSQL を使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings-tsql.md)
+- [PowerShell を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を構成する](sql-database-configure-firewall-settings-powershell.md)
+- [REST API を使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings-rest.md)
+
+データベース作成のチュートリアルについては、「[SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」をご覧ください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、[クライアントから SQL Database にすばやく接続するためのコード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関するページをご覧ください。データベースに移動する方法については、[データベースへのアクセスとログイン セキュリティの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)に関するページをご覧ください。
+
+
+
+## その他のリソース
+
+- [データベースの保護](sql-database-security.md)
+- [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
 
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

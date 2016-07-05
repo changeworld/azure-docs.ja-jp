@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/06/2016"
+   ms.date="06/17/2016"
    ms.author="larryfr"/>
 
 #HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
@@ -126,9 +126,9 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 7. **F5** キーを押してアプリケーションを起動します。
 8. **ENTER** キーを押してアプリケーションを閉じます。
 
-## まとめ
+## 概要
 
-このように、.NET SDK for Hadoop では Pig ジョブを HDInsight クラスターに送信する .NET アプリケーションを作成して、ジョブのステータスを監視し、出力を取得できます。
+このように、.NET SDK for Hadoop では、Pig ジョブを HDInsight クラスターに送信する .NET アプリケーションを作成し、ジョブの状態を監視できます。
 
 ## 次のステップ
 
@@ -143,4 +143,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

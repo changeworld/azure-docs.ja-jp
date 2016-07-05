@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="05/10/2016"
+   ms.date="06/16/2016"
    ms.author="sashan"/>
 
 # SQL Database アクティブ geo レプリケーションを使用したクラウド アプリケーションのローリング アップグレードの管理
 
 
-> [AZURE.NOTE] [Active Geo-Replication](sql-database-geo-replication-overview.md) すべてのレベルのすべてのデータベースで を使用できるようになりました。
+> [AZURE.NOTE] [Active Geo-Replication]すべてのレベルのすべてのデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
 
 
 SQL Database で [geo レプリケーション](sql-database-geo-replication-overview.md)を使用してクラウド アプリケーションのローリング アップグレードを有効にする方法について説明します。アップグレードは中断を伴う作業であるため、ビジネス継続性の計画と設計の一部として組み込む必要があります。この記事では、アップグレード処理を編成する 2 種類の方法を確認し、方法ごとにメリットとトレードオフを説明します。この記事では、データ層として単一のデータベースに接続されている Web サイトで構成される単純なアプリケーションを使用します。ここでの目的は、エンド ユーザー エクスペリエンスに大幅な影響を及ぼさずにアプリケーションをバージョン 1 からバージョン 2 にアップグレードすることです。
@@ -120,8 +120,9 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 
 この記事で説明している 2 種類のアップグレード方法の違いは、複雑さとコストです。ただし、両方とも、エンドユーザーの操作が読み取り専用に制限される時間を最小限に抑えることに焦点を合わせています。この時間は、直接的にはアップグレード スクリプトの時間で決まります。データベースのサイズ、選択したサービス レベル、Web サイトの構成、制御が容易でないその他の要因には左右されません。その理由は、すべての準備の手順が、アップグレードの手順から切り離されていて、運用アプリケーションに影響を与えずに実行できるためです。アップグレード スクリプトの効率性は、アップグレード中のエンド ユーザー エクスペリエンスを決定する重要な要素です。これを改善できる最適な方法は、アップグレード スクリプトをできる限り効率的にすることに集中して取り組むことです。
 
-## その他のリソース
- 以下のページでは、アップグレード ワークフローを実装するために必要な具体的操作について学べます。
+
+## 次のステップ
+以下のページでは、アップグレード ワークフローを実装するために必要な具体的操作について学べます。
 
 - [セカンダリ データベースの追加](https://msdn.microsoft.com/library/azure/mt603689.aspx) 
 - [セカンダリへのデータベースのフェールオーバー](https://msdn.microsoft.com/library/azure/mt619393.aspx)
@@ -131,4 +132,15 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 - [データベースのコピー](https://msdn.microsoft.com/library/azure/mt603644.aspx)
 - [読み取り専用モードまたは読み取り/書き込みモードへのデータベースの設定](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0608_2016-->
+## その他のリソース
+
+- [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](sql-database-business-continuity.md)
+- [Overview: SQL Database Point-in-Time Restore (概要: SQL Database のポイントインタイム リストア)](sql-database-point-in-time-restore.md)
+- [geo リストア](sql-database-geo-restore.md)
+- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
+- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
+- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
+- [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
+
+<!---HONumber=AcomDC_0622_2016-->

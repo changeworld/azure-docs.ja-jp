@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="bradsev" />
 
 # SSIS コネクタを使用して Azure BLOB ストレージとの間でデータを移動する
@@ -87,4 +87,4 @@ SSIS 機能パックでは、複数のタスクを 1 つにパッケージ化す
 - SSIS を使用して Azure HDInsight クラスター上で Hive スクリプトを実行するには、[Azure HDInsight Hive タスク](https://msdn.microsoft.com/library/mt146771.aspx)を使用します。
 - SSIS を使用して Azure HDInsight クラスター上で Pig スクリプトを実行するには、[Azure HDInsight Pig タスク](https://msdn.microsoft.com/library/mt146781.aspx)を使用します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

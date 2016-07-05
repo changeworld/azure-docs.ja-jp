@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="03/23/2016"
+    ms.date="06/21/2016"
     ms.author="alkohli" />
 
 # StorSimple 8000 シリーズ Update 0.1 リリース ノート - 2014 年 10 月  
@@ -99,4 +99,4 @@ StorSimple デバイスを更新する前に、次の前提条件が満たされ
 このリリースには、仮想デバイス用の更新プログラムは含まれていません。この更新プログラムを適用しても、仮想デバイスのソフトウェア バージョンは変更されません。
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0622_2016-->

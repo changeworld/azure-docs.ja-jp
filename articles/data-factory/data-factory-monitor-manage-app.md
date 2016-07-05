@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/04/2016" 
+	ms.date="06/20/2016" 
 	ms.author="spelluru"/>
 
 # 新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
@@ -314,4 +314,4 @@ Data Factory のダイアグラム ビューでは、Data Factory とその資�
     
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

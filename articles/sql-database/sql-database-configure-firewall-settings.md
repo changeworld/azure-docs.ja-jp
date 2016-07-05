@@ -1,5 +1,5 @@
 <properties
-	pageTitle="方法: SQL サーバーのファイアウォールを構成する | Microsoft Azure"
+	pageTitle="SQL Database のサーバー レベルのファイアウォール規則の構成 | Microsoft Azure"
 	description="Azure SQL サーバーにアクセスする IP アドレス用のファイアウォールの構成方法を説明します。"
 	services="sql-database"
 	documentationCenter=""
@@ -18,7 +18,7 @@
 	ms.author="rickbyh;carlrab"/>
 
 
-# 方法: Azure ポータルを使用して Azure SQL サーバーのファイアウォールを構成する
+# Azure ポータルを使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する
 
 
 > [AZURE.SELECTOR]
@@ -49,9 +49,21 @@ Azure SQL Server では、サーバーとデータベースの接続許可に、
 
 ## 次のステップ
 
-サーバーのファイアウォール規則は、Azure SQL Server 上のすべての SQL Database に影響があります。1 つのデータベースにのみ影響するデータベース レベルのファイアウォール規則を構成するには、「[sp\_set\_database\_firewall\_rule (Azure SQL データベース)](https://msdn.microsoft.com/library/dn270010.aspx")」を参照してください。
+Transact-SQL を使用して、サーバー レベルおよびデータベース レベルのファイアウォール規則を作成する方法に関する記事については、「[方法: TSQL を使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings-tsql.md)」をご覧ください。
 
-データベース作成のチュートリアルについては、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」を参照してください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、「[プログラムで Azure SQL Database に接続するためのガイドライン](https://msdn.microsoft.com/library/azure/ee336282.aspx)」を参照してください。データベースへの接続を承認する方法については、「[SQL Database のセキュリティ: データベースのアクセスとログインのセキュリティの管理](sql-database-manage-logins.md)」を参照してください。
+他の方法でサーバー レベルのファイアウォール規則を作成する方法については、次の記事をご覧ください。
+
+- [PowerShell を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を構成する](sql-database-configure-firewall-settings-powershell.md)
+- [REST API を使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings-rest.md)
+
+データベース作成のチュートリアルについては、「[SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」を参照してください。オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、[クライアントから SQL Database にすばやく接続するためのコード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関するページを参照してください。データベースに移動する方法については、[データベースへのアクセスとログイン セキュリティの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)に関するページをご覧ください。
+
+
+## その他のリソース
+
+- [データベースの保護](sql-database-security.md)
+- [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
+
 
 <!--Image references-->
 [1]: ./media/sql-database-configure-firewall-settings/AzurePortalBrowseForFirewall.png
@@ -60,4 +72,4 @@ Azure SQL Server では、サーバーとデータベースの接続許可に、
 
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

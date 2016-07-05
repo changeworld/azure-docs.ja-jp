@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/30/2016"
+   ms.date="06/20/2016"
    ms.author="toddabel"/>
 
 
@@ -60,4 +60,4 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 * [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)
 * [Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する](service-fabric-diagnostic-how-to-use-elasticsearch.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0622_2016-->

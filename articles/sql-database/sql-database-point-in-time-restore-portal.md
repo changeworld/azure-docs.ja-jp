@@ -10,9 +10,9 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="06/09/2016"
+	ms.date="06/17/2016"
 	ms.author="sstein"
-	ms.workload="data-management"
+	ms.workload="sqldb-bcdr"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
 
@@ -45,17 +45,13 @@ Azure ポータルでデータベースを復元するには、次の手順を�
 
 ## 次のステップ
 
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [ポイントインタイム リストア](sql-database-point-in-time-restore.md)
-- [REST API を使用したポイントインタイム リストア](https://msdn.microsoft.com/library/azure/mt163685.aspx)
-- [SQL Database 自動バックアップ](sql-database-automated-backups.md)
+- PowerShell を使用して特定の時点に復旧する詳細な手順については、[PowerShell を使用したポイントインタイム リストア](sql-database-point-in-time-restore-powershell.md)に関するページをご覧ください。
+- REST API を使用して特定の時点に復旧する詳細な手順については、[REST API を使用したポイントインタイム リストア](https://msdn.microsoft.com/library/azure/mt163685.aspx)に関するページをご覧ください。
+- ポイントイン タイム リストアの概要については、[ポイントインタイム リストア](sql-database-point-in-time-restore.md)に関するページをご覧ください。
+- ユーザー エラーまたはアプリケーション エラーから復旧する方法の詳細については、[ユーザー エラーの復旧](sql-database-user-error-recovery.md)に関するページをご覧ください。
 
 ## その他のリソース
 
-- [削除されたデータベースの復元](sql-database-restore-deleted-database.md)
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [geo リストア](sql-database-geo-restore.md)
-- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
-- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [ビジネス継続性のシナリオ](sql-database-business-continuity-scenarios.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

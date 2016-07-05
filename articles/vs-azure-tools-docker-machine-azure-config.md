@@ -1,7 +1,7 @@
 <properties
    pageTitle="Docker マシンを利用し、Azure で Docker ホストを作成する | Microsoft Azure"
    description="Docker マシンを利用し、Azure で Docker ホストを作成する方法について説明します。"
-   services="visual-studio-online"
+   services="azure-container-service"
    documentationCenter="na"
    authors="allclark"
    manager="douge"
@@ -109,4 +109,4 @@ docker-machine を使用して、個々の Docker ホストの検証のために
 
 Visual Studio を使用した .NET Core アプリケーションの開発については、「[Docker Tools for Visual Studio (Visual Studio 用 Docker ツール)](http://aka.ms/DockerToolsForVS)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

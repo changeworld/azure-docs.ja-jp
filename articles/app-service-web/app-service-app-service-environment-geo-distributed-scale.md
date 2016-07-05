@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/04/2016" 
+	ms.date="06/21/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境を使用した geo 分散スケール
@@ -52,7 +52,7 @@ App Service 環境は、水平方向のスケールアウトに最適なプラ�
 - **webfrontend2.fe2ase.p.azurewebsites.net:** 2 つ目の App Service 環境にデプロイされているサンプル アプリのインスタンス。
 - **webfrontend3.fe3ase.p.azurewebsites.net:** 3 つ目の App Service 環境にデプロイされているサンプル アプリのインスタンス。
 
-**同じ** Azure リージョンで実行される複数の Azure App Service エンドポイントを登録するには、Powershell を使用した [Azure リソース マネージャー (ARM) による Traffic Manager のサポート][ARMTrafficManager] (プレビュー) を使用すれば最も簡単に実現できます。
+**同じ** Azure リージョンで実行される複数の Azure App Service エンドポイントを登録するには、Powershell を使用した [Azure リソース マネージャー (ARM) による Traffic Manager のサポート][ARMTrafficManager] \(プレビュー) を使用すれば最も簡単に実現できます。
 
 最初の手順では、Azure Traffic Manager プロファイルの作成です。次のコードでは、サンプル アプリ用プロファイルの作成方法を示しています。
 
@@ -107,7 +107,9 @@ Traffic Manager と DNS を構成すると、最終的に、*www.scalableasedemo
 ![DNS Lookup][DNSLookup]
 
 ## その他のリンクおよび情報 ##
-Powershell を使用した [Azure リソース マネージャー (ARM) による Traffic Manager のサポート][ARMTrafficManager] (プレビュー) に関するドキュメント
+App Service 環境に関するすべての記事と作業方法は [Application Service Environments の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
+
+Powershell を使用した [Azure リソース マネージャー (ARM) による Traffic Manager のサポート][ARMTrafficManager] \(プレビュー) に関するドキュメント
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -125,4 +127,4 @@ Powershell を使用した [Azure リソース マネージャー (ARM) によ�
 [DNSLookup]: ./media/app-service-app-service-environment-geo-distributed-scale/DNSLookup-1.png
 [CustomDomain]: ./media/app-service-app-service-environment-geo-distributed-scale/CustomDomain-1.png
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0622_2016-->
