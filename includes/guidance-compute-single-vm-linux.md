@@ -1,54 +1,54 @@
-This article outlines a set of proven practices for running a Linux virtual machine (VM) on Azure, paying attention to scalability, availability, manageability, and security. Azure supports running a number of popular Linux distributions, including CentOS, Debian, Red Hat Enterprise, Ubuntu, and FreeBSD. For more information, see [Azure and Linux][azure-linux].
+この記事では、スケーラビリティ、可用性、管理容易性、およびセキュリティに注目しながら、Azure で Linux 仮想マシン (VM) を実行するための実績のある一連の手法について説明します。Azure では、CentOS、Debian、Red Hat Enterprise、Ubuntu、FreeBSD など、現在普及しているさまざまな Linux ディストリビューションに対応します。詳細については、「[Azure と Linux][azure-linux]」を参照してください。
 
-> [AZURE.NOTE] Azure has two different deployment models: [Resource Manager][resource-manager-overview] and classic. This article uses Resource Manager, which Microsoft recommends for new deployments.
+> [AZURE.NOTE] Azure には、[Resource Manager][resource-manager-overview] とクラシックという 2 種類のデプロイ モデルがあります。この記事では、新しいデプロイ用に Microsoft から推奨されている Resource Manager を使います。
 
-We don't recommend using a single VM for production workloads, because there is no up-time SLA for single VMs on Azure. To get the SLA, you must deploy multiple VMs in an availability set. For more information, see [Running multiple VMs on Azure][multi-vm]. 
+Azure 上の単一の VM にはアップタイムの SLA がないため、実稼働ワークロードで単一の VM を使用することは推奨しません。SLA を取得するには、複数の VM を可用性セットにデプロイする必要があります。詳細については、「[Running multiple VMs on Azure (Azure で複数の VM を実行する)][multi-vm]」を参照してください。
 
-## Architecture diagram
+## アーキテクチャ ダイアグラム
 
-Provisioning a VM in Azure involves more moving parts than just the VM itself. There are compute, networking, and storage elements.  
+Azure で VM をプロビジョニングする際は、VM 自体のみよりも、多くの変動的な部分があります。コンピューティング、ネットワーク、およびストレージの要素があります。
 
 ![IaaS: single VM](./media/guidance-blueprints/compute-single-vm.png)
 
-- **Resource group.** A [_resource group_][resource-manager-overview] is a container that holds related resources. Create a resource group to hold the resources for this VM.
+- **リソース グループ。** [_リソース グループ_][resource-manager-overview]は、関連リソースを保持するコンテナーです。この VM のリソースを保持するリソース グループを作成します。
 
-- **VM**. You can provision a VM from a list of published images or from a VHD file that you upload to Azure blob storage.
+- **VM。**VM は、発行されたイメージのリスト、または Azure Blob Storage にアップロードした VHD ファイルからプロビジョニングできます。
 
-- **OS disk.** The OS disk is a VHD stored in [Azure storage][azure-storage]. That means it persists even if the host machine goes down. The OS disk is `/dev/sda1`
+- **OS ディスク。** OS ディスクは、[Azure Storage][azure-storage] に格納されている VHD です。これは、ホスト コンピューターがダウンした場合でも VM が保持されることを意味します。OS ディスクは `/dev/sda1` です
 
-- **Temporary disk.** The VM is created with a temporary disk. This disk is stored on a physical drive on the host machine. It is _not_ saved in Azure storage, and might go away during reboots and other VM lifecycle events. Use this disk only for temporary data, such as page or swap files. The temporary disk is `/dev/sdb1` and is mounted at `/mnt/resource` or `/mnt`.
+- **一時ディスク。** VM は一時ディスクを使用して作成されます。このディスクは、ホスト コンピューターの物理ドライブ上に格納されます。このディスクは、Azure Storage には保存_されない_ため、再起動中やその他の VM ライフサイクル イベント時に失われる可能性があります。ページ ファイルやスワップ ファイルなどの一時的なデータにのみ、このディスクを使用してください。一時ディスクは `/dev/sdb1` で、`/mnt/resource` または `/mnt` でマウントされます。
 
-- **Data disks.** A [data disk][data-disk] is a persistent VHD used for application data. Data disks are stored in Azure storage, like the OS disk.
+- **データ ディスク。** [データ ディスク][data-disk]は、アプリケーション データに使用される永続的な VHD です。データ ディスクは、OS ディスクと同様に、Azure Storage に格納されます。
 
-- **Virtual network (VNet) and subnet.** Every VM in Azure is deployed into a virtual network (VNet), which is further divided into subnets.
+- **仮想ネットワーク (VNet) とサブネット。** Azure 上のすべての VM は、仮想ネットワーク (VNet) にデプロイされます。仮想ネットワークは、さらに複数のサブネットに分かれています。
 
-- **Public IP address.** A public IP address is needed to communicate with the VM&mdash;for example over ssh.
+- **パブリック IP アドレス。** パブリック IP アドレスは、SSH 経由など、VM と通信するために必要です。
 
-- **Network interface (NIC)**. The NIC enables the VM to communicate with the virtual network.
+- **ネットワーク インターフェイス (NIC)。**NIC を使用すると、VM は仮想ネットワークと通信できます。
 
-- **Network security group (NSG)**. The [NSG][nsg] is used to allow/deny network traffic to the subnet. You can associate an NSG with an individual NIC or with a subnet. If you associate it with a subnet, the NSG rules apply to all VMs in that subnet.
+- **ネットワーク セキュリティ グループ (NSG)。**[NSG][nsg] は、サブネットへのネットワーク トラフィックを許可または拒否するために使用します。NSG は、個々 の NIC またはサブネットに関連付けることができます。NSG をサブネットに関連付けると、そのサブネット内のすべての VM に NSG ルールが適用されます。
  
-- **Diagnostics.** Diagnostic logging is crucial for managing and troubleshooting the VM.
+- **[診断]。** 診断ログは、VM の管理とトラブルシューティングにとって非常に重要です。
 
-## Recommendations
+## 推奨事項
 
-### VM recommendations
+### VM の推奨事項
 
-- We recommend the DS- and GS-series, unless you have a specialized workload such as high-performance computing. For details, see [Virtual machine sizes][virtual-machine-sizes]. When moving an existing workload to Azure, start with the VM size that's the closest match to your on-premise servers. Then measure the performance of your actual workload with respect to CPU, memory, and disk IOPS, and adjust the size if needed. Also, if you need multiple NICs, be aware of the NIC limit for each size.  
+- ハイ パフォーマンス コンピューティングなどの特殊なワークロードがない限り、DS と GS のシリーズをお勧めします。詳細については、「[仮想マシンのサイズ][virtual-machine-sizes]」をご覧ください。既存のワークロードを Azure に移動する場合は、オンプレミスのサーバーに最も適合性が高い VM サイズから開始します。次に、CPU、メモリ、およびディスク IOPS について、実際のワークロードのパフォーマンスを測定し、必要に応じてサイズを調整します。また、複数の NIC が必要な場合は、各サイズの NIC の制限に注意してください。  
 
-- When you provision the VM and other resources, you must specify a location. Generally, choose a location closest to your internal users or customers. However, not all VM sizes may be available in all locations. For details, see [Services by region][services-by-region]. To list the VM sizes available in a given location, run the following Azure CLI command:
+- VM および他のリソースをプロビジョニングする際は、場所を指定する必要があります。一般的に、内部ユーザーや顧客に最も近い場所を選択します。ただし、すべての場所ですべての VM サイズを利用できるとは限りません。詳細については、「[リージョン別のサービス][services-by-region]」をご覧ください。指定した場所で利用できる VM サイズを一覧表示するには、次の Azure CLI コマンドを実行します。
 
     ```
     azure vm sizes --location <location>
     ```
 
-- For information about choosing a published VM image, see [Navigate and select Azure virtual machine images][select-vm-image].
+- 発行された VM イメージの選択については、[Azure 仮想マシン イメージへの移動と選択][select-vm-image]に関するページを参照してください。
 
-### Disk and storage recommendations
+### ディスクとストレージの推奨事項
 
-- For best disk I/O performance, we recommend [Premium Storage][premium-storage], which stores data on solid state drives (SSDs). Cost is based on the size of the provisioned disk. IOPS and throughput (i.e., data transfer rate) also depend on disk size, so when you provision a disk, consider all three factors (capacity, IOPS, and throughput). 
+- 最適なディスク I/O パフォーマンスを得るには、[Premium Storage][premium-storage] をお勧めします。ここでは、データがソリッド ステート ドライブ (SSD) に格納されます。コストは、プロビジョニングされたディスクのサイズに基づいて決まります。また、IOPS とスループット (つまり、データ転送速度) もディスク サイズによって異なるため、ディスクをプロビジョニングする場合は、3 つの要素 (容量、IOPS、スループット) すべてを考慮してください。 
 
-- Add one or more data disks. When you create a new VHD, it is unformatted. Log into the VM to format the disk. The data disks will show as `/dev/sdc`, `/dev/sdd`, and so on. You can run `lsblk` to list the block devices, including the disks. To use a data disk, create a new partition and file system, and mount the disk. For example:
+- 1 つ以上のデータ ディスクを追加します。新しく作成した VHD は、フォーマットされていません。その VM にログインしてディスクをフォーマットしてください。データ ディスクは、`/dev/sdc`、`/dev/sdd` などのように表示されます。`lsblk` を実行すると、ディスクなどのブロック デバイスの一覧を表示できます。データ ディスクを使用するには、新しいパーティションとファイル システムを作成し、ディスクをマウントします。次に例を示します。
 
     ```bat
     # Create a partition.
@@ -62,106 +62,106 @@ Provisioning a VM in Azure involves more moving parts than just the VM itself. T
     sudo mount /dev/sdc1 /data1
     ```
 
-- If you have a large number of data disks, be aware of the total I/O limits of the storage account. For more information, see [Virtual Machine Disk Limits][vm-disk-limits].
+- データ ディスクの数が多い場合は、ストレージ アカウントの合計 I/O 制限に注意してください。詳細については、「[仮想マシン ディスクの制限][vm-disk-limits]」を参照してください。
 
-- When you add a data disk, a logical unit number (LUN) ID is assigned to the disk. Optionally, you can specify the LUN ID &mdash; for example, if you're replacing a disk and want to retain the same LUN ID, or you have an app that looks for a specific LUN ID. However, remember that LUN IDs must be unique for each disk.
+- データ ディスクを追加すると、ディスクに論理ユニット番号 (LUN) の ID が割り当てられます。LUN ID は必要に応じて指定できます。たとえば、ディスクを交換する際に同じ LUN ID を保持したい場合や、特定の LUN ID を検索するアプリがある場合などに指定します。ただし、ディスクごとに一意な LUN ID である必要があります。
 
-- You may want to change the I/O scheduler, to optimize for performance on SSDs (used by Premium Storage). A common recommendation is to use the NOOP scheduler for SSDs, but you should use a tool such as [iostat] to monitor disk I/O performance for your particular workload.
+- I/O スケジューラを変更して、(Premium Storage で使用される) SSD のパフォーマンスを最適化することができます。一般的な推奨事項は、SSD に対して NOOP スケジューラを使用することですが、[iostat] などのツールを使用して、特定のワークロードのディスク I/O パフォーマンスを監視する必要があります。
 
-- For best performance, create a separate storage account to hold diagnostic logs. A standard locally redundant storage (LRS) account is sufficient for diagnostic logs.
+- 最適なパフォーマンスを得るには、診断ログを保持するためのストレージ アカウントを別途作成します。診断ログには、標準的なローカル冗長ストレージ (LRS) アカウントがあれば十分です。
 
 
-### Network recommendations
+### ネットワークの推奨事項
 
-- The public IP address can be dynamic or static. The default is dynamic.
+- パブリック IP アドレスは、動的でも静的でもかまいません。既定では、動的アドレスになっています。
 
-    - Reserve a [static IP address][static-ip] if you need a fixed IP address that won't change &mdash; for example, if you need to create an A record in DNS, or need the IP address to be whitelisted.
+    - 変化しない固定 IP アドレスが必要な場合 (たとえば、DNS に A レコードを作成する必要がある場合や IP アドレスをホワイトリストに登録する必要がある場合) は、[静的 IP アドレス][static-ip]を予約します。
 
-    - You can also create a fully qualified domain name (FQDN) for the IP address. You can then register a [CNAME record][cname-record] in DNS that points to the FQDN. For more information, see [Create a Fully Qualified Domain Name in the Azure portal][fqdn].
+    - IP アドレスの完全修飾ドメイン名 (FQDN) を作成することもできます。これにより、その FQDN を参照する DNS で [CNAME レコード][cname-record]を登録できます。詳細については、「[Azure ポータルでの完全修飾ドメイン名の作成][fqdn]」を参照してください。
 
-- All NSGs contain a set of [default rules][nsg-default-rules], including a rule that blocks all inbound Internet traffic. The default rules cannot be deleted, but other rules can override them. To enable Internet traffic, create rules that allow inbound traffic to specific ports &mdash; for example, port 80 for HTTP.  
+- すべての NSG は、すべての着信インターネット トラフィックをブロックするルールなど、[既定のルール][nsg-default-rules]のセットを含みます。既定のルールを削除することはできませんが、他の規則でオーバーライドすることはできます。インターネット トラフィックを有効にするには、特定のポート (HTTP のポート 80 など) への着信トラフィックを許可するルールを作成します。
 
-- To enable ssh, add a rule to the NSG that allows inbound traffic to TCP port 22.
+- SSH を有効にするには、TCP ポート 22 への着信トラフィックを許可する規則を NSG に追加します。
 
-## Scalability considerations
+## 拡張性に関する考慮事項
 
-- You can scale a VM up or down by [changing the VM size][vm-resize]. 
+- [VM サイズを変更する][vm-resize]ことで VM をスケールアップまたはスケールダウンできます。 
 
-- To scale out horizontally, put two or more VMs into an availability set behind a load balancer. For details, see [Running multiple VMs on Azure][multi-vm].
+- 水平方向にスケール アウトするには、ロード バランサーの内側の可用性セットに 2 つ以上の VM を配置します。詳細については、「[Running multiple VMs on Azure (Azure で複数の VM を実行する)][multi-vm]」をご覧ください。
 
-## Availability considerations
+## 可用性に関する考慮事項
 
-- As noted above, there is no SLA for a single VM. To get the SLA, you must deploy multiple VMs into an availability set.
+- 前述のように、単一の VM には SLA がありません。SLA を取得するには、複数の VM を可用性セットにデプロイする必要があります。
 
-- Your VM may be affected by [planned maintenance][planned-maintenance] or [unplanned maintenance][manage-vm-availability]. You can use [VM reboot logs][reboot-logs] to determine whether a VM reboot was caused by planned maintenance.
+- VM は、[計画的メンテナンス][planned-maintenance]または[計画外メンテナンス][manage-vm-availability]の影響を受ける可能性があります。[VM の再起動ログ][reboot-logs]を使用すると、VM の再起動が計画的なメンテナンスによるものかどうかを確認できます。
 
-- VHDs are backed by [Azure Storage][azure-storage], which is replicated for durability and availability.
+- VHD は、レプリケートによって持続性と可用性が確保される [Azure Storage][azure-storage] によってサポートされます。
 
-- To protect against accidental data loss during normal operations (e.g., because of user error), you should also implement point-in-time backups, using [blob snapshots][blob-snapshot] or another tool.
+- 通常の操作中に (ユーザー エラーなどによる) 偶発的なデータの損失から保護するために、[BLOB スナップショット][blob-snapshot]または他のツールを使用してポイントインタイム バックアップを実装する必要もあります。
 
-## Manageability considerations
+## 管理容易性に関する考慮事項
 
-- **Resource groups.** Put tightly coupled resources that share the same life cycle into a same [resource group][resource-manager-overview]. Resource groups allow you to deploy and monitor resources as a group, and roll up billing costs by resource group. You can also delete resources as a set, which is very useful for test deployments. Give resources meaningful names. That makes it easier to locate a specific resource and understand its role. See [Recommended Naming Conventions for Azure Resources][naming conventions].
+- **リソース グループ。** 同じライフ サイクルを共有する密結合のリソースを同じ[リソース グループ][resource-manager-overview]に配置します。リソース グループを使用すると、グループとしてリソースをデプロイおよび監視し、リソース グループ別に請求コストをまとめることができます。セットとしてリソースを削除することもできます。これはテスト デプロイの場合に便利です。リソースにはわかりやすい名前を付けます。これにより、特定のリソースを見つけて、その役割を理解することが簡単になります。「[Recommended Naming Conventions for Azure Resources (Azure リソースの推奨される名前付け規則)][naming conventions]」をご覧ください。
 
-- **ssh**. Before you create a Linux VM, generate a 2048-bit RSA public-private key pair. Use the public key file when you create the VM. For more information, see [How to Use SSH with Linux and Mac on Azure][ssh-linux].
+- **ssh**。Linux VM を作成する前に、2048 ビット RSA 公開/秘密キー ペアを生成します。VM を作成する場合は、公開キー ファイルを使用します。詳細については、「[Azure 上の Linux または Mac における SSH の使用方法][ssh-linux]」を参照してください。
 
-- **VM diagnostics.** Enable monitoring and diagnostics, including basic health metrics, diagnostics infrastructure logs, and [boot diagnostics][boot-diagnostics]. Boot diagnostics can help you diagnose boot failure if your VM gets into a non-bootable state. For more information, see [Enable monitoring and diagnostics][enable-monitoring].  
+- **VM 診断。** 基本的な正常性メトリック、診断インフラストラクチャ ログ、および[ブート診断][boot-diagnostics]などの監視と診断を有効にします。VM が起動不可能な状態になった場合は、起動エラーを診断するのにブート診断が役立ちます。詳細については、「[監視と診断の有効化][enable-monitoring]」を参照してください。
 
-    The following CLI command enables diagnostics:
+    次の CLI コマンドを実行して、診断を有効にします。
 
     ```text
     azure vm enable-diag <resource-group> <vm-name>
     ```
 
-- **Stopping a VM.** Azure makes a distinction between "Stopped" and "De-allocated" states. You are charged when the VM status is "Stopped". You are not charged when the VM de-allocated.
+- **VM の停止。** Azure では、"停止" 状態と "割り当て解除済み" 状態が区別されます。VM が "停止" 状態のときは課金されます。VM が "割り当て解除済み" 状態のときは課金されません
 
-    Use the following CLI command to de-allocate a VM:
+    次の CLI コマンドを使用して、VM の割り当てを解除します。
 
     ```text
     azure vm deallocate <resource-group> <vm-name>
     ```
 
-    The **Stop** button in the Azure portal also deallocates the VM. However, if you shut down through the OS while logged in, the VM is stopped but _not_ de-allocated, so you will still be charged.
+    Azure ポータルの **[停止]** ボタンを使用した場合も VM の割り当てが解除されます。ただし、ログイン中に OS からシャットダウンした場合、VM は停止しますが、割り当て解除_されない_ため、引き続き課金されます。
 
-- **Deleting a VM.** If you delete a VM, the VHDs are not deleted. That means you can safely delete the VM without losing data. However, you will still be charged for storage. To delete the VHD, delete the file from [blob storage][blob-storage].
+- **VM の削除。** VM を削除しても VHD は削除されません。つまり、データを失うことなく安全に VM を削除できます。ただし、Storage に対して引き続き課金されます。VHD を削除するには、[Blob Storage][blob-storage] からファイルを削除してください。
 
-  To prevent accidental deletion, use a [resource lock][resource-lock] to lock the entire resource group or lock individual resources, such as the VM. 
+  誤って削除されないように、[リソース ロック][resource-lock]を使用してリソース グループ全体をロックするか、VM などの個々 のリソースをロックします。
 
 
 
-## Security considerations
+## セキュリティに関する考慮事項
 
-- Automate OS updates by using the [OSPatching] VM extension. Install this extension when you provision the VM. You can specify how often to install patches and whether to reboot after patching.
+- [OSPatching] VM 拡張機能を使用して、OS の更新を自動化します。VM をプロビジョニングする場合は、この拡張機能をインストールしてください。パッチをインストールする頻度と、パッチの適用後に再起動するかどうかを指定することができます。
 
-- Use [role-based access control][rbac] (RBAC) to control access to the Azure resources that you deploy. RBAC lets you assign authorization roles to members of your DevOps team. For example, the Reader role can view Azure resources but not create, manage, or delete them. Some roles are specific to particular Azure resource types. For example, the Virtual Machine Contrubutor role can restart or deallocate a VM, reset the administrator password, create a new VM, and so forth. Other [built-in RBAC roles][rbac-roles] that might be useful for this reference architecture include [DevTest Lab User][rbac-devtest] and [Network Contributor][rbac-network]. A user can be assigned to multiple roles, and you can create custom roles for even more fine-grained permissions.
+- [ロールベースのアクセス制御][rbac] (RBAC) を使用して、デプロイする Azure リソースへのアクセスを制御します。RBAC を使用すると、DevOps チームのメンバーに承認の役割を割り当てることができます。たとえば、閲覧者の役割では、Azure リソースを表示することはできますが、作成、削除、または管理することはできません。一部の役割は、特定の Azure リソースの種類に固有です。たとえば、仮想マシンの共同作業者の役割では、VM の再起動または割り当て解除、管理者パスワードのリセット、新しい VM の作成などができます。この参照アーキテクチャで役立つ可能性があるその他の[組み込みの RBAC の役割][rbac-roles]は、[DevTest ラボ ユーザー][rbac-devtest]および[ネットワークの共同作業者][rbac-network]に含まれています。ユーザーを複数の役割に割り当てることができ、よりきめ細かいアクセス許可のカスタム ロールを作成することができます。
 
-    > [AZURE.NOTE] RBAC does not limit the actions that a user logged into a VM can perform. Those permissions are determined by the account type on the guest OS.   
+    > [AZURE.NOTE] RBAC では、VM にログインしているユーザーが実行できる操作は制限されません。これらのアクセス許可は、ゲスト OS のアカウントの種類によって決まります。
 
-- Use [audit logs][audit-logs] to see provisioning actions and other VM events.
+- プロビジョニング操作やその他の VM イベントを確認するには、[監査ログ][audit-logs]を使用します。
 
-- Consider [Azure Disk Encryption][disk-encryption] if you need to encrypt the OS and data disks. 
+- OS ディスクとデータ ディスクを暗号化する必要がある場合は、[Azure Disk Encryption][disk-encryption] を検討します。
 
-## Example deployment script
+## デプロイ スクリプトの例
 
-The following Bash script executes the [Azure CLI][azure-cli] commands to deploy a single VM instance and the related network and storage resources, as shown in the previous diagram.
+次の Bash スクリプトは、[Azure CLI][azure-cli] コマンドを実行し、前の図に示されているように、単一の VM インスタンスとそれに関連するネットワーク リソースやストレージ リソースをデプロイします。
 
-The script uses the naming conventions described in [Recommended Naming Conventions for Azure Resources][naming conventions].
+このスクリプトでは、「[Recommended Naming Conventions for Azure Resources (Azure リソースの推奨される名前付け規則)][naming conventions]」で説明されている名前付け規則を使用します。
 
-To run the script:
+スクリプトを実行するには、次の手順を実行します。
 
-1. Generate a 2048-bit RSA authentication key.
+1. 2048 ビット RSA 認証キーを生成します。
 
         ssh-keygen -t rsa -b 2048
 
-2. Pass your Azure subscription ID and the name of public key file as parameters to the script.
+2. スクリプトにパラメーターとして、Azure サブスクリプション ID と公開キー ファイルの名前を渡します。
 
         ./azurecli-single-vm-sample.sh <subscription ID> ~/.ssh/id_rsa.pub
 
-3. When the script completes, log into the VM using ssh. Use the private key to authenticate.
+3. スクリプトが完了したら、SSH を使用して VM にログインします。認証には秘密キーを使用します。
 
         ssh testuser@<app>-vm1.<location>.cloudapp.azure.com -i ~/.ssh/id_rsa
 
-    where `<app>` is the value of the `APP_NAME` script variable, and `<location>` is the value of the `LOCATION` variable.
+    ここで、`<app>` は `APP_NAME` スクリプト変数の値で、`<location>` は `LOCATION` 変数の値です。
 
 ```bat
 #!/bin/bash
@@ -310,20 +310,20 @@ azure vm extension set --name OSPatchingForLinux --publisher-name Microsoft.OSTC
 --public-config $PATCH_CONFIG --vm-name $VM_NAME --version 2.0 $POSTFIX
 ```
 
-## Next steps
+## 次のステップ
 
-In order for the [SLA for Virtual Machines][vm-sla] to apply, you must deploy two or more instances in an Availability Set. For more information, see [Running multiple VMs on Azure][multi-vm].
+[仮想マシンの SLA][vm-sla] を適用するには、可用性セットに 2 つ以上のインスタンスをデプロイする必要があります。詳細については、「[Running multiple VMs on Azure (Azure で複数の VM を実行する)][multi-vm]」を参照してください。
 
 <!-- links -->
 
 [arm-templates]: ../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md
-[audit-logs]: https://azure.microsoft.com/en-us/blog/analyze-azure-audit-logs-in-powerbi-more/
+[audit-logs]: https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/
 [azure-cli]: ../articles/virtual-machines-command-line-tools.md
 [azure-linux]: ../articles/virtual-machines/virtual-machines-linux-azure-overview.md
 [azure-storage]: ../articles/storage/storage-introduction.md
 [blob-snapshot]: ../articles/storage/storage-blob-snapshots.md
 [blob-storage]: ../articles/storage/storage-introduction.md
-[boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
+[boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
 [cname-record]: https://en.wikipedia.org/wiki/CNAME_record
 [data-disk]: ../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md
 [disk-encryption]: ../articles/azure-security-disk-encryption.md
@@ -342,17 +342,19 @@ In order for the [SLA for Virtual Machines][vm-sla] to apply, you must deploy tw
 [rbac-roles]: ../articles/active-directory/role-based-access-built-in-roles.md
 [rbac-devtest]: ../articles/active-directory/role-based-access-built-in-roles.md#devtest-lab-user
 [rbac-network]: ../articles/active-directory/role-based-access-built-in-roles.md#network-contributor
-[reboot-logs]: https://azure.microsoft.com/en-us/blog/viewing-vm-reboot-logs/
-[Resize-VHD]: https://technet.microsoft.com/en-us/library/hh848535.aspx
-[Resize virtual machines]: https://azure.microsoft.com/en-us/blog/resize-virtual-machines/
+[reboot-logs]: https://azure.microsoft.com/blog/viewing-vm-reboot-logs/
+[Resize-VHD]: https://technet.microsoft.com/ja-JP/library/hh848535.aspx
+[Resize virtual machines]: https://azure.microsoft.com/blog/resize-virtual-machines/
 [resource-lock]: ../articles/resource-group-lock-resources.md
 [resource-manager-overview]: ../articles/resource-group-overview.md
 [select-vm-image]: ../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md
-[services-by-region]: https://azure.microsoft.com/en-us/regions/#services
+[services-by-region]: https://azure.microsoft.com/regions/#services
 [ssh-linux]: ../articles/virtual-machines/virtual-machines-linux-ssh-from-linux.md
 [static-ip]: ../articles/virtual-network/virtual-networks-reserved-public-ip.md
 [storage-price]: https://azure.microsoft.com/pricing/details/storage/
 [virtual-machine-sizes]: ../articles/virtual-machines/virtual-machines-linux-sizes.md
 [vm-disk-limits]: ../articles/azure-subscription-service-limits.md#virtual-machine-disk-limits
 [vm-resize]: ../articles/virtual-machines/virtual-machines-linux-change-vm-size.md
-[vm-sla]: https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_0/
+[vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/
+
+<!---HONumber=AcomDC_0622_2016-->

@@ -68,6 +68,10 @@ IIS サーバー用の Status Monitor では、Application Insights SDK を使�
 
 小さい [x] をクリックすると、サブツリーが折りたたまれます。
 
+マップは[ダッシュボード](app-insights-dashboards.md)にピン留めし、すべての機能を利用することができます。
+
+[詳細情報](app-insights-app-map.md)。
+
 ## <a name="diagnosis"></a> Web サーバーでの依存関係のパフォーマンスの問題の診断
 
 サーバーでの要求のパフォーマンスを評価するには、次のようにします。
@@ -150,4 +154,4 @@ IIS サーバー用の Status Monitor では、Application Insights SDK を使�
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

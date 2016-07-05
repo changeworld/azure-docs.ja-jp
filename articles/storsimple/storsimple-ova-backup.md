@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/01/2016"
+   ms.date="06/07/2016"
    ms.author="alkohli" />
 
 # StorSimple Virtual Array をバックアップする
 
 ## 概要 
 
-このチュートリアルは、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) に適用されます。
+このチュートリアルは、2016 年 3 月の一般公開 (GA) リリースまたはそれ以降のバージョンを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) に適用されます。
 
 StorSimple Virtual Array は、ファイル サーバーまたは iSCSI サーバーとして構成できる、ハイブリッド クラウド ストレージのオンプレミス仮想デバイスです。バックアップの作成、バックアップからの復元、障害復旧が必要な場合にデバイスのフェールオーバーを実行できます。ファイル サーバーとして構成した場合は、項目レベルの回復もできます。このチュートリアルでは、Azure クラシック ポータルまたは StorSimple Web UI を使用して、StorSimple Virtual Array のスケジュールされたバックアップと手動バックアップを作成する方法について説明します。
 
@@ -64,7 +64,7 @@ StorSimple 仮想デバイスの既定のバックアップ ポリシーは、1 
 
     ![バックアップ ジョブの作成](./media/storsimple-ova-backup/image7.png)
 
-3. ジョブの進行状況を確認するには、**[ジョブの表示]** アイコンをクリックします。
+3. ジョブの進行状況を確認するには、**[ジョブの表示]** をクリックします。
 
 4. バックアップ ジョブが完了したら、**[バックアップ カタログ]** タブに移動します。ここには、完了したバックアップが表示されます。
 
@@ -104,4 +104,4 @@ StorSimple Virtual Array 上で共有を作成し、共有をバックアップ�
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0622_2016-->

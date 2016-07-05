@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="hangzh;bradsev" />
 
  
@@ -21,7 +21,7 @@
 
 このトピックでは Hive テーブルを作成し、Azure Blob Storage からデータを読み込む汎用の Hive クエリを紹介しています。Hive テーブルをパーティション分割する方法や、Optimized Row Columnar (ORC) 形式を使用してクエリのパフォーマンスを向上させる方法についてのガイダンスも提供されます。
 
-この**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できるターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
+この**メニュー**は、Team Data Science Process (TDSP) でデータを保存および処理できるターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
 
 [AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
@@ -38,7 +38,7 @@
 
 ここでは、Hive テーブルのデータが**圧縮されていない**表形式であることと、Hadoop クラスターが使用するストレージ アカウントの既定の (または追加の) コンテナーにデータがアップロードされていることを想定しています。
 
-_NYC タクシー乗車データ_の実習を行う場合は、まず 24 個の <a href="http://www.andresmh.com/nyctaxitrips/" target="_blank">NYC タクシー乗車データ</a> ファイル (12 個の Trip ファイルと 12 個の Fare ファイル) をダウンロードし、すべてのファイルを .csv ファイルに**解凍**します。次に、「[Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)」で説明する手順で作成された Azure ストレージ アカウントの既定のコンテナー (または適切なコンテナー) にそれらのファイルをアップロードする必要があります。ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この[ページ](machine-learning-data-science-process-hive-walkthrough/#upload)をご覧ください。
+_NYC タクシー乗車データ_の実習を行う場合は、まず 24 個の <a href="http://www.andresmh.com/nyctaxitrips/" target="_blank">NYC タクシー乗車データ</a> ファイル (12 個の Trip ファイルと 12 個の Fare ファイル) をダウンロードし、すべてのファイルを .csv ファイルに**解凍**します。次に、「[Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)」で説明する手順で作成された Azure ストレージ アカウントの既定のコンテナー (または適切なコンテナー) にそれらのファイルをアップロードする必要があります。ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この[ページ](machine-learning-data-science-process-hive-walkthrough.md#upload)をご覧ください。
 
 
 ## <a name="submit"></a>Hive クエリを送信する方法
@@ -245,4 +245,4 @@ Hive テーブルをパーティション分割することに加え、Optimized
 
 この手順が終了すれば、すぐに使用できる ORC 形式のデータを含むテーブルが手に入ったことになります。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

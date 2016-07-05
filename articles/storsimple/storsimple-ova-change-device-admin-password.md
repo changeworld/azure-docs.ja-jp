@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="03/02/2016"
+   ms.date="06/17/2016"
    ms.author="alkohli" />
 
 # StorSimple Virtual Array デバイス管理者パスワードを変更する
@@ -69,4 +69,4 @@ Azure クラシック ポータルを使用してデバイス管理者のパス�
 
 [StorSimple Virtual Array 管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0622_2016-->

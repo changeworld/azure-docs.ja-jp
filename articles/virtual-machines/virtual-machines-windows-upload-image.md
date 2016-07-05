@@ -30,7 +30,7 @@
 
 - **Azure サブスクリプション** - まだお持ちでない場合は、[無料で Azure アカウントを開いて](/pricing/free-trial/?WT.mc_id=A261C142F)、[MSDN サブスクライバ―の特典を有効にします](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 
-- **Azure PowerShell バージョン 1.0 以降** - インストールされていない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+- **Azure PowerShell バージョン 1.4 以降** - インストールされていない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 - **Windows を実行する仮想マシン** - オンプレミスの仮想マシンを作成するための多くのツールがあります。たとえば、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。Azure でサポートされている Windows オペレーティング システムの詳細については、「[Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/kb/2721672)」を参照してください。
 
@@ -108,7 +108,7 @@ VM イメージをアップロードするには、Azure にストレージ ア�
 
 ### PowerShell を使用して、Azure ストレージ アカウントを作成するには
 
-1. Azure PowerShell 1.0.x を開き、Azure アカウントにサインインします。
+1. Azure PowerShell を開き、Azure アカウントにサインインします。
 
 		Login-AzureRmAccount
 
@@ -142,7 +142,7 @@ VM イメージをアップロードするには、Azure にストレージ ア�
 
 	3. このリソース グループに新しいストレージ アカウントを作成するには、次のコマンドを使用します。
 
-			New-AzureRmStorageAccount -ResourceGroupName YourResourceGroup -Name YourStorageAccountName -Location "West US" -Type "Standard_GRS"
+			New-AzureRmStorageAccount -ResourceGroupName YourResourceGroup -Name YourStorageAccountName -Location "West US" -SkuName "Standard_GRS" -Kind "Storage"
 
 
 </br> <a id="uploadvm"></a>
@@ -261,4 +261,4 @@ Azure PowerShell で次の手順を行って、ストレージ アカウント�
 
 Azure PowerShell を使用して新しい仮想マシンを管理する方法については、「[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0622_2016-->

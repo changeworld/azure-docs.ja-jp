@@ -491,7 +491,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 #### IoT Hub へのファイルのアップロード完了の通知
 
-デバイスは、Azure Storage SDK を使用してストレージにファイルをアップロードします。アップロードが完了すると、デバイスは最初の GET で受け取った相関 ID を使用して `{iot hub}.azure-devices.net/devices/{deviceId}/messages/files/notifications/{correlationId}` で IoT Hub に POST を送信します。
+デバイスは、Azure Storage SDK を使用してストレージにファイルをアップロードします。アップロードが完了すると、デバイスは最初の GET で受け取った相関 ID を使用して `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications/{correlationId}` で IoT Hub に POST を送信します。
 
 #### ファイルのアップロード通知
 
@@ -624,4 +624,4 @@ IoT Hub の開発の概要については以上です。詳細については、
 [lnk-mqtt-support]: iot-hub-mqtt-support.md
 [lnk-throttle-blog]: https://azure.microsoft.com/blog/iot-hub-throttling-and-you/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="03/08/2016"
+	ms.date="06/21/2016"
 	ms.author="pratshar"/>
 
 #  障害復旧に対応したネットワーク インフラストラクチャの設計
@@ -179,4 +179,4 @@ Woodgrove がビジネス要件を満たすためには、次のワークフロ�
 
 プライマリ サイトの管理に VMM サーバーを使用している場合の Site Recovery によるソース ネットワークとターゲット ネットワークのマッピングの詳細については、[こちらの記事](site-recovery-network-mapping.md)を参照してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0622_2016-->

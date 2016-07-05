@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Cortana Analytics Process の活用: 1 TB Criteo データセットで HDInsight Hadoop クラスターを使用する | Microsoft Azure"
-	description="HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Adva nced Analytics Process and Technology (ADAPT) を使用し、大量の (1 TB) 公開されている使用可能なデータセットを使用してモデルを構築してデプロイします。"
+	pageTitle="Team Data Science Process の活用 - 1 TB Criteo データセットでの HDInsight Hadoop クラスターの使用 | Microsoft Azure"
+	description="HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、公開されている大量 (1 TB) のデータセットを使ってモデルを構築してデプロイします"
 	services="machine-learning,hdinsight"
 	documentationCenter=""
 	authors="bradsev"
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="ginathan;bradsev" />
 
-# Cortana Analytics Process の活用 - 1 TB (テラバイト) データセットで Azure HDInsight Hadoop クラスターを使用する
+# Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用
 
-このチュートリアルでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)によるエンド ツー エンドの Cortana Analytics Process を使用して、公開されている 1 つの [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) データセットからデータの格納、探索、特徴エンジニアリング、ダウンサンプリングを行う方法について説明します。Azure Machine Learning を使い、このデータに基づいてバイナリ分類モデルを構築します。また、これらのモデルのいずれかを Web サービスとして発行する方法も示します。
+このチュートリアルでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)によるエンド ツー エンドのシナリオで Team Data Science Process を使用して、公開されている [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) データセットの 1 つからデータを格納、調査し、特徴エンジニアリングとダウンサンプリングを行う方法について説明します。Azure Machine Learning を使い、このデータに基づいてバイナリ分類モデルを構築します。また、これらのモデルのいずれかを Web サービスとして発行する方法も示します。
 
 IPython Notebook を使用して、このチュートリアルで説明するタスクを実行することもできます。この方法を試してみたい方は、「[Criteo walkthrough using a Hive ODBC connection (Hive ODBC の接続を使用した Criteo チュートリアル)](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)」のトピックをご覧ください。
 
@@ -663,4 +663,4 @@ Web サービス用の 2 つのリンクが左側に表示されます。
 
 以上で、Azure Machine Learning を使用して大規模なデータセットを処理する方法の総合的なチュートリアルは終了です。ここでは、テラバイト単位のデータから始めて、予測モデルを構築し、クラウドに Web サービスとしてデプロイしました。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

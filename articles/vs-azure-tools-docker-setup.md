@@ -1,7 +1,7 @@
 <properties
    pageTitle="VirtualBox を使用した Docker ホストの構成 | Microsoft Azure"
    description="Docker マシンと VirtualBox を使用して既定の Docker インスタンスを構成する詳細な手順"
-   services="visual-studio-online"
+   services="azure-container-service"
    documentationCenter="na"
    authors="allclark"
    manager="douge"
@@ -37,23 +37,29 @@ Docker クライアントを構成するには、Windows PowerShell を開き、
  
 1. 既定のインスタンスが構成され、実行されていることを確認します。(通常は、"default" という名前のインスタンスが実行されていることがわかります)。
 
-		docker-machine ls 
+    ```PowerShell
+	docker-machine ls 
+    ```
 		
-	![][0]
+	![docker-machine ls output][0]
  
 1. 現在のホストを既定として設定し、シェルを構成します。
 
-        docker-machine env default | Invoke-Expression
+    ```PowerShell
+    docker-machine env default | Invoke-Expression
+    ```
 
 1. アクティブな Docker コンテナーを表示します。リストは空にする必要があります。
 
-		docker ps
+    ```PowerShell
+	docker ps
+    ```
 
-	![][1]
+	![docker ps output][1]
  
 > [AZURE.NOTE] 開発用コンピューターを再起動するたびに、ローカルの Docker ホストを再起動する必要があります。これを行うには、コマンド プロンプトで、次のコマンドを発行します。`docker-machine start default`
 
 [0]: ./media/vs-azure-tools-docker-setup/docker-machine-ls.png
 [1]: ./media/vs-azure-tools-docker-setup/docker-ps.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -153,14 +153,20 @@ Traffic Manager は、プライマリ リージョンへの接続障害を検出
 | アクティブ/アクティブ デプロイによるアプリケーション負荷分散 | 読み取り/書き込みアクセス = 5 秒未満 | 障害検出時間 + フェールオーバー API 呼び出し + SQL 接続文字列の変更 + アプリケーション検証テスト
 | アクティブ/パッシブ デプロイによるデータ保存 | 読み取り専用アクセス = 5 秒未満、読み取り/書き込みアクセス = 0 | 読み取り専用アクセス = 接続障害検出時間 + アプリケーション検証テスト <br>読み取り/書き込みアクセス = 停止していた機能の回復にかかる時間
 
+## 次のステップ
+
+- 障害復旧のためのアクティブ geo レプリケーションの使用および構成の方法については、「[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)」をご覧ください。
+- 障害復旧のための geo リストアの使用方法については、「[geo リストア](sql-database-geo-restore.md)」をご覧ください。
 
 ## その他のリソース
 
-
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
+- [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](sql-database-business-continuity.md)
+- [Overview: SQL Database Point-in-Time Restore (概要: SQL Database のポイントインタイム リストア)](sql-database-point-in-time-restore.md)
+- [geo リストア](sql-database-geo-restore.md)
 - [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
 - [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
+- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
 - [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

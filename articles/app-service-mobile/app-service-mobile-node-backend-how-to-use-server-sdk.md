@@ -629,7 +629,7 @@ Swagger エンドポイントは http://_yoursite_.azurewebsites.net/swagger に
 
 ## <a name="push">プッシュ通知
 
-Mobile Apps と Azure Notification Hubs を統合することで、あらゆる主要なプラットフォーム間で、数百万台のデバイスに対して、対象設定済みのプッシュ通知を送信できます。Notification Hubs を使用して、iOS デバイス、Android デバイス、および Windows デバイスにプッシュ通知を送信できます。Notification Hubs で実行可能なすべての操作については、「[Azure 通知ハブ](../notification-hubs/notification-hubs-overview.md)」をご覧ください。
+Mobile Apps と Azure Notification Hubs を統合することで、あらゆる主要なプラットフォーム間で、数百万台のデバイスに対して、対象設定済みのプッシュ通知を送信できます。Notification Hubs を使用して、iOS デバイス、Android デバイス、および Windows デバイスにプッシュ通知を送信できます。Notification Hubs で実行可能なすべての操作については、「[Azure 通知ハブ](./notification-hubs/notification-hubs-push-notification-overview.md)」をご覧ください。
 
 ### </a><a name="send-push"></a>方法: プッシュ通知を送信する
 
@@ -917,4 +917,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

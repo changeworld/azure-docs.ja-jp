@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="06/21/2016"
 	ms.author="fboylu" />
 
 # 航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template プレイブック
@@ -346,4 +346,4 @@
 
 アーキテクチャの各コンポーネントの詳細については、[Azure](https://azure.microsoft.com/) のドキュメントを参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0622_2016-->

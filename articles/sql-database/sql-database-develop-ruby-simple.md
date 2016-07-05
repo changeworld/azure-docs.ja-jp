@@ -10,11 +10,11 @@
 
 <tags
 	ms.service="sql-database"
-	ms.workload="sql-database"
+	ms.workload="drivers"
 	ms.tgt_pltfrm="na"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="04/07/2016"
+	ms.date="06/16/2016"
 	ms.author="andrela"/>
 
 
@@ -40,8 +40,14 @@
 
 [Ruby を使用した SQL 接続の概念実証](http://msdn.microsoft.com/library/mt715797.aspx)
 
-## その他のリソース
+## 次のステップ
 
-マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」をご覧ください。
+* 「[SQL Database の開発: 概要](sql-database-develop-overview.md)」の確認
+* [Microsoft Ruby Driver for SQL Server](https://msdn.microsoft.com/library/mt691981.aspx) の詳細
 
-<!---HONumber=AcomDC_0615_2016-->
+## その他のリソース 
+
+* [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
+
+<!---HONumber=AcomDC_0622_2016-->

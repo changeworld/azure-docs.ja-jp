@@ -34,9 +34,11 @@ Azure へのデータ移行を一時停止または再開するには、SQL Serv
 次のコマンドを実行します。
 
 ```tsql
-ALTER TABLE <table name>
-    SET ( REMOTE_DATA_ARCHIVE ( MIGRATION_STATE = PAUSED ) ) ;
-GO;
+USE <Stretch-enabled database name>;
+GO
+ALTER TABLE <Stretch-enabled table name>  
+    SET ( REMOTE_DATA_ARCHIVE ( MIGRATION_STATE = PAUSED ) ) ;  
+GO
 ```
 
 ## データ移行を再開する
@@ -51,12 +53,23 @@ GO;
 次のコマンドを実行します。
 
 ```tsql
-ALTER TABLE <table name>
-    SET ( REMOTE_DATA_ARCHIVE ( MIGRATION_STATE = OUTBOUND ) ) ;
+USE <Stretch-enabled database name>;
+GO
+ALTER TABLE <Stretch-enabled table name>   
+    SET ( REMOTE_DATA_ARCHIVE ( MIGRATION_STATE = OUTBOUND ) ) ;  
+ GO
 ```
+
+## 移行がアクティブか一時停止しているかを確認する
+
+### SQL Server Management Studio を使用して、移行がアクティブか一時停止しているかを確認する
+SQL Server Management Studio で **Stretch Database Monitor** を開き、**[移行状態]** 列の値を確認します。詳細については、「[データ移行の監視とトラブルシューティング](sql-server-stretch-database-monitor.md)」をご覧ください。
+
+### Transact-SQL を使用して、移行がアクティブか一時停止しているかを確認する
+カタログ ビュー **sys.remote\_data\_archive\_tables** に対してクエリを実行し、**is\_migration\_paused** 列の値を確認します。詳細については、「[sys.remote\_data\_archive\_tables](https://msdn.microsoft.com/library/dn935003.aspx)」をご覧ください。
 
 ## 関連項目
 
-[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
+[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx) [データ移行の監視とトラブルシューティング](sql-server-stretch-database-monitor.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

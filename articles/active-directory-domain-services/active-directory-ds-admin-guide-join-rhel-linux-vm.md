@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/11/2016"
+	ms.date="06/20/2016"
 	ms.author="maheshu"/>
 
 # Red Hat Enterprise Linux 7 仮想マシンの管理対象ドメインへの参加
@@ -111,7 +111,7 @@ RHEL 7.2 仮想マシンの Azure でのプロビジョニングが完了しま�
 
 4. **kerberos のインストール:** PuTTY ターミナルで、次のコマンドを入力します。
 
-    sudo yum install krb5-workstation krb5-libs krb5-auth-dialog
+    sudo yum install krb5-workstation krb5-libs
 
 	![kerberos のインストール](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-kerberos.png)
 
@@ -177,4 +177,4 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 - [Installing Kerberos (Kerberos のインストール)](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
 - [Red Hat Enterprise Linux 7 - Windows Integration Guide (Red Hat Enterprise Linux 7 - Windows 統合ガイド)](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0622_2016-->

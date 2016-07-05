@@ -12,17 +12,17 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
-    ms.workload="data-management" 
-    ms.date="05/10/2016"
+    ms.workload="sqldb-bcdr" 
+    ms.date="06/17/2016"
     ms.author="sstein"/>
 
 # PowerShell を使用した geo 冗長バックアップからの Azure SQL Database の復元
+
 
 > [AZURE.SELECTOR]
 - [概要](sql-database-geo-restore.md)
 - [Azure ポータル](sql-database-geo-restore-portal.md)
 - [PowerShell](sql-database-geo-restore-powershell.md)
-
 
 この記事では、PowerShell で geo リストアを使用して新しいサーバーにデータベースを復元する方法について説明します。
 
@@ -51,13 +51,13 @@
 
 ## 次のステップ
 
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
+- Azure ポータルを使用して geo 冗長バックアップから Azure SQL Database を復元する方法の詳細な手順については、「[Azure ポータルを使用した geo リストア](sql-database-geo-restore-portal.md)」をご覧ください。
+- geo 冗長バックアップから Azure SQL Database を復元する方法の詳細な手順については、「[PowerShell を使用した geo リストア](sql-database-geo-restore.md)」をご覧ください。
+- 障害から回復する方法の詳細については、[障害からの回復](sql-database-disaster-recovery.md)に関するページをご覧ください。
 
 
 ## その他のリソース
 
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
+- [ビジネス継続性のシナリオ](sql-database-business-continuity-scenarios.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

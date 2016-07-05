@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="xibingao;bradsev" />
 
 # 高度な分析のために Azure 仮想マシンを IPython Notebook サーバーとしてセットアップする
@@ -107,7 +107,7 @@ IPython Notebook を使用すると、ユーザーはローカル マシン上�
 
 Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用しないときに課金されないようにするには、未使用時に **[停止 (割り当て解除)]** 状態にする必要があります。
 
-> [AZURE.NOTE]\(Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Microsoft Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その場合、"PostShutdownAction" を "StoppedDeallocated" に設定して **ShutdownRoleOperation** を呼び出します。
+> [AZURE.NOTE] \(Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Microsoft Azure クラシック ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その場合、"PostShutdownAction" を "StoppedDeallocated" に設定して **ShutdownRoleOperation** を呼び出します。
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 
@@ -125,9 +125,9 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 
 ## Azure VM を使用する準備ができました。次のステップは ...
 
-これで、仮想マシンをデータ サイエンス演習で使用する準備ができました。また、仮想マシンを IPython Notebook サーバーとして使用し、データの探索と処理など、Azure Machine Learning および Cortana Analytics Process に関連するタスクを行う準備もできました。
+これで、仮想マシンをデータ サイエンス演習で使用する準備ができました。また、仮想マシンを IPython Notebook サーバーとして使用し、データの探索と処理など、Azure Machine Learning および Team Data Science Process に関連するタスクを行う準備もできました。
 
-Cortana Analytics Process の次のステップは、[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)に示されています。HDInsight にデータを移動し、Azure Machine Learning でデータの情報を取得する準備としてデータを処理してサンプリングする手順などがあります。
+Team Data Science Process の次のステップは、[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)に示されています。HDInsight にデータを移動し、Azure Machine Learning でデータの情報を取得する準備としてデータを処理してサンプリングする手順などがあります。
 
 
 [15]: ./media/machine-learning-data-science-setup-virtual-machine/vmshutdown.png
@@ -145,4 +145,4 @@ Cortana Analytics Process の次のステップは、[ラーニング パス](ht
 [28]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-5.png
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

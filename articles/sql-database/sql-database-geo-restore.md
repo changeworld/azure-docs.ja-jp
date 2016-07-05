@@ -12,27 +12,29 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="data-management"
-   ms.date="05/10/2016"
+   ms.workload="sqldb-bcdr"
+   ms.date="06/17/2016"
    ms.author="sstein"/>
 
-# 概要: SQL Database の geo リストア
+# 概要: geo 冗長バックアップからの Azure SQL Database の復元
+
+> [AZURE.SELECTOR]
+- [ビジネス継続性の概要](sql-database-business-continuity.md)
+- [ポイントインタイム リストア](sql-database-point-in-time-restore.md)
+- [削除済みデータベースの復元](sql-database-restore-deleted-database.md)
+- [geo リストア](sql-database-geo-restore.md)
+- [アクティブ geo レプリケーションを選択するとき](sql-database-geo-replication-overview.md)
+- [ビジネス継続性のシナリオ](sql-database-business-continuity-scenarios.md)
+
+
+geo リストアでは、最新の[毎日の自動バックアップ](sql-database-automated-backups.md)から任意の Azure リージョン内のサーバーで SQL データベースを復元することができます。geo リストアではソースとして geo 冗長バックアップが使用され、障害によってデータベースまたはデータセンターにアクセスできない場合でも、geo リストアを使用してデータベースを復旧できます。[Azure ポータル](sql-database-geo-restore-portal.md)、[PowerShell](sql-database-geo-restore-powershell.md)、または [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用することができます。
 
 > [AZURE.SELECTOR]
 - [概要](sql-database-geo-restore.md)
 - [Azure ポータル](sql-database-geo-restore-portal.md)
 - [PowerShell](sql-database-geo-restore-powershell.md)
 
-geo リストアを使用すると、最新の日次バックアップから SQL データベースを復元できます。geo リストアは、追加コストなしにすべてのサービス階層で自動的に有効になります。geo リストアではソースとして geo 冗長バックアップが使用され、障害によってデータベースまたはデータセンターにアクセスできない場合でも、geo リストアを使用してデータベースを復旧できます。
-
-geo リストアを開始すると新しい SQL データベースが作成されます。このデータベースは、任意の Azure リージョン内のサーバーに作成できます。
-
-> [AZURE.NOTE] [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用することもできます
-
-
 geo リストアは、データベースがホストされているリージョンでのインシデントが原因でデータベースが利用できない場合の既定の復旧オプションです。データベースは任意の Azure リージョンの任意のサーバーに作成できます。geo リストアは、geo 冗長 Azure ストレージの[自動データベース バックアップ](sql-database-automated-backups.md)に依存しており、geo レプリケーション バックアップ コピーからリストアを行うので、プライマリ リージョンにおけるストレージの障害に対して回復力があります。
-
-
 
 ## geo リストアの詳細
 
@@ -46,29 +48,24 @@ geo リストアはポイントインタイム リストアと同じテクノロ
 
 ![geo リストア](./media/sql-database-geo-restore/geo-restore-2.png)
 
-
+[Get Recoverable Database](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) を使用して、最新の geo レプリケーションの復元ポイントを取得します。
 
 ## geo リストアの復旧時間
 
-復旧時間は、データベースのサイズ、データベースのパフォーマンス レベル、ターゲット リージョンで処理されている同時復元要求の数など、いくつかの要因によって影響を受けます。あるリージョンでの停止が長引いた場合、多数の geo リストア要求が他のリージョンによって処理されることがあります。多数の要求がある場合、そのリージョンでのデータベースの復旧時間が長くなる可能性があります。
-
+復旧時間は、データベースのサイズ、データベースのパフォーマンス レベル、ターゲット リージョンで処理されている同時復元要求の数など、いくつかの要因によって影響を受けます。あるリージョンでの停止が長引いた場合、多数の geo リストア要求が他のリージョンによって処理されることがあります。多数の要求がある場合、そのリージョンでのデータベースの復旧時間が長くなる可能性があります。データベースの復元にかかる時間は、データベースのサイズ、トランザクション ログの数、ネットワーク帯域幅など複数の要因によって異なります。データベースの復元のほとんどは、12 時間以内に完了します。
 
 ## 概要
 
-geo リストアはすべてのサービス階層で使用できますが、RPO と推定復旧時間 (ERT) が最も長い SQL Database で使用できる障害復旧ソリューションが最も基本です。最大サイズが 2 GB の Basic データベースでは、geo リストアは ERT が 12 時間である妥当な障害復旧ソリューションを提供します。さらに大きい Standard または Premium データベースでは、大幅に短い復旧間隔が必要な場合、またはデータ損失の可能性を下げる場合は、アクティブ geo レプリケーションの使用を検討する必要があります。アクティブ geo レプリケーションでは、継続的にレプリケートされるセカンダリへのフェールオーバーを開始することだけが必要なので、RPO と ERT が大きく短縮されます。詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関するページをご覧ください。
+geo リストアはすべてのサービス階層で使用できますが、RPO と推定復旧時間 (ERT) が最も長い SQL Database で使用できる障害復旧ソリューションが最も基本です。最大サイズが 2 GB の Basic データベースでは、geo リストアは ERT が 12 時間である妥当な障害復旧ソリューションを提供します。さらに大きい Standard または Premium データベースでは、大幅に短い復旧間隔が必要な場合、またはデータ損失の可能性を下げる場合は、アクティブ geo レプリケーションの使用を検討する必要があります。アクティブ geo レプリケーションでは、継続的にレプリケートされるセカンダリへのフェールオーバーを開始することだけが必要なので、RPO と ERT が大きく短縮されます。詳細については、「[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)」をご覧ください。
 
 ## 次のステップ
 
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [Azure ポータルを使用した geo リストア](sql-database-geo-restore-portal.md)
-- [PowerShell を使用した geo リストア](sql-database-geo-restore-powershell.md)
+- Azure ポータルを使用して geo 冗長バックアップから Azure SQL Database を復元する方法の詳細な手順については、[Azure ポータルを使用した geo リストア](sql-database-geo-restore-portal.md)に関するページをご覧ください。
+- PowerShell を使用して geo 冗長バックアップから Azure SQL Database を復元する方法の詳細な手順については、[PowerShell を使用した geo リストア](sql-database-geo-restore-powershell.md)に関するページをご覧ください。
+- 障害から回復する方法の詳細については、[障害からの回復](sql-database-disaster-recovery.md)に関するページをご覧ください。
 
 ## その他のリソース
 
-- [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [Overview: SQL Database Point-in-Time Restore (概要: SQL Database のポイントインタイム リストア)](sql-database-point-in-time-restore.md)
-- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
-- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [ビジネス継続性のシナリオ](sql-database-business-continuity-scenarios.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

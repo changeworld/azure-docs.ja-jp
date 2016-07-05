@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Virtual Array Update 0.1 のリリース ノート | Microsoft Azure"
-   description="Update 0.1 を実行する StorSimple Virtual Array の未解決の重大な問題と解決方法について説明します。"
+   pageTitle="StorSimple Virtual Array 更新プログラムのリリース ノート | Microsoft Azure"
+   description="Update 0.2 および Update 0.1 を実行する StorSimple Virtual Array の未解決の重大な問題と解決方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -12,18 +12,27 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/27/2016"
+   ms.date="06/16/2016"
    ms.author="alkohli" />
 
-# StorSimple Virtual Array Update 0.1 のリリース ノート
+# StorSimple Virtual Array Update 0.2 および 0.1 のリリース ノート
 
 ## 概要
 
-このリリース ノートには、Microsoft Azure StorSimple Virtual Array Update 0.1 のリリースに関する未解決の重大な問題と解決済みの問題が示されています(Microsoft Azure StorSimple Virtual Array は、StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます)。 このリリースは、ソフトウェア バージョン **10.0.10279.0** に対応します。
+このリリース ノートには、Microsoft Azure StorSimple Virtual Array 更新プログラムのリリースに関する未解決の重大な問題と解決済みの問題が示されています。(Microsoft Azure StorSimple Virtual Array は、StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます)。
 
 リリース ノートは継続的に更新されます。対応策を必要とする重大な問題が見つかった場合は、それらの問題が追加されます。StorSimple 仮想マシンをデプロイする前に、リリース ノートに含まれる情報を十分に確認してください。
 
-> [AZURE.NOTE] Update 0.1 は、中断を伴い、デバイスを再起動する更新プログラムです。IO が進行中である場合は、デバイスにダウンタイムが発生します。
+Update 0.2 はバージョン **10.0.10280.0** に対応しており、Update 0.1 はバージョン **10.0.10279.0** に対応しています。以下のセクションでは、各更新プログラムの変更を一覧表示します。
+
+> [AZURE.NOTE] 更新プログラムは中断を伴い、デバイスを再起動します。IO が進行中である場合は、デバイスにダウンタイムが発生します。
+
+## Update 0.2 で修正された問題
+Update 0.2 には、次の表に記載されている修正プログラムだけでなく Update 0.1 のすべての変更が含まれています。
+
+機能 | 問題 |
+--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+更新プログラム | 前回のリリースで、Azure クラシック ポータルでは更新プログラムが自動的に検出されませんでしたので、ローカルの Web UI を使用して、更新プログラムをインストールする必要がありました。この問題は今回のリリースで修正されました。Update 0.2 をインストールすると、Azure クラシック ポータルを使用して今後の更新プログラムをインストールできます。                       
 
 ## Update 0.1 の新機能
 
@@ -58,7 +67,7 @@ Update 0.1 には、次のバグ修正と機能強化が含まれています。
 
 ## Update 0.1 の既知の問題
 
-次の表では、StorSimple Virtual Array の既知の問題の概要と、以前のリリースのリリース ノートに記載されていた問題を説明します。**このリリースのリリース ノートに記載されている問題には、アスタリスクが付いています。この一覧にあるほとんどすべての問題は、StorSimple Virtual Array の GA リリースから受け継がれています。**
+次の表では、StorSimple Virtual Array の既知の問題の概要と、以前のリリースのリリース ノートに記載されていた問題を説明します。**リリース ノートに記載されている問題には、アスタリスクが付いています。この一覧にあるほとんどすべての問題は、StorSimple Virtual Array の GA リリースから受け継がれています。**
 
 
 | 番号 | 機能 | 問題 | 対応策/コメント |
@@ -81,6 +90,6 @@ Update 0.1 には、次のバグ修正と機能強化が含まれています。
 
 ## 次のステップ
 
-StorSimple Virtual Array に [Update 0.1 をインストール](storsimple-ova-install-update-01.md)します。
+StorSimple Virtual Array に[更新プログラムをインストールします](storsimple-ova-install-update-01.md)。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

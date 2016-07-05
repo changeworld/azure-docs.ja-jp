@@ -11,7 +11,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/09/2016"
+	ms.date="06/22/2016"
 	ms.author="ninarn"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -104,6 +104,8 @@ Azure ポータルを使用すると、プール内のエラスティック デ�
 ## プール リソースへのアラートの追加
 
 リソースにルールを追加して、設定した使用率のしきい値にリソースが達したときに、ユーザーへの電子メールの送信や URL エンドポイントへのアラート文字列の送信を行うことができます。
+
+> [AZURE.IMPORTANT]エラスティック プールのリソース使用率の監視には、20 分以上の遅れがあります。エラスティック プールに対して 30 分未満のアラートを設定することは現在サポートされていません。30 分未満の期間 (「PowerShell API の「-WindowSize」というパラメーター) を含むエラスティック プールのアラート設定は、実行されない場合があります。エラスティック プールに対して定義するアラートでは、30 分以上の期間 (WindowSize) を使用してください。
 
 **任意のリソースへのアラートの追加**
 
@@ -211,4 +213,4 @@ Azure ポータルを使用すると、プール内のエラスティック デ�
 [8]: ./media/sql-database-elastic-pool-manage-portal/db-utilization.png
 [9]: ./media/sql-database-elastic-pool-manage-portal/metric.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

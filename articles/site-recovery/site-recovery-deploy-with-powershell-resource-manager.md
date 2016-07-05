@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="backup-recovery"
-	ms.date="06/13/2016"
+	ms.date="06/15/2016"
 	ms.author="bsiva"/>
 
 # PowerShell と Azure Resource Manager を使用して、オンプレミスの Hyper-V 仮想マシンと Azure 間でレプリケートする
@@ -82,19 +82,10 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Az
 
 	上の 2 つのコマンドの出力で **登録状態** が **登録済み** に設定されている場合は、手順 2. に進んでください。設定されていない場合は、登録されていないプロバイダーを該当するサブスクリプションに登録する必要があります。
 
-	Site Recovery 用の Azure プロバイダーを登録するには、次のコマンドを実行します。
+	Site Recovery および Recovery Services 用の Azure プロバイダーを登録するには、次のコマンドを実行します。
 
     	Register-AzureRmResourceProvider -ProviderNamespace Microsoft.SiteRecovery
-
-	同様に、Recovery Services のコマンドレットを自分のサブスクリプションで初めて使用する場合、Recovery Services 用の Azure プロバイダーを登録する必要があります。そのためにはまず、該当するサブスクリプションで Recovery Services プロバイダーへのアクセスを有効にします。次のコマンドを実行してください。
-
-		Register-AzureRmProviderFeature -FeatureName betaAccess -ProviderNamespace Microsoft.RecoveryServices
-
-	>[AZURE.TIP] 上のコマンドが正常に実行されてから、サブスクリプションで Recovery Services プロバイダーにアクセスできるようになるまでに最大 1 時間かかる場合があります。`Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices` コマンドを使って Recovery Services プロバイダーをサブスクリプションに登録しようとしても、しばらくの間、コマンドが失敗する場合があります。その場合は 1 時間待ってから再試行してください。
-
-	サブスクリプションで Recovery Services プロバイダーへのアクセスを有効にしたら、次のコマンドを実行して、サブスクリプションにプロバイダーを登録します。
-
-		Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+    	Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
 
 	`Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices` コマンドと `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.SiteRecovery` コマンドを使用して、プロバイダーが正しく登録されたことを確認します。
 
@@ -266,4 +257,4 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Az
 
 Azure Site Recovery と Azure Resource Manager PowerShell コマンドレットの[詳細を確認します](https://msdn.microsoft.com/library/azure/mt637930.aspx)。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

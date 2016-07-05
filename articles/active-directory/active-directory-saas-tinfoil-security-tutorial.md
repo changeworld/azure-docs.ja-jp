@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と Tinfoil Security の統合 | Microsoft Azure"
     description="Azure Active Directory で Tinfoil Security を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法を説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="06/21/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Tinfoil Security の統合
   
@@ -38,7 +38,7 @@
 
 ###Tinfoil Security のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-tinfoil-security-tutorial/IC700993.png "Active Directory")
 
@@ -68,9 +68,9 @@
   
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Tinfoil Security に対する認証を行うことができるようにする方法を説明します。Tinfoil Security のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書のサムプリント値を取得する方法)](http://youtu.be/YKQF266SAxI)」を参照してください。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[Tinfoil Security]** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして **[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **[Tinfoil Security]** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして **[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-tinfoil-security-tutorial/IC798967.png "Configure Single Sign-On")
 
@@ -80,9 +80,9 @@
 
 3.  **[アプリケーション URL の構成]** ページの **[Tinfoil Security 応答 URL]** テキストボックスに Tinfoil Security Assertion Consumer Service (ACS) URL (例: **https://www.tinfoilsecurity.com/saml/consume*") を入力し、**[次へ]** をクリックします。
 
-    >[AZURE.NOTE]ACS URL は Tinfoil Security メタデータ (https://www.tinfoilsecurity.com/saml/metadata)) から入手できます。
+    >[AZURE.NOTE] ACS URL は Tinfoil Security メタデータ (https://www.tinfoilsecurity.com/saml/metadata)) から入手できます。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-tinfoil-security-tutorial/IC798969.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-tinfoil-security-tutorial/IC798969.png "アプリケーション URL の構成")
 
 4.  **[Tinfoil Security でのシングル サインオンの構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、証明書ファイルを **c:\\Tinfoil Security.cer** としてローカルに保存します。
 
@@ -104,15 +104,15 @@
 
     1.  **[Enable SAML]** を選択します。
     2.  **[Manual Configuration]** をクリックします。
-    3.  Azure ポータルで、**[Tinfoil Security でのシングル サインオンの構成]** ダイアログ ページの **[SAML SSO URL]** の値をコピーし、**[SAML Post URL]** テキストボックスに貼り付けます。
+    3.  Azure クラシック ポータルで、**[Tinfoil Security でのシングル サインオンの構成]** ダイアログ ページの **[SAML SSO URL]** の値をコピーし、**[SAML Post URL]** テキスト ボックスに貼り付けます。
     4.  エクスポートした証明書から **[サムプリント]** の値をコピーし、**[SAML 証明書フィンガープリント]** テキストボックスに貼り付けます。  
 
-        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value （証明書の拇印の値を取得する方法）](http://youtu.be/YKQF266SAxI)」をご覧ください。
+        >[AZURE.TIP] 詳細については、「[How to retrieve a certificate's thumbprint value （証明書の拇印の値を取得する方法）](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
     5.  **お使いのアカウント ID** をコピーします。
     6.  **[保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-tinfoil-security-tutorial/IC798974.png "Configure Single Sign-On")
 
@@ -141,7 +141,7 @@ Azure AD ユーザーが Tinfoil Security にログインできるようにす�
 
 2.  通常の Tinfoil Security SaaS ユーザーは、グループ作業者をユーザーの任意のサイトに追加できます。ここでは、新しい Tinfoil Security ユーザー アカウントを作成するための招待状を指定した電子メール アドレスに送信するプロセスが起動します。
 
->[AZURE.NOTE]Tinfoil Security から提供されている他の Tinfoil Security ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Tinfoil Security から提供されている他の Tinfoil Security ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -149,7 +149,7 @@ Azure AD ユーザーが Tinfoil Security にログインできるようにす�
 
 ###ユーザーを Tinfoil Security に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Tinfoil Security** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -161,4 +161,4 @@ Azure AD ユーザーが Tinfoil Security にログインできるようにす�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="06/20/2016"
 	ms.author="cjiang"/>
 
 # 既存の Office 365 アカウントを Azure サブスクリプションに使用する (またはその逆)
@@ -144,4 +144,7 @@ Office 365 と Azure は、ユーザーとサブスクリプションの管理�
 - Azure サブスクリプションの所有者は、ディレクトリ内の各ユーザーです。
 - Office 365 サブスクリプションの所有者は、ディレクトリ自体です。ディレクトリ内のユーザーは、必要なアクセス許可を持っている場合、そのサブスクリプションで操作できます。
 
-<!---HONumber=AcomDC_0518_2016-->
+##次のステップ
+関連したシナリオが紹介されています。過去に別々に購入した Azure サブスクリプションと Office 365 サブスクリプションがあるとき、Azure サブスクリプションから Office 365 テナントにアクセスできるようにするにはどうすればよいのでしょうか。具体的な方法については、「[Office 365 テナントの Azure サブスクリプションへの関連付け](billing-add-office-365-tenant-to-azure-subscription.md)」を参照してください。
+
+<!---HONumber=AcomDC_0622_2016-->

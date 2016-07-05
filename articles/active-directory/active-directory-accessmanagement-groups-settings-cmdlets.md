@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="06/21/2016"
 	ms.author="curtand"/>
 
 
@@ -96,7 +96,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 
 2. 更新する値を取得します。
 
-	`$value = Setting.GetSettingsValue()`
+	`$value = $Setting.GetSettingsValue()`
 
 3. 値を更新します。
 
@@ -143,4 +143,4 @@ Azure Active Directory PowerShell のその他のドキュメントについて�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

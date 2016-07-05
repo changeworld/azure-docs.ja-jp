@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="SQL Database の障害復旧訓練" 
+   pageTitle="SQL Database の障害復旧訓練 | Microsoft Azure" 
    description="Azure SQL Database を使用して、ミッション クリティカルなビジネス アプリケーションがエラーと障害に対して回復力を保持するための障害復旧訓練を実行するためのガイダンスとベスト プラクティスについて説明します。" 
    services="sql-database" 
    documentationCenter="" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management" 
-   ms.date="04/18/2016"
+   ms.date="06/16/2016"
    ms.author="mihaelab"/>
 
 #障害復旧訓練の実行
@@ -63,4 +63,21 @@ geo レプリケーションを使用して保護されたデータベースの�
 
 - 復旧後に、アプリケーションの整合性を検証して訓練を完了します (接続文字列、ログイン、基本的な機能のテスト、その他の標準的なアプリケーションのサインオフのプロシージャの検証など)。
 
-<!---HONumber=AcomDC_0420_2016-->
+
+## 次のステップ
+
+- 障害復旧のためのアクティブ geo レプリケーションの使用および構成の方法については、「[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)」をご覧ください。
+- 障害復旧のための geo リストアの使用方法については、「[geo リストア](sql-database-geo-restore.md)」をご覧ください。
+
+## その他のリソース
+
+- [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](sql-database-business-continuity.md)
+- [Overview: SQL Database Point-in-Time Restore (概要: SQL Database のポイントインタイム リストア)](sql-database-point-in-time-restore.md)
+- [geo リストア](sql-database-geo-restore.md)
+- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
+- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
+- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
+- [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
+
+<!---HONumber=AcomDC_0622_2016-->

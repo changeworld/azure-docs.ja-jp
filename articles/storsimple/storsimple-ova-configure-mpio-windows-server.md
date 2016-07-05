@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/22/2016"
+   ms.date="06/20/2016"
    ms.author="alkohli" />
 
 # Windows Server ホストで StorSimple Virtual Array 向けにマルチパス I/O を構成する
@@ -178,4 +178,4 @@ Windows Server で MPIO が構成されると、StorSimple アレイに作成さ
 [StorSimple Manager サービスを使用した StorSimple Virtual Array の管理](storsimple-ova-manager-service-administration.md)の詳細を確認してください。
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0622_2016-->

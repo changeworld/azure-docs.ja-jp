@@ -3,7 +3,7 @@
 	description="Azure IoT Hub デバイス管理のチュートリアルで、デバイス ツインを使用する方法を説明します。"
 	services="iot-hub"
 	documentationCenter=".net"
-	authors="ellenfosborne"
+	authors="juanjperez"
 	manager="timlt"
 	editor=""/>
 
@@ -14,7 +14,7 @@
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="04/29/2016"
- ms.author="elfarber"/>
+ ms.author="juanpere"/>
 
 # チュートリアル: Node.js でのデバイス ツインの使用方法 (プレビュー)
 
@@ -145,4 +145,4 @@ Azure IoT Hub デバイス管理機能の詳細については、次のチュー
 [lnk-dm-jobs]: iot-hub-device-management-device-jobs.md
 [lnk-edison]: https://github.com/Azure/azure-iot-sdks/tree/dmpreview/c/iotdm_client/samples/iotdm_edison_sample
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -4,7 +4,6 @@
 	services="service-bus" 
 	documentationCenter="java" 
 	authors="sethmanheim" 
-	writer="sethm" 
 	manager="timlt" 
 	editor=""/>
 
@@ -14,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="03/09/2016" 
+	ms.date="06/20/2016" 
 	ms.author="sethm"/>
 
 # Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ
@@ -23,11 +22,11 @@ Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラッ�
 
 Service Bus での AMQP 1.0 のサポートにより、仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
 
-この記事では、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Service Bus のブローカー メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。Service Bus .NET API を使用して同じ作業を実行する方法が説明されているハウツー ガイドがあります。これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
+この記事では、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Service Bus のメッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。Service Bus .NET API を使用して同じ作業を実行する方法が説明されているハウツー ガイドがあります。これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
 
 ## Service Bus の概要
 
-このガイドは、"queue1" という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure クラシック ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
+このガイドは、**queue1** という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。まだない場合は、[Azure クラシック ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
 > [AZURE.NOTE] パーティション分割されたキューおよびトピックも AMQP をサポートします。詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」と「[パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート](service-bus-partitioned-queues-and-topics-amqp-overview.md)」を参照してください。
 
@@ -37,10 +36,10 @@ Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョ
 
 Service Bus を使用する JMS アプリケーションをビルドおよび実行するときは、次の 4 つの JAR ファイルを Apache Qpid JMS AMQP 1.0 ディストリビューション アーカイブから Java CLASSPATH に追加する必要があります。
 
-*    geronimo-jms\_1.1\_spec-1.0.jar
-*    qpid-amqp-1-0-client-[version].jar
-*    qpid-amqp-1-0-client-jms-[version].jar
-*    qpid-amqp-1-0-common-[version].jar
+- geronimo-jms\_1.1\_spec-1.0.jar
+- qpid-amqp-1-0-client-[version].jar
+- qpid-amqp-1-0-client-jms-[version].jar
+- qpid-amqp-1-0-common-[version].jar
 
 ## Java アプリケーションのコーディング
 
@@ -127,100 +126,102 @@ InitialContext context = new InitialContext(env);
 
 次のサンプル プログラムでは、JNDI 論理名が QUEUE の Service Bus キューに JMS TextMessages を送信し、折り返しそれらのメッセージを受信します。
 
-	// SimpleSenderReceiver.java
+```
+// SimpleSenderReceiver.java
 	
-	import javax.jms.*;
-	import javax.naming.Context;
-	import javax.naming.InitialContext;
-	import java.io.BufferedReader;
-	import java.io.InputStreamReader;
-	import java.util.Hashtable;
-	import java.util.Random;
+import javax.jms.*;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Hashtable;
+import java.util.Random;
 	
-	public class SimpleSenderReceiver implements MessageListener {
-	    private static boolean runReceiver = true;
-	    private Connection connection;
-	    private Session sendSession;
-	    private Session receiveSession;
-	    private MessageProducer sender;
-	    private MessageConsumer receiver;
-	    private static Random randomGenerator = new Random();
+public class SimpleSenderReceiver implements MessageListener {
+    private static boolean runReceiver = true;
+    private Connection connection;
+    private Session sendSession;
+    private Session receiveSession;
+    private MessageProducer sender;
+    private MessageConsumer receiver;
+    private static Random randomGenerator = new Random();
 	
-	    public SimpleSenderReceiver() throws Exception {
-	        // Configure JNDI environment
-	        Hashtable<String, String> env = new Hashtable<String, String>();
-	        env.put(Context.INITIAL_CONTEXT_FACTORY, 
-                    "org.apache.qpid.amqp_1_0.jms.jndi.PropertiesFileInitialContextFactory");
-	        env.put(Context.PROVIDER_URL, "servicebus.properties");
-	        Context context = new InitialContext(env);
+    public SimpleSenderReceiver() throws Exception {
+        // Configure JNDI environment
+        Hashtable<String, String> env = new Hashtable<String, String>();
+        env.put(Context.INITIAL_CONTEXT_FACTORY, 
+                   "org.apache.qpid.amqp_1_0.jms.jndi.PropertiesFileInitialContextFactory");
+        env.put(Context.PROVIDER_URL, "servicebus.properties");
+        Context context = new InitialContext(env);
 	
-	        // Lookup ConnectionFactory and Queue
-	        ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
-	        Destination queue = (Destination) context.lookup("QUEUE");
+        // Look up ConnectionFactory and Queue
+        ConnectionFactory cf = (ConnectionFactory) context.lookup("SBCF");
+        Destination queue = (Destination) context.lookup("QUEUE");
 	
-	        // Create Connection
-	        connection = cf.createConnection();
+        // Create Connection
+        connection = cf.createConnection();
 	
-	        // Create sender-side Session and MessageProducer
-	        sendSession = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-	        sender = sendSession.createProducer(queue);
+        // Create sender-side Session and MessageProducer
+        sendSession = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        sender = sendSession.createProducer(queue);
 	
-	        if (runReceiver) {
-	            // Create receiver-side Session, MessageConsumer,and MessageListener
-	            receiveSession = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
-	            receiver = receiveSession.createConsumer(queue);
-	            receiver.setMessageListener(this);
-	            connection.start();
-	        }
-	    }
+        if (runReceiver) {
+            // Create receiver-side Session, MessageConsumer,and MessageListener
+            receiveSession = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+            receiver = receiveSession.createConsumer(queue);
+            receiver.setMessageListener(this);
+            connection.start();
+        }
+    }
 	
-	    public static void main(String[] args) {
-	        try {
+    public static void main(String[] args) {
+        try {
 	
-	            if ((args.length > 0) && args[0].equalsIgnoreCase("sendonly")) {
-	                runReceiver = false;
-	            }
+            if ((args.length > 0) && args[0].equalsIgnoreCase("sendonly")) {
+                runReceiver = false;
+            }
 	
-	            SimpleSenderReceiver simpleSenderReceiver = new SimpleSenderReceiver();
-	            System.out.println("Press [enter] to send a message. Type 'exit' + [enter] to quit.");
-	            BufferedReader commandLine = new java.io.BufferedReader(new InputStreamReader(System.in));
+            SimpleSenderReceiver simpleSenderReceiver = new SimpleSenderReceiver();
+            System.out.println("Press [enter] to send a message. Type 'exit' + [enter] to quit.");
+            BufferedReader commandLine = new java.io.BufferedReader(new InputStreamReader(System.in));
 	
-	            while (true) {
-	                String s = commandLine.readLine();
-	                if (s.equalsIgnoreCase("exit")) {
-	                    simpleSenderReceiver.close();
-	                    System.exit(0);
-	                } else {
-	                    simpleSenderReceiver.sendMessage();
-	                }
-	            }
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
+            while (true) {
+                String s = commandLine.readLine();
+                if (s.equalsIgnoreCase("exit")) {
+                    simpleSenderReceiver.close();
+                    System.exit(0);
+                } else {
+                    simpleSenderReceiver.sendMessage();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 	
-	    private void sendMessage() throws JMSException {
-	        TextMessage message = sendSession.createTextMessage();
-	        message.setText("Test AMQP message from JMS");
-	        long randomMessageID = randomGenerator.nextLong() >>>1;
-	        message.setJMSMessageID("ID:" + randomMessageID);
-	        sender.send(message);
-	        System.out.println("Sent message with JMSMessageID = " + message.getJMSMessageID());
-	    }
+    private void sendMessage() throws JMSException {
+        TextMessage message = sendSession.createTextMessage();
+        message.setText("Test AMQP message from JMS");
+        long randomMessageID = randomGenerator.nextLong() >>>1;
+        message.setJMSMessageID("ID:" + randomMessageID);
+        sender.send(message);
+        System.out.println("Sent message with JMSMessageID = " + message.getJMSMessageID());
+    }
 	
-	    public void close() throws JMSException {
-	        connection.close();
-	    }
+    public void close() throws JMSException {
+        connection.close();
+    }
 	
-	    public void onMessage(Message message) {
-	        try {
-	            System.out.println("Received message with JMSMessageID = " + message.getJMSMessageID());
-	            message.acknowledge();
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-	}	
+    public void onMessage(Message message) {
+        try {
+            System.out.println("Received message with JMSMessageID = " + message.getJMSMessageID());
+            message.acknowledge();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}	
+```
 
 ### アプリケーションの実行
 
@@ -339,4 +340,4 @@ Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、そ�
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

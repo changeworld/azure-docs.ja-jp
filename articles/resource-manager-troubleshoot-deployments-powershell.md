@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-multiple"
    ms.workload="infrastructure"
-   ms.date="05/19/2016"
+   ms.date="06/14/2016"
    ms.author="tomfitz"/>
 
 # Azure PowerShell でのデプロイ操作の表示
@@ -25,11 +25,89 @@
 - [Azure CLI](resource-manager-troubleshoot-deployments-cli.md)
 - [REST API](resource-manager-troubleshoot-deployments-rest.md)
 
-Azure にリソースをデプロイするときにエラーが発生した場合、実行したデプロイ操作に関して、より詳しい情報が必要になることがあります。Azure PowerShell では、簡単にエラーを見つけ、可能性のある修正を確認することができるように、コマンドレットを提供します。
+デプロイの操作は、Azure PowerShell から確認することができます。最も一般的な確認の対象としては、デプロイ中にエラーが発生したときに実行されていた操作が挙げられます。この記事では、失敗した操作の表示について重点的に取り上げます。PowerShell には、すぐにエラーを見つけ出し、有効と考えられる解決策を特定できるコマンドレットが用意されています。
 
 [AZURE.INCLUDE [resource-manager-troubleshoot-introduction](../includes/resource-manager-troubleshoot-introduction.md)]
 
 デプロイの前にテンプレートおよびインフラストラクチャを検証して、いくつかのエラーを回避できます。後からトラブルシューティングに役立つと思われるデプロイメント中の追加の要求および応答の情報を記録することもできます。検証、 ログ記録の要求および応答の情報については、「[Azure リソース マネージャーのテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)」を参照してください。
+
+## デプロイ操作を使用してトラブルシューティングを行う
+
+1. **Get-AzureRmResourceGroupDeployment** コマンドを使用すると、デプロイ全体のステータスを取得できます。失敗したデプロイのみの結果をフィルター処理することができます。
+
+        Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
+        
+    これにより、次の形式で失敗したデプロイが返されます。
+        
+        DeploymentName          : Microsoft.Template
+        ResourceGroupName       : ExampleGroup
+        ProvisioningState       : Failed
+        Timestamp               : 6/14/2016 9:55:21 PM
+        Mode                    : Incremental
+        TemplateLink            :
+        Parameters              :
+                    Name                Type                 Value
+                    ===============     ===================  ==========
+                    storageAccountName  String               tfstorage9855
+                    adminUsername       String               tfadmin
+                    adminPassword       SecureString
+                    dnsNameforLBIP      String               dns
+                    vmNamePrefix        String               myVM
+                    imagePublisher      String               MicrosoftWindowsServer
+                    imageOffer          String               WindowsServer
+                    imageSKU            String               2012-R2-Datacenter
+                    lbName              String               myLB
+                    nicNamePrefix       String               nic
+                    publicIPAddressName String               myPublicIP
+                    vnetName            String               myVNET
+                    vmSize              String               Standard_D1
+
+        Outputs                 :
+        DeploymentDebugLogLevel :
+
+2. 通常、各デプロイメントは、それぞれの操作がデプロイメント処理の 1 手順を示す、複数の操作で構成されています。デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。操作の状態は、**Get-AzureRmResourceGroupDeploymentOperation** で確認できます。
+
+        Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName Microsoft.Template
+        
+    このコマンドレットを実行すると、複数の操作がそれぞれ次の形式で返されます。
+        
+        Id             : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/Microsoft.Template/operations/A3EB2DA598E0A780
+        OperationId    : A3EB2DA598E0A780
+        Properties     : @{provisioningOperation=Create; provisioningState=Succeeded; timestamp=2016-06-14T21:55:15.0156208Z;
+                         duration=PT23.0227078S; trackingId=11d376e8-5d6d-4da8-847e-6f23c6443fbf;
+                         serviceRequestId=0196828d-8559-4bf6-b6b8-8b9057cb0e23; statusCode=OK; targetResource=}
+        PropertiesText : {duration:PT23.0227078S, provisioningOperation:Create, provisioningState:Succeeded,
+                         serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
+
+3. 失敗した操作についての詳しい情報を得るには、状態が **Failed** である操作のプロパティを取得します。
+
+        (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
+        
+    このコマンドレットを実行すると、失敗したすべての操作がそれぞれ次の形式で返されます。
+        
+        provisioningOperation : Create
+        provisioningState     : Failed
+        timestamp             : 2016-06-14T21:54:55.1468068Z
+        duration              : PT3.1449887S
+        trackingId            : f4ed72f8-4203-43dc-958a-15d041e8c233
+        serviceRequestId      : a426f689-5d5a-448d-a2f0-9784d14c900a
+        statusCode            : BadRequest
+        statusMessage         : @{error=}
+        targetResource        : @{id=/subscriptions/{guid}/resourceGroups/ExampleGroup/providers/
+                                Microsoft.Network/publicIPAddresses/myPublicIP;
+                                resourceType=Microsoft.Network/publicIPAddresses; resourceName=myPublicIP}
+
+    操作の追跡 ID をメモします。この ID は、次の手順で特定の操作に対象を絞り込むために必要となります。
+
+4. 失敗した特定の操作のステータス メッセージを取得するには、次のコマンドを使用します。
+
+        ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
+        
+    次のような結果が返されます。
+        
+        code           message                                                                        details
+        ----           -------                                                                        -------
+        DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
 
 ## 監査ログを使用してトラブルシューティングを行う
 
@@ -41,9 +119,9 @@ Azure にリソースをデプロイするときにエラーが発生した場�
 
         Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
 
-    特定の期間を指定できます。次の例では、過去 14 日間に失敗したアクションを検索します。
+    特定の期間を指定できます。次の例では、最終日に失敗したアクションを検索します。
 
-        Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) -Status Failed
+        Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-1) -Status Failed
       
     または、失敗したアクションに対して、正確な開始時間と終了時間を設定できます。
 
@@ -51,99 +129,32 @@ Azure にリソースをデプロイするときにエラーが発生した場�
 
 2. このコマンドで返されるエントリとプロパティの数が多すぎる場合、**Properties** プロパティを取得することで監査に集中できます。エラー メッセージを表示するには、**DetailedOutput** パラメーターも追加します。
 
-        (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties
+        (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-1) -DetailedOutput).Properties
         
     これにより、次の形式でログ エントリのプロパティが返されます。
         
         Content
         -------
-        {}
-        {[statusCode, Conflict], [statusMessage, {"Code":"Conflict","Message":"Website with given name mysite already exists...
-        {[statusCode, Conflict], [serviceRequestId, ], [statusMessage, {"Code":"Conflict","Message":"Website with given name...
+        {} 
+        {[statusCode, BadRequest], [statusMessage, {"error":{"code":"DnsRecordInUse","message":"DNS record dns.westus.clouda...
+        {[statusCode, BadRequest], [serviceRequestId, a426f689-5d5a-448d-a2f0-9784d14c900a], [statusMessage, {"error":{"code...
 
-3. 特定の 1 つのエントリのステータス メッセージを確認して、結果をさらに絞り込むことができます。
+3. これらの結果に基づいて、2 番目の要素に注目しましょう。そのエントリのステータス メッセージを見て、結果をさらに絞り込むことができます。
 
-        (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json
+        ((Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput -StartTime (Get-Date).AddDays(-1)).Properties[1].Content["statusMessage"] | ConvertFrom-Json).error
         
-    これにより、次の形式でステータス メッセージが返されます。
+    次のような結果が返されます。
         
-        Code       : Conflict
-        Message    : Website with given name mysite already exists.
-        Target     :
-        Details    : {@{Message=Website with given name mysite already exists.}, @{Code=Conflict}, @{ErrorEntity=}}
-        Innererror :
+        code           message                                                                        details
+        ----           -------                                                                        -------
+        DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
 
 
-## デプロイ操作を使用してトラブルシューティングを行う
-
-1. **Get-AzureRmResourceGroupDeployment** コマンドを使用すると、デプロイ全体のステータスを取得できます。失敗したデプロイのみの結果をフィルター処理することができます。
-
-        Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
-        
-    これにより、次の形式で失敗したデプロイが返されます。
-        
-        DeploymentName    : ExampleDeployment
-        ResourceGroupName : ExampleGroup
-        ProvisioningState : Failed
-        Timestamp         : 8/27/2015 8:03:34 PM
-        Mode              : Incremental
-        TemplateLink      :
-        Parameters        :
-        Name             Type                       Value
-        ===============  =========================  ==========
-        siteName         String                     ExampleSite
-        hostingPlanName  String                     ExamplePlan
-        siteLocation     String                     West US
-        sku              String                     Free
-        workerSize       String                     0
-        
-        Outputs           :
-
-2. 通常、各デプロイメントは、それぞれの操作がデプロイメント処理の 1 手順を示す、複数の操作で構成されています。デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。操作の状態は、**Get-AzureRmResourceGroupDeploymentOperation** で確認できます。
-
-        Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
-        
-    これにより、次の形式で操作が返されます。
-        
-        Id          : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/ExampleDeployment/operations/8518B32868A437C8
-        OperationId : 8518B32868A437C8
-        Properties  : @{ProvisioningOperation=Create; ProvisioningState=Failed; Timestamp=2016-03-16T20:05:37.2638161Z;
-                      Duration=PT2.8834832S; TrackingId=192fbfbf-a2e2-40d6-b31d-890861f78ed3; StatusCode=Conflict;
-                      StatusMessage=; TargetResource=}
-
-3. 操作に関する詳細を取得するには、**Properties** オブジェクトを取得します。
-
-        (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties
-        
-    これにより、次の形式で操作のプロパティが返されます。
-        
-        ProvisioningOperation : Create
-        ProvisioningState     : Failed
-        Timestamp             : 2016-03-16T20:05:37.2638161Z
-        Duration              : PT2.8834832S
-        TrackingId            : 192fbfbf-a2e2-40d6-b31d-890861f78ed3
-        StatusCode            : Conflict
-        StatusMessage         : @{Code=Conflict; Message=Website with given name mysite already exists.; Target=;
-        Details=System.Object[]; Innererror=}
-        TargetResource        : @{Id=/subscriptions/{guid}/resourceGroups/ExampleGroup/providers/
-        Microsoft.Web/Sites/mysite; ResourceType=Microsoft.Web/Sites; ResourceName=mysite}
-
-4. 失敗した操作のステータス メッセージに注目するには、次のコマンドを使用します。
-
-        ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage
-        
-    これにより、次の形式でステータス メッセージが返されます。
-        
-        Code       : Conflict
-        Message    : Website with given name mysite already exists.
-        Target     :
-        Details    : {@{Message=Website with given name mysite already exists.}, @{Code=Conflict}, @{ErrorEntity=}}
-        Innererror :
 
 ## 次のステップ
 
 - 特定のデプロイ エラーの解決については、[Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
 - 他の種類のアクションを監視するために監査ログを使用する方法については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
-- デプロイを実行する前に検証するには、「[Azure Resource Manager のテンプレートを使用したリソースのデプロイ](resource-group-template-deploy.md)」を参照してください。
+- デプロイを実行する前に検証するには、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

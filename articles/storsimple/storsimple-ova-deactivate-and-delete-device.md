@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/08/2016"
+   ms.date="06/20/2016"
    ms.author="alkohli" />
 
 # StorSimple Virtual Array の非アクティブ化と削除
@@ -101,4 +101,4 @@ StorSimple Virtual Array を非アクティブ化する場合は、デバイス�
 
 - StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple Virtual Array の管理](storsimple-ova-manager-service-administration.md)」を参照してください。 
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0622_2016-->

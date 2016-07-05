@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/06/2016" 
+	ms.date="06/21/2016" 
 	ms.author="stefsch"/>
 
 # ExpressRoute を使用した App Service 環境のネットワーク構成の詳細 
@@ -29,7 +29,7 @@
 ExpressRoute に接続された仮想ネットワークでは最初は満たされていない場合がある App Service 環境のネットワーク接続要件があります。App Service 環境が正常に機能するには、次のすべてを満たす必要があります。
 
 
--  世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続これには、App Service Environment と同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。  
+-  世界各国の Azure Storage エンドポイントに対するポート 80 とポート 443 での発信ネットワーク接続。これには、App Service Environment と同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。  
 -  App Service Environment と同じリージョンにある Sql DB エンドポイントに対する発信ネットワーク接続。SQL DB エンドポイントは、*database.windows.net* ドメインで解決されます。
 -  Azure 管理プレーン エンドポイント (ASM エンドポイントと ARM エンドポイントの両方) に対する発信ネットワーク接続これには、*management.core.windows.net* と *management.azure.com* の両方に対する発信接続が含まれます。 
 -  *ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl.microsoft.com* に対する発信ネットワーク接続。これは、SSL 機能をサポートするために必要です。
@@ -114,6 +114,7 @@ DNS 要件を満たすには、仮想ネットワークの有効な DNS イン�
 次は、App Service Environment の作成です。
 
 ## 使用の開始
+App Service 環境に関するすべての記事と作業方法は [Application Service Environments の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
 
 App Service 環境の使用を開始するには、「[App Service 環境の概要][IntroToAppServiceEnvironment]」を参照してください。
 
@@ -137,4 +138,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0622_2016-->

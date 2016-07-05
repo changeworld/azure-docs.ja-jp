@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/04/2016" 
+	ms.date="06/20/2016" 
 	ms.author="ccompy"/>
 
 
@@ -75,9 +75,10 @@ ASE に使用される VNET にはいくつかの制限があります。
 
 - 現時点では、V1 の "クラシック" VNET しかサポートされていない
 - VNET は地域 VNET であることが必要
-- ASE のホストに使用される VNET は、RFC1918 アドレス (つまりプライベート アドレス) を使用する必要がある
+- 2016 年 6 月に行われた直近の変更で、パブリック アドレス範囲*または* RFC1918 アドレス空間 (つまりプライベート アドレス) の*どちらか*を使用した仮想ネットワークに ASE をデプロイできるようになりました。パブリック アドレス範囲の仮想ネットワークを使用するには、あらかじめサブネットを作成しておき、ASE の作成インターフェイスでそのサブネットを選択する必要があります。
 - ASE がデプロイされる 8 個以上のアドレスを持つサブネットが必要
 - ASE のホストにサブネットが使用されたら、サブネットのアドレス範囲を変更できます。このため、将来の ASE の拡大に対応できるように、サブネットに 64 個以上のアドレスが含まれるようにすることをお勧めします。 
+- **ASE をホストするために使用されているサブネットに、他のコンピューティング リソースを含めることはできません。**
 
 ASE などのホステッド サービスとは異なり、[Virtual Network][virtualnetwork] とサブネットは、すべてがユーザーの制御下にあります。VNET の管理は、Virtual Network UI または PowerShell によって行われます。
 
@@ -176,6 +177,7 @@ App Service 環境を削除する必要がある場合は、単に [App Service 
 ![][9]
 
 ## 使用の開始
+App Service 環境に関するすべての記事と作業方法は [Application Service Environments の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
 
 App Service 環境の使用を開始するには、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
 
@@ -208,4 +210,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
 [ExpressRoute]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/11/2016" 
+	ms.date="06/17/2016" 
 	ms.author="jeannt"/>
 
 # Azure Machine Learning を使用した顧客離れの分析
@@ -22,7 +22,11 @@
 このトピックは、Azure Machine Learning Studio を使用して構築された顧客離れ分析プロジェクトの参照実装を表します。産業界の顧客離れの問題を総合的に解決するための関連の汎用モデルについて説明します。さらに、Machine Learning を使用して構築されたモデルの正確度を測定し、モデルの開発を進めるために方向性を評価します。
 
 ### 謝辞
-この実験は、Serge Berger (Microsoft 主任データ サイエンティスト)、Roger Barga (Microsoft Azure Machine Learning の前プロダクト マネージャ) によって開発およびテストされました。Azure ドキュメント チームは、このホワイト ペーパーに彼らの知識を提供していただいたことに感謝します。
+
+この実験は、Serge Berger (Microsoft 主任データ サイエンティスト)、Roger Barga (Microsoft Azure Machine Learning の前プロダクト マネージャー) によって開発およびテストされました。Azure ドキュメント チームは、このホワイト ペーパーに情報と知識をご提供いただいたこの 2 人に感謝いたします。
+
+>[AZURE.NOTE] この実験のデータは公開されていません。顧客離れ分析の機械学習モデルを構築する方法の例については、「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリー)](http://gallery.cortanaintelligence.com/)」の「[Telco churn model template (Telco の顧客離れモデルのテンプレート)](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5)」を参照してください
+
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -98,9 +102,9 @@
 
 
 *図 7: データ ソースから抽出された特徴*
-> これはプライベート データであるため、モデルとデータを共有することはできません。ただし、パブリックに使用可能なデータを使用する同様のモデルに関しては、[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)の「[Telco Customer Churn (Telco の顧客離れ)](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383)」にあるサンプル実験を参照してください。
+> これはプライベート データであるため、モデルとデータを共有することはできません。ただし、パブリックに使用可能なデータを使用する同様のモデルに関しては、「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリー)](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383)」の「[Telco Customer Churn (Telco の顧客離れ)](http://gallery.cortanaintelligence.com/)」にあるサンプル実験を参照してください。
 > 
-> Cortana Intelligence Suite を使用して顧客離れ分析モデルを実装する方法の詳細については、上級プログラム マネージャーの Wee Hyong Tok による[このビデオ](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html)をご覧になることをお勧めします。
+> Cortana Intelligence Suite を使用して顧客離れ分析モデルを実装する方法の詳細については、上級プログラム マネージャーの Wee Hyong Tok による[こちらのビデオ](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html)をご覧になることをお勧めします。
 > 
 
 ###プロトタイプで使用されたアルゴリズム
@@ -190,7 +194,7 @@ Machine Learning Studio でホストされたモデルは、実行速度の点�
 	-	**競合に関するデータとビジネス データ**。顧客に関して入手可能な情報をすべて入手します (入手できない場合や、トラッキングできない場合もあります)。
 -	重要度を特徴選択に利用します。これは、ブースト デシジョン ツリー モデルが常に有効なアプローチとなることを意味します。  
 
-この 4 つのカテゴリを利用すると、カテゴリごとの合理的なファクターによるインデックスに基づいた、単純かつ *決定論的* なアプローチにより、離反のリスクがあるお客様を十分特定できるという楽観的な誤解が生じます。これはもっともらしく思えるものの、残念なことに間違った理解です。というのも、離反というものは一時的な現象であり、離反に影響するファクターは一般に不変ではないためです。今顧客が離反を検討している理由は、明日には変わる可能性があります。そして 6 か月もすれば確実に変わっています。だからこそ*確率論的*モデルが不可欠なのです。
+この 4 つのカテゴリを利用すると、カテゴリごとの合理的なファクターによるインデックスに基づいた、単純かつ "決定論的" なアプローチにより、離反のリスクがある顧客を十分特定できるという楽観的な誤解が生じます。これはもっともらしく思えるものの、残念なことに間違った理解です。というのも、離反というものは一時的な現象であり、離反に影響するファクターは一般に不変ではないためです。今顧客が離反を検討している理由は、明日には変わる可能性があります。そして 6 か月もすれば確実に変わっています。だからこそ*確率論的*モデルが不可欠なのです。
 
 この重要な考えは実務では見逃されがちで、一般には BI 指向の分析アプローチが好まれています。その方が販売しやすく、単純な自動化が可能であるというのが、その主な理由です。
 
@@ -215,13 +219,13 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 ##参照
 [1] 予測分析: Beyond the Predictions (予想を超える)、W. McKnight、Information Management、2011 年 7 月/8 月、p18～20。
 
-[2] Wikipedia の記事: [Accuracy and precision](http://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] Wikipedia の記事: [Accuracy and precision (正確性と精度)](http://en.wikipedia.org/wiki/Accuracy_and_precision)
 
 \[3] [CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド](http://www.the-modeling-agency.com/crisp-dm.pdf)
 
 \[4] [ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する ](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-\[5] Cortana Analytics ギャラリーの [Telco 顧客離反モデル テンプレート](https://caqs.azure.net/#gallery/telcocustomerchurn)
+\[5] 「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリーの)](http://gallery.cortanaintelligence.com/)」 「[Telco churn model template (Telco の顧客離れモデルのテンプレート)](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5)」
 ##付録
 
 ![][10]
@@ -240,4 +244,4 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0622_2016-->

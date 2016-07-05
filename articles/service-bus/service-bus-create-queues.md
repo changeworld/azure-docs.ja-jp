@@ -5,14 +5,14 @@
     documentationCenter="na"
     authors="sethmanheim"
     manager="timlt"
-    editor="tysonn" />
+    editor="" />
 <tags 
     ms.service="service-bus"
     ms.devlang="na"
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="03/16/2016"
+    ms.date="06/21/2016"
     ms.author="sethm" />
 
 # Service Bus キューを使用するアプリケーションを作成する
@@ -53,17 +53,17 @@
 
 以下では、Service Bus を使用してこのアプリケーションを作成する方法を示します。
 
-### Service Bus のアカウントとサブスクリプションにサインアップします。
+### Azure アカウントにサインアップする
 
 Service Bus の使用を開始するには、Azure アカウントが必要です。アカウントがまだない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)で無料アカウントにサインアップできます。
 
 ### サービス名前空間の作成
 
-サブスクリプションを作成した後は、新しい名前空間を作成できます。新しい名前空間に、すべての Service Bus アカウントについて一意の名前を指定します。各名前空間は、一連の Service Bus エンティティに対するスコープ コンテナーの役割を果たします。
+サブスクリプションを作成した後は、[新しい名前空間を作成](service-bus-create-namespace-portal.md)できます。各名前空間は、一連の Service Bus エンティティに対するスコープ コンテナーの役割を果たします。新しい名前空間に、すべての Service Bus アカウントについて一意の名前を指定します。
 
 ### NuGet パッケージのインストール
 
-Service Bus の名前空間を使用するには、アプリケーションは Service Bus アセンブリ (具体的には Microsoft.ServiceBus.dll) を参照する必要があります。このアセンブリは Microsoft Azure SDK に含まれ、[Azure SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からダウンロードできます。ただし、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法は、[Service Bus NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus) パッケージです。
+Service Bus の名前空間を使用するには、アプリケーションは Service Bus アセンブリ (具体的には Microsoft.ServiceBus.dll) を参照する必要があります。このアセンブリは Microsoft Azure SDK に含まれ、[Azure SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からダウンロードできます。ただし、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法は、[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)です。
 
 ### キューを作成する
 
@@ -108,14 +108,14 @@ sender.Send(bm);
 
 ### キューからのメッセージの受信
 
-キューからメッセージを受け取る最も簡単な方法は、[MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx) オブジェクトを使用することです。このオブジェクトは、[CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx) を使用して [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) から直接作成できます。メッセージ レシーバーは、**ReceiveAndDelete** と **PeekLock** という 2 つの異なるモードで動作できます。[ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) は、[CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx) の呼び出しへのパラメーターとして、メッセージ レシーバーの作成時に設定されます。
+キューからメッセージを受け取るには、[MessageReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx) オブジェクトを使用できます。このオブジェクトは、[CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx) を使用して [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) から直接作成します。メッセージ レシーバーは、**ReceiveAndDelete** と **PeekLock** という 2 つの異なるモードで動作できます。[ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) は、[CreateMessageReceiver](https://msdn.microsoft.com/library/azure/hh322642.aspx) の呼び出しへのパラメーターとして、メッセージ レシーバーの作成時に設定されます。
 
 
 **ReceiveAndDelete** モードでは、受信は単発の操作です。つまり、Service Bus は要求を受信すると、メッセージを読み取り中としてマークしてアプリケーションに返します。**ReceiveAndDelete** モードは最もシンプルなモデルであり、障害が発生した場合にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。Service Bus がメッセージを読み取り中としてマークするため、アプリケーションは、再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージを見落とすことになります。
 
 **PeekLock** モードでは、メッセージの受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) を呼び出して受信処理の第 2 段階を完了します。Service Bus は、[Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) の呼び出しを確認すると、メッセージを読み取り済みとしてマークします。
 
-結果としては他に 2 つの可能性があります。第 1 に、アプリケーションがなんらかの理由によってメッセージを処理できない場合には、受信したメッセージに対して ([Complete](https://msdn.microsoft.com/library/azure/hh181837.aspx) の代わりに) [Abandon](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) を呼び出すことができます。このメソッドが呼び出されると、Service Bus によってメッセージのロックが解除され、同じコンシューマーまたは競合する別のコンシューマーが再度そのメッセージを受信できるようになります。第 2 に、ロックに関連付けられたタイムアウトがあります。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理できない場合は、Service Bus によってメッセージのロックが解除され、再度受信できるようになります。
+結果としては他に 2 つの可能性があります。第 1 に、アプリケーションがなんらかの理由によってメッセージを処理できない場合には、受信したメッセージに対して ([Complete](https://msdn.microsoft.com/library/azure/hh181837.aspx) の代わりに) [Abandon](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) を呼び出すことができます。このメソッドが呼び出されると、Service Bus によってメッセージのロックが解除され、同じコンシューマーまたは競合する別のコンシューマーが再度そのメッセージを受信できるようになります。第 2 に、ロックに関連付けられたタイムアウトがあります。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージを処理できない場合は、Service Bus によってメッセージのロックが解除され、再度受信できるようになります (基本的に既定で [Abandon](https://msdn.microsoft.com/library/azure/hh181837.aspx) 操作を実行します)。
 
 メッセージが処理された後、[Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。一般に、この動作は "1 回以上" の処理と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。重複した処理を許されないシナリオの場合は、アプリケーションで重複を検出する追加ロジックが必要です。これは、メッセージの [MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) プロパティを使用して実現できます。このプロパティの値は、配信の試行を通じて変化しません。これは "*厳密に 1 回*" の処理と呼ばれます。
 
@@ -158,6 +158,6 @@ catch (Exception e)
 
 ## 次のステップ
 
-このトピックではキューの基本を説明しました。次に、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」で Service Bus のトピックとサブスクリプションのパブリッシュ/サブスクライブ機能の使用を学習してください。
+このトピックではキューの基本を説明しました。次に、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」で Service Bus のトピックとサブスクリプションのパブリッシュ/サブスクライブ機の使用を学習してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0622_2016-->

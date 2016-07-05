@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="sunliangms;fashah;garye;bradsev" />
 
 #<a name="heading"></a>Azure BLOB データを高度な分析を使用して処理する
@@ -191,4 +191,4 @@
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

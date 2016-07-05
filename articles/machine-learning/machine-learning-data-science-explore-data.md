@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Cortana Analytics Process のデータを探索する | Microsoft Azure" 
+	pageTitle="Team Data Science Process でのデータの探索 | Microsoft Azure" 
 	description="さまざまなストレージ環境のデータを探索する方法について説明します。" 
 	services="machine-learning,storage" 
 	documentationCenter="" 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="bradsev" />
 
-#Cortana Analytics Process のデータを探索する
+#Team Data Science Process でのデータの探索
 
-このドキュメントでは、Cortana Analytics Process で一般的に使用されている 4 つの環境のデータを探索する方法について説明します。
+このドキュメントでは、Team Data Science Process で一般的に使用されている 4 つの環境のデータを探索する方法について説明します。
 
 - **Azure BLOB コンテナー** データは、[Pandas](http://pandas.pydata.org/) Python パッケージを使用して探索します。
 - **SQL Server** データは、SQL と、Python などのプログラミング言語を使用して探索します。
@@ -29,4 +29,4 @@
 
 [AZURE.INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

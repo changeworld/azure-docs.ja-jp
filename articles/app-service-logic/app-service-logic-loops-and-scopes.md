@@ -28,10 +28,16 @@ Logic Apps では、一連のデータをループ処理し、各項目に対し
 
 ```
 {
+    "email_filter": {
+        "type": "query",
+        "inputs": {
+            "from": "@triggerBody()['emails']",
+            "where": "@contains(item()['email'], 'microsoft.com')
+        }
+    },
     "forEach_email": {
         "type": "foreach",
-        "foreach": "@triggerBody()['emails']",
-        "expression": "@contains(item(), 'microsoft.com')",
+        "foreach": "@body('email_filter')",
         "actions": {
             "send_email": {
                 "type": "ApiConnection",
@@ -48,6 +54,9 @@ Logic Apps では、一連のデータをループ処理し、各項目に対し
                 }
                 }
             }
+        },
+        "runAfter":{
+            "email_filter": [ "Succeeded" ]
         }
     }
 }
@@ -132,4 +141,4 @@ SplitOn は、次の例に示すように、コード ビューで指定でき�
 }
 ```
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

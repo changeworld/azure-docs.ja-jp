@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と UserVoice の統合 | Microsoft Azure" 
     description="Azure Active Directory で UserVoice を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法を説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="06/21/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と UserVoice の統合
   
@@ -38,7 +38,7 @@
 
 ###UserVoice のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-uservoice-tutorial/IC700993.png "Active Directory")
 
@@ -68,29 +68,29 @@
   
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで UserVoice に対する認証を行うことができるようにする方法を説明します。UserVoice のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」を参照してください。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[UserVoice]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **[UserVoice]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-uservoice-tutorial/IC777515.png "シングル サインオンの構成")
+    ![シングル サインオンの構成](./media/active-directory-saas-uservoice-tutorial/IC777515.png "Configure single sign-on")
 
 2.  **[ユーザーの UserVoice へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-uservoice-tutorial/IC777516.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-uservoice-tutorial/IC777516.png "Configure single sign-on")
 
 3.  **[アプリケーション URL の構成]** ページで、**[UserVoice サインイン URL]** ボックスに、"*https://\<テナント名>.UserVoice.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-uservoice-tutorial/IC777517.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-uservoice-tutorial/IC777517.png "アプリケーション URL の構成")
 
 4.  **[UserVoice でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルを **c:\\UserVoice.cer** としてローカルに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-uservoice-tutorial/IC777518.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-uservoice-tutorial/IC777518.png "Configure single sign-on")
 
 5.  別の Web ブラウザーのウィンドウで、UserVoice 企業サイトに管理者としてログインします。
 
 6.  上部のツール バーの [設定] をクリックし、[Web ポータル] を選択します。
 
-    ![設定](./media/active-directory-saas-uservoice-tutorial/IC777519.png "[設定]")
+    ![Settings](./media/active-directory-saas-uservoice-tutorial/IC777519.png "[設定]")
 
 7.  **[Web ポータル]** タブの **[ユーザー認証]** セクションで、**[編集]** をクリックして **[ユーザー認証の編集]** ダイアログ ページを開きます。
 
@@ -101,17 +101,17 @@
     ![ユーザー認証の編集](./media/active-directory-saas-uservoice-tutorial/IC777521.png "ユーザー認証の編集")
 
     1.  **[シングル サインオン]** をクリックします。
-    2.  Azure ポータルで、**[UserVoice でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[SSO リモート サインイン]** ボックスに貼り付けます。
-    3.  Azure ポータルで、**[UserVoice でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[SSO リモート サインアウト]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルで、**[UserVoice でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[SSO リモート サインイン]** ボックスに貼り付けます。
+    3.  Azure クラシック ポータルで、**[UserVoice でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[SSO リモート サインアウト]** ボックスに貼り付けます。
     4.  エクスポートした証明書から **[サムプリント]** の値をコピーし、**[現在の証明書 SHA1 フィンガープリント]** ボックスに貼り付けます。  
 
-        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value （証明書のサムプリント値を取得する方法）](http://youtu.be/YKQF266SAxI)」を参照してください。
+        >[AZURE.TIP] 詳細については、「[How to retrieve a certificate's thumbprint value （証明書のサムプリント値を取得する方法）](http://youtu.be/YKQF266SAxI)」を参照してください。
 
     5.  **[認証設定の保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-uservoice-tutorial/IC777522.png "シングル サインオンの構成")
+    ![シングル サインオンの構成](./media/active-directory-saas-uservoice-tutorial/IC777522.png "Configure single sign-on")
 
 ##ユーザー プロビジョニングの構成
   
@@ -123,7 +123,7 @@ Azure AD ユーザーが UserVoice にログインできるようにするには
 
 2.  **[設定]** に移動します。
 
-    ![設定](./media/active-directory-saas-uservoice-tutorial/IC777811.png "設定")
+    ![Settings](./media/active-directory-saas-uservoice-tutorial/IC777811.png "設定")
 
 3.  **[全般]** をクリックします。
 
@@ -142,7 +142,7 @@ Azure AD ユーザーが UserVoice にログインできるようにするには
     1.  [電子メール] ボックスに、プロビジョニングするアカウントの電子メール アドレスを入力し、**[追加]** をクリックします。
     2.  **[招待]** をクリックします。
 
->[AZURE.NOTE]UserVoice から提供されている他の UserVoice ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] UserVoice から提供されている他の UserVoice ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -150,7 +150,7 @@ Azure AD ユーザーが UserVoice にログインできるようにするには
 
 ###ユーザーを UserVoice に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **UserVoice** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -158,8 +158,8 @@ Azure AD ユーザーが UserVoice にログインできるようにするには
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-uservoice-tutorial/IC767830.png "Yes")
+    ![Yes](./media/active-directory-saas-uservoice-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0622_2016-->

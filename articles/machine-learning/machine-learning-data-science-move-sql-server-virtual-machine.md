@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="06/14/2016" 
 	ms.author="fashah;bradsev" />
 
 # Azure 仮想マシン上の SQL Server にデータを移動する
 
-このトピックでは、フラット ファイル (CSV 形式または TSV 形式) またはオンプレミスの SQL Server から、Azure 仮想マシン上の SQL Server にデータを移動するためのオプションについて説明します。クラウドにデータを移動するためのこれらのタスクは、Azure で提供される Cortana Analytics Process の一部です。
+このトピックでは、フラット ファイル (CSV 形式または TSV 形式) またはオンプレミスの SQL Server から、Azure 仮想マシン上の SQL Server にデータを移動するためのオプションについて説明します。このクラウドへのデータ移動タスクは、Team Data Science Process の一部です。
 
 Machine Learning 用に Azure SQL データベースにデータを移動するためのオプションに関する説明は、「[Azure Machine Learning 用に Azure SQL データベースにデータを移動する](machine-learning-data-science-move-sql-azure.md)」を参照してください。
 
-次の**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
+次の**メニュー**は、Team Data Science Process (TDSP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
 
 [AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
@@ -224,4 +224,4 @@ SQL Server は以下のものをサポートします。
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0622_2016-->

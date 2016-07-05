@@ -33,7 +33,7 @@
 このチュートリアルには次のものが必要です。
 
 - Azure アカウントとサブスクリプション。チュートリアルを始める前に必要です。お持ちでない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
-- [Azure PowerShell](../powershell-install-configure.md) 1.0.0 以降 (このチュートリアルの執筆に使用したバージョンは 1.0.4)。
+- [Azure PowerShell](../powershell-install-configure.md) 1.4.0 以降 (このチュートリアルの執筆に使用したバージョンは 1.5.0)。
     - バージョンを確認するには、「**Get-Module Azure -ListAvailable**」と入力します。
 
 ## サブスクリプションの構成
@@ -69,7 +69,7 @@ Windows PowerShell を開いて次のコマンドレットを実行し、Azure �
 適宜変更を加えたうえで次のコマンドレットを実行し、これらの変数を初期化します。この例では [Premium Storage](../storage/storage-premium-storage.md) を使用しています。運用環境のワークロードには Premium Storage の使用をお勧めします。この指針とその他の推奨事項については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
 
     $StorageName = $ResourceGroupName + "storage"
-    $StorageType = "Premium_LRS"
+    $StorageSku = "Premium_LRS"
 
 ### Network properties
 
@@ -125,11 +125,11 @@ Resource Manager デプロイメント モデルで最初に作成するオブ�
 
 ## ストレージ アカウントの作成
 
-仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。単純化するために、ここではその両方の用途を兼ねた単一のディスクを作成します。SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納する場合は、後から [Add-Azure Disk](https://msdn.microsoft.com/library/azure/dn495252.aspx) コマンドレットを使用して別途ディスクを接続することができます。ここでは [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) コマンドレットを使用して、新しいリソース グループにストレージ アカウントを作成します。引数には、先ほど初期化した変数で定義したストレージ アカウント名、ストレージ名、場所を指定します。
+仮想マシンには、オペレーティング システム ディスク用と SQL Server (データおよびログ ファイル) 用のストレージ リソースが必要となります。単純化するために、ここではその両方の用途を兼ねた単一のディスクを作成します。SQL Server のデータ ファイルとログ ファイルを専用のディスクに格納する場合は、後から [Add-Azure Disk](https://msdn.microsoft.com/library/azure/dn495252.aspx) コマンドレットを使用して別途ディスクを接続することができます。ここでは [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) コマンドレットを使用して、新しいリソース グループに Standard ストレージ アカウントを作成します。引数には、先ほど初期化した変数で定義したストレージ アカウント名、ストレージ Sku 名、場所を指定します。
 
 次のコマンドレットを実行すると、新しいストレージ アカウントが作成されます。
 
-    $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -Type $StorageType -Location $Location
+    $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -SkuName $StorageSku -Kind "Storage" -Location $Location
 
 ## ネットワーク リソースを作成する
 
@@ -258,7 +258,7 @@ Azure ポータルでこのマシンを表示すると、[対応するパブリ�
     $ResourceGroupName = "sqlvm1"
     ## Storage
     $StorageName = $ResourceGroupName + "storage"
-    $StorageType = "Premium_LRS"
+    $StorageSku = "Premium_LRS"
 
     ## Network
     $InterfaceName = $ResourceGroupName + "ServerInterface"
@@ -285,7 +285,7 @@ Azure ポータルでこのマシンを表示すると、[対応するパブリ�
     New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
 
     # Storage
-    $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -Type $StorageType -Location $Location
+    $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -SkuName $StorageSku -Kind "Storage" -Location $Location
 
     # Network
     $SubnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $VNetSubnetAddressPrefix
@@ -310,4 +310,4 @@ Azure ポータルでこのマシンを表示すると、[対応するパブリ�
 ## 次のステップ
 仮想マシンを作成したら、RDP を使用してその仮想マシンに接続し、接続のセットアップを行うことができます。詳細については、「[Azure での SQL Server 仮想マシンへの接続 (リソース マネージャー)](virtual-machines-windows-sql-connect.md)」を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

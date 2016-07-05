@@ -10,11 +10,11 @@
 
 <tags
 	ms.service="sql-database"
-	ms.workload="data-management"
+	ms.workload="drivers"
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="04/07/2016"
+	ms.date="06/16/2016"
 	ms.author="meetb"/>
 
 
@@ -45,10 +45,13 @@
 
 ## 次のステップ
 
-詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
+* 「[SQL Database の開発: 概要](sql-database-develop-overview.md)」の確認
+* [Microsoft Python Driver for SQL Server](https://msdn.microsoft.com/library/mt652092.aspx) の詳細
+* [Python デベロッパー センター](/develop/python/)の参照
 
-## その他のリソース
+## その他のリソース 
 
-マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」をご覧ください。
+* [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべての確認
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

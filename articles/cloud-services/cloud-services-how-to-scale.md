@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="06/22/2016"
 	ms.author="adegeo"/>
 
 
@@ -151,4 +151,4 @@ Azure クラシック ポータルの [スケール] ページで、Web ロー�
 [scale_popup]: ./media/cloud-services-how-to-scale/schedules-dialog.png
 [linked_resource]: ./media/cloud-services-how-to-scale/linked-resources.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

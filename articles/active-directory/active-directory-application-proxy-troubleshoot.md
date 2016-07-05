@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,15 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="06/22/2016"
 	ms.author="kgremban"/>
 
 
 
 # アプリケーション プロキシのトラブルシューティング
-
-
-> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 発行されたアプリケーションへのアクセス中、またはアプリケーションの発行中にエラーが発生する場合は、Microsoft Azure AD アプリケーション プロキシが正しく機能しているかどうかを次のオプションで確認します。
 
@@ -80,11 +77,11 @@
 - [シングル サインオンの有効化](active-directory-application-proxy-sso-using-kcd.md)
 - [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
 
-最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
+最新のニュースと更新情報については、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 
 
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-troubleshoot/connectorproperties.png
 [2]: ./media/active-directory-application-proxy-troubleshoot/sessionlog.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0622_2016-->

@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="05/27/2016"
+    ms.date="06/22/2016"
     ms.author="srinia"/>
 
 # PowerShell でのエラスティック データベース プールの監視と管理 
@@ -107,6 +107,8 @@ PowerShell コマンドレットを使用して、[エラスティック デー�
 
 リソースにアラート ルールを追加して、設定した使用率のしきい値にリソースが達したときに、[URL エンドポイント](https://msdn.microsoft.com/library/mt718036.aspx)への電子メール通知やアラート文字列の送信を行うことができます。Add-AzureRmMetricAlertRule コマンドレットを使用します。
 
+> [AZURE.IMPORTANT]エラスティック プールのリソース使用率の監視には、20 分以上の遅れがあります。エラスティック プールに対して 30 分未満のアラートを設定することは現在サポートされていません。30 分未満の期間 (「PowerShell API の「-WindowSize」というパラメーター) を含むエラスティック プールのアラート設定は、実行されない場合があります。エラスティック プールに対して定義するアラートでは、30 分以上の期間 (WindowSize) を使用してください。
+
 この例では、プールの eDTU の消費量が一定のしきい値を上回った場合に通知を受け取るようにアラートを追加します。
 
     # Set up your resource ID configurations
@@ -126,11 +128,13 @@ PowerShell コマンドレットを使用して、[エラスティック デー�
     $alertName = $poolName + "- DTU consumption rule"
 
     # Create an alert rule for DTU_consumption_percent
-    Add-AzureRMMetricAlertRule -Name $alertName -Location $location -ResourceGroup $resourceGroupName -TargetResourceId $ResourceID -MetricName "DTU_consumption_percent"  -Operator GreaterThan -Threshold 80 -TimeAggregationOperator Average -WindowSize 00:05:00 -Actions $actionEmail 
+    Add-AzureRMMetricAlertRule -Name $alertName -Location $location -ResourceGroup $resourceGroupName -TargetResourceId $ResourceID -MetricName "DTU_consumption_percent"  -Operator GreaterThan -Threshold 80 -TimeAggregationOperator Average -WindowSize 00:60:00 -Actions $actionEmail 
 
 ## プール内のすべてのデータベースへのアラートの追加
 
 エラスティック プール内のすべてのデータベースにアラート ルールを追加して、リソースがアラートで設定された使用率のしきい値に達したときに電子メール通知やアラート文字列を [URL エンドポイント](https://msdn.microsoft.com/library/mt718036.aspx)に送信することができます。
+
+> [AZURE.IMPORTANT] エラスティック プールのリソース使用率の監視には、20 分以上の遅れがあります。エラスティック プールに対して 30 分未満のアラートを設定することは現在サポートされていません。30 分未満の期間 (「PowerShell API の「-WindowSize」というパラメーター) を含むエラスティック プールのアラート設定は、実行されない場合があります。エラスティック プールに対して定義するアラートでは、30 分以上の期間 (WindowSize) を使用してください。
 
 この例では、データベースの DTU 消費が特定のしきい値を上回った場合に通知を受け取るように、プール内の各データベースにアラートを追加します。
 
@@ -156,7 +160,7 @@ PowerShell コマンドレットを使用して、[エラスティック デー�
     $alertName = $db.DatabaseName + "- DTU consumption rule"
 
     # Create an alert rule for DTU_consumption_percent
-    Add-AzureRMMetricAlertRule -Name $alertName  -Location $location -ResourceGroup $resourceGroupName -TargetResourceId $dbResourceId -MetricName "dtu_consumption_percent"  -Operator GreaterThan -Threshold 80 -TimeAggregationOperator Average -WindowSize 00:05:00 -Actions $actionEmail
+    Add-AzureRMMetricAlertRule -Name $alertName  -Location $location -ResourceGroup $resourceGroupName -TargetResourceId $dbResourceId -MetricName "dtu_consumption_percent"  -Operator GreaterThan -Threshold 80 -TimeAggregationOperator Average -WindowSize 00:60:00 -Actions $actionEmail
 
     # drop the alert rule
     #Remove-AzureRmAlertRule -ResourceGroup $resourceGroupName -Name $alertName
@@ -166,7 +170,7 @@ PowerShell コマンドレットを使用して、[エラスティック デー�
 
 ## サブスクリプション内の複数のプールのリソース使用状況データを収集して監視する
 
-サブスクリプションに多数のデータベースがある場合、各エラスティック プールを個別に監視するのは面倒です。代わりに、SQL Database の PowerShell コマンドレットと T-SQL クエリを組み合わせて、複数のプールおよびそのデータベースからリソース使用状況データを収集し、リソースの使用状況を監視および分析できます。そのような一連の PowerShell スクリプトの[実装のサンプル](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools)が、内容と方法についてのドキュメントと共に GitHub の SQL Server サンプル リポジトリにあります。
+サブスクリプションに多数のデータベースがある場合、各エラスティック プールを個別に監視するのは面倒です。代わりに、SQL Database の PowerShell コマンドレットと T-SQL クエリを組み合わせて、複数のプールおよびそのデータベースからリソース使用状況データを収集し、リソースの使用状況を監視および分析できます。そのような一連の PowerShell スクリプトの[サンプル実装](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools)が、内容と方法についてのドキュメントと共に GitHub の SQL Server サンプル リポジトリにあります。
 
 このサンプル実装を使用するには次のようにします。
 
@@ -270,6 +274,6 @@ Stop- コマンドレットは、一時停止ではなく取り消しを意味�
 ## 次のステップ
 
 - [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブを使用すると、プール内にある任意の数のデータベースに対して T-SQL スクリプトを実行できます。
-- Elastic Database のツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)」を参照してください。
+- エラスティック データベース ツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0622_2016-->

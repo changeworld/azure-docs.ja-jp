@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Cortana Analytics Process の活用: SQL Server を使用する | Microsoft Azure"
+	pageTitle="Team Data Science Process の活用: SQL Sever の使用 | Microsoft Azure"
 	description="Advanced Analytics Process and Technology の活用"  
 	services="machine-learning"
 	documentationCenter=""
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/14/2016"
 	ms.author="fashah;bradsev"/>
 
 
-# Cortana Analytics Process の活用: SQL Server を使用する
+# Team Data Science Process の活用: SQL Sever の使用
 
-このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) を使って機械学習モデルの構築とデプロイを行う方法を説明します。ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
+このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイする方法を説明します。ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
 
 
 ## <a name="dataset"></a>NYC タクシー乗車データセットの説明
@@ -716,4 +716,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

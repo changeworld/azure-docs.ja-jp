@@ -16,7 +16,18 @@
 
 # リリース ノート - Developer Analytics Tools
 ##### Visual Studio での Application Insights と HockeyApp の分析
-## バージョン 7.0.1
+## Version 7.0
+###Application Insights Trends
+Application Insights Trends は、時間経過に伴うアプリの動作を分析するための Visual Studio の新しいツールです。このツールを起動するには、Application Insights のツール バーボタンまたは [Application Insights の検索] ウィンドウから [テレメトリの傾向を調べる] を選択するか、[表示] の [その他のウィンドウ] から [Application Insights の傾向] を選択します。5 つの一般的なクエリから 1 つ選択して開始します。テレメトリの種類、時間範囲、およびその他のプロパティに基づき、さまざまなデータセットを分析できます。データ内の異常を見つけるには、[ビューの種類] ボックスでいずれかの異常オプションを選択します。ウィンドウの下部にあるフィルター オプションを使用すると、テレメトリの特定の部分に対象を絞り込みやすくなります。
+
+![Application Insights Trends](./media/app-insights-release-notes-vsix/Trends.PNG)
+
+###CodeLens における例外
+CodeLens で例外のテレメトリを表示できるようになりました。プロジェクトが Application Insights サービスに接続されている場合、開発中の各メソッドで過去 24 時間内に発生した例外の数が表示されます。CodeLens から [検索] または [傾向] に移動すれば、さらに詳しく例外を調べることができます。
+
+![CodeLens における例外](./media/app-insights-release-notes-vsix/ExceptionsCodeLens.png)
+
+###ASP.NET Core のサポート
 Application Insights により、Visual Studio で ASP.NET Core RC2 プロジェクトがサポートされるようになりました。Application Insights は、[新しいプロジェクト] ダイアログから新しい ASP.NET Core RC2 プロジェクトに追加することができます。既存のプロジェクトに追加するには、ソリューション エクスプローラーでそのプロジェクトを右クリックし、[Application Insights テレメトリの追加...] を選択します。
 
 ![.NET コアのサポート](./media/app-insights-release-notes-vsix/NetCoreSupport.PNG)
@@ -25,11 +36,15 @@ ASP.NET 5 RC1 と ASP.NET Core RC2 プロジェクトには、診断ツール �
 
 ![診断ツールのサポート](./media/app-insights-release-notes-vsix/DiagnosticTools.PNG)
 
+###ユニバーサル Windows アプリ用 HockeyApp
+HockeyApp には、ベータ版の配布やユーザー フィードバックに加え、ユニバーサル Windows アプリのクラッシュ レポートにシンボルを対応付ける機能があります。この HockeyApp SDK が従来よりも簡単に追加できるようになりました。対象のユニバーサル Windows プロジェクトを右クリックし、[Hockey App]、[Enable Crash Analytics... (クラッシュ分析を有効にする)] の順にクリックするだけです。これだけで SDK がインストールされ、クラッシュ収集がセットアップされて、HockeyApp のリソースがクラウドにプロビジョニングされます。アプリを HockeyApp サービスにアップロードする必要はありません。
+
 その他の新機能:
 
 * 自動的に適用することによって時間範囲と詳細のフィルターを選択すると高速かつに、Application Insights の検索がより素早く直感的になりました
 * Application Insights の検索では、要求テレメトリから [コードに移動] オプションを使用できます
 * HockeyApp サインイン エクスペリエンスが向上しました。
+* 診断ツールで、例外に関する運用テレメトリ情報が表示されるようになりました。
 
 ## バージョン 5.2
 Visual Studio に HockeyApp シナリオを導入することになりました。最初に有効にした統合は、Visual Studio でのユニバーサル Windows アプリと Windows フォーム アプリのベータ版配布です。
@@ -164,4 +179,4 @@ Application Insights ポータルでの検索と同じように、イベント�
 
 Application Insights 拡張機能の今後のリリースでは、HockeyApp と Visual Studio のエクスペリエンスをさらに統合するための新しい機能を導入する予定です。現時点では、NuGet 参照を追加するだけで HockeyApp を開始できます。詳細については、[ドキュメント](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone)を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

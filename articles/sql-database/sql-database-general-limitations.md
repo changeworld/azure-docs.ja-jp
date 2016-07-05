@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="04/11/2016"
+   ms.date="06/21/2016"
    ms.author="carlrab" />
 
 # Azure SQL Database の一般的な制限事項とガイドライン
@@ -35,7 +35,7 @@ Microsoft Azure SQL Database では、SQL Server エージェントおよびジ�
 
 ## SQL Server 照合順序のサポート
 
-Microsoft Azure SQL Database で使用される既定のデータベース照合順序は **SQL\_LATIN1\_GENERAL\_CP1\_CI\_AS** です。**LATIN1\_GENERAL** は英語 (米国)、**CP1** はコード ページ 1252、**CI** は大文字と小文字の区別なし、**AS** はアクセントの区別ありを表しています。Transact-SQL を使用して、V12 データベースの照合順序を変更できます。照合順序を設定する方法の詳細については、「[COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)」を参照してください。
+Microsoft Azure SQL Database で使用される既定のデータベース照合順序は **SQL\_LATIN1\_GENERAL\_CP1\_CI\_AS** です。**LATIN1\_GENERAL** は英語 (米国)、**CP1** はコード ページ 1252、**CI** は大文字と小文字の区別なし、**AS** はアクセントの区別ありを表しています。V12 データベースの照合順序は変更できません。照合順序を設定する方法の詳細については、「[COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)」を参照してください。
 
 ## 名前付けに関する要件
 
@@ -63,4 +63,4 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 
 - SQL Database の利用可能なドライバーとサポートの詳細については、「[SQL Database および SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0622_2016-->

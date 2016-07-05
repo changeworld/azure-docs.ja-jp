@@ -13,7 +13,7 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-windows"
  ms.workload="big-compute"
- ms.date="04/29/2016"
+ ms.date="06/17/2016"
  ms.author="danlep"/>
 
 # Microsoft HPC Pack を使用して Azure で Windows ハイ パフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション
@@ -32,9 +32,9 @@ ms.service="virtual-machines-windows"
 
 * (Marketplace) [HPC Pack cluster for Excel workloads (Excel ワークロード用の HPC Pack クラスター)](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterexcelcn/)
 
-* (クイックスタート) [Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)
+* (クイックスタート) [Create an HPC cluster with custom compute node image](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster)
 
-* (クイックスタート) [Create an HPC cluster with custom compute node image(カスタム コンピューティング ノード イメージを使用した HPC クラスターの作成)](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)
+* (クイックスタート) [Create an HPC cluster with custom compute node image(カスタム コンピューティング ノード イメージを使用した HPC クラスターの作成)](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster-custom-image)
 
 ### Azure VM イメージ
 
@@ -89,4 +89,4 @@ ms.service="virtual-machines-windows"
 
 * [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](virtual-machines-windows-classic-hpcpack-rdma-cluster.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0622_2016-->

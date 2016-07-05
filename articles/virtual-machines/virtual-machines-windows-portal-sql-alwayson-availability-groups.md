@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/09/2016"
+	ms.date="06/12/2016"
 	ms.author="mikeray" />
 
 # Azure VM での AlwaysOn 可用性グループの自動構成 - Resource Manager
@@ -27,7 +27,6 @@
 <br/>
 
 この詳細なチュートリアルでは、Azure リソース マネージャー仮想マシンに SQL Server の可用性グループを作成する方法について説明します。このチュートリアルでは、テンプレートの構成に Azure ブレードを使用します。このチュートリアルでは、既定の設定を確認し、必要な設定を入力し、ポータルでブレードを更新します。
-
 
 チュートリアルの最後には、次の要素で構成された SQL Server 可用性グループ ソリューションが Azure で完成します。
 
@@ -66,6 +65,9 @@
 - Azure が環境全体を作成する過程を監視する
 
 - ドメイン コント ローラーのいずれかと接続し、次いで SQL Server のいずれかと接続する
+
+[AZURE.INCLUDE [可用性グループ テンプレート](../../includes/virtual-machines-windows-portal-sql-alwayson-ag-template.md)]
+
 
 ## ギャラリーからクラスターをプロビジョニングする
 
@@ -257,4 +259,4 @@ SQL Server の新しいインスタンスは、インターネットに接続さ
 
 これで SQL Server に RDP 接続できました。これで SQL Server Management Studio を開き、SQL Server の既定のインスタンスに接続し、可用性グループが構成済みであることを確認できます。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

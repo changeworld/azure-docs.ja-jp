@@ -18,7 +18,7 @@
 
 # データベースの Stretch Database を有効にする
 
-Stretch Database のデータベースを設定するには、SQL Server Management Studio でデータベースの **[タスク]、[Stretch]、[有効化]** の順に選択し、**[Stretch Database を有効にする]** ウィザードを起動します。Transact-SQL を利用し、データベースの Stretch Database を有効にすることもできます。
+Stretch Database の既存のデータベースを設定するには、SQL Server Management Studio でデータベースの **[タスク]、[Stretch]、[有効化]** の順に選択し、**[Stretch Database を有効にする]** ウィザードを起動します。Transact-SQL を利用し、データベースの Stretch Database を有効にすることもできます。
 
 テーブルに **[タスク]、[Stretch]、[有効化]** を選択したとき、Stretch Database のデータベースを有効にしていない場合、ウィザードにより Stretch Database のデータベースが設定され、プロセスの一環としてテーブルを設定できます。「[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-database.md)」の手順ではなく、このトピックの手順に従ってください。
 
@@ -133,4 +133,4 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 
 [ALTER DATABASE SET のオプション (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0622_2016-->

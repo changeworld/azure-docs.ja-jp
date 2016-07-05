@@ -1300,7 +1300,7 @@ New-AzureRmResourceGroup -Name $rgName -Location "North Europe"
 
 ```powershell
 $suffix = Get-Random -Minimum 100000 -Maximum 999999
-$account = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name "saperpdemo$suffix" -Type Standard_LRS -Location "North Europe"
+$account = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name "saperpdemo$suffix" -SkuName Standard_LRS -Kind "Storage" -Location "North Europe"
 ```
 
 * すべてのトレーニング/デモ ランドスケープの新しい仮想ネットワークを作成して、同じホスト名と IP アドレスの使用を有効にします。仮想ネットワークは、ポート 3389 へのトラフィックのみを許可して、SSH 向けにリモート デスクトップ アクセスとポート 22 を有効にするネットワーク セキュリティ グループによって保護されます。 
@@ -1499,7 +1499,7 @@ Azure での SAP の実装のより詳しい背景情報については、この
 | サービス | ポート名 | 例 `<nn`> = 01 | 既定の範囲 (最小 - 最大) | コメント |
 |---------|-----------|-------------------|-------------------------|---------|
 | ディスパッチャー | sapdp`<nn>` * を参照 | 3201 | 3200 – 3299 | SAP ディスパッチャー (SAP GUI が Windows と Java 用に使用) |
-| メッセージ サーバー | sapms`<sid`> ** を参照 | 3600 | 制限なし sapms`<anySID`> | sid = SAP-System-ID |
+| メッセージ サーバー | sapms`<sid`> * を参照 | 3600 | 制限なし sapms`<anySID`> | sid = SAP-System-ID |
 | ゲートウェイ | sapgw`<nn`> * を参照 | 3301 | 制限なし | SAP ゲートウェイ (CPIC および RFC 通信用) |
 | SAP ルーター | sapdp99 | 3299 | 制限なし | インストール後に、CI (セントラル インスタンス) サービス名のみを /etc/services で任意の値に再割り当てできます。 |
 
@@ -1601,7 +1601,7 @@ SAP Change and Transport System (TMS) は、ランドスケープでシステム
 方法:
 
 * シナリオでは、オンプレミスの QAS システムを CTS ドメイン コントローラーとして使用します。トランザクション STMS を呼び出します。[TMS] ダイアログ ボックスが表示されます。[Configure Transport Domain] \(移送ドメインの構成) ダイアログ ボックスが表示されます。(このダイアログ ボックスは、移送ドメインをまだ構成していない場合にのみ表示されます。)
-* 自動作成されたユーザー TMSADM が承認されていることを確認します ([SM59] -> [ABAP Connection] \(ABAP 接続) -> [TMSADM@E61.DOMAIN_E61] -> [Details] \(詳細) -> [Utilities(M)]\(ユーティリティ(M)) -> [Authorization Test] \(承認テスト))。トランザクション STMS の初期画面に、次に示すように、この SAP システムが現在移送ドメインのコントローラーとして機能していることが示されます。
+* 自動作成されたユーザー TMSADM が承認されていることを確認します ([SM59] -> [ABAP Connection] \(ABAP 接続) -> [TMSADM@E61.DOMAIN_E61] -> [Details] \(詳細) -> [Utilities(M)](ユーティリティ(M)) -> [Authorization Test] \(承認テスト))。トランザクション STMS の初期画面に、次に示すように、この SAP システムが現在移送ドメインのコントローラーとして機能していることが示されます。
  
 ![Initial screen of transaction STMS on the domain controller (ドメイン コントローラー上のトランザクション STMS の初期画面)][planning-guide-figure-2300]
 
@@ -1609,8 +1609,8 @@ SAP Change and Transport System (TMS) は、ランドスケープでシステム
 
 移送ドメインに SAP システムを含めるシーケンスは次のようになります。
 
-* Azure の DEV システムで移送システム (Client 000) に移動し、トランザクション STMS を呼び出します。ダイアログ ボックスから [Other Configuration] (その他の構成) を選択し、[Include System in Domain] \(ドメインにシステムを含める) で続行します。ターゲット ホストとしてドメイン コントローラーを指定します (「[移送ドメインに SAP システムを含める](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)」)。移送ドメインに含められるのをシステムが待機します。
-* 次に、セキュリティ上の理由から、ドメイン コントローラーに戻って要求を確認する必要があります。待機中のシステムの [System Overview] \(システムの概要) と [Approve] (承認) を選択します。次に、プロンプトを確認すると、構成が配布されます。
+* Azure の DEV システムで移送システム (Client 000) に移動し、トランザクション STMS を呼び出します。ダイアログ ボックスから [Other Configuration] \(その他の構成) を選択し、[Include System in Domain] (ドメインにシステムを含める) で続行します。ターゲット ホストとしてドメイン コントローラーを指定します (「[移送ドメインに SAP システムを含める](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)」)。移送ドメインに含められるのをシステムが待機します。
+* 次に、セキュリティ上の理由から、ドメイン コントローラーに戻って要求を確認する必要があります。待機中のシステムの [System Overview] \(システムの概要) と [Approve] \(承認) を選択します。次に、プロンプトを確認すると、構成が配布されます。
 
 これで、SAP システムに、移送ドメイン内の他のすべての SAP システムに関する必要な情報が含まれました。同時に、新しい SAP システムのアドレス データが他のすべての SAP システムに送信され、SAP システムが、移送コントロール プログラムの移送プロファイルに入力されました。RFC と、ドメインの移送ディレクトリへのアクセスが起動するかどうかを確認します。
 
@@ -1930,4 +1930,4 @@ Azure での SAP システムの高可用性における重要なポイントは
 * SAP ダイアログ インスタンスのバックアップは、通常単にダイアログ インスタンスを再デプロイするほうが速いため、ほとんど意味がありません。
 * SAP システムのグローバル ディレクトリを含む VM を異なるインスタンスのすべてのプロファイルと共にバックアップすることは合理的であり、これは、Windows Backup (または Linux 上の tar など) で実行する必要があります。Windows Server 2008 (R2) と Windows Server 2012 (R2) にはいくつかの違いがあり、このため最新の Windows Server リリースを使用したバックアップのほうが簡単であるため、Windows Server 2012 (R2) を Windows ゲスト オペレーティング システムとして実行することをお勧めします。 
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->

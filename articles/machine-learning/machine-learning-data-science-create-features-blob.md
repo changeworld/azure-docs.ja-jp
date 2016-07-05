@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
-	ms.author="fashah;garye;bradsev" />
+	ms.date="06/14/2016" 
+	ms.author="bradsev;garye" />
 
 #Pandas を使用して Azure BLOB ストレージ データの特徴を作成する
 
@@ -22,7 +22,7 @@
 
 [AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
 
-この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Cortana Analytics Process (CAP)]( https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
+この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
 
 
 ## 前提条件
@@ -138,4 +138,4 @@
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0622_2016-->
