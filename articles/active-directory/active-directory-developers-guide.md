@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/06/2016"
+   ms.date="06/23/2016"
    ms.author="mbaldwin"/>
 
 
@@ -40,15 +40,15 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 ### モバイル アプリケーションと PC アプリケーションのクイック スタート ガイド
 
-|[![iOS](./media/active-directory-developers-guide/ios.png)](active-directory-devquickstarts-ios.md)|[![Android](./media/active-directory-developers-guide/android.png)](active-directory-devquickstarts-android.md)|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-dotnet.md)|[![Windows ユニバーサル](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsstore.md)|[![Xamarin](./media/active-directory-developers-guide/xamarin.png)](active-directory-devquickstarts-xamarin.md)|[![Cordova](./media/active-directory-developers-guide/cordova.png)](active-directory-devquickstarts-cordova.md)
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:
-|[iOS](active-directory-devquickstarts-ios.md)|[Android](active-directory-devquickstarts-android.md)|[.NET](active-directory-devquickstarts-dotnet.md)|[Windows Phone](active-directory-devquickstarts-windowsphone.md)|[Windows ストア](active-directory-devquickstarts-windowsstore.md)|[Xamarin](active-directory-devquickstarts-xamarin.md)|[Cordova](active-directory-devquickstarts-cordova.md)
+|[![iOS](./media/active-directory-developers-guide/ios.png)](active-directory-devquickstarts-ios.md)|[![Android](./media/active-directory-developers-guide/android.png)](active-directory-devquickstarts-android.md)|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-dotnet.md)|[![Windows ユニバーサル](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsstore.md)|[![Xamarin](./media/active-directory-developers-guide/xamarin.png)](active-directory-devquickstarts-xamarin.md)|[![Cordova](./media/active-directory-developers-guide/cordova.png)](active-directory-devquickstarts-cordova.md)|[![OAuth 2.0](./media/active-directory-developers-guide/oauth-2.png)](active-directory-protocols-oauth-code.md)
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|[iOS](active-directory-devquickstarts-ios.md)|[Android](active-directory-devquickstarts-android.md)|[.NET](active-directory-devquickstarts-dotnet.md)|[Windows ユニバーサル](active-directory-devquickstarts-windowsstore.md)|[Xamarin](active-directory-devquickstarts-xamarin.md)|[Cordova](active-directory-devquickstarts-cordova.md)|[OAuth 2.0 と直接統合する](active-directory-protocols-oauth-code.md)|
 
 ### Web アプリケーション クイック スタート ガイド
 
-|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md)|[![Java](./media/active-directory-developers-guide/java.png)](active-directory-devquickstarts-webapp-java.md)|[![JavaScript](./media/active-directory-developers-guide/javascript.png)](active-directory-devquickstarts-angular.md)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs.md)
-|:--:|:--:|:--:|:--:|
-|[.NET](active-directory-devquickstarts-webapp-dotnet.md)|[Java](active-directory-devquickstarts-webapp-java.md)|[Javascript](active-directory-devquickstarts-angular.md)|[Node.JS](active-directory-devquickstarts-openidconnect-nodejs.md)
+|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md)|[![Java](./media/active-directory-developers-guide/java.png)](active-directory-devquickstarts-webapp-java.md)|[![AngularJS](./media/active-directory-developers-guide/angularjs.png)](active-directory-devquickstarts-angular.md)|[![JavaScript](./media/active-directory-developers-guide/javascript.png)](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs.md) | [![OpenID Connect](./media/active-directory-developers-guide/openid-connect.png)](active-directory-protocols-openid-connect-code.md)
+|:--:|:--:|:--:|:--:|:--:|:--:|
+|[.NET](active-directory-devquickstarts-webapp-dotnet.md)|[Java](active-directory-devquickstarts-webapp-java.md)|[AngularJS](active-directory-devquickstarts-angular.md)|[Javascript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi)|[Node.JS](active-directory-devquickstarts-openidconnect-nodejs.md)|[OpenID Connect と直接統合する](active-directory-protocols-openid-connect-code.md)|
 
 ### Web API クイック スタート ガイド
 
@@ -71,7 +71,8 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 - [Azure Active Directory のアプリケーション マニフェストについて理解する](active-directory-application-manifest.md)
 - [Create an app with Office 365 APIs (Office 365 API を使用するアプリの作成)](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
 - [Submit Web apps for Office 365 to the Seller Dashboard (販売者ダッシュボードへの Office 365 用 Web アプリの送信)](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
-- [Android](active-directory-sso-android.md) デバイスおよび [iOS](active-directory-sso-ios.md) デバイスで ADAL を使用してクロスアプリ SSO を有効にする方法について説明します。
+- [Android](active-directory-sso-android.md) デバイスおよび [iOS](active-directory-sso-ios.md) デバイスで ADAL を使用してクロスアプリ SSO を有効にする方法
+- [クライアント アプリケーションでサインインおよびアプリ取得ボタンをブランド化するためのガイドラインを理解する](active-directory-branding-guidelines.md)
 - [プレビュー: ユーザーが、個人カウント、および職場または学校のアカウントの両方でサインインできるアプリを構築する方法](active-directory-appmodel-v2-overview.md)
 - [プレビュー: コンシューマーをサインアップおよびサインインさせるアプリケーションを作成する方法](../active-directory-b2c/active-directory-b2c-overview.md)
 
@@ -97,19 +98,16 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 - [Graph API Permission Scopes (Graph API のアクセス許可スコープ)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): OAuth 2.0 のアクセス許可スコープは、アプリケーションに付与されている、テナント内のディレクトリ データに対するアクセス権を制御するために使用されます。
 
+
 ### 認証および承認のプロトコル
 
-- [Azure Active Directory の認証と承認プロトコル](active-directory-protocols.md): Azure Active Directory でサポートされているさまざまな認証プロトコルと承認プロトコルについて説明しています。
-
-- [OAuth 2.0 プロトコルでの承認コード付与の使用](active-directory-protocols-oauth-code.md): OAuth 2.0 プロトコルの承認コード付与を使用して、Azure Active Directory テナントの Web アプリケーションと Web API へのアクセスを承認できます。
+- [Azure AD の署名キーのロールオーバー](active-directory-signing-key-rollover.md): Azure AD の署名キーのロールオーバーの周期と、最も一般的なアプリケーション シナリオでのキーの更新方法について説明します。
 
 - [OAuth 2.0 プロトコルでの暗黙的な許可に関する解説](active-directory-dev-understanding-oauth2-implicit-grant.md): 暗黙的な許可についての概要と、この許可の方法に適したアプリケーションの種類について解説しています。
 
-- [OpenID Connect 1.0 プロトコルでのサインインと認証](active-directory-protocols-openid-connect-code.md): OpenID Connect 1.0 プロトコルは、OAuth 2.0 を拡張し、認証プロトコルとして使用できるようにします。クライアント アプリケーションでは、id\_token を受信してサインイン プロセスを管理できるほか、承認コード フローを強化して id\_token と承認コードの両方を受信することもできます。
-
 - [SAML 2.0 プロトコル リファレンス](active-directory-saml-protocol-reference.md): SAML 2.0 プロトコルにより、アプリケーションでユーザーにシングル サインオン エクスペリエンスを提供できます。
 
-- [WS-Federation 1.2 プロトコル](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html): Azure Active Directory では、Web Services Federation バージョン 1.2 仕様に準拠して WS-Federation 1.2 がサポートされています。
+- [WS-Federation 1.2 プロトコル](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html): Azure Active Directory では、Web Services Federation バージョン 1.2 仕様に準拠して WS-Federation 1.2 がサポートされています。フェデレーション メタデータ ドキュメントについては、「[フェデレーション メタデータ](active-directory-federation-metadata.md)」を参照してください。
 
 - [サポートされているトークンと要求の種類](active-directory-token-and-claims.md): このガイドを使用すると、SAML 2.0 トークンと JSON Web Tokens (JWT) トークンの要求を理解し、評価することができます。
 
@@ -141,4 +139,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

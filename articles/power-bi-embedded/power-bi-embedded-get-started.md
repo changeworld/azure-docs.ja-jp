@@ -3,7 +3,7 @@
    description="Power BI Embedded、対話型の Power BI レポートをビジネス インテリジェンス アプリケーションに追加する"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="dvana"
+   authors="minewiskan"
    manager="NA"
    editor=""
    tags=""/>
@@ -13,12 +13,12 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="04/24/2016"
-   ms.author="derrickv"/>
+   ms.date="06/28/2016"
+   ms.author="owend"/>
 
 # Microsoft Power BI Embedded プレビューを使ってみる
 
-**Microsoft Power BI Embedded** は、アプリケーション開発者が自分のアプリケーションに対話型の Power BI レポートを追加できるようにする Azure サービスです。**Power BI Embedded** は既存のアプリケーションで動作します。アプリケーションの設計を変更したりユーザーがログインする方法を変更したりする必要はありません。
+**Power BI Embedded** は、アプリケーション開発者が自分のアプリケーションに対話型の Power BI レポートを追加できるようにする Azure サービスです。**Power BI Embedded** は既存のアプリケーションで動作します。アプリケーションの設計を変更したりユーザーがログインする方法を変更したりする必要はありません。
 
 Power BI Embedded の詳細については、「[What is Microsoft Power BI Embedded (Microsoft Power BI Embedded について)](power-bi-embedded-what-is-power-bi-embedded.md)」を参照してください。
 
@@ -107,4 +107,4 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 - [Power BI Embedded の価格](http://go.microsoft.com/fwlink/?LinkID=760527)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

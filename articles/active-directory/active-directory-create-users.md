@@ -78,9 +78,9 @@ Azure クラシック ポータルで **[構成]** タブを開くには、**[Ac
 ## 参照トピック
 
 - [Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する](active-directory-create-users-external.md)
-- [Administer your Azure AD directory](active-directory-administer.md)
-- [Manage passwords in Azure AD](active-directory-manage-passwords.md)
-- [Manage groups in Azure AD](active-directory-manage-groups.md)
+- [Azure AD ディレクトリの管理](active-directory-administer.md)
+- [Azure AD でのパスワードの管理](active-directory-manage-passwords.md)
+- [Azure AD でのグループの管理](active-directory-manage-groups.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png

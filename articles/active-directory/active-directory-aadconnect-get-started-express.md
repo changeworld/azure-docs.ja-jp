@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/26/2016"
+	ms.date="06/27/2016"
 	ms.author="billmath;andkjell"/>
 
 # 簡単設定を使用した Azure AD Connect の開始
@@ -28,7 +28,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 
 1. Azure AD Connect をインストールするサーバーにローカル管理者としてサインインします。この作業は、同期サーバーとなるサーバーに対して行う必要があります。
 2. **AzureADConnect.msi** を検索し、ダブルクリックします。
-3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、**[続行]** をクリックします。  
+3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、**[続行]** をクリックします。
 4. [簡単設定] 画面で、**[簡単設定を使う]** をクリックします。![Azure AD Connect へようこそ](./media/active-directory-aadconnect-get-started-express/express.png)
 5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。**[次へ]** をクリックします。![Azure への接続](./media/active-directory-aadconnect-get-started-express/connectaad.png) 接続の問題によってエラーが発生する場合は、[接続の問題に対するトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)についてのページを参照してください。
 6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。ドメインの部分は NetBios または FQDN の形式で入力できます (FABRIKAM\\administrator または fabrikam.com\\administrator)。**[次へ]** をクリックします。![AD DS に接続](./media/active-directory-aadconnect-get-started-express/connectad.png)
@@ -63,4 +63,4 @@ Azure AD Connect の概要 | [オンプレミス ID と Azure Active Directory �
 DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 インストールで使用するアカウント | [Azure AD Connect アカウントとアクセス許可の詳細](active-directory-aadconnect-accounts-permissions.md)
 
-<!-----HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

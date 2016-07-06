@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="06/14/2016"
+	ms.date="06/27/2016"
 	ms.author="douglasl"/>
 
 # [Stretch Database を有効にする] ウィザードを実行する方法の概要
@@ -51,25 +51,25 @@ Stretch を有効にするテーブルを選択します。
 |**名前**|テーブルの列の名前を指定します。|
 |(タイトルなし)|この列の記号は、選択したテーブルの Stretch の有効化を妨げない警告を表している場合があります。また、テーブルでサポートされないデータ型を使用しているなどの理由により、選択したテーブルの Stretch の有効化を妨げるブロック問題を表している場合もあります。記号の上にマウス カーソルを合わせると、ヒント形式で詳細が表示されます。詳細については、「[Stretch Database の制限事項](sql-server-stretch-database-limitations.md)」を参照してください。|
 |**ストレッチ済み**|テーブルの Stretch が既に有効になっているかどうかを示します。|
-|**移行**|テーブル全体を移行することも (**[テーブル全体]**)、テーブル内の既存の列に対するフィルターを指定することもできます。移行する行を選択するフィルター述語を変更する場合は、ウィザードを終了した後、ALTER TABLE ステートメントを実行してフィルター述語を指定します。フィルター述語の詳細については、「[Select rows to migrate by using a filter predicate (移行する行の選択にフィルター述語を使用する)](sql-server-stretch-database-predicate-function.md)」を参照してください。述語の適用方法の詳細については、「[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」または「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」を参照してください。|
+|**移行**|テーブル全体を移行することも (**[テーブル全体]**)、テーブル内の既存の列に対するフィルターを指定することもできます。移行する行を選択するフィルター関数を変更する場合は、ウィザードを終了した後、ALTER TABLE ステートメントを実行してフィルター関数を指定します。フィルター関数の詳細については、[移行する行の選択におけるフィルター関数の使用](sql-server-stretch-database-predicate-function.md)に関するページを参照してください。関数の適用方法の詳細については、「[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」または「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」を参照してください。|
 |**行**|テーブルの行数を指定します。|
 |**サイズ (KB)**|テーブルのサイズを KB 単位で指定します。|
 
 ## <a name="Filter"></a>必要に応じて、行フィルターを指定する
 
-フィルター述語を指定して移行する行を選択する場合は、**[テーブルの選択]** ページで次のようにします。
+フィルター関数を指定して移行する行を選択する場合は、**[テーブルの選択]** ページで次のようにします。
 
 1.  **[Select the tables you want to stretch (ストレッチするテーブルの選択)]** ボックスの一覧で、テーブルの行の **[テーブル全体]** をクリックします。**[Select rows to stretch (ストレッチする行の選択)]** ダイアログ ボックスが表示されます。
 
-    ![Define a filter predicate][StretchWizardImage2a]
+    ![Define a filter function][StretchWizardImage2a]
 
 2.  **[Select rows to stretch (ストレッチする行の選択)]** ダイアログ ボックスで、**[Choose Rows (行の選択)]** を選択します。
 
-3.  **[名前]** フィールドに、フィルター述語の名前を入力します。
+3.  **[名前]** フィールドに、フィルター関数の名前を入力します。
 
 4.  **[Where]** 句で、テーブルの列を選択し、演算子を選択して、値を指定します。
 
-5. **[確認]** をクリックして述語をテストします。述語がテーブルから結果を返す場合、つまり条件を満たす移行する行がある場合は、テストで **[成功]** と表示されます。
+5. **[確認]** をクリックして関数をテストします。関数がテーブルから結果を返す場合、つまり条件を満たす移行する行がある場合は、テストで **[成功]** と表示されます。
 
     >   [AZURE.NOTE] フィルター クエリを表示するテキスト ボックスは、読み取り専用です。テキスト ボックスのクエリを編集することはできません。
 
@@ -77,13 +77,13 @@ Stretch を有効にするテーブルを選択します。
 
 ウィザードを終了すると、フィルター関数が SQL Server に作成されます。終了するまでは、**[テーブルの選択]** ページに戻って、フィルター関数やその名前を変更することができます。
 
-![フィルター述語を定義した後の [テーブルの選択] ページ][StretchWizardImage2b]
+![Select Tables page after defining a filter function][StretchWizardImage2b]
 
-別の種類のフィルター述語を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
+別の種類のフィルター関数を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
 
--   ウィザードを終了し、ALTER TABLE ステートメントを実行してテーブルの Stretch を有効にし、述語を指定します。詳細については、「[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」を参照してください。  
+-   ウィザードを終了し、ALTER TABLE ステートメントを実行してテーブルの Stretch を有効にし、フィルター関数を指定します。詳細については、「[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」を参照してください。
 
--   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、述語を指定します。必要な手順については、「[Add a filter predicate after running the Wizard (ウィザードの実行後にフィルター述語を追加する)](sql-server-stretch-database-predicate-function.md#addafterwiz)」を参照してください。
+-   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、フィルター関数を指定します。必要な手順については、[ウィザードの実行後におけるフィルター関数の追加](sql-server-stretch-database-predicate-function.md#addafterwiz)に関するページを参照してください。
 
 ## <a name="Configure"></a>Azure デプロイを構成する
 
@@ -94,7 +94,7 @@ Stretch を有効にするテーブルを選択します。
 2.  Stretch Database に使用する既存の Azure サブスクリプションを選択します。
 
 3.  Azure リージョンを選択します。
-    -   新しいサーバーを作成すると、このリージョンにサーバーが作成されます。  
+    -   新しいサーバーを作成すると、このリージョンにサーバーが作成されます。
     -   選択したリージョンに既存のサーバーが存在する場合は、**[Existing server (既存のサーバー)]** を選択すると、ウィザードに一覧表示されます。
 
     待機時間を最小限に抑えるために、SQL Server が配置されている Azure リージョンを選択してください。リージョンの詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。
@@ -190,4 +190,4 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 [StretchWizardImage9]: ./media/sql-server-stretch-database-wizard/stretchwiz9.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
- 	ms.date="05/03/2016" 
+	ms.date="06/22/2016"
 	ms.author="juliako;anilmur"/>
 
 #Azure Media Services の概要と一般的なシナリオ
@@ -29,13 +29,13 @@ Media Services を使いこなして、エンド ツー エンドのワークフ
 Media Services ソリューションを構築するために、以下を使用できます。
 
 - [Media Services REST API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
-- 使用可能な次のいずれかの SDK: 
-	- [Azure Media Services SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services) 
-	- [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java) 
-	- [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) 
-	- [Azure Media Services for Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (これは、Node.js SDK の Microsoft 以外のバージョンです。コミュニティによって管理されており、現在 AMS API を 100% カバーしてはいません。) 
-- 既存のツール: 
-	- [Azure クラシック ポータル](http://manage.windowsazure.com/) 
+- 使用可能な次のいずれかの SDK:
+	- [Azure Media Services SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)
+	- [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)
+	- [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
+	- [Azure Media Services for Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (これは、Node.js SDK の Microsoft 以外のバージョンです。コミュニティによって管理されており、現在 AMS API を 100% カバーしてはいません。)
+- 既存のツール:
+	- [Azure クラシック ポータル](http://manage.windowsazure.com/)
 	- [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer (AMSE) は Windows 用の Winforms/C# アプリケーションです)
 
 ##Media Services のラーニング パス
@@ -49,9 +49,9 @@ AMS のラーニング パスについては、以下を参照してください
 
 Azure Media Services を使用するには、次が必要です。
  
-3. Azure アカウント。アカウントがない場合は、無料試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
+3. Azure アカウント。アカウントがない場合は、無料試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com)を参照してください。
 2. Azure Media Services アカウントを作成します。Azure Media Services アカウントを作成するには、Azure クラシック ポータル、.NET、REST API を使用します。詳細については、「[アカウントの作成](media-services-create-account.md)」を参照してください。
-3. (省略可能) 開発環境をセットアップします。開発環境の .NET または REST API を選択します。詳細については、「[環境を設定する](media-services-dotnet-how-to-use.md)」を参照してください。 
+3. (省略可能) 開発環境をセットアップします。開発環境の .NET または REST API を選択します。詳細については、「[環境を設定する](media-services-dotnet-how-to-use.md)」を参照してください。
 
 	また、プログラミングによる[接続](media-services-dotnet-connect-programmatically.md)方法についても確認してください
 4. (推奨) 1 つまたは複数のスケール単位を割り当てます。実稼働環境でのアプリケーションの 1 つ以上のスケール単位を割り当てることをお勧めします。詳細については、「[ストリーミング エンドポイントの管理](media-services-manage-origins.md)」を参照してください。
@@ -99,7 +99,7 @@ Azure Media Services のすべての主要コンポーネントを紹介する�
 2. コンテンツ キー承認ポリシーを構成します。
 1. 資産配信ポリシーを構成します (動的パッケージと動的暗号化で使用)。
 1. OnDemand ロケーターを作成して資産を発行します。
-1. 公開済みコンテンツをストリーミングします。 
+1. 公開済みコンテンツをストリーミングします。
 
 ###Media Analytics を使用して、ビデオから実用的な洞察を得る 
 
@@ -113,7 +113,7 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
 	- **動作の検出** - [Azure Media Analytics での動作検出](media-services-motion-detection.md)
 	- **顔の検出と顔の感情** - [Azure Media Analytics での顔および感情の検出](media-services-face-and-emotion-detection.md)
 	- **ビデオ要約** - [Azure Media Video Thumbnails を使用してビデオ要約を作成する](media-services-video-summarization.md)
-3. Media Analytics のメディア プロセッサによって MP4 ファイルまたは JSON ファイルが生成されます。メディア プロセッサによって MP4 ファイルが生成された場合は、そのファイルのプログレッシブ ダウンロードが可能です。メディア プロセッサによって JSON ファイルが生成された場合は、そのファイルを Azure Blob Storage からダウンロードできます。 
+3. Media Analytics のメディア プロセッサによって MP4 ファイルまたは JSON ファイルが生成されます。メディア プロセッサによって MP4 ファイルが生成された場合は、そのファイルのプログレッシブ ダウンロードが可能です。メディア プロセッサによって JSON ファイルが生成された場合は、そのファイルを Azure Blob Storage からダウンロードできます。
 
 
 ###プログレッシブ ダウンロードの提供 
@@ -220,4 +220,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

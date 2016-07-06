@@ -160,8 +160,12 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 ##次のステップ
 
 * [アプリに認証を追加する](app-service-mobile-xamarin-forms-get-started-users.md) ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
-* [Xamarin.Android アプリへのプッシュ通知の追加](app-service-mobile-xamarin-forms-get-started-push.md) アプリにプッシュ通知を追加する方法について説明します。
-* [Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md) Xamarin アプリでの管理されたクライアント SDK の操作方法について説明します。 
+
+* [アプリにプッシュ通知を追加する](app-service-mobile-xamarin-forms-get-started-push.md) アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使用してプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
+
+* [アプリのオフライン同期を有効にする](app-service-mobile-xamarin-forms-get-started-offline-data.md) Mobile App バックエンドを使用して、オフライン サポートをアプリに追加する方法について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリとやり取りできます。
+
+* [Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md) Xamarin アプリでの管理されたクライアント SDK の操作方法について説明します。
 
 
 <!-- Anchors. -->
@@ -184,4 +188,4 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure ポータル]: https://portal.azure.com/
 
-<!-----HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

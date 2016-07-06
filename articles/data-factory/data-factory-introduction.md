@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="Azure Data Factory の概要" 
-	description="Azure データ ファクトリ サービスを使用してデータ処理、データ保存、データ移動のサービスを構成し、信頼済みの情報を生成するパイプラインを作成する方法について説明します。" 
+	pageTitle="Data Factory とは データ統合サービス | Microsoft Azure" 
+	description="データの移動と変換を調整、自動化するクラウド データ統合サービスである Azure Data Factory について説明します。" 
+	keywords="データ統合, クラウド データ統合, Azure Data Factory とは"
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -16,14 +17,14 @@
 	ms.date="04/26/2016" 
 	ms.author="spelluru"/>
 
-# Azure Data Factory サービスの概要
+# クラウドによるデータ統合サービスである Azure Data Factory サービスの概要
 
-## 概要
+## Azure Data Factory とは何ですか。 
 Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。原材料を機械で加工して最終製品を作成する工場と同じように、Data Factory は生データを収集してすぐに使用できる情報に変換する既存のサービスを調整します。
 
 Data Factory は、オンプレミスとクラウドのデータ ソースおよび SaaS で動作し、データの取り込み、準備、変換、分析、および発行を行います。Data Factory を使えば、各種のサービスを管理されたデータ フロー パイプラインにまとめ上げることによって、ビッグ データのコンピューティング ニーズに応える [Azure HDInsight (Hadoop)](http://azure.microsoft.com/documentation/services/hdinsight/) や [Azure Batch](https://azure.microsoft.com/documentation/services/batch/) のほか、分析ソリューションを運用可能にするための [Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) などを使ったデータの変換を実現できます。単なる表形式の監視ビューではなく、Data Factory のリッチな視覚化機能を使用してデータ パイプライン間の系列と依存関係をすばやく表示します。1 つの統一されたビューからすべてのデータ フロー パイプラインを監視し、問題を簡単に特定して監視アラートを設定します。
 
-![概要](./media/data-factory-introduction/data-factory-overview.png)
+![Diagram: Data Factory Overview, a data integration service](./media/data-factory-introduction/what-is-azure-data-factory.png)
 
 **図 1** 多くのさまざまなオンプレミス データ ソースからデータを収集し、データを取り込んで準備し、広範な変換でデータを整理して分析し、消費用にすぐ使用できるデータを発行します。
 
@@ -35,7 +36,7 @@ Data Factory は、オンプレミスとクラウドのデータ ソースおよ
 
 Azure Data Factory には、入力および出力データ、処理イベント、および目的のデータ フローの実行に必要なスケジュールとリソースを定義するために連携するいくつかの重要なエンティティがあります。
 
-![主要な概念](./media/data-factory-introduction/key-concepts.png)
+![Diagram: Data Factory, a cloud data integration service - Key Concepts](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 **図 2.** データセット、アクティビティ、パイプライン、リンクされたサービスの間の関係
 
@@ -69,4 +70,4 @@ Azure Data Factory を利用できるリージョンが**米国西部**、**米�
 将来的には、Azure がサポートするすべての地域で Azure Data Factory が提供される予定です。
   
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

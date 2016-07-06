@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/04/2016"
+	ms.date="06/27/2016"
 	ms.author="jgao"/>
 
 
@@ -34,7 +34,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 この HBase のチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- [Secure Shell (SSU)](hdinsight-hadoop-linux-use-ssh-unix.md)。 
+- [Secure Shell (SSU)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 - [curl](http://curl.haxx.se/download.html)。
 
 ## HBase クラスターの作成
@@ -43,7 +43,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。ARM テンプレートはパブリック BLOB コンテナー内にあります。 
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. **[パラメーター]** ブレードで、次の各項目を入力します。
 
@@ -61,7 +61,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 6. **[作成]** をクリックします。クラスターの作成には約 20 分かかります。
 
 
->[AZURE.NOTE] HBase クラスターを削除したら、同じ既定の BLOB コンテナーを使用して別の HBase クラスターを作成できます。新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。
+>[AZURE.NOTE] HBase クラスターを削除したら、同じ既定の BLOB コンテナーを使用して別の HBase クラスターを作成できます。新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。
 
 ## テーブルを作成してデータを挿入する
 
@@ -111,12 +111,14 @@ BigTable の実装である HBase では、同じデータが次のように表�
 
 		exit
 
+
+
 **Contacts HBase テーブルにデータを一括で読み込むには**
 
 HBase では、いくつかの方法でテーブルにデータを読み込ことができます。詳細については、[一括読み込み](http://hbase.apache.org/book.html#arch.bulk.load)に関するページを参照してください。
 
 
-サンプルのデータ ファイルがパブリック BLOB コンテナー **wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt* にアップロードされています。このデータ ファイルの内容は次のとおりです。
+サンプルのデータ ファイルがパブリック BLOB コンテナー *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt* にアップロードされています。このデータ ファイルの内容は次のとおりです。
 
 	8396	Calvin Raji		230-555-0191	230-555-0191	5415 San Gabriel Dr.
 	16600	Karen Wu		646-555-0113	230-555-0192	9265 La Paz
@@ -152,7 +154,7 @@ Hive を使用して HBase テーブルのデータを照会できます。こ�
 1. **PuTTY** を開き、クラスターに接続します。前の手順の指示を参照してください。
 2. Hive シェルを開きます。
 
-	hive
+	   hive
 3. 次の HiveQL スクリプトを使用して、HBase テーブルにマッピングされる Hive テーブルを作成します。ここで、HBase シェルを使用して、先ほど参照したサンプル テーブルが HBase に作成されたことを確認してから、このステートメントを実行してください。
 
 		CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -174,7 +176,8 @@ Hive を使用して HBase テーブルのデータを照会できます。こ�
 
 1. コマンド ラインで次のコマンドを使用して、HDInsight クラスターに接続できることを確認します。
 
-		curl -u <UserName>:<Password> -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
+		curl -u <UserName>:<Password> \
+		-G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
 
 	次のような応答を受け取ります。
 
@@ -182,26 +185,50 @@ Hive を使用して HBase テーブルのデータを照会できます。こ�
 
   このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-    * **-u** - The user name and password used to authenticate the request.
-    * **-G** - Indicates that this is a GET request.
+    * **-u**: 要求の認証に使用するユーザー名とパスワード
+    * **-G**: GET 要求であることを示します。
 
 2. 次のコマンドを使用して、既存の HBase テーブルを一覧表示します。
 
-		curl -u <UserName>:<Password> -G https://<ClusterName>.azurehdinsight.net/hbaserest/
+		curl -u <UserName>:<Password> \
+		-G https://<ClusterName>.azurehdinsight.net/hbaserest/
 
 3. 次のコマンドを使用して、2 つの列ファミリがある新しい HBase テーブルを作成します。
 
-		curl -u <UserName>:<Password> -v -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" -H "Accept: application/json" -H "Content-Type: application/json" -d "{"@name":"test","ColumnSchema":[{"name":"Personal"},{"name":"Office"}]}"
+		curl -u <UserName>:<Password> \
+		-X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" \
+		-H "Accept: application/json" \
+		-H "Content-Type: application/json" \
+		-d "{"@name":"Contact1","ColumnSchema":[{"name":"Personal"},{"name":"Office"}]}" \
+		-v
 
 	スキーマは、JSon 形式で提供されます。
 
 4. 次のコマンドを使用して、一部のデータを挿入します。
 
-		curl -u <UserName>:<Password> -v -X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/schema" -H "Accept: application/json" -H "Content-Type: application/json" -d "{"Row":{"key":"1000","Cell":{"column":"Personal:Name", "$":"John Dole"}}}"
+		curl -u <UserName>:<Password> \
+		-X PUT "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/false-row-key" \
+		-H "Accept: application/json" \
+		-H "Content-Type: application/json" \
+		-d "{"Row":{"key":"MTAwMA==","Cell":{"column":"UGVyc29uYWw6TmFtZQ==", "$":"Sm9obiBEb2xl"}}}" \
+		-v
+
+	-d スイッチで指定された値に base64 エンコードを使用する必要があります。たとえば、次のようになります。
+
+	- MTAwMA==: 1000
+	- UGVyc29uYWw6TmFtZQ==: Peronsal:Name
+	- Sm9obiBEb2xl: John Dole
+
+	[false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) を使用すると、複数の (バッチ処理された) 値を挿入できます。
 
 5. 次のコマンドを使用して、1 行を取得します。
 
-		curl -u <UserName>:<Password> -v -X GET "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/1000" -H "Accept: application/json"
+		curl -u <UserName>:<Password> \
+		-X GET "https://<ClusterName>.azurehdinsight.net/hbaserest/Contacts1/1000" \
+		-H "Accept: application/json" \
+		-v
+
+HBase Rest の詳細については、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)](https://hbase.apache.org/book.html#_rest)」をご覧ください。
 
 ## クラスターの状態の確認
 
@@ -252,15 +279,18 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 	- **SOCKS v5**: (オンにします)
 	- **リモート DNS**: (オンにします)
 7. **[OK]** をクリックして変更を保存します。
-8. http://<TheFQDN of a ZooKeeper>:60010/master-status にアクセスします。
+8. http://&lt;The FQDN of a ZooKeeper>:60010/master-status に移動します。
 
 高可用性クラスターの場合は、Web UI をホストしている現在アクティブな HBase マスター ノードへのリンクがあります。
 
 ##クラスターを削除する
 
+不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。
+
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## 次のステップ
+
 この HDInsight の HBase のチュートリアルでは、HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
 
 詳細については、次を参照してください。
@@ -295,4 +325,4 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
 
-<!------HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="06/01/2016"
+   	ms.date="06/28/2016"
    	ms.author="jgao"/>
 
 # Azure Marketplace への HDInsight アプリケーションの発行
@@ -64,7 +64,7 @@ HDInsight アプリケーションのインストールに必要なファイル�
 - [createUiDefinition.json](#define-application)。
 - mainTemplate.json。「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。
 
-	>[AZURE.IMPORTANT] アプリケーションのインストール スクリプトの名前は以下の形式とし、特定のクラスターにおいて一意であることが必要です。
+	>[AZURE.IMPORTANT] アプリケーションのインストール スクリプトの名前は以下の形式とし、特定のクラスターにおいて一意であることが必要です。さらに、インストールとアンインストールのいずれのスクリプト アクションもべき等である必要があります。つまり、スクリプトは、繰り返し呼び出すことができ、同じ結果を生成します。
 	
 	>	name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
 		
@@ -98,4 +98,4 @@ HDInsight アプリケーションのインストールに必要なファイル�
 - [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
 - [ARM テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md): ARM テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

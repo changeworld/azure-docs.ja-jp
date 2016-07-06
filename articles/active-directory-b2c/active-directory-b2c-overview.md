@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="06/06/2016"
+	ms.date="06/27/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: アプリケーションにコンシューマーをサインアップおよびサインインする
@@ -67,4 +67,4 @@ Azure Active Directory B2C プレビューの特定の機能を使用する方�
 
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知の受信登録を行ってください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->
