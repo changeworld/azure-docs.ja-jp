@@ -12,8 +12,7 @@
    ms.devlang="na"
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
-   ms.workload="compute"
-   ms.date="06/02/2016"
+   ms.workload="compute"   ms.date="06/02/2016"
    ms.author="elizapo"/>
 
 # Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する
@@ -119,4 +118,4 @@ Access はデータベースです。せっかくのデータベースが役立�
 <!--Image references-->
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!----HONumber=AcomDC_0629_2016-->
