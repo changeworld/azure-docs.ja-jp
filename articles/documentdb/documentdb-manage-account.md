@@ -86,9 +86,10 @@ DocumentDB アカウントを作成すると、2 つのマスター アクセス
 
 ### Azure ポータルでアクセス キーを表示およびコピーする
 
-1. [Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
+1. [Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
 2. **[DocumentDB アカウント]** ブレードの **[要点]** バーで、**[キー]** をクリックします。
-3. **[キー]** ブレードで、コピー対象のキーの右側にある **[コピー]** ボタンをクリックします。![Azure ポータルの [キー] ブレードでアクセス キーを表示およびコピーする](./media/documentdb-manage-account/copykeys.png)
+3. **[キー]** ブレードで、コピー対象のキーの右側にある **[コピー]** ボタンをクリックします。
+	![Azure ポータルの [キー] ブレードでアクセス キーを表示およびコピーする](./media/documentdb-manage-account/copykeys.png)
 
 ### アクセス キーを再生成する
 

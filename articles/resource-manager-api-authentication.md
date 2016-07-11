@@ -86,7 +86,7 @@ Azure AD では、アプリケーションの証明書資格情報もサポー�
 
 ユーザーに次の 2 点を確認する必要があります。
 
-1. **Directory ドメイン名**: ユーザーの Azure サブスクリプションに関連付けられた Azure Active Directory のドメイン名。OAuth 2.0 承認要求は、この Azure AD に送信する必要があります。ユーザーは Azure ポータルに移動し、右上隅にあるアカウントを選択することで、Azure AD のドメイン名を確認できます。ユーザーに次のような視覚的な指示を表示できます。
+1. **Directory ドメイン名**: ユーザーの Azure サブスクリプションに関連付けられた Azure Active Directory のドメイン名。OAuth 2.0 承認要求は、この Azure AD に送信する必要があります。ユーザーは Azure ポータルに移動し、右上隅にあるアカウントを選択することで、Azure AD のドメイン名を確認できます。ユーザーに次のような視覚的な指示を表示できます。 
 
      ![](./media/resource-manager-api-authentication/show-directory.png)
    

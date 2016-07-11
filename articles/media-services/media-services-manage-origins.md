@@ -46,7 +46,7 @@ Azure クラシック ポータルを使用してストリーミング エンド
 4. [開始] をクリックしてストリーミング エンドポイントを開始します。
 5. ストリーミング エンドポイントの名前をクリックして、それを構成します。
 
-![ストリーミング エンドポイント ページ][streaming-endpoint]
+	![ストリーミング エンドポイント ページ][streaming-endpoint]
 
 
 既定では、最大 2 つのストリーミング エンドポイントを作成できます。それ以上を要求する必要がある場合は、「[クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
@@ -68,9 +68,11 @@ Azure クラシック ポータルを使用してストリーミング エンド
 	新しいストリーミング ユニットの割り当ては完了するまでに約 20 分かかります。
 
 	 
-	>[AZURE.NOTE] 現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
+>[AZURE.NOTE] 現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
 
-	>[AZURE.NOTE] コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+</br>
+
+>[AZURE.NOTE] コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 	
 ##<a id="configure_streaming_endpoints"></a>ストリーミング エンドポイントの構成
 
@@ -101,7 +103,7 @@ Azure クラシック ポータルを使用してストリーミング エンド
 
 3. Akamai 署名ヘッダー認証の構成を指定する。
 
-4. Adobe Flash クライアントについては、クロス ドメインのアクセス ポリシーを指定できます (詳細については、[クロス ドメイン ポリシー ファイルの仕様](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)に関するページをご覧ください)。Microsoft Silverlight クライアントについてはクライアント アクセス ポリシーを指定できます (詳細については、「Making a Service Available Across Domain Boundaries （ドメインの境界を越えたサービス提供)https://msdn.microsoft.com/library/cc197955(v=vs.95).aspx)」をご覧ください)。
+4. Adobe Flash クライアントについては、クロス ドメインのアクセス ポリシーを指定できます (詳細については、に関するページをご覧ください [クロス ドメイン ポリシー ファイルの仕様](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)。 Microsoft Silverlight クライアントについてはクライアント アクセス ポリシーを指定できます (詳細については、 をご覧ください [(ドメインの境界を越えたサービス提供)](https://msdn.microsoft.com/library/cc197955(v=vs.95).aspx)。
 
 5. **[構成]** ボタンをクリックしてカスタム ホスト名も構成できます。詳細については、[StreamingEndpont](https://msdn.microsoft.com/library/dn783468.aspx) のトピックの **CustomHostNames** プロパティをご覧ください。
 

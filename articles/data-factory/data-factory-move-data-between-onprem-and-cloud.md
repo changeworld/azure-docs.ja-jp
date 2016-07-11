@@ -272,7 +272,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 			1. **[統合セキュリティ]** を **[true]** に設定します。
 			2. データベースの**サーバー名**と**データベース名**を指定します。
 			2. **[ユーザー ID]** と **[パスワード]** を削除します。
-		3. **[userName]** と **[password]** の各プロパティにユーザー名とパスワードを指定します。
+		3. **[userName]** と **[password]** の各プロパティにユーザー名とパスワードを指定します。  
 		
 				"typeProperties": {
             		"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;",
@@ -282,9 +282,9 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
         		}
 
 	4. SQL 認証を使用している場合:
-		1. データベースの **[connectionString]** にデータベースの**サーバー名**、**データベース名**、**ユーザー ID**、**パスワード**を指定します。
+		1. データベースの **[connectionString]** にデータベースの**サーバー名**、**データベース名**、**ユーザー ID**、**パスワード**を指定します。       
 		2. 末尾 2 つの JSON プロパティである **[userName]** と **[password]** を JSON から削除します。
-		3. **gatewayName** プロパティの値を指定する行末の **, (コンマ)** を削除します。
+		3. **gatewayName** プロパティの値を指定する行末の **, (コンマ)** を削除します。 
 
 				"typeProperties": {
             		"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;",
@@ -334,8 +334,8 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 
 ### 入力テーブルの作成
 
-1. **Data Factory エディター**で、コマンド バーの **[新しいデータセット]** をクリックし、**[SQL Server テーブル]** をクリックします。
-2.	右側のウィンドウの JSON を次のテキストに置き換えます。
+1. **Data Factory エディター**で、コマンド バーの **[新しいデータセット]** をクリックし、**[SQL Server テーブル]** をクリックします。 
+2.	右側のウィンドウの JSON を次のテキストに置き換えます。    
 
 		{
 		  "name": "EmpOnPremSQLTable",
@@ -365,7 +365,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	- **type** は **SqlServerTable** に設定されています。
 	- **tableName** を **emp** に設定します。
 	- **linkedServiceName** を **SqlServerLinkedService** (手順 2. で作成したリンク サービス) に設定します。
-	- Azure Data Factory の別のパイプラインでは生成されない入力テーブルの場合、**external** を **true** に設定する必要があります。これは、入力データが Azure Data Factory サービスの外部で生成されることを意味します。必要に応じて、**Policy** セクションの **externalData** 要素を使用して外部データ ポリシーを指定できます、
+	- Azure Data Factory の別のパイプラインでは生成されない入力テーブルの場合、**external** を **true** に設定する必要があります。これは、入力データが Azure Data Factory サービスの外部で生成されることを意味します。必要に応じて、**Policy** セクションの **externalData** 要素を使用して外部データ ポリシーを指定できます、    
 
 	JSON プロパティの詳細については、[JSON スクリプト リファレンス][json-script-reference]を参照してください。
 
@@ -375,7 +375,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 ### 出力テーブルの作成
 
 1.	**Data Factory エディター**で、コマンド バーの **[新しいデータセット]** をクリックし、**[Azure BLOB ストレージ]** をクリックします。
-2.	右側のウィンドウの JSON を次のテキストに置き換えます。
+2.	右側のウィンドウの JSON を次のテキストに置き換えます。 
 
 		{
 		  "name": "OutputBlobTable",
@@ -401,11 +401,11 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	- **type** は **AzureBlob** に設定されています。
 	- **linkedServiceName** を **AzureStorageLinkedService** (手順 2. で作成したリンク サービス) に設定します。
 	- **folderPath** を **adftutorial/outfromonpremdf** に設定します。outfromonpremdf は adftutorial コンテナー内のフォルダーです。必要な操作は **adftutorial** コンテナーの作成だけです。
-	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
+	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。 
 
 	**入力テーブル**に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。例については、[チュートリアル][adf-tutorial]のサンプル ファイルを参照してください。
  
-	**output table** に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.<Guid>.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。
+	**出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.<Guid>.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。
 
 	**folderPath** と **fileName** を **SliceStart** の時刻に基づいて動的に設定するには、partitionedBy プロパティを使用します。次の例では、folderPath に SliceStart (処理されるスライスの開始時刻) の年、月、日を使用し、fileName に SliceStart の時間を使用します。たとえば、スライスが 2014-10-20T08:00:00 に生成されている場合、folderName は wikidatagateway/wikisampledataout/2014/10/20 に設定され、fileName は 08.csv に設定されます。
 
@@ -432,7 +432,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 1.	**[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
 	![タイルの作成とデプロイ](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
-2.	コマンド バーの **[新しいパイプライン]** をクリックします。このボタンが表示されない場合は、**[...] (省略記号)** をクリックしてコマンド バーを展開します。
+2.	コマンド バーの **[新しいパイプライン]** をクリックします。このボタンが表示されない場合は、**[...] \(省略記号)** をクリックしてコマンド バーを展開します。
 2.	右側のウィンドウの JSON を次のテキストに置き換えます。
 
 
@@ -533,7 +533,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	-  **Set-AzureRmDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 	-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
  
-	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
+	一覧のタイトルをクリックするか、**[...] \(省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
 	
 	代わりに、スライスの開始時刻と終了時刻で並べ替えられたデータ スライスを表示するには、**[データ スライス (スライスの時刻別)]** タイルをクリックします。
 
@@ -598,12 +598,12 @@ Data Factory エディターで資格情報を暗号化するには、次の操�
 1. ツリー ビューの既存の**リンクされたサービス**をクリックしてその JSON 定義を参照するか、または Data Management Gateway を必要とするリンクされたサービスを新規に作成します (例: SQL Server または Oracle)。
 2. JSON エディターで、**gatewayName** プロパティに、ゲートウェイの名前を入力します。
 3. **connectionString** の **Data Source** プロパティにサーバー名を入力します。
-4. **connectionString** の **[初期カタログ]** プロパティにデータベース名を入力します。
+4. **connectionString** の **[初期カタログ]** プロパティにデータベース名を入力します。    
 5. コマンド バーの **[暗号化]** ボタンをクリックして、ClickOnce **資格情報マネージャー** アプリケーションを起動します。**[Setting Credentials (資格情報の設定)]** ダイアログ ボックスが表示されます。![[資格情報の設定] ダイアログ](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png)
-6. **[資格情報の設定]** ダイアログ ボックスで、次の手順を実行します。
+6. **[資格情報の設定]** ダイアログ ボックスで、次の手順を実行します。  
 	1.	Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。
 	2.	**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。
-	3.	**[パスワード]** の設定に、ユーザーのパスワードを入力します。
+	3.	**[パスワード]** の設定に、ユーザーのパスワードを入力します。  
 	4.	**[OK]** をクリックして、資格情報を暗号化し、ダイアログ ボックスを閉じます。
 5.	これで、**connectionString** 内に **encryptedCredential** プロパティが表示されます。
 		

@@ -51,7 +51,7 @@ Service Bus は、メッセージごとのチェックポイントと期間ベ�
 
 + Microsoft Visual Studio 2015
 
-+ アクティブな Azure アカウント<br/>Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料アカウントを数分で作成することができます。詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fprocess-d2c%2F target="\_blank")」 を参照してください。
 
 [Azure Storage] と [Azure Service Bus] について、ある程度の基礎知識が必要です。
 

@@ -298,7 +298,7 @@ Azure Data Factory は、(1 つ以上のアクティビティを含む) パイ�
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. パイプラインを作成する Azure Data Factory のインスタンスに移動します。
-3. **[概要]** レンズの **[作成とデプロイ]** タイルをクリックします。
+3. **[概要]** レンズの **[作成とデプロイ]** タイルをクリックします。 
  
 	![[作成とデプロイ] タイル](./media/data-factory-create-pipelines/author-deploy-tile.png)
 
@@ -343,9 +343,9 @@ REST API を使用してパイプラインを作成およびデプロイする�
 
 ## 次のステップ
 
-- [Azure Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)について理解してください。
+- [Azure Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)について理解してください。  
 - Azure Data Factory での[データの移動](data-factory-data-movement-activities.md)および[データ変換機能](data-factory-data-transformation-activities.md)について読んでください。
 - [Azure Data Factory での管理と監視](data-factory-monitor-manage-pipelines.md)について理解してください。
-- [初めてのパイプラインをビルドしてデプロイしてください](data-factory-build-your-first-pipeline.md)。
+- [初めてのパイプラインをビルドしてデプロイしてください](data-factory-build-your-first-pipeline.md)。 
 
 <!---HONumber=AcomDC_0629_2016-->

@@ -190,7 +190,7 @@ Azure AD 管理者のプロビジョニングと管理に使用するコマン�
 次のスクリプトでは、**Group-23** という名前のリソース グループ内にあるサーバー **demo\_server** に対して、**DBA\_Group** という名前の Azure AD 管理者グループ (オブジェクト ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`) をプロビジョニングします。
 
 ```
-Set-AzureRmSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23"
+Set-AzureRmSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" 
 –ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 

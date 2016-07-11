@@ -27,8 +27,8 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 [Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] [Pig](data-factory-pig-activity.md) | HDInsight [Hadoop] [MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop] [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) | HDInsight [Hadoop] [Machine Learning アクティビティ: バッチ実行と更新のリソース](data-factory-azure-ml-batch-execution-activity.md) | Azure VM 
 [ストアド プロシージャ](data-factory-stored-proc-activity.md) | Azure SQL、Azure SQL Data Warehouse、または SQL Server |
 [Data Lake Analytics U-SQL](data-factory-usql-activity.md) | Azure Data Lake Analytics 
-[DotNet](data-factory-use-custom-activities.md) | HDInsight [Hadoop] または Azure Batch
-   
+[DotNet](data-factory-use-custom-activities.md) | HDInsight [Hadoop] または Azure Batch    
+
 > [AZURE.NOTE] 
 MapReduce アクティビティを使用して、HDInsight Spark クラスターで Spark プログラムを実行することができます。詳細については、[Data Factory からの Spark プログラムの呼び出し](data-factory-spark.md)に関するページを参照してください。カスタム アクティビティを作成して、R がインストールされている HDInsight クラスターで R スクリプトを実行することができます。[Azure Data Factory を使用した R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)に関するトピックを参照してください。
  

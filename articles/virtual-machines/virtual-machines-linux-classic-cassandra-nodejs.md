@@ -33,7 +33,7 @@ Microsoft Azure のネットワークでは、ネットワークのセキュリ�
 
 - 外部システムは、Azure の内部からも外部からも Cassandra データベースにアクセスできない
 - Cassandra クラスターは Thrift トラフィックのロード バランサーの内側に配置する必要がある
-- クラスターの可用性を強化するためにデータ センターごとに 2 つのグループに Cassandra ノードをデプロイする
+- クラスターの可用性を強化するためにデータ センターごとに 2 つのグループに Cassandra ノードをデプロイする 
 - アプリケーション サーバー ファームのみがデータベースに直接アクセスできるように、クラスターをロック ダウンする
 - パブリック ネットワーク エンドポイントを SSH のみにする
 - 各 Cassandra ノードには、固定の内部 IP アドレスが必要である
@@ -67,8 +67,8 @@ Cassandra では、"一貫性" と "結果的な一貫性" の 2 種類のデー
 | ----------------- | ----- | ------- |
 | ノード の数 (N) | 8 | クラスター内のノードの合計数 |
 | レプリケーション係数 (RF) | 3 |	行のレプリカの数 |
-| 一貫性レベル (書き込み) | QUORUM [(RF/2) +1= 2] (数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 |
-| 一貫性レベル (読み取り) | QUORUM [(RF/2) +1= 2] (数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。 |
+| 一貫性レベル (書き込み) | QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 |
+| 一貫性レベル (読み取り) | QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。 |
 | レプリケーションの方法 | NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「[Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)」を参照してください) | デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
 | スニッチ | GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「[Snitches (スニッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html)」を参照してください) | NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。この場合、クラスターはゴシップを使用して情報を伝達します。このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
 
@@ -559,12 +559,12 @@ VM にログインし、次の処理を行います。
 
 ###手順 1. PowerShell を使用して両方のリージョンの内部ロード バランサーの IP アドレスを取得
 - Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-west-us"
-- Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-east-us"
+- Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-east-us"  
 
     表示される IP アドレスに注意してください (例: 西部 - 10.1.2.101、東部 - 10.2.2.101)。
 
 ###手順 2. hk-w1-west-us にログイン後に、西部リージョンで次の処理を実行
-1.    $CASS\_HOME/bin/cqlsh 10.1.2.101 9160 を実行します。
+1.    $CASS\_HOME/bin/cqlsh 10.1.2.101 9160 を実行します。 
 2.	次の CQL コマンドを実行します。
 
 		CREATE KEYSPACE customers_ks
@@ -584,7 +584,7 @@ VM にログインし、次の処理を行います。
 
 
 ###手順 3. hk-w1-east-us にログイン後に、東部リージョンで次の処理を実行
-1.    $CASS\_HOME/bin/cqlsh 10.2.2.101 9160 を実行します。
+1.    $CASS\_HOME/bin/cqlsh 10.2.2.101 9160 を実行します。 
 2.	次の CQL コマンドを実行します。
 
 		USE customers_ks;
@@ -611,7 +611,7 @@ VM にログインし、次の処理を行います。
 
 1. Node.js と npm をインストールします。
 2. npm を使用して、ノード パッケージ "cassandra-client" をインストールします。
-3. 取得データの JSON 文字列を表示する次のスクリプトを、シェル プロンプトで実行します。
+3. 取得データの JSON 文字列を表示する次のスクリプトを、シェル プロンプトで実行します。 
 
 		var pooledCon = require('cassandra-client').PooledConnection;
 		var ksName = "custsupport_ks";
@@ -702,7 +702,7 @@ Microsoft Azure は、この演習でもわかるように、オープン ソー
 
 ##参照##
 - [http://cassandra.apache.org](http://cassandra.apache.org)
-- [http://www.datastax.com](http://www.datastax.com)
-- [http://www.nodejs.org](http://www.nodejs.org)
+- [http://www.datastax.com](http://www.datastax.com) 
+- [http://www.nodejs.org](http://www.nodejs.org) 
 
 <!---HONumber=AcomDC_0629_2016-->
