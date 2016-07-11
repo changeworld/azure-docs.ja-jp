@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+   ms.date="06/28/2016"
 	ms.author="jgao"/>
 
 #HDInsight で .NET SDK for Hadoop を使用した Sqoop ジョブの実行
@@ -116,4 +116,4 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 - [HDInsight を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md): Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
 - [HDInsight へのデータのアップロード](hdinsight-upload-data.md): HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

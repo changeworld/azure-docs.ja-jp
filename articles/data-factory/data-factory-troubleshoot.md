@@ -24,30 +24,30 @@
 ### エラー: サブスクリプションが名前空間 'Microsoft.DataFactory' を使用するように登録されていません。
 このエラー メッセージが表示される場合は、Azure Data Factory のリソース プロバイダーがコンピューターに登録されていません。次の操作を行ってください。
 
-1. Azure PowerShell を起動します。 
-2. 次のコマンドを使用して、Azure アカウントにログインします。Login-AzureRmAccount 
+1. Azure PowerShell を起動します。
+2. 次のコマンドを使用して、Azure アカウントにログインします。Login-AzureRmAccount
 3. 次のコマンドを実行して、Azure Data Factory プロバイダーを登録します。Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
 
 ### 問題: Data Factory コマンドレットを実行する際の認証エラー
 Azure PowerShell で使用する Azure アカウントまたはサブスクリプションが正しくない可能性があります。次のコマンドレットを使用して、Azure PowerShell で使用する適切な Azure アカウントとサブスクリプションを選択してください。
 
 1. Login-AzureRmAccount - 適切なユーザー ID とパスワードを使用します。
-2. Get-AzureRmSubscription - アカウントのサブスクリプションをすべて表示します。 
-3. Select-AzureRmSubscription <subscription name> - 適切なサブスクリプションを選択します。Azure ポータルでデータ ファクトリの作成に使用するのと同じものを使用します。
+2. Get-AzureRmSubscription - アカウントのサブスクリプションをすべて表示します。
+3. Select-AzureRmSubscription <サブスクリプション名> - 適切なサブスクリプションを選択します。Azure ポータルでデータ ファクトリの作成に使用するのと同じものを使用します。
 
 ### 問題: Azure ポータルから Data Management Gateway の高速セットアップを起動できない
 Data Management Gateway の高速セットアップを起動するには、Internet Explorer または Microsoft ClickOnce と互換性のある Web ブラウザーが必要です。高速セットアップの開始が失敗した場合は、次のいずれかの操作を行います。
 
 - Internet Explorer または Microsoft の ClickOnce と互換性のある Web ブラウザーを使用してください。
 
-	Chrome を使用する場合は、[Chrome Web ストア](https://chrome.google.com/webstore/)に移動し、"ClickOnce" キーワードで検索して、ClickOnce 拡張子のいずれかを選択してインストールします。
+	Chrome を使用する場合は、[Chrome Web ストア](https://chrome.google.com/webstore/)に移動し、"ClickOnce" キーワードで検索して、ClickOnce 拡張機能のいずれかを選択してインストールします。
 	
 	Firefox についても、同じ操作を実行する必要があります (アドインをインストール)。ツール バーの [メニューを開く] ボタン (右上隅にある 3 本の横線) をクリックして、[アドオン] をクリックし、"ClickOnce" キーワードを使用して検索し、ClickOnce の拡張機能のいずれかを選択してインストールします。
 
 - ポータルの同じブレードに表示される **[手動セットアップ]** リンクを使用して、インストール ファイルをダウンロードし、手動で実行します。インストールが成功すると、[データ管理ゲートウェイの構成] ダイアログ ボックスが表示されます。ポータル画面の**キー**をコピーし、構成マネージャーでそれを使用して、手動でゲートウェイをサービスに登録します。
 
 ### 問題: オンプレミス SQL Server に接続できない 
-ゲートウェイ コンピューターで **Data Management Gateway 構成マネージャー**を起動し、**[トラブルシューティング]** タブを使用して、ゲートウェイ コンピューターから SQL Server への接続をテストします。詳細については、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+ゲートウェイ コンピューターで **Data Management Gateway 構成マネージャー**を起動し、**[トラブルシューティング]** タブを使用して、ゲートウェイ コンピューターから SQL Server への接続をテストします。詳細については、[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)に関するトピックを参照してください。
  
 
 ### 問題: 入力スライスの状態が Waiting のままになっている
@@ -85,7 +85,7 @@ Data Management Gateway の高速セットアップを起動するには、Inter
 このエラーを解決するには、入力テーブルの JSON 定義に **external** プロパティと **externalData** セクション (省略可能) を追加し、テーブルをもう一度作成します。
 
 ### 問題: ハイブリッド コピー操作に失敗する
-Data Management Gateway を使用したオンプレミス データ ストアへのコピーや、それからのコピーの問題をトラブルシューティングする手順については、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+Data Management Gateway を使用したオンプレミス データ ストアへのコピーや、それからのコピーの問題をトラブルシューティングする手順については、[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)に関するセクションを参照してください。
 
 ### 問題: オンデマンドの HDInsight プロビジョニングが失敗する
 種類が HDInsightOnDemand のリンクされたサービスを使用する場合、Azure Blob Storage を指す linkedServiceName を指定する必要があります。Data Factory サービスは、このストレージを使用して、オンデマンド HDInsight クラスターのログとサポート ファイルを格納します。たまに、オンデマンド HDInsight クラスターのプロビジョニングが失敗し、次のエラー メッセージが表示されることがあります。
@@ -105,7 +105,7 @@ Data Management Gateway を使用したオンプレミス データ ストアへ
 手順については、[パイプラインの監視](data-factory-build-your-first-pipeline-using-editor.md#monitor-pipeline)に関するセクションを参照してください。
 
 ### 監視と管理アプリの使用
-詳細については、「[新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)」を参照してください。
+詳細については、[監視と管理アプリを使用した Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関するページを参照してください。
 
 ## Azure PowerShell を使用したトラブルシューティング
 
@@ -113,9 +113,8 @@ Data Management Gateway を使用したオンプレミス データ ストアへ
 詳細については、[Azure PowerShell を使用した Data Factory パイプラインの監視](data-factory-build-your-first-pipeline-using-powershell.md#monitor-pipeline)に関するセクションを参照してください。
 
 
-[adfgetstarted]: data-factory-get-started.md
+[adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
-[monitor-manage-using-powershell]: data-factory-monitor-manage-using-powershell.md
 [troubleshoot]: data-factory-troubleshoot.md
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
@@ -144,4 +143,4 @@ Data Management Gateway を使用したオンプレミス データ ストアへ
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

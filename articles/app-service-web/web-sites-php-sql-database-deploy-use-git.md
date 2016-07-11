@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="02/09/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
@@ -52,7 +52,7 @@ Azure の Web アプリと SQL Database を作成するには、次の手順に�
 
 6. 各部分 (**[リソース グループ]**、**[Web アプリ]**、**[データベース]**、**[サブスクリプション]**) をクリックし、必要なフィールドに値を入力するか、値を選択します。
 	
-	- 好みの URL 名を入力します	
+	- 好みの URL 名を入力します
 	- データベース サーバーの資格情報を構成します。
 	- 最も近いリージョンを選択します
 
@@ -137,7 +137,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 		php -S localhost:8000
 
-4. Web ブラウザーを開いて、****http://localhost:8000/createtable.php** にアクセスします。このコードは、データベースに `registration_tbl` テーブルを作成するために使用します。
+4. Web ブラウザーを開いて、**http://localhost:8000/createtable.php** にアクセスします。このコードは、データベースに `registration_tbl` テーブルを作成するために使用します。
 
 5. **index.php** ファイルをテキスト エディターまたは IDE で開いて、ページの基本的な HTML コードおよび CSS コードを追加します (PHP コードは後で追加します)。
 
@@ -233,7 +233,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 			echo "<h3>No one is currently registered.</h3>";
 		}
 
-これで、****http://localhost:8000/index.php** に移動してアプリケーションをテストできるようになりました。
+これで、**http://localhost:8000/index.php** に移動してアプリケーションをテストできるようになりました。
 
 ##アプリケーションの発行
 
@@ -298,4 +298,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [pdo-sqlsrv]: http://php.net/pdo_sqlsrv
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -20,7 +20,7 @@
 # SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計
 
 
-> [AZURE.NOTE] すべてのレベルのすべてのデータベースで [Active Geo-Replication](sql-database-geo-replication-overview.md) を使用できるようになりました。
+> [AZURE.NOTE] [Active Geo-Replication]すべてのレベルのすべてのデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
 
 
 
@@ -32,7 +32,7 @@
 
 + アクティブ インスタンスが単一の Azure リージョンに存在する。
 + データへの読み取り/書き込み (RW) アクセスに強く依存する。
-+ アプリケーション ロジックとデータベースを異なるリージョンに置いて接続することが、待機時間とトラフィック コストの面から許されない。    
++ アプリケーション ロジックとデータベースを異なるリージョンに置いて接続することが、待機時間とトラフィック コストの面から許されない。
 
 すべてのアプリケーション コンポーネントに障害の影響が波及し、ひとつのまとまりとしてフェールオーバーする必要があるとき、このケースでは地域ごとの障害に対処するようにアプリケーションのデプロイ トポロジを最適化します。地理的な冗長性を確保するために、アプリケーション ロジックとデータベースの両方が別のリージョンにレプリケートされますが、正常な状況下ではアプリケーション ワークロードの処理にそれらが使用されることはありません。セカンダリ リージョンにおけるアプリケーションの構成には、セカンダリ データベースへの SQL 接続文字列を使用する必要があります。[フェールオーバーによるルーティング方法](../traffic-manager/traffic-manager-configure-failover-routing-method.md)を使用するように Traffic Manager を設定します。
 
@@ -76,9 +76,9 @@
 このクラウド障害復旧は、以下の特性を持ったアプリケーションに最適な選択肢です。
 
 + データベースの書き込みに比べて読み取りの割合が大きい。
-+ データベース書き込みの待機時間がエンド ユーザーの使用感に影響しない。  
++ データベース書き込みの待機時間がエンド ユーザーの使用感に影響しない。
 + 読み取り専用ロジックと読み取り/書き込みロジックを異なる接続文字列を使って分離できる。
-+ 読み取り専用ロジックが、データが直近の更新と完全に同期されていることを前提としない。  
++ 読み取り専用ロジックが、データが直近の更新と完全に同期されていることを前提としない。
 
 開発するアプリケーションがこれらの特性を満たしている場合、リージョンの異なる複数のアプリケーション インスタンスにエンド ユーザーの接続を負荷分散することによって、パフォーマンスとエンド ユーザーの使用感を高めることができます。そのためには、アクティブなアプリケーション インスタンスをすべてのリージョンに割り当てたうえで、読み取り/書き込み (RW) ロジックをプライマリ リージョンのプライマリ データベースに接続する必要があります。読み取り専用 (RO) ロジックは、アプリケーション インスタンスとして同じリージョン内のセカンダリ データベースに接続する必要があります。Traffic Manager は、[ラウンド ロビンによるルーティング](../traffic-manager/traffic-manager-configure-round-robin-routing-method.md)または[パフォーマンスによるルーティング](../traffic-manager/traffic-manager-configure-performance-routing-method.md)を使用するように設定し、[エンド ポイントの監視](../traffic-manager/traffic-manager-monitoring.md)を各アプリケーション インスタンスに対して有効にします。
 
@@ -103,7 +103,7 @@
 
 + アプリケーション インスタンスとデータベースの間の読み取り/書き込み接続に関して待機時間とコストのばらつきが生じる
 + 機能が停止している間、アプリケーションのパフォーマンスが影響を受ける
-+ データベースのフェールオーバー後、アプリケーションのインスタンスは SQL 接続文字列を動的に変更する必要がある  
++ データベースのフェールオーバー後、アプリケーションのインスタンスは SQL 接続文字列を動的に変更する必要がある
 
 > [AZURE.NOTE] 同様のアプローチで、レポート ジョブ、ビジネス インテリジェンス ツール、バックアップなど特定のワークロードの負荷を軽減することができます。通常これらのワークロードはデータベースのリソースを著しく消費するため、予測されるワークロードに見合ったパフォーマンス レベルのセカンダリ データベースを 1 つ指定することをお勧めします。
 
@@ -156,17 +156,14 @@ Traffic Manager は、プライマリ リージョンへの接続障害を検出
 ## 次のステップ
 
 - 障害復旧のためのアクティブ geo レプリケーションの使用および構成の方法については、「[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)」をご覧ください。
-- 障害復旧のための geo リストアの使用方法については、「[geo リストア](sql-database-geo-restore.md)」をご覧ください。
+- 障害復旧のための geo リストアの使用方法については、「[geo リストア](sql-database-recovery-using-backups.md#geo-restore)」をご覧ください。
 
-## その他のリソース
+## 次のステップ
 
-- [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](sql-database-business-continuity.md)
-- [Overview: SQL Database Point-in-Time Restore (概要: SQL Database のポイントインタイム リストア)](sql-database-point-in-time-restore.md)
-- [geo リストア](sql-database-geo-restore.md)
-- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
-- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
-- [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
+- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
+- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
+- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

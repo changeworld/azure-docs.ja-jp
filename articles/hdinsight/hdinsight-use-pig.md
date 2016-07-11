@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/07/2016"
+   ms.date="06/28/2016"
    ms.author="larryfr"/>
 
 # HDInsight での Pig と Hadoop の使用
@@ -148,4 +148,4 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [image-hdi-pig-powershell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png
 [image-hdi-pig-architecture]: ./media/hdinsight-use-pig/HDI.Pig.Architecture.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

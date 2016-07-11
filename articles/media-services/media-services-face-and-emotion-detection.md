@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/14/2016"   
+	ms.date="06/22/2016"   
 	ms.author="milanga;juliako;"/>
  
 #Azure Media Analytics での顔と感情の検出
@@ -351,7 +351,7 @@ AggregateEmotionIntervalMs|0\.5|1|0\.25
 このプログラムでは次の方法を示します。
 
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
-1. 次の JSON プリセットを含む構成ファイルに基づく顔検出タスクのジョブを作成します。 
+1. 次の JSON プリセットを含む構成ファイルに基づく顔検出タスクのジョブを作成します。
 					
 		{
 		    "version": "1.0"
@@ -537,4 +537,4 @@ AggregateEmotionIntervalMs|0\.5|1|0\.25
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

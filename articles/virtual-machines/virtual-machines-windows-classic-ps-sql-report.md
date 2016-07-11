@@ -18,7 +18,7 @@
 
 # ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
  
 
 このトピックでは、Azure 仮想マシンで SQL Server Reporting Services ネイティブ モードのレポート サーバーをデプロイおよび構成する手順について説明します。このドキュメントの手順では、仮想マシンを手動で作成する手順と、VM で Reporting Services を構成する Windows PowerShell スクリプトを組み合わせて使用しています。構成スクリプトでは、HTTP または HTTPS のファイアウォール ポートを開きます。
@@ -117,7 +117,7 @@ VM で HTTPS を使用するには、信頼済み SSL 証明書が必要です�
 
 ### 信頼された証明機関 (CA) によって作成された証明書を使用するには
 
-1. **証明機関に Web サイトのサーバー証明書を要求します**。 
+1. **証明機関に Web サイトのサーバー証明書を要求します**。
 
 	Web サーバー証明書ウィザードを使用して、証明機関に送信する証明書要求ファイル (Certreq.txt) を生成することも、オンライン証明機関 (Windows Server 2012 の Microsoft 証明書サービスなど) への要求を生成することもできます。サーバー証明書が提供する ID 保証レベルに応じて、証明機関によって要求が承認され、証明書ファイルが送られてくるまで数日から数か月かかります。
 
@@ -633,7 +633,7 @@ HTTPS のプライベート ポートを 443 以外で構成した場合は、�
 
 		http://localhost/Reports
 
-- ローカル コンピューターから、VM 上の**リモート** レポート マネージャーを参照します。必要に応じて、次の例の DNS 名を更新します。パスワードの入力を求められたら、VM をプロビジョニングしたときに作成した管理者資格情報を使用します。ユーザー名は、[ドメイン]\\[ユーザー名] の形式で指定します。ドメインは VM のコンピューター名です。たとえば、「ssrsnativecloud\\testuser」のように指定します。HTTP**S** を使用していない場合は、URL の **s** を削除します。VM で追加のユーザーを作成する方法については、次のセクションをご覧ください。
+- ローカル コンピューターから、VM 上の**リモート** レポート マネージャーを参照します。必要に応じて、次の例の DNS 名を更新します。パスワードの入力を求められたら、VM をプロビジョニングしたときに作成した管理者資格情報を使用します。ユーザー名は、[ドメイン]\\[ユーザー名] の形式で指定します。ドメインは VM のコンピューター名です。たとえば、「ssrsnativecloud\\testuser」のように指定します。HTTP**S** を使用していない場合は、URL の "**s**" を削除します。VM で追加のユーザーを作成する方法については、次のセクションをご覧ください。
 
 		https://ssrsnativecloud.cloudapp.net/Reports
 
@@ -705,4 +705,4 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 [Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -25,26 +25,28 @@ Data Factory は、Data Management Gateway を使用したオンプレミスの 
 
 Data Factory は、他のデータ ストアから DB2 へのデータの移動ではなく、DB2 から他のデータ ストアへのデータの移動のみをサポートします。
 
+> [AZURE.NOTE] この DB2 コネクタは、現在 LUW (Linux、UNIX、Windows) の DB2 をサポートしています。DB2 for z/OS または DB2 for AS/400 のデータをコピーするには、汎用 ODBC コネクタを使用して対応する ODBC ドライバーをゲートウェイ コンピューターにインストールすることを検討してください。たとえば、DB2 for AS/400 からのデータを取り込むには、iSeries Access ODBC Driver を使用し、[オンプレミスまたは Azure IaaS の ODBC データ ソース](data-factory-odbc-connector.md)に関するページに従ってコピー アクティビティを設定してください。
+
 ## インストール 
 
 Data Management Gateway で DB2 データベースに接続するには、[IBM DB2 Data Server Driver](http://go.microsoft.com/fwlink/p/?LinkID=274911) を Data Management Gateway と同じシステムにインストールする必要があります。
 
 Windows 8 への IBM DB2 Data Server Driver のインストールに関しては、IBM から既知の問題が報告されています。追加のインストール手順が必要になります。Windows 8 での IBM DB2 Data Server Driver の詳細については、[http://www-01.ibm.com/support/docview.wss?uid=swg21618434](http://www-01.ibm.com/support/docview.wss?uid=swg21618434) を参照してください。
 
-> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+> [AZURE.NOTE] 接続およびゲートウェイに関する問題をトラブルシューティングするためのヒントについては、[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)に関するセクションを参照してください。
 
 
 ## サンプル: DB2 から Azure BLOB にデータをコピーする
 
-このサンプルは、オンプレミスの DB2 データベースから Azure BLOB ストレージにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、データを**直接**コピーすることができます。
+このサンプルは、オンプレミスの DB2 データベースから Azure BLOB ストレージにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して、[ここ](data-factory-data-movement-activities.md#supported-data-stores)に示したいずれかのシンクにデータを**直接**コピーすることができます。
  
 このサンプルでは、次の Data Factory のエンティティがあります。
 
 1.	[OnPremisesDb2](data-factory-onprem-db2-connector.md#db2-linked-service-properties) 型のリンクされたサービス。
-2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。 
+2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
 3.	[RelationalTable](data-factory-onprem-db2-connector.md#db2-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。 
-5.	[RelationalSource](data-factory-onprem-db2-connector.md#db2-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。 
+4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+5.	[RelationalSource](data-factory-onprem-db2-connector.md#db2-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルは DB2 データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -253,7 +255,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------- | -------------- |
-| query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: "query": "select * from "MySchema"."MyTable"" | いいえ (**データセット**の **tableName** が指定されている場合)|
+| query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: "query": "select * from "MySchema"."MyTable"" | いいえ (**dataset**の **tableName** が指定されている場合)|
 
 > [AZURE.NOTE] スキーマとテーブルの名前は、大文字と小文字を区別します。クエリ内では、"" (二重引用符) で囲む必要があります。
 
@@ -324,4 +326,4 @@ Char | String
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

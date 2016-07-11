@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/26/2016" 
+	ms.date="06/22/2016" 
 	ms.author="milangada;cenkdin;juliako"/>
 
 #方法: ストレージ アクセス キーをローリングした後に Media Services を更新する
@@ -159,4 +159,4 @@ SAS ロケーターを更新 (または再作成) するときに、URL は常�
 
 この文書の作成に協力してくれた Cenk Dingiloglu、Milan Gada、 Seva Titov に感謝します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-catalog"
-	ms.date="03/31/2016"
+	ms.date="06/27/2016"
 	ms.author="spelluru"/>
 
 # Azure Data Catalog 用のキーボード ショートカット
@@ -92,4 +92,4 @@
 |**[開く]** メニューを切り替える。 | Alt + O
 |資産がコンテナーの場合、コンテナーを探索する。 | ALT + L
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

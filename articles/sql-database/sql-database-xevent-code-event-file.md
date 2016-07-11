@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/08/2016" 
+	ms.date="06/24/2016" 
 	ms.author="genemi"/>
 
 
@@ -292,7 +292,7 @@ PowerShell スクリプトの終了時に、名前付きの値がいくつか出
 &nbsp;
 
 
-> [AZURE.WARNING] 前述の PowerShell スクリプトによって生成された SAS キーの値は、"?" (疑問符) で始まる場合があります。次の T-SQL スクリプトで SAS キーを使用する場合は、先頭の "?" を削除する必要があります。
+> [AZURE.WARNING] 前述の PowerShell スクリプトによって生成された SAS キーの値は、"?" (疑問符) で始まる場合があります。次の T-SQL スクリプトで SAS キーを使用する場合は、*先頭の "?" を削除*する必要があります。削除しないと、セキュリティによって操作がブロックされる可能性があります。
 
 
 &nbsp;
@@ -559,9 +559,17 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 </event>
 ```
 
+&nbsp;
 
 
+前述のTransact-SQL スクリプトでは、event\_file の読み取りに次のシステム関数を使用します。
 
+- [sys.fn\_xe\_file\_target\_read\_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
+
+
+拡張イベントのデータ表示の高度なオプションについての説明は、次で入手できます。
+
+- [Advanced Viewing of Target Data from Extended Events (拡張イベントのターゲット データの高度な表示)](http://msdn.microsoft.com/library/mt752502.aspx)
 
 &nbsp;
 
@@ -585,20 +593,15 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 ## 詳細情報
 
 
-Azure SQL Database での拡張イベントに関する主なトピックは次のとおりです。
-
-- [SQL Database の拡張イベント](sql-database-xevent-db-diff-from-svr.md) - Azure SQL データベースの拡張イベントの主要トピックです。
- - Azure SQL Database と Microsoft SQL Server の間で異なる拡張イベントの機能を比較します。
-
-
-- [SQL Database の拡張イベントのためのリング バッファーのターゲット コード](sql-database-xevent-code-ring-buffer.md) - 簡素版であり、簡単なテストに向き、大規模な活動では堅牢性に劣る姉妹コード サンプルを提供します。
-
-
 Azure ストレージ サービスのアカウントとコンテナーに関する詳細については、次を参照してください。
 
 - [.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)
 - [コンテナー、BLOB、メタデータの名前付けと参照](http://msdn.microsoft.com/library/azure/dd135715.aspx)
 - [ルート コンテナーの使用](http://msdn.microsoft.com/library/azure/ee395424.aspx)
+- [レッスン 1: 保存されているアクセス ポリシーと Shared Access Signature を Azure コンテナー上に作成する](http://msdn.microsoft.com/library/dn466430.aspx)
+    - [レッスン 2: Shared Access Signature を使用して SQL Server 資格情報を作成する](http://msdn.microsoft.com/library/dn466435.aspx)
+
+
 
 
 <!--
@@ -607,4 +610,4 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

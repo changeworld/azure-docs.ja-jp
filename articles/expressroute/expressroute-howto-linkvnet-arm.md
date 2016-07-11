@@ -34,9 +34,9 @@
 
 - Azure PowerShell モジュールの最新バージョン (バージョン 1.0 以降) が必要になります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 - 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認する必要があります。
-- アクティブな ExpressRoute 回線が必要です。 
-	- 手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md)し、接続プロバイダー経由で回線を有効にしてください。 
-	- 回線用に Azure プライベート ピアリングが構成されていることを確認してください。ルーティング手順については、[ルーティングの構成](expressroute-howto-routing-arm.md)に関する記事を参照してください。 
+- アクティブな ExpressRoute 回線が必要です。
+	- 手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md)し、接続プロバイダー経由で回線を有効にしてください。
+	- 回線用に Azure プライベート ピアリングが構成されていることを確認してください。ルーティング手順については、[ルーティングの構成](expressroute-howto-routing-arm.md)に関する記事を参照してください。
 	- Azure プライベート ピアリングが構成されていることを確認します。また、エンド ツー エンド接続を有効にできるように、ネットワークと Microsoft の間の BGP ピアリングを起動しておく必要があります。
 	- 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。[VPN ゲートウェイ](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)を作成する手順に従いますが、必ず `-GatewayType ExpressRoute` を使用してください。
 
@@ -75,10 +75,10 @@
 次のコマンドレット スニペットは、承認を作成する方法を示しています。
 
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
-	Add-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization1"
-	Set-AzureRmExpressRouteCircuit -Circuit $circuit
+	Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization1"
+	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 
-	$auth1 = Get-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization1"
+	$auth1 = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization1"
 		
 
 このコマンドレットの応答に、承認キーと状態が含まれます。
@@ -97,7 +97,7 @@
 回線所有者は、次のコマンドレットを実行し、特定の回線で発行されるすべての承認を確認できます。
 
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
-	$authorizations = Get-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit
+	$authorizations = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit
 	
 
 #### 承認の追加
@@ -105,11 +105,11 @@
 回線所有者は、次のコマンドレットを使用して承認を追加できます。
 
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
-	Add-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit -Name "MyAuthorization2"
-	Set-AzureRmExpressRouteCircuit -Circuit $circuit
+	Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization2"
+	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 	
 	$circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
-	$authorizations = Get-AzureRmExpressRouteCircuitAuthorization -Circuit $circuit
+	$authorizations = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit
 
 	
 #### 承認の削除
@@ -117,7 +117,7 @@
 回線所有者は、次のコマンドレットを実行して、ユーザーに対する承認を取り消したり削除したりすることができます。
 
 	Remove-AzureRmExpressRouteCircuitAuthorization -Name "MyAuthorization2" -ExpressRouteCircuit $circuit
-	Set-AzureRmExpressRouteCircuit -Circuit $circuit	
+	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit	
 
 ### 回線ユーザーの操作
 
@@ -138,4 +138,4 @@ ExpressRoute 回線を仮想ネットワークにリンクしている接続を�
 
 ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

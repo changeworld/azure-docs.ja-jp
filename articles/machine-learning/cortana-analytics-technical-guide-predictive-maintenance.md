@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/10/2016"
+	ms.date="06/28/2016"
 	ms.author="fboylu" />
 
 # 航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド
@@ -272,4 +272,4 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
 
 -   [Microsoft Azure 料金計算ツール (デスクトップ)](http://www.microsoft.com/download/details.aspx?id=43376)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

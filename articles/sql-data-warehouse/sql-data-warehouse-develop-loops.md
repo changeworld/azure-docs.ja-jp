@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="06/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SDL Data Warehouse でのループ
@@ -81,4 +81,4 @@ DROP TABLE #tbl;
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

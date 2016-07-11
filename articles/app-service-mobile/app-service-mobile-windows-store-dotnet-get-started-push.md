@@ -34,7 +34,7 @@
 
 Azure から Windows アプリにプッシュ通知を送信するには、Windows ストア にアプリを送信する必要があります。その後、サーバー プロジェクトを構成して WNS と統合できます。
 
-1. Visual Studio ソリューション エクスプローラーで、UWP アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。 
+1. Visual Studio ソリューション エクスプローラーで、UWP アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。
 
     ![アプリを Windows ストアと関連付ける](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
     
@@ -200,10 +200,21 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 [AZURE.INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
 
-##<a id="more"></a>詳細
+##<a id="more"></a>次のステップ
 
-* テンプレートを利用すれば、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できます。テンプレートの登録方法は「[Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md#how-to-register-push-templates-to-send-cross-platform-notifications)」にあります。
-* タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags)」に記載されています。
+プッシュ通知についてさらに学習します。
+
+* [Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md#how-to-register-push-templates-to-send-cross-platform-notifications) テンプレートを利用すれば、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できます。この記事ではテンプレートの登録方法について説明しています。
+
+* [Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags) タグを利用して、プッシュ通知の対象となる顧客を絞ることができます。この記事では、タグをデバイス インストールに追加する方法について確認します。
+
+* [プッシュ通知の問題の診断](../notification-hubs/notification-hubs-push-notification-fixer.md) 通知が破棄されたり、デバイスに届かなかったりするのにはさまざまな原因があります。このトピックでは、プッシュ通知のエラーの根本原因を分析、解明する方法について説明しています。
+
+次のチュートリアルのいずれかに進むことを検討してください。
+
++ [アプリへの認証の追加](app-service-mobile-windows-store-dotnet-get-started-users.md) ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
+
++ [アプリのオフライン同期の有効化](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) モバイル アプリ バックエンドを使用して、オフライン サポートをアプリに追加する方法について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリとやり取りできます。
 
 <!-- Anchors. -->
 
@@ -211,6 +222,5 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 [Azure Portal]: https://portal.azure.com/
 
 <!-- Images. -->
-))) )
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

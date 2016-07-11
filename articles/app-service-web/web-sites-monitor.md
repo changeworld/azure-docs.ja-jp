@@ -3,7 +3,7 @@
 	description="Azure App Service の Web Apps を管理ポータルを使用して監視する方法を説明します。"
 	services="app-service"
 	documentationCenter=""
-	authors="cephalin"
+	authors="btardif"
 	manager="wpickett"
 	editor="mollybos"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/04/2016"
+	ms.date="06/22/2016"
 	ms.author="byvinyal"/>
 
 #<a name="howtomonitor"></a>Azure App Service での Web Apps の監視
@@ -127,7 +127,7 @@ Azure のストレージ アカウントの詳細については、「[ストレ
 
  既定では、Web サーバーのログは一切削除されません。ログが自動的に削除されるまでの期間を指定するには、**[保有期間の設定]** を選択し、ログを保持する日数を **[保有期間]** ボックスに入力します。Azure Storage とファイル システム両方について、ログの保有期間を設定できます。
 
-- **[詳細なエラー メッセージ]** - 詳細なエラー ログを有効にすると、HTTP エラーに関する追加情報 (400 を超える状態コード) がログに記録されます。
+- - **[詳細なエラー メッセージ]** - 詳細なエラー ログを有効にすると、HTTP エラーに関する追加情報 (400 を超える状態コード) がログに記録されます。
 
 - **[失敗した要求トレース]** - 失敗した要求トレースを有効にして、HTTP 状態コードが 400 番台の要求など、失敗したクライアント要求に関する情報を取得します。失敗した要求トレースでは、XML ドキュメントが生成され、IIS で要求が渡されたモジュールのトレース、モジュールの返した値の詳細、モジュールが呼び出された時刻が記録されます。この情報を参照して、障害が発生したコンポーネントを突き止めることができます。
 
@@ -287,4 +287,4 @@ Web アプリのエンドポイントの監視の詳細については、次の�
 [fzilla]: http://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]: http://go.microsoft.com/fwlink/?LinkID=309169
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

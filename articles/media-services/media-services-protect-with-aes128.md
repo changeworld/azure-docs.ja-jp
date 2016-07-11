@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
- 	ms.date="06/16/2016" 
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 #AES-128 動的暗号化とキー配信サービスの使用
@@ -39,11 +39,11 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 以下では、Media Services キー配信サービスと動的暗号化を使用して、AES で資産を暗号化する際に実行する必要のある一般的な手順について説明します。
 
-1. [資産を作成し、その資産にファイルをアップロードする](media-services-protect-with-aes128.md#create_asset) 
+1. [資産を作成し、その資産にファイルをアップロードする](media-services-protect-with-aes128.md#create_asset)
 1. [ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードする](media-services-protect-with-aes128.md#encode_asset)
 1. [コンテンツ キーを作成し、それをエンコードした資産に関連付ける](media-services-protect-with-aes128.md#create_contentkey)Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。
-1. [コンテンツ キー承認ポリシーの構成](media-services-protect-with-aes128.md#configure_key_auth_policy)コンテンツ キー承認ポリシーを構成する必要があります。コンテンツ キーがクライアントに配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。 
-1. [資産の配信ポリシーを構成します](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。配信ポリシーの構成には、次の内容が含まれます。キー取得 URL と初期化ベクトル (IV) (AES 128 では、暗号化と暗号化解除の際に同じ IV を指定する必要があります)、配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはすべて)、動的暗号化の種類 (たとえば、エンベロープ暗号化、または動的暗号化を行わない)。 
+1. [コンテンツ キー承認ポリシーの構成](media-services-protect-with-aes128.md#configure_key_auth_policy)コンテンツ キー承認ポリシーを構成する必要があります。コンテンツ キーがクライアントに配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。
+1. [資産の配信ポリシーを構成します](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。配信ポリシーの構成には、次の内容が含まれます。キー取得 URL と初期化ベクトル (IV) (AES 128 では、暗号化と暗号化解除の際に同じ IV を指定する必要があります)、配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはすべて)、動的暗号化の種類 (たとえば、エンベロープ暗号化、または動的暗号化を行わない)。
 
 	同じ資産の各プロトコルに異なるポリシーを適用できます。たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES Envelope を HLS に適用できます。配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。ただし、資産配信ポリシーをまったく定義していない場合は例外となります。この場合、すべてのプロトコルが平文で許可されます。
 
@@ -91,10 +91,10 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 資産の配信ポリシーを構成します。資産の配信ポリシーの構成には、次の内容が含まれます。
 
-- キー取得 URL。 
-- エンベロープ暗号化に使用する初期化ベクトル (IV)。AES 128 では、暗号化と暗号化解除に同一の IV が必要です。 
+- キー取得 URL。
+- エンベロープ暗号化に使用する初期化ベクトル (IV)。AES 128 では、暗号化と暗号化解除に同一の IV が必要です。
 - 資産配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはすべて)。
-- 動的暗号化の種類 (AES エンベロープなど) または動的暗号化なし。 
+- 動的暗号化の種類 (AES エンベロープなど) または動的暗号化なし。
 
 詳細については、「[資産の配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)」を参照してください。
 
@@ -630,4 +630,4 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

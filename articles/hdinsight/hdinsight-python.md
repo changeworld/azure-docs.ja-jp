@@ -14,14 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="05/20/2016" 
+	ms.date="06/27/2016" 
 	ms.author="larryfr"/>
 
 #HDInsight における Python と Hive および Pig の使用
 
 Hive と Pig は HDInsight でデータを処理する場合にきわめて有益ですが、より汎用的な言語が必要になる場合もあります。Hive と Pig では、さまざまなプログラミング言語を使用してユーザー定義関数 (UDF) を作成できます。この記事では、Hive と Pig で Python UDF を使用する方法について説明します。
-
-> [AZURE.NOTE] この記事で説明する手順は、HDInsight クラスター バージョン 2.1、3.0、3.1、3.2 に適用されます。
 
 ##必要条件
 
@@ -29,7 +27,7 @@ Hive と Pig は HDInsight でデータを処理する場合にきわめて有�
 
 * テキスト エディター
 
-    > [AZURE.IMPORTANT] Linux ベースの HDInsight サーバーを使用している一方で、Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。エディターで LF または CRLF のどちらが使用されているかが不明な場合は、「[トラブルシューティング](#troubleshooting)」セクションで、ユーティリティを使用して HDInsight クラスターで CR 文字を削除する手順をご覧ください。
+    > [AZURE.IMPORTANT] Linux ベースの HDInsight サーバーを使用している一方で、Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。エディターで LF と CRLF のどちらが使用されているかが不明な場合は、「[トラブルシューティング](#troubleshooting)」セクションで、ユーティリティを使用して HDInsight クラスターで CR 文字を削除する手順をご覧ください。
     
 ##<a name="python"></a>HDInsight の Python
 
@@ -162,7 +160,7 @@ Linux ベースの HDInsight クラスターを使用している場合は、次
 
 ###SSH
 
-SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する</a>」または「<a href="../hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a>」をご覧ください。
+SSH の使用に関する詳細については、「Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する<a href="../hdinsight-hadoop-linux-use-ssh-unix/" target="_blank"></a>」または「<a href="../hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a>」をご覧ください。
 
 1. Python の例の [streaming.py](#streamingpy) と [jython.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
 
@@ -176,8 +174,8 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
 
 4. 以前アップロードした python のファイルを SSH セッションからクラスターの WASB ストレージに追加します。
 
-		hadoop fs -copyFromLocal streaming.py /streaming.py
-		hadoop fs -copyFromLocal jython.py /jython.py
+		hdfs dfs -put streaming.py /streaming.py
+		hdfs dfs -put jython.py /jython.py
 
 ファイルをアップロードした後、次の手順に従って、Hive ジョブと Pig ジョブを実行します。
 
@@ -189,7 +187,7 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
 
 		add file wasb:///streaming.py;
 		SELECT TRANSFORM (clientid, devicemake, devicemodel)
-		  USING ' pythonstreaming.py' AS
+		  USING 'python streaming.py' AS
 		  (clientid string, phoneLabel string, phoneHash string)
 		FROM hivesampletable
 		ORDER BY clientid LIMIT 50;
@@ -308,13 +306,13 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
         -HttpCredential $creds
     # Uncomment the following to see stderr output
     # Get-AzureRmHDInsightJobOutput `
-        -Clustername $clusterName `
-        -JobId $job.JobId `
-        -DefaultContainer $container `
-        -DefaultStorageAccountName $storageAccountName `
-        -DefaultStorageAccountKey $storageAccountKey `
-        -HttpCredential $creds `
-        -DisplayOutputType StandardError
+    #   -Clustername $clusterName `
+    #   -JobId $job.JobId `
+    #   -DefaultContainer $container `
+    #   -DefaultStorageAccountName $storageAccountName `
+    #   -DefaultStorageAccountKey $storageAccountKey `
+    #   -HttpCredential $creds `
+    #   -DisplayOutputType StandardError
 	Write-Host "Display the standard output ..." -ForegroundColor Green
 	Get-AzureRmHDInsightJobOutput `
         -Clustername $clusterName `
@@ -446,4 +444,4 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

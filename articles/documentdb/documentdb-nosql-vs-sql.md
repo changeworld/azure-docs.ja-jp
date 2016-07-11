@@ -1,6 +1,6 @@
 <properties
 	pageTitle="NoSQL を使用する場合と SQL を使用する場合 | Microsoft Azure"
-	description="非リレーショナル NoSQL ソリューションを使用した場合と SQL ソリューションを使用した場合の利点を比較します。Microsoft Azure NoSQL サービスのいずれか、または SQL Server ソリューションのいずれかがシナリオに適合するかどうかを説明します。"
+	description="NoSQL の非リレーショナル ソリューションを使用した場合と SQL ソリューションを使用した場合の利点を比較します。Microsoft Azure NoSQL サービスのいずれか、または SQL Server のいずれかがシナリオに適合するかどうかを説明します。"
 	keywords="NoSQL 対 SQL、NoSQL を使用する場合、SQL 対 NoSQL"
 	services="documentdb"
 	documentationCenter=""
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article" 
-	ms.date="03/28/2016"
+	ms.date="06/24/2016"
 	ms.author="mimig"/>
 
 # NoSQL 対 SQL
@@ -130,4 +130,4 @@ SQL が最善のオプションである場合は、「[SQL Server](https://www.
     - [SQL Server](https://www.microsoft.com/server-cloud/products/sql-server-2016/)
     - [Azure Virtual Machines における SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0629_2016-->

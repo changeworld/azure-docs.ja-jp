@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/05/2016" 
+	ms.date="06/27/2016" 
 	ms.author="spelluru"/>
 
 # SQL Server ストアド プロシージャ アクティビティ
@@ -21,9 +21,9 @@
 SQL Server ストアド プロシージャ アクティビティを Data Factory の[パイプライン](data-factory-create-pipelines.md)で使用して、次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。
 
 
-- Azure SQL Database 
-- Azure SQL Data Warehouse  
-- エンタープライズ内または Azure VM 内の SQL Server データベース。データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上に Data Management Gateway をインストールする必要があります。Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータ ソースまたは Azure VM でホストされているデータ ソースをクラウド サービスに接続するソフトウェアです。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。 
+- Azure SQL Database
+- Azure SQL Data Warehouse
+- エンタープライズ内または Azure VM 内の SQL Server データベース。データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上に Data Management Gateway をインストールする必要があります。Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータ ソースまたは Azure VM でホストされているデータ ソースをクラウド サービスに接続するソフトウェアです。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。
 
 この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
 
@@ -62,7 +62,7 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 ### サンプル テーブルとストアド プロシージャ
 > [AZURE.NOTE] このサンプルでは、Azure SQL Database を使用しますが、SQL Data Warehouse and SQL Server Database でも同じ方法で機能します。
 
-1. SQL Server Management Studio などのツールを使って Azure SQL Database に以下の**テーブル**を作成します。datetimestamp 列は、対応する ID が生成された日付と時刻です。 
+1. SQL Server Management Studio などのツールを使って Azure SQL Database に以下の**テーブル**を作成します。datetimestamp 列は、対応する ID が生成された日付と時刻です。
 
 		CREATE TABLE dbo.sampletable
 		(
@@ -90,10 +90,10 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 	
 ### Data Factory を作成する。  
 4. [Azure ポータル](https://portal.azure.com/)にログインした後、次の操作を行います。
-	1.	左側のメニューの **[新規]** をクリックします。 
+	1.	左側のメニューの **[新規]** をクリックします。
 	2.	**[作成]** ブレードの **[データ分析]** をクリックします。
 	3.	**[データ分析]** ブレードの **[Data Factory]** をクリックします。
-4.	**[新しいデータ ファクトリ]** ブレードで、[名前] フィールドに「**SProcDF**」と入力します。Azure Data Factory の名前はグローバルで一意となります。ファクトリを作成するには、データ ファクトリの名前の先頭にあなたの名前を付ける必要があります。 
+4.	**[新しいデータ ファクトリ]** ブレードで、[名前] フィールドに「**SProcDF**」と入力します。Azure Data Factory の名前はグローバルで一意となります。ファクトリを作成するには、データ ファクトリの名前の先頭にあなたの名前を付ける必要があります。
 3.	リソース グループを作成していない場合は、リソース グループを作成する必要があります。これを行うには、次の手順を実行します。
 	1.	**[リソース グループ名]** をクリックします。
 	2.	**[リソース グループ]** ブレードで、**[新規リソース グループの作成]** を選択します。
@@ -106,9 +106,9 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 ### Azure SQL のリンク サービスを作成する  
 データ ファクトリの作成後、Azure SQL Database をデータ ファクトリに関連付ける Azure SQL リンク サービスを作成します。これは、sampletable テーブルと sp\_sample ストアド プロシージャを含んだデータベースです。
 
-7.	**[SProcDF]** の **[DATA FACTORY]** ブレードの **[作成とデプロイ]** をクリックします。Data Factory エディタが起動します。 
-2.	コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure SQL]** を選択します。Azure SQL のリンク サービスを作成するための JSON スクリプトがエディターに表示されます。 
-4. **servername** に、ご使用の Azure SQL Database サーバーの名前を指定します。**databasename** には、テーブルとストアド プロシージャの作成先となったデータベースを指定します。****username@servername** には、そのデータベースへのアクセス権を持ったユーザー アカウントを、**password** には、そのユーザー アカウントのパスワードを指定してください。
+7.	**[SProcDF]** の **[DATA FACTORY]** ブレードの **[作成とデプロイ]** をクリックします。Data Factory エディタが起動します。
+2.	コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure SQL]** を選択します。Azure SQL のリンク サービスを作成するための JSON スクリプトがエディターに表示されます。
+4. **servername** に、ご使用の Azure SQL Database サーバーの名前を指定します。**databasename** には、テーブルとストアド プロシージャの作成先となったデータベースを指定します。**username@servername** には、そのデータベースへのアクセス権を持ったユーザー アカウントを、**password** には、そのユーザー アカウントのパスワードを指定してください。
 5. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
 ### 出力データセットの作成
@@ -129,13 +129,13 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 				}
 			}
 		}
-7. コマンド バーの **[デプロイ]** をクリックしてデータセットをデプロイします。 
+7. コマンド バーの **[デプロイ]** をクリックしてデータセットをデプロイします。
 
 ### SqlServerStoredProcedure アクティビティでパイプラインを作成する
 今度は、SqlServerStoredProcedure アクティビティでパイプラインを作成しましょう。
  
-9. コマンド バーの **[...] \(省略記号)** をクリックし、**[新しいパイプライン]** をクリックします。 
-9. 次の JSON スニペットをコピーして貼り付けます。**storedProcedureName** は **sp\_sample** に設定します。パラメーター **DateTime** の名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義と一致させる必要があります。  
+9. コマンド バーの **[...] (省略記号)** をクリックし、**[新しいパイプライン]** をクリックします。
+9. 次の JSON スニペットをコピーして貼り付けます。**storedProcedureName** は **sp\_sample** に設定します。パラメーター **DateTime** の名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義と一致させる必要があります。
 
 		{
 		    "name": "SprocActivitySamplePipeline",
@@ -166,13 +166,13 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 		        "isPaused": false
 		    }
 		}
-9. ツール バーの **[デプロイ]** をクリックしてパイプラインをデプロイします。  
+9. ツール バーの **[デプロイ]** をクリックしてパイプラインをデプロイします。
 
 ### パイプラインの監視
 
 6. **[X]** をクリックして Data Factory エディターのブレードを閉じ、[Data Factory] ブレードに戻って **[ダイアグラム]** をクリックします。
-7. ダイアグラム ビューに、パイプラインの概要と、このチュートリアルで使用されるデータセットが表示されます。 
-8. ダイアグラム ビューで、**sprocsampleout** データセットをダブルクリックします。スライスが準備完了状態として表示されます。スライスは 2015/01/02 から 2015/01/03 まで毎時生成されるため、スライス数は 24 となります。 
+7. ダイアグラム ビューに、パイプラインの概要と、このチュートリアルで使用されるデータセットが表示されます。
+8. ダイアグラム ビューで、**sprocsampleout** データセットをダブルクリックします。スライスが準備完了状態として表示されます。スライスは 2015/01/02 から 2015/01/03 まで毎時生成されるため、スライス数は 24 となります。
 10. スライスが **[準備完了]** 状態のときに、Azure SQL Database に対して **select * from sampledata** クエリを実行し、ストアド プロシージャによってデータがテーブルに挿入されたことを確認します。
 
 	![出力データ](./media/data-factory-stored-proc-activity/output.png)
@@ -207,4 +207,4 @@ storedProcedureParameters | ストアド プロシージャのパラメーター
 		}
 	}
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

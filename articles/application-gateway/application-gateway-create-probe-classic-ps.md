@@ -22,8 +22,7 @@
 
 [AZURE.INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)].
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](application-gateway-create-probe-ps.md).
-
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](application-gateway-create-probe-ps.md)方法について説明します。
 
 [AZURE.INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -163,12 +162,12 @@ Application Gateway を作成するには:
 
 - **Name** - カスタム プローブの参照名。
 - **Protocol** - 使用されるプロトコル (有効な値は HTTP または HTTPS です)。
-- **Host** と **Path** - インスタンスの状態を判断するためにアプリケーション ゲートウェイにより呼び出される完全な URL パス。たとえば、"http://contoso.com/" という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするためには、カスタム プローブを "http://contoso.com/path/custompath.htm" に対して構成します。
+- **Host** と **Path** - インスタンスの状態を判断するために Application Gateway により呼び出される完全な URL パス。たとえば、"http://contoso.com/" という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするためには、カスタム プローブを "http://contoso.com/path/custompath.htm" に対して構成します。
 - **Interval** - プローブのチェック間隔を秒単位で指定します。
 - **Timeout** - プローブの HTTP 応答チェックのタイムアウト期間を定義します。
-- **UnhealthyThreshold** - バック エンド インスタンスを*異常*とフラグするために必要な HTTP 応答の失敗数。
+- **UnhealthyThreshold** - バックエンド インスタンスを*異常*とフラグするために必要な HTTP 応答の失敗数。
 
-プローブの名前は、どのバック エンド プールがカスタム プローブ設定を使用するかを割り当てる <BackendHttpSettings> 構成で参照されます。
+プローブの名前は、どのバックエンド プールがカスタム プローブ設定を使用するかを割り当てる <BackendHttpSettings> 構成で参照されます。
 
 ## 既存のアプリケーション ゲートウェイにカスタム プローブ構成を追加する
 
@@ -223,4 +222,4 @@ Secure Sockets Layer (SSL) オフロードを構成する場合は、「[SSL オ
 
 内部ロード バランサーとともに使用するようにアプリケーション ゲートウェイを構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

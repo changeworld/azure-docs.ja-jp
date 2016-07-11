@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 
@@ -120,7 +120,8 @@ Azure Active Directory Device Registration サービスを Azure Active Director
   1.	ドメインを追加します。
   2.	Azure AD Connect のインストールと実行: 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールします。
   3. ディレクトリの同期を確認および管理します。この手順では、シングル サインオンの手順を利用できます。
-
+  
+  > [AZURE.NOTE] 
   上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。プレビュー機能を構成する必要はありません。
 
 
@@ -155,7 +156,7 @@ Active Directory スキーマのアップグレードを行うと、それを元
 
 1. フェデレーション サーバーで、AD FS 管理コンソールを開き、**[AD FS]**、**[認証ポリシー]** の順に移動します。
 2. **[操作]** ウィンドウで、**[グローバル プライマリ認証の編集...]** を選択します。
-3. **[デバイス認証を有効にする]** をオンにし、[OK] をクリックします。
+3. **[デバイス認証を有効にする]** をオンにし、**[OK]** を選択します。
 4. 既定では、AD FS は未使用のデバイスを Active Directory から定期的に削除します。Azure でデバイスを管理できるように Azure Active Directory Device Registration を使用する場合は、この動作を無効にする必要があります。
 
 
@@ -237,7 +238,7 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 この iOS デバイスを職場に参加させる。
 
 
-**Windows 8.1 デバイスを使用している場合は**、[PC 設定]、**[ネットワーク]**、**[ワークプレース]** にアクセスすると、デバイスを参加させることができます。
+**Windows 8.1 デバイスを使用している場合は**、**[PC 設定]**、**[ネットワーク]**、**[ワークプレース]** にアクセスすると、デバイスを参加させることができます。
 
 
 ここで、"**relying party trust name**" は、AD FS にあるアプリケーション証明書利用者の信頼オブジェクトの名前です。ここで、**yourdomain.com** は、Azure Active Directory で構成したドメイン名です。たとえば、contoso.com です。**Set-AdfsRelyingPartyWebContent** コマンドレットに渡す html コンテンツからは、改行 (ある場合) を必ず削除します。
@@ -251,4 +252,4 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!-----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

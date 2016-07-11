@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/03/2016"   
+ 	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 
@@ -41,8 +41,8 @@ Media Services では、クライアントが暗号化されたコンテンツ�
 
 ###いくつかの考慮事項が適用されます。
 
-- 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。 
-- 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[資産をエンコードする](media-services-encode-asset.md)」をご覧ください。  
+- 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+- 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
 - キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
 
 
@@ -105,4 +105,4 @@ Media Services では、**Secure Token Service** は提供されません。ト�
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

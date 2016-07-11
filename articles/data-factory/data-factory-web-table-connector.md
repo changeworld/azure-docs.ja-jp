@@ -21,6 +21,8 @@
 
 現在のところ、データ ファクトリは Web テーブルから他のデータ ストアへのデータの移動のみに対応しており、他のデータ ストアから Web テーブルにデータを移動することはできません。
 
+> [AZURE.NOTE] この Web コネクタは、現在、HTML ページからのテーブル コンテンツの抽出のみをサポートしています。
+
 ## サンプル: Web テーブルから Azure BLOB にデータをコピーする
 
 下のサンプルで確認できる要素:
@@ -33,9 +35,9 @@
 
 このサンプル データでは、1 時間おきに Web テーブルから Azure BLOB にデータがコピーされます。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-次のサンプルは、Web テーブルから Azure BLOB にデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」で説明されているシンクのいずれかにデータを直接コピーすることができます。
+次のサンプルは、Web テーブルから Azure BLOB にデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関するトピックで説明されているシンクのいずれかにデータを直接コピーすることができます。
 
-**Web のリンクされたサービス** この例では、Web サービスにリンクされたサービスと匿名認証が使用されています。使用可能なさまざまな種類の認証については、「[Web のリンクされたサービス](#web-linked-service-properties)」セクションを参照してください。
+**Web のリンクされたサービス**: この例では、Web サービスにリンクされたサービスと匿名認証が使用されています。使用可能なさまざまな種類の認証については、[Web のリンクされたサービス](#web-linked-service-properties)に関するセクションを参照してください。
 
 	{
 	    "name": "WebLinkedService",
@@ -63,7 +65,7 @@
 	  }
 	}
 
-**WebTable 入力データセット** **external** を **true** に設定して **externalData** ポリシーを指定 (省略可) すると、テーブルが Data Factory に対して外部にあり、データ ファクトリのアクティビティでは生成されていないことが Data Factory のサービスに通知されます。
+**WebTable 入力データセット**: **external** を **true** に設定して **externalData** ポリシーを指定 (省略可) すると、テーブルが Data Factory に対して外部にあり、データ ファクトリのアクティビティでは生成されていないことが Data Factory のサービスに通知されます。
 
 > [AZURE.NOTE] HTML ページのテーブルのインデックスを取得する方法については、「[HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page)」を参照してください。
 
@@ -116,7 +118,7 @@
 
 上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** 型が **WebSource** に設定され、**sink** 型が **BlobSink** に設定されています。
 
-WebSource でサポートされるプロパティの一覧については、「[WebSource type プロパティ](#websource-copy-activity-type-properties)」を参照してください。
+WebSource でサポートされるプロパティの一覧については、[WebSource type プロパティ](#websource-copy-activity-type-properties)に関するセクションを参照してください。
 	
 	{  
 	    "name":"SamplePipeline",
@@ -251,19 +253,19 @@ Index | リソースのテーブルのインデックス。HTML ページのテ�
 
 ## HTML ページのテーブルのインデックスを取得する
 
-1. **Excel 2016** を起動し、**[データ]** タブに切り替えます。  
+1. **Excel 2016** を起動し、**[データ]** タブに切り替えます。
 2. ツール バーの **[新しいクエリ]** をクリックし、**[その他のソースから]** をポイントし、**[Web から]** をクリックします。
 	
-	![Power Query メニュー](./media/data-factory-web-table-connector/PowerQuery-Menu.png) 
-3. **[From Web (Web から)]** ダイアログ ボックスで、リンクされたサービスの JSON で使用する **URL** を入力し (例: https://en.wikipedia.org/wiki/)、データセットに指定するパスを入力し (例: AFI%27s\_100\_Years...100\_Movies)、**[OK]** をクリックします。 
+	![Power Query メニュー](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
+3. **[Web から]** ダイアログ ボックスで、リンクされたサービスの JSON で使用する **URL** を入力し (例: https://en.wikipedia.org/wiki/)、データセットに指定するパスを入力し (例: AFI%27s\_100\_Years...100\_Movies)、**[OK]** をクリックします。
 
 	![Web ダイアログから](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
-	この例で使用される URL: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies 
-4.  **[Web コンテンツへのアクセス]** ダイアログ ボックスが表示された場合、適切な **URL** と**認証**を選択し、**[接続]** をクリックします。 
+	この例で使用される URL: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+4.  **[Web コンテンツへのアクセス]** ダイアログ ボックスが表示された場合、適切な **URL** と**認証**を選択し、**[接続]** をクリックします。
 
 	![[Access Web コンテンツ] ダイアログ ボックス](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
-5.  ツリー ビューの**テーブル** アイテムをクリックしてテーブルのコンテンツを表示し、一番下にある **[編集]** をクリックします。  
+5.  ツリー ビューの**テーブル** アイテムをクリックしてテーブルのコンテンツを表示し、一番下にある **[編集]** をクリックします。
 
 	![[ナビゲーター] ダイアログ](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
 
@@ -285,4 +287,4 @@ Excel 2013 を使用している場合、[Microsoft Power Query for Excel](https
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

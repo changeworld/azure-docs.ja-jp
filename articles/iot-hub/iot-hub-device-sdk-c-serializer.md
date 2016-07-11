@@ -26,6 +26,8 @@
 
 この記事で説明する内容は、すべて**シリアライザー** SDK サンプルに基づいています。C 用 Azure IoT device SDK に含まれている **simplesample\_amqp** アプリケーションと **simplesample\_http** アプリケーションを確認すると、理解に役立ちます。
 
+[Microsoft Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks) GitHub リポジトリでは **C 用 Azure IoT device SDK** が入手でき、[C API リファレンス](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html)のページでは API の詳細を確認できます。
+
 ## モデリング言語
 
 このシリーズの[入門記事](iot-hub-device-sdk-c-intro.md)では、**simplesample\_amqp** アプリケーションで提供された例を使用して、**C 用 Azure IoT デバイス SDK** のモデリング言語を紹介しました。
@@ -433,7 +435,7 @@ Temperature、Humidity、Time の値が設定されていると仮定すると�
 
 これにより、モデル 1 のように **Temperature** メンバーと **Time** メンバーを含む **TemperatureEvent** を定義した場合とまったく同じシリアル化されたイベントが生成されます。この場合は、異なるモデル (モデル 2) を使用して、まったく同じシリアル化されたイベントを生成できました。これは、**SERIALIZE** を別の方法で呼び出したためです。
 
-重要な点は、複数のデータ イベントを **SERIALIZE** に渡す場合、各イベントは、1 つの JSON オブジェクトのプロパティとみなされるということです。
+重要な点は、複数のデータ イベントを **SERIALIZE** に渡す場合、各イベントは、1 つの JSON オブジェクトのプロパティと見なされるということです。
 
 最適なアプローチは、モデルについての考え方によって異なります。"イベント" をクラウドに送信し、定義された一連のプロパティを各イベントに含める場合は、最初のアプローチが非常に役立ちます。その場合は、**DECLARE\_STRUCT** を使用して各イベントの構造体を定義し、**WITH\_DATA** マクロを使用してモデルに構造体を含めます。その後、上の最初の例で行ったように各イベントを送信します。このアプローチでは、**SERIALIZER** に 1 つのデータ イベントだけを渡します。
 
@@ -534,7 +536,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 .\\c\\azure-c-shared-utility
 ```
 
-ライブラリを複製していない場合は、[ここ](https://github.com/Azure/azure-c-shared-utility)に表示されます。
+ライブラリを複製していない場合は、[こちら](https://github.com/Azure/azure-c-shared-utility)に見つかります。
 
 共有ユーティリティ ライブラリ内には、次のフォルダーが表示されます:
 
@@ -546,7 +548,7 @@ azure-c-shared-utility\\macro\_utils\_h\_generator.
 
   ![](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.PNG)
 
-このソリューションのプログラムは、 **macro\_utils.h** ファイルを生成します。SDK には、既定の macro\_utils.h ファイルが含まれています。このソリューションでは、いくつかのパラメーターを変更し、これらのパラメーターに基づいて、ヘッダー ファイルを再作成することができます。
+このソリューションのプログラムは、**macro\_utils.h** ファイルを生成します。SDK には、既定の macro\_utils.h ファイルが含まれています。このソリューションでは、いくつかのパラメーターを変更し、これらのパラメーターに基づいて、ヘッダー ファイルを再作成することができます。
 
 考慮が必要な 2 つの重要なパラメーターは、**nArithmetic** と **nMacroParameters** で、これらは macro\_utils.tt 内の次の 2 行で定義されています。
 
@@ -630,7 +632,7 @@ WITH_DATA(int, MyData)
 
 ## 関連トピック
 
-これ以外に、もう一度説明する必要があるトピックとして、プロパティの処理、代替デバイスの資格情報の使用、および構成オプションがあります。これらは、すべて[前回の記事](iot-hub-device-sdk-c-iothubclient.md)で説明したトピックです。要点は、これらの機能はすべて、**シリアライザー ライブラリ**を使用する場合でも、**IoTHubClient** ライブラリの場合と同じ動作をするということです。たとえば、プロパティをモデルのイベントにアタッチする場合、前に説明した同じ方法で、**IoTHubMessage\_Properties** と **Map**\_**AddorUpdate** を使用します。
+これ以外に、もう一度説明する必要があるトピックとして、プロパティの処理、代替デバイスの資格情報の使用、および構成オプションがあります。これらは、すべて[前回の記事](iot-hub-device-sdk-c-iothubclient.md)で説明したトピックです。要点は、これらの機能はすべて、**シリアライザー ライブラリ**を使用する場合でも、**IoTHubClient** ライブラリの場合と同じ動作をするということです。たとえば、プロパティをモデルのイベントにアタッチする場合、前に説明した方法と同じように、**IoTHubMessage\_Properties** と **Map**\_**AddorUpdate** を使用します。
 
 ```
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -666,4 +668,4 @@ serializer_deinit();
 
 また、この記事は、**C 用 Azure IoT device SDK** を使用したアプリケーションの開発方法に関する 3 部構成のシリーズの最終回でもあります。この記事を読むことで、API の概要だけでなく、API のしくみについて理解するための十分な情報を得ることができます。追加情報として、ここで取り上げなかった SDK のサンプルがいくつかあります。さらに、詳細を知るために役立つリソースとして、[SDK ドキュメント](https://github.com/Azure/azure-iot-sdks)も参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

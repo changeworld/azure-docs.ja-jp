@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/20/2016"
+   ms.date="06/27/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect 同期: スケジューラ
@@ -144,4 +144,4 @@ Get-ADSyncConnectorRunStatus
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

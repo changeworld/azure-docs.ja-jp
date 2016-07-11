@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="03/04/2016"
+   ms.date="06/28/2016"
    ms.author="jgao"/>
 
 # HDInsight での HBase geo レプリケーションの構成
@@ -21,7 +21,7 @@
 > [AZURE.SELECTOR]
 - [VPN 接続の構成](../hdinsight-hbase-geo-replication-configure-VNETs.md)
 - [DNS の構成](hdinsight-hbase-geo-replication-configure-DNS.md)
-- [HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md) 
+- [HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md)
  
 2 つのデータ センター間に HBase レプリケーションを構成する方法について説明します。クラスターのレプリケーションには次のような用途があります。
 
@@ -169,18 +169,18 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
 
 **DNS フォワーダーを構成するには**
  
-1.	RDP で **Contoso-DNS-EU** に接続します。 
+1.	RDP で **Contoso-DNS-EU** に接続します。
 2.	左下の Windows キーをクリックします。
 2.	**[管理ツール]** をクリックします。
 3.	**[DNS]** をクリックします。
 4.	左側のウィンドウで、**[DSN]**、**[Contoso-DNS-EU]** の順に展開します。
-5.	**[条件付フォワーダー]** をクリックし、**[新規条件付フォワーダー]** をクリックします。 
+5.	**[条件付フォワーダー]** をクリックし、**[新規条件付フォワーダー]** をクリックします。
 5.	次の情報を入力します。
 	- **DNS ドメイン**: Contoso-HBase-US の DNS サフィックスを入力します。例: Contoso-HBase-US.f5.internal.cloudapp.net
 	- **マスター サーバーの IP アドレス**: 「10.2.0.4」と入力します。これは、Contoso-DNS-US の IP アドレスです。IP を確認してください。実際の DNS サーバーでは IP アドレスが異なる場合があります。
 6.	**Enter** キーを押し、**[OK]** をクリックします。以上で、Contoso-DNS-EU から Contoso-DNS-US の IP アドレスを解決できるようになります。
 7.	同じ手順を繰り返し、次の値を使用して、Contoso-DNS-US 仮想マシン上の DNS サービスへの DNS 条件付フォワーダーを追加します。
-	- **DNS ドメイン**: Contoso-HBase-EU の DNS サフィックスを入力します。 
+	- **DNS ドメイン**: Contoso-HBase-EU の DNS サフィックスを入力します。
 	- **マスター サーバーの IP アドレス**: 「10.2.0.4」と入力します。これは、Contoso-DNS-EU の IP アドレスです。
 
 **ドメイン名の解決をテストするには**
@@ -314,4 +314,4 @@ Azure クラシック ポータルでは、カスタム構成オプションで 
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

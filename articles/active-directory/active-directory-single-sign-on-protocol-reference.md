@@ -13,12 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="06/23/2016"
 	ms.author="priyamo"/>
 
 # シングル サインオンの SAML プロトコル
-
-[AZURE.INCLUDE [active-directory-protocols](../../includes/active-directory-protocols.md)]
 
 この記事では、Azure Active Directory (Azure AD) がシングル サインオンに対してサポートする SAML 2.0 の認証要求と応答について説明します。
 
@@ -56,7 +54,7 @@ Azure AD は、`AuthnRequest` の `Conditions` 要素も無視します。
 
 ### Issuer
 
-`AuthnRequest` の `Issuer` 要素は、Azure AD でのクラウド サービスの **ServicePrincipalNames** のいずれかと正確に一致する必要があります。通常、これはアプリケーション登録時に指定される **App ID URI** に設定されます。
+`AuthnRequest` の `Issuer` 要素は、Azure AD でのクラウド サービスの **ServicePrincipalNames** のいずれかと厳密に一致する必要があります。通常、これはアプリケーション登録時に指定される **App ID URI** に設定されます。
 
 `Issuer` 要素を含む SAML の抜粋の例を次に示します。
 
@@ -154,7 +152,7 @@ Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 - `Destination`: サインオンが正常に完了すると、この属性にはサービス プロバイダー (クラウド サービス) の `RedirectUri` が設定されます。
 - `InResponseTo`: この属性には、応答を開始した `AuthnRequest` 要素の `ID` 属性が設定されます。
 
-### Issuer
+### 発行者
 
 Azure AD は、`Issuer` 要素を `https://login.microsoftonline.com/<TenantIDGUID>/` に設定します。<TenantIDGUID> は、Azure AD テナントのテナント ID です。
 
@@ -205,7 +203,7 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
 
 `ID`、`IssueInstant`、および `Version` に加えて、Azure AD は応答の `Assertion` 要素の次の要素も設定します。
 
-#### Issuer
+#### 発行者
 
 この要素は `https://sts.windows.net/<TenantIDGUID>/` に設定されます。<TenantIDGUID> は Azure AD テナントのテナント ID です。
 
@@ -267,7 +265,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 </AudienceRestriction>
 ```
 
-`Issuer` の値と同様に、`Audience` の値は Azure AD でクラウド サービスを表すサービス プリンシパル名のいずれかと正確に一致する必要があります。ただし、`Issuer` 要素の値が URI 値ではない場合は、応答の `Audience` の値は、プレフィックス `spn:` が付加された `Issuer` 値になります。
+`Issuer` の値と同様に、`Audience` の値は Azure AD でクラウド サービスを表すサービス プリンシパル名のいずれかと厳密に一致する必要があります。ただし、`Issuer` 要素の値が URI 値ではない場合は、応答の `Audience` の値は、プレフィックス `spn:` が付加された `Issuer` 値になります。
 
 #### AttributeStatement
 
@@ -303,4 +301,4 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 </AuthnStatement>
 ```
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

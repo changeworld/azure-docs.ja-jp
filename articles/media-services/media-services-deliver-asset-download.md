@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article"
-	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 #方法: ダウンロードによってアセットを配信する
@@ -87,4 +87,4 @@
 
 [ストリーミング コンテンツを配信する](media-services-deliver-streaming-content.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

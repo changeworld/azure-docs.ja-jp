@@ -19,7 +19,7 @@
 
 # MariaDB (MySQL) クラスター - Azure チュートリアル
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 > [AZURE.NOTE]  Azure Marketplace では、MariaDB Enterprise cluster のダウンロードが追加されました。新しいサービスでは、自動的に ARM 上に MariaDB Galera cluster をデプロイします。新しいサービスは https://azure.microsoft.com/ja-JP/marketplace/partners/mariadb/cluster-maxscale/ から使用できます。
 
@@ -374,4 +374,4 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 [Azure CLI ツールの issue #1268]: https://github.com/Azure/azure-xplat-cli/issues/1268
 [Linux 上で MySQL をクラスター化する別の方法]: virtual-machines-linux-mysql-cluster.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

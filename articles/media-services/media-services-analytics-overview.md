@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Media Services Analytics の概要"
+	pageTitle="Azure Media Services Analytics の概要 | Microsoft Azure"
 	description="Azure Media Services では、Media Analytics のパブリック プレビュー (エンタープライズ規模での音声およびコンピューター ビジョン サービス、コンプライアンス、セキュリティ、およびグローバル展開をまとめたもの) を提供しています。Azure Media Analytics サービスは、Azure Media Services の基本的なプラットフォーム コンポーネントを使用して構築されているので、1 日目からいつでも規模に応じてメディアを処理することができます。"
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/22/2016"   
+	ms.date="06/27/2016"   
 	ms.author="milanga;juliako;johndeu"/>
 
 # Azure Media Services Analytics の概要
@@ -43,6 +43,9 @@ Azure Media Analytics を使用することで、開発者は、限定された�
  
 - **ビデオ要約** - ビデオ要約では、ソース ビデオから興味深いスニペットが自動的に選択されるので、長いビデオの要約を簡単に作成することができます。これは、長いビデオにおいて予定されている内容の概要をすばやく提供する場合に便利です。詳細と例については、「[Azure Media Video Thumbnails を使用してビデオ要約を作成する](media-services-video-summarization.md)」を参照してください。
 
+- **光学式文字認識** - Azure Media Analytics OCR (光学式文字認識) では、ビデオ ファイル内のテキスト コンテンツを編集かつ検索可能なデジタル テキストに変換できます。これにより、メディアのビデオ信号から有意なメタデータを自動的に抽出することができます。
+ 
+ 
 ## 一般的なシナリオ
 
 業種を超えて組織および企業は、Azure Media Analytics を使用することで、ビデオから新しい洞察を収集してさらに個別化した対象ユーザーおよび従業員のエンゲージメントを作成すると共に、大量のビデオ コンテンツを効果的に管理することができます。以下にいくつかのシナリオを紹介します。
@@ -52,6 +55,73 @@ Azure Media Analytics を使用することで、開発者は、限定された�
 - **ユーザー生成のコンテンツ モデレート** - 新しい報道発信源から警察まで、組織の多くは公開したポータルを備えており、そこではビデオやイメージなどの UGC メディアを受け入れています。コンテンツの量は、予期しないイベントが原因で急上昇することがあります。これらのシナリオで、コンテンツが適切かどうかを手動で効果的に確認することは不可能に近いと言えます。顧客は、コンテンツ モデレート サービスを利用して、適切なコンテンツに的を絞ることができます。
 
 - **監視** - IP カメラの増加に伴い、監視ビデオが急増しています。監視ビデオを手動で確認するとなると、時間がかかり、ヒューマン エラーが発生しやすくなります。Azure Media Analytics では、派生物を確認、管理、および作成するプロセスをより簡単にするために、モーション検出、顔検出、Hyperlapse など、いくつかのコンポーネントを用意しています。
+
+## Media Services Analytics のメディア プロセッサ 
+
+ここでは、Media Services Analytics のすべてのメディア プロセッサ (MP) を紹介し、.NET または REST を使用して MP オブジェクトを取得する方法について説明します。
+
+### MP 名
+
+
+- Azure Media Indexer 2 プレビュー
+- Azure Media Indexer
+- Azure Media Hyperlapse
+- Azure Media Face Detector
+- Azure Media Motion Detector
+- Azure Media Video Thumbnails
+- Azure Media OCR
+
+### .NET
+
+次の関数は、指定された MP 名のいずれかを取得し、MP オブジェクトを返します。
+
+    static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+    {
+        var processor = _context.MediaProcessors
+            .Where(p => p.Name == mediaProcessorName)
+            .ToList()
+            .OrderBy(p => new Version(p.Version))
+            .LastOrDefault();
+
+        if (processor == null)
+            throw new ArgumentException(string.Format("Unknown media processor",
+                                                       mediaProcessorName));
+
+        return processor;
+    }
+
+
+## REST ()
+
+要求:
+
+	GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20OCR' HTTP/1.1
+	DataServiceVersion: 1.0;NetFx
+	MaxDataServiceVersion: 3.0;NetFx
+	Accept: application/json
+	Accept-Charset: UTF-8
+	User-Agent: Microsoft ADO.NET Data Services
+	Authorization: Bearer <token>
+	x-ms-version: 2.12
+	Host: media.windows.net
+	
+応答:
+		
+	. . .
+	
+	{  
+	   "odata.metadata":"https://media.windows.net/api/$metadata#MediaProcessors",
+	   "value":[  
+	      {  
+	         "Id":"nb:mpid:UUID:074c3899-d9fb-448f-9ae1-4ebcbe633056",
+	         "Description":"Azure Media OCR",
+	         "Name":"Azure Media OCR",
+	         "Sku":"",
+	         "Vendor":"Microsoft",
+	         "Version":"1.1"
+	      }
+	   ]
+	}
 
 ##デモ
 
@@ -74,4 +144,4 @@ Azure Media Analytics を使用することで、開発者は、限定された�
 
 [overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

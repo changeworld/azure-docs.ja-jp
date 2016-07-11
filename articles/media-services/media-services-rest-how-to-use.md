@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
- 	ms.date="03/01/2016"  
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -27,9 +27,9 @@ Microsoft Azure Media Services は OData ベースの HTTP 要求を受け付け
 
 REST を使用するときには、次の考慮事項が適用されます。
 
-- パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。[この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 
+- パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。[この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。
 
-- JSON を使用し、要求で **\_\_metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)に設定する必要があります (次の例を参照)。verbose に設定していない場合、Odata は要求内の **\_\_metadata** プロパティを認識しません。
+- JSON を使用し、要求で **__metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)に設定する必要があります (次の例を参照)。verbose に設定していない場合、Odata は要求内の **__metadata** プロパティを認識しません。
 
 		POST https://media.windows.net/API/Jobs HTTP/1.1
 		Content-Type: application/json;odata=verbose
@@ -132,4 +132,4 @@ Media Services のエンティティを見つけやすくするには、$metadat
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

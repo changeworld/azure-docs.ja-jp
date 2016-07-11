@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 #<a id="monitormediaservicesaccount"></a>Media Services アカウントの監視方法
@@ -26,7 +26,7 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 
 ##<a id="configuremonitoring"></a>方法: Media Services アカウントの監視
 
-1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=256666)で、**[Media Services]** をクリックし、目的の Media Services アカウント名をクリックしてダッシュボードを開きます。 
+1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=256666)で、**[Media Services]** をクリックし、目的の Media Services アカウント名をクリックしてダッシュボードを開きます。
 
 	![MediaServices\_Dashboard][dashboard]
 
@@ -62,7 +62,7 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 
 ##フィードバックの提供
 
-[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]オンデマンド ストリーミング ワークフロー (http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)] オンデマンド ストリーミング ワークフロー (http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 
 <!-- Images -->
@@ -71,4 +71,4 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

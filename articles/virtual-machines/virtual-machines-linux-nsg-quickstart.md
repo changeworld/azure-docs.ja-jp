@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Linux VM に対する外部アクセスの許可 | Microsoft Azure"
+   pageTitle="Linux 仮想マシンへのポートおよびエンドポイントの開放 |Microsoft Azure"
    description="Resource Manager デプロイメント モデルと Azure CLI を使用して、Linux VM に対する外部アクセスを許可するポートを開き、エンドポイントを作成する方法について説明します。"
    services="virtual-machines-linux"
    documentationCenter=""
@@ -16,11 +16,11 @@
    ms.date="05/24/2016"
    ms.author="iainfou"/>
 
-# VM に対する外部アクセスの許可
-[AZURE.INCLUDE [virtual-machines-common-nsg-quickstart](../../includes/virtual-machines-common-nsg-quickstart.md)]
+# ポートおよびエンドポイントの開放
+サブネットまたは仮想マシン (VM) ネットワークポ インターフェイス上の選択したポートへのトラフィックを許可するネットワーク フィルターを作成して、Azure でポートを開くかエンドポイントを作成します。着信および発信の両方のトラフィックを制御するこれらのフィルターは、ネットワーク セキュリティ グループに配置され、トラフィックを受信するリソースに接続されます。ポート 80 での Web トラフィックの一般的な例を使用して説明します。
 
 ## クイック コマンド
-ネットワーク セキュリティ グループとルールを作成するには、リソース マネージャー モード (`azure config mode arm`) の [Azure CLI](../xplat-cli-install.md) が必要になります。
+ネットワーク セキュリティ グループとルールを作成するには、Resource Manager モード (`azure config mode arm`) の [Azure CLI](../xplat-cli-install.md) が必要になります。
 
 独自の名前と場所を適宜入力してネットワーク セキュリティ グループを作成します。
 
@@ -61,4 +61,4 @@ azure network vnet subnet set --resource-group TestRG --name TestSubnet --networ
 - [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
 - [ロード バランサーのための Azure Resource Manager の概要](../load-balancer2 /load-balancer-arm.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

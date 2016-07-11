@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="05/03/2016"
+	ms.date="06/24/2016"
 	ms.author="robmcm"/>
 
 # Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法
@@ -67,7 +67,7 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
 1. Hudson ダッシュボードで、**[Manage Hudson]** をクリックします。
 2. **[Configure System]** をクリックします。
 3. ページを下にスクロールして **[Cloud]** セクションを探します。
-4. **Add new cloud、[Microsoft Azure]** の順にクリックします。
+4. **[Add new cloud]、[Microsoft Azure]** の順にクリックします。
 
 	![新しいクラウドの追加][add new cloud]
 
@@ -202,4 +202,4 @@ Hudson は、前のセクションで作成したテンプレートを使用し�
 [template config]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-setup-templateconfig1-withdata.png
 [OS family list]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-oslist.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

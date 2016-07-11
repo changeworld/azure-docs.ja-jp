@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/18/2016"
+    ms.date="06/18/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp コレクションにユーザーを追加する方法
@@ -52,4 +52,4 @@ RemoteApp を使用するために Active Directory を構成する方法の詳�
 ## Office 365 ProPlus ユーザー アカウントの情報
 コレクションに、Office 365 ProPlus のテンプレート イメージを使用しているか*または* Office 365 を使用するカスタム イメージを作成した場合は、サブスクリプションの既定のドメイン用の Office 365 サブスクリプションを持つ Azure Active Directory のユーザーのみを追加できます。詳細については、「[Azure RemoteApp で Office 365 を使用する](remoteapp-o365.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

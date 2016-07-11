@@ -21,7 +21,7 @@
 
 Apache Tomcat (または単に Tomcat、以前は Jakarta Tomcat) は Apache Software Foundation (ASF) によって開発されたオープン ソース Web サーバーであり、サーブレット コンテナーです。Tomcat は、Sun Microsystems の Java Servlet および JavaServer Pages (JSP) 仕様を実装し、純粋な Java HTTP Web サーバー環境を提供して Java コードを実行します。最も単純な構成では Tomcat は単一のオペレーティング システムのプロセスで実行されます。このプロセスは、Java 仮想マシン (JVM) を実行します。ブラウザーからの Tomcat に対するすべての HTTP 要求は、Tomcat プロセスで個別のスレッドとして処理されます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 このガイドでは、Linux イメージ上に Tomcat7 をインストールして Microsoft Azure にデプロイすることができます。
@@ -75,8 +75,8 @@ TCP ポート 8080 は、tomcat がリッスンする既定のポート番号で
 
 1.	Azure ポータルで、**[参照]**、**[仮想マシン]** の順にクリックし、作成した仮想マシンをクリックします。![][5]
 2.	仮想マシンにエンドポイントを追加するには、**[エンドポイント]** ボックスをクリックします。![][6]
-3.	**[追加]** をクリックします。  
-	1.	**エンドポイント**では、[エンドポイント] にエンドポイントの名前を入力し、**[パブリック ポート]** に「80」を入力します。  
+3.	**[追加]** をクリックします。
+	1.	**エンドポイント**では、[エンドポイント] にエンドポイントの名前を入力し、**[パブリック ポート]** に「80」を入力します。
 
 		80 に設定している場合は、tomcat に接続するための URL にポート番号を含める必要はありません。たとえば、「http://tomcatdemo.cloudapp.net」のように入力します。
 
@@ -128,7 +128,7 @@ open-jdk
 
 oracle-jdk
 
--	JDK を Oracle の Web サイトからダウンロードするには:  
+-	JDK を Oracle の Web サイトからダウンロードするには:
 
 		wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz  
 
@@ -206,7 +206,7 @@ Tomcat サービスを再起動するには:
 
 	sudo /etc/init.d/tomcat7 restart  
 
-ブラウザーを開き、「**http://<your tomcat server DNS name>/manager/html**」という URL を入力します。たとえば、この記事では、URL は http://tomcatexample.cloudapp.net/manager/html です。
+ブラウザーを開き、「**http://<tomcat サーバーの DNS 名>/manager/html**」という URL を入力します。たとえば、この記事では、URL は http://tomcatexample.cloudapp.net/manager/html です。
 
 接続後は、次のように表示されます。![][18]
 
@@ -215,8 +215,8 @@ Tomcat サービスを再起動するには:
 ###Tomcat や Moodle を使用してインターネットから仮想マシンにアクセスできない。
 
 -	**症状:** Tomcat は実行されているが、ブラウザーに Tomcat の既定のページが表示されない。
--	**考えられる根本原因**   
-	1.	tomcat のリッスン ポートが、仮想マシンの tomcat トラフィック用のエンドポイントのプライベート ポートと異なっている。  
+-	**考えられる根本原因**
+	1.	tomcat のリッスン ポートが、仮想マシンの tomcat トラフィック用のエンドポイントのプライベート ポートと異なっている。
 
 		パブリック ポートとプライベート ポートのエンドポイント設定を確認し、プライベート ポートが tomcat のリッスン ポートと同じになっていることを確認します。仮想マシンのエンドポイントを構成する手順については、「フェーズ 1: イメージを作成する」を参照してください。
 
@@ -240,7 +240,7 @@ Tomcat サービスを再起動するには:
 			w3m http://localhost:8080  
 
 -	**解決策:**
-	1. tomcat のリッスン ポートが、仮想マシンのトラフィック用のエンドポイントのプライベート ポートと異なっている場合は、tomcat のリッスン ポートと同じになるように、プライベート ポートを変更する必要があります。   
+	1. tomcat のリッスン ポートが、仮想マシンのトラフィック用のエンドポイントのプライベート ポートと異なっている場合は、tomcat のリッスン ポートと同じになるように、プライベート ポートを変更する必要があります。
 
 	2.	問題の原因がファイアウォールや iptables の場合は、/etc/sysconfig/iptables に次の行を追加します。
 
@@ -261,7 +261,7 @@ Tomcat サービスを再起動するには:
 
 ###/var/lib/tomcat7/webapps/ にプロジェクト ファイルをアップロードしようとすると、アクセスが拒否される  
 
--	**症状:** SFTP クライアント (FileZilla など) を使用して仮想マシンに接続し、/var/lib/tomcat7/webapps/ に移動してサイトを公開しようとすると、次のようなエラー メッセージが表示される。  
+-	**症状:** SFTP クライアント (FileZilla など) を使用して仮想マシンに接続し、/var/lib/tomcat7/webapps/ に移動してサイトを公開しようとすると、次のようなエラー メッセージが表示される。
 
 		status:	Listing directory /var/lib/tomcat7/webapps
 		Command:	put "C:\Users\liang\Desktop\info.jsp" "info.jsp"
@@ -269,7 +269,7 @@ Tomcat サービスを再起動するには:
 		Error:	File transfer failed
 
 -	**考えられる根本原因:** /var/lib/tomcat7/webapps フォルダーへのアクセス許可が付与されていない。
--	**解決策:** root アカウントからアクセス許可を取得する必要があります。フォルダーの所有権を、root からマシンをプロビジョニングしたときに使用したユーザー名に変更できます。次は、azureuser のアカウント名の例です。  
+-	**解決策:** root アカウントからアクセス許可を取得する必要があります。フォルダーの所有権を、root からマシンをプロビジョニングしたときに使用したユーザー名に変更できます。次は、azureuser のアカウント名の例です。
 
 		sudo chown azureuser -R /var/lib/tomcat7/webapps
 
@@ -306,4 +306,4 @@ Tomcat サービスを再起動するには:
 [17]: ./media/virtual-machines-linux-classic-setup-tomcat/virtual-machines-linux-setup-tomcat7-linux-17.png
 [18]: ./media/virtual-machines-linux-classic-setup-tomcat/virtual-machines-linux-setup-tomcat7-linux-18.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

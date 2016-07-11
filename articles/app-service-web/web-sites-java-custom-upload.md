@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="05/04/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Azure へのカスタム Java Web アプリのアップロード
@@ -30,7 +30,7 @@ Azure には、Azure ポータルの構成 UI や Azure Marketplace を使用し
 - 1 つの HTTP リスナー以外のすべてのリッスン ポートを無効にする必要があります。Tomcat では、それはシャットダウン、HTTPS、AJP などのポートです。
 - コンテナーは IPv4 トラフィック専用に構成する必要があります。
 - アプリケーションの**スタートアップ** コマンドはこの構成で設定する必要があります。
-- 書き込みアクセス許可のあるディレクトリを必要とするアプリケーションは、Azure の Web アプリのコンテンツ ディレクトリ (**D:\\home**) に配置する必要があります。環境変数 `HOME` は、D:\\home を参照します。  
+- 書き込みアクセス許可のあるディレクトリを必要とするアプリケーションは、Azure の Web アプリのコンテンツ ディレクトリ (**D:\\home**) に配置する必要があります。環境変数 `HOME` は、D:\\home を参照します。
 
 web.config ファイルで必要に応じて環境変数を設定できます。
 
@@ -257,4 +257,4 @@ Java の詳細については、[Java デベロッパー センター](/develop/
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

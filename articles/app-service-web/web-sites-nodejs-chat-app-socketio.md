@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="04/29/2016"
+	ms.date="06/24/2016"
 	ms.author="robmcm"/>
 
 # Azure App Service での Socket.IO を使用する Node.js チャット アプリケーションの構築
@@ -292,4 +292,4 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 [npm-output]: ./media/web-sites-nodejs-chat-app-socketio/socketio-7.png
 [completed-app]: ./media/web-sites-nodejs-chat-app-socketio/websitesocketcomplete.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

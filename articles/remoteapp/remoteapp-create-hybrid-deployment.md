@@ -20,7 +20,7 @@
 
 Azure RemoteApp のコレクションには、次の 2 種類があります。
 
-- クラウド: Azure に完全に常駐します。クラウドにすべてのデータを保存するか (したがって、クラウドのみのコレクション)、コレクションを VNET に接続して、そこにデータを保存するかを選択できます。   
+- クラウド: Azure に完全に常駐します。クラウドにすべてのデータを保存するか (したがって、クラウドのみのコレクション)、コレクションを VNET に接続して、そこにデータを保存するかを選択できます。
 - ハイブリッド: オンプレミス アクセス用の仮想ネットワークを含みます。これには、Azure AD およびオンプレミスの Active Directory 環境を使用する必要があります。
 
 何が必要かわかりませんか。 「[Azure RemoteApp にはどのような種類のコレクションが必要ですか](remoteapp-collections.md)」を参考にしてください。
@@ -112,7 +112,7 @@ Azure RemoteApp テンプレート イメージにはユーザーと共有する
 
 Azure RemoteApp を使用するには、次のいずれかの方法で Azure Active Directory と統合する必要があります。1) パスワード同期オプションを使用して Azure Active Directory 同期を構成する。2) パスワード同期オプションを使用しないで Azure Active Directory 同期を構成する。ただし、この場合は AD FS にフェデレーションされたドメインを使用する。
 
-[AD Connect](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx) に関するページを参照してください。この記事では、4 つの手順でディレクトリ統合を設定する方法を説明します。
+[AD Connect](https://blogs.technet.microsoft.com/enterprisemobility/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect/) に関するページを参照してください。この記事では、4 つの手順でディレクトリ統合を設定する方法を説明します。
 
 計画に関する情報、および詳しい手順については、「[ディレクトリ同期のロードマップ](http://msdn.microsoft.com//library/azure/hh967642.aspx)」を参照してください。
 
@@ -149,4 +149,4 @@ Azure RemoteApp アプリケーションは、ユーザーに提供するアプ�
 ### サポートのお願い
 記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上にスクロールし、**[GitHub で編集]** をクリックすると変更できます。届いたら確認されます。サインオフ後、変更と改善をここで確認できます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

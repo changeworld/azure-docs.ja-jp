@@ -23,8 +23,8 @@
 コピー アクティビティを使用すれば、次の例に示すようにデータ移動の高いスループットが得られます。
 
 - オンプレミスのファイル システムおよび Azure BLOB ストレージから Azure BLOB ストレージへ 1 TB のデータを 3 時間未満 (つまり、@ 100 MBps) で取り込む。
-- オンプレミスのファイルシステムおよび Azure BLOB ストレージから Azure Data Lake Store へ 1 TB のデータを 3 時間未満 (つまり、@ 100 MBps) で取り込む。 
-- Azure BLOB ストレージから Azure SQL Data Warehouse へ 1 TB のデータを 3 時間未満 (つまり、@ 100 MBps) で取り込む。 
+- オンプレミスのファイルシステムおよび Azure BLOB ストレージから Azure Data Lake Store へ 1 TB のデータを 3 時間未満 (つまり、@ 100 MBps) で取り込む。
+- Azure BLOB ストレージから Azure SQL Data Warehouse へ 1 TB のデータを 3 時間未満 (つまり、@ 100 MBps) で取り込む。
 
 コピー アクティビティのパフォーマンスとパフォーマンスをさらに向上させるためのチューニングに関するヒントの詳細については、以下のセクションを参照してください。
 
@@ -49,7 +49,7 @@
 	- [Data Management Gateway](#considerations-on-data-management-gateway)
 	- [その他の考慮事項](#other-considerations)
 	- [並列コピー](#parallel-copy)
-	- [クラウド データ移動単位](#cloud-data-movement-units)    
+	- [クラウド データ移動単位](#cloud-data-movement-units)
 
 3. **構成をデータ全体に拡大する**。実行結果とパフォーマンスに問題がなければ、図中のデータ全体を網羅するようにデータセットの定義とパイプラインのアクティブな期間を拡張することができます。
 
@@ -171,8 +171,8 @@ cloudDataMovementUnits プロパティで**使用できる値**は、1 (既定�
 ## ステージング コピー
 ソース データ ストアからシンク データ ストアにデータをコピーする場合、中間のステージング ストアとして Azure Blob Storage を使用できます。このステージング機能は、特に次のような場合に役立ちます。
 
-1.	**ネットワーク接続が遅い場合、ハイブリッド データ移動 (オンプレミス データ ストアとクラウド データ ストアの間での移動) の実行に少し時間がかかる場合がある。** このようなデータ移動のパフォーマンスを向上させるために、データをオンプレミスで圧縮し、ネットワークでクラウド上のステージング データ ストアに移動するときの時間を短縮できます。その後、目的のデータ ストアに読み込む前にステージング ストアでデータを展開できます。 
-2.	**IT ポリシーが理由でファイアウォールのポートを 80 と 443 以外開きたくない。** たとえば、オンプレミスのデータ ストアから Azure SQL Database シンクまたは SQL Data Warehouse シンクにデータをコピーする場合、Windows ファイアウォールと企業ファイアウォールの両方で、ポート 1433 の送信 TCP 通信を有効にする必要があります。このようなシナリオでは、まず Data Management Gateway を利用してデータをステージング Azure Blob Storage にコピーします。これは HTTP(S) (ポート 443) 経由で行われます。その後、ステージング Blob Strage から SQL Database または SQL Data Warehouse にデータを読み込みます。このフローではポート 1433 を有効にする必要はありません。 
+1.	**ネットワーク接続が遅い場合、ハイブリッド データ移動 (オンプレミス データ ストアとクラウド データ ストアの間での移動) の実行に少し時間がかかる場合がある。** このようなデータ移動のパフォーマンスを向上させるために、データをオンプレミスで圧縮し、ネットワークでクラウド上のステージング データ ストアに移動するときの時間を短縮できます。その後、目的のデータ ストアに読み込む前にステージング ストアでデータを展開できます。
+2.	**IT ポリシーが理由でファイアウォールのポートを 80 と 443 以外開きたくない。** たとえば、オンプレミスのデータ ストアから Azure SQL Database シンクまたは SQL Data Warehouse シンクにデータをコピーする場合、Windows ファイアウォールと企業ファイアウォールの両方で、ポート 1433 の送信 TCP 通信を有効にする必要があります。このようなシナリオでは、まず Data Management Gateway を利用してデータをステージング Azure Blob Storage にコピーします。これは HTTP(S) (ポート 443) 経由で行われます。その後、ステージング Blob Strage から SQL Database または SQL Data Warehouse にデータを読み込みます。このフローではポート 1433 を有効にする必要はありません。
 3.	**PolyBase を使ってさまざまなデータ ストアから Azure SQL Data Warehouse にデータを取り込む。** Azure SQL Data Warehouse には、大量のデータを SQL Data Warehouse に読み込むための高スループットなメカニズムとして PolyBase が用意されています。しかし、これを使用するにはソース データが Azure Blob Storage 内に存在する必要があります。また、その他にもいくつかの条件を満たす必要があります。Azure Blob Storage ではないデータ ストアからデータを読み込む場合、中間ステージング Azure Blob Storage を介したデータのコピーを有効にすることができます。この場合、Azure Data Factory は PolyBase の要件を満たすようにデータに対して必要な変換を実行し、PolyBase を利用して SQL Data Warehouse にデータを読み込みます。詳細とサンプルについては、「[PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)」を参照してください。
 
 ### ステージング コピーのしくみ
@@ -224,6 +224,7 @@ enableCompression | ネットワークで転送されるデータの量を減ら
 		}
 	}
 	]
+
 
 ### 課金への影響
 それぞれ 2 段階のコピー時間とコピーの種類に基づいて課金が行われることに注意してください。つまり、次のようになります。
@@ -391,4 +392,4 @@ Microsoft データ ストアの場合は、データ ストアに限定した[�
 - オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)
 - オンプレミスのファイル サーバー: [Performance Tuning for File Servers (ファイル サーバーのパフォーマンス チューニング)](https://msdn.microsoft.com/library/dn567661.aspx)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

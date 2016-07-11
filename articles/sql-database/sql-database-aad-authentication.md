@@ -27,7 +27,7 @@ Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を�
 - 顧客は外部の (AAD) グループを使用してデータベースのアクセス許可を管理できます。
 - 統合 Windows 認証や、Azure Active Directory でサポートされる他の認証形式を有効にすることで、パスワードが保存されないようにすることができます。
 - Azure Active Directory 認証では、包含データベース ユーザーを使用して、データベース レベルで ID を認証します。
-- Azure Active Directory では、SQL Database に接続するアプリケーション向けにトークンベースの認証をサポートしています。
+- Azure Active Directory では、SQL Database に接続するアプリケーションのトークンベースの認証をサポートしています。
 - Azure Active Directory 認証は、ADFS (ドメイン フェデレーション) またはドメインを同期しないローカル Azure Active Directory のネイティブ ユーザー/パスワード認証をサポートします。
 
 > [AZURE.IMPORTANT] Azure Active Directory 認証はプレビュー機能で、ライセンス契約 (例: Enterprise Agreement、Microsoft Azure 契約、マイクロソフト オンライン サブスクリプション契約) に定められたプレビューの規定に従うものとします。また、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)が適用される場合があります。
@@ -263,10 +263,8 @@ Azure AD の管理対象ドメインを使用して Azure AD のプリンシパ�
 この方法を使用するのは、Azure とフェデレーションされていないドメインの資格情報を使用して Windows にログオンしている場合や、初期ドメインまたはクライアント ドメインに基づく Azure AD で Azure AD 認証を使用する場合です。
 
 1. Management Studio または Data Tools を起動して、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory パスワード認証]** を選択します。
-2. **[ユーザー名]** ボックスに、**username@domain.com** 形式で Azure Active Directory のユーザー名を入力します。これは、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
-3. **[パスワード]** ボックスに、Azure Active Directory アカウントまたはフェデレーション ドメイン アカウントのユーザー パスワードを入力します。
-
-	![AD パスワード認証を選択する][12]
+2. **[ユーザー名]** ボックスで、Azure Active Directory のユーザー名を **username@domain.com** の形式で入力します。これは、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
+3. **[パスワード]** ボックスに、Azure Active Directory アカウントまたはフェデレーション ドメイン アカウントのユーザー パスワードを入力します。![AD パスワード認証を選択する][12]
 
 4. **[オプション]** ボタンをクリックし、**[接続プロパティ]** ページの **[データベースへの接続]** ボックスに、接続先となるユーザー データベースの名前を入力します。
 
@@ -338,7 +336,7 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 ### 7\.3 Azure AD トークンを使用して接続する
 この認証方法を使用すると、中間層サービスは Azure Active Directory (AAD) からトークンを取得して、Azure SQL Database または Azure SQL Data Warehouse に接続できます。この方法では、証明書ベースの認証などの高度なシナリオが可能になります。Azure AD トークンの認証を使用するには、4 つの基本的な手順を完了する必要があります。
 
-1. Azure Active Directory にアプリケーションを登録し、コードのクライアント ID を取得します。 
+1. Azure Active Directory にアプリケーションを登録し、コードのクライアント ID を取得します。
 2. アプリケーションを表すデータベース ユーザーを作成します (上の手順 6. で完了しています)。
 3. アプリケーションを実行するクライアント コンピューター上で証明書を作成します。
 4. アプリケーションのキーとして、証明書を追加します。
@@ -369,4 +367,4 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [11]: ./media/sql-database-aad-authentication/11connect-using-int-auth.png
 [12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

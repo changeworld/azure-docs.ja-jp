@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/08/2016" 
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -45,8 +45,8 @@ Media Services では、Secure Token Services は提供されません。トー�
 
 ###いくつかの考慮事項が適用されます。
 
-- 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。 
-- 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[資産をエンコードする](media-services-encode-asset.md)」をご覧ください。  
+- 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+- 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
 - **AssetCreationOptions.StorageEncrypted** オプションを使用して、資産をアップロードしてエンコードします。
 - 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
 - キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
@@ -154,7 +154,7 @@ Media Services では、Secure Token Services は提供されません。トー�
 	  <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
 	</xs:schema>
 
-**トークン**制限ポリシーを構成する際は、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。**プライマリ検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行する Secure Token Service です。**対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的か、トークンがアクセスを承認するリソースが記述されます。Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
+**トークン**制限ポリシーを構成する際は、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。**プライマリ検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行するセキュリティ トークン サービスです。**対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的か、トークンがアクセスを承認するリソースが記述されます。Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
 **Media Services SDK for .NET** を使用する場合、**TokenRestrictionTemplate** クラスを使用して制限トークンを生成できます。次の例では、トークン制限を含む承認ポリシーを作成します。この例では、クライアントが署名キー (VerificationKey)、トークン発行者、必要な要求を含むトークンを提示する必要があります。
 	
@@ -239,7 +239,7 @@ Media Services により、ユーザーが保護されたコンテンツを再�
 
 PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の 1 つとして、[PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。Media Services SDK for .NET では、**PlayReadyLicenseResponseTemplate** クラスと **PlayReadyLicenseTemplate** クラスを利用して、PlayReady ライセンス テンプレートを定義できます。
 
-[このトピック](media-services-protect-with-drm.md)では、**PlayReady** と **Widevine** を使用してコンテンツを暗号化する方法について説明しています。
+[このトピック](media-services-protect-with-drm.md)では、**PlayReady** と **Widevine** を使用してコンテンツを暗号化する方法について説明します。
 
 ###オープン制限
 	
@@ -443,4 +443,4 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、「[アセットの配信ポリシーの構成方法](media-services-dotnet-configure-asset-delivery-policy.md)」トピックにお進みください。
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

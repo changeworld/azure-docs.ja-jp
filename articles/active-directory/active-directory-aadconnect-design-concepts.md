@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="Identity"
-   ms.date="04/20/2016"
+   ms.date="06/27/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: 設計概念
@@ -37,7 +37,7 @@ sourceAnchor 属性は、*オブジェクトの有効期間中に変更できな
 
 - 60 文字未満であること
     - a ～ z、A ～ Z、0 ～ 9 のいずれでもない文字はエンコードされ、3 文字としてカウントされます。
-- 次の特殊文字が含まれていないこと: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ \_
+- 次の特殊文字が含まれていないこと: &#92; ! # $ % & * + / = ? ^ &#96; { }| ~ < > ( ) ' ; : , [ ] " @ _
 - グローバルに一意であること
 - 文字列、整数、バイナリのいずれかであること
 - ユーザーの名前に基づく変更ではないこと
@@ -93,4 +93,4 @@ John は、contoso.com に属するユーザーです。Azure AD ディレクト
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

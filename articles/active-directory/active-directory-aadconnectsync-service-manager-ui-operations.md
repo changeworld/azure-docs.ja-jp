@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="06/27/2016"
 	ms.author="andkjell"/>
 
 
@@ -57,4 +57,4 @@ completed-*-warnings | 実行は完了しましたが、一部のデータが予
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="05/24/2016"
+   ms.date="06/27/2016"
    ms.author="andkjell;billmath"/>
 
 # Azure AD Connect の前提条件
@@ -45,7 +45,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 - Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定する必要があります。
 - 別の SQL Server を使用する場合は、次の要件が適用されます。
     - Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2014 まで、すべてのエディションの Microsoft SQL Server がサポートされています。Microsoft Azure SQL Database は、データベースとして**サポートされていません**。
-    - 大文字と小文字が区別されない SQL 照合順序を使用する必要があります。これらは名前に含まれる \_CI\_ で識別します。大文字と小文字が区別される照合順序 (名前に含まれる \_CS\_ で識別) は**サポートされていません**。
+    - 大文字と小文字が区別されない SQL 照合順序を使用する必要があります。これらは名前に含まれる \_CI_ で識別します。大文字と小文字が区別される照合順序 (名前に含まれる \_CS_ で識別) は**サポートされていません**。
     - 1 つのデータベース インスタンスにつき保持できる同期エンジンは 1 つだけです。FIM/MIM Sync、DirSync、または Azure AD Sync とのデータベース インスタンスの共有は**サポートされていません**。
 
 ### アカウント
@@ -106,7 +106,7 @@ Azure AD Connect は、Microsoft PowerShell と .NET 4.5.1 に依存していま
   - Microsoft PowerShell は既定でインストールされているため、操作は必要ありません。
   - .NET Framework 4.5.1 以降のリリースは、Windows Update によって提供されます。コントロール パネルで、Windows Server に最新の更新プログラムがインストールされていることを確認します。
 - Windows Server 2008R2 と Windows Server 2012
-  - Microsoft PowerShell の最新バージョンは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)で入手できる **Windows Management Framework 4.0** に含まれています。
+  - Microsoft PowerShell の最新バージョンは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)の **Windows Management Framework 4.0** で入手できます。
   - .NET Framework 4.5.1 以降のリリースは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)で入手できます。
 - Windows Server 2008
   - PowerShell の最新のサポート バージョンは、[Microsoft ダウンロード センター](http://www.microsoft.com/downloads)の **Windows Management Framework 3.0** で入手できます。
@@ -115,7 +115,7 @@ Azure AD Connect は、Microsoft PowerShell と .NET 4.5.1 に依存していま
 ### Azure AD Connect 用に TLS 1.2 を有効にする
 Azure AD Connect は、同期エンジン サーバーと Azure AD の間での通信を暗号化するために、既定で TLS 1.0 を使用します。これを変更するには、サーバーで TLS 1.2 を既定で使用するように .NET アプリケーションを構成します。TLS 1.2 の詳細については、「[マイクロソフト セキュリティ アドバイザリ 2960358](https://technet.microsoft.com/security/advisory/2960358)」を参照してください。
 
-1. Windows Server 2008 で TLS 1.2 を有効にすることはできません。有効にするには、Windows Server 2008 R2 以降が必要です。オペレーティング システムに .NET 4.5.1 修正プログラムがインストールされていることを確認してください。詳細については、「[Microsoft セキュリティ アドバイザリ 2960358 ](https://technet.microsoft.com/security/advisory/2960358)」を参照してください。既にこれ以降のリリースをサーバーにインストールしている可能性があります。
+1. Windows Server 2008 で TLS 1.2 を有効にすることはできません。有効にするには、Windows Server 2008 R2 以降が必要です。オペレーティング システムに .NET 4.5.1 修正プログラムがインストールされていることを確認してください。詳細については、「[Microsoft セキュリティ アドバイザリ 2960358](https://technet.microsoft.com/security/advisory/2960358)」を参照してください。既にこれ以降のリリースをサーバーにインストールしている可能性があります。
 2. Windows Server 2008 R2 を使用している場合は、TLS 1.2 が有効になっていることを確認してください。Windows Server 2012 以降のバージョンのサーバーのオペレーティング システムでは、TLS 1.2 が既に有効になっています。
 ```
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
@@ -154,7 +154,7 @@ Azure AD Connect を使用して Active Directory フェデレーション サ�
 - テスト ラボ環境では、フェデレーション サーバーで自己署名証明書を使用できます。ただし、運用環境では、パブリック CA から証明書を取得することを勧めします。
     - 公的に信頼されていない証明書を使用する場合は、各 Web アプリケーション プロキシ サーバーにインストールされている証明書がローカル サーバーとすべてのフェデレーション サーバーで信頼されていることを確認します。
 - 証明書の ID は、フェデレーション サービス名 (sts.contoso.com など) と一致する必要があります。
-    - ID は、dNSName タイプのサブジェクト代替名 (SAN) 拡張、または SAN エントリがない場合は共通名として指定されたサブジェクト名のどちらかになります。  
+    - ID は、dNSName タイプのサブジェクト代替名 (SAN) 拡張、または SAN エントリがない場合は共通名として指定されたサブジェクト名のどちらかになります。
     - 複数の SAN エントリを証明書に表示できますが、そのうちの 1 つはフェデレーション サービス名に一致させます。
     - 社内参加を使用する場合は、値 **enterpriseregistration.** の後に組織のユーザー プリンシパル名 (UPN) サフィックス (**enterpriseregistration.contoso.com** など) が続く追加の SAN が必要です。
 - CryptoAPI Next Generation (CNG) キーとキー記憶域プロバイダーに基づく証明書はサポートされません。つまり、KSP (キー記憶域プロバイダー) ではなく CSP (暗号化サービス プロバイダー) に基づく証明書を使用する必要があります。
@@ -197,4 +197,4 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

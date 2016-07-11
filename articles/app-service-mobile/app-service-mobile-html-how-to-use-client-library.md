@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="05/03/2016"
+	ms.date="06/29/2016"
 	ms.author="adrianha;ricksal"/>
 
 # Azure Mobile Apps 向け JavaScript クライアント ライブラリの使用方法
 
 [AZURE.INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-このガイドでは、最新の「Azure Mobile Apps 向け JavaScript SDK」を使用して一般的なシナリオを実行する方法について説明します。Azure Mobile Apps を初めて使用する場合は、まず、「[Apache Cordova アプリの作成]」を参照して、バックエンドおよびテーブルの作成を行ってください。このガイドでは、HTML/JavaScript Web アプリケーションでのモバイル バックエンドの使用に重点を置いています。
+このガイドでは、最新の [Azure Mobile Apps 向け JavaScript SDK] を使用して一般的なシナリオを実行する方法について説明します。Azure Mobile Apps を初めて使用する場合は、まず、「[Apache Cordova アプリの作成]」を参照して、バックエンドおよびテーブルの作成を行ってください。このガイドでは、HTML/JavaScript Web アプリケーションでのモバイル バックエンドの使用に重点を置いています。
 
 ##<a name="Setup"></a>セットアップと前提条件
 
@@ -57,60 +57,37 @@ Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter 
 
 [AZURE.INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-##<a name="register-for-push"></a>方法: プッシュ通知に登録する
+###<a name="configure-external-redirect-urls"></a>方法: 外部リダイレクト URL 用に Mobile Apps サービスを構成する
 
-プッシュ通知を処理するには、[phonegap-plugin-push] をインストールします。これは、コマンド ラインで `cordova plugin add` コマンドを使用するか、または Visual Studio の Git プラグイン インストーラーを使用することで、簡単に追加できます。Apache Cordova アプリの次のコードによって、デバイスがプッシュ通知に登録されます。
+いくつかの種類の JavaScript アプリケーションでは、Ionic Framework のライブ リロードを使ってサービスをローカルで実行したときや、認証を受ける目的で App Service にリダイレクトしたときなどの OAuth UI フローを処理するために、ループバック機能を使用します。これにより問題が発生する場合があります。既定では、App Service 認証は、モバイル アプリ バックエンドからのアクセスを許可するためだけに構成されているからです。
 
-```
-var pushOptions = {
-    android: {
-        senderId: '<from-gcm-console>'
-    },
-    ios: {
-        alert: true,
-        badge: true,
-        sound: true
-    },
-    windows: {
-    }
-};
-pushHandler = PushNotification.init(pushOptions);
+App Service 設定を変更して localhost からの認証を有効にするには、次の手順を実施します。
 
-pushHandler.on('registration', function (data) {
-    registrationId = data.registrationId;
-    // For cross-platform, you can use the device plugin to determine the device
-    // Best is to use device.platform
-    var name = 'gcm'; // For android - default
-    if (device.platform.toLowerCase() === 'ios')
-        name = 'apns';
-    if (device.platform.toLowerCase().substring(0, 3) === 'win')
-        name = 'wns';
-    client.push.register(name, registrationId);
-});
+1. [Azure ポータル] にログインし、モバイル アプリ バックエンドに移動します。**[ツール]**、**[リソース エクスプローラー]**、**[Go (進む)]** の順にクリックし、モバイル アプリ バックエンド (サイト) 用の新しいリソース エクスプローラー ウィンドウを開きます。
 
-pushHandler.on('notification', function (data) {
-    // data is an object and is whatever is sent by the PNS - check the format
-    // for your particular PNS
-});
+2. アプリの**構成**ノードを展開し、**[authsettings (認証設定)]**、**[編集]** の順にクリックして、**allowedExternalRedirectUrls** 要素を探します。これは null になっているため、次のとおりに変更します。
 
-pushHandler.on('error', function (error) {
-    // Handle errors
-});
-```
+         "allowedExternalRedirectUrls": [
+             "http://localhost:3000",
+             "https://localhost:3000"
+         ],
 
-プッシュ通知は、Notification Hubs SDK を使用してサーバーから送信します。プッシュ通知をクライアントから直接送信しないでください。この場合、Notification Hubs または PNS に対してサービス拒否攻撃をトリガーすることに利用されるおそれがあるからです。
+    配列内の URL をサービスの URL に置き換えます。この例では、ローカルの Node.js サンプル サービス用の `http://localhost:3000` となっています。アプリケーションの構成の仕方によっては、Ripple サービスや他の URL に `http://localhost:4400` を使用することもできます。
+    
+3. ページの上部で **[読み取り/書き込み]**、**[PUT]** の順にクリックして、更新を保存します。
+
+    CORS のホワイトリスト設定にも、同じループバック URL を追加する必要があります。
+
+4. モバイル アプリ バックエンドで [Azure ポータル] に戻り、**[すべての設定]**、**[CORS]** の順にクリックします。ホワイトリストにループバック URL を追加したら、**[保存]** をクリックします。
+
+バックエンドの更新が済むと、アプリケーションで新しいループバック URL を使用できるようになります。
 
 <!-- URLs. -->
 [Apache Cordova アプリの作成]: app-service-mobile-cordova-get-started.md
 [モバイル サービスでの認証の使用]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
-[Apache Cordova Plugin for Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
-[your first Apache Cordova app]: http://cordova.apache.org/#getstarted
-[phonegap-facebook-plugin]: https://github.com/wizcorp/phonegap-facebook-plugin
-[phonegap-plugin-push]: https://www.npmjs.com/package/phonegap-plugin-push
-[cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
-[cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
-[「query オブジェクト」]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
+[Azure Mobile Apps 向け JavaScript SDK]: https://www.npmjs.com/package/azure-mobile-apps-client
+[Query object documentation]: https://msdn.microsoft.com/ja-JP/library/azure/jj613353.aspx
 
-<!--------HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

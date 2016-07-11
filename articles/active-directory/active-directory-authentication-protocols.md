@@ -22,7 +22,7 @@ Azure Active Directory (Azure AD) では、最も広く使用されている認�
 
 ## 認証プロトコルの記事とリファレンス
 
-- [Azure AD での署名キーのロールオーバーに関する重要な情報](https://msdn.microsoft.com/library/azure/dn641920.aspx) - Azure AD の署名キーのロールオーバーの周期、キーを自動的に更新するために可能な変更、最も一般的なアプリケーション シナリオを更新する方法について説明します。
+- [Azure AD での署名キーのロールオーバーに関する重要な情報](active-directory-signing-key-rollover.md) - Azure AD の署名キーのロールオーバーの周期、キーを自動的に更新するために可能な変更、最も一般的なアプリケーション シナリオを更新する方法について説明します。
 
 
 - [サポートされているトークンとクレームの種類](active-directory-token-and-claims.md) - Azure AD が発行するトークンのクレームについて説明します。
@@ -55,4 +55,4 @@ Azure Active Directory (Azure AD) では、最も広く使用されている認�
 
 [Active Directory のコード例](active-directory-code-samples.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

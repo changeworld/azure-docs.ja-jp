@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 
@@ -295,4 +295,4 @@ Web Apps で実行されている MySQL データベースに接続するには�
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="01/28/2016"
+   ms.date="06/28/2016"
    ms.author="larryfr"/>
 
 # Apache Storm、Event Hub、HBase を HDInsight (Hadoop) で使用してセンサー データを分析する
 
 HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー データを処理し、D3.js を使用して表示する方法を説明します。このドキュメントでは、Azure 仮想ネットワークを使用して、HDInsight の Storm を HDInsight の HBase に接続し、HBase にトポロジからのデータを保存する方法についても説明します。
 
-> [AZURE.NOTE] このドキュメントの情報は、HDInsight クラスター上の Windows ベースの Storm の使用に基づいています。HDInsight で Linux ベースの Storm から Azure Event Hub を操作する方法の詳細については、「[Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](hdinsight-storm-develop-java-event-hub-topology.md)」を参照してください。
+> [AZURE.NOTE] このドキュメントの情報は、HDInsight クラスター バージョン 3.2 上の Windows ベースの Storm の使用に基づいています。HDInsight で Linux ベースの Storm から Azure Event Hub を操作する方法の詳細については、「[Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](hdinsight-storm-develop-java-event-hub-topology.md)」を参照してください。
 
 ## 前提条件
 
@@ -93,7 +93,7 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 Event Hub は、この例のデータ ソースです。新しい Event Hub を作成するには、次の手順に従います。
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)から、**[新規作成]、[Service Bus]、[Event Hub]、[カスタム作成]** の順に選択します。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)で、**[新規] を選択します。| Service Bus | Event Hub | Custom Create**.
 
 2. **[新しい Event Hub の追加]** ダイアログで **Event Hub 名**を入力し、ハブを作成する **[リージョン]** を選択して、新しい名前空間を作成するか、既存の名前空間を選択します。最後に、矢印をクリックして続行します。
 
@@ -196,7 +196,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 		Server listening at port 3000
 
-2. Web ブラウザーを開き、アドレスとして ****http://localhost:3000/** を入力します。次のようなページが表示されます。
+2. Web ブラウザーを開き、アドレスとして **http://localhost:3000/** を入力します。次のようなページが表示されます。
 
 	![web dashboard](./media/hdinsight-storm-sensor-data-analysis/emptydashboard.png)
 
@@ -372,7 +372,7 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
 
 	これは、HBase クラスターとの通信に HBase ボルトによって使用されます。
 
-1. テキスト エディターで、**hdinsight-eventhub-example\\TemperatureMonitor\\src\\main\\java\\com\\microsoft\\examples\\bolts** を開き、最初から `//` を削除して次の行を非コメント化します。これらの変更を行った後は、ファイルを保存します。
+1. テキスト エディターで **hdinsight-eventhub-example\\TemperatureMonitor\\src\\main\\java\\com\\microsoft\\examples\\bolts** を開き、次の行の先頭から `//` を削除してコメント解除します。これらの変更を行った後は、ファイルを保存します。
 
 		topologyBuilder.setBolt("HBase", new HBaseBolt("SensorData", mapper).withConfigKey("hbase.conf"), spoutConfig.getPartitionCount())
     	  .fieldsGrouping("Parser", "hbasestream", new Fields("deviceid")).setNumTasks(spoutConfig.getPartitionCount());
@@ -427,4 +427,4 @@ Storm クラスターのトポロジを開始し、データを処理すると�
 
 [azure-portal]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0629_2016-->

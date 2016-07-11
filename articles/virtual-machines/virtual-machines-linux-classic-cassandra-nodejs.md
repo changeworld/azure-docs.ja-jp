@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/12/2016" 
+	ms.date="06/24/2016" 
 	ms.author="hanuk;robmcm"/>
 
 # Azure 上の Linux で Cassandra を実行して Node.js からアクセス 
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](https://azure.microsoft.com/documentation/templates/datastax-on-ubuntu/)。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](https://azure.microsoft.com/documentation/templates/datastax-on-ubuntu/)方法について説明します。
 
 ## 概要
 Microsoft Azure は Microsoft のソフトウェアと Microsoft 以外のソフトウェアの両方を実行するオープン クラウド プラットフォームであり、実行するソフトウェアには、オペレーティング システム、アプリケーション サーバー、メッセージング ミドルウェアだけでなく、市販モデルおよびオープン ソース モデルの SQL および NoSQL のデータベースが含まれています。Azure などのパブリック クラウド上での回復力のあるサービスの構築には、アプリケーション サーバーとストレージ レイヤーの両方の慎重な計画と熟慮されたアーキテクチャが必要です。Cassandra の分散ストレージ アーキテクチャは、クラスターの障害へのフォールト トレランスを可能にする高可用性を備えたシステムの構築に役立ちます。Cassandra は cassandra.apache.org で Apache Software Foundation によって管理されているクラウド スケールのNoSQL のデータベースです。Cassandra は Java で記述されており、Windows プラットフォームと Linux プラットフォームの両方で稼働します。
@@ -33,7 +33,7 @@ Microsoft Azure のネットワークでは、ネットワークのセキュリ�
 
 - 外部システムは、Azure の内部からも外部からも Cassandra データベースにアクセスできない
 - Cassandra クラスターは Thrift トラフィックのロード バランサーの内側に配置する必要がある
-- クラスターの可用性を強化するためにデータ センターごとに 2 つのグループに Cassandra ノードをデプロイする 
+- クラスターの可用性を強化するためにデータ センターごとに 2 つのグループに Cassandra ノードをデプロイする
 - アプリケーション サーバー ファームのみがデータベースに直接アクセスできるように、クラスターをロック ダウンする
 - パブリック ネットワーク エンドポイントを SSH のみにする
 - 各 Cassandra ノードには、固定の内部 IP アドレスが必要である
@@ -67,8 +67,8 @@ Cassandra では、"一貫性" と "結果的な一貫性" の 2 種類のデー
 | ----------------- | ----- | ------- |
 | ノード の数 (N) | 8 | クラスター内のノードの合計数 |
 | レプリケーション係数 (RF) | 3 |	行のレプリカの数 |
-| 一貫性レベル (書き込み) | QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 |
-| 一貫性レベル (読み取り) | QUORUM [(RF/2) +1= 2] \(数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。 |
+| 一貫性レベル (書き込み) | QUORUM [(RF/2) +1= 2] (数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 |
+| 一貫性レベル (読み取り) | QUORUM [(RF/2) +1= 2] (数式の結果の小数点以下の値は、切り捨てられます) | 呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。 |
 | レプリケーションの方法 | NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「[Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)」を参照してください) | デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
 | スニッチ | GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「[Snitches (スニッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html)」を参照してください) | NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。この場合、クラスターはゴシップを使用して情報を伝達します。このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 |
 
@@ -82,7 +82,7 @@ Azure にデプロイされたシステムのうち高い可用性(例: 99.9 は
 
 **近接性ベースのデプロイ:** テナント ユーザーとリージョンの明確なマッピングを持つマルチ テナント アプリケーションでは、複数リージョン クラスターによる待機時間の短さがメリットになることもあります。たとえば、ある教育機関の学習管理システムでは、米国東部リージョンおよび米国西部リージョンに分散クラスターをデプロイし、各キャンパスでトランザクションと分析を利用できるようにしています。データの一貫性は読み取り時および書き込み時にはローカルで確保され、結果的には両方のリージョンにまたがる一貫性が確保されます。他にも、メディア配布、e コマースなど、特定の geo に集中するユーザー ベースにサービスを提供するありとあらゆる事例で、このデプロイ モデルを活用できます。
 
-**高可用性:** 冗長性は、ソフトウェアとハードウェアの高可用性を実現するための鍵になります。詳細については、Microsoft Azure での信頼性のあるクラウド システムの構築に関するページを参照してください。Microsoft Azure で完全な冗長性を実現するための唯一の確実な方法は、複数のリージョンにクラスターをデプロイすることです。アプリケーションはアクティブ/アクティブ モードまたはアクティブ/パッシブ モードでデプロイすることができ、1 つのリージョンがダウンした場合でも、Azure Traffic Manager で、稼働中のリージョンにトラフィックをリダイレクトできます。単一リージョン デプロイで、可用性が 99.9 の場合、2 リージョン デプロイにすると、99.9999 の可用性を実現できます。この値は、数式 (1-(1-0.999) * (1-0.999))*100) に基づきます。詳細については、上記の文書を参照してください。
+**高可用性:** 冗長性は、ソフトウェアとハードウェアの高可用性を実現するための鍵になります。詳細については、Microsoft Azure での信頼性のあるクラウド システムの構築に関するページを参照してください。Microsoft Azure で完全な冗長性を実現するための唯一の確実な方法は、複数のリージョンにクラスターをデプロイすることです。アプリケーションはアクティブ/アクティブ モードまたはアクティブ/パッシブ モードでデプロイすることができ、1 つのリージョンがダウンした場合でも、Azure Traffic Manager で、稼働中のリージョンにトラフィックをリダイレクトできます。単一リージョン デプロイで可用性が 99.9 の場合、数式 (1-(1-0.999) * (1-0.999))*100) より、2 リージョン デプロイにすると 99.9999 の可用性を実現できます。詳細については、上記の文書を参照してください。
 
 **障害復旧:** 複数リージョン Cassandra クラスターは、適切に設計されている場合、データ センターの致命的な停止にも耐えられます。1 つのリージョンがダウンした場合、その他のリージョンにデプロイされたアプリケーションでエンド ユーザーへのサービスの提供を開始できます。その他のビジネス継続性の実装と同様に、アプリケーションは、非同期パイプライン内にデータがあることによって生じるある程度のデータ損失を許容することが必要です。ただし、Cassandra は、従来のデータベースの復旧プロセスよりも、はるかに迅速に復旧を行います。図 2 に、各リージョンに 8 つのノードがある典型的な複数リージョンのデプロイ モデルを示します。両方のリージョンは、左右対称の互いのミラー イメージになります。実際の設計は、ワークロードのタイプ (例: トランザクションまたは分析)、RPO、RTO、データの一貫性および可用性の要件によって異なります。
 
@@ -103,7 +103,7 @@ Azure にデプロイされたシステムのうち高い可用性(例: 99.9 は
 | ----------------- | ----- | ------- |
 | ノード の数 (N) | 8 + 8 | クラスター内のノードの合計数 |
 | レプリケーション係数 (RF) | 3 | 行のレプリカの数 |
-| 一貫性レベル (書き込み) | LOCAL\_QUORUM [(sum(RF)/2) +1) = 4] \(数式の結果の小数点以下の値は、切り捨てられます) | 2 つのノードが、最初のデータ センターに同期的に書き込まれます。クォーラムに必要な追加の 2 つのノードは、2 番目のデータ センターに非同期的に書き込まれます。 |
+| 一貫性レベル (書き込み) | LOCAL\_QUORUM [(sum(RF)/2) +1) = 4] (数式の結果の小数点以下の値は、切り捨てられます) | 2 つのノードが、最初のデータ センターに同期的に書き込まれます。クォーラムに必要な追加の 2 つのノードは、2 番目のデータ センターに非同期的に書き込まれます。 |
 | 一貫性レベル (読み取り) | LOCAL\_QUORUM ((RF/2) +1) = 2 数式の結果の小数点以下の値は、切り捨てられます。 | 1 つのリージョンのみで、読み取り要求に対応します。応答がクライアントに送信される前に、2 つのノードが読み取られます。 |
 | レプリケーションの方法 | NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「[Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)」を参照してください) | デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
 | スニッチ | GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「[Snitches (スニッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html)」を参照してください) | NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。この場合、クラスターはゴシップを使用して情報を伝達します。このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 | 
@@ -294,7 +294,7 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
 仮想マシンが強調表示されていることを確認し、下部にあるコマンド バーから [シャットダウン] リンクをクリックします。
 
 #####3: イメージのキャプチャ
-仮想マシンが強調表示されていることを確認し、下部にあるコマンド バーから [キャプチャ] リンクをクリックします。次の画面で、[イメージの名前] \(例: hk-cas-2-08-ub-14-04-2014071)、イメージの説明を入力し、[チェック] マークをクリックして、キャプチャ プロセスを終了します。
+仮想マシンが強調表示されていることを確認し、下部にあるコマンド バーから [キャプチャ] リンクをクリックします。次の画面で、[イメージの名前] (例: hk-cas-2-08-ub-14-04-2014071)、イメージの説明を入力し、[チェック] マークをクリックして、キャプチャ プロセスを終了します。
 
 これは数秒で完了し、その後、イメージ ギャラリーの [マイ イメージ] セクションでイメージが利用できるようになります。ソース VM は、イメージが正常にキャプチャされた後に自動的に削除されます。
 
@@ -440,7 +440,7 @@ VM にログインし、次の処理を行います。
 
 1.    Powershell コマンドの Get-azureinternalloadbalancer コマンドレットを使用して、内部ロード バランサーの IP アドレス (例: 10.1.2.101) を取得します。コマンドの構文は、次のとおりです。Get-AzureLoadbalancer –ServiceName "hk-c-svc-west-us” [内部ロード バランサーの IP アドレスを含む詳細な情報を表示します]
 2.	Putty または ssh を使用して、Web ファーム VM (例: hk-w1-west-us) にログインします。
-3.	$CASS\_HOME/bin/cqlsh 10.1.2.101 9160 を実行します。 
+3.	$CASS\_HOME/bin/cqlsh 10.1.2.101 9160 を実行します。
 4.	次の CQL コマンドを使用して、クラスターが動作しているかどうか確認します。
 
 		CREATE KEYSPACE customers_ks WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 3 };	
@@ -559,12 +559,12 @@ VM にログインし、次の処理を行います。
 
 ###手順 1. PowerShell を使用して両方のリージョンの内部ロード バランサーの IP アドレスを取得
 - Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-west-us"
-- Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-east-us"  
+- Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-east-us"
 
     表示される IP アドレスに注意してください (例: 西部 - 10.1.2.101、東部 - 10.2.2.101)。
 
 ###手順 2. hk-w1-west-us にログイン後に、西部リージョンで次の処理を実行
-1.    $CASS\_HOME/bin/cqlsh 10.1.2.101 9160 を実行します。 
+1.    $CASS\_HOME/bin/cqlsh 10.1.2.101 9160 を実行します。
 2.	次の CQL コマンドを実行します。
 
 		CREATE KEYSPACE customers_ks
@@ -584,7 +584,7 @@ VM にログインし、次の処理を行います。
 
 
 ###手順 3. hk-w1-east-us にログイン後に、東部リージョンで次の処理を実行
-1.    $CASS\_HOME/bin/cqlsh 10.2.2.101 9160 を実行します。 
+1.    $CASS\_HOME/bin/cqlsh 10.2.2.101 9160 を実行します。
 2.	次の CQL コマンドを実行します。
 
 		USE customers_ks;
@@ -611,7 +611,7 @@ VM にログインし、次の処理を行います。
 
 1. Node.js と npm をインストールします。
 2. npm を使用して、ノード パッケージ "cassandra-client" をインストールします。
-3. 取得データの JSON 文字列を表示する次のスクリプトを、シェル プロンプトで実行します。 
+3. 取得データの JSON 文字列を表示する次のスクリプトを、シェル プロンプトで実行します。
 
 		var pooledCon = require('cassandra-client').PooledConnection;
 		var ksName = "custsupport_ks";
@@ -702,7 +702,7 @@ Microsoft Azure は、この演習でもわかるように、オープン ソー
 
 ##参照##
 - [http://cassandra.apache.org](http://cassandra.apache.org)
-- [http://www.datastax.com](http://www.datastax.com) 
-- [http://www.nodejs.org](http://www.nodejs.org) 
+- [http://www.datastax.com](http://www.datastax.com)
+- [http://www.nodejs.org](http://www.nodejs.org)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

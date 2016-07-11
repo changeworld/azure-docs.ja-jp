@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2016"
+   ms.date="06/19/2016"
    ms.author="mcoskun"/>
 
 # Reliable Services と Reliable Actors のバックアップよび復元
@@ -54,7 +54,7 @@ Azure Service Fabric は高可用性プラットフォームであり、複数�
 
 バックアップを開始するには、このサービスが継承済みメンバー関数 **BackupAsync** を呼び出す必要があります。バックアップはプライマリ レプリカ以外からは実行できず、書き込みステータスが付与されている必要があります。
 
-以下に示すように、**BackupAsync** は **BackupDescription** オブジェクトを取り入れます。ここで完全バックアップまたは増分バックアップを指定できます。バックアップ フォルダーがローカルに作成されて外部ストレージに移動する準備ができたら呼び出されるコールバック関数 **Func<< BackupInfo, CancellationToken, Task<bool>>>** も指定できます。
+次に示すように、**BackupAsync** は **BackupDescription** オブジェクトを取得します。このオブジェクトでは、完全バックアップまたは増分バックアップを指定できます。また、ローカルに作成されたバックアップ フォルダーを外部ストレージに移動する準備ができたら呼び出される、**Func<< BackupInfo, CancellationToken, Task<bool>>>** コールバック関数も指定できます。
 
 ```C#
 
@@ -64,11 +64,11 @@ await this.BackupAsync(myBackupDescription);
 
 ```
 
-増分バックアップを実行する要求は、**FabricFullBackupMissingException** で失敗する可能性があります。これは、レプリカが完全バックアップを取得していないか、または最後のバックアップ以降のログ レコードの一部が切り捨てられていることを示します。ユーザーは、**CheckpointThresholdInMB** を変更することによって切り捨て間隔を変更できます。
+増分バックアップを実行する要求は、**FabricMissingFullBackupException** で失敗する可能性があります。これは、レプリカが完全バックアップを取得していないか、または最後のバックアップ以降のログ レコードの一部が切り捨てられていることを示します。ユーザーは、**CheckpointThresholdInMB** を変更することによって切り捨て間隔を変更できます。
 
-**BackupInfo** はバックアップに関する情報 (ランタイムでバックアップが保存されたフォルダー (**BackupInfo.Directory**) の場所など) を提供します。このコールバック関数で **BackupInfo.Directory** を外部ストアまたは別の場所に移動できます。この関数はまた、バックアップ フォルダーがそのターゲット フォルダーに移動したかどうかを示すブール値を返します。
+**BackupInfo** は、バックアップに関する情報 (ランタイムでバックアップが保存されたフォルダー (**BackupInfo.Directory**) の場所など) を提供します。このコールバック関数では、**BackupInfo.Directory** を外部ストアまたは別の場所に移動できます。この関数はまた、バックアップ フォルダーがそのターゲット フォルダーに移動したかどうかを示すブール値を返します。
 
-次のコードは、**BackupCallbackAsync** メソッドを使用してバックアップを Azure Storage にアップロードする方法を説明しています。
+次のコードは、**BackupCallbackAsync** メソッドを使用してバックアップを Azure Storage にアップロードする方法を示しています。
 
 ```C#
 private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
@@ -81,13 +81,13 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 }
 ```
 
-上の例では、**ExternalBackupStore** は Azure BLOB Storage とのインターフェイスとして使用されるサンプル クラスです。**UploadBackupFolderAsync** はフォルダーを圧縮して Azure BLOB ストアに配置するメソッドです。
+上記の例では、**ExternalBackupStore** は Azure BLOB ストレージとのインターフェイスとして使用されるサンプル クラスです。**UploadBackupFolderAsync** はフォルダーを圧縮して Azure BLOB ストアに配置するメソッドです。
 
 以下の点に注意してください。
 
 - 1 つのレプリカあたり同時に実行できるバックアップ操作は 1 つに限られます。一度に複数の **BackupAsync** 呼び出しを行うと、**FabricBackupInProgressException** がスローされ、配信バックアップが 1 つに制限されます。
 
-- バックアップの途中でレプリカにエラーが発生した場合、バックアップは完了しないことがあります。そのため、フェールオーバーが完了すると、サービスが必要に応じて **BackupAsync** を呼び出し、バックアップを再開する必要があります。
+- バックアップの途中でレプリカにエラーが発生した場合、バックアップは完了しないことがあります。そのため、フェールオーバーが完了すると、サービスが必要に応じて **BackupAsync** を呼び出して、バックアップを再開する必要があります。
 
 ## Reliable Services の復元
 
@@ -99,7 +99,7 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 
 - サービスが、(たとえば、アプリケーションのバグに起因する) 破損したアプリケーション データを複製した場合。その場合、サービスをアップグレードするか、元の状態に戻し、破損の原因を取り除き、破損していないデータを復元する必要があります。
 
-さまざまな方法が可能ですが、ここでは **RestoreAsync** で上記のシナリオから復元する例を紹介します。
+さまざまな方法が可能ですが、ここでは **RestoreAsync** を使用して上記のシナリオから復元する例を紹介します。
 
 ## Reliable Services でのパーティション データの損失
 
@@ -113,7 +113,7 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 
 - 最新のバックアップをダウンロードします (およびそれが圧縮されている場合は、バックアップ フォルダーにバックアップを解凍します)。
 
-- **OnDataLossAsync** メソッドでは **RestoreContext** がされます。提供されている **RestoreContext** で**RestoreAsync** API を呼び出します。
+- **OnDataLossAsync** メソッドは、**RestoreContext** を提供します。提供された **RestoreContext** で **RestoreAsync** API を呼び出します。
 
 - 復元が成功した場合は、true を返します。
 
@@ -133,9 +133,9 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-**RestoreContext.RestoreAsync** の呼び出しに渡される **RestoreDescription** には、**BackupFolderPath** という名前のメンバーが含まれます。1 つの完全バックアップを復元するときは、この **BackupFolderPath** に完全バックアップが含まれるフォルダーのローカル パスを設定する必要があります。完全バックアップと複数の増分バックアップを復元するときは、完全バックアップだけでなくすべての増分バックアップも含まれるフォルダーのローカル パスを **BackupFolderPath** に設定する必要があります。提供された **BackupFolderPath** に完全バックアップが含まれていない場合、**RestoreAsync** の呼び出しで **FabricFullBackupMissingException** がスローされる可能性があります。**BackupFolderPath** の増分バックアップのチェーンが壊れていると、**ArgumentException** もスローされる場合があります。たとえば、完全バックアップと 1 番目および 3 番目の増分バックアップが含まれていて、2 番目の増分バックアップが含まれていないような場合です。
+**RestoreContext.RestoreAsync** の呼び出しに渡される **RestoreDescription** には、**BackupFolderPath** という名前のメンバーが含まれます。1 つの完全バックアップを復元するときは、この **BackupFolderPath** を完全バックアップが含まれるフォルダーのローカル パスに設定する必要があります。完全バックアップと複数の増分バックアップを復元するときは、**BackupFolderPath** を、完全バックアップだけでなく、すべての増分バックアップも含まれるフォルダーのローカル パスに設定する必要があります。提供された **BackupFolderPath** に完全バックアップが含まれていない場合、**RestoreAsync** の呼び出しで **FabricMissingFullBackupException** がスローされる可能性があります。**BackupFolderPath** の増分バックアップのチェーンが壊れていると、**ArgumentException** もスローされる場合があります。たとえば、完全バックアップと 1 番目および 3 番目の増分バックアップが含まれていて、2 番目の増分バックアップが含まれていないような場合です。
 
->[AZURE.NOTE] RestorePolicy は既定で「Safe」に設定されます。つまり、このレプリカに含まれている状態と同じか、またはそれより古い状態がバックアップ フォルダーに含まれていることが検出された場合に、**RestoreAsync** API は失敗し、ArgumentException をスローします。**RestorePolicy.Force** を使用して、この安全性チェックを省略できます。これは **RestoreDescription** の一部として指定されます。
+>[AZURE.NOTE] RestorePolicy は既定で「Safe」に設定されます。つまり、このレプリカに含まれている状態と同じか、またはそれより古い状態がバックアップ フォルダーに含まれていることが検出された場合、**RestoreAsync** API は ArgumentException で失敗します。**RestorePolicy.Force** を使用すると、この安全性チェックを省略できます。これは **RestoreDescription** の一部として指定されます。
 
 ## サービスの削除または損失
 
@@ -163,18 +163,18 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 
 ## Reliable Actors のバックアップと復元
 
-Reliable Actors のバックアップと復元は、Reliable Services で提供されるバックアップと復元の機能に基づいています。サービスの所有者は、**ActorService** (アクターをホストしている Service Fabric Reliable Service) から派生するカスタム アクター サービスを作成してから、前のセクションで説明されているとおりに Reliable Services と同様のバックアップ/復元を行う必要があります。バックアップはパーティションごとに実行されるため、その特定のパーティション内のすべてのアクターがバックアップされます (復元も同様にパーティションごとに実行されます)。
+Reliable Actors のバックアップと復元は、Reliable Services で提供されるバックアップと復元の機能に基づいています。サービスの所有者は、**ActorService** (アクターをホストしている Service Fabric Reliable Service) から派生するカスタム アクター サービスを作成してから、前のセクションでの説明に従って Reliable Services と同様のバックアップ/復元を実行する必要があります。バックアップはパーティションごとに実行されるため、その特定のパーティション内のすべてのアクターがバックアップされます (復元も同様にパーティションごとに実行されます)。
 
 
 - カスタム アクター サービスを作成するときと、アクターを登録するときにも、カスタム アクター サービスを登録する必要があります。**ActorRuntime.RegistorActorAsync** をご覧ください。
-- **KvsActorStateProvider** では現在のところ完全バックアップのみがサポートされます。オプション **RestorePolicy.Safe** は **KvsActorStateProvider** によって無視されます。
+- **KvsActorStateProvider** では、現在、完全バックアップのみがサポートされます。また、オプションの **RestorePolicy.Safe** は **KvsActorStateProvider** によって無視されます。
 
->[AZURE.NOTE] 既定の ActorStateProvider (つまり **KvsActorStateProvider**) では、バックアップ フォルダー (ICodePackageActivationContext.WorkDirectory によって取得されたアプリケーション作業フォルダーの下) はクリーンアップ**されません**。そのため、作業フォルダーがいっぱいになる可能性があります。バックアップを外部ストレージに移動した後、バックアップ コールバックの中で、バックアップ フォルダーを明示的にクリーンアップする必要があります。
+>[AZURE.NOTE] 既定の ActorStateProvider (**KvsActorStateProvider**) では、バックアップ フォルダー (ICodePackageActivationContext.WorkDirectory によって取得されたアプリケーション作業フォルダーの下) は単独ではクリーンアップ**されません**。そのため、作業フォルダーがいっぱいになる可能性があります。バックアップを外部ストレージに移動した後、バックアップ コールバックの中で、バックアップ フォルダーを明示的にクリーンアップする必要があります。
 
 
 ## バックアップと復元のテスト
 
-これは、重要なデータがバックアップされて復元できることを確認することは重要です。それには **Invoke-ServiceFabricPartitionDataLoss** コマンドレットを PowerShell で呼び出します。このコマンドレットは、サービスのデータのバックアップと復元の機能が期待どおりに動作するかどうかをテストするために、特定のパーティションでデータの損失を発生させることができます。プログラムを使用してデータ損失を発生させし、そのイベントから復元することもできます。
+これは、重要なデータがバックアップされて復元できることを確認することは重要です。そのためには、PowerShell で **Invoke-ServiceFabricPartitionDataLoss** コマンドレットを呼び出します。このコマンドレットは、サービスのデータのバックアップと復元の機能が予想どおりに動作するかどうかをテストするために、特定のパーティションでデータ損失を発生させることができます。プログラムを使用してデータ損失を発生させし、そのイベントから復元することもできます。
 
 >[AZURE.NOTE] Github で Web 参照アプリのバックアップおよび復元の機能の実装例を検索できます。詳細については、Inventory.Service サービスをご覧ください。
 
@@ -183,14 +183,20 @@ Reliable Actors のバックアップと復元は、Reliable Services で提供�
 バックアップと復元の詳細を以下に示します。
 
 ### バックアップ
-Reliable State Manager には、読み書き操作を中断することなく、一貫性のあるバックアップを作成する機能があります。そのために、チェックポイントとログ永続化のメカニズムが活用されます。Reliable State Manager は特定の時点でファジー (簡易) チェックポイントを作成し、トランザクション ログからの負荷を軽減し、復元時間を早めます。**BackupAsync** が呼び出されると、最新のチェックポイント ファイルをローカル バックアップ フォルダーにコピーするように、Reliable State Manager がすべての Reliable Objects に指示します。次に、Reliable State Manager は "開始ポインター" から最新のログ レコードまですべてのログ レコードをバックアップ フォルダーにコピーします。最新のログ レコードまでのすべてログ レコードがバックアップに含まれており、Reliable State Manager が先書きログを維持するため、コミットされた (**CommitAsync** が正常に返った) すべてのトランザクションがバックアップに含まれることが Reliable State Manager によって保証されます。
+Reliable State Manager には、読み書き操作を中断することなく、一貫性のあるバックアップを作成する機能があります。そのために、チェックポイントとログ永続化のメカニズムが活用されます。Reliable State Manager は特定の時点でファジー (簡易) チェックポイントを作成し、トランザクション ログからの負荷を軽減し、復元時間を早めます。**BackupAsync** が呼び出されると、最新のチェックポイント ファイルをローカル バックアップ フォルダーにコピーするように、Reliable State Manager がすべての Reliable Object に指示します。次に、Reliable State Manager は "開始ポインター" から最新のログ レコードまですべてのログ レコードをバックアップ フォルダーにコピーします。最新のログ レコードまでのすべてログ レコードがバックアップに含まれており、Reliable State Manager が先書きログを維持するため、コミットされた (**CommitAsync** が正常に制御を返した) すべてのトランザクションがバックアップに含まれていることが Reliable State Manager によって保証されます。
 
 **BackupAsync** が呼び出された後にコミットするトランザクションは、バックアップに含まれていることもあれば、含まれていないこともあります。プラットフォームによりローカルのバックアップ フォルダーにデータが入力されると (すなわち、ローカルのバックアップがランタイムにより完了すると)、サービスのバックアップ コールバックが呼び出されます。このコールバックは、Azure Storage などの外部の場所にバックアップ フォルダーを移動する役割を担います。
 
 ### 復元
 
-Reliable State Manager には、**RestoreAsync** API を使用してバックアップから復元する機能があります。**RestoreContext** での **RestoreAsync** メソッドは **OnDataLossAsync** メソッド内のみで呼び出すことができます。**OnDataLossAsync** により返されるブール値は、サービスの状態が外部ソースから復元されたかどうかを示すものです。**OnDataLossAsync** が true を返した場合、Service Fabric がこのプライマリから他のすべてのレプリカを再構築します。Service Fabric により、**OnDataLossAsync** 呼び出しを受信するレプリカは最初にプライマリ ロールに切り替わるものの、読み取り状態または書き込み状態にはなりません。これは、StatefulService の実装機能に関して、**OnDataLossAsync** が正常に完了するまで **RunAsync** が呼び出されないことを意味します。次に、新しいプライマリで **OnDataLossAsync** が呼び出されます。サービスが (true または false を返し) この API を完了し、関連再構成を完了するまで、API は 1 つずつ呼び出され続けます。
+Reliable State Manager には、**RestoreAsync** API を使用してバックアップから復元する機能があります。**RestoreContext** での **RestoreAsync** メソッドは、**OnDataLossAsync** メソッド内のみで呼び出すことができます。**OnDataLossAsync** により返されるブール値は、サービスの状態が外部ソースから復元されたかどうかを示すものです。**OnDataLossAsync** が true を返した場合、Service Fabric がこのプライマリから他のすべてのレプリカを再構築します。Service Fabric は、**OnDataLossAsync** 呼び出しを受信するレプリカが最初にプライマリ ロールに切り替わっても、読み取り状態または書き込み状態にはならないことを保証します。これは、StatefulService 実装側では、**OnDataLossAsync** が正常に完了するまで **RunAsync** が呼び出されないことを意味します。次に、新しいプライマリで **OnDataLossAsync** が呼び出されます。サービスが (true または false を返し) この API を完了し、関連再構成を完了するまで、API は 1 つずつ呼び出され続けます。
 
-まず、**RestoreAsync** は、このメソッドが呼び出されたプライマリ レプリカで、すべての既存状態を削除されます。次に、Reliable State Manager は、バックアップ フォルダーに存在するすべての Reliable Objects を作成します。次に、Reliable Objects はバックアップ フォルダーのチェックポイントから復元するように指示されます。最後に、Reliable State Manager はバックアップ フォルダー内のログ レコードからそれ自体の状態を復元し、復元を実行します。復元プロセスの一環として、バックアップ フォルダーにコミット ログ レコードがある "開始ポイント" から始まる操作が Reliable Objects に対して再生されます。この手順により、復元したステートに一貫性が与えられます。
+**RestoreAsync** は、まず、このメソッドが呼び出されたプライマリ レプリカで、既存の状態をすべて削除します。次に、Reliable State Manager は、バックアップ フォルダーに存在するすべての Reliable Objects を作成します。次に、Reliable Objects はバックアップ フォルダーのチェックポイントから復元するように指示されます。最後に、Reliable State Manager はバックアップ フォルダー内のログ レコードからそれ自体の状態を復元し、復元を実行します。復元プロセスの一環として、バックアップ フォルダーにコミット ログ レコードがある "開始ポイント" から始まる操作が Reliable Objects に対して再生されます。この手順により、復元したステートに一貫性が与えられます。
 
-<!---HONumber=AcomDC_0518_2016-->
+## 次のステップ
+
+- [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
+- [Reliable Services の通知](service-fabric-reliable-services-notifications.md)
+- [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+
+<!---HONumber=AcomDC_0629_2016-->

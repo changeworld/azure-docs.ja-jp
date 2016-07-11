@@ -13,15 +13,26 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/13/2016" 
+	ms.date="06/28/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
 
 Azure Redis Cache についてよく寄せられる質問の回答、パターンとベスト プラクティスについて説明します。
 
+
+
+
+
+## 計画に関する FAQ
+
+-	[Redis Cache のサービス内容と適切なサイズの選択](#what-redis-cache-offering-and-size-should-i-use)
+-	[Azure Redis Cache のパフォーマンス](#azure-redis-cache-performance)
+-	[キャッシュを配置するリージョン](#in-what-region-should-i-locate-my-cache)
+-	[Azure Redis Cache の課金方法を教えてください。](#how-am-i-billed-for-azure-redis-cache)
+
 <a name="cache-size"></a>
-## Redis Cache のサービス内容と適切なサイズの選択
+### Redis Cache のサービス内容と適切なサイズの選択
 Azure Redis Cache には、さまざまなレベルの**サイズ**、**帯域幅**、**高可用性**、**SLA** オプションが用意されています。
 
 Cache のオプションを選択するときの考慮事項を次に示します。
@@ -39,7 +50,10 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 -	**Redis はシングル スレッドです**。したがって、3 つ以上のコアを使用しても 2 つのコアを使用する場合と比べて追加のメリットはありません。ただし、一般に、VM のサイズが大きいほど、小さなサイズよりも多くの帯域幅を利用できます。キャッシュ サーバーまたはクライアントが帯域幅の制限に達すると、クライアント側でタイムアウトが発生します。
 -	**パフォーマンス向上**: Premium レベルのキャッシュは、高速プロセッサを備え、Basic/Standard レベルと比較して優れたパフォーマンスを発揮するハードウェア上にデプロイされます。Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。
 
-<a name="cache-performance"></a> 次の表に、Azure Redis Cache のエンドポイントに対して Iaas VM から `redis-benchmark.exe` を使用して Standard および Premium キャッシュのさまざまなサイズをテストした結果得られた最大帯域幅を示します。これらの値は保証された値ではなく、これらの値の SLA もありません。これらの値は、標準的な値と考えてください。アプリケーションに最適なキャッシュ サイズを特定するには、アプリケーションに対してロード テストを実行する必要があります。
+<a name="cache-performance"></a>
+### Azure Redis Cache のパフォーマンス
+
+次の表に、Azure Redis Cache のエンドポイントに対して Iaas VM から `redis-benchmark.exe` を使用して Standard および Premium キャッシュのさまざまなサイズをテストした結果得られた最大帯域幅を示します。これらの値は保証された値ではなく、これらの値の SLA もありません。これらの値は、標準的な値と考えてください。アプリケーションに最適なキャッシュ サイズを特定するには、アプリケーションに対してロード テストを実行する必要があります。
 
 この表からは次のような結論が得られます。
 
@@ -67,80 +81,157 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 `redis-benchmark.exe` などの Redis ツールのダウンロードの詳細については、「[Redis コマンドの実行方法](#cache-commands)」セクションを参照してください。
 
 <a name="cache-region"></a>
-## キャッシュを配置するリージョン
+### キャッシュを配置するリージョン
 
 最適なパフォーマンスと最も短い待機時間を実現するには、キャッシュ クライアント アプリケーションと同じリージョンに Azure Redis Cache を配置します。
 
 <a name="cache-billing"></a>
-## Azure Redis Cache の課金方法を教えてください。
+### Azure Redis Cache の課金方法を教えてください。
 
 Azure Redis Cache の価格については、[ここ](https://azure.microsoft.com/pricing/details/cache/)を参照してください。価格ページには、1 時間単位の価格が表示されます。キャッシュは、キャッシュが作成された時間から削除された時間までの期間に関して、分単位で課金されます。キャッシュの課金を停止または一時停止するオプションはありません。
 
-<a name="cache-timeouts"></a>
-## タイムアウトが発生する理由
+## 開発に関する FAQ
 
-タイムアウトは、Redis との対話に使用されているクライアントで発生します。ほとんどの場合、Redis サーバーでタイムアウトが発生することはありません。Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。タイムアウトの問題のトラブルシューティングの詳細については、[Azure Redis Cache の StackExchange.Redis のタイムアウトの例外の調査](https://azure.microsoft.com/blog/2015/02/10/investigating-timeout-exceptions-in-stackexchange-redis-for-azure-redis-cache/)に関するページを参照してください。
-
-<a name="cache-monitor"></a>
-## キャッシュの正常性とパフォーマンスの監視方法
-
-Microsoft Azure Redis Cache のインスタンスは、[Azure ポータル](https://portal.azure.com)で監視できます。メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。キャッシュの監視の詳細については、「[Azure Redis Cache の監視](https://msdn.microsoft.com/library/azure/dn763945.aspx)」を参照してください。
-
-<a name="cache-disconnect"></a>
-## クライアントがキャッシュから切断される理由
-
-キャッシュが切断される一般的な理由のいくつかを次に示します。
-
--	クライアント側の原因
-	-	クライアント アプリケーションが再デプロイされた。
-	-	クライアント アプリケーションがスケーリング操作を実行した。
-		-	Cloud Services または Web Apps の場合、自動スケールが原因になっている場合があります。
-	-	クライアント側のネットワーク レイヤーが変更された。
-	-	クライアントで、またはクライアントとサーバー間のネットワーク ノードで一時的なエラーが発生した。
-	-	帯域幅のしきい値制限に達した。
-	-	CPU バインド型の操作の完了に時間がかかった。
--	サーバー側の原因
-	-	Standard キャッシュ プランで、Azure Redis Cache Service がプライマリ ノードからセカンダリ ノードへのフェールオーバーを開始した。
-	-	Azure により、キャッシュがデプロイされているインスタンスに修正プログラムが適用されていた。
-		-	Redis サーバーの更新または VM の一般的なメンテナンスの場合もこれに該当します。
+-	[StackExchange.Redis 構成オプションについて](#what-do-the-stackexchangeredis-configuration-options-do)
+-	[どのような Redis キャッシュ クライアントを使用できますか。](#what-redis-cache-clients-can-i-use)
+-	[Azure Redis Cache のローカル エミュレーターがない場合](#is-there-a-local-emulator-for-azure-redis-cache)
+-	[Redis コマンドの実行方法](#how-can-i-run-redis-commands)
+-	[他のいくつかの Azure サービスと異なり Azure Redis Cache の MSDN クラス ライブラリ リファレンスが提供されない理由](#why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
 
 <a name="cache-configuration"></a>
-## StackExchange.Redis 構成オプションについて
+### StackExchange.Redis 構成オプションについて
 
 StackExchange.Redis には多くのオプションが用意されています。ここでは、いくつかの一般的な設定について説明します。StackExchange.Redis オプションの詳細については、[StackExchange.Redis の構成](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration.md)に関するページを参照してください。
 
 構成オプション|説明|推奨
 ---|---|---
 AbortOnConnectFail|true の場合、ネットワーク障害の後に再接続が行われません。|StackExchange.Redis が自動的に再接続するように、false に設定します。
-ConnectRetry|初期接続中に接続試行を繰り返す回数。||
-ConnectTimeout|接続操作のタイムアウト (ミリ秒単位)。|
+ConnectRetry|初期接続中に接続試行を繰り返す回数。| 下記のガイダンスをご覧ください。 |
+ConnectTimeout|接続操作のタイムアウト (ミリ秒単位)。| 下記のガイダンスをご覧ください。 |
 
 ほとんどの場合は、クライアントの既定値で十分です。ワークロードに基づいてオプションを微調整できます。
 
--	再試行
+-	**再試行**
 	-	ConnectRetry と ConnectTimeout に関する一般的なガイダンスは、早く失敗して再試行することです。これは、ワークロードと、クライアントが Redis コマンドを発行してから応答を受け取るまでに要する時間の平均に基づきます。
 	-	自分で接続の状態を確認して再接続するのではなく、StackExchange.Redis が自動的に再接続するように設定します。**ConnectionMultiplexer.IsConnected プロパティは使用しません**。
-	-	問題の肥大化 - ある問題が発生し、再試行しても問題が解決しないことがあります。そのような場合は、Microsoft Patterns & Practices グループ発行の[再試行に関する一般的なガイダンス](https://github.com/mspnp/azure-guidance/blob/master/Retry-General.md)のページに説明されている指数バックオフ再試行アルゴリズムの使用を検討する必要があります。
--	タイムアウト値
+	-	問題の肥大化 - ある問題が発生し、再試行しても問題が解決しないことがあります。そのような場合は、Microsoft Patterns & Practices グループ発行の[再試行に関する一般的なガイダンス](best-practices-retry-general.md)のページに説明されている指数バックオフ再試行アルゴリズムの使用を検討する必要があります。
+-	**タイムアウト値**
 	-	ワークロードを考慮したうえで値を適宜設定します。大きな値を保存する場合は、タイムアウトを大きな値に設定します。
-		-	StackExchange.Redis が自動的に再接続するように、ABortOnConnectFail を false に設定します。
--	アプリケーションに対して ConnectionMultiplexer インスタンスを 1 つ使用します。 「[ConnectionMultiplexer クラスを使用してキャッシュに接続する](https://msdn.microsoft.com/library/azure/dn690521.aspx#Connect)」に示されているように、LazyConnection を使用して、Connection プロパティから返される単一のインスタンスを作成できます。
--	診断用には、`ConnectionMultiplexer.ClientName` プロパティを、アプリ インスタンスの一意な名前に設定します。
--	カスタム ワークロードに対しては複数の `ConnectionMultiplexer` インスタンスを使用します。
+	-	StackExchange.Redis が再接続できるように、`AbortOnConnectFail` を false に設定します。
+	-	アプリケーションに対して ConnectionMultiplexer インスタンスを 1 つ使用します。 「[ConnectionMultiplexer クラスを使用してキャッシュに接続する](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)」に示されているように、LazyConnection を使用して、Connection プロパティから返される単一のインスタンスを作成できます。
+	-	診断用には、`ConnectionMultiplexer.ClientName` プロパティを、アプリ インスタンスの一意な名前に設定します。
+	-	カスタム ワークロードに対しては複数の `ConnectionMultiplexer` インスタンスを使用します。
 	-	アプリケーションの負荷が変化する場合は、このモデルに従うことができます。次に例を示します。
-		-	1 つのマルチプレクサーを使用して、サイズの大きなキーを処理できます。 
-		-	1 つのマルチプレクサーを使用して、サイズの小さなキーを処理できます。 
-		-	使用する ConnectionMultiplexer ごとに、異なる接続タイムアウト値と再試行ロジックを設定できます。
-		-	診断を容易にするために、各マルチプレクサーで `ClientName` プロパティを設定します。 
-		-	これにより、`ConnectionMultiplexer` あたりの待機時間が合理化されます。
+	-	1 つのマルチプレクサーを使用して、サイズの大きなキーを処理できます。
+	-	1 つのマルチプレクサーを使用して、サイズの小さなキーを処理できます。
+	-	使用する ConnectionMultiplexer ごとに、異なる接続タイムアウト値と再試行ロジックを設定できます。
+	-	診断を容易にするために、各マルチプレクサーで `ClientName` プロパティを設定します。
+	-	これにより、`ConnectionMultiplexer` あたりの待機時間が合理化されます。
+
+### どのような Redis キャッシュ クライアントを使用できますか。
+
+Redis のメリットの 1 つが、クライアントが多数存在しており、さまざまな開発言語を多数サポートしている点です。現在のクライアントの一覧については、[Radis クライアント](http://redis.io/clients)に関するページをご覧ください。さまざまな言語とクライアントのチュートリアルについては、記事「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」の上部にある言語のタブで、目的の言語をクリックしてください。
+
+[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+
+<a name="cache-emulator"></a>
+### Azure Redis Cache のローカル エミュレーターがない場合
+
+Azure Redis Cache のローカル エミュレーターがなくても、ローカル コンピューターの [Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/)から、redis-server.exe の MSOpenTech のバージョンを実行して接続し、以下の例のように、ローカル キャッシュ エミュレーターと同じような使い心地を得ることができます。
+
+
+	private static Lazy<ConnectionMultiplexer>
+  		lazyConnection = new Lazy<ConnectionMultiplexer>
+	    (() =>
+	    {
+		    // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
+		    return ConnectionMultiplexer.Connect("127.0.0.1:6379");
+	    });
+	
+	    public static ConnectionMultiplexer Connection
+	    {
+		    get
+		    {
+			    return lazyConnection.Value;
+		    }
+	    }
+
+
+必要に応じて [redis.conf](http://redis.io/topics/config) ファイルを構成し、オンラインの Azure Redis Cache の[既定のキャッシュ設定](cache-configure.md#default-redis-server-configuration)とより厳密に一致させます。
+
+<a name="cache-commands"></a>
+### Redis コマンドの実行方法
+
+「[Azure Redis Cache でサポートされない Redis コマンド](cache-configure.md#redis-commands-not-supported-in-azure-redis-cache)」で示されているコマンドを除き、[Redis コマンド](http://redis.io/commands#)のページに示されているすべてのコマンドを使用できます。Redis コマンドを実行するには、いくつかのオプションがあります。
+
+-	Standard または Premium キャッシュがある場合は、[Redis コンソール](cache-configure.md#redis-console)を使用して Redis コマンドを実行できます。これは、Azure ポータルで Redis コマンドを安全に実行するための方法です。
+-	Redis コマンド ライン ツールを使用することもできます。これらを使用するには、次の手順に従います。
+-	[Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/)をダウンロードします。
+-	`redis-cli.exe` を使用してキャッシュに接続します。次の例に示すように、-h スイッチを使用してキャッシュ エンドポイントを渡し、-a を使用してキーを渡します。
+-	`redis-cli -h <your cache="" name="">
+.redis.cache.windows.net -a <key>
+  `
+  -	Redis コマンド ライン ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、[Redis 向け ASP.NET セッション状態プロバイダー プレビュー リリースの発表](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関するブログ記事を参照してください。
+
+<a name="cache-reference"></a>
+### 他のいくつかの Azure サービスと異なり Azure Redis Cache の MSDN クラス ライブラリ リファレンスが提供されない理由
+
+Microsoft Azure Redis Cache は、広く普及しているオープン ソースの Redis Cache をベースにしており、多くのプログラミングで使用可能なさまざまな [Redis クライアント](http://redis.io/clients)がアクセスできます。各クライアントは、[Redis コマンド](http://redis.io/commands)を使用して Redis キャッシュ インスタンスを呼び出す独自の API を持ちます。
+
+クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントのほかに、チュートリアルもいくつか用意されています。チュートリアルでは、さまざまな言語とキャッシュ クライアントを使用して Azure Redis Cache を使用する方法について説明します。こうしたチュートリアルにアクセスするには、記事「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」の上部にある言語のタブで、目的の言語をクリックしてください。
+
+
+## セキュリティに関する FAQ
+
+-	[Redis への接続に非 SSL ポートを有効にする必要がある状況](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+
+<a name="cache-ssl"></a>
+### Redis への接続に非 SSL ポートを有効にする必要がある状況
+
+Redis サーバーは既定で SSL をサポートしませんが、Azure Redis Cache では SSL がサポートされます。Azure Redis Cache に接続するときに、クライアントが StackExchange.Redis のように SSL をサポートしている場合は、SSL を使用する必要があります。
+
+既定では、新しい Azure Redis Cache インスタンスに対して非 SSL ポートは無効になっています。クライアントが SSL をサポートしていない場合は、「[Azure Redis Cache でのキャッシュの構成](cache-configure.md)」の「[アクセス ポートへの](cache-configure.md#access-ports)」セクションの指示に従って、非 SSL ポートを有効にする必要があります。
+
+`redis-cli` などの Redis ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、[Redis 向け ASP.NET セッション状態プロバイダー プレビュー リリースの発表](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関するブログ記事を参照してください。
+
+Redis ツールのダウンロードの詳細については、「[Redis コマンドの実行方法](#cache-commands)」セクションを参照してください。
+
+## 運用に関する FAQ
+
+-	[一般的な Redis コマンドの使用に関するいくつかの考慮事項](#what-are-some-of-the-considerations-whja-JPing-common-redis-commands)
+-	[キャッシュのベンチマークを実行およびテストする方法](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+-	[ThreadPool 拡大の重要な詳細情報](#important-details-about-threadpool-growth)
+-	[StackExchange.Redis を使用するときにサーバー GC を有効にしてクライアントでのスループットを向上させる](#enable-server-gc-to-get-more-throughput-on-the-client-whja-JPing-stackexchangeredis)
+
+
+<a name="cache-redis-commands"></a>
+### 一般的な Redis コマンドの使用に関するいくつかの考慮事項
+
+-	処理に時間がかかる特定の Redis コマンドについては、その影響を理解せずに実行することは避けてください。
+-	たとえば、[KEYS](http://redis.io/commands/keys) コマンドは実稼働環境で実行しないでください。キーの数によっては、結果が返されるまでに長い時間がかかる場合があります。Redis はシングル スレッド サーバーであり、一度に 1 つずつコマンドを処理します。KEYS の後に他のコマンドが発行されている場合、それらのコマンドは Redis によって KEYS コマンドが処理されるまで処理されません。
+-	キー サイズ - 小さなキー/値と大きなキー/値のどちらを使用するか。 一般に、それはシナリオしだいです。サイズの大きなキーが必要となるシナリオでは、ConnectionTimeout 値、再試行回数、再試行ロジックを調整できます。Redis サーバーの観点からは、小さな値を設定した方がパフォーマンスが高くなります。
+-	これは、サイズの大きな値を Redis に格納できないという意味ではありません。次の点に考慮する必要があります。待機時間は長くなります。サイズの大きなデータ セットとサイズの小さなデータ セットがある場合は、前の「[StackExchange.Redis 構成オプションについて](#cache-configuration)」に説明したように、それぞれ異なるタイムアウト値と再試行回数が構成された複数の ConnectionMultiplexer インスタンスを使用できます。
+
+
+
+<a name="cache-benchmarking"></a>
+### キャッシュのベンチマークを実行およびテストする方法
+
+-	[キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を[監視](cache-how-to-monitor.md)できるようにします。Azure ポータルでメトリックを表示できますが、任意のツールを使用して、メトリックを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
+-	redis-benchmark.exe を使用して Redis サーバーのロード テストを実行できます。
+-	ロード テスト クライアントと Redis Cache が同じリージョン内にあることを確認します。
+-	redis-cli.exe を使用し、INFO コマンドを使用してキャッシュを監視します。
+-	負荷が高いことが原因でメモリの断片化が発生している場合は、キャッシュのサイズをスケールアップする必要があります。
+-	Redis ツールのダウンロードの詳細については、「[Redis コマンドの実行方法](#cache-commands)」セクションを参照してください。
+
 
 <a name="threadpool"></a>
-## ThreadPool 拡大の重要な詳細情報
+### ThreadPool 拡大の重要な詳細情報
 
 CLR ThreadPool には、2 種類のスレッド - 「Worker」と「I/O 完了ポート」 (別名 IOCP) スレッドがあります。
 
--	`Task.Run(…)` メソッドや `ThreadPool.QueueUserWorkItem(…)` メソッドの処理などには、worker スレッドが使用されます。これらのスレッドは、バック グラウンド スレッドで作業が発生する必要がある場合に、CLR でさまざまなコンポーネントによっても使用されます。
--	IOCP スレッドは、非同期 IO が発生したときに使用されます(ネットワークからの読み取りなど)。  
+-	`Task.Run(…)` メソッドや `ThreadPool.QueueUserWorkItem(…)` メソッドの処理などには、Worker スレッドが使用されます。これらのスレッドは、バック グラウンド スレッドで作業が発生する必要がある場合に、CLR でさまざまなコンポーネントによっても使用されます。
+-	IOCP スレッドは、非同期 IO が発生したときに使用されます(ネットワークからの読み取りなど)。
 
 スレッド プールは、各種のスレッドについて「最小」設定に達するまで、新しい worker スレッドまたは I/O 完了スレッドをオンデマンドで (スロットルなしで) 提供します。既定では、スレッドの最小数はシステム上のプロセッサの数に設定されます。
 
@@ -170,12 +261,12 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 
 -	ASP.NET で、web.config の `<processModel>` 構成要素の下にある ["minIoThreads" 構成設定][]を使用します。Azure WebSites の内部で実行している場合、この設定は構成オプションを介して公開されません。ただし、これは global.asax.cs の Application\_Start メソッドからプログラムで設定できるはずです (下記を参照)。
 
-> **重要な注意事項:** この構成要素で指定される値は、*コアごとの*設定となります。たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、`<processModel minIoThreads="50"/>` を使用します。
+> **重要な注意事項:** この構成要素で指定される値は、"コアごとの" 設定です。たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、`<processModel minIoThreads="50"/>` を使用します。
 
 -	ASP.NET の外部では、[ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API を使用します。
 
 <a name="server-gc"></a>
-## StackExchange.Redis を使用するときにサーバー GC を有効にしてクライアントでのスループットを向上させる
+### StackExchange.Redis を使用するときにサーバー GC を有効にしてクライアントでのスループットを向上させる
 
 StackExchange.Redis を使用するときにサーバー GC を有効にすると、クライアントが最適化され、パフォーマンスとスループットを向上させることができます。サーバー GC とそれを有効にする方法の詳細については、次の記事を参照してください。
 
@@ -183,88 +274,77 @@ StackExchange.Redis を使用するときにサーバー GC を有効にする�
 -	[ガベージ コレクションの基礎](https://msdn.microsoft.com/library/ee787088.aspx)
 -	[ガベージ コレクションとパフォーマンス](https://msdn.microsoft.com/library/ee851764.aspx)
 
-<a name="cache-redis-commands"></a>
-## 一般的な Redis コマンドの使用に関するいくつかの考慮事項
-
--	処理に時間がかかる特定の Redis コマンドについては、その影響を理解せずに実行することは避けてください。
-	-	たとえば、[KEYS](http://redis.io/commands/keys) コマンドは実稼働環境で実行しないでください。キーの数によっては、結果が返されるまでに長い時間がかかる場合があります。Redis はシングル スレッド サーバーであり、一度に 1 つずつコマンドを処理します。KEYS の後に他のコマンドが発行されている場合、それらのコマンドは Redis によって KEYS コマンドが処理されるまで処理されません。
--	キー サイズ - 小さなキー/値と大きなキー/値のどちらを使用するか。 一般に、それはシナリオしだいです。サイズの大きなキーが必要となるシナリオでは、ConnectionTimeout 値、再試行回数、再試行ロジックを調整できます。Redis サーバーの観点からは、小さな値を設定した方がパフォーマンスが高くなります。
-	-	これは、サイズの大きな値を Redis に格納できないという意味ではありません。次の点に考慮する必要があります。待機時間は長くなります。サイズの大きなデータ セットとサイズの小さなデータ セットがある場合は、前の「[StackExchange.Redis 構成オプションについて](#cache-configuration)」に説明したように、それぞれ異なるタイムアウト値と再試行回数が構成された複数の ConnectionMultiplexer インスタンスを使用できます。
 
 
-<a name="cache-ssl"></a>
-## Redis への接続に非 SSL ポートを有効にする必要がある状況
-
-Redis サーバーは既定で SSL をサポートしませんが、Azure Redis Cache では SSL がサポートされます。Azure Redis Cache に接続するときに、クライアントが StackExchange.Redis のように SSL をサポートしている場合は、SSL を使用する必要があります。
-
-既定では、新しい Azure Redis Cache インスタンスに対して非 SSL ポートは無効になっています。クライアントが SSL をサポートしていない場合は、「[Azure Redis Cache でのキャッシュの構成](https://msdn.microsoft.com/library/azure/dn793612.aspx)」の「[アクセス ポートへの](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts)」セクションの指示に従って、非 SSL ポートを有効にする必要があります。
-
-`redis-cli` などの Redis ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、[Redis 向け ASP.NET セッション状態プロバイダー プレビュー リリースの発表](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関するブログ記事を参照してください。
-
-Redis ツールのダウンロードの詳細については、「[Redis コマンドの実行方法](#cache-commands)」セクションを参照してください。
-
-<a name="cache-benchmarking"></a>
-## キャッシュのベンチマークを実行およびテストする方法
-
--	[キャッシュ診断の有効化](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)によってキャッシュの正常性を[監視](https://msdn.microsoft.com/library/azure/dn763945.aspx)できるようにします。Azure ポータルでメトリックを表示できますが、任意のツールを使用して、メトリックを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
--	redis-benchmark.exe を使用して Redis サーバーのロード テストを実行できます。
-	-	ロード テスト クライアントと Redis Cache が同じリージョン内にあることを確認します。
--	redis-cli.exe を使用し、INFO コマンドを使用してキャッシュを監視します。
-	-	負荷が高いことが原因でメモリの断片化が発生している場合は、キャッシュのサイズをスケールアップする必要があります。
--	Redis ツールのダウンロードの詳細については、「[Redis コマンドの実行方法](#cache-commands)」セクションを参照してください。
-
-<a name="cache-commands"></a>
-## Redis コマンドの実行方法
-
-「[Azure Redis Cache でサポートされない Redis コマンド](cache-configure.md#redis-commands-not-supported-in-azure-redis-cache)」で示されているコマンドを除き、[Redis コマンド](http://redis.io/commands#)のページに示されているすべてのコマンドを使用できます。Redis コマンドを実行するには、いくつかのオプションがあります。
-
--	Standard または Premium キャッシュがある場合は、[Redis コンソール](cache-configure.md#redis-console)を使用して Redis コマンドを実行できます。これは、Azure ポータルで Redis コマンドを安全に実行するための方法です。
--	Redis コマンド ライン ツールを使用することもできます。これらを使用するには、次の手順に従います。
-	-	[Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/)をダウンロードします。
-	-	`redis-cli.exe` を使用してキャッシュに接続します。次の例に示すように、-h スイッチを使用してキャッシュ エンドポイントを渡し、-a を使用してキーを渡します。
-		-	`redis-cli -h <your cache name>.redis.cache.windows.net -a <key>`
-	-	Redis コマンド ライン ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、[Redis 向け ASP.NET セッション状態プロバイダー プレビュー リリースの発表](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関するブログ記事を参照してください。
-
-<a name="cache-emulator"></a>
-## Azure Redis Cache のローカル エミュレーターがない場合
-
-Azure Redis Cache のローカル エミュレーターがなくても、ローカル コンピューターの [Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/)から、redis-server.exe の MSOpenTech のバージョンを実行して接続し、以下の例のように、ローカル キャッシュ エミュレーターと同じような使い心地を得ることができます。
-
-	private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-	{
-		// Connect to a locally running instance of Redis to simulate a local cache emulator experience.
-	    return ConnectionMultiplexer.Connect("127.0.0.1:6379");
-	});
-	
-	public static ConnectionMultiplexer Connection
-	{
-	    get
-	    {
-	        return lazyConnection.Value;
-	    }
-	}
-
-必要に応じて [redis.conf](http://redis.io/topics/config) ファイルを構成し、オンラインの Azure Redis Cache の[既定のキャッシュ設定](cache-configure.md#default-redis-server-configuration)とより厳密に一致させます。
-
-<a name="cache-common-patterns"></a>
-## いくつかの一般的なキャッシュ パターンと考慮事項
-
--	Microsoft Patterns & Practices から次のガイダンスが公開されています。
-	-	[キャッシュに関するガイダンス](https://github.com/mspnp/azure-guidance/blob/master/Caching.md)。
-	-	[Azure クラウド アプリケーションの設計および実装に関するガイダンス](https://github.com/mspnp/azure-guidance)
--	[Azure Redis Cache の一般的なキャッシュ パターン](cache-howto-common-cache-patterns.md)
-
-<a name="cache-reference"></a>
-## 他のいくつかの Azure サービスと異なり Azure Redis Cache の MSDN クラス ライブラリ リファレンスが提供されない理由
-
-Microsoft Azure Redis Cache は、広く普及しているオープン ソースの Redis Cache をベースに、Microsoft によって管理された、セキュリティで保護された専用の Redis Cache へのアクセスを提供します。[Redis クライアント](http://redis.io/clients)についても、多くのプログラミング言語に対応してさまざまなクライアントが提供されています。各クライアントは、[Redis コマンド](http://redis.io/commands)を使用して Redis キャッシュ インスタンスを呼び出す独自の API を持ちます。
-
-クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントに加えて、Azure.com の[ Redis Cache のドキュメント](https://azure.microsoft.com/documentation/services/redis-cache/)のページには、さまざまな言語およびキャッシュ クライアントを使用して Azure Redis Cache を使用する方法に関するいくつかのチュートリアルがあります。
 
 
-## どの Azure Cache を利用すればよいですか。
+## 監視とトラブルシューティングに関する FAQ
 
->[AZURE.IMPORTANT]昨年[お知らせ](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)したとおり、Azure Managed Cache Service と Azure In-Role Cache サービスは 2016 年 11 月 30 日で提供が終了します。そのため、[Azure Redis Cache](https://azure.microsoft.com/services/cache/) を使用することをお勧めします。移行については、「[Managed Cache Service から Azure Redis Cache への移行](cache-migrate-to-redis.md)」を参照してください。
+このセクションの FAQ では、監視とトラブルシューティングに関する一般的な質問について説明します。Azure Redis Cache インスタンスの監視とトラブルシューティングの詳細については、「[Azure Redis Cache の監視方法](cache-how-to-monitor.md)」および「[Azure Redis Cache のトラブルシューティング方法](cache-how-to-troubleshoot.md)」をご覧ください。
+
+-	[キャッシュの正常性とパフォーマンスの監視方法](#how-do-i-monitor-the-health-and-performance-of-my-cache)
+-	[キャッシュ診断ストレージ アカウントの設定を変更した場合](#my-cache-diagnostics-storage-account-settings-changed-what-happened)
+-	[新しいキャッシュの診断を有効にして、それ以外は有効にしない理由](#why-is-diagnostics-enabled-for-some-new-caches-but-not-others)
+-	[タイムアウトが発生する理由](#why-am-i-seeing-timeouts)
+-	[クライアントがキャッシュから切断される理由](#why-was-my-client-disconnected-from-the-cache)
+
+<a name="cache-monitor"></a>
+### キャッシュの正常性とパフォーマンスの監視方法
+
+Microsoft Azure Redis Cache のインスタンスは、[Azure ポータル](https://portal.azure.com)で監視できます。メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。詳細については、[Azure Redis Cache の監視](cache-how-to-monitor.md)に関するページをご覧ください。
+
+Redis Cache の **[設定]** ブレードの **[サポート + トラブルシューティング]** セクションにも、キャッシュを監視およびトラブルシューティングするためのツールがいくつか用意されています。
+
+-	**[トラブルシューティング]** では、一般的な問題と、その問題を解決するための戦略に関する情報を確認できます。
+-	**[監査ログ]** では、キャッシュで実行される操作に関する情報を確認できます。また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。
+-	**[リソース正常性]** ではリソースが監視され、そのリソースが意図したとおりに動いているかどうかが示されます。Azure Resource Health サービスの詳細については、「[Azure Resource Health の概要](../resource-health/resource-health-overview.md)」をご覧ください。
+-	**[新しいサポート要求]** には、キャッシュのサポート要求を開くためのオプションが用意されています。
+
+これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。詳細については、「[サポートおよびトラブルシューティング設定](cache-configure.md#support-amp-troubleshooting-settings)」をご覧ください。
+
+### キャッシュ診断ストレージ アカウントの設定を変更した場合
+
+同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ設定を共有するため、構成が変更される (診断が有効/無効に設定される、またはストレージ アカウントが変更される) と、その変更がそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。キャッシュの診断設定が変更された場合は、同じサブスクリプションおよびリージョンの、別のキャッシュの診断設定が変更されたかどうかを確認します。確認する 1 つの方法として、`Write DiagnosticSettings` イベントのキャッシュの監査ログを表示します。監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」と「[リソース マネージャーの監査操作](../resource-group-audit.md)」をご覧ください。Azure Redis Cache イベントの監視の詳細については、「[処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」をご覧ください。
+
+### 新しいキャッシュの診断を有効にして、それ以外は有効にしない理由
+
+同じリージョンとサブスクリプションのキャッシュは、同じ診断ストレージの設定を共有します。新しいキャッシュを、別のキャッシュとして同じリージョンとサブスクリプションに作成し、診断を有効にすると、同じ設定が新しいキャッシュの診断で使用されます。
+
+
+<a name="cache-timeouts"></a>
+### タイムアウトが発生する理由
+
+タイムアウトは、Redis との対話に使用されているクライアントで発生します。ほとんどの場合、Redis サーバーでタイムアウトが発生することはありません。Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。タイムアウトに関する問題のトラブルシューティングの詳細については、「[クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#client-side-troubleshooting)」と [StackExchange.Redis のタイムアウトの例外] (クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions) をご覧ください。
+
+<a name="cache-disconnect"></a>
+### クライアントがキャッシュから切断される理由
+
+キャッシュが切断される一般的な理由のいくつかを次に示します。
+
+-	クライアント側の原因
+	-	クライアント アプリケーションが再デプロイされた。
+	-	クライアント アプリケーションがスケーリング操作を実行した。
+		-	Cloud Services または Web Apps の場合、自動スケールが原因になっている場合があります。
+	-	クライアント側のネットワーク レイヤーが変更された。
+	-	クライアントで、またはクライアントとサーバー間のネットワーク ノードで一時的なエラーが発生した。
+	-	帯域幅のしきい値制限に達した。
+	-	CPU バインド型の操作の完了に時間がかかった。
+-	サーバー側の原因
+	-	Standard キャッシュ プランで、Azure Redis Cache Service がプライマリ ノードからセカンダリ ノードへのフェールオーバーを開始した。
+	-	Azure により、キャッシュがデプロイされているインスタンスに修正プログラムが適用されていた。
+		-	Redis サーバーの更新または VM の一般的なメンテナンスの場合もこれに該当します。
+
+
+
+
+
+## 事前のキャッシュ オファリングに関する FAQ
+
+-	[どの Azure Cache を利用すればよいですか。](#which-azure-cache-offering-is-right-for-me)
+
+### どの Azure Cache を利用すればよいですか。
+
+>[AZURE.IMPORTANT]昨年[お知らせ](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)したとおり、Azure Managed Cache Service と Azure In-Role Cache サービスは 2016 年 11 月 30 日で提供が終了します。そのため、[Azure Redis Cache](https://azure.microsoft.com/services/cache/) を使用することをお勧めします。移行については、「[Managed Cache Service から Azure Redis Cache への移行](cache-migrate-to-redis.md)」をご覧ください。
 
 ### Azure Redis Cache
 Azure Redis Cache は、最大 53 GB で一般公開されています。可用性の SLA は 99.9% です。新しい [Premium 階層](cache-premium-tier-intro.md)は、最大 530 GB のサイズを提供し、クラスタリング、VNET、および永続化を 99.9% の SLA でサポートします。
@@ -283,6 +363,10 @@ Azure Redis Cache の使用方法については、「[Azure Redis Cache の使�
 ### In-Role Cache
 [In-Role Cache は 2016 年 11 月 30 日に終了となります。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
+
+
+
+
 ["minIoThreads" 構成設定]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -3,8 +3,8 @@
    description="Microsoft Power BI Embedded の一般的なシナリオ"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="dvana"
-   manager="NA"
+   authors="minewiskan"
+   manager="mblythe"
    editor=""
    tags=""/>
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="03/29/2016"
-   ms.author="jocaplan"/>
+   ms.date="06/28/2016"
+   ms.author="owend"/>
 
 # Microsoft Power BI Embedded の一般的なシナリオ
 
@@ -32,4 +32,4 @@
 - [サンプルを使ってみる](power-bi-embedded-get-started.md)
 - [カスタム ビジュアルで Power BI をさらにパワーアップ](https://powerbi.microsoft.com/custom-visuals/)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

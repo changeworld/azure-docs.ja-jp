@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="03/31/2016" 
+    ms.date="06/27/2016" 
     ms.author="elizapo" />
     
 # Azure RemoteApp ネットワークで使用される帯域幅 - 一般的なガイドライン (自分でテストできない場合)
@@ -43,4 +43,4 @@ Azure RemoteApp のパフォーマンスは、100 MB の LAN で最も高くな�
 
 - [Azure RemoteApp - 一般的なシナリオでのネットワークの使用帯域幅をテストする](remoteapp-bandwidthtests.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

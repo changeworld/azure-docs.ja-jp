@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/08/2016"  
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -28,7 +28,7 @@
 作成可能なワークフローの例は次のとおりです。
 
 - 解決を求めてソース コンテンツを検査し、必要な出力トラックだけをエンコードする決定基準のワークフロー。不注意でソース コンテンツをスケールアップし、生成される無駄なトラックをなくするので便利です。
-- 複数の入力ファイルを使用し、キャプション、オーバーレイ、結合コンテンツをサポートできます。 
+- 複数の入力ファイルを使用し、キャプション、オーバーレイ、結合コンテンツをサポートできます。
 
 このツールはまた、[公開済みワークフロー](media-services-workflow-designer.md#existing_workflows)の変更に使用できます。
 
@@ -90,4 +90,4 @@ Day 3 のビデオの内容は次のとおりです。
 
 [Azure プレミアム エンコーダー ワークフロー デザイナーのトレーニング ビデオ](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

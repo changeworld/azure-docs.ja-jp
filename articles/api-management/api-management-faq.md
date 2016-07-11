@@ -37,13 +37,13 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 -	[複数の地理的な場所にデプロイされた場合、API Management はどのようなルーティング方法を使用しますか。](#what-routing-method-does-api-management-use-when-deployed-to-multiple-geographic-locations)
 -	[ARM テンプレートを使用して API Management サービス インスタンスを作成できますか。](#can-i-create-an-api-management-service-instance-using-an-arm-template)
 -	[バックエンドに自己署名 SSL 証明書を使用できますか。](#can-i-use-a-self-signed-ssl-certificate-for-a-backend)
-
+-	[GIT リポジトリを複製しようとすると認証に失敗します。原因は何でしょうか。](#why-am-i-getting-authentication-failure-when-i-try-to-clone-the-git-repository)
 
 
 ### API Management チームに質問するにはどうすればよいですか。
 
--	質問を [API Management MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt)に投稿できます。
--	質問を電子メール (`apimgmt@microsoft.com`) でお送りいただけます。
+-	[API Management MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt)に質問を投稿できます。
+-	電子メール (`apimgmt@microsoft.com`) で質問をお送りいただけます。
 -	[機能についてのご要望](https://feedback.azure.com/forums/248703-api-management)をお送りいただけます。
 
 ### 機能がプレビュー段階とはどういう意味ですか。
@@ -64,22 +64,22 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 API Management サービス インスタンスは、いくつかの方法で新しいインスタンスにコピーできます。
 
 -	API Management のバックアップと復元機能を使用します。詳細については、「[Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法](api-management-howto-disaster-recovery-backup-restore.md)」を参照してください。
--	[API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx) を使用して独自のバックアップと復元機能を作成し、サービス インスタンスの目的のエンティティを保存して復元します。
+-	[API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx) を使用して独自のバックアップと復元の機能を作成し、サービス インスタンスの目的のエンティティを保存、復元します。
 -	Git を使用してサービス構成をダウンロードし、新しいインスタンスにアップロードしてバックアップします。詳細については、「[Git を使用して API Management サービス構成を保存および構成する方法](api-management-configuration-repository-git.md)」を参照してください。
 
 ### API Management インスタンスはプログラムで管理できますか。
 
-はい。[API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx) と、[Microsoft Azure API Management Service Management Library SDK](http://aka.ms/apimsdk) と、[サービス デプロイ](https://msdn.microsoft.com/library/mt619282.aspx)および[サービス管理用の PowerShell コマンドレット](https://msdn.microsoft.com/library/mt613507.aspx)を使用して管理できます。
+はい。[API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx)、[Microsoft Azure API Management Service Management Library SDK](http://aka.ms/apimsdk)、[サービス デプロイ](https://msdn.microsoft.com/library/mt619282.aspx)、[サービス管理](https://msdn.microsoft.com/library/mt613507.aspx)用の PowerShell コマンドレットを使用して管理できます。
 
 ### ユーザーを Administrators グループに追加するにはどうすればよいですか。
 
 以下の手順に従って実現できます。
 
-1. 新しい [Azure ポータル](https://portal.azure.com)にログインします 
+1. 新しい [Azure ポータル](https://portal.azure.com)にログインします
 2. 目的の API Management インスタンスを含むリソース グループに移動します
 3. 目的のユーザーを "API Management サービス共同作成者" ロールに追加します
 
-それが終わると、新しく追加した共同作業者は Azure PowerShell [コマンドレット](https://msdn.microsoft.com/library/mt613507.aspx)を使用して管理者としてログインできます。
+それが終わると、新しく追加した共同作成者は Azure PowerShell [コマンドレット](https://msdn.microsoft.com/library/mt613507.aspx)を使用して管理者としてログインできます。
 
 1. `Login-AzureRmAccount` コマンドレットを使用してログインします
 2. `Set-AzureRmContext -SubscriptionID <subscriptionGUID>` を使用して、サービスを含むサブスクリプションへのコンテキストを設定します
@@ -89,13 +89,13 @@ API Management サービス インスタンスは、いくつかの方法で新�
 
 ### 追加するポリシーがポリシー エディターで有効になっていないのはなぜですか。
 
-追加するポリシーが有効になっていない場合、そのポリシーの正しいスコープが選択されていることを確認します。各ポリシー ステートメントは、特定のスコープおよびポリシー セクション内で使用するように設計されています。ポリシーのポリシー セクションとスコープを確認するには、[ポリシー リファレンス](https://msdn.microsoft.com/library/azure/dn894080.aspx) ページでそのポリシーの**使用例**を参照してください。
+追加するポリシーが有効になっていない場合、そのポリシーの正しいスコープが選択されていることを確認します。各ポリシー ステートメントは、特定のスコープおよびポリシー セクション内で使用するように設計されています。各ポリシーのポリシー セクションとスコープを確認するには、[ポリシーのリファレンス](https://msdn.microsoft.com/library/azure/dn894080.aspx)に関するページでそのポリシーの**使用例**に関するセクションを参照してください。
 
 
 ### API Management で API のバージョン管理を実現するにはどうすればよいですか。
 
 -	API Management では、バージョンが異なる API を個別に構成できます。たとえば、2 つの異なる API として `MyAPI v1` と `MyAPI v2` を用意することができます。開発者は使用するバージョンを選択できます。
--	バージョン セグメントを含まないサービス URL で API を構成することもできます (たとえば、`https://my.api`)。この場合、各操作の[書き換え URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) テンプレートでバージョンのセグメントを構成することができます。たとえば、`/resource` の [URL テンプレート](api-management-howto-add-operations.md#url-template)と `/v1/Resource` の [書き換え URL](api-management-howto-add-operations.md#rewrite-url-template) テンプレートで操作を作成することができます。そうすれば、各操作で個別にバージョン セグメントの値を変更できます。
+-	バージョン セグメントを含まないサービス URL で API を構成することもできます (たとえば、`https://my.api`)。この場合、各操作の[書き換え URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) テンプレートでバージョン セグメントを構成することができます。たとえば、`/resource` の [URL テンプレート](api-management-howto-add-operations.md#url-template)と `/v1/Resource` の [書き換え URL](api-management-howto-add-operations.md#rewrite-url-template) テンプレートで操作を作成することができます。そうすれば、各操作で個別にバージョン セグメントの値を変更できます。
 -	API のサービス URL 内に "既定" のバージョン セグメントを保持する場合は、選択した操作に対して、[バックエンド サービスの設定](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService)ポリシーを使用してバックエンド要求パスを変更するポリシーを設定できます。
 
 ### サンドボックスや実稼働など、API の複数の環境を構成するにはどうすればよいですか。
@@ -109,7 +109,7 @@ API Management サービス インスタンスは、いくつかの方法で新�
 
 現在、Azure API Management での SOAP のサポートは制限されています。これは現在調査中の機能です。私共では、貴社の顧客の WSDL のサンプルを取得すること、貴社の顧客が必要としている機能について情報を得ることに非常に関心があります。それは思考の形成に役立つからです。「[API Management チームに質問するにはどうすればよいですか。](#how-can-i-ask-a-question-to-the-api-management-team)」に記載されている連絡先にお問い合わせください。
 
-この機能を動作させる必要がある場合は、弊社コミュニティで推奨されている回避策を参照してください (「[Azure API Management - APIM, consuming a SOAP WCF service over HTTP (Azure API Management - APIM、HTTP を介した SOAP WCF サービスの使用)](http://mostlydotnetdev.blogspot.com/2015/03/azure-api-management-apim-consuming.html)」)。
+これを使う必要がある場合は、弊社コミュニティで推奨されている回避策を参照してください (「[Azure API Management - APIM, consuming a SOAP WCF service over HTTP (Azure API Management - APIM、HTTP を介した SOAP WCF サービスの使用)](http://mostlydotnetdev.blogspot.com/2015/03/azure-api-management-apim-consuming.html)」)。
 
 その方法でソリューションを実装する場合、ポリシーをいくらか手動で構成する必要があるほか、WSDL インポート/エクスポートはサポートされず、また、ユーザーは開発者ポータルでテスト コンソールを使用して発行される要求の本体を形成する必要があります。
 
@@ -132,11 +132,11 @@ IP アドレス (複数リージョンのデプロイの場合は複数個) は 
 
 ### 複数の地理的な場所にデプロイされた場合、API Management はどのようなルーティング方法を使用しますか。 
 
-API Management では[パフォーマンスによるトラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#performance-traffic-routing-method)が使用されます。着信トラフィックは、最も近い API ゲートウェイにルーティングされます。1 つのリージョンがオフラインになった場合、着信トラフィックは自動的に次に最も近いゲートウェイにルーティングされます。ルーティング方法の詳細については、「[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)」を参照してください。
+API Management では[パフォーマンス トラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#performance-traffic-routing-method)を使用します。着信トラフィックは、最も近い API ゲートウェイにルーティングされます。1 つのリージョンがオフラインになった場合、着信トラフィックは自動的に次に最も近いゲートウェイにルーティングされます。ルーティング方法の詳細については、[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)に関するページを参照してください。
 
 ### ARM テンプレートを使用して API Management サービス インスタンスを作成できますか。
 
-はい、「[Azure API Management Service](http://aka.ms/apimtemplate)」クイックスタート テンプレートを参照してください。
+はい、[Azure API Management Service](http://aka.ms/apimtemplate) のクイックスタート テンプレートを参照してください。
 
 ### バックエンドに自己署名 SSL 証明書を使用できますか。
 
@@ -146,4 +146,8 @@ API Management では[パフォーマンスによるトラフィック ルーテ
 2. skipCertificateChainValidation プロパティを true に設定します
 3. 自己署名証明書を許可する必要がなくなったときは、バックエンド エンティティを削除するか、または skipCertificateChainValidation プロパティを false に設定します
 
-<!---HONumber=AcomDC_0601_2016-->
+### GIT リポジトリを複製しようとすると認証に失敗します。原因は何でしょうか。 
+
+GIT Credential Manager を使用しているか、Visual Studio でリポジトリを複製しようとしている場合、Windows の資格情報ダイアログで、パスワードの文字数が 127 文字に制限され、生成したパスワードが切り詰められるという既知の問題が発生する場合があります。現在、パスワードの短縮を進めています。現時点では、複製には GIT Bash をお使いください。
+
+<!---HONumber=AcomDC_0629_2016-->

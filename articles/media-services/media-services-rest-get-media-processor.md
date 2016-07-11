@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/01/2016"  
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 
@@ -47,7 +47,7 @@ Azure Media Encryptor|償却対象|
 >
 >Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 
->https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect_programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
+>https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
 
 
 次の REST 呼び出しは、メディア プロセッサ インスタンスを名前 (ここでは **Media Encoder Standard**) で取得する方法を示しています。
@@ -99,4 +99,4 @@ Azure Media Encryptor|償却対象|
 
 これで、メディア プロセッサ インスタンスを取得する方法がわかりました。次は、「[Media Encoder Standard を使用して資産をエンコードする方法](media-services-rest-get-started.md)」に進んでください。このトピックでは、Media Encoder Standard を使用して資産をエンコードする方法を説明します。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -22,8 +22,7 @@
 
 この記事では、PowerShell コマンドレットを使用して、Azure で SQL Server 仮想マシンを作成する手順を説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-リソース マネージャー モデル。同じ作業を Resource Manager デプロイ モデルで行う方法については、「[Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (Resource Manager)](virtual-machines-windows-ps-sql-create.md)」を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 同じ作業を Resource Manager デプロイ モデルで行う方法については、「[Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (Resource Manager)](virtual-machines-windows-ps-sql-create.md)」を参照してください。
 
 ## PowerShell のインストールと構成
 
@@ -65,7 +64,7 @@ SQL Server の仮想マシンは、特定の Azure リージョンに存在す�
 
 		(Get-AzureStorageAccount | where { $_.GeoPrimaryLocation -eq $dcLocation }).StorageAccountName
 
-	>[AZURE.NOTE] 新しいストレージ アカウントが必要な場合は、次の例のように、New-AzureStorageAccount コマンドを使用してすべてが小文字のストレージ アカウント名を最初に作成します: **New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation**
+	>[AZURE.NOTE] 新しいストレージ アカウントが必要な場合は、次の例のように、New-AzureStorageAccount コマンドを使用してすべてが小文字のストレージ アカウント名を最初に作成します: **New-AzureStorageAccount -StorageAccountName "<ストレージ アカウント名>" -Location $dcLocation**
 
 1. 対象のストレージ アカウント名を **$staccount** に割り当てます。次に、**Set-AzureSubscription** を使用してサブスクリプションと現在のストレージ アカウントを設定します。
 
@@ -169,8 +168,8 @@ PowerShell を使用した仮想マシンのプロビジョニングの詳細に
 
 多くの場合、次の手順はこの新しい SQL Server VM にデータベースを移行することです。データベース移行方法については、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)」を参照してください。
 
-Azure ポータルを使用して SQL Virtual Machines を作成する方法についても興味がある場合は、「[Azure ポータルでの SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」をご覧ください。チュートリアルでは、この PowerShell のトピックで使用される従来のモデルではなく、推奨されるリソース マネージャー モデルを使用して VM を作成するポータルについて説明していることに注意してください。
+Azure ポータルを使用して SQL Virtual Machines を作成する方法についても興味がある場合は、[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)に関するページをご覧ください。チュートリアルでは、この PowerShell のトピックで使用される従来のモデルではなく、推奨されるリソース マネージャー モデルを使用して VM を作成するポータルについて説明していることに注意してください。
 
 これらのリソースのほかにも、[Azure Virtual Machines における SQL Server の実行に関連するその他のトピック](virtual-machines-windows-sql-server-iaas-overview.md)もご覧になることをお勧めします。
 
-<!----HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

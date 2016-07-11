@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="06/29/2016" 
 	ms.author="stbaro"/>
 
 # MongoDB のプロトコル対応の DocumentDB アカウントで MongoChef を使用する
@@ -28,15 +28,19 @@ MongoChef を使用して MongoDB のプロトコル対応の DocumentDB アカ�
 
 MongoChef 接続マネージャーに MongoDB のプロトコル対応の DocumentDB アカウントを追加するには、次の手順を実行します。
 
-1. **[Connect (接続)]** をクリックして接続マネージャーを開き、**[New Connection (新しい接続)]** をクリックします。
+1. [ここ](documentdb-connect-mongodb-account.md)に記載されている手順に従って、MongoDB のプロトコル対応の DocumentDB に使用する接続情報を取得します。
+
+	![Screen shot of the connection string blade](./media/documentdb-connect-mongodb-account/ConnectionStringBlade.png)
+
+2. **[Connect (接続)]** をクリックして接続マネージャーを開き、**[New Connection (新しい接続)]** をクリックします。
 
 	![Screen shot of the MongoChef connection manager](./media/documentdb-mongodb-mongochef/ConnectionManager.png)
 	
-2. **[New Connection (新しい接続)]** ウィンドウの **[Server (サーバー)]** タブで、MongoDB のプロトコル対応の DocumentDB アカウントの FQDN とポートを入力します。
+2. **[New Connection (新しい接続)]** ウィンドウの **[Server (サーバー)]** タブで、MongoDB のプロトコル対応の DocumentDB アカウントのホスト (FQDN) とポートを入力します。
 	
 	![Screen shot of the MongoChef connection manager server tab](./media/documentdb-mongodb-mongochef/ConnectionManagerServerTab.png)
 
-3. **[New Connection (新しい接続)]** ウィンドウの **[Authentication (認証)]** タブで、認証モードとして **[Standard (MONGODB-CR or SCARM-SHA-1) (標準 (MONGODB-CR または SCARM-SHA-1))]** を選択し、ユーザー名とパスワード情報を入力します。既定の認証データベース (admin) をそのまま使用するか、または独自の値を指定します。
+3. **[New Connection (新しい接続)]** ウィンドウの **[Authentication (認証)]** タブで、認証モードとして **[Standard (MONGODB-CR or SCARM-SHA-1) (標準 (MONGODB-CR または SCARM-SHA-1))]** を選択し、ユーザー名とパスワードを入力します。既定の認証データベース (admin) をそのまま使用するか、または独自の値を指定します。
 
 	![Screen shot of the MongoChef connection manager authentication tab](./media/documentdb-mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
 
@@ -128,4 +132,4 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

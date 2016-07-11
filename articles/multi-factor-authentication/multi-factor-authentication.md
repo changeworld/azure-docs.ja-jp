@@ -50,7 +50,7 @@ Azure Multi-Factor Authentication は、認証手段の多層化によってユ�
 - **使いやすい** -Azure Multi-Factor Authenticaton は、簡単にセットアップして使用することができます。Azure Multi-Factor Authentication によって保護が多層化され、ユーザーは、自分の所有デバイスを使用、活用することができます。セットアップは、多くの場合、数回のクリックで簡単に行うことができます。
 - **拡張性** - Azure Multi-Factor Authenticaton はクラウドの強みを活かし、オンプレミスの AD やカスタム アプリと連携します。その保護の範囲は、ハイボリュームのミッション クリティカルなシナリオにまで広げることができます。
 - **常時保護** - Azure Multi-Factor Authentication は、きわめて高い業界標準に基づく強力な認証手段です。
-- **信頼性** - Azure Multi-Factor Authentication には、99.9% の可用性が確保されています。認証要求を受信することも処理することもできなくなったときに、多要素認証のサービスは利用不可と見なされます。  
+- **信頼性** - Azure Multi-Factor Authentication には、99.9% の可用性が確保されています。認証要求を受信することも処理することもできなくなったときに、多要素認証のサービスは利用不可と見なされます。
 
 Azure Multi-Factor Authentication を使う理由について、さらに詳しい情報については、次のビデオをご覧ください。
 
@@ -137,7 +137,7 @@ Azure Multi-Factor Authentication プロバイダーには次の 2 つの使用�
 - **ユーザーごと**。通常は、定期的に認証が必要な固定数の従業員用に Multi-Factor Authentication を有効にすることを望む企業向けです。
 - **認証ごと**。通常は、認証を必要とする頻度が低い外部ユーザーの大規模グループ用に Multi-Factor Authentication を有効にすることを望む企業向けです。
 
-Azure Multi-Factor Authentication では、クラウドとサーバーの両方で検証方法を選択できます。つまり、ユーザーが多要素認証で使用できる方法を選択することができます。クラウド バージョンの多要素認証では、この機能は現在パブリック プレビュー段階にあります。詳細については、「[選択可能な検証方法 (パブリック プレビュー)](multi-factor-authentication-whats-next.md#selectable-verification-methods-public-preview)」をご覧ください。
+Azure Multi-Factor Authentication では、クラウドとサーバーの両方で検証方法を選択できます。つまり、ユーザーが多要素認証で使用できる方法を選択することができます。クラウド バージョンの多要素認証では、この機能は現在パブリック プレビュー段階にあります。詳細については、「[選択可能な検証方法](multi-factor-authentication-whats-next.md#selectable-verification-methods)」をご覧ください。
 
 料金の詳細については、[「Azure MFA の料金」](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)を参照してください。
 
@@ -209,4 +209,4 @@ MFA レポート | ● | ●
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

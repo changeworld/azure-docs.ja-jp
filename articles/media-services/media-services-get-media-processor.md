@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 
@@ -43,7 +43,7 @@ Azure Media Encryptor|償却対象|
 
 ##メディア プロセッサの取得
 
-次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。このコード例では、[Media Services にプログラムから接続する方法](media-services-dotnet-connect_programmatically.md)に関するページで説明しているように、モジュール レベルの変数 **\_context** を使用してサーバー コンテキストを参照しています。
+次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。このコード例では、[Media Services にプログラムから接続する方法](media-services-dotnet-connect-programmatically.md)に関するページで説明しているように、モジュール レベルの変数 **\_context** を使用してサーバー コンテキストを参照しています。
 
 	private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
 	{
@@ -67,6 +67,6 @@ Azure Media Encryptor|償却対象|
 
 ##次のステップ
 
-これで、メディア プロセッサ インスタンスを取得する方法がわかりました。次は、「[Media Encoder Standard を使用して資産をエンコードする方法](media-services-dotnet-encode-with-media-encoder-standard.md)」に進んでください。このトピックでは、Media Encoder Standard を使用して資産をエンコードする方法を説明します。
+これで、メディア プロセッサ インスタンスを取得する方法がわかりました。次は、[資産のエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)に関するトピックに進んでください。このトピックでは、Media Encoder Standard を使用して資産をエンコードする方法を説明します。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

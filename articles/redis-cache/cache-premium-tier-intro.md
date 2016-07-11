@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/18/2016" 
+	ms.date="06/29/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache Premium レベルの概要
@@ -41,6 +41,7 @@ Premium レベルでは、Azure Storage アカウント内のキャッシュ デ
 クラスタリングを開始する場合は、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
 
 ##強化されたセキュリティと分離
+
 Basic/Standard レベルで作成されたキャッシュは、パブリック インターネット上でアクセス可能です。キャッシュへのアクセスは、アクセス キーに基づいて制限されます。Premium レベルでは、さらに、指定されたネットワーク内のクライアントだけがキャッシュにアクセスできるようにすることが可能になります。Redis Cache は、[Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) 内にデプロイできます。サブネット、アクセス制御ポリシー、およびその他の Redis へのアクセスをさらに制限する機能を始め、VNet のすべての機能を使用できます。
 
 詳細については、「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
@@ -55,6 +56,29 @@ Import/Export は Azure Redis Cache のデータ管理操作です。Redis Cache
 
 詳細については、[Azure Redis Cache との間でデータのインポートとエクスポートを実行する方法](cache-how-to-import-export-data.md)に関するページを参照してください。
 
+## Reboot
+
+Premium レベルでは、キャッシュの 1 つ以上のノードをオンデマンドで再起動できます。これにより、障害発生時のアプリケーションの回復性をテストすることができます。次のノードを再起動できます。
+
+-	キャッシュのマスター ノード
+-	キャッシュのスレーブ ノード
+-	キャッシュのマスター ノードとスレーブ ノードの両方
+-	クラスタリングを備えた Premium キャッシュを使用している場合は、マスター ノード、スレーブ ノード、またはその両方を、キャッシュの個々のシャードに対して再起動できます
+
+詳細については、「[再起動](cache-administration.md#reboot)」および「[再起動に関する FAQ](cache-administration.md#reboot-faq)」をご覧ください。
+
+## 更新のスケジュール
+
+更新のスケジュール機能では、キャッシュのメンテナンス時間を指定できます。メンテナンス時間を指定すると、その時間にすべての Redis サーバーの更新が実行されます。メンテナンス時間を指定するには、目的の曜日をオンにして、曜日ごとにメンテナンス時間の開始時刻を指定します。メンテナンス時間の時刻は UTC 時間で指定します。
+
+詳細については、「[更新のスケジュール](cache-administration.md#schedule-updates)」および「[更新のスケジュールに関する FAQ](cache-administration.md#schedule-updates-faq)」をご覧ください。
+
+>[AZURE.NOTE] スケジュールされたメンテナンス時間に行われるのは、Redis サーバーの更新だけです。メンテナンス時間は、Azure の更新や、VM のオペレーティング システムへの更新には適用されません。
+
+## Premium レベルにスケーリングするには
+
+Premium レベルにスケーリングするには、**[価格レベルの変更]** ブレードで Premium レベルのいずれかを選択するだけです。PowerShell および CLI を使用して、キャッシュを Premium レベルにスケーリングすることもできます。手順については、「[Azure Redis Cache のスケーリング方法](cache-how-to-scale.md)」および「[スケーリング処理を自動化する方法](cache-how-to-scale.md#how-to-automate-a-scaling-operation)」をご覧ください。
+
 ## 次のステップ
 
 キャッシュを作成し、Premium レベルの新機能を確認します。
@@ -63,6 +87,7 @@ Import/Export は Azure Redis Cache のデータ管理操作です。Redis Cache
 -	[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)
 -	[How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)
 -	[Azure Redis Cache との間でデータのインポートとエクスポートを実行する方法](cache-how-to-import-export-data.md)
+-	[Azure Redis Cache を管理する方法](cache-administration.md)
   
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -19,11 +19,7 @@
 
 # PowerShell を使用してサービス (クラシック) の逆引き DNS レコードを管理する方法
 
-[AZURE.INCLUDE [dns-reverse-dns-record-operations-arm-selectors-include.md](../../includes/dns-reverse-dns-record-operations-arm-selectors-include.md)]
-<BR>
-[AZURE.INCLUDE [DNS-reverse-dns-record-operations-intro-include.md](../../includes/dns-reverse-dns-record-operations-intro-include.md)]
-<BR>
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](dns-reverse-dns-record-operations-ps.md).
+[AZURE.INCLUDE [dns-reverse-dns-record-operations-arm-selectors-include.md](../../includes/dns-reverse-dns-record-operations-arm-selectors-include.md)] <BR> [AZURE.INCLUDE [DNS-reverse-dns-record-operations-intro-include.md](../../includes/dns-reverse-dns-record-operations-intro-include.md)] <BR> [AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](dns-reverse-dns-record-operations-ps.md)方法について説明します。
 
 ## 逆引き DNS レコードの検証
 Azure では、サード パーティがお客様の DNS ドメインにマッピングされた逆引き DNS レコードを作成できないようにするために、以下のいずれかに該当する場合のみ逆引き DNS レコードを作成できるようにしています。
@@ -55,4 +51,4 @@ Azure では、サード パーティがお客様の DNS ドメインにマッ�
 
 [AZURE.INCLUDE [FAQ](../../includes/dns-reverse-dns-record-operations-faq-asm-include.md)]
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0629_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""
 	tags="azure-classic-portal"/>
 
@@ -14,16 +14,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 # 職場での Windows 10 デバイスの使用
+
+適用対象: Windows 10 PC
 
 Windows 10 には、ユーザーが安全かつ便利な方法で職場のリソースにアクセスできるようにする、組織向けの 3 つのモデルが用意されています。
 
 - **Azure Active Directory Join** (Azure AD Join)。Office 365 などの主にクラウドのリソースにアクセスする作業員を対象としています。Azure AD Join は、Windows 10 からの新機能である、セルフサービスの作業プロビジョニング エクスペリエンスです。
 - **ドメイン参加**。オンプレミスのアプリとリソースに投資している組織を対象としています。ドメイン参加により、Windows 10 では Azure AD への接続時のエクスペリエンスが向上します。
-- **新しい単純化された BYOD エクスペリエンス**。職場または学校アカウントを Windows に追加して個人のデバイス上のリソースに簡単にアクセスしたいユーザーを対象としています。
+- **新しい単純化された BYOD エクスペリエンス**。職場または学校アカウントを Windows に追加して個人のデバイス上でリソースに簡単にアクセスしたいユーザーを対象としています。
 
 次の表では、企業が Windows 10 でデバイスをプロビジョニングして使用する際のさまざまな方法を比較して、ユーザーおよび IT 管理者向けの機能を簡潔に評価します。
 
@@ -175,4 +177,4 @@ Windows 8.1 のドメイン参加済みデバイスからアップグレード�
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD Join の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

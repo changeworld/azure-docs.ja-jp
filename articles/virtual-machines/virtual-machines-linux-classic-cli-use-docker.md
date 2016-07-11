@@ -19,7 +19,7 @@
 
 # Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 
@@ -176,4 +176,4 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
  
 [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する]: virtual-machines-linux-docker-compose-quickstart.md
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

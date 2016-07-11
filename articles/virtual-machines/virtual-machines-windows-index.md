@@ -22,7 +22,7 @@
 
 ここでは、クラシック デプロイメント モデルで Windows ベースの仮想マシンを作成および管理するために必要なすべてのドキュメントを紹介します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 ## 概要
@@ -162,7 +162,7 @@
 
 [MySQL](virtual-machines-windows-classic-mysql-2008r2.md)
 
-[Oracle](virtual-machines-windows-classic-oracle.md)
+[Oracle](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support)
 
 [SAP](virtual-machines-windows-classic-sap-get-started.md)
 
@@ -192,4 +192,4 @@
 
 [Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -20,7 +20,7 @@
 
 # Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 この記事では、Windows Server を実行している既存の仮想マシン (VM) または新しい VM に Trend Micro Deep Security as a Service をインストールして構成する方法を説明します。Deep Security as a Service には、ウイルス対策、ファイアウォール、侵入防止システム、変更監視が含まれています。
 
@@ -50,7 +50,7 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
 - VM エージェントがターゲットの仮想マシンにインストールされていること。
 
-最初に、VM エージェントがインストールされていることを確認します。クラウド サービス名と仮想マシン名を入力して、管理者レベルの Azure PowerShell のコマンド プロンプトで、次のコマンドを実行します。引用符内のすべての文字 (< and > を含む) を置き換えます。
+最初に、VM エージェントがインストールされていることを確認します。クラウド サービス名と仮想マシン名を入力して、管理者レベルの Azure PowerShell のコマンド プロンプトで、次のコマンドを実行します。引用符内のすべての文字 (< および > を含む) を置き換えます。
 
 	$CSName = "<cloud service name>"
 	$VMName = "<virtual machine name>"
@@ -86,4 +86,4 @@ VM エージェントがインストールされている場合は、次のコ�
 [Windows Server が実行されている仮想マシンにログオンする方法]: virtual-machines-windows-classic-connect-logon.md
 [Azure VM 拡張機能とその機能]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

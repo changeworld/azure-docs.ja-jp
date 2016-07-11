@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="media" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -47,8 +47,8 @@
 - [2014 年 8 月のリリース](#august_changes_14)
 - [2014 年 7 月のリリース](#july_changes_14)
 - [2014 年 5 月のリリース](#may_changes_14)
-- [2014 年 4 月のリリース](#april_changes_14) 
-- [2014 年 1 月と 2 月のリリース](#jan_feb_changes_14) 
+- [2014 年 4 月のリリース](#april_changes_14)
+- [2014 年 1 月と 2 月のリリース](#jan_feb_changes_14)
 - [2013 年 12 月のリリース](#december_changes_13)
 - [2013 年 11 月のリリース](#november_changes_13)
 - [2013 年 8 月のリリース](#august_changes_13)
@@ -189,7 +189,7 @@ Azure Media Services .NET SDK が 3.4.0.0 にバージョン アップしまし�
 Azure Media Services .NET SDK が 3.3.0.0 にバージョン アップされました。今回のリリースでは、次の機能が追加されました。
 
 - OpenId Connect Discovery 仕様のサポート
-- ID プロバイダー側でのキーのロールオーバー処理のサポート 
+- ID プロバイダー側でのキーのロールオーバー処理のサポート
 
 OpenID Connect 検出ドキュメントを公開する ID プロバイダー (これを実施しているプロバイダーは Azure Active Directory、Google、Salesforce) を使用している場合は、OpenID Connect Discovery 仕様から JWT トークンを検証するための署名キーを取得するように Azure Media Services に指示できます。
 
@@ -395,7 +395,7 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 * 再試行ロジックと一時的な例外の処理の改善:
 
-	* ファイルのクエリ、保存、変更、アップロード、またはダウンロードによって引き起こされる例外に関する一時的なエラーの検出と再試行ロジックが改善されました。 
+	* ファイルのクエリ、保存、変更、アップロード、またはダウンロードによって引き起こされる例外に関する一時的なエラーの検出と再試行ロジックが改善されました。
 	
 	* Web の例外が返される際に (たとえば、ACS トークンの要求時)、致命的なエラーが以前より早く失敗を通知することに気付きます。
 
@@ -430,7 +430,7 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 3\.0.0.3 では次の点が変更されました。
 
-* バージョン 3.0.3.0 を使用するように Azure Storage の依存関係がアップグレードされました。 
+* バージョン 3.0.3.0 を使用するように Azure Storage の依存関係がアップグレードされました。
 
 * 3\.0.*.* リリースの下位互換性の問題が修正されました。
 
@@ -461,7 +461,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 
 現在、次の Media Services PowerShell コマンドレットが [azure-sdk-tools] に含まれています。
 
-* Get-AzureMediaServices 
+* Get-AzureMediaServices
 
 	たとえば、「`Get-AzureMediaServicesAccount`」のように入力します。
 
@@ -483,7 +483,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 
 ここで説明する変更点は、2013 年 6 月の Media Services リリースに含まれている更新内容です。
 
-* 複数のストレージ アカウントを Media Service アカウントにリンクする機能。 
+* 複数のストレージ アカウントを Media Service アカウントにリンクする機能。
 
 	StorageAccount
 	
@@ -670,4 +670,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

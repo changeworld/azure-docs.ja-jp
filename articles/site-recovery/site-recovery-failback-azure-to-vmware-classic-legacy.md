@@ -55,7 +55,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 vContinuum サーバーをオンプレミスにインストールし、構成サーバーをポイントする必要があります。
 
-1.  [vContinuum をダウンロードします](http://go.microsoft.com/fwlink/?linkid=526305)。 
+1.  [vContinuum をダウンロードします](http://go.microsoft.com/fwlink/?linkid=526305)。
 2.  [vContinuum の更新](http://go.microsoft.com/fwlink/?LinkID=533813)バージョンをダウンロードします。
 3. 最新バージョンの vContinuum をインストールします。**[ようこそ]** ページで **[次へ]** をクリックします。![](./media/site-recovery-failback-azure-to-vmware/image2.png)
 4.  ウィザードの最初のページで CX サーバーの IP アドレスとポートを指定します。**[HTTPS の使用]** を選択します。
@@ -143,7 +143,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 	![](./media/site-recovery-failback-azure-to-vmware/image14.png)
 
-4. **[disk.EnableUUID]** と表示される行が存在するかどうかが確認されます。そのような行が存在し、値が **[False]** の場合は、[True] \(大文字と小文字の区別なし) に設定します。そのような行が存在し、値が [True] の場合は、**[Cancel]** をクリックし、ゲスト オペレーティング システムが起動した後に、その OS 内で SCSI コマンドをテストします。そのような行が存在しない場合、**[Add Row]** をクリックします。
+4. **[disk.EnableUUID]** と表示される行が存在するかどうかが確認されます。そのような行が存在し、値が **[False]** の場合は、**[True]** (大文字と小文字の区別なし) に設定します。そのような行が存在し、値が [True] の場合は、**[Cancel]** をクリックし、ゲスト オペレーティング システムが起動した後に、その OS 内で SCSI コマンドをテストします。そのような行が存在しない場合、**[Add Row]** をクリックします。
 5. **[Name]** 列に disk.EnableUUID を追加します。その値を TRUE に設定します。前述の値を追加する際には、二重引用符で囲まないでください。
 
 	![](./media/site-recovery-failback-azure-to-vmware/image15.png)
@@ -152,7 +152,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 注: その他のパッケージをダウンロードおよびインストールする前に、システムがインターネットに接続されていることを確認します。
 
-\# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
+# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
 
 このコマンドは、CentOS 6.6 リポジトリから次の 15 のパッケージをダウンロードして、インストールします。
 
@@ -188,17 +188,17 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 注: ソース マシンで、ルートまたはブート デバイスとして Reiser または XFS のファイル システムが使用されている場合、保護する前に、次のパッケージを Linux マスター ターゲットにダウンロードしてインストールする必要があります。
 
-\# cd /usr/local
+# cd /usr/local
 
-\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
+# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
 
-\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
+# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
 
-\# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
+# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
-\# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
+# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
 
-\# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
+# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
 
 #### カスタム構成変更を適用する
 
@@ -223,7 +223,7 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 3. 任意の ssh クライアントを使用して、Linux マスター ターゲット サーバー仮想マシンにログオンします。
 4. Linux マスター ターゲット サーバーをデプロイした Azure ネットワークに VPN 接続経由で接続している場合、仮想マシンの **[ダッシュボード]** タブにあるサーバーの内部 IP アドレスとポート 22 を使用して、Secure Shell を使用する Linux マスター ターゲット サーバーに接続します。
 5. パブリック インターネット接続経由で Linux マスター ターゲット サーバーに接続している場合、(仮想マシンの **[ダッシュボード]** タブにある) Linux マスター ターゲット サーバーのパブリック仮想 IP アドレスと、ssh 用に作成されたパブリック エンドポイントを使用して、Linux サーバーにログインします。
-6. インストーラー ファイルを含むディレクトリから次を実行して、gzip された Linux マスター ターゲット サーバー インストーラー tar アーカイブからファイルを抽出します: *“tar –xvzf Microsoft-ASR\_UA\_8.2.0.0\_RHEL6-64*”*
+6. インストーラー ファイルを含むディレクトリから次を実行して、gzip された Linux マスター ターゲット サーバー インストーラー tar アーカイブからファイルを抽出します: *"tar –xvzf Microsoft-ASR\_UA\_8.2.0.0\_RHEL6-64\"*
 
 	![](./media/site-recovery-failback-azure-to-vmware/image16.png)
 
@@ -266,7 +266,7 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 VM は Azure にフェールオーバーするときに、ページ ファイル用に余分な一時ドライブを追加します。フェールオーバーした VM には、通常、既に専用のページ ファイルが割り当てられているので、これは VM によって必要とされない余分なドライブです。仮想マシンを逆方向に保護する手順を開始する前に、ドライブをオフラインにして、保護されないようにする必要があります。これを行うには、次の手順を実行します。
 
 1.  [コンピューターの管理] を開き、[ストレージ管理] を選択します。これにより、オンラインおよびマシンにアタッチされているディスクが一覧表示されます。
-2.  マシンにアタッチされている一時ディスクを選択し、オフラインにする手順を実行します。 
+2.  マシンにアタッチされている一時ディスクを選択し、オフラインにする手順を実行します。
 
 ### VM を保護する
 
@@ -325,7 +325,7 @@ VM は Azure にフェールオーバーするときに、ページ ファイル
 
 #### NAT 設定を構成する
 
-1. 仮想マシンの保護を有効にするには、2 つの通信チャネルを確立する必要があります。最初のチャネルは、仮想マシンとプロセス サーバーとの間に確立します。このチャネルは、VM から収集したデータを、プロセス サーバーに送信します。この後、データはマスター ターゲット サーバーに送信されます。プロセス サーバーと保護対象の仮想マシンが同じ Azure 仮想ネットワーク上に存在する場合、NAT 設定を使用する必要はありません。それ以外の場合は、NAT 設定を指定します。Azure でのプロセス サーバーのパブリック IP アドレスを確認します。 
+1. 仮想マシンの保護を有効にするには、2 つの通信チャネルを確立する必要があります。最初のチャネルは、仮想マシンとプロセス サーバーとの間に確立します。このチャネルは、VM から収集したデータを、プロセス サーバーに送信します。この後、データはマスター ターゲット サーバーに送信されます。プロセス サーバーと保護対象の仮想マシンが同じ Azure 仮想ネットワーク上に存在する場合、NAT 設定を使用する必要はありません。それ以外の場合は、NAT 設定を指定します。Azure でのプロセス サーバーのパブリック IP アドレスを確認します。
 
 	![](./media/site-recovery-failback-azure-to-vmware/image28.png)
 
@@ -428,4 +428,4 @@ VM は Azure にフェールオーバーするときに、ページ ファイル
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

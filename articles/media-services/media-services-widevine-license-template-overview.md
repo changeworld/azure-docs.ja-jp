@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"  
+	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 #Widevine ライセンス テンプレートの概要
@@ -210,4 +210,4 @@ Media Services が提供する .NET API を使用して、Widevine ライセン�
 
 [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

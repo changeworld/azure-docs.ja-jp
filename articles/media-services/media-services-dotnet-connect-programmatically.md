@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -37,7 +37,7 @@ Media Services アカウントのセットアップ プロセスの最後で、�
 
 - Media Services アカウント キー
 
-これらの値を確認するには、Azure 管理ポータルに移動して、Media Services アカウントを選んで、ポータル ウィンドウの下にある [**キーの管理**] アイコンをクリックします。各テキスト ボックスの横にあるアイコンをクリックすると、値がシステム クリップボードにコピーされます。
+これらの値を確認するには、Azure 管理ポータルに移動し、Media Services アカウントを選択して、ポータル ウィンドウの下部にある **[キーの管理]** アイコンをクリックします。各テキスト ボックスの横にあるアイコンをクリックすると、値がシステム クリップボードにコピーされます。
 
 
 ## CloudMediaContext インスタンスの作成
@@ -196,4 +196,4 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

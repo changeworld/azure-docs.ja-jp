@@ -74,7 +74,7 @@
 |---|---|---|
 | [データベースのサービス階層とパフォーマンス レベルを変更する](sql-database-scale-up.md#change-the-service-tier-and-performance-level-of-your-database) | このチュートリアルでは、サービス階層を使用して Azure SQL Database のパフォーマンスをスケールアップまたはスケールダウンする方法を学習します。 |
 | [SQL Database Advisor Query Performance Insight](sql-database-performance.md#performance-overview) | このチュートリアルでは、SQL Database Advisor Query Performance Insight を開き、使用する方法を学習します。|
-| [SQL Database Advisor のパフォーマンスに関する推奨事項](sql-database-index-advisor.md#viewing-recommendations) | このチュートリアルでは、SQL Database Advisor のパフォーマンスに関する推奨事項を表示し、適用する方法を学習します。 |
+| [SQL Database Advisor のパフォーマンスに関する推奨事項](sql-database-advisor.md#viewing-recommendations) | このチュートリアルでは、SQL Database Advisor のパフォーマンスに関する推奨事項を表示し、適用する方法を学習します。 |
 | [CPU 消費量上位クエリを確認する](sql-database-query-performance.md#review-top-cpu-consuming-queries)| このチュートリアルでは、SQL Database Advisor Query Performance Insight を使用して、CPU 消費量上位クエリを確認する方法を学習します。|
 | [個々のクエリの詳細表示](sql-database-query-performance.md#viewing-individual-query-details)| このチュートリアルでは、SQL Database Advisor Query Performance Insight を使用して、個々のクエリのパフォーマンスの詳細を表示する方法を学習します。|
 ||||
@@ -180,4 +180,4 @@
 
 [Azure SQL Database ソリューション クイック スタート ガイド](sql-database-solution-quick-starts.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

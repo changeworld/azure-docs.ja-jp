@@ -44,4 +44,4 @@ Load Balancer | $lbName = "ロード バランサー名"<BR>$loadBalancer = [New
 - [VM を作成する](virtual-machines-windows-ps-create.md)ときに、作成したネットワーク インターフェイスを使用します。
 - [複数のネットワーク インターフェイスを持つ VM を作成する](../virtual-network/virtual-networks-multiple-nics.md)方法について学習します。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

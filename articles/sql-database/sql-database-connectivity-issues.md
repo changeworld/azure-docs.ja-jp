@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="06/27/2016"
 	ms.author="daleche"/>
 
 
@@ -83,7 +83,7 @@ Azure SQL Database との通信にサード パーティのミドルウェアを
 
 最初に再試行する前に、5 秒間待つことをお勧めします。5 秒未満で再試行すると、クラウド サービスに過度の負荷がかかるおそれがあります。再試行するたびに、待ち時間を比例して、最大 60 秒まで長くする必要があります。
 
-ADO.NET を使用するクライアントの *ブロック期間* については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
+ADO.NET を使用するクライアントの*ブロック期間*については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
 
 加えて、最大再試行回数を設定し、プログラムが自動的に終了するように配慮する必要があります。
 
@@ -427,7 +427,7 @@ Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークで�
 
 再試行ロジックで特に利用する機会の多い EntLib60 のクラスは次のとおりです。いずれのクラス (そのメソッドなども含む) も、**Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 名前空間に属しています。
 
-***Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 名前空間:*
+*Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling* *名前空間**:*
 
 - **RetryPolicy** クラス
  - **ExecuteAction** メソッド
@@ -560,4 +560,4 @@ public bool IsTransient(Exception ex)
 
 - [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

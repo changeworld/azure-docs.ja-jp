@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -84,4 +84,4 @@ Azure ポータルで、**[参照]**、**[仮想マシン]**、*対象の Window
 ## 次のステップ
 Azure での停止していた Linux VM の再起動または既存の Linux VM のサイズ変更に問題が発生する場合は、[Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-linux-classic-restart-resize-error-troubleshooting.md)を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

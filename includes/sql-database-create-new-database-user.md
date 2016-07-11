@@ -17,7 +17,8 @@ SSMS を使用して既存のデータベースに新しいデータベース �
 3. クエリ ウィンドウで、次の Transact-SQL ステートメントを編集して使用し、ユーザー データベースに含まれるユーザーを作成します。
 
     ```CREATE USER user1 WITH PASSWORD ='p@ssw0rd1';
+    ```
 
      ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-3.png)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

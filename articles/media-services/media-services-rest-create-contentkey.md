@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"   
+	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 
@@ -35,11 +35,11 @@ Media Services では、暗号化されたアセットを新しく作成して�
 
 暗号化するアセットに関連付けるコンテンツ キーを生成する一般的な手順を次に示します。
 
-1. 16 バイトの AES キー (CommonEncryption と EnvelopeEncryption 向け) か 32 バイトの AES キー (StorageEncryption 向け) をランダムに生成します。 
+1. 16 バイトの AES キー (CommonEncryption と EnvelopeEncryption 向け) か 32 バイトの AES キー (StorageEncryption 向け) をランダムに生成します。
 
-	これがアセットのコンテンツ キーになります。つまりこのアセットに関連するファイルは、暗号化の際に同じコンテンツ キーを使う必要があるということです。 
+	これがアセットのコンテンツ キーになります。つまりこのアセットに関連するファイルは、暗号化の際に同じコンテンツ キーを使う必要があるということです。
 2.	[GetProtectionKeyId](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkeyid) メソッドと [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) メソッドをコールして、コンテンツ キーを暗号化するために必要な適切な X.509 証明書を取得します。
-3.	X.509 証明書の公開キーでコンテンツ キーを暗号化します。 
+3.	X.509 証明書の公開キーでコンテンツ キーを暗号化します。
 
 	Media Services .NET SDK では、暗号化の際に OAEP と RSA を使用します。具体例については、「[EncryptSymmetricKeyData function](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)」 (EncryptSymmetricKeyData 関数) を参照してください。
 4.	そのキー識別子とコンテンツ キーを使って計算される、(PlayReady AES キー checksum アルゴリズムに基づく) checksum 値を作成します。詳細については、[ここ](http://www.microsoft.com/playready/documents/)にある、『PlayReady Header Object』(PlayReady のヘッダー オブジェクト) ドキュメントの「PlayReady AES Key Checksum Algorithm」(PlayReady AES キーの checksum アルゴリズム) セクションを参照してください。
@@ -262,4 +262,4 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

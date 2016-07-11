@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/12/2016"
+   ms.date="06/28/2016"
    ms.author="v-sharos" />
 
 # StorSimple 8000 シリーズ デバイスの更新
@@ -42,7 +42,7 @@ StorSimple の更新プログラムの機能を使用すると、StorSimple デ�
 
 ### メンテナンス モードの更新プログラム
 
-メンテナンス モードの更新プログラムとは、ディスク ファームウェアや USM ファームウェアのアップグレードなど、中断を伴う更新プログラムです。更新するには、デバイスをメンテナンス モードにする必要があります。詳細については、「[手順 2: メンテナンス モードを開始する](#step2)」をご覧ください。Azure クラシック ポータルを使用してメンテナンス モードの更新プログラムをインストールすることはできません。代わりに、StorSimple 用 Windows PowerShell を使用する必要があります。
+メンテナンス モードの更新プログラムとは、ディスク ファームウェアのアップグレードなど、中断を伴う更新プログラムです。更新するには、デバイスをメンテナンス モードにする必要があります。詳細については、「[手順 2: メンテナンス モードを開始する](#step2)」をご覧ください。Azure クラシック ポータルを使用してメンテナンス モードの更新プログラムをインストールすることはできません。代わりに、StorSimple 用 Windows PowerShell を使用する必要があります。
 
 メンテナンス モードの更新プログラムをインストールする方法の詳細については、「[StorSimple 用 Windows PowerShell を使用したメンテナンス モードの更新プログラムのインストール](#install-maintenance-mode-updates-via-windows-powershell-for-storsimple)」を参照してください。
 
@@ -70,7 +70,7 @@ StorSimple 用 Windows PowerShell を使用して、メンテナンス モード
 
 > [AZURE.IMPORTANT] 
 > 
-> - メンテナンス モードに入る前に、Azure クラシック ポータルの **[メンテナンス]** ページで **[ハードウェアの状態]** を確認して、両方のデバイス コントローラーが正常な状態であることを確かめます。コントローラーが正常な状態でない場合は次の手順を Microsoft サポートにお問い合わせください。詳細については、[Microsoft サポートに問い合わせる] を参照してください。 
+> - メンテナンス モードに入る前に、Azure クラシック ポータルの **[メンテナンス]** ページで **[ハードウェアの状態]** を確認して、両方のデバイス コントローラーが正常な状態であることを確かめます。コントローラーが正常な状態でない場合は次の手順を Microsoft サポートにお問い合わせください。詳細については、[Microsoft サポートに問い合わせる] を参照してください。
 > - メンテナンス モードを使用するとき、1 つのコントローラーに最初に更新プログラムを適用してから、その他のコントローラーに適用する必要があります。
 
 ### 手順 1: シリアル コンソールに接続する<a name="step1">
@@ -101,8 +101,8 @@ StorSimple 用 Windows PowerShell を使用して、メンテナンス モード
 
 Microsoft Azure StorSimple の更新プログラムとは異なり、修正プログラムは共有フォルダーからインストールされます。更新プログラムと同様に、修正プログラムも 2 種類あります。
 
-- 通常の修正プログラム 
-- メンテナンス モードの修正プログラム  
+- 通常の修正プログラム
+- メンテナンス モードの修正プログラム
 
 次の手順は、StorSimple 用 Windows PowerShell を使用して通常の修正プログラムとメンテナンス モードの修正プログラムをインストールする方法について説明します。
 
@@ -119,4 +119,4 @@ Microsoft Azure StorSimple の更新プログラムとは異なり、修正プ�
 - [StorSimple 用 Windows PowerShell を使用した StorSimple デバイスの管理の詳細](storsimple-windows-powershell-administration.md)
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

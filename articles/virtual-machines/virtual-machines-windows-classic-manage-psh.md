@@ -19,7 +19,7 @@
 
 # Azure PowerShell を使用した仮想マシンの管理
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 Azure PowerShell コマンドレットを使用すると、VM を管理するために日常的に行う多くのタスクを自動化できます。この記事では、比較的単純なタスクにはコマンド例を示し、より複雑なタスクには、コマンドが記載されている記事へのリンクを示します。
@@ -27,12 +27,12 @@ Azure PowerShell コマンドレットを使用すると、VM を管理するた
 >[AZURE.NOTE] まだ Azure PowerShell をインストール、構成していない場合は、[「Azure PowerShell のインストールおよび構成方法」](../powershell-install-configure.md)の記事に手順が記載されています。
 
 ## サンプル コマンドを使用する方法
-コマンド内のテキストの一部を、使用する環境に適した別のテキストに置き換える必要があります。記号の < and > は置き換える必要があるテキストであることを示しています。テキストを置き換える場合、記号は削除し、引用符はそのままの位置に残します。
+コマンド内のテキストの一部を、使用する環境に適した別のテキストに置き換える必要があります。< および > 記号は置き換える必要があるテキストであることを示しています。テキストを置き換える場合、記号は削除し、引用符はそのままの位置に残します。
 
 ## VM の取得
 これは頻繁に使用することになる基本的なタスクです。VM に関する情報の取得、VM でのタスクの実行、変数に格納する出力の取得に使用します。
 
-VM に関する情報を取得するには、このコマンドを実行し、引用符内のすべての文字 (< and > を含む) を置き換えます。
+VM に関する情報を取得するには、このコマンドを実行し、引用符内のすべての文字 (< および > を含む) を置き換えます。
 
      Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
@@ -46,10 +46,10 @@ VM に関する情報を取得するには、このコマンドを実行し、�
 
 >[AZURE.NOTE] 仮想マシンとクラウド サービス名は、**Get-azurevm** コマンドの表示から取得できます。
 >
-	$svcName="<cloud service name>"
-	$vmName="<virtual machine name>"
-	$localPath="<drive and folder location to store the downloaded RDP file, example: c:\temp >"
-	$localFile=$localPath + "" + $vmname + ".rdp"
+	$svcName = "<cloud service name>"
+	$vmName = "<virtual machine name>"
+	$localPath = "<drive and folder location to store the downloaded RDP file, example: c:\temp >"
+	$localFile = $localPath + "" + $vmname + ".rdp"
 	Get-AzureRemoteDesktopFile -ServiceName $svcName -Name $vmName -LocalPath $localFile -Launch
 
 ## VM の停止
@@ -73,20 +73,18 @@ VM に関する情報を取得するには、このコマンドを実行し、�
 
 新しいディスクを接続するには、次のコマンドを実行します。
 
-    Add-AzureDataDisk -CreateNew -DiskSizeInGB 128 -DiskLabel "<main>" -LUN <0> -VM <$vm> `
-              | Update-AzureVM
+    Add-AzureDataDisk -CreateNew -DiskSizeInGB 128 -DiskLabel "<main>" -LUN <0> -VM $vm | Update-AzureVM
 
 既存のデータ ディスクを接続するには、次のコマンドを実行します。
 
-    Add-AzureDataDisk -Import -DiskName "<MyExistingDisk>" -LUN <0> `
-              | Update-AzureVM
+    Add-AzureDataDisk -Import -DiskName "<MyExistingDisk>" -LUN <0> | Update-AzureVM
 
 BLOB ストレージにある既存の .vhd ファイルからデータ ディスクを接続するには、次のコマンドを実行します。
 
     Add-AzureDataDisk -ImportFrom -MediaLocation `
               "<https://mystorage.blob.core.windows.net/mycontainer/MyExistingDisk.vhd>" `
-              -DiskLabel "<main>" -LUN <0> `
-              | Update-AzureVM
+              -DiskLabel "<main>" -LUN <0> |
+              Update-AzureVM
 
 ## Windows ベースの VM の作成
 
@@ -97,4 +95,4 @@ Azure で Windows ベースの仮想マシンを新たに作成するには、�
 - 既存の負荷分散セットのメンバーとしての設定。
 - 静的 IP アドレス。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/05/2016"
+    ms.date="06/27/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp で Office を使用する
@@ -49,4 +49,4 @@ RemoteApp の 30 日間の無償試用期間中は、Office 2013 Professional Pl
 
 試用期間の終了後に実稼働モードに切り替えないと、RemoteApp コレクションは無効になります。データは保存されます - 設定とユーザーのデータはあと 90 日間保存されますので、サービスをアクティブ化してデータを失うことなく、実稼働モードに切り替えることができます。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

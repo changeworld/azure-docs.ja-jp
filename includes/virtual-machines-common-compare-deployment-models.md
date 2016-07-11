@@ -85,12 +85,8 @@ Azure コマンドライン インターフェイス (Azure CLI) には、**Azur
 
 これまでに作成したオートメーションやスクリプトはすべて、Azure サービス管理モードで作成された既存の Virtual Machines、Virtual Network にも使用できます。ただし、新しい Azure リソース マネージャー モードで同じリソースを作成するためには、新しいスキーマを使用するようにスクリプトを更新する必要があります。
 
-**新しい Azure リソース マネージャー API で作成した Virtual Network を Express Route 回線に接続することはできますか。**
-
-現時点ではサポートされません。新しい Azure リソース マネージャー API で作成した Virtual Network を Express Route 回線と接続することはできません。これは、後でサポートされます。
-
 **Azure リソース マネージャーのテンプレートの例はどこで入手できますか。**
 
 広範囲にわたるスターター テンプレートを「[Azure リソース マネージャー クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で見つけることができます。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

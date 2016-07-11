@@ -1,4 +1,6 @@
-バックエンド プロジェクトの種類 ([.NET バックエンド](#dotnet)または [Node.js バックエンド](#nodejs)のいずれか) に一致する手順を使用します。
+このセクションでは、モバイル アプリの既存のバックエンド プロジェクトのコードを更新して、新しい項目が追加されるたびにプッシュ通知を送信するようにします。テンプレート登録の使用によりクライアントはプッシュ通知に登録されるため、単一のプッシュ通知メッセージが、すべてのクライアント プラットフォームに送信されます。各クライアントのテンプレート登録には、*messageParam* パラメーターが含まれます。通知が送信されると、*messageParam* には挿入された項目のテキストを表す文字列が含まれます。Notification Hubs を使用するテンプレートの使用方法の詳細については、「[テンプレート](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。
+
+バックエンド プロジェクトの種類 ([.NET バックエンド](#dotnet)または [Node.js バックエンド](#nodejs)のいずれか) に一致する以下の手順を選択します。
 
 ### <a name="dotnet"></a>.NET バックエンド プロジェクト
 1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージを管理]** をクリックして `Microsoft.Azure.NotificationHubs` を見つけ、**[インストール]** をクリックします。これにより、バックエンドから通知を送信するために必要な Notification Hubs ライブラリがインストールされます。
@@ -46,17 +48,15 @@
                 .Error(ex.Message, null, "Push.SendAsync Error");
         }
 
-    このコードは、"messageParam" を含んでいるすべてのテンプレート登録にテンプレート通知を送信するよう、通知ハブに指示を出します。登録に "messageParam" が使用されている各 PNS で、messageParam の位置に文字列が挿入されます。これにより、APNS、GCM、WNS、またはその他の任意の PNS に通知を送信できるようになります。
-
-	Notification Hubs を使用するテンプレートの詳細については、「[テンプレート](notification-hubs-templates.md)」を参照してください。
+	これにより、新しい項目が挿入された場合には item.Text を含むテンプレート通知が送信されます。
 
 4. サーバー プロジェクトを発行します。
 
 ### <a name="nodejs"></a>Node.js バックエンド プロジェクト
 
-1. これをまだ行っていない場合は、[クイック スタート プロジェクトをダウンロードする](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)か、[Azure ポータルでオンライン エディター](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
+1. これをまだ行っていない場合は、[クイック スタート バックエンド プロジェクトをダウンロードする](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)か、[Azure ポータルでオンライン エディター](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)を使用します。
 
-2. todoitem.js ファイル内の既存のコードを次のコードに置き換えます。
+2. todoitem.js 内の既存のコードを次のコードに置き換えます。
 
 		var azureMobileApps = require('azure-mobile-apps'),
 	    promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -70,7 +70,7 @@
 	    logger.info('Running TodoItem.insert');
 	    
 	    // Define the template payload.
-	    var payload = '{"messageParam":' + context.item.text + '}'; 
+	    var payload = '{"messageParam": "' + context.item.text + '" }';  
 	    
 	    // Execute the insert.  The insert returns the results as a Promise,
 	    // Do the push as a post-execute action within the promise flow.
@@ -97,6 +97,8 @@
 
 		module.exports = table;  
 
-	これにより、新しい ToDo 項目が挿入されたときには item.text を含むテンプレート通知が送信されます。
+	これにより、新しい項目が挿入された場合には item.text を含むテンプレート通知が送信されます。
 
 2. ローカル コンピューターでファイルを編集するときは、サーバー プロジェクトを再発行します。
+
+<!---HONumber=AcomDC_0629_2016-->

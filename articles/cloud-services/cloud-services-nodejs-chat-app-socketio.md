@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="05/04/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
@@ -115,7 +115,7 @@ Azure エミュレーターでアプリケーションをテストする前に�
 
         PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
 
-2.  ブラウザーを開き、**http://127.0.0.1** に移動します。
+2.  ブラウザーを開き、http://127.0.0.1** に移動します。
 
 3.  ブラウザー ウィンドウが開いたら、ニックネームを入力して Enter キーを押します。これにより、特定のニックネームでメッセージが投稿されます。マルチユーザー機能をテストするには、同じ URL を使用して新しいブラウザー ウィンドウを開き、別のニックネームを入力します。
 
@@ -170,4 +170,4 @@ Azure エミュレーターでアプリケーションをテストする前に�
   
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

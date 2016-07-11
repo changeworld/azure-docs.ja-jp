@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/11/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 #Azure Media Services を使用して Apple FairPlay で保護された HLS コンテンツをストリーミングする 
@@ -42,19 +42,33 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 	- Azure アカウント。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
 	- Media Services アカウント。Media Services アカウントを作成するには、「[アカウントの作成](media-services-create-account.md)」を参照してください。
 	- [Apple 開発プログラム](https://developer.apple.com/)にサインアップします。
-	- コンテンツ所有者による[デプロイ パッケージ](https://developer.apple.com/contact/fps/)の取得が Apple によって求められます。要求には、Azure Media Services で KSM (キー セキュリティ モジュール) が既に実装されていること、および最終的な FPS パッケージを要求していることを明記してください。最終的な FPS パッケージに含まれるのは、証明書を生成し、ASK を取得するための指示です。これを使用して FairPlay を構成します。 
+	- コンテンツ所有者による[デプロイ パッケージ](https://developer.apple.com/contact/fps/)の取得が Apple によって求められます。要求には、Azure Media Services で KSM (キー セキュリティ モジュール) が既に実装されていること、および最終的な FPS パッケージを要求していることを明記してください。最終的な FPS パッケージに含まれるのは、証明書を生成し、ASK を取得するための指示です。これを使用して FairPlay を構成します。
 
 	- Azure Media Services .NET SDK バージョン **3.6.0** 以降。
 
 - AMS キーの配信側で次の設定が必要です。
-	- **App Cert (AC)** - 秘密キーを含む .pfx ファイル。このファイルは顧客が作成し、同じ顧客がパスワードで暗号化します。 
+	- **App Cert (AC)** - 秘密キーを含む .pfx ファイル。このファイルは顧客が作成し、同じ顧客がパスワードで暗号化します。
 		
 	 	顧客がキー配信ポリシーを構成する場合、パスワードと .pfx は base64 形式にする必要があります。
 
-	- **App Cert password** - .pfx ファイルを作成するための顧客のパスワード。
-	- **App Cert password ID** - 顧客は **ContentKeyType.FairPlayPfxPassword** 列挙値を使用して、他の AMS キーと同様の方法でパスワードをアップロードする必要があります。そうすることで、キー配信ポリシー オプションの内部で使用する必要がある AMS ID を取得できます。
-	- **iv** - 16 バイトのランダムな値。資産配信ポリシーの iv と一致している必要があります。顧客は IV を生成し、アセット配信ポリシーとキー配信ポリシー オプションの両方に配置します。 
-	- **ASK** - Apple 開発者ポータルを使用して証明書を生成したときに受け取るアプリケーションの秘密キー (Application Secret Key) です。開発チームごとに一意の ASK が割り当てられます。ASK のコピーを保存して、安全な場所に保管してください。後から ASK を FairPlayAsk として Azure Media services に構成する必要があります。 
+		次の手順では、FairPlay 用の pfx 証明書を生成する方法について説明します。
+		
+		1. https://slproweb.com/products/Win32OpenSSL.html から OpenSSL をインストールします
+		
+			Apple によって提供される FairPlay 証明書とその他のファイルが含まれるフォルダーに移動します。
+		
+		2. cer を pem に変換するコマンド ライン:
+		
+			"C:\\OpenSSL-Win32\\bin\\openssl.exe" x509 -inform der -in fairplay.cer -out fairplay-out.pem
+		
+		3. pem を、秘密キーを備えた pfx (OpenSSL によって pfx ファイルのパスワードが求められます) に変換するコマンド ライン。
+		
+			"C:\\OpenSSL-Win32\\bin\\openssl.exe" pkcs12 -export -out fairplay-out.pfx -inkey privatekey.pem -in fairplay-out.pem -passin file:privatekey-pem-pass.txt
+		
+	- **App Cert パスワード** - .pfx ファイルを作成するための顧客のパスワード。
+	- **App Cert パスワード ID** - 顧客は **ContentKeyType.FairPlayPfxPassword** 列挙値を使用して、他の AMS キーと同様の方法でパスワードをアップロードする必要があります。そうすることで、キー配信ポリシー オプションの内部で使用する必要がある AMS ID を取得できます。
+	- **iv** - 16 バイトのランダムな値。資産配信ポリシーの iv と一致している必要があります。顧客は IV を生成し、アセット配信ポリシーとキー配信ポリシー オプションの両方に配置します。
+	- **ASK** - ASK (アプリケーション シークレット キー) は、Apple 開発者ポータルを使用して証明書を生成したときに受け取ります。開発チームごとに一意の ASK が割り当てられます。ASK のコピーを保存して、安全な場所に保管してください。後から ASK を FairPlayAsk として Azure Media services に構成する必要があります。
 	-  **ASK ID** - 顧客が ASK を AMS にアップロードするときに取得されます。顧客は **ContentKeyType.FairPlayASk** 列挙値を使用して ASK をアップロードする必要があります。これにより AMS ID が返されます。これは、キー配信ポリシー オプションを設定するときに使用する ID です。
 
 - FPS のクライアント側で、次の設定が必要です。
@@ -62,8 +76,8 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 - FairPlay で暗号化されたストリームを再生するには、まず実際の ASK を取得してから、実際の証明書を生成する必要があります。そのプロセスで、次の 3 つの部分が作成されます。
 
-	-  .der 
-	-  .pfx 
+	-  .der
+	-  .pfx
 	-  .pfx のパスワード
  
 - **AES-128 CBC** 暗号化で HLS をサポートしているクライアントは、OS X 上の Safari、Apple TV、iOS です。
@@ -72,27 +86,27 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 以下では、Media Services ライセンス配信サービスと動的暗号化を使用して、FairPlay で資産を保護するときに実行する必要のある一般的な手順について説明します。
 
-1. 資産を作成し、その資産にファイルをアップロードします。 
+1. 資産を作成し、その資産にファイルをアップロードします。
 1. ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードします。
-1. コンテンツ キーを作成し、それをエンコードした資産に関連付けます。  
-1. コンテンツ キーの承認ポリシーを構成します。コンテンツ キーの承認ポリシーを作成するときに、次のものを指定する必要があります。 
+1. コンテンツ キーを作成し、それをエンコードした資産に関連付けます。
+1. コンテンツ キーの承認ポリシーを構成します。コンテンツ キーの承認ポリシーを作成するときに、次のものを指定する必要があります。
 	
-	- 配信方法 (ここでは FairPlay) 
+	- 配信方法 (ここでは FairPlay)
 	- FairPlay ポリシー オプションの構成FairPlay を構成する方法の詳細については、以下のサンプルの ConfigureFairPlayPolicyOptions() メソッドをご覧ください。
 	
 		>[AZURE.NOTE] ほとんどの場合、証明書と ASK は 1 組だけなので、FairPlay ポリシー オプションを構成する必要があるのは 1 回のみです。
-	- 制限 (オープンまたはトークン) 
-	- キーをクライアントに配信する方法を定義する、キー配信タイプに固有の情報 
+	- 制限 (オープンまたはトークン)
+	- キーをクライアントに配信する方法を定義する、キー配信タイプに固有の情報
 	
 2. 資産配信ポリシーを構成します。配信ポリシーの構成は次のとおりです。
 
-	- 配信プロトコル (HLS) 
-	- 動的暗号化のタイプ (共通 CBC 暗号化) 
-	- ライセンス取得 URL 
+	- 配信プロトコル (HLS)
+	- 動的暗号化のタイプ (共通 CBC 暗号化)
+	- ライセンス取得 URL
 	
 	>[AZURE.NOTE]FairPlay と他の DRM で暗号化されたストリームを配信する場合は、別々の配信ポリシーを構成する必要があります。
 	>
-	>- 1 つは、DASH with CENC (PlayReady + WideVine) と Smooth with PlayReady を構成するための IAssetDeliveryPolicy 
+	>- 1 つは、DASH with CENC (PlayReady + WideVine) と Smooth with PlayReady を構成するための IAssetDeliveryPolicy
 	>- もう 1 つは、HLS 向けに FairPlay を構成するための IAssetDeliveryPolicy
 
 1. ストリーミング URL を取得するために OnDemand ロケーターを作成します。
@@ -540,4 +554,4 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

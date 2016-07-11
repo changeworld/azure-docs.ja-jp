@@ -87,6 +87,13 @@ Key Vault の操作には次の SDK を使用できます。
 
 Key Vault と Azure の統合と使用に関するその他のタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け ARM テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。
 
+## Key Vault との統合
+
+Key Vault を利用したり Key Vault と連携したりするその他のシナリオとサービスについては、以下の記事で取り上げています。
+
+- [Azure Disk Encryption](../azure-security-disk-encryption.md) では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を利用して、OS およびデータ ディスクのボリュームの暗号化を提供します。ソリューションは Azure Key Vault と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、Azure ストレージで保存中の仮想マシン ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
+
+
 ## 対応ライブラリ
 
 - [Microsoft Azure Key Vault Core Library](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/1.0.0): 識別子からキーを検索し、キーを使用して操作を実行する、`IKey` および `IKeyResolver` インターフェイスを提供します。
@@ -97,4 +104,4 @@ Key Vault と Azure の統合と使用に関するその他のタスク固有の
 - [Key Vault Blog](http://aka.ms/kvblog)
 - [Key Vault Forum](http://aka.ms/kvforum)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

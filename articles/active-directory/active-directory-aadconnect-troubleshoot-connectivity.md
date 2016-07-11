@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="06/27/2016"
 	ms.author="andkjell"/>
 
 # Azure AD Connect での接続に関する問題のトラブルシューティング
@@ -36,11 +36,11 @@ Microsoft 以外の一部のブログでは、machine.config ではなく miiser
 URL | ポート | 説明
 ---- | ---- | ----
 mscrl.microsoft.com | HTTP/80 | CRL リストのダウンロードに使用します。
-\*.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。
-\*.entrust.com | HTTP/80 | MFA の CRL リストのダウンロードに使用します。
-\*.windows.net | HTTPS/443 | Azure AD へのサインインに使用します。
+*.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。
+*.entrust.com | HTTP/80 | MFA の CRL リストのダウンロードに使用します。
+*.windows.net | HTTPS/443 | Azure AD へのサインインに使用します。
 secure.aadcdn.microsoftonline-p.com | HTTPS/443 | MFA に使用します。
-\*.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリの構成とデータのインポート/エクスポートに使用します。
+*.microsoftonline.com | HTTPS/443 | Azure AD ディレクトリの構成とデータのインポート/エクスポートに使用します。
 
 ## ウィザードでのエラー
 インストール ウィザードでは、2 種類のセキュリティ コンテキストを使用しています。**[Azure AD に接続]** ページでは、現在サインインしているユーザーを使用します。**[構成]** ページでは、使用するセキュリティ コンテキストを[同期エンジンのサービスを実行しているアカウント](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)に変更します。ここで行うプロキシ構成はコンピューターに対してグローバルになるため、構成に何らかの問題があると、ほとんどの場合はすぐにウィザードの **[Azure AD に接続]** ページに反映されることになります。
@@ -175,4 +175,4 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

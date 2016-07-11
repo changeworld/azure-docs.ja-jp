@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/10/2016"
+   ms.date="06/23/2016"
    ms.author="navale;tomfitz;"/>
    
 # Resource Manager REST API
@@ -240,4 +240,4 @@ Content-Type: application/json
 
 このドキュメントを読みやすくするために、この要求に対する非常に長い JSON の応答は省略されています。応答には、先ほど作成したテンプレート化されたデプロイに関する情報が含まれます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/13/2016"
+   ms.date="06/27/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティ センターでのセキュリティに関する推奨事項の管理
@@ -76,9 +76,9 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 |[マルウェア対策の有効化](security-center-enable-antimalware.md)|マルウェア対策プログラムを VM (Windows VM のみ) にプロビジョニングすることをお勧めします。|
 |サブネットとネットワーク インターフェイス上でネットワーク セキュリティ グループを有効化|サブネットとネットワーク インターフェイス上でネットワーク セキュリティ グループ (NSG) を有効にすることをお勧めします。|
 |パブリックの外部エンドポイントを通じたアクセスを制限|NSG に着信トラフィックのルールを構成することをお勧めします。|
-|サーバーの SQL 監査の有効化|Azure SQL サーバーの監査を有効にすることをお勧めします (Azure SQL サービスのみ。仮想マシンで実行されている SQL を除く)。|
-|データベースの SQL 監査の有効化|Azure SQL データベースの監査を有効にすることをお勧めします (Azure SQL サービスのみ。仮想マシンで実行されている SQL を除く)。|
-|SQL データベースでの透過的なデータ暗号化の有効化|SQL データベース (Azure SQL のサービスのみ) に対して暗号化を有効にすることをお勧めします。|
+|[サーバーの SQL 監査の有効化](security-center-enable-auditing-on-sql-servers.md)|Azure SQL サーバーの監査を有効にすることをお勧めします (Azure SQL サービスのみ。仮想マシンで実行されている SQL を除く)。|
+|[データベースの SQL 監査の有効化](security-center-enable-auditing-on-sql-databases.md)|Azure SQL データベースの監査を有効にすることをお勧めします (Azure SQL サービスのみ。仮想マシンで実行されている SQL を除く)。|
+|[SQL データベースでの透過的なデータ暗号化の有効化](security-center-enable-transparent-data-encryption.md)|SQL データベース (Azure SQL のサービスのみ) に対して暗号化を有効にすることをお勧めします。|
 |VM エージェントのデプロイ|VM エージェントを必要とする VM を確認できます。パッチのスキャン、基準のスキャン、およびマルウェア対策プログラムをプロビジョニングするには、VM 上に VM エージェントをインストールする必要があります。既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。「[VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」の記事には、VM エージェントのインストール方法が記載されています。|
 | [ディスク暗号化の適用](security-center-apply-disk-encryption.md) |Azure Disk Encryption を使用して VM ディスクを暗号化することをお勧めします (Windows VM および Linux VM)。VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。|
 |セキュリティの連絡先詳細の提供 | 各サブスクリプションのセキュリティの連絡先情報を提供することをお勧めします。連絡先情報は、電子メール アドレスと電話番号です。セキュリティ チームがリソースの侵害に気付いた場合、この情報を使用してご連絡します。 |
@@ -109,11 +109,11 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 ## 次のステップ
 このドキュメントでは、セキュリティ センターのセキュリティに関する推奨事項について説明しました。セキュリティ センターの詳細については、次を参照してください。
 
-- 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 -- Azure サブスクリプションとリソース グループに対するセキュリティ ポリシーの構成方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」 -- Azure リソースの正常性を監視する方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理と対応の方法について説明しています。
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- 「[Azure セキュリティ センターのよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+- [Azure Security Center でのセキュリティ正常性の監視](security-center-monitoring.md) -- Azure リソースの正常性を監視する方法について説明しています。
+- [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) -- セキュリティの警告の管理と対応の方法について説明しています。
+- [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- [Azure Security Center に関する FAQ](security-center-faq.md) -- このサービスの使用に関してよく寄せられる質問が記載されています。
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
@@ -123,4 +123,4 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 [5]: ./media/security-center-recommendations/select-enable-antimalware.png
 [6]: ./media/security-center-recommendations/install-antimalware.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/27/2016"    
+	ms.date="06/22/2016"    
 	ms.author="juliako"/>
 
 
@@ -32,7 +32,7 @@
 - [自動インターレース解除を無効にする](media-services-custom-mes-presets-with-dotnet.md#deinterlacing)
 - [オーディオのみのプリセット](media-services-custom-mes-presets-with-dotnet.md#audio_only)
 
-##<a id="encoding_with_dotnet"></a>Media Services .NET SDK でエンコードする
+##<a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
 
 次のコード サンプルでは、Media Services SDK を使用して次のタスクを実行します。
 
@@ -42,7 +42,7 @@
 
 			// Load the XML (or JSON) from the local file.
 		    string configuration = File.ReadAllText(fileName);  
-- エンコード タスクをジョブに追加します。 
+- エンコード タスクをジョブに追加します。
 - エンコードする入力資産を指定します。
 - エンコードされた資産が含まれる出力資産を作成します。
 - ジョブの進行状況を確認するイベント ハンドラーを追加します。
@@ -237,9 +237,9 @@
 
 ##<a id="thumbnails"></a>サムネイルを生成する
 
-このセクションでは、サムネイルを生成するプリセットをカスタマイズする方法を紹介します。下に定義されているプリセットには、ファイルとサムネイルの生成に必要な情報をエンコードする方法に関する情報が含まれています。[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に保存されている MES プリセットを利用し、サムネイルを生成するコードを追加できます。
+このセクションでは、サムネイルを生成するプリセットをカスタマイズする方法を紹介します。下に定義されているプリセットには、ファイルとサムネイルの生成に必要な情報をエンコードする方法に関する情報が含まれています。[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、サムネイルを生成するコードを追加できます。
 
->[AZURE.NOTE]単一ビットレートのビデオにエンコードする場合、次のプリセットの設定 **SceneChangeDetection** は true にのみ設定できます。マルチビットレートのビデオにエンコードする場合、**SceneChangeDetection** を true に設定すると、エンコーダーはエラーを返します。
+>[AZURE.NOTE]単一ビットレートのビデオにエンコードする場合、次のプリセットの **SceneChangeDetection** 設定は true にのみ設定できます。マルチビットレートのビデオにエンコードする場合、**SceneChangeDetection** を true に設定すると、エンコーダーはエラーを返します。
 
 
 スキーマの詳細については、[この](https://msdn.microsoft.com/library/mt269962.aspx)トピックを参照してください。
@@ -443,9 +443,9 @@
 
 ##<a id="trim_video"></a>動画をトリミングする (クリッピング)
 
-このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。エンコーダーは、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングする場合にも利用できます。それに関する詳細は[このブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)にあります。
+このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。エンコーダーを使用して、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングすることもできます。詳細については、[このブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)をご覧ください。
 
-動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に保存されている MES プリセットを利用し、**Sources** 要素を変更します (下記参照)。StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。次の例では、入力ビデオの開始タイムスタンプは 0 であると想定しています。なお、**Sources** 要素はスキーマの先頭に配置する必要があります。
+動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照)。StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。次の例では、入力ビデオの開始タイムスタンプは 0 であると想定しています。**Sources** 要素はスキーマの先頭に配置する必要があります。
  
 ###<a id="json"></a>JSON プリセット
 	
@@ -569,7 +569,7 @@
 
 ###XML プリセット
 	
-動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に保存されている MES プリセットを利用し、**Sources** 要素を変更します (下記参照)。
+動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照)。
 
 	<?xml version="1.0" encoding="utf-16"?>
 	<Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -692,7 +692,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 プリセット ファイルの定義に加え、資産内のどのファイルがオーバーレイ画像であるか、また画像を重ね合わせるソース動画であるかを Media Services に認識させる必要もあります。動画ファイルは**プライマリ** ファイルである必要があります。
 
-上の .NET の例では、2 つの関数 (**UploadMediaFilesFromFolder** および **EncodeWithOverlay**) が定義されています。UploadMediaFilesFromFolder 関数は、フォルダーからファイルをアップロードし (BigBuckBunny.mp4、Image001.png など)、mp4 ファイルを資産内のプライマリ ファイルとして設定します。**EncodeWithOverlay** 関数は、渡されたカスタム プリセット ファイル (次のプリセットなど) を使用して、エンコード タスクを作成します。
+上記の .NET の例では、**UploadMediaFilesFromFolder** と **EncodeWithOverlay** の 2 つの関数を定義しています。UploadMediaFilesFromFolder 関数は、フォルダーからファイルをアップロードし (BigBuckBunny.mp4、Image001.png など)、mp4 ファイルを資産内のプライマリ ファイルとして設定します。**EncodeWithOverlay** 関数は、渡されたカスタム プリセット ファイル (下記のプリセットなど) を使用して、エンコード タスクを作成します。
 
 >[AZURE.NOTE]現時点での制限事項:
 >
@@ -840,13 +840,13 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 	  </Outputs>
 	</Preset>
 
-##<a id="silent_audio"></a>音声が入力されない場合、無音オーディオ トラックを挿入する
+##<a id="silent_audio"></a>入力に音声が含まれていないときに無音オーディオ トラックを挿入する
 
 既定では、映像のみで音声の入っていないエンコーダーに入力を送信すると、映像データのみが含まれるファイルが出力資産に含まれます。プレーヤーによっては、このような出力ストリームを処理できないことがあります。そのような場合、この設定を利用すれば、無音のオーディオ トラックを出力に追加するようにエンコーダーに強制できます。
 
 入力に音声が入っていないとき、無音オーディオ トラックが含まれる資産を生成するようにエンコーダーに強制するには、"InsertSilenceIfNoAudio" 値を指定します。
 
-[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に保存されている MES プリセットを利用し、次のように変更します。
+[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、次のように変更します。
 
 ###JSON プリセット
 
@@ -899,7 +899,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 ##<a id="audio_only"></a>オーディオのみのプリセット
 
-このセクションでは、2 つのオーディオのみの MES プリセット、AAC Audio と AAC Good Quality Audio を実演します。
+このセクションでは、2 つのオーディオのみの MES プリセット (AAC Audio と AAC Good Quality Audio) を示します。
 
 ###AAC Audio 
 
@@ -959,4 +959,4 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0629_2016-->

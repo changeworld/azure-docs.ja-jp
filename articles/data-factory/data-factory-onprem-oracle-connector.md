@@ -23,7 +23,7 @@
 ## インストール 
 Azure Data Factory サービスをオンプレミスの Oracle データベースに接続できるようにするには、次をインストールする必要があります。
 
-- データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上にインストールされた Data Management Gateway。Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータをクラウド サービスに接続するソフトウェアです。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。 
+- データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上にインストールされた Data Management Gateway。Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータをクラウド サービスに接続するソフトウェアです。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。
 - Oracle Data Provider for .NET。これは、[Oracle Data Access Components for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/) に含まれます。ゲートウェイがインストールされているホスト コンピューターに適切なバージョン (32/64 ビット) をインストールします。[Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降にアクセスできます。
 
 > [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
@@ -35,7 +35,7 @@ Azure Data Factory サービスをオンプレミスの Oracle データベー�
 
 1.	[OnPremisesOracle](data-factory-onprem-oracle-connector.md#oracle-linked-service-properties) 型のリンクされたサービス。
 2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
-3.	[OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。 
+3.	[OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
 4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5.	source として [OracleSource](data-factory-onprem-oracle-connector.md#oracle-copy-activity-type-properties) を、sink として [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
@@ -224,7 +224,7 @@ Oracle データベースでの日付の構成方法に基づいて、クエリ�
 1.	[OnPremisesOracle](data-factory-onprem-oracle-connector.md#oracle-linked-service-properties) 型のリンクされたサービス。
 2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
 3.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4.	[OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。 
+4.	[OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5.	source として [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を、sink として [OracleSink](data-factory-onprem-oracle-connector.md#oracle-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルはオンプレミスの Oracle データベース内のテーブルに BLOB から 1 時間ごとにデータをコピーします。下のサンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションの各プロパティのドキュメントを参照してください。
@@ -432,8 +432,8 @@ oracleReaderQuery | カスタム クエリを使用してデータを読み取�
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | (単位 = 時間) 例: 00:30:00 (30 分) | いいえ
-writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。整数 | (単位 = 行数) | いいえ (既定値 = 10000)  
+writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | timespan<br/><br/> 例: 00:30:00 (30 分)。 | いいえ
+writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 | Integer | いいえ (既定値: 10000)  
 sqlWriterCleanupScript | 特定のスライスのデータを消去する方法で実行するコピー アクティビティのユーザー指定のクエリ。 | クエリ ステートメント。 | いいえ
 sliceIdentifierColumnName | コピー アクティビティで、自動生成スライス ID を入力する列のユーザー指定の名前。再実行時、特定のスライスのデータを消去するために使用されます。 | バイナリ (32) のデータ型の列の列名。 | いいえ
 
@@ -477,21 +477,21 @@ XML | String
 
 ## トラブルシューティングのヒント
 
-**問題:** 次のFS**エラー メッセージ** が表示される: コピー アクティビティに次の無効なパラメーターがあります: 'UnknownParameterName'、詳細メッセージ: 要求された .Net Framework Data Provider が見つかりません。インストールされていない可能性があります。
+**問題:** 次の**エラー メッセージ**が表示される: コピー アクティビティは無効なパラメーターを検出しました: 'UnknownParameterName'、詳細メッセージ: 要求された .Net Framework データ プロバイダーが見つかりません。インストールされていない可能性があります。
 
 **考えられる原因**
 
 1. Oracle 用の .NET Framework Data Provider がインストールされていません。
-2. Oracle 用の .NET Framework Data Provider が .NET Framework 2.0 にインストールされ、.NET Framework 4.0 フォルダーで検出されません。 
+2. Oracle 用の .NET Framework Data Provider が .NET Framework 2.0 にインストールされ、.NET Framework 4.0 フォルダーで検出されません。
 
 **解決/回避策**
 
-1. Oracle 用の .NET Provider をインストールしていない場合は[インストール](http://www.oracle.com/technetwork/topics/dotnet/downloads/)した後、シナリオをやり直します。 
-2. プロバイダーをインストールしてもエラー メッセージが表示される場合は、次の操作を行います。 
-	1. 次のフォルダーから .NET 2.0 のコンピューター構成を開きます。<system disk>:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\CONFIG\\machine.config
-	2. **Oracle Data Provider for .NET** を探します。**system.data** の **DbProviderFactories** の下に次のようなエントリを見つけることができます。“<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />”
-2.	このエントリを、v4.0 フォルダーの machine.config ファイル (<system disk>: \\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config) にコピーし、バージョンを 4.xxx.x.x に変更します。
-3.	“gacutil /i [プロバイダーのパス]” を実行して、“<ODP.NET Installed Path>\\11.2.0\\client\_1\\odp.net\\bin\\4\\Oracle.DataAccess.dll” をグローバル アセンブリ キャッシュ (GAC) にインストールします。
+1. Oracle 用の .NET Provider をインストールしていない場合は[インストール](http://www.oracle.com/technetwork/topics/dotnet/downloads/)した後、シナリオをやり直します。
+2. プロバイダーをインストールしてもエラー メッセージが表示される場合は、次の操作を行います。
+	1. <システム ディスク>:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\CONFIG\\machine.config というフォルダーから、.NET 2.0 のコンピューター構成を開きます。
+	2. **Oracle Data Provider for .NET** を探します。**system.data** の **DbProviderFactories** の下に次のようなエントリを見つけることができます: "<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />"
+2.	このエントリを、v4.0 フォルダーの machine.config ファイル (<システム ディスク>:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config) にコピーし、バージョンを 4.xxx.x.x に変更します。
+3.	"gacutil /i [プロバイダーのパス]" を実行して、"<ODP.NET インストール パス>\\11.2.0\\client\_1\\odp.net\\bin\\4\\Oracle.DataAccess.dll" をグローバル アセンブリ キャッシュ (GAC) にインストールします。
 
 
 
@@ -501,4 +501,4 @@ XML | String
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!-----HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

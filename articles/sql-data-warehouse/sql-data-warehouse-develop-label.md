@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="06/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse で、ラベルを使用してクエリをインストルメント化
@@ -54,4 +54,4 @@ WHERE   r.[label] = 'My Query Label'
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0629_2016-->

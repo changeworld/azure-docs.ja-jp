@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="06/27/2016"
 	ms.author="markvi;andkjell"/>
 
 
@@ -109,4 +109,4 @@ Fabrikam では、クラウドと同期する属性の一部が不要である�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="05/04/2016" 
+    ms.date="06/24/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh698319.aspx -->
@@ -31,7 +31,7 @@ Java 用 Azure ライブラリの Javadoc コンテンツは、Javadoc コンテ
 * **[Properties]** ダイアログの左側のウィンドウで、**[Javadoc Location]** をクリックします。**[Javadoc Location]** ダイアログが表示されます。
 * **[Javadoc URL]** または **[Javadoc in archive]** を指定できます。
     * **[Javadoc URL]** を指定する場合は、**http://dl.windowsazure.com/javadoc** や **http://dl.windowsazure.com/storage/javadoc** などの URL を使用します。
-* **[Javadoc in archive]** を使用する場合は、外部ファイルまたはワークスペース ファイルを指定できます。選択したら、必要に応じて参照または検証します。次の例では、Java 用 Azure ライブラリを、**c:\\MyAzureJARs** という名前のローカル フォルダーにダウンロードされている対応する Javadoc JAR に関連付けています。![][ic553487]
+    * **[Javadoc in archive]** を使用する場合は、外部ファイルまたはワークスペース ファイルを指定できます。選択したら、必要に応じて参照または検証します。次の例では、Java 用 Azure ライブラリを、**c:\\MyAzureJARs** という名前のローカル フォルダーにダウンロードされている対応する Javadoc JAR に関連付けています。![][ic553487]
 * *省略可能*: **[Validate]** をクリックします。Javadoc JAR に関する潜在的な問題があれば、ここに表示されます。
 * **[OK]** をクリックします。
 
@@ -61,4 +61,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic553487]: ./media/azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries/ic553487.png
 [ic553488]: ./media/azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries/ic553488.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

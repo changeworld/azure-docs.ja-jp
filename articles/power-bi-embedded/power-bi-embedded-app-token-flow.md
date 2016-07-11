@@ -3,7 +3,7 @@
    description="Power BI Embedded の認証と承認のためのアプリケーション トークンについて"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="dvana"
+   authors="minewiskan"
    manager="NA"
    editor=""
    tags=""/>
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="03/29/2016"
-   ms.author="derrickv"/>
+   ms.date="06/28/2016"
+   ms.author="owend"/>
 
 # Power BI Embedded のアプリケーション トークン フローについて
 
@@ -56,4 +56,4 @@
 - [Microsoft Power BI Embedded の一般的なシナリオ](power-bi-embedded-scenarios.md)
 - [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューを使ってみる)](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

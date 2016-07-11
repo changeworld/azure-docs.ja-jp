@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -101,7 +101,7 @@ Azure クラシック ポータルを使用してストリーミング エンド
 
 3. Akamai 署名ヘッダー認証の構成を指定する。
 
-4. Adobe Flash クライアントについては、クロス ドメインのアクセス ポリシーを指定できます (詳細については、に関するページをご覧ください [クロス ドメイン ポリシー ファイルの仕様](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)。 Microsoft Silverlight クライアントについてはクライアント アクセス ポリシーを指定できます (詳細については、 をご覧ください [(ドメインの境界を越えたサービス提供)](https://msdn.microsoft.com/library/cc197955(v=vs.95).aspx)。
+4. Adobe Flash クライアントについては、クロス ドメインのアクセス ポリシーを指定できます (詳細については、[クロス ドメイン ポリシー ファイルの仕様](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)に関するページをご覧ください)。Microsoft Silverlight クライアントについてはクライアント アクセス ポリシーを指定できます (詳細については、「Making a Service Available Across Domain Boundaries （ドメインの境界を越えたサービス提供)https://msdn.microsoft.com/library/cc197955(v=vs.95).aspx)」をご覧ください)。
 
 5. **[構成]** ボタンをクリックしてカスタム ホスト名も構成できます。詳細については、[StreamingEndpont](https://msdn.microsoft.com/library/dn783468.aspx) のトピックの **CustomHostNames** プロパティをご覧ください。
 
@@ -125,6 +125,7 @@ CDN 統合は、すべての Azure データ センター (米国西部、米国
 
 ![CDN が有効になっているストリーミング エンドポイント][streaming-endpoint-enable-cdn]
 
+>[AZURE.IMPORTANT] Azure CDN と統合された Azure Media Services は、**Azure CDN from Verizon** に実装されています。Azure Media Services に **Azure CDN from Akamai** を使用する場合、[エンドポイントを手動で構成する](../cdn/cdn-create-new-endpoint.md)必要があります。Azure CDN 機能の詳細については、[CDN の概要](../cdn/cdn-overview.md)に関するページをご覧ください。
 
 ###追加の考慮事項
 
@@ -150,4 +151,4 @@ CDN 統合は、すべての Azure データ センター (米国西部、米国
 [configure-origin-configure-custom-host-names]: ./media/media-services-manage-origins/media-services-configure-custom-host-names.png
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

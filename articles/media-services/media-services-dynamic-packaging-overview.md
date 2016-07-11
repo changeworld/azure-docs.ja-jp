@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
- 	ms.date="04/18/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 
@@ -55,9 +55,9 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 2. [Media Encoder Standard エンコーダーを使用して、H.264 MP4 アダプティブ ビットレート セットを生成します](media-services-dotnet-encode-with-media-encoder-standard.md)。
 3. [コンテンツをストリーミングします](media-services-deliver-content-overview.md)。
 
--または-
+- または -
  
-1. 事前にエンコードされた MP4 ファイルをアップロードします。 
+1. 事前にエンコードされた MP4 ファイルをアップロードします。
 
 	>[AZURE.NOTE] このオプションは推奨されません。
 	
@@ -80,4 +80,4 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

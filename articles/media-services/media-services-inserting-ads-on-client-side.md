@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 
@@ -160,9 +160,9 @@ Application/x-javascript – リソースが HTML <**script**> タグで表示�
 
 Application/x-shockwave-flash – リソースが Flash プレーヤーで表示されます。
 
-**<IFrameResource>** は、IFrame で表示可能な HTML リソースを記述します。**<HTMLResource>** は、Web ページに挿入可能な HTML コードを記述します。**<TrackingEvents>** は、追跡イベントと、イベント発生時に要求する URI を指定します。このサンプルでは、acceptinvitation イベントと collapse イベントが追跡されます。**<NonLinearAds>** 要素とその子の詳細については、「IAB.NET/VAST」をご覧ください。**<TrackingEvents>** 要素は、**<NonLinear>** 要素ではなく **<NonLinearAds>** 要素にある点に注意してください。
+**<IFrameResource>** は、IFrame で表示可能な HTML リソースを記述します。**<HTMLResource>** は、Web ページに挿入可能な HTML コードを記述します。**<TrackingEvents>** は、追跡イベントと、イベント発生時に要求する URI を指定します。このサンプルでは、acceptinvitation イベントと collapse イベントが追跡されます。**<NonLinearAds>** 要素とその子の詳細については、「IAB.NET/VAST」をご覧ください。**<TrackingEvents>** 要素は、**<NonLinear>** 要素ではなく ** <NonLinearAds>** 要素にある点に注意してください。
 
-コンパニオン広告は、<CompanionAds> 要素内で定義されます。<CompanionAds> 要素には、1 つ以上の <Companion> 要素を含めることができます。各 <Companion> 要素は、コンパニオン広告を記述します。また、非線形広告でも同じように指定される <StaticResource>、<IFrameResource>、<HTMLResource> を含めることができます。VAST ファイルには、複数のコンパニオン広告を含めることができ、プレーヤー アプリケーションは表示する最適な広告を選択できます。VAST の詳細については、「[VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。
+コンパニオン広告は、<CompanionAds> 要素内で定義されます。<CompanionAds> 要素には、1 つ以上の <Companion> 要素を含めることができます。各 <Companion> 要素は、コンパニオン広告を記述します。また、非線形広告でも同じように指定される <StaticResource>、<IFrameResource>、または <HTMLResource> を含めることができます。VAST ファイルには、複数のコンパニオン広告を含めることができ、プレーヤー アプリケーションは表示する最適な広告を選択できます。VAST の詳細については、「[VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。
 
 ###Digital Video Multiple Ad Playlist (VMAP) ファイルの使用
 
@@ -230,9 +230,9 @@ VMAP ファイルの先頭は、1 つ以上の <AdBreak> 要素 (それぞれ広
 
 <**AdSource**> 要素は、インライン広告応答または広告応答への参照をプレーヤーに提供します。これには、次のいずれかの要素を含めることができます。
 
-- <VASTAdData> - VAST 広告応答が VMAP ファイル内に埋め込まれていることを示します。
-- <AdTagURI> - 別のシステムからの広告応答を参照する URI。
-- <CustomAdData> - VAST 以外の応答を表す任意の文字列。
+- <VASTAdData> は VAST 広告応答が VMAP ファイル内に埋め込まれていることを示します
+- <AdTagURI> - 別のシステムからの広告応答を参照する URI
+- <CustomAdData> - VAST 以外の応答を表す任意の文字列
 
 この例では、VAST 広告応答が含まれる <VASTAdData> 要素を使用してインライン広告応答が指定されます。他の要素の詳細については、「[VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)」をご覧ください。
 
@@ -314,9 +314,9 @@ MAST ファイルを使用すると、広告がいつ表示されるかを定義
 
  
 
-MAST ファイルの先頭は、 **<triggers>** 要素が 1 つ含まれる **<MAST>** 要素です。<triggers> 要素には、広告をいつ再生するかを定義する 1 つ以上の **<trigger>** 要素が含まれています。
+MAST ファイルの先頭は、**<triggers>** 要素が 1 つ含まれる **<MAST>** 要素です。<triggers> 要素には、広告をいつ再生するかを定義する 1 つ以上の **<trigger>** 要素が含まれています。
 
-**<trigger>** 要素には、広告の再生をいつ開始するかを指定する **<startConditions>** 要素が含まれています。**<startConditions>** 要素には、1 つ以上の <condition> 要素が含まれています。各 <condition> が true と評価された場合、<condition> が **< startConditions**> 要素と **<endConditions>** 要素のどちらに含まれているかに応じてそれぞれトリガーが開始されるか、取り消されます。複数の <condition> 要素が存在する場合、それらは暗黙的な OR として扱われるため、いずれかの条件が true と評価されるとトリガーが開始されます。<condition> 要素はネストできます。子の <condition> 要素がプリセットされている場合、それらは暗黙的な AND として扱われるため、トリガーが開始されるにはすべての条件が true と評価される必要があります。<condition> 要素には、条件を定義する次の属性が含まれています。
+**<trigger>** 要素には、広告の再生をいつ開始するかを指定する **<startConditions>** 要素が含まれています。**<startConditions>** 要素には、1 つ以上の <condition> 要素が含まれています。各 <condition> が true と評価された場合、<condition> が **<startConditions>** 要素と **<endConditions>** 要素のどちらに含まれているかに応じて、それぞれトリガーが開始されるか、取り消されます。複数の <condition> 要素が存在する場合、それらは暗黙的な OR として扱われるため、いずれかの条件が true と評価されるとトリガーが開始されます。<condition> 要素はネストできます。子の <condition> 要素がプリセットされている場合、それらは暗黙的な AND として扱われるため、トリガーが開始されるにはすべての条件が true と評価される必要があります。<condition> 要素には、条件を定義する次の属性が含まれています。
 
 1. **type** – 条件、イベント、プロパティの種類を指定します。
 1. **name** – 評価時に使用するイベントまたはプロパティの名前。
@@ -375,7 +375,7 @@ Microsoft.PlayerFramework.Xaml.Samples ソリューションを開くと、多�
 
 ###AdPodPage サンプル
 
-以下は、AdSchedulerPlugin を使用して、広告を表示するタイミングを定義するサンプルです。この例では、ミッドロール広告が 5 秒後に再生されようにスケジュールを設定します。広告ポッド (順番に表示する広告のグループ) は、広告サーバーから返される VAST ファイルで指定されます。VAST ファイルの URI は、<RemoteAdSource> 要素で指定します。
+以下は、AdSchedulerPlugin を使用して、広告を表示するタイミングを定義するサンプルです。この例では、ミッドロール広告が 5 秒後に再生されようにスケジュールを設定します。広告ポッド (順番に表示する広告のグループ) は、広告サーバーから返される VAST ファイルで指定されます。VAST ファイルへの URI は、<RemoteAdSource> 要素で指定します。
 
 	<mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
 	
@@ -813,4 +813,4 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
 
 [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

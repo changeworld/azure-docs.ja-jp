@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="04/08/2016"
+	ms.date="06/24/2016"
 	ms.author="rmcmurray"/>
 
 # BLOB ストレージを使用するオンプレミスのアプリケーション
@@ -26,7 +26,7 @@
 
 - Java Developer Kit (JDK) バージョン 1.6 以降がインストールされていること。
 - Azure SDK がインストールされていること。
-- Azure Libraries for Java の JAR および該当する依存関係 JAR がインストールされ、Java コンパイラで使用されるビルド パスに存在すること。Azure Libraries for Java のインストールについては、「[Azure SDK for Java のダウンロード](../../articles/java-download-azure-sdk.md)」のページをご覧ください。
+- Azure Libraries for Java の JAR および該当する依存関係 JAR がインストールされ、Java コンパイラで使用されるビルド パスに存在すること。Azure Libraries for Java のインストールについては、「[Azure SDK for Java のダウンロード](java-download-azure-sdk.md)」のページをご覧ください。
 - Azure ストレージ アカウントがセットアップされていること。この記事のコードでは、ストレージ アカウントのアカウント名とアカウント キーが使用されます。ストレージ アカウントの作成については、「[方法: ストレージ アカウントを作成する](storage-create-storage-account.md#create-a-storage-account)」をご覧ください。アカウント キーの取得については[ストレージ アクセス キーの表示およびコピー](storage-create-storage-account.md#view-and-copy-storage-access-keys)に関するページをご覧ください。
 
 - ローカル画像ファイルが作成され、c:\\myimages\\image1.jpg に保存されていること。または、例に含まれている **FileInputStream** コンストラクターを変更して、別の画像パスとファイル名を使用することもできます。
@@ -358,6 +358,5 @@
 - [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
 - [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
-  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

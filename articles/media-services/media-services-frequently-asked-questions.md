@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="03/02/2016"  
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 
@@ -52,7 +52,7 @@ A: Media Services は、ストリーミング コンテンツ (例: http://{AMSA
 
 Q: REST を使用して接続する方法を教えてください。
 
-A: https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect_programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
+A: https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
 
 
 Q: エンコーディング プロセスでビデオをローテーションする方法を教えてください。
@@ -83,4 +83,4 @@ A: [メディア エンコーダー スタンダード](media-services-dotnet-en
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -12,7 +12,7 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
-    ms.workload="data-management" 
+   ms.workload="sqldb-bcdr"
     ms.date="06/14/2016"
     ms.author="sstein"/>
 
@@ -26,7 +26,7 @@
 
 この記事では、PowerShell を使用して SQL Database のアクティブ geo レプリケーションを構成する方法について説明します。
 
-フェールオーバーを開始する方法については、[Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-powershell.md)に関する記事をご覧ください。
+PowerShell を使用してフェールオーバーを開始するには、「[PowerShell を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-powershell.md)」を参照してください。
 
 >[AZURE.NOTE] すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
 
@@ -34,7 +34,7 @@
 
 PowerShell を使用してアクティブ geo レプリケーションを構成するには、次のものが必要です。
 
-- Azure サブスクリプション。 
+- Azure サブスクリプション。
 - Azure SQL Database - レプリケートするプライマリ データベースです。
 - Azure PowerShell 1.0 以降。Azure PowerShell モジュールをダウンロードしてインストールするには、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
@@ -143,24 +143,9 @@ sys.geo\_replication\_links のカタログ ビューに表示される順方向
     $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink –PartnerResourceGroup "rg2” –PartnerServerName "srv2”
 
 
-  
-
 ## 次のステップ
 
-- [Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-powershell.md)
-- [災害復旧訓練](sql-database-disaster-recovery-drills.md)
+- アクティブ geo レプリケーションの詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
 
-
-
-
-## その他のリソース
-
-- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
-- [新しい geo レプリケーション機能に関するスポットライト](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
-- [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
-- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

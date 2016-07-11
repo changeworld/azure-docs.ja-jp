@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/05/2016"
+   ms.date="06/23/2016"
    ms.author="tomfitz"/>
 
 # キー コンテナーのシークレットのテンプレート スキーマ
@@ -40,7 +40,7 @@
 
 | 名前 | 値 |
 | ---- | ---- | 
-| type | 列挙型<br />必須<br />Key Vault の子リソースとしてデプロイする場合は **secrets**。最上位リソースとしてデプロイする場合は<br /> **Microsoft.KeyVault/vaults/secrets**。<br /><br />作成するリソースの種類。 |
+| type | 列挙型<br />必須<br />Key Vault の子リソースとしてデプロイする場合は **secrets**。最上位リソースとしてデプロイする場合は <br />**Microsoft.KeyVault/vaults/secrets**。<br /><br />作成するリソースの種類。 |
 | apiVersion | 列挙型<br />必須<br />**2015-06-01** または **2014-12-19-preview**<br /><br />リソースの作成に使用する API バージョン。 | 
 | name | 文字列<br />必須<br />Key Vault の子リソースとしてデプロイする場合は 1 つの単語。既存の Key Vault に追加する最上位リソースとしてデプロイする場合は **{key-vault-name}/{secret-name}** 形式。<br /><br />作成するシークレットの名前。 |
 | properties | オブジェクト<br />必須<br />[プロパティ オブジェクト](#properties)<br /><br />作成するシークレットの値を指定するオブジェクト。 |
@@ -71,13 +71,13 @@
             "tenantId": {
                 "type": "string",
                 "metadata": {
-                   "description": "Tenant Id for the subscription and use assigned access to the vault. Available from the Get-AzureRMSubscription PowerShell cmdlet"
+                   "description": "Tenant ID for the subscription and use assigned access to the vault. Available from the Get-AzureRmSubscription PowerShell cmdlet"
                 }
             },
             "objectId": {
                 "type": "string",
                 "metadata": {
-                    "description": "Object Id of the AAD user or service principal that will have access to the vault. Available from the Get-AzureRMADUser or the Get-AzureRMADServicePrincipal cmdlets"
+                    "description": "Object ID of the AAD user or service principal that will have access to the vault. Available from the Get-AzureRmADUser or the Get-AzureRmADServicePrincipal cmdlets"
                 }
             },
             "keysPermissions": {
@@ -227,4 +227,4 @@
 - Key Vault の全般的な情報については、「[Azure Key Vault の概要](./key-vault/key-vault-get-started.md)」を参照してください。
 - テンプレートをデプロイするときにキー コンテナーのシークレットを参照する例については、[デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)ことに関する記事を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

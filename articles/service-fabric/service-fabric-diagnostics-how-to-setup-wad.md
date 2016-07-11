@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/20/2016"
+   ms.date="06/24/2016"
    ms.author="toddabel"/>
 
 
@@ -192,5 +192,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $
 
 ## 関連記事:
 * [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
+* [Log Analytics の Service Fabric ソリューション](../log-analytics/log-analytics-service-fabric.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->
