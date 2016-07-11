@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="05/04/2016" 
+    ms.date="06/24/2016" 
     ms.author="robmcm" />
 
 # Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法
@@ -74,7 +74,7 @@ Azure ACS はクレーム ベース ID のプリンシパルに基づいてお�
 このガイドのタスクを完了するには、次のものが必要です。
 
 - A Java Developer Kit (JDK) v 1.6 以降。
-- Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。 
+- Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。
 - Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、GlassFish、JBoss Application Server、Jetty など)。
 - Azure サブスクリプション。<http://www.microsoft.com/windowsazure/offers/> から入手できます。
 - Azure Toolkit for Eclipse、2014 年 4 月のリリース以降。詳細については、「[Azure Toolkit for Eclipse のインストール](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)」を参照してください。
@@ -86,8 +86,8 @@ Azure ACS はクレーム ベース ID のプリンシパルに基づいてお�
 Azure で Access Control Service (ACS) の使用を開始するには、ACS 名前空間を作成する必要があります。名前空間では、アプリケーション内から ACS リソースのアドレスを指定するための一意のスコープが提供されます。
 
 1. [Azure 管理ポータル][]にログインします。
-2. **[Active Directory]** をクリックします。 
-3. 新しい Access Control 名前空間を作成するには、[**新規**]、[**App Services**]、[**Access Control**]、[**簡易作成**] の順にクリックします。 
+2. **[Active Directory]** をクリックします。
+3. 新しい Access Control 名前空間を作成するには、[**新規**]、[**App Services**]、[**Access Control**]、[**簡易作成**] の順にクリックします。
 4. 名前空間の名前を入力します。名前が一意であるかが確認されます。
 5. 名前空間が使用されるリージョンを選択します。パフォーマンスを最高にするには、アプリケーションを展開するリージョンと同じにし、[作成] をクリックします。
 6. 複数のサブスクリプションがある場合は、ACS 名前空間に使用するサブスクリプションを選択します。
@@ -115,9 +115,9 @@ Azure で Access Control Service (ACS) の使用を開始するには、ACS 名�
 3.  **[証明書利用者アプリケーションの追加]** ページで、次の操作を行います。
     1.  **[名前]** に RP の名前を入力します。このチュートリアルでは、「**Azure Web App**」と入力します。
     2.  **[モード]** で **[設定を手動で入力する]** を選択します。
-    3.  **[領域]** で、ACS によって発行されたセキュリティ トークンを適用する URI を入力します。このタスクでは、**「**http://localhost:8080/**」と入力します。![コンピューティング エミュレーターで使用する証明書利用者領域][relying_party_realm_emulator]
-4.  **[戻り先 URL]** で、ACS がセキュリティ トークンを返す URL を入力します。このタスクでは、**「**http://localhost:8080/MyACSHelloWorld/index.jsp**」と入力します。![コンピューティング エミュレーターで使用する証明書利用者の戻り先 URL][relying_party_return_url_emulator]
-5.  その他のフィールドは、既定値のままにします。
+    3.  **[領域]** で、ACS によって発行されたセキュリティ トークンを適用する URI を入力します。このタスクでは、**「http://localhost:8080/**」と入力します。![コンピューティング エミュレーターで使用する証明書利用者領域][relying_party_realm_emulator]
+    4.  **[戻り先 URL]** で、ACS がセキュリティ トークンを返す URL を入力します。このタスクでは、**「http://localhost:8080/MyACSHelloWorld/index.jsp**」と入力します。![コンピューティング エミュレーターで使用する証明書利用者の戻り先 URL][relying_party_return_url_emulator]
+    5.  その他のフィールドは、既定値のままにします。
 
 4.  **[保存]** をクリックします。
 
@@ -130,7 +130,7 @@ Azure で Access Control Service (ACS) の使用を開始するには、ACS 名�
 1.  ACS 管理ポータルのメイン ページで、**[規則グループ]** をクリックします。
 2.  **[規則グループ]** ページで、**[Azure Web App の既定の規則グループ]** をクリックします。
 3.  **[規則グループの編集]** ページで **[生成]** をクリックします。
-4.  **[規則の生成: Azure Web App の既定の規則グループ]** ページで、[Windows Live ID] チェック ボックスがオンになっていることを確認し、**[生成]** をクリックします。	
+4.  **[規則の生成: Azure Web App の既定の規則グループ]** ページで、[Windows Live ID] チェック ボックスがオンになっていることを確認し、**[生成]** をクリックします。
 5.  **[規則グループの編集]** ページで **[保存]** をクリックします。
 
 ## ACS 名前空間への証明書のアップロード
@@ -152,7 +152,7 @@ Azure で Access Control Service (ACS) の使用を開始するには、ACS 名�
 
 ACS 管理ポータルの [アプリケーション統合] ページでは、Java Web アプリケーション (RP アプリケーション) と ACS が連携する構成に必要なすべての情報とコードを確認できます。この情報は、Java Web アプリケーションをフェデレーション認証用に構成するときに必要です。
 
-1.  ACS 管理ポータルで、**[アプリケーション統合]** をクリックします。  
+1.  ACS 管理ポータルで、**[アプリケーション統合]** をクリックします。
 2.  **[アプリケーション統合]** ページで **[ログイン ページ]** をクリックします。
 3.  **[ログイン ページ統合]** ページで **[Azure Web App]** をクリックします。
 
@@ -240,7 +240,7 @@ Azure にデプロイするには、ACS 名前空間の証明書利用者領域�
 
 13. **[Finish]** をクリックして、**[Edit Library]** ダイアログ ボックスを閉じます。
 14. **[OK]** をクリックして **[Properties for MyACSHelloWorld]** ダイアログ ボックスを閉じます。
-15. Eclipse で、**[Publish to Azure Cloud]** ボタンをクリックします。プロンプトに応答します。手順は「**Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)**」の「[To deploy your application to Azure (アプリケーションを Azure に展開するには)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)」で行ったものと同様です。 
+15. Eclipse で、**[Publish to Azure Cloud]** ボタンをクリックします。プロンプトに応答します。手順は「**Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)**」の「[To deploy your application to Azure (アプリケーションを Azure に展開するには)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)」で行ったものと同様です。
 
 Web アプリケーションのデプロイ後、開いているブラウザー セッションをすべて閉じてから、Web アプリケーションを実行します。Windows Live ID 資格情報でログインするように求められます。その資格情報は証明書利用者アプリケーションの戻り先 URL に送信されます。
 
@@ -258,7 +258,7 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 3. **[追加]** をクリックします。
 4. **[Add Component]** ダイアログ ボックスで、次の操作を行います。
     1. **[Import]** セクション:
-        1. **[File]** ボタンをクリックして、使用する証明書に移動します。 
+        1. **[File]** ボタンをクリックして、使用する証明書に移動します。
         2. **[Method]** で、**[copy]** を選択します。
     2. **[As Name]** で、テキスト ボックスをクリックし、既定の名前をそのまま使用します。
     3. **[Deploy]** セクション:
@@ -311,4 +311,4 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sqldb-quickstart"
-   ms.date="06/01/2016"
+   ms.date="06/22/2016"
    ms.author="carlrab"/>
 
 # Azure SQL Database ソリューション クイック スタート ガイド
@@ -30,7 +30,7 @@ GitHub SQL Server サンプル リポジトリの「[Manage Mulitiple Elastic Po
 
 このソリューション クイック スタート ガイドでは、エラスティック プールを活用して、コスト効率性に優れたスケーラブルな SaaS アプリケーションのデータベース バックエンドを提供する、ソリューションとしてのソフトウェア (SaaS) シナリオに対するソリューションをご紹介します。こちらのソリューションでは、 Azure ポータルを補完するカスタム ダッシュボードを使用して、ロード ジェネレーターがエラスティック プールに作成したロードを視覚化する、 Web アプリの実装について説明します。
 
-GitHub SQL Server サンプル リポジトリの[エラスティック プールを活用した SaaS シナリオ](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools)に関する記事では、ロード ジェネレーターと監視 Web アプリについて紹介し、その働きと使用方法に関するドキュメントを提供しています。
+GitHub SQL Server サンプル リポジトリの「[Elastic Pool Custom Dashboard for Saas (Saas のためのエラスティック プール カスタム ダッシュボード)](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard)」では、ロード ジェネレーターと監視 Web アプリについて紹介し、その働きと使用方法に関するドキュメントを提供しています。
 
 ## Entity Framework と Code First 開発を使用した Azure SQL Database の作成
 
@@ -52,4 +52,4 @@ GitHub SQL Server サンプル リポジトリの[エラスティック プー�
 
 [Azure SQL Database チュートリアルの確認](sql-database-explore-tutorials.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

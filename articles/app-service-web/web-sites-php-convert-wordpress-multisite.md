@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 
@@ -78,7 +78,7 @@ Web アプリの *wp-admin* 領域にログインし、**[ツール]** メニュ
 
 **無料** [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) プラン モードでは Web Apps へのカスタム ドメインの追加はサポートされません。**Shared** モードまたは **Standard** モードに切り替える必要があります。これを行うには、次の手順を実行します。
 
-* Azure ポータルにログインして、自分の Web アプリに移動します。 
+* Azure ポータルにログインして、自分の Web アプリに移動します。
 * **[設定]** で **[スケールアップ]** タブをクリックします。
 * **[全般]** で、*[Shared]* または *[Standard]* を選択します。
 * **[保存]** をクリックします。
@@ -153,4 +153,4 @@ Azure Web Apps では、Web アプリに追加できるドメインの数に制�
 
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

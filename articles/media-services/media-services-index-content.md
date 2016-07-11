@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/08/2016"   
+	ms.date="06/22/2016"   
 	ms.author="adsolank;juliako;johndeu"/>
 
 
@@ -154,9 +154,9 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 ファイル名 | 説明
 ----------|------------
 __InputFileName.aib__ | オーディオ インデックス BLOB ファイル。<br /><br />オーディオ インデックス BLOB (AIB) ファイルは、フルテキスト検索を使用して Microsoft SQL Server で検索できるバイナリ ファイルです。AIB ファイルは、各単語に豊富な代替候補を含み、より充実した検索を実現しているため、単純なキャプション ファイルよりも強力です。<br/><br/>Microsoft SQL Server 2008 以降を実行しているマシンに Indexer SQL アドオンをインストールする必要があります。Microsoft SQL サーバーのフル テキスト検索を使用して、AIB を検索すると、WAMI によって生成されたクローズド キャプション ファイルを検索するよりも正確な検索結果が得られます。これは、クローズド キャプション ファイルがオーディオの各セグメントに信頼度が最上位の単語を含んでいるのに対し、AIB には代替候補として似ているサウンドの単語が含まれているためです。話された単語の検索が最も重要な場合は、AIB を Microsoft SQL Server と組み合わせて使用することをお勧めします。<br/><br/> アドオンをダウンロードするには、<a href="http://aka.ms/indexersql">[Azure Media Indexer SQL アドオン]</a> をクリックします。<br/><br/>Apache Lucene/Solr などの他の検索エンジンを使用してクローズド キャプションとキーワードの XML ファイルに基づいたビデオをインデックスすることも可能ですが、検索精度は低くなります。
-__InputFileName.smi__<br />\_\_InputFileName.ttml\_\_<br />\_\_InputFileName.vtt\_\_ |SAMI、TTML、および WebVTT 形式のクローズド キャプション (CC) ファイル<br/>聴覚障がいを持つユーザーが利用しやすいオーディオとビデオ ファイルを提供します。<br/><br/><br/>クローズド キャプション ファイルには、ソース ビデオに含まれる音声の認識しやすさに基づいてインデックス作成ジョブを評価する <b>Recognizability</b> と呼ばれるタグが存在します。<b>Recognizability</b> の値を使用して、出力ファイルの利用価値を検査することができます。低いスコアは、オーディオの品質が良好ではないために、インデックスの作成結果が良好ではないという意味です。
+__InputFileName.smi__<br />__InputFileName.ttml__<br />__InputFileName.vtt__ |SAMI、TTML、および WebVTT 形式のクローズド キャプション (CC) ファイル<br/>聴覚障がいを持つユーザーが利用しやすいオーディオとビデオ ファイルを提供します。<br/><br/><br/>クローズド キャプション ファイルには、ソース ビデオに含まれる音声の認識しやすさに基づいてインデックス作成ジョブを評価する <b>Recognizability</b> と呼ばれるタグが存在します。<b>Recognizability</b> の値を使用して、出力ファイルの利用価値を検査することができます。低いスコアは、オーディオの品質が良好ではないために、インデックスの作成結果が良好ではないという意味です。
 __InputFileName.kw.xml<br />InputFileName.info__ |キーワードと情報ファイル。<br/><br/>キーワードのファイルは、頻度とオフセットの情報を含む、音声コンテンツから抽出されたキーワードを含む XML ファイルです。<br/><br/>情報ファイルは、認識された各用語に関する詳細な情報が含まれるプレーンテキスト ファイルです。最初の行は特殊で、認識度スコアを含みます。後続の各行は、開始時刻、終了時刻、言葉/言い回し、信頼度データのタブ区切り一覧になります。時間は秒単位で、信頼度は 0 ～ 1 の数値として指定されます。<br/><br/>行の例: "1.20 1.45 word 0.67" <br/><br/>これらのファイルは、音声分析を実行する、Bing、Google または Microsoft SharePoint などの検索エンジンに公開してメディア ファイルをより検索しやすくする、または関連性の高い広告を配信するなど、さまざまな目的で使用できます。
-__JobResult.txt__ |出力マニフェストは、複数のファイルをインデックスするときにのみ存在します。次の情報が格納されます。<br/><br/><table border="1"><tr><th>InputFile</th><th>Alias</th><th>MediaLength</th><th>Error</th></tr><tr><td>a.mp4</td><td>Media\_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media\_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media\_3</td><td>600</td><td>0</td></tr></table><br/>
+__JobResult.txt__ |出力マニフェストは、複数のファイルをインデックスするときにのみ存在します。次の情報が格納されます。<br/><br/><table border="1"><tr><th>InputFile</th><th>Alias</th><th>MediaLength</th><th>Error</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media\_3</td><td>600</td><td>0</td></tr></table><br/>
 
 
 
@@ -272,13 +272,13 @@ __features__ <br /><br /> バージョン 1.2 で追加現時点でサポート�
 2005 | サポートされていないファイルの種類 | 入力メディア ファイルの種類がサポートされていません。
 2006 | 入力のファイルが多すぎます | 入力のマニフェストに 10 個を超えるファイルがあります。
 3000 | メディア ファイルのデコードに失敗しました | メディア コーデックがサポートされていない<br/>または<br/>メディア ファイルが破損している<br/>または<br/>入力メディアにオーディオ ストリームが存在しない
-4000 | バッチのインデックス作成一部成功しました | 一部の入力メディア ファイルは、インデックスを付けるできませんでした。詳細については、<a href="output_files">出力ファイル</a>をご覧ください。
+4000 | バッチのインデックス作成一部成功しました | 一部の入力メディア ファイルは、インデックスを付けるできませんでした。詳細については、「<a href="output_files">出力ファイル</a>」をご覧ください。
 その他の | 内部エラー | サポート チームにお問い合わせください。indexer@microsoft.com
 
 
 ## <a id="supported_languages"></a>サポートされている言語
 
-現時点では、英語とスペイン語の言語がサポートされています。詳細については、[v1.2 リリースのブログ記事](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/)を参照してください。
+現時点では、英語とスペイン語の言語がサポートされています。詳細については、[v1.2 リリースのブログ記事](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/)をご覧ください。
 
 
 ##Media Services のラーニング パス
@@ -298,4 +298,4 @@ __features__ <br /><br /> バージョン 1.2 で追加現時点でサポート�
 
 [Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成](media-services-process-content-with-indexer2.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

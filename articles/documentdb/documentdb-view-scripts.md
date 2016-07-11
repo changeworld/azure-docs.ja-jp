@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="06/28/2016"
 	ms.author="anhoh"/>
 
 # DocumentDB スクリプト エクスプローラーを使用したストアド プロシージャ、トリガー、ユーザー定義関数の作成と実行
@@ -119,4 +119,4 @@ DocumentDB のサーバー側プログラミングの詳細については、「
 
 [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)も、DocumentDB の詳細を理解する際に便利なリソースです。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0629_2016-->

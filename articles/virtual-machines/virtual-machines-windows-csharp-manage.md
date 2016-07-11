@@ -14,14 +14,16 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/17/2016"
+	ms.date="06/24/2016"
 	ms.author="davidmu"/>
 
 # Azure Resource Manager と C を使用した Azure 仮想マシンの管理#  
 
+この記事にあるタスクでは、開始、停止、および更新など、仮想マシンを管理する方法について説明します。
+
 この記事のタスクを完了するには、以下が必要です。
 
-- [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)。
+- [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
 - [認証トークン](../resource-group-authenticate-service-principal.md)
 
 ## Visual Studio プロジェクトの作成とパッケージのインストール
@@ -63,28 +65,24 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
     
 3. 資格情報の作成に必要なトークンを取得するために、次のメソッドを Program クラスに追加します。
 
-	    private static string GetAuthorizationHeader()
+	    private static async Task<AuthenticationResult> GetAccessTokenAsync()
 	    {
-          ClientCredential cc = new ClientCredential("{application-id}", "{password}");
+          var cc = new ClientCredential("{client-id}", "{client-secret}");
           var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
           var result = context.AcquireTokenAsync("https://management.azure.com/", cc);
-
           if (result == null)
           {
-            throw new InvalidOperationException("Failed to obtain the JWT token");
+            throw new InvalidOperationException("Could not get the token");
           }
-
-          string token = result.Result.AccessToken;
-
           return token;
         }
 	
-    {application-id} を前に記録したアプリケーション ID に、{password} を AD アプリケーション用に選択したパスワードに、{tenant-id} をサブスクリプションのテナント ID に、それぞれ置き換えます。
+    {client-id} を Azure Active Directory アプリケーションの ID に、{client-secret} を AD アプリケーションのアクセス キーに、および {tenant-id} をサブスクリプションのテナントID に置き換えます。テナント ID は Get-AzureRmSubscription を実行して確認できます。アクセス キーは、Azure ポータルで確認できます。
     
 4. 資格情報を作成するには、Program.cs の Main メソッドに次のコードを追加します。
 
-        var token = GetAuthorizationHeader();
-        var credential = new TokenCredentials(token);
+        var token = GetAccessTokenAsync();
+        var credential = new TokenCredentials(token.Result.AccessToken);
 
 5. Program.cs ファイルを保存します。
 
@@ -92,7 +90,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 1. 前に作成したプロジェクトの Program クラスに、次のメソッドを追加します。
 
-        public static void GetVirtualMachine(
+        public static async void GetVirtualMachineAsync(
           TokenCredentials credential, 
           string groupName, 
           string vmName, 
@@ -100,9 +98,9 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
         {
           Console.WriteLine("Getting information about the virtual machine...");
 
-          var computeManagementClient = new ComputeManagementClient(credential);
-          computeManagementClient.SubscriptionId = subscriptionId;
-          var vmResult = computeManagementClient.VirtualMachines.Get(
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          var vmResult = await computeManagementClient.VirtualMachines.GetAsync(
             groupName, 
             vmName, 
             InstanceViewTypes.InstanceView);
@@ -174,11 +172,12 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
             Console.WriteLine("  level: " + istat.Level);
             Console.WriteLine("  displayStatus: " + istat.DisplayStatus);
           }
+          
         }
 
 2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
-        GetVirtualMachine(
+        GetVirtualMachineAsync(
           credential,
           groupName,
           vmName,
@@ -259,21 +258,21 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 2. Program クラスに次のメソッドを追加します。
 
-        public static void StartVirtualMachine(
+        public static async void StartVirtualMachineAsync(
           TokenCredentials credential, 
           string groupName, 
           string vmName, 
           string subscriptionId)
         {
           Console.WriteLine("Starting the virtual machine...");
-          var computeManagementClient = new ComputeManagementClient(credential);
-          computeManagementClient.SubscriptionId = subscriptionId;
-          computeManagementClient.VirtualMachines.Start(groupName, vmName);
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          await computeManagementClient.VirtualMachines.StartAsync(groupName, vmName);
         }
 
 3. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
-        StartVirtualMachine(
+        StartVirtualMachineAsync(
           credential,
           groupName,
           vmName,
@@ -295,16 +294,16 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 2. Program クラスに次のメソッドを追加します。
 
-        public static void StopVirtualMachine(
+        public static void StopVirtualMachineAsync(
           TokenCredentials credential, 
           string groupName, 
           string vmName, 
           string subscriptionId)
         {
           Console.WriteLine("Stopping the virtual machine...");
-          var computeManagementClient = new ComputeManagementClient(credential);
-          computeManagementClient.SubscriptionId = subscriptionId;
-          computeManagementClient.VirtualMachines.PowerOff(groupName, vmName);
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          await computeManagementClient.VirtualMachines.PowerOffAsync(groupName, vmName);
         }
 
 	仮想マシンの割り当てを解除する場合は、PowerOff 呼び出しを次のように変更します。
@@ -313,7 +312,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 3. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
-        StopVirtualMachine(
+        StopVirtualMachineAsync(
           credential,
           groupName,
           vmName,
@@ -333,21 +332,21 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 2. Program クラスに次のメソッドを追加します。
 
-        public static void RestartVirtualMachine(
+        public static async void RestartVirtualMachineAsync(
           TokenCredentials credential,
           string groupName,
           string vmName,
           string subscriptionId)
         {
           Console.WriteLine("Restarting the virtual machine...");
-          var computeManagementClient = new ComputeManagementClient(credential);
-          computeManagementClient.SubscriptionId = subscriptionId;
-          computeManagementClient.VirtualMachines.Restart(groupName, vmName);
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          await computeManagementClient.VirtualMachines.RestartAsync(groupName, vmName);
         }
 
 3. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
-        RestartVirtualMachine(
+        RestartVirtualMachineAsync(
           credential,
           groupName,
           vmName,
@@ -365,21 +364,21 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 2. Program クラスに次のメソッドを追加します。
 
-        public static void DeleteVirtualMachine(
+        public static async void DeleteVirtualMachineAsync(
           TokenCredentials credential, 
           string groupName, 
           string vmName, 
           string subscriptionId)
         {
           Console.WriteLine("Deleting the virtual machine...");
-          var computeManagementClient = new ComputeManagementClient(credential);
-          computeManagementClient.SubscriptionId = subscriptionId;
-          computeManagementClient.VirtualMachines.Delete(groupName, vmName);
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          await computeManagementClient.VirtualMachines.DeleteAsync(groupName, vmName);
         }
 
 3. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
-        DeleteVirtualMachine(
+        DeleteVirtualMachineAsync(
           credential,
           groupName,
           vmName,
@@ -399,23 +398,23 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 2. Program クラスに次のメソッドを追加します。
 
-        public static void UpdateVirtualMachine(
+        public static async void UpdateVirtualMachineAsync(
           TokenCredentials credential, 
           string groupName, 
           string vmName, 
           string subscriptionId)
         {
           Console.WriteLine("Updating the virtual machine...");
-          var computeManagementClient = new ComputeManagementClient(credential);
-          computeManagementClient.SubscriptionId = subscriptionId;
-          var vmResult = computeManagementClient.VirtualMachines.Get(groupName, vmName);
+          var computeManagementClient = new ComputeManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          var vmResult = await computeManagementClient.VirtualMachines.GetAsync(groupName, vmName);
           vmResult.HardwareProfile.VmSize = "Standard_A1";
-          computeManagementClient.VirtualMachines.CreateOrUpdate(groupName, vmName, vmResult);
+          await computeManagementClient.VirtualMachines.CreateOrUpdateAsync(groupName, vmName, vmResult);
         }
 
 3. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
-        UpdateVirtualMachine(
+        UpdateVirtualMachineAsync(
           credential,
           groupName,
           vmName,
@@ -431,6 +430,6 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
     
 ## 次のステップ
 
-デプロイに問題がある場合は、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
+デプロイに問題がある場合は、[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

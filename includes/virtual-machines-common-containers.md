@@ -5,7 +5,7 @@ Azure は、物理コンピューター ハードウェアをエミュレート�
 
 **しかし、このことはもはやニュースではありません。** 注目すべきは、Docker がもたらす次のようなメリットを Azure で活用できるようになったということです。
 
-- 状況に応じて、[さまざまな](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md)[方法](../articles/virtual-machines/virtual-machines-linux-classic-portal-use-docker.md)[で](../articles/virtual-machines/virtual-machines-linux-classic-docker-quickstart.md) [Docker ホストを作成](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)できる
+- 状況に応じて、[さまざま](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)[な](../articles/virtual-machines/virtual-machines-linux-dockerextension.md)方法で Docker ホストを作成できる
 - [Azure リソース マネージャー](../articles/resource-group-overview.md)と[リソース グループ テンプレート](../articles/resource-group-authoring-templates.md)を使用して、複雑な分散アプリケーションのデプロイや更新を簡略化できる
 - 自社製かオープン ソースかを問わず、さまざまな構成管理ツールを統合できる
 
@@ -116,7 +116,7 @@ Azure では先ごろ、[Azure リソース管理](../articles/virtual-machines/
 
 Docker は、独自の VM 作成ツール セット ([docker-machine](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)) と、負荷分散に対応した Docker コンテナー クラスター管理ツール ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)) を提供しています。また [Azure Docker VM Extension](https://github.com/Azure/azure-docker-extension/blob/master/README.md) では、構成済みのアプリケーション コンテナーを複数のコンテナーにわたってデプロイできる、[`docker-compose`](https://docs.docker.com/compose/) が既定でサポートされています。
 
-[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://docs.mesosphere.com/install/azurecluster/) も有効なシステムです。DCOS は、[Mesos](http://mesos.apache.org/) というオープン ソースの "分散システム カーネル" をベースにしています、このカーネルでは、データ センターが 1 つのアドレス可能サービスとして扱われます。DCOS には、いくつかの重要なシステム ([Spark](http://spark.apache.org/) や [Kafka](http://kafka.apache.org/) など) に対応した組み込みパッケージが備わっているほか、[Marathon](https://mesosphere.github.io/marathon/) (コンテナー管理システム) や [Chronos](https://mesosphere.github.io/chronos/) (分散スケジューラー) などの組み込みサービスも含まれています。Mesos は、Twitter、AirBnb、およびその他の Web スケール ビジネスに影響を受けて開発されたものです。
+[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://docs.mesosphere.com/install/azurecluster/) も有効なシステムです。DCOS は、[Mesos](http://mesos.apache.org/) というオープン ソースの "分散システム カーネル" をベースにしています、このカーネルでは、データ センターが 1 つのアドレス可能サービスとして扱われます。DCOS には、いくつかの重要なシステム ([Spark](http://spark.apache.org/) や [Kafka](http://kafka.apache.org/) など) に対応した組み込みパッケージが備わっているほか、[Marathon](https://mesosphere.github.io/marathon/) (コンテナー管理システム) や [Chronos](https://mesos.github.io/chronos/) (分散スケジューラー) などの組み込みサービスも含まれています。Mesos は、Twitter、AirBnb、およびその他の Web スケール ビジネスに影響を受けて開発されたものです。
 
 [Kubernetes](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/) は、Google に影響を受けて開発された、VM およびコンテナー グループ管理のためのオープン ソース システムです。[Kubernetes を Weave と併用して、ネットワーク サポートを提供する](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)こともできます。
 
@@ -164,7 +164,6 @@ Docker on Microsoft Azure:
 - [Azure の Docker 用 VM 拡張機能のユーザー ガイド](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
 - [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md)
 - [Azure ポータルでの Docker VM 拡張機能の使用](../articles/virtual-machines/virtual-machines-linux-classic-portal-use-docker.md)
-- [Azure Marketplace で Docker をすばやく開始する](../articles/virtual-machines/virtual-machines-linux-classic-docker-quickstart.md)
 - [Azure で docker マシンを使用する方法](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)
 - [Azure 上の Swarm における Docker の使用方法](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)
 - [Azure での Docker および Compose の概要](../articles/virtual-machines/virtual-machines-linux-docker-compose-quickstart.md)
@@ -196,10 +195,6 @@ Linux ディストリビューションと Azure での導入例:
 	- [サード パーティ: Azure 用 Hudson スレーブ プラグイン](http://wiki.hudson-ci.org/display/HUDSON/Azure+Slave+Plugin)
 	- [サード パーティ: Azure 用 Hudson ストレージ プラグイン](https://github.com/hudson3-plugins/windows-azure-storage-plugin)
 
--	[Chef](https://docs.chef.io/index.html)
-	- [Chef と Virtual Machines](../articles/virtual-machines/virtual-machines-windows-install-chef-client.md)
-	- [ビデオ: Chef の概要とそのしくみ](https://msopentech.com/blog/2014/03/31/using-chef-to-manage-azure-resources/)
-
 -	[Azure Automation](https://azure.microsoft.com/services/automation/)
 	- [ビデオ: Linux VM で Azure Automation を使用する方法](http://channel9.msdn.com/Shows/Azure-Friday/Azure-Automation-104-managing-Linux-and-creating-Modules-with-Joe-Levy)
 
@@ -216,4 +211,4 @@ Linux ディストリビューションと Azure での導入例:
 [マイクロサービス]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

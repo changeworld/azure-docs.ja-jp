@@ -31,7 +31,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 - オンプレミスのネットワークと、Azure Virtual Network 間の接続。この仮想ネットワークを作成する方法の詳細については、「[Azure クラシック ポータルでのサイト間 VPN の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)」を参照してください。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 ## Azure レプリカ ウィザードの追加
 
@@ -103,4 +103,4 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

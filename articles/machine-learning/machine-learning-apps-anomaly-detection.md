@@ -13,7 +13,7 @@
 	ms.topic="reference" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="multiple" 
-	ms.date="06/21/2016" 
+	ms.date="06/29/2016" 
 	ms.author="alokkirpal"/>
 
 
@@ -23,70 +23,192 @@
 
 異常検出 API は、Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。
 
+この API で時系列データから検出できる異常パターンの種類は次のとおりです。
+
+* **正と負の値の傾向**: たとえば、コンピューティングのメモリ使用量を監視する場合、上昇傾向が関心の対象となります。メモリ使用量の上昇はメモリ リークの兆候であるためです。
+
+* **値のダイナミック レンジの変化**: たとえば、サービスによってスローされる例外を監視する場合、値のダイナミック レンジの変化は、クラウド サービスの正常性が不安定になっていることを示す可能性があります。
+
+* **スパイクと DIP**: たとえば、サービスへのログインの失敗の数や、電子商取引サイトのチェックアウトの数を監視している場合、スパイクや DIP は異常な動作を示している可能性があります。
+
+こうした Machine Learning を使用した検出は、時間の経過に伴う値の変化を追跡し、異常が記録されたときの値の継続的な変化を報告します。これらはアドホックなしきい値の調整を必要とせず、スコアを使用して誤検知率を制御できます。異常検出 API は、一定時間 KPI を追跡することによるサービスの監視、各種メトリック (検索回数、クリック数など) に基づく使用状況の監視、各種カウンター (メモリ、CPU、ファイル読み取りなど) を一定時間追跡することによるパフォーマンスの監視など、さまざまなシナリオで役に立ちます。
+
+異常検出に関して、すぐに使い始めることのできる便利なツールが付属しています。
+* たとえば目的のデータに関して異常検出 API から得られた結果は、[Web アプリケーション](http://anomalydetection-aml.azurewebsites.net/)を使用して評価し、視覚化することができます。
+* また[サンプル コード](http://adresultparser.codeplex.com/)では、C# プログラムから API にアクセスして結果を解析する方法が紹介されています。
+
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-この異常検出サービスは、次のようなさまざまな種類の時系列データの異常を検出できます。
-
-1. 正と負の値の傾向: たとえば、コンピューティングのメモリ使用量を監視する場合、上昇傾向はメモリ リークを示します。
-
-2. 動的な範囲の値の増加: たとえば、サービスによってスローされる例外を監視する場合、動的な範囲の値の増加は、サービスの正常性が不安定になっていることを示す可能性があります。
-
-3. スパイクと DIP: たとえば、サービスへのログインの失敗の数や、電子商取引サイトのチェックアウトの数を監視している場合、スパイクや DIP は異常な動作を示している可能性があります。
-
-
-これらの検出は、時間の経過による値の変化を追跡し、値の継続的な変化を報告します。これらはアドホックなしきい値の調整を必要とせず、スコアを使用して誤検知率を制御できます。異常検出 API は、KPI、検索回数やクリック数などの使用状況のメトリック、メモリ、CPU、ファイルの読み取りなどのパフォーマンス カウンターを一定期間追跡することにより、サービスの監視のようないくつかのシナリオで役に立ちます。
 
 ##API の定義
 
-サービスは、REST ベースの API を HTTPS 経由で提供しますが、これは Web アプリケーションやモバイル アプリケーション、R、Python、Excel などを含むさまざまな方法で使用できます。データの異常検出 Web サービスを実行し、結果を視覚化できる [Azure Web アプリケーション](http://anomalydetection-aml.azurewebsites.net/)を用意しています。
+サービスは、REST ベースの API を HTTPS 経由で提供しますが、これは Web アプリケーションやモバイル アプリケーション、R、Python、Excel などを含むさまざまな方法で使用できます。このサービスに対する時系列データを REST API 呼び出しによって送信することができ、前述の 3 つの異常の種類の組み合わせを実行します。サービスは Azure Machine Learning プラットフォーム上で動作し、ビジネス ニーズに合わせてサイズをシームレスに調整し、SLA を提供しています。
 
-このサービスに対する時系列データを REST API 呼び出しによって送信することもでき、前述の 3 つの異常の種類の組み合わせを実行します。サービスは AzureML Machine Learning プラットフォーム上で動作し、ビジネス ニーズに合わせてサイズをシームレスに調整し、99.95% の SLA を提供しています。
+###ヘッダー
+要求には次のような正しいヘッダーを必ず追加します。
 
-以下の図は、前述のフレームワークを使用して時系列で検出される異常の例を示しています。時系列は、2 つの明確なレベルの変化と 3 つのスパイクがあります。赤い点はレベルの変化が検出された時を示し、赤い上矢印は検出されたスパイクを示しています。
+	Authorization: Basic <creds>
+	Accept: application/json
+               
+	Where <creds> = ConvertToBase64(“AccountKey:” + yourActualAccountKey);  
+
+アカウントのアカウント キーは [Azure データ マーケット](https://datamarket.azure.com/account/keys)で確認できます。
+
+###スコア API
+
+スコア API は、季節に依存しない時系列データに対する異常検出に使用します。この API は、データに対してさまざまな異常検出機能を実行し、その異常スコアを返します。以下の図は、スコア API で検出できる異常の例です。この時系列には、2 つの明確なレベルの変化と 3 つのスパイクがあります。赤い点はレベルの変化が検出された時を示し、黒い点は検出されたスパイクを示しています。
+
+![Score API][1]
+	
+**URL**
+
+	https://api.datamarket.azure.com/data.ashx/aml_labs/anomalydetection/v2/Score 
+
+**要求本文の例**
+
+以下の要求では、2016 年 3 月 1 日から 2016 年 3 月 10 日のデータ ポイントとスパイク検出パラメーターを含む時系列 (一部省略) を API に送信して、これらのデータ ポイントに異常が存在するかどうかを検出しています。
+
+	{
+	  "data": [
+	    [ "9/21/2014 11:05:00 AM", "3" ],
+	    [ "9/21/2014 11:10:00 AM", "9.09" ],
+	    [ "9/21/2014 11:15:00 AM", "0" ]
+	  ],
+	  "params": {
+	    "tspikedetector.sensitivity": "3",
+	    "zspikedetector.sensitivity": "3",
+	    "trenddetector.sensitivity": "3.25",
+	    "bileveldetector.sensitivity": "3.25",
+	    "postprocess.tailRows": "2"
+	  }
+	}
+
+これに対する応答は、次のようになります。
+
+	{
+	  "odata.metadata":"https://api.datamarket.azure.com/data.ashx/aml_labs/anomalydetection/v2/$metadata#AnomalyDetection.FrontEndService.Models.AnomalyDetectionResult",
+	  "ADOutput":"{
+	    "ColumnNames":["Time","Data","TSpike","ZSpike","rpscore","rpalert","tscore","talert"],
+		"ColumnTypes":["DateTime","Double","Double","Double","Double","Int32","Double","Int32"],
+		"Values":[
+		  ["9/21/2014 11:10:00 AM","9.09","0","0","-1.07030497733224","0","-0.884548154298423","0"],
+		  ["9/21/2014 11:15:00 AM","0","0","0","-1.05186237440962","0","-1.173800281031","0"]
+		]
+	  }"
+	}
+
+###ScoreWithSeasonality API
+
+ScoreWithSeasonality API は、季節的なパターンを含んだ時系列データの異常検出に使用します。この API は、季節的なパターンからの逸脱を検出する目的で利用できます。
+
+次の図は、季節的な時系列データから検出された異常の例です。この時系列データには、1 つのスパイク (1 つ目の黒い点) と 2 つのディップ (2 つ目の黒い点と一番端にある黒い点)、1 つのレベルの変化 (赤い点) があります。時系列の中央にあるディップとレベルの変化はどちらも、時系列から季節的な要因を取り除いた後でしか識別できないことに注意してください。
+
+![Seasonality API][2]
+
+**URL**
+
+	https://api.datamarket.azure.com/data.ashx/aml_labs/anomalydetection/v2/ScoreWithSeasonality 
+
+**要求本文の例**
+
+以下の要求では、2016 年 3 月 1 日から 2016 年 3 月 10 日のデータ ポイントとパラメーターを含む時系列 (一部省略) を API に送信して、これらのデータ ポイントに異常が存在するかどうかを検出しています。
+
+	{
+	  "data": [
+	    [ "9/21/2014 11:10:00 AM", "9" ],
+	    [ "9/21/2014 11:15:00 AM", "12" ],
+	    [ "9/21/2014 11:20:00 AM", "10" ]
+	  ],
+	  "params": {
+	    "preprocess.aggregationInterval": "0",
+	    "preprocess.aggregationFunc": "mean",
+	    "preprocess.replaceMissing": "lkv",
+	    "postprocess.tailRows": "1",
+	    "zspikedetector.sensitivity": "3",
+	    "tspikedetector.sensitivity": "3",
+	    "upleveldetector.sensitivity": "3.25",
+	    "bileveldetector.sensitivity": "3.25",
+	    "trenddetector.sensitivity": "3.25",
+	    "detectors.historywindow": "500",
+	    "seasonality.enable": "true",
+	    "seasonality.transform": "deseason",
+	    "seasonality.numSeasonality": "1"
+	  }
+	}
+
+これに対する応答は、次のようになります。
+
+	{
+		"odata.metadata": "https://api.datamarket.azure.com/data.ashx/aml_labs/anomalydetection/v2/$metadata#AnomalyDetection.FrontEndService.Models.AnomalyDetectionResult",
+		"ADOutput": "{
+			"ColumnNames":["Time","OriginalData","ProcessedData","TSpike","ZSpike","PScore","PAlert","RPScore","RPAlert","TScore","TAlert"],
+		  	"ColumnTypes":["DateTime","Double","Double","Double","Double","Double","Int32","Double","Int32","Double","Int32"],
+		  	"Values":[
+		    	["9/21/201411: 20: 00AM","10","10","0","0","-1.30229513613974","0","-1.30229513613974","0","-1.173800281031","0"]
+		  	]
+		}"
+	}
+
+###検出機能
+
+異常検出 API がサポートしている検出機能 (ディテクター) は大きく 3 つのカテゴリに分けられます。検出機能ごとの具体的な入力パラメーターと出力について詳しくは、次の表を参照してください。
+
+|検出機能のカテゴリ|検出機能|説明|入力パラメーター|出力  
+
+|---|---|---|---|---|
+|スパイク検出機能|T スパイク検出機能|設定されている感度に従ってスパイクとディップを検出します。|*tspikedetector.sensitivity: * 1 ～ 10 の範囲の整数値を受け取ります (既定値は 3)。値が大きいほど感度が低くなります。|TSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’|
+|Z スパイク検出機能|設定されている感度に従ってスパイクとディップを検出します。|*zspikedetector.sensitivity: * 1 ～ 10 の範囲の整数値を受け取ります (既定値は 3)。値が大きいほど感度が低くなります。|ZSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’|
+|スロー傾向検出機能|スロー傾向検出機能|設定されている感度に従って、ゆっくりとした正方向の傾向を検出します。|*trenddetector.sensitivity:* 検出機能スコアのしきい値 (既定値: 3.25、妥当な範囲は 3.25 ～ 5、値が大きいほど感度が低下)|tscore: 傾向に関する異常スコアを表す浮動小数点数|
+|レベル変化検出機能|一方向レベル変化検出機能|設定されている感度に従って、上向きのレベルの変化を検出します。|スロー傾向検出機能と同じ|pscore: 上向きのレベルの変化に関する異常スコアを表す浮動小数点数|
+|双方向レベル変化検出機能|設定されている感度に従って、上向きと下向きの両方のレベルの変化を検出します。|スロー傾向検出機能と同じ|rpscore: 上向きと下向きのレベルの変化に関する異常スコアを表す浮動小数点数
+
+###パラメーター
+
+以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
+
+|入力パラメーター|説明|既定の設定|型|有効範囲|推奨範囲|
+|---|---|---|---|---|---|
+|preprocess.aggregationInterval|入力時系列の集計間隔 (秒単位)|0 (集計は実行されません)|integer|集計をスキップする場合は 0、それ以外の場合は 0 より大きい値|5 分 ～ 1 日 (時系列に依存)
+|preprocess.aggregationFunc|指定の AggregationInterval でデータを集計するための関数|mean|enumerated|mean、sum、length|該当なし|
+|preprocess.replaceMissing|欠損データの補完に使用する値|lkv (last known value)|enumerated|zero、lkv、mean|該当なし|
+|detectors.historyWindow|異常スコアの計算に使用された履歴 (データ ポイントの数)|500|integer|10 ～ 2000|時系列に依存|
+|upleveldetector.sensitivity|上方レベル変化検出機能の感度 |3\.25|double|なし|3\.25 ～ 5 (値が小さいほど感度が高い)|
+|bileveldetector.sensitivity|双方向のレベル変化検出機能の感度 |3\.25|double|なし|3\.25 ～ 5 (値が小さいほど感度が高い)|
+|trenddetector.sensitivity|正傾向検出機能に使用する感度 |3\.25|double|なし|3\.25 ～ 5 (値が小さいほど感度が高い)|
+|tspikedetector.sensitivity |T スパイク検出機能の感度|3|integer|1 ～ 10|3 ～ 5 (値が小さいほど感度が高い)|
+|zspikedetector.sensitivity |Z スパイク検出機能の感度|3|integer|1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い)|
+|seasonality.enable|季節性分析を実行するかどうか|true|boolean|true、false|時系列に依存|
+|seasonality.numSeasonality |検出する周期的サイクルの最大数|1|integer|1、2|1 ～ 2|
+|seasonality.transform |異常検出を適用する前に季節的傾向要因を取り除くかどうか|deseason|enumerated|none、deseason、deseasontrend|該当なし|
+|postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数|0|integer|0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定|該当なし|
+
+###出力
+この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。以下の表は、API からの出力の一覧です。
+
+|出力  
+|説明|
+|---|---|
+|Time|生データのタイムスタンプ。または、集計/欠損データ補完が適用された場合は集計/補完データのタイムスタンプ。|
+|OriginalData|生データの値。または、集計/欠損データ補完が適用された場合は集計/補完データの値。|
+|ProcessedData|次のいずれかになります。<ul><li>(有意な季節性が検出され、なおかつ deseason オプションが選択された場合) 季節に基づいて調整された時系列</li><li>(有意な季節性が検出され、なおかつ deseasontrend オプションが選択された場合) 季節に基づいて調整され、トレンド除去された時系列</li><li>(それ以外の場合) OriginalData と等価</li>|
+|TSpike|T スパイク検出機能によってスパイクが検出されたかどうかを示す 2 進値のインジケーター|
+|ZSpike|Z スパイク検出機能によってスパイクが検出されたかどうかを示す 2 進値のインジケーター|
+|Pscore|上向きのレベルの変化に関する異常スコアを表す浮動小数点数|
+|Palert|上向きのレベルの変化に異常が存在するかどうかを、入力された感度に基づいて示す 1/0 値|
+|RPScore|双方向のレベルの変化に関する異常スコアを表す浮動小数点数|
+|RPAlert|双方向のレベルの変化に異常が存在するかどうかを、入力された感度に基づいて示す 1/0 値|
+|TScore|正傾向に関する異常スコアを表す浮動小数点数|
+|TAlert|正傾向に異常が存在するかどうかを、入力された感度に基づいて示す 1/0 値|
 
 
-![][1]
+この出力は、[単純なパーサー](https://adresultparser.codeplex.com/)を使って解析できます。このパーサーには、API に接続して出力結果を解析する方法を示したサンプル コードが含まれています。検出された異常は、ダッシュボードでの視覚化や専門家への提出によって是正措置を講じることができるほか、チケット システムに統合することができます。
 
-##入力
 
-API は 2 つの入力パラメーターを取得します。
-
-1. "data" は入力された時系列を t1=v1;t2=v2;... という形式で表します。 
+[1]: ./media/machine-learning-apps-anomaly-detection/anomaly-detection-score.png
+[2]: ./media/machine-learning-apps-anomaly-detection/anomaly-detection-seasonal.png
 
  
-	サンプル データ:
-		
-		"9/21/2014 11:05:00 AM=3;9/21/2014 11:10:00 AM=9.09;9/21/2014 11:15:00 AM=0;"
-
-2. "params"は "SpikeDetector.TukeyThresh=3; SpikeDetector.ZscoreThresh=3" に設定され、スパイク探知機の感度を制御します。値が大きいとスパイクをより多くキャッチします。
-
-	上記の入力パラメーターを使用したサンプル URL:
-
-		https://api.datamarket.azure.com/data.ashx/aml_labs/anomalydetection/v1/Score?data=%279%2F21%2F2014%2011%3A05%3A00%20AM%3D3%3B9%2F21%2F2014%2011%3A10%3A00%20AM%3D9.09%3B9%2F21%2F2014%2011%3A15%3A00%20AM%3D0%3B%27&params=%27SpikeDetector.TukeyThresh%3D3%3B%20SpikeDetector.ZscoreThresh%3D3%27
-
-
-
-###出力###
-
-API は時系列データでこれらの検出を実行し、時系列の各ポイントで異常のスコアを返します。この出力は、[https://adresultparser.codeplex.com/](https://adresultparser.codeplex.com/) で示すシンプルなパーサーを使用して解析できます。これは、API に接続し、出力を解析する方法を表すサンプル コードを示します。生成されるアラートは、ダッシュボード上で視覚化でき、処置を取ることができる人間の専門家に渡すことができます。
-
-上記のサンプル入力のサンプル出力:
-
-	"Time,Data,TSpike,ZSpike,Martingale values,Alert indicator,Martingale values(2),Alert indicator(2),;9/21/2014 11:05:00 AM,3,0,0,-0.687952590518378,0,-0.687952590518378,0,;9/21/2014 11:10:00 AM,9.09,0,0,-1.07030497733224,0,-0.884548154298423,0,;9/21/2014 11:15:00 AM,0,0,0,-1.05186237440962,0,-1.173800281031,0,;"
-
-以下の表を示しています。
-
-時刻|データ|Tspike|Zspike|マーティンゲイル値|アラート インジケーター|マーティンゲイル値 (2)|アラート インジケーター (2)
----|---|---|---|---|---|---|---
-9/21/2014 11:05|3|0|0|-0.687952591|0|-0.687952591|0|   
-9/21/2014 11:10|9\.09|0|0|-1.070304977|0|-0.884548154|0|    
-9/21/2014 11:15|0|0|0|-1.051862374|0|-1.1738002814|0|   
-   
-
-[1]: ./media/machine-learning-apps-anomaly-detection/anomaly-detection.jpg
 
  
 
- 
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

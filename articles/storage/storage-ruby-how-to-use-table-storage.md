@@ -6,14 +6,13 @@
 	authors="rmcmurray"
 	manager="wpickett"
 	editor=""/>
-
 <tags
 	ms.service="storage"
 	ms.workload="storage"
 	ms.tgt_pltfrm="na"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="04/29/2016"
+	ms.date="06/24/2016"
 	ms.author="robmcm"/>
 
 
@@ -57,20 +56,20 @@ azure モジュールは、Azure Storage アカウントに接続するために
 	Azure.config.storage_account_name = "<your azure storage account>"
 	Azure.config.storage_access_key = "<your azure storage access key>"
 
-Azure ポータルでクラシックまたは ARM ストレージ アカウントからこれらの値を取得するには:
+Azure ポータルでクラシックまたは Resource Manager ストレージ アカウントからこれらの値を取得するには:
 
 1. [Azure ポータル](https://portal.azure.com)にログインします。
 2. 使用するストレージ アカウントを表示します。
 3. 右側の [設定] ブレードで、**[アクセス キー]** をクリックします。
-4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。このいずれかを使用できます。 
-5. コピー アイコンをクリックしてキーをクリップボードにコピーします。 
+4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。このいずれかを使用できます。
+5. コピー アイコンをクリックしてキーをクリップボードにコピーします。
 
-クラシック ポータルでクラシック ストレージ アカウントからこれらの値を取得するには:
+Azure ポータルでクラシック ストレージ アカウントからこれらの値を取得するには:
 
-1. [クラシック ポータル](https://manage.windowsazure.com)にログインします。
+1. [従来の Azure ポータル](https://manage.windowsazure.com)にログインします。
 2. 使用するストレージ アカウントを表示します。
 3. ナビゲーション ウィンドウの下部にある **[アクセス キーの管理]** をクリックします。
-4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーには、プライマリとセカンダリのどちらでも使用できます。 
+4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーには、プライマリとセカンダリのどちらでも使用できます。
 5. コピー アイコンをクリックしてキーをクリップボードにコピーします。
 
 ## テーブルの作成
@@ -164,4 +163,4 @@ Azure ポータルでクラシックまたは ARM ストレージ アカウン�
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

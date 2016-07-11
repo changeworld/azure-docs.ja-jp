@@ -2,7 +2,7 @@
 	pageTitle="Azure AD Connect 同期: Azure AD サービス アカウントを管理する方法 | Microsoft Azure"
 	description="このトピックでは、Azure AD サービス アカウントを復元する方法を説明します。"
 	services="active-directory"
-    keywords="Azure AD Connect 同期コネクタ サービス アカウントのパスワードをリセットする方法"
+    keywords="AADSTS70002, AADSTS50054, Azure AD Connect 同期コネクタ サービス アカウントのパスワードをリセットする方法"
 	documentationCenter=""
 	authors="andkjell"
 	manager="stevenpo"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="06/27/2016"
 	ms.author="andkjell"/>
 
 # Azure AD Connect 同期: Azure AD サービス アカウントを管理する方法
@@ -29,7 +29,16 @@ Azure AD コネクタで定義されたサービス アカウントが認証の�
 
 このコマンドレットは、Azure AD と同期エンジンの両方で、サービス アカウントのパスワードをリセットして更新します。
 
+## 上記の手順で解決できる既知の問題
+お客様から報告されたエラーのうち、上記の手順に従うことによって解決できたものを次に示します。
+
+-----------
+イベント 6900 The server encountered an unexpected error while processing a password change notification (パスワード変更通知の処理中に、サーバーで予期しないエラーが発生しました): AADSTS70002: Error validating credentials. (資格情報の検証中にエラーが発生しました。)AADSTS50054: Old password is used for authentication. (古いパスワードが認証に使用されています。)
+
+----------
+イベント 659 Error while retrieving password policy sync configuration. (パスワード ポリシーの同期構成を取得しているときにエラーが発生しました。)Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException: AADSTS70002: Error validating credentials. (資格情報の検証中にエラーが発生しました。)AADSTS50054: Old password is used for authentication. (古いパスワードが認証に使用されています。)
+
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -23,8 +23,7 @@ Docker と [Compose](http://github.com/docker/compose) を使用して、Azure �
 
 たとえば、この記事では、Ubuntu VM のバックエンド MariaDB SQL Database で WordPress ブログをすばやくセットアップする方法を示していますが、Compose を使用してさらに複雑なアプリケーションをセットアップすることもできます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
-
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql)方法について説明します。
 
 Docker とコンテナーの知識がない場合は、「[Docker high level whiteboard (Docker の概要ホワイトボード)](https://azure.microsoft.com/documentation/videos/docker-high-level-whiteboard/)」をご覧ください。
 
@@ -114,4 +113,4 @@ ess_1              apache2-for ...                       /tcp
 
 [wordpress_start]: ./media/virtual-machines-linux-docker-compose-quickstart/WordPress.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -12,7 +12,7 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="data-management" 
+   ms.workload="sqldb-bcdr" 
    ms.date="06/16/2016"
    ms.author="carlrab"/>
 
@@ -21,9 +21,9 @@
 Azure SQL Database は、障害から回復するために次の機能を備えています。
 
 - [アクティブ geo レプリケーションを選択するとき](sql-database-geo-replication-overview.md)
-- [geo リストア](sql-database-geo-restore.md)
+- [geo リストア](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-災害とデータベースを復旧するための準備の詳細については、「[ビジネス継続性のための設計](sql-database-business-continuity-design.md)」をご覧ください。
+災害とデータベースを復旧するための準備の詳細については、[ビジネス継続性](sql-database-business-continuity.md)および[ビジネス継続性の設計と復旧シナリオ]()に関する記事を参照してください。
 
 ## 復旧を開始するタイミング
 
@@ -31,7 +31,7 @@ Azure SQL Database は、障害から回復するために次の機能を備え�
 
 1.	接続の永続的な障害は、アプリケーション層からデータベースに渡ります。
 2.	Azure ポータルは、幅広い影響のあるリージョンでのインシデントに関するアラートを示します。
-3.	Azure SQL Database Server は機能低下としてマークされます。 
+3.	Azure SQL Database Server は機能低下としてマークされます。
 
 ダウンタイムに対するアプリケーションの許容度およびビジネス責任に応じて、次の回復オプションを検討することができます。
 
@@ -52,7 +52,7 @@ geo レプリケートされたセカンダリ データベースへのフェー
 
 - [Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-portal.md)
 - [PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-powershell.md)
-- [Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-transact-sql.md) 
+- [Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-transact-sql.md)
 
 
 
@@ -63,7 +63,7 @@ geo レプリケートされたセカンダリ データベースへのフェー
 新しいリージョンへのデータベースの geo リストアについては、次のいずれかを参照してください。
 
 - [Geo-Restore a database to a new region using Azure Portal (Azure ポータルを使用して新しいリージョンにデータベースを geo リストアする)](sql-database-geo-restore-portal.md)
-- [Geo-Restore a database to a new region using PowerShell (PowerShell を使用して新しいリージョンにデータベースを geo リストアする)](sql-database-geo-restore-powershell.md) 
+- [Geo-Restore a database to a new region using PowerShell (PowerShell を使用して新しいリージョンにデータベースを geo リストアする)](sql-database-geo-restore-powershell.md)
 
 
 ## 復旧後のデータベースの構成
@@ -83,7 +83,7 @@ geo レプリケーション フェールオーバーまたは geo リストア�
 
 ### ログインとデータベース ユーザーを構成する
 
-アプリケーションで使用するすべてのログインが、復旧されたデータベースをホストしているサーバー上に存在することを確認する必要があります。詳細については、[Security Configuration for Geo-Replication (geo レプリケーションのセキュリティ構成)](sql-database-geo-replication-security-config.md)に関するページを参照してください。
+アプリケーションで使用するすべてのログインが、復旧されたデータベースをホストしているサーバー上に存在することを確認する必要があります。詳細については、[geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)に関するページを参照してください。
 
 >[AZURE.NOTE] 障害復旧の訓練中に、サーバーのファイアウォール規則とログイン (およびそのアクセス許可) を構成してテストする必要があります。障害の間は、これらのサーバー レベル オブジェクトとその構成を使用できない場合があります。詳細については、「[障害復旧訓練の実行](sql-database-disaster-recovery-drills.md)」を参照してください。
 
@@ -100,18 +100,10 @@ geo レプリケーション フェールオーバーまたは geo リストア�
 
 ## 次のステップ
 
-- 障害復旧のためのアクティブ geo レプリケーションの使用および構成の方法については、「[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)」をご覧ください。
-- 障害復旧のための geo リストアの使用方法については、「[geo リストア](sql-database-geo-restore.md)」をご覧ください。
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
+- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
+- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
+- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
-## その他のリソース
-
-- [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](sql-database-business-continuity.md)
-- [Overview: SQL Database Point-in-Time Restore (概要: SQL Database のポイントインタイム リストア)](sql-database-point-in-time-restore.md)
-- [geo リストア](sql-database-geo-restore.md)
-- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
-- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
-- [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

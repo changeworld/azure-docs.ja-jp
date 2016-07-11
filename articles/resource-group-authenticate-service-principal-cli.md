@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure CLI を使用した AD アプリケーション の作成 | Microsoft Azure"
-   description="Azure CLI を使用して、Active Directory アプリケーションを作成し、ロール ベースのアクセス制御によって、リソースへのアクセス権を付与する方法について説明します。パスワードまたは証明書を使ってアプリケーションを認証する方法を示します。"
+   pageTitle="Azure CLI を使用したサービス プリンシパルの作成 | Microsoft Azure"
+   description="Azure CLI を使用して、Active Directory アプリケーションやサービス プリンシパルを作成し、ロールベースのアクセス制御によって、リソースへのアクセス権を付与する方法について説明します。パスワードまたは証明書を使ってアプリケーションを認証する方法を示します。"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,7 +16,7 @@
    ms.date="05/26/2016"
    ms.author="tomfitz"/>
 
-# リソースにアクセスできる Active Directory アプリケーションを Azure CLI で作成する
+# リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する
 
 > [AZURE.SELECTOR]
 - [PowerShell](resource-group-authenticate-service-principal.md)
@@ -149,7 +149,7 @@ AD アプリケーションとそのアプリケーション用のサービス �
 スクリプトでは、サービス プリンシパルとしてログインするために必要な 3 つの値で渡します。次が必要です。
 
 - アプリケーション ID
-- テナント ID 
+- テナント ID
 - 証明書の拇印
 
 前の手順でアプリケーション ID と証明書の拇印について説明しました。ただし、後でこれらの値を取得する必要がある場合は、そのコマンドを、テナント ID を取得するコマンドとともに以下に示します。
@@ -183,10 +183,10 @@ Azure CLI で認証するには、証明書の拇印、証明書のファイル�
 ## 次のステップ
   
 - .NET 認証の例については、「[Azure Resource Manager SDK for .NET](resource-manager-net-sdk.md)」を参照してください。
-- Java 認証の例については、「[Azure Resource Manager SDK for Java](resource-manager-java-sdk.md)」を参照してください。 
+- Java 認証の例については、「[Azure Resource Manager SDK for Java](resource-manager-java-sdk.md)」を参照してください。
 - Python 認証の例については、「[Resource Management Authentication for Python (Python 向けリソース管理認証)](https://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementauthentication.html)」を参照してください。
 - REST 認証の例については、「[Resource Manager REST API](resource-manager-rest-api.md)」を参照してください。
 - アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「[Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
-- 証明書と Azure CLI の使用方法の詳細については、「[Linux コマンドラインからの Azure サービス プリンシパルの証明書での認証](http://blogs.msdn.com/b/arsen/archive/2015/09/18/certificate-based-auth-with-azure-service-principals-from-linux-command-line.aspx)」を参照してください。 
+- 証明書と Azure CLI の使用方法の詳細については、「[Linux コマンドラインからの Azure サービス プリンシパルの証明書での認証](http://blogs.msdn.com/b/arsen/archive/2015/09/18/certificate-based-auth-with-azure-service-principals-from-linux-command-line.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

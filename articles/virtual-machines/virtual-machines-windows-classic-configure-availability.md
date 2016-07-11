@@ -19,8 +19,8 @@
 
 # クラシック デプロイ モデルに仮想マシンの可用性セットを構成する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。リソース マネージャー デプロイメントで可用性セットを構成することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)].リソース マネージャー デプロイメントで可用性セットを構成することもできます。
 
 [AZURE.INCLUDE [virtual-machines-common-classic-configure-availability](../../includes/virtual-machines-common-classic-configure-availability.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.workload="identity"
 	ms.topic="article"
-    ms.date="05/19/2016"
+    ms.date="06/27/2016"
     ms.author="andkjell"/>
 
 # Azure AD Connect のトポロジ
@@ -187,4 +187,4 @@ Azure AD のディレクトリは、分離するように設計されていま�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

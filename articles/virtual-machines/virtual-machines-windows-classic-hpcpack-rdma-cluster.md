@@ -18,14 +18,11 @@ ms.service="virtual-machines-windows"
 
 # HPC Pack と A8 および A9 インスタンスを使用して Windows RDMA クラスターを設定して MPI アプリケーションを実行する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
-
-
 Azure で [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) と [A8 および A9 サイズのコンピューティング集中型インスタンス](virtual-machines-windows-a8-a9-a10-a11-specs.md)を使用して Windows RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行します。A8 および A9 サイズの Windows Server ベースのインスタンスを設定して、HPC Pack クラスターで実行すると、MPI アプリケーションは、リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく Azure の低待機時間で高スループットのネットワークを介して効率的に通信します。
 
 Linux VM 上で Azure RDMA ネットワークにアクセスする MPI ワークロードを実行する場合は、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-classic-rdma-cluster.md)」を参照してください。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 ## HPC Pack クラスターのデプロイ オプション
 Microsoft HPC Pack は、Azure で Windows Server ベースの HPC クラスターを作成するために、追加コストなしで提供されるツールです。HPC Pack には、Microsoft が実装する Windows 用 Message Passing Interface (MS-MPI) のランタイム環境が含まれています。A8 および A9 インスタンスと組み合わせて使用した場合、HPC Pack は、Azure の RDMA ネットワークにアクセスする Windows ベースの MPI アプリケーションを効率的に実行する方法を提供します。
@@ -126,7 +123,7 @@ Microsoft HPC Pack は、Azure で Windows Server ベースの HPC クラスタ�
 
     * **HpcVmDrivers 拡張機能** - デプロイ スクリプトは、Windows Server オペレーティング システムを持つ A8 または A9 サイズの計算ノードをデプロイするときに、Azure VM エージェントと HpcVmDrivers 拡張機能を自動的にインストールします。HpcVmDrivers は、RDMA ネットワークに接続するためのドライバーを計算ノード VM にインストールします。
 
-    * **クラスター ネットワークの構成** - デプロイ スクリプトは、HPC Pack クラスターをトポロジ 5 (エンタープライズ ネットワークのすべてのノード) で自動的にセットアップします。このトポロジは、VM でのすべての HPC Pack クラスターのデプロイに必要です。クラスター ネットワークのトポロジを後で変更しないでください。
+    * **クラスター ネットワークの構成** - デプロイ スクリプトにより、HPC Pack クラスターはトポロジ 5 (エンタープライズ ネットワークのすべてのノード) で自動的にセットアップされます。このトポロジは、VM でのすべての HPC Pack クラスターのデプロイに必要です。クラスター ネットワークのトポロジを後で変更しないでください。
 
 2. **計算ノードをオンラインにしてジョブを実行できるようにする**
 
@@ -246,4 +243,4 @@ Azure インスタンスで MPI アプリケーションを実行する場合の
 [pingpong1]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/pingpong1.png
 [pingpong2]: ./media/virtual-machines-windows-classic-hpcpack-rdma-cluster/pingpong2.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

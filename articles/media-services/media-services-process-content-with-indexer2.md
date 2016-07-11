@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/22/2016"   
+	ms.date="06/22/2016" 
 	ms.author="adsolank;juliako;"/>
 
 
@@ -289,4 +289,4 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

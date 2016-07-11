@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、リソース マネージャーのデプロイ モデルについて説明します。[従来のデプロイ モデルを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-classic-cli.md)についても説明します。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] この記事では、リソース マネージャーのデプロイ モデルについて説明します。[従来のデプロイ モデルを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-classic-cli.md)についても説明します。
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -35,7 +35,7 @@
 
 ロード バランサーをデプロイするには、次のオブジェクトを作成して構成する必要があります。
 
-- フロント エンド IP 構成 - 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。 
+- フロント エンド IP 構成 - 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
 
 - バック エンド アドレス プール - ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
 
@@ -54,7 +54,7 @@ PowerShell 用 Azure リソース マネージャー (ARM) モジュールが最
 
 ### 手順 1.
 
-		PS C:\> Login-AzureRmAccount
+		Login-AzureRmAccount
 
 資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
 
@@ -62,20 +62,20 @@ PowerShell 用 Azure リソース マネージャー (ARM) モジュールが最
 
 アカウントのサブスクリプションを確認する
 
-		PS C:\> Get-AzureRmSubscription 
+		Get-AzureRmSubscription 
 
 ### 手順 3. 
 
 使用する Azure サブスクリプションを選択します。<BR>
 
-		PS C:\> Select-AzureRmSubscription -SubscriptionId 'GUID of subscription'
+		Select-AzureRmSubscription -SubscriptionId 'GUID of subscription'
 
 ### 手順 4.
 
 新しいリソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
 
 
-    	PS C:\> New-AzureRmResourceGroup -Name NRP-RG -location "West US"
+    	New-AzureRmResourceGroup -Name NRP-RG -location "West US"
 
 
 ## Virtual Network と、フロント エンド IP プールのパブリック IP アドレスの作成
@@ -99,7 +99,7 @@ PowerShell 用 Azure リソース マネージャー (ARM) モジュールが最
 
 ### 手順 1. 
 
-*PublicIp* PIP を使用する *LB-Frontend* という名前のフロントエンド IP プールを作成します。
+ *PublicIp* PIP を使用する *LB-Frontend* という名前のフロントエンド IP プールを作成します。
 
 	$frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name LB-Frontend -PublicIpAddress $publicIP 
 
@@ -166,13 +166,13 @@ NIC の作成先となる Virtual Network と Virtual Network のサブネット
 
 ### 手順 2.
 
-*lb-nic1-be* という名前の NIC を作成し、それを最初の NAT 規則に関連付け、それから最初 (で唯一) のバックエンド アドレス プールに関連付けます。
+ *lb-nic1-be* という名前の NIC を作成し、それを最初の NAT 規則に関連付け、それから最初 (で唯一) のバックエンド アドレス プールに関連付けます。
 	
 	$backendnic1= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic1-be -Location 'West US' -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
 
 ### 手順 3.
 
-*lb-nic2-be* という名前の NIC を作成し、それを 2 番目の NAT 規則に関連付け、それから最初 (で唯一) のバックエンド アドレス プールに関連付けます。
+ *lb-nic2-be* という名前の NIC を作成し、それを 2 番目の NAT 規則に関連付け、それから最初 (で唯一) のバックエンド アドレス プールに関連付けます。
 
 	$backendnic2= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic2-be -Location 'West US' -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
 
@@ -181,7 +181,7 @@ NIC の作成先となる Virtual Network と Virtual Network のサブネット
 NIC を確認します。
 
 
-	PS C:\> $backendnic1
+	$backendnic1
 
 予想される出力:
 
@@ -248,7 +248,7 @@ NIC を確認します。
 
 変数にバックエンド構成を読み込みます。
 
-	PS C:\> $backend=Get-AzureRmLoadBalancerBackendAddressPoolConfig -name backendpool1 -LoadBalancer $lb
+	$backend=Get-AzureRmLoadBalancerBackendAddressPoolConfig -name backendpool1 -LoadBalancer $lb
 
 #### 手順 3. 
 
@@ -260,13 +260,13 @@ NIC を確認します。
 
 ネットワーク インターフェイス上のバックエンド構成を変更します。
 
-	PS C:\> $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
+	$nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 
 #### 手順 5. 
 
 ネットワーク インターフェイス オブジェクトを保存します。
 
-	PS C:\> Set-AzureRmNetworkInterface -NetworkInterface $nic
+	Set-AzureRmNetworkInterface -NetworkInterface $nic
 
 ネットワーク インターフェイスがロード バランサーのバックエンド プールに追加されると、そのロード バランサー リソースの負荷分散規則に基づいてネットワーク トラフィックの受信を開始します。
 
@@ -308,4 +308,4 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

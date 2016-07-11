@@ -24,7 +24,7 @@
 
 ## リファレンス ドキュメント
 
-iOS クライアント SDK のリファレンス ドキュメントは次の場所にあります。[Azure Mobile Apps iOS クライアント リファレンス](http://azure.github.io/azure-mobile-services/iOS/v3/)。
+iOS クライアント SDK のリファレンス ドキュメントは次の場所にあります。[Azure Mobile Apps iOS クライアント リファレンス](http://azure.github.io/azure-mobile-apps-ios-client/)。
 
 ##<a name="Setup"></a>セットアップと前提条件
 
@@ -525,7 +525,7 @@ POD:
 
 * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
 
-* **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの _/.auth/login/done_ エンドポイントに置き換えます。この値は、_https://contoso.azurewebsites.net/.auth/login/done_ と同様です。
+* **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの _/.auth/login/done_ エンドポイントに置き換えます。この値は、https://contoso.azurewebsites.net/.auth/login/done_ と同様です。
 
 **Objective-C**:
 
@@ -792,4 +792,4 @@ Fabric for iOS を使用すると、Twitter でアプリケーションにユー
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

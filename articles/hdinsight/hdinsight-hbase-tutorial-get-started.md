@@ -66,7 +66,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 4. **[作成]** をクリックします。
 
->[AZURE.NOTE] HBase クラスターを削除したら、同じ既定のストレージ アカウントと既定の BLOB コンテナーを使用して、別の HBase クラスターを作成できます。新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。
+>[AZURE.NOTE] HBase クラスターを削除したら、同じ既定のストレージ アカウントと既定の BLOB コンテナーを使用して、別の HBase クラスターを作成できます。新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。
 
 ## テーブルを作成してデータを挿入する
 
@@ -163,7 +163,7 @@ Hive を使用することで、HBase に格納されたデータを照会でき
 
 **クラスターのダッシュボードを開くには**
 
-1. **https://<HDInsight Cluster Name>.azurehdinsight.net/** にアクセスします。
+1. ブラウザーで **https://<HDInsight Cluster Name>.azurehdinsight.net/** を開きます。
 5. Hadoop ユーザー アカウントとパスワードを入力します。既定のユーザー名は **admin** で、パスワードは作成処理中に入力したパスワードです。新しいブラウザーのタブが開きます。
 6. ページ上部の **[Hive エディター]** をクリックします。次のような Hive エディターが開きます。
 
@@ -294,8 +294,7 @@ Web UI を開くには、RDP を使用してクラスターに接続した後、
 高可用性クラスターの場合は、Web UI をホストしている現在アクティブな HBase マスター ノードへのリンクがあります。
 
 ##クラスターを削除する
-
-[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
 ## 次の手順
@@ -335,4 +334,4 @@ Web UI を開くには、RDP を使用してクラスターに接続した後、
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

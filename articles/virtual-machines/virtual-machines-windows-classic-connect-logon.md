@@ -24,7 +24,7 @@ Azure クラシック ポータルの **[接続]** ボタンを使用して、�
 
 Linux VM に接続する場合は、 「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-classic-log-on.md)」を参照してください。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-windows-connect-logon.md)。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](virtual-machines-windows-connect-logon.md)方法について説明します。
 
 
 ## ビデオ チュートリアル
@@ -57,4 +57,4 @@ Linux VM に接続する場合は、 「[Linux を実行する仮想マシンに
 
 これらのトピックで解決できない場合、または必要な情報が掲載されていない場合は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)」を参照してください。この記事では、一般的な問題の診断と解決の手順について説明します。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

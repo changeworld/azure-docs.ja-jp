@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/14/2016"   
+	ms.date="06/22/2016"  
 	ms.author="adsolank"/>
 
 
@@ -215,4 +215,4 @@ XML と JSON で準拠する構成ファイルの例を以下に示します。
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

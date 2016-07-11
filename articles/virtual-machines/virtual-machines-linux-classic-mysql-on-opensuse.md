@@ -21,7 +21,7 @@
 
 [MySQL][MySQL] は広く普及しているオープン ソースの SQL Database です。このチュートリアルでは、OpenSUSE Linux を実行する仮想マシンを作成してから、MySQL をインストールする方法を説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 <br>
@@ -41,4 +41,4 @@ MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参�
 [MySQLDocs]: http://dev.mysql.com/doc/index-topic.html
 [MySQL]: http://www.mysql.com
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

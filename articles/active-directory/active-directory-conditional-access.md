@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="06/15/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 
@@ -32,10 +32,10 @@
 
 ## リソースへのユーザー ベースのアクセス
   
-- **ユーザー属性**: ユーザー属性レベルでは、承認されたユーザーだけが会社のリソースにアクセスできるように、ポリシーを適用することができます。   
-- **ユーザーのグループ メンバーシップ**: グループへのメンバーシップに基づいて、ユーザーに提供されるアクセスのレベルを制御することもできます。   
-- **多要素認証 (MFA)**: ユーザーが多要素認証システムを使用して自分の ID の認証を受けなければならないというポリシーを強制することもできます。たとえば、追加のセキュリティ レイヤーを確実に使用するために、ユーザーに個人用携帯電話で PIN を確認するように強制することができます。MFA 認証は、認証されていないユーザーが有効なユーザーのユーザー名とパスワードを入手してリソースにアクセスすることがないように、リソースを保護します。 
-- **サインインとユーザーのリスク**: Azure AD Identity Protection では、リスクに基づく条件付きアクセス ポリシーが用意されており、リスク イベントと疑わしいサインイン アクティビティに基づいて高度な保護を提供します。 
+- **ユーザー属性**: ユーザー属性レベルでは、承認されたユーザーだけが会社のリソースにアクセスできるように、ポリシーを適用することができます。
+- **ユーザーのグループ メンバーシップ**: グループへのメンバーシップに基づいて、ユーザーに提供されるアクセスのレベルを制御することもできます。
+- **多要素認証 (MFA)**: ユーザーが多要素認証システムを使用して自分の ID の認証を受けなければならないというポリシーを強制することもできます。たとえば、追加のセキュリティ レイヤーを確実に使用するために、ユーザーに個人用携帯電話で PIN を確認するように強制することができます。MFA 認証は、認証されていないユーザーが有効なユーザーのユーザー名とパスワードを入手してリソースにアクセスすることがないように、リソースを保護します。
+- **サインインとユーザーのリスク**: Azure AD Identity Protection では、リスクに基づく条件付きアクセス ポリシーが用意されており、リスク イベントと疑わしいサインイン アクティビティに基づいて高度な保護を提供します。
  
 
 ## デバイス ベースの条件付きアクセス 
@@ -51,9 +51,9 @@
 
 | シナリオ | 記事 |
 |------------------------------------------------------|----------|
-| 認証の強度またはユーザーに基づいてリソースを保護する |[Getting started with conditional access to Azure AD SaaS apps with MFA and extranet (MFA とエクストラネットを使用した Azure AD SaaS アプリに対する条件付きアクセスの概要)](active-directory-conditional-access-azuread-connected-apps.md)<br><br>[What applications are supported (サポートされるアプリケーション)](active-directory-conditional-access-supported-apps.md)|
+| 認証の強度またはユーザーに基づいてリソースを保護する |[Azure AD 接続アプリケーションに対するグループ、場所、アプリケーションの秘密度に基づく条件付きアクセスの基本](active-directory-conditional-access-azuread-connected-apps.md)<br><br>[サポートされるアプリケーションの種類](active-directory-conditional-access-supported-apps.md)|
 | デバイスの紛失、盗難時に企業データを保護する |[Help protect your data with full or selective wipe using Microsoft Intune (Microsoft Intune を使用した全体または選択的ワイプによるデータの保護)](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)|
 |サインイン リスクに基づいてリソースを保護する |[Azure AD Identity Protection](active-directory-identityprotection.md) |
-| 追加情報 |[条件付きアクセスのよく寄せられる質問](active-directory-conditional-faqs.md)|
+| 追加情報 |[条件付きアクセスの FAQ](active-directory-conditional-faqs.md)<br><br>[テクニカル リファレンス](active-directory-conditional-access-technical-reference.md) |
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

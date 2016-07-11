@@ -25,7 +25,7 @@ Microsoft や信頼された第三者の発行元によってビルドされた�
 」をご覧ください。
 
 リンク:
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-windows-classic-extensions-customscript.md)。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](virtual-machines-windows-classic-extensions-customscript.md)方法について説明します。
 
 
 ## カスタム スクリプト拡張機能の概要
@@ -93,4 +93,4 @@ Azure リソース マネージャー テンプレートでカスタム スク�
 <!--Image references-->
 [5]: ./media/virtual-machines-windows-classic-extensions-customscript/addcse.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

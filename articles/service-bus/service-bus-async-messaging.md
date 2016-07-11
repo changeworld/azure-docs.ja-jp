@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="Service Bus の非同期メッセージング |Microsoft Azure"
-   description="Service Bus の非同期仲介型メッセージングに関する説明です。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" /> 
+    pageTitle="Service Bus の非同期メッセージング |Microsoft Azure"
+    description="Service Bus の非同期仲介型メッセージングに関する説明です。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" /> 
 <tags 
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="03/16/2016"
-   ms.author="sethm" />
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="06/27/2016"
+    ms.author="sethm" />
 
 # 非同期メッセージング パターンと高可用性
 
@@ -43,7 +43,7 @@
 
 -   単一のサブシステムでの Service Bus の障害。この状況では、コンピューティング ノードが一貫性のない状態になって再起動が必要になり、対応しているすべてのエンティティが他のノードに負荷を分散することになります。これにより、メッセージの処理が一時的に低速になります。
 
--   Azure データセンター内での Service Bus の障害。これは、数分または数時間にわたってシステムにアクセスできなくなる、以前からある "致命的な障害" です。
+-   Azure データセンター内での Service Bus の障害。これは、数分または数時間にわたってシステムにアクセスできなくなる "致命的な障害" です。
 
 > [AZURE.NOTE] **ストレージ**という用語は、Azure Storage と SQL Azure の両方を意味する場合があります。
 
@@ -63,7 +63,7 @@ Azure 内の他のコンポーネントで、サービスの問題が発生す�
 
 どのアプリケーションでも、状況によっては Service Bus の内部コンポーネントに不整合が生じる場合があります。Service Bus がこれを検出すると、アプリケーションからデータを収集し、何が起こったかを診断する手助けとします。データが収集されると、アプリケーションは一貫性のある状態に戻すために再起動されます。このプロセスは比較的迅速に発生し、エンティティが使用できない状態は最大で数分続きます。ただし、通常のダウンタイムはこれよりもはるかに短くなります。
 
-このような状況では、クライアント アプリケーションは [System.TimeoutException][] または [MessagingException][] 例外を生成します。Service Bus .NET SDK には、自動化されたクライアント再試行ロジックという形で、この問題の軽減策が備わっています。再試行期間が終了してもメッセージが配信されない場合は、[ペアの名前空間][]などの他の機能を試すことができます。ペアの名前空間には、「[ペアの名前空間の実装の詳細とコスト](service-bus-paired-namespaces.md)」の記事で説明されるその他の注意点があります。
+このような状況では、クライアント アプリケーションは [System.TimeoutException][] または [MessagingException][] 例外を生成します。Service Bus には、自動化されたクライアント再試行ロジックという形で、この問題の軽減策が備わっています。再試行期間が終了してもメッセージが配信されない場合は、[ペアの名前空間][]などの他の機能を試すことができます。ペアの名前空間には他にも問題がありますが、それについては、この記事で説明されています。
 
 ### Azure データセンター内での Service Bus の障害。
 
@@ -102,7 +102,7 @@ Azure データセンターでの障害の理由として最も可能性が高�
 
 ### MessagingFactory.PairNamespaceAsync API
 
-ペアの名前空間機能では、[Microsoft.ServiceBus.Messaging.MessagingFactory][] クラスに [PairNamespaceAsync][] メソッドが導入されます。
+ペアの名前空間機能では、[Microsoft.ServiceBus.Messaging.MessagingFactory][] クラスに [PairNamespaceAsync][] メソッドが含まれます。
 
 ```
 public Task PairNamespaceAsync(PairedNamespaceOptions options);
@@ -149,7 +149,7 @@ if (sendAvailabilityOptions.BacklogQueueCount < 1)
 
 ## 次のステップ
 
-Service Bus での非同期メッセージングの基本についての説明は以上です。詳細については、[ペアの名前空間][]に関するページを参照してください。
+Service Bus での非同期メッセージングの基本についての説明は以上です。詳細については、[ペアの名前空間][]に関するページをご覧ください。
 
   [ServerBusyException]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx
   [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx
@@ -171,4 +171,4 @@ Service Bus での非同期メッセージングの基本についての説明�
   [BacklogQueueCount]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions.backlogqueuecount.aspx
   [ペアの名前空間]: service-bus-paired-namespaces.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

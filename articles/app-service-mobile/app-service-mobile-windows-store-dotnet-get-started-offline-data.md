@@ -41,15 +41,15 @@
 
 Azure モバイル アプリのオフライン機能を使用すると、オフラインになっている状況でも、ローカル データベースとやり取りすることができます。アプリケーションでこれらの機能を使用するには、[SyncContext][synccontext] をローカル ストアに初期化します。その後、[IMobileServiceSyncTable][IMobileServiceSyncTable] インターフェイスを使用してテーブルを参照します。SQLite は、デバイス上のローカル ストアとして使用されます。
 
-1. [Windows ユニバーサル プラットフォーム用の SQLite ランタイム](http://sqlite.org/2016/sqlite-uwp-3120200.vsix)をインストールします。
+1. [ユニバーサル Windows プラットフォーム用の SQLite ランタイム](http://sqlite.org/2016/sqlite-uwp-3120200.vsix)をインストールします。
 
 2. 「[Create a Windows app (Windows アプリの作成)]」チュートリアルで作成した UWP アプリ プロジェクトの NuGet パッケージ マネージャーを Visual Studio で開き、**Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを検索してインストールします。
 
-4. ソリューション エクスプ ローラーで、**[参照]** を右クリックし、**[ユニバーサル Windows]**、**[拡張機能]** の順にクリックして、**[SQLite for Universal Windows Platform]** と **[Visual C++ 2015 Runtime for Universal Windows Platform apps]** の両方を有効にします。
+4. ソリューション エクスプローラーで、**[参照]** を右クリックし、**[参照の追加...]**、**[ユニバーサル Windows]**、**[拡張機能]** の順にクリックして、**[SQLite for Universal Windows Platform]** と **[Visual C++ 2015 Runtime for Universal Windows Platform apps]** の両方を有効にします。
 
     ![SQLite UWP リファレンスを追加する][1]
 
-5. MainPage.xaml.cs ファイルを開き、ファイルの先頭にある次の `using` ステートメントのコメントを解除します。
+5. MainPage.xaml.cs ファイルを開き、ファイルの先頭にある次の `using` ステートメントをコメント解除します。
 
         using Microsoft.WindowsAzure.MobileServices.SQLiteStore;  
         using Microsoft.WindowsAzure.MobileServices.Sync;         
@@ -81,7 +81,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 	`SyncAsync` では、プッシュ操作が [SyncContext][synccontext] から開始された後、増分同期が行われます。同期コンテキストは、クライアントがすべてのテーブルに対して行った変更を追跡します。この動作については、「[Azure Mobile Apps でのオフライン データ同期]」を参照してください。
 
-8. `OnNavigatedTo` イベント ハンドラーで、`InitLocalStoreAsync` の呼び出しをコメント解除します。[認証チュートリアル](app-service-mobile-windows-store-dotnet-get-started-users.md)を既に完了している場合、代わり `AuthenticateAsync` メソッドでこれを行う必要があります。
+8. `OnNavigatedTo` イベント ハンドラーで、`InitLocalStoreAsync` の呼び出しをコメント解除します。[認証チュートリアル](app-service-mobile-windows-store-dotnet-get-started-users.md)を既に完了している場合、代わりに `AuthenticateAsync` メソッドでこれを行う必要があります。
 
 9. `InsertTodoItem` および `UpdateCheckedTodoItem` メソッドでの [PushAsync] の呼び出しをコメント解除した後、`ButtonRefresh_Click` メソッドで `SyncAsync` の呼び出しをコメント解除します。
 
@@ -133,7 +133,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 2. **F5** キーを押し、アプリケーションをビルドして実行します。アプリを起動した際の更新時には同期が失敗することに注意してください。
  
-3. 新しい項目を入力し、**[保存]** をクリックするたびに [CancelledByNetworkError] でプッシュが失敗することを確認します。ただし、新しい todo 項目は、モバイル アプリ バックエンドにプッシュされるまでは、ローカル ストア内に存在します。
+3. 新しい項目を入力し、**[保存]** をクリックするたびに [CancelledByNetworkError] ステータスでプッシュが失敗することを確認します。ただし、新しい todo 項目は、モバイル アプリ バックエンドにプッシュされるまでは、ローカル ストア内に存在します。
 
 	運用アプリでは、これらの例外を抑制した場合、クライアント アプリはモバイル アプリ バックエンドにまだ接続されているかのように動作します。
 
@@ -147,7 +147,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 ここでは、アプリケーションをモバイル アプリ バックエンドに再接続します。これは、アプリケーションがオフライン状態から、モバイル アプリ バックエンドとのオンライン状態に移行したことをシミュレートします。初めてアプリケーションを実行すると、`OnNavigatedTo` イベント ハンドラーが `InitLocalStoreAsync` を呼び出します。これが次に `SyncAsync` を呼び出し、ローカル ストアとバックエンドのデータベースを同期します。そのため、アプリはスタートアップ時に同期を試みることになります。
 
-1. 共有プロジェクトで App.xaml.cs を開きます。`MobileServiceClient` の初期化をコメント解除し、正しいモバイル アプリ の URL とゲートウェイの URL を使用します。
+1. 共有プロジェクトで App.xaml.cs を開き、正しいモバイル アプリ URL を使用するために以前の `MobileServiceClient` の初期化をコメント解除します。
 
 2. **F5** キーを押して、アプリケーションをリビルドして実行します。アプリは、プッシュとプルの操作によって、`OnNavigatedTo` イベント ハンドラーが実行されるとすぐに、ローカルでの変更と Azure Mobile Apps バックエンドを同期します。
 
@@ -164,7 +164,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 *  **[PushAsync]** このメソッドは [IMobileServicesSyncContext] のメンバーなので、すべてのテーブルに対する変更はバックエンドにプッシュされます。ローカルに変更されたレコードのみが、サーバーに送信されます。
 
-* **[PullAsync]** プルは [IMobileServiceSyncTable] から開始されます。テーブルに追跡されている変更がある場合は、ローカル ストア内のすべてのテーブルとリレーションシップの一貫性が保持されるように、暗黙のプッシュが実行されます。*pushOtherTables* パラメーターは、コンテキスト内の他のテーブルが暗黙のプッシュでプッシュされるかどうかを制御します。*query* パラメーターは、返されたデータをフィルター処理するための [IMobileServiceTableQuery&lt;U&gt;][IMobileServiceTableQuery] または OData クエリ文字列を受け取ります。*QueryId* パラメーターは、増分同期の定義に使用されます。詳細については、「[Azure Mobile Apps でのオフライン データ同期](app-service-mobile-offline-data-sync.md#how-sync-works)」を参照してください。
+* **[PullAsync]** プルは [IMobileServiceSyncTable] から開始されます。テーブルに追跡されている変更がある場合は、ローカル ストア内のすべてのテーブルとリレーションシップの一貫性が保持されるように、暗黙のプッシュが実行されます。*pushOtherTables* パラメーターは、コンテキスト内の他のテーブルが暗黙のプッシュでプッシュされるかどうかを制御します。*query* パラメーターは、[IMobileServiceTableQuery&lt;U&gt;][IMobileServiceTableQuery] または OData クエリ文字列を受け取り、返されたデータをフィルター処理します。*queryId* パラメーターは、増分同期の定義に使用されます。詳細については、「[Azure Mobile Apps でのオフライン データ同期](app-service-mobile-offline-data-sync.md#how-sync-works)」を参照してください。
 
 * **[PurgeAsync]** アプリはこのメソッドを定期的に呼び出して、ローカル ストアから古いデータを消去する必要があります。まだ同期されていないすべての変更を消去する必要がある場合は、*force* パラメーターを使用します。
 
@@ -211,4 +211,4 @@ Mobile Apps のオフライン同期機能の詳しい背景情報について�
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Azure Mobile Services のオフライン対応アプリ]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

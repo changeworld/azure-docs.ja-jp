@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="06/27/2016"
 	ms.author="douglasl"/>
 
 # テーブルの Stretch Database を有効にする
@@ -22,7 +22,7 @@ Stretch Database のテーブルを設定するには、SQL Server Management St
 
 -   別個のテーブルにコールド データを格納する場合、テーブル全体を移行できます。
 
--   テーブルにホット データとコールド データの両方が含まれている場合、移行する行を選択するフィルター述語を指定できます。
+-   テーブルにホット データとコールド データの両方が含まれている場合、移行する行を選択するフィルター関数を指定できます。
 
 **前提条件**。テーブルに **[Stretch]、[有効化]** を選択したとき、データベースの Stretch Database を有効にしていない場合、ウィザードにより Stretch Database のデータベースが最初に設定されます。このトピックの手順ではなく、「[[Enable Database for Stretch (Stretch Database を有効にする)] ウィザードを実行する方法の概要](sql-server-stretch-database-wizard.md)」の手順に従ってください。
 
@@ -43,11 +43,11 @@ Stretch Database のテーブルを設定するには、SQL Server Management St
 
 有効にするテーブルが表示され、選択されていることを確認します。
 
-テーブル全体を移行することも、ウィザードで単純なフィルター述語を指定することもできます。別の種類のフィルター述語を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
+テーブル全体を移行することも、ウィザードで単純なフィルター関数を指定することもできます。別の種類のフィルター関数を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
 
--   ウィザードを終了し、ALTER TABLE ステートメントを実行してテーブルの Stretch を有効にし、述語を指定します。
+-   ウィザードを終了し、ALTER TABLE ステートメントを実行してテーブルの Stretch を有効にし、フィルター関数を指定します。
 
--   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、述語を指定します。必要な手順については、「[Add a filter predicate after running the Wizard (ウィザードの実行後にフィルター述語を追加する)](sql-server-stretch-database-predicate-function.md#addafterwiz)」をご覧ください。
+-   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、フィルター関数を指定します。必要な手順については、[ウィザードの実行後におけるフィルター関数の追加](sql-server-stretch-database-predicate-function.md#addafterwiz)に関するページを参照してください。
 
 ALTER TABLE 構文については、このトピックの後の方で説明しています。
 
@@ -65,9 +65,9 @@ Transact-SQL を利用し、既存のテーブルで Stretch Database を有効�
 ### オプション
 CREATE TABLE または ALTER TABLE を実行し、テーブルで Stretch Database を有効にするとき、次のオプションを利用します。
 
--   テーブルにホット データとコールド データの両方が含まれている場合、`FILTER_PREDICATE = <predicate>` 句を使用し、移行する行を選択する述語を指定することもできます。述語では、インライン テーブル値関数を呼び出す必要があります。詳細については、[移行する行の選択におけるフィルター述語の使用](sql-server-stretch-database-predicate-function.md)に関するページをご覧ください。フィルター述語を指定しない場合、テーブル全体が移行されます。
+-   テーブルにホット データとコールド データの両方が含まれている場合、`FILTER_PREDICATE = <function>` 句を使用し、移行する行を選択する関数を指定することもできます。述語では、インライン テーブル値関数を呼び出す必要があります。詳細については、[移行する行の選択におけるフィルター関数の使用](sql-server-stretch-database-predicate-function.md)に関するページをご覧ください。フィルター関数を指定しない場合、テーブル全体が移行されます。
 
-    >   [AZURE.NOTE] 指定したフィルター述語のパフォーマンスが悪いと、データ移行のパフォーマンスも悪くなります。Stretch Database は CROSS APPLY 演算子を利用し、テーブルにフィルター述語を適用します。
+    >   [AZURE.NOTE] 指定したフィルター関数のパフォーマンスが悪いと、データ移行のパフォーマンスも悪くなります。Stretch Database は CROSS APPLY 演算子を利用し、テーブルにフィルター関数を適用します。
 
 -   データの移行をすぐに開始する場合は `MIGRATION_STATE = OUTBOUND` を指定し、データの移行の開始を先送りする場合は `MIGRATION_STATE = PAUSED` を指定します。
 
@@ -83,7 +83,7 @@ ALTER TABLE <table name>
     SET ( REMOTE_DATA_ARCHIVE = ON ( MIGRATION_STATE = OUTBOUND ) ) ;  
 GO
 ```
-`dbo.fn_stretchpredicate` インライン テーブル値関数で特定される行のみを移行し、データ移行を先送りする例は次のようになります。フィルター述語の詳細については、[移行する行の選択におけるフィルター述語の使用](sql-server-stretch-database-predicate-function.md)に関するページをご覧ください。
+`dbo.fn_stretchpredicate` インライン テーブル値関数で特定される行のみを移行し、データ移行を先送りする例は次のようになります。フィルター関数の詳細については、[移行する行の選択におけるフィルター関数の使用](sql-server-stretch-database-predicate-function.md)に関するページを参照してください。
 
 ```tsql
 USE <Stretch-enabled database name>;
@@ -111,7 +111,7 @@ CREATE TABLE <table name>
 GO
 ```
 
-`dbo.fn_stretchpredicate` インライン テーブル値関数で特定される行のみを移行し、データ移行を先送りする例は次のようになります。フィルター述語の詳細については、[移行する行の選択におけるフィルター述語の使用](sql-server-stretch-database-predicate-function.md)に関するページをご覧ください。
+`dbo.fn_stretchpredicate` インライン テーブル値関数で特定される行のみを移行し、データ移行を先送りする例は次のようになります。フィルター関数の詳細については、[移行する行の選択におけるフィルター関数の使用](sql-server-stretch-database-predicate-function.md)に関するページを参照してください。
 
 ```tsql
 USE <Stretch-enabled database name>;
@@ -133,4 +133,4 @@ GO
 
 [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

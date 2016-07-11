@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/04/2016"
+   ms.date="06/23/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートでの依存関係の定義
@@ -101,11 +101,11 @@ reference 関数を使用すると、式では、他の JSON の名前と値の�
 
 この要素または dependsOn 要素のいずれかを使用して依存関係を指定できますが、同じ依存リソースに両方の要素を使用する必要はありません。不要な dependsOn によってデプロイ エンジンが誤ってデプロイの側面を並列実行できなくなるというリスクを回避するために暗黙的な参照を使用することをお勧めします。
 
-詳細については、「[reference 関数](../resource-group-template-functions/#reference)」を参照してください。
+詳細については、「[reference 関数](resource-group-template-functions.md#reference)」を参照してください。
 
 ## 次のステップ
 
-- Azure リソース マネージャーのテンプレートの作成の詳細については、[テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。 
+- Azure リソース マネージャーのテンプレートの作成の詳細については、[テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 - テンプレートで使用可能な関数の一覧については、[テンプレートの関数](resource-group-template-functions.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

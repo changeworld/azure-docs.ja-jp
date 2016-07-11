@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="06/27/2016"
 	ms.author="andkjell;markvi"/>
 
 
@@ -160,7 +160,7 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 
 **構文:** `str ConvertFromBase64(str source)` - エンコードには Unicode を想定しています。<br> `str ConvertFromBase64(str source, enum Encoding)`
 
-- source: Base64 でエンコードされた文字列  
+- source: Base64 でエンコードされた文字列
 - Encoding: Unicode、ASCII、UTF8
 
 **例** `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")` `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
@@ -738,7 +738,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - string: 返される文字を含む文字列
 - NumChars: 文字列の右端から数えて返される文字数を指定する数値
 
-**解説:** 文字列の last 位置から数えて NumChars 文字分の文字が返されます。
+**解説:** 文字列の last 位置から数えて numChars 文字分の文字が返されます。
 
 文字列内の最後の numChars 文字分の文字を含む文字列。
 
@@ -859,4 +859,4 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

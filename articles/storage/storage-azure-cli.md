@@ -1,6 +1,6 @@
 <properties
     pageTitle="Azure Storage での Azure CLI の使用 | Microsoft Azure"
-    description="Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。Azure CLI はクロスプラットフォーム ツールです"
+    description="Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。Azure CLI はクロスプラットフォーム ツールです "
     services="storage"
     documentationCenter="na"
     authors="tamram"
@@ -25,7 +25,7 @@ Azure CLI は、Azure Platform で使用できるオープン ソース、クロ
 
 このガイドでは、Azure Storage の基本概念を理解していることを前提としています。また、Azure CLI と Azure Storage を使用する方法を示すための多くのスクリプトを用意しています。各スクリプトの実行前に、使用する構成に基づいてスクリプト変数を更新してください。
 
-> [AZURE.NOTE] このガイドで紹介する Azure CLI のコマンドとスクリプトの例は、Azure サービス管理 (ASM) モードで実行されています。Azure リソース管理 (ARM) モードのストレージの Azure CLI コマンドについては、[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)に関するページを参照してください。
+> [AZURE.NOTE] このガイドでは、クラシック ストレージ アカウントの Azure CLI のコマンドとスクリプトの例について説明します。Resource Manager ストレージ アカウントの Azure CLI コマンドについては、[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)に関するページを参照してください。
 
 ## 5 分で始める Azure Storage と Azure CLI の使用
 
@@ -74,15 +74,15 @@ Azure サブスクリプションの詳細については、「[Azure Active Dir
 
 6. ここで、構成設定に基づいてスクリプト変数を更新する必要があります。
 
-    - **<storage_account_name>** スクリプトの所定の名前を使用するか、ストレージ アカウントの新しい名前を入力します。**重要:** ストレージ アカウントの名前は、Azure 上で一意である必要があります。また、小文字にする必要もあります。
+    - **<storage\_account\_name>**: スクリプトの所定の名前を使用するか、ストレージ アカウントの新しい名前を入力します。**重要:** ストレージ アカウントの名前は、Azure 上で一意である必要があります。また、小文字にする必要もあります。
 
-    - **<storage_account_key>** ストレージ アカウントのアクセス キー。
+    - **<storage\_account\_key>**: ストレージ アカウントのアクセス キー。
 
-    - **<container_name>** スクリプトの所定の名前を使用するか、コンテナーの新しい名前を入力します。
+    - **<container\_name>**: スクリプトの所定の名前を使用するか、コンテナーの新しい名前を入力します。
 
-    - **<image_to_upload>** ローカル コンピューター上の画像へのパス ("~/images/HelloWorld.png" など) を入力します。
+    - **<image\_to\_upload>**: ローカル コンピューター上の画像へのパスを入力します。たとえば、"~/images/HelloWorld.png" などです。
 
-    - **<destination_folder>** Azure Storage からダウンロードしたファイルを格納するローカル ディレクトリへのパス (“~/downloadImages” など) を入力します。
+    - **<destination\_folder>**: Azure Storage からダウンロードしたファイルを格納するローカル ディレクトリへのパスを入力します。たとえば、"~/downloadImages" などです。
 
 7. vim で必要な変数を更新したら、"Esc キー、: キー、wq! キー" というキーの組み合わせを使用してスクリプトを保存します。
 
@@ -94,7 +94,7 @@ Azure サブスクリプションの詳細については、「[Azure Active Dir
 
 ### Azure サブスクリプションへの接続
 
-ほとんどのストレージ コマンドは、Azure サブスクリプションがなくても動作しますが、Azure CLI からサブスクリプションに接続することをお勧めします。Azure CLI がサブスクリプションで動作するように構成するには、[Azure CLI から Azure サブスクリプションへの接続](../xplat-cli-connect.md)に関するページの手順に従ってください。
+ほとんどのストレージ コマンドは、Azure サブスクリプションがなくても動作しますが、Azure CLI からサブスクリプションに接続することをお勧めします。Azure CLI がサブスクリプションで動作するように構成するには、[Azure CLI からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)に関するページの手順に従ってください。
 
 ### 新しいストレージ アカウントの作成
 
@@ -129,7 +129,7 @@ Azure Storage のすべての BLOB はコンテナーに格納する必要があ
 
         azure storage container create mycontainer
 
-> [AZURE.NOTE] **Off**、**BLOB**、**Container** という 3 つのレベルの匿名読み取りアクセスがあります。BLOB に対する匿名アクセスを許可しない場合は、Permission パラメーターを **Off** に設定します。既定では、新しいコンテナーはプライベートであり、アカウント所有者のみがアクセスできます。BLOB リソースに対する匿名パブリック読み取りアクセスを許可するが、コンテナー メタデータまたはコンテナー内の BLOB の一覧に対するアクセスは許可しない場合は、Permission パラメーターを **BLOB** に設定します。BLOB リソース、コンテナー メタデータ、コンテナー内の BLOB の一覧に対する完全パブリック読み取りアクセスを許可する場合は、Permission パラメーターを **Container** に設定します。詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
+> [AZURE.NOTE] **Off**、**BLOB**、**Container** という 3 つのレベルの匿名読み取りアクセスがあります。BLOB に対する匿名アクセスを許可しない場合は、Permission パラメーターを **Off** に設定します。既定では、新しいコンテナーはプライベートであり、アカウント所有者のみがアクセスできます。BLOB リソースに対する匿名パブリック読み取りアクセスを許可するが、コンテナー メタデータまたはコンテナー内の BLOB の一覧に対するアクセスは許可しない場合は、Permission パラメーターを **BLOB** に設定します。BLOB リソース、コンテナー メタデータ、コンテナー内の BLOB の一覧に対する完全パブリック読み取りアクセスを許可する場合は、Permission パラメーターを **Container** に設定します。詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」をご覧ください。
 
 ### コンテナーに BLOB をアップロードする
 
@@ -221,4 +221,4 @@ Azure Storage の詳細についての関連記事とリソースがあります
 
 [Image1]: ./media/storage-azure-cli/azure_command.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -19,7 +19,7 @@
 
 # 仮想ネットワークまたはクラウド サービスで構成されるクラシック デプロイ モデルで作成された Windows 仮想マシンに接続する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 クラシック デプロイ モデルで作成された Windows 仮想マシンは、常にクラウド サービス内に配置されます。クラウド サービスはコンテナーとして機能し、インターネット経由で仮想マシンにアクセスするために、一意のパブリック DNS 名、パブリック IP アドレス、一連のエンドポイントを提供します。クラウド サービスは仮想ネットワークに配置できますが、必須ではありません。[Linux 仮想マシンを仮想ネットワークまたはクラウド サービスと接続する](virtual-machines-linux-classic-connect-vms.md)こともできます。
 
@@ -33,4 +33,4 @@
 
 仮想マシンを作成したら、サービスやワークロードがデータを格納するための場所として、[データ ディスクを追加する](virtual-machines-windows-classic-attach-disk.md)ことをお勧めします。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0629_2016-->

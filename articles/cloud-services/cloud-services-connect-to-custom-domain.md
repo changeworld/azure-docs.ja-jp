@@ -30,7 +30,7 @@
 
 ## Virtual Network の作成
 
-Azure に Virtual Network を作成するには、Azure クラシック ポータルか PowerShell を使います。このチュートリアルでは、PowerShell を使用します。Azure クラシック ポータルを使用して Virtual Network を作成するには、「[仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」を参照してください。
+Azure に仮想ネットワークを作成するには、Azure クラシック ポータルか PowerShell を使います。このチュートリアルでは、PowerShell を使用します。Azure クラシック ポータルを使用して Virtual Network を作成するには、「[仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」を参照してください。
 
 ```powershell
 #Create Virtual Network
@@ -56,7 +56,7 @@ $vnetStr =
 "@;
 
 $vnetConfigPath = "<path-to-vnet-config>"
-Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath;
+Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath
 ```
 
 ## 仮想マシンを作成する
@@ -78,7 +78,7 @@ $affgrp = '<your- affgrp>'
 
 # Create a VM and add it to the Virtual Network
 
-New-AzureQuickVM -Windows -ServiceName $vmsvc1 -name $vm1 -ImageName $imgname -AdminUsername $username -Password $password -AffinityGroup $affgrp -SubnetNames $subnetname -VNetName $vnetname
+New-AzureQuickVM -Windows -ServiceName $vmsvc1 -Name $vm1 -ImageName $imgname -AdminUsername $username -Password $password -AffinityGroup $affgrp -SubnetNames $subnetname -VNetName $vnetname
 ```
 
 ## 仮想マシンをドメイン コントローラーに昇格させる
@@ -129,7 +129,7 @@ VM にログインした後、[カスタム AD ドメイン コントローラ�
 
 ## ドメインに Web/worker ロールを接続する
 
-Azure にクラウド サービス プロジェクトをデプロイした後は、AD ドメイン拡張機能を使用して、ロール インスタンスをカスタム AD ドメインに接続します。AD ドメイン拡張機能を既存のクラウド サービス デプロイメントに追加し、カスタム ドメインに参加させるには、PowerShell で次のコマンドを実行します。
+Azure にクラウド サービス プロジェクトをデプロイした後は、AD ドメイン拡張機能を使用して、ロール インスタンスをカスタム AD ドメインに接続します。AD ドメイン拡張機能を既存のクラウド サービス デプロイに追加し、カスタム ドメインに参加させるには、PowerShell で次のコマンドを実行します。
 
 ```powershell
 # Initialize domain variables
@@ -156,4 +156,4 @@ help New-AzureServiceADDomainExtensionConfig
 
 私たちは、仮想マシンをドメイン コントローラーに昇格させる拡張機能の有用性に関して皆さんからのご意見を募集しています。このような拡張機能が便利だと思われる方は、コメントを残してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

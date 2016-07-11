@@ -13,14 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
-# Azure Conditional Access Preview for SaaS Apps
+# Azure AD への条件付きアクセスの基本  
 
-Azure Conditional Access Preview for SaaS Apps は、パブリック プレビューで利用できます。プレビューでは、アプリケーションごとの Multi-Factor Authentication (MFA) のアクセス規則と、信頼されたネットワークにないユーザーのアクセスをブロックする機能を構成できます。
+SaaS アプリや Azure AD 接続アプリ向けの Azure Active Directory Conditional Access がパブリック プレビュー版として公開されました。今後はグループや場所、アプリケーションの秘密度に基づく条件付きアクセスを構成することができます。
 
-Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。これらの機能は、Azure Active Directory Premium ライセンスを購入したお客様に提供されます。
+Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。アプリケーションの秘密度に基づく条件付きアクセスを使用すれば、Multi-Factor Authentication (MFA) アクセス規則をアプリケーションごとに設定し、信頼されたネットワーク上に存在しないユーザーのアクセスをブロックすることが可能です。ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
+
+これらの機能は、Azure Active Directory Premium ライセンスを購入したお客様に提供されます。
 
 ## シナリオの前提条件
 * Azure Active Directory Premium のライセンス
@@ -92,4 +94,4 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 - [Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

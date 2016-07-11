@@ -14,12 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="06/28/2016"
 	ms.author="anhoh"/>
 
 # DocumentDB ドキュメント エクスプローラーを使用して JSON ドキュメントを表示、編集、作成、アップロードする
 
 この記事では、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) ドキュメント エクスプローラーの概要を説明します。これは、DocumentDB を使用して JSON ドキュメントを表示、編集、作成、アップロード、およびフィルター処理する Azure ポータルのツールです。
+
+ドキュメント エクスプローラーは、MongoDB のプロトコル対応の DocumentDB アカウントでは有効になっていません。この機能が有効になった場合は、このページも更新されます。
 
 ## ドキュメント エクスプローラーの起動
 
@@ -104,7 +106,7 @@ Document Explorer はさまざまなナビゲーション オプションと高�
 
 	![Screenshot of Document Explorer Settings blade](./media/documentdb-view-json-document-explorer/documentexplorerfiltersettings2.png)
 
-	ドキュメント エクスプローラーでは、結果が自動的に更新され、フィルター クエリに一致するドキュメントが表示されます。DocumentDB の SQL 文法の詳細については、「[DocumentDB における SQL クエリと SQL 構文](documentdb-sql-query.md)」を参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。
+	ドキュメント エクスプローラーでは、結果が自動的に更新され、フィルター クエリに一致するドキュメントが表示されます。DocumentDB の SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関するページを参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。
 
     **[データベース]** ボックスと **[コレクション]** ボックスを使用すると、Document Explorer を閉じて再度起動することなく、現在表示されているドキュメントが含まれるコレクションを簡単に変更できます。
 
@@ -148,14 +150,14 @@ Document Explorer はさまざまなナビゲーション オプションと高�
 
 ## ポータル外での JSON ドキュメントの操作
 
-Azure ポータルのドキュメント エクスプローラーは、DocumentDB のドキュメントを操作するための 1 つの手段にすぎません。[REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) または [クライアント SDK](documentdb-sdk-dotnet.md) を使用してドキュメントを操作することもできます。コード例については、[.NET SDK のドキュメントの例](documentdb-dotnet-samples.md#document-examples)と [Node.js SDK のドキュメントの例](documentdb-nodejs-samples.md#document-examples)を参照してください。
+Azure ポータルのドキュメント エクスプローラーは、DocumentDB のドキュメントを操作するための 1 つの手段にすぎません。[REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) や[クライアント SDK](documentdb-sdk-dotnet.md) を使用してドキュメントを操作することもできます。コード例については、[.NET SDK のドキュメントの例](documentdb-dotnet-samples.md#document-examples)と [Node.js SDK のドキュメントの例](documentdb-nodejs-samples.md#document-examples)を参照してください。
 
 他のソース (JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure Table Storage、Amazon DynamoDB、HBase) からファイルをインポートまたは移行する必要がある場合は、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用すると、データを DocumentDB にすばやくインポートできます。
 
 ## 次のステップ
 
-ドキュメント エクスプローラーでサポートされている DocumentDB SQL 文法の詳細については、「[DocumentDB における SQL クエリと SQL 構文](documentdb-sql-query.md)」を参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。
+ドキュメント エクスプローラーでサポートされている DocumentDB SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関するページを参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。
 
-[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)も、DocumentDB の詳細を理解できるようにする際に便利なリソースです。
+[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)も、DocumentDB の詳細を理解する際に便利なリソースです。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!----HONumber=AcomDC_0629_2016-->

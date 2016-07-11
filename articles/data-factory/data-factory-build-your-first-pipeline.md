@@ -1,11 +1,12 @@
 <properties
-	pageTitle="初めての Data Factory の作成 | Microsoft Azure"
-	description="このチュートリアルでは、Azure HDInsight を使用してデータを変換するデータ パイプラインで Data Factory を作成する方法を示します。"
+	pageTitle="Data Factory のチュートリアル: 初めてのデータ パイプライン | Microsoft Azure"
+	description="この Azure Data Factory のチュートリアルでは、Hadoop クラスターで Hive スクリプトを使用してデータを処理するデータ ファクトリを作成およびスケジュールする方法を示します。"
 	services="data-factory"
+	keywords="Azure Data Factory のチュートリアル, Hadoop クラスター, Hadoop Hive"
 	documentationCenter=""
 	authors="spelluru"
-	manager="jhubbard"
-	editor="monicar"/>
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="data-factory"
@@ -13,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="05/23/2016"
+	ms.date="06/17/2016"
 	ms.author="spelluru"/>
 
-# チュートリアル: 初めての Data Factory の作成 (概要)
+# Azure Data Factory のチュートリアル: Hadoop クラスターを使用してデータを処理するデータ パイプラインを作成する 
 > [AZURE.SELECTOR]
 - [チュートリアルの概要](data-factory-build-your-first-pipeline.md)
 - [Data Factory エディターの使用](data-factory-build-your-first-pipeline-using-editor.md)
@@ -24,7 +25,7 @@
 - [Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)
 - [Resource Manager テンプレートの使用](data-factory-build-your-first-pipeline-using-arm.md)
 
-この記事では、Azure Data Factory を初めて構築する方法について説明します。
+このチュートリアルでは、Azure HDInsight (Hadoop) クラスターで Hive スクリプトを実行してデータを処理するデータ パイプラインを備えた最初の Azure データ ファクトリを構築します。
 
 > [AZURE.NOTE] この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、[Azure Data Factory の概要](data-factory-introduction.md)に関するページを参照してください。
 
@@ -43,14 +44,14 @@
 
 このチュートリアルでは、以下の手順を実施します。
 
-1.	**データ ファクトリ**を作成する。データ ファクトリには、データを移動および処理するデータ パイプラインを 1 つ以上含めることができます。 
-2.	**リンクされたサービス**を作成する。データ ストアまたはコンピューティング サービスをデータ ファクトリにリンクする、リンクされたサービスを作成します。Azure Storage などのデータ ストアには、パイプラインのアクティビティの入力データや出力データが保持されます。データを処理または変換する、Azure HDInsight などのコンピューティング サービス。    
+1.	**データ ファクトリ**を作成する。データ ファクトリには、データを移動および処理するデータ パイプラインを 1 つ以上含めることができます。
+2.	**リンクされたサービス**を作成する。データ ストアまたはコンピューティング サービスをデータ ファクトリにリンクする、リンクされたサービスを作成します。Azure Storage などのデータ ストアには、パイプラインのアクティビティの入力データや出力データが保持されます。データを処理または変換する、Azure HDInsight などのコンピューティング サービス。
 3.	入力**データセット**と出力データセットを作成する。入力データセットはパイプラインのアクティビティの入力を表し、出力データセットはアクティビティの出力を表します。
 3.	**パイプライン**を作成する。パイプラインには、コピー元からコピー先にデータをコピーするコピー アクティビティや、Hive スクリプトを使って入力データを変換して出力データを生成する HDInsight Hive アクティビティなどのアクティビティを 1 つ以上含めることができます。このサンプルでは、Hive スクリプトを実行する HDInsight Hive アクティビティを使用します。このスクリプトでは、まず Azure Blob Storage に格納されている未加工の Web ログ データを参照する外部テーブルを作成し、その後、年月別に未加工データを分割します。
 
 最初のパイプライン (**MyFirstPipeline**) は、Hive アクティビティを使用して、Azure Blob Storage 内の **adfgetstarted** コンテナーの **inputdata** フォルダー (adfgetstarted/inputdata) にアップロードする Web ログを変換して分析します。
  
-![ダイアグラム ビュー](./media/data-factory-build-your-first-pipeline/diagram-view.png)
+![Diagram view in Data Factory tutorial](./media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
 
 
 このチュートリアルでは、adfgetstarted (コンテナー) の inputdata (フォルダー) には、input.log という名前のファイルが含まれています。このログ ファイルには、2014 年の 1 月、2 月、および 3 月の 3 か月間のエントリが含まれています。入力ファイル内の各月のサンプル行を次に示します。
@@ -73,11 +74,11 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 このセクションでは、次のタスクを実行します。
 
 2. **adfgetstarted** コンテナーの **script** フォルダーに Hive クエリ ファイル (HQL) をアップロードします。
-3. **adfgetstarted** コンテナーの **inputdata** フォルダーに入力ファイルをアップロードします。 
+3. **adfgetstarted** コンテナーの **inputdata** フォルダーに入力ファイルをアップロードします。
 
 ### HQL スクリプト ファイルを作成する 
 
-1. **メモ帳**を起動し、次の HQL スクリプトを貼り付けます。この Hive スクリプトは、2 つの外部テーブル **WebLogsRaw** と **WebLogsPartitioned** を作成します。メニューの **[ファイル]** をクリックし、**[名前を付けて保存]** を選択します。ハード ドライブの **C:\\adfgetstarted** フォルダーを参照します。**[ファイルの種類]** フィールドで **[すべてのファイル (*.*)]** を選択します。**[ファイル名]** に「**partitionweblogs.hql**」と入力します。ダイアログ ボックスの下部にある **[エンコード]** フィールドが **[ANSI]** に設定されていることを確認します。そうでない場合は、**[ANSI]** に設定します。  
+1. **メモ帳**を起動し、次の HQL スクリプトを貼り付けます。この Hive スクリプトは、2 つの外部テーブル **WebLogsRaw** と **WebLogsPartitioned** を作成します。メニューの **[ファイル]** をクリックし、**[名前を付けて保存]** を選択します。ハード ドライブの **C:\\adfgetstarted** フォルダーを参照します。**[ファイルの種類]** フィールドで **[すべてのファイル (*.*)]** を選択します。**[ファイル名]** に「**partitionweblogs.hql**」と入力します。ダイアログ ボックスの下部にある **[エンコード]** フィールドが **[ANSI]** に設定されていることを確認します。そうでない場合は、**[ANSI]** に設定します。
 	
 		set hive.exec.dynamic.partition.mode=nonstrict;
 		
@@ -189,7 +190,7 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 	 
 2. チュートリアル用に Azure Storage を準備するには:
 	1. [最新バージョンの **AzCopy**](http://aka.ms/downloadazcopy) または[最新のプレビュー バージョン](http://aka.ms/downloadazcopypr)をダウンロードします。ユーティリティを使用する手順については、[AzCopy を使用する方法](../storage/storage-use-azcopy.md)に関するページを参照してください。
-	2. AzCopy をインストールした後は、コマンド プロンプトで次のコマンドを実行してシステム パスに追加できます。 
+	2. AzCopy をインストールした後は、コマンド プロンプトで次のコマンドを実行してシステム パスに追加できます。
 	
 			set path=%path%;C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
 
@@ -209,7 +210,7 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 			Transfer skipped:        0
 			Transfer failed:         0
 			Elapsed time:            00.00:00:01
-	1. 次のコマンドを実行して、**partitionweblogs.hql** ファイルを **adfgetstarted** コンテナーの **script** フォルダーにアップロードします。次にコマンドを示します。 
+	1. 次のコマンドを実行して、**partitionweblogs.hql** ファイルを **adfgetstarted** コンテナーの **script** フォルダーにアップロードします。次にコマンドを示します。
 	
 			AzCopy /Source:. /Dest:https://<storageaccountname>.blob.core.windows.net/adfgetstarted/script /DestKey:<storagekey>  /Pattern:partitionweblogs.hql
 
@@ -220,6 +221,6 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 - Azure ポータル (Data Factory エディター)
 - Azure PowerShell
 - Visual Studio
-- Azure リソース マネージャーのテンプレート 
+- Azure リソース マネージャーのテンプレート
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

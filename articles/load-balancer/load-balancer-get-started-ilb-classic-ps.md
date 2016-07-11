@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](load-balancer-get-started-ilb-arm-ps.md).
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -82,7 +82,7 @@
 
 
 
-これらのコマンドを使用するには、値を入力して < and > を削除します。たとえば次のようになります。
+これらのコマンドを使用するには、値を入力して < と > を削除します。たとえば次のようになります。
 
 	$svc="mytestcloud"
 	Get-AzureService -ServiceName $svc | Get-AzureInternalLoadBalancer
@@ -139,7 +139,7 @@ Get-azureinternalloadbalancer コマンドの表示から IP アドレスをメ�
 	$epname="<Name of the endpoint>"
 	Get-AzureVM -ServiceName $svc -Name $vmname | Remove-AzureEndpoint -Name $epname | Update-AzureVM
 
-これらのコマンドを使用するには、値を入力して < and > を削除します。
+これらのコマンドを使用するには、値を入力して < と > を削除します。
 
 たとえば次のようになります。
 
@@ -153,7 +153,7 @@ Get-azureinternalloadbalancer コマンドの表示から IP アドレスをメ�
 	$svc="<Cloud service name>"
 	Remove-AzureInternalLoadBalancer -ServiceName $svc
 
-これらのコマンドを使用するには、値を入力して < and > を削除します。
+これらのコマンドを使用するには、値を入力して < と > を削除します。
 
 たとえば次のようになります。
 
@@ -181,4 +181,4 @@ Get-azureinternalloadbalancer コマンドの表示から IP アドレスをメ�
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0629_2016-->

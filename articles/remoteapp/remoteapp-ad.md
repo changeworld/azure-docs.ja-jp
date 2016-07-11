@@ -26,14 +26,14 @@ AD Connect を使用してフェデレーションするクラウド コレク�
 
 ### Azure AD と Active Directory を接続する
 
-Azure AD テナントとオンプレミスの Active Directory 環境を接続する場合、AD Connect を使用します。2 つのディレクトリを接続するには、[4 回クリック](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx)するのみです。
+Azure AD テナントとオンプレミスの Active Directory 環境を接続する場合、AD Connect を使用します。2 つのディレクトリを接続するには、[4 回クリック](https://blogs.technet.microsoft.com/enterprisemobility/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect/)するのみです。
 
 注 - ハイブリッド コレクションではディレクトリの同期が必要です。
 
 ### "@domain.com" が一致することを確認する
 作業を開始する前に、オンプレミス フォレストの UPN が、Azure AD ドメインのサフィックスと一致していることを確認してください。
 
-Azure AD に UPN ドメインのサフィックスをセットアップしたら、Azure RemoteApp にログインするすべてのユーザーが "user@<the suffix you set up>" としてログインするようになります。ユーザーが同じ user@suffix を使用してオンプレミス ドメインにログインできることも確認してください。場合によっては、Azure AD に 1 つのドメイン名をセットアップし、オンプレミスのユーザー用に別のドメイン サフィックスを指定することもできます。この場合、ユーザーは Azure RemoteApp を介してドメインに参加しているコンピューターまたはリソースに接続することはできません。
+Azure AD に UPN ドメインのサフィックスをセットアップしたら、Azure RemoteApp にログインするすべてのユーザーが "user@<設定したサフィックス>" としてログインするようになります。ユーザーが同じ user@suffix を使用してオンプレミス ドメインにログインできることも確認してください。場合によっては、Azure AD に 1 つのドメイン名をセットアップし、オンプレミスのユーザー用に別のドメイン サフィックスを指定することもできます。この場合、ユーザーは Azure RemoteApp を介してドメインに参加しているコンピューターまたはリソースに接続することはできません。
 
 たとえば、UPN ドメイン サフィックスを AAD に contoso.com としてセットアップした場合に、オンプレミス/AD の一部のユーザーが @contoso.uk を使用してログインするように構成されている場合、そのようなユーザーは ARA コレクションに正しくログインすることはできません。ログインするには、AAD と AD のユーザー UPN が同じである必要があります。
 
@@ -45,4 +45,4 @@ Azure AD に UPN ドメインのサフィックスをセットアップしたら
 
 RemoteApp コレクションを作成するときは、これらのオブジェクトが両方とも必要であるため、これらの手順を最初に行ってください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

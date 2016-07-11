@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="06/27/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 
@@ -22,6 +22,8 @@
 SQL Data Warehouse では、ビューが特に役立ちます。ビューをさまざまな方法で使用して、ソリューションの品質を向上させることができます。
 
 この記事では、ビューを実装してソリューションを強化する方法の例を示します。考慮する必要がある制限事項もいくつかあります。
+
+> [AZURE.NOTE] この記事では `CREATE VIEW` の構文は説明していません。参考情報については、MSDN の「[CREATE VIEW][]」 を参照してください。
 
 ## アーキテクチャの抽象化
 一般的なアプリケーション パターンでは、データを読み込みながら、CREATE TABLE AS SELECT (CTAS) を使用し、その後にオブジェクトの名前変更パターンを使用してテーブルを再作成します。
@@ -63,7 +65,7 @@ SQL Data Warehouse のビューはメタデータ専用です。
 
 
 ## 次のステップ
-開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][]に関するページをご覧ください。
+開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][]に関するページをご覧ください。`CREATE VIEW` 構文については、「[CREATE VIEW][]」を参照してください。
 
 <!--Image references-->
 
@@ -71,7 +73,8 @@ SQL Data Warehouse のビューはメタデータ専用です。
 [SQL Data Warehouse の開発の概要]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
+[CREATE VIEW]: https://msdn.microsoft.com/ja-JP/library/ms187956.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="06/24/2016"
 	ms.author="glenga"/>
 
 # Azure Mobile Services の .NET バックエンドによるランキング アプリケーションの作成
@@ -142,7 +142,7 @@ Controllers フォルダーを右クリックし、**[追加]**、**[新しい�
 
 ![][8]
 
-このコントローラーは、**TableController<T>** から派生しています。このクラスは **ApiController** を継承しますが、Azure Mobile Services 用に特化されています。
+コントローラーは、**TableController<T>** から派生します。このクラスは **ApiController** を継承しますが、Azure Mobile Services 用に特化されています。
 
 - ルーティング: **TableController** の既定のルートは `/tables/{table_name}/{id}` であり、*table\_name* はエンティティ名に一致します。したがって、Player コントローラーのルートは */tables/player/{id}* となります。このルーティング規則により、**TableController** は Mobile Services の [REST API](http://msdn.microsoft.com/library/azure/jj710104.aspx) との間に一貫性を持ちます。
 - データ アクセス: **TableController** クラスは、データベース操作に対して、データ アクセスの抽象化を定義する **IDomainManager** インターフェイスを使用します。スキャフォールディングでは **EntityDomainManager** を使用します。これは、EF コンテキストをラップする **IDomainManager** の具象的な実装です。
@@ -765,4 +765,4 @@ Model-View-View Model (MVVM) は、Model-View-Controller (MVC) の一種です�
 [プッシュ通知の追加]: ../notification-hubs-windows-store-dotnet-get-started.md
 [認証の使用]: /develop/mobile/tutorials/get-started-with-users-dotnet
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

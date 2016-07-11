@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/05/2016"
+    ms.date="06/28/2016"
 	ms.author="jgao"/>
 
 # HDInsight Hadoop クラスターに R をインストールして使用する
@@ -40,7 +40,7 @@ R は Azure BLOB Storage (WASB) と互換性があるので、そこに格納さ
 
 HDInsight クラスターで R をインストールする[サンプル スクリプト](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1)は、Azure Storage の読み取り専用 BLOB から入手できます。このセクションでは、Azure ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター バージョン 3.1 で導入されました。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](../hdinsight-component-versioning/)」をご覧ください。
+> [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター バージョン 3.1 で導入されました。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
 
 1. HDInsight クラスターをポータルから作成する場合は、**[オプションの構成]**、**[スクリプト アクション]** の順にクリックします。
 2. **[スクリプト アクション]** ページで、次の値を入力します。
@@ -112,6 +112,6 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に R をイ
 [powershell-install-configure]: powershell-install-configure.md
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
-[hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
+[hdinsight-install-spark]: hdinsight-apache-spark-jupyter-spark-sql.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

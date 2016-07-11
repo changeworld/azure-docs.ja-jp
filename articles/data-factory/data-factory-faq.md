@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="06/28/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory - よく寄せられる質問
@@ -35,8 +35,8 @@ Azure Data Factory の料金の詳細については、[Data Factory の料金�
 ### Azure Data Factory の利用はどのように開始するのですか。
 
 - Azure Data Factory の概要については、[Azure Data Factory サービスの概要](data-factory-introduction.md)に関するページをご覧ください。
-- コピー アクティビティを使用する**データのコピー/移動**方法に関するチュートリアルについては、「[チュートリアル: Azure BLOB Storage から Azure SQL Database にデータをコピーする](data-factory-get-started.md)」を参照してください。
-- HDInsight Hive アクティビティを使用する**データの変換**方法に関するチュートリアルについては、「[チュートリアル: 初めての Data Factory の作成 (概要)](data-factory-build-your-first-pipeline.md)」を参照してください。 
+- コピー アクティビティを使用して**データのコピー/移動**を行う方法に関するチュートリアルについては、[Azure Blob Storage から Azure SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するページを参照してください。
+- HDInsight Hive アクティビティを使用する**データの変換**方法に関するチュートリアルについては、「[チュートリアル: 初めての Data Factory の作成 (概要)](data-factory-build-your-first-pipeline.md)」を参照してください。
   
 ### Data Factory を利用可能なリージョンはどこですか。
 Data Factory は、**米国西部**と**北ヨーロッパ**で使用できます。Data Factory で使用されるコンピューティング サービスとストレージ サービスは、その他のリージョンでも利用できます。「[サポートされているリージョン](data-factory-introduction.md#supported-regions)」を参照してください。
@@ -73,7 +73,7 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 ### Data Factory パイプラインで使用できるアクティビティには、どのような種類がありますか。 
 
 - [データ移動アクティビティ](data-factory-data-movement-activities.md)で、データを移動します。
-- [データ変換アクティビティ](data-factory-data-transformation-activities.md)で、データを処理/変換します。 
+- [データ変換アクティビティ](data-factory-data-transformation-activities.md)で、データを処理/変換します。
 
 ### アクティビティはいつ実行されますか。
 アクティビティが実行されるタイミングは、出力データ テーブルの **availability** 構成設定によって決定されます。入力データセットが指定される場合、アクティビティは実行を開始する前に、入力データのすべての依存関係が満たされている (つまり、**[準備完了]** 状態になっている) かどうかを確認します。
@@ -81,6 +81,11 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 ## コピー アクティビティ - FAQ
 ### 1 つのパイプラインに複数のアクティビティを設定する方法とアクティビティごとに別個のパイプラインを使用する方法ではどちらの方法がよいですか。 
 パイプラインでは、関連する複数のアクティビティをまとめることが想定されています。論理的には、複数のアクティビティを接続するテーブルがパイプラインの外部の他のアクティビティによって使用されない場合は、1 つのパイプラインにそれらのアクティビティを保持できます。これにより、パイプラインのアクティブな期間を揃えるためにこれを連結する必要はありません。また、パイプライン内部のテーブルのデータの整合性が、パイプラインを更新するときによりうまく保持されるようになります。パイプラインを更新するとき、基本的にパイプライン内のすべてのアクティビティが停止、削除された後、もう一度作成されます。作成操作の観点では、パイプラインの 1 つの JSON ファイルで関連するアクティビティ内のデータのフローを簡単に見ることができるようになる可能性があります。
+
+### コピー操作はどこで実行されますか。 
+
+詳細については、「[グローバルに使用できるデータの移動](data-factory-data-movement-activities.md#global)」を参照してください。簡単に言うと、オンプレミスのデータ ストアが関係する場合、コピー操作はオンプレミス環境内の Data Management Gateway で実行されます。また、2 つのクラウド ストア間でデータの移動を行う場合、コピー操作は同じ地理的場所のシンクの場所に最も近いリージョンで実行されます。
+
 
 ## HDInsight アクティビティ - FAQ
 
@@ -119,16 +124,16 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 
 ## スライス - FAQ
 
-### 入力スライスが準備完了状態にならない 
+### 入力スライスが準備完了状態にならない  
 一般的なミスとして、入力データがデータ ファクトリの外部に存在する (データ ファクトリによって生成されたものでない) ときに、入力データセットの **external** プロパティが **true** に設定されていないことが挙げられます。
 
 次の例では、**dataset1** のみ、**external** を true に設定する必要があります。
 
-**DataFactory1** Pipeline 1: dataset1 -> activity1 -> dataset2 -> activity2 -> dataset3 Pipeline 2: dataset3-> activity3 -> dataset4
+**DataFactory1** パイプライン 1: dataset1 -> activity1 -> dataset2 -> activity2 -> dataset3 パイプライン 2: dataset3-> activity3 -> dataset4
 
 別のデータ ファクトリに dataset4 (データ ファクトリ 1 のパイプライン 2 で生成) を受け取るパイプラインがある場合、dataset4 は、外部のデータセットとして指定する必要があります。dataset4 は異なるデータ ファクトリ (DataFactory2 ではなく DataFactory1) によって生成されたものであるためです。
 
-**DataFactory2** Pipeline 1: dataset4->activity4->dataset5
+**DataFactory2** パイプライン 1: dataset4->activity4->dataset5
 
 external プロパティが適切に設定されている場合は、入力データセットの定義で指定された場所に入力データが存在しているかどうかを確認してください。
 
@@ -147,25 +152,25 @@ external プロパティが適切に設定されている場合は、入力デ�
 ### スライスを再実行するにはどうすればよいですか。
 スライスを再実行するには、次のどちらかの方法を使用します。
 
-- 監視と管理アプリを使用して、アクティビティ ウィンドウまたはスライスを再実行します。「[選択したアクティビティ ウィンドウを再実行する](data-factory-monitor-manage-app.md#re-run-selected-activity-windows)」をご覧ください。   
+- 監視と管理アプリを使用して、アクティビティ ウィンドウまたはスライスを再実行します。「[選択したアクティビティ ウィンドウを再実行する](data-factory-monitor-manage-app.md#re-run-selected-activity-windows)」を参照してください。
 - ポータルのスライスの **[データ スライス]** ブレードで、コマンド バーの **[実行]** をクリックします。
-- スライスの状態を **Waiting** に設定して、**Set-AzureRmDataFactorySliceStatus** コマンドレットを実行します。   
+- スライスの状態を **Waiting** に設定して、**Set-AzureRmDataFactorySliceStatus** コマンドレットを実行します。
 	
 		Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00" 
 
 コマンドレットの詳細については、[Set-AzureDataFactorySliceStatus][set-azure-datafactory-slice-status] に関するページをご覧ください。
 
 ### スライスの処理にかかった時間を調べるにはどうすればよいですか。
-データ スライスの処理に要した時間は、監視と管理アプリのアクティビティ ウィンドウ エクスプローラーを使用して調べます。詳細については、[アクティビティ ウィンドウ エクスプローラー](data-factory-monitor-manage-app.md#activity-window-explorer)に関するページをご覧ください。
+データ スライスの処理に要した時間は、監視と管理アプリのアクティビティ ウィンドウ エクスプローラーを使用して調べます。詳細については、「[アクティビティ ウィンドウ エクスプローラー](data-factory-monitor-manage-app.md#activity-window-explorer)」を参照してください。
 
 同じことは、Azure ポータルから次の手順で行うこともできます。
 
 1. データ ファクトリの **[データ ファクトリ]** ブレードの **[データセット]** タイルをクリックします。
 2. **[データセット]** ブレードの特定のデータセットをクリックします。
 3. **[テーブル]** ブレードの **[最近使用したスライス]** ボックスの一覧で、目的のスライスを選択します。
-4. **[データ スライス]** ブレードの **[アクティビティの実行]** ボックスの一覧で、[アクティビティの実行] をクリックします。 
-5. **[アクティビティの実行の詳細]** ブレードで、**[プロパティ]** タイルをクリックします。 
-6. **[期間]** フィールドに表示されている値を確認します。これが、スライスの処理にかかった時間です。   
+4. **[データ スライス]** ブレードの **[アクティビティの実行]** ボックスの一覧で、[アクティビティの実行] をクリックします。
+5. **[アクティビティの実行の詳細]** ブレードで、**[プロパティ]** タイルをクリックします。
+6. **[期間]** フィールドに表示されている値を確認します。これが、スライスの処理にかかった時間です。
 
 ### 実行中のスライスを停止するにはどうすればよいですか
 パイプラインの実行を停止する必要がある場合は、[Suspend-AzureDataFactoryPipeline](https://msdn.microsoft.com/library/mt603721.aspx) コマンドレットを使用できます。現時点では、パイプラインを中断しても、進行中のスライスの実行は停止しません。進行中の実行が完了すると、追加のスライスは取得されません。
@@ -187,4 +192,4 @@ external プロパティが適切に設定されている場合は、入力デ�
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

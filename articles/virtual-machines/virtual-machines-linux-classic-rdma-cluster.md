@@ -18,7 +18,7 @@ ms.service="virtual-machines-linux"
 
 # MPI アプリケーションを実行するように Linux RDMA クラスターを設定する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 Azure で[サイズ A8 および A9 の仮想マシン](virtual-machines-linux-a8-a9-a10-a11-specs.md)を使用して Linux RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。サイズ A8 および A9 の VM をセットアップして、サポートされる Linux HPC ディストリビューションとサポートされる MPI 実装を実行すると、MPI アプリケーションは、リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく Azure の低待機時間で高スループットのネットワークを介して効率的に通信します。
@@ -101,7 +101,7 @@ VM のプロビジョニングの完了後、VM の外部 IP アドレス (ま�
 
 >[AZURE.IMPORTANT]Microsoft Azure では Linux VM にルート アクセスが提供されません。ユーザーとして VM に接続されているときに管理アクセス権を取得するには、`sudo` を使用してコマンドを実行します。
 
-* **更新プログラム** - **zypper** を使用して更新プログラムをインストールします。NFS ユーティリティをインストールすることもできます。  
+* **更新プログラム** - **zypper** を使用して更新プログラムをインストールします。NFS ユーティリティをインストールすることもできます。
 
     >[AZURE.IMPORTANT]SLES 12 HPC V をデプロイした場合、現時点では、カーネルの更新プログラムを適用しないことをお勧めします。適用した場合、Linux RDMA ドライバーに関連する問題が発生する可能性があります。
     >
@@ -127,7 +127,7 @@ VM のプロビジョニングの完了後、VM の外部 IP アドレス (ま�
 
         <User or group name> soft    memlock <memory required for your application in KB>
 
-    >[AZURE.NOTE]テスト目的で、memlock を無制限に設定することもできます。例: <User or group name> hard memlock unlimited.
+    >[AZURE.NOTE]テスト目的で、memlock を無制限に設定することもできます。たとえば、「<ユーザーまたはグループ名> hard memlock unlimited」とします。
 
 * **SLES 12 VM 用 SSH キー** - MPI ジョブの実行時に SLES 12 HPC クラスター内のすべてのコンピューティング ノード間でユーザー アカウントの信頼を確立するために、SSH キーを生成します (CentOS ベースの HPC VM をデプロイした場合、この手順は実行しないでください。この記事で後述する、イメージをキャプチャし、クラスターをデプロイした後に、クラスター ノード内にパスワードなしの SSH 信頼関係をセットアップする手順を参照してください)。
 
@@ -234,9 +234,9 @@ CentOS ベースの HPC イメージを使用してクラスターをデプロ�
 
 このスクリプトでは、次の処理が実行されます。
 
-* .ssh というホスト ノードにディレクトリを作成します。これはパスワードなしのログインの場合に必要です。 
-* パスワードなしのログインで、クラスター内の任意のノードからのログインを許可するように .ssh ディレクトリに構成ファイルを作成します。 
-* クラスター内のすべてのノードについてノード名とノードの IP アドレスを含むファイルを作成します。これらのファイルはスクリプトの実行後も残るので、ユーザーが参照できます。 
+* .ssh というホスト ノードにディレクトリを作成します。これはパスワードなしのログインの場合に必要です。
+* パスワードなしのログインで、クラスター内の任意のノードからのログインを許可するように .ssh ディレクトリに構成ファイルを作成します。
+* クラスター内のすべてのノードについてノード名とノードの IP アドレスを含むファイルを作成します。これらのファイルはスクリプトの実行後も残るので、ユーザーが参照できます。
 * 各クラスター ノードのプライベート キーとパブリック キーのペアを作成し、キー ペアに関する情報を共有し、authorized\_keys ファイルにエントリを作成します。
 
 >[AZURE.WARNING]このスクリプトを実行すると、セキュリティ上のリスクが生じる可能性があります。~/.ssh のパブリック キー情報を配布しないように注意してください。
@@ -398,4 +398,4 @@ mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=dapl -env I_MPI_DAP
 
 * [クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos)を実行し、CentOS ベースの HPC イメージを使用して Intel Lustre クラスターを作成してみてください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

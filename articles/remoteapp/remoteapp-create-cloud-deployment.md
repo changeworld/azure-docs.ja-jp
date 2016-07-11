@@ -20,7 +20,7 @@
 
 [Azure RemoteApp のコレクション](remoteapp-collections.md)には、次の 2 種類があります。
 
-- クラウド: Azure に完全に常駐します。クラウドにすべてのデータを保存するか (したがって、クラウドのみのコレクション)、コレクションを VNET に接続して、そこにデータを保存するかを選択できます。   
+- クラウド: Azure に完全に常駐します。クラウドにすべてのデータを保存するか (したがって、クラウドのみのコレクション)、コレクションを VNET に接続して、そこにデータを保存するかを選択できます。
 - ハイブリッド: オンプレミス アクセス用の仮想ネットワークを含みます。これには、Azure AD およびオンプレミスの Active Directory 環境を使用する必要があります。
 
 このチュートリアルでは、クラウド コレクションを作成する手順について説明します。次の 4 つのステップがあります。
@@ -35,9 +35,9 @@
 
 コレクションを作成する前に以下の操作が必要です:
 
-- Azure RemoteApp に[サインアップ](https://azure.microsoft.com/services/remoteapp/)します。 
+- Azure RemoteApp に[サインアップ](https://azure.microsoft.com/services/remoteapp/)します。
 - アクセス権を付与するユーザーに関する情報を集めます。この情報とは、ユーザーの Microsoft アカウントの情報または Active Directory の仕事用アカウントの情報です。
-- この手順は、サブスクリプションの一部として提供されたテンプレートのイメージを使用しようとしているか、使用するテンプレートのイメージが既にアップロード済みであることが前提となっています。別のテンプレート イメージをアップロードする必要がある場合は、[テンプレート イメージ] ページから実行できます。**[テンプレート イメージのアップロード]** をクリックして、ウィザードで表示される手順に従います。 
+- この手順は、サブスクリプションの一部として提供されたテンプレートのイメージを使用しようとしているか、使用するテンプレートのイメージが既にアップロード済みであることが前提となっています。別のテンプレート イメージをアップロードする必要がある場合は、[テンプレート イメージ] ページから実行できます。**[テンプレート イメージのアップロード]** をクリックして、ウィザードで表示される手順に従います。
 - Office 365 ProPlus イメージを使用する必要がありますか。 [こちら](remoteapp-officesubscription.md)で詳細を確認できます。
 - カスタム アプリケーションまたは LOB プログラムが必要な場合は、 新しい[イメージ](remoteapp-imageoptions.md)を作成して、クラウド コレクションで使用します。
 - VNET に接続する必要があるかどうかを検討します。VNET への接続を選択する場合は、[サイズのガイドライン](remoteapp-vnetsizing.md)を満たしていることと、[RemoteApp に接続できること](remoteapp-vnet.md)を確認します。詳細については、[VNET 計画に関する記事](remoteapp-planvnet.md)を確認してください。
@@ -52,7 +52,7 @@
 2. **[新規] > [簡易作成]** をクリックします。
 3. コレクションの名前を入力し、リージョンを選択します。
 4. Standard または Basic から、使用するプランを選択します。
-5. このコレクションに使用するテンプレートを選択します。 
+5. このコレクションに使用するテンプレートを選択します。
 
 	**ヒント:** RemoteApp のサブスクリプションには、Word などの公開されたプログラムおよび公開する準備の完了したプログラムを含む Office 365 または Office 2013 (評価版) プログラムが含まれている[テンプレート イメージ](remoteapp-images.md)が付属しています。また、新しい [Custom Template Image (カスタム テンプレート イメージ)](remoteapp-imageoptions.md) を作成し、クラウド コレクションで使用することができます。
 
@@ -76,7 +76,7 @@ Azure RemoteApp コレクションが作成されたら、コレクションの�
 
 ## 手順 2. Active Directory ディレクトリの同期を構成する (省略可能) ##
 
-Active Directory を使用する場合、Azure RemoteApp では、Azure Active Directory とオンプレミスの Active Directory との間でディレクトリの同期が必要になります。これにより、ユーザー、連絡先、およびパスワードが Azure Active Directory テナントと同期します。計画の詳細については、「[Azure RemoteApp の Active Directory の構成](remoteapp-ad.md)」を参照してください。また、詳細について [AD 接続](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx)を直接参照することもできます。
+Active Directory を使用する場合、Azure RemoteApp では、Azure Active Directory とオンプレミスの Active Directory との間でディレクトリの同期が必要になります。これにより、ユーザー、連絡先、およびパスワードが Azure Active Directory テナントと同期します。計画の詳細については、「[Azure RemoteApp の Active Directory の構成](remoteapp-ad.md)」を参照してください。また、詳細について [AD 接続](https://blogs.technet.microsoft.com/enterprisemobility/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect/)を直接参照することもできます。
 
 ## 手順 3: アプリを発行する ##
 
@@ -90,7 +90,7 @@ Azure RemoteApp コレクションには複数のアプリケーションを発�
 
 これでコレクションが作成できたので、リモート リソースを使用可能にするユーザーを追加する必要があります。Active Directory を使用している場合は、このコレクションを作成するために使用したサブスクリプションに関連付けられた Active Directory テナントに、アクセス権を付与するユーザーが存在している必要があります。
 
-1.	[クイック スタート] ページの **[ユーザー アクセスの構成]** をクリックします。 
+1.	[クイック スタート] ページの **[ユーザー アクセスの構成]** をクリックします。
 2.	アクセス権を付与する (Active Directory の) 仕事用アカウントか、または Microsoft アカウントを入力します。
 
 	**注:**
@@ -109,4 +109,4 @@ Azure RemoteApp コレクションには複数のアプリケーションを発�
 ### サポートのお願い 
 記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上にスクロールし、**[GitHub で編集]** をクリックすると変更できます。届いたら確認されます。サインオフ後、変更と改善をここで確認できます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 # Office 365 サービス用条件付きアクセスのデバイス ポリシー
 
@@ -44,4 +44,4 @@ Q: Office 365 サービスに対する条件付きアクセス ポリシーが�
 
 A: 現在のところ、Office 365 サービスへの条件付きのアクセスは、デバイスの機能豊富なアプリケーションに制限されます。今後、条件付きアクセス ポリシーが拡張されて、ブラウザーからサービスにアクセスするユーザーにもポリシーが適用される予定です。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0629_2016-->

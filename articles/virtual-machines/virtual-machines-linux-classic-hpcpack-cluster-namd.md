@@ -1,6 +1,6 @@
 <properties
  pageTitle="Linux VM で Microsoft HPC Pack を使用してNAMD を実行する| Microsoft Azure"
- description="Microsoft HPC Pack クラスターを Azure にデプロイし、複数の Linux コンピューティング ノード上で charmrun を使用して NAMD シミュレーションを実行します。"
+ description="Microsoft HPC Pack クラスターを Azure にデプロイし、複数の Linux コンピューティング ノード上で charmrun を使用して NAMD シミュレーションを実行します"
  services="virtual-machines-linux"
  documentationCenter=""
  authors="dlepow"
@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="big-compute"
- ms.date="03/22/2016"
+ ms.date="06/23/2016"
  ms.author="danlep"/>
 
 # Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する
@@ -29,7 +29,7 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 
 ## 前提条件
 
-* **HPC Pack クラスターと Linux コンピューティング ノード** - Azure 上の Linux コンピューティング ノードで、[Azure Resource Manager テンプレート](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)または [Azure PowerShell スクリプト](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md)を使用して HPC Pack クラスターをデプロイします。どちらのオプションについても、前提条件および手順について詳しくは、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。PowerShell スクリプトによるデプロイ オプションを選択した場合は、この記事の末尾にあるサンプル ファイル内のサンプル構成ファイルを確認して、Windows Server 2012 R2 ヘッド ノードおよび 4 つの L (A3) サイズの CentOS 6.6 コンピューティング ノードから成る Azure ベースの HPC Pack クラスターをデプロイします。必要に応じて、環境に合わせて変更してください。
+* **HPC Pack クラスターと Linux コンピューティング ノード** - Azure 上の Linux コンピューティング ノードで、[Azure Resource Manager テンプレート](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)または [Azure PowerShell スクリプト](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md)を使用して HPC Pack クラスターをデプロイします。どちらのオプションについても、前提条件および手順について詳しくは、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。PowerShell スクリプトによるデプロイ オプションを選択した場合は、この記事の末尾にあるサンプル ファイル内のサンプル構成ファイルを確認して、Windows Server 2012 R2 ヘッド ノードおよび 4 つの L サイズの CentOS 6.6 コンピューティング ノードから成る Azure ベースの HPC Pack クラスターをデプロイします。必要に応じて、環境に合わせて変更してください。
 
 
 * **NAMD ソフトウェアおよびチュートリアル ファイル** - [NAMD](http://www.ks.uiuc.edu/Research/namd/) サイトから Linux 用 NAMD ソフトウェアをダウンロードします (要登録)。この記事は、NAMD バージョン 2.10 に基づいており、[Linux x86\_64 (イーサネット搭載の 64 ビット Intel/AMD)](http://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1310) アーカイブを使用しています。このアーカイブを使用することで、クラスター ネットワークの複数の Linux コンピューティング ノードで NAMD を実行することができます。また、[NAMD チュートリアル ファイル](http://www.ks.uiuc.edu/Training/Tutorials/#namd)をダウンロードしてください。ダウンロードするのは .tar ファイルであるため、クラスター ヘッド ノード上でファイルを抽出するための Windows ツールが必要になります。この記事の後半の指示に従って、この作業を行ってください。
@@ -38,7 +38,7 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 
 
 ## コンピューティング ノードの相互の信頼関係をセットアップする
-複数の Linux ノード上でクロス ノード ジョブを実行するには、すべてのノードが互いに信頼関係を持っている必要があります (**rsh** または **ssh** によって)。Microsoft HPC Pack IaaS デプロイ スクリプトを使用して HPC Pack クラスターを作成する場合は、指定した管理者アカウントに対して永続的な相互の信頼関係がスクリプトによって自動的にセットアップされます。管理者以外のユーザーをクラスター ドメインに作成した場合は、それらのユーザーにジョブを割り当てるときに、ノード間に一時的な相互の信頼関係をセットアップする必要があります。ジョブ終了後、この関係は破棄します。これをユーザーごと行うには、HPC Pack で使用するクラスターに RSA キー ペアを指定して、信頼関係を確立します。
+複数の Linux ノード上でクロス ノード ジョブを実行するには、すべてのノードが互いに信頼関係を持っている必要があります (**rsh** または **ssh** によって)。Microsoft HPC Pack IaaS デプロイ スクリプトを使用して HPC Pack クラスターを作成する場合は、指定した管理者アカウントに対して永続的な相互の信頼関係がスクリプトによって自動的にセットアップされます。管理者以外のユーザーをクラスター ドメインに作成した場合は、それらのユーザーにジョブを割り当てるときに、ノード間に一時的な相互の信頼関係をセットアップする必要があります。ジョブ終了後、この関係は破棄します。これをユーザーごと行うには、HPC Pack で使用するクラスターに RSA キー ペアを指定して、信頼関係を確立します。以下で手順を説明します。
 
 ### RSA キー ペアの生成
 公開キーと秘密キーを含む RSA キー ペアは、Linux **ssh-keygen** コマンドを実行することで簡単に作成できます。
@@ -60,11 +60,11 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
     ![公開キーと秘密キー][keys]
 
 ### HPC Pack クラスターにキー ペアを追加する
-1.	HPC Pack の管理者アカウント (デプロイ スクリプトを実行したときにセットアップした管理者アカウント) を使用してヘッド ノードへのリモート デスクトップ接続を行います。
+1.	HPC Pack の管理者アカウント (クラスターをデプロイしたときにセットアップした管理者アカウント) を使用してヘッド ノードへのリモート デスクトップ接続を行います。
 
-2. 標準的な Windows Server 手順を使用して、クラスターの Active Directory ドメインにドメイン ユーザー アカウントを作成します。たとえば、ヘッド ノードで Active Directory ユーザーとコンピューター ツールを使用します。この記事の例では、hpclab\\hpcuser という名前のドメイン ユーザーを作成することを前提とします。
+2. 標準的な Windows Server 手順を使用して、クラスターの Active Directory ドメインにドメイン ユーザー アカウントを作成します。たとえば、ヘッド ノードで Active Directory ユーザーとコンピューター ツールを使用します。この記事の例では、hpclab ドメインの hpcuser (hpclab\\hpcuser) という名前のドメイン ユーザーを作成するものとします。
 
-3. クラスター ユーザーとして、HPC Pack クラスターにドメイン ユーザーを追加します。「[ユーザーと管理者の追加または削除](https://technet.microsoft.com/library/ff919330.aspx)」を参照してください。
+3. クラスター ユーザーとして、HPC Pack クラスターにドメイン ユーザーを追加します。手順については、「[ユーザーと管理者の追加または削除](https://technet.microsoft.com/library/ff919330.aspx)」を参照してください。
 
 2.	C:\\cred.xml という名前のファイルを作成し、そこに RSA キーのデータをコピーします。例については、この記事の最後にあるサンプル ファイルを参照してください。
 
@@ -89,13 +89,18 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 
 ## Linux ノード用にファイル共有をセットアップする
 
-SMB ファイル共有をセットアップし、すべての Linux ノード上に共有フォルダーをマウントすることで、すべての Linux ノードが共通のパスを使用して NAMD ファイルにアクセスできるようにしました。「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」に説明されているファイル共有オプションと手順を参照してくださいヘッド ノード上への共有フォルダーのマウント手順は以下のとおりです。現在、Azure File Service がサポートされていない CentOS 6.6 などのディストリビューションの場合にお勧めします。Linux ノードで Azure File 共有がサポートされている場合は、「[Linux で Azure File Storage を使用する方法](../storage/storage-how-to-use-files-linux.md)」を参照してください。
+SMB ファイル共有をセットアップし、すべての Linux ノード上に共有フォルダーをマウントすることで、すべての Linux ノードが共通のパスを使用して NAMD ファイルにアクセスできるようにしました。ヘッド ノード上への共有フォルダーのマウント手順は以下のとおりです。現在、Azure File Service がサポートされていない CentOS 6.6 などのディストリビューションの場合にお勧めします。Linux ノードで Azure File 共有がサポートされている場合は、「[Linux で Azure File Storage を使用する方法](../storage/storage-how-to-use-files-linux.md)」を参照してください。HPC Pack でのその他のファイル共有オプションについては、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。
 
 1.	ヘッド ノードにフォルダーを作成します。読み書き権限を設定して、フォルダーを全員で共有します。この例では、\\\CentOS66HN\\Namd がフォルダーの名前です。ここで、CentOS66HN はヘッド ノードのホスト名です。
 
-2. Windows バージョンの **tar** または .tar アーカイブで動作するその他の Windows ユーティリティを使用して、フォルダー内の NAMD ファイルを抽出します。NAMD tar アーカイブを \\\CentOS66HN\\Namd\\namd2 に抽出し、チュートリアル ファイルを \\\CentOS66HN\\Namd\\namd2\\namdsample の下に抽出します。
+2. 共有フォルダーに namd2 という名前のサブフォルダーを作成します。namd2 に namdsample という名前の別のサブフォルダーを作成します。
 
-2.	Windows PowerShell ウィンドウを開き、次のコマンドを実行し、共有フォルダーをマウントします。
+3. Windows バージョンの **tar** または .tar アーカイブで動作するその他の Windows ユーティリティを使用して、フォルダー内の NAMD ファイルを抽出します。
+    * NAMD tar アーカイブを \\\CentOS66HN\\Namd\\namd2 に展開します。
+    
+    * チュートリアル ファイルを \\\CentOS66HN\\Namd\\namd2\\namdsample の下に展開します。
+
+4. Windows PowerShell ウィンドウを開き、次のコマンドを実行して Linux ノードに共有フォルダーをマウントします。
 
     ```
     clusrun /nodegroup:LinuxNodes mkdir -p /namd2
@@ -110,13 +115,13 @@ SMB ファイル共有をセットアップし、すべての Linux ノード上
 
 ## NAMD ジョブを実行する Bash スクリプトを作成する
 
-NAMD ジョブは、NAMD プロセスの開始時に使用するノード数を決定するために、**charmrun** 用の *nodelist* ファイルを必要とします。nodelist ファイルを生成してからこの nodelist ファイルを使用して **charmrun** を実行する Bash スクリプトを作成します。NAMD HPC クラスター マネージャーでこのスクリプトを呼び出すジョブを送信できます。
+NAMD ジョブでは、NAMD プロセスの開始時に使用するノード数を決定するために、**charmrun** 用の *nodelist* ファイルが必要になります。nodelist ファイルを生成してからこの nodelist ファイルを使用して **charmrun** を実行する、Bash スクリプトを作成します。NAMD HPC クラスター マネージャーでこのスクリプトを呼び出すジョブを送信できます。
 
-任意のテキスト エディターを使用して、NAMD プログラム ファイルが格納されているフォルダーに Bash スクリプトを作成し、hpccharmrun.sh という名前を付けます。この記事の最後にあるサンプル ファイルのサンプルを単にコピーしてもかまいません。
+任意のテキスト エディターを使用して、NAMD プログラム ファイルが格納されている /namd2 フォルダーに Bash スクリプトを作成し、hpccharmrun.sh という名前を付けます。この記事の最後にあるサンプル ファイルのサンプルを単にコピーしてもかまいません。
 
 >[AZURE.TIP] Linux 改行 (LF のみ、CR LF は対象外) を使用したテキスト ファイルとして、スクリプトを保存します。これにより、スクリプトは Linux ノード上で適切に動作します。
 
-この bash スクリプトの動作の詳細については、以下に示します。概念実証を行い、NAMD ジョブを実行するだけであれば、ファイル共有に hpccharmrun.sh スクリプトを保存して、「[NAMD ジョブの送信](#submit-a-namd-job)」の項目に移動してください。
+この bash スクリプトの動作の詳細については、以下に示します。概念実証を行い、NAMD ジョブを実行するだけであれば、/namd2 フォルダーにある hpccharmrun.sh スクリプトをファイル共有に保存して、「[NAMD ジョブの送信](#submit-a-namd-job)」に進んでください。
 
 1.	いくつかの変数を定義します。
 
@@ -238,14 +243,14 @@ host CENTOS66LN-03 ++cpus 2
 
     ![ジョブ リソース][job_resources]
 
-5. 左側のナビゲーションで **[タスクの編集]** をクリックしてから、**[追加]** をクリックしてタスクをジョブに追加します。
+5. 左側のナビゲーションで **[Edit Tasks]** (タスクの編集) をクリックしてから、**[追加]** をクリックしてタスクをジョブに追加します。
 
 
-6. **[タスクの詳細と I/O リダイレクト]** ページで、次の値を設定します。
+6. **[Task Details and I/O Redirection]** (タスクの詳細と I/O リダイレクト) ページで、次の値を設定します。
 
     * **コマンドライン** - `/namd2/hpccharmrun.sh ++remote-shell ssh /namd2/namd2 /namd2/namdsample/1-2-sphere/ubq_ws_eq.conf > /namd2/namd2_hpccharmrun.log`
 
-    >[AZURE.TIP] 上記のコマンドラインは改行なしの単一のコマンドです。**[コマンドライン]** の下には、折り返され複数行で表示されます。
+        >[AZURE.TIP] 上記のコマンドラインは改行なしの単一のコマンドです。**[コマンド ライン]** の下には、折り返され複数行で表示されます。
 
     * **作業ディレクトリ** - /namd2
 
@@ -255,7 +260,7 @@ host CENTOS66LN-03 ++cpus 2
 
     >[AZURE.NOTE] **charmrun** は各ノードで同じ作業ディレクトリへの移動を試みるので、ここで、作業ディレクトリを設定します。作業ディレクトリが設定されていない場合、HPC Pack は、Linux ノードの 1 つに作成された無作為に命名されたフォルダーでコマンドを開始します。この場合、他のノードで次のエラーが発生します。`/bin/bash: line 37: cd: /tmp/nodemanager_task_94_0.mFlQSN: No such file or directory.`。このエラーを回避するには、すべてのノードが作業ディレクトリとしてアクセスできるフォルダー パスを指定します。
 
-5.	**[送信]** をクリックして、このジョブを実行します。
+5.	**[OK]** をクリックしてから、**[送信]** をクリックしてこのジョブを実行します。
 
     既定では、HPC Pack は、ログオンした現在のユーザー アカウントとしてジョブを送信します。**[送信]** をクリックした後、ダイアログ ボックスにユーザー名とパスワードの入力を求めるメッセージが表示される場合があります。
 
@@ -269,7 +274,7 @@ host CENTOS66LN-03 ++cpus 2
 
 6.	ジョブが終了するまで数分かかります。
 
-7.	\<headnodeName>\\Namd\\namd2\\namd2\_hpccharmrun.log でジョブのログを確認し、\<headnode>\\Namd\\namd2\\namdsample\\1-2-sphere で出力ファイルを確認します。
+7.	\\<ヘッド ノード名>\\Namd\\namd2\\namd2\_hpccharmrun.log でジョブのログを確認し、\\<ヘッド ノード名>\\Namd\\namd2\\namdsample\\1-2-sphere で出力ファイルを確認します。
 
 8.	必要に応じて、VMD を起動してジョブの結果を表示します。この記事では、NAMD を視覚化するための手順 (この場合は、水球体のユビキチン タンパク質分子) については説明しません。詳細については、「[NAMD チュートリアル](http://www.life.illinois.edu/emad/biop590c/namd-tutorial-unix-590C.pdf)」を参照してください。
 
@@ -415,4 +420,4 @@ exit ${RTNSTS}
 [task_details]: ./media/virtual-machines-linux-classic-hpcpack-cluster-namd/task_details.png
 [vmd_view]: ./media/virtual-machines-linux-classic-hpcpack-cluster-namd/vmd_view.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -98,7 +98,7 @@ ACS の障害から保護するには、Shared Access Signature (SAS) トーク�
 障害復旧の詳細については、次の記事を参照してください。
 
 - [Azure SQL Database の継続性][]
-- [Azure のビジネス継続性テクニカル ガイダンス][]
+- [Azure の回復性技術ガイダンス][]
 
   [Service Bus 認証]: service-bus-authentication-and-authorization.md
   [パーティション分割されたメッセージング エンティティ]: service-bus-partitioning.md
@@ -109,6 +109,6 @@ ACS の障害から保護するには、Shared Access Signature (SAS) トーク�
   [Service Bus の仲介型メッセージを使用した geo レプリケーション]: http://code.msdn.microsoft.com/Geo-replication-with-f5688664
   [永続的なメッセージ送信側]: http://code.msdn.microsoft.com/Service-Bus-Durable-Sender-0763230d
   [Azure SQL Database の継続性]: ../sql-database/sql-database-business-continuity.md
-  [Azure のビジネス継続性テクニカル ガイダンス]: https://msdn.microsoft.com/library/azure/hh873027.aspx
+  [Azure の回復性技術ガイダンス]: ../resiliency/resiliency-technical-guidance.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

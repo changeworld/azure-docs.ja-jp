@@ -17,7 +17,7 @@
 	ms.author="bruceper"/>
 
 # CLI を使用した Key Vault の管理 #
-Azure Key Vault は、ほとんどのリージョンで使用できます。詳細については、[Key Vault の価格のページ](../../../../pricing/details/key-vault/)を参照してください。
+Azure Key Vault は、ほとんどのリージョンで使用できます。詳細については、[Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
 
 ## はじめに  
 このチュートリアルを使用すると、Azure Key Vault で、強化されたコンテナー (資格情報コンテナー) を Azure に作成し、暗号化キーやシークレットを Azure に格納して管理できるようになります。ここでは、Azure クロスプラットフォーム コマンドライン インターフェイスを使用して、Azure アプリケーションで使用できるキーまたはパスワードを含む資格情報コンテナーを作成するプロセスについて説明します。アプリケーションがそのキーやパスワードを使用する方法についても説明します。
@@ -33,7 +33,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 ## 前提条件
 このチュートリアルを完了するには、以下が必要です。
 
-- Microsoft Azure サブスクリプション。サブスクリプションがない場合でも、[無料試用版](../../../pricing/free-trial)にサインアップできます。
+- Microsoft Azure サブスクリプション。サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
 - コマンドライン インターフェイス バージョン 0.9.1 以降。最新バージョンをインストールして、Azure サブスクリプションに接続するには、「[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](../xplat-cli-install.md)」を参照してください。
 - このチュートリアルで作成したキーやパスワードを使用して構成されるアプリケーション。サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/download/details.aspx?id=45343)から入手できます。手順については、付属の Readme ファイルをご覧ください。
 
@@ -137,15 +137,15 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
 
 ただし、Azure Key Vault にアップロードする softkey.pem という名前の、ローカル ファイルとして保存された .pem ファイル内に既存のキーがある場合には、キーを .PEM ファイルからインポートするために次のコマンドを入力します。これにより Key Vault サービスでソフトウェアによりキーが保護されます。
 
-    azure keyvault key import --vaultName 'ContosoKeyVault' --key-name 'ContosoFirstKey' --pem-file './softkey.pem' --password 'PaSSWORD' --destination software
+    azure keyvault key import --vault-name 'ContosoKeyVault' --key-name 'ContosoFirstKey' --pem-file './softkey.pem' --password 'PaSSWORD' --destination software
 
-作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定バージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
+作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定のバージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
 
 資格情報コンテナーにシークレットを追加するには (SQLPassword という名前のパスワードで、Azure Key Vault に Pa$$w0rd 値を設定)、次のように入力します。
 
     azure keyvault secret set --vault-name 'ContosoKeyVault' --secret-name 'SQLPassword' --value 'Pa$$w0rd'
 
-Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用し、この特定バージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
+Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用し、この特定のバージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
 
 作成したキーやシークレットを表示してみましょう。
 
@@ -263,4 +263,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

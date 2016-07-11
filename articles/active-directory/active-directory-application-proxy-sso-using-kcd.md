@@ -13,13 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016"
+	ms.date="06/27/2016"
 	ms.author="kgremban"/>
 
 
 # アプリケーション プロキシを使用したシングル サインオン
 
 シングル サインオンは、Azure AD アプリケーション プロキシの重要な要素です。次の手順で、最適なユーザー エクスペリエンスを提供できます。
+
 1. ユーザーがクラウドにサインインします。
 2. クラウドですべてのセキュリティ検証 (事前認証) が実施されます。
 3. オンプレミス アプリケーションに要求が送信されると、アプリケーション プロキシ コネクタがユーザーの代理となります。バックエンド アプリケーションは、これをドメイン参加デバイスからサインインした正規ユーザーであると認識します。
@@ -50,10 +51,15 @@ Azure AD アプリケーション プロキシによって、ユーザーにシ�
 
 ### 前提条件
 
-- アプリケーション (たとえば SharePoint Web アプリケーション) が統合 Windows 認証を使用するように設定されていることを確認します。詳細については、「[Kerberos 認証のサポートを有効にする](https://technet.microsoft.com/library/dd759186.aspx)」を参照してください。SharePoint の場合は、「[SharePoint 2013 で Kerberos 認証を計画する](https://technet.microsoft.com/library/ee806870.aspx)」を参照してください。
-- アプリケーションのサービス プリンシパル名を作成します。
-- コネクタを実行するサーバーと、発行しようとしているアプリケーションを実行するサーバーが、同じドメインに参加していることを確認します。ドメインへの参加の詳細については、「[コンピューターをドメインに参加させる](https://technet.microsoft.com/library/dd807102.aspx)」を参照してください。
+アプリケーション プロキシでの SSO に着手する前に、ご使用の環境が次の設定と構成に対応していることを確認してください。
 
+- 対象のアプリ (SharePoint Web アプリなど) が統合 Windows 認証を使用するように設定されていること。詳細については、「[Kerberos 認証のサポートを有効にする](https://technet.microsoft.com/library/dd759186.aspx)」を参照してください。SharePoint の場合は、「[SharePoint 2013 で Kerberos 認証を計画する](https://technet.microsoft.com/library/ee806870.aspx)」を参照してください。
+
+- 対象となるすべてのアプリにサービス プリンシパル名があること。
+
+- Connector を実行するサーバーとアプリを実行するサーバーがドメインに参加し、かつ同じドメインに属していること。ドメインへの参加の詳細については、「[コンピューターをドメインに参加させる](https://technet.microsoft.com/library/dd807102.aspx)」を参照してください。
+
+- Connector を実行しているサーバーに、ユーザーの TokenGroupsGlobalAndUniversal を読み取るためのアクセス権があること。既定ではそのように設定されていますが、環境のセキュリティを強化する過程で変更されている可能性があります。この点について詳しくは、[KB2009157](https://support.microsoft.com/ja-JP/kb/2009157) をご覧ください。
 
 ### Active Directory の構成
 
@@ -88,8 +94,8 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 
 1. 「[アプリケーション プロキシを使用したアプリケーションの発行](active-directory-application-proxy-publish.md)」で説明されている手順に従って、アプリケーションを発行します。**[事前認証方法]** で **[Azure Active Directory]** が選択されていることを確認してください。
 2. アプリケーションがアプリケーションの一覧に表示されたら、アプリケーションを選択して **[構成]** をクリックします。
-3. **[プロパティ]** の下で、**[内部認証方法]** を **[統合 Windows 認証]** に設定します。![高度なアプリケーションの構成](./media/active-directory-application-proxy-sso-using-kcd/cwap_auth2.png)  
-4. アプリケーション サーバーの**[内部アプリケーション SPN]** を入力します。この例では、公開されたアプリケーションの SPN は、http/lob.contoso.com です。  
+3. **[プロパティ]** の下で、**[内部認証方法]** を **[統合 Windows 認証]** に設定します。![高度なアプリケーションの構成](./media/active-directory-application-proxy-sso-using-kcd/cwap_auth2.png)
+4. アプリケーション サーバーの**[内部アプリケーション SPN]** を入力します。この例では、公開されたアプリケーションの SPN は、http/lob.contoso.com です。
 
 >[AZURE.IMPORTANT] Azure Active Directory での UPN は、オンプレミスの Active Directory での UPN と同一であることが必要です。同一でない場合は事前認証ができなくなります。Azure AD がオンプレミスの AD と同期していることを確認してください。
 
@@ -132,12 +138,12 @@ Windows 以外のアプリケーションでは、ユーザー ID は、電子�
 
 ### クラウド ID とオンプレミス ID が異なる場合の SSO の設定
 
-1. Azure AD Connect の設定を、メイン ID が電子メール アドレス (mail) になるように構成します。これはカスタマイズ プロセスの一部として、同期設定の **[ユーザー プリンシパル名]** フィールドを変更することで実行します。これらの設定は、ユーザーが Office365、Windows10 デバイス、および Azure AD を ID ストアとして使用する他のアプリケーションにログインする方法も決定することに注意してください。![ユーザーを識別するスクリーンショット - [ユーザー プリンシパル名] ドロップダウン リスト](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_connect_settings.png)  
+1. Azure AD Connect の設定を、メイン ID が電子メール アドレス (mail) になるように構成します。これはカスタマイズ プロセスの一部として、同期設定の **[ユーザー プリンシパル名]** フィールドを変更することで実行します。これらの設定は、ユーザーが Office365、Windows10 デバイス、および Azure AD を ID ストアとして使用する他のアプリケーションにログインする方法も決定することに注意してください。![ユーザーを識別するスクリーンショット - [ユーザー プリンシパル名] ドロップダウン リスト](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_connect_settings.png)
 2. 変更するアプリケーションの [アプリケーションの構成] 設定で、使用する **[委任されたログイン ID]** を選択します。
-  - ユーザー プリンシパル名: joe@contoso.com  
-  - 代替ユーザー プリンシパル名: joed@contoso.local  
-  - ユーザー プリンシパル名のユーザー名部分: joe  
-  - 代替ユーザー プリンシパル名のユーザー名部分: joed  
+  - ユーザー プリンシパル名: joe@contoso.com
+  - 代替ユーザー プリンシパル名: joed@contoso.local
+  - ユーザー プリンシパル名のユーザー名部分: joe
+  - 代替ユーザー プリンシパル名のユーザー名部分: joed
   - オンプレミスのソフトウェア アセット管理アカウント名: オンプレミスのドメイン コント ローラーの構成に依存
 
   ![[委任されたログインID] ドロップダウン メニューのスクリーン ショット](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_upn.png)
@@ -153,11 +159,11 @@ SSO プロセスにエラーがある場合は、「[トラブルシューティ
 - [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
 - [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
 
-最新のニュースと更新情報については、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
+最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 
 
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png
 [2]: ./media/active-directory-application-proxy-sso-using-kcd/Properties.jpg
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

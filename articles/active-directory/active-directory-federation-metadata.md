@@ -13,13 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="06/23/2016"
 	ms.author="priyamo"/>
 
 
 # フェデレーション メタデータ
-
-[AZURE.INCLUDE [active-directory-protocols](../../includes/active-directory-protocols.md)]
 
 Azure Active Directory (Azure AD) は、Azure AD が発行するセキュリティ トークンを受け入れるように構成されているサービスのフェデレーション メタデータ ドキュメントを発行します。フェデレーション メタデータ ドキュメントの形式は、「[Web Services Federation Language (WS-Federation) Version 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html)」で説明されています。これは、[OASIS SAML (Security Assertion Markup Language) v2.0 のメタデータ](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf)の拡張です。
 
@@ -50,7 +48,7 @@ Azure AD は、フェデレーション メタデータを `https://login.micros
 
 ### エンティティ ID
 
-`EntityDescriptor` 要素は `EntityID` 属性を含みます。`EntityID` 属性の値は発行者、つまり、トークンを発行したセキュリティ トークン サービス (STS) を表します。トークンを受信したときに、発行者を検証することが重要です。
+`EntityDescriptor` 要素は `EntityID` 属性を含みます。`EntityID` 属性の値は発行者、つまり、トークンを発行した Security Token Service (STS) を表します。トークンを受信したときに、発行者を検証することが重要です。
 
 次のメタデータは、`EntityID` 要素を含む、サンプルのテナント固有の `EntityDescriptor` 要素を示しています。
 
@@ -163,4 +161,4 @@ https://login.microsoftonline.com/common/wsfed
   </IDPSSODescriptor>
 ```
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

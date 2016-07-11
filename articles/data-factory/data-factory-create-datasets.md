@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="Azure Data Factory のデータセット | Microsoft Azure" 
-	description="Azure Data Factory のデータセットを理解し、その作成方法について学習します。" 
+	pageTitle="Azure Data Factory でのデータセットの作成 | Microsoft Azure" 
+	description="Azure Data Factory でデータセットを作成する方法について説明し、offset、anchorDateTime などのプロパティを使用する例を紹介します。"
+    keywords="データセットの作成, データセットの例, offset の例"
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -13,22 +14,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/08/2016" 
+	ms.date="06/27/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory のデータセット
-Azure Data Factory のデータセットは、パイプライン内のアクティビティの入力または出力として使用するデータへの名前付きの参照/ポインターです。データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。
+この記事では、Azure Data Factory のデータセットについて説明し、offset、anchorDateTime、offset/style などを使用したデータベースの例を紹介します。
 
-**リンクされたサービス**は、Azure Data Factory が**データ ストア**(Azure Storage アカウント、Azure SQL Database など) または**コンピューティング** (Azure HDInsight、Azure Batch など) に**接続する**ために必要な情報を定義します 。また、リンクされたサービスは、データ ストアまたはコンピューティングにアクセスするためのメカニズムを定義します (アドレス、プロトコル、認証スキームなど)。
+データセットを作成するときは、処理するデータへのポインターを作成します。データは、アクティビティ内で処理 (入力/出力) されます。アクティビティは、パイプラインに含まれています。入力データセットはパイプラインのアクティビティの入力を表し、出力データセットはアクティビティの出力を表します。
 
-サポートされているデータ ストアにリンクされたサービスの一覧については、「[サポートされるデータ ストア](data-factory-data-movement-activities.md#supported-data-stores)」を参照してください。テーブル内のデータ ソースをクリックし、そのデータ ストアのリンクされたサービスを作成または構成する方法の詳細について説明するトピックを表示します。
+データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。作成したデータセットは、パイプライン内のアクティビティで使用できます。たとえば、データセットはコピー アクティビティまたは HDInsightHive アクティビティの入力/出力データセットとして使用できます。Azure ポータルでは、すべてのパイプラインとデータの入出力の視覚的なレイアウトが表示されます。すべてのソースにわたって、データ パイプラインのすべてのリレーションシップと依存関係がひとめでわかるため、データの入力元や出力先を常に把握できます。
 
-サポートされているコンピューティングのリンクされたサービスの一覧については、「[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md)」を参照してください。これらのリンクされたサービスを使用するアクティビティを理解するには、「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を参照してください。
+Azure Data Factory では、パイプライン内でコピー アクティビティを使用することで、データセットからデータを取得できます。
 
-Data Factory の**データセット**は、**データ ストアのリンクされたサービス**によって表されるデータ ストア内のデータ構造を表します (Azure Storage アカウントの BLOB コンテナー、Azure SQL Database のテーブルなど)。これは、パイプライン内のアクティビティの入力または出力として使用できます。データセットは作成後、パイプライン内のアクティビティで使用できます。たとえば、データセットはコピー アクティビティ/HDInsightHive アクティビティの入力/出力データセットとして使用できます。
-
-> [AZURE.NOTE] Azure Data Factory を初めて使用する場合は、Azure Data Factory サービス一般について説明した「[Azure Data Factory の概要](data-factory-introduction.md)」と、初めてデータ ファクトリを作成するためのチュートリアル「[初めての Data Factory の作成](data-factory-build-your-first-pipeline.md)」を参照してください。これらの 2 つの記事には、この記事をより深く理解するために必要な背景情報が示されています。
-
+> [AZURE.NOTE] Azure Data Factory を初めて使用する場合は、Azure Data Factory サービスの概要について説明した [Azure Data Factory の概要](data-factory-introduction.md)に関するページと、[初めてのデータ ファクトリを作成する](data-factory-build-your-first-pipeline.md)ためのチュートリアルを参照してください。これらの 2 つの記事には、この記事をより深く理解するために必要な背景情報が示されています。
 
 ## データセットの定義
 Azure Data Factory のデータセットは次のように定義されます。
@@ -67,14 +65,14 @@ Azure Data Factory のデータセットは次のように定義されます。
 | name | データセットの名前。名前付け規則については、「[Azure Data Factory - 名前付け規則](data-factory-naming-rules.md)」を参照してください。 | はい | 該当なし |
 | type | データセットの型。Azure Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。<br/><br/>詳細については、「[データセットの型](#Type)」を参照してください。 | はい | 該当なし |
 | structure | データセットのスキーマ。<br/><br/>詳細については、「[データセット構造](#Structure)」セクションを参照してください。 | いいえ、できません。 | 該当なし |
-| typeProperties | 選択された型に対応するプロパティ。サポートされている型とそのプロパティについては、「[データセットの型](#Type)」セクションを参照してください。 | あり | 該当なし |
+| typeProperties | 選択された型に対応するプロパティ。サポートされている型とそのプロパティの詳細については、「[データセットの型](#Type)」セクションを参照してください。 | あり | 該当なし |
 | 外部 | データセットをデータ ファクトリ パイプラインによって明示的に生成するかどうかを指定するブール型のフラグ。 | いいえ | false | 
 | availability | データセット生成の処理時間枠またはスライシング モデルを定義します。<br/><br/>詳細については、「[データセットの可用性](#Availability)」トピックを参照してください。<br/><br/>データセット スライシング モデルの詳細については、[スケジュールと実行](data-factory-scheduling-and-execution.md)に関する記事を参照してください。 | あり | 該当なし
-| policy | データセット スライスで満たさなければならない基準または条件を定義します。<br/><br/>詳細については、「[データセット ポリシー](#Policy)」トピックを参照してください。 | いいえ | 該当なし |
+| policy | データセット スライスで満たさなければならない基準または条件を定義します。<br/><br/>詳細については、「[データセット ポリシー](#Policy)」を参照してください。 | いいえ | 該当なし |
 
-### 例
+## データセットの例
 
-以下は **Azure SQL データベース**に **MyTable** という名前のテーブルを表示するデータセットの例です。
+以下は **Azure SQL Database** に **MyTable** という名前のテーブルを表示するデータセットの例です。
 
 	{
 	    "name": "DatasetSample",
@@ -97,8 +95,8 @@ Azure Data Factory のデータセットは次のように定義されます。
 
 - type が AzureSqlTable に設定されています。
 - (AzureSqlTable 型に固有の) 型プロパティ tableName が MyTable に設定されています。
-- linkedServiceName は、型が AzureSqlDatabase であるリンクされたサービスを参照します。次のリンクされたサービスの定義を参照してください。 
-- availability の frequency が Day に、interval が 1 に設定されています。これはスライスが毎日生成されることを意味します。  
+- linkedServiceName は、型が AzureSqlDatabase であるリンクされたサービスを参照します。次のリンクされたサービスの定義を参照してください。
+- availability の frequency が Day に、interval が 1 に設定されています。これはスライスが毎日生成されることを意味します。
 
 AzureSqlLinkedService は次のように定義されます。
 
@@ -116,7 +114,7 @@ AzureSqlLinkedService は次のように定義されます。
 上記の JSON では、
 
 - type が AzureSqlDatabase に設定されています。
-- 型プロパティ connectionString は、Azure SQL データベースに接続される情報を指定します。  
+- 型プロパティ connectionString は、Azure SQL データベースに接続される情報を指定します。
 
 
 ご覧のとおり、リンクされたサービスは Azure SQL データベースに接続する方法を定義します。また、データセットは、データ ファクトリの入力/出力として使用されるテーブルを定義します。[パイプライン](data-factory-create-pipelines.md) JSON 内の activity セクションは、データセットが入力データセットとして使用されるか、出力データセットとして使用されるかを指定します。
@@ -125,7 +123,7 @@ AzureSqlLinkedService は次のように定義されます。
 > [AZURE.IMPORTANT] データセットは Azure Data Factory で作成されている場合を除き、**external** とマークされます。これは通常、パイプライン内の最初のアクティビティの入力に適用されます。
 
 ## <a name="Type"></a> データセットの型
-サポートされるデータ ソースとデータセットの型が並んでいます。データセットの型と構成については、「[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores)」という記事のトピックを参照してください。たとえば、Azure SQL データベースのデータを使用している場合は、サポートされるデータ ストアの一覧にある Azure SQL Database をクリックします。これで、Azure SQL Database をソース データ ストアまたはシンク データ ストアとして使用する方法の詳細を確認できます。
+サポートされるデータ ソースとデータセットの型が並んでいます。データセットの型と構成については、[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores)に関する記事で参照されているトピックを参照してください。たとえば、Azure SQL データベースのデータを使用している場合は、サポートされるデータ ストアの一覧にある Azure SQL Database をクリックします。これで、Azure SQL Database をソース データ ストアまたはシンク データ ストアとして使用する方法の詳細を確認できます。
 
 ## <a name="Structure"></a>データセット構造
 **structure** セクションでは、データセットのスキーマを定義します。このセクションには列の名前とデータ型のコレクションが含まれています。次の例では、データセットに slicetimestamp、projectname、pageviews の 3 つの列があります。各列の型は、String、String、Decimal です。
@@ -153,8 +151,8 @@ AzureSqlLinkedService は次のように定義されます。
 | プロパティ | 説明 | 必須 | 既定値 |
 | -------- | ----------- | -------- | ------- |
 | frequency | データセット スライス生成の時間単位を指定します。<br/><br/>**サポートされている frequency**: Minute、Hour、Day、Week、Month。 | あり | 該当なし |
-| interval | frequency の乗数を指定します。<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、**frequency** を **Hour** に、**interval** を **1** に設定します。<br/><br/>**注:** frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします。 | あり | 該当なし |
-| style | スライスを間隔の始め/終わりに生成するかどうかを指定します。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>fequency を Month に設定し、style を EndOfInterval に設定すると、スライスは月の最終日に生成されます。style を StartOfInterval に設定すると、スライスは月の最初の日に生成されます。<br/><br/>frequency を Day に設定し、style を EndOfInterval に設定すると、スライスは 1 日の最後の 1 時間に生成されます。<br/><br/>frequency を Hour に設定し、style を EndOfInterval に設定すると、スライスは時間の終わりに生成されます。たとえば、午後 1 時 ～ 午後 2 時のスライスの場合、午後 2 時にスライスが生成されます。 | いいえ | EndOfInterval |
+| interval | frequency の乗数を指定します。<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、**frequency** を **Hour** に、**interval** を **1** に設定します。<br/><br/>**注:** frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします。 | はい | 該当なし |
+| style | スライスを間隔の始めまたは終わりに生成するかどうかを指定します。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>frequency を Month に設定し、style を EndOfInterval に設定すると、スライスは月の最終日に生成されます。style を StartOfInterval に設定すると、スライスは月の最初の日に生成されます。<br/><br/>frequency を Day に設定し、style を EndOfInterval に設定すると、スライスは 1 日の最後の 1 時間に生成されます。<br/><br/>frequency を Hour に設定し、style を EndOfInterval に設定すると、スライスは時間の終わりに生成されます。たとえば、午後 1 時 ～ 午後 2 時のスライスの場合、午後 2 時にスライスが生成されます。 | いいえ | EndOfInterval |
 | anchorDateTime | データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。<br/><br/>**注:** AnchorDateTime に頻度より細かい日付部分が含まれている場合、その部分は無視されます。<br/><br/>たとえば、**間隔**が**時間単位** (frequency が Hour で interval が 1) で、**AnchorDateTime** に**分と秒**が含まれる場合、AnchorDateTime の**分と秒**部分は無視されます。 | いいえ | 01/01/0001 |
 | offset | すべてのデータセット スライスの開始と終了がシフトされる時間帯です。<br/><br/>**注:** anchorDateTime と offset の両方が指定されている場合、結果的にシフトが結合されます。 | いいえ | 該当なし |
 
@@ -173,7 +171,7 @@ AzureSqlLinkedService は次のように定義されます。
 
 12 か月スケジュールの場合 (頻度 = 月、間隔 = 12)、「オフセット: 60.00:00:00」は毎年の 3 月 1 日または 2 日 (スタイルが StartOfInterval の場合、年の初めから 60 日後であり、うるう年かどうかにより 1 日または 2 日になる) を意味します。
 
-### anchorDateTime の例
+## anchorDateTime の例
 
 **例:** 2007-04-19T08:00:00 に開始する 23 時間のデータセット スライス
 
@@ -184,7 +182,7 @@ AzureSqlLinkedService は次のように定義されます。
 		"anchorDateTime":"2007-04-19T08:00:00"	
 	}
 
-### offset/style の例
+## offset/style の例
 
 毎月、特定の日時 (たとえば、毎月 3 日の午前 8 時) にデータセットが必要な場合は、**offset** タグを使用して、実行する日時を設定できます。
 
@@ -215,7 +213,7 @@ AzureSqlLinkedService は次のように定義されます。
 | ポリシー名 | 説明 | 適用先 | 必須 | 既定値 |
 | ----------- | ----------- | ---------- | -------- | ------- |
 | minimumSizeMB | **Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 | Azure BLOB | いいえ | 該当なし |
-|minimumRows | **Azure SQL データベース**または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 | <ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> | いいえ | 該当なし
+|minimumRows | **Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 | <ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> | いいえ | 該当なし
 
 #### 例
 
@@ -248,7 +246,7 @@ AzureSqlLinkedService は次のように定義されます。
 
 | 名前 | 説明 | 必須 | 既定値 |
 | ---- | ----------- | -------- | -------------- |
-| dataDelay | 特定のスライスの外部データの可用性チェックを遅らせる時間。たとえば、データを時間単位で利用する場合、外部データが実際に利用できることと、該当するスライスが "準備完了" であることの確認を dataDelay で遅らせることができます。<br/><br/>現在時刻にのみ適用されます。たとえば、現在午後 1 時で、この値が 10 分の場合、検証は午後 1 時 10 分に開始されます。<br/><br/>この設定は過去のスライスには影響しません。スライスの終了時刻と dataDelay を足したものが "現在" より前になるスライスは遅延なく処理されます。<br/><br/>23 時間 59 分を超える時間は、day.hours:minutes:seconds 形式で指定する必要があります。たとえば、24 時間を指定するには、24:00:00 ではなく、1.00:00:00 を使用します。24:00:00 を使用した場合は、24 日間 (24.00:00:00) として処理されます。1 日と 4 時間の場合は 1.04:00:00 と指定します。 | いいえ | 0 |
+| dataDelay | 特定のスライスの外部データの可用性チェックを遅らせる時間。たとえば、データを時間単位で利用する場合、外部データが実際に利用できることと、該当するスライスが "準備完了" であることの確認を dataDelay で遅らせることができます。<br/><br/>現在時刻にのみ適用されます。たとえば、現在午後 1 時で、この値が 10 分の場合、検証は午後 1 時 10 分に開始されます。<br/><br/>この設定は過去のスライスには影響しません。スライスの終了時刻と dataDelay を足したものが "現在" より前になるスライスは遅延なく処理されます。<br/><br/>23 時間 59 分を超える時間は、day.hours:minutes:seconds 形式で指定する必要があります。たとえば、24 時間を指定するには、24:00:00 ではなく、1.00:00:00 を使用します。24:00:00 を使用した場合は、24 日間 (24.00:00:00) として処理されます。1 日と 4 時間の場合は 1:04:00:00 と指定します。 | いいえ | 0 |
 | retryInterval | エラーと次の再試行の間の待機時間です。現在の時間に適用されます。前の試行に失敗した場合、最後の試行からこの時間が経過するまで待機します。<br/><br/>現在時刻が午後 1 時の場合に最初の試行を開始したとします。最初の検証チェックを完了するための時間が 1 分のとき、操作に失敗した場合、次の再試行は「1:00pm + 1 分 (チェック時間) + 1 分 (再試行間隔) = 1:02pm」になります。<br/><br/>過去のスライスの場合、遅延はありません。再試行はすぐに実行されます。 | いいえ | 00:01:00 (1 分) | 
 | retryTimeout | 各再試行のタイムアウト。<br/><br/>これが 10 分に設定されている場合、検証を 10 分以内に完了する必要があります。検証に 10 分以上の時間がかかった場合、再試行はタイムアウトします。<br/><br/>検証のすべての試行がタイムアウトした場合、スライスに TimedOut のマークが付きます。 | いいえ | 00:10:00 (10 分) |
 | maximumRetry | 外部データの可用性の確認回数です。許容される最大値は 10 です。 | いいえ | 3 | 
@@ -256,7 +254,7 @@ AzureSqlLinkedService は次のように定義されます。
 ## 範囲指定されたデータセット
 **datasets** プロパティを使用すると、対象となるパイプラインを指定したデータセットを作成できます。これらのデータセットは、そのパイプライン内のアクティビティでのみ使用できます。他のパイプラインのアクティビティでは使用できません。次の例では、パイプラインと、そのパイプライン内で使用する 2 つのデータセット (InputDataset-rdc と OutputDataset-rdc) が定義されています。
 
-> [AZURE.IMPORTANT] 範囲指定されたデータセットは、1 回限りのパイプライン (**pipelineMode** が **OneTime** に設定されたパイプライン) でのみサポートされます。詳細については、「[1 回限りのパイプライン](data-factory-scheduling-and-execution.md#onetime-pipeline)」をご覧ください。
+> [AZURE.IMPORTANT] 範囲指定されたデータセットは、1 回限りのパイプライン (**pipelineMode** が **OneTime** に設定されたパイプライン) でのみサポートされます。詳細については、「[1 回限りのパイプライン](data-factory-scheduling-and-execution.md#onetime-pipeline)」を参照してください。
 
 	{
 	    "name": "CopyPipeline-rdc",
@@ -347,4 +345,4 @@ AzureSqlLinkedService は次のように定義されます。
 	    }
 	}
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

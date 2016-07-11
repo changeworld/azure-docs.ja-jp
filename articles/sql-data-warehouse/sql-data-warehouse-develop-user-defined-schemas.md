@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/23/2016"
+   ms.date="06/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse のユーザー定義のスキーマ
@@ -45,7 +45,7 @@
 
 ### 次に例を示します。
 
-1. データベース名に基づくユーザー定義のスキーマを実装します。
+データベース名に基づくユーザー定義のスキーマを実装します。
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -63,7 +63,7 @@ CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 );
 ```
 
-2. テーブル名の先頭に従来のスキーマ名を追加することで、従来のスキーマ名を保持します。ワークロードの境界にスキーマを使用します。
+テーブル名の先頭に従来のスキーマ名を追加することで、従来のスキーマ名を保持します。ワークロードの境界にスキーマを使用します。
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -81,7 +81,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-3. ビューを使用して従来のスキーマ名を保持します。
+ビューを使用して従来のスキーマ名を保持します。
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -122,4 +122,4 @@ FROM	[edw].customer
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="05/19/2016"
+   ms.date="06/27/2016"
    ms.author="andkjell;billmath"/>
 
 
@@ -107,7 +107,7 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 ![AD アカウント](./media/active-directory-aadconnect-accounts-permissions/adsyncserviceaccount.png)
 
 ### Azure AD Connect 同期サービス アカウント
-ローカル サービス アカウントはインストール ウィザードで作成します (カスタム設定で使用するアカウントを指定しない限り)。アカウントは、先頭に **AAD\_** が付き、実際の同期サービスがそのアカウントで実行されます。Azure AD Connect をドメイン コントローラーにインストールした場合、アカウントはドメインに作成されます。SQL Server を実行しているリモート サーバーを使用するか、認証を必要とするプロキシを使用する場合は、**AAD\_** サービス アカウントをドメイン内に配置する必要があります。
+ローカル サービス アカウントはインストール ウィザードで作成します (カスタム設定で使用するアカウントを指定しない限り)。アカウントは、先頭に **AAD_** が付き、実際の同期サービスがそのアカウントで実行されます。Azure AD Connect をドメイン コントローラーにインストールした場合、アカウントはドメインに作成されます。SQL Server を実行しているリモート サーバーを使用するか、認証を必要とするプロキシを使用する場合は、**AAD_** サービス アカウントをドメイン内に配置する必要があります。
 
 ![同期サービス アカウント](./media/active-directory-aadconnect-accounts-permissions/syncserviceaccount.png)
 
@@ -134,4 +134,4 @@ Azure AD のアカウントは、同期サービスで使用するために作�
 
 「[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

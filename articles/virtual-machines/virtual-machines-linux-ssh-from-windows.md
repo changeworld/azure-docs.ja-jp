@@ -56,10 +56,10 @@ Azure の基本的な SSH 設定には、**ssh-rsa** の 2048 ビットの公開
 
 上記の[セクション](#What-SSH-and-key-creation-programs-do-you-need)では、Windows 用の `ssh-keygen` や `openssl` を含むいくつかのユーティリティを紹介しました。いくつかの例を以下に示します。
 
-###Windows 用の GitHub を使用する###
+###Git for Windows を使用する###
 
-1.	[https://git-for-windows.github.io/](https://git-for-windows.github.io/) から Windows 用の GitHub をダウンロードしてインストールします。
-2.	[スタート] メニューをクリックし、[すべてのプログラム]、[GitHub] の順にクリックして、Git Bash を実行します。
+1.	[https://git-for-windows.github.io/](https://git-for-windows.github.io/) から Git for Windows をダウンロードしてインストールします。
+2.	[スタート] メニューをクリックし、[すべてのプログラム]、[Git Shell] の順にクリックして、Git Bash を実行します。
 
 > [AZURE.NOTE] 上記の `openssl` コマンドを実行すると、次のエラーが発生することがあります。
 
@@ -166,4 +166,4 @@ Azure の基本的な SSH 設定には、**ssh-rsa** の 2048 ビットの公開
 5.	**[Open]** をクリックして、仮想マシンに接続します。
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

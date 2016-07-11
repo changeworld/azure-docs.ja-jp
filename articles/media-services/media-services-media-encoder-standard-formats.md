@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako;anilmur"/>
 
 #Media Encoder Standard の形式とコーデック
@@ -121,4 +121,4 @@ MPEG2-TS |H.264 (High、Main、Baseline Profile)|AAC-LC、HE-AAC v1、HE-AAC v2
 
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

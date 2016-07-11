@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"     
+	ms.date="06/22/2016"  
 	ms.author="willzhan;kilroyh;yanmf;juliako"/>
 
 #CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装
@@ -159,7 +159,7 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 
 
 
-1. 月単位のサブスクリプション: 永続的ライセンスを使用し、コンテンツ キーと資産のマッピングは 1 – 多です。たとえば、すべての子供向けムービーの暗号化に 1 つのコンテンツ キーを使用します。この場合、次のようになります。 
+1. 月単位のサブスクリプション: 永続的ライセンスを使用し、コンテンツ キーと資産のマッピングは 1 – 多です。たとえば、すべての子供向けムービーの暗号化に 1 つのコンテンツ キーを使用します。この場合、次のようになります。
 
 	すべての子供向けムービーに対して要求されるデバイス当たりのライセンス合計数 = 1
 
@@ -209,7 +209,7 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 1. ユーザーが認証されると、JWT トークンが生成されます。
 1. JWT トークンに含まれる要求の 1 つは、“EntitledUserGroup” のグループ オブジェクト ID を含む "groups" 要求です。この要求は、「権利チェック」に合格するために使用されます。
 1. プレーヤーは CENC で保護されたコンテンツのクライアント マニフェストをダウンロードして、以下を「確認」します。
-	1. キー ID 
+	1. キー ID
 	1. コンテンツが CENC で保護されていること
 	1. ライセンス取得 URL
 
@@ -223,7 +223,7 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 
 1. テスト資産を準備します。テスト ビデオを Azure Media Services のマルチビットレートの Fragmented MP4 にエンコード/パッケージ化します。この資産は、DRM では保護されません。DRM 保護は、後で動的保護によって行われます。
 1. キー ID および (必要に応じてキー シードから) コンテンツ キーを作成します。このトピックでは、2 つのテスト資産のために 1 セットのキー ID とコンテンツ キーだけを使用するので、キー管理システムは必要ありません。
-1. AMS API を使用して、テスト資産用のマルチ DRM ライセンス配信サービスを構成します。Azure Media Services のライセンス サービスではなく、会社または会社のベンダーによるカスタム ライセンス サーバーを使用している場合は、この手順を省略し、ライセンス配信を構成するステップでライセンス取得 URL を指定できます。承認ポリシーの制限、異なる DRM ライセンス サービスのライセンス応答テンプレートなど、一部の詳細構成を指定するには AMS API が必要です。現在の Azure ポータルでは、この構成に必要な UI はまだ提供されていません。API レベルの情報およびサンプル コードについては、「[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)」を参照してください。 
+1. AMS API を使用して、テスト資産用のマルチ DRM ライセンス配信サービスを構成します。Azure Media Services のライセンス サービスではなく、会社または会社のベンダーによるカスタム ライセンス サーバーを使用している場合は、この手順を省略し、ライセンス配信を構成するステップでライセンス取得 URL を指定できます。承認ポリシーの制限、異なる DRM ライセンス サービスのライセンス応答テンプレートなど、一部の詳細構成を指定するには AMS API が必要です。現在の Azure ポータルでは、この構成に必要な UI はまだ提供されていません。API レベルの情報およびサンプル コードについては、「[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)」を参照してください。
 1. AMS API を使用して、テスト資産の資産配信ポリシーを構成します。API レベルの情報およびサンプル コードについては、「[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)」を参照してください。
 1. Azure で Azure Active Directory テナントを作成して構成します。
 1. Azure Active Directory テナントでユーザー アカウントとグループをいくつか作成します。少なくとも、"EntitledUser" グループを作成し、このグループにユーザーを追加する必要があります。このグループのユーザーはライセンス取得での権利チェックに合格しますが、このグループに属さないユーザーは合格せず、ライセンスを取得できません。この "EntitledUser" グループのメンバーであることは、Azure AD によって発行される JWT トークンにおいて必要な "groups" 要求です。この要求要件は、マルチ DRM ライセンス配信サービスを構成するステップで指定する必要があります。
@@ -255,7 +255,7 @@ Azure Active Directory については以下を参照してください。
 
 実装には「注意事項」がいくつかあります。問題が発生した場合は、以下の「注意事項」をトラブルシューティングの参考にしてください。
 
-1. **issuer** URL の末尾には **"/"** が必要です。  
+1. **issuer** URL の末尾には **"/"** が必要です。
 
 	**audience** はプレーヤー アプリケーションのクライアント ID でなければならず、やはり発行者 URL の末尾に **"/"** を追加する必要があります。
 
@@ -317,7 +317,7 @@ Azure Active Directory については以下を参照してください。
 
 Azure AD は、業界標準を使用して、それ自体と Azure AD を使用するアプリケーションの間の信頼を確立します。具体的には、Azure AD は公開キーと秘密キーのペアで構成される署名キーを使用します。Azure AD がユーザーに関する情報を含むセキュリティ トークンを作成するとき、このトークンは、アプリケーションに送信される前に、秘密キーを使用して Azure AD によって署名されます。トークンが有効であり、実際に Azure AD から発行されたことを確認するには、アプリケーションは、テナントのフェデレーション メタデータ ドキュメントに含まれる Azure AD によって公開された公開キーを使用して、トークンの署名を検証する必要があります。この公開キーとその派生元である署名キーは、Azure AD のすべてのテナントに対して同じものが使用されます。
 
-Azure AD でのキーのロールオーバーに関する詳細については、「[Azure AD での署名キーのロールオーバーに関する重要な情報](http://msdn.microsoft.com/library/azure/dn641920.aspx/)」を参照してください。
+Azure AD でのキーのロールオーバーに関する詳細については、[Azure AD での署名キー ロールオーバーの重要な情報](../active-directory/active-directory-signing-key-rollover.md)に関するページをご覧ください。
 
 [公開/秘密キーのペア](https://login.windows.net/common/discovery/keys/)は次のように使用されます。
 
@@ -361,15 +361,15 @@ Web アプリが API アプリを呼び出す場合の認証フローは次の�
 
 1.	Azure AD テナントで
 
-	- サインオン URL を含むアプリケーション (リソース) を追加します。 
+	- サインオン URL を含むアプリケーション (リソース) を追加します。
 
 	https://[resource_name].azurewebsites.net/ および
 
-	- アプリ ID URL: 
+	- アプリ ID URL:
 	
-	https://[aad_tenant_name].onmicrosoft.com/[resource_name]; 
+	https://[aad_tenant_name].onmicrosoft.com/[resource_name];
 2.	リソース アプリ用の新しいキーを追加します。
-3.	アプリ マニフェスト ファイルを更新し、groupMembershipClaims プロパティの値を "groupMembershipClaims": "All" に変更します。  
+3.	アプリ マニフェスト ファイルを更新し、groupMembershipClaims プロパティの値を "groupMembershipClaims": "All" に変更します。
 4.	プレーヤー Web アプリを参照する Azure AD アプリの [他のアプリケーションに対するアクセス許可] セクションで、上の手順 1 で追加したリソース アプリを追加します。[デリゲートされたアクセス許可] で [<リソース名> へのアクセス] をオンにします。これにより、リソース アプリにアクセスするためのアクセス トークンを作成するアクセス許可が Web アプリに付与されます。Visual Studio と Azure Web アプリでデプロイしている場合は、Web アプリのローカル バージョンとデプロイ バージョンの両方で、これを行う必要があります。
 	
 したがって、Azure AD によって発行される JWT トークンは、実際にはこの「ポインター」リソースにアクセスするためのアクセス トークンです。
@@ -386,7 +386,7 @@ Web アプリが API アプリを呼び出す場合の認証フローは次の�
 
 多くの場合、ユーザーは自前のデータ センター内にある、または DRM サービス プロバイダーによってホストされている、ライセンス サーバー ファームを使用します。幸い、Azure Media Services Content Protection を使用すると、ハイブリッド モードで運用できます。つまり、コンテンツは Azure Media Services でホストして動的に保護しながら、Azure Media Services の外部のサーバーで DRM ライセンスを配信できます。この場合、次の変更を考慮する必要があります。
 
-1. Secure Token Service は、ライセンス サーバー ファームによって許容可能で検証できるトークンを発行する必要があります。たとえば、Axinom によって提供される Widevine ライセンス サーバーには、"権利メッセージ" を含む特定の JWT トークンが必要です。そのため、STS でそのような JWT トークンを発行する必要があります。そのような実装の詳細については、[Azure ドキュメント センター](https://azure.microsoft.com/documentation/)の「[Axinom を使用して Azure Media Services に Widevine ライセンスを配信する](media-services-axinom-integration.md)」を参照してください。 
+1. Secure Token Service は、ライセンス サーバー ファームによって許容可能で検証できるトークンを発行する必要があります。たとえば、Axinom によって提供される Widevine ライセンス サーバーには、"権利メッセージ" を含む特定の JWT トークンが必要です。そのため、STS でそのような JWT トークンを発行する必要があります。そのような実装の詳細については、[Azure ドキュメント センター](https://azure.microsoft.com/documentation/)の「[Axinom を使用して Azure Media Services に Widevine ライセンスを配信する](media-services-axinom-integration.md)」を参照してください。
 1. Azure Media Services でライセンス配信サービス (ContentKeyAuthorizationPolicy) を構成する必要はもうありません。必要なのは、マルチ DRM を使用する CENC の設定で AssetDeliveryPolicy を構成するときに、ライセンス取得 URL を (PlayReady、Widevine、FairPlay に) 提供することです。
  
 ### カスタム STS を使用する場合
@@ -522,4 +522,4 @@ X509 証明書で非対称キーを使用する場合 (Microsoft の最新のブ
 
 William Zhang、Mingfei Yan、Roland Le Franc、Kilroy Hughes、Julia Kornich
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

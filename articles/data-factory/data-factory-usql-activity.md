@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/05/2016" 
+	ms.date="06/27/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory から Azure Data Lake Analytics で U-SQL スクリプトを実行する 
@@ -257,4 +257,4 @@ parameters | U-SQL スクリプトのパラメーター | いいえ
 
 Azure Data Lake Analytics サービスで実行されるジョブのパイプライン定義で、他のプロパティ (degreeOfParallelism や優先度など) も指定できます。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

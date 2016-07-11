@@ -482,8 +482,8 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | (単位 = 時間) 例: “00:30:00” (30 分) | いいえ |
-| writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 | 整数 (単位 = 行数) | いいえ (既定値 = 10000)
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | timespan<br/><br/> 例: "00:30:00" (30 分)。 | いいえ |
+| writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 | Integer | いいえ (既定値: 10000)
 | sqlWriterCleanupScript | 特定のスライスのデータを消去する方法で実行するコピー アクティビティのユーザー指定のクエリ。詳細については、下にある繰り返し性のセクションを参照してください。 | クエリ ステートメント。 | いいえ |
 | sliceIdentifierColumnName | コピー アクティビティで、自動生成スライス ID を入力する列のユーザー指定の名前。再実行時、特定のスライスのデータを消去するために使用されます。詳細については、下にある繰り返し性のセクションを参照してください。 | バイナリ (32) のデータ型の列の列名。 | いいえ |
 | sqlWriterStoredProcedureName | 対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 | ストアド プロシージャの名前。 | いいえ |
@@ -497,15 +497,15 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQ
 	![リモート接続を有効にする](.\media\data-factory-sqlserver-connector\AllowRemoteConnections.png)
 
 	詳細な手順については、「[remote access サーバー構成オプションの構成](https://msdn.microsoft.com/library/ms191464.aspx)」を参照してください。
-2. **SQL Server 構成マネージャー**を起動します。目的のインスタンスの **SQL Server ネットワーク構成**を展開し、**[MSSQLSERVER のプロトコル]** を選択します。右側のウィンドウにプロトコルが表示されます。**[TCP/IP]** を右クリックし、**[有効化]** をクリックして TCP/TP を有効にします。
+2. **SQL Server 構成マネージャー**を起動します。目的のインスタンスの **[SQL Server ネットワークの構成]** を展開し、**[MSSQLSERVER のプロトコル]** を選択します。右側のウィンドウにプロトコルが表示されます。**[TCP/IP]** を右クリックし、**[有効化]** をクリックして TCP/TP を有効にします。
 
 	![TCP/IP を有効にする](.\media\data-factory-sqlserver-connector\EnableTCPProptocol.png)
 
 	詳細について、また TCP/IP プロトコルを有効にする別の方法については、「[サーバー ネットワーク プロトコルの有効化または無効化](https://msdn.microsoft.com/library/ms191294.aspx)」を参照してください。
-3. 同じウィンドウで、**[TCP/IP]** をダブルクリックして、**[TCP/IP プロパティ]** ウィンドウを起動します。
-4. **[IP アドレス]** タブに切り替えます。下にスクロールして **IPAll** セクションを表示します。**TCP ポート** をメモしておきます (既定は **1433**)。
-5. コンピューターに **Windows Firewall のルール**を作成し、このポート経由の受信トラフィックを許可します。  
-6. **接続の確認**: 別のコンピューターから SQL Server Management Studio を使用して、完全修飾名を使って SQL Server に接続します。<machine>.<domain>.corp.<company>.com,1433 などを使用します。
+3. 同じウィンドウで、**[TCP/IP]** をダブルクリックして、**[TCP/IP のプロパティ]** ウィンドウを起動します。
+4. **[IP アドレス]** タブに切り替えます。下へスクロールして **[IPAll]** セクションを表示します。**[TCP ポート]** の値をメモしておきます (既定は **1433**)。
+5. コンピューターに **Windows Firewall のルール**を作成し、このポート経由の受信トラフィックを許可します。
+6. **接続の確認**: 別のコンピューターから SQL Server Management Studio を使用して、完全修飾名を使って SQL Server に接続します。例: <コンピューター>.< ドメイン >.corp.<会社> .com,1433。
 
 	> [AZURE.IMPORTANT]
 	詳細については、「[ポートとセキュリティに関する考慮事項](data-factory-move-data-between-onprem-and-cloud.md#port-and-security-considerations)」を参照してください。
@@ -646,4 +646,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

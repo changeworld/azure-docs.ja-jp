@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/03/2016"
+   ms.date="06/27/2016"
    ms.author="sonyama;barbkess;sahajs"/>
 
 # DMV を利用してワークロードを監視する
@@ -31,7 +31,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed';
 ## クエリの実行を調査する
 クエリ実行を監視するには、[sys.dm\_pdw\_exec\_requests][] で始めます。このビューには進行中のクエリと、最近完了したクエリの一覧が表示されます。request\_id により各クエリが一意に識別されます。これはこのビューのプライマリ キーです。request\_id は、新しいクエリごとに順番に割り当てられます。特定の session\_id のテーブルにクエリを実行すると、そのログオンのクエリがすべて表示されます。
 
-特定のクエリのクエリ実行を調査する必要がある場合に一般的に使用する手順を次に示します。
+クエリ実行プラン、および特定のクエリの実行時間を調査するには、次の手順に従います。
 
 ### 手順 1: 調査するクエリを見つける
 
@@ -162,4 +162,4 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 [DBCC PDW\_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
 [DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

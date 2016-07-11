@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="06/27/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: コンシューマー向けアプリケーションで Multi-factor Authentication を有効にする
@@ -58,4 +58,4 @@ Multi-Factor Authentication の手順が実行される前に、コンシュー�
 
 前のサインアップ/サインイン ポリシーで説明したように、サインアップまたはサインイン ポリシーおよびパスワード リセット ポリシーで Multi-Factor Authentication を有効にすることもできます。プロファイル編集ポリシーでもまもなく利用できるようになります。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0629_2016-->

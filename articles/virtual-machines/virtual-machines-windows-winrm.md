@@ -21,7 +21,7 @@
 
 ## Azure サービス管理の WinRM と Azure Resource Manager
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル
 
 * Azure Resource Manager の概要については、こちらの[記事](../resource-group-overview.md)を参照してください。
 * Azure サービス管理と Azure Resource Manager の違いについては、こちらの[記事](../resource-manager-deployment-model.md)を参照してください。
@@ -50,7 +50,7 @@ New-AzureRmKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Lo
 ```
 $certificateName = "somename"
 
-$thumbprint = (New-SelfSignedCertificate -DnsName "$certificateName" -CertStoreLocation Cert:\CurrentUser\My -KeySpec KeyExchange).Thumbprint
+$thumbprint = (New-SelfSignedCertificate -DnsName $certificateName -CertStoreLocation Cert:\CurrentUser\My -KeySpec KeyExchange).Thumbprint
 
 $cert = (Get-ChildItem -Path cert:\CurrentUser\My\$thumbprint)
 
@@ -65,7 +65,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $
 
 ```
 $fileName = "<Path to the .pfx file>"
-$fileContentBytes = get-content $fileName -Encoding Byte
+$fileContentBytes = Get-Content $fileName -Encoding Byte
 $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 
 $jsonObject = @"
@@ -80,7 +80,7 @@ $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
 $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
 
 $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
-Set-AzureRmKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
+Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
 ## 手順 4: Key Vault の自己署名証明書の URL を取得する
@@ -106,7 +106,7 @@ VM をプロビジョニングするときに、Microsoft.Compute リソース �
 
 #### Azure Resource Manager のテンプレート
 
-テンプレートを使用して VM を作成するときに、証明書はシークレット セクションと WinRM セクションで次のように参照されます。
+テンプレートを使用して VM を作成する場合、"secrets" セクションと "WinRM" セクションで証明書を次のように参照します。
 
 	"osProfile": {
           ...
@@ -149,7 +149,7 @@ VM をプロビジョニングするときに、Microsoft.Compute リソース �
 	$vm = New-AzureRmVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
 	$credential = Get-Credential
 	$secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
-	$vm = Set-AzureRmVMOperatingSystem -VM $vm  -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
+	$vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
 	$sourceVaultId = (Get-AzureRmKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
 	$CertificateStore = "My"
 	$vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
@@ -165,4 +165,4 @@ VM に接続する前に、WinRM リモート管理のためにコンピュー�
 
     Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

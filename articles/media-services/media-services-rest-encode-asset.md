@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -32,7 +32,7 @@
 
 各ジョブは実行する処理の種類に応じて 1 つまたは複数のタスクを持つことができます。REST API を使って、2 つの方法のいずれかでジョブおよびジョブに関連するタスクを作成できます。
 
-- タスクは、Job エンティティの Tasks ナビゲーション プロパティまたは 
+- タスクは、Job エンティティの Tasks ナビゲーション プロパティまたは
 - OData バッチ処理を使用して、インラインで定義できます。
   
 
@@ -49,7 +49,7 @@
 >
 >Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 
->https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect_programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
+>https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
 >
 >JSON を使用し、要求で **\_\_metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Accept: application/json;odata=verbose) に設定する必要があります。
 
@@ -85,11 +85,11 @@
 ##考慮事項
 
 - TaskBody プロパティでは、リテラル XML を使用して、タスクが使用するアセットの入力または出力数を定義する必要があります。タスクのトピックには、XML のための XML スキーマ定義が含まれます。
-- TaskBody の定義には各 <inputAsset> の内部値と <outputAsset> を JobInputAsset(value) または JobOutputAsset(value) として設定する必要があります。
+- TaskBody の定義では <inputAsset> と <outputAsset> の内部値を、それぞれ JobInputAsset(value) または JobOutputAsset(value) として設定する必要があります。
 - タスクは、複数の出力資産を持つことができます。1 つの JobOutputAsset(x) はジョブ内のタスクの出力として一度だけ使用できます。
 - タスクの入力資産として、JobInputAsset または JobOutputAsset を指定できます。
 - タスクは、サイクルを形成することはできません。
-- JobInputAsset または JobOutputAsset に渡す値パラメーターは、Asset のインデックス値を表します。実際の Asset は、Job エンティティ定義の InputMediaAssets および OutputMediaAssets ナビゲーション プロパティで定義されます。 
+- JobInputAsset または JobOutputAsset に渡す値パラメーターは、Asset のインデックス値を表します。実際の Asset は、Job エンティティ定義の InputMediaAssets および OutputMediaAssets ナビゲーション プロパティで定義されます。
 - Media Services は OData v3 上に構築されるため、 InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々の資産は、"\_\_metadata : uri" の名前と値のペアによって参照されます。
 - InputMediaAssets は、Media Services で作成した1 つまたは複数の資産にマップされます。OutputMediaAssets はシステムによって作成されます。既存の資産は参照しません。
 - OutputMediaAssets は、assetName 属性を使用して名前を付けることができます。この属性が存在しない場合、OutputMediaAsset の名前は、ジョブ名の値またはジョブ ID の値 (Name プロパティが定義されていない場合) のいずれかのサフィックスを持つ <outputAsset> 要素の内部テキストの値になります。たとえば、"Sample"に assetName の値を設定する場合は、OutputMediaAsset Name プロパティは "Sample" に指定されます。ただし、assetName の値を設定せずジョブ名を "NewJob" に設定した場合は、OutputMediaAsset Name は "JobOutputAsset(value)\_NewJob" になります。
@@ -275,4 +275,4 @@
 
 [メディア プロセッサの取得](media-services-rest-get-media-processor.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

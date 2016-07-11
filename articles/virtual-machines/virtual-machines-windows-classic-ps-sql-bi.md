@@ -18,8 +18,7 @@
 
 # Azure Virtual Machines での SQL Server Business Intelligence
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
-
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 Microsoft Azure 仮想マシン ギャラリーには、SQL Server インストールを含むイメージが用意されています。ギャラリー イメージでサポートされている SQL Server のエディションは、オンプレミスのコンピューターにも仮想マシンにもインストールできるインストール ファイルです。このトピックでは、イメージにインストールされている SQL Server Business Intelligence (BI) 機能の概要と、仮想マシンのプロビジョニング後に必要な構成手順について説明します。また、BI 機能用にサポートされているデプロイ トポロジとベスト プラクティスについても説明します。
 
@@ -316,7 +315,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 1. **[SQL Server インストール センター]** をクリックします。
 
-または、C:\\SQLServer\_13.0\_full\\setup.exe、C:\\SQLServer\_12.0\_full\\setup.exe、または C:\\SQLServer\_11.0\_full\\setup.exe を実行します。
+または、C:\\SQLServer\_13.0_full\\setup.exe、C:\\SQLServer_12.0_full\\setup.exe、または C:\\SQLServer_11.0\_full\\setup.exe を実行します。
 
 >[AZURE.NOTE] SQL Server セットアップを初めて実行すると、さらに多くのセットアップ ファイルがダウンロードされ、仮想マシンの再起動と SQL Server セットアップの再起動が必要になる場合があります。
 >
@@ -334,7 +333,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 1. SQL Server インストール ウィザードで、左側のウィンドウの **[インストール]** をクリックし、**[SQL Server の新規スタンドアロン インストールを実行するか、既存のインストールに機能を追加します]** をクリックします。
 
-	- **[フォルダーの参照]** が表示されたら、c:\\SQLServer\_13.0\_full、c:\\SQLServer\_12.0\_full、または c:\\SQLServer\_11.0\_full を参照し、**[OK]** をクリックします。
+	- **[フォルダーの参照]** が表示されたら、c:\\SQLServer\_13.0_full、c:\\SQLServer_12.0_full、または c:\\SQLServer_11.0\_full を参照し、**[OK]** をクリックします。
 
 1. 製品の更新プログラム ページで **[次へ]** をクリックします。
 
@@ -392,8 +391,8 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 	|ポート|型|説明|
 |---|---|---|
-|**80**|TCP|レポート サーバー リモート アクセス (*).|
-|**1433**|TCP|SQL Server Management Studio (*).|
+|**80**|TCP|レポート サーバー リモート アクセス (*)。|
+|**1433**|TCP|SQL Server Management Studio (*)。|
 |**1434**|UDP|SQL Server Browser。これは、VM がドメインに参加しているときに必要となります。|
 |**2382**|TCP|SQL Server Browser。|
 |**2383**|TCP|SQL Server Analysis Services の既定のインスタンスとクラスター化された名前付きインスタンス。|
@@ -437,4 +436,4 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

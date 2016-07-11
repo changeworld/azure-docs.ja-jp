@@ -22,7 +22,7 @@
 
 パスワードを忘れたため、Secure Shell (SSH) キーが正しくないため、または SSH 構成に問題があるために、Azure の Linux 仮想マシンに接続できない場合は、Azure CLI で VMAccessForLinux 拡張機能を使用して、パスワードまたは SSH キーのリセット、SSH 構成の修正、ディスクの整合性のチェックを行います。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)方法について説明します。
 
 Azure CLI を使用すると、コマンド ライン インターフェイス (Bash、ターミナル、コマンド プロンプト) から **azure vm extension set** コマンドを使用してコマンドにアクセスできます。拡張機能の詳しい使用方法については、**azure help vm extension set** を実行します。
 
@@ -122,7 +122,7 @@ SSH の構成が望ましい状態でない場合は、VM にアクセスでき�
 
 VM にログインせずに直接ユーザー アカウントを削除するには、このスクリプトを使用できます。
 
-1. ユーザー名を置き換えて、#60; usernametoremove & #62; を削除して、次の内容を含む PrivateConf.json という名前のファイルを作成します。 
+1. ユーザー名を置き換えて、#60; usernametoremove & #62; を削除して、次の内容を含む PrivateConf.json という名前のファイルを作成します。
 
         {
         "remove_user":"<usernametoremove>"
@@ -142,7 +142,7 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 
 Linux 仮想マシンのすべてのディスクに対して fsck を実行するには、次の手順を実行する必要があります。
 
-1. 次の内容を含む PublicConf.json という名前のファイルを作成します。チェック ディスクは、仮想マシンに接続されているディスクをチェックするかどうかを表すブール値を受け取ります。 
+1. 次の内容を含む PublicConf.json という名前のファイルを作成します。チェック ディスクは、仮想マシンに接続されているディスクをチェックするかどうかを表すブール値を受け取ります。
 
         {   
         "check_disk": "true"
@@ -152,11 +152,11 @@ Linux 仮想マシンのすべてのディスクに対して fsck を実行す�
 
         azure vm extension set <vm-name> VMAccessForLinux Microsoft.OSTCExtensions 1.* --public-config-path PublicConf.json 
 
-## <a name='repairdisk'></a>ディスクを修復します。 
+## <a name='repairdisk'></a>ディスクの修復 
 
 マウントされていないディスクまたはマウント構成エラーが発生したディスクを修復するには、VMAccess 拡張機能を使用して Linux 仮想マシンでマウント構成をリセットします。ディスクの名前を &#60;yourdisk&#62; に置き換えます。
 
-1. 次の内容を含む PublicConf.json という名前のファイルを作成します。 
+1. 次の内容を含む PublicConf.json という名前のファイルを作成します。
 
         {
         "repair_disk":"true",
@@ -171,10 +171,10 @@ Linux 仮想マシンのすべてのディスクに対して fsck を実行す�
 
 ## 次のステップ
 
-* Azure PowerShell コマンドレットまたは Azure Resource Manager テンプレートを使用して、パスワードまたは SSH キーをリセットし、SSH 構成を修正してディスクの整合性のチェックを行う場合、「[VMAccess extension documentation on GitHub (GitHub の VMAccess 拡張機能に関するドキュメント)](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)」を参照してください。 
+* Azure PowerShell コマンドレットまたは Azure Resource Manager テンプレートを使用して、パスワードまたは SSH キーをリセットし、SSH 構成を修正してディスクの整合性のチェックを行う場合、GitHub の [VMAccess 拡張機能に関するドキュメント](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)を参照してください。
 
 * クラシック デプロイメント モデルでデプロイされた Linux VM のパスワードまたは SSH キーをリセットする場合は、[Azure ポータル](https://portal.azure.com)を使用することもできます。リソース マネージャーのデプロイ モデルでデプロイされた Linux VM のパスワードまたは SSH キーをリセットする場合は、現在ポータルを使用することができません。
 
-* Azure 仮想マシンに VM 拡張機能を使用する方法の詳細については、「[About virtual machine extensions and features (仮想マシンの拡張機能とその機能について)](virtual-machines-linux-extensions-features.md)」を参照してください。
+* Azure 仮想マシンに VM 拡張機能を使用する方法の詳細については、「[仮想マシンの拡張機能とその機能について](virtual-machines-linux-extensions-features.md)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

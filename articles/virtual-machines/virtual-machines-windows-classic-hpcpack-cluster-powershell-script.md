@@ -20,7 +20,7 @@
 
 クライアント コンピューターで HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Azure インフラストラクチャ サービス (IaaS) で Windows ワークロード用に完全な HPC クラスターをデプロイします。Linux ワークロード用に Azure で HPC Pack クラスターをデプロイする必要がある場合は、「[HPC Pack IaaS デプロイ スクリプトを使用し、Linux VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md)」をご覧ください。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
@@ -273,4 +273,4 @@
 
 * Azure リソース マネージャーのテンプレートを使用して HPC Pack クラスターをデプロイすることもできます。例については、「[Create an HPC cluster (HPC クラスターを作成する)](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)」および「[Create an HPC cluster with custom compute node image (カスタム コンピューティング ノード イメージを使用して HPC クラスターを作成する)](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)」を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

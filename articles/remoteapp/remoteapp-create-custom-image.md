@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2016" 
+	ms.date="06/27/2016" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp のカスタム テンプレート イメージの作成方法
@@ -142,4 +142,4 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 - [RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

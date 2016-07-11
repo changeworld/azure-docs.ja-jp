@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/18/2016"
+   ms.date="06/27/2016"
    ms.author="jgao"/>
 
 # Azure Virtual Network での HBase クラスターの作成 
@@ -38,22 +38,21 @@
 
 このセクションでは、[Azure ARM テンプレート](../resource-group-template-deploy.md)を利用し、HDInsight で Linux ベースの HBase クラスターを作成します。このチュートリアルを利用するにあたり、Azure ARM テンプレートの使用経験は必要ありません。その他のクラスター作成方法と設定の詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。ARM テンプレートを利用して HDInsight で Hadoop クラスターを作成する方法の詳細については、「[ARM テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-windows-clusters-arm-templates.md)」を参照してください。
 
-1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。ARM テンプレートはパブリック BLOB コンテナー内にあります。 
+1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。ARM テンプレートはパブリック BLOB コンテナー内にあります。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-vnet.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-vnet.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. **[パラメーター]** ブレードで、次の各項目を入力します。
-
     - **ClusterName**: 作成する Hadoop クラスターの名前を入力します。
     - **クラスターのログイン名とパスワード**: 既定のログイン名は **admin** です。
-    - **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。この名前は変更できます。 
+    - **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。この名前は変更できます。
+	
+	一部のプロパティは、テンプレートにハードコーディングされています。次に例を示します。<br/>
 
-    プロパティの多くは、テンプレートにハードコーディングされています。次に例を示します。
-    
     - 場所: 米国東部
-    - クラスターのワーカー ノードの数: 4
-    - 既定のストレージ アカウント: <Cluster Name>store
-    - 仮想ネットワーク名: <Cluster Name>-vnet
+	- クラスターのワーカー ノードの数: 4
+    - 既定のストレージ アカウント: &lt;クラスター名>store
+    - 仮想ネットワーク名: &lt;クラスター名>-vnet
     - 仮想ネットワークのアドレス空間: 10.0.0.0/16
     - サブネット名: 既定
     - サブネットのアドレス範囲: 10.0.0.0/24
@@ -61,7 +60,7 @@
 3. **[OK]** をクリックしてパラメーターを保存します。
 4. **[カスタム デプロイ]** ブレードで **[リソース グループ]** ボックスをクリックし、**[新規]** をクリックして新しいリソース グループを作成します。リソース グループとは、クラスター、依存するストレージ アカウント、その他のリンクされたリソースをグループ化しているコンテナーです。
 5. **[法律条項]** をクリックし、**[作成]** をクリックします。
-6. **[作成]** をクリックします。"**Submitting deployment for Template deployment**" というタイトルの新しいタイルが表示されます。クラスターの作成には約 20 分かかります。クラスターが作成されたら、ポータルのクラスター ブレードをクリックして開きます。
+6. **[作成]** をクリックします。"**Submitting deployment for Template deployment**" という新しいタイルが表示されます。クラスターの作成には約 20 分かかります。クラスターが作成されたら、ポータルのクラスター ブレードをクリックして開きます。
 
 チュートリアルを完了したら、必要に応じてクラスターを削除できます。HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。また、HDInsight クラスターは、使用していない場合でも課金されます。クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。クラスターの削除手順については、「[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md#delete-clusters)」を参照してください。
 
@@ -71,9 +70,18 @@
 
 1.	サービスとしてのインフラストラクチャ (IaaS) 仮想マシンを同じ Azure 仮想ネットワークと同じサブネットに対して作成します。それにより、仮想マシンと HBase クラスターはどちらも同じ内部 DNS サーバーを使用してホスト名を解決します。そのためには、**[ギャラリーから]** を選択し、データ センターの代わりに仮想ネットワークを選択する必要があります。手順については、「[Windows Server を実行する仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」を参照してください。標準の Windows Server 2012 イメージとサイズの小さい VM で十分です。
 
-2.	Java アプリケーションを使用して HBase にリモートで接続する場合は、完全修飾ドメイン名 (FQDN) を使用する必要があります。これを確認するには、HBase クラスターの接続固有の DNS サフィックスを取得する必要があります。それには、Curl を使用して Ambari を照会するか、リモート デスクトップを使用してクラスターに接続します。
+2.	Java アプリケーションを使用して HBase にリモートで接続する場合は、完全修飾ドメイン名 (FQDN) を使用する必要があります。これを確認するには、HBase クラスターの接続固有の DNS サフィックスを取得する必要があります。そのためには、次のいずれかの方法を実行します。
 
-	* **Curl**: 次のコマンドを実行します。
+	* Web ブラウザーを使用した Ambari の呼び出し:
+	
+		ブラウザーで https://&lt;ClusterName>.azurehdinsight.net/api/v1/clusters/&lt;クラスター名>/hosts?minimal\_response=true を開きます。JSON ファイルに DNS サフィックスが付きます。
+
+	* Ambari Web サイトの使用
+
+		1. ブラウザーで https://&lt;ClusterName>.azurehdinsight.net を開きます。
+		2. ページの上部にある **[ホスト]** をクリックします。
+
+	* Curl を使用した REST の呼び出し:
 
 			curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
 
@@ -85,7 +93,9 @@
 
 		クラスター名で始まるドメイン名の部分は、DNS サフィックスです。たとえば、mycluster.b1.cloudapp.net です。
 
-	* **Azure PowerShell** - 次の Azure PowerShell スクリプトを使用して、DNS サフィックスを返すことができる **Get-ClusterDetail** 関数を登録します。
+	* Azure PowerShell の使用
+	
+		次の Azure PowerShell スクリプトを使用して、DNS サフィックスを返すことができる **Get-ClusterDetail** 関数を登録します。
 
 			function Get-ClusterDetail(
 			    [String]
@@ -183,9 +193,11 @@
 
 		これは、DNS サフィックスを返します。たとえば、**yourclustername.b4.internal.cloudapp.net** です。
 
-	> [AZURE.NOTE] リモート デスクトップを使用して HBase クラスターに接続し (ヘッド ノードに接続されます)、コマンド プロンプトから **ipconfig** を実行して DNS サフィックスを取得することもできます。RDP を有効にし、リモート デスクトップ プロトコル (RDP) を使用してクラスターに接続する手順については、「[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-portal]」をご覧ください。
-	>
-	> ![hdinsight.hbase.dns.surffix][img-dns-surffix]
+	* RDP の使用
+	
+		リモート デスクトップを使用して HBase クラスターに接続し (ヘッド ノードに接続されます)、コマンド プロンプトから **ipconfig** を実行して DNS サフィックスを取得することもできます。RDP を有効にし、リモート デスクトップ プロトコル (RDP) を使用してクラスターに接続する手順については、「[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-portal]」をご覧ください。
+		
+		![hdinsight.hbase.dns.surffix][img-dns-surffix]
 
 
 <!--
@@ -268,8 +280,8 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 [img-dns-surffix]: ./media/hdinsight-hbase-provision-vnet/DNSSuffix.png
 [img-primary-dns-suffix]: ./media/hdinsight-hbase-provision-vnet/PrimaryDNSSuffix.png
 [img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "新しい HBase クラスターのプロビジョニングの詳細"
-[img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Script Action を使って HBase クラスターをカスタマイズする"
+[img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "スクリプト アクションを使って HBase クラスターをカスタマイズする"
 
 [azure-preview-portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

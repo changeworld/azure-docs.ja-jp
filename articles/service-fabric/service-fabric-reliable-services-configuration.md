@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/30/2016"
+   ms.date="06/30/2016"
    ms.author="sumukhs"/>
 
 # ステートフル Reliable Services の構成
@@ -162,4 +162,4 @@ SharedLogId と SharedLogPath の設定は常に一緒に使用して、サー�
  - [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
  - [Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

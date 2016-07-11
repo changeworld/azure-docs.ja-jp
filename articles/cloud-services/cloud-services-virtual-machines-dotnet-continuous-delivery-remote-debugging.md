@@ -29,10 +29,10 @@
 
 		msbuild /TARGET:PUBLISH /PROPERTY:Configuration=Debug;EnableRemoteDebugger=true;VSX64RemoteDebuggerPath="<remote tools path>";RemoteDebuggerConnectorCertificateThumbprint="<thumbprint of the certificate added to the cloud service>";RemoteDebuggerConnectorVersion="2.7" "<path to your VS solution file>"
 
-	`VSX64RemoteDebuggerPath` は、msvsmon.exe を含む Remote Tools for Visual Studio のフォルダーへのパスです。
+	`VSX64RemoteDebuggerPath` は、msvsmon.exe を含む Remote Tools for Visual Studio のフォルダーへのパスです。`RemoteDebuggerConnectorVersion` は、クラウド サービスにおける Azure SDK のバージョンです。また、Visual Studio にインストールされているバージョンとも一致している必要があります。
 
 5. 前の手順で生成されたパッケージと .cscfg ファイルを使用してターゲット クラウド サービスに発行します。
-6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx ファイル) をインポートします。
+6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx ファイル) をインポートします。必ず `CurrentUser\My` 証明書ストアにインポートしてください。そうしないと、Visual Studio でデバッガーにアタッチする際にエラーが発生します。
 
 ## 仮想マシン用にリモート デバッグを有効にする
 
@@ -91,4 +91,4 @@
 
 6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx) をインポートします。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->
