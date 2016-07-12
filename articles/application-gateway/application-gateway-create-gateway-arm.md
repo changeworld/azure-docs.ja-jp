@@ -50,7 +50,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
 - **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 - **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。
-- **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。 
+- **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。
 
 
 
@@ -197,13 +197,37 @@ Application Gateway のインスタンスのサイズを構成します。
 
 	$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 
+### 手順 9.
+アプリケーション ゲートウェイに接続されているパブリック IP リソースから、アプリケーション ゲートウェイの DNS と VIP の詳細を取得します。
+
+	Get-AzureRmPublicIpAddress -Name publicIP01 -ResourceGroupName appgw-rg  
+
+	Name                     : publicIP01
+	ResourceGroupName        : appgwtest 
+	Location                 : westus
+	Id                       : /subscriptions/<sub_id>/resourceGroups/appgw-rg/providers/Microsoft.Network/publicIPAddresses/publicIP01
+	Etag                     : W/"12302060-78d6-4a33-942b-a494d6323767"
+	ResourceGuid             : ee9gd76a-3gf6-4236-aca4-gc1f4gf14171
+	ProvisioningState        : Succeeded
+	Tags                     : 
+	PublicIpAllocationMethod : Dynamic
+	IpAddress                : 137.116.26.16
+	IdleTimeoutInMinutes     : 4
+	IpConfiguration          : {
+	                             "Id": "/subscriptions/<sub_id>/resourceGroups/appgw-rg/providers/Microsoft.Network/applicationGateways/appgwtest/frontendIPConfigurations/fipconfig01"
+	                           }
+	DnsSettings              : {
+	                             "Fqdn": "ee7aca47-4344-4810-a999-2c631b73e3cd.cloudapp.net"
+	                           } 
+
+
 
 ## Application Gateway の削除
 
 Application Gateway を削除するには、次の手順を実行します。
 
-1. **Stop-AzureRmApplicationGateway** コマンドレットを使用してゲートウェイを停止します。
-2. **Remove-AzureRmApplicationGateway** コマンドレットを使用してゲートウェイを削除します。
+1. **Stop-AzureRmApplicationGateway** コマンドレットを使用して、ゲートウェイを停止します。
+2. **Remove-AzureRmApplicationGateway** コマンドレットを使用して、ゲートウェイを削除します。
 3. **Get-AzureRmApplicationGateway** コマンドレットを使用して、ゲートウェイが削除されたことを確認します。
 
 ### 手順 1.
@@ -214,12 +238,12 @@ Application Gateway オブジェクトを取得し、変数 "$getgw" に関連�
 
 ### 手順 2.
 
-**Stop-AzureRmApplicationGateway** を使用して、Application Gateway を停止します。
+**Stop-AzureRmApplicationGateway** を使用して、アプリケーション ゲートウェイを停止します。
 
 	Stop-AzureRmApplicationGateway -ApplicationGateway $getgw  
 
 
-Application Gateway が停止状態になったら、**Remove-AzureRmApplicationGateway** コマンドレットを使用してサービスを削除します。
+アプリケーション ゲートウェイが停止状態になったら、**Remove-AzureRmApplicationGateway** コマンドレットを使用してサービスを削除します。
 
 
 	Remove-AzureRmApplicationGateway -Name $appgwtest -ResourceGroupName appgw-rg -Force
@@ -239,11 +263,11 @@ Application Gateway が停止状態になったら、**Remove-AzureRmApplication
 
 SSL オフロードを構成する場合は、「[クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する](application-gateway-ssl.md)」を参照してください。
 
-内部ロード バランサーと共に使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
+内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
 
 負荷分散のオプション全般の詳細については、次を参照してください。
 
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0706_2016-->

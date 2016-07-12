@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/31/2016"
+	ms.date="05/27/2016"
 	ms.author="tdykstra"/>
 
 # CORS を使用して JavaScript から API アプリを使用する
@@ -22,7 +22,7 @@ App Service では、API アプリでホストされている API を JavaScript
 
 この記事には 2 つのセクションが含まれます。
 
-* [CORS の構成方法](#corsconfig)に関するセクションでは、API アプリ、Web アプリ、またはモバイル アプリ用に CORS を構成する方法について概要を説明します。.NET、Node.js、Java など、App Service でサポートされるすべてのフレームワークを対象としています。 
+* [CORS の構成方法](#corsconfig)に関するセクションでは、API アプリ、Web アプリ、またはモバイル アプリ用に CORS を構成する方法について概要を説明します。.NET、Node.js、Java など、App Service でサポートされるすべてのフレームワークを対象としています。
 
 * 「[.NET 入門チュートリアルの続行](#tutorialstart)」セクション以降では、[API Apps の入門チュートリアル シリーズの第 1 回](app-service-api-dotnet-get-started.md)で作成したアプリを基に、CORS の機能のデモンストレーションを行います。
 
@@ -210,7 +210,7 @@ API アプリの Node.js または Java の入門シリーズを読んでいる�
 
 ### CORS を有効にしてアプリケーションをテストする
 
-* ブラウザーを開き、Web アプリの HTTPS URL に移動します。 
+* ブラウザーを開き、Web アプリの HTTPS URL に移動します。
 
 	今度は、アプリケーションで To Do 項目を表示、追加、編集、削除できます。
 
@@ -285,4 +285,4 @@ API アプリで Azure API Management を使用する場合は、API アプリ�
 
 この記事では、クライアントの JavaScript コードが、別のドメイン内の API を呼び出すための App Service の CORS サポートを有効にする方法を説明しました。API アプリの詳細については、[App Service での認証についての概要](../app-service/app-service-authentication-overview.md)を確認してから、[API アプリのユーザー認証](app-service-api-dotnet-user-principal-auth.md)のチュートリアルに進んでください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

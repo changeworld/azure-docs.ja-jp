@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/06/2016"
+   ms.date="06/29/2016"virtual
    ms.author="yurid"/>
 
 #Azure セキュリティ センターでのセキュリティ ヘルスの監視
@@ -97,8 +97,21 @@
 
 このブレードには VM のセキュリティに関する詳細情報が表示されます。このブレードの下部には、推奨されるアクションと、各問題の重大度が表示されます。
 
-###仮想ネットワークの監視
-**[リソースのセキュリティ ヘルス]** タイルで **[ネットワーク]** をクリックすると、**[ネットワーク]** ブレードが開き、次のような詳細が表示されます。
+#### [Cloud services (Preview) (クラウド サービス (プレビュー))] セクション
+仮想マシンのセキュリティ ヘルスのタイルでは、クラウド サービスの正常性状態が表示されます。OS のバージョンが最新でないときは、次の図のとおり、推奨事項の一覧が作成されます。
+
+![Cloud Services](./media/security-center-monitoring/security-center-monitoring-fig8-new2.png)
+
+推奨事項内の手順に従って、OS のバージョンを更新する必要があります。たとえば、いずれかの Web ロールの赤いアラートをクリックした場合 (IIS に自動的にデプロイされた Web アプリで Windows Server が実行されます)、または worker ロールをクリックした場合 (IIS に自動的にデプロイされた Web アプリで Windows Server が実行されます)、新しいブレードが開き、次のような推奨事項に関する詳細が表示されます。
+
+![Cloud Service Details](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
+
+この推奨事項に関するより規範的な説明については、**[説明]** 列の **[Update OS version (OS のバージョンの更新)]** をクリックしてください。**[Update OS version (Preview) (OS のバージョンの更新 (プレビュー))]** ブレードが開き、詳細が表示されます。
+
+![Cloud Services Recommendations](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)
+
+### 仮想ネットワークの監視
+**[Resources security health (リソースのセキュリティ ヘルス)]** タイルで **[ネットワーク]** をクリックすると、**[ネットワーク]** ブレードが開き、次のような詳細が表示されます。
 
 ![ネットワーク](./media/security-center-monitoring/security-center-monitoring-fig9-new3.png)
 
@@ -129,7 +142,7 @@
 ![Internet facing endpoint](./media/security-center-monitoring/security-center-monitoring-fig121-new5.png)
 
 この表には、VM を表すエンドポイント名、インターネット接続 IP アドレス、NSG と NGFW の現在の重要度ステータスが示されています。この表は、次に示す重要度によって並べ替えられています。
-- 赤 (最上位): 優先度が高く、直ちに対処する必要があります 
+- 赤 (最上位): 優先度が高く、直ちに対処する必要があります
 - オレンジ: 優先度は中位で、できるだけ早く対処する必要があります
 - 緑 (最下位): 正常な状態です
 
@@ -140,18 +153,18 @@
 ![Networking topology](./media/security-center-monitoring/security-center-monitoring-fig121-new4.png)
 
 このテーブルでは、次に示す重要度によって VM とサブネットが並べ替えられています。
-- 赤 (最上位): 優先度が高く、直ちに対処する必要があります 
+- 赤 (最上位): 優先度が高く、直ちに対処する必要があります
 - オレンジ: 優先度は中位で、できるだけ早く対処する必要があります
 - 緑 (最下位): 正常な状態です
 
-このトポロジ表示では、最初のレベルに[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)、[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-site-to-site-create.md)、[仮想ネットワーク (クラシック)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) が含まれます。2 番目のレベルにはサブネット、3 番目のレベルにはそれらのサブネットに属している VM が含まれます。右側の列には、これらのリソースのネットワーク セキュリティ グループ (NSG) の現在の状態が表示されます。次の例は、VM の VM-CL-W1 を選択した場合の結果です。
+このトポロジ ビューでは、最初のレベルに[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)、[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-site-to-site-create.md)、[仮想ネットワーク (クラシック)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) が含まれます。2 番目のレベルにはサブネット、3 番目のレベルにはそれらのサブネットに属している VM が含まれます。右側の列には、これらのリソースのネットワーク セキュリティ グループ (NSG) の現在の状態が表示されます。次の例は、VM の VM-CL-W1 を選択した場合の結果です。
 
 ![ネットワーク ツリー](./media/security-center-monitoring/security-center-monitoring-fig13-new2.png)
 
 このブレードの下部には、上記の推奨事項に似た、この VM に対する推奨事項が表示されます。推奨事項をクリックして詳細を確認するか、必要なセキュリティ制御/構成を適用することができます。
 
 ###SQL リソースの監視
-**[Resources security health (リソースのセキュリティ正常性)]** タイルの **[SQL]** をクリックすると、[SQL] ブレードが開き、監査や透過的なデータ暗号化が有効でないなどの問題に関する推奨事項が示されます。また、データベースの全般的なヘルス状態に関する推奨事項も示されます。
+**[Resources security health (リソースのセキュリティ ヘルス)]** タイルの **[SQL]** をクリックすると、[SQL] ブレードが開き、監査や透過的なデータ暗号化が有効でないなどの問題に関する推奨事項が示されます。また、データベースの全般的なヘルス状態に関する推奨事項も示されます。
 
 ![SQL リソース ヘルス](./media/security-center-monitoring/security-center-monitoring-fig15-new.png)
 
@@ -191,8 +204,8 @@ Azure ワークロードに、[Resource Manager の VM](../resource-manager-depl
 
 - 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 – Azure セキュリティ センターでのセキュリティ設定を構成する方法について
 - 「[Azure セキュリティ センターでのセキュリティのアラートの管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および対応について
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 - パートナー ソリューションの正常性状態を監視する方法についての説明
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/31/2016"
+   ms.date="07/01/2016"
    ms.author="barbkess;mausher;jrj;sonyama"/>
 
 
@@ -48,7 +48,7 @@
 ### データ管理
 近い将来にディスク スペースが不足する可能性があることを認識している場合は特に、データ管理が重要になります。通常、データ ウェアハウスではデータを意味のある範囲に分割し、それらをテーブル内のパーティションとして保存します。SQL Server ベースのすべての製品では、テーブルの内外にパーティションを移動できます。このパーティション切り替えにより、古いデータをコストがあまりかからないストレージに移動し、最新のデータをオンライン ストレージで使用できるように設定できます。
 
-- columnstore インデックスは、パーティション分割されたテーブルをサポートします。columnstore インデックスの場合、パーティション分割されたテーブルはデータ管理およびアーカイブに使用されます。行ごとに保存されたテーブルの場合、クエリのパフォーマンスに関してパーティションはより重大な役目を果たします。  
+- columnstore インデックスは、パーティション分割されたテーブルをサポートします。columnstore インデックスの場合、パーティション分割されたテーブルはデータ管理およびアーカイブに使用されます。行ごとに保存されたテーブルの場合、クエリのパフォーマンスに関してパーティションはより重大な役目を果たします。
 
 - PolyBase はデータ管理に関して重要な役割を果たします。PolyBase を使用して、古いデータを Hadoop または Azure BLOB ストレージにアーカイブすることもできます。データはオンラインのままであるため、これによって多数のオプションが提供されます。Hadoop からデータを取得する方が時間がかかる可能性はありますが、取得時間がかかってもストレージ コストが安い方が重要である場合もあります。
 
@@ -59,18 +59,16 @@
 - 分析に関しては、データ ウェアハウスに分析キューブを作成し、データ ウェアハウスに対して分析を実行するか、データを事前処理して、将来の分析用にそれを分析サーバーにエクスポートすることができます。
 
 ## 次のステップ
-データ ウェアハウスの作成を開始するには、[開発の概要][]に関するページを参照してください。
-
-## ブック
-[Big Data Warehousing (ビッグ データ ウェアハウジング)](https://www.manning.com/books/big-data-warehousing) (著者: Karthik Ramachandran、Istvan Szededi、Richard L. Saltzer (Manning Publications))[第 1 章](https://manning-content.s3.amazonaws.com/download/e/3d94acd-9512-46c8-b0b0-8c9c3c6a303b/BDW_MEAP_ch1.pdf)
+SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][]し、[サンプル データを読み込む][]方法について学習してください。
 
 <!--Image references-->
 
 <!--Article references-->
-[開発の概要]: sql-data-warehouse-overview-develop.md
+[サンプル データを読み込む]: ./sql-data-warehouse-load-sample-databases.md
+[SQL Data Warehouse を作成]: ./sql-data-warehouse-get-started-provision.md
 
 <!--MSDN references-->
 
 <!--Other web references-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

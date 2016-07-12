@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/04/2016"
+   ms.date="07/01/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Transact-SQL (TSQL) を使用して SQL Data Warehouse データベースを作成する
@@ -52,15 +52,13 @@ CREATE DATABASE MySqlDwDb (EDITION='datawarehouse', SERVICE_OBJECTIVE = 'DW400',
 sqlcmd -S <Server Name>.database.windows.net -I -U <User> -P <Password> -Q "CREATE DATABASE MySqlDwDb (EDITION='datawarehouse', SERVICE_OBJECTIVE = 'DW400', MAXSIZE= 10240 GB)"
 ```
 
-**MAXSIZE** と **SERVICE\_OBJECTIVE** パラメーターは、ディスクでデータベースが使用できる最大領域と、Data Warehouse インスタンスに割り当てられるコンピューティング リソースを指定します。サービス目標は、本質的には、DWU のサイズに比例して拡張される CPU とメモリの割り当てです。
-
-MAXSIZE には、250 GB から 240 TB までの値を指定できます。サービス目標には、DW100 から DW2000 までの値を指定できます。MAXSIZE および SERVICE\_OBJECTIVE のすべての有効な値の完全な一覧については、[CREATE DATABASE][] に関する MSDN ドキュメントを参照してください。MAXSIZE と SERVICE\_OBJECTIVE のどちらも、[ALTER DATABASE][] T-SQL コマンドで変更することもできます。SERVICE\_OBJECTIVE を変更すると、サービスが再起動され、処理中のすべてのクエリが取り消されるため、注意する必要があります。MAXSIZE の変更は、単なるメタデータ操作であるため、サービスが再起動されることはありません。
+`MAXSIZE` には、250 GB から 240 TB までの値を指定できます。`SERVICE_OBJECTIVE` には、DW100 から DW2000 までの [DWU][] を指定できます。すべての有効な値の一覧については、[CREATE DATABASE][] の MSDN ドキュメントを参照してください。MAXSIZE と SERVICE\_OBJECTIVE のどちらも、[ALTER DATABASE][] T-SQL コマンドで変更することもできます。SERVICE\_OBJECTIVE を変更すると、サービスが再起動され、処理中のすべてのクエリが取り消されるため、注意する必要があります。MAXSIZE の変更は、単なるメタデータ操作であるため、サービスが再起動されることはありません。
 
 ## 次のステップ
 SQL Data Warehouse のプロビジョニングが完了すると、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を確認したりできます。
 
 <!--Article references-->
-
+[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
 [how to create a SQL Data Warehouse from the Azure portal]: ./sql-data-warehouse-get-started-provision.md
 [Visual Studio で SQL Data Warehouse に接続する]: ./sql-data-warehouse-get-started-connect.md
 [移行]: ./sql-data-warehouse-overview-migrate.md
@@ -82,4 +80,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [Azure 無料試用版]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure クレジット]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
-	ms.date="05/18/2016" 
+	ms.date="06/30/2016" 
 	ms.author="sdanie"/>
 
 # Redis Cache で Web アプリを作成する方法
@@ -82,7 +82,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 
 ### モデルの追加
 
-1. **ソリューション エクスプローラー**で **Models** フォルダーを右クリックし、**[追加]**、**[クラス]** の順に選択します。 
+1. **ソリューション エクスプローラー**で **Models** フォルダーを右クリックし、**[追加]**、**[クラス]** の順に選択します。
 
     ![Add model][cache-model-add-class]
 
@@ -190,7 +190,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 
 ### コントローラーの追加
 
-1. **F6** キーを押して、プロジェクトをビルドします。 
+1. **F6** キーを押して、プロジェクトをビルドします。
 2. **ソリューション エクスプローラー**で **Controllers** フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順に選択します。
 
     ![コントローラーの追加][cache-add-controller]
@@ -252,7 +252,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 
     ![コードの変更][cache-layout-cshtml-code]
 
-4. **Ctrl + F5** キーを押してアプリケーションをビルドし、実行します。このバージョンのアプリケーションは、データベースから直接結果を読み取ります。**[Entity Framework を使用した、ビューがある MVC 5 コントローラー]** スキャフォールディングによってアプリケーションに自動的に追加された **[Create New]**、**[Edit]**、**[Details]**、**[Delete]** の各操作に注目してください。次のセクションでは、Redis Cache を追加してデータへのアクセスを効率化し、アプリケーションに機能を追加します。
+4. **Ctrl + F5** キーを押してアプリケーションをビルドし、実行します。このバージョンのアプリケーションは、データベースから直接結果を読み取ります。**[Entity Framework を使用した、ビューがある MVC 5 コントローラー]** スキャフォールディングによってアプリケーションに自動的に追加された **[Create New]**、**[Edit]**、**[Details]**、**[Delete]** の各アクションに注目してください。次のセクションでは、Redis Cache を追加してデータへのアクセスを効率化し、アプリケーションに機能を追加します。
 
 ![Starter application][cache-starter-application]
 
@@ -268,7 +268,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 
 ### StackExchange.Redis を使用するようにアプリケーションを構成する
 
-1. Visual Studio で StackExchange.Redis NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
+1. Visual Studio で StackExchange.Redis NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
     ![Manage NuGet packages][redis-cache-manage-nuget-menu]
 
@@ -304,7 +304,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 	        }
 	    }
   
-1. コンピューター上に `WebAppPlusCacheAppSecrets.config` という名前のファイルを作成し、サンプル アプリケーションのソース コードでチェックインされない場所に配置します (どこかにチェックインする場合)。この例では、`AppSettingsSecrets.config` ファイルを `C:\AppSecrets\WebAppPlusCacheAppSecrets.config` に配置しています。
+1. コンピューター上に `WebAppPlusCacheAppSecrets.config` という名前のファイルを作成し、サンプル アプリケーションのソース コードでチェックインされない場所に配置します (どこかにチェックインすることを決めた場合)。この例では、`AppSettingsSecrets.config` ファイルを `C:\AppSecrets\WebAppPlusCacheAppSecrets.config` に配置しています。
 
     `WebAppPlusCacheAppSecrets.config` ファイルを編集し、次の内容を追加します。この情報は、アプリケーションをローカルで実行する場合に、Azure Redis Cache インスタンスへの接続に使用されます。このチュートリアルの後半で、Azure Redis Cache インスタンスをプロビジョニングし、キャッシュの名前とパスワードを更新します。Azure にデプロイした場合、キャッシュ接続情報は、このファイルからではなく Web アプリのアプリケーション設定から取得されます。したがってサンプル アプリケーションをローカルで実行することを予定していない場合は、このファイルの作成およびこのファイルを参照する後続の手順を省略してかまいません。`WebAppPlusCacheAppSecrets.config` は、アプリケーションと一緒に Azure にデプロイするものではないため、アプリケーションをローカルで実行する場合以外は必要ありません。
 
@@ -322,7 +322,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 	-	変更前: `<appSettings>`
 	-	変更後: ` <appSettings file="C:\AppSecrets\WebAppPlusCacheAppSecrets.config">`
 
-    `<appSettings>` 要素内のマークアップは、ASP.NET ランタイムによって外部ファイルの内容と結合されます。指定したファイルが見つからない場合、このファイル属性は無視されます。このアプリケーションのソース コードにシークレット (キャッシュへの接続文字列) は含まれていません。Web アプリを Azure にデプロイするときに、`WebAppPlusCacheAppSecrests.config` ファイルはデプロイされません (それが目的です)。Azure には、いくつかの方法でこれらのシークレットを指定できます。このチュートリアルでは、以降の手順で [Azure リソースをプロビジョニング](#provision-the-azure-resources)するときに自動的にシークレットが構成されます。Azure におけるシークレットの扱いの詳細については、「[Best practices for deploying passwords and other sensitive data to ASP.NET and Azure App Service (ASP.NET および Azure App Service にパスワードや機密データをデプロイするためのベスト プラクティス)](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)」を参照してください。
+    `<appSettings>` 要素内のマークアップは、ASP.NET ランタイムによって外部ファイルの内容と結合されます。指定したファイルが見つからない場合、このファイル属性は無視されます。このアプリケーションのソース コードにシークレット (キャッシュへの接続文字列) は含まれていません。Web アプリを Azure にデプロイするときに、`WebAppPlusCacheAppSecrests.config` ファイルはデプロイされません (それが目的です)。Azure には、これらのシークレットを指定する方法がいくつかあります。このチュートリアルでは、以降の手順で [Azure リソースをプロビジョニング](#provision-the-azure-resources)するときに自動的にシークレットが構成されます。Azure におけるシークレットの扱いの詳細については、「[Best practices for deploying passwords and other sensitive data to ASP.NET and Azure App Service (ASP.NET および Azure App Service にパスワードや機密データをデプロイするためのベスト プラクティス)](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)」を参照してください。
 
 
 ### キャッシュまたはデータベースから結果を返すように TeamsController クラスを更新する
@@ -396,7 +396,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 
 3. 以下の 3 つのメソッドを `TeamsController` クラスに追加して、前のコード スニペットで追加した switch ステートメントにある 3 種類のアクション (`playGames`、`clearCache`、`rebuildDB`) を実装します。
 
-    `PlayGames` メソッドは、あるシーズンのゲームをシミュレートし、結果をデータベースに保存して、古くなったデータをキャッシュから消去することでチームの統計情報を更新します。
+    `PlayGames` メソッドは、あるシーズンのゲームをシミュレートすることでチームの統計情報を更新し、結果をデータベースに保存して、古くなったデータをキャッシュから消去します。
 
 
 	    void PlayGames()
@@ -443,7 +443,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 
 4. キャッシュやデータベースからチームの統計情報を取得する各種の方法を実装するために、以下の 4 つのメソッドを `TeamsController` クラスに追加します。いずれのメソッドも戻り値は `List<Team>` で、それがビューに表示されます。
 
-    `GetFromDB` は、データベースからチームの統計情報を読み取るメソッドです。
+    `GetFromDB` メソッドは、データベースからチームの統計情報を読み取ります。
 
 	    List<Team> GetFromDB()
 	    {
@@ -456,7 +456,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 	    }
 
 
-    `GetFromList` は、シリアル化された `List<Team>` としてチームの統計情報をキャッシュから読み取るメソッドです。キャッシュ ミスが発生した場合は、データベースからチームの統計情報を読み取り、次回使用できるようキャッシュに格納します。このサンプルでキャッシュとの間でやり取りされる .NET オブジェクトのシリアル化には、JSON.NET シリアル化を使用しています。詳細については、[Azure Redis Cache における .NET オブジェクトの使用方法](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)に関するセクションを参照してください。
+    `GetFromList` メソッドは、シリアル化された `List<Team>` としてチームの統計情報をキャッシュから読み取ります。キャッシュ ミスが発生した場合は、データベースからチームの統計情報を読み取り、次回使用できるようキャッシュに格納します。このサンプルでキャッシュとの間でやり取りされる .NET オブジェクトのシリアル化には、JSON.NET シリアル化を使用しています。詳細については、[Azure Redis Cache における .NET オブジェクトの使用方法](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)に関するセクションを参照してください。
 
         List<Team> GetFromList()
         {
@@ -483,7 +483,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
         }
 
 
-    `GetFromSortedSet` は、キャッシュされたソート済みセットからチームの統計情報を読み取るメソッドです。キャッシュ ミスが発生した場合は、データベースからチームの統計情報を読み取り、ソート済みセットとしてキャッシュに格納します。
+    `GetFromSortedSet` メソッドは、キャッシュされたソート済みセットからチームの統計情報を読み取ります。キャッシュ ミスが発生した場合は、データベースからチームの統計情報を読み取り、ソート済みセットとしてキャッシュに格納します。
 
 
 	    List<Team> GetFromSortedSet()
@@ -520,7 +520,7 @@ Visual Studio 2013 を持っている場合は、[最新の Azure SDK for Visual
 	    }
 
 
-    `GetFromSortedSetTop5` は、キャッシュされたソート済みセットから上位 5 チームを読み取るメソッドです。最初に、`teamsSortedSet` キーがキャッシュに存在するかどうかをチェックします。このキーが存在しない場合は、`GetFromSortedSet` メソッドが呼び出され、チームの統計情報を読み取り、キャッシュに格納します。次に、キャッシュされたソート済みセットから上位 5 チームを照会して返します。
+    `GetFromSortedSetTop5` メソッドは、キャッシュされたソート済みセットから上位 5 チームを読み取ります。最初に、`teamsSortedSet` キーがキャッシュに存在するかどうかをチェックします。このキーが存在しない場合は、`GetFromSortedSet` メソッドが呼び出され、チームの統計情報を読み取り、キャッシュに格納します。次に、キャッシュされたソート済みセットから上位 5 チームを照会して返します。
 
 
         List<Team> GetFromSortedSetTop5()
@@ -680,15 +680,15 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 -	App Service Web Apps
 -	SQL Database
 
-新しいリソース グループまたは既存のリソース グループにこれらのサービスをデプロイするには、次の **[Deploy to Azure]** (Azure へのデプロイ) ボタンをクリックします。
+新しいリソース グループまたは既存のリソース グループにこれらのサービスをデプロイするには、次の **[Deploy to Azure (Azure へのデプロイ)]** ボタンをクリックします。
 
 [![Azure へのデプロイ][deploybutton]](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-redis-cache-sql-database%2Fazuredeploy.json)
 
-この **[Deploy to Azure]** (Azure へのデプロイ) ボタンは、[Web Apps と Redis Cache と SQL Database を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) [Azure クイック スタート](https://github.com/Azure/azure-quickstart-templates) テンプレートを使用して、これらのサービスをプロビジョニングし、SQL Database の接続文字列を設定して、Azure Redis Cache 接続文字列に必要なアプリケーション設定を行います。
+この **[Deploy to Azure (Azure へのデプロイ)]** ボタンは、[Web アプリと Redis Cache と SQL Database を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) [Azure クイック スタート](https://github.com/Azure/azure-quickstart-templates) テンプレートを使用して、これらのサービスをプロビジョニングし、SQL Database の接続文字列を設定して、Azure Redis Cache 接続文字列のアプリケーション設定を行います。
 
 >[AZURE.NOTE] Azure アカウントがない場合は、数分で[無料の Azure アカウントを作成](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)できます。
 
-**[Deploy to Azure]** (Azure へのデプロイ) ボタンをクリックすると、Azure ポータルが開き、テンプレートによって記述されたリソースの作成プロセスが開始されます。
+**[Deploy to Azure (Azure へのデプロイ)]** ボタンをクリックすると、Azure ポータルが開き、テンプレートによって記述されたリソースの作成プロセスが開始されます。
 
 ![Azure へのデプロイ][cache-deploy-to-azure-step-1]
 
@@ -713,7 +713,7 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 
 プロビジョニングが完了したら、Visual Studio から Azure にアプリケーションを発行できます。
 
->[AZURE.NOTE] プロビジョニング処理中になんらかのエラーが発生した場合は、**[Microsoft.Template]** ブレードに表示されます。一般に、サブスクリプションあたりの Free App Service ホスティング プランが多すぎたり SQL Server が多すぎたりすることが原因でエラーが発生します。エラーを解決し、**[Microsoft.Template]** ブレードの **[再デプロイ]** またはこのチュートリアルの **[Deploy to Azure]** (Azure へのデプロイ) ボタンをクリックして処理を再開してください。
+>[AZURE.NOTE] プロビジョニング処理中になんらかのエラーが発生した場合は、**[Microsoft.Template]** ブレードに表示されます。一般に、サブスクリプションあたりの Free App Service ホスティング プランが多すぎたり SQL Server が多すぎたりすることが原因でエラーが発生します。エラーを解決し、**[Microsoft.Template]** ブレードの **[再デプロイ]** またはこのチュートリアルの **[Deploy to Azure (Azure へのデプロイ)]** ボタンをクリックして処理を再開してください。
 
 ## Azure へのアプリケーションの発行
 
@@ -727,7 +727,7 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 
     ![Publish][cache-publish-to-app-service]
 
-3. Azure リソースを作成するときに使用したサブスクリプションを選択し、そのリソースを含んでいるリソース グループを展開して、必要な Web アプリを選択し、**[OK]** をクリックします。**[Deploy to Azure]** (Azure へのデプロイ) ボタンを使用した場合、Web アプリの名前は **webSite** から始まります。
+3. Azure リソースを作成するときに使用したサブスクリプションを選択し、そのリソースを含んでいるリソース グループを展開して、必要な Web アプリを選択し、**[OK]** をクリックします。**[Deploy to Azure (Azure へのデプロイ)]** ボタンを使用した場合、Web アプリの名前は **webSite** から始まります。
 
     ![Select Web App][cache-select-web-app]
 
@@ -758,7 +758,7 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 
 ## アプリケーションを使い終わったときにリソースを削除する
 
-チュートリアルのサンプル アプリケーションを使い終わったら、コストとリソースを節約するために Azure リソースを削除しましょう。「[Azure リソースのプロビジョニング](#provision-the-azure-resources)」セクションの **[Deploy to Azure]** (Azure へのデプロイ) ボタンを使用し、すべてのリソースが同じリソース グループに属している場合は、リソース グループを削除することにより、それらを 1 回の操作でまとめて削除できます。
+チュートリアルのサンプル アプリケーションを使い終わったら、コストとリソースを節約するために Azure リソースを削除しましょう。「[Azure リソースのプロビジョニング](#provision-the-azure-resources)」セクションの **[Deploy to Azure (Azure へのデプロイ)]** ボタンを使用し、すべてのリソースが同じリソース グループに属している場合は、リソース グループを削除することにより、それらを 1 回の操作でまとめて削除できます。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインし、**[リソース グループ]** をクリックします。
 2. リソース グループの名前を **[フィルター項目]** ボックスに入力します。
@@ -846,4 +846,4 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->
