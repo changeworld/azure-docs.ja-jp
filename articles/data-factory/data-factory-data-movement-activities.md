@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="データ移動アクティビティ" 
-	description="Data Factory パイプラインでデータを移動するために使用できる Data Factory のエンティティについて説明します。" 
+	pageTitle="データ移動アクティビティ | Microsoft Azure" 
+	description="Data Factory パイプラインでのデータの移動 (クラウド ストア間、オンプレミスとクラウドの間でのデータの移行) について説明します。コピー アクティビティを使用します。" 
+	keywords="データの移動, データの移行, データのコピー, データ転送"
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -16,16 +17,16 @@
 	ms.date="05/31/2016" 
 	ms.author="spelluru"/>
 
-# データ移動アクティビティ
-[コピー アクティビティ](#copyactivity)により、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、[グローバルに利用可能なサービス](#global)によって動作します。このサービスは、データ移動の実行に最も適したリージョンを自動的に選択します。シンク データ ストアに最も近いリージョンが使用されます。
- 
-このデータ移動がさまざまなシナリオでどのように行われるかを説明します。
+# データ移動およびコピー アクティビティ: クラウドへのデータの移行およびクラウド ストア間でのデータの移行
+ソースからシンク (コピー先) へのデータの移動は、Azure Data Factory の[コピー アクティビティ](#copyactivity)によって実行されます。コピー アクティビティは、安全で信頼性が高く、スケーラブルな、[グローバルに利用可能なサービス](#global)によって動作します。このサービスは、データ移動の実行に最も適したリージョンを自動的に選択します。通常は、シンク データ ストアに最も近いリージョンが使用されます。
+
+ここでは、2 つのクラウド データ ストア間、オンプレミスのデータ ストアとクラウド データ ストア間、Azure Iaas VM 上のデータ ストア間でデータの移行がどのように行われるかについて説明します。
 
 ## 2 つのクラウド データ ストア間でのデータのコピー
 ソース データ ストアとシンク (コピー先) データ ストアの両方がクラウドにある場合、コピー アクティビティは、次の段階を経てデータをソースからシンクにコピー/移動します。コピー アクティビティを実行するサービスは、次を行います。
 
 1. ソース データ ストアからデータを読み取る
-2.	入力データセット、出力データセット、コピー アクティビティの構成に基づいて、シリアル化/逆シリアル化、圧縮/圧縮解除、列マッピング、型変換を実行する 
+2.	入力データセット、出力データセット、コピー アクティビティの構成に基づいて、シリアル化/逆シリアル化、圧縮/圧縮解除、列マッピング、型変換を実行する
 3.	コピー先データ ストアにデータを書き込む
 
 ![cloud-to-cloud copy](.\media\data-factory-data-movement-activities\cloud-to-cloud.png)
@@ -44,18 +45,18 @@ Data Management Gateway を使用すると、Azure IaaS VM (サービスとし�
 
 | ソース| シンク |
 |:------- | :---- |
-| <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li><li>[オンプレミス/Azure IaaS の Oracle Database](data-factory-onprem-oracle-connector.md)</li><li>[オンプレミス/Azure IaaS の MySQL Database](data-factory-onprem-mysql-connector.md)</li><li>[オンプレミス/Azure IaaS の DB2 Database](data-factory-onprem-db2-connector.md)</li><li>[オンプレミス/Azure IaaS の Teradata Database](data-factory-onprem-teradata-connector.md)</li><li>[オンプレミス/Azure IaaS の Sybase Database](data-factory-onprem-sybase-connector.md)</li><li>[オンプレミス/Azure IaaS の PostgreSQL Database](data-factory-onprem-postgresql-connector.md)</li><li>[オンプレミス/Azure IaaS の ODBC データ ソース](data-factory-odbc-connector.md)</li><li>[オンプレミス/Azure IaaS の Hadoop 分散ファイル システム (HDFS)](data-factory-hdfs-connector.md)</li><li>[OData ソース](data-factory-odata-connector.md)</li><li>[Web テーブル](data-factory-web-table-connector.md)</li><li>[オンプレミス/Azure IaaS の GE Historian](data-factory-odbc-connector.md#ge-historian-store)</li></ul> | <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure テーブル](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li><li>[オンプレミス/Azure IaaS の Oracle データベース](data-factory-onprem-oracle-connector.md)</li></ul> |
+| <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure Table](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li><li>[オンプレミス/Azure IaaS の Oracle Database](data-factory-onprem-oracle-connector.md)</li><li>[オンプレミス/Azure IaaS の MySQL Database](data-factory-onprem-mysql-connector.md)</li><li>[オンプレミス/Azure IaaS の DB2 Database](data-factory-onprem-db2-connector.md)</li><li>[オンプレミス/Azure IaaS の Teradata Database](data-factory-onprem-teradata-connector.md)</li><li>[オンプレミス/Azure IaaS の Sybase Database](data-factory-onprem-sybase-connector.md)</li><li>[オンプレミス/Azure IaaS の PostgreSQL Database](data-factory-onprem-postgresql-connector.md)</li><li>[オンプレミス/Azure IaaS の ODBC データ ソース](data-factory-odbc-connector.md)</li><li>[オンプレミス/Azure IaaS の Hadoop 分散ファイル システム (HDFS)](data-factory-hdfs-connector.md)</li><li>[OData ソース](data-factory-odata-connector.md)</li><li>[Web テーブル (HTML のテーブル)](data-factory-web-table-connector.md)</li><li>[オンプレミス/Azure IaaS の GE Historian](data-factory-odbc-connector.md#ge-historian-store)</li></ul> | <ul><li>[Azure BLOB](data-factory-azure-blob-connector.md)</li><li>[Azure Table](data-factory-azure-table-connector.md)</li><li>[Azure SQL Database](data-factory-azure-sql-connector.md)</li><li>[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)</li><li>[Azure DocumentDB (下記の注を参照)](data-factory-azure-documentdb-connector.md)</li><li>[Azure Data Lake Store](data-factory-azure-datalake-connector.md)</li><li>[オンプレミス/Azure IaaS の SQL Server](data-factory-sqlserver-connector.md)</li><li>[オンプレミス/Azure IaaS のファイル システム](data-factory-onprem-file-system-connector.md)</li><li>[オンプレミス/Azure IaaS の Oracle Database](data-factory-onprem-oracle-connector.md)</li></ul> |
 
 
-> [AZURE.NOTE] Azure DocumentDB と他の Azure サービス (Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、Azure DocumentDB、Azure Data Lake Store など) との間でのみ移動できます。Azure Document DB の完全なマトリックスも間もなくサポートされます。
+> [AZURE.NOTE] Azure DocumentDB、オンプレミス データ ストア、Azure IaaS データ ストアの間でのデータのコピーは、現時点ではサポートされていません。Azure DocumentDB の完全なマトリックスは、間もなく有効になります。
 
 **コピー アクティビティ**でサポートされていないデータ ストアとの間でデータを移動する必要がある場合は、データのコピーと移動に独自のロジックを使用した、Data Factory の**カスタム アクティビティ**を使用できます。カスタム アクティビティの作成と使用の詳細については、「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md)」を参照してください。
 
 ## チュートリアル
-コピー アクティビティの使用のクイック チュートリアルについては、「[チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する](data-factory-get-started.md)」を参照してください。このチュートリアルでは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。
+コピー アクティビティの使用のクイック チュートリアルについては、「[チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。このチュートリアルでは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。
 
 ## <a name="copyactivity"></a>コピー アクティビティ
-コピー アクティビティは、1 つの入力データセット (**ソース**) から 1 つの出力データセット (**シンク**) にデータをコピーします。データのコピーは、アクティビティで指定されているスケジュールに従ってバッチ方式で行われます。アクティビティを定義する一般的な方法については、「[パイプラインとアクティビティの概要](data-factory-create-pipelines.md)」を参照してください。
+コピー アクティビティは、1 つの入力データセット (**ソース**) から 1 つの出力データセット (**シンク**) にデータをコピーします。データのコピーは、アクティビティで指定されているスケジュールに従ってバッチ方式で行われます。アクティビティを定義する一般的な方法については、[パイプラインとアクティビティの概要](data-factory-create-pipelines.md)に関する記事を参照してください。
 
 コピー アクティビティには次の機能が備わっています。
 
@@ -76,8 +77,8 @@ Azure Data Factory 自体は、米国西部、米国東部、および北ヨー�
 
 
 
-### <a name="moveonpremtocloud"></a>オンプレミスの場所とクラウドの間での安全なデータ移動
-最新のデータ統合の課題の 1 つは、オンプレミスとクラウドの間でシームレスにデータを移動することです。Data Management Gateway はオンプレミスにインストールできるエージェントで、ハイブリッド データ パイプラインを可能にします。
+### <a name="moveonpremtocloud"></a>オンプレミスの場所とクラウドの間での安全なデータ転送
+最新のデータ統合の課題の 1 つは、オンプレミスとクラウドの間でシームレスにデータを転送することです。Data Management Gateway はオンプレミスにインストールできるエージェントで、ハイブリッド データ パイプラインを可能にします。
 
 データ ゲートウェイには次の機能が備わっています。
 
@@ -128,8 +129,8 @@ CopyActivity2: 入力: Dataset3、Dataset2 出力: Dataset4
 
 複数の入力を指定すると、データのコピーに使用されるのは最初の入力データセットのみで、他のデータセットは依存関係として使用されます。CopyActivity2 は、次の条件が満たされた場合にのみ実行を開始します。
 
-- CopyActivity1 が正常に完了していて、Dataset2 を使用できる。このデータセットは、データを Dataset4 にコピーする際に使用されません。これは、CopyActivity2 のスケジュールの依存関係としてのみ機能します。   
-- Dataset3 を使用できる。このデータセットは、コピー先にコピーされるデータを表します。  
+- CopyActivity1 が正常に完了していて、Dataset2 を使用できる。このデータセットは、データを Dataset4 にコピーする際に使用されません。これは、CopyActivity2 のスケジュールの依存関係としてのみ機能します。
+- Dataset3 を使用できる。このデータセットは、コピー先にコピーされるデータを表します。
 
 
 ### コピー アクティビティのパフォーマンスとチューニング 
@@ -137,7 +138,7 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 
 ## Data Factory コピー ウィザード
-**Data Factory コピー ウィザード**により、リンクされたサービス、データセット、およびパイプラインの JSON 定義を書くことなく、サポートされているソースからコピー先にデータをコピーするパイプラインを作成できます。コピー ウィザードを起動するには、Data Factory のホーム ページの **[データのコピー]** タイルをクリックします。
+**Data Factory コピー ウィザード**により、リンクされたサービス、データセット、およびパイプラインの JSON 定義を書くことなく、サポートされているソースからコピー先にデータをコピーするパイプラインを作成できます。コピー ウィザードを起動するには、Data Factory のホーム ページの **[データをコピー]** タイルをクリックします。
 
 ![データのコピー ウィザード](./media/data-factory-data-movement-activities/copy-data-wizard.png)
 
@@ -174,7 +175,7 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 
 ### 実際に使ってみる 
-**Data Factory コピー ウィザード**を使用して、コピー アクティビティによってパイプラインを作成する簡単なチュートリアルについては、「[チュートリアル: コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。
+**Data Factory コピー ウィザード**を使用して、コピー アクティビティによってパイプラインを作成する簡単なチュートリアルについては、[Data Factory コピー ウィザードを使用してパイプラインを作成する方法のチュートリアル](data-factory-copy-data-wizard-tutorial.md)を参照してください。
 
 
 ### Azure BLOB フォルダー パスの変数
@@ -187,12 +188,12 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 	2016/03/01/03
 	...
 
-**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのいずれかのフォルダー、たとえば 2016->03->01->02 に移動し、**[選択]** をクリックします。テキスト ボックスに **2016/03/01/02** と表示されます。ここで、**2016** を **{year}**、**03** を **{month}**、**01** を **{day}**、**02** を **{hour}** に置き換えて、**Tab** を押します。下に示すように、これらの 4 つの変数の**形式**を選択するドロップ ダウン リストが表示されます。
+**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのいずれかのフォルダー、たとえば 2016->03->01->02 に移動し、**[選択]** をクリックします。テキスト ボックスに **2016/03/01/02** と表示されます。ここで、**2016** を **{year}**、**03** を **{month}**、**01** を **{day}**、**02** を **{hour}** に置き換えて、**Tab** キーを押します。下に示すように、これらの 4 つの変数の**形式**を選択するドロップ ダウン リストが表示されます。
 
 ![システム変数の使用](./media/data-factory-data-movement-activities/blob-standard-variables-in-folder-path.png)
 
-下に示すように、**custom** 変数を使用し、任意の[サポートされる書式文字列](https://msdn.microsoft.com/library/8kb3ddd4.aspx)を使用することもできます。最初に [参照] ボタンを使用して、構築するフォルダーを選択し、値を **{custom}** に置き換えて、**Tab** を押し、書式文字列を入力できるテキスト ボックスを表示します。
+下に示すように、**custom** 変数を使用し、任意の[サポートされる書式文字列](https://msdn.microsoft.com/library/8kb3ddd4.aspx)を使用することもできます。最初に [参照] ボタンを使用して、構築するフォルダーを選択し、値を **{custom}** に置き換えて、**Tab** キーを押し、書式文字列を入力できるテキスト ボックスを表示します。
 
 ![カスタム変数の使用](./media/data-factory-data-movement-activities/blob-custom-variables-in-folder-path.png)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -46,7 +46,7 @@ Azure クラシック ポータルを使用してストリーミング エンド
 4. [開始] をクリックしてストリーミング エンドポイントを開始します。
 5. ストリーミング エンドポイントの名前をクリックして、それを構成します。
 
-![ストリーミング エンドポイント ページ][streaming-endpoint]
+	![ストリーミング エンドポイント ページ][streaming-endpoint]
 
 
 既定では、最大 2 つのストリーミング エンドポイントを作成できます。それ以上を要求する必要がある場合は、「[クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
@@ -68,9 +68,11 @@ Azure クラシック ポータルを使用してストリーミング エンド
 	新しいストリーミング ユニットの割り当ては完了するまでに約 20 分かかります。
 
 	 
-	>[AZURE.NOTE] 現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
+>[AZURE.NOTE] 現在のところ、ストリーミング ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
 
-	>[AZURE.NOTE] コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+</br>
+
+>[AZURE.NOTE] コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 	
 ##<a id="configure_streaming_endpoints"></a>ストリーミング エンドポイントの構成
 
@@ -125,6 +127,7 @@ CDN 統合は、すべての Azure データ センター (米国西部、米国
 
 ![CDN が有効になっているストリーミング エンドポイント][streaming-endpoint-enable-cdn]
 
+>[AZURE.IMPORTANT] Azure CDN と統合された Azure Media Services は、**Azure CDN from Verizon** に実装されています。Azure Media Services に **Azure CDN from Akamai** を使用する場合、[エンドポイントを手動で構成する](../cdn/cdn-create-new-endpoint.md)必要があります。Azure CDN 機能の詳細については、[CDN の概要](../cdn/cdn-overview.md)に関するページをご覧ください。
 
 ###追加の考慮事項
 
@@ -150,4 +153,4 @@ CDN 統合は、すべての Azure データ センター (米国西部、米国
 [configure-origin-configure-custom-host-names]: ./media/media-services-manage-origins/media-services-configure-custom-host-names.png
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

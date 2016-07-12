@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Active Directory アプリケーションをポータルで作成する | Microsoft Azure"
+   pageTitle="ポータルでサービス プリンシパルを作成する | Microsoft Azure"
    description="Azure リソース マネージャーでロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、新しい Active Directory のアプリケーションとサービス プリンシパルを作成する方法について説明します。"
    services="azure-resource-manager"
    documentationCenter="na"
@@ -16,7 +16,13 @@
    ms.date="05/18/2016"
    ms.author="tomfitz"/>
 
-# リソースにアクセスできる Active Directory アプリケーションをポータルで作成する
+# リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
+
+> [AZURE.SELECTOR]
+- [PowerShell](resource-group-authenticate-service-principal.md)
+- [Azure CLI](resource-group-authenticate-service-principal-cli.md)
+- [ポータル](resource-group-create-service-principal-portal.md)
+
 
 自動化されたプロセスやアプリケーションでリソースにアクセスしたり変更を加えたりするには、Active Directory アプリケーションをセットアップして、そこに必要な権限を割り当てる必要があります。このトピックでは、それらの手順をポータルで行う方法について説明します。現時点では、クラシック ポータルを使用して新しい Active Directory アプリケーションを作成したうえで、Azure ポータルに切り替え、アプリケーションにロールを割り当てる必要があります。
 
@@ -119,7 +125,7 @@ Active Directory の概念については、「[アプリケーション オブ�
 
       ![アプリケーションの選択](./media/resource-group-create-service-principal-portal/select-app.png)
 
-3. 委任されたアクセス許可のドロップダウン リストから **[Access Azure Service Management as organization]** (組織として Azure サービス管理にアクセスする) を選択します。
+3. 委任されたアクセス許可のドロップダウン リストから **[Access Azure Service Management as organization (組織として Azure サービス管理にアクセスする)]** を選択します。
 
       ![アクセス許可の選択](./media/resource-group-create-service-principal-portal/select-permissions.png)
 
@@ -163,7 +169,7 @@ Active Directory の概念については、「[アプリケーション オブ�
 
      ![show](./media/resource-group-create-service-principal-portal/show-app.png)
 
-ポータルを使用してユーザーやアプリケーションをロールに割り当てる方法の詳細については、「[Azure 管理ポータルを使用したアクセス権の管理](../role-based-access-control-configure/#manage-access-using-the-azure-management-portal)」を参照してください。
+ポータルを使用してユーザーやアプリケーションをロールに割り当てる方法の詳細については、「[Azure 管理ポータルを使用したアクセス権の管理](role-based-access-control-configure.md#manage-access-using-the-azure-management-portal)」を参照してください。
 
 ## アクセス トークンをコードで取得する
 
@@ -180,7 +186,7 @@ Active Directory アプリケーションからリソースにアクセスする
 
 ## 次のステップ
 
-- セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。  
+- セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
 - これらの手順のビデオ デモについては、[Azure Active Directory を使用した Azure リソースのプログラムによる管理の有効化](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory)に関するビデオを参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

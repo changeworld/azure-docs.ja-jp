@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="get-started-article"
 	ms.date="04/12/2016"
-	ms.author="sethm;nberdy"/>
+	ms.author="sethm"/>
 
 # Azure Event Hubs とは
 
@@ -45,4 +45,4 @@ Event Hubs の詳細については、次のトピックを参照してくださ
 [Event Hubs の使用]: event-hubs-csharp-ephcs-getstarted.md
 [Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

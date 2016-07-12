@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/13/2016" 
+	ms.date="06/27/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して ODBC データ ストアからデータを移動する
@@ -225,14 +225,14 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 | -------- | ----------- | -------- | 
 | type | type プロパティを **OnPremisesOdbc** に設定する必要があります | はい |
 | connectionString | 接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。下記の例をご覧ください。 | はい
-| 資格情報 | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。例: “Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”. | いいえ
+| 資格情報 | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。例: "Uid=<ユーザー ID>;Pwd=<パスワード>;RefreshToken=<シークレット更新トークン >;" | いいえ
 | authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。Anonymous と Basic のいずれかの値になります。 | はい | 
 | username | 基本認証を使用している場合は、ユーザー名を指定します。 | いいえ | 
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ | 
 | gatewayName | Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 | はい |
 
 
-オンプレミスの ODBC データ ストアの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
+オンプレミスの ODBC データ ストアの資格情報の設定の詳細については、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」を参照してください。
 
 ### 基本認証を使用する
 
@@ -355,17 +355,17 @@ Data Factory ソリューションで GE Historian ストアを使用する前�
 ## 接続の問題のトラブルシューティング
 接続の問題をトラブルシューティングするには、**Data Management Gateway 構成マネージャー**の **[診断]** タブを使用します。
 
-1. **Data Management Gateway 構成マネージャー**を起動します。"C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared\\ConfigManager.exe" を直接実行することも、次の図で示されているように、**Gateway** を検索し、**Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。 
+1. **Data Management Gateway 構成マネージャー**を起動します。"C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared\\ConfigManager.exe" を直接実行することも、次の図で示されているように、**Gateway** を検索し、**Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。
 
 	![Search gateway](./media/data-factory-odbc-connector/search-gateway.png)
 2. **[診断]** タブに切り替えます。
 
-	![Gateway diagnostics](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png) 
-3. データ ストアの**種類** (リンクされたサービス) を選択します。 
-4. **[認証]** を指定し、**資格情報**を入力します。または、**接続文字列**を入力して、データ ストアに接続します。 
-5. **[接続テスト]** をクリックして、データ ストアへの接続をテストします。 
+	![Gateway diagnostics](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
+3. データ ストアの**種類** (リンクされたサービス) を選択します。
+4. **認証**方法を指定し、**資格情報**を入力します。または、**接続文字列**を入力して、データ ストアに接続します。
+5. **[Test connection (接続のテスト)]** をクリックして、データ ストアへの接続をテストします。
 
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

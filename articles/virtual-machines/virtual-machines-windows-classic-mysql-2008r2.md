@@ -22,7 +22,7 @@
 
 [MySQL](http://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。このチュートリアルでは、Windows Server 2012 R2 を実行している仮想マシン上の MySQL Server として MySQL 5.6.23 の Community バージョンをインストールして実行する方法について説明します。Linux 上で MySQL をインストールする方法の詳細については、「[MySQL を Azure でインストールする方法](virtual-machines-linux-mysql-install.md)」をご覧ください。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 ## Windows Server 2012 R2 を実行する仮想マシンの作成
 
@@ -126,4 +126,4 @@ Azure 仮想マシンで実行する MySQL Server サービスへのリモート
 
 MySQL の実行の詳細については、[MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

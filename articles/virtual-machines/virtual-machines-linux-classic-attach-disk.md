@@ -19,7 +19,7 @@
 
 # データ ディスクを Linux 仮想マシンに接続する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。[Resource Manager デプロイメント モデルを使用してデータ ディスクを接続する](virtual-machines-linux-add-disk.md)こともできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)].[Resource Manager デプロイ モデルを使用してデータディスクを接続する](virtual-machines-linux-add-disk.md)方法を参照してください。
 
 空のディスクと、データが含まれているディスクのどちらも Azure VM に接続できます。どちらの種類のディスクも、Azure ストレージ アカウントの .vhd ファイルです。Linux マシンへのディスクの追加では、ディスクを接続した後、初期化とフォーマットを行って使用できるようにする必要があります。この記事では、空のディスクと、データが含まれているディスクの両方を Azure VM に接続し、新しいディスクを初期化してフォーマットする方法について詳しく説明します。
 
@@ -173,4 +173,4 @@
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-classic-log-on.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

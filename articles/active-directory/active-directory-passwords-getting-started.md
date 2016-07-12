@@ -195,7 +195,7 @@
 
 
 ### 手順 1: Azure AD Connect の最新バージョンをダウンロードする
-パスワード ライトバックは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0419.0911** 以降の Azure AD Sync ツールで使用できます。アカウントが自動的にロック解除されるパスワード ライトバックが使用できるのは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0485.0222** 以降の Azure AD Sync ツールです。以前のバージョンを実行している場合は、続行する前に、少なくともこのバージョンにアップグレードしてください。[ここをクリックすると、Azure AD Connect の最新バージョンをダウンロードできます。](active-directory-aadconnect.md#download-azure-ad-connect)
+パスワード ライトバックは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0419.0911** 以降の Azure AD Sync ツールで使用できます。アカウントが自動的にロック解除されるパスワード ライトバックが使用できるのは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0485.0222** 以降の Azure AD Sync ツールです。以前のバージョンを実行している場合は、続行する前に、少なくともこのバージョンにアップグレードしてください。[ここをクリックすると、Azure AD Connect の最新バージョンをダウンロードできます。](active-directory-aadconnect.md#install-azure-ad-connect)
 
 #### Azure AD Sync のバージョンを確認するには
 1.	**%ProgramFiles%\\Azure Active Directory Sync** に移動します。
@@ -351,4 +351,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 [032]: ./media/active-directory-passwords-getting-started/032.jpg "Image_032.jpg"
 
-<!-----HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

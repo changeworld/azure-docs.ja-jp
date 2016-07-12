@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/21/2016"
+   ms.date="06/30/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 
@@ -75,7 +75,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
->[AZURE.NOTE] SQL Data Warehouse でのテーブルの作成と、WITH 句で使用できるオプションの詳細については、[テーブルのデザイン][]または [CREATE TABLE 構文][]に関するページを参照してください。
+>[AZURE.NOTE] SQL Data Warehouse でのテーブルの作成と、WITH 句で使用できるオプションの詳細については、[テーブルの概要][]に関する記事または [CREATE TABLE 構文][]に関するページを参照してください。
 
 ### 手順 2: ソース データ ファイルを作成する
 
@@ -178,10 +178,10 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 
 <!--Article references-->
 
-[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)]: sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)]: sql-data-warehouse-overview-develop.md
-[テーブルのデザイン]: sql-data-warehouse-develop-table-design.md
-[統計]: sql-data-warehouse-develop-statistics.md
+[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)]: ./sql-data-warehouse-overview-develop.md
+[テーブルの概要]: ./sql-data-warehouse-tables-overview.md
+[統計]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
@@ -190,4 +190,4 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

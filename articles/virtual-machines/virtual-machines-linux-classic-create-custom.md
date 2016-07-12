@@ -19,7 +19,7 @@
 
 # カスタム Linux VM を作成する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 このトピックでは、クラシック デプロイ モデルを使用して Azure CLI で カスタム仮想マシン (VM) を作成する方法について説明します。ここでは、Azure 上の使用可能な**イメージ**にある Linux イメージを使用します。Azure CLI コマンドでは、次のような構成を選択できます。
 
@@ -35,4 +35,4 @@
 
 [AZURE.INCLUDE [virtual-machines-create-LinuxVM](../../includes/virtual-machines-create-linuxvm.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

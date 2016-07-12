@@ -19,7 +19,7 @@
 
 # 負荷分散セットを使用して Linux の MySQL をクラスター化する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 Linux ベースの高可用性サービスを Microsoft Azure 上にデプロイするには、さまざまな方法が利用できます。この記事の目的はそれぞれの方法を詳細に説明することですが、MySQL サーバーの高可用性についての初歩的な知識も説明します。この記事の内容を紹介するビデオが [Channel 9](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL) で視聴できます。
@@ -340,4 +340,4 @@ Pacemaker が DRBD リソース、マウント ポイント、および MySQL �
 - 適切なペースで書き込みが実行されるためには MySQL の調整が必要です。また、メモリ損失を最小化するため、できるだけ頻繁にキャッシュをディスクにフラッシュします。
 - DRBD はデバイスをリプリケートするためのメカニズムとして、仮想スイッチで VM を相互に接続しているため、書き込み性能は、仮想スイッチでの接続状態に左右されます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

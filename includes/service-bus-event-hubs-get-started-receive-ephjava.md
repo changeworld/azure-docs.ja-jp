@@ -20,7 +20,7 @@ EventProcessorHost を使用するには [Azure ストレージ アカウント]
 
 ###EventProcessor ホストを使用した Java プロジェクトの作成
 
-Event Hubs の Java クライアント ライブラリは、[Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) の Maven プロジェクトで利用でき、Maven プロジェクト ファイル内の以下の依存関係宣言を使用して参照できます。
+Event Hubs の Java クライアント ライブラリは、[Maven Central Repository][Maven Package] の Maven プロジェクトで利用でき、Maven プロジェクト ファイル内の以下の依存関係宣言を使用して参照できます。
 
 ``` XML
 <dependency>
@@ -30,9 +30,9 @@ Event Hubs の Java クライアント ライブラリは、[Maven Central Repos
 </dependency>
 ```
  
-ビルド環境の種類に応じて、[Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) または [GitHub のリリース配布ポイント](https://github.com/Azure/azure-event-hubs/releases)から最新リリースの JAR ファイルを明示的に取得できます。
+ビルド環境の種類に応じて、[Maven Central Repository][Maven Package] または [GitHub のリリース配布ポイント](https://github.com/Azure/azure-event-hubs/releases)から最新リリースの JAR ファイルを明示的に取得できます。
 
-1. 次のサンプルでは、最初に、好みの Java 開発環境でコンソール/シェル アプリケーション用の新しい Maven プロジェクトを作成します。このクラスを ```ErrorNotificationHandler``` と呼びます。     
+1. 次のサンプルでは、最初に、好みの Java 開発環境でコンソール/シェル アプリケーション用の新しい Maven プロジェクトを作成します。このクラスを ```ErrorNotificationHandler``` と呼びます。
 
 	``` Java
 	import java.util.function.Consumer;
@@ -187,9 +187,10 @@ Event Hubs の Java クライアント ライブラリは、[Maven Central Repos
 [Event Hubs Overview]: event-hubs-overview.md
 [Azure ストレージ アカウント]: ../storage/storage-create-storage-account.md
 [Azure クラシック ポータル]: http://manage.windowsazure.com
+[Maven Package]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22
 
 <!-- Images -->
 [11]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp2.png
 [12]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp3.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

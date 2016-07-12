@@ -3,7 +3,7 @@
 	description="Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。"
 	services="cloud-services"
 	documentationCenter="python"
-	authors="huguesv"
+	authors="lmazuel"
 	manager="wpickett"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="11/03/2015"
-	ms.author="huvalo"/>
+	ms.date="06/22/2016"
+	ms.author="lmazuel"/>
 
 # Python からサービス管理を使用する方法
 
@@ -433,6 +433,6 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
-[クラウド サービス]: https://azure.microsoft.com/documentation/services/cloud-services/
+[クラウド サービス]: https://azure.microsoft.com/ja-JP/documentation/services/cloud-services/
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

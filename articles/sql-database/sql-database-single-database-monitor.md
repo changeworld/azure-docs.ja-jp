@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="06/15/2016"
+	ms.date="07/06/2016"
 	ms.author="carlrab"/>
 
 # Azure SQL Database におけるデータベース パフォーマンスの監視
@@ -27,7 +27,7 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 - CPU の割合
 - DTU の割合
 - データ IO の割合
-- Storage の割合
+- データベース サイズの割合
 
 これらのメトリックを追加すると、**[メトリック]** ウインドウに示される詳細と共に、**[監視]** グラフでこれらを継続的に確認できます。4 つのメトリックはいずれも、データベースの **DTU** を基準とする平均使用率を示しています。DTU の詳細については、[サービス階層](sql-database-service-tiers.md)に関する記事を参照してください。
 
@@ -47,4 +47,4 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 
 エラスティック データベース プールでは、このセクションで説明した手法を使用して、プール内の個々のデータベースを監視することができます。ただし、プールを全体として監視することもできます。詳細については、「[エラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-portal.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

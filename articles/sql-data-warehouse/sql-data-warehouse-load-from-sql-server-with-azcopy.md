@@ -1,5 +1,5 @@
 <properties
-   pageTitle="SQL Server から Azure SQL Data Warehouse へのデータの読み込み (AZCopy) | Microsoft Azure"
+   pageTitle="SQL Server から Azure SQL Data Warehouse へのデータの読み込み (PolyBase) | Microsoft Azure"
    description="bcp を使用して SQL Server からフラット ファイルにデータをエクスポートし、AZCopy を使用してデータを Azure Blob Storage にインポートし、PolyBase を使用してデータを Azure SQL Data Warehouse に取り込みます。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/08/2016"
+   ms.date="06/30/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 
@@ -56,7 +56,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
->[AZURE.NOTE] SQL Data Warehouse でのテーブルの作成と、WITH 句で使用できるオプションの詳細については、[テーブル デザイン][]に関する記事または [CREATE TABLE 構文][]に関するページを参照してください。
+>[AZURE.NOTE] SQL Data Warehouse でのテーブルの作成と、WITH 句で使用できるオプションの詳細については、[テーブルの概要][]に関する記事または [CREATE TABLE 構文][]に関するページを参照してください。
 
 ### 手順 2: ソース データ ファイルを作成する
 
@@ -159,10 +159,10 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 
 <!--Article references-->
 
-[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)]: sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)]: sql-data-warehouse-overview-develop.md
-[テーブル デザイン]: sql-data-warehouse-develop-table-design.md
-[統計]: sql-data-warehouse-develop-statistics.md
+[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)]: ./sql-data-warehouse-overview-develop.md
+[テーブルの概要]: ./sql-data-warehouse-tables-overview.md
+[統計]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
@@ -171,4 +171,4 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0706_2016-->

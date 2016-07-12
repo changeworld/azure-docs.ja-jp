@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"   
+	ms.date="06/22/2016"   
 	ms.author="willzhan;Mingfeiy;rajputam;Juliako"/>
 
 #Axinom を使用して Azure Media Services に Widevine ライセンスを配信する  
@@ -45,7 +45,7 @@ Media Services .NET SDK バージョン 3.5.2 以降、Media Services を使用�
 次の両方の保護を備えた DASH ストリーミングに対して、マルチ DRM による動的な CENC 保護を構成できます。
 
 1. トークンの承認制限を設定できる MS Edge および IE11 用の PlayReady 保護。トークン制限ポリシーには、Azure Active Directory などの Secure Token Service (STS) によって発行されたトークンを含める必要があります。
-1. Chrome 用 Widevine 保護。別の STS によって発行されたトークンを使用したトークンの認証を要求する場合があります。 
+1. Chrome 用 Widevine 保護。別の STS によって発行されたトークンを使用したトークンの認証を要求する場合があります。
 
 Axinom の Widevine ライセンス サーバーの STS として Azure Active Directory を使用できない理由については、「[JWT トークンの生成](media-services-axinom-integration.md#jwt-token-generation)」セクションを参照してください。
 
@@ -209,4 +209,4 @@ Widevine ライセンス取得 URL|DASH ストリーミングの資産配信ポ�
 
 この文書の作成に協力してくださった Axinom 社の Kristjan Jõgi、Mingfei Yan、Amit Rajput に感謝します。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

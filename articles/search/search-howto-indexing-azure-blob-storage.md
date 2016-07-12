@@ -12,7 +12,7 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="05/17/2016"
+ms.date="06/27/2016"
 ms.author="eugenesh" />
 
 # Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
@@ -32,9 +32,9 @@ Azure Blob Storage のインデクサーの設定と構成は、[こちらの記
 BLOB インデックス作成を設定するには、次の手順に従います。
 
 1. Azure ストレージ アカウント内のコンテナー (と必要に応じてそのコンテナー内のフォルダー) を参照する `azureblob` タイプのデータ ソースを作成します。
-	- ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして指定します。
+	- ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして渡します。接続文字列は、Azure ポータルから取得できます。目的のストレージ アカウント ブレードに移動して [キー] を選択し、"プライマリ接続文字列" または "セカンダリ接続文字列" の値を使用します。
 	- コンテナー名を指定します。必要に応じて `query` パラメーターを使用し、フォルダーを対象にすることもできます。
-2. 検索可能な `content` フィールドを持つ検索インデックスを作成します。 
+2. 検索可能な `content` フィールドを持つ検索インデックスを作成します。
 3. データ ソースをターゲット インデックスに接続することによって、インデクサーを作成します。
 
 ### データ ソースの作成
@@ -83,7 +83,9 @@ BLOB インデックス作成を設定するには、次の手順に従います
 	  "schedule" : { "interval" : "PT2H" }
 	}
 
-インデクサー作成 API の詳細については、「[Create Indexer](search-api-indexers-2015-02-28-preview.md#create-indexer)」を参照してください。
+このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。サポートされている最短の間隔は 5 分です。スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。ただし、いつでもオンデマンドでインデクサーを実行できます。
+
+インデクサー作成 API の詳細については、「[インデクサーの作成](search-api-indexers-2015-02-28-preview.md#create-indexer)」をご覧ください。
 
 
 ## サポートされるドキュメントの形式
@@ -91,13 +93,13 @@ BLOB インデックス作成を設定するには、次の手順に従います
 BLOB インデクサーは、次の形式のドキュメントからテキストを抽出できます。
 
 - PDF
-- Microsoft Office 形式: DOCX/DOC、XLSX/XLS、PPTX/PPT、MSG (Outlook 電子メール)  
+- Microsoft Office 形式: DOCX/DOC、XLSX/XLS、PPTX/PPT、MSG (Outlook 電子メール)
 - HTML
 - XML
 - ZIP
 - EML
-- プレーン テキスト ファイル (.txt)  
-- JSON (詳細については、「[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)」を参照)
+- プレーン テキスト ファイル (.txt)
+- JSON (詳細については、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事を参照)
 
 ## ドキュメント抽出プロセス
 
@@ -215,7 +217,7 @@ PPT (application/vnd.ms-powerpoint) | `metadata_content_type`<br/>`metadata_auth
 MSG (application/vnd.ms-outlook) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` | テキストを抽出します。添付ファイルも対象となります。
 ZIP (application/zip) | `metadata_content_type` | アーカイブ内のすべてのドキュメントからテキストを抽出します。
 XML (application/xml) | `metadata_content_type`</br>`metadata_content_encoding`</br> | XML マークアップを削除し、テキストを抽出します。
-JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | テキストを抽出します。<br/>注: JSON BLOB から複数のドキュメント フィールドを抽出する必要がある場合は、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事で詳細を確認してください。
+JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | テキストを抽出します。<br/>注: JSON BLOB から複数のドキュメント フィールドを抽出する必要がある場合、詳細については、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事をご覧ください。
 EML (message/rfc822) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` | テキストを抽出します。添付ファイルも対象となります。
 プレーン テキスト (text/plain) | `metadata_content_type`</br>`metadata_content_encoding`</br> | 
 
@@ -236,7 +238,7 @@ AzureSearch\_SkipContent | "true" | メタデータのインデックス作成�
 
 ### 特定のファイル拡張子を持つ BLOB のみのインデックスを作成する
 
-`indexedFileNameExtensions` インデクサー構成パラメーターを使用すると、指定したファイル名拡張子を持つ BLOB のみのインデックスを作成できます。値は、(先頭にピリオドが付いた) ファイル拡張子のコンマ区切りの一覧を含む文字列です。たとえば、.PDF や .DOCX の BLOB のみのインデックスを作成する場合は、この操作を行います。
+`indexedFileNameExtensions` インデクサー構成パラメーターを使用すると、指定したファイル名拡張子を持つ BLOB のインデックスだけを作成できます。値は、(先頭にピリオドが付いた) ファイル拡張子のコンマ区切りの一覧を含む文字列です。たとえば、.PDF や .DOCX の BLOB のみのインデックスを作成する場合は、この操作を行います。
 
 	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -260,11 +262,11 @@ AzureSearch\_SkipContent | "true" | メタデータのインデックス作成�
 	  "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
 	}
 
-`indexedFileNameExtensions` と `excludedFileNameExtensions` の両方のパラメーターがある場合、Azure Search では最初に `indexedFileNameExtensions` を検索し、その後 `excludedFileNameExtensions` を検索します。つまり、同じファイル拡張子が両方の一覧に存在する場合、インデックス作成から除外されます。
+`indexedFileNameExtensions` と `excludedFileNameExtensions` の両方のパラメーターがある場合、Azure Search では最初に `indexedFileNameExtensions` を調べ、次に `excludedFileNameExtensions` を調べます。つまり、同じファイル拡張子が両方の一覧に存在する場合、インデックス作成から除外されます。
 
 ### ストレージ メタデータのみのインデックスを作成する
 
-`indexStorageMetadataOnly` 構成プロパティを使用すると、ストレージ メタデータのみのインデックスを作成し、ドキュメントの抽出プロセスを完全にスキップできます。これは、ドキュメントのコンテンツも不要で、コンテンツの種類に固有のメタデータ プロパティも不要な場合に便利です。これを行うには、`indexStorageMetadataOnly` プロパティを `true` に設定します。
+`indexStorageMetadataOnly` 構成プロパティを使用すると、ストレージ メタデータのインデックスだけを作成し、ドキュメントの抽出プロセスを完全にスキップできます。これは、ドキュメントのコンテンツも不要で、コンテンツの種類に固有のメタデータ プロパティも不要な場合に便利です。これを行うには、`indexStorageMetadataOnly` プロパティを `true` に設定します。
 
 	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -277,7 +279,7 @@ AzureSearch\_SkipContent | "true" | メタデータのインデックス作成�
 
 ### ストレージとコンテンツの種類のメタデータの両方のインデックスを作成するが、コンテンツの抽出をスキップする
 
-すべてのメタデータを抽出する必要があるが、すべての BLOB に対してコンテンツ抽出を省略する場合、`AzureSearch_SkipContent` メタデータを各 BLOB に個々に追加する代わりに、インデクサー構成を利用してこの動作を要求できます。この処理を行うには、`skipContent` インデクサー構成プロパティを `true` に設定します。
+すべてのメタデータを抽出する必要があるが、すべての BLOB のコンテンツ抽出をスキップする場合は、`AzureSearch_SkipContent` メタデータを各 BLOB に個々に追加する代わりに、インデクサー構成を使用してこの動作を要求できます。これを行うには、`skipContent` インデクサー構成プロパティを `true` に設定します。
 
 	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -292,4 +294,4 @@ AzureSearch\_SkipContent | "true" | メタデータのインデックス作成�
 
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

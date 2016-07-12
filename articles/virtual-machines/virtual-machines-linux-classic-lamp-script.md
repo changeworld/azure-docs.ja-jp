@@ -19,7 +19,7 @@
 
 #Linux 向けに Azure カスタム スクリプト拡張機能を使って LAMP アプリをデプロイする#
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 Linux 向け Microsoft Azure カスタム スクリプト拡張機能では、Python や Bash など、仮想マシン (VM) でサポートされているスクリプト言語で記述された任意のコードを実行する VM をカスタマイズすることができます。これによって、非常に柔軟に複数のマシンにアプリケーションを自動的にデプロイすることが可能になります。
@@ -96,7 +96,7 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
     cd /var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.3.0.0/
     tail -f extension.log
 
-CustomScript 拡張機能を実行すると、参照用に作成した PHP ページを参照できます。たとえば、この記事の PHP ページは **http://lamp-vm.cloudapp.net/phpinfo.php* です。
+CustomScript 拡張機能を実行すると、参照用に作成した PHP ページを参照できます。たとえば、この記事の PHP ページは *http://lamp-vm.cloudapp.net/phpinfo.php* です。
 
 ## その他のリソース
 
@@ -110,4 +110,4 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource-links.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

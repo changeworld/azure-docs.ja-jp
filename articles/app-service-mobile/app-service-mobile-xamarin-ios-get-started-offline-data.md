@@ -123,7 +123,7 @@
 
 このセクションでは、アプリケーションをモバイル バックエンドに再接続して、アプリケーションがオンライン状態に戻ったときの動作をシミュレーションします。更新ジェスチャを実行すると、データがモバイル バックエンドに同期されます。
 
-1. `QSTodoService.cs` を開きます。`applicationURL` と `gatewayURL` を修正し、正しい URL に設定します。
+1. `QSTodoService.cs` を開きます。`applicationURL` を修正して、正しい URL に設定します。
 
 2. クライアント アプリの再構築と実行起動後、アプリは Azure モバイル アプリのバックエンドとの同期を試みます。デバッグ コンソールに例外がログ記録されていないことを確認してください。
 
@@ -135,7 +135,7 @@
 
 * [Azure Mobile Apps でのオフライン データ同期]
 
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] \(注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
 <!-- ##Summary
 
@@ -158,4 +158,4 @@
 [How to use the Xamarin Component client for Azure Mobile Services]: partner-xamarin-mobile-services-how-to-use-client-library.md
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

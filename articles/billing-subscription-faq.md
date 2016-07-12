@@ -14,86 +14,80 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/14/2016"
+	ms.date="06/29/2016"
 	ms.author="genli"/>
 
 #  Azure の課金とサブスクリプションに関する FAQ
 
 この記事では、Azure の課金とサブスクリプションについて特に多く寄せられる質問に回答しています。
 
-**課金**
-
-- [Azure の購入には、どのような支払い方法がありますか。](#what-payment-options-do-i-have-in-purchasing-azure)
-
-- [請求書による支払いをリクエストするにはどうすればよいですか。](#how-can-i-request-the-invoice-method-of-payment)
-
-- [クレジット カードによる支払い状況を確認するにはどうすればよいですか。](#how-do-i-check-the-status-of-a-payment-made-by-credit-card)
-
-- [請求書のコピーを取得するにはどうすればよいですか。](#how-do-i-get-a-copy-of-my-invoice)
-
-- [Azure の支払い方法として使用しなくなったクレジット カードを削除するにはどうすればよいですか。](#how-do-i-remove-a-credit-card-that-i-no-longer-use-as-an-azure-payment-method)
-
-- [クレジット カードの情報を更新または変更するにはどうすればよいですか。](#how-can-i-update-or-change-my-credit-card-information)
-
-- [予定されている保守作業のためのサービス ダウンタイムについて事前に知るにはどうすればよいですか。](#how-do-we-know-in-advance-about-service-downtime-for-planned-maintenance)
-
-- [稼働時間と接続に関する Azure SLA 契約はどのような内容ですか。](#what-is-the-azure-sla-agreement-for-uptime-and-connectivity)
-
-- [Azure SLA クレジットとは何ですか。](#what-are-the-azure-sla-credits)
-
-- [Azure サービス レベル アグリーメントは、現在のオンプレミスのマイクロソフト ライセンス契約にどのように関係しますか。](#how-will-azure-service-level-agreements-work-with-current-on-premises-microsoft-licensing-agreements)
-
-- [前回の請求期間の請求書が表示されません。なぜですか?](#i-do-not-see-an-invoice-for-the-last-billing-period-why)
-
-**サブスクリプション**
-
-- [Azure ポータルにログインできません](#i-am-unable-to-log-in-to-the-azure-portal)
-
-- [Azure サポートの購入方法は?](#how-do-i-purchase-azure-support)
-
-- [月額料金は 1 つの Azure プランが対象ですか? それともアカウント全体が対象になりますか?](#does-the-monthly-rate-cover-a-single-azure-plan-or-the-entire-account)
-
-- [Azure サポート プランを上位プランにアップグレードするには?](#how-do-i-upgrade-to-a-higher-tier-azure-support-plan)
-
-- [Azure サポートはいつ課金されますか?](#when-will-i-be-billed-for-azure-support)
-
-- [期間が終わるとどうなりますか?](#what-happens-at-the-end-of-the-term)
-
-- [Azure サポート プランを解約するにはどうすればよいですか?](#how-do-i-cancel-my-azure-support-plan)
-
-- [Azure サブスクリプションのデータとサービスを新しいサブスクリプションに移行するにはどうすればよいですか。](#how-do-i-migrate-data-and-services-for-my-azure-subscription-to-a-new-subscription)
+**アカウント管理**
 
 - [新しい Azure ポータルではどのようにして管理者アカウントを管理するのですか。](#how-do-i-manage-administrator-accounts-in-the-new-azure-portal)
-
-- [自分のサブスクリプションの所有権を譲渡するにはどうすればよいですか。](#how-do-i-transfer-ownership-of-my-subscriptions)
-
-- [サーバー ライセンスを Azure に転送して Virtual Machines で実行することはできますか。](#can-i-transfer-server-licenses-to-azure-and-run-them-on-virtual-machines)
-
-- [Azure サービスの利点と価格に関する情報はどこで確認できますか。](#where-can-i-find-the-benefits-and-pricing-information-for-azure-services)
-
-- [価格プランを変更するにはどうすればよいですか。](#how-do-i-change-my-pricing-plan)
-
 - [通知は、マイ アカウントに関連付けられたアカウント所有者のメール アドレス以外のメール アドレスに送信できますか。](#can-notifications-be-sent-to-a-different-email-address-other-than-the-account-owner-email-address-associated-with-my-account)
+- [サブスクリプションの編集や詳細の追加ができないのはなぜでしょうか。](#why-cannot-i-edit-or-add-details-to-my-subscription)
+- [Azure ポータルにログインできません](#i-am-unable-to-log-in-to-the-azure-portal)
 
-- [Azure サブスクリプションの支払い情報を編集するにはどうすればよいですか。](#how-can-i-edit-my-payment-information-for-my-azure-subscriptions)
+**課金**
 
-- [サブスクリプションの編集や詳細の追加ができないのはなぜでしょうか。](#why-i-cannot-edit-or-add-details-to-my-subscription)
+- [請求書のコピーを取得するにはどうすればよいですか。](#how-do-i-get-a-copy-of-my-invoice)
+- [前回の請求期間の請求書が表示されません。なぜですか?](#i-do-not-see-an-invoice-for-the-last-billing-period-why)
 
-- [Azure サービスはだれが購入できますか。](#who-can-purchase-azure-services)
+**無料試用版**
 
 - [Azure の試用は無料ですか。課金される可能性はありませんか。](#can-i-try-azure-for-free-without-any-risk-of-being-charged)
+- [試用版サブスクリプションとは何ですか。有効期間は?](#what-is-a-trial-subscription-and-how-long-does-it-last)
+- [試用アカウントで利用できるリソースを教えてください。](#what-resources-are-available-whja-JPing-a-trial-account)
+- [無料試用版の使用制限を削除するとどうなりますか。](#what-happens-if-i-remove-the-spending-limit-on-my-free-trial)
+- [無料試用版についての詳しい情報はどこで確認できますか。](#where-can-i-get-more-details-on-free-trial)
 
-- [使用制限を無効にした場合、再度有効にすることはできますか。](#can-i-turn-the-spending-limit-back-on-if-i-turn-off-it)
-
-- [使用制限の量は調整できますか。](#can-i-adjust-the-amount-of-the-spending-limit)
+**Azure の購入方法**
 
 - [Microsoft Azure が販売されている国と地域はどこですか。Azure の購入に使用できる通貨はどれですか。](#in-which-countries-and-regions-is-microsoft-azure-commercially-available-and-what-currencies-can-be-used-to-purchase-azure)
-
 - [禁輸措置を受けている国に対する Azure ベースのサービスの再販は制限を受けますか。](#do-we-restrict-resale-of-azure-based-service-into-countries-under-embargo)
-
 - [Azure と SQL Database は Microsoft Services Provider License Agreement で利用できますか。](#are-azure-and-sql-database-available-through-microsoft-services-provider-license-agreement)
+- [Azure 以外で購入した既存の Windows ライセンスは使用できますか。](#can-i-use-my-existing-windows-licenses-that-i-bought-outside-of-azure)
+- [Azure サービスはだれが購入できますか。](#who-can-purchase-azure-services)
 
-## 課金
+**支払いについて**
+
+- [Azure の購入には、どのような支払い方法がありますか。](#what-payment-options-do-i-have-in-purchasing-azure)
+- [請求書による支払いをリクエストするにはどうすればよいですか。](#how-can-i-request-the-invoice-method-of-payment)
+- [クレジット カードによる支払い状況を確認するにはどうすればよいですか。](#how-do-i-check-the-status-of-a-payment-made-by-credit-card)
+- [Azure の支払い方法として使用しなくなったクレジット カードを削除するにはどうすればよいですか。](#how-do-i-remove-a-credit-card-that-i-no-longer-use-as-an-azure-payment-method)
+- [クレジット カードの情報を更新または変更するにはどうすればよいですか。](#how-can-i-update-or-change-my-credit-card-information)
+- [Azure サブスクリプションの支払い情報を編集するにはどうすればよいですか。](#how-can-i-edit-my-payment-information-for-my-azure-subscriptions)
+
+**Azure の料金**
+
+- [Azure サービスの利点と価格に関する情報はどこで確認できますか。](#where-can-i-find-the-benefits-and-pricing-information-for-azure-services)
+- [価格プランを変更するにはどうすればよいですか。](#how-do-i-change-my-pricing-plan)
+
+**サービス レベル アグリーメント (SLA)**
+
+- [予定されている保守作業のためのサービス ダウンタイムについて事前に知るにはどうすればよいですか。](#how-do-we-know-in-advance-about-service-downtime-for-planned-maintenance)
+- [稼働時間と接続に関する Azure SLA 契約はどのような内容ですか。](#what-is-the-azure-sla-agreement-for-uptime-and-connectivity)
+- [Azure SLA クレジットとは何ですか。](#what-are-the-azure-sla-credits)
+- [Azure サービス レベル アグリーメントは、現在のオンプレミスのマイクロソフト ライセンス契約にどのように関係しますか。](#how-will-azure-service-level-agreements-work-with-current-on-premises-microsoft-licensing-agreements)
+
+**Azure の使用制限**
+
+- [使用制限を無効にした場合、再度有効にすることはできますか。](#can-i-turn-the-spending-limit-back-on-if-i-turn-off-it)
+- [使用制限の量は調整できますか。](#can-i-adjust-the-amount-of-the-spending-limit)
+
+**サポート プラン**
+
+- [Azure サポートの購入方法は?](#how-do-i-purchase-azure-support)
+- [月額料金は 1 つの Azure プランが対象ですか? それともアカウント全体が対象になりますか?](#does-the-monthly-rate-cover-a-single-azure-plan-or-the-entire-account)
+- [Azure サポート プランを上位プランにアップグレードするには?](#how-do-i-upgrade-to-a-higher-tier-azure-support-plan)
+- [Azure サポートはいつ課金されますか?](#when-will-i-be-billed-for-azure-support)
+- [期間が終わるとどうなりますか?](#what-happens-at-the-end-of-the-term)
+- [Azure サポート プランを解約するにはどうすればよいですか?](#how-do-i-cancel-my-azure-support-plan)
+
+**サブスクリプション、サービス、データの移行**
+
+- [Azure サブスクリプションのデータとサービスを新しいサブスクリプションに移行するにはどうすればよいですか。](#how-do-i-migrate-data-and-services-for-my-azure-subscription-to-a-new-subscription)
+- [自分のサブスクリプションの所有権を譲渡するにはどうすればよいですか。](#how-do-i-transfer-ownership-of-my-subscriptions)
 
 ### Azure の購入には、どのような支払い方法がありますか。
 
@@ -154,8 +148,6 @@ Azure サービス レベル アグリーメントは、オンプレミスのマ
 - サブスクリプションの種類が無料試用版であるか、メンバー プラン (MSDN/Open/BizSpark/DreamSpark) のいずれかである (クレジット カードまたはクレジット カードに関連付けられた他の支払い方法が使用されていない)。
 - まだ請求書の生成日になっていない。
 
-## 契約
-
 ### Azure ポータルにログインできません
 
 次の記事は、ログインの問題のよくあるいくつかの原因のトラブルシューティングに役立ちます。
@@ -209,9 +201,9 @@ Azure のロールベースのアクセス制御 (RBAC) では、Azure のアク
 
 従量課金、MSDN、Action Pack、または BizSpark のサブスクリプションについては、Microsoft Azure アカウント センターで今すぐ簡単に実行できます。サブスクリプションを別のユーザーに譲渡する機能が追加されました。つまり、所有する任意の従量課金制、MSDN、Action Pack、または BizSpark のサブスクリプションでアカウント管理者を変更できるようになりました。ただし、譲渡先のユーザー アカウントが同じ国内にある必要があります。また、Marketplace での購入物に関連付けられているサブスクリプションを譲渡することはできません。詳細については、「[Azure サブスクリプションの譲渡](billing-subscription-transfer.md)」を参照してください。
 
-### サーバー ライセンスを Azure に転送して Virtual Machines で実行することはできますか。
+### Azure 以外で購入した既存の Windows ライセンスは使用できますか。
 
-はい。ライセンス モビリティを利用することで可能です。SA をお持ちの場合は、Virtual Machines をサポートしているすべてのサーバー製品 (Windows Server 以外) に "ライセンスを持ち込む" ことができます。
+はい。ライセンス モビリティを利用することで可能です。SA をお持ちの場合は、Virtual Machines をサポートしているすべてのサーバー製品 (Windows Server 以外) に "ライセンスを持ち込む" ことができます。詳細については、「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」を参照してください。
 
 ### Azure サービスの利点と価格に関する情報はどこで確認できますか。
 
@@ -245,7 +237,7 @@ Azure アカウント情報を表示して編集するには、Azure アカウ�
 
 **注**: 現時点では、[支払い方法の変更] ツールでは支払い方法として設定されている既存のクレジット カードを削除できません。クレジット カードの削除方法の詳細については、FAQ 内の「Azure の支払い方法として使用しなくなったクレジット カードを削除するにはどうすればよいですか。」を参照してください。
 
-### サブスクリプションの編集や詳細の追加ができないのはなぜでしょうか。
+### サブスクリプションの編集や詳細の追加ができないのはなぜでしょうか
 
 Azure アカウント情報を表示して編集するには、Azure アカウント センターにアカウント管理者としてサインインする必要があります。アカウント管理者としてサインインしたのにサブスクリプションを編集できない場合は、サポート チケットを送信してサポートを要求してください。サポート チケットを作成する方法については、「[Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法](billing-how-to-create-billing-support-ticket.md)」を参照してください。
 
@@ -255,7 +247,7 @@ Azure は、クラウド規模のアプリケーションとサービスを構�
 
 ### Azure の試用は無料ですか。課金される可能性はありませんか。
 
-はい。[使用制限機能](https://azure.microsoft.com/pricing/spending-limits/)を利用すると、その機能を有効にしている限り、無料試用版、MSDN、MPN、または BizSpark プランにご契約いただいたお客様は、課金される心配なしに Azure をご利用いただけます。Azure にサインアップする方法の詳細については、「[Azure オファー - 特典と制限、サインアップ、購入、アップグレード、または有効化する方法](billing-buy-sign-up-azure-subscription.md)」を参照してください。
+はい。[使用制限機能](https://azure.microsoft.com/pricing/spending-limits/)を利用すると、その機能を有効にしている限り、無料試用版、MSDN、MPN、または BizSpark プランにご契約いただいたお客様は、課金される心配なしに Azure をご利用いただけます。Azure にサインアップする方法の詳細については、[Azure サブスクリプションのサインアップ、購入、アップグレード、または有効化する方法](billing-buy-sign-up-azure-subscription.md)に関する記事を参照してください。
 
 ### 使用制限を無効にした場合、再度有効にすることはできますか。
 
@@ -277,4 +269,21 @@ Azure は、世界の 140 を超える国で購入でき、課金は多数の通
 
 現在、Azure または SQL Database を SPLA で提供する計画はありません。
 
-<!---HONumber=AcomDC_0518_2016-->
+### 試用版サブスクリプションとは何ですか。有効期間は?
+
+Azure 試用版サブスクリプションは、必要な Microsoft のサービスを 30 日間使用する権利を一定金額分、お客様に提供するものです。無料試用版クレジットの対象となるサービスと対象外のサービスについては、[無料試用版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)を参照してください。
+
+試用版サブスクリプションには、[こちら](http://azure.microsoft.com/pricing/free-trial/)からサインアップできます。
+
+### 試用アカウントで利用できるリソースを教えてください。
+
+無料試用版では、$200 の Azure クレジットを受け取れます。Azure クレジットをどう使うかは、お客様しだいです。詳細については、[無料仕様版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)を参照してください。
+
+### 無料試用版の使用制限を削除するとどうなりますか。
+
+使用制限を削除すると、無料試用版のクレジットを超えた部分について、リソースの使用に応じた課金が開始されます。いったん削除した使用制限をリセットすることはできません。
+
+### 無料試用版についての詳しい情報はどこで確認できますか。
+[無料試用版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)と[無料試用版に関する公式 FAQ](https://azure.microsoft.com/pricing/free-trial-faq/) を参照してください。
+
+<!---HONumber=AcomDC_0629_2016-->

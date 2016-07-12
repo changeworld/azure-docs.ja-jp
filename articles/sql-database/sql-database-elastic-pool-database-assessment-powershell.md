@@ -60,7 +60,7 @@
 スクリプトが完了すると、ターゲット サーバー内のすべての候補データベースを格納するために、プールに必要な推定 eDTU 数が出力されます。この推定 eDTU をプールの作成と構成に使用できます。プールが作成され、プールにデータベースを移動した後には、数日間厳密に監視する必要があります。また、必要に応じてプール eDTU 構成を調整します。「[エラスティック データベース プールの監視、管理およびサイズ設定](sql-database-elastic-pool-manage-portal.md)」を参照してください。
 
 
-   [AZURE.INCLUDE [learn-about-deployment-models-classic-include](../../includes/learn-about-deployment-models-classic-include.md)
+   [AZURE.INCLUDE [learn-about-deployment-models-classic-include](../../includes/learn-about-deployment-models-classic-include.md)]
     
     param (
 	[Parameter(Mandatory=$true)][string]$AzureSubscriptionName, # Azure Subscription name - can be found on the Azure portal: https://portal.azure.com/
@@ -266,4 +266,4 @@
 
         
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

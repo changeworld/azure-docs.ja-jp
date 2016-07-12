@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="05/10/2016"
+	ms.date="06/27/2016"
 	ms.author="rasquill"/>
 
 
@@ -23,7 +23,7 @@
 
 ここでは、クラシック デプロイメント モデルで Linux ベースの仮想マシンを作成および管理するために必要なすべてのドキュメントを紹介します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 ## 作業の開始
 - [Azure での Linux 入門](virtual-machines-linux-intro-on-azure.md)
@@ -57,7 +57,6 @@
 ### Docker
 - [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](virtual-machines-linux-classic-cli-use-docker.md)
 - [Azure ポータルでの Docker VM 拡張機能の使用](virtual-machines-linux-classic-portal-use-docker.md)
-- [Azure Marketplace で Docker をすばやく開始する](virtual-machines-linux-classic-docker-quickstart.md)
 - [Azure で docker マシンを使用する方法](virtual-machines-linux-docker-machine.md)
 
 ### Ubuntu
@@ -113,8 +112,8 @@
 
 ## トラブルシューティング
 - [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md)
-- [Troubleshoot classic deployment issues with creating a new Linux virtual machine in Azure (Azure での新しい Linux 仮想マシンの作成に関するクラシック デプロイの問題のトラブルシューティング)](virtual-machines-linux-classic-troubleshoot-deployment-new-vm.md)  
-- [Troubleshoot classic deployment issues with restarting or resizing an existing Linux Virtual Machine in Azure (Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイの問題のトラブルシューティング)](virtual-machines-linux-classic-restart-resize-error-troubleshooting.md) 
+- [Troubleshoot classic deployment issues with creating a new Linux virtual machine in Azure (Azure での新しい Linux 仮想マシンの作成に関するクラシック デプロイの問題のトラブルシューティング)](virtual-machines-linux-classic-troubleshoot-deployment-new-vm.md)
+- [Troubleshoot classic deployment issues with restarting or resizing an existing Linux Virtual Machine in Azure (Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイの問題のトラブルシューティング)](virtual-machines-linux-classic-restart-resize-error-troubleshooting.md)
 
 
 ## リファレンス
@@ -126,7 +125,7 @@
 
 
 ## 全般的なリンク
-以下のリンクは、上記の Azure.com のドキュメントではなく、Microsoft ブログ、Technet ページ、および外部サイトを参照するものです。Azure とオープン ソース コンピューティング環境はどちらもめまぐるしく変化しています。新しいトピックを追加し、古くなったトピックを削除するよう常に最善を尽くしてはいますが、以下のリンクが古くなっていることはほぼ間違いありません。不足などあればコメント欄よりお知らせください。または、[GitHub リポジトリ](https://github.com/Azure/azure-content/)でプル要求を送信してください。
+以下のリンクは、上記の Azure.com のドキュメントではなく、Microsoft ブログ、Technet ページ、および外部サイトを参照するものです。Azure とオープン ソース コンピューティング環境はどちらもめまぐるしく変化しています。このため、新しいトピックを追加して古くなったトピックを削除するよう常に最善を尽くしてはいます*が*、以下のリンクは古くなっている可能性があります。不足などあればコメント欄よりお知らせください。または、[GitHub リポジトリ](https://github.com/Azure/azure-content/)でプル要求を送信してください。
 
 - [Docker コンテナーを使用して Linux で ASP.NET 5 を実行する](http://blogs.msdn.com/b/webdev/archive/2015/01/14/running-asp-net-5-applications-in-linux-containers-with-docker.aspx)
 - [OpenLogic から CentOS 仮想マシン イメージをデプロイする方法](https://azure.microsoft.com/blog/2013/01/11/deploying-openlogic-centos-images-on-windows-azure-virtual-machines/)
@@ -188,8 +187,6 @@
 - [ビデオ: Linux 用 Powershell DSC を実行する方法](http://blogs.technet.com/b/privatecloud/archive/2014/05/19/powershell-dsc-for-linux-step-by-step.aspx)
 - [GitHub: Docker クライアント DSC](https://github.com/anweiss/DockerClientDSC)
 
-- [Ubuntu Juju](https://juju.ubuntu.com/docs/config-azure.html)
-
 - [Azure 用のプラグインの packer](https://github.com/msopentech/packer-azure)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

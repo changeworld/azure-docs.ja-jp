@@ -3,7 +3,7 @@
 	description="Azure App Service の Web Apps を管理ポータルを使用して監視する方法を説明します。"
 	services="app-service"
 	documentationCenter=""
-	authors="cephalin"
+	authors="btardif"
 	manager="wpickett"
 	editor="mollybos"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/04/2016"
+	ms.date="06/22/2016"
 	ms.author="byvinyal"/>
 
 #<a name="howtomonitor"></a>Azure App Service での Web Apps の監視
@@ -263,7 +263,7 @@ Web アプリに対するログ記録またはトレース、あるいはその�
 7.	2 つ目のエンドポイントを構成する場合は、これまでの手順を繰り返します。
 8.	**[保存]** をクリックします。Web エンドポイントの監視データが **[ダッシュボード]** と **[監視]** タブに表示されるまでに、時間がかかることがあります。
 
-電子メール ルールを作成するには、以下の手順を実行します。
+	電子メール ルールを作成するには、以下の手順を実行します。
 
 9.	左端にあるサービス バーの [**管理サービス**] をクリックします。
 10.	下部にある [**ルールの追加**] をクリックします。
@@ -287,4 +287,4 @@ Web アプリのエンドポイントの監視の詳細については、次の�
 [fzilla]: http://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]: http://go.microsoft.com/fwlink/?LinkID=309169
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/07/2016"
+   ms.date="07/01/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Powershell を使用して SQL Data Warehouse を作成する
@@ -55,7 +55,7 @@
 
 このコマンドレットに必要なパラメーターは、次のとおりです。
 
-- **RequestedServiceObjectiveName**: 要求する DWU の量。"DWXXX" の形式です。DWU は、CPU とメモリの割り当てを表します。各 DWU 値は、これらのリソースの線形増加を表しています。現在サポートされている値は、100、200、300、400、500、600、1000、1200、1500、2000 です。
+- **RequestedServiceObjectiveName**: 要求する [DWU][] の量。サポートされている値は、DW100、DW200、DW300、DW400、DW500、DW600、DW1000、DW1200、DW1500、および DW2000 です。
 - **DatabaseName**: 作成する SQL Data Warehouse の名前。
 - **ServerName**: 作成の際に使用するサーバーの名前 (V12 にする必要があります)。
 - **ResourceGroupName**: 使用するリソース グループ。サブスクリプションで使用可能なリソース グループを調べるには Get-AzureResource を使用します。
@@ -71,12 +71,12 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 <!--Image references-->
 
 <!--Article references-->
-
-[移行]: sql-data-warehouse-overview-migrate.md
-[開発]: sql-data-warehouse-overview-develop.md
-[読み込み]: sql-data-warehouse-load-with-bcp.md
-[サンプル データを読み込んだり]: sql-data-warehouse-get-started-load-sample-databases.md
-[PowerShell コマンドレットと REST API]: sql-data-warehouse-reference-powershell-cmdlets.md
+[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[移行]: ./sql-data-warehouse-overview-migrate.md
+[開発]: ./sql-data-warehouse-overview-develop.md
+[読み込み]: ./sql-data-warehouse-load-with-bcp.md
+[サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-load-sample-databases.md
+[PowerShell コマンドレットと REST API]: ./sql-data-warehouse-reference-powershell-cmdlets.md
 [firewall rules]: ../sql-database-configure-firewall-settings.md
 
 [Azure PowerShell のインストールおよび構成方法]: ../powershell/powershell-install-configure.md
@@ -96,4 +96,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [Azure 無料試用版]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure クレジット]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/13/2016"
+	ms.date="06/29/2016"
 	ms.author="mohisri"/>
 
 # App Service API Apps - 変更内容
@@ -32,7 +32,7 @@ API Apps、Mobile Services/Apps、および Web Apps の既存の設定不要の
 
 API シナリオの場合は、関連の新機能が複数あります。
 
-- クライアント コードでセッション トークンの AAD トークンを交換することなしに、**Azure Active Directory を直接使用するためのサポート**: クライアントはベアラー トークンの仕様に従って Authorization ヘッダーに AAD トークンを含めるだけで構いません。これはまた、クライアントまたはサーバー側で App Service 固有の SDK が必要ないことを意味します。 
+- クライアント コードでセッション トークンの AAD トークンを交換することなしに、**Azure Active Directory を直接使用するためのサポート**: クライアントはベアラー トークンの仕様に従って Authorization ヘッダーに AAD トークンを含めるだけで構いません。これはまた、クライアントまたはサーバー側で App Service 固有の SDK が必要ないことを意味します。
 - **サービス間または "内部" アクセス**: デーモン プロセスまたは、インターフェイスのない API へのアクセスを必要とする他の何らかのクライアントを使用している場合は、AAD サービス プリンシパルを使用してトークンを要求し、それをアプリケーションでの認証のために App Service に渡すことができます。
 - **承認を遅延**: 多くのアプリケーションには、アプリケーションの部分ごとにさまざまなアクセス制限があります。おそらく、公開したい API もあればサインインを求める API もあるでしょう。元の認証/承認の機能は、オール オア ナッシングで、すべてのサイトでログインを必要としています。このオプションはまだ存在しますが、別の方法として、App Service でユーザーを認証した後、アプリケーション コードで、アクセスを許可するかどうか決定を下すことができます。
  
@@ -85,13 +85,13 @@ SDK 2.8.1 の詳細については、発表に関する[ブログ投稿](https:/
 再デプロイの手順は、既存の Web API を App Service にデプロイする場合と同じです。手順:
 
 1. 空の API アプリを作成します。そのためには、ポータルで [新規]、[API アプリ] の順に操作するか、Visual Studio の発行を使用するか、または Resource Manager ツールを使用します。リソース マネージャーのツールまたはテンプレートを使用する場合は、**Microsoft.Web/sites** リソース タイプで **kind** 値を **api** に設定し、管理ポータル内のクイックスタートおよび設定を API シナリオ向けにします。
-2. App Service でサポートされている任意のデプロイ メカニズムを使用して、接続し、プロジェクトを空の API アプリにデプロイします。詳細については、「[Azure App Service のデプロイに関するドキュメント](../app-service-web/web-sites-deploy.md)」を参照してください。 
+2. App Service でサポートされている任意のデプロイ メカニズムを使用して、接続し、プロジェクトを空の API アプリにデプロイします。詳細については、「[Azure App Service のデプロイに関するドキュメント](../app-service-web/web-sites-deploy.md)」を参照してください。
   
 ### 認証
 App Service 認証サービスでは、以前の API Apps モデルで使用されていたのと同じ機能をサポートします。セッション トークンを使用し、SDK を必要とする場合は、次のクライアント SDK とサーバー SDK を使用します。
 
 - クライアント: [Azure モバイル クライアント SDK](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)
-- サーバー: [Microsoft Azure Mobile App .NET 認証拡張機能](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/) 
+- サーバー: [Microsoft Azure Mobile App .NET 認証拡張機能](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/)
 
 App Service のアルファ版 SDK については、次の SDK が廃止になりました。
 
@@ -122,4 +122,4 @@ App Service のアルファ版 SDK については、次の SDK が廃止にな�
 - [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureAPIApps)
 - [スタック オーバーフロー](http://stackoverflow.com/questions/tagged/azure-api-apps)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

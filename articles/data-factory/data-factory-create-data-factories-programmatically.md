@@ -40,11 +40,11 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 		<li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
 	</ol>
 2. <b>[ツール]</b> をクリックし、<b>[NuGet パッケージ マネージャー]</b> にカーソルを合わせ、<b>[パッケージ マネージャー コンソール]</b> をクリックします。
-3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを 1 つずつ入力します。</b> 
+3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを 1 つずつ入力します。</b>
 
 		Install-Package Microsoft.Azure.Management.DataFactories
 		Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-6. 次の **appSetttings** セクションを **App.config** ファイルに追加します。これらは、ヘルパー メソッド **GetAuthorizationHeader** によって使用されます。 
+6. 次の **appSetttings** セクションを **App.config** ファイルに追加します。これらは、ヘルパー メソッド **GetAuthorizationHeader** によって使用されます。
 
 	**SubscriptionId** および **ActiveDirectoryTenantId** の値を Azure サブスクリプションとテナント ID に置き換えます。これらの値は、Azure PowerShell から **Get-AzureAccount** を実行して取得できます (最初に Add-AzureAccount を使用してログインすることが必要になる場合があります)。
  
@@ -71,7 +71,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 		
 		using Microsoft.IdentityModel.Clients.ActiveDirectory;
 		using Microsoft.Azure;
-6. **DataPipelineManagementClient** クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。このオブジェクトを使用して、Data Factory、リンクされたサービス、入力と出力データセット、およびパイプラインを作成します。また、実行時にデータセットのスライスを監視する際にもこのオブジェクトを使用します。    
+6. **DataPipelineManagementClient** クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。このオブジェクトを使用して、Data Factory、リンクされたサービス、入力と出力データセット、およびパイプラインを作成します。また、実行時にデータセットのスライスを監視する際にもこのオブジェクトを使用します。
 
         // create data factory management client
         string resourceGroupName = "resourcegroupname";
@@ -123,7 +123,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                 }
             }
         );
-9. **入力と出力データセット**を作成する次のコードを **Main** メソッドに追加します。 
+9. **入力と出力データセット**を作成する次のコードを **Main** メソッドに追加します。
 
 	入力 BLOB の **FolderPath** を **adftutorial/** に設定します。この **adftutorial** は BLOB ストレージ内のコンテナーの名前です。Azure BLOB ストレージにこのコンテナーが存在しない場合は、**adftutorial** という名前のコンテナーを作成し、このコンテナーにテキスト ファイルをアップロードします。
 	
@@ -263,7 +263,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 
 	
 
-12. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。このメソッドは、Azure ポータルへのログインに使用する**ユーザー名**と**パスワード**の入力が可能なダイアログ ボックスを表示します。 
+12. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。このメソッドは、Azure ポータルへのログインに使用する**ユーザー名**と**パスワード**の入力が可能なダイアログ ボックスを表示します。
  
 		public static string GetAuthorizationHeader()
         {
@@ -366,17 +366,17 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         Console.ReadKey();
 
 15. ソリューション エクスプローラーで、プロジェクト (**DataFactoryAPITestApp**) を展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。**System.Configuration** アセンブリのチェック ボックスをオンにして、**[OK]** をクリックします。
-16. コンソール アプリケーションをビルドします。メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。 
+16. コンソール アプリケーションをビルドします。メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
 16. Azure BLOB ストレージ内の adftutorial コンテナーに少なくとも 1 つのファイルが存在することを確認します。存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
 
         John, Doe
 		Jane, Doe
 	 
 17. メニューの **[デバッグ]**、**[デバッグの開始]** の順にクリックして、サンプルを実行します。**[Getting run details of a data slice]** が表示されている場合は、数分待機して、**Enter** を押します。
-18. Azure ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。 
-	- リンクされたサービス: **LinkedService\_AzureStorage** 
+18. Azure ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。
+	- リンクされたサービス: **LinkedService\_AzureStorage**
 	- データセット: **DatasetBlobSource** と **DatasetBlobDestination**
-	- パイプライン: **PipelineBlobSample** 
+	- パイプライン: **PipelineBlobSample**
 18. **adftutorial** コンテナーの **apifactoryoutput** フォルダーに出力ファイルが作成されることを確認します。
 
 
@@ -385,7 +385,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 
 
 [data-factory-introduction]: data-factory-introduction.md
-[adf-getstarted]: data-factory-get-started.md
+[adf-getstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
  
@@ -393,4 +393,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

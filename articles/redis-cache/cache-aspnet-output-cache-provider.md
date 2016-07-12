@@ -36,7 +36,7 @@ Redis 出力キャッシュ プロバイダー NuGet パッケージは、StackE
 NuGet パッケージによって、必要なアセンブリ参照がダウンロードされて追加されます。さらに、web.config ファイルには、ASP.NET アプリケーションが Redis 出力キャッシュ プロバイダーを使用するために必要な構成を記述した次のセクションが追加されます。
 
     <caching>
-      <outputCachedefaultProvider="MyRedisOutputCache">
+      <outputCachedefault Provider="MyRedisOutputCache">
         <providers>
           <!--
           <add name="MyRedisOutputCache"
@@ -50,7 +50,7 @@ NuGet パッケージによって、必要なアセンブリ参照がダウン�
             operationTimeoutInMilliseconds = "5000" [number]
           />
           -->
-          <add name="MyRedisOutputCache"type="Microsoft.Web.Redis.RedisOutputCacheProvider"host="127.0.0.1"accessKey="" ssl="false"/>
+          <add name="MyRedisOutputCache" type="Microsoft.Web.Redis.RedisOutputCacheProvider" host="127.0.0.1" accessKey="" ssl="false"/>
         </providers>
       </outputCache>
     </caching>
@@ -79,6 +79,6 @@ NuGet パッケージによって、必要なアセンブリ参照がダウン�
 
 ## 次のステップ
 
-「[ASP.NET Session State Provider for Azure Redis Cache (Azure Redis Cache の ASP.NET セッション状態プロバイダー)](cache-aspnet-session-state-provider.md)」を参照してください。
+「[Azure Redis Cache の ASP.NET セッション状態プロバイダー](cache-aspnet-session-state-provider.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

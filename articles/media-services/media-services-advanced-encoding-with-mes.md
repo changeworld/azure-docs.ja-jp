@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/19/2016"    
+	ms.date="06/22/2016"   
 	ms.author="juliako"/>
 
 
@@ -43,7 +43,7 @@
 
 		// Load the XML (or JSON) from the local file.
 	    string configuration = File.ReadAllText(fileName);  
-- エンコード タスクをジョブに追加します。 
+- エンコード タスクをジョブに追加します。
 - エンコードする入力資産を指定します。
 - エンコードされた資産が含まれる出力資産を作成します。
 - ジョブの進行状況を確認するイベント ハンドラーを追加します。
@@ -980,7 +980,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 - このコード スニペットと JSON プリセットは、2 つのビデオ ファイルを連結する例です。次の方法で、複数のビデオに拡張することができます。
 
 	1. task.InputAssets.Add() を繰り返し呼び出して複数のビデオを順に追加する。
-	2. 同じ順序でエントリを追加して、JSON の対応する "Sources" 要素を編集する。 
+	2. 同じ順序でエントリを追加して、JSON の対応する "Sources" 要素を編集する。
 
 
 ###.NET コード
@@ -1086,4 +1086,4 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

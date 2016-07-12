@@ -13,13 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="06/23/2016"
 	ms.author="priyamo"/>
 
 
 # OAuth 2.0 と Azure Active Directory を使用した Web アプリケーションへのアクセスの承認
-
-[AZURE.INCLUDE [active-directory-protocols](../../includes/active-directory-protocols.md)]
 
 Azure Active Directory (Azure AD) が OAuth 2.0 を使用することにより、ユーザーは Azure AD テナントの Web アプリケーションと Web API へのアクセスを承認することができます。本ガイドでは、オープンソース ライブラリを利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
 
@@ -47,22 +45,22 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
-&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&resource=https%3A%2F%2Fservice.contoso.com%2F
 &state=12345
 ```
 
 | パラメーター | | 説明 |
 | ----------------------- | ------------------------------- | --------------- |
-| テナント | 必須 | 要求パスの `{tenant}` 値を使用して、アプリケーションにサインインできるユーザーを制御できます。使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント非依存のトークンの場合) です。 |
+| テナント | 必須 | 要求パスの `{tenant}` 値を使用して、アプリケーションにサインインできるユーザーを制御できます。使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です。 |
 | client\_id | 必須 | Azure AD への登録時にアプリに割り当てられたアプリケーション ID。値は Azure の管理ポータルにあります。**[Active Directory]** をクリックしてディレクトリをクリックし、アプリケーションをクリックしてから **[構成]** をクリックします。 |
 | response\_type | 必須 | 承認コード フローでは `code` を指定する必要があります。 |
 | redirect\_uri | 推奨 | アプリ の redirect\_uri。アプリは、この URI で認証応答を送受信することができます。ポータルで登録したいずれかの redirect\_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。ネイティブ アプリとモバイル アプリでは、`urn:ietf:wg:oauth:2.0:oob` の既定値を使用します。 |
-| scope | 必須 | ユーザーに同意を求める[スコープ](active-directory-v2-scopes.md)の、スペースで区切られたリスト。 |
-| response\_mode | 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。`query` または `form_post` を指定できます。 |
-| state | 推奨 | 要求に含まれ、かつトークンの応答として返される値。任意の文字列を指定することができます。[クロスサイト リクエスト フォージェリ攻撃を防ぐために](http://tools.ietf.org/html/rfc6749#section-10.12)通常、ランダムに生成された一意の値が使用されます。この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
-| prompt | 省略可能 | ユーザーとの必要な対話の種類を指定します。現時点で有効な値は 'login'、'none'、'consent' だけです。`prompt=login` は、その要求でユーザーに資格情報の入力を強制させ、シングル サインオンを無効にします。`prompt=none` は反対に、ユーザーに対して対話形式のプロンプトを表示しません。シングル サインオンによって自動的に要求を完了できない場合、v2.0 エンドポイントはエラーを返します。`prompt=consent` では、ユーザーがサインインした後で OAuth 同意ダイアログが表示され、アプリへのアクセス許可の付与をユーザーに求めます。 |
+| response\_mode | 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。`query` または `form_post` が可能です。 |
+| state | 推奨 | 要求に含まれ、かつトークンの応答として返される値。[クロスサイト リクエスト フォージェリ攻撃を防ぐ](http://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
+| resource | 省略可能 | Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。Azure 管理ポータルで Web API のアプリケーション ID/URI を調べるには、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。 |
+| prompt | 省略可能 | ユーザーとの必要な対話の種類を指定します。<p> 有効な値は次のとおりです。<p> *login*: 再認証を求めるメッセージがユーザーに表示されます。<p> *consent*: ユーザーの同意は得られていますが、更新する必要があります。同意を求めるメッセージがユーザーに表示されます。<p> *admin\_consent*: 組織内の全ユーザーを代表して同意するよう求めるメッセージが管理者に表示されます。 |
 | login\_hint | 省略可能 | ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。多くの場合、アプリでは、`preferred_username` 要求を使用して前回のサインインからユーザー名を抽出しておくことで、再認証時にこのパラメーターを使用します。 |
-| domain\_hint | 省略可能 | `consumers` か `organizations` のいずれかを指定できます。これが含まれる場合、v2.0 のサインイン ページでユーザーが行う電子メール ベースの検出プロセスがスキップされ、ユーザー エクスペリエンスは若干簡素化されたものになります。多くの場合、アプリでは、前回のサインインから `tid` を抽出することで、再認証時にこのパラメーターを使用します。`tid` 要求の値が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合、`domain_hint=consumers` を使用する必要があります。それ以外の場合は、`domain_hint=organizations` を指定します。 |
+| domain\_hint | 省略可能 | ユーザーがサインインで使用することになるテナントまたはドメインについてのヒントを指定します。テナントの登録ドメインが domain\_hint の値となります。テナントがオンプレミスのディレクトリと連動している場合、AAD から、指定されたテナントのフェデレーション サーバーにリダイレクトされます。 |
 
 > [AZURE.NOTE] ユーザーが組織に所属している場合は、組織の管理者がユーザーに代わって同意または却下するか、あるいはユーザーに同意を許可することができます。そのユーザーは、管理者が許可した場合のみ承認を行うことができます。
 
@@ -73,10 +71,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 正常な応答は次のようになります。
 
 ```
-http://localhost:12345/?
-code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrqqf_ZT_p5uEAEJJ_nZ3UmphWygRNy2C3jJ239gV_DBnZ2syeg95Ki-374WHUP-i3yIhv5i-7KU2CEoPXwURQp6IVYMw-DjAOzn7C3JCu5wpngXmbZKtJdWmiBzHpcO2aICJPu1KvJrDLDP20chJBXzVYJtkfjviLNNW7l7Y3ydcHDsBRKZc3GuMQanmcghXPyoDg41g8XbwPudVh7uCmUponBQpIhbuffFP_tbV8SNzsPoFz9CLpBCZagJVXeqWoYMPe2dSsPiLO9Alf_YIe5zpi-zY4C3aLw5g9at35eZTfNd0gBRpR5ojkMIcZZ6IgAA
-&state=12345
-&session_state=733ad279-b681-49c3-9215-951abf94d2c5
+GET  HTTP/1.1 302 Found
+Location: http://localhost/myapp/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrqqf_ZT_p5uEAEJJ_nZ3UmphWygRNy2C3jJ239gV_DBnZ2syeg95Ki-374WHUP-i3yIhv5i-7KU2CEoPXwURQp6IVYMw-DjAOzn7C3JCu5wpngXmbZKtJdWmiBzHpcO2aICJPu1KvJrDLDP20chJBXzVYJtkfjviLNNW7l7Y3ydcHDsBRKZc3GuMQanmcghXPyoDg41g8XbwPudVh7uCmUponBQpIhbuffFP_tbV8SNzsPoFz9CLpBCZagJVXeqWoYMPe2dSsPiLO9Alf_YIe5zpi-zY4C3aLw5g9at35eZTfNd0gBRpR5ojkMIcZZ6IgAA&session_state=7B29111D-C220-4263-99AB-6F6E135D75EF&state=D79E5777-702E-4260-9A62-37F75FF22CCE
 ```
 
 | パラメーター | 説明 |
@@ -84,8 +80,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrqqf_ZT_p5uEAEJJ_nZ3Umph
 | admin\_consent | 管理者が同意要求プロンプトに同意した場合、値は True です。|
 | code | アプリケーションが要求した承認コード。アプリケーションは承認コードを使用して、対象リソースのアクセス トークンを要求します。 |
 | session\_state | 現在のユーザー セッションを識別する一意の値。この値は GUID ですが、検査なしで渡される不透明な値として扱う必要があります。 |
-| state | 要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。要求に含まれる state の値をアプリケーション側で確認する必要があります。
-要求に state パラメーターが含まれていた場合、同じ値が応答にも含まれます。要求と応答に含まれる state の値が同一であることをアプリケーション側で確認することをお勧めします。
+| state | 要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。応答を使用する前に、要求と応答に含まれる state の値が同一であることをアプリケーション側で確認することをお勧めします。クライアントに対する[クロスサイト リクエスト フォージェリ (CSRF) 攻撃](https://tools.ietf.org/html/rfc6749#section-10.12)を検出するのに役立ちます。  
 
 ### エラー応答
 
@@ -97,6 +92,26 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
+| パラメーター | 説明 |
+|-----------|-------------|
+| error | 「[OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)](http://tools.ietf.org/html/rfc6749)」のセクション 5.2 で定義されているエラー コード値。次の表で、Azure AD が返すエラー コードについて説明します。 |
+| error\_description | エラーの詳しい説明。このメッセージはエンドユーザー向けではありません。 |
+| state | state 値は、ランダムに生成された再利用されない値で、クロスサイト リクエスト フォージェリ (CSRF) 攻撃を防ぐために、要求で送信され、応答で返されます。 |
+
+#### 承認エンドポイント エラーのエラー コード
+
+次の表で、エラー応答の `error` パラメーターで返される可能性のあるさまざまなエラー コードを説明します。
+
+| エラー コード | 説明 | クライアント側の処理 |
+|------------|-------------|---------------|
+| invalid\_request | 必要なパラメーターが不足しているなどのプロトコル エラーです。 | 要求を修正し再送信します。これは、開発エラーであり、通常は初期テスト中に発生します。|
+| unauthorized\_client | クライアント アプリケーションは、認証コードの要求を許可されていません。 | これは通常、クライアント アプリケーションが Azure AD に登録されていない、またはユーザーの Azure AD テナントに追加されていないときに発生します。アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
+| access\_denied | リソースの所有者が同意を拒否しました。 | クライアント アプリケーションは、ユーザーが同意しないと続行できないことを、ユーザーに通知できます。 |
+| unsupported\_response\_type | 承認サーバーは要求に含まれる応答の種類をサポートしていません。 | 要求を修正し再送信します。これは、開発エラーであり、通常は初期テスト中に発生します。|
+|server\_error | サーバーで予期しないエラーが発生しました。 | 要求をやり直してください。これらのエラーは一時的な状況によって発生します。クライアント アプリケーションは、一時的なエラーのため応答が遅れることをユーザーに説明できます。 |
+| temporarily\_unavailable | サーバーが一時的にビジー状態であるため、要求を処理できません。 | 要求をやり直してください。クライアント アプリケーションは、一時的な状況が原因で応答が遅れることをユーザーに説明できます。 |
+| invalid\_resource |対象のリソースは、存在しない、Azure AD が見つけられない、または正しく構成されていないために無効です。| これは、リソース (存在する場合) がテナントで構成されていないことを示します。アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
+
 ## 承認コードを使用してアクセス トークンを要求する
 
 承認コードを取得しユーザーからアクセス許可を得たら、POST 要求を `/token` エンドポイントに送信することで、目的のリソースのアクセス トークンのためにコードを使うことができます。
@@ -107,26 +122,32 @@ error=access_denied
 POST /{tenant}/oauth2/token HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
+grant_type=authorization_code
+&client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
+&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrqqf_ZT_p5uEAEJJ_nZ3UmphWygRNy2C3jJ239gV_DBnZ2syeg95Ki-374WHUP-i3yIhv5i-7KU2CEoPXwURQp6IVYMw-DjAOzn7C3JCu5wpngXmbZKtJdWmiBzHpcO2aICJPu1KvJrDLDP20chJBXzVYJtkfjviLNNW7l7Y3ydcHDsBRKZc3GuMQanmcghXPyoDg41g8XbwPudVh7uCmUponBQpIhbuffFP_tbV8SNzsPoFz9CLpBCZagJVXeqWoYMPe2dSsPiLO9Alf_YIe5zpi-zY4C3aLw5g9at35eZTfNd0gBRpR5ojkMIcZZ6IgAA
+&redirect_uri=https%3A%2F%2Flocalhost%2Fmyapp%2F
+&resource=https%3A%2F%2Fservice.contoso.com%2F
+&client_secret=p@ssw0rd
 
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
-&code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
-&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-&grant_type=authorization_code
-&client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: client_secret only required for web apps
+//NOTE: client_secret only required for web apps
 ```
 
 | パラメーター | | 説明 |
 | ----------------------- | ------------------------------- | --------------------- |
-| テナント | 必須 | 要求パスの `{tenant}` 値を使用して、アプリケーションにサインインできるユーザーを制御できます。使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント非依存のトークンの場合) です。 |
+| テナント | 必須 | 要求パスの `{tenant}` 値を使用して、アプリケーションにサインインできるユーザーを制御できます。使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です。 |
 | client\_id | 必須 | Azure AD への登録時にアプリに割り当てられたアプリケーション ID。値は Azure クラシック ポータルにあります。**[Active Directory]** をクリックしてディレクトリをクリックし、アプリケーションをクリックしてから **[構成]** をクリックします。 |
 | grant\_type | 必須 | 承認コード フローでは `authorization_code` を指定する必要があります。 |
-| code | 必須 | 前のセクションで取得した `authorization_code` 。 |
+| code | 必須 | 前のセクションで取得した `authorization_code`。 |
 | redirect\_uri | 必須 | `authorization_code` を取得するために使用したのと同じ `redirect_uri` 値。 |
 | client\_secret | Web アプリの場合は必須 | アプリ登録ポータルで作成した、アプリケーションのシークレット。ネイティブ アプリでは使用しないでください。デバイスに client\_secret を確実に保存することができません。Web アプリや Web API では `client_secret` をサーバー側で安全に保存する機能が備わっており、指定する必要があります。 |
-
+| resource | 承認コード要求で指定された場合は必須、それ以外の場合は省略可 | Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。
+Azure 管理ポータルでアプリケーション ID/URI を調べるには、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。
 
 ### 成功応答
+
+成功応答時には Azure AD からアクセス トークンが返されます。クライアント アプリケーションからのネットワーク呼び出しとこれに関連する遅延時間を最小限に抑えるために、クライアント アプリケーションは OAuth 2.0 応答で指定されているトークンの有効期間中、アクセス トークンをキャッシュする必要があります。トークンの有効期間を決定するには、`expires_in` または `expires_on` のいずれかのパラメーター値を使用します。
+
+Web API リソースから `invalid_token` エラー コードが返された場合、リソースが、トークンの有効期限が切れていると判断した可能性があります。クライアントとリソースのクロック時間が異なる (「時間のずれ」として知られている) 場合、トークンがクライアント キャッシュからクリアされる前に、リソースがトークンの期限が切れていると認識することがあります。このような場合は、計算上の有効期間内である場合でも、キャッシュからトークンをクリアします。
 
 正常な応答は次のようになります。
 
@@ -147,8 +168,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | パラメーター | 説明 |
 | ----------------------- | ------------------------------- |
 | access\_token | 要求されたアクセス トークン。アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。 |
-| token\_type | トークン タイプ値を指定します。Azure AD でサポートされるのは Bearer タイプのみです。ベアラ― トークンに関する詳細については、「[OAuth2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth2.0 承認フレームワーク: ベアラ―トークンの使用について (RFC 6750))](http://www.rfc-editor.org/rfc/rfc6750.txt)」を参照してください。 |
+| token\_type | トークン タイプ値を指定します。Azure AD でサポートされるのは Bearer タイプのみです。ベアラー トークンに関する詳細については、「[OAuth2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth2.0 承認フレームワーク: ベアラー トークンの使用について (RFC 6750))](http://www.rfc-editor.org/rfc/rfc6750.txt)」を参照してください。 |
 | expires\_in | アクセス トークンの有効期間 (秒)。 |
+| expires\_on | アクセス トークンの有効期限が切れる日時。日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
+| resource | Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。|
 | scope | クライアント アプリケーションに付与される偽装アクセス許可。既定のアクセス許可は `user_impersonation` です。保護されたリソースの所有者は、別の値を Azure AD に登録できます。|
 | refresh\_token | OAuth 2.0 更新トークン。現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得することができます。更新トークンは有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 |
 | id\_token | 無署名の JSON Web トークン (JWT)。このトークンのセグメントを base64Url でデコードすることによって、サインインしたユーザーに関する情報を要求することができます。この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 |
@@ -178,7 +201,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }.
 ```
 
-`id_token` パラメーターには、以下の要求の種類があります。JSON Web トークンに関する詳細については、「[JWT IETF draft specification (JWT IETF ドラフト仕様) ](http://go.microsoft.com/fwlink/?LinkId=392344)」を参照してください 。トークンの種類と要求の詳細については、「[サポートされているトークンとクレームの種類](active-directory-token-and-claims.md)」を参照してください。
+`id_token` パラメーターには、以下の要求の種類があります。JSON Web トークンに関する詳細については、「[JWT IETF draft specification (JWT IETF ドラフト仕様)](http://go.microsoft.com/fwlink/?LinkId=392344)」を参照してください。トークンの種類と要求の詳細については、「[サポートされているトークンとクレームの種類](active-directory-token-and-claims.md)」を参照してください。
 
 | 要求の種類 | 説明 |
 |------------|-------------|
@@ -197,6 +220,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | ver | バージョン。JWT トークンのバージョンで、通常は 1.0 です。 |
 
 ### エラー応答
+
+クライアントがトークン発行エンドポイントを直接呼び出すため、トークン発行エンドポイントは HTTP エラー コードです。HTTP 状態コードだけでなく、Azure AD トークン発行エンドポイントも、エラーを説明するオブジェクトを含む JSON ドキュメントを返します。
 
 エラー応答の例は次のようになります。
 
@@ -222,9 +247,33 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | trace\_id | 診断に役立つ、要求の一意の識別子。 |
 | correlation\_id | コンポーネント間での診断に役立つ、要求の一意の識別子。|
 
+#### HTTP 状態コード
+
+次の表に、トークン発行エンドポイントが返す HTTP 状態コードを示します。場合によっては、エラー コードで十分に応答が説明されることがありますが、エラーの場合は、付属の JSON ドキュメントを解析し、そのエラー コードを確認する必要があります。
+
+| HTTP コード | 説明 |
+|-----------|-------------|
+| 400 | 既定の HTTP コード。ほとんどの場合に使用され、通常は、形式が正しくない要求が原因です。要求を修正し再送信します。 |
+| 401 | 認証に失敗しました。たとえば、要求に client\_secret パラメーターがありません。|
+| 403 | 承認に失敗しました。たとえば、ユーザーにリソースにアクセスするためのアクセス許可がありません。 |
+| 500 | サービスで内部エラーが発生しました。要求をやり直してください。 |
+
+#### トークン エンドポイント エラーのエラー コード
+
+| エラー コード | 説明 | クライアント側の処理 |
+|------------|-------------|---------------|
+| invalid\_request | 必要なパラメーターが不足しているなどのプロトコル エラーです。 | 要求を修正し再送信します。 |
+| invalid\_grant | 承認コードが無効であるか、または有効期限切れです。 | `/authorize` エンドポイントに対して改めて要求を試行します。 |
+| unauthorized\_client | 認証されたクライアントは、この承認付与の種類を使用する権限がありません。 | これは通常、クライアント アプリケーションが Azure AD に登録されていない、またはユーザーの Azure AD テナントに追加されていないときに発生します。アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
+| invalid\_client | クライアント認証に失敗しました。 | クライアント資格情報が有効ではありません。修正するには、アプリケーション管理者が資格情報を更新します。 |
+| unsupported\_grant\_type | 承認サーバーが承認付与の種類をサポートしていません。 | 要求の付与の種類を変更します。この種のエラーは、開発時にのみ発生し、初期テスト中に検出する必要があります。 |
+| invalid\_resource | 対象のリソースは、存在しない、Azure AD が見つけられない、または正しく構成されていないために無効です。 | これは、リソース (存在する場合) がテナントで構成されていないことを示します。アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
+| interaction\_required | 要求にユーザーの介入が必要です。たとえば、追加の認証手順が必要です。 | 同じリソースで要求を再試行します。 |
+| temporarily\_unavailable | サーバーが一時的にビジー状態であるため、要求を処理できません。 | 要求をやり直してください。クライアント アプリケーションは、一時的な状況が原因で応答が遅れることをユーザーに説明できます。|
+
 ## リソースにアクセスするためにアクセス トークンを使用します。
 
-`access_token` を無事取得したら、そのトークンを `Authorization` ヘッダーに追加することによって、Web API への要求に使用することができます。 [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) 仕様では、HTTP 要求でベアラー トークンを使用して、保護されたリソースにアクセスする方法について説明されています。
+`access_token` を無事取得したら、そのトークンを `Authorization` ヘッダーに追加することによって、Web API への要求に使用することができます。[RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) 仕様では、HTTP 要求でベアラー トークンを使用して、保護されたリソースにアクセスする方法について説明されています。
 
 ### 要求のサンプル
 
@@ -234,11 +283,44 @@ Host: service.contoso.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1THdqcHdBSk9NOW4tQSJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2UuY29udG9zby5jb20vIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvN2ZlODE0NDctZGE1Ny00Mzg1LWJlY2ItNmRlNTdmMjE0NzdlLyIsImlhdCI6MTM4ODQ0MDg2MywibmJmIjoxMzg4NDQwODYzLCJleHAiOjEzODg0NDQ3NjMsInZlciI6IjEuMCIsInRpZCI6IjdmZTgxNDQ3LWRhNTctNDM4NS1iZWNiLTZkZTU3ZjIxNDc3ZSIsIm9pZCI6IjY4Mzg5YWUyLTYyZmEtNGIxOC05MWZlLTUzZGQxMDlkNzRmNSIsInVwbiI6ImZyYW5rbUBjb250b3NvLmNvbSIsInVuaXF1ZV9uYW1lIjoiZnJhbmttQGNvbnRvc28uY29tIiwic3ViIjoiZGVOcUlqOUlPRTlQV0pXYkhzZnRYdDJFYWJQVmwwQ2o4UUFtZWZSTFY5OCIsImZhbWlseV9uYW1lIjoiTWlsbGVyIiwiZ2l2ZW5fbmFtZSI6IkZyYW5rIiwiYXBwaWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0yNzRhNzJhNzMwOWUiLCJhcHBpZGFjciI6IjAiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJhY3IiOiIxIn0.JZw8jC0gptZxVC-7l5sFkdnJgP3_tRjeQEPgUn28XctVe3QqmheLZw7QVZDPCyGycDWBaqy7FLpSekET_BftDkewRhyHk9FW_KeEz0ch2c3i08NGNDbr6XYGVayNuSesYk5Aw_p3ICRlUV1bqEwk-Jkzs9EEkQg4hbefqJS6yS1HoV_2EsEhpd_wCQpxK89WPs3hLYZETRJtG5kvCCEOvSHXmDE6eTHGTnEgsIk--UlPe275Dvou4gEAwLofhLDQbMSjnlV5VLsjimNBVcSRFShoxmQwBJR_b2011Y5IuD6St5zPnzruBbZYkGNurQK63TJPWmRd3mbJsGM0mf3CUQ
 ```
 
+### エラー応答
+
+RFC 6750 を実装するセキュリティで保護されたリソースは、HTTP 状態コードを発行します。要求に認証資格情報が含まれていない、または要求にトークンがない場合は、応答に `WWW-Authenticate` ヘッダーが含まれます。要求が失敗したときに、リソース サーバーは HTTP 状態コードとエラー コードを含む応答を返します。
+
+次に、クライアント要求にベアラー トークンが含まれていないときの失敗応答の一例を示します。
+
+```
+HTTP/1.1 401 Unauthorized
+WWW-Authenticate: Bearer authorization_uri="https://login.window.net/contoso.com/oauth2/authorize",  error="invalid_token",  error_description="The access token is missing.",
+```
+
+#### エラーのパラメーター
+
+| パラメーター | 説明 |
+|-----------|-------------|
+| authorization\_uri | 承認サーバーの URI (物理エンドポイント)。この値は、探索エンドポイントからサーバーの詳細を取得するための、ルックアップ キーとしても使用します。<p><p> クライアントは、承認サーバーが信頼されていることを検証する必要があります。リソースが Azure AD によって保護されている場合は、URL が https://login.windows.net または Azure AD がサポートする別のホスト名で始まることを確認するだけで十分です。テナント固有のリソースは、テナント固有の承認 URI を常に返すはずです。 |
+| error | 「[OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)](http://tools.ietf.org/html/rfc6749)」のセクション 5.2 で定義されているエラー コード値。|
+| error\_description | エラーの詳しい説明。このメッセージはエンドユーザー向けではありません。|
+| resource\_id | リソースの一意の識別子を返します。クライアント アプリケーションは、リソースのトークンを要求するときに、この識別子を `resource` パラメーターの値として使用できます。<p><p> クライアント アプリケーションにとってこの値を確認することは非常に重要です。確認しないと、悪意のあるサービスが**権限昇格**攻撃を仕掛ける可能性があります。<p><p> 攻撃を防止するための推奨方法として、`resource_id` と、アクセスしている Web API URL のベースが一致していることを確認します。たとえば、https://service.contoso.com/data にアクセスしている場合は、`resource_id` は htttps://service.contoso.com/ になります。クライアント アプリケーションは、ID を検証する信頼性の高い代替方法がない限り、ベース URL で始まらない `resource_id` を拒否する必要があります。 |
+
+#### ベアラー スキームのエラー コード
+
+RFC 6750 仕様では、応答で WWW-Authenticate ヘッダーとベアラー スキームを使用するリソースのために、次のエラーが定義されています。
+
+| HTTP 状態コード | エラー コード | 説明 | クライアント側の処理 |
+|------------------|------------|-------------|---------------|
+| 400 | invalid\_request | 要求の形式が正しくありません。たとえば、パラメーターがない、または同じパラメーターを 2 回使用している可能性があります。 | エラーを修正して、要求を再試行してください。この種のエラーは、開発時にのみ発生し、初期テスト中に検出する必要があります。 |
+| 401 | invalid\_token | アクセス トークンがない、無効である、または取り消されました。error\_description パラメーターの値で追加の詳細情報が提供されます。 | 承認サーバーから新しいトークンを要求します。新しいトークンが失敗すると、予期しないエラーが発生しました。ユーザーにエラー メッセージを送信し、ランダムな遅延後に再試行します。 |
+| 403 | insufficient\_scope | アクセス トークンに、リソースにアクセスするために必要な偽装アクセス許可が含まれていません。 | 新しい承認要求を承認エンドポイントに送信します。応答にスコープのパラメーターが含まれている場合は、リソースへの要求でそのスコープ値を使用します。 |
+| 403 | insufficient\_access | トークンのサブジェクトに、リソースにアクセスするために必要なアクセス許可がありません。 | ユーザーに別のアカウントの使用か、指定のリソースへのアクセス許可の要求を求めるメッセージを表示します。 |
+
 ## アクセス トークンの更新
 
 アクセス トークンは有効期間が短く、期限が切れた後もリソースにアクセスし続けるためにはトークンを更新する必要があります。`access_token` を更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。このとき、`code` の代わりに `refresh_token` を指定します。
 
-更新トークンの有効期間は指定されておらず、ポリシー設定や、Azure AD が承認コードの付与を取り消す日時によって変動します。アプリケーションで新しいアクセス トークンの要求が失敗した場合を予想し、対応する必要があります。この場合、新しいアクセス トークンを要求するコードに戻ります。
+更新トークンには、指定された有効期間はありません。通常、更新トークンの有効期間は比較的長いです。ただし、場合によっては、更新トークンの有効期限が切れる、失効する、または目的の操作のための十分な特権がないことがあります。クライアント アプリケーションは、トークン発行エンドポイントから返されるエラーを予期して正しく処理する必要があります。
+
+更新トークン エラーを含む応答を受信したときは、現在の更新トークンを破棄し、新しい認証コードまたはアクセス トークンを要求します。特に、認証コード付与フロー内で更新トークンを使用しているときに `interaction_required` または `invalid_grant` エラー コードを含む応答を受信した場合は、更新トークンを破棄し、新しい認証コードを要求します。
 
 更新トークンを使って新しいアクセス トークンを取得する**テナント固有**のエンドポイント (**共通**エンドポイントの利用も可能) への要求の例は次のようになります。
 
@@ -297,4 +379,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-<!---HONumber=AcomDC_0608_2016-->
+| パラメーター | 説明 |
+| ----------------------- | ------------------------------- |
+| error | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
+| error\_description | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
+| error\_codes | 診断に役立つ STS 固有のエラー コードの一覧。 |
+| timestamp | エラーが発生した時刻。 |
+| trace\_id | 診断に役立つ、要求の一意の識別子。 |
+| correlation\_id | コンポーネント間での診断に役立つ、要求の一意の識別子。|
+
+エラー コードとクライアントに推奨される対処法については、「[トークン エンドポイント エラーのエラー コード](#error-codes-for-token-endpoint-errors)」を参照してください。
+
+<!---HONumber=AcomDC_0629_2016-->

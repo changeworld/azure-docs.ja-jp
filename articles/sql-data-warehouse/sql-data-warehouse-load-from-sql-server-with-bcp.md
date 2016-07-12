@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/08/2016"
+   ms.date="06/30/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 
@@ -182,16 +182,16 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 bcp の **queryout** 関数を使用すると、テーブル全体をエクスポートする代わりに、クエリの結果をエクスポートすることができます。
 
 ## 次のステップ
-読み込みの概要については、「[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)][]」を参照してください。開発に関するその他のヒントについては、「[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][]」をご覧ください。SQL Data Warehouse でのテーブルの作成の詳細については、[テーブルのデザイン][]に関する記事または [CREATE TABLE 構文][]に関するページを参照してください。
+読み込みの概要については、「[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)][]」を参照してください。開発に関するその他のヒントについては、「[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][]」をご覧ください。SQL Data Warehouse でのテーブルの作成の詳細については、[テーブルの概要][]に関する記事または [CREATE TABLE 構文][]に関するページを参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
 
-[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)]: sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)]: sql-data-warehouse-overview-develop.md
-[テーブルのデザイン]: sql-data-warehouse-develop-table-design.md
-[統計]: sql-data-warehouse-develop-statistics.md
+[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)]: ./sql-data-warehouse-overview-develop.md
+[テーブルの概要]: ./sql-data-warehouse-tables-overview.md
+[統計]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
@@ -200,4 +200,4 @@ bcp の **queryout** 関数を使用すると、テーブル全体をエクス�
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0706_2016-->

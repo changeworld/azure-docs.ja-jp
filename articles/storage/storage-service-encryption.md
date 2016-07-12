@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="06/23/2016"
 	ms.author="robinsh"/>
 
 # Azure Storage Service Encryption for Data at Rest (プレビュー)
@@ -25,7 +25,7 @@ Azure Storage Service Encryption (SSE) for Data at Rest は、データの安全
 ## 概要
 
 
-Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。アプリケーションと Azure の間で送信されるデータは、[クライアント側暗号化](storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。Azure Storage の新しい機能である Storage Service Encryption は、ブロック BLOB、ページ BLOB、追加 BLOB をサポートする Azure Storage に書き込まれるときにデータを暗号化します。この機能は、Azure Resource Manager (ARM) デプロイ モデルを使用する新しいストレージ アカウントに対して有効にでき、すべての冗長性レベル (LRS、ZRS、GRS、RA-GRS) で利用できます。Storage Service Encryption は、Standard Storage と Premium Storage の両方で使用でき、暗号化、復号化、キー管理を完全に透過的な方法で処理します。現在利用できるブロック暗号化の中でも最強レベルの 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)によってすべてのデータを暗号化します。後の「プレビュー」セクションでは、Storage Service Encryption のプレビュー プログラムの使用方法を詳しく説明します。
+Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。アプリケーションと Azure の間で送信されるデータは、[クライアント側暗号化](storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。Azure Storage の新しい機能である Storage Service Encryption は、ブロック BLOB、ページ BLOB、追加 BLOB をサポートする Azure Storage に書き込まれるときにデータを暗号化します。この機能は、Azure Resource Manager デプロイメント モデルを使用する新しいストレージ アカウントに対して有効にでき、すべての冗長性レベル (LRS、ZRS、GRS、RA-GRS) で利用できます。Storage Service Encryption は、Standard Storage と Premium Storage の両方で使用でき、暗号化、復号化、キー管理を完全に透過的な方法で処理します。現在利用できるブロック暗号化の中でも最強レベルの 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)によってすべてのデータを暗号化します。後の「プレビュー」セクションでは、Storage Service Encryption のプレビュー プログラムの使用方法を詳しく説明します。
 
 次のスクリーンショットは、[Azure ポータル](https://azure.portal.com)での Storage Service Encryption の設定画面です。この画面では、[暗号化] をクリックして続行します。
 
@@ -37,7 +37,11 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 
 ##可用性
 
-現在、この機能は、東アジアと西ヨーロッパでは Standard Storage に対して、東日本では Premium Storage に対して使用できることに注意してください。他のリージョンに展開されたら、このドキュメントを更新します。
+Standard Storage の場合、この機能は現在、米国中部、米国西部、東アジア、および西ヨーロッパで使用できます。
+
+Premium Storage の場合、この機能は現在、米国中部、米国西部、および東日本で使用できます。
+
+他のリージョンに展開されたら、このドキュメントを更新します。
 
 ##暗号化のシナリオ
 
@@ -53,21 +57,21 @@ Storage Service Encryption は、ストレージ アカウント レベルで有
 
 -   クラシック ストレージ アカウントの暗号化はサポートされていません。
 
--   ARM ストレージ アカウントに移行されたクラシック ストレージ アカウントの暗号化はサポートされていません。
+-   Resource Manager ストレージ アカウントに移行されたクラシック ストレージ アカウントの暗号化はサポートされていません。
 
--   既存のデータ - SSE は暗号化有効化後に新しく作成されたデータだけを暗号化します。たとえば、暗号化を有効にしないで新しい ARM ストレージ アカウントを作成し、BLOB またはアーカイブ済み VHD をそのストレージ アカウントにアップロードした後、SSE を有効にした場合、それらの BLOB は、再作成またはコピーしない限り、暗号化されません。
+-   既存のデータ - SSE は暗号化有効化後に新しく作成されたデータだけを暗号化します。たとえば、暗号化を有効にしないで新しい Resource Manager ストレージ アカウントを作成し、BLOB またはアーカイブ済み VHD をそのストレージ アカウントにアップロードした後、SSE を有効にした場合、それらの BLOB は、再作成またはコピーしない限り、暗号化されません。
 
--   Marketplace のサポート - (Azure ポータル) (https://portal.azure.com)、PowerShell、および Azure CLI を使用して Marketplace から作成された VM の暗号化を有効にします。VHD の基本イメージは暗号化されません。ただし、VM が稼働した後の書き込みはすべて暗号化されます。
+-   Marketplace のサポート - Azure ポータル (https://portal.azure.com)、PowerShell、および Azure CLI を使用して Marketplace で作成された VM の暗号化を有効にします。VHD の基本イメージは暗号化されません。ただし、VM が稼働した後の書き込みはすべて暗号化されます。
 
 -   テーブル、キュー、ファイルのデータは暗号化されません。
 
-##Preview
+##プレビュー
 
-この機能は、Azure Resource Manager デプロイ モデルを使用して新しく作成される Azure ストレージ アカウントに対してのみサポートされます。クラシック ストレージ アカウントはサポートされません。この新機能を使用するには、PowerShell コマンドレットを使用してサブスクリプションを登録する必要があります。サブスクリプションが承認されると、承認されたサブスクリプションのストレージ アカウントに対して SSE を有効にすることができます。ほとんどのプレビューと同様に、一般公開されるまではこの機能を運用環境に使用しないでください。Yammer で Storage Service Encryption プレビュー グループに参加して、エクスペリエンスに関するフィードバックを提供できます。
+この機能は、新しく作成される Resource Manager ストレージ アカウントに対してのみサポートされます。クラシック ストレージ アカウントはサポートされません。この新機能を使用するには、PowerShell コマンドレットを使用してサブスクリプションを登録する必要があります。サブスクリプションが承認されると、承認されたサブスクリプションのストレージ アカウントに対して SSE を有効にすることができます。ほとんどのプレビューと同様に、一般公開されるまではこの機能を運用環境に使用しないでください。Yammer で Storage Service Encryption プレビュー グループに参加して、エクスペリエンスに関するフィードバックを提供できます。
 
 ### プレビューへの登録
 
--   [Azure PowerShell コマンドレットをインストールします](../powershell-install-configure.md)。 
+-   [Azure PowerShell コマンドレットをインストールします](../powershell-install-configure.md)。
 
 -   Windows 10 で、管理者として PowerShell を開きます。
 
@@ -95,7 +99,7 @@ Storage Service Encryption は、ストレージ アカウント レベルで有
 
 [Azure ポータル](https://portal.azure.com)を使用して、暗号化を有効にできます。
 
-> [AZURE.NOTE] ストレージ アカウントの Storage Service Encryption をプログラムで有効または無効にする場合は、[Azure Storage Resource Provider REST API](https://msdn.microsoft.com/library/azure/mt163683.aspx) を使用します。この機能は、[.NET 用 Storage Resource Provider クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt131037.aspx)、Azure PowerShell、Azure CLI にまもなく追加される予定です。
+> [AZURE.NOTE] ストレージ アカウントの Storage Service Encryption をプログラムを使用して有効または無効にする場合は、[Azure Storage Resource Provider REST API](https://msdn.microsoft.com/library/azure/mt163683.aspx) を使用します。この機能は、[.NET 用 Storage Resource Provider クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt131037.aspx)、Azure PowerShell、Azure CLI にまもなく追加される予定です。
 
 ###手順 4: ストレージ アカウントにデータをコピーする
 
@@ -113,7 +117,7 @@ AzCopy は、最適なパフォーマンスの単純なコマンドを使用し�
 
 #### ストレージ エクスプローラーの使用
 
-ストレージ エクスプローラーを使用すると、ストレージ アカウントの作成、データのアップロードとダウンロード、BLOB の内容の表示、ディレクトリ内の移動を行うことができます。これらの操作の多くでは、クラシック ストレージ アカウントと ARM ストレージ アカウントの両方がサポートされています。
+ストレージ エクスプローラーを使用すると、ストレージ アカウントの作成、データのアップロードとダウンロード、BLOB の内容の表示、ディレクトリ内の移動を行うことができます。これらの操作の多くでは、クラシック ストレージ アカウントと Resource Manager ストレージ アカウントの両方がサポートされています。
 
 これらのいずれかを使用して、暗号化を有効にした状態でストレージ アカウントに BLOB をアップロードできます。一部のストレージ エクスプローラーでは、SSE が有効になっている新しいストレージ アカウントに既存のストレージ アカウントからデータをコピーすることもできます。
 
@@ -143,19 +147,19 @@ SSE が広く利用できるようになった後は、ストレージ クライ
 
 **Q: 既存のクラシック ストレージ アカウントがあります。このアカウントで SSE を有効にできますか?**
 
-A: いいえ。プレビューでは、SSE は新しく作成される ARM ストレージ アカウントでのみサポートされます。
+A: いいえ。プレビューでは、SSE は新しく作成される Resource Manager ストレージ アカウントでのみサポートされます。
 
 **Q: クラシック ストレージ アカウントのデータを暗号化するにはどうすればよいですか?**
 
-A: 新しい ARM ストレージ アカウントを作成し、[AzCopy](storage-use-azcopy.md) を使用して既存のクラシック ストレージ アカウントから新しく作成した ARM ストレージ アカウントにデータをコピーします。
+A: 新しい Resource Manager ストレージ アカウントを作成し、[AzCopy](storage-use-azcopy.md) を使用して既存のクラシック ストレージ アカウントから新しく作成した Resource Manager ストレージ アカウントにデータをコピーします。
 
-**Q: 既存の ARM ストレージ アカウントがあります。このアカウントで SSE を有効にできますか?**
+**Q: 既存の Resource Manager ストレージ アカウントがあります。このアカウントで SSE を有効にできますか?**
 
 A: SSE プレビュー期間中は、新しい SSE 機能にアクセスするには新しいアカウントを作成する必要があります。
 
-**Q: 既存の ARM ストレージ アカウント内に現在あるデータを暗号化できますか?**
+**Q: 既存の Resource Manager ストレージ アカウント内に現在あるデータを暗号化できますか?**
 
-A: 既存の ARM ストレージ アカウントがこのプレビューの発表前に作成された場合は、新しい ARM ストレージ アカウントを作成して、暗号化を有効にできます。その後、前のストレージ アカウントからデータをコピーすると、自動的に暗号化されます。一方、既存の ARM ストレージ アカウントがプレビュー発表後に作成されたもので、後から暗号化を有効にする場合は、Azure ポータルを使用してこのストレージ アカウントの暗号化を有効にした後、ストレージ アカウントに暗号化されていないデータを書き込み直すことができます。
+A: 既存の Resource Manager ストレージ アカウントがこのプレビューの発表前に作成された場合は、新しい Resource Manager ストレージ アカウントを作成して、暗号化を有効にできます。その後、前のストレージ アカウントからデータをコピーすると、自動的に暗号化されます。一方、既存の Resource Manager ストレージ アカウントがプレビュー発表後に作成されたもので、後から暗号化を有効にする場合は、Azure ポータルを使用してこのストレージ アカウントの暗号化を有効にした後、ストレージ アカウントに暗号化されていないデータを書き込み直すことができます。
 
 **Q: Premium Storage を使用しています。SSE を使用できますか?**
 
@@ -199,7 +203,7 @@ A: SSE は既定では有効になりません。Azure ポータルを使用し�
 
 **Q: この機能は Azure ドライブ暗号化とどのように違うのですか?**
 
-A: この機能は、Azure Blob Storage のデータの暗号化に使用されます。Azure Disk Encryption は、IaaS VM の OS ディスクとデータ ディスクの暗号化に使用されます。詳細については、「[Azure Storage security guide (Azure Storage セキュリティ ガイド)](storage-security-guide.md)」を参照してください。
+A: この機能は、Azure Blob Storage のデータの暗号化に使用されます。Azure Disk Encryption は、IaaS VM の OS ディスクとデータ ディスクの暗号化に使用されます。詳細については、[Storage セキュリティ ガイド](storage-security-guide.md)に関する記事を参照してください。
 
 **Q: SSE を有効にした後、ディスクで Azure Disk Encryption を有効にするとどうなりますか?**
 
@@ -223,6 +227,6 @@ A: Storage Service Encryption に関する問題は、[ssediscussions@microsoft.
 
 ##次のステップ
 
-Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。詳細については、「[Azure Storage security guide (Azure Storage セキュリティ ガイド)](storage-security-guide.md)」を参照してください。
+Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。詳細については、[Storage セキュリティ ガイド](storage-security-guide.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

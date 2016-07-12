@@ -1,20 +1,20 @@
 <properties
-   pageTitle="PowerShell で Service Bus と Event Hubs リソースを管理する"
-   description="PowerShell で Service Bus と Event Hubs リソースを作成し、管理する"
-   services="service-bus"
-   documentationCenter=".NET"
-   authors="sethmanheim"
-   manager="timlt"
-   editor=""/>
+    pageTitle="PowerShell で Service Bus と Event Hubs リソースを管理する | Microsoft Azure"
+    description="PowerShell で Service Bus と Event Hubs リソースを作成し、管理する"
+    services="service-bus"
+    documentationCenter=".NET"
+    authors="sethmanheim"
+    manager="timlt"
+    editor=""/>
 
 <tags
-   ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="03/09/2016"
-   ms.author="sethm"/>
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="06/24/2016"
+    ms.author="sethm"/>
 
 # PowerShell で Service Bus と Event Hubs リソースを管理する
 
@@ -276,4 +276,4 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 [.NET API for Service Bus]: https://msdn.microsoft.com/ja-JP/library/azure/mt419900.aspx
 [Azure PowerShell のインストールおよび構成に関するページ]: ../powershell-install-configure.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0629_2016-->

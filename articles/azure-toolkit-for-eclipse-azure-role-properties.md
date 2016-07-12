@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="05/04/2016" 
+    ms.date="06/24/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690945.aspx -->
@@ -279,8 +279,8 @@ Windows 上で Eclipse を使用している場合は、コンピューティン
 
 **[Cloud deployment]** セクションには、JDK パッケージのソースと種類に関して、使用しているオペレーティング システムに関係なく、次の 2 つのオプションがあります。
 
-* **[Deploy a 3rd party JDK package available on Azure]** 
-* **[Deploy from a custom download]** 
+* **[Deploy a 3rd party JDK package available on Azure]**
+* **[Deploy from a custom download]**
 
 **[Deploy a 3rd party JDK package available from Azure]** オプションを使用する場合:
 
@@ -323,7 +323,7 @@ Windows 上で Eclipse を使用している場合は、コンピューティン
 **[Deploy from a custom download]** オプションを使用する場合:
 
 1. 前の手順に従ってサーバーの種類が既に選択されていることを確認します。サーバーは選択したサーバーの種類と同じファミリに属している必要があるため、この選択で、カスタム ダウンロードからサーバーをデプロイする方法をプラグインに指示します。
-1. **[Deploy from a custom download]** チェックボックスをオンにします。Azure ストレージ アカウントからダウンロードする場合は、**[Storage account]** ボックスの一覧から目的のストレージ アカウントを選択します (**[Accounts]** リンクをクリックすると一覧内の項目を変更できます)。この操作によって **[URL]** ボックスに値の一部が入力されたら、サーバー ダウンロード ZIP に対する URL の残りの部分を手動で入力します (Azure Storage を使用する場合、URL 内の BLOB 名は小文字で表記する必要があります)。Azure Storage を使用しない場合は、**[Storage account]** ボックスの一覧の **[(none)]** を選択し、**[URL]** ボックスにサーバー ダウンロード ZIP の URL を入力します。通常この ZIP に、アプリケーション サーバーのインストール ディレクトリを表す子フォルダーが格納されます。たとえば、Apache Tomcat 7.0.35 の zip を使用している場合、zip 内には、**apache-tomcat-7.0.35** などのインストール ディレクトリを表す子フォルダーがあります。 
+1. **[Deploy from a custom download]** チェックボックスをオンにします。Azure ストレージ アカウントからダウンロードする場合は、**[Storage account]** ボックスの一覧から目的のストレージ アカウントを選択します (**[Accounts]** リンクをクリックすると一覧内の項目を変更できます)。この操作によって **[URL]** ボックスに値の一部が入力されたら、サーバー ダウンロード ZIP に対する URL の残りの部分を手動で入力します (Azure Storage を使用する場合、URL 内の BLOB 名は小文字で表記する必要があります)。Azure Storage を使用しない場合は、**[Storage account]** ボックスの一覧の **[(none)]** を選択し、**[URL]** ボックスにサーバー ダウンロード ZIP の URL を入力します。通常この ZIP に、アプリケーション サーバーのインストール ディレクトリを表す子フォルダーが格納されます。たとえば、Apache Tomcat 7.0.35 の zip を使用している場合、zip 内には、**apache-tomcat-7.0.35** などのインストール ディレクトリを表す子フォルダーがあります。
 1. ホーム ディレクトリの環境変数の値を指定します。この値は、ローカル アプリケーション サーバーがある場合に既定で使用される値になりますが、クラウドのアプリケーション サーバーがローカル アプリケーション サーバーと異なる場合は別の値を指定することができます。ただし、クラウド アプリケーション サーバーは、前に選択したサーバーの種類と同じファミリに属している必要があります。今後、クラウド アプリケーション サーバーの zip を更新する場合は、ホーム ディレクトリ設定を手動で変更するか、ローカル設定に合わせて変更することができます (ローカル アプリケーション サーバーも変更した場合)。
 1. **[OK]** をクリックして変更を保存します。
 
@@ -439,4 +439,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic719512]: ./media/azure-toolkit-for-eclipse-azure-role-properties/ic719512.png
 [ic719481]: ./media/azure-toolkit-for-eclipse-azure-role-properties/ic719481.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

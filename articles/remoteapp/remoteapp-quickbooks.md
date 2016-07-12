@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="04/05/2016" 
+    ms.date="06/27/2016" 
     ms.author="elizapo" />
 
 
@@ -29,9 +29,9 @@
 ## QuickBooks のデプロイ手順
 
 1. Azure VM を作成し、QuickBooks と QuickBooks データベース サーバーをインストールし、会社のファイルを Azure VM に格納します。ファイアウォールの規則を適切に構成します。
-2. [カスタム イメージ](remoteapp-imageoptions.md)に QuickBooks をインストールし、会社のファイルがある QuickBooks データベース サーバーをホストしている VM と同じ VNET 内に [Azure RemoteApp コレクション](remoteapp-collections.md) (クラウドまたはハイブリッド) を作成します。 
+2. [カスタム イメージ](remoteapp-imageoptions.md)に QuickBooks をインストールし、会社のファイルがある QuickBooks データベース サーバーをホストしている VM と同じ VNET 内に [Azure RemoteApp コレクション](remoteapp-collections.md) (クラウドまたはハイブリッド) を作成します。
 3.	QuickBooks アプリをユーザーに[発行](remoteapp-publish.md)します。
-4.	Azure RemoteApp がホストする QuickBooks クライアントを起動し、標準の Windows ネットワークキングを使用して QuickBooks データベース サーバーをホストするサーバーに移動し、会社のファイルを開きます。 
+4.	Azure RemoteApp がホストする QuickBooks クライアントを起動し、標準の Windows ネットワークキングを使用して QuickBooks データベース サーバーをホストするサーバーに移動し、会社のファイルを開きます。
 
 ## ドキュメントの参照
 
@@ -44,4 +44,4 @@
 
 ![QuickBooks + Azure RemoteApp のデプロイメント](./media/remoteapp-quickbooks/ra-quickbooks.png)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

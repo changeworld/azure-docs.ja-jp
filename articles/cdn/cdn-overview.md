@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="06/06/2016"
+	ms.date="07/05/2016"
 	ms.author="casoper"/>
 
 # Azure Content Delivery Network (CDN) の概要
@@ -78,6 +78,8 @@ CDN の概要については、「[Azure CDN の使用](./cdn-create-new-endpoin
 
 実際の CDN の効果については、[Build 2016 セッションのビデオ](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/)をご覧ください。
 
+[.NET](./cdn-app-dev-net.md) または [Node.js](./cdn-app-dev-node.md) を使用して Azure CDN を自動化する方法について学習します。
+
 料金情報については、[CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

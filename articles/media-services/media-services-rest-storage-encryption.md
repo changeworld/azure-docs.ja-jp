@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/02/2016"   
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -26,8 +26,8 @@ AES 256 ビット暗号化を使用してコンテンツをローカルに暗号
 - コンテンツ キーを作成します。
 - 資産を作成します。資産を作成するときに、AssetCreationOption を StorageEncryption に設定します。
 
-	暗号化された資産には、コンテンツ キーを関連付ける必要があります。
-- コンテンツ キーを資産にリンクします。  
+	 暗号化された資産には、コンテンツ キーを関連付ける必要があります。
+- コンテンツ キーを資産にリンクします。
 - AssetFile エンティティで暗号化関連のパラメーターを設定します。
  
 >[AZURE.NOTE]ストレージ暗号化資産を配信する場合は、資産の配信ポリシーを構成する必要があります。資産をストリームするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリームする必要があります。詳細については、「[資産配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
@@ -53,11 +53,11 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
 
 暗号化するアセットに関連付けるコンテンツ キーを生成する一般的な手順を次に示します。
 
-1. ストレージ暗号化の場合、32 バイトの AES キーがランダムに生成されます。 
+1. ストレージ暗号化の場合、32 バイトの AES キーがランダムに生成されます。
 
-	これがアセットのコンテンツ キーになります。つまりこのアセットに関連するファイルは、暗号化の際に同じコンテンツ キーを使う必要があるということです。 
+	これがアセットのコンテンツ キーになります。つまりこのアセットに関連するファイルは、暗号化の際に同じコンテンツ キーを使う必要があるということです。
 2.	[GetProtectionKeyId](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkeyid) メソッドと [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) メソッドをコールして、コンテンツ キーを暗号化するために必要な適切な X.509 証明書を取得します。
-3.	X.509 証明書の公開キーでコンテンツ キーを暗号化します。 
+3.	X.509 証明書の公開キーでコンテンツ キーを暗号化します。
 
 	Media Services .NET SDK では、暗号化の際に OAEP と RSA を使用します。具体的な .NET の例については、「[EncryptSymmetricKeyData function](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)」 (EncryptSymmetricKeyData 関数) を参照してください。
 4.	キー識別子とコンテンツ キーを使用して計算されたチェックサム値を作成します。次の .NET の例では、キー識別子の GUID 部とクリアなコンテンツ キーを使用して checksum を計算しています。
@@ -99,7 +99,7 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
 	---|---
 	ID | "nb:kid:UUID:<NEW GUID>" 形式を使用して生成する ContentKey ID です。
 	ContentKeyType | 整数によるこのコンテンツ キーの種類です。ストレージの暗号化には、値 1 を渡します。
-	EncryptedContentKey | 256 ビット (32 バイト) の値の新しいコンテンツ キー値を作成します。このキーは、GetProtectionKeyId および GetProtectionKey メソッド用に HTTP GET 要求を実行して Microsoft Azure Media Services から取得する、ストレージ暗号化 X.509 証明書を使用して暗号化します。たとえば、次の .NET コードを参照してください: **EncryptSymmetricKeyData** メソッドの定義は[こちら](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)にあります。
+	EncryptedContentKey | 256 ビット (32 バイト) の値の新しいコンテンツ キー値を作成します。このキーは、GetProtectionKeyId および GetProtectionKey メソッド用に HTTP GET 要求を実行して Microsoft Azure Media Services から取得する、ストレージ暗号化 X.509 証明書を使用して暗号化します。たとえば、次の .NET コードをご覧ください。**EncryptSymmetricKeyData** メソッドの定義は[こちら](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)にあります。
 	ProtectionKeyId | コンテンツ キーの暗号化に使用したストレージ暗号化 X.509 証明書の保護キー ID です。
 	ProtectionKeyType | コンテンツ キーの暗号化に使用した保護キーの暗号化の種類です。例では、この値には StorageEncryption(1) を使用しています。
 	Checksum |コンテンツ キー用に MD5 で計算されたチェックサムです。コンテンツ ID をコンテンツ キーで暗号化してコンピューティングします。コード例では、チェックサムの計算方法を示しています。
@@ -313,7 +313,7 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
 
 **AssetFile** インスタンスと実際のメディア ファイルは次の 2 つの異なるオブジェクトであることに注意してください。AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
-デジタル メディア ファイルを BLOB コンテナーにアップロードした後、**MERGE** HTTP 要求を使用して、メディア ファイル (このトピックでは表示されません) に関する情報とともに AssetFile を更新します。
+デジタル メディア ファイルを BLOB コンテナーにアップロードした後、**MERGE** HTTP 要求を使用して、メディア ファイルに関する情報とともに AssetFile を更新します (このトピックでは説明しません)。
 
 **HTTP 要求**
 
@@ -375,4 +375,4 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
 	   "ContentChecksum":null
 	}
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

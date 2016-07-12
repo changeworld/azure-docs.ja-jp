@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="big-compute"
- ms.date="04/13/2016"
+ ms.date="06/28/2016"
  ms.author="xpillons"/>
 
 # Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して STAR-CCM+ を実行する
@@ -286,7 +286,7 @@ STAR-CCM+ はメモリの帯域幅を使い切ってしまう可能性がある�
     exit ${RTNSTS}
 ```
 
-私たちが行ったテストでは、Power-On-Demand ライセンス トークンを使用しました。このトークンでは、**$CDLMD\_LICENSE\_FILE** 環境変数を ****1999@flex.cd-adapco.com** に設定し、コマンド ラインの **-podkey** オプションでキーを設定する必要があります。
+私たちが行ったテストでは、Power-On-Demand ライセンス トークンを使用しました。このトークンでは、**$CDLMD\_LICENSE\_FILE** 環境変数を **1999@flex.cd-adapco.com** に設定し、コマンド ラインの **-podkey** オプションでキーを設定する必要があります。
 
 このスクリプトは初期化処理を行った後、HPC Pack によって設定された **$CCP\_NODES\_CORES** 環境変数から、MPI ランチャーで使用されるホスト ファイルを作成するための一連のノードを抽出します。ジョブに使用される一連のコンピューティング ノード名が、このホスト ファイルに 1 行に 1 件ずつ記述されます。
 
@@ -345,4 +345,4 @@ Azure 上の Intel MPI では、MPI 関連のオプションを次のように�
 [hndeploy]: ./media/virtual-machines-linux-classic-hpcpack-cluster-starccm/hndeploy.png
 [clustermanager]: ./media/virtual-machines-linux-classic-hpcpack-cluster-starccm/ClusterManager.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

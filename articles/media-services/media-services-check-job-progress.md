@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/18/2016"    
+	ms.date="06/22/2016"   
 	ms.author="juliako"/>
 
 #方法: ジョブの進行状況をチェックする
@@ -119,7 +119,7 @@ Media Services 通知をリッスンする 1 つの一般的なシナリオは�
 Azure ストレージ キューを使用する Media Services アプリケーションを開発する場合は、次の点を考慮してください。
 
 - キュー サービスでは、先入先出法 (FIFO) の順次配送を保証しません。詳細については、「[Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」をご覧ください。
-- Azure ストレージ キューはプッシュ サービスではありません。キューをポーリングする必要があります。 
+- Azure ストレージ キューはプッシュ サービスではありません。キューをポーリングする必要があります。
 - キューの数に制限はありません。詳細については、「[Queue サービスの REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)」をご覧ください。
 - Azure ストレージ キューには、いくつかの制限事項や特性があります。詳細については、「[Azure キューと Service Bus キューの比較](https://msdn.microsoft.com/library/azure/hh767287.aspx)」の記事をご覧ください。
 
@@ -132,10 +132,10 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 1. エンコード ジョブに関する通知メッセージを受信するキューを作成します。
 1. キューにマップされる通知エンドポイントを作成します。
 1. ジョブに通知エンドポイントを添付し、エンコード ジョブを送信します。複数の通知エンドポイントをジョブに添付できます。
-1. この例では、ジョブ処理の最終状態のみを対象としているので、**NotificationJobState.FinalStatesOnly** を **AddNew** メソッドに渡します。 
+1. この例では、ジョブ処理の最終状態のみを対象としているので、**NotificationJobState.FinalStatesOnly** を **AddNew** メソッドに渡します。
 		
 		job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-1. NotificationJobState.All を渡す場合は、すべての状態変更通知 (キューに登録 -> スケジュール済み -> 処理中 -> 完了) を受信することが予想されます。ただし、前述のように、Azure ストレージ キュー サービスでは、順次配送を保証しません。タイムスタンプ プロパティ (次の例の EncodingJobMessage 型で定義) を使用してメッセージの順序を指定できます。通知メッセージを重複して受信する可能性があります。重複を確認するには、ETag プロパティ (EncodingJobMessage 型で定義) を使用してください。一部の状態変更通知がスキップされる可能性もあるので注意してください。 
+1. NotificationJobState.All を渡す場合は、すべての状態変更通知 (キューに登録 -> スケジュール済み -> 処理中 -> 完了) を受信することが予想されます。ただし、前述のように、Azure ストレージ キュー サービスでは、順次配送を保証しません。タイムスタンプ プロパティ (次の例の EncodingJobMessage 型で定義) を使用してメッセージの順序を指定できます。通知メッセージを重複して受信する可能性があります。重複を確認するには、ETag プロパティ (EncodingJobMessage 型で定義) を使用してください。一部の状態変更通知がスキップされる可能性もあるので注意してください。
 1. 10 秒ごとにキューをチェックし、ジョブが完了状態になるまで待機します。処理が終了したら、メッセージを削除します。
 1. キューと通知エンドポイントを削除します。
 
@@ -436,4 +436,4 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

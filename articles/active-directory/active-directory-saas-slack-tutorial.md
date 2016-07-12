@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と Slack の統合 | Microsoft Azure" 
     description="Azure Active Directory で Slack を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="06/29/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Slack の統合
   
@@ -38,7 +38,7 @@
 
 ###Slack のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-slack-tutorial/IC700993.png "Active Directory")
 
@@ -68,9 +68,9 @@
   
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、Slack で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Slack** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Slack** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-slack-tutorial/IC794982.png "Configure Single Sign-On")
 
@@ -78,9 +78,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-slack-tutorial/IC794983.png "Configure Single Sign-On")
 
-3.  [**アプリケーション URL の構成]** ページの **[Slack サインイン URL]** テキスト ボックスに、Slack テナントの URL (例: "**https://azuread.slack.com*")) を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Slack サインイン URL]** ボックスに、Slack テナントの URL (例: "*https://azuread.slack.com*") を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-slack-tutorial/IC794984.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-slack-tutorial/IC794984.png "アプリケーション URL の構成")
 
 4.  **[Slack でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、コンピューターで証明書ファイルをローカルに保存します。
 
@@ -100,19 +100,19 @@
 
     ![SAML 設定](./media/active-directory-saas-slack-tutorial/IC794988.png "SAML 設定")
 
-    1.  Azure ポータルで、**[Slack でのシングル サインオンの構成]** ダイアログ ページの **[SAML SSO URL]** の値をコピーし、**[SAML 2.0 Endpoint (HTTP)]** テキスト ボックスに貼り付けます。
-    2.  Azure ポータルで、**[Slack でのシングル サインオンの構成]** ダイアログ ページの **[発行者の URL]** の値をコピーし、**[Identity Provider Issuer]** テキスト ボックスに貼り付けます。
+    1.  Azure クラシック ポータルで、**[Slack でのシングル サインオンの構成]** ダイアログ ページの **[SAML SSO URL]** の値をコピーし、**[SAML 2.0 Endpoint (HTTP) (SAML 2.0 エンドポイント (HTTP))]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルで、**[Slack でのシングル サインオンの構成]** ダイアログ ページの **[発行者の URL]** の値をコピーし、**[ID プロバイダーの発行者]** ボックスに貼り付けます。
     3.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
     
-        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
     4.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[Public Certificate]** テキスト ボックスに貼り付けます。
     5.  **[Allow users to change their email address]** を選択解除します。
     6.  **[Allow users to choose their own username]** を選択します。
-    7.  **[Authentication for your team must be used by]** で、**[It’s optional]** を選択します。
+    7.  **[Authentication for your team must be used by (チームの認証の使用者)]** で、**[It’s optional (省略可能)]** を選択します。
     8.  **[Save Configuration]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-slack-tutorial/IC794989.png "Configure Single Sign-On")
 
@@ -128,7 +128,7 @@ Slack へのユーザー プロビジョニングの構成にあたって必要�
 
 ###ユーザーを Slack に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Slack** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -140,4 +140,4 @@ Slack へのユーザー プロビジョニングの構成にあたって必要�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0629_2016-->

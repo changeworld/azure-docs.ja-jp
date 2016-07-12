@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="get-started-article"
-	ms.date="06/01/2016"
+	ms.date="07/01/2016"
 	ms.author="cephalin"/>
 
 # Azure App Service での Node.js Web アプリの使用
@@ -179,7 +179,7 @@ Node.js アプリのデバッグに Node-Inspector を使用している場合�
 
 Node-Inspector を有効にするには、次の手順を実行します。
 
-1. リポジトリのルートにある iisnode.yml を開いて、次のパラメーターを指定します。 
+1. リポジトリのルートにある iisnode.yml を開いて、次のパラメーターを指定します。
 
         debuggingEnabled: true
         debuggerExtensionDll: iisnode-inspector.dll
@@ -201,6 +201,7 @@ Node-Inspector を有効にするには、次の手順を実行します。
 ## その他のリソース
 
 - [Azure アプリケーションでの Node.js のバージョンの指定](../nodejs-specify-node-version-azure-apps.md)
+- [Azure での Node.js アプリケーションのベスト プラクティスとトラブルシューティング ガイド](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md)
 - [Azure App Service で Node.js Web アプリをデバッグする方法](web-sites-nodejs-debug.md)
 - [Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)
 - [Azure App Service Web Apps: Node.js](http://blogs.msdn.com/b/silverlining/archive/2012/06/14/windows-azure-websites-node-js.aspx)
@@ -235,4 +236,4 @@ Node-Inspector を有効にするには、次の手順を実行します。
 [iislog-kudu-console-open]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-open.png
 [iislog-kudu-console-read]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-read.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

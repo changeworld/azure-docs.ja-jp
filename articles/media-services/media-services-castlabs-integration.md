@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"    
+	ms.date="06/22/2016"  
 	ms.author="Mingfeiy;willzhan;Juliako"/>
 
 
@@ -37,10 +37,10 @@ CENC で保護されているストリーミング コンテンツを再生す�
 
 - メディア コンテンツは AMS に格納されます。
 - コンテンツ キーのキー ID は castLabs と AMS の両方に格納されます。
-- castLabs と AMS はどちらもトークン認証が組み込まれています。次のセクションでは、認証トークンについて説明します。 
+- castLabs と AMS はどちらもトークン認証が組み込まれています。次のセクションでは、認証トークンについて説明します。
 - クライアントからビデオのストリーミング要求があると、そのコンテンツが **Common Encryption** (CENC) によって動的に暗号化されたうえで、AMS によって Smooth Streaming や DASH として動的にパッケージ化されます。また、HLS ストリーミング プロトコル用に PlayReady M2TS エレメンタリ ストリームの暗号化も行います。
-- PlayReady ライセンスは AMS ライセンス サーバーから取得し、Widevine ライセンスは castLabs ライセンス サーバーから取得します。 
-- Media Player ではクライアントのプラットフォームの機能に基づいて、フェッチするライセンスを自動的に決定します。 
+- PlayReady ライセンスは AMS ライセンス サーバーから取得し、Widevine ライセンスは castLabs ライセンス サーバーから取得します。
+- Media Player ではクライアントのプラットフォームの機能に基づいて、フェッチするライセンスを自動的に決定します。
 
 ##ライセンスを取得するための認証トークンの生成
 
@@ -107,7 +107,7 @@ Web アプリケーション (STS) を使用するには、次の手順に従い
 3.	ストリーミング URL に貼り付けます。
 4.	**[詳細オプション]** チェックボックスをクリックします。
 5.	**[保護]** ドロップダウンで、PlayReady や Widevine を選択します。
-6.	STS から取得したトークンを [トークン] テキストボックスに貼り付けます。 
+6.	STS から取得したトークンを [トークン] テキストボックスに貼り付けます。
 	
 	castLab ライセンス サーバーの場合は、トークンの前に “Bearer=” プレフィックスを置く必要はありません。トークンを送信する前にプレフィックスを削除してください。
 7.	プレーヤーを更新します。
@@ -122,4 +122,4 @@ Web アプリケーション (STS) を使用するには、次の手順に従い
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

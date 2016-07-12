@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="03/03/2016"
+   ms.date="06/14/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の設計上の決定と コーディング技法
@@ -42,8 +42,6 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 - [一時テーブル][]
 - [動的 SQL][]
 - [ループ][]
-- [オブジェクトの名前変更][]
-- [データのピボット][]
 - [オプションでのグループ化][]
 - [変数の代入][]
 
@@ -61,7 +59,6 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 [ハッシュ分散キー]: sql-data-warehouse-develop-hash-distribution-key.md
 [ラベル]: sql-data-warehouse-develop-label.md
 [ループ]: sql-data-warehouse-develop-loops.md
-[データのピボット]: sql-data-warehouse-develop-pivot-unpivot.md
 [統計]: sql-data-warehouse-develop-statistics.md
 [ストアド プロシージャ]: sql-data-warehouse-develop-stored-procedures.md
 [テーブル設計]: sql-data-warehouse-develop-table-design.md
@@ -75,8 +72,8 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 [Transact-SQL リファレンス]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
-[オブジェクトの名前変更]: https://msdn.microsoft.com/library/mt631611.aspx
+[renaming objects]: https://msdn.microsoft.com/library/mt631611.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

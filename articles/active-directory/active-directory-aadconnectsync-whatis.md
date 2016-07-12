@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="06/27/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -51,6 +51,8 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 **操作と UI** |
 [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) | [[操作]](active-directory-aadconnectsync-service-manager-ui-operations.md)、[[コネクタ]](active-directory-aadconnectsync-service-manager-ui-connectors.md)、[[メタバース デザイナー]](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)、[[メタバース検索]](active-directory-aadconnectsync-service-manager-ui-mvsearch.md) の各タブなどの Synchronization Service Manager の UI について説明します。
 [操作タスクおよび考慮事項](active-directory-aadconnectsync-operations.md) | 障害回復などの操作上の考慮事項について説明します。
+**方法** |
+[Azure AD アカウントをリセットする](active-directory-aadconnectsync-howto-azureadaccount.md) | Azure AD Connect 同期サービスから Azure AD への接続に使用するサービス アカウントの資格情報をリセットする方法。
 **詳細情報とリファレンス** |
 [ポート](active-directory-aadconnect-ports.md) | 同期エンジンとオンプレミスのディレクトリおよび Azure AD の間で開く必要があるポートの一覧を示します。
 [Azure Active Directory に同期される属性](active-directory-aadconnectsync-attributes-synchronized.md) | オンプレミスの AD と Azure AD の間で同期されるすべての属性の一覧を示します。
@@ -60,4 +62,4 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

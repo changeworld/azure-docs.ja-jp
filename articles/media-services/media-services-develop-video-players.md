@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -32,23 +32,23 @@ Microsoft Azure Media Services では、DASH、スムーズ ストリーミン�
 詳細:
 
 - [Azure Media Player](http://aka.ms/ampinfo)
-- [Azure Media Player のドキュメント](http://aka.ms/ampdocs) 
+- [Azure Media Player のドキュメント](http://aka.ms/ampdocs)
 - [Azure Media Player の概要に関するブログ](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/)
 - [Azure Media Player を最新の状態に維持するためのサインアップのページ](http://aka.ms/ampsignup)
-- [新しい機能に関する要望、アイデア、フィードバックを追加するページ](http://aka.ms/ampuservoice) 
+- [新しい機能に関する要望、アイデア、フィードバックを追加するページ](http://aka.ms/ampuservoice)
 
 
 ##プレーヤー アプリケーションを作成するためのその他のツール
 
 次のような SDK を使用することもできます。
 
-- [Smooth Streaming Client SDK](http://www.iis.net/downloads/microsoft/smooth-streaming) 
+- [Smooth Streaming Client SDK](http://www.iis.net/downloads/microsoft/smooth-streaming)
 - [スムーズ ストリーミング用 Windows ストア アプリ](media-services-build-smooth-streaming-apps.md)
-- [Microsoft Media Platform: プレーヤー フレームワーク](http://playerframework.codeplex.com/) 
-- [HTML5 プレーヤー フレームワークに関するドキュメント](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
-- [OSMF 用 Microsoft Smooth Streaming Plugin](https://www.microsoft.com/download/details.aspx?id=36057) 
-- [Licensing Microsoft® Smooth Streaming Client Porting Kit](http://aka.ms/sspk) 
-- [Xbox ビデオ アプリケーションの開発](http://xbox.create.msdn.com/) 
+- [Microsoft Media Platform: プレーヤー フレームワーク](http://playerframework.codeplex.com/)
+- [HTML5 プレーヤー フレームワークに関するドキュメント](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation)
+- [OSMF 用 Microsoft Smooth Streaming Plugin](https://www.microsoft.com/download/details.aspx?id=36057)
+- [Licensing Microsoft® Smooth Streaming Client Porting Kit](http://aka.ms/sspk)
+- [Xbox ビデオ アプリケーションの開発](http://xbox.create.msdn.com/)
  
 
 ##広告
@@ -81,4 +81,4 @@ Azure Media Services では、Windows メディア プラットフォームの�
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

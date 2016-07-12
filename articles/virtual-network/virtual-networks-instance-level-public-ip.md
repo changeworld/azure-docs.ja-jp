@@ -18,7 +18,7 @@
 # インスタンス レベル パブリック IP の概要
 インスタンス レベル パブリック IP (ILPIP) は、VM またはロール インスタンスが存在するクラウド サービスではなく、VM またはロール インスタンスに直接割り当てることのできるパブリック IP アドレスです。これは、クラウド サービスに割り当てられる VIP (仮想 IP) の代わりにはなりません。むしろ、VM またはロール インスタンスに直接接続するときに使用できる追加の IP アドレスです。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-network-ip-addresses-overview-arm.md)。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](virtual-network-ip-addresses-overview-arm.md)方法について説明します。
 
 Azure における [IP アドレス](virtual-network-ip-addresses-overview-classic.md)の動作を理解しておく必要があります。
 
@@ -31,7 +31,7 @@ Azure における [IP アドレス](virtual-network-ip-addresses-overview-class
 Azure でクラウド サービスを作成すると、対応する DNS A レコードが自動的に作成され、実際の VIP を使用するのではなく完全修飾ドメイン名 (FQDN) を使用してサービスにアクセスできるようになります。同じ処理が ILPIP に対しても行われ、ILPIP ではなく FQDN による VM またはロール インスタンスへのアクセスが許可されます。たとえば、*contosoadservice* という名前のクラウド サービスを作成し、*contosoweb* という名前の Web ロールの 2 つのインスタンスを構成した場合、Azure によってこれらのインスタンスに対して次の A レコードが登録されます。
 
 - contosoweb\_IN\_0.contosoadservice.cloudapp.net
-- contosoweb\_IN\_1.contosoadservice.cloudapp.net 
+- contosoweb\_IN\_1.contosoadservice.cloudapp.net
 
 >[AZURE.NOTE] 各 VM またはロール インスタンスに割り当てることができる ILPIP は 1 つだけです。サブスクリプションにつき最大 5 つの ILPIP を使用できます。現時点では、複数 NIC の VMは ILPIP でサポートされていません。
 
@@ -124,9 +124,9 @@ VM またはロール インスタンスに直接割り当てた IP アドレス
 
 ## 次のステップ
 
-- クラシック デプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md)のしくみを理解します。
+- クラシック デプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md)の仕組みを理解します。
 
-- [予約 IP](../virtual-networks-reserved-public-ip) について学習します。
+- [予約済み IP](virtual-networks-reserved-public-ip.md) について学習します。
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

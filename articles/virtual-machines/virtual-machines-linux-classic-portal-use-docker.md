@@ -20,7 +20,7 @@
 
 # Azure クラシック ポータルで Docker VM 拡張機能を使用する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 [Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。[Azure Linux エージェント]で管理する Docker VM 拡張機能を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。
@@ -77,7 +77,7 @@ Docker VM 拡張機能を選択します。この操作により、Docker の説
 
 ![](./media/virtual-machines-linux-classic-portal-use-docker/AddExtensionFormFilled.png)
 
-> [AZURE.NOTE] \(上のイメージに示すように) 既定で 2376 が入力されています。ここに任意のエンドポイントを入力できますが、次のステップで、一致するエンドポイントを開く必要があります。既定値を変更した場合は、必ず、次のステップで一致するエンドポイントを開いてください。
+> [AZURE.NOTE] (上のイメージに示すように) 既定で 2376 が入力されています。ここに任意のエンドポイントを入力できますが、次のステップで、一致するエンドポイントを開く必要があります。既定値を変更した場合は、必ず、次のステップで一致するエンドポイントを開いてください。
 
 ## Docker 通信エンドポイントの追加
 作成したリソース グループを表示するとき、VM に関連付けられているネットワーク セキュリティ グループを選択し、**[受信セキュリティ規則]** をクリックして、次に示すようにルールを表示します。
@@ -148,4 +148,4 @@ WARNING: No swap limit support
 [HTTPS を使用した Docker の実行]: http://docs.docker.com/articles/https/
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -51,8 +51,8 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 - [IoT Hubs の使用 (チュートリアル)][lnk-get-started]
 - [What is Azure IoT Hub? (Azure IoT Hub とは)][]
 
-[Azure のビジネス継続性テクニカル ガイダンス]: https://msdn.microsoft.com/library/azure/hh873027.aspx
-[Azure アプリケーションの障害復旧と高可用性]: https://msdn.microsoft.com/library/azure/dn251004.aspx
+[Azure resiliency technical guidance]: ../resiliency/resiliency-technical-guidance.md
+[Azure アプリケーションの障害復旧と高可用性]: ../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md
 [Failsafe: Guidance for Resilient Cloud Architectures]: https://msdn.microsoft.com/library/azure/jj853352.aspx
 [Azure Traffic Manager]: https://azure.microsoft.com/documentation/services/traffic-manager/
 [IoT Hub 開発者ガイド - ID レジストリ]: iot-hub-devguide.md#identityregistry
@@ -60,4 +60,4 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [What is Azure IoT Hub? (Azure IoT Hub とは)]: iot-hub-what-is-iot-hub.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

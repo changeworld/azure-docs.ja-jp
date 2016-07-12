@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="04/06/2016" 
+    ms.date="06/29/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と SuccessFactors の統合
@@ -38,7 +38,7 @@
 
 ###SuccessFactors アプリケーションのアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-successfactors-tutorial/IC700993.png "Active Directory")
 
@@ -70,9 +70,9 @@
   
 シングル サインオンを構成するには、SuccessFactors サポート チームに連絡する必要があります。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **SuccessFactors** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **SuccessFactors** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-successfactors-tutorial/IC791138.png "Configure Single Sign-On")
 
@@ -84,7 +84,7 @@
 
     ![Configure App URL](./media/active-directory-saas-successfactors-tutorial/IC791140.png "アプリケーション URL の構成")
 
-    1.  **[サインオン URL]** テキスト ボックスに、ユーザーが SuccessFactors アプリにサインオンするために使用する URL を入力します (例: "*https://performancemanager4.successfactors.com/sf/home?company=CompanyName&loginMethod=SSO*")。
+    1.  **[サインオン URL]** ボックスに、ユーザーが SuccessFactors アプリにサインオンするために使用する URL を入力します (例: "*https://performancemanager4.successfactors.com/sf/home?company=CompanyName&loginMethod=SSO*")。
     2.  **[SuccessFactors 応答 URL]** テキスト ボックスに、「**https://performancemanager4.successfactors.com/saml2/SAMLAssertionConsumer?company=CompanyName**」と入力します。
 
         >[AZURE.NOTE] この値は一時的なプレースホルダーです。実際の値は、SuccessFactors サポート チームから取得します。このチュートリアルの中に、SuccessFactors サポート チームに連絡することを指示する手順があります。サポート チームから、実際の SuccessFactors 応答 URL を取得できます。
@@ -103,7 +103,7 @@
 
     Successfactors サポート チームから、**[アプリケーション URL の構成]** ダイアログで必要な、適切な **Successfactors 応答 URL** が送信されます。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-successfactors-tutorial/IC791142.png "Configure Single Sign-On")
 
@@ -119,7 +119,7 @@ SuccessFactors でユーザーを作成するには、SuccessFactors のサポ�
 
 ###ユーザーを SuccessFactors に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **SuccessFactors** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -129,6 +129,6 @@ SuccessFactors でユーザーを作成するには、SuccessFactors のサポ�
 
     ![Yes](./media/active-directory-saas-successfactors-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

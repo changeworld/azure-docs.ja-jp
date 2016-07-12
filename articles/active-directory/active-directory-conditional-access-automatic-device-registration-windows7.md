@@ -1,11 +1,4 @@
-<properties
-	pageTitle="# Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成 | Microsoft Azure"
-	description="Windows 7 ドメイン参加済みデバイスを自動的に Azure AD に登録するように構成する手順と、Windows 7 ドメイン参加済みデバイスに System Center Configuration Manager などのソフトウェア配布を使用してデバイスの登録ソフトウェア パッケージをデプロイする手順。"
-	services="active-directory"
-	documentationCenter=""
-	authors="femila"
-	manager="stevenpo"
-	editor=""/>
+<properties pageTitle="# Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成 | Microsoft Azure" description="Windows 7 ドメイン参加済みデバイスを自動的に Azure AD に登録するように構成する手順と、Windows 7 ドメイン参加済みデバイスに System Center Configuration Manager などのソフトウェア配布を使用してデバイスの登録ソフトウェア パッケージをデプロイする手順。" services="active-directory" documentationCenter="" authors="femila" manager="swadhwa editor=""/>
 
 <tags
 	ms.service="active-directory"
@@ -13,7 +6,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 # Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成
@@ -60,4 +53,4 @@ Windows 7 コンピューターの Windows イベント ログには、社内参
 - [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 - [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

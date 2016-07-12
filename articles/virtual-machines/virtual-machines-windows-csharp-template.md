@@ -14,26 +14,22 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/18/2016"
+	ms.date="06/24/2016"
 	ms.author="davidmu"/>
 
 # C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ
 
 リソース グループとテンプレートを使用すると、アプリケーションをサポートするすべてのリソースをまとめて管理できます。この記事では、Azure PowerShell を使用して認証とストレージを設定し、C# を使用して Azure リソースを作成するテンプレートを構築してデプロイする方法について説明します。
 
-このチュートリアルを完了するには、次のものが必要です。
+まず、以下の操作を行っているかどうかを確認する必要があります。
 
-- [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
-- [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)
-- [認証トークン](../resource-group-authenticate-service-principal.md)
+- [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx) のインストール
+- [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855) のインストールの検証
+- [認証トークン](../resource-group-authenticate-service-principal.md)の取得
 
 これらの手順を実行するには約 30 分かかります。
-
-## 手順 1. Azure PowerShell をインストールする
-
-最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
     
-## 手順 2: テンプレート ストレージのリソース グループを作成する
+## 手順 1: テンプレート ストレージのリソース グループを作成する
 
 すべてのリソースをリソース グループにデプロイする必要があります。詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
 
@@ -58,7 +54,7 @@
         Tags              :
         ResourceId        : /subscriptions/{subscription-id}/resourceGroups/myrg1
     
-## 手順 3: ストレージ アカウントとテンプレート コンテナーを作成します。
+## 手順 2: ストレージ アカウントとテンプレート コンテナーを作成する
 
 作成およびデプロイするテンプレートを格納するために、ストレージ アカウントが必要です。
 
@@ -83,7 +79,7 @@
 
 ### テンプレート ファイルを作成する
 
-Azure リソース マネージャー テンプレートによって、リソースや関連するデプロイ パラメーターの JSON 記述を使用して、Azure リソースをまとめてデプロイし、管理することが可能になります。このチュートリアルで作成するテンプレートは、テンプレート ギャラリーにあるテンプレートと似ています。詳細については、「[Deploy a simple Windows VM in West US (米国西部での簡単な Windows VM のデプロイ)](https://azure.microsoft.com/documentation/templates/101-vm-simple-windows/)」を参照してください。
+Azure リソース マネージャー テンプレートによって、リソースや関連するデプロイ パラメーターの JSON 記述を使用して、Azure リソースをまとめてデプロイし、管理することが可能になります。
 
 Visual Studio で、次の手順を実行します。
 
@@ -93,7 +89,7 @@ Visual Studio で、次の手順を実行します。
 
 3. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックします。
 
-4. [Web] をクリックし、[JSON File] を選択して、[名前] に「*VirtualMachineTemplate.json*」と入力して **[追加]** をクリックします。
+4. [Web] をクリックして [JSON ファイル] を選択し、[名前] に「*VirtualMachineTemplate.json*」と入力して **[追加]** をクリックします。
 
 5. VirtualMachineTemplate.json ファイルの開始と終了の角かっこ内で、必要なスキーマ要素、および必要な contentVersion 要素を追加します。
 
@@ -293,7 +289,7 @@ Visual Studio で、次の手順を実行します。
 
 1. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックします。
 
-2. [Web] をクリックし、[JSON File] を選択して、[名前] に「*Parameters.json*」と入力して **[追加]** をクリックします。
+2. [Web] をクリックして [JSON ファイル] を選択し、[名前] に「*Parameters.json*」と入力して **[追加]** をクリックします。
 
 3. Parameters.json ファイルを開き、次の JSON コンテンツを追加します。
 
@@ -330,7 +326,7 @@ NuGet パッケージを使用すると、このチュートリアルを完了�
 
 2. 検索ボックスに「*Active Directory*」と入力し、Active Directory Authentication Library パッケージの **[インストール]** をクリックして、パッケージのインストール手順に従います。
 
-4. ページの上部で、**[リリース前のパッケージを含める]** を選択します。検索ボックスに「*Microsoft.Azure.ResourceManager*」と入力し、Microsoft Azure リソース管理ライブラリの **[インストール]** をクリックして、パッケージのインストール手順に従います。
+4. ページの上部で、**[リリース前のパッケージを含める]** を選択します。検索ボックスに「*Microsoft.Azure.Management.ResourceManager*」と入力し、Microsoft Azure リソース管理ライブラリの **[インストール]** をクリックして、パッケージのインストール手順に従います。
 
 これで、ライブラリを使用してアプリケーションの作成を開始する準備が整いました。
 
@@ -342,33 +338,30 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
         using Microsoft.Azure;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
-        using Microsoft.Azure.Management.Resources;
-        using Microsoft.Azure.Management.Resources.Models;
+        using Microsoft.Azure.Management.ResourceManager;
+        using Microsoft.Azure.Management.ResourceManager.Models;
         using Microsoft.Rest;
 
 2.	資格情報の作成に必要なトークンを取得するために、次のメソッドを Program クラスに追加します。
 
-        private static string GetAuthorizationHeader()
+        private static async Task<AuthenticationResult> GetAccessTokenAsync()
         {
-          ClientCredential cc = new ClientCredential("{application-id}", "{password}");
+          var cc = new ClientCredential("{client-id}", "{client-secret}");
           var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
-          var result = context.AcquireTokenAsync("https://management.azure.com/", cc);
-          if (result == null)
+          var token = await context.AcquireTokenAsync("https://management.azure.com/", cc);
+          if (token == null)
           {
-            throw new InvalidOperationException("Failed to obtain the JWT token");
+            throw new InvalidOperationException("Could not get the token.");
           }
-
-          string token = result.Result.AccessToken;
-
           return token;
         }
 
-    {application-id} を前に記録したアプリケーション ID に、{password} を AD アプリケーション用に選択したパスワードに、{tenant-id} をサブスクリプションのテナント ID に、それぞれ置き換えます。テナント ID は Get-AzureRmSubscription を実行して確認できます。
+    {client-id} を Azure Active Directory アプリケーションの ID に、{client-secret} を AD アプリケーションのアクセス キーに、および {tenant-id} をサブスクリプションのテナントID に置き換えます。テナント ID は Get-AzureRmSubscription を実行して確認できます。アクセス キーは、Azure ポータルで確認できます。
 
 3. 資格情報を作成するには、Program.cs ファイルの Main メソッドに次のコードを追加します。
 
-        var token = GetAuthorizationHeader();
-        var credential = new TokenCredentials(token);
+        var token = GetAccessTokenAsync();
+        var credential = new TokenCredentials(token.Result.AccessToken);
 
 4. Program.cs ファイルを保存します。
 
@@ -380,10 +373,6 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
         var groupName = "resource group name";
         var storageName = "storage account name";
-        var vmName = "virtual machine name";  
-        var deploymentName = "deployment name";
-        var adminName = "administrator account name";
-        var adminPassword = "administrator account password";
         var location = "location name";
         var subscriptionId = "subsciption id";
 
@@ -391,34 +380,32 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
     
 2. リソース グループを作成するために、次のメソッドを Program クラスに追加します。
 
-        public static void CreateResourceGroup(
+        public static async Task<ResourceGroup> CreateResourceGroupAsync(
           TokenCredentials credential,
           string groupName,
           string subscriptionId,
           string location)
         {
           Console.WriteLine("Creating the resource group...");
-          var resourceManagementClient = new ResourceManagementClient(credential);
-          resourceManagementClient.SubscriptionId = subscriptionId;
-          var resourceGroup = new ResourceGroup {
-            Location = location
-          };
-          var rgResult = resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, resourceGroup);
-          Console.WriteLine(rgResult.Properties.ProvisioningState);
+          var resourceManagementClient = new ResourceManagementClient(credential) 
+            { SubscriptionId = subscriptionId };
+          var resourceGroup = new ResourceGroup { Location = location };
+          return await resourceManagementClient.ResourceGroups.CreateOrUpdateAsync(groupName, resourceGroup);
         }
 
 2. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
-        CreateResourceGroup(
+        var rgResult = CreateResourceGroupAsync(
           credential,
           groupName,
           subscriptionId,
           location);
+        Console.WriteLine(rgResult.Result.Properties.ProvisioningState);
         Console.ReadLine();
 
 3. 定義したテンプレートを使用してリソースをリソース グループにデプロイするために、次のメソッドを Program クラスに追加します。
 
-        public static void CreateTemplateDeployment(
+        public static async Task<DeploymentExtended> CreateTemplateDeploymentAsync(
           TokenCredentials credential,
           string groupName,
           string storageName,
@@ -439,23 +426,23 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
               Uri = "https://" + storageName + ".blob.core.windows.net/templates/Parameters.json"
             }
           };
-          var resourceManagementClient = new ResourceManagementClient(credential);
-          resourceManagementClient.SubscriptionId = subscriptionId;
-          var dpResult = resourceManagementClient.Deployments.CreateOrUpdate(
+          var resourceManagementClient = new ResourceManagementClient(credential) 
+            { SubscriptionId = subscriptionId };
+          return await resourceManagementClient.Deployments.CreateOrUpdateAsync(
             groupName,
             deploymentName,
             deployment);
-          Console.WriteLine(dpResult.Properties.ProvisioningState);
         }
 
 4. 追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
-        CreateTemplateDeployment(
+        var dpResult = CreateTemplateDeploymentAsync(
           credential,
           groupName",
           storageName,
           deploymentName,
           subscriptionId);
+        Console.WriteLine(dpResult.Result.Properties.ProvisioningState);
         Console.ReadLine();
 
 ##手順 7: リソースを削除するコードを追加する
@@ -464,27 +451,30 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 1.	リソース グループを削除するために、次のメソッドを Program クラスに追加します。
 
-        public static void DeleteResourceGroup(
+        public static async void DeleteResourceGroupAsync(
           TokenCredentials credential,
-          string groupName)
+          string groupName,
+          string subscriptionId)
         {
           Console.WriteLine("Deleting resource group...");
-          var resourceGroupClient = new ResourceManagementClient(credential);
-          resourceGroupClient.ResourceGroups.DeleteAsync(groupName);
+          var resourceManagementClient = new ResourceManagementClient(credential)
+            { SubscriptionId = subscriptionId };
+          return await resourceManagementClient.ResourceGroups.DeleteAsync(groupName);
         }
 
 2.	追加したメソッドを呼び出すために、次のコードを Main メソッドに追加します。
 
-        DeleteResourceGroup(
+        DeleteResourceGroupAsync(
           credential,
-          groupName);
+          groupName,
+          subscriptionId);
         Console.ReadLine();
 
 ##手順 8: コンソール アプリケーションを実行する
 
-1.	コンソール アプリケーションを実行するには、Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じユーザー名とパスワードを使用して Azure AD にサインインします。
+1.	コンソール アプリケーションを実行するために、Visual Studio で **[開始]** をクリックし、サブスクリプションで使用するのと同じ資格情報を使用して Azure AD にサインインします。
 
-2.	承認済みの状態が表示されたら、**Enter** キーを押します。
+2.	承認されたことを示す状態が表示されたら、**Enter** キーを押します。
 
 	このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。Enter キーを押してリソースの削除を開始する前に、Azure ポータルでリソースの作成状況を確認することもできます。
 
@@ -494,7 +484,7 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 ## 次のステップ
 
-- デプロイに問題がある場合は、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
-- 「[Manage virtual machines using Azure Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md)」 (Azure Resource Manager と PowerShell を使用した仮想マシンの管理) で、作成した仮想マシンを管理する方法を確認します。
+- デプロイに問題がある場合は、[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)に関する記事を参照してください。
+- [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-csharp-manage.md)に関する記事で、作成した仮想マシンを管理する方法を確認します。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

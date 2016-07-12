@@ -21,7 +21,7 @@ Skype for Business には、特化した QoS 処理を必要とするさまざ�
 
 ![](./media/expressroute-qos/expressroute-qos.png)
 
->[AZURE.NOTE] QoS 要件は Microsoft ピアリングにのみ適用されます。
+>[AZURE.NOTE] QoS 要件は Microsoft ピアリングにのみ適用されます。Azure パブリック ピアリングと Azure プライベート ピアリングで受信されたネットワーク トラフィックの DSCP 値は、0 にリセットされます。
 
 次の表は、Skype for Business で使用される DSCP マーキングを一覧にしたものです。詳細については、「[Skype for Business の QoS の管理](https://technet.microsoft.com/library/gg405409.aspx)」を参照してください。
 
@@ -50,4 +50,4 @@ Skype for Business には、特化した QoS 処理を必要とするさまざ�
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="kgremban"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/19/2016"
+   ms.date="06/29/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management の使用
@@ -29,15 +29,16 @@ Azure AD Privileged Identity Management を使用するには、まず Azure ポ
 
 1. ディレクトリのグローバル管理者として [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. 組織に複数のディレクトリがある場合は、Azure ポータルの右上隅に表示されているユーザー名をクリックし、PIM を使用するディレクトリを選択します。
-3. 左側のナビゲーションの **[新規]** アイコンをクリックします。
-4. **[セキュリティ + ID]** を選択します。
-5. **[Azure AD Privileged Identity Management]** を選択します。
-6. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** ボタンをクリックします。Privileged Identity Management アプリケーションが起動します。
+3. **[新規]**、**[セキュリティ + ID]**、**[Azure AD Privileged Identity Management]** の順に選択します。
+
+    ![Enable PIM in the portal][1]
+
+4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。Privileged Identity Management アプリケーションが起動します。
 
 
 ディレクトリ内で Azure AD Privileged Identity Management を使用する最初のユーザーには、[セキュリティ ウィザード](active-directory-privileged-identity-management-security-wizard.md)に最初の割り当て操作の手順が表示されます。手順を実行した後、ディレクトリの最初の**セキュリティ管理者**と**特権ロール管理者**に自動的に設定されます。特権ロール管理者だけが、このアプリケーションにアクセスして他の管理者のアクセスを管理できます。
 
-自分が PIM を最初に使用するユーザーではなく、別の特権ロール管理者によって 1 つ以上のロールが割り当てられている場合は、アクティブ化するロールを選択できます。自分にも特権ロール管理者ロールが割り当てられている場合は、**ユーザーの管理**も選択肢として表示されます。
+1 つ以上のロールに割り当てられると、**[ロールをアクティブ化する]** オプションが表示されます。特権ロール管理者である場合は、**[特権ロールの管理]** オプションも表示されます。
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
@@ -47,4 +48,8 @@ Azure AD Privileged Identity Management を使用するには、まず Azure ポ
 
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!--Image references-->
+
+[1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
+
+<!---HONumber=AcomDC_0706_2016-->

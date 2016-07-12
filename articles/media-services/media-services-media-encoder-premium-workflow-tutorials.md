@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/25/2016"  
+	ms.date="06/22/2016"  
 	ms.author="xstof;xpouyat;juliako"/>
 
 #高度なメディア エンコーダー プレミアム ワークフローのチュートリアル
@@ -27,7 +27,7 @@
 次のトピックについて説明します。
 
 - [MXF をシングル ビットレートの MP4 にエンコードする](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
-	- [新しいワークフローの開始](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new) 
+	- [新しいワークフローの開始](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new)
 	- [メディア ファイル入力の使用](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_file_input)
 	- [メディア ストリームの調査](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_streams)
 	- [.MP4 ファイル生成用のビデオ エンコーダーを追加する](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_file_generation)
@@ -77,7 +77,7 @@
 
 - プライマリ ソース ファイル
 - クリップ リスト XML
-- 出力ファイル/資産  
+- 出力ファイル/資産
 
 ![New Encoding Workflow](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-transcode-blueprint.png)
 
@@ -986,4 +986,4 @@ processInputScript の内容を消去し、realizeScript のエディターを�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

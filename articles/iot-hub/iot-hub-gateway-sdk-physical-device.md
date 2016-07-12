@@ -207,7 +207,7 @@ BLE サンプルを Edison で実行するには、次の 3 つのタスクを�
 
 ### IoT Hub に 2 つのサンプル デバイスを構成する
 
-- Azure サブスクリプションで [IoT Hub を作成][lnk-create-hub]します。このチュートリアルを最後まで実施するには、Hub の名前が必要になります。Azure サブスクリプションがまだない場合は、[無料アカウント][lnk-free-trial]を取得できます。
+- Azure サブスクリプションで [IoT Hub を作成][lnk-create-hub]します。このチュートリアルを実行するには、Hub の名前が必要です。Azure サブスクリプションがまだない場合は、[無料アカウント][lnk-free-trial]を取得できます。
 - **SensorTag\_01** という名前の 1 つのデバイスを IoT Hub に追加し、その ID とデバイス キーをメモしておきます。[Device Explorer または iothub-explorer][lnk-explorer-tools] ツールを使用すると、前の手順で作成した IoT Hub にこのデバイスを追加し、デバイスのキーを取得することができます。このデバイスは、ゲートウェイの構成時に SensorTag デバイスにマップします。
 
 ### Edison デバイスで Gateway SDK をビルドする
@@ -241,7 +241,6 @@ Gateway SDK リポジトリの完全なコピーを Edison 上に用意したら
 サンプルを起動して実行するには、ゲートウェイに関与しているモジュールをそれぞれ構成する必要があります。この構成は JSON ファイル形式で指定し、5 個の関連モジュールすべてを構成することが必要です。リポジトリ内には **gateway\_sample.json** という名前のサンプル JSON ファイルが用意されており、独自の構成ファイルを構築するための雛形として使用することができます。このファイルは、Gateway SDK リポジトリのローカル コピー内の **samples/ble\_gateway\_hl/src** フォルダーにあります。
 
 以降のセクションでは、この構成ファイルを BLE サンプル用に編集する方法を説明しており、Gateway SDK リポジトリが Edison デバイスの **/home/root/azure-iot-gateway-sdk/** フォルダーにあることを前提としています。リポジトリが他の場所にある場合は、パスを適宜修正する必要があります。
-
 
 #### ロガーの構成
 
@@ -442,4 +441,4 @@ HTTP プロトコルを使用するデバイスで IoT Hub に接続する場合
 [lnk-setup-linux]: https://software.intel.com/get-started-edison-linux
 [lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -27,7 +27,7 @@
 
 <br>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
  
 
 このチュートリアルでは、Windows Server 仮想マシンを使用して Microsoft Azure で Django ベースの Web サイトをホストする方法について説明します。このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウド内で動作する Django ベースのアプリケーションが完成します。
@@ -54,7 +54,7 @@
  - 画面の下部にある **[追加]** ボタンをクリックします。![エンドポイントの追加](./media/virtual-machines-windows-classic-python-django-web-app/django-helloworld-addendpoint.png)
 
  - **TCP** プロトコルの**パブリック ポート 80** を**プライベート ポート 80** として開きます。![][port80]
-1. **[ダッシュボード]** タブで **[接続]** をクリックし、新たに作成した Azure 仮想マシンに**リモート デスクトップ**を使ってリモートでログインします。  
+1. **[ダッシュボード]** タブで **[接続]** をクリックし、新たに作成した Azure 仮想マシンに**リモート デスクトップ**を使ってリモートでログインします。
 
 **重要:** 以下に示しているすべての手順では、仮想マシンに正しくログインしており、ローカル コンピューターではなく仮想マシンでコマンドを発行することを前提としています。
 
@@ -184,4 +184,4 @@
 [python.org]: https://www.python.org/downloads/
 [wfastcgi に関するページ]: https://pypi.python.org/pypi/wfastcgi
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

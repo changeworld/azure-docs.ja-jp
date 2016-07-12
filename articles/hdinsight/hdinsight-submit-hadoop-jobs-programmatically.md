@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="06/28/2016"
 	ms.author="jgao"/>
 
 # HDInsight での Hadoop ジョブの送信
@@ -26,4 +26,4 @@
 - [HDInsight での Sqoop の使用](hdinsight-use-sqoop.md)
 - [HDInsight での Oozie の使用](hdinsight-use-oozie.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

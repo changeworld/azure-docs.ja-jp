@@ -29,7 +29,7 @@ Azure SQL Data Warehouse にデータを読み込むときに PolyBase を使用
 > [AZURE.NOTE] 
 Azure Data Factory の概要については、「[Azure Data Factory サービスの概要](data-factory-introduction.md)」を参照してください。
 > 
-> この記事では、JSON の例を紹介しますが、データ ファクトリを作成するための詳細な手順を説明していません。Azure Data Factory のコピー アクティビティを使用するための詳細な手順を含む簡単なチュートリアルについては、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」を参照してください。
+> この記事では、JSON の例を紹介しますが、データ ファクトリを作成するための詳細な手順を説明していません。Azure Data Factory のコピー アクティビティを使用するための詳細な手順を含む簡単なチュートリアルについては、[Azure BLOB から Azure SQL Database にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)方法に関するチュートリアルを参照してください。
 
 
 ## サンプル: Azure SQL Data Warehouse から Azure BLOB にデータをコピーする
@@ -37,8 +37,8 @@ Azure Data Factory の概要については、「[Azure Data Factory サービ�
 下のサンプルで確認できる要素:
 
 1. [AzureSqlDW](#azure-sql-data-warehouse-linked-service-properties) 型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。 
-3. [AzureSqlDWTable](#azure-sql-data-warehouse-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。 
+2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3. [AzureSqlDWTable](#azure-sql-data-warehouse-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
 4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 4. [SqlDWSource](#azure-sql-data-warehouse-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
@@ -464,11 +464,11 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| writeBatchSize | バッファー サイズが writeBatchSize に到達したときに SQL テーブルにデータを挿入します。 | 整数 (単位 = 行数) | いいえ (既定値 = 10000) |
-| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | (単位 = 時間) 例: “00:30:00” (30 分) | いいえ | 
+| writeBatchSize | バッファー サイズが writeBatchSize に到達したときに SQL テーブルにデータを挿入します。 | Integer | いいえ (既定値: 10000) |
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | timespan<br/><br/> 例: "00:30:00" (30 分)。 | いいえ | 
 | sqlWriterCleanupScript | 特定のスライスのデータを消去する方法で実行するコピー アクティビティのユーザー指定のクエリ。詳細については、下にある繰り返し性のセクションを参照してください。 | クエリ ステートメント。 | いいえ |
 | allowPolyBase | Azure SQL Data Warehouse へのデータの読み込みに BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。<br/><br/>現時点でサポートされているのは、ソース データセットとして **format** が **TextFormat** に設定されている **Azure BLOB** データセットのみで、その他のソースの種類は間もなくサポートされる予定です。<br/><br/>制約と詳細については、「[PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](#use-polybase-to-load-data-into-azure-sql-data-warehouse)」セクションを参照してください。 | True <br/>False (既定値) | いいえ |  
-| polyBaseSettings | **allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティ グループ。 | &nbsp; | いいえ |  
+| polyBaseSettings | **allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 | &nbsp; | いいえ |  
 | rejectValue | クエリが失敗するまでに拒否できる行の数または割合を指定します。<br/><br/>PolyBase の拒否のオプションの詳細については、「[CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)」の「**Arguments (引数)**」セクションを参照してください。 | 0 (既定値)、1、2、… | いいえ |  
 | rejectType | rejectValue オプションをリテラル値と割合のどちらで指定するかを指定します。 | Value (既定値)、Percentage | いいえ |   
 | rejectSampleValue | 拒否された行の割合が PolyBase で再計算されるまでに取得する行数を決定します。 | 1、2、… | はい (**rejectType** が **percentage** の場合) |  
@@ -487,7 +487,7 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 ## PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む
 **PolyBase** を使用すると、高いスループットで Azure SQL Data Warehouse に大量のデータを読み込むことができます。既定の BULKINSERT メカニズムではなく PolyBase を使用することで、スループットが大幅に向上することがわかります。
 
-次の例に示すように、Azure Data Factory で PolyBase を使用して Azure SQL Data Warehouse にデータをコピーするために、**allowPolyBase** プロパティを **true** に設定します。allowPolyBase を true に設定すると、**polyBaseSettings** プロパティ グループを使用して PolyBase 固有のプロパティを指定できます。polyBaseSettings で使用できるプロパティの詳細については、前述の「[SqlDWSink](#SqlDWSink)」セクションを参照してください。
+次の例に示すように、Azure Data Factory で PolyBase を使用して Azure SQL Data Warehouse にデータをコピーするために、**allowPolyBase** プロパティを **true** に設定します。allowPolyBase を true に設定すると、**polyBaseSettings** プロパティ グループを使用して PolyBase 固有のプロパティを指定できます。polyBaseSettings で使用できるプロパティの詳細については、前の「[SqlDWSink](#SqlDWSink)」セクションを参照してください。
 
 
     "sink": {
@@ -508,12 +508,12 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 
 Azure Data Factory が設定を確認し、要件が満たされない場合は、データ移動には自動的に BULKINSERT メカニズムが使用されるように戻ることに注意してください。
 
-1.	**ソースのリンクされたサービス**の種類が **Azure Storage** で、SAS (Shared Access Signature) 認証を使用するように構成されていないこと。詳細については、「[Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)」を参照してください。  
+1.	**ソースのリンクされたサービス**の種類が **Azure Storage** で、SAS (Shared Access Signature) 認証を使用するように構成されていないこと。詳細については、「[Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)」を参照してください。
 2. **入力データセット**の種類が **Azure BLOB** で、type プロパティの形式の種類が次の構成の **OrcFormat** または **TextFormat** であること。
-	1. **rowDelimiter** が **\\n** である。 
-	2. **nullValue** が**空の文字列** ("") に設定されている。 
-	3. **encodingName** が **utf-8** に設定されている。これは**既定**値であるため、別の値に設定しないでください。 
-	4. **escapeChar** と **quoteChar** が指定されていない。 
+	1. **rowDelimiter** が **\\n** である。
+	2. **nullValue** が**空の文字列** ("") に設定されている。
+	3. **encodingName** が **utf-8** に設定されている。これは**既定**値であるため、別の値に設定しないでください。
+	4. **escapeChar** と **quoteChar** が指定されていない。
 	5. **Compression** が **BZIP2** ではない。
 	 
 			"typeProperties": {
@@ -530,16 +530,16 @@ Azure Data Factory が設定を確認し、要件が満たされない場合は�
 	                "level": "Optimal"  
     	        }  
 			},
-3.	パイプラインのコピー アクティビティでは、**BlobSource** の下に **skipHeaderLineCount** 設定がないこと。 
+3.	パイプラインのコピー アクティビティでは、**BlobSource** の下に **skipHeaderLineCount** 設定がないこと。
 4.	パイプラインのコピー アクティビティでは、**SqlDWSink** の下に **sliceIdentifierColumnName** 設定がないこと。(PolyBase で保証されるのは、1 回の実行ですべてのデータが更新されるか、何も更新されないかのいずれかです。**再現性**を実現するには、**sqlWriterCleanupScript** を使用します。
-5.	関連付けられたコピー アクティビティでは、**columnMapping** が使用されていないこと。 
+5.	関連付けられたコピー アクティビティでは、**columnMapping** が使用されていないこと。
 
 ### PolyBase を使用してステージング コピーする
-ソース データが前のセクションで紹介した条件を満たしていない場合は、中間ステージング Azure BLOB ストレージ経由でデータのコピーを有効にすることができます。その場合、Azure Data Factory は PolyBase のデータ形式の要件を満たすためにデータの変換を実行し、PolyBase を使用して SQL Data Warehouse にデータを読み込みます。ステージング Azure BLOB 経由でデータをコピーする通常の操作方法の詳細については、「[Staged Copy (ステージング コピー)](data-factory-copy-activity-performance.md#staged-copy)」を参照してください。
+ソース データが前のセクションで紹介した条件を満たしていない場合は、中間ステージング Azure BLOB ストレージ経由でデータのコピーを有効にすることができます。その場合、Azure Data Factory は PolyBase のデータ形式の要件を満たすためにデータの変換を実行し、PolyBase を使用して SQL Data Warehouse にデータを読み込みます。ステージング Azure BLOB 経由でデータをコピーする通常の操作方法の詳細については、「[ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)」を参照してください。
 
-> [AZURE.IMPORTANT] オンプレミスのデータ ストアから PolyBase を使用して Azure SQL Data Warehouse にデータをコピーし、ステージングする場合は、ソース データを適切な形式に変換するために使用するゲートウェイ コンピューターに JRE (Java ランタイム環境) をインストールする必要があります。64 ビットのゲートウェイでは 64 ビットの JRE が必要になり、32 ビットのゲートウェイでは 32 ビットの JRE が必要になります。どちらのバージョンも[このページ](http://go.microsoft.com/fwlink/?LinkId=808605)で入手できます。適切なバージョンを選択してください。
+> [AZURE.IMPORTANT] オンプレミスのデータ ストアから PolyBase を使用して Azure SQL Data Warehouse にデータをコピーし、ステージングする場合は、ソース データを適切な形式に変換するために使用するゲートウェイ コンピューターに JRE 8 (Java ランタイム環境) をインストールする必要があります。64 ビットのゲートウェイでは 64 ビットの JRE が必要になり、32 ビットのゲートウェイでは 32 ビットの JRE が必要になります。[Java のダウンロード ページ](http://go.microsoft.com/fwlink/?LinkId=808605)から適切なバージョンをダウンロードしてください。
 
-この機能を使用するには、中間 BLOB ストレージがある Azure Storage アカウントを参照する [Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)を作成し、次に示すように、コピー アクティビティの **enableStaging** および **stagingSettings** プロパティを指定します。
+この機能を使用するには、中間 Blob Storage がある Azure Storage アカウントを参照する [Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)を作成し、次に示すように、コピー アクティビティの **enableStaging** および **stagingSettings** プロパティを指定します。
 
 	"activities":[  
 	{
@@ -654,4 +654,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

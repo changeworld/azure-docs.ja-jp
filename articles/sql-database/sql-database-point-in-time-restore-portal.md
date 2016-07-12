@@ -21,9 +21,8 @@
 
 
 > [AZURE.SELECTOR]
-- [概要](sql-database-point-in-time-restore.md)
-- [Azure ポータル](sql-database-point-in-time-restore-portal.md)
-- [PowerShell](sql-database-point-in-time-restore-powershell.md)
+- [概要](sql-database-recovery-using-backups.md)
+- [ポイントインタイム リストア: PowerShell](sql-database-point-in-time-restore-powershell.md)
 
 この記事では、Azure ポータルを使用して、[SQL Database 自動バックアップ](sql-database-automated-backups.md)から以前の時点にデータベースを復元する方法について説明します。
 
@@ -43,15 +42,14 @@ Azure ポータルでデータベースを復元するには、次の手順を�
     ![Azure SQL データベースの復元](./media/sql-database-point-in-time-restore-portal/restore-details.png)
 
 
+
 ## 次のステップ
 
-- PowerShell を使用して特定の時点に復旧する詳細な手順については、[PowerShell を使用したポイントインタイム リストア](sql-database-point-in-time-restore-powershell.md)に関するページをご覧ください。
-- REST API を使用して特定の時点に復旧する詳細な手順については、[REST API を使用したポイントインタイム リストア](https://msdn.microsoft.com/library/azure/mt163685.aspx)に関するページをご覧ください。
-- ポイントイン タイム リストアの概要については、[ポイントインタイム リストア](sql-database-point-in-time-restore.md)に関するページをご覧ください。
-- ユーザー エラーまたはアプリケーション エラーから復旧する方法の詳細については、[ユーザー エラーの復旧](sql-database-user-error-recovery.md)に関するページをご覧ください。
+- ビジネス継続性の概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
+- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
+- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
+- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
-## その他のリソース
-
-- [ビジネス継続性のシナリオ](sql-database-business-continuity-scenarios.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

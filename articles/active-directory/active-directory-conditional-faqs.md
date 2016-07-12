@@ -1,6 +1,6 @@
 <properties
 	pageTitle="条件付きアクセスのよく寄せられる質問 | Microsoft Azure"
-	description="条件付きアクセスに関してよく寄せられる質問"
+	description="条件付きアクセスに関してよく寄せられる質問 "
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 # 条件付きアクセスのよく寄せられる質問
@@ -30,4 +30,4 @@ B2B コラボレーション ユーザーにはポリシーが適用されます
 ## Word や Outlook などのクライアント アプリにポリシーを設定できないのはなぜですか?
 条件付きアクセス ポリシーは、サービスへのアクセスの要件を設定し、そのサービスへの認証を実行するときに適用されます。したがって、ポリシーはクライアント アプリケーションで直接設定されるのではなく、サービスを呼び出すときに適用されます。たとえば、SharePoint で設定したポリシーは、SharePoint を呼び出すクライアントに適用されて、Exchange で設定したポリシーは、Outlook に適用されます。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

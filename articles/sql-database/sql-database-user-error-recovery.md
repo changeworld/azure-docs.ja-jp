@@ -16,14 +16,14 @@
    ms.date="06/16/2016"
    ms.author="carlrab"/>
 
-# ユーザー エラーからの Azure SQL Database の復旧
+# Azure SQL Database をエラーから回復する
 
 Azure SQL Database は、ユーザー エラーまたは予期しないデータ変更から復旧するための、2 つの中核的な機能を提供します。
 
-- [ポイントインタイム リストア](sql-database-point-in-time-restore.md) 
-- [削除済みデータベースの復元](sql-database-restore-deleted-database.md)
+- [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)
+- [削除済みデータベースの復元](sql-database-recovery-using-backups.md#deleted-database-restore)
 
-Azure SQL Database では、常に新しいデータベースに復元します。これらの復元機能は、Basic、Standard、Premium のすべてのデータベースに提供されます。
+Azure SQL Database は、ポイントインタイム リストアの実行時に、常に新しいデータベースに復元しますが、削除済みデータベースから復元する場合は、同じデータベース名に復元することができます。これらの復元機能は、Basic、Standard、Premium のすべてのデータベースに提供されます。
 
 ##ポイントインタイム リストア
 
@@ -35,7 +35,7 @@ Basic データベースの保持期間は 7 日間、Standard データベー�
 
 - [Azure ポータルでのポイントインタイム リストア](sql-database-point-in-time-restore-portal.md)
 - [PowerShell でのポイントインタイム リストア](sql-database-point-in-time-restore-powershell.md)
-- [REST API でのポイントインタイム リストア (createmode=PointInTimeRestore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) 
+- [REST API でのポイントインタイム リストア (createmode=PointInTimeRestore)](https://msdn.microsoft.com/library/azure/mt163685.aspx)
 
 
 ## 削除されたデータベースの復元
@@ -53,18 +53,10 @@ Basic データベースの保持期間は 7 日間、Standard データベー�
 
 ## 次のステップ
 
-- 障害復旧のためのアクティブ geo レプリケーションの使用および構成の方法については、「[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)」をご覧ください。
-- 障害復旧のための geo リストアの使用方法については、「[geo リストア](sql-database-geo-restore.md)」をご覧ください。
+- ビジネス継続性の概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
+- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
+- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
+- アクティブ geo レプリケーションの使用方法については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
 
-## その他のリソース
-
-- [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](sql-database-business-continuity.md)
-- [Overview: SQL Database Point-in-Time Restore (概要: SQL Database のポイントインタイム リストア)](sql-database-point-in-time-restore.md)
-- [geo リストア](sql-database-geo-restore.md)
-- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
-- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
-- [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

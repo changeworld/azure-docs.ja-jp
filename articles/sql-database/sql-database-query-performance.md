@@ -21,8 +21,8 @@
 
 リレーショナル データベースのパフォーマンスの管理とチューニングは、かなりの専門知識と時間の投入を必要とする困難な作業です。Query Performance Insight を使用すると、短時間でデータベース パフォーマンスのトラブルシューティングを行うことができます。以下の情報が提供されます。
 
-- データベース リソース (DTU) の消費量の詳細な情報。 
-- CPU 消費の多いクエリ。パフォーマンス向上のためのチューニングの対象となる可能性があります。 
+- データベース リソース (DTU) の消費量の詳細な情報。
+- CPU 消費の多いクエリ。パフォーマンス向上のためのチューニングの対象となる可能性があります。
 - クエリの詳細にドリルダウンする機能。
 
 ## 前提条件
@@ -35,7 +35,7 @@
 
 Query Performance Insight を使用するには、次の[ロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)権限が必要です。
 
-- リソース消費上位クエリおよびチャートを表示するには、**リーダー**、**所有者**、**共同作成者**、**SQL DB の共同作業者**、または **SQL Server の共同作業者**の権限が必要です。 
+- リソース消費上位クエリおよびチャートを表示するには、**リーダー**、**所有者**、**共同作成者**、**SQL DB の共同作業者**、または **SQL Server の共同作業者**の権限が必要です。
 - クエリ テキストを表示するには、**所有者**、**共同作成者**、**SQL DB の共同作業者**、または **SQL Server の共同作業者**の権限が必要です。
 
 
@@ -44,9 +44,9 @@ Query Performance Insight を使用するには、次の[ロール ベースの�
 
 Query Performance Insight は簡単に使用できます。
 
-- リソース消費量上位のクエリの一覧を確認します。 
+- リソース消費量上位のクエリの一覧を確認します。
 - 個別のクエリを選択して詳細を表示します。
-- [SQL Database Advisor](sql-database-index-advisor.md) を開き、利用できる推奨事項があるかどうかを確認します。
+- [SQL Database Advisor](sql-database-advisor.md) を開き、利用できる推奨事項があるかどうかを確認します。
 - 拡大して詳細を確認します。
 
     ![パフォーマンス ダッシュボード](./media/sql-database-query-performance/performance.png)
@@ -59,7 +59,7 @@ Query Performance Insight は簡単に使用できます。
 
 [ポータル](http://portal.azure.com)で次のようにします。
 
-1. SQL Database を参照し、**[すべての設定]**、**[パフォーマンス]**、**[クエリ]** の順にクリックします。 
+1. SQL Database を参照し、**[すべての設定]**、**[パフォーマンス]**、**[クエリ]** の順にクリックします。
 
     ![Query Performance Insight][1]
 
@@ -71,7 +71,7 @@ Query Performance Insight は簡単に使用できます。
 
     下部のグリッドには、表示可能なクエリの集計情報が表されます。
 
-    -	クエリ ID - データベース内に含まれるクエリの一意の識別子。 
+    -	クエリ ID - データベース内に含まれるクエリの一意の識別子。
     -	監視可能な期間のクエリあたりの CPU 使用率 (集計関数に依存)。
     -	1 つのクエリの実行時間 (集計関数に依存)。
     -	特定のクエリの実行回数の合計。
@@ -113,7 +113,7 @@ Query Performance Insight の使用中に、次のようなクエリ ストア �
 これらのメッセージは、通常、クエリ ストアが新しいデータを収集できないときに表示されます。この問題を解決するには、いくつかのオプションがあります。
 
 -	クエリ ストアの保持とキャプチャのポリシーを変更します
--	クエリ ストアのサイズを増やします 
+-	クエリ ストアのサイズを増やします
 -	クエリ ストアをクリアします
 
 ### 推奨される保存とキャプチャのポリシー
@@ -121,7 +121,7 @@ Query Performance Insight の使用中に、次のようなクエリ ストア �
 保持ポリシーには 2 つの種類があります。
 
 - サイズ ベース – AUTO に設定した場合、最大サイズの近づくとデータが自動的にクリーンアップされます。
-- 時間ベース – 既定では 30 日に設定されます。つまり、クエリ ストアの領域が不足すると、30 日より古いクエリ情報が削除されます。 
+- 時間ベース – 既定では 30 日に設定されます。つまり、クエリ ストアの領域が不足すると、30 日より古いクエリ情報が削除されます。
 
 キャプチャ ポリシーは次のように設定できます。
 
@@ -159,7 +159,7 @@ Query Performance Insight を使うと、クエリ ワークロードの影響�
 
 ## 次のステップ
 
-SQL Database のパフォーマンス向上に関するその他の推奨事項を確認するために、**[Query Performance Insight]** ブレードで [[SQL Database Advisor]](sql-database-index-advisor.md) をクリックします。
+SQL Database のパフォーマンス向上に関するその他の推奨事項を確認するために、**[Query Performance Insight]** ブレードで [[SQL Database Advisor]](sql-database-advisor.md) をクリックします。
 
 ![Performance Advisor](./media/sql-database-query-performance/ia.png)
 
@@ -169,4 +169,4 @@ SQL Database のパフォーマンス向上に関するその他の推奨事項�
 [2]: ./media/sql-database-query-performance/top-queries.png
 [3]: ./media/sql-database-query-performance/query-details.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

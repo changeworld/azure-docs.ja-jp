@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-catalog"
-	ms.date="04/07/2016"
+	ms.date="06/27/2016"
 	ms.author="spelluru"/>
 
 # データ ソースのプロファイリング
@@ -91,4 +91,4 @@
 -	[データ ソースの登録方法](data-catalog-how-to-register.md)
 -	[Azure Data Catalog の概要](data-catalog-get-started.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

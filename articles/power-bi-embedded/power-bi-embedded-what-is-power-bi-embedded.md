@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Microsoft Power BI Embedded とは"
+   pageTitle="Microsoft Power BI Embedded とは何ですか?"
    description="Power BI Embedded を利用すると、Web アプリケーションやモバイル アプリケーションに Power BI レポートを統合できるため、ユーザー向けにデータを視覚化するカスタム ソリューションを作成する必要はありません"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="dvana"
-   manager="NA"
+   authors="minewiskan"
+   manager="mblythe"
    editor=""
    tags=""/>
 <tags
@@ -13,17 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="06/01/2016"
-   ms.author="jocaplan"/>
-
+   ms.date="06/28/2016"
+   ms.author="owend"/>
 
 # Microsoft Power BI Embedded とは
 
-**Microsoft Power BI Embedded** を利用して Web アプリケーションやモバイル アプリケーションに Power BI レポートを統合することができますので、ユーザーのためにデータを視覚化するカスタム ソリューションを作成する必要はありません。
+**Power BI Embedded** を利用して、Web アプリケーションやモバイル アプリケーションに Power BI レポートを統合することができます。このため、ユーザーのためにデータを視覚化するカスタム ソリューションを作成する必要はありません。
 
 ![](media\powerbi-embedded-whats-is\what-is.png)
 
-**Microsoft Power BI Embedded** は、独立系ソフトウェア ベンダー (ISV) がアプリケーション内で Power BI データ エクスペリエンスを実現することを可能にする Azure サービスです。ISV はアプリケーションを構築しました。これらのアプリケーションには、それぞれに固有のユーザーと固有の機能があります。これらのアプリには **Microsoft Power BI Embedded** に対応できるようになったチャートやレポートといったデータ要素が組み込まれていることもあります。これらのアプリケーションのユーザーがアプリを使用するには、Power BI のアカウントは必要ありません。これらのユーザーは、従来と同じようにアプリケーションにサインインして、Power BI のレポートおよびタイルを表示して操作できます。それには追加のライセンスを必要としません。
+**Power BI Embedded** は、独立系ソフトウェア ベンダー (ISV) がアプリケーション内で Power BI データ エクスペリエンスを実現することを可能にする Azure サービスです。ISV はアプリケーションを構築しました。これらのアプリケーションには、それぞれに固有のユーザーと固有の機能があります。これらのアプリには **Microsoft Power BI Embedded** に対応できるようになったチャートやレポートといったデータ要素が組み込まれていることもあります。これらのアプリケーションのユーザーがアプリを使用するには、Power BI のアカウントは必要ありません。これらのユーザーは、従来と同じようにアプリケーションにサインインして、Power BI のレポートおよびタイルを表示して操作できます。それには追加のライセンスを必要としません。
 
 ## Microsoft Power BI Embedded のライセンス
 
@@ -99,4 +98,4 @@ Azure のほかのサービスと同様に [Azure ARM API](https://msdn.microsof
 - [Power BI REST API](http://docs.powerbi.apiary.io/reference)
 - [Azure リージョン](https://azure.microsoft.com/regions/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

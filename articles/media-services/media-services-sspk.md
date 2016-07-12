@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="xpouyat,vsood" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/21/2016"  
+	ms.date="06/22/2016"  
 	ms.author="xpouyat"/>
 
 #Licensing Microsoft® Smooth Streaming Client Porting Kit
@@ -30,19 +30,19 @@ Microsoft Smooth Streaming Client Porting Kit (**SSPK**) は、組み込みデ�
 
 SSPK は、高い事業価値を提供する契約条件に基づいて使用許諾されます。SSPK のライセンスが業界にもたらす利点を次に示します。
 
-- Smooth Streaming Porting Kit ソース (C++) 
+- Smooth Streaming Porting Kit ソース (C++)
   - スムーズ ストリーミング クライアントの機能を実装
   - フォーマット解析、ヒューリスティック、バッファリング ロジックなどを追加
-- プレーヤー アプリケーションの API 
+- プレーヤー アプリケーションの API
   -	メディア プレーヤー アプリケーションとの連携を可能にするプログラミング インターフェイス
-- プラットフォーム アブストラクション レイヤー (PAL) インターフェイス 
+- プラットフォーム アブストラクション レイヤー (PAL) インターフェイス
   -	オペレーティング システム (スレッド、ソケット) との連携を可能にするプログラミング インターフェイス
-- ハードウェア アブストラクション レイヤー (HAL) インターフェイス 
+- ハードウェア アブストラクション レイヤー (HAL) インターフェイス
   -	ハードウェア A/V デコーダー (デコード、レンダリング) との連携を可能にするプログラミング インターフェイス
-- DRM (デジタル著作権管理) インターフェイス 
+- DRM (デジタル著作権管理) インターフェイス
   -	DRM アブストラクション レイヤー (DAL) を介して DRM を処理するためのプログラミング インターフェイス
   -	Microsoft PlayReady Porting Kit は別々に出荷されますが、このインターフェイスを介して連携します。Microsoft PlayReady デバイスのライセンスの詳細については、[ここ](http://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)をクリックしてください。
-- 実装サンプル 
+- 実装サンプル
   -	サンプル PAL 実装 (Linux)
   -	サンプル HAL 実装 (GStreamer)
 
@@ -71,7 +71,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 
 - 出荷されるデバイス実装あたり 0.10 ドル
 - ロイヤリティの上限は年 50,000 ドル
-- 毎年最初の 10,000 デバイス実装についてはロイヤリティなし 
+- 毎年最初の 10,000 デバイス実装についてはロイヤリティなし
 
 ##ライセンス取得の手順と SSPK の利用
 
@@ -164,4 +164,4 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

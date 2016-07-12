@@ -1,10 +1,10 @@
 <properties
 	pageTitle="Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成 | Microsoft Azure"
-	description="自動的に Azure AD に登録する Windows 8.1 ドメイン参加済みデバイスを構成する手順"
+	description=" 自動的に Azure AD に登録する Windows 8.1 ドメイン参加済みデバイスを構成する手順"
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 # Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成
@@ -61,4 +61,4 @@ Windows 8.1 コンピューターの Windows イベント ログには、デバ�
 - [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)
 - [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

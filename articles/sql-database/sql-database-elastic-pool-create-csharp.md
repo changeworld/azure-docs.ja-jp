@@ -13,7 +13,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="05/27/2016"
+    ms.date="07/05/2016"
     ms.author="srinia"/>
 
 # C&#x23; による新しい Elastic Database プールの作成
@@ -28,15 +28,13 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」を参照してください。
 
-エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md)を 1 回の手順で実行できます。
-
-ここで示す例では、[SQL Database Library for .NET](https://msdn.microsoft.com/library/azure/mt349017.aspx) を使用するため、このライブラリをインストールする必要があります。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行します。
+ここで示す例では [SQL Database Library for .NET](https://msdn.microsoft.com/library/azure/mt349017.aspx) を使用します。このライブラリをまだインストールしていない場合は、作業を続行する前にインストールする必要があります。このライブラリをインストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行します。
 
     PM> Install-Package Microsoft.Azure.Management.Sql –Pre
 
 ## 新しいプールの作成
 
-[Azure Active Directory](sql-database-client-id-keys.md) から得た値を使用して [SqlManagementClient](https://msdn.microsoft.com/library/microsoft.azure.management.sql.sqlmanagementclient) インスタンスを作成します。[ElasticPoolCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.sql.models.elasticpoolcreateorupdateparameters) インスタンスを作成し、[CreateOrUpdate](https://msdn.microsoft.com/library/microsoft.azure.management.sql.databaseoperationsextensions.createorupdate) メソッドを呼び出します。プールあたりの eDTU、最小 DTU、最大 DTU は、サービス レベルの値 (Basic、Standard、Premium) によって制限されます。「[エラスティック プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
+[Azure Active Directory](sql-database-client-id-keys.md) から取得した値を使用して [SqlManagementClient](https://msdn.microsoft.com/library/microsoft.azure.management.sql.sqlmanagementclient) インスタンスを作成します。[ElasticPoolCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.sql.models.elasticpoolcreateorupdateparameters) インスタンスを作成し、[CreateOrUpdate](https://msdn.microsoft.com/library/microsoft.azure.management.sql.databaseoperationsextensions.createorupdate) メソッドを呼び出します。プールあたりの eDTU、最小 DTU、最大 DTU は、サービス レベルの値 (Basic、Standard、Premium) によって制限されます。「[エラスティック プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
 
 
     ElasticPoolCreateOrUpdateParameters newPoolParameters = new ElasticPoolCreateOrUpdateParameters()
@@ -81,13 +79,13 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 この例では、新しい Azure リソース グループ、新しい Azure SQL Server インスタンス、新しいエラスティック プールを作成します。
  
 
-この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]**) から次のコマンドを実行します。
+この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行します。
 
     Install-Package Microsoft.Azure.Management.Sql –Pre
     Install-Package Microsoft.Azure.Management.Resources –Pre
     Install-Package Microsoft.Azure.Common.Authentication –Pre
 
-コンソール アプリを作成し、Program.cs の内容を次の内容に置き換えます。必要なクライアント ID と関連する値を取得するには、「[Register your app and get the required client values for connecting your app to SQL Database (アプリを登録し、アプリを SQL Database に接続するために必要なクライアント値を取得する)](sql-database-client-id-keys.md)」を参照してください。[Get-AzureRmSubscription](https://msdn.microsoft.com/library/mt619284.aspx) コマンドレットを使用して subscriptionId の値を取得します。
+コンソール アプリを作成し、Program.cs の内容を次の内容に置き換えます。必要なクライアント ID と関連する値を取得するには、[アプリの登録と、アプリを SQL Database に接続するために必要なクライアント値の取得](sql-database-client-id-keys.md)に関するページをご覧ください。[Get-AzureRmSubscription](https://msdn.microsoft.com/library/mt619284.aspx) コマンドレットを使用して subscriptionId の値を取得します。
 
     using Microsoft.Azure;
     using Microsoft.Azure.Management.Resources;
@@ -251,4 +249,4 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 - [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -4,8 +4,8 @@
    services="azure-resource-manager,key-vault"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/16/2016"
+   ms.date="06/23/2016"
    ms.author="tomfitz"/>
 
 # デプロイメント時にセキュリティで保護された値を渡す
@@ -26,9 +26,9 @@
 
 Key Vault とシークレットのデプロイについては、[Key Vault のスキーマ](resource-manager-template-keyvault.md)と [Key Vault シークレットのスキーマ](resource-manager-template-keyvault-secret.md)に関するページを参照してください。
 
-## シークレットの参照
+## 固定 ID でのシークレットの参照
 
-値をテンプレートに渡すパラメーター ファイル内から、シークレットを参照します。シークレットを参照するには、Key Vault のリソース識別子とシークレットの名前を渡します。
+値をテンプレートに渡すパラメーター ファイル内から、シークレットを参照します。シークレットを参照するには、Key Vault のリソース識別子とシークレットの名前を渡します。この例では、Key Vault シークレットがあらかじめ存在しているという前提で、リソース ID には固定値を使用しています。
 
     "parameters": {
       "adminPassword": {
@@ -94,13 +94,55 @@ Key Vault とシークレットのデプロイについては、[Key Vault の�
         "outputs": { }
     }
 
+## 動的 ID でのシークレットの参照
 
+前のセクションでは、Key Vault シークレットの固定リソース ID を渡す方法を紹介しました。しかし参照すべき Key Vault シークレットがデプロイごとに変わる状況も考えられます。そのようなケースでは、パラメーター ファイルでリソース ID をハードコーディングすることはできません。あいにくパラメーター ファイルではテンプレート式が使用できないので、パラメーター ファイルでリソース ID を動的に生成することはできません。
+
+Key Vault シークレットのリソース ID を動的に生成するには、そのシークレットを必要とするリソースを、入れ子になったテンプレートに移す必要があります。マスター テンプレートに、その入れ子になったテンプレートを追加し、動的に生成されたリソース ID をパラメーターに格納して渡します。
+
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "vaultName": {
+          "type": "string"
+        },
+        "secretName": {
+          "type": "string"
+        }
+      },
+      "resources": [
+        {
+          "apiVersion": "2015-01-01",
+          "name": "nestedTemplate",
+          "type": "Microsoft.Resources/deployments",
+          "properties": {
+            "mode": "incremental",
+            "templateLink": {
+              "uri": "https://www.contoso.com/AzureTemplates/newVM.json",
+              "contentVersion": "1.0.0.0"
+            },
+            "parameters": {
+              "adminPassword": {
+                "reference": {
+                  "keyVault": {
+                    "id": "[concat(resourceGroup().id, '/providers/Microsoft.KeyVault/vaults/', parameters('vaultName'))]"
+                  },
+                  "secretName": "[parameters('secretName')]"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outputs": {}
+    }
 
 
 ## 次のステップ
 
 - Key Vault の全般的な情報については、「[Azure Key Vault の概要](./key-vault/key-vault-get-started.md)」を参照してください。
-- 仮想マシンで Key Vault を使用する方法については、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」をご覧ください。
+- 仮想マシンで Key Vault を使用する方法については、「[Azure Resource Manager のセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」をご覧ください。
 - キー シークレットの詳細な参照例については、[Key Vault の例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

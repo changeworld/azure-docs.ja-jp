@@ -13,20 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="03/04/2016"
+   ms.date="06/28/2016"
    ms.author="jgao"/>
 
 # 2 つの Azure 仮想ネットワーク間の VPN 接続の構成  
 
 > [AZURE.SELECTOR]
-- [VPN 接続の構成](../hdinsight-hbase-geo-replication-configure-VNETs.md)
+- [VPN 接続の構成](hdinsight-hbase-geo-replication-configure-VNETs.md)
 - [DNS の構成](hdinsight-hbase-geo-replication-configure-DNS.md)
-- [HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md) 
+- [HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md)
 
 Azure 仮想ネットワークのサイト間接続では、VPN ゲートウェイを使用して Ipsec/IKE を使用する安全なトンネルが提供されます。VNet は異なるサブスクリプションおよび異なるリージョンであってもかまいません。マルチサイト構成と VNet 間通信を組み合わせることもできます。Vnet 間接続にはいくつかの理由があります。
 
-- リージョン間の geo 冗長性および geo プレゼンス 
-- 特定のリージョン内で強固な分離境界を備えた多層アプリケーション 
+- リージョン間の geo 冗長性および geo プレゼンス
+- 特定のリージョン内で強固な分離境界を備えた多層アプリケーション
 - サブスクリプションや組織の境界を越えた通信を Azure 内で実現
 
 詳細については、「[VNet 間の接続の構成](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)」を参照してください。
@@ -83,7 +83,7 @@ Azure 仮想ネットワークのサイト間接続では、VPN ゲートウェ�
 		このチュートリアルでは、北ヨーロッパと米国東部のデータセンターを使います。独自のデータセンターを選択することもできます。
 4.	次のように入力します。
 
-	- **DNS サーバー**: (空白のままに) 
+	- **DNS サーバー**: (空白のままに)
 	
 		仮想ネットワーク内での名前解決には、独自の DNS サーバーが必要になります。Azure によって提供される名前解決を使用する状況と独自の DNS サーバーを使用する状況の詳細については、「[名前解決 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。VNet 間で名前解決を構成する手順については、「[2 つの Azure 仮想ネットワーク間の DNS の構成][hdinsight-hbase-dns]」を参照してください。
   
@@ -260,16 +260,16 @@ VNet に VM をデプロイすることなく、Azure クラシック ポータ�
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-portal]: https://portal.azure.com
 
-[powershell-install]: ../install-configure-powershell
+[powershell-install]: ../install-configure-powershell.md
 
 
 
-[hdinsight-hbase-replication]: ../hdinsight-hbase-geo-replication/
-[hdinsight-hbase-dns]: ../hdinsight-hbase-geo-replication-configure-DNS/
+[hdinsight-hbase-replication]: hdinsight-hbase-geo-replication.md
+[hdinsight-hbase-dns]: hdinsight-hbase-geo-replication-configure-DNS.md
 
 
 [img-vnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.diagram.png
 [img-vnet-lnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.LNet.diagram.png
 [img-vpn-status]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.status.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

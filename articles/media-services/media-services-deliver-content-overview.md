@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/22/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -25,7 +25,7 @@
 
 この目標を実現するには:
 
-- ストリームをマルチビットレート (アダプティブ ビットレート) ビデオ ストリームにエンコードします (これにより品質とネットワーク条件に対応)。 
+- ストリームをマルチビットレート (アダプティブ ビットレート) ビデオ ストリームにエンコードします (これにより品質とネットワーク条件に対応)。
 - Media Services の[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します (これにより異なるデバイスでのストリーミングに対応)。Media Services で配信がサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
 
 このトピックでは、コンテンツ配信の重要な概念の概要を説明します。
@@ -39,7 +39,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
 - mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする (エンコーディングの手順は後述)。アダプティブ ビットレート MP4 ファイルやアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードする。
-- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[How to Scale On-Demand Streaming Reserved Unit (オンデマンド ストリーミング占有ユニットの規模変更方法)](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。 
+- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[How to Scale On-Demand Streaming Reserved Unit (オンデマンド ストリーミング占有ユニットの規模変更方法)](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
 
 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
@@ -58,7 +58,7 @@ Media Services では、アセットにフィルターを定義できます。�
 ストリーミングかダウンロードに使用できる URL を提供するには、まず、ロケーターを作成してアセットを "発行" する必要があります。ロケーターは、アセットに含まれているファイルにアクセスするためのエントリ ポイントになります。Media Services では、2 種類のロケーターがサポートされています。
 
 - **OnDemandOrigin** ロケーターは、メディアのストリーム (MPEG DASH、HLS、スムーズ ストリーミングなど) やファイルのプログレッシブ ダウンロードに使用します。
--  **SAS** (アクセス署名) URL ロケーターは、メディア ファイルをローカル コンピューターにダウンロードする際に使用します。 
+-  **SAS** (アクセス署名) URL ロケーターは、メディア ファイルをローカル コンピューターにダウンロードする際に使用します。
 
 **アクセス ポリシー**は、アクセス許可 (読み取り、書き込み、一覧など) や、クライアントが特定のアセットにアクセスできる期間を定義する際に使用します。一覧表示のアクセス許可 (AccessPermissions.List) は、OrDemandOrigin ロケーターを作成するときには使用しないでください。
 
@@ -187,4 +187,4 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 [ストレージ キーの展開後に Media Services ロケーターを更新する](media-services-roll-storage-access-keys.md)
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0629_2016-->

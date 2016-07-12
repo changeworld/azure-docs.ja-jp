@@ -229,11 +229,11 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 
 これで、アプリケーションを実行する準備が整いました。
 
-1.	Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** をクリックします。**[マルチ スタートアップ プロジェクト]** を選択し、**ProcessDeviceToCloudMessages** プロジェクトと **SimulatedDevice** プロジェクトの両方のアクションとして **[開始]** を選択します。
+1.	Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** をクリックします。**[マルチ スタートアップ プロジェクト]** を選択し、**ReadDeviceToCloudMessages** プロジェクトと **SimulatedDevice** プロジェクトのアクションとしてどちらも **[開始]** を選択します。
 
    	![Startup project properties][41]
 
-2.	**F5** キーを押して両方のアプリケーションを実行します。シミュレーション対象デバイスから IoT Hub に送信されたメッセージは、**SimulatedDevice** アプリのコンソール出力に表示されます。IoT Hub が受信したメッセージは、**ProcessDeviceToCloudMessages** アプリのコンソール出力に表示されます。
+2.	**F5** キーを押して両方のアプリケーションを実行します。シミュレーション対象デバイスから IoT Hub に送信されたメッセージは、**SimulatedDevice** アプリのコンソール出力に表示されます。IoT Hub が受信したメッセージは、**ReadDeviceToCloudMessages** アプリのコンソール出力に表示されます。
 
    	![Console output from apps][42]
 
@@ -277,4 +277,4 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [lnk-connected-service]: https://visualstudiogallery.msdn.microsoft.com/e254a3a5-d72e-488e-9bd3-8fee8e0cd1d6
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

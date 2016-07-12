@@ -14,19 +14,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="06/27/2016"
 	ms.author="daleche"/>
 
 
 # SQL Database の SQL 接続エラーと一時エラーのトラブルシューティング、診断、防止
 
+
 この記事では、クライアント アプリケーションが Azure SQL Database とやり取りする際に発生する接続エラーと一時エラーを防止、トラブルシューティング、診断、軽減する方法について説明します。再試行ロジックの構成方法、接続文字列の作成方法、およびその他の接続設定の調整方法について説明します。
+
 
 <a id="i-transient-faults" name="i-transient-faults"></a>
 
 ## 一時エラー (一過性の障害)
 
 一時エラー (一過性の障害) には、すぐに自動的に解決する根本原因があります。一時エラーを起こす偶発的原因として、Azure システムが、各種ワークロードの負荷分散を行うために行うハードウェア リソースの瞬間的切り替えがあります。多くの場合、この再構成イベントのほとんどは 60 秒以内に完了します。この再構成の進行中、Azure SQL Database への接続の問題が発生する場合があります。Azure SQL Database に接続するアプリケーションは、これらの一時エラーを想定し、一時エラーをアプリケーション エラーとしてユーザーに示すのではなく、コードで再試行ロジックを実装して処理するように構築する必要があります。
+
+
 
 クライアント プログラムで ADO.NET を使用している場合、**SqlException** のスローによって一時エラーが報告されます。[SQL Database クライアント アプリケーション SQL エラー コード](sql-database-develop-error-messages.md)のトピックの冒頭付近に一時エラーの一覧があります。この表に記載されているエラー番号と **Number** プロパティを比較してください。
 
@@ -37,6 +41,7 @@
 以下の条件に応じて、SQL 接続を再試行するか、再度確立します。
 
 * **接続試行中に一時エラーが発生した場合**: 数秒待ってから接続を再試行する必要があります。
+
 
 * **SQL クエリ コマンドの実行中に一時エラーが発生した場合**: そのコマンドをすぐに再試行することは避けてください。ある程度の時間差を伴って接続が新たに確立されます。その後でコマンドを再試行してください。
 
@@ -427,7 +432,7 @@ Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークで�
 
 再試行ロジックで特に利用する機会の多い EntLib60 のクラスは次のとおりです。いずれのクラス (そのメソッドなども含む) も、**Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 名前空間に属しています。
 
-***Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 名前空間:*
+*Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling* *名前空間* *:*
 
 - **RetryPolicy** クラス
  - **ExecuteAction** メソッド
@@ -560,4 +565,4 @@ public bool IsTransient(Exception ex)
 
 - [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

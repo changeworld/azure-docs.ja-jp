@@ -24,7 +24,7 @@
 
 [Azure Premium Storage](../storage/storage-premium-storage.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。IaaS [仮想マシン](https://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 この記事では、SQL Server を実行する仮想マシンから Premium Storage の使用への移行に関する計画とガイダンスについて説明します。これには、Azure インフラストラクチャ (ネットワーク、ストレージ) とゲストの Windows VM の手順が含まれます。[付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の例では、PowerShell を使用して、強化されたローカル SSD ストレージを利用するように大きな VM を移動する方法の詳細な移行を示します。
@@ -120,7 +120,7 @@ VHD をアタッチした後は、キャッシュの設定を変更できませ�
 
 1. **Get-AzureVM** コマンドで、VM にアタッチされているディスクのリストを取得します。
 
-    Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
+    Get-AzureVM -ServiceName <サービス名> -Name <仮想マシン名> | Get-AzureDataDisk
 
 1. ディスク名と LUN に注目します。
 
@@ -279,7 +279,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 
 
 #### 手順 3. 既存のイメージを使用する
-既存のイメージを使用できます。または、[既存のマシンのイメージを取得](virtual-machines-windows-classic-capture-image.md)できます。イメージを取得するマシンは DS* マシンでなくてもよいことに注意してください。イメージを用意した後、次に示すように、**Start-AzureStorageBlobCopy** PowerShell コマンドレットで Premium Storage アカウントにコピーします。
+既存のイメージを使用できます。または、[既存のマシンのイメージを取得](virtual-machines-windows-classic-capture-image.md)できます。イメージを取得するマシンは DS* マシンでなくてもよいことに注意してください。イメージを用意した後、次に示すように、**Start-AzureStorageBlobCopy PowerShell** コマンドレットで Premium Storage アカウントにコピーします。
 
     #Get storage account keys:
     #Standard Storage account
@@ -484,7 +484,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 - このシナリオで使用する Azure **Start-AzureStorageBlobCopy** コマンドレットは非同期です。コピーの完了に対する SLA はありません。コピーに要する時間は一定ではなく、キューでの待機に依存し、それはまた転送するデータの量に依存します。別のリージョンの Premium Storage をサポートする別の Azure データ センターへの転送の場合、コピー時間が増加します。ノードが 2 つだけの場合、コピーがテストより長くかかる場合に可能な移行について考慮します。これには次のアイデアが含まれます。
 	- 合意されたダウンタイムでの移行の前に、HA に第 3 の SQL Server ノードを一時的に追加します。
 	- Azure のスケジュールされたメンテナンスの時間外に移行を実行します。
-	- クラスター クォーラムを正しく構成したことを確認します。  
+	- クラスター クォーラムを正しく構成したことを確認します。
 
 ##### 手順の概要
 
@@ -608,7 +608,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
     $destcloudsvc = "danNewSvcAms"
     New-AzureService $destcloudsvc -Location $location
 
-#### 手順 2. リソースに対して許可するエラーを増やす <Optional>
+#### 手順 2. リソースに対して許可するエラーを増やす (オプション)
 Always On 可用性グループに属する特定のリソースでは、クラスター サービスがリソース グループの再起動を試みる前に一定期間中に発生できるエラー数に制限があります。手動によるフェールオーバーおよびマシンのシャットダウンによるフェールオーバーのトリガーを行わない場合はこの制限に近づくことがあるので、この手順を実行する間は制限を大きくすることをお勧めします。
 
 許可するエラーを 2 倍にするのが賢明です。フェールオーバー クラスター マネージャーでこれを行うには、Always On リソース グループのプロパティに移動します。
@@ -617,7 +617,7 @@ Always On 可用性グループに属する特定のリソースでは、クラ�
 
 最大エラー数 6 に変更します。
 
-#### 手順 3. クラスター グループに IP アドレス リソースを追加する <Optional>
+#### 手順 3. クラスター グループに IP アドレス リソースを追加する (オプション)
 
 クラスター グループの IP アドレスが 1 つだけであり、それがクラウドのサブネットに整列されている場合は、そのネットワークのクラウドですべてのクラスター ノードを誤ってオフラインにすると、クラスター IP リソースおよびクラスター ネットワーク名をオンラインにできなくなることに注意してください。これが発生した場合、その他のクラスター リソースを更新をできません。
 
@@ -1148,4 +1148,4 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 [24]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_14.png
 [25]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_15.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

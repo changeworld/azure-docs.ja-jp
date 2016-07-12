@@ -26,7 +26,7 @@ Azure RemoteApp では、デバイスとセッションにわたってユーザ�
 
 ユーザー プロファイル データの詳細については、次をお読みください。
 
->[AZURE.NOTE] UPD を無効にする必要がありますか。 UPD を無効にできるようになりました。詳細については、[Azure RemoteApp でのユーザー プロファイル ディスク (UPD)](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx) に関するページを参照してください。
+>[AZURE.NOTE] UPD を無効にする必要がありますか。 UPD を無効にできるようになりました。詳細については、[Azure RemoteApp でのユーザー プロファイル ディスク (UPD)](https://blogs.technet.microsoft.com/enterprisemobility/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp/) に関するページを参照してください。
 
 
 ## 管理者がデータにアクセスするには、どうすればよいですか。
@@ -83,10 +83,10 @@ Outlook および Azure RemoteApp の使用方法の詳細については、[こ
 UPD を無効にする必要があるのは、次のような場合です。
 
 - ユーザー データへの完全なアクセスと制御が必要な場合 (金融機関など、監査やレビューの目的のため)。
-- サードパーティのユーザー プロファイル管理ソリューションがオンプレミスにあり、ドメインに参加している Azure RemoteApp デプロイでその使用を続ける必要がある場合。この場合、プロファイル エージェントがゴールド イメージに読み込まれている必要があります。 
+- サードパーティのユーザー プロファイル管理ソリューションがオンプレミスにあり、ドメインに参加している Azure RemoteApp デプロイでその使用を続ける必要がある場合。この場合、プロファイル エージェントがゴールド イメージに読み込まれている必要があります。
 - 任意のローカル データ ストレージが不要な場合、またはクラウド (OneDrive for Business など) にすべてのデータがあったり、ファイル共有のため、Azure RemoteApp を使用してデータのローカルへの保存を制御する必要がある場合。
 
-詳細については、[Azure RemoteApp でのユーザー プロファイル ディスク (UPD) の無効化](http://blogs.msdn.com/b/rds/archive/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp.aspx)に関するページを参照してください。
+詳細については、[Azure RemoteApp でのユーザー プロファイル ディスク (UPD) の無効化](https://blogs.technet.microsoft.com/enterprisemobility/2015/11/11/disable-user-profile-disks-upds-in-azure-remoteapp/)に関するページを参照してください。
 
 ## ユーザーによるシステム ドライブへのデータ保存を制限できますか。
 
@@ -159,4 +159,4 @@ OneDrive for Business などのデータ同期アプリを使用することも�
 
 これにより、New-PSDrive コマンドレットの -Credential パラメーターを省略できます。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

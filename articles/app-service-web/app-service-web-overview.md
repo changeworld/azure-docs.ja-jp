@@ -42,7 +42,7 @@ Web Apps に適用されるいくつかの App Service の主要機能を次に�
 
 - **DevOps の最適化** - [継続的インテグレーションとデプロイ](../app-service-web/app-service-continous-deployment.md)を、Visual Studio Team Services、GitHub、または BitBucket でセットアップできます。[テスト環境やステージング環境](../app-service-web/web-sites-staged-publishing.md)を介して更新を反映できます。また、[A/B テスト](../app-service-web/app-service-web-test-in-production-get-start.md)を実行できます。App Service でのアプリの管理には、[Azure PowerShell](../powershell-install-configure.md) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](../xplat-cli-install.md) を使用します。
  
-- **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](../app-service/app-service-scale.md)または[スケールアウト](../azure-portal/insights-how-to-scale.md)を実行できます。Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
+- **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](../app-service-web/web-sites-scale.md)または[スケールアウト](../azure-portal/insights-how-to-scale.md)を実行できます。Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
 
 - **SaaS プラットフォームおよびオンプレミス データへの接続** - エンタープライズ システム (SAP、Siebel、Oracle など)、SaaS サービス (Salesforce や Office 365 など)、インターネット サービス (Facebook や Twitter など) 向けに用意された 50 を超える[コネクタ](../connectors/apis-list.md)から選択できます。また、[ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md)と [Azure Virtual Network](../app-service-web/web-sites-integrate-with-vnet.md) を利用して、オンプレミスのデータにアクセスできます。
 
@@ -62,4 +62,4 @@ App Service の Web Apps に加え、Azure では Web サイトと Web アプリ
 
 Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

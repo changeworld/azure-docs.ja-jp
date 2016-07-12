@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="06/27/2016" 
 	ms.author="spelluru"/>
 
 # Data Factory から MapReduce プログラムを起動する
@@ -31,7 +31,7 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
 1. **activity** の **type** を **HDInsight** に設定します。
 3. **className** プロパティでクラスの名前を指定します。
 4. **jarFilePath** プロパティでファイル名を含む JAR ファイルへのパスを指定します。
-5. **jarLinkedService** プロパティで、JAR ファイルを含む Azure BLOB Storage を参照する、リンクされたサービスを指定します。   
+5. **jarLinkedService** プロパティで、JAR ファイルを含む Azure BLOB Storage を参照する、リンクされたサービスを指定します。
 6. **arguments** セクションで MapReduce プログラムに任意の引数を指定します。実行時に、MapReduce フレームワークのいくつかの引数 (mapreduce.job.tags など) が表示されます。MapReduce の引数と区別するために、次の例のように、オプションと値の両方を引数として使用することを検討してください (-s、--input、--output などがオプションであり、直後に値が続きます)。
 
 		{
@@ -215,8 +215,8 @@ MapReduce アクティビティを使用して、HDInsight Spark クラスター
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
 
 
-[adfgetstarted]: data-factory-get-started.md
-[adfgetstartedmonitoring]: data-factory-get-started.md#monitor-pipelines
+[adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+[adfgetstartedmonitoring]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines
 
 [Developer Reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [Azure Portal]: http://portal.azure.com
@@ -228,4 +228,4 @@ MapReduce アクティビティを使用して、HDInsight Spark クラスター
 - [Spark プログラムを呼び出す](data-factory-spark.md)
 - [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

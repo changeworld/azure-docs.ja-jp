@@ -46,3 +46,5 @@ articles/sql-database/sql-database-configure-firewall-settings
      ![新しいサーバー ファイアウォール](./media/sql-database-create-new-server-firewall-portal/sql-database-create-new-server-firewall-portal-7.png)
 
 	>[AZURE.IMPORTANT] クライアント IP アドレスは不定期で変更される可能性があるため、新しいファイアウォール規則を作成するまでサーバーにアクセスできなくなる場合があります。[Bing](http://www.bing.com/search?q=my%20ip%20address) を使用して IP アドレスを確認し、1 つの IP アドレスまたは特定の範囲の IP アドレスを追加できます。詳細については、「[Azure ポータルで既存のサーバー レベルのファイアウォール規則を管理する](sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal)」を参照してください。
+
+<!---HONumber=AcomDC_0629_2016-->

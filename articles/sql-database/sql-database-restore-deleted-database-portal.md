@@ -20,10 +20,8 @@
 # Azure ポータルを使用した、削除済み Azure SQL データベースの復元
 
 > [AZURE.SELECTOR]
-- [概要](sql-database-restore-deleted-database.md)
-- [Azure ポータル](sql-database-restore-deleted-database-portal.md)
-- [PowerShell](sql-database-restore-deleted-database-powershell.md)
-
+- [概要](sql-database-recovery-using-backups.md)
+- [削除されたデータベースの復元: PowerShell](sql-database-restore-deleted-database-powershell.md)
 
 ## 復元するデータベースの選択 
 
@@ -38,19 +36,14 @@ Azure ポータルでデータベースを復元するには、次の手順を�
 
     ![Azure SQL データベースの復元](./media/sql-database-restore-deleted-database-portal/restore-deleted.png)
 
+
 ## 次のステップ
 
-- PowerShell を使用して、削除されたデータベースを復元する方法の詳細な手順については、[PowerShell を使用した削除済みデータベースの復元](sql-database-restore-deleted-database-powershell.md)に関するページをご覧ください。
-- 削除されたデータベースを復元する方法については、[REST API を使用した削除済みデータベースの復元](https://msdn.microsoft.com/library/azure/mt163685.aspx)に関するページをご覧ください。
-- 削除されたデータベースの復元に関する詳細については、[削除されたデータベースの復元](sql-database-restore-deleted-database.md)に関するページをご覧ください。
-- Azure SQL Database 自動バックアップの詳細については、「 [SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」をご覧ください。
+- ビジネス継続性の概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
+- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
+- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
+- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
-## その他のリソース
-
-- [ポイントインタイム リストア](sql-database-point-in-time-restore.md)
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [geo リストア](sql-database-geo-restore.md)
-- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
-- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->
