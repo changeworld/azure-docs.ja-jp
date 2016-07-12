@@ -42,7 +42,7 @@ Apache Storm チュートリアルを正常に完了するには、次の条件�
 
 このセクションでは、Azure ARM テンプレートを使用して HDInsight バージョン 3.2 クラスター (Storm バージョン 0.9.3) を作成します。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。その他のクラスター作成方法については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
-1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。
+1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。         
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-storm-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
     

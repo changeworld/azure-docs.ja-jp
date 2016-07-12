@@ -27,7 +27,7 @@
 
 Azure Multi-Factor Authentication Server をインストールする際、次の 2 つのオプションがあります。
 
-- AD FS と同じサーバーに Azure Multi-factor Authentication Server をローカル インストールする
+- AD FS と同じサーバーに Azure Multi-factor Authentication Server をローカル インストールする 
 - AD FS サーバーに Azure Multi-factor Authentication Adapter をローカル インストールし、MFA Server を別のコンピューターにインストールする
 
 開始する前に、次の情報に注意してください。

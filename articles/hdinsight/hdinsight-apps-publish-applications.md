@@ -71,11 +71,11 @@ HDInsight アプリケーションのインストールに必要なファイル�
 		
 	>スクリプト名は、次の 3 つの部分で構成されていることに注意してください。
 		
-	>	1. A script name prefix, which shall include either the application name or a name relevant to the application.
-	>	2. A "-" for readability.
-	>	3. A unique string function with the application name as the parameter.
+	>	1. スクリプト名のプレフィックス。アプリケーション名またはアプリケーションに関連する名前のどちらかが含まれている必要があります。
+	>	2. "-" (読みやすくするため)。
+	>	3. 一意の文字列の関数 (パラメーターとしてアプリケーション名を指定)。
 
-	>	An example is the above ends up becoming: hue-install-v0-4wkahss55hlas in the persisted script action list. For a sample JSON payload, see [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+	>	上記の例の場合、保存されたスクリプト アクションの一覧では hue-install-v0-4wkahss55hlas となります。JSON ペイロードのサンプルについては、[https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json) 参照してください。
 
 - 必要なすべてのスクリプト。
 
@@ -90,7 +90,7 @@ HDInsight アプリケーションのインストールに必要なファイル�
 3. **[Create Dev Center account and join the Azure program (デベロッパー センター アカウントを作成して Azure プログラムに参加する)]** をクリックして勤務先の会社を登録します (未登録の場合)。「[Microsoft 開発者アカウントの作成](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)」を参照してください。
 4. **[Define some Topologies to get Started (いくつかのトポロジを定義して開始する)]** をクリックします。ソリューション テンプレートは、作成したすべてのトポロジの 「親」 となります。1 つのプランまたはソリューション テンプレートでは、複数のトポロジを定義できます。プランをステージングにプッシュすると、すべてのトポロジも一緒にプッシュされます。
 5. 新しいバージョンを追加します。
-6. 「[アプリケーションのパッケージ化](#package-application)」で作成した zip ファイルをアップロードします。
+6. 「[アプリケーションのパッケージ化](#package-application)」で作成した zip ファイルをアップロードします。  
 7. **[Request Certification (証明書の要求)]** をクリックします。Microsoft の認定チームがファイルを確認し、トポロジを認定します。
 
 ## 次のステップ

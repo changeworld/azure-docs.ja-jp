@@ -62,7 +62,10 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 コネクタは、アプリ内でアクションとして使用することもできます。アクションは、アプリの実行時に使用できるデータの検索に役立ちます。たとえば、注文を処理するときに、SQL データベースから顧客データを検索することが必要になる場合があります。または、変換先テーブルでデータの書き込み、更新、または削除が必要になる場合があります。これらを実行するために、コネクタによって提供されるアクションを使用できます。アクションは、Swagger メタデータで定義された操作にマップされます。
 
 
-[新機能](../app-service-logic/app-service-logic-schema-2015-08-01.md) [今すぐロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md) [今すぐ PowerApps を使い始める](../power-apps/powerapps-get-started-azure-portal.md) [既存のロジック アプリを最新のスキーマ バージョンに移行する](connectors-schema-migration.md)
+[新機能](../app-service-logic/app-service-logic-schema-2015-08-01.md)  
+[今すぐロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)  
+[今すぐ PowerApps を使い始める](../power-apps/powerapps-get-started-azure-portal.md)  
+[既存のロジック アプリを最新のスキーマ バージョンに移行する](connectors-schema-migration.md)
 
 <!--Connectors Documentation-->
 [azureblobdoc]: ./connectors-create-api-azureblobstorage.md "Azure BLOB に接続して、BLOB コンテナーのファイルを管理します。"

@@ -71,7 +71,8 @@ Batch ソリューションを開発するとき、Microsoft Azure で次のア�
 | **Batch REST** | [MSDN][batch_rest] | 該当なし | [MSDN][batch_rest] |
 | **Batch .NET** | [MSDN][api_net] | [NuGet][api_net_nuget] | [GitHub][api_sample_net] |
 | **Batch Python** | [readthedocs.io][api_python] | [PyPI][api_python_pypi] |[GitHub][api_sample_python] |
-| **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - | | **Batch Java** (プレビュー) | [github.io][api_java] | [Maven スナップショット リポジトリ][api_java_jar] | [GitHub][api_sample_java] |
+| **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - | 
+| **Batch Java** (プレビュー) | [github.io][api_java] | [Maven スナップショット リポジトリ][api_java_jar] | [GitHub][api_sample_java] |
 
 ### Batch リソース管理
 
