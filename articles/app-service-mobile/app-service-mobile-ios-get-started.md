@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="04/19/2016"
+	ms.date="06/30/2016"
 	ms.author="krisragh"/>
 
 #iOS アプリの作成
@@ -29,7 +29,7 @@
 このチュートリアルを完了するには、以下が必要です。
 
 * [アクティブな Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
-* [Visual Studio Community 2013] 以降がインストールされている PC 
+* [Visual Studio Community 2013] 以降がインストールされている PC
 * Xcode 7.3 以降がインストールされている Mac
 
 ## 手順 I: 新しい Azure Mobile App バックエンドの作成
@@ -52,4 +52,4 @@
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

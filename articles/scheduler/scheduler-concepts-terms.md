@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="get-started-article"
- ms.date="03/09/2016"
+ ms.date="06/30/2016"
  ms.author="krisragh"/>
 
 # Scheduler の概念、用語集、エンティティ階層構造
@@ -45,7 +45,7 @@
 
 基本的なレベルでは、スケジュールされたジョブは、次のような要素で構成されます。
 
-- ジョブ タイマーが起動するときに実行するアクション  
+- ジョブ タイマーが起動するときに実行するアクション
 
 - (省略可能) ジョブを実行する時間
 
@@ -109,7 +109,7 @@
 
 上記のスケジュールされたジョブの例に示すように、ジョブ定義はいくつかの要素から構成されます。
 
-- 開始時刻 ("startTime")  
+- 開始時刻 ("startTime")
 
 - アクション ("action")。エラー時のアクション ("errorAction") が含まれています。
 
@@ -160,7 +160,7 @@ Service Bus キューの操作の例を次に示します。
 
 recurrence には、次の要素が含まれます。
 
-- frequency: minute、hour、day、week、month、または year。  
+- frequency: minute、hour、day、week、month、または year。
 
 - interval: 指定した頻度で繰り返しジョブを実行する間隔。
 
@@ -214,4 +214,4 @@ Scheduler ジョブが失敗した場合、再試行ポリシーを指定して�
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

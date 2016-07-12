@@ -37,19 +37,15 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
 	* **[Name]**: **[App ID Description]** セクションの **[Name]** フィールドに、アプリのわかりやすい名前を入力します。
 	
-	* **[Bundle Identifier]**: **[Explicit App ID]** セクションに、[アプリ ディストリビューション ガイド](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)で説明したように `<Organization Identifier>.<Product Name>` の形式で**バンドル ID** を入力します。使用する *Organization Identifier* と *Product Name* は XCode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。次のスクリーンショットでは、組織 ID として*NotificationHubs* 、製品名として *GetStarted* を使用しています。XCode プロジェクトで使用する値と一致していることを確認することで、XCode で正しい発行プロファイルが使用できるようになります。
+	* **[Bundle Identifier]**: **[Explicit App ID]** セクションに、[アプリ ディストリビューション ガイド](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)で説明したように `<Organization Identifier>.<Product Name>` の形式で**バンドル ID** を入力します。使用する *Organization Identifier* と *Product Name* は XCode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。次のスクリーンショットでは、組織 ID として*NotificationHubs*、製品名として *GetStarted* を使用しています。XCode プロジェクトで使用する値と一致していることを確認することで、XCode で正しい発行プロファイルが使用できるようになります。
 	
 	* **[Push Notifications]**: **[App Services]** セクションの **[Push Notifications]** オプションをオンにします。
 
 	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
 
-   	これで、アプリケーション ID が生成され、情報の確認が求められます。**[Submit]** をクリックします。
+   	これで、アプリケーション ID が生成され、情報の確認が求められます。**[Register (登録)]** をクリックして新しいアプリケーション ID を確定します。
 
-
-    ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-confirm-new-appid.png)
-
-
-   	**[Submit]** をクリックすると、以下のような **[Registration complete]** 画面が表示されます。**[Done]** をクリックします。
+   	**[Register (登録)]** をクリックすると、以下のような **[Registration complete (登録が完了しました)]** 画面が表示されます。**[Done]** をクリックします。
 
 
     ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
@@ -69,7 +65,7 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
    	これで、[Add iOS Certificate] アシスタントが表示されます。
 
-    > [AZURE.NOTE]このチュートリアルでは開発証明書を使用します。運用証明書の場合も同じ処理を行います。通知の送信と同じ証明書の種類を使用するようにします。
+    > [AZURE.NOTE] このチュートリアルでは開発証明書を使用します。運用証明書の場合も同じ処理を行います。通知の送信と同じ証明書の種類を使用するようにします。
 
 5. **[Choose File]** をクリックして、最初の作業で CSR ファイルを保存した場所に移動し、**[Generate]** をクリックします。
 
@@ -83,7 +79,7 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
-    > [AZURE.NOTE]既定では、ダウンロードした開発証明書ファイルの名前は **aps\_development.cer** になっています。
+    > [AZURE.NOTE] 既定では、ダウンロードした開発証明書ファイルの名前は **aps\_development.cer** になっています。
 
 7. ダウンロードしたプッシュ証明書 **aps\_development.cer** をダブルクリックします。
 
@@ -91,7 +87,7 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
-    > [AZURE.NOTE]証明書の名前は異なることがありますが、名前の前に **Apple Development iOS Push Services:** が付けられます。
+    > [AZURE.NOTE] 証明書の名前は異なることがありますが、名前の前に **Apple Development iOS Push Services:** が付けられます。
 
 8. キーチェーン アクセスの **[証明書]** カテゴリで、作成した新しいプッシュ証明書を右クリックします。**[書き出す]** をクリックし、ファイルに名前を付けて、**.p12** 形式を選択します。次に、**[保存]** をクリックします。
 
@@ -99,7 +95,7 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
 	エクスポートした .p12 証明書のファイル名と場所を書き留めます。APNS での認証には、これが使用されます。
 
-	>[AZURE.NOTE]このチュートリアルでは QuickStart.p12 ファイルを作成します。ファイル名と場所は同じである必要はありません。
+	>[AZURE.NOTE] このチュートリアルでは QuickStart.p12 ファイルを作成します。ファイル名と場所は同じである必要はありません。
 
 
 ##アプリケーションのプロビジョニング プロファイルを作成する
@@ -135,4 +131,4 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0706_2016-->

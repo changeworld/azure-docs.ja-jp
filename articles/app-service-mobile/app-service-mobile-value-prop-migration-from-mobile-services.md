@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/03/2016"
+	ms.date="06/30/2016"
 	ms.author="krisragh"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用時に App Service はどのように役立つか
@@ -61,4 +61,4 @@ Mobile services では、バックエンド コードのすべてのインスタ
 
 こちらの[チュートリアル](app-service-mobile-migrating-from-mobile-services.md)に従って、既存のモバイル サービスに *App Service* を活用することができます。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0706_2016-->

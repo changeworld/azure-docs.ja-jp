@@ -12,14 +12,15 @@
    ms.devlang="na"
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
-   ms.workload="compute"   ms.date="06/02/2016"
+   ms.workload="compute"
+   ms.date="07/02/2016"
    ms.author="elizapo"/>
 
 # Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する
 
 Azure RemoteApp を使用すると、Windows アプリケーションを、どこでどんなデバイスを使っていても、今すぐ実行できるようなります。10 年も昔に作成したカスタム アプリケーションであっても、Office アプリであっても、ユーザーは、それらの少数のアプリケーションのために特定のオペレーティング システム (Windows XP など) を使い続ける必要はもうありません。
 
-Azure RemoteApp を使用すれば、ユーザーも、自分の Android や Apple デバイスを使用して Windows (または Windows Phone) でするのと同じエクスペリエンスが得られます。これは、インターネット接続のあるどこからでもユーザーがアクセスできる Azure 上の Windows 仮想マシンに Windows アプリケーションがホストされることにより、実現されます。 
+Azure RemoteApp を使用すれば、ユーザーも、自分の Android や Apple デバイスを使用して Windows (または Windows Phone) でするのと同じエクスペリエンスが得られます。これは、インターネット接続のあるどこからでもユーザーがアクセスできる Azure 上の Windows 仮想マシンに Windows アプリケーションがホストされることにより、実現されます。
 
 これを行う方法の例をご確認ください。
 
@@ -27,7 +28,9 @@ Azure RemoteApp を使用すれば、ユーザーも、自分の Android や App
 
 Access はデータベースです。せっかくのデータベースが役立つように、ユーザーが Access データ共有にアクセスできるようにするいくつかの手順を実行しましょう。使用するアプリがデータベースではない場合や、ユーザーがファイル共有にアクセスできるようにする必要がない場合、このチュートリアルではこれらの手順をスキップできます。
 
-[AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
+> [AZURE.NOTE] <a name="note"></a>このチュートリアルを完了するには Azure アカウントが必要です。
+> - [無料で Azure アカウントを開く](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。
+> - [MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。MSDN サブスクリプションにより、有料の Azure サービスを使用できるクレジットが毎月提供されます。
 
 
 ## RemoteApp コレクションの作成
@@ -118,4 +121,4 @@ Access はデータベースです。せっかくのデータベースが役立�
 <!--Image references-->
  
 
-<!----HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

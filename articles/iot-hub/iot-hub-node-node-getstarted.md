@@ -76,7 +76,7 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
 
     ```
     var device = new iothub.Device(null);
-    device.deviceId = 'myFirstDevice';
+    device.deviceId = 'myFirstNodeDevice';
     registry.create(device, function(err, deviceInfo, res) {
       if (err) {
         registry.get(device.deviceId, printDeviceInfo);
@@ -201,10 +201,10 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
     var Message = require('azure-iot-device').Message;
     ```
 
-5. **connectionString** 変数を追加し、それを使用してデバイス クライアントを作成します。**{youriothubname}** を IoT Hub 名に、**{yourdeviceid}** と **{yourdevicekey}** を「*デバイス ID の作成*」セクションで生成したデバイス値に置き換えます。
+5. **connectionString** 変数を追加し、それを使用してデバイス クライアントを作成します。**{youriothubname}** を IoT Hub 名に、**{yourdevicekey}** を「*デバイス ID の作成*」セクションで生成したデバイス キーの値に置き換えます。
 
     ```
-    var connectionString = 'HostName={youriothubname}.azure-devices.net;DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
+    var connectionString = 'HostName={youriothubname}.azure-devices.net;DeviceId=myFirstNodeDevice;SharedAccessKey={yourdevicekey}';
     
     var client = clientFromConnectionString(connectionString);
     ```
@@ -232,11 +232,11 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
         // Create a message and send it to the IoT Hub every second
         setInterval(function(){
             var windSpeed = 10 + (Math.random() * 4);
-            var data = JSON.stringify({ deviceId: 'mydevice', windSpeed: windSpeed });
+            var data = JSON.stringify({ deviceId: 'myFirstNodeDevice', windSpeed: windSpeed });
             var message = new Message(data);
             console.log("Sending message: " + message.getData());
             client.sendEvent(message, printResultFor('send'));
-        }, 2000);
+        }, 1000);
       }
     };
     ```
@@ -306,4 +306,4 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

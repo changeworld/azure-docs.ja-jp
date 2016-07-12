@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="06/14/2016"
+	ms.date="07/06/2016"
 	ms.author="iainfou"/>
 
 # リソース マネージャーで Linux 仮想マシンを作成する各種の方法
@@ -23,27 +23,79 @@
 
 ## Azure CLI 
 
-[こちら](../xplat-cli-install.md)のページで、npm、Docker コンテナー、インストール スクリプトを使用して Azure CLI をインストールする方法について詳しく説明しています。Azure CLI の使用例については、次のチュートリアルを参照してください。
+Azure CLI はさまざまなプラットフォームで利用可能です。その際は、npm パッケージ、ディストリビューション提供のパッケージ、Docker コンテナーのいずれかを使用します。詳細については、[Azure CLI のインストールと構成の方法](../xplat-cli-install.md)に関する記事を参照してください。Azure CLI の使用例については、次のチュートリアルを参照してください。次に示す CLI のクイック スタート コマンドの詳細については、各記事を参照してください。
 
-* [開発用とテスト用の Linux VM を Azure CLI から作成する](virtual-machines-linux-quick-create-cli.md) 
+* [開発用とテスト用の Linux VM を Azure CLI から作成する](virtual-machines-linux-quick-create-cli.md)
+
+	```bash
+	azure vm quick-create -M ~/.ssh/azure_id_rsa.pub -Q CoreOS
+	```
 
 * [Azure テンプレートを使用して安全な Linux VM を作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
 
+	```bash
+	azure group create --name TestRG --location WestUS 
+		--template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
+	```
+
 * [Azure CLI を使用して新しく Linux VM を作成する](virtual-machines-linux-create-cli-complete.md)
+
+* [Linux VM へのディスクの追加](virtual-machines-linux-add-disk.md)
+
+	```bash
+	azure vm disk attach-new --resource-group TestRG --vm-name TestVM <size-in-GB>
+	```
 
 ## Azure ポータル
 
-[Azure ポータル](https://portal.azure.com)のグラフィカル ユーザー インターフェイスを使用すると VM を手軽に試すことができます。ご利用のシステムには何もインストールする必要がないので、特に Azure を初めて使用する場合には有利な方法です。Azure ポータルを使用して VM を作成する方法については、以下のページを参照してください。
+[Azure ポータル](https://portal.azure.com)のグラフィカル ユーザー インターフェイスを使用すると VM を手軽に試すことができます。ご利用のシステムに何もインストールする必要がないので、特に Azure を初めて使用する場合には便利な方法です。Azure ポータルを使用して VM を作成する方法については、以下のページを参照してください。
 
-* [Linux を実行する仮想マシンを Azure ポータルを使用して作成する](virtual-machines-linux-quick-create-portal.md) 
+* [Azure ポータルを使用して Linux VM を作成する](virtual-machines-linux-quick-create-portal.md)
+* [Azure ポータルを使用してディスクを接続する](virtual-machines-linux-attach-disk-portal.md)
 
 ## オペレーティング システムとイメージの選択肢
-
-どちらの方法も、実行するオペレーティング システムに基づいてイメージを選択します。Azure とそのパートナーから多数のイメージが提供されており、中にはアプリケーションやツールがプレインストールされているイメージもあります。または、独自のイメージのいずれかをアップロードすることができます。
+VM を作成するときは、実行するオペレーティング システムに基づいてイメージを選択します。Azure とそのパートナーから多数のイメージが提供されており、中にはアプリケーションやツールがプレインストールされているイメージもあります。または、独自のイメージのいずれかをアップロードすることができます (次を参照)。
 
 ### Azure のイメージ
+`azure vm image` CLI コマンドを使用して、発行元、ディストリビューション リリース、ビルドごとに利用可能な内容を確認できます。
 
-前述のすべての記事では、簡単に、既存の Azure イメージを使用し、VM を作成して、それをネットワークや負荷分散などに合わせてカスタマイズすることができます。Azure で提供されているイメージは、ポータルから Azure Marketplace にアクセスすることで入手できます。コマンド ラインを使用して、同様の一覧を取得することができます。たとえば、場所と発行元ごとの利用可能なすべてのイメージの一覧を取得するには、Azure CLI で `azure vm image list` を実行します。提供されているイメージの探し方と使い方の例については、[Azure CLI を使用した Azure 仮想マシン イメージの検索と選択](virtual-machines-linux-cli-ps-findimage.md)に関するページを参照してください。
+利用可能な発行元を一覧表示する場合:
+
+```bash
+azure vm image list-publishers --location WestUS
+```
+
+特定の発行元の利用可能な製品 (プラン) を一覧表示する場合:
+
+```bash
+azure vm image list-offers --location WestUS --publisher Canonical
+```
+
+特定のプランの利用可能な SKU (ディストリビューション リリース) を一覧表示する場合:
+
+```bash
+azure vm image list-skus --location WestUS --publisher Canonical --offer UbuntuServer
+```
+
+特定のリリースの利用可能なすべてのイメージを一覧表示する場合:
+
+```bash
+azure vm image list --location WestUS --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS
+```
+
+提供されているイメージの探し方と使い方の例については、[Azure CLI を使用した Azure 仮想マシン イメージの検索と選択](virtual-machines-linux-cli-ps-findimage.md)に関するページを参照してください。
+
+`azure vm quick-create` コマンドと `azure vm create` コマンドにはエイリアスもいくつかあり、より一般的なディストリビューションと、その最新リリースにすばやくアクセスするために使用できます。VM を作成するたびに発行元、プラン、SKU、バージョンを指定する必要がある方法よりも簡単です。
+
+| エイリアス | 発行元 | プラン | SKU | バージョン |
+|:----------|:----------|:-------------|:------------|:--------|
+| CentOS | OpenLogic | Centos | 7\.2 | 最新 |
+| CoreOS | CoreOS | CoreOS | 安定版 | 最新 |
+| Debian | credativ | Debian | 8 | 最新 |
+| openSUSE | SUSE | openSUSE | 13\.2 | 最新 |
+| RHEL | Redhat | RHEL | 7\.2 | 最新 |
+| SLES | SLES | SLES | 12-SP1 | 最新 |
+| UbuntuLTS | Canonical | UbuntuServer | 14\.04.4-LTS | 最新 |
 
 ### 独自のイメージを使用する
 
@@ -53,7 +105,13 @@
 
 * [動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-generic.md)
 
-* [Resource Manager テンプレートとして使用する Linux 仮想マシンをキャプチャする方法](virtual-machines-linux-capture-image.md)
+* [Resource Manager テンプレートとして Linux 仮想マシンをキャプチャする方法](virtual-machines-linux-capture-image.md)クイック スタート コマンドは次のとおりです。
+
+	```bash
+	azure vm deallocate --resource-group TestRG --vm-name TestVM
+	azure vm generalize --resource-group TestRG --vm-name TestVM
+	azure vm capture --resource-group TestRG --vm-name TestVM --vhd-name-prefix CapturedVM
+	```
 
 ## 次のステップ
 
@@ -61,6 +119,6 @@
 
 * Linux VM の作成後、簡単に[データ ディスクを追加](virtual-machines-linux-add-disk.md)できます。
 
-* [パスワードや SSH キーをリセットしたりユーザーを管理したりするための手順](virtual-machines-linux-using-vmaccess-extension.md)を参照します。
+* [パスワードや SSH キーをリセットしたり、ユーザーを管理したりする](virtual-machines-linux-using-vmaccess-extension.md)ための手順を参照します。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

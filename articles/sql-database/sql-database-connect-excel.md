@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/25/2016"
+	ms.date="07/05/2016"
 	ms.author="joseidz"/>
 
 
@@ -30,7 +30,7 @@ Excel をクラウドの SQL データベースに接続し、データをイン
 
 作業を開始する前に、Azure 内に SQL データベースが必要です。SQL データベースがない場合は、「[最初の SQL Database を作成する](sql-database-get-started.md)」を参照することで、サンプル データを含むデータベースを数分で作成して実行できます。この記事では、サンプル データを Excel にインポートしますが、独自のデータでも同様の手順を実行できます。
 
-また、Excel も必要です。この記事では、[Microsoft Excel 2016](https://products.office.com/ja-JP/) を使用します。
+また、Excel も必要です。この記事では、[Microsoft Excel 2016](https://products.office.com/en-US/) を使用します。
 
 ## Excel を SQL データベースに接続して odc ファイルを作成する
 
@@ -83,4 +83,4 @@ Excel をクラウドの SQL データベースに接続し、データをイン
 - [エラスティック プール](sql-database-elastic-pool.md)の利点について学習します。
 - [バックエンドで SQL Database に接続する Web アプリケーションを作成する](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)方法を学習します。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->
