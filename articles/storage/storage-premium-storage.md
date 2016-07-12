@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="06/23/2016"
 	ms.author="prkhad"/>
 
 
@@ -39,7 +39,7 @@ Azure Premium Storage を使用するには、[無料試用版](https://azure.mi
 
 **Premium ページ BLOB**: Premium Storage は Azure ページ BLOB をサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使用されます。現在、Premium Storage は Azure ブロック BLOB、Azure ファイル、Azure 追加 BLOB、Azure テーブル、Azure キューをサポートしていません。Premium Storage アカウントに配置されている他のオブジェクトはページ BLOB であり、サポートされているプロビジョニングされたサイズのいずれかにスナップされます。したがって、Premium Storage アカウントは小さな BLOB を格納するためのものではありません。
 
-**Premium Storage アカウント**: Premium Storage の使用を開始するには、Premium Storage アカウントを作成する必要があります。[Azure ポータル](https://portal.azure.com)を使用する場合は、"Premium" パフォーマンス レベルと、レプリケーション オプションとして "ローカル冗長ストレージ (LRS)" を指定することで、Premium Storage アカウントを作成できます。また、[Storage REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) バージョン 2014-02-14 以降、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) バージョン 2014-10-01 以降 (クラシック デプロイ)、[Azure Storage Resource Provider REST API リファレンス](http://msdn.microsoft.com/library/azure/mt163683.aspx) (ARM デプロイ)、[Azure PowerShell](../powershell-install-configure.md) バージョン 0.8.10 以降を使用している場合は、種類として "Premium\_LRS" を指定することで、Premium Storage アカウントを作成することもできます。Premium Storage アカウントの制限については、以降の「[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)」を参照してください。
+**Premium Storage アカウント**: Premium Storage の使用を開始するには、Premium Storage アカウントを作成する必要があります。[Azure ポータル](https://portal.azure.com)を使用する場合は、"Premium" パフォーマンス レベルと、レプリケーション オプションとして "ローカル冗長ストレージ (LRS)" を指定することで、Premium Storage アカウントを作成できます。また、[Storage REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) バージョン 2014-02-14 以降、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) バージョン 2014-10-01 以降 (クラシック デプロイ)、[Azure Storage Resource Provider REST API リファレンス](http://msdn.microsoft.com/library/azure/mt163683.aspx) (Resource Manager デプロイ)、[Azure PowerShell](../powershell-install-configure.md) バージョン 0.8.10 以降を使用している場合は、種類として "Premium\_LRS" を指定することで、Premium Storage アカウントを作成することもできます。Premium Storage アカウントの制限については、以降の「[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)」を参照してください。
 
 **Premium ローカル冗長ストレージ**: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートし、1 つのリージョン内にデータのコピーを 3 つ保持します。Premium Storage を使用するときに Geo レプリケーションについて考慮すべき点については、この記事の「[スナップショットと Copy Blob](#snapshots-and-copy-blob)」を参照してください。
 
@@ -163,24 +163,24 @@ Premium Storage の拡張性とパフォーマンスの目標についか知っ�
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tbody>
 <tr>
-	<td><strong>P10 ディスクあたりの最大スループット</strong></td>
-	<td><strong>ディスクからの非キャッシュの読み取り</strong></td>
-	<td><strong>ディスクからの非キャッシュの書き込み</strong></td>
+<td><strong>P10 ディスクあたりの最大スループット</strong></td>
+<td><strong>ディスクからの非キャッシュの読み取り</strong></td>
+<td><strong>ディスクからの非キャッシュの書き込み</strong></td>
 </tr>
 <tr>
-	<td>100 MB/秒</td>
-	<td>100 MB/秒</td>
-	<td>0</td>
+<td>100 MB/秒</td>
+<td>100 MB/秒</td>
+<td>0</td>
 </tr>
 <tr>
-	<td>100 MB/秒</td>
-	<td>0</td>
-	<td>100 MB/秒</td>
+<td>100 MB/秒</td>
+<td>0</td>
+<td>100 MB/秒</td>
 </tr>
 <tr>
-	<td>100 MB/秒 </td>
-	<td>60 MB/秒 </td>
-	<td>40 MB/秒 </td>
+<td>100 MB/秒 </td>
+<td>60 MB/秒 </td>
+<td>40 MB/秒 </td>
 </tr>
 </tbody>
 </table>
@@ -351,7 +351,7 @@ Premium Storage を使用するときには、課金に関する次の考慮事�
 - Premium Storage のスナップショット
 - 送信データ転送
 
-**Premium Storage のディスク/BLOB サイズ**: Premium Storage ディスク/BLOB への課金は、プロビジョニングされたディスク/BLOB のサイズによって異なります。Azure は、プロビジョニングされたサイズ (切り上げたもの) を、「[Premium Storage の拡張性とパフォーマンスの目標](#scalability-and-performance-targets-whja-JPing-premium-storage)」にある表に記載されているオプションの中で最も近い Premium Storage ディスク オプションにマップします。Premium Storage アカウントに保存されているすべてのオブジェクトが、サポートされているプロビジョニングされたサイズのいずれかにマップされ、それに応じて課金されます。そのため、小さな BLOB の格納に Premium Storage アカウントを使用しないでください。プロビジョニングされたディスク/BLOB には、Premium Storage プランの月額料金を使用して、時間割りで計算して課金されます。たとえば、P10 ディスクをプロビジョニングし、20 時間後にそのディスクを削除した場合は、P10 製品の 20 時間分に対して課金されます。これは、実際にディスクに書き込まれたデータの量や、使用した IOPS/スループットには関係ありません。
+**Premium Storage のディスク/BLOB サイズ**: Premium Storage ディスク/BLOB への課金は、プロビジョニングされたディスク/BLOB のサイズによって異なります。Azure は、プロビジョニングされたサイズ (切り上げたもの) を、「[Premium Storage の拡張性とパフォーマンスの目標](#scalability-and-performance-targets-whja-JPing-premium-storage)」にある表に記載されているオプションの中で最も近い Premium Storage ディスク オプションにマップします。Premium Storage アカウントに保存されているすべてのオブジェクトが、サポートされているプロビジョニングされたサイズのいずれかにマップされ、それに応じて課金されます。そのため、小さな BLOB の格納には Premium Storage アカウントを使用しないでください。プロビジョニングされたディスク/BLOB には、Premium Storage プランの月額料金を使用して、時間割りで計算して課金されます。たとえば、P10 ディスクをプロビジョニングし、20 時間後にそのディスクを削除した場合は、P10 製品の 20 時間分に対して課金されます。これは、実際にディスクに書き込まれたデータの量や、使用した IOPS/スループットには関係ありません。
 
 **Premium Storage のスナップショット**: Premium Storage でのスナップショットについては、スナップショットで使用した追加の容量に対して課金されます。スナップショットの詳細については、「[BLOB のスナップショットの作成](http://msdn.microsoft.com/library/azure/hh488361.aspx)」をご覧ください。
 
@@ -429,7 +429,7 @@ Premium Storage を使用するには、DS、DSv2 または GS シリーズ VM �
 この PowerShell の例では、新しい Premium Storage アカウントを作成してこのアカウントを使用するデータ ディスクを新しい Azure 仮想マシンにアタッチする方法を説明します。
 
 1. 「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」に記載された手順に従って、PowerShell 環境を設定します。
-2. PowerShell コンソールを起動してサブスクリプションに接続し、コンソール ウィンドウで次の PowerShell コマンドレットを実行します。この PowerShell ステートメントでわかるように、Premium Storage アカウントを作成するときは、**Type** パラメーターを **Premium\_LRS** に指定する必要があります。
+2. PowerShell コンソールを起動してサブスクリプションに接続し、コンソール ウィンドウで次の PowerShell コマンドレットを実行します。この PowerShell ステートメントで示されているように、Premium Storage アカウントを作成するときは、**Type** パラメーターを **Premium\_LRS** に指定する必要があります。
 
 		New-AzureStorageAccount -StorageAccountName "yourpremiumaccount" -Location "West US" -Type "Premium_LRS"
 
@@ -534,9 +534,9 @@ Azure CLI を使用して、いずれかのディスクのキャッシュ ポリ
 
 	ローカル SSD とは、DS、DSv2 または GS シリーズ VM に含まれている一時的なストレージです。この一時ストレージに追加の料金は発生しません。これは Azure Blob Storage に永続化されないため、アプリケーション データの保存にこの一時的なストレージを使用しないことをお勧めします。
 
-8. **Standard ストレージ アカウントを Premium ストレージ アカウントに変換できますか?**
+8. **Standard Storage アカウントを Premium Storage アカウントに変換できますか?**
 
-	いいえ。Standard ストレージ アカウントを Premium ストレージ アカウントに変換することはできません。また、Premium ストレージ アカウントを Standard ストレージ アカウントに変換することもできません。該当する新しいストレージ アカウントに対応する種類とコピー データを提供する新しいストレージ アカウントを作成する必要があります。
+	いいえ。Standard Storage アカウントを Premium Storage アカウントに変換することはできません。また、Premium Storage アカウントを Standard Storage アカウントに変換することもできません。該当する新しいストレージ アカウントに対応する種類とコピー データを提供する新しいストレージ アカウントを作成する必要があります。
 
 9. **D シリーズ VM を DS シリーズ VM に変換する方法を教えてください。**
 
@@ -562,4 +562,4 @@ Azure Premium Storage の詳細については、以下の記事を参照して�
 
 [Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

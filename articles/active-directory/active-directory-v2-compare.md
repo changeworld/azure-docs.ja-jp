@@ -58,7 +58,7 @@ v2.0 では、各プロジェクトに対して 1 つのアプリケーション
 元の Azure AD サービスの場合、アプリは**リソース**として、またはトークンの受信者として動作できます。リソースには、リソースで識別できる多数の**スコープ**または **oAuth2Permissions** を定義できます。それによりクライアント アプリは、そのリソースに特定範囲のトークンを要求できます。リソースの例として、Azure AD Graph API があります。
 
 - リソース識別子、または `AppID URI`:`https://graph.windows.net/`
-- スコープ、または `OAuth2Permissions`:`Directory.Read`、`Directory.Write` などです。  
+- スコープ、または `OAuth2Permissions`:`Directory.Read`、`Directory.Write` などです。
 
 このすべてが v2.0 エンドポイントに当てはまります。アプリはリソースとして動作し、スコープを定義することができ、URI によって識別できます。また、クライアント アプリは、スコープへのアクセスを要求できます。ただし、クライアントがアクセス許可を要求する方法が変更されました。以前は、Azure AD への OAuth 2.0 承認要求は、次のようになっていました。
 
@@ -72,7 +72,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ここで、**resource** パラメーターは、クライアント アプリが認証を求めている対象のリソースを示します。Azure AD は、Azure ポータルでの静的な構成に基づいて、アプリによって要求されたアクセス許可を計算し、適切なトークンを発行していました。現在は、同じ OAuth 2.0 承認要求が次のようになっています。
 
 ```
-GET https://login.microsoftonline.com/common/v2.0/oauth2/authorize?
+GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 &scope=https%3A%2F%2Fgraph.windows.net%2Fdirectory.read%20https%3A%2F%2Fgraph.windows.net%2Fdirectory.write
 ...
@@ -94,7 +94,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 v2.0 エンドポイントでは、アプリの通常の使用状況で、アプリに必要なアクセス許可を実行時に**動的に**指定できます。これを行うには、任意の時点でアプリに必要なスコープを承認要求の `scope` パラメーターで指定できます。
 
 ```
-GET https://login.microsoftonline.com/common/v2.0/oauth2/authorize?
+GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 &scope=https%3A%2F%2Fgraph.windows.net%2Fdirectory.read%20https%3A%2F%2Fgraph.windows.net%2Fdirectory.write
 ...
@@ -132,4 +132,4 @@ v2.0 トークンによって発行される特定の要求の詳細について
 ## 制限事項
 v2.0 エンドポイントを使用する場合に注意する必要があるいくつかの制限があります。これらの制限事項が実際のシナリオに当てはまるかどうかについては、「[v2.0 の制限事項に関するドキュメント](active-directory-v2-limitations.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

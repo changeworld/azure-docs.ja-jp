@@ -4,9 +4,7 @@
 
 1. ポータルで、**[仮想マシン]** を選び、SQL Server VM を選びます。
 
-2. **[すべての設定]** リンクをクリックします。
-
-3. **[ネットワーク インターフェイス]** を展開します。
+3. 次に、**[ネットワーク インターフェイス]** を選択します。
 
 	![ネットワーク インターフェイス](./media/virtual-machines-sql-server-connection-steps/rm-network-interface.png)
 
@@ -16,9 +14,9 @@
 
 	![ネットワーク インターフェイス](./media/virtual-machines-sql-server-connection-steps/rm-network-security-group.png)
 
-6. ネットワーク セキュリティ グループのプロパティで、**[受信セキュリティ規則]** を広げます。
+6. ネットワーク セキュリティ グループのプロパティで、**[受信セキュリティ規則]** を展開します。
 
-5. **[Add] \(追加)** ボタンをクリックします。
+5. **[Add] (追加)** ボタンをクリックします。
 
 6. **[名前]** に「SQLServerPublicTraffic」と入力します。
 
@@ -32,4 +30,4 @@
 
 9. **[OK]** をクリックして VM の規則を保存します。
 
-<!----HONumber=AcomDC_0107_2016-->
+<!---HONumber=AcomDC_0629_2016-->

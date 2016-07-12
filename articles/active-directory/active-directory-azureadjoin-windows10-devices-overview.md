@@ -5,11 +5,11 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""
 	tags="azure-classic-portal"/>
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="03/18/2016"
+<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="06/23/2016"
 
 	ms.author="femila"/>
 
@@ -30,4 +30,4 @@ Windows 10 には、Azure Active Directory (Azure AD) を有効に活用する�
 | デプロイ | [Azure AD 参加の使用シナリオとデプロイに関する考慮事項](active-directory-azureadjoin-deployment-aadjoindirect.md) <br><br> [Windows 10 エクスペリエンスのためにドメイン参加デバイスを Azure AD に接続する](active-directory-azureadjoin-devices-group-policy.md)<br><br>[組織での Microsoft Passport for Work の有効化](active-directory-azureadjoin-passport-deployment.md)<br><br> [Enterprise State Roaming の概要](active-directory-windows-enterprise-state-roaming-overview.md)<br><br> |
 | ユーザーの作業 | [セットアップ中に新しい Windows 10 デバイスを Azure AD に設定する](active-directory-azureadjoin-user-frx.md) <br><br> [Windows 10 デバイスを [設定] メニューから Azure AD に設定する](active-directory-azureadjoin-user-upgrade.md) <br><br> [個人の Windows 10 デバイスを組織に参加させる](active-directory-azureadjoin-personal-device.md) |
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

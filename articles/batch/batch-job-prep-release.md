@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="04/21/2016"
+	ms.date="06/22/2016"
 	ms.author="marsma" />
 
 # Azure Batch コンピューティング ノードでのジョブ準備タスクとジョブ完了タスクの実行
@@ -24,23 +24,23 @@ Azure Batch ジョブでは、実行前に何らかのセットアップが必�
 
 以降のセクションでは、[Batch .NET][api_net] API の [JobPreparationTask][net_job_prep] クラスと [JobReleaseTask][net_job_release] クラスを使用して、これら 2 つの特別な種類のタスクを使用する方法について説明します。
 
-> [AZURE.TIP] ジョブ準備および解放タスクは、「共有プール」環境で特に役に立ちます。共有プール環境では、コンピューティング ノードのプールが異なるジョブ実行の間も維持され、多くの異なるジョブの間で共有されます。
+> [AZURE.TIP] ジョブ準備および解放タスクは、"共有プール" 環境で特に役に立ちます。共有プール環境では、コンピューティング ノードのプールが異なるジョブ実行の間も維持され、多くの異なるジョブの間で共有されます。
 
 ## ジョブ準備タスクおよびジョブ解放タスクを使用するのに適した状況
 
-ジョブ準備タスクおよびジョブ解放タスクは、さまざまな状況でメリットがあります。次に、いくつか示します。
+ジョブ準備タスクとジョブ解放タスクは、ジョブ固有の構成やデータを使ってノードを準備するときや、タスクの結果データを除去 (または保存) するときに使用します。以下、このような状況の例を示します。
 
 **一般的なタスク データの転送**
 
-Batch ジョブでは、ジョブのタスクに対する入力として共通のデータ セットが必要になることがよくあります。たとえば、毎日のリスク分析の計算では、市場データはジョブ固有ですが、そのジョブのすべてのタスクに共通です。このような市場データはサイズが数ギガバイトになることも多く、各コンピューティング ノードに 1 回だけダウンロードして、そのノードで実行する各タスクがそれを使用できるようにする必要があります。*ジョブ準備タスク*を使用して、ジョブの他のタスクの実行前に各ノードにデータをダウンロードします。
+Batch ジョブでは、ジョブのタスクに対する入力として共通のデータ セットが必要になることがよくあります。たとえば、毎日のリスク分析の計算では、市場データはジョブ固有ですが、そのジョブのすべてのタスクに共通です。このような市場データはサイズが数ギガバイトになることも多く、各コンピューティング ノードに 1 回だけダウンロードして、そのノードで実行する各タスクがそれを使用できるようにする必要があります。**ジョブ準備タスク**を使用して、ジョブの他のタスクの実行前に各ノードにデータをダウンロードします。
 
 **ジョブ データの削除**
 
-ジョブとジョブの間でプールのコンピューティング ノードが使用停止されない共有プール環境では、ノードのディスク領域を節約したり、組織のセキュリティ ポリシーを満たしたりするために、実行の間にジョブ データの削除が必要になる場合があります。ジョブ準備タスクによってダウンロードされたデータ、またはタスクの実行中に生成されたデータを削除するには、*ジョブ解放タスク*を使用します。
+ジョブとジョブの間でプールのコンピューティング ノードが使用停止されない共有プール環境では、ノードのディスク領域を節約したり、組織のセキュリティ ポリシーを満たしたりするために、実行の間にジョブ データの削除が必要になる場合があります。ジョブ準備タスクによってダウンロードされたデータ、またはタスクの実行中に生成されたデータを削除するには、**ジョブ解放タスク**を使用します。
 
 **ログのリテンション期間**
 
-タスクによって生成されるログ ファイルのコピーや、障害が発生したアプリケーションによって生成される可能性があるクラッシュ ダンプ ファイルの保持が必要な場合があります。そのような場合は、*ジョブ解放タスク*を使用してこのデータを圧縮し、[Azure Storage][azure_storage] アカウントにアップロードします。
+タスクによって生成されるログ ファイルのコピーや、障害が発生したアプリケーションによって生成される可能性があるクラッシュ ダンプ ファイルの保持が必要な場合があります。そのような場合は、**ジョブ解放タスク**を使用してこのデータを圧縮し、[Azure ストレージ][azure_storage] アカウントにアップロードします。
 
 ## ジョブ準備タスク
 
@@ -56,7 +56,7 @@ Batch ジョブでは、ジョブのタスクに対する入力として共通�
 
 > [AZURE.NOTE] ジョブを削除した場合もジョブ解放タスクが実行されます。ただし、ジョブが既に終了している場合は、その後でジョブを削除しても解放タスクが再度実行されることはありません。
 
-## Batch .NET API のジョブ準備タスクとジョブ解放タスク
+## Batch .NET でのジョブ準備タスクとジョブ解放タスク
 
 ジョブ準備タスクを使用するには、[JobPreparationTask][net_job_prep] オブジェクトを作成して構成し、それをジョブの [CloudJob.JobPreparationTask][net_job_prep_cloudjob] プロパティに割り当てます。同様に、ジョブ解放タスクを設定するには、[JobReleaseTask][net_job_release] を初期化し、それをジョブの [CloudJob.JobReleaseTask][net_job_prep_cloudjob] プロパティに割り当てます。
 
@@ -85,9 +85,7 @@ Batch ジョブでは、ジョブのタスクに対する入力として共通�
 		// thus you need not call Terminate if you typically delete your jobs upon task completion.
 		await myBatchClient.JobOperations.TerminateJobAsync("JobPrepReleaseSampleJob");
 
-## 次のステップ
-
-### GitHub のサンプル プロジェクト
+## GitHub 上のサンプル コード
 
 動作するジョブ準備タスクおよびジョブ解放タスクは、GitHub の [JobPrepRelease][job_prep_release_sample] サンプル プロジェクトで確認できます。このコンソール アプリケーションは次のことを行います。
 
@@ -104,64 +102,74 @@ Batch ジョブでは、ジョブのタスクに対する入力として共通�
 
 ```
 Attempting to create pool: JobPrepReleaseSamplePool
-The pool already existed when we tried to create it
+Created pool JobPrepReleaseSamplePool with 2 small nodes
 Checking for existing job JobPrepReleaseSampleJob...
 Job JobPrepReleaseSampleJob not found, creating...
 Submitting tasks and awaiting completion...
 All tasks completed.
 
-Contents of shared\job_prep_and_release.txt on tvm-3105992504_1-20151015t150030z:
+Contents of shared\job_prep_and_release.txt on tvm-2434664350_1-20160623t173951z:
 -------------------------------------------
-tvm-3105992504_1-20151015t150030z tasks:
+tvm-2434664350_1-20160623t173951z tasks:
   task001
-  task002
+  task004
+  task005
   task006
+
+Contents of shared\job_prep_and_release.txt on tvm-2434664350_2-20160623t173951z:
+-------------------------------------------
+tvm-2434664350_2-20160623t173951z tasks:
+  task008
+  task002
+  task003
   task007
 
-Contents of shared\job_prep_and_release.txt on tvm-3105992504_2-20151015t150030z:
--------------------------------------------
-tvm-3105992504_2-20151015t150030z tasks:
-  task003
-  task005
-  task004
-  task008
-
 Waiting for job JobPrepReleaseSampleJob to reach state Completed
-....
+...
 
-tvm-3105992504_1-20151015t150030z:
+tvm-2434664350_1-20160623t173951z:
   Prep task exit code:    0
   Release task exit code: 0
 
-tvm-3105992504_2-20151015t150030z:
+tvm-2434664350_2-20160623t173951z:
   Prep task exit code:    0
   Release task exit code: 0
 
 Delete job? [yes] no
 yes
 Delete pool? [yes] no
-no
+yes
 
 Sample complete, hit ENTER to exit...
 ```
 
-### Batch Explorer でのジョブ準備タスクとジョブ解放タスクの確認
+>[AZURE.NOTE] 新しいプールにノードが作成されて起動されるタイミングは不定である (一部のノードだけ他のノードよりも早く、タスクを処理できる状態になることがある) ため、出力結果が異なる場合があります。たとえばタスクの実行には時間がかからないので、ジョブのすべてのタスクがプール内のいずれか 1 つのノードによって実行される可能性もあります。このとき、タスクを実行しなかったノードについては、ジョブの準備タスクとジョブの解放タスクが存在しません。
 
-[Azure Batch Explorer][batch_explorer_article] (これも GitHub の Batch [サンプル コード リポジトリ][batch_explorer_project]にあります) は、Azure Batch でソリューションを開発するときに使用できる優れたツールです。たとえば、上のサンプル アプリケーションを実行するときに Batch Explorer を使用して、ジョブとそのタスクのプロパティを表示したり、ジョブのタスクによって変更された共有テキスト ファイルをダウンロードしたりできます。
+### Azure ポータルでジョブ準備タスクとジョブ解放タスクを調査する
 
-次のスクリーンショットでは、**[Jobs]** タブで *JobPrepReleaseSampleJob* ジョブを選択したときに **[Job Details]** ウィンドウに表示されるジョブ準備タスクとジョブ解放タスクのプロパティを示しています。
+上のサンプル アプリケーションを実行するときに [Azure ポータル][portal]を使用して、ジョブとそのタスクのプロパティを表示したり、ジョブのタスクによって変更された共有テキスト ファイルをダウンロードしたりできます。
 
-![Batch Explorer][1]
+以下のスクリーンショットは、サンプル アプリケーションを実行した後の Azure ポータルの **[ノード準備タスク]** ブレードです。タスクの完了後 (なおかつジョブとプールが削除される前に) *JobPrepReleaseSampleJob* のプロパティに移動し、**[準備タスク]** または **[解放タスク]** をクリックしてそれらのプロパティを表示します。
 
-*ジョブ準備タスクとジョブ解放タスクが表示されている Batch Explorer のスクリーンショット*
+![Job preparation properties in Azure portal][1]
+
+## 次のステップ
+
+### アプリケーション パッケージ
+
+タスクの実行に使用するコンピューティング ノードは、ジョブ準備タスクのほか、Batch の[アプリケーション パッケージ](batch-application-packages.md)機能を使用して準備することもできます。この機能は特に、インストーラーの実行を必要としないアプリケーションや、多数 (100 個超) のファイルを含んだアプリケーション、厳密なバージョン管理が要求されるアプリケーションをデプロイする場合に利便性を発揮します。
+
+### アプリケーションとステージング データのインストール
+
+Azure Batch フォーラムの「[Installing applications and staging data on Batch compute nodes (Batch コンピューティング ノードへのアプリケーションとステージング データのインストール)][forum_post]」という投稿に、タスクの実行に使用するノードを準備するさまざまな方法が簡単に説明されています。この投稿記事は、Azure Batch チームのメンバーによって書かれたものです。コンピューティング ノードにファイル (アプリケーションとタスクの入力データを含む) を展開する各種の方法や、その方法ごとの特別な考慮事項がわかりやすく解説されています。
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
 [azure_storage]: https://azure.microsoft.com/services/storage/
-[batch_explorer_article]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
-[batch_explorer_project]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
+[portal]: https://portal.azure.com
 [job_prep_release_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/JobPrepRelease
+[forum_post]: https://social.msdn.microsoft.com/Forums/ja-JP/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [net_batch_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
 [net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
 [net_job_prep]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobpreparationtask.aspx
@@ -184,6 +192,6 @@ Sample complete, hit ENTER to exit...
 [net_list_task_files]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.listnodefiles.aspx
 [net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
 
-[1]: ./media/batch-job-prep-release/batchexplorer-01.png
+[1]: ./media/batch-job-prep-release/portal-jobprep-01.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

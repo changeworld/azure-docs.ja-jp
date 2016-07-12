@@ -3,7 +3,7 @@
    description="Azure SQL Data Warehouse を復元するための PowerShell タスク。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="elfisher"
+   authors="sonyam"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/17/2016"
-   ms.author="elfish;barbkess;sonyama"/>
+   ms.date="06/28/2016"
+   ms.author="sonyama;barbkess"/>
 
 # Azure SQL Data Warehouse の復元 (PowerShell)
 
@@ -95,7 +95,6 @@ $RestoredDatabase.status
 6. 復元されたデータベースがオンラインであることを確認します。
 
 ```Powershell
-
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
@@ -114,7 +113,6 @@ $RestoredDatabase = Restore-AzureRmSqlDatabase –FromDeletedDatabaseBackup –D
 
 # Verify the status of restored database
 $RestoredDatabase.status
-
 ```
 
 >[AZURE.NOTE] 復元が完了したら、[復旧されたデータベースの最終処理][]に関するガイドに従って、復旧されたデータベースを構成できます。
@@ -132,7 +130,6 @@ $RestoredDatabase.status
 6. geo リストアされたデータベースの状態を確認します。
 
 ```Powershell
-
 Login-AzureRmAccount
 Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
@@ -145,7 +142,6 @@ $GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGrou
 
 # Verify that the geo-restored database is online
 $GeoRestoredDatabase.status
-
 ```
 
 >[AZURE.NOTE] 復元が完了したら、[復旧されたデータベースの最終処理][]に関するガイドに従って、復旧されたデータベースを構成できます。
@@ -179,4 +175,4 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 [Azure Portal]: https://portal.azure.com/
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

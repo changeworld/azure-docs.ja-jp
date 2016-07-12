@@ -20,8 +20,8 @@
 
 Azure の Windows 仮想マシンまたは Linux 仮想マシンのいずれかで VM 拡張機能を検索、追加、変更、削除する方法について説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モード
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-manage-extensions](../../includes/virtual-machines-common-classic-manage-extensions.md)]
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0629_2016-->

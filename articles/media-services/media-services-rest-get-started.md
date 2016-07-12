@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="03/01/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 #REST API を使用したオンデマンド コンテンツ配信の概要
@@ -33,7 +33,7 @@
 REST API を使用して Media Services での開発を始めるには、次の前提条件が必要です。
 
 - Media Services REST API を使用して開発する方法を理解します。詳細については、「[media-services-rest-overview](http://msdn.microsoft.com/library/azure/hh973616.aspx)」をご覧ください。
-- HTTP 要求と応答を送信できる任意のアプリケーション。このチュートリアルでは、[Fiddler](http://www.telerik.com/download/fiddler) を使用します。 
+- HTTP 要求と応答を送信できる任意のアプリケーション。このチュートリアルでは、[Fiddler](http://www.telerik.com/download/fiddler) を使用します。
 
 このクイック スタートでは、次のタスクが表示されます。
 
@@ -42,8 +42,8 @@ REST API を使用して Media Services での開発を始めるには、次の�
 1.  新しい資産を作成し、REST API を使用してビデオのファイルをアップロードする
 1.  REST API でストリーミング ユニットを構成する
 2.  REST API で一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
-1.  資産を発行して REST API によるストリーミングとプログレッシブ ダウンロード用 URL を取得する 
-1.  コンテンツの再生 
+1.  資産を発行して REST API によるストリーミングとプログレッシブ ダウンロード用 URL を取得する
+1.  コンテンツの再生
 
 
 ## <a id="create_ams"></a>ポータルを使用して Media Services アカウントを作成する
@@ -80,16 +80,16 @@ Azure Media Services にアクセスする際には、Azure Access Control Servi
 
 次の手順では、Media Services REST API を使用して Media Services に接続するときの最も一般的なワークフローについて説明します。
 
-1. アクセス トークンを取得します。 
+1. アクセス トークンを取得します。
 2. Media Services URI に接続します。  
 
 	https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されることに注意してください。その新しい URI に再度コールする必要があります。ODATA API メタデータの説明が含まれる HTTP/1.1 200 応答が表示される場合もあります。
-3. 新しい URL に後続の API 呼び出しを投稿します。 
+3. 新しい URL に後続の API 呼び出しを投稿します。
 	
 	たとえば、接続しようとした後に次のようなメッセージが表示されます。
 		
-			HTTP/1.1 301 Moved Permanently
-			Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
+		HTTP/1.1 301 Moved Permanently
+		Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
 
 	この場合、続けて、https://wamsbayclus001rest-hs.cloudapp.net/api/ へ API コールを行う必要があります。
 
@@ -156,7 +156,7 @@ Media Services のルート URI は https://media.windows.net/ です。まず�
 
 アセット ファイルをアップロードしたりダウンロードしたりするルート URI は https://yourstorageaccount.blob.core.windows.net/ です。ストレージ アカウント名には、Media Services アカウントで設定したものと同じものが使われます。
 
-次の例は、Media Services ルート URI (https://media.windows.net/)) への HTTP 要求を示します。要求に対して 301 リダイレクトが返されています。その後、新しい URI (https://wamsbayclus001rest-hs.cloudapp.net/api/)) に続けて要求を行っています。
+次の例は、Media Services ルート URI (https://media.windows.net/) への HTTP 要求を示します。要求に対して 301 リダイレクトが返されています。その後、新しい URI (https://wamsbayclus001rest-hs.cloudapp.net/api/) に続けて要求を行っています。
 
 **HTTP 要求**:
 	
@@ -221,7 +221,7 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 資産作成時に指定する必要がある値の 1 つに、資産作成オプションがあります。**Options **プロパティは、アセットの作成に使用できる暗号化オプションを示す列挙値です。有効な値は以下の一覧の値のいずれかですが、この一覧の値を組み合わせて使用することはできません。
 
  
-- **None** = **0** - 暗号化は使用されません。このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。 
+- **None** = **0** - 暗号化は使用されません。このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。
 - **StorageEncrypted** = **1** - ローカルで AES-256 ビット暗号化を使用し、平文のコンテンツを暗号化したうえで、それを Azure Storage にアップロードします。アップロードされたデータは、暗号化された状態で保存されます。StorageEncrypted で保護された資産は、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに配置されます。その後、必要に応じて再度暗号化を適用して、新しい出力資産として再びアップロードできます。StorageEncrypted の主な目的は、高品質の入力メディア ファイルを強力な暗号化によって保護したうえでディスクに保存するというニーズに応えることです。
 - **CommonEncryptionProtected** = **2** - 既に Common Encryption や PlayReady DRM で暗号化されて保護されているコンテンツ (PlayReady DRM で保護されたスムーズ ストリーミングなど) をアップロードする場合は、このオプションを使用します。
 - **EnvelopeEncryptionProtected** = **4** – AES で暗号化された HLS をアップロードする場合はこのオプションを使用します。この場合ファイルは、Transform Manager によってあらかじめエンコードされて暗号化されている必要があります。
@@ -405,7 +405,7 @@ SAS URL には次の形式があります。
 いくつかの考慮事項が適用されます。
 
 - 特定の資産に関連付けられている 5 つの一意の Locator を同時に使用することはできません。詳細については、「Locator」をご覧ください。
-- すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。また、StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。	
+- すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。また、StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。
 - Locator を作成した後に使用可能になるまで 30 ～ 40 秒の遅延が発生する場合があります。この問題は、SAS URL と Origin Locator の両方に当てはまります。
 
 次の例は、要求本文の Type プロパティで定義されているように、SAS URL Locator を作成する方法を示しています　(SAS ロケーターの場合は "1"、オンデマンド配信元ロケーターの場合は "2")。返される **Path** プロパティには、ファイルのアップロードに使用する必要がある URL が含まれています。
@@ -668,7 +668,7 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
 - mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする。  
-- コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。 
+- コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。
 
 次のセクションでは、1 つのエンコード タスクを含むジョブを作成する方法を示します。このタスクは、**Media Encoder Standard** を使用して、mezzanine ファイルを一連のアダプティブ ビットレート NP4 にトランスコードするよう指定します。ジョブの処理の進行状況を監視する方法についても示します。ジョブが完了すると、資産にアクセスするために必要なロケーターを作成できます。
 
@@ -723,7 +723,7 @@ Media Services では、メディア プロセッサは、メディア コンテ
 
 各ジョブは実行する処理の種類に応じて 1 つまたは複数のタスクを持つことができます。REST API を使って、2 つの方法のいずれかでジョブとそれに関連するタスクを作成できます。タスクは、Job エンティティのタスク ナビゲーション プロパティまたは OData バッチ処理を使用して、インラインで定義できます。Media Services SDK はバッチ処理を使用します。ただし、このトピックのコード例では、読みやすくするためにタスクをインラインで定義します。バッチ処理の詳細については、[Open Data Protocol (OData) のバッチ処理](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)に関するページを参照してください。
 
-次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。Media Encoder Standard プロセッサがサポートしているすべてのタスク プリセットの一覧については、「[Task Presets for MES (Media Encoder Standard)](http://msdn.microsoft.com/library/mt269960)」をご覧ください。
+次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。次のドキュメント セクションには、Media Encoder Standard プロセッサがサポートしている[タスク プリセット](http://msdn.microsoft.com/library/mt269960)の一覧が含まれています。
 
 **HTTP 要求**
 	
@@ -822,7 +822,7 @@ Media Services では、メディア プロセッサは、メディア コンテ
 ジョブ要求について注意が必要ないくつかの重要事項があります。
 
 - TaskBody プロパティでは、リテラル XML を使用して、タスクが使用する資産の入力または出力数を定義する必要があります。タスクのトピックには、XML のための XML スキーマ定義が含まれます。
-- TaskBody の定義には各 <inputAsset> の内部値と <outputAsset> を JobInputAsset(value) または JobOutputAsset(value) として設定する必要があります。
+- TaskBody の定義では <inputAsset> と <outputAsset> の内部値を、それぞれ JobInputAsset(value) または JobOutputAsset(value) として設定する必要があります。
 - タスクは、複数の出力資産を持つことができます。1 つの JobOutputAsset(x) はジョブ内のタスクの出力として一度だけ使用できます。
 - タスクの入力資産として、JobInputAsset または JobOutputAsset を指定できます。
 - タスクは、サイクルを形成することはできません。
@@ -1203,4 +1203,4 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
 <!-- URLs. -->
   [Azure クラシック ポータル]: http://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

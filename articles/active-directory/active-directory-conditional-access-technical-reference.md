@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="06/15/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 # テクニカル リファレンス: Azure AD アプリへの条件付きアクセス
@@ -55,13 +55,14 @@
 
 "職場" ネットワークを指定するためのオプション
 
-1. [多要素認証の構成ページ](../multi-factor-authentication/multi-factor-authentication-whats-next.md)で、信頼済み IP 範囲を構成します。条件付きアクセス ポリシーは、各認証要求とトークン発行に対して、構成済みの範囲を使用して規則を評価します。 
+1. [多要素認証の構成ページ](../multi-factor-authentication/multi-factor-authentication-whats-next.md)で、信頼済み IP 範囲を構成します。条件付きアクセス ポリシーは、各認証要求とトークン発行に対して、構成済みの範囲を使用して規則を評価します。
 2. 企業ネットワーク内要求の使用を構成します。このオプションは、AD FS を使用して、フェデレーション ディレクトリで使用できます。[企業ネットワーク内要求の詳細についてはこちらをご覧ください。](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)
 3. パブリック IP アドレス範囲を構成します。ディレクトリの [構成] タブで、パブリック IP アドレスを設定できます。条件付きアクセスは、これらの IP アドレスを "職場" の IP アドレスとして使用します。これにより、MFA の設定ページで適用される 50 の IP アドレス制限を超えて、追加の範囲を構成することができます。
 
 
 
-## アプリケーションごとの規則
+## アプリケーションの秘密度に基づく規則
+
 規則は、アプリケーションごとに構成します。そうすることで、価値の高いサービスをセキュリティで保護し、その他のサービスへのアクセスには影響を与えないようにすることができます。条件付きアクセス規則は、アプリケーションの **[構成]** タブで構成できます。
 
 現在、用意されている規則は、次のとおりです。
@@ -81,4 +82,4 @@
 - [Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

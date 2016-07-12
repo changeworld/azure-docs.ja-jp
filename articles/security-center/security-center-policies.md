@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/03/2016"
+   ms.date="07/05/2016"
    ms.author="yurid"/>
 
 # Azure セキュリティ センターでのセキュリティ ポリシーの設定
@@ -69,7 +69,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 
 | ポリシー | 状態がオンの場合 |
 |----- |-----|
-| システムの更新 | 毎日、その仮想マシンに構成されているサービスに応じて、Windows Update または WSUS から利用可能な更新プログラムの一覧を取得し、不足している更新プログラムを適用するよう推奨します。 |
+| システムの更新 | 毎日、その仮想マシンに構成されているサービスに応じて、Windows Update または WSUS から利用可能な更新プログラムの一覧を取得し、不足している更新プログラムを適用するよう推奨します。また、Linux システムの最新の更新プログラムのほか、[Cloud Services](./cloud-services/cloud-services-how-to-configure.md) 仮想マシンのセキュリティ更新プログラムと重要な更新プログラムも確認します。 |
 | 基準ルール | 毎日、仮想マシンが攻撃を受けやすくなる可能性がある OS の構成を分析して、これらの脆弱性に対処するための構成の変更を推奨します。監視対象のこの特定の構成に関する詳細は、[推奨される基準の一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)を参照してください。 |
 | エンドポイント保護 | ウイルス、スパイウェア、およびその他の悪意のあるソフトウェアを特定して削除するため、すべての Windows 仮想マシンにエンドポイント保護をプロビジョニングすることをお勧めします。 
 | ネットワーク セキュリティ グループ | サブネットとネットワーク インターフェイスへの受信および送信トラフィックを制御するように、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md) (NSG) を構成することをお勧めします。サブネットに構成された NSG は、他に指定しない限り、すべての仮想マシンのネットワーク インターフェイスによって継承されます。このオプションは、NSG が構成されていることをチェックすることに加え、受信セキュリティ ルールを評価して、受信トラフィックを許可するルールがあるかどうかを特定します。 |
@@ -97,11 +97,11 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 
 このドキュメントでは、Azure セキュリティ センターでのセキュリティ ポリシーの構成方法について説明しました。Azure セキュリティ センターの詳細については、次を参照してください。
 
-- 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 - Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法について説明します。
+- 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 - Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法についての説明
 - 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」 – Azure リソースのヘルスを監視する方法についての説明
 - 「[Azure セキュリティ センターでのセキュリティのアラートの管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および対応について
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 - パートナー ソリューションの正常性状態を監視する方法についての説明
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

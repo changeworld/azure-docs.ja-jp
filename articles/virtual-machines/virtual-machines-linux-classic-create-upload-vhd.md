@@ -19,7 +19,7 @@
 
 # Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 ここでは、仮想ハードディスク (VHD) を作成およびアップロードし、それをイメージとして活用して Azuere 内で仮想マシンを作成する方法を示します。そのイメージに基づいて複数の仮想マシンを作成できるよう、オペレーティング システムを準備する方法についても説明します。
 
@@ -83,4 +83,4 @@ Azure CLI でイメージをアップロードするには、次のコマンド�
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

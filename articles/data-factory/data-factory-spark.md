@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/05/2016" 
+	ms.date="06/27/2016" 
 	ms.author="spelluru"/>
 
 # Data Factory から Spark プログラムを起動する
@@ -102,9 +102,9 @@ Data Factory パイプラインで MapReduce アクティビティを使用し�
 
 見てわかるように、MapReduce アクティビティは、Azure ストレージの **libs** コンテナーの **spark-adf-job-bin.jar** を呼び出すように構成されています (StorageLinkedService.json で指定)。このプログラムのソース コードは Spark-ADF/src/main/java/com/adf/spark フォルダーにあり、spark-submit を呼び出して Spark ジョブを実行します。
 
-HDInsight Spark クラスターで実行されている、この MapReduce プログラム (spark-adf-job-bin.jar) は、Spark プログラム **sparkdemoapp\_2.10-1.0.jar** を呼び出して、MapReduce アクティビティを通じて受け取った引数 (上の JSON を参照) を Spark プログラムに渡します。**sparkdemoapp\_2.10-1.0.jar** には、データを 1 つの Azure BLOB コンテナーから他のコンテナーにコピーする Scala ソース コードが含まれています。このデモ アプリ jar を、Spark を使用して実行しようとしている任意のジョブが含まれている他の任意の jar と置き換えることができます。
+HDInsight Spark クラスターで実行されている、この MapReduce プログラム (spark-adf-job-bin.jar) は、Spark プログラム **sparkdemoapp_2.10-1.0.jar** を呼び出して、MapReduce アクティビティを通じて受け取った引数 (上の JSON を参照) を Spark プログラムに渡します。**sparkdemoapp_2.10-1.0.jar** には、データを 1 つの Azure BLOB コンテナーから他のコンテナーにコピーする Scala ソース コードが含まれています。このデモ アプリ jar を、Spark を使用して実行しようとしている任意のジョブが含まれている他の任意の jar と置き換えることができます。
 
-要約すると、**MapReduce アクティビティ**は、Spark プログラム **sparkdemoapp\_2.10-1.0.jar** を呼び出す MapReduce プログラム **spark-adf-job-bin.jar** を呼び出すということになります。独自の Spark プログラムを実行するには、sparkdemoapp\_2.10-1.0.jar を独自のものに置き換えます。
+要約すると、**MapReduce アクティビティ**は、Spark プログラム **sparkdemoapp_2.10-1.0.jar** を呼び出す MapReduce プログラム **spark-adf-job-bin.jar** を呼び出すということになります。独自の Spark プログラムを実行するには、sparkdemoapp_2.10-1.0.jar を独自のものに置き換えます。
 
 > [AZURE.NOTE] MapReduce アクティビティを使用して Spark プログラムを呼び出すには、この方法で独自の HDInsight Spark クラスターを使用する必要があります。オンデマンド HDInsight クラスターの使用は、サポートされていません。
 
@@ -116,4 +116,4 @@ HDInsight Spark クラスターで実行されている、この MapReduce プ�
 - [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 - [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

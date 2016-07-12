@@ -14,7 +14,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="03/02/2016"
+     ms.date="06/27/2016"
      ms.author="stevehob"/>
 
 # 構成済みソリューションのカスタマイズ
@@ -39,9 +39,9 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 これらのジョブを直接編集し、ロジックを変更したり、シナリオに固有のロジックを追加したりすることができます。Stream Analytics ジョブを見つけるには、次の手順を実行します。
  
 1. [Azure ポータル](https://portal.azure.com)に移動します。
-2. IoT ソリューションと同じ名前のリソース グループに移動します。 
-3. 変更を加える Azure Stream Analytics ジョブを選択します。 
-4. コマンドのセットで **Stop** を選択してジョブを停止します。 
+2. IoT ソリューションと同じ名前のリソース グループに移動します。
+3. 変更を加える Azure Stream Analytics ジョブを選択します。
+4. コマンドのセットで **Stop** を選択してジョブを停止します。
 5. 入力、クエリ、および出力を編集します。
 
     変更を簡単に加えるには、**Rules** ジョブのクエリを、**">"** の代わりに **"<"** を使用するように変更します。ルールを編集してもソリューション ポータルには引き続き **">"** が表示されますが、基になるジョブを変更したため、動作は反転されます。
@@ -66,15 +66,34 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 
 リモート監視の構成済みソリューションの構成済みシミュレーターは、温度と湿度のテレメトリを生成する冷却デバイスです。GitHub リポジトリをフォークしたら、[Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) プロジェクトでシミュレーターに変更を加えることができます。
 
+### シミュレーション対象デバイスで利用可能な場所
+
+既定の場所のセットでは、米国ワシントン州のシアトル/レドモンドとなっています。これらの場所は [SampleDeviceFactory.cs][lnk-sample-device-factory] で変更できます。
+
+
 ### 独自の (物理) デバイスの構築と使用
 
 [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) では、IoT ソリューションにさまざまな種類のデバイス (言語およびオペレーティング システム) を接続するためのライブラリが提供されます。
+
+## ダッシュボードの制限の変更
+
+### ダッシュボードのドロップダウン リストに表示されるデバイスの数
+
+既定では 200 です。この数は [DashboardController.cs][lnk-dashboard-controller] で変更できます。
+
+### Bing 地図コントロールに表示されるピンの数
+
+既定では 200 です。この数は [TelemetryApiController.cs][lnk-telemetry-api-controller-01] で変更できます。
+
+### テレメトリ グラフの期間
+
+既定では 10 分です。これは [TelemetryApiController.cs][lnk-telemetry-api-controller-02] で変更できます。
 
 ## アプリケーション ロールの手動設定
 
 以下の手順では、**Admin** および **ReadOnly** アプリケーション ロールを構成済みソリューションに追加する方法を説明しています。azureiotsuite.com サイトからプロビジョニングされた構成済みのソリューションには既に **Admin** ロールと **ReadOnly** ロールが含まれています。
 
-**ReadOnly** ロールのメンバーはダッシュボードとデバイス一覧を表示できますが、デバイスの追加、デバイス属性の変更、またはコマンドの送信は実行できません。**Admin** ロールのメンバーは、ソリューション内のすべての機能に完全にアクセスできます。
+**ReadOnly** ロールのメンバーはダッシュボードとデバイス一覧を表示できますが、デバイスの追加、デバイス属性の変更、またはコマンドの送信は実行できません。**Admin** ロールのメンバーは、ソリューション内のすべての機能へのフル アクセス権を持ちます。
 
 1. [Azure クラシック ポータル][lnk-classic-portal]に移動します。
 
@@ -123,7 +142,7 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 
 9. 更新された .json ファイルを保存します (既存のファイルを上書きできます)。
 
-10.  Microsoft Azure 管理ポータルのページ下部で **[マニフェストの管理]**、**[マニフェストのアップロード]** の順に選択し、前の手順で保存した .json ファイルをアップロードします。
+10.  Azure 管理ポータルのページ下部で **[マニフェストの管理]**、**[マニフェストのアップロード]** の順に選択し、前の手順で保存した .json ファイルをアップロードします。
 
 11. これで、**Admin** ロールと **ReadOnly** ロールがアプリケーションに追加されました。
 
@@ -139,6 +158,10 @@ IoT デバイスの詳細については、[Azure IoT 開発者向けサイト](
 
 [IoT デバイス SDK]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 [lnk-permissions]: iot-suite-permissions.md
+[lnk-dashboard-controller]: https://github.com/Azure/azure-iot-remote-monitoring/blob/3fd43b8a9f7e0f2774d73f3569439063705cebe4/DeviceAdministration/Web/Controllers/DashboardController.cs#L27
+[lnk-telemetry-api-controller-01]: https://github.com/Azure/azure-iot-remote-monitoring/blob/3fd43b8a9f7e0f2774d73f3569439063705cebe4/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L27
+[lnk-telemetry-api-controller-02]: https://github.com/Azure/azure-iot-remote-monitoring/blob/e7003339f73e21d3930f71ceba1e74fb5c0d9ea0/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L25
+[lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
 [lnk-classic-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

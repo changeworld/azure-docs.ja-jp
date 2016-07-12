@@ -19,7 +19,7 @@
 
 # Windows VM に Symantec Endpoint Protection をインストールし、構成する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 この記事では、Windows Server を実行している既存の仮想マシン (VM) または新しい VM に Symantec Endpoint Protection クライアントをインストールして構成する方法を説明します。このクライアントには、ウイルスおよびスパイウェア対策、ファイアウォール、侵入防止などのサービスが含まれています。
 
@@ -52,7 +52,7 @@ Symantec のオンプレミス ソリューション用サブスクリプショ�
 
 - Azure 仮想マシンで実行されている VM エージェント。
 
-最初に、VM エージェントが仮想マシンに既にインストールされていることを確認します。クラウド サービス名と仮想マシン名を入力して、管理者レベルの Azure PowerShell のコマンド プロンプトで、次のコマンドを実行します。引用符内のすべての文字 (< and > を含む) を置き換えます。
+最初に、VM エージェントが仮想マシンに既にインストールされていることを確認します。クラウド サービス名と仮想マシン名を入力して、管理者レベルの Azure PowerShell のコマンド プロンプトで、次のコマンドを実行します。引用符内のすべての文字 (< および > を含む) を置き換えます。
 
 > [AZURE.TIP] クラウド サービスや仮想マシンの名前がわからない場合は、**Get-AzureVM** を実行します。現在のサブスクリプションのすべての仮想マシンの名前が表示されます。
 
@@ -97,4 +97,4 @@ Symantec のセキュリティ拡張機能がインストールされ、最新�
 
 [Ext]: http://go.microsoft.com/fwlink/p/?linkid=390493
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

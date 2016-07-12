@@ -5,7 +5,7 @@
 	manager="timlt"
 	documentationCenter=""
 	authors="dlepow"
-	services=""
+	services="virtual-machines-linux,virtual-network,storage,azure-resource-manager"
 	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
@@ -153,4 +153,4 @@ Azure CLI には、異なるコマンド セットを使用して、Azure リソ
 
 * Azure CLI、または Azure を利用していて問題が発生した場合は、[Azure のフォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home)をご覧ください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

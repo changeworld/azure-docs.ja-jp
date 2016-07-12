@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Linux VM イメージへの移動と選択 | Microsoft Azure"
+   pageTitle="Azure CLI を使用した Linux VM イメージの選択 |Microsoft Azure"
    description="リソース マネージャー デプロイ モデルで Linux 仮想マシンを作成するときに、イメージの発行元、プラン、および SKU を決定する方法について説明します。"
    services="virtual-machines-linux"
    documentationCenter=""
@@ -18,7 +18,7 @@
    ms.date="06/06/2016"
    ms.author="rasquill"/>
 
-# CLI または Powershell を使用した Azure での Linux 仮想マシン イメージへの移動と選択
+# Azure CLI を使用した Linux VM イメージの選択
 
 このトピックでは、デプロイする可能性のある場所ごとに、発行元、プラン、SKU、およびバージョンを検索する方法について説明します。たとえば、次のような Linux VM イメージが一般的に使用されます。
 
@@ -38,4 +38,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-cli-ps-findimage](../../includes/virtual-machines-common-cli-ps-findimage.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

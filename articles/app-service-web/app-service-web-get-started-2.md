@@ -64,7 +64,7 @@ App Service には一般的な認証のニーズの一部に対応した設定�
 
 ## 必要に応じたアプリの自動的なスケール
 
-次に、アプリを自動スケールして、ユーザーの要求に応じて容量が自動的に調整されるようにしてみましょう (詳細については、「[Azure App Service における価格レベルのスケール](app-service-scale)」および「[手動または自動によるインスタンス数のスケール変更](../azure-portal/insights-how-to-scale.md)」を参照してください)。
+次に、アプリを自動スケールして、ユーザーの要求に応じて容量が自動的に調整されるようにしてみましょう (詳細については、「[Azure App Service の Web アプリをスケーリングする](web-sites-scale.md)」および「[手動または自動によるインスタンス数のスケール変更](../azure-portal/insights-how-to-scale.md)」を参照してください)。
 
 Web アプリをスケールする方法は、簡単に言うと次の 2 つです。
 
@@ -99,7 +99,7 @@ Web アプリをスケールする方法は、簡単に言うと次の 2 つで�
 - スケジュールに基づいて自動スケールする
 - 将来のイベントに対して自動スケールの動作を設定する
 
-アプリのスケールアップの詳細については、「[Azure App Service における価格レベルのスケーリング](../app-service/app-service-scale.md)」を参照してください。スケールアウトの詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-portal/insights-how-to-scale.md)」を参照してください。
+アプリのスケールアップの詳細については、[Azure でのアプリのスケールアップ](../app-service-web/web-sites-scale.md)に関するページを参照してください。スケールアウトの詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-portal/insights-how-to-scale.md)」を参照してください。
 
 ## アプリのアラートを受信する
 
@@ -128,13 +128,13 @@ Web アプリをスケールする方法は、簡単に言うと次の 2 つで�
 デプロイしたアプリのさらなる活用方法もご確認ください。ほんの一部を以下に示します。
 
 - [カスタム ドメイン名を購入し、構成する](custom-dns-web-site-buydomains-web-app.md) - Web アプリ用に、*.azurewebsites.net ドメインの代わりに魅力的なドメインを購入します。または、既存のドメインを使用します。
-- [ステージング環境を設定する](web-sites-staged-publishing.md) - 運用環境に配置する前に、ステージング URL にアプリをデプロイします。ライブ Web アプリを、動作確認してから更新できます。複数のデプロイ スロットで複雑な DevOps ソリューションを設定します。 
+- [ステージング環境を設定する](web-sites-staged-publishing.md) - 運用環境に配置する前に、ステージング URL にアプリをデプロイします。ライブ Web アプリを、動作確認してから更新できます。複数のデプロイ スロットで複雑な DevOps ソリューションを設定します。
 - [継続的なデプロイを設定する](web-sites-publish-source-control.md) - アプリのデプロイをソース管理システムに統合します。コミットするたびに、Azure にデプロイします。
 - [オンプレミス リソースにアクセスする](web-sites-hybrid-connection-get-started.md) - 既存のオンプレミス データベースまたは CRM システムにアクセスします。
 - [アプリをバックアップする](web-sites-backup.md) - Web アプリのバックアップと復元を設定します。予期しない障害と、それからの復旧を準備します。
 - [診断ログを有効にする](web-sites-enable-diagnostic-log.md) - Azure またはアプリケーションのトレースからの IIS ログを読みます。ストリームで読んだり、ダウンロードしたり、ターンキー分析のために [Application Insights](../application-insights/app-insights-overview.md) に取り込んだりします。
 - [アプリの脆弱性をスキャンする](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) - [Tinfoil Security](https://www.tinfoilsecurity.com/) によって提供されるサービスを使用して、Web アプリの最新の脅威をスキャンします。
 - [バックグラウンド ジョブを実行する](../azure-functions/functions-overview.md) - データ処理、レポート作成などのジョブを実行します。
-- [App Service の特長](../app-service/app-service-how-works-readme.md) 
+- [App Service の特長](../app-service/app-service-how-works-readme.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

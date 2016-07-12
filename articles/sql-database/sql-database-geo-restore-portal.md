@@ -21,9 +21,8 @@
 
 
 > [AZURE.SELECTOR]
-- [概要](sql-database-geo-restore.md)
-- [Azure ポータル](sql-database-geo-restore-portal.md)
-- [PowerShell](sql-database-geo-restore-powershell.md)
+- [概要](sql-database-recovery-using-backups.md)
+- [geo リストア: PowerShell](sql-database-geo-restore-powershell.md)
 
 この記事では、Azure ポータルで geo リストアを使用して新しいサーバーにデータベースを復元する方法について説明します。
 
@@ -39,14 +38,14 @@ Azure ポータルでデータベースを復元するには、次の手順を�
 
 4.  データベース名と、データベースの復元先サーバーを指定し、[作成] をクリックします。
 
+
 ## 次のステップ
 
-- Azure ポータルを使用して geo 冗長バックアップから Azure SQL Database を復元する方法の詳細な手順については、[Azure ポータルを使用した geo リストア](sql-database-geo-restore-portal.md)に関するページをご覧ください。
-- geo 冗長バックアップから Azure SQL Database を復元する方法の詳細な手順については、「[PowerShell を使用した geo リストア](sql-database-geo-restore.md)」をご覧ください。
-- 障害から回復する方法の詳細については、[障害からの回復](sql-database-disaster-recovery.md)に関するページをご覧ください。
+- ビジネス継続性の概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
+- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
+- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
+- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
-## その他のリソース
-
-- [ビジネス継続性のシナリオ](sql-database-business-continuity-scenarios.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

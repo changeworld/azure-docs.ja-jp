@@ -33,7 +33,7 @@
 3. **[すべての設定]** ブレードで、**[機能]** の **[既定の整合性]** エントリをクリックします。![既定の整合性セッション][6]
 
 4. **[既定の一貫性]** ブレードで、新しい一貫性レベルを選択し、**[保存]** をクリックします。
-
+5. Azure ポータルの通知ハブで、操作の進行状況を監視できます。
 
 > [AZURE.NOTE] DocumentDB アカウントの既定の整合性に加えた変更が有効になるまで、数分かかることがあります。
 
@@ -89,7 +89,6 @@ DocumentDB アカウントを作成すると、2 つのマスター アクセス
 1. [Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
 2. **[DocumentDB アカウント]** ブレードの **[要点]** バーで、**[キー]** をクリックします。
 3. **[キー]** ブレードで、コピー対象のキーの右側にある **[コピー]** ボタンをクリックします。
-
 	![Azure ポータルの [キー] ブレードでアクセス キーを表示およびコピーする](./media/documentdb-manage-account/copykeys.png)
 
 ### アクセス キーを再生成する
@@ -101,11 +100,17 @@ DocumentDB アカウントを作成すると、2 つのマスター アクセス
 DocumentDB アカウントを使用するアプリケーションまたはクラウド サービスがある場合、キーを再生成すると、キーを切り替えない限り接続が失われます。次の手順は、キーの切り替えに含まれるプロセスの概要を示します。
 
 1. DocumentDB アカウントのセカンダリ アクセス キーを参照するように、アプリケーション コードのアクセス キーを更新します。
+
 2. DocumentDB アカウントのプライマリ アクセス キーを再生成します。[Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
+
 3. **[DocumentDB アカウント]** ブレードの **[要点]** バーで、**[キー]** をクリックします。
+
 4. **[キー]** ブレードで、**[プライマリの再生成]** コマンドをクリックしてから **[OK]** をクリックして、新しいキーを再生成することを確認します。
+
 5. (再生成してから約 5 分後に) 新しいキーが使用できることを確認したら、新しいプライマリ アクセス キーを参照するようにアプリケーション コードのアクセス キーを更新します。
+
 6. セカンダリ アクセス キーを再生成します。
+
 
 > [AZURE.NOTE] 新しく生成されたキーを使用して DocumentDB アカウントにアクセスできるようになるまで、数分かかることがあります。
 
@@ -138,7 +143,7 @@ DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
 [consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
-[azureregions]: https://azure.microsoft.com/regions/#services
-[offers]: https://azure.microsoft.com/pricing/details/documentdb/
+[azureregions]: https://azure.microsoft.com/ja-JP/regions/#services
+[offers]: https://azure.microsoft.com/ja-JP/pricing/details/documentdb/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

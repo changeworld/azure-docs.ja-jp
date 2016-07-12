@@ -29,7 +29,7 @@
 
 いずれの場合も、データは Azure Backup コンテナーから取得されます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャーのデプロイ モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 ## 同じコンピューターへのデータの回復
 ファイルを誤って削除してしまったため、バックアップを実行したのと同じコンピューターにそのファイルを復元するには、次の手順でデータを回復できます。
@@ -123,4 +123,4 @@
 - [Azure 仮想マシンのバックアップ](backup-azure-vms-introduction.md)
 - [Microsoft ワークロードのバックアップ ](backup-azure-dpm-introduction.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

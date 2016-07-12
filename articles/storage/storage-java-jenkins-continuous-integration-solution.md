@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="02/21/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Jenkins 継続的インテグレーション ソリューションでの Azure Storage の使用
@@ -82,8 +82,8 @@ Jenkins で BLOB サービスを使用するには、Azure Storage プラグイ�
 3. **[Microsoft Azure Storage Account Configuration]** セクションで、次の操作を行います。
     1. [Azure ポータル](https://portal.azure.com) で取得したストレージ アカウント名を入力します。
     2. 同様に、[Azure ポータル](https://portal.azure.com)で取得したストレージ アカウント キーを入力します。
-    3. パブリック Azure クラウドを使用している場合、**[Blob Service Endpoint URL]** には既定値を使用します。これとは異なる Azure クラウドを使用している場合には、[Azure ポータル](https://portal.azure.com)でストレージ アカウント用に指定されたエンドポイントを使用します。 
-    4. **[Validate storage credentials]** をクリックしてストレージ アカウントを検証します。 
+    3. パブリック Azure クラウドを使用している場合、**[Blob Service Endpoint URL]** には既定値を使用します。これとは異なる Azure クラウドを使用している場合には、[Azure ポータル](https://portal.azure.com)でストレージ アカウント用に指定されたエンドポイントを使用します。
+    4. **[Validate storage credentials]** をクリックしてストレージ アカウントを検証します。
     5. [省略可能] Jenkins CI で利用できるストレージ アカウントを追加する場合には、**[Add more Storage Accounts]** をクリックします。
     6. **[Save]** をクリックして設定を保存します。
 
@@ -166,4 +166,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
 詳細については、[Java デベロッパー センター](https://azure.microsoft.com/develop/java/)も参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0629_2016-->

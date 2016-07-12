@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="06/24/2016"
 	ms.author="robmcm"/>
 
 # 仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
  
 
 Azure で仮想マシンを使用することで、多くのコンピューティング処理を要するタスクを処理できます。たとえば、仮想マシンでタスクを処理し、結果をクライアント マシンやモバイル アプリケーションに配信できます。このガイドを記事を読むことで、多くのコンピューティング処理を要する Java アプリケーションを実行し、それを別の Java アプリケーションから監視できる仮想マシンの作成方法を理解できます。
@@ -89,7 +89,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 2.  Azure クラシック ポータルの左下のナビゲーション ウィンドウで、**[サービス バス、アクセス制御、キャッシュ]** をクリックします。
 3.  Azure クラシック ポータルの左上のナビゲーション ウィンドウで、**[Service Bus]** ノードをクリックしてから **[新規]** をクリックします。![[Service Bus] ノードのスクリーンショット][svc_bus_node]
 4.  **[サービス名前空間の新規作成]** ダイアログ ボックスで **[名前空間]** に名前空間の名前を入力し、固有の名前であることを確認するために **[有効か確認]** をクリックします。![[名前空間の新規作成] のスクリーンショット][create_namespace]
-5.  名前空間の名前が有効であることを確認できたら、名前空間をホストする国またはリージョンを選択して、**[名前空間の作成]** ボタンをクリックします。  
+5.  名前空間の名前が有効であることを確認できたら、名前空間をホストする国またはリージョンを選択して、**[名前空間の作成]** ボタンをクリックします。
 
     作成した名前空間が Azure クラシック ポータルに表示され、アクティブになります。これには少し時間がかかります。状態が **[有効]** になるのを待ってから、次の手順に進みます。
 
@@ -521,4 +521,4 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 [default_key]: ./media/virtual-machines-windows-classic-java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
 [add_ca_cert]: ../java-add-certificate-ca-store.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -62,7 +62,7 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 
 ###	ユーザーへのロールの割り当て (ユーザーのグループに割り当てられているロールを含む) の表示
 
-次の例は、ユーザー **sameert@aaddemo.com* に付与されたロールの割り当てを示しています。これには、ユーザーに直接割り当てられたロールだけでなく、グループから継承されたロールも含まれます。
+次の例は、ユーザー *sameert@aaddemo.com* に付与されたロールの割り当てを示しています。これには、ユーザーに直接割り当てられたロールだけでなく、グループから継承されたロールも含まれます。
 
 ![RBAC Azure コマンド ライン - ユーザー別の azure ロール割り当て一覧 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-2.png)
 
@@ -74,7 +74,7 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 ###	サブスクリプションのスコープでのグループへのロールの割り当て
 サブスクリプションのスコープでグループにロールを割り当てるには、次のコマンドを使用します。
 
-	azure role assignment create --objId  <group's object id> --role <name of role> --scope <subscription/subscription id>
+	azure role assignment create --objectId  <group's object id> --roleName <name of role> --subscription <subscription> --scope <subscription/subscription id>
 
 次の例では、*サブスクリプション*のスコープで *Christine Koch のチーム*に*閲覧者*ロールを割り当てています。
 
@@ -83,7 +83,7 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 ###	サブスクリプションのスコープでのアプリケーションへのロールの割り当て
 サブスクリプションのスコープでアプリケーションにロールを割り当てるには、次のコマンドを使用します。
 
-    azure role assignment create --objId  <applications's object id> --role <name of role> --scope <subscription/subscription id>
+    azure role assignment create --objectId  <applications's object id> --roleName <name of role> --subscription <subscription> --scope <subscription/subscription id>
 
 次の例では、選択したサブスクリプションの *Azure AD* アプリケーションに*共同作業者*ロールを付与しています。
 
@@ -92,16 +92,16 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 ###	リソース グループのスコープでのユーザーへのロールの割り当て
 リソース グループのスコープでユーザーにロールを割り当てるには、次のコマンドを使用します。
 
-	azure role assignment create --signInName  <user's email address> --roleName <name of role in quotes> --resourceGroup <resource group name>
+	azure role assignment create --signInName  <user's email address> --subscription <subscription> --roleName <name of role in quotes> --resourceGroup <resource group name>
 
-次の例では、*Pharma-Sales-ProjectForcast* リソース グループのスコープで、ユーザー **samert@aaddemo.com* に*仮想マシンの共同作業者*ロールを付与しています。
+次の例では、*Pharma-Sales-ProjectForcast* リソース グループのスコープで、ユーザー *samert@aaddemo.com* に*仮想マシンの共同作業者*ロールを付与しています。
 
 ![RBAC Azure コマンド ライン - ユーザー別の azure ロール割り当ての作成 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-3.png)
 
 ###	リソースのスコープでのグループへのロールの割り当て
 リソースのスコープでグループにロールを割り当てるには、次のコマンドを使用します。
 
-    azure role assignment create --objId  <group id> --roleName <name of role in quotes> --resource-name <resource group name> --resource-type <resource group type> --parent <resource group parent> --resource-group <resource group>
+    azure role assignment create --objectId  <group id> --subscription <subscription> --roleName <name of role in quotes> --resource-name <resource group name> --resource-type <resource group type> --parent <resource group parent> --resource-group <resource group>
 
 次の例では、*サブネット*の *Azure AD* グループに*仮想マシンの共同作業者*ロールを付与しています。
 
@@ -110,9 +110,9 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 ##	アクセス権の削除
 ロールの割り当てを削除するには、次のコマンドを使用します。
 
-    azure role assignment delete --objId <object id to from which to remove role> --roleName <role name>
+    azure role assignment delete --objectId <object id to from which to remove role> --roleName <role name>
 
-次の例では、*Pharma-Sales-ProjectForcast* リソース グループの **sammert@aaddemo.com* から、*仮想マシンの共同作業者*ロールの割り当てを削除しています。次に、このサブスクリプションのグループからロールの割り当てを削除しています。
+次の例では、*Pharma-Sales-ProjectForcast* リソース グループの *sammert@aaddemo.com* から、*仮想マシンの共同作業者*ロールの割り当てを削除しています。次に、このサブスクリプションのグループからロールの割り当てを削除しています。
 
 ![RBAC Azure コマンド ライン - azure ロール割り当ての削除 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-assignment-delete.png)
 
@@ -162,4 +162,4 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 ## RBAC のトピック
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0629_2016-->

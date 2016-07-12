@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/03/2016"  
+	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 #方法: ジョブの進行状況をチェックする
@@ -26,7 +26,7 @@
 ##ジョブの状態を確認するには、ポータルを使用します。
 
 1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[Media Services]** をクリックし、目的の Media Services アカウント名をクリックします。
-2. **[ジョブ]** ページを選択します。 
+2. **[ジョブ]** ページを選択します。
 
 	ページでは、すべてのジョブの状態が確認できます。状態、時刻、またはジョブ ID でもフィルターできます。
 
@@ -50,4 +50,4 @@
 [checkstatus]: ./media/media-services-portal-check-job-progress/media-services-monitor-job-progress.png
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="05/13/2016"
+   ms.date="06/23/2016"
    ms.author="carlrab"/>
    
 # Azure SQL Database のセキュリティと保護
@@ -33,7 +33,7 @@ Azure SQL Database は、数百万単位のミッションクリティカルな�
 
 ## 最大のコンプライアンス ポートフォリオ
 
-SQL Database には、業界でも最大規模のコンプライアンス ポートフォリオがあります。そのため、HIPPA、FERPA、さらにはシンガポールの MTCS レベル 3 が必要な場合でも対応できます。
+SQL Database には、業界でも最大規模のコンプライアンス ポートフォリオがあります。そのため、HIPPA コンプライアンス、FERPA、さらにはシンガポールの MTCS レベル 3 が必要な場合でも対応できます。
 
 [ドキュメントを参照する](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
 
@@ -55,4 +55,4 @@ SQL Database の他の機能についてはホーム ページを[ぜひご確�
  
 [SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

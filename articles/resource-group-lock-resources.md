@@ -20,7 +20,7 @@
 
 管理者は、サブスクリプション、リソース グループ、またはリソースにロックを適用し、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止しなければならないことがあります。ロック レベルは **CanNotDelete** または **ReadOnly** に設定できます。
 
-- **CanNotDelete** は、正規ユーザーはリソースの読み取りと変更を実行できますが、削除ができないことを示します。 
+- **CanNotDelete** は、正規ユーザーはリソースの読み取りと変更を実行できますが、削除ができないことを示します。
 - **ReadOnly** は、正規ユーザーはリソースの読み取りを実行できますが、リソースの削除やリソースへのアクションの実行はできないことを示します。リソースへのアクセス許可は、 **リーダー** ロールに限定されています。**ReadOnly** を適用すると、読み取り操作などには追加のアクションが必要となるため、予期しない結果を招く可能性があります。たとえば、**ReadOnly** ロックをストレージ アカウントに配置すると、すべてのユーザーがキーを一覧表示できなくなります。返されるキーは書き込み操作に使用できるため、キーの一覧表示操作は POST 要求を介して処理されます。別の例として、**ReadOnly** ロックを App Service リソースに配置すると、Visual Studio の サーバー エクスプローラーの操作には書き込みアクセスが必要となるため、Visual Studio の サーバー エクスプローラーはリソース用のファイルを表示できなくなります。
 
 ロールベースのアクセス制御とは異なり、管理ロックを使用すると、すべてのユーザーとロールに対して制限を適用することができます。ユーザーとロールのアクセス許可を設定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
@@ -100,7 +100,7 @@
 
 Azure PowerShell を使用してデプロイ済みのリソースをロックするには、次のように **New-AzureRmResourceLock** を使用します。
 
-    New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites
+    New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName exampleresourcegroup
 
 Azure PowerShell では、動作中のロックに対するその他のコマンドを使用できます。たとえば、ロックを更新する **Set-AzureRmResourceLock**、ロックを削除する **Remove-AzureRmResourceLock** があります。
 
@@ -111,4 +111,4 @@ Azure PowerShell では、動作中のロックに対するその他のコマン
 - リソースが存在するリソース グループを変更するには、「[新しいリソース グループへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 - カスタマイズしたポリシーを使用して、サブスクリプションの制約と規則を適用できます。詳細については、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

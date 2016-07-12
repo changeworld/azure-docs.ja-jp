@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="hero-article"
- ms.date="03/09/2016"
+ ms.date="06/30/2016"
  ms.author="krisragh"/>
 
 # Azure Scheduler とは
@@ -50,4 +50,4 @@ Scheduler では、ジョブおよび[ジョブ コレクション](scheduler-co
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -22,7 +22,7 @@
 この記事では、イメージを使用してそのイメージを基にした仮想マシンを作成するための、オペレーティング システムの仮想ハード ディスク (VHD) をアップロードする方法について説明します。Microsoft Azure でのディスクと VHD の詳細については、「[Virtual Machines 用のディスクと VHD について](virtual-machines-linux-about-disks-vhds.md)」を参照してください。
 
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。Resource Manager モデルを使用して、仮想マシンを[キャプチャ](virtual-machines-windows-capture-image.md)および[アップロード](virtual-machines-windows-upload-image.md)することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)].Resource Manager モデルを使用して、仮想マシンを[キャプチャ](virtual-machines-windows-capture-image.md)および[アップロード](virtual-machines-windows-upload-image.md)することもできます。
 
 ## 前提条件
 
@@ -76,7 +76,7 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
  - **[URL]** で、ストレージ アカウントの URL で使用するサブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、サブスクリプションの BLOB、キュー、テーブル リソースへのアクセスに使用する URL のホスト名になります。
  - ストレージ アカウントの**場所またはアフィニティ グループ**を選択します。アフィニティ グループを使用すると、クラウド サービスとストレージを同じデータセンターに配置できます。
- - ストレージ アカウントの **geo レプリケーション**を使用するかどうかを決定します。geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。詳細については、「[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account/#replication-options)」を参照してください。
+ - ストレージ アカウントの **geo レプリケーション**を使用するかどうかを決定します。geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。詳細については、「[ストレージ アカウントの作成、管理、削除](../storage/storage-create-storage-account.md#replication-options)」を参照してください。
 
       ![ストレージ アカウントの詳細の入力](./media/virtual-machines-windows-classic-createupload-vhd/Storage-create-account.png)
 
@@ -203,4 +203,4 @@ Add-AzureVhd コマンドレットの詳細については、[Add-AzureVhd に�
 [Step 3: Prepare the connection to Azure]: #prepAzure
 [Step 4: Upload the .vhd file]: #upload
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -18,7 +18,7 @@
 
 # Azure でホストされる Web サイトで ReportViewer を使用する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 Microsoft Azure 仮想マシンに保存されたレポートを表示する Visual Studio ReportViewer コントロールを使用して、Microsoft Azure Web サイトを作成できます。ReportViewer コントロールは、ASP.NET Web アプリケーション テンプレートを使用して作成する Web アプリケーション内にあります。
@@ -83,7 +83,7 @@ ASP.NET アプリケーションをオンプレミスでホストする場合、
 
 1. 前の手順に従って、Microsoft Report Viewer 2012 Runtime 再頒布可能パッケージをダウンロードしてインストールします。
 
-1. プロジェクトに <language> フォルダーを作成し、関連付けられたリソース アセンブリ ファイルをそこにコピーします。コピーするリソース アセンブリ ファイルは、**Microsoft.ReportViewer.Webforms.Resources.dll** と **Microsoft.ReportViewer.Common.Resources.dll** です。リソース アセンブリ ファイルを選択し、プロパティ ウィンドウで **[出力ディレクトリにコピー]** を “**Copy always**” に設定します。
+1. プロジェクトに <言語> フォルダーを作成し、関連付けられたリソース アセンブリ ファイルをそこにコピーします。コピーするリソース アセンブリ ファイルは、**Microsoft.ReportViewer.Webforms.Resources.dll** と **Microsoft.ReportViewer.Common.Resources.dll** です。リソース アセンブリ ファイルを選択し、プロパティ ウィンドウで **[出力ディレクトリにコピー]** を **[常にコピーする]** に設定します。
 
 1. Web プロジェクトのカルチャと UI カルチャを設定します。ASP.NET Web ページのカルチャと UI カルチャを設定する方法の詳細については、「[方法 : ASP.NET Web ページのグローバリゼーション用のカルチャおよび UI カルチャを設定する](http://go.microsoft.com/fwlink/?LinkId=237461)」を参照してください。
 
@@ -109,4 +109,4 @@ ASP.NET Web アプリケーションを Azure に発行する手順について�
 
 [Reporting Services のレポート ビューアー制御と Microsoft Azure 仮想マシン ベースのレポート サーバー](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="02/21/2016" 
+	ms.date="06/24/2016" 
 	ms.author="robmcm"/>
 
 # Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
@@ -182,4 +182,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
 詳細については、[Java デベロッパー センター](https://azure.microsoft.com/develop/java/)も参照してください。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0629_2016-->

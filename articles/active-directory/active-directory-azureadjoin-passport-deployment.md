@@ -5,7 +5,7 @@
 	documentationCenter=""
 	keywords="Microsoft Passport の構成, Microsoft Passport for Work のデプロイ"
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""
 	tags="azure-classic-portal"/>
 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/23/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 
@@ -119,4 +119,4 @@ xml サンプルを次に示します。
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0629_2016-->

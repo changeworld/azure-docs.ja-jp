@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="hero-article"
- ms.date="03/09/2016"
+ ms.date="06/30/2016"
  ms.author="krisragh"/>
 
 # Azure ポータルの Azure Scheduler の概要
@@ -21,7 +21,7 @@ Azure Scheduler では、スケジュールされたジョブを簡単に作成�
 
 ## ジョブを作成する
 
-1.  [Azure ポータル](https://portal.azure.com/)にサインインします。  
+1.  [Azure ポータル](https://portal.azure.com/)にサインインします。
 
 2.  **[+新規]** をクリックし、検索ボックスに「_Scheduler_」と入力し、結果の **[Scheduler]**、**[作成]** の順にクリックします。
 
@@ -29,7 +29,7 @@ Azure Scheduler では、スケジュールされたジョブを簡単に作成�
 
 3.  ここでは、http://www.microsoft.com/ への GET 要求を送信するのみのジョブを作成します。**[スケジューラ ジョブ]** 画面に次の情報を入力します。
 
-    1.  **[名前]:** `getmicrosoft`  
+    1.  **[名前]:** `getmicrosoft`
 
     2.  **[サブスクリプション]:** Azure のサブスクリプション
 
@@ -37,7 +37,7 @@ Azure Scheduler では、スケジュールされたジョブを簡単に作成�
 
 4.  次に、**[アクションの設定]** で次の値を定義します。
 
-    1.  **[アクションの種類]:** ` HTTP`  
+    1.  **[アクションの種類]:** ` HTTP`
 
     2.  **[方法]:** `GET`
 
@@ -63,7 +63,7 @@ Azure Scheduler では、スケジュールされたジョブを簡単に作成�
 
 ジョブが作成されると、メインの Azure ダッシュボードに表示されます。ジョブをクリックすると、次のタブが表示された状態で新しいウィンドウが開きます。
 
-1.  プロパティ  
+1.  プロパティ
 
 2.  アクションの設定
 
@@ -111,7 +111,7 @@ HTTP および HTTPS のジョブのアクションの種類では、方法を�
 
 **[履歴]** タブには、選択したジョブのシステム内の各ジョブ実行について、選択したメトリックが表示されます。これらのメトリックで、Scheduler の正常性状態に関するリアルタイムの値がわかります。
 
-1.  状態  
+1.  状態
 
 2.  詳細
 
@@ -182,4 +182,4 @@ Azure のロールベースのアクセス制御 (RBAC) では、Azure Scheduler
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

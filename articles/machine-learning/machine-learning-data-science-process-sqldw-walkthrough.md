@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="06/24/2016"
 	ms.author="bradsev;hangzh;weig"/>
 
 
@@ -84,14 +84,14 @@ Azure データ サイエンス環境をセット アップするには、以下
 
 **Azure SQL DW インスタンスをプロビジョニングします。** 「[SQL Data Warehouse の作成](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)」の説明に従って、SQL Data Warehouse インスタンスをプロビジョニングします。後の手順で使用される次の SQL Data Warehouse の資格情報は必ずメモしておいてください。
 
-  - **サーバー名**: <server Name>.database.windows.net
+  - **サーバー名**: <サーバー名>.database.windows.net
   - **SQLDW (データベース) 名**
   - **ユーザー名**
   - **パスワード**
 
-**Visual Studio 2015 および SQL Server Data Tools をインストールします。** 手順については、「[SQL Data Warehouse 用に Visual Studio 2015 または SSDT をインストールする](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)」を参照してください。
+**Visual Studio 2015 および SQL Server Data Tools をインストールします。** 手順については、[SQL Data Warehouse 用の Visual Studio 2015 または SSDT (SQL Server Data Tools) のインストール](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)に関するページをご覧ください。
 
-**Visual Studio で Azure SQL DW に接続します。** 手順については、[Visual Studio での SQL Data Warehouse への接続](../sql-data-warehouse/sql-data-warehouse-connect-overview.md)に関するページの手順 1 と 2 をご覧ください。
+**Visual Studio で Azure SQL DW に接続します。** 手順については、[Visual Studio での Azure SQL Data Warehouse への接続](../sql-data-warehouse/sql-data-warehouse-connect-overview.md)に関するページの手順 1 と 2 をご覧ください。
 
 >[AZURE.NOTE] SQL Data Warehouse で作成したデータベースに対して (接続に関するトピックの手順 3 で示されているクエリではなく) 次の SQL クエリを実行して、**マスター キーを作成します**。
 
@@ -314,13 +314,18 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 			)
 			;
 
+ストレージ アカウントの地理的な場所によって、読み込み時間は異なります。
+
 >[AZURE.NOTE] プライベート BLOB ストレージ アカウントの地理的位置に応じて、パブリック BLOB からプライベート ストレージ アカウントへのデータのコピー プロセスには約 15 分 (またはそれ以上) かかる場合があります。また、ストレージ アカウントから Azure SQL DW へのデータの読み込みプロセスには 20 分以上かかる場合があります。
 
->[AZURE.NOTE] パブリック BLOB ストレージからプライベート BLOB ストレージ アカウントにコピーする .csv ファイルが既にプライベート BLOB ストレージ アカウントに存在する場合、AzCopy によってファイルを上書きするかどうかが尋ねられます。上書きしない場合は、確認を求めるメッセージが表示されたときに「**n**」と入力します。**すべて**上書きする場合は、確認を求めるメッセージが表示されたときに「**a**」と入力します。「**y**」と入力して、個別に上書きすることもできます。
+コピー元のファイルとコピー先のファイルが重複する場合は、どのように対処するかを決定する必要があります。
+
+>[AZURE.NOTE] パブリック BLOB ストレージからプライベート BLOB ストレージ アカウントにコピーする .csv ファイルが既にプライベート BLOB ストレージ アカウントに存在する場合、AzCopy によってファイルを上書きするかどうかが尋ねられます。上書きしない場合は、確認を求めるメッセージが表示されたときに「**n**」と入力します。**すべて**上書きする場合は、確認を求めるメッセージが表示されたときに「**a**」と入力します。「**y**」と入力して、.csv ファイルを個別に上書きすることもできます。
 
 ![プロット #21][21]
 
->[AZURE.TIP] **独自のデータを使用する:** 実際のアプリケーションでオンプレミスのコンピューターにデータがある場合でも、AzCopy を使用してオンプレミスのデータをプライベート Azure BLOB ストレージにアップロードできます。アップロードするには、PowerShell スクリプト ファイルの AzCopy コマンドで、**Source** の場所 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) を、データが格納されているローカル ディレクトリに変更します。
+独自のデータを使用することができます。実際のアプリケーションのオンプレミス マシンにデータがある場合でも、AzCopy を使用してオンプレミス データをプライベート Azure BLOB ストレージにアップロードできます。アップロードするには、PowerShell スクリプト ファイルの AzCopy コマンドで、**Source** の場所 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) を、データが格納されているローカル ディレクトリに変更します。
+
 
 >[AZURE.TIP] 実際のアプリケーションのプライベート Azure BLOB ストレージ内にデータが既にある場合は、PowerShell スクリプトでの AzCopy ステップをスキップして、直接データを Azure SQL DW にアップロードできます。この場合、データの形式に合わせてスクリプトをさらに編集する必要があります。
 
@@ -452,7 +457,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 	GO
 
 	-- User-defined function to calculate the direct distance  in mile between two geographical coordinates.
-	CREATE FUNCTION [dbo].[fnCalculateDistance] \(@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
+	CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
 
 	RETURNS float
 	AS
@@ -499,7 +504,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 	GO
 
 	-- User-defined function calculate the direct distance between two geographical coordinates.
-	CREATE FUNCTION [dbo].[fnCalculateDistance] \(@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
+	CREATE FUNCTION [dbo].[fnCalculateDistance] (@Lat1 float, @Long1 float, @Lat2 float, @Long2 float)
 
 	RETURNS float
 	AS
@@ -626,7 +631,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
     CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
     conn = pyodbc.connect(CONNECTION_STRING)
 
-### テーブル <nyctaxi_trip> の行数と列数を報告する
+### テーブル <nyctaxi\_trip> の行数と列数を報告する
 
     nrows = pd.read_sql('''
 		SELECT SUM(rows) FROM sys.partitions
@@ -642,10 +647,10 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 	print 'Total number of columns = %d' % ncols.iloc[0,0]
 
-- 行数の合計 = 173179759  
+- 行数の合計 = 173179759
 - 列数の合計 = 14
 
-### テーブル <nyctaxi_fare> の行数と列数を報告する
+### テーブル <nyctaxi\_fare> の行数と列数を報告する
 
     nrows = pd.read_sql('''
 		SELECT SUM(rows) FROM sys.partitions
@@ -661,7 +666,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 	print 'Total number of columns = %d' % ncols.iloc[0,0]
 
-- 行数の合計 = 173179759  
+- 行数の合計 = 173179759
 - 列数の合計 = 11
 
 ### SQL Data Warehouse データベースから小規模なデータ サンプルを読み込む
@@ -689,7 +694,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 ### 説明的な統計情報
 
-これで、サンプリングされたデータを探索する準備ができました。最初に **trip\_distance** (または指定するその他のフィールド) のいくつかの説明的な統計を確認します。
+これで、サンプリングされたデータを探索する準備ができました。最初に **trip\_distance** (または指定するその他のフィールド) のいくつかの説明的な統計情報を確認します。
 
     df1['trip_distance'].describe()
 
@@ -840,7 +845,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 1. **二項分類**: 乗車に対してチップが支払われたかどうかを予測します。
 
-2. **多クラス分類**: 以前定義したクラスに従って、支払われたチップの範囲を予測します。
+2. **多クラス分類**: あらかじめ定義したクラスに従って、支払われたチップの範囲を予測します。
 
 3. **回帰タスク**: 乗車で支払われたチップの金額を予測します。
 
@@ -852,7 +857,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 2. [Azure Machine Learning Studio ](https://studio.azureml.net)にログインします。
 
-3. Studio のホーム ページには、豊富な情報、ビデオ、チュートリアル、モジュール リファレンスへのリンク、およびその他のリソースが用意されています。Azure Machine Learning の詳細については、[Azure Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)を参照してください。
+3. Studio のホーム ページには、豊富な情報、ビデオ、チュートリアル、モジュール リファレンスへのリンク、およびその他のリソースが用意されています。Azure Machine Learning の詳細については、[Azure Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
 
 一般的なトレーニング実験は以下のステップで構成されています。
 
@@ -879,9 +884,9 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 4. **データベース名**を対応するフィールドに入力します。
 
-5. *SQL ユーザー名*を **[サーバーのユーザー アカウント名]** に、*パスワード*を **[サーバーのユーザー アカウントのパスワード]** に入力します。
+5. <SQL ユーザー名> を **[Server user account name (サーバーのユーザー アカウント名)]** に、<パスワード> を **[Server user account password (サーバーのユーザー アカウントのパスワード)]** に入力します。
 
-6. **[サーバー証明書を受け入れる]** オプションをオンにします。
+6. **[あらゆるサーバー証明書を承諾する]** オプションをオンにします。
 
 7. **データベース クエリ**テキスト編集領域で、必要なデータベース フィールド (ラベルなどの計算フィールドなど) を抽出するクエリを貼り付けてから、データを希望するサンプルのサイズにダウンサンプリングします。
 
@@ -912,7 +917,7 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 2. 予想される入力データ スキーマを表す論理**入力ポート**を特定する。
 3. 予想される Web サービスの出力スキーマを表す論理**出力ポート**を特定する。
 
-スコア付け実験が作成されたら、確認して、必要に応じて調整します。一般的な調整は、入力データセットまたはクエリを、ラベル フィールドを除外した入力データセットまたはクエリに置き換えることです。これらはサービスが呼び出されると使用できなくなるためです。入力データセットまたはクエリのサイズを、入力スキーマを示すのに十分な 2、3 個のレコードまで削減することをお勧めします。出力ポートでは、一般的に、すべての入力フィールドを除外し、[データセット内の列の選択][select-columns]モジュールを使用して、出力の**スコアリングしたラベル**と**スコアリングした確率**のみを含めます。
+スコア付け実験が作成されたら、確認して、必要に応じて調整します。一般的な調整は、入力データセットまたはクエリを、ラベル フィールドを除外した入力データセットまたはクエリに置き換えることです。これらはサービスが呼び出されると使用できなくなるためです。入力データセットまたはクエリのサイズを、入力スキーマを示すのに十分な 2、3 個のレコードまで削減することをお勧めします。出力ポートでは、一般的に、すべての入力フィールドを除外し、[データセット内の列の選択][select-columns]モジュールを使用して、**スコアリングしたラベル**と**スコアリングした確率**のみを出力に含めます。
 
 サンプルのスコア付け実験を次の図に示します。デプロイできる状態になったら、下部の操作バーにある **[Web サービスの発行]** ボタンをクリックします。
 
@@ -964,4 +969,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

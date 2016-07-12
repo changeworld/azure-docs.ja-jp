@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"   
+	ms.date="06/22/2016"  
 	ms.author="juliako"/>
 
 
@@ -29,8 +29,8 @@ Microsoft Azure Media Services にアクセスする際には、Azure Access Con
 
 次の手順では、Media Services REST API を使用して Media Services に接続するときの最も一般的なワークフローについて説明します。
 
-1. アクセス トークンの取得 
-2. Media Services URI への接続 
+1. アクセス トークンの取得
+2. Media Services URI への接続
 
 	>[AZURE.NOTE] https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。その新しい URI に再度コールする必要があります。ODATA API メタデータの説明が含まれる HTTP/1.1 200 応答が表示される場合もあります。
 
@@ -110,7 +110,7 @@ Media Services のルート URI は https://media.windows.net/ です。まず�
 
 アセット ファイルをアップロードしたりダウンロードしたりするルート URI は https://yourstorageaccount.blob.core.windows.net/ です。ストレージ アカウント名には、Media Services アカウントで設定したものと同じものが使われます。
 
-次の例は、Media Services ルート URI (https://media.windows.net/)) への HTTP 要求を示します。要求に対して 301 リダイレクトが返されています。その後、新しい URI (https://wamsbayclus001rest-hs.cloudapp.net/api/)) に続けて要求を行っています。
+次の例は、Media Services ルート URI (https://media.windows.net/) への HTTP 要求を示します。要求に対して 301 リダイレクトが返されています。その後、新しい URI (https://wamsbayclus001rest-hs.cloudapp.net/api/) に続けて要求を行っています。
 
 **HTTP 要求**:
 	
@@ -177,4 +177,4 @@ Media Services のルート URI は https://media.windows.net/ です。まず�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -25,9 +25,9 @@ Microsoft では、サービスがいつでも使用できるように取り組�
 
 すべての顧客が独自の障害復旧計画を準備することが重要です。ストレージの停止から復旧し、アプリケーションをアクティブ化して、機能している状態に戻すには、通常、運用担当者の操作と自動処理の両方が必要です。障害復旧計画を作成するには、次の Azure ドキュメントをご覧ください。
 
--   [Azure アプリケーションの障害復旧と高可用性](https://msdn.microsoft.com/library/azure/dn251004.aspx)
+-   [Azure アプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 
--   [Azure のビジネス継続性テクニカル ガイダンス](https://msdn.microsoft.com/library/azure/hh873027.aspx)
+-   [Azure の回復性技術ガイダンス](../resiliency/resiliency-technical-guidance.md)
 
 -   [Azure Site Recovery サービス](https://azure.microsoft.com/services/site-recovery/)
 
@@ -81,4 +81,4 @@ Azure サービスの状態は、[Azure サービス正常性ダッシュボー�
 
 -   ファイル - [AzCopy](storage-use-azcopy.md) または [Azure PowerShell](storage-powershell-guide-full.md) を使用して、他のリージョンの別のストレージ アカウントにファイルをコピーします。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -19,8 +19,8 @@
 
 # クラシック デプロイ モデルで作成された Azure Virtual Machines についてよく寄せられる質問
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-faq](../../includes/virtual-machines-common-classic-faq.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

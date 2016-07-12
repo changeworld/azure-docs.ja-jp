@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/14/2016"   
+	ms.date="06/22/2016"   
 	ms.author="milanga;juliako;"/>
 
 #Azure Media Video Thumbnails を使用してビデオ要約を作成する
@@ -76,7 +76,7 @@ maxMotionThumbnailDurationInSecs|結果ビデオ全体の長さを指定する�
 このプログラムでは次の方法を示します。
 
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
-1. 次の JSON プリセットを含む構成ファイルに基づくビデオ サムネイル タスクのジョブを作成します。 
+1. 次の JSON プリセットを含む構成ファイルに基づくビデオ サムネイル タスクのジョブを作成します。
 		
 		{				
 			"version": "1.0",
@@ -273,4 +273,4 @@ maxMotionThumbnailDurationInSecs|結果ビデオ全体の長さを指定する�
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

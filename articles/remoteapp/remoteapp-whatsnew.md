@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/02/2016"
+    ms.date="06/27/2016"
     ms.author="elizapo" />
 
 
@@ -38,7 +38,7 @@ Azure RemoteApp チームが RDS ブログを毎月更新していることを�
 8 月に大きな変化がありました。ここに概要を記載します。
 
 - クラウド コレクションで Azure VNET を使えるようになりました。 新しい手順については、[クラウドの作成方法](remoteapp-create-cloud-deployment.md)を参考にしてください。
-- Windows RemoteApp クライアントの [スタート] メニューをアプリに追加できるようになりました。アプリがアプリケーションの一覧に表示されるので、それを Windows の [スタート] メニューに固定できます。
+- Windows RemoteApp クライアントの **[スタート]** メニューをアプリに追加できるようになりました。アプリがアプリケーションの一覧に表示されるので、それを Windows の **[スタート]** メニューに固定できます。
 - Azure VM ギャラリーに新しいイメージが追加されました。「Windows Server Remote Desktop Session Host with Microsoft Office 365 ProPlus」です。
 - Mac クライアントが修正され、モーダル ウィンドウのアプリのフリーズを解消しました。
 - Azure RemoteApp で [Office 365 ProPlus サブスクリプション](remoteapp-officesubscription.md)を使用する方法を文書にしました。
@@ -87,4 +87,4 @@ Azure RemoteApp が実際に使われている様子を確認したいですか�
 ### サポートのサポートのお願い
 記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上にスクロールし、**[GitHub で編集]** をクリックすると変更できます。届いたら確認されます。サインオフ後、変更と改善をここで確認できます。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

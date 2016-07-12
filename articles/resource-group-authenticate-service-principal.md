@@ -1,6 +1,6 @@
 <properties
-   pageTitle="PowerShell を使用した AD アプリケーション の作成 | Microsoft Azure"
-   description="Azure PowerShell を使用して、Active Directory アプリケーションを作成し、ロール ベースのアクセス制御によって、リソースへのアクセス権を付与する方法について説明します。パスワードまたは証明書を使ってアプリケーションを認証する方法を示します。"
+   pageTitle="Azure サービス プリンシパルを PowerShell で作成する | Microsoft Azure"
+   description="Azure PowerShell を使用して、Active Directory アプリケーションやサービス プリンシパルを作成し、ロールベースのアクセス制御によって、リソースへのアクセス権を付与する方法について説明します。パスワードまたは証明書を使ってアプリケーションを認証する方法を示します。"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,7 +16,7 @@
    ms.date="06/13/2016"
    ms.author="tomfitz"/>
 
-# リソースにアクセスできる Active Directory アプリケーションを Azure PowerShell で作成する
+# リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する
 
 > [AZURE.SELECTOR]
 - [PowerShell](resource-group-authenticate-service-principal.md)
@@ -115,7 +115,7 @@ Active Directory アプリケーションとそのアプリケーション用の
 
 このセクションでは、証明書を使用して AD アプリケーションを作成する手順を実行します。
 
-1. 自己署名証明書を作成します。Windows 10 または Windows Server 2016 Technical Preview をお使いの場合は、次のコマンドを実行します。 
+1. 自己署名証明書を作成します。Windows 10 または Windows Server 2016 Technical Preview をお使いの場合は、次のコマンドを実行します。
 
         $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleapp" -KeySpec KeyExchange
        
@@ -176,7 +176,7 @@ Active Directory アプリケーションとそのアプリケーション用の
 スクリプトでは、サービス プリンシパルとしてログインするために必要な 3 つの値で渡します。次が必要です。
 
 - アプリケーション ID
-- テナント ID 
+- テナント ID
 - 証明書の拇印
 
 前の手順でアプリケーション ID と証明書の拇印について説明しました。ただし、後でこれらの値を取得する必要がある場合は、そのコマンドを、テナント ID を取得するコマンドとともに以下に示します。
@@ -210,9 +210,9 @@ Active Directory アプリケーションとそのアプリケーション用の
 ## 次のステップ
   
 - .NET 認証の例については、「[Azure Resource Manager SDK for .NET](resource-manager-net-sdk.md)」を参照してください。
-- Java 認証の例については、「[Azure Resource Manager SDK for Java](resource-manager-java-sdk.md)」を参照してください。 
+- Java 認証の例については、「[Azure Resource Manager SDK for Java](resource-manager-java-sdk.md)」を参照してください。
 - Python 認証の例については、[Python 向けリソース管理認証](https://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementauthentication.html)に関するページを参照してください。
 - REST 認証の例については、「[Resource Manager REST API](resource-manager-rest-api.md)」を参照してください。
 - アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「[Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

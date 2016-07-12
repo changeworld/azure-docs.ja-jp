@@ -21,13 +21,13 @@
 
 ここでは、FreeBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成およびアップロードする方法を示し、それをイメージとして活用して Azure で仮想マシン (VM) を作成できるようにします。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 ##前提条件##
 この記事では、次の項目があることを前提としています。
 
-- **Azure サブスクリプション** - お持ちでない場合でも、数分でアカウントを作成できます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。それ以外の場合は、[無料試用版のアカウントの作成](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。  
+- **Azure サブスクリプション** - お持ちでない場合でも、数分でアカウントを作成できます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。それ以外の場合は、[無料試用版のアカウントの作成](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 
 - **Azure PowerShell ツール** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Azure のダウンロード ページ](https://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルはこちらで入手できます。[Azure のダウンロード](https://azure.microsoft.com/downloads/)のコマンドレットを使用して VHD をアップロードします。
 
@@ -227,4 +227,4 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 	![Azure での FreeBSD イメージ](./media/virtual-machines-linux-classic-freebsd-create-upload-vhd/freebsdimageinazure.png)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

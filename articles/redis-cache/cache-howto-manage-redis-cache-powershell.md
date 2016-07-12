@@ -580,7 +580,7 @@ Redis Cache を削除するには、[Remove-AzureRmRedisCache](https://msdn.micr
 <a name="classic"></a>
 ## PowerShell クラシック デプロイメント モデルを使用した Azure Redis Cache インスタンスの管理
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](cache-howto-manage-redis-cache-powershell.md)については、この記事の冒頭で説明されています。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [リソース マネージャー モデルを使用してこれらの手順を実行](cache-howto-manage-redis-cache-powershell.md)する方法については、この記事で最初に説明しました。
 
 次のスクリプトは、クラシック デプロイメント モデルを使用して Azure Redis Cache を作成、更新、および削除する方法を示しています。
 		
@@ -636,4 +636,4 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

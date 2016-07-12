@@ -22,7 +22,11 @@
 
 ## Index
 
-**クエリおよび演算子**: [count](#count-operator) | [extend](#extend-operator) | [join](#join-operator) | [let 句](#let-clause) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict 句](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator)
+
+**let と set**: [let](#let-clause) | [set](#set-clause)
+
+
+**クエリと演算子**: [count](#count-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict 句](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator)
 
 **集計**: [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -34,11 +38,89 @@
 
 **文字列**: [GUID](#guids) | [難読化された文字列リテラル](#obfuscated-string-literals) | [文字列リテラル](#string-literals) | [文字列の比較](#string-comparisons) | [countof](#countof) | [extract](#extract) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
 
-**配列、オブジェクト、および動的**: [配列とオブジェクトのリテラル](#array-and-object-literals) | [動的オブジェクトの関数](#dynamic-object-functions) | [let 句の動的オブジェクト](#dynamic-objects-in-let-clauses) | [JSON パス式](#json-path-expressions) | [名前](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
+**配列、オブジェクト、動的**: [配列とオブジェクトのリテラル](#array-and-object-literals) | [動的オブジェクトの関数](#dynamic-object-functions) | [let 句の動的オブジェクト](#dynamic-objects-in-let-clauses) | [JSON パス式](#json-path-expressions) | [名前](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
 
 
 
+## let と set
 
+### let 句
+
+**表形式の let - テーブルに名前を付ける**
+
+    let recentReqs = requests | where timestamp > ago(3d); 
+    recentReqs | count
+
+**スカラーの let - 値に名前を付ける**
+
+    let interval = 3d; 
+    requests | where timestamp > ago(interval)
+
+**ラムダの let - 関数に名前を付ける**
+
+    let Recent = 
+       (interval:timespan) { requests | where timestamp > ago(interval) };
+    Recent(3h) | count
+
+    let us_date = (t:datetime){strcat(getmonth(t),'/',dayofmonth(t),'/',getyear(t)) }; 
+    requests | summarize count() by bin(timestamp, 1d) | project count_, day=us_date(timestamp)
+
+let 句は、[名前](#names)を表形式の結果、スカラー値、または関数にバインドします。この句はクエリのプレフィックスであり、バインドのスコープはそのクエリです(let では、セッションの後の方で使用するものに名前を付けることはできません)。
+
+**構文**
+
+    let name = scalar_constant_expression ; query
+
+    let name = query ; query
+
+    let name = (parameterName : type [, ...]) { plain_query }; query
+
+    let name = (parameterName : type [, ...]) { scalar_expression }; query
+
+* *type:* `bool`、`int`、`long`、`double`、`string`、`timespan`、`datetime`、`guid`、[`dynamic`](#dynamic-type)
+* *plain\_query:* 先頭に let 句が置かれていないクエリ。
+
+**例**
+
+    let rows(n:long) = range steps from 1 to n step 1;
+    rows(10) | ...
+
+
+自己結合:
+
+    let Recent = events | where timestamp > ago(7d);
+    Recent | where name contains "session_started" 
+    | project start = timestamp, session_id
+    | join (Recent 
+        | where name contains "session_ended" 
+        | project stop = timestamp, session_id)
+      on session_id
+    | extend duration = stop - start 
+
+### set 句
+
+set 句はクエリの持続時間に関するオプションを設定します。クエリ オプションは、クエリの実行方法とクエリが結果を返す方法を制御します。ブール型のフラグで設定するか (既定ではオフ)、整数値で設定します。クエリには任意の数の set ステートメントを含めることができます (含めなくてもかまいません)。set ステートメントは、プログラムの順序で後にあるテーブル式ステートメントのみに影響します。
+
+    set OptionName [= OptionValue] ; query
+
+
+|名前 | true に設定した場合の効果
+|---|---
+|querytrace| クエリによって生成されるデバッグ トレースのレベルを引き上げます。 
+|noexecute| クエリの実際の実行を無効にします (クエリの計画フェーズだけが実行されます)。 
+|perftrace| パフォーマンスのトレースを有効にします。 
+|notruncation| 結果セットの切り捨てを無効にします。 
+|truncationmaxsize| クエリの結果のデータ サイズ (バイト単位) を制限します。 
+|truncationmaxrecords| クエリの結果のレコード数を制限します。 
+|nostreaming |結果セットのストリーミングを無効にします。 
+
+**例**
+
+```
+
+    set querytrace;
+    requests | take 100
+```
 
 ## クエリおよび演算子
 
@@ -119,7 +201,7 @@ requests | count
 **ヒント**
 
 * 複数の列を削除するか複数の列の名前を変更する場合は、[`project`](#project-operator) を代わりに使います。
-* 長い式で使う短い名前を取得するためだけに `extend` を使うのは避けてください。`...| extend x = anonymous_user_id_from_client | ... func(x) ...` 
+* 長い式で使う短い名前を取得するためだけに `extend` を使うのは避けてください。`...| extend x = anonymous_user_id_from_client | ... func(x) ...`
 
     テーブルのネイティブ列のインデックスは既に作成されていますが、新しい名前により、インデックスが作成されていない追加の列が定義されるため、クエリの実行速度が低下する可能性があります。
 
@@ -155,7 +237,7 @@ traces
 次の要素が含まれるテーブル:
 
 * 照合キーを含め、2 つのテーブルそれぞれのすべての列に対応する列。名前が競合している場合は、右側の列の名前が自動的に変更されます。
-* 入力テーブル間でのすべての一致に対応する行。片方のテーブルから選択された、もう一方のテーブルに含まれる 1 つの行とすべての `on` フィールドの値が同じである行です。 
+* 入力テーブル間でのすべての一致に対応する行。片方のテーブルから選択された、もう一方のテーブルに含まれる 1 つの行とすべての `on` フィールドの値が同じである行です。
 
 * `Kind` が未指定の場合
 
@@ -179,7 +261,7 @@ traces
 
 パフォーマンスを最大限高めるためのヒントを示します。
 
-* 入力テーブルの行と列の数を減らすには、`join` の前に `where` と `project` を使います。 
+* 入力テーブルの行と列の数を減らすには、`join` の前に `where` と `project` を使います。
 * 一方のテーブルがもう一方よりも常に小さい場合は、それを結合の左側 (パイプされる側) として使います。
 * 一致した場合に結合する列は、同じ名前を持つ必要があります。いずれかのテーブルの列の名前を変更する必要がある場合は、project 演算子を使います。
 
@@ -200,53 +282,6 @@ traces
 
 ```
 
-### let 句
-
-**表形式の let - テーブルに名前を付ける**
-
-    let recentReqs = requests | where timestamp > ago(3d); 
-    recentReqs | count
-
-**スカラーの let - 値に名前を付ける**
-
-    let interval = 3d; 
-    requests | where timestamp > ago(interval)
-
-**ラムダの let - 関数に名前を付ける**
-
-    let Recent = 
-       (interval:timespan) { requests | where timestamp > ago(interval) };
-    Recent(3h) | count
-
-let 句は、[名前](#names)を表形式の結果、スカラー値、または関数にバインドします。この句はクエリのプレフィックスであり、バインドのスコープはそのクエリです(let では、セッションの後の方で使用するものに名前を付けることはできません)。
-
-**構文**
-
-    let name = scalar_constant_expression ; query
-
-    let name = query ; query
-
-    let name = (parameterName : type [, ...]) { plain_query }; query
-
-* *type:* `bool`、`int`、`long`、`double`、`string`、`timespan`、`datetime`、`guid`、[`dynamic`](#dynamic-type)
-* *plain\_query:* 先頭に let 句が置かれていないクエリ。
-
-**例**
-
-    let rows(n:long) = range steps from 1 to n step 1;
-    rows(10) | ...
-
-
-自己結合:
-
-    let Recent = events | where timestamp > ago(7d);
-    Recent | where name contains "session_started" 
-    | project start = timestamp, session_id
-    | join (Recent 
-        | where name contains "session_ended" 
-        | project stop = timestamp, session_id)
-      on session_id
-    | extend duration = stop - start 
 
 ### limit 演算子
 
@@ -254,7 +289,7 @@ let 句は、[名前](#names)を表形式の結果、スカラー値、または
 
 指定の数を上限に、入力テーブルから行を返します。どのレコードが返されるかはわかりません(特定のレコードを返すには、[`top`](#top-operator) を使います)。
 
-**エイリアス**: `take`
+**エイリアス** `take`
 
 **構文**
 
@@ -307,7 +342,7 @@ let 句は、[名前](#names)を表形式の結果、スカラー値、または
 
 **引数**
 
-* *ColumnName:* 結果では、指定された列内の配列が複数の行に展開されます。 
+* *ColumnName:* 結果では、指定された列内の配列が複数の行に展開されます。
 * *ArrayExpression:* 配列を生成する式。この形式を使用した場合は、新しい列が追加され、既存の列は保持されます。
 * *Name:* 新しい列の名前。
 * *Typename:* 展開された式を特定の型にキャストします。
@@ -322,7 +357,7 @@ let 句は、[名前](#names)を表形式の結果、スカラー値、または
 2 つのモードのプロパティ バッグの展開がサポートされています。
 
 * `bagexpansion=bag`: プロパティ バッグは、単一エントリのプロパティ バッグに展開されます。これが既定の展開です。
-* `bagexpansion=array`: プロパティ バッグは 2 要素 (`[`*key*`,`*value*`]`) の配列構造に展開されるため、キーと値への一貫したアクセスが可能です (プロパティ名での個別のカウントの集計など)。 
+* `bagexpansion=array`: プロパティ バッグは 2 要素 (`[`*key*`,`*value*`]`) の配列構造に展開されるため、キーと値への一貫したアクセスが可能です (プロパティ名での個別のカウントの集計など)。
 
 **例**
 
@@ -357,14 +392,14 @@ let 句は、[名前](#names)を表形式の結果、スカラー値、または
 **引数**
 
 * `T`: 入力テーブル。
-* `kind`: 
+* `kind`:
  * `simple` (既定値): `Match` の文字列はプレーン文字列です。
- * `relaxed`: テキストが列の型として解析されない場合、その列は null に設定され、解析が続行されます。 
+ * `relaxed`: テキストが列の型として解析されない場合、その列は null に設定され、解析が続行されます。
  * `regex`: `Match` の文字列は正規表現です。
 * `Text`: 文字列に評価されるか、文字列に変換できる列またはその他の式。
 * *Match:* 文字列の次の部分を照合し、破棄します。
 * *Column:* 文字列の次の部分をこの列に割り当てます。この列が存在しない場合は作成されます。
-* *Type:* 文字列の次の部分を指定の型 (int、date、double など) として解析します。 
+* *Type:* 文字列の次の部分を指定の型 (int、date、double など) として解析します。
 
 
 **戻り値**
@@ -475,7 +510,7 @@ Scheduler | 16 | 02/17/2016 08:41:00 | 02/17/2016 08:41 | 2016-02-17T08:40:00Z
 
 * *T:* 入力テーブル。
 * *ColumnName:* 出力に表示される列の名前。*Expression* を指定しない場合は、この名前の列が入力に存在する必要があります。[名前](#names)は、大文字と小文字が区別されます。また、名前には、アルファベット、数字、または "\_" 文字を使用できます。キーワードまたは名前を他の文字で囲む場合は、`['...']` または `["..."]` を使います。
-* *Expression:* 入力列を参照する、省略可能なスカラー式。 
+* *Expression:* 入力列を参照する、省略可能なスカラー式。
 
     入力内の既存の列と同じ名前を持つ新しい計算列を返すことは、問題ありません。
 
@@ -485,7 +520,7 @@ Scheduler | 16 | 02/17/2016 08:41:00 | 02/17/2016 08:41 | 2016-02-17T08:40:00Z
 
 **例**
 
-次の例は、`project` 演算子を使って実行できる複数の種類の操作を示しています。入力テーブル `T` には、`int` 型の列が 3 つあります (`A`、`B`、`C`)。
+次の例は、`project` 演算子を使って実行できる何種類かの操作を示しています。入力テーブル `T` には、`int` 型の列が 3 つあります (`A`、`B`、`C`)。
 
 ```AIQL
 T
@@ -527,7 +562,7 @@ T
 * *ColumnName:* 出力テーブル内の 1 つの列の名前。
 * *Start:* 出力の最小値。
 * *Stop:* 出力で生成される最高値 (*step* でこの値をステップオーバーする場合は、限度内の最高値)。
-* *Step:* 2 つの連続する値の差異。 
+* *Step:* 2 つの連続する値の差異。
 
 この引数は、数値、日付、または期間の値である必要があります。テーブルの列を参照することはできません(入力テーブルに基づいて範囲を計算する場合は、[range *関数*](#range)を使います。場合によっては、[mvexpand 演算子](#mvexpand-operator)も組み合わせて使います)。
 
@@ -580,7 +615,7 @@ range timestamp from ago(4h) to now() step 1m
 **引数**
 
 * *ColumnName:* 調べる列。文字列型である必要があります。
-* *Threshold:* 範囲 {0..1} 内の値。既定値は 0.001 です。入力のサイズが大きい場合は、しきい値を小さくする必要があります。 
+* *Threshold:* 範囲 {0..1} 内の値。既定値は 0.001 です。入力のサイズが大きい場合は、しきい値を小さくする必要があります。
 
 **戻り値**
 
@@ -619,7 +654,7 @@ render では、テーブルの表示方法をプレゼンテーション層に�
 
 入力テーブルの行を 1 つ以上の列の順序で並べ替えます。
 
-**エイリアス**: `order`
+**エイリアス** `order`
 
 **構文**
 
@@ -653,7 +688,7 @@ Traces
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-各間隔 ([0,10.0]、\[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
+各間隔 ([0,10.0]、[10.0,20.0] など) で価格を持つ項目の数を示すテーブル。この例では、数の列と価格範囲の列があります。他のすべての入力列は無視されます。
 
 
 **構文**
@@ -667,7 +702,7 @@ Traces
 
 * *Column:* 結果列の名前 (省略可能)。既定値は式から派生した名前です。[名前](#names)は、大文字と小文字が区別されます。また、名前には、アルファベット、数字、または "\_" 文字を使用できます。キーワードまたは名前を他の文字で囲む場合は、`['...']` または `["..."]` を使います。
 * *Aggregation:* 引数として列名を指定して、`count()` や `avg()` などの集計関数を呼び出します。「[集計](#aggregations)」を参照してください。
-* *GroupExpression:* 列に対する式です。個別の値のセットを示します。通常は、限られた値のセットが既に指定されている列名か、引数として数値列または時間列が指定されている `bin()` になります。 
+* *GroupExpression:* 列に対する式です。個別の値のセットを示します。通常は、限られた値のセットが既に指定されている列名か、引数として数値列または時間列が指定されている `bin()` になります。
 
 `bin()` を使用せずに数値式または時間式を指定した場合、Analytics は自動的に `1h` (時間の場合) または `1.0` (数値の場合) の間隔でその式を適用します。
 
@@ -731,7 +766,7 @@ Traces
 **引数**
 
 * N:int - 返す行または次のレベルに渡す行の数。3 レベルのクエリ (N が 5、3、3) では、行の合計数は 45 になります。
-* COLUMN - 集計のためにグループ化する列。 
+* COLUMN - 集計のためにグループ化する列。
 * AGGREGATION - 行の各グループに適用する[集計関数](#aggregations)。これらの集計の結果により、表示される上位のグループが決まります。
 
 
@@ -753,7 +788,7 @@ Traces
  *  テーブルの名前 (`requests` など)、または [let 句](#let-clause)で定義されたテーブルの名前
  *  クエリ式 (`(requests | where success=="True")` など)
  *  ワイルドカードで指定されたテーブルのセット。たとえば、`e*` は、"exceptions" テーブルと共に、前に示した let 句で定義された、名前が "e" で始まるすべてのテーブルの和集合を形成します。
-* `kind`: 
+* `kind`:
  * `inner` - 結果には、すべての入力テーブルに共通する列のサブセットが含まれます。
  * `outer` - 結果には、入力のいずれかに存在するすべての列が含まれます。入力行で定義されていなかったセルは `null` に設定されます。
 * `withsource=`*ColumnName:* これを指定した場合は、各行の基になっているソース テーブルを示す値が格納された列 (名前は *ColumnName*) が出力に含まれます。
@@ -799,7 +834,7 @@ exceptions
 
 述語の条件を満たす行のサブセットにテーブルをフィルター処理します。
 
-**エイリアス**: `filter`
+**エイリアス** `filter`
 
 **構文**
 
@@ -1183,7 +1218,7 @@ Analytics では、次のようなイベントのグループがあるとしま�
 
 重要なポイントをいくつか以下に示します。
 
-* 推定エラーの限度は、要求されたパーセンタイルの値によって異なります。[0..100] の範囲の両端にあるパーセンタイル 0 と 100 が分布値の正確な最小値および最大値になっているのが最適な精度です。精度はスケールの中央に向かって徐々に低下します。中央値が最低で、1% が上限となります。 
+* 推定エラーの限度は、要求されたパーセンタイルの値によって異なります。[0..100] の範囲の両端にあるパーセンタイル 0 と 100 が分布値の正確な最小値および最大値になっているのが最適な精度です。精度はスケールの中央に向かって徐々に低下します。中央値が最低で、1% が上限となります。
 * エラー限度は、値ではなく、ランクで観測されます。たとえば、percentile(X, 50) の場合は Xm の値が返されます。推定では、X の値の 49% 以上 51% 以下が Xm 未満になることが保証されます。Xm と X の実際の中央値との差には、理論上の制限はありません。
 
 ### stdev
@@ -1216,7 +1251,7 @@ Analytics では、次のようなイベントのグループがあるとしま�
 | `bool` | `boolean` | `System.Boolean` |
 | `datetime`| `date` | `System.DateTime` |
 | `dynamic` | | `System.Object` |
-| `guid` | `uuid`, `uniqueid` | `System.Guid` |
+| `guid` | `uuid`、`uniqueid` | `System.Guid` |
 | `int` | | `System.Int32` |
 | `long` | | `System.Int64` |
 | `double` | `real` | `System.Double` |
@@ -1431,11 +1466,11 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 | / | 除算 |
 | % | 剰余 |
 ||
-|`<` |小さい 
-|`<=`|小さいか等しい 
-|`>` |大きい 
-|`>=`|大きいか等しい 
-|`<>`|等しくない 
+|`<` |小さい
+|`<=`|小さいか等しい
+|`>` |大きい
+|`>=`|大きいか等しい
+|`<>`|等しくない
 |`!=`|等しくない
 
 
@@ -1458,7 +1493,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 値を切り捨てて、指定された bin サイズの倍数である整数にします。[`summarize by`](#summarize-operator) クエリでよく使用されます。値が分散している場合に、特定の値ごとの小さなセットにグループ化されます。
 
-エイリアス: `floor`。
+エイリアス `floor`。
 
 **構文**
 
@@ -1467,8 +1502,8 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 **引数**
 
-* *value:* 数値、日付、または期間。 
-* *roundTo:* "bin のサイズ"。*value* を分割する数値、日付、または期間です。 
+* *value:* 数値、日付、または期間。
+* *roundTo:* "bin のサイズ"。*value* を分割する数値、日付、または期間です。
 
 **戻り値**
 
@@ -1539,7 +1574,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 **戻り値**
 
 * `sqrt(x) * sqrt(x) == x` のような正の数値。
-* 引数が負であるか、`real` 値に変換できない場合は `null`。 
+* 引数が負であるか、`real` 値に変換できない場合は `null`。
 
 
 
@@ -1794,7 +1829,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 ### todatetime
 
-エイリアス: `datetime()`。
+エイリアス `datetime()`。
 
      todatetime("2016-03-28")
      todatetime("03/28/2016")
@@ -1812,7 +1847,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 ### totimespan
 
-エイリアス: `timespan()`。
+エイリアス `timespan()`。
 
     totimespan("21d")
     totimespan("21h")
@@ -1898,7 +1933,7 @@ h"hello"
 
 * *text:* 文字列。
 * *search:* *text* 内で照合するプレーン文字列または正規表現。
-* *kind:* `"normal"|"regex"`。既定では `normal`。 
+* *kind:* `"normal"|"regex"`。既定では `normal`。
 
 **戻り値**
 
@@ -1933,7 +1968,7 @@ h"hello"
 * *regex:* [正規表現](#regular-expressions)。
 * *captureGroup:* 抽出するキャプチャ グループを示す、正の `int` 定数。0 は一致全体、1 は正規表現の最初のかっこで囲まれた部分と一致した値、2 以上は後続のかっこを示します。
 * *text:* 検索対象の `string`。
-* *typeLiteral:* オプションの type リテラル (例: `typeof(long)`)。指定した場合、抽出された部分文字列はこの型に変換されます。 
+* *typeLiteral:* オプションの type リテラル (例: `typeof(long)`)。指定した場合、抽出された部分文字列はこの型に変換されます。
 
 **戻り値**
 
@@ -2006,7 +2041,7 @@ extract("^.{2,2}(.{4,4})", 1, Text)
 
 **引数**
 
-* *regex:* *text* の検索に使用する[正規表現](https://github.com/google/re2/wiki/Syntax)。複数のキャプチャ グループをかっこ内に含めることができます。 
+* *regex:* *text* の検索に使用する[正規表現](https://github.com/google/re2/wiki/Syntax)。複数のキャプチャ グループをかっこ内に含めることができます。
 * *rewrite:* *matchingRegex* によるすべての一致を置き換える正規表現。完全一致を参照する場合は `\0`、最初のキャプチャ グループの場合は `\1`、後続のキャプチャ グループの場合は `\2` などを使用します。
 * *text:* 文字列。
 
@@ -2051,7 +2086,7 @@ range x from 1 to 5 step 1
 
 * *source*: 指定された区切り記号に従って分割されるソース文字列。
 * *delimiter*: ソース文字列を分割するために使用される区切り記号。
-* *requestedIndex*: 0 から始まるインデックス `int` (省略可能)。指定した場合、返される文字列配列には、要求した部分文字列が含まれます (存在する場合)。 
+* *requestedIndex*: 0 から始まるインデックス `int` (省略可能)。指定した場合、返される文字列配列には、要求した部分文字列が含まれます (存在する場合)。
 
 **戻り値**
 
@@ -2096,7 +2131,7 @@ split("aabbcc", "bb")         // ["aa","cc"]
 
 * *source:* 部分文字列の取得元となるソース文字列。
 * *startingIndex:* 要求する部分文字列の、0 から始まる開始文字位置。
-* *length:* 要求する部分文字列の文字数を指定するために使用できる省略可能なパラメーター。 
+* *length:* 要求する部分文字列の文字数を指定するために使用できる省略可能なパラメーター。
 
 **戻り値**
 
@@ -2216,7 +2251,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
 動的リテラルを作成するには、次のように、JSON 文字列引数を指定した `parsejson` (エイリアスは `todynamic`) を使用します。
 
 * `parsejson('[43, 21, 65]')` - 数値の配列
-* `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')` 
+* `parsejson('{"name":"Alan", "age":21, "address":{"street":432,"postcode":"JLK32P"}}')`
 * `parsejson('21')` - 数値を示す、動的な型の単一の値
 * `parsejson('"21"')` - 文字列を示す、動的な型の単一の値
 
@@ -2387,7 +2422,7 @@ T
 
 **引数**
 
-* *start:* 結果として生成される配列内の最初の要素の値。 
+* *start:* 結果として生成される配列内の最初の要素の値。
 * *stop:* 結果として生成される配列内の最後の要素の値。または、生成される配列内の最後の要素より大きく、*start* からの *step* の倍数である整数に含まれる最小値。
 * *step:* 配列の連続する 2 つの要素の差異。
 
@@ -2458,4 +2493,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

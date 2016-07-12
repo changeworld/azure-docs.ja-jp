@@ -20,20 +20,20 @@ Azure での IP アドレスは、動的と予約済みという 2 つのカテ�
 
 IP アドレスが変更されないようにするには、IP アドレスを予約します。予約済み IP は VIP としてのみ使用できるため、リソースがシャット ダウンしたり割り当てが解除されたりした場合でも、クラウド サービスの IP アドレスは変わりません。さらに、VIP として使用されている既存の動的 IP を、予約済み IP アドレスに変換できます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-network-ip-addresses-overview-arm.md)。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](virtual-network-ip-addresses-overview-arm.md)方法について説明します。
 
 Azure における [IP アドレス](virtual-network-ip-addresses-overview-classic.md)の動作を理解しておく必要があります。
 
 ## 予約済み IP が必要になる場合
-- **IP アドレスをサブスクリプションで確実に予約したい場合**。どのような状況でもサブスクリプションから解放されない IP アドレスを予約する必要がある場合は、予約済みパブリック IP を使用します。  
+- **IP アドレスをサブスクリプションで確実に予約したい場合**。どのような状況でもサブスクリプションから解放されない IP アドレスを予約する必要がある場合は、予約済みパブリック IP を使用します。
 - **クラウド サービスまたは VM が停止したり割り当て解除された場合でも、IP アドレスを保持したい場合**。クラウド サービスの VM が停止したり割り当て解除された場合でも、変更されない IP アドレスによるサービスへのアクセスを可能にしたい場合です。
 - **Azure の出力トラフィックに予測可能な IP アドレスを使用したい場合**。オンプレミスのファイアウォールが、特定の IP アドレスからのトラフィックのみを許可するよう構成することができます。IP を予約すると、発信元 IP アドレスがわかるため、IP の変更に合わせてファイアウォール ルールを更新する必要がなくなります。
 
 ## FAQ
-1. 予約済み IP はすべての Azure サービスに使用できますか。  
+1. 予約済み IP はすべての Azure サービスに使用できますか。
   - 予約済み IP は、VIP を使用して公開される VM およびクラウド サービスのインスタンス ロールに対してのみ使用できます。
-1. 予約済み IP は、いくつ使用できますか。  
-  - 現時点では、すべての Azure サブスクリプションで 20 個の予約済み IP を使用できるようになっています。しかし、予約済み IP の追加を要求することができます。詳細については、[サブスクリプションとサービスの制限](../azure-subscription-service-limits/)のページを参照してください。
+1. 予約済み IP は、いくつ使用できますか。
+  - 現時点では、すべての Azure サブスクリプションで 20 個の予約済み IP を使用できるようになっています。しかし、予約済み IP の追加を要求することができます。詳細については、[サブスクリプションとサービスの制限](../azure-subscription-service-limits.md)のページを参照してください。
 1. 予約済み IP に料金はかかりますか。
   - 料金については、[予約済み IP アドレスの価格詳細](http://go.microsoft.com/fwlink/?LinkID=398482)に関するページを参照してください。
 1. どうやって IP アドレスを予約するのですか。
@@ -84,7 +84,7 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 	| Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
 	| New-AzureVM -ServiceName TestService -ReservedIPName MyReservedIP -Location "Central US"
 
->[AZURE.NOTE] クラウド サービスに使用する予約済み IP を作成する場合、着信通信用に *VIP:&lt;port number>* を使用して VM を参照する必要があります。IP を予約しても、VM に直接接続できないためです。予約済み IP は、VM がデプロイされたクラウド サービスに割り当てられます。IP を使用して VM に直接接続するには、インスタンスレベル パブリック IP を構成する必要があります。インスタンスレベル パブリック IP とは、VM に直接割り当てられているパブリック IP (ILPIP と呼ばれる) の一種です。この IP は予約できません。詳細については、[インスタンスレベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) を参照してください。
+>[AZURE.NOTE] クラウド サービスに使用する予約済み IP を作成する場合、着信通信用に *VIP:&lt;port number>* を使用して VM を参照する必要があります。IP を予約しても、VM に直接接続できないためです。予約済み IP は、VM がデプロイされたクラウド サービスに割り当てられます。IP を使用して VM に直接接続するには、インスタンスレベル パブリック IP を構成する必要があります。インスタンスレベル パブリック IP とは、VM に直接割り当てられているパブリック IP (ILPIP と呼ばれる) の一種です。この IP は予約できません。詳細については、[インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) を参照してください。
 
 ## 予約済み IP を実行中のデプロイから削除する方法
 上記のスクリプトで作成した新しいサービスに追加された予約済み IP を削除するには、次の PowerShell コマンドを実行します。
@@ -124,10 +124,10 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 
 ## 次のステップ
 
-- クラシック デプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md)のしくみを理解します。
+- クラシック デプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md)の仕組みを理解します。
 
-- [予約済みプライベート IP アドレス](../virtual-networks-reserved-private-ip)について理解する。
+- [予約済みプライベート IP アドレス](virtual-networks-reserved-private-ip.md)について理解する。
 
-- [インスタンス レベル パブリック IP (ILPIP) アドレス](../virtual-networks-instance-level-public-ip)について理解する。
+- [インスタンス レベル パブリック IP (ILPIP) アドレス](virtual-networks-instance-level-public-ip.md)について理解する。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

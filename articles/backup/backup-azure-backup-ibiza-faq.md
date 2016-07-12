@@ -14,7 +14,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="03/30/2016"
+	 ms.date="07/01/2016"
 	 ms.author="trinadhk; markgal; jimpark;"/>
 
 # Azure Backup サービスのパブリック プレビュー リリース - FAQ
@@ -43,4 +43,4 @@
 
 **Q1.Azure VM に対する ARM サポートに制限はありますか。** <br/> A1.ARM 用の PowerShell コマンドレットは、現在、使用できません。Azure ポータル UI を使用して、リソース グループにリソースを追加する必要があります。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="06/24/2016"
 	ms.author="robmcm"/>
 
 # Java からファイル ストレージを使用する方法
@@ -216,4 +216,4 @@ CloudFileShare オブジェクトで **deleteIfExists** メソッドを呼び出
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

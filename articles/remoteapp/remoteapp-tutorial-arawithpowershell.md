@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="05/05/2016"
+   ms.date="06/27/2016"
    ms.author="elizapo"/>
 
 
@@ -36,8 +36,8 @@
 
 1.	[Azure PowerShell コマンドレット](http://go.microsoft.com/?linkid=9811175)をダウンロードしてインストールします。
 2.	Microsoft Azure PowerShell を起動します。
-3.	**Add-AzureAccount** を実行して、Azure サブスクリプションに対して認証します。メッセージが表示されたら、Azure ポータルへのサインインに使用するのと同じユーザー名とパスワードを入力します。  
-4.	**Get-AzureSubscription** を実行して、自分のユーザー アカウントに関連付けられたサブスクリプションを表示します。 
+3.	**Add-AzureAccount** を実行して、Azure サブスクリプションに対して認証します。メッセージが表示されたら、Azure ポータルへのサインインに使用するのと同じユーザー名とパスワードを入力します。
+4.	**Get-AzureSubscription** を実行して、自分のユーザー アカウントに関連付けられたサブスクリプションを表示します。
 5.	**Select-AzureSubscription** を実行して、PowerShell コンソールで使用するサブスクリプション名または ID を指定します。
 
 これで、Azure PowerShell コンソールが構成され、使用できるようになりました。Azure PowerShell コンソールを起動するたびに、2 ～ 5 の手順を繰り返してください。
@@ -111,4 +111,4 @@ RemoteApp テンプレート イメージのコマンドレット:
 - Get-AzureRemoteAppOperationResult
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

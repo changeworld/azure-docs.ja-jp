@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/25/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Azure AD ドメイン サービス *(プレビュー)* - Azure 仮想ネットワークの DNS 設定を更新する
@@ -51,4 +51,4 @@ Azure AD ドメイン サービスを有効にした仮想ネットワークの 
 ## タスク 5 - Azure AD ドメイン サービスとのパスワード同期を有効にする
 次に、[Azure AD ドメイン サービスとのパスワード同期を有効](active-directory-ds-getting-started-password-sync.md)にします。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

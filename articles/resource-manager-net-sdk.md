@@ -19,23 +19,28 @@
 # Azure Resource Manager SDK for .NET  
 Azure Resource Manager の SDK は、複数の言語とプラットフォームで利用できます。これらの言語実装はそれぞれ、エコシステム パッケージ マネージャーと GitHub を介して入手できます。
 
-これらの SDK のコードはそれぞれ、[Azure REST ベースの API 仕様](https://github.com/azure/azure-rest-api-specs)から生成されます。これらの仕様はオープン ソースであり、Swagger v2 仕様に基づいています。SDK コードは、[AutoRest](https://github.com/azure/autorest) と呼ばれるオープン ソース プロジェクトを使用して生成されたコードです。AutoRest では、これらの REST ベースの API 仕様が、複数の言語でクライアント ライブラリに変換されます。SDK で生成されたコードに改善する箇所がある場合、広範に適用されている API 仕様形式に基づく、SDK を作成するためのツール全体が自由に使用できます。
+これらの SDK のコードはそれぞれ、[Azure REST ベースの API 仕様](https://github.com/azure/azure-rest-api-specs)から生成されます。これらの仕様はオープン ソースであり、Swagger 2.0 仕様に基づいています。SDK コードは、[AutoRest](https://github.com/azure/autorest) と呼ばれるオープン ソース プロジェクトを使用して生成されています。AutoRest では、これらの REST ベースの API 仕様が、複数の言語でクライアント ライブラリに変換されます。SDK で生成されたコードに改善する箇所がある場合、広範に適用されている API 仕様形式に基づく、SDK を作成するためのツール全体が自由に使用できます。
 
-[Azure SDK for .NET](https://azure.microsoft.com/downloads/) は、Azure Resource Manager によって公開された API の大半を呼び出す際に役立つ、NuGet パッケージのセットとして提供されています。必要な機能が SDK で公開されていない場合は、バックグラウンドで SDK と通常の ARM REST API の呼び出しを簡単に組み合わせることができます。
+[Azure SDK for .NET](https://azure.microsoft.com/downloads/) に含まれている一連の NuGet パッケージを使用すると、Azure Resource Manager API の大半を呼び出すことができます。必要な機能が SDK にない場合は、バックグラウンドで SDK と通常の Resource Manager REST API の呼び出しを簡単に組み合わせることができます。
 
-このドキュメントは、Azure SDK for .NET、Azure ARM API、または Visual Studio を包括的に説明するものではなく、これらを使い始めるための入門編的な内容になっています。
+この記事の目的は、Azure SDK for .NET、Azure Resource Manager API、Visual Studio についての情報をあらゆる角度から網羅することではありません。読者がすぐに取り組めることを重視して執筆しています。
 
-以降で使用するすべてのコード スニペットの引用元である完全なサンプル プロジェクトは、[こちら](https://github.com/dx-ted-emea/Azure-Resource-Manager-Documentation/tree/master/ARM/SDKs/Samples/Net)からダウンロードできます。
+以降のコード スニペットはすべて、[ダウンロード可能なサンプル プロジェクト](https://github.com/dx-ted-emea/Azure-Resource-Manager-Documentation/tree/master/ARM/SDKs/Samples/Net)からの抜粋です。
 
 ## NuGet パッケージのインストール
 
-このトピックの例は、Azure SDK for .NET の他に 2 つの NuGet パッケージを必要とします。Visual Studio でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択してください。
+この記事の例は、Azure SDK for .NET の他に 2 つの NuGet パッケージを必要とします。そのインストール手順は次のとおりです。
 
-1. **Microsoft.IdentityModel.Clients.ActiveDirectory** を探し、最新の安定したバージョンのパッケージをインストールします。
-2. **Microsoft.Azure.Management.ResourceManager** を探し、**[リリース前のパッケージを含める]** を選択します。最新のプレビュー バージョン (1.1.2-preview など) をインストールしてください。
+1. Visual Studio でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+2. **Microsoft.IdentityModel.Clients.ActiveDirectory** を探し、最新の安定したバージョンのパッケージをインストールします。
+3. **Microsoft.Azure.Management.ResourceManager** を探し、**[リリース前のパッケージを含める]** を選択します。最新のプレビュー バージョン (1.1.2-preview など) をインストールしてください。
 
 ## 認証
-Resource Manager の認証は、Azure Active Directory (AD) によって処理されます。任意の API に接続するには、最初に Azure AD で認証を行って認証トークンを受信する必要があります。この認証トークンは、すべての要求に対して渡すことができます。このトークンを取得するには、まず Azure AD アプリケーションと、ログインに使用するサービス プリンシパルを作成する必要があります。具体的な方法については、「[リソースにアクセスできる Active Directory アプリケーションを Azure PowerShell で作成する](resource-group-authenticate-service-principal.md)」、「[リソースにアクセスできる Active Directory アプリケーションを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md)」、「[リソースにアクセスできる Active Directory アプリケーションをポータルで作成する](resource-group-create-service-principal-portal.md)」のいずれかの手順に従ってください。
+Resource Manager の認証は、Azure Active Directory (Azure AD) によって管理されます。API に接続するには、最初に Azure AD で認証を行ってアクセス トークンを受け取る必要があります。すべての要求には、このアクセス トークンを渡すことができます。このトークンを取得するには、まず Azure AD アプリケーションと、サインインに使用するサービス プリンシパルを作成する必要があります。詳しい手順については、次のいずれかの記事を参照してください。
+
+- [リソースにアクセスできる Active Directory アプリケーションを Azure PowerShell で作成する](resource-group-authenticate-service-principal.md)
+- [リソースにアクセスできる Active Directory アプリケーションを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md)
+- [リソースにアクセスできる Active Directory アプリケーションを Azure ポータルで作成する](resource-group-create-service-principal-portal.md)
 
 サービス プリンシパルを作成すると、次の項目が準備できたことになります。
 
@@ -43,15 +48,15 @@ Resource Manager の認証は、Azure Active Directory (AD) によって処理�
 - クライアント シークレットまたはパスワード (文字列)
 - テナント ID (GUID) またはドメイン名 (文字列)
 
-### コードから AccessToken を受け取る
-認証トークンは、次のコード行を使用して簡単に取得できます。このコード行では、Azure AD テナント ID、Azure AD アプリケーション クライアント ID、および Azure AD アプリケーション クライアント シークレットのみを渡します。トークンは、既定で 1 時間有効なため、いくつかの要求のために取っておきます。
+### アクセス トークンを受け取るためのコード
+アクセス トークンは、以下のコードに引数として、Azure AD テナント ID、Azure AD アプリケーション クライアント ID、Azure AD アプリケーション クライアント シークレットを渡すことによって取得できます。取得したトークンは、複数の要求で使用できるように保存します。既定ではトークンが 1 時間有効です。
 
 ```csharp
 private static async Task<AuthenticationResult> GetAccessTokenAsync(string tenantId, string clientId, string clientSecret)
 {
-    Console.WriteLine("Aquiring Access Token from Azure AD");
+    Console.WriteLine("Acquiring Access Token from Azure AD");
     AuthenticationContext authContext = new AuthenticationContext
-        ("https://login.windows.net/" /* AAD URI */
+        ("https://login.windows.net/" /* Azure AD URI */
             + $"{tenantId}" /* Tenant ID */);
 
     var credential = new ClientCredential(clientId, clientSecret);
@@ -63,23 +68,23 @@ private static async Task<AuthenticationResult> GetAccessTokenAsync(string tenan
 }
 ```
 
-ログインには、テナント ID を使わずに、次のように Active Directory ドメインを使用することができます。この方法を使用する場合、テナント ID の代わりにドメイン名を受け取るようにメソッドのシグネチャを変更する必要があります。
+サインインには、テナント ID を使わずに、次のコードのように Azure AD ドメインを使用することができます。この方法を使用する場合、テナント ID の代わりにドメイン名を受け取るようにメソッドのシグネチャを変更する必要があります。
 
 ```csharp
 AuthenticationContext authContext = new AuthenticationContext
-    ("https://login.windows.net/" /* AAD URI */
+    ("https://login.windows.net/" /* Azure AD URI */
     + $"{domain}.onmicrosoft.com");
 ```
 
-証明書を使って認証を行う Active Directory アプリのアクセス トークンは、次のようにして取得できます。
+証明書を使って認証を行う Azure AD アプリケーションのアクセス トークンは、次のコードで取得できます。
 
 ```csharp
 private static async Task<AuthenticationResult> GetAccessTokenFromCertAsync(string tenantId, string clientId, string certName)
 {
-    Console.WriteLine("Aquiring Access Token from Azure AD");
+    Console.WriteLine("Acquiring Access Token from Azure AD");
     AuthenticationContext authContext = new AuthenticationContext
-        ("https://login.windows.net/" /* AAD URI */
-        + $"{tenantId}" /* Tenant ID or AAD domain */);
+        ("https://login.windows.net/" /* Azure AD URI */
+        + $"{tenantId}" /* Tenant ID or Azure AD domain */);
 
     X509Certificate2 cert = null;
     X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
@@ -106,9 +111,9 @@ private static async Task<AuthenticationResult> GetAccessTokenFromCertAsync(stri
 ```
 
 ### 認証したアプリケーションに関連付けられた Azure サブスクリプションを照会する
-最初に行うことの 1 つとして、認証したアプリケーションに関連付けられている Azure サブスクリプションを照会します。対象となるサブスクリプションのサブスクリプション ID は、今後実行する各 API 呼び出しに渡す必要があります。
+認証したアプリケーションに関連付けられている Azure サブスクリプションを照会してみましょう。対象となるサブスクリプションのサブスクリプション ID は、今後実行する各 API 呼び出しに渡す必要があります。
 
-次のサンプル コードでは、Azure SDK for .NET の機能を使わずに、REST API を使用して直接 Azure API を照会します。
+次のサンプル コードでは、REST API を使用して直接 Azure API を照会します。つまり、Azure SDK for .NET の機能は一切使用していません。
 
 ```csharp
 async private static Task<List<string>> GetSubscriptionsAsync(string token)
@@ -138,25 +143,25 @@ async private static Task<List<string>> GetSubscriptionsAsync(string token)
 }
 ```
 
-ここでは、Azure から JSON 応答を取得することに注目してください。これは、その後、ID の一覧を返すためにサブスクリプション ID を抽出します。このドキュメントでこの後に続く Azure Resource Manager API の呼び出しでは 1 つの Azure サブスクリプション ID を使用します。そのため、アプリケーションが複数のサブスクリプションに関連付けられている場合は、その中から適切なサブスクリプションを選択し、パラメーターとして渡してください。
+Azure からは、JSON 形式の応答が返されることに注意してください。この応答からサブスクリプション ID を抽出することによって、一連の ID を取得することになります。以降この記事で行う Azure Resource Manager API 呼び出しはすべて、単一の Azure サブスクリプション ID を使用しています。そのため、アプリケーションが複数のサブスクリプションに関連付けられている場合は、適切なサブスクリプションを 1 つ選び、パラメーターとして渡したうえで後続の手順を実行してください。
 
-これ以降、Azure API に対して行うすべての呼び出しでは Azure SDK for .NET を使用するため、コードは若干異なって見えます。
+ここからは、Azure API に対して行うすべての呼び出しで Azure SDK for .NET を使用します。そのためコードの体裁が若干異なります。
 
 ### TokenCredentials オブジェクトとしてトークンをラップする
-以降の API 呼び出しすべてで、"TokenCredentials" オブジェクト形式の Azure AD から受け取ったトークンが必要になります。このようなオブジェクトは、未処理のトークンをパラメーターとしてクラスのコンストラクターに渡すだけで簡単に作成できます。
+以降の API 呼び出しすべてで、TokenCredentials オブジェクト形式の Azure AD から受け取ったトークンが必要になります。このようなオブジェクトは、未処理のトークンをパラメーターとしてクラスのコンストラクターに渡すことで簡単に作成できます。
 
 ```csharp
 var credentials = new TokenCredentials(token);
 ```
 
-所有している Resource Manager NuGet パッケージが以前のバージョン (名前が **Microsoft.Azure.Management.Resources**) である場合、次のコードを使用する必要があります。
+所有している Resource Manager NuGet パッケージが以前のバージョン (名前が Microsoft.Azure.Management.Resources) である場合、次のコードを使用する必要があります。
 
 ```csharp
 var credentials = new TokenCloudCredentials(subscriptionId, token.AccessToken);
 ```
 
 ## リソース グループの作成
-Azure では常にリソース グループが中心になるため、リソース グループを作成することから始めましょう。一般的なリソースおよびリソース グループは *ResourceManagementClient* によって処理されます。ここで使用するより特化した管理クライアントのように、作業対象のサブスクリプションを識別するには、サブスクリプション ID の他に資格情報を提供する必要があります。
+Azure であらゆる物事の中心となるのはリソース グループです。そこでまず、リソース グループを作成してみましょう。一般的なリソースとリソース グループは、*ResourceManagementClient* によって管理されます。この後、より目的に特化した管理クライアントを使用しますが、それらの管理クライアントにはいずれも、作業対象のサブスクリプションを識別するために資格情報とサブスクリプション ID を指定する必要があります。
 
 ```csharp
 private static async Task<ResourceGroup> CreateResourceGroupAsync(TokenCredentials credentials, string subscriptionId, string resourceGroup, string location)
@@ -172,38 +177,38 @@ private static async Task<ResourceGroup> CreateResourceGroupAsync(TokenCredentia
 ```
 
 ## 手動またはテンプレートの使用によるリソースの作成
-Azure Resource Manager API を操作する方法はいくつかあり、そのうちの主な 2 つの方法を次に示します。
+Azure Resource Manager API を操作する方法はいくつかありますが、そのうちの主な 2 つの方法を次に示します。
 
 * 手動による方法 (特定のリソース プロバイダーを手動で呼び出す)
-* Azure Resource Manager テンプレート (ARM テンプレート) を使用する方法
+* Azure Resource Manager テンプレートを使用する方法
 
-ARM テンプレートを使用することには、次の利点があります。
+Resource Manager テンプレートを使用する利点は次のとおりです。
 
 * 最終的な結果をどのようにしたいかを宣言によって指定します。最終的な結果をどのように出すかではありません。
-* デプロイの並列実行を手動で処理する必要はありません。ARM によって自動的に処理されます。
-* ARM テンプレートをデプロイするために C# または他の言語を学習する必要はありません。任意の言語を使用してテンプレート化されたデプロイを開始できます。
-* テンプレートで使用されているドメイン固有言語 (DSL) は JSON を使用して作成されているため、JSON の使用経験があればだれでも簡単に理解できます。
+* デプロイの並列実行を手動で管理する必要はありません。Resource Manager によって自動的に管理されます。
+* Resource Manager テンプレートをデプロイするために C# などの言語を学習する必要はありません。任意の言語を使用してテンプレート化されたデプロイを開始できます。
+* テンプレートで使用されているドメイン固有言語 (DSL) は JSON で構築されています。JSON の使用経験があればだれでも簡単に理解することができます。
 
-テンプレートにはこれら利点がありますが、まずは手動で API を呼び出す方法について説明します。
+このようにテンプレートにはさまざまな利点がありますが、まずは手動で API を呼び出す方法について説明します。
 
 ### 仮想マシンを最初から作成する
-ここまでに、サブスクリプションとリソース グループを準備できました。仮想マシンをデプロイする場合は、仮想マシンが実際にどのような要素から構成されているかを確認する必要があります。次に示すように、仮想マシンの構成要素は数多くあることがわかります。
+サブスクリプションとリソース グループは既に準備が整っています。仮想マシン (VM) をデプロイするには、その成り立ちをよく理解しておく必要があります。
 
 * 1 つ以上のストレージ アカウント (永続ディスクの格納用)
-* 1 つ以上のパブリック IP アドレス (PIP) (インターネットからのアクセス用、DNS 名を含む)
-* 1 つ以上の仮想ネットワーク (VNET) (リソース間の内部通信用)
+* 1 つ以上のパブリック IP アドレス (DNS 名を含む) (Azure 内のリソースにインターネットからアクセスできるようにするため)
+* 1 つ以上の仮想ネットワーク (リソース間の内部通信用)
 * 1 つ以上のネットワーク インターフェイス カード (NIC) (VM が通信できるようにするため)
 * 1 つ以上の仮想マシン (VM) (ソフトウェアを実行するため)
 
-もう 1 つの興味深いこととして、これらのリソースには、並行して作成できるものもあれば、並行して作成できないものもあります。次に例を示します。
+これらのリソースは並列的に作成できるものもありますが、そうでないものもあります。次に例を示します。
 
-* NIC。PIP と VNet に依存します。
-* VM。NIC とストレージ アカウントに依存します。
+* NIC。パブリック IP アドレスと仮想ネットワークに依存しています。
+* VM。NIC とストレージ アカウントに依存しています。
 
-必要な依存関係が作成される前にリソースをインスタンス化しようとしないことが必要です。このドキュメントで提供する完全な[サンプル](https://github.com/dx-ted-emea/Azure-Resource-Manager-Documentation/tree/master/ARM/SDKs/Samples/Net)では、リソースを並行して効率的に作成しながら、作成済みのリソースを追跡する方法を示しています。
+必要な依存関係が満たされるまでは、リソースをインスタンス化しないでください。完全な[サンプル](https://github.com/dx-ted-emea/Azure-Resource-Manager-Documentation/tree/master/ARM/SDKs/Samples/Net)では、リソースを並行して効率的に作成しながら、作成済みのリソースを追跡する方法を示しています。
 
 #### ストレージ アカウントの作成
-仮想マシンの仮想 VHD を格納するには、ストレージ アカウントが必要です。既存のストレージ アカウントがある場合はそれを複数の VM に使用できますが、限度に達しないように負荷を複数のストレージ アカウントに忘れずに分散してください。すべてのリージョンやすべてのストレージ アカウントの種類ですべての VM サイズを利用できるとは限らないため、ストレージ アカウントの種類とその場所に応じて、選択できる VM サイズが制限される場合があります。
+仮想マシンの仮想ハード ディスクを格納するには、ストレージ アカウントが必要です。既にストレージ アカウントをお持ちの方は、そのアカウントを複数の VM に使用できます。ただし、制限に達することのないよう複数のストレージ アカウントに負荷を分散してください。また、すべてのリージョンやすべてのストレージ アカウントの種類ですべての VM サイズを利用できるとは限らないため、ストレージ アカウントの種類とその場所に応じて、選択できる VM サイズが制限される場合があります。
 
 ```csharp
 private static async Task<StorageAccount> CreateStorageAccountAsync(TokenCredentials credentials, string subscriptionId, string resourceGroup, string location, string storageAccountName, AccountType accountType = AccountType.StandardLRS)
@@ -219,7 +224,7 @@ private static async Task<StorageAccount> CreateStorageAccountAsync(TokenCredent
 }
 ```
 
-#### パブリック IP アドレス (PIP) の作成
+#### パブリック IP アドレスの作成
 パブリック IP アドレスにより、Azure のリソースにインターネットからアクセスできるようになります。IP アドレスと共に完全修飾ドメイン名 (FQDN) が割り当てられ、これを使用することによってより簡単にアクセスできます。
 
 ```csharp
@@ -232,15 +237,15 @@ private static Task<PublicIPAddress> CreatePublicIPAddressAsync(TokenCredentials
         {
             Location = location,
             DnsSettings = new PublicIPAddressDnsSettings { DomainNameLabel = pipDnsName },
-            PublicIPAllocationMethod = "Dynamic" // This sample doesn't support Static IP Addresses but could be extended to do so
+            PublicIPAllocationMethod = "Dynamic" // This sample doesn't support static IP addresses but can be extended to do so
         });
 
     return createPipTask;
 }
 ```
 
-#### 仮想ネットワーク (VNET) の作成
-ARM API を使用して作成されたすべての VM は、仮想ネットワークに含める必要があります (仮想ネットワーク内にあるのがその VM だけの場合でも)。仮想ネットワークには少なくとも 1 つのサブネットを含める必要がありますが、複数のサブネットがある場合は、リソースを複数のサブネットに分けて保護することもできます。
+#### 仮想ネットワークの作成
+Resource Manager API を使用して作成されたすべての VM は、仮想ネットワークに含める必要があります (仮想ネットワーク内にあるのがその VM だけの場合でも)。仮想ネットワークに最低限含める必要のあるサブネットは 1 つですが、複数のサブネットを使用することで、リソースを複数のサブネットに分けて保護することができます。
 
 ```csharp
 private static Task<VirtualNetwork> CreateVirtualNetworkAsync(TokenCredentials credentials, string subscriptionId, string resourceGroup, string location, string vNetName, string vNetAddressPrefix, Subnet[] subnets)
@@ -259,8 +264,8 @@ private static Task<VirtualNetwork> CreateVirtualNetworkAsync(TokenCredentials c
 }
 ```
 
-#### ネットワーク インターフェイス カード (NIC) の作成
-ネットワーク インターフェイス カード (NIC) は、VM を、その VM が存在する仮想ネットワークに接続します。1 つの VM は、複数の NIC を割り当てることができるため、複数の仮想ネットワークに関連付けることができます。このサンプルでは、VM を 1 つの VNET に接続することだけを想定しています。
+#### ネットワーク インターフェイス カードの作成
+NIC は、VM を、その VM が存在する仮想ネットワークに接続します。1 つの VM は、複数の NIC を割り当てることができるため、複数の仮想ネットワークに関連付けることができます。このサンプルは、VM を関連付ける仮想ネットワークが 1 つだけであることを想定しています。
 
 ```csharp
 private static Task<NetworkInterface> CreateNetworkInterfaceAsync(TokenCredentials credentials, string subscriptionId, string resourceGroup, string location, string nicName, string nicIPConfigName, PublicIPAddress pip, Subnet subnet)
@@ -287,7 +292,7 @@ private static Task<NetworkInterface> CreateNetworkInterfaceAsync(TokenCredentia
 ```
 
 #### 仮想マシンの作成
-最後に、実際の仮想マシンを作成します。VM は、これまでの手順で作成したすべてのリソースに直接または間接的に依存するため、VM をプロビジョニングする前に、上記のリソースすべてが利用できるようになるまで待つ必要があります。VM のプロビジョニングは、上記のリソースの中で最も時間のかかる処理のため、アプリケーションは処理が完了するまで待機する必要があります。
+最後にいよいよ仮想マシンを作成します。VM は、これまでの手順で作成したすべてのリソースに直接または間接的に依存するため、VM をプロビジョニングする前に、上記のリソースすべてが利用できるようになるまで待つ必要があります。VM のプロビジョニングは、他のリソースの作成よりも時間がかかるため、アプリケーションは処理が完了するまで待機する必要があります。
 
 ```csharp
 private static async Task<VirtualMachine> CreateVirtualMachineAsync(TokenCredentials credentials, string subscriptionId, string resourceGroup, string location, string storageAccountName, string vmName, string vmSize, string vmAdminUsername, string vmAdminPassword, string vmImagePublisher, string vmImageOffer, string vmImageSku, string vmImageVersion, string vmOSDiskName, string nicId)
@@ -329,10 +334,10 @@ private static async Task<VirtualMachine> CreateVirtualMachineAsync(TokenCredent
 }
 ```
 
-### テンプレート化されたデプロイの使用
-テンプレートをデプロイする詳しい手順については、[.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](./virtual-machines/virtual-machines-windows-csharp-template.md)に関するチュートリアルを参照してください。
+### テンプレートのデプロイ
+テンプレートをデプロイする詳しい手順については、[.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](./virtual-machines/virtual-machines-windows-csharp-template.md)に関する記事を参照してください。
 
-簡単に言えば、テンプレートのデプロイは、手動によるリソースのプロビジョニングよりもはるかに簡単です。次のコードでは、テンプレートとパラメーター ファイルのある URI を指定してこれを行う方法を示しています。
+テンプレートのデプロイは、手作業でリソースをプロビジョニングするよりもはるかに簡単です。その方法を示したのが次のコードです。テンプレートとパラメーター ファイルが置かれている URI を指定しています。
 
 ```csharp
 private static async Task<DeploymentExtended> CreateTemplatedDeployment(TokenCredentials credentials, string subscriptionId, string resourceGroup, string templateUri, string parametersUri)
@@ -350,8 +355,4 @@ private static async Task<DeploymentExtended> CreateTemplatedDeployment(TokenCre
 }
 ```
 
-
- 
-   
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

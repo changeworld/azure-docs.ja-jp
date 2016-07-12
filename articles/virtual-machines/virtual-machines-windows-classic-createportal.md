@@ -19,7 +19,7 @@
 
 # Windows を実行するカスタム仮想マシンの作成
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-createportal](../../includes/virtual-machines-common-classic-createportal.md)]
 
@@ -30,4 +30,4 @@
 
 クラシック ポータルを使用して、[Linux を実行するカスタム仮想マシンを作成](virtual-machines-linux-classic-createportal.md)することもできます
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0629_2016-->

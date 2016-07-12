@@ -19,7 +19,7 @@
 
 # クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにデータ ディスクをアタッチする
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-windows-attach-disk-portal.md)。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](virtual-machines-windows-attach-disk-portal.md)方法について説明します。
 
 データ ディスクを追加する必要がある場合は、空のディスクまたはデータを含む既存のディスクを仮想マシンにアタッチできます。どちらの場合も、ディスクは Azure ストレージ アカウントにある .vhd ファイルです。新しいディスクの場合は、ディスクをアタッチした後で、Windows VM で使用できるように初期化する必要もあります。
 
@@ -60,4 +60,4 @@
 
 [logon]: virtual-machines-windows-classic-connect-logon.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

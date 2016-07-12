@@ -1,3 +1,10 @@
-|<span style="background-color:darkblue"></span>|<span style="background-color:darkblue"></span>|
-|---|---:|
-|![PNP](media/guidance-pnp-include/pnp-logo.png)|**Azure の参照アーキテクチャ<br/>IaaS**|
+<table style="width:100%">
+<tr>
+<td>
+<img src="./media/guidance-pnp-include/pnp-logo.png"/>
+</td>
+<td style="text-align:right"><b>Azure の参照用アーキテクチャ<br/>IaaS</b></td>
+</tr>
+</table>
+
+<!---HONumber=AcomDC_0629_2016-->

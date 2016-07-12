@@ -24,7 +24,7 @@
 
 自動バックアップでは、SQL Server 2014 Standard または Enterprise を実行する Azure VM 上の既存のデータベースと新しいデータベースのすべてを対象に、[Microsoft Azure へのマネージ バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)が自動的に構成されます。これにより、永続的な Azure BLOB ストレージを利用した日常的なデータベース バックアップを構成できます。自動バックアップは、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 
 クラシック デプロイ モデル。この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動バックアップ (クラシック)](virtual-machines-windows-classic-sql-automated-backup.md)」を参照してください。
 
 ## 前提条件
@@ -81,7 +81,7 @@ Resource Manager デプロイメント モデルで新しい SQL Server 2014 仮
 
 ## PowerShell での構成
 
-SQL VM をプロビジョニングしたら、PowerShell を使用して自動バッチ処理を構成します。
+SQL VM をプロビジョニングしたら、PowerShell を使用して自動バックアップを構成します。
 
 次の PowerShell の例では、既存の SQL Server 2014 VM の自動バックアップを構成しています。**AzureRM.Compute\\New-AzureVMSqlServerAutoBackupConfig** コマンドは、仮想マシンに関連付けられた Azure ストレージ アカウントにバックアップを保存するように、自動バックアップ設定を構成します。これらのバックアップは 10 日間保持されます。**Set-AzureRmVMSqlServerExtension** コマンドは、指定された Azure VM をこれらの設定で更新します。
 
@@ -117,4 +117,4 @@ Azure VM の SQL Server のバックアップと復元に関するその他の�
 
 Azure VM で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016--->
+<!----HONumber=AcomDC_0629_2016-->

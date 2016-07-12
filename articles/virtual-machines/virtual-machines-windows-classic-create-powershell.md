@@ -26,7 +26,7 @@
 <br>
 
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-windows-ps-create.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](virtual-machines-windows-ps-create.md)方法について説明します。
 
 
 以下の手順では、構成ブロック手法を使用して、Azure PowerShell コマンド セットをカスタマイズする方法を示します。このコマンド セットでは、Windows ベースの Azure 仮想マシンを作成および事前構成します。このプロセスを使用すると、新しい Windows ベースの仮想マシンのコマンド セットを迅速に作成して既存のデプロイを拡張することや、複数のコマンド セットを作成してカスタムの開発とテスト環境または IT プロの環境をすばやく構築することもできます。
@@ -37,14 +37,14 @@
 
 ## 手順 1: アカウントを追加する
 
-1. PowerShell プロンプトで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。 
-2. お使いの Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、**[続行]** をクリックします。 
-3. アカウントのパスワードを入力します。 
+1. PowerShell プロンプトで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。
+2. お使いの Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、**[続行]** をクリックします。
+3. アカウントのパスワードを入力します。
 4. **[サインイン]** をクリックします。
 
 ## 手順 2. サブスクリプションとストレージ アカウントを設定する
 
-Windows PowerShell コマンド プロンプトで次のコマンドを実行して、Azure サブスクリプションとストレージ アカウントを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+Windows PowerShell コマンド プロンプトで次のコマンドを実行して、Azure サブスクリプションとストレージ アカウントを設定します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
 	$subscr="<subscription name>"
 	$staccount="<storage account name>"
@@ -82,7 +82,7 @@ Windows ベースのコンピューターで使用する ImageFamily 値の例�
 
 ## 手順 4. コマンド セットを構築する
 
-残りのコマンド セットを構築します。具体的には、下の該当するブロック セットを新しいテキスト ファイルまたは ISE にコピーし、変数の値を入力した後、文字 < and > を削除します。この記事の末尾にある 2 つの[例](#examples)を、最終結果のアイデアとしてご覧ください。
+残りのコマンド セットを構築します。具体的には、下の該当するブロック セットを新しいテキスト ファイルまたは ISE にコピーし、変数の値を入力した後、< および > を削除します。この記事の末尾にある 2 つの[例](#examples)を、最終結果のアイデアとしてご覧ください。
 
 この 2 つのコマンド ブロックのいずれかを選択することからコマンド セットを開始します (必須)。
 
@@ -168,7 +168,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 ## 手順 5. コマンド セットを実行する
 
-手順 4. でテキスト エディターまたは PowerShell ISE を使用して作成した、複数のコマンド ブロックで構成される Azure PowerShell コマンド セットを確認します。必要なすべての変数が指定され、それらの値がすべて正しいことを確認します。さらに、文字 < and > がすべて削除されていることも確認します。
+手順 4. でテキスト エディターまたは PowerShell ISE を使用して作成した、複数のコマンド ブロックで構成される Azure PowerShell コマンド セットを確認します。必要なすべての変数が指定され、それらの値がすべて正しいことを確認します。さらに、< と > がすべて削除されていることも確認します。
 
 テキスト エディターを使用している場合は、コマンド セットをクリップボードにコピーしてから、開いている Windows PowerShell コマンド プロンプトを右クリックします。この操作により、コマンド セットが一連の PowerShell コマンドとして実行され、Azure 仮想マシンが作成されます。または、PowerShell ISE でコマンド セットを実行します。
 
@@ -260,4 +260,4 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 127 GB より大きい OS ディスクが必要な場合は、[OS ドライブを拡張](virtual-machines-windows-expand-os-disk.md)できます。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

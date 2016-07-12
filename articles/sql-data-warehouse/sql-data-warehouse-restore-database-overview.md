@@ -3,7 +3,7 @@
    description="Azure SQL Data Warehouse でデータベースを復旧するためのデータベース復元オプションの概要。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="elfisher"
+   authors="sonyam"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/15/2016"
-   ms.author="elfish;barbkess;sonyama"/>
+   ms.date="06/28/2016"
+   ms.author="sonyama;barbkess"/>
 
 
 # Azure SQL Data Warehouse の復元 (概要)
@@ -23,7 +23,9 @@
 - [概要][]
 - [ポータル][]
 - [PowerShell][]
-- [REST][] s Azure SQL Data Warehouse は、ローカル冗長ストレージと自動バックアップの両方を使用してデータを保護します。自動バックアップでは、管理を必要としない方法で、データベースを偶発的な破損や削除から保護できます。ユーザーが意図せずに、または偶発的にデータを変更または削除するような場合には、それ以前の任意の時点にデータベースを復元することで、ビジネスの継続性を確保できます。SQL Data Warehouse では、ダウンタイムなしでデータベースをシームレスにバックアップするために、Azure Storage のスナップショットを使用しています。
+- [REST ()][]
+
+Azure SQL Data Warehouse は、ローカル冗長ストレージと自動バックアップの両方を使用してデータを保護します。自動バックアップでは、管理を必要としない方法で、データベースを偶発的な破損や削除から保護できます。ユーザーが意図せずに、または偶発的にデータを変更または削除するような場合には、それ以前の任意の時点にデータベースを復元することで、ビジネスの継続性を確保できます。SQL Data Warehouse では、ダウンタイムなしでデータベースをシームレスにバックアップするために、Azure Storage のスナップショットを使用しています。
 
 ## 自動バックアップ
 
@@ -63,11 +65,11 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 [概要]: ./sql-data-warehouse-restore-database-overview.md
 [ポータル]: ./sql-data-warehouse-restore-database-portal.md
 [PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
+[REST ()]: ./sql-data-warehouse-restore-database-rest-api.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

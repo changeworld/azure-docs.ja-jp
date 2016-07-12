@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="06/14/2016"
+   ms.date="06/19/2016"
    ms.author="mcoskun"/>
 
 # Azure Service Fabric ステートフル サービスの Reliable Collection の概要
@@ -119,10 +119,11 @@ Reliable Collection は、常に排他ロックを取得します。読み取り
 ## 次のステップ
 
 - [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
+- [Reliable Services の通知](service-fabric-reliable-services-notifications.md)
 - [Reliable Service のバックアップと復元 (障害復旧)](service-fabric-reliable-services-backup-restore.md)
 - [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
 - [Service Fabric Web API サービスの概要](service-fabric-reliable-services-communication-webapi.md)
 - [Reliable Service プログラミング モデルの詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
 - [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

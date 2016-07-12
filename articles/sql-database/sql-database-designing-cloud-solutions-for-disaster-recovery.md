@@ -156,17 +156,14 @@ Traffic Manager は、プライマリ リージョンへの接続障害を検出
 ## 次のステップ
 
 - 障害復旧のためのアクティブ geo レプリケーションの使用および構成の方法については、「[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)」をご覧ください。
-- 障害復旧のための geo リストアの使用方法については、「[geo リストア](sql-database-geo-restore.md)」をご覧ください。
+- 障害復旧のための geo リストアの使用方法については、「[geo リストア](sql-database-recovery-using-backups.md#geo-restore)」をご覧ください。
 
-## その他のリソース
+## 次のステップ
 
-- [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](sql-database-business-continuity.md)
-- [Overview: SQL Database Point-in-Time Restore (概要: SQL Database のポイントインタイム リストア)](sql-database-point-in-time-restore.md)
-- [geo リストア](sql-database-geo-restore.md)
-- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
-- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
-- [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
+- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
+- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
+- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

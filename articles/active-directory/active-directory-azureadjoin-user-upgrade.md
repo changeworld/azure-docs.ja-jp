@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""
 	tags="azure-classic-portal"/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/26/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 # Windows 10 デバイスを [設定] メニューから Azure AD に設定する
@@ -42,4 +42,4 @@ Windows 7 または Windows 8 を使用しているコンピューターやデ�
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 * [Microsoft Passport 経由でのパスワードを使用しない ID の認証](active-directory-azureadjoin-passport.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -5,7 +5,7 @@
 	documentationCenter=".net" 
 	authors="Rick-Anderson" 
 	manager="wpickett" 
-	editor="jimbe"/>
+	editor="none"/>
 
 <tags 
 	ms.service="app-service-web" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="get-started-article" 
-	ms.date="02/27/2016" 
+	ms.date="06/27/2016" 
 	ms.author="riande"/>
 
 
@@ -43,7 +43,7 @@ NuGet `RedisSessionStateProvider` パッケージをインストールします�
 
 1. *web.config* を開き、**sessionState** 要素を見つけます。
 
-1. `host`、`accessKey`、`port` (SSL ポートは 6380 とする必要があります) の値を入力し、`SSL` を `true` に設定します。これらの値は、ご利用のキャッシュ インスタンスの [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715) ブレードから取得できます。詳細については、「[キャッシュに接続する](../cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache)」を参照してください。既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。非 SSL ポートの有効化の詳細については、「[Azure Redis Cache でのキャッシュの構成](https://msdn.microsoft.com/library/azure/dn793612.aspx)」トピックの「[アクセス ポート](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts)」セクションを参照してください。次のマークアップは、*web.config* ファイルに対する変更、特に *port*、*host*、accessKey*、および *ssl* に対する変更を示しています。
+1. `host`、`accessKey`、`port` (SSL ポートは 6380 とする必要があります) の値を入力し、`SSL` を `true` に設定します。これらの値は、ご利用のキャッシュ インスタンスの [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715) ブレードから取得できます。詳細については、「[キャッシュに接続する](../cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache)」を参照してください。既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。非 SSL ポートの有効化の詳細については、「[Azure Redis Cache でのキャッシュの構成](https://msdn.microsoft.com/library/azure/dn793612.aspx)」トピックの「[アクセス ポート](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts)」セクションを参照してください。次のマークアップは、*web.config* ファイルに対する変更、特に *port*、*host*、accessKey*、*ssl* に対する変更を示しています。
 
 		  <system.web>;
 		    <customErrors mode="Off" />;
@@ -108,4 +108,4 @@ Redis Cache を使用して、Web アプリケーションのオブジェクト�
   [ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0706_2016-->

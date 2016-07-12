@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/05/2016"
+    ms.date="06/27/2016"
     ms.author="elizapo" />
 
 
@@ -28,7 +28,7 @@ Azure RemoteApp の優れた点の 1 つは、どのデバイスからでもア�
 
 デバイスがこれらのいずれかのオペレーティング システムを実行している場合は、次の手順を使用して RemoteApp にアクセスできます。
 
- - Windows 10 
+ - Windows 10
  - Windows 8.1
  - Windows 8
  - Windows 7 Service Pack 1
@@ -58,7 +58,7 @@ Azure RemoteApp の優れた点の 1 つは、どのデバイスからでもア�
 
 Google Play ストアから、Microsoft リモート デスクトップ アプリをインストールすると、**[リモート デスクトップ]** にアプリの一覧が表示されます。
 
-1. アプリを起動すると、まだアプリを使用していない場合は、空の接続センターに移動します。Azure RemoteApp を開始するには、追加ボタン **[+]** をタップし、 **[Azure RemoteApp]** をタップします。	
+1. アプリを起動すると、まだアプリを使用していない場合は、空の接続センターに移動します。Azure RemoteApp を開始するには、追加ボタン **[+]** をタップし、 **[Azure RemoteApp]** をタップします。
 
 	 ![空の接続センター](./media/remoteapp-clients/Android1.png)
 
@@ -207,4 +207,4 @@ Windows Phone 8.1 ストアから、Microsoft リモート デスクトップ �
 	![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/WinPhone8.png)
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

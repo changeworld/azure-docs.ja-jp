@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	ms.author="juliako"/>
 
 
@@ -40,10 +40,10 @@
 
    1. コンテンツが暗号化されている場合は、アクセス ポリシーを定義します。
    2. オンデマンド ストリーミング ロケーターを作成します。
-   3. ストリーミングする場合は、資産のストリーミング マニフェスト ファイル (.ism) を取得します。 
+   3. ストリーミングする場合は、資産のストリーミング マニフェスト ファイル (.ism) を取得します。
    		
-	プログレッシブ ダウンロードをする場合は、資産内の MP4 ファイルの名前を取得します。  
-   4. マニフェスト ファイルまたは MP4 ファイルへの URL を作成します。 
+	プログレッシブ ダウンロードをする場合は、資産内の MP4 ファイルの名前を取得します。
+   4. マニフェスト ファイルまたは MP4 ファイルへの URL を作成します。
    
 
 ###Media Services .NET SDK を使用する 
@@ -171,4 +171,4 @@
 
 [資産をダウンロードする](media-services-deliver-asset-download.md)[資産配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

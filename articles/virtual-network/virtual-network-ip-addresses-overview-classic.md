@@ -23,7 +23,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 
 プライベート IP アドレスは、Azure 仮想ネットワーク (VNet)、クラウド サービス、およびオンプレミス ネットワーク (VPN Gateway または ExpressRoute 回線を使用してネットワークを Azure に拡張する場合) 内での通信に使用します。
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager deployment model](virtual-network-ip-addresses-overview-arm.md)。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager デプロイ モデルを使用してこれらの手順を実行する](virtual-network-ip-addresses-overview-arm.md)方法について説明します。
 
 ## パブリック IP アドレス
 パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[SQL データベース](../sql-database/sql-database-technical-overview.md)、[Azure ストレージ](../storage/storage-introduction.md)など、Azure の公開されたサービスと通信できます。
@@ -37,7 +37,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 - アプリケーション ゲートウェイ
 
 ### 割り当て方法
-パブリック IP アドレスを Azure リソースに割り当てる必要がある場合は、リソースが作成された場所内の使用可能なパブリック IP アドレスのプールから*動的に*割り当てられます。この IP アドレスは、リソースが停止したときに解放されます。クラウド サービスの場合、この開放はすべてのロール インスタンスが停止したときに発生します。これは、*静的* (予約済み) IP アドレスを使用することで回避できます (「[Cloud Services](#Cloud-services)」を参照)。
+パブリック IP アドレスを Azure リソースに割り当てる必要がある場合は、リソースが作成された場所内の使用可能なパブリック IP アドレスのプールから*動的に*割り当てられます。この IP アドレスは、リソースが停止したときに解放されます。クラウド サービスの場合、この開放はすべてのロール インスタンスが停止したときに発生します。これは、*静的* (予約済み) IP アドレスを使用することで回避できます (「[クラウド サービス](#Cloud-services)」セクションを参照)。
 
 >[AZURE.NOTE] Azure リソースへのパブリック IP アドレスの割り当てに使用する IP アドレス範囲のリストは、「[Azure データセンターの IP アドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)」で公開されています。
 
@@ -47,7 +47,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 ### クラウド サービス
 クラウド サービスには、仮想 IP アドレス (VIP) と呼ばれるパブリック IP アドレスが必ずあります。クラウド サービスのエンドポイントを作成して、VIP 内のさまざまなポートをクラウド サービス内の VM およびロール インスタンス上の内部ポートに関連付けることができます。
 
-クラウド サービスには複数の IaaS VM または PaaS ロール インスタンスを含めることができます。すべて同じクラウド サービス VIP から公開されます。[複数の VIP をクラウド サービスに](../load-balancer/load-balancer-multivip.md)割り当てることもできます。これにより、SSL ベースの Web サイトを含むマルチ テナント環境のようなマルチ VIP シナリオが可能になります。
+クラウド サービスには複数の IaaS VM または PaaS ロール インスタンスを含めることができます。すべて同じクラウド サービス VIP から公開されます。[複数の VIP を 1 つのクラウド サービスに](../load-balancer/load-balancer-multivip.md)割り当てることもできます。これにより、SSL ベースの Web サイトを含むマルチ テナント環境のようなマルチ VIP シナリオが可能になります。
 
 すべてのロール インスタンスが停止した場合でも、[予約済み IP](virtual-networks-reserved-public-ip.md) と呼ばれる*静的*パブリック IP アドレスを使用することで、クラウド サービスのパブリック IP アドレスが変わらないようにできます。特定の場所で静的 (予約済み) IP リソースを作成し、その場所内の任意のクラウド サービスに割り当てることができます。予約済み IP に対して実際の IP アドレスを指定することはできません。これは、作成された場所内の使用可能な IP アドレスのプールから割り当てられます。この IP アドレスは、明示的に削除するまで解放されません。
 
@@ -147,7 +147,7 @@ Azure における[ネットワークの制限](azure-subscription-service-limit
 
 ## 価格
 
-ほとんどの場合、パブリック IP アドレスは無料です。追加のパブリック IP アドレスまたは静的な IP アドレスを使用する場合は標準の料金が発生します。[パブリック IP の料金体系](https://azure.microsoft.com/pricing/details/ip-addresses/)を必ず把握してください。
+ほとんどの場合、パブリック IP アドレスは無料です。追加のパブリック IP アドレスまたは静的な IP アドレスを使用する場合は標準の料金が発生します。[パブリック IP の料金体系](https://azure.microsoft.com/pricing/details/ip-addresses/)を必ずご確認ください。
 
 ## リソース マネージャーとクラシック デプロイの相違点
 リソース マネージャーの IP アドレス指定機能とクラシック デプロイ モデルとの比較を次に示します。
@@ -166,4 +166,4 @@ Azure における[ネットワークの制限](azure-subscription-service-limit
 ## 次のステップ
 - クラシック ポータルを使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-classic-pportal.md)します。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

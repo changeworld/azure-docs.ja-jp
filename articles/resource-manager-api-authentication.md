@@ -98,7 +98,7 @@ Azure AD では、アプリケーションの証明書資格情報もサポー�
 
 Azure AD 承認エンドポイントに Open ID Connect/OAuth 2.0 承認要求を発行します。
 
-    http://login.microsoftonline.com/{directory_domain_name}/OAuth2/Authorize
+    https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Authorize
 
 この要求で使用できるクエリ文字列パラメーターについては、「[Authorization Code Grant Flow (認証コード付与フロー)](https://msdn.microsoft.com/library/azure/dn645542.aspx)」をご覧ください。
 
@@ -146,7 +146,7 @@ Open ID Connect 応答の例を次に示します。
 - **発行元**: iss 要求をチェックして、トークンの発行元が Azure Active Directory (https://sts.windows.net/{tenant_id_of_the_directory}) であることを確認します。
 - **対象**: aud 要求をチェックして、トークンの発行対象がアプリケーションであることを確認します。この値は、アプリケーションのクライアント ID である必要があります。
 - **nonce**: nonce 要求を承認要求で送信した nonce データと照合して、応答がアプリケーションから要請されたものであり、トークンが再生されていないことを確認します。
-- **署名**: アプリケーションは、トークンが Azure Active Directory によって署名されていることを確認する必要があります。Azure AD の署名キーは頻繁にロールオーバーされるので、アプリケーションは更新されたキーの有無を毎日ポーリングするか、署名の検証に失敗した場合は更新されたキーの問題を見つける必要があります。詳細については、「[Important Information About Signing Key Rollover in Azure AD (Azure AD での署名キーのロールオーバーに関する重要な情報)](https://msdn.microsoft.com/library/azure/dn641920.aspx)」をご覧ください。
+- **署名**: アプリケーションは、トークンが Azure Active Directory によって署名されていることを確認する必要があります。Azure AD の署名キーは頻繁にロールオーバーされるので、アプリケーションは更新されたキーの有無を毎日ポーリングするか、署名の検証に失敗した場合は更新されたキーの問題を見つける必要があります。詳細については、「[Important Information About Signing Key Rollover in Azure AD (Azure AD での署名キーのロールオーバーに関する重要な情報)](active-directory/active-directory-signing-key-rollover.md)」をご覧ください。
 
 **id\_token** が検証されたら、ユーザーの不変の識別子または再利用できない識別子として oid 要求値を使用します。ユーザーの、人間が判読可能な表示名として、**unique\_name** 要求または upn/email 要求を使用します。また、表示用にオプションの given\_name/family\_name 要求を使用することもできます。
 
@@ -154,7 +154,7 @@ Open ID Connect 応答の例を次に示します。
 
 アプリケーションが Azure AD から認証コードを受け取ったので、次に、Azure Resource Manager のアクセス トークンを取得します。OAuth 2.0 コード付与トークン要求を Azure AD トークン エンドポイントに送ります。
 
-    http://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token
+    https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token
 
 この要求で使用できるクエリ文字列パラメーターについては、「[Authorization Code Grant Flow (認証コード付与フロー)](https://msdn.microsoft.com/library/azure/dn645542.aspx)」をご覧ください。
 
@@ -190,7 +190,7 @@ Open ID Connect 応答の例を次に示します。
 
 正常なトークン応答には、Azure Resource Manager の (ユーザー + アプリケーション) アクセス トークンが含まれます。アプリケーションは、このアクセス トークンを使用して、ユーザーに代わって Resource Manager にアクセスします。Azure AD によって発行されたアクセス トークンの有効期間は 1 時間です。Web アプリケーションが (ユーザー + アプリケーション) アクセス トークンを更新する必要があることはほとんどありません。ただし、その必要がある場合は、アプリケーションがトークン応答で受け取った更新トークンを使用できます。OAuth 2.0 トークン要求を Azure AD トークン エンドポイントに送ります。
 
-    http://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token
+    https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token
 
 更新要求で使用するパラメーターについては、「[Authorization Code Grant Flow (認証コード付与フロー)](https://msdn.microsoft.com/library/azure/dn645542.aspx)」をご覧ください。
 
@@ -291,7 +291,7 @@ Azure Resource Manager のアクセス トークンしかないため、Azure AD
 <a id="app-azure-ad-graph">
 ### Azure AD Graph API のアプリケーション専用アクセス トークンを取得する
 
-アプリケーションを認証し、Azure AD Graph API へのトークンを取得するには、OAuth 2.0 クライアント資格情報付与フロー トークン要求を Azure AD トークン エンドポイントに発行します (**http://login.microsoftonline.com/{directory\_domain\_name}/OAuth2/Token**)。
+アプリケーションを認証し、Azure AD Graph API へのトークンを取得するには、OAuth 2.0 クライアント資格情報付与フロー トークン要求を Azure AD トークン エンドポイントに発行します (**https://login.microsoftonline.com/{directory\_domain\_name}/OAuth2/Token**)。
 
 ASP.net MVC サンプル アプリケーションの [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs#L73) メソッドの行 73 ～ 77 では、Active Directory Authentication Library for .NET を使用して、Graph API のアプリケーション専用アクセス トークンを取得しています。
 
@@ -301,8 +301,8 @@ ASP.net MVC サンプル アプリケーションの [GetObjectIdOfServicePrinci
 |----|----
 | grant\_type | **client\_credentials**
 | client\_id | アプリケーションのクライアント ID
-| resource | アクセス トークンが要求されているリソースの URL エンコードされた識別子。ここでは、Azure AD Graph API の識別子は、**https://graph.windows.net/** です。
-| client\_secret または client\_assertion\_type + client\_assertion | アプリケーションがパスワード資格情報を使用する場合は、client\_secret を使用します。アプリケーションが証明書資格情報を使用する場合は、client\_assertion を使用します。
+| resource | アクセス トークンが要求されているリソースの URL エンコードされた識別子。このケースでは Azure AD Graph API の識別子 (**https://graph.windows.net/**) です。
+| client\_secret または client\_assertion\_type + client\_assertion | アプリケーションでパスワード資格情報を使用している場合は、client\_secret を使用してください。アプリケーションが証明書資格情報を使用する場合は、client\_assertion を使用します。
 
 クライアント資格情報付与トークンの要求の例を次に示します。
 
@@ -319,7 +319,7 @@ ASP.net MVC サンプル アプリケーションの [GetObjectIdOfServicePrinci
 
 ### ユーザーの Azure AD でのアプリケーション サービス プリンシパルの ObjectId を取得する
 
-次に、アプリケーション専用アクセス トークンを使用して、[Azure AD Graph Service Principals](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#ServicePrincipalEntity) API にクエリを実行し、ディレクトリでのアプリケーションのサービス プリンシパルのオブジェクト ID を確認します。
+次に、アプリケーション専用のアクセス トークンを使用して、[Azure AD Graph Service Principals](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#ServicePrincipalEntity) API に問い合わせを行い、ディレクトリに登録されているアプリケーションのサービス プリンシパルのオブジェクト ID を特定します。
 
 ASP.net MVC サンプル アプリケーションの [GetObjectIdOfServicePrincipalInOrganiation](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs#L66) メソッドは、この呼び出しを実装しています。
 
@@ -348,7 +348,7 @@ ASP.net MVC サンプル アプリケーションの [GetObjectIdOfServicePrinci
 
 アプリケーションの役割の割り当てはユーザーに表示されるので、最低限必要な権限を選択します。
 
-[Resource Manager Role Definition API](https://msdn.microsoft.com/library/azure/dn906879.aspx) を呼び出してすべての Azure RBAC 役割の一覧を表示し、結果を順に調べて目的の役割定義を名前で見つけます。
+[Resource Manager Role Definition API](https://msdn.microsoft.com/library/azure/dn906879.aspx) を呼び出してすべての Azure RBAC 役割の一覧を表示し、結果を順に調べて目的の役割定義を名前で検索します。
 
 ASP.net MVC サンプル アプリケーションの [GetRoleId](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L354) メソッドは、この呼び出しを実装しています。
 
@@ -444,4 +444,4 @@ ASP.net MVC サンプル アプリケーションの [RevokeRoleFromServicePrinc
 
 これで完了です。ユーザーは、Azure サブスクリプションをアプリケーションに簡単に接続して管理できるようになりました。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

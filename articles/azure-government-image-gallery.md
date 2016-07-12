@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="Azure Government イメージ ギャラリー" 
-   description="この記事では、Azure Government イメージ ギャラリーと、含まれるイメージの概要について説明します。" 
-   services="Azure-Government" 
-   documentationCenter="" 
-   authors="joharve2" 
-   manager="chrisnie" 
+<properties
+   pageTitle="Azure Government イメージ ギャラリー | Microsoft Azure"
+   description="この記事では、Azure Government イメージ ギャラリーと、含まれるイメージの概要について説明します。"
+   services="Azure-Government"
+   documentationCenter=""
+   authors="joharve2"
+   manager="chrisnie"
    editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="azure-government" 
+   ms.workload="azure-government"
    ms.date="06/01/2016"
    ms.author="brendalee"/>
 
@@ -118,7 +118,7 @@ Visual Studio|Visual Studio Enterprise 2015 Update 2 with Azure SDK 2.9 on Windo
 
 イメージ ギャラリーからのデプロイについて、また VHD の作成についての詳細は、次をご覧ください。Azure Government 使用時におけるエンドポイントのプログラム的な相違点の詳細について、<a href="../azure-government-developer-guide">Azure Government 開発者向けガイド</a>を参照してください。
 
-###その他のリソース: 
+###その他のリソース:
 
 - [Windows を実行する仮想マシンの作成](virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
@@ -141,4 +141,4 @@ Visual Studio|Visual Studio Enterprise 2015 Update 2 with Azure SDK 2.9 on Windo
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

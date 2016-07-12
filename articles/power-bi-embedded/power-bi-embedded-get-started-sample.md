@@ -3,7 +3,7 @@
    description="Power BI Embedded、SDK を使用して対話型の Power BI レポートをビジネス インテリジェンス アプリケーションに追加する"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="dvana"
+   authors="minewiskan"
    manager="NA"
    editor=""
    tags=""/>
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="05/16/2016"
-   ms.author="derrickv"/>
+   ms.date="06/28/2016"
+   ms.author="owend"/>
 
 # Microsoft Power BI Embedded の使用を開始するためのサンプル
 
-**Microsoft Power BI Embedded プレビュー** を利用して、Web アプリケーションやモバイル アプリケーションに Power BI レポートを統合することができますので、ユーザーのためにデータを視覚化するカスタム ソリューションを作成する必要はありません。次のリソースは、アプリへの Power BI レポートの統合を開始するのに役立ちます。
+**Microsoft Power BI Embedded プレビュー**を利用して、Web アプリケーションやモバイル アプリケーションに Power BI レポートを統合することができます。このため、ユーザーのためにデータを視覚化するカスタム ソリューションを作成する必要はありません。次のリソースは、アプリへの Power BI レポートの統合を開始するのに役立ちます。
 
  -	[Sample dashboard web app](http://go.microsoft.com/fwlink/?LinkId=761493)
  -	[Power BI Embedded API reference](https://msdn.microsoft.com/library/mt711493.aspx)
@@ -224,7 +224,7 @@ Task<ActionResult> Report(string reportId)
 
 ## アプリケーションに埋め込まれたレポートのフィルター
 
-URL 構文を使用して、埋め込みレポートをフィルター処理できます。そのためには、**$filter** クエリ文字列パラメーターを iFrame src url に追加し、**eq** 演算子を使用してフィルターを指定します。フィルター クエリ構文を次に示します。
+URL 構文を使用して、埋め込みレポートをフィルター処理できます。そのためには、フィルターを指定して、**eq** 演算子を使って **$filter** クエリ文字列パラメーターを iFrame src url に追加します。フィルター クエリ構文を次に示します。
 
 ```
 https://app.powerbi.com/reportEmbed
@@ -242,4 +242,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 - [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューの使用を開始する)](power-bi-embedded-get-started.md)
 - [About app token flow in Power BI Embedded (Power BI Embedded のアプリ トークン フローについて)](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

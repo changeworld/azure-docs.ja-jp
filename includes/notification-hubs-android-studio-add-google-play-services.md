@@ -13,16 +13,14 @@
 
 4. 次の行を *dependencies* の下に追加します。
 
-   		compile 'com.google.android.gms:play-services-gcm:8.4.0'
+   		compile 'com.google.android.gms:play-services-gcm:9.2.0'
 
-5. *DefaultConfig* で、*minSdkVersion* を 9 に変更します。
- 
-6. ツール バーで **[Sync Project with Gradle Files]** をクリックします。
+5. ツール バーで **[Sync Project with Gradle Files]** をクリックします。
 
-7. **AndroidManifest.xml** を開き、このタグを *application* タグに追加します。
+6. **AndroidManifest.xml** を開き、このタグを *application* タグに追加します。
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
  
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

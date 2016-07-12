@@ -2,7 +2,7 @@
 	pageTitle="Notification Hubs の使用 (Xamarin.Android アプリケーション) | Microsoft Azure"
 	description="このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.Android アプリケーションにプッシュ通知を送信する方法について学習します。"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="notification-hubs"
 	documentationCenter="xamarin"/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="02/16/2016"
+	ms.date="06/29/2016"
 	ms.author="wesmc"/>
 
 # Xamarin for Android での Notification Hubs の使用
@@ -46,7 +46,7 @@
 
 このチュートリアルを完了することは、Xamarin.Android アプリの他のすべての Notification Hubs チュートリアルの前提条件です。
 
-> [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F)を参照してください。
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F)を参照してください。
 
 ##Google Cloud Messaging を有効にする
 
@@ -519,4 +519,4 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
 [Azure Messaging コンポーネント]: http://components.xamarin.com/view/azure-messaging
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -20,7 +20,7 @@
 
 # 従来の Linux 仮想マシンをイメージとしてキャプチャする方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-linux-capture-image.md).
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](virtual-machines-linux-capture-image.md)方法について説明します。
 
 ここでは、Linux を実行する従来の Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際にイメージとして使用する方法を示します。このイメージには、仮想マシンに接続された OS ディスクやデータ ディスクが含まれます。ネットワーク構成は含まれないため、イメージから他の仮想マシンを作成するときは、ネットワーク構成を行う必要があります。
 
@@ -28,7 +28,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 
 ## 開始する前に
 
-これらの手順は、すでにクラシック デプロイ モデルを使用して Azure 仮想マシンを作成し、データ ディスクの接続を含め、オペレーティング システムの構成が完了していることを前提としています。この操作をまだ行っていない場合は、「[カスタム Linux VM を作成する方法][]」をお読みください。
+これらの手順は、すでにクラシック デプロイ モデルを使用して Azure 仮想マシンを作成し、データ ディスクの接続を含め、オペレーティング システムの構成が完了していることを前提としています。この操作をまだ行っていない場合は、[Linux 仮想マシンを作成する方法][]に関する記事をお読みください。
 
 
 ## 仮想マシンをキャプチャする
@@ -85,7 +85,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 
 
 ## 次のステップ
-イメージを使用して仮想マシンを作成する準備ができました。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、「[Azure サービス管理での Azure CLI の使用](../virtual-machines-command-line-tools.md)」を参照してください。または、[Azure クラシック ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、「[カスタム仮想マシンの作成方法][]」を参照してください。
+イメージを使用して仮想マシンを作成する準備ができました。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、[Azure サービス管理での Azure CLI の使用](../virtual-machines-command-line-tools.md)に関する記事を参照してください。または、[Azure クラシック ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、「[カスタム仮想マシンの作成方法][]」を参照してください。
 
 **関連項目:** [Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)
 
@@ -93,6 +93,6 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 [Azure の仮想マシン イメージについて]: virtual-machines-linux-classic-about-images.md
 [カスタム仮想マシンの作成方法]: virtual-machines-linux-classic-create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]: virtual-machines-windows-classic-attach-disk.md
-[カスタム Linux VM を作成する方法]: virtual-machines-linux-classic-create-custom.md
+[Linux 仮想マシンを作成する方法]: virtual-machines-linux-classic-create-custom.md
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

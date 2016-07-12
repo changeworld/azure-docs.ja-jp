@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
- 	ms.date="05/03/2016"    
+ 	ms.date="06/22/2016"    
 	ms.author="juliako"/>
 
 
@@ -691,7 +691,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨されるオプション) と静的暗号化 (このセクションの説明を参照) のどちらかを選択できます。動的暗号化を使用する場合は、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」を参照してください。
 
->[AZURE.NOTE]コンテンツを HLS に変換するには、まずコンテンツを Smooth Streaming に変換/エンコードする必要があります。また、AES で HLS を暗号化するには、MediaPackager\_SmoothToHLS.xml ファイルで次のプロパティを設定します。暗号化プロパティを true に設定し、キー値を設定し、認証/承認サーバーを指すように keyuri 値を設定するようにします。Media Services でキー ファイルが作成され、資産コンテナーに配置されます。/asset-containerguid/*.key ファイルは、サーバーにコピーし (または独自のキー ファイルを作成し)、資産コンテナーから *.key ファイルを削除する必要があります。
+>[AZURE.NOTE]コンテンツを HLS に変換するには、まずコンテンツを Smooth Streaming に変換/エンコードする必要があります。また、AES で HLS を暗号化するには、MediaPackager\_SmoothToHLS.xml ファイルで次のプロパティを設定します。暗号化プロパティを true に設定し、キー値を設定し、認証/承認サーバーを指すように keyuri 値を設定するようにします。Media Services でキー ファイルが作成され、資産コンテナーに配置されます。/asset-containerguid/".key ファイルは、サーバーにコピーし (または独自のキー ファイルを作成し)、.key ファイルを資産コンテナーから削除する" 必要があります。
 
 このセクションの例では、中間ファイル (ここでは MP4) をマルチビットレート MP4 ファイルにエンコードし、MP4 を Smooth Streaming にパッケージ化します。また、Smooth Streaming は、Advanced Encryption Standard (AES) 128 ビット ストリーム暗号化で暗号化された HTTP Live Streaming (HLS) にパッケージ化されます。入力 MP4 ファイルがあるフォルダーを指すように、次のコードを更新します。また、MediaPackager\_MP4ToSmooth.xml と MediaPackager\_SmoothToHLS.xml 構成ファイルがある場所も示すように更新します。これらのファイルの定義については、「[Azure Media Packager のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973635.aspx)」トピックを参照してください。
 	
@@ -1447,4 +1447,4 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0629_2016-->

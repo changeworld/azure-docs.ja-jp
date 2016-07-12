@@ -4,7 +4,7 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="03/14/2016" 
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 #既存の Blob を Media Services 資産にコピーする
@@ -39,7 +39,7 @@ blob は、Media Services アカウントに関連付けられた (または関�
 
 このセクションでは、C# コンソール アプリケーション プロジェクトを作成、設定できます。
 
-1. Visual Studio を使用すると、C# コンソール アプリケーション プロジェクトを含む新しいソリューションを作成できます。 
+1. Visual Studio を使用すると、C# コンソール アプリケーション プロジェクトを含む新しいソリューションを作成できます。
 2. 名前に「CopyExistingBlobsIntoAsset」と入力し、[OK] をクリックします。
 1. Nuget を使用して Media Services 関連の Dll への参照を追加します。Visual Studio のメイン メニューで、[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール] の順に選択します。コンソール ウィンドウで「Install-Package windowsazure.mediaservices」と入力し、Enter キーを押します。
 1. このプロジェクト (System.Configuration) に必要なその他の参照を追加します。
@@ -76,7 +76,7 @@ blob は、Media Services アカウントに関連付けられた (または関�
 
 以下のコード例では次のタスクを実行します。
 
-1. CloudMediaContext インスタンスを作成します。 
+1. CloudMediaContext インスタンスを作成します。
 1. CloudStorageAccount インスタンス (\_sourceStorageAccount と \_destinationStorageAccount) を作成します。
 1. Smooth Streaming ファイルをローカル ディレクトリから \_sourceStorageAccount に配置された blob コンテナーにアップロードします。
 1. 新しい資産を作成します。この資産用に作成される blob コンテナーは \_destinationStorageAccountに配置されます。
@@ -85,7 +85,7 @@ blob は、Media Services アカウントに関連付けられた (または関�
 	>[AZURE.NOTE]ロケーターの有効期限が切れている場合、コピー操作では例外はスローされません。
 
 1. この例では Smooth Streaming ファイルをコピーしているので、.ism ファイルをプライマリ ファイルとして設定する方法を示します。たとえば、.mp4 ファイルをコピーした場合は、mp4 ファイルがプライマリ ファイルに設定されます。
-1. 資産に関連付けられている OnDemandOrigin ロケーターの Smooth Streaming URL を作成します。 
+1. 資産に関連付けられている OnDemandOrigin ロケーターの Smooth Streaming URL を作成します。
 			
 		class Program
 	        {
@@ -322,4 +322,4 @@ blob は、Media Services アカウントに関連付けられた (または関�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0629_2016-->

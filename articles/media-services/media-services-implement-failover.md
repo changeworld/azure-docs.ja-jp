@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"  
+	ms.date="06/22/2016" 
 	ms.author="juliako"/>
 
 #フェールオーバー ストリーミング シナリオを実装する
@@ -22,10 +22,10 @@
 
 1. ”データ センター A” に Media Services アカウントを設定します。
 1. ソース資産に中間ファイルをアップロードします。
-1. 資産をマルチビット レートの MP4 ファイルにエンコードします。 
+1. 資産をマルチビット レートの MP4 ファイルにエンコードします。
 1. ソース資産に関連付けられているストレージ アカウントのコンテナーに読み取りアクセスできるように、ソース資産に読み取り専用 SAS ロケーターを作成します。
 1. 前の手順で作成した読み取り専用 SAS ロケーターからソース資産のコンテナー名を取得します。この情報は、ストレージ アカウント間で BLOB をコピーするために必要です (これについてはトピック後半で説明しています)。
-1. エンコード タスクによって作成された資産の配信元ロケーターを作成します。 
+1. エンコード タスクによって作成された資産の配信元ロケーターを作成します。
 
 次いで、フェールオーバーは以下のように処理します。
 
@@ -33,17 +33,17 @@
 1. ターゲットの Media Services アカウントに、空のターゲット資産を作成します。
 1. ターゲット資産に関連付けられているターゲットのストレージ アカウントのコンテナーに書き込みアクセスできるように、空のターゲット資産に書き込み SAS ロケーターを作成します。
 1. Azure Storage SDK を使用し、”データ センター A” のコピー元のストレージ アカウントと ”データ センター B” のターゲット ストレージ アカウント間で BLOB (資産ファイル) をコピーします (これらのストレージ アカウントには対象の資産が関連付けられています)。
-1. ターゲットの BLOB コンテナーにコピーされた BLOB (資産ファイル) をターゲット資産に関連付けます。 
-1. ”データ センター B” の資産の配信元ロケーターを作成し、”データ センター A” の資産用に生成されたロケーター ID を指定します。 
-1. これによりストリーミング URL が提供されます (URL の相対パスは同じです。ベース URL のみが異なります)。 
+1. ターゲットの BLOB コンテナーにコピーされた BLOB (資産ファイル) をターゲット資産に関連付けます。
+1. ”データ センター B” の資産の配信元ロケーターを作成し、”データ センター A” の資産用に生成されたロケーター ID を指定します。
+1. これによりストリーミング URL が提供されます (URL の相対パスは同じです。ベース URL のみが異なります)。
  
 次に、障害対応のために、これらの配信元ロケーターの上位に CDN を作成します。
 
 次の考慮事項が適用されます。
 
 - Media Services SDK の現在のバージョンでは、指定したロケーター ID を使用してロケーターを作成することはできません。このタスクを実現するには、Media Services REST API を使用します。
-- Media Services SDK の現在のバージョンでは、資産ファイルを資産に関連付ける IAssetFile 情報をプログラムで生成することはできません。このタスクを実現するには、CreateFileInfos Media Services REST API を使用します。 
-- (双方の Media Services アカウントの暗号化キーは別のものになるため) ストレージ暗号化資産 (AssetCreationOptions.StorageEncrypted) のレプリケーションはサポートされていません。 
+- Media Services SDK の現在のバージョンでは、資産ファイルを資産に関連付ける IAssetFile 情報をプログラムで生成することはできません。このタスクを実現するには、CreateFileInfos Media Services REST API を使用します。
+- (双方の Media Services アカウントの暗号化キーは別のものになるため) ストレージ暗号化資産 (AssetCreationOptions.StorageEncrypted) のレプリケーションはサポートされていません。
 - 動的パッケージングを利用する場合は、最低 1 つ以上のオンデマンド ストリーミング占有ユニットを最初に取得する必要があります。詳細については、「[資産の動的パッケージ](media-services-dynamic-packaging-overview.md)」を参照してください。
  
 
@@ -61,7 +61,7 @@
 このセクションでは、C# コンソール アプリケーション プロジェクトを作成、設定できます。
 
 1. Visual Studio を使用すると、C# コンソール アプリケーション プロジェクトを含む新しいソリューションを作成できます。名前に「HandleRedundancyForOnDemandStreaming」と入力し、[OK] をクリックします。
-1. HandleRedundancyForOnDemandStreaming.csproj プロジェクト ファイルと同じレベルに SupportFiles フォルダーを作成します。SupportFiles フォルダーの下に OutputFiles および MP4Files フォルダーを作成します。MP4Files フォルダーに .mp4 ファイルをコピーします (この例では、BigBuckBunny.mp4 です)。 
+1. HandleRedundancyForOnDemandStreaming.csproj プロジェクト ファイルと同じレベルに SupportFiles フォルダーを作成します。SupportFiles フォルダーの下に OutputFiles および MP4Files フォルダーを作成します。MP4Files フォルダーに .mp4 ファイルをコピーします (この例では、BigBuckBunny.mp4 です)。
 1. **Nuget** を使用して Media Services 関連の DLL に参照を追加します。Visual Studio のメイン メニューで、[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール] の順に選択します。コンソール ウィンドウで「Install-Package windowsazure.mediaservices」と入力し、Enter キーを押します。
 1. このプロジェクト (System.Configuration、System.Runtime.Serialization および System.Web) に必要なその他の参照を追加します。
 1. 既定で Programs.cs ファイルに追加されたステートメントを使用して、次と置き換えます。
@@ -972,4 +972,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/04/2016"
+   ms.date="06/23/2016"
    ms.author="tomfitz"/>
 
 # Key Vault テンプレートのスキーマ
@@ -73,9 +73,9 @@ Key Vault を作成するには、テンプレートのリソース セクショ
 | 名前 | 値 |
 | ---- | ---- | 
 | enabledForDeployment | ブール値<br />省略可能<br />**true** または **false**<br /><br />仮想マシン デプロイまたは Service Fabric デプロイで Key Vault が有効かどうかを指定します。 |
-| enabledForTemplateDeployment | ブール値<br />省略可能<br />**true** または **false**<br /><br />Resource Manager テンプレート デプロイで Key Vault を使用できるかどうかを指定します。詳細については、「[」デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。 |
+| enabledForTemplateDeployment | ブール値<br /><br />省略可能**true** または **false**<br /><br />Resource Manager テンプレート デプロイで Key Vault を使用できるかどうかを指定します。詳細については、「[」デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。 |
 | enabledForVolumeEncryption | ブール値<br />省略可能<br />**true** または **false**<br /><br />Key Vault でボリュームの暗号化が有効かどうかを指定します。 |
-| tenantId | 文字列<br />必須<br />**グローバル一意識別子**<br /><br />サブスクリプションのテナント ID。これは、[Get-AzureRMSubscription](https://msdn.microsoft.com/library/azure/mt619284.aspx) PowerShell コマンドレットまたは **azure account show** Azure CLI コマンドで取得できます。 |
+| tenantId | 文字列<br />必須<br />**グローバル一意識別子**<br /><br />サブスクリプションのテナント ID。これは、[Get-AzureRmSubscription](https://msdn.microsoft.com/library/azure/mt619284.aspx) PowerShell コマンドレットまたは **azure account show** Azure CLI コマンドで取得できます。 |
 | accessPolicies | 配列<br />必須<br />[accessPolicies オブジェクト](#accesspolicies)<br /><br />ユーザーまたはサービス プリンシパルのアクセス許可を指定した、最大 16 オブジェクトの配列。 |
 | sku | オブジェクト<br />必須<br />[sku オブジェクト](#sku)<br /><br />Key Vault の SKU。 |
 
@@ -85,7 +85,7 @@ Key Vault を作成するには、テンプレートのリソース セクショ
 | 名前 | 値 |
 | ---- | ---- | 
 | tenantId | 文字列<br />必須<br />**グローバル一意識別子**<br /><br />このアクセス ポリシーの **objectId** を含む Azure Active Directory テナントのテナント ID。 |
-| objectId | 文字列<br />必須<br />**グローバル一意識別子**<br /><br />Key Vault にアクセスできるようになる Azure Active Directory ユーザーまたはサービス プリンシパルのオブジェクト ID。この値は、[Get-AzureRMADUser](https://msdn.microsoft.com/library/azure/mt679001.aspx) または [Get-AzureRMADServicePrincipal](https://msdn.microsoft.com/library/azure/mt678992.aspx) PowerShell コマンドレットか、**azure ad user** または **azure ad sp** Azure CLI コマンドで取得できます。 |
+| objectId | 文字列<br />必須<br />**グローバル一意識別子**<br /><br />Key Vault にアクセスできるようになる Azure Active Directory ユーザーまたはサービス プリンシパルのオブジェクト ID。この値は、[Get-AzureRmADUser](https://msdn.microsoft.com/library/azure/mt679001.aspx) または [Get-AzureRmADServicePrincipal](https://msdn.microsoft.com/library/azure/mt678992.aspx) PowerShell コマンドレットか、**azure ad user** または **azure ad sp** Azure CLI コマンドで取得できます。 |
 | アクセス許可 | オブジェクト<br />必須<br />[permissions オブジェクト](#permissions)<br /><br />この Key Vault に付与される、Active Directory オブジェクトに対するアクセス許可。 |
 
 <a id="permissions" />
@@ -122,13 +122,13 @@ Key Vault を作成するには、テンプレートのリソース セクショ
             "tenantId": {
                 "type": "string",
                 "metadata": {
-                   "description": "Tenant Id for the subscription and use assigned access to the vault. Available from the Get-AzureRMSubscription PowerShell cmdlet"
+                   "description": "Tenant ID for the subscription and use assigned access to the vault. Available from the Get-AzureRmSubscription PowerShell cmdlet"
                 }
             },
             "objectId": {
                 "type": "string",
                 "metadata": {
-                    "description": "Object Id of the AAD user or service principal that will have access to the vault. Available from the Get-AzureRMADUser or the Get-AzureRMADServicePrincipal cmdlets"
+                    "description": "Object ID of the AAD user or service principal that will have access to the vault. Available from the Get-AzureRmADUser or the Get-AzureRmADServicePrincipal cmdlets"
                 }
             },
             "keysPermissions": {
@@ -243,6 +243,6 @@ Key Vault は、次のクイック スタート テンプレートによって�
 ## 次のステップ
 
 - Key Vault の全般的な情報については、「[Azure Key Vault の概要](./key-vault/key-vault-get-started.md)」を参照してください。
-- テンプレートをデプロイするときに Key Vault のシークレットを参照する例については、「[デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
+- テンプレートをデプロイメントするときに Key Vault のシークレットを参照する例については、「[デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -63,7 +63,7 @@ ID が必要とされる最も基本的なシナリオについて考えてみ�
 • ユーザーが認証されたら、アプリケーションは意図した利用者に対して認証が成功したことを確認するために、ユーザーのセキュリティ トークンを検証する必要があります。開発者は、用意されている認証ライブラリを使用して、Azure AD のトークン (JSON Web トークン (JWT) や SAML 2.0 など) の検証を処理できます。検証を手動で実行する場合は、[JWT トークン ハンドラー](https://msdn.microsoft.com/library/dn205065.aspx)に関するドキュメントをご覧ください。
 
 
-> [AZURE.IMPORTANT] Azure AD は、公開キー暗号化を使用してトークンに署名し、トークンが有効であることを確認します。常に最新のキーで更新できるようにするためにアプリケーションに必要なロジックの詳細については、「[Azure AD での署名キーのロールオーバーに関する重要な情報](https://msdn.microsoft.com/library/azure/dn641920.aspx)」をご覧ください。
+> [AZURE.IMPORTANT] Azure AD は、公開キー暗号化を使用してトークンに署名し、トークンが有効であることを確認します。常に最新のキーで更新できるようにするためにアプリケーションに必要なロジックの詳細については、「[Azure AD での署名キーのロールオーバーに関する重要な情報](active-directory-signing-key-rollover.md)」をご覧ください。
 
 
 • 認証プロセスの要求と応答のフローは、使用された認証プロトコル (OAuth 2.0、OpenID Connect、WS-Federation、SAML 2.0 など) によって決まります。これらのプロトコルの詳細については、「[Azure Active Directory の認証プロトコル](active-directory-authentication-protocols.md)」と以降のセクションをご覧ください。
@@ -464,8 +464,8 @@ Web アプリケーションは、認証コードを使用して JWT アクセ�
 
 [Azure Active Directory のコード例](active-directory-code-samples.md)
 
-[Azure AD での署名キーのロールオーバーに関する重要な情報](https://msdn.microsoft.com/library/azure/dn641920.aspx)
+[Azure AD での署名キーのロールオーバーに関する重要な情報](active-directory-signing-key-rollover.md)
 
 [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0629_2016-->

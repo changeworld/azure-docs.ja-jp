@@ -46,7 +46,7 @@ Azure SQL Database Library for .NET は、[リソース マネージャー ベ�
 C# を使用して SQL データベースを設定するには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリック) で次のパッケージをインストールし、必要な管理ライブラリを入手します。
 
     Install-Package Microsoft.Azure.Management.Sql –Pre
-    Install-Package Microsoft.Azure.Management.ResourceManager –Pre
+    Install-Package Microsoft.Azure.Management.ResourceManager –Pre -Version 1.1.1-preview
     Install-Package Microsoft.Azure.Common.Authentication –Pre
 
 
@@ -456,4 +456,4 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="03/24/2016"
+	ms.date="06/24/2016"
 	ms.author="jroth"/>
 
 # Azure VM で SQL Server 用に Azure Key Vault 統合を構成する (リソース マネージャー)
@@ -39,9 +39,8 @@ SQL Server をオンプレミス コンピューターで実行している場�
 
 プロビジョニングの詳細なチュートリアルについては、「[Azure ポータルでの SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
 
-既存の VM での AKV 統合を有効にする必要がある場合、テンプレートを使用することができます。詳細については、[Azure Key Vault 統合用の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-keyvault-setup)に関するページをご覧ください。
-
+既存の VM での AKV 統合を有効にする必要がある場合、テンプレートを使用することができます。詳細については、[Azure Key Vault 統合用の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update)に関するページをご覧ください。
 
 [AZURE.INCLUDE [AKV 統合の次のステップ](../../includes/virtual-machines-sql-server-akv-next-steps.md)]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0629_2016-->

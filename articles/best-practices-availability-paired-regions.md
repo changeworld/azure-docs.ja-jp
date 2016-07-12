@@ -44,6 +44,7 @@ Azure は、世界中の複数の geo で動作します。Azure の geo とは�
 | オーストラリア | オーストラリア東部 | オーストラリア南東部|
 | 米国政府 | 米国政府アイオワ州 | 米国政府バージニア州 |
 | インド | インド中部 | インド南部 |
+| カナダ | カナダ中部 | カナダ東部 |
 
 表 1 - Azure リージョン ペアの組み合わせ
 
@@ -62,12 +63,12 @@ Azure は、世界中の複数の geo で動作します。Azure の geo とは�
 ## リージョン間アクティビティ
 図 2 を参照してください。
 
-![1Green](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (PaaS)** – 障害発生時に他のリージョンでリソースを確実に使用できるように、追加のコンピューティング リソースを事前にプロビジョニングする必要があります。詳細については、「[Azure のビジネス継続性テクニカル ガイダンス](https://msdn.microsoft.com/library/azure/hh873027.aspx)」を参照してください。
+![1Green](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (PaaS)** – 障害発生時に他のリージョンでリソースを確実に使用できるように、追加のコンピューティング リソースを事前にプロビジョニングする必要があります。詳細については、「[Azure の回復性技術ガイダンス](./resiliency/resiliency-technical-guidance.md)」を参照してください。
 
-![2Green](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** - Azure ストレージ アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。詳細については、「[Azure Storage 冗長オプション](storage/storage-redundancy.md)」をご覧ください。
+![2Green](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** - Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。詳細については、「[Azure Storage 冗長オプション](storage/storage-redundancy.md)」をご覧ください。
 
 
-![3Green](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – Azure SQL Standard geo レプリケーションを使用すると、対になっているリージョンへのトランザクションの非同期レプリケーションを構成できます。Premium geo レプリケーションを使用すると、世界中のすべてのリージョンへのレプリケーションを構成できますが、通常の障害復旧では、これらのリソースをペア リージョンにデプロイすることをお勧めします。詳細については、「[Azure SQL Database の geo レプリケーション](https://msdn.microsoft.com/library/azure/dn783447.aspx)」を参照してください。
+![3Green](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – Azure SQL Standard geo レプリケーションを使用すると、対になっているリージョンへのトランザクションの非同期レプリケーションを構成できます。Premium geo レプリケーションを使用すると、世界中のすべてのリージョンへのレプリケーションを構成できますが、通常の障害復旧では、これらのリソースをペア リージョンにデプロイすることをお勧めします。詳細については、「[Azure SQL Database の geo レプリケーション](./sql-database/sql-database-geo-replication-overview.md)」を参照してください。
 
 ![4Green](./media/best-practices-availability-paired-regions/4Green.png) **Azure リソース マネージャー (ARM)** - ARM では本質的に、リージョン全体のサービス管理コンポーネントが論理的に切り離されています。つまり、1 つのリージョンで論理的な障害が発生しても、他のリージョンが影響を受ける可能性はそれほど高くありません。
 
@@ -85,4 +86,4 @@ Azure は、世界中の複数の geo で動作します。Azure の geo とは�
 
 ![9Orange](./media/best-practices-availability-paired-regions/9Orange.png) **データ常駐** – リージョンは、税および法の執行を目的としたデータ常駐要件を満たすために、ペアとして同じ geo に常駐しています (ブラジル南部を除く)。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0629_2016-->

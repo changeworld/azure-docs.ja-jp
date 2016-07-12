@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="06/23/2016"
 	ms.author="femila"/>
 
 # Android 用の Azure Authenticator
@@ -72,7 +72,7 @@ Samsung 製以外の Android デバイスからの職場アカウントの追加
 
 Azure Authenticator アプリをインストールした後は、Android Account Manager から職場アカウントを作成することもできます。
 
-1. **[設定]** メニューから、[アカウント] に移動して、**[アカウントの追加]** をタップします。
+1. [設定] メニューから、**[アカウント]** に移動して、**[アカウントの追加]** をタップします。
 2. 「アプリのホーム画面からの職場アカウントの追加」の手順 2 ～ 7 に従って職場アカウントを追加します。
 
 ### インストールされているバージョンを確認する方法
@@ -111,10 +111,10 @@ Azure Authenticator アプリをインストールした後は、Android Account
 
 Samsung 製 Android デバイスでは、Azure Authenticator アプリをアンインストールする前に、次のようにデバイス管理者の特権を削除する必要があります。
 1. **[設定]** から、**[システム]** の **[セキュリティ]** を選択します。
-2. [デバイス管理] の **[デバイス管理者]** をタップします。**[Azure Authenticator]** の横のチェック ボックスがオフになっていることを確認します。
+2. **[デバイス管理]** の **[デバイス管理者]** をクリックします。**[Azure Authenticator]** の横のチェック ボックスがオフになっていることを確認します。
 
 ##トラブルシューティング
 
 **キーストア エラー**が表示される場合は、ロック画面の PIN が設定されていない可能性があります。この問題を回避するには、Azure Authenticator アプリをアンインストールし、ロック画面の PIN を構成してから、アプリを再インストールします。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/21/2016" 
+	ms.date="06/27/2016" 
 	ms.author="stefsch"/>
 
 # ExpressRoute を使用した App Service 環境のネットワーク構成の詳細 
@@ -29,13 +29,15 @@
 ExpressRoute に接続された仮想ネットワークでは最初は満たされていない場合がある App Service 環境のネットワーク接続要件があります。App Service 環境が正常に機能するには、次のすべてを満たす必要があります。
 
 
--  世界各国の Azure Storage エンドポイントに対するポート 80 とポート 443 での発信ネットワーク接続。これには、App Service Environment と同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。  
--  App Service Environment と同じリージョンにある Sql DB エンドポイントに対する発信ネットワーク接続。SQL DB エンドポイントは、*database.windows.net* ドメインで解決されます。
--  Azure 管理プレーン エンドポイント (ASM エンドポイントと ARM エンドポイントの両方) に対する発信ネットワーク接続これには、*management.core.windows.net* と *management.azure.com* の両方に対する発信接続が含まれます。 
+-  世界各国の Azure Storage エンドポイントに対するポート 80 とポート 443 での発信ネットワーク接続。これには、App Service Environment と同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。
+-  Azure Files サービスに対するポート 445 での発信ネットワーク接続。
+-  App Service Environment と同じリージョンにある Sql DB エンドポイントに対する発信ネットワーク接続。SQL DB エンドポイントは、*database.windows.net* ドメインで解決されます。その際、ポート 1433、ポート 11000 ～ 11999、ポート 14000 ～ 14999 へのアクセスが開かれている必要があります。詳細については、[SQL Database V12 のポートの使用方法に関するこちらの記事](../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)を参照してください。
+-  Azure 管理プレーン エンドポイント (ASM エンドポイントと ARM エンドポイントの両方) に対する発信ネットワーク接続これには、*management.core.windows.net* と *management.azure.com* の両方に対する発信接続が含まれます。
 -  *ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl.microsoft.com* に対する発信ネットワーク接続。これは、SSL 機能をサポートするために必要です。
 -  仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。これらのエンドポイントを解決できない場合、App Service Environment の作成処理に失敗し、既存の App Service Environment は異常とマークされます。
--  カスタム DNS サーバーが VPN ゲートウェイの相手側にある場合、DNS サーバーは App Service Environment を含むサブネットから到達できる必要があります。 
--  発信ネットワーク パスは、社内プロキシを経由したり、オンプレミスに強制的にトンネリングしたりすることができません。実行した場合、App Service Environment からの発信ネットワーク トラフィックの実質的な NAT アドレスが変わります。App Service Environment の発信ネットワーク トラフィックの NAT アドレスを変更すると、上記の多数のエンドポイントに対して接続エラーが発生します。その結果、App Service Environment の作成処理は失敗し、以前は正常動作していた App Service Environment も異常とマークされます。  
+-  DNS サーバーとの通信には、ポート 53 での発信アクセスが必要です。
+-  カスタム DNS サーバーが VPN ゲートウェイの相手側にある場合、DNS サーバーは App Service Environment を含むサブネットから到達できる必要があります。
+-  発信ネットワーク パスは、社内プロキシを経由したり、オンプレミスに強制的にトンネリングしたりすることができません。実行した場合、App Service Environment からの発信ネットワーク トラフィックの実質的な NAT アドレスが変わります。App Service Environment の発信ネットワーク トラフィックの NAT アドレスを変更すると、上記の多数のエンドポイントに対して接続エラーが発生します。その結果、App Service Environment の作成処理は失敗し、以前は正常動作していた App Service Environment も異常とマークされます。
 -  この[記事][requiredports]の説明に従って、App Service 環境の必要なポートへの着信ネットワーク アクセスを許可する必要があります。
 
 DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。何らかの理由で、App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。[Azure ポータル][NewPortal]の App Service Environment 管理ブレードの上部にある [再起動] アイコンを使用して、ローリングする環境の再起動をトリガーすると、新しい DNS 構成が自動的に選択されます。
@@ -106,15 +108,15 @@ DNS 要件を満たすには、仮想ネットワークの有効な DNS イン�
 ルート テーブルをサブネットにバインドしたら、まずテストを行って、意図した効果が出ていることを確認することを勧めします。たとえば、仮想マシンをサブネットにデプロイし、以下の点を確認します。
 
 
-- この記事で前述した Azure エンドポイントと Azure 以外のエンドポイントに対する発信トラフィックは、ExpressRoute 回線を**フローしません**。サブネットからの発信トラフィックは、オンプレミスで強制トンネリングされ、App Service Environment の作成は常に失敗するので、この動作を検証することが重要です。 
-- 前述のエンドポイントの DNS 参照は、すべて正しく解決されます。 
+- この記事で前述した Azure エンドポイントと Azure 以外のエンドポイントに対する発信トラフィックは、ExpressRoute 回線を**フローしません**。サブネットからの発信トラフィックは、オンプレミスで強制トンネリングされ、App Service Environment の作成は常に失敗するので、この動作を検証することが重要です。
+- 前述のエンドポイントの DNS 参照は、すべて正しく解決されます。
 
 上記の手順を確認したら、仮想マシンを削除する必要があります。これは、App Service Environment の作成時にサブネットを "空" にする必要があるからです。
  
 次は、App Service Environment の作成です。
 
 ## 使用の開始
-App Service 環境に関するすべての記事と作業方法は [Application Service Environments の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
+App Service 環境に関するすべての記事と作業方法は [Application Service Environment の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
 
 App Service 環境の使用を開始するには、「[App Service 環境の概要][IntroToAppServiceEnvironment]」を参照してください。
 
@@ -138,4 +140,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

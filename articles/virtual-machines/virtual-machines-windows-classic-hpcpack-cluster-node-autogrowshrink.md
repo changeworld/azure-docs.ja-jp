@@ -23,7 +23,7 @@ ms.service="virtual-machines-windows"
 
 HPC Pack クラスターで Azure の "バースト" ノードをデプロイする場合、あるいは Azure VM で HPC Pack クラスターを作成する場合、クラスターの現在のワークロードに合わせて、コアなどの Azure コンピューティング リソースの数を自動的に増減できれば便利です。そうすれば、Azure リソースをさらに効率的に利用し、そのコストを制御できます。これを行うには、HPC Pack クラスター プロパティ **AutoGrowShrink** を設定します。または、HPC Pack でインストールされる **AzureAutoGrowShrink.ps1** HPC PowerShell スクリプトを実行します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。ただし、現在自動的に拡大縮小できるのは、Windows Server オペレーティング システムを実行している HPC Pack コンピューティング ノードのみです。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)].ただし、現在自動的に拡大縮小できるのは、Windows Server オペレーティング システムを実行している HPC Pack コンピューティング ノードのみです。
 
 ## AutoGrowShrink クラスター プロパティを設定する
 
@@ -70,7 +70,7 @@ HPC Pack クラスターで Azure の "バースト" ノードをデプロイす
 以下に、**Set-HpcClusterProperty** コマンドを使用して変更できる AutoGrowShrink パラメーターを示します。
 
 * **EnableGrowShrink** - **AutoGrowShrink** プロパティの有効/無効を切り替えます。
-* **ParamSweepTasksPerCore** - 1 つのコアを拡大するパラメーター スイープ タスクの数。既定では、タスクごとに 1 つのコアを拡大します。 
+* **ParamSweepTasksPerCore** - 1 つのコアを拡大するパラメーター スイープ タスクの数。既定では、タスクごとに 1 つのコアを拡大します。
  
     >[AZURE.NOTE] HPC Pack QFE KB3134307 では、**ParamSweepTasksPerCore** が **TasksPerResourceUnit** に変更されました。このコマンドはジョブ リソースの種類に基づいており、ノード、ソケット、またはコアに設定することができます。
     
@@ -78,9 +78,9 @@ HPC Pack クラスターで Azure の "バースト" ノードをデプロイす
 * **GrowInterval** - 自動拡大をトリガーする分単位の間隔。既定の間隔は 5 分です。
 * **GrowInterval** - 自動縮小をトリガーする分単位の間隔。既定の間隔は 5 分です。
 * **ShrinkIdleTimes** - ノードがアイドル状態であることを確認する継続的縮小チェックの回数。既定値は 3 回です。たとえば、 **ShrinkInterval** が 5 分である場合、HPC Pack は 5 分ごとにノードがアイドル状態であるかどうかを確認します。継続的チェックを 3 回 (15 分) してもノードがアイドル状態である場合、HPC Pack はそのノードを縮小します。
-* **ExtraNodesGrowRatio** - Message Passing Interface (MPI) ジョブで拡大する追加ノードの割合。既定値は 1 です。つまり、HPC Pack は MPI ジョブでノードを 1% 拡大します。 
+* **ExtraNodesGrowRatio** - Message Passing Interface (MPI) ジョブで拡大する追加ノードの割合。既定値は 1 です。つまり、HPC Pack は MPI ジョブでノードを 1% 拡大します。
 * **GrowByMin** - 自動拡大ポリシーが、ジョブに必要な最小リソースに基づいているかどうかを示すスイッチ。既定値は false です。つまり、HPC Pack はジョブに必要な最大リソースに基づいてジョブのノードを拡大します。
-* **SoaJobGrowThreshold** - 自動拡大プロセスをトリガーする受信 SOA 要求のしきい値。既定値は 50000 です。  
+* **SoaJobGrowThreshold** - 自動拡大プロセスをトリガーする受信 SOA 要求のしきい値。既定値は 50000 です。
     
     >[AZURE.NOTE] このパラメーターは、HPC Pack 2012 R2 Update 3 以降でサポートされます。
     
@@ -179,4 +179,4 @@ AzureAutoGrowShrink.ps1
 .\AzureAutoGrowShrink.ps1 -NodeTemplates 'Default ComputeNode Template' -JobTemplates 'Default' -NodeType ComputeNodes -NumOfActiveQueuedTasksPerNodeToGrow 10 -NumOfActiveQueuedTasksToGrowThreshold 15 -NumOfInitialNodesToGrow 5 -GrowCheckIntervalMins 1 -ShrinkCheckIntervalMins 1 -ShrinkCheckIdleTimes 10 -ArgFile 'IaaSVMComputeNodes_Arg.xml' -LogFilePrefix 'IaaSVMComputeNodes_log'
 ```
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

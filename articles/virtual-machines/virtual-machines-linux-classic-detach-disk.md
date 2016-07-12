@@ -19,7 +19,7 @@
 
 # Linux 仮想マシンからディスクを切断する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [howto-detach-disk-windows-linux](../../includes/howto-detach-disk-linux.md)]
 
@@ -30,4 +30,4 @@
 
 - [クラシック デプロイ モデルでの Azure CLI の使用](../virtual-machines-command-line-tools.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/25/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Azure AD ドメイン サービス *(プレビュー)* - Azure AD ドメイン サービスとのパスワード同期を有効にする
@@ -40,7 +40,7 @@ Azure AD Connect の最新の推奨リリースを、ドメイン参加コンピ
 
 **[Azure AD Connect のダウンロード](http://www.microsoft.com/download/details.aspx?id=47594)**
 
-推奨バージョン: **1.1.130.0** (2016 年 4 月 12 日公開)
+推奨バージョン: **1.1.189.0** (2016 年 6 月 3 日公開)
 
   > [AZURE.WARNING] 従来のパスワードの資格情報 (NTLM/Kerberos 認証で必要) で Azure AD テナントとの同期を有効にするには、Azure AD Connect の最新の推奨リリースをインストールする必要があります。この機能は、旧リリースの Azure AD Connect または従来の DirSync ツールでは使用できません。
 
@@ -80,4 +80,4 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 - [Azure AD ドメイン サービスで管理されているドメインに Red Hat Enterprise Linux 仮想マシンを参加させる](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

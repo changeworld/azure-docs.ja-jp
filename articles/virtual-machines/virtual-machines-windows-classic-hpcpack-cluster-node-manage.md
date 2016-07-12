@@ -20,7 +20,7 @@ ms.service="virtual-machines-windows"
 
 Azure VM で HPC Pack クラスターを作成した場合、クラスターにたくさんのコンピューティング ノード VM を簡単に追加し、開始し (プロビジョニング)、停止 (プロビジョニング解除) できる方法があれば便利です。そのような作業を行うには、ヘッド ノード VM にインストールされている Azure PowerShell スクリプトを実行します。これらのスクリプトを利用すれば、HPC Pack クラスター リソースの数と可用性を制御し、コストを管理できます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
 ## 前提条件
@@ -179,4 +179,4 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 
 * クラスターのジョブやタスクの現在のワークロードに合わせて、クラスター ノードを自動的に拡大縮小する方法については、「[クラスターのワークロードに合わせ、Azure で HPC Pack クラスター リソースを自動的に拡大縮小する](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md)」を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="Identity"
-   ms.date="05/19/2016"
+   ms.date="06/27/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする
@@ -85,4 +85,4 @@ Azure AD Connect のアップグレードには複数の方法があります。
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0629_2016-->

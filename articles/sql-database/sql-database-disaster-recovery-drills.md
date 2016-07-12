@@ -23,7 +23,7 @@
 障害復旧の訓練は以下のもので構成されています。
 
 - データ層の停止シミュレーション
-- 復旧 
+- 復旧
 - 復旧後のアプリケーションの整合性の検証
 
 [ビジネス継続性のためにアプリケーションをどのように設計](sql-database-business-continuity.md)したかによって、実行する訓練のワークフローは異なります。下記に、Azure SQL Database のコンテキストで障害復旧の訓練を行う際のベスト プラクティスについて説明します。
@@ -38,7 +38,7 @@
 
 ####復旧
 
-- [こちら](sql-database-disaster-recovery.md)の説明に従って、データベースの地理リストアを別のサーバーに実行します。 
+- [こちら](sql-database-disaster-recovery.md)の説明に従って、データベースの地理リストアを別のサーバーに実行します。
 - アプリケーションの構成を変更して、復旧したデータベースに接続し、「[復旧後のデータベースの構成](sql-database-disaster-recovery.md)」のガイドに従って、復旧を完了します。
 
 ####検証
@@ -55,7 +55,7 @@ geo レプリケーションを使用して保護されたデータベースの�
 
 ####復旧
 
-- 障害復旧リージョンのアプリケーション構成が (完全にアクセス可能な新しいプライマリになる) 前のセカンダリをポイントしていることを確認します。 
+- 障害復旧リージョンのアプリケーション構成が (完全にアクセス可能な新しいプライマリになる) 前のセカンダリをポイントしていることを確認します。
 - [計画されたフェールオーバー](sql-database-geo-replication-powershell.md#initiate-a-planned-failover)を実行して、セカンダリ データベースを新しいプライマリにします。
 - 「[復旧後のデータベースの構成](sql-database-disaster-recovery.md)」のガイドに従って、復旧を完了します。
 
@@ -66,18 +66,10 @@ geo レプリケーションを使用して保護されたデータベースの�
 
 ## 次のステップ
 
-- 障害復旧のためのアクティブ geo レプリケーションの使用および構成の方法については、「[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)」をご覧ください。
-- 障害復旧のための geo リストアの使用方法については、「[geo リストア](sql-database-geo-restore.md)」をご覧ください。
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
+- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
+- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
+- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
-## その他のリソース
-
-- [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](sql-database-business-continuity.md)
-- [Overview: SQL Database Point-in-Time Restore (概要: SQL Database のポイントインタイム リストア)](sql-database-point-in-time-restore.md)
-- [geo リストア](sql-database-geo-restore.md)
-- [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)
-- [クラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [復旧された Azure SQL データベースの最終処理を行う](sql-database-recovered-finalize.md)
-- [geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)
-- [SQL Database BCDR の FAQ](sql-database-bcdr-faq.md)
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0629_2016-->

@@ -22,7 +22,7 @@ ms.service="virtual-machines-windows"
 
 この記事では、Azure の「バースト」ノード (クラウド サービスで実行されている worker ロール インスタンス) を必要に応じてコンピューティング リソースとして Azure の既存 HPC Pack ヘッド ノードに追加する方法について説明します。これにより、事前構成された一連のコンピューティング ノード VMを保持しなくても、Azure の HPC クラスターの処理能力をオンデマンドでスケールアップできます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 ![ノードをバーストする][burst]
 
@@ -80,7 +80,7 @@ Azure ノードをコンピューティング リソースとして追加する�
 
 ノードを追加し、起動したら、ノードを利用してクラスター ジョブを実行できます。
 
-Azure ノードのデプロイで問題が発生した場合、[Microsoft HPC Pack で Azure ノードをデプロイするときのトラブルシューティング を参照してください ](http://technet.microsoft.com/library/jj159097(v=ws.10).aspx)。
+Azure ノードのデプロイで問題が発生した場合は、「[Troubleshoot Deployments of Azure Nodes with Microsoft HPC Pack (Microsoft HPC Pack で Azure ノードをデプロイするときのトラブルシューティング)](http://technet.microsoft.com/library/jj159097.aspx)」を参照してください。
 
 ## 次のステップ
 
@@ -89,4 +89,4 @@ Azure ノードのデプロイで問題が発生した場合、[Microsoft HPC Pa
 <!--Image references-->
 [burst]: ./media/virtual-machines-windows-classic-hpcpack-cluster-node-burst/burst.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0629_2016-->
