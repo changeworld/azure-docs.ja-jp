@@ -690,7 +690,8 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
     print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
 
-サンプル テーブルの読み取り時間は 14.096495 秒です。取得した行数と列数 = (1000, 21)。
+サンプル テーブルの読み取り時間は 14.096495 秒です。  
+取得した行数と列数 = (1000, 21)。
 
 ### 説明的な統計情報
 
@@ -969,4 +970,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0629_2016-->
+<!----HONumber=AcomDC_0629_2016-->
