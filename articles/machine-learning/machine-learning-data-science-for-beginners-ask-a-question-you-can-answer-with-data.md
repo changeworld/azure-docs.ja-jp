@@ -21,7 +21,7 @@
 
 初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの質問を考案する方法について説明します。このビデオには、分類アルゴリズムと回帰アルゴリズムの質問の比較が含まれます。
 
-> [AZURE.VIDEO data-science-for-beginners-ask-a-question-you-can-answer-with-data]
+> [AZURE.VIDEO /en-us/documentation/videos/data-science-for-beginners-ask-a-question-you-can-answer-with-data/]
 
 ## トランスクリプト: データで回答できる質問をする
 
@@ -96,4 +96,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!----HONumber=AcomDC_0629_2016-->
+<!----HONumber=AcomDC_0629_2016--->
