@@ -17,13 +17,13 @@
    ms.date="06/28/2016"
    ms.author="cgronlun;brohrer;garye"/>
 
-# Ask a question you can answer with data: Data Science for Beginners video 3 
+# データで回答できる質問をする: 初心者向けデータ サイエンス ビデオ 3 
 
-Learn how to formulate a data science question in Data Science for Beginners video 3. This video includes a comparison of questions for classification and regression algorithms.
+初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの質問を考案する方法について説明します。このビデオには、分類アルゴリズムと回帰アルゴリズムの質問の比較が含まれます。
 
 > [AZURE.VIDEO data-science-for-beginners-ask-a-question-you-can-answer-with-data]
 
-## Transcript: Ask a question you can answer with data
+## トランスクリプト: データで回答できる質問をする
 
 "初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。  
 
@@ -96,4 +96,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!----HONumber=AcomDC_0629_2016--->
+<!----HONumber=AcomDC_0629_2016----->
