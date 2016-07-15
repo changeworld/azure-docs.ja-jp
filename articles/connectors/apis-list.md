@@ -32,7 +32,7 @@
 |コネクタ||||
 |-----------|-----------|-----------|-----------|
 |[![API アイコン][blobicon]<br/>**Azure BLOB**][azureblobdoc]|[![API アイコン][boxicon]<br/>**Box**][boxDoc]|[![API アイコン][crmonlineicon]<br/>**CRM Online**][crmonlinedoc]|[![API アイコン][dropboxicon]<br/>**Dropbox**][dropboxdoc]|
-|[![API アイコン][facebookicon]<br/>**Facebook**][facebookdoc]|[![API アイコン][ftpicon]<br/>**FTP**][ftpdoc]|[![API アイコン][githubicon]<br/>**GitHub**][githubdoc]|[![API アイコン][googledriveicon]<br/>**Google ドライブ**][googledrivedoc]|
+|[![API アイコン][facebookicon]<br/>**Facebook**][facebookdoc]|[![API アイコン][ftpicon]<br/>**FTP**][ftpdoc]|[![API アイコン][githubicon]<br/>**GitHub**][githubdoc]|[![API アイコン][googledriveicon]<br/>**Google<br/>ドライブ**][googledrivedoc]|
 |[![API アイコン][mailchimpicon]<br/>**MailChimp**][mailchimpdoc]|[![API アイコン][microsofttranslatoricon]<br/>**Translator**][microsofttranslatordoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**Outlook**][office365outlookdoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**Users**][office365usersdoc]|
 |[![API アイコン][office365icon]<br/>**Office 365**<br/>**Video**][office365videodoc]|[![API アイコン][onedriveicon]<br/>**OneDrive**][onedrivedoc]|[![API アイコン][onedriveicon]<br/>**OneDrive<br/>for Business**][onedriveforbusinessdoc]|[![API アイコン][outlookicon]<br/>**Outlook**][outlookdoc]|
 |[![API アイコン][projectonlineicon]<br/>**Project<br/>Online**][projectonlinedoc]|[![API アイコン][rssicon]<br/>**RSS**][rssdoc]|[![API アイコン][salesforceicon]<br/>**Salesforce**][salesforcedoc]|[![API アイコン][sendgridicon]<br/>**SendGrid**][sendgriddoc]|
