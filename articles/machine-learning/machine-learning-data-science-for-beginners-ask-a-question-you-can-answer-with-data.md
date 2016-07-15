@@ -1,7 +1,7 @@
 ﻿<properties
-   pageTitle="データで回答できる質問をする | Microsoft Azure"
-   description="初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの質問を考案する方法について説明します。分類の質問と回帰の質問の比較も含まれます。"
-   keywords="質問の選択,データ サイエンスの質問,質問の考案,質問の考案,回帰の質問,分類の質問,シャープな質問"
+   pageTitle="Ask a question you can answer with data | Microsoft Azure"
+   description="Learn how to formulate a data science question in Data Science for Beginners video 3. Includes a comparison of classification and regression questions."
+   keywords="choose a question,data science questions,formulate question,formulate questions,regression questions,classification questions,sharp question"
    services="machine-learning"
    documentationCenter="na"
    authors="brohrer-ms"
@@ -23,7 +23,7 @@ Learn how to formulate a data science question in Data Science for Beginners vid
 
 > [AZURE.VIDEO data-science-for-beginners-ask-a-question-you-can-answer-with-data]
 
-## トランスクリプト: データで回答できる質問をする
+## Transcript: Ask a question you can answer with data
 
 "初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。  
 
@@ -96,4 +96,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!----HONumber=AcomDC_0629_2016---->
+<!----HONumber=AcomDC_0629_2016--->
