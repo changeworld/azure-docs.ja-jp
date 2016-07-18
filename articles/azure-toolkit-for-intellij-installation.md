@@ -22,11 +22,11 @@ Azure Toolkit for IntelliJ は、IntelliJ IDEA 開発環境を使って Azure �
 
 <https://github.com/microsoft/azure-tools-for-java>
 
-Azure Toolkit for IntelliJ には 2 とおりのインストール方法があります。[Settings] (設定) ダイアログ ボックスを使用する方法と、スタート画面の [Configure] (構成) メニューを使用する方法です。その両方のインストール方法を以降の手順で説明します。
+Azure Toolkit for IntelliJ には 2 とおりのインストール方法があります。[Settings] \(設定) ダイアログ ボックスを使用する方法と、スタート画面の [Configure] \(構成) メニューを使用する方法です。その両方のインストール方法を以降の手順で説明します。
 
 [AZURE.INCLUDE [azure-toolkit-for-IntelliJ-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## Azure Toolkit for IntelliJ を [Settings] (設定) ダイアログ ボックスからインストールするには
+## Azure Toolkit for IntelliJ を [Settings] \(設定) ダイアログ ボックスからインストールするには
 
 1. IntelliJ IDEA を起動します。
 
@@ -34,7 +34,7 @@ Azure Toolkit for IntelliJ には 2 とおりのインストール方法があ�
 
     ![Open the IntelliJ IDEA Settings Dialog Box][01a]
 
-1. [Settings] (設定) ダイアログ ボックスの **[Plugins]** (プラグイン) をクリックし、**[Browse repositories]** (リポジトリの参照) をクリックします。
+1. [Settings] \(設定) ダイアログ ボックスの **[Plugins]** (プラグイン) をクリックし、**[Browse repositories]** (リポジトリの参照) をクリックします。
 
     ![IntelliJ IDEA Settings Dialog Box][02a]
 
@@ -50,7 +50,7 @@ Azure Toolkit for IntelliJ には 2 とおりのインストール方法があ�
 
     ![Restart IntelliJ IDEA][05]
 
-1. **[OK]** をクリックして [Settings] (設定) ダイアログ ボックスを閉じます。
+1. **[OK]** をクリックして [Settings] \(設定) ダイアログ ボックスを閉じます。
 
     ![Close IntelliJ IDEA Settings Dialog Box][06]
 

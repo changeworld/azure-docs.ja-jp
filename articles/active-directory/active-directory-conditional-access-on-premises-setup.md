@@ -121,8 +121,8 @@ Azure Active Directory Device Registration サービスを Azure Active Director
   2.	Azure AD Connect のインストールと実行: 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールします。
   3. ディレクトリの同期を確認および管理します。この手順では、シングル サインオンの手順を利用できます。
   
-  > [AZURE.NOTE] 
-  上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。プレビュー機能を構成する必要はありません。
+  > [AZURE.NOTE] 上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。
+  > [AZURE.NOTE] プレビュー機能を構成する必要はありません。
 
 
 ## Active Directory ドメイン サービス スキーマをアップグレードする

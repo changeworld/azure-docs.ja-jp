@@ -113,7 +113,7 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
 
     * **ドメイン検証**
 
-        * この方法は、**[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)****場合にのみ**、最も便利な方法です。
+        * この方法は、**[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md) **場合にのみ**、最も便利な方法です。
         
         * **[検証]** ボタンをクリックして、この手順を実行します。
         

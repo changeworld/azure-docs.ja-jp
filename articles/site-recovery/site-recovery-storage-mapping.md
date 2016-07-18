@@ -53,7 +53,7 @@ Site Recovery で Hyper-V レプリカを使ってレプリケートする場合
 VMM で分類が適切に構成されている場合、記憶域マッピング中にソースとターゲットの VMM サーバーを選択すると、ソース分類とターゲット分類が表示されます。ニューヨークとシカゴの 2 つの拠点がある組織での記憶域のファイル共有と分類の例を以下に示します。
 
 **場所** | **VMM サーバー** | **ファイル共有 (ソース)** | **分類 (ソース)** | **マップ先** | **ファイル共有 (ターゲット)**
----|---|--- |---|---|---
+---|---|---|---|---|---
 ニューヨーク | VMM\_Source| SourceShare1 | GOLD | GOLD\_TARGET | TargetShare1
  | | SourceShare2 | SILVER | SILVER\_TARGET | TargetShare2
  | | SourceShare3 | BRONZE | BRONZE\_TARGET | TargetShare3

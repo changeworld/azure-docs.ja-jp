@@ -95,7 +95,7 @@ Transact-SQL を使用してアクティブ geo レプリケーションを構�
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer3> WITH (ALLOW_CONNECTIONS = NO
-           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1));
+           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1);
 
 4. **[実行]** をクリックしてクエリを実行します。
 
@@ -112,7 +112,7 @@ Transact-SQL を使用してアクティブ geo レプリケーションを構�
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer4> WITH (ALLOW_CONNECTIONS = ALL
-           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool2));
+           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool2);
 
 4. **[実行]** をクリックしてクエリを実行します。
 

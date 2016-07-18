@@ -76,7 +76,7 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
 
 1. ページを下にスクロールして **[Cloud]** セクションを探します。
 
-1. **[Add new cloud]、[Microsoft Azure]** の順にクリックします。
+1. **\[Add new cloud]、[Microsoft Azure]** の順にクリックします。
 
     ![新しいクラウドの追加][add new cloud]
 

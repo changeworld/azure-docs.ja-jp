@@ -24,7 +24,7 @@
 Web App と Azure CDN の統合には、次の利点があります。
 
 - コンテンツのデプロイメント (画像、スクリプト、およびスタイルシート) を、Web アプリの[継続的なデプロイメント](web-sites-publish-source-control.md) プロセスの一部として統合
-- Azure App Service の Web アプリの NuGet パッケージ (たとえば、jQuery バージョン、Bootstrap バージョン) を簡単にアップグレードできる
+- Azure App Service の Web アプリの NuGet パッケージ (たとえば、jQuery バージョン、Bootstrap バージョン) を簡単にアップグレードできる 
 - Web アプリケーションと CDN によって配信されるコンテンツを同じ Visual Studio インターフェイスから管理
 - ASP.NET のバンドルと縮小を Azure CDN と統合できる。
 
@@ -107,7 +107,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 >[AZURE.NOTE] チュートリアルのこのセクションでのクエリ文字列の有効化は必須ではありませんが、ここでの変更がすべての CDN ノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。
 
-2. 次に、CDN エンドポイントのアドレスに移動します。エンドポイントの準備が完了している場合、Web アプリが表示されます。**HTTP 404** エラーが表示された場合は、CDN エンドポイントの準備ができていません。CDN の構成がすべてのエッジ ノードに反映されるまで、最大で 1 時間待機することが必要になる場合があります。
+2. 次に、CDN エンドポイントのアドレスに移動します。エンドポイントの準備が完了している場合、Web アプリが表示されます。**HTTP 404** エラーが表示された場合は、CDN エンドポイントの準備ができていません。CDN の構成がすべてのエッジ ノードに反映されるまで、最大で 1 時間待機することが必要になる場合があります。 
 
 	![](media/cdn-websites-with-cdn/11-access-success.png)
 
@@ -127,14 +127,14 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 -	/Script パスの .js ファイル
 -	/Content パスの任意のコンテンツ ファイル
--	任意のコントローラー/アクション
+-	任意のコントローラー/アクション 
 -	CDN エンドポイントでクエリ文字列が有効になっている場合、クエリ文字列を含む任意の URL
 -	すべてのコンテンツがパブリックの場合、Azure Web アプリ全体
 
 Azure CDN から Azure Web アプリ全体を配信することが常に (または一般的に) 最適とは限りません。いくつかの注意点があります。
 
 -	Azure CDN ではプライベートなコンテンツを配信できないため、この方法ではサイト全体をパブリックにする必要があります。
--	予定されたメンテナンスであろうとユーザー エラーであろうと、CDN エンドポイントが何かの理由でオフラインになると、顧客をオリジン URL **http://*&lt;sitename>*.azurewebsites.net/** にリダイレクトできる場合を除き、Web アプリ全体がオフラインになります。
+-	予定されたメンテナンスであろうとユーザー エラーであろうと、CDN エンドポイントが何かの理由でオフラインになると、顧客をオリジン URL **http://*&lt;sitename>*.azurewebsites.net/** にリダイレクトできる場合を除き、Web アプリ全体がオフラインになります。 
 -	カスタムの Cache-Control 設定 (「[Azure Web アプリの静的ファイルのキャッシュ オプションを構成する](#configure-caching-options-for-static-files-in-your-azure-web-app)」を参照してください) を使用した場合でも、CDN エンドポイントによって高度に動的なコンテンツのパフォーマンスが向上するわけではありません。上に示すように CDN エンドポイントからホーム ページを読み込もうとした場合、非常に単純な既定のホーム ページを初めて読み込むときに 5 秒以上かかります。このページに毎分更新する必要がある動的コンテンツが含まれていたとしたら、クライアント エクスペリエンスはどうなるでしょうか。動的コンテンツを CDN エンドポイントから配信するにはキャッシュの有効期限が短く設定されている必要があります。これは、CDN エンドポイントで頻繁にキャッシュ ミスが発生することになります。その結果、Azure Web アプリのパフォーマンスが低下し、CDN の目的が果たせなくなります。
 
 また、Azure Web アプリで Azure CDN から配信するコンテンツをケースバイケースで決定する方法もあります。CDN エンドポイントから個々のコンテンツ ファイルにアクセスする方法については既に説明しました。CDN エンドポイントを介して特定のコントローラー アクションを配信する方法については、「[Azure CDN を介してコントローラー アクションからコンテンツを配信する](#serve-content-from-controller-actions-through-azure-cdn)」で説明します。
@@ -375,7 +375,7 @@ Azure Web アプリでこの Razor コードが実行されると、次のよう
 
 ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合するには、次の手順に従います。
 
-1. *App\_Start\\BundleConfig.cs* に戻り、CDN アドレスを指定する別の [Bundle コンストラクター](http://msdn.microsoft.com/library/jj646464.aspx)を使用するように `bundles.Add()` メソッドを変更します。そのためには、`RegisterBundles` メソッドの定義を次のコードで置き換えます。
+1. *App\_Start\\BundleConfig.cs* に戻り、CDN アドレスを指定する別の [Bundle コンストラクター](http://msdn.microsoft.com/library/jj646464.aspx)を使用するように `bundles.Add()` メソッドを変更します。そのためには、`RegisterBundles` メソッドの定義を次のコードで置き換えます。  
 	
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -422,7 +422,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 3. クエリ文字列 `<W.X.Y.Z>` は、ASP.NET プロジェクトの *Properties\\AssemblyInfo.cs* から取得されます。Azure に発行するたびにアセンブリ バージョンを増分する操作を含むデプロイ ワークフローを導入できます。また、ワイルドカード文字 * を使って単にプロジェクトの *Properties\\AssemblyInfo.cs* を変更して、ビルドするたびに自動的にバージョン文字列を増分するよう設定することもできます。たとえば、`AssemblyVersion` を次のように変更します。
 	
-		[assembly: AssemblyVersion("1.0.0.*")]
+			[assembly: AssemblyVersion("1.0.0.*")]
 	
 	デプロイの有効期間を通じて一意の文字列を生成する操作を合理化するための他の戦略も使用できます。
 
@@ -458,7 +458,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 [Bundle](http://msdn.microsoft.com/library/system.web.optimization.bundle.aspx) クラスには、CDN 障害に対するフォールバック メカニズムを構成するための [CdnFallbackExpression](http://msdn.microsoft.com/library/system.web.optimization.bundle.cdnfallbackexpression.aspx) プロパティがあります。このプロパティを使用するには、次の手順に従います。
 
-1. ASP.NET プロジェクトで、それぞれの [Bundle コンストラクター](http://msdn.microsoft.com/library/jj646464.aspx)に CDN URL を追加した *App\_Start\\BundleConfig.cs* を開き、示されたているように 4 か所に `CdnFallbackExpression` コードを追加して、フォールバック メカニズムを既定のバンドルに追加します。
+1. ASP.NET プロジェクトで、それぞれの [Bundle コンストラクター](http://msdn.microsoft.com/library/jj646464.aspx)に CDN URL を追加した *App\_Start\\BundleConfig.cs* を開き、示されたているように 4 か所に `CdnFallbackExpression` コードを追加して、フォールバック メカニズムを既定のバンドルに追加します。  
 	
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -518,7 +518,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 	この新しいメソッドでは、同じアイデアを使用するスクリプトを HTML に挿入します。つまり、DOM を調べて CSS バンドルに定義されているクラス名、規則名、および規則値が一致するかどうかを確認し、一致しない場合はオリジン Web サーバーにフォールバックします。
 
 4. もう一度 Azure Web アプリに発行し、ホーム ページにアクセスします。
-5. ページの HTML コードを表示します。次のようなスクリプトが挿入されていることを確認できます。
+5. ページの HTML コードを表示します。次のようなスクリプトが挿入されていることを確認できます。    
 	
 	```
 	...

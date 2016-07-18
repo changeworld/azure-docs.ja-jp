@@ -4,7 +4,7 @@ Azure Toolkit for Eclipse には、以下のソフトウェア コンポーネ�
 
 * Eclipse IDE for Java EE Developers Luna 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。
 
-* Java Developer Kit (JDK) v1.8 以降。
+* Java Developer Kit (JDK) v1.8 以降。 
 
 * オペレーティング システム - Azure Toolkit for Eclipse は、次のオペレーティング システムでテストされています。
 
@@ -14,6 +14,8 @@ Azure Toolkit for Eclipse には、以下のソフトウェア コンポーネ�
     * [Ubuntu Linux](http://www.ubuntu.com) バージョン 12、14、15
 
 詳細については、Eclipse Marketplace の [Azure Toolkit for Eclipse](http://marketplace.eclipse.org/content/azure-toolkit-eclipse) に関するページを参照してください。
+
+<br>
 
 > [AZURE.IMPORTANT] Windows で Azure Toolkit for Eclipse を使用する場合は、Azure SDK 2.9.1 以降をインストールする必要があります。Azure SDK をインストールするためのオプションは 2 つあります。
 > 

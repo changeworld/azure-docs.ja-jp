@@ -81,7 +81,7 @@ Site Recovery Capacity Planner では、ソース環境やワークロードを�
 
 	![Getting Started (概要)](./media/site-recovery-capacity-planner/getting-started-2.png)
 
-3.	**Workload Qualification ** ワークシートに、必要な情報を入力します。マークが付いているフィールドはすべて入力する必要があります。
+3.	**Workload Qualification** ワークシートに、必要な情報を入力します。マークが付いているフィールドはすべて入力する必要があります。
 
 	- **[プロセッサ コア]** には、ソース サーバー上のコアの総数を指定します。
 	- **[メモリの割り当て (MB)]** には、ソース サーバーの RAM サイズを指定します。

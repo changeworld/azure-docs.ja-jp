@@ -82,7 +82,7 @@ Management Studio でクエリ ウィンドウを開くには、[データベー
 
  2. **myTestDB** データベースを右クリックし、**[新しいクエリ]** を選択します。
 
-    3.  myTestDB データベースに対して次のステートメントを実行して、サーバー レベルのログイン **login1** に対応する ** login1User** という名前のデータベース ユーザーを作成します。
+    3.  myTestDB データベースに対して次のステートメントを実行して、サーバー レベルのログイン **login1** に対応する** login1User** という名前のデータベース ユーザーを作成します。
 
             CREATE USER login1User FROM LOGIN login1;
 

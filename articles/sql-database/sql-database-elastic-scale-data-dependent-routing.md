@@ -85,7 +85,7 @@
 
 **OpenConnectionForKey** メソッドは、正しいデータベースに対し、既に開いている接続を新たに返します。この方法で接続した場合も引き続き ADO.Net 接続プールの利点を最大限に活用できます。トランザクションと要求を満たすことができるのが 1 回に 1 つのシャードである限り、ADO.Net を既に使用しているアプリケーションで必要な変更はこれだけです。
 
-アプリケーションが ADO.Net との非同期プログラミングを使用する場合は、**[OpenConnectionForKeyAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)** メソッドも使用できます。その動作は、ADO.Net の **[Connection.OpenAsync] (https://msdn.microsoft.com/library/hh223688(v=vs.110).aspx)** メソッドと同等のデータ依存型ルーティングです。
+アプリケーションが ADO.Net との非同期プログラミングを使用する場合は、**[OpenConnectionForKeyAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)** メソッドも使用できます。その動作は、ADO.Net の **[Connection.OpenAsync] \(https://msdn.microsoft.com/library/hh223688(v=vs.110).aspx)** メソッドと同等のデータ依存型ルーティングです。
 
 ## 一時的な障害処理との統合 
 

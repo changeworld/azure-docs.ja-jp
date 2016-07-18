@@ -16,7 +16,7 @@
 > [AZURE.NOTE] Web サイトのデプロイ用に Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) がインストールされていることを確認してください。
 
 1. Visual Studio または Visual Studio Express を起動します。**[サーバー エクスプローラー]** をクリックして Azure アカウントにサインインします。Visual Studio でアカウントの Web サイト リソースを作成するには、サインインする必要があります。
-2. Visual Studio で、**[ファイル]**、**[新規]**、**[プロジェクト]** の順にクリックし、**[テンプレート]**、**[Visual C#] ** の順に展開します。次に、**[Web]**、**[ASP.NET Web アプリケーション]** の順にクリックし、「**AppBackend**」という名前を入力して、**[OK]** をクリックします。
+2. Visual Studio で、**[ファイル]**、**[新規]**、**[プロジェクト]** の順にクリックし、**[テンプレート]**、**[Visual C#]** の順に展開します。次に、**[Web]**、**[ASP.NET Web アプリケーション]** の順にクリックし、「**AppBackend**」という名前を入力して、**[OK]** をクリックします。
 	
 	![][B1]
 
