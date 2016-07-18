@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/07/2016"
+	ms.date="06/21/2016"
 	ms.author="rclaus"/>
 
 # Azure での Linux VM の最適化
@@ -59,7 +59,7 @@ Azure Marketplace からデプロイされた VM イメージでは、VM Linux �
 これを次のように変更する必要があります。
 
 * ResourceDisk.EnableSwap=Y
-* ResourceDisk.SwapSizeMB={ニーズに合わせたサイズ (MB)} 
+* ResourceDisk.SwapSizeMB={ニーズに合わせたサイズ (MB)}
 
 この変更を行った後は、変更を反映するために waagent を再起動するか、Linux VM を再起動する必要があります。`free` コマンドを使用して空き領域を表示すると、変更が実装され、スワップ ファイルが作成されたことがわかります。次の例では、waagent.conf ファイルを変更した結果として、512 MB のスワップ ファイルが作成されています。
 
@@ -126,4 +126,4 @@ Redhat 配布ファミリでは、次のコマンドのみが必要です。
 - [Azure Linux VM 上での MySQL のパフォーマンスを最適化する](virtual-machines-linux-classic-optimize-mysql.md)
 - [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

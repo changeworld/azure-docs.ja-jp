@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="04/18/2016"
+ ms.date="06/30/2016"
  ms.author="krisragh"/>
 
 # Scheduler の制限と既定値
@@ -46,4 +46,4 @@ Scheduler サービスに対するすべての要求は、**x-ms-request-id** �
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

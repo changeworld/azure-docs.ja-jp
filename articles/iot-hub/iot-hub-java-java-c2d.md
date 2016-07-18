@@ -24,13 +24,17 @@
 
 Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。「[IoT Hub の概要]」チュートリアルには、IoT Hub の作成方法、IoT Hub でデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレーション済みデバイスをコード化する方法が示されています。
 
-このチュートリアルは、[IoT Hub の概要]に関するページのチュートリアルに基づいて作成されており、クラウドからデバイスへのメッセージを単一のデバイスに送信し、IoT Hub から配信確認 (*フィードバック*) を要求して、アプリケーション クラウド バックエンドからそれを受け取る方法を示します。
+このチュートリアルは、[IoT Hub の概要]に関するページのチュートリアルに基づいて作成されており、次の方法について説明します。
+
+- アプリケーションのクラウド バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
+- クラウドからデバイスへのメッセージをデバイスで受信する。
+- IoT Hub からデバイスに送信されたメッセージの配信確認 (*フィードバック*) を、アプリケーションのクラウド バックエンドから要求する。
 
 クラウドからデバイスへのメッセージの詳細については、「[IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」をご覧ください。
 
 このチュートリアルの最後には、次の 2 つの Java コンソール アプリケーションを実行します。
 
-* **simulated-device**。「[IoT Hub の概要]」で作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
+* **simulated-device**。[IoT Hub の概要]に関するページで作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
 * **send-c2d-messages**。これは、クラウドからデバイスへのメッセージを IoT Hub を介してシミュレーション済みデバイスに送信し、その配信確認を受け取ります。
 
 > [AZURE.NOTE] IoT Hub には、Azure IoT device SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター]のページを参照してください。
@@ -73,11 +77,11 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     client.open();
     ```
 
-    > [AZURE.NOTE] AMQP ではなく、HTTP/1 をトランスポートとして使用する場合、**DeviceClient** インスタンスでは、IoT Hub からのメッセージを低頻度 (25 分未満の間隔) で確認します。AMQP と HTTP/1 のサポートの相違点と、IoT Hub スロットルの詳細については、「[Azure IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」を参照してください。
+    > [AZURE.NOTE] トランスポートとして AMQP の代わりに HTTP/1 を使用した場合、**DeviceClient** インスタンスが IoT Hub からのメッセージをチェックする頻度は低くなります (25 分に 1 回未満)。AMQP と HTTP/1 のサポートの相違点と、IoT Hub スロットルの詳細については、「[Azure IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」を参照してください。
 
 ## クラウドからデバイスへのメッセージをアプリケーションのバックエンドから送信する
 
-このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する Java コンソール アプリを作成します。「[IoT Hub の概要]」チュートリアルで追加したデバイスのデバイス ID と、見つけることができる IoT Hub の接続文字列が必要です。
+このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する Java コンソール アプリを作成します。[IoT Hub の概要]に関するページのチュートリアルで追加したデバイスのデバイス ID と、[Azure ポータル]で確認できる IoT Hub の接続文字列が必要です。
 
 1. コマンド プロンプトで次のコマンドを使用して、**send-c2d-messages** という新しい Maven プロジェクトを作成します。これは 1 つの長いコマンドです。
 
@@ -109,7 +113,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     import java.net.URISyntaxException;
     ```
 
-7. 次のクラスレベルの変数を **App** クラスに追加し、**{yourhubconnectionstring}** と **{yourdeviceid}** を先にメモした値に置き換えます。
+7. 次のクラス レベルの変数を **App** クラスに追加し、**{yourhubconnectionstring}** と **{yourdeviceid}** を先にメモした値に置き換えます。
 
     ```
     private static final String connectionString = "{yourhubconnectionstring}";
@@ -151,6 +155,26 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
     > [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。運用環境のコードでは、MSDN の記事「[Transient Fault Handling (一時的な障害の処理)]」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
+## アプリケーションの実行
+
+これで、アプリケーションを実行する準備が整いました。
+
+1. simulated-device フォルダーからコマンド プロンプトで次のコマンドを実行し、IoT Hub へのテレメトリ データの送信を開始して、IoT Hub から送信される (クラウドからデバイスへの) メッセージを待機します。
+
+    ```
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
+    ```
+
+    ![][img-simulated-device]
+
+2. send-c2d-messages フォルダーからコマンド プロンプトで次のコマンドを実行し、クラウドからデバイスへのメッセージを送信して、フィードバックの配信確認を待機します。
+
+    ```
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+    ```
+
+    ![][img-send-command]
+
 ## 次のステップ
 
 このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。次のチュートリアルで IoT Hub の機能やシナリオをさらに詳しく調べることができます。
@@ -166,6 +190,10 @@ IoT Hub に関するその他の情報:
 * [サポートされているデバイスのプラットフォームおよび言語]
 * [Azure IoT デベロッパー センター]
 
+
+<!-- Images -->
+[img-simulated-device]: media/iot-hub-java-java-c2d/receivec2d.png
+[img-send-command]: media/iot-hub-java-java-c2d/sendc2d.png
 <!-- Links -->
 
 [IoT Hub の概要]: iot-hub-java-java-getstarted.md
@@ -180,5 +208,6 @@ IoT Hub に関するその他の情報:
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/java-devbox-setup.md
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

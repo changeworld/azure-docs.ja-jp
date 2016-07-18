@@ -25,6 +25,10 @@
 
 以下のチュートリアルでは、SQL Server Management Studio を使用して Azure SQL Database を管理し、クエリを実行する方法を学習します。
 
+
+> [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+
+
 | チュートリアル | 説明 |
 |---|---|---|
 | [サーバー レベルのプリンシパル ログインを使用して Azure SQL Database に接続する](sql-database-get-started-security.md#connect-to-azure-sql-database-using-a-server-level-principal-login)| このチュートリアルでは、サーバー レベルのプリンシパル ログインを使用して Azure SQL Database に接続する方法を学習します。|
@@ -61,14 +65,14 @@
 
 | チュートリアル | 説明 |
 |---|---|---|
-| [水平方向にパーティション分割 (シャーディング) されたデータベースにまたがるクエリ](sql-database-elastic-query-getting-started.md) | このチュートリアルでは、[エラスティック クエリ](sql-database-elastic-query-overview.md)を使用して、水平方向にパーティション分割 (シャーディング) されたすべてのデータベースからレポートを作成する方法を学習します。 |
-| [垂直方向にパーティション分割されたデータベースにまたがるクエリ](sql-database-elastic-query-getting-started-vertical.md#create-database-objects) | このチュートリアルでは、[エラスティック クエリ](sql-database-elastic-query-overview.md)を使用して、垂直方向にパーティション分割されたすべてのデータベースからレポートを作成する方法を学習します。 |
+| [水平方向にパーティション分割 (シャーディング) されたデータベースにまたがるクエリ](sql-database-elastic-query-getting-started.md) | このチュートリアルでは、[エラスティック クエリ](sql-database-elastic-query-overview.md)を使用して、水平方向にパーティション分割 (シャード) されたすべてのデータベースからレポートを作成する方法を学習します |
+| [垂直方向にパーティション分割されたデータベースにまたがるクエリ](sql-database-elastic-query-getting-started-vertical.md#create-database-objects) | このチュートリアルでは、[エラスティック クエリ](sql-database-elastic-query-overview.md)を使用して、垂直方向にパーティション分割されたすべてのデータベースからレポートを作成する方法を学習します |
 | [既存のデータベースを移行してスケールアウト](sql-database-elastic-convert-to-use-elastic-tools.md)| このチュートリアルでは、Azure SQL Database を水平方向にスケーリング (シャード) する方法を学習します。 |
 ||||
 
 ## パフォーマンスの最適化
 
-以下のチュートリアルでは、[単一のデータベースのパフォーマンス](sql-database-performance-guidance.md)の最適化について学習します。複数のデータベースのパフォーマンスの最適化については、[エラスティック プール](#elastic-pools)に関するセクションを参照してください。
+以下のチュートリアルでは、[単一のデータベースのパフォーマンス](sql-database-performance-guidance.md)の最適化について学習します。複数のデータベースのパフォーマンスの最適化については、「[エラスティック プール](#elastic-pools)」を参照してください。
 
 | チュートリアル | 説明 |
 |---|---|---|
@@ -180,4 +184,4 @@
 
 [Azure SQL Database ソリューション クイック スタート ガイド](sql-database-solution-quick-starts.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

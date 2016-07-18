@@ -17,6 +17,16 @@
    ms.author="rortloff;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse での監査
+
+> [AZURE.SELECTOR]
+- [セキュリティの概要](sql-data-warehouse-overview-manage-security.md)
+- [脅威の検出](sql-data-warehouse-security-threat-detection.md)
+- [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
+- [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+- [監査の概要](sql-data-warehouse-auditing-overview.md)
+- [ダウンレベル クライアントの監査](sql-data-warehouse-auditing-downlevel-clients.md)
+
+
 Azure SQL Data Warehouse 監査は、データベース イベントを追跡し、監査したイベントを Azure Storage アカウントの監査ログに書き込みます
 
 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
@@ -141,4 +151,4 @@ Azure リソース マネージャー モードを実行中に、`Get-Command *A
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

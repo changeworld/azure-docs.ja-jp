@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/28/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Azure Active Directory ドメイン サービスで管理されているドメインを管理する
@@ -146,4 +146,4 @@ TechNet の 手順に従って、Windows クライアントの仮想マシンで
 
 - [リモート サーバー管理ツールのデプロイ](https://technet.microsoft.com/library/hh831501.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -4,7 +4,7 @@
 	services="notification-hubs" 
 	documentationCenter="" 
 	authors="wesmc7777" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" />
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="powershell" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/28/2016" 
+	ms.date="06/29/2016" 
 	ms.author="wesmc"/>
 
 # PowerShell を使用した Notification Hubs のデプロイと管理
@@ -96,7 +96,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 スクリプトのこの部分では 4 つのローカル変数を設定します。
 
 1. `$Namespace` : 通知ハブを作成する名前空間の名前に設定します。
-2. `$Path` : このパスは新しい通知ハブの名前に設定します。たとえば、「Myhub」のように設定します。    
+2. `$Path` : このパスは新しい通知ハブの名前に設定します。たとえば、「Myhub」のように設定します。
 3. `$WnsPackageSid` : [Windows デベロッパー センター](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409)からの Windows アプリケーションのパッケージ SID に設定します。
 4. `$WnsSecretkey` : [Windows デベロッパー センター](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409)からの Windows アプリケーションの秘密キーに設定します。
 
@@ -172,4 +172,4 @@ else
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

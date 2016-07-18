@@ -37,6 +37,6 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 
 ## 次のステップ
 - 別のエラーが発生している場合は、原因の手掛かりとなる[エラー メッセージ](sql-database-develop-error-messages.md)を確認してください。
-- 問題が解消されない場合は、「[Troubleshoot common connection issues to SQL Azure Database (SQL Azure Database への接続の一般的な問題のトラブルシューティング)](sql-database-troubleshoot-common-connection-issues.md)」のガイダンスを参照してください。
+- 問題が解消されない場合は、「[Azure SQL Database との接続に関する一般的な問題のトラブルシューティング](sql-database-troubleshoot-common-connection-issues.md)」のガイダンスを参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

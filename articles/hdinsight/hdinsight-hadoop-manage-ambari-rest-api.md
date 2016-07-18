@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/19/2016"
+   ms.date="07/05/2016"
    ms.author="larryfr"/>
 
 #Ambari REST API を使用した HDInsight クラスターの管理
@@ -76,13 +76,11 @@ cURL を使用して REST API に対する GET 要求を実行する例を次に
         "Host/host_status/UNKNOWN" : 0,
         "Host/host_status/ALERT" : 0
 
-これは JSON であるため、一般に、データを取得するには、JSON パーサーを使用するのが簡単です。たとえば、(__"Host/host\_status/ALERT"__ 要素に含まれている) アラートの数を取得するには、次のコードを使用して値に直接アクセスすることができます。
+これは JSON であるため、一般に、データを取得するには、JSON パーサーを使用するのが簡単です。たとえば、クラスターの正常性状態の情報を取得するには、次のようにします。
 
-    curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME" | jq '.Clusters.health_report."Host/host_status/ALERT"'
+    curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME" | jq '.Clusters.health_report'
     
-このコードを実行すると、JSON ドキュメントが取得され、その出力がパイプを介して jq に渡されます。`'.Clusters.health_report."Host/host_status/ALERT"'` は、取得する JSON ドキュメント内の要素を示します。
-
-> [AZURE.NOTE] __Host/host\_status/ALERT__ 要素が引用符で囲まれているのは、"/" が要素名の一部であることを示すためです。jq の使い方の詳細については、[jq の Web サイト](https://stedolan.github.io/jq/)を参照してください。
+このコードを実行すると、JSON ドキュメントが取得され、その出力がパイプを介して jq に渡されます。`.Clusters.health_report` は、取得する JSON ドキュメント内の要素を示します。
 
 ##例: クラスター ノードの FQDN を取得する
 
@@ -146,7 +144,7 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
 
         curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME?fields=Clusters/desired_configs"
         
-    これは、クラスターにインストールされているコンポーネントの現在の構成 (_タグ_値で特定) を含む JSON ドキュメントを返します。たとえば、次は Spark タイプのクラスターから返されるデータからの抜粋です。
+    これは、クラスターにインストールされているコンポーネントの現在の構成 (_tag_ 値で特定) を含む JSON ドキュメントを返します。たとえば、次は Spark タイプのクラスターから返されるデータからの抜粋です。
     
         "spark-metrics-properties" : {
             "tag" : "INITIAL",
@@ -164,7 +162,7 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
             "version" : 1
         }
 
-    この一覧から、コンポーネントの名前をコピーする必要があります (たとえば、__spark\_thrift\_sparkconf__ と__タグ__値)。
+    この一覧から、コンポーネントの名前をコピーする必要があります (たとえば、__spark\_thrift\_sparkconf__ と __tag__ 値)。
     
 2. 次のコマンドを利用し、コンポーネントとタグの構成を取得します。構成を取得するコンポーネントとタグで __spark-thrift-sparkconf__ と __INITIAL__ を置換します。
 
@@ -172,10 +170,10 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
     
     Curl が JSON ドキュメントを取得します。jq が使用されていくつかの変更が行われ、構成値の追加/変更に使用できるテンプレートが作成されます。具体的には次の操作が行われます。
     
-    * 文字列 "version" と __newtag__ に保存されている日付を含む一意の値が作成されます。
+    * 文字列 "version" と日付を含む一意の値が作成され、__newtag__ に格納されます。
     * 新しい望ましい構成のルート ドキュメントが作成されます。
     * .items 配列のコンテンツが取得され、__desired\_config__ 要素の下に追加されます。
-    * 新しい構成の送信で必要ないため、__href__、__version__、__Config__ 要素が削除されます。
+    * 新しい構成の送信に必要ないため、__href__、__version__、__Config__ 要素が削除されます。
     * 新しい __tag__ 要素が追加され、その値が __version#################__ に設定されます。数値部分は現在の日付に基づきます。構成ごとに一意のタグを与える必要があります。
     
     最後にデータが __newconfig.json__ ドキュメントに保存されます。ドキュメントの構造は次の構造に似たものになります。
@@ -215,7 +213,7 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
 
         echo '{"RequestInfo": {"context": "turning on maintenance mode for SPARK"},"Body": {"ServiceInfo": {"maintenance_state":"ON"}}}' | curl -u admin:PASSWORD -H "X-Requested-By: ambari" -X PUT -d "@-" "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SPARK"
 
-    これはメンテナンス モードをオンにするサーバー (`echo` ステートメントに含まれています) に JSON ドキュメントを送信します。次の要求を利用すれば、サービスがメンテナンス モードに入っていることを確認できます。
+    これにより、メンテナンス モードをオンにするサーバー (`echo` ステートメントに含まれています) に JSON ドキュメントが送信されます。次の要求を利用すれば、サービスがメンテナンス モードに入っていることを確認できます。
     
         curl -u admin:PASSWORD -H "X-Requested-By: ambari" "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SPARK" | jq .ServiceInfo.maintenance_state
         
@@ -257,4 +255,4 @@ REST API の完全なリファレンスについては、「[Ambari API リフ�
 
 > [AZURE.NOTE] HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています (クラスターに対するホストの追加や削除、新規サービスの追加など)。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

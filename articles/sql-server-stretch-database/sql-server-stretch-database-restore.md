@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="07/06/2016"
 	ms.author="douglasl"/>
 
 # Stretch 対応データベースを復元する
@@ -56,28 +56,13 @@ Azure ポータルを使用して、削除済みの Azure データベースを�
 5. 新しい**データベース名**を指定し、**[作成]** をクリックします。
 6. データベースの復元処理が開始され、**[通知]** を使用して処理を監視することができます。
 
-### 別の Azure リージョンで Azure データベースを復元する  
-Azure の SQL Server Stretch Database サービスは、リージョンに障害が発生した場合の回復性を高めるために、地理的に異なる Azure リージョンにスナップショットを非同期にコピーします。Azure リージョンの障害のためにデータベースにアクセスできない場合は、地理冗長化されたスナップショットのいずれかにデータベースを復元できます。
-
->   [AZURE.NOTE] 別の Azure リージョンで Azure データベースを復元するには、 復元後にクライアント アプリケーションの接続文字列を変更する必要がありますが、これは永続的なデータ損失につながる可能性があります。この種類の復元は、障害が長期間にわたる可能性が高い場合にのみ行うようにします。
-
-Azure ポータルを使用して、別の Azure リージョンで Azure データベースを前の時点の状態に復元する手順は、次の通りです。
-
-1. Azure ポータルにログインします。
-2. 画面の左側にある、**[新規]** を選択し、次に **[データ + ストレージ]** を選択し、次に **[SQL Data Warehouse]** を選択します。
-3. ソースとして **[バックアップ]** を選択し、復元する geo 冗長バックアップを選択します。
-4. データベースのプロパティの残りの部分を指定して **[作成]** をクリックします。
-5. データベースの復元処理が開始され、**[通知]** を使用して処理を監視することができます。
-
-別のリージョンで Azure データベースを復元したら、ストアド プロシージャの **sys.sp\_rda\_deauthorize\_db** と **sys.sp\_rda\_reauthorize\_db**を実行し、Stretch 対応 SQL Server データベースと Azure リモート データベース間の接続を再確立する必要があります。詳細については、「[Restore the connection between the SQL Server database and the remote Azure database](#Restore-the-connection-between-the-SQL-Server-database-and-the-remote-Azure-database)」(SQL Server データベースと Azure リモート データベース間の接続を復元する)を参照してください。
-
 ## SQL Server データベースと Azure リモート データベース間の接続を復元する
 
-1.  別の名前で、あるいは別のリージョンで復元された Azure データベースに接続する場合は、ストアド プロシージャ の [sys.sp\_rda\_deauthorize\_db](https://msdn.microsoft.com/library/mt703716.aspx) を実行して、以前の Azure データベースから切断します。  
+1.  別の名前で、あるいは別のリージョンで復元された Azure データベースに接続する場合は、ストアド プロシージャ の [sys.sp\_rda\_deauthorize\_db](https://msdn.microsoft.com/library/mt703716.aspx) を実行して、以前の Azure データベースから切断します。
 
 2.  ストアド プロシージャ [sys.sp\_rda\_reauthorize\_db ](https://msdn.microsoft.com/library/mt131016.aspx) を実行し、Stretch を有効にしたローカル データベースを Azure データベースに再接続します。
 
-	-   既存のデータベース スコープ資格情報を sysname または varchar(128) 値として指定します。(varchar(max) は使用しないでください。) 資格情報の名前は、**sys.database\_scoped\_credentials** ビューで調べることができます。  
+	-   既存のデータベース スコープ資格情報を sysname または varchar(128) 値として指定します。(varchar(max) は使用しないでください。) 資格情報の名前は、**sys.database\_scoped\_credentials** ビューで調べることができます。
 
 	-   リモート データのコピーを作成して、そのコピーに接続するかを指定します (推奨)。
 
@@ -98,4 +83,4 @@ Azure ポータルを使用して、別の Azure リージョンで Azure デー
 
 [SQL Server データベースのバックアップと復元](https://msdn.microsoft.com/library/ms187048.aspx)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

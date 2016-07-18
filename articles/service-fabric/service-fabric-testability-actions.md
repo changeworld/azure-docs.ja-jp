@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/05/2016"
    ms.author="heeldin;motanv"/>
 
 # Testability アクション
@@ -95,7 +95,7 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 Azure クラスターに対する (PowerShell を使用した) Testability アクションの実行は、ローカル クラスターに対する実行に似ています。唯一の違いは、アクションを実行する前に、ローカル クラスターではなく Azure クラスターに接続する必要があることです。
 
-## C&#35; を使用した Testability アクションの実行 
+## C&#35; を使用した Testability アクションの実行
 
 C# を使用して Testability アクションを実行するには、FabricClient を使用してクラスターに接続する必要があります。その後、アクションを実行するために必要なパラメーターを取得します。異なるパラメーターを使用して同じアクションを実行することができます。RestartServiceFabricNode アクションを実行する方法の 1 つは、クラスター内のノード情報 (ノード名とノード インスタンス ID) を使用することです。
 
@@ -105,7 +105,7 @@ RestartNodeAsync(nodeName, nodeInstanceId, completeMode, operationTimeout, Cance
 
 パラメーターの説明:
 
-- **CompleteMode** では、再起動アクションが実際に成功したかどうかを検証する必要がないことを指定します。完了モードを "Verify" と指定すると、再起動アクションが実際に成功したかどうかの検証が行われます。  
+- **CompleteMode** では、再起動アクションが実際に成功したかどうかを検証する必要がないことを指定します。完了モードを "Verify" と指定すると、再起動アクションが実際に成功したかどうかの検証が行われます。
 - **OperationTimeout** では、操作が終了するまでの時間を設定します。この時間が経過すると TimeoutException 例外がスローされます。
 - **CancellationToken** は、保留中の呼び出しをキャンセルできるようにします。
 
@@ -236,4 +236,4 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
    - [サービス ワークロード中のエラーのシミュレーション](service-fabric-testability-workload-tests.md)
    - [サービス間の通信障害](service-fabric-testability-scenarios-service-communication.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

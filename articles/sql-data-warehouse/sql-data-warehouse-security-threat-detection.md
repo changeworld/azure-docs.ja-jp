@@ -19,6 +19,16 @@
 
 # 脅威の検出の概要
 
+> [AZURE.SELECTOR]
+- [セキュリティの概要](sql-data-warehouse-overview-manage-security.md)
+- [脅威の検出](sql-data-warehouse-security-threat-detection.md)
+- [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
+- [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+- [監査の概要](sql-data-warehouse-auditing-overview.md)
+- [ダウンレベル クライアントの監査](sql-data-warehouse-auditing-downlevel-clients.md)
+
+
+
 ## 概要
 
 脅威の検出は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。脅威の検出はプレビュー状態であり、SQL Data Warehouse でサポートされます。
@@ -89,4 +99,4 @@
 [8]: ./media/sql-data-warehouse-security-threat-detection/8_td_excel_fast_combine.png
 [9]: ./media/sql-data-warehouse-security-threat-detection/9_td_excel_parameters.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

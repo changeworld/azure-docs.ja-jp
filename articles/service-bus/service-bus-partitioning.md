@@ -12,8 +12,8 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="05/06/2016"
-    ms.author="sethm" />
+    ms.date="07/01/2016"
+    ms.author="sethm;hillaryc" />
 
 # パーティション分割されたメッセージング エンティティ
 
@@ -111,16 +111,25 @@ committableTransaction.Commit();
 
 Azure Service Bus では、パーティション分割されたエンティティを送信元または送信先とするメッセージの自動転送、およびパーティション分割されたエンティティ間でのメッセージの自動転送をサポートしています。メッセージの自動転送を有効にするには、ソース キューまたはサブスクリプションで [QueueDescription.ForwardTo][] プロパティを設定する必要があります。メッセージでパーティション キー ([SessionId][]、[PartitionKey][]、[MessageId][]) が指定されている場合、そのパーティション キーが出力先エンティティで使用されます。
 
+## 考慮事項とガイドライン
+
+- **高い堅牢性**: パーティション キーの明示的制御、重複データ検出、セッションといった機能が使用されるエンティティの場合、メッセージング操作は常に特定のフラグメントにルーティングされます。いずれかのフラグメントにトラフィックが集中した場合や、基になるストアに異常が生じた場合、それらの操作は失敗し、可用性が低下します。それでも全体として堅牢性は、パーティション分割されていないエンティティと比べれば、はるかに高くなります。問題が発生するのはトラフィックの一部だけです。すべてのトラフィックで問題が発生するわけではありません。
+- **管理**: 作成、更新、削除といった操作は、エンティティのすべてのフラグメントに対して実行する必要があります。異常のあるフラグメントが 1 つでもあると、それらの操作は失敗します。Get 操作に関して言えば、メッセージ数などの情報は、全フラグメントから集計する必要があります。いずれかのフラグメントに異常があった場合、そのエンティティの可用性ステータスは "制限あり" として報告されます。
+- **メッセージ ボリュームの削減に伴うシナリオ**: 特に HTTP プロトコルを使用しているときに言えることですが、すべてのメッセージを取得するために、複数の受信操作を実行しなければならない場合があります。受信要求の場合、フロント エンドは、すべてのフラグメントを受信し、返されたすべての応答をキャッシュします。以降、同じ接続上で行われる受信要求でこのキャッシュを利用できるため、受信で発生する遅延は小さくなります。ただし複数の接続が存在する場合や、HTTP を使用している場合は、要求ごとに新しい接続が確立されます。そのため、要求元と同じノードに応答が届く保証はありません。既存のメッセージがすべてロックされ、別のフロント エンドでキャッシュされている場合、受信操作から **null** が返されます。最終的にはメッセージの有効期限が切れ、再度受信できる状態になります。HTTP キープアライブの使用をお勧めします。
+- **メッセージの参照/ピーク**: PeekBatch は、必ずしも [MessageCount プロパティ](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.messagecount.aspx)に指定された数のメッセージを返すとは限りません。一般に、これには 2 つの理由があります。1 つ目は、メッセージのコレクションの総サイズが、最大サイズである 256 KB を超えていることです。2 つ目は、キューまたはトピックの [EnablePartitioning プロパティ](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.enablepartitioning.aspx)が **true** に設定されている場合に、要求されたメッセージ数を満たすだけのメッセージがパーティションにない可能性があります。一般にアプリケーションは、決まった数のメッセージを受信する必要がある場合、そのメッセージ数に達するまで、または、読み取るメッセージがなくなるまで、[PeekBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.peekbatch.aspx) を繰り返し呼び出す必要があります。コード サンプルを含む詳細については、「[QueueClient.PeekBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.peekbatch.aspx)」または「[SubscriptionClient.PeekBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.subscriptionclient.peekbatch.aspx)」を参照してください。
+
+## 最近追加された機能
+
+- パーティション分割エンティティで、ルールの追加と削除がサポートされました。通常の (パーティション分割されていない) エンティティとは異なり、トランザクションでは、これらの操作がサポートされません。
+- パーティション分割されたエンティティとの間で行われるメッセージの送受信で AMQP がサポートされます。
+- 今後は、[Batch Send](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.sendbatch.aspx)、[Batch Receive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.receivebatch.aspx)、[Receive by Sequence Number](https://msdn.microsoft.com/library/azure/hh330765.aspx)、[Peek](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.peek.aspx)、[Renew Lock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.renewmessagelock.aspx)、[Schedule Message](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.schedulemessageasync.aspx)、[Cancel Scheduled Message](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.cancelscheduledmessageasync.aspx)、[Add Rule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ruledescription.aspx)、[Remove Rule](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ruledescription.aspx)、[Session Renew Lock](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesession.renewlock.aspx)、[Set Session State](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesession.setstate.aspx)、[Get Session State](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesession.getstate.aspx)、[Peek Session Messages](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesession.peek.aspx)、[Enumerate Sessions](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.queueclient.getmessagesessionsasync.aspx) の各操作で AMQP がサポートされます。
+
 ## パーティション分割されたエンティティの制限事項
 
 現行の実装において、Service Bus はパーティション分割されたキューまたはトピックに以下の制限を適用します。
 
--   パーティション分割されたキューまたはトピックは、AMQP だけでなく、SBMP または HTTP/HTTPS を介して使用できます。
-
 -   パーティション分割されたキューまたはトピックは、単一のトランザクションの別々のセッションに属するメッセージの送信はサポートしていません。
-
 -   Service Bus は、現在、名前空間あたり最大 100 のパーティション分割されたキューまたはトピックをサポートします。パーティション分割された各キューまたはトピックは、名前空間あたり 10,000 エンティティのクォータに対してカウントされます。
-
 -   パーティション分割されたキューとトピックは、Service Bus for Windows Server Version 1.0 および 1.1 ではサポートされていません。
 
 ## 次のステップ
@@ -144,4 +153,4 @@ Azure Service Bus では、パーティション分割されたエンティテ�
   [QueueDescription.ForwardTo]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
   [Service Bus のパーティション分割されたキューとトピックの AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

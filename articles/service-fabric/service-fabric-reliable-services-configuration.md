@@ -93,7 +93,7 @@ ReplicatorConfig
 |MaxRecordSizeInKB|KB|1024|レプリケーターがログに書き込むことができるレコードの最大サイズです。この値は 4 の倍数で 16 より大きい必要があります。|
 |SharedLogId|GUID|""|このレプリカで使用される共有ログ ファイルの識別に使用する一意の GUID を指定します。通常、サービスではこの設定を使用しないはずですが、SharedLogId を指定した場合は、SharedLogPath も指定する必要があります。|
 |SharedLogPath|完全修飾パス名|""|このレプリカの共有ログ ファイルが作成される完全修飾パスを指定します。通常、サービスではこの設定を使用しないはずですが、SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。|
-
+|SlowApiMonitoringDuration|秒|300|マネージ API 呼び出しの監視間隔を設定します。たとえば、バックアップのコールバック関数を用意しておき、一定時間が経過したときに、警告の状態レポートを Health Manager に送信します。|
 
 ### コードによるサンプル構成
 ```csharp
@@ -162,4 +162,4 @@ SharedLogId と SharedLogPath の設定は常に一緒に使用して、サー�
  - [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
  - [Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

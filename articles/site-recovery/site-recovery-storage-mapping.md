@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="02/22/2016"
+	ms.date="07/06/2016"
 	ms.author="raynew"/>
 
 
@@ -53,7 +53,7 @@ Site Recovery で Hyper-V レプリカを使ってレプリケートする場合
 VMM で分類が適切に構成されている場合、記憶域マッピング中にソースとターゲットの VMM サーバーを選択すると、ソース分類とターゲット分類が表示されます。ニューヨークとシカゴの 2 つの拠点がある組織での記憶域のファイル共有と分類の例を以下に示します。
 
 **場所** | **VMM サーバー** | **ファイル共有 (ソース)** | **分類 (ソース)** | **マップ先** | **ファイル共有 (ターゲット)**
----|---|--- |---|---|---
+---|---|---|---|---|---
 ニューヨーク | VMM\_Source| SourceShare1 | GOLD | GOLD\_TARGET | TargetShare1
  | | SourceShare2 | SILVER | SILVER\_TARGET | TargetShare2
  | | SourceShare3 | BRONZE | BRONZE\_TARGET | TargetShare3
@@ -65,7 +65,9 @@ Site Recovery ポータルの **[リソース]** ページの **[サーバー記
 
 ![ストレージ マッピングの構成](./media/site-recovery-storage-mapping/storage-mapping1.png)
 
-この例の場合: GOLD 記憶域 (SourceShare1) で仮想マシンのレプリカ仮想マシンを作成すると、レプリカ仮想マシンは GOLD\_TARGET 記憶域 (TargetShare1) にレプリケートされます。SILVER 記憶域 (SourceShare2) で仮想マシンのレプリカ仮想マシンを作成すると、レプリカ仮想マシンは SILVER\_TARGET 記憶域 (TargetShare2) にレプリケートされます。その他も同様です。
+この例では、次の点に注意してください。
+- GOLD ストレージ (SourceShare1) 上のいずれかの仮想マシンのレプリカ仮想マシンが作成されると、それが GOLD\_TARGET ストレージ (TargetShare1) にレプリケートされます。
+- 同様に、SILVER ストレージ (SourceShare2) 上のいずれかの仮想マシンのレプリカ仮想マシンが作成されると、それが SILVER\_TARGET (TargetShare2) ストレージにレプリケートされます。
 
 実際のファイル共有と、VMM でそれらに割り当てられた分類は次のようになります。
 
@@ -98,4 +100,4 @@ VM5 | C:\\ClusterStorage\\SourceVolume3 | 該当なし | マッピングを構�
 
 記憶域マッピングに関する理解が深まったところで、[Azure Site Recovery をデプロイする準備](site-recovery-best-practices.md)を行いましょう。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0706_2016-->

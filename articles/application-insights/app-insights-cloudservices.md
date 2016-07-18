@@ -38,7 +38,7 @@ Application Insights がクラウド サービスに追加され、2 つの woke
 
 Application Insights リソースでは、利用統計情報データが分析され、表示されます。
 
-1.  [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。アプリケーションの種類として ASP.NET アプリを選択します。 
+1.  [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。アプリケーションの種類として ASP.NET アプリを選択します。
 
     ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-cloudservices/01-new.png)
 
@@ -59,7 +59,7 @@ Application Insights リソースでは、利用統計情報データが分析�
     ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-cloudservices/03-nuget.png)
 
 
-2. Web ロールの場合は、[Web 用 Application Insights](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet パッケージを追加します。SDK のこのバージョンには、ロールの情報など、サーバー コンテキストを追加するモジュールが含まれています。worker ロールの場合は、[Windows Services 用 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) を使用します。
+2. Web ロールの場合は、[Web 用 Application Insights](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet パッケージを追加します。SDK のこのバージョンには、ロールの情報など、サーバー コンテキストを追加するモジュールが含まれています。worker ロールの場合は、[Windows Server 用 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) を使用します。
 
     !["Application Insights" の検索](./media/app-insights-cloudservices/04-ai-nuget.png)
 
@@ -87,9 +87,9 @@ Application Insights リソースでは、利用統計情報データが分析�
  
  * [Web ロール](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
  * [worker ロール](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
- * [Web ページ向け](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13)   
+ * [Web ページ向け](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13)
 
-4. ApplicationInsights.config ファイルが常に出力ディレクトリにコピーされるように設定します。 
+4. ApplicationInsights.config ファイルが常に出力ディレクトリにコピーされるように設定します。
 
     (.config ファイルの中に、インストルメンテーション キーの配置を求めるメッセージがあります。ただし、クラウド アプリケーションでは、それは .cscfg ファイルから設定することをお勧めします。これにより、ポータルでロールが正確に識別されます)。
 
@@ -145,7 +145,7 @@ HTTP 要求の場合と同じ方法で追跡することで、worker ロール�
 
 診断データは次の場所で見つかります。
 
-* パフォーマンス カウンターは、カスタム メトリックとして表示されます。 
+* パフォーマンス カウンターは、カスタム メトリックとして表示されます。
 * Windows イベント ログは、トレースとカスタム イベントとして表示されます。
 * アプリケーション ログ、ETW ログ、診断インフラストラクチャ ログは、トレースとして表示されます。
 
@@ -286,4 +286,4 @@ woker ロールの場合、例外を追跡する方法は 2 つあります。
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

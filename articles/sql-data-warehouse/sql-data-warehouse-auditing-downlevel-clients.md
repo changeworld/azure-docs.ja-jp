@@ -18,6 +18,14 @@
 
 # SQL Data Warehouse - 監査と動的データ マスキングのためのダウンレベル クライアントのサポート
 
+> [AZURE.SELECTOR]
+- [セキュリティの概要](sql-data-warehouse-overview-manage-security.md)
+- [脅威の検出](sql-data-warehouse-security-threat-detection.md)
+- [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
+- [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+- [監査の概要](sql-data-warehouse-auditing-overview.md)
+- [ダウンレベル クライアントの監査](sql-data-warehouse-auditing-downlevel-clients.md)
+
 
 [監査](sql-data-warehouse-auditing-overview.md)は TDS リダイレクションに対応する SQL クライアントと連動します。
 
@@ -38,4 +46,4 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 
 **注記:** 上のサーバー FDQN 変更は SQL サーバー レベル監査ポリシーの適用にも役に立ちます。データベースごとの構成が必要ありません (一時的な軽減)。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

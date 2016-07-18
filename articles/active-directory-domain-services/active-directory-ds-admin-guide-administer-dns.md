@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Azure AD ドメイン サービスで管理されているドメイン上の DNS の管理
@@ -118,4 +118,4 @@ DNS の管理について詳しくは、[Technet の DNS ツールの記事](htt
 
 - [DNS 管理ツール](https://technet.microsoft.com/library/cc753579.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0706_2016-->

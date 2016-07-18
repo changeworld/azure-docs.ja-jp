@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="kgremban"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/19/2016"
+   ms.date="07/01/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management におけるロール
@@ -24,8 +24,9 @@ Azure AD の別の管理者ロールに組織内のユーザーを割り当て�
 
 グローバル管理者は、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用して、または [Azure Active Directory の管理者ロールの割り当て](active-directory-assign-admin-roles.md)で説明されているとおりにクラシックポータルから、どのユーザーが**永続的に** Azure AD のロールに割り当てられているかを更新できます。
 
-Azure AD Privileged Identity Management (PIM) は、Azure AD でのユーザーの特権アクセス用のポリシーを管理します。PIM によって、Azure AD の 1 つ以上のロールにユーザーが割り当てられます。これらの割り当ては永続的または一時的になります。ユーザーが永続的にロールに割り当てられるか、一時的なロールの割り当てを有効にすると、ユーザーは Azure Active Directory、Office 365、およびユーザーのロールにアクセス許可が割り当てられているその他のアプリケーションを管理できます。
+Azure AD Privileged Identity Management (PIM) は、Azure AD でのユーザーの特権アクセス用のポリシーを管理します。PIM は、Azure AD で 1 つ以上のロールにユーザーを割り当てます。あるユーザーをロールに永続的に割り当てることも、ロールの候補にすることもできます。ユーザーが永続的にロールに割り当てられるか、ロールの候補としての割り当てを有効にすると、ユーザーは Azure Active Directory、Office 365、およびユーザーのロールにアクセス許可が割り当てられているその他のアプリケーションを管理できます。
 
+ロールへの永続的な割り当てと、ロールの候補としての割り当てに、アクセスの違いはありません。常時のアクセスを必要としないユーザーがいる、というのが唯一の違いです。その場合はロールの候補として、必要な場合にアクセスをオンにしたりオフにしたりできます。
 
 ## PIM で管理されるロール
 
@@ -33,10 +34,10 @@ Privileged Identity Management を使用して、以下を含む共通の管理�
 
 
 - **全体管理者** (会社の管理者とも呼ばれます) は、すべての管理機能にアクセスできます。組織内のグローバル管理者を複数にすることができます。Office 365 の購入にサインアップするユーザーが、自動的にグローバル管理者になります。
-- **特権ロール管理者**は、Azure AD PIM を管理し、他のユーザーへのロールの割り当てを更新します。  
-- **課金管理者**は、購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
-- **パスワード管理者**は、パスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。パスワード管理者は、ユーザーのパスワードのリセットのみできます。
-- **サービス管理者**は、サービス要求の管理とサービス正常性の監視を行います。
+- **特権ロール管理者**は、Azure AD PIM を管理し、他のユーザーへのロールの割り当てを更新します。
+- **課金管理者**: 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
+- **パスワード管理者**: パスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。パスワード管理者は、ユーザーのパスワードのリセットのみできます。
+- **サービス管理者**: サービス要求の管理とサービス正常性の監視を行います。
 
   > [AZURE.NOTE] Office 365 を使用している場合、サービス管理者ロールをユーザーに割り当てる前に、ユーザー管理権限を Exchange Online などのサービスに割り当ててください。
 
@@ -50,7 +51,7 @@ Privileged Identity Management を使用して、以下を含む共通の管理�
 <!--**PLACEHOLDER: The above article may not be the one we want since PIM gets roles from places other that Office 365**-->
 
 
-ユーザーが[必要なときにロールをアクティブ化](active-directory-privileged-identity-management-how-to-activate-role.md)できるように、PIM から[これらのロールを一時的にユーザーに割り当てる](active-directory-privileged-identity-management-how-to-add-role-to-user.md)ことができます。
+ユーザーが[必要なときにロールをアクティブ化](active-directory-privileged-identity-management-how-to-activate-role.md)できるように、PIM から[これらのロールをユーザーに割り当てる](active-directory-privileged-identity-management-how-to-add-role-to-user.md)ことができます。
 
 PIM 自体で管理するためのアクセス権を別のユーザーに付与する場合に PIM でユーザーに必要なロールについては、[PIM へのアクセス権を付与する方法](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)に関する記事で詳しく説明されています。
 
@@ -66,7 +67,7 @@ Azure サブスクリプションとリソース グループも、Azure AD で�
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 
 
-## ユーザーのロールとログイン
+## ユーザーのロールとサインイン
 一部の Microsoft サービスとアプリケーションでは、ロールにユーザーを割り当てるだけでは、そのユーザーを管理者にするには十分でない場合があります。
 
 Azure クラシック ポータルにアクセスするには、ユーザーは Azure サブスクリプションを管理する必要がない場合でも、Azure サブスクリプションのサービス管理者または共同管理者である必要があります。たとえば、クラシック ポータルで Azure AD の構成設定を管理するには、ユーザーは Azure AD のグローバル管理者と Azure サブスクリプションのサブスクリプション共同管理者の両方である必要があります。Azure サブスクリプションにユーザーを追加する方法については、「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を参照してください。
@@ -82,10 +83,10 @@ Microsoft Online Services へのアクセスでは、ユーザーがサービス
 5. 配布するライセンスが含まれているライセンス プランを選択します。
 6. **[ユーザーの割り当て]** を選択します。
 7. ライセンスを割り当てるユーザーを選択します。
-8. **[割り当て]** ボタンをクリックします。ユーザーは Azure にログインできるようになります。
+8. **[割り当て]** ボタンをクリックします。ユーザーは Azure にサインインできるようになります。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

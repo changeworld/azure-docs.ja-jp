@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure Mobile Engagement iOS SDK リリース ノート"
+	pageTitle="Azure Mobile Engagement iOS SDK のリリース ノート | Microsoft Azure"
 	description="Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
 	services="mobile-engagement"
 	documentationCenter="mobile"
-	authors="MehrdadMzfr"
-	manager="dwrede"
+	authors="piyushjo"
+	manager="erikre"
 	editor="" />
 
 <tags
@@ -13,10 +13,14 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="02/29/2016"
-	ms.author="MehrdadMzfr" />
+	ms.date="06/30/2016"
+	ms.author="piyushjo" />
 
-#リリース ノート
+#Azure Mobile Engagement iOS SDK リリース ノート
+
+##3\.2.4 (2016 年 6 月 30 日)
+
+-   技術的なログと他のログとの間の集計を修正。
 
 ##3\.2.3 (2016 年 6 月 7 日)
 
@@ -67,4 +71,4 @@
 -   セキュリティの強化。
 -   SmartAd の追跡が削除されました。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -88,7 +88,7 @@
 
 	![Select Azure AD Single Sign-On][7]
 
-	> [AZURE.NOTE] さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)してください。
+	> [AZURE.NOTE] さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)してください。
 
 3. **[アプリケーション設定の構成]** ページで、**[サインオン URL]** フィールドに、Google Apps テナントの URL を `https://mail.google.com/a/<yourdomain>` という形式を使用して入力します。
 
@@ -124,7 +124,7 @@
 
 	![Select Azure AD Single Sign-On][7]
 
-	> [AZURE.NOTE] さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)してください。
+	> [AZURE.NOTE] さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)してください。
 
 3. **[アプリケーション設定の構成]** ページで、**[サインオン URL]** フィールドに、Google Apps テナントの URL を `https://mail.google.com/a/<yourdomain>` という形式を使用して入力します。
 
@@ -194,7 +194,7 @@
 
 4. まだ Azure Active Directory にカスタム ドメイン名を追加していない場合は、次の手順に従います。
 
-	- [Azure クラシック ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。ディレクトリの一覧で、ディレクトリを選択します。 
+	- [Azure クラシック ポータル](https://manage.windowsazure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。ディレクトリの一覧で、ディレクトリを選択します。
 
 	- 最上部のメニューで、**[ドメイン]** をクリックし、**[カスタム ドメインの追加]** をクリックします。
 
@@ -313,4 +313,4 @@
 [29]: ./media/active-directory-saas-google-apps-tutorial/assign-users.png
 [30]: ./media/active-directory-saas-google-apps-tutorial/assign-confirm.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

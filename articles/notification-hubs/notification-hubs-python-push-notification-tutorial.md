@@ -4,7 +4,7 @@
 	services="notification-hubs" 
 	documentationCenter="" 
 	authors="wesmc7777"
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="python" 
 	ms.devlang="php" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="06/29/2016" 
 	ms.author="wesmc"/>
 
 # Python で Notification Hubs を使用する方法
@@ -28,8 +28,8 @@ MSDN のトピック「[Notification Hubs の REST API](http://msdn.microsoft.co
 このトピックでは、次の方法について説明します。
 
 * Python で Notification Hubs 機能の REST クライアントを記述します。
-* 通知ハブ REST API には、Python インターフェイスを使用して通知を送信します。 
-* デバッグ/教育目的のための HTTP REST 要求/応答のダンプを取得します。 
+* 通知ハブ REST API には、Python インターフェイスを使用して通知を送信します。
+* デバッグ/教育目的のための HTTP REST 要求/応答のダンプを取得します。
 
 選択したモバイル プラットフォームの「[Notification Hubs の使用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」に従って、Python のバックエンド部分を実装します。
 
@@ -320,7 +320,7 @@ Notification Hubs の初期化中にデバッグ フラグを有効にすると�
 
 通知ハブの結果についての詳細が表示されます。
 
-- 例: プッシュ通知サービスにメッセージが正常に送信される場合。 
+- 例: プッシュ通知サービスにメッセージが正常に送信される場合。
 	
 		<Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
 
@@ -391,4 +391,4 @@ HTTP ヘッダーが変更する形式と、ペイロードの本文が HTTP 要
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

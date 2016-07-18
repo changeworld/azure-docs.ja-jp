@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/26/2016" 
+	ms.date="07/01/2016" 
 	ms.author="cephalin"/>
 
 # エンタープライズ Web アプリの Azure App Service への移行
@@ -30,14 +30,14 @@
 ## 互換性の分析中に検証される要素 ##
 Migration Assistant により対応状況レポートが作成されます。このレポートを使用して、考えられる問題点を識別し、オンプレミスの IIS から Azure App Service Web Apps への移行を妨げる可能性のある問題点をブロックします。注意すべき主な項目のいくつかを次に示します。
 
--	ポートのバインド – Web Apps でサポートされるポートは、HTTP トラフィック用のポート 80、および HTTPS トラフィック用のポート 443 のみです。それ以外のポート構成は無視され、トラフィックは 80 または 443 にルーティングされます。 
--	認証 - Web Apps では、匿名認証が既定でサポートされていますが、アプリケーションによってフォーム認証が指定される場合もあります。Azure Active Directory および ADFS と統合する場合に限り、Windows 認証を使用できます。基本認証など、その他すべての認証形式は現在サポートされていません。 
--	グローバル アセンブリ キャッシュ (GAC) – GAC は Web Apps でサポートされていません。アプリケーションで、通常 GAC にデプロイするアセンブリを参照する場合は、Web Apps でアプリケーションの bin フォルダーにデプロイする必要があります。 
--	IIS5 互換性モード – Web Apps でサポートされていません。 
+-	ポートのバインド – Web Apps でサポートされるポートは、HTTP トラフィック用のポート 80、および HTTPS トラフィック用のポート 443 のみです。それ以外のポート構成は無視され、トラフィックは 80 または 443 にルーティングされます。
+-	認証 - Web Apps では、匿名認証が既定でサポートされていますが、アプリケーションによってフォーム認証が指定される場合もあります。Azure Active Directory および ADFS と統合する場合に限り、Windows 認証を使用できます。基本認証など、その他すべての認証形式は現在サポートされていません。
+-	グローバル アセンブリ キャッシュ (GAC) – GAC は Web Apps でサポートされていません。アプリケーションで、通常 GAC にデプロイするアセンブリを参照する場合は、Web Apps でアプリケーションの bin フォルダーにデプロイする必要があります。
+-	IIS5 互換性モード – Web Apps でサポートされていません。
 -	アプリケーション プール – Web Apps では、各サイトとその子アプリケーションが同じアプリケーション プールで実行されます。サイトに複数のアプリケーション プールを利用する子アプリケーションが複数ある場合は、共通の設定で 1 つのアプリケーション プールに統合するか、または各アプリケーションを個別の Web アプリに移行します。
 -	COM コンポーネント – Web Apps では、プラットフォームで COM コンポーネントを登録できません。Web サイトまたはアプリケーションで COM コンポーネントを使用する場合、その COM コンポーネントをマネージ コードで書き換えて、Web サイトまたはアプリケーションにデプロイする必要があります。
 -	ISAPI フィルター – Web Apps では、ISAPI フィルターの使用をサポートできます。次の手順を実行する必要があります。
-	-	Web アプリで DLL をデプロイします。 
+	-	Web アプリで DLL をデプロイします。
 	-	[Web.config](http://www.iis.net/configreference/system.webserver/isapifilters) を使用して DLL を登録します。
 	-	次の内容を含むサイト ルートに、applicationHost.xdt ファイルを配置します。
 
@@ -57,7 +57,7 @@ Migration Assistant により対応状況レポートが作成されます。こ
 ## Azure Apps Migration Assistant の使用方法 ##
 このセクションでは、SQL Server データベースを使用して、オンプレミスの Windows Server 2003 R2 (IIS 6.0) マシンで実行されている、いくつかの Web サイトを移行する場合の例を紹介します。
 
-1.	IIS サーバーまたはクライアント コンピューターで、[https://www.movemetothecloud.net/](https://www.movemetothecloud.net/) に移動します。 
+1.	IIS サーバーまたはクライアント コンピューターで、[https://www.movemetothecloud.net/](https://www.movemetothecloud.net/) に移動します。
 
 	![](./media/web-sites-migration-from-iis-server/migration-tool-homepage.png)
 
@@ -135,4 +135,4 @@ Migration Assistant により対応状況レポートが作成されます。こ
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0706_2016-->

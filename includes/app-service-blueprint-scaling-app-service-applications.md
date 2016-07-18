@@ -1,4 +1,4 @@
-* [Azure App Service のスケーリング](../articles/app-service/app-service-scale.md)
+* [Azure App Service のスケーリング](../articles/app-service-web/web-sites-scale.md)
 	* 冗長性と信頼性について
 	* ステートフル アプリケーションとステートレス アプリケーション
 		* [ステートレスなアプリの構成](/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)
@@ -14,4 +14,4 @@
 * Geo 分散
 	* [Traffic Manager を活用した、グローバルなスケールの実現](../articles/traffic-manager/traffic-manager-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

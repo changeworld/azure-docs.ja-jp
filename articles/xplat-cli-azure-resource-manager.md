@@ -20,9 +20,13 @@
 # Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用
 
 > [AZURE.SELECTOR]
+- [ポータル](azure-portal/resource-group-portal.md)
 - [Azure CLI](xplat-cli-azure-resource-manager.md)
 - [Azure PowerShell](powershell-azure-resource-manager.md)
-
+- [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
+- [ノード](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
+- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
+- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
 
 この記事では、Azure Resource Manager モードで、Azure コマンド ライン インターフェイス (Azure CLI) を使用して、Azure リソースを作成し、管理する一般的な方法を紹介します。
@@ -234,4 +238,4 @@ Azure CLI を使用して、リソース グループの現在の状態を表す
 * Azure リソース マネージャーで Azure PowerShell を使用する方法の詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。
 * Azure ポータルから Azure Resource Manager を使用する方法の詳細については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](./azure-portal/resource-group-portal.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

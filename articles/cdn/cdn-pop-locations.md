@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/05/2016"
 	ms.author="casoper"/>
 
 
@@ -38,4 +38,7 @@
 | アフリカ | | **&#x2713;*** |
 | オーストラリアとニュージーランド | メルボルン (オーストラリア)<br />シドニー (オーストラリア) | **&#x2713;*** |
 
-<!---HONumber=AcomDC_0629_2016-->
+## 関連項目
+* [Verizon Edge Server IP 範囲からの Azure CDN](https://msdn.microsoft.com/library/mt757330.aspx)
+
+<!---HONumber=AcomDC_0706_2016-->

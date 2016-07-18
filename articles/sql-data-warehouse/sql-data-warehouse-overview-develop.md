@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/14/2016"
+   ms.date="06/30/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の設計上の決定と コーディング技法
@@ -27,8 +27,8 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 - [同時実行][]
 - [トランザクション][]
 - [ユーザー定義スキーマ][]
-- [テーブル設計][]
-- [ハッシュ分散キー][]
+- [テーブルのディストリビューション][]
+- [テーブルのインデックス][]
 - [テーブルのパーティション][]
 - [CTAS][]
 - [統計][]
@@ -51,29 +51,28 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 <!--Image references-->
 
 <!--Article references-->
-[同時実行]: sql-data-warehouse-develop-concurrency.md
-[接続]: sql-data-warehouse-develop-connections.md
-[CTAS]: sql-data-warehouse-develop-ctas.md
-[動的 SQL]: sql-data-warehouse-develop-dynamic-sql.md
-[オプションでのグループ化]: sql-data-warehouse-develop-group-by-options.md
-[ハッシュ分散キー]: sql-data-warehouse-develop-hash-distribution-key.md
-[ラベル]: sql-data-warehouse-develop-label.md
-[ループ]: sql-data-warehouse-develop-loops.md
-[統計]: sql-data-warehouse-develop-statistics.md
-[ストアド プロシージャ]: sql-data-warehouse-develop-stored-procedures.md
-[テーブル設計]: sql-data-warehouse-develop-table-design.md
-[テーブルのパーティション]: sql-data-warehouse-develop-table-partitions.md
-[一時テーブル]: sql-data-warehouse-develop-temporary-tables.md
-[トランザクション]: sql-data-warehouse-develop-transactions.md
-[ユーザー定義スキーマ]: sql-data-warehouse-develop-user-defined-schemas.md
-[変数の代入]: sql-data-warehouse-develop-variable-assignment.md
-[ビュー]: sql-data-warehouse-develop-views.md
-
-[Transact-SQL リファレンス]: sql-data-warehouse-overview-reference.md
+[同時実行]: ./sql-data-warehouse-develop-concurrency.md
+[接続]: ./sql-data-warehouse-develop-connections.md
+[CTAS]: ./sql-data-warehouse-develop-ctas.md
+[動的 SQL]: ./sql-data-warehouse-develop-dynamic-sql.md
+[オプションでのグループ化]: ./sql-data-warehouse-develop-group-by-options.md
+[ラベル]: ./sql-data-warehouse-develop-label.md
+[ループ]: ./sql-data-warehouse-develop-loops.md
+[統計]: ./sql-data-warehouse-tables-statistics.md
+[ストアド プロシージャ]: ./sql-data-warehouse-develop-stored-procedures.md
+[テーブルのディストリビューション]: ./sql-data-warehouse-tables-distribute.md
+[テーブルのインデックス]: ./sql-data-warehouse-tables-index.md
+[テーブルのパーティション]: ./sql-data-warehouse-tables-partition.md
+[一時テーブル]: ./sql-data-warehouse-tables-temporary.md
+[トランザクション]: ./sql-data-warehouse-develop-transactions.md
+[ユーザー定義スキーマ]: ./sql-data-warehouse-develop-user-defined-schemas.md
+[変数の代入]: ./sql-data-warehouse-develop-variable-assignment.md
+[ビュー]: ./sql-data-warehouse-develop-views.md
+[Transact-SQL リファレンス]: ./sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
 [renaming objects]: https://msdn.microsoft.com/library/mt631611.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

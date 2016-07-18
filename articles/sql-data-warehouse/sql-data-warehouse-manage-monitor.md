@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/27/2016"
+   ms.date="06/30/2016"
    ms.author="sonyama;barbkess;sahajs"/>
 
 # DMV を利用してワークロードを監視する
@@ -30,6 +30,8 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed';
 
 ## クエリの実行を調査する
 クエリ実行を監視するには、[sys.dm\_pdw\_exec\_requests][] で始めます。このビューには進行中のクエリと、最近完了したクエリの一覧が表示されます。request\_id により各クエリが一意に識別されます。これはこのビューのプライマリ キーです。request\_id は、新しいクエリごとに順番に割り当てられます。特定の session\_id のテーブルにクエリを実行すると、そのログオンのクエリがすべて表示されます。
+
+>[AZURE.NOTE] ストアド プロシージャでは複数の request\_id が使用されます。request\_id は順番に割り当てられます。
 
 クエリ実行プラン、および特定のクエリの実行時間を調査するには、次の手順に従います。
 
@@ -143,15 +145,14 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 ```
 
 ## 次のステップ
-動的管理ビュー (DMV) の詳細については、「[システム ビュー][]」を参照してください。SQL Data Warehouse の管理に関するヒントについては、「[SQL Data Warehouse の管理ツール][]」を参照してください。ベスト プラクティスについては、「[SQL Data Warehouse Best Practices (SQL Data Warehouse ベスト プラクティス)][]」を参照してください。
+動的管理ビュー (DMV) の詳細については、「[システム ビュー][]」を参照してください。SQL Data Warehouse の管理に関するヒントについては、[管理の概要][]に関するページをご覧ください。ベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス][]に関するページをご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[manage data skew for distributed tables]: sql-data-warehouse-manage-distributed-data-skew.md
-[SQL Data Warehouse の管理ツール]: sql-data-warehouse-overview-manage.md
-[SQL Data Warehouse Best Practices (SQL Data Warehouse ベスト プラクティス)]: sql-data-warehouse-best-practices.md
-[システム ビュー]: sql-data-warehouse-reference-tsql-system-views.md
+[管理の概要]: ./sql-data-warehouse-overview-manage.md
+[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
+[システム ビュー]: ./sql-data-warehouse-reference-tsql-system-views.md
 
 <!--MSDN references-->
 [sys.dm\_pdw\_dms\_workers]: http://msdn.microsoft.com/library/mt203878.aspx
@@ -162,4 +163,4 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 [DBCC PDW\_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
 [DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

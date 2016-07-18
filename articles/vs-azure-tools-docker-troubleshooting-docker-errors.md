@@ -61,7 +61,7 @@ volumes:
 **Windows から**
 
 ```
-a
+docker run -it -v /c/Users/Public:/wormhole busybox
 / # ls
 ```
 
@@ -105,14 +105,14 @@ Microsoft Edge ブラウザーを使用している場合、IP アドレスが�
 
 1. **[インターネット オプション]** に移動します。
     - Windows 10 の場合は、Windows の [ファイル名を指定して実行] ボックスに「`Internet Options`」と入力します。
-    - Internet Explorer から **[設定]** メニューに移動し、**[インターネット オプション]** を選択してもかまいません。 
-1. **[インターネット オプション]** が表示されたら選択します。 
+    - Internet Explorer から **[設定]** メニューに移動し、**[インターネット オプション]** を選択してもかまいません。
+1. **[インターネット オプション]** が表示されたら選択します。
 1. **[セキュリティ]** タブを選択します。
 1. **[ローカル イントラネット]** ゾーンを選択します。
-1. **[サイト]** を選択します。 
-1. 一覧に仮想マシンの IP (この場合は Docker ホスト) を追加します。 
-1. Edge でページを更新すると、サイトが実行されていることがわかります。 
-1. この問題の詳細については、Scott Hanselman のブログ記事「[Microsoft Edge can't see or open VirtualBox-hosted local web sites (VirtualBox にホストされたローカル Web サイトを Microsoft Edge で表示したり開いたりできない)](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx)」を参照してください。 
+1. **[サイト]** を選択します。
+1. 一覧に仮想マシンの IP (この場合は Docker ホスト) を追加します。
+1. Edge でページを更新すると、サイトが実行されていることがわかります。
+1. この問題の詳細については、Scott Hanselman のブログ記事「[Microsoft Edge can't see or open VirtualBox-hosted local web sites (VirtualBox にホストされたローカル Web サイトを Microsoft Edge で表示したり開いたりできない)](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx)」を参照してください。
 
 ##0\.15 以前のバージョンのトラブルシューティング
 
@@ -135,4 +135,4 @@ Microsoft Edge ブラウザーを使用している場合、IP アドレスが�
 	"commandLineArgs": "-noexit -ExecutionPolicy RemoteSigned …”
     ```
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

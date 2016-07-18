@@ -20,7 +20,7 @@
 # クラシック デプロイメント モデルにおける Windows VM に関する技術解説記事
 
 
-ここでは、クラシック デプロイメント モデルで Windows ベースの仮想マシンを作成および管理するために必要なすべてのドキュメントを紹介します。
+ここでは、クラシック デプロイメント モデルで Windows ベースの仮想マシンを作成および管理するのに必要なすべてのドキュメントを紹介します。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
@@ -77,7 +77,7 @@
 
 [クラシック デプロイ モデルで作成された Windows 仮想マシンをキャプチャする](virtual-machines-windows-classic-capture-image.md)
 
-[Powershell を使用したクラシック Windows Server VHD の作成とアップロード](virtual-machines-windows-classic-createupload-vhd.md)
+[PowerShell を使用したクラシック Windows Server VHD の作成とアップロード](virtual-machines-windows-classic-createupload-vhd.md)
 
 [Chef で Azure 仮想マシンのデプロイメントを自動化する](virtual-machines-windows-chef-automation.md)
 
@@ -192,4 +192,4 @@
 
 [Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

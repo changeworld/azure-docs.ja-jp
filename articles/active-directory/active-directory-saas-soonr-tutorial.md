@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="05/29/2016"
 	ms.author="jeedes"/>
 
 
@@ -57,7 +57,7 @@ Azure AD への Soonr Workplace の統合を構成するには、ギャラリー
 
 **ギャラリーから Soonr Workplace を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -86,7 +86,7 @@ Azure AD への Soonr Workplace の統合を構成するには、ギャラリー
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Soonr Workplace で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Soonr Workplace ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Soonr Workplace の関連ユーザーの間で、リンク関係が確立されている必要があります。このリンク関係は、Azure AD の **[ユーザー名]** の値を、Soonr Workplace の **[Username]** の値として割り当てることで確立されます。
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Soonr Workplace ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Soonr Workplace の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 
 Soonr Workplace で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -131,7 +131,7 @@ Soonr Workplace で Azure AD のシングル サインオンを構成してテ�
     b.**[次へ]** をクリックします。
 
 
-5. 使用しているアプリケーション用に構成された SSO を入手するため、Soonr Workplace のサポート チームに連絡し、ダウンロードしたメタデータ ファイルを添付した電子メールを送ります。発行元 URL、SAML SSO URL、サインアウト URL もお知らせください。サポート チームが SSO 統合で設定します。
+5. 自分のアプリケーション向けに SSO を構成する場合は、Soonr Workplace SSO の統合に関するガイドを参照するか、統合のパートナーに詳細を問い合わせることができます。
 
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
@@ -268,4 +268,4 @@ Soonr Workplace で Azure AD のシングル サインオンを構成してテ�
 [204]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

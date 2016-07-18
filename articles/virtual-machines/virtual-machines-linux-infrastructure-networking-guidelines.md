@@ -52,7 +52,7 @@
 ### クラウド専用仮想ネットワーク
 オンプレミスのユーザーとコンピューターが、Azure Virtual Network 内の仮想マシンへの常時接続を必要としない場合、仮想ネットワーク設計はとても簡単です。
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/vnet01.png)
+![基本的なクラウド専用仮想ネットワークの図](./media/virtual-machines-common-infrastructure-service-guidelines/vnet01.png)
 
 これは通常、インターネット ベースの Web サーバーなど、インターネットに接続されたワークロード用です。SSH またはポイント対サイト VPN 接続を使って VM を管理できます。
 
@@ -62,7 +62,7 @@
 ### クロスプレミス接続用の仮想ネットワーク
 オンプレミスのユーザーとコンピューターが、Azure Virtual Network 内の VM への常時接続を必要とする場合は、クロスプレミスの仮想ネットワークを作成し、ExpressRoute またはサイト間 VPN 接続を使用してオンプレミス ネットワークに接続します。
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/vnet02.png)
+![クロスプレミス仮想ネットワークの図](./media/virtual-machines-common-infrastructure-service-guidelines/vnet02.png)
 
 この構成では、Azure Virtual Network は基本的に、オンプレミス ネットワークのクラウド ベースの拡張機能です。
 
@@ -107,4 +107,4 @@
 
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

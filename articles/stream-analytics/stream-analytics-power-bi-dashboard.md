@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="06/30/2016"
 	ms.author="jeffstok"/>
 
 #  Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード
@@ -24,8 +24,6 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 [Microsoft Power BI](https://powerbi.com/) を使用すると、ライブ ダッシュボードがすぐに作成されます。[このシナリオを示したビデオをご覧ください](https://www.youtube.com/watch?v=SGUpT-a99MA)。
 
 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使用して独自のカスタム ビジネス インテリジェンス ツールを作成し、リアルタイム ダッシュボードを活用する方法について説明します。
-
-> [AZURE.NOTE] 現時点では、Power BI 出力の作成および構成は Azure ポータルではサポートされず、Azure クラシック ポータルでのみサポートされます。
 
 ## 前提条件
 
@@ -203,9 +201,18 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 
 ![図 12][graphic12]
 
+同様に、トークンの期限が切れているときに、ジョブを開始しようとすると、エラーが発生し、ジョブは開始できません。エラーは次のようになります。
+
+![PowerBI 検証エラー](./media/stream-analytics-power-bi-dashboard/stream-analytics-power-bi-dashboard-token-expire.png)
+ 
+
 この問題を解決するには、実行中のジョブを停止し、Power BI 出力に移動します。[承認の更新] リンクをクリックし、データの損失を避けるため、"最後に停止した時刻" からジョブを再開します。
 
-![図 13][graphic13]
+![PowerBI 検証更新](./media/stream-analytics-power-bi-dashboard/stream-analytics-power-bi-dashboard-token-renew.png)
+
+Power BI で認証が更新されたら、承認の領域に緑色のアラートが表示されます。
+
+![PowerBI 検証更新](./media/stream-analytics-power-bi-dashboard/stream-analytics-power-bi-dashboard-token-renewed.png)
 
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
@@ -233,4 +240,4 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0706_2016-->

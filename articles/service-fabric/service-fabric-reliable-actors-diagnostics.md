@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/28/2016"
+   ms.date="07/05/2016"
    ms.author="abhisram"/>
 
 # Reliable Actors の診断とパフォーマンス監視
@@ -118,7 +118,7 @@ Reliable Actors ランタイムは、同時実行に関連する次のパフォ�
 |Service Fabric アクター|アクター ロック保持の平均時間 (ミリ秒)|アクターごとのロックが保持される時間 (ミリ秒単位)|
 
 ### アクター状態管理イベントとパフォーマンス カウンター
-Reliable Actors ランタイムは、[アクター状態管理](service-fabric-reliable-actors-state-management)に関連する次のイベントを出力します。
+Reliable Actors ランタイムは、[アクター状態管理](service-fabric-reliable-actors-state-management.md)に関連する次のイベントを出力します。
 
 |イベント名|イベント ID|Level|キーワード|説明|
 |---|---|---|---|---|
@@ -169,4 +169,4 @@ Reliable Actors ランタイムは、アクターのアクティブ化と非ア�
  - [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
  - [コード サンプル](https://github.com/Azure/servicefabric-samples)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0706_2016-->

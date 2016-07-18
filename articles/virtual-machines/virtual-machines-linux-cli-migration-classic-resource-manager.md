@@ -27,9 +27,8 @@
 
 - [サポートされていない構成または機能の一覧](virtual-machines-windows-migration-classic-resource-manager.md)をご確認ください。サポートされていない構成または機能を使用する仮想マシンがある場合、機能または構成のサポートが発表されるまで待つことをお勧めします。または、必要に応じて、その機能を削除するか、その構成を外して、移行を可能にすることもできます。
 -	インフラストラクチャとアプリケーションをデプロイする自動化スクリプトを今お持ちの場合は、これらのスクリプトを移行に使用して、同様のテスト設定を作成してみてください。または、Azure ポータルを使用してサンプル環境をセットアップすることもできます。
-- このサービスはパブリック プレビュー段階なので、移行用のテスト環境は、必ず運用環境から分離してください。また、テスト環境と運用環境で、ストレージ アカウント、仮想ネットワークなどのリソースが混在しないようにしてください。
 
-## 手順 2. サブスクリプションを設定し、移行のパブリック プレビューにサインアップする
+## 手順 2: サブスクリプションを設定し、移行にサインアップする
 
 移行のシナリオの場合、クラシックと Resource Manager の両方に合わせて環境をセットアップする必要があります。[Azure CLI をインストール](../xplat-cli-install.md)し、[サブスクリプションを選択](../xplat-cli-connect.md)します。
 
@@ -37,7 +36,11 @@
 
 	azure account set "azure-subscription-name"
 
-次のコマンドを使用して、パブリック プレビューにサインアップします。次のコマンドは、場合によってはタイムアウトになるため注意してください。ただし、登録は成功します。
+>[AZURE.NOTE] 登録は 1 回限りの手順ですが、移行を試みる前に実行する必要があります。登録を行わないと、次のエラー メッセージが表示されます
+
+>	*BadRequest : Subscription is not registered for migration.* 
+
+移行リソース プロバイダーに登録するには、次のコマンドを使用します。次のコマンドは、場合によってはタイムアウトになるため注意してください。ただし、登録は成功します。
 
 	azure provider register Microsoft.ClassicInfrastructureMigrate
 
@@ -105,9 +108,25 @@ CLI または Azure ポータルを使用して、準備した仮想マシンの
 
 	azure network vnet commit-migration virtualnetworkname
 
+### ストレージ アカウントを移行する
+
+仮想マシンの移行が完了したら、ストレージ アカウントを移行することをお勧めします。
+
+次のコマンドを使用して、移行対象のストレージ アカウントを準備します
+
+	azure storage account prepare-migration storageaccountname
+
+CLI または Azure ポータルを使用して、準備したストレージ アカウントの構成を確認します。移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
+
+	azure storage account abort-migration storageaccountname
+
+準備した構成が正しい場合は、次に進み、次のコマンドを使用してリソースをコミットできます。
+
+	azure storage account commit-migration storageaccountname
+
 ## 次のステップ
 
 - [プラットフォームでサポートされているクラシックから Resource Manager への IaaS リソースの移行](virtual-machines-windows-migration-classic-resource-manager.md)
 - [プラットフォームでサポートされているクラシックから Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

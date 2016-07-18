@@ -19,6 +19,15 @@
 
 # ポータルを使用した Azure リソースの管理
 
+> [AZURE.SELECTOR]
+- [ポータル](azure-portal/resource-group-portal.md)
+- [Azure CLI](xplat-cli-azure-resource-manager.md)
+- [Azure PowerShell](powershell-azure-resource-manager.md)
+- [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
+- [ノード](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
+- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
+- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
+
 このトピックでは、[Azure ポータル](https://portal.azure.com)と [Azure Resource Manager](../resource-group-overview.md) を使用して Azure リソースを管理する方法について説明します。ポータルを使用したリソースのデプロイについては、「[Deploy resources with Resource Manager templates and Azure portal (Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ)](../resource-group-template-deploy-portal.md)」を参照してください。
 
 現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。それらがサポートされていないサービスの場合、[クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状態については、[Azure ポータルで利用できるサービスの表](https://azure.microsoft.com/features/azure-portal/availability/)を参照してください。
@@ -33,9 +42,9 @@
 > [AZURE.TIP] ダッシュボードの操作をマスターするには、「[Build Custom Dashboards in the Microsoft Azure Portal (Microsoft Azure ポータルでカスタム ダッシュボードを作成する)](https://channel9.msdn.com/Blogs/trevor-cloud/azure-portal-dashboards)」のビデオをご覧いただくのが最も近道です。
 
 ### Azure ダッシュボードの共有とアクセス制御
-構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。ポータルのタイルに表示される情報へのアクセスは、Azure の[ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)によって管理されます。発行したすべてのダッシュボードは Azure リソースとして実装されます。アクセス制御の見地からは、ダッシュボードは仮想マシンやストレージ アカウントと変わりありません。
+構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。ポータルのタイルに表示される情報へのアクセスは、Azure の[ロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)によって管理されます。発行したすべてのダッシュボードは Azure リソースとして実装されます。アクセス制御の見地からは、ダッシュボードは仮想マシンやストレージ アカウントと変わりありません。
 
-たとえば次のようになります。Azure サブスクリプションがあり、チームのさまざまなメンバーにサブスクリプションの**所有者**、**共同作業者**、または**閲覧者**ロールが割り当てられているとします。所有者または共同作成者であるユーザーは、サブスクリプション内でダッシュボードを一覧表示、表示、作成、変更、および削除できます。閲覧者であるユーザーは、ダッシュボードの一覧表示と表示はできますが、変更と削除はできません。閲覧者アクセス許可を持つユーザーは、発行されたダッシュボードにローカルで編集を加えることはできますが (たとえば、問題のトラブルシューティングを行う場合)、その変更をサーバーに戻すことはできません。このようなユーザーは、個人用にダッシュボードのプライベート コピーを作成することが可能です。
+たとえば次のようになります。Azure サブスクリプションがあり、チームのさまざまなメンバーに、サブスクリプションの**所有者**、**共同作業者**、または**閲覧者**ロールが割り当てられているとします。所有者または共同作成者であるユーザーは、サブスクリプション内でダッシュボードを一覧表示、表示、作成、変更、および削除できます。閲覧者であるユーザーは、ダッシュボードの一覧表示と表示はできますが、変更と削除はできません。閲覧者アクセス許可を持つユーザーは、発行されたダッシュボードにローカルで編集を加えることはできますが (たとえば、問題のトラブルシューティングを行う場合)、その変更をサーバーに戻すことはできません。このようなユーザーは、個人用にダッシュボードのプライベート コピーを作成することが可能です。
 
 ダッシュボードの個々のタイルには、表示されているリソースに基づいて、独自のアクセス制御の要件が適用されます。つまり、広く共有しながらも個々のタイルのデータを保護するようにダッシュボードを設計することができます。
 
@@ -122,4 +131,4 @@
 - デプロイ エラーのトラブルシューティングの詳細については、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
 - ポータルを使用したリソースのデプロイについては、「[Deploy resources with Resource Manager templates and Azure portal (Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ)](../resource-group-template-deploy-portal.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

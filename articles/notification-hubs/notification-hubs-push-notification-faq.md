@@ -4,7 +4,7 @@
 	services="notification-hubs"
 	documentationCenter="mobile"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
     keywords="プッシュ通知、プッシュ通知、iOS のプッシュ通知、android のプッシュ通知、ios のプッシュ、android のプッシュ"
 	editor="" />
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="03/09/2016"
+	ms.date="06/29/2016"
 	ms.author="wesmc" />
 
 #Azure Notification Hubs のプッシュ通知 - よく寄せられる質問 (FAQ)
@@ -197,7 +197,7 @@ Azure Notification Hubs では [Azure クラシック ポータル]でテレメ�
 [登録の一括エクスポートと変更]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com
 [完全なサンプル]: https://github.com/Azure/azure-notificationhubs-samples
-[Azure Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
-[App Service の価格]: https://azure.microsoft.com/pricing/details/app-service/
+[Azure Mobile Apps]: https://azure.microsoft.com/ja-JP/services/app-service/mobile/
+[App Service の価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

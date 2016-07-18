@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/13/2016"
+	ms.date="07/05/2016"
 	ms.author="adhurwit"/>
 
 # Web アプリケーションからの Azure Key Vault の使用 #
@@ -97,7 +97,8 @@ Azure Active Directory からアクセス トークンを取得するコード�
 	    return result.AccessToken;
     }
 
-> [AZURE.NOTE] クライアント シークレットとクライアント ID を使用するのが、Azure AD アプリケーションを認証する最も簡単な方法です。また、Web アプリケーションでこれらを使用すると、義務を分離して、キーの管理をさらに制御できます。ただし、これは構成の設定にクライアント シークレットを配置することに依存しています。この配置は、構成の設定に保護するシークレットを配置するのと同じくらい危険な可能性があります。クライアント ID とクライアント シークレットではなく、クライアント ID と証明書を使用して Azure AD のアプリケーションを認証する方法の詳細については、以下を参照してください。
+> [AZURE.NOTE] 
+クライアント ID とクライアント シークレットを使用するのが、Azure AD アプリケーションを認証する最も簡単な方法です。また、Web アプリケーションでこれらを使用すると、義務を分離して、キーの管理をさらに制御できます。ただし、これは構成の設定にクライアント シークレットを配置することに依存しています。この配置は、構成の設定に保護するシークレットを配置するのと同じくらい危険な可能性があります。クライアント ID とクライアント シークレットではなく、クライアント ID と証明書を使用して Azure AD のアプリケーションを認証する方法の詳細については、以下を参照してください。
 
 
 
@@ -228,7 +229,7 @@ StoreLocation は LocalMachine ではなく CurrentUser であることに注意
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetAccessToken));
 
 
-**証明書を Web アプリに追加する** 証明書を Web アプリに追加する手順は、簡単な 2 段階のプロセスです。まず Azure ポータルに移動し、Web アプリに移動します。Web アプリの [設定] ブレードで、[カスタム ドメインおよび SSL] のエントリをクリックします。開いたブレードで、先ほど作成した証明書 KVWebApp.pfx をアップロードし、pfx のパスワードを覚えているかどうかを確認できます。
+**Azure ポータルで証明書を Web アプリに追加する** 証明書を Web アプリに追加する手順は、簡単な 2 段階のプロセスです。まず Azure ポータルに移動し、Web アプリに移動します。Web アプリの [設定] ブレードで、[カスタム ドメインおよび SSL] のエントリをクリックします。開いたブレードで、先ほど作成した証明書 KVWebApp.pfx をアップロードし、pfx のパスワードを覚えているかどうかを確認できます。
 
 ![Azure ポータルでの Web アプリへの証明書の追加][2]
 
@@ -236,6 +237,9 @@ StoreLocation は LocalMachine ではなく CurrentUser であることに注意
 最後に、名前が WEBSITE\_LOAD\_CERTIFICATES で値が * の Web アプリに、アプリケーション設定を追加する必要があります。これにより、すべての証明書が読み込まれます。アップロードした証明書のみを読み込む場合は、そのサムプリントのコンマ区切りリストを入力できます。
 
 Web アプリに証明書を追加する方法の詳細については、[Azure Websites アプリケーションでの証明書の使用](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/)に関するブログを参照してください。
+
+
+**証明書をシークレットとして Key Vault に追加する** 証明書を Web Apps サービスに直接アップロードするのではなく、Key Vault にシークレットとして保存しておき、そこからデプロイすることができます。これは 2 段階のプロセスとなっており、「[Deploying Azure Web App Certificate through Key Vault (Azure Web アプリの証明書を Key Vault 経由でデプロイする)](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)」のブログ記事で説明されています。
 
 
 
@@ -249,4 +253,4 @@ Web アプリに証明書を追加する方法の詳細については、[Azure 
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png
 [2]: ./media/key-vault-use-from-web-application/PortalAddCertificate.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

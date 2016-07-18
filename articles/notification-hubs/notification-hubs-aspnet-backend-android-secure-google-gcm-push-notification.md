@@ -4,7 +4,7 @@
 	documentationCenter="android"
     keywords="プッシュ通知,プッシュ通知,プッシュ メッセージ,Android プッシュ通知"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="notification-hubs"/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="02/15/2016" 
+	ms.date="06/29/2016" 
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs でのセキュリティ保護されたプッシュ通知の送信
@@ -134,4 +134,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 4. Android アプリケーションの UI で、**[ログイン]** をクリックします。次に、**[プッシュを送信する]** をクリックします。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

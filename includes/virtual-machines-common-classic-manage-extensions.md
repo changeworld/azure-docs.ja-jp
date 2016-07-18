@@ -22,7 +22,7 @@ Azure VM 拡張機能は、Azure VM 上での他のプログラムの動作の�
 以下を使用して、拡張機能とその詳細情報を見つけることができます。
 
 -   PowerShell
--   Azure クロスプラットフォーム インターフェイス (Azure CLI)
+-   Azure クロスプラットフォーム コマンド ライン インターフェイス (Azure CLI)
 -   サービス管理 REST API
 
 ###Azure PowerShell
@@ -36,9 +36,7 @@ Azure VM 拡張機能は、Azure VM 上での他のプログラムの動作の�
 
      例として、次のコード例に PowerShell を使用して **IaaSDiagnostics** 拡張機能の情報を一覧表示する方法を示します。
 
-        PS C:\PowerShell> Get-AzureVMAvailableExtension -ExtensionName IaaSDiagnostics
-        VERBOSE: 5:09:01 PM - Begin Operation: Get-AzureVMAvailableExtension
-        VERBOSE: 5:09:06 PM - Completed Operation: Get-AzureVMAvailableExtension
+        PS C:\> Get-AzureVMAvailableExtension -ExtensionName IaaSDiagnostics
 
         Publisher                   : Microsoft.Azure.Diagnostics
         ExtensionName               : IaaSDiagnostics
@@ -119,4 +117,4 @@ Azure PowerShell コマンドレットを使用するのが、最も簡単に拡
 
 >[AZURE.NOTE]拡張機能では、JSON で定義された構成も使用できます。これらの種類の拡張機能を使用する場合、**SampleConfig** 要素だけが使用されます。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

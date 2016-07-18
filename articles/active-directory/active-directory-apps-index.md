@@ -42,7 +42,7 @@
 | フェデレーション シングル サインオン | [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md) |
 | パスワードベースのシングル サインオン | [Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md) |
 | アプリケーション プロキシ | [アプリケーション プロキシのトラブルシューティング](active-directory-application-proxy-troubleshoot.md) |
-| オンプレミス AD と Azure AD 間のシングル サインオン | [Azure AD Connect Sync: パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md#managing-password-synchronization)<br /><br />[パスワード管理のトラブルシューティングの方法](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) | 
+| オンプレミス AD と Azure AD 間のシングル サインオン | [Azure AD Connect Sync: パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshooting-password-synchronization)<br /><br />[パスワード管理のトラブルシューティングの方法](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) | 
 | 動的グループ メンバーシップ | [グループの動的メンバーシップのトラブルシューティング](active-directory-accessmanagement-troubleshooting.md) |
 
 ##シングル サインオン (SSO)
@@ -60,7 +60,7 @@
 | SAML プロトコルを使用するフェデレーション アプリのトラブルシューティング ガイド | [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md) |
 | アプリの証明書の有効期限を構成する方法と証明書を更新する方法 | [Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](active-directory-sso-certs.md) |
 
-フェデレーション シングル サインオンは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[フェデレーション アプリケーションへのアクセスの割り当てにグループを使用](#how-to-manage-who-has-access-to-which-apps)できます。
+フェデレーション シングル サインオンは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[フェデレーション アプリケーションへのアクセスの割り当てにグループを使用](#managing-access-to-applications)できます。
 
 ###パスワード ベースのシングル サインオン: 非フェデレーション アプリのためのアカウント共有と SSO
 
@@ -73,7 +73,7 @@
 | 定期的に特定のアプリのパスワードを自動的に変更 | [Automated Password Rollover (preview) (自動パスワード ロールオーバー (プレビュー))](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx0) |
 | Azure AD パスワード管理拡張機能の Internet Explorer バージョンのデプロイおよびトラブルシューティング ガイド | [グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)<br /><br />[Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md) |
 
-パスワード ベースのシングル サインオンは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[アプリケーションへのアクセスの割り当てにグループを使用](#how-to-manage-who-has-access-to-which-apps)できます。自動パスワード ロールオーバーは、[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
+パスワード ベースのシングル サインオンは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[アプリケーションへのアクセスの割り当てにグループを使用](#managing-access-to-applications)できます。自動パスワード ロールオーバーは、[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
 
 ###アプリ プロキシ: オンプレミス アプリケーションへのシングル サインオンとリモート アクセス
 
@@ -81,13 +81,13 @@
 
 | 記事の紹介 | |
 | :---: | --- |
-| Azure AD アプリケーション プロキシの概要としくみ | [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)<br /><br />[アプリケーション プロキシによるハイブリッド アクセスの有効化](active-directory-appssoaccess-enable-hybrid-access.md) |
+| Azure AD アプリケーション プロキシの概要としくみ | [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md) |
 | アプリケーション プロキシを構成する方法と最初のアプリを発行する方法に関するチュートリアル | [Azure AD アプリケーション プロキシの有効化](active-directory-application-proxy-enable.md)<br /><br />[Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法](active-directory-application-proxy-silent-installation.md)<br /><br />[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)<br /><br />[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](active-directory-application-proxy-custom-domains.md) |
-| アプリ プロキシを使用して発行されたアプリのシングル サインオンと条件付きアクセスを有効にする方法 | [アプリケーション プロキシを使用したシングル サインオン](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[条件付きアクセスの使用](active-directory-application-proxy-conditional-access.md) |
+| アプリ プロキシを使用して発行されたアプリのシングル サインオンと条件付きアクセスを有効にする方法 | [アプリケーション プロキシを使用したシングル サインオン](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[条件付きアクセスとアプリケーション プロキシ](active-directory-application-proxy-conditional-access.md) |
 | 次のシナリオでアプリケーション プロキシを使用する方法についてのガイダンス | [ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法](active-directory-application-proxy-native-client.md)<br /><br />[アプリケーション プロキシで要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](active-directory-application-proxy-connectors.md) |
 | アプリケーション プロキシのトラブルシューティング ガイド | [アプリケーション プロキシのトラブルシューティング](active-directory-application-proxy-troubleshoot.md) |
 
-アプリケーション プロキシは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[アプリケーションへのアクセスの割り当てにグループを使用](#how-to-manage-who-has-access-to-which-apps)できます。
+アプリケーション プロキシは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[アプリケーションへのアクセスの割り当てにグループを使用](#managing-access-to-applications)できます。
 
 [Azure AD ドメイン サービス](../active-directory-domain-services/active-directory-ds-overview.md)もご確認ください。これを使用すると、オンプレミス アプリケーションを Azure に移行すると同時に、引き続きそれらのアプリケーションの ID ニーズを満たすことができます。
 
@@ -100,7 +100,7 @@
 | Azure AD Connect に用意されているシングル サインオン オプションの概要と、ハイブリッド環境の管理に関する情報 | [Azure AD Connect ユーザーのサインオン オプション](active-directory-aadconnect-user-signin.md) |
 | オンプレミスの Active Directory と Azure Active Directory 両方を使用している環境を管理するための一般的なガイダンス | [Azure Active Directory ハイブリッド ID の設計上の考慮事項](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md) |
 | SSO を有効にするためのパスワード同期の使用についてのガイダンス | [Azure AD Connect Sync: パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md)<br /><br />[Azure Active Directory 同期ツール使用時にパスワード同期で発生する問題をトラブルシューティングする方法](https://support.microsoft.com/ja-JP/kb/2855271) |
-| SSO を有効にするためのパスワード ライトバックの使用についてのガイダンス | [パスワード管理の概要](active-directory-passwords-getting-started.md)<br /><br />[パスワード管理のトラブルシューティングの方法](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| SSO を有効にするためのパスワード ライトバックの使用についてのガイダンス | [パスワード管理の概要](active-directory-passwords-getting-started.md)<br /><br />[パスワード ライトバックのトラブルシューティングの方法](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | SSO を有効にするためのサード パーティ ID プロバイダーの使用についてのガイダンス | [サードパーティ ID プロバイダーを使用してシングル サインオンを実装する](https://aka.ms/ssoproviders) | 
 | Windows 10 ユーザーが Azure AD 参加によるシングル サインオンの利点を活用する方法 | [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md) |
 
@@ -114,7 +114,7 @@ Azure AD Connect は、[Azure Active Directory のすべてのエディション
 | :---: | --- |
 | Azure AD、Office365、Intune に提供されている条件付きアクセス機能の概要 | [条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access.md) |
 | 次の種類のリソースで条件付きアクセスを有効にする方法 | [Azure Conditional Access Preview for SaaS Apps](active-directory-conditional-access-azuread-connected-apps.md)<br /><br />[Office 365 サービス用条件付きアクセスのデバイス ポリシー](active-directory-conditional-access-device-policies.md)<br /><br />[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-conditional-access-on-premises-setup.md)<br /><br />[条件付きアクセスの使用](active-directory-application-proxy-conditional-access.md) |
-| デバイス ベースの条件付きアクセス ポリシーを有効にするためにデバイスを Azure Active Directory に登録する方法 | [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)<br /> [Windows 8.1 デバイス用の手順](active-directory-conditional-access-automatic-device-registration-windows8_1.md)<br /> [Windows 7 デバイス用の手順](active-directory-conditional-access-automatic-device-registration-windows7.md) |
+| デバイス ベースの条件付きアクセス ポリシーを有効にするためにデバイスを Azure Active Directory に登録する方法 | [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)<br /> [Windows 8.1 デバイス用の手順](active-directory-conditional-access-automatic-device-registration-windows8-1.md)<br /> [Windows 7 デバイス用の手順](active-directory-conditional-access-automatic-device-registration-windows7.md) |
 | 多要素認証に関するポリシーのために Azure Authenticator アプリの Android バージョンを使用する方法 | [Android 用の Azure Authenticator](active-directory-conditional-access-azure-authenticator-app.md) |
 
 条件付きアクセスは、[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
@@ -148,7 +148,7 @@ Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、�
 | プロビジョニング エラーの通知を受け取る | [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md) |
 | 属性値に基づいて、アプリケーションにプロビジョニングされるユーザーを制限する | [スコープ フィルターを使用する属性ベースのアプリ プロビジョニング](active-directory-saas-scoping-filters.md) |
 
-自動化されたユーザー プロビジョニングは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[プロビジョニングの対象となるユーザーの管理にグループを使用](#how-to-manage-who-has-access-to-which-apps)できます。
+自動化されたユーザー プロビジョニングは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[プロビジョニングの対象となるユーザーの管理にグループを使用](#managing-access-to-applications)できます。
 
 ###Azure AD と統合するアプリケーションの構築
 
@@ -174,7 +174,7 @@ Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、�
 | Azure AD アクセス管理機能の概要 | [アプリへのアクセスの管理](active-directory-managing-access-to-apps.md)<br /><br />[Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)<br /><br />[SaaS アプリケーションへのアクセスをグループで管理する](active-directory-accessmanagement-group-saasapps.md) |
 | アプリとグループのセルフサービス管理の有効化 | [Azure Active Directory によるアプリケーションのセルフサービス アクセスと委任管理](active-directory-self-service-application-access.md)<br /><br />[アプリケーション アクセス管理のセルフサービス化に必要な Azure Active Directory の設定](active-directory-accessmanagement-self-service-group-management.md) |
 | Azure AD でグループを設定するための手順 | [Azure Active Directory のセキュリティ グループの管理](active-directory-accessmanagement-manage-groups.md)<br /><br />[グループの所有者の管理](active-directory-accessmanagement-managing-group-owners.md)<br /><br />[Azure Active Directory の専用グループ](active-directory-accessmanagement-dedicated-groups.md) |
-| 動的グループを使用した、属性ベースのメンバーシップ規則によるグループのメンバーシップの自動設定 | [単純なルールを作成してグループの動的メンバーシップ管理を行う](active-directory-accessmanagement-simplerulegroup.md)<br /><br />[属性を使用した高度なルールの作成](active-directory-accessmanagement-groups-with-advanced-rules.md)<br /><br />[グループの動的メンバーシップのトラブルシューティング](active-directory-accessmanagement-troubleshooting.md) |
+| 動的グループを使用した、属性ベースのメンバーシップ規則によるグループのメンバーシップの自動設定 | [動的グループ メンバーシップ: 高度なルール](active-directory-accessmanagement-groups-with-advanced-rules.md)<br /><br />[動的グループ メンバーシップのトラブルシューティング](active-directory-accessmanagement-troubleshooting.md) |
 
 グループ ベースのアプリケーション アクセス管理は、[Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) と [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) で使用できます。セルフサービス グループ管理、セルフサービス アプリケーション管理、および動的グループは、[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
 
@@ -212,7 +212,7 @@ Azure Active Directory には、組織のアプリケーションへのアクセ
 | 記事の紹介 | |
 | :---: | --- |
 | Azure Active Directory のレポート機能の概要 | [Azure Active Directory レポートの使用の開始](active-directory-reporting-getting-started.md) |
-| ユーザーのサインインとアプリ使用状況を監視する方法 | [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)<br /><br />[Azure Active Directory のすべてのユーザーのサインイン アクティビティ レポート](active-directory-reporting-all-user-sign-in-activity-report.md) |
+| ユーザーのサインインとアプリ使用状況を監視する方法 | [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md) |
 | 特定のアプリケーションにアクセスできるユーザーに対して行われた変更の追跡 | [Azure Active Directory 監査レポートのイベント](active-directory-reporting-audit-events.md) |
 | Reporting API を使用してこれらのレポートのデータを任意のツールにエクスポート | [Azure AD Reporting API の概要](active-directory-reporting-api-getting-started.md) |
 
@@ -228,4 +228,4 @@ Azure Active Directory の各エディションに付属のレポートを確認
 
 [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0706_2016-->

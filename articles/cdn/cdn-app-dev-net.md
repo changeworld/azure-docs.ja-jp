@@ -13,16 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="07/01/2016"
 	ms.author="casoper"/>
 
-# .NET 向け Azure CDN ライブラリの概要
+# Azure CDN 開発の概要
+
+> [AZURE.SELECTOR]
+- [.NET](cdn-app-dev-net.md)
+- [Node.JS](cdn-app-dev-node.md)
 
 [.NET 向け Azure CDN ライブラリ](https://msdn.microsoft.com/library/mt657769.aspx)を使用すると、CDN プロファイルとエンドポイントの作成と管理を自動化できます。このチュートリアルでは、単純な .NET コンソール アプリケーションを作成しながら、使用可能な操作のいくつかを紹介します。このチュートリアルは、.NET 向け Azure CDN ライブラリのすべての側面を詳細に説明することを目的としていません。
 
 このチュートリアルを完了するには、Visual Studio 2015 が必要です。[Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) は、自由にダウンロードできます。
 
-このチュートリアルの完成したサンプルは、[ここ](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c)にあります。
+> [AZURE.TIP] [このチュートリアルに沿って作成されたプロジェクト](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c)は MSDN からダウンロードできます。
 
 [AZURE.INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
@@ -65,7 +69,7 @@ Visual Studio 2015 で、**[ファイル]**、**[新規]**、**[プロジェク�
 	using Microsoft.Rest;
 	```
 
-2. 次に、メソッドで使用するいくつかの定数を定義します。`Program` クラスの `Main` メソッドの前に次のコードを追加します。必要に応じて、**&lt;山かっこ&gt;** などのプレースホルダーを自分の環境に合わせて置き換えてください。
+2. 次に、メソッドで使用するいくつかの定数を定義します。`Program` クラスの `Main` メソッドの前に次のコードを追加します。**&lt;山かっこ&gt;** などのプレースホルダーは、必要に応じて自分の環境に合わせて置き換えます。
 
 	```
 	//Tenant app constants
@@ -142,7 +146,7 @@ Visual Studio 2015 で、**[ファイル]**、**[新規]**、**[プロジェク�
 		}
 		else
 		{
-			// They're not pressing Y or N.  Let's ask them again.
+			// They pressed something other than Y or N.  Let's ask them again.
 			return PromptUser(Question);
 		}
 	}
@@ -333,4 +337,4 @@ Visual Studio の **[開始]** をクリックして、プログラムをコン�
 
 Azure CDN Management Library for .NET に関連するドキュメントについては、[MSDN のリファレンス](https://msdn.microsoft.com/library/mt657769.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

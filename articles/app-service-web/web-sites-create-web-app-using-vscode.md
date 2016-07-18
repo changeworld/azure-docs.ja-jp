@@ -32,7 +32,7 @@ ASP.NET 5 は、ASP.NET の刷新版です。ASP.NET 5 は、.NET を使用し�
 
 * [VS コード](http://code.visualstudio.com/Docs/setup)をインストールします。
 * [Node.js](http://nodejs.org) をインストールします。Node.js は、JavaScript を使用して高速かつスケーラブルなサーバー アプリケーションを構築するためのプラットフォームです。Node はランタイム (ノード) であり、[npm](http://www.npmjs.com/) は Node モジュールのパッケージ マネージャーです。このチュートリアルでは、npm を使用して、ASP.NET 5 Web アプリをスキャフォールディングします。
-* Git をインストールします。これは、[Chocolatey](https://chocolatey.org/packages/git) または [git-scm.com](http://git-scm.com/downloads) のいずれかの場所からインストールできます。Git を初めて使う場合は、[git-scm.com](http://git-scm.com/downloads) を選択し、**Windows コマンド プロンプトから Git を使用する**オプションを選択します。Git をインストールした後、(VS コードからコミットを実行する場合に) チュートリアルの後半で必要になるため、Git のユーザー名と電子メールも設定する必要があります。  
+* Git をインストールします。これは、[Chocolatey](https://chocolatey.org/packages/git) または [git-scm.com](http://git-scm.com/downloads) のいずれかの場所からインストールできます。Git を初めて使う場合は、[git-scm.com](http://git-scm.com/downloads) を選択し、**Windows コマンド プロンプトから Git を使用する**オプションを選択します。Git をインストールした後、(VS コードからコミットを実行する場合に) チュートリアルの後半で必要になるため、Git のユーザー名と電子メールも設定する必要があります。
 
 ## ASP.NET 5 と DNX のインストール
 ASP.NET 5 と DNX (.NET Execution Environment) は、OS X、Linux、Windows 上で動作する最新のクラウドや Web アプリを構築するための、効率の優れた .NET スタックです。ASP.NET 5 および DNX は、一から設計し直され、クラウドにデプロイされるアプリまたはオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
@@ -123,7 +123,7 @@ Web アプリが作成され、アプリのすべての NuGet パッケージが
 
 	コマンド ウィンドウに、アプリケーションが起動したことが示されます。コマンド ウィンドウにこのメッセージが表示されない場合は、VS コードの左下隅にプロジェクトのエラーが示されていないかどうかを確認します。
 	
-	> [AZURE.NOTE] **コマンド パレット**からコマンドを発行するには、コマンド ラインの先頭に **>** 文字が必要です。**web** コマンドに関する詳細は *project.json* ファイルで確認できます。
+	> [AZURE.NOTE] **コマンド パレット**からコマンドを発行するには、コマンド ラインの先頭に **>** 文字が必要です。**web** コマンドに関する詳細は *project.json* ファイルで確認できます。コマンドが表示されない場合または使用できない場合、C# の拡張機能をインストールする必要があります。`>Extensions: Install Extension` と `ext install c#` を実行して、C# の拡張機能をインストールしてください。
 
 2. ブラウザーを開き、次の URL に移動します。
 
@@ -250,7 +250,7 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 
 これは、2 つの方法で実行できます。
 
-* ブラウザーを開き、次のように、Web アプリの名前を入力します。   
+* ブラウザーを開き、次のように、Web アプリの名前を入力します。
 
 		http://SampleWebAppDemo.azurewebsites.net
  
@@ -262,4 +262,4 @@ Git は、Azure App Service の Web アプリをデプロイするために使�
 ## 概要
 このチュートリアルでは、VS コードで、Web アプリを作成し、Azure にデプロイする方法を学習しました。VS コードの詳細については、[Visual Studio Code を使用する理由](https://code.visualstudio.com/Docs/)に関する記事をご覧ください。 App Service Web Apps の詳細については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

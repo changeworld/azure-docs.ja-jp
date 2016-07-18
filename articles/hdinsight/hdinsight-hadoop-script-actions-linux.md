@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/31/2016"
+    ms.date="07/05/2016"
     ms.author="larryfr"/>
 
 # HDInsight でのスクリプト アクション開発
@@ -50,6 +50,7 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 - [Azure BLOB ストレージを使用するカスタム コンポーネントの構成](#bPS6)
 - [STDOUT および STDERR に情報を書き込む](#bPS7)
 - [LF 行の終わりで、ファイルを ASCII として保存する](#bps8)
+- [再試行ロジックを使用して一時的なエラーから回復する](#bps9)
 
 > [AZURE.IMPORTANT] スクリプト アクションは 60 分以内に完了する必要があります。そうしないと、タイムアウトします。ノードのプロビジョニング中、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
 
@@ -116,6 +117,40 @@ Bash スクリプトは、行が LF で終了する ASCII 形式で保存する�
     $'\r': command not found
     line 1: #!/usr/bin/env: No such file or directory
 
+###<a name="bps9"></a> 再試行ロジックを使用して一時的なエラーから回復する
+
+ファイルのダウンロード時、apt-get を使用したパッケージのインストール時、またはインターネット経由でデータを転送するその他の操作時に、一時的なネットワーク エラーにより、操作に失敗する場合があります。たとえば、通信対象のリモート リソースが、バックアップ ノードへのフェールオーバー中である可能性があります。
+
+一時的なエラーに対するスクリプトの回復力を高めるには、再試行ロジックを実装します。以下に示す関数の例では、渡された任意のコマンドを実行し、(コマンドが失敗した場合に) 最大 3 回まで再試行します。再試行の間隔は 2 秒です。
+
+    #retry
+    MAXATTEMPTS=3
+
+    retry() {
+        local -r CMD="$@"
+        local -i ATTMEPTNUM=1
+        local -i RETRYINTERVAL=2
+
+        until $CMD
+        do
+            if (( ATTMEPTNUM == MAXATTEMPTS ))
+            then
+                    echo "Attempt $ATTMEPTNUM failed. no more attempts left."
+                    return 1
+            else
+                    echo "Attempt $ATTMEPTNUM failed! Retrying in $RETRYINTERVAL seconds..."
+                    sleep $(( RETRYINTERVAL ))
+                    ATTMEPTNUM=$ATTMEPTNUM+1
+            fi
+        done
+    }
+
+この関数の使用例を次に示します。
+
+    retry ls -ltr foo
+
+    retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
+
 ## <a name="helpermethods"></a>カスタム スクリプトのためのヘルパー メソッド
 
 スクリプト アクションのヘルパー メソッドは、カスタム スクリプトの記述で利用できるユーティリティです。これらは [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) で定義されており、次を使用してスクリプトに含めることができます。
@@ -181,7 +216,7 @@ VARIABLENAME は、変数の名前です。この後に変数にアクセスす�
 
 ## <a name="runScriptAction"></a>Script Action の実行方法
 
-スクリプト アクションを使用して、Azure ポータル、Azure PowerShell、Azure Resource Manager (ARM) テンプレート、または HDInsight .NET SDK によって HDInsight クラスターをカスタマイズすることができます。手順については、[スクリプト アクションの使用方法](hdinsight-hadoop-customize-cluster-linux.md)に関するページをご覧ください。
+スクリプト アクションを使用して、Azure ポータル、Azure PowerShell、Azure Resource Manager (ARM) テンプレート、または HDInsight .NET SDK によって HDInsight クラスターをカスタマイズすることができます。手順については、[スクリプト アクションの使用方法](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
 ## <a name="sampleScripts"></a>カスタム スクリプトのサンプル
 
@@ -190,7 +225,7 @@ Microsoft は、HDInsight クラスターにコンポーネントをインスト
 - [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)
 - [HDInsight Hadoop クラスターに R をインストールして使用する](hdinsight-hadoop-r-scripts-linux.md)
 - [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
-- [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)  
+- [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
 
 > [AZURE.NOTE] 上のリンクのドキュメントは、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースの HDInsight と連携するスクリプトについては、[HDInsight でのスクリプト アクションの開発 (Windows)](hdinsight-hadoop-script-actions.md) に関する記述を参照するか、各記事の上部にあるリンクを使用します。
 
@@ -227,10 +262,10 @@ _解決_: ファイルを ASCII として、または BOM なしの UTF-8 とし
 
 ## <a name="seeAlso"></a>次のステップ
 
-* [スクリプト アクションを使って HDInsight クラスターをカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)する方法について説明します。
+* [スクリプト アクションを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)方法を学習します。
 
 * [HDInsight .NET SDK リファレンス](https://msdn.microsoft.com/library/mt271028.aspx)を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。
 
 * [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

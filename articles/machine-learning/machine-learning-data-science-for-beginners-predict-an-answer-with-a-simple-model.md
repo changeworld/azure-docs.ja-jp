@@ -1,5 +1,5 @@
 <properties
-   pageTitle="単純なモデルで回答を予測する | Microsoft Azure"
+   pageTitle="単純なモデルで回答を予測する - 初心者向けデータ サイエンス | Microsoft Azure"
    description="初心者向けデータ サイエン ビデオ 4 で、単純なモデルを作成してダイヤモンドの価格を予測する方法基本的な線形回帰とターゲット データが含まれます。"                                  
    keywords="モデルを作成する,単純なモデル,単純なデータ モデル,価格の予測,単純な回帰モデル"
    services="machine-learning"
@@ -17,9 +17,11 @@
    ms.date="06/29/2016"
    ms.author="cgronlun;brohrer;garye"/>
 
-# 単純なモデルで回答を予測する: 初心者向けデータ サイエンス ビデオ 4
+# 初心者向けデータ サイエンス ビデオ 4: 単純なモデルで回答を予測する
 
 初心者向けデータ サイエン ビデオ 4 では、単純なモデルを作成してダイヤモンドの価格を予測する方法について説明します。ターゲット データを使用して回帰モデルを引き出します。
+
+このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
 
 > [AZURE.VIDEO data-science-for-beginners-series-predict-an-answer-with-a-simple-model]
 
@@ -42,7 +44,7 @@
 実際に、これで小さなデータ セット、つまり 1 つのテーブルができたことになります。このテーブルが品質の条件を満たしていることに注目してください。
 
 * データに**関連性がある**: 重さは間違いなく価格に関連します。
-* **正確である**: 書き留めた価格をダブル チェックしました。
+* **正確である**: 書き留めた価格をダブルチェックしました。
 * **連続している**: 各列にはどこにも空白がありません。
 * さらに、ご覧のとおり、質問に回答するのに**十分な**データがあります。
 
@@ -125,14 +127,15 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
 
 "初心者向けデータ サイエンス" は、データ サイエンスを簡単に説明した 5 本の短いビデオです。
 
-  * ビデオ 1: [データ サイエンスが回答できる 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)。**現在視聴できます。**
-  * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) **現在視聴できます。**
-  * ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)。**現在視聴できます。**
-  * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)。6 月 30 日から視聴できます。
+  * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
+  * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
+  * ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
+  * ビデオ 4: 単純なモデルで回答を予測する
+  * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
 
 ## 次のステップ
 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -432,7 +432,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 | baseUri | あり | ベース URI 文字列。
 | relativeUri | あり | ベース URI 文字列に追加する相対 URI 文字列。
 
-**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。たとえば、baseUri パラメーターとして **http://contoso.com/resources/azuredeploy.json** を渡すと、**http://contoso.com/resources/** というベース URI が作成されます。
+**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。たとえば、**baseUri パラメーターとして http://contoso.com/resources/azuredeploy.json** を渡すと、http://contoso.com/resources/** というベース URI が作成されます**。
 
 次の例は、親テンプレートの値に基づいて、入れ子になったテンプレートへのリンクを作成する方法を示しています。
 
@@ -444,9 +444,9 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 - [concat](#concat)
 - [length](#length)
-- [take](#take)
 - [skip](#skip)
 - [split](#split)
+- [take](#take)
 
 <a id="length" />
 ### length
@@ -469,37 +469,6 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
     },
     "variables": { 
         "nameLength": "[length(parameters('appName'))]"
-    }
-
-<a id="take" />
-### take
-**take(originalValue, numberToTake)**
-
-開始位置を起点として指定された要素数の配列または開始位置を起点として指定された文字数の文字列を返します。
-
-| パラメーター | 必須 | 説明
-| :--------------------------------: | :------: | :----------
-| originalValue | あり | 要素または文字の取得元となる配列または文字列。
-| numberToTake | あり | 取得する要素数または文字数。この値が 0 以下である場合、空の配列または空の文字列が返されます。指定された配列または文字列の長さを超える場合、その配列または文字列のすべての要素が返されます。
-
-指定した数の要素を配列から取得する例を次に示します。
-
-    "parameters": {
-      "first": {
-        "type": "array",
-        "defaultValue": [ "one", "two", "three" ]
-      },
-      "second": {
-        "type": "int"
-      }
-    },
-    "resources": [
-    ],
-    "outputs": {
-      "return": {
-        "type": "array",
-        "value": "[take(parameters('first'),parameters('second'))]"
-      }
     }
 
 <a id="skip" />
@@ -530,6 +499,37 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
       "return": {
         "type": "array",
         "value": "[skip(parameters('first'),parameters('second'))]"
+      }
+    }
+
+<a id="take" />
+### take
+**take(originalValue, numberToTake)**
+
+開始位置を起点として指定された要素数の配列または開始位置を起点として指定された文字数の文字列を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| originalValue | あり | 要素または文字の取得元となる配列または文字列。
+| numberToTake | あり | 取得する要素数または文字数。この値が 0 以下である場合、空の配列または空の文字列が返されます。指定された配列または文字列の長さを超える場合、その配列または文字列のすべての要素が返されます。
+
+指定した数の要素を配列から取得する例を次に示します。
+
+    "parameters": {
+      "first": {
+        "type": "array",
+        "defaultValue": [ "one", "two", "three" ]
+      },
+      "second": {
+        "type": "int"
+      }
+    },
+    "resources": [
+    ],
+    "outputs": {
+      "return": {
+        "type": "array",
+        "value": "[take(parameters('first'),parameters('second'))]"
       }
     }
 
@@ -877,4 +877,4 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
 - 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

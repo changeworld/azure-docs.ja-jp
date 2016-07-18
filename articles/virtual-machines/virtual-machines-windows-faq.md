@@ -79,4 +79,8 @@ Windows 仮想マシンでは、ページ ファイルを移動してドライ�
 
 はい。Linux VM をすばやく作成して試してみるには、「[ポータルを使用して Azure に Linux VM を作成する](virtual-machines-linux-quick-create-portal.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+## VM の作成後、NIC を VM に追加できますか。
+
+いいえ。現時点では、この操作は作成時にのみ実行できます。
+
+<!---HONumber=AcomDC_0706_2016-->

@@ -39,7 +39,7 @@ Reliable Services では、サービスは `StatefulService` クラスを継承�
 
  - サービスのバックアップと復元。
  - すべてのアクターで共有される機能 (サーキット ブレーカーなど)。
- - 個別のアクターだけでなく、アクター サービス自体でのリモート処理プロシージャの呼び出し。 
+ - 個別のアクターだけでなく、アクター サービス自体でのリモート処理プロシージャの呼び出し。
 
 ### アクター サービスの使用
 
@@ -251,7 +251,7 @@ GUID と文字列を使用した場合、値は Int64 にハッシュされま�
  - [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
  - [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
  - [アクターの API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [コード サンプル](https://github.com/Azure/servicefabric-samples)
+ - [コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 
  
 <!--Image references-->
@@ -261,4 +261,4 @@ GUID と文字列を使用した場合、値は Int64 にハッシュされま�
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 [5]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0706_2016-->

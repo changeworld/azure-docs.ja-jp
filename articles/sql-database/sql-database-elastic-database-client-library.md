@@ -18,7 +18,7 @@
 
 # スケーラブルなクラウド データベースの構築
 
-SQL Azure データベース用のスケーラブルなツールと機能を使用して、データベースのスケール アウトを簡単に実現できます。具体的には、**Elastic Database クライアント ライブラリ**を使用して、スケールアウトされたデータベースを作成および管理できます。この機能により、数百から数千もの Azure SQL データベースを使用して、シャード化されたアプリケーションを簡単に開発できます。
+Azure SQL Database 用のスケーラブルなツールと機能を使用して、データベースのスケール アウトを簡単に実現できます。具体的には、**Elastic Database クライアント ライブラリ**を使用して、スケールアウトされたデータベースを作成および管理できます。この機能により、数百から数千もの Azure SQL データベースを使用して、シャード化されたアプリケーションを簡単に開発できます。
 
 ライブラリをインストールするには、[Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) に移動します。
 
@@ -31,13 +31,13 @@ SQL Azure データベース用のスケーラブルなツールと機能を使�
 * [マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)
 * [Elastic Database ツールを使用してシャードを追加する](sql-database-elastic-scale-add-a-shard.md)
 * [弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション](sql-database-elastic-tools-multi-tenant-row-level-security.md)
-* [クライアント ライブラリ アプリのアップグレード](sql-database-elastic-scale-upgrade-client-library.md) 
+* [クライアント ライブラリ アプリのアップグレード](sql-database-elastic-scale-upgrade-client-library.md)
 * [エラスティック クエリの概要](sql-database-elastic-query-overview.md)
 * [Elastic Database ツールの用語集](sql-database-elastic-scale-glossary.md)
 * [Entity Framework による Elastic Database クライアント ライブラリ](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)
 * [Dapper を使用したエラスティック データベース クライアント ライブラリ](sql-database-elastic-scale-working-with-dapper.md)
 * [Split-Merge ツール](sql-database-elastic-scale-overview-split-and-merge.md)
-* [シャード マップ マネージャーのパフォーマンス カウンター](sql-database-elastic-database-client-library.md) 
+* [シャード マップ マネージャーのパフォーマンス カウンター](sql-database-elastic-database-client-library.md)
 * [エラスティック データベース ツールに関する FAQ](sql-database-elastic-scale-faq.md)
 
 ## クライアントの機能
@@ -73,4 +73,4 @@ SQL Azure データベース用のスケーラブルなツールと機能を使�
 <!--Image references-->
 [1]: ./media/sql-database-elastic-database-client-library/glossary.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

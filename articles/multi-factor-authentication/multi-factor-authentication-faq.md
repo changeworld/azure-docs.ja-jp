@@ -83,7 +83,7 @@ Azure Multi-Factor Authentication は、ユーザーごとおよび認証ごと�
 ユーザーごとの使用量 (Azure 年額コミットメント)| $1.40/月 (認証回数の制限なし)
 認証ごとの使用量 (Azure 年額コミットメント)|$1.40/10 認証回数
 ユーザーごとの年間ライセンス (Direct)|$1.40/月 (認証回数の制限なし)
-ユーザーごとの年間ライセンス (ボリューム ライセンス)|[エンタープライズ契約の担当者](https://www.microsoft.com/licensing/licensing-programs/enterprise.aspx)にお問い合わせください。
+ユーザーごとの年間ライセンス (ボリューム ライセンス)|[エンタープライズ契約の担当者](https://www.microsoft.com/ja-JP/licensing/licensing-programs/enterprise.aspx)にお問い合わせください。
 
 **Q: 「ユーザーごと」の請求モデルは、Multi-Factor Authentication が有効なユーザー数に基づきますか、それとも確認を実行するユーザー数に基づいて課金されるのでしょうか。**
 
@@ -185,4 +185,4 @@ Windows Server 2012 以前のバージョンで Azure MFA Server が LSA セキ�
 
 これを回避するには、管理関連の操作と管理以外の操作に関して異なるユーザー アカウントを使用します。後ほど、管理アカウントと非管理アカウント間のメールボックスでリンクを作成することによって、非管理アカウントを使用して outlook にサインインできます。詳細については、「[管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1)」 を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

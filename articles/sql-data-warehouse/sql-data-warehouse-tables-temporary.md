@@ -1,6 +1,6 @@
 <properties
    pageTitle="SQL Data Warehouse の一時テーブル | Microsoft Azure"
-   description="ソリューション開発のための、Azure SQL Data Warehouse での一時テーブルの使用に関するヒント。"
+   description="Azure SQL Data Warehouse の一時テーブルの概要です。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
@@ -13,21 +13,32 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/06/2016"
+   ms.date="06/29/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の一時テーブル
-特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが非常に役立ちます。SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。一時テーブルはローカル一時テーブルとして定義されますが、SQL Server テーブルとは異なり、セッション内のどこからでもアクセスできます。
 
-この記事では、セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。ここの情報を利用することで、コードをモジュール化できます。コードのモジュール機能は、保守管理とコードの再利用を簡単にするために重要です。
+> [AZURE.SELECTOR]
+- [概要][]
+- [データ型][]
+- [分散][]
+- [Index][]
+- [Partition][]
+- [統計][]
+- [一時][]
+
+特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが非常に役立ちます。SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。作成されたセッションのみで参照でき、セッションをログオフすると自動的に削除されます。一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。Azure SQL Data Warehouse の一時テーブルは、ストアド プロシージャの内外両方を含め、セッション内のどこからでもアクセスできる点で、Azure SQL Database とわずかに異なります。
+
+この記事では、セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。この記事の情報に従うとコードをモジュール化できるため、コードの再利用性が向上し、保守が容易になります。
 
 ## 一時テーブルを作成する
-一時テーブルは非常に簡単に作成できます。必要な作業は、下の例のように、テーブル名の先頭に # を付けることだけです。
+
+一時テーブルは、テーブル名にプレフィックス `#` を付けるだけで作成できます。次に例を示します。
 
 ```sql
 CREATE TABLE #stats_ddl
 (
-	[schema_name]			NVARCHAR(128) NOT NULL
+	[schema_name]		NVARCHAR(128) NOT NULL
 ,	[table_name]            NVARCHAR(128) NOT NULL
 ,	[stats_name]            NVARCHAR(128) NOT NULL
 ,	[stats_is_filtered]     BIT           NOT NULL
@@ -42,7 +53,7 @@ WITH
 )
 ```
 
-一時テーブルで `CTAS` を利用して作成することもできます。手法はまったく同じになります。
+一時テーブルは、次のようにまったく同じ手法で `CTAS` を利用して作成することもできます。
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -100,7 +111,7 @@ FROM    t1
 
 ## 一時テーブルを削除する
 
-`CREATE TABLE` ステートメントを正常に機能させるには、セッションにテーブルが存在しないことが重要です。これは、下のパターンを利用し、簡単に既存チェックで処理できます。
+新しいセッションが作成されたとき、一時テーブルは存在しません。ただし、同じストアド プロシージャを呼び出している場合、同じ名前で一時テーブルが作成されるため、`CREATE TABLE` ステートメントを正常に実行するには、次の例のように `DROP` を使用した簡単な既存チェックを使用できます。
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -109,23 +120,15 @@ BEGIN
 END
 ```
 
-> [AZURE.NOTE] コードの一貫性のために、テーブルと一時テーブルの両方にこのパターンを利用することが推奨されます。
-
-また、コードで一時テーブルの利用を終えたら、`DROP TABLE` でそれを削除することはよい方法です。
+コードの一貫性のために、テーブルと一時テーブルの両方にこのパターンを利用することが推奨されます。また、コードで一時テーブルの利用を終えたら、`DROP TABLE` でそれを削除することもお勧めします。ストアド プロシージャの開発では、一般的に、オブジェクトが消去されるように、プロシージャの終わりに削除コマンドがバンドルされています。
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
-ストアド プロシージャの開発では、一般的に、オブジェクトが消去されるように、プロシージャの終わりに削除コマンドがバンドルされています。
-
 ## コードのモジュール化
 
-一時テーブルはユーザー セッションのどこでも表示できるという点を生かして、アプリケーション コードをモジュール化できます。
-
-実際の使用例を見てみましょう。
-
-次のストアド プロシージャは、上記の例をまとめたものです。コードを利用し、データベース内のすべての列の統計を更新するために必要な DDL を生成できます。
+一時テーブルはユーザー セッションのどこでも表示できるため、アプリケーション コードをモジュール化できます。たとえば、次のストアド プロシージャは上記の推奨されるベスト プラクティスを実現し、統計の名前でデータベースのすべての統計を更新する DDL を生成します。
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -199,15 +202,7 @@ FROM    t1
 GO
 ```
 
-この段階では、いかなるアクションもテーブルに発生していません。このプロシージャは、統計を更新するために必要な DDL を生成し、そのコードを一時テーブルに保管しただけです。
-
-ただし、ストアド プロシージャの終わりに `DROP TABLE` コマンドが含まれていないことにも注意してください。ただし、コードを堅牢かつ繰り返し可能にする目的で、ストアド プロシージャに既存チェックを追加しました。セッションに重複オブジェクトが存在しても、`CTAS` は失敗しません。
-
-次は、実に興味深い部分に入ります。
-
-SQL Data Warehouse では、一時テーブルを作成したプロシージャの外部でそのテーブルを使用できます。この点が SQL Server とは異なります。実際には、一時テーブルはセッション内の**どこでも**使用できます。
-
-これにより、コードのモジュール性が高まり、コードを管理しやすくなります。次の例をご覧ください。
+この段階で、発生した唯一のアクションが、DDL ステートメントで単純に一時テーブル #stats\_ddl を生成するストアド プロシージャの作成です。セッション内で複数回実行された場合に失敗しないように、既に存在する場合は、このストアド プロシージャが #stats\_ddl を削除します。ただし、ストアド プロシージャの最後に `DROP TABLE` がないため、ストアド プロシージャが実行されると、ストアド プロシージャの外から読み取れるように、作成されたテーブルはそのままになります。他の SQL Server データベースと異なり、SQL Data Warehouse では、一時テーブルを作成したプロシージャの外部でその一時テーブルを使用できます。SQL Data Warehouse では、一時テーブルはセッション内の**どこでも**使用できます。これにより、次の例のように、コードのモジュール性が高まり、コードを管理しやすくなります。
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -228,30 +223,32 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-結果的に生成されるコードはさらにコンパクトになります。
-
-場合によっては、この手法を使ってインライン関数や複数ステートメント関数を置き換えることもできます。
-
-> [AZURE.NOTE] このソリューションを拡張することもできます。1 つのテーブルだけを更新する場合は、たとえば、#stats\_ddl テーブルをフィルター処理するだけで済みます。
-
 ## 一時テーブルの制限事項
-SQL Data Warehouse では、一時テーブルを実装するときに制限事項がいくつかあります。
 
-主な制限事項は次のとおりです。
-
-- グローバル一時テーブルはサポートされていません。
-- 一時テーブルでビューを作成することはできません。
+SQL Data Warehouse では、一時テーブルを実装するときに制限事項がいくつかあります。現時点では、セッションを範囲とした一時テーブルのみがサポートされています。グローバル一時テーブルはサポートされていません。また、一時テーブルでビューを作成することはできません。
 
 ## 次のステップ
-開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
+
+詳細について、[テーブルの概要][Overview]、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][Statistics]に関する各記事を参照します。ベスト プラクティスの詳細について、[SQL Data Warehouse のベスト プラクティス][]に関するページを参照します。
 
 <!--Image references-->
 
 <!--Article references-->
-[開発の概要]: ./sql-data-warehouse-overview-develop.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[概要]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[データ型]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
+[分散]: ./sql-data-warehouse-tables-distribute.md
+[Index]: ./sql-data-warehouse-tables-index.md
+[Partition]: ./sql-data-warehouse-tables-partition.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[統計]: ./sql-data-warehouse-tables-statistics.md
+[一時]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

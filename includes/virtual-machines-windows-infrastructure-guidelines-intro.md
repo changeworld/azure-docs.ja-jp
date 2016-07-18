@@ -1,1 +1,3 @@
-This article is part of a wider series to provide you with design considerations and guidelines as you build out an application infrastructure in Azure. You can [view the additional topics in the series](#next-steps). Although you can build out a dev/test environment in Azure very quickly, there are additional considerations when it comes to implementing a production-ready, highly-available, and secure environment.
+この記事は、Azure でアプリケーション インフラストラクチャを構築する際の設計に関する考慮事項とガイドラインを提供する広範なシリーズの一部です。[シリーズの他のトピック](#next-steps)についても紹介しています。Azure で開発/テスト環境をすばやく構築することはできますが、実稼動可能な、可用性が高くセキュリティで保護された環境の実装には追加の考慮事項があります。
+
+<!---HONumber=AcomDC_0706_2016-->

@@ -4,7 +4,7 @@
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/14/2016"
+   ms.date="07/05/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティ センターのよく寄せられる質問 (FAQ)
@@ -37,7 +37,7 @@ Azure セキュリティ センターは、Microsoft Azure サブスクリプシ
 
 ## データ収集
 
-セキュリティ センターでは、仮想マシンのセキュリティ状態の評価、セキュリティ推奨事項の提供、および脅威についての警告を行うために、仮想マシンからデータを収集します。最初に Security Center にアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。データ収集は有効にしておくことをお勧めしますが、セキュリティ センター ポリシーで[データ収集を無効](#how-do-i-disable-data-collection)にして、オプトアウトすることもできます。
+セキュリティ センターでは、仮想マシンのセキュリティ状態へのアクセス、セキュリティ推奨事項の提供、脅威についての警告を行うために、その仮想マシンからデータを収集します。最初に Security Center にアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。データ収集は有効にしておくことをお勧めしますが、セキュリティ センター ポリシーで[データ収集を無効](#how-do-i-disable-data-collection)にして、オプトアウトすることもできます。
 
 ### データ収集を無効にするにはどうしたらよいですか。
 
@@ -102,7 +102,7 @@ Azure セキュリティ センターは、Azure のリソース、ネットワ�
 ### Microsoft Security Response Center と Azure Security Center によって検出され、警告される脅威の違いは何ですか。
 Microsoft Security Response Center (MSRC) では、Azure のネットワークとインフラストラクチャの選択的なセキュリティ監視を行い、第三者から脅威インテリジェンスと不正使用の報告を受け取ります。不正利用者や許可されていない利用者が顧客データにアクセスしたことや、顧客による Azure の利用方法が利用規約の条件に従っていないことを MSRC が検出すると、セキュリティ インシデント マネージャーが顧客に通知します。通常、通知は、Azure Security Center で指定されたセキュリティ担当者または Azure サブスクリプション所有者 (セキュリティ担当者が指定されていない場合) に電子メールで送られます。
 
-Security Center は、顧客の Azure 環境を継続的に監視し、分析を適用して悪意のある可能性があるさまざまなアクティビティを自動的に検出する Azure サービスです。検出されたアクティビティは、Security Center のダッシュボードにセキュリティの警告として表示されます。将来的には、セキュリティ担当者にセキュリティの警告の電子メール通知も送られる予定です。
+Security Center は、顧客の Azure 環境を継続的に監視し、分析を適用して悪意のある可能性があるさまざまなアクティビティを自動的に検出する Azure サービスです。検出されたアクティビティは、Security Center のダッシュボードにセキュリティの警告として表示されます。
 
 ### Azure セキュリティ センターではアクセス許可はどのように処理されますか。
 Azure セキュリティ センターは、ロール ベースのアクセスをサポートしています。ロールベースのアクセス制御 (RBAC) の詳細については、「[Azure Active Directory のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
@@ -114,15 +114,15 @@ Azure セキュリティ センターは、ロール ベースのアクセスを
 ## Virtual Machines
 
 ### サポートされる仮想マシンのタイプは何ですか。
-[クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-classic-rm.md)を使用して作成された仮想マシンがサポートされています。これには Azure Service Fabric クラスターの一部である仮想マシンも含まれます。
+Azure Service Fabric クラスターに属する仮想マシン (VM) を含め、[クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-classic-rm.md)のどちらで作成された VM であっても、セキュリティ正常性の監視と推奨事項が利用できます。
 
-サポートされている Windows 仮想マシンを次に示します。
+サポートされる Windows VM:
 
 - Windows Server 2008 R2
 - Windows Server 2012
 - Windows Server 2012 R2
 
-サポートされている Linux 仮想マシンを次に示します。
+サポートされる Linux VM:
 
 - Ubuntu バージョン 12.04、14.04、15.10、16.04
 - Debian バージョン 7、8
@@ -130,4 +130,8 @@ Azure セキュリティ センターは、ロール ベースのアクセスを
 - Red Hat Enterprise Linux (RHEL) バージョン 6.*、7.*
 - SUSE Linux Enterprise Server (SLES) バージョン 11.*、12.*
 
-<!---HONumber=AcomDC_0615_2016-->
+クラウド サービスで実行されている VM もサポートされます。監視されるのは、運用スロットで実行されているクラウド サービスの Web ロールと worker ロールだけです。クラウド サービスの詳細については、[クラウド サービスの概要](../cloud-services/cloud-services-choose-me.md)を参照してください。
+
+セキュリティ センターには、システムに不足しているセキュリティ更新プログラムや重要な更新プログラムを VM にデプロイするよう促す推奨事項が、"Apply System Updates (システムの更新プログラムの適用)"[](security-center-recommendations.md) として表示されます。クラウド サービスに存在する VM に関して、OS を最新のバージョンに更新するよう促す推奨事項は "Update OS version (OS バージョンの更新)" として表示されます。
+
+<!---HONumber=AcomDC_0706_2016-->

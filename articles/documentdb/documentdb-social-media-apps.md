@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/28/2016" 
+	ms.date="06/29/2016" 
 	ms.author="mimig"/>
 
 # DocumentDB によるソーシャル化
@@ -106,6 +106,33 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
 
 この同じ手法を使用して最終的に一貫した環境を構築することで、投稿に対する評価と「いいね」を遅延的に処理できます。
 
+フォロワーの処理はさらに複雑です。DocumentDB には 512 KB のドキュメント サイズ制限があるため、次のような構造のドキュメントとしてフォロワーを保存する方法が考えられます。
+
+    {
+    	"id":"234d-sd23-rrf2-552d",
+    	"followersOf": "dse4-qwe2-ert4-aad2",
+    	"followers":[
+    		"ewr5-232d-tyrg-iuo2",
+    		"qejh-2345-sdf1-ytg5",
+    		//...
+    		"uie0-4tyg-3456-rwjh"
+    	]
+    }
+
+この方法では、フォロワーが数千人のユーザーであれば問題なく機能しますが、セレブのユーザーを加えることになった場合、最終的にはドキュメント サイズの制限に達することになります。
+
+これを解決するには、混成方式を使います。ユーザー統計情報ドキュメントの一部として、次のようにフォロワーの数を保存します。
+
+    {
+    	"id":"234d-sd23-rrf2-552d",
+    	"user": "dse4-qwe2-ert4-aad2",
+    	"followers":55230,
+    	"totalPosts":452,
+    	"totalPoints":11342
+    }
+
+さらに、フォロワーの実際のグラフは、単純な "A-follows-B" のようなグラフの保存と取得を可能にする[拡張機能](https://github.com/richorama/AzureStorageExtensions#azuregraphstore)を使用して、Azure Storage テーブルに保存することができます。この方法では、正確なフォロワー リストを必要なときに取得するプロセスを Azure Storage テーブルに委任できますが、簡単な数値の検索には引き続き DocumentDB を使用します。
+
 ## "ラダー (梯子)" パターンとデータの重複
 
 投稿を参照する JSON ドキュメントでお気付きかと思いますが、同じユーザーが何度も出現します。皆さんの推測どおり、この非正規化を考慮すると、これはユーザーを表す情報が複数の場所に存在する可能性があることを意味します。
@@ -140,21 +167,26 @@ Azure DocumentDB では、[カスタマイズ](documentdb-indexing-policies.md)�
 
 最大の段が "拡張ユーザー" です。拡張ユーザーには、すべての重要なユーザー情報と、実際には迅速に読み取る必要のないデータや (ログイン プロセスのように) 最終的に使用するデータが含まれます。このデータは、DocumentDB の外部、Azure SQL Database、または Azure Storage Tables に保存できます。
 
-ユーザーを分割し、この情報をさまざまな場所に保存するのはなぜでしょうか。 それは、DocumentDB の記憶域は無限ではないからであり、パフォーマンスの観点から言えば、ドキュメントのサイズが大きくなるほど、クエリのコストが高くなるからです。ソーシャル ネットワークでパフォーマンスに依存するすべてのクエリを実行するための適切な情報を含めてドキュメントをスリムに保ち、その他の情報は、完全なプロファイル編集、ログイン、利用状況分析のためのデータ マイニング、ビッグ データへの取り組みなどの最終的なシナリオ用に保存します。データ マイニングのためのデータ収集は、Azure SQL Database で実行されるので、実際には収集に時間がかかってもかまいません。私たちが気に掛けているのは、ユーザーに高速で軽快なエクスペリエンスを提供することです。DocumentDB に保存されたユーザーは次のようになります。
+ユーザーを分割し、この情報をさまざまな場所に保存するのはなぜでしょうか。 それは、DocumentDB の記憶域は[無限ではない](documentdb-limits.md)からであり、パフォーマンスの観点から言えば、ドキュメントのサイズが大きくなるほど、クエリのコストが高くなるためです。ソーシャル ネットワークでパフォーマンスに依存するすべてのクエリを実行するための適切な情報を含めてドキュメントをスリムに保ち、その他の情報は、完全なプロファイル編集、ログイン、利用状況分析のためのデータ マイニング、ビッグ データへの取り組みなどの最終的なシナリオ用に保存します。データ マイニングのためのデータ収集は、Azure SQL Database で実行されるので、実際には収集に時間がかかってもかまいません。私たちが気に掛けているのは、ユーザーに高速で軽快なエクスペリエンスを提供することです。DocumentDB に保存されたユーザーは次のようになります。
 
     {
         "id":"dse4-qwe2-ert4-aad2",
         "name":"John",
         "surname":"Doe",
+        "username":"johndoe"
         "email":"john@doe.com",
-        "twitterHandle":"@john",
-        "totalPoints":100,
-        "totalPosts":24,
-        "following":{
-            "count":2,
-            "list":[
-                UserChunk1, UserChunk2
-            ]
+        "twitterHandle":"@john"
+    }
+
+さらに、投稿は次のようになります。
+
+    {
+        "id":"1234-asd3-54ts-199a",
+        "title":"Awesome post!",
+        "date":"2016-01-02",
+        "createdBy":{
+        	"id":"dse4-qwe2-ert4-aad2",
+    		"username":"johndoe"
         }
     }
 
@@ -168,7 +200,7 @@ Azure DocumentDB を使用しているので、[Azure Search](https://azure.micr
 
 これが非常に簡単なのはなぜでしょうか。
 
-Azure Search は、いわゆる[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を実装しています。インデクサーは、データ リポジトリにフックを設定し、インデックス内のオブジェクトを自動的に追加、更新、または削除するバックグラウンド プロセスです。[Azure SQL Database インデクサー](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure BLOB インデクサー](../search/search-howto-indexing-azure-blob-storage.md)、[Azure DocumentDB インデクサー](../documentdb/documentdb-search-indexer.md)がサポートされています。DocumentDB と Azure Search は、どちらも JSON 形式で情報を保存するので、DocumentDB から Azure Search への情報の移行は簡単です。[インデックスを作成](../search/search-create-index-portal.md)し、ドキュメントからインデックス付けする属性をマップすればよいだけなので、わずか数分で終わります (データのサイズによって異なります)。クラウド インフラストラクチャの優れたサービスとしての検索ソリューションにより、すべてのコンテンツを検索対象にすることができます。
+Azure Search は、いわゆる[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を実装しています。インデクサーは、データ リポジトリにフックを設定し、インデックス内のオブジェクトを自動的に追加、更新、または削除するバックグラウンド プロセスです。[Azure SQL Database インデクサー](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure BLOB インデクサー](../search/search-howto-indexing-azure-blob-storage.md)、[Azure DocumentDB インデクサー](../documentdb/documentdb-search-indexer.md)がサポートされています。DocumentDB と Azure Search は、どちらも JSON 形式で情報を保存するので、DocumentDB から Azure Search への情報の移行は簡単です。[インデックスを作成](../search/search-create-index-portal.md)し、ドキュメントからインデックス付けする属性をマップするだけで済むため、わずか数分で終わります (データのサイズによって異なります)。クラウド インフラストラクチャの優れたサービスとしての検索ソリューションにより、すべてのコンテンツを検索対象にすることができます。
 
 Azure Search の詳細については、「[A Hitchhikers Guide to Search (検索のためのヒッチハイカー ガイド)](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)」をご覧ください。
 
@@ -178,11 +210,13 @@ Azure Search の詳細については、「[A Hitchhikers Guide to Search (検�
 
 答えは簡単です。情報ストリームを活用し、情報ストリームから学ぶのです。
 
-しかし、何を学ぶことができるのでしょうか。 わかりやすい例として、[センチメント分析](https://en.wikipedia.org/wiki/Sentiment_analysis)、ユーザーの嗜好に基づくコンテンツ推奨、ソーシャル ネットワークで公開されるすべてのコンテンツが家族にとって安全なものであることを保証する自動コンテンツ モデレーターなどがあります。
+しかし、何を学ぶことができるのでしょうか。 簡単な例としては、[センチメント分析](https://en.wikipedia.org/wiki/Sentiment_analysis)、ユーザーの好みに基づくコンテンツの推奨、ソーシャル ネットワークで公開されるすべてのコンテンツが家族向けの安全なものであることを保証する自動コンテンツ モデレーターなどがあります。
 
 人を夢中にさせるような話なので、シンプルなデータベースやファイルからこれらのパターンや情報を抽出するには、数理科学の博士号が必要と思っておられるでしょう。しかし、それは違います。
 
-[Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx) の一部である [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) は、シンプルなドラッグ アンド ドロップ インターフェイスでのアルゴリズムを使用したワークフローの作成、[R](https://en.wikipedia.org/wiki/R_(programming_language)) での独自のアルゴリズムのコーディング、構築済みのすぐに使える API ([Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[Content Moderator](https://www.microsoft.com/moderator)、[Recommendations](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2) など) の使用が可能な完全に管理されたクラウド サービスです。
+[Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx) に含まれる [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) は、完全に管理されたクラウド サービスです。このサービスを利用することで、シンプルなドラッグ アンド ドロップ インターフェイスでのアルゴリズムを使用したワークフローの作成や、[R](https://en.wikipedia.org/wiki/R_(programming_language)) での独自のアルゴリズムのコーディング、構築済みのすぐに使える API ([Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[Content Moderator](https://www.microsoft.com/moderator)、[Recommendations](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2) など) の使用が可能になります。
+
+これらの Machine Learning シナリオは、さまざまなソースからの情報を取り込むために [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) を使用し、その情報の処理と Azure Machine Learning で処理できる出力の生成に [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) を使用することで実現できます。
 
 ## まとめ
 
@@ -198,4 +232,4 @@ Azure Search の詳細については、「[A Hitchhikers Guide to Search (検�
 
 または、[DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)に従って、DocumentDB の詳細を確認してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0706_2016-->

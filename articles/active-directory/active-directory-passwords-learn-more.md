@@ -28,7 +28,7 @@
   - [ユーザーのパスワード リセット データにアクセスする方法](#how-to-access-password-reset-data-for-your-users)
 
 ## パスワード ライトバックの概要
-パスワード ライトバックは [Azure Active Directory Connect](active-directory-aadconnect) コンポーネントです。Azure Active Directory Premium の現在のサブスクライバーによって有効にされ、使用されます。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+パスワード ライトバックは [Azure Active Directory Connect](active-directory-aadconnect.md) コンポーネントです。Azure Active Directory Premium の現在のサブスクライバーによって有効にされ、使用されます。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 パスワード ライトバックを使用すると、オンプレミスの Active Directory にパスワードを書き戻すようにクラウド テナントを構成できます。これにより、複雑なオンプレミスのセルフサービス パスワード リセット ソリューションを設定して管理する必要がなくなります。ユーザーはどこにいても、便利なクラウドベースの方法で自分のオンプレミスのパスワードをリセットできます。次に、パスワード ライトバックの主な機能を示します。
 
@@ -66,7 +66,7 @@
 10.	パスワードの設定操作に失敗した場合は、エラーが返され、やり直す必要があります。サービスがダウンした、選択したパスワードが組織のポリシーを満たしていない、ローカル AD でユーザーが見つからないなど、さまざまな原因で操作に失敗する可能性があります。多くの場合、特定のメッセージが表示され、問題解決の手段がユーザーに通知されます。
 
 ### パスワード ライトバックでサポートされているシナリオ
-次の表では、同期機能のバージョンでサポートされているシナリオについて説明します。通常、パスワード ライトバックを使用する場合は、最新バージョンの [Azure AD Connect](active-directory-aadconnect.md#download-azure-ad-connect) をインストールすることを強くお勧めします。
+次の表では、同期機能のバージョンでサポートされているシナリオについて説明します。通常、パスワード ライトバックを使用する場合は、最新バージョンの [Azure AD Connect](active-directory-aadconnect.md#install-azure-ad-connect) をインストールすることを強くお勧めします。
 
   ![][002]
 
@@ -279,7 +279,7 @@
 * 認証用メール
 
 ####登録 UI でのみ設定できるデータ
-次のフィールドは、SSPR 登録 UI でのみアクセスできます (https://aka.ms/ssprsetup)
+次のフィールドは、SSPR 登録 UI でのみアクセスできます (https://aka.ms/ssprsetup):
 
 * セキュリティの質問と回答
 
@@ -379,4 +379,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [001]: ./media/active-directory-passwords-learn-more/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0706_2016-->

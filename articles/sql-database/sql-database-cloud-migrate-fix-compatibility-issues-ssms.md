@@ -25,6 +25,10 @@
 
 上級ユーザーは、Azure SQL Database へ移行する前に SQL Server Management Studio を使用して SQL Server データベースの互換性に関する問題を修正できます。
 
+
+> [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+
+
 ## SQL Server Management Studio を使用する
 
 SQL Server Management Studio では、**ALTER DATABASE** などの各種 Transact-SQL コマンドを使用して互換性に関する問題を修正できます。この方法は主に、ライブ データベースでの Transact-SQL の操作に慣れている上級ユーザーを対象にしています。それ以外の場合は、SSDT を使用することをお勧めします。
@@ -43,4 +47,4 @@ SQL Server Management Studio では、**ALTER DATABASE** などの各種 Transac
 - [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->
