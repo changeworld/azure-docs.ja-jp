@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="04/29/2016"
+	ms.date="06/30/2016"
 	ms.author="carlrab" />
 
 # データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス
@@ -23,7 +23,7 @@
 
 Microsoft Azure SQL Database には 3 つの[サービス層](sql-database-service-tiers.md)があります。Basic、Standard、Premium です。すべてのサービス層で、Azure SQL Database に与えられたリソースが厳密に分離され、パフォーマンスが予測可能になります。データベースに保証されるスループットは、Premium、Standard、Basic の順に高くなります。
 
->[AZURE.NOTE] Business サービス層と Web サービス層は 2015 年 9 月に終了となります。詳細については、「[Web および Business エディションの終了に関する FAQ](https://msdn.microsoft.com/library/azure/dn741330.aspx)」を参照してください。既存の Web データベースと Business データベースを新しいサービス層にアップグレードする方法については、「[SQL Database の Web/Business データベースを新しいサービス層にアップグレードする](sql-database-upgrade-server-portal.md)」を参照してください。
+>[AZURE.NOTE] Business サービス層と Web サービス層は 2015 年 9 月で終了しました。詳細については、「[Web および Business エディションの終了に関する FAQ](https://msdn.microsoft.com/library/azure/dn741330.aspx)」を参照してください。既存の Web データベースと Business データベースを新しいサービス層にアップグレードする方法については、「[SQL Database の Web/Business データベースを新しいサービス層にアップグレードする](sql-database-upgrade-server-portal.md)」を参照してください。
 
 この文書では、お使いのアプリケーションに最適なサービス層を決める際の指針と Azure SQL Database を最大限活用するためにアプリケーションを調整する際の推奨事項について説明します。
 
@@ -206,7 +206,7 @@ SQL データベースのリソース使用をそのサービス層との関連�
 
 ### sys.resource\_stats の使用
 
-**マスター** データベースの [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) ビューには、特定のサービス層とパフォーマンス レベルで SQL データベースを監視するための追加情報があります。データは 5 分ごとに集められ、約 14 日間保存されます。このビューは、SQL データベースの過去のリソース使用率を長期にわたり分析する際に役立ちます。
+**マスター** データベースの [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) ビューには、特定のサービス層とパフォーマンス レベルで SQL データベースを監視するための追加情報があります。データは 5 分ごとに集められ、約 35 日間保存されます。このビューは、SQL データベースの過去のリソース使用率を長期にわたり分析する際に役立ちます。
 
 次のグラフは、Premium データベースの CPU リソース利用率を示しています (P2 パフォーマンス レベル、1 週間における毎時間の利用率)。このグラフは月曜日始まり、5 営業日を示し、週末ではアプリケーションの活動が大幅に減っていることがわかります。
 
@@ -507,4 +507,4 @@ Azure SQL Database 内で使用されるスケールアウト アーキテクチ
 
 Azure SQL Database のサービス層を利用すると、クラウドに構築する各種アプリケーションの水準を上げることができます。さらにアプリケーションの調整も頻繁に行うことで、アプリケーションのパフォーマンスが強力かつ予測可能となります。このドキュメントでは、特定のパフォーマンス レベルに問題なく適合するようにデータベースのリソース利用を最適化するための推奨手法について説明します。クラウド モデルにおいては調整は継続的に実施するものであり、それにより、各種のサービス層とそのパフォーマンス レベルにおいて、管理者はパフォーマンスを最大限に引き出し、同時に Microsoft Azure Platform のコストを最小限に抑えることができます。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

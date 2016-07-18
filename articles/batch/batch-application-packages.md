@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="05/20/2016"
+	ms.date="06/30/2016"
 	ms.author="marsma" />
 
 # Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ
@@ -198,6 +198,8 @@ myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await myCloudPool.CommitAsync();
 ```
 
+プールに指定したアプリケーション パッケージは、コンピューティング ノードがプールに参加したときや再起動されたとき、再イメージ化されたときに各ノードにインストールされます。アプリケーション パッケージのデプロイが何らかの理由で失敗した場合、そのノードは、Batch サービスによって[使用不可][net_nodestate]としてマークされます。そのノードに対しては、タスクの実行がスケジュールされません。この場合、ノードを**再起動**してパッケージのデプロイを再試行する必要があります (ノードを再起動すると、そのノードに対するタスクのスケジューリングも再度有効になります)。
+
 ## インストールしたアプリケーションの実行
 
 それぞれのコンピューティング ノードがプールに参加すると (または、再起動または再イメージ化されると)、指定したパッケージがダウンロードされ、ノードの `AZ_BATCH_ROOT_DIR` 内の名前付きディレクトリに抽出されます。Batch により、タスクのコマンド ラインでアプリケーション バイナリを呼び出す際に使う環境変数も作成されます。この変数は次の名前付けスキームに従います。
@@ -284,6 +286,7 @@ foreach (ApplicationSummary app in applications)
 [net_appops_listappsummaries]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationoperations.listapplicationsummaries.aspx
 [net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [net_cloudpool_pkgref]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.applicationpackagereferences.aspx
+[net_nodestate]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.state.aspx
 [net_pkgref]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationpackagereference.aspx
 [rest_applications]: https://msdn.microsoft.com/library/azure/mt643945.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
@@ -301,4 +304,4 @@ foreach (ApplicationSummary app in applications)
 [11]: ./media/batch-application-packages/app_pkg_11.png "Update package blade in Azure portal"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Delete package confirmation dialog in Azure portal"
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

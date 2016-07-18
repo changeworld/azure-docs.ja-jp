@@ -1,10 +1,10 @@
 <properties
-   pageTitle="セキュリティ レビューを実行する方法 | Microsoft Azure"
+   pageTitle="アクセス レビューを実行する方法 | Microsoft Azure"
    description="Azure Privileged Identity Management アプリケーションでレビューを実行する方法について説明します。"
    services="active-directory"
    documentationCenter=""
    authors="kgremban"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/19/2016"
+   ms.date="07/01/2016"
    ms.author="kgremban"/>
 
-# Azure AD Privileged Identity Management でセキュリティ レビューを実行する方法
+# Azure AD Privileged Identity Management でアクセス レビューを実行する方法
 
 Azure Active Directory (AD) Privileged Identity Management を使用すると、企業における特権 ID と、Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへのアクセスの管理が簡略化されます。
 
@@ -28,25 +28,32 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 
 [Azure ポータル](https://portal.azure.com/) で Azure AD Privileged Identity Management (PIM) アプリケーションを使用して、レビューを実行できます。ポータルに Azure AD Privileged Identity Management アプリケーションがない場合は、まず、次の手順を実行してください。
 
-1. まだサインインしていない場合は、[Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. 組織に複数のディレクトリがある場合は、Azure ポータルの右上隅に表示されているユーザー名をクリックし、操作するディレクトリを選択します。
-3. 左側のナビゲーションの **[新規]** アイコンをクリックします。
-4. メニューから **[セキュリティ + ID]** を選択します。
-5. **[Azure AD Privileged Identity Management]** を選択します。
-6. **[ダッシュボードにピン留めする]** チェック ボックスはオンのままで **[作成]** ボタンをクリックします。Privileged Identity Management アプリケーションが起動します。
+3. **[新規]**、**[セキュリティ + ID]**、**[Azure AD Privileged Identity Management]** の順に選択します。
+
+	![ポータルで PIM を有効にする][1]
+
+4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** ボタンをクリックします。Privileged Identity Management ダッシュボードが開きます。
 
 
 ## アクセスの承認または拒否
 
-アクセス権は[レビューが完了する](active-directory-privileged-identity-management-how-to-complete-review.md)まで変更されません。このプロセスは単に、ロールのアクセスを変更するユーザーのチェックリストを作成します。少なくとも 1 人のユーザーを選択すると、**[アクセスを承認する]** ボタンと **[アクセスを拒否する]** ボタンが有効になります。
+アクセスを承認または拒否する場合、このロールをまだ使用するかどうかをレビュー担当者にのみ通知します。ロールにとどまる場合は **[承認]** を選択します。また、アクセスが不要な場合は **[拒否]** を選択します。レビュー担当者が結果を適用するまで、状態はすぐに変更されません。アクセス レビューを検索して完了するには、次の手順に従います。
 
-1. PIM アプリケーションのメイン メニューで、**[管理アクセスのレビュー]** をクリックします。セキュリティ レビューの一覧が表示されます。
-2. 一覧でアクセスを変更する**ユーザー**を選択します。
-3. 選択したユーザーの **[アクセスを許可]** または **[アクセスを拒否]** をクリックします。Azure ポータルのメイン メニューに通知が表示され、レビュー一覧で選択した名前が表示されなくなります (フィルター オプションを変更すると、再び表示できます)。**[Azure AD ロールのレビュー]** ブレードを閉じます。
+1. PIM アプリケーションで、**[特権アクセスのレビュー]** を選択します。保留中のアクセス レビューがある場合は、[Azure AD Access reviews (Azure AD Access レビュー)] ブレードが表示されます。
+2. 完了するレビューを選択します。
+3. レビューを作成した場合を除き、レビューで唯一のユーザーとして表示されます。名前の横にあるチェック マークを選択します。
+4. **[承認]** または **[拒否]** のいずれかを選択します。**[理由の提供]** テキスト ボックスで決定の理由を含めることが必要になる場合があります。
+5. **[Azure AD ロールのレビュー]** ブレードを閉じます。
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!--Image references-->
+
+[1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
+
+<!---HONumber=AcomDC_0706_2016-->

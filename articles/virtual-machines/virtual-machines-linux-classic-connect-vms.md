@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/24/2016"
+	ms.date="07/06/2016"
 	ms.author="cynthn"/>
 
 # 仮想ネットワークまたはクラウド サービスで構成されるクラシック デプロイ モデルで作成された Linux 仮想マシンに接続します。
@@ -33,4 +33,4 @@
 
 仮想マシンを作成したら、サービスやワークロードがデータを格納するための場所として、[データ ディスクを追加する](virtual-machines-linux-classic-attach-disk.md)ことをお勧めします。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

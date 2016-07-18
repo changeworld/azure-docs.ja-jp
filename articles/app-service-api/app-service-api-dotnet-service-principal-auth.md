@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016" 
+	ms.date="06/30/2016" 
 	ms.author="tdykstra"/>
 
 # Azure App Service での API Apps のサービス プリンシパル認証
@@ -83,8 +83,8 @@
 
 同じテナント内のユーザーのベアラー トークンは、保護対象の API アプリでは有効と見なされます。保護対象となる API アプリの呼び出しをサービス プリンシパルに限定するには、トークンに含まれている以下の要求を検証するコードを保護対象の API アプリに追加します。
 
-* `appid` が、呼び出し元に関連付けられている Azure AD アプリケーションのクライアント ID であること。 
-* `oid` (`objectidentifier`) が、呼び出し元のサービス プリンシパル ID であること。 
+* `appid` が、呼び出し元に関連付けられている Azure AD アプリケーションのクライアント ID であること。
+* `oid` (`objectidentifier`) が、呼び出し元のサービス プリンシパル ID であること。
 
 App Service から提供される `objectidentifier` 要求は、X-MS-CLIENT-PRINCIPAL-ID ヘッダーにも格納されます。
 
@@ -150,7 +150,7 @@ API アプリの Node.js または Java チュートリアル シリーズを読
 
 ### API アプリが保護されていることを確認します。
 
-1. ブラウザーで API アプリの URL に移動します。Azure ポータルの **[API アプリ]** ブレードで、**[URL]** の下にあるリンクをクリックします。 
+1. ブラウザーで API アプリの URL に移動します。Azure ポータルの **[API アプリ]** ブレードで、**[URL]** の下にあるリンクをクリックします。
 
 	認証されていない要求は API アプリへのアクセスを許可されないため、ログイン画面にリダイレクトされます。
 
@@ -166,7 +166,7 @@ API アプリの Node.js または Java チュートリアル シリーズを読
 
 * 中間層 API アプリに、Azure AD アプリケーションの資格情報を使用してトークンを取得し、HTTP 要求と共にデータ層 API アプリに送信するコードを追加します。
 * Azure AD から必要な資格情報を取得します。
-* 中間層 API アプリで Azure App Service ランタイム環境の設定に資格情報を入力します。 
+* 中間層 API アプリで Azure App Service ランタイム環境の設定に資格情報を入力します。
 
 ### Azure AD トークンを取得して送信するように ToDoListAPI プロジェクトを構成します。
 
@@ -415,4 +415,4 @@ Azure Active Directory の詳細については、次のリソースを参照し
 
 Visual Studio を使用するか、[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)から[デプロイを自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)して、Visual Studio プロジェクトを API アプリにデプロイする他の方法については、「[Azure App Service へのアプリのデプロイ](../app-service-web/web-sites-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -4,7 +4,7 @@
 	services="notification-hubs"
 	documentationCenter=".net"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="06/29/2016"
 	ms.author="wesmc"/>
 
 #セキュリティ
@@ -47,4 +47,4 @@ Listen アクセス権を持つキーを使用するとクライアント アプ
 
 Notification Hubs は、Microsoft Azure Access Control トークンによって許可された要求、および Notification Hubs に直接構成された共有キーを使用して生成された署名トークンによって許可された要求を受け付けます。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

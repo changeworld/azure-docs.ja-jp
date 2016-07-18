@@ -47,7 +47,7 @@
 | UDR | UDR | サブネットに関連付けられているユーザー定義のルートは、Resource Manager デプロイメント モデルへの移行の一環として複製されます。移行中、クラシック デプロイメント モデルの UDR は削除されないことに注意してください。ただし、UDR の管理プレーン操作は、移行中はブロックされます。 | | |
 | VM のネットワーク構成の IP 転送プロパティ | NIC の IP 転送プロパティ | VM上 の IP 転送プロパティは、移行中、ネットワーク インターフェイスでプロパティに変換されます。 | | |
 | 複数の IP のあるロード バランサー | 複数のパブリック IP リソースのあるロード バランサー | 移行後、ロード バランサーが関連付けられているすべてのパブリック IP がパブリック IP リソースに変換され、ロード バランサーに関連付けられます。 | | |
-| VM の内部 DNS 名 | NIC の内部 DNS 名 | 移行中、内部 DNS サフィックスは、Resource Manager デプロイメント モデルのサフィックスに合わせて更新されます。移行後、引き続き名前解決が動作することに注意してください。ただし、VM に関連付けられているサフィックスは変更されます。 | | |
+| VM の内部 DNS 名 | NIC の内部 DNS 名 | 移行中、VM の内部 DNS サフィックスは、NIC の "InternalDomainNameSuffix" という名前の読み取り専用プロパティに移行されます。サフィックス名は移行後もそのままで、VM 解決は前と同じように動作し続けます。 | | |
 
 ## シンプルな移行手順の図
 
@@ -64,4 +64,4 @@
 - [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](virtual-machines-windows-migration-classic-resource-manager.md)
 - [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

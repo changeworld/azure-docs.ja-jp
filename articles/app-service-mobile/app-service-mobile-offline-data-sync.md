@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="03/14/2016"
+	ms.date="06/28/2016"
 	ms.author="wesmc"/>
 
 # Azure モバイル アプリでのオフライン データ同期
@@ -78,7 +78,7 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 
   クエリでパラメーターを使用する場合、一意のクエリ名を作成する 1 つの方法はパラメーター値を組み込むことです。たとえば、userid でフィルター処理をする場合、クエリ名は次のようにすることができます (C# を使用)。
 
-		await todoTable.PullAsync("todoItems" + userid, 
+		await todoTable.PullAsync("todoItems" + userid,
 			syncTable.Where(u => u.UserId == userid));
 
   増分同期を無効にする場合は、`null` をクエリ ID として渡します。この場合、`PullAsync` への呼び出しごとにすべてのレコードが再取得されるため、場合によっては非効率となります。
@@ -104,4 +104,4 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 [Xamarin Android: オフライン同期を有効にする]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Windows 8.1: オフライン同期を有効にする]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -29,7 +29,7 @@ SQL Server Management Studio (SSMS) を使用して Azure SQL Database の論理
 
 Azure SQL Database を操作する際は、常に最新バージョンの SSMS を使用することをお勧めします。
 
-> [AZURE.IMPORTANT] 最新バージョンの SQL Server Management Studio (SSMS) を使用して、Microsoft Azure と SQL Database の更新プログラムの同期を維持する必要があります。SQL Database で前のバージョンの SSMS が正常に動作しない場合は、[「Download SQL Server Management Studio (SSMS )(SQL Server Management Studio (SSMS ) のダウンロード)](https://msdn.microsoft.com/library/mt238290.aspx)」をご覧ください。
+> [AZURE.IMPORTANT] 最新バージョンの SQL Server Management Studio (SSMS) を使用して、Microsoft Azure と SQL Database の更新プログラムの同期を維持する必要があります。SQL Database で前のバージョンの SSMS が正常に動作しない場合は、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」を参照してください。
 
 ## Azure SQL データベースの作成と管理
 
@@ -76,13 +76,13 @@ Management Studio でクエリ ウィンドウを開くには、[データベー
 
 -   login1 に **myTestDB** というデータベースに対するアクセス許可を付与するには、次の手順に従います。
 
- 1.  オブジェクト エクスプローラーを更新して、作成した **myTestDB** データベースを表示させるには、オブジェクト エクスプローラーのサーバー名を右クリックして、**[最新の情報に更新]** をクリックします。  
+ 1.  オブジェクト エクスプローラーを更新して、作成した **myTestDB** データベースを表示させるには、オブジェクト エクスプローラーのサーバー名を右クリックして、**[最新の情報に更新]** をクリックします。
 
      接続を閉じてある場合は、[ファイル] メニューの **[オブジェクト エクスプローラーを接続]** を選択して再接続できます。
 
  2. **myTestDB** データベースを右クリックし、**[新しいクエリ]** を選択します。
 
-    3.  myTestDB データベースに対して次のステートメントを実行して、サーバー レベルのログイン **login1** に対応する **login1User** という名前のデータベース ユーザーを作成します。
+    3.  myTestDB データベースに対して次のステートメントを実行して、サーバー レベルのログイン **login1** に対応する ** login1User** という名前のデータベース ユーザーを作成します。
 
             CREATE USER login1User FROM LOGIN login1;
 
@@ -151,4 +151,4 @@ SQL データベースでは、個々のデータベースを監視するのに�
  
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -69,15 +69,15 @@ ATOM pub の拡張機能です。各エントリで 1 行の結果セットが�
 
 データベースで公開される関数 (SPROC) とエンティティを定義できます。詳細については、[http://msdn.microsoft.com/library/bb399292.aspx](http://msdn.microsoft.com/library/bb399292.aspx) を参照してください。
 
-> [AZURE.TIP]記事が表示されない場合は、**他のバージョン**のドロップダウンをクリックしてバージョンを選択してください。
+> [AZURE.TIP] 記事が表示されない場合は、**他のバージョン**のドロップダウンをクリックしてバージョンを選択してください。
 
 ### EDM - Entry Data Model
 - 概要: [http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx][OverviewLink]
-[OverviewLink]:http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx
+[OverviewLink]: http://msdn.microsoft.com/library/vstudio/ee382825(v=vs.100).aspx
 - プレビュー: [http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx][PreviewLink]
-[PreviewLink]:http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx
+[PreviewLink]: http://msdn.microsoft.com/library/aa697428(v=vs.80).aspx
 - データ型: [http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx][DataTypesLink]
-[DataTypesLink]:http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx
+[DataTypesLink]: http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx
 
 次に、クライアントが OData ステートメントを入力して (コンテンツ プロバイダーの Web サービスを呼び出して)、結果/データを取得するフロー (左から右方向) の詳細を示します。
 
@@ -115,7 +115,11 @@ CSDL は、Web サービスを記述するための XML 文法です。CSDL の�
 - EntityType ~= 列
 - FunctionImport ~= ストアド プロシージャ
 
-**使用できる HTTP 動詞** - GET – db から値を返します (コレクションを返します) - POST – db からデータとオプションの戻り値を渡すために使用されます (コレクションに新しいエントリを作成し、id/URI を返します) - DELETE – DB からデータを削除します (コレクションを削除します) - PUT – データを更新して DB に格納します (コレクションを置換するか、新しいコレクションを作成します)
+**使用できる HTTP 動詞**
+- GET – データベースから値を取得します (コレクションを取得する)。
+- POST – データを渡すときに使用します。必要に応じてデータベースから値が返されます (コレクションに新しいエントリを作成し、ID/URI を取得する)。
+- DELETE – データベースからデータを削除します (コレクションを削除する)。
+- PUT – データベースにデータを挿入して更新します (コレクションを置換または新規作成する)。
 
 ## メタデータ/マッピング ドキュメント
 
@@ -123,7 +127,10 @@ CSDL は、Web サービスを記述するための XML 文法です。CSDL の�
 
 次に CSDL の例について説明します (以下の CSDL 例をコピーして XML エディターに貼り付け、実際のサービスに合わせて変更します。[Azure Marketplace 発行ポータル](https://publish.windowsazure.com)でサービスを作成するときに、変更した内容を [データ サービス] タブの CSDL マッピングに貼り付けます)。
 
-**用語:** CSDL の用語を[発行ポータル](https://publish.windowsazure.com) UI (PPUI) の用語に関連付けます。- PPUI のオファーの "タイトル" は MyWebOffer に関連付けられます - PPUI の MyCompany は [Microsoft デベロッパー センター](http://dev.windows.com/registration?accountprogram=azure) UI の**発行者表示名**に関連付けられます - API は Web またはデータ サービス (PPUI のプラン) に関連付けられます
+**用語:** CSDL の用語と[発行ポータル](https://publish.windowsazure.com)の UI (PPUI) 用語との対応関係について。
+- PPUI におけるプランの "タイトル" は、MyWebOffer と対応します。
+- PPUI における MyCompany は、[Microsoft デベロッパー センター](http://dev.windows.com/registration?accountprogram=azure)の UI における **Publisher Display Name** と対応します。
+- ご利用の API は、Web サービスまたはデータ サービス (PPUI におけるプラン) に対応します。
 
 **階層:** 会社 (コンテンツ プロバイダー) は、API に沿って、プラン (つまりサービス) を含むオファーを所有しています。
 
@@ -239,7 +246,7 @@ CSDL は、Web サービスを記述するための XML 文法です。CSDL の�
             </EntityType>
         </Schema>
 
-> [AZURE.TIP]他の CSDL Web サービスの例については、[既存の Web サービスを CSDL で OData にマッピングする例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関する記事を参照してください。
+> [AZURE.TIP] 他の CSDL Web サービスの例については、[既存の Web サービスを CSDL で OData にマッピングする例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関する記事を参照してください。
 
 ###DataService CSDL の例
 
@@ -301,4 +308,4 @@ CSDL は、Web サービスを記述するための XML 文法です。CSDL の�
 - 例を確認したい場合は、[データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関する記事でサンプル コードを参照し、コード構文とコンテキストを学習してください。
 - データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、こちらの[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
 
-<!---HONumber=AcomDC_0114_2016--->
+<!---HONumber=AcomDC_0706_2016-->

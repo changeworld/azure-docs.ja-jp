@@ -13,11 +13,11 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="01/28/2016"
+      ms.date="06/28/2016"
       ms.author="hascipio; avikova" />
 
 # Azure Marketplace のデータ サービスの発行ガイド
-手順 1 の「[アカウントの作成および登録][link-acct-creation]」では、Azure Marketplace のデータ サービス オファーの[技術以外の一般的な要件](marketplace-publishing-pre-requisites.md)と[技術的な要件](marketplace-publishing-data-service-creation-prerequisites.md)について説明しました。ここでは、Azure Marketplace 向けの[発行ポータル][link-pubportal]で、データ サービス オファーを作成する手順について説明します。
+手順 1 の「[アカウントの作成および登録](marketplace-publishing-accounts-creation-registration.md)」では、Azure Marketplace のデータ サービス オファーの[技術以外の一般的な要件](marketplace-publishing-pre-requisites.md)と[技術的な要件](marketplace-publishing-data-service-creation-prerequisites.md)について説明しました。ここでは、Azure Marketplace 向けの[発行ポータル][link-pubportal]で、データ サービス オファーを作成する手順について説明します。
 
 ## 1\.発行ポータルにログインします。
 
@@ -143,7 +143,6 @@ Web サービスの場合
 - 例に関心がある場合は、[データ サービス OData マッピング例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
 
 
-[link-acct-creation]: marketplace-publishing-microsoft-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_0204_2016-->
+<!---HONumber=AcomDC_0706_2016-->

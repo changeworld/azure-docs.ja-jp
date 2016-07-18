@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/01/2016"
+	ms.date="06/29/2016"
 	ms.author="genli"/>
 
 # 別の Azure プランへの切り替え
@@ -25,6 +25,8 @@
 -	従量課金制サブスクリプションへのサインアップが終了した後で、MSDN や BizSpark などのメンバーシップ特典を利用できるようになりたい。
 
 ## サブスクリプションを別のプランに切り替える方法
+
+> [AZURE.VIDEO switch-to-a-different-azure-offer]
 
 1.	[Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
 2.	譲渡するサブスクリプションを選択します。
@@ -73,4 +75,4 @@
 -	[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)から [12 か月分の前払プラン](https://azure.microsoft.com/offers/ms-azr-0026p/)への変更
 -	[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)から[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)のいずれかへの変更
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="07/05/2016" 
 	ms.author="spelluru"/>
 
 # Hadoop ストリーミング アクティビティ
@@ -77,7 +77,7 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 5. **input** プロパティには、mapper の入力ファイルを、場所を含めて指定します。例の "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt": adfsample は BLOB コンテナー、example/data/Gutenberg はフォルダー、davinci.txt は BLOB です。
 6. **output** プロパティには、reducer の出力ファイルを、場所を含めて指定します。Hadoop ストリーミング ジョブの出力は、このプロパティに指定されている場所に書き込まれます。
 7. **filePaths** セクションには、mapper と reducer の実行可能ファイルのパスを指定します。例の "adfsample/example/apps/wc.exe"： adfsample は BLOB コンテナー、example/apps はフォルダー、wc.exe は実行可能ファイルです。
-8. **fileLinkedService** プロパティには、filePaths セクションに指定されたファイルを含む Azure Storage を表す Azure Storage のリンクされたサービスを指定します。
+8. **fileLinkedService** プロパティには、filePaths セクションに指定されたファイルを含む Azure ストレージを表す Azure Storage のリンクされたサービスを指定します。
 9. **arguments** プロパティには、ストリーミング ジョブの引数を指定します。
 10. **getDebugInfo** プロパティは、省略可能な要素です。Failure に設定されていると、エラー時にのみログがダウンロードされます。All に設定されていると、ログは実行状態に関係なく常にダウンロードされます。
 
@@ -199,4 +199,4 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 - [Spark プログラムを呼び出す](data-factory-spark.md)
 - [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

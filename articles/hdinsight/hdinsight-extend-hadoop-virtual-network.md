@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/20/2016"
+   ms.date="07/06/2016"
    ms.author="larryfr"/>
 
 
@@ -93,6 +93,8 @@ HDInsight サービスは管理されたサービスで、プロビジョニン�
 
 これらのアドレスのポート 443 上で着信アクセスを許可すると、セキュリティ保護された仮想ネットワークに HDInsight を正常にインストールできます。
 
+> [AZURE.IMPORTANT] HDInsight では、送信トラフィックの制限をサポートしていません。受信トラフィックのみをサポートしています。HDInsight が含まれているサブネットのネットワーク セキュリティ グループ規則を定義するときは、受信規則だけを使用します。
+
 次の例では、必要なアドレスを許可し、Virtual Network内のサブネットにセキュリティ グループを適用する、新しいネットワーク セキュリティ グループを作成する方法を示します。これらの手順では、HDInsight をインストールする Virtual Network とサブネットを既に作成していることを前提としています。
 
 __Azure PowerShell の使用__
@@ -169,7 +171,7 @@ __Azure PowerShell の使用__
 
 __Azure CLI の使用__
 
-1. 次のコマンドを使用して、`hdisecure` という名前の新しいネットワーク セキュリティ グループを作成します。__RESOURCEGROUPNAME__ と __LOCATION__ を、Azure Virtual Network が含まれているリソース グループと、グループの作成場所 (リージョン) に置き換えます。
+1. 次のコマンドを使用して、`hdisecure` という名前の新しいネットワーク セキュリティ グループを作成します。__RESOURCEGROUPNAME__ と __LOCATION__ を、Azure Virtual Network を含むリソース グループと、そのグループの作成場所 (リージョン) に置き換えます。
 
         azure network nsg create RESOURCEGROUPNAME hdisecure LOCATION
     
@@ -197,7 +199,7 @@ __Azure CLI の使用__
 > * Azure PowerShell - ```Add-AzureRmNetworkSecurityRuleConfig -Name "SSSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 304 -Direction Inbound```
 > * Azure CLI - ```azure network nsg rule create RESOURCEGROUPNAME hdisecure hdirule4 -p "*" -o "*" -u "22" -f "*" -e "VirtualNetwork" -c "Allow" -y 304 -r "Inbound"```
 
-ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md)に関する記事をご覧ください。Azure Virtual Network でルーティングを制御する方法については、[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)に関する記事をご覧ください。
+ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/virtual-networks-nsg.md)に関する記事を参照してください。Azure Virtual Network におけるルーティングの制御については、[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)に関する記事を参照してください。
 
 ##<a id="tasks"></a>タスクと情報
 
@@ -305,4 +307,4 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

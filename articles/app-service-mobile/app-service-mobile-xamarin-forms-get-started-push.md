@@ -330,43 +330,14 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
 
 ####iOS アプリへのプッシュ通知の追加
 
-1. 次の `using` ステートメントを **AppDelegate.cs** ファイルの先頭に追加します。
+1. **iOS** プロジェクトで AppDelegate.cs を開き、次の **using** ステートメントをコード ファイルの先頭に追加します。
 
-        using Microsoft.WindowsAzure.MobileServices;
-		using Newtonsoft.Json.Linq;
+        using Newtonsoft.Json.Linq;
 
+4. **AppDelegate** クラスで、通知に登録するために **RegisteredForRemoteNotifications** イベントのオーバーライドを追加します。
 
-2. iOS プロジェクトで、AppDelegate.cs を開き、リモート通知をサポートするように `FinishedLaunching` を次のように更新します。
-
-		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
-		{
-			global::Xamarin.Forms.Forms.Init ();
-
-			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
-
-            // IMPORTANT: uncomment this code to enable sync on Xamarin.iOS
-            // For more information, see: http://go.microsoft.com/fwlink/?LinkId=620342
-            //SQLitePCL.CurrentPlatform.Init();
-
-            // registers for push for iOS8
-            var settings = UIUserNotificationSettings.GetSettingsForTypes(
-                UIUserNotificationType.Alert
-                | UIUserNotificationType.Badge
-                | UIUserNotificationType.Sound,
-                new NSSet());
-
-            UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
-            UIApplication.SharedApplication.RegisterForRemoteNotifications();
-
-			LoadApplication (new App ());
-
-			return base.FinishedLaunching (app, options);
-		}
-
-
-4. AppDelegate.cs で、通知に登録するために、**RegisteredForRemoteNotifications** イベントのオーバーライドを追加します。
-
-        public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+        public override void RegisteredForRemoteNotifications(UIApplication application, 
+			NSData deviceToken)
         {
             const string templateBodyAPNS = "{"aps":{"alert":"$(messageParam)"}}";
 
@@ -381,9 +352,10 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
             push.RegisterAsync(deviceToken, templates);
         }
 
-5. AppDelegate.cs で、アプリの実行中に受信した通知を処理するために、**DidReceivedRemoteNotification** イベントのオーバーライドを追加します。
+5. **AppDelegate** に次の **DidReceivedRemoteNotification** イベント ハンドラーのオーバーライドも追加します。
 
-        public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
+        public override void DidReceiveRemoteNotification(UIApplication application, 
+			NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
             NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
 
@@ -399,13 +371,29 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
             }
         }
 
+	このメソッドは、アプリの実行中に受信した通知を処理します。
+
+2. **AppDelegate** クラスの **FinishedLaunching** メソッドに次のコードを追加します。
+
+        // Register for push notifications.
+        var settings = UIUserNotificationSettings.GetSettingsForTypes(
+            UIUserNotificationType.Alert
+            | UIUserNotificationType.Badge
+            | UIUserNotificationType.Sound,
+            new NSSet());
+
+        UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
+        UIApplication.SharedApplication.RegisterForRemoteNotifications();
+
+	これによってリモート通知のサポートが有効になり、プッシュ登録の要求が行われます。
+
 これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
 ####iOS アプリでプッシュ通知をテストする
 
 1. iOS プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
 
-2. Visual Studio で **[実行]** または **F5** キーを押して、プロジェクトをビルドし、iOS デバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。
+2. Visual Studio で **[実行]** または **F5** キーを押してプロジェクトをビルドし、iOS デバイスでアプリを起動します。**[OK]** をクリックして、プッシュ通知を受け入れます。
 
 	> [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
@@ -431,7 +419,7 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
 
 ####Windows アプリにプッシュ通知を追加する
 
-1. Visual Studio で Windows プロジェクトの **App.xaml.cs** を開き、次の **using** ステートメントを追加します。
+1. Visual Studio の Windows プロジェクトで **App.xaml.cs** を開き、次の **using** ステートメントを追加します。
 
 		using Newtonsoft.Json.Linq;
 		using Microsoft.WindowsAzure.MobileServices;
@@ -485,7 +473,7 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
 
 2. **[実行]** ボタンを押してプロジェクトをビルドし、アプリケーションを開始します。
 
-3. アプリケーションで、新しい todoitem の名前を入力し、プラス (**+**) アイコンをクリックして追加します。
+3. アプリで新しい todoitem の名前を入力し、プラス (**+**) アイコンをクリックして追加します。
 
 4. 項目が追加されたときに、通知が受信されていることを確認します。
 
@@ -493,7 +481,7 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
 
 プッシュ通知についてさらに学習します。
 
-* [Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags) タグを利用して、プッシュ通知の対象となる顧客を絞ることができます。この記事では、タグをデバイス インストールに追加する方法について確認します。
+* [Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags) タグを利用して、プッシュ通知の対象となる顧客を絞り込むことができます。この記事では、タグをデバイス インストールに追加する方法について確認します。
 
 * [プッシュ通知の問題の診断](../notification-hubs/notification-hubs-push-notification-fixer.md) 通知が破棄されたり、デバイスに届かなかったりするのにはさまざまな原因があります。このトピックでは、プッシュ通知のエラーの根本原因を分析、解明する方法について説明しています。
 
@@ -510,4 +498,4 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

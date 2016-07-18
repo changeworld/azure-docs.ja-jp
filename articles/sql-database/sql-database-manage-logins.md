@@ -52,6 +52,9 @@
 SQL Server Management Studio を使用した接続のチュートリアルについては、「[SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)」を参照してください。
 
 
+> [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+
+
 ## その他の特殊アカウント
 SQL Database には、仮想 master データベースの制限付き管理者ロールが 2 つ用意されています。このロールには、ユーザー アカウントを追加できます。
 
@@ -134,7 +137,7 @@ SQL Server 認証を使用している場合は、次のようにします。
 
 ## アクセス許可
 
-SQL Database では、個別に許可または拒否できるアクセス許可が 100 個を超えています。これらのアクセス許可の多くは、入れ子になっています。たとえば、スキーマに対する `UPDATE` アクセス許可には、そのスキーマ内の各テーブルに対する `UPDATE` アクセス許可が含まれています。ほとんどのアクセス許可システムと同様に、アクセス許可の拒否は許可より優先されます。入れ子になっている性質と、アクセス許可の数により、データベースを正しく保護するのに適切なアクセス許可システムを設計するには、慎重な調査を行う場合があります。まずは「[権限 (データベース エンジン)](https://msdn.microsoft.com/library/ms191291.aspx)」でアクセス許可の一覧を確認し、アクセス許可の [ポスター サイズの図](http://go.microsoft.com/fwlink/?LinkId=229142)も確認してください。
+SQL Database では、個別に許可または拒否できるアクセス許可が 100 個を超えています。これらのアクセス許可の多くは、入れ子になっています。たとえば、スキーマに対する `UPDATE` アクセス許可には、そのスキーマ内の各テーブルに対する `UPDATE` アクセス許可が含まれています。ほとんどのアクセス許可システムと同様に、アクセス許可の拒否は許可より優先されます。入れ子になっている性質と、アクセス許可の数により、データベースを正しく保護するのに適切なアクセス許可システムを設計するには、慎重な調査を行う場合があります。まずは「[権限 (データベース エンジン)](https://msdn.microsoft.com/library/ms191291.aspx)」でアクセス許可の一覧を確認し、アクセス許可の[ポスター サイズの図](http://go.microsoft.com/fwlink/?LinkId=229142)も確認してください。
 
 
 ## 次のステップ
@@ -158,4 +161,4 @@ SQL Database では、個別に許可または拒否できるアクセス許可�
 
 [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

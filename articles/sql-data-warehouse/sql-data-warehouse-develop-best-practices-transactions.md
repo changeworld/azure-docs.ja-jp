@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/21/2016"
+   ms.date="06/30/2016"
    ms.author="jrj;barbkess"/>
 
 # SQL Data Warehouse のトランザクションの最適化
@@ -413,7 +413,7 @@ Azure SQL Data Warehouse では、データ ウェアハウスの一時停止、
 
 <!--Article references-->
 [SQL Data Warehouse のトランザクション]: ./sql-data-warehouse-develop-transactions.md
-[テーブル パーティション]: ./sql-data-warehouse-develop-table-partitions.md
+[テーブル パーティション]: ./sql-data-warehouse-tables-partition.md
 [同時実行]: ./sql-data-warehouse-develop-concurrency.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
 [SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
@@ -424,4 +424,4 @@ Azure SQL Data Warehouse では、データ ウェアハウスの一時停止、
 
 <!-- Other web references -->
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

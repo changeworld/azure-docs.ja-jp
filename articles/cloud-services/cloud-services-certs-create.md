@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/19/2016"
+	ms.date="07/05/2016"
 	ms.author="adegeo"/>
 
 # Azure Cloud Services の証明書の概要
@@ -61,10 +61,16 @@ Windows で証明書を作成する簡単な方法として、`makecert.exe` ユ
 
 ### PowerShell
 
-```
+```powershell
 $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My"
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
+```
+
+この[証明書を管理ポータルで](../azure-api-management-certs.md)使用する場合は、**.cer** ファイルにエクスポートしてください。
+
+```powershell
+Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ```
 
 ### インターネット インフォメーション サービス (IIS)
@@ -85,4 +91,4 @@ Java を使用して[証明書を作成](../app-service-web/java-create-azure-we
 
 >[AZURE.NOTE] Azure ポータルは、API へのアクセスに管理証明書を使用しないで、代わりにユーザー アカウントを使用します。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="01/08/2016" 
+	ms.date="06/30/2016" 
 	ms.author="tdykstra"/>
 
 # Azure SDK for .NET とは
 
 ## 概要
 
-Azure SDK for .NET は、Visual Studio のツール、コマンドライン ツール、ランタイム バイナリ、およびクライアント ライブラリを 1 つにまとめたもので、Azure で実行するアプリケーションの開発、テスト、デプロイに役立ちます。この記事では、SDK のインストールにより、どのようなことができるかについて説明します。SDK は [Azure のダウンロード ページ](/downloads/)でダウンロードできます。
+Azure SDK for .NET は、Visual Studio のツール、コマンドライン ツール、ランタイム バイナリ、およびクライアント ライブラリを 1 つにまとめたもので、Azure で実行するアプリケーションの開発、テスト、デプロイに役立ちます。この記事では、SDK のインストールにより、どのようなことができるかについて説明します。SDK は [Azure のダウンロード ページ](https://azure.microsoft.com/downloads/)でダウンロードできます。
 
 Azure SDK for .NET には、[Azure のサービスを利用するために必要なクライアント ライブラリ](http://go.microsoft.com/fwlink/?LinkId=510472)も含まれています。これらのライブラリは NuGet で個々にインストールできます。
 
@@ -28,47 +28,30 @@ Azure SDK for .NET には、[Azure のサービスを利用するために必要
 
 Azure SDK for .NET には次の製品が含まれており、インストールされます。
 
-- [Visual Studio Express for Web](#vwd)
-- [Microsoft ASP.NET and Web Tools for Visual Studio](#wte)
-- [Microsoft Azure Tools for Microsoft Visual Studio](#tools)
-- [Microsoft Azure Authoring Tools](#auth)
-- [Microsoft Azure エミュレーター](#emulator)
+- [Visual Studio Community エディション 2015](#vwd)
 - [Microsoft Azure ストレージ エミュレーター](#stgemulator)
 - [Microsoft Azure Storage Tools](#stgtools)
-- [Microsoft Azure Libraries for .NET](#libraries)
+- [Microsoft Azure Authoring Tools](#auth)
+- [Microsoft Azure エミュレーター](#emulator)
 - [HDInsight Tools for Visual Studio および Microsoft Hive ODBC ドライバー](#hdinsight)
-- [Microsoft Azure Mobile App SDK V1.0](#mobile)
+- [Microsoft Azure Libraries for .NET](#libraries)
+- [Microsoft Azure Mobile App SDK](#mobile)
 - [Microsoft Azure PowerShell](#ps)
+- [Microsoft Azure Tools for Microsoft Visual Studio](#tools)
+- [Microsoft ASP.NET and Web Tools for Visual Studio](#wte)
+- [Microsoft Azure Data Lake Tools for Visual Studio](#datalake)
 
 ###<a id="vwd"></a>Visual Studio Express for Web
 
-コンピューターに Visual Studio がインストールされていない場合、SDK によって [Visual Studio Express for Web](http://www.visualstudio.com/products/visual-studio-express-vs.aspx) がインストールされます。
- 
-###<a id="wte"></a>Microsoft ASP.NET and Web Tools for Visual Studio
+コンピューターに Visual Studio がインストールされていない場合は、SDK によって [Visual Studio Community エディション 2015](https://www.visualstudio.com/products/visual-studio-community-vs) がインストールされます。
 
-この製品をインストールすると、Azure の Web サイトで次のことができるようになります。
+###<a id="stgemulator"></a>Microsoft Azure ストレージ エミュレーター
 
-* [Azure の Web サイトに Web プロジェクトを発行する](app-service-web/web-sites-dotnet-get-started.md)
-* [Azure の Web ジョブにコンソール アプリケーション プロジェクトを発行する](app-service-web/websites-dotnet-deploy-webjobs.md)
-* [Azure の Web サイトおよび SQL データベース リソースを作成して、新しい Web プロジェクトを作成または発行する](app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)
-* [PowerShell デプロイメント スクリプトを作成して、新規の Web サイトを作成する](http://msdn.microsoft.com/library/dn642480.aspx)
-* [サーバー エクスプローラーで Azure Web サイトの管理とトラブルシューティングを行う](app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#sitemanagement)
-* [Web サイトおよび Web ジョブに対してリモート デバッグを実行する](app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug) 
+[Azure ストレージ エミュレーター](http://msdn.microsoft.com/library/hh403989.aspx)は、SQL サーバーのインスタンスとローカル ファイル システムを使用して Azure のストレージ (キュー、テーブル、BLOB) をシミュレートします。これにより、ローカルのコンピューターでテストできます。
 
->[AZURE.NOTE] これらの機能は Visual Studio の更新版にも含まれているため、Azure SDK for .NET をインストールしなくても利用できます。
+###<a id="stgtools"></a>Microsoft Azure Storage Tools
 
-###<a id="tools"></a>Microsoft Azure Tools for Microsoft Visual Studio
-
-この製品を利用すると、Azure のリソース (主に Cloud Services および仮想マシン) で次のことができるようになります。
-
-* [クラウド サービス プロジェクトを作成、公開、発行する](cloud-services/cloud-services-dotnet-get-started.md)
-* [クラウド サービス プロジェクトのデプロイメント パッケージを作成する](http://msdn.microsoft.com/library/ff683672.aspx)
-* [Azure の仮想マシンを作成して、新規の Web プロジェクトを作成する](virtual-machines/virtual-machines-windows-classic-web-app-visual-studio.md)
-* [PowerShell デプロイメント スクリプトを作成して、新規の仮想マシンを作成する](http://msdn.microsoft.com/library/dn642480.aspx)
-* [Visual Studio のプロジェクト プロパティ ウィンドウでクラウド サービス プロジェクトの設定を表示し、管理する](http://msdn.microsoft.com/library/ee405486.aspx)
-* サーバー エクスプローラーで[クラウド サービス](http://msdn.microsoft.com/library/ff683675.aspx)、[仮想マシン](http://msdn.microsoft.com/library/jj131259.aspx)、および[サービス バス](http://msdn.microsoft.com/library/jj149828.aspx)を表示し、管理する 
-* [クラウド サービスおよび仮想マシンに対してリモート デバッグを実行する](http://msdn.microsoft.com/library/ff683670.aspx)
-* [Azure リソース グループ デプロイ プロジェクトを使用したリソースのプロビジョニングの自動化](https://msdn.microsoft.com/library/dn872471.aspx)
+この製品は、コマンド ライン ツールの [AzCopy](http://aka.ms/AzCopy) をインストールします。このツールを使用すると、Azure のストレージ アカウントにデータを転送したり、このアカウントからデータを転送したりすることができます。
 
 ###<a id="auth"></a>Microsoft Azure Authoring Tools
 
@@ -82,26 +65,18 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 
 [Azure エミュレーター](http://msdn.microsoft.com/library/dn339018.aspx)は、クラウド サービス環境をシミュレートします。これにより、クラウド サービス プロジェクトを Azure にデプロイする前に、ローカルのコンピューターでテストできます。
 
-###<a id="stgemulator"></a>Microsoft Azure ストレージ エミュレーター
+###<a id="hdinsight"></a>HDInsight Tools for Visual Studio および Microsoft Hive ODBC ドライバー
 
-[Azure ストレージ エミュレーター](http://msdn.microsoft.com/library/hh403989.aspx)は、SQL サーバーのインスタンスとローカル ファイル システムを使用して Azure のストレージ (キュー、テーブル、BLOB) をシミュレートします。これにより、ローカルのコンピューターでテストできます。
-
-###<a id="stgtools"></a>Microsoft Azure Storage Tools
-
-この製品は、コマンド ライン ツールの [AzCopy](http://aka.ms/AzCopy) をインストールします。このツールを使用すると、Azure のストレージ アカウントにデータを転送したり、このアカウントからデータを転送したりすることができます。
+サーバー エクスプローラーの HDInsight ツールを使用すると、Hive データベースと HDInsight クラスターにリンクされたストレージ アカウントを移動したり、テーブルを作成したり、Hive クエリを送信できます。詳細については、「[HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
 
 ###<a id="libraries"></a>Microsoft Azure Libraries for .NET
 
 この製品には次のツールが含まれています。
 
 * Azure のストレージ、サービス バス、キャッシュ用の NuGet パッケージ。このパッケージは、ユーザーのコンピューターに格納されるため、Visual Studio による新規のクラウド サービス プロジェクトの作成がオフラインでできるようになります。
-* Visual Studio プラグイン。Visual Studio で [In-Role Cache](http://msdn.microsoft.com/library/dn386103.aspx) プロジェクトの実行がローカルでできるようになります。 
+* Visual Studio プラグイン。Visual Studio で [In-Role Cache](http://msdn.microsoft.com/library/dn386103.aspx) プロジェクトの実行がローカルでできるようになります。
 
-###<a id="hdinsight"></a>HDInsight Tools for Visual Studio および Microsoft Hive ODBC ドライバー
-
-サーバー エクスプローラーの HDInsight ツールを使用すると、Hive データベースと HDInsight クラスターにリンクされたストレージ アカウントを移動したり、テーブルを作成したり、Hive クエリを送信できます。詳細については、「[HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
-
-###<a id="mobile"></a>Microsoft Azure Mobile App SDK V1.0
+###<a id="mobile"></a>Microsoft Azure Mobile App SDK
 
 [Azure App Service の Mobile Apps](app-service-mobile/app-service-mobile-value-prop.md) を使用するためのツールです。
 
@@ -109,11 +84,41 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 
 Azure PowerShell を使用すると、[Azure 環境の作成とデプロイを自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)できます。
 
+###<a id="tools"></a>Microsoft Azure Tools for Microsoft Visual Studio
+
+この製品を利用すると、Azure のリソース (主に Cloud Services および仮想マシン) で次のことができるようになります。
+
+* [クラウド サービス プロジェクトを作成、公開、発行する](cloud-services/cloud-services-dotnet-get-started.md)
+* [クラウド サービス プロジェクトのデプロイメント パッケージを作成する](http://msdn.microsoft.com/library/ff683672.aspx)
+* [Azure の仮想マシンを作成して、新規の Web プロジェクトを作成する](virtual-machines/virtual-machines-windows-classic-web-app-visual-studio.md)
+* [PowerShell デプロイメント スクリプトを作成して、新規の仮想マシンを作成する](http://msdn.microsoft.com/library/dn642480.aspx)
+* [Visual Studio のプロジェクト プロパティ ウィンドウでクラウド サービス プロジェクトの設定を表示し、管理する](http://msdn.microsoft.com/library/ee405486.aspx)
+* サーバー エクスプローラーで[クラウド サービス](http://msdn.microsoft.com/library/ff683675.aspx)、[仮想マシン](http://msdn.microsoft.com/library/jj131259.aspx)、および[サービス バス](http://msdn.microsoft.com/library/jj149828.aspx)を表示し、管理する
+* [クラウド サービスおよび仮想マシンに対してリモート デバッグを実行する](http://msdn.microsoft.com/library/ff683670.aspx)
+* [Azure リソース グループ デプロイ プロジェクトを使用したリソースのプロビジョニングの自動化](https://msdn.microsoft.com/library/dn872471.aspx)
+
+###<a id="wte"></a>Microsoft App Service Tools for Visual Studio
+
+この製品をインストールすると、Azure の Web サイトで次のことができるようになります。
+
+* [Azure の Web サイトに Web プロジェクトを発行する](app-service-web/web-sites-dotnet-get-started.md)
+* [Azure の Web ジョブにコンソール アプリケーション プロジェクトを発行する](app-service-web/websites-dotnet-deploy-webjobs.md)
+* [Azure の Web サイトおよび SQL データベース リソースを作成して、新しい Web プロジェクトを作成または発行する](app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)
+* [PowerShell デプロイメント スクリプトを作成して、新規の Web サイトを作成する](http://msdn.microsoft.com/library/dn642480.aspx)
+* [サーバー エクスプローラーで Azure Web サイトの管理とトラブルシューティングを行う](app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#sitemanagement)
+* [Web サイトおよび Web ジョブに対してリモート デバッグを実行する](app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)
+
+>[AZURE.NOTE] これらの機能は Visual Studio の更新版にも含まれているため、Azure SDK for .NET をインストールしなくても利用できます。
+
+##<a id="datalake"></a>Microsoft Azure Data Lake Tools for Visual Studio
+
+詳細については、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
+
 ##<a id="notincluded"></a>Azure SDK for .NET のインストールに含まれないもの
 
 SDK をインストールしたときに、Azure 向けアプリケーションの開発に必要なものが含まれない場合もあります。主なものは次のとおりです。
 
-* [クライアント ライブラリ](http://go.microsoft.com/fwlink/?LinkId=510472) 
+* [クライアント ライブラリ](http://go.microsoft.com/fwlink/?LinkId=510472)
 
 	Azure SDK には、Azure のサービスを使用するために必要なクライアント ライブラリが含まれています。ただし、SDK をインストールしたときに、そのすべてがインストールされるわけではありません。アプリケーションに必要なクライアント ライブラリが SDK によってインストールされない場合には、[NuGet.org](http://go.microsoft.com/fwlink/?LinkId=510472) で必要なライブラリを入手できます。クライアント ライブラリが SDK によってインストールされる場合でも、NuGet.org で現在のバージョンに更新することをお勧めいたします。
 
@@ -148,7 +153,7 @@ SDK でクライアント ライブラリがインストールされるのは、
 
 ###<a id="olderversions"></a>以前のバージョンの Azure SDK for .NET はどこにありますか。
 
-以前のバージョンは、ダウンロード ページの「[Azure SDK for .NET](/downloads/archive-net-downloads/)」で確認してください。
+以前のバージョンは、ダウンロード ページの「[Azure SDK for .NET](https://azure.microsoft.com/downloads/archive-net-downloads/)」で確認してください。
 
 ###<a id="lifecycle"></a>Azure SDK for .NET のバージョンのライフサイクル ポリシーを教えてください。
 
@@ -176,14 +181,14 @@ Azure SDK for .NET が既にインストールされている場合に新しい�
 
 ##<a id="versions"></a>バージョン
 
-現在のバージョンを確認したり、以前のバージョンをダウンロードしたりするには、「[Azure SDK for .NET のバージョン履歴](/downloads/archive-net-downloads/)」ページを参照してください。
+現在のバージョンを確認したり、以前のバージョンをダウンロードしたりするには、「[Azure SDK for .NET のバージョン履歴](https://azure.microsoft.com/downloads/archive-net-downloads/)」ページを参照してください。
 
 ##<a id="resources"></a>リソース
 
-現在の Azure SDK for .NET またはクライアント ライブラリをダウンロードするには、[Azure ダウンロード ページ](/downloads/)を参照してください。
+現在の Azure SDK for .NET またはクライアント ライブラリをダウンロードするには、[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)を参照してください。
 
 Azure SDK for .NET (クライアント ライブラリを含む) のソース コードについては、[GitHub.com/Azure の Web サイト](https://github.com/azure/)を参照してください。
 
-Azure のクライアント ライブラリのリファレンス ドキュメントについては、[Azure .NET のリファレンス ページ](/documentation/api/)を参照してください。
+Azure のクライアント ライブラリのリファレンス ドキュメントについては、[Azure .NET のリファレンス ページ](https://azure.microsoft.com/documentation/api/)を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0706_2016-->

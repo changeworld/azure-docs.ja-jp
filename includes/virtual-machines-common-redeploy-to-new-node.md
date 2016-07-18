@@ -1,36 +1,23 @@
+## Azure ポータルの使用
 
-Windows ベースの Azure 仮想マシンへのリモート デスクトップ (RDP) 接続に関するトラブルシューティングで問題が発生している場合、または Linux ベースの Azure 仮想マシンへの SSH 接続に関するトラブルシューティングを行う場合は、この記事を参考にすることで、繰り返しサポートを受けたり仮想マシンのサイズを変更したりしなくても、お客様自身で問題を解決することができます。Microsoft Azure では、Azure PowerShell から再デプロイ操作が呼び出されると仮想マシンを再デプロイします。
+1. 再デプロイする VM を選択し、[設定] ブレードで [再デプロイ] をクリックします。
 
-この操作を行うと、一時ディスクのデータが失われ、仮想マシンに関連付けられている動的 IP アドレスが更新されることに注意してください。
+	![Azure VM ブレード](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)
 
+2. [再デプロイ] をクリックして、操作を確認します。
 
-## Azure PowerShell の使用
+	![VM の再デプロイ ブレード](./media/virtual-machines-common-redeploy-to-new-node/redeployvm.png)
 
-マシンに最新の Azure PowerShell 1.x がインストールされていることを確認します。詳細については、「[Azure PowerShell のインストールおよび構成方法](../articles/powershell-install-configure.md)」を参照してください。
+3. VM が再デプロイの準備に入ると、VM の **ステータス** は "更新中" に変わります。
 
-次の Azure PowerShell コマンドを使用して仮想マシンを再デプロイします。
+	![VM 更新中](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)
 
-	Set-AzureRmVM -Redeploy -ResourceGroupName $rgname -Name $vmname 
+4. VM が新しい Azure ホスト上で起動すると、VM の**ステータス**は "開始中" に変わります。
 
+	![VM 開始中](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
 
-このコマンドの実行中に、[Azure ポータル](https://portal.azure.com)で仮想マシンをチェックします。VM の **[状態]** が次のように変わることを確認してください。
+5. VM の起動プロセスが完了したら、**ステータス** が "実行中" に戻ります。これは、VM が適切に再デプロイされたことを示します。
 
-1. 初期の **[状態]** は *[実行中]* です。
+	![VM 実行中](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
 
-	![再デプロイの初期状態](./media/virtual-machines-common-redeploy-to-new-node/statusrunning1.png)
-
-2. **[状態]** が *[更新しています]* に変わります。
-
-	![再デプロイの状態 [更新しています]](./media/virtual-machines-common-redeploy-to-new-node/statusupdating.png)
-
-3. **[状態]** が *[開始中]* に変わります。
-
-	![再デプロイの状態 [開始中]](./media/virtual-machines-common-redeploy-to-new-node/statusstarting.png)
-
-4. **[状態]**が *[実行中]* に戻ります。
-
-	![再デプロイの最終状態](./media/virtual-machines-common-redeploy-to-new-node/statusrunning2.png)
-
-**[状態]**が *[実行中]* に戻ると、VM は正常に再デプロイされています。
-
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0706_2016-->

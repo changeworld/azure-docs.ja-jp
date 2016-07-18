@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="04/06/2016"
+	ms.date="07/06/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -30,68 +30,48 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 
 ***考慮事項***
 
-- アーカイブにトランザクション一貫性を持たせるために、書き込みアクティビティがエクスポート中に発生していないことを確認するか、または Azure SQL Database の[トランザクション一貫性のあるコピー](sql-database-copy.md)からエクスポートする必要があります。
+- アーカイブにトランザクション一貫性を持たせるために、書き込みアクティビティがエクスポート中に発生していないことを確認するか、または Azure SQL Database の[トランザクション一貫性のあるコピー](sql-database-copy.md)からエクスポートする必要があります
 - Azure Blob Storage にアーカイブされた BACPAC ファイルの最大サイズは 200 GB です。[SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) コマンド プロンプト ユーティリティを使用して、より大きな BACPAC ファイルをローカル ストレージにアーカイブします。このユーティリティは、Visual Studio と SQL Server の両方に含まれます。SQL Server Data Tools の最新版を[ダウンロード](https://msdn.microsoft.com/library/mt204009.aspx)し、このユーティリティを入手することもできます。
 - BACPAC ファイルを使用する Azure Premium Storage へのアーカイブはサポートされていません。
 - エクスポート操作が 20 時間以上を超える場合は取り消されることがあります。エクスポート中にパフォーマンスを向上させるには、次の操作を実行します。
- - サービス レベルを一時的に上げる 
+ - サービス レベルを一時的に上げる
  - エクスポート中のすべての読み取りと書き込みアクティビティを中止する
  - すべての大きなテーブルにクラスター化インデックスを使用する。クラスター化インデックスがないと、エクスポートが 6 ～ 12 時間よりも時間が長くかかる場合には失敗することがあります。これは、エクスポート サービスがテーブル スキャンを実行してテーブル全体をエクスポートしようとする必要があることが原因です。
  
-> [AZURE.NOTE] BACPAC はバックアップおよび復元操作に使用するためのものでありません。Azure SQL Database では、すべてのユーザー データベースのバックアップが自動的に作成されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
+> [AZURE.NOTE] BACPAC はバックアップおよび復元操作に使用するためのものでありません。Azure SQL Database では、すべてのユーザー データベースのバックアップが自動的に作成されます。詳細については、[SQL Database 自動バックアップ](sql-database-automated-backups.md)に関するページをご覧ください。
 
 この記事を完了するには、以下が必要です。
 
-- Azure サブスクリプション。 
-- Azure SQL Database。 
+- Azure サブスクリプション。
+- Azure SQL Database。
 - [Azure Standard Storage アカウント](../storage/storage-create-storage-account.md) (標準的なストレージに BACPAC を格納する BLOB コンテナーを含む)。
-- Azure PowerShell。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
 
-## 資格情報を構成してサブスクリプションを選択
-
-まず、Azure アカウントへのアクセスを確立する必要があるため、PowerShell を起動してから以下のコマンドレットを実行します。ログイン画面で、Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを入力します。
-
-	Add-AzureAccount
-
-正常にサインインすると、サインインしている ID や使用中の Azure サブスクリプションを含む情報が画面に表示されます。
-
-
-### Azure サブスクリプションを選択します。
-
-サブスクリプションを選択するには、サブスクリプション ID またはサブスクリプション名 (**-SubscriptionName**) が必要になります。サブスクリプション ID は前の手順で示された情報からコピーできます。または、複数のサブスクリプションがあり、詳しい情報が必要な場合は、**Get-AzureSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。ご利用のサブスクリプションを取得したら次のコマンドレットを実行します。
-
-	Select-AzureSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
-
-**Select-AzureSubscription** を正常に実行すると、PowerShell プロンプトに戻ります。サブスクリプションが複数ある場合は、**Get-AzureSubscription** を実行して、使用するサブスクリプションが **IsCurrent: True** と表示されていることを確認できます。
+[AZURE.INCLUDE [PowerShell セッションの開始](../../includes/sql-database-powershell.md)]
 
 
 ## 特定の環境用の変数の設定
 
 変数には、例の値を、使用するデータベースとストレージ アカウントの特定の値に置き換える必要があるものがいくつかあります。
 
-サーバーとデータベースの名前は、アカウントに現在存在するサーバーとデータベースに置き換えます。BLOB 名については、作成される BACPAC ファイル名を入力します。BACPAC ファイル名として任意の名前を入力できますが、.bacpac 拡張子を含める必要があります。
+特定の値に置き換えます。
 
+    $ResourceGroupName = "resourceGroupName"
     $ServerName = "servername"
-    $DatabaseName = "nameofdatabasetoexport"
-    $BlobName = "filename.bacpac"
+    $DatabaseName = "databasename"
+
 
 [Azure ポータル](https://portal.azure.com)でストレージ アカウントを参照し、これらの値を取得します。プライマリ アクセス キーは、ストレージ アカウントのブレードで **[すべての設定]** をクリックしてから **[キー]** をクリックすることで検索できます。
 
     $StorageName = "storageaccountname"
-    $ContainerName = "blobcontainername"
+    $StorageKeyType = "storageKeyType"
+    $StorageUri = "http://storageaccountname.blob.core.windows.net/containerName/filename.bacpac"
     $StorageKey = "primaryaccesskey"
 
-## サーバーおよびストレージ アカウントを指すポインターの作成
 
 **Get-Credential** コマンドレットを実行すると、ユーザー名とパスワードの入力を求めるウィンドウが開きます。SQL Server の管理ログインとパスワード (Azure アカウントのユーザー名とパスワードではない) を入力します。
 
     $credential = Get-Credential
-    $SqlCtx = New-AzureSqlDatabaseServerContext -ServerName $ServerName -Credential $credential
-
-    $StorageCtx = New-AzureStorageContext -StorageAccountName $StorageName -StorageAccountKey $StorageKey
-    $Container = Get-AzureStorageContainer -Name $ContainerName -Context $StorageCtx
-
 
 ## データベースのエクスポート
 
@@ -100,45 +80,34 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 > [AZURE.IMPORTANT] トランザクションに関する BACPAC ファイルの一貫性を保証するには、最初に[データベースのコピーを作成](sql-database-copy-powershell.md)してエクスポートする必要があります。
 
 
-    $exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $SqlCtx -StorageContainer $Container -DatabaseName $DatabaseName -BlobName $BlobName
+    $exportRequest = New-AzureRmSqlDatabaseExport –ResourceGroupName  $ResourceGroupName –ServerName $ServerName –DatabaseName $DatabaseName –StorageKeytype $StorageKeyType –StorageKey $StorageKey StorageUri $StorageUri –AdministratorLogin $credential.UserName –AdministratorPassword $credential.Password
     
 
 ## エクスポート操作の進行状況の監視
 
-**Start-AzureSqlDatabaseExport** の実行後に、要求の状態を確認することができます。要求直後にこれを実行すると、通常は、**Status : Pending** または **Status : Running** が返されます。したがって、出力に **Status : Completed** が表示されるまで、これを複数回実行できます。
+**New-AzureRmSqlDatabaseExport** の実行後に、要求の状態を確認できます。要求直後にこれを実行すると、通常は、**Status : Pending** または **Status : Running** が返されます。したがって、出力に **Status : Completed** が表示されるまで、これを複数回実行できます。
 
 このコマンドを実行すると、パスワードの入力を求められます。SQL Server の管理パスワードを入力します。
 
 
-    Get-AzureSqlDatabaseImportExportStatus -RequestId $exportRequest.RequestGuid -ServerName $ServerName -Username $credential.UserName
+    Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest .OperationStatusLink
     
 
 
 ## SQL Database のエクスポートの PowerShell スクリプト
 
 
-    Add-AzureAccount
-    Select-AzureSubscription -SubscriptionId "4cac86b0-1e56-bbbb-aaaa-000000000000"
-    
     $ServerName = "servername"
-    $DatabaseName = "databasename"
-    $BlobName = "bacpacfilename"
-    
     $StorageName = "storageaccountname"
-    $ContainerName = "blobcontainername"
+    $StorageKeyType = "storageKeyType"
+    $StorageUri = "http://storageaccountname.blob.core.windows.net/containerName/filename.bacpac"
     $StorageKey = "primaryaccesskey"
-    
-    $credential = Get-Credential
-    $SqlCtx = New-AzureSqlDatabaseServerContext -ServerName $ServerName -Credential $credential
-    
-    $StorageCtx = New-AzureStorageContext -StorageAccountName $StorageName -StorageAccountKey $StorageKey
-    $Container = Get-AzureStorageContainer -Name $ContainerName -Context $StorageCtx
-    
-    $exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $SqlCtx -StorageContainer $Container -DatabaseName $DatabaseName -BlobName $BlobName
-    
-    Get-AzureSqlDatabaseImportExportStatus -RequestId $exportRequest.RequestGuid -ServerName $ServerName -Username $credential.UserName
-    
 
+    $credential = Get-Credential
+
+    $exportRequest = New-AzureRmSqlDatabaseExport –ResourceGroupName  $ResourceGroupName –ServerName $ServerName –DatabaseName $DatabaseName –StorageKeytype $StorageKeyType –StorageKey $StorageKey  StorageUri $StorageUri –AdministratorLogin $credential.UserName  –AdministratorPassword $credential.Password
+
+    Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest .OperationStatusLink
 
 ## 次のステップ
 
@@ -151,4 +120,4 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 - [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/08/2016"
+   ms.date="06/30/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 
@@ -35,7 +35,7 @@ PolyBase コマンドと T-SQL コマンドを使用して、Azure Blob Storage 
 
 
 ## 開始する前に
-このチュートリアルを実行するには、SQL Data Warehouse データベースを既に持つ Azure アカウントが必要です。アカウントがない場合は、「[SQL Data Warehouse の作成][]」をご覧ください。
+このチュートリアルを実行するには、SQL Data Warehouse データベースを既に持つ Azure アカウントが必要です。アカウントがない場合は、[SQL Data Warehouse の作成][]に関するページをご覧ください。
 
 ## 1\.データ ソースの構成
 
@@ -264,7 +264,7 @@ WHERE r.label = 'CTAS : Load [cso].[DimProduct]             '
 
 ## 5\.列ストア圧縮の最適化
 
-既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。これにはさまざまな理由があります。詳細については、... をご覧ください。
+既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。これにはさまざまな理由があります。詳細については、[列ストア インデックスの管理][]に関するページをご覧ください。
 
 読み込み後のクエリのパフォーマンスと列ストア圧縮を最適化するには、列ストア インデックスですべての行が強制的に圧縮されるようにテーブルを再構築します。
 
@@ -276,7 +276,7 @@ ALTER INDEX ALL ON [cso].[DimProduct]               REBUILD;
 ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ```
 
-列ストア インデックスの保守の詳細については、[列ストア インデックスの管理][] に関する記事をご覧ください。
+列ストア インデックスの保守の詳細については、[列ストア インデックスの管理][]に関する記事をご覧ください。
 
 ## 6\.統計の最適化
 
@@ -351,16 +351,17 @@ Contoso Retail Data Warehouse データを完全に読み込むには、スク�
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
-[Load data into SQL Data Warehouse]: sql-data-warehouse-overview-load.md
-[SQL Data Warehouse の開発の概要]: sql-data-warehouse-overview-develop.md
-[列ストア インデックスの管理]:
-[統計]: sql-data-warehouse-develop-statistics.md
-[CTAS]: sql-data-warehouse-develop-ctas.md
-[label]: sql-data-warehouse-develop-label.md
+[SQL Data Warehouse の作成]: ./sql-data-warehouse-get-started-provision.md
+[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse の開発の概要]: ./sql-data-warehouse-overview-develop.md
+[列ストア インデックスの管理]: ./sql-data-warehouse-tables-index.md
+[統計]: ./sql-data-warehouse-tables-statistics.md
+[CTAS]: ./sql-data-warehouse-develop-ctas.md
+[label]: ./sql-data-warehouse-develop-label.md
 
 <!--MSDN references-->
-[外部データ ソースの作成]: [外部ファイル形式の作成]:
+[CREATE EXTERNAL DATA SOURCE]: https://msdn.microsoft.com/ja-JP/library/dn935022.aspx
+[CREATE EXTERNAL FILE FORMAT]: https://msdn.microsoft.com/ja-JP/library/dn935026.aspx
 [sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
 [REBUILD]: https://msdn.microsoft.com/library/ms188388.aspx
 
@@ -368,4 +369,4 @@ Contoso Retail Data Warehouse データを完全に読み込むには、スク�
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
 [完全な Contoso Retail Data Warehouse を読み込む]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

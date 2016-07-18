@@ -4,7 +4,7 @@
 	services="notification-hubs"
 	documentationCenter="ios"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="06/29/2016"
 	ms.author="wesmc"/>
 
 # Notification Hubs を使用したニュース速報の送信
@@ -369,4 +369,4 @@ Visual Studio にアクセスできない場合は、次のセクションをス
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

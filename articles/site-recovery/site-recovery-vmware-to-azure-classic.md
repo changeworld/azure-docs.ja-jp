@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/15/2016"
+	ms.date="07/06/2016"
 	ms.author="raynew"/>
 
 # Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする
@@ -43,7 +43,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 強化されたデプロイは大きな更新です。次に、この改善内容の概要について説明します。
 
-- **Azure にインフラストラクチャ VM がない**: データは Azure Storage アカウントに直接レプリケートされます。レガシ デプロイメントでは必要でしたが、レプリケーションとフェールオーバーの目的以外に、インフラストラクチャ VM (構成サーバー、マスター ターゲット サーバー) を設定する必要はありません。  
+- **Azure にインフラストラクチャ VM がない**: データは Azure Storage アカウントに直接レプリケートされます。レガシ デプロイメントでは必要でしたが、レプリケーションとフェールオーバーの目的以外に、インフラストラクチャ VM (構成サーバー、マスター ターゲット サーバー) を設定する必要はありません。
 - **統合されたインストール**: 1 回のインストールで、オンプレミス コンポーネントの簡単なセットアップとスケーラビリティを実現します。
 - **セキュリティで保護されたデプロイ**: すべてのトラフィックが暗号化され、レプリケーション管理の通信は HTTPS 443 経由で送信されます。
 - **復旧ポイント**: Windows/Linux 環境では、クラッシュ整合性およびアプリケーション整合性復旧ポイントがサポートされます。また、単一 VM 整合性とマルチ VM 整合性の両方の構成がサポートされます。
@@ -69,8 +69,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 - **オンプレミス管理サーバー**: 管理サーバーは、次の Site Recovery コンポーネントを実行します。
 	- **構成サーバー**: 通信を調整し、データ レプリケーションと復旧プロセスを管理します。
 	- **プロセス サーバー**: レプリケーション ゲートウェイとして機能します。プロセス サーバーは保護されたソース マシンからデータを受信し、キャッシュ、圧縮、および暗号化を使用して最適化し、レプリケーション データを Azure Storage に送信します。また、保護されたマシンへのモビリティ サービスのプッシュ インストールを処理し、VMware VM の自動検出を実行します。
-	- **マスター ターゲット サーバー**: Azure からのフェールバック中にレプリケーション データを処理します。
-	デプロイをスケールするために、プロセス サーバーとしてのみ動作する管理サーバーをデプロイすることもできます。
+	- **マスター ターゲット サーバー**: Azure からのフェールバック中にレプリケーション データを処理します。デプロイをスケールするために、プロセス サーバーとしてのみ動作する管理サーバーをデプロイすることもできます。
 - **モビリティ サービス**: このコンポーネントは、Azure にレプリケートする各マシン (VMware VM または物理サーバー) にデプロイされます。マシン上のデータの書き込みをキャプチャし、それをプロセス サーバーに転送します。
 - **Azure**: レプリケーションとフェールオーバーを処理するために Azure VM を作成する必要はありません。Site Recovery サービスがデータ管理を処理し、データは Azure Storage に直接レプリケートされます。レプリケートされた Azure VM は、Azure へのフェールオーバーが発生した場合にのみ、自動的にスピンアップされます。ただし、Azure からオンプレミス サイトにフェールバックする場合、プロセス サーバーとして動作する Azure VM を設定する必要があります。
 
@@ -207,8 +206,7 @@ Linux VM のみ - VMware で VM の構成パラメーターに disk.enableUUID=t
 3. **[新規作成]**、**[簡易作成]** の順にクリックします。
 4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
 5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)」で利用可能地域を参照してください。
-6. **[コンテナーの作成]** をクリックします。
-	![新しいコンテナー](./media/site-recovery-vmware-to-azure-classic/quick-start-create-vault.png)
+6. **[コンテナーの作成]** をクリックします。![新しいコンテナー](./media/site-recovery-vmware-to-azure-classic/quick-start-create-vault.png)
 
 ステータス バーを確認して、コンテナーが正常に作成されたことを確かめます。**Recovery Services** のメイン ページでは、資格情報コンテナーは **[アクティブ]** と表示されます。
 
@@ -306,13 +304,9 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 13.  **[概要]** の情報を確認します。
 
 	![概要](./media/site-recovery-vmware-to-azure-classic/combined-wiz10.png)
->[AZURE.WARNING] Microsoft Azure Recovery Service Agent のプロキシをセットアップする必要があります。
->インストールが完了したら、Windows の [スタート] メニューから「Microsoft Azure Recovery Services シェル」という名前のアプリケーションを起動します。開いたコマンド ウィンドウで、次のコマンドを実行して、プロキシ サーバー設定をセットアップします。
+>[AZURE.WARNING] Microsoft Azure Recovery Service Agent のプロキシをセットアップする必要があります。インストールが完了したら、Windows の [スタート] メニューから「Microsoft Azure Recovery Services シェル」という名前のアプリケーションを起動します。開いたコマンド ウィンドウで、次のコマンドを実行して、プロキシ サーバー設定をセットアップします。
 >
-	$pwd = ConvertTo-SecureString -String ProxyUserPassword
-	Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumb – ProxyUserName domain\\username -ProxyPassword $pwd
-	net stop obengine
-	net start obengine
+	$pwd = ConvertTo-SecureString -String ProxyUserPassword Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumb – ProxyUserName domain\\username -ProxyPassword $pwd net stop obengine net start obengine
 
 
 
@@ -466,7 +460,7 @@ VMware VM をレプリケートする場合、vCenter サーバー (または ES
 
 ソース オペレーティング システム | モビリティ サービスのインストール ファイル
 --- | ---
-Windows Server (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_Windows\_* release.exe
+Windows Server (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0_Windows_* release.exe
 CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz
 SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
 Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
@@ -485,11 +479,11 @@ Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.
 	![モビリティ サービス](./media/site-recovery-vmware-to-azure-classic/mobility6.png)
 
 4. **[インストール場所]** は既定の場所のままにして、**[次へ]** をクリックしてインストールを開始します。
-5. **[インストールの進行状況]** でインストールを監視し、求められた場合はマシンを再起動します。
+5. **[インストールの進行状況]** でインストールを監視し、要求されたらマシンを再起動します。
 
 次のようにコマンド ラインからインストールすることもできます。
 
-UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストール ディレクトリ>] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <パスフレーズ ファイルのパス>] [/LogFilePath <Log File Path>]
+UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストール ディレクトリ>] [/CSIP <登録する CS の IP アドレス>] [/PassphraseFilePath <パスフレーズ ファイルのパス>] [/LogFilePath <ログ ファイルのパス>]
 
 各値の説明:
 
@@ -560,7 +554,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 4. **[ターゲット リソースの指定]** で、レプリケーションを使用しているストレージ アカウントを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。現在、Premium Storage アカウントはサポートされていません。
 
-	>[AZURE.NOTE] [新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成した Storage アカウントをリソース グループ間で移動する操作はサポートされていません。
+	>[AZURE.NOTE] [新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
 
 	![保護を有効にする](./media/site-recovery-vmware-to-azure-classic/enable-protection3.png)
 
@@ -576,7 +570,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 ![保護を有効にする](./media/site-recovery-vmware-to-azure-classic/enable-protection5.png)
 
-また、保護の状態を監視するには、**[保護された項目]**、[<protection group name>]、**[仮想マシン]** の順に選択します。最初のレプリケーションが完了し、データが同期されると、マシンの状態が [**保護**] に変わります。
+また、保護の状態を監視するには、**[保護された項目]**、[<保護グループ名>]、**[仮想マシン]** の順に選択します。最初のレプリケーションが完了し、データが同期されると、マシンの状態が **[保護]** に変わります。
 
 ![保護を有効にする](./media/site-recovery-vmware-to-azure-classic/enable-protection6.png)
 
@@ -660,7 +654,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 5. 手順を終了し、フェールオーバーがテストの完了フェーズに達したら、[テストの完了] をクリックして終了します。[メモ] を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。
 
-6. **[テスト フェールオーバーが完了しました]** をクリックすると、テスト環境は自動的にクリーンアップされます。この処理が完了すると、テスト フェールオーバーには **[完了]** の状態が表示されます。テスト フェールオーバー時に自動的に作成されたすべての要素または VM は削除されます。テスト フェールオーバーの実行時間が 2 週間を超えると、強制的に完了します。
+6. **[テスト フェールオーバーが完了しました]** をクリックすると、テスト環境は自動的にクリーンアップされます。この処理が完了すると、テスト フェールオーバーには **[完了]** という状態が表示されます。テスト フェールオーバー時に自動的に作成されたすべての要素または VM は削除されます。テスト フェールオーバーの実行時間が 2 週間を超えると、強制的に完了します。
 
 
 
@@ -710,7 +704,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 ### プロセス サーバーをインストールする
 
 1. [クイック スタート] ページで、Site Recovery コンポーネント インストールの統合インストール ファイルをダウンロードします。セットアップを実行します。
-2. **[開始する前に]** で **[デプロイをスケールアウトするためにプロセス サーバーを追加する]** を選択します。
+2. **[開始する前に]** で **[Add additional process servers to scale out deployment (デプロイをスケールアウトするためにプロセス サーバーを追加する)]** を選択します。
 
 	![プロセス サーバーの追加](./media/site-recovery-vmware-to-azure-classic/add-ps1.png)
 
@@ -743,8 +737,8 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 **ロール** | **詳細** | **アクセス許可**
 --- | --- | ---
 Azure\_Site\_Recovery ロール | VMware VM の検出 |vCenter サーバーの次の特権を割り当てます。<br/><br/>データストア -> 空間の割り当て、データストアの参照、低レベル ファイルの操作、ファイルの削除、仮想マシン ファイルの更新<br/><br/>ネットワーク -> ネットワークの割り当て<br/><br/>リソース -> 仮想マシンをリソース プールに割り当て、電源がオフのマシンの移行、電源がオンのマシンの移行<br/><br/>タスク -> タスクの作成、タスクの更新<br/><br/>仮想マシン -> 構成<br/><br/>仮想マシン -> 対話 -> 質問への回答、デバイス接続、CD メディアの構成、フロッピー メディアの構成、電源オフ、電源オン、VMware ツールのインストール<br/><br/>仮想マシン -> インベントリ -> 作成、登録、登録解除<br/><br/>仮想マシン -> プロビジョニング -> 仮想マシンのダウンロードの許可、仮想マシン ファイルのアップロードの許可<br/><br/>仮想マシン -> スナップショット -> スナップショットの削除
-vCenter ユーザー ロール | ソース VM をシャットダウンしない VMware VM の検出/フェールオーバー | vCenter サーバーに次の特権を割り当てます。<br/><br/>データ センター オブジェクト -> 子オブジェクトへのプロパゲート、role=Read-only <br/><br/>ユーザーはデータセンター レベルで割り当てられるので、データセンター内のすべてのオブジェクトに対してアクセス権を持ちます。アクセス権を制限するには、**子オブジェクトへのプロパゲート**特権がある**アクセスなし**ロールを子オブジェクト (ESX ホスト、データストア、VM、ネットワーク) に割り当てます。
-vCenter ユーザー ロール | フェールオーバーとフェールバック | vCenter サーバーに次の特権を割り当てます。<br/><br/>データセンター オブジェクト - 子オブジェクトへのプロパゲート、role=Azure\_Site\_Recovery<br/><br/>ユーザーはデータセンター レベルで割り当てられるので、データセンター内のすべてのオブジェクトに対してアクセス権を持ちます。アクセス権を制限するには、**子オブジェクトへのプロパゲート**特権がある**アクセスなし**ロールを子オブジェクト (ESX ホスト、データストア、VM、ネットワーク) に割り当てます。 
+vCenter ユーザー ロール | ソース VM をシャットダウンしない VMware VM の検出/フェールオーバー | vCenter サーバーに次の特権を割り当てます。<br/><br/>データ センター オブジェクト -> 子オブジェクトへのプロパゲート、ロール=読み取り専用 <br/><br/>ユーザーはデータセンター レベルで割り当てられるので、データセンター内のすべてのオブジェクトに対してアクセス権を持ちます。アクセス権を制限するには、**子オブジェクトへのプロパゲート**特権がある**アクセスなし**ロールを子オブジェクト (ESX ホスト、データストア、VM、ネットワーク) に割り当てます。
+vCenter ユーザー ロール | フェールオーバーとフェールバック | vCenter サーバーに次の特権を割り当てます。<br/><br/>データセンター オブジェクト - 子オブジェクトへのプロパゲート、ロール=Azure\_Site\_Recovery<br/><br/>ユーザーはデータセンター レベルで割り当てられるので、データセンター内のすべてのオブジェクトに対してアクセス権を持ちます。アクセス権を制限するには、**子オブジェクトへのプロパゲート**特権がある**アクセスなし**ロールを子オブジェクト (ESX ホスト、データストア、VM、ネットワーク) に割り当てます。  
 
 
 
@@ -764,4 +758,4 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 Azure で実行しているフェールオーバーされたマシンをオンプレミス環境に戻す[フェールバックの詳細についてはこちら](site-recovery-failback-azure-to-vmware-classic.md)を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -69,7 +69,7 @@ Blitline では、JSON を使用して画像に対して実行する操作を定
 
 ジョブ オプションに関するドキュメントは、<http://www.blitline.com/docs/api> にも用意されています。
 
-JSON を取得した後は、それを `http://api.blitline.com/jobs` に **POST** するだけです。
+JSON を取得した後は、それを `http://api.blitline.com/job` に **POST** するだけです。
 
 次のような内容の JSON が戻されます。
 
@@ -85,7 +85,7 @@ JSON を取得した後は、それを `http://api.blitline.com/jobs` に **POST
     }
 
 
-これは、Blitline が要求を受け取って処理中のキューに配置したことと、完了後は画像が次の場所で取得可能になることを示しています。****https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
+これは、Blitline が要求を受け取って処理中のキューに配置したことと、完了後は画像が次の場所で取得可能になることを示しています。**https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
 
 ## 画像を Azure ストレージ アカウントに保存する方法
 
@@ -132,4 +132,4 @@ Azure Storage に関する Blitline のドキュメントの最新版を[ここ]
 * Blitline API の例 <http://www.blitline.com/docs/examples>
 * サード パーティの Nuget ライブラリ <http://nuget.org/packages/Blitline.Net>
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -161,7 +161,7 @@
 | &nbsp; | タイトル | 説明 |
 | --: | :-- | :-- |
 | 83 | [PowerShell を使用した SQL Database のエラスティック データベース ジョブの作成と管理 (プレビュー)](sql-database-elastic-jobs-powershell.md) | Azure SQL Database プールを管理するために使用するPowerShell |
-| 84 | [スケールアウトされた SQL Azure データベースの作成と管理 (プレビュー)](sql-database-elastic-jobs-create-and-manage.md) | エラスティック データベースのジョブの作成と管理について説明します。 |
+| 84 | [スケールアウトされた Azure SQL Database の作成と管理 (プレビュー)](sql-database-elastic-jobs-create-and-manage.md) | エラスティック データベースのジョブの作成と管理について説明します。 |
 | 85 | [Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md) | エラスティック データベース ジョブの使用方法 |
 | 86 | [Elastic Database ジョブのインストールの概要](sql-database-elastic-jobs-service-installation.md) | 弾力性ジョブの機能のインストールについて説明します。 |
 | 87 | [スケールアウトされたクラウド データベースの管理](sql-database-elastic-jobs-overview.md) | エラスティック データベース ジョブ サービスの説明 |
@@ -351,7 +351,7 @@
 | 180 | [Azure SQL Database のリソース制限](sql-database-resource-limits.md) | このページでは、Azure SQL Database に対するいくつかの一般的なリソース制限について説明します。 |
 | 181 | [Azure SQL Database の Transact-SQL の相違点](sql-database-transact-sql-information.md) | Azure SQL Database では完全にサポートされない Transact-SQL ステートメント |
 | 182 | [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md) | クライアント プログラムが Azure SQL Database または Microsoft SQL Server に接続する際に使用できる各ドライバーの最小バージョン番号を示します。Microsoft ではなくコミュニティからリリースされているドライバーに関するバージョン情報へのリンクが用意されています。 |
-| 183 | [フィルターを使用した検索](https://azure.microsoft.com/documentation/articles/?service=sql-database) | Azure SQL Database に関するドキュメント記事のフィルターを使用して検索します。 |
+| 183 | [フィルターを使用した検索](https://azure.microsoft.com/ja-JP/documentation/articles/?service=sql-database) | Azure SQL Database に関するドキュメント記事のフィルターを使用して検索します。 |
 
 
 ## その他
@@ -378,4 +378,4 @@
 
 - ラーニング パスの図: [sql-database-elastic-scale](http://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

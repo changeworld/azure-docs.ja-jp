@@ -34,9 +34,13 @@
 
 アプリケーションをゼロから開発するか、既にあるアプリケーションをアップグレードするかに応じて、テンポラル テーブルを作成するか、または既存のテーブルに経時的な属性を追加します。実際には、その両方の作業が必要になることも少なからずあるでしょう。[SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS) や [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) など、任意の Transact-SQL 開発ツールを使用して以下の作業を実行してください。
 
+
+> [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+
+
 ###新しいテーブルの作成
 
-SSMS オブジェクト エクスプローラーの "システム バージョン管理テーブルの新規作成" というコンテキスト メニュー項目を使用して、クエリ エディターを開き、テンポラル テーブル テンプレート スクリプトを表示した後、[テンプレート パラメーターの値の指定] \(Ctrl + Shift + M) を使用してテンプレートに値を入力します。
+SSMS オブジェクト エクスプローラーの "システム バージョン管理テーブルの新規作成" というコンテキスト メニュー項目を使用して、クエリ エディターを開き、テンポラル テーブル テンプレート スクリプトを表示した後、[テンプレート パラメーターの値の指定] (Ctrl + Shift + M) を使用してテンプレートに値を入力します。
 
 ![SSMSNewTable](./media/sql-database-temporal-tables/AzureTemporal2.png)
 
@@ -195,4 +199,4 @@ ALTER TABLE dbo.WebsiteUserInfo
 
 テンポラル テーブルの詳細については、[MSDN のドキュメント](https://msdn.microsoft.com/library/dn935015.aspx)を参照してください。Channel 9 にアクセスして、[テンポラル テーブル導入による実際の成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

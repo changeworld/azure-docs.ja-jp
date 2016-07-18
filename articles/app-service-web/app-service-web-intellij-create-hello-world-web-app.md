@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="06/07/2016" 
+	ms.date="06/24/2016" 
 	ms.author="asirveda;robmcm"/>
 
 # IntelliJ で Azure 用の Hello World Web アプリを作成する
@@ -26,7 +26,7 @@
  
 ## 前提条件
 
-* A Java Developer Kit (JDK) v 1.7 以降。
+* Java Developer Kit (JDK) v 1.8 以降。
 * IntelliJ IDEA Ultimate エディション。<https://www.jetbrains.com/idea/download/index.html> からダウンロードできます。
 * Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、Jetty など)。
 * Azure サブスクリプション。<https://azure.microsoft.com/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
@@ -40,7 +40,7 @@
 
    ![][02]
 
-1. [New Project] \(新しいプロジェクト) ダイアログ ボックスで、**[Java]**、**[Web Application]** (Web アプリケーション)、**[Next]** (次へ) の順にクリックします。
+1. [New Project] (新しいプロジェクト) ダイアログ ボックスで、**[Java]**、**[Web Application]** (Web アプリケーション)、**[Next]** (次へ) の順にクリックします。
 
    ![][03a]
 
@@ -80,7 +80,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
    ![][08]
 
-1. **[Deploy to Azure Web App Container]** (Azure Web アプリ コンテナーにデプロイ) ダイアログ ボックスを開くと、以前に作成した Web アプリ コンテナーがすべて表示されます。コンテナーを作成していない場合、一覧は空欄です。   
+1. **[Deploy to Azure Web App Container]** (Azure Web アプリ コンテナーにデプロイ) ダイアログ ボックスを開くと、以前に作成した Web アプリ コンテナーがすべて表示されます。コンテナーを作成していない場合、一覧は空欄です。
 
    ![][09]
 
@@ -98,15 +98,15 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
   1. **[Web Container]** (Web コンテナー) ドロップダウン メニューで、アプリケーションに適したソフトウェアを選択します。
 
-        現在、Tomcat 8、Tomcat 7 または Jetty 9 から選択することができます。 選択したソフトウェアの最新の配信が Azure で提供されます。また、これは Oracle によって作成され、Azure で提供された JDK 8 の最新の配信で実行されます。
+        Currently, you can choose from Tomcat 8, Tomcat 7 or Jetty 9. A recent distribution of the selected software will be provided by Azure, and it will run on a recent distribution of JDK 8 created by Oracle and provided by Azure.
 
   1. **[Subscription]** (サブスクリプション) ドロップダウン メニューで、このデプロイに使用するサブスクリプションを選択します。
 
   1. **[Resource Group]** (リソース グループ) ドロップダウン メニューで、Web アプリに関連付けるリソース グループを選択します。
 
-        注: Azure のリソース グループを使用すると、関連リソースをグループ化できるため、まとめて削除することもできます。
+        Note: Azure Resource Groups allow you to group related resources together so that, for example, they can be deleted together.
 
-        (所有している場合は) 既存のリソース グループを選択して、下記のステップ g にスキップするか、以下のステップに従って、新しいリソース グループを作成します。
+        You can select an existing Resource Group (if you have any) and skip to step g below, or use the following these steps to create a new Resource Group:
 
       * **[New]** (新規) をクリックします。
 
@@ -122,9 +122,9 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
   1. **[App Service Plan]** (App Service プラン) ドロップダウン メニューには、選択したリソース グループに関連付けられた App Service プランが表示されます。
 
-        注: App Service プランでは、Web アプリの場所、価格レベル、およびコンピューティング インスタンス サイズなどの情報を指定します。 単一の App Service プランを、複数の Web Apps に使用できます。そのため、App Service プランは、特定の Web アプリのデプロイとは別に保持されます。
+        Note: An App Service Plan specifies information such as the location of your Web App, the pricing tier and the compute instance size. A single App Service Plan can be used for multiple Web Apps, which is why it is maintained separately from a specific Web App deployment.
 
-        (所有している場合は) 既存の App Service プランを選択して、下記のステップ h にスキップするか、以下のステップに従って、新しい App Service プランを作成します。
+        You can select an existing App Service Plan (if you have any) and skip to step h below, or use the following these steps to create a new App Service Plan:
 
       * **[New]** (新規) をクリックします。
 
@@ -140,13 +140,13 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
       * **[Instance Size]** (インスタンス サイズ) ドロップダウン メニューで、プランに適したインスタンス サイズを選択します。テスト目的の場合は、**[Small]** を選択できます。
 
-  1. これらの手順をすべて完了すると、[New Web App Container] \(新しい Web アプリ コンテナー) ダイアログ ボックスは次の図のようになります。
+  1. これらの手順をすべて完了すると、[New Web App Container] (新しい Web アプリ コンテナー) ダイアログ ボックスは次の図のようになります。
 
         ![][14]
 
   1. **[OK]** をクリックすると、新しい Web アプリ コンテナーの作成が完了します。
 
-        数秒待つと Web アプリ コンテナーの一覧が更新されます。一覧で新しく作成した Web アプリ コンテナーが選択されています。
+        Wait a few seconds for the list of the Web App containers to be refreshed, and your newly-created web app container should now be selected in the list.
 
 1. これで、Azure への Web アプリの初期デプロイを完了する準備ができました。**[OK]** をクリックして、Java アプリケーションを選択した Web アプリ コンテナーにデプロイします。
 
@@ -224,10 +224,11 @@ Azure Toolkits for Java IDE の詳細については、次のリンクをご覧�
 - [Azure Toolkit for IntelliJ]
   - [Azure Toolkit for IntelliJ のインストール]
   - *IntelliJ で Azure 用の Hello World Web アプリを作成する (この記事)*
+  - [Azure Toolkit for IntelliJ の新機能]
 
 Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
 
-Azure Web Apps の作成の詳細については、「[Web Apps の概要]」をご覧ください。
+Azure Web Apps の作成の詳細については、「[Web Apps の概要]」を参照してください。
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
@@ -236,9 +237,11 @@ Azure Web Apps の作成の詳細については、「[Web Apps の概要]」を
 [Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md
 [Azure Toolkit for IntelliJ]: ../azure-toolkit-for-intellij.md
 [Eclipse で Azure 用の Hello World Web アプリを作成する]: ./app-service-web-eclipse-create-hello-world-web-app.md
+[Create a Hello World Web App for Azure in IntelliJ]: ./app-service-web-intellij-create-hello-world-web-app.md
 [Azure Toolkit for Eclipse のインストール]: ../azure-toolkit-for-eclipse-installation.md
 [Azure Toolkit for IntelliJ のインストール]: ../azure-toolkit-for-intellij-installation.md
 [Azure Toolkit for Eclipse の新機能]: ../azure-toolkit-for-eclipse-whats-new.md
+[Azure Toolkit for IntelliJ の新機能]: ../azure-toolkit-for-intellij-whats-new.md
 
 [Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
 [Web Apps の概要]: ./app-service-web-overview.md
@@ -265,4 +268,4 @@ Azure Web Apps の作成の詳細については、「[Web Apps の概要]」を
 [17]: ./media/app-service-web-intellij-create-hello-world-web-app/17-Browse-Web-App.png
 [18]: ./media/app-service-web-intellij-create-hello-world-web-app/18-Stop-Web-App.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

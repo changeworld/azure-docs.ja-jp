@@ -68,14 +68,14 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 	# Assume the default configuration file exists and is properly set to point to the valid Workspace.
 	$scoringSvc = Get-AmlWebService | where Name -eq 'Bike Rental Scoring'
 	$trainingSvc = Get-AmlWebService | where Name -eq 'Bike Rental Training'
-	
+
 そのうえで次の PowerShell コマンドを実行します。
 
 	# Create 10 endpoints on the scoring web service.
 	For ($i = 1; $i -le 10; $i++){
 	    $seq = $i.ToString().PadLeft(3, '0');
 	    $endpointName = 'rentalloc' + $seq;
-	    Write-Host ('adding endpoint ' + $endpontName + '...')
+	    Write-Host ('adding endpoint ' + $endpointName + '...')
 	    Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
 	}
 
@@ -87,8 +87,10 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 
 次に、各顧客の個別のデータで独自にトレーニングされたモデルでエンドポイントを更新します。ただし最初に、これらのモデルを **Bike Rental Training** Web サービスから生成する必要があります。**Bike Rental Training** Web サービスに戻りましょう。10 個の異なるモデルを作成するためには、対応する BES エンドポイントを 10 回、10 個の異なるトレーニング データセットで呼び出す必要があります。ここでは、PowerShell コマンドレット **InovkeAmlWebServiceBESEndpoint** を使用してこの処理を実行します。
 
+また、Blob Storage アカウントの資格情報を `$configContent` (つまり、`AccountName`、`AccountKey`、`RelativeLocation` の各フィールド) に与える必要があります。`AccountName` には、自分が所有するいずれかのアカウント名を指定できます。アカウント名は、**従来の Azure 管理ポータル** (*[ストレージ]* タブ) に表示されます。ストレージ アカウントをクリックし、一番下にある **[アクセス キーの管理]** ボタンを押して*プライマリ アクセス キー*をコピーすることによって、対応する `AccountKey` を確認できます。`RelativeLocation` には、新しいモデルの保存先を、ストレージを起点とする相対パスで指定します。たとえば、以下のスクリプトでパス `hai/retrain/bike_rental/` が指し示しているのは、`hai` という名前のコンテナーであり、`/retrain/bike_rental/` はサブフォルダーです。現在サブフォルダーをポータルの UI で作成することはできませんが、[いくつかの Azure ストレージ エクスプローラー](../storage/storage-explorers.md)で作成することはできます。トレーニング済みの新しいモデル (.ilearner ファイル) は、ストレージに新しいコンテナーを作成して保存することをお勧めします。コンテナーを作成するには、ストレージ ページの一番下にある **[追加]** ボタンをクリックし、`retrain` という名前を付けます。まとめると、以下のスクリプトでは、`AccountName`、`AccountKey`、`RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`) に関して変更が必要となります。
+
 	# Invoke the retraining API 10 times
-	# This is the default (and the only) endpoint on the training web service 
+	# This is the default (and the only) endpoint on the training web service
 	$trainingSvcEp = (Get-AmlWebServiceEndpoint -WebServiceId $trainingSvc.Id)[0];
 	$submitJobRequestUrl = $trainingSvcEp.ApiLocation + '/jobs?api-version=2.0';
 	$apiKey = $trainingSvcEp.PrimaryKey;
@@ -122,12 +124,12 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 ## PowerShell スクリプト全体
 
 以下に、すべてのソース コードを掲載します。
-	
+
 	Import-Module .\AzureMLPS.dll
 	# Assume the default configuration file exists and properly set to point to the valid workspace.
 	$scoringSvc = Get-AmlWebService | where Name -eq 'Bike Rental Scoring'
 	$trainingSvc = Get-AmlWebService | where Name -eq 'Bike Rental Training'
-	
+
 	# Create 10 endpoints on the scoring web service
 	For ($i = 1; $i -le 10; $i++){
 	    $seq = $i.ToString().PadLeft(3, '0');
@@ -135,7 +137,7 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 	    Write-Host ('adding endpoint ' + $endpontName + '...')
 	    Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
 	}
-	
+
 	# Invoke the retraining API 10 times to produce 10 regression models in .ilearner format
 	$trainingSvcEp = (Get-AmlWebServiceEndpoint -WebServiceId $trainingSvc.Id)[0];
 	$submitJobRequestUrl = $trainingSvcEp.ApiLocation + '/jobs?api-version=2.0';
@@ -147,7 +149,7 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 	    Write-Host ('training regression model on ' + $inputFileName + ' for rental location ' + $seq + '...');
 	    Invoke-AmlWebServiceBESEndpoint -JobConfigString $configContent -SubmitJobRequestUrl $submitJobRequestUrl -ApiKey $apiKey
 	}
-	
+
 	# Patch the 10 endpoints with respective .ilearner models
 	$baseLoc = 'http://bostonmtc.blob.core.windows.net/'
 	$sasToken = '?test'
@@ -159,4 +161,4 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 	    Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
 	}
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="07/05/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory - .NET API の変更ログ 
@@ -45,7 +45,7 @@
 	- [データセット](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
 - 次のプロパティが [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx) に追加されました。
 	- [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
-- JSON 形式のデータを持つデータセットを定義するために、新しい [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) 型の [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) 型が追加されました。 
+- JSON 形式のデータを持つデータセットを定義するために、新しい [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) 型の [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) 型が追加されました。
 
 ## バージョン 4.5.0
 リリース日: 2016.02.24
@@ -53,11 +53,11 @@
 ### 機能の追加
 * [アクティビティ ウィンドウの一覧操作](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.activitywindowoperationsextensions.aspx)が追加されました。
     * エンティティ型 (つまり、データ ファクトリ、データセット、パイプライン、およびアクティビティ) に基づくフィルターを使用してアクティビティ ウィンドウを取得するメソッドが追加されました。
-* 次のリンクされたサービスの種類が追加されています。 
+* 次のリンクされたサービスの種類が追加されています。
     * [ODataLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odatalinkedservice.aspx)、[WebLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.weblinkedservice.aspx)
-* 次のデータセットの型が追加されています。 
+* 次のデータセットの型が追加されています。
     * [ODataResourceDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odataresourcedataset.aspx)、[WebTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.webtabledataset.aspx)
-* 次のコピー ソースの種類が追加されています。 	
+* 次のコピー ソースの種類が追加されています。
     * [WebSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
 
 ## バージョン 4.4.0
@@ -66,7 +66,7 @@
 ### 機能の追加
 
 - 次のリンクされたサービスの種類が、コピー アクティビティのデータ ソースおよびシンクとして追加されています。
-	- [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx)。概念情報と例については、「[Azure Storage SAS Linked Service (Azure Storage SAS のリンクされたサービス)](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service)」を参照してください。 
+	- [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx)。概念情報と例については、「[Azure Storage SAS Linked Service (Azure Storage SAS のリンクされたサービス)](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service)」を参照してください。
 
 ## バージョン 4.3.0
 リリース日: 2015 年 11 月 25 日
@@ -74,8 +74,8 @@
 ### 機能の追加
 
 - 次のリンクされたサービスの種類が、コピー アクティビティのデータ ソースとして追加されています。
-	- [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx)。概念情報と例については、「[Move data from HDFS using Data Factory (Data Factory を使用して HDFS からデータを移動する)](data-factory-hdfs-connector.md)」を参照してください。 
-	- [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx)。概念情報と例については、「[Move data From ODBC data stores using Azure Data Factory (Azure Data Factory を使用して ODBC データ ストアからデータを移動する)](data-factory-odbc-connector.md)」を参照してください。 
+	- [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx)。概念情報と例については、「[Move data from HDFS using Data Factory (Data Factory を使用して HDFS からデータを移動する)](data-factory-hdfs-connector.md)」を参照してください。
+	- [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx)。概念情報と例については、「[Move data From ODBC data stores using Azure Data Factory (Azure Data Factory を使用して ODBC データ ストアからデータを移動する)](data-factory-odbc-connector.md)」を参照してください。
 
 ## バージョン 4.2.0
 リリース日: 2015 年 11 月 10 日
@@ -83,21 +83,21 @@
 ### 機能の追加
 
 - 次の新しいアクティビティの種類が追加されました。 [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx) です。アクティビティの詳細については、「[更新リソース アクティビティを使用して Azure ML モデルを更新する](data-factory-azure-ml-batch-execution-activity.md#updating-azure-ml-models-using-the-update-resource-activity)」を参照してください。
-- 新しい省略可能なプロパティ [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) が [AzureMLLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx) に追加されました。 
-- [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) プロパティと [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) プロパティが [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) クラスに追加されました。 
-- Data Factory サービスへのクライアントの呼び出しのタイムアウトの構成が許可されました。 
+- 新しい省略可能なプロパティ [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) が [AzureMLLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx) に追加されました。
+- [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) プロパティと [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) プロパティが [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) クラスに追加されました。
+- Data Factory サービスへのクライアントの呼び出しのタイムアウトの構成が許可されました。
 
 
 ## バージョン 4.1.0
 リリース日: 2015 年 10 月 28 日
 
 ### 機能の追加
-* 次のリンクされたサービスの種類が追加されています。 
+* 次のリンクされたサービスの種類が追加されています。
     * [AzureDataLakeStoreLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
     * [AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
-* 次のアクティビティの種類が追加されています。 
+* 次のアクティビティの種類が追加されています。
     * [DataLakeAnalyticsUSQLActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity.aspx)
-* 次のデータセットの型が追加されています。 
+* 次のデータセットの型が追加されています。
     * [AzureDataLakeStoreDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoredataset.aspx)
 * 次のコピー アクティビティ用のソースとシンクの種類が追加されています。
     * [AzureDataLakeStoreSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresource.aspx)
@@ -164,4 +164,4 @@ SqlServerDataset | [SqlServerTableDataset](https://msdn.microsoft.com/library/mi
 
 - コピー アクティビティの一環として、Azure SQL Database ソースと Azure SQL Data Warehouse ソースに対するストアド プロシージャの実行がサポートされるようになりました。[SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) クラスと [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) クラスには、これをサポートするプロパティとして、**SqlReaderStoredProcedureName** と **StoredProcedureParameters** があります。これらのプロパティの詳細については、Azure.com の [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) と [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0706_2016-->

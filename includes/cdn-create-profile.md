@@ -4,7 +4,7 @@
 
     新しい CDN プロファイル ブレードが表示されます。
 
-    ![新しい CDN プロファイル](./media/cdn-create-profile/new-cdn-profile.png)
+    ![新しい CDN プロファイル](./media/cdn-create-profile/new-cdn-profile-include.png)
 
 2. CDN プロファイルの名前を入力します。
 
@@ -14,8 +14,10 @@
 
 5. **価格レベル**を選択しますCDN の価格レベルの比較については、[CDN の概要](cdn-overview.md#azure-cdn-features)に関する記事を参照してください。
     
-    ![CDN の価格レベルの選択](./media/cdn-create-profile/cdn-choose-sku.png)
+    ![CDN の価格レベルの選択](./media/cdn-create-profile/cdn-choose-sku-include.png)
 
 6. この CDN プロファイルの**サブスクリプション**を選択します。
 
 7. **[作成]** ボタンをクリックして、新しいプロファイルを作成します。
+
+<!---HONumber=AcomDC_0706_2016-->

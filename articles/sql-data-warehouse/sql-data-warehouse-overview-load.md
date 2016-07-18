@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/17/2016"
+   ms.date="06/30/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse へのデータの読み込み
@@ -38,7 +38,7 @@ PolyBase を使用して Azure Blob Storage からデータを読み込むと、
 
 <!-- 5. Schedule and run a loading job. --> 
 
-チュートリアルについては、「[Load data from Azure blob storage to SQL Data Warehouse (PolyBase) (Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase))][]」をご覧ください。
+チュートリアルについては、「[Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase)][]」を参照してください。
 
 ### 2\.Azure Data Factory を使用する
 
@@ -51,7 +51,7 @@ PolyBase をさらに簡単に使用できるように、PolyBase を使用す�
 3. Azure Data Factory パイプラインを作成して、データを取り込みます。PolyBase オプションを使用します。
 4. パイプラインのスケジュールを設定し、実行します。
 
-チュートリアルについては、「[Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (Azure Data Factory)][]」をご覧ください。
+チュートリアルについては、「[Azure Blob Storage から Azure SQL Data Warehouse へのデータの読み込み (Azure Data Factory)][]」を参照してください。
 
 
 ## SQL Server からの読み込み
@@ -69,7 +69,7 @@ Integration Services (SSIS) パッケージを使用して SQL Server に読み�
 3. SQL Data Warehouse でサポートされているデータ型のみを使用するように、パッケージのマッピングを変更します。
 3. パッケージのスケジュールを設定し、実行します。
 
-チュートリアルについては、「[Load data from SQL Server to Azure SQL Data Warehouse (SSIS) (SQL Server から Azure SQL Data Warehouse へのデータの読み込み (SSIS))][]」をご覧ください。
+チュートリアルについては、「[SQL Server から Azure SQL Data Warehouse へのデータの読み込み (SSIS)][]」を参照してください。
 
 ### AZCopy の使用 (データが 10 TB 未満の場合に推奨)
 データのサイズが 10 TB 未満の場合、SQL Server からフラット ファイルにデータをエクスポートし、ファイルを Azure Blob Storage にコピーして、PolyBase を使って SQL Data Warehouse に読み込むことができます。
@@ -80,7 +80,7 @@ Integration Services (SSIS) パッケージを使用して SQL Server に読み�
 2. AZCopy コマンドライン ユーティリティを使用して、フラット ファイルから Azure Blob Storage にデータをコピーします。
 3. PolyBase を使用して SQL Data Warehouse に読み込みます。
 
-チュートリアルについては、「[Load data from Azure blob storage to SQL Data Warehouse (PolyBase) (Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase))][]」をご覧ください。
+チュートリアルについては、「[Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase)][]」を参照してください。
 
 ### bcp の使用
 データ量が少ない場合は、bcp を使用して、Azure SQL Data Warehouse に直接読み込むことができます。
@@ -89,7 +89,7 @@ Integration Services (SSIS) パッケージを使用して SQL Server に読み�
 1. bcp コマンドライン ユーティリティを使用して、SQL Server からフラット ファイルにデータをエクスポートします。
 2. bcp を使用して、フラット ファイルから SQL Data Warehouse にデータを直接読み込みます。
 
-チュートリアルについては、「[SQL Server から Azure SQL Data Warehouse へのデータの読み込み (フラット ファイル)][]」をご覧ください。
+チュートリアルについては、[SQL Server から Azure SQL Data Warehouse へのデータの読み込み (bcp)][] に関するページをご覧ください。
 
 
 ### Import/Export の使用 (データが 10 TB を超える場合に推奨)
@@ -105,7 +105,6 @@ Integration Services (SSIS) パッケージを使用して SQL Server に読み�
 
 パートナーの多くが読み込みソリューションを提供しています。詳細については、[ソリューション パートナー][]の一覧をご覧ください。
 
-
 非リレーショナル ソースのデータを SQL Data Warehouse に読み込む場合は、事前にそのデータを行と列に変換しておく必要があります。変換したデータはデータベースに格納しなくても、テキスト ファイルに保存できます。
 
 新しく読み込んだデータの統計を作成してください。Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリで最高のパフォーマンスを得るには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。詳細については、[統計][]に関するページをご覧ください。
@@ -117,21 +116,21 @@ Integration Services (SSIS) パッケージを使用して SQL Server に読み�
 <!--Image references-->
 
 <!--Article references-->
-[Load data from Azure blob storage to SQL Data Warehouse (PolyBase) (Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase))]: sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-[Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (Azure Data Factory)]: sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md
-[Load data from SQL Server to Azure SQL Data Warehouse (SSIS) (SQL Server から Azure SQL Data Warehouse へのデータの読み込み (SSIS))]: sql-data-warehouse-load-from-sql-server-with-integration-services.md
-[SQL Server から Azure SQL Data Warehouse へのデータの読み込み (フラット ファイル)]: sql-data-warehouse-load-from-sql-server-with-bcp.md
-[Load data from SQL Server to Azure SQL Data Warehouse (AZCopy)]: sql-data-warehouse-load-from-sql-server-with-azcopy.md
+[Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase)]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+[Azure Blob Storage から Azure SQL Data Warehouse へのデータの読み込み (Azure Data Factory)]: ./sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md
+[SQL Server から Azure SQL Data Warehouse へのデータの読み込み (SSIS)]: ./sql-data-warehouse-load-from-sql-server-with-integration-services.md
+[SQL Server から Azure SQL Data Warehouse へのデータの読み込み (bcp)]: ./sql-data-warehouse-load-from-sql-server-with-bcp.md
+[Load data from SQL Server to Azure SQL Data Warehouse (AZCopy)]: ./sql-data-warehouse-load-from-sql-server-with-azcopy.md
 
-[サンプル データベースの読み込み]: sql-data-warehouse-load-sample-databases.md
-[移行の概要]: sql-data-warehouse-overview-migrate.md
-[ソリューション パートナー]: sql-data-warehouse-integrate-solution-partners.md
-[開発の概要]: sql-data-warehouse-overview-develop.md
-[統計]: sql-data-warehouse-develop-statistics.md
+[サンプル データベースの読み込み]: ./sql-data-warehouse-load-sample-databases.md
+[移行の概要]: ./sql-data-warehouse-overview-migrate.md
+[ソリューション パートナー]: ./sql-data-warehouse-integrate-solution-partners.md
+[開発の概要]: ./sql-data-warehouse-overview-develop.md
+[統計]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 [Import/Export]: https://azure.microsoft.com/documentation/articles/storage-import-export-service/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

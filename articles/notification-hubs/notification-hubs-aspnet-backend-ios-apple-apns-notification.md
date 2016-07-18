@@ -3,7 +3,7 @@
 	description="Azure のユーザーにプッシュ通知を送信する方法について説明します。コード サンプルは Objective-C で記述されています。また、バックエンドには .NET API を使用しています。"
 	documentationCenter="ios"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="notification-hubs"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="03/28/2016"
+	ms.date="06/29/2016"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs と .NET バックエンドによる iOS ユーザーへの通知
@@ -69,7 +69,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 		- (IBAction)LogInAction:(id)sender;
 
-4. ViewController.h で、インポート ステートメントのすぐ下に以下の `#define` を追加します。*<Enter Your Backend Endpoint>* の部分は、前のセクションでアプリのバックエンドをデプロイする際に使用した URL で置き換えてください。たとえば、**http://you_backend.azurewebsites.net* のように指定します。
+4. ViewController.h で、インポート ステートメントのすぐ下に以下の `#define` を追加します。*<Enter Your Backend Endpoint>* の部分は、前のセクションでアプリのバックエンドをデプロイする際に使用した URL で置き換えてください。たとえば、*http://you_backend.azurewebsites.net* のように指定します。
 
 		#define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
 
@@ -454,7 +454,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 	![][3]
 
-4. **"Recipient username tag"* というテキストが表示されているフィールドに、別のデバイスから登録するときに使用したユーザー名のタグを入力します。
+4. *"Recipient username tag" というテキストが表示されているフィールドに、別のデバイスから登録するときに使用したユーザー名のタグを入力します。
 5. 通知メッセージを入力して **[Send Notification]** をクリックします。入力したタグが登録されているデバイスのみ、通知メッセージを受信します。通知は、該当するユーザーにのみ送信されます。
 
 	![][4]
@@ -465,4 +465,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [3]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-registered.png
 [4]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-msg.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

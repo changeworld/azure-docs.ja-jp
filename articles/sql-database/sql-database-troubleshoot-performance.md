@@ -26,8 +26,12 @@
 2.	[Query Performance Insight](sql-database-query-performance.md) を使用して DTU を使用するクエリを評価し、その後 [SQL Database Advisor](sql-database-advisor.md) を使用して、インデックスの作成と削除、クエリのパラメーター化、およびスキーマの問題の解決に関する推奨事項を表示します。
 3.	動的管理ビュー (DMV)、拡張イベント (Xevent)、および SSMS のクエリ ストアを使用すると、リアルタイムでパフォーマンス パラメーターを取得できます。詳細な監視とチューニングに関するヒントについては、[パフォーマンス ガイダンス トピック](sql-database-performance-guidance.md)を参照してください。
 
+
+    > [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+
+
 ## その他のリソースを含むデータベースのパフォーマンスを改善する手順
 1.	単一のデータベースの場合は、[サービス レベルの変更](sql-database-scale-up.md)をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。
 2.	複数のデータベースの場合は、リソースを自動的にスケーリングするための[エラスティック データベース プール](sql-database-elastic-pool-guidance.md)の使用を検討してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/20/2016" 
+	ms.date="06/29/2016" 
 	ms.author="anwestg"/>
 
 # Azure App Service Web Apps の企業向け製品・サービスに関するホワイトペーパー #
@@ -47,9 +47,9 @@ App Service Web Apps は、拡張性と信頼性に優れ、管理やパッチ�
 
 別のアプローチとしては、オンプレミスへの既存の投資を活用する方法があります。シナリオ例の人件費システムでは、データ ストアを社内のインフラストラクチャ内部に保持したいと思うかもしれません。これは、内部システム (報告書、給与支払簿、請求書の作成など) との統合のため、または IT ガバナンスを満足させるためという可能性もあります。Web Apps では、オンプレミスのインフラストラクチャへの接続を可能にするために多くの方法が用意されています。
 
-- [App Service Environment](app-service-app-service-environment-intro.md) - App Service Environment (ASE) は、Microsoft Azure App Service に最近追加された新しい Premium 機能です。ASE が提供する完全に分離された専用の環境により、Azure App Service アプリを高スケールで安全に実行しつつ、分離およびセキュリティで保護されたネットワーク アクセスを実現できます。   
-- [ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md) – ハイブリッド接続は Microsoft Azure BizTalk Services の機能で、Web Apps が、たとえば SQL Server、MySQL、Web API、カスタム Web サービスなど、オンプレミスのリソースに安全に接続できるようにします。 
-- [Virtual Network Integration](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) – Web Apps と Azure Virtual Network の統合によって、Web アプリを Azure Virtual Network に接続できます。同様に Azure Virtual Network を、サイト間 VPN 経由でオンプレミスのインフラストラクチャに接続することも可能です。 
+- [App Service Environment](app-service-app-service-environment-intro.md) - App Service Environment (ASE) は、Microsoft Azure App Service に最近追加された新しい Premium 機能です。ASE が提供する完全に分離された専用の環境により、Azure App Service アプリを高スケールで安全に実行しつつ、分離およびセキュリティで保護されたネットワーク アクセスを実現できます。
+- [ハイブリッド接続](../biztalk-services/integration-hybrid-connection-overview.md) – ハイブリッド接続は Microsoft Azure BizTalk Services の機能で、Web Apps が、たとえば SQL Server、MySQL、Web API、カスタム Web サービスなど、オンプレミスのリソースに安全に接続できるようにします。
+- [Virtual Network Integration](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) – Web Apps と Azure Virtual Network の統合によって、Web アプリを Azure Virtual Network に接続できます。同様に Azure Virtual Network を、サイト間 VPN 経由でオンプレミスのインフラストラクチャに接続することも可能です。
 
 次の図は、オンプレミスのリソースに対する接続オプションを備えた高度なソリューションの例を示しています。最初の例は、このソリューションを実現するために Azure App Service の標準の機能を使用する方法を示しており、2 番目の例は、同じソリューションを実現するために Premium サービスの App Service Environment を使用する方法を示しています。
 
@@ -110,11 +110,11 @@ Web Apps は、世界各地にある 24 のデータ センターでグローバ
 オンプレミスの環境からアプリケーションを移行する場合、Web Apps には覚えておくべき制約がいくつかあります。Web アプリケーションを Web Apps に移行するときに考慮する必要がある重要なトピックをいくつか次に示します ([http://aka.ms/websitesmigrationresources](http://aka.ms/websitesmigrationresources))。
 
 -	ポートのバインド – Web Apps でサポートされるポートは、HTTP トラフィック用のポート 80、および HTTPS トラフィック用のポート 443 のみです。アプリケーションで他のポートが使用されている場合、移行が行われると、そのアプリケーションは HTTP トラフィックにはポート 80 を、HTTPS トラフィックにはポート 443 を 使用します。多くの場合この問題は無害ですが、その理由は、オンプレミスのデプロイメントにおいて、特に開発およびテスト環境内ではドメイン名の使用を避けるために異なるポートを使用するのが一般的だからです。
--	認証 - Web Apps では、匿名認証が既定でサポートされています。また、アプリケーションで識別されるフォーム認証がサポートされています。Web Apps が Azure Active Directory および ADFS のみで統合されている場合は、Windows 認証を利用できます。この機能の詳細については、[こちら](http://aka.ms/azurebizapp)を参照してください。 
+-	認証 - Web Apps では、匿名認証が既定でサポートされています。また、アプリケーションで識別されるフォーム認証がサポートされています。Web Apps が Azure Active Directory および ADFS のみで統合されている場合は、Windows 認証を利用できます。この機能の詳細については、[こちら](http://aka.ms/azurebizapp)を参照してください。
 -	GAC ベースのアセンブリ - Web Apps では、アセンブリをグローバル アセンブリ キャッシュ (GAC) にデプロイメントできません。このため、移行するアプリケーションがこの機能をオンプレミスで使用する場合は、アセンブリをアプリケーションの bin フォルダーに移動することを検討してください。
 -	IIS5 互換モード - Web Apps では、IIS5 互換モードはサポートされていません。したがって、各 Web Apps インスタンス、および親 Web Apps インスタンスの下にある Web アプリケーションすべてが、1 つのアプリケーション プール内の同じワーカー プロセスで実行されます。
 -	COM ライブラリの使用 – Web Apps では、プラットフォームで COM コンポーネントを登録できません。そのため、アプリケーションで COM コンポーネントを使用する場合、その COM コンポーネントはマネージ コードで書き換えて、アプリケーションにデプロイする必要があります。
--	ISAPI フィルター - ISAPI フィルターは Web Apps でサポートできますが、アプリケーションの一部としてデプロイし、アプリケーションの web.config ファイル内に登録する必要があります。詳細については、[http://aka.ms/azurewebsitesxdt](web-sites-transform-extend.md) を参照してください。 
+-	ISAPI フィルター - ISAPI フィルターは Web Apps でサポートできますが、アプリケーションの一部としてデプロイし、アプリケーションの web.config ファイル内に登録する必要があります。詳細については、[http://aka.ms/azurewebsitesxdt](web-sites-transform-extend.md) を参照してください。
 
 これらのトピックについて検討が終われば、Web アプリケーションのクラウド化の準備は万端です。もし条件に合わないトピックがあっても心配は無用です。移行ツールが可能な限り移行を支援します。
 
@@ -159,4 +159,4 @@ Azure App Service Web Apps サービスの詳細については、[http://aka.ms
  
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0706_2016-->

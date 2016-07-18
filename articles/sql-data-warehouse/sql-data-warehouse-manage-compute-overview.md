@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/01/2016"
+   ms.date="07/01/2016"
    ms.author="barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)
@@ -29,36 +29,20 @@ SQL Data Warehouse のアーキテクチャではストレージとコンピュ�
 
 この概要では、SQL Data Warehouse の次のパフォーマンス スケールアウト機能について説明し、これらの使用方法、使用するタイミングにおける推奨事項を紹介します。
 
-- Data Warehouse ユニット (DWU) の調整によるコンピューティング能力のスケーリング
+- [Data Warehouse ユニット (DWU)][] の調整によるコンピューティング能力のスケーリング
 - コンピューティング リソースの一時停止または再開
 
 <a name="scale-performance-bk"></a>
 
 ## パフォーマンスのスケーリング
 
-SQL Data Warehouse では、CPU、メモリ、および I/O 帯域幅のコンピューティング リソースを増減させることにより、パフォーマンスの拡張と縮小をすばやく行えます。パフォーマンスのスケーリングに必要なことは、SQL Data Warehouse からデータベースに割り当てられている Data Warehouse ユニット (DWU) の数を調整するだけです。SQL Data Warehouse がすばやく変更を行い、ハードウェアやソフトウェアへの基本的な変更をすべて処理します。
+SQL Data Warehouse では、CPU、メモリ、および I/O 帯域幅のコンピューティング リソースを増減させることにより、パフォーマンスの拡張と縮小をすばやく行うことができます。パフォーマンスのスケーリングに必要なことは、SQL Data Warehouse からデータベースに割り当てられている [Data Warehouse ユニット (DWU)][] の数を調整するだけです。SQL Data Warehouse がすばやく変更を行い、ハードウェアやソフトウェアに対する基本的な変更をすべて処理します。
 
->[AZURE.NOTE] データ ウェアハウスで優れたパフォーマンスを実現するために必要なストレージのタイプ、メモリ量、およびプロセッサのタイプを調査する必要があったのは遠い過去のことになりました。データ ウェアハウスをクラウドに置くことにより、低レベルのハードウェア問題に対処する必要はなくなりました。その代わりに、SQL Data Warehouse ではデータをどの程度高速に分析する必要があるかということが検討事項になります。
-
-### DWU とは何ですか?
-
-*Data Warehouse ユニット* (DWU) とは、特定の時点でのデータベースの基盤となるコンピューティング機能の測定値です。DWU の数が増えるほど、SQL Data Warehouse はより広範囲にわたって分散された CPU やメモリ リソース間で操作 (データのロードやクエリなど) を並列で実行するようになります。これにより、遅延が削減され、パフォーマンスが向上します。
-
-DWU は、読み込みレートやスキャン レートに基づきます。DWU が増えるほど、読み込みレートとスキャン レートも増えます。
-
-- **読み込みレート**。SQL Data Warehouse が 1 秒あたりに取り込めるレコードの数。具体的に言うと、SQL Data Warehouse が PolyBase を使用して Azure BLOB ストレージからクラスター化列ストア インデックスにインポートできるレコードの数です。 
-
-- **スキャン レート**。クエリが 1 秒あたりに SQL Data Warehouse から取得できるレコードの数。具体的には、SQL Data Warehouse がクラスター化列ストア インデックス上でデータ ウェアハウス クエリを実行して返すことのできるレコードの数です。スキャン レートをテストするために、大量の行をスキャンし、複雑な集計を実行する標準的なデータ ウェアハウス クエリを使用します。これは IO と CPU を集中的に使用する操作です。
-
->[AZURE.NOTE] 現在、重要なパフォーマンスの拡張機能を測定、構築しており、期待されるレートをまもなくお伝えします。プレビュー中にも、これらのレートを高めて予想どおりに拡張できるように、継続的な拡張 (圧縮およびキャッシュ機能の向上) を行います。
-
-DWU の一覧については、[容量制限][]に関する記事のサービス レベル目標に関するセクションを参照してください。
+データ ウェアハウスで優れたパフォーマンスを実現するために必要なストレージのタイプ、メモリ量、およびプロセッサのタイプを調査する必要があったのは遠い過去のことになりました。データ ウェアハウスをクラウドに置くことにより、低レベルのハードウェア問題に対処する必要はなくなりました。その代わりに、SQL Data Warehouse ではデータをどの程度高速に分析する必要があるかということが検討事項になります。
 
 ### パフォーマンスをスケーリングする方法
 
-コンピューティング能力を臨機応変に調整するには、データベースの Data Warehouse ユニット (DWU) の設定を単に変更します。バックグラウンドでは、SQL Data Warehouse は SQL Database の迅速で簡単なデプロイ機能を使用して CPU とメモリの割り当てを変更します。
-
-DWU は 100 ブロック単位で割り当てられますが、すべてのブロックを使用できるわけではありません。パフォーマンスは DWU の増加に比例して増加します。より高いレベルの DWU では、パフォーマンスに大幅な改善が見られるには、100 個以上の DWU を追加する必要があります。DWU で意味のある改善を選択できるように、最良の結果が得られる DWU レベルが用意されています。
+コンピューティング能力を臨機応変に調整するには、データベースの [Data Warehouse ユニット (DWU)][] の設定を単に変更します。DWU を追加すると、パフォーマンスが直線的に向上します。より高いレベルの DWU では、パフォーマンスに大幅な改善が見られるには、100 個以上の DWU を追加する必要があります。DWU で意味のある改善を選択できるように、最良の結果が得られる DWU レベルが用意されています。
  
 DWU を調整するのには、これらの各方法をどれでも使用できます。
 
@@ -71,11 +55,11 @@ DWU を調整するのには、これらの各方法をどれでも使用でき�
  
 SQL Data Warehouse ではパフォーマンスは線形にスケールし、あるコンピューティング スケールから別のコンピューティング スケールへの変化 (100 個の DWU から 2000 個 の DWU への変化など) は数秒で実行されます。これにより、さまざまな DWU 設定で試してから、シナリオに最適なものを選ぶことができます。
 
-> [AZURE.NOTE] データ ボリュームが小さいと、予想どおりのパフォーマンス スケーリングを達成できない場合があります。正確なパフォーマンス テスト結果を取得するためには、1 TB 以上のデータ ボリュームで始めることをお勧めします。
+理想的な DWU 値を把握するには、データ読み込みの後で、拡大/縮小を行い、いくつかのクエリを実行してください。スケーリングは簡単に行えるので、1 時間以内でさまざまなレベルのパフォーマンスを多数試すことができます。SQL Data Warehouse は、大量のデータを処理することで、スケーリングの本当の機能を確認するように設計されています。特に、ここで提供する大規模環境では、1 TB に近い、あるいはそれ以上の大規模なデータを使用してください。
 
 ワークロードに最適な DWU を特定する際の推奨事項:
 
-1. 開発中のデータ ウェアハウスの場合は、少ない数の DWU を選択することから始めます。
+1. 開発中のデータ ウェアハウスの場合は、少ない数の DWU を選択することから始めます。手始めとしては、DW400 または DW200 が適しています。
 2. アプリケーションのパフォーマンスを監視し、選択した DWU の数に対するパフォーマンスの変化を観察します。
 3. 線形スケールを想定して、要件に対して最適なパフォーマンス レベルに到達するために、パフォーマンスをどの程度上下する必要があるかを判別します。
 4. どのくらい速くまたは遅くワークロードを実行するかに応じて、DWU の数を増減します。サービスはすぐに反応し、新しい DWU 要件を満たすようにコンピューティング リソースが調整されます。
@@ -83,12 +67,12 @@ SQL Data Warehouse ではパフォーマンスは線形にスケールし、あ�
 
 ### DWU をスケーリングするタイミング
 
-全体的に見て、DWU は単純である必要があります。より短時間で結果を得る必要がある場合は DWU を増やし、増加された DWU に対して支払いを行います。それほど高いコンピューティング能力が必要ではない場合は、DWU を減らし、小さな DWU に対して支払いを行います。
+より短時間で結果を得る必要がある場合は DWU を増やし、増加された DWU に対して支払いを行います。それほど高いコンピューティング能力が必要ではない場合は、DWU を減らし、小さな DWU に対して支払いを行います。
 
 DWU をスケーリングするタイミングを特定するための推奨事項:
 
 1. アプリケーションのワークロードが変動する場合は、ワークロードが高い時点と低い時点に対応するように DWU レベルをスケールアップまたはスケールダウンします。たとえば、月末にワークロードがピークに達することが多い場合は、ピークに達する日には DWU をさらに追加し、ピーク期間が終わったらスケールダウンするように計画します。
-1. 大量データの読み込みまたは変換操作を実行する前に、データが短時間で使用可能になるように DWU をスケールアップします。
+2. 大量データの読み込みまたは変換操作を実行する前に、データが短時間で使用可能になるように DWU をスケールアップします。
 
 <a name="pause-compute-bk"></a>
 
@@ -117,23 +101,27 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 <a name="next-steps-bk"></a>
 
 ## 次のステップ
-その他の主要なパフォーマンスとスケールの概念を理解するために、次の記事を参照してください。
+その他の主要なパフォーマンスの概念を理解するために、次の記事を参照してください。
 
-- [同時実行モデル][]
-- [テーブルの設計][]
-- [テーブルのハッシュ分散キーの選択][]
-- [パフォーマンスを向上させる統計][]
+- [ワークロードと同時実行の管理][]
+- [テーブル設計の概要][]
+- [テーブルのディストリビューション][]
+- [テーブルのインデックス作成][]
+- [テーブル パーティション][]
+- [テーブルの統計][]
+- [ベスト プラクティス][]
 
 <!--Image reference-->
 
 <!--Article references-->
+[Data Warehouse ユニット (DWU)]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
 
 [Azure ポータルによるコンピューティング能力のスケーリング]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-bk
 [PowerShell によるコンピューティング能力のスケーリング]: ./sql-data-warehouse-manage-compute-powershell.md#scale-compute-bk
 [REST API によるコンピューティング能力のスケーリング]: ./sql-data-warehouse-manage-compute-rest-api.md#scale-compute-bk
 [TSQL によるコンピューティング能力のスケーリング]: ./sql-data-warehouse-manage-compute-tsql.md#scale-compute-bk
 
-[容量制限]: ./sql-data-warehouse-service-capacity-limits.md
+[capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 
 [Azure ポータルによるコンピューティングの一時停止]: ./sql-data-warehouse-manage-compute-portal.md#pause-compute-bk
 [PowerShell によるコンピューティングの一時停止]: ./sql-data-warehouse-manage-compute-powershell.md#pause-compute-bk
@@ -143,19 +131,18 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 [PowerShell によるコンピューティングの再開]: ./sql-data-warehouse-manage-compute-powershell.md#resume-compute-bk
 [REST API によるコンピューティングの再開]: ./sql-data-warehouse-manage-compute-rest-api.md#resume-compute-bk
 
-[同時実行モデル]: sql-data-warehouse-develop-concurrency.md
-[テーブルの設計]: sql-data-warehouse-develop-table-design.md
-[テーブルのハッシュ分散キーの選択]: sql-data-warehouse-develop-hash-distribution-key.md
-[パフォーマンスを向上させる統計]: sql-data-warehouse-develop-statistics.md
-[development overview]: sql-data-warehouse-overview-develop.md
-
-
+[ワークロードと同時実行の管理]: ./sql-data-warehouse-develop-concurrency.md
+[テーブル設計の概要]: ./sql-data-warehouse-tables-overview.md
+[テーブルのディストリビューション]: ./sql-data-warehouse-tables-distribute.md
+[テーブルのインデックス作成]: ./sql-data-warehouse-tables-index.md
+[テーブル パーティション]: ./sql-data-warehouse-tables-partition.md
+[テーブルの統計]: ./sql-data-warehouse-tables-statistics.md
+[ベスト プラクティス]: ./sql-data-warehouse-best-practices.md
+[development overview]: ./sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 
-
 <!--Other Web references-->
-
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

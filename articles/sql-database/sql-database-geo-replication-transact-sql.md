@@ -36,7 +36,10 @@ Transact-SQL を使用してアクティブ geo レプリケーションを構�
 - Azure SQL Database 論理サーバー <MyLocalServer> と SQL データベース <MyDB> - レプリケートするプライマリ データベースです。
 - 1 つ以上の Azure SQL Database 論理サーバー <MySecondaryServer(n)> - セカンダリ データベースの作成先であるパートナー サーバーとなる論理サーバーです。
 - プライマリ上の DBManager であるログイン。geo レプリケートするローカル データベースの db\_ownership を所有し、geo レプリケーションを構成するパートナー サーバー上の DBManager になります。
-- 最新バージョンの SQL Server Management Studio - 最新バージョンの SQL Server Management Studio (SSMS) を入手するには、[SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx) ページに移動します。SQL Server Management Studio を使用した Azure SQL Database の論理サーバーとデータベースの管理については、「[SQL Server Management Studio を使用した Azure SQL Database の管理](sql-database-manage-azure-ssms.md)」を参照してください。
+- SQL Server Management Studio (SSMS)
+
+> [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+
 
 ## セカンダリ データベースの追加
 
@@ -51,7 +54,7 @@ Transact-SQL を使用してアクティブ geo レプリケーションを構�
 
 1. バージョン 13.0.600.65 以降の SQL Server Management Studio を使用します。
 
- 	 >[AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。常に最新バージョンの Management Studio を使用して、Azure ポータルの更新プログラムとの同期を維持することをお勧めします。
+ 	 > [AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。常に最新バージョンの Management Studio を使用して、Azure ポータルの更新プログラムとの同期を維持することをお勧めします。
 
 
 2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
@@ -92,7 +95,7 @@ Transact-SQL を使用してアクティブ geo レプリケーションを構�
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer3> WITH (ALLOW_CONNECTIONS = NO
-           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1);
+           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1));
 
 4. **[実行]** をクリックしてクエリを実行します。
 
@@ -109,7 +112,7 @@ Transact-SQL を使用してアクティブ geo レプリケーションを構�
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer4> WITH (ALLOW_CONNECTIONS = ALL
-           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool2);
+           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool2));
 
 4. **[実行]** をクリックしてクエリを実行します。
 
@@ -164,7 +167,7 @@ geo レプリケーション パートナーシップを監視するには、次
 
 ## 次のステップ
 
-- アクティブ geo レプリケーションの詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- アクティブ geo レプリケーションの詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事をご覧ください
 - ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

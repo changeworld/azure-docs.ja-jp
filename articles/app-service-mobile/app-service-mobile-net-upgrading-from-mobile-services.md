@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Mobile Services から Azure App Service にアップグレードする" 
-	description="簡単に Mobile Services アプリケーションを App Service Mobile App にアップグレードする方法について説明します。" 
-	services="app-service\mobile" 
-	documentationCenter="" 
-	authors="mattchenderson" 
-	manager="dwrede" 
+<properties
+	pageTitle="Mobile Services から Azure App Service にアップグレードする"
+	description="簡単に Mobile Services アプリケーションを App Service Mobile App にアップグレードする方法について説明します。"
+	services="app-service\mobile"
+	documentationCenter=""
+	authors="mattchenderson"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="app-service-mobile" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="02/09/2016" 
+<tags
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/28/2016"
 	ms.author="mahender"/>
 
 # 既存の .NET Azure Mobile Service を App Service にアップグレードする
@@ -84,10 +84,10 @@ SDK の違いにより、かなり多くのコンパイラ エラーが発生し
 
         // Use this class to set configuration options for your mobile service
         ConfigOptions options = new ConfigOptions();
-        
+
         // Use this class to set WebAPI configuration options
         HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
-        
+
 を以下に置き換えることができます。
 
         HttpConfiguration config = new HttpConfiguration();
@@ -98,9 +98,9 @@ SDK の違いにより、かなり多くのコンパイラ エラーが発生し
 >[AZURE.NOTE] 新しい .NET サーバー SDK と、アプリから機能を追加/削除する方法の詳細については、[.NET サーバー SDK の使用方法]に関するトピックを参照してください。
 
 アプリで認証機能を使用する場合は、OWIN ミドルウェアを登録する必要もあります。この場合は、上記の構成コードを新しい OWIN スタートアップ クラスに移動する必要があります。
- 
+
 1. NuGet パッケージ `Microsoft.Owin.Host.SystemWeb` がプロジェクトにまだ含まれていない場合は、追加します。
-2. Visual Studio で、プロジェクトを右クリックして、**[追加]**、**[新しい項目]** の順に選択します。**[Web]**、**[全般]**、**[OWIN スタートアップ クラス]** の順に選択します。 
+2. Visual Studio で、プロジェクトを右クリックして、**[追加]**、**[新しい項目]** の順に選択します。**[Web]**、**[全般]**、**[OWIN スタートアップ クラス]** の順に選択します。
 3. MobileAppConfiguration の上記のコードを `WebApiConfig.Register()` から、新しいスタートアップ クラスの `Configuration()` メソッドに移動します。
 
 `Configuration()` メソッドが以下で終了することを確認します。
@@ -117,19 +117,19 @@ Mobile Services では、モバイル アプリ名が Entity Framework セット
 以前と同じスキーマが参照されるようにするには、以下を使用して、アプリケーションの DbContext にスキーマを設定します。
 
         string schema = System.Configuration.ConfigurationManager.AppSettings.Get("MS_MobileServiceName");
-        
+
 上記のようにする場合は、MS\_MobileServiceName が設定されていることを確認してください。アプリケーションで既にこのようにカスタマイズしている場合は、別のスキーマ名を指定することもできます。
 
 ### システム プロパティ
 
-#### 名前を付ける 
+#### 名前を付ける
 
 Azure Mobile Services サーバー SDK の場合、システム プロパティには必ず、次のようにプレフィックスとして下線を 2 つ (`__`) 含めるようにしてください。
 
-- __\_\_createdAt
-- __\_\_updatedAt
-- __\_\_deleted
-- __\_\_version
+- \_\_createdAt
+- \_\_updatedAt
+- \_\_deleted
+- \_\_version
 
 Mobile Services クライアント SDK には、この形式でシステム プロパティを解析するための特別なロジックがあります。
 
@@ -142,7 +142,7 @@ Azure Mobile Apps では、現在、システム プロパティで特別な形�
 
 Mobile Apps クライアント SDK では新しいシステム プロパティ名を使用するため、クライアント コードを変更する必要はありません。ただし、直接サービスへの REST 呼び出しを行う場合は、適宜クエリを変更する必要があります。
 
-#### ローカル ストア 
+#### ローカル ストア
 
 システム プロパティの名前を変更すると、Mobile Services のオフライン同期ローカル データベースと Mobile Apps との互換性がなくなります。可能であれば、保留中の変更がサーバーに送信されるまで、クライアント アプリを Mobile Services から Mobile Apps にアップグレードしないでください。したがって、アップグレードされたアプリは、新しいデータベースのファイル名を使用する必要があります。
 
@@ -209,7 +209,7 @@ CORS を使用する場合の主な懸念事項は、クライアント SDK が�
 
 `ApiServices` オブジェクトは SDK に含まれなくなりました。Mobile App の設定にアクセスするために、次の手順を使用できます。
 
-    MobileAppSettingsDictionary settings = this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings(); 
+    MobileAppSettingsDictionary settings = this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
 同様に、ロギングは標準の ASP.NET トレース書き込みを使用して行われるようになりました。
 
@@ -230,11 +230,11 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 以下の `GetAppServiceIdentityAsync()` メソッドを使用して、アクセス トークンを含む、追加のユーザー情報を取得することができます。
 
         FacebookCredentials creds = await this.User.GetAppServiceIdentityAsync<FacebookCredentials>();
-        
+
 さらに、アプリケーションでユーザー ID をデータベースに格納しているなど、ユーザー ID と依存関係がある場合は、Mobile Services と App Service Mobile Apps のユーザー ID が異なることに注意する必要があります。ただし、そのような場合でも Mobile Services のユーザー ID を取得することはできます。すべての ProviderCredentials サブクラスには、UserId プロパティがあります。ここでは、前の例を引き続き使用します。
 
         string mobileServicesUserId = creds.Provider + ":" + creds.UserId;
-        
+
 ユーザー ID と依存関係がある場合は、可能であれば、ID プロバイダーへの同じ登録を使用することが重要です。ユーザー ID は通常、使用されたアプリケーション登録に制限されるため、新しい登録を導入した場合、ユーザーとそのデータを照合する際に問題が生じる可能性があります。
 
 ### カスタム認証
@@ -253,7 +253,7 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 新しい SDK のインストールおよび新しい構造の使用については、以下のリンクを介して参照できます。
 
 - [iOS バージョン 3.0.0 以降](app-service-mobile-ios-how-to-use-client-library.md)
-- [.NET (Windows/Xamarin) バージョン 2.0.0 以降](app-service-mobile-dotnet-how-to-use-client-library.md) 
+- [.NET (Windows/Xamarin) バージョン 2.0.0 以降](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 アプリケーションでプッシュ通知を使用する場合は、変更されている内容もあるため、プラットフォームごとに固有の登録手順をメモしてください。
 
@@ -277,4 +277,4 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 [App Service の価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
 [.NET サーバー SDK の概要]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -45,11 +45,7 @@
 | [Azure PowerShell を使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-powershell.md) | このチュートリアルでは、Azure PowerShell を使用して、サンプルの Azure Data Factory パイプラインを作成します。 |
 | [チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-arm.md) | このチュートリアルでは、Azure リソース マネージャー テンプレートを使用して、サンプルの Azure Data Factory パイプラインを作成します。 |
 | [チュートリアル: 初めての Data Factory の作成 (概要)](data-factory-build-your-first-pipeline.md) | このチュートリアルでは、Azure HDInsight を使用してデータを変換するデータ パイプラインで Data Factory を作成する方法を示します。 |
-| [チュートリアル: Azure BLOB Storage から Azure SQL Database にデータをコピーする](data-factory-get-started.md) | このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure BLOB から Azure SQL Database にデータをコピーする方法を示します。 |
-| [チュートリアル: コピー アクティビティがあるパイプラインを Azure PowerShell で作成する](data-factory-monitor-manage-using-powershell.md) | このチュートリアルでは、Azure PowerShell を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。 |
 | [チュートリアル: コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する](data-factory-copy-data-wizard-tutorial.md) | このチュートリアルでは、Data Factory でサポートされているコピー ウィザードを使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。 |
-| [チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する](data-factory-get-started-using-editor.md) | このチュートリアルでは、Azure ポータルで Data Factory Editor を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。 |
-| [チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する](data-factory-get-started-using-vs.md) | このチュートリアルでは、Visual Studio を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。 |
 
 ## データの移動
 
@@ -157,4 +153,4 @@
 
 - ラーニング パスの図: [data-factory](http://azure.microsoft.com/documentation/learning-paths/data-factory/)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

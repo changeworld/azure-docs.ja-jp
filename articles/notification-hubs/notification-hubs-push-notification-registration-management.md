@@ -4,7 +4,7 @@
 	services="notification-hubs"
 	documentationCenter=".net"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/11/2016"
+	ms.date="06/29/2016"
 	ms.author="wesmc"/>
 
 # 登録管理
@@ -329,4 +329,4 @@ SecondaryTiles ディクショナリは、Windows ストア アプリで Seconda
 
 バックエンドは、登録の更新が複数ある場合の並行処理に対応する必要があります。Service Bus は、登録管理向けにオプティミスティック同時実行制御を提供しています。HTTP レベルでは、この処理は登録管理操作に対して ETag を使用して実装されます。この機能は、Microsoft SDK から透過的に使用されます。並行処理の理由で更新が拒否された場合は、例外がスローされます。このような例外に対応し、必要に応じて更新を再試行する処理は、アプリ バックエンドの役割です。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

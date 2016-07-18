@@ -22,14 +22,14 @@
 
 * データベースのカスタム定義コレクション (詳細は後述)
 * [Elastic Database プール](sql-database-elastic-pool.md)のすべてのデータベース
-* シャード セット ([Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用して作成) 
+* シャード セット ([Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用して作成)
  
 ## ドキュメント
 
-* [エラスティック データベース ジョブ コンポーネントのインストール](sql-database-elastic-jobs-service-installation.md) 
+* [エラスティック データベース ジョブ コンポーネントのインストール](sql-database-elastic-jobs-service-installation.md)
 * [Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md)
 * [PowerShell を使用したジョブの作成と管理](sql-database-elastic-jobs-powershell.md)
-* [スケールアウトされた SQL Azure データベースの作成と管理](sql-database-elastic-jobs-getting-started.md)
+* [スケールアウトされた Azure SQL Database の作成と管理](sql-database-elastic-jobs-getting-started.md)
 
 現在、**Elastic Database ジョブ**は顧客がホストする Azure クラウド サービスです。**ジョブ**と呼ばれるアドホック タスクとスケジュールされた管理タスクを実行できます。ジョブを利用すると、Transact-SQL スクリプトで管理作業を実行することで、大規模なグループの Azure SQL Database を簡単かつ信頼できる方法で管理できます。
 
@@ -73,10 +73,10 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 
 ## Elastic Database ジョブ: エンド ツー エンド 
 1.	**エラスティック データベース ジョブ** コンポーネントをインストールします。詳細については、「[エラスティック データベース ジョブのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。インストールが失敗した場合は、「[アンインストールする方法](sql-database-elastic-jobs-uninstall.md)」をご覧ください。
-2.	カスタム定義のデータベース コレクションの作成、スケジュールの追加、結果セットの収集など、その他の機能にアクセスするには、PowerShell API を使用します。**Elastic Database プール**に対して実行するように制限されたジョブの簡単なインストール、作成、監視には、ポータルを使用します。 
+2.	カスタム定義のデータベース コレクションの作成、スケジュールの追加、結果セットの収集など、その他の機能にアクセスするには、PowerShell API を使用します。**Elastic Database プール**に対して実行するように制限されたジョブの簡単なインストール、作成、監視には、ポータルを使用します。
 3.	ジョブ実行用に暗号化された資格情報を作成し、[グループ内の各データベースにユーザー (またはロール) を追加します](sql-database-security.md)。
-4.	グループ内のすべてのデータベースに対して実行できるべき等 T-SQL スクリプトを作成します。 
-5.	「[Elastic Database ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」の手順に従い、Azure ポータルを使用してジョブを作成します。 
+4.	グループ内のすべてのデータベースに対して実行できるべき等 T-SQL スクリプトを作成します。
+5.	「[Elastic Database ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」の手順に従い、Azure ポータルを使用してジョブを作成します。
 6.	または、PowerShell スクリプトを使用します。「[PowerShell を使用した SQL Database のエラスティック データベース ジョブの作成と管理 (プレビュー)](sql-database-elastic-jobs-powershell.md)」をご覧ください。
 
 ## べき等スクリプト
@@ -111,7 +111,7 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
  
 次のコンポーネントは、連携して管理ジョブのアドホック実行を可能にする Azure クラウド サービスを作成します。コンポーネントはサブスクリプションで、セットアップ時に自動的にインストールされ、構成されます。これらはすべて同じ自動生成された名前を持っているため、サービスを識別できます。名前は一意であり、プレフィックス "edj" とその後に続くランダムに生成された 21 文字で構成されます。
 
-* **Azure Cloud Service**: エラスティック データベース ジョブ (プレビュー) は、顧客によってホストされる AzureCloud Service として配信され、要求されたタスクを実行します。ポータルから、サービスは Microsoft Azure サブスクリプションにデプロイされ、ホストされます。デプロイされる既定のサービスは、高可用性のための 2 つの worker ロールの最小値で実行されます。各 worker ロール (ElasticDatabaseJobWorker) の既定のサイズは A0 インスタンスで実行されます。料金については、「[Cloud Services 料金](https://azure.microsoft.com/pricing/details/cloud-services/)」をご覧ください。 
+* **Azure Cloud Service**: エラスティック データベース ジョブ (プレビュー) は、顧客によってホストされる AzureCloud Service として配信され、要求されたタスクを実行します。ポータルから、サービスは Microsoft Azure サブスクリプションにデプロイされ、ホストされます。デプロイされる既定のサービスは、高可用性のための 2 つの worker ロールの最小値で実行されます。各 worker ロール (ElasticDatabaseJobWorker) の既定のサイズは A0 インスタンスで実行されます。料金については、「[Cloud Services 料金](https://azure.microsoft.com/pricing/details/cloud-services/)」をご覧ください。
 * **Azure SQL Database**: このサービスは、**管理データベース**と呼ばれる Azure SQL Database を使用してすべてのジョブ メタデータを保持します。既定のサービス層は、S0 です。詳細については、「[SQL Database の料金](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 * **Azure Service Bus**: Azure Service Bus は、Azure Cloud Service 内の作業を調整します。「[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 * **Azure Storage**: Azure ストレージ アカウントは問題にさらにデバッグが必要な場合に、診断出力のログ記録を格納するために使用されます (「[Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」を参照してください)。料金については、「[Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
@@ -120,7 +120,7 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 
 1.	Azure SQL Database には、すべてのメタデータと状態データが保存される**管理データベース**が指定されています。
 2.	実行するジョブの開始と追跡のために、**ジョブ サービス**から管理データベースにアクセスされます。
-3.	次の 2 種類のロールが管理データベースと通信します。 
+3.	次の 2 種類のロールが管理データベースと通信します。
 	* コントローラー: 要求されたジョブを実行するタスクが必要なジョブを決定し、新しいジョブ タスクを作成して失敗したジョブを再試行します。
 	* ジョブ タスク実行: ジョブ タスクを実行します。
 
@@ -138,8 +138,8 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 
 1.	ポータルまたは PowerShell API を使用して、ジョブを**管理データベース**に挿入します。ジョブから、特定の資格情報を使用してデータベース グループに対して Transact-SQL スクリプトの実行が要求されます。
 2.	コントローラーで、新しいジョブが識別されます。スクリプトを分割し、グループのデータベースを更新するジョブ タスクが作成され、実行されます。最後に、ジョブを展開し、新しい子ジョブを作成する新しいジョブが作成され、実行されます。各子ジョブは、グループ内の個々のデータベースに対して Transact-SQL スクリプトを実行するように指定されています。
-3.	コントローラーで、作成された子ジョブが識別されます。コントローラーで、ジョブごとにデータベースに対してスクリプトを実行するジョブ タスクが作成され、トリガーされます。 
-4.	すべてのジョブのタスクが完了すると、コントローラーのジョブの状態は完了に更新されます。ジョブ実行中の任意の時点で、ジョブ実行の現在の状態を確認する PowerShell API を使用できます。PowerShell API から返されるすべての時刻は、UTC 形式です。必要に応じて、取り消し要求を開始してジョブを停止できます。 
+3.	コントローラーで、作成された子ジョブが識別されます。コントローラーで、ジョブごとにデータベースに対してスクリプトを実行するジョブ タスクが作成され、トリガーされます。
+4.	すべてのジョブのタスクが完了すると、コントローラーのジョブの状態は完了に更新されます。ジョブ実行中の任意の時点で、ジョブ実行の現在の状態を確認する PowerShell API を使用できます。PowerShell API から返されるすべての時刻は、UTC 形式です。必要に応じて、取り消し要求を開始してジョブを停止できます。
 
 ## 次のステップ
 [コンポーネントをインストールし](sql-database-elastic-jobs-service-installation.md)、[データベース グループ内の各データベースにログインを作成し、追加します](sql-database-security.md)。ジョブの作成と管理の詳細については、「[エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」を参照してください。「[Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md)」も参照してください。
@@ -152,4 +152,4 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

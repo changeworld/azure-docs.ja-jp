@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/10/2016" 
+	ms.date="06/30/2016" 
 	ms.author="tomfitz"/>
 
 # Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
@@ -22,13 +22,16 @@
 - [PowerShell](resource-group-template-deploy.md)
 - [Azure CLI](resource-group-template-deploy-cli.md)
 - [ポータル](resource-group-template-deploy-portal.md)
-- [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 - [REST API](resource-group-template-deploy-rest.md)
+- [Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
+- [ノード](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
+- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
+- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
 
 
 このトピックでは、[Azure ポータル](https://portal.azure.com)と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースをデプロイする方法について説明します。リソース管理の詳細については、「[ポータルを使用した Azure リソースの管理](./azure-portal/resource-group-portal.md)」を参照してください。
 
-現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。それらがサポートされていないサービスの場合、[クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状態については、「[Azure ポータルの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/)」を参照してください。
+現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。それらがサポートされていないサービスの場合、[クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状態については、[Azure ポータルで利用できるサービスの表](https://azure.microsoft.com/features/azure-portal/availability/)を参照してください。
 
 ## Create resource group
 
@@ -84,7 +87,7 @@
 
     ![テンプレートの作成](./media/resource-group-template-deploy-portal/show-custom-template.png)
 
-    エディターで、デプロイするリソースを定義する JSON 構文を追加します。完了したら、**[保存]** を選択します 。JSON 構文の作成に関するガイダンスについては、「 [Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」をご覧ください。
+    エディターで、デプロイするリソースを定義する JSON 構文を追加します。完了したら、**[保存]** を選択します 。JSON 構文の作成に関するガイダンスについては、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」をご覧ください。
 
     ![テンプレートの編集](./media/resource-group-template-deploy-portal/edit-template.png)
 
@@ -94,7 +97,7 @@
 
     エディターで、選択したテンプレートを表示できます。
 
-5. その他の値をすべて指定してから、**[作成]** を選択してテンプレートをデプロイします。
+5. その他の値をすべて指定してから、**[作成] ** を選択してテンプレートをデプロイします。
 
     ![テンプレートのデプロイ](./media/resource-group-template-deploy-portal/create-custom-deploy.png)
 
@@ -117,7 +120,7 @@
 ## 次のステップ
 
 - 監査ログの表示については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
-- デプロイ エラーのトラブルシューティングの詳細については、[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
+- デプロイ エラーのトラブルシューティングの詳細については、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
 - デプロイまたはリソース グループからテンプレートを取得するには、「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

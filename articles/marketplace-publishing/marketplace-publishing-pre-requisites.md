@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="Azure"
   ms.workload="na"
-  ms.date="04/07/2016"
+  ms.date="06/29/2016"
   ms.author="hascipio; v-divte"/>
 
 # Azure Marketplace 向けプラン作成の一般的な前提条件
@@ -46,13 +46,11 @@ Microsoft で販売者アカウントを登録する方法の詳細な手順に�
 Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの「販売元」の国からのものである必要があります。この制限は、支払いおよび課税上の理由から生じます。「販売元」の国の範囲は今後拡大される予定です。完全な一覧については、[Azure Marketplace 参加ポリシー](http://go.microsoft.com/fwlink/?LinkID=526833)のセクション 1b を参照してください。
 
 ## 次のステップ
-次は、プランの種類ごとの技術的な前提条件を紹介します。Azure Marketplace 向けに作成するプランの種類に合わせて、記事へのリンクをクリックしてください。
-
-| 仮想マシン イメージ | 開発者サービス | データ サービス | ソリューション テンプレート |
-|-----|-----|-----|-----|
-| [VM の技術的な前提条件](marketplace-publishing-vm-image-creation-prerequisites.md) | プライベート プレビュー | [データ サービスの技術的な前提条件](marketplace-publishing-data-service-creation-prerequisites.md) | [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md) |
+技術面以外の前提条件を満たしたら、プランに固有の技術的な前提条件を満たす必要があります。Azure Marketplace 向けに作成するプランの種類に合わせて、記事へのリンクをクリックしてください。
+- [VM の技術的な前提条件](marketplace-publishing-vm-image-creation-prerequisites.md)
+- [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md)
 
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

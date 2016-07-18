@@ -6,7 +6,7 @@
 	authors="cynthn"
 	manager="timlt"
 	editor=""
-	tags="azure-resource-manager,azure-service-management"/>
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines-windows"
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="infrastructure-services"
-	ms.date="03/11/2016"
+	ms.date="07/06/2016"
 	ms.author="cynthn"/>
 
 # リソース マネージャーで Windows 仮想マシンを作成するさまざまな方法
@@ -47,4 +47,4 @@ Visual Studio を使用し、Visual Studio と Azure SDK の Azure Tools で VM 
 
 [Azure Tools for Visual Studio](https://www.visualstudio.com/features/azure-tools-vs)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

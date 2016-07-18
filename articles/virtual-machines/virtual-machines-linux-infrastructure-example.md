@@ -36,7 +36,7 @@ Adventure Works Cycles では、以下の項目で構成されるオンライン
 	- フロント エンド サブネット: Web サーバー用
 	- バック エンド サブネット: アプリケーション サーバー、MongoDB クラスター、およびドメイン コントローラー用
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/example-tiers.png)
+![アプリケーション インフラストラクチャのさまざまなレベルの図](./media/virtual-machines-common-infrastructure-service-guidelines/example-tiers.png)
 
 セキュリティで保護された着信 Web トラフィックについて、顧客がオンライン ストアを閲覧する際に Web サーバー間で負荷を分散する必要があります。Web サーバーからの HTTP 要求の形式での注文処理トラフィックについては、アプリケーション サーバー間で負荷を分散する必要があります。さらに、インフラストラクチャは高可用性対応で設計する必要があります。
 
@@ -115,7 +115,7 @@ Adventure Works Cycles は、各 Azure VM に対して次の名前を決定し�
 
 完成すると次のような構成になります。
 
-![](./media/virtual-machines-common-infrastructure-service-guidelines/example-config.png)
+![Azure にデプロイされた最終的なアプリケーション インフラストラクチャ](./media/virtual-machines-common-infrastructure-service-guidelines/example-config.png)
 
 この構成には次のものが含まれます。
 
@@ -132,4 +132,4 @@ Adventure Works Cycles は、各 Azure VM に対して次の名前を決定し�
 
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -46,6 +46,7 @@ Stretch Database の既存のデータベースを設定するには、SQL Serve
 ```
 EXEC sp_configure 'remote data archive' , '1';
 GO
+
 RECONFIGURE;
 GO
 ```
@@ -62,6 +63,10 @@ GO
 1.  開始する前に、Stretch Database が移行するデータの既存の Azure サーバーを選択するか、新しい Azure サーバーを作成します。
 
 2.  Azure サーバーで、SQL Server とリモート サーバーの通信を可能にするファイアウォール規則を SQL Server の IP アドレス範囲で作成します。
+
+    SQL Server Management Studio (SSMS) のオブジェクト エクスプローラーから Azure サーバーへの接続を試みることで、必要な値を簡単に見つけて、ファイアウォール規則の作成することができます。SSMS では、ルールを作成するときに便利な次のダイアログ ボックスが開きます。このダイアログ ボックスには、必要な IP アドレスの値が既に入力されています。
+
+	![SSMS でのファイアウォール規則の作成][FirewallRule]
 
 3.  Stretch Database の SQL Server データベースを構成するには、データベースにデータベース マスター キーを与える必要があります。データベース マスター キーにより、Stretch Database がリモート データベースの接続に使用する資格情報が守られます。新しいデータベース マスター キーを作成する例を次に示します。
 
@@ -120,9 +125,9 @@ GO
     ```
 
 ## 次のステップ
--   [テーブルの Stretch Database を有効にして](sql-server-stretch-database-enable-table.md)追加テーブルを有効にします。
+-   [テーブルの Stretch Database を有効](sql-server-stretch-database-enable-table.md)にして追加テーブルを有効にします。
 
--   [Stretch Database を監視して](sql-server-stretch-database-monitor.md)データ移行の状態を確認します。
+-   [Stretch Database を監視](sql-server-stretch-database-monitor.md)してデータ移行の状態を確認します。
 
 -   [Stretch Database を一時停止し、再開します。](sql-server-stretch-database-pause.md)
 
@@ -136,4 +141,6 @@ GO
 
 [ALTER DATABASE SET のオプション (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+[FirewallRule]: ./media/sql-server-stretch-database-enable-database/firewall.png
+
+<!---HONumber=AcomDC_0706_2016-->

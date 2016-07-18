@@ -84,11 +84,11 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 	![Select Azure AD Single Sign-On][7]
 
-	> [AZURE.NOTE] さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)してください。
+	> [AZURE.NOTE] さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)してください。
 
 4. **[アプリケーション設定の構成]** ページで **[サインオン URL]** に入力します。その場合、次の形式を使用して Salesforce ドメインの URL を入力します。
  - エンタープライズ アカウント: `https://<domain>.my.salesforce.com`
- - 開発者アカウント: `https://<domain>-dev-ed.my.salesforce.com` 
+ - 開発者アカウント: `https://<domain>-dev-ed.my.salesforce.com`
 
 	![自分のサインオン URL を入力][8]
 
@@ -216,7 +216,7 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 		![Confirm the assignment.][29]
 
-		> [AZURE.IMPORTANT] Salesforce の**開発者**環境向けにプロビジョニングしている場合は、プロファイルごとに利用できるライセンスの数がごく少なくなります。 そのため、4,999 個のライセンスを利用できる **Chatter Free User** プロファイル向けにユーザーをプロビジョニングすることをお勧めします。
+		> [AZURE.IMPORTANT] If you are provisioning to a Salesforce **developer** environment, you will have a very limited number of licenses available for each profile. Therefore, it's best to provision users to the **Chatter Free User** profile, which has 4,999 licenses available.
 
 4. シングル サインオンの設定をテストするために、アクセス パネル ([https://myapps.microsoft.com](https://myapps.microsoft.com/)) を開き、テスト アカウントにサインインして **[Salesforce]** をクリックします。
 
@@ -256,4 +256,4 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 [28]: ./media/active-directory-saas-salesforce-tutorial/assign-confirm.png
 [29]: ./media/active-directory-saas-salesforce-tutorial/assign-sf-profile.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

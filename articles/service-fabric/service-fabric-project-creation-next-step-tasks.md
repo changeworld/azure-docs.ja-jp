@@ -47,7 +47,7 @@ Azure Service Fabric アプリケーションが作成されました。この�
 アクター プロジェクトは、アクターの状態に確実に保持されるカウンターの値を取得および設定するメソッドを提供します。インターフェイス プロジェクトは、その他のサービスでアクターを呼び出すために使用できるインターフェイスを提供します。
 
 ### ステートレス Web API
-ステートレス Web API プロジェクトでは、外部クライアントに対してアプリケーションを開くときに使用できる基本的な Web サービスを提供します。プロジェクトの構造の詳細については、「[はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi)」をご覧ください。
+ステートレス Web API プロジェクトでは、外部クライアントに対してアプリケーションを開くときに使用できる基本的な Web サービスを提供します。プロジェクトの構造の詳細については、「[はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)」をご覧ください。
 
 ## 次のステップ
 ### Azure クラスターの作成
@@ -80,4 +80,4 @@ Service Fabric アプリケーション向けに継続的な統合プロセス�
 [reliable-services-webapi]: service-fabric-reliable-services-communication-webapi.md
 [app-upgrade-tutorial]: service-fabric-application-upgrade-tutorial.md
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0706_2016-->

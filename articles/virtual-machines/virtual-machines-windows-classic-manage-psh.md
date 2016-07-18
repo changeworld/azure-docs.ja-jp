@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="03/31/2016"
+   ms.date="07/01/2016"
    ms.author="kasing"/>
 
 # Azure PowerShell を使用した仮想マシンの管理
@@ -95,4 +95,4 @@ Azure で Windows ベースの仮想マシンを新たに作成するには、�
 - 既存の負荷分散セットのメンバーとしての設定。
 - 静的 IP アドレス。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

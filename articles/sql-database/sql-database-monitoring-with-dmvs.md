@@ -4,7 +4,7 @@
    services="sql-database"
    documentationCenter=""
    authors="carlrabeler"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""
    tags=""/>
 
@@ -14,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="01/22/2016"
-   ms.author="rickbyh"/>
+   ms.date="07/05/2016"
+   ms.author="carlrab"/>
 
 # 動的管理ビューを使用した Azure SQL Database の監視
 
@@ -42,7 +42,7 @@ SQL Database で、動的管理ビューに対してクエリを実行するに�
 次のクエリは、データベースのサイズ (MB 単位) を返します。
 
 ```
--- データベースのサイズを計算します。 
+-- Calculates the size of the database.
 SELECT SUM(reserved_page_count)*8.0/1024
 FROM sys.dm_db_partition_stats;
 GO
@@ -61,7 +61,7 @@ GO
 
 ## 接続の監視
 
-[sys.dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) ビューを使用して、特定の Azure SQL Database サーバーに対して確立されている接続についての情報と、各接続の詳細を取得できます。また、[sys.dm\_exec\_sessions](https://msdn.microsoft.com/library/ms176013.aspx) ビューは、すべてのアクティブなユーザー接続と内部タスクについての情報を取得する場合に役立ちます。次のクエリは、現在の接続に関する情報を取得します。
+[sys.dm\_exec\_connections](https://msdn.microsoft.com/library/ms181509.aspx) ビューを使用して、特定の Azure SQL Database サーバーに対して確立されている接続についての情報と、各接続の詳細を取得できます。また、[sys.dm\_exec\_sessions](https://msdn.microsoft.com/library/ms176013.aspx) ビューは、すべてのアクティブなユーザー接続と内部タスクについての情報を取得する場合に役立ちます。次のクエリは、現在の接続に関する情報を取得します。
 
 ```
 SELECT
@@ -76,7 +76,7 @@ JOIN sys.dm_exec_sessions AS s
 WHERE c.session_id = @@SPID;
 ```
 
-> [AZURE.NOTE] **sys.dm_exec_requests** と **sys.dm_exec_sessions views** を実行するときに、ユーザーがデータベースに対するアクセス許可 **VIEW DATABASE STATE** を持っていると、データベースで実行中のすべてのセッションがユーザーに表示されます。ユーザーがアクセス許可を持っていない場合は、現在のセッションのみが表示されます。
+> [AZURE.NOTE] **sys.dm\_exec\_requests** と **sys.dm\_exec\_sessions views** を実行するときに、ユーザーがデータベースに対するアクセス許可 **VIEW DATABASE STATE** を持っていると、データベースで実行中のすべてのセッションがユーザーに表示されます。ユーザーがアクセス許可を持っていない場合は、現在のセッションのみが表示されます。
 
 ## クエリのパフォーマンスの監視
 
@@ -109,7 +109,7 @@ ORDER BY 2 DESC;
 
 ### クエリ プランの監視
 
-クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。次の例では、[sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) ビューを使用して、累積 CPU 時間が最も多いクエリを特定します。
+クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。次の例では、[sys.dm\_exec\_query\_stats](https://msdn.microsoft.com/library/ms189741.aspx) ビューを使用して、累積 CPU 時間が最も多いクエリを特定します。
 
 ```
 SELECT
@@ -135,4 +135,4 @@ ORDER BY highest_cpu_queries.total_worker_time DESC;
 
 [SQL Database の概要](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0706_2016-->

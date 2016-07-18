@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/08/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Windows Server 仮想マシンの管理対象ドメインへの参加
@@ -134,4 +134,4 @@ Windows Server 仮想マシンを AAD-DS 管理対象ドメインに参加させ
 
 - ファースト ステップ ガイドで指定されているとおり、パスワード同期が完了するまで十分な時間待機します。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

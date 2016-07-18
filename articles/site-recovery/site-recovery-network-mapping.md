@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="02/22/2016"
+	ms.date="07/06/2016"
 	ms.author="raynew"/>
 
 
@@ -123,4 +123,4 @@ VMNetwork1-Chicago のネットワークのマッピングが変更される。 
 
 ネットワーク マッピングに関する理解が深まったところで、[Site Recovery をデプロイしてみましょう](site-recovery-best-practices.md)。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0706_2016-->

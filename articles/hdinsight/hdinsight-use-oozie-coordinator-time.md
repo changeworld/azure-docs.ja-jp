@@ -86,7 +86,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 	<tr><td>SQL データベース名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先となる Azure SQL データベース。</td></tr>
 	</table>
 
-	> [AZURE.NOTE] 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。SQL Database の作成方法とファイアウォール ルールの構成方法については、「[SQL Database の作成と構成][sqldatabase-create-configure]」を参照してください。
+	> [AZURE.NOTE] 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。SQL データベースの作成とファイアウォール ルールの構成手順については、「[SQL データベースの作成と構成][sqldatabase-get-started]」を参照してください。
 
 
 > [AZURE.NOTE] テーブルに値を入力します。そうしておくと、このチュートリアルを読み進める際に役に立ちます。
@@ -257,7 +257,7 @@ HDInsight クラスターをプロビジョニングするときに、HDFS と�
 
 	wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.windows.net/<path>/<filename>
 
-> [AZURE.NOTE] HDInsight クラスター バージョン 3.0 では、**wasb://* 構文のみがサポートされます。旧バージョンの **asv://* 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.0 クラスターではサポートされません。
+> [AZURE.NOTE] HDInsight クラスター バージョン 3.0 では、*wasb://* 構文のみがサポートされます。旧バージョンの *asv://* 構文は、HDInsight 2.1 と 1.6 クラスターではサポートされていますが、HDInsight 3.0 クラスターではサポートされません。
 
 > [AZURE.NOTE] wasb:// パスは仮想パスです。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 
@@ -717,7 +717,6 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 [hdinsight-develop-java-mapreduce]: hdinsight-develop-deploy-java-mapreduce-linux.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
 
-[sqldatabase-create-configue]: ../sql-database-create-configure.md
 [sqldatabase-get-started]: ../sql-database/sql-database-get-started.md
 
 [azure-management-portal]: https://portal.azure.com/
@@ -741,4 +740,4 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

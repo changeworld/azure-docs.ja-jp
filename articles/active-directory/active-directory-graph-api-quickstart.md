@@ -20,7 +20,7 @@
 
 # Azure AD Graph API のクイック スタート
 
-Azure Active Directory (AD) Graph API を使用すると、OData REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。アプリケーションでは、Graph API を使用して、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。たとえば、Graph API を使用して、新しいユーザーの作成、ユーザーのプロパティの表示または更新、ユーザーのパスワードの変更、ロールベースでアクセスするためのグループ メンバーシップの確認、ユーザーの無効化または削除を行うことができます。Graph API の機能とアプリケーション シナリオの詳細については、「[Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」と「[Azure AD Graph API の前提条件](https://msdn.microsoft.com/library/hh974476(Azure.100).aspx)」を参照してください。
+Azure Active Directory (AD) Graph API を使用すると、OData REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。アプリケーションでは、Graph API を使用して、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。たとえば、Graph API を使用して、新しいユーザーの作成、ユーザーのプロパティの表示または更新、ユーザーのパスワードの変更、ロールベースでアクセスするためのグループ メンバーシップの確認、ユーザーの無効化または削除を行うことができます。Graph API の機能とアプリケーション シナリオの詳細については、「[Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」と「[Azure AD Graph API の前提条件](https://msdn.microsoft.com/library/hh974476.aspx)」を参照してください。
 
 > [AZURE.IMPORTANT] Azure AD Graph API の機能は、[Microsoft Graph](https://graph.microsoft.io/) からも利用できます。Microsoft Graph は、Outlook、OneDrive、OneNote、Planner、Office Graph などの他の Microsoft サービスからの API を含む統合 API であり、単一のエンドポイントから単一のアクセス トークンを使用してアクセスできます。
 
@@ -120,4 +120,4 @@ Graph によって公開される Azure AD エンティティと型の詳細と�
 - [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) の詳細
 - [Azure AD Graph API のアクセス許可スコープ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)の詳細については、こちらを参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0706_2016-->

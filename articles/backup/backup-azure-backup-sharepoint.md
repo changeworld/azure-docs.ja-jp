@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2015"
+	ms.date="07/04/2016"
 	ms.author="giridham;jimpark"/>
 
 
@@ -34,7 +34,7 @@ SharePoint ファームを Azure にバックアップする前に、確認す�
 続行する前に、[Microsoft Azure Backup を使用してワークロードを保護するための前提条件](backup-azure-dpm-introduction.md#prerequisites)がすべて満たされていることを確認します。前提条件を満たすための作業として、バックアップ コンテナーの作成、コンテナー資格情報のダウンロード、Azure Backup エージェントのインストール、コンテナーへの DPM/Azure Backup Server の登録などのがあります。
 
 ### DPM エージェント
-DPM エージェントを、SharePoint を実行するサーバー、SQL Server を実行するサーバー、および SharePoint ファームを構成するその他のすべてのサーバーにインストールする必要があります。保護エージェントのセットアップ方法の詳細については、「[保護エージェントの設定](https://technet.microsoft.com/library/hh758034(v=sc.12).aspx)」をご覧ください。唯一の例外は、1 台の Web フロント エンド (WFE) サーバーにだけエージェントをインストールすることです。保護のエントリ ポイントとして使用するためにエージェントをインストールする必要がある WFE サーバーは 1 台だけです。
+DPM エージェントを、SharePoint を実行するサーバー、SQL Server を実行するサーバー、および SharePoint ファームを構成するその他のすべてのサーバーにインストールする必要があります。保護エージェントのセットアップ方法の詳細については、「保護エージェントの設定(https://technet.microsoft.com/library/hh758034(v=sc.12).aspx))」をご覧ください。唯一の例外は、1 台の Web フロント エンド (WFE) サーバーにだけエージェントをインストールすることです。保護のエントリ ポイントとして使用するためにエージェントをインストールする必要がある WFE サーバーは 1 台だけです。
 
 ### SharePoint ファーム
 DPM フォルダーが存在するボリュームには、ファーム内の 1,000 万項目ごとに 2 GB 以上の容量が必要です。この容量はカタログ生成のために必要です。DPM が特定の項目 (サイト コレクション、サイト、リスト、ドキュメント ライブラリ、フォルダー、個々のドキュメント、リスト項目) を回復できるよう、カタログ生成では各コンテンツ データベースに含まれる URL のリストが作成されます。DPM 管理者コンソールの**回復**タスク領域の [回復可能な項目] ウィンドウで、URL の一覧を確認できます。
@@ -233,4 +233,4 @@ Q: SharePoint が SQL AlwaysOn を使用して構成されている場合、Shar
 - 「[System Center 2012 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860415.aspx)」をご覧ください
 - 「[System Center 2012 SP1 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860394.aspx)」をご覧ください
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

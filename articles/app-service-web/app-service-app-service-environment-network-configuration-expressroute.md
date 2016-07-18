@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/27/2016" 
+	ms.date="07/01/2016" 
 	ms.author="stefsch"/>
 
 # ExpressRoute を使用した App Service 環境のネットワーク構成の詳細 
@@ -21,7 +21,7 @@
 ## 概要 ##
 顧客は、[Azure ExpressRoute][ExpressRoute] 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。この[仮想ネットワーク][virtualnetwork] インフラストラクチャのサブネットの中に App Service 環境を作成できます。App Service 環境で実行されるアプリは、ExpressRoute 接続でのみアクセスできる、バックエンド リソースに対する安全な接続を確立できます。
 
-**注:** "v2"仮想ネットワーク内で App Service 環境を作成することはできません。App Service 環境は現在、RFC1918 アドレス空間 (プライベート アドレス) を使用しているクラシック "v1" 仮想ネットワークでのみサポートされています。
+**注:** "v2"仮想ネットワーク内で App Service 環境を作成することはできません。2016 年 6 月に行われた直近の変更で、パブリック アドレス範囲または RFC1918 アドレス空間 (つまりプライベート アドレス) のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -140,4 +140,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

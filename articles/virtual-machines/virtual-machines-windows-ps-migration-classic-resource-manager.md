@@ -27,7 +27,6 @@
 
 - [サポートされていない構成または機能の一覧](virtual-machines-windows-migration-classic-resource-manager.md)をご確認ください。サポートされていない構成または機能を使用する仮想マシンがある場合、構成または機能のサポートが発表されるまで待つことをお勧めします。または、必要に応じて、その機能を削除するか、その構成を外して、移行を可能にすることもできます。
 -	インフラストラクチャとアプリケーションをデプロイする自動化スクリプトを今お持ちの場合は、これらのスクリプトを移行に使用して、同様のテスト設定を作成してみてください。または、Azure ポータルを使用してサンプル環境をセットアップすることもできます。
-- このサービスはパブリック プレビュー段階なので、移行用のテスト環境は、必ず運用環境から分離してください。また、テスト環境と運用環境で、ストレージ アカウント、仮想ネットワークなどのリソースが混在しないようにしてください。
 
 ## 手順 2: Azure PowerShell の最新バージョンをインストールする
 
@@ -35,7 +34,7 @@
 
 詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com//blog/azps-1-0/)」を参照してください。
 
-## 手順 3: サブスクリプションを設定し、移行のパブリック プレビューにサインアップする
+## 手順 3: サブスクリプションを設定し、移行にサインアップする
 
 まず PowerShell プロンプトを開始します。移行のシナリオの場合、クラシックと Resource Manager の両方に合わせて環境をセットアップする必要があります。
 
@@ -47,13 +46,17 @@ Resource Manager モデルの自分のアカウントにサインインします
 
 	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
 
-現在のセッション用の Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+現在のセッション用の Azure サブスクリプションを設定します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
 	$subscr="<subscription name>"
 	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
 
-次のコマンドを使用して、パブリック プレビューにサインアップします。
+>[AZURE.NOTE] 登録は 1 回限りの手順ですが、移行を試みる前に実行する必要があります。登録を行わないと、次のエラー メッセージが表示されます
 
+>	*BadRequest : Subscription is not registered for migration.* 
+
+移行リソース プロバイダーに登録するには、次のコマンドを使用します。
+	
 	Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 
 登録が完了するまで 5 分間お待ちください。承認の状態を確認するには、次のコマンドを使用します。RegistrationState が `Registered` であることを確認してから続行してください。
@@ -68,7 +71,7 @@ Resource Manager モデルの自分のアカウントにサインインします
 
 	Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
 
-現在のセッション用の Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+現在のセッション用の Azure サブスクリプションを設定します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
 	$subscr="<subscription name>"
 	Get-AzureSubscription –SubscriptionName $subscr | Select-AzureSubscription
@@ -133,10 +136,27 @@ PowerShell または Azure ポータルを使用して、準備した仮想マ�
 
 	Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 
+### ストレージ アカウントを移行する
+
+仮想マシンの移行が完了したら、ストレージ アカウントを移行することをお勧めします。
+
+次のコマンドを使用して、移行対象のストレージ アカウントを準備します
+
+	$storageAccountName = "storagename"
+	Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
+
+PowerShell または Azure ポータルを使用して、準備したストレージ アカウントの構成を確認します。移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
+
+	Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
+
+準備した構成が正しい場合は、次に進み、次のコマンドを使用してリソースをコミットできます。
+
+	Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
+
 ## 次のステップ
 
 - [プラットフォームでサポートされているクラシックから Resource Manager への IaaS リソースの移行](virtual-machines-windows-migration-classic-resource-manager.md)
 - [プラットフォームでサポートされているクラシックから Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 - [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

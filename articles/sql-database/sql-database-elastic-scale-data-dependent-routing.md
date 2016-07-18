@@ -18,7 +18,7 @@
 
 #データ依存ルーティング
 
-**データ依存ルーティング**は、クエリ内のデータを使用して、要求を適切なデータベースにルーティングできる機能です。これは、シャード化されたデータベースを操作するときの基本的なパターンです。特にシャーディング キーがクエリの一部でない場合は、要求コンテキストを使用して要求をルーティングすることもできます。データ依存ルーティングを使用したアプリケーションで、特定のクエリまたはトランザクションがそれぞれアクセスするデータベースは、要求ごとに 1 つに制限されています。SQL Azure Database Elastic ツールでは、このルーティングは ADO.NET アプリケーションの **[ShardMapManager クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)**で実行します。
+**データ依存ルーティング**は、クエリ内のデータを使用して、要求を適切なデータベースにルーティングできる機能です。これは、シャード化されたデータベースを操作するときの基本的なパターンです。特にシャーディング キーがクエリの一部でない場合は、要求コンテキストを使用して要求をルーティングすることもできます。データ依存ルーティングを使用したアプリケーションで、特定のクエリまたはトランザクションがそれぞれアクセスするデータベースは、要求ごとに 1 つに制限されています。Azure SQL Database Elastic ツールでは、このルーティングは ADO.NET アプリケーションの **[ShardMapManager クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)**で実行します。
 
 アプリケーションは、シャード化された環境の各種データ スライスに関連付けられた、さまざまな接続文字列または DB の場所を追跡する必要はありません。代わりに [Shard Map Manager](sql-database-elastic-scale-shard-map-management.md) が正しいデータベースへの接続処理を必要に応じて管理します。これは、シャード マップのデータとアプリケーションの要求の対象であるシャーディング キーの値に基づいて行われます(通常、このキーは、データベース要求の基本的なパラメーターである、*customer\_id*、*tenant\_id*、*date\_key*、または他の特定の識別子です)。
 
@@ -52,7 +52,7 @@
 	)
 
 
-* **key** パラメーターは、要求に対する適切なデータベースを特定するためのシャード マップへのルックアップ キーとして使用されます。 
+* **key** パラメーターは、要求に対する適切なデータベースを特定するためのシャード マップへのルックアップ キーとして使用されます。
 
 * **connectionString** は、必要な接続を行うためのユーザーの資格情報のみを渡すために使用されます。この *connectionString* には、データベース名またはサーバー名は含まれません。メソッドがデータベースとサーバーを特定するために **ShardMap** を使用するためです。
 
@@ -85,11 +85,11 @@
 
 **OpenConnectionForKey** メソッドは、正しいデータベースに対し、既に開いている接続を新たに返します。この方法で接続した場合も引き続き ADO.Net 接続プールの利点を最大限に活用できます。トランザクションと要求を満たすことができるのが 1 回に 1 つのシャードである限り、ADO.Net を既に使用しているアプリケーションで必要な変更はこれだけです。
 
-アプリケーションが ADO.Net との非同期プログラミングを使用する場合は、**[OpenConnectionForKeyAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)** メソッドも使用できます。その動作は、ADO.Net の **[Connection.OpenAsync](https://msdn.microsoft.com/library/hh223688(v=vs.110).aspx))** メソッドと同等のデータ依存型ルーティングです。
+アプリケーションが ADO.Net との非同期プログラミングを使用する場合は、**[OpenConnectionForKeyAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)** メソッドも使用できます。その動作は、ADO.Net の **[Connection.OpenAsync] (https://msdn.microsoft.com/library/hh223688(v=vs.110).aspx)** メソッドと同等のデータ依存型ルーティングです。
 
 ## 一時的な障害処理との統合 
 
-クラウドでのデータ アクセス アプリケーション開発のベスト プラクティスは、一時的な障害をアプリケーションで確実に捕捉し、エラーがスローされる前に操作を確実にリトライすることです。クラウド アプリケーションにおける一時的な障害処理の詳細については、[一時的な障害処理に関するページ](https://msdn.microsoft.com/library/dn440719(v=pandp.60).aspx)) を参照してください。
+クラウドでのデータ アクセス アプリケーション開発のベスト プラクティスは、一時的な障害をアプリケーションで確実に捕捉し、エラーがスローされる前に操作を確実にリトライすることです。クラウド アプリケーションにおける一時的な障害処理の詳細については、一時的な障害処理に関するページ (https://msdn.microsoft.com/library/dn440719(v=pandp.60).aspx)) を参照してください。
  
 一時的な障害処理は、データ依存ルーティングのパターンと自然に共存できます。そのための主な要件は、データ依存ルーティング接続を取得した **using** ブロックを含めたデータ アクセス要求全体をリトライすることです。上記の例は、次のように書き換えることができます (変更箇所が強調表示されています)。
 
@@ -133,4 +133,4 @@ int newPersonId = 4321;
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="07/06/2016"
 	ms.author="genli"/>
 
 # Azure 管理者ロールを追加または変更する方法
@@ -48,7 +48,7 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 
 	**注**
 	- 所有者ロールには、共同管理者と同じアクセス権が付与されます。このロールには、[Azure アカウント センター](https://account.windowsazure.com/subscriptions)へのアクセス権がありません。
-	- [Azure ポータル](https://portal.azure.com)を通じて追加した所有者は、[Azure クラシック ポータル](https://manage.windowsazure.com)でサービスを管理できません。  
+	- [Azure ポータル](https://portal.azure.com)を通じて追加した所有者は、[Azure クラシック ポータル](https://manage.windowsazure.com)でサービスを管理できません。
 
 5. 所有者として追加するユーザーの電子メール アドレスを入力し、ユーザーをクリックしてから、**[選択]** をクリックします。
 
@@ -69,7 +69,7 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 次の電子メール アドレスを共同管理者として追加できます。
 
 * **Microsoft アカウント** (旧 Windows Live ID) </br> Microsoft アカウントを使用して、Outlook (Hotmail)、Skype (MSN)、OneDrive、Windows Phone、Xbox LIVE などのすべてのコンシューマー向け Microsoft 製品とクラウド サービスにサインインすることができます。
-* **組織アカウント**</br> 組織アカウントとは、Azure Active Directory で作成したアカウントです。組織アカウントのアドレスは、user@&lt;your domain&gt;.onmicrosoft.com のような形式です。
+* **組織アカウント**</br> 組織アカウントとは、Azure Active Directory で作成したアカウントです。組織アカウントのアドレスは、user@&lt;your domain&gt;.onmicrosoft.com のようになります。
 
 ### 規則や制限
 
@@ -104,14 +104,14 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 
 ## アカウント管理者の変更方法
 
-Azure アカウントの所有権を別のアカウントに譲渡するには、「[Azure サブスクリプションの譲渡](billing-subscription-transfer.md)」を参照してください。
+Azure アカウントの所有権を別のアカウントに譲渡するには、「[Azure サブスクリプションの所有権の譲渡](billing-subscription-transfer.md)」を参照してください。
 
 ## 次のステップ
 
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](./active-directory/active-directory-understanding-resource-access.md)」を参照してください。
 
-* Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](./active-directory/active-directory-how-subscriptions-associated directory.md)」を参照してください。
+* Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](./active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
 * Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure Active Directory の管理者ロールの割り当て](./active-directory/active-directory-assign-admin-roles.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0706_2016-->

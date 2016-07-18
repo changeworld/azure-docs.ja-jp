@@ -14,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="04/06/2016"
-   ms.author="iainfour;memccror"/>
+   ms.date="07/05/2016"
+   ms.author="memccror"/>
 
 # Azure で Linux 仮想マシンにタグを付ける方法
 
@@ -25,7 +25,7 @@
 
 ## Azure CLI を使用してタグを付ける
 
-Azure CLI で既に作成されているリソースにも、タグを付けることができます。この場合は、[Azure CLI 環境][]を設定します。Azure CLI でサブスクリプションにログインし、Resource Manager モードに切り替えます (`azure config mode arm`)。
+最初に、[Azure CLI をインストールおよび構成](../xplat-cli-azure-resource-manager.md)し、Resource Manager モードであることを確認します (`azure config mode arm`)。
 
 このコマンドを使用すると、タグを含め、指定した仮想マシンのすべてのプロパティを表示できます。
 
@@ -53,10 +53,10 @@ Azure CLI を使用して新しい VM タグを追加するには、タグ パ�
 
 
 
-[Azure CLI 環境]: ./xplat-cli-azure-resource-manager.md
+[Azure CLI environment]: ./xplat-cli-azure-resource-manager.md
 [Azure Resource Manager の概要]: ../resource-group-overview.md
 [タグを使用した Azure リソースの整理]: ../resource-group-using-tags.md
 [Microsoft Azure の課金内容の確認]: ../billing-understand-your-bill.md
 [Microsoft Azure リソースの消費を把握する]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="06/29/2016"
 	ms.author="curtand"/>
 
-# Azure Active Directory (Azure AD) の管理者ロールの割り当て
+# Azure Active Directory での管理者ロールの割り当て
 
-会社の規模によっては、さまざまな役割を果たす複数の管理者を選任することができます。これらの管理者は、Azure ポータルまたは Azure クラシック ポータルでさまざまな機能にアクセスでき、ロールに応じて、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。
-
-管理者ロールを Office 365 ポータルと Azure クラシック ポータルのどちらで割り当てたのか、Windows PowerShell 用 Azure AD モジュールを使用して割り当てたのかに関係なく、管理者ロールが割り当てられたユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持つということを理解しておくことが重要です。
+Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別々の管理者を指定することができます。これらの管理者は、Azure ポータルまたは Azure クラシック ポータルでさまざまな機能にアクセスでき、ロールに応じて、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。Office 365 ポータルと Azure クラシック ポータルのどちらで割り当てたのか、あるいは Windows PowerShell 用 Azure AD モジュールを使用して割り当てたのかに関係なく、管理者ロールが割り当てられたユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持つことになります。
 
 次の管理者ロールを使用できます。
 
@@ -36,10 +34,13 @@
 
 - **サービス管理者**: サービス要求の管理とサービス正常性の監視を行います。
 
-	> [AZURE.NOTE]
-	> サービス管理者のロールをユーザーに割り当てるには、グローバル管理者がまずサービスで管理権限をユーザーに割り当て、次に Azure クラシック ポータルでサービス管理者ロールをそのユーザーに割り当ててください。
+	> [AZURE.NOTE] サービス管理者のロールをユーザーに割り当てるには、グローバル管理者がまずサービスで管理権限をユーザーに割り当て、次に Azure クラシック ポータルでサービス管理者ロールをそのユーザーに割り当ててください。
 
 - **ユーザー管理者**: パスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、およびサービス要求の管理を行います。ユーザー管理の管理者の権限には、いくつかの制限が適用されます。たとえば、この管理者は、グローバル管理者を削除することも、他の管理者を作成することもできません。また、課金管理者、グローバル管理者、サービス管理者のパスワードをリセットすることもできません。
+
+- **セキュリティ リーダー**: Identity Protection Center、Privileged Identity Management、Monitor Office 365 Service Health、および Office 365 Protection Center の数多くのセキュリティ機能に対する読み取り専用アクセス権を持ちます。
+
+- **セキュリティ管理者**: 同じサービス (Identity Protection Center、Privileged Identity Management、Monitor Office 365 Service Health、Office 365 Protection Center) について、**セキュリティ リーダー** ロールのすべての読み取り専用アクセス権に加えて、詳細な管理権限を数多く持ちます。
 
 ## 管理者の権限
 
@@ -73,6 +74,22 @@
 ------------- | -------------
 <p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>ユーザー パスワードのリセット (制限付き)。課金管理者、グローバル管理者、サービス管理者のパスワードをリセットすることはできません。</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理 (制限付き)。グローバル管理者を削除することも、他の管理者を作成することもできません。</p> | <p>Office 製品の課金操作と購入操作の実行</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>Multi-Factor Authentication の有効化または無効化</p>
 
+### セキュリティ リーダー
+
+[ | できること
+------------- | -------------
+Identity Protection Center | 各セキュリティ機能の全セキュリティ レポートと設定情報の閲覧<ul><li>スパム対策<li>暗号化<li>データ損失防止<li>マルウェア対策<li>Advanced Threat Protection<li>フィッシング詐欺対策<li>メールフロー ルール
+Privileged Identity Management | <p>Azure AD PIM に表示される、Azure AD ロール割り当てに関するポリシーとレポート、セキュリティ レビューのすべての情報に対する読み取り専用アクセス権を持ちます。また、将来的には、Azure AD ロール割り当て以外のシナリオのポリシー データとレポートに対する読み取りアクセス権も付与される予定です。<p>Azure AD PIM へのサインアップおよび Azure AD PIM の変更を行うことは**できません**。このロールのユーザーは、追加のロール (グローバル管理者や特権ロール管理者など) の資格を持っている場合、PIM のポータルまたは PowerShell からそのロールを有効化することができます。
+<p>Monitor Office 365 Service Health</p><p>Office 365 Protection Center</p> | <ul><li>アラートの閲覧および管理<li>セキュリティ ポリシーの閲覧<li>検索調査における脅威インテリジェンス情報、Cloud App Discovery、および検査の閲覧<li>全レポートの閲覧
+
+### セキュリティ管理者
+
+[ | できること
+------------- | -------------
+Identity Protection Center | <ul><li>セキュリティ リーダー ロールのすべての権限を持ちます。<li>さらに、パスワードのリセットを除く IPC のすべての操作を行うことができます。
+Privileged Identity Management | <ul><li>セキュリティ リーダーのすべての権限を持ちます。<li>Azure AD ロールのメンバーシップまたは設定を管理することは**できません**。
+<p>Monitor Office 365 Service Health</p><p>Office 365 Protection | <ul><li>セキュリティ リーダー ロールのすべての権限を持ちます。<li>Advanced Threat Protection 機能 (マルウェアおよびウイルス防止、悪意のある URL の構成、URL 追跡など) のすべての設定を構成することができます。
+
 ## グローバル管理者ロールの詳細
 
 グローバル管理者は、すべての管理機能にアクセスできます。既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリのグローバル管理者ロールが割り当てられます。他の管理者ロールを割り当てることができるのはグローバル管理者だけです。
@@ -97,9 +114,9 @@
 
 - Azure サブスクリプションの管理者を変更する方法の詳細については、「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を参照してください
 
-- Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)」を参照してください
+- Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)」を参照してください。
 
-- Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください
+- Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
 - [ユーザーの管理](active-directory-create-users.md)
 
@@ -107,5 +124,4 @@
 
 - [グループの管理](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0608_2016-->
-
+<!---HONumber=AcomDC_0706_2016-->

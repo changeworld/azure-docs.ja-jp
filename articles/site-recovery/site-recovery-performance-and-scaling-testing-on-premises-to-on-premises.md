@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="12/14/2015"
+	ms.date="07/06/2016"
 	ms.author="raynew"/>
 
 # Site Recovery を使用したオンプレミス間の Hyper-V レプリケーションに関するパフォーマンス テストとスケールの結果
@@ -208,4 +208,4 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
 - [Set up protection between two on-premises VMM sites (2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-to-vmm.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0706_2016-->

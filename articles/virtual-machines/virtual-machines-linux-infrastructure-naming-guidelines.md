@@ -62,7 +62,7 @@ Azure で作成作業を始める前に、適切な名前付け規則を用意�
 | 環境 | dev、stg、prod | 各環境の目的と名前によって決まります。 |
 | 場所 | usw (米国西部)、use (米国東部 2) | データセンターのリージョンまたは組織のリージョンによって決まります。 |
 | Azure のコンポーネント、サービス、または製品 | Rg (リソース グループ)、VNet (仮想ネットワーク) | リソースがサポートを提供する製品によって決まります。 |
-| 役割 | sql、ora、sp、iis | 仮想マシンのロールによって決まります。 |
+| 役割 | db、app、web | 仮想マシンのロールによって決まります。 |
 | インスタンス | 01、02、03 など | 複数のインスタンスが存在するリソースの場合。たとえば、クラウド サービス内の負荷分散された Web サーバーなど。 |
 
 
@@ -110,4 +110,4 @@ Azure VM の名前と、基になるオペレーティング システムのコ�
 ## 次のステップ
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

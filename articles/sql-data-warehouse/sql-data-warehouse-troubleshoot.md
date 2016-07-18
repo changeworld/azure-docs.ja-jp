@@ -13,88 +13,64 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/28/2016"
+   ms.date="07/01/2016"
    ms.author="sonyama;barbkess"/>
 
 # Azure SQL Data Warehouse のトラブルシューティング
-このトピックでは、Azure SQL Data Warehouse で発生するいくつかの一般的な問題を示します。
+
+このトピックでは、お客様から寄せられる一般的なトラブルシューティングに関する質問の一部を一覧で紹介します。
+
+## 接続
+
+| 問題 | 解決策 |
+| :----------------------------------| :---------------------------------------------- |
+| CTAIP エラー | このエラーは、ログインが SQL Data Warehouse データベースではなく、SQL Server マスター データベース上で作成された場合に発生する可能性があります。このエラーが発生した場合は、[セキュリティの概要][]に関する記事を参照してください。この記事では、マスター上にログインを作成する方法と、SQL Data Warehouse データベースにユーザーを作成する方法について説明しています。|
+| ファイアウォールによってブロックされる |Azure SQL Database は、既知の IP アドレスのみがデータベースにアクセスできるように、サーバーとデータベース レベルのファイアウォールによって保護されています。ファイアウォールは、既定でセキュリティ保護されています。つまり、接続する前に、IP アドレスまたはアドレス範囲を明示的に有効にする必要があります。アクセスできるようにファイアウォールを構成するには、[プロビジョニング手順][]に関するページの、[クライアント IP 用のサーバー ファイアウォール アクセスの構成][]に関するトピックの手順に従ってください。|
+| ツールまたはドライバーで接続できない | SQL Data Warehouse では、[Visual Studio 2013 または 2015][] を使用してデータのクエリを実行することをお勧めします。クライアント接続については、[SQL Server Native Client 10/11 (ODBC)][] をお勧めします。|
 
 
-##接続に関するエラー
+## ツール
 
-接続に問題が発生している場合は、以下に示す、お客様から報告されたいくつかの一般的な問題を参照してください。
+| 問題 | 解決策 |
+| :----------------------------------| :---------------------------------------------- |
+| Visual Studio オブジェクト エクスプローラーに AAD ユーザーが表示されない | これは既知の問題です。回避策として、ユーザーを [sys.database\_principals][] で表示してください。SQL Data Warehouse での Azure Active Directory の使用方法の詳細については、[Azure SQL Data Warehouse への認証][]に関するページを参照してください。|
 
-### CTAIP エラー
-このエラーは、ログインが SQL Data Warehouse データベースではなく、SQL Server マスター データベース上で作成された場合に発生する可能性があります。このエラーが発生した場合は、[セキュリティの概要][]に関する記事を参照してください。この記事では、マスター上にログインを作成する方法と、SQL Data Warehouse データベースにユーザーを作成する方法について説明しています。
+## パフォーマンス
 
-### ファイアウォール規則
-Azure SQL Database は、既知の IP アドレスのみがデータベースにアクセスできるように、サーバーとデータベース レベルのファイアウォールによって保護されています。ファイアウォールは、既定でセキュリティ保護されています。つまり、接続する前に、IP アドレスまたはアドレス範囲を明示的に有効にする必要があります。アクセスできるようにファイアウォールを構成するには、[プロビジョニング手順][]に関するページの、[クライアント IP 用のサーバー ファイアウォール アクセスの構成][]に関するトピックの手順に従ってください。
+| 問題 | 解決策 |
+| :----------------------------------| :---------------------------------------------- |
+| クエリ パフォーマンスのトラブルシューティング | 特定のクエリのトラブルシューティングを行う必要がある場合は、[クエリを監視する方法][]に関する記事を参照してください。|
+| 統計情報の不足を原因とする、クエリのパフォーマンス低下と不適切なプラン | パフォーマンスの低下の最も一般的な原因は、テーブルの統計情報の不足です。統計を作成する方法と、統計情報がパフォーマンスにとって重要な理由の詳細については、[テーブルの統計情報の更新][Statistics]に関するページを参照してください。|
+| 低い同時実行性とキューに置かれたクエリ | [ワークロード管理][]を理解することは、同時実行でのメモリの割り当てのバランスを調整する方法を理解するために重要です。|
+| ベスト プラクティスを実装する方法 | クエリのパフォーマンスを向上させる方法については、[SQL Data Warehouse のベスト プラクティス][]に関する記事を参照してください。|
+| スケーリングでパフォーマンスを向上させる方法 | [SQL Data Warehouse をスケーリング][]し、クエリのコンピューティング能力を強化するだけで、パフォーマンスを改善できる場合があります。|
+| インデックスの品質が低いことによるクエリ パフォーマンスの低下 | [列ストア インデックスの品質の低さ][]が原因で、クエリの処理速度が低下する場合があります。詳細と[インデックスを再構築してセグメントの品質を向上する][]方法に関する記事を参照してください。|
 
-### サポートされていないツール/プロトコル
-SQL Data Warehouse では、[Visual Studio 2013 または 2015][] を使用してデータのクエリを実行することをお勧めします。クライアント接続については、[SQL Server Native Client 10/11 (ODBC)][] をお勧めします。SQL Server Management Studio (SSMS) はまだサポートされていません。部分的には動作しますが、オブジェクト エクスプ ローラー ツリーは SQL Data Warehouse では機能しません。クエリは、エラー メッセージをいくつか無視すると機能することがあります。
+## システム管理
 
+| 問題 | 解決策 |
+| :----------------------------------| :---------------------------------------------- |
+| 領域使用率の調査 | システムの領域使用率の詳細については、[テーブルのサイズ][]に関するトピックを参照してください。|
+| テーブルの管理に関するヘルプ | テーブルの管理に関するヘルプについては、[テーブルの概要][Overview]に関する記事を参照してください。この記事では、[テーブルのデータ型][Data types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][Statistics]、[一時テーブル][Temporary]などのより詳細なトピックへのリンクも紹介しています。|
 
-## パフォーマンスの問題
+## PolyBase
 
-クエリのパフォーマンスを向上させる方法については、[SQL Data Warehouse のベスト プラクティス][]に関する記事を参照してください。特定のクエリのトラブルシューティングを行う必要がある場合は、[クエリを監視する方法][]に関する別の記事を参照してください。[SQL Data Warehouse をスケーリング][]し、クエリのコンピューティング能力を強化するだけで、クエリをより高速に実行できる場合があります。
+| 問題 | 解決策 |
+| :----------------------------------| :---------------------------------------------- |
+| UTF-8 エラー | 現在、PolyBase では、UTF-8 でエンコードされたデータ ファイルの読み込みのみをサポートしています。この制限を回避する方法については、「[PolyBase UTF-8 要件に対処する][]」を参照してください。|
+| サイズの大きい行を原因とする読み込みの失敗 | サイズの大きい行は、現在 PolyBase でサポートされていません。つまり、テーブルに VARCHAR(MAX)、NVARCHAR(MAX)、または VARBINARY(MAX) が含まれる場合は、データの読み込みに外部テーブルを使用できません。サイズの大きい行の読み込みは現在、Azure Data Factory (BCP を使用)、Azure Stream Analytics、SSIS、BCP、.NET の SQLBulkCopy クラスのみでサポートされています。PolyBase でのサイズの大きい行のサポートは、将来のリリースで追加されます。|
+| MAX データ型を持つテーブルの bcp 読み込みの失敗 | VARCHAR(MAX)、NVARCHAR(MAX)、または VARBINARY(MAX) は、既知の問題により、一部のシナリオでテーブルの最後に配置する必要があります。データ型が MAX の列をテーブルの末尾に移動してみてください。|
 
-## クラスター化列ストア セグメントの質
+## SQL Database との違い
 
-クラスター化列ストア テーブルに対するクエリのパフォーマンスを最適化するには、クラスター化列ストア セグメントの質が重要になります。セグメントの質は、圧縮後の行グループに含まれる行の数を使って判断できます。以下のクエリは、列ストア インデックス セグメントの正常性という点で問題があるテーブルを特定し、そのテーブルに列ストア インデックスを再構築するための T-SQL を生成するものです。このクエリの結果の最初の列では、各インデックスを再構築するための T-SQL を確認できます。2 番目の列では、圧縮を最適化するうえで最低限使用が推奨されるリソース クラスがわかります。
- 
-**手順 1:** 各 SQL Data Warehouse データベースで次のクエリを実行し、クラスターの列ストア インデックスに最適な状態でないものがあるかどうかを確認します。行が返されなかった場合、以降の操作は必要ありません。
-
-```sql
-SELECT 
-     'ALTER INDEX ALL ON ' + s.name + '.' + t.NAME + ' REBUILD;' AS [T-SQL to Rebuild Index]
-    ,CASE WHEN n.nbr_nodes < 3 THEN 'xlargerc' WHEN n.nbr_nodes BETWEEN 4 AND 6 THEN 'largerc' ELSE 'mediumrc' END AS [Resource Class Recommendation]
-    ,s.name AS [Schema Name]
-    ,t.name AS [Table Name]
-    ,AVG(CASE WHEN rg.State = 3 THEN rg.Total_rows ELSE NULL END) AS [Ave Rows in Compressed Row Groups]
-FROM 
-    sys.pdw_nodes_column_store_row_groups rg
-    JOIN sys.pdw_nodes_tables pt 
-        ON rg.object_id = pt.object_id AND rg.pdw_node_id = pt.pdw_node_id AND pt.distribution_id = rg.distribution_id
-    JOIN sys.pdw_table_mappings tm 
-        ON pt.name = tm.physical_name
-    INNER JOIN sys.tables t 
-        ON tm.object_id = t.object_id
-INNER JOIN sys.schemas s
-    ON t.schema_id = s.schema_id
-CROSS JOIN (SELECT COUNT(*) nbr_nodes  FROM sys.dm_pdw_nodes WHERE type = 'compute') n
-GROUP BY 
-    n.nbr_nodes, s.name, t.name
-HAVING 
-    AVG(CASE WHEN rg.State = 3 THEN rg.Total_rows ELSE NULL END) < 100000 OR
-    AVG(CASE WHEN rg.State = 0 THEN rg.Total_rows ELSE NULL END) < 100000
-
-ORDER BY 
-    s.name, t.name
-```
- 
-**手順 2:** 次のテーブルのインデックスを再構築するアクセス許可を持っているユーザーのリソース クラスを上位のものに変更します。リソース クラスについては、上記クエリ結果の 2 列目にあるものが推奨されます。
-
-```sql
-EXEC sp_addrolemember 'xlargerc', 'LoadUser'
-```
-
-> [AZURE.NOTE]  上の "LoadUser" には、ALTER INDEX ステートメントを実行するために作成した有効なユーザー名を指定する必要があります。db\_owner ユーザーのリソース クラスは変更できません。リソース クラスと新しいユーザーの作成方法について詳しくは、下記リンクをご覧ください。
-
- 
-**手順 3:** 手順 2 でリソース クラスを上位に変更したユーザー (たとえば "LoadUser") としてログオンし、手順 1 のクエリで生成された ALTER INDEX ステートメントを実行します。このユーザーは、手順 1 のクエリで特定されたテーブルに対して ALTER 権限を持っている必要がありますのでご注意ください。
- 
-**手順 4:** 手順 1 のクエリをもう一度実行します。効率的なインデックスが構築された場合には、このクエリで行が返されなくなります。行が返されなければ、作業は終わりです。SQL DW データベースが複数ある場合には、各データベースについてこれまでのプロセスを繰り返します。行が返された場合は、手順 5 に進みます。
- 
-**手順 5:** 手順 1 のクエリの再実行時に行が返された場合には、行のサイズが非常に大きなテーブルが存在し、クラスター化列ストア インデックスを最適な形で構築する際に大量のメモリが必要になっていると考えられます。この場合、xlargerc クラスを使ったうえで各テーブルにこのプロセスをもう一度やり直してみてください。リソース クラスを変更するには、手順 2 で xlargerc を選択します。そのうえで、依然としてインデックスが最適でないテーブルについて、手順 3 をもう一度実行します。DW100 ～ DW300 を使用しており、かつ、既に xlargerc を使用している場合には、インデックスをそのままにするか、一時的に DWU を増やしてこの操作に使用できるメモリを増やしてみてください。
- 
-**最後の手順:** 上に示したリソース クラスは、構築する列ストア インデックスの質を最大限に高めるために最低限推奨されるものです。このため、データを読み込むユーザーに対してはこの設定を維持することをお勧めします。ただし、手順 2 で変更した内容を元に戻すこともできます。その場合、以下のコマンドを使用します。
-
-```sql
-EXEC sp_droprolemember 'smallrc', 'LoadUser'
-```
-
-CCI テーブルに対する読み込みで最低限推奨されるリソース クラスは、DW100 ～ DW300 であれば xlargerc、DW400 ～ DW600 であれば largerc、DW1000 以上であれば mediumrc です。ほとんどのワークロードでは、このガイダンスに従えば問題ありません。その目的は、各インデックス構築処理に 400 MB 以上のメモリを割り当てることにあります。ただし、1 つのサイズすべてに対応できるとは限りません。列ストア インデックスの最適化に必要なメモリは、読み込むデータに左右されます。そして、読み込むデータに影響を及ぼすのは、主に行のサイズです。このため、行のサイズが小さなテーブルであれば、必要なメモリが少なくなります。これに対して、行のサイズが大きければ、必要なメモリが多くなります。メモリの割り当てを少なくしても最適な列ストア インデックスが得られるかどうかを確認する場合には、手順 1 のクエリを使用します。行グループ 1 つにつき、少なくとも平均 100,000 行以上は必要になります。500,000 行あればさらに良いでしょう。最大では、行グループあたり 100 万行を確認します。リソース クラスと同時実行を管理する方法について詳しくは、以下のリンクをご覧ください。
-
+| 問題 | 解決策 |
+| :----------------------------------| :---------------------------------------------- |
+| サポートされていない SQL Database の機能 | 「[サポートされていないテーブルの機能][]」を参照してください。|
+| サポートされていない SQL Database のデータ型 | 「[サポートされていないデータ型][]」を参照してください。|
+| DELETE と UPDATE の制限事項 | [UPDATE の回避策][]、[DELETE の回避策][]、[サポートされていない UPDATE と DELETE の構文を回避するための CTAS の使用][]に関する各トピックを参照してください。 |
+| MERGE ステートメントがサポートされていない | [MERGE の対処方法][]に関するページを参照してください。|
+| ストアド プロシージャの制限事項 | ストアド プロシージャの制限の一部を理解するには、[ストアド プロシージャの制限事項][]に関するページを参照してください。|
+| UDF が SELECT ステートメントをサポートしていない | これは、UDF の現在の制限です。サポートされている構文については、[CREATE FUNCTION][] に関するページを参照してください。 |
 
 ## 次のステップ
 
@@ -120,9 +96,31 @@ CCI テーブルに対する読み込みで最低限推奨されるリソース 
 [クライアント IP 用のサーバー ファイアウォール アクセスの構成]: ./sql-data-warehouse-get-started-provision.md#create-a-new-azure-sql-server-level-firewall
 [Visual Studio 2013 または 2015]: ./sql-data-warehouse-get-started-connect.md
 [SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
+[テーブルのサイズ]: ./sql-data-warehouse-tables-overview.md#table-size-queries
+[サポートされていないテーブルの機能]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
+[サポートされていないデータ型]: ./sql-data-warehouse-tables-data-types.md#unsupported-data-types
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
+[Index]: ./sql-data-warehouse-tables-index.md
+[Partition]: ./sql-data-warehouse-tables-partition.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[列ストア インデックスの品質の低さ]: ./sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
+[インデックスを再構築してセグメントの品質を向上する]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
+[ワークロード管理]: ./sql-data-warehouse-develop-concurrency.md
+[サポートされていない UPDATE と DELETE の構文を回避するための CTAS の使用]: ./sql-data-warehouse-develop-ctas.md#using-ctas-to-work-around-unsupported-features
+[UPDATE の回避策]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
+[DELETE の回避策]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
+[MERGE の対処方法]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
+[ストアド プロシージャの制限事項]: /sql-data-warehouse-develop-stored-procedures/#limitations
+[Azure SQL Data Warehouse への認証]: ./sql-data-warehouse-authentication.md
+[PolyBase UTF-8 要件に対処する]: ./sql-data-warehouse-load-polybase-guide.md#working-around-the-polybase-utf-8-requirement
 
 <!--MSDN references-->
 [SQL Server Native Client 10/11 (ODBC)]: https://msdn.microsoft.com/library/ms131415.aspx
+[sys.database\_principals]: https://msdn.microsoft.com/library/ms187328.aspx
+[CREATE FUNCTION]: https://msdn.microsoft.com/library/mt203952.aspx
 
 <!--Other Web references-->
 [ブログ]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
@@ -133,4 +131,4 @@ CCI テーブルに対する読み込みで最低限推奨されるリソース 
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

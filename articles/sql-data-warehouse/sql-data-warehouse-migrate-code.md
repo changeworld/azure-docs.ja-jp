@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/03/2016"
+   ms.date="06/30/2016"
    ms.author="lodipalm;barbkess;sonyama;jrj"/>
 
 # SQL Data Warehouse への SQL コードの移行
@@ -115,14 +115,14 @@ AND     request_id IN
 <!--Image references-->
 
 <!--Article references-->
-[更新での ANSI の JOIN]: ./sql-data-warehouse-develop-ctas.md
-[削除での ANSI の JOIN]: ./sql-data-warehouse-develop-ctas.md
-[MERGE ステートメント]: ./sql-data-warehouse-develop-ctas.md
-[INSERT..EXEC]: ./sql-data-warehouse-develop-temporary-tables.md
+[更新での ANSI の JOIN]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
+[削除での ANSI の JOIN]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
+[MERGE ステートメント]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
+[INSERT..EXEC]: ./sql-data-warehouse-tables-temporary.md#modularizing-code
 [Transact-SQL トピック]: ./sql-data-warehouse-reference-tsql-statements.md
 
 [カーソル]: ./sql-data-warehouse-develop-loops.md
-[SELECT..INTO]: ./sql-data-warehouse-develop-ctas.md
+[SELECT..INTO]: ./sql-data-warehouse-develop-ctas.md#selectinto
 [group by 句と rollup / cube / grouping sets オプション]: ./sql-data-warehouse-develop-group-by-options.md
 [rollup / cube / grouping セット オプションによる句ごとのグループ化]: ./sql-data-warehouse-develop-group-by-options.md
 [8 を超えるの入れ子のレベル]: ./sql-data-warehouse-develop-transactions.md
@@ -134,4 +134,4 @@ AND     request_id IN
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

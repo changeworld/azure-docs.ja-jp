@@ -75,9 +75,9 @@ Service Fabric クラスターには、少なくとも 3 つのノードが必�
         "etlReadIntervalInMinutes": "5",
         "uploadIntervalInMinutes": "10",
         "dataDeletionAgeInDays": "7",
-        "etwStoreConnectionString": "file:c:\\ProgramData\\SF\\FileshareETW",
-        "crashDumpConnectionString": "file:c:\\ProgramData\\SF\\FileshareCrashDump",
-        "perfCtrConnectionString": "file:c:\\ProgramData\\SF\\FilesharePerfCtr"
+        "etwStoreConnectionString": "file:c:\ProgramData\SF\FileshareETW",
+        "crashDumpConnectionString": "file:c:\ProgramData\SF\FileshareCrashDump",
+        "perfCtrConnectionString": "file:c:\ProgramData\SF\FilesharePerfCtr"
     },
 
 これらの変数は、ETW トレース ログ、クラッシュ ダンプ、パフォーマンス カウンターの収集に役立ちます。ETW トレース ログの詳細については、「[Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx)」および「[ETW トレース](https://msdn.microsoft.com/library/ms751538.aspx)」をご覧ください。Service Fabric ノードとクラスターの[クラッシュ ダンプ](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/)は、**crashDumpConnectionString** フォルダーに送信できます。クラスターの[パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)は、コンピューターの **perfCtrConnectionString** フォルダーに送信できます。
@@ -137,10 +137,10 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
         "name": "Setup",
         "parameters": [{
             "name": "FabricDataRoot",
-            "value": "C:\\ProgramData\\SF"
+            "value": "C:\ProgramData\SF"
         }, {
             "name": "FabricLogRoot",
-            "value": "C:\\ProgramData\\SF\\Log"
+            "value": "C:\ProgramData\SF\Log"
     }]
 
 データ ルートだけをカスタマイズすると、ログ ルートはデータ ルートの 1 つ下のレベルに配置されます。
@@ -150,4 +150,4 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
 
 スタンドアロン クラスターのセットアップに従って、ClusterConfig.JSON ファイルの構成を完了したら、「[Azure Service Fabric クラスターをオンプレミスまたはクラウドに作成する](service-fabric-cluster-creation-for-windows-server.md)」に従ってクラスターをデプロイした後、[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)に進むことができます。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

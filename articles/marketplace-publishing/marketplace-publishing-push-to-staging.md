@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="04/26/2016"
+   ms.date="06/29/2016"
    ms.author="hascipio"/>
 
 # マーケティング コンテンツを使用したプラン作成の実行
@@ -138,9 +138,9 @@
 ## 手順 3.: サポート情報を入力する
 連絡先の詳細は、パートナーとマイクロソフト間の内部コミュニケーションにのみに使用されます。サポートURL は、エンド ユーザーに提供されます。
 
-1.	発行ポータルの左側にある **[サポート]** に移動します。
-2.	**[エンジニアリング連絡先]** に情報を入力します。
-3.	**[カスタマー サポート]** に情報を入力します。電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
+1.	発行ポータルの左側にある** [サポート] **に移動します。
+2.	**[エンジニアリング連絡先] **に情報を入力します。
+3.	**[カスタマー サポート] **に情報を入力します。電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
 4.	サポート URL を入力します。
 
 ## 手順 4.: Azure Marketplace カテゴリを選択する
@@ -175,10 +175,8 @@
 
 ## 次のステップ
 Marketplace コンテンツが読み込まれたので、プランのステージングでのテストに進みましょう。ただし、手順はプランの種類によって異なるため、以下の一覧から適切なプランの種類を選択する必要があります。
-
-||仮想マシン イメージ |開発者サービス | データ サービス | ソリューション テンプレート |
-|----|----|----|----|----|
-| **手順 3.ステージングへのプランのプッシュ** | [ステージング環境での VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md) | プライベート プレビュー | [ステージング環境でのデータ サービス プランのテスト](marketplace-publishing-data-service-test-in-staging.md) | [ステージング環境でのソリューション テンプレートのテスト](marketplace-publishing-solution-template-test-in-staging.md) |
+- [ステージング環境での VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)
+- [ステージングでのソリューション テンプレート プランのテスト](marketplace-publishing-solution-template-test-in-staging.md)
 
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
@@ -192,4 +190,4 @@ Marketplace コンテンツが読み込まれたので、プランのステー�
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0706_2016-->

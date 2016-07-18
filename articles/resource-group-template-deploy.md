@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/08/2016"
+   ms.date="06/30/2016"
    ms.author="tomfitz"/>
 
 # Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ
@@ -22,8 +22,11 @@
 - [PowerShell](resource-group-template-deploy.md)
 - [Azure CLI](resource-group-template-deploy-cli.md)
 - [ポータル](resource-group-template-deploy-portal.md)
-- [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 - [REST API](resource-group-template-deploy-rest.md)
+- [Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
+- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
+- [ノード](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
+- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
 
 
 このトピックでは、Azure PowerShell と Resource Manager テンプレートを使用して Azure にリソースをデプロイする方法について説明します。
@@ -32,6 +35,17 @@
 >
 > - エラーのトラブルシューティングに役立つ情報を入手するためには、「[Azure PowerShell でのデプロイ操作の表示](resource-manager-troubleshoot-deployments-powershell.md)」
 > - 一般的なデプロイ エラーを解決するためには、「[Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーをトラブルシューティングする](resource-manager-common-deployment-errors.md)」
+
+テンプレートは、ローカル ファイルまたは URI を通じて利用できる外部ファイルのいずれも使用できます。テンプレートがストレージ アカウントに存在する場合は、テンプレートへのアクセスを制限し、デプロイ時に Shared Access Signature (SAS) トークンを設定できます。
+
+## 簡単なデプロイ手順
+
+この記事では、デプロイ時に使用できるさまざまなオプションをすべて説明します。ただし、通常必要なのは 2 つの簡単なコマンドのみです。デプロイを簡単に開始するには、次のコマンドを使用します。
+
+    New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West US"
+    New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate> -TemplateParameterFile <PathToParameterFile>
+
+ご使用のシナリオにさらに適したデプロイのオプションについて詳しく知るには、この記事を読み進めてください。
 
 [AZURE.INCLUDE [resource-manager-deployments](../includes/resource-manager-deployments.md)]
 
@@ -175,4 +189,4 @@ SAS トークンを使用したデプロイの際に、テンプレートをス�
 - ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments.md)」を参照してください。
 - セキュリティで保護された値を渡す KeyVault 参照を使用する方法については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

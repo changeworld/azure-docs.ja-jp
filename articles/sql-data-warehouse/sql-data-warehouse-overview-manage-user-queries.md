@@ -39,13 +39,13 @@ SQL Data Warehouse でのユーザー クエリの監視に関する考慮事項
 <!--Image references-->
 
 <!--Article references-->
-[実行時間の長いクエリの検索]: sql-data-warehouse-manage-find-long-running-queries.md
-[同時実行とワークロード管理]: sql-data-warehouse-develop-concurrency.md
-[管理の概要]: sql-data-warehouse-overview-manage.md
+[実行時間の長いクエリの検索]: ./sql-data-warehouse-manage-monitor.md
+[同時実行とワークロード管理]: ./sql-data-warehouse-develop-concurrency.md
+[管理の概要]: ./sql-data-warehouse-overview-manage.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

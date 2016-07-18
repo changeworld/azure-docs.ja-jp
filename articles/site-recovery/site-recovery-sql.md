@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="02/14/2016" 
+	ms.date="07/06/2016" 
 	ms.author="raynew"/>
 
 
@@ -132,12 +132,12 @@ VMM からレプリケートする場合、SQL AlwaysOn を Site Recovery に統
 ####  手順 1: SQL Server を追加する
 
 
-1. **[SQL の追加]** をクリックして、新規の SQL Server を追加します。 
+1. **[SQL の追加]** をクリックして、新規の SQL Server を追加します。
 
 	![Add SQL](./media/site-recovery-sql/add-sql.png)
 
 2. **[SQL 設定の構成]** の **[名前]** に、SQL Server を示すフレンドリ名を入力します。
-3. **[SQL Server (FQDN)]** に、追加するソース SQL Server の FQDN を入力します。SQL Server をフェールオーバー クラスターにインストールする場合、クラスターの FQDN を指定し、クラスター ノードの FQDN には指定しないでください。  
+3. **[SQL Server (FQDN)]** に、追加するソース SQL Server の FQDN を入力します。SQL Server をフェールオーバー クラスターにインストールする場合、クラスターの FQDN を指定し、クラスター ノードの FQDN には指定しないでください。
 4. **[SQL Server インスタンス]** で、既定のインスタンスを選択するか、カスタム インスタンス名を入力します。
 5. **[VMM サーバー]** で、Site Recovery コンテナーに登録されている VMM サーバーを選択します。Site Recovery は SQL Server との通信にこの VMM Server を使用します。
 6. **[アカウントとして実行]** に、指定した VMM サーバーで作成された実行アカウント名を入力します。このアカウントは SQL Server へのアクセスに使用され、SQL Server マシンの可用性グループで読み取りおよびフェールオーバーのアクセス権を持っている必要があります。
@@ -151,7 +151,7 @@ SQL Server を追加すると、**[SQL Server]** タブに表示されます。
 
 #### 手順 2: SQL 可用性グループを追加する
 
-1. SQL Server マシンを追加したら、次の手順は Site Recovery への可用性グループの追加です。それを行うには、前の手順で追加した SQL Server の中をドリルダウンし、[SQL 可用性グループの追加] をクリックします。 
+1. SQL Server マシンを追加したら、次の手順は Site Recovery への可用性グループの追加です。それを行うには、前の手順で追加した SQL Server の中をドリルダウンし、[SQL 可用性グループの追加] をクリックします。
 
 	![Add SQL AG](./media/site-recovery-sql/add-sqlag.png)
 
@@ -353,4 +353,4 @@ SQL Standard のクラスターの場合、計画外のフェールオーバー�
 
  
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0706_2016-->
