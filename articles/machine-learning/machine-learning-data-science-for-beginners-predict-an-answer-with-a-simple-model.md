@@ -21,10 +21,9 @@
 
 初心者向けデータ サイエン ビデオ 4 では、単純なモデルを作成してダイヤモンドの価格を予測する方法について説明します。ターゲット データを使用して回帰モデルを引き出します。
 
-このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
+このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
 
 > [AZURE.VIDEO data-science-for-beginners-series-predict-an-answer-with-a-simple-model]
-<!---Fix video-->
 
 ## トランスクリプト: 単純なモデルで回答を予測する
 
