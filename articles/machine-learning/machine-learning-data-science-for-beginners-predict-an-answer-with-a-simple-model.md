@@ -25,11 +25,9 @@
 
 > [AZURE.VIDEO data-science-for-beginners-series-predict-an-answer-with-a-simple-model]
 <!---Fix video-->
-トランスクリプト: 単純なモデルで回答を予測する
-
-
-
 ## トランスクリプト: 単純なモデルで回答を予測する
+
+トランスクリプト: 単純なモデルで回答を予測する
 
 "初心者向けデータ サイエンス" シリーズの 4 番目のビデオへようこそ。ここでは、単純なモデルを作成して予測を行います。
 
