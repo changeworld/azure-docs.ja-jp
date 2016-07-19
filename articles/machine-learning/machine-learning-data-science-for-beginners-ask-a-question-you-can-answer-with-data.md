@@ -25,13 +25,14 @@
 
 > [AZURE.VIDEO data-science-for-beginners-ask-a-question-you-can-answer-with-data]
 
+<!---Addedcomment--->
+<!---Addedcomment--->
+<!---Addedcomment--->
+<!---Addedcomment--->
 
-</br>
-## トランスクリプト: データで回答できる質問をする
+<h2>トランスクリプト: データで回答できる質問をする</h2>
 
-トランスクリプト: データで回答できる質問をする
-
-"初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。
+初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。
 
 このビデオでは、データで回答できる質問を考えるためのヒントが得られます。
 
@@ -103,4 +104,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!-----HONumber=AcomDC_0706_2016---->
+<!-----HONumber=AcomDC_0706_2016------>
