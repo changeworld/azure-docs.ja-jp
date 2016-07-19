@@ -77,11 +77,11 @@ Bottle、Flask、Django の各 Web フレームワークと、Azure Table Storag
 
 1. **[サンプル投票の作成]** をクリックします。
 
-    ![Create Sample Polls](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserNoPolls.png)
+    	![Create Sample Polls](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserNoPolls.png)
 
-1. 投票をクリックして投票します。
+1.  投票をクリックして投票します。
 
-    ![Voting in Sample Polls](./media/web-sites-python-ptvs-django-mysql/PollsDjangoSqliteBrowser.png)
+        ![Voting in Sample Polls](./media/web-sites-python-ptvs-django-mysql/PollsDjangoSqliteBrowser.png)
 
 ## MySQL Database を作成する
 
@@ -105,7 +105,7 @@ Bottle、Flask、Django の各 Web フレームワークと、Azure Table Storag
 
 このセクションでは、先ほど作成した MySQL データベースを使用するように Web アプリを構成します。Django と MySQL データベースを使用するために必要な追加の Python パッケージもインストールします。そのうえで、Web アプリをローカルで実行します。
 
-1. Visual Studio で、*ProjectName* フォルダーから **settings.py** を開きます。エディターで、接続文字列を一時的に貼り付けます。この接続文字列の形式を次に示します。
+1. Visual Studio で、 *ProjectName* フォルダーから **settings.py** を開きます。エディターで、接続文字列を一時的に貼り付けます。この接続文字列の形式を次に示します。
 
         Database=<NAME>;Data Source=<HOST>;User Id=<USER>;Password=<PASSWORD>
 
@@ -123,7 +123,7 @@ Bottle、Flask、Django の各 Web フレームワークと、Azure Table Storag
         }
 
 
-1. ソリューション エクスプローラーで、**[Python 環境]** の下にある仮想環境を右クリックし、**[Python パッケージのインストール]** を選択します。
+1.  ソリューション エクスプローラーで、**[Python 環境]** の下にある仮想環境を右クリックし、**[Python パッケージのインストール]** を選択します。
 
 1. **pip** を使用して `mysqlclient` パッケージをインストールします。
 
@@ -133,26 +133,26 @@ Bottle、Flask、Django の各 Web フレームワークと、Azure Table Storag
 
     これにより、前のセクションで作成した MySQL データベースのテーブルが作成されます。表示される手順に従ってユーザーを作成してください。この記事の最初のセクションで作成した SQLite データベースのユーザーと一致させる必要はありません。
 
-1. `F5` キーでアプリケーションを実行します。**[サンプル投票の作成]** で作成された投票と、投票によって送信されたデータは、MySQL データベースでシリアル化されます。
+1.  `F5` キーでアプリケーションを実行します。**[サンプル投票の作成]** で作成された投票と、投票によって送信されたデータは、MySQL データベースでシリアル化されます。
 
 ## Web アプリを Azure App Service に発行する
 
 Azure .NET SDK を使用すると、Web アプリを Azure App Service に簡単にデプロイできます。
 
-1. **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックし、**[発行]** をクリックします。
+1.  **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックし、**[発行]** をクリックします。
 
     ![Publish Web ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsCommonPublishWebSiteDialog.png)
 
 1. **[Microsoft Azure App Service]** をクリックします。
 
-1. **[新規]** をクリックして、新しい Web アプリを作成します。
+1.  **[新規]** をクリックして、新しい Web アプリを作成します。
 
-1. 次のフィールドに入力し、**[作成]** をクリックします。
-	- **[Web アプリケーション名]**
-	- **[App Service プラン]**
-	- **[リソース グループ]**
-	- **[リージョン]**
-	- **[データベース サーバー]** は、**[データベースなし]** のままにしておきます。
+1.  次のフィールドに入力し、**[作成]** をクリックします。
+	-	**[Web アプリケーション名]**
+	-	**[App Service プラン]**
+	-	**[リソース グループ]**
+	-	**[リージョン]**
+	-	**[データベース サーバー]** は、**[データベースなし]** のままにしておきます。
 
 1. 他のすべての既定値をそのまま使用し、**[発行]** をクリックします。
 
