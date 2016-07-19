@@ -24,6 +24,8 @@
 このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
 
 > [AZURE.VIDEO data-science-for-beginners-ask-a-question-you-can-answer-with-data]
+<!---Fix video-->
+## トランスクリプト: データで回答できる質問をする
 
 ## トランスクリプト: データで回答できる質問をする
 
