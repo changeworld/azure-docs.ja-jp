@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/03/2016"
+   ms.date="07/08/2016"
    ms.author="yurid"/>
 
 # Power BI で Azure Security Center のデータから洞察を得る
@@ -27,11 +27,11 @@ Azure Security Center ダッシュボードを使用して、Power BI レポー�
 
 1. **Azure Security Center** ダッシュボードで **[Explore in Power BI (Power BI で調べる)]** ボタンをクリックします。
 
-	![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig9-new.png)
+	![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new1.png)
 
 2. 次のように、**[Explore in Power BI (Power BI で調べる)]** ブレードが右側に表示されます。
 
-	![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig2-new.png)
+	![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new2.png)
 
 3. Power BI ダッシュボードを初めて作成する場合は、[Explore in Power BI (Power BI で調べる)] ブレードで次のいずれかのオプションを選択できます。
 
@@ -39,14 +39,18 @@ Azure Security Center ダッシュボードを使用して、Power BI レポー�
 	- **[Policy management dashboard (ポリシー管理ダッシュボード)]**: 管理と適用ポリシーを確認する場合は、このオプションを選択します。これは、ガバナンスに特化した中央 IT 向けの一般的なオプションです。このダッシュボードを使用すると、組織全体でのセキュリティ ポリシーの遵守について視覚的に確認し、詳細情報を入手できます。
 	- 既に Power BI ダッシュボードがある場合は、**[Go to your current Power BI dashboard (現在の Power BI ダッシュボードに移動)]** をクリックします。
 
-4. この例では、**[Security insights dashboard (セキュリティの詳細情報ダッシュボード)]** をクリックします。そうすると、次のウィンドウが表示されます。
+4. この例では、**[Security insights dashboard (セキュリティの詳細情報ダッシュボード)]** をクリックします。今回初めて Security Center で Power BI ダッシュボードを作成する場合、コンテンツ パックをインストールするよう求められます。次に示した **[Content packs for Power BI (Power BI 用コンテンツ パック)]** ウィンドウの **[取得]** ボタンをクリックします。
 
-	![Azure Security Center Security Insights dashboard](./media/security-center-powerbi/security-center-powerbi-fig3-new.png)
+	![Azure Security Center Security Insights dashboard](./media/security-center-powerbi/security-center-powerbi-fig1-new3.png)
 
-5. **[Authentication method (認証方法)]** ボックスの一覧の **[oAuth2]** を選択し、**[サインイン]** をクリックします。
-6. **[Power BI]** ウィンドウが開き、次のような構造のレポートが表示されます。
+5. **[Connect to Azure Security Center Security Insights (Azure Security Center Security Insights への接続)]** ウィンドウが表示されます。次のように **[認証方法]** ボックスの一覧の **[oAuth2]** を選択し、**[サインイン]** をクリックします。
 	
-	![Security Insights dashboard](./media/security-center-powerbi/security-center-powerbi-fig5.png)
+	![認証](./media/security-center-powerbi/security-center-powerbi-fig1-new4.png)
+
+6. Azure の資格情報を使って再度認証を行うように求められる場合があります。認証後、ダッシュボードが作成されます。ダッシュボードが作成されると、次のような形式のレポートが表示されます。
+
+	![Power BI ダッシュボード](./media/security-center-powerbi/security-center-powerbi-fig1-new5.png)
+
 
 > [AZURE.NOTE] レポートの更新は毎日実行されるようにスケジュールされています。この更新で障害が発生した場合は、「[Potential Refresh Issues with the Azure Security Center Power BI (Azure Security Center の Power BI の潜在的な更新の問題)](https://blogs.msdn.microsoft.com/azuresecurity/2016/04/07/azure-security-center-power-bi-refresh-fails/)」でトラブルシューティング方法について確認してください。
 
@@ -54,16 +58,16 @@ Azure Security Center ダッシュボードを使用して、Power BI レポー�
 
 Azure Security Center へのリンクをクリックすると、Azure ポータルにリダイレクトされます。グラフでは、セキュリティに関する推奨事項やアラートなど、次のような情報を簡単に視覚化できます。
 
-- リソースのセキュリティ正常性
-- 保留中の推奨事項の総数
+- リソースのセキュリティ状態
+- 保留中の推奨事項
 - VM 推奨事項
 - アラートの累積
 - 攻撃されたリソース
 - 攻撃された IP
 
-各グラフからは、さらに洞察を得ることができます。タイルを選択すると、詳細が表示されます。たとえば、[Resource Security Health (リソースのセキュリティ正常性)] タイルには、リソースごとの保留中の推奨事項に関する追加情報が次のように表示されます。
+各グラフからは、さらに洞察を得ることができます。タイルを選択すると、詳細が表示されます。たとえば、**[Resource Security State (リソースのセキュリティ状態)]** タイルには、リソースごとの保留中の推奨事項に関する追加情報が次のように表示されます。
 
-![推奨事項](./media/security-center-powerbi/security-center-powerbi-fig6.png)
+![推奨事項](./media/security-center-powerbi/security-center-powerbi-fig1-new6.png)
 
 このグラフのいずれかの項目をクリックすると、他の項目は淡色表示になり、選択した 1 つの項目だけに注目できます。ダッシュボードに戻るには、このページの左側のウィンドウで **[ダッシュボード]** オプションの下にある **[Azure Security Center]** をクリックします。
 
@@ -71,7 +75,7 @@ Azure Security Center へのリンクをクリックすると、Azure ポータ�
 
 **[Alerts over Time (アラートの累積)]、[Attacked Resources (攻撃されたリソース)]**、**[Attacker IPs (攻撃者 IP)]** タイルは、クリックすると同じような情報が出力されます。これは、レポートでこれら 3 つの変数すべてに関する情報が集計され、次のように **[Resources under Attack (攻撃を受けているリソース)]** と呼ばれるためです。
 
-![Resources under attack](./media/security-center-powerbi/security-center-powerbi-fig7.png)
+![Resources under attack](./media/security-center-powerbi/security-center-powerbi-fig1-new7.png)
 
 この時点で、**[ファイル]** メニューのオプションを使用して、このレポートのコピーの保存、印刷、Web への発行を行うこともできます。
 
@@ -85,11 +89,13 @@ Power BI で [Power BI のコンテンツ パック サービス](https://msit.p
 
 	![Content pack for Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new.png)
 
+	>[AZURE.NOTE] この記事の最初の部分が実行済みである場合、表示されるオプションは [Azure Security Center Policy Management (Azure Security Center のポリシー管理)] の 1 つだけです。
+
 2. この例では、**[Azure Security Center Policy Management (Azure Security Center のポリシー管理)]** タイルの **[取得]** をクリックします。
 
-3. **[Connect to Azure Security Center Policy Management (Azure Security Center のポリシー管理への接続)]** ウィンドウで、次に示すように **[Authentication Method (認証方法)]** ボックスの一覧の **[oAuth2]** を必ず選択し、**[サインイン]** をクリックします。
+3. **[Connect to Azure Security Center Policy Management (Azure Security Center のポリシー管理への接続)]** ウィンドウで、次に示すように **[認証方法]** ボックスの一覧の **[oAuth2]** を必ず選択し、**[サインイン]** をクリックします。
 
-	![Policy Management window](./media/security-center-powerbi/security-center-powerbi-fig4-new.png)
+	![Policy Management window](./media/security-center-powerbi/security-center-powerbi-fig1-new8.png)
 
 4. 認証ページにリダイレクトされるので、Azure Security Center への接続に使用している資格情報を入力します。認証プロセスが完了すると、Power BI がレポートを作成するためのデータのインポートを開始します。この処理中は、ブラウザーの右上隅に、次のメッセージが表示されます。
 
@@ -97,8 +103,9 @@ Power BI で [Power BI のコンテンツ パック サービス](https://msit.p
 
 	>[AZURE.NOTE] ダッシュボードの作成が初めての場合は (主に、サブスクリプションが複数ある場合は)、通常より時間がかかります。
 
-5. 処理が完了すると、Azure Security Center の Power BI ダッシュボードに**ポリシー管理**レポートが読み込まれます。
+5. 処理が完了すると、Azure Security Center の Power BI ダッシュボードに、次に示したような**ポリシー管理**レポートが読み込まれます。
 
+	![Policy Management dashboard](./media/security-center-powerbi/security-center-powerbi-fig1-new9.png)
 
 ## 次のステップ
 このドキュメントでは、Azure Security Center での Power BI の使用方法について説明しました。Azure セキュリティ センターの詳細については、次を参照してください。
@@ -109,4 +116,4 @@ Power BI で [Power BI のコンテンツ パック サービス](https://msit.p
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

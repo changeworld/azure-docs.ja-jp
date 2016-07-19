@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/10/2016"
+	ms.date="07/11/2016"
 	ms.author="robmcm"/>
 
 <!-- Note: This article replaces web-sites-php-web-site-gallery.md -->
@@ -26,13 +26,13 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 
 このチュートリアルで学習する内容は次のとおりです。
 
-* Azure Marketplace でアプリケーション テンプレートを検索する方法。
-* Azure App Service でテンプレートに基づく Web アプリを作成する方法。
-* 新しい Web アプリとデータベースの Azure App Service 設定を構成する方法。
+* Azure App Service で Azure Marketplace テンプレートに基づく Web アプリを検索および作成します。
+* 新しい Web アプリの Azure App Service 設定を構成します。
+* Web アプリを起動して管理します。
 
 このチュートリアルでは、WordPress ブログ サイトを Azure Marketplace からデプロイします。このチュートリアルの手順を完了すると、独自の WordPress サイトをクラウドで運用できるようになります。
 
-![Example WordPress wep app dashboard][WordPressDashboard]
+![Example WordPress wep app dashboard][WordPressDashboard1]
 
 このチュートリアルでデプロイする WordPress サイトは、データベースに MySQL を使用します。代わりに SQL Database を使用する場合は、[Project Nami] を参照してください。これは Azure Marketplace からも入手できます。
 
@@ -41,7 +41,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 >
 > Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成]」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードや契約は必要ありません。
 
-## WordPress を選択して Azure App Service 用に構成する
+## Azure App Service での Web アプリの検索と作成
 
 1. [Azure ポータル]にログインします。
 
@@ -57,13 +57,15 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 
 	![Create WordPress web app][MarketplaceCreate]
 
-1. WordPress の設定ブレードが表示されます。以降の手順は、このブレードを使用して実行します。
+## 新しい Web アプリの Azure App Service 設定の構成
+
+1. 新しい Web アプリを作成すると、WordPress の設定ブレードが表示されます。以降の手順は、このブレードを使用して実行します。
 
 	![Configure WordPress web app settings][ConfigStart]
 
 1. **[Web アプリ]** ボックスに Web アプリの名前を入力します。
 
-	Web アプリの URL は *{名前}*.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
+	Web アプリの URL は *{name}*.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
 
 	![Configure the WordPress web app name][ConfigAppName]
 
@@ -131,7 +133,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 
 1. サイトのダッシュボード ページが開き、入力した情報が表示されます。
 
-	![View your WordPress dashboard][WordPressDashboard]
+	![View your WordPress dashboard][WordPressDashboard2]
 
 ## 次のステップ
 
@@ -174,7 +176,8 @@ Azure での WordPress Web アプリの開発の詳細については、「[Azur
 [WordPressSelect]: ./media/app-service-web-create-web-app-from-marketplace/wpselect.png
 [WordPressBrowse]: ./media/app-service-web-create-web-app-from-marketplace/wpbrowse.png
 [WordPressLanguage]: ./media/app-service-web-create-web-app-from-marketplace/wplanguage.png
-[WordPressDashboard]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard.png
+[WordPressDashboard1]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard1.png
+[WordPressDashboard2]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png
 [WordPressConfigure]: ./media/app-service-web-create-web-app-from-marketplace/wpconfigure.png
 
-<!-----HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->

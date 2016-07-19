@@ -13,7 +13,7 @@
    ms.devlang="na"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/22/2016"
+   ms.date="07/13/2016"
    ms.author="yurid"/>
 
 # Azure セキュリティ センターでのセキュリティの警告の管理と対応
@@ -90,4 +90,4 @@ Microsoft のセキュリティの研究者は、コンシューマー向け製�
 - 「[Azure セキュリティ センターのよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

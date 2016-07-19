@@ -120,7 +120,7 @@ Transact-SQL と、SQL Server、SQL Data Warehouse、SQL Database、および An
 
 ## データ保護
 
-SQL Data Warehouse は、Azure Premium のローカル冗長ストレージにすべてのデータを格納します。複数の同期されたデータ コピーがローカル データ センターに保持され、ローカルで障害が発生した場合には透過的なデータ保護が保証されます。さらに、SQL Data Warehouse では、Azure Storage Snapshots を使用して、アクティブな (一時停止されていない) データベースが定期的に自動でバックアップされます。バックアップと復元のしくみについては、[バックアップと復元の概要][]に関するページを参照してください。
+SQL Data Warehouse は、Azure Premium のローカル冗長ストレージにすべてのデータを格納します。複数の同期されたデータ コピーがローカル データ センターに保持され、ローカルで障害が発生した場合には透過的なデータ保護が保証されます。さらに、SQL Data Warehouse では、Azure Storage Snapshots を使用して、アクティブな (一時停止されていない) データベースが定期的に自動でバックアップされます。バックアップと復元のしくみの詳細については、[バックアップと復元の概要][]に関するページを参照してください。
 
 ## Microsoft のツールとの統合
 
@@ -130,7 +130,7 @@ SQL Data Warehouse は、Azure Premium のローカル冗長ストレージに�
 
 **クラウドベースのツール:** SQL Data Warehouse は、Data Factory、Stream Analytics、Machine Learning、Power BI など、Azure の新しい各種ツールと共に使用できます。詳細な一覧については、[統合されているツールの概要][]に関するページを参照してください。
 
-**サード パーティ製のツール:** 多数のサード パーティ ツール プロバイダーが自社のツールと SQL Data Warehouse との統合を認定しています。完全な一覧については、「[SQL Data Warehouse ソリューション パートナー][]」を参照してください。
+**サード パーティ製のツール:** 多数のサード パーティ ツール プロバイダーが自社のツールと SQL Data Warehouse との統合を認定しています。完全な一覧については、[SQL Data Warehouse ソリューション パートナー][]に関するページを参照してください。
 
 ## ハイブリッド データ ソースのシナリオ
 
@@ -162,13 +162,13 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 [1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
 
 <!--Article references-->
-[サポート チケットを作成する]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[サンプル データを読み込む]: ./sql-data-warehouse-load-sample-databases.md
-[SQL Data Warehouse を作成]: ./sql-data-warehouse-get-started-provision.md
-[移行に関するドキュメント]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse ソリューション パートナー]: ./sql-data-warehouse-integrate-solution-partners.md
-[統合されているツールの概要]: ./sql-data-warehouse-overview-integrate.md
-[バックアップと復元の概要]: ./sql-data-warehouse-restore-database-overview.md
+[サポート チケットを作成する]: sql-data-warehouse-get-started-create-support-ticket.md
+[サンプル データを読み込む]: sql-data-warehouse-load-sample-databases.md
+[SQL Data Warehouse を作成]: sql-data-warehouse-get-started-provision.md
+[移行に関するドキュメント]: sql-data-warehouse-overview-migrate.md
+[SQL Data Warehouse ソリューション パートナー]: sql-data-warehouse-partner-business-intelligence.md
+[統合されているツールの概要]: sql-data-warehouse-overview-integrate.md
+[バックアップと復元の概要]: sql-data-warehouse-restore-database-overview.md
 
 <!--MSDN references-->
 
@@ -176,9 +176,9 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 [ブログ]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [CAT チームのブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse
+[MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse
 [Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

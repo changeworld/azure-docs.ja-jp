@@ -35,12 +35,17 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
 
 **前提条件:**
 
-- [Microsoft Visual Studio](https://www.visualstudio.com/ja-JP/visual-studio-homepage-vs.aspx)
+- [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
 - [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
 - [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 - [Azure ストレージ アカウント](storage-create-storage-account.md#create-a-storage-account)
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
+
+### その他のサンプル
+
+Table Storage を使用したその他の例については、「[Getting Started with Azure Table Storage in .NET (.NET での Azure Blob Storage の使用)](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/)」を参照してください。サンプル アプリケーションをダウンロードして実行することも、GitHub でコードを参照することもできます。
+
 
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -437,13 +442,14 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
 
 これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
+- Table Storage のサンプルについては、「[Getting Started with Azure Table Storage in .NET (.NET での Azure Blob Storage の使用)](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/)」を参照してください。
 - 利用可能な API の詳細については、テーブル サービスのリファレンス ドキュメントを参照してください。
     - [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
     - [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
 - Azure Storage で作業するために記述したコードを簡略化する方法については、[Azure WebJobs SDK とは](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md)を参照してください。
 - Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
     - 非構造化データを格納するには、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」を参照してください。
-    - リレーショナル データを格納するには、「[.NET アプリケーションで Azure SQL Database を使用する方法](sql-database-dotnet-how-to-use.md)」を参照してください。
+    - リレーショナル データを格納するには、[.NET アプリケーションで Azure SQL Database を使用する方法](sql-database-dotnet-how-to-use.md)についてのページを参照してください。
 
   [Download and install the Azure SDK for .NET]: /develop/net/
   [Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
@@ -463,4 +469,4 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

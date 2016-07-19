@@ -5,8 +5,8 @@
 	keywords="Active Directory パスワード管理, パスワード管理, Azure AD パスワードのリセット"
 	documentationCenter=""
 	authors="asteen"
-	manager="kbrint"
-	editor="billmath"/>
+	manager="femila"
+	editor="curtand"/>
 
 <tags
 	ms.service="active-directory"
@@ -14,10 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/16/2016" 
+	ms.date="07/12/2016"
 	ms.author="asteen"/>
 
 # パスワード管理の概要
+
+> [AZURE.IMPORTANT] **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+
 ユーザーは、簡単な手順を実行するだけで、自分のクラウドの Azure Active Directory パスワードまたはオンプレミス Active Directory パスワードを管理できるようになります。いくつかの簡単な前提条件を満たせば、すぐに組織全体のパスワードの変更とリセットが実行できるようになります。この記事では、次の概念を説明します。
 
 * [**クラウドの Azure Active Directory パスワードのユーザーによるリセットを有効にする方法**](#enable-users-to-reset-their-azure-ad-passwords)
@@ -135,7 +138,7 @@
 
     ![][014]
 
-5.	ユーザーが電話番号を確認した後は、[通話] ウォールをクリックするとスピナーが表示され、電話が鳴ります。ユーザーが電話を取ると、アカウントの確認のため **「#」 を押すよう**指示するメッセージが再生されます。# キーを押すと、ユーザーが最初のチャレンジをクリアしたことが自動的に確認され、2 番目の確認手順の UI に進みます。
+5.	ユーザーが電話番号を確認した後は、[通話] ウォールをクリックするとスピナーが表示され、電話が鳴ります。ユーザーが電話を取ると、アカウントの確認のため **「\#」 を押すよう**指示するメッセージが再生されます。# キーを押すと、ユーザーが最初のチャレンジをクリアしたことが自動的に確認され、2 番目の確認手順の UI に進みます。
 
     ![][015]
 
@@ -307,7 +310,7 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 ## パスワードのリセットに関するドキュメントへのリンク
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* [**自分のパスワードのリセット**](active-directory-passwords-update-your-own-password.md) - システムのユーザーとして自分のパスワードをリセットまたは変更する方法について説明します。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
@@ -351,4 +354,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 [032]: ./media/active-directory-passwords-getting-started/032.jpg "Image_032.jpg"
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

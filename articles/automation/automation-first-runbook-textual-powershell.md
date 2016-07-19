@@ -48,7 +48,7 @@
 
 Runbook に直接コードを入力するか、ライブラリ コントロールからコマンドレット、Runbook、資産を選択し、関連するパラメーターを使って Runbook に追加できます。このチュートリアルでは、Runbook に直接コードを入力します。
 
-1.	作成した Runbook は現在空であるため、「 *Write-Output "Hello World."* 」と入力します。  
+1.	作成した Runbook は現在空であるため、「*Write-Output "Hello World."*」と入力します。  
 	![Hello World](media/automation-first-runbook-textual-powershell/automation-helloworld.png)  
 2.	**[保存]** をクリックして Runbook を保存します。  
 	![Save Button](media/automation-first-runbook-textual-powershell/automation-save-button.png)  
@@ -60,7 +60,7 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 1.	**[テスト ウィンドウ]** をクリックして、テスト ウィンドウを開きます。  
 	![Test Pane](media/automation-first-runbook-textual-powershell/automation-testpane.png)  
 2.	**[開始]** をクリックしてテストを開始します。有効なオプションはこれだけです。
-3.	[Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態が表示されます。
+3.	[Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態が表示されます。  
 	最初のジョブの状態は *キューに設定* であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると *開始中* になり、Runbook が実際に実行を開始すると *実行中* になります。  
 4.	Runbook ジョブが完了すると、その出力が表示されます。この例では、*Hello World* と表示されます。  
 	![Test Pane Output](media/automation-first-runbook-textual-powershell/automation-testpane-output.png)  
@@ -70,7 +70,7 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 
 前の手順で作成した Runbook はまだドラフト モードです。運用環境で実行できるようにするには、発行する必要があります。Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
 
-1.	**[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。  
+1.	**[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。
 	![[発行] ボタン](media/automation-first-runbook-textual-powershell/automation-publish-button.png)  
 2.	**[Runbook]** ウィンドウで左にスクロールして Runbook を表示すると、**[作成状態]** は **[発行済]** になっています。
 3.	右へスクロールして戻り、**MyFirstRunbook-PowerShell** のウィンドウを表示します。  
@@ -100,10 +100,10 @@ Runbook をテストして発行しましたが、これまでのところ役に
 3.	Automation の実行アカウントを使用して認証を処理する次のコードを入力またはコピーして貼り付けます。
 
     ```
-     $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
+     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
      Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
      -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
-    ``` 
+    ```
 <br>
 4.	**テスト ウィンドウ**をクリックして、Runbook をテストできるようにします。
 5.	**[開始]** をクリックしてテストを開始します。テストが完了すると、アカウントの基本情報を示す出力が表示されます。これにより、資格情報が有効であることを確認できます。<br> ![認証](media/automation-first-runbook-textual-powershell/runbook-auth-results.png)
@@ -112,12 +112,12 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 これで、Runbook で Azure サブスクリプションに対する認証が行われ、リソースを管理できるようになります。仮想マシンを起動するコマンドを追加します。Azure サブスクリプション内の任意の仮想マシンを選択し、ここではその名前をコマンドレットにハードコーディングします。
 
-1.	*Add-AzureRmAccount* の後に、起動する仮想マシンの名前とリソース グループ名を指定して「*Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'*」と入力します。  
-    
+1.	*Add-AzureRmAccount* の後に、起動する仮想マシンの名前とリソース グループ名を指定して「*Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'*」と入力します。
+
     ```
-     $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
+     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
      Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
-     -ApplicationID `$Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint 
+     -ApplicationID `$Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
      Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
      ```
 <br>
@@ -128,19 +128,19 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 この Runbook では、Runbook にハードコードした仮想マシンを開始しますが、Runbook を開始するときに仮想マシンを指定できるようにすればもっと便利です。そこで次に、入力パラメーターを Runbook に追加して、その機能を提供します。
 
-1.	*VMName* と *ResourceGroupName* のパラメーターを Runbook に追加し、次の例に示すように、**Start-AzureRmVM** コマンドレットでこれらの変数を使用します。  
-	
+1.	*VMName* と *ResourceGroupName* のパラメーターを Runbook に追加し、次の例に示すように、**Start-AzureRmVM** コマンドレットでこれらの変数を使用します。
+
     ```
     Param(
        [string]$VMName,
        [string]$ResourceGroupName
     )
-     $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
+     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
      Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
-     -ApplicationID `$Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint 
+     -ApplicationID `$Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
      Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
      ```
-<br> 
+<br>
 2.	Runbook を保存してテスト ウィンドウを開きます。テストで使用される 2 つの入力変数の値を指定できることに注意してください。
 3.	テスト ウィンドウを閉じます。
 4.	**[発行]** をクリックして、新しいバージョンの Runbook を発行します。
@@ -165,4 +165,4 @@ PowerShell Runbook のライフサイクル、機能、および管理は、Powe
 -	Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 -	PowerShell スクリプトのサポート機能の詳細については、[Azure Automation でのネイティブ PowerShell スクリプトのサポート](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)に関するブログを参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

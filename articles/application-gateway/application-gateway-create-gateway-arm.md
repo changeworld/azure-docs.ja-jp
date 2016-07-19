@@ -40,7 +40,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 ## 開始する前に
 
 1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。[ダウンロード ページ](https://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
-2. Application Gateway の仮想ネットワークとサブネットを作成します。仮想マシンまたはクラウドのデプロイメントでサブネットを使用していないことを確認します。Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
+2. 既存の仮想ネットワークがある場合は、既存の空のサブネットを選択するか、既存の仮想ネットワークにアプリケーション ゲートウェイ専用の新しいサブネットを作成します。アプリケーション ゲートウェイの背後にデプロイするリソースとは異なる仮想ネットワークにアプリケーション ゲートウェイをデプロイすることはできません。
 3. Application Gateway を使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
 
 ## Application Gateway の作成に必要な構成
@@ -270,4 +270,4 @@ SSL オフロードを構成する場合は、「[クラシック デプロイ �
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

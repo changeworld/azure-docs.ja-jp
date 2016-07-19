@@ -30,7 +30,7 @@
 - 正しい順序でデプロイされるようにリソース間の依存性を定義できます。
 - ロールベースの Access Control (RBAC) が管理プラットフォームにネイティブ統合されるため、リソース グループのすべてのサービスにアクセス制御を適用できます。
 - タグをリソースに適用し、サブスクリプションのすべてのリソースを論理的に整理できます。
-- グループ全体、または同じタグを共有するリソース グループのロールアップ コストを表示すると、組織への課金を明確に把握できます。  
+- グループ全体、または同じタグを共有するリソース グループのロールアップ コストを表示すると、組織への課金を明確に把握できます。
 
 リソース マネージャーには、ソリューションをデプロイして管理するための新しい方法が用意されています。以前のデプロイ モデルを使用していて、変更の詳細を確認する場合は、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
 
@@ -125,6 +125,32 @@ REST API の詳細については、[Azure リソース マネージャー REST 
 
 Azure リソース マネージャーでは、クロス オリジン リソース共有 (CORS) がサポートされています。CORS を使用すると、別のドメインに存在する Web アプリケーションからリソース マネージャー REST API または Azure サービス REST API を呼び出すことができます。CORS がサポートされていない場合は、Web ブラウザーによって、あるドメイン内のアプリは別のドメイン内のリソースにアクセスできないようになっています。リソース マネージャーを使用すると、有効な認証の資格情報を持つすべての要求で CORS が有効になります。
 
+## SDK とサンプル
+
+Azure の SDK は、複数の言語とプラットフォームで利用できます。これらの言語実装はそれぞれ、エコシステム パッケージ マネージャーと GitHub を介して入手できます。
+
+これらの SDK のコードはそれぞれ、Azure REST ベースの API 仕様から生成されます。これらの仕様はオープン ソースであり、Swagger 2.0 仕様に基づいています。SDK コードは、AutoRest と呼ばれるオープン ソース プロジェクトを使用して生成されています。AutoRest では、これらの REST ベースの API 仕様が、複数の言語でクライアント ライブラリに変換されます。SDK で生成されたコードに改善する箇所がある場合、広範に適用されている API 仕様形式に基づく、SDK を作成するためのツール全体が自由に使用できます。
+
+**サンプル**: 各種言語のサンプルをお選びください。
+
+- [.NET](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=dotnet) "*近日対応予定*"
+- [Java](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=java) "*近日対応予定*"
+- [Node.JS](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=nodejs)
+- [Python](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=python)
+- [PHP](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=php) "*近日対応予定*"
+- [Ruby](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=ruby)
+
+**Open Source SDK リポジトリ**: フィードバックや問題、プル要求をお待ちしております。
+
+- [.NET](https://github.com/Azure/azure-sdk-for-net)
+- [Java](https://github.com/Azure/azure-sdk-for-java)
+- [Node.JS](https://github.com/Azure/azure-sdk-for-node)
+- [PHP](https://github.com/Azure/azure-sdk-for-php)
+- [Python](https://github.com/Azure/azure-sdk-for-python)
+- [Ruby](https://github.com/Azure/azure-sdk-ruby)
+
+> [AZURE.NOTE] 必要な機能が SDK に備わっていない場合は、[Azure REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx) を直接呼び出すこともできます。
+
 ## 次のステップ
 
 - テンプレートの簡単な操作手順については、「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
@@ -136,4 +162,4 @@ Azure リソース マネージャーでは、クロス オリジン リソー�
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

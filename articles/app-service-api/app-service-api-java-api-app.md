@@ -14,7 +14,7 @@
 	ms.devlang="java"
 	ms.topic="get-started-article"
 	ms.date="06/01/2016"
-	ms.author="bradygaster"/>
+	ms.author="rachelap"/>
 
 # Azure App Service での Java API アプリの構築とデプロイ
 
@@ -338,4 +338,4 @@ Azure での Java の使用に関する詳細については、「[Java デベ�
 [copy-git-repo-url]: ./media/app-service-api-java-api-app/copy-git-repo-url.png
 [postman-calling-azure-contacts]: ./media/app-service-api-java-api-app/postman-calling-azure-contacts.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

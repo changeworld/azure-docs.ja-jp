@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Microsoft Azure Logic Apps で使用できる Microsoft が管理するコネクタの一覧 | Microsoft Azure App Service"
+	pageTitle="Microsoft Azure ロジック アプリで使用できる Microsoft が管理するコネクタの一覧 | Microsoft Azure App Service | Microsoft Azure"
 	description="Azure App Service でロジック アプリを構築する場合に使用できる、Microsoft が管理するコネクタの完全な一覧を提供します"
 	services="app-service\logic"
 	documentationCenter=""
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/31/2016"
+	ms.date="07/07/2016"
 	ms.author="deonhe"/>
 
 # コネクタの一覧
@@ -32,7 +32,7 @@
 |コネクタ||||
 |-----------|-----------|-----------|-----------|
 |[![API アイコン][blobicon]<br/>**Azure BLOB**][azureblobdoc]|[![API アイコン][boxicon]<br/>**Box**][boxDoc]|[![API アイコン][crmonlineicon]<br/>**CRM Online**][crmonlinedoc]|[![API アイコン][dropboxicon]<br/>**Dropbox**][dropboxdoc]|
-|[![API アイコン][facebookicon]<br/>**Facebook**][facebookdoc]|[![API アイコン][ftpicon]<br/>**FTP**][ftpdoc]|[![API アイコン][githubicon]<br/>**GitHub**][githubdoc]|[![API アイコン][googledriveicon]<br/>**Google<br/>ドライブ**][googledrivedoc]|
+|[![API アイコン][facebookicon]<br/>**Facebook**][facebookdoc]|[![API アイコン][ftpicon]<br/>**FTP**][ftpdoc]|[![API アイコン][githubicon]<br/>**GitHub**][githubdoc]|[![API アイコン][googledriveicon]<br/>**Google ドライブ**][googledrivedoc]|
 |[![API アイコン][mailchimpicon]<br/>**MailChimp**][mailchimpdoc]|[![API アイコン][microsofttranslatoricon]<br/>**Translator**][microsofttranslatordoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**Outlook**][office365outlookdoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**Users**][office365usersdoc]|
 |[![API アイコン][office365icon]<br/>**Office 365**<br/>**Video**][office365videodoc]|[![API アイコン][onedriveicon]<br/>**OneDrive**][onedrivedoc]|[![API アイコン][onedriveicon]<br/>**OneDrive<br/>for Business**][onedriveforbusinessdoc]|[![API アイコン][outlookicon]<br/>**Outlook**][outlookdoc]|
 |[![API アイコン][projectonlineicon]<br/>**Project<br/>Online**][projectonlinedoc]|[![API アイコン][rssicon]<br/>**RSS**][rssdoc]|[![API アイコン][salesforceicon]<br/>**Salesforce**][salesforcedoc]|[![API アイコン][sendgridicon]<br/>**SendGrid**][sendgriddoc]|
@@ -105,7 +105,7 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [as2doc]: ../app-service-logic/app-service-logic-enterprise-integration-as2.md "エンタープライズ統合 AS2 について説明します。"
 [x12doc]: ../app-service-logic/app-service-logic-enterprise-integration-x12.md "エンタープライズ統合 X12 について説明します。"
 [flatfiledoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します。"
-[flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します。"
+[flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md/#how-to-create-the-flat-file-decoding-connector "エンタープライズ統合フラット ファイルについて説明します。"
 [xmlvalidatedoc]: ../app-service-logic/app-service-logic-enterprise-integration-xml.md "エンタープライズ統合 XML 検証について説明します。"
 [xmltransformdoc]: ../app-service-logic/app-service-logic-enterprise-integration-transform.md "エンタープライズ統合変換について説明します。"
 
@@ -148,4 +148,4 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

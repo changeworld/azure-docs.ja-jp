@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
 	ms.date="05/03/2016" 
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # API Apps の概要
 
@@ -57,10 +57,10 @@ API Management と API Apps の一部の機能には同じような働きがあ�
 
 サンプル コードのデプロイによって API Apps の使用を開始するには、使用するフレームワークに対応したチュートリアルを参照してください。
 
-* [ASP.NET](app-service-api-dotnet-get-started.md) 
-* [Node.JS](app-service-api-nodejs-api-app.md) 
-* [Java](app-service-api-java-api-app.md) 
+* [ASP.NET](app-service-api-dotnet-get-started.md)
+* [Node.JS](app-service-api-nodejs-api-app.md)
+* [Java](app-service-api-java-api-app.md)
 
-API アプリに関する質問がある場合は、[API Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureAPIApps)でスレッドを開始します。
+API アプリに関する質問がある場合は、[API Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAPIApps)でスレッドを開始します。
 
-<!--------HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->
