@@ -25,7 +25,11 @@
 
 > [AZURE.VIDEO data-science-for-beginners-ask-a-question-you-can-answer-with-data]
 <!---Fix video-->
-<h2> トランスクリプト: データで回答できる質問をする</h2>
+トランスクリプト: データで回答できる質問をする
+
+
+<br>
+## トランスクリプト: データで回答できる質問をする
 
 "初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。
 
