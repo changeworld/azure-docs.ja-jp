@@ -25,6 +25,7 @@
 このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
 
 > [AZURE.VIDEO data-science-for-beginners-series-is-your-data-ready-for-data-science]
+<!---Fix video-->
 
 ## トランスクリプト: データ サイエンス用のデータの準備はお済みですか?
 

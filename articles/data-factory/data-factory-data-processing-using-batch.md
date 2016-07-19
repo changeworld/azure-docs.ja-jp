@@ -541,7 +541,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
     3.  **poolName** プロパティにプールの ID を入力します**。** このプロパティでは、プール名またはプール ID のいずれかを指定できます。
 
-    4.  **batchUri** JSON プロパティにバッチ URI を入力します。
+    4.  **batchUri** JSON プロパティにバッチ URI を入力します。  
     
 		> [AZURE.IMPORTANT] **[Azure Batch アカウント] ブレード**の **URL** は、次の形式です: \<accountname\>.\<region\>.batch.azure.com。JSON の **batchUri** プロパティでは、URL から **"accountname." を削除**する必要があります。例: "batchUri": "https://eastus.batch.azure.com"。
 
