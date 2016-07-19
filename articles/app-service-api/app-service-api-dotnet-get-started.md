@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="hero-article"
 	ms.date="05/27/2016"
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Azure App Service で API Apps、ASP.NET、Swagger を使用する
 
@@ -42,7 +42,7 @@
 
 ![](./media/app-service-api-dotnet-get-started/projectsinse.png)
 
-* **ToDoListAngular** - フロントエンド: 中間層を呼び出す AngularJS SPA。 
+* **ToDoListAngular** - フロントエンド: 中間層を呼び出す AngularJS SPA。
 
 * **ToDoListAPI** - 中間層: To Do 項目に対して CRUD 操作を実行するデータ層を呼び出す ASP.NET Web API プロジェクト。
 
@@ -86,7 +86,7 @@ Swagger のメタデータは、ASP.NET Web API プロジェクトで [Swashbuck
 
 チュートリアルのこのセクションでは、生成した Swagger 2.0 メタデータを確認し、Swagger メタデータに基づいてテスト UI を試します。
 
-2. スタートアップ プロジェクトとして (ToDoListAPI プロジェクト**ではなく**) ToDoListDataAPI プロジェクトを設定します。 
+2. スタートアップ プロジェクトとして (ToDoListAPI プロジェクト**ではなく**) ToDoListDataAPI プロジェクトを設定します。
  
 4. F5 キーを押すか、**[デバッグ]、[デバッグ開始]** の順にクリックしてデバッグ モードでプロジェクトを実行します。
 
@@ -203,7 +203,7 @@ Swagger のメタデータは、ASP.NET Web API プロジェクトで [Swashbuck
 
 Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できます。Swagger メタデータ生成を既存のプロジェクトに追加する場合、Swashbuckle パッケージをインストールします。
 
-**注:** Swagger のメタデータには、各 API 操作の一意の ID が含まれます。既定では、Web API コントローラー メソッドに対して重複する Swagger 操作 ID が Swashbuckle によって生成される場合があります。この現象は、コントローラーに HTTP メソッドのオーバーロード (`Get()` と `Get(id)` など) が存在すると発生します。オーバーロードの扱い方については、「[Swashbuckle が生成する API 定義をカスタマイズする](app-service-api-dotnet-swashbuckle-customize.md)」を参照してください。Visual Studio から Azure API アプリ テンプレートを使って Web API プロジェクトを作成した場合、一意の操作 ID を生成するコードが *SwaggerConfig.cs* ファイルに自動的に追加されます。
+**注: ** Swagger のメタデータには、各 API 操作の一意の ID が含まれます。既定では、Web API コントローラー メソッドに対して重複する Swagger 操作 ID が Swashbuckle によって生成される場合があります。この現象は、コントローラーに HTTP メソッドのオーバーロード (`Get()` と `Get(id)` など) が存在すると発生します。オーバーロードの扱い方については、「[Swashbuckle が生成する API 定義をカスタマイズする](app-service-api-dotnet-swashbuckle-customize.md)」を参照してください。Visual Studio から Azure API アプリ テンプレートを使って Web API プロジェクトを作成した場合、一意の操作 ID を生成するコードが *SwaggerConfig.cs* ファイルに自動的に追加されます。
 
 ## <a id="createapiapp"></a> Azure で API アプリを作成し、そのアプリにコードをデプロイする
 
@@ -233,7 +233,7 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 
 	既に他のユーザーによって使用されている名前を入力すると、右側に赤い感嘆符が表示されます。
 
-	API アプリの URL は、`{APi app name}.azurewebsites.net` となります。
+	API アプリの URL は、`{API app name}.azurewebsites.net` となります。
 
 6. **[リソース グループ]** ボックスの一覧の **[新規作成]** をクリックし、「ToDoListGroup」(またはお好きな名前) を入力します。
 
@@ -391,7 +391,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 
 	コンストラクターのパラメーターでは、`toDoListDataAPIURL` アプリ設定からエンドポイント URL を取得しています。アプリケーションをローカルで実行できるようにするため、Web.config ファイルで、その値を API プロジェクトのローカル IIS Express URL に設定します。コンストラクター パラメーターを省略した場合、既定のエンドポイントはコードの生成元の URL です。
 
-6. クライアント クラスは、API アプリ名に基づいて別の名前で生成されます。プロジェクトで生成された型名と同じになるように、*Controllers\\ToDoListController.cs* のコードに変更を加えます。たとえば、API アプリに ToDoListDataAPI0121 という名前を付けた場合は、次のコードに変更を加え、
+6. クライアント クラスは、API アプリ名に基づいて別の名前で生成されます。プロジェクトで生成された型名と同じになるように、*Controllers\\ToDoListController.cs* のコードに変更を加えます。たとえば、API アプリに ToDoListDataAPI071316 という名前を付けた場合は、次のコードに変更を加え、
 
 		private static ToDoListDataAPI NewDataAPIClient()
 		{
@@ -399,9 +399,9 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 
 次のようにします。
 
-		private static ToDoListDataAPI0121 NewDataAPIClient()
+		private static ToDoListDataAPI071316 NewDataAPIClient()
 		{
-		    var client = new ToDoListDataAPI0121(new Uri(ConfigurationManager.AppSettings["toDoListDataAPIURL"]));
+		    var client = new ToDoListDataAPI071316(new Uri(ConfigurationManager.AppSettings["toDoListDataAPIURL"]));
 
 
 ## 中間層をホストする API アプリを作成する
@@ -445,7 +445,7 @@ ToDoListAPI プロジェクトには既に生成済みのクライアント コ�
 	| **キー** | toDoListDataAPIURL |
 	|---|---|
 	| **値** | https://{your data tier API app name}.azurewebsites.net |
-	| **例** | https://todolistdataapi0121.azurewebsites.net |
+	| **例** | https://todolistdataapi.azurewebsites.net |
 
 4. **[保存]** をクリックします。
 
@@ -491,4 +491,4 @@ ASP.NET API アプリが Azure App Service で動作するようになったら�
 
 **[Azure API App]** プロジェクト テンプレートは、**[Empty]** ASP.NET 4.5.2 テンプレートを選択し、Web API サポートを追加するためのチェック ボックスをオンにして、Swashbuckle NuGet パッケージをインストールしたものに相当します。加えて、Swagger の操作 ID が重複して作成されるのを防ぐための Swashbuckle 構成コードが追加されます。API アプリ プロジェクトを作成したら、それをこのチュートリアルで説明した手順と同じ方法で API アプリにデプロイすることができます。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

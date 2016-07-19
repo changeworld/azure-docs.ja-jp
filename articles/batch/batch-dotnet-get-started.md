@@ -363,7 +363,7 @@ private static async Task CreateJobAsync(
 
 ![ジョブにタスクを追加する][5]<br/> *(1) タスクをジョブに追加します。(2) ノードで実行されるようにタスクをスケジュールします。(3) タスクで処理対象のデータ ファイルをダウンロードします。*
 
-実際に作業を実行するには、タスクをジョブに追加する必要があります。コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][net_task_resourcefiles] \(プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][net_task] を構成します。*DotNetTutorial* サンプル プロジェクトでは、各タスクで処理されるファイルは 1 つだけです。したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
+実際に作業を実行するには、タスクをジョブに追加する必要があります。コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][net_task_resourcefiles] (プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][net_task] を構成します。*DotNetTutorial* サンプル プロジェクトでは、各タスクで処理されるファイルは 1 つだけです。したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
 
 ```
 private static async Task<List<CloudTask>> AddTasksAsync(
@@ -754,4 +754,4 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [10]: ./media/batch-dotnet-get-started/credentials_storage_sm.png "ポータルの Storage の資格情報"
 [11]: ./media/batch-dotnet-get-started/batch_workflow_minimal_sm.png "Batch ソリューション ワークフロー (最小限の図)"
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

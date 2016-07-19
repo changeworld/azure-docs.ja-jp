@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Microsoft Power BI Embedded プレビュー - IFrame を使用した Power BI レポートの埋め込み"
-   description="Microsoft Power BI Embedded プレビュー - レポートをアプリに統合するための基本コード、Power BI Embedded アプリ トークンの認証方法、レポートの取得方法"
+   pageTitle="Microsoft Power BI Embedded - IFrame を使用した Power BI レポートの埋め込み"
+   description="Microsoft Power BI Embedded - レポートをアプリに統合するための基本コード、Power BI Embedded アプリ トークンの認証方法、レポートの取得方法"
    services="power-bi-embedded"
    documentationCenter=""
    authors="minewiskan"
@@ -13,17 +13,15 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="06/28/2016"
+   ms.date="07/05/2016"
    ms.author="owend"/>
 
 # IFrame を使用した Power BI レポートの埋め込み
 この記事では、**Power BI Embedded** REST API、アプリ トークン、IFrame、およびいくつかの JavaScript を使用して、アプリへのレポートの統合または埋め込みを行うための基本コードについて説明します。
 
-「[Microsoft Power BI Embedded プレビューを使ってみる](power-bi-embedded-get-started.md)」では、レポート コンテンツ用の 1 つ以上の**ワークスペース**を保持する**ワークスペース コレクション**を構成する方法について説明します。その後、「[Microsoft Power BI Embedded の使用を開始するためのサンプル](power-bi-embedded-get-started-sample.md)」で、レポートを**ワークスペース**にインポートします。
+「[Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)」では、レポート コンテンツ用の 1 つ以上の**ワークスペース**を保持する**ワークスペース コレクション**を構成する方法について説明します。その後、「[Microsoft Power BI Embedded の使用を開始するためのサンプル](power-bi-embedded-get-started-sample.md)」で、レポートを**ワークスペース**にインポートします。
 
 この記事では、レポートをアプリに埋め込む手順について説明します。この記事の手順を実行するには、GitHub で [IFrame を使用したレポートの統合](https://github.com/Azure-Samples/power-bi-embedded-iframe)サンプルをダウンロードする必要があります。このサンプルは、レポートを統合するために必要となる C# と JavaScript の基本コードを示すことを目的とした、簡単な ASP.NET Web フォーム アプリです。レポートの統合にモデル ビュー コントローラー (MVC) 設計パターンを使用する、さらに高度なサンプルについては、GitHub の[ダッシュボード Web アプリのサンプル](http://go.microsoft.com/fwlink/?LinkId=761493)を参照してください。
-
-それでは、**Power BI Embedded** レポートをアプリに統合する方法の説明を開始しましょう。
 
 レポートを統合するための手順を次に示します。
 
@@ -32,9 +30,9 @@
 
 サンプルを実行してレポートの統合方法を確認する場合は、GitHub で [IFrame を使用したレポートの統合](https://github.com/Azure-Samples/power-bi-embedded-iframe)サンプルをダウンロードし、次の 3 つの Web.Config 設定を構成します。
 
-- **AccessKey**: **AccessKey** は、レポートの取得と埋め込みに使用される JSON Web トークン (JWT) を生成するために使用します。**AccessKey** を取得する方法については、「[Microsoft Power BI Embedded プレビューを使ってみる](power-bi-embedded-get-started.md)」を参照してください。
-- **WorkspaceName**: **WorkspaceName** を取得する方法については、「[Microsoft Power BI Embedded プレビューを使ってみる](power-bi-embedded-get-started.md)」を参照してください。
-- **WorkspaceId**: **WorkspaceId** を取得する方法については、「[Microsoft Power BI Embedded プレビューを使ってみる](power-bi-embedded-get-started.md)」を参照してください。
+- **AccessKey**: **AccessKey** は、レポートの取得と埋め込みに使用される JSON Web トークン (JWT) を生成するために使用します。**AccessKey** を取得する方法については、「[Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)」を参照してください。
+- **WorkspaceName**: **WorkspaceName** を取得する方法については、「[Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)」を参照してください。
+- **WorkspaceId**: **WorkspaceId** を取得する方法については、「[Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)」を参照してください。
 
 次のセクションでは、レポートの統合に必要なコードについて説明します。
 
@@ -213,19 +211,16 @@ $filter=Store/Chain%20eq%20'Lindseys'
 &filterPaneEnabled=false
 ```
 
-## まとめ
+## その他のリソース
 
-この記事では、**Power BI** レポートをアプリに統合するためのコードを紹介しました。アプリへのレポートの統合をすぐに開始するには、次に示すサンプルを GitHub でダウンロードしてください。
+この記事では、**Power BI** レポートをアプリに統合するためのコードを紹介しました。GitHub には他にも次のサンプルが用意されています。ぜひご覧ください。
 
 - [IFrame を使用したレポートの統合サンプル](https://github.com/Azure-Samples/power-bi-embedded-iframe)
 - [Sample dashboard web app](http://go.microsoft.com/fwlink/?LinkId=761493)
 
 ## 関連項目
-- [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューの使用を開始する)](power-bi-embedded-get-started.md)
-- [Get started with Microsoft Power BI Embedded sample (Microsoft Power BI Embedded のサンプルの使用)](power-bi-embedded-get-started-sample.md)
 - [System.IdentityModel.Tokens.SigningCredentials](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
 - [System.IdentityModel.Tokens.JwtSecurityToken](https://msdn.microsoft.com/library/system.identitymodel.tokens.jwtsecuritytoken.aspx)
 - [System.IdentityModel.Tokens.JwtSecurityTokenHandler](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
-- [Get Reports](https://msdn.microsoft.com/library/mt711510.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

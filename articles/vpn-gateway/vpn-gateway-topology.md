@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/18/2016"
+   ms.date="07/13/2016"
    ms.author="cherylmc" />
 
 # Azure VPN Gateway 接続トポロジ
@@ -104,4 +104,4 @@ ExpressRoute は、パブリックなインターネットを経由せず、WAN 
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0713_2016-->

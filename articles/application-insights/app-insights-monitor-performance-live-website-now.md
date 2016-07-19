@@ -180,6 +180,12 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 
 監視の開始と停止は、PowerShell を使って実行できます。
 
+最初に Application Insights モジュールをインポートします。
+
+`Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'`
+
+監視されているアプリを特定します。
+
 `Get-ApplicationInsightsMonitoringStatus [-Name appName]`
 
 * `-Name` (省略可能) Web アプリの名前。
@@ -195,7 +201,7 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 `Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-000-000-000-0000000`
 
 * `-Name` IIS に存在するアプリの名前。
-* `-InstrumentationKey` 結果を表示する Application Insights リソースのキー。
+* `-InstrumentationKey` 結果を表示する Application Insights リソースの ikey。
 
 * このコマンドレットが作用するのは、まだインストルメント化されていないアプリ (SdkState==NotInstrumented) だけです。
 
@@ -284,4 +290,4 @@ Web アプリが Azure に存在するとき、Azure Resource Manager テンプ�
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

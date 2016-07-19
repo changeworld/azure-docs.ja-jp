@@ -100,7 +100,7 @@ Azure IoT Hub デバイス管理を利用するには、Azure IoT Hub を作成�
 
 このスクリプトでは、次の処理が実行されます。
 
-1.  **cmake** を実行し、シミュレートされたデバイス用に Visual Studio 2015 ソリューションを作成します。このプロジェクト ファイルは、**azure-iot-sdks\\csharp\\service\\samples\\cmake\\iotdm\_client\\samples\\iotdm\_simple\_sample\\iotdm\_simple\_sample.vcxproj** です。ソース ファイルは **azure-iot-sdks\\c\\iotdm\_client\\samples\\iotdm\_simple\_sample** フォルダーにあることに注意してください。
+1.  **cmake** を実行し、シミュレートされたデバイス用に Visual Studio 2015 ソリューションを作成します。このプロジェクト ファイルは、**azure-iot-sdks\\csharp\\service\\samples\\cmake\\iotdm\_client\\samples\\iotdm\_simple\_sample\\iotdm\_simple\_sample.vcxproj** です。ソース ファイルは ***azure-iot-sdks\\c\\iotdm\_client\\samples\\iotdm\_simple\_sample** フォルダーにあることに注意してください。
 
 2.  シミュレートされたデバイスの **iotdm\_simple\_sample.vcxproj** プロジェクトをビルドします。
 
@@ -177,7 +177,9 @@ IoT Hub のプロビジョニングが完了し、複数のシミュレートさ
 
 ## 次のステップ
 
-Azure IoT Hub デバイス管理機能について学習を継続するには、「[Explore Azure IoT Hub device management using the sample UI (サンプル UI を使用して Azure IoT Hub デバイス管理について確認する)][lnk-sample-ui]」チュートリアルを参照してください。
+引き続き IoT Hub の使用法を確認するには、[Gateway SDK の概要][lnk-gateway-SDK]に関するページを参照してください。
+
+Azure IoT Hub デバイス管理機能について詳しくは、「[サンプル UI を使用した Azure IoT Hub デバイス管理の探究][lnk-sample-ui]」チュートリアルを参照してください。
 
 <!-- images and links -->
 [img-new-hub]: media/iot-hub-device-management-get-started/image1.png
@@ -193,5 +195,6 @@ Azure IoT Hub デバイス管理機能について学習を継続するには、
 [リソース グループを使用した Azure リソースの管理]: ../azure-portal/resource-group-portal.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
 [lnk-sample-ui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

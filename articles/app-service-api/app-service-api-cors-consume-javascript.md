@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="get-started-article"
 	ms.date="05/27/2016"
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # CORS を使用して JavaScript から API アプリを使用する
 
@@ -285,4 +285,4 @@ API アプリで Azure API Management を使用する場合は、API アプリ�
 
 この記事では、クライアントの JavaScript コードが、別のドメイン内の API を呼び出すための App Service の CORS サポートを有効にする方法を説明しました。API アプリの詳細については、[App Service での認証についての概要](../app-service/app-service-authentication-overview.md)を確認してから、[API アプリのユーザー認証](app-service-api-dotnet-user-principal-auth.md)のチュートリアルに進んでください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

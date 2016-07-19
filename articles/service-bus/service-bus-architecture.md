@@ -1,23 +1,23 @@
 <properties 
     pageTitle="Service Bus のアーキテクチャ | Microsoft Azure"
-    description="Azure Service Bus のメッセージ処理アーキテクチャについて説明します。"
+    description="Azure Service Bus のメッセージとリレーの処理アーキテクチャについて説明します。"
     services="service-bus"
     documentationCenter="na"
     authors="sethmanheim"
     manager="timlt"
-    editor="tysonn" />
+    editor="" />
 <tags 
     ms.service="service-bus"
     ms.devlang="na"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="04/19/2016"
+    ms.date="07/11/2016"
     ms.author="sethm" />
 
 # Service Bus のアーキテクチャ
 
-この記事では、Azure Service Bus のメッセージ処理アーキテクチャについて説明します。
+この記事では、Azure Service Bus のメッセージとリレーの処理アーキテクチャについて説明します。
 
 ## Service Bus スケール ユニット
 
@@ -53,10 +53,10 @@ Service Bus の名前空間は、スケール ユニットにマップされま�
 
 ## 次のステップ
 
-ここまで、Service Bus のしくみの概要を説明しました。使用を開始するには、次のリンクを参照してください。
+ここまで、Service Bus のアーキテクチャの概要を説明しました。使用を開始するには、次のリンクを参照してください。
 
 - [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus キューを使用するキューに格納されたメッセージング ソリューション](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/07/2016"
+   ms.date="07/07/2016"
    ms.author="nitinme"/>
 
 # Azure PowerShell で Azure Data Lake Analytics の使用を開始する
@@ -43,7 +43,7 @@ Azure PowerShell を使用して、Azure Data Lake Store アカウントを作�
 
 ## Azure Data Lake Store アカウントを作成する
 
-1. デスクトップで、新しい Azure PowerShell ウィンドウを開き、次のスニペットを入力して Azure アカウントにログインし、サブスクリプションを設定して、Data Lake Store プロバイダーを登録します。ログインを求められたら、必ず、サブスクリプションの管理者または所有者としてログインしてください。
+1. デスクトップで、新しい Windows PowerShell ウィンドウを開き、次のスニペットを入力して Azure アカウントにログインし、サブスクリプションを設定して、Data Lake Store プロバイダーを登録します。ログインを求められたら、必ず、サブスクリプションの管理者または所有者としてログインしてください。
 
         # Log in to your Azure account
 		Login-AzureRmAccount
@@ -141,4 +141,4 @@ Data Lake Store アカウントを削除するには、以下のコマンドを�
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

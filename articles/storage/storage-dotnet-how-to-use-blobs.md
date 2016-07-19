@@ -33,13 +33,18 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 
 **前提条件:**
 
-- [Microsoft Visual Studio](https://www.visualstudio.com/ja-JP/visual-studio-homepage-vs.aspx)
+- [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
 - [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
 - [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 - [Azure ストレージ アカウント](storage-create-storage-account.md#create-a-storage-account)
 
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
+
+### その他のサンプル
+
+Blob Storage を使用したその他の例については、「[Getting Started with Azure Blob Storage in .NET (.NET での Azure Blob Storage の使用)](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)」を参照してください。サンプル アプリケーションをダウンロードして実行することも、GitHub でコードを参照することもできます。
+
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
@@ -366,12 +371,16 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
 
 Azure Storage では、クライアント側とサーバー側の両方で、BLOB データの暗号化をサポートしています。
 
-- **クライアント側の暗号化**: .NET 用 Storage クライアント ライブラリは、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは Azure Key Vault との統合にも役立ち、ストレージ アカウント キー管理に利用することができます。詳細については、「[.NET による Microsoft Azure Storage のクライアント側の暗号化](storage-client-side-encryption.md)」を参照してください。また、「[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](storage-encrypt-decrypt-blobs-key-vault.md)」も参照してください。
-- **サーバー側の暗号化**: Azure Storage は、現在、サーバー側の暗号化をサポートしています。「[Azure Storage Service Encryption for Data at Rest (プレビュー)](storage-service-encryption.md)」を参照してください。 
+- **クライアント側の暗号化**: .NET 用 ストレージ クライアント ライブラリは、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは Azure Key Vault との統合にも役立ち、ストレージ アカウント キー管理に利用することができます。詳細については、[.NET による Microsoft Azure Storage のクライアント側の暗号化](storage-client-side-encryption.md)についてのページを参照してください。また、「[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](storage-encrypt-decrypt-blobs-key-vault.md)」も参照してください。
+- **サーバー側の暗号化**: Azure Storage は現在、サーバー側の暗号化をサポートしています。「[Azure Storage Service Encryption for Data at Rest (プレビュー)](storage-service-encryption.md)」を参照してください。
 
 ## 次のステップ
 
 これで、Blob Storage の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
+
+### Blob Storage のサンプル
+
+- [.Net での Azure Blob Storage の概要](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)
 
 ### Blob Storage リファレンス
 
@@ -395,4 +404,4 @@ Azure Storage では、クライアント側とサーバー側の両方で、BLO
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->
