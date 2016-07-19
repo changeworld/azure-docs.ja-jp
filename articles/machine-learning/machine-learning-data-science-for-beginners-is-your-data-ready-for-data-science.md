@@ -24,12 +24,11 @@
 
 このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
 
-> [AZURE.VIDEO data-science-for-beginners-series-is-your-data-ready-for-data-science]<!---Fix video-->
-
+> [AZURE.VIDEO data-science-for-beginners-series-is-your-data-ready-for-data-science]
+<!---Fix video-->
+<p>
 ## トランスクリプト: データ サイエンス用のデータの準備はお済みですか?
-
-トランスクリプト: データ サイエンス用のデータの準備はお済みですか?
-
+</p>
 "初心者向けデータ サイエンス" シリーズの 2 番目のビデオ「データ サイエンス用のデータの準備はお済みですか?」へようこそ。
 
 データ サイエンスから必要な回答を得るには、高品質の原材料を提供して操作できるようにする必要があります。ピザを作るのと同じで、最初の材料が良いほど最終的な製品も良くなります。
@@ -118,4 +117,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016--->
+<!---HONumber=AcomDC_0706_2016---->
