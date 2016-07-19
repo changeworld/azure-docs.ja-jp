@@ -23,9 +23,9 @@
 
 このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
 
-> [AZURE.VIDEO data-science-for-beginners-ask-a-question-you-can-answer-with-data]
+<div class="wa-video-container" data-control="video-container" data-slug="data-science-for-beginners-ask-a-question-you-can-answer-with-data"> <a title="Data science for beginners: Ask a question you can answer with data" class="wa-video-thumbnail" href="/en-us/documentation/videos/data-science-for-beginners-ask-a-question-you-can-answer-with-data/" data-control="video" data-event="videopage-clicked-videothumbnail" data-event-property="data-science-for-beginners-ask-a-question-you-can-answer-with-data" data-caption="" data-ch9="//channel9.msdn.com/Blogs/Windows-Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player/" data-expanding="false"> <img class="thumbnail" alt="Data science for beginners: Ask a question you can answer with data" src="https://sec.ch9.ms/ch9/fde7/9f858f2c-1472-4345-a8e2-be99535cfde7/DataScienceForBeginnersAskQuestionYouCanAnswerWit_960.jpg"> <img class="play-icon" src="/cdn/cvt-a29a0e789afe7f47464f393c011b53f210c511ee5fed2c4c9c0633442f30d6ec/images/icon/VideoPlay.svg"> <span class="metadata"> <span class="date"> <span>06-28-2016</span> <span>04 min, 17 sec</span> </span> </span> </a> </div>
 
-##  トランスクリプト:データで回答できる質問をする
+## トランスクリプト:データで回答できる質問をする
 
 初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。
 
@@ -99,4 +99,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016----->
+<!---HONumber=AcomDC_0706_2016--->
