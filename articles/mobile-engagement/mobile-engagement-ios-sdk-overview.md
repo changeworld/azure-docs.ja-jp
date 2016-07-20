@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure Mobile Engagement iOS SDK の概要"
+	pageTitle="Azure Mobile Engagement iOS SDK の概要 | Microsoft Azure"
 	description="Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
 	services="mobile-engagement"
 	documentationCenter="mobile"
 	authors="piyushjo"
-	manager="dwrede"
+	manager="erikre"
 	editor="" />
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="02/29/2016"
-	ms.author="MehrdadMzfr" />
+	ms.date="06/30/2016"
+	ms.author="piyushjo" />
 
 #iOS SDK for Azure Mobile Engagement
 
@@ -32,9 +32,9 @@
 
 ##リリース ノート
 
-###3\.2.2 (2016 年 4 月 7 日)
+###3\.2.4 (2016 年 6 月 30 日)
 
--   クラッシュの原因となる場合がある HTTP 要求のキャンセルに関するバグを修正。 
+-   技術的なログと他のログとの間の集計を修正。
 
 以前のバージョンについては、「[完全リリース ノート](mobile-engagement-ios-release-notes.md)」をご覧ください。
 
@@ -59,4 +59,4 @@ AEPushDelegate.h インターフェイスは廃止されるため、すべての
 	-(void)didFailToRetrieveLaunchMessage;
 	-(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

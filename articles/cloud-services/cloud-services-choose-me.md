@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/15/2016" 
+	ms.date="07/05/2016" 
 	ms.author="adegeo"/>
 
 # Cloud Services と他のサービスのどちらを選択すればよいか
@@ -57,4 +57,4 @@ PaaS という Cloud Services の本質には、他の含意もあります。�
 ## 次のステップ
 [.NET でのクラウド サービス アプリの作成](cloud-services-dotnet-get-started.md) [Node.js でのクラウド サービス アプリの作成](cloud-services-nodejs-develop-deploy-app.md) [PHP でのクラウド サービス アプリの作成](../cloud-services-php-create-web-role.md) [Python でのクラウド サービス アプリの作成](../cloud-services-python-ptvs.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

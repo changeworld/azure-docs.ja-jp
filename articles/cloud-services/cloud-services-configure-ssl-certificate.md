@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/19/2016"
+	ms.date="07/05/2016"
 	ms.author="adegeo"/>
 
 
@@ -44,7 +44,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 -   証明書は秘密キーを含む必要があります。
 -   証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
--   証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。証明機関 (CA) から cloudapp.net ドメインの SSL 証明書を取得することはできません。サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。たとえば、カスタム ドメイン名が **contoso.com** である場合は、****.contoso.com** または **www.contoso.com** の証明書を CA に要求します。
+-   証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。証明機関 (CA) から cloudapp.net ドメインの SSL 証明書を取得することはできません。サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。たとえば、カスタム ドメイン名が **contoso.com** である場合は、***.contoso.com** または **www.contoso.com** の証明書を CA に要求します。
 -   証明書では、2048 ビット以上の暗号化を使用する必要があります。
 
 テスト目的で、自己署名証明書を[作成して](cloud-services-certs-create.md)使用できます。自己署名証明書は CA を通じて認証されないため、cloudapp.net ドメインを Web サイト URL として使用できます。たとえば、下のタスクでは自己署名証明書を使用しますが、証明書で使用される共通名 (CN) は **sslexample.cloudapp.net** です。
@@ -138,7 +138,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 デプロイメント パッケージがこの証明書を使用するように更新され、HTTPS エンドポイントが追加されました。これで、Azure クラシック ポータルを使用して Azure にパッケージと証明書をアップロードできるようになりました。
 
-1. [Azure クラシック ポータル][]にログインします。 
+1. [Azure クラシック ポータル][]にログインします。
 2. 左側のナビゲーション ウィンドウで、**[Cloud Services]** をクリックします。
 3. 目的のクラウド サービスをクリックします。
 4. **[証明書]** タブをクリックします。
@@ -182,4 +182,4 @@ Azure でデプロイメントを実行できるようになったため、HTTPS
   [3]: ./media/cloud-services-configure-ssl-certificate/SSLCloudService.png
   [4]: ./media/cloud-services-configure-ssl-certificate/AddCertificateComplete.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -41,11 +41,11 @@ Recommendation ビルドには魅力的な機能が 2 つあります。
 
  コールド項目の配置を使用する場合、カタログ内の各項目について特徴情報を指定する必要があります。カタログの最初の数行は次のようになります (特徴がキーと値の形式であることに注意)。
 
-> 6CX-00001,Surface Pro2, Surface, Type=Hardware, Storage=128GB, Memory=4G, Manufacturer=Microsoft
+> 6CX-00001,Surface Pro2, Surface,, Type=Hardware, Storage=128GB, Memory=4G, Manufacturer=Microsoft
 
-> 73H-00013,Wake Xbox 360,Gaming, Type=Software, Language=English, Rating=Mature
+> 73H-00013,Wake Xbox 360,Gaming,, Type=Software, Language=English, Rating=Mature
 
-> WAH-0F05,Minecraft Xbox 360,Gaming, * Type=Software, Language=Spanish, Rating=Youth
+> WAH-0F05,Minecraft Xbox 360,Gaming,, * Type=Software, Language=Spanish, Rating=Youth
 
 > ...
 
@@ -64,6 +64,26 @@ Recommendation ビルドには魅力的な機能が 2 つあります。
  ユーザー推奨を利用する典型的な例として、ユーザーが初めてストア/サイトのウェルカム ページにログインしたときが挙げられます。ここで、特定のユーザーを対象とするコンテンツを宣伝できます。
  
  また、ユーザーによる支払いの際に Recommendation ビルド タイプを利用したい場合もあります。この時点では、顧客が購入しようとしている項目の一覧があるため、その時点での買い物かごに基づいた推奨を提供するチャンスです。
+ 
+#### 推奨ビルドのパラメーター 
+ 
+| 名前 | 	説明 |	 型、<br>有効な値 <br> (既定値)
+|-------|-------------------|------------------
+| NumberOfModelIterations |	モデルが実行するイテレーションの数は、全体的なコンピューティング時間とモデルの精度に反映されます。数値が高いと精度が向上しますが、コンピューティング時間が長くなります。 |	 整数、<br>10 ～ 50<br>既定: 40 
+| NumberOfModelDimensions |	ディメンションの数は、データ内でモデルが検索しようとする「特徴」の数に関連しています。ディメンションの数を増やすと、結果をより詳細に微調整して、小さいクラスターにすることができます。ただし、ディメンションが多すぎると、モデルが項目間の相関関係を検出できなくなります。 |	整数、<br>10 ～ 40<br>既定: 20 |
+| ItemCutOffLowerBound |	特定の項目がモデルで考慮されるために存在する必要のある使用状況ポイントの最小数を定義します。 |		整数、<br> 2 以上<br>既定: 2 |
+| ItemCutOffUpperBound | 	特定の項目がモデルで考慮されるために存在する必要のある使用状況ポイントの最大数を定義します。 | 整数、<br> 2 以上<br> 既定: 2147483647 |
+|UserCutOffLowerBound |	特定のユーザーがモデルで考慮されるために実行すべきトランザクションの最小数を定義します。 |	整数、<br> 2 以上<br>既定: 2 
+| ItemCutOffUpperBound |	特定のユーザーがモデルで考慮されるために実行すべきトランザクションの最大数を定義します。 |	整数、<br>2 以上<br>既定: 2147483647|
+| UseFeaturesInModel |	推奨モデルを強化するために特徴を使用するかどうかを示します。 | 	 ブール<br> 既定: True 
+|ModelingFeatureList |	推奨事項を強化するために推奨事項のビルドに使用される、特徴名のコンマ区切りの一覧。(重要となる機能に依存) |	文字列、最大 512 文字
+| AllowColdItemPlacement |	推奨事項が特徴の類似性を使用してコールド項目もプッシュするかどうかを示します。 | ブール<br>既定: False	
+| EnableFeatureCorrelation | 理由で特徴を使用するかどうかを示します。 |	ブール<br>既定: False
+| ReasoningFeatureList |	理由の文 (推奨事項の説明など) に使用される特徴名のコンマ区切りの一覧。(カスタマーにとって重要となる機能に依存) | 文字列、最大 512 文字
+| EnableU2I |	個人用に設定された推奨事項、別名U2I (ユーザーから項目の推奨事項) を許可します。 | ブール<br> 既定: True
+|EnableModelingInsights |	モデル化についての洞察 (精度、多様性のメトリックなど) を収集するためにオフライン評価を実行するかどうかを定義します。true に設定した場合、データの一部は、モデルのテスト用に予約する必要があるため、トレーニングに使用されません。詳細については、「[オフライン評価](#OfflineEvaluation)」を参照してください。 | ブール<br>既定: False
+| SplitterStrategy | EnableModelingInsights を true に設定した場合、評価目的でのデータの分割方法を指定します。 | 文字列、*RandomSplitter* または *LastEventSplitter*<br>既定: RandomSplitter 
+
 
 <a name="FBTBuild"></a>
 ### FBT ビルド タイプ ###
@@ -77,6 +97,16 @@ Lumia 650 フォンの例では、あるスマートフォン X は、それが 
 現在、ユーザー ID とタイムスタンプが同じであるトランザクションで 2 つの項目が発生した場合に、これらは同じセッションで購入されたと想定されます。
 
 現時点の FBT ビルドでは、コールド項目はサポートされていません。その名前が示すとおり、同じトランザクション内で実際に 2 つの項目が購入されることを想定しているためです。FBT ビルドでは項目のセット (トリプレット) を返すことができますが、入力として単一のシード項目を受け取るため、個人に合わせた推奨はサポートされていません。
+
+
+#### FBT ビルド パラメーター 
+ 
+| 名前 | 	説明 |		型、<br>有効な値 <br> (既定値)
+|-------|---------------|-----------------------
+| FbtSupportThreshold | モデルがどの程度控えめか。モデル化で考慮すべき項目の同時発生の数。 | 整数、<br>3 ～ 50 <br>既定: 6 
+| FbtMaxItemSetSize | 頻度のセット内のアイテム数の限度を定めます。| 整数、<br>2 ～ 3<br>既定: 2
+| FbtMinimalScore | 返される結果に含めるために頻度のセットが持つべきスコアの最小値。大きいほど良好です。 | 倍精度浮動小数点型<br>0 以上<br>既定: 0
+| FbtSimilarityFunction | ビルドで使用する類似関数を定義します。リフトではセレンディピティが、共起では予測可能性が、2 項間では Jaccard が適しています。 | 文字列、<br><i>cooccurrence、lift、jaccard</i><br>既定: <i>jaccard</i> 
 
 <a name="SelectBuild"></a>
 ## 最適なビルドを選択する方法 ##
@@ -241,4 +271,4 @@ Lumia 650 フォンの例では、あるスマートフォン X は、それが 
     "IsFaulted": false
     }
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

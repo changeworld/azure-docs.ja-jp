@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="03/09/2016"
+ ms.date="06/30/2016"
  ms.author="krisragh"/>
 
 # Azure Scheduler で複雑なスケジュールと高度な繰り返しを構築する方法  
@@ -132,7 +132,7 @@ _schedule_ の要素を次の表に示します。
 |:---|:---|:---|
 |**分**|ジョブを実行する時刻 (分)|<ul><li>整数、または</li><li>整数の配列</li></ul>|
 |**hours**|ジョブを実行する時刻 (時)|<ul><li>整数、または</li><li>整数の配列</li></ul>|
-|**weekDays**|ジョブを実行する曜日。週単位の頻度だけを指定できます。|<ul><li>"Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、または "Sunday"</li><li>、上記のいずれかの値の配列 (最大配列サイズは 7) </li></ul>大文字小文字は区別されない|
+|**weekDays**|ジョブを実行する曜日。週単位の頻度だけを指定できます。|<ul><li>"Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、または "Sunday"</li><li>、上記のいずれかの値の配列 (最大配列サイズは 7) </li></ul>大文字小文字は_区別されない_|
 |**monthlyOccurrences**|ジョブを実行する月の日にちを指定します。月単位の頻度だけを指定できます。|<ul><li>monthlyOccurence オブジェクトの配列:</li></ul> <pre>{ "day": _day_,<br /> "occurrence": _occurence_<br />}</pre><p> _day_ はジョブを実行する曜日です。たとえば、{Sunday} は、月の毎週日曜日という意味です。必須です。</p><p>_occurrence_ は、月の第何週目に実行するかを表します。たとえば、{Sunday, -1} は月の最終日曜日という意味です。省略可能。</p>|
 |**monthDays**|ジョブが実行される月の日にち。月単位の頻度だけを指定できます。|<ul><li>-1 以下で、かつ -31 以上の任意の値。</li><li>1 以上で、かつ 31 以下の任意の値。</li><li>上記の値の配列</li></ul>|
 
@@ -197,4 +197,4 @@ _schedule_ の要素を次の表に示します。
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

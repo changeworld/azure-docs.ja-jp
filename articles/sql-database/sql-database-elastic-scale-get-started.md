@@ -51,19 +51,20 @@
 
 これで、最初のシャーディング アプリケーションを Elastic Database ツールを使用して正しく Azure SQL Database にビルドし、実行できました。Azure DB Server に Visual Studio または SQL Server Management Studio を接続して、サンプルで作成したシャードの内容を簡単に確認してください。新しいサンプル シャード データベースと、シャード マップ マネージャー データベースがサンプルで作成されていることがわかります。
 
-**注** SQL Server Management Studio を持っていない場合は、このツールの入手手順が記載されている「[SQL Server Management Studio を使用した Azure SQL Database の管理](sql-database-manage-azure-ssms.md)」を参照してください。
+> [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+
 
 ### コード サンプルの主要部
 
-1. **シャードとシャード マップの管理**: このコードは、シャード、範囲、マッピングが **ShardMapManagerSample.cs** ファイルでどのように機能するかを示します。このトピックの詳細については、「[Shard Map Management (シャード マップの管理)](http://go.microsoft.com/?linkid=9862595)」を参照してください。  
-2. **データ依存ルーティング**: トランザクションの適切なシャードへのルーティングは、**DataDependentRoutingSample.cs** に示されます。詳細については、「[Data Dependent Routing (データ依存ルーティング)](http://go.microsoft.com/?linkid=9862596)」を参照してください。 
+1. **シャードとシャード マップの管理**: このコードは、シャード、範囲、マッピングが **ShardMapManagerSample.cs** ファイルでどのように機能するかを示します。このトピックの詳細については、「[Shard Map Management (シャード マップの管理)](http://go.microsoft.com/?linkid=9862595)」を参照してください。
+2. **データ依存ルーティング**: トランザクションの適切なシャードへのルーティングは、**DataDependentRoutingSample.cs** に示されます。詳細については、「[Data Dependent Routing (データ依存ルーティング)](http://go.microsoft.com/?linkid=9862596)」を参照してください。
 3. **複数のシャードにまたがるクエリ実行**: 複数のシャードに対するクエリの実行は、**MultiShardQuerySample.cs** ファイルに示されます。詳細については、「[Multi-Shard Querying (マルチシャード クエリ実行)](http://go.microsoft.com/?linkid=9862597)」を参照してください。
 4. **空のシャードの追加**: 新しい空のシャードの反復追加は、**AddNewShardsSample.cs** ファイルのコードによって実行されます。このトピックの詳細は、「[Shard Map Management (シャード マップの管理)](http://go.microsoft.com/?linkid=9862595)」に記載されています。
 
 ### 他の Elastic Scale の操作
 
 1. **既存のシャードの分割**: シャードを分割する機能は、**分割/マージ ツール**を通じて提供されます。このツールの詳細については、「[分割/結合ツールの概要](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください。
-2. **既存のシャードのマージ**: シャードのマージも**分割/マージ ツール**を使用して行われます。詳細については、「[分割/マージ ツールの概要](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください。   
+2. **既存のシャードのマージ**: シャードのマージも**分割/マージ ツール**を使用して行われます。詳細については、「[分割/マージ ツールの概要](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください。
 
 
 ## コスト
@@ -77,8 +78,8 @@ Elastic Database ツールは無料です。Elastic Database ツールでは、A
 ## 次のステップ
 Elastic Database ツールの詳細については、以下のページを参照してください。
 
-* [Elastic Database ツールのドキュメント マップ](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/) 
--    コード サンプル: 
+* [Elastic Database ツールのドキュメント マップ](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)
+-    コード サンプル:
     -    [Azure SQL で使用する Elastic DB - 概要](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)
     -    [Azure DB で使用する Elastic DB - Entity Framework との統合](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
     -    [スクリプト センターのシャードの弾力性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
@@ -101,4 +102,4 @@ Elastic Database ツールの詳細については、以下のページを参照
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

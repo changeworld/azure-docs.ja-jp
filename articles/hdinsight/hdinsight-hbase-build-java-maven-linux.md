@@ -13,14 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/22/2016"
+	ms.date="06/29/2016"
 	ms.author="larryfr"/>
 
-#Use Maven to build Java applications that use HBase with HDInsight (Hadoop) (HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築)
+#Linux ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する
 
 Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成し、ビルドする方法について説明します。その後、Linux ベースの HDInsight クラスターでアプリケーションを使用します。
 
 [Maven](http://maven.apache.org/) は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。この記事では、このツールを使用して、Linux ベースの HDInsight クラスターで HBase テーブルの作成、クエリ、削除を実行する基本的な Java アプリケーションを作成する方法について説明します。
+
+> [AZURE.NOTE] このドキュメントの手順は、Linux ベースの HDInsight クラスターを使用することを前提としています。Windows ベースの HDInsight クラスターを使用する方法の詳細については、「[Windows ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する](hdinsight-hbase-build-java-maven.md)」を参照してください。
 
 ##必要条件
 
@@ -29,6 +31,8 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 * [Maven](http://maven.apache.org/)
 
 * [Linux ベースの Azure HDInsight クラスターと HBase](../hdinsight-hbase-get-started-linux.md#create-hbase-cluster)
+
+    > [AZURE.NOTE] このドキュメントの手順は、HDInsight クラスター バージョン 3.2、3.3、3.4 でテスト済みです。例で指定される既定値は、HDInsight 3.4 クラスターに対応しています。
 
 * **SSH と SCP を熟知していること**HDInsight での SSH と SCP の使用方法の詳細については、次の記事をご覧ください。
 
@@ -59,10 +63,29 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 		<dependency>
       	  <groupId>org.apache.hbase</groupId>
           <artifactId>hbase-client</artifactId>
-          <version>0.98.4-hadoop2</version>
+          <version>1.1.2</version>
         </dependency>
 
-	これは Maven に対して、__hbase-client__ のバージョン __0.98.4-hadoop2__ がプロジェクトに必要であることを伝えます。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven セントラル リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar)を使用して、この依存関係についての詳細を確認できます。
+	これは Maven に対して、__hbase-client__ のバージョン __1.1.2__ がプロジェクトに必要であることを伝えます。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven セントラル リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar)を使用して、この依存関係についての詳細を確認できます。
+
+    > [AZURE.IMPORTANT] バージョン番号は、HDInsight クラスターに付属の HBase のバージョンと一致する必要があります。次の表を使用して、正しいバージョン番号を調べてください。
+
+    | HDInsight クラスターのバージョン | 使用する HBase のバージョン |
+    | ----- | ----- |
+    | 3\.2 | 0\.98.4-hadoop2 |
+    | 3\.3 および 3.4 | 1\.1.2 |
+
+    HDInsight のバージョンとコンポーネントの詳細については、「[HDInsight で使用できる Hadoop コンポーネントの種類を教えてください](hdinsight-component-versioning.md)」を参照してください。
+
+2. HDInsight 3.3 または 3.4 クラスターを使用している場合は、`<dependencies>` セクションに次のコードも追加する必要があります。
+
+        <dependency>
+            <groupId>org.apache.phoenix</groupId>
+            <artifactId>phoenix-core</artifactId>
+            <version>4.4.0-HBase-1.1</version>
+        </dependency>
+    
+    これにより、Hbase Version 1.1.x で必要な phoenix コア コンポーネントが読み込まれます。
 
 2. __pom.xml__ ファイルに次のコードを追加します。これは、ファイルの `<project>...</project>` タグ内に配置する必要があります (たとえば `</dependencies>` と `</project>` の間)。
 
@@ -83,8 +106,8 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
         	  <artifactId>maven-compiler-plugin</artifactId>
 						<version>3.3</version>
         	  <configuration>
-          	    <source>1.6</source>
-          	    <target>1.6</target>
+          	    <source>1.7</source>
+          	    <target>1.7</target>
         	  </configuration>
       		</plugin>
 		    <plugin>
@@ -163,7 +186,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
             //NOTE: Actual zookeeper host names can be found using Ambari:
             //curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts"
             
-            //Linux-based HDInsight clusters don't use the default znode parent
+            //Linux-based HDInsight clusters use /hbase-unsecure as the znode parent
             config.set("zookeeper.znode.parent","/hbase-unsecure");
 
             // create an admin object using the config
@@ -367,4 +390,4 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 	hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

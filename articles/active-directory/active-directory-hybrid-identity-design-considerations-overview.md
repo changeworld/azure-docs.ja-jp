@@ -21,7 +21,7 @@
 企業世界では消費者基準のデバイスが広まっており、クラウド基準の SaaS (Software-as-a-Service/サービスとしてのソフトウェア) アプリケーションの導入が簡単になっています。結果的に、内部データセンターとクラウド プラットフォームにわたりユーザーのアプリケーション アクセスを制御することが課題となります。Microsoft の ID ソリューションでは、オンプレミスとクラウドを基盤とする機能を利用する際に、場所に関係なく、1 つのユーザー ID ですべてのリソースの認証と権限付与を行います。これをハイブリッド ID と呼んでいます。Microsoft ソリューションによるハイブリッド ID にはさまざまな設計と構成の選択肢があり、組織のニーズに最適な組み合わせを判断することが難しい場合もあります。ハイブリッド ID の設計に関するこの考慮事項ガイドは、組織のビジネス ニーズと技術ニーズに最適なハイブリッド ID ソリューションを設計する方法を理解するために役立ちます。このガイドでは、組織の固有要件を満たすハイブリッド ID ソリューションを設計するための一連の手順と作業について詳述します。このガイドでは、機能面とサービス面における品質 (可用性、拡張性、パフォーマンス、管理容易性、セキュリティ) レベル要件を満たすために組織が利用できる技術と機能の選択肢を手順と作業を通して提示します。ハイブリッド ID の設計に関するこの考慮事項ガイドの目標は、具体的には、次の質問に答えることにあります。
 
 - 技術面や問題面で、要件を最も効果的に満たすハイブリッド ID 固有の設計を推し進めるには、どのような質問をして、どのように答える必要があるでしょうか。
-- 技術面や問題面で、ハイブリッド ID ソリューションを設計するためにどのような一連のアクティビティを完了する必要があるでしょうか。 
+- 技術面や問題面で、ハイブリッド ID ソリューションを設計するためにどのような一連のアクティビティを完了する必要があるでしょうか。
 - 要件を満たすために、ハイブリッド ID の技術と構成にはどのような選択肢があるでしょうか。 選択肢にはそれぞれどのような長所や短所があり、ビジネスに最適な選択するために考慮できるでしょうか。
 
 
@@ -47,7 +47,7 @@
 |-------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID 要件を決定する | [ビジネス ニーズの決定](active-directory-hybrid-identity-design-considerations-business-needs.md)<br> [ディレクトリ同期要件の決定](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [多要素認証要件の決定](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [ハイブリッド ID 導入戦略の正義](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
 | 強力な ID ソリューションによりデータ セキュリティを強化するための計画を立てる | [Determine data protection requirements](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [コンテンツ管理要件決定](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [アクセス制御要件の決定](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [インシデント対応要件の決定](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [データ保護戦略の定義](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) |
-| ハイブリッド ID ライフサイクルの計画を立てる | [ハイブリッド ID 管理タスクの決定](active-directory-hybrid-identity-design-considerations-hybridId-management-tasks.md) <br> [同期管理](active-directory-hybrid-identity-design-considerations-hybridId-management-tasks.md)<br> [ハイブリッド ID 管理の導入戦略の決定](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |     
+| ハイブリッド ID ライフサイクルの計画を立てる | [ハイブリッド ID 管理タスクの決定](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [同期管理](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [ハイブリッド ID 管理の導入戦略の決定](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |     
 
 
 ##このガイドをダウンロードする
@@ -55,4 +55,4 @@
 
                                                              
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -14,7 +14,7 @@
 	ms.devlang="node"
 	ms.topic="get-started-article"
 	ms.date="05/26/2016"
-	ms.author="bradygaster"/>
+	ms.author="rachelap"/>
 
 # Node.js RESTful API をビルドして Azure で API アプリにデプロイする
 
@@ -90,7 +90,7 @@ App Service では、コードを API アプリにデプロイする方法を数
 
 ### スキャフォールディングされたコードのカスタマイズ
 
-1. **start** フォルダーの **lib** フォルダーを、スキャフォールダーによって作成された **ContactList** フォルダーにコピーします。 
+1. **start** フォルダーの **lib** フォルダーを、スキャフォールダーによって作成された **ContactList** フォルダーにコピーします。
 
 1. **handlers/contacts.js** ファイルのコードを次のコードに置き換えます。
 
@@ -155,7 +155,7 @@ App Service では、コードを API アプリにデプロイする方法を数
 
 ### ローカルで実行される API でのテスト
 
-1. Node.js コマンドラインの実行可能ファイルを使用して、サーバーを起動します。 
+1. Node.js コマンドラインの実行可能ファイルを使用して、サーバーを起動します。
 
         node server.js
 
@@ -179,7 +179,7 @@ App Service では、コードを API アプリにデプロイする方法を数
 
 このセクションでは、Azure ポータルを使用して、Azure で新しい API アプリを作成します。この API アプリは、コードを実行するために Azure が提供するコンピューティング リソースを表しています。後のセクションでは、新しい API アプリにコードをデプロイします。
 
-1. [Azure ポータル](https://portal.azure.com/)にアクセスします。 
+1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
 
 1. **[新規]、[Web + モバイル]、[API アプリ]** の順にクリックします。
 
@@ -221,7 +221,7 @@ App Service では、コードを API アプリにデプロイする方法を数
 
 Azure App Service で Git リポジトリにコミットをプッシュすることによって、API アプリにコードをデプロイします。チュートリアルのこのセクションでは、Azure でデプロイに使用する資格情報と Git リポジトリを作成します。
 
-1. API アプリが作成されたら、ポータルのホーム ページで **[App Services]** をクリックし、作成した API アプリをクリックします。 
+1. API アプリが作成されたら、ポータルのホーム ページで **[App Services]** をクリックし、作成した API アプリをクリックします。
 
 	ポータルに **[API アプリ]** ブレードと **[設定]** ブレードが表示されます。
 
@@ -294,7 +294,7 @@ Azure App Service で Git リポジトリにコミットをプッシュするこ
 
 ## Azure で実行される API でのテスト
  
-3. API アプリ ブレードの **[要点]** セクションの **[URL]** をコピーします。 
+3. API アプリ ブレードの **[要点]** セクションの **[URL]** をコピーします。
 
     ![デプロイメントの完了](media/app-service-api-nodejs-api-app/deployment-completed.png)
 
@@ -312,4 +312,4 @@ Azure App Service で Git リポジトリにコミットをプッシュするこ
 
 この時点で、API アプリの作成と、そのアプリへの Node.js API コードのデプロイが正常に完了しました。次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)方法について説明します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

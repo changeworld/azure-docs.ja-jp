@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/04/2016"
+	ms.date="06/30/2016"
 	ms.author="tdykstra"/>
 
 # Azure App Service の API Apps でのユーザー認証
@@ -91,7 +91,7 @@ API アプリの .NET チュートリアルに従って学習していて、[1 �
 
 * 中間層 API アプリを呼び出すために Azure Active Directory (Azure AD) 認証を必要とするように App Service を構成します。
 * Azure AD アプリケーションを作成します。
-* AngularJS フロントエンドにログオンした後でベアラー トークンを送信するように Azure AD アプリケーションを構成します。 
+* AngularJS フロントエンドにログオンした後でベアラー トークンを送信するように Azure AD アプリケーションを構成します。
 
 チュートリアルの手順に従う際に問題が発生した場合は、チュートリアルの末尾の「[トラブルシューティング](#troubleshooting)」を参照してください。
  
@@ -135,7 +135,7 @@ API アプリの .NET チュートリアルに従って学習していて、[1 �
 
 ### 省略可能: API アプリをテストする
 
-1. ブラウザーで API アプリの URL に移動します。Azure ポータルの **[API アプリ]** ブレードで、**[URL]** の下にあるリンクをクリックします。  
+1. ブラウザーで API アプリの URL に移動します。Azure ポータルの **[API アプリ]** ブレードで、**[URL]** の下にあるリンクをクリックします。
 
 	認証されていない要求は API アプリへのアクセスを許可されないため、ログイン画面にリダイレクトされます。
 
@@ -329,11 +329,11 @@ Web API 2 バックエンドで AngularJS 単一ページ アプリケーショ�
 
 [AZURE.INCLUDE [トラブルシューティング](../../includes/app-service-api-auth-troubleshooting.md)]
 
-* ToDoListAPI (中間層) と ToDoListDataAPI (データ層) を混同しないよう注意してください。たとえば、認証をデータ層ではなく中間層 API アプリに追加していることを確認します。 
-* また、AngularJS ソース コードが中間層 API アプリ URL (ToDoListDataAPI ではなく、ToDoListAPI) と正しい Azure AD クライアント ID を参照していることを確認します。 
+* ToDoListAPI (中間層) と ToDoListDataAPI (データ層) を混同しないよう注意してください。たとえば、認証をデータ層ではなく中間層 API アプリに追加していることを確認します。
+* また、AngularJS ソース コードが中間層 API アプリ URL (ToDoListDataAPI ではなく、ToDoListAPI) と正しい Azure AD クライアント ID を参照していることを確認します。
 
 ## 次のステップ
 
 このチュートリアルでは、API アプリで App Service 認証を使用する方法、および ADAL JS ライブラリを使用して API アプリを呼び出す方法を説明しました。次のチュートリアルでは、[サービス間シナリオで API アプリへのアクセスをセキュリティで保護する](app-service-api-dotnet-service-principal-auth.md)方法を学習します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

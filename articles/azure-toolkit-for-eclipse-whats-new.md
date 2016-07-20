@@ -26,6 +26,18 @@
 
 > [AZURE.NOTE] IntelliJ IDE 用の Azure Toolkit もあります。詳細については、「[Azure Toolkit for IntelliJ]」をご覧ください。
 
+### 2016 年 6 月 29 日
+
+Azure Toolkit for Eclipse - June 2016 リリースでは、次の点が強化されています。
+
+* **Java 8 の要件**。Azure Toolkit for Eclipse には、現在、Java 8 が必要です。ただし、この要件はツールキットにのみ適用されます。 - アプリケーションは、Azure でサポートされている Java のすべてのバージョンを引き続き使用できます。
+* **最新の Java JDK のサポート**。Java JDK の最新バージョンは、現在、Azure Toolkit for Eclipse でサポートされています。
+* **Azure SDK v2.9.1 のサポート**。最新バージョンの Azure SDK が、Azure Toolkit for Eclipse を使用するための最低限の前提条件になりました。
+* **統合サンプル**。Azure Toolkit for Eclipse には、現在、開発者の作業開始に役立ついくつかのサンプル アプリケーションが特徴付けられています。
+* **HDInsight ツールの統合**。Azure の HDInsight ツールは、現在、Azure Toolkit for Eclipse にバンドルされています。
+* **Java Web アプリのリモート デバッグ**。Azure Toolkit for Eclipse には、現在、Azure App Service での Java Web アプリのリモート デバッグがサポートされています。
+* **Eclipse Luna リリースのサポート。** 今後、Eclipse IDE バージョンは Luna 以上が必須となります。
+
 ### 2016 年 4 月 12 日
 
 Azure Toolkit for Eclipse - April 2016 リリースでは、次の点が強化されています。
@@ -308,6 +320,7 @@ Azure Toolkits for Java IDE の詳細については、次のリンクをご覧�
 - [Azure Toolkit for IntelliJ]
   - [Azure Toolkit for IntelliJ のインストール]
   - [IntelliJ で Azure 用の Hello World Web アプリを作成する]
+  - [Azure Toolkit for IntelliJ の新機能]
 
 Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
 
@@ -319,9 +332,12 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [Installing the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-installation.md
 [Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
+[What's New in the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[Azure Toolkit for IntelliJ の新機能]: ./azure-toolkit-for-intellij-whats-new.md
+
+[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
 
 [Azul Systems の Zulu OpenJDK に関する Web ページ]: http://go.microsoft.com/fwlink/?LinkId=402457
-[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure のサービス エンドポイント]: http://go.microsoft.com/fwlink/?LinkID=699526
 [Azure ストレージ アカウントの一覧]: http://go.microsoft.com/fwlink/?LinkID=699528
 [コンポーネントのプロパティ]: http://go.microsoft.com/fwlink/?LinkID=699525#components_properties
@@ -353,4 +369,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic710882]: ./media/azure-toolkit-for-eclipse-whats-new/ic710882.png
 [ic710883]: ./media/azure-toolkit-for-eclipse-whats-new/ic710883.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

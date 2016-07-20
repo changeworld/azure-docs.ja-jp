@@ -25,9 +25,12 @@
 
 ## クイック コマンド
 
-Linux VM で VMAccess を使用する方法は 2 つあります。1 つは、`azure vm reset-access` と正しいフラグで Azure CLI を使用する方法です。VMAccess を使用する 2 つ目の方法は、VMAccess が処理して、動作の基となる未加工の json ファイルを使用することです。クイック コマンド セクションで、`azure vm reset-access` メソッドを使用します。
+Linux VM で VMAccess を使用する方法は 2 つあります。
 
-以下のコマンド例の &lt; と &gt; で囲まれた値は、実際の環境の値に置き換えてください。
+- Azure CLI と必要なパラメーターを使用する。
+- VMAccess が処理して、動作の基となる未加工の JSON ファイルを使用する。
+
+クイック コマンド セクションで、Azure CLI の `azure vm reset-access` メソッドを使用します。以下のコマンド例の &lt; と &gt; で囲まれた値は、実際の環境の値に置き換えてください。
 
 ## root パスワードのリセット
 
@@ -74,7 +77,7 @@ azure vm reset-access -g <resource group> -n <vm name> -r
 
 Linux VM 上のディスクがエラーを示しています。何らかの理由で Linux VM の root パスワードをリセットしたか、誤って SSH 秘密キーを削除してしまいました。これがかつてのデータ センター暗黒時代で起きていたら、車で駆けつけ、手形でドアの鍵を開け、ケージの中に入り、KVM をこじ開けて、サーバー コンソールにたどり着くことになっていたでしょう。Azure VMAccess 拡張機能は、コンソールにアクセスして、Linux へのアクセスをリセットしたり、ディスク レベルの保守を実行したりできるその KVM スイッチとして考えてください。
 
-詳しいチュートリアルでは、未加工の json ファイルを使用する長い形式の VMAccess を使用します。これらの VMAccess json ファイルは、Azure テンプレートから呼び出すこともできます。
+詳しいチュートリアルでは、未加工の JSON ファイルを使用する長い形式の VMAccess を使用します。これらの VMAccess JSON ファイルは、Azure テンプレートから呼び出すこともできます。
 
 ### VMAccess を使用して Linux VM のディスクをチェックまたは修復する
 
@@ -101,7 +104,7 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 
 ### VMAccess を使用して Linux へのユーザーのアクセスをリセットする
 
-Linux VM で root へのアクセスを失った場合、VMAccess スクリプトを起動して、root パスワードをリセットし、Linux のロックを解除できます。
+Linux VM で root へのアクセスを失った場合、VMAccess スクリプトを起動して、root パスワードをリセットできます。
 
 root パスワードをリセットするには、この VMAccess スクリプトを使用します。
 
@@ -205,4 +208,4 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path reset_sshd.json
 ```
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0706_2016-->

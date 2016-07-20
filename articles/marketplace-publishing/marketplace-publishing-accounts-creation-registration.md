@@ -13,16 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/07/2016"
+   ms.date="06/27/2016"
    ms.author="hascipio"/>
 
 # Microsoft 開発者アカウントの作成
 この記事では、Azure Marketplace の承認済みの Microsoft 開発者になるために必要なアカウントの作成と登録のプロセスについて説明します。
 
-## 1\.Microsoft アカウントの作成
+## 1.Microsoft アカウントの作成
 > [AZURE.WARNING] 発行プロセスを開始するには、まず Microsoft アカウントを作成する必要があります。このアカウントは、**Microsoft デベロッパー センター**と **Azure 発行ポータル**の両方に対する登録とサインインに使用します。複数の Azure Marketplace サービスに対して 1 つの Microsoft アカウントを使用してください。各サービスおよびプランに対し、個別のアカウントを作成する必要はありません。
 
-ユーザー名が含まれたアドレスは、貴社のドメインか IT チームで管理する必要があります (publishing@example.com) など)。支払いや税金に関する情報、またレポートは、このアカウントを通じて配信されます。
+ユーザー名が含まれたアドレスは、貴社のドメインか IT チームで管理する必要があります (publishing@example.com など)。支払いや税金に関する情報、またレポートは、このアカウントを通じて配信されます。
 
   > [AZURE.WARNING] Microsoft アカウントの登録では、"Azure" や "Microsoft" などの単語は使用できません。アカウントの作成および登録プロセスを完了するには、これらの単語を使用しないでください。
 
@@ -44,7 +44,7 @@
 
 > [AZURE.TIP] DL を使用すると、複数のユーザーが電子メール通知を受信できます。この通知は、支払い情報に関するレポートにとって重要です。また、Microsoft アカウントの所有権を譲渡できるようにし、1 人のユーザーに関連付けられないようにすることもできます。
 
-## 2\.Microsoft デベロッパー センター アカウントの作成
+## 2.Microsoft デベロッパー センター アカウントの作成
 Microsoft デベロッパー センターは、会社情報を登録するために 1 回だけ使用します。登録者は、合法的な企業の代表者である必要があります。また、ID を検証する方法として、個人情報を提供する必要があります。登録時には、会社用に共有されている Microsoft アカウントを使用する必要があり、**Azure 発行ポータルでも同じアカウントを使用する必要があります。** 作成する前に、会社がまだ Microsoft デベロッパー センターのアカウントを所有していないことを確認してください。作成中は、会社の住所情報、銀行口座情報、および税金に関する情報が収集されます。通常、これらは財務またはビジネス用連絡先から取得できます。
 
 > [AZURE.IMPORTANT] プランの作成とデプロイメントのさまざまなフェーズを進めるために、次のような開発者プロファイル コンポーネントを完成させる必要があります。
@@ -65,7 +65,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 
 2. [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) にアクセスします。
 
-3. 会社登録の Microsoft アカウントを使用してサインインします (例: marketplace@example.com))。
+3. 会社登録の Microsoft アカウントを使用してサインインします (例: marketplace@example.com)。
 
     ![図][img-signin]
 
@@ -143,15 +143,15 @@ Azure 発行ポータルは、プランの発行と管理に使用されます�
 
 2.	[http://publish.windowsazure.com](http://publish.windowsazure.com) に移動します。
 
-3.	会社登録の Microsoft アカウント (marketplace@example.com) など) を使用してサインインします。必要に応じて共同管理者を追加できます。
+3.	会社登録の Microsoft アカウント (marketplace@example.com など) を使用してサインインします。必要に応じて共同管理者を追加できます。
 
   > [AZURE.TIP] 参加ポリシーについては、[Azure Web サイト](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)を参照してください。
 
   > デベロッパー センターへの登録で問題が発生した場合は、次の手順でサポート チケットを記録してください。
   1. [サポート](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&supportregion=ja-JP&pesid=15635&ccsid=635847950577064286)に問い合わせる。
-  2. **[デベロッパー センター]** を選択する。
-  3. **[プロファイル]** を選択する。
-  4. 連絡方法を選択する。
+  2.**[デベロッパー センター]** を選択する。
+  3.**[プロファイル]** を選択する。
+  4.連絡方法を選択する。
 
 
 
@@ -159,14 +159,7 @@ Azure 発行ポータルは、プランの発行と管理に使用されます�
 
 
 ## 次のステップ
-これで、アカウントが作成され、登録されたので、Azure Marketplace に発行したいアーティファクトのタイプ (仮想マシン、開発者サービス、データ サービス、ソリューション テンプレート) をクリックします。それぞれのプランを発行する方法については、次の記事のいずれかを参照してください。
-
-|| 仮想マシン イメージ | 開発者サービス | データ サービス | ソリューション テンプレート |
-|----|-----|-----|-----|-----|
-|**ステップ 2: プランの作成** |[一般的な技術面以外の前提条件](marketplace-publishing-pre-requisites.md)| プライベート プレビュー | [一般的な技術面以外の前提条件](marketplace-publishing-pre-requisites.md)| [一般的な技術面以外の前提条件](marketplace-publishing-pre-requisites.md)|
-|| [VM イメージの技術的な前提条件][link-single-vm-prereq] | プライベート プレビュー | [データ サービスの技術的な前提条件](marketplace-publishing-data-service-creation-prerequisites.md) | [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md) |
-|| [VM イメージの発行ガイド][link-single-vm] | プライベート プレビュー | [データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md) | [ソリューション テンプレートの発行ガイド](marketplace-publishing-solution-template-creation.md) |
-|| [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | プライベート プレビュー | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] | [Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging] |
+以上でアカウントの作成と登録は完了です。プランを発行するためには、技術面以外の前提条件を満たす必要があります。[技術面以外の前提条件](marketplace-publishing-pre-requisites.md)に関するページを参照してください。
 
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
@@ -198,4 +191,4 @@ Azure 発行ポータルは、プランの発行と管理に使用されます�
 [link-devsvc-prereq]: marketplace-publishing-dev-service-creation-prerequisites.md
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

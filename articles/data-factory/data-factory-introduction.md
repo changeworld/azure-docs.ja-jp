@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="04/26/2016" 
+	ms.date="07/12/2016" 
 	ms.author="spelluru"/>
 
 # クラウドによるデータ統合サービスである Azure Data Factory サービスの概要
@@ -69,5 +69,13 @@ Azure Data Factory を利用できるリージョンが**米国西部**、**米�
 
 将来的には、Azure がサポートするすべての地域で Azure Data Factory が提供される予定です。
   
+## 次のステップ
+データ パイプラインでデータ ファクトリを構築する方法については、以下のチュートリアルで紹介されている具体的な手順に従ってください。
 
-<!---HONumber=AcomDC_0629_2016-->
+チュートリアル | 説明
+-------- | -----------
+[Hadoop クラスターを使用してデータを処理するデータ パイプラインを作成する](data-factory-build-your-first-pipeline.md) | このチュートリアルでは、Azure HDInsight (Hadoop) クラスターで Hive スクリプトを実行して**データを処理**するデータ パイプラインを備えた最初の Azure データ ファクトリを構築します。 |
+[2 つのクラウド データ ストア間でデータを移動するデータ パイプラインを構築する](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) | このチュートリアルでは、Blob Storage から SQL Database に**データを移動**するパイプラインを備えたデータ ファクトリを作成します。
+[Data Management Gateway を使用してオンプレミス データ ストアとクラウド データ ストア間でデータを移動するデータ パイプラインを構築する](data-factory-move-data-between-onprem-and-cloud.md) | このチュートリアルでは、**オンプレミス**の SQL Server データベースから Azure BLOB に**データを移動**するパイプラインを備えたデータ ファクトリを構築します。チュートリアルの一環として、ご使用のマシンに Data Management Gateway をインストールして構成します。 
+
+<!---HONumber=AcomDC_0713_2016-->

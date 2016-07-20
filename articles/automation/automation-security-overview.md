@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/10/2016"
+   ms.date="07/06/2016"
    ms.author="magoedte" />
 
 # Azure Automation のセキュリティ
@@ -45,4 +45,4 @@ Azure AD サービス プリンシパル オブジェクト | Azure リソース
 Windows 認証 | オンプレミスのデータセンター | [Azure Automation の Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md)
 AWS 資格情報 | Amazon Web Services | [Authenticate Runbooks with Amazon Web Services (AWS) (Amazon Web Services (AWS) での Runbook の認証)](../automation/automation-sec-configure-aws-account.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->

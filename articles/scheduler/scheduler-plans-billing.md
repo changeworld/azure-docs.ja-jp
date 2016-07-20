@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="03/09/2016"
+ ms.date="06/30/2016"
  ms.author="krisragh"/>
 
 # Azure Scheduler のプランと課金
@@ -25,7 +25,8 @@
 |:---|:---|:---|:---|:---|
 |**Free**|ジョブ コレクションあたり 5 個のジョブ|1 時間に 1 回。1 時間に 1 回を超えてジョブを実行できません。|1 つのサブスクリプションに最大で 1 個の Free ジョブ コレクションが許可されます。|[HTTP 送信承認オブジェクト](scheduler-outbound-authentication.md)を使用できません。
 |**Standard**|ジョブ コレクションあたり 50 個のジョブ|1 分に 1 回。1 分に 1 回を超えてジョブを実行できません。|1 つのサブスクリプションに最大で 100 個の Standard ジョブ コレクションが許可されます。|Scheduler の完全な機能セットへのアクセス|
-|**Premium**|ジョブ コレクションあたり 50 個のジョブ|1 分に 1 回。1 分に 1 回を超えてジョブを実行できません。|1 つのサブスクリプションに最大で 10,000 個の Premium ジョブ コレクションが許可されます。詳細については、<a href="mailto:wapteams@microsoft.com">お問い合わせ</a>ください。|Scheduler の完全な機能セットへのアクセス|
+|**P10 Premium**|ジョブ コレクションあたり 50 個のジョブ|1 分に 1 回。1 分に 1 回を超えてジョブを実行できません。|1 つのサブスクリプションに最大で 10,000 個の P10 Premium ジョブ コレクションが許可されます。詳細については、<a href="mailto:wapteams@microsoft.com">お問い合わせ</a>ください。|Scheduler の完全な機能セットへのアクセス|
+|**P20 Premium**|ジョブ コレクションあたり 1,000 個のジョブ|1 分に 1 回。1 分に 1 回を超えてジョブを実行できません。|1 つのサブスクリプションに最大で 500 個の P20 Premium ジョブ コレクションが許可されます。詳細については、<a href="mailto:wapteams@microsoft.com">お問い合わせ</a>ください。|Scheduler の完全な機能セットへのアクセス|
 
 ## ジョブ コレクション プランのアップグレードとダウングレード
 
@@ -85,4 +86,4 @@ Premium 課金単位には、最大 10,000 個の Premium ジョブ コレクシ
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

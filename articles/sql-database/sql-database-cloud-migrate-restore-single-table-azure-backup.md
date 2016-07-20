@@ -34,7 +34,7 @@ SQL Database のデータを誤って変更してしまい、影響を受けた 
 
 | DB 復元 | Basic レベル | Standard レベル | Premium レベル |
 | :-- | :-- | :-- | :-- |
-| ポイントインタイム リストア | 7 日間以内のあらゆる復元ポイント|14 日間以内のあらゆる復元ポイント| 35 日間以内のあらゆる復元ポイント|
+| ポイントインタイム リストア | 7 日間以内のあらゆる復元ポイント|35 日間以内のあらゆる復元ポイント| 35 日間以内のあらゆる復元ポイント|
 
 ## SQL Database 移行ツールを使用して、復元されたデータベースからテーブルをコピーする
 1. [SQL Database 移行ウィザード](https://sqlazuremw.codeplex.com)をダウンロードしてインストールします。
@@ -71,4 +71,4 @@ SQL Database のデータを誤って変更してしまい、影響を受けた 
 
 [SQL Database 自動バックアップ](sql-database-automated-backups.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

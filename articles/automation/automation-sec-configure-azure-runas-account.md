@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/09/2016"
+    ms.date="07/06/2016"
     ms.author="magoedte"/>
 
 # Azure 実行アカウントを使用した Runbook の認証
@@ -41,7 +41,7 @@ Azure ポータルから Automation アカウントを作成する方法と、Az
 3. [Automation アカウント] ブレードで **[追加]** をクリックします。<br>![Add Automation Account](media/automation-sec-configure-azure-runas-account/add-automation-acct-properties.png)
 4. **[Automation アカウントの追加]** ブレードの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。
 5. 複数のサブスクリプションがある場合は、新しいアカウントに対して 1 つ指定し、新規または既存の**リソース グループ**と、Azure データ センターの**場所**を指定します。
-6. **[Azure 実行アカウントの作成]** オプションで **[はい]** が選択されていることを確認し、**[作成]** ボタンをクリックします。  
+6. **[Azure 実行アカウントの作成]** オプションで **[はい]** が選択されていることを確認し、**[作成]** ボタンをクリックします。
 
     ![Add Automation Account Warning](media/automation-sec-configure-azure-runas-account/add-account-decline-create-runas-msg.png)
 
@@ -69,20 +69,20 @@ AzureRunAsConnection|Automation アカウントの作成時に実行アカウン
 以降の手順に進む前に、次のことを確認してください。
 
 1. Windows 7 を実行している場合は、[Windows Management Framework (WMF) 4.0](https://www.microsoft.com/download/details.aspx?id=40855) をダウンロードしてインストール済みであること。Windows Server 2012 R2、Windows Server 2012、Windows 2008 R2、Windows 8.1、および Windows 7 SP1 を実行している場合は、[Windows Management Framework 5.0](https://www.microsoft.com/download/details.aspx?id=50395) をインストールできます。
-2. Azure PowerShell 1.0このリリースとそのインストール方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。 
+2. Azure PowerShell 1.0このリリースとそのインストール方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 3. Automation アカウントが作成済みであること。このアカウントは、以下のスクリプトの –AutomationAccountName パラメーターと -ApplicationDisplayName パラメーターの値として参照されます。
 
 
 この PowerShell スクリプトで構成の対象となる要素は次のとおりです。
 
-* Azure AD アプリケーション。自己署名証明書で認証され、このアプリケーションの Azure AD におけるサービス プリンシパル アカウントを作成します。現在のサブスクリプションで、このアカウントの Contributor ロールが割り当てられます (これを所有者など他の任意のロールに変更できます)。詳細については、「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」の記事を参照してください。  
+* Azure AD アプリケーション。自己署名証明書で認証され、このアプリケーションの Azure AD におけるサービス プリンシパル アカウントを作成します。現在のサブスクリプションで、このアカウントの Contributor ロールが割り当てられます (これを所有者など他の任意のロールに変更できます)。詳細については、「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」の記事を参照してください。
 * Automation 証明書資産。指定された Automation アカウントに **AzureRunAsCertificate** という名前で存在し、サービス プリンシパルで使用される証明書が格納されます。
-* Automation 接続資産。指定された Automation アカウントに **AzureRunAsConnection** という名前で存在し、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。  
+* Automation 接続資産。指定された Automation アカウントに **AzureRunAsConnection** という名前で存在し、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。
 
 
 ### PowerShell スクリプトの実行
 
-1. ご使用のコンピューターに次のスクリプトを保存します。この例では、**New-AzureServicePrincipal.ps1** というファイル名で保存します。  
+1. ご使用のコンピューターに次のスクリプトを保存します。この例では、**New-AzureServicePrincipal.ps1** というファイル名で保存します。
 
     ```
     #Requires -RunAsAdministrator
@@ -181,7 +181,7 @@ AzureRunAsConnection|Automation アカウントの作成時に実行アカウン
 ### 認証の検証
 次に、新しいサービス プリンシパルを使用して正しく認証できることを確認するために小さなテストを実施します。正しく認証できない場合は、手順 1. に戻り、先行する各手順をもう一度確かめてください。
 
-1. 先ほど作成した Automation アカウントを Azure ポータルで開きます。  
+1. 先ほど作成した Automation アカウントを Azure ポータルで開きます。
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
 3. **[Runbook の追加]** ボタンをクリックし、**[Runbook の追加]** ブレードで **[新しい Runbook の作成]** を選択して新しい Runbook を作成します。
 4. Runbook に *Test-SecPrin-Runbook* という名前を付け、**[Runbook の種類]** で [PowerShell] を選択します。**[作成]** をクリックして Runbook を作成します。
@@ -196,8 +196,8 @@ AzureRunAsConnection|Automation アカウントの作成時に実行アカウン
 6. **[保存]** をクリックして Runbook を保存します。
 7. **[テスト ウィンドウ]** をクリックして、**[テスト]** ブレードを開きます。
 8. **[開始]** をクリックしてテストを開始します。
-9. [Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態がペインに表示されます。  
-10. 最初のジョブの状態は*キュー登録済み*であり、クラウドの Runbook Worker が使用可能になるのを待っていることを示しています。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
+9. [Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態がペインに表示されます。
+10. 最初のジョブの状態は*キュー登録済み*であり、クラウドの Runbook Worker が使用可能になるのを待っていることを示しています。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。
 11. Runbook ジョブが完了すると、その出力が表示されます。このケースでは、状態が **[完了]** となります。<br> ![Security Principal Runbook Test](media/automation-sec-configure-azure-runas-account/runbook-test-results.png)<br>
 12. **[テスト]** ブレードを閉じてキャンバスに戻ります。
 13. **[PowerShell Runbook の編集]** ブレードを閉じます。
@@ -242,4 +242,4 @@ AzureAutomationTutorial のサンプル Runbook から次の更新済みサン�
 - サービス プリンシパルの詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)」を参照してください。
 - Azure Automation におけるロールベースのアクセス制御の詳細については、「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

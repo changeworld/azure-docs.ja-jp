@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/15/2016"
+	ms.date="07/05/2016"
 	ms.author="adegeo"/>
 
 
@@ -150,4 +150,4 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 * [クラウド サービスを管理する](cloud-services-how-to-manage.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

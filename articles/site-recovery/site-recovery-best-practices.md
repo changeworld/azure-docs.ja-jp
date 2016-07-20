@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="03/29/2016"
+	ms.date="07/06/2016"
 	ms.author="raynew"/>
 
 # Azure Site Recovery のデプロイの準備
@@ -139,4 +139,4 @@ FC ディスク | サポートされていません | サポートされてい�
 - [Hyper-V VM をセカンダリ サイトにレプリケート (SAN を使用)](site-recovery-vmm-san.md)
 - [Hyper-V VM をレプリケート (単一の VMM サーバーを使用)](site-recovery-single-vmm.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

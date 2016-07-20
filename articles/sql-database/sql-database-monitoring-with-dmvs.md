@@ -4,7 +4,7 @@
    services="sql-database"
    documentationCenter=""
    authors="carlrabeler"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor=""
    tags=""/>
 
@@ -14,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="01/22/2016"
-   ms.author="rickbyh"/>
+   ms.date="07/05/2016"
+   ms.author="carlrab"/>
 
 # 動的管理ビューを使用した Azure SQL Database の監視
 
@@ -24,8 +24,8 @@ Microsoft Azure SQL Database では、クエリのブロック、クエリの長
 SQL Database は、次に示す 3 つの動的管理ビューを一部サポートしています。
 
 - データベース関連の動的管理ビュー。
-- 実行関連の動的管理ビュー。
-- トランザクション関連の動的管理ビュー。
+- 実行関連の動的管理ビュー。 
+- トランザクション関連の動的管理ビュー。 
 
 動的管理ビューの詳細については、SQL Server オンライン ブックの「[動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx)」を参照してください。
 
@@ -33,7 +33,9 @@ SQL Database は、次に示す 3 つの動的管理ビューを一部サポー�
 
 SQL Database で、動的管理ビューに対してクエリを実行するには、**VIEW DATABASE STATE** アクセス許可が必要です。**VIEW DATABASE STATE** アクセス許可は、現在のデータベース内のすべてのオブジェクトに関する情報を返します。**VIEW DATABASE STATE** アクセス許可を特定のデータベース ユーザーに付与するには、次のクエリを実行します。
 
-```GRANT VIEW DATABASE STATE TO database_user; ```
+```
+GRANT VIEW DATABASE STATE TO database_user;
+```
 
 オンプレミスの SQL Server のインスタンスでは、動的管理ビューにサーバーの状態についての情報が表示されます。SQL Database では、動的管理ビューには現在の論理データベースに関する情報のみが表示されます。
 
@@ -51,7 +53,7 @@ GO
 次のクエリは、データベース内の個々のオブジェクトのサイズ (MB 単位) を返します。
 
 ```
--- Calculates the size of individual database objects.
+-- Calculates the size of individual database objects. 
 SELECT sys.objects.name, SUM(reserved_page_count) * 8.0 / 1024
 FROM sys.dm_db_partition_stats, sys.objects
 WHERE sys.dm_db_partition_stats.object_id = sys.objects.object_id
@@ -87,15 +89,15 @@ WHERE c.session_id = @@SPID;
 次の例では、平均 CPU 時間の上位 5 個のクエリに関する情報を返します。この例では、論理的に等価なクエリがリソースの累計消費量ごとにグループ化されるように、クエリ ハッシュに応じてクエリを集計します。
 
 ```
-SELECT TOP 5 query_stats.query_hash AS "Query Hash",
+SELECT TOP 5 query_stats.query_hash AS "Query Hash", 
     SUM(query_stats.total_worker_time) / SUM(query_stats.execution_count) AS "Avg CPU Time",
     MIN(query_stats.statement_text) AS "Statement Text"
-FROM
-    (SELECT QS.*,
+FROM 
+    (SELECT QS.*, 
     SUBSTRING(ST.text, (QS.statement_start_offset/2) + 1,
-    ((CASE statement_end_offset
+    ((CASE statement_end_offset 
         WHEN -1 THEN DATALENGTH(ST.text)
-        ELSE QS.statement_end_offset END
+        ELSE QS.statement_end_offset END 
             - QS.statement_start_offset)/2) + 1) AS statement_text
      FROM sys.dm_exec_query_stats AS QS
      CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
@@ -112,19 +114,19 @@ ORDER BY 2 DESC;
 クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。次の例では、[sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) ビューを使用して、累積 CPU 時間が最も多いクエリを特定します。
 
 ```
-SELECT
-    highest_cpu_queries.plan_handle,
+SELECT 
+    highest_cpu_queries.plan_handle, 
     highest_cpu_queries.total_worker_time,
     q.dbid,
     q.objectid,
     q.number,
     q.encrypted,
     q.[text]
-FROM
-    (SELECT TOP 50
-        qs.plan_handle,
+FROM 
+    (SELECT TOP 50 
+        qs.plan_handle, 
         qs.total_worker_time
-    FROM
+    FROM 
         sys.dm_exec_query_stats qs
     ORDER BY qs.total_worker_time desc) AS highest_cpu_queries
     CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
@@ -135,4 +137,4 @@ ORDER BY highest_cpu_queries.total_worker_time DESC;
 
 [SQL Database の概要](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0706_2016-->

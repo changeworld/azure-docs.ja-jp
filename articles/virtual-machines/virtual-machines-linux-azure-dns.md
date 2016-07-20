@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/11/2016"
+   ms.date="06/21/2016"
    ms.author="rclaus" />
 
 # Azure の Linux VM での DNS 名前解決のオプション
@@ -78,9 +78,9 @@ dnsmasq など、多様な DNS キャッシュ パッケージを利用できま
 - **Ubuntu (resolvconf を使用)**:
 	- dnsmasq パッケージをインストールする ("sudo apt-get install dnsmasq")
 - **SUSE (netconf を使用)**:
-	- dnsmasq パッケージをインストールする ("sudo zypper install dnsmasq") 
-	- dnsmasq サービスを有効にする ("systemctl enable dnsmasq.service") 
-	- dnsmasq サービスを開始する ("systemctl start dnsmasq.service") 
+	- dnsmasq パッケージをインストールする ("sudo zypper install dnsmasq")
+	- dnsmasq サービスを有効にする ("systemctl enable dnsmasq.service")
+	- dnsmasq サービスを開始する ("systemctl start dnsmasq.service")
 	- "/etc/sysconfig/network/config" を編集し、NETCONFIG\_DNS\_FORWARDER="" を "dnsmasq" に変更する
 	- キャッシュをローカル DNS リゾルバーとして設定するよう resolv.conf を更新する ("netconfig update")
 - **OpenLogic (NetworkManager を使用)**:
@@ -96,8 +96,8 @@ dnsmasq など、多様な DNS キャッシュ パッケージを利用できま
 
 DNS では、主に UDP プロトコルが使用されます。UDP プロトコルでは、メッセージの配信が保証されないため、再試行ロジックは、DNS プロトコル自体で処理されます。各 DNS クライアント (オペレーティング システム) では、作成者の選択に応じて、再試行ロジックが異なる場合があります。
 
- - Windows オペレーティング システムでは、1 秒後に再試行されます。その後、2 秒後、4 秒後に再試行され、さらにもう一度その 4 秒後に再試行されます。 
- - 既定の Linux の設定では、5 秒後に再試行されます。1 秒間隔で 5 回再試行するよう、この設定を変更することをお勧めします。  
+ - Windows オペレーティング システムでは、1 秒後に再試行されます。その後、2 秒後、4 秒後に再試行され、さらにもう一度その 4 秒後に再試行されます。
+ - 既定の Linux の設定では、5 秒後に再試行されます。1 秒間隔で 5 回再試行するよう、この設定を変更することをお勧めします。
 
 Linux VM の現在の設定を確認するには、次に示す 'cat/etc/resolv.conf' の 'options' 行を確認します。
 
@@ -106,13 +106,13 @@ Linux VM の現在の設定を確認するには、次に示す 'cat/etc/resolv.
 resolv.conf ファイルは、通常は自動生成され、編集する必要はありません。'options' 行を追加する具体的な手順は、ディストリビューションによって異なります。
 
 - **Ubuntu** (resolvconf を使用):
-	- options 行を '/etc/resolveconf/resolv.conf.d/head' に追加する 
+	- options 行を '/etc/resolveconf/resolv.conf.d/head' に追加する
 	- ' resolvconf -u' を実行して更新する
 - **SUSE** (netconf を使用):
-	- 'timeout:1 attempts:5' を '/etc/sysconfig/network/config' の NETCONFIG\_DNS\_RESOLVER\_OPTIONS="" パラメーターに追加する 
+	- 'timeout:1 attempts:5' を '/etc/sysconfig/network/config' の NETCONFIG\_DNS\_RESOLVER\_OPTIONS="" パラメーターに追加する
 	- 'netconfig update' を実行して更新する
 - **OpenLogic** (NetworkManager を使用):
-	- 'echo "options timeout:1 attempts:5"' を '/etc/NetworkManager/dispatcher.d/11-dhclient' に追加する 
+	- 'echo "options timeout:1 attempts:5"' を '/etc/NetworkManager/dispatcher.d/11-dhclient' に追加する
 	- 'service network restart' を実行して更新する
 
 ## 独自 DNS サーバー使用の名前解決
@@ -126,16 +126,16 @@ resolv.conf ファイルは、通常は自動生成され、編集する必要�
 
 Azure で提供される名前解決を使用すると、内部 DNS サフィックスが DHCP を使用して各 VM に提供されます。独自の名前解決のソリューションを使用している場合、このサフィックスは他の DNS アーキテクチャに干渉するため、VM には提供されません。FQDN を使用してマシンを参照するか、VM でサフィックスを構成するために、次の PowerShell または API を使用して、サフィックスを決定することができます。
 
--  Azure リソース管理で管理されている VNet の場合、サフィックスは[ネットワーク インターフェイス カード](https://msdn.microsoft.com/library/azure/mt163668.aspx) リソース経由で使用できます。または、コマンド `azure network public-ip show <resource group> <pip name>` を実行して、NIC の FQDN などのパブリック IP の詳細を表示できます。    
+-  Azure リソース管理で管理されている VNet の場合、サフィックスは[ネットワーク インターフェイス カード](https://msdn.microsoft.com/library/azure/mt163668.aspx) リソース経由で使用できます。または、コマンド `azure network public-ip show <resource group> <pip name>` を実行して、NIC の FQDN などのパブリック IP の詳細を表示できます。
 
 
 Azure へのクエリの転送がニーズに合わない場合は、独自の DNS ソリューションを提供する必要があります。DNS 解決では次を行う必要があります。
 
--  適切なホスト名解決を提供する (例: [DDNS](../virtual-network/virtual-networks-name-resolution-ddns.md) 経由)。DDNS を使用する場合、Azure の DHCP リースが非常に長く、清掃で時期を早めて DNS レコードを削除する可能性があるため、DNS レコードの清掃を無効にする必要がある場合があることに注意してください。 
+-  適切なホスト名解決を提供する (例: [DDNS](../virtual-network/virtual-networks-name-resolution-ddns.md) 経由)。DDNS を使用する場合、Azure の DHCP リースが非常に長く、清掃で時期を早めて DNS レコードを削除する可能性があるため、DNS レコードの清掃を無効にする必要がある場合があることに注意してください。
 -  適切な再帰的解決を提供し、外部ドメイン名の解決を可能にする。
 -  対象のクライアントからのアクセスを可能にし (ポート 53 の TCP および UDP)、インターネットへのアクセスを可能にする。
 -  外部エージェントによる脅威を軽減するために、インターネットからのアクセスをセキュリティ保護する。
 
 > [AZURE.NOTE] 最適なパフォーマンスを得るには、DNS サーバーとして Azure VM を使用する場合、IPv6 を無効にして、[インスタンスレベル パブリック IP](../virtual-network/virtual-networks-instance-level-public-ip.md) を各 DNS サーバーの VM に割り当てる必要があります。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

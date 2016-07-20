@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="06/07/2016" 
+	ms.date="06/24/2016" 
 	ms.author="asirveda;robmcm"/>
 
 # IntelliJ で Azure 用の Hello World Web アプリを作成する
@@ -26,7 +26,7 @@
  
 ## 前提条件
 
-* A Java Developer Kit (JDK) v 1.7 以降。
+* Java Developer Kit (JDK) v 1.8 以降。
 * IntelliJ IDEA Ultimate エディション。<https://www.jetbrains.com/idea/download/index.html> からダウンロードできます。
 * Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、Jetty など)。
 * Azure サブスクリプション。<https://azure.microsoft.com/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
@@ -224,10 +224,11 @@ Azure Toolkits for Java IDE の詳細については、次のリンクをご覧�
 - [Azure Toolkit for IntelliJ]
   - [Azure Toolkit for IntelliJ のインストール]
   - *IntelliJ で Azure 用の Hello World Web アプリを作成する (この記事)*
+  - [Azure Toolkit for IntelliJ の新機能]
 
 Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
 
-Azure Web Apps の作成の詳細については、「[Web Apps の概要]」をご覧ください。
+Azure Web Apps の作成の詳細については、「[Web Apps の概要]」を参照してください。
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
@@ -236,9 +237,11 @@ Azure Web Apps の作成の詳細については、「[Web Apps の概要]」を
 [Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md
 [Azure Toolkit for IntelliJ]: ../azure-toolkit-for-intellij.md
 [Eclipse で Azure 用の Hello World Web アプリを作成する]: ./app-service-web-eclipse-create-hello-world-web-app.md
+[Create a Hello World Web App for Azure in IntelliJ]: ./app-service-web-intellij-create-hello-world-web-app.md
 [Azure Toolkit for Eclipse のインストール]: ../azure-toolkit-for-eclipse-installation.md
 [Azure Toolkit for IntelliJ のインストール]: ../azure-toolkit-for-intellij-installation.md
 [Azure Toolkit for Eclipse の新機能]: ../azure-toolkit-for-eclipse-whats-new.md
+[Azure Toolkit for IntelliJ の新機能]: ../azure-toolkit-for-intellij-whats-new.md
 
 [Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
 [Web Apps の概要]: ./app-service-web-overview.md
@@ -265,4 +268,4 @@ Azure Web Apps の作成の詳細については、「[Web Apps の概要]」を
 [17]: ./media/app-service-web-intellij-create-hello-world-web-app/17-Browse-Web-App.png
 [18]: ./media/app-service-web-intellij-create-hello-world-web-app/18-Stop-Web-App.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0706_2016-->

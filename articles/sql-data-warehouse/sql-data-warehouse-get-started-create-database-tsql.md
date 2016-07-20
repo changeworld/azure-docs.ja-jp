@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/01/2016"
+   ms.date="07/11/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Transact-SQL (TSQL) を使用して SQL Data Warehouse データベースを作成する
@@ -27,7 +27,7 @@
 この記事では、Transact-SQL (T-SQL) を使用して SQL Data Warehouse データベースを作成する方法を示します。
 
 ## 前提条件
-開始する前に、以下の前提条件を確認します。
+開始する前に、以下の前提条件を満たしていることを確認します。
 
 - **Azure アカウント**: アカウントを作成するには、[Azure 無料試用版][]に関するページまたは [MSDN Azure クレジット][]に関するページを参照してください。
 - **V12 Azure SQL Server**: [Azure ポータルを使用した Azure SQL Database 論理サーバーの作成][]に関する記事または [PowerShell を使用した Azure SQL Database 論理サーバーの作成][]に関する記事を参照してください。
@@ -80,4 +80,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [Azure 無料試用版]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure クレジット]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

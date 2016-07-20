@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/27/2016"
+   ms.date="07/05/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティ センターでのセキュリティに関する推奨事項の管理
@@ -82,6 +82,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 |VM エージェントのデプロイ|VM エージェントを必要とする VM を確認できます。パッチのスキャン、基準のスキャン、およびマルウェア対策プログラムをプロビジョニングするには、VM 上に VM エージェントをインストールする必要があります。既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。「[VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」の記事には、VM エージェントのインストール方法が記載されています。|
 | [ディスク暗号化の適用](security-center-apply-disk-encryption.md) |Azure Disk Encryption を使用して VM ディスクを暗号化することをお勧めします (Windows VM および Linux VM)。VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。|
 |セキュリティの連絡先詳細の提供 | 各サブスクリプションのセキュリティの連絡先情報を提供することをお勧めします。連絡先情報は、電子メール アドレスと電話番号です。セキュリティ チームがリソースの侵害に気付いた場合、この情報を使用してご連絡します。 |
+| OS バージョンの更新 | クラウド サービスのオペレーティング システム (OS) のバージョンを、ご利用の OS ファミリで利用できる最新のバージョンに更新するようお勧めします。クラウド サービスの詳細については、[クラウド サービスの概要](../cloud-services/cloud-services-choose-me.md)を参照してください。 |
 
 推奨事項をフィルター処理し、無視することができます。
 
@@ -123,4 +124,4 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 [5]: ./media/security-center-recommendations/select-enable-antimalware.png
 [6]: ./media/security-center-recommendations/install-antimalware.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

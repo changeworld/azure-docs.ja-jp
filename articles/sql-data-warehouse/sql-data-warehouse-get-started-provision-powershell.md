@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/01/2016"
+   ms.date="07/11/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Powershell を使用して SQL Data Warehouse を作成する
@@ -24,7 +24,7 @@
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
 ## 前提条件
-開始する前に、以下の前提条件を確認します。
+開始する前に、以下の前提条件を満たしていることを確認します。
 
 - **Azure アカウント**: アカウントを作成するには、[Azure 無料試用版][]に関するページまたは [MSDN Azure クレジット][]に関するページを参照してください。
 - **V12 Azure SQL Server**: [Azure ポータルを使用した Azure SQL Database 論理サーバーの作成][]に関する記事または [PowerShell を使用した Azure SQL Database 論理サーバーの作成][]に関する記事を参照してください。
@@ -33,7 +33,7 @@
 
 > [AZURE.NOTE] 新しい SQL Data Warehouse を作成すると、新しい課金対象サービスを使用することになる場合があります。料金の詳細については、「[SQL Data Warehouse の価格][]」を参照してください。
 
-## SQL Data Warehouse データベースを作成する
+## SQL Data Warehouse の作成
 1. Windows PowerShell を開きます。
 2. このコマンドレットを実行して、Azure リソース マネージャーにログインします。
 
@@ -55,7 +55,7 @@
 
 このコマンドレットに必要なパラメーターは、次のとおりです。
 
-- **RequestedServiceObjectiveName**: 要求する [DWU][] の量。サポートされている値は、DW100、DW200、DW300、DW400、DW500、DW600、DW1000、DW1200、DW1500、および DW2000 です。
+- **RequestedServiceObjectiveName**: 要求する [DWU][] の量。サポートされている値は、DW100、DW200、DW300、DW400、DW500、DW600、DW1000、DW1200、DW1500、DW2000、DW3000、および DW6000 です。
 - **DatabaseName**: 作成する SQL Data Warehouse の名前。
 - **ServerName**: 作成の際に使用するサーバーの名前 (V12 にする必要があります)。
 - **ResourceGroupName**: 使用するリソース グループ。サブスクリプションで使用可能なリソース グループを調べるには Get-AzureResource を使用します。
@@ -64,6 +64,7 @@
 パラメーターのオプションの詳細については、「[CREATE DATABASE (Azure SQL Data Warehouse)][]」を参照してください。コマンド リファレンスについては、「[New-AzureRmSqlDatabase][]」を参照してください。
 
 ## 次のステップ
+
 SQL Data Warehouse のプロビジョニングが完了すると、[サンプル データを読み込んだり][]、[開発][]、[読み込み][]、[移行][]の方法を確認したりできます。
 
 プログラムで SQL Data Warehouse を管理する方法の詳細については、[PowerShell コマンドレットと REST API][] の使用方法に関する記事を参照してください。
@@ -96,4 +97,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [Azure 無料試用版]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure クレジット]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

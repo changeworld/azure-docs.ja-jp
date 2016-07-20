@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/25/2016"
+	ms.date="07/06/2016"
 	ms.author="cynthn"/>
 
 # Azure ポータルで Linux VM にデータ ディスクを接続する方法
@@ -34,4 +34,4 @@
 
 ディスクを追加した後、使用できるように準備する必要があります。この[記事](virtual-machines-linux-classic-attach-disk.md#how-to-initialize-a-new-data-disk-in-linux)の仮想マシンのオペレーティング システムの「方法: Linux での新しいデータ ディスクの初期化」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0706_2016-->

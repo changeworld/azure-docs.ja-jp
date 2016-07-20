@@ -80,15 +80,15 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 
 | タスク | リファレンス |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-| Windows Server 2012 R2 スキーマ拡張で Active Directory ドメイン サービス ドメインをデプロイします。ドメイン コント ローラーを Windows Server 2012 R2 にアップグレードする必要はありません。スキーマのアップグレードのみが必要です。 | [Active Directory ドメイン サービス スキーマをアップグレードする](#Active Directory ドメイン サービス スキーマをアップグレードする) |
-| デバイスは既知の DNS レコードを探すことにより、Azure Active Directory Device Registration サービスを検出します。デバイスが Azure Active Directory Device Registration サービスを検出できるように、会社の DNS を構成する必要があります。 | [デバイスをサポートするために Active Directory の準備を行う](#デバイスをサポートするために Active Directory の準備を行う) |
+| Windows Server 2012 R2 スキーマ拡張で Active Directory ドメイン サービス ドメインをデプロイします。ドメイン コント ローラーを Windows Server 2012 R2 にアップグレードする必要はありません。スキーマのアップグレードのみが必要です。 | [Active Directory ドメイン サービス スキーマをアップグレードする](#upgrade-your-active-directory-domain-services-schema) |
+| デバイスは既知の DNS レコードを探すことにより、Azure Active Directory Device Registration サービスを検出します。デバイスが Azure Active Directory Device Registration サービスを検出できるように、会社の DNS を構成する必要があります。 | [Active Directory をサポートするデバイスの準備](#prepare-your-active-directory-to-support-devices) |
 
 
 ##パート 3: Azure AD でのデバイスの書き戻しを有効にする
 
 | タスク | リファレンス |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-| 「Azure AD Connect でのデバイスの書き戻しの有効化」のパート 2 を完了します。完了したら、このガイドに戻ります。 | [Azure AD Connect でのデバイスの書き戻しの有効化](#Active Directory ドメイン サービス スキーマをアップグレードする) |
+| 「Azure AD Connect でのデバイスの書き戻しの有効化」のパート 2 を完了します。完了したら、このガイドに戻ります。 | [Azure AD Connect でのデバイスの書き戻しの有効化](#upgrade-your-active-directory-domain-services-schema) |
 
 
 ##[省略可能] パート 4: 多要素認証を有効にする
@@ -102,10 +102,10 @@ Azure Active Directory Device Registration サービスを Azure Active Director
 
 | タスク | リファレンス |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
-| Azure Active Directory Device Registration を使用して、いくつかのデバイスをワークプレースに参加させます。iOS、Windows、Android の各デバイスを参加させることができます。 | [Azure Active Directory Device Registration を使用してワークプレースにデバイスを参加させる](#Azure Active Directory Device Registration を使用してワークプレースにデバイスを参加させる) |
+| Azure Active Directory Device Registration を使用して、いくつかのデバイスをワークプレースに参加させます。iOS、Windows、Android の各デバイスを参加させることができます。 | [Azure Active Directory Device Registration を使用してデバイスをワークプレースに参加させる](#join-devices-to-your-workplace-using-azure-active-directory-device-registration) |
 | 管理者ポータルを使用して、登録されているデバイスを表示し、有効または無効にできます。このタスクでは、管理者ポータルを使用して一部の登録済みデバイスを表示します。 | [Azure Active Directory Device Registration Overview](active-directory-conditional-access-device-registration-overview.md) |
-| デバイス オブジェクトが Azure Active Directory から Windows Server Active Directory に書き戻されることを確認します。 | [登録済みのデバイスが Active Directory に書き戻されていること確認する](#登録済みのデバイスが Active Directory に書き戻されていること確認する) |
-| ユーザーがデバイスを登録できるようになったので、AD FS で登録済みデバイスのみを許可するアプリケーション アクセス ポリシーを作成できます。このタスクでは、アプリケーション アクセス ルールと、カスタム アクセス拒否メッセージを作成します。 | [アプリケーションのアクセス ポリシーとカスタム アクセス拒否メッセージを作成する](#アプリケーションのアクセス ポリシーとカスタム アクセス拒否メッセージを作成する) |
+| デバイス オブジェクトが Azure Active Directory から Windows Server Active Directory に書き戻されることを確認します。 | [登録済みのデバイスが Active Directory に書き戻されていること確認する](#verify-registered-devices-are-written-back-to-active-directory) |
+| ユーザーがデバイスを登録できるようになったので、AD FS で登録済みデバイスのみを許可するアプリケーション アクセス ポリシーを作成できます。このタスクでは、アプリケーション アクセス ルールと、カスタム アクセス拒否メッセージを作成します。 | [アプリケーションのアクセス ポリシーとカスタム アクセス拒否メッセージを作成する](#create-an-application-access-policy-and-custom-access-denied-message) |
 
 
 
@@ -121,7 +121,6 @@ Azure Active Directory Device Registration サービスを Azure Active Director
   2.	Azure AD Connect のインストールと実行: 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールします。
   3. ディレクトリの同期を確認および管理します。この手順では、シングル サインオンの手順を利用できます。
   
-
   > [AZURE.NOTE] 上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。
   > [AZURE.NOTE] プレビュー機能を構成する必要はありません。
 
@@ -181,7 +180,7 @@ Azure Active Directory Device Registration では、iOS デバイスに対して
 
     https://enterpriseregistration.windows.net/enrollmentserver/otaprofile/contoso.com
 
-この URL は、さまざまな方法ユーザーに伝えることができます。その 1 つとして、AD FS 内のカスタム アプリケーション アクセス拒否メッセージで、この URL を発行する方法が推奨されます。これについては、以降のセクションで説明します: [アプリケーションのアクセス ポリシーとカスタム アクセス拒否メッセージを作成する](#アプリケーションのアクセス ポリシーとカスタム アクセス拒否メッセージを作成する)。
+この URL は、さまざまな方法ユーザーに伝えることができます。その 1 つとして、AD FS 内のカスタム アプリケーション アクセス拒否メッセージで、この URL を発行する方法が推奨されます。これについては、以降の「[アプリケーションのアクセス ポリシーとカスタム アクセス拒否メッセージを作成する](#create-an-application-access-policy-and-custom-access-denied-message)」セクションで説明します。
 
 ###Azure Active Directory Device Registration を使用して Windows 8.1 デバイスを参加させる
 
@@ -253,4 +252,4 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

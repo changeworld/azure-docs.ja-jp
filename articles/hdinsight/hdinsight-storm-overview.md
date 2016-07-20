@@ -109,7 +109,7 @@ HDInsight の Storm には、完全なエンタープライズ レベルの 24 �
 
 ##リアルタイム分析の一般的なユース ケース
 
-以下に、HDInsight で Apache Storm を使用する一般的なシナリオをいくつか示します。実際のシナリオの詳細については、「[how companies are using Storm (企業での Storm の使用事例)](https://storm.incubator.apache.org/documentation/Powered-By.html)」をご覧ください。
+以下に、HDInsight で Apache Storm を使用する一般的なシナリオをいくつか示します。実際のシナリオの詳細については、「[how companies are using Storm (企業での Storm の使用事例)](https://storm.apache.org/documentation/Powered-By.html)」をご覧ください。
 
 * モノのインターネット(IoT)
 * 不正行為の検出
@@ -163,11 +163,11 @@ HDInsight Tools for Visual Studio では、.NET 開発者は、C# のトポロ�
 
 目にすることがあるほとんどの Java の例は、プレーンな Java か Trident です。Trident は、結合、集計、グループ化、フィルタリングなどの実行を容易にするための、高レベルの抽象概念です。ただし、Trident は、タプルのバッチに作用し、ここでは未加工の Java ソリューションが 1 回に 1 タプルずつストリームを処理します。
 
-Trident の詳細については、apache.org の「[Trident のチュートリアル](https://storm.incubator.apache.org/documentation/Trident-tutorial.html)」をご覧ください。
+Trident の詳細については、apache.org の「[Trident のチュートリアル](https://storm.apache.org/documentation/Trident-tutorial.html)」をご覧ください。
 
 Java トポロジと Trident トポロジの例については、[Storm トポロジの例の一覧](hdinsight-storm-example-topology.md)、または HDInsight クラスターの storm-starter の例をご覧ください。
 
-storm-starter の例は、Linux ベースのクラスターでは \_\_ /usr/hdp/current/storm-client/contrib/storm-starter\_\_ ディレクトリ、Windows ベースのクラスターでは **%storm\_home%\\contrib\\storm-starter** ディレクトリにあります。
+storm-starter の例は、Linux ベースのクラスターでは __/usr/hdp/current/storm-client/contrib/storm-starter__ ディレクトリ、Windows ベースのクラスターでは **%storm\_home%\\contrib\\storm-starter** ディレクトリにあります。
 
 ##一般的な開発パターンの例
 
@@ -215,9 +215,9 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-[stormtrident]: https://storm.incubator.apache.org/documentation/Trident-API-Overview.html
+[stormtrident]: https://storm.apache.org/documentation/Trident-API-Overview.html
 [samoa]: http://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
-[apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
+[apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
 [gettingstarted]: hdinsight-apache-storm-tutorial-get-started-linux.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

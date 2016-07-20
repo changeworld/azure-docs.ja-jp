@@ -32,7 +32,11 @@
 フェールオーバーを開始するには、以下が必要です。
 
 - プライマリ上の DBManager であるログイン。geo レプリケートするローカル データベースの db\_ownership を所有し、geo レプリケーションを構成するパートナー サーバー上の DBManager になります。
-- 最新バージョンの SQL Server Management Studio - 最新バージョンの SQL Server Management Studio (SSMS) を入手するには、[SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx) ページに移動します。SQL Server Management Studio を使用した Azure SQL Database の論理サーバーとデータベースの管理については、「[SQL Server Management Studio を使用した Azure SQL Database の管理](sql-database-manage-azure-ssms.md)」を参照してください。
+- SQL Server Management Studio (SSMS)
+
+
+> [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+
 
 
 
@@ -98,4 +102,4 @@
 - [SQL Database のドキュメント](https://azure.microsoft.com/services/sql-database/)
 - [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

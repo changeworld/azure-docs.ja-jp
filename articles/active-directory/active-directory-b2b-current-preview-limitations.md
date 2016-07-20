@@ -25,7 +25,7 @@
 - 一般消費者向け電子メール アドレス (hotmail.com、Gmail.com、comcast.net など) への招待状は現在サポートされていません。
 - オンプレミスのアプリケーションへの外部ユーザー アクセスはテストされていません。
 - 実際のユーザーがディレクトリから削除された場合、外部ユーザーは自動的にはクリーンアップされません。
-- DL に対する招待はサポートされていません。
+- 配布リストへの招待はサポートされていません。
 - CSV を使用してアップロードできるレコードは最大 2,000 件です。
 
 ## 関連記事
@@ -39,4 +39,4 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 - [外部ユーザー オブジェクト属性の変更](active-directory-b2b-references-external-user-object-attribute-changes.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0706_2016-->

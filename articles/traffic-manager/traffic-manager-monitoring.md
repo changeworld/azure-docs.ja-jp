@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/04/2016"
+   ms.date="07/01/2016"
    ms.author="jtuliani" />
 
 # Traffic Manager エンドポイントの監視とフェールオーバー
@@ -175,4 +175,4 @@ Traffic Manager でサポートされている[トラフィック ルーティ�
 
 Traffic Manager エンドポイントの [低下状態に関するトラブルシューティング](traffic-manager-troubleshooting-degraded.md)を行う。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

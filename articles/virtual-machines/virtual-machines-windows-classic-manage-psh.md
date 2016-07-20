@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="03/31/2016"
+   ms.date="07/01/2016"
    ms.author="kasing"/>
 
 # Azure PowerShell を使用した仮想マシンの管理
@@ -67,7 +67,7 @@ VM に関する情報を取得するには、このコマンドを実行し、�
     Start-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 ## データ ディスクの接続
-このタスクには、いくつかの手順が必要です。まず、****Add-AzureDataDisk**** コマンドレットを使用して、$vm オブジェクトにディスクを追加します。次に、**Update-AzureVM** コマンドレットを使用して、仮想マシンの構成を更新します。
+このタスクには、いくつかの手順が必要です。まず、***Add-AzureDataDisk*** コマンドレットを使用して、$vm オブジェクトにディスクを追加します。次に、**Update-AzureVM** コマンドレットを使用して、仮想マシンの構成を更新します。
 
 新しいディスクとデータを含むディスクのどちらを接続するかについても決める必要があります。新しいディスクの場合、コマンドによって .vhd ファイルが作成、接続されます。
 
@@ -95,4 +95,4 @@ Azure で Windows ベースの仮想マシンを新たに作成するには、�
 - 既存の負荷分散セットのメンバーとしての設定。
 - 静的 IP アドレス。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

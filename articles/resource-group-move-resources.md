@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/08/2016" 
+	ms.date="07/06/2016" 
 	ms.author="tomfitz"/>
 
 # 新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -83,7 +83,7 @@
 
 App Service アプリを使用している場合、App Service プランのみを移動することはできません。App Service アプリを移動するには、次のオプションがあります。
 
-- App Service プランとそのリソース グループ内の他のすべての App Service リソースを、まだ App Service リソースが含まれていない新しいリソース グループに移動する。これは、App Service プランに関連付けられていない App Service リソースも移動することを意味します。 
+- App Service プランとそのリソース グループ内の他のすべての App Service リソースを、まだ App Service リソースが含まれていない新しいリソース グループに移動する。これは、App Service プランに関連付けられていない App Service リソースも移動することを意味します。
 - アプリを別のリソース グループに移動し、元のリソース グループにも App Service プランをすべて保持する。
 
 元のリソース グループに Application Insights のリソースも含まれている場合、Application Insights では現在移行操作がサポートされていないため、このリソースを移動できません。App Service アプリを移動する際に Application Insights のリソースも含めると、移動操作自体が失敗します。ただし、アプリが正常に動作するために、Application Insights と App Service プランがそのアプリと同じリソース グループ内に存在する必要はありません。
@@ -120,7 +120,7 @@ Web アプリがその App Service プランとは異なるリソース グル�
 **同じサブスクリプション内**のリソース グループ間でリソースを移動する場合は、次の制限が適用されます。
 
 - Virtual Networks (クラシック) を移動することはできません。
-- Virtual Machines (クラシック) はクラウド サービスで移動する必要があります。 
+- Virtual Machines (クラシック) はクラウド サービスで移動する必要があります。
 - クラウド サービスは、移動にその仮想マシンがすべて含まれている場合にのみ移動できます。
 - 一度に移動できるクラウド サービスは 1 つだけです。
 - 一度に移動できるストレージ アカウント (クラシック) は 1 つだけです。
@@ -133,11 +133,11 @@ Web アプリがその App Service プランとは異なるリソース グル�
 
 ## ポータルを使用したリソースの移動
 
-ポータル経由で一部のリソースを移動することができます。ただし、移動操作をサポートするすべてのリソース プロバイダーが、ポータル経由でその機能を提供しているわけではありません。
-
 リソースを移動するには、リソースを選択し、**[移動]** ボタンを選択します。
 
 ![リソースの移動](./media/resource-group-move-resources/move-resources.png)
+
+> [AZURE.NOTE] すべてのリソースが、ポータルを使用した移動を現在サポートしているわけではありません。移動するリソースの **[移動]** ボタンが表示されない場合は、PowerShell、CLI、または REST API を使用してリソースを移動します。
 
 リソースを移動するときに、移動先のサブスクリプションとリソース グループを指定します。そのリソースと一緒に他のリソースを移動する必要がある場合、それらが一覧表示されます。
 
@@ -268,9 +268,9 @@ Web アプリがその App Service プランとは異なるリソース グル�
 
 
 ## 次のステップ
-- サブスクリプションを管理するための PowerShell コマンドレットについては、「[Azure Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。
+- サブスクリプションを管理するための PowerShell コマンドレットについては、[Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)に関するページを参照してください。
 - サブスクリプションを管理するための Azure CLI コマンドについては、[Resource Manager での Azure CLI の使用](xplat-cli-azure-resource-manager.md)に関するページを参照してください。
-- サブスクリプションを管理するためのポータル機能については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](./azure-portal/resource-group-portal.md)」を参照してください。
-- リソースを論理的に整理する方法については、「[タグを使用した Azure リソースの整理](resource-group-using-tags.md)」を参照してください。
+- サブスクリプションを管理するためのポータル機能については、[Azure ポータルを使用したリソース管理](./azure-portal/resource-group-portal.md)に関するページを参照してください。
+- リソースを論理的に整理する方法については、[タグを使用したリソースの整理](resource-group-using-tags.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

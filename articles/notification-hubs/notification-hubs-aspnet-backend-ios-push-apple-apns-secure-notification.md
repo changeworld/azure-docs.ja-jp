@@ -3,7 +3,7 @@
 	description="セキュリティで保護されたプッシュ通知を Azure から iOS アプリに送信する方法について説明します。コード サンプルは Objective-C と C# で記述されています。"
 	documentationCenter="ios"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="notification-hubs"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="06/29/2016"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs の安全なプッシュ
@@ -158,4 +158,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

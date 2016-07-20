@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="06/29/2016"
 	ms.author="juliako;anilmur"/>
 
 #Media Encoder Standard の形式とコーデック
@@ -36,8 +36,10 @@ MP4 (.mp4、.m4a、.m4v)/ISMV (.isma、.ismv)|あり
 [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |あり 
 Matroska/WebM (.mkv) |あり 
 WAVE/WAV (.wav) |あり 
-QuickTime (.mov) |あり
- 
+QuickTime (.mov) |はい
+
+>[AZURE.NOTE] 上に記載したのは、ごく一般的なファイル拡張子の一覧です。Media Encoder Standard は他にもさまざまな拡張子をサポートしています (例: .m2ts、.mpeg2video、.qt)。ファイルをエンコードしたときに、ファイル形式がサポートされていないことに関するエラー メッセージが表示された場合は、[こちら](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)からフィードバックをお寄せください。
+
 ###入力コンテナーのオーディオ形式 
 
 Media Encoder Standard の入力コンテナーは次のオーディオ形式に対応しています。
@@ -121,4 +123,4 @@ MPEG2-TS |H.264 (High、Main、Baseline Profile)|AAC-LC、HE-AAC v1、HE-AAC v2
 
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

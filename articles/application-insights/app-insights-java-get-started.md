@@ -163,6 +163,19 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
 * HTTP 要求コンポーネントはオプションです。このコンポーネントは、要求と応答時間に関するテレメトリをポータルに自動的に送信します。
 * イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。これにより、[診断検索][diagnostic]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
 
+### インストルメンテーション キーの他の設定方法
+
+Application Insights SDK は、次の順序でキーを探します。
+
+1. システムのプロパティ: -DAPPLICATION\_INSIGHTS\_IKEY=your\_ikey
+2. 環境変数: APPLICATION\_INSIGHTS\_IKEY
+3. 構成ファイル: ApplicationInsights.xml
+
+[これはコードで設定することもできます](app-insights-api-custom-events-metrics.md#ikey):
+
+    telemetryClient.InstrumentationKey = "...";
+
+
 ## 4\.HTTP フィルターを追加する
 
 最後の構成手順では、HTTP 要求コンポーネントが各 Web 要求をログに記録できるようにします (単に最小限の API が必要な場合はこの手順を行う必要はありません)。
@@ -248,16 +261,14 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 ![Example of Analytics](./media/app-insights-java-get-started/025.png)
 
 
-## 5\.サーバーへのアプリのインストール
+## 7\.サーバーへのアプリのインストール
 
 次に、サーバーにアプリを発行してユーザーがアプリを使用できるようにし、ポータルに表示されるテレメトリを監視します。
 
 * アプリケーションがこれらのポートにテレメトリを送信できるようにファイアウォールが設定されていることを確認します。
 
  * dc.services.visualstudio.com:443
- * dc.services.visualstudio.com:80
  * f5.services.visualstudio.com:443
- * f5.services.visualstudio.com:80
 
 
 * Windows サーバーに次のものをインストールします。
@@ -274,7 +285,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 
 その他の例外に関するデータを収集するには 2 つのオプションがあります。
 
-* [trackException() への呼び出しをコードに挿入][apiexceptions]します。 
+* [trackException() への呼び出しをコードに挿入][apiexceptions]します。
 * [Java エージェントをサーバーにインストール](app-insights-java-agent.md)します。監視するメソッドを指定します。
 
 
@@ -401,4 +412,4 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -45,7 +45,7 @@
 
 Runbook に直接コードを入力するか、ライブラリ コントロールからコマンドレット、Runbook、資産を選択し、関連するパラメーターを使って Runbook に追加できます。このチュートリアルでは、Runbook に直接コードを入力します。
 
-1.	Runbook はこの時点で空です (必要な *Workflow* キーワード、Runbook の名前、ワークフロー全体を囲む中かっこ以外)。 
+1.	Runbook はこの時点で空です (必要な *Workflow* キーワード、Runbook の名前、ワークフロー全体を囲む中かっこ以外)。
 
     ```
     Workflow MyFirstRunbook-Workflow
@@ -70,7 +70,7 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 
 1.	**[テスト ウィンドウ]** をクリックして、テスト ウィンドウを開きます。<br> ![Test pane](media/automation-first-runbook-textual/runbook-edit-toolbar-test-pane.png)
 2.	**[開始]** をクリックしてテストを開始します。有効なオプションはこれだけです。
-3.	[Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態が表示されます。最初のジョブの状態は*キューに設定*であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。  
+3.	[Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態が表示されます。最初のジョブの状態は*キューに設定*であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。
 4.	Runbook ジョブが完了すると、その出力が表示されます。この例では、*Hello World* と表示されます。<br>![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
 5.	テスト ウィンドウを閉じてキャンバスに戻ります。
 
@@ -84,16 +84,16 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 4.	ここでは単純に Runbook を開始するので、**[開始]** をクリックし、確認を求められたら **[はい]** をクリックします。<br> ![Runbook の開始](media/automation-first-runbook-textual/runbook-toolbar-start.png)
 5.	作成した Runbook ジョブのジョブ ウィンドウが開かれます。このウィンドウは閉じてもかまいませんが、ここではジョブの進行状況を確認できるように開いたままにします。
 6.	ジョブの状態が **[ジョブの概要]** に表示され、Runbook をテストしたときに確認した状態と一致しています。<br> ![ジョブの概要](media/automation-first-runbook-textual/job-pane-summary.png)
-7.	Runbook の状態が *[完了]* になったら、**[出力]** をクリックします。[出力] ウィンドウが開き、「*Hello World*」と表示されます。<br> ![ジョブの概要](media/automation-first-runbook-textual/job-pane-output.png)  
+7.	Runbook の状態が *[完了]* になったら、**[出力]** をクリックします。[出力] ウィンドウが開き、「*Hello World*」と表示されます。<br> ![ジョブの概要](media/automation-first-runbook-textual/job-pane-output.png)
 8.	[出力] ウィンドウを閉じます。
 9.	**[ストリーム]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。出力ストリームでは *Hello World* だけが表示されますが、Runbook が詳細やエラーに書き込んでいる場合は、これらの Runbook ジョブの他のストリームも表示できます。<br> ![ジョブの概要](media/automation-first-runbook-textual/job-pane-streams.png)
-10.	ストリーム ウィンドウを閉じると、ジョブ ウィンドウは MyFirstRunbook ウィンドウに戻ります。
+10.	ストリーム ウィンドウを閉じると、ジョブ ウィンドウは MyFirstRunbook-Workflow ウィンドウに戻ります。
 11.	**[ジョブ]** をクリックして、この Runbook のジョブ ウィンドウを開きます。この Runbook によって作成されたジョブの一覧が表示されます。ジョブを 1 回実行しただけなので、一覧に表示されるジョブは 1 つだけです。<br> ![ジョブ](media/automation-first-runbook-textual/runbook-control-jobs.png)
 12.	このジョブをクリックすると、Runbook を開始したときに表示されたものと同じジョブ ウィンドウが開きます。これにより前に戻って、特定の Runbook に対して作成されたジョブの詳細を見ることができます。
 
 ## 手順 5 - Azure リソースを管理するための認証を追加する
 
-Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。ここでは、Runbook で Azure リソースを管理します。ただし、[前提条件](#prerequisites)で示されている資格情報を使用して認証を行わないと、これを実現することはできません。認証は、**Add-AzureRMAccount** コマンドレットを使用して行います。
+Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。ここでは、Runbook で Azure リソースを管理します。ただし、[前提条件](#prerequisites)で示されている資格情報を使用して認証を行わないと、これを実現することはできません。**Add-AzureRmAccount** コマンドレットでこれを行います。
 
 1.	MyFirstRunbook-Workflow ウィンドウで **[編集]** をクリックして、テキスト エディターを開きます。<br> ![Edit runbook](media/automation-first-runbook-textual/runbook-toolbar-edit.png)
 2.	**Write-Output** の行は不要になったので削除します。
@@ -101,9 +101,8 @@ Runbook をテストして発行しましたが、これまでのところ役に
 4.	Automation の実行アカウントを使用して認証を処理する次のコードを入力またはコピーして貼り付けます。
 
     ```
-    $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
-    Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
-    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
+    Add-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
     ```
 
 5.	**テスト ウィンドウ**をクリックして、Runbook をテストできるようにします。
@@ -113,14 +112,14 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 これで、Runbook で Azure サブスクリプションに対する認証が行われ、リソースを管理できるようになります。仮想マシンを起動するコマンドを追加します。Azure サブスクリプション内の任意の仮想マシンを選択し、ここではその名前をコマンドレットにハードコーディングします。
 
-1.	*Add-AzureRmAccount* の後に、起動する仮想マシンの名前とリソース グループ名を指定して「*Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'*」と入力します。  
+1.	*Add-AzureRmAccount* の後に、起動する仮想マシンの名前とリソース グループ名を指定して「*Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'*」と入力します。
 
     ```
     workflow MyFirstRunbook-Workflow
     {
      $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
-     Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
-     -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+     Add-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+ 
      Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
     }
     ```
@@ -132,7 +131,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 この Runbook では、Runbook にハードコードした仮想マシンを開始しますが、Runbook を開始するときに仮想マシンを指定できるようにすればもっと便利です。そこで次に、入力パラメーターを Runbook に追加して、その機能を提供します。
 
-1.	*VMName* と *ResourceGroupName* のパラメーターを Runbook に追加し、次の例に示すように、**Start-AzureRmVM** コマンドレットでこれらの変数を使用します。 
+1.	*VMName* と *ResourceGroupName* のパラメーターを Runbook に追加し、次の例に示すように、**Start-AzureRmVM** コマンドレットでこれらの変数を使用します。
 
     ```
     workflow MyFirstRunbook-Workflow
@@ -142,8 +141,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
         [string]$ResourceGroupName
        )  
      $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
-     Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
-     -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+     Add-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
      Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
     }
     ```
@@ -159,8 +157,8 @@ Runbook をテストして発行しましたが、これまでのところ役に
 ## 次のステップ
 
 -  グラフィカルな Runbook の使用を開始するには、「[初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)」を参照してください。
--	PowerShell Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)」を参照してください。
+-  PowerShell Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)」を参照してください。
 -  Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
--	PowerShell スクリプトのサポート機能の詳細については、[Azure Automation でのネイティブ PowerShell スクリプトのサポート](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)に関するブログを参照してください。
+-  PowerShell スクリプトのサポート機能の詳細については、[Azure Automation でのネイティブ PowerShell スクリプトのサポート](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)に関するブログを参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -46,7 +46,7 @@ Azure Storage は仮想マシン (VM) とアプリケーションをデプロイ
 VM をサポートするために 2 種類のストレージ アカウントを使用できます。
 
 - Standard Storage アカウントでは、BLOB ストレージ (Azure VM ディスクの保存に利用)、テーブル ストレージ、キュー ストレージ、ファイル ストレージにアクセスできます。
-- [Premium Storage](../storage/storage-premium-storage.md) は AlwaysOn クラスター内の SQL Server などの高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供し、現在は Azure VM ディスクのみをサポートします。
+- [Premium Storage](../storage/storage-premium-storage.md) は、MongoDB シャード クラスターなどの高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供し、現在は Azure VM ディスクのみをサポートします。
 
 Azure で作成される VM には、オペレーティング システム ディスク、一時ディスク、および 0 個以上のオプションのデータ ディスクが含まれます。オペレーティング システム ディスクとデータ ディスクは Azure ページ BLOB です。一時ディスクは、コンピューターが存在するノードにローカル保存されます。メンテナンス イベント中 VM をホスト間に移行する場合があるため、一時ディスクを非永続的データに使用するためだけにアプリケーションを設計する場合は注意が必要です。一時ディスクに格納されているデータが失われます。
 
@@ -71,7 +71,7 @@ Azure データ ディスクにディスク ストライピングを使用する
 - LVM を使用します
 - Azure データ ディスクのキャッシュ オプションを使わないようにします (キャッシュ ポリシー = なし)
 
-詳細については、「[Storage Spaces - Designing for Performance](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx)」(記憶域スペース - パフォーマンスのための設計) を参照してください。
+詳細については、[Linux VM での LVM の構成](virtual-machines-linux-configure-lvm.md)に関するページをご覧ください。
 
 
 ## 複数のストレージ アカウント
@@ -85,4 +85,4 @@ Azure Storage 環境を設計するとき、デプロイする VM の増加に�
 
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -67,7 +67,7 @@ Azure AD のアクセス管理ソリューションの核となる機能は、�
 ## アクセス管理の開始
 使い始める準備はできていますか。 Azure AD グループを使用して実行できる基本的な作業を試してみる必要があります。これらの機能を使用して、組織内のさまざまなユーザーのグループに、さまざまなリソースへの特別なアクセスを提供します。最初の基本的な手順の一覧を以下に示します。
 
-* [単純なルールを作成してグループの動的メンバーシップを構成する](active-directory-accessmanagement-manage-groups.md#how-can-i-create-a-simple-rule-to-manage-members-of-a-group-dynamically)
+* [単純なルールを作成してグループの動的メンバーシップを構成する](active-directory-accessmanagement-manage-groups.md#how-can-i-manage-the-membership-of-a-group-dynamically)
 
 * [SaaS アプリケーションへのアクセスをグループで管理する](active-directory-accessmanagement-group-saasapps.md)
 
@@ -91,4 +91,4 @@ Azure AD のアクセス管理ソリューションの核となる機能は、�
 
 * [グループの設定を構成するための Azure Active Directory コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

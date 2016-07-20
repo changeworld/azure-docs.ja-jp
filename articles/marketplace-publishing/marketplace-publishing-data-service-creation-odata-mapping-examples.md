@@ -155,4 +155,4 @@ GET で取得したデータの RESTful なページングを実装します。�
 - 特定のノードとそのパラメーターについて知りたい場合は、定義と説明、例、ユース ケースのコンテキストなどが記載された、この[データ サービスの OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)に関する記事をご覧ください。
 - データ サービスを Azure Marketplace に発行するための指定のパスに戻る場合は、この[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0706_2016-->

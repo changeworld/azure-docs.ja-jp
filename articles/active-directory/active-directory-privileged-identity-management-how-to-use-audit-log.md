@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="kgremban"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/15/2016"
+   ms.date="07/01/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management で監査ログを使用する方法
@@ -21,7 +21,7 @@
 Privileged Identity Management (PIM) の監査ログを使用すると、特定の期間におけるすべてのユーザー割り当てとアクティブ化を確認できます。
 
 ## 監査ログへの移動
-[Azure ポータル](https://portal.azure.com) ダッシュボードで **Azure AD Privileged Identity Management** アプリを選択します。PIM ダッシュボードで **[監査履歴]** をクリックすると、監査ログにアクセスできます。
+[Azure ポータル](https://portal.azure.com) ダッシュボードで **Azure AD Privileged Identity Management** アプリを選択します。ここから、PIM ダッシュボードで**[特権ロールの管理]**、**[監査履歴]**をクリックして、監査ログにアクセスします。
 
 ## 監査ログのグラフ
 監査ログを使用すると、合計アクティブ化数、1 日あたりの最大アクティブ化数、1 日あたりの平均アクティブ化数を折れ線グラフで表示できます。監査履歴に複数のロールがある場合は、ロールによってデータをフィルターすることもできます。
@@ -60,4 +60,4 @@ Privileged Identity Management (PIM) の監査ログを使用すると、特定�
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

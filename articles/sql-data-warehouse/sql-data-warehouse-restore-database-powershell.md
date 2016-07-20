@@ -34,7 +34,7 @@
 
 ### PowerShell をインストールする
 
-SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0 以降をインストールする必要があります。**Get-Module -ListAvailable -Name Azure** を実行することで、バージョンを確認できます。最新バージョンは、[Microsoft Web Platform Installer][] からインストールできます。最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」を参照してください。
+SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0 以降をインストールする必要があります。**Get-Module -ListAvailable -Name AzureRM** を実行することで、バージョンを確認できます。最新バージョンは、[Microsoft Web Platform Installer][] からインストールできます。最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」を参照してください。
 
 ## アクティブまたは一時停止中のデータベースを復元する
 
@@ -175,4 +175,4 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 [Azure Portal]: https://portal.azure.com/
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0706_2016-->

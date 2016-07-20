@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/20/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Azure Active Directory ドメイン サービス プレビュー: FAQ
@@ -78,4 +78,4 @@ Azure AD Domain Services を利用できる Azure のリージョンの一覧に
 #### Azure AD Domain Services はいつ一般公開される予定ですか。
 現時点では、このサービスの一般公開予定は決まっていません。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

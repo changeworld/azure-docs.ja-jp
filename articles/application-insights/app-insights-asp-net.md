@@ -3,7 +3,7 @@
 	description="オンプレミスまたは Azure でホストされている ASP.NET Web サイトのパフォーマンス、可用性、利用状況の分析を構成します。" 
 	services="application-insights" 
     documentationCenter=".net"
-	authors="alancameronwills" 
+	authors="NumberByColors" 
 	manager="douge"/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
 	ms.date="06/21/2016" 
-	ms.author="awills"/>
+	ms.author="daviste"/>
 
 
 # ASP.NET 向けの Application Insights の設定
@@ -26,7 +26,7 @@
 必要なもの:
 
 * Visual Studio 2013 Update 3 以降。より新しいバージョンが適しています。
-* [Microsoft Azure](http://azure.com) のサブスクリプションチームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。 
+* [Microsoft Azure](http://azure.com) のサブスクリプションチームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
 
 関心をお持ちの場合は、他にも次のような記事をご覧いただけます。
 
@@ -50,7 +50,7 @@ Visual Studio で新しいプロジェクトを作成するときに、Applicati
 
 ![[Application Insights の追加] を選択する](./media/app-insights-asp-net/appinsights-03-addExisting.png)
 
-* ASP.NET Core プロジェクトの場合 - [これらの手順に従って、コード行をいくつか修正します](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started#add-application-insights-instrumentation-code-to-startupcs)。 
+* ASP.NET Core プロジェクトの場合 - [これらの手順に従って、コード行をいくつか修正します](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started#add-application-insights-instrumentation-code-to-startupcs)。
 
 
 
@@ -88,7 +88,7 @@ Visual Studio で、ログに記録されたイベント数が表示されます
 
 ポータルを開くと、アプリのテレメトリが表示されます。 ![](./media/app-insights-asp-net/66.png)
 
-* 個々のイベントは **[検索]** (1) に表示されます。データはまずここ (および[ライブ メトリックス ストリーム](app-insights-metrics-explorer.md#live-metrics-stream)内) に表示されます。イベントをクリックすると、そのプロパティが表示されます。 
+* 個々のイベントは **[検索]** (1) に表示されます。データはまずここ (および[ライブ メトリックス ストリーム](app-insights-metrics-explorer.md#live-metrics-stream)内) に表示されます。イベントをクリックすると、そのプロパティが表示されます。
 * メトリックの集計値はグラフ (2) に表示されます。データがここに表示されるまで、1 ～ 2 分かかる場合があります。グラフをクリックすると、詳細を含むブレードが開きます。
 
 [Azure ポータルでの Application Insights の使用方法の詳細については、こちらを参照してください](app-insights-dashboards.md)。
@@ -123,4 +123,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 |**[Application Insights ポータルを使用する](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-asp-net/62.png)
 |**[さらにデータを追加する](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外を監視します。ログ記録フレームワークからのトレースを統合します。カスタム テレメトリを記述します。 | ![Visual studio](./media/app-insights-asp-net/64.png)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

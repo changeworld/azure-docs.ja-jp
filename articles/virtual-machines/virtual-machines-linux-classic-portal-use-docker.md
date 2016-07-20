@@ -32,8 +32,7 @@
 
 > [AZURE.NOTE] 現時点では、2014 年 7 月以降の Ubuntu 14.04 LTS イメージのみが Docker VM 拡張機能をサポートしています。
 
-![新しい Ubuntu イメージの作成  
-](./media/virtual-machines-linux-classic-portal-use-docker/ChooseUbuntu.png)
+![新しい Ubuntu イメージの作成](./media/virtual-machines-linux-classic-portal-use-docker/ChooseUbuntu.png)
 
 ## Docker 証明書の作成
 

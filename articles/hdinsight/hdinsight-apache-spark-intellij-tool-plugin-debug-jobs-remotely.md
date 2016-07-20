@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/09/2016"
+	ms.date="07/06/2016"
 	ms.author="nitinme"/>
 
 
@@ -42,7 +42,7 @@
  
 * IntelliJ IDEA。この記事では、バージョン 15.0.1 を使用します。[ここ](https://www.jetbrains.com/idea/download/)からインストールできます。
  
-* IntelliJ IDEA 用の HDInsight Tools プラグイン。このプラグインをインストールする手順の詳細については、「[IntelliJ IDEA 用の HDInsight Tools プラグインのインストール](hdinsight-apache-spark-intellij-tool-plugin.md#install-hdinsight-tools-plugin-for-intellij-idea)」を参照してください。
+* IntelliJ IDEA 用の HDInsight Tools プラグイン。IntelliJ IDEA 用の HDInsight Tools プラグインは、Azure Toolkit for IntelliJ に付属しています。Azure Toolkit をインストールする手順については、「[Azure Toolkit for IntelliJ のインストール](../azure-toolkit-for-intellij-installation.md)」を参照してください。
  
 * リモート デバッグを行う目的で Windows コンピューター上で Spark Scala アプリケーションを実行しているときに、Windows 上に WinUtils.exe が不足しているために発生する例外が表示される場合があります。この例外は [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) に説明されています。このエラーを回避するには、[実行可能ファイルをここからダウンロード](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\\WinUtils\\bin** などの場所に保存する必要があります。次に、環境変数 **HADOOP\_HOME** を追加し、この変数の値を **C\\WinUtils** に設定します。
 
@@ -50,9 +50,9 @@
 
 次のリンクの手順に従って Azure 仮想ネットワークを作成し、デスクトップと Azure 仮想ネットワークの間の接続を確認します。
 
-* [Azure ポータルを使用してサイト間 VPN 接続を持つ VNet を作成する](..\vpn-gateway\vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-* [PowerShell を使用してサイト間 VPN 接続を持つ VNet を作成する](..\vpn-gateway\vpn-gateway-create-site-to-site-rm-powershell.md)
-* [PowerShell を使用して仮想ネットワークへのポイント対サイト接続を構成する](..\vpn-gateway\vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Azure ポータルを使用してサイト間 VPN 接続を持つ VNet を作成する](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [PowerShell を使用してサイト間 VPN 接続を持つ VNet を作成する](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+* [PowerShell を使用して仮想ネットワークへのポイント対サイト接続を構成する](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ## 手順 2. HDInsight Spark クラスターを作成する
 
@@ -156,7 +156,7 @@
 
 6. 次の変更を加えるために、`core-site.xml` を更新します。
 
-	1. `core-site.xml` には、クラスターに関連付けられたストレージ アカウント用の暗号化されたキーが含まれます。プロジェクトに追加した `core-site.xml` で、暗号化されたキーを、既定のストレージ アカウントに関連付けられた実際のストレージ キーに置き換えます。「[Manage your storage access keys (ストレージ アクセス キーの管理)](..\storage\storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
+	1. `core-site.xml` には、クラスターに関連付けられたストレージ アカウント用の暗号化されたキーが含まれます。プロジェクトに追加した `core-site.xml` で、暗号化されたキーを、既定のストレージ アカウントに関連付けられた実際のストレージ キーに置き換えます。「[ストレージ アクセス キーの管理](../storage/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
 
 			<property>
 	      		<name>fs.azure.account.key.hdistoragecentral.blob.core.windows.net</name>
@@ -252,7 +252,7 @@
 	注意すべき重要な点がいくつかあります。
 	
 	* `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")` では、指定されたパスのクラスター ストレージで Spark アセンブリ JAR が使用可能かどうかを確認します。
-	* `setJars` では、アーティファクト jar が作成される場所を指定します。通常は `<Your IntelliJ project directory>\out<project name>_DefaultArtifact\default_artifact.jar` です。 
+	* `setJars` では、アーティファクト jar が作成される場所を指定します。通常は `<Your IntelliJ project directory>\out<project name>_DefaultArtifact\default_artifact.jar` です。
 
 
 11. `RemoteClusterDebugging` クラスで `test` キーワードを右クリックし、**[Create RemoteClusterDebugging Configuration (RemoteClusterDebugging 構成の作成)]** を選択します。
@@ -330,6 +330,8 @@
 
 * [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
+* [Eclipse 用の HDInsight Tools プラグインを使用して Spark アプリケーションを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
+
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
@@ -344,4 +346,4 @@
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

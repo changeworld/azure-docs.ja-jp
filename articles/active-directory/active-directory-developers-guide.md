@@ -13,23 +13,23 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/23/2016"
+   ms.date="07/06/2016"
    ms.author="mbaldwin"/>
 
 
 # Azure Active Directory 開発者ガイド
 
 ## 概要
-Identity Management As A Service (IDMaaS) プラットフォームとして Azure Active Directory を使用することにより、開発者は ID 管理をアプリケーションに効果的に統合することができます。次の記事では、Azure Active Directory の実装と重要な機能の概要について説明しています。これらの記事を順番に読むことをお勧めします。実作業に取りかかる準備ができている場合は、「[使用の開始](#getting-started)」に進んでください。
+Identity Management As A Service (IDMaaS) プラットフォームとして Azure Active Directory (AD) を使用することにより、開発者は ID 管理をアプリケーションに効果的に統合することができます。次の記事では、Azure AD の実装と重要な機能の概要について説明しています。これらの記事を順番に読むことをお勧めします。実作業に取りかかる準備ができている場合は、「[使用の開始](#getting-started)」に進んでください。
 
 
-1. [Azure Active Directory 統合のメリット](active-directory-how-to-integrate.md): Azure Active Directory との統合が、セキュリティで保護されたサインインと承認に最適なソリューションである理由を説明します。
+1. [Azure Active Directory 統合のメリット](active-directory-how-to-integrate.md): Azure AD との統合が、セキュリティで保護されたサインインと承認に最適なソリューションである理由を説明します。
 
-1. [Active Directory の認証シナリオ](active-directory-authentication-scenarios.md): Azure Active Directory の簡素化された認証を利用して、アプリケーションにサインオン機能を組み込む方法を説明します。
+1. [Active Directory の認証シナリオ](active-directory-authentication-scenarios.md): Azure AD の簡素化された認証を利用して、アプリケーションにサインオン機能を組み込む方法を説明します。
 
-1. [アプリケーションと Azure Active Directory の統合](active-directory-integrating-applications.md): Azure Active Directory にアプリケーションを追加し、それを更新および削除する方法と、統合されたアプリのブランド化のガイドラインについて説明します。
+1. [アプリケーションと Azure Active Directory の統合](active-directory-integrating-applications.md): Azure AD にアプリケーションを追加し、それを更新および削除する方法と、統合されたアプリのブランド化のガイドラインについて説明します。
 
-1. [Azure Active Directory Graph API](active-directory-graph-api.md)： Azure Active Directory Graph API を使用して、REST API エンドポイント経由でプログラムによって Azure Active Directory にアクセスする方法を説明します。Azure AD Graph API には、[Microsoft Graph](https://graph.microsoft.io/) からもアクセスできます。Microsoft Graph は、単一の REST API エンドポイントから単一のアクセス トークンを使用して複数の Microsoft クラウド サービス API にアクセスできる統合 API です。
+1. [Azure Active Directory Graph API](active-directory-graph-api.md): Azure AD Graph API を使用し、REST API エンドポイント経由で Azure AD にプログラムからアクセスする方法を説明します。Azure AD Graph API には、[Microsoft Graph](https://graph.microsoft.io/) からもアクセスできます。Microsoft Graph は、単一の REST API エンドポイントから単一のアクセス トークンを使用して複数の Microsoft クラウド サービス API にアクセスできる統合 API です。
 
 1. [Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md): Azure AD 認証ライブラリ (.NET、JavaScript、Objective-C、Android など用) を使用して、ユーザーを認証し、アクセス トークンを取得する処理を簡単に組み込む方法を説明します。
 
@@ -66,12 +66,13 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 次の記事では、Azure Active Directory を使用して特定のタスクを実行する方法について説明しています。
 
-- [Azure Active Directory テナントを取得する](active-directory-howto-tenant.md)
-- [Azure Active Directory アプリケーション ギャラリーでアプリケーションを一覧表示する](active-directory-app-gallery-listing.md)
-- [Azure Active Directory のアプリケーション マニフェストについて理解する](active-directory-application-manifest.md)
-- [Create an app with Office 365 APIs (Office 365 API を使用するアプリの作成)](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
+- [Azure AD テナントを取得する](active-directory-howto-tenant.md)
+- [マルチテナント アプリケーション パターンを使用して Azure AD ユーザーをサインインさせる](active-directory-devhowto-multi-tenant-overview.md)
+- [Android](active-directory-sso-android.md) デバイスおよび [iOS](active-directory-sso-ios.md) デバイスで ADAL を使用してクロスアプリ SSO を有効にする
+- [Azure AD の AppSource 認定を取得する](active-directory-devhowto-appsource-certified.md)
+- [Azure AD アプリケーション ギャラリーでアプリケーションを一覧表示する](active-directory-app-gallery-listing.md)
 - [Submit Web apps for Office 365 to the Seller Dashboard (販売者ダッシュボードへの Office 365 用 Web アプリの送信)](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
-- [Android](active-directory-sso-android.md) デバイスおよび [iOS](active-directory-sso-ios.md) デバイスで ADAL を使用してクロスアプリ SSO を有効にする方法
+- [Azure Active Directory のアプリケーション マニフェストについて理解する](active-directory-application-manifest.md)
 - [クライアント アプリケーションでサインインおよびアプリ取得ボタンをブランド化するためのガイドラインを理解する](active-directory-branding-guidelines.md)
 - [プレビュー: ユーザーが、個人カウント、および職場または学校のアカウントの両方でサインインできるアプリを構築する方法](active-directory-appmodel-v2-overview.md)
 - [プレビュー: コンシューマーをサインアップおよびサインインさせるアプリケーションを作成する方法](../active-directory-b2c/active-directory-b2c-overview.md)
@@ -97,7 +98,6 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 - [Graph API リファレンス](https://msdn.microsoft.com/library/azure/hh974476.aspx): Azure Active Directory Graph API の REST リファレンスです。[対話型の Graph API リファレンスを表示します](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)。
 
 - [Graph API Permission Scopes (Graph API のアクセス許可スコープ)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes): OAuth 2.0 のアクセス許可スコープは、アプリケーションに付与されている、テナント内のディレクトリ データに対するアクセス権を制御するために使用されます。
-
 
 ### 認証および承認のプロトコル
 
@@ -139,4 +139,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

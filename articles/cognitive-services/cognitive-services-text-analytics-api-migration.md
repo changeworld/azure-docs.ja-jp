@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/24/2016"
+	ms.date="07/05/2016"
 	ms.author="onewth"/>
 
 # Text Analytics API のバージョン 2 へのアップグレード #
 
-このガイドでは、コードをアップグレードし、[この API の最初のバージョン](../machine-learning-apps-text-analytics/)ではなくバージョン 2 が使われるようにする手順について説明します。
+このガイドでは、コードをアップグレードし、[この API の最初のバージョン](../machine-learning/machine-learning-apps-text-analytics.md)ではなくバージョン 2 が使われるようにする手順について説明します。
 
 この API の使用経験がない場合は、**[この API に関するページ](//go.microsoft.com/fwlink/?LinkID=759711)**や**[クイック スタート ガイド](//go.microsoft.com/fwlink/?LinkID=760860)**を参照して、詳しい情報を入手できます。テクニカル リファレンスについては、**[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)**を参照してください。
 
@@ -308,4 +308,4 @@ GET エンドポイントは廃止されました。したがって、すべて�
 
 これで準備ができました。 小さなサンプルでコードをテストして、データを正常に処理できることを確認します。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -29,14 +29,14 @@
 
 - [Service Bus Relay を使用するオンプレミス/クラウド ハイブリッド アプリケーションをビルドする](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 - [Service Bus Relay を使用する方法 (ビデオおよびコード サンプル)](http://appfabricdemos.codeplex.com/releases/view/67597)
-- [How to integrate a Azure Web Site with a LOB app via Service Bus Relay (Service Bus Relay を使用して Azure の Web サイトと LOB アプリケーションを統合する方法)](https://code.msdn.microsoft.com/How-to-integrate-a-Windows-f1fedff8) 
+- [How to integrate a Azure Web Site with a LOB app via Service Bus Relay (Service Bus Relay を使用して Azure の Web サイトと LOB アプリケーションを統合する方法)](https://code.msdn.microsoft.com/How-to-integrate-a-Windows-f1fedff8)
 - [Geo-replication with Service Bus Relayed Messages (Service Bus リレー メッセージでの geo レプリケーション)](http://code.msdn.microsoft.com/Geo-replication-with-16dbfecd)
 - [How to integrate a Mobile Service with a REST Service Bus Relay Service (Mobile Service と REST Service Bus リレー サービスを統合する方法)](http://blogs.msdn.com/b/paolos/archive/2013/07/09/how-to-integrate-a-mobile-service-with-a-rest-service-bus-relay-service.aspx)
  
 ## 基本
 
 - [Service Bus の価格情報](https://azure.microsoft.com/pricing/details/service-bus/)
-- [Service Bus の価格に関する FAQ](service-bus-pricing-faq.md)
+- [Service Bus に関する FAQ](service-bus-faq.md)
 - [Service Bus REST API リファレンス](http://msdn.microsoft.com/library/azure/hh780717.aspx)
 - [Azure 無料試用版へのサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)
  
@@ -44,7 +44,7 @@
 
 - [BizTalk Services](https://azure.microsoft.com/services/biztalk-services/)
 - [Mobile Apps](https://azure.microsoft.com/services/app-service/mobile/)
-- [Cloud Services](https://azure.microsoft.com/services/cloud-services/) 
+- [Cloud Services](https://azure.microsoft.com/services/cloud-services/)
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

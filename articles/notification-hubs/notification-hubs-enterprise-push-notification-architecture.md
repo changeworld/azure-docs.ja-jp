@@ -4,7 +4,7 @@
 	services="notification-hubs"
 	documentationCenter=""
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/29/2016" 
+	ms.date="06/29/2016" 
 	ms.author="wesmc"/>
 
 # エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
@@ -45,7 +45,7 @@
 ###メリット:
 
 1. 受信者 (Notification Hubs を経由したモバイル アプリケーションまたはサービス) と送信者 (バックエンド システム) を分離することで、最小限の変更によって追加のバックエンド システムを統合できます。
-2. また、複数のモバイル アプリ 1 つまたは複数のバックエンド システムからイベントを受信するシナリオを実現できます。  
+2. また、複数のモバイル アプリ 1 つまたは複数のバックエンド システムからイベントを受信するシナリオを実現できます。
 
 ## サンプル:
 
@@ -272,4 +272,4 @@
 [Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

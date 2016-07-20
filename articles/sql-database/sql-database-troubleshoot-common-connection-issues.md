@@ -20,15 +20,14 @@
 
 Azure SQL Database との接続に失敗すると、 [エラー メッセージ](sql-database-develop-error-messages.md)が表示されます。この記事では、Azure SQL Database の接続に関する問題のトラブルシューティングに役立つトピックを紹介しています。ここでは接続の問題の[一般的な原因](#cause) を説明し、問題の特定に役立つ[トラブルシューティング ツール](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) を紹介しています。また、[一時的なエラー](#troubleshoot-transient-errors)、および [永続的または一時的でないエラー](#troubleshoot-the-persistent-errors)を解決するトラブルシューティングの手順についてもご紹介します。最後に、[Azure SQL Database の接続の問題に関連したすべての記事](#all-topics-for-azure-sql-database-connection-problems)をまとめています。
 
-接続の問題が発生したら、この記事のトラブルシューティング手順を実行してみてください。
-[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+接続の問題が発生したら、この記事のトラブルシューティング手順を実行してみてください。[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## 原因
 
 接続の問題が発生した原因としては、次のいずれかが考えられます。
 
 - アプリケーションの設計プロセスで、ベスト プラクティスと設計のガイドラインが適用されていない。開始するには、「[SQL Database の開発: 概要](sql-database-develop-overview.md)」をご覧ください。
-- SQL Azure データベースの再構成
+- Azure SQL Database の再構成
 - ファイアウォールの設定
 - 接続のタイムアウト
 - 不適切なログイン情報
@@ -53,7 +52,7 @@ Azure SQL Database との接続に失敗すると、 [エラー メッセージ]
 
 ## 永続的 (一時的でない) エラーのトラブルシューティング
 
-アプリケーションが SQL Azure Database の接続に引き続き失敗する場合は、一般的に、次のいずれかの問題が考えられます。
+アプリケーションが Azure SQL Database の接続に引き続き失敗する場合は、一般的に、次のいずれかの問題が考えられます。
 
 - ファイアウォールの構成: Azure SQL データベースまたはクライアント側のファイアウォールにより、Azure SQL Database への接続がブロックされています。
 - クライアント側のネットワークの再構成: 新しい IP アドレス、プロキシ サーバーなど。
@@ -99,6 +98,6 @@ Azure SQL Database との接続に失敗すると、 [エラー メッセージ]
 - [一時的なエラーに対処するための一般的なガイダンス](../best-practices-retry-general.md)
 - [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 - [SQL Database トレーニング: Azure SQL Database について](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database)
-- [SQL Database - Elastic Database 機能とツールの使用](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale) 
+- [SQL Database - Elastic Database 機能とツールの使用](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

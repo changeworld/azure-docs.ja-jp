@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="04/29/2016"
+      ms.date="06/29/2016"
       ms.author="hascipio; avikova" />
 
 # CSDL を使用して既存の Web サービスを OData にマップするためのノード スキーマについて
@@ -39,9 +39,9 @@
 ## FunctionImport ノード
 FunctionImport ノードは、エンド ユーザーにサービスを公開する 1 つの URL (エントリ ポイント) を表します。このノードでは、URL を指定する方法、エンド ユーザーに提供するパラメーターの種類、およびこれらのパラメーターを提供する方法を記述できます。
 
-このノードの詳細については、[http://msdn.microsoft.com/library/cc716710(v=vs.100).aspx][MSDNFunctionImportLink] を参照してください。
+このノードの詳細については、[こちら][MSDNFunctionImportLink]を参照してください。
 
-[MSDNFunctionImportLink]: 'http://msdn.microsoft.com/library/cc716710(v=vs.100).aspx'
+[MSDNFunctionImportLink]: (https://msdn.microsoft.com/library/cc716710(v=vs.100).aspx)
 
 FunctionImport ノードで公開されている追加の属性 (または属性への追加事項) を次に示します。
 
@@ -143,18 +143,18 @@ FunctionImport ノード内の追加の (CSDL ドキュメントに記載され�
 
 このノードは、FunctionImport ノードで指定された URI テンプレート/要求本文の一部として公開されている 1 つのパラメーターを表します。
 
-"Parameter 要素" ノードに関する詳細情報が記載された役立つページが [http://msdn.microsoft.com/library/ee473431.aspx](http://msdn.microsoft.com/library/ee473431.aspx) にあります (必要に応じて **[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。*例:* `<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
+"Parameter 要素" ノードに関する詳細情報が記載された役立つページが [こちら](http://msdn.microsoft.com/library/ee473431.aspx) にあります (必要に応じて **[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。*例:* `<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
 
 | パラメーター属性 | 必須 | 値 |
 |----|----|----|
 | 名前 | あり | パラメーターの名前。大文字と小文字が区別されます。 BaseUri の大文字小文字と照合されます。**例:** `<Property Name="IsDormant" Type="Byte" />` |
-| 型 | あり | パラメーターの型。この値には、**EDMSimpleType** か、モデルのスコープ内にある複合型を指定する必要があります。詳細については、6 つ目のトピック「サポートされているパラメーター/プロパティの型」を参照してください。(大文字と小文字が区別されます。 先頭の文字は大文字で、残りは小文字です。) また、[http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx][MSDNParameterLink] も参照してください。**例:** `<Property Name="LimitedPartnershipID " Type="Int32" />` |
+| 型 | あり | パラメーターの型。この値には、**EDMSimpleType** か、モデルのスコープ内にある複合型を指定する必要があります。詳細については、6 つ目のトピック「サポートされているパラメーター/プロパティの型」を参照してください。(大文字と小文字が区別されます。 先頭の文字は大文字で、残りは小文字です。) 「[概念モデルの型 (CSDL)][MSDNParameterLink]」も参照してください。**例:** `<Property Name="LimitedPartnershipID " Type="Int32" />` |
 | Mode | いいえ | パラメーターが入力、出力、入力/出力のいずれであるかに応じて、**In**、Out、または InOut (Azure Marketplace で使用できるのは "In" のみです)。 **例:** `<Parameter Name="StudentID" Mode="In" Type="Int32" />` |
 | MaxLength | いいえ | パラメーターの許容される最大長**例:** `<Property Name="URI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />` |
 | Precision | いいえ | パラメーターの説明**例:** `<Property Name="PreviousDate" Type="DateTime" Precision="0" />` |
 | スケール | いいえ | パラメーターの小数点以下桁数**例:** `<Property Name="SICCode" Type="Decimal" Precision="10" Scale="0" />` |
 
-[MSDNParameterLink]: 'http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx'
+[MSDNParameterLink]: (http://msdn.microsoft.com/library/bb399548(v=VS.100).aspx)
 
 CSDL の仕様に追加された属性を次に示します。
 
@@ -169,7 +169,7 @@ CSDL の仕様に追加された属性を次に示します。
 
 このノードは、Marketplace からエンド ユーザーに返される型の 1 つを表します。また、コンテンツ プロバイダーのサービスによって返される出力とエンド ユーザーに返される値のマッピングも含まれています。
 
-このノードの詳細については、[http://msdn.microsoft.com/library/bb399206.aspx](http://msdn.microsoft.com/library/bb399206.aspx) を参照してください (必要に応じて **[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。
+このノードの詳細については、[こちら](http://msdn.microsoft.com/library/bb399206.aspx)を参照してください (必要に応じて **[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。
 
 | 属性名 | 必須 | 値 |
 |----|----|----|
@@ -272,4 +272,4 @@ CSDL の仕様に追加されたその他の属性を次に示します。
 - 例を確認したい場合は、[データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
 - データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、こちらの[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0706_2016-->

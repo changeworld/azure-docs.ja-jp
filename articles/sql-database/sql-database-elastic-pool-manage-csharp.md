@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="05/27/2016"
+    ms.date="07/05/2016"
     ms.author="srinia"/>
 
 # C&#x23; でのエラスティック データベース プールの監視と管理 
@@ -29,9 +29,7 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
 
 一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」をご覧ください。
 
-エラスティック データベース プールは現在プレビュー段階であり、SQL Database V12 サーバーでのみ使用できます。SQL Database V11 サーバーがある場合は、[PowerShell を使用して V12 へのアップグレードとプールの作成](sql-database-upgrade-server-portal.md)を 1 回の手順で実行できます。
-
-例では [SQL Database Library for .NET](https://msdn.microsoft.com/library/azure/mt349017.aspx) を使用します。Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行して、ライブラリをインストールします。
+ここで示す例では [SQL Database Library for .NET](https://msdn.microsoft.com/library/azure/mt349017.aspx) を使用するので、このライブラリをまだインストールしていない場合は、作業を続行する前にインストールを行う必要があります。ライブラリをインストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行します。
 
     PM> Install-Package Microsoft.Azure.Management.Sql –Pre
 
@@ -104,7 +102,7 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
 
 ## プールを管理する (C&#x23; の例)
 
-この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]**) から次のコマンドを実行します。
+この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]**) から次のコマンドを実行します
 
     PM> Install-Package Microsoft.Azure.Management.Sql –Pre
     PM> Install-Package Microsoft.Azure.Management.Resources –Pre
@@ -432,4 +430,4 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
 - [エラスティック データベース プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
 - エラスティック データベース ツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="04/19/2016"
+ ms.date="07/05/2016"
  ms.author="larryfr"/>
 
 # HDInsight での一定期間に発生したイベントの Storm および HBase との関連付け
@@ -27,11 +27,11 @@ Apache Storm の永続的なデータ ストアを使用して、別々の時刻
 
 ## 前提条件
 
--	HDInsight Tools for Visual Studio: インストールの情報については、「[HDInsight Tools for Visual Studio の使用開始](../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
+-	Visual Studio および HDInsight Tools for Visual Studio: インストールの情報については、[HDInsight Tools for Visual Studio の概要](../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
 
--	HDInsight クラスターでの Apache Storm
+-	HDInsight クラスターの Apache Storm (Windows ベース)。これは Storm トポロジを実行します。受信データが処理され、HBase に格納されます。
 
--	HDInsight クラスターでの Apache HBase
+-	HDInsight クラスターの Apache HBase (Windows ベースまたは Linux ベース)。これは、この例のデータ ストアです。
 
 ## アーキテクチャ
 
@@ -204,4 +204,4 @@ START イベントと同じ方法で END イベントを検索できます。た
 Storm の例の詳細については、「[HDInsight での Storm のサンプル トポロジ](hdinsight-storm-example-topology.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/07/2016"
+	ms.date="07/01/2016"
 	ms.author="cephalin"/>
 
 
@@ -43,7 +43,7 @@
 
 図の説明は次のとおりです。
 
--	デプロイ アーキテクチャは 3 つの個別の環境 (Azure では[リソース グループ](../resource-group-overview.md)と言います) に分割され、それぞれに独自の[App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)、[スケーリング](web-sites-scale.md)設定、および SQL Database があります。 
+-	デプロイ アーキテクチャは 3 つの個別の環境 (Azure では[リソース グループ](../resource-group-overview.md)と言います) に分割され、それぞれに独自の[App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)、[スケーリング](web-sites-scale.md)設定、および SQL Database があります。
 -	各環境は別々に管理できます。異なるサブスクリプションで存在することもできます。
 -	ステージングと実稼働は、同じ App Service アプリの 2 つのスロットとして実装されます。マスター ブランチは、ステージング スロットとの継続的インテグレーションを行うようにセットアップされます。
 -	マスター ブランチへのコミットが (実稼働データを使用して) ステージング スロットで検証されると、検証されたステージング アプリは、[ダウンタイムなしで](web-sites-staged-publishing.md)実稼働スロットにスワップされます。
@@ -60,14 +60,16 @@
 
 -	Azure アカウント
 -	[GitHub](https://github.com/) アカウント
--	Git Shell ([GitHub for Windows](https://windows.github.com/) とともにインストールされます) - これにより、同じセッション内で Git コマンドと PowerShell コマンドの両方を実行できます。 
+-	Git Shell ([GitHub for Windows](https://windows.github.com/) とともにインストールされます) - これにより、同じセッション内で Git コマンドと PowerShell コマンドの両方を実行できます。
 -	最新の [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/0.9.4-June2015/azure-powershell.0.9.4.msi) ビット
 -	以下の事柄の基礎知識:
 	-	[Azure リソース マネージャー ](../resource-group-overview.md) テンプレートのデプロイ(「[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)」も参照してください)
 	-	[Git](http://git-scm.com/documentation)
 	-	[PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。+ [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- Visual Studio サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。
+> + [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
+> + [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます - Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 >
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -121,7 +123,7 @@
 
 Azure の運用環境で実行されている複雑なアプリケーションがあり、アジャイル手法に従ってアプリケーションを更新します。このセクションでは、更新を行うために必要な開発ブランチとテスト ブランチを作成します。
 
-1.	最初に、テスト環境を作成します。Git Shell セッションで次のコマンドを実行して、**NewUpdate** という名前の新しいブランチ用の環境を作成します。 
+1.	最初に、テスト環境を作成します。Git Shell セッションで次のコマンドを実行して、**NewUpdate** という名前の新しいブランチ用の環境を作成します。
 
 		git checkout -b NewUpdate
 		git push origin NewUpdate 
@@ -280,4 +282,4 @@ Git Shell で、次のコマンドを実行します。
 -	[Azure AD でのユーザーの作成または編集](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 -	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0706_2016-->

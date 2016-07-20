@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="03/31/2016"
+	ms.date="07/01/2016"
 	ms.author="cephalin"/>
 
 # Sails.js Web アプリを Azure App Service にデプロイする
@@ -82,7 +82,7 @@
         loggingEnabled: true
         logDirectory: iisnode
 
-    これで iisnode のログが有効になりました。この仕組みの詳細については、「[Get stdout and stderr logs from iisnode (iisnode から stdout ログと stderr ログを取得する)](app-service-web-nodejs-sails.md#iisnodelog)」をご覧ください。
+    これで iisnode のログが有効になりました。このしくみの詳細については、「[iisnode から stdout ログと stderr ログを取得する](app-service-web-nodejs-get-started.md#iisnodelog)」を参照してください。
 
 2. config/env/production.js を開いて、運用環境を構成して、`port` と `hookTimeout` を設定します。
 
@@ -238,4 +238,4 @@ App Service で何らかの理由により Sails.js アプリケーションの�
 - [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](app-service-web-nodejs-get-started.md)
 - [Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0706_2016-->

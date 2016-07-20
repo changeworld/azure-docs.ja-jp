@@ -25,7 +25,8 @@
 
 このトピックでは、Azure 仮想マシンで実行されている SQL Server インスタンスに接続する方法について説明します。ここでは、[一般的な接続のシナリオ](#connection-scenarios)をいくつか紹介してから、[Azure VM での SQL Server への接続を構成する手順の詳細](#steps-for-manually-configuring-sql-server-connectivity-in-an-azure-vm)について説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル。この記事のクラシック バージョンについては、[Azure クラシックでの SQL Server 仮想マシンへの接続](virtual-machines-windows-classic-sql-connect.md)に関する記事を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
+クラシック デプロイ モデル。この記事のクラシック バージョンについては、[Azure クラシックでの SQL Server 仮想マシンへの接続](virtual-machines-windows-classic-sql-connect.md)に関する記事を参照してください。
 
 プロビジョニングと接続の両方に関する完全なチュートリアルについては、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
 
@@ -40,7 +41,7 @@
 
 インターネットから SQL Server データベース エンジンに接続する場合は、ファイアウォールの構成、SQL 認証の有効化、ポート 1433 で TCP トラフィックを許可するネットワーク セキュリティ グループ規則の構成など、いくつかの手順が必要です。
 
-ポータルで Resource Manager を使用して SQL Server 仮想マシン イメージをプロビジョニングする場合は、[SQL Connectivity ] (SQL 接続) オプションで **[パブリック]** を選ぶとこれらの手順は自動的に行われます。
+ポータルで Resource Manager を使用して SQL Server 仮想マシン イメージをプロビジョニングする場合は、[SQL Connectivity ]\(SQL 接続) オプションで **[パブリック]** を選ぶとこれらの手順は自動的に行われます。
 
 ![プロビジョニング中のパブリック SQL 接続オプション](./media/virtual-machines-windows-sql-connect/sql-vm-portal-connectivity.png)
 
@@ -62,7 +63,7 @@
 
 仮想ネットワークを使うと、Azure VM をドメインに参加させることもできます。これは、SQL Server に Windows 認証を使用する唯一の方法です。その他の接続シナリオでは、ユーザー名とパスワードによる SQL 認証が必要です。
 
-ポータルで Resource Manager を使用して SQL Server 仮想マシン イメージをプロビジョニングする場合、[SQL connectivity] (SQL 接続) オプションで **[プライベート]** を選ぶと、仮想ネットワークで通信するための適切なファイアウォール規則が設定されます。または、プロビジョニング時以外であれば、[この記事の手動接続構成手順](#steps-for-manually-configuring-sql-server-connectivity-in-an-azure-vm)に従って手動で SQL Server と仮想マシンを構成することもできます。ただし、ドメイン環境と Windows 認証を構成する場合は、この記事の手順を使用して SQL 認証とログインを構成する必要はありません。また、インターネット経由でのアクセスのためにネットワーク セキュリティ グループの規則を構成する必要もありません。
+ポータルで Resource Manager を使用して SQL Server 仮想マシン イメージをプロビジョニングする場合、[SQL connectivity]\(SQL 接続) オプションで **[プライベート]** を選ぶと、仮想ネットワークで通信するための適切なファイアウォール規則が設定されます。または、プロビジョニング時以外であれば、[この記事の手動接続構成手順](#steps-for-manually-configuring-sql-server-connectivity-in-an-azure-vm)に従って手動で SQL Server と仮想マシンを構成することもできます。ただし、ドメイン環境と Windows 認証を構成する場合は、この記事の手順を使用して SQL 認証とログインを構成する必要はありません。また、インターネット経由でのアクセスのためにネットワーク セキュリティ グループの規則を構成する必要もありません。
 
 仮想ネットワークで DNS を構成してあると、接続文字列で SQL Server VM コンピューターの名前を指定することによって、SQL Server インスタンスに接続できます。次の例でも、Windows 認証も構成されていることと、ユーザーが SQL Server インスタンスへのアクセスを許可されていることを前提としています。
 

@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
 	ms.date="04/22/2016"
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Visual Studio を使用した Azure App Service への ASP.NET Web アプリのデプロイ
 
@@ -213,7 +213,7 @@ ASP.NET Web アプリが Azure App Service で動作するようになったら�
 
 このチュートリアルでは、Azure の Web アプリに単純な Web アプリケーションを作成してデプロイする方法について説明しました。次に示すのは、Azure App Service についてさらに学習するための関連トピックとリソースです。
 
-* [Azure ポータル](https://portal.azure.com/)で Web アプリを監視および管理する 
+* [Azure ポータル](https://portal.azure.com/)で Web アプリを監視および管理する
 
 	詳細については、[Azure ポータルの概要](/services/management-portal/)に関するページと、「[Azure App Service での Web アプリの構成](web-sites-configure.md)」を参照してください。
 
@@ -240,4 +240,4 @@ ASP.NET Web アプリが Azure App Service で動作するようになったら�
 
 	Azure ポータルでリソース グループを操作する方法については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](../resource-group-portal.md)」を参照してください。
 
-<!------HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

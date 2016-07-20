@@ -4,7 +4,7 @@
 	services="notification-hubs" 
 	documentationCenter="" 
 	authors="wesmc7777" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="java" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="03/28/2016" 
+	ms.date="06/29/2016" 
 	ms.author="wesmc"/>
 
 # Java から Notification Hubs を使用する方法
@@ -25,14 +25,14 @@ MSDN のトピック「[Notification Hubs の REST API](http://msdn.microsoft.co
 
 現在 SDK でサポートされている項目は次のとおりです。
 
-- Notification Hubs の CRUD 
+- Notification Hubs の CRUD
 - 登録の CRUD
 - インストール管理
 - 登録のインポート/エクスポート
 - 通常の送信
 - スケジュールされた送信
 - Java NIO を使用した非同期操作
-- サポート対象のプラットフォーム: APNS (iOS)、GCM (Android)、WNS (Windows ストア アプリ)、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、Baidu (Google のサービスを使用しない Android) 
+- サポート対象のプラットフォーム: APNS (iOS)、GCM (Android)、WNS (Windows ストア アプリ)、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、Baidu (Google のサービスを使用しない Android)
 
 ## SDK の使用例
 
@@ -285,7 +285,7 @@ Java コードを実行すると、ターゲット デバイスに表示され�
 ##<a name="next-steps"></a>次のステップ
 このトピックでは、Notification Hubs 用の単純な Java REST クライアントの作成方法を説明しました。次は、以下を実行できます。
 
-* [Java SDK] をすべてダウンロードします。Java SDK には SDK コード全体が含まれています。 
+* [Java SDK] をすべてダウンロードします。Java SDK には SDK コード全体が含まれています。
 * サンプルを試します。
 	- [Notification Hubs の使用]
 	- [ニュース速報の送信]
@@ -303,4 +303,4 @@ Java コードを実行すると、ターゲット デバイスに表示され�
 [Maven]: http://maven.apache.org/
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0706_2016-->

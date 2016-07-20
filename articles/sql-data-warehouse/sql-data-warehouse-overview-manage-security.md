@@ -18,6 +18,16 @@
 
 # SQL Data Warehouse でのデータベース保護
 
+> [AZURE.SELECTOR]
+- [セキュリティの概要](sql-data-warehouse-overview-manage-security.md)
+- [脅威の検出](sql-data-warehouse-security-threat-detection.md)
+- [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
+- [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+- [監査の概要](sql-data-warehouse-auditing-overview.md)
+- [ダウンレベル クライアントの監査](sql-data-warehouse-auditing-downlevel-clients.md)
+
+
+
 この記事では、Azure SQL Data Warehouse データベースの保護に関する基本事項を説明します。特にこの記事では、アクセスの制限、データの保護、データベースでのアクティビティの監視を行うためのリソースの概要を説明します。
 
 ## 接続のセキュリティ
@@ -26,7 +36,7 @@
 
 ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure クラシック ポータル、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。詳細については、「[Azure SQL Database ファイアウォール][]」を参照してください。
 
-SQL Data Warehouse への接続は、接続文字列で暗号化モードを設定することで暗号化できます。接続の暗号化を有効にする構文は、プロトコルによって異なります。接続文字列を設定するには、Azure ポータルでデータベースに移動します。*[要点]* で *[データベース接続文字列の表示]* をクリックします。
+SQL Data Warehouse への接続は、接続文字列で暗号化モードを設定することで暗号化できます。接続の暗号化を有効にする構文は、プロトコルによって異なります。接続文字列を設定するには、Azure ポータルでデータベースに移動します。[要点] で [データベース接続文字列の表示] をクリックします。
 
 
 ## 認証
@@ -53,7 +63,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 
 ```
 
-SQL Database の認証の詳細については、「[Azure SQL Database におけるデータベース、ログイン、およびユーザーの管理][]」を参照してください。SQL Data Warehouse の Azure AD プレビューの使用に関する詳細については、「[Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication (Azure Active Directory 認証を使用して SQL Data Warehouse に接続する)][]」を参照してください。
+SQL Database の認証の詳細については、「[Azure SQL Database におけるデータベース、ログイン、およびユーザーの管理][]」を参照してください。SQL Data Warehouse の Azure AD プレビューの使用に関する詳細については、[Azure Active Directory 認証を使用した SQL Data Warehouse への接続][]に関するページをご覧ください。
 
 
 ## 承認
@@ -86,14 +96,14 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 ```
 
-透過的なデータ暗号化は、[Azure ポータル][]のデータベース設定から有効にすることもできます。詳細については、「[Transparent Data Encryption (TDE) の概要][]」をご覧ください。
+Transparent Data Encryption は、[Azure ポータル][]のデータベース設定から有効にすることもできます。詳細については、[Transparent Data Encryption (TDE) の概要][]に関するページをご覧ください。
 
 ## 監査
 
 データベースの監査イベントと追跡イベントは、規制遵守の維持や、疑わしいアクティビティの特定に役立ちます。SQL Data Warehouse の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。また SQL Data Warehouse の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。詳細については、「[SQL Database 監査の使用][]」を参照してください。
 
 ## 次のステップ
-さまざまなプロトコルでの SQL Data Warehouse への接続の詳細と例については、「[SQL Data Warehouse への接続][]」をご覧ください。
+さまざまなプロトコルでの SQL Data Warehouse への接続の詳細と例については、[SQL Data Warehouse への接続][]に関するページをご覧ください。
 
 <!--Image references-->
 
@@ -101,7 +111,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 [SQL Data Warehouse への接続]: ./sql-data-warehouse-develop-connections.md
 [SQL Database 監査の使用]: ./sql-data-warehouse-overview-auditing.md
 [Transparent Data Encryption (TDE) の概要]: ./sql-data-warehouse-encryption-tde.md
-[Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication (Azure Active Directory 認証を使用して SQL Data Warehouse に接続する)]: ./sql-data-warehouse-get-started-connect-aad-authentication.md
+[Azure Active Directory 認証を使用した SQL Data Warehouse への接続]: ./sql-data-warehouse-get-started-connect-aad-authentication.md
 
 <!--MSDN references-->
 [Azure SQL Database ファイアウォール]: https://msdn.microsoft.com/library/ee621782.aspx
@@ -115,4 +125,4 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 <!--Other Web references-->
 [Azure ポータルでのロール ベースのアクセス制御]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

@@ -36,23 +36,24 @@ Azure Service Fabric アプリケーションとサービスを Visual Studio �
 
 Visual Studio では、**[F5]** キーを押してもアプリケーションはデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。**[Ctrl + F5]** キーを押してデバッグなしでアプリケーションをデプロイするか、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。詳細については、「[Visual Studio を使用してリモート クラスターにアプリケーションを発行する](service-fabric-publish-app-remote-cluster.md)」を参照してください。
 
-### テスト実行間でのデータの保持
+### アプリケーション デバッグ モード
 
-多くの場合、サービスはテスト データ入力の追加、コード ブロックの微調整、ローカルでの再デバッグと、ローカルでテストします。Visual Studio Service Fabric のツールには、前のセッションで入力したデータを保持して再利用できる、**[開始時にデータを保持する]** と呼ばれる便利なプロパティが用意されています。
+サービスをローカルでデバッグしている間、既存のアプリケーションとデータを維持したい場合があります。Visual Studio Service Fabric ツールには、**Application Debug Mode (アプリケーション デバッグ モード)** というプロパティが用意されていて、**F5** キーを押したときにアプリケーションをアンインストールするか、デバッグ セッションの終了後もアプリケーションを維持するかを制御できます。
 
-#### [開始時にデータを保持する] プロパティを有効にするには
+#### Application Debug Mode (アプリケーション デバッグ モード) プロパティを設定するには
 
 1. アプリケーション プロジェクトのショートカット メニューで、**[プロパティ]** を選択します (または **[F4]** キーを押します)。
-1. **[プロパティ]** ウィンドウで、**[開始時にデータを保持する]** プロパティを **[はい]** に設定します。
+2. **[プロパティ]** ウィンドウの **[Application Debug Mode (アプリケーション デバッグ モード)]** プロパティを **[削除]** または **[Auto Upgrade (自動アップグレード)]** に設定します。
 
-	![[開始時にデータを保持する] プロパティの設定][preservedata]
+![Set Application Debug Mode Property][debugmodeproperty]
 
-アプリケーションを再度実行すると、デプロイメント スクリプトは監視なしの自動モードを使用してそのデプロイメントをアップグレードとして扱い、アプリケーションを日付文字列が追加された新しいバージョンにアップグレードします。アップグレード プロセスでは、前のデバッグ セッションで入力したすべてのデータが保持されます。
+このプロパティの値を **[Auto Upgrade (自動アップグレード)]** に設定すると、ローカル クラスターで実行されているアプリケーションが維持されます。次回 **F5** キーを押すと、そのデプロイは、監視なしの自動モードを使用してアップグレードとして扱われ、アプリケーションは、日付文字列が追加された新しいバージョンにアップグレードされます。アップグレード プロセスでは、前のデバッグ セッションで入力したすべてのデータが保持されます。
 
-![日付が追加された新しいアプリケーション バージョンの例][preservedate]
+![Example of new application version with date1 appended][preservedate]
 
 データは、Service Fabric プラットフォームのアップグレード機能を活用して保持されます。アプリケーションのアップグレードの詳細については、「[Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)」を参照してください。
 
+**注:** Service Fabric Tools for Visual Studio バージョン 1.1 未満には、このプロパティが存在しません。バージョン 1.1 未満の場合は、**[開始時にデータを保存]** プロパティで同じ動作が得られます。
 ## Service Fabric アプリケーションにサービスを追加します。
 
 新しい Fabric サービスをアプリケーションに追加して、機能を拡張することができます。サービスがアプリケーション パッケージに含まれているかどうかを確認するには、**[新規 Fabric サービス]** メニュー項目からサービスを追加します。
@@ -96,5 +97,6 @@ Service Fabric Explorer を使用して、ローカル クラスターからア�
 [newserviceapplicationmanifest]: ./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
 [preservedata]: ./media/service-fabric-manage-application-in-visual-studio/preservedata.png
 [preservedate]: ./media/service-fabric-manage-application-in-visual-studio/preservedate.png
+[debugmodeproperty]: ./media/service-fabric-manage-application-in-visual-studio/debugmodeproperty.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0706_2016-->

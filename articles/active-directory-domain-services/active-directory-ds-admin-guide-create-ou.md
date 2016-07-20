@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/08/2016"
+	ms.date="07/06/2016"
 	ms.author="maheshu"/>
 
 # Azure AD ドメイン サービスの管理対象ドメインに組織単位 (OU) を作成する
@@ -75,4 +75,4 @@ Azure AD ドメイン サービスの管理対象ドメインは、Active Direct
 
 - [サービス アカウントのステップ バイ ステップ ガイド](https://technet.microsoft.com/library/dd548356.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

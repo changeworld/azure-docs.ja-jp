@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/18/2016" 
+	ms.date="06/15/2016" 
 	ms.author="spelluru"/>
 
 # Pig アクティビティ
@@ -133,7 +133,7 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
 		    ]
 		  }
 		} 
-6. パイプラインをデプロイします。詳細については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 
+6. パイプラインをデプロイします。詳細については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。
 7. データ ファクトリの監視と管理のビューを使用して、パイプラインを監視します。詳細については、[Data Factory パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)に関する記事を参照してください。
 
 ## defines 要素を使用する Pig スクリプトのパラメーターの指定
@@ -194,4 +194,4 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
 - [Spark プログラムを呼び出す](data-factory-spark.md)
 - [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0706_2016-->

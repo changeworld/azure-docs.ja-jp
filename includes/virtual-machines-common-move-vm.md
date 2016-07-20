@@ -1,24 +1,26 @@
 
-This article walks you through how to move a VM between subscriptions. This can be handy if you originally created a VM in a personal subscription and now want to move it to your company's subscription to continue your work.
+この記事では、サブスクリプション間で VM を移動する方法について説明します。この方法は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動して作業を続ける場合に便利です。
 
-> [AZURE.NOTE] New resource IDs will be created as part of the move. Once the VM has been moved, you will need to update your tools and scripts to use the new resource IDs. 
+> [AZURE.NOTE] 移動の一環として新しいリソース ID が作成されます。VM を移動したら、この新しいリソース ID を使用するために、ツールやスクリプトを更新する必要があります。
 
-1. Open the [Azure portal](https://portal.azure.com).
-2. Click **Browse** > **Virtual machines** and select the VM you would like to move from the list.
+1. [Azure ポータル](https://portal.azure.com) を開きます。
+2. **[参照]**、**[仮想マシン]** の順にクリックし、一覧から移動する VM を選択します。
 	
-	![Screenshot of the Essentials section where you click the pencil icon to open the Move resources blade.](./media/virtual-machines-common-move-vm/move-button.png)
+	![[リソースの移動] ブレードを開くための鉛筆アイコンがある [要点] セクションのスクリーンショット。](./media/virtual-machines-common-move-vm/move-button.png)
 	
-3. In the **Essentials** section, click on the **Change subscription** pencil icon next to the subscription name. The **Move resources** blade will open.
+3. **[要点]** セクションで、サブスクリプション名の横にある **[サブスクリプションの変更]** 鉛筆アイコンをクリックします。**[リソースの移動]** ブレードが開きます。
 	
-	![Screenshot of the Move resources blade.](./media/virtual-machines-common-move-vm/move.png)
+	![[リソースの移動] ブレードのスクリーンショット。](./media/virtual-machines-common-move-vm/move.png)
 	
-4. Select each of the resources to move. In most cases, you should move all of the listed optional resources.
-5. Select the **Subscription** where you want the VM to be moved.
-6. Select an existing **Resource group** or type a name to have a new resource group created.
-7. When you are done, select that you understand that new resource IDs will be created and those need to be used with the VM once it is moved, then click **OK**.
+4. 移動するリソースを選択します。ほとんどの場合、表示されている省略可能なすべてのリソースを移動する必要があります。
+5. 移動する VM の**サブスクリプション**を選択します。
+6. 既存の**リソース グループ**を選択するか、名前を入力して、新しいリソース グループを作成します。
+7. この操作が完了したら、新しいリソース ID が作成されること、および移動した VM でその ID を使用する必要がある旨を理解したことを選択し、**[OK]** をクリックします。
 
 
 
-## Next steps
+## 次のステップ
 
-You can move many different types of resources between resource groups and subscriptions. For more information, see [Move resources to new resource group or subscription](../articles/resource-group-move-resources.md).	
+リソース グループとサブスクリプションの間でさまざまな種類のリソースを移動できます。詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../articles/resource-group-move-resources.md)」を参照してください。
+
+<!---HONumber=AcomDC_0706_2016-->
