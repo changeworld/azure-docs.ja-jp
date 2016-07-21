@@ -77,11 +77,11 @@ Bottle、Flask、Django の各 Web フレームワークと、Azure Table Storag
 
 1. **[サンプル投票の作成]** をクリックします。
 
-    	![Create Sample Polls](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserNoPolls.png)
+    ![Create Sample Polls](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserNoPolls.png)
 
 1.  投票をクリックして投票します。
 
-        ![Voting in Sample Polls](./media/web-sites-python-ptvs-django-mysql/PollsDjangoSqliteBrowser.png)
+    ![Voting in Sample Polls](./media/web-sites-python-ptvs-django-mysql/PollsDjangoSqliteBrowser.png)
 
 ## MySQL Database を作成する
 
