@@ -20,7 +20,8 @@
 
 Azure SQL Database との接続に失敗すると、 [エラー メッセージ](sql-database-develop-error-messages.md)が表示されます。この記事では、Azure SQL Database の接続に関する問題のトラブルシューティングに役立つトピックを紹介しています。ここでは接続の問題の[一般的な原因](#cause) を説明し、問題の特定に役立つ[トラブルシューティング ツール](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) を紹介しています。また、[一時的なエラー](#troubleshoot-transient-errors)、および [永続的または一時的でないエラー](#troubleshoot-the-persistent-errors)を解決するトラブルシューティングの手順についてもご紹介します。最後に、[Azure SQL Database の接続の問題に関連したすべての記事](#all-topics-for-azure-sql-database-connection-problems)をまとめています。
 
-接続の問題が発生したら、この記事のトラブルシューティング手順を実行してみてください。[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+接続の問題が発生したら、この記事のトラブルシューティング手順を実行してみてください。
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## 原因
 
