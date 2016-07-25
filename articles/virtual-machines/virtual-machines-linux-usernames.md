@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/25/2016" 
+	ms.date="07/13/2016" 
 	ms.author="szark"/>
 
 
@@ -31,112 +31,9 @@ Azure に Linux 仮想マシンをプロビジョニングするとき、後で 
 
  - [Linux 標準ベース - ユーザー ID の範囲](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)を参照してください。
 
-以下のリストは、Linux 仮想マシンのプロビジョニング時に使用を避けるべきユーザー名を示します。使用するとプロビジョニング プロセスが失敗するおそれがあるため、**これらのユーザー名を使用しない**ことをお勧めします。
+以下に示したのは、Linux 仮想マシンを Azure にプロビジョニングするときに避けるべき CentOS と Ubuntu における一般的な組み込みシステム ユーザーの一覧です。これはあくまで例です。ご使用のディストリビューションのドキュメントを参照し、既存のシステム ユーザーと競合しないユーザー名を使用してください。
 
 
-## openSUSE
-- abrt
-- adm
-- audio
-- bin
-- bin
-- cdrom
-- cgred
-- daemon
-- dbus
-- dialout
-- dip
-- disk
-- floppy
-- ftp
-- games
-- gopher
-- haldaemon
-- halt
-- kmem
-- lock
-- lp
-- mail
-- man
-- mem
-- nfsnobody
-- nobody
-- ntp
-- operator
-- oprofile
-- postdrop
-- postfix
-- qpidd
-- root
-- rpc
-- rpcuser
-- saslauth
-- shutdown
-- slocate
-- sshd
-- stapdev
-- stapusr
-- sync
-- sys
-- tape
-- test
-- tcpdump
-- tty
-- users
-- utempter
-- utmp
-- uucp
-- vcsa
-- video
-- wheel
-
-
-## SLES
-- audio
-- bin
-- cdrom
-- console
-- daemon
-- dialout
-- disk
-- floppy
-- ftp
-- ftp
-- games
-- haldaemon
-- kmem
-- lp
-- lp
-- mail
-- maildrop
-- man
-- messagebus
-- modem
-- news
-- news
-- nobody
-- nogroup
-- polkituser
-- postfix
-- public
-- root
-- shadow
-- sshd
-- sys
-- test
-- trusted
-- tty
-- users
-- utmp
-- uucp
-- uuidd
-- video
-- wheel
-- www
-- wwwrun
-- xok
-
- 
 ## CentOS
 - abrt
 - adm
@@ -251,4 +148,4 @@ Azure に Linux 仮想マシンをプロビジョニングするとき、後で 
 
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0713_2016-->

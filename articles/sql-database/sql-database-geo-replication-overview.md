@@ -92,9 +92,9 @@
 
 |コマンド|説明|
 |-------|-----------|
-|[ALTER DATABASE (Azure SQL Database)]https://msdn.microsoft.com/ja-JP/library/mt574871.aspx)|ADD SECONDARY ON SERVER 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。|
-|[ALTER DATABASE (Azure SQL Database)]https://msdn.microsoft.com/ja-JP/library/mt574871.aspx)|FAILOVER または FORCE\_FAILOVER\_ALLOW\_DATA\_LOSS を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します。
-|[ALTER DATABASE (Azure SQL Database)]https://msdn.microsoft.com/ja-JP/library/mt574871.aspx)|REMOVE SECONDARY ON SERVER を使用して、SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。|
+|[ALTER DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/mt574871.aspx)|ADD SECONDARY ON SERVER 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。|
+|[ALTER DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/mt574871.aspx)|FAILOVER または FORCE\_FAILOVER\_ALLOW\_DATA\_LOSS を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します。
+|[ALTER DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/mt574871.aspx)|REMOVE SECONDARY ON SERVER を使用して、SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。|
 |[sys.geo\_replication\_links (Azure SQL Database)](https://msdn.microsoft.com/library/mt575501.aspx)|Azure SQL Database 論理サーバーにある各データベースの、既存の全レプリケーション リンクの情報を返します。|
 |[sys.dm\_geo\_replication\_link\_status (Azure SQL Database)](https://msdn.microsoft.com/library/mt575504.aspx)|最新のレプリケーション時刻、最後のレプリケーションの遅延、および指定された SQL Database のレプリケーション リンクに関する他の情報を取得します。|
 |[sys.dm\_operation\_status (Azure SQL Database)](https://msdn.microsoft.com/library/dn270022.aspx)|レプリケーション リンクの状態を含むすべてのデータベース操作の状態が表示されます。|
@@ -116,7 +116,7 @@
 
 |API|説明|
 |---|-----------|
-|[REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|プライマリまたはセカンダリ データベースを作成、更新、または復元します。|
+|[Create または Update Database (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|プライマリまたはセカンダリ データベースを作成、更新、または復元します。|
 |[Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx)|復元操作中にステータスを返します。|
 |[Set Secondary Database as Primary (計画されたフェールオーバー)](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx)|geo レプリケーション パートナーシップのセカンダリ データベースを新しいプライマリ データベースに昇格させます。|
 |[Set Secondary Database as Primary (計画されていないフェールオーバー)](https://msdn.microsoft.com/library/azure/mt582027.aspx)|セカンダリ データベースに強制的にフェールオーバーして、セカンダリをプライマリに設定します。|
@@ -129,9 +129,9 @@
 ## 次のステップ
 
 - ビジネス継続性の概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
-- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
 - ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
 - 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 - 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

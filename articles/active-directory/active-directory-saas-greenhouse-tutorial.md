@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/09/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Greenhouse の統合
@@ -37,7 +37,7 @@
 
 ###Greenhouse のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-greenhouse-tutorial/IC700993.png "Active Directory")
 
@@ -66,9 +66,9 @@
   
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Greenhouse に対する認証を行うことができるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Greenhouse** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Greenhouse** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-greenhouse-tutorial/IC790786.png "Configure single sign-on")
 
@@ -76,9 +76,9 @@
 
     ![Configure single sign-on](./media/active-directory-saas-greenhouse-tutorial/IC790787.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページの **[サインオン URL]** テキストボックスに、"**https://company.greenhouse.io*"" というパターンの URL を入力して、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページで、**[サインオン URL]** ボックスに、"*https://company.greenhouse.io*"パターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-greenhouse-tutorial/IC790788.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-greenhouse-tutorial/IC790788.png "アプリケーション URL の構成")
 
 4.  **[Greenhouse でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにローカルでメタデータ ファイルを保存します。
 
@@ -86,11 +86,11 @@
 
 5.  このメタデータ ファイルを Greenhous サポート チームに転送します。
 
-    >[AZURE.NOTE]Greenhouse サポート チームがシングル サインオンを有効にする必要があります。
+    >[AZURE.NOTE] Greenhouse サポート チームがシングル サインオンを有効にする必要があります。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![Configure single sign-on](./media/active-directory-saas-greenhouse-tutorial/IC790790.png "Configure single sign-on")
+    ![Configure single sign-on](./media/active-directory-saas-greenhouse-tutorial/IC790790.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
   
 Azure AD ユーザーが Greenhouse にログインできるようにするには、ユーザーを Greenhouse にプロビジョニングする必要があります。Greenhouse の場合、プロビジョニングは手動で行います。
@@ -114,9 +114,9 @@ Azure AD ユーザーが Greenhouse にログインできるようにするに�
     1.  **[ユーザー電子メールの入力]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力します。
     2.  **[保存]** をクリックします。
         
-		>[AZURE.NOTE]Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
+		>[AZURE.NOTE] Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
 
->[AZURE.NOTE]Greenhouse から提供されている他の Greenhouse ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Greenhouse から提供されている他の Greenhouse ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -124,9 +124,9 @@ Azure AD ユーザーが Greenhouse にログインできるようにするに�
 
 ###ユーザーを Greenhouse に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  **Greenhouse ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Greenhouse** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-greenhouse-tutorial/IC790794.png "ユーザーの割り当て")
 
@@ -136,4 +136,4 @@ Azure AD ユーザーが Greenhouse にログインできるようにするに�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

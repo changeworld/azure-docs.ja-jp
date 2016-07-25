@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.topic="article"
    ms.workload="storage-backup-recovery" 
-   ms.date="03/06/2016"
+   ms.date="07/08/2016"
    ms.author="ruturajd@microsoft.com"/>
 
 # Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure から VMware にフェールバックする (レガシ)
@@ -55,7 +55,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 vContinuum サーバーをオンプレミスにインストールし、構成サーバーをポイントする必要があります。
 
-1.  [vContinuum をダウンロードします](http://go.microsoft.com/fwlink/?linkid=526305)。 
+1.  [vContinuum をダウンロードします](http://go.microsoft.com/fwlink/?linkid=526305)。
 2.  [vContinuum の更新](http://go.microsoft.com/fwlink/?LinkID=533813)バージョンをダウンロードします。
 3. 最新バージョンの vContinuum をインストールします。**[ようこそ]** ページで **[次へ]** をクリックします。![](./media/site-recovery-failback-azure-to-vmware/image2.png)
 4.  ウィザードの最初のページで CX サーバーの IP アドレスとポートを指定します。**[HTTPS の使用]** を選択します。
@@ -152,7 +152,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 注: その他のパッケージをダウンロードおよびインストールする前に、システムがインターネットに接続されていることを確認します。
 
-\# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
+# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
 
 このコマンドは、CentOS 6.6 リポジトリから次の 15 のパッケージをダウンロードして、インストールします。
 
@@ -188,17 +188,17 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 注: ソース マシンで、ルートまたはブート デバイスとして Reiser または XFS のファイル システムが使用されている場合、保護する前に、次のパッケージを Linux マスター ターゲットにダウンロードしてインストールする必要があります。
 
-\# cd /usr/local
+# cd /usr/local
 
-\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
+# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
 
-\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
+# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
 
-\# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
+# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
-\# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
+# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
 
-\# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
+# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
 
 #### カスタム構成変更を適用する
 
@@ -266,7 +266,7 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 VM は Azure にフェールオーバーするときに、ページ ファイル用に余分な一時ドライブを追加します。フェールオーバーした VM には、通常、既に専用のページ ファイルが割り当てられているので、これは VM によって必要とされない余分なドライブです。仮想マシンを逆方向に保護する手順を開始する前に、ドライブをオフラインにして、保護されないようにする必要があります。これを行うには、次の手順を実行します。
 
 1.  [コンピューターの管理] を開き、[ストレージ管理] を選択します。これにより、オンラインおよびマシンにアタッチされているディスクが一覧表示されます。
-2.  マシンにアタッチされている一時ディスクを選択し、オフラインにする手順を実行します。 
+2.  マシンにアタッチされている一時ディスクを選択し、オフラインにする手順を実行します。
 
 ### VM を保護する
 
@@ -325,7 +325,7 @@ VM は Azure にフェールオーバーするときに、ページ ファイル
 
 #### NAT 設定を構成する
 
-1. 仮想マシンの保護を有効にするには、2 つの通信チャネルを確立する必要があります。最初のチャネルは、仮想マシンとプロセス サーバーとの間に確立します。このチャネルは、VM から収集したデータを、プロセス サーバーに送信します。この後、データはマスター ターゲット サーバーに送信されます。プロセス サーバーと保護対象の仮想マシンが同じ Azure 仮想ネットワーク上に存在する場合、NAT 設定を使用する必要はありません。それ以外の場合は、NAT 設定を指定します。Azure でのプロセス サーバーのパブリック IP アドレスを確認します。 
+1. 仮想マシンの保護を有効にするには、2 つの通信チャネルを確立する必要があります。最初のチャネルは、仮想マシンとプロセス サーバーとの間に確立します。このチャネルは、VM から収集したデータを、プロセス サーバーに送信します。この後、データはマスター ターゲット サーバーに送信されます。プロセス サーバーと保護対象の仮想マシンが同じ Azure 仮想ネットワーク上に存在する場合、NAT 設定を使用する必要はありません。それ以外の場合は、NAT 設定を指定します。Azure でのプロセス サーバーのパブリック IP アドレスを確認します。
 
 	![](./media/site-recovery-failback-azure-to-vmware/image28.png)
 
@@ -428,4 +428,4 @@ VM は Azure にフェールオーバーするときに、ページ ファイル
 
  
 
-<!----HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

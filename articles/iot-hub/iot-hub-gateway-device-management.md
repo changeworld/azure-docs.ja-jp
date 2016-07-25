@@ -61,7 +61,14 @@ Gateway SDK の使用方法については、次のチュートリアルを参�
 - [IoT Gateway SDK - Get started using Linux][lnk-gateway-get-started] (IoT Gateway SDK – Linux の使用)
 - [IoT Gateway SDK – send device-to-cloud messages with a simulated device using Linux][lnk-gateway-simulated] (IoT Gateway SDK – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する)
 
-IoT Hub を使用したデバイス管理の詳細については、「[Overview of Azure IoT Hub device management][lnk-device-management]」 (Azure IoT Hub デバイス管理の概要) を参照してください。
+IoT Hub を使用したデバイス管理の詳細については、「[Azure IoT Hub デバイス管理 (DM) クライアント ライブラリの概要][lnk-library-c]」をご覧ください。
+
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
 
 <!-- Images and links -->
 [1]: media/iot-hub-gateway-device-management/overview.png
@@ -74,4 +81,15 @@ IoT Hub を使用したデバイス管理の詳細については、「[Overview
 [lnk-gateway-simulated]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-device-management]: iot-hub-device-management-overview.md
 
-<!---HONumber=AcomDC_0504_2016-->
+[lnk-tutorial-twin]: iot-hub-device-management-device-twin.md
+[lnk-tutorial-queries]: iot-hub-device-management-device-query.md
+[lnk-tutorial-jobs]: iot-hub-device-management-device-jobs.md
+[lnk-dm-gateway]: iot-hub-gateway-device-management.md
+[lnk-library-c]: iot-hub-device-management-library.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

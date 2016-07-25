@@ -1,7 +1,7 @@
 <properties 
     pageTitle="Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド | Microsoft Azure" 
     description="Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド" 
-    services="service-bus" 
+    services="service-bus,event-hubs" 
     documentationCenter=".net" 
     authors="clemensv" 
     manager="timlt" 
@@ -54,7 +54,7 @@ AMQP の動作について最も権威のある情報源は AMQP 1.0 仕様で�
 
 ![][1]
 
-AMQP は、*コンテナー*という通信プログラムを呼び出します。コンテナーには、*ノード*が存在します。ノードは、こうしたコンテナーの内部で通信を行うエンティティであり、キューは、そうしたノードの 1 つです。AMQP は、多重化に対応しているため、1 本の接続をノード間の複数の通信経路で使用することが可能です。たとえばアプリケーション クライアントは、2 つのキューのうち、一方からは受信しながら、同時に同じネットワーク接続上でもう一方のキューに対して送信を行うことができます。
+AMQP は、"*コンテナー*" という通信プログラムを呼び出します。コンテナーには、その内部の通信エンティティである "*ノード*" が存在します。キューは、そうしたノードの 1 つです。AMQP は、多重化に対応しているため、1 本の接続をノード間の複数の通信経路で使用することが可能です。たとえばアプリケーション クライアントは、2 つのキューのうち、一方からは受信しながら、同時に同じネットワーク接続上でもう一方のキューに対して送信を行うことができます。
 
 そのためネットワーク接続はコンテナーに固定されます。ネットワーク接続は、クライアント ロールのコンテナーによって開始されます。クライアント ロールのコンテナーが、受信側ロールのコンテナーに対して送信 TCP ソケット接続を確立し、受信側ロールは受信 TCP 接続を待機してそれを受け入れます。接続ハンドシェイクには、プロトコル バージョンのネゴシエーション、トランスポート レベルのセキュリティ (TLS/SSL) の使用に関する宣言 (またはネゴシエーション)、SASL に基づく接続スコープでの認証/承認ハンドシェイクが含まれます。
 
@@ -206,11 +206,7 @@ API レベルでの "receive" 要求は、*flow* パフォーマティブに変�
 
 | フィールド名 | 使用法 | API 名 |
 |----------------	|-------------------------------	|---------------	|
-| durable | - | - |
-| priority | - | - |
-| ttl | このメッセージの 有効期限 (Time to Live)| [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) |
-| first-acquirer | - | - |
-| delivery-count | - | [DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) |
+| durable | - | - | | priority | - | - | | ttl | このメッセージの 有効期限 (Time to Live)| [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) | | first-acquirer | - | - | | delivery-count | - | [DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) |
 
 #### properties
 
@@ -234,6 +230,8 @@ API レベルでの "receive" 要求は、*flow* パフォーマティブに変�
 
 このセクションでは、現在 AMQP の OASIS 技術委員会で策定が進められている AMQP の拡張機能の草案に基づく Azure Service Bus の高度な機能について取り上げます。Azure Service Bus には、最新ステータスの草案が実装されています。変更は、草案が標準ステータスになった時点で採用される見込みです。
 
+> [AZURE.NOTE] Service Bus Messaging の高度な操作は、要求/応答パターンを介してサポートされます。これらの操作の詳細は、「[AMQP 1.0 in Service Bus: request/response-based operations (Service Bus の AMQP 1.0: 要求/応答ベースの操作)](https://msdn.microsoft.com/library/azure/mt727956.aspx)」に説明されています。
+
 ### AMQP Management
 
 草案段階の拡張機能として、ここではまず AMQP Management 仕様について説明します。この仕様には、メッセージング インフラストラクチャに対して AMQP を介して管理操作を行うための、AMQP プロトコル上に階層化された一連のプロトコル ジェスチャが定義されています。仕様で定義されているのは、*create*、*read*、*update*、*delete* など、メッセージング インフラストラクチャ内のエンティティを管理するための一般的な操作と一連のクエリ操作です。
@@ -242,10 +240,10 @@ API レベルでの "receive" 要求は、*flow* パフォーマティブに変�
 
 | 論理操作 | クライアント | Service Bus |
 |------------------------------|-----------------------------|-----------------------------|
-| 要求の応答経路を作成 | --> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>) |アクションなし |
-|要求の応答経路を作成 |アクションなし | <-- attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>) |
-|要求の応答経路を作成 | --> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=”myentity/$management”,<br/>target=”myclient$id”<br/>) | |アクションなし
-|要求の応答経路を作成 |アクションなし | <-- attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=”myentity”,<br/>target=”myclient$id”<br/>) |
+| 要求の応答経路を作成 | --> attach(<br/>name={<*リンク名*>},<br/>handle={<*数値ハンドル*>},<br/>role=**sender**,<br/>source=**null**,<br/>target="myentity/$management"<br/>) |アクションなし |
+|要求の応答経路を作成 |アクションなし | <-- attach(<br/>name={<*リンク名*>},<br/>handle={<*数値ハンドル*>},<br/>role=**receiver**,<br/>source=null,<br/>target="myentity"<br/>) |
+|要求の応答経路を作成 | --> attach(<br/>name={<*リンク名*>},<br/>handle={<*数値ハンドル*>},<br/>role=**receiver**,<br/>source="myentity/$management",<br/>target="myclient$id"<br/>) | |アクションなし
+|要求の応答経路を作成 |アクションなし | <-- attach(<br/>name={<*リンク名*>},<br/>handle={<*数値ハンドル*>},<br/>role=**sender**,<br/>source="myentity",<br/>target="myclient$id"<br/>) |
 
 リンクのペアが作成されていれば、要求/応答の実装は簡単です。つまり要求とはメッセージであり、そのパターンを認識するメッセージング インフラストラクチャ内のエンティティに送信されます。その要求メッセージでは、*properties* セクションの *reply-to* フィールドが、応答の配信に使用されるリンクの *target* ID に設定されます。要求を処理する側のエンティティは、その要求を処理した後、指定された *reply-to* ID と一致する *target* ID を持ったリンクを介して応答を配信します。
 
@@ -290,7 +288,7 @@ CBS には、メッセージング インフラストラクチャによって提
 | amqp:swt | Simple Web Token (SWT) | AMQP 値 (string) | AAD/ACS によって発行された SWT トークンでのみサポートされます。 |
 | servicebus.windows.net:sastoken | Service Bus SAS トークン | AMQP 値 (string) | - |
 
-トークンには、権限を与える作用があります。Service Bus は、3 つの基本的な権限として、"Send" (送信を許可)、"Listen" (受信を許可)、"Manage" (エンティティの操作を許可) を認識します。AAD/ACS によって明示的に発行された SWT トークンは、これらの権限を要求 (claim) として含んでいます。Service Bus の SAS トークンは、名前空間またはエンティティに対して構成されている規則を参照し、それらの規則が権限で構成されています。したがって、その規則に関連付けられているキーでトークンに署名すると、トークンが個別の権限を表すようになります。エンティティには、*put-token* を使ってトークンが関連付けられます。接続クライアントは、このトークンの権限に従ってエンティティを操作することができます。クライアントが*送信側*の役割を担うリンクには "Send" 権限が、*受信側*の役割を担うリンクには "Listen" 権限が必要となります。
+トークンには、権限を与える作用があります。Service Bus は、3 つの基本的な権限として、"Send" (送信を許可)、"Listen" (受信を許可)、"Manage" (エンティティの操作を許可) を認識します。AAD/ACS によって明示的に発行された SWT トークンは、これらの権限を要求 (claim) として含んでいます。Service Bus の SAS トークンは、名前空間またはエンティティに対して構成されている規則を参照し、それらの規則が権限で構成されています。したがって、その規則に関連付けられているキーでトークンに署名すると、トークンが個別の権限を表すようになります。エンティティには、*put-token* を使ってトークンが関連付けられます。接続クライアントは、このトークンの権限に従ってエンティティを操作することができます。クライアントが "*送信側*" の役割を担うリンクには "Send" 権限が、"*受信側*" の役割を担うリンクには "Listen" 権限が必要となります。
 
 応答メッセージには、次の *application-properties* 値があります。
 
@@ -327,4 +325,4 @@ AMQP の詳細については、次のリンクを参照してください。
 [パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

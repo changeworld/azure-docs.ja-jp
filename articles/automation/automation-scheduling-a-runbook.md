@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/29/2016"
+   ms.date="07/12/2016"
    ms.author="bwren" />
 
 # Azure Automation の Runbook をスケジュール設定する
@@ -23,6 +23,8 @@
 ## スケジュールを作成する
 
 Runbook の新しいスケジュールは、Azure ポータル、クラシック ポータル、または Windows PowerShell で作成することができます。Azure クラシック ポータルまたは Azure ポータルを使用して Runbook をスケジュールにリンクするときに新しいスケジュールを作成するというオプションもあります。
+
+>[AZURE.NOTE] スケジュールを Runbook に関連付けると、アカウントのモジュールの現在のバージョンが保存され、スケジュールにリンクされます。つまり、スケジュールを作成したときにアカウントのモジュールのバージョンが 1.0 だった場合は、そのモジュールをバージョン 2.0 に更新しても、スケジュールでは引き続きバージョン 1.0 が使用されます。更新後のバージョンを使用するには、新しいスケジュールを作成する必要があります。
 
 ### Azure クラシック ポータルで新しいスケジュールを作成するには
 
@@ -64,6 +66,7 @@ Runbook の新しいスケジュールは、Azure ポータル、クラシック
 ## スケジュールを Runbook にリンクする
 
 1 つの Runbook を複数のスケジュールにリンクし、1 つのスケジュールを複数の Runbook にリンクすることができます。Runbook にパラメーターがある場合は、その値を指定できます。必須のパラメーターについては必ず値を指定してください。オプションのパラメーターについては値の指定は任意です。このスケジュールで Runbook が開始されるたびに、これらの値が使用されます。同じ Runbook を別のスケジュールに関連付けて、異なるパラメーター値を指定することができます。
+
 
 ### Azure クラシック ポータルで Runbook にスケジュールをリンクするには
 
@@ -142,9 +145,10 @@ Azure クラシック ポータルで、スケジュール用の [スケジュ�
 	Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
     –Name $scheduleName –IsEnabled $false -ResourceGroupName "ResourceGroup01"
 
+
 ## 次のステップ
 
 - スケジュールの操作に関する詳細については、「[Azure Automation のスケジュール資産](http://msdn.microsoft.com/library/azure/dn940016.aspx)」を参照してください。
 - Azure Automation の Runbook の使用を開始するには、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

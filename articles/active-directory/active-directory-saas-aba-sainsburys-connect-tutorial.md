@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と ABa Sainsburys Connect の統合
@@ -37,7 +37,7 @@
 
 ###Aba Sainsburys Connect のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC700993.png "Active Directory")
 
@@ -68,37 +68,37 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Aba Sainsburys Connect** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure クラシック ポータルの **Aba Sainsburys Connect** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807726.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807726.png "Configure Single Sign-On")
 
 2.  **[ユーザーの Aba Sainsburys Connect へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807727.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807727.png "Configure Single Sign-On")
 
 3.  **[アプリケーション設定の構成]** ページで、次の手順を実行します。
 
     ![Configure App Settings](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807728.png "Configure App Settings")
 
-    1.  **[サインオン URL]** テキスト ボックスに、ユーザーが Aba Sainsburys Connect アプリケーションへのサインオンに使用する URL を入力します (例: *https://myaba.co.uk/client-access/sainsburys/saml.php*))。
-2.  **[次へ]** をクリックします。
+    1.  **[サインオン URL]** テキスト ボックスに、ユーザーが Aba Sainsburys Connect アプリケーションへのサインオンに使用する URL を入力します (例: *https://myaba.co.uk/client-access/sainsburys/saml.php*)。
+    2.  **[次へ]** をクリックします。
 
 4.  **[Aba Sainsburys Connect でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807729.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807729.png "Configure Single Sign-On")
 
 5.  ダウンロードしたメタデータ ファイルを Aba Sainsburys Connect サポート チームに送信します。
 
-    >[AZURE.NOTE]Aba Sainsburys Connect サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
+    >[AZURE.NOTE] Aba Sainsburys Connect サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807730.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807730.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
 
 Azure AD ユーザーが Aba Sainsburys Connect にログインできるようにするには、ユーザーを Aba Sainsburys Connect にプロビジョニングする必要があります。Aba Sainsburys Connect の場合、ユーザー アカウントは、Aba Sainsburys Connect のサポート チームによって作成される必要があります。
 
->[AZURE.NOTE]他の Aba Sainsburys Connect ユーザー アカウント作成ツールまたはAba Sainsburys Connect から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] 他の Aba Sainsburys Connect ユーザー アカウント作成ツールまたはAba Sainsburys Connect から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -106,16 +106,16 @@ Azure AD ユーザーが Aba Sainsburys Connect にログインできるよう�
 
 ###Aba Sainsburys Connect にユーザーを割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  Aba Sainsburys Connect アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Aba Sainsburys Connect** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807731.png "ユーザーの割り当て")
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/18/2016"
+   ms.date="07/12/2016"
    ms.author="dugill;tomfitz" />
 
 
@@ -86,7 +86,7 @@ Azure AD では、アプリケーションの証明書資格情報もサポー�
 
 ユーザーに次の 2 点を確認する必要があります。
 
-1. **Directory ドメイン名**: ユーザーの Azure サブスクリプションに関連付けられた Azure Active Directory のドメイン名。OAuth 2.0 承認要求は、この Azure AD に送信する必要があります。ユーザーは Azure ポータルに移動し、右上隅にあるアカウントを選択することで、Azure AD のドメイン名を確認できます。ユーザーに次のような視覚的な指示を表示できます。 
+1. **Directory ドメイン名**: ユーザーの Azure サブスクリプションに関連付けられた Azure Active Directory のドメイン名。OAuth 2.0 承認要求は、この Azure AD に送信する必要があります。ユーザーは Azure ポータルに移動し、右上隅にあるアカウントを選択することで、Azure AD のドメイン名を確認できます。ユーザーに次のような視覚的な指示を表示できます。
 
      ![](./media/resource-manager-api-authentication/show-directory.png)
    
@@ -444,4 +444,4 @@ ASP.net MVC サンプル アプリケーションの [RevokeRoleFromServicePrinc
 
 これで完了です。ユーザーは、Azure サブスクリプションをアプリケーションに簡単に接続して管理できるようになりました。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

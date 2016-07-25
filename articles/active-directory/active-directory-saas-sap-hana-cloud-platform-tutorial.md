@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と SAP HANA Cloud Platform の統合 | Microsoft Azure" 
     description="Azure Active Directory で SAP HANA Cloud Platform を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="07/07/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と SAP HANA Cloud Platform の統合
   
@@ -70,15 +70,15 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **SAP HANA Cloud Platform** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure クラシック ポータルの **SAP HANA Cloud Platform** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC778552.png "Configure Single Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC778552.png "シングル サインオンの構成")
 
 2.  **[ユーザーの SAP HANA Cloud Platform へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790797.png "Configure Single Sign-On")
 
-3.  別の Web ブラウザーのウィンドウで、SAP HANA Cloud Platform コックピット (https://account.\<landscape host>.ondemand.com/cockpit にサインインします (例:*https://account.hanatrial.ondemand.com/cockpit*))。
+3.  Web ブラウザーの別のウィンドウで、SAP HANA Cloud Platform コックピット (https://account.\<landscape host>.ondemand.com/cockpit) にサインインします (例: *https://account.hanatrial.ondemand.com/cockpit*)。
 
 4.  **[Trust (信頼)]** タブをクリックします。
 
@@ -91,11 +91,11 @@
     1.  **[Local Service Provider (ローカル サービス プロバイダー)]** タブをクリックします。
     2.  SAP HANA クラウド プラットフォームのメタデータ ファイルをダウンロードするには、**[Get Metadata (メタデータの取得)]** をクリックします。
 
-6.  Azure Active Directory ポータルの **[アプリ URL の構成]** ページで、次の手順に従ってから、**[次へ]** をクリックします。
+6.  Azure Active クラシック ポータルの **[Configure App URL]** (アプリケーション URL の構成) ページで、次の手順を実行してから、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790798.png "アプリケーション URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790798.png "アプリケーション URL の構成")
 
-    1.  **[サインオン URL]** テキストボックスに、ユーザーが **SAP HANA Cloud Platform** アプリケーションへのサインオンに使用する URL を入力します。これは、SAP HANA Cloud Platform アプリケーションで保護されたリソースのアカウント固有の URL です。この URL は、*https://\<applicationName><accountName>.<landscape host>.ondemand.com/<path\_to\_protected\_resource>* というパターンに基づいています (例: **https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*)。
+    1.  **[サインオン URL]** テキストボックスに、ユーザーが **SAP HANA Cloud Platform** アプリケーションへのサインオンに使用する URL を入力します。これは、SAP HANA Cloud Platform アプリケーションで保護されたリソースのアカウント固有の URL です。この URL は、*https://\<applicationName><accountName>.<landscape host>.ondemand.com/<path\_to\_protected\_resource>* というパターンに基づいています (例: *https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*)。
 
 		>[AZURE.NOTE]これは、ユーザーが認証を必要とする SAP HANA Cloud Platform アプリケーションの URL です。
 
@@ -128,7 +128,7 @@
 
     ![信頼管理](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC793932.png "信頼管理")
 
-    >[AZURE.NOTE]メタデータ ファイルをアップロードすると、**[シングル サインオン URL]**、**[Single Logout URL (シングル ログアウト URL)]**、**[署名証明書]** の値が自動的に設定されます。
+    >[AZURE.NOTE] メタデータ ファイルをアップロードすると、**[シングル サインオン URL]**、**[Single Logout URL (シングル ログアウト URL)]**、**[署名証明書]** の値が自動的に設定されます。
 
 11. **[属性]** タブをクリックします。
 
@@ -140,9 +140,7 @@
 
         |アサーション属性| プリンシパル属性|
 		|-------------------|--------------------|
-        |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname| firstname|--------------------|--------------------|
-        |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname| lastname|-----------|
-        |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|email|
+        |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname| firstname|--------------------|--------------------| |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname| lastname|-----------| |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|email|
 
     >[AZURE.NOTE]属性の構成は、HCP 上のアプリケーションがどのように作成されているかに依存します。つまり、SAML 応答で必要になる属性の種類や、コード内でこの属性にアクセスする際に使用される名前 (プリンシパル属性) によって異なります。
     >  
@@ -150,7 +148,7 @@
     >
     >b.スクリーンショットに表示されている **[プリンシパル属性]** の名前と値は、アプリケーションがどのように作成されているかに依存します。使用するアプリケーションによって、異なるマッピングが必要になる場合があります。
 
-13. Azure ポータルの **[ SAP HANA Cloud Platform でのシングル サインオンの構成]** ダイアログ ページで、シングル サインオンの構成確認を選択し、**[完了]** をクリックします。
+13. Azure クラシック ポータルの **[SAP HANA Cloud Platform でのシングル サインオンの構成]** ダイアログ ページで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、**[完了]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC796933.png "Configure Single Sign-On")
   
@@ -158,7 +156,7 @@
 
 >[AZURE.NOTE]SAP HANA Cloud Platform でグループを使用すると、SAP HANA Cloud Platform アプリケーションで、1 つ以上のロールに 1 人以上のユーザーを動的に割り当てることができます。この割り当ては SAML 2.0 アサーションの属性値によって決定されます。たとえば、アサーションに属性 "*contract=temporary*" が含まれている場合、対象となるすべてのユーザーがグループ "*TEMPORARY*" に追加されます。グループ "*TEMPORARY*" には、SAP HANA Cloud Platform アカウントにデプロイされた 1 つ以上のアプリケーションからの 1 つ以上のロールが含まれます。
 >  
->SAP HANA Cloud Platform アカウントでアプリケーションの 1 つ以上のロールに多くのユーザーを一括で割り当てる場合は、アサーション ベースのグループを使用します。1 人または少数のユーザーを特定のロールに割り当てるだけの場合は、SAP HANA Cloud Platform コックピットの [Authorizations] タブで直接割り当てることをお勧めします。
+>SAP HANA Cloud Platform アカウントでアプリケーションの 1 つ以上のロールに多くのユーザーを一括で割り当てる場合は、アサーション ベースのグループを使用します。1 人または少数のユーザーを特定のロールに割り当てるだけの場合は、SAP HANA Cloud Platform コックピットの **[Authorizations]** タブで直接割り当てることをお勧めします。
 
 ##ユーザーにロールを割り当てる
   
@@ -184,7 +182,7 @@ Azure AD ユーザーが SAP HANA Cloud Platform にログインできるよう�
 
 ###ユーザーを SAP HANA Cloud Platform に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **SAP HANA Cloud Platform** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -196,4 +194,4 @@ Azure AD ユーザーが SAP HANA Cloud Platform にログインできるよう�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!----HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0713_2016-->

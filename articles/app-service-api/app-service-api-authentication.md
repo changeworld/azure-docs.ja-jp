@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="05/23/2016"
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Azure App Service での API Apps の認証と承認
 
@@ -28,7 +28,7 @@ Azure App Service は、[OAuth 2.0](#oauth) と [OpenID Connect](#oauth) を実�
 
 * 受信した API 要求の前処理を行います。つまり、App Service でサポートされる言語またはフレームワークが処理されます。
 * 認証処理をどこまで独自のコードで行うかに関して、いくつかの選択肢が提供されています。
-* エンド ユーザーとサービス アカウントの両方の認証に対応します。 
+* エンド ユーザーとサービス アカウントの両方の認証に対応します。
 * ID プロバイダーとして、Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントの 5 つがサポートされます。
 * API Apps、Web Apps、Mobile Apps のいずれについても同じ処理が行われます。
 
@@ -94,12 +94,12 @@ App Service ロジック アプリから API アプリへのサービス アカ�
 Azure App Service での認証と承認の詳細については、以下のリソースを参照してください。
 
 * [Expanding App Service authentication / authorization (App Service の認証/承認の展開)](/blog/announcing-app-service-authentication-authorization/)
-* [Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md) (ページの先頭に、他の認証プロバイダーのリンクがあります) 
+* [Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md) (ページの先頭に、他の認証プロバイダーのリンクがあります)
 
 OAuth 2.0、OpenID Connect、JSON Web トークン (JWT) の詳細については、次のリソースを参照してください。
 
-* [OAuth 2.0 の概要](http://shop.oreilly.com/product/0636920021810.do "OAuth 2.0 の概要") 
-* [OAuth2、OpenID Connect と JSON Web トークン (JWT) の概要 - PluralSight コース](http://www.pluralsight.com/courses/oauth2-json-web-tokens-openid-connect-introduction) 
+* [OAuth 2.0 の概要](http://shop.oreilly.com/product/0636920021810.do "OAuth 2.0 の概要")
+* [OAuth2、OpenID Connect と JSON Web トークン (JWT) の概要 - PluralSight コース](http://www.pluralsight.com/courses/oauth2-json-web-tokens-openid-connect-introduction)
 * [ASP.NET での複数のクライアント用 RESTful API の構築とセキュリティ保護 - PluralSight コース](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)
 
 Azure Active Directory の詳細については、次のリソースを参照してください。
@@ -112,4 +112,4 @@ Azure Active Directory の詳細については、次のリソースを参照し
 
 この記事では、API アプリに使用できる App Service の認証と承認の機能について説明しました。入門シリーズの次のチュートリアルでは、[App Service API Apps にユーザー認証](app-service-api-dotnet-user-principal-auth.md)を実装する方法について説明します。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

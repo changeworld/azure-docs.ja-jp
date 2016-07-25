@@ -1,22 +1,25 @@
-<properties 
-	pageTitle="詳細情報: Azure AD のパスワード管理 | Microsoft Azure" 
-	description="パスワード ライトバックのしくみ、パスワード ライトバックのセキュリティ、パスワード リセット ポータルのしくみ、パスワードのリセットで使用されるデータなど、Azure AD のパスワード管理に関する高度なトピック。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="asteen" 
-	manager="kbrint" 
-	editor="billmath"/>
+<properties
+	pageTitle="詳細情報: Azure AD のパスワード管理 | Microsoft Azure"
+	description="パスワード ライトバックのしくみ、パスワード ライトバックのセキュリティ、パスワード リセット ポータルのしくみ、パスワードのリセットで使用されるデータなど、Azure AD のパスワード管理に関する高度なトピック。"
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="femila"
+	editor="curtand"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/16/2016" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
 	ms.author="asteen"/>
 
 # パスワード管理の詳細情報
+
+> [AZURE.IMPORTANT] **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+
 既にパスワード管理をデプロイしている場合、またはデプロイする前に技術的な動作方法についてさらにしく知りたい場合は、サービスの背景技術の概念について、このセクションで概要を説明します。次の内容を説明します。
 
 * [**パスワード ライトバックの概要**](#password-writeback-overview)
@@ -365,7 +368,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 ## パスワードのリセットに関するドキュメントへのリンク
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* [**自分のパスワードのリセット**](active-directory-passwords-update-your-own-password.md) - システムのユーザーとして自分のパスワードをリセットまたは変更する方法について説明します。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
@@ -379,4 +382,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [001]: ./media/active-directory-passwords-learn-more/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

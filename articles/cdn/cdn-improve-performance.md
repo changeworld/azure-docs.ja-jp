@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/06/2016"
 	ms.author="casoper"/>
 
 # ファイル圧縮によるパフォーマンスの向上
@@ -114,15 +114,16 @@
 |----------------|-----------|------------|-----|
 |圧縮|圧縮|圧縮|サポートされている形式間での CDN のトランスコード|
 |圧縮|非圧縮|圧縮|CDN が圧縮を実行|
-|圧縮|キャッシュなし|圧縮|配信元から非圧縮が返された場合、CDN が圧縮を実行|
+|圧縮|キャッシュなし|圧縮|配信元から非圧縮が返された場合、CDN が圧縮を実行します。**Azure CDN from Verizon** は、最初の要求で圧縮されていないファイルを渡し、後続の要求のためにファイルを圧縮してキャッシュします。`Cache-Control: no-cache` ヘッダーを持つファイルは圧縮されません。 
 |非圧縮|圧縮|非圧縮|CDN が展開を実行|
 |非圧縮|非圧縮|非圧縮| |	
-|非圧縮|キャッシュなし|非圧縮| |	
+|非圧縮|キャッシュなし|非圧縮| |
 
-## メモ
-1. Media Services CDN 対応ストリーミング エンドポイントについて、圧縮は既定で application/vnd.ms-sstr+xml、application/dash+xml、application/vnd.apple.mpegurl、application/f4m+xml というコンテンツの種類に対応しています。これらの種類の圧縮は、Azure ポータルを使用して有効/無効にすることはできません。  
+## Media Services CDN の圧縮
+
+Media Services CDN 対応ストリーミング エンドポイントについて、圧縮は既定で application/vnd.ms-sstr+xml、application/dash+xml、application/vnd.apple.mpegurl、application/f4m+xml というコンテンツの種類に対応しています。これらの種類の圧縮は、Azure ポータルを使用して有効/無効にすることはできません。
 
 ## 関連項目
-- [CDN ファイルの圧縮のトラブルシューティング](cdn-troubleshoot-compression.md)    
+- [CDN ファイルの圧縮のトラブルシューティング](cdn-troubleshoot-compression.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

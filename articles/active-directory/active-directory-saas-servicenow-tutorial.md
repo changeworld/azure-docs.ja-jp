@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/26/2016" 
+    ms.date="07/07/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と ServiceNow の統合
@@ -20,7 +20,7 @@
 
 -   有効な Azure サブスクリプション
 -   ServiceNow のテナント (Calgary バージョン以降)
--   ServiceNow のテナントで [Multiple Provider Single Sign On プラグイン](http://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0)が有効になっている必要があります。このプラグインを有効にするには、https://hi.service-now.com/ でサービス要求を送信してください。 
+-   ServiceNow のテナントで [Multiple Provider Single Sign On プラグイン](http://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0)が有効になっている必要があります。このプラグインを有効にするには、https://hi.service-now.com/ でサービス要求を送信してください。
   
 このチュートリアルを完了すると、ServiceNow に割り当てた Azure AD ユーザーは、ServiceNow 企業サイト (サービス プロバイダーが開始したサインオン) または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
   
@@ -145,7 +145,8 @@
     e.**[Type]** で **[Trust Store Cert]** を選択します。
 
     f.ダウンロードした証明書から Base-64 でエンコードされたファイルを作成します。
-    > [AZURE.NOTE] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+   
+	> [AZURE.NOTE] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
     
     g.base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[PEM Certificate]** ボックスに貼り付けます。
 
@@ -171,34 +172,34 @@
     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694982.png "Configure single sign-on")
 
 
-    **[Name]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
+    a. **[Name]** ボックスに、構成の名前を入力します (例: **SAML 2.0**)。
 
     b.ServiceNow デプロイメントでユーザーを一意に識別するために使用するフィールドに応じて、**[User Field]** ボックスに「**email**」または「**user\_id**」と入力します。
     
     **注:** SAML トークンの一意の識別子として Azure AD ユーザー ID (ユーザーのプリンシパル名) かメール アドレスのいずれかを出力するよう Azure AD を構成できます。これには、Azure クラシック ポータルで **[ServiceNow] > [属性] > [シングル サインオン]** セクションに移動し、目的のフィールドを **nameidentifier** 属性にマッピングします。Azure AD に格納される選択した属性 (ユーザー プリンシパル名など) の値と、ServiceNow に格納される入力したフィールド (user\_id など) の値が一致している必要があります。
 
-    c.Azure AD クラシック ポータルで、**[Identity Provider ID (ID プロバイダーの ID)]** 値をコピーし、**[Identity Provider URL (ID プロバイダーの URL)]** ボックスに貼り付けます。
+    c.Azure AD クラシック ポータルで、**[プロバイダー ID の識別]** の値をコピーし、**[Identity Provider URL]** ボックスに貼り付けます。
 
-    d.Azure AD クラシック ポータルの **[認証要求 URL]** 値をコピーし、**[Identity Provider's AuthnRequest (ID プロバイダーの AuthnRequest)]** ボックスに貼り付けます。
+    d.Azure AD クラシック ポータルの **[認証要求 URL]** の値をコピーし、**[Identity Provider's AuthnRequest]** ボックスに貼り付けます。
 
-    e.Azure AD クラシック ポータルの **[シングル サインオン サービス URL]** 値をコピーし、**[Identity Provider's SingleLogoutRequest (ID プロバイダーの SingleLogoutRequest)]** ボックスに貼り付けます。
+    e.Azure AD クラシック ポータルの **[シングル サインオン サービス URL]** の値をコピーし、**[Identity Provider's SingleLogoutRequest]** ボックスに貼り付けます。
 
     f.**[ServiceNow Homepage]** ボックスに ServiceNow インスタンス ホームページの URL を入力します。
 
-    > [AZURE.NOTE] ServiceNow インスタンス ホームページは、**ServiceNow テナント URL** と **/navpage.do** を連結した形式です (例: **https://fabrikam.service-now.com/navpage.do*))。
+    > [AZURE.NOTE] ServiceNow インスタンス ホームページは、**ServiceNow テナント URL** と **/navpage.do** を連結した形式です (例: *https://fabrikam.service-now.com/navpage.do*)。
  
 
     g.**[Entity ID / Issuer]** ボックスに、ServiceNow テナントの URL を入力します。
 
     h.**[Audience URL]** ボックスに ServiceNow テナントの URL を入力します。
 
-    i.**[Protocol Binding for the IDP's SingleLogoutRequest (IDP のプロトコル バインディング)]** ボックスに、「**urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect**」と入力します。
+    i.**[Protocol Binding for the IDP's SingleLogoutRequest]** ボックスに、「**urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect**」と入力します。
 
-    j.[NameID Policy (NameID ポリシー)] ボックスに「**urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified**」と入力します。
+    j.[NameID Policy] ボックスに「**urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified**」と入力します。
 
     k.**[Create an AuthnContextClass]** をオフにします。
 
-    l.**[AuthnContextClassRef Method]** に「****http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password**」と入力します。
+    l.**[AuthnContextClassRef Method]** に「**http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password**」と入力します。
 
     m.**[Clock Skew]** ボックスに「**60**」と入力します。
 
@@ -206,11 +207,11 @@
 
     o.**[x509 Certificate]** で、前の手順で作成した証明書を選択します。
 
-    p. **[Submit (送信)]** をクリックします。
+    p. **[Submit]** をクリックします。
 
 
 
-6. Azure AD クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
+6. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
 
@@ -227,24 +228,28 @@
 
 ### ユーザー プロビジョニングを構成するには、次の手順に従います。
 
-1. Microsoft Azure 管理クラシック ポータルの **ServiceNow** アプリケーション統合ページで、**[ユーザー プロビジョニングの構成]** をクリックします。<br><br> ![ユーザー プロビジョニング](./media/active-directory-saas-servicenow-tutorial/IC769498.png "ユーザー プロビジョニング")
+1. Azure の管理クラシック ポータルの **ServiceNow** アプリケーション統合ページで、**[ユーザー プロビジョニングの構成]** をクリックします。
+
+	![ユーザー プロビジョニング](./media/active-directory-saas-servicenow-tutorial/IC769498.png "ユーザー プロビジョニング")
 
 
 2. **[自動ユーザー プロビジョニングを有効にするための ServiceNow の資格情報を入力してください]** ページで、以下の構成設定を入力します： ユーザー プロビジョニングの構成
 
-     2\.1.**[ServiceNow インスタンス名]** ボックスに、ServiceNow インスタンス名を入力します。
+     a.**[ServiceNow インスタンス名]** ボックスに、ServiceNow インスタンス名を入力します。
 
-     2\.2.**[ServiceNow 管理ユーザー名]** ボックスに、ServiceNow 管理者アカウントの名前を入力します。
+     b.**[ServiceNow 管理ユーザー名]** ボックスに、ServiceNow 管理者アカウントの名前を入力します。
 
-     2\.3.**[ServiceNow 管理パスワード]** ボックスに、このアカウントのパスワードを入力します。
+     c.**[ServiceNow 管理パスワード]** ボックスに、このアカウントのパスワードを入力します。
 
-     2\.4.**[検証]** をクリックして、構成を確認します。
+     d.**[検証]** をクリックして、構成を確認します。
 
-     2\.5.**[次へ]** をクリックして、**[次のステップ]** ページを開きます。
+     e.**[次へ]** をクリックして、**[次のステップ]** ページを開きます。
 
-     2\.6.このアプリケーションのすべてのユーザーをプロビジョニングする場合は、**[ディレクトリ内のすべてのユーザー アカウントをこのアプリケーションに自動的にプロビジョニングする]** を選択します。<br><br> ![次のステップ](./media/active-directory-saas-servicenow-tutorial/IC698804.png "次のステップ")
+     f.このアプリケーションにすべてのユーザーをプロビジョニングする場合は、**[Automatically provision all user accounts in the directory to this application]** (ディレクトリ内のすべてのユーザー アカウントをこのアプリケーションに自動的にプロビジョニングする) をオンにします。
 
-     2\.7.**[次のステップ]** ページで、**[完了]** をクリックして構成を保存します。
+	![次のステップ](./media/active-directory-saas-servicenow-tutorial/IC698804.png "次のステップ")
+
+     g.**[次のステップ]** ページで、**[完了]** をクリックして構成を保存します。
 
 
 
@@ -280,4 +285,4 @@
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0713_2016-->

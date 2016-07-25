@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と ArcGIS の統合
@@ -37,7 +37,7 @@
 
 ###ArcGIS のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-arcgis-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **ArcGIS** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure クラシック ポータルの **ArcGIS** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-arcgis-tutorial/IC784738.png "Configure Single Sign-On")
 
@@ -76,9 +76,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-arcgis-tutorial/IC784739.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[ArcGIS サインオン URL]** テキスト ボックスに、 *https://company.maps.arcgis.com*" というパターンで、ArcGIS アプリケーションへのサインオンに使用する URLを入力して、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[ArcGIS サインオン URL]** テキスト ボックスに、"*https://company.maps.arcgis.com*" というパターンで、ArcGIS アプリケーションへのサインオンに使用する URLを入力して、**[次へ]* をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-arcgis-tutorial/IC784740.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-arcgis-tutorial/IC784740.png "アプリケーション URL の構成")
 
 4.  **[ArcGIS でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにローカルでメタデータ ファイルを保存します。
 
@@ -107,38 +107,37 @@
     3.  ダウンロードしたメタデータ ファイルをアップロードするには、**[Choose file]** をクリックします。
     4.  **[Set Identity Provider]** をクリックします。
 
-10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-arcgis-tutorial/IC784746.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
 
-Azure AD ユーザーが ArcGIS にログインできるようにするには、そのユーザーを ArcGIS にプロビジョニングする必要があります。
-ArcGIS の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが ArcGIS にログインできるようにするには、そのユーザーを ArcGIS にプロビジョニングする必要があります。ArcGIS の場合、プロビジョニングは手動で行います。
 
 ###ユーザー プロビジョニングを構成するには、次の手順に従います。
 
 1.  **ArcGIS** テナントにログインします。
 
-2.  **[メンバーを招待]** をクリックします。
+2.  **[Invite Members]** をクリックします。
 
     ![Invite Members](./media/active-directory-saas-arcgis-tutorial/IC784747.png "Invite Members")
 
-3.  **[電子メールを送信せずにメンバーを自動的に追加]** を選択して、**[次へ]** をクリックします。
+3.  **[Add members automatically without sending an email]** を選択して、**[Next]** をクリックします。
 
     ![Add Members Automatically](./media/active-directory-saas-arcgis-tutorial/IC784748.png "Add Members Automatically")
 
-4.  **[メンバー]** ダイアログ ページで、次の手順に従います。
+4.  **[Members]** ダイアログ ページで、次の手順に従います。
 
     ![Add and review](./media/active-directory-saas-arcgis-tutorial/IC784749.png "Add and review")
 
-    1.  プロビジョニングする有効な AAD アカウントの **[名]**、**[姓]**、**[Email]** を入力します。
+    1.  プロビジョニングする有効な AAD アカウントの **[First Name]**、**[Last Name]**、**[Email]** を入力します。
     2.  **[Add And Review]** をクリックします。
 
-5.  入力したデータを確認してから、**[メンバーの追加]** をクリックします。
+5.  入力したデータを確認してから、**[Add Members]** をクリックします。
 
     ![Add member](./media/active-directory-saas-arcgis-tutorial/IC784750.png "Add member")
 
->[AZURE.NOTE]他の ArcGIS ユーザー アカウントの作成ツールまたは ArcGIS から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] 他の ArcGIS ユーザー アカウントの作成ツールまたは ArcGIS から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -146,16 +145,16 @@ ArcGIS の場合、プロビジョニングは手動で行います。
 
 ###ユーザーを ArcGIS に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  ArcGIS アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **ArcGIS** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-arcgis-tutorial/IC784751.png "ユーザーの割り当て")
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-arcgis-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-arcgis-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

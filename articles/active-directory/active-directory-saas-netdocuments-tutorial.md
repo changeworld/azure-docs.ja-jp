@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/08/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と NetDocuments の統合
@@ -37,7 +37,7 @@
 
 ###NetDocuments のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-netdocuments-tutorial/IC700993.png "Active Directory")
 
@@ -64,13 +64,11 @@
     ![NetDocuments](./media/active-directory-saas-netdocuments-tutorial/IC795042.png "NetDocuments")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで NetDocuments に対する認証を行えるようにする方法を説明します。
-NetDocuments にシングル サインオンを構成するには、証明書の拇印の値を取得する必要があります。
-この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで NetDocuments に対する認証を行えるようにする方法を説明します。NetDocuments にシングル サインオンを構成するには、証明書の拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[NetDocuments]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **[NetDocuments]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-netdocuments-tutorial/IC795043.png "Configure Single Sign-On")
 
@@ -80,10 +78,10 @@ NetDocuments にシングル サインオンを構成するには、証明書の
 
 3.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
 
-    ![アプリ URL の構成](./media/active-directory-saas-netdocuments-tutorial/IC795045.png "アプリ URL の構成")
+    ![Configure App URL](./media/active-directory-saas-netdocuments-tutorial/IC795045.png "アプリケーション URL の構成")
 
     1.  **[サインオン URL]** ボックスに、ユーザーが NetDocuments アプリケーションへのサインオンに使用する URL を入力します (例: "*https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=CA-JI1BG3H1*")。
-	2.  **[NetDocuments 応答 URL]** ボックスに、**[サインオン URL]** ボックスに入力したのと同じ値を入力します。  
+    2.  **[NetDocuments 応答 URL]** ボックスに、**[サインオン URL]** ボックスに入力したのと同じ値を入力します。
 
         >[AZURE.NOTE]適切な値は、**フェデレーション ID** ダイアログの最後に見つけることができます (ステップ 9 のスクリーン ショットをご覧ください)。
 
@@ -113,7 +111,7 @@ NetDocuments にシングル サインオンを構成するには、証明書の
     2.  **[ファイルの選択]** をクリックして、ダウンロードされたメタデータ ファイルをアップロードします。
     3.  **[OK]** をクリックします。
 
-10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-netdocuments-tutorial/IC795050.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -146,7 +144,7 @@ Azure AD ユーザーが NetDocuments にログインできるようにするに
 
 ###ユーザーを NetDocuments に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **NetDocuments** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -154,8 +152,8 @@ Azure AD ユーザーが NetDocuments にログインできるようにするに
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-netdocuments-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-netdocuments-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!----HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

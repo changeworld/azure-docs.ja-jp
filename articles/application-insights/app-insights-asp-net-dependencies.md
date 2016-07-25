@@ -99,11 +99,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ## <a name="diagnosis"></a>依存関係のパフォーマンスの問題の診断
 
-サーバーでの要求のパフォーマンスを評価するには、次のようにします。
-
-![Application Insights 内のアプリケーションの [概要] ページで、[パフォーマンス] タイルをクリックします](./media/app-insights-asp-net-dependencies/01-performance.png)
-
-下方向へスクロールして、要求のグリッドを確認します。
+サーバーでの要求のパフォーマンスを評価するには、[パフォーマンス] ブレードを開き、下方向へスクロールして、要求のグリッドを確認します。
 
 ![平均およびカウントを持つ要求の一覧](./media/app-insights-asp-net-dependencies/02-reqs.png)
 
@@ -116,21 +112,24 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 実行時間の長いインスタンスがあればそれをクリックし、さらに検査します。
 
-> [AZURE.NOTE] 少し下にスクロールして、インスタンスを選択します。パイプラインでの待機時間は、上部のインスタンスのデータが不完全であることを示す場合があります。
-
 この要求に関連したリモート依存関係呼び出しまで下にスクロールします。
 
 ![リモートの依存関係への呼び出しを見つけ、異常な期間を特定します](./media/app-insights-asp-net-dependencies/04-dependencies.png)
 
 この要求に使われた時間のほとんどが、ローカル サービスへの呼び出しに費やされたように見えます。
 
-さらに情報を得るには、その行をクリックします。
 
+さらに情報を得るには、その行をクリックします。
 
 ![そのリモートの依存関係をクリックし、問題の原因を特定します](./media/app-insights-asp-net-dependencies/05-detail.png)
 
 詳細には、問題の診断に必要な情報が含まれています。
 
+
+別のケースでは、呼び出しが長い依存関係はありませんが、タイムライン ビューに切り替えることで、内部処理に遅延が発生した箇所を確認できます。
+
+
+![リモートの依存関係への呼び出しを見つけ、異常な期間を特定します](./media/app-insights-asp-net-dependencies/04-1.png)
 
 
 ## エラー
@@ -178,9 +177,9 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ## 次のステップ
 
-- [Exceptions](app-insights-asp-net-exception-mvc.md#selector1)
-- [ユーザーとページのデータ](app-insights-asp-net-client.md#selector1)
-- [可用性](app-insights-monitor-web-app-availability.md#selector1)
+- [Exceptions](app-insights-asp-net-exceptions.md)
+- [ユーザーとページのデータ][client]
+- [可用性](app-insights-monitor-web-app-availability.md)
 
 
 
@@ -202,4 +201,4 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,11 +1,12 @@
 <properties
-	pageTitle="Azure SQL Database におけるデータベース パフォーマンスを評価および改善する方法"
-	description="データベース パフォーマンスを評価および改善する方法について説明します"
+	pageTitle="SQL Database のパフォーマンスのチューニングのヒント | Microsoft Azure"
+	description="評価と改善を通じて Azure SQL Database のパフォーマンスをチューニングするためのヒントを紹介します。"
 	services="sql-database"
 	documentationCenter=""
 	authors="v-shysun"
 	manager="felixwu"
-	editor=""/>
+	editor=""
+	keywords="SQL のパフォーマンスのチューニング, データベース パフォーマンスのチューニング, SQL のパフォーマンスのチューニングのヒント, SQL Database のパフォーマンスのチューニング"/>
 
 <tags
 	ms.service="sql-database"
@@ -13,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="07/06/2016"
 	ms.author="v-shysun"/>
 
-# Azure SQL Database におけるデータベース パフォーマンスを評価および改善する方法
-単一データベースの[サービス レベル](sql-database-service-tiers.md)を変更するか、エラスティック データベース プールの eDTU を増やすことで、いつでもパフォーマンスを高めることができますが、最初にクエリのパフォーマンスを改善または最適化する機会を特定する必要があります。データベースのパフォーマンスが悪い一般的な理由は、インデックスの欠落や最適化が不十分なクエリです。
+# SQL Database のパフォーマンスのチューニングのヒント
+単一データベースの[サービス レベル](sql-database-service-tiers.md)を変更するか、エラスティック データベース プールの eDTU を増やすことで、いつでもパフォーマンスを高めることができますが、最初にクエリのパフォーマンスを改善または最適化する機会を特定する必要があります。データベースのパフォーマンスが悪い一般的な理由は、インデックスの欠落や最適化が不十分なクエリです。この記事では、SQL Database でのパフォーマンス チューニングに関するガイダンスを提供します。
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -34,4 +35,4 @@
 1.	単一のデータベースの場合は、[サービス レベルの変更](sql-database-scale-up.md)をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。
 2.	複数のデータベースの場合は、リソースを自動的にスケーリングするための[エラスティック データベース プール](sql-database-elastic-pool-guidance.md)の使用を検討してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

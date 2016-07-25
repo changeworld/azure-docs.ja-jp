@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/06/2016"
+	ms.date="07/12/2016"
 	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートでの状態の共有
@@ -426,4 +426,4 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 - テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートで使用できる関数については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

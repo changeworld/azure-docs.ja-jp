@@ -173,18 +173,11 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 ## 次のステップ
 
-このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。次のチュートリアルで IoT Hub の機能やシナリオをさらに詳しく調べることができます。
+このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。
 
-- 「[デバイスからクラウドへのメッセージの処理]」には、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
-- 「[デバイスからのファイルのアップロード]」では、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用したパターンについて説明しています。
+IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT Suite] に関するドキュメントをご覧ください。
 
-IoT Hub に関するその他の情報:
-
-* [IoT Hub の概要]
-* [IoT Hub 開発者ガイド]
-* [IoT Hub のガイダンス]
-* [サポートされているデバイスのプラットフォームおよび言語]
-* [Azure IoT デベロッパー センター]
+IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド]をご覧ください。
 
 <!-- Images -->
 [20]: ./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png
@@ -198,15 +191,10 @@ IoT Hub に関するその他の情報:
 
 [IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
 
-[デバイスからクラウドへのメッセージの処理]: iot-hub-csharp-csharp-process-d2c.md
-[デバイスからのファイルのアップロード]: iot-hub-csharp-csharp-file-upload.md
-
-[IoT Hub の概要]: iot-hub-what-is-iot-hub.md
-[IoT Hub のガイダンス]: iot-hub-guidance.md
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
-[サポートされているデバイスのプラットフォームおよび言語]: iot-hub-supported-devices.md
 [IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
 [Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

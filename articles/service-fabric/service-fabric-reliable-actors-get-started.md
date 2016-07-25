@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # Reliable Actors の使用
@@ -32,10 +32,11 @@ Reliable Actors の使用を開始するには、4 つの基本的な概念を�
 	* 名を解決します。クラスター内のアクターを特定できます (ホストされているクラスターのノードを検索できます)。
 	* エラーを処理します。たとえば、アクターをクラスター内の別のノードに再配置する必要がある障害が発生した後に、メソッドの呼び出しを再試行し、アクターの場所を改めて特定することができます。
 
-アクター インターフェイス メソッドに関する次の規則に注意する必要があります。
+アクター インターフェイスに関する次の規則に注意する必要があります。
 
 - アクター インターフェイス メソッドはオーバー ロードできません。
 - アクター インターフェイス メソッドには、out、ref、optional パラメーターを使用できません。
+- ジェネリック インターフェイスはサポートされません。
 
 ## Visual Studio での新しいプロジェクトの作成
 Visual Studio 用の Service Fabric ツールをインストールした後、新しいプロジェクトの種類を作成できます。新しいプロジェクトの種類は、**[新しいプロジェクト]** ダイアログ ボックスの **[クラウド]** カテゴリにあります。
@@ -81,7 +82,7 @@ internal class MyActor : Actor, IMyActor
 }
 ```
 
-アクター サービスは、Service Fabric ランタイムのサービスの種類に登録する必要があります。アクター サービスでアクター インスタンスを実行するには、アクター型もアクター サービスに登録する必要があります。`ActorRuntime` 登録メソッドは、アクターのこの作業を実行します。
+アクター サービスは、Service Fabric ランタイムのサービスの種類に登録する必要があります。アクター サービスでアクター インスタンスを実行するには、アクター型もアクター サービスに登録する必要があります。`ActorRuntime` 登録メソッドは、アクターに対してこの処理を実行します。
 
 ```csharp
 internal static class Program
@@ -139,4 +140,4 @@ Visual Studio 用の Service Fabric ツールは、ローカル マシンでの�
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

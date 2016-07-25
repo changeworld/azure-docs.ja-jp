@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="06/15/2016"
+   ms.date="07/13/2016"
    ms.author="yuemlu"/>
 
 # Azure ゲスト OS リリースと SDK の互換性対応表
@@ -28,6 +28,8 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ゲスト OS が不明か、ゲスト OS リリースのしくみが不明な場合は、 [こちら](#how-it-works)のセクションをお読みください。
 
 ## 最新情報
+###### **2016 年 7 月 13 日**
+7 月のゲスト OS ロールアウトは、2016 年 7 月 13 日に開始し、2016 年 8 月 12 日にリリースされる予定です。
 
 ###### **2016 年 6 月 15 日**
 6 月のゲスト OS ロールアウトは、2016 年 6 月 15 日に開始し、2016 年 7 月 14 日にリリースされる予定です。
@@ -61,9 +63,10 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | ------------------------------ | --------------- | ------------- | ---- |
-| WA-GUEST-OS-4.33\_201606-01 | 2016 年 7 月 14 日* | 4\.35 のリリース後 | TBD |
+| WA-GUEST-OS-4.34\_201607-01 | 2016 年 8 月 12 日* | 4\.36 のリリース後 | TBD |
+| WA-GUEST-OS-4.33\_201606-01 | 2016 年 7 月 13 日 | 4\.35 のリリース後 | TBD |
 | WA-GUEST-OS-4.32\_201605-01 | 2016 年 6 月 10 日 | 4\.34 のリリース後 | TBD |
-| WA-GUEST-OS-4.31\_201604-01 | 2016 年 5 月 2 日 | 4\.33 のリリース後 | TBD |
+| WA-GUEST-OS-4.31\_201604-01 | 2016 年 5 月 2 日 | 2016 年 8 月 13 日 | TBD |
 | WA-GUEST-OS-4.30\_201603-01 | 2016 年 4 月 7 日 | 2016 年 7 月 10 日 | TBD |
 | WA-GUEST-OS-4.29\_201602-02 | 2016 年 3 月 12 日 | 2016 年 6 月 2 日 | TBD |
 | WA-GUEST-OS-4.28\_201601-01 | 2016 年 2 月 12 日 | 2016 年 5 月 7 日 | TBD | 
@@ -88,9 +91,10 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | ------------------------------ | -------------- | ------------- | --- |
-| WA-GUEST-OS-3.40\_201606-01 | 2016 年 7 月 14 日* | 3\.42 のリリース後 | TBD |
+| WA-GUEST-OS-3.41\_201607-01 | 2016 年 8 月 12 日* | 3\.43 のリリース後 | TBD |
+| WA-GUEST-OS-3.40\_201606-01 | 2016 年 7 月 13 日 | 3\.42 のリリース後 | TBD |
 | WA-GUEST-OS-3.39\_201605-01 | 2016 年 6 月 10 日 | 3\.41 のリリース後 | TBD |
-| WA-GUEST-OS-3.38\_201604-01 | 2016 年 5 月 2 日 | 3\.40 のリリース後 | TBD |
+| WA-GUEST-OS-3.38\_201604-01 | 2016 年 5 月 2 日 | 2016 年 8 月 13 日 | TBD |
 | WA-GUEST-OS-3.37\_201603-01 | 2016 年 4 月 7 日 | 2016 年 7 月 10 日 | TBD |
 | WA-GUEST-OS-3.36\_201602-02 | 2016 年 3 月 12 日 | 2016 年 6 月 2 日 | TBD |
 | WA-GUEST-OS-3.35\_201601-01 | 2016 年 2 月 12 日 | 2016 年 5 月 7 日 | TBD |
@@ -116,9 +120,10 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | ------------------------------ | ------------- | ------------  | --- |
-| WA-GUEST-OS-2.52\_201606-01 | 2016 年 7 月 14 日* | 2\.54 のリリース後 | TBD |
+| WA-GUEST-OS-2.53\_201607-01 | 2016 年 8 月 12 日* | 2\.55 のリリース後 | TBD |
+| WA-GUEST-OS-2.52\_201606-01 | 2016 年 7 月 13 日 | 2\.54 のリリース後 | TBD |
 | WA-GUEST-OS-2.51\_201605-01 | 2016 年 6 月 10 日 | 2\.53 のリリース後 | TBD |
-| WA-GUEST-OS-2.50\_201604-01 | 2016 年 5 月 2 日 | 2\.52 のリリース後 | TBD |
+| WA-GUEST-OS-2.50\_201604-01 | 2016 年 5 月 2 日 | 2016 年 8 月 13 日 | TBD |
 | WA-GUEST-OS-2.49\_201603-01 | 2016 年 4 月 7 日 | 2016 年 7 月 10 日 | TBD |
 | WA-GUEST-OS-2.48\_201602-02 | 2016 年 3 月 12 日 | 2016 年 6 月 2 日 | TBD |
 | WA-GUEST-OS-2.47\_201601-01 | 2016 年 2 月 12 日 | 2016 年 5 月 7 日 | TBD |
@@ -188,7 +193,7 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 ## ゲスト OS のサポートと提供終了のポリシー
 ゲスト OS のサポートと提供終了のポリシーについては、[こちら][retirepolicy]で説明しています。
 
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/ja-JP/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure ゲスト OS の更新設定]: cloud-services-how-to-configure.md
 [rss]: http://sxp.microsoft.com/feeds/3.0/msdntn/WindowsAzureOSUpdates
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
@@ -209,4 +214,4 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 [fam1retire]: cloud-services-guestos-family1-retirement.md
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="MarkusVi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="07/08/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory のエディション
@@ -480,6 +480,9 @@ Azure AD には、Free、Basic、Premium エディションの一般提供され
 - Privileged Identity Management
 - [HR アプリケーションの統合](active-directory-saas-workday-inbound-tutorial.md)
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
+- [iOS の証明書ベースの認証](active-directory-certificate-based-authentication-ios.md)
+- [Android の証明書ベースの認証](active-directory-certificate-based-authentication-android.md)
+ 
 
 
 
@@ -491,8 +494,7 @@ Azure AD には、Free、Basic、Premium エディションの一般提供され
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 
-
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

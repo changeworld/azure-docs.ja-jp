@@ -13,15 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/21/2016" 
+	ms.date="07/11/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境からバックエンド リソースへの安全な接続 #
 
 ## 概要 ##
-App Service 環境は常に地域クラシック "v1" [仮想ネットワーク][virtualnetwork]のサブネットに作成されるため、仮想ネットワーク経由でのみ、App Service 環境から他のバックエンド リソースへの送信接続を行うことができます。RFC1918 アドレス空間 (プライベート アドレス) を持つ仮想ネットワークのみがサポートされていることに注意してください。
-
-**注:** "v2" ARM によって管理される仮想ネットワーク内で App Service 環境を作成することはできません。
+App Service 環境は常に Azure Resource Manager 仮想ネットワーク**または**クラシック デプロイ モデル[仮想ネットワーク][virtualnetwork]の**いずれか**に作成されるため、仮想ネットワーク経由でのみ、App Service 環境から他のバックエンド リソースへの送信接続を行うことができます。また、2016 年 6 月に行われた直近の変更で、パブリック アドレス範囲または RFC1918 アドレス空間 (つまりプライベート アドレス) のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました。
 
 たとえば、ポート 1433 がロックされている仮想マシンのクラスターで実行されている SQL Server がある場合があります。このエンドポイントは、同じ仮想ネットワークの他のリソースからのアクセスを許可する目的のみで使用されることがあります。
 
@@ -36,7 +34,9 @@ App Service 環境から仮想ネットワーク内のエンドポイントへ�
 ## 発信接続と DNS の要件 ##
 App Service Environment が正常に機能するためには、さまざまなエンドポイントへの発信アクセスが必要となります。[ExpressRoute を使用した環境のネットワーク構成](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity)の記事の「必要なネットワーク接続」というセクションに、App Service Environment で使用されるすべての外部エンドポイントが掲載されています。
 
-また、App Service 環境を作成する前に、仮想ネットワーク上のカスタム DNS サーバーをセットアップしておくことをお勧めします。App Service 環境の作成中に仮想ネットワークの DNS 構成が変更された場合、App Service 環境の作成プロセスは失敗します。VPN ゲートウェイの他端にカスタム DNS サーバーが存在していて、その DNS サーバーが到達不能または使用できない場合、App Service 環境の作成プロセスも失敗します。
+App Service 環境では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャが必要です。何らかの理由で、App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。ポータルの App Service 環境管理ブレードの上部にある [再起動] アイコンを使用して、ローリングする環境の再起動をトリガーすると、新しい DNS 構成が自動的に選択されます。
+
+また、App Service 環境を作成する前に、vnet 上のカスタム DNS サーバーをセットアップしておくことをお勧めします。App Service 環境の作成中に仮想ネットワークの DNS 構成が変更された場合、App Service 環境の作成プロセスは失敗します。同様に、VPN ゲートウェイの他端にカスタム DNS サーバーが存在していて、その DNS サーバーが到達不能または使用できない場合、App Service 環境の作成プロセスも失敗します。
 
 ## SQL Server への接続
 SQL Server の構成には一般的に、ポート 1433 でリッスンしているエンドポイントがあります。
@@ -46,7 +46,7 @@ SQL Server の構成には一般的に、ポート 1433 でリッスンしてい
 このエンドポイントへのトラフィックを制限する方法は 2 つあります。
 
 
-- [ネットワーク アクセス制御リスト][NetworkAccessControlLists] \(ネットワーク ACL)
+- [ネットワーク アクセス制御リスト][NetworkAccessControlLists] (ネットワーク ACL)
 
 - [ネットワーク セキュリティ グループ][NetworkSecurityGroups]
 
@@ -86,7 +86,7 @@ VNet 間の内部トラフィックのみにアクセスを制限すると、ネ
 
 
 ## 使用の開始
-App Service 環境に関するすべての記事と作業方法は [Application Service Environments の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
+App Service 環境に関するすべての記事と作業方法は [App Service 環境の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
 
 App Service 環境の使用を開始するには、「[App Service 環境の概要][IntroToAppServiceEnvironment]」を参照してください。
 
@@ -115,4 +115,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

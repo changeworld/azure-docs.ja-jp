@@ -80,7 +80,7 @@ PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps
 3. **[Runbook の追加]** ボタンをクリックし、次に **[インポート]** をクリックします。
 4. **[Runbook ファイル]** をクリックし、インポートするファイルを選択します。
 2. **[名前]** フィールドが有効になっている場合は、名前を変更できます。Runbook 名は、先頭を英字にする必要があり、英字、数字、アンダースコア、およびダッシュを使用できます。
-3. [Runbook の種類](automation-runbook-types.md)は自動的に選択されますが、適切な制限を考慮して変更することもできます。 
+3. [Runbook の種類](automation-runbook-types.md)は自動的に選択されますが、適切な制限を考慮して変更することもできます。
 3. 新しい Runbook が、Automation アカウントの Runbook の一覧に表示されます。
 4. Runbook を実行するには、先に [Runbook を発行する](#publishing-a-runbook)必要があります。
 
@@ -92,7 +92,7 @@ PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps
 
 次のサンプル コマンドでは、Runbook にスクリプト ファイルをインポートする方法を示します。
 
-    $automationAccountName =  AutomationAccount"
+    $automationAccountName =  "AutomationAccount"
     $runbookName = "Sample_TestRunbook"
     $scriptPath = "C:\Runbooks\Sample_TestRunbook.ps1"
     $RGName = "ResourceGroup"
@@ -123,7 +123,7 @@ PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps
 
 Windows PowerShell の [Publish-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603705.aspx) コマンドレットを使用して、Runbook を発行できます。次のサンプル コマンドでは、サンプルの Runbook を発行する方法を示します。
 
-	$automationAccountName =  AutomationAccount"
+	$automationAccountName =  "AutomationAccount"
     $runbookName = "Sample_TestRunbook"
     $RGName = "ResourceGroup"
 
@@ -136,4 +136,4 @@ Windows PowerShell の [Publish-AzureRmAutomationRunbook](https://msdn.microsoft
 - テキスト エディターを使用した PowerShell および PowerShell ワークフロー Runbook の編集の詳細については、「[Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)」を参照してください。
 - グラフィカル Runbook 作成の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

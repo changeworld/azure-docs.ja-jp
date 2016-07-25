@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="dotnet"
     ms.workload="na"
-    ms.date="04/22/2016"
+    ms.date="07/11/2016"
     ms.author="sethm"/>
 
 # Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する
@@ -22,7 +22,7 @@
 
 Azure Resource Manager テンプレートを使用すると、ソリューションでデプロイするリソースを定義し、さまざまな環境用の値を入力できるパラメーターと変数を指定できます。テンプレートは、JSON、およびデプロイの値を構築する際の式で構成されます。Azure Resource Manager テンプレートの作成の詳細と、テンプレート形式の説明については、「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
 
->[AZURE.NOTE] この記事の例では、Azure Resource Manager を使用して Service Bus の名前空間とメッセージング エンティティ (キュー) を作成する方法について説明します。他のテンプレート例については、「[Azure クイック スタート テンプレート][]」を参照し、"Service Bus" を検索してください。
+>[AZURE.NOTE] この記事の例では、Azure Resource Manager を使用して Service Bus の名前空間とメッセージング エンティティ (キュー) を作成する方法について説明します。他のテンプレート例については、「[Azure クイックスタート テンプレート][]」ギャラリーで "Service Bus" を検索してください。
 
 ## Service Bus と Event Hubs Resource Manager テンプレート
 
@@ -144,7 +144,7 @@ GitHub から [201-servicebus-create-queue](https://github.com/Azure/azure-quick
 }
 ```
 
-詳細については、[パラメーター ファイル](../resource-group-template-deploy.md#parameter-file)の記事を参照してください。
+詳細については、「[パラメーター ファイル](../resource-group-template-deploy.md#parameter-file)」を参照してください。
 
 ### Azure にログインして Azure サブスクリプションを設定する
 
@@ -154,7 +154,7 @@ PowerShell プロンプトから、次のコマンドを実行します。
 Login-AzureRmAccount
 ```
 
-Azure アカウントにログオンするように求められます。ログオン後は、次のコマンドを実行して、使用できるサブスクリプションを確認します。
+Azure アカウントにログオンするように求められます。ログオンしたら、次のコマンドを実行して、使用できるサブスクリプションを確認します。
 
 ```
 Get-AzureRMSubscription
@@ -184,7 +184,7 @@ Tags              :
 ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 ```
 
-### デプロイをテストする
+### 展開をテスト
 
 デプロイを検証するには、`Test-AzureRmResourceGroupDeployment` コマンドレットを実行します。デプロイをテストする場合、デプロイの実行時と同様に、必要なパラメーターを正確に指定します。
 
@@ -251,6 +251,6 @@ Azure Resource Manager テンプレートをデプロイする基本のワーク
 
 [Azure リソース マネージャーの概要]: ../resource-group-overview.md
 [Azure リソース マネージャーのテンプレートを使用したリソースのデプロイ]: ../resource-group-template-deploy.md
-[Azure クイック スタート テンプレート]: https://azure.microsoft.com/documentation/templates/?term=service+bus
+[Azure クイックスタート テンプレート]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,4 +1,4 @@
-Azure 仮想マシン (VM) で実行されているアプリケーションへの接続で問題が発生する理由はいろいろあります (アプリケーションが期待どおりのポートで実行されず、リッスンしていない、ネットワーク ルールがトラフィックをアプリケーションに正しく渡していないなど)。この記事では、問題を検出して解決するための系統的アプローチについて説明します。
+Azure 仮想マシン (VM) で実行されているアプリケーションを起動できなかったりアプリケーションに接続できなかったりする理由はいろいろあります (アプリケーションが適切なポートで実行されていない、適切なポートでリッスンしていない、リスニング ポートがブロックされている、ネットワーク ルールがトラフィックをアプリケーションに正しく渡していないなど)。この記事では、問題を検出して解決するための系統的アプローチについて説明します。
 
 RDP または SSH を使用した VM への接続で問題が発生している場合は、最初に、次のいずれかの記事を参照してください。
 
@@ -29,14 +29,14 @@ RDP または SSH を使用した VM への接続で問題が発生している�
 
 Azure 仮想マシンで実行されているアプリケーションへのアクセスに問題がある場合は、次の 4 つの主要領域からトラブルシューティングを行います。
 
-![](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
+![troubleshoot cannot start application](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
 
 1.	Azure 仮想マシンで実行されているアプリケーション。
 	- アプリケーション自体は正常に実行されているか。
 2.	Azure 仮想マシン。
 	- VM 自体は正常に実行され、要求に応答しているか。
 3.	仮想マシンが属しているクラウド サービスの Azure エンドポイント (クラシック デプロイ モデルの仮想マシンの場合)、受信 NAT 規則 (リソース マネージャー デプロイ モデルの仮想マシンの場合)、およびネットワーク セキュリティ グループ。
-	- ユーザーから VM/アプリケーショへのトラフィック フローは、期待どおりのポートで行われているか。
+	- ユーザーから VM/アプリケーションへのトラフィック フローは、期待どおりのポートで行われているか。
 4.	インターネット エッジ デバイス。
 	- 所定のファイアウォール規則がトラフィック フローを適切に処理しているか。
 
@@ -46,7 +46,7 @@ Azure 仮想マシンで実行されているアプリケーションへのア�
 
 適切なクライアント プログラムが実行されている VM からそのクライアント プログラムでアプリケーションへのアクセスを試みます。ローカル ホスト名、ローカル IP アドレス、またはループバック アドレス (127.0.0.1) を使用します。
 
-![](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
+![start application directly from the VM](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
 
 たとえば、アプリケーションが Web サーバーである場合は、VM でブラウザーを開き、VM でホストされている Web ページへのアクセスを試行します。
 
@@ -63,7 +63,7 @@ Windows ベースと Linux ベースの両方の仮想マシンで、 **netstat-
 
 同じ仮想ネットワーク内の異なる VM からアプリケーションにアクセスしてみます。その VM のホスト名または Azure 割り当てのパブリック、プライベート、またはプロバイダー IP アドレスを使用します。クラシック デプロイ モデルを使用して作成された VM の場合、クラウド サービスのパブリック IP アドレスは使用しないでください。
 
-![](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
+![start application from a different VM](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
 
 たとえば、アプリケーションが Web サーバーである場合は、同じ仮想ネットワーク内の別の VM 上のブラウザーから、Web ページへのアクセスを試行します。
 
@@ -84,7 +84,7 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 アプリケーションが実行されている VM の仮想ネットワーク外にあるが、元のクライアント コンピューターと同じネットワーク上にないコンピューターから、アプリケーションへのアクセスを試行してください。
 
-![](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
+![start application from a computer outside the virtual network](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
 
 たとえば、アプリケーションが Web サーバーである場合は、仮想ネットワーク内にないコンピューターで実行されているブラウザーから、Web ページへのアクセスを試行します。
 
@@ -94,7 +94,7 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 	- VM のエンドポイント構成で、着信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうか。
 	- エンドポイント上のアクセス制御リスト (ACL) によって、インターネットからの着信トラフィックが遮断されていないかどうか。
 	- 詳細については、「[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
-	
+
 - Resource Manager デプロイメント モデルを使用して作成された VM:
 	- VM の受信 NAT 規則構成で、着信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうか。
 	- ネットワーク セキュリティ グループで、リクエスト受信と応答送信のトラフィックが許可されているかどうか。
@@ -118,4 +118,4 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](../articles/virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/08/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と LogicMonitor の統合
@@ -35,7 +35,7 @@
 
 ###LogicMonitor のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-logicmonitor-tutorial/IC700993.png "Active Directory")
 
@@ -66,7 +66,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[LogicMonitor]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **[LogicMonitor]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-logicmonitor-tutorial/IC790048.png "Configure Single Sign-On")
 
@@ -74,9 +74,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-logicmonitor-tutorial/IC790049.png "Configure Single Sign-On")
 
-3.  **[アプリ URL の構成]** ページの **[サインオン URL]** テキストボックスに、ユーザーが LogicMonitor アプリケーションのサインオンに使用する URL (例: "**http://company.logicmonitor.com*")) を入力して、**[次へ]** をクリックします。
+3.  **[アプリ URL の構成]** ページの **[サインオン URL]** テキストボックスに、ユーザーが LogicMonitor アプリケーションのサインオンに使用する URL (例: "*http://company.logicmonitor.com*"\) を入力して、**[次へ]** をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-logicmonitor-tutorial/IC790050.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-logicmonitor-tutorial/IC790050.png "アプリケーション URL の構成")
 
 4.  **[LogicMonitor でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターのローカルに保存します。
 
@@ -97,11 +97,11 @@
     ![シングル サインオンの設定](./media/active-directory-saas-logicmonitor-tutorial/IC790054.png "シングル サインオンの設定")
 
     1.  **[シングル サインオンを有効にする]** を選択します。
-    2.  **[Default Role Assignment (既定のロールの割り当て)]** で、**[読み取り専用]** を選択します。
+    2.  **[Default Role Assignment (既定のロールの割り当て]** で、**[読み取り専用]** を選択します。
     3.  ダウンロードしたメタデータ ファイルをメモ帳で開き、ファイルの内容を **[Identity Provider Metadata (ID プロバイダーのメタデータ)]** テキストボックスに貼り付けます。
     4.  **[変更を保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-logicmonitor-tutorial/IC790055.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -134,7 +134,7 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 
 ###ユーザーを LogicMonitor に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  ****LogicMonitor**** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -146,4 +146,4 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

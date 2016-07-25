@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="02/20/2016"
+	ms.date="07/07/2016"
 	ms.author="huvalo"/>
 
 
@@ -29,10 +29,10 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 ## 前提条件
 
- - Visual Studio 2013 または 2015
+ - Visual Studio 2015
  - [Python Tools 2.2 for Visual Studio]
  - [Python Tools 2.2 for Visual Studio サンプル VSIX]
- - [Azure SDK Tools for VS 2013] または [Azure SDK Tools for VS 2015]
+ - [Azure SDK Tools for VS 2015]
  - [Python 2.7 (32 ビット)] または [Python 3.4 (32 ビット)]
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
@@ -45,7 +45,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 1.  Visual Studio で、**[ファイル]**、**[新しいプロジェクト]** の順にクリックします。
 
-1.  PTVS サンプル VSIX のプロジェクト テンプレートは、**[Python]** の **[サンプル]** にあります。**[Polls Bottle Web Project]** を選択し、[OK] をクリックしてプロジェクトを作成します。
+1.  [Python Tools 2.2 for Visual Studio サンプル VSIX] のプロジェクト テンプレートは、**[Python]** の **[サンプル]** にあります。**[Polls Bottle Web Project]** を選択し、[OK] をクリックしてプロジェクトを作成します。
 
   	![[新しいプロジェクト] ダイアログ](./media/web-sites-python-ptvs-bottle-table-storage/PollsBottleNewProject.png)
 
@@ -69,15 +69,15 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 1.  [Azure ポータル](https://portal.azure.com/)にログインします。
 
-2. ポータルの左上にある **[新規]** アイコンをクリックし、**[データ + ストレージ]** > **[ストレージ アカウント]** をクリックします。**[作成]** ボタンをクリックし、ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します。
+1. ポータルの左上にある **[新規]** アイコンをクリックし、**[データ + ストレージ]** > **[ストレージ アカウント]** をクリックします。**[作成]** ボタンをクリックし、ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します。
 
-  	<!-- ![New Button](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzurePlusNew.png) -->
+  	![Quick Create](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzureStorageCreate.png)
 
 	ストレージ アカウントが作成されると、**[通知]** ボタンに緑色の "**成功**" という文字が点滅し、ストレージ アカウントのブレードが開いて、作成した新しいリソース グループに属していることが示されます。
 
-  	<!-- ![Quick Create](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzureStorageCreate.png) -->
+1. ストレージ アカウントのブレードで **[アクセス キー]** の部分をクリックします。アカウント名と key1 を書き留めます。
 
-5. ストレージ アカウントのブレードの **[設定]** 部をクリックします。アカウント名とプライマリ キーをメモします。
+  	![構成する](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzureStorageKeys.png)
 
 	この情報は、次のセクションでプロジェクトを構成するために必要です。
 
@@ -111,17 +111,17 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 ## Azure テーブル ストレージを調査する
 
-ストレージ テーブルは、Visual Studio のサーバー エクスプローラーを使用して簡単に表示したり編集したりできます。このセクションでは、投票アプリケーションに使用されているテーブルの内容をサーバー エクスプローラーを使用して表示します。
+ストレージ テーブルは、Visual Studio の Cloud Explorer を使用して簡単に表示したり編集したりできます。このセクションでは、投票アプリケーションに使用されているテーブルの内容をサーバー エクスプローラーを使用して表示します。
 
 > [AZURE.NOTE] これには、Microsoft Azure Tools をインストールする必要があります。このツールは、[Azure SDK for .NET] の一部として使用できます。
 
-1.  **[サーバー エクスプローラー]**を開きます。**[Azure]**、**[ストレージ]**、使用するストレージ アカウント、**[テーブル]** の順に展開します。
+1.  **Cloud Explorer** を開きます。**[ストレージ アカウント]**、ストレージ アカウント名、**[テーブル]** の順に展開します。
 
-  	<!-- ![Server Explorer](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonServerExplorer.png) -->
+  	![Cloud Explorer](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonServerExplorer.png)
 
 1.  **投票**テーブルか**選択肢**テーブルをダブルクリックすると、ドキュメント ウィンドウでテーブルの内容を表示し、エンティティを追加、削除、編集できます。
 
-  	<!-- ![Table Query Results](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonServerExplorerTable.png) -->
+  	![テーブル照会結果](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonServerExplorerTable.png)
 
 ## Web アプリを Azure App Service に発行する
 
@@ -129,7 +129,7 @@ Azure .NET SDK を使用すると、Web アプリを Azure App Service に簡単
 
 1.  **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックし、**[発行]** をクリックします。
 
-  	<!-- ![Publish Web Dialog](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonPublishWebSiteDialog.png) -->
+  	![Publish Web ダイアログ](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonPublishWebSiteDialog.png)
 
 1.  **[Microsoft Azure Web Apps]** をクリックします。
 
@@ -142,8 +142,6 @@ Azure .NET SDK を使用すると、Web アプリを Azure App Service に簡単
 	-	**[リージョン]**
 	-	**[データベース サーバー]** は、**[データベースなし]** のままにしておきます。
 
-  	<!-- ![Create Web App on Microsoft Azure Dialog](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonCreateWebSite.png) -->
-
 1.  他のすべての既定値をそのまま使用し、**[発行]** をクリックします。
 
 1.  Web ブラウザーが自動的に開いて、発行した Web アプリが表示されます。[情報] ページを参照すると、**Azure テーブル ストレージ**リポジトリではなく、**メモリ内**リポジトリを使用していることが確認できます。
@@ -154,19 +152,15 @@ Azure .NET SDK を使用すると、Web アプリを Azure App Service に簡単
 
 このセクションでは、Web Apps インスタンスの環境変数を構成します。
 
-1.  [Azure ポータル]で、**[参照]**、**[Web Apps]**、Web アプリ名の順にクリックして、Web アプリのブレードを開きます。
+1.  [Azure ポータル]で、**[参照]**、**[App Services]**、Web アプリ名の順にクリックして、Web アプリのブレードを開きます。
 
 1.  Web アプリのブレードで、**[すべての設定]**、**[アプリケーションの設定]** の順にクリックします。
 
-  	<!-- ![Top Menu](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonWebSiteTopMenu.png) -->
+1.  下方向へ **[アプリケーション設定]** セクションまでスクロールし、上の**プロジェクトを構成する**セクションで説明したように **REPOSITORY\\_NAME**、**STORAGE\\_NAME**、**STORAGE\\_KEY** の値を設定します。
 
-1.  下方向へ **[アプリケーション設定]** セクションまでスクロールし、**プロジェクトを構成する**セクションで説明したように **REPOSITORY\\_NAME**、**STORAGE\\_NAME**、**STORAGE\\_KEY** の値を設定します。
+  	![アプリ設定](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonWebSiteConfigureSettingsTableStorage.png)
 
-  	<!-- ![App Settings](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonWebSiteConfigureSettingsTableStorage.png) -->
-
-1. **[保存]**、**[再起動]** の順にクリックし、最後に **[参照]** をクリックします。
-
-  	<!-- ![Bottom Menu](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonWebSiteConfigureBottomMenu.png) -->
+1.  **[Save]** をクリックします。変更の適用を知らせる通知を受け取ったら、Web アプリのメイン ブレードで **[参照]** をクリックします。
 
 1.  想定どおりに Web アプリが**Azure テーブル ストレージ** リポジトリを使用して動作していることが確認できます。
 
@@ -203,7 +197,6 @@ Python Tools for Visual Studio、Bottle および Azure テーブル ストレ�
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=624025
 [Python Tools 2.2 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkId=624025
-[Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
 [Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
 [Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190
 [Python 3.4 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517191
@@ -216,4 +209,4 @@ Python Tools for Visual Studio、Bottle および Azure テーブル ストレ�
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0713_2016-->

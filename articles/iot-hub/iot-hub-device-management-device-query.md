@@ -207,8 +207,16 @@ var foundDevices = await registryManager.QueryDevicesAsync(new[] { "bacon" }, 10
 
 Azure IoT Hub デバイス管理機能の詳細については、次のチュートリアルに進んでください。
 
-- [デバイス ツインの使用方法][lnk-twin-tutorial]
-- [デバイスのジョブを使用して、デバイスのファームウェアを更新する方法][lnk-jobs-tutorial]
+- [デバイス ジョブを使用して、デバイスのファームウェアを更新する方法][lnk-tutorial-jobs]
+- [IoT ゲートウェイの内側で管理されたデバイスを有効にする][lnk-dm-gateway]
+- [Azure IoT Hub デバイス管理クライアント ライブラリの概要][lnk-library-c]
+
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
 
 
 
@@ -221,4 +229,13 @@ Azure IoT Hub デバイス管理機能の詳細については、次のチュー
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
 [lnk-query-expression-guide]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/node/service/devdoc/query_expression_requirements.md
 
-<!---HONumber=AcomDC_0622_2016-->
+[lnk-tutorial-jobs]: iot-hub-device-management-device-jobs.md
+[lnk-dm-gateway]: iot-hub-gateway-device-management.md
+[lnk-library-c]: iot-hub-device-management-library.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

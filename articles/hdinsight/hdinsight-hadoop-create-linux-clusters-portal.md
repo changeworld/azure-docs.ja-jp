@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="03/21/2016"
+   	ms.date="07/07/2016"
    	ms.author="nitinme"/>
 
 
@@ -99,7 +99,7 @@ Azure ポータルには、ほとんどのクラスターのプロパティが�
 
 9. **[オプションの構成]** をクリックし、クラスターのバージョンを選択し、その他のオプションの設定を構成します。その他のオプションには、**Virtual Network** に参加すること、Hive と Oozie 用のデータを保持する**外部メタストア** を設定すること、Script Action を使用してカスタム コンポーネントをインストールするようにクラスターをカスタマイズすること、クラスターで追加のストレージ アカウントを使用することなどがあります。
 
-	* **[Virtual Network]**: クラスターを仮想ネットワークに配置する場合は、Azure Virtual Network とサブネットを選択します。  
+	* **[Virtual Network]**: クラスターを仮想ネットワークに配置する場合は、Azure Virtual Network とサブネットを選択します。
 
 		![[仮想ネットワーク] ブレード](./media/hdinsight-hadoop-create-linux-cluster-portal/HDI.CreateCluster.6.png "仮想ネットワークの詳細の指定")
 
@@ -114,6 +114,10 @@ Azure ポータルには、ほとんどのクラスターのプロパティが�
 		**[Hive メタデータで既存の SQL DB を使用する]** で、**[はい]** をクリックし、SQL データベースを選択し、データベースのユーザー名/パスワードを指定します。**[Oozie メタデータで既存の SQL DB を使用する]** 場合は、これらの手順を繰り返します。**[オプションの構成]** ブレードに戻るまで **[選択]** をクリックします。
 
 		>[AZURE.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL Database インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
+
+        &nbsp;
+
+        > [AZURE.IMPORTANT] メタストアを作成するときは、データベース名にダッシュやハイフンを使用しないでください。使用すると、クラスター作成プロセスが失敗することがあります。
 
 	* クラスターを作成するときに、カスタム スクリプトを使用してクラスターをカスタマイズする場合は、**[スクリプト アクション]** をクリックします。スクリプト アクションの詳細については、「[Script Action を使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。[Script Action] ブレードで、次の画面キャプチャに示すように、詳細を指定します。
 
@@ -153,14 +157,14 @@ Azure ポータルには、ほとんどのクラスターのプロパティが�
 
 	* **[ユーザー]** (![ユーザー アイコン](./media/hdinsight-hadoop-create-linux-cluster-portal/users.png)): このクラスターの_ポータル管理_に対する権限を、Azure サブスクリプションの他のユーザーに対して設定できます。
 
-		> [AZURE.IMPORTANT] これは、Azure ポータルでのこのクラスターへのアクセスと権限_だけ_に影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
+		> [AZURE.IMPORTANT] これは、Azure ポータルでのこのクラスターへのアクセスと権限 "だけ" に影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
 
 	* **タグ** (![タグ アイコン](./media/hdinsight-hadoop-create-linux-cluster-portal/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。たとえば、__プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
 
 ##クラスターのカスタマイズ
 
 - 「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)」をご覧ください。
-- 「[Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
+- 「[スクリプト アクションを使用して Windows ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
 
 ##クラスターを削除する
 
@@ -168,7 +172,7 @@ Azure ポータルには、ほとんどのクラスターのプロパティが�
 
 ##次のステップ
 
-HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックをご覧ください。
+HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックを参照してください。
 
 ###Hadoop クラスター
 
@@ -179,7 +183,7 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 ###HBase クラスター
 
 * [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started-linux.md)
-* [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux)
+* [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux.md)
 
 ###Storm クラスター
 
@@ -195,4 +199,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0713_2016-->

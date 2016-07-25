@@ -3,9 +3,9 @@
    description="この記事は、Microsoft Azure Service Fabric の Testability アクションについて説明します。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="heeldin"
+   authors="motanv"
    manager="timlt"
-   editor="vturecek"/>
+   editor="toddabel"/>
 
 <tags
    ms.service="service-fabric"
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/05/2016"
-   ms.author="heeldin;motanv"/>
+   ms.date="07/08/2016"
+   ms.author="motanv;heeldin"/>
 
 # Testability アクション
 Azure Service Fabric では、信頼性の低いインフラストラクチャをシミュレートするため、さまざまな現実世界の障害と状態遷移をシミュレートする方法を開発者に提供します。これらは、Testability アクションとして公開されます。これらのアクションは、特定のフォールト インジェクション、状態遷移、検証を発生させる低レベルの API です。これらのアクションを組み合わせて、サービスに対する包括的なテスト シナリオを記述することができます。
@@ -236,4 +236,4 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
    - [サービス ワークロード中のエラーのシミュレーション](service-fabric-testability-workload-tests.md)
    - [サービス間の通信障害](service-fabric-testability-scenarios-service-communication.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

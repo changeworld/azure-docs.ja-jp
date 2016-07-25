@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/22/2016"
+	ms.date="07/12/2016"
 	ms.author="larryfr"/>
 
 # Azure Machine Learning 向け R プログラミング言語クイック スタート チュートリアル
@@ -1296,13 +1296,13 @@ RStudio はドキュメントが非常に整っているため、この付録で
 
 この R プログラミングのチュートリアルでは、Azure Machine Learning Studio で、R 言語を使用するために必要な基本事項について説明します。R に精通していない場合、CRAN に 2 つの入門書が用意されています。
 
-- Emmanuel Paradis による『R for Beginners』 (http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) が初心者に適しています。  
+- Emmanuel Paradis による『R for Beginners』 (http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) が初心者に適しています。
 
 - W. N. Venables 他による『An Introduction to R』 (http://cran.r-project.org/doc/manuals/R-intro.html) は、少し詳しく説明しています。
 
 R の使用を開始するのに役立つ書籍は、多数存在します。役に立つものをいくつか紹介します。
 
-- Norman Matloff による『The Art of R Programming; A Tour of Statistical Software Design』は、R のプログラミングに関する優れた入門書です。  
+- Norman Matloff による『The Art of R Programming; A Tour of Statistical Software Design』は、R のプログラミングに関する優れた入門書です。
 
 - Paul Teetor による『R Cookbook』は、R の使用に関する問題と解決のアプローチが記載されています。
 
@@ -1318,7 +1318,7 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 
 役に立つインターネット リソース:
 
-- DataCamp: DataCamp ではブラウザーで学べる R についてのビデオ レッスンとコーディングの練習を提供しています。最新の R のテクニックとパッケージに関する対話型チュートリアルがあります。https://www.datacamp.com/courses/introduction-to-r では R に関する対話型チュートリアルが無料で提供されています。  
+- DataCamp: DataCamp ではブラウザーで学べる R についてのビデオ レッスンとコーディングの練習を提供しています。最新の R のテクニックとパッケージに関する対話型チュートリアルがあります。https://www.datacamp.com/courses/introduction-to-r では R に関する対話型チュートリアルが無料で提供されています。
 
 - Clarkson 大学の Kelly Black 助教授による R クイック チュートリアル http://www.cyclismo.org/tutorial/R/
 
@@ -1358,4 +1358,4 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

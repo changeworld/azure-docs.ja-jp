@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # Reliable Services プログラミング モデルの詳細な使用方法
@@ -42,7 +42,7 @@ Azure Service Fabric により、信頼性の高いステートレス サービ�
 
 ステートフル サービス レプリカのライフサイクルは、ステートレス サービス インスタンスよりもかなり複雑です。開く、終了、中止の各イベントに加え、ステートフル サービス レプリカでは、有効期間中にロールの変更が発生します。ステートフル サービス レプリカがロールを変更すると、`OnChangeRoleAsync` イベントがトリガーされます。
 
-- `Task OnChangeRoleAsync(ReplicaRole, CancellationToken)` OnChangeRoleAsync は、ステートフル サービスのロールが、プライマリやセカンダリなどに変更されるときに呼び出されます。プライマリ レプリカには書き込み状態が与えられます (Reliable Collection の作成と Reliable Collection への書き込みが可能)。セカンダリ レプリカには読み取り状態が与えられます (既存の Reliable Collection からの読み取りのみが可能)。ロールの変更に対応して、バックグラウンド タスク (セカンダリでの読み取り専用検証、レポート生成、またはデータ マイニングの実行など) を開始または更新できます。
+- `Task OnChangeRoleAsync(ReplicaRole, CancellationToken)` OnChangeRoleAsync は、ステートフル サービス レプリカのロールが、プライマリやセカンダリなどに変更されるときに呼び出されます。プライマリ レプリカには書き込み状態が与えられます (Reliable Collection の作成と Reliable Collection への書き込みが可能)。セカンダリ レプリカには読み取り状態が与えられます (既存の Reliable Collection からの読み取りのみが可能)。ステートフル サービスの作業のほとんどは、プライマリ レプリカで実行されます。セカンダリ レプリカでは、読み取り専用の検証、レポートの生成、データ マイニングなど、読み取り専用のジョブを実行できます。
 
 ステートフル サービスでは、状態に書き込みアクセスできるのはプライマリ レプリカだけであるため、サービスが実際の作業を実行するときは、一般にプライマリ レプリカが実行します。ステートフル サービスの `RunAsync` メソッドは、ステートフル サービス レプリカがプライマリの場合にのみ実行されます。プライマリ レプリカのロールがプライマリから変更されたときや、終了イベントまたは中止イベントが発生したときには、`RunAsync` メソッドはキャンセルされます。
 
@@ -67,4 +67,4 @@ Service Fabric に関するさらに高度なトピックについては、次�
 
 - [Service Fabric クラスター リソース マネージャーでサービスを構成する](service-fabric-cluster-resource-manager-configure-services.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/10/2016" 
-	ms.author="wesmc" />
+	ms.date="07/07/2016" 
+	ms.author="wesmc;ricksal" />
 
 #REST を使用して Azure Mobile Engagement サービス API にアクセスする
 
@@ -49,7 +49,7 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
 
 ## サービス API アプリを作成する
 
-1. まず、このサンプルを使用するには、4 つの認証パラメーターが必要になります。そのパラメーターは、**SubscriptionId**、**TenantId**、**ApplicationId**、および **Secret** です。これらの認証パラメーターを取得するには、[認証](mobile-engagement-api-authentication.md#authentication)チュートリアルの *1 回限りのセットアップ (スクリプトを使用)* セクションで示される、PowerShell スクリプトのアプローチを使用することをお勧めします。 
+1. まず、このサンプルを使用するには、4 つの認証パラメーターが必要になります。そのパラメーターは、**SubscriptionId**、**TenantId**、**ApplicationId**、および **Secret** です。これらの認証パラメーターを取得するには、[認証](mobile-engagement-api-authentication.md#authentication)チュートリアルの *1 回限りのセットアップ (スクリプトを使用)* セクションで示される、PowerShell スクリプトのアプローチを使用することをお勧めします。
 
 2. 単純な Windows コンソール アプリを使用して、新しいアナウンス キャンペーンを作成およびアクティブ化するための REST サービス API の操作を説明します。そのため、Visual Studio を開き、新しい**コンソール アプリケーション**を作成します。
 
@@ -461,4 +461,4 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
 
 [1]: ./media/mobile-engagement-dotnet-sdk-service-api/include-prerelease.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0713_2016-->

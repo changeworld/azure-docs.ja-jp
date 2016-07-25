@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="article"
-	ms.date="06/09/2016"
+	ms.date="06/28/2016"
     ms.author="awills"/>
 
 # Application Insights のリリース注釈
@@ -40,15 +40,15 @@
 
 
 1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインし、アプリケーションを監視する Application Insights リソースを開きます (まだリソースを作成していない場合は、[この時点で作成します](app-insights-overview.md))。
-2. **[設定]**、**[API アクセス]** の順に開き、**Application Insights ID** をコピーします。
+2. **[API アクセス]** を開き、**Application Insights ID** をコピーします。
 
     ![portal.azure.com で、Application Insights リソースを開き、[設定] を選択します。[API アクセス] を開きます。アプリケーション ID をコピーする](./media/app-insights-annotations/20.png)
 
 2. 別のブラウザー ウィンドウで、Visual Studio Team Services のデプロイを管理するリリース テンプレートを開きます (または作成します)。
 
-    タスクを追加し、メニューから [Application Insights Release Annotation] \(Application Insights リリース注釈) タスクを選択します。
+    タスクを追加し、メニューから [Application Insights Release Annotation] (Application Insights リリース注釈) タスクを選択します。
 
-    [API アクセス] ブレードからコピーした **Application ID** を貼り付けます。
+    [API アクセス] ブレードからコピーした**アプリケーション ID** を貼り付けます。
 
     ![Visual Studio Team Services で [リリース] を開き、リリース定義を選択して [編集] を選択します。[タスクの追加] をクリックし、[Application Insights Release Annotation] (Application Insights リリース注釈) を選択します。Application Insights ID を貼り付けます。](./media/app-insights-annotations/30.png)
 
@@ -85,7 +85,7 @@
           "ReleaseDescription"="a description";
           "TriggerBy"="My Name" }
 
-Application Insights リソースから `applicationId` と `apiKey` を取得します。[設定]、[API アクセス] の順に開き、Application ID をコピーします。[API キーの作成] をクリックし、キーをコピーします。
+Application Insights リソースから `applicationId` と `apiKey` を取得します。[設定]、[API アクセス] の順に開き、アプリケーション ID をコピーします。[API キーの作成] をクリックし、キーをコピーします。
 
 ## リリース注釈
 
@@ -96,4 +96,4 @@ Application Insights リソースから `applicationId` と `apiKey` を取得�
 
 ![任意のリリース注釈マーカーをクリックします。](./media/app-insights-annotations/60.png)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

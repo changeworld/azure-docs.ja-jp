@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/08/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と PagerDuty の統合
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **PagerDuty** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **PagerDuty** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-pagerduty-tutorial/IC778531.png "Configure single sign-on")
 
@@ -76,9 +76,9 @@
 
     ![Configure single sign-on](./media/active-directory-saas-pagerduty-tutorial/IC778532.png "Configure single sign-on")
 
-3.  **[アプリ URL の構成]** ページで、**[PagerDuty サインイン URL]** ボックスに、"https://\<tenant-name>.PagerDuty.com" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリ URL の構成]** ページで、**[PagerDuty サインイン URL]** ボックスに、"*https://\<tenant-name>.PagerDuty.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure app url](./media/active-directory-saas-pagerduty-tutorial/IC778533.png "Configure app url")
+    ![Configure app url](./media/active-directory-saas-pagerduty-tutorial/IC778533.png "アプリケーション url の構成")
 
 4.  **[PagerDuty でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -98,17 +98,17 @@
 
     ![Enable single sign-on](./media/active-directory-saas-pagerduty-tutorial/IC778537.png "Enable single sign-on")
 
-    1.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
+    1.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
 
-        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP] 詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
-    2.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 証明書]** テキスト ボックスに貼り付けます。
-    3.  Azure ポータルの **[PagerDuty でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** 値をコピーし、**[ログイン URL]** ボックスに貼り付けます。
-    4.  Azure ポータルの **[PagerDuty でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** 値をコピーし、**[ログアウト URL]** ボックスに貼り付けます。
+    2.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 Certificate]** テキスト ボックスに貼り付けます。
+    3.  Azure クラシック ポータルの **[PagerDuty でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーし、**[Login URL]** ボックスに貼り付けます。
+    4.  Azure クラシック ポータルの **[PagerDuty でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーし、**[Logout URL]** ボックスに貼り付けます。
     5.  **[シングル サインオンを有効にする]** を選びます。
     6.  **[変更を保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure single sign-on](./media/active-directory-saas-pagerduty-tutorial/IC778538.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
@@ -129,9 +129,9 @@ Azure AD ユーザーが PagerDuty にログインできるようにするには
 
     ![チームの招待](./media/active-directory-saas-pagerduty-tutorial/IC778540.png "チームの招待")
 
-    >[AZURE.NOTE]PagerDuty アカウントを作成すると、追加したすべてのユーザーが招待を受信します。
+    >[AZURE.NOTE] PagerDuty アカウントを作成すると、追加したすべてのユーザーが招待を受信します。
 
->[AZURE.NOTE]PagerDuty から提供されている他の PagerDuty ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] PagerDuty から提供されている他の PagerDuty ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -139,9 +139,9 @@ Azure AD ユーザーが PagerDuty にログインできるようにするには
 
 ###ユーザーを PagerDuty に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  **PagerDuty ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **PagerDuty** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-pagerduty-tutorial/IC778541.png "ユーザーの割り当て")
 
@@ -151,4 +151,4 @@ Azure AD ユーザーが PagerDuty にログインできるようにするには
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

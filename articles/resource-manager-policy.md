@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="04/18/2016"
+	ms.date="07/12/2016"
 	ms.author="gauravbh;tomfitz"/>
 
 # ポリシーを使用したリソース管理とアクセス制御
@@ -97,7 +97,7 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
 
 次のフィールドおよびソースがサポートされています。
 
-フィールド: **name**、**kind**、**type**、**location**、**tags**、**tags.***、**property alias**。
+フィールド: **name**、**kind**、**type**、**location**、**tags**、**tags.***、および**property alias**。
 
 ### プロパティのエイリアス 
 プロパティのエイリアスは、設定や SKU など、リソースの種類固有のプロパティにアクセスするためにポリシー定義で使用できる名前です。プロパティが存在するすべての API バージョンで機能します。エイリアスは、次の REST API を使用して取得できます (今後、Powershell のサポートが追加される予定です)。
@@ -155,7 +155,7 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
 
 - deny は監査ログでイベントを生成し、要求は失敗します
 - audit は監査ログでイベントを生成しますが、要求は失敗しません
-- append は定義済みのフィールド セットを要求に追加します 
+- append は定義済みのフィールド セットを要求に追加します
 
 **append** の場合、次のように詳細を指定する必要があります。
 
@@ -468,4 +468,4 @@ Get-AzureRmPolicyDefinition、Set-AzureRmPolicyDefinition、および Remove-Azu
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

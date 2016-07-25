@@ -92,7 +92,7 @@ Data Warehouse ユニット (DWU) のスケーリングの詳細については�
 信頼性の高いデータのバックアップは、あらゆる実稼働データベースで必要不可欠です。SQL Data Warehouse では、一定の間隔でアクティブなデータベースを自動的にバックアップして、データを安全に保ちます。データが破損したときや、データまたはデータベースを誤って削除したときは、これらのバックアップを使用して復旧することができます。データのバックアップ スケジュール、保持ポリシー、データベースの復元方法については、[スナップショットからの復元][]に関するページを参照してください。
 
 ## 次のステップ
-優れたデータベース設計方針を使用することにより、SQL Data Warehouse でのデータベース管理が容易になります。詳細については、[開発の概要][]に関する記事をご覧ください。
+優れたデータベース設計方針を使用することにより、SQL Data Warehouse でのデータベース管理が容易になります。詳細については、[開発の概要][]に関する記事を参照してください。
 
 <!--Image references-->
 
@@ -102,7 +102,7 @@ Data Warehouse ユニット (DWU) のスケーリングの詳細については�
 [connection]: sql-data-warehouse-develop-connections.md
 [Visual Studio で SQL Data Warehouse に接続する]: sql-data-warehouse-get-started-connect.md
 [SQLCMD を使用した接続とクエリ]: sql-data-warehouse-get-started-connect-sqlcmd.md
-[開発の概要]: sql-data-warehouse-overview-development.md
+[開発の概要]: sql-data-warehouse-overview-develop.md
 [DMV を利用してワークロードを監視する]: sql-data-warehouse-manage-monitor.md
 [コンピューティングの一時停止]: sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
 [スナップショットからの復元]: sql-data-warehouse-restore-database-overview.md
@@ -118,4 +118,4 @@ Data Warehouse ユニット (DWU) のスケーリングの詳細については�
 <!--Other web references-->
 [Azure ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

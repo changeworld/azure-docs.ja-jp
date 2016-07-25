@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/09/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Envoy の統合
@@ -37,7 +37,7 @@
 
 ###Envoy のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-envoy-tutorial/IC700993.png "Active Directory")
 
@@ -66,9 +66,9 @@
   
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Envoy に対する認証を行うことができるようにする方法を説明します。Envoy のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Envoy** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Envoy** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Enable single sign-on](./media/active-directory-saas-envoy-tutorial/IC776778.png "Enable single sign-on")
 
@@ -76,9 +76,9 @@
 
     ![Configure single sign-on](./media/active-directory-saas-envoy-tutorial/IC776779.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページの **[Envoy サインイン URL]** ボックスに、"https://\<テナント名>.Envoy.com" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Envoy サインイン URL]** ボックスに、"*https://\<テナント名>.Envoy.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure app URL](./media/active-directory-saas-envoy-tutorial/IC776780.png "Configure app URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-envoy-tutorial/IC776780.png "アプリケーション URL の構成")
 
 4.  **[Envoy でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルを **c:\\Envoy.cer** としてローカルに保存します。
 
@@ -102,16 +102,16 @@
 
     ![SAML 認証](./media/active-directory-saas-envoy-tutorial/IC776785.png "SAML 認証")
 
-    >[AZURE.NOTE] [HQ 場所 ID] の値は、アプリケーションによって自動的に生成されます。
+    >[AZURE.NOTE] [HQ 場所 ID] の値は、アプリケーションによって自動的に生成されます。
 
-    1.  エクスポートした証明書から **[拇印]** の値をコピーし、**[指紋]** ボックスに貼り付けます。  
+    1.  エクスポートした証明書から **[拇印]** の値をコピーし、**[指紋]** ボックスに貼り付けます。
 
-        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+        >[AZURE.TIP] 詳細については、「[How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI) (証明書のサムプリント値を取得する方法)」をご覧ください。
 
-    2.  Azure ポータルの **[Envoy でのシングル サインオンの構成]** ダイアログ ページで、**[SAML SSO URL]** の値をコピーし、**[ID プロバイダー HTTP SAML URL]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルの **[Envoy でのシングル サインオンの構成]** ダイアログ ページで、**[SAML SSO URL]** の値をコピーし、**[ID プロバイダー HTTP SAML URL]** ボックスに貼り付けます。
     3.  **[変更を保存]** をクリックします。
 
-10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure single sign-on](./media/active-directory-saas-envoy-tutorial/IC776786.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
@@ -123,7 +123,7 @@ Envoy へのユーザー プロビジョニングの構成にあたって必要�
 
 ###ユーザーを Envoy に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Envoy** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -133,6 +133,6 @@ Envoy へのユーザー プロビジョニングの構成にあたって必要�
 
     ![Yes](./media/active-directory-saas-envoy-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

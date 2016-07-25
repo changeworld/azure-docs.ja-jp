@@ -3,7 +3,7 @@
    description="Microsoft Power BI Embedded プレビューのトラブルシューティング"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="dvana"
+   authors="minewiskan"
    manager="NA"
    editor=""
    tags=""/>
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="04/25/2016"
-   ms.author="derrickv"/>
+   ms.date="06/29/2016"
+   ms.author="owend"/>
 
 # Microsoft Power BI Embedded プレビューのトラブルシューティング
 この記事では、**Power BI Embedded** のトラブルシューティングの方法に関する質問の回答を示します。
@@ -40,4 +40,4 @@ SQL Server 接続文字列の詳細については、次の記事をご覧くだ
 - [Get started with Microsoft Power BI Embedded sample (Microsoft Power BI Embedded のサンプルの使用)](power-bi-embedded-get-started-sample.md)
 - [What is Microsoft Power BI Embedded (Microsoft Power BI Embedded について)](power-bi-embedded-what-is-power-bi-embedded.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

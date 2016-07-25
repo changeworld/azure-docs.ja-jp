@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="07/12/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse へのデータの読み込み
@@ -100,14 +100,27 @@ Integration Services (SSIS) パッケージを使用して SQL Server に読み�
 3. ディスクを Microsoft に送付します。
 4. Microsoft がデータを SQL Data Warehouse に読み込みます
 
+## HDInsight からの読み込み
+SQL Data Warehouse は、PolyBase を介した HDInsight からのデータの読み込みをサポートしています。そのプロセスは、Azure Blob Storage からデータを読み込む操作と同じです。つまり、PolyBase を使用して HDInsight に接続し、データを読み込みます。
+
+### 1\.PolyBase と T-SQL を使用する
+
+読み込みプロセスの概要:
+
+2. データを UTF-8 として書式設定します (現在 PolyBase では UTF-16 はサポートされていません)。
+2. データを HDInsight に移行し、テキスト ファイル、ORC、または Parquet 形式で保存します。
+3. SQL Data Warehouse で外部オブジェクトを構成して、データの場所とデータ形式を定義します。
+4. 新しいデータベース テーブルへのデータ読み込みを並列処理する T-SQL コマンドを実行します。
+
+チュートリアルについては、「[Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase)][]」を参照してください。
 
 ## 推奨事項
 
-パートナーの多くが読み込みソリューションを提供しています。詳細については、[ソリューション パートナー][]の一覧をご覧ください。
+パートナーの多くが読み込みソリューションを提供しています。詳細については、[ソリューション パートナー][]の一覧を参照してください。
 
 非リレーショナル ソースのデータを SQL Data Warehouse に読み込む場合は、事前にそのデータを行と列に変換しておく必要があります。変換したデータはデータベースに格納しなくても、テキスト ファイルに保存できます。
 
-新しく読み込んだデータの統計を作成してください。Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリで最高のパフォーマンスを得るには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。詳細については、[統計][]に関するページをご覧ください。
+新しく読み込んだデータの統計を作成してください。Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリで最高のパフォーマンスを得るには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。詳細については、[統計][]に関するページを参照してください。
 
 
 ## 次のステップ
@@ -124,7 +137,7 @@ Integration Services (SSIS) パッケージを使用して SQL Server に読み�
 
 [サンプル データベースの読み込み]: ./sql-data-warehouse-load-sample-databases.md
 [移行の概要]: ./sql-data-warehouse-overview-migrate.md
-[ソリューション パートナー]: ./sql-data-warehouse-integrate-solution-partners.md
+[ソリューション パートナー]: ./sql-data-warehouse-partner-business-intelligence.md
 [開発の概要]: ./sql-data-warehouse-overview-develop.md
 [統計]: ./sql-data-warehouse-tables-statistics.md
 
@@ -133,4 +146,4 @@ Integration Services (SSIS) パッケージを使用して SQL Server に読み�
 <!--Other Web references-->
 [Import/Export]: https://azure.microsoft.com/documentation/articles/storage-import-export-service/
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

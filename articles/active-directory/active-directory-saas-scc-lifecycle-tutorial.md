@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と SCC LifeCycle の統合 | Microsoft Azure" 
     description="Azure Active Directory で SCC LifeCycle を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="07/07/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と SCC LifeCycle の統合
   
@@ -37,7 +37,7 @@
 
 ###SCC LifeCycle のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-scc-lifecycle-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **SCC LifeCycle** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure クラシック ポータルの **SCC LifeCycle** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-scc-lifecycle-tutorial/IC794122.png "Configure Single Sign-On")
 
@@ -76,9 +76,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-scc-lifecycle-tutorial/IC794123.png "Configure Single Sign-On")
 
-3.  **[アプリ URL の構成]** ページの **[サインオン URL]** テキストボックスに、"**https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx*" というパターンで、SCC LifeCycle アプリケーションにサインオンするために使用する URLを入力して、**[次へ]** をクリックします。
+3.  **[Configure App URL]** (アプリケーション URL の構成) ページの **[サインオン URL]** テキストボックスに、"*https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx*"* というパターンで、SCC LifeCycle アプリケーションにサインオンするために使用する URLを入力して、*[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-scc-lifecycle-tutorial/IC794124.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-scc-lifecycle-tutorial/IC794124.png "アプリケーション URL の構成")
 
 4.  **[SCC LifeCycle でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにローカルでメタデータ ファイルを保存します。
 
@@ -88,7 +88,7 @@
 
     >[AZURE.NOTE]SCC LifeCycle サポート チームがシングル サインオンを有効にする必要があります。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-scc-lifecycle-tutorial/IC794125.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -105,9 +105,9 @@ SCC LifeCycle へのユーザー プロビジョニングの構成にあたっ�
 
 ###ユーザーを SCC LifeCycle に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  SCC LifeCycle アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **SCC LifeCycle** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-scc-lifecycle-tutorial/IC794126.png "ユーザーの割り当て")
 
@@ -117,4 +117,4 @@ SCC LifeCycle へのユーザー プロビジョニングの構成にあたっ�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0713_2016-->

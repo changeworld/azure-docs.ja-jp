@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="06/29/2016"
+	ms.date="07/07/2016"
 	ms.author="sdanie" />
 
 # Azure Redis Cache の構成方法
@@ -63,6 +63,8 @@ Azure Redis Cache の **[設定]** ブレードには次の設定が用意され
 キャッシュに対して実行された操作を表示するには、**[監査ログ]** をクリックします。また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../resource-group-audit.md)」をご覧ください。Azure Redis Cache イベントの監視の詳細については、「[処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」をご覧ください。
 
 **[リソース正常性]** ではリソースが監視され、そのリソースが意図したとおりに動いているかどうかが示されます。Azure Resource Health サービスの詳細については、「[Azure Resource Health の概要](../resource-health/resource-health-overview.md)」をご覧ください。
+
+>[AZURE.NOTE] 現在、[リソース正常性] では、仮想ネットワークでホストされている Azure Redis Cache インスタンスの正常性については報告できません。詳細については、「[VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)」をご覧ください。
 
 **[新しいサポート要求]** をクリックして、キャッシュのサポート要求を開きます。
 
@@ -254,7 +256,7 @@ Import/Export は Azure Redis Cache のデータ管理操作です。Redis Cache
 
 ![更新のスケジュール](./media/cache-configure/redis-schedule-updates.png)
 
-メンテナンス時間を指定するには、目的の曜日をオンにして、曜日ごとにメンテナンス時間の開始時刻を指定し、**[OK]** をクリックします。メンテナンス時間の時刻は UTC 時間で指定します。
+メンテナンス時間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス時間の開始時刻を指定して、**[OK]** をクリックします。メンテナンス時間の時刻は UTC 時間で指定します。
 
 >[AZURE.IMPORTANT] 更新のスケジュールは、Premium レベルのキャッシュにのみ使用できます。詳細および手順については、[Azure Redis Cache の管理 - 更新のスケジュール](cache-administration.md#schedule-updates)に関するページをご覧ください。
 
@@ -306,7 +308,7 @@ Azure Redis Cache 診断の詳細については、「[Azure Redis Cache の監�
 |設定|既定値|説明|
 |---|---|---|
 |databases|16|データベースの既定の数は 16 ですが、価格レベルに基づいてさまざまな数を構成できます。<sup>1</sup> 既定のデータベースは DB 0 です。dbid が `0` ～ `databases - 1` の数値の `connection.GetDatabase(dbid)` を使用して、接続ごとに異なるデータベースを選択できます。|
-|maxclients|価格レベルによって異なります<sup>2</sup>|これは、同時に接続が許可されているクライアントの最大数です。制限に達すると、Redis はすべての新しい接続を終了し、エラー 'max number of clients reached' を送信します。|
+|maxclients|価格レベルによって異なります。<sup>2</sup>|これは、同時に接続が許可されているクライアントの最大数です。制限に達すると、Redis はすべての新しい接続を終了し、エラー 'max number of clients reached' を送信します。|
 |maxmemory-policy|volatile-lru|Maxmemory ポリシーは、maxmemory (キャッシュ作成時に選択したキャッシュのサイズ) に達したときに、Redis が削除する項目を選択する方法についての設定です。Azure Redis Cache の既定の設定は volatile-lru で、LRU アルゴリズムを使用して有効期限が設定されたキーを削除します。この設定は、Azure ポータルで構成できます。詳細については、「[maxmemory-policy と maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)」を参照してください。|
 |maxmemory-samples|3|LRU アルゴリズムと最小 TTL アルゴリズムは精緻なアルゴリズムではなく、(メモリを節約するための) 近似アルゴリズムです。そのため、サンプル サイズも選択して確認できます。既定の Redis インスタンスの場合、キーを 3 つ確認し、直近の使用頻度が比較的低い ものを 1 つ選択します。|
 |lua-time-limit|5,000|Lua スクリプトの最大実行時間 (ミリ秒)。最大実行時間に達した場合は、Redis は、最大許容時間の後もスクリプトが実行中であることをログに記録し、クエリに対してエラーを知らせる応答を開始します。|
@@ -328,10 +330,10 @@ Azure Redis Cache 診断の詳細については、「[Azure Redis Cache の監�
 	-	P2 (13 GB ～ 130 GB) - 最大 32 のデータベース
 	-	P3 (26 GB ～ 260 GB) - 最大 48 のデータベース
 	-	P4 (53 GB ～ 530 GB) - 最大 64 のデータベース
-	-   Redis クラスターが有効なすべての Premium キャッシュ - Redis クラスターは、データベース 0 の使用のみをサポートするため、Redis クラスターが有効な Premium キャッシュの `databases` 制限は、実質的に 1 で、[Select](http://redis.io/commands/select) コマンドは許可されません。詳細については、「[クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)」を参照してください
+	-   Redis クラスターが有効なすべての Premium キャッシュ - Redis クラスターは、データベース 0 の使用のみをサポートするため、Redis クラスターが有効な Premium キャッシュの `databases` の制限は、実質的に 1 で、[Select](http://redis.io/commands/select) コマンドは使用できません。詳細については、「[クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)」をご覧ください。
 
 
->[AZURE.NOTE] `databases` の設定は、キャッシュの作成中にのみ、PowerShell、CLI、またはその他の管理クライアントを使用してのみ構成できます。PowerShell を使用して、キャッシュの作成中に `databases` を構成する例については、[New-AzureRmRedisCache](cache-howto-manage-redis-cache-powershell.md#databases) に関するページをご覧ください。
+>[AZURE.NOTE] `databases` の設定は、キャッシュの作成中にのみ構成できます。また、PowerShell、CLI、その他の管理クライアントを使用する必要があります。PowerShell を使用して、キャッシュの作成中に `databases` を構成する例については、[New-AzureRmRedisCache](cache-howto-manage-redis-cache-powershell.md#databases) に関するページをご覧ください。
 
 
 <a name="maxclients"></a> <sup>2</sup>`maxclients` は、Azure Redis Cache の価格レベルによって異なります。
@@ -396,4 +398,4 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

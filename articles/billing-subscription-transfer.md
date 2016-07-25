@@ -1,19 +1,20 @@
 <properties
    pageTitle="Azure サブスクリプションの所有権の譲渡| Microsoft Azure"
    description="Azure サブスクリプションを別のユーザーに譲渡する方法と、そのプロセスに関してよく寄せられる質問 (FAQ)"
-   services="billing"
+   services=""
    documentationCenter=""
    authors="genlin"
    manager="stevenpo"
-   editor=""/>
+   editor="n/a"
+   tags="billing,top-support-issue"/>
 
 <tags
    ms.service="billing"
+   ms.workload="na"
+   ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="billing"
-   ms.date="07/04/2016"
+   ms.date="07/12/2016"
    ms.author="genli"/>
 
 # Azure サブスクリプションの所有権の譲渡
@@ -27,12 +28,9 @@
 
 従量課金、MSDN、Action Pack、または BizSpark のサブスクリプションについては、Microsoft Azure アカウント センターで今すぐ簡単に実行できます。サブスクリプションを別のユーザーに譲渡する機能が追加されました。つまり、どの国で使用していても、所有する任意の従量課金、MSDN、Action Pack、または BizSpark のサブスクリプションでアカウント管理者を変更できるようになりました。このようなサブスクリプションの種類についても、Azure Marketplace での購入の譲渡がサポートされるようになりました。
 
-**注** 所有権の譲渡を実行するには、アカウント管理者である必要があります。次のように、だれがサブスクリプションのアカウント管理者であるかを確認することができます。
+> [AZURE.NOTE]  サブスクリプションの別のプランへの変更については、「[別の Azure プランへの切り替え](billing-how-to-switch-azure-offer.md)」で詳細を参照してください。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューで、**[サブスクリプション]** を選択します。
-3. 確認するサブスクリプションを選択し、**[設定]** を選択します。![設定](./media/billing-subscription-transfer/settings.png)
-4. **[プロパティ]** を選択します。サブスクリプションのアカウント管理者は、**[アカウント管理者]** ボックスに表示されます。![checkaa](./media/billing-subscription-transfer/checkaa.png)
+> 所有権の譲渡を実行するには、アカウント管理者である必要があります。サブスクリプションのアカウント管理者を確認する方法の詳細については、[よく寄せられる質問](#faq)を参照してください。
 
 ## Azure サブスクリプションの所有権を譲渡する方法
 
@@ -62,7 +60,17 @@
 
 7. 成功です。 サブスクリプションが譲渡されました。
 
+<a id="faq"></a>
 ## よく寄せられる質問 (FAQ)
+
+-   **サブスクリプションのアカウント管理者を確認するにはどうすればよいですか。**
+
+    次のように、だれがサブスクリプションのアカウント管理者であるかを確認することができます。
+
+    1. [Azure ポータル](https://portal.azure.com)にサインインします。
+    2. ハブ メニューで、**[サブスクリプション]** を選択します。
+    3. 確認するサブスクリプションを選択し、**[設定]** を選択します。
+    4. **[プロパティ]** を選択します。サブスクリプションのアカウント管理者が、**[アカウント管理者]** ボックスに表示されます。
 
 -   **サブスクリプションの譲渡により、サービスのダウンタイムは発生しますか。**
 
@@ -79,7 +87,7 @@
 
     これですべてではありません。譲渡先では、リソースへのアクセスの制限を必要としている場合、サービスに関連付けられているすべてのシークレットの更新を検討する必要があります。ほとんどのリソースを次の手順で更新できます。
 
-    1.   Azure ポータル [*https://portal.azure.com*](https://portal.azure.com) に移動します。
+    1.   Azure ポータル ([*https://portal.azure.com*](https://portal.azure.com)) に移動します。
 
     2.    [すべてを参照]、[すべてのリソース] の順にクリックします。
 
@@ -123,4 +131,4 @@
 4. このサブスクリプション用の課金アラートを、[Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で更新します。[詳細情報](http://go.microsoft.com/fwlink/?LinkID=533292)
 5. 	パートナーがいる場合は、このサブスクリプションのパートナー ID を更新することを検討します。この操作は [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で実行できます。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="04/04/2016" 
+    ms.date="07/08/2016" 
     ms.author="hawong"/>
 
 # DocumentDB の一般的なユース ケース
@@ -33,7 +33,7 @@ Azure DocumentDB は、さまざまなアプリケーションやユース ケ�
 
 - 高可用性とスケーラビリティのため、ネイティブでデータをパーティション分割します。
 - ミリ秒レベルで応答する高速な SSD ベースのストレージを備えています。
-- Eventual、Session、Bounded-Staleness などの一貫性レベルのサポートにより、優れた費用性能比を実現します。 
+- Eventual、Session、Bounded-Staleness などの一貫性レベルのサポートにより、優れた費用性能比を実現します。
 - ストレージとスループットを個別に測定する柔軟な価格モデルが用意されています。
 - 予約済みスループット モデルでは、基になるハードウェアの CPU、メモリ、IOP の代わりに、読み取り/書き込みの数を考慮すればよいようになっています。
 - 1 日あたりおよそ数十億にも上る大量の要求にまでスケールアップできるよう設計されています。
@@ -99,9 +99,9 @@ DocumentDB の利用を開始するには、[アカウント](https://azure.micr
 - [Halo](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/)。Azure DocumentDB を使用して「Halo 5」にソーシャル ゲームプレイを実装した方法をご紹介します。
 - [Cortana Analytics ギャラリー](https://azure.microsoft.com/blog/cortana-analytics-gallery-a-scalable-community-site-built-on-azure-documentdb/)。Cortana Analytics ギャラリーは、Azure DocumentDB 上に構築されたスケーラブルなコミュニティ サイトです。
 - [Breeze](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18602)。業界屈指のインテグレーターが柔軟なクラウド テクノロジを使用した多国籍企業のグローバル インサイトを数分で説明します。
-- [News Republic](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18639)。ニュースにインテリジェントを追加し、意識の高い市民に向けて情報を提供しています。 
+- [News Republic](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18639)。ニュースにインテリジェントを追加し、意識の高い市民に向けて情報を提供しています。
 - [SGS International](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18653)。世界全体で一貫した色を提示するために、大手ブランドが SGS を頼っています。その SGS は Azure を活用しています。
-- [Telenor](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18608)。世界的リーダーの Telenor では、クラウドを使用して、スタートアップ時のスピードを保って前進しています。 
+- [Telenor](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18608)。世界的リーダーの Telenor では、クラウドを使用して、スタートアップ時のスピードを保って前進しています。
 - [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667)。未来の店舗は、スピーディな検索と容易なデータ フローを基盤として運営されます。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

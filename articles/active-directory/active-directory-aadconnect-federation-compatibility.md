@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="billmath"
-	manager="stevenpo"
+	manager="femila"
 	editor="curtand"/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="07/06/2016"
 	ms.author="billmath"/>
 
 # Azure AD のフェデレーション互換性リスト
@@ -21,33 +21,36 @@ Azure Active Directory は、Microsoft 以外のソリューションを必要�
 
 Microsoft 以外のフェデレーション ソリューションに投資している組織のために、このトピックでは、次の "Azure Active Directory フェデレーション互換性リスト" に記載されている Microsoft 以外の ID プロバイダーを使用して、Microsoft オンライン サービスを使用する Windows Server Active Directory ユーザーのシングル サインオンを構成する場合のガイダンスを示しています。
 
-Microsoft では、次のように、Microsoft 以外の ID プロバイダーを使用して、Azure Active Directory でよく見られる一連のユース ケースに対してシングル サインオン エクスペリエンスをテストしました。
 
->[AZURE.IMPORTANT] Microsoft でテストしたのは、これらのシングル サインオン シナリオのフェデレーション機能のみです。これらのシングル サインオン シナリオでは、同期、2 要素認証などのコンポーネントのテストは実施していません。
+![](./media/active-directory-aadconnect-federation-compatibility/oxford2.jpg)サードパーティの [Oxford Computer Group](http://oxfordcomputergroup.com/) は Microsoft に代わり、Microsoft 以外の ID プロバイダーを使用して、Azure Active Directory でよく見られる一連のユース ケースに対して以下のシングル サインオン エクスペリエンスをテストしました。
+
+以下のリストにあるサードパーティ ID プロバイダーの入手方法については、[idp@oxfordcomputergroup.com](mailto:idp@oxfordcomputergroup.com) から Oxford Computer Group に問い合わせてください。
+
+>[AZURE.IMPORTANT] Oxford Computer Group がテストしたのは、これらのシングル サインオン シナリオのフェデレーション機能のみです。Oxford Computer Group は、これらのシングル サインオン シナリオで、同期、2 要素認証などのコンポーネントのテストは実施していません。
 
 >このプログラムでは、UPN への代替 ID によるサインインの使用もテストしません。
 
 
 
 - [Azure Active Directory](#azure-active-directory)
-- [Optimal IDM Virtual Identity Server Federation Services](#optimal-idm-virtual-identity-server-federation-services) 
-- [PingFederate 6.11](#pingfederate-611) 
-- [PingFederate 7.2](#pingfederate-72) 
-- [Centrify](#centrify) 
-- [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622) 
-- [SecureAuth IdP 7.2.0](#secureauth-idp-720) 
-- [CA SiteMinder 12.52](#ca-siteminder-1252) 
-- [RadiantOne CFS 3.0](#radiantone-cfs-30) 
-- [Okta](#okta) 
-- [OneLogin](#onelogin) 
-- [NetIQ Access Manager 4.0.1](#netiq-access-manager-401) 
-- [BIG-IP と BIG-IP Access Policy Manager Version 11.3x ～ 11.6x](#big-ip-with-access-policy-manager-big-ip-ver-113x-116x) 
-- [VMware Workspace Portal Version 2.1](#vmware-workspace-portal-version-21) 
-- [Sign&go 5.3](#signampgo-53) 
-- [IceWall Federation Version 3.0](#icewall-federation-version-30) 
-- [CA Secure Cloud](#ca-secure-cloud) 
-- [Dell One Identity Cloud Access Manager v7.1](#dell-one-identity-cloud-access-manager-v71) 
-- [AuthAnvil Single Sign On 4.5](#authavil-single-sign-on-45) 
+- [Optimal IDM Virtual Identity Server Federation Services](#optimal-idm-virtual-identity-server-federation-services)
+- [PingFederate 6.11](#pingfederate-611)
+- [PingFederate 7.2](#pingfederate-72)
+- [Centrify](#centrify)
+- [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622)
+- [SecureAuth IdP 7.2.0](#secureauth-idp-720)
+- [CA SiteMinder 12.52](#ca-siteminder-1252)
+- [RadiantOne CFS 3.0](#radiantone-cfs-30)
+- [Okta](#okta)
+- [OneLogin](#onelogin)
+- [NetIQ Access Manager 4.0.1](#netiq-access-manager-401)
+- [BIG-IP と BIG-IP Access Policy Manager Version11.3x ～ 11.6x](#big-ip-with-access-policy-manager-big-ip-ver-113x-116x)
+- [VMware Workspace Portal Version 2.1](#vmware-workspace-portal-version-21)
+- [Sign&go 5.3](#signampgo-53)
+- [IceWall Federation Version 3.0](#icewall-federation-version-30)
+- [CA Secure Cloud](#ca-secure-cloud)
+- [Dell One Identity Cloud Access Manager v7.1](#dell-one-identity-cloud-access-manager-v71)
+- [AuthAnvil Single Sign On 4.5](#authavil-single-sign-on-45)
 
 >[AZURE.IMPORTANT] これらはサード パーティ製品であるため、Microsoft では、これらの ID プロバイダーに関するデプロイ、構成、トラブルシューティング、ベスト プラクティスなどの問題や質問をサポートしていません。これらの ID プロバイダーに関するサポートと質問については、サポートしているサード パーティに直接お問い合わせください。
 
@@ -81,7 +84,7 @@ Optimal IDM Virtual Identity Server Federation Services では、お客様のオ
 | --------- | --------- |--------- |
 | Exchange Web Access や SharePoint Online などの Web ベースのクライアント | サポートされています |なし|
 | Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション | サポートされています |統合 Windows 認証|
-| Outlook や ActiveSync などの電子メール リッチ クライアント | サポートされています |クライアント アクセス ポリシーの詳細については、「[Limiting Access to Office 365 Services Based on the Location of the Client (クライアントの場所に基づいた Office 365 サービスへのアクセスの制限)](https://technet.microsoft.com/library/hh526961.aspx)」を参照してください|
+| Outlook や ActiveSync などの電子メール リッチ クライアント | サポートされています |クライアント アクセス ポリシーの詳細については、「[Limiting Access to Office 365 Services Based on the Location of the Client (クライアントの場所に基づいた Office 365 サービスへのアクセスの制限)](https://technet.microsoft.com/library/hh526961.aspx)」を参照してください。|
 
 
 
@@ -215,11 +218,11 @@ NetIQ Access Manager 4.0.1 は、広く使用されている WS-Federation/WS-Tr
 
 | クライアント |サポート |例外|
 | --------- | --------- |--------- |
-| Exchange Web Access や SharePoint Online などの Web ベースのクライアント | サポートされています |**Kerberos Contract がサポートされています|
-|Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション|サポートされています|統合 Windows 認証はサポートされていません|
-|Outlook や ActiveSync などの電子メール リッチ クライアント|サポートされています|なし|
+| Exchange Web Access や SharePoint Online などの Web ベースのクライアント | サポートされています |*Kerberos Contract がサポートされています|
+| Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション | サポートされています |統合 Windows 認証はサポートされていません|
+| Outlook や ActiveSync などの電子メール リッチ クライアント | サポートされています |なし|
 
-**NetIQ は、Kerberos Contract の構成を介した Kerberos 認証をサポートしています。この構成に関するサポートについては、NetIQ 社に問い合わせるか、セットアップ ガイドを参照してください。NetIQ Access Manager の詳細については、[NetIQ Access Manager](https://www.netiq.com/documentation/netiqaccessmanager4/identityserverhelp/data/b12iqp0m.html) に関するページを参照してください。
+*NetIQ は、Kerberos Contract の構成を介した Kerberos 認証をサポートしています。この構成に関するサポートについては、NetIQ 社に問い合わせるか、セットアップ ガイドを参照してください。NetIQ Access Manager の詳細については、[NetIQ Access Manager](https://www.netiq.com/documentation/netiqaccessmanager4/identityserverhelp/data/b12iqp0m.html) に関するページを参照してください。
 
 ## BIG-IP と BIG-IP Access Policy Manager Version 11.3x ～ 11.6x 
 BIG-IP with Access Policy Manager、(APM) BIG-IP Version 11.3x ～ 11.6x は、広く使用されている SAML ID 標準を実装して、シングル サインオン エクスペリエンスと属性交換フレームワークを提供しています。
@@ -320,4 +323,4 @@ AuthAnvil Single Sign On 4.5 は、広く使用されている WS-Federation/WS-
 
 詳細については、[AuthAnvil のシングル サインオン](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

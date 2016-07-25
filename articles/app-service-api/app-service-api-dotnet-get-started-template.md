@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="04/13/2016"
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Visual Studio で Azure App Service と ASP.NET Web API 2 を開始する
 
@@ -263,4 +263,4 @@ ASP.NET API アプリが Azure App Service で動作するようになったら�
 
 このチュートリアルでは、単純な Web API を作成し、それを Azure App Service の API アプリにデプロイする方法について説明しました。Web API の開発と利用を簡単にする App Service 機能の説明は、「[API Apps と ASP.NET を使用する](app-service-api-dotnet-get-started.md)」から始まるチュートリアル シリーズで確認できます。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

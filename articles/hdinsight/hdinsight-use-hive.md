@@ -34,6 +34,8 @@ Hive は、フィールドが特定の文字で区切られるテキスト フ�
 
 Hive は**ユーザー定義関数 (UDF)** で拡張することもできます。UDF では、HiveQL で簡単にモデル化されない機能やロジックを実装することができます。Hive での UDF の使用例については、以下を参照してください。
 
+* [Java ユーザー定義関数と Hive の使用](hdinsight-hadoop-hive-java-udf.md)
+
 * [HDInsight における Python と Hive および Pig の使用](hdinsight-python.md)
 
 * [HDInsight における C# と Hive および Pig の使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
@@ -46,7 +48,7 @@ Hive は**ユーザー定義関数 (UDF)** で拡張することもできます�
 Hive の内部テーブルと外部テーブルについて知っておく必要のある事項がいくつかあります。
 
 - **CREATE TABLE** コマンドは内部テーブルを作成します。データ ファイルは既定のコンテナーに配置する必要があります。
-- **CREATE TABLE** コマンドはデータ ファイルを /hive/warehouse/<TableName> フォルダーに移動します。
+- **CREATE TABLE** コマンドはデータ ファイルを /hive/warehouse/<テーブル名> フォルダーに移動します。
 - **CREATE EXTERNAL TABLE** コマンドは外部テーブルを作成します。データ ファイルは既定のコンテナーの外部に配置することもできます。
 - **CREATE EXTERNAL TABLE** コマンドはデータ ファイルを移動しません。
 - **CREATE EXTERNAL TABLE** コマンドでは、LOCATION 内のフォルダーは許容されません。チュートリアルで sample.log ファイルのコピーを作成しているのは、これが理由です。
@@ -85,7 +87,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 
 前の例では、HiveQL ステートメントは次のアクションを実行します。
 
-* __set hive.execution.engine=tez;__: Tez を使用するように実行エンジンを設定します。MapReduce ではなく Tez を使用すると、クエリ パフォーマンスを向上させることができます。Tez の詳細については、「[パフォーマンスを改善するための Apache Tez の使用方法](#usetez)」をご覧ください。
+* __set hive.execution.engine=tez;__: Tez を使用するように実行エンジンを設定します。MapReduce ではなく Tez を使用すると、クエリ パフォーマンスを向上させることができます。Tez の詳細については、「[パフォーマンスを改善するための Apache Tez の使用方法](#usetez)」セクションをご覧ください。
 
     > [AZURE.NOTE] このステートメントは、Windows ベースの HDInsight クラスターの使用時にのみ必要となります。Tez は、Linux ベースの HDInsight の既定の実行エンジンです。
 
@@ -212,4 +214,4 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

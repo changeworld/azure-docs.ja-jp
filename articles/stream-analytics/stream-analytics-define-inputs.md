@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="06/15/2016"
+	ms.date="07/13/2016"
 	ms.author="jeffstok"/>
 
 # データ接続: Stream Analytics に対するイベントのデータ ストリーム入力の概要
@@ -118,6 +118,8 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 
 Stream Analytics の BLOB ストレージ イベントの既定のタイムスタンプは BLOB が最後に更新されたタイムスタンプであることに注意してください。このタイムスタンプが *BlobLastModifiedUtcTime* です。イベント ペイロードのタイムスタンプを利用してデータを処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
 
+CSV 形式の入力についても、データ セットのフィールドを定義するためのヘッダー行が**必須**であることに注意してください。また、ヘッダー行のフィールドはすべて**一意**であることが必要です。
+
 > [AZURE.NOTE] Stream Analytics では、既存の BLOB にコンテンツを追加できません。Stream Analytics は BLOB を 1 回だけ表示します。その読み込み後の変更は処理されません。ベスト プラクティスとしては、すべてのデータを一度にアップロードし、BLOB ストアにイベントを追加しないことです。
 
 次の表に、[BLOB ストレージ入力] タブの各プロパティとその説明を示しています。
@@ -211,4 +213,4 @@ FROM Input
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

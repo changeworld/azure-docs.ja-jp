@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/31/2016" 
+	ms.date="06/06/2016" 
 	ms.author="awills"/>
  
 # Application Insights とは何か?
@@ -27,7 +27,7 @@ Application Insights は、実行中のアプリケーションを監視する�
 
 Application Insights は、開発チームを支援することを目的としています。Application Insights では、次のことを行えます。
 
-* [使用パターンの分析][knowUsers]。ユーザーを深く理解し、アプリを継続的に向上させます。 
+* [使用パターンの分析][knowUsers]。ユーザーを深く理解し、アプリを継続的に向上させます。
  * ページ ビューのカウント、新規ユーザーと再訪問ユーザー、位置情報、プラットフォーム、その他の主要な使用状況分析
  * 使用状況のパスをトレースして、各機能の使用方法を評価します。
 * ほとんどのユーザーが気付く前にパフォーマンスの問題を[検出し、優先順位を付け、診断し][detect]、解決します。
@@ -51,7 +51,7 @@ Application Insights は、開発チームを支援することを目的とし�
 
 SDK は増え続けるプラットフォームに対応します。最新の一覧を次に示します。
 
- * [ASP.NET サーバー][greenbrown] \(Azure または IIS サーバー上)
+ * [ASP.NET サーバー][greenbrown] (Azure または IIS サーバー上)
  * [Azure Cloud Services](app-insights-cloudservices.md)
  * [J2EE サーバー][java]
  * [Web ページ][client]\: HTML+JavaScript
@@ -118,8 +118,6 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
  * [トラブルシューティング][qna]
  * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
-* バグ:
- * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
 * ご提案:
  * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
 * ブログ:
@@ -158,4 +156,4 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

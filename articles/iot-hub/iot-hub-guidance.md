@@ -94,10 +94,20 @@ IoT Hub でカスタム ID レジストリ/認証スキームを実装する場�
 
 ## 次のステップ
 
-Azure IoT Hub についてさらに学習するには、次のリンクを使用してください。
+IoT Hub のデプロイの計画に関する詳細については、以下をご覧ください。
 
-- [IoT Hub の使用 (チュートリアル)][lnk-get-started]
-- [What is Azure IoT Hub? (Azure IoT Hub とは)][lnk-what-is-hub]
+- [MQTT サポート][lnk-mqtt]
+- [サポートされているデバイス][lnk-devices]
+- [その他のプロトコルのサポート][lnk-protocols]
+- [Event Hubs との比較][lnk-compare]
+- [HA と DR のスケーリング][lnk-scaling]
+
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [開発者ガイド][lnk-devguide]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal-manage]
 
 [img-tokenservice]: ./media/iot-hub-guidance/tokenservice.png
 
@@ -121,4 +131,14 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 [IoT Hub のクォータとスロットル]: iot-hub-devguide.md#throttling
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!---HONumber=AcomDC_0504_2016-->
+[lnk-mqtt]: iot-hub-mqtt-support.md
+[lnk-devices]: iot-hub-tested-configurations.md
+[lnk-protocols]: iot-hub-protocol-gateway.md
+[lnk-compare]: iot-hub-compare-event-hubs.md
+[lnk-scaling]: iot-hub-scaling.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal-manage]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

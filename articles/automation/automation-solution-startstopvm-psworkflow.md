@@ -12,17 +12,17 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="06/14/2016"
+	ms.date="07/06/2016"
 	ms.author="bwren" />
 
 # Azure Automation シナリオ - 仮想マシンの起動と停止
 
 この Azure Automation シナリオには、クラシック仮想マシンを起動および停止するための Runbook が含まれています。このシナリオは、次のいずれかの場合に使用できます。
 
-- 独自の環境で Runbook を変更せずに使用する場合。 
-- カスタマイズされた機能を実行するために Runbook を変更する場合。  
-- ソリューション全体の一部として別の Runbook から Runbook を呼び出す場合。 
-- Runbook の作成概念を学習するためのチュートリアルとして Runbook を使用する場合。 
+- 独自の環境で Runbook を変更せずに使用する場合。
+- カスタマイズされた機能を実行するために Runbook を変更する場合。
+- ソリューション全体の一部として別の Runbook から Runbook を呼び出す場合。
+- Runbook の作成概念を学習するためのチュートリアルとして Runbook を使用する場合。
 
 > [AZURE.SELECTOR]
 - [グラフィカル](automation-solution-startstopvm-graphical.md)
@@ -190,7 +190,7 @@ Runbook で使用する仮想マシンを取得する場合は、**Get-AzureVM**
 
 ## 次のステップ
 
-- [Azure Automation での子 Runbook](automation-child-runbooks.md) 
-- [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
+- 子 Runbook の操作に関する詳細については、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」を参照してください。
+- トラブルシューティングに役立つ Runbook 実行時やログ記録中の出力メッセージに関する詳細については、「[Azure Automation での Runbook の出力およびメッセージ](automation-runbook-output-and-messages.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

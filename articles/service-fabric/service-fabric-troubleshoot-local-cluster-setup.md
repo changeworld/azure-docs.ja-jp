@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/06/2016"
+   ms.date="07/08/2016"
    ms.author="seanmck"/>
 
 # ローカル開発クラスターのセットアップをトラブルシューティングする
@@ -92,10 +92,11 @@ Visual Studio を使用してデバッグしている際に、FabricConnectionDe
 
 お使いのソリューションでサービス プロジェクトがスタートアップ プロジェクトに設定されていないことを確認します。スタートアップ プロジェクトに設定できるプロジェクトは、Service Fabric アプリケーションのプロジェクトのみです。
 
+>[AZURE.TIP] セットアップに従った結果、ローカル クラスターが正常に動作しなくなった場合は、ローカル クラスター マネージャーのシステム トレイ アプリケーションを使用してクラスターをリセットできます。これにより、既存のクラスターは削除され、新しいクラスターがセットアップされます。デプロイ済みのアプリケーションと関連付けられたデータがすべて削除されることに注意してください。
 
 ## 次のステップ
 
 - [システム正常性レポートでクラスターを理解してトラブルシューティングする](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

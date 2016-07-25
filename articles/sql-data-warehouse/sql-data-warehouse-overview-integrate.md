@@ -38,7 +38,7 @@ Power BI との統合によって、SQL Data Warehouse のコンピューティ�
 Azure Data Factory は、抽出 - 読み込みの複雑なパイプラインを作成するための管理されたプラットフォームを提供します。SQL Data Warehouse と Azure Data Factory の統合には、次が含まれます。
 
 + **ストアド プロシージャ**: SQL Data Warehouse でのストアド プロシージャの実行を調整します。
-+ **コピー**: ADF を使用して、SQL Data Warehouse にデータを移動します。この操作では、内部で ADF の標準的なデータ移行メカニズムまたは PolyBase を使用できます。 
++ **コピー**: ADF を使用して、SQL Data Warehouse にデータを移動します。この操作では、内部で ADF の標準的なデータ移行メカニズムまたは PolyBase を使用できます。
 
 詳細については、「[SQL Data Warehouse での Azure Data Factory の使用](./sql-data-warehouse-integrate-azure-data-factory.md)」または「[Data Factory のドキュメント](https://azure.microsoft.com/documentation/services/data-factory/)」をご覧ください。
 
@@ -66,10 +66,10 @@ Azure Stream Analytics は、Azure Event Hub で生成されたイベント デ�
 [Azure Machine Learning]: sql-data-warehouse-integrate-azure-machine-learning.md
 [Azure Stream Analytics]: sql-data-warehouse-integrate-azure-stream-analytics.md
 [Power BI]: sql-data-warehouse-integrate-power-bi.md
-[Partners]: sql-data-warehouse-integrate-solution-partners.md
+[Partners]: sql-data-warehouse-partner-business-intelligence.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

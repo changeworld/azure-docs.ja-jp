@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Clever の統合
@@ -37,7 +37,7 @@
 
 ###Clever のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-clever-tutorial/IC700993.png "Active Directory")
 
@@ -68,9 +68,9 @@
 
 ![属性](./media/active-directory-saas-clever-tutorial/IC798980.png "属性")
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Clever** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Clever** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-clever-tutorial/IC784682.png "Configure Single Sign-On")
 
@@ -78,9 +78,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-clever-tutorial/IC798981.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Clever のサインオン URL]** ボックスに、ユーザーが Clever アプリケーションにサインオンするときに使用する URL (例: **https://clever.com/in/azsandbox*)) を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Clever のサインオン URL]** ボックスに、ユーザーが Clever アプリケーションにサインオンするときに使用する URL (例: *https://clever.com/in/azsandbox*) を入力し、**[次へ]* をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-clever-tutorial/IC798982.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-clever-tutorial/IC798982.png "アプリケーション URL の構成")
 
 4.  **[Clever でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターでメタデータ ファイルをローカルに保存します。
 
@@ -96,14 +96,14 @@
 
     ![インスタント ログイン](./media/active-directory-saas-clever-tutorial/IC798985.png "インスタント ログイン")
 
-    1.  **ログイン URL** を入力します。  
+    1.  **ログイン URL** を入力します。
 
-        >[AZURE.NOTE]**ログイン URL** はカスタム値です。実際の値は、SClever サポート チームから取得できます。
+        >[AZURE.NOTE] **ログイン URL** はカスタム値です。実際の値は、SClever サポート チームから取得できます。
 
     2.  **[ID システム]** として、**[ADFS]** を選択します。
     3.  **[保存]** をクリックします。
 
-8.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+8.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-clever-tutorial/IC798986.png "Configure Single Sign-On")
 
@@ -130,7 +130,7 @@
 
 Azure AD ユーザーが Clever にログインできるようにするには、そのユーザーを Clever にプロビジョニングする必要があります。Clever の場合、プロビジョニングは Clever サポート チームが実行する必要のある手動のタスクです。
 
->[AZURE.NOTE]Clever から提供されている他の Clever ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Clever から提供されている他の Clever ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -138,7 +138,7 @@ Azure AD ユーザーが Clever にログインできるようにするには、
 
 ###ユーザーを Clever に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Clever** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -148,6 +148,6 @@ Azure AD ユーザーが Clever にログインできるようにするには、
 
     ![Yes](./media/active-directory-saas-clever-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

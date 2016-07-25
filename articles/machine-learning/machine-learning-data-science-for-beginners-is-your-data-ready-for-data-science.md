@@ -1,5 +1,5 @@
 <properties
-   pageTitle="データ サイエンス用のデータの準備はお済みですか? (データの評価) - 初心者向けデータ サイエンス | Microsoft Azure"
+   pageTitle="データ サイエンス用のデータの準備はお済みですか? データの評価 | Microsoft Azure"
    description="データ サイエンス用にデータを準備するための 4 つの条件について説明します。初心者向けデータ サイエンス ビデオ 2 では、基本的なデータの評価を支援する具体的な例を説明しています。"
    keywords="データの評価,関連性のあるデータ,データの評価,データの準備,データの条件,データの準備"
    services="machine-learning"
@@ -22,9 +22,9 @@
 
 データを評価してデータ サイエンスの基本的な条件を満たしていることを確認する方法について説明します。
 
-このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
+このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
 
-<div class="wa-video-container" data-control="video-container" data-slug="data-science-for-beginners-series-is-your-data-ready-for-data-science"> <a href="/en-us/documentation/videos/data-science-for-beginners-series-is-your-data-ready-for-data-science/" data-control="video" data-expanding="false" class="wa-video-thumbnail" title="Data science for beginners: Is your data ready for data science?" data-ch9="//channel9.msdn.com/Shows/SupervisionNotRequired/9/player/" data-caption="" data-event="videopage-clicked-videothumbnail" data-event-property="data-science-for-beginners-series-is-your-data-ready-for-data-science"> <img src="https://sec.ch9.ms/ch9/8c9a/aab9492b-4167-41f0-9b9f-4eab661e8c9a/DataScienceForBeginnersIsYourDataReadyForDataScie_960.jpg" alt="Data science for beginners: Is your data ready for data science?" class="thumbnail"> <img class="play-icon" src="/cdn/cvt-a29a0e789afe7f47464f393c011b53f210c511ee5fed2c4c9c0633442f30d6ec/images/icon/VideoPlay.svg"> <span class="metadata"> <span class="date"> <span>06-27-2016</span> <span>04 min, 56 sec</span> </span> </span> </a> </div>
+> [AZURE.VIDEO data-science-for-beginners-series-is-your-data-ready-for-data-science]
 
 ## トランスクリプト: データ サイエンス用のデータの準備はお済みですか?
 
@@ -39,7 +39,7 @@
 必要なデータの条件は次のとおりです。
 
   *	関連性がある
-  *	接続中
+  *	連続している
   *	正確である
   *	操作できるだけの十分な量がある
 
@@ -116,4 +116,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016---->
+<!---HONumber=AcomDC_0713_2016-->

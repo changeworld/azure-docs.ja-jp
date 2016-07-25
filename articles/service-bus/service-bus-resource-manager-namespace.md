@@ -18,7 +18,7 @@
 
 # Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成
 
-この記事では、Azure Resource Manager テンプレートを使用し、Standard/Basic の SKU で "Messaging" タイプの Service Bus 名前空間を作成する方法について説明します。また、デプロイの実行用に指定するパラメーターについても取り上げます。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+この記事では、Azure Resource Manager テンプレートを使用し、Standard/Basic の SKU で **Messaging** タイプの Service Bus 名前空間を作成する方法について説明します。また、デプロイの実行用に指定するパラメーターについても取り上げます。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][]」を参照してください。
 
@@ -31,7 +31,7 @@
 >-    [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
 >-    [キューと承認規則を含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-auth-rule.md)
 >
->最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][]」で「Service Bus」を検索してください。
+>最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][]」ギャラリーで "Service Bus" を検索してください。
 
 ## デプロイの対象
 
@@ -45,7 +45,7 @@
 
 Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。常に同じ値に対してはパラメーターを定義しないでください。テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
-テンプレートに含まれるそれぞれのパラメーターについて説明します。
+このテンプレートでは、次のパラメーターを定義します。
 
 ### serviceBusNamespaceName
 
@@ -82,7 +82,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 
 Standard 階層には 1 か月あたり 10 ドルの基本料金があり、1 か月間に 1,250 万操作を追加コストなしで実行できます。Basic 階層では、100 万回の処理につき $0.05 の費用がかかります。
 
-Service Bus の料金の詳細については、「[Service Bus の料金と課金][]」を参照してください。
+Service Bus の価格の詳細については、「[Service Bus の料金と課金][]」を参照してください。
 
 ### serviceBusApiVersion
 
@@ -149,9 +149,9 @@ Azure Resource Manager を使ってリソースを作成、デプロイしたら
 
   [Azure Resource Manager のテンプレートの作成]: ../resource-group-authoring-templates.md
   [Service Bus 名前空間テンプレート]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/
-  [Azure クイックスタート テンプレート]: https://azure.microsoft.com/documentation/templates/
+  [Azure クイックスタート テンプレート]: https://azure.microsoft.com/documentation/templates/?term=service+bus
   [Service Bus の料金と課金]: https://azure.microsoft.com/documentation/articles/service-bus-pricing-billing/
   [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

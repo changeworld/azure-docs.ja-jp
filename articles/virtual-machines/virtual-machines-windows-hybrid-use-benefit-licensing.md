@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="05/03/2016"
+   ms.date="07/13/2016"
    ms.author="georgem"/>
 
 # Windows Server 向け Azure Hybrid Use Benefit
@@ -39,12 +39,14 @@ Windows Server VM を Azure にデプロイするには、先に Windows Server 
 Add-AzureRmVhd -ResourceGroupName MyResourceGroup -Destination "https://mystorageaccount.blob.core.windows.net/vhds/myvhd.vhd" -LocalFilePath 'C:\Path\To\myvhd.vhd'
 ```
 
+> [AZURE.NOTE] Microsoft SQL Server、SharePoint Server、Dynamics も、ソフトウェア アシュアランス ライセンスを利用できます。ただし、Windows Server イメージはあくまでご自身で用意する必要があります。アプリケーション コンポーネントをインストールし、適宜ライセンス キーを指定したうえで、ディスク イメージを Azure にアップロードします。「[SysPrep を使用した SQL Server のインストールに関する注意点](https://msdn.microsoft.com/library/ee210754.aspx)」や「[Build a SharePoint Server 2016 Reference Image (Sysprep) (SharePoint Server 2016 リファレンス イメージを構築する (Sysprep))](http://social.technet.microsoft.com/wiki/contents/articles/33789.build-a-sharepoint-server-2016-reference-image-sysprep.aspx)」など、アプリケーションを含めて Sysprep を実行するための適切なドキュメントを参照してください。
+
 [VHD を Azure にアップロードするプロセス](./virtual-machines-windows-upload-image.md#upload-the-vm-image-to-your-storage-account)の詳細を確認できます。
 
 > [AZURE.TIP] この記事では Windows Server VM のデプロイを中心に説明していますが、Windows Client VM も同じ方法でデプロイできます。以下の例で、`Server` を `Client` に適切に置き換えます。
 
 ## PowerShell クイック スタートを使用して VM をデプロイする
-Windows Server VM を PowerShell を使用してデプロイするときに、追加パラメーター `-LicenseType` を指定できます。VHD を Azure にアップロードした後、新しいVM を `New-AzureRmVM` を使用して作成し、ライセンスの種類を次のように指定します。
+Windows Server VM を PowerShell を使用してデプロイするときに、追加パラメーター `-LicenseType` を指定できます。VHD を Azure にアップロードした後、新しい VM を `New-AzureRmVM` を使用して作成し、ライセンスの種類を次のように指定します。
 
 ```
 New-AzureRmVM -ResourceGroupName MyResourceGroup -Location "West US" -VM $vm
@@ -164,4 +166,4 @@ New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm 
 
 [Resource Manager テンプレートの使用方法](../resource-group-overview.md)の詳細を参照します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

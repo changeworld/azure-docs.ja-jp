@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/25/2016"
+	ms.date="07/13/2016"
 	ms.author="szark"/>
 
 
@@ -37,14 +37,16 @@ Azure Linux エージェントは、Azure ギャラリーのイメージにあ�
 
 ディストリビューション|バージョン|ドライバー|エージェント
 ---|---|---|---
-CentOS by OpenLogic |CentOS 6.3+、7.0+| CentOS 6.3:[LIS ダウンロード](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 以上、カーネル内。|パッケージ: <a href="http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/">OpenLogic リポジトリ内の "WALinuxAgent"<p><p>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
-[CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)|494\.4.0+ |カーネル内|ソース コード: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent)
-Credativ の Debian |Debian 7.9+、8.2+|カーネル内|パッケージ: リポジトリ内の "waagent" <p><p>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
-Oracle Linux| 6\.4+、7.0+|カーネル内|パッケージ: リポジトリ内の "WALinuxAgent" <p><p>ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
-Red Hat Enterprise Linux |RHEL 6.7+、7.1+|カーネル内|パッケージ: リポジトリ内の "WALinuxAgent" <p><p>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
-SUSE Linux Enterprise |SLES 11 SP3 +、SLES 12 + と <p><p>SAP 11.3 + 向け SLES |カーネル内|パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "WALinuxAgent"<p><p>ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
-openSUSE |openSUSE 13.1+|カーネル内|パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "WALinuxAgent"<p><p> ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
-Ubuntu|Ubuntu 12.04、14.04、15.10、および 16.04|カーネル内|パッケージ: リポジトリ内の "walinuxagent" <p><p>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
+CentOS by OpenLogic | CentOS 6.3+、7.0+ | CentOS 6.3:[LIS ダウンロード](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 以上、カーネル内。 | パッケージ: [OpenLogic リポジトリ](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)内の "WALinuxAgent"<br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
+[CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) | 494\.4.0+ | カーネル内 | ソース コード: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent)
+Debian | Debian 7.9+、8.2+ | カーネル内 | パッケージ: リポジトリ内の "waagent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
+Oracle Linux | 6\.4+、7.0+ | カーネル内 | パッケージ: リポジトリ内の "WALinuxAgent" <br/>ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
+Red Hat Enterprise Linux | RHEL 6.7+、7.1+ | カーネル内|パッケージ: リポジトリ内の "WALinuxAgent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
+SUSE Linux Enterprise | SLES 11 SP4、SLES 12+、<p>SAP 11.3+ 向け SLES | カーネル内 | パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "WALinuxAgent"<br/> ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
+openSUSE | openSUSE 13.2+ | カーネル内 | パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "WALinuxAgent"<br/> ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
+Ubuntu|Ubuntu 12.04、14.04、および 16.04 | カーネル内 | パッケージ: リポジトリ内の "walinuxagent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
+
+
 ## パートナー
 
 ### OpenLogic
@@ -87,4 +89,4 @@ Canonical のエンジニアリングおよびオープン コミュニティ体
 
 世界中に開発者と開発センターが存在しているため、Canonical は独自の地位を確立しており、ハードウェア メーカーやコンテンツ プロバイダー、ソフトウェア開発者と提携して、PC からサーバーや携帯機器まで、さまざまな Ubuntu ソリューションを市場に送り出しています。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0713_2016-->

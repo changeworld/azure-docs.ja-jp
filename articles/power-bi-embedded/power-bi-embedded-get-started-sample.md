@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Get started with sample (サンプルの使用を開始する)"
+   pageTitle="サンプルの使用"
    description="Power BI Embedded、SDK を使用して対話型の Power BI レポートをビジネス インテリジェンス アプリケーションに追加する"
    services="power-bi-embedded"
    documentationCenter=""
@@ -13,24 +13,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="06/28/2016"
+   ms.date="07/05/2016"
    ms.author="owend"/>
 
-# Microsoft Power BI Embedded の使用を開始するためのサンプル
+# Power BI Embedded の使用を開始するためのサンプル
 
-**Microsoft Power BI Embedded プレビュー**を利用して、Web アプリケーションやモバイル アプリケーションに Power BI レポートを統合することができます。このため、ユーザーのためにデータを視覚化するカスタム ソリューションを作成する必要はありません。次のリソースは、アプリへの Power BI レポートの統合を開始するのに役立ちます。
+**Microsoft Power BI Embedded** を使用すると、Web アプリケーションやモバイル アプリケーションに Power BI レポートをすぐに統合することができます。この記事では、**Power BI Embedded** の使用を開始するためのサンプルを紹介します。
+
+先に進む前に、次のリソースを保存することができます。これらのリソースは、サンプル アプリや独自のアプリに Power BI レポートを統合する際に役立ちます。
 
  -	[Sample dashboard web app](http://go.microsoft.com/fwlink/?LinkId=761493)
  -	[Power BI Embedded API reference](https://msdn.microsoft.com/library/mt711493.aspx)
  -	[Power BI Embedded .NET SDK (NuGet から入手可能)](http://go.microsoft.com/fwlink/?LinkId=746472)
 
-この記事では、**Power BI Embedded** の使用を開始するためのサンプルについて説明します。サンプル Web アプリを実行できるように、サンプル アプリの構成を始めましょう。
 
-> [AZURE.NOTE] Azure サブスクリプションに少なくとも 1 つの**ワークスペース コレクション**作成してから、Power BI Embedded の使用を開始するためのサンプルを構成して実行する必要があります。 Azure ポータルで**ワークスペース コレクション**を作成する方法については、「[Getting Started with Power BI Embedded Preview (Power BI Embedded プレビューの使用を開始する)](power-bi-embedded-get-started.md)」をご覧ください。
+
+> [AZURE.NOTE] Azure サブスクリプションに少なくとも 1 つの**ワークスペース コレクション**作成してから、Power BI Embedded の使用を開始するためのサンプルを構成して実行する必要があります。 Azure ポータルで**ワークスペース コレクション**を作成する方法については、[Power BI Embedded の概要](power-bi-embedded-get-started.md)に関する記事をご覧ください。
 
 ## サンプル アプリの構成
 
-サンプル アプリの実行に必要なプレビュー コンポーネントにアクセスするための Visual Studio 開発環境の設定手順を以下に説明します。
+サンプル アプリの実行に必要なコンポーネントにアクセスするための Visual Studio 開発環境の設定手順を説明します。
 
 1. GitHub でサンプル [Power BI Embedded - Integrate a report into a web app](http://go.microsoft.com/fwlink/?LinkId=761493) をダウンロードして解凍します。
 
@@ -40,11 +42,11 @@
 
 4. **ProvisionSample** コンソール アプリを実行します。サンプルのコンソール アプリで、ワークスペースのプロビジョニングを行って、PBIX ファイルをインポートします。
 
-5. 新しい**ワークスペース**のプロビジョニングを行うには、オプション **[5.Provision a new workspace in an existing workspace collection]** を選択します。
+5. 新しい**ワークスペース**をプロビジョニングするには、オプション 5 の **[Provision a new workspace in an existing workspace collection (既存のワークスペース コレクションに新しいワークスペースをプロビジョニングする)]** を選択します。
 
     ![](media\powerbi-embedded-get-started-sample\console-option-5.png)
 
-6. **ワークスペース コレクション**名と**アクセス キー**を入力します。これらを **Azure ポータル**から入手できます。**アクセス キー**を取得する方法については、「Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューの使用を開始する)」の「[View Power BI API Access Keys (Power BI API のアクセス キーの表示)](power-bi-embedded-get-started-sample.md#view-access-keys)」 をご覧ください。
+6. **ワークスペース コレクション**名と**アクセス キー**を入力します。これらを **Azure ポータル**から入手できます。**アクセス キー**を取得する方法の詳細については、「Get started with Microsoft Power BI Embedded (Microsoft Power BI Embedded の概要)」の「[View Power BI API Access Keys (Power BI API のアクセス キーの表示)](power-bi-embedded-get-started-sample.md#view-access-keys)」をご覧ください。
 
     ![](media\powerbi-embedded-get-started-sample\azure-portal.png)
 
@@ -65,16 +67,14 @@ Checking import state... Succeeded
 
 > [AZURE.NOTE] PBIX ファイルに直接クエリ接続が含まれている場合は、接続文字列を更新するオプション 7 を実行します。
 
-この時点で、Power BI PBIX レポートは**ワークスペース**にインポートされています。次のセクションには、**Power BI Embedded** の使用を開始するためのサンプル Web アプリを実行する方法が記載されています。 次のセクションでは、サンプル Web アプリを実行する方法を学習します。
+この時点で、Power BI PBIX レポートは**ワークスペース**にインポートされています。次に、**Power BI Embedded** の使用を開始するためのサンプル Web アプリを実行する方法を説明します。
 
 ## サンプル Web アプリの実行
 
-サンプル Web アプリは、インポートされたレポートを**ワークスペース**にレンダリングするサンプル ダッシュ ボードです。
+サンプル Web アプリは、インポートされたレポートを**ワークスペース**にレンダリングするサンプル ダッシュ ボードです。サンプル Web アプリを構成する方法は以下のとおりです。
 
-サンプル Web アプリを構成する方法は以下のとおりです。
-
-1. **PowerBI-embedded** Visual Studio ソリューションで **EmbedSample** Web アプリケーションを右クリックして、**[Set as StartUp project]** を選択します。
-2. **EmbedSample** Web アプリケーションの **web.config** で、**[appSettings]** の **[AccessKey]**、**[WorkspaceCollection]** の名前、および **[WorkspaceId]** を編集します。
+1. **PowerBI-embedded** Visual Studio ソリューションで、**EmbedSample** Web アプリケーションを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。
+2. **EmbedSample** Web アプリケーションの **web.config** で、**appSettings** の **AccessKey**、**WorkspaceCollection** の名前、**WorkspaceId** を編集します。
 
     ```
     <appSettings>
@@ -90,16 +90,15 @@ Checking import state... Succeeded
 
 ![](media\powerbi-embedded-get-started-sample\power-bi-embedded-sample-left-nav.png)
 
-レポートをクリックすると、**EmbedSample** Web アプリケーションは次のように表示されます。
+レポートをクリックすると、**EmbedSample** Web アプリケーションが次のように表示されます。
 
 ![](media\powerbi-embedded-get-started-sample\sample-web-app.png)
 
-次のセクションでは、**Power BI Embedded** のサンプル コードを検証します。
 
 ## サンプル コードの検証
-**Microsoft Power BI Embedded** プレビューのサンプルは、**Power BI** レポートをアプリに統合する方法を説明するダッシュボード Web アプリの例です。このサンプルは、モデル ビュー コント ローラー (MVC) デザイン パターンを使用して、ベスト プラクティスを説明します。このセクションでは、**PowerBI-embedded** Web アプリ ソリューション内で検証できるサンプル コードの部分を説明します。モデル ビュー コント ローラー (MVC) パターンは、ユーザー入力に基づいて、ドメイン、プレゼンテーション、およびアクションのモデリングをモデル、ビュー、およびコントロールという 3 つの個別クラスに分割します。MVC の詳細については、「[Learn About ASP.NET (ASP.NET について)](http://www.asp.net/mvc)」をご覧ください。
+**Microsoft Power BI Embedded** のサンプルは、**Power BI** レポートをアプリに統合する方法を示すダッシュボード Web アプリの例です。このサンプルは、モデル ビュー コント ローラー (MVC) デザイン パターンを使用して、ベスト プラクティスを説明します。このセクションでは、**PowerBI-embedded** Web アプリ ソリューション内で検証できるサンプル コードの部分を説明します。モデル ビュー コント ローラー (MVC) パターンは、ユーザー入力に基づいて、ドメイン、プレゼンテーション、およびアクションのモデリングをモデル、ビュー、およびコントロールという 3 つの個別クラスに分割します。MVC の詳細については、「[Learn About ASP.NET (ASP.NET について)](http://www.asp.net/mvc)」をご覧ください。
 
-**Microsoft Power BI Embedded** プレビューのサンプル コードは次のように区切られます。サンプル内のコードを簡単に見つけることができるように、各セクションには PowerBI-embedded.sln ソリューションのファイル名が含まれます。
+**Microsoft Power BI Embedded** のサンプル コードは以下のように区切られています。サンプル内のコードを簡単に見つけることができるように、各セクションには PowerBI-embedded.sln ソリューションのファイル名が含まれます。
 
 > [AZURE.NOTE] このセクションは、コードの作成方法を説明するサンプル コードの概要です。このサンプルの説明は一般公開 (GA) への移行後に拡大されます。完全なサンプルを表示するには、Visual Studio で PowerBI-embedded.sln ソリューションを読み込んでください。
 
@@ -123,9 +122,9 @@ Checking import state... Succeeded
     }
 
 ### 表示
-**ビュー**は複数の Power BI **レポート** と 1 つの Power BI **レポート**の表示を制御します。
+**ビュー**では、複数の Power BI **レポート** と 1 つの Power BI **レポート**の表示を管理します。
 
-**Reports.cshtml**: **ActionLink** を作成するために **Model.Reports** で繰り返します。 **ActionLink** は次のように構成されています。
+**Reports.cshtml**: **ActionLink** を作成するために **Model.Reports** を反復処理します。**ActionLink** は次のように構成されています。
 
 |パート|説明
 |---|---
@@ -146,7 +145,7 @@ Checking import state... Succeeded
         </div>
     </div>
 
-Report.cshtml: **Model.AccessToken**、および **PowerBIReportFor** のラムダ式を設定します。
+Report.cshtml: **Model.AccessToken** と、**PowerBIReportFor** のラムダ式を設定します。
 
     @model ReportViewModel
 
@@ -159,7 +158,7 @@ Report.cshtml: **Model.AccessToken**、および **PowerBIReportFor** のラム�
 
 ### Controller
 
-**DashboardController.cs**: **アプリ トークン**を渡す PowerBIClient を作成します。JSON Web トークン (JWT) は、**資格情報**を取得するために**署名キー**から生成されます。 **資格情報** は **PowerBIClient** のインスタンスの作成に使用されます。**アプリ トークン**の詳細については、「[How does app token flow work? (アプリ トークンのフローの動作)](#key-flow)」をご覧ください。**PowerBIClient** のインスタンスを作成したら、GetReports() と GetReportsAsync() を呼び出すことができます。
+**DashboardController.cs**: **アプリ トークン**を渡す PowerBIClient を作成します。JSON Web トークン (JWT) は、**資格情報**を取得するために**署名キー**から生成されます。**資格情報**は、**PowerBIClient** のインスタンスの作成に使用されます。**アプリ トークン**の詳細については、「[How does app token flow work? (アプリ トークンのフローのしくみ)](#key-flow)」をご覧ください。**PowerBIClient** のインスタンスを作成したら、GetReports() と GetReportsAsync() を呼び出すことができます。
 
 CreatePowerBIClient()
 
@@ -217,7 +216,7 @@ Task<ActionResult> Report(string reportId)
 
 ### アプリへのレポートの統合
 
-**レポート**を作成したら、**IFrame** を使用して Power BI **レポート**を埋め込みます。**Microsoft Power BI Embedded** プレビュー サンプルの powerbi.js からのコード スニペットを次に示します。
+**レポート**を作成したら、**IFrame** を使用して Power BI **レポート**を埋め込みます。**Microsoft Power BI Embedded** のサンプルの powerbi.js のコード スニペットを次に示します。
 
 ![](media\powerbi-embedded-get-started-sample\power-bi-embedded-iframe-code.png)
 
@@ -237,9 +236,7 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 
 ## 関連項目
 
-- [Microsoft Power BI Embedded とは](power-bi-embedded-what-is-power-bi-embedded.md)
-- [Common Microsoft Power BI Embedded Preview scenarios (Microsoft Power BI Embedded のプレビューの一般的なシナリオ)](power-bi-embedded-scenarios.md)
-- [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューの使用を開始する)](power-bi-embedded-get-started.md)
+- [Common Microsoft Power BI Embedded scenarios (Microsoft Power BI Embedded の一般的なシナリオ)](power-bi-embedded-scenarios.md)
 - [About app token flow in Power BI Embedded (Power BI Embedded のアプリ トークン フローについて)](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

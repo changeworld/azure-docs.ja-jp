@@ -1,5 +1,5 @@
 <properties
-   pageTitle="他のユーザーの成果物をコピーしてデータ サイエンスを実行する: 初心者向けデータ サイエンス | Microsoft Azure"
+   pageTitle="他のユーザーの成果物をコピーしてデータ サイエンスを実行する - 実験例 | Microsoft Azure"
    description="データ サイエンスの企業秘密: 自分のために他のユーザーに作業してもらいます。Cortana Analytics のギャラリーの例で、クラスタリング アルゴリズムの例などをご覧ください。"
    keywords="データ サイエンスの例,アルゴリズムの例,実験の例,機械学習の例,クラスタリング アルゴリズム"
    services="machine-learning"
@@ -23,7 +23,7 @@
 
 このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
 
-<div class="wa-video-container" data-control="video-container" data-slug="data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science"> <a title="Data science for beginners: Copy other people’s work to do data science" class="wa-video-thumbnail" href="/en-us/documentation/videos/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/" data-control="video" data-event="videopage-clicked-videothumbnail" data-event-property="data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science" data-expanding="false" data-ch9="//channel9.msdn.com/Blogs/Windows-Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player/" data-caption=""> <img class="thumbnail" alt="Data science for beginners: Copy other people’s work to do data science" src="https://sec.ch9.ms/ch9/c2de/f3d64d4d-e9b3-44c7-9617-4f78e1c2c2de/DataScienceForBeginnersSeriesCopyOtherPeoplesWork_960.jpg"> <img class="play-icon" src="/cdn/cvt-a29a0e789afe7f47464f393c011b53f210c511ee5fed2c4c9c0633442f30d6ec/images/icon/VideoPlay.svg"> <span class="metadata"> <span class="date"> <span>06-30-2016</span> <span>03 min, 18 sec</span> </span> </span> </a> </div>
+> [AZURE.VIDEO data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science]
 
 ## トランスクリプト: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 
@@ -94,4 +94,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

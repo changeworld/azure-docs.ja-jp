@@ -66,7 +66,7 @@ Azure の IoT デバイス管理では、デバイスのジョブを使用して
 
 サンプルを開始するには、**FirmwareUpdate.exe** プロセスを実行する必要があります。これにより、すべてのシミュレートされたデバイスで、ファームウェア更新プロセスが開始されます。次の手順に従って、サンプルを開始してください。
 
-1.  **azure-iot-sdks** リポジトリを複製したルート フォルダーから **azure-iot-sdks\\csharp\\service\\samples\\bin** フォルダーに移動します。  
+1.  **azure-iot-sdks** リポジトリを複製したルート フォルダーから **azure-iot-sdks\\csharp\\service\\samples\\bin** フォルダーに移動します。
 
 2.  `FirmwareUpdate.exe <IoT Hub Connection String>` を実行します。
 
@@ -157,11 +157,16 @@ Azure IoT Hub デバイス管理クライアント ライブラリは、デバ�
 
 Azure IoT Hub デバイス管理機能の詳細については、次のチュートリアルに進んでください。
 
+- [IoT ゲートウェイの内側で管理されたデバイスを有効にする][lnk-dm-gateway]
+- [Azure IoT Hub デバイス管理クライアント ライブラリの概要][lnk-library-c]
 - Azure IoT Hub DM クライアント ライブラリは、[Intel Edison デバイス][lnk-edison]を使用したエンドツーエンドのサンプルを提供します。
 
-- [デバイス ツインの使用方法][lnk-twin-tutorial]
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-- [クエリを使用したデバイス ツインの検索方法][lnk-tutorial-queries]
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
 
 <!-- Images and links -->
 
@@ -178,4 +183,12 @@ Azure IoT Hub デバイス管理機能の詳細については、次のチュー
 [lnk-github-firmware]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/c/iotdm_client/samples/iotdm_simple_sample/iotdm_simple_sample.c
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
 
-<!---HONumber=AcomDC_0622_2016-->
+[lnk-dm-gateway]: iot-hub-gateway-device-management.md
+[lnk-library-c]: iot-hub-device-management-library.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

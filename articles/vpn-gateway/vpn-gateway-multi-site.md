@@ -72,13 +72,13 @@
 
 ### サイト間仮想ネットワークは既に存在するが、静的な (ポリシー ベースの) ルーティング ゲートウェイの場合:
 
-1. ゲートウェイ タイプを動的ルーティングに変更します。マルチサイト VPN は動的 (ルート ベースとも呼ばれます) ルーティング ゲートウェイを必要とします。ゲートウェイ タイプを変更するには、最初に既存のゲートウェイを削除し、新規で作成します。手順については、「[VPN ゲートウェイ ルーティング タイプの変更](vpn-gateway-configure-vpn-gateway-mp.md/#how-to-change-your-vpn-gateway-type)」を参照してください。  
+1. ゲートウェイ タイプを動的ルーティングに変更します。マルチサイト VPN は動的 (ルート ベースとも呼ばれます) ルーティング ゲートウェイを必要とします。ゲートウェイ タイプを変更するには、最初に既存のゲートウェイを削除し、新規で作成します。手順については、「[ゲートウェイの VPN ルーティングの種類を変更する方法](../vpn-gateway/vpn-gateway-configure-vpn-gateway-mp.md#how-to-change-the-vpn-routing-type-for-your-gateway)」を参照してください。
 
 2. 新しいゲートウェイを構成し、VPN トンネルを作成します。手順については、「[Azure クラシック ポータルで VPN ゲートウェイを構成する](vpn-gateway-configure-vpn-gateway-mp.md)」を参照してください。最初に、ゲートウェイ タイプを動的ルーティングに変更します。
 
 ### サイト間仮想ネットワークが存在しない場合:
 
-1. 次の手順によりサイト間仮想ネットワークを作成します: [Azure クラシック ポータルでサイト間 VPN 接続を使用して Virtual Network を作成する](vpn-gateway-site-to-site-create.md)。  
+1. 次の手順によりサイト間仮想ネットワークを作成します: [Azure クラシック ポータルでサイト間 VPN 接続を使用して Virtual Network を作成する](vpn-gateway-site-to-site-create.md)。
 
 2. 次の手順により動的ルーティング ゲートウェイを構成します。[VPN ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)必ずゲートウェイ タイプに**動的ルーティング**を選択してください。
 
@@ -206,4 +206,4 @@
 
 VPN Gateway について詳しくは、「[VPN Gateway について](../vpn-gateway/vpn-gateway-about-vpngateways.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

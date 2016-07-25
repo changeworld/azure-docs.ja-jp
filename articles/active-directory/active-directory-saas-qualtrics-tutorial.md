@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と Qualtrics の統合 | Microsoft Azure" 
     description="Azure Active Directory で Qualtrics を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="07/07/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Qualtrics の統合
   
@@ -37,7 +37,7 @@
 
 ###Qualtrics のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-qualtrics-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Qualtrics** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Qualtrics** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-qualtrics-tutorial/IC789545.png "Configure Single Sign-On")
 
@@ -76,9 +76,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-qualtrics-tutorial/IC789546.png "Configure Single Sign-On")
 
-3.  **[アプリの URL の構成]** ページで、**[Qualtrics サインオン URL]** ボックスに URL (例: "*https://ssotest2ut1.qualtrics.com*") を入力し、**[次へ]** をクリックします。
+3.  **[Configure App URL]** (アプリケーション URL の構成) ページで、**[Qualtrics サインオン URL]** ボックスに URL (例: "*https://ssotest2ut1.qualtrics.com*"*) を入力し、*[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-qualtrics-tutorial/IC789547.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-qualtrics-tutorial/IC789547.png "アプリケーション URL の構成")
 
 4.  **[Qualtrics でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターに保存します。
 
@@ -88,7 +88,7 @@
 
     >[AZURE.NOTE]シングル サインオンの構成は、Qualtrics サポート チームが実行する必要があります。構成が完了すると、サポート チームから通知が届きます。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-qualtrics-tutorial/IC789549.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -100,7 +100,7 @@ Qualtrics へのユーザー プロビジョニングの構成にあたって必
 
 ###ユーザーを Qualtrics に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Qualtrics** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -112,4 +112,4 @@ Qualtrics へのユーザー プロビジョニングの構成にあたって必
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0713_2016-->

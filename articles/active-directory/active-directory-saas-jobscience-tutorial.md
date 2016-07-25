@@ -4,20 +4,19 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/09/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Jobscience の統合
   
-このチュートリアルの目的は、Azure と Jobscience の統合を示すことです。  
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルの目的は、Azure と Jobscience の統合を示すことです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Jobscience でのシングル サインオンが有効なサブスクリプション
@@ -38,7 +37,7 @@
 
 ###Jobscience のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-jobscience-tutorial/IC700993.png "Active Directory")
 
@@ -65,9 +64,7 @@
     ![Jobscience](./media/active-directory-saas-jobscience-tutorial/IC784357.png "Jobscience")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Jobscience に対する認証を行えるようにする方法を説明します。  
-Jobscience のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。  
-この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Jobscience に対する認証を行えるようにする方法を説明します。Jobscience のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
@@ -85,7 +82,7 @@ Jobscience のシングル サインオンを構成するには、証明書か�
 
     ![ユーザーにデプロイされたドメイン](./media/active-directory-saas-jobscience-tutorial/IC784377.png "ユーザーにデプロイされたドメイン")
 
-5.  別の Web ブラウザー ウィンドウで、Azure ポータルにログインします。
+5.  別の Web ブラウザー ウィンドウで、Azure クラシック ポータルにログインします。
 
 6.  **Jobscience** のアプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
@@ -97,7 +94,7 @@ Jobscience のシングル サインオンを構成するには、証明書か�
 
 8.  **[アプリ URL の構成]** ページの **[Jobscience サインイン URL]** ボックスに、"*http://company.my.salesforce.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-jobscience-tutorial/IC784362.png "アプリ URL の構成")
+    ![Configure App URL](./media/active-directory-saas-jobscience-tutorial/IC784362.png "アプリケーション URL の構成")
 
 9.  **[Jobscience でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターのローカルに保存します。
 
@@ -111,21 +108,21 @@ Jobscience のシングル サインオンを構成するには、証明書か�
 
     ![シングル サインオンの設定](./media/active-directory-saas-jobscience-tutorial/IC781026.png "シングル サインオンの設定")
 
-    1.  **[SAML を有効化]** を選択します。
+    1.  **[SAML Enabled]** を選択します。
     2.  **[新規]** をクリックします。
 
 12. **[SAML シングル サインオン設定の編集]** ページで、次の手順に従います。
 
     ![SAML シングル サインオンの設定](./media/active-directory-saas-jobscience-tutorial/IC784365.png "SAML シングル サインオンの設定")
 
-    1.  **[名前]** テキストボックスに、構成の名前を入力します。
-    2.  Azure ポータルの **[Jobscience でのシングル サインオンの構成]** ダイアログ ページで **[発行者 URL]** の値をコピーし、それを **[発行者]** テキストボックスに貼り付けます。
+    1.  [**名前**] テキスト ボックスに、構成の名前を入力します。
+    2.  Azure クラシック ポータルの **[Jobscience でのシングル サインオンの構成]** ダイアログ ページで **[発行者 URL]** の値をコピーし、それを **[発行者]** テキストボックスに貼り付けます。
     3.  **[エンティティ ID]** ボックスに、「**https://salesforce-jobscience.com**」と入力します。
     4.  **[参照]** をクリックして、Azure AD の証明書をアップロードします。
     5.  **[SAML ID の種類]** として、**[アサーション には、ユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
     6.  **[SAML ID の場所]** として、**[ID を Subject ステートメントの NameIdentifier 要素にする]** チェックボックスをオンにします。
-    7.  Azure ポータルの **[Jobscience でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーし、**[ID プロバイダー ログイン URL]** ボックスに貼り付けます。
-    8.  Azure ポータルの **[Jobscience でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーし、**[ID プロバイダー ログアウト URL]** ボックスに貼り付けます。
+    7.  Azure クラシック ポータルの **[Jobscience でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーし、**[ID プロバイダー ログイン URL]** ボックスに貼り付けます。
+    8.  Azure クラシック ポータルの **[Jobscience でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーし、**[ID プロバイダー ログアウト URL]** ボックスに貼り付けます。
     9.  **[保存]** をクリックします。
 
 13. 左側のナビゲーション ウィンドウの **[管理]** セクションで、**[ドメインの管理]** をクリックして関連するセクションを展開し、**[マイ ドメイン]** をクリックして**[マイ ドメイン]** ページを開きます。
@@ -140,7 +137,7 @@ Jobscience のシングル サインオンを構成するには、証明書か�
 
     ![ログイン ページのブランド](./media/active-directory-saas-jobscience-tutorial/IC784366.png "ログイン ページのブランド")
 
-16. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+16. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-jobscience-tutorial/IC784367.png "Configure Single Sign-On")
   
@@ -148,12 +145,10 @@ SP によって開始されるシングル サインオンのログイン URL �
 
 ![セキュリティ コントロール](./media/active-directory-saas-jobscience-tutorial/IC784368.png "セキュリティ コントロール")
   
-前の手順で作成した SSO プロファイルをクリックします。  
-このページに、会社のシングル サインオン URL が表示されます (例: *https://companyname.my.salesforce.com?so=companyid*)。
+前の手順で作成した SSO プロファイルをクリックします。このページに、会社のシングル サインオン URL が表示されます (例: *https://companyname.my.salesforce.com?so=companyid*)。
 ##ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが Jobscience にログインできるようにするには、そのユーザーを Jobscience にプロビジョニングする必要があります。  
-Jobscience の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが Jobscience にログインできるようにするには、そのユーザーを Jobscience にプロビジョニングする必要があります。Jobscience の場合、プロビジョニングは手動で行います。
 
 ###ユーザー プロビジョニングを構成するには、次の手順に従います。
 
@@ -165,7 +160,7 @@ Jobscience の場合、プロビジョニングは手動で行います。
 
 3.  **[ユーザーの管理] の [ユーザー]** に移動します。
 
-    ![ユーザー](./media/active-directory-saas-jobscience-tutorial/IC784369.png "ユーザー")
+    ![Users](./media/active-directory-saas-jobscience-tutorial/IC784369.png "Users")
 
 4.  **[新しいユーザー]** をクリックします。
 
@@ -178,9 +173,9 @@ Jobscience の場合、プロビジョニングは手動で行います。
     1.  名、姓、名、エイリアス、メール、プロビジョニングする Azure AD ユーザーのユーザー名とニックネームのプロパティを該当するボックスに入力します。
     2.  **[保存]** をクリックします。
 
-    >[AZURE.NOTE]Azure AD のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
+    >[AZURE.NOTE] Azure AD のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
 
->[AZURE.NOTE]他の Jobscience ユーザー アカウント作成ツールや Jobscience から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] 他の Jobscience ユーザー アカウント作成ツールや Jobscience から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -188,7 +183,7 @@ Jobscience の場合、プロビジョニングは手動で行います。
 
 ###ユーザーを Jobscience に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Jobscience** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -196,9 +191,8 @@ Jobscience の場合、プロビジョニングは手動で行います。
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-jobscience-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-jobscience-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
-
+<!---HONumber=AcomDC_0713_2016-->

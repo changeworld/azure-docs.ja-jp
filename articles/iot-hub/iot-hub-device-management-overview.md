@@ -105,7 +105,9 @@ DM クライアント ライブラリは、デバイス管理において主な�
 
 ## 次のステップ
 
-Azure IoT Hub デバイス管理機能について学習を継続するには、[Azure IoT Hub デバイス管理の概要][lnk-get-started]のチュートリアルを参照してください。
+クライアント アプリケーションを各種デバイス ハードウェア プラットフォームやオペレーティング システムに実装するために、IoT デバイス SDK を使用できます。IoT デバイス SDK には、テレメトリを IoT Hub に送信し、クラウドからデバイスへのコマンドを受信する操作を容易にするライブラリが含まれています。これらの SDK を使用すると、多数のネットワーク プロトコルのうちのいずれかを選択して IoT Hub と通信することができます。詳細については、[デバイス SDK に関する情報][lnk-device-sdks]をご覧ください。
+
+Azure IoT Hub デバイス管理機能について学習を継続するには、[Azure IoT Hub デバイス管理の概要][lnk-get-started]のチュートリアルをご覧ください。
 
 <!-- Images and links -->
 [img-twin]: media/iot-hub-device-management-overview/image1.png
@@ -118,5 +120,6 @@ Azure IoT Hub デバイス管理機能について学習を継続するには、
 [lnk-tutorial-twin]: iot-hub-device-management-device-twin.md
 [lnk-apidocs]: http://azure.github.io/azure-iot-sdks/
 [lnk-query-samples]: https://github.com/Azure/azure-iot-sdks/blob/dmpreview/doc/get_started/dm_queries/query-samples.md
+[lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

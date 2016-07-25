@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/08/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Mimecast Personal Portal の統合
@@ -37,7 +37,7 @@
 
 ###Mimecast Personal Portal のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-mimecast-personal-portal-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[Mimecast Personal Portal]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **[Mimecast Personal Portal]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-mimecast-personal-portal-tutorial/IC794994.png "Configure Single Sign-On")
 
@@ -78,9 +78,9 @@
 
 3.  **[アプリ URL の構成]** ページで、**[Mimecast Personal Portal サインオン URL]** テキストボックスに、ユーザーが Mimecast Personal Portal アプリケーションへのサインオンする際に使用する URL (例: “https://webmail-uk.mimecast.com” や “https://webmail-us.mimecast.com”) を入力して、**[次へ]** をクリックします。
 
-    >[AZURE.NOTE]サインオン URL は、リージョン固有のものになります。
+    >[AZURE.NOTE] サインオン URL は、リージョン固有のものになります。
 
-    ![Configure App URL](./media/active-directory-saas-mimecast-personal-portal-tutorial/IC794996.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-mimecast-personal-portal-tutorial/IC794996.png "アプリケーション URL の構成")
 
 4.  **[Mimecast Personal Portal でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターのローカルに保存します。
 
@@ -107,21 +107,21 @@
     1.  **[説明]** テキストボックスに、構成の名前を入力します。
     2.  **[Mimecast Personal Portal に SAML 認証を適用]** を選択します。
     3.  **[プロバイダー]** で **[Azure Active Directory]** を選択します。
-    4.  Azure ポータルの **[Mimecast Personal Portal でのシングル サインオンの構成]** ダイアログ ページで **[発行者 URL]** の値をコピーし、それを **[発行者 URL]** テキストボックスに貼り付けます。
-    5.  Azure ポータルの **[Mimecast Personal Portal でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、それを **[ログイン URL]** テキストボックスに貼り付けます。
-    6.  Azure ポータルの **[Mimecast Personal Portal でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、それを **[ログアウト URL]** テキストボックスに貼り付けます。  
+    4.  Azure クラシック ポータルの **[Mimecast Personal Portal でのシングル サインオンの構成]** ダイアログ ページで **[発行者 URL]** の値をコピーし、それを **[発行者 URL]** テキストボックスに貼り付けます。
+    5.  Azure クラシック ポータルの **[Mimecast Personal Portal でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、それを **[ログイン URL]** テキストボックスに貼り付けます。
+    6.  Azure クラシック ポータルの **[Mimecast Personal Portal でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、それを **[ログアウト URL]** テキストボックスに貼り付けます。
 
-        >[AZURE.NOTE]Mimecast Personal Portal では、[ログイン URL] と [ログアウト URL] の値は同じです。
+        >[AZURE.NOTE] Mimecast Personal Portal では、[ログイン URL] と [ログアウト URL] の値は同じです。
 
     7.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
 
         >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-    8.  base-64 でエンコードされた証明書をメモ帳で開き、最初の行 (“--“) と最後の行 (“--“) を削除し、残りの内容をクリップボードにコピーして、**[ID プロバイダー証明書 (メタデータ)]** テキストボックスに貼り付けます。
+    8.  base-64 でエンコードされた証明書をメモ帳で開き、最初の行 (“*--*“) と最後の行 (“*--*“) を削除し、残りの内容をクリップボードにコピーして、**[ID プロバイダー証明書 (メタデータ)]** テキストボックスに貼り付けます。
     9.  **[シングル サインオンの許可]** を選択します。
     10. **[保存]** をクリックします。
 
-10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-mimecast-personal-portal-tutorial/IC795002.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -161,9 +161,9 @@ Azure AD ユーザーが Mimecast Personal Portal にログインできるよう
 
 ###ユーザーを Mimecast Personal Portal に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  **Mimecast Personal Portal ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Mimecast Personal Portal** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-mimecast-personal-portal-tutorial/IC795007.png "ユーザーの割り当て")
 
@@ -173,4 +173,4 @@ Azure AD ユーザーが Mimecast Personal Portal にログインできるよう
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

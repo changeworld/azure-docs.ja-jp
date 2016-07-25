@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # Service Fabric の Reliable Services の概要
@@ -24,7 +24,7 @@ Azure Service Fabric アプリケーションには、コードを実行する 1
 
 ステートレス サービスは、クラウド アプリケーションで現在基準となっている種類のサービスです。ステートレスと見なされるのは、確実に格納する必要があるデータや高可用性を実現する必要があるデータが、サービス自体には含まれていないためです。ステートレス サービスのインスタンスが終了すると、すべての内部状態が失われます。この種類のサービスで、状態の高可用性と高い信頼性を実現するには、Azure テーブルや SQL データベースなどの外部ストアに状態を格納する必要があります。
 
-Visual Studio 2015 RC を管理者として起動し、*HelloWorld* という名前の新しい Service Fabric アプリケーション プロジェクトを作成します。
+Visual Studio 2015 を管理者として起動し、*HelloWorld* という名前の新しい Service Fabric アプリケーション プロジェクトを作成します。
 
 ![[新しいプロジェクト] ダイアログを使用して新しい Service Fabric アプリケーションを作成する](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
@@ -70,7 +70,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
-    // TODO: Replace the following sample code with your own logic 
+    // TODO: Replace the following sample code with your own logic
     //       or remove this RunAsync override if it's not needed in your service.
 
     long iterations = 0;
@@ -122,7 +122,7 @@ Service Fabric には、新しい種類のステートフルなサービスが�
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
-    // TODO: Replace the following sample code with your own logic 
+    // TODO: Replace the following sample code with your own logic
     //       or remove this RunAsync override if it's not needed in your service.
 
     var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
@@ -140,7 +140,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
             await myDictionary.AddOrUpdateAsync(tx, "Counter", 0, (key, value) => ++value);
 
-            // If an exception is thrown before calling CommitAsync, the transaction aborts, all changes are 
+            // If an exception is thrown before calling CommitAsync, the transaction aborts, all changes are
             // discarded, and nothing is saved to the secondary replicas.
             await tx.CommitAsync();
         }
@@ -159,7 +159,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-*IReliableDictionary* は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。Service Fabric と Reliable Collection を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。Reliable Collection により、データの可用性が向上します。Service Fabric では、サービスの複数の*レプリカ*を作成して管理することでこれを実現します。また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
+[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。Service Fabric と Reliable Collection を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。Reliable Collection により、データの可用性が向上します。Service Fabric では、サービスの複数の*レプリカ*を作成して管理することでこれを実現します。また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
 
 Reliable Collection にはカスタム型を含むすべての .NET 型を格納できます。ただし次の点にご注意ください。
 
@@ -194,7 +194,7 @@ Reliable Collection の操作は*トランザクション*であるため、複�
 
 サービスが開始されたら、生成された Event Tracing for Windows (ETW) イベントを **[診断イベント]** ウィンドウで確認できます。アプリケーションのステートレス サービスとステートフル サービスの両方のイベントが表示されるのでご注意ください。**[一時停止]** ボタンをクリックして、ストリームを一時停止できます。その後、メッセージを展開して、メッセージの詳細を調べることができます。
 
->[AZURE.NOTE] アプリケーションを実行する前に、ローカル開発クラスターが実行されていることを確認します。ローカル環境の設定については、「[開発環境を準備する](service-fabric-get-started.md)」をご覧ください。
+>[AZURE.NOTE] アプリケーションを実行する前に、ローカル開発クラスターが実行されていることを確認します。ローカル環境の設定については、[ファースト ステップ ガイド](service-fabric-get-started.md)をご覧ください。
 
 ![Visual Studio で診断イベントを表示する](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
@@ -213,4 +213,4 @@ Reliable Collection の操作は*トランザクション*であるため、複�
 
 [Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

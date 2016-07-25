@@ -54,7 +54,7 @@ Azure の IoT Hub デバイス管理では、デバイス ツイン (物理デ�
 
 サンプルを開始するには、```jobClient_devicePropertyReadWrite.js``` を実行する必要があります。デバイス ツインと物理デバイスから、デバイス プロパティが読み取られます。さらに、物理デバイスのデバイス プロパティが変更されます。次の手順に従って、サンプルを開始してください。
 
-1.  **azure-iot-sdks** リポジトリを複製したルート フォルダーから **azure-iot-sdks/node/service/samples** フォルダーに移動します。  
+1.  **azure-iot-sdks** リポジトリを複製したルート フォルダーから **azure-iot-sdks/node/service/samples** フォルダーに移動します。
 
 2.  **jobClient\_devicePropertyReadWrite.js** を開き、プレースホルダーを IoT Hub 接続文字列で置換します。
 
@@ -128,10 +128,17 @@ set メソッドを使用する代わりに、コールバックを実装する�
 Azure IoT Hub デバイス管理機能の詳細については、次のチュートリアルに進んでください。
 
 - [クエリを使用したデバイス ツインの検索方法][lnk-tutorial-queries]
+- [デバイス ジョブを使用して、デバイスのファームウェアを更新する方法][lnk-tutorial-jobs]
+- [IoT ゲートウェイの内側で管理されたデバイスを有効にする][lnk-dm-gateway]
+- [Azure IoT Hub デバイス管理クライアント ライブラリの概要][lnk-library-c]
+- デバイス管理クライアント ライブラリは、[Intel Edison デバイス][lnk-edison]を使用したエンドツーエンドのサンプルを提供します。
 
-- [デバイス ジョブを使用して、デバイスのファームウェアを更新する方法][lnk-dm-jobs]
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-- デバイス管理クライアント ライブラリは、 [Intel Edison デバイス][lnk-edison]を使用したエンドツーエンドのサンプルを提供します。
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
 
 <!-- images and links -->
 [img-twin]: media/iot-hub-device-management-device-twin/image1.png
@@ -145,4 +152,14 @@ Azure IoT Hub デバイス管理機能の詳細については、次のチュー
 [lnk-dm-jobs]: iot-hub-device-management-device-jobs.md
 [lnk-edison]: https://github.com/Azure/azure-iot-sdks/tree/dmpreview/c/iotdm_client/samples/iotdm_edison_sample
 
-<!---HONumber=AcomDC_0622_2016-->
+[lnk-tutorial-queries]: iot-hub-device-management-device-query.md
+[lnk-tutorial-jobs]: iot-hub-device-management-device-jobs.md
+[lnk-dm-gateway]: iot-hub-gateway-device-management.md
+[lnk-library-c]: iot-hub-device-management-library.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

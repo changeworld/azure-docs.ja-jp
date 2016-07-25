@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/08/2016"
+	ms.date="07/13/2016"
 	ms.author="danlep"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続
@@ -23,19 +23,25 @@ Azure CLI は、Azure プラットフォームで使用できるオープン ソ
 
 Azure CLI からサブスクリプションに接続する方法には、次の 2 つがあります。
 
-* **職場または学校のアカウントまたは Microsoft アカウントID を使用して Azure にログインする** - アカウント ID のいずれかのタイプを使用して、CLI バージョン 0.9.10 以降で `azure login` コマンドを実行し、Azure Active Directory を通じて認証します。CLI (バージョン 0.9.9 以降) では、Multi-Factor Authentication が有効になっているアカウントの Web ポータルを通じた対話型認証もサポートしています。また、`azure login` コマンドを実行し、Azure Active Directory アプリケーションのサービス プリンシパルを認証します。これは自動化されたサービスの実行に便利です。サポートされているアカウント ID でログインした後は、Azure Resource Manager モードまたは Azure Service Management モード コマンドのいずれかを実行できます。
+* **職場または学校のアカウントまたは Microsoft アカウントID を使用して Azure にログインする** - いずれかのタイプのアカウント ID を使用して `azure login` コマンドを実行し、Azure Active Directory を通じて認証します。通常、新しい Azure デプロイを作成する場合はこの方法を使用する必要があります。一部のアカウントでは、`azure login` コマンドで Web ポータルから対話形式にてログインする必要があります。
 
-* **発行設定ファイルをダウンロードして使用する** - この方法では、管理タスクを実行できるようにするための証明書がローカル コンピューターにインストールされます。ただし、サブスクリプションと証明書が有効であることが必要です。この方法では、Azure Service Management モード コマンドしか使用できません。
+    また、`azure login` コマンドを使用して、Azure Active Directory アプリケーションのサービス プリンシパルを認証することもできます。これは自動化されたサービスを実行するのに便利です。
+    
+    サポートされているアカウント ID でログインした後は、Azure Resource Manager モードまたは Azure Service Management モードのいずれかの CLI コマンドを実行できます。
 
->[AZURE.NOTE] バージョン 0.9.10 より前のバージョンの Azure CLI を使用している場合、`azure login` コマンドは職場または学校のアカウントでのみ使用できます。Microsoft アカウント ID は機能しません。ただし、必要に応じて、[ Microsoft アカウント ID から職場または学校の ID を作成](virtual-machines/virtual-machines-windows-create-aad-work-id.md)できます。
+* **発行設定ファイルをダウンロードして使用する** - この方法では、管理タスクを実行できるようにするための証明書がローカル コンピューターにインストールされます。ただし、サブスクリプションと証明書が有効であることが必要です。
 
-異なるアカウント ID と Azure サブスクリプションに関する背景については、「[How Azure subscriptions are associated with Azure Active Directory (Azure サブスクリプションを Azure Active Directory に関連付ける方法)](./active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
+    この方法では、Azure Service Management モードの CLI コマンドしか使用できません。
+
+>[AZURE.NOTE] バージョン 0.9.10 より前のバージョンの Azure CLI を使用している場合、`azure login` コマンドは職場または学校のアカウントでのみ使用できます。Microsoft アカウント ID では使用できません。ただし、必要に応じて、[Microsoft アカウント ID から職場または学校の ID を作成](virtual-machines/virtual-machines-windows-create-aad-work-id.md)できます。
+
+各種アカウント ID と Azure サブスクリプションに関する背景については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](./active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
 ## Azure ログインを使用した対話型認証
 
 引数なしで `azure login` コマンドを使用して、次のいずれかによる対話型認証を行います。
 
-- Multi-Factor Authentication を必要とする職場または学校のアカウント ID (*組織アカウント*とも呼ばれる)
+- 多要素認証を必要とする職場または学校のアカウント ID (*組織アカウント*とも呼ばれる)
 - Microsoft アカウント ID (Resource Manager モード コマンドにアクセスする場合)
 
 > [AZURE.NOTE]  どちらの場合も、認証と承認は Azure Active Directory を使用して行われます。Microsoft アカウントの ID を使用する場合、ログ プロセスは Azure Active Directory の既定のドメインにアクセスします(無料 Azure アカウントにサインアップした場合は、Azure Active Directory によってアカウントの既定のドメインが作成されていることに気づかないことがあります)。
@@ -44,9 +50,9 @@ Azure CLI からサブスクリプションに接続する方法には、次の 
 
 	azure login                                                                                                                                                                                         
 	info:    Executing command login
-	info:    To sign in, use a web browser to open the page http://aka.ms/devicelogin. Enter the code XXXXXXXXX to authenticate. If you're signing in as an Azure AD application, use the --username and --password parameters.
+	info:    To sign in, use a web browser to open the page http://aka.ms/devicelogin. Enter the code XXXXXXXXX to authenticate. 
 
-上記で提供されたコードをコピーし、ブラウザーを開いて http://aka.ms/devicelogin に移動します。コードを入力すると、使用する ID のユーザー名とパスワードを入力するように求められます。このプロセスが完了すると、コマンド シェルによってログイン プロセスが完了します。次のような内容が表示されます。
+上記操作で表示されたコードをコピーし、ブラウザーを開いて http://aka.ms/devicelogin (または指定された場合は別のページ) にアクセスします。コードを入力すると、使用する ID のユーザー名とパスワードを入力するように求められます。このプロセスが完了すると、コマンド シェルによってログイン プロセスが完了します。次のような内容が表示されます。
 
 	info:    Added subscription Visual Studio Ultimate with MSDN
 	info:    Added subscription Azure Free Trial
@@ -57,7 +63,7 @@ Azure CLI からサブスクリプションに接続する方法には、次の 
 ## ユーザー名とパスワードによる Azure ログインの使用
 
 
-Multi-Factor Authentication を必要としない職場または学校のアカウントを使用する場合は、ユーザー名パラメーターまたはユーザー名とパスワードの両方を持つ `azure login` コマンドを使用して認証します。次の例では、組織アカウントのユーザー名が渡されます。
+多要素認証を必要としない職場または学校のアカウントを使用する場合は、ユーザー名パラメーターまたはユーザー名とパスワードの両方を指定して `azure login` コマンドを実行し、認証を行います。次の例では、組織アカウントのユーザー名が渡されます。
 
 	azure login -u ahmet@contoso.onmicrosoft.com
 	info:    Executing command login
@@ -74,11 +80,11 @@ Multi-Factor Authentication を必要としない職場または学校のアカ�
 
 ## サービス プリンシパルによる Azure ログインの使用
 
-Active Directory アプリケーションのサービス プリンシパルを作成し、サービス プリンシパルにサブスクリプションに対するアクセス許可がある場合は、`azure login` コマンドを実行してサービス プリンシパルを認証できます。シナリオによっては、`azure login` コマンドの明示的なパラメーターとして、または CLI スクリプトまたはアプリケーション コードを通じてサービス プリンシパルの資格情報を入力できます。証明書を使用して、Automation のシナリオで非対話的にサービス プリンシパルを認証することもできます。詳細と例については、「[Authenticating a service principal with Azure Resource Manager (Azure Resource Manager でのサービス プリンシパルの認証)](resource-group-authenticate-service-principal.md)」を参照してください。
+Active Directory アプリケーションのサービス プリンシパルを作成しており、サービス プリンシパルにサブスクリプションに対するアクセス許可がある場合は、`azure login` コマンドを実行してサービス プリンシパルを認証できます。シナリオによっては、`azure login` コマンドの明示的なパラメーターとして、もしくは CLI スクリプトまたはアプリケーション コードを使用してサービス プリンシパルの資格情報を入力できます。証明書を使用して、Automation のシナリオで非対話的にサービス プリンシパルを認証することもできます。詳細と例については、[Azure Resource Manager でのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)に関するページを参照してください。
 
 ## 発行設定ファイルの使用
 
-Azure Service Management モード CLI コマンドを使用するだけで十分である場合は、発行設定ファイルを使用して接続できます。
+Azure Service Management モードの CLI コマンドを使用するだけで十分である場合は (クラシック デプロイ モデルで Azure VM をデプロイする場合など)、発行設定ファイルを使用して接続できます。
 
 * アカウントの**発行設定ファイルをダウンロード**するには、次のコマンドを使用します (Service Management モードでのみ使用可能)。
 
@@ -122,9 +128,9 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 
 Azure CLI には、異なるコマンド セットを使用して、Azure リソースを操作するための次の 2 つのコマンド モードが用意されています。
 
-* **Resource Manager モード** - Resource Manager デプロイ モデルで Azure リソースを操作します。このモードを設定するには、`azure config mode arm` を実行します。
+* **Resource Manager モード** - Resource Manager デプロイ モデルでの Azure リソースの操作用です。このモードを設定するには、`azure config mode arm` を実行します。
 
-* **サービス管理モード** - クラシック デプロイ モデルで Azure リソースを操作します。このモードを設定するには、`azure config mode asm` を実行します。
+* **サービス管理モード** - クラシック デプロイ モデルでの Azure リソースの操作用です。このモードを設定するには、`azure config mode asm` を実行します。
 
 最初にインストールされた場合、CLI は Service Management モードです。
 
@@ -147,10 +153,10 @@ Azure CLI には、異なるコマンド セットを使用して、Azure リソ
 アカウントに関連付けられたサブスクリプションが Active Directory のみを使用して認証された場合は、ログアウトするとローカル プロファイルからサブスクリプション情報が削除されます。ただし、サブスクリプション用に発行設定ファイルもインポートされている場合は、ログアウトするとローカル プロファイルから Active Directory 関連の情報のみが削除されます。
 ## 次のステップ
 
-* Azure CLI コマンドを使用するには、「[Azure Resource Manager (arm) モードでの Azure CLI コマンド](./virtual-machines/azure-cli-arm-commands.md)」および「[Azure サービス管理 (asm) モードでの Azure CLI コマンド](virtual-machines-command-line-tools.md)」をご覧ください。
+* Azure CLI コマンドを使用するには、「[Resource Manager モードでの Azure CLI コマンド](./virtual-machines/azure-cli-arm-commands.md)」および「[Azure サービス管理 (asm) モードでの Azure CLI コマンド](virtual-machines-command-line-tools.md)」をご覧ください。
 
 * Azure CLI の詳細、ソース コードのダウンロード、問題のレポート、プロジェクトへの協力については、[GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli) のページを参照してください。
 
-* Azure CLI、または Azure を利用していて問題が発生した場合は、[Azure のフォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home)をご覧ください。
+* Azure CLI、または Azure を利用していて問題が発生した場合は、[Azure のフォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurescripting)をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

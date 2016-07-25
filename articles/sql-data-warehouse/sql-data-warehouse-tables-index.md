@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/29/2016"
+   ms.date="07/12/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのテーブルのインデックス作成
@@ -244,6 +244,16 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5
 ```
 
+```sql
+-- Rebuild a single partition with archival compression
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE_ARCHIVE)
+```
+
+```sql
+-- Rebuild a single partition with columnstore compression
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
+```
+
 SQL Data Warehouse でのインデックスの再構築は、オフライン操作です。インデックスの再構築の詳細については、「[Columnstore Indexes Defragmentation (列ストア インデックスの最適化)][]」の「ALTER INDEX REBUILD」セクション、および構文トピック「[ALTER INDEX][]」を参照してください。
  
 ### 手順 3. クラスター化列ストア セグメントの品質改善を確認する
@@ -315,6 +325,7 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
 [一時]: ./sql-data-warehouse-tables-temporary.md
 [Concurrency]: ./sql-data-warehouse-develop-concurrency.md
+[CTAS]: ./sql-data-warehouse-develop-ctas.md
 [SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
@@ -327,4 +338,4 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

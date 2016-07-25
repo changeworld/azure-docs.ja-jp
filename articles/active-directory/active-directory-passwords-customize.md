@@ -1,23 +1,26 @@
-<properties 
-	pageTitle="カスタマイズ: Azure AD Password Management | Microsoft Azure" 
-	description="ニーズに合わせて Azure AD で Password Management の外観、動作、および通知をカスタマイズする方法。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="asteen" 
-	manager="kbrint" 
-	editor="billmath"/>
+<properties
+	pageTitle="カスタマイズ: Azure AD Password Management | Microsoft Azure"
+	description="ニーズに合わせて Azure AD で Password Management の外観、動作、および通知をカスタマイズする方法。"
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="femila"
+	editor="curtand"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/16/2016" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
 	ms.author="asteen"/>
 
 # Password Management を組織のニーズに合わせてカスタマイズする
-ユーザーに最良のエクスペリエンスを与えるため、Password Management の使用可能なすべての構成オプションを調べて試してみることをお勧めします。[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で、**[Active Directory 拡張機能]** の [構成] タブに移動することで、今すぐ調査を開始できます。このトピックでは、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブから管理者として実行できる以下の Password Management のカスタマイズについて、そのすべてを説明します。
+
+> [AZURE.IMPORTANT] **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+
+ユーザーに最良のエクスペリエンスを与えるため、Password Management の使用可能なすべての構成オプションを調べて試してみることをお勧めします。[Azure クラシック ポータル](https://manage.windowsazure.com)で、**[Active Directory 拡張機能]** の [構成] タブに移動することで、今すぐ調査を開始できます。このトピックでは、[Azure クラシック ポータル](https://manage.windowsazure.com)の中で、ディレクトリの **[構成]** タブから管理者として実行できる以下の Password Management のカスタマイズについて、そのすべてを説明します。
 
 | トピック | |
 | --------- | --------- |
@@ -95,7 +98,7 @@
               <td>
                 <p>パスワード リセット ページにアクセスするユーザーに表示するロゴ (マイクロソフトのロゴまたは独自のカスタム ロゴ) を決定します。この構成項目は、アクセス パネル ページとサインイン ページにブランド化も追加します。</p>
                 <p>
-                  
+
                 </p>
                 <p>テナントのブランド化とカスタマイズ機能については、「<a href="https://technet.microsoft.com/library/dn532270.aspx">サインイン ページとアクセス パネル ページに会社のブランド化を追加</a>」を参照してください。</p>
               </td>
@@ -223,7 +226,7 @@
               <td>
                 <p>パスワードをリセットできるエンド ユーザーのグループを決定します </p>
                 <p>
-                  
+
                 </p>
                 <p>(<strong>[パスワード リセットへのアクセスの制限]</strong> が <strong>[はい]</strong> に設定されている場合のみ表示されます)。</p>
               </td>
@@ -262,16 +265,16 @@
               <td>
                 <p>ユーザーがパスワードをリセットするために使用できるチャレンジを決定します </p>
                 <p>
-                  
+
                 </p>
                 <p>(<strong>[パスワードのリセットが有効になっているユーザー]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
               </td>
               <td>
                 <p>
-                  
+
                 </p>
                 <p>
-                  
+
                 </p>
                 <p>
                   <strong>注:</strong>
@@ -328,7 +331,7 @@
               <td>
                 <p>ユーザーがパスワードをリセットするために通過する必要がある認証方法の最小数を決定します </p>
                 <p>
-                  
+
                 </p>
                 <p>(<strong>[パスワードのリセットが有効になっているユーザー]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
               </td>
@@ -398,7 +401,7 @@
               <td>
                 <p>ユーザーがパスワードをリセットするときに回答する必要がある質問の最小数を決定します </p>
                 <p>
-                  
+
                 </p>
                 <p>(<strong>[セキュリティの質問]</strong> チェック ボックスがオンの場合のみ表示されます)。</p>
               </td>
@@ -432,7 +435,7 @@
               <td>
                 <p>パスワード リセットの登録時とパスワードのリセット時に、ユーザーが選択できる、事前に用意されたセキュリティの質問を定義します。</p>
                 <p>
-                  
+
                 </p>
                 <p>(<strong>[セキュリティの質問]</strong> チェック ボックスがオンの場合のみ表示されます)。</p>
               </td>
@@ -483,7 +486,7 @@
               <td>
                 <p>パスワード リセットの登録時とパスワードのリセット時に、ユーザーが選択できるセキュリティの質問を定義します </p>
                 <p>
-                  
+
                 </p>
                 <p>(<strong>[セキュリティの質問]</strong> チェック ボックスがオンの場合のみ表示されます)。</p>
               </td>
@@ -533,7 +536,7 @@
                   <p>サインイン時にユーザーに登録を求めますか?</p>
                 </div>
                 <p>
-                  
+
                 </p>
               </td>
               <td>
@@ -542,20 +545,20 @@
                 <p>この機能は、職場または学校のアカウントを使用するサインイン ページで機能します。このようなページには、Office 365、Microsoft Azure 管理ポータル、アクセス パネル、Azure AD を使用してサインインするフェデレーション アプリケーションまたはカスタム開発されたアプリケーションがすべて含まれます。
                 </p>
                 <p>
-                  
+
                 </p>
                 <p>強制登録は、パスワードのリセットが有効になっているユーザーにのみ適用されます。そのため、[パスワード リセットへのアクセスの制限] 機能を使用し、パスワード リセットを特定のユーザー グループに適用している場合、そのグループのユーザーだけが、サインイン時にパスワード リセットのための登録を求められます。</p>
                 <p>
-                  
+
                 </p>
                 <p>(<strong>[パスワードのリセットが有効になっているユーザー]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
               </td>
               <td>
                 <p>
-                  
+
                 </p>
                 <p>
-                  
+
                 </p>
                 <p>
                   <strong>注:</strong>
@@ -586,16 +589,16 @@
               <td>
                 <p><strong>[ユーザーに登録を要求しますか?]</strong> がオンになっている場合、この設定は、ユーザーがデータを再確認するまでの経過時間を決定します。</p>
                 <p>
-                  
+
                 </p>
                 <p><strong>[ユーザーが初めてアクセス パネルにサインインするときに登録を要求しますか?]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
               </td>
               <td>
                 <p>
-                  
+
                 </p>
                 <p>
-                  
+
                 </p>
                 <p>
                   <strong>注:</strong>
@@ -622,7 +625,7 @@
               <td>
                 <p>エラーが発生したとき、またはユーザーの操作が完了しないときに、パスワード リセット ポータルの左側に表示される [管理者に問い合わせてください] リンクが、カスタム URL またはメール アドレスをポイントするかどうかを制御します。</p>
                 <p>
-                  
+
                 </p>
                 <p>(<strong>[パスワードのリセットが有効になっているユーザー]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
               </td>
@@ -668,7 +671,7 @@
               <td>
                 <p><strong>[管理者に問い合わせてください]</strong> リンクがポイントするメール アドレスまたは URL を制御します </p>
                 <p>
-                  
+
                 </p>
                 <p>( <strong>[管理者に問い合わせてください] リンクをカスタマイズしますか?]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
               </td>
@@ -702,13 +705,13 @@
               <td>
                 <p>このディレクトリで Password Writeback が有効になっているかどうかを制御します。書き戻しがオンの場合は、オンプレミスの書き戻しサービスの状態を示します。</p>
                 <p>
-                  
+
                 </p>
                 <p>この設定は、Azure AD Connect を再構成せずにサービスを一時的に無効にする場合に便利です。</p>
               </td>
               <td>
                 <p>
-                  
+
                 </p>
                 <p>
                   <strong>注:</strong>
@@ -748,11 +751,11 @@
                 </div>
               </td>
               <td>
-              
+
               <p>パスワード リセット ポータルにアクセスするユーザーに、パスワードをリセットせずにオンプレミスの Active Directory アカウントのロックを解除するオプションを表示するかどうかを指定します。既定では、パスワード リセットを実行するときに、Azure AD によりアカウントのロックが常に解除されます。この設定により、次の 2 つの操作を分離することができます。</p>
-              
+
               <p>[はい] に設定すると、ユーザーはパスワードをリセットし、アカウントのロックを解除するか、パスワードをリセットせずにロックを解除するかを選択できます。</p>
-              
+
               <p>[いいえ] に設定すると、ユーザーはパスワードのリセットとアカウントのロック解除を組み合わせた操作しか実行できなくなります。</p>
 
               </td>
@@ -763,7 +766,7 @@
                 <ul>
                   <li class="unordered">
 												この機能を使用するには、2015 年 8 月以降のリリースの Azure AD Connect (バージョン 1.0.8667.0 以上) をインストールする必要があります。<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">ここをクリックすると、Azure AD Connect の最新バージョンをダウンロードできます。</a></li>
-                        
+
                   <li class="unordered">
                     <strong>注:</strong> この機能をテストするには、パスワード ライトバックを有効にし、(フェデレーション ユーザーやパスワード同期ユーザーなどの) オンプレミスのロックされたアカウントを使用する必要があります。オンプレミスではなく、ロックされたアカウントを使用していないユーザーには、アカウントのロックを解除するオプションは表示されません。</li>
                 </ul>
@@ -860,7 +863,7 @@
 ## パスワードのリセットに関するドキュメントへのリンク
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* [**自分のパスワードのリセット**](active-directory-passwords-update-your-own-password.md) - システムのユーザーとして自分のパスワードをリセットまたは変更する方法について説明します。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
@@ -872,4 +875,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0713_2016-->

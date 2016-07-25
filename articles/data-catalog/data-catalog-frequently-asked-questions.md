@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="03/31/2016"
+   ms.date="07/12/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog のよく寄せられる質問
@@ -140,4 +140,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

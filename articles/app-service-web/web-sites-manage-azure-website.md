@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/27/2016" 
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Azure App Service での Web アプリの管理
 
@@ -60,8 +60,7 @@ Web アプリの運用中、それが利用可能であり、ユーザー トラ
 ### Monitoring
 
 - Azure ポータルにより、CPU 使用率やクライアント要求の数などの[パフォーマンス メトリックを追加する](web-sites-monitor.md)ことができます。
-- 詳細に分析するには、New Relic を使用してパフォーマンスを監視および管理してください。「[Azure App Service の .NET Web アプリに対する New Relic によるパフォーマンス管理](store-new-relic-web-sites-dotnet-application-performance-management.md)」を参照してください。
-- トラフィックに応じた [Web アプリのスケーリング](web-sites-scale.md)。レベルに応じて、VM の数や VM インスタンスのサイズのスケーリングが可能です。 Standard および Premium レベルの場合には、自動スケーリングを設定することができます。その場合、Web アプリは、固定スケジュールに従って、または負荷に応じて、自動スケールされます。  
+- トラフィックに応じた [Web アプリのスケーリング](web-sites-scale.md)。レベルに応じて、VM の数や VM インスタンスのサイズのスケーリングが可能です。 Standard および Premium レベルの場合には、自動スケーリングを設定することができます。その場合、Web アプリは、固定スケジュールに従って、または負荷に応じて、自動スケールされます。
  
 ### バックアップ
 
@@ -70,7 +69,7 @@ Web アプリの運用中、それが利用可能であり、ユーザー トラ
 
 ### トラブルシューティング
 
-- 問題がある場合、クラウドで診断ログおよびライブ デバッグ機能を使用することにより、[Visual Studio でのトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)を実行できます。 
+- 問題がある場合、クラウドで診断ログおよびライブ デバッグ機能を使用することにより、[Visual Studio でのトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)を実行できます。
 - Visual Studio 以外にも、診断ログ収集のためのさまざまな方法があります。「[Azure App Service での Web アプリの診断ログの有効化](web-sites-enable-diagnostic-log.md)」を参照してください。
 - Node.js アプリケーションについては、「[Azure App Service での Node.js Web アプリのデバッグ方法](web-sites-nodejs-debug.md)」を参照してください。
 
@@ -87,7 +86,7 @@ Web アプリの運用中、それが利用可能であり、ユーザー トラ
 
 Visual Studio Team Services を使用する場合は、ソース管理から継続的デプロイを設定することができます。
 
-- [Team Foundation バージョン管理 (TFVC) の使用](../cloud-services/cloud-services-continuous-delivery-use-vso.md) 
+- [Team Foundation バージョン管理 (TFVC) の使用](../cloud-services/cloud-services-continuous-delivery-use-vso.md)
 - [Git の使用](../cloud-services/cloud-services-continuous-delivery-use-vso-git.md)
  
 <!-- Anchors. -->
@@ -98,4 +97,4 @@ Visual Studio Team Services を使用する場合は、ソース管理から継�
 
   
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -39,4 +39,23 @@ Azure IoT プロトコル ゲートウェイについて、およびそれを Io
 * [Azure IoT protocol gateway repository on GitHub (GitHub の Azure IoT プロトコル ゲートウェイ リポジトリ)](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
 * [Azure IoT protocol gateway developer guide (Microsoft Azure IoT プロトコル ゲートウェイ開発者ガイド)](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+IoT Hub のデプロイの計画に関する詳細については、以下をご覧ください。
+
+- [Event Hubs との比較][lnk-compare]
+- [HA と DR のスケーリング][lnk-scaling]
+
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [開発者ガイド][lnk-devguide]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
+
+[lnk-compare]: iot-hub-compare-event-hubs.md
+[lnk-scaling]: iot-hub-scaling.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

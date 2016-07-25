@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/22/2016"
+	ms.date="07/11/2016"
 	ms.author="jeedes"/>
 
 
@@ -60,7 +60,7 @@ Azure AD への Weekdone の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Weekdone を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -281,4 +281,4 @@ Weekdone で Azure AD のシングル サインオンを構成してテストす
 [204]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="06/30/2016" 
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Azure App Service での API Apps のサービス プリンシパル認証
 
@@ -415,4 +415,4 @@ Azure Active Directory の詳細については、次のリソースを参照し
 
 Visual Studio を使用するか、[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)から[デプロイを自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)して、Visual Studio プロジェクトを API アプリにデプロイする他の方法については、「[Azure App Service へのアプリのデプロイ](../app-service-web/web-sites-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

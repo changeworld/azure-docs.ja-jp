@@ -4,7 +4,7 @@
 	keywords="スタック トレース、エラー メッセージ"
 	services="hdinsight"
 	documentationCenter="NA"
-	authors="cjgronlund"
+	authors="mumian"
 	manager="paulettm"
 	editor="cgronlun"/>
 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="NA"
 	ms.workload="big-data"
 	ms.date="03/21/2016"
-	ms.author="rashimg;cgronlun"/>
+	ms.author="rashimg;jgao"/>
 
 # HDInsight での Hadoop スタック トレース エラー: トラブルシューティングに関する記事のインデックス
 
@@ -34,4 +34,4 @@ Hadoop スタック トレース エラーに関するこのインデックス�
 * [BLOB ストレージのヒープ ダンプを収集して Hadoop サービスをデバッグおよび分析する](hdinsight-hadoop-collect-debug-heap-dumps.md)
 * [Azure HDInsight の Hadoop コンポーネントのリリース ノート](hdinsight-release-notes.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0713_2016-->

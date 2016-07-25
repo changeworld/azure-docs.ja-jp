@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Adaptive Suite の統合
@@ -37,7 +37,7 @@
 
 ###Adaptive Suite のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-adaptive-suite-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Adaptive Suite** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure クラシック ポータルの **Adaptive Suite** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-adaptive-suite-tutorial/IC805640.png "Configure Single Sign-On")
 
@@ -76,9 +76,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-adaptive-suite-tutorial/IC805641.png "Configure Single Sign-On")
 
-3.  **[アプリケーション設定の構成]** ページの **[応答 URL]** テキスト ボックスに、次のパターン ”*https://login.adaptiveinsights.com:443/samlsso/RlJFRVRSSUFMMTI3MTE=*" を使用して URL を入力してから、**[次へ]** をクリックします。
+3.  **[アプリケーション設定の構成]** ページの **[応答 URL]** テキスト ボックスに、次のパターン ”*https://login.adaptiveinsights.com:443/samlsso/RlJFRVRSSUFMMTI3MTE=*" を使用して URL を入力してから、**[次へ]* をクリックします。
 
-    >[AZURE.NOTE]この値は、Adaptive Suite の **[SAML SSO 設定]** ページから取得できます。
+    >[AZURE.NOTE] この値は、Adaptive Suite の **[SAML SSO 設定]** ページから取得できます。
 
     ![Configure App Settings](./media/active-directory-saas-adaptive-suite-tutorial/IC805642.png "Configure App Settings")
 
@@ -101,9 +101,9 @@
     ![SAML SSO 設定](./media/active-directory-saas-adaptive-suite-tutorial/IC805646.png "SAML SSO 設定")
 
     1.  **[ID プロバイダー名]** テキスト ボックスに、構成の名前を入力します。
-    2.  Azure ポータルの **[Adaptive Suite でのシングル サインオンの構成]** ダイアログ ページで、**[エンティティ ID]** の値をコピーし、**[ID プロバイダー エンティティ ID]** テキスト ボックスに貼り付けます。
-    3.  Azure ポータルの **[Adaptive Suite でのシングル サインオンの構成]** ダイアログ ページで、**[SAML SSO URL]** の値をコピーし、**[ID プロバイダー SSO URL]** テキスト ボックスに貼り付けます。
-    4.  Azure ポータルの **[Adaptive Suite でのシングル サインオンの構成]** ダイアログ ページで、**[SAML SSO URL]** の値をコピーし、**[カスタム ログアウト URL]** テキスト ボックスに貼り付けます。
+    2.  Azure クラシック ポータルの **[Adaptive Suite でのシングル サインオンの構成]** ダイアログ ページで、**[エンティティ ID]** の値をコピーし、**[ID プロバイダー エンティティ ID]** テキスト ボックスに貼り付けます。
+    3.  Azure クラシック ポータルの **[Adaptive Suite でのシングル サインオンの構成]** ダイアログ ページで、**[SAML SSO URL]** の値をコピーし、**[ID プロバイダー SSO URL]** テキスト ボックスに貼り付けます。
+    4.  Azure クラシック ポータルの **[Adaptive Suite でのシングル サインオンの構成]** ダイアログ ページで、**[SAML SSO URL]** の値をコピーし、**[カスタム ログアウト URL]** テキスト ボックスに貼り付けます。
     5.  ダウンロードした証明書をアップロードするには、**[ファイルの選択]**をクリックします。
     6.  **[SAML ユーザー ID]** として、**[ユーザーの Adaptive Insights ユーザー名]** を選択します。
     7.  **[SAML ユーザー ID の場所]** として、**[サブジェクトの NameID 内のユーザー ID ]** を選択します。
@@ -111,7 +111,7 @@
     9.  **[SAML を有効にする]** として、**[SAML SSO を許可して、Adaptive Insights に直接ログインする]** を選択します。
     10. **[保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-adaptive-suite-tutorial/IC805647.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -138,7 +138,7 @@ Azure AD ユーザーが Adaptive Suite にログインできるようにする�
     2.  **[ロール]** を選択します。
     3.  **[送信]** をクリックします。
 
->[AZURE.NOTE]他の Adaptive Suite ユーザー アカウント作成ツールまたは Adaptive Suite から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] 他の Adaptive Suite ユーザー アカウント作成ツールまたは Adaptive Suite から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -146,9 +146,9 @@ Azure AD ユーザーが Adaptive Suite にログインできるようにする�
 
 ###ユーザーを Adaptive Suite に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  Adaptive Suite アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Adaptive Suite** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-adaptive-suite-tutorial/IC805650.png "ユーザーの割り当て")
 
@@ -156,6 +156,6 @@ Azure AD ユーザーが Adaptive Suite にログインできるようにする�
 
     ![Yes](./media/active-directory-saas-adaptive-suite-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

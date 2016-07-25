@@ -40,9 +40,9 @@
 
 ## トランザクション レプリケーションの要件
 
-トランザクション レプリケーションは、SQL Server 6.5 以降、SQL Server に内蔵された技術です。非常に成熟した、証明済みの技術であり、ほとんどの DBA に運用経験があります。[SQL Server 2016 プレビュー](http://www.microsoft.com/server-cloud/products/sql-server-2016/)では、Azure SQL Database をオンプレミス パブリケーションの[トランザクション レプリケーション サブスクライバー](https://msdn.microsoft.com/library/mt589530.aspx)として構成できるようになりました。Management Studio の設定は、オンプレミス サーバーでトランザクション レプリケーション サブスクライバーを設定する場合とまったく同じです。このシナリオは、パブリッシャーとディストリビューターの SQL Server のバージョンが次のいずれか以上である場合にサポートされます。
+トランザクション レプリケーションは、SQL Server 6.5 以降、SQL Server に内蔵された技術です。非常に成熟した、証明済みの技術であり、ほとんどの DBA に運用経験があります。[SQL Server 2016](https://www.microsoft.com/ja-JP/cloud-platform/sql-server) では、Azure SQL Database をオンプレミス パブリケーションの[トランザクション レプリケーション サブスクライバー](https://msdn.microsoft.com/library/mt589530.aspx)として構成できるようになりました。Management Studio の設定は、オンプレミス サーバーでトランザクション レプリケーション サブスクライバーを設定する場合とまったく同じです。このシナリオは、パブリッシャーとディストリビューターの SQL Server のバージョンが次のいずれか以上である場合にサポートされます。
 
- - SQL Server 2016 CTP3 (プレビュー) 以降 
+ - SQL Server 2016 以降
  - SQL Server 2014 SP1 CU3 以降
  - SQL Server 2014 RTM CU10 以降
  - SQL Server 2012 SP2 CU8 以降
@@ -56,7 +56,7 @@
 
 - [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 - [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-- [SQL Server 2016 Preview](http://www.microsoft.com/server-cloud/products/sql-server-2016/)
+- [SQL Server 2016](https://www.microsoft.com/ja-JP/cloud-platform/sql-server)
 
 ## その他のリソース
 
@@ -65,4 +65,4 @@
 - [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

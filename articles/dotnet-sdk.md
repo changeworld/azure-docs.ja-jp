@@ -14,7 +14,7 @@
 	ms.devlang="dotnet" 
 	ms.topic="article" 
 	ms.date="06/30/2016" 
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Azure SDK for .NET とは
 
@@ -41,7 +41,7 @@ Azure SDK for .NET には次の製品が含まれており、インストール�
 - [Microsoft ASP.NET and Web Tools for Visual Studio](#wte)
 - [Microsoft Azure Data Lake Tools for Visual Studio](#datalake)
 
-###<a id="vwd"></a>Visual Studio Express for Web
+###<a id="vwd"></a>Visual Studio Community エディション 2015
 
 コンピューターに Visual Studio がインストールされていない場合は、SDK によって [Visual Studio Community エディション 2015](https://www.visualstudio.com/products/visual-studio-community-vs) がインストールされます。
 
@@ -191,4 +191,4 @@ Azure SDK for .NET (クライアント ライブラリを含む) のソース �
 
 Azure のクライアント ライブラリのリファレンス ドキュメントについては、[Azure .NET のリファレンス ページ](https://azure.microsoft.com/documentation/api/)を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

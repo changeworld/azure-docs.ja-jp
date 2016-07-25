@@ -42,7 +42,7 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | Ambari | 443 | HTTPS | Ambari Web UI。[Ambari Web UI を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)に関する記事をご覧ください。 |
 | Ambari | 443 | HTTPS | Ambari REST API。[Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md)に関する記事をご覧ください。 |
 | WebHCat | 443 | HTTPS | HCatalog REST API。[Curl での Hive の使用](hdinsight-hadoop-use-Pig-curl.md)、[Curl での Pig の使用](hdinsight-hadoop-use-Pig-curl.md)、[Curl での MapReduce の使用](hdinsight-hadoop-use-mapreduce-curl.md)に関する記事をご覧ください。 |
-| HiveServer2 | 443 | ODBC | ODBC を使用して Hive に接続します。[「Connect Excel to HDInsight with the Microsoft ODBC driver (Microsoft ODBC ドライバーを使用した Excel から HDInsight への接続)」](hdinsight-connect-excel-hive-odbc-driver)をご覧ください。 |
+| HiveServer2 | 443 | ODBC | ODBC を使用して Hive に接続します。[Microsoft ODBC ドライバーを使用した Excel から HDInsight への接続](hdinsight-connect-excel-hive-odbc-driver.md)に関する記事をご覧ください。 |
 | HiveServer2 | 443 | JDBC | JDBC を使用して Hive に接続します。[Hive JDBC ドライバーを使用した HDInsight の Hive への接続](hdinsight-connect-hive-jdbc-driver.md)に関する記事をご覧ください。 |
 
 次のポートは、特定のクラスターの種類で使用できます。
@@ -133,4 +133,4 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | リージョン サーバー | すべての worker ノード | 16020 | &nbsp; | &nbsp; |
 | &nbsp; | &nbsp; | 2181 | &nbsp; | クライアントが ZooKeeper への接続に使用するポート |
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

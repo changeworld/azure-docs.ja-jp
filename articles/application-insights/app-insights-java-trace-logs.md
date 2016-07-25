@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/21/2016" 
+	ms.date="07/12/2016" 
 	ms.author="awills"/>
 
 # Application Insights を使用した Java トレース ログの探索
@@ -136,9 +136,9 @@ Application Insights のアペンダーは、上記のコード サンプルに�
 
 ## Application Insights ポータルでのトレースの探索
 
-これで、Application Insights にトレースを送信するようにプロジェクトが構成されました。これらのトレースは、Application Insights ポータルの [[診断検索]][diagnostic] ブレードで表示および検索できます。
+これで、Application Insights にトレースを送信するようにプロジェクトが構成されました。これらのトレースは、Application Insights ポータルの [[検索]][diagnostic] ブレードで表示および検索できます。
 
-![Application Insights ポータルで診断検索を開きます](./media/app-insights-java-trace-logs/10-diagnostics.png)
+![Application Insights ポータルで [検索] を開きます](./media/app-insights-java-trace-logs/10-diagnostics.png)
 
 ## 次のステップ
 
@@ -151,4 +151,4 @@ Application Insights のアペンダーは、上記のコード サンプルに�
 
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Abintegro の統合
@@ -37,7 +37,7 @@
 
 ###Abintegro のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-abintegro-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Abintegro** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure クラシック ポータルの **Abintegro** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-abintegro-tutorial/IC790079.png "シングル サインオンの構成")
 
@@ -86,9 +86,9 @@
 
 5.  Abintegro サポート チームに、メタデータ ファイルを送信します。
 
-    >[AZURE.NOTE]シングル サインオンの構成は、Abintegro サポート チームが実行する必要があります。構成が完了すると、サポート チームから通知が届きます。
+    >[AZURE.NOTE] シングル サインオンの構成は、Abintegro サポート チームが実行する必要があります。構成が完了すると、サポート チームから通知が届きます。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-abintegro-tutorial/IC790083.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
@@ -100,9 +100,9 @@ Abintegro へのユーザー プロビジョニングの構成にあたって必
 
 ###ユーザーを Abintegro に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  Abintegro アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Abintegro** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-abintegro-tutorial/IC790084.png "ユーザーの割り当て")
 
@@ -110,6 +110,6 @@ Abintegro へのユーザー プロビジョニングの構成にあたって必
 
     ![Yes](./media/active-directory-saas-abintegro-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

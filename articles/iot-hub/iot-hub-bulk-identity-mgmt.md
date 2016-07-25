@@ -332,10 +332,26 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## 次のステップ
 
-この記事では、IoT Hub のデバイス ID レジストリに対して一括操作を実行する方法について説明しました。IoT Hub の機能や、他の IoT のシナリオを次の記事でさらに詳しく説明しています。
+この記事では、IoT Hub のデバイス ID レジストリに対して一括操作を実行する方法について説明しました。Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
-- [C# プログラムを使って IoT Hub を作成する](iot-hub-rm-template.md)
-- [IoT Hub usage metrics (IoT Hub の使用状況に関するメトリック)](iot-hub-metrics.md)
-- [IoT Hub 操作の監視](iot-hub-operations-monitoring.md)
+- [使用状況のメトリック][lnk-metrics]
+- [操作の監視][lnk-monitor]
+- [IoT Hub へのアクセスの管理][lnk-itpro]
 
-<!---HONumber=AcomDC_0504_2016-->
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+
+[lnk-metrics]: iot-hub-metrics.md
+[lnk-monitor]: iot-hub-operations-monitoring.md
+[lnk-itpro]: iot-hub-itpro-info.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+
+<!---HONumber=AcomDC_0713_2016-->

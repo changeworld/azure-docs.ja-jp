@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure ポータルでのストレージ メトリックの有効化 | Microsoft Azure" 
-	description="BLOB、Queue、Table、および File サービスに対するストレージ メトリックを有効にする方法" 
-	services="storage" 
-	documentationCenter="" 
-	authors="robinsh" 
-	manager="carmonm" 
+<properties
+	pageTitle="Azure ポータルでのストレージ メトリックの有効化 | Microsoft Azure"
+	description="BLOB、Queue、Table、および File サービスに対するストレージ メトリックを有効にする方法"
+	services="storage"
+	documentationCenter=""
+	authors="robinsh"
+	manager="carmonm"
 	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="05/09/2016" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="07/05/2016"
 	ms.author="robinsh"/>
 
 # Azure のストレージ メトリックの有効化とメトリック データの表示
@@ -30,7 +30,7 @@
 
 [Azure ポータル](https://portal.azure.com)でメトリックを有効にするには、次の手順に従います。
 
-1. ストレージ アカウントに移動します。 
+1. ストレージ アカウントに移動します。
 1. **[設定]** ブレードを開き、**[診断]** を選択します。
 1. **[状態]** が **[オン]** に設定されていることを確認します。
 1. 監視するサービスのメトリックを選択します。
@@ -71,7 +71,7 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
     // Create service client for credentialed access to the Blob service.
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Enable Storage Analytics logging and set retention policy to 10 days. 
+    // Enable Storage Analytics logging and set retention policy to 10 days.
     ServiceProperties properties = new ServiceProperties();
     properties.Logging.LoggingOperations = LoggingOperations.All;
     properties.Logging.RetentionDays = 10;
@@ -92,7 +92,7 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
     // Set the service properties.
     blobClient.SetServiceProperties(properties);
 
-    
+
 ## ストレージ メトリックを表示する
 
 ストレージ アカウントを監視するように Storage Analytics メトリックを構成すると、ストレージ アカウントのよく知られたテーブルのセットにメトリックが記録されます。[Azure ポータル](https://portal.azure.com)では、時間単位のメトリックを表示するようにグラフを構成できます。
@@ -102,7 +102,16 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
 3. グラフに表示するメトリックを編集するには、**[編集]** をクリックします。個々のメトリックを選択または選択解除して、メトリックを追加または削除することができます。
 4. メトリックの編集作業が終わったら、**[保存]** をクリックします。
 
-長期間ストレージのメトリックをダウンロードし、それらをローカルで分析する場合、ツールを使用するか、コードを記述し、テーブルを読み込む必要があります。分析のために分単位メトリックをダウンロードする必要があります。ストレージ アカウントにすべてのテーブルを一覧表示した場合、このテーブルは表示されない場合がありますが、名前で直接アクセスできます。多くのサードパーティ製ストレージ閲覧ツールはこれらのテーブルを認識するため、直接表示できます (利用できるツールの一覧については、[Microsoft Azure ストレージ エクスプローラー](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)に関するブログ記事をご覧ください)。
+長期間ストレージのメトリックをダウンロードしたり、それらをローカルで分析したりする場合は、次のようにしてください。
+
+- これらのテーブルを認識し、表示やダウンロードを行うことができるツールを使用します。
+- テーブルの読み取りと格納を行うためのカスタム アプリケーションやスクリプトを記述します。
+
+多くのサード パーティ製ストレージ閲覧ツールは、これらのテーブルを認識し、テーブルを直接表示できます。利用できるツールの一覧については、「[Azure ストレージ エクスプローラー](storage-explorers.md)」を参照してください。
+
+> [AZURE.NOTE] [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のバージョン 0.8.0 以降では、分析メトリック テーブルの表示とダウンロードができるようになりました。
+
+分析テーブルにプログラムでアクセスする場合、ストレージ アカウント内のすべてのテーブルを一覧表示すると、分析テーブルは表示されないことに注意してください。名前を指定して直接アクセスするか、.NET クライアント ライブラリの [CloudAnalyticsClient API](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.analytics.cloudanalyticsclient.aspx) を使用してテーブル名を照会する必要があります。
 
 ### 時間単位のメトリック
 - $MetricsHourPrimaryTransactionsBlob
@@ -148,7 +157,7 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
     // Convert the dates to the format used in the PartitionKey
     var start = startDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");
     var end = endDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");
-    
+
     var services = Enum.GetValues(typeof(StorageService));
     foreach (StorageService service in services)
     {
@@ -161,9 +170,9 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
     // Note, you can't filter using the entity properties Time, AccessType, or TransactionType
     // because they are calculated fields in the MetricsEntity class.
     // The PartitionKey identifies the DataTime of the metrics.
-    where entity.PartitionKey.CompareTo(start) >= 0 && entity.PartitionKey.CompareTo(end) <= 0 
+    where entity.PartitionKey.CompareTo(start) >= 0 && entity.PartitionKey.CompareTo(end) <= 0
     select entity;
-    
+
     // Filter on "user" transactions after fetching the metrics from Table Storage.
     // (StartsWith is not supported using LINQ with Azure table storage)
     var results = query.ToList().Where(m => m.RowKey.StartsWith("user"));
@@ -171,7 +180,7 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
     Console.WriteLine(resultString);
     }
     }
-    
+
     private static string MetricsString(MetricsEntity entity, OperationContext opContext)
     {
     var entityProperties = entity.WriteEntity(opContext);
@@ -181,7 +190,7 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
     string.Format("TransactionType: {0}, ", entity.TransactionType) +
     string.Join(",", entityProperties.Select(e => new KeyValuePair<string, string>(e.Key.ToString(), e.Value.PropertyAsObject.ToString())));
     return entityString;
-    
+
     }
 
 
@@ -203,6 +212,5 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
 
 ## 次のステップ:
 [ストレージ ログの有効化とログ データへのアクセス](https://msdn.microsoft.com/library/dn782840.aspx)
- 
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

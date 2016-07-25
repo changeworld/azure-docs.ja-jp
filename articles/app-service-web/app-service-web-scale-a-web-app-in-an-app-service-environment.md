@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/06/2016" 
+	ms.date="07/12/2016" 
 	ms.author="ccompy"/>
 
 # App Service 環境内でのアプリのスケーリング #
@@ -21,7 +21,7 @@
 Azure App Service では、通常、次の 3 つの項目をスケーリングできます。
 
 - 料金プラン
-- ワーカーのサイズ 
+- ワーカーのサイズ
 - インスタンスの数
 
 ASE では、料金プランを選択または変更する必要はありません。機能に関しては、既に Premium 料金機能レベルにあります。
@@ -84,4 +84,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [AppScale]: http://azure.microsoft.com/documentation/articles/web-sites-scale/
 [AppWarmup]: http://ruslany.net/2015/09/how-to-warm-up-azure-web-app-during-deployment-slots-swap/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

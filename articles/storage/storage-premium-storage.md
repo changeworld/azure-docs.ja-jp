@@ -69,7 +69,7 @@ Windows VM で使用できる Azure VM の種類やサイズについては、�
 
 > [AZURE.NOTE] [記憶域スペース](http://technet.microsoft.com/library/hh831739.aspx)を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。既定では、サーバー マネージャー ユーザー インターフェイス (UI) で最大 8 つのディスクの列を設定できます。ただし、8 つ以上のディスクがある場合は、PowerShell を使用してボリュームを作成し、列の数を手動で指定する必要があります。そうしない場合、サーバー マネージャー UI はそれ以上のディスクがある場合でも 8 つの列を使用し続けます。たとえば、1 つのストライプ セット内に 32 のディスクがある場合は、32 の列を指定する必要があります。PowerShell の [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) コマンドレットの *NumberOfColumns* パラメーターを使用して、仮想ディスクが使用する列数を指定できます。詳細については、[記憶域スペースの概要](http://technet.microsoft.com/library/hh831739.aspx)に関するページおよび「[Storage Spaces Frequently Asked Questions (記憶域スペースに関してよく寄せられる質問)](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx)」をご覧ください。
 
-**キャッシュ**: DS、DSv2 および GS シリーズ VM は独自のキャッシュ機能を備えています。これにより、基になる Premium Storage ディスク パフォーマンス以上の高いレベルのスループットと待機時間を実現できます。Premium Storage ディスクで ReadOnly、ReadWrite、None などのディスク キャッシュ ポリシーを構成できます。既定のディスク キャッシュ ポリシーは、すべてのプレミアム データ ディスクで ReadOnly、オペレーティング システム ディスクで ReadWrite です。アプリケーションのパフォーマンスを最適化するために、適切な構成設定を使用してください。たとえば、SQL Server データ ファイルなどの読み取り負荷の高いまたは読み取り専用のデータ ディスクの場合、ディスク キャッシュ ポリシーを "ReadOnly" に設定します。SQL Server ログ ファイルなどの書き込み負荷の高いまたは書き込み専用のデータ ディスクの場合、ディスク キャッシュ ポリシーを "None" に設定します。Premium Storage での設計の最適化について詳しくは、「[Premium Storage を使用した高パフォーマンスのための設計](storage-premium-storage-performance.md)」を参照してください。
+**キャッシュ**: DS、DSv2 および GS シリーズ VM は独自のキャッシュ機能を備えています。これにより、基になる Premium Storage ディスク パフォーマンス以上の高いレベルのスループットと待機時間を実現できます。Premium Storage ディスクで ReadOnly、ReadWrite、None などのディスク キャッシュ ポリシーを構成できます。既定のディスク キャッシュ ポリシーは、すべてのプレミアム データ ディスクで ReadOnly、オペレーティング システム ディスクで ReadWrite です。アプリケーションのパフォーマンスを最適化するために、適切な構成設定を使用してください。たとえば、SQL Server データ ファイルなどの読み取り負荷の高いデータ ディスクまたは読み取り専用のデータ ディスクの場合、ディスク キャッシュ ポリシーを "ReadOnly" に設定します。SQL Server ログ ファイルなどの書き込み負荷の高いまたは書き込み専用のデータ ディスクの場合、ディスク キャッシュ ポリシーを "None" に設定します。Premium Storage での設計の最適化について詳しくは、「[Premium Storage を使用した高パフォーマンスのための設計](storage-premium-storage-performance.md)」を参照してください。
 
 **分析**: Premium Storage アカウントを使用して VM のパフォーマンスを分析するには、Azure ポータルで Azure VM 診断を有効にします。詳細については、「[Microsoft Azure Virtual Machine Monitoring with Azure Diagnostics Extension (Azure 診断の拡張機能を使用した Microsoft Azure の仮想マシンの監視)](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)」をご覧ください。ディスクのパフォーマンスを確認するには、オペレーティング システム ベースのツール (Windows VM 向け [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx)、Linux VM 向け [IOSTAT](http://linux.die.net/man/1/iostat) など) を使用します。
 
@@ -79,7 +79,7 @@ Windows VM で使用できる Azure VM の種類やサイズについては、�
 
 DS シリーズ、DSv2 シリーズおよび GS シリーズの VM の最大 IOPS とスループット (帯域幅) の最新情報については、「[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」または「[Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
 
-Premium Storage のディスクそれぞれの IOPS とスループット上限については、この記事の「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](#scalability-and-performance-targets-whja-JPing-premium-storage)」のセクションにある表を参照してください。
+Premium Storage のディスクそれぞれの IOPS とスループット上限については、この記事の「[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)」のセクションにある表を参照してください。
 
 ## Premium Storage の拡張性とパフォーマンスの目標
 
@@ -351,7 +351,7 @@ Premium Storage を使用するときには、課金に関する次の考慮事�
 - Premium Storage のスナップショット
 - 送信データ転送
 
-**Premium Storage のディスク/BLOB サイズ**: Premium Storage ディスク/BLOB への課金は、プロビジョニングされたディスク/BLOB のサイズによって異なります。Azure は、プロビジョニングされたサイズ (切り上げたもの) を、「[Premium Storage の拡張性とパフォーマンスの目標](#scalability-and-performance-targets-whja-JPing-premium-storage)」にある表に記載されているオプションの中で最も近い Premium Storage ディスク オプションにマップします。Premium Storage アカウントに保存されているすべてのオブジェクトが、サポートされているプロビジョニングされたサイズのいずれかにマップされ、それに応じて課金されます。そのため、小さな BLOB の格納には Premium Storage アカウントを使用しないでください。プロビジョニングされたディスク/BLOB には、Premium Storage プランの月額料金を使用して、時間割りで計算して課金されます。たとえば、P10 ディスクをプロビジョニングし、20 時間後にそのディスクを削除した場合は、P10 製品の 20 時間分に対して課金されます。これは、実際にディスクに書き込まれたデータの量や、使用した IOPS/スループットには関係ありません。
+**Premium Storage のディスク/BLOB サイズ**: Premium Storage ディスク/BLOB への課金は、プロビジョニングされたディスク/BLOB のサイズによって異なります。Azure は、プロビジョニングされたサイズ (切り上げたもの) を、「[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)」にある表に記載されているオプションの中で最も近い Premium Storage ディスク オプションにマップします。Premium Storage アカウントに保存されているすべてのオブジェクトが、サポートされているプロビジョニングされたサイズのいずれかにマップされ、それに応じて課金されます。そのため、小さな BLOB の格納には Premium Storage アカウントを使用しないでください。プロビジョニングされたディスク/BLOB には、Premium Storage プランの月額料金を使用して、時間割りで計算して課金されます。たとえば、P10 ディスクをプロビジョニングし、20 時間後にそのディスクを削除した場合は、P10 製品の 20 時間分に対して課金されます。これは、実際にディスクに書き込まれたデータの量や、使用した IOPS/スループットには関係ありません。
 
 **Premium Storage のスナップショット**: Premium Storage でのスナップショットについては、スナップショットで使用した追加の容量に対して課金されます。スナップショットの詳細については、「[BLOB のスナップショットの作成](http://msdn.microsoft.com/library/azure/hh488361.aspx)」をご覧ください。
 
@@ -562,4 +562,4 @@ Azure Premium Storage の詳細については、以下の記事を参照して�
 
 [Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

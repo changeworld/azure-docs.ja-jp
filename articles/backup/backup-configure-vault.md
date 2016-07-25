@@ -27,7 +27,7 @@
 
 ![バックアップ プロセスの手順](./media/backup-configure-vault/initial-backup-process.png)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル。
 
 ## 開始する前に
 サーバー (またはクライアント) を Azure にバックアップするには、Azure アカウントが必要です。アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
@@ -150,7 +150,7 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 
 2. Backup エージェントで、**[バックアップのスケジュール]** をクリックします。
 
-    ![Windows Server のバックアップ スケジュールを設定します](./media/backup-configure-vault/schedule-first-backup.png)
+    ![Schedule a Windows Server backup](./media/backup-configure-vault/schedule-first-backup.png)
 
 3. バックアップのスケジュール ウィザードの [作業の開始] ページで、**[次へ]** をクリックします。
 
@@ -184,15 +184,17 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 
 Backup エージェントは、ネットワーク スロットルを提供します。調整では、データ転送中にネットワーク帯域幅をどのように使用するかを制御します。データのバックアップを業務時間中に行う必要があり、バックアップ処理が他のインターネット トラフィックに影響を与えないようにする場合などに、この制御は便利です。調整はバックアップと復元のアクティビティに適用されます。
 
+>[AZURE.NOTE] ネットワーク スロットルは、Windows Server 2008 R2 SP1、Windows Server 2008 SP2、Windows 7 (Service Pack を含む) では使用できません。Azure Backup のネットワーク スロットル機能は、ローカル オペレーティング システムのサービス品質 (QoS) を利用します。Azure Backup で上記のオペレーティング システムを保護することはできますが、これらのプラットフォームで使用できる QoS のバージョンでは、Azure Backup のネットワーク スロットルが機能しません。ネットワーク スロットルは、上記以外の[サポートされているすべてのオペレーティング システム](backup-azure-backup-faq.md#installation-amp-configuration)で使用できます。
+
 **ネットワーク調整を有効にするには**
 
 1. Backup エージェントで、**[プロパティの変更]** をクリックします。
 
     ![Change properties](./media/backup-configure-vault/change-properties.png)
 
-2. **[スロットル]** タブで、**[バックアップ操作用のインターネット使用帯域幅のスロットルを有効にする]** チェック ボックスをオンにします。
+2. **[調整]** タブで、**[バックアップ操作用のインターネット使用帯域幅の調整を有効にする]** チェック ボックスをオンにします。
 
-    ![Network throttling](./media/backup-configure-vault/throttling-dialog.png)
+    ![ネットワークのスロットル](./media/backup-configure-vault/throttling-dialog.png)
 
 3. スロットルを有効にした後、**[作業時間]** と **[作業時間外]** で、バックアップ データ転送のために許可される帯域幅を指定します。
 
@@ -223,4 +225,4 @@ VM や他のワークロードのバックアップの詳細については、�
 - ファイルとフォルダーをバックアップしたので、[コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
 - バックアップを復元する必要がある場合は、[Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="04/06/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure AD と BlueJeans の統合
@@ -37,7 +37,7 @@
 
 ###BlueJeans のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-bluejeans-tutorial/IC700993.png "Active Directory")
 
@@ -66,9 +66,9 @@
 
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで BlueJeans に対する認証を行えるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **BlueJeans** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **BlueJeans** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-bluejeans-tutorial/IC785863.png "シングル サインオンの構成")
 
@@ -76,7 +76,7 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-bluejeans-tutorial/IC785864.png "Configure Single Sign-On")
 
-3.  **[アプリの URL の構成]** ページで、**[BlueJeans サインオン URL]** ボックスに、"*https://company.BlueJeans.com*" のパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリの URL の構成]** ページで、**[BlueJeans サインオン URL]** ボックスに、"*https://company.BlueJeans.com*" のパターンで URL を入力し、**[次へ]* をクリックします。
 
     ![Configure App URL](./media/active-directory-saas-bluejeans-tutorial/IC785865.png "アプリケーション URL の構成")
 
@@ -102,9 +102,9 @@
     ![証明書パス](./media/active-directory-saas-bluejeans-tutorial/IC785870.png "証明書パス")
 
     1.  **[ファイルの選択]** をクリックし、ダウンロードした証明書をアップロードします。
-    2.  Azure ポータルで、**[BlueJeans でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[ログイン URL]** ボックスに貼り付けます。
-    3.  Azure ポータルで、**[BlueJeans でのシングル サインオンの構成]** ダイアログ ページの **[パスワード変更 URL]** の値をコピーし、**[パスワード変更の URL]** ボックスに貼り付けます。
-    4.  Azure ポータルで、**[BlueJeans でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[ログアウト URL]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルで、**[BlueJeans でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[ログイン URL]** ボックスに貼り付けます。
+    3.  Azure クラシック ポータルで、**[BlueJeans でのシングル サインオンの構成]** ダイアログ ページの **[パスワード変更 URL]** の値をコピーし、**[パスワード変更の URL]** ボックスに貼り付けます。
+    4.  Azure クラシック ポータルで、**[BlueJeans でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[ログアウト URL]** ボックスに貼り付けます。
 
 9.  次の手順を実行します。
 
@@ -114,7 +114,7 @@
     2.  **[電子メール]** ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**」と入力します。
     3.  **[変更を保存]** をクリックします。
 
-10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-bluejeans-tutorial/IC785876.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -146,7 +146,7 @@ Azure AD ユーザーが BlueJeans にログインできるようにするには
 
 ###ユーザーを BlueJeans に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **BlueJeans** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -156,6 +156,6 @@ Azure AD ユーザーが BlueJeans にログインできるようにするには
 
     ![Yes](./media/active-directory-saas-bluejeans-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

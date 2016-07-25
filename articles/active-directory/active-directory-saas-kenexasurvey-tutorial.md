@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/20/2016"
+	ms.date="07/11/2016"
 	ms.author="jeedes"/>
 
 
@@ -58,7 +58,7 @@ Azure AD への IBM Kenexa Survey Enterprise の統合を構成するには、�
 
 **ギャラリーから IBM Kenexa Survey Enterprise を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -143,7 +143,7 @@ IBM Kenexa Survey Enterprise で Azure AD のシングル サインオンを構�
 
  - ダウンロードした証明書ファイル
  - **発行者の URL**
- - **SAML SSO URL** 
+ - **SAML SSO URL**
  - **シングル サインアウト サービス URL**
 
 	> [AZURE.NOTE] 応答の NameID 要求値が Kenexa システムで構成されている SSO ID と一致する必要があることに注意してください。そのため、Kenexa サポートチームと連携して、組織内の適切なユーザー ID を SSO ID としてマッピングしてください。既定では、Azure AD によって NameIdentifier が UPN 値として設定されます。これは、以下のスクリーン ショットに示すように [属性] タブから変更できます。統合は、適切なマッピングが完了した後にのみ機能します。
@@ -289,4 +289,4 @@ IBM Kenexa Survey Enterprise で Azure AD のシングル サインオンを構�
 [204]: ./media/active-directory-saas-kenexasurvey-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-kenexasurvey-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->
