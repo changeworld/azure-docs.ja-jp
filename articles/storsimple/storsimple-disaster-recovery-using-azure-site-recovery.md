@@ -182,13 +182,13 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 
 1.  Azure クラシック ポータルにアクセスして、**[Automation]** セクションに移動します。
 
-1.  新しいオートメーション アカウントを作成します。アカウントは、StorSimple Cloud Appliance とストレージ アカウントが作成されたのと同じ geo/リージョンに設定してください。
+2.  新しいオートメーション アカウントを作成します。アカウントは、StorSimple Cloud Appliance とストレージ アカウントが作成されたのと同じ geo/リージョンに設定してください。
 
-2.  **[新規]** & gt; **[App Services]** & gt; **[Automation]** & gt; **[Runbook]** & gt; **[ギャラリーから]** をクリックして、必要なすべての Runbook をオートメーション アカウントにインポートします。
+3.  **[新規]** > **[App Services]** > **[Automation]** > **[Runbook]** > **[ギャラリーから]** をクリックして、必要なすべての Runbook をオートメーション アカウントにインポートします。
 
 	![](./media/storsimple-dr-using-asr/image3.png)
 
-1.  ギャラリーの **[障害復旧]** ウィンドウで、次の Runbook を追加します。
+4.  ギャラリーの **[障害復旧]** ウィンドウで、次の Runbook を追加します。
 
 	-   StorSimple ボリューム コンテナーのフェールオーバー
 
@@ -207,11 +207,11 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 
 	 ![](./media/storsimple-dr-using-asr/image5.png)
 
-1.  オートメーション アカウントで、**[資産]** タブの **[設定の追加]** & gt; **[資格情報の追加]** をクリックしてから Azure の資格情報を追加し、その資産に AzureCredential という名前を付けます。
+1.  オートメーション アカウントで、**[資産]** タブの **[設定の追加]** > **[資格情報の追加]** をクリックしてから Azure の資格情報を追加し、その資産に AzureCredential という名前を付けます。
 
 	Windows PowerShell の資格情報を使用します。資格情報は、組織 ID ユーザー名とパスワードを含み、この Azure サブスクリプションにアクセスでき、多要素認証が無効にされている必要があります。資格情報は、フェールオーバー時にユーザーに代わって認証し、障害復旧サイトでファイル サーバー ボリュームを稼働するために必要です。
 
-1.  オートメーション アカウントで、**[資産]** タブを選択してから **[設定の追加]** & gt; **[変数の追加]** を選択し、次の変数を追加します。これらの資産を暗号化することもできます。これらの変数は、復旧計画によって異なります。(次の手順で作成する) 復旧計画の名前が TestPlan の場合、変数は TestPlan StorSimRegKey や TestPlan-AzureSubscriptionName などになります。
+1.  オートメーション アカウントで、**[資産]** タブを選択してから **[設定の追加]** > **[変数の追加]** を選択し、次の変数を追加します。これらの資産を暗号化することもできます。これらの変数は、復旧計画によって異なります。(次の手順で作成する) 復旧計画の名前が TestPlan の場合、変数は TestPlan StorSimRegKey や TestPlan-AzureSubscriptionName などになります。
 
 	-   *RecoveryPlanName***-StorSimRegKey**: StorSimple Manager サービス登録キー。
 
@@ -233,7 +233,7 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 
 	-   *RecoveryPlanName***-ScriptContainer**: スクリプトが格納されるクラウドのコンテナー名。コンテナーが存在しない場合に作成されます。
 
-	-   *RecoveryPlanName***-VMGUIDS**: VM が保護されたら、Azure Site Recovery はフェールオーバーされた VM の詳細が識別できる一意の ID を、すべての VM に割り当てます。VMGUID を取得するには、**[Recovery Services]** タブを選択して、**[Protected Item (保護された項目)]** & gt; **[保護グループ]** & gt; **[マシン]** &gt; **[プロパティ]** をクリックします。VM が複数ある場合は、コンマ区切りの文字列として GUID を追加します。
+	-   *RecoveryPlanName***-VMGUIDS**: VM が保護されたら、Azure Site Recovery はフェールオーバーされた VM の詳細が識別できる一意の ID を、すべての VM に割り当てます。VMGUID を取得するには、**[Recovery Services]** タブを選択して、**[Protected Item (保護された項目)]** > **[保護グループ]** > **[マシン]** > **[プロパティ]** をクリックします。VM が複数ある場合は、コンマ区切りの文字列として GUID を追加します。
 
 	-   *RecoveryPlanName***-AutomationAccountName**: Runbook と資産を追加したオートメーション アカウントの名前。
 
