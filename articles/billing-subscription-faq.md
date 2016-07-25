@@ -14,26 +14,26 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/29/2016"
+	ms.date="07/11/2016"
 	ms.author="genli"/>
 
 #  Azure の課金とサブスクリプションに関する FAQ
 
 この記事では、Azure の課金とサブスクリプションについて特に多く寄せられる質問に回答しています。
 
-**アカウント管理**
+## アカウント管理
 
 - [新しい Azure ポータルではどのようにして管理者アカウントを管理するのですか。](#how-do-i-manage-administrator-accounts-in-the-new-azure-portal)
 - [通知は、マイ アカウントに関連付けられたアカウント所有者のメール アドレス以外のメール アドレスに送信できますか。](#can-notifications-be-sent-to-a-different-email-address-other-than-the-account-owner-email-address-associated-with-my-account)
 - [サブスクリプションの編集や詳細の追加ができないのはなぜでしょうか。](#why-cannot-i-edit-or-add-details-to-my-subscription)
 - [Azure ポータルにログインできません](#i-am-unable-to-log-in-to-the-azure-portal)
 
-**課金**
+## 課金
 
 - [請求書のコピーを取得するにはどうすればよいですか。](#how-do-i-get-a-copy-of-my-invoice)
 - [前回の請求期間の請求書が表示されません。なぜですか?](#i-do-not-see-an-invoice-for-the-last-billing-period-why)
 
-**無料試用版**
+## 無料試用版
 
 - [Azure の試用は無料ですか。課金される可能性はありませんか。](#can-i-try-azure-for-free-without-any-risk-of-being-charged)
 - [試用版サブスクリプションとは何ですか。有効期間は?](#what-is-a-trial-subscription-and-how-long-does-it-last)
@@ -41,7 +41,7 @@
 - [無料試用版の使用制限を削除するとどうなりますか。](#what-happens-if-i-remove-the-spending-limit-on-my-free-trial)
 - [無料試用版についての詳しい情報はどこで確認できますか。](#where-can-i-get-more-details-on-free-trial)
 
-**Azure の購入方法**
+## Azure の購入方法
 
 - [Microsoft Azure が販売されている国と地域はどこですか。Azure の購入に使用できる通貨はどれですか。](#in-which-countries-and-regions-is-microsoft-azure-commercially-available-and-what-currencies-can-be-used-to-purchase-azure)
 - [禁輸措置を受けている国に対する Azure ベースのサービスの再販は制限を受けますか。](#do-we-restrict-resale-of-azure-based-service-into-countries-under-embargo)
@@ -49,7 +49,7 @@
 - [Azure 以外で購入した既存の Windows ライセンスは使用できますか。](#can-i-use-my-existing-windows-licenses-that-i-bought-outside-of-azure)
 - [Azure サービスはだれが購入できますか。](#who-can-purchase-azure-services)
 
-**支払いについて**
+## 支払いについて
 
 - [Azure の購入には、どのような支払い方法がありますか。](#what-payment-options-do-i-have-in-purchasing-azure)
 - [請求書による支払いをリクエストするにはどうすればよいですか。](#how-can-i-request-the-invoice-method-of-payment)
@@ -58,24 +58,24 @@
 - [クレジット カードの情報を更新または変更するにはどうすればよいですか。](#how-can-i-update-or-change-my-credit-card-information)
 - [Azure サブスクリプションの支払い情報を編集するにはどうすればよいですか。](#how-can-i-edit-my-payment-information-for-my-azure-subscriptions)
 
-**Azure の料金**
+## Azure の料金
 
 - [Azure サービスの利点と価格に関する情報はどこで確認できますか。](#where-can-i-find-the-benefits-and-pricing-information-for-azure-services)
 - [価格プランを変更するにはどうすればよいですか。](#how-do-i-change-my-pricing-plan)
 
-**サービス レベル アグリーメント (SLA)**
+## サービス レベル アグリーメント (SLA)
 
 - [予定されている保守作業のためのサービス ダウンタイムについて事前に知るにはどうすればよいですか。](#how-do-we-know-in-advance-about-service-downtime-for-planned-maintenance)
 - [稼働時間と接続に関する Azure SLA 契約はどのような内容ですか。](#what-is-the-azure-sla-agreement-for-uptime-and-connectivity)
 - [Azure SLA クレジットとは何ですか。](#what-are-the-azure-sla-credits)
 - [Azure サービス レベル アグリーメントは、現在のオンプレミスのマイクロソフト ライセンス契約にどのように関係しますか。](#how-will-azure-service-level-agreements-work-with-current-on-premises-microsoft-licensing-agreements)
 
-**Azure の使用制限**
+## Azure の使用制限
 
 - [使用制限を無効にした場合、再度有効にすることはできますか。](#can-i-turn-the-spending-limit-back-on-if-i-turn-off-it)
 - [使用制限の量は調整できますか。](#can-i-adjust-the-amount-of-the-spending-limit)
 
-**サポート プラン**
+## サポート プラン
 
 - [Azure サポートの購入方法は?](#how-do-i-purchase-azure-support)
 - [月額料金は 1 つの Azure プランが対象ですか? それともアカウント全体が対象になりますか?](#does-the-monthly-rate-cover-a-single-azure-plan-or-the-entire-account)
@@ -84,7 +84,7 @@
 - [期間が終わるとどうなりますか?](#what-happens-at-the-end-of-the-term)
 - [Azure サポート プランを解約するにはどうすればよいですか?](#how-do-i-cancel-my-azure-support-plan)
 
-**サブスクリプション、サービス、データの移行**
+## サブスクリプション、サービス、データの移行
 
 - [Azure サブスクリプションのデータとサービスを新しいサブスクリプションに移行するにはどうすればよいですか。](#how-do-i-migrate-data-and-services-for-my-azure-subscription-to-a-new-subscription)
 - [自分のサブスクリプションの所有権を譲渡するにはどうすればよいですか。](#how-do-i-transfer-ownership-of-my-subscriptions)
@@ -277,7 +277,7 @@ Azure 試用版サブスクリプションは、必要な Microsoft のサービ
 
 ### 試用アカウントで利用できるリソースを教えてください。
 
-無料試用版では、$200 の Azure クレジットを受け取れます。Azure クレジットをどう使うかは、お客様しだいです。詳細については、[無料仕様版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)を参照してください。
+無料試用版では、$200 の Azure クレジットを受け取れます。Azure クレジットをどう使うかは、お客様しだいです。詳細については、[無料試用版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)を参照してください。
 
 ### 無料試用版の使用制限を削除するとどうなりますか。
 
@@ -286,4 +286,4 @@ Azure 試用版サブスクリプションは、必要な Microsoft のサービ
 ### 無料試用版についての詳しい情報はどこで確認できますか。
 [無料試用版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)と[無料試用版に関する公式 FAQ](https://azure.microsoft.com/pricing/free-trial-faq/) を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

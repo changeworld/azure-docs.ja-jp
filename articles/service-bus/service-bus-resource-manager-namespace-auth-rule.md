@@ -13,12 +13,12 @@
     ms.topic="article"
     ms.tgt_pltfrm="dotnet"
     ms.workload="na"
-    ms.date="04/15/2016"
+    ms.date="07/11/2016"
     ms.author="sethm;shvija"/>
 
 # Service Bus の名前空間とキューに使用する承認規則を Azure Resource Manager テンプレートで作成する
 
-この記事では、Azure Resource Manager テンプレートを使用して、Service Bus の名前空間とキューに使用する承認規則を作成する方法について説明します。デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+この記事では、Azure Resource Manager テンプレートを使用して、Service Bus の名前空間とキューに使用する[承認規則](service-bus-authentication-and-authorization.md#shared-access-signature-authentication)を作成する方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][]」を参照してください。
 
@@ -31,13 +31,13 @@
 >-    [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
 >-    [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
 >
->最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][]」で「Service Bus」を検索してください。
+>最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][]」ギャラリーで "Service Bus" を検索してください。
 
 ## デプロイの対象
 
-このテンプレートでデプロイされるのは、メッセージング タイプの Service Bus 名前空間のエンティティ (このケースではキュー) に使用する承認規則です。
+このテンプレートでデプロイされるのは、名前空間とメッセージング エンティティ (このケースではキュー) に使用する Service Bus 承認規則です。
 
-このテンプレートでは、Shared Access Signature (SAS) を認証に使用します。SAS 認証により、アプリケーションは、名前空間、または特定の権限が関連付けられているメッセージ エンティティ (キューまたはトピック) で構成されたアクセス キーを使用して Service Bus に対して認証できます。次に、このキーを使用して、クライアントが後で Service Bus に対する認証に使用できる SAS トークンを生成できます。
+このテンプレートでは、[Shared Access Signature (SAS)](service-bus-sas-overview.md) を認証に使用します。SAS 認証により、アプリケーションは、名前空間、または特定の権限が関連付けられているメッセージ エンティティ (キューまたはトピック) で構成されたアクセス キーを使用して Service Bus に対して認証できます。次に、このキーを使用して、クライアントが後で Service Bus に対する認証に使用できる SAS トークンを生成できます。
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
@@ -47,7 +47,7 @@
 
 Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。常に同じ値に対してはパラメーターを定義しないでください。テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
-テンプレートに含まれるそれぞれのパラメーターについて説明します。
+このテンプレートでは、次のパラメーターを定義します。
 
 ### serviceBusNamespaceName
 
@@ -172,9 +172,9 @@ Azure Resource Manager を使ってリソースを作成、デプロイしたら
 - [Service Bus の認証と承認](service-bus-authentication-and-authorization.md)
 
   [Azure Resource Manager のテンプレートの作成]: ../resource-group-authoring-templates.md
-  [Azure クイックスタート テンプレート]: https://azure.microsoft.com/documentation/templates/
+  [Azure クイックスタート テンプレート]: https://azure.microsoft.com/documentation/templates/?term=service+bus
   [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [Service Bus 承認規則テンプレート]: https://github.com/Azure/azure-quickstart-templates/blob/master/301-servicebus-create-authrule-namespace-and-queue/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

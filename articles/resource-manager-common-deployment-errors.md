@@ -1,12 +1,13 @@
 <properties
    pageTitle="Azure へのデプロイで発生する一般的なエラーのトラブルシューティング | Microsoft Azure"
-   description="Azure Resource Manager でデプロイ時に発生する一般的なエラーを解決する方法について説明します。"
+   description="Azure Resource Manager を使用した Azure へのリソースのデプロイ時に発生する一般的なエラーの解決方法について説明します。"
    services="azure-resource-manager"
    documentationCenter=""
    tags="top-support-issue"
    authors="tfitzmac"
    manager="timlt"
-   editor="tysonn"/>
+   editor="tysonn"
+   keywords="デプロイのエラー、Azure へのデプロイ、Azure へのデプロイ"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -14,12 +15,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/15/2016"
+   ms.date="07/06/2016"
    ms.author="tomfitz"/>
 
-# Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーをトラブルシューティングする
+# Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
-このトピックでは、リソースを Azure にデプロイするときに発生する可能性がある一般的なエラーの解決方法について説明します。デプロイが失敗した理由について詳しい情報が必要な場合は、まず「[デプロイ操作の表示](resource-manager-troubleshoot-deployments-portal.md)」をお読みください。その後、再度こちらの記事を参照し、エラーの解決に役立ててください。
+このトピックでは、Azure へのデプロイで発生する可能がある一般的なエラーの解決方法について説明します。デプロイのエラーについて詳しい情報が必要な場合は、まず[デプロイ操作の表示](resource-manager-troubleshoot-deployments-portal.md)に関する記事をお読みください。その後、再度こちらの記事を参照し、エラーの解決に役立ててください。
 
 ## 無効なテンプレートまたはリソース
 
@@ -34,13 +35,13 @@
 ## リソース名が既に存在する、または既に別のリソースによって使用されている
 
 一部のリソース (特にストレージ アカウント、データベース サーバー、Web サイト) には、Azure 全体で一意となるリソース名を指定する必要があります。一意の名前を作成するには、使用している命名規則に、[uniqueString](resource-group-template-functions.md#uniquestring) 関数の結果を連結します。
- 
-    "name": "[concat('contosostorage', uniqueString(resourceGroup().id))]", 
-    "type": "Microsoft.Storage/storageAccounts", 
+
+    "name": "[concat('contosostorage', uniqueString(resourceGroup().id))]",
+    "type": "Microsoft.Storage/storageAccounts",
 
 ## デプロイ時にリソースが見つからない
 
-Resource Manager は、可能であれば複数のリソースを並列して作成することで、デプロイを最適化しています。リソースを連続してデプロイする必要がある場合は、テンプレートに **dependsOn** 要素を使用して、他のリソースへの依存関係を作成します。たとえば、Web アプリをデプロイする場合は、App Service プランが存在する必要があります。Web アプリが App Service プランに依存していることを指定しなかった場合、Resource Manager では同時に両方のリソースが作成されます。また、App Service プランのリソースが見つからないというエラーが発生します。これは、Web アプリにプロパティを設定しようとしたときに、そのリソースがまだ存在しないためです。このエラーは、Web アプリに依存関係を設定することで回避できます。
+Resource Manager は、可能であれば複数のリソースを並列して作成することで、デプロイを最適化しています。リソースを順番にデプロイする必要がある場合は、テンプレートで **dependsOn** 要素を使用して、他のリソースへの依存関係を作成してください。たとえば、Web アプリをデプロイする場合は、App Service プランが存在する必要があります。Web アプリが App Service プランに依存していることを指定しなかった場合、Resource Manager では同時に両方のリソースが作成されます。また、App Service プランのリソースが見つからないというエラーが発生します。これは、Web アプリにプロパティを設定しようとしたときに、そのリソースがまだ存在しないためです。このエラーは、Web アプリに依存関係を設定することで回避できます。
 
     {
       "apiVersion": "2015-08-01",
@@ -65,7 +66,7 @@ Resource Manager は、可能であれば複数のリソースを並列して作
 
 このエラーは、選択したリソースの SKU (VM サイズなど) が、選択した地域で利用できない場合に発生します。この問題を解決するには、次の 2 とおりの方法があります。
 
-1.	ポータルにログインし、UI から新しいリソースを追加します。値を設定するときに、そのリソースで利用可能な SKU が表示されます。 
+1.	ポータルにログインし、UI から新しいリソースを追加します。値を設定するときに、そのリソースで利用可能な SKU が表示されます。
 
     ![available skus](./media/resource-manager-common-deployment-errors/view-sku.png)
 
@@ -76,7 +77,7 @@ Resource Manager は、可能であれば複数のリソースを並列して作
 
 リソースをデプロイするときに、次のエラー コードとメッセージが表示される場合があります。
 
-    Dode: NoRegisteredProviderFound
+    Code: NoRegisteredProviderFound
     Message: No registered resource provider found for location '<location>' and API version '<api-version>' for type '<resource-type>'.
 
 このエラーの原因として、次の 3 つの理由のいずれかが考えられます。
@@ -93,7 +94,7 @@ Resource Manager は、可能であれば複数のリソースを並列して作
 
     Get-AzureRmResourceProvider -ListAvailable
 
-プロバイダーを登録するには、**Register-AzureRmResourceProvider** を使用し、登録するリソース プロバイダーの名前を指定します。
+プロバイダーを登録するには、**Register-AzureRmResourceProvider** を使用し、登録するリソースプロバイダーの名前を指定します。
 
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 
@@ -110,15 +111,15 @@ Resource Manager は、可能であれば複数のリソースを並列して作
 プロバイダーが登録されているかどうかを確認するには、`azure provider list` コマンドを使用します。
 
     azure provider list
-        
-リソース プロバイダーを登録するには、`azure provider register` コマンドを使用し、登録する*名前空間*を指定します。
+
+リソースプロバイダーを登録するには、`azure provider register` コマンドを使用し、登録する*名前空間*を指定します。
 
     azure provider register Microsoft.Cdn
 
 特定のリソース プロバイダーでサポートされている場所と API バージョンを確認するには、次のコマンドを使用します。
 
     azure provider show -n Microsoft.Compute --json > compute.json
-    
+
 ## クォータを超過した
 
 デプロイがクォータを超過すると、問題が発生する場合があります。クォータは、リソース グループごと、サブスクリプションごと、アカウントごと、その他のスコープごとに指定されている可能性があります。たとえば、リージョンのコア数を制限するようにサブスクリプションが構成されていることがあります。上限を超えたコア数の仮想マシンをデプロイしようとすると、クォータを超過したというエラーが発生します。クォータに関する完全な情報については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md)」をご覧ください。
@@ -126,9 +127,9 @@ Resource Manager は、可能であれば複数のリソースを並列して作
 コアのサブスクリプションのクォータを確認するには、Azure CLI で `azure vm list-usage` コマンドを使用します。次に、無料試用版アカウントのコア クォータが 4 である例を示します。
 
     azure vm list-usage
-    
+
 次のような結果が返されます。
-    
+
     info:    Executing command vm list-usage
     Location: westus
     data:    Name   Unit   CurrentValue  Limit
@@ -145,7 +146,7 @@ Resource Manager は、可能であれば複数のリソースを並列して作
 また、PowerShell では、**Get-AzureRmVMUsage** コマンドレットを使用できます。
 
     Get-AzureRmVMUsage
-    
+
 次のような結果が返されます。
 
     ...
@@ -171,37 +172,37 @@ Resource Manager は、可能であれば複数のリソースを並列して作
 
 デプロイ アクションは、ロールベースのアクセス制御だけでなく、サブスクリプションのポリシーによって制限されることがあります。管理者は、ポリシーを使用して、サブスクリプションにデプロイされるすべてのリソースに規約を課すことができます。たとえば、管理者は、あるリソースの種類について、特定のタグ値を必須にすることができます。そのポリシーの要件を満たしていないと、デプロイ時にエラーが発生します。ポリシーについては、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」をご覧ください。
 
-## 仮想マシンのトラブルシューティング 
+## 仮想マシンのトラブルシューティング
 
 | エラー | 記事 |
 | -------- | ----------- |
-| カスタム スクリプト拡張機能のエラー | [Windows VM 拡張機能のエラー](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)<br />または<br />[Linux VM 拡張機能のエラー](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md) | 
-| OS イメージのプロビジョニング エラー | [新しい Windows VM の作成時のエラー](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)<br />または<br />[新しい Linux VM の作成時のエラー](./virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md) | 
-| 割り当ての失敗 | [Windows VM の割り当てエラー](./virtual-machines/virtual-machines-windows-allocation-failure.md)<br />または<br />[Linux VM の割り当てエラー](./virtual-machines/virtual-machines-linux-allocation-failure.md) | 
-| 接続を試行するときの Secure Shell (SSH) エラー | [Linux VM への Secure Shell 接続](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md) | 
-| VM で実行されているアプリケーションへの接続時に発生するエラー | [Windows VM で実行中のアプリケーション](./virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md)<br />または<br />[Linux VM で実行中のアプリケーション](./virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md) | 
-| リモート デスクトップ接続のエラー | [Windows VM へのリモート デスクトップ接続](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md) | 
-| 再デプロイによって解決する接続エラー | [新しい Azure ノードへの仮想マシンの再デプロイ](./virtual-machines/virtual-machines-windows-redeploy-to-new-node.md) | 
-| クラウド サービスのエラー | [クラウド サービスのデプロイの問題](./cloud-services/cloud-services-troubleshoot-deployment-problems.md) | 
+| カスタム スクリプト拡張機能のエラー | [Windows VM 拡張機能のエラー](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)<br />または<br />[Linux VM 拡張機能のエラー](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md) |
+| OS イメージのプロビジョニング エラー | [新しい Windows VM の作成時のエラー](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)<br />または<br />[新しい Linux VM の作成時のエラー](./virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md) |
+| 割り当ての失敗 | [Windows VM の割り当てエラー](./virtual-machines/virtual-machines-windows-allocation-failure.md)<br />または<br />[Linux VM の割り当てエラー](./virtual-machines/virtual-machines-linux-allocation-failure.md) |
+| 接続を試行するときの Secure Shell (SSH) エラー | [Linux VM への Secure Shell 接続](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md) |
+| VM で実行されているアプリケーションへの接続時に発生するエラー | [Windows VM で実行中のアプリケーション](./virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md)<br />または<br />[Linux VM で実行中のアプリケーション](./virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md) |
+| リモート デスクトップ接続のエラー | [Windows VM へのリモート デスクトップ接続](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md) |
+| 再デプロイによって解決する接続エラー | [新しい Azure ノードへの仮想マシンの再デプロイ](./virtual-machines/virtual-machines-windows-redeploy-to-new-node.md) |
+| クラウド サービスのエラー | [クラウド サービスのデプロイの問題](./cloud-services/cloud-services-troubleshoot-deployment-problems.md) |
 
-## その他のサービスのトラブルシューティング 
+## その他のサービスのトラブルシューティング
 
 以下の表は、Azure のトラブルシューティング トピックを網羅したものではありません。リソースのデプロイまたは構成に関連した問題を中心に掲載しています。リソースに関して実行時に発生する問題のトラブルシューティングについてご不明な点がある場合は、対応する Azure サービスのドキュメントを参照してください。
 
 | サービス | 記事 |
 | -------- | -------- |
-| Automation | [Azure Automation の共通エラーのトラブルシューティングのヒント](./automation/automation-troubleshooting-automation-errors.md) | 
-| Azure Stack | [Microsoft Azure Stack のトラブルシューティング](./azure-stack/azure-stack-troubleshooting.md) | 
-| Azure Stack | [Web Apps と Azure Stack](./azure-stack/azure-stack-webapps-troubleshoot-known-issues.md) | 
-| Data Factory | [Data Factory のトラブルシューティング](./data-factory/data-factory-troubleshoot.md) | 
-| Service Fabric | [Azure Service Fabric でサービスをデプロイするときの一般的な問題のトラブルシューティング](./service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) | 
+| Automation | [Azure Automation の共通エラーのトラブルシューティングのヒント](./automation/automation-troubleshooting-automation-errors.md) |
+| Azure Stack | [Microsoft Azure Stack のトラブルシューティング](./azure-stack/azure-stack-troubleshooting.md) |
+| Azure Stack | [Web Apps と Azure Stack](./azure-stack/azure-stack-webapps-troubleshoot-known-issues.md) |
+| Data Factory | [Data Factory のトラブルシューティング](./data-factory/data-factory-troubleshoot.md) |
+| Service Fabric | [Azure Service Fabric でサービスをデプロイするときの一般的な問題のトラブルシューティング](./service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) |
 | Site Recovery | [仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング](./site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
 | Storage | [Microsoft Azure Storage の監視、診断、およびトラブルシューティング](./storage/storage-monitoring-diagnosing-troubleshooting.md) |
-| StorSimple | [StorSimple デバイスのデプロイメントのトラブルシューティング](./storsimple/storsimple-troubleshoot-deployment.md) | 
-| SQL Database | [Azure SQL Database との接続に関する一般的な問題のトラブルシューティング](./sql-database/sql-database-troubleshoot-common-connection-issues.md) | 
-| SQL Data Warehouse | [Azure SQL Data Warehouse のトラブルシューティング](./sql-data-warehouse/sql-data-warehouse-troubleshoot.md) | 
+| StorSimple | [StorSimple デバイスのデプロイメントのトラブルシューティング](./storsimple/storsimple-troubleshoot-deployment.md) |
+| SQL Database | [Azure SQL Database との接続に関する一般的な問題のトラブルシューティング](./sql-database/sql-database-troubleshoot-common-connection-issues.md) |
+| SQL Data Warehouse | [Azure SQL Data Warehouse のトラブルシューティング](./sql-data-warehouse/sql-data-warehouse-troubleshoot.md) |
 
-## デプロイの準備が完了したタイミングを把握する 
+## デプロイの準備が完了したタイミングを把握する
 
 すべてのプロバイダーがデプロイから正常に戻ると、Azure Resource Manager からデプロイの成功がレポートされます。ただし、レポートだけでは、リソース グループが "アクティブで、ユーザーが使用できる状態" であるとは判断できません。たとえば、アップグレードのダウンロード、非テンプレート リソースの待機、複雑なスクリプトのインストール、プロバイダーが追跡しているアクティビティではないため Azure が認識していない他の実行可能なアクティビティのインストールなどがデプロイに必要なことがあります。このような場合、リソースが実際に使用できる状態になるまで時間がかかります。その結果、デプロイメントが使用できるまでのある時にデプロイメントが成功の状態になることを予期する必要があります。
 
@@ -212,4 +213,4 @@ Resource Manager は、可能であれば複数のリソースを並列して作
 - 監査アクションについては、「[リソース マネージャーの監査操作](resource-group-audit.md)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、[デプロイ操作の確認](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

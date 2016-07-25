@@ -25,8 +25,8 @@ Node.js アプリケーション、Java アプリケーション、Azure Service
 Service Fabric クラスターでゲスト実行可能ファイルを実行するメリットはいくつかあります。
 
 - 高可用性:Service Fabric で実行されるアプリケーションは、追加設定しなくても高い可用性を実現します。Service Fabric によって、アプリケーションのインスタンスが常に 1 つ稼動している状態が維持されます。
-- 正常性の監視:標準装備の Service Fabric 正常性監視により、アプリケーションが稼動しているかどうかが検出され、障害が発生した場合は診断情報が提供されます。   
-- アプリケーション ライフサイクル管理:Service Fabric を使用すると、ダウンタイムなしでアップグレードを実行できるだけでなく、アップグレード中に問題が発生した場合は前のバージョンにロールバックすることもできます。    
+- 正常性の監視:標準装備の Service Fabric 正常性監視により、アプリケーションが稼動しているかどうかが検出され、障害が発生した場合は診断情報が提供されます。
+- アプリケーション ライフサイクル管理:Service Fabric を使用すると、ダウンタイムなしでアップグレードを実行できるだけでなく、アップグレード中に問題が発生した場合は前のバージョンにロールバックすることもできます。
 - 密度:各アプリケーションを専用のハードウェアで実行する必要がないクラスターで複数のアプリケーションを実行できます。
 
 この記事では、ゲスト実行可能ファイルをパッケージ化し、Service Fabric にデプロイするための基本的な手順について説明します。
@@ -52,12 +52,12 @@ Service Fabric にアプリケーションをデプロイするには、その�
 
 ```
 |-- ApplicationPackage
-	|-- code
-		|-- existingapp.exe
-	|-- config
-		|-- Settings.xml
-  |-- data    
-  |-- ServiceManifest.xml
+    |-- code
+        |-- existingapp.exe
+    |-- config
+        |-- Settings.xml
+    |-- data
+    |-- ServiceManifest.xml
 |-- ApplicationManifest.xml
 ```
 
@@ -308,4 +308,4 @@ Visual Studio には、ゲスト実行可能ファイルを Service Fabric ク�
 - [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
 - [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="クラシック Linux VM でのエンドポイントのセットアップ | Microsoft Azure"
-	description="Azure 上で Linux 仮想マシンとの通信を許可するように Azure クラシック ポータルでエンドポイントをセットアップする方法について説明します。"
+	description="Azure 上で Linux 仮想マシンとの通信を許可するように Azure クラシック ポータルで Linux VM のエンドポイントをセットアップする方法について説明します。"
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="cynthn"
@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="07/13/2016"
 	ms.author="cynthn"/>
 
-# Azure 上でクラシック仮想マシンにエンドポイントをセットアップする方法
+# Azure 上で Linux のクラシック仮想マシンにエンドポイントをセットアップする方法
 
 クラシック デプロイメント モデルを使用して Azure で作成したすべての Linux 仮想マシンが、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。ただし、インターネットまたは他の仮想ネットワークにあるコンピューターと通信するには、仮想マシンへの着信ネットワーク トラフィックを転送するエンドポイントが必要になります。この記事は、[Windows 仮想マシン](virtual-machines-windows-classic-setup-endpoints.md)にも利用できます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] **Resource Manager** デプロイメント モデルでは、エンドポイントは **ネットワーク セキュリティ グループ (NSG)** を使用して構成します。詳細については、「[ポートおよびエンドポイントの開放](virtual-machines-linux-nsg-quickstart.md)」を参照してください。
 
 Azure クラシック ポータルで Linux 仮想マシンを作成すると、通常は Secure Shell (SSH) 用のエンドポイントが自動的に作成されます。必要に応じて、仮想マシンの作成中や作成後に、追加のエンドポイントを構成できます。
  
@@ -34,4 +34,4 @@ Azure クラシック ポータルで Linux 仮想マシンを作成すると、
 
 * Resource Manager デプロイメント モデルで仮想マシンを作成した場合は、Resource Manager モードで Azure CLI を使用して、VM へのトラフィックを制御する[ネットワーク セキュリティ グループを作成](../virtual-network/virtual-networks-create-nsg-arm-cli.md)できます。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

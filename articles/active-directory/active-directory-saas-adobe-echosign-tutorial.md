@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Adobe EchoSign の統合
@@ -37,7 +37,7 @@
 
 ###Adobe EchoSign のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-adobe-echosign-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Adobe EchoSign** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure クラシック ポータルの **Adobe EchoSign** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-adobe-echosign-tutorial/IC789516.png "Configure Single Sign-On")
 
@@ -76,9 +76,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-adobe-echosign-tutorial/IC789517.png "Configure Single Sign-On")
 
-3.  **[アプリの URL の構成]** ページで、**[Adobe EchoSig サインオン URL]** テキスト ボックスに、"*https://company.echosign.com/*" のパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリの URL の構成]** ページで、**[Adobe EchoSig サインオン URL]** テキスト ボックスに、"*https://company.echosign.com/*" のパターンで URL を入力し、**[次へ]* をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-adobe-echosign-tutorial/IC789518.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-adobe-echosign-tutorial/IC789518.png "アプリケーション URL の構成")
 
 4.  **[Adobe EchoSign でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -102,16 +102,16 @@
 
     ![SAML 設定](./media/active-directory-saas-adobe-echosign-tutorial/IC789522.png "SAML 設定")
 
-    1.  Azure ポータルの [**Adobe EchoSign でのシングル サインオンの構成**] ダイアログ ページで、 [**エンティティ ID**] の値をコピーし、[**IdP エンティティ ID**] テキスト ボックスに貼り付けます。
-    2.  Azure ポータルの [**Adobe EchoSign でのシングル サインオンの構成**] ダイアログ ページで、[**リモート ログイン URL**] 値をコピーし、[**IdP ログイン URL**] テキスト ボックスに貼り付けます。
-    3.  Azure ポータルの [**Adobe EchoSign でのシングル サインオンの構成**] ダイアログ ページで、[**リモート ログイン URL**] 値をコピーし、[**IdP ログアウト URL**] テキスト ボックスに貼り付けます。
-    4.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
+    1.  Azure クラシック ポータルの **[Adobe EchoSign でのシングル サインオンの構成]** ダイアログ ページで、**[エンティティ ID]** の値をコピーし、**[IdP エンティティ ID]** テキスト ボックスに貼り付けます。
+    2.  Azure クラシック ポータルの **[Adobe EchoSign でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** 値をコピーし、**[IdP ログイン URL]** テキスト ボックスに貼り付けます。
+    3.  Azure クラシック ポータルの **[Adobe EchoSign でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** 値をコピーし、**[IdP ログアウト URL]** テキスト ボックスに貼り付けます。
+    4.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
 
-		>[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+		>[AZURE.TIP] 詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
     5.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、[**IdP 証明書**] テキストボックスに貼り付けます。
     6.  **[変更を保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-adobe-echosign-tutorial/IC789523.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -133,9 +133,9 @@ Azure AD ユーザーが Adobe EchoSign にログインできるようにする�
     1.  対応するテキスト ボックスに、プロビジョニングする有効な AAD アカウントの [**電子メール アドレス**]、[**名**]、[**姓**] を入力します。
     2.  [**ユーザーの作成**] をクリックします。
 
-		>[AZURE.NOTE]Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
+		>[AZURE.NOTE] Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
 
->[AZURE.NOTE]他の Adobe EchoSign ユーザー アカウント作成ツールまたは Adobe EchoSign から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] 他の Adobe EchoSign ユーザー アカウント作成ツールまたは Adobe EchoSign から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -143,9 +143,9 @@ Azure AD ユーザーが Adobe EchoSign にログインできるようにする�
 
 ###Adobe EchoSign にユーザーを割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  Adobe EchoSign アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Adobe EchoSign** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-adobe-echosign-tutorial/IC789526.png "ユーザーの割り当て")
 
@@ -153,6 +153,6 @@ Azure AD ユーザーが Adobe EchoSign にログインできるようにする�
 
     ![Yes](./media/active-directory-saas-adobe-echosign-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

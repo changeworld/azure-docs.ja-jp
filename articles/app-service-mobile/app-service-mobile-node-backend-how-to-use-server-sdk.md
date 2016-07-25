@@ -174,11 +174,11 @@ azure-mobile-apps Node.js Server SDK では、WebAPI として Azure SQL Databas
 
 | 操作 | 説明 |
 | --------- | ----------- |
-| GET /tables/\_tablename\_ | テーブルのすべてのレコードを取得します。 |
-| GET /tables/\_tablename\_/:id | テーブルの特定のレコードを取得します。 |
-| POST /tables/\_tablename\_ | テーブルに新しいレコードを作成します。 |
-| PATCH /tables/\_tablename\_/:id | テーブルの既存のレコードを更新します。 |
-| DELETE /tables/\_tablename\_/:id | テーブルのレコードを削除します。 |
+| GET /tables/_tablename_ | テーブルのすべてのレコードを取得します。 |
+| GET /tables/_tablename_/:id | テーブルの特定のレコードを取得します。 |
+| POST /tables/_tablename_ | テーブルに新しいレコードを作成します。 |
+| PATCH /tables/_tablename_/:id | テーブルの既存のレコードを更新します。 |
+| DELETE /tables/_tablename_/:id | テーブルのレコードを削除します。 |
 
 この WebAPI は [OData] をサポートし、テーブル スキーマを拡張して[オフライン データ同期]をサポートします。
 
@@ -490,7 +490,7 @@ access プロパティが定義されていない場合は、非認証アクセ�
 
     module.exports = table;
 
-どのような要求が使用できるかを確認するには、Web ブラウザーを使用し、サイトの `/.auth/me` エンドポイントを表示します 。
+どのような要求が使用できるかを確認するには、Web ブラウザーを使用し、サイトの `/.auth/me` エンドポイントを表示します。
 
 ### <a name="howto-tables-disabled"></a>方法: 特定のテーブル操作へのアクセスを無効にする
 
@@ -629,7 +629,7 @@ Swagger エンドポイントは http://_yoursite_.azurewebsites.net/swagger に
 
 ## <a name="push">プッシュ通知
 
-Mobile Apps と Azure Notification Hubs を統合することで、あらゆる主要なプラットフォーム間で、数百万台のデバイスに対して、対象設定済みのプッシュ通知を送信できます。Notification Hubs を使用して、iOS デバイス、Android デバイス、および Windows デバイスにプッシュ通知を送信できます。Notification Hubs で実行可能なすべての操作については、「[Azure 通知ハブ](./notification-hubs/notification-hubs-push-notification-overview.md)」をご覧ください。
+Mobile Apps と Azure Notification Hubs を統合することで、あらゆる主要なプラットフォーム間で、数百万台のデバイスに対して、対象設定済みのプッシュ通知を送信できます。Notification Hubs を使用して、iOS デバイス、Android デバイス、および Windows デバイスにプッシュ通知を送信できます。Notification Hubs で実行可能なすべての操作については、「[Azure 通知ハブ](../notification-hubs/notification-hubs-push-notification-overview.md)」をご覧ください。
 
 ### </a><a name="send-push"></a>方法: プッシュ通知を送信する
 
@@ -832,7 +832,7 @@ Node.js アプリケーションは、広範囲の診断ログ ツールにア�
 
 ### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>方法: Azure ポータルで [テーブルの簡単操作] を使用する
 
-ポータルの [テーブルの簡単操作] を使用すると、ポータル内でテーブルをすぐに作成して操作できます。Visual Studio Online エディターを使用してテーブルの操作を編集することもできます。
+ポータルの [テーブルの簡単操作] を使用すると、ポータル内でテーブルをすぐに作成して操作できます。App Service Editor を使用してテーブルの操作を編集することもできます。
 
 バックエンド サイトの設定で **[テーブルの簡単操作]** をクリックすると、新しいテーブルを追加したり、既存のテーブルを変更または削除したりできます。さらに、テーブル内のデータを表示することもできます。
 
@@ -841,7 +841,7 @@ Node.js アプリケーションは、広範囲の診断ログ ツールにア�
 テーブル用のコマンド バーには、次のコマンドが用意されています。
 
 + **[アクセス許可の変更]** - テーブルに対する読み取り、挿入、更新、削除操作のアクセス許可を変更します。匿名アクセスを許可するオプション、認証を要求するオプション、操作に対するすべてのアクセスを無効にするオプションがあります。これにより、table.json プロジェクト コード ファイルは変更されます。
-+ **[スクリプトの編集]** - テーブルのスクリプト ファイルが Visual Studio Team Services エディターで開かれます。
++ **[スクリプトの編集]** - テーブルのスクリプト ファイルは、App Service Editor で開きます。
 + **[スキーマの管理]** - 列の追加または削除やテーブルのインデックスの変更を実行します。
 + **[テーブルのクリア]** - 既存のテーブルですべてのデータ行が削除されるように切り捨てます。ただし、スキーマは変更されません。
 + **[行の削除]** - 個々のデータ行を削除します。
@@ -849,21 +849,21 @@ Node.js アプリケーションは、広範囲の診断ログ ツールにア�
 
 ###<a name="work-easy-apis"></a>方法: Azure ポータルで [API の簡単操作] を使用する
 
-ポータルの [API の簡単操作] を使用すると、ポータル内でカスタム API をすぐに作成して操作できます。Visual Studio Online エディターを使用して API スクリプトを編集することもできます。
+ポータルの [API の簡単操作] を使用すると、ポータル内でカスタム API をすぐに作成して操作できます。App Service Editor を使用して API のスクリプトを編集することもできます。
 
 バックエンド サイトの設定で **[API の簡単操作]** をクリックすると、新しいカスタム API エンドポイントを追加したり、既存の API エンドポイントを変更または削除したりできます。
 
 ![Work with Easy APIs](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-apis.png)
 
-ポータルでは、特定の HTTP アクションのアクセス許可を変更できます。また、Visual Studio Team Services エディターで API スクリプト ファイルをしたり、ストリーミング ログを表示したりできます。
+ポータルでは、特定の HTTP アクションのアクセス許可を変更できます。また、App Service Editor で API スクリプト ファイルを編集したり、ストリーミング ログを表示したりできます。
 
-###<a name="online-editor"></a>方法: Visual Studio Team Services でコードを編集する
+###<a name="online-editor"></a>方法: App Service Editor でコードを編集する
 
-Azure ポータルでは、ローカル コンピューターにプロジェクトをダウンロードする必要なく、Visual Studio Team Services を使用して Node.js バックエンド スクリプト ファイルを編集できます。オンライン エディターでスクリプト ファイルを編集するには、次の手順に従います。
+Azure ポータルでは、ローカル コンピューターにプロジェクトをダウンロードする必要なく、App Service Editor を使用して Node.js バックエンド スクリプト ファイルを編集できます。オンライン エディターでスクリプト ファイルを編集するには、次の手順に従います。
 
-1. モバイル アプリ バックエンドのブレードで、**[すべての設定]**、**[テーブルの簡単操作]** または **[API の簡単操作]** の順にクリックし、テーブルまたは API をクリックしてから、**[スクリプトの編集]** をクリックします。スクリプト ファイルが Visual Studio Team Services エディターで開かれます。
+1. モバイル アプリ バックエンドのブレードで、**[すべての設定]**、**[テーブルの簡単操作]** または **[API の簡単操作]** の順にクリックし、テーブルまたは API をクリックしてから、**[スクリプトの編集]** をクリックします。App Service Editor でスクリプト ファイルが開きます。
 
-	![Visual Studio Team Services コード エディター](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
+	![App Service Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
 
 2. オンライン エディターで、コード ファイルを変更します。変更内容は、入力時に自動的に保存されています。
 
@@ -917,4 +917,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="07/11/2016" 
 	ms.author="spelluru"/>
 
 # データ移動およびコピー アクティビティ: クラウドへのデータの移行およびクラウド ストア間でのデータの移行
@@ -33,9 +33,11 @@
 
 
 ## オンプレミス データ ストアとクラウド データ ストア間でのデータのコピー
-[企業ファイアウォールの内側にあるオンプレミス データ ストアと、クラウド データ ストアの間でデータを安全に移動する](#moveonpremtocloud)には、Data Management Gateway をインストールする必要があります。これは、オンプレミスのコンピューター上でハイブリッドなデータ移動と処理を可能にするエージェントです。Data Management Gateway は、データ ストア自体と同じコンピューター、またはデータ ストアに到達するためのアクセス権を持つ別のコンピューターにインストールできます。このシナリオでは、シリアル化/逆シリアル化、圧縮/圧縮解除、列マッピング、型変換が Data Management Gateway によって実行されます。データが Azure Data Factory サービスを経由しないケースが、これに当てはまります。Data Management Gateway は、目的のストアに直接データを書き込みます。
+企業ファイアウォールの内側にあるオンプレミス データ ストアと、クラウド データ ストアの間でデータを安全に移動するには、Data Management Gateway をインストールする必要があります。これは、オンプレミスのコンピューター上でハイブリッドなデータ移動と処理を可能にするエージェントです。Data Management Gateway は、データ ストア自体と同じコンピューター、またはデータ ストアに到達するためのアクセス権を持つ別のコンピューターにインストールできます。このシナリオでは、シリアル化/逆シリアル化、圧縮/圧縮解除、列マッピング、型変換が Data Management Gateway によって実行されます。データが Azure Data Factory サービスを経由しないケースが、これに当てはまります。Data Management Gateway は、目的のストアに直接データを書き込みます。
 
 ![onprem-to-cloud copy](.\media\data-factory-data-movement-activities\onprem-to-cloud.png)
+
+概要とチュートリアルについては、[オンプレミスのデータ ストアとクラウド データ ストアの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を、Data Management Gateway の詳細情報については「[Data Management Gateway](data-factory-data-management-gateway.md)」の記事を参照してください。
 
 ## Azure Iaas VM のデータ ストア間でのデータのコピー 
 Data Management Gateway を使用すると、Azure IaaS VM (サービスとしてのインフラストラクチャ仮想マシン) でホストされている、サポートされるデータ ストア間でデータを移動することもできます。この場合、Data Management Gateway は、データ ストア自体と同じ Azure VM、またはデータ ストアに到達するためのアクセス権を持つ別の VM にインストールできます。
@@ -74,21 +76,6 @@ Azure Data Factory 自体は、米国西部、米国東部、および北ヨー�
 
 
 > [AZURE.NOTE] コピー先データ ストアのリージョンが上のリストにない場合、代わりのリージョンに移動することなく、コピー アクティビティが失敗します。
-
-
-
-### <a name="moveonpremtocloud"></a>オンプレミスの場所とクラウドの間での安全なデータ転送
-最新のデータ統合の課題の 1 つは、オンプレミスとクラウドの間でシームレスにデータを転送することです。Data Management Gateway はオンプレミスにインストールできるエージェントで、ハイブリッド データ パイプラインを可能にします。
-
-データ ゲートウェイには次の機能が備わっています。
-
-1.	オンプレミスのデータ ストアへの安全なアクセスを管理します。
-2.	同じ Data Factory 内にオンプレミスのデータ ストアとクラウド データ ストアをモデル化して、データを移動します。
-3.	Data Factory のクラウド ベースのダッシュボードにゲートウェイのステータスを表示して、一元的に監視および管理を行います。
-
-**ExpressRoute** を使用する場合であっても (ファイアウォールの背後にある) オンプレミスのデータ ソースとしてデータ ソースを取り扱い、**Gateway を使用して**サービスとデータ ソースの間の接続を確立する必要があります。
-
-詳細については、「[オンプレミスとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
 
 
 ### 信頼性が高くコスト効果の高いデータの移動
@@ -196,4 +183,9 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 ![カスタム変数の使用](./media/data-factory-data-movement-activities/blob-custom-variables-in-folder-path.png)
 
-<!---HONumber=AcomDC_0629_2016-->
+## 次のステップ
+- コピー アクティビティを使用して、ソース データ ストアからシンク データ ストアにデータを移動する一般的な方法については、[Azure BLOB から Azure SQL へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事をご覧ください。
+- オンプレミスのデータ ストアからクラウド データ ストアへのデータ移動については、[オンプレミスのデータ ストアからクラウド データ ストアへのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。
+ 
+
+<!---HONumber=AcomDC_0713_2016-->

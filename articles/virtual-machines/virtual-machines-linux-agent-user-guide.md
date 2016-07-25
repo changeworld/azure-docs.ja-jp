@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/14/2016" 
+	ms.date="07/13/2016" 
 	ms.author="szark"/>
 
 
@@ -25,9 +25,11 @@
 
 ##はじめに
 
-Azure Linux エージェント (usr/sbin/waagent) は仮想マシンと Azure ファブリック コントローラーとの相互動作を管理します。その内容は次のとおりです。
+Azure Linux エージェント (usr/sbin/waagent) は仮想マシンと Azure ファブリック コントローラーとの相互動作を管理します。実行中の VM にエージェントをインストールしたり更新したりする方法については、[Azure Linux エージェントを更新する方法](virtual-machines-linux-update-agent.md)に関するページも参照してください。
 
-> [AZURE.NOTE] このガイドの最新バージョンについては、Azure Linux エージェントの [README](https://github.com/Azure/WALinuxAgent/blob/2.0/README) を参照してください。
+Azure Linux エージェントは、次の処理をつかさどります。
+
+> [AZURE.NOTE] このガイドの最新バージョンについては、Azure Linux エージェントの [README](https://github.com/Azure/WALinuxAgent/blob/master/README.md) を参照してください。
 
 * **イメージのプロビジョニング**
   - ユーザー アカウントの作成
@@ -323,4 +325,4 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 
  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0713_2016-->

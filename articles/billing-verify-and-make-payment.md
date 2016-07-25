@@ -14,12 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/21/2015"
+	ms.date="07/12/2016"
 	ms.author="genli"/>
 
 # 支払い方法を確認し、Azure サブスクリプションの料金を支払う方法
 
 >[AZURE.NOTE] クレジット カード情報の送信後にエラー メッセージが表示される場合は、記事「[Azure にサインアップしようとしたところ、クレジット カードが承認されません](billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。
+
+[AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
 
 ## 現在の支払い方法を確認する
 1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にログオンします。
@@ -42,4 +44,4 @@
 
 請求書モードの支払いを利用している場合、請求書の下部に記載されている場所に支払いを送付します。サポートが必要な場合、[Microsoft サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

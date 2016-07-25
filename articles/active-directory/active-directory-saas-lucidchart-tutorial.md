@@ -3,14 +3,15 @@
     description="Azure Active Directory で Lucidchart を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
-    documentationCenter="na" manager="stevenpo"/>
+    documentationCenter="na" 
+	manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/08/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Lucidchart の統合
@@ -36,7 +37,7 @@
 
 ###Lucidchart のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-lucidchart-tutorial/IC700993.png "Active Directory")
 
@@ -67,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[Lucidchart]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **[Lucidchart]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-lucidchart-tutorial/IC791186.png "Configure Single Sign-On")
 
@@ -75,9 +76,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-lucidchart-tutorial/IC791187.png "Configure Single Sign-On")
 
-3.  **[アプリ URL の構成]** ページの **[Lucidchart サインオン URL]** テキストボックスに、ユーザーが Lucidchart アプリケーションにサインオンするときに使用する URL (例: **https://chart2.office.lucidchart.com/saml/sso/azure*")) を入力し、**[次へ]** をクリックします。
+3.  **[アプリ URL の構成]** ページの **[Lucidchart サインオン URL]** テキストボックスに、ユーザーが Lucidchart アプリケーションにサインオンするときに使用する URL (例: "*https://chart2.office.lucidchart.com/saml/sso/azure*") を入力し、**[次へ]** をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-lucidchart-tutorial/IC791188.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-lucidchart-tutorial/IC791188.png "アプリケーション URL の構成")
 
 4.  **[Lucidchart でのシングル サインオンの構成]** ページで、**[データのダウンロード]** をクリックしてメタデータをダウンロードし、データ ファイルをコンピューターのローカルに保存します。
 
@@ -100,7 +101,7 @@
     3.  ダウンロードしたメタデータ ファイルを開いて内容をコピーし、**[Upload Metadata (メタデータのアップロード)]** テキストボックスに貼り付けます。![メタデータのアップロード](./media/active-directory-saas-lucidchart-tutorial/IC791194.png "メタデータのアップロード")
     4.  **[Automatically Add new user to the team (新しいユーザーを自動的にチームに追加する)]** を選んで、**[変更を保存]** をクリックします。![変更を保存](./media/active-directory-saas-lucidchart-tutorial/IC791195.png "変更を保存")
 
-9.  [シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  [シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-lucidchart-tutorial/IC791196.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -112,7 +113,7 @@ Lucidchart へのユーザー プロビジョニングの構成にあたって�
 
 ###ユーザーを Lucidchart に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Lucidchart** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -124,4 +125,4 @@ Lucidchart へのユーザー プロビジョニングの構成にあたって�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

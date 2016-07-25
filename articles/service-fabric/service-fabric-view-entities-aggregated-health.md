@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/25/2016"
+   ms.date="07/11/2016"
    ms.author="oanapl"/>
 
 # Service Fabric の正常性レポートの確認
@@ -70,7 +70,7 @@ Service Fabric では、サポート対象の各[エンティティ型](service-
 
 エンティティの正常性には、次の情報が含まれています。
 
-- エンティティの正常性状態の集計。これはエンティティの正常性レポート、子の正常性状態 (該当する場合)、および正常性ポリシーに基づいて、正常性ストアによって計算されます。[エンティティの正常性評価](service-fabric-health-introduction.md#entity-health-evaluation)の詳細をご覧ください。  
+- エンティティの正常性状態の集計。これはエンティティの正常性レポート、子の正常性状態 (該当する場合)、および正常性ポリシーに基づいて、正常性ストアによって計算されます。[エンティティの正常性評価](service-fabric-health-introduction.md#entity-health-evaluation)の詳細をご覧ください。
 
 - エンティティの正常性イベント。
 
@@ -642,7 +642,7 @@ DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedA
 ### PowerShell
 デプロイされたアプリケーションの正常性を取得するコマンドレットは [Get-ServiceFabricDeployedApplicationHealth](https://msdn.microsoft.com/library/mt163523.aspx) です。まず、[Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) コマンドレットを使用してクラスターに接続します。アプリケーションのデプロイ先を探すには、[Get-ServiceFabricApplicationHealth](https://msdn.microsoft.com/library/mt125976.aspx) を実行して、デプロイされたアプリケーションの子を確認します。
 
-次のコマンドレットは、**\_Node\_2** にデプロイされた **fabric:/WordCount** アプリケーションの正常性を取得します。
+次のコマンドレットは、**_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの正常性を取得します。
 
 ```powershell
 PS C:\> Get-ServiceFabricDeployedApplicationHealth -ApplicationName fabric:/WordCount -NodeName _Node_2
@@ -694,7 +694,7 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ### PowerShell
 デプロイされたサービス パッケージの正常性を取得するコマンドレットは [Get-ServiceFabricDeployedServicePackageHealth](https://msdn.microsoft.com/library/mt163525.aspx) です。まず、[Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) コマンドレットを使用してクラスターに接続します。アプリケーションのデプロイ先を確認するには、[Get-ServiceFabricApplicationHealth](https://msdn.microsoft.com/library/mt125976.aspx) を実行して、デプロイされたアプリケーションを確認します。アプリケーション内のサービス パッケージを確認するには、[Get-ServiceFabricDeployedApplicationHealth](https://msdn.microsoft.com/library/mt163523.aspx) の出力で、デプロイされたサービス パッケージの子を確認します。
 
-次のコマンドレットは、**\_Node\_2** にデプロイされた **fabric:/WordCount** アプリケーションの **WordCountServicePkg** サービス パッケージの正常性を取得します。エンティティには、アクティブ化に成功したサービス パッケージとエントリ ポイント、および登録に成功したサービス型に関する **System.Hosting** のレポートが含まれています。
+次のコマンドレットは、**_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの **WordCountServicePkg** サービス パッケージの正常性を取得します。エンティティには、アクティブ化に成功したサービス パッケージとエントリ ポイント、および登録に成功したサービス型に関する **System.Hosting** のレポートが含まれています。
 
 ```powershell
 PS C:\> Get-ServiceFabricDeployedApplication -ApplicationName fabric:/WordCount -NodeName _Node_2 | Get-ServiceFabricDeployedServicePackageHealth -ServiceManifestName WordCountServicePkg
@@ -776,7 +776,7 @@ HealthEvents          :
 
 - [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー マップと正常性ポリシー。
 
-- [省略可能] 結果で返される対象のエントリを指定するノードとアプリケーションのフィルター。フィルターは、複数のエンティティのうちの 1 つのエンティティまたはグループのみか、そのレベルのすべてのエンティティに適用されます。フィルターの一覧には、一般的なフィルターを 1 つだけ含めることもできるほか、特定の識別子に対応するフィルターを含めて、クエリによって返されるエンティティを絞り込むこともできます。また、これらのフィルターは組み合わせて使用できます。空の場合、既定では子は返されません。フィルターの詳細については、「[NodeHealthStateFilter Class (NodeHealthStateFilter クラス)](https://msdn.microsoft.com/library/azure/system.fabric.health.nodehealthstatefilter.aspx)」と「[ApplicationHealthStateFilter Class (ApplicationHealthStateFilter クラス)](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthstatefilter.aspx)」を確認してください。アプリケーションのフィルターでは、子に対する高度なフィルターを再帰的に指定できます。
+- [省略可能] 結果で返される対象のエントリを指定するノードとアプリケーションのフィルター。フィルターは、複数のエンティティのうちの 1 つのエンティティまたはグループのみか、そのレベルのすべてのエンティティに適用されます。フィルターの一覧には、一般的なフィルターを 1 つだけ含めることもできるほか、特定の識別子に対応するフィルターを含めて、クエリによって返されるエンティティを絞り込むこともできます。また、これらのフィルターは組み合わせて使用できます。空の場合、既定では子は返されません。フィルターの詳細については、[NodeHealthStateFilter](https://msdn.microsoft.com/library/azure/system.fabric.health.nodehealthstatefilter.aspx) と [ApplicationHealthStateFilter](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthstatefilter.aspx) に関するページを参照してください。アプリケーションのフィルターでは、子に対する高度なフィルターを再帰的に指定できます。
 
 チャンクの結果には、フィルターに該当する子が含まれます。
 
@@ -1008,7 +1008,7 @@ ApplicationHealthStateChunks :
   - API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync.aspx)
   - PowerShell: Get-ServiceFabricDeployedApplication
 
-> [AZURE.NOTE] 一部のクエリはページングされた結果を返します。これらのクエリの戻り値は、[PagedList<T>](https://msdn.microsoft.com/library/azure/mt280056.aspx) から派生した一覧です。結果がメッセージに適合しない場合、ページのみが返されます。また、列挙が停止した場所を追跡するように ContinuationToken が設定されます。ユーザーは、同じクエリの呼び出しを続け、次の結果を得るために前のクエリから継続トークンを渡す必要があります。
+> [AZURE.NOTE] 一部のクエリはページングされた結果を返します。これらのクエリの戻り値は、[PagedList<T>](https://msdn.microsoft.com/library/azure/mt280056.aspx) から取得された一覧です。結果がメッセージに適合しない場合、ページのみが返されます。また、列挙が停止した場所を追跡するように ContinuationToken が設定されます。ユーザーは、同じクエリの呼び出しを続け、次の結果を得るために前のクエリから継続トークンを渡す必要があります。
 
 ### 例
 
@@ -1058,9 +1058,9 @@ HealthState            : Warning
 ## クラスターとアプリケーションのアップグレード
 Service Fabric はクラスターとアプリケーションのアップグレードを監視して正常性を確認し、正常な状態の維持に努めます。構成された正常性ポリシーを使用して評価したときにエンティティに異常が見つかった場合、アップグレードではアップグレード固有のポリシーを適用して次のアクションが決定されます。ユーザーが操作 (エラー状態の修正やポリシーの変更など) できるようにアップグレードが一時停止されるか、前の正常なバージョンに自動的にロールバックされる場合があります。
 
-*クラスター*のアップグレード中には、クラスターのアップグレード ステータスを取得できます。これには、クラスターの異常を示す異常性の評価が含まれます。正常性の問題によりアップグレードがロールバックされると、アップグレード ステータスに最後に問題が発生した理由が保持されます。これにより、管理者が失敗の原因を調査するのに役立つ情報が保持されます。
+"*クラスター*" のアップグレード中には、クラスターのアップグレード ステータスを取得できます。これには、クラスターの異常を示す異常性の評価が含まれます。正常性の問題によりアップグレードがロールバックされると、アップグレード ステータスに最後に問題が発生した理由が保持されます。これにより、管理者が失敗の原因を調査するのに役立つ情報が保持されます。
 
-同様に、*アプリケーション*のアップグレード中には、アプリケーションのアップグレード ステータスに異常性の評価が記録されます。
+同様に、"*アプリケーション*" のアップグレード中には、アプリケーションのアップグレード ステータスに異常性の評価が記録されます。
 
 次のコードは、修正された fabric:/WordCount アプリケーションのアップグレード ステータスを示します。ウォッチドッグによってレプリカの 1 つでエラーが報告されています。正常性チェックは考慮されないため、アップグレードはロールバックされます。
 
@@ -1128,8 +1128,10 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 
 [Service Fabric のカスタム正常性レポートの追加](service-fabric-report-health.md)
 
+[サービス正常性のレポートとチェックの方法](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+
 [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

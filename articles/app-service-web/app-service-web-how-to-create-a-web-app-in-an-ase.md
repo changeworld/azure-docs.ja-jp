@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="04/04/2016"
+	ms.date="07/12/2016"
 	ms.author="ccompy"/>
 
 # App Service 環境で Web アプリを作成する
@@ -30,7 +30,7 @@
 
 ## Web アプリを作成する
 
-1. [Azure ポータル](https://portal.azure.com/)で、**[新規]、[Web + モバイル]、[Web アプリ]** の順にクリックします。 
+1. [Azure ポータル](https://portal.azure.com/)で、**[新規]、[Web + モバイル]、[Web アプリ]** の順にクリックします。
 
 	![][1]
 
@@ -44,7 +44,7 @@
 
 4. App Service プランを選択または作成します。
 
-	*App Service プラン*は、管理された Web アプリのセットです。価格を選択すると、課金される価格は個々のアプリではなく App Service プランに適用されます。Web アプリのインスタンスの数を増やすには、App Service プランのインスタンスを増やします。これにより、そのプラン内のすべての Web アプリが影響を受けます。サイトのスロット、VNET 統合などのいくつかの機能には、プラン内での数量制限があります。詳細については、[Azure App Service プランの概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)に関するページを参照してください。
+	*App Service プラン*は、管理された Web アプリのセットです。通常、価格を選択すると、課金される価格は個々のアプリではなく App Service プランに適用されます。ASE では、ASP に記載されているものではなく、ASE に割り当てられているコンピューティング インスタンスに対して課金されます。Web アプリのインスタンスの数を増やすには、App Service プランのインスタンスを増やします。これにより、そのプラン内のすべての Web アプリが影響を受けます。サイトのスロット、VNET 統合などのいくつかの機能には、プラン内での数量制限があります。詳細については、[Azure App Service プランの概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)に関するページを参照してください。
 
 	ASE で App Service プランを識別するには、プラン名の下に表示されている場所を確認します。
 
@@ -54,15 +54,9 @@
 
 5. Web アプリの名前を入力し、**[作成]** をクリックします。
 
-	Web アプリ名は、Azure App Service 内で一意である必要があります。つまり、"thisismywebapp" という名前の Web アプリ名を作成する場合は、Azure App Service 内に "thisismywebapp" という名前の Web アプリが他に存在していないことが条件となります。
-
-	ASE 内にある Web アプリの URL は次のとおりです。
-
-	[*sitename*].[*App Service 環境の名前*].p.azurewebsites.net
-
-	となります。次のアドレスにはなりません。
-
-	[*sitename*].azurewebsites.net
+	ASE で外部 VIP を使用する場合、ASE でのアプリの URL は [*sitename*].azurewebsites.net ではなく、[*sitename*].[<*App Service 環境の名前*>].p.azurewebsites.net になります。
+	
+	ASE で内部 VIP を使用する場合、ASE でのアプリの URL は [*sitename*].[<*ASE の作成時に指定したサブドメイン*>] になります。ASE の作成時に ASP を選択した後に、**[名前]** の下にサブドメインが表示されます。
 
 ## <a name="createplan"></a>App Service プランを作成する
 
@@ -118,4 +112,4 @@ Web アプリと App Service プランを作成した後は、これをスケー
 [ResourceGroups]: http://azure.microsoft.com/documentation/articles/resource-group-portal/
 [AzurePowershell]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

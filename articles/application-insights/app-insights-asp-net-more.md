@@ -24,9 +24,9 @@
 ||
 |---|---
 |[**可用性テスト**](app-insights-monitor-web-app-availability.md)<br/>世界中から定期的に Web アプリの HTTP 要求を送信します。応答が低速または低い信頼性の場合は、アラートが発行されます。| 
-|[**依存関係および AJAX 呼び出し**](app-insights-asp-net-dependencies.md)<br/>SQL クエリを監視し、REST またはその他のリソースへの呼び出しを行います。|
+|[**依存関係の呼び出し**](app-insights-asp-net-dependencies.md)<br/>SQL クエリを監視し、REST またはその他のリソースへの呼び出しを行います。|
 |[**例外**](app-insights-asp-net-exceptions.md)<br/>ハンドル済みおよびハンドルされない例外をカウントし、スタック トレースを取得し、クリックしてコードを表示します。|
-|[**Web ページ**](app-insights-javascript.md)<br/>Web ページをインストルメント化して、ページの使用状況とパフォーマンスを監視します。
+|[**Web ページ**](app-insights-javascript.md)<br/>Web ページをインストルメント化して、ページの使用状況、パフォーマンス、AJAX 呼び出しを監視します。
 |**ホスト パフォーマンス: [Azure 診断](app-insights-azure-diagnostics.md)、[Windows パフォーマンス カウンター](app-insights-web-monitor-performance.md)**<br/>CPU 使用率とその他のコンテキストのメトリックを参照してください。 |![](./media/app-insights-asp-net-more/04.png)
 |[**SDK API - カスタム テレメトリ**](app-insights-api-custom-events-metrics.md)<br/>サーバーとクライアントの両方のコードで、アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。|
 |[**ログ統合**](app-insights-asp-net-trace-logs.md)<br/>log4Net、NLog、System.Diagnostics.Trace などのログ記録フレームワークを使用している場合、そのトレースを他のテレメトリと共に Application Insights に送信するアダプターがあります。|
@@ -52,4 +52,4 @@
 |**データ アクセス API**<br/>近日対応予定。|
 |[**サンプリング**](app-insights-sampling.md)<br/>データ速度を削減し、価格レベルの制限内で維持できます。|![サンプリング タイル](./media/app-insights-asp-net-more/030.png)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

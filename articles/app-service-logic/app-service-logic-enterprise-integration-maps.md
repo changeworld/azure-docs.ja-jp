@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="マップと Enterprise Integration Pack の概要 | Microsoft Azure App Service" 
+	pageTitle="マップと Enterprise Integration Pack の概要 | Microsoft Azure App Service | Microsoft Azure" 
 	description="Enterprise Integration Pack と Logic Apps でマップを使用する方法について説明します。" 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="07/08/2016" 
 	ms.author="deonhe"/>
 
 # マップと Enterprise Integration Pack についての詳細情報
@@ -47,15 +47,15 @@ Azure ポータルで次の手順を実行します。
 4. 開いたファイル ピッカー ダイアログを使用して、アップロードするマップ ファイルを選択してから、ファイル ピッカーの **[開く]** を選択します。 ![](./media/app-service-logic-enterprise-integration-maps/edit-2.png)
 5. マップがアップロードされると、通知のポップアップが表示されます。
 
-
 ## マップを削除する方法
 1. **[Maps (マップ)]** タイルを選択します。
 2. [Maps (マップ)] ブレードが開いたら、削除するマップを選択します。
 3. **[削除]** リンクを選択します。 ![](./media/app-service-logic-enterprise-integration-maps/delete.png)
 4. マップを本当に削除するか確認されます。 ![](./media/app-service-logic-enterprise-integration-maps/delete-confirmation-1.png)
 
-
 ## 次のステップ
+- [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 - [契約についての詳細情報](./app-service-logic-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")
+- [変換の詳細](./app-service-logic-enterprise-integration-transform.md "エンタープライズ統合変換について説明します。")
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

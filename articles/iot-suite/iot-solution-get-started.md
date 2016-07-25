@@ -4,7 +4,7 @@
 	services=""
     documentationCenter=".net"
     suite=""
-	authors="alancameronwills"
+	authors="harikmenon"
 	manager="douge"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="03/25/2016"
-	ms.author="awills"/>
+	ms.author="harikm"/>
 
 # MyDriving IoT システム: クイック スタート
 
@@ -54,7 +54,7 @@ Android、iOS、または Windows 10 デバイスをお持ちの場合、MyDrivi
 
 *Windows 10 Mobile でのアプリの起動で問題が発生しますか?* ご使用の携帯電話で、ここ 1 ～ 2 回の更新が行われていない可能性があります。最新の更新プログラムが適用されていることを確認し、そうでない場合は以下をインストールしてください。
 
- - [Microsoft.NET.Native.Framework.1.2.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Framework.1.2.appx) 
+ - [Microsoft.NET.Native.Framework.1.2.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Framework.1.2.appx)
 
  - [Microsoft.NET.Native.Runtime.1.1.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Runtime.1.1.appx)
 
@@ -170,4 +170,4 @@ MyDriving アプリ内では、組み込みの HockeyApp フィードバック �
   [HockeyApp ポータル]: https://rink.hockeyapp.org
   [GitHub の Issue (イシュー)]: https://github.com/Azure-Samples/MyDriving/issues
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

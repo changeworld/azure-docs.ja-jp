@@ -379,7 +379,14 @@ systemctl status iotdm_edison_sample.service
 
 IoT Hub とサンプル UI を使用したデバイス管理の詳細については、「[Azure IoT Hub デバイス管理の概要][lnk-device-management]」を参照してください。
 
-IoT Hub に物理デバイスを接続する方法の詳細については、「[IoT Gateway SDK (ベータ) - Linux を使用した実際のデバイスで D2C メッセージを送信する][lnk-gateway-physical]」を参照してください。
+Gateway SDK に関する理解をさらに深め、実際にコード例に触れてみたいという場合は、[Azure IoT Gateway SDK][lnk-gateway-sdk] をご覧ください。
+
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
 
 
 
@@ -411,4 +418,9 @@ IoT Hub に物理デバイスを接続する方法の詳細については、「
 [lnk-gateway-scenario]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-dm-jobs]: iot-hub-device-management-device-jobs.md
 
-<!---HONumber=AcomDC_0629_2016-->
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/11/2016"
+   ms.date="07/11/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse のトランザクション
@@ -43,10 +43,12 @@ SQL Data Warehouse では、ACID トランザクションを実装していま�
 | DW1200 | 9 | 60 | 540 | 36,000,000 | 2,160,000,000 |
 | DW1500 | 11\.25 | 60 | 675 | 45,000,000 | 2,700,000,000 |
 | DW2000 | 15 | 60 | 900 | 60,000,000 | 3,600,000,000 |
+| DW3000 | 22\.5 | 60 | 1,350 | 90,000,000 | 5,400,000,000 |
+| DW6000 | 45 | 60 | 2,700 | 180,000,000 | 10,800,000,000 |
 
 トランザクション サイズ制限は、トランザクションあたりまたは操作あたりで適用されます。すべての同時実行トランザクションにまたいで適用されることはありません。そのため、このデータ量をログに書き込むことが各トランザクションに許可されます。
 
-ログに書き込まれるデータ量を最適化/最小化する方法については、[トランザクション ベスト プラクティス][]に関する記事をご覧ください。
+ログに書き込まれるデータ量を最適化および最小化する方法については、[トランザクションのベスト プラクティス][]に関する記事を参照してください。
 
 > [AZURE.WARNING] 最大トランザクション サイズは、HASH または ROUND\_ROBIN で分散し、データが均等に分散されたテーブルでのみ達成できます。トランザクションによりデータが書き込まれ、分散が傾斜する場合、最大トランザクション サイズに到達する前に上限に到達する可能性があります。
 <!--REPLICATED_TABLE-->
@@ -110,7 +112,7 @@ SELECT @xact;
 `CATCH` ブロック内のエラー情報を読み取る前に、トランザクションのロールバックが発生しなければなりません。
 
 ## Error\_Line() 関数
-SQL Data Warehouse では、ERROR\_LINE() 関数を実装およびサポートしていないことにも注意してください。この関数がコードに含まれている場合は、SQL Data Warehouse に準拠するために削除する必要があります。代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。この機能の詳細については、[ラベル][]に関する記事をご覧ください。
+SQL Data Warehouse では、ERROR\_LINE() 関数を実装およびサポートしていないことにも注意してください。この関数がコードに含まれている場合は、SQL Data Warehouse に準拠するために削除する必要があります。代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。この機能の詳細については、[ラベル][]に関する記事を参照してください。
 
 ## THROW と RAISERROR の使用
 THROW は、SQL Data Warehouse で例外を発生させるための最新の実装ですが、RAISERROR もサポートされています。ただし、注意が必要な相違点がいくつかあります。
@@ -130,14 +132,13 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 - ユーザー定義されたトランザクション内の `CREATE TABLE` のような DDL はサポートされません。
 
 ## 次のステップ
-トランザクションの最適化の詳細については、[トランザクションのベスト プラクティス][]に関するページをご覧ください。SQL Data Warehouse のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス][]に関するページをご覧ください。
+トランザクションの最適化の詳細については、[トランザクションのベスト プラクティス][]に関するページを参照してください。SQL Data Warehouse のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス][]に関するページを参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
 [DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
 [development overview]: ./sql-data-warehouse-overview-develop.md
-[トランザクション ベスト プラクティス]: ./sql-data-warehouse-develop-best-practices-transactions.md
 [トランザクションのベスト プラクティス]: ./sql-data-warehouse-develop-best-practices-transactions.md
 [SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
 [ラベル]: ./sql-data-warehouse-develop-label.md
@@ -146,4 +147,4 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

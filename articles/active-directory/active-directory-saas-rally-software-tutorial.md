@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と Rally Software の統合 | Microsoft Azure" 
     description="Azure Active Directory で Rally Software を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="07/07/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Rally Software の統合
   
@@ -35,7 +35,7 @@
 
 ###Rally Software のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-rally-software-tutorial/IC700993.png "Active Directory")
 
@@ -66,7 +66,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Rally Software ** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Rally Software** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-rally-software-tutorial/IC749323.png "シングル サインオンの構成")
 
@@ -76,11 +76,11 @@
 
 3.  **[アプリ URL の構成]** ページで、**[Rally Software テナント URL]** ボックスに、"*https://\<tenant-name>.rally.com*" というパターンで URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-rally-software-tutorial/IC769529.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-rally-software-tutorial/IC769529.png "アプリケーション URL の構成")
 
 4.  **[Rally Software でのシングル サインオンの構成]** ページで、[メタデータのダウンロード] をクリックしてメタデータをダウンロードし、コンピューターに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-rally-software-tutorial/IC769530.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-rally-software-tutorial/IC769530.png "シングル サインオンの構成")
 
 5.  **Rally Software** テナントにログインします。
 
@@ -95,10 +95,10 @@
     ![認証](./media/active-directory-saas-rally-software-tutorial/IC769542.png "認証")
 
     1.  Authentication のドロップダウン リストから、**[Rally or SSO authentication]** を選びます。
-    2.  Azure ポータルの **[Rally Software でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの ID]** 値をコピーして、**[ID プロバイダーの URL]** テキストボックスに貼り付けます。
-    3.  Azure ポータルで、**[Rally Software でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーします。
+    2.  Azure クラシック ポータルの **[Rally Software でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの識別]** の値をコピーして、**[Identity Provider URL]** テキストボックスに貼り付けます。
+    3.  Azure クラシック ポータルで、**[Rally Software でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-rally-software-tutorial/IC769547.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
@@ -111,7 +111,7 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 
 2.  **[Setup] > [USERS]** へ移動し、**[+ Add New]** をクリックします。
 
-    ![ユーザー](./media/active-directory-saas-rally-software-tutorial/IC781039.png "ユーザー")
+    ![Users](./media/active-directory-saas-rally-software-tutorial/IC781039.png "Users")
 
 3.  New User テキストボックスに名前を入力し、**[Add with Details]** をクリックします。
 
@@ -131,7 +131,7 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 
 ###ユーザーを Rally Software に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Rally Software** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -139,8 +139,8 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-rally-software-tutorial/IC767830.png "Yes")
+    ![Yes](./media/active-directory-saas-rally-software-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0713_2016-->

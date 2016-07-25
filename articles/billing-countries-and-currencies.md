@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/14/2016"
+	ms.date="07/13/2016"
 	ms.author="genli"/>
 
 # Microsoft Azure が販売されている国と地域および Azure の購入に使用できる通貨
 
 Microsoft Azure は世界の 140 を超える国で購入でき、さまざまな通貨がサポートされています。Azure を購入できる国と Azure の料金支払いに使用できる通貨の一覧を次に示します。
 
-| Country (国) | 通貨コード |
+| 国 | 通貨コード |
 |---------------------------------|---------------|
 | アフガニスタン | USD |
 | アルバニア | USD |
@@ -171,4 +171,4 @@ Microsoft Azure は世界の 140 を超える国で購入でき、さまざま�
 | ザンビア | USD |
 | ジンバブエ | USD |
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0713_2016-->

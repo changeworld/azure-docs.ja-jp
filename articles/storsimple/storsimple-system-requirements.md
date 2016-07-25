@@ -26,7 +26,7 @@ Microsoft Azure StorSimple へようこそ。この記事では、StorSimple デ
 
 - **ストレージ クライアントのソフトウェア要件** - サポートされているオペレーティング システムと、これらのオペレーティング システムに関する追加要件について説明します。
 - **、StorSimple デバイスのネットワーク要件** - iSCSI、クラウド、または管理トラフィックを使用できるようにするため、ファイアウォールで開いておく必要があるポートについての情報を提供します。
-- **StorSimple の高可用性の要件** - StorSimple デバイスおよびホスト コンピューターの高可用性要件およびベスト プラクティスについて説明します。 
+- **StorSimple の高可用性の要件** - StorSimple デバイスおよびホスト コンピューターの高可用性要件およびベスト プラクティスについて説明します。
 
 
 ## ストレージ クライアントのソフトウェア要件
@@ -87,7 +87,7 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus| クラウド対応のネットワーク インターフェイス |
 |`https://*.backup.windowsazure.com`|デバイス登録| DATA 0 のみ|
 |`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|証明書の失効 |クラウド対応のネットワーク インターフェイス |
-| `https://*.core.windows.net/*` | Azure ストレージ アカウントと監視 | クラウド対応のネットワーク インターフェイス |
+| `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure ストレージ アカウントと監視 | クラウド対応のネットワーク インターフェイス |
 | `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update サーバー<br> | コントローラーの固定 IP のみ |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |コントローラーの固定 IP のみ |
 | `https://*.partners.extranet.microsoft.com/*` | サポート パッケージ | クラウド対応のネットワーク インターフェイス |
@@ -96,7 +96,7 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 
 ルーティング メトリックは、指定したネットワークにデータをルーティングするインターフェイスとゲートウェイに関連付けられています。ルーティング プロトコルによって、指定された宛先への最適なパスを計算するために使用されます (同じ宛先への複数のパスが存在することがわかった場合)。ルーティング メトリックが低いと、優先順位が高くなります。
 
-StorSimple のコンテキストで、複数のネットワーク インターフェイスとゲートウェイがトラフィックを伝送するように構成されている場合、ルーティング メトリックはインターフェイスの相対的な使用順序を決定する役割を果たします。ルーティング メトリックをユーザーが変更することはできません。ただし、`Get-HcsRoutingTable` コマンドレットを使用して、StorSimple デバイスのルーティング テーブル (およびメトリック) を出力することはできます。Get-HcsRoutingTable コマンドレットの詳細については、[StorSimple デプロイメントのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページをご覧ください。
+StorSimple のコンテキストで、複数のネットワーク インターフェイスとゲートウェイがトラフィックを伝送するように構成されている場合、ルーティング メトリックはインターフェイスの相対的な使用順序を決定する役割を果たします。ルーティング メトリックをユーザーが変更することはできません。ただし、`Get-HcsRoutingTable` コマンドレットを使用して、StorSimple デバイスのルーティング テーブル (およびメトリック) を出力することはできます。Get-HcsRoutingTable コマンドレットの詳細については、[StorSimple デプロイのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページをご覧ください。
 
 ルーティング メトリックのアルゴリズムは、StorSimple デバイスで実行されているソフトウェアのバージョンによって異なります。
 
@@ -120,7 +120,7 @@ StorSimple のコンテキストで、複数のネットワーク インター�
 
 Update 2 にはいくつかのネットワーク関連の機能強化があり、ルーティング メトリックが変更されました。動作の説明は次のとおりです。
 
-- 事前に定義された一連の値が、ネットワーク インターフェイスに割り当てられています。 	
+- 事前に定義された一連の値が、ネットワーク インターフェイスに割り当てられています。
 
 - 以下に示す表の例では、さまざまなネットワーク インターフェイスがクラウド対応の場合とクラウド非対応 (ただしゲートウェイが構成済み) の場合に、割り当てられる値を示しています。ここで割り当てられている値はあくまでも一例です。
 
@@ -159,8 +159,7 @@ Update 2 にはいくつかのネットワーク関連の機能強化があり�
 
 - 再試行に関しては、クラウドよりも iSCSI が優先されます。
 
-	次の例で考えてみましょう。
-	StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっているとします。Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
+	次の例で考えてみましょう。StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっているとします。Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
 
 	Data 1 が失敗した場合、これが最後の iSCSI ネットワーク インターフェイスであるため、他のコントローラー上の Data 1 に対するコントローラー フェールオーバーが発生します。
 
@@ -282,4 +281,4 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -144,4 +144,4 @@ Azure Media Analytics を使用することで、開発者は、限定された�
 
 [overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

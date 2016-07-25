@@ -111,12 +111,20 @@
 
 ## 次のステップ
 
-ここでは、デバイス管理の概念をサンプル UI を使って検証してきました。デバイス管理 API に関する理解をさらに深め、実際にコード例に触れてみたいという場合は、以下の開発者向けチュートリアルを参照してください。
+ここでは、デバイス管理の概念をサンプル UI を使って検証してきました。デバイス管理 API に関する理解をさらに深め、実際にコード例に触れてみたいという場合は、以下の開発者向けチュートリアルとリソースをご覧ください。
 
 - [デバイス ツインの使用方法][lnk-tutorial-twin]
 - [クエリを使用したデバイス ツインの検索方法][lnk-tutorial-queries]
 - [デバイス ジョブを使用して、デバイスのファームウェアを更新する方法][lnk-tutorial-jobs]
+- [IoT ゲートウェイの内側で管理されたデバイスを有効にする][lnk-dm-gateway]
 - [Azure IoT Hub デバイス管理クライアント ライブラリの概要][lnk-library-c]
+
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
 
 [1]: media/iot-hub-device-management-ui-sample/image1.png
 [2]: media/iot-hub-device-management-ui-sample/image2.png
@@ -130,9 +138,16 @@
 [lnk-dm-overview]: iot-hub-device-management-overview.md
 [lnk-get-started]: iot-hub-device-management-get-started.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management/
-[lnk-library-c]: iot-hub-device-management-library.md
+
 [lnk-tutorial-twin]: iot-hub-device-management-device-twin.md
 [lnk-tutorial-queries]: iot-hub-device-management-device-query.md
 [lnk-tutorial-jobs]: iot-hub-device-management-device-jobs.md
+[lnk-dm-gateway]: iot-hub-gateway-device-management.md
+[lnk-library-c]: iot-hub-device-management-library.md
 
-<!---HONumber=AcomDC_0615_2016-->
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

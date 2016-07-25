@@ -140,15 +140,15 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 	次のコマンドレット例は、手順 1. で作成された、ルーティング テーブルに既定のルートを追加します。サポートされている唯一のルートには、"VPNGateway" ネクストホップへの宛先プレフィックスの「0.0.0.0/0」が付いています。
  
-		Set-AzureRoute –RouteTableName "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
+		Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
 
 3. サブネットには、ルーティング テーブルを関連付けます。
 
 	ルーティング テーブルが作成され、ルートが追加された後は、以下のコマンドレットを使用して、ルート テーブルを VNet サブネットに追加または関連付けます。以下のサンプルでは、ルート テーブル "MyRouteTable" を VNet MultiTier-VNet の Midtier および Backend サブネットに追加します。
 
-		Set-AzureSubnetRouteTable -VNetName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
+		Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
 
-		Set-AzureSubnetRouteTable -VNetName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
+		Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
 
 4. 強制トンネリングに既定のサイトを割り当てます。
 
@@ -161,7 +161,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 ### ルート テーブルを削除するには
 
-	Remove-AzureRouteTable -RouteTableName <routeTableName>
+	Remove-AzureRouteTable -Name <routeTableName>
 
 ### ルート テーブルを一覧表示するには
 
@@ -173,14 +173,14 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 ### サブネットからのルートを削除するには
 
-	Remove-AzureSubnetRouteTable –VNetName <virtualNetworkName> -SubnetName <subnetName>
+	Remove-AzureSubnetRouteTable –VirtualNetworkName <virtualNetworkName> -SubnetName <subnetName>
 
 ### サブネットに関連付けられたルート テーブルの一覧表示するには
 	
-	Get-AzureSubnetRouteTable -VNetName <virtualNetworkName> -SubnetName <subnetName>
+	Get-AzureSubnetRouteTable -VirtualNetworkName <virtualNetworkName> -SubnetName <subnetName>
 
 ### VNet VPN ゲートウェイから既定のサイトを削除するには
 
-	Remove-AzureVnetGatewayDefaultSites -VNetName <virtualNetworkName>
+	Remove-AzureVnetGatewayDefaultSite -VNetName <virtualNetworkName>
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/27/2016"
+   ms.date="07/12/2016"
    ms.author="larryfr"/>
 
 #Beeline による HDInsight での Hive と Hadoop の使用
@@ -23,7 +23,7 @@
 
 この記事では、Secure Shell (SSH) を使用して Linux ベースの HDInsight クラスターに接続してから、[Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) コマンド ライン ツールを使用して Hive クエリを対話的に実行する方法について説明します。
 
-> [AZURE.NOTE] Beeline は Hive への接続に JDBC を使用しました。Hive の JDBC 使用に関する詳細については、「[Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続する](hdinsight-connect-hive-jdbc-driver.md)」を参照してください。
+> [AZURE.NOTE] Beeline は Hive への接続に JDBC を使用します。Hive の JDBC 使用に関する詳細については、「[Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続する](hdinsight-connect-hive-jdbc-driver.md)」を参照してください。
 
 ##<a id="prereq"></a>前提条件
 
@@ -55,29 +55,17 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 ##<a id="beeline"></a>Beeline コマンドを使用する
 
-1. 接続したら、次を使用して、ヘッド ノードのホスト名を取得します。
+1. 接続したら、次のコマンドを使用して Beeline を開始します。
 
-        hostname -f
+        beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
+
+    これにより、Beeline クライアントが起動され、JDBC の URL に接続されます。ここでは、HiveServer2 がクラスター内の両方のヘッド ノードで実行されているため `localhost` を使用し、ヘッド ノード 0 上で直接 Beeline を実行しています。
     
-    Beeline から HiveServer2 に接続する際に使用できるよう、返されたホスト名を保存します。
-    
-2. 次のコマンドを使用して Hive CLI を起動します。
-
-        beeline
-
-2. `beeline>` プロンプトから、次を使用して HiveServer2 サービスに接続します。__HOSTNAME__ を以前にヘッド ノードで返されたホスト名に置き換えます。
-
-        !connect jdbc:hive2://HOSTNAME:10001/;transportMode=http admin
-        
-    これにより、指定した __HOSTNAME__ でポート __10001__ に接続することと、__HTTP__ が転送方法であることを Beeline に指示します。__Admin__ アカウントは、接続の認証に使用します。
-
-    メッセージが表示されたら、HDInsight クラスターの管理者 (admin) アカウントのパスワードを入力します。接続が確立されると、プロンプトが次に変わります。
-    
-        jdbc:hive2://HOSTNAME:10001/>
+    コマンドが完了すると、`jdbc:hive2://localhost:10001/>` プロンプトが表示されます。
 
 3. Beeline コマンドは、通常、`!` 文字で始まります。たとえば、「`!help`」でヘルプが表示されます。ただし、多くの場合、`!` は省略できます。たとえば、「`help`」も機能します。
 
-    ヘルプを表示すると、「`!sql`」が表示されます。これは HiveQL ステートメントの実行に使用されます。ただし、HiveQL は一般的に使用されるので、先行する `!sql` を省略できます。次の 2 つのステートメントはまったく同じ結果となります。Hive で現在利用可能なテーブルが表示されます。
+    ヘルプを表示すると、「`!sql`」が表示されます。これは HiveQL ステートメントの実行に使用されます。ただし、HiveQL が一般的に使用されるので、先行する `!sql` を省略できます。次の 2 つのステートメントはまったく同じ結果となります。Hive で現在利用可能なテーブルが表示されます。
     
         !sql show tables;
         show tables;
@@ -176,13 +164,15 @@ Beeline を使用し、HiveQL ステートメントを含むファイルを実�
     
     > [AZURE.NOTE] 外部テーブルとは異なり、内部テーブルを削除すると、基盤となるデータも削除されます。
     
-3. ファイルを保存するには、__Ctrl__ キーを押しながら ___X__ キーを押し、__Y__ キー、__Enter__ キーの順に押します。
+3. ファイルを保存するには、__Ctrl__ キーを押しながら __X__ キーを押し、__Y__ キー、Enter キーの順に押します。
 
 4. 次を使用し、Beeline でファイルを実行します。__HOSTNAME__ を以前にヘッド ノードで取得した名前に置き換え、__PASSWORD__ を管理者アカウントのパスワードに置き換えます。
 
-        beeline -u 'jdbc:hive2://HOSTNAME:10001/;transportMode=http' -n admin -p PASSWORD -f query.hql
+        beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i query.hql
 
-5. **errorLogs** テーブルが作成されたことを確認するには、Beeline を起動し、HiveServer2 に接続し、**errorLogs** からすべての行を返す次のステートメントを使用します。
+    > [AZURE.NOTE] `-i` パラメーターを使用すると、Beeline が開始されて query.hql ファイル内のステートメントが実行され、Beeline で `jdbc:hive2://localhost:10001/>` プロンプトが開いたままになります。`-f` パラメーターを使用してファイルを実行することもできます。これにより、ファイルが処理されると Bash に戻ります。
+
+5. **errorLogs** テーブルが作成されたことを確認するには、**errorLogs** からすべての行を返す次のステートメントを使用します。
 
         SELECT * from errorLogs;
 
@@ -245,4 +235,4 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

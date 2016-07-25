@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/08/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Learningpool の統合
@@ -37,7 +37,7 @@
 
 ###Learningpool のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-learningpool-tutorial/IC700993.png "Active Directory")
 
@@ -72,7 +72,7 @@ Learningpool アプリケーションでは、特定の形式の SAML アサー�
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Learningpool** アプリケーション統合ページの一番上のメニューで **[属性]** をクリックして、**[SAML トークンの属性]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Learningpool** アプリケーション統合ページの一番上のメニューで **[属性]** をクリックして、**[SAML トークンの属性]** ダイアログを開きます。
 
     ![属性](./media/active-directory-saas-learningpool-tutorial/IC795075.png "属性")
 
@@ -98,7 +98,7 @@ Learningpool アプリケーションでは、特定の形式の SAML アサー�
 
 4.  ブラウザーで、**[戻る]** をクリックして、**[クイック スタート]** ダイアログをもう一度開きます。
 
-5.  **[シングル サインオンの構成]** ダイアログ ボックスを開くには、 **[シングル サインオンの構成]** をクリックします。
+5.  **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログ ボックスを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-learningpool-tutorial/IC795076.png "シングル サインオンの構成")
 
@@ -106,9 +106,9 @@ Learningpool アプリケーションでは、特定の形式の SAML アサー�
 
     ![Configure Single Sign-On](./media/active-directory-saas-learningpool-tutorial/IC795077.png "Configure Single Sign-On")
 
-7.  **[アプリ URL の構成]** ページの **[Learningpool のサインオン URL]** ボックスに、ユーザーが Learningpool アプリケーションにサインオンする際に使用する URL (例: *https://parliament.preview.learningpool.com/auth/shibboleth/index.php)) を入力し、**[次へ]** をクリックします。
+7.  **[アプリ URL の構成]** ページの **[Learningpool のサインオン URL]** ボックスに、ユーザーが Learningpool アプリケーションにサインオンする際に使用する URL (例: *https://parliament.preview.learningpool.com/auth/shibboleth/index.php) を入力し、**[次へ]** をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-learningpool-tutorial/IC795078.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-learningpool-tutorial/IC795078.png "アプリケーション URL の構成")
 
 8.  **[Learningpool でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、証明書ファイルをコンピューターのローカルに保存します。
 
@@ -118,7 +118,7 @@ Learningpool アプリケーションでは、特定の形式の SAML アサー�
 
     >[AZURE.NOTE]シングル サインオンは、Learningpool サポート チームが有効にする必要があります。
 
-10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-learningpool-tutorial/IC795080.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -135,7 +135,7 @@ Learningpool へのユーザー プロビジョニングの構成にあたって
 
 ###ユーザーを Learningpool に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Learningpool** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -147,4 +147,4 @@ Learningpool へのユーザー プロビジョニングの構成にあたって
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

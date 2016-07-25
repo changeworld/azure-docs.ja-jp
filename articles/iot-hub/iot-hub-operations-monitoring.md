@@ -13,29 +13,30 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="06/06/2016"
+ ms.date="07/07/2016"
  ms.author="nberdy"/>
 
 # 操作の監視の概要
 
 IoT Hub の操作の監視では、IoT Hub に対する操作の状態をリアルタイムで監視することができます。IoT Hub では複数のカテゴリの操作にわたってイベントを追跡するので、ユーザーは、処理のために IoT Hub のエンドポイントに送信された 1 つまたは複数のカテゴリのイベントの使用を有効にすることがでます。ユーザーは、データを監視してエラーがないか確認したり、データ パターンに基づいてより複雑な処理をセットアップしたりできます。
 
-IoT Hub では、次の 4 つのカテゴリのイベントを監視します。
+IoT Hub では、次の 5 つのカテゴリのイベントを監視します。
 
 - デバイス ID の操作
 - デバイス テレメトリ
 - クラウドからデバイスへのコマンド
 - 接続
+- ファイルのアップロード
 
 ## 操作の監視を有効にする方法
 
-1. IoT Hub を作成します。IoT Hub の作成方法の手順については、[使用開始][lnk-get-started]に関するガイドを参照してください。
+1. IoT Hub を作成します。IoT Hub の作成方法の手順については、[使用開始][lnk-get-started]に関するガイドをご覧ください。
 
 2. IoT Hub のブレードを開きます。ブレードの **[すべての設定]** をクリックし、**[操作の監視]** をクリックします。
 
     ![][1]
 
-3. 監視する監視カテゴリを選択し、**[保存]** をクリックします。イベントは、**[監視の設定]** に一覧された Event Hub 対応のエンドポイントから読み取ることができます。IoT Hub エンドポイントの名前は `messages/operationsmonitoringevents` です。
+3. 監視する監視カテゴリを選択し、**[保存]** をクリックします。イベントは、**[監視の設定]** に一覧表示された Event Hub 対応のエンドポイントから読み取ることができます。IoT Hub エンドポイントの名前は `messages/operationsmonitoringevents` です。
 
     ![][2]
 
@@ -143,11 +144,14 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつデバイス�
 
 ## 次のステップ
 
-操作の監視の概要については以上です。詳細については、以下のリンク先にアクセスしてください。
+操作の監視の概要については以上です。IoT Hub の管理に関する詳細については、[IoT Hub へのアクセス管理][lnk-itpro]をご覧ください。
 
-- [IoT Hub の診断メトリック][lnk-diagnostic-metrics]
-- [IoT Hub のスケーリング][lnk-scaling]
-- [IoT Hub の高可用性と障害復旧][lnk-dr]
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 
 <!-- Links and images -->
 [1]: media/iot-hub-operations-monitoring/enable-OM-1.png
@@ -158,4 +162,11 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつデバイス�
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md
 
-<!---HONumber=AcomDC_0608_2016-->
+[lnk-itpro]: iot-hub-itpro-info.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+
+<!---HONumber=AcomDC_0713_2016-->

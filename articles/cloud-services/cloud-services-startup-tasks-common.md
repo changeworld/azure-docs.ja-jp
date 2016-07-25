@@ -28,22 +28,7 @@ ms.author="adegeo"/>
 
 ## ロールを開始する前に環境変数を定義する
 
-[Runtime] 要素をサービス定義ファイルのロールの定義に追加することで、ロール全体の環境変数を定義できます。
-
-```xml
-<ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
-    <WebRole name="WebRole1">
-        ...
-        <Runtime>
-            <Environment>
-                <Variable name="MyEnvironmentVariable" value="MyVariableValue" />
-            </Environment>
-        </Runtime>
-    </WebRole>
-</ServiceDefinition>
-```
-
-他のタスクと共有しない特定のタスク向けの環境変数を定義する必要がある場合は、[Task] 要素内の [Environment] 要素を使用します。
+特定のタスク向けの環境変数を定義する必要がある場合は、[Task] 要素内の [Environment] 要素を使用します。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -391,7 +376,6 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
     REM   Exit normally.
     EXIT /B 0
 
-
 ## タスクのベスト プラクティス
 ここでは、お使いの Web ロールや worker ロールのタスクを構成するときに従う必要があるいくつかのベスト プラクティスを紹介します。
 
@@ -503,4 +487,4 @@ Startup2.cmd:
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

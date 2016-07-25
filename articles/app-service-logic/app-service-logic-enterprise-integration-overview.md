@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Enterprise Integration の概要 | Microsoft Azure App Service" 
+	pageTitle="Enterprise Integration の概要 | Microsoft Azure App Service | Microsoft Azure" 
 	description="Enterprise Integration の機能を使用することにより、Logic Apps を使ってビジネス プロセスと統合シナリオを実現できます。" 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/06/2016" 
+	ms.date="07/08/2016" 
 	ms.author="deonhe"/>
 
 # Enterprise Integration Pack の概要
@@ -35,7 +35,7 @@ Enterprise Integration Pack のアーキテクチャは、B2B アプリの設計
 ## Enterprise Integration の使用を開始する方法
 **Azure ポータル**の Logic Apps デザイナーを利用して、Enterprise Integration Pack を使用した B2B アプリを構築、管理できます。
 
-Azure ポータルでアプリを作成する前に必要な手順の概要は、次のとおりです。 ![](./media/app-service-logic-enterprise-integration-overview/overview-0.png)
+Azure ポータルでアプリを作成する前に必要な手順の概要は、次のとおりです。![overviewimage](./media/app-service-logic-enterprise-integration-overview/overview-0.png)
 
 ## いくつかの一般的なシナリオ
 
@@ -44,23 +44,21 @@ Enterprise Integration では、次の業界標準がサポートされていま
 - EDI - Electronic Data Interchange (電子データ交換)
 - EAI - Enterprise Application Integration (エンタープライズ アプリケーション統合)
 
-## Enterprise Integration Pack の料金
-料金情報と各サービス レベルに含まれる機能の一覧については、[Azure App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)に関するページを参照してください。
-
 ## すぐに使用を開始するために必要なもの
 - 統合アカウントが付属した Azure サブスクリプション
 - マップとスキーマを作成するための Visual Studio 2015
 - [Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas)
 
 ## 各項目の詳細情報
-- [スキーマ](./app-service-logic-enterprise-integration-schemas.md "Enterprise Integration のスキーマについての詳細情報")
-- [マップ](./app-service-logic-enterprise-integration-maps.md "Enterprise Integration のマップについての詳細情報")
-- [証明書](./app-service-logic-enterprise-integration-certificates.md "Enterprise Integration の証明書についての詳細情報")
-- [パートナー](./app-service-logic-enterprise-integration-partners.md "Enterprise Integration のパートナーについての詳細情報")
 - [アグリーメント](./app-service-logic-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")
-- [統合アカウント](./app-service-logic-enterprise-integration-accounts.md "統合アカウントについての詳細情報")
 - [企業間 (B2B) シナリオ](./app-service-logic-enterprise-integration-b2b.md "B2B 機能を使用したロジック アプリの作成方法についての詳細情報")
-- [XML メッセージの検証](./app-service-logic-enterprise-integration-xml.md "ロジック アプリを使用した XML メッセージの検証方法についての詳細情報")
+- [証明書](./app-service-logic-enterprise-integration-certificates.md "Enterprise Integration の証明書についての詳細情報")
 - [フラット ファイル エンコード/デコード](./app-service-logic-enterprise-integration-flatfile.md "フラット ファイル コンテンツをエンコードおよびデコードする方法についての詳細情報")
+- [統合アカウント](./app-service-logic-enterprise-integration-accounts.md "統合アカウントについての詳細情報")
+- [マップ](./app-service-logic-enterprise-integration-maps.md "Enterprise Integration のマップについての詳細情報")
+- [パートナー](./app-service-logic-enterprise-integration-partners.md "Enterprise Integration のパートナーについての詳細情報")
+- [スキーマ](./app-service-logic-enterprise-integration-schemas.md "Enterprise Integration のスキーマについての詳細情報")
+- [XML メッセージの検証](./app-service-logic-enterprise-integration-xml.md "ロジック アプリを使用した XML メッセージの検証方法についての詳細情報")
+- [XML 変換](./app-service-logic-enterprise-integration-transform.md "Enterprise Integration のマップについての詳細情報")
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Enterprise Integration Pack の概要 | Microsoft Azure App Service" 
-	description="Enterprise Integration Pack の機能を使用することにより、Microsoft Azure App Service を使用してビジネス プロセスのシナリオと統合シナリオを実現できます。" 
+	pageTitle="Enterprise Integration Pack と Logic Apps を使用したフラット ファイルのエンコードまたはデコードについての詳細情報 | Microsoft Azure App Service | Microsoft Azure" 
+	description="Enterprise Integration Pack および Logic Apps の機能を使用してフラット ファイルをエンコードまたはデコードします。" 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/30/2016" 
+	ms.date="07/08/2016" 
 	ms.author="deonhe"/>
 
 # フラット ファイルでのエンタープライズ統合
@@ -65,4 +65,4 @@ XML の内容をエンコードするロジック アプリ内から、コネク
 ## 詳細情報
 - [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

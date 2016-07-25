@@ -13,44 +13,53 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/20/2016" 
+	ms.date="07/12/2016" 
 	ms.author="ccompy"/>
 
 # App Service 環境の作成方法 #
 
 App Service 環境 (ASE) は Azure App Service の Premium サービス オプションであり、マルチテナント スタンプでは使用できない高度な構成機能を提供します。ASE 機能は、基本的に、Azure App Service を顧客の仮想ネットワークにデプロイします。App Service 環境が提供される機能の詳細については、[App Service 環境の概要][WhatisASE]に関するページを参照してください。
 
+
 ### 概要 ###
+
+ASE は、フロント エンドとワーカー コンピューティング リソースで構成されます。フロント エンドは HTTP/HTTPSS エンドポイントとして動作し、アプリをホストする役割を持つワーカーにトラフィックを送信します。
 
 ASE を作成するには、次の情報を提供する必要があります。
 
 - ASE の名前
-- ASE に使用するサブスクリプション  
-- resource group
-- Azure Virtual Network (VNET) とサブネットの選択
+- ASE に使用するサブスクリプション
+- リソース グループ
+- ASE によって使用される 8 個以上のアドレスと 1 つのサブネットがある Azure Virtual Network (VNet)
+- VIP タイプ (外部または内部)
 - ASE リソース プールの定義
+
 
 これらの項目ごとに重要な詳細情報があります。
 
-- ASE の名前は、その ASE で作成されるアプリのサブドメインで使用されます。
+- ASE の名前は、外部 VIP で構成される場合、その ASE 内に作成されるすべてのアプリのサブドメインで使用されます
+- 外部でホストするインターネット アクセス可能アプリを使用する ASE。内部 VIP を使用する ASE では、内部ロード バランサー (ILB) を使用します
 - ASE で作成されるすべてのアプリは、ASE 自体と同じサブスクリプションに含まれます。
 - ASE の作成に使用されたサブスクリプションへのアクセス権がない場合、ASE を使用してアプリを作成することはできません。
-- ASE をホストするために使用されている VNET は、地域クラシック "v1" VNET である必要があります。 
+- ASE のホストに使用する VNet は、リージョン VNet である必要があります。クラシック VNet または Resource Manager VNet を使用できます
 - **ASE をホストするために使用されているサブネットに、他のコンピューティング リソースを含めることはできません。**
 - サブネットに存在できる ASE は 1 つに限られます。
-- 2016 年 6 月に行われた直近の変更で、パブリック アドレス範囲*または* RFC1918 アドレス空間 (つまりプライベート アドレス) の*どちらか*を使用した仮想ネットワークに ASE をデプロイできるようになりました。パブリック アドレス範囲の仮想ネットワークを使用するには、あらかじめサブネットを作成しておき、ASE の作成インターフェイスでそのサブネットを選択する必要があります。
+- パブリック アドレス範囲*または* RFC1918 アドレス空間 (つまりプライベート アドレス) の*どちらか*を使用する仮想ネットワークに ASE をデプロイできるようになりました。パブリック アドレス範囲の仮想ネットワークを使用するには、あらかじめ VNet サブネットを作成しておき、ASE 作成インターフェイスでそのサブネットを選択する必要があります。
+
 
 それぞれの ASE デプロイメントは、Azure によって管理および保守されるホステッド サービスです。お客様は、ASE システム ロールをホストするコンピューティング リソースにアクセスすることはできませんが、インスタンスの数量とそのサイズを管理できます。
 
 ASE の作成用 UI にアクセスするには、2 つの方法があります。1 つは Azure Marketplace で ***App Service 環境*** を検索する方法、もう 1 つは [新規]、[Web + モバイル] の順に選択する方法です。
 
-VNET 内に ASE とは別のリソース グループを配置する場合は、まず VNET を別途作成してから、ASE の作成時にそれを選択する必要があります。また、ASE の作成時に既存の VNET 内にサブネットを作成する場合は、VNET と同じリソース グループ内に ASE が存在する必要があります。
+VNet 内に ASE とは別のリソース グループを配置する場合は、まず VNet を別途作成してから、ASE の作成時にそれを選択する必要があります。また、ASE の作成時に既存の VNet 内にサブネットを作成する場合は、VNetT と同じリソース グループ内に ASE が存在する必要があります。
+
 
 ### 簡易作成 ###
 ASE の作成操作には、短時間で作成を完了できる一連の既定値が用意されています。デプロイメントの名前を入力するだけで ASE をすばやく作成できます。この場合、ASE は現在地に最も近いリージョンに次の要素を使用して作成されます。
 
-- RFC1918 のプライベート アドレス空間を使用した 512 個のアドレスを持つ VNET
+- RFC1918 のプライベート アドレス空間を使用した 512 個のアドレスを持つ VNet
 - 256 個のアドレスを持つサブネット
+- 外部 VIP
 - 2 つの P2 コンピューティング リソースが含まれたフロントエンド プール
 - 2 つの P1 コンピューティング リソースが含まれたワーカー プール
 - IP SSL に使用される 1 つの IP アドレス
@@ -59,35 +68,46 @@ ASE の作成操作には、短時間で作成を完了できる一連の既定�
 
 ![][1]
 
-ASE に指定した名前は、ASE で作成されるアプリに使用されます。たとえば、ASE の名前が appsvcenvdemo の場合、ドメイン名は .*appsvcenvdemo.p.azurewebsites.net* になります。ここで *mytestapp* という名前のアプリを作成した場合、この Web アプリのアドレスは *mytestapp.appsvcenvdemo.p.azurewebsites.net* になります。ASE の名前に空白文字は使用できません。名前に大文字を使用した場合、ドメイン名はその名前をすべて小文字で表記したバージョンになります。
+ASE に指定した名前は、ASE で作成されるアプリに使用されます。たとえば、ASE の名前が appsvcenvdemo の場合、サブドメイン名は .*appsvcenvdemo.p.azurewebsites.net* になります。ここで *mytestapp* という名前のアプリを作成した場合、この Web アプリのアドレスは *mytestapp.appsvcenvdemo.p.azurewebsites.net* になります。ASE の名前に空白文字は使用できません。名前に大文字を使用した場合、ドメイン名はその名前をすべて小文字で表記したバージョンになります。ILB を使用する場合、ASE の名前はサブドメインでは使用されず、ASE の作成時に明示的に指定されます。
 
 既定値が役に立つ状況は一定数ありますが、多くの場合はなんらかの調整が必要になります。この後のセクションでは、ASE 関連の各構成セクションについて説明します。
 
+
 ### Virtual Network ###
-自動的に新しい VNET を作成する簡易作成機能が用意されているほか、既存の VNET を選択することも、VNET を手動で作成することもできます。既存の VNET (現時点でサポートされているのはクラシック "v1" のみ) が App Service 環境のデプロイメントをサポートするのに十分な大きさを持つ場合は、これを選択できます。VNET は、8 個以上のアドレスを持つ必要があります。
+ASE 作成プロセスでは、既存のクラシック VNet または Resource Manager VNet の選択と、新しいクラシック VNet の作成をサポートします。
 
-2016 年 6 月に行われた直近の変更で、パブリック アドレス範囲*または* RFC1918 アドレス空間 (つまりプライベート アドレス) の*どちらか*を使用した仮想ネットワークに ASE をデプロイできるようになりました。パブリック アドレス範囲の仮想ネットワークを使用するには、あらかじめサブネットを作成しておき、ASE の作成インターフェイスでそのサブネットを選択する必要があります。
-
-既存の VNET を選択する場合は、使用するサブネットを指定するか、または新しいサブネットを作成する必要があります。サブネットには、8 個以上のアドレスが必要で、事前に他のリソースが含まれていてはいけません。既に VM が割り当てられているサブネットを使用しようとすると、ASE の作成が失敗します。
-
-VNET の作成用 UI を使用する場合は、次の項目を指定する必要があります。
-
-- VNET 名
-- VNET アドレス範囲 (CIDR 表記)
-- Location (場所)
-
-ASE が VNET にデプロイされているため、VNET の場所は ASE の場所と同じです。
-
-VNET を指定または選択した後で、サブネットを作成するか選択する必要があります。ここで指定する必要がある詳細情報は次のとおりです。
-- サブネット名
-- サブネット範囲 (CIDR 表記)
-
-CIDR (クラスレス ドメイン間ルーティング) 表記とは、IP アドレスと CIDR 値をスラッシュで区切る表記形式です。たとえば、*10.0.0.0/22* のようになります。CIDR 値は、表記されている IP アドレスのサブネット マスクである先頭からのビット数を示しています。この概念を簡単に言い換えると、CIDR 値は IP 範囲を指定しています。たとえば、10.0.0.0/22 は、10.0.0.0 ～ 10.0.3.255 の範囲の 1,024 個のアドレスを示しています。/23 は、512 個のアドレスを意味します。
-
-既存の VNET 内にサブネットを作成すると、ASE は VNET と同じリソース グループ内に配置される点に注意してください。ASE を VNET とは別のリソース グループに配置するには、ASE を作成する前に、VNET とサブネットを個別に作成してください。
+既存の VNet を選択する場合、クラシック VNet と Resource Manager VNet がまとめて表示されます。クラシック VNet では、場所の隣に「クラシック」という単語が表示されます。この単語が表示されていなければ、VNet は Resource Manager VNet です。
 
 ![][2]
 
+
+VNet 作成 UI を使用する場合は、次の情報を指定する必要があります。
+
+- VNet 名
+- VNet アドレス範囲 (CIDR 表記)
+- 場所
+
+VNet の場所が ASE の場所になります。これで作成されるのはクラシック VNet であり、Resource Manager VNet ではないことに注意してください。
+
+ASE は、パブリック アドレス範囲*または* RFC1918 アドレス空間 (つまりプライベート アドレス) の*どちらか*を使用する仮想ネットワークにデプロイできます。パブリック アドレス範囲の仮想ネットワークを使用するには、あらかじめサブネットを作成しておき、ASE の作成インターフェイスでそのサブネットを選択する必要があります。
+
+既存の VNET を選択する場合は、使用するサブネットを指定するか、または新しいサブネットを作成する必要があります。サブネットには、8 個以上のアドレスが必要で、事前に他のリソースが含まれていてはいけません。既に VM が割り当てられているサブネットを使用しようとすると、ASE の作成が失敗します。
+
+VNet を指定または選択した後、必要に応じてサブネットを作成するか選択する必要があります。ここで指定する必要がある詳細情報は次のとおりです。
+
+- サブネット名
+- サブネット範囲 (CIDR 表記)
+
+CIDR (クラスレス ドメイン間ルーティング) 表記とは、IP アドレスと CIDR 値をスラッシュで区切る表記形式です。*10.0.0.0/22* のようになります。CIDR 値は、表記されている IP アドレスのサブネット マスクである先頭からのビット数を示しています。この概念を簡単に言い換えると、CIDR 値は IP 範囲を指定しています。たとえば、10.0.0.0/22 は、10.0.0.0 ～ 10.0.3.255 の範囲の 1,024 個のアドレスを示しています。/23 は、512 個のアドレスを意味します。
+
+既存の VNet 内にサブネットを作成すると、ASE は VNet と同じリソース グループ内に配置される点に注意してください。ASE を VNet とは別のリソース グループに配置するには、ASE を作成する前に、VNet とサブネットを個別に作成してください。
+
+
+#### 外部または内部 VIP ####
+
+既定では、VNet 構成は、外部 VIP タイプと 1 つの IP アドレスを使用して設定されます。外部 VIP ではなく ILB を使用する場合は、[VNet 構成] に移動し、[VIP タイプ] を [内部] に変更します。既定では、外部 VIP が使用されます。VIP タイプを内部に変更した場合は、ASE のサブドメインを指定する必要があります。ASE の VIP として ILB を使用する場合は、いくつかのトレードオフがあります。詳細については、「[Using an Internal Load Balancer with an App Service Environment][ILBASE]」 (App Service 環境での内部ロード バランサーの使用) を参照してください。
+
+![][4]
 
 ### Compute リソース プール ###
 
@@ -137,7 +157,7 @@ ASE を作成した後は、次の項目を調整できます。
 - 使用する VNET
 - 使用するサブネット
 
-App Service Environment の手動スケーリング、管理、および監視の詳細については、[App Service Environment の構成方法][ASEConfig]に関するページをご覧ください
+App Service 環境の手動スケーリング、管理、および監視の詳細については、「[App Service 環境の構成][ASEConfig]」を参照してください。
 
 自動スケーリングの詳細については、[App Service 環境の自動スケールの構成方法][ASEAutoscale]に関するページを参照してください。
 
@@ -145,7 +165,7 @@ App Service Environment の手動スケーリング、管理、および監視�
 
 
 ## 使用の開始
-App Service 環境に関するすべての記事と作業方法は [Application Service Environments の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
+App Service 環境に関するすべての記事と作業方法は [App Service 環境の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
 
 App Service 環境の使用を開始するには、「[App Service 環境の概要][WhatisASE]」を参照してください。
 
@@ -160,6 +180,7 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [1]: ./media/app-service-web-how-to-create-an-app-service-environment/asecreate-basecreateblade.png
 [2]: ./media/app-service-web-how-to-create-an-app-service-environment/asecreate-vnetcreation.png
 [3]: ./media/app-service-web-how-to-create-an-app-service-environment/asecreate-resources.png
+[4]: ./media/app-service-web-how-to-create-an-app-service-environment/asecreate-externalvip.png
 
 <!--Links-->
 [WhatisASE]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-intro/
@@ -167,5 +188,6 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
 [ASEAutoscale]: http://azure.microsoft.com/documentation/articles/app-service-environment-auto-scale/
+[ILBASE]: http://azure.microsoft.com/documentation/articles/app-service-environment-with-internal-load-balancer/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

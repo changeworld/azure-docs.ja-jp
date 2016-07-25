@@ -14,14 +14,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="04/12/2016"
+   ms.date="07/12/2016"
    ms.author="mandia"/>
 
 # チュートリアル: カスタム AAD で保護された PowerApps および Logic Flows 用 Web API を作成する
 
 このチュートリアルでは、ASP.Net Web API を作成して Azure Webapps でホストし、簡単認証によって AAD 認証を有効にした後、その Web API を PowerApps と Logic Flows に登録する方法を示します。
 
-## 開始するために必要なもの
+>[AZURE.IMPORTANT] このトピックは、powerapps.microsoft.com の[カスタム AAD で保護された PowerApps および Flows 用 Web API の作成に関するチュートリアル](https://powerapps.microsoft.com/tutorials/customapi-web-api-tutorial/)のページに移動しました。最新版については PowerApps をご覧ください。この Azure のリンクはアーカイブされます。
+
+## はじめにやるべきこと
 
 * Azure サブスクリプション
 * PowerApps アカウント
@@ -36,7 +38,7 @@
 
 3. プロジェクトを作成するときは、リソース用の Web API をビルドする必要があります。このチュートリアルでは、Web API のビルドについて、その詳細は説明しません。
 
-4. 次に、Web API 用の Swagger ファイルを生成します。これは、__Package Manager Console__ を開いて __Swashbuckle__ をインストールすることで簡単に実行できます。![](./media/powerapps-web-api-tutorial/swashbuckle-console.png "Swashbuckle コンソール")
+4. 次に、Web API 用の Swagger ファイルを生成します。これは、__パッケージ マネージャー コンソール__を開いて __Swashbuckle__ をインストールすることで簡単に実行できます。![](./media/powerapps-web-api-tutorial/swashbuckle-console.png "Swashbuckle コンソール")
 
 5. インストールと有効化が終わったら、次の Swagger ドキュメントと UI エンドポイントを参照します。**<your-root-url>/swagger/docs/v1**
 
@@ -53,22 +55,22 @@
 
 ## 手順 2: AAD 認証を設定する
 
-このチュートリアルは、Azure で AAD アプリケーションを作成する方法を知っていることを前提としています。AAD アプリケーションを作成する方法の詳細については、[Azure Resource Manager のチュートリアル](powerapps-azure-resource-manager-tutorial.md)を参照してください。このチュートリアルでは 2 つの AAD アプリケーションが必要です。
+このチュートリアルは、Azure で AAD アプリケーションを作成する方法を知っていることを前提としています。AAD アプリケーションを作成する方法の詳細については、[Azure Resource Manager のチュートリアル](powerapps-azure-resource-manager-tutorial.md)をご覧ください。このチュートリアルでは 2 つの AAD アプリケーションが必要です。
 
-1. 1 つ目の AAD アプリケーションは、Web API をセキュリティで保護するために使用されます。**webAPI** という名前を付けます。
+1. 1 つ目の AAD アプリケーションは、Web API をセキュリティで保護するために使用されます。このアプリケーションには **webAPI** という名前を付けます。
 2. 2 つ目の AAD アプリケーションは、カスタム API の登録をセキュリティで保護し、1 つ目のアプリによって保護されている Web API への委任アクセスを取得するために使用されます。このアプリケーションには **webAPI-customAPI** という名前を付けます。
-3. **webAPI** では、次の構成を使用します。  
+3. **webAPI** では、次の構成を使用します。
 
   1. サインオン URL: ***https://login.windows.net***
   2. アプリ ID URI: ***https://\<your-root-url>*** (通常は Azure にデプロイした Web サイトの URL)
-  3. 応答 URL: ***https://\<your-root-url>/.auth/login/aad/callback***  
+  3. 応答 URL: ***https://\<your-root-url>/.auth/login/aad/callback***
   
 	>[AZURE.IMPORTANT] このアプリのクライアント ID は後で必要になるため、メモしておいてください。
 
 4. **webAPI-customAPI** では、次の構成を使用します。
   
   1. サインオン URL: **https://login.windows.net**
-  2. アプリ ID URI: ***一意の URL であれば制限なし***
+  2. アプリ ID URI: **一意の URL を指定**
   3. 応答 URL: ***https://msmanaged-na.consent.azure-apim.net/redirect***
   4. webAPI への委任アクセスを持たせるアクセス許可を追加します。
   5. このアプリのクライアント ID も後で必要になるため、メモしておいてください。
@@ -80,14 +82,14 @@
 
 1. [Azure ポータル](https://portal.azure.com)にサインインし、このトピックの**手順 1** でデプロイした Web アプリに移動します。
 2. **[設定]** で、**[認証/承認]** を選択します。
-3. **[App Service の認証]** をオンにし、**[Azure Active Directory]** を選択します。次のブレードで **[Express]** を選択します。  
+3. **[App Service の認証]** をオンにし、**[Azure Active Directory]** を選択します。次のブレードで **[Express]** を選択します。
 4. **[既存の AD アプリ]** をクリックし、手順 2 で作成した 1 つ目の AAD アプリケーションを選択します。ここでは **webAPI** を選択します。
 
 これで、Web アプリに対する AAD 認証が設定されました。
 
 ## 手順 4: カスタム API を設定する 
 
-1. swagger を少し変更して、Web アプリで使用される `securityDefintions` オブジェクトと AAD 認証を入力します。次のコード行を追加します。 
+1. swagger を少し変更して、Web アプリで使用される `securityDefintions` オブジェクトと AAD 認証を入力します。次のコード行を追加します。
 
 	```javascript
   "host": "<your-root-url>",
@@ -104,24 +106,24 @@
   },
 	```
 
-2. PowerApps [Web ポータル][1]に移動し、カスタム API を追加します。手順については、[Logic Flows と PowerApps でのカスタム API の使用に関する記事](powerapps-register-custom-api.md)を参照してください。
+2. PowerApps [Web ポータル][1]に移動し、カスタム API を追加します。手順については、[Logic Flows と PowerApps でのカスタム API の使用](powerapps-register-custom-api.md)に関する記事をご覧ください。
 
 3. Swagger をアップロードすると、webAPI で AAD 認証を使用していることがウィザードによって自動的に検出されます。
 
 4. カスタム API 用の AAD 認証を構成します。
 
-  1. クライアント ID: このトピックの **手順 2** の 4.e でメモしておいた***webAPI-CustomAPI のクライアント ID***
-  2. シークレット: このトピックの **手順 2** の 4.f で生成した***webAPI-CustomAPI のキー***
+  1. クライアント ID: このトピックの**手順 2** の 4.e でメモしておいた **webAPI-CustomAPI のクライアント ID**
+  2. シークレット: このトピックの**手順 2** の 4.f で生成した **webAPI-CustomAPI のキー**
   3. ログイン URL: ***https://login.windows.net***
-  4. ResourceUri: このトピックの **手順 2** の 3 でメモしておいた***webAPI のクライアント ID***
+  4. ResourceUri: このトピックの**手順 2** の 3 でメモしておいた**webAPI のクライアント ID**
 
 5. **[作成]** を選択し、カスタム API に接続できるかどうかを試します。すべてが正しく設定されていれば、サインインは成功します。
 
 PowerApps と Logic Flows の作成方法の詳細については、以下をご覧ください。
 
-- [Connect to Office 365, Twitter, and Microsoft Translator][5] (Office 365、Twitter、Microsoft Translator に接続する)
-- [Show data from Office 365][4] (Office 365 のデータを表示する)
-- [Create an app from data][3] (データからアプリを作成する)
+- [Connect to Office 365, Twitter, and Microsoft Translator (Office 365、Twitter、Microsoft Translator に接続する)][5]
+- [Show data from Office 365 (Office 365 のデータを表示する)][4]
+- [Create an app from data (データからアプリを作成する)][3]
 - [Logic Flows の概要に関するページ][2]
 
 ご質問やご意見があれば、[customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) まで電子メールでお送りください。
@@ -134,4 +136,4 @@ PowerApps と Logic Flows の作成方法の詳細については、以下をご
 [5]: https://powerapps.microsoft.com/tutorials/powerapps-api-functions/
 [6]: http://pwrappssamples.blob.core.windows.net/samples/webAPI.json
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

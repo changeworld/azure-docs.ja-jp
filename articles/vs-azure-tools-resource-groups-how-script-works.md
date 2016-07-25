@@ -3,8 +3,8 @@
 	description="Azure リソース グループのデプロイメント プロジェクトの PowerShell スクリプトの動作について説明します。"
 	services="visual-studio-online"
 	documentationCenter="na"
-	authors="TomArcher"
-	manager="douge"
+	authors="tfitzmac"
+	manager="timlt"
 	editor="" />
 
  <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
 	ms.date="05/08/2016"
-	ms.author="tarcher" />
+	ms.author="tomfitz" />
 
 # Azure リソース グループ プロジェクトのデプロイメント スクリプトの概要
 
@@ -94,7 +94,7 @@ Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセ�
     $OptionalParameters.Add($ArtifactsLocationSasTokenName, $null)
     ```
 
-1.	このセクションでは、<app name>.parameters.json ファイル ("パラメーター ファイル" と呼ばれます) に **parameters** という名前の親ノードが (`else` ブロック内に) あるかどうかを確認します。それ以外の場合、親ノードはありません。いずれの形式も受け入れられます。
+1.	このセクションでは、<アプリ名>.parameters.json ファイル ("パラメーター ファイル" と呼ばれます) に **parameters** という名前の親ノードが (`else` ブロック内に) あるかどうかを確認します。それ以外の場合、親ノードはありません。いずれの形式も受け入れられます。
     
 	```
     if ($JsonParameters -eq $null) {
@@ -264,4 +264,4 @@ Azure リソース マネージャーの詳細については、「[Azure リソ
 [4]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy5c.png
 [5]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy6c.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->

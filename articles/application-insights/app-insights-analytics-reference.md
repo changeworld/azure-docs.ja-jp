@@ -729,20 +729,21 @@ Traces
 
 ### top 演算子
 
-    T | top 5 by Name desc
+    T | top 5 by Name desc nulls first
 
 指定された列で並べ替えられた、先頭の *N* 個のレコードを返します。
 
 
 **構文**
 
-    T | top NumberOfRows by Sort_expression [ `asc` | `desc` ] [, ... ]
+    T | top NumberOfRows by Sort_expression [ `asc` | `desc` ] [`nulls first`|`nulls last`] [, ... ]
 
 **引数**
 
 * *NumberOfRows:* 返される *T* の行の数。
 * *Sort\_expression:* 行の並べ替えに使用する式。通常は単なる列名です。複数の sort\_expression を指定できます。
 * `asc` または `desc` (既定値) は、実際には、選択が実際に範囲の "下限" と "上限" のどちらから行われるかを制御します。
+* `nulls first` または `nulls last` は null 値が表示される場所を制御します。`asc` の既定値は `First`、`desc` の既定値は `last` です。
 
 
 **ヒント**
@@ -842,8 +843,8 @@ exceptions
 
 **引数**
 
-* *T:* フィルター処理するレコードが含まれる表形式の入力。
-* *Predicate:* *T* の列に対する `boolean` [式](#boolean)。*T* 内の行ごとに評価されます。
+* *T*: フィルター処理するレコードが含まれる表形式の入力。
+* *Predicate:* *T* の列に対する `boolean` [式](#boolean)。*T* 内の各行について評価されます。
 
 **戻り値**
 
@@ -877,7 +878,7 @@ Traces
 
 ## 集計
 
-集計とは、[summarize 演算](#summarize-operator)で作成されたグループ内の値を結合するための関数です。たとえば、次のクエリでは、dcount() が集計関数です。
+集計とは、[summarize 演算](#summarize-operator)で作成されたグループの値を結合するための関数です。たとえば、次のクエリでは、dcount() が集計関数です。
 
     requests | summarize dcount(name) by success
 
@@ -1031,7 +1032,7 @@ traces
 
 *Predicate* が `true` と評価された行の数を返します。*Predicate* が指定されていない場合は、グループ内のレコードの合計数を返します。
 
-**パフォーマンスに関するヒント**: `where filter | summarize count()` の代わりに `summarize count(filter)` を使用してください。
+**パフォーマンス ヒント**: `where filter | summarize count()` の代わりに `summarize count(filter)` を使用します。
 
 > [AZURE.NOTE] 要求、例外、またはその他の発生したイベントの数を検索する場合は、count() を使用しないでください。[サンプリング](app-insights-sampling.md)の実行中、Application Insights に保持されるデータ ポイントの数は、元のイベントの数より少なくなります。代わりに `summarize sum(itemCount)...` を使用してください。itemCount プロパティには、保持されている各データ ポイントで表される元のイベントの数が反映されます。
 
@@ -1041,7 +1042,7 @@ traces
 
 *Predicate* が `true` と評価された行の数を返します。
 
-**パフォーマンスに関するヒント**: `where filter | summarize count()` の代わりに `summarize countif(filter)` を使用してください。
+**パフォーマンス ヒント**: `where filter | summarize count()` の代わりに `summarize countif(filter)` を使用します。
 
 > [AZURE.NOTE] 要求、例外、またはその他の発生したイベントの数を検索する場合は、countif() を使用しないでください。[サンプリング](app-insights-sampling.md)の実行中のデータ ポイントの数は、実際のイベントの数より少なくなります。代わりに `summarize sum(itemCount)...` を使用してください。itemCount プロパティには、保持されている各データ ポイントで表される元のイベントの数が反映されます。
 
@@ -1053,9 +1054,9 @@ traces
 
 *Accuracy* を指定した場合は、速度と精度のバランスが制御されます。
 
- * `0` = 精度は最も低くなりますが、計算速度は最も高くなります。
+ * `0` = 精度は最も低くなりますが、計算速度は最高になります。
  * `1` = 既定値です。精度と計算時間のバランスをとります。エラー率は約 0.8% です。
- * `2` = 精度は最も高くなりますが、計算速度は最も低くなります。エラー率は約 0.4% です。
+ * `2` = 精度は最も高くなりますが、計算速度は最低になります。エラー率は約 0.4% です。
 
 **例**
 
@@ -1466,11 +1467,11 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 | / | 除算 |
 | % | 剰余 |
 ||
-|`<` |小さい
-|`<=`|小さいか等しい
-|`>` |大きい
-|`>=`|大きいか等しい
-|`<>`|等しくない
+|`<` |小さい 
+|`<=`|小さいか等しい 
+|`>` |大きい 
+|`>=`|大きいか等しい 
+|`<>`|等しくない 
 |`!=`|等しくない
 
 
@@ -1896,20 +1897,26 @@ h"hello"
 演算子|説明|大文字と小文字の区別|実際の例
 ---|---|---|---
 `==`|等しい |あり| `"aBc" == "aBc"`
-`<>`|等しくない|あり| `"abc" <> "ABC"`
+`<>` `!=`|等しくない|あり| `"abc" <> "ABC"`
 `=~`|等しい |いいえ| `"abc" =~ "ABC"`
 `!~`|等しくない |いいえ| `"aBc" !~ "xyz"`
 `has`|右辺 (RHS) が左辺 (LHS) に 1 つの単語として含まれる|いいえ| `"North America" has "america"`
 `!has`|RHS が LHS に完全な単語として含まれない|なし|`"North America" !has "amer"` 
+`hasprefix`|RHS は LHS の用語のプレフィックス|いいえ|`"North America" hasprefix "ame"`
+`!hasprefix`|RHS は LHS の用語のプレフィックスでない|いいえ|`"North America" !hasprefix "mer"`
 `contains` | RHS が LHS のサブシーケンスとして出現する|いいえ| `"FabriKam" contains "BRik"`
 `!contains`| RHS が LHS 内に出現しない|いいえ| `"Fabrikam" !contains "xyz"`
 `containscs` | RHS が LHS のサブシーケンスとして出現する|あり| `"FabriKam" contains "Kam"`
 `!containscs`| RHS が LHS 内に出現しない|あり| `"Fabrikam" !contains "Kam"`
 `startswith`|RHS が LHS の先頭のサブシーケンスである|いいえ|`"Fabrikam" startswith "fab"`
+`!startswith`|RHS が LHS の先頭のサブシーケンスではない。|いいえ|`"Fabrikam" !startswith "abr"`
+`endswith`|RHS が LHS の末尾のサブシーケンスである。|いいえ|`"Fabrikam" endswith "kam"`
+`!endswith`|RHS が LHS の末尾のサブシーケンスではない。|いいえ|`"Fabrikam" !endswith "ka"`
 `matches regex`|LHS には RHS との一致が含まれている|あり| `"Fabrikam" matches regex "b.*k"`
+`in`|要素のいずれかに等しい|はい|`"abc" in ("123", "345", "abc")`
+`!in`|要素のいずれとも等しくない|はい|`"bc" !in ("123", "345", "abc")`
 
-
-語彙全体があるかどうかをテストする場合は、`has` または `in` を使用します。語彙全体とは、非英数字またはフィールドの先頭か末尾によって囲まれた、記号または英数字から成る単語を意味します。`has` は、`contains` または `startswith` より速く動作します。以下のクエリでは、最初の方が処理速度は速くなります。
+語彙全体があるかどうかをテストする場合は、`has` または `in` を使用します。語彙全体とは、非英数字またはフィールドの先頭か末尾によって囲まれた、記号または英数字から成る単語を意味します。`has` は、`contains`、`startswith`、または `endswith` より速く動作します。以下のクエリでは、最初の方が処理速度は速くなります。
 
     EventLog | where continent has "North" | count;
 	EventLog | where continent contains "nor" | count
@@ -2493,4 +2500,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

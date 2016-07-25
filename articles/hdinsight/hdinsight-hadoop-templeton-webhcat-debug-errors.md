@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="04/22/2016"
+ ms.date="07/12/2016"
  ms.author="larryfr"/>
 
 #HDInsight で WebHCat (Templeton) から受信したエラーの説明と解決策
@@ -86,4 +86,4 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 [max-age-ms]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/ds_Hadoop/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

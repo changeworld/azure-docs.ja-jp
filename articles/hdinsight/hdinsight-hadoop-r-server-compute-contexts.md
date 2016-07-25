@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="05/31/2016"
+   ms.date="07/07/2016"
    ms.author="jeffstok"
 />
 
@@ -46,7 +46,7 @@ Premium クラスターのエッジ ノードは、クラスターへの接続�
 2.	データがローカルで XDF にある場合、繰り返しの分析の処理が速くなります。
 3.	テキスト データ ソースから少量のデータをストリーミングすることをお勧めします。データ量が多い場合は、分析の前に XDF に変換してください。
 4.	分析用のエッジ ノードにデータをコピーまたはストリーミングする際に生じるオーバーヘッドは、データ量が非常に多いと管理できなくなります。
-5.	データ量が非常に多くなり、データを分散メモリに収容できなくなるまで、Hadoop での分析では Spark の方が Map Reduce よりも高速です。
+5.	Spark は、Hadoop での分析については Map Reduce より高速です。
 
 これらの原則を考慮した上で、コンピューティング コンテキストを選択するための次のような一般的な経験則があります。
 
@@ -61,7 +61,7 @@ Premium クラスターのエッジ ノードは、クラスターへの接続�
 
 ### Hadoop Map Reduce
 
-- 分析するデータ量が非常に多く、Spark のパフォーマンスが低下し始めた場合は、"Map Reduce" を使用して分析を試みてください。
+- 一般に処理が低速になるため、Spark コンピューティング コンテキストを使用して解決不可能な問題が発生した場合のみ使用してください。
 
 ## rxSetComputeContext のインライン ヘルプ
 
@@ -81,4 +81,4 @@ ScaleR コンピューティング コンテキストの詳細と例について
 - [HDInsight Premium への RStudio Server の追加に関する記事](hdinsight-hadoop-r-server-install-r-studio.md)
 - [Azure Storage options for R Server on HDInsight Premium (HDInsight Premium での R Server の Azure Storage オプション)](hdinsight-hadoop-r-server-storage.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

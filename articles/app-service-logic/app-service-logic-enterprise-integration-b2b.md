@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Enterprise Integration Pack での B2B ソリューションの作成 |Microsoft Azure App Service" 
+	pageTitle="Enterprise Integration Pack での B2B ソリューションの作成 | Microsoft Azure App Service | Microsoft Azure" 
 	description="Enterprise Integration Pack の B2B 機能を使用したデータの受信についての詳細情報" 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="07/08/2016" 
 	ms.author="deonhe"/>
 
 # Enterprise Integration Pack の B2B 機能を使用したデータの受信についての詳細情報#
@@ -75,4 +75,4 @@ AS2 および X12 アクションを使用するには、エンタープライ�
 
 [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

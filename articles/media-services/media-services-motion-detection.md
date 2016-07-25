@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Media Analytics で動作を検出する"
+	pageTitle="Azure Media Analytics で動作を検出する | Microsoft Azure"
 	description="Azure Media Motion Detector メディア プロセッサ (MP) を使用すると、長くて動きの少ないビデオから注目すべき部分を効率よく識別できます。"
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/22/2016"  
+	ms.date="07/11/2016"  
 	ms.author="milanga;juliako;"/>
  
 # Azure Media Analytics で動作を検出する
@@ -28,29 +28,74 @@
 
 ここでは、**Azure Media Motion Detector** の詳細を説明し、Media Services SDK for .NET でのその使用方法を示します。
 
+
 ##Motion Detector の入力ファイル
 
 ビデオ ファイルです。現在サポートされている形式は MP4、MOV、WMV です。
+
+##タスクの構成 (プリセット)
+
+**Azure Media Motion Detector** でタスクを作成するときは、構成プリセットを指定する必要があります。
+
+###パラメーター
+
+次のパラメーターを使用できます。
+
+名前|オプション|説明|既定値
+---|---|---|---
+sensitivityLevel|文字列: "low"、"medium"、"high"|モーション報告の感度を設定します。誤検出の量を調整します。|"medium"
+frameSamplingValue|正の整数|アルゴリズムの実行頻度を設定します。1 = すべてのフレーム、2 = 2 フレームごと、以降同様に続きます。|1
+detectLightChange|ブール値: "true" または "false"|ライトの変更を結果で報告するかどうかを設定します|"False"
+mergeTimeThreshold|Xs-time: Hh:mm:ss<br/>例: 00:00:03|モーション イベント間の時間枠を指定します。ここでは 2 つのイベントが結合され、1 として報告されます。|00:00:00
+detectionZones|検出ゾーンの配列:<br/>- 検出ゾーンとは 3 つ以上のポイントの配列です<br/>- ポイントは、0 から 1 の xy 座標です。|使用する多角形検出ゾーンの一覧を記述します<br/>結果にはゾーンが ID として報告され、最初は "ID": 0 です|フレーム全体を対象とする 1 つのゾーンです。
+
+###JSON の例
+
+	
+	{
+	  'version': '1.0',
+	  'options': {
+	    'sensitivityLevel': 'medium',
+	    'frameSamplingValue': 1,
+	    'detectLightChange': 'False',
+	    "mergeTimeThreshold":
+	    '00:00:02',
+	    'detectionZones': [
+	      [
+	        {'x': 0, 'y': 0},
+	        {'x': 0.5, 'y': 0},
+	        {'x': 0, 'y': 1}
+	       ],
+	      [
+	        {'x': 0.3, 'y': 0.3},
+	        {'x': 0.55, 'y': 0.3},
+	        {'x': 0.8, 'y': 0.3},
+	        {'x': 0.8, 'y': 0.55},
+	        {'x': 0.8, 'y': 0.8},
+	        {'x': 0.55, 'y': 0.8},
+	        {'x': 0.3, 'y': 0.8},
+	        {'x': 0.3, 'y': 0.55}
+	      ]
+	    ]
+	  }
+	}
+
 
 ##Motion Detector の出力ファイル
 
 モーション検出ジョブは、ビデオ内のモーション アラートおよびそのカテゴリが記述されている JSON ファイルを出力資産で返します。このファイルには、ビデオで検出されたモーションの時間と継続時間に関する情報が含まれます。
 
-現時点では、モーション検出は一般的なモーション カテゴリのみをサポートしており、出力ファイルでは***タイプ 2*** と示されています。
-
-X 座標と Y 座標およびサイズは、0.0 ～ 1.0 に正規化された浮動小数点数を使用して表記されます。この値にビデオの高さと幅の解像度を掛けることで、検出されたモーションの領域の境界ボックスを取得できます。
-
-各出力はフラグメントに分割され、それがさらに間隔に分割されて、ビデオ内のデータが定義されます。フラグメントの長さは一定である必要はなく、モーションがまったく検出されないときは長時間続くこともあります。
-
 Motion Detector API は、固定背景ビデオ (監視ビデオなど) 内に動く対象物があると、インジケーターを提供します。Motion Detector は、照明と影の変化などの誤アラームが減るようにトレーニングされます。アルゴリズムの現在の制限事項としては、暗視ビデオ、半透明の対象物、小さな対象物などがあります。
 
 ###<a id="output_elements"></a>出力 JSON ファイルの要素
+
+>[AZURE.NOTE]最新リリースでは、出力 JSON 形式が変更されています。これは、一部のお客様にとっては重大な変更である場合があります。
 
 出力 JSON ファイルの要素を次の表に示します。
 
 要素|説明
 ---|---
-バージョン|Video API のバージョンを示します。
+バージョン|Video API のバージョンを示します。現行バージョンは 2 です。
 タイムスケール|ビデオの 1 秒あたりの "ティック数" です。
 Offset|タイムスタンプの時間オフセットです ("ティック数")。Video API のバージョン 1.0 では、これは常に 0 になります。今後サポートされるシナリオでは、変更される可能性があります。
 Framerate|ビデオの 1 秒あたりのフレーム数です。
@@ -61,98 +106,56 @@ Width、Height|ビデオの幅と高さです (ピクセル)。
 イベント|各イベント フラグメントには、その期間内で検出されたモーションが含まれます。
 型|現在のバージョンでは、これは常に一般モーションを示す "2" です。このラベルにより、Video API は将来のバージョンでモーションを柔軟に分類できます。
 RegionID|前述のように、このバージョンではこの値は常に 0 です。このラベルにより、Video API は将来のバージョンでさまざまな領域のモーションを柔軟に検出できるます。
-地域|モーションに注意するビデオ内の領域を示します。現在のバージョンの Video API では、領域を指定できません。代わりに、ビデオ全体でモーションが検出されます。<br/>- ID は領域の範囲を表します。現バージョンでは ID 0 だけです。<br/>- Rectangle (四角形) はモーションに注意する領域の形状を表します。このバージョンでは常に四角形です。<br/>- 領域には、X、Y 座標と幅、高さの寸法があります。X および Y 座標は、0.0 ～ 1.0 に正規化されたスケール内の領域の左上の XY 座標を表します。幅と高さは、0.0 ～ 1.0 に正規化されたスケール内の領域のサイズを表します。現バージョンでは、X、Y、幅と高さは常に 0、0、1、1 の固定値です。<br/>- Fragments: メタデータはフラグメントと呼ばれる異なるセグメントに分割されます。各フラグメントには、開始、継続時間、間隔数、およびイベントが含まれます。イベントのないフラグメントは、その開始時間と継続時間中にモーションが検出されなかったことを意味します。
+地域|モーションに注意するビデオ内の領域を示します。<br/><br/>- "id" は、領域の範囲を表します。現バージョンでは ID 0 だけです。<br/> - "type" は、モーションに注意する領域の形状を表します。現在 "rectangle" と "polygon" がサポートされています。<br/> "rectangle" を指定した場合、領域のディメンションは X、Y、幅、高さです。X および Y 座標は、0.0 ～ 1.0 に正規化されたスケール内の領域の左上の XY 座標を表します。幅と高さは、0.0 ～ 1.0 に正規化されたスケール内の領域のサイズを表します。現在のバージョンでは、X、Y、幅、高さは常に 0、0、1、1 の固定値です。<br/>"polygon" を指定したした場合、領域のディメンションはポイント単位になります。<br/>
+Fragments|メタデータは、フラグメントと呼ばれる複数のセグメントに分割されます。各フラグメントには、開始、継続時間、間隔数、およびイベントが含まれます。イベントのないフラグメントは、その開始時間と継続時間中にモーションが検出されなかったことを意味します。
 角かっこ|各角かっこは、イベント内の 1 つの間隔を表します。その間隔の角かっこが空の場合、モーションが検出されなかったことを意味します。
- 
+場所|イベントの下にあるこの新しいエントリには、モーションが発生した場所が示されます。これは検出ゾーンよりも具体的です。
 
-##タスクの構成 (プリセット)
-
-**Azure Media Motion Detector** でタスクを作成するときは、構成プリセットを指定する必要があります。現時点では、Azure Media Motion Detector の構成プリセットではオプションを設定できません。次の最小構成プリセットを提供する必要があります。
-
-	{"version":"1.0"}
-
-##ビデオと Motion Detector 出力の例
-
-###実際のモーションがある例
-
-[実際のモーションがある例](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fd54876c6-89a5-41de-b1f4-f45b6e10a94f%2FGarage.ism%2Fmanifest)
-
-###JSON 出力
-
-	 {
-	 "version": "1.0",
-	 "timescale": 60000,
-	 "offset": 0,
-	 "framerate": 30,
-	 "width": 1920,
-	 "height": 1080,
-	 "regions": [
-	   {
-	     "id": 0,
-	     "type": "rectangle",
-	     "x": 0,
-	     "y": 0,
-	     "width": 1,
-	     "height": 1
-	   }
-	 ],
-	 "fragments": [
-	   {
-	     "start": 0,
-	     "duration": 68510
-	   },
-	   {
-	     "start": 68510,
-	     "duration": 969999,
-	     "interval": 969999,
-	     "events": [
-	       [
-	         {
-	           "type": 2,
-	           "regionId": 0
-	         }
-	       ]
-	     ]
-	   },
-	   {
-	     "start": 1038509,
-	     "duration": 41489
-	   }
-	 ]
-	}
-
-###誤検出の例
-
-[誤検出 (証明の変化) がある例:](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Ffdc6656b-1c10-4f3f-aa7c-07ba073c1615%2FLivingRoomLight.ism%2Fmanifest&tech=flash)
-
-###JSON 出力
+JSON 出力の例を次に示します
 
 	{
-	    "version": "1.0",
-	    "timescale": 30000,
-	    "offset": 0,
-	    "framerate": 29.97,
-	    "width": 1920,
-	    "height": 1080,
-	    "regions": [
+	  "version": 2,
+	  "timescale": 23976,
+	  "offset": 0,
+	  "framerate": 24,
+	  "width": 1280,
+	  "height": 720,
+	  "regions": [
 	    {
-	        "id": 0,
-	        "type": "rectangle",
-	        "x": 0,
-	        "y": 0,
-	        "width": 1,
-	        "height": 1
+	      "id": 0,
+	      "type": "polygon",
+	      "points": [{'x': 0, 'y': 0},
+	        {'x': 0.5, 'y': 0},
+	        {'x': 0, 'y': 1}]
 	    }
-	    ],
-	    "fragments": [
+	  ],
+	  "fragments": [
 	    {
-	        "start": 0,
-	        "duration": 320320
-	    }
-	    ]
-	}
-
-
+	      "start": 0,
+	      "duration": 226765
+	    },
+	    {
+	      "start": 226765,
+	      "duration": 47952,
+	      "interval": 999,
+	      "events": [
+	        [
+	          {
+	            "type": 2,
+	            "typeName": "motion",
+	            "locations": [
+	              {
+	                "x": 0.004184,
+	                "y": 0.007463,
+	                "width": 0.991667,
+	                "height": 0.985185
+	              }
+	            ],
+	            "regionId": 0
+	          }
+	        ],
+	
+	…
 ##制限事項
 
 - サポートされている入力ビデオ形式は、MP4、MOV、WMV です。
@@ -168,7 +171,31 @@ RegionID|前述のように、このバージョンではこの値は常に 0 �
 1. 次の JSON プリセットを含む構成ファイルに基づくビデオ モーション検出タスクのジョブを作成します。
 					
 		{
-		    "version": "1.0"
+		  'Version': '1.0',
+		  'Options': {
+		    'SensitivityLevel': 'medium',
+		    'FrameSamplingValue': 1,
+		    'DetectLightChange': 'False',
+		    "MergeTimeThreshold":
+		    '00:00:02',
+		    'DetectionZones': [
+		      [
+		        {'x': 0, 'y': 0},
+		        {'x': 0.5, 'y': 0},
+		        {'x': 0, 'y': 1}
+		       ],
+		      [
+		        {'x': 0.3, 'y': 0.3},
+		        {'x': 0.55, 'y': 0.3},
+		        {'x': 0.8, 'y': 0.3},
+		        {'x': 0.8, 'y': 0.55},
+		        {'x': 0.8, 'y': 0.8},
+		        {'x': 0.55, 'y': 0.8},
+		        {'x': 0.3, 'y': 0.8},
+		        {'x': 0.3, 'y': 0.55}
+		      ]
+		    ]
+		  }
 		}
 
 1. 出力 JSON ファイルをダウンロードします。
@@ -346,9 +373,10 @@ RegionID|前述のように、このバージョンではこの値は常に 0 �
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ##関連リンク
+[Azure Media Services Motion Detector のブログ](https://azure.microsoft.com/blog/motion-detector-update/)
 
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

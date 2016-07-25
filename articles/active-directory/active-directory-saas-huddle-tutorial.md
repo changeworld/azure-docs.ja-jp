@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/09/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Huddle の統合
@@ -37,7 +37,7 @@
 
 ###Huddle のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-huddle-tutorial/IC700993.png "Active Directory")
 
@@ -66,9 +66,9 @@
   
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Huddle に対する認証を行うことができるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[Huddle]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Huddle** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-huddle-tutorial/IC787833.png "Configure Single Sign-On")
 
@@ -76,9 +76,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-huddle-tutorial/IC787834.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Huddle サインオン URL]** テキストボックスに、"**http://company.huddle.com*" のパターンを使用して Huddle テナントの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Huddle サインオン URL]** テキストボックスに、"*http://company.huddle.com*" のパターンを使用して Huddle テナントの URL を入力し、**[次へ]* をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-huddle-tutorial/IC787835.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-huddle-tutorial/IC787835.png "アプリケーション URL の構成")
 
 4.  **[Huddle でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
@@ -87,9 +87,9 @@
     1.  **[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
     2.  **[発行者の URL]** の値、**[SAML SSO URL]** の値、およびダウンロードした証明書をコピーし、それらを Huddle サポート チームに送信します。
 
-    >[AZURE.NOTE]Huddle サポート チームがシングル サインオンを有効にする必要があります。構成が完了すると、通知が届きます。
+    >[AZURE.NOTE] Huddle サポート チームがシングル サインオンを有効にする必要があります。構成が完了すると、通知が届きます。
 
-5.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+5.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-huddle-tutorial/IC787837.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -114,9 +114,9 @@ Azure AD ユーザーが Huddle にログインできるようにするには、
     2.  プロビジョニングする有効な AAD アカウントの**電子メール アドレス**を、関連するテキスト ボックスに入力します。
     3.  **[招待]** をクリックします。
 
-    >[AZURE.NOTE]アカウントがアクティブになる前に、Azure AD アカウント所有者に、アカウント確認用のリンクを含む電子メールが送信されます。
+    >[AZURE.NOTE] アカウントがアクティブになる前に、Azure AD アカウント所有者に、アカウント確認用のリンクを含む電子メールが送信されます。
 
->[AZURE.NOTE]Huddle から提供されている他の Huddle ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Huddle から提供されている他の Huddle ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -124,9 +124,9 @@ Azure AD ユーザーが Huddle にログインできるようにするには、
 
 ###ユーザーを Huddle に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  **Huddle ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Huddle** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-huddle-tutorial/IC787840.png "ユーザーの割り当て")
 
@@ -136,4 +136,4 @@ Azure AD ユーザーが Huddle にログインできるようにするには、
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -117,7 +117,7 @@ DDL ステートメントを実行すると、ローカル テーブルである
 
 *    [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
 *    [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
-*    エラスティック データベース クライアント ライブラリを使用して、データ層を表す[シャード マップ](sql-database-elastic-scale-shard-map-management.md)を作成します。   
+*    エラスティック データベース クライアント ライブラリを使用して、データ層を表す[シャード マップ](sql-database-elastic-scale-shard-map-management.md)を作成します。
 *    [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource (**SHARD\_MAP\_MANAGER** 型)
 *    [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) mytable
 
@@ -129,6 +129,8 @@ DDL ステートメントを実行すると、ローカル テーブルである
 ## ツールの接続性
 通常の SQL Server 接続文字列を使用して、アプリケーション、BI、またはデータ統合ツールを、外部テーブルを持つデータベースに接続できます。ご使用のツールのデータ ソースとして SQL Server がサポートされていることを確認してください。接続されたら、ツールを使用して接続する他の SQL Server データベースと同様に、エラスティック クエリ データベースと外部テーブルを参照します。
 
+> [AZURE.IMPORTANT] Azure Active Directory とエラスティック クエリを使用した認証は、現時点ではサポートされていません。
+
 ## コスト
 
 エラスティック クエリは、Azure SQL Database データベースのコストに含まれます。リモート データベースがエラスティック クエリ エンドポイントとは異なるデータ センターに配置されるトポロジはサポートされますが、リモート データベースからのデータ送信は、通常の [Azure 料金](https://azure.microsoft.com/pricing/details/data-transfers/)で課金されます。
@@ -137,7 +139,7 @@ DDL ステートメントを実行すると、ローカル テーブルである
 * Standard パフォーマンス レベルでは、初回のエラスティック クエリの実行に数分かかる場合があります。これは、エラスティック クエリ機能の読み込みに要する時間です。パフォーマンス レベルが上位になるほど、読み込みのパフォーマンスが高くなります。
 * SSMS または SSDT の外部データ ソースまたは外部テーブルからのスクリプト処理はまだサポートされていません。
 * SQL DB の Import/Export では、外部データ ソースと外部テーブルはまだサポートされていません。Import/Export を使用する必要がある場合は、エクスポートの前にこれらのオブジェクトを削除し、インポート後にこれらのオブジェクトを再作成します。
-* 現在、エラスティック データベース クエリでは、外部テーブルへの読み取り専用アクセスだけがサポートされています。ただし、外部テーブルが定義されているデータベースでは、完全な T-SQL 機能を使用できます。これは、SELECT <column_list> INTO <local_table> を使用して一時的な結果を保持する場合や、外部テーブルを参照するエラスティック クエリ データベースでストアド プロシージャを定義する場合などに便利です。
+* 現在、エラスティック データベース クエリでは、外部テーブルへの読み取り専用アクセスだけがサポートされています。ただし、外部テーブルが定義されているデータベースでは、完全な T-SQL 機能を使用できます。これは、SELECT <column\_list> INTO <local\_table> を使用して一時的な結果を保持する場合や、外部テーブルを参照するエラスティック クエリ データベースでストアド プロシージャを定義する場合などに便利です。
 * 外部テーブル定義では、nvarchar(max) 以外の LOB 型はサポートされていません。この制限を回避するために、リモート データベースで LOB 型を nvarchar(max) にキャストするビューを作成し、ベース テーブルではなくそのビューで外部テーブルを定義し、クエリを使ってこれを元の LOB 型にキャストするという方法を利用できます。
 * 外部テーブルに対する列の統計情報は、現在サポートされていません。テーブルの統計情報はサポートされていますが、手動で作成する必要があります。
 
@@ -169,4 +171,4 @@ DDL ステートメントを実行すると、ローカル テーブルである
 
 <!--anchors-->
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0713_2016-->

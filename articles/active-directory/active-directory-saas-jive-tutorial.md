@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/09/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Jive の統合
@@ -33,7 +33,7 @@
 
 ###Jive のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-jive-tutorial/IC700993.png "Active Directory")
 
@@ -64,7 +64,7 @@
 
 ###ユーザー プロビジョニングを構成するには、次の手順に従います。
 
-1.  Microsoft Azure 管理ポータルの **Jive** アプリケーション統合ページで、**[ユーザー プロビジョニングの構成]** をクリックして **[ユーザー プロビジョニングの構成]** ダイアログを開きます。
+1.  Microsoft Azure クラシック ポータルの **Jive** アプリケーション統合ページで、**[ユーザー プロビジョニングの構成]** をクリックして **[ユーザー プロビジョニングの構成]** ダイアログを開きます。
 
 2.  **[自動ユーザー プロビジョニングを有効にするための Jive の資格情報を入力してください]** ページで、以下の構成設定を入力します。
 
@@ -74,7 +74,7 @@
 
     3.  **[JIVE テナント URL]** テキストボックスに、Jive テナント URL を入力します。
 
-        >[AZURE.NOTE]Jive テナント URL は、組織が Jive にログインするために使用する URL です。通常、URL の形式は **www.<組織名>.jive.com** のようになります。
+        >[AZURE.NOTE] Jive テナント URL は、組織が Jive にログインするために使用する URL です。通常、URL の形式は **www.<組織名>.jive.com** のようになります。
 
     4.  **[検証]** をクリックして構成を確認します。
 
@@ -84,4 +84,4 @@
   
 ここで、テスト アカウントを作成して 10 分間待機し、アカウントが Jive.com と同期されていることを確認します。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

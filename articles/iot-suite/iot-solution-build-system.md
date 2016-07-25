@@ -4,7 +4,7 @@
 	services=""
     documentationCenter=".net"
     suite=""
-	authors="alancameronwills"
+	authors="harikmenon"
 	manager="douge"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="03/25/2016"
-	ms.author="awills"/>
+	ms.author="harikm"/>
 
 
 # MyDriving ソリューションを自分の環境でビルドおよびデプロイする
@@ -285,7 +285,7 @@ scenario\_complete.json での操作:
 
 ### テンプレートの実行
 
-テンプレートの実行方法の詳細は、**scripts/README.md** に記載されています。
+テンプレートの実行方法の詳細は、**scripts/README.md ** に記載されています。
 
 このスクリプトを使用して自分の Azure アカウントのすべてのサービスをプロビジョニングするには、次のいずれかの操作を行います。
 
@@ -462,4 +462,4 @@ MyDriving は、独自の IoT システムの開発を支援するために作�
 
 システムとそのコンポーネントの設計の包括的な説明である「[MyDriving リファレンス ガイド](http://aka.ms/mydrivingdocs)」をお勧めします。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

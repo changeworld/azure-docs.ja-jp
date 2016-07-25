@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/05/2016"
+   ms.date="07/11/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティ センターのよく寄せられる質問 (FAQ)
@@ -105,7 +105,7 @@ Microsoft Security Response Center (MSRC) では、Azure のネットワーク�
 Security Center は、顧客の Azure 環境を継続的に監視し、分析を適用して悪意のある可能性があるさまざまなアクティビティを自動的に検出する Azure サービスです。検出されたアクティビティは、Security Center のダッシュボードにセキュリティの警告として表示されます。
 
 ### Azure セキュリティ センターではアクセス許可はどのように処理されますか。
-Azure セキュリティ センターは、ロール ベースのアクセスをサポートしています。ロールベースのアクセス制御 (RBAC) の詳細については、「[Azure Active Directory のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
+Azure Security Center では、ロール ベースのアクセスをサポートしています。ロールベースのアクセス制御 (RBAC) の詳細については、「[Azure Active Directory のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
 ユーザーが Azure セキュリティ センターを開くと、ユーザーがアクセス権を持つリソースに関する推奨事項とアラートだけが表示されます。これは、ユーザーはサブスクリプションまたはリソースが属するリソース グループに対し、所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているリソースに関連する項目しか閲覧できないことを意味します。
 
@@ -132,6 +132,4 @@ Azure Service Fabric クラスターに属する仮想マシン (VM) を含め�
 
 クラウド サービスで実行されている VM もサポートされます。監視されるのは、運用スロットで実行されているクラウド サービスの Web ロールと worker ロールだけです。クラウド サービスの詳細については、[クラウド サービスの概要](../cloud-services/cloud-services-choose-me.md)を参照してください。
 
-セキュリティ センターには、システムに不足しているセキュリティ更新プログラムや重要な更新プログラムを VM にデプロイするよう促す推奨事項が、"Apply System Updates (システムの更新プログラムの適用)"[](security-center-recommendations.md) として表示されます。クラウド サービスに存在する VM に関して、OS を最新のバージョンに更新するよう促す推奨事項は "Update OS version (OS バージョンの更新)" として表示されます。
-
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

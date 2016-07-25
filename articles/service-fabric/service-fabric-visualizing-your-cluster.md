@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/05/2016"
+   ms.date="07/07/2016"
    ms.author="seanmck"/>
 
 # Service Fabric Explorer を使用したクラスターの視覚化
@@ -99,9 +99,9 @@ http://&lt;your-cluster-endpoint&gt;:19080/Explorer
 
 ### セキュリティ保護されたクラスターに接続する
 
-Service Fabric クラスターに接続するために、クライアントに証明書の提示を要求することによって、Service Fabric クラスターへのアクセスを制御できます。
+[証明書](service-fabric-cluster-security.md)または [Azure Active Directory (AAD)](service-fabric-cluster-security-client-auth-with-aad.md) を使用して、クライアントによる Service Fabric クラスターへのアクセスを制御できます。
 
-セキュリティで保護されたクラスターで Service Fabric Explorer に接続しようとすると、アクセスを取得するために、ブラウザーから証明書の提示を求められます。
+セキュリティで保護されたクラスターで Service Fabric Explorer に接続する場合、クラスターの管理エンドポイントに設定されているセキュリティの種類に応じて、クライアント証明書を提示するか、AAD を使用してログインする必要があります。
 
 ## 次のステップ
 
@@ -116,4 +116,4 @@ Service Fabric クラスターに接続するために、クライアントに�
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

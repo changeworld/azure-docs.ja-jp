@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.workload="mobile" 
-	ms.date="03/11/2016"
-	ms.author="wesmc"/>
+	ms.date="07/08/2016"
+	ms.author="wesmc;ricksal"/>
 
 # Mobile Engagement REST API での認証
 
@@ -40,7 +40,7 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 
 以下の説明に従って PowerShell スクリプトを使用してセットアップを実行するとセットアップにかかる時間は最短になりますが、許容できるほとんどの既定値を使用することになります。あるいは、[手動セットアップ](mobile-engagement-api-authentication-manual.md)の手順に従って Azure ポータルから直接行えば、さらにきめ細かく構成できます。
 
-1. Azure PowerShell の最新バージョンを[こちら](http://aka.ms/webpi-azps)から入手します。ダウンロードの手順の詳細については、この[リンク](../powershell-install-configure.md)を参照してください。  
+1. Azure PowerShell の最新バージョンを[こちら](http://aka.ms/webpi-azps)から入手します。ダウンロードの手順の詳細については、この[リンク](../powershell-install-configure.md)を参照してください。
 
 2. Azure PowerShell をインストールした後は、次のコマンドを使用して、**Azure モジュール**がインストールされていることを確認します。
 
@@ -94,8 +94,8 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 
 1. 次のパラメーターで API を呼び出します。TENANT\_ID、CLIENT\_ID、CLIENT\_SECRET を実際の値に置き換えます。
 
-	- **要求 URL**: **https://login.microsoftonline.com/{TENANT\_ID}/oauth2/token*
-- **HTTP Content-Type ヘッダー**: *application/x-www-form-urlencoded*
+	- **要求 URL**: *https://login.microsoftonline.com/{TENANT\_ID}/oauth2/token*
+	- **HTTP Content-Type ヘッダー**: *application/x-www-form-urlencoded*
 	- **HTTP 要求本文**: *grant\_type=client\_credentials&client\_id={CLIENT\_ID}&client\_secret={CLIENT\_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F*
 
 	要求の例を次に示します。
@@ -141,13 +141,13 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 	- **1** `{subscription-id}`
 	- **2** `{app-collection}`
 	- **3** `{app-resource-name}`
-	- **4** リソース グループ名は、新しく作成したのでない限り **MobileEngagement** です。 
+	- **4** リソース グループ名は、新しく作成したのでない限り **MobileEngagement** です。
 
 	![Mobile Engagement API の URI パラメーター][2]
 
 >[AZURE.NOTE] <br/>
 >1. API ルート アドレスは以前の API 用であるため、無視してください。<br/>
->2. Azure クラシック ポータルを使用してアプリを作成した場合は、アプリケーション名自体とは異なるアプリケーション リソース名を使用する必要があります。Azure ポータルでアプリを作成した場合は、アプリ名自体を使用する必要があります (アプリケーション リソース名と、新しいポータルで作成したアプリのアプリ名に違いはありません)。  
+>2. Azure クラシック ポータルを使用してアプリを作成した場合は、アプリケーション名自体とは異なるアプリケーション リソース名を使用する必要があります。Azure ポータルでアプリを作成した場合は、アプリ名自体を使用する必要があります (アプリケーション リソース名と、新しいポータルで作成したアプリのアプリ名に違いはありません)。
 
 <!-- Images -->
 [1]: ./media/mobile-engagement-api-authentication/azure-module.png
@@ -155,4 +155,4 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 [3]: ./media/mobile-engagement-api-authentication/ps-cmdlets.png
 [4]: ./media/mobile-engagement-api-authentication/ad-app-creation.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

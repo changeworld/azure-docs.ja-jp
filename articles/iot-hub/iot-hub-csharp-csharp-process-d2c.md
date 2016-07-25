@@ -20,7 +20,7 @@
 
 ## はじめに
 
-Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立できる、完全に管理されたサービスです。他のチュートリアル ([IoT Hub の概要]と [IoT Hub を使用したクラウドからデバイスへのメッセージの送信]に関するチュートリアル) では、IoT Hub のデバイスからクラウドおよびクラウドからデバイスへのメッセージングについて、基本的な機能の使用方法を説明しています。
+Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立できる、完全に管理されたサービスです。他のチュートリアル ([IoT Hub の使用]と [IoT Hub を使用した cloud-to-device メッセージの送信][lnk-c2d]に関するチュートリアル) では、IoT Hub の device-to-cloud および cloud-to-device のメッセージングについて、基本的な機能の使用方法を説明しています。
 
 このチュートリアルは、[IoT Hub の概要]に関するチュートリアルに示されているコードを基に作成されており、デバイスからクラウドへのメッセージを処理するために使用できる 2 つのスケーラブルなパターンについて説明しています。
 
@@ -51,7 +51,7 @@ Service Bus は、メッセージごとのチェックポイントと期間ベ�
 
 + Microsoft Visual Studio 2015
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料アカウントを数分で作成することができます。詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fprocess-d2c%2F target="\_blank")」 を参照してください。
++ アクティブな Azure アカウント<br/>Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
 
 [Azure Storage] と [Azure Service Bus] について、ある程度の基礎知識が必要です。
 
@@ -108,14 +108,14 @@ Service Bus は、メッセージごとのチェックポイントと期間ベ�
 
 重複除去期間外にメッセージが再送信されないように、このコードは **EventProcessorHost** のチェックポイント メカニズムを Service Bus キューの重複除去期間に同期します。これは、チェックポイントを重複除去期間 (このチュートリアルでは 1 時間) が経過するたびに少なくとも 1 回強制実行することで実現されます。
 
-> [AZURE.NOTE] このチュートリアルでは 1 つのパーティション分割された Service Bus キューを使用して、IoT Hub から取得した対話型メッセージをすべて処理します。ソリューションの拡張要件に合わせて Service Bus キューを使用する方法の詳細については、「[Service Bus のドキュメント]」を参照してください。
+> [AZURE.NOTE] このチュートリアルでは 1 つのパーティション分割された Service Bus キューを使用して、IoT Hub から取得した対話型メッセージをすべて処理します。ソリューションの拡張要件に合わせて Service Bus キューを使用する方法の詳細については、[Azure Service Bus] のドキュメントをご覧ください。
 
 ### Azure ストレージ アカウントと Service Bus キューのプロビジョニング
 [EventProcessorHost] クラスを使用するには、Azure ストレージ アカウントを用意し、**EventProcessorHost** でチェックポイント情報を記録できるようにする必要があります。既存のストレージ アカウントを使用することも、[Azure Storage について]のページに記載された手順に従って新しいアカウントを作成することもできます。ストレージ アカウント接続文字列はメモしておいてください。
 
 > [AZURE.NOTE] ストレージ アカウント接続文字列をコピーして貼り付けた場合、空白が含まれていないことを確認してください。
 
-Service Bus キューで対話型メッセージの信頼性の高い処理を有効にする必要もあります。[Service Bus キューの使用方法][Service Bus queue]に関するページで説明されているように、プログラムを使用することで、重複除去期間を 1 時間にしてキューを作成できます。あるいは、Azure クラシック ポータルを使用し、以下の手順に従って作成することもできます。
+Service Bus キューで対話型メッセージの信頼性の高い処理を有効にする必要もあります。[Service Bus キューの使用方法][Service Bus queue]に関するページで説明されているように、プログラムを使用することで、重複除去期間を 1 時間にしてキューを作成できます。あるいは、[Azure クラシック ポータル][lnk-classic-portal]を使用し、以下の手順に従って作成することもできます。
 
 1. 左下隅にある **[新規]** をクリックします。**[App Services]**、**[Service Bus]**、**[キュー]**、**[カスタム作成]** の順にクリックします。**d2ctutorial** という名前を入力し、リージョンを選択して、既存の名前空間を使用するか名前空間を新しく作成します。次のページで、**[重複データ検出の有効化]** を選択し、**[重複データ検出の履歴時間枠]** を 1 時間に設定します。右下隅にあるチェック マークをクリックして、キューの構成を保存します。
 
@@ -396,24 +396,15 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
 
 このチュートリアルでは、[EventProcessorHost] クラスを使用して、データ ポイント メッセージと、デバイスからクラウドへの対話型メッセージを確実に処理する方法について学習しました。
 
-[デバイスからのファイルのアップロード]に関するチュートリアルは、同様のメッセージ処理ロジックを使用し、このチュートリアルに基づいて作成されています。さらに、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用するパターンについても説明しています。
+[IoT Hub でクラウドからデバイスへのメッセージを送信する方法][lnk-c2d]では、バック エンドからデバイスにメッセージを送信する方法を説明しています。
 
-IoT Hub に関するその他の情報:
+IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT Suite][lnk-suite] に関するドキュメントをご覧ください。
 
-* [IoT Hub の概要]
-* [IoT Hub 開発者ガイド]
-* [IoT Hub のガイダンス]
-* [サポートされているデバイスのプラットフォームおよび言語][Supported devices]
-* [Azure IoT デベロッパー センター]
+IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド]をご覧ください。
 
 <!-- Images. -->
 [50]: ./media/iot-hub-csharp-csharp-process-d2c/run1.png
 [10]: ./media/iot-hub-csharp-csharp-process-d2c/create-identity-csharp1.png
-[12]: ./media/iot-hub-csharp-csharp-process-d2c/create-identity-csharp3.png
-
-[20]: ./media/iot-hub-csharp-csharp-process-d2c/create-storage1.png
-[21]: ./media/iot-hub-csharp-csharp-process-d2c/create-storage2.png
-[22]: ./media/iot-hub-csharp-csharp-process-d2c/create-storage3.png
 
 [30]: ./media/iot-hub-csharp-csharp-process-d2c/createqueue2.png
 [31]: ./media/iot-hub-csharp-csharp-process-d2c/createqueue3.png
@@ -426,23 +417,16 @@ IoT Hub に関するその他の情報:
 [HDInsight (Hadoop)]: https://azure.microsoft.com/documentation/services/hdinsight/
 [Service Bus queue]: ../service-bus/service-bus-dotnet-get-started-with-queues.md
 [Service Bus キュー]: ../service-bus/service-bus-dotnet-get-started-with-queues.md
-[EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
-
-
 
 [D2C (デバイスからクラウド)]: iot-hub-devguide.md#d2c
 
 [Azure Storage]: https://azure.microsoft.com/documentation/services/storage/
 [Azure Service Bus]: https://azure.microsoft.com/documentation/services/service-bus/
 
-[IoT Hub を使用したクラウドからデバイスへのメッセージの送信]: iot-hub-csharp-csharp-c2d.md
-[デバイスからのファイルのアップロード]: iot-hub-csharp-csharp-file-upload.md
-[IoT Hub の概要]: iot-hub-what-is-iot-hub.md
-[IoT Hub のガイダンス]: iot-hub-guidance.md
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
+[IoT Hub の使用]: iot-hub-csharp-csharp-getstarted.md
 [IoT Hub の使用方法]: iot-hub-csharp-csharp-getstarted.md
 [IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
-[Supported devices]: iot-hub-tested-configurations.md
 [Azure IoT デベロッパー センター]: https://azure.microsoft.com/develop/iot
 [lnk-service-fabric]: https://azure.microsoft.com/documentation/services/service-fabric/
 [lnk-stream-analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
@@ -451,18 +435,17 @@ IoT Hub に関するその他の情報:
 
 <!-- Links -->
 [Azure Storage について]: ../storage/storage-create-storage-account.md#create-a-storage-account
-[Azure IoT - Service SDK NuGet package]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [Event Hubs の使用]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[IoT Hub Developer Guide - Identity Registry]: iot-hub-devguide.md#identityregistry
 [Azure Storage のスケーラビリティのガイドライン]: ../storage/storage-scalability-targets.md
 [Azure Block Blobs]: https://msdn.microsoft.com/library/azure/ee691964.aspx
 [Event Hubs]: ../event-hubs/event-hubs-overview.md
-[Scaled out event processing]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 [Event Hubs のプログラミング ガイド]: ../event-hubs/event-hubs-programming-guide.md
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Azure Portal]: https://manage.windowsazure.com/
 [Service Bus を使用する多層アプリケーションの構築]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-[Service Bus のドキュメント]: https://azure.microsoft.com/documentation/services/service-bus/
 
-<!---HONumber=AcomDC_0629_2016-->
+[lnk-classic-portal]: https://manage.windowsazure.com
+[lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
+
+<!---HONumber=AcomDC_0713_2016-->

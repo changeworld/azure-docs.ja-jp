@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="media" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="07/12/2016"
 	ms.author="juliako"/>
 
 
@@ -25,6 +25,7 @@
 
 - [現在の既知の問題](#issues)
 - [REST API バージョン履歴](#rest_version_history)
+- [2016 年 7 月のリリース](#july_changes16)
 - [2016 年 4 月のリリース](#apr_changes16)
 - [2016 年 2 月のリリース](#feb_changes16)
 - [2016 年 1 月のリリース](#jan_changes_16)
@@ -69,7 +70,7 @@ REST API で一般的な HTTP ヘッダーがいくつか提供されていな�
 Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドが失敗する。|Media Services は、[2012-02-12](http://msdn.microsoft.com/library/azure/dn592123.aspx) バージョンに基づいて SAS URL を生成します。Azure Storage SDK を使用して、BLOB コンテナー内の BLOB を一覧する場合は、Azure Storage SDK Version 2.x に含まれる [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) メソッドを使用してください。Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドは失敗します。
 Media Services 調整メカニズムが、サービスに対して過剰な要求を作成するアプリケーションのリソース使用を制限する。サービスが「サービスを利用できません」(503) HTTP 状態コードを返すことがある。|詳細については、「[Azure Media Services エラー コード](http://msdn.microsoft.com/library/azure/dn168949.aspx)」の 503 HTTP 状態コードの説明を参照してください。
 パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 | [この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 
-
+スムーズ ストリーミング マニフェスト バージョンへの変更|詳細については、[こちらの](media-services-deliver-content-overview.md#known-issues)セクションを参照してください。
 
 ### <a id="dotnet_issues"></a>Media Services SDK for .NET の問題
 
@@ -81,15 +82,33 @@ SDK 内の Media Services オブジェクトをシリアル化できず、その
 
 Media Services REST API バージョン履歴の詳細については、「[Azure モバイル サービス REST API リファレンス]」を参照してください。
 
+##<a id="july_changes16"></a>2016 年 7 月のリリース
+
+###エンコード タスクによって生成されたマニフェスト ファイル (* ISM) への更新
+
+エンコード タスクが Media Encoder Standard または Azure Media Encoder に送信されると、そのエンコード タスクによって、[ストリーミング マニフェスト ファイル](media-services-deliver-content-overview.md) (* .ism) が出力アセットに生成されます。最新のサービス リリースでは、このストリーミング マニフェスト ファイルの構文が更新されました。
+
+>[AZURE.NOTE]ストリーミング マニフェスト (.ism) ファイルの構文は、内部使用のため予約されており、今後のリリースで変更されます。このファイルのコンテンツは変更または操作しないでください。
+
+###エンコード タスクが 1 つ以上の MP4 ファイルを出力すると、新しいクライアント マニフェスト (*.ISMC) ファイルが出力アセットに生成される
+
+最新のサービス リリース以降、1 つ以上の MP4 ファイルを生成するエンコード タスクが完了すると、出力アセットにも、ストリーミング クライアント マニフェスト (*.ismc) ファイルが追加されます。この .ismc ファイルは、動的ストリーミングのパフォーマンス向上に役立ちます。
+
+>[AZURE.NOTE]クライアント マニフェスト (.ismc) ファイルの構文は、内部使用のため予約されており、今後のリリースで変更されます。このファイルのコンテンツは変更または操作しないでください。
+
+詳細については、[こちら](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/)のブログをご覧ください。
+
+既知の問題を確認するには、[こちら](media-services-deliver-content-overview.md#known-issues)のセクションをご覧ください。
+
 ##<a id="apr_changes16"></a>2016 年 4 月のリリース
 
 ### Azure Media Analytics
 
-Azure Media Services に強力なビデオ インテリジェンスとして Azure Media Analytics が導入されました。詳細については、「[Azure Media Services Analytics の概要](media-services-analytics-overview.md)」を参照してください。
+Azure Media Services に強力なビデオ インテリジェンスとして Azure Media Analytics が導入されました。詳細については、「[Azure Media Services Analytics の概要](media-services-analytics-overview.md)」をご覧ください。
 
 ### Apple FairPlay (プレビュー)
 
-Azure Media Services では、Apple FairPlay を使用して HTTP Live Streaming (HLS) コンテンツを動的に暗号化できるようになりました。また、AMS ライセンス配信サービスを使用して FairPlay ライセンスをクライアントに配信することもできます。詳細については、「[Azure Media Services を使用して Apple FairPlay で保護された HLS コンテンツをストリーミングする](media-services-protect-hls-with-fairplay.md)」を参照してください。
+Azure Media Services では、Apple FairPlay を使用して HTTP Live Streaming (HLS) コンテンツを動的に暗号化できるようになりました。また、AMS ライセンス配信サービスを使用して FairPlay ライセンスをクライアントに配信することもできます。詳細については、「[Azure Media Services を使用して Apple FairPlay で保護された HLS コンテンツをストリーミングする](media-services-protect-hls-with-fairplay.md)」をご覧ください。
   
 ##<a id="feb_changes16"></a>2016 年 2 月のリリース
 
@@ -206,29 +225,29 @@ OpenID Connect 検出ドキュメントを公開する ID プロバイダー (�
 
 ##<a id="april_changes_15"></a>2015 年 4 月のリリース
 
-        ###General Media Services Updates
+ ###Media Services の全般的な更新
 
-        - [Announcing Azure Media Player](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/).
-        - Starting with Media Services REST 2.10, channels that are configured to ingest an RTMP protocol, are created with primary and secondary ingest URLs. For more information, see [Channel ingest configurations](media-services-live-streaming-with-onprem-encoders.md#channel_input)
-        - Azure Media Indexer updates
-        - Support for Spanish Language
-        - New configuration xml format
+- [Azure Media Player の発表](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/)。
+- Media Services REST 2.10 以降、RTMP プロトコルをインジェストするように構成されたチャネルは、プライマリとセカンダリのインジェスト URL を使用して作成されます。詳細については、「[チャネル入力 (インジェスト) の構成](media-services-live-streaming-with-onprem-encoders.md#channel_input)」を参照してください。
+- Azure Media Indexer の更新
+- スペイン語のサポート
+- 新しい構成の xml 形式
 
-        For more information see [this blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
-        ###Media Services .NET SDK Updates
+詳細については、[この投稿](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/)を参照してください。
+###Media Services .NET SDK の更新
 
-        Azure Media Services .NET SDK is now version 3.2.0.0.
+Azure Media Services .NET SDK が 3.2.0.0 にバージョン アップしました。
 
-        The following are some of the customer facing updates:
+ユーザーに対するいくつかの更新は次のとおりです。
 
-        - **Breaking change**: Changed **TokenRestrictionTemplate.Issuer** and **TokenRestrictionTemplate.Audience** to be of a string type.
-        - Updates related to creating custom retry policies.
-        - Bug fixes related to uploading/downloading files.
-        - The **MediaServicesCredentials** class now accepts primary and secondary access control endpoint to authenticate against.
+- **互換性に影響する変更**: **TokenRestrictionTemplate.Issuer** と **TokenRestrictionTemplate.Audience** が文字列型に変更されました。
+- カスタム リトライ ポリシーの作成に関する更新。
+- ファイルのアップロード/ダウンロードに関連するバグの修正。
+- **MediaServicesCredentials** クラスが認証するためのプライマリとセカンダリのアクセス制御エンドポイントを受け入れるようになりました。
 
 
 
-        ##<a id="march_changes_15"></a>March 2015 Release
+##<a id="march_changes_15"></a>2015 年 3 月のリリース
 
 ### Media Services の全般的な更新
 
@@ -331,7 +350,7 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 * .mp4 をダウンロード (または、漸次的に再生) するための SAS url を作成します。SAS ロケーターの作成方法の詳細については、「[コンテンツの配信]」を参照してください。
 
 
-### <a id="sept_14_GA_changes"></a>GA リリースの一部である新機能/シナリオ
+### <a id="sept_14_GA_changes"></a>GA リリースに含まれる新機能/シナリオ
 
 * **インデクサー メディア プロセッサ**。詳細については、「[Azure Media Indexer によるメディア ファイルのインデックス作成]」を参照してください。
 
@@ -350,7 +369,7 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 
 	詳細については、「**StreamingEndpoint**」の [CustomHostNames] プロパティを参照してください。
 
-### <a id="sept_14_preview_changes"></a>パブリック プレビュー リリースの一部である新機能/シナリオ
+### <a id="sept_14_preview_changes"></a>パブリック プレビュー リリースに含まれる新機能/シナリオ
 
 * ライブ ストリーミングのプレビュー。詳細については、「[Working with Azure Media Services Live Streaming (Azure Media Services ライブ ストリーミングでの動作)]」を参照してください。
 
@@ -631,7 +650,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 
 <!-- Images. -->
 
-<!-- URLs. -->
+<!--- URLs. --->
 [Azure Media Services MSDN フォーラム]: http://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Azure Media Services REST API リファレンス]: http://msdn.microsoft.com/library/azure/hh973617.aspx
 [Azure モバイル サービス REST API リファレンス]: http://msdn.microsoft.com/library/azure/hh973617.aspx
@@ -670,4 +689,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

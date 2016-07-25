@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="07/12/2016"
 	ms.author="juliako"/>
 
 
@@ -30,6 +30,7 @@
 
 このトピックでは、コンテンツ配信の重要な概念の概要を説明します。
 
+既知の問題を確認するには、[こちら](media-services-deliver-content-overview.md#known-issues)のセクションをご覧ください。
 
 ##動的パッケージ
 
@@ -86,7 +87,7 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 ##ストリーミング URL の形式:
 
-**MPEG DASH 形式**
+###MPEG DASH 形式
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=mpd-time-csf)
 
@@ -96,19 +97,19 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 
 
-**Apple HTTP Live Streaming (HLS) V4 形式**
+###Apple HTTP Live Streaming (HLS) V4 形式
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl)
 
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
-**Apple HTTP Live Streaming (HLS) V3 形式**
+###Apple HTTP Live Streaming (HLS) V3 形式
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl-v3)
 	
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
-**Apple HTTP Live Streaming (HLS) 形式 (オーディオ専用フィルター付き)**
+###Apple HTTP Live Streaming (HLS) 形式 (オーディオ専用フィルター付き)
 
 既定では、HLS マニフェストにはオーディオ専用トラックのみが含まれます。これは、Apple ストアのセルラー ネットワーク用の認定で必要です。この場合、クライアントの帯域幅が十分でないか、2G 接続を超えて接続された場合、クライアントはオーディオ専用再生に切り替わります。これにより進行中のストリーミングはバッファリングなしで維持されますが、ビデオは再生されないという短所があります。ただし、シナリオによっては、オーディオ専用よりもプレーヤーをバッファリングするほうが好ましい場合があります。オーディオ専用トラックを削除する場合は、(audio-only=false) を URL に追加することで削除できます。
 
@@ -117,7 +118,7 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 詳細については、[この投稿](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)を参照してください。
 
 
-**スムーズ ストリーミング形式**
+###ストリーミング URL の形式
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest
 
@@ -125,7 +126,7 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-**Smooth Streaming 2.0 マニフェスト (旧マニフェスト)**
+###<a id="fmp4_v20"></a>Smooth Streaming 2.0 マニフェスト (旧マニフェスト)
 
 既定では、スムーズ ストリーミングのマニフェスト形式には、繰り返しタグ (r タグ) が含まれています。ただし、一部のプレーヤーは、r タグをサポートしていません。このようなクライアントは、r タグを無効にする形式を使用できます。
 
@@ -133,12 +134,11 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
-**HDS (Adobe PrimeTime/Access ライセンスのみ)**
+###HDS (Adobe PrimeTime/Access ライセンスのみ)
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=f4m-f4f)
 
 	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f)
-
 
 ##プログレッシブ ダウンロード 
 
@@ -151,7 +151,6 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 次の考慮事項が適用されます。
 
 - プログレッシブ ダウンロードで元のサービスからストリームするには、ストレージで暗号化されたアセットの暗号化を解除する必要があります。
-
 
 ##ダウンロード
 
@@ -166,13 +165,38 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 - プログレッシブ ダウンロードで元のサービスからストリームするには、ストレージで暗号化されたアセットの暗号化を解除する必要があります。
 - 12 時間以内に完了しないダウンロードは失敗します。
 
-
-
 ##ストリーミング エンドポイント
 
 **ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のためのコンテンツ配信ネットワーク (CDN) に直接配信するストリーミング サービスを表します。ストリーミング エンドポイント サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやオンデマンド ビデオ アセットがあります。さらに、ストリーミング占有ユニットを調整することで、ストリーミング エンドポイント サービスの容量を制御し、帯域幅の増化ニーズに対応できます。運用環境のアプリケーションに、1 つ以上の予約ユニットを割り当てる必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
 
+##既知の問題
 
+### スムーズ ストリーミング マニフェスト バージョンへの変更
+
+2016 年 7 月より前のサービス リリースでは、Media Encoder Standard、メディア エンコーダー プレミアム ワークフロー、または従来の Azure Media Encoder は、ダイナミック パッケージを使用してストリーミングされていました。このときのスムーズ ストリーミング マニフェストはバージョン 2.0 に対応しており、フラグメント期間では、いわゆる繰り返し ('r') のタグは使用されていません。次に例を示します。
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
+		<StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+			<QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+			<c t="0" d="2000" n="0" />
+			<c d="2000" />
+			<c d="2000" />
+			<c d="2000" />
+		</StreamIndex>
+	</SmoothStreamingMedia>
+
+2016 年 7 月以降のサービス リリースでは、生成されたスムーズ ストリーミング マニフェストはバージョン 2.2 に対応しているため、フラグメント期間で繰り返しタグを使用できます。次に例を示します。
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
+		<StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+			<QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+			<c t="0" d="2000" r="4" />
+		</StreamIndex>
+	</SmoothStreamingMedia>
+
+一部のレガシ スムーズ ストリーミング クライアントは繰り返しタグをサポートしておらず、マニフェストを読み込むことができないことがあります。この問題を回避するには、レガシ マニフェスト形式のパラメーター **(format=fmp4 v20)** を使用するか (詳細については[こちら](media-services-deliver-content-overview.md#fmp4_v20)のセクションを参照)、繰り返しタグをサポートする最新バージョンにクライアントを更新します。
 
 ##Media Services のラーニング パス
 
@@ -187,4 +211,4 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 [ストレージ キーの展開後に Media Services ロケーターを更新する](media-services-roll-storage-access-keys.md)
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

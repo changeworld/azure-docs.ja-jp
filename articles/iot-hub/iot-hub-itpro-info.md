@@ -42,14 +42,22 @@ IoT Hub のその他の管理エンドポイントへのアクセスも、*iothu
 
 ## 次のステップ
 
-この記事には、開発環境およびテスト環境を構成する IT プロフェッショナルと開発者向けの具体的な情報が含まれています。Azure IoT Hub サービスについてさらに学習するには、次のリンクを使用してください。
+この記事には、開発環境およびテスト環境を構成する IT プロフェッショナルと開発者向けの具体的な情報が含まれています。[「Azure IoT Hub 開発者ガイド」の「セキュリティ」セクション][lnk-devguide]には、IoT Hub でのトークンおよびアクセス許可システムに関する詳細な情報が記載されています。
 
-- [What is Azure IoT Hub? (Azure IoT Hub とは)][lnk-iothub]
-- [「Azure IoT Hub 開発者ガイド」の「セキュリティ」セクション][lnk-devguide]には、IoT Hub でのトークンおよびアクセス許可システムに関する詳細な情報が記載されています。
-- 「[Manage IoT Hub through the Azure Portal (Azure ポータルを使用した IoT Hub の管理)][lnk-manage-portal]」には、Azure ポータルを使用して IoT Hub を管理する方法が記載されています。
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 
 [lnk-iothub]: iot-hub-what-is-iot-hub.md
 [lnk-devguide]: iot-hub-devguide.md#security
 [lnk-manage-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0504_2016-->
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+
+<!---HONumber=AcomDC_0713_2016-->

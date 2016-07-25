@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/24/2016"
+   ms.date="07/05/2016"
    ms.author="mfussell"/>
 
 # マイクロサービスの手法でアプリケーションを構築する理由は何ですか。
@@ -140,15 +140,16 @@ Service Fabric では、2 つの広範領域でマイクロサービス手法に
 
 その可能性はあります。経験から申し上げると、Microsoft では、ビジネス上の理由からクラウドの構築を要請されるチームが増えるにつれ、チームの多くがマイクロサービスと同様の手法を利用する利点を実感しています。たとえば、Bing では、何年もの間、この手法を検索に取り入れています。他のチームにとって、これは不慣れな手法でした。解決しなければならない難問があり、それが短所であることがわかりました。そこで Service Fabric がサービス構築技術として注目されました。
 
-Service Fabric の目的は、マイクロサービス手法によるアプリケーション構築の複雑性を減らすことです。複雑性が減れば、多くのコストがかかる再設計を繰り返す必要がなくなります。小規模なものから始める、必要に応じて拡張する、サービスを廃止する、新しいサービスを追加する、顧客の利用状況に合わせて進化することがマイクロサービス手法です。実際には、大部分の開発者にマイクロサービスをよりわかりやすくするために解決する必要がある問題がまだ多く残っていることもわかっています。コンテナーとアクター プログラミング モデルはその方向に進む小さな一歩としての例です。さらに多くの革新的技術が開発され、簡易化が進むことをマイクロソフトは確信しています。
+Service Fabric の目的は、マイクロサービス手法によるアプリケーション構築の複雑性を減らすことです。複雑性が減れば、多くのコストがかかる再設計を繰り返す必要がなくなります。小規模なものから始める、必要に応じて拡張する、サービスを廃止する、新しいサービスを追加する、顧客の利用状況に合わせて進化することがマイクロサービス手法です。実際には、大部分の開発者にマイクロサービスをよりわかりやすくするために解決する必要がある問題がまだ多く残っていることもわかっています。コンテナーとアクター プログラミング モデルはその方向に進む小さな一歩としての例です。さらに多くの革新的技術が開発され、簡易化が進むことをマイクロソフトは確信しています。 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 
 * 詳細:
     * [Service Fabric の概要](service-fabric-overview.md)
-    * [Microservices: An application revolution powered by the cloud (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+    * [Microservices: An application revolution powered by the cloud (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/ja-JP/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

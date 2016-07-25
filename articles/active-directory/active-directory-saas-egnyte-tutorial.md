@@ -4,19 +4,19 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Egnyte の統合
   
-このチュートリアルでは、Azure と Egnyte の統合について説明します。  
+このチュートリアルでは、Azure と Egnyte の統合について説明します。
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
@@ -38,7 +38,7 @@
 
 ###Egnyte のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-egnyte-tutorial/IC700993.png "Active Directory")
 
@@ -69,9 +69,9 @@
 この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
 この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Egnyte** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Egnyte** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-egnyte-tutorial/IC787815.png "Configure Single Sign-On")
 
@@ -79,9 +79,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-egnyte-tutorial/IC787816.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Egnyte サインイン URL]** ボックスに、"*https://company.egnyte.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Egnyte サインイン URL]** ボックスに、"*https://company.egnyte.com*" というパターンの URL を入力し、**[次へ]* をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-egnyte-tutorial/IC787817.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-egnyte-tutorial/IC787817.png "アプリケーション URL の構成")
 
 4.  **[Egnyte でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
@@ -91,15 +91,15 @@
 
 6.  **[設定]** をクリックします
 
-    ![設定](./media/active-directory-saas-egnyte-tutorial/IC787819.png "設定")
+    ![Settings](./media/active-directory-saas-egnyte-tutorial/IC787819.png "Settings")
 
 7.  メニューで **[設定]** をクリックします。
 
-    ![設定](./media/active-directory-saas-egnyte-tutorial/IC787820.png "設定")
+    ![Settings](./media/active-directory-saas-egnyte-tutorial/IC787820.png "Settings")
 
 8.  **[構成]** タブをクリックし、**[セキュリティ]** をクリックします。
 
-    ![セキュリティ](./media/active-directory-saas-egnyte-tutorial/IC787821.png "セキュリティ")
+    ![Security](./media/active-directory-saas-egnyte-tutorial/IC787821.png "Security")
 
 9.  **[シングル サインオン認証]** セクションで、次の手順を実行します。
 
@@ -107,24 +107,23 @@
 
     1.  **[シングル サインオン認証]** として **[SAML 2.0]** を選択します。
     2.  **[ID プロバイダー]** として **[AzureAD]** を選択します。
-    3.  Azure ポータルで、**[Egnyte でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[ID プロバイダー ログイン URL]** ボックスに貼り付けます。
-    4.  Azure ポータルで、**[Egnyte でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[ID プロバイダー エンティティ ID]** ボックスに貼り付けます。
-    5.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
+    3.  Azure クラシック ポータルで、**[Egnyte でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[ID プロバイダー ログイン URL]** ボックスに貼り付けます。
+    4.  Azure クラシック ポータルで、**[Egnyte でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[ID プロバイダー エンティティ ID]** ボックスに貼り付けます。
+    5.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
 
-        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」を参照してください。
 
     6.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[ID プロバイダー証明書]** ボックスに貼り付けます。
     7.  **[既定のユーザー マッピング]** として **[電子メール アドレス]** を選択します。
     8.  **[ドメイン固有の発行者の値を使用]** として **[無効]** を選択します。
     9.  **[保存]** をクリックします。
 
-10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-egnyte-tutorial/IC787823.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが Egnyte にログインできるようにするには、そのユーザーを Egnyte にプロビジョニングする必要があります。  
-Egnyte の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが Egnyte にログインできるようにするには、そのユーザーを Egnyte にプロビジョニングする必要があります。Egnyte の場合、プロビジョニングは手動で行います。
 
 ###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
 
@@ -134,7 +133,7 @@ Egnyte の場合、プロビジョニングは手動で行います。
 
 3.  **[新しいユーザーの追加]** をクリックし、追加するユーザーの種類を選択します。
 
-    ![ユーザー](./media/active-directory-saas-egnyte-tutorial/IC787824.png "ユーザー")
+    ![Users](./media/active-directory-saas-egnyte-tutorial/IC787824.png "Users")
 
 4.  **[新しい標準ユーザー]** セクションで、次の手順を実行します。
 
@@ -143,9 +142,9 @@ Egnyte の場合、プロビジョニングは手動で行います。
     1.  プロビジョニングする有効な Azure Active Directory アカウントの、**電子メール**、**ユーザー名**などの詳細を入力します。
     2.  **[保存]** をクリックします。
 
-    >[AZURE.NOTE]Azure Active Directory アカウント保有者に通知メールが届きます。
+    >[AZURE.NOTE] Azure Active Directory アカウント保有者に通知メールが届きます。
 
->[AZURE.NOTE]Egnyte から提供されている他の Egnyte ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Egnyte から提供されている他の Egnyte ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -153,7 +152,7 @@ Egnyte の場合、プロビジョニングは手動で行います。
 
 ###ユーザーを Egnyte に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Egnyte** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -161,8 +160,8 @@ Egnyte の場合、プロビジョニングは手動で行います。
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![あり](./media/active-directory-saas-egnyte-tutorial/IC767830.png "あり")
+    ![Yes](./media/active-directory-saas-egnyte-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

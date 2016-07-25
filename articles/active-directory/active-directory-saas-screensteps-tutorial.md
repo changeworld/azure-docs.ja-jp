@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="04/06/2016" 
+    ms.date="07/07/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と ScreenSteps の統合
@@ -37,7 +37,7 @@
 
 ###ScreenSteps のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-screensteps-tutorial/IC700993.png "Active Directory")
 
@@ -66,9 +66,9 @@
   
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ScreenSteps で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **ScreenSteps** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **ScreenSteps** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-screensteps-tutorial/IC778519.png "Configure single sign-on")
 
@@ -110,12 +110,12 @@
 
     ![リモート認証エンドポイント](./media/active-directory-saas-screensteps-tutorial/IC778527.png "リモート認証エンドポイント")
 
-    1.  Azure AD ポータルの **[ScreenSteps でのシングル サインオンの構成]** ページで、**[リモート ログイン URL]** 値をコピーして、**[Remote Login URL]** ボックスに貼り付けます。
-    2.  Azure AD ポータルの **[ScreenSteps でのシングル サインオンの構成]** ページで、**[リモート ログアウト URL]** 値をコピーして、**[Log out URL]** ボックスに貼り付けます。
+    1.  Azure クラシック ポータルの **[ScreenSteps でのシングル サインオンの構成]** ページで、**[リモート ログイン URL]** 値をコピーして、**[Remote Login URL]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルの **[ScreenSteps でのシングル サインオンの構成]** ページで、**[リモート ログアウト URL]** 値をコピーして、**[Remote Logout URL]** ボックスに貼り付けます。
     3.  **[Choose a file]** をクリックし、ダウンロードした証明書をアップロードします。
-    4.  **[Update]** をクリックします。
+    4.  [**更新**] をクリックします。
 
-11. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、[**完了**] をクリックして [**シングル サインオンの構成**] ダイアログを閉じます。
+11. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-screensteps-tutorial/IC778542.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
@@ -140,7 +140,7 @@ Azure AD ユーザーが **ScreenSteps** にログインできるようにする
 
 5.  **[User Role]** の一覧からユーザーのロールを選択します。
 
-6.  [User Roleル] セクションで、プロビジョニングする有効な AAD アカウントの**姓**、**名**、**電子メール**、**ログイン**、**パスワード**、および **パスワードの確認**を該当するテキスト ボックスに入力します。
+6.  [User Role] セクションで、プロビジョニングする有効な AAD アカウントの**姓**、**名**、**電子メール**、**ログイン**、**パスワード**、および**確認用パスワード**を該当するテキスト ボックスに入力します。
 
     ![新しいユーザー](./media/active-directory-saas-screensteps-tutorial/IC778546.png "新しいユーザー")
 
@@ -156,7 +156,7 @@ Azure AD ユーザーが **ScreenSteps** にログインできるようにする
 
 ###ユーザーを ScreenSteps に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **ScreenSteps** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -168,4 +168,4 @@ Azure AD ユーザーが **ScreenSteps** にログインできるようにする
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -149,17 +149,18 @@ Azure ストレージ アカウントを IoT Hub に関連付けるには、「[
 
 ## 次のステップ
 
-このチュートリアルでは、IoT Hub のファイル アップロード機能を活用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。次のチュートリアルで IoT Hub の機能やシナリオをさらに詳しく調べることができます。
+このチュートリアルでは、IoT Hub のファイル アップロード機能を活用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。次の記事で IoT Hub の機能やシナリオをさらに詳しく調べることができます。
 
-- [デバイスからクラウドへのメッセージの処理]に関するページには、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
+- [C# プログラムを使って IoT Hub を作成する][lnk-create-hub]
+- [C SDK の概要][lnk-c-sdk]
+- [IoT Hub SDK][lnk-sdks]
 
-IoT Hub に関するその他の情報:
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [IoT Hub の概要]
-* [IoT Hub 開発者ガイド]
-* [IoT Hub のガイダンス]
-* [サポートされているデバイスのプラットフォームおよび言語][Supported devices]
-* [Azure IoT デベロッパー センター]
+- [ソリューションの設計][lnk-design]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
 
 <!-- Images. -->
 
@@ -169,33 +170,31 @@ IoT Hub に関するその他の情報:
 
 <!-- Links -->
 
-[Send Cloud-to-Device messages with IoT Hub]: iot-hub-csharp-csharp-c2d.md
-
 [Azure ポータル]: https://portal.azure.com/
 
 [Azure Data Factory]: https://azure.microsoft.com/documentation/services/data-factory/
 [Hadoop]: https://azure.microsoft.com/documentation/services/hdinsight/
 
-[Get started with IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 [IoT Hub でクラウドからデバイスへのメッセージを送信する方法]: iot-hub-csharp-csharp-c2d.md
 [IoT Hub を使用したクラウドからデバイスへのメッセージの送信]: iot-hub-csharp-csharp-c2d.md
 [デバイスからクラウドへのメッセージの処理]: iot-hub-csharp-csharp-process-d2c.md
-[Uploading files from devices]: iot-hub-csharp-csharp-file-upload.md
-
-[IoT Hub の概要]: iot-hub-what-is-iot-hub.md
-[IoT Hub のガイダンス]: iot-hub-guidance.md
-[IoT Hub 開発者ガイド]: iot-hub-devguide.md
-[IoT Hub Supported Devices]: iot-hub-supported-devices.md
 [IoT Hub の使用]: iot-hub-csharp-csharp-getstarted.md
 [IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
-[Supported devices]: iot-hub-tested-configurations.md
 [Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 
-[IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure Storage]: ../storage/storage-create-storage-account.md#create-a-storage-account
 [Azure ポータルを使用した IoT Hub の管理]: iot-hub-manage-through-portal.md#file-upload
 [Azure IoT Service SDK NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
-<!---HONumber=AcomDC_0629_2016-->
+[lnk-create-hub]: iot-hub-rm-template-powershell.md
+[lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
+[lnk-sdks]: iot-hub-sdks-summary.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/24/2016"
+   ms.date="07/05/2016"
    ms.author="mfussell"/>
 
 # Service Fabric の概要
@@ -41,7 +41,7 @@ Service Fabric は、これらのマイクロサービスで構成されたア�
 ## Service Fabric クラスターの任意の場所への作成
 Service Fabric クラスターをさまざまな環境に作成して、アプリケーションをデプロイできます。これには、Azure、オンプレミス、Windows Server、Linux などが挙げられます。さらに、SDK の開発環境は、エミュレーターが含まれない運用環境と同一です。つまり、ローカルの開発クラスターで実行した場合、他の環境内の同じクラスターにデプロイされます。
 
-詳細については、「[Service Fabric を使用して Windows Server または Linux の任意の場所にデプロイする](service-fabric-deploy-anywhere.md)」を参照してください。
+オンプレミスでのクラスター作成の詳細については、[Windows Server または Linux でのクラスターの作成](service-fabric-deploy-anywhere.md)に関する記事を参照してください。また、Azure でのクラスター作成の詳細については、[Azure ポータルを使用したクラスターの作成](service-fabric-cluster-creation-via-portal.md)に関する記事を参照してください。
 
 ![Service Fabric platform][Image1]
 
@@ -55,16 +55,16 @@ Service Fabric では、マイクロサービスで構成されるアプリケ�
 
 2. ステートフル マイクロサービスでは追加のキューおよびキャッシュが不要になるため、アプリケーション設計が単純化されます。これらのキューやキャッシュは、従来、完全にステートレスなアプリケーションの可用性と待機時間の要件に対応するために必要とされていました。ステートフル サービスは高可用性と低待機時間を特徴とするため、アプリケーション全体では管理すべき変動要素が少なくなります。
 
-Service Fabric を使用したアプリケーション パターンについて詳しくは、「[アプリケーションのシナリオ](service-fabric-application-scenarios.md)」およびサービスの[プログラミング モデル フレームワークの選択](service-fabric-choose-framework.md)に関するページを参照してください。
+Service Fabric を使用したアプリケーション パターンの詳細については、[アプリケーションのシナリオ](service-fabric-application-scenarios.md)に関する記事と、サービスの[プログラミング モデル フレームワークの選択](service-fabric-choose-framework.md)に関する記事を参照してください。
 
 ## アプリケーション ライフサイクル管理
 Service Fabric は、開発からデプロイ、日常的な管理、保守、最終的な使用停止に至るまで、クラウド アプリケーションの完全なアプリケーション ライフサイクル管理 (ALM) に対して高度なサポートを提供します。
 
 Service Fabric ALM 機能を使用すると、アプリケーション管理者または IT オペレーターは単純なロータッチ ワークフローを使用して、アプリケーションをプロビジョニング、デプロイ、修正、および監視することができます。これらの組み込みワークフローにより、アプリケーションを継続的に使用可能に保つために IT オペレーターにかかる負担が大幅に軽減されます。
 
-ほとんどのアプリケーションは、ステートレス マイクロサービスとステートフル マイクロサービスの組み合わせ、および一緒にデプロイされた他の実行可能ファイル/ランタイムで構成されています。Service Fabric は、アプリケーションの厳密な型およびパッケージ化されたマイクロサービスを備えており、個別に管理およびアップグレードできる複数のアプリケーション インスタンスのデプロイが可能です。重要なのは、Service Fabric は*任意の*実行可能ファイルまたはランタイムをデプロイし、これらを信頼性の高いものにすることができる点です。たとえば、これを使用すると、ASP.NET Core 1、Node.js、Java VM、スクリプト、またはアプリケーションを構成するその他の要素をデプロイすることができます。
+ほとんどのアプリケーションは、ステートレス マイクロサービスとステートフル マイクロサービスの組み合わせ、および一緒にデプロイされた他の実行可能ファイル/ランタイムで構成されています。Service Fabric は、アプリケーションの厳密な型およびパッケージ化されたマイクロサービスを備えており、個別に管理およびアップグレードできる複数のアプリケーション インスタンスのデプロイが可能です。重要なのは、Service Fabric は "*任意*" の実行可能ファイルまたはランタイムをデプロイし、これらを信頼性の高いものにすることができる点です。たとえば、これを使用すると、ASP.NET Core 1、Node.js、Java VM、スクリプト、またはアプリケーションを構成するその他の要素をデプロイすることができます。
 
-アプリケーション ライフサイクル管理の詳細については、「[アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)」を参照してください。コードのデプロイについては、「[ゲスト実行可能アプリのデプロイ](service-fabric-deploy-existing-app.md)」を参照してください。
+アプリケーション ライフサイクル管理の詳細については、[アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)に関する記事を参照してください。また、コードのデプロイについては、[ゲスト実行可能ファイルのデプロイ](service-fabric-deploy-existing-app.md)に関する記事を参照してください。
 
 ## 主な機能
 Service Fabric を使用すると、次の操作を実行できます。
@@ -105,9 +105,9 @@ Service Fabric を使用すると、次の操作を実行できます。
 * 詳細:
     * [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
     * [用語の概要](service-fabric-technical-overview.md)
-* Service Fabric [開発環境](service-fabric-get-started.md)の設定  
-* サービスの[プログラミング モデル フレームワーク](service-fabric-choose-framework.md)の選択
+* Service Fabric [開発環境](service-fabric-get-started.md)の設定
+* サービスの[プログラミング モデル フレームワークの選択](service-fabric-choose-framework.md)
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

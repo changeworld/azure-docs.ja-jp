@@ -1,7 +1,7 @@
 <properties
-	pageTitle="Azure VM への SSH 接続のトラブルシューティング | Microsoft Azure"
+	pageTitle="Linux VM への SSH 接続の拒否、失敗、エラー | Microsoft Azure"
 	description="Linux を実行する Azure 仮想マシンに対する SSH 接続の失敗や拒否などの SSH エラーをトラブルシューティングして修正します。"
-	keywords="拒否されたSSH 接続,SSH エラー,Azure SSH,失敗した SSH 接続"
+	keywords="ssh 接続が拒否される, ssh エラー, azure ssh, SSH 接続に失敗する"
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="iainfoulds"
@@ -14,13 +14,13 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
-	ms.topic="support-article"
-	ms.date="06/14/2016"
+	ms.topic="article"
+	ms.date="07/06/2016"
 	ms.author="iainfou"/>
 
-# Azure VM への SSH 接続のトラブルシューティング
+# Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング
 
-Linux ベースの Azure 仮想マシン (VM) に接続しようとしたときに、さまざまな理由で Secure Shell (SSH) エラーが発生することがあります。この記事は、問題を特定して修正するために役立ちます。
+Linux ベースの Azure 仮想マシン (VM) に接続しようとしたときに、さまざまな理由で Secure Shell (SSH) エラーが発生したり SSH 接続が失敗したり拒否されたりすることがあります。この記事は、問題を特定して修正するために役立ちます。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -124,7 +124,7 @@ Azure 内で VM を別のノードに再デプロイすると、基になるネ�
 	- SSH 構成をリセットする
 
 - プラットフォームの問題の有無について VM のリソースの状態を確認します。<br> **[参照]**、**[仮想マシン (クラシック)]**、*ご使用の Linux 仮想マシン*、**[設定]**、**[正常性の確認]** の順に選択します。
-	 
+
 
 ## その他のリソース
 
@@ -134,4 +134,4 @@ Azure 内で VM を別のノードに再デプロイすると、基になるネ�
 
 - クラシック デプロイ モデルを使用して作成された仮想マシンのトラブルシューティングの詳細については、[Linux ベースの仮想マシンのパスワードまたは SSH をリセットする方法](virtual-machines-linux-classic-reset-access.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

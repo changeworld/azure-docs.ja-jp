@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Directions on Microsoft の統合
@@ -21,7 +21,7 @@
 -   有効な Azure サブスクリプション
 -   Directions on Microsoft サブスクリプション
 
-フェデレーション Directions on Microsoft サブスクリプションをまだ持っていない場合は、"*service@DirectionsOnMicrosoft.com*”" に電子メールで要求してください。
+フェデレーション Directions on Microsoft サブスクリプションをまだ持っていない場合は、"*service@DirectionsOnMicrosoft.com*" に電子メールで要求してください。
 
 このチュートリアルを完了すると、Directions on Microsoft に割り当てた Azure Active Directory ユーザーは、シングル サインオンを使用して、アプリケーションにシングル サインインできるようになります。
 
@@ -39,7 +39,7 @@
 
 ###Directions on Microsoft のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-directions-microsoft-tutorial/IC700993.png "Active Directory")
 
@@ -68,9 +68,9 @@
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Directions on Microsoft に対する認証を行うことができるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Directions on Microsoft** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Directions on Microsoft** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Enable Single Sign-On](./media/active-directory-saas-directions-microsoft-tutorial/IC786879.png "Enable Single Sign-On")
 
@@ -78,19 +78,19 @@
 
     ![Microsoft Azure AD シングル サインオン](./media/active-directory-saas-directions-microsoft-tutorial/IC786880.png "Microsoft Azure AD シングル サインオン")
 
-3.  **[アプリケーション URL の構成]** ページの [サインオン URL] ボックスに「****https://www.directionsonmicrosoft.com/user/login**」と入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの [サインオン URL] ボックスに「**https://www.directionsonmicrosoft.com/user/login**」と入力し、**[次へ] をクリックします**。
 
-    ![Configure App URL](./media/active-directory-saas-directions-microsoft-tutorial/IC786881.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-directions-microsoft-tutorial/IC786881.png "アプリケーション URL の構成")
 
 4.  **[Directions on Microsoft でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターにローカルに保存します。
 
     ![Configure Single Sign-On](./media/active-directory-saas-directions-microsoft-tutorial/IC786882.png "Configure Single Sign-On")
 
-5.  メタデータ ファイルを Directions on Microsoft サポート チーム (**service@DirectionsOnMicrosoft.com*)) に送信します。Directions on Microsoft サポート チームがフェデレーション サイトのメンバーシップを見つけられるように、電子メールには会社の情報を含めます。
+5.  メタデータ ファイルを Directions on Microsoft サポート チーム (*service@DirectionsOnMicrosoft.com*) に送信します。Directions on Microsoft サポート チームがフェデレーション サイトのメンバーシップを見つけられるように、電子メールには会社の情報を含めます。
 
-    >[AZURE.NOTE]Directions on Microsoft のシングル サインオンは、Directions on Microsoft サポート チームが有効にする必要があります。シングル サインオンが有効になると通知が届きます。
+    >[AZURE.NOTE] Directions on Microsoft のシングル サインオンは、Directions on Microsoft サポート チームが有効にする必要があります。シングル サインオンが有効になると通知が届きます。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-directions-microsoft-tutorial/IC786883.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -102,7 +102,7 @@ Directions on Microsoft へのユーザー プロビジョニングの構成に�
 
 ###ユーザーを Directions on Microsoft に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Directions on Microsoft** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -112,4 +112,4 @@ Directions on Microsoft へのユーザー プロビジョニングの構成に�
 
     ![Yes](./media/active-directory-saas-directions-microsoft-tutorial/IC767830.png "Yes")
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="07/14/2016"
 	ms.author="femila"/>
 
 # Azure AD への条件付きアクセスの基本  
@@ -68,7 +68,7 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 
 * **多要素認証が必要です**: このオプションを使用した場合、アクセス規則が適用されるユーザーは、ポリシーが適用されるアプリケーションにアクセスする前に Multi-Factor Authentication を完了する必要があります。
 
-* **作業中でない場合、多要素認証が必要です**: このオプションを使用した場合、信頼できる IP アドレスからのユーザーは、Multi-Factor Authentication を実行する必要はありません。Multi-Factor Authentication の設定ページまたはディレクトリの [構成] タブのパブリック IP アドレス範囲の構成を使用して、信頼できる IP アドレスの範囲を構成できます。
+* **作業中でない場合、多要素認証が必要です**: このオプションを使用した場合、信頼できる IP アドレスからのユーザーは、Multi-Factor Authentication を実行する必要はありません。Multi-Factor Authentication の設定ページでは、信頼できる IP アドレスの範囲を構成できます。
 
 * **作業中でない場合、アクセスをブロック**: このオプションを使用した場合、信頼できる IP アドレス以外からのユーザーはブロックされます。Multi-Factor Authentication の設定ページでは、信頼できる IP アドレスの範囲を構成できます。
 
@@ -94,4 +94,4 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 - [Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

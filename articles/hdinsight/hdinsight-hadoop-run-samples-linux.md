@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/22/2016"
+	ms.date="07/12/2016"
 	ms.author="larryfr"/>
 
 
@@ -132,7 +132,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
 - セルはスペースで区切られる
 
-ここで、1 つの数字を 1 つの列または行で繰り返すことができないという、数独パズルを作成する一定の方法があります。ありがたいことに、HDInsight クラスターに正しく作成された例があります。これは、**/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta** にあり、次の内容が含まれています。
+1 つの数字を 1 つの列または行で繰り返すことができないという、数独パズルを作成する特定の方法があります。HDInsight クラスターに正しく作成された例があります。これは、**/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta** にあり、次の内容が含まれています。
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -236,4 +236,4 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

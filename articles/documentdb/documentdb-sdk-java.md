@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="06/30/2016" 
 	ms.author="andrl"/>
 
 # DocumentDB SDK
@@ -36,19 +36,23 @@
 
 ## リリース ノート
 
+### <a name="1.8.1"/>[1\.8.1](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.8.1)
+  - 単一のパーティション コレクションをキャッシュし、パーティション キーの要求は余計にフェッチしないように、PartitionKeyDefinitionMap のバグを修正しました。
+  - 無効なパーティション キー値が指定された場合に再試行されないように、バグを修正しました。
+
 ### <a name="1.8.0"/>[1\.8.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.8.0)
   - 複数リージョンのデータベース アカウントのサポートを追加しました。
-  - 最大再試行回数と最大再試行待機時間をカスタマイズするオプションと共に、調整された要求での自動再試行のサポートを追加しました。RetryOptions と ConnectionPolicy.getRetryOptions() をご覧ください。 
-  - IPartitionResolver に基づくカスタム パーティション分割コードを廃止しました。大量のストレージとスループットを必要とする場合、パーティション分割コレクションをお使いください。 
+  - 最大再試行回数と最大再試行待機時間をカスタマイズするオプションと共に、調整された要求での自動再試行のサポートを追加しました。RetryOptions と ConnectionPolicy.getRetryOptions() をご覧ください。
+  - IPartitionResolver に基づくカスタム パーティション分割コードを廃止しました。大量のストレージとスループットを必要とする場合、パーティション分割コレクションをお使いください。
 
 ### <a name="1.7.1"/>[1\.7.1](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.7.1)
-- スロットルのための再試行ポリシー サポートを追加しました。  
+- スロットルのための再試行ポリシー サポートを追加しました。
 
 ### <a name="1.7.0"/>[1\.7.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.7.0)
-- ドキュメントの有効期限 (TTL) サポートを追加しました。 
+- ドキュメントの有効期限 (TTL) サポートを追加しました。
 
 ### <a name="1.6.0"/>[1\.6.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.6.0)
-- [パーティション分割コレクション](documentdb-partition-data.md)と[ユーザー定義のパフォーマンス レベル](documentdb-performance-levels.md)を実装しました。 
+- [パーティション分割コレクション](documentdb-partition-data.md)と[ユーザー定義のパフォーマンス レベル](documentdb-performance-levels.md)を実装しました。
 
 ### <a name="1.5.1"/>[1\.5.1](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.5.1)
 - 他の SDK と一貫性を維持するため、リトル エンディアンのハッシュ値を生成する HashPartitionResolver のバグを修正しました。
@@ -88,6 +92,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
+| [1\.8.1](#1.8.1) | 2016 年 6 月 30 日|--- 
 | [1\.8.0](#1.8.0) | 2016 年 6 月 14 日|--- 
 | [1\.7.1](#1.7.1) | 2016 年 4 月 30 日 |--- 
 | [1\.7.0](#1.7.0) | 2016 年 4 月 27 日 |--- 
@@ -114,4 +119,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

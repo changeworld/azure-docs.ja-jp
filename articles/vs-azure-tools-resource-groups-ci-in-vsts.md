@@ -3,8 +3,8 @@
 	description="Visual Studio で Azure リソース グループのデプロイメント プロジェクトを使用して、Visual Studio Team Services での継続的インテグレーションを設定する方法を説明します。"
 	services="visual-studio-online"
 	documentationCenter="na"
-	authors="TomArcher"
-	manager="douge"
+	authors="tfitzmac"
+	manager="timlt"
 	editor="" />
 
  <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
 	ms.date="04/19/2016"
-	ms.author="tarcher" />
+	ms.author="tomfitz" />
 
 # Azure リソース グループのデプロイメント プロジェクトを使用した Visual Studio Team Services での継続的インテグレーション
 
@@ -63,7 +63,7 @@ VS Team Services で PowerShell スクリプトを呼び出すには、ビルド
 
 1.	**Azure PowerShell** のビルド ステップを選択して、その値を入力します。
 
-    1.	既に Azure サービス エンドポイントが VS Team Services に追加されている場合、**[Azure Subscription]** ドロップダウン リスト ボックスでサブスクリプションを選択して、次のセクションにスキップします。 
+    1.	既に Azure サービス エンドポイントが VS Team Services に追加されている場合、**[Azure Subscription]** ドロップダウン リスト ボックスでサブスクリプションを選択して、次のセクションにスキップします。
 
         VS Team Services に Azure サービス エンドポイントがない場合、1 つ追加する必要があります。この項では、プロセスを示します。Azure アカウントが Microsoft アカウント (Hotmail など) を使用する場合、サービス プリンシパルの認証を取得するために、次の手順を実行する必要があります。
 
@@ -121,7 +121,7 @@ VS Team Services で PowerShell スクリプトを呼び出すには、ビルド
 
     | パラメーター | 説明|
     |---|---|
-    | -ResourceGroupLocation | **eastus** や **'East US'** など、リソース グループが配置される geo ロケーションの値です。(名前にスペースが含まれる場合は、一重引用符を追加します)。 詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。| |
+    | -ResourceGroupLocation | **eastus** や **'East US'** など、リソース グループが配置される geo ロケーションの値です。(名前にスペースが含まれる場合は、一重引用符を追加します)。 詳細については、「[Azure のリージョン](https://azure.microsoft.com/ja-JP/regions/)」を参照してください。| |
     | -ResourceGroupName | このデプロイメントに使用するリソース グループの名前。| |
     | -UploadArtifacts | このパラメーターは、存在する場合、アーティファクトがローカル システムから Azure にアップロードする必要があることを指定します。テンプレート デプロイメントに、PowerShell スクリプト (構成スクリプトや入れ子になったテンプレートなど) を使用してステージングする追加のアーティファクトが必要な場合にのみ、このスイッチを設定する必要があります。 |
     | -StorageAccountName | このデプロイメントのアーティファクトをステージングするためのストレージ アカウントの名前。Azure にアーティファクトをコピーしている場合にのみ、このパラメーターが必要です。このストレージ アカウントはデプロイメントで自動的に作成されることはありません。既に存在している必要があります。| |
@@ -160,4 +160,4 @@ Azure リソース マネージャーと Azure リソース グループの詳�
 [10]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough11b.png
 [11]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough12.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

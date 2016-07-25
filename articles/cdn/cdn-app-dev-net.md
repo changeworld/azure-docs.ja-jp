@@ -291,7 +291,7 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 
 ## CDN プロファイルとエンドポイントの削除
 
-最後のメソッドでは、エンドポイントとプロファイルを削除します。
+最後のメソッドによって、このエンドポイントとプロファイルが削除されます。
 
 ```
 private static void PromptDeleteCdnEndpoint(CdnManagementClient cdn)
@@ -337,4 +337,4 @@ Visual Studio の **[開始]** をクリックして、プログラムをコン�
 
 Azure CDN Management Library for .NET に関連するドキュメントについては、[MSDN のリファレンス](https://msdn.microsoft.com/library/mt657769.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

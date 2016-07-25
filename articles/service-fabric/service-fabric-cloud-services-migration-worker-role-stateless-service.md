@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/29/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
  
 # Web ロールと worker ロールを Service Fabric ステートレス サービスに変換する手順
@@ -38,7 +38,7 @@
 
 worker ロールと同様に、Web ロールもステートレス ワークロードを表すため、概念上、Service Fabric ステートレス サービスにマッピングできます。ただし、Web ロールとは異なり、Service Fabric は IIS をサポートしていません。Web ロールの Web アプリケーションをステートレス サービスに移行するには、まず自己ホスト型で、IIS や System.Web に依存しない Web フレームワーク (ASP.NET Core 1 など) に移行する必要があります。
 
-****アプリケーション** | **サポート** | **移行パス**
+**アプリケーション** | **サポートされています** | **移行パス**
 --- | --- | ---
 ASP.NET Web Forms | いいえ | ASP.NET Core 1 MVC への変換
 ASP.NET MVC | 移行あり | ASP.NET Core 1 にアップグレードする
@@ -108,11 +108,11 @@ namespace Stateless1
 
 ```
 
-いずれにも、処理を開始するプライマリ "Run" のオーバーライドがあります。Service Fabric は、`Run`、`Start`、および `Stop` を 1 つのエントリ ポイント `RunAsync` に結合します。`RunAsync` が開始されるとサービスが開始され、`RunAsync` メソッドの CancellationToken が発信されるとサービスは停止されます。
+いずれにも、処理を開始するプライマリ "Run" のオーバーライドがあります。Service Fabric サービスは、`Run`、`Start`、`Stop` を 1 つのエントリ ポイント `RunAsync` に結合します。`RunAsync` が開始されるとサービスが開始され、`RunAsync` メソッドの CancellationToken が発信されるとサービスは停止されます。
 
 worker ロールと Service Fabric サービスのライフサイクルと有効期間には、主な違いがいくつかあります。
 
- - **ライフサイクル:** 最も大きな違いは、worker ロールは VM なので、ライフサイクルは VM に関連付けられている点です。そのため、VM の開始時と停止時のイベントがあります。Service Fabric サービスには、VM のライフサイクルとは別のライフサイクルがあります。関連性がないため、そのため、ホスト VM またはコンピューターの開始時と停止時のイベントは含まれません。
+ - **ライフサイクル:** 最も大きな違いは、worker ロールが VM であるため、そのライフサイクルが VM に関連付けられている点です。そのため、VM の開始時と停止時のイベントが含まれます。Service Fabric サービスには、VM のライフサイクルとは別のライフサイクルがあります。関連性がないため、そのため、ホスト VM またはコンピューターの開始時と停止時のイベントは含まれません。
 
  - **有効期間:** worker ロール インスタンスは、`Run` メソッドの終了時にリサイクルされます。一方、Service Fabric サービスの `RunAsync` メソッドは、完了まで実行を継続できるので、サービス インスタンスは有効なままになります。
 
@@ -126,7 +126,7 @@ Cloud Services 環境 API は、現在の VM インスタンスに関する情�
 --- | --- | ---
 構成設定と変更通知 | `RoleEnvironment` | `CodePackageActivationContext`
 ローカル ストレージ | `RoleEnvironment` | `CodePackageActivationContext`
-エンドポイント情報 | `RoleInstance` <ul><li>現在のインスタンス: `RoleEnvironment.CurrentRoleInstance`</li><li>他のロールとインスタンス: `RoleEnvironment.Roles`</li> | <ul><li>`NodeContext` (現在のノード アドレス)</li><li>`FabricClient` と `ServicePartitionResolver` (サービス エンドポイントの検出)</li> 
+エンドポイント情報 | `RoleInstance` <ul><li>現在のインスタンス: `RoleEnvironment.CurrentRoleInstance`</li><li>他のロールとインスタンス: `RoleEnvironment.Roles`</li> | <ul><li>`NodeContext` (現在のノード アドレス)</li><li>`FabricClient` と `ServicePartitionResolver` (サービス エンドポイントの探索)</li> 
 環境のエミュレーション | `RoleEnvironment.IsEmulated` | 該当なし
 同時変更イベント | `RoleEnvironment` | 該当なし
 
@@ -160,7 +160,7 @@ string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 
 ```C#
 
-ConfigurationPackage configPackage = this.ServiceInitializationParameters.CodePackageActivationContext.GetConfigurationPackageObject("Config");
+ConfigurationPackage configPackage = this.Context.CodePackageActivationContext.GetConfigurationPackageObject("Config");
 
 // Access Settings.xml
 KeyedCollection<string, ConfigurationProperty> parameters = configPackage.Settings.Sections["MyConfigSection"].Parameters;
@@ -178,7 +178,7 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 ### 構成の更新イベント
 #### Cloud Services
 
-`RoleEnvironment.Changed` イベントは、環境内で変化が発生したとき (構成の変更など) に、すべてのロール インスタンスに通知するために使用されます。また、ロール インスタンスのリサイクルや worker プロセスの再起動を伴うことなく、構成の更新を利用するために使われます。
+`RoleEnvironment.Changed` イベントは、環境内で変化 (構成の変更など) が発生したときに、すべてのロール インスタンスに通知するために使用されます。また、ロール インスタンスのリサイクルや worker プロセスの再起動を伴うことなく、構成の更新を利用するために使われます。
 
 ```C#
 
@@ -204,7 +204,7 @@ Code、Config、Data というサービス内の 3 つの各パッケージに�
  
 ```C#
 
-this.ServiceInitializationParameters.CodePackageActivationContext.ConfigurationPackageModifiedEvent +=
+this.Context.CodePackageActivationContext.ConfigurationPackageModifiedEvent +=
                     this.CodePackageActivationContext_ConfigurationPackageModifiedEvent;
 
 private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(object sender, PackageModifiedEventArgs<ConfigurationPackage> e)
@@ -277,4 +277,4 @@ Service Fabric の全機能を活用できるように、Service Fabric の Reli
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png
 [4]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/worker-role-to-stateless-service.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

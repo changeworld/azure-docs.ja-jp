@@ -13,15 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/01/2016" 
+	ms.date="07/13/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境への受信トラフィックを制御する方法
 
 ## 概要 ##
-App Service 環境は常に地域クラシック "v1" [仮想ネットワーク][virtualnetwork]のサブネット内に作成されます。新しい地域クラシック "v1" の仮想ネットワークと新しいサブネットは、App Service 環境を作成するときに定義できます。あるいは、既存の地域クラシック "v1" の仮想ネットワークと既存のサブネット内に App Service 環境を作成することもできます。2016 年 6 月に行われた直近の変更で、パブリック アドレス範囲または RFC1918 アドレス空間 (つまりプライベート アドレス) のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました。App Service 環境の作成方法の詳細については、[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]に関するページを参照してください。
-
-**注:** "v2" ARM によって管理される仮想ネットワーク内で App Service 環境を作成することはできません。
+App Service 環境は、Azure Resource Manager の仮想ネットワーク、**または**クラシック デプロイメント モデルの[仮想ネットワーク][virtualnetwork]の**どちらにでも**作成できます。App Service 環境の作成時に、新しい仮想ネットワークと新しいサブネットを定義できます。または、既存の仮想ネットワークと既存のサブネットに App Service 環境を作成することもできます。2016 年 6 月に行われた直近の変更で、パブリック アドレス範囲または RFC1918 アドレス空間 (つまりプライベート アドレス) のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました。App Service 環境の作成方法の詳細については、[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]に関するページを参照してください。
 
 App Service 環境は常にサブネット内で作成する必要があります。これは、HTTP トラフィックと HTTPS トラフィックが特定のアップストリーム IP アドレスのみから受け取られるように、アップストリーム デバイスおよびサービスの背後で受信トラフィックをロックダウンするために使用できるネットワーク境界がサブネットによって提供されるためです。
 
@@ -36,31 +34,20 @@ App Service 環境は常にサブネット内で作成する必要がありま�
 
 App Service 環境で使用されるポートの一覧を次に示します。
 
-- 454: App Service 環境の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。このポートへのトラフィックはブロックしないでください。
-- 455: App Service 環境の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。このポートへのトラフィックはブロックしないでください。
-- 80: App Service 環境において App Service プランで実行されているアプリへの受信 HTTP トラフィック用の既定のポート
-- 443: App Service 環境において App Service プランで実行されているアプリへの受信 SSL トラフィック用の既定のポート
-- 21: FTP 用のコントロール チャネル。FTP が使用されていない場合は、このポートを安全にブロックできます。
-- 10001 ～ 10020: FTP 用のデータ チャネル。コントロール チャネルと同様、FTP が使用されていない場合は、これらのポートを安全にブロックできます。
-- 4016: Visual Studio 2012 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
-- 4018: Visual Studio 2013 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
-- 4020: Visual Studio 2015 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
+- 454: App Service 環境の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。このポートへのトラフィックはブロックしないでください。このポートは常に、ASE のパブリック VIP にバインドします。
+- 455: App Service 環境の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。このポートへのトラフィックはブロックしないでください。このポートは常に、ASE のパブリック VIP にバインドします。
+- 80: App Service 環境において App Service プランで実行されているアプリへの受信 HTTP トラフィック用の既定のポート。ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
+- 443: App Service 環境において App Service プランで実行されているアプリへの受信 SSL トラフィック用の既定のポート。ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
+- 21: FTP 用のコントロール チャネル。FTP が使用されていない場合は、このポートを安全にブロックできます。ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
+- 10001 ～ 10020: FTP 用のデータ チャネル。コントロール チャネルと同様、FTP が使用されていない場合は、これらのポートを安全にブロックできます。ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
+- 4016: Visual Studio 2012 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
+- 4018: Visual Studio 2013 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
+- 4020: Visual Studio 2015 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
 
 ## 発信接続と DNS の要件 ##
-App Service 環境を適切に機能させるには、世界中の Azure Storage だけでなく、同じ Azure リージョン内の SQL Database への発信アクセスも必要です。仮想ネットワーク内で発信インターネット アクセスがブロックされている場合、App Service 環境はこれらの Azure エンドポイントにアクセスすることはできません。
+App Service Environment が正常に機能するためには、さまざまなエンドポイントへの発信アクセスが必要となります。[ExpressRoute を使用した環境のネットワーク構成](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity)の記事の「必要なネットワーク接続」というセクションに、App Service Environment で使用されるすべての外部エンドポイントが掲載されています。
 
-App Service 環境では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャも必要です。何らかの理由で、App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。[Azure ポータル][NewPortal]の App Service Environment 管理ブレードの上部にある [再起動] アイコンを使用して、ローリングする環境の再起動をトリガーすると、新しい DNS 構成が自動的に選択されます。
-
-次の一覧に、App Service Environment の接続性と DNS 要件の詳細を示します。
-
--  世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続これには、App Service Environment と同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。
--  App Service Environment と同じリージョンにある Sql DB エンドポイントに対する発信ネットワーク接続。SQL DB エンドポイントは、*database.windows.net* ドメインで解決されます。
--  Azure 管理プレーン エンドポイント (ASM エンドポイントと ARM エンドポイントの両方) に対する発信ネットワーク接続これには、*management.core.windows.net* と *management.azure.com* の両方に対する発信接続が含まれます。
--  *ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl.microsoft.com* に対する発信ネットワーク接続。これは、SSL 機能をサポートするために必要です。
--  仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。これらのエンドポイントを解決できない場合、App Service Environment の作成処理に失敗し、既存の App Service Environment は異常とマークされます。
--  カスタム DNS サーバーが VPN ゲートウェイの相手側にある場合、DNS サーバーは App Service Environment を含むサブネットから到達できる必要があります。
--  発信ネットワーク パスは、社内プロキシを経由したり、オンプレミスに強制的にトンネリングしたりすることができません。実行した場合、App Service Environment からの発信ネットワーク トラフィックの実質的な NAT アドレスが変わります。App Service Environment の発信ネットワーク トラフィックの NAT アドレスを変更すると、上記の多数のエンドポイントに対して接続エラーが発生します。その結果、App Service Environment の作成処理は失敗し、以前は正常動作していた App Service Environment も異常とマークされます。
--  この[記事](app-service-app-service-environment-control-inbound-traffic.md)の説明に従って、App Service 環境の必要なポートへの着信ネットワーク アクセスを許可する必要があります。
+App Service 環境では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャが必要です。何らかの理由で、App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。[Azure ポータル][NewPortal]の App Service 環境管理ブレードの上部にある [再起動] アイコンを使用して、ローリングする環境の再起動をトリガーすると、新しい DNS 構成が自動的に選択されます。
 
 また、App Service 環境を作成する前に、vnet 上のカスタム DNS サーバーをセットアップしておくことをお勧めします。App Service 環境の作成中に仮想ネットワークの DNS 構成が変更された場合、App Service 環境の作成プロセスは失敗します。同様に、VPN ゲートウェイの他端にカスタム DNS サーバーが存在していて、その DNS サーバーが到達不能または使用できない場合、App Service 環境の作成プロセスも失敗します。
 
@@ -121,13 +108,17 @@ Visual Studio でのリモート デバッグが使用されている場合、�
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Remove-AzureNetworkSecurityGroupFromSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
 ## 明示的な IP SSL に関する特別な考慮事項 ##
-アプリが App Service 環境の既定の IP アドレスではなく明示的な IP アドレスで構成されている場合、HTTP と HTTPS の両方のトラフィックは、ポート 80 と 443 以外の別のポート セットを経由してサブネットにフローされます。
+アプリが、App Service 環境の既定の IP アドレスを使わず明示的な IP SSL アドレス (該当するのはパブリック VIP しかない ASE) で構成されている場合、HTTP と HTTPS の両方のトラフィックは、ポート 80 と 443 以外の別のポート セットを経由してサブネットにフローされます。
 
-各 IP SSL アドレスで使用されている個々のポート ペアを見つけるには、App Service 環境のユーザー インターフェイス ブレードから [すべての設定]、[IP アドレス] の順にクリックします。[IP アドレス] ブレードには、App Service 環境に対して明示的に構成されているすべての IP SSL アドレスを示すテーブルと共に、各 IP SSL アドレスに関連付けられた HTTP および HTTPS トラフィックをルーティングするのに使用される特殊なポート ペアが表示されます。ネットワーク セキュリティ グループの規則を構成する際に、DestinationPortRange パラメーターで使用する必要があるのはこのポート ペアです。
+各 IP SSL アドレスで使用されるポートの個々のペアは、App Service 環境の詳細 UX ブレードから、ポータルのユーザー インターフェイスで確認できます。[すべての設定]、[IP アドレス] の順に選択します。[IP アドレス] ブレードには、App Service 環境に対して明示的に構成されているすべての IP SSL アドレスを示すテーブルと共に、各 IP SSL アドレスに関連付けられた HTTP および HTTPS トラフィックをルーティングするのに使用される特殊なポート ペアが表示されます。ネットワーク セキュリティ グループの規則を構成する際に、DestinationPortRange パラメーターで使用する必要があるのはこのポート ペアです。
+
+ASE でアプリが IP SSL を使用するように構成されている場合、外部の顧客に特殊なポート ペアのマッピングは表示されず、外部の顧客がマッピングを確認する必要はありません。アプリへのトラフィックは、構成済みの IP SSL アドレスに通常流れていきます。特殊なポート ペアへの変換は、ASE を含むサブネットへのトラフィックのルーティングの最終段階において内部で自動的に実行されます。
 
 ## 使用の開始
 
 App Service 環境の使用を開始するには、「[App Service 環境の概要][IntroToAppServiceEnvironment]」を参照してください。
+
+App Service 環境に関するすべての記事と作業方法は [App Service 環境の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
 
 App Service 環境からバックエンド リソースへ安全に接続しているアプリの詳細については、[App Service 環境からバックエンド リソースへの安全な接続][SecurelyConnecttoBackend]に関するページを参照してください。
 
@@ -149,4 +140,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 <!-- IMAGES -->
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

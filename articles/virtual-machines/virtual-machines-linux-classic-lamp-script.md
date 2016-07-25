@@ -68,7 +68,7 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 
 ### スクリプトのアップロード
 
-スクリプトを *lamp\_install.sh* などとしてテキスト ファイルに保存し、Azure Storage にアップロードします。Azure CLI を使えば簡単にできます。次の例では、ファイルを「scripts」という名前のストレージ コンテナーにアップロードします。コンテナーが存在しない場合は、まずコンテナーを作成する必要があります。
+スクリプトを *install\_lamp.sh* などとしてテキスト ファイルに保存し、Azure Storage にアップロードします。Azure CLI を使えば簡単にできます。次の例では、ファイルを「scripts」という名前のストレージ コンテナーにアップロードします。コンテナーが存在しない場合は、まずコンテナーを作成する必要があります。
 
     azure storage blob upload -a <yourStorageAccountName> -k <yourStorageKey> --container scripts ./install_lamp.sh
 
@@ -83,7 +83,7 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 
     azure vm extension set -c "./public_config.json" lamp-vm CustomScriptForLinux Microsoft.OSTCExtensions 1.*
 
-前のコマンドによって、*lamp\_install.sh* スクリプトが *lamp-vm* という名前の VM にダウンロードされて実行されます。
+前のコマンドによって、*install\_lamp.sh* スクリプトが *lamp-vm* という名前の VM にダウンロードされて実行されます。
 
 アプリに Web サーバーが含まれる場合は、次のコマンドを使用して、リモート VM で HTTP リスニング ポートが開かれていることを確認してください。
 
@@ -110,4 +110,4 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource-links.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

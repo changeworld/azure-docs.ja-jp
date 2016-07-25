@@ -76,7 +76,7 @@ TLS 1.0 は、次の **clusterSettings** エントリで無効にすることが
         ],
 
 ## TLS 暗号スイートの順序変更 ##
-お客様から寄せられるもう 1 つの質問は、サーバーによってネゴシエートされた暗号のリストを変更できるかどうかということです。これは、以下に示したように **clusterSettings** を変更することで実行できます。利用できる暗号スイートのリストは、[こちらの MSDN 記事](https://msdn.microsoft.com/library/windows/desktop/aa374757(v=vs.85).aspx)で確認できます。
+お客様から寄せられるもう 1 つの質問は、サーバーによってネゴシエートされた暗号のリストを変更できるかどうかということです。これは、以下に示したように **clusterSettings** を変更することで実行できます。利用できる暗号スイートのリストは、[こちらの MSDN 記事](https://msdn.microsoft.com/library/windows/desktop/aa374757(v=vs.85).aspx)) で確認できます。
 
         "clusterSettings": [
             {
@@ -95,4 +95,4 @@ Azure クイック スタート Resource Manager テンプレートのサイト�
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

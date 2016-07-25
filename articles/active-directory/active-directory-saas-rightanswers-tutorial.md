@@ -2,16 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と RightAnswers の統合 | Microsoft Azure" 
     description="Azure Active Directory で RightAnswers を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
-    documentationCenter="na" manager="stevenpo"/>
+    authors="jeevansd"  
+    documentationCenter="na" 
+	manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="07/07/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と RightAnswers の統合
   
@@ -36,7 +37,7 @@
 
 ###RightAnswers のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-rightanswers-tutorial/IC700993.png "Active Directory")
 
@@ -65,7 +66,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[RightAnswers]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **RightAnswers** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-rightanswers-tutorial/IC802927.png "Configure Single Sign-On")
 
@@ -73,7 +74,7 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-rightanswers-tutorial/IC802928.png "Configure Single Sign-On")
 
-3.  **[アプリ設定 の構成]** ページの **[サインオン URL]** テキストボックスに、ユーザーが RightAnswers アプリケーションにサインオンするときに使用する URL (例: **https://fortify.rightanswers.com/portal/ss/*)) を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション設定の構成]** ページの **[サインオン URL]** テキストボックスに、ユーザーが RightAnswers アプリケーションにサインオンするときに使用する URL (例: *https://fortify.rightanswers.com/portal/ss/**) を入力し、*[次へ]** をクリックします。
 
     ![Configure App Settings](./media/active-directory-saas-rightanswers-tutorial/IC802929.png "Configure App Settings")
 
@@ -83,9 +84,9 @@
 
 5.  ダウンロードしたメタデータ ファイルを RightAnswers サポート チームに送信します。
 
-    >[AZURE.NOTE]RightAnswers サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
+    >[AZURE.NOTE] RightAnswers サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-rightanswers-tutorial/IC802931.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -102,9 +103,9 @@ Azure AD ユーザーが RightAnswers にログインできるようにするに
 
 ###ユーザーを RightAnswers に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  **RightAnswers ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **RightAnswers** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-rightanswers-tutorial/IC802932.png "ユーザーの割り当て")
 
@@ -114,4 +115,4 @@ Azure AD ユーザーが RightAnswers にログインできるようにするに
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0713_2016-->

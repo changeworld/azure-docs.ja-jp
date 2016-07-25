@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="06/07/2016" 
+	ms.date="07/11/2016" 
 	ms.author="awills"/>
 
 # カスタムのイベントとメトリックのための Application Insights API 
@@ -47,8 +47,8 @@ Application Insights でデータを集めるとき、この API を使用すれ
 * Application Insights SDK をプロジェクトに追加します。
  * [ASP.NET プロジェクト][greenbrown]
  * [Windows プロジェクト][windows]
- * [Java プロジェクト][java] 
- * [各 Web ページの JavaScript][client]   
+ * [Java プロジェクト][java]
+ * [各 Web ページの JavaScript][client]
 
 * デバイスまたは Web サーバー コードに次を追加します。
 
@@ -505,7 +505,35 @@ ASP.NET Web MVC アプリケーションでの例:
 
 > [AZURE.WARNING] Track*() を複数回呼び出すために、同じテレメトリ項目インスタンス (この例では `event`) を再利用しないでください。再利用すると、正しくない構成でテレメトリが送信される場合があります。
 
-#### <a name="timed"></a> タイミング イベント
+## 操作コンテキスト
+
+Web アプリが HTTP 要求を受け取ると、Application Insights の要求追跡モジュールが要求に ID を割り当て、現在の操作 ID と同じ値を設定します。この操作 ID は、要求に対する応答が送信されるとクリアされます。既定の TelemetryContext を使用していれば、操作中に行われたすべての追跡呼び出しに同じ操作 ID が割り当てられます。これにより、ポータルでイベントを調べるときに、特定の要求に関連するイベントを見つけることができます。
+
+![関連項目](./media/app-insights-api-custom-events-metrics/21.png)
+
+HTTP 要求に関連付けられていないイベントを監視している場合、または要求追跡モジュールを使用していない場合 (バックエンド プロセスを監視している場合など) は、次のパターンを使用して独自の操作コンテキストを設定できます。
+
+    // Establish an operation context and associated telemetry item:
+    using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName"))
+    {
+        // Telemetry sent in here will use the same operation ID.
+        ...
+        telemetry.TrackEvent(...); // or other Track* calls
+        ...
+        // Set properties of containing telemetry item - for example:
+        operation.Telemetry.ResponseCode = "200";
+        
+        // Optional: explicitly send telemetry item:
+        telemetry.StopOperation(operation);
+
+    } // When operation is disposed, telemetry item is sent.
+
+操作コンテキストを設定するほかに、`StartOperation` は指定したタイプのテレメトリ項目を作成し、操作を破棄するとき、または明示的に `StopOperation` を呼び出す場合に、そのテレメトリ項目を送信します。`RequestTelemetry` をテレメトリ タイプとして使用する場合、その継続時間は、開始から停止までの間の一定の間隔に設定します。
+
+操作コンテキストを入れ子にすることはできません。操作コンテキストが既にある場合は、含まれているすべての項目 (StartOperation で作成された項目を含む) に、その操作コンテキストの ID が関連付けられます。
+
+
+## <a name="timed"></a> タイミング イベント
 
 何らかのアクションを実行するためにかかる時間をグラフに示す必要が生じることがあります。たとえば、ユーザーがゲームで選択肢について考える時間について調べることができます。これは、測定のパラメーターの使用に役立つ例です。
 
@@ -576,7 +604,7 @@ ASP.NET Web MVC アプリケーションでの例:
 
 SDK からテレメトリを送信する前に、テレメトリを処理するコードを記述することができます。この処理では、HTTP 要求のコレクションや依存関係のコレクションなど、標準的なテレメトリ モジュールから送信されるデータも対象となります。
 
-* `ITelemetryInitializer` の実装によるテレメトリへの[プロパティの追加](app-insights-api-filtering-sampling.md#add-properties) - たとえば、バージョン番号や、他のプロパティから算出された値などを追加します。 
+* `ITelemetryInitializer` の実装によるテレメトリへの[プロパティの追加](app-insights-api-filtering-sampling.md#add-properties) - たとえば、バージョン番号や、他のプロパティから算出された値などを追加します。
 * `ITelemetryProcesor` を実装することによって、テレメトリを SDK から送信する前に、[フィルタリング](app-insights-api-filtering-sampling.md#filtering)によって変更または破棄することができます。何を送信して何を破棄するかを操作できますが、メトリックへの影響を考慮する必要があります。項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
 * [サンプリング](app-insights-api-filtering-sampling.md#sampling)は、使用しているアプリからポータルに送信するデータ量を減らすためのパッケージ化ソリューションです。サンプリングの実行では、表示されるメトリックに影響を与えることも、例外、要求、ページ ビューなどの関連する項目間を移動して問題を診断する機能に影響を与えることもありません。
 
@@ -617,7 +645,7 @@ SDK からテレメトリを送信する前に、テレメトリを処理する�
 *C#*
     
     var telemetry = new TelemetryClient();
-    telemetry.Context.InstrumentationKey = "---my key---";
+    telemetry.InstrumentationKey = "---my key---";
     // ...
 
 
@@ -672,11 +700,11 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 * **Location**は、デバイスの地理的な場所を識別します。
 * Web アプリケーションで **Operation** は、現在の HTTP 要求を示します。他の種類のアプリケーションでは、イベントをグループ化するために、これを設定できます。
  * **Id**: [診断検索] でイベントを調べるときに「関連項目」を見つけることができるように、さまざまなイベントを関連付けるために生成される値
- * **名前**: 識別子。通常は HTTP 要求の URL。 
+ * **名前**: 識別子。通常は HTTP 要求の URL。
  * **SyntheticSource**: null 値または空ではない場合、この文字列は、要求元がロボットまたは Web テストとして識別されたことを示します。既定で、これはメトリックス エクスプローラーでの計算から除外されます。
 * **Properties**: すべてのテレメトリ データとともに送信されるプロパティ。個々 の Track* 呼び出しでオーバーライドできます。
 * **Session** は、ユーザーのセッションを識別します。Id は、生成される値に設定されます。これは、ユーザーがしばらくの間アクティブ化されていない場合に、変更されます。
-* **ユーザー** ユーザー情報。 
+* **ユーザー** ユーザー情報。
 
 ## 制限
 
@@ -685,7 +713,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
 *データ速度の上限に達するのを回避する方法*
 
-* [サンプリング](app-insights-sampling.md)の使用。
+* [サンプリング](app-insights-sampling.md)を使用します。
 
 *データが保持される期間*
 
@@ -750,4 +778,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

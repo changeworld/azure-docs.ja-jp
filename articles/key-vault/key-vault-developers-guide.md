@@ -12,13 +12,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/25/2016"
+   ms.date="07/07/2016"
    ms.author="bruceper" />
 
 # Azure Key Vault 開発者ガイド
 Key Vault を使用すると、アプリケーション内から機密情報に安全にアクセスできるようになります。具体的には次のとおりです。
 
-- 自分でコードを記述しなくても、キーとシークレットが保護されます。アプリケーションから簡単にそれらを使用できます。
+- 自分でコードを記述しなくても、キーとシークレットが保護され、アプリケーションから簡単に使用できます。
 - 顧客に自分で専用のキーを所有して管理してもらうことができます。皆さんは主要なソフトウェア機能の提供に集中できます。また、このため、アプリケーションは顧客のテナント キーやシークレットに対して義務や潜在的責任を負うことはありません。
 - アプリケーションで署名と暗号化のキーを使用しつつ、キー管理をアプリケーションの外部で実施できます。これにより、ソリューションは地理的に分散したアプリケーションを対象とすることができます。
 
@@ -64,9 +64,9 @@ Azure Key Vault の全般的な情報については、「[Azure Key Vault と�
 
 Key Vault の操作には次の SDK を使用できます。
 
-|[![.NET](./media/key-vault-developers-guide/msft.netlogo_purple.png)](https://msdn.microsoft.com/library/azure/dn903301.aspx)|[![Node.js](./media/key-vault-developers-guide/nodejs.png)](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
+|[![.NET](./media/key-vault-developers-guide/msft.netlogo_purple.png)](https://msdn.microsoft.com/library/mt430941.aspx)|[![Node.js](./media/key-vault-developers-guide/nodejs.png)](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
 |:--:|:--:|
-|[.NET SDK ドキュメント](https://msdn.microsoft.com/library/azure/dn903301.aspx)|[Node.js SDK ドキュメント](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)|
+|[.NET SDK ドキュメント](https://msdn.microsoft.com/library/mt430941.aspx)|[Node.js SDK ドキュメント](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)|
 |[.NET SDK パッケージ](https://azure.microsoft.com/documentation/api/)|[Node.js SDK パッケージ](https://www.npmjs.com/package/azure-keyvault)|
 
 
@@ -84,8 +84,9 @@ Key Vault の操作には次の SDK を使用できます。
 - [Key Vault を使用して SQL Server で拡張キーを管理する方法](https://msdn.microsoft.com/library/dn198405.aspx) - Azure Key Vault 用の SQL Server Connector により、SQL Server と VM 内の SQL で拡張キー管理 (EKM) プロバイダーとして Azure Key Vault サービスを利用して、Transparent Data Encryption (透過的なデータ暗号化、TDE)、バックアップ暗号化、Column Level Encryption (列レベル暗号化、CLE)など、アプリケーション リンクの暗号化キーを保護できます。
 - [Key Vault から VM に証明書をデプロイする方法](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) - Azure の VM で実行するクラウド アプリケーションには証明書が必要です。今すぐこの VM で証明書を取得する方法を説明します。
 - [Windows および Linux IaaS VM の Azure Disk Encryption と Key Vault を統合する方法](../azure-security-disk-encryption.md) - このディスク暗号化ソリューションは Azure Key Vault と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、Azure ストレージで保存中の仮想マシン ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
+- [エンド ツー エンドのキー ローテーションと監査で Key Vault を設定する方法](key-vault-key-rotation-log-monitoring.md) - Azure Key Vault を使用して、キー ローテーションと監査を設定する方法について説明します。
 
-Key Vault と Azure の統合と使用に関するその他のタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け ARM テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。
+Key Vault と Azure の統合と使用に関するその他のタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け ARM テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)をご覧ください。
 
 ## Key Vault との統合
 
@@ -104,4 +105,4 @@ Key Vault を利用したり Key Vault と連携したりするその他のシ�
 - [Key Vault Blog](http://aka.ms/kvblog)
 - [Key Vault Forum](http://aka.ms/kvforum)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

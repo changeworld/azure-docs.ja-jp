@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="PowerShell を使用した Azure SQL Database の管理" 
-	description="PowerShell を使用した Azure SQL Database の管理。" 
+	description="PowerShell による Azure SQL Database 管理。" 
 	services="sql-database" 
 	documentationCenter="" 
 	authors="stevestein" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/09/2016" 
+	ms.date="07/07/2016" 
 	ms.author="sstein"/>
 
 # PowerShell を使用した Azure SQL Database の管理
@@ -83,18 +83,18 @@
 
 サーバーは、[Remove-AzureRMSqlServer](https://msdn.microsoft.com/library/azure/mt603488.aspx) コマンドを使用して削除することもできます。次の例では server12 という名前のサーバーを削除します。
 
+
+>[AZURE.NOTE]  削除操作は非同期であり、時間がかかる場合があるため、サーバーが完全に削除されたことを前提とする追加の操作 (たとえば、同じ名前の新しいサーバーの作成) を実行する前に、操作が完了したことを確認してください。
+
+
 	Remove-AzureRmSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12"
 
 
 
-これらの Azure SQL リソースまたは同様のリソースを再作成する場合は、次のことができます。
-
-- これを PowerShell スクリプト ファイル (*.ps1) として保存します
-- Azure クラシック ポータルの [Automation] セクションに、これを Azure Automation Runbook として保存します 
 
 ## 次のステップ
 
-コマンドを結合し、自動化します。たとえば、サーバー、ファイアウォール規則、およびデータベースを作成するために、< and > 文字を含む引用符内のすべてのものを置換します。
+コマンドを結合し、自動化します。たとえば、サーバー、ファイアウォール規則、およびデータベースを作成するために、< および > 文字を含む引用符内のすべてのものを置換します。
 
 
     New-AzureRmResourceGroup -Name "<resourceGroupName>" -Location "<Location>"
@@ -106,4 +106,4 @@
 
 - [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

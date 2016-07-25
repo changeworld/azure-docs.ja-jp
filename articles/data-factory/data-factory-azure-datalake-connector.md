@@ -24,7 +24,10 @@ Azure Data Lake Store との間でデータを移動するには、コピー ア
 >  
 > Data Factory、リンクされたサービス、データセット、およびパイプラインを作成する詳細な手順については、[最初のパイプラインを作成するチュートリアル](data-factory-build-your-first-pipeline.md)に関するページを確認してください。Data Factory エディター、Visual Studio、または Azure PowerShell と JSON のスニペットを使用して、Data Factory エンティティを作成できます。
 
-次のサンプルは、Azure Data Lake Store と Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
+## データのコピー ウィザード
+Azure Data Lake Store との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。
+
+次の例は、[Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。ここでは、Azure Data Lake Store と Azure BLOB Storage との間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して、[ここ](data-factory-data-movement-activities.md#supported-data-stores)に示したいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
 
 
 ## サンプル: Azure BLOB から Azure Data Lake Store にデータをコピーする
@@ -258,7 +261,7 @@ Azure Data Lake Store との間でデータを移動するには、コピー ア
 
 **Azure Data Lake の入力データセット:**
 
-**“external”: ”true”** を設定して **externalData** ポリシーを指定すると、テーブルが Data Factory に対して外部にあり、Data Factory のアクティビティでは生成されてないことが Azure Data Factory のサービスに通知されます。
+**“external”: true** を設定して **externalData** ポリシーを指定すると、テーブルが Data Factory に対して外部にあり、Data Factory のアクティビティでは生成されてないことが Azure Data Factory のサービスに通知されます。
 
 	{
 		"name": "AzureDataLakeStoreInput",
@@ -405,7 +408,7 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 | プロパティ | 説明 | 必須 |
 | :-------- | :----------- | :-------- |
 | type | type プロパティを **AzureDataLakeStore** に設定する必要があります。 | あり |
-| dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。https://<Azure Data Lake account name>.azuredatalakestore.net/webhdfs/v1 という形式で指定します。 | あり |
+| dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。https://<Azure Data Lake アカウント名>.azuredatalakestore.net/webhdfs/v1 という形式で指定します。 | はい |
 | authorization | **Data Factory エディター**で **[承認する]** をクリックして資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | はい |
 | sessionId | OAuth 承認セッションの OAuth セッション ID。各セッション ID は一意であり、1 回のみ使用できます。Data Factory エディターを使用すると自動的に生成されます。 | はい |  
 | accountName | Data Lake アカウント名 | いいえ |
@@ -464,7 +467,7 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 | folderPath | Azure Data Lake Store のコンテナーとフォルダーのパス。 | はい |
 | fileName | Azure Data Lake Store 内のファイルの名前。fileName は省略可能です。この名前は大文字と小文字が区別されます。<br/><br/>fileName を指定した場合、アクティビティ (コピーを含む) は特定のファイルで機能します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) の形式になります。 | いいえ |
 | partitionedBy | partitionedBy は任意のプロパティです。これを使用し、時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。詳細と例については、「partitionedBy プロパティの活用」セクションを参照してください。 | いいえ |
-| BlobSink の format | **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat** の 4 種類の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定する必要があります。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」を参照してください。ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。| いいえ
+| BlobSink の format | **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat** の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定する必要があります。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」を参照してください。ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。| いいえ
 | compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点で、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
 
 ### partitionedBy プロパティの活用
@@ -526,10 +529,10 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
  
 **compression** セクションには次の 2 つのプロパティがあります。
   
-- **type:** 圧縮コーデックです。**GZIP**、**Deflate**、または **BZIP2** を指定できます。  
-- **level:** 圧縮率です。**Optimal** または **Fastest** を指定できます。 
-	- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、生成ファイルが最適に圧縮されない場合があります。 
-	- **Optimal**: 圧縮操作では最適に圧縮されますが、操作完了までの時間が増加する場合があります。 
+- **type:** 圧縮コーデックです。**GZIP**、**Deflate**、または **BZIP2** を指定できます。
+- **level:** 圧縮率です。**Optimal** または **Fastest** を指定できます。
+	- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、生成ファイルが最適に圧縮されない場合があります。
+	- **Optimal**: 圧縮操作では最適に圧縮されますが、操作完了までの時間が増加する場合があります。
 	
 	詳細については、[圧縮レベルに関するトピック](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)を参照してください。
 
@@ -537,9 +540,9 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 
 入力データセットの JSON で compression プロパティを指定すると、パイプラインでソースから圧縮データを読み取ることができ、出力データセットの JSON で compression プロパティを指定すると、コピー アクティビティにより出力先に圧縮データを書き込むことができます。いくつかのサンプル シナリオを次に示します。
 
-- Azure Data Lake Store から GZIP 圧縮データを読み取り、展開して、生成されたデータを Azure SQL Database に書き込みます。この場合、Azure Data Lake Store 入力データセットを、compression JSON プロパティを使用して定義します。 
-- オンプレミスのファイル システムのプレーンテキスト ファイルからデータを読み取り、GZip 形式で圧縮して、圧縮データを Azure Data Lake Store に書き込みます。この場合、Azure Data Lake 出力データセットを、compression JSON プロパティを使用して定義します。  
-- Azure Data Lake Store から GZIP 圧縮データを読み取って展開し、BZIP2 で圧縮して、生成されたデータを Azure Data Lake Store に書き込みます。この場合、Azure Data Lake Store 入力データセットは圧縮タイプを GZIP に設定して定義し、Azure Data Lake Store 出力データセットは圧縮タイプを BZIP2 に設定して定義します。   
+- Azure Data Lake Store から GZIP 圧縮データを読み取り、展開して、生成されたデータを Azure SQL Database に書き込みます。この場合、Azure Data Lake Store 入力データセットを、compression JSON プロパティを使用して定義します。
+- オンプレミスのファイル システムのプレーンテキスト ファイルからデータを読み取り、GZip 形式で圧縮して、圧縮データを Azure Data Lake Store に書き込みます。この場合、Azure Data Lake 出力データセットを、compression JSON プロパティを使用して定義します。
+- Azure Data Lake Store から GZIP 圧縮データを読み取って展開し、BZIP2 で圧縮して、生成されたデータを Azure Data Lake Store に書き込みます。この場合、Azure Data Lake Store 入力データセットは圧縮タイプを GZIP に設定して定義し、Azure Data Lake Store 出力データセットは圧縮タイプを BZIP2 に設定して定義します。
 
 
 ## Azure Data Lake のコピー アクティビティの type プロパティ  
@@ -571,4 +574,4 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->
