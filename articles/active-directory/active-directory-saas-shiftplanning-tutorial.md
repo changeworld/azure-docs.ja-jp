@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と ShiftPlanning の統合 | Microsoft Azure" 
     description="Azure Active Directory で ShiftPlanning を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="07/07/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と ShiftPlanning の統合
   
@@ -37,7 +37,7 @@
 
 ###ShiftPlanning のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-shiftplanning-tutorial/IC700993.png "Active Directory")
 
@@ -66,9 +66,9 @@
   
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ShiftPlanning でAzure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[ShiftPlanning]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **ShiftPlanning** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-shiftplanning-tutorial/IC786615.png "Configure Single Sign-On")
 
@@ -76,9 +76,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-shiftplanning-tutorial/IC786616.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの ShiftPlanning の**[サインオン URL]** テキスト ボックスに、"**https://company.shiftplanning.com/includes/saml/*"" というパターンで URL を入力して、**[次へ]** をクリックします。
+3.  **[Configure App URL]** (アプリケーション URL の構成) ページの **[ShiftPlanning サインオン URL]** テキスト ボックスに、"*https://company.shiftplanning.com/includes/saml/*"* というパターンで URL を入力して、*[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-shiftplanning-tutorial/IC786617.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-shiftplanning-tutorial/IC786617.png "アプリケーション URL の構成")
 
 4.  **[ShiftPlanning でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
@@ -100,16 +100,16 @@
 
     1.  **[SAML Enabled]** を選択します。
     2.  **[Allow Password Login]** を選択します。
-    3.  Azure ポータルで、**[ShiftPlanning でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[SAML Issuer URL]** ボックスに貼り付けます。
-    4.  Azure ポータルで、**[ShiftPlanning でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[Remote Logout URL]** ボックスに貼り付けます。
-    5.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
+    3.  Azure クラシック ポータルで、**[ShiftPlanning でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[SAML Issuer URL]** ボックスに貼り付けます。
+    4.  Azure クラシック ポータルで、**[ShiftPlanning でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[Remote Logout URL]** ボックスに貼り付けます。
+    5.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
 
         >[AZURE.TIP]詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
     6.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 Certificate]** テキスト ボックスに貼り付けます。
-    7.  **[Save Settings]** をクリックします。
+    7.  **[設定の保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-shiftplanning-tutorial/IC786621.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -147,9 +147,9 @@ Azure AD ユーザーが ShiftPlanning にログインできるようにする�
 
 ###ユーザーを ShiftPlanning に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  **ShiftPlanning ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **ShiftPlanning** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-shiftplanning-tutorial/IC786626.png "ユーザーの割り当て")
 
@@ -159,4 +159,4 @@ Azure AD ユーザーが ShiftPlanning にログインできるようにする�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0713_2016-->

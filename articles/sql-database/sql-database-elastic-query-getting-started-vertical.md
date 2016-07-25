@@ -62,7 +62,7 @@ Azure SQL Database 用の エラスティック データベース クエリ (�
 		WITH IDENTITY = '<username>', 
 		SECRET = '<password>';  
 
-	「username」と「password」は Customers データベースのログインに使用するユーザー名とパスワードになります。
+	「username」と「password」は Customers データベースのログインに使用するユーザー名とパスワードになります。Azure Active Directory とエラスティック クエリを使用した認証は、現時点ではサポートされていません。
 
 ### 外部データ ソース
 外部データ ソースを作成するには、Orders データベースで、次のコマンドを実行します。
@@ -106,4 +106,4 @@ CustomerInformation テーブルの定義に一致する外部テーブルを Or
 
 <!--anchors-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

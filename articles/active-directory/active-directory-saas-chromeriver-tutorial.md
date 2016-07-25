@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 
@@ -38,7 +38,7 @@
 
 ###Chromeriver のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-chromeriver-tutorial/IC700993.png "Active Directory")
 
@@ -65,9 +65,9 @@
 
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Chromeriver に対する認証を行えるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Chromeriver** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Chromeriver** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-chromeriver-tutorial/IC802757.png "Configure Single Sign-On")
 
@@ -79,9 +79,9 @@
 
     ![Configure App Settings](./media/active-directory-saas-chromeriver-tutorial/IC802759.png "Configure App Settings")
 
-    1.  **[応答 URL]** ボックスに、Chromeriver の **AssertionConsumerService URL** を入力します (例: **https://qa-app.chromeriver.com/login/sso/saml/consume?customerId=911*)。
+    1.  **[応答 URL]** ボックスに、Chromeriver の **AssertionConsumerService URL** を入力します (例: *https://qa-app.chromeriver.com/login/sso/saml/consume?customerId=911*)。
 
-        >[AZURE.NOTE]この値は、Chromeriver サポート チームから入手できます。
+        >[AZURE.NOTE] この値は、Chromeriver サポート チームから入手できます。
 
     2.  **[次へ]** をクリックします。
 
@@ -91,16 +91,16 @@
 
 5.  ダウンロードしたメタデータ ファイルを Chromeriver サポート チームに送信します。
 
-    >[AZURE.NOTE]Chromeriver サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
+    >[AZURE.NOTE] Chromeriver サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-chromeriver-tutorial/IC802761.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
 
 Azure AD ユーザーが Chromeriver にログインできるようにするには、ユーザーを Chromeriver にプロビジョニングする必要があります。Chromeriver の場合、Chromeriver サポート チームがユーザー アカウントを作成する必要があります。
 
->[AZURE.NOTE]Chromeriver から提供されている他の Chromeriver ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Chromeriver から提供されている他の Chromeriver ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -108,7 +108,7 @@ Azure AD ユーザーが Chromeriver にログインできるようにするに�
 
 ###ユーザーを Chromeriver に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Chromeriver** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -120,4 +120,4 @@ Azure AD ユーザーが Chromeriver にログインできるようにするに�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -483,7 +483,7 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQ
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | timespan<br/><br/> 例: "00:30:00" (30 分)。 | いいえ |
-| writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 | Integer | いいえ (既定値: 10000)
+| writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 | 整数 (行数) | いいえ (既定値: 10000)
 | sqlWriterCleanupScript | 特定のスライスのデータを消去する方法で実行するコピー アクティビティのユーザー指定のクエリ。詳細については、下にある繰り返し性のセクションを参照してください。 | クエリ ステートメント。 | いいえ |
 | sliceIdentifierColumnName | コピー アクティビティで、自動生成スライス ID を入力する列のユーザー指定の名前。再実行時、特定のスライスのデータを消去するために使用されます。詳細については、下にある繰り返し性のセクションを参照してください。 | バイナリ (32) のデータ型の列の列名。 | いいえ |
 | sqlWriterStoredProcedureName | 対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 | ストアド プロシージャの名前。 | いいえ |
@@ -497,7 +497,7 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQ
 	![リモート接続を有効にする](.\media\data-factory-sqlserver-connector\AllowRemoteConnections.png)
 
 	詳細な手順については、「[remote access サーバー構成オプションの構成](https://msdn.microsoft.com/library/ms191464.aspx)」を参照してください。
-2. **SQL Server 構成マネージャー**を起動します。目的のインスタンスの **[SQL Server ネットワークの構成]** を展開し、**[MSSQLSERVER のプロトコル]** を選択します。右側のウィンドウにプロトコルが表示されます。**[TCP/IP]** を右クリックし、**[有効化]** をクリックして TCP/TP を有効にします。
+2. **SQL Server 構成マネージャー**を起動します。目的のインスタンスの **[SQL Server ネットワークの構成]** を展開し、**[MSSQLSERVER のプロトコル]** を選択します。右側のウィンドウにプロトコルが表示されます。**[TCP/IP]** を右クリックし、**[有効化]** をクリックして TCP/IP を有効にします。
 
 	![TCP/IP を有効にする](.\media\data-factory-sqlserver-connector\EnableTCPProptocol.png)
 
@@ -646,4 +646,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

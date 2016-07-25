@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 
@@ -107,7 +107,7 @@ public class ToDoListActor : Actor, IToDoListActor, IRemindable
 
 アラームがトリガーされると、Reliable Actors のランタイムがアクターの `ReceiveReminderAsync` メソッドを呼び出します。アクターは複数のアラームを登録でき、`ReceiveReminderAsync` メソッドは、そのいずれかのアラームがトリガーされると呼び出されます。アクターは `ReceiveReminderAsync` メソッドに渡されるアラーム名を使用して、どのアラームがトリガーされたかを判別できます。
 
-アクターのランタイムは、`ReceiveReminderAsync` の呼び出しが完了するとアクターの状態を保存します。状態の保存中にエラーが発生した場合、そのアクターのオブジェクトは非アクティブ化し、新しいインスタンスがアクティブ化されます。アラームのコールバックの完了時に状態を保存する必要がないことを指定するため、 `RegisterReminder` メソッドを呼び出してアラームを作成するときに、 `attributes` パラメーターに `ActorReminderAttributes.ReadOnly` フラグを設定することができます。
+アクターのランタイムは、`ReceiveReminderAsync` の呼び出しが完了するとアクターの状態を保存します。状態の保存中にエラーが発生した場合、そのアクターのオブジェクトは非アクティブ化し、新しいインスタンスがアクティブ化されます。
 
 アラームの登録を解除するには、次の例に示すように、アクターが `UnregisterReminder` メソッドを呼び出します。
 
@@ -125,4 +125,4 @@ Task reminderUnregistration = UnregisterReminder(reminder);
  - [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
  - [コード サンプル](https://github.com/Azure/servicefabric-samples)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

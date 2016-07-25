@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と AnswerHub の統合
@@ -37,7 +37,7 @@
 
 ###AnswerHub のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-answerhub-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **AnswerHub** アプリケーション統合ページで [**シングル サインオンの構成**] をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure クラシック ポータルの **AnswerHub** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-answerhub-tutorial/IC785168.png "Configure single sign-on")
 
@@ -76,9 +76,9 @@
 
     ![Configure single sign-on](./media/active-directory-saas-answerhub-tutorial/IC785169.png "Configure single sign-on")
 
-3.  [**アプリケーション URL の構成**] ページの [**AnswerHub サインイン URL**] テキスト ボックスに、*https://company.answerhub.com*" というパターンの URL を入力し、[**次へ**] をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[AnswerHub サインイン URL]** テキスト ボックスに、"*https://company.answerhub.com*" というパターンの URL を入力し、**[次へ]* をクリックします*。
 
-    ![Configure App URL](./media/active-directory-saas-answerhub-tutorial/IC785170.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-answerhub-tutorial/IC785170.png "アプリケーション URL の構成")
 
 4.  [**AnswerHub でのシングル サインオン構成**] ページで、証明書をダウンロードするには、[**証明書のダウンロード**] をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
@@ -98,25 +98,25 @@
 
     ![SAML Setup](./media/active-directory-saas-answerhub-tutorial/IC785172.png "SAML Setup")
 
-    1.  Azure ポータルの [**AnswerHub でのシングル サインオンの構成**] ダイアログ ページで、[**リモート ログイン URL**] 値をコピーして、[**IDP Login URL**] テキスト ボックスに貼り付けます。
-    2.  Azure ポータルの [**AnswerHub でのシングル サインオンの構成**] ダイアログ ページで、[**リモート ログアウト URL**] 値をコピーし、[**IDP Logout URL**] テキスト ボックスに貼り付けます。
-    3.  Azure ポータルの [**Gigya でのシングル サインオンの構成**] ダイアログ ページで、[**名前識別子形式**] の値をコピーし、[**IDP Name Identifier Format**] テキスト ボックスに貼り付けます。
+    1.  Azure クラシック ポータルの **[AnswerHub でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** 値をコピーして、**[IDP Login URL]** テキスト ボックスに貼り付けます。
+    2.  Azure クラシック ポータルの **[AnswerHub でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** 値をコピーして、**[IDP ログアウト URL]** テキスト ボックスに貼り付けます。
+    3.  Azure クラシック ポータルの **[Gigya でのシングル サインオンの構成]** ダイアログ ページで、**[名前識別子形式]** の値をコピーし、**[IDP Name Identifier Format]** テキスト ボックスに貼り付けます。
     4.  [**Keys and Certificates**] をクリックします。
 
 11. [Keys and Certificates] タブでは、次の手順を実行します。
 
     ![Keys and Certificates](./media/active-directory-saas-answerhub-tutorial/IC785173.png "Keys and Certificates")
 
-    1.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
+    1.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
 
-		>[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+		>[AZURE.TIP] 詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
     2.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、[**IDP Public Key (x509 Format)**] テキストボックスに貼り付けます。
     3.  [**Save**] をクリックします。
 
 12. [**IDP Config**] タブで、[**Save**] をクリックします。
 
-13. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、[**完了**] をクリックして [**シングル サインオンの構成**] ダイアログを閉じます。
+13. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure single sign-on](./media/active-directory-saas-answerhub-tutorial/IC785174.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
@@ -137,7 +137,7 @@ Azure AD ユーザーが AnswerHub にログインできるようにするには
 
 5.  関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory ユーザー アカウントの [**Email address**]、 [**Username**]、および [**Password**] を入力してから [**Save**] をクリックします。
 
->[AZURE.NOTE]他の AnswerHub ユーザー アカウントの作成ツールまたは AnswerHub から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] 他の AnswerHub ユーザー アカウントの作成ツールまたは AnswerHub から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -145,9 +145,9 @@ Azure AD ユーザーが AnswerHub にログインできるようにするには
 
 ###ユーザーを AnswerHub に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  AnswerHub アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **AnswerHub** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-answerhub-tutorial/IC785176.png "ユーザーの割り当て")
 
@@ -155,6 +155,6 @@ Azure AD ユーザーが AnswerHub にログインできるようにするには
 
     ![Yes](./media/active-directory-saas-answerhub-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

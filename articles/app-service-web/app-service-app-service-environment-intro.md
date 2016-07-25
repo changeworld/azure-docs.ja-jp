@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016"
+	ms.date="07/11/2016"
 	ms.author="stefsch"/>
 
 # App Service 環境の概要
@@ -58,7 +58,7 @@ App Service 環境は、1 つのフロントエンド コンピューティン�
 App Service 環境でサポートされる使用可能なコンピューティング リソースのサイズの詳細については、[App Service の料金][AppServicePricing]のページで、Premium 価格レベルの App Service 環境で使用できるオプションを確認してください。
 
 ## Virtual Network のサポート ##
-App Service 環境は、既存の地域クラシック "v1" 仮想ネットワーク内でも、新しい地域クラシック "v1" 仮想ネットワーム内でも作成できます ([仮想ネットワークの詳細][MoreInfoOnVirtualNetworks])。App Service 環境は常に地域仮想ネットワーク (もっと正確に言えば、地域仮想ネットワークのサブネット内) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。
+App Service 環境は、Azure Resource Manager の仮想ネットワーク、**または**クラシック デプロイメント モデルの仮想ネットワークの**どちらにでも**作成できます ([仮想ネットワークについて詳しくは、こちらをご覧ください][MoreInfoOnVirtualNetworks])。App Service 環境は常に仮想ネットワーク (もっと正確に言えば、仮想ネットワークのサブネット内) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。
 
 [ネットワーク セキュリティ グループ][NetworkSecurityGroups]を使用して、受信ネットワーク通信を、App Service 環境が存在するサブネットに制限できます。これによって、Web アプリケーション ファイアウォールやネットワーク SaaS プロバイダーなど、アップストリーム デバイスおよびサービスの背後でアプリを実行できます。
 
@@ -66,11 +66,11 @@ App Service 環境は、既存の地域クラシック "v1" 仮想ネットワ�
 
 仮想ネットワークとオンプレミス ネットワークでの App Service 環境の機能の詳細については、「[App Service 環境のネットワーク アーキテクチャの概要][NetworkArchitectureOverview]」、「[App Service 環境への受信トラフィックを制御する方法][ControllingInboundTraffic]」、および「[App Service 環境からバックエンド リソースへの安全な接続][SecurelyConnectingToBackends]」をご覧ください。
 
-**注:** "v2"仮想ネットワーク内で App Service 環境を作成することはできません。
-
 ## 使用の開始
 
 App Service 環境の使用を開始するには、[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]に関するページを参照してください。
+
+App Service 環境に関するすべての記事と作業方法は [App Service 環境の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
 
 Azure App Service プラットフォームの詳細については、[Azure App Service][AzureAppService] に関するページを参照してください。
 
@@ -108,4 +108,4 @@ ExpressRoute での App Service 環境の使用方法の詳細については、
 
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

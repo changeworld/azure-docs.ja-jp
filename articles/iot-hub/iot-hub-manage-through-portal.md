@@ -157,10 +157,19 @@ IoT Hub でファイルのアップロード機能を使用するには、最初
 
 ## 次のステップ
 
-Azure IoT Hub についてさらに学習するには、次のリンクを使用してください。
+Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
-- [IoT Hub の使用 (チュートリアル)][lnk-get-started]
-- [What is Azure IoT Hub? (Azure IoT Hub とは)][]
+- [IoT デバイスの一括管理][lnk-bulk]
+- [使用状況のメトリック][lnk-metrics]
+- [操作の監視][lnk-monitor]
+- [IoT Hub へのアクセスの管理][lnk-itpro]
+
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 
 
   [4]: ./media/iot-hub-manage-through-portal/create-iothub.png
@@ -173,6 +182,16 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
   [14]: ./media/iot-hub-manage-through-portal/file-upload-container-selection.png
 
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
-[What is Azure IoT Hub? (Azure IoT Hub とは)]: iot-hub-what-is-iot-hub.md
+[What is Azure IoT Hub?]: iot-hub-what-is-iot-hub.md
 
-<!---HONumber=AcomDC_0706_2016-->
+[lnk-bulk]: iot-hub-bulk-identity-mgmt.md
+[lnk-metrics]: iot-hub-metrics.md
+[lnk-monitor]: iot-hub-operations-monitoring.md
+[lnk-itpro]: iot-hub-itpro-info.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+
+<!---HONumber=AcomDC_0713_2016-->

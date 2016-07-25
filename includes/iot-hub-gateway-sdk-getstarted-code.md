@@ -198,13 +198,11 @@ Gateway SDK の使用方法については、以下を参照してください�
 - [IoT Gateway SDK – send device-to-cloud messages with a simulated device using Linux][lnk-gateway-simulated] (IoT Gateway SDK – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する)
 - GitHub の [Azure IoT Gateway SDK][lnk-gateway-sdk]
 
-IoT Hub を使用したデバイス管理の詳細については、「[Overview of Azure IoT Hub device management][lnk-device-management]」 (Azure IoT Hub デバイス管理の概要) を参照してください。
-
 <!-- Links -->
 [lnk-main-c]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/hello_world/src/main.c
 [lnk-helloworld-c]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/modules/hello_world/src/hello_world.c
 [lnk-logger-c]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/modules/logger/src/logger.c
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 [lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md
-[lnk-device-management]: ../articles/iot-hub/iot-hub-device-management-overview.md
 
+<!---HONumber=AcomDC_0713_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2015"
+   ms.date="07/06/2015"
    ms.author="vturecek"/>
 
 # Service Fabric Reliable Actors 型のシリアル化に関する留意事項
@@ -92,4 +92,4 @@ public class VoicemailBox
  - [アクターのポリモーフィズムとオブジェクト指向設計パターン](service-fabric-reliable-actors-polymorphism.md)
  - [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

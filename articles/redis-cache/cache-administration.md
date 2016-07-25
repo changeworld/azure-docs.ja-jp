@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="07/05/2016"
+	ms.date="07/13/2016"
 	ms.author="sdanie" />
 
 # Azure Redis Cache を管理する方法
@@ -80,7 +80,7 @@ Azure Redis Cache の**管理**設定を使用すると、Premium キャッシ�
 
 ### PowerShell、CLI、またはその他の管理ツールを使用して、キャッシュを再起動できますか。
 
-現時点ではできませんが、この機能は、まもなく利用できるようになる予定です。
+PowerShell での手順については、「[To reboot a Redis cache (Redis Cache を再起動するには)](cache-howto-manage-redis-cache-powershell.md#to-reboot-a-redis-cache)」をご覧ください。
 
 ### どの価格レベルで再起動機能を使用できますか。
 
@@ -116,4 +116,4 @@ Azure Redis Cache の**管理**設定を使用すると、Premium キャッシ�
 
 -	[Azure Redis Cache Premium](cache-premium-tier-intro.md) の機能について詳しく調べます。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

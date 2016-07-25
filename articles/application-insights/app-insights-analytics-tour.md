@@ -111,7 +111,7 @@
 ![result](./media/app-insights-analytics-tour/270.png)
 
 * `['...']` や `["..."]` のように角かっこで囲まれている場合は、[列名](app-insights-analytics-reference.md#names)にスペースまたは記号を含めることができます。
-* `%` は一般的なモジュロ演算子です。 
+* `%` は一般的なモジュロ演算子です。
 * `1d` (数字の 1 の後に "d" が付加されている) は 1 日を意味する期間リテラルです。期間リテラルにはこの他にも `12h`、`30m`、`10s`、`0.01s` などがあります。
 * `floor` (エイリアスは `bin`) は、指定した基準値の最も近い倍数に値を切り捨てます。したがって、`floor(aTime, 1s)` の場合、最も近い秒数に時間を切り捨てます。
 
@@ -412,7 +412,7 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 この結果から次のことがわかります。
 
-* セッションの 5% の期間は 3 分 34 秒未満である。 
+* セッションの 5% の期間は 3 分 34 秒未満である。
 * セッションの 50% が 36 分以上は続かない。
 * セッションの 5% は 7 日以上続く。
 
@@ -455,7 +455,7 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 ## [let](app-insights-analytics-reference.md#let-clause): 結果を変数に代入する
 
-上記の式の部分を分割する場合は、[let](./app-insights-analytics-syntax.md#let-statements) を使用します。結果は変わりません。
+上記の式の部分を分割する場合は、[let](./app-insights-analytics-reference.md#let-statements) を使用します。結果は変わりません。
 
 ```AIQL
 
@@ -472,4 +472,4 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

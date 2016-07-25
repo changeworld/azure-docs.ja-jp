@@ -98,9 +98,10 @@ GRS が有効なストレージ アカウントでは、更新は最初にプラ
 | 英国南部 2 | 英国北部 |
 | ドイツ中部 | ドイツ北東部 |
 | ドイツ北東部 | ドイツ中部 |
+| 米国西部 2 | 米国中西部 |
+| 米国中西部 | 米国西部 2 |
 
-
-Azure でサポートされているリージョンに関する最新の情報については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」をご覧ください。
+Azure でサポートされているリージョンに関する最新の情報については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。
  
 ## 読み取りアクセス geo 冗長ストレージ
 
@@ -116,4 +117,4 @@ Azure でサポートされているリージョンに関する最新の情報�
 - [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 - [SOSP ペーパー - Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

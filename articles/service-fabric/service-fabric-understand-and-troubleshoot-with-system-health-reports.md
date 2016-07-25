@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/25/2016"
+   ms.date="07/11/2016"
    ms.author="oanapl"/>
 
 # システム正常性レポートを使用したトラブルシューティング
@@ -471,6 +471,65 @@ Visual Studio 2015 診断イベント: **fabric:/HelloWorldStatefulApplication**
 - **SourceId**: System.Replicator
 - **プロパティ**: レプリカのロールに応じて **PrimaryReplicationQueueStatus** または **SecondaryReplicationQueueStatus**
 
+### 名前付け操作が遅い
+
+**System.NamingService** は、名前付け操作にかかる時間が許容範囲を超える場合に、そのプライマリ レプリカの正常性を報告します。名前付け操作の例として、[CreateServiceAsync](https://msdn.microsoft.com/library/azure/mt124028.aspx) または [DeleteServiceAsync](https://msdn.microsoft.com/library/azure/mt124029.aspx) があります。FabricClient には、[サービス管理メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.servicemanagementclient.aspx)や[プロパティ管理メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.propertymanagementclient.aspx)など、その他多くのメソッドが見つかります。
+
+> [AZURE.NOTE] ネーム サービスは、サービス名を解決してクラスター内の場所に対応付けて、ユーザーによるサービス名とプロパティの管理を可能にします。これは、Service Fabric のパーティション分割型の永続化されたサービスです。パーティションの 1 つは、Service Fabric のすべての名前とサービスに関するメタデータを含む Authority Owner を表します。Service Fabric の名前は、Name Owner パーティションという各種パーティションにマップされるため、サービスは拡張可能です。詳細については、[ネーム サービス](service-fabric-architecture.md)に関するページを参照してください。
+
+名前付け操作に予想以上の時間がかかると、"*操作を実行するネーム サービス パーティションのプライマリ レプリカ*" に関する警告のレポートでフラグが設定されます。操作が正常に完了すると、警告はクリアされます。操作がエラーで終了した場合は、正常性レポートにエラーの詳細が含まれます。
+
+- **SourceId**: System.NamingService
+- **プロパティ**: プレフィックス **Duration\_** で始まり、時間がかかっている操作とその操作が適用されている Service Fabric の名前を識別します。たとえば、fabric:/MyApp/MyService という名前のサービスの作成に時間がかかる場合、プロパティは Duration\_AOCreateService.fabric:/MyApp/MyService になります。AO は、この名前と操作の名前付けパーティションの役割を指します。
+- **次のステップ**: 名前付け操作に失敗した原因を確認します。各操作の根本原因は異なる場合があります。たとえば、サービス コード内のユーザー バグによってアプリケーション ホストがノードでクラッシュしたままになっていることが原因で、ノードではサービスの削除が停止することがあります。
+
+サービスの作成操作の例を次に示します。この操作には、構成された期間よりも長い時間がかかりました。AO は再試行し、作業を NO に送信します。NO は、タイムアウトにより最後の操作を完了しました。この場合、同じレプリカが AO と NO の両方の役割でプライマリになります。
+
+```powershell
+PartitionId           : 00000000-0000-0000-0000-000000001000
+ReplicaId             : 131064359253133577
+AggregatedHealthState : Warning
+UnhealthyEvaluations  : 
+                        Unhealthy event: SourceId='System.NamingService', Property='Duration_AOCreateService.fabric:/MyApp/MyService', HealthState='Warning', ConsiderWarningAsError=false.
+                        
+HealthEvents          : 
+                        SourceId              : System.RA
+                        Property              : State
+                        HealthState           : Ok
+                        SequenceNumber        : 131064359308715535
+                        SentAt                : 4/29/2016 8:38:50 PM
+                        ReceivedAt            : 4/29/2016 8:39:08 PM
+                        TTL                   : Infinite
+                        Description           : Replica has been created.
+                        RemoveWhenExpired     : False
+                        IsExpired             : False
+                        Transitions           : Error->Ok = 4/29/2016 8:39:08 PM, LastWarning = 1/1/0001 12:00:00 AM
+                        
+                        SourceId              : System.NamingService
+                        Property              : Duration_AOCreateService.fabric:/MyApp/MyService
+                        HealthState           : Warning
+                        SequenceNumber        : 131064359526778775
+                        SentAt                : 4/29/2016 8:39:12 PM
+                        ReceivedAt            : 4/29/2016 8:39:38 PM
+                        TTL                   : 00:05:00
+                        Description           : The AOCreateService started at 2016-04-29 20:39:08.677 is taking longer than 30.000.
+                        RemoveWhenExpired     : True
+                        IsExpired             : False
+                        Transitions           : Error->Warning = 4/29/2016 8:39:38 PM, LastOk = 1/1/0001 12:00:00 AM
+                        
+                        SourceId              : System.NamingService
+                        Property              : Duration_NOCreateService.fabric:/MyApp/MyService
+                        HealthState           : Warning
+                        SequenceNumber        : 131064360657607311
+                        SentAt                : 4/29/2016 8:41:05 PM
+                        ReceivedAt            : 4/29/2016 8:41:08 PM
+                        TTL                   : 00:00:15
+                        Description           : The NOCreateService started at 2016-04-29 20:39:08.689 completed with FABRIC_E_TIMEOUT in more than 30.000.
+                        RemoveWhenExpired     : True
+                        IsExpired             : False
+                        Transitions           : Error->Warning = 4/29/2016 8:39:38 PM, LastOk = 1/1/0001 12:00:00 AM
+``` 
+
 ## DeployedApplication システム正常性レポート
 **System.Hosting** は、デプロイ済みのエンティティでの権限です。
 
@@ -513,7 +572,7 @@ HealthEvents                       :
 
 - **SourceId**: System.Hosting
 - **プロパティ**: **Download:*RolloutVersion***
-- **次のステップ**: ノードでのダウンロードが失敗した原因を調査します。
+- **次のステップ**: ノードでダウンロードが失敗した原因を調査します。
 
 ## DeployedServicePackage システム正常性レポート
 **System.Hosting** は、デプロイ済みのエンティティでの権限です。
@@ -590,7 +649,7 @@ HealthEvents          :
 
 - **SourceId**: System.Hosting
 - **プロパティ**: **Download:*RolloutVersion***
-- **次のステップ**: ノードでのダウンロードが失敗した原因を調査します。
+- **次のステップ**: ノードでダウンロードが失敗した原因を調査します。
 
 ### アップグレードの検証
 **System.Hosting** は、アップグレード中に検証が失敗した場合、またはノードでアップグレードが失敗した場合、エラーを報告します。
@@ -602,8 +661,10 @@ HealthEvents          :
 ## 次のステップ
 [Service Fabric の正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
 
+[サービス正常性のレポートとチェックの方法](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+
 [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

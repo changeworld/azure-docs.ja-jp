@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="02/22/2016" 
-	ms.author="bradyg"/>
+	ms.author="rachelap"/>
 
 # Swashbuckle が生成する API 定義をカスタマイズする 
 
@@ -24,7 +24,7 @@
 この記事では、Swashbuckle をカスタマイズして、既定の動作を変更する必要がある一般的なシナリオを処理する方法について説明します。
 
 * Swashbuckle では、コントローラー メソッドのオーバーロードの重複する操作 ID が生成されます。
-* Swashbuckle は、メソッドからの唯一の有効な応答が HTTP 200 (OK) であることを想定しています。 
+* Swashbuckle は、メソッドからの唯一の有効な応答が HTTP 200 (OK) であることを想定しています。
  
 ## 操作 ID の生成をカスタマイズします。
 
@@ -46,7 +46,7 @@ Swashbuckle は、コントローラー名とメソッド名を連結するこ�
 
 次の手順では、Visual Studio API Apps Preview プロジェクト テンプレートによってプロジェクトに組み込まれる *SwaggerConfig.cs* ファイルを使用して Swashbuckle をカスタマイズする方法を示します。または、API アプリとしてのデプロイ用に構成する Web API プロジェクトで Swashbuckle をカスタマイズすることもできます。
 
-1. `IOperationFilter` のカスタム実装の作成 
+1. `IOperationFilter` のカスタム実装の作成
 
 	`IOperationFilter` インターフェイスは、Swagger メタデータ プロセスのさまざまな部分をカスタマイズする Swashbuckle ユーザーに機能拡張ポイントを提供します。次のコードでは、操作 ID 生成動作を変更する 1 つの方法を示します。このコードは、操作 ID 名にパラメーター名を追加します。
 
@@ -134,7 +134,7 @@ Swashbuckle には、生成される予定の HTTP 応答コードの一覧を�
 
 Swashbuckle のバージョンが 5.1.5 より前の場合は、このメソッドを使用して応答コードを指定します。
 
-1. まず、HTTP 応答コードを指定するメソッドに、XML ドキュメントのコメントを追加します。上記のように、サンプルの Web API アクションを実行して XML ドキュメントを適用すると、次の例のようなコードが生成されます。 
+1. まず、HTTP 応答コードを指定するメソッドに、XML ドキュメントのコメントを追加します。上記のように、サンプルの Web API アクションを実行して XML ドキュメントを適用すると、次の例のようなコードが生成されます。
 
 		/// <summary>
 		/// Returns the specified contact.
@@ -162,7 +162,7 @@ Swashbuckle のバージョンが 5.1.5 より前の場合は、このメソッ�
 
 1. *SwaggerConfig.cs* ファイルに説明を追加し、Swashbuckle に XML ドキュメント ファイルを使用するよう指定します。
 
-	* *SwaggerConfig.cs* を開いて *SwaggerConfig* クラスにメソッドを作成し、XML ドキュメント ファイルへのパスを指定します。 
+	* *SwaggerConfig.cs* を開いて *SwaggerConfig* クラスにメソッドを作成し、XML ドキュメント ファイルへのパスを指定します。
 
 			private static string GetXmlCommentsPath()
 			{
@@ -207,7 +207,7 @@ Visual Studio を使用して REST API のクライアント コードを再生�
 
 [SwaggerResponse](https://github.com/domaindrivendev/Swashbuckle/blob/master/Swashbuckle.Core/Swagger/Annotations/SwaggerResponseAttribute.cs) 属性は、Swashbuckle 5.1.5 以降で利用できます。プロジェクトに以前のバージョンが含まれている場合のために、このセクションでは、まずこの属性を使用できるように、Swashbuckle NuGet パッケージの更新方法について説明します。
 
-1. **ソリューション エクスプローラー**で Web API プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
+1. **ソリューション エクスプローラー**で Web API プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
 	![](./media/app-service-api-dotnet-swashbuckle-customize/manage-nuget-packages.png)
 
@@ -250,4 +250,4 @@ Visual Studio を使用して REST API のクライアント コードを再生�
 この記事では Swashbuckle により操作 ID と有効な応答コードを生成する方法のカスタマイズについて説明しました。詳細については、[GitHub の Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) をご覧ください。
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0713_2016-->

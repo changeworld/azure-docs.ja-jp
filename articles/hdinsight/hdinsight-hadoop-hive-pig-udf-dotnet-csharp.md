@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/22/2016"
+	ms.date="07/12/2016"
 	ms.author="larryfr"/>
 
 
@@ -26,7 +26,7 @@ Hive と Pig は Azure HDInsight でデータを処理する場合にきわめ�
 
 ##前提条件
 
-* Windows 7、Windows 8、Windows 8.1
+* Windows 7 以降。
 
 * 以下のバージョンの Visual Studio:
 
@@ -34,7 +34,7 @@ Hive と Pig は Azure HDInsight でデータを処理する場合にきわめ�
 
 	* Visual Studio 2013 Community/Professional/Premium/Ultimate の[アップデート 4](https://www.microsoft.com/download/details.aspx?id=44921)
 
-	* Visual Studio 2015 プレビュー版
+	* Visual Studio 2015
 
 * HDInsight クラスターの Hadoop - クラスターを作成する手順については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。
 
@@ -241,4 +241,4 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

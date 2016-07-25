@@ -1,44 +1,40 @@
-* まだ Azure CLI をインストールしてサブスクリプションに接続していない場合は、[Azure CLI のインストール](../articles/xplat-cli-install.md)に関するページと、[Azure CLI から Azure サブスクリプションへの接続](../articles/xplat-cli-connect.md)に関するページをご覧ください。Resource Manager モードのコマンドを使用する場合は、必ず `azure login` コマンドを使用して接続してください。
+Resource Manager のコマンドとテンプレートで Azure CLI を使用して、リソース グループを使用する Azure リソースとワークロードをデプロイするには、Azure のアカウントが必要です。アカウントがない場合、[ここから無料の Azure 試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
-* Azure CLI でリソース マネージャー モードの使用を開始するには、コマンド モードを切り替える必要がある場合があります。既定では、CLI はサービス管理モードで起動します。リソース マネージャー モードに変更するには、`azure config mode arm` を実行します。サービス管理モードに戻るには、`azure config mode asm` を実行します。
+Azure CLI をまだインストールしておらず、サブスクリプションに接続していない場合は、「[Azure CLI のインストール](../articles/xplat-cli-install.md)」を参照して `azure config mode arm` でモードを `arm` に設定し、`azure login` コマンドを使用して Azure に接続します。
 
-* オンライン コマンドのヘルプとオプションについては、「`azure <command> <subcommand> --help`」または「`azure help <command> <subcommand>`」と入力します。
+## Azure CLI での 基本的な Azure Resource Manager コマンド
 
-## VM タスク
-次の表では、サービス管理モードと Resource Manager モードで Azure CLI コマンドを使用して実行できる一般的な VM タスクを比較します。リソース マネージャーの多くのコマンドでは、既存のリソース グループの名前を渡す必要があります。
+この記事では、Azure サブスクリプションで ARM リソース (主に VM) を管理および操作するために Azure CLI で使用する基本的なコマンドについて説明します。特定のコマンド ライン スイッチやオプションの詳細については、「`azure <command> <subcommand> --help`」または「`azure help <command> <subcommand>`」と入力して、コマンド ラインのオンライン ヘルプとオプションを使用します。
 
 > [AZURE.NOTE] これらの例には、リソース マネージャーでの VM のデプロイにおいて一般的に推奨される、テンプレート ベースの操作は含まれていません。詳細については、「[リソース マネージャーで Azure CLI を使用する](../articles/xplat-cli-azure-resource-manager.md)」と「[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md)」を参照してください。
 
-タスク | サービス管理モード | リソース マネージャー モード
+タスク | リソース マネージャー
 -------------- | ----------- | -------------------------
-最も基本的な VM の作成 | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(`azure help vm quick-create` を実行して、一般的な Marketplace イメージの `image-urn` を取得します。*publisherName:offer:skus:version* 形式の URN については、[こちらの記事](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md)の例を参照してください。)
-Linux VM の作成 | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure  vm create [options] <resource-group> <name> <location> -y "Linux"`
-Windows VM の作成 | `azure vm create [options] <dns-name> <image> [userName] [password]` | `azure  vm create [options] <resource-group> <name> <location> -y "Windows"`
-VM の一覧表示 | `azure  vm list [options]` | `azure  vm list [options]`
-VM に関する情報の取得 | `azure  vm show [options] <vm_name>` | `azure  vm show [options] <resource_group> <name>`
-VM の起動 | `azure vm start [options] <name>` | `azure vm start [options] <resource_group> <name>`
-VM の停止 | `azure vm shutdown [options] <name>` | `azure vm stop [options] <resource_group> <name>`
-VM の割り当て解除 | 使用できません。 | `azure vm deallocate [options] <resource-group> <name>`
-VM の再起動 | `azure vm restart [options] <vname>` | `azure vm restart [options] <resource_group> <name>`
-VM の削除 | `azure vm delete [options] <name>` | `azure vm delete [options] <resource_group> <name>`
-VM のキャプチャ | `azure vm capture [options] <name>` | `azure vm capture [options] <resource_group> <name>`
-ユーザー イメージからの VM の作成 | `azure  vm create [options] <dns-name> <image> [userName] [password]` | `azure  vm create [options] –q <image-name> <resource-group> <name> <location> <os-type>`
-専用ディスクからの VM の作成 | `azure  vm create [options]-d <custom-data-file> <dns-name> [userName] [password]` | `azure  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>`
-VM へのデータ ディスクの追加 | `azure  vm disk attach [options] <vm-name> <disk-image-name>` -または- <br/> `vm disk attach-new [options] <vm-name> <size-in-gb> [blob-url]` | `azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]`
-VM からのデータ ディスクの削除 | `azure  vm disk detach [options] <vm-name> <lun>` | `azure  vm disk detach [options] <resource-group> <vm-name> <lun>`
-VM への一般的な拡張機能の追加 | `azure  vm extension set [options] <vm-name> <extension-name> <publisher-name> <version>` | `azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>`
-VM への VM アクセス拡張機能の追加 | 使用できません。 | `azure vm reset-access [options] <resource-group> <name>`
-VM への Docker 拡張機能の追加 | `azure  vm docker create [options] <dns-name> <image> <user-name> [password]` | `azure  vm docker create [options] <resource-group> <name> <location> <os-type>`
-VM への Chef 拡張機能の追加 | `azure  vm extension get-chef [options] <vm-name>` | 使用できません。
-VM 拡張機能の無効化 | `azure  vm extension set [options] –b <vm-name> <extension-name> <publisher-name> <version>` | 使用できません。
-VM 拡張機能の削除 | `azure  vm extension set [options] –u <vm-name> <extension-name> <publisher-name> <version>` | `azure  vm extension set [options] –u <resource-group> <vm-name> <name> <publisher-name> <version>`
-VM 拡張機能の一覧表示 | `azure vm extension list [options]` | 使用できません。
-VM イメージの表示 | `azure vm image show [options]` | 使用できません。
-VM リソースの使用量の取得 | 使用できません。 | `azure vm list-usage [options] <location>`
-使用可能なすべての VM サイズの取得 | 使用できません。 | `azure vm sizes [options]`
+最も基本的な VM の作成 | `azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(`azure vm image list` コマンドから `image-urn` を取得します。例については[こちらの記事](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md)を参照してください。)
+Linux VM の作成 | `azure  vm create [options] <resource-group> <name> <location> -y "Linux"`
+Windows VM の作成 | `azure  vm create [options] <resource-group> <name> <location> -y "Windows"`
+VM の一覧表示 | `azure  vm list [options]`
+VM に関する情報の取得 | `azure  vm show [options] <resource_group> <name>`
+VM の起動 | `azure vm start [options] <resource_group> <name>`
+VM の停止 | `azure vm stop [options] <resource_group> <name>`
+VM の割り当て解除 | `azure vm deallocate [options] <resource-group> <name>`
+VM の再起動 | `azure vm restart [options] <resource_group> <name>`
+VM の削除 | `azure vm delete [options] <resource_group> <name>`
+VM のキャプチャ | `azure vm capture [options] <resource_group> <name>`
+ユーザー イメージからの VM の作成 | `azure  vm create [options] –q <image-name> <resource-group> <name> <location> <os-type>`
+専用ディスクからの VM の作成 | `azue  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>`
+VM へのデータ ディスクの追加 | `azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]`
+VM からのデータ ディスクの削除 | `azure  vm disk detach [options] <resource-group> <vm-name> <lun>`
+VM への一般的な拡張機能の追加 |`azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>`
+VM への VM アクセス拡張機能の追加 | `azure vm reset-access [options] <resource-group> <name>`
+VM への Docker 拡張機能の追加 | `azure  vm docker create [options] <resource-group> <name> <location> <os-type>`
+VM 拡張機能の削除 | `azure  vm extension set [options] –u <resource-group> <vm-name> <name> <publisher-name> <version>`
+VM リソースの使用量の取得 | `azure vm list-usage [options] <location>`
+使用可能なすべての VM サイズの取得 | `azure vm sizes [options]`
 
 
 ## 次のステップ
 
-* CLI コマンドのその他の例については、「[Azure サービス管理 (asm) モードでの Azure CLI コマンド](../articles/virtual-machines-command-line-tools.md)」および「[Azure Resource Manager (arm) モードでの Azure CLI コマンド](../articles/virtual-machines/azure-cli-arm-commands.md)」を参照してください。
+* 基本的な VM 管理の範囲を超えた CLI コマンドのその他の例については、[Azure Resource Manager での Azure CLI の使用](../articles/virtual-machines/azure-cli-arm-commands.md)に関する記事をご覧ください。
 
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="統合アカウントと Enterprise Integration Pack の概要 | Microsoft Azure App Service" 
+	pageTitle="統合アカウントと Enterprise Integration Pack の概要 | Microsoft Azure App Service | Microsoft Azure" 
 	description="統合アカウント、Enterprise Integration Pack と Logic Apps についての詳細情報" 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="07/08/2016" 
 	ms.author="deonhe"/>
 
 # 統合アカウントの概要
@@ -73,4 +73,4 @@
 
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

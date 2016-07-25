@@ -32,8 +32,10 @@
 - [自動インターレース解除を無効にする](media-services-custom-mes-presets-with-dotnet.md#deinterlacing)
 - [オーディオのみのプリセット](media-services-custom-mes-presets-with-dotnet.md#audio_only)
 - [複数のビデオ ファイルを連結する](media-services-custom-mes-presets-with-dotnet.md#concatenate)
+- [Media Encoder Standard を使用してビデオをトリミングする](media-services-custom-mes-presets-with-dotnet.md#crop)
 
-##<a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
+
+##<a id="encoding_with_dotnet"></a>Media Services .NET SDK でエンコードする
 
 次のコード サンプルでは、Media Services SDK を使用して次のタスクを実行します。
 
@@ -456,11 +458,11 @@
 	- 既定: Start:{Best}
 - 各画像形式の出力形式は明示的に指定する必要があります (Jpg/Png/BmpFormat)。指定されている場合、JpgVideo は JpgFormat に、などと MES によって関連付けられます。OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
 
-##<a id="trim_video"></a>動画をトリミングする (クリッピング)
+##<a id="trim_video"></a>ビデオをトリミングする (クリッピング)
 
-このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。エンコーダーを使用して、ライブ ストリームからキャプチャまたはアーカイブされた資産をクリッピングまたはトリミングすることもできます。詳細については、[このブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)を参照してください。
+このセクションでは、エンコーダー プリセットを変更し、入力がいわゆる中間ファイルまたはオンデマンド ファイルの入力動画をクリッピングまたはトリミングする方法について説明します。エンコーダーを使用して、ライブ ストリームからキャプチャまたはアーカイブされたアセットをクリッピングまたはトリミングすることもできます。詳細については、[こちらのブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)をご覧ください。
 
-動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照してください)。StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。次の例では、入力ビデオの開始タイムスタンプは 0 であると想定しています。**[ソース]** はプリセットの先頭に配置する必要があります。
+ビデオをトリミングするには、[こちら](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照)。StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。次の例では、入力ビデオの開始タイムスタンプは 0 であると想定しています。**Sources** はプリセットの先頭に配置する必要があります。
  
 ###<a id="json"></a>JSON プリセット
 	
@@ -584,7 +586,7 @@
 
 ###XML プリセット
 	
-動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照してください)。
+ビデオをトリミングするには、[こちら](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照)。
 
 	<?xml version="1.0" encoding="utf-16"?>
 	<Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -705,7 +707,7 @@
 
 Media Encoder Standard では、画像を既存の動画に重ね合わせることができます。現在サポートされている形式は png、jpg、gif、bmp です。下に定義されているプリセットはビデオ オーバーレイの基本例です。
 
-プリセット ファイルの定義に加え、資産内のどのファイルがオーバーレイ画像であるか、また画像を重ね合わせるソース動画であるかを Media Services に認識させる必要もあります。動画ファイルは**プライマリ** ファイルである必要があります。
+プリセット ファイルの定義に加え、資産内のどのファイルがオーバーレイ画像であるか、また画像を重ね合わせるソース動画であるかを Media Services に認識させる必要もあります。ビデオ ファイルは**プライマリ** ファイルである必要があります。
 
 上記の .NET の例では、**UploadMediaFilesFromFolder** と **EncodeWithOverlay** の 2 つの関数を定義しています。UploadMediaFilesFromFolder 関数は、フォルダーからファイルをアップロードし (BigBuckBunny.mp4、Image001.png など)、mp4 ファイルを資産内のプライマリ ファイルとして設定します。**EncodeWithOverlay** 関数は、渡されたカスタム プリセット ファイル (下記のプリセットなど) を使用して、エンコード タスクを作成します。
 
@@ -863,7 +865,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 入力に音声が入っていないとき、無音オーディオ トラックが含まれる資産を生成するようにエンコーダーに強制するには、"InsertSilenceIfNoAudio" 値を指定します。
 
-[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、次のように変更します。
+[こちら](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、次のように変更します。
 
 ###JSON プリセット
 
@@ -1072,7 +1074,10 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 	    }
 	  ]
 	}
-	
+
+##<a id="crop"></a>Media Encoder Standard を使用してビデオをトリミングする
+
+「[Crop videos with Media Encoder Standard (Media Encoder Standard を使用してビデオをトリミングする)](media-services-crop-video.md)」をご覧ください。
 
 ##Media Services のラーニング パス
 
@@ -1086,4 +1091,4 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

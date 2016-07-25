@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/08/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と OfficeSpace Software の統合
@@ -37,7 +37,7 @@
 
 ###OfficeSpace Software のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-officespace-software-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[OfficeSpace Software]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **OfficeSpace Software** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-officespace-software-tutorial/IC777766.png "シングル サインオンの構成")
 
@@ -76,9 +76,9 @@
 
     ![Configure single sign-on](./media/active-directory-saas-officespace-software-tutorial/IC777767.png "Configure single sign-on")
 
-3.  **[アプリ URL の構成]** ページの **[OfficeSpace Software サインオン URL]** テキストボックスに、ユーザーが OfficeSpace Software アプリケーションのサインオンに使用する URL (例: "**https://company.officespacesoftware.com*") を入力して、**[次へ]** をクリックします。
+3.  **[Configure App URL]** (アプリケーション URL の構成) ページの **[OfficeSpace Software サインオン URL]** テキストボックスに、ユーザーが OfficeSpace Software アプリケーションのサインオンに使用する URL (例: "*https://company.officespacesoftware.com*"*) を入力して、*[次へ]* をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-officespace-software-tutorial/IC775556.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-officespace-software-tutorial/IC775556.png "アプリケーション URL の構成")
 
 4.  **[OfficeSpace Software でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
@@ -98,15 +98,16 @@
 
     ![SAML の構成](./media/active-directory-saas-officespace-software-tutorial/IC777771.png "SAML の構成")
 
-    1.  Azure ポータルの **[OfficeSpace Software でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** 値をコピーして、**[ログアウト プロバイダー URL]** ボックスに貼り付けます。
-    2.  Azure ポータルの **[OfficeSpace Software でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** 値をコピーして、**[クライアント IDP ターゲット URL]** ボックスに貼り付けます。
-    3.  エクスポートした証明書から **[拇印]** の値をコピーして、**[クライアント IDP 証明書の指紋]** ボックスに貼り付けます。  
+    1.  Azure クラシック ポータルの **[OfficeSpace Software でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーして、**[Logout provider url]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルの **[OfficeSpace Software でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーして、**[Client idp target url]** ボックスに貼り付けます。
+    3.  エクスポートした証明書から **[拇印]** の値をコピーして、**[クライアント IDP 証明書の指紋]** ボックスに貼り付けます。
 
-        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+        >[AZURE.TIP]
+        詳細については、「[How to retrieve a certificate's thumbprint value （証明書の拇印の値を取得する方法）](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
     4.  **[設定の保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure single sign-on](./media/active-directory-saas-officespace-software-tutorial/IC777772.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
@@ -121,7 +122,7 @@ Azure AD ユーザーの OfficeSpace Software へのログインを有効にす�
 
 ###ユーザーを OfficeSpace Software に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **OfficeSpace Software** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -133,4 +134,4 @@ Azure AD ユーザーの OfficeSpace Software へのログインを有効にす�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

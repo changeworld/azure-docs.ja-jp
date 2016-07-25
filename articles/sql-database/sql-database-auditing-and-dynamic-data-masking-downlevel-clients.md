@@ -3,7 +3,7 @@
 	description="SQL Database での監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更について説明します。"
 	services="sql-database"
 	documentationCenter=""
-	authors="nadavhelfman"
+	authors="ronitr"
 	manager="jhubbard"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
-	ms.author="nadavh;ronitr"/>
+	ms.date="07/10/2016"
+	ms.author="ronitr"/>
 
 # SQL Database - 監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更
 
@@ -72,4 +72,4 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 | カナダ中部 | 13\.88.248.106 |
 | カナダ東部 | 40\.86.227.82 |
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

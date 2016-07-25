@@ -31,7 +31,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 サービスの場所と提供状況については、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページを参照してください。
 
 ### ExpressRoute のパートナー通信会社のいずれとも契約していない場合は、どのようにして ExpressRoute を使用して Microsoft に接続できますか。
-地域の通信会社と地上イーサネット接続を選択して、Exchange プロバイダーの所在地のいずれかに接続します。その後、このプロバイダーの所在地で Microsoft とピアリングできます。「[ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」の最後のセクションで、サービス プロバイダーが Exchange の提供地域のいずれかに存在するかどうかを確認してください。存在すれば、サービス プロバイダーを通じて ExpressRoute 回線を Azure に接続するように依頼できます。
+地域の通信会社と地上イーサネット接続を選択して、Exchange プロバイダーの所在地のいずれかに接続します。その後、このプロバイダーの所在地で Microsoft とピアリングできます。[ExpressRoute パートナーと場所](expressroute-locations.md)に関するページの最後のセクションで、サービス プロバイダーが Exchange の提供地域のいずれかに存在するかどうかを確認してください。存在すれば、サービス プロバイダーを通じて ExpressRoute 回線を Azure に接続するように依頼できます。
 
 ### ExpressRoute の料金はいくらですか。
 料金情報については、「[ExpressRoute 料金](https://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
@@ -251,4 +251,4 @@ ExpressRoute がサポートされているパートナーと地域の一覧に�
 ### ExpressRoute 接続経由で Dynamics AX にアクセスできますか。
 いいえ。それはサポートされていません。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -18,7 +18,7 @@ Azure ポータルを使用する方法と、Azure PowerShell コマンドを使
 
 Azure ポータルを使用するには。
 
-1. まだサインインしていない場合は、Azure ポータルにサインインします。
+1. まだサインインしていない場合は、[Azure ポータル](https://portal.azure.com)にサインインします。
 
 2. ハブ メニューで **[+新規]**、**[仮想マシン]** の順にクリックします。
     
@@ -26,7 +26,7 @@ Azure ポータルを使用するには。
 
 3. 使用する Marketplace 仮想マシン イメージを選択します。Linux または Windows の仮想マシンを作成することができます。
 
-4. 選択した仮想マシンについて、デプロイメント モデルが **[クラシック]** に設定されていることを確認し、**[作成]** をクリックします。
+4. 選択した仮想マシンについて、デプロイ モデルが **[クラシック]** に設定されていることを確認し、**[作成]** をクリックします。
     
     ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)
 
@@ -34,7 +34,7 @@ Azure ポータルを使用するには。
 
 6. VM のサイズを選び、**[選択]** をクリックして続行します。
 
-7. **[オプションの構成] > [可用性セット]** を選択し、仮想マシンを追加する可用性セットを選択します。
+7. **[オプションの構成]、[可用性セット]** の順に選択し、仮想マシンを追加する可用性セットを選択します。
     
     ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/ChooseAvailabilitySet.png)
 
@@ -42,13 +42,13 @@ Azure ポータルを使用するには。
 
 9. Azure が仮想マシンを作成している間の進捗状況は、ハブ メニューの **[仮想マシン]** で追跡できます。
 
-Azure PowerShell コマンド使用して Azure 仮想マシンを作成し、新規または既存の可用性セットに追加する方法については、[Azure PowerShell を使用した Windows ベースの仮想マシンの作成および事前構成](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md)に関するページをご覧ください。
+Azure PowerShell コマンドを使用して Azure 仮想マシンを作成し、新規または既存の可用性セットに追加する方法については、[Azure PowerShell を使用した Windows ベースの仮想マシンの作成および事前構成](../articles/virtual-machines/virtual-machines-windows-classic-create-powershell.md)に関するページをご覧ください。
 
 ## <a id="addmachine"> </a>オプション 2: 既存の仮想マシンを可用性セットに追加する##
 
 Azure ポータルでは、既存のクラシック仮想マシンを可用性セットに追加することも、既存の仮想マシン用に新しい可用性セットを作成することもできます (同じ可用性セット内の仮想マシンは同じクラウド サービスに属する必要がある点に留意してください)。 いずれの場合も、手順はほとんど同じです。Azure PowerShell では、既存の仮想マシンを既存の可用性セットに追加できます。
 
-1. まだサインインしていない場合は、Azure ポータルにサインインします。
+1. まだサインインしていない場合は、[Azure ポータル](https://portal.azure.com)にサインインします。
 
 2. ハブ メニューで **[仮想マシン (クラシック)]** をクリックします。
     
@@ -66,15 +66,12 @@ Azure ポータルでは、既存のクラシック仮想マシンを可用性�
 
 6. **[保存]** をクリックします。
 
-Azure PowerShell コマンドを使用するには、管理者レベルの Azure PowerShell セッションを開き、次のコマンドを実行します。プレース ホルダー (&lt;VmCloudServiceName&gt; など) では、< and > 文字を含む引用符内のすべてを正しい名前に置き換えます。
+Azure PowerShell コマンドを使用するには、管理者レベルの Azure PowerShell セッションを開き、次のコマンドを実行します。プレース ホルダー (&lt;VmCloudServiceName&gt; など) では、< および > 文字を含む引用符内のすべてを正しい名前に置き換えます。
 
 	Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 
 >[AZURE.NOTE] 可用性セットに仮想マシンを追加する手順を完了するには、仮想マシンの再起動が必要になる場合があります。
 
-## その他のリソース
-
-[クラシック仮想マシンに関する記事][]
 
 <!-- LINKS -->
 [オプション 1: 仮想マシンと可用性セットを同時に作成する]: #createset
@@ -85,6 +82,5 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 
 [Create a virtual machine running Windows]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
 [Virtual Network overview]: ../articles/virtual-network/virtual-networks-overview.md
-[クラシック仮想マシンに関する記事]: https://azure.microsoft.com/documentation/articles/?tag=azure-service-management&service=virtual-machines
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0713_2016-->

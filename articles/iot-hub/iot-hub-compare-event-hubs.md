@@ -38,10 +38,14 @@ IoT Hub と Event Hubs の両方を同じ解決方法で使用することも珍
 
 ## 次のステップ
 
-Azure IoT Hub についてさらに学習するには、次のリンクを使用してください。
+IoT Hub のデプロイの計画に関する詳細については、[HA と DR のスケーリング][lnk-scaling]に関するページをご覧ください。
 
-- [Azure IoT Hub の使用 (チュートリアル)][lnk-get-started]
-- [What is Azure IoT Hub? (Azure IoT Hub とは)][]
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [開発者ガイド][lnk-devguide]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
 
 [Azure Event Hubs]: ../event-hubs/event-hubs-what-is-event-hubs.md
 [セキュリティ]: iot-hub-devguide.md#security
@@ -49,8 +53,12 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 [Event Hub publisher policies]: ../event-hubs/event-hubs-overview.md#common-publisher-tasks
 [Azure Service Bus のクォータ]: ../service-bus/service-bus-quotas.md
 [Azure IoT Hub SDKs]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
-[lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
-[What is Azure IoT Hub? (Azure IoT Hub とは)]: iot-hub-what-is-iot-hub.md
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 
-<!---HONumber=AcomDC_0615_2016-->
+[lnk-scaling]: iot-hub-scaling.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

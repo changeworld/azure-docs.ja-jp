@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/22/2016" 
+	ms.date="07/12/2016" 
 	ms.author="larryfr"/>
 
 #HDInsight の Hadoop で Hive クエリ コンソールを使用したセンサー データの分析
@@ -54,4 +54,4 @@ Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセン
 
 3. Web ページに記載されている手順に従って、サンプルを完了します。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0713_2016-->

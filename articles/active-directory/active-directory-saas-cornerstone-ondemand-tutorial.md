@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Cornerstone OnDemand の統合
@@ -37,7 +37,7 @@
 
 ###Cornerstone OnDemand のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC700993.png "Active Directory")
 
@@ -66,9 +66,9 @@
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Cornerstone OnDemand に対する認証を行うことができるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Cornerstone OnDemand** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Cornerstone OnDemand** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Enable Single Sign-On](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781596.png "Enable Single Sign-On")
 
@@ -76,9 +76,9 @@
 
     ![Microsoft Azure AD シングル サインオン](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781597.png "Microsoft Azure AD シングル サインオン")
 
-3.  **[アプリケーション URL の構成]** ページの **[Cornerstone OnDemand サインイン URL]** ボックスに、"**http://company.csod.com*"" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Cornerstone OnDemand サインイン URL]** ボックスに、"*http://company.csod.com*" というパターンの URL を入力し、**[次へ]* をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781598.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781598.png "アプリケーション URL の構成")
 
 4.  **[Cornerstone OnDemand でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをローカルでコンピューターに保存します。
 
@@ -90,7 +90,7 @@
     2.  **リモート ログイン URL** 値
     3.  **リモート ログイアウト URL** 値
 
-    >[AZURE.NOTE]シングル サインオンは、Cornerstone OnDemand サポート チームが構成する必要があります。構成が完了すると、サポート チームから通知が届きます。
+    >[AZURE.NOTE] シングル サインオンは、Cornerstone OnDemand サポート チームが構成する必要があります。構成が完了すると、サポート チームから通知が届きます。
 
 6.  [シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -103,7 +103,7 @@ Azure AD ユーザーが Cornerstone OnDemand にログインできるように�
 
 1.  プロビジョニングする Azure AD ユーザーに関する情報 (名前、電子メールなど) を、Cornerstone OnDemand サポート チームに送信します。
 
->[AZURE.NOTE]Cornerstone OnDemand から提供されている他の Cornerstone OnDemand ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Cornerstone OnDemand から提供されている他の Cornerstone OnDemand ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -111,7 +111,7 @@ Azure AD ユーザーが Cornerstone OnDemand にログインできるように�
 
 ###ユーザーを Cornerstone OnDemand に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Cornerstone OnDemand** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -121,6 +121,6 @@ Azure AD ユーザーが Cornerstone OnDemand にログインできるように�
 
     ![ユーザーの割り当て](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781601.png "ユーザーの割り当て")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # はじめに: OWIN 自己ホストによる Service Fabric Web API サービス
@@ -39,7 +39,9 @@ Visual Studio 2015 で、1 つのステートレス サービスと新しい Ser
 
 ![Create a new Service Fabric application](media/service-fabric-reliable-services-communication-webapi/webapi-newproject.png)
 
-Web API を使用するステートレス サービス用の Visual Studio テンプレートを使用できます。このチュートリアルでは、このテンプレートを選択した場合に入手できるプロジェクトを作成します。この時点で、ステートレス サービス Web API から始めてその後の手順を進めることも、空のステートレス サービスから始めてゼロから構築することもできます。
+Web API を使用するステートレス サービス用の Visual Studio テンプレートを使用できます。このチュートリアルでは、このテンプレートを選択した場合に入手できる Web API プロジェクトを最初から作成します。
+
+空のステートレス サービス プロジェクトを選択して、Web API プロジェクトを最初から作成する方法を学習するか、ステートレス サービス Web API テンプレートを使用して開始し、手順に従うことができます。
 
 ![Create a single stateless service](media/service-fabric-reliable-services-communication-webapi/webapi-newproject2.png)
 
@@ -165,9 +167,9 @@ internal static class Program
 
 Web API アプリケーション コードが、その独自のプロセスでホストされている場合、それをどのようにして Web サーバーに接続するのでしょうか。 [OWIN](http://owin.org/) に入ります。OWIN は .NET Web アプリケーションと Web サーバー間の単なるコントラクトです。従来、ASP.NET (MVC 5 まで) を使用した場合、Web アプリケーションは System.Web 経由で IIS に厳密に結合されていました。しかし、Web API は OWIN を実装しているため、ホストされる Web サーバーから分離した Web アプリケーションを書くことができます。これにより、独自のプロセスで起動できる*自己ホスト* OWIN Web サーバーを使用できます。これは、前述の Service Fabric ホスティング モデルに適しています。
 
-この記事では、Web API アプリケーションの OWIN ホストとして Katana を使用します。Katana は、オープン ソース OWIN ホスト実装です。
+この記事では、Web API アプリケーションの OWIN ホストとして Katana を使用します。Katana は、[System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener.aspx) と Windows [HTTP Server API](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx) 上に構築されたオープン ソース OWIN ホスト実装です。
 
-> [AZURE.NOTE] Katana の詳細については、[Katana サイト](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana)をご覧ください。Katana を使用して Web API を自己ホストする方法の概要については、「[Use OWIN to Self-Host ASP.NET Web API 2 (OWIN を使用して ASP.NET Web API 2 を自己ホストする)](http://www.asp.net/web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api)」をご覧ください。
+> [AZURE.NOTE] Katana の詳細については、[Katana サイト](http://www.asp.net/aspnet/overview/owin-and-katana/an-overview-of-project-katana)を参照してください。Katana を使用して Web API を自己ホストする方法の概要については、「[Use OWIN to Self-Host ASP.NET Web API 2 (OWIN を使用して ASP.NET Web API 2 を自己ホストする)](http://www.asp.net/web-api/overview/hosting-aspnet-web-api/use-owin-to-self-host-web-api)」を参照してください。
 
 
 ## Web サーバーのセットアップ
@@ -220,9 +222,9 @@ namespace WebService
 
 ICommunicationListener インターフェイスは、サービスの通信リスナーを管理する 3 つのメソッドを提供します。
 
- - *OpenAsync*: 要求のリッスンを開始します。
- - *CloseAsync*: 要求のリッスンを停止し、実行中の要求を完了して、正常にシャット ダウンします。
- - *Abort*: すべてのものをキャンセルし、ただちに停止します。
+ - *OpenAsync*。要求のリッスンを開始します。
+ - *CloseAsync*。要求のリッスンを停止し、実行中の要求を完了して、正常にシャット ダウンします。
+ - *Abort*。すべてのものをキャンセルし、ただちに停止します。
 
 まず、リスナーが機能するために必要なものにプライベート クラス メンバーを追加します。これらは、コンストラクターによって初期化され、後でリッスンする URL を設定するときに使用されます。
 
@@ -679,10 +681,10 @@ New-ServiceFabricService -ApplicationName "fabric:/WebServiceApplication" -Servi
 
 ```
 
-アプリケーションおよびサービス インスタンスの作成方法の詳細については、「[アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)」をご覧ください。
+アプリケーションおよびサービス インスタンスの作成方法の詳細については、「[アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)」を参照してください。
 
 ## 次のステップ
 
 [Visual Studio による Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->

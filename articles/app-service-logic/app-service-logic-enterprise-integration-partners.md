@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="パートナーと Enterprise Integration Pack の詳細情報 |Microsoft Azure App Service" 
+	pageTitle="パートナーと Enterprise Integration Pack の詳細情報 | Microsoft Azure App Service | Microsoft Azure" 
 	description="Enterprise Integration Pack と Logic Apps でパートナーを使用する方法について説明します。" 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="07/08/2016" 
 	ms.author="deonhe"/>
 
 # パートナーと Enterprise Integration Pack についての詳細情報
@@ -53,14 +53,12 @@ Azure ポータルで次の手順を実行します。
 3. **[Update Partner (パートナーの更新)]** タイルで、必要な変更を行います。
 4. 変更に問題がない場合は、**[保存]** リンクを選択します。問題がある場合は、**[破棄]** リンクを選択して変更を破棄します。 ![](./media/app-service-logic-enterprise-integration-partners/edit-1.png)
 
-
 ## パートナーを削除する方法
 1. **[パートナー]** タイルを選択します。
 2. [パートナー] ブレードが開いたら、編集するパートナーを選択します。
 3. **[削除]** リンクを選択します。 ![](./media/app-service-logic-enterprise-integration-partners/delete-1.png)
 
-
 ## 次のステップ
 - [契約についての詳細情報](./app-service-logic-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

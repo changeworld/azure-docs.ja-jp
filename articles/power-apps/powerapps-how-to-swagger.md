@@ -14,11 +14,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="04/12/2016"
+   ms.date="07/12/2016"
    ms.author="mandia"/>
 
 
 # PowerApps と Logic Flows の Swagger 定義のカスタマイズ
+
+>[AZURE.IMPORTANT] このトピックは、powerapps.microsoft.com の [PowerApps と Flows の Swagger 定義のカスタマイズ](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/)に関するページに移動しました。最新版については PowerApps をご覧ください。この Azure のリンクはアーカイブされます。
+
 
 ## API の Swagger 2.0 API 定義の作成
 
@@ -115,4 +118,4 @@ Salesforce には多数の組み込みオブジェクトがあります。ここ
 <!--Reference links in article-->
 [1]: https://github.com/domaindrivendev/Swashbuckle/blob/master/README.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0713_2016-->

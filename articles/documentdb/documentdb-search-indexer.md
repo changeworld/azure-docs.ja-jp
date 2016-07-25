@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-services"
-    ms.date="06/20/2016"
+    ms.date="07/08/2016"
     ms.author="anhoh"/>
 
 #インデクサーを使用した DocumentDB と Azure Search の接続
@@ -134,6 +134,8 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 
 ターゲット インデックスのスキーマがソース JSON ドキュメントのスキーマまたはカスタムのクエリ プロジェクションの出力と互換性があることを確認します。
+
+>[AZURE.NOTE] パーティション分割されたコレクションでは、DocumentDB の `_rid` プロパティが既定のドキュメント キーになります。これは、Azure Search では `rid` という名前に変更されます。また、DocumentDB の `_rid` 値には、Azure Search のキーでは無効な文字が含まれています。そのため、`_rid` 値は Base64 でエンコードされます。
 
 ###図 A: JSON データ型と Azure Search データ型間のマッピング
 
@@ -270,8 +272,8 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
 
 ご利用ありがとうございます。 DocumentDB のインデクサーを使用して、Azure DocumentDB を Azure Search と統合する方法についての説明は以上で終了です。
 
- - Azure DocumentDB の詳細については、[DocumentDB サービス ページ](https://azure.microsoft.com/services/documentdb/)を参照してください。
+ - Azure DocumentDB の詳細については、[DocumentDB サービス ページ](https://azure.microsoft.com/services/documentdb/)をご覧ください。
 
- - Azure Search の詳細については、[Search サービス ページ](https://azure.microsoft.com/services/search/)を参照してください。
+ - Azure Search の詳細については、[Search サービス ページ](https://azure.microsoft.com/services/search/)をご覧ください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

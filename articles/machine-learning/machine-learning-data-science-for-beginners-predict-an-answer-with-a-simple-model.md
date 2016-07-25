@@ -1,5 +1,5 @@
 <properties
-   pageTitle="単純なモデルで回答を予測する - 初心者向けデータ サイエンス | Microsoft Azure"
+   pageTitle="単純なモデルで回答を予測する - 回帰モデル | Microsoft Azure"
    description="初心者向けデータ サイエン ビデオ 4 で、単純なモデルを作成してダイヤモンドの価格を予測する方法基本的な線形回帰とターゲット データが含まれます。"                                  
    keywords="モデルを作成する,単純なモデル,単純なデータ モデル,価格の予測,単純な回帰モデル"
    services="machine-learning"
@@ -25,7 +25,7 @@
 
 <div class="wa-video-container" data-control="video-container" data-slug="data-science-for-beginners-series-predict-an-answer-with-a-simple-model"> <a title="Data science for beginners: Predict an answer with a simple model" class="wa-video-thumbnail" href="/en-us/documentation/videos/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/" data-control="video" data-event="videopage-clicked-videothumbnail" data-event-property="data-science-for-beginners-series-predict-an-answer-with-a-simple-model" data-caption="" data-ch9="//channel9.msdn.com/Blogs/Windows-Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player/" data-expanding="false"> <img class="thumbnail" alt="Data science for beginners: Predict an answer with a simple model" src="https://sec.ch9.ms/ch9/d060/48bc9b8a-987c-4f60-94fe-fc482da2d060/DataScienceForBeginnersSeriesPredictAnAnswerWithA_960.jpg"> <img class="play-icon" src="/cdn/cvt-a29a0e789afe7f47464f393c011b53f210c511ee5fed2c4c9c0633442f30d6ec/images/icon/VideoPlay.svg"> <span class="metadata"> <span class="date"> <span>06-28-2016</span> <span>07 min, 42 sec</span> </span> </span> </a> </div>
 
-## 関連性があり、正確で、連続している、十分なデータをる
+## トランスクリプト: 単純なモデルで回答を予測する
 
 "初心者向けデータ サイエンス" シリーズの 4 番目のビデオへようこそ。ここでは、単純なモデルを作成して予測を行います。
 
@@ -138,4 +138,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

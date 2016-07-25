@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/07/2016"
    ms.author="seanmck"/>
 
 # Reliable Actors フレームワークにおけるポリモーフィズム
@@ -35,7 +35,7 @@ Reliable Actors フレームワークでは、アクター型によって実装�
 public abstract class Shape : Actor, IShape
 {
     public abstract Task<int> GetVerticeCount();
-    
+
     public abstract Task<double> GetAreaAsync();
 }
 ```
@@ -75,12 +75,4 @@ public class Circle : Shape, ICircle
 
 [shapes-interface-hierarchy]: ./media/service-fabric-reliable-actors-polymorphism/Shapes-Interface-Hierarchy.png
 
-## 次のステップ
- - [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
- - [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
- - [アクターのタイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)
- - [アクター イベント](service-fabric-reliable-actors-events.md)
- - [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
- - [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
-
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0713_2016-->

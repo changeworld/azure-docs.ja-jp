@@ -188,7 +188,7 @@ Lumia 650 フォンの例では、あるスマートフォン X は、それが 
 
 2.	必要に応じて *splitterStrategy* (*RandomSplitter* または *LastEventSplitter*) を選択することもできます。*RandomSplitter* は、特定の *randomSplitterParameters* テスト パーセントとランダム シード値に基づいて、使用状況データをトレーニング セットとテスト セットに分割します。*LastEventSplitter* は、各ユーザーの最後のトランザクションに基づいて、使用状況データをトレーニング セットとテスト セットに分割します。
 
-これにより、トレーニング用のデータのサブセットのみを使用したビルドがトリガーされます。残りのデータは評価メトリックを計算するために使用されます。ビルドの完了後に評価の出力を取得するには、[Get build metrics API](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/573e43bb3e9d4627a8c4bd3e/console) を呼び出し、それぞれの *modelId* と *buildId* を渡すだけで済みます。
+これにより、トレーニング用のデータのサブセットのみを使用したビルドがトリガーされます。残りのデータは評価メトリックを計算するために使用されます。ビルドの完了後に評価の出力を取得するには、[Get build metrics API](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/577eaa75eda565095421666f) を呼び出し、それぞれの *modelId* と *buildId* を渡すだけで済みます。
 
  以下は、この記事で実行したサンプル評価の JSON 出力です。
 
@@ -271,4 +271,4 @@ Lumia 650 フォンの例では、あるスマートフォン X は、それが 
     "IsFaulted": false
     }
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

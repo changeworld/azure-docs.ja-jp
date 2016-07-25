@@ -1,22 +1,25 @@
-<properties 
-	pageTitle="ベスト プラクティス: Azure AD Password Management | Microsoft Azure" 
-	description="Azure Active Directory での Password Management のデプロイと使用のベスト プラクティス、サンプル エンド ユーザー マニュアル、およびトレーニング ガイドです。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="asteen" 
-	manager="kbrint" 
-	editor="billmath"/>
+<properties
+	pageTitle="ベスト プラクティス: Azure AD Password Management | Microsoft Azure"
+	description="Azure Active Directory での Password Management のデプロイと使用のベスト プラクティス、サンプル エンド ユーザー マニュアル、およびトレーニング ガイドです。"
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="femila"
+	editor="curtand"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/16/2016" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
 	ms.author="asteen"/>
 
 # Password Management のデプロイとユーザー トレーニング
+
+> [AZURE.IMPORTANT] **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+
 パスワードのリセットを有効にした後、次に実行する必要がある手順は、組織内のユーザーにサービスを使用してもらうことです。そのためには、ユーザーがサービスを使用できるように適切に構成されていることを確認すると共に、ユーザーが自分のパスワードを問題なく管理するために必要なトレーニングを受けてもらう必要があります。この記事では、次の概念を説明します。
 
 * [**ユーザーに Password Management を構成してもらう方法**](#how-to-get-users-configured-for-password-reset)
@@ -84,7 +87,7 @@
 ここでは、最新の応答性の高い UI 設計パラダイムを使用する単純なページを作成してあります。これは、すべてのブラウザーおよびモバイル デバイスで動作します。
 
   ![][007]
-  
+
 [ここで Web サイト テンプレートをダウンロードする](https://github.com/kenhoff/password-reset-page)ことができます。組織のニーズに合わせてロゴおよび色をカスタマイズすることをお勧めします。
 
 ### 強制登録の使用
@@ -112,12 +115,12 @@ AAD Connect または Windows PowerShell を使用して設定できるプロパ
 1.	[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)の **[Active Directory 拡張機能]** で、ディレクトリに移動します。
 2.	**[ユーザー]** タブをクリックします。
 3.	対象のユーザーを一覧から選択します。
-4.	最初のタブに、パスワードのリセットを有効にするためのプロパティとして使用できる **[連絡用メール アドレス]** が表示されます。 
+4.	最初のタブに、パスワードのリセットを有効にするためのプロパティとして使用できる **[連絡用メール アドレス]** が表示されます。
 
     ![][005]
 
 5.	**[勤務先の情報]** タブをクリックします。
-6.	ページに、**[会社電話]**、**[携帯電話]**、**[認証用電話]**、および **[認証用メール]** が表示されます。これらのプロパティを設定して、ユーザーがパスワードをリセットできるようにすることも可能です。 
+6.	ページに、**[会社電話]**、**[携帯電話]**、**[認証用電話]**、および **[認証用メール]** が表示されます。これらのプロパティを設定して、ユーザーがパスワードをリセットできるようにすることも可能です。
 
     ![][006]
 
@@ -134,7 +137,7 @@ PowerShell でこのデータの参照と設定を行う方法については、
 ## パスワードのリセットに関するドキュメントへのリンク
 Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* [**自分のパスワードのリセット**](active-directory-passwords-update-your-own-password.md) - システムのユーザーとして自分のパスワードをリセットまたは変更する方法について説明します。
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
 * [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
 * [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
 * [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
@@ -153,4 +156,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-best-practices/007.jpg "Image_007.jpg"
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0713_2016-->

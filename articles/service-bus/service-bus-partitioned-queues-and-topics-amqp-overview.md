@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="03/16/2016" 
+	ms.date="07/08/2016" 
 	ms.author="hillaryc;sethm"/>
 
 # パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート 
@@ -25,6 +25,8 @@ Azure Service Bus では、**パーティション分割された Service Bus �
 **パーティション分割されたキューとトピック**は、*パーティション分割されたエンティティ*とも呼ばれます。これらは、パーティション分割されていない従来のキューとトピックよりも、可用性、信頼性、スループットが優れています。パーティション分割されたエンティティの詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」を参照してください。
 
 パーティション分割されたキューおよびトピックと通信するための AMQP 1.0 プロトコルの追加により、Service Bus のパーティション分割されたエンティティによって提供される高い可用性、信頼性、スループットを活用できる、相互運用性のあるアプリケーションの構築が可能になります。
+
+OASIS AMQP 技術仕様に基づいて Service Bus が実装および構築される方法について説明している、詳細な回線レベルの AMQP 1.0 プロトコル ガイドについては、「[Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド](service-bus-amqp-protocol-guide.md)」を参照してください。
 
 ## パーティション分割されたキューでの AMQP の使用
 
@@ -66,9 +68,9 @@ receivedMessage.Complete();
 
 ## パーティション分割されたトピックでの AMQP の使用
 
-トピックは概念的にはキューと類似しますが、同じメッセージのコピーを複数のサブスクライバーにルーティングできます。トピックでは、パブリッシャーはトピックにメッセージを送信し、コンシューマーは*サブスクリプション*からメッセージを受信します。在庫システムの POS のシナリオでは、端末がトピックにデータを発行します。その後、在庫管理システムがサブスクリプションからメッセージを受信します。さらに、監視システムが別のサブスクリプションから、同じメッセージを受信します。Service Bus のトピックとサブスクリプションの詳細については、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」を参照してください。
+トピックは概念的にはキューと類似したものですが、同じメッセージのコピーを複数の "*サブスクリプション*" にルーティングできます。トピックでは、パブリッシャーはトピックにメッセージを送信し、コンシューマーはサブスクリプションからメッセージを受信します。在庫システムの POS のシナリオでは、端末がトピックにデータを発行します。その後、在庫管理システムがサブスクリプションからメッセージを受信します。さらに、監視システムが別のサブスクリプションから、同じメッセージを受信します。Service Bus のトピックとサブスクリプションの詳細については、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」を参照してください。
 
-アプリケーションの可用性、信頼性、スループットは、複数のメッセージ ブローカーとメッセージング ストアにパーティション分割されたトピックとそのサブスクリプションにより、さらに向上します。
+キューと同様に、これらのトピックとそのサブスクリプションは複数のメッセージ ブローカーとメッセージング ストアでパーティション分割されているため、アプリケーションの可用性、信頼性、およびスループットは、パーティション分割されたトピックによりさらに向上します。
 
 ### パーティション分割されたトピックの作成
 
@@ -108,14 +110,15 @@ receivedMessage.Complete();
 
 ## 次のステップ
 
-パーティション分割されたメッセージング エンティティの詳細については、次を参照してください。
+AMQP のほか、パーティション分割されたメッセージング エンティティの詳細については、次のページを参照してください。
 
 *    [パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)
 *    [OASIS Advanced Message Queuing Protocol (AMQP) バージョン 1.0](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
 *    [Service Bus での AMQP 1.0 サポート](service-bus-amqp-overview.md)
+*    [Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド](service-bus-amqp-protocol-guide.md)
 *    [Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ](service-bus-java-how-to-use-jms-api-amqp.md)
 *    [Service Bus .NET API で AMQP 1.0 を使用する方法](service-bus-dotnet-advanced-message-queuing.md)
 
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0713_2016-->

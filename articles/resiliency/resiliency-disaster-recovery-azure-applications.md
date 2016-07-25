@@ -32,7 +32,7 @@ Azure のデータセンターは、世界中のさまざまなリージョン�
 
 リージョンに固有の障害が発生した場合は、別のリージョンのサービスまたはデプロイにトラフィックをリダイレクトする必要があります。このルーティングは手動で行うこともできますが、自動プロセスを使用する方が効率的です。Azure Traffic Manager はこのタスクのためのものです。Azure Traffic Manager を使用すると、プライマリ リージョンで障害が発生したときの別のリージョンへのユーザー トラフィックのフェールオーバーを自動的に管理できます。トラフィック管理は全体的な戦略の重要な部分であるため、Traffic Manager の基本を理解することが重要です。
 
-次の図では、ユーザーは Traffic Manager に指定されている URL (__http://myATMURL.trafficmanager.net____) に接続します。その URL により、実際のサイトの URL (http://app1URL.cloudapp.net__ と \___http://app2URL.cloudapp.net__)) が抽象化されています。ユーザーをルーティングするときの条件の構成方法に基づき、ユーザーはポリシーの指示に従って実際の正しいサイトに送信されます。ポリシーのオプションは、ラウンドロビン、パフォーマンス、またはフェールオーバーです。この記事では、フェールオーバー オプションのみを考慮します。
+次の図では、ユーザーは Traffic Manager に指定されている URL (__http://myATMURL.trafficmanager.net____) に接続します。その URL により、実際のサイトの URL (http://app1URL.cloudapp.net__ と \_http://app2URL.cloudapp.net__) が抽象化されています。ユーザーをルーティングするときの条件の構成方法に基づき、ユーザーはポリシーの指示に従って実際の正しいサイトに送信されます。ポリシーのオプションは、ラウンドロビン、パフォーマンス、またはフェールオーバーです。この記事では、フェールオーバー オプションのみを考慮します。
 
 ![Routing via Azure Traffic Manager](./media/resiliency-disaster-recovery-azure-applications/routing-using-azure-traffic-manager.png)
 
@@ -147,7 +147,7 @@ Azure Storage の場合、独自のカスタム バックアップ プロセス�
 
 完全に機能する障害モード戦略の実装では、セカンダリ リージョンにトランザクション データを非同期にレプリケートする必要があります。レプリケーションを実行できる実際の時間枠により、アプリケーションの RPO 特性が決まります。それでも、レプリケーションの時間枠の間にプライマリ リージョンから失われたデータを回復する可能性があります。また、後でセカンダリ リージョンとマージできる場合があります。
 
-次のアーキテクチャの例では、フェールオーバー シナリオでのトランザクション データのさまざまな処理方法についてのアイデアを示します。すべての例を網羅しているわけではないことに注意してください。たとえば、キューなどの中間ストレージの場所は、Azure SQL Database に置き換えられます。キュー自体には、Azure Storage キューまたは Azure Service Bus キューを使用できます (「[Azure キューと Service Bus キューの比較](../service-bus/service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください)。サーバー ストレージ先も変更できます (SQL Database の代わりに Azure テーブルなど)。さらに、さまざまな手順の途中に worker ロールが挿入される場合があります。重要なのは、これらのアーキテクチャを正確に模倣することではなく、トランザクション データおよび関連モジュールの復旧ではさまざまな代替方法を検討することです。
+次のアーキテクチャの例では、フェールオーバー シナリオでのトランザクション データのさまざまな処理方法についてのアイデアを示します。すべての例を網羅しているわけではないことに注意してください。たとえば、キューなどの中間ストレージの場所は、Azure SQL Database に置き換えられます。キュー自体には、Azure Storage キューまたは Azure Service Bus キューを使用できます (「[Azure キューと Service Bus キューの比較](../service-bus/service-bus-azure-and-service-bus-queues-compared-contrasted.md)」をご覧ください)。サーバー ストレージ先も変更できます (SQL Database の代わりに Azure テーブルなど)。さらに、さまざまな手順の途中に worker ロールが挿入される場合があります。重要なのは、これらのアーキテクチャを正確に模倣することではなく、トランザクション データおよび関連モジュールの復旧ではさまざまな代替方法を検討することです。
 
 ####障害復旧の準備でのトランザクション データのレプリケーション
 
@@ -305,4 +305,4 @@ Automation に関するベスト プラクティスとしては、Azure 障害�
 
 この記事は、[Microsoft Azure 上に構築されたアプリケーションの障害復旧と高可用性](./resiliency-disaster-recovery-high-availability-azure-applications.md)に関する一連の記事に属しています。このシリーズの前の記事は、「[Microsoft Azure 上に構築されたアプリケーションの高可用性](./resiliency-high-availability-azure-applications.md)」です。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -54,11 +54,17 @@ IoT Hub では、ハブの正常性の概要と、ハブに接続されている
 
 ## 次のステップ
 
-診断メトリックの概要については以上です。詳細については、以下のリンク先にアクセスしてください。
+診断メトリックの概要については以上です。Azure IoT Hub の管理に関する詳細については、以下のリンク先にアクセスしてください。
 
-- [IoT Hub 操作の監視][lnk-operations-monitoring]
-- [IoT Hub のスケーリング][lnk-scaling]
-- [IoT Hub の高可用性と障害復旧][lnk-dr]
+- [操作の監視][lnk-monitor]
+- [IoT Hub へのアクセスの管理][lnk-itpro]
+
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 
 <!-- Links and images -->
 [1]: media/iot-hub-metrics/enable-metrics-1.png
@@ -70,4 +76,12 @@ IoT Hub では、ハブの正常性の概要と、ハブに接続されている
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md
 
-<!---HONumber=AcomDC_0706_2016-->
+[lnk-monitor]: iot-hub-operations-monitoring.md
+[lnk-itpro]: iot-hub-itpro-info.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+
+<!---HONumber=AcomDC_0713_2016-->

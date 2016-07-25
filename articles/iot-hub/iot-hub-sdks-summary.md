@@ -67,6 +67,15 @@ Azure IoT デバイス、サービス、およびゲートウェイ ライブラ
 - [Microsoft Azure IoT service SDK for Node.js (Node.js 用 Microsoft Azure IoT サービス SDK)][]
 - [Microsoft Azure IoT Gateway SDK][]
 
+## 次のステップ
+
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
+
 [Microsoft Azure IoT SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
 [C 用 Azure IoT デバイス SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/c/readme.md
 [.NET 用 Azure IoT デバイス SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/csharp/device/readme.md
@@ -88,4 +97,9 @@ Azure IoT デバイス、サービス、およびゲートウェイ ライブラ
 [Microsoft Azure IoT service SDK for Node.js (Node.js 用 Microsoft Azure IoT サービス SDK)]: http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iothub/1.0.10/index.html
 [Microsoft Azure IoT gateway SDK]: http://azure.github.io/azure-iot-gateway-sdk/api_reference/c/html/
 
-<!---HONumber=AcomDC_0629_2016-->
+[lnk-design]: iot-hub-guidance.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

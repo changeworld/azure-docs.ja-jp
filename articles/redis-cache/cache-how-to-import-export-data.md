@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/23/2016" 
+	ms.date="07/13/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache でデータをインポートまたはエクスポートする
@@ -137,7 +137,9 @@ Import/Export では、Azure Redis Cache へのデータの取り込みと Azure
 
 ### PowerShell、CLI、またはその他の管理クライアントを使って Import/Export を自動化することはできますか?
 
-この機能はプレビュー期間中は使用できませんが、近日対応予定です。
+はい。PowerShell での手順については、「[Redis Cache にインポートする方法](cache-howto-manage-redis-cache-powershell.md#to-import-a-redis-cache)」および「[Redis Cache からエクスポートする方法](cache-howto-manage-redis-cache-powershell.md#to-export-a-redis-cache)」をご覧ください。
+
+
 
 ### Import/Export 操作中にタイムアウト エラーが発生しました。これはどういうことですか?
 
@@ -168,4 +170,4 @@ Import/Export は、ページ BLOB として格納されている RDB ファイ�
 [cache-import-blobs]: ./media/cache-how-to-import-export-data/cache-import-blobs.png
 [cache-import-data-import-complete]: ./media/cache-how-to-import-export-data/cache-import-data-import-complete.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0713_2016-->

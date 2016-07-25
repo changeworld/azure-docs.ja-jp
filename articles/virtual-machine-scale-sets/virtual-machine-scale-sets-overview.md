@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="07/12/2016"
 	ms.author="guybo"/>
 
 # 仮想マシン スケール セットの概要
@@ -25,7 +25,7 @@
 
 以下のビデオで、VM スケール セットが詳しく解説されています。
 
- - [Mark Russinovich が語る Azure スケール セット](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)  
+ - [Mark Russinovich が語る Azure スケール セット](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
 
  - [仮想マシン スケール セットを Guy Bowerman が解説](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
@@ -43,13 +43,13 @@ VM スケール セットのサンプル テンプレートは、[こちら](htt
 
 VM スケール セット内の仮想マシンの数を増減するには、単に _capacity_ プロパティを変更し、テンプレートを再デプロイします。このように単純なので、Azure 自動スケールでサポートされていないカスタム スケール イベントを定義する場合に、簡単に独自のカスタム スケール層を記述できます。
 
-容量を変更するためにテンプレートを再デプロイする場合は、SKU と更新された容量だけが含まれている、非常に小さいテンプレートを定義できます。その例は[こちらに](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-linux-nat/azuredeploy.json)あります。
+容量を変更するためにテンプレートを再デプロイする場合は、SKU と更新された容量だけが含まれている、非常に小さいテンプレートを定義できます。その例は[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)にあります。
 
 自動的にサイズを増減するスケール セットの作成手順については、「[仮想マシン スケール セットでのマシンの自動スケール](virtual-machine-scale-sets-windows-autoscale.md)」を参照してください。
 
 ## VM スケール セットの監視
 
-現時点では、[Azure リソース エクスプローラー](https://resources.azure.com)を使用して VM スケール セットを表示するようお勧めします。VM スケール セットは、Microsoft.Compute の下のリソースなので、このサイトから以下のリンクを展開すると表示できます。
+[Azure ポータル](https://portal.azure.com)には、一連のスケール セットと基本的なプロパティが表示されるほか、スケール セットに含まれる VM が一覧表示されます。さらに詳しい情報については、[Azure リソース エクスプローラー](https://resources.azure.com)を使用して VM スケール セットを表示してください。VM スケール セットは、Microsoft.Compute の下のリソースなので、このサイトから以下のリンクを展開すると表示できます。
 
 	subscriptions -> your subscription -> resourceGroups -> providers -> Microsoft.Compute -> virtualMachineScaleSets -> your VM scale set -> etc.
 
@@ -57,9 +57,9 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 このセクションでは、標準的な VM スケール セットのシナリオをいくつか紹介します。一部の高レベルの Azure サービス (Batch、Service Fabric、Azure Container Service など) も、これらのシナリオを使用します。
 
- - **VM スケール セット インスタンスへの RDP/SSH** - VM スケール セットは VNET の中に作成され、スケール セット内の個々の VM にはパブリック IP アドレスが割り当てられていません。これは、望ましいことです。通常は、コンピューティング グリッド内のすべてのステートレス リソースに個別の IP アドレスを割り当てるための費用や管理オーバーヘッドを避けたいためです。また、これらの VM には VNET 内の他のリソース (ロード バランサー、スタンドアロン仮想マシンなど、パブリック IP アドレスを持つリソース) から簡単に接続できます。
+ - **VM スケール セット インスタンスへの RDP/SSH** - VM スケール セットは VNET の中に作成され、スケール セット内の個々の VM にはパブリック IP アドレスが割り当てられていません。これは、望ましいことです。通常は、コンピューティング グリッド内のすべてのステートレス リソースに個別のパブリック IP アドレスを割り当てるための費用や管理オーバーヘッドを避けたいためです。また、これらの VM には VNET 内の他のリソース (ロード バランサー、スタンドアロン仮想マシンなど、パブリック IP アドレスを持つリソース) から簡単に接続できます。
 
- - **NAT 規則を使用した VM への接続** - パブリック IP アドレスを作成し、ロード バランサーに割り当て、IP アドレス上のポートを VM スケール セット内の VM 上のポートにマッピングする受信 NAT 規則を定義することができます。
+ - **NAT 規則を使用した VM への接続** - パブリック IP アドレスを作成し、ロード バランサーに割り当て、IP アドレス上のポートを VM スケール セット内の VM 上のポートにマッピングする受信 NAT 規則を定義することができます。次に例を示します。
  
 	ソース | 発信元ポート | 変換先 | 宛先ポート
 	--- | --- | --- | ---
@@ -75,7 +75,7 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 	[この方法の例として、次のテンプレートは、VM のスケール セット ベースのクラスターを管理するスタンドアロン マスター VM で構成される単純な Mesos クラスターを作成します。](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json)
 
- - **VM スケール セット インスタンスに対するラウンド ロビン方式の負荷分散** - "ラウンド ロビン" 方式を使用して VM のコンピューティング クラスターに作業を割り当てる場合は、それに応じた負荷分散規則で Azure ロード バランサーを構成できます。また、指定されたプロトコル、間隔、および要求パスでポートを ping して、アプリケーションが実行されていることを確認するためのプローブを定義することもできます。
+ - **VM スケール セット インスタンスに対する負荷分散** - "ラウンド ロビン" 方式を使用して VM のコンピューティング クラスターに作業を割り当てる場合は、それに応じた負荷分散規則で Azure Load Balancer を構成できます。指定されたプロトコル、間隔、および要求パスでポートを ping して、アプリケーションが実行されていることを確認するためのプローブを定義することもできます。また Azure [Application Gateway](https://azure.microsoft.com/services/application-gateway/) はスケール セットをサポートし、より洗練された負荷分散シナリオに対応します。
 
 	[以下に、IIS Web サーバーを実行している VM の VM スケール セットを作成し、各 VM が受け取る負荷を分散するロード バランサーを使用する例を示します。この例では、各 VM の特定の URL を ping するために、HTTP プロトコルも使用します。](https://github.com/gbowerman/azure-myriad/blob/master/vmss-win-iis-vnet-storage-lb.json)(Microsoft.Network/loadBalancers というリソースの種類と、virtualMachineScaleSet の networkProfile および extensionProfile を見てください)
 
@@ -98,7 +98,7 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 **Q.** VM スケール セットには何個の VM を設定できますか?
 
-**A.** 複数のストレージ アカウントに分散できるプラットフォーム イメージを使用する場合は、100 個です。カスタム イメージを使用する場合は、最大で 40 個です (_overprovision_ プロパティが "false" に設定される場合は、既定で 20 個)。プレビュー期間中は、カスタム イメージが 1 つのストレージ アカウントに制限されているためです。
+**A.** 複数のストレージ アカウントに分散できるプラットフォーム イメージを使用する場合は、100 個です。カスタム イメージを使用する場合は、最大で 40 個です (_overprovision_ プロパティが "false" に設定される場合は、既定で 20 個)。現在は、カスタム イメージが 1 つのストレージ アカウントに制限されているためです。
 
 **Q** VM スケール セットには、他にどのようなリソース制限がありますか?
 
@@ -149,10 +149,10 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 **Q.** VM スケール セットで複数の拡張機能を使用する場合、実行順序を強制できますか?
 
-**A.** 直接的にではありませんが、customScript 拡張機能の場合、スクリプトで他の拡張機能が完了するまで待機できます ([たとえば、拡張機能ログを監視することによって](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vmss-lapstack-autoscale/install_lap.sh))。
+**A.** 直接的にではありませんが、customScript 拡張機能の場合、スクリプトで他の拡張機能が完了するまで待機できます ([たとえば、拡張機能ログを監視することによって](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vmss-lapstack-autoscale/install_lap.sh))。拡張機能の実行順序についての詳しいガイダンスについては、「[Extension Sequencing in Azure VM Scale Sets (Azure VM スケール セットにおける拡張機能の実行順序)](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)」のブログ記事を参照してください。
 
 **Q.** VM スケール セットは、Azure 可用性セットと連携できますか?
 
 **A.** はい。VM スケール セットは、5 つの FD と 5 つの UD を持つ、暗黙的な可用性セットです。virtualMachineProfile の下のものは、何も構成する必要はありません。今後のリリースでは、VM スケール セットが複数のテナントにまたがる可能性がありますが、現時点では 1 つの可用性セットです。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

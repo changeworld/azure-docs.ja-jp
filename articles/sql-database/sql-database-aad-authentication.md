@@ -97,9 +97,8 @@ Azure Active Directory を作成し、ユーザーとグループを設定しま
 
 - 初期ドメインとして Azure AD の管理対象ドメインを作成します。
 - オンプレミスの Active Directory ドメイン サービスを Azure Active Directory とフェデレーションします。
-- **AD FS** ツールを使用し、**[サービス]** の **[エンドポイント]** セクションで、URL パス **/adfs/services/trust/13/windowstransport** の **WS-Trust 1.3** を有効にします。
 
-詳細については、「[オンプレミス ID と Azure Active Directory の統合](../active-directory/active-directory-aadconnect.md)」、「[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-add-domain.md)」「[Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure による Windows Server Active Directory とのフェデレーションのサポートの実現)](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」、「[Azure AD ディレクトリの管理](https://msdn.microsoft.com/library/azure/hh967611.aspx)」、「[Windows PowerShell による Azure AD の管理](https://msdn.microsoft.com/library/azure/jj151815.aspx)」を参照してください。
+詳細については、「[オンプレミス ID と Azure Active Directory の統合](../active-directory/active-directory-aadconnect.md)」、[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-add-domain.md)に関するページ、「[Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure による Windows Server Active Directory とのフェデレーションのサポートの実現)](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」、「[Azure AD ディレクトリの管理](https://msdn.microsoft.com/library/azure/hh967611.aspx)」、[Windows PowerShell による Azure AD の管理](https://msdn.microsoft.com/library/azure/jj151815.aspx)に関するページを参照してください。
 
 ## 2\.SQL Database が Azure SQL Database V12 であることを確認する
 
@@ -190,7 +189,7 @@ Azure AD 管理者のプロビジョニングと管理に使用するコマン�
 次のスクリプトでは、**Group-23** という名前のリソース グループ内にあるサーバー **demo\_server** に対して、**DBA\_Group** という名前の Azure AD 管理者グループ (オブジェクト ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`) をプロビジョニングします。
 
 ```
-Set-AzureRmSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" 
+Set-AzureRmSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23"
 –ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
@@ -218,7 +217,7 @@ Get-AzureRmSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23"
 Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" –ServerName "demo_server"
 ```
 
-Azure Active Directory 管理者は、REST API を使用してプロビジョニングすることもできます。詳細については、「[サービス管理 REST API リファレンスと Azure SQL データベースの操作](https://msdn.microsoft.com/library/azure/dn505719.aspx)」を参照してください。
+Azure Active Directory 管理者は、REST API を使用してプロビジョニングすることもできます。詳細については、[Service Management REST API のリファレンスと Azure SQL データベースの操作](https://msdn.microsoft.com/library/azure/dn505719.aspx)に関するページを参照してください。
 
 ## 5\.クライアント コンピューターを構成する
 
@@ -367,4 +366,4 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [11]: ./media/sql-database-aad-authentication/11connect-using-int-auth.png
 [12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

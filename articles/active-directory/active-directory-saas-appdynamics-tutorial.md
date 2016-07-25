@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と AppDynamics の統合
@@ -37,7 +37,7 @@
 
 ###AppDynamics のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-appdynamics-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **AppDynamics** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
+1.  Azure クラシック ポータルの **AppDynamics** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-appdynamics-tutorial/IC790212.png "シングル サインオンの構成")
 
@@ -76,7 +76,7 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-appdynamics-tutorial/IC790213.png "シングル サインオンの構成")
 
-3.  **[アプリケーション URL の構成]** ページの **[AppDynamics サインオン URL]** テキスト ボックスに、ユーザーが AppDynamics アプリケーションのサインオンに使用する URL (例: *https://companyname.saas.appdynamics.com*")) を入力して、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[AppDynamics サインオン URL]** テキスト ボックスに、ユーザーが AppDynamics アプリケーションのサインオンに使用する URL (例: "*https://companyname.saas.appdynamics.com*") を入力して、**[次へ]* をクリックします。
 
     ![Configure App URL](./media/active-directory-saas-appdynamics-tutorial/IC790214.png "Configure App URL")
 
@@ -99,16 +99,16 @@
     ![SAML の構成](./media/active-directory-saas-appdynamics-tutorial/IC790225.png "SAML の構成")
 
     1.  **[Authentication Provider]** として、**[SAML]** を選択します。
-    2.  Azure ポータルの **[AppDynamics でのシングル サインオンの構成]** ページで、**[リモート ログイン URL]** 値をコピーして、**[Login URL]** テキスト ボックスに貼り付けます。
-    3.  Azure ポータルで、**[AppDynamics でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[Logout URL]** ボックスに貼り付けます。
-    4.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
+    2.  Azure クラシック ポータルの **[AppDynamics でのシングル サインオンの構成]** ページで、**[リモート ログイン URL]** 値をコピーして、**[ログイン URL]** テキスト ボックスに貼り付けます。
+    3.  Azure クラシック ポータルの **[AppDynamics でのシングル サインオンの構成]** ページで、**[リモート ログアウト URL]** 値をコピーして、**[ログアウト URL]** テキスト ボックスに貼り付けます。
+    4.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
 
-        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP] 詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
     5.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[Certificate]** テキストボックスに貼り付けます。
     6.  **[Save]** をクリックします。![Save](./media/active-directory-saas-appdynamics-tutorial/IC777673.png "Save")
 
-9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-appdynamics-tutorial/IC790226.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
@@ -130,7 +130,7 @@ Azure AD ユーザーが AppDynamics にログインできるようにするに�
     1.  関連するテキスト ボックスに、プロビジョニングする有効な AAD アカウントの **[Username]**、**[Name]**、**[Email]**、**[New Password]**、**[Repeat New Password]** を入力します。
     2.  **[保存]** をクリックします。
 
->[AZURE.NOTE]他の AppDynamics ユーザー アカウント作成ツールまたは AppDynamics から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] 他の AppDynamics ユーザー アカウント作成ツールまたは AppDynamics から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -138,9 +138,9 @@ Azure AD ユーザーが AppDynamics にログインできるようにするに�
 
 ###ユーザーを AppDynamics に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  AppDynamics アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **AppDynamics** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-appdynamics-tutorial/IC790231.png "ユーザーの割り当て")
 
@@ -148,6 +148,6 @@ Azure AD ユーザーが AppDynamics にログインできるようにするに�
 
     ![Yes](./media/active-directory-saas-appdynamics-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

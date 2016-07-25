@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/13/2016"
+   ms.date="07/11/2016"
    ms.author="ryanwi"/>
 
 # FabricClient API の操作時に発生する一般的な例外とエラー
@@ -44,4 +44,4 @@ FabricClient を使用して実行できる操作の種類は多岐にわたり�
 |InvalidSubjectName|サブジェクト名が無効です。|
 |InvalidAllowedCommonNameList|共通名リスト文字列の形式が無効です。コンマ区切りで指定する必要があります。|
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

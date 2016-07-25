@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/09/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と FM: Systems の統合
@@ -37,7 +37,7 @@
 
 ###FM:Systems のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-fm-systems-tutorial/IC700993.png "Active Directory")
 
@@ -66,9 +66,9 @@
   
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで FM:Systems に対する認証を行うことができるようにする方法を説明します。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **FM:Systems** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **FM:Systems** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-fm-systems-tutorial/IC790810.png "Configure Single Sign-On")
 
@@ -78,11 +78,11 @@
 
 3.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
 
-    ![Configure App URL](./media/active-directory-saas-fm-systems-tutorial/IC795902.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-fm-systems-tutorial/IC795902.png "アプリケーション URL の構成")
 
-    1.  **[FM:Systems サインオン URL]** ボックスに、FM:Systems の**応答 URL** (例: **https://dpr.fmshosted.com/fminteract/ConsumerService2.aspx*)) を入力します。
+    1.  **[FM:Systems サインオン URL]** ボックスに、FM:Systems の**応答 URL** (例: *https://dpr.fmshosted.com/fminteract/ConsumerService2.aspx*) を入力します。
 
-        >[AZURE.WARNING]この値は、FM: Systems サポート チームから入手できます。
+        >[AZURE.WARNING] この値は、FM: Systems サポート チームから入手できます。
 
     2.  **[次へ]** をクリックします。
 
@@ -92,9 +92,9 @@
 
 5.  ダウンロードしたメタデータ ファイルを FM: Systems サポート チームに送信します。
 
-    >[AZURE.NOTE]FM: Systems サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
+    >[AZURE.NOTE] FM: Systems サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-fm-systems-tutorial/IC795904.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -120,7 +120,7 @@ Azure AD ユーザーが FM:Systems にログインできるようにするに�
     1.  関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントのユーザー名、パスワード、確認パスワード、電子メール アドレス、および従業員 ID を入力します。
     2.  **[次へ]** をクリックします。
 
->[AZURE.NOTE]FM:Systems から提供されている他の FM:Systems ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] FM:Systems から提供されている他の FM:Systems ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -128,7 +128,7 @@ Azure AD ユーザーが FM:Systems にログインできるようにするに�
 
 ###ユーザーを FM:Systems に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **FM:Systems** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -138,6 +138,6 @@ Azure AD ユーザーが FM:Systems にログインできるようにするに�
 
     ![Yes](./media/active-directory-saas-fm-systems-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

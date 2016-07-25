@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="04/15/2016"
+    ms.date="07/11/2016"
     ms.author="sethm" />
 
 # Event Hubs API 概要
@@ -189,4 +189,4 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 - [Service Bus と Event Hubs の .NET API リファレンス](https://msdn.microsoft.com/library/azure/mt419900.aspx)
 - [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/azure/mt445521.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

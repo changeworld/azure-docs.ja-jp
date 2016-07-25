@@ -1,12 +1,4 @@
-<properties
-	pageTitle="トラブルシューティング: Web アプリのパフォーマンス低下"
-	description="この記事は、Azure App Service でホストされている Web アプリで発生したパフォーマンスに関する問題のトラブルシューティングを行うために役立ちます。"
-	services="app-service\web"
-	documentationCenter=""
-	authors="cephalin"
-	manager="wpickett"
-	editor=""
-	tags="top-support-issue"/>
+<properties pageTitle="App Service での Web アプリのパフォーマンス低下 | Microsoft Azure" description="この記事は、Azure App Service で発生している Web アプリのパフォーマンス低下に関する問題のトラブルシューティングを行うために役立ちます。" services="app-service\\web" documentationCenter="" authors="cephalin" manager="wpickett" editor="" tags="top-support-issue keywords="Web アプリのパフォーマンス, 低パフォーマンス アプリ, アプリ パフォーマンス低下"/>
 
 <tags
 	ms.service="app-service-web"
@@ -14,12 +6,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/13/2016"
+	ms.date="07/06/2016"
 	ms.author="cephalin"/>
 
-# トラブルシューティング: Web アプリのパフォーマンス低下
+# Azure App Service での Web アプリのパフォーマンス低下に関する問題のトラブルシューティング
 
-この記事は、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) でホストされている Web アプリで発生したパフォーマンスに関する問題のトラブルシューティングを行うために役立ちます。
+この記事は、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングを行うために役立ちます。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
 
@@ -64,7 +56,7 @@ Web アプリに関しては、次のメトリックを監視するようお勧�
 -	メモリ ワーキング セット
 -	要求数
 
-![](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
+![Web アプリのパフォーマンスを監視する](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
 詳細については、次を参照してください。
 
@@ -182,8 +174,8 @@ AutoHeal は、選択された設定 (構成の変更、要求、メモリに基
 
 1 回限りの問題であれば、通常これが最も簡単な復旧方法です。アプリを停止または再起動するためのオプションは、[Azure ポータル](https://portal.azure.com/)の Web アプリ ブレードにあります。
 
- ![](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
+ ![パフォーマンスの問題を解決するために Web アプリを再起動する](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
 Web アプリの管理には、Azure PowerShell を使用することもできます。詳細については、[リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0713_2016-->

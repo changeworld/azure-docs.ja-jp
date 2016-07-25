@@ -289,7 +289,7 @@ BLOB サービス用にサービスレベルの API にアクセスするため�
 アプリケーションで Shared Access Signature を使用する場合は、次の 2 つの潜在的なリスクに注意する必要があります。
 
 - SAS が漏えいすると、取得した人はだれでも使用できるため、ストレージ アカウントの安全性が損なわれるおそれがあります。
-- クライアント アプリケーションに提供された SAS が期限切れになり、アプリケーションがサービスから新しい SAS を取得できない場合は、アプリケーションの機能が損なわれる可能性があります。  
+- クライアント アプリケーションに提供された SAS が期限切れになり、アプリケーションがサービスから新しい SAS を取得できない場合は、アプリケーションの機能が損なわれる可能性があります。
 
 Shared Access Signature の使用に関する次の推奨事項に従うと、これらのリスクが軽減されます。
 
@@ -318,4 +318,4 @@ Shared Access Signature は、アカウント キーを知らせずに、スト�
 [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
 [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

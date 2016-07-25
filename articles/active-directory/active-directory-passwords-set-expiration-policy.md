@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,14 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="07/12/2016"
 	ms.author="curtand"/>
 
 
 # Azure Active Directory でパスワード有効期限ポリシーを設定する
-> [AZURE.NOTE] このトピックは、ID およびディレクトリ サービスを Microsoft Azure Active Directory に依存する Microsoft Intune や Office 365 などのクラウド サービスのオンライン ヘルプ コンテンツです。
 
-Microsoft クラウド サービスのグローバル管理者は、Windows PowerShell 用 Microsoft Azure Active Directory モジュールを使用して、ユーザーのパスワードの有効期限が切れないように設定できます。また、Windows PowerShell コマンドレットを使用すると、期限が切れない構成を削除したり、期限が切れないように設定されているユーザー パスワードを確認したりすることもできます。
+> [AZURE.IMPORTANT] **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+
+Microsoft クラウド サービスのグローバル管理者は、Windows PowerShell 用 Microsoft Azure Active Directory モジュールを使用して、ユーザーのパスワードの有効期限が切れないように設定できます。また、Windows PowerShell コマンドレットを使用すると、期限が切れない構成を削除したり、期限が切れないように設定されているユーザー パスワードを確認したりすることもできます。この記事は、ID およびディレクトリ サービスを Microsoft Azure Active Directory に依存する、Microsoft Intune や Office 365 などのクラウド サービスのヘルプです。
 
   > [AZURE.NOTE] 有効期限が切れないように構成できるのは、ディレクトリ同期によって同期されていないユーザー アカウントのパスワードだけです。ディレクトリ同期の詳細については、「[ディレクトリ同期のロードマップ](https://msdn.microsoft.com/library/azure/hh967642.aspx)」のトピック一覧を参照してください。
 
@@ -64,4 +65,8 @@ Windows PowerShell コマンドレットを使用するには、最初に Window
 
 	- 組織内のすべてのユーザーのパスワードを無期限に設定するには、次のコマンドレットを実行します。 `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires \$true`
 
-<!---HONumber=AcomDC_0706_2016-->
+## 次のステップ
+
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+
+<!---HONumber=AcomDC_0713_2016-->

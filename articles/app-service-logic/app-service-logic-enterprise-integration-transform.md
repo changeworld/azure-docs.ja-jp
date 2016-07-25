@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Enterprise Integration Pack の概要 | Microsoft Azure App Service" 
+	pageTitle="Enterprise Integration Pack の概要 | Microsoft Azure App Service | Microsoft Azure" 
 	description="Enterprise Integration Pack の機能を使用することにより、Microsoft Azure App Service を使ってビジネス プロセスと統合シナリオを実現できます。" 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/06/2016" 
+	ms.date="07/08/2016" 
 	ms.author="deonhe"/>
 
 # XML 変換での Enterprise Integration
@@ -34,20 +34,16 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas) を�
 
 ### 前提条件 
 プレビューでは、次のことを行う必要があります。
+
 -  [Azure Functions コンテナーを作成する](https://ms.portal.azure.com/#create/Microsoft.FunctionApp "Azure Functions コンテナーを作成する")
-
-
->[AZURE.TIP] Azure Functions コンテナーの名前をメモしておいてください。次の手順で必要になります。
-
-
 -  [Azure Functions コンテナーに関数を追加する](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-transform-function%2Fazuredeploy.json "このテンプレートは、webhook ベースの C# Azure 関数を作成します。これは、ロジック アプリの統合シナリオで使用する変換機能を備えています。")
+-  統合アカウントを作成してマップを追加する
 
-
->[AZURE.TIP] 関数の名前をメモしておいてください。次の手順で必要になります。
+>[AZURE.TIP] Azure Functions コンテナーと Azure 関数の名前をメモしておいてください。次の手順で必要になります。
 
 前提条件が整ったら、ロジック アプリの作成を開始します。
 
-1. ロジック アプリを作成し、変換を含む[統合アカウントにリンクします](./app-service-logic-enterprise-integration-accounts.md "ロジック アプリへの統合アカウントの関連付けについての詳細情報")。
+1. ロジック アプリを作成し、マップを含む[統合アカウントにリンクします](./app-service-logic-enterprise-integration-accounts.md "ロジック アプリへの統合アカウントの関連付けについての詳細情報")。
 2. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求を受信したとき)]** トリガーを追加します。![](./media/app-service-logic-enterprise-integration-transforms/transform-1.png)
 3. まず **[アクションの追加]** を選択し、**[Transform XML (XML 変換)]** アクションを追加します。![](./media/app-service-logic-enterprise-integration-transforms/transform-2.png)
 4. 検索ボックスに「*transform*」と入力し、すべてのアクションから使用するアクションだけをフィルター処理します。![](./media/app-service-logic-enterprise-integration-transforms/transform-3.png)
@@ -75,6 +71,7 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas) を�
 
 ## 詳細情報
 - [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
+- [マップについての詳細情報](./app-service-logic-enterprise-integration-maps.md "Enterprise Integration のマップについての詳細情報")
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

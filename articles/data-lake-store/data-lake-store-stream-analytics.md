@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/20/2016"
+   ms.date="07/07/2016"
    ms.author="nitinme"/>
 
 # Azure Stream Analytics を使用した Azure Storage BLOB から Data Lake Store へのデータ ストリーム
 
 この記事では、Azure Data Lake Store を Azure Stream Analytics ジョブの出力として使用する方法について説明します。ここでは、Azure Storage BLOB (入力) からデータを読み取り、そのデータを Data Lake Store (出力) に書き込む簡単なシナリオを紹介します。
 
->[AZURE.NOTE] 現時点では、Stream Analytics 向けの Data Lake Store 出力の作成と構成は [Azure クラシック ポータル](manage.windowsazure.com)でのみサポートされています。そのため、このチュートリアルの一部は、Azure クラシック ポータルを使用します。
+>[AZURE.NOTE] 現時点では、Stream Analytics 向けの Data Lake Store 出力の作成と構成は [Azure クラシック ポータル](https://manage.windowsazure.com)でのみサポートされています。そのため、このチュートリアルの一部は、Azure クラシック ポータルを使用します。
 
 ## 前提条件
 
@@ -95,7 +95,7 @@
 
 	* **出力のエイリアスを入力します**。これは、ジョブの出力に付ける一意の名前です。
 	* **Data Lake Storeアカウントを指定します**。「前提条件」に記載したように、これはすでに作成済みとします。
-	* **パスのプレフィックス パターンを指定します**。これは Stream Analytics ジョブによって Data Lake Store に書き込まれる出力ファイルの識別に必要です。ジョブによって書き込まれる出力のタイトルはGUID 形式であるため、プレフィックスを含めると書き込まれた出力の識別に役立ちます。日時スタンプをプレフィックスの一部に含める場合は、プレフィックス パターンに `{date}/{time}` を含めるようにします。これを含めることで **[日付の形式]** と **[時刻の形式]** フィールドが有効になり、好みの形式を選択できます。
+	* **パスのプレフィックス パターンを指定します**。これは Stream Analytics ジョブによって Data Lake Store に書き込まれる出力ファイルの識別に必要です。ジョブによって書き込まれる出力のタイトルはGUID 形式であるため、プレフィックスを含めると書き込まれた出力の識別に役立ちます。日時スタンプをプレフィックスの一部に含める場合は、プレフィックス パターンに `{date}/{time}` を含めるようにします。これを含めることで **[日付形式]** と **[時刻形式]** フィールドが有効になり、好みの形式を選択できます。
 
 	右向きの矢印をクリックします。
 
@@ -103,7 +103,7 @@
 
 	![出力形式の指定](./media/data-lake-store-stream-analytics/create.output.4.png "出力形式の指定")
 
-6. ウィザードが完了すると Data Lake Store の出力 が **[出力]** タブの下に追加され、**[診断]** 列に **[OK]** と表示されます。下の **[テスト接続]** ボタンで、出力への接続を明示的にテストすることもできます。
+6. ウィザードが完了すると Data Lake Store の出力が **[出力]** タブの下に追加され、**[診断]** 列に **[OK]** と表示されます。下の **[テスト接続]** ボタンで、出力への接続を明示的にテストすることもできます。
 
 ## Stream Analytics ジョブの実行
 
@@ -119,7 +119,7 @@ Stream Analytics ジョブを実行するには、[クエリ] タブからクエ
 
 ![ジョブの監視](./media/data-lake-store-stream-analytics/run.query.3.png "ジョブの監視")
 
-最後に、[Azure ポータル](portal.azure.com)を使用して Data Lake Store アカウントを開き、データがアカウントに正常に書き込まれたかどうかを確認できます。
+最後に、[Azure ポータル](https://portal.azure.com)を使用して Data Lake Store アカウントを開き、データがアカウントに正常に書き込まれたかどうかを確認できます。
 
 ![出力の確認](./media/data-lake-store-stream-analytics/run.query.4.png "出力の確認")
 
@@ -129,4 +129,4 @@ Stream Analytics ジョブを実行するには、[クエリ] タブからクエ
 
 * [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

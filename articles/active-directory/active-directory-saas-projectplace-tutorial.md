@@ -2,17 +2,17 @@
     pageTitle="チュートリアル: Azure Active Directory と Projectplace の統合 | Microsoft Azure" 
     description="Azure Active Directory で Projectplace を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
-    ms.author="markvi" />
+    ms.date="07/07/2016" 
+    ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Projectplace の統合
   
@@ -37,7 +37,7 @@
 
 ###Projectplace のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-projectplace-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **Projectplace** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **Projectplace** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-projectplace-tutorial/IC790220.png "シングル サインオンの構成")
 
@@ -76,9 +76,9 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-projectplace-tutorial/IC790221.png "シングル サインオンの構成")
 
-3.  **[アプリの URL の構成]** ページで、**[Projectplace サインオン URL]** ボックスに Projectplace テナント URL (例: "**http://company.projectplace.com*") を入力し、**[次へ]** をクリックします。
+3.  **[Configure App URL]** (アプリケーション URL の構成) ページで、**[Projectplace サインオン URL]** ボックスに Projectplace テナント URL (例: "*http://company.projectplace.com*"*) を入力し、*[次へ]* をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-projectplace-tutorial/IC790222.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-projectplace-tutorial/IC790222.png "Configure App URL")
 
 4.  **[Projectplace でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターに保存します。
 
@@ -86,9 +86,9 @@
 
 5.  Projectplace サポート チームにメタデータ ファイルを送信します。
 
-    >[AZURE.NOTE]シングル サインオンの構成は、Projectplace サポート チームが実行する必要があります。構成が完了すると、サポート チームから通知が届きます。
+    >[AZURE.NOTE] シングル サインオンの構成は、Projectplace サポート チームが実行する必要があります。構成が完了すると、サポート チームから通知が届きます。
 
-6.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-projectplace-tutorial/IC790227.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
@@ -114,7 +114,7 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
     1.  **[New Members]** テキストボックスに、プロビジョニングする有効な AAD アカウントのメール アドレスを入力します。
     2.  **[Send]** をクリックします。
 
-	    >[AZURE.NOTE]Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含むメールが送信されます。
+	    >[AZURE.NOTE] Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含むメールが送信されます。
     
 >[AZURE.NOTE]Projectplace から提供されている他の Projectplace ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -124,7 +124,7 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
 
 ###ユーザーを Projectplace に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **Projectplace** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -136,4 +136,4 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0713_2016-->

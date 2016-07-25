@@ -23,19 +23,25 @@
 
 ## はじめに
 
+(**注**: Linux の診断拡張機能は、[GitHub](https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic) にソース コードが公開されています。この拡張機能についての最新情報もまず GitHub で公開されます。最初に [GitHub のページ](https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic)をご覧ください。)
+
 Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM を監視するのに役立ちます。次の機能が用意されています。
 
 - 診断や syslog 情報を含むシステムのパフォーマンス情報を Linux VM から収集して、ユーザーのストレージ テーブルにアップロードします。
 - ユーザーは収集およびアップロードされるデータ メトリックをカスタマイズできます。
 - ユーザーは指定したログ ファイルを指定したストレージ テーブルにアップロードできます。
 
-バージョン 2.0 では、以下のデータが含まれます。
+現行のバージョン 2.3 では、以下のデータが含まれます。
 
 - システム、セキュリティ、アプリケーション ログを含む、すべての Linux Rsyslog ログ。
 - [System Center Cross Platform Solutions のサイト](https://scx.codeplex.com/wikipage?title=xplatproviders)で指定されているすべてのシステム データ。
 - ユーザーが指定したログ ファイル。
 
 この拡張機能は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルの両方で機能します。
+
+### 現行バージョンの拡張機能と以前のバージョンの廃止予定
+
+この拡張機能の最新バージョンは **2.3** です。**以前のバージョン (2.0、2.1、2.2) は近々廃止され、公開が停止されます**。マイナー バージョンの自動アップグレードを無効にして Linux の診断拡張機能をインストールした場合は、一度拡張機能をアンインストールし、マイナー バージョンの自動アップグレードを有効にして再インストールすることを強くお勧めします。クラシック (ASM) VM に、Azure XPLAT CLI または PowerShell で拡張機能をインストールする場合、バージョンとして「2.*」を指定します。ARM VM の場合は、VM デプロイ テンプレートに「"autoUpgradeMinorVersion": true」を追加します。また、拡張機能を新規インストールする場合は、マイナー バージョンの自動アップグレード オプションをオンにする必要があります。
 
 
 ## 拡張機能を有効にする
@@ -62,9 +68,9 @@ Azure ポータルから直接、システム データおよびパフォーマ�
 ## Azure CLI コマンドを使用して Linux 診断拡張機能を有効にする
 
 ### シナリオ 1. 既定のデータ セットで拡張機能を有効にする
-バージョン 2.0 以降では、以下のデータが既定で収集されます。
+バージョン 2.3 以降では、以下のデータが既定で収集されます。
 
-- すべての Rsyslog 情報 (システム ログ、セキュリティ ログ、アプリケーション ログ)。  
+- すべての Rsyslog 情報 (システム ログ、セキュリティ ログ、アプリケーション ログ)。
 - 基本システム データのコア セット。データ セット全体の説明については、[System Center Cross Platform Solutions のサイト](https://scx.codeplex.com/wikipage?title=xplatproviders)をご覧ください。追加のデータを有効にする場合は、シナリオ 2 および 3 の手順を続行してください。
 
 手順 1.次の内容を含む PrivateConfig.json という名前のファイルを作成します。
@@ -118,9 +124,10 @@ Rsyslog データは既定で常に収集されます。
 
 手順 2.**azure vm extension set vm\_name LinuxDiagnostic Microsoft.OSTCExtensions '2.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json** を実行します。
 
+この設定では、`/var/log/mysql.err` に書き込まれたすべてのログが `/var/log/syslog` (Linux ディストリビューションによっては `/var/log/messages`) にも複製される可能性があります。ログが重複して記録されるのを防ぐには、rsyslog の構成で `local6` ファシリティ ログの記録を除外してください。この点は Linux ディストリビューションによっても異なりますが、Ubuntu 14.04 システムの場合、変更対象となるファイルは `/etc/rsyslog.d/50-default.conf` です。`*.*;auth,authpriv.none -/var/log/syslog` という行を `*.*;auth,authpriv,local6.none -/var/log/syslog` に差し替えてください。将来的には、Linux の診断拡張機能によってこの点が自動的に処理される予定です。
 
 ###   シナリオ 4. 拡張機能によるログ収集を停止する
-このセクションでは、拡張機能によるログ収集を停止する方法について説明します。この再構成を使用しても、監視エージェント プロセスはまだ稼働していることに注意してください。監視エージェント プロセスを完全に停止するには、拡張機能を無効にします。拡張機能を無効にするコマンドは、**azure vm extension set --disable <vm_name> LinuxDiagnostic Microsoft.OSTCExtensions '2.*'** です。
+このセクションでは、拡張機能によるログ収集を停止する方法について説明します。この再構成を使用しても、監視エージェント プロセスはまだ稼働していることに注意してください。監視エージェント プロセスを完全に停止するには、拡張機能を無効にします。拡張機能を無効にするコマンドは、**azure vm extension set --disable <vm\_name> LinuxDiagnostic Microsoft.OSTCExtensions '2.*'** です。
 
 手順 1.シナリオ 1 で説明した内容を含む PrivateConfig.json という名前のファイルを作成します。次の内容を含む PublicConfig.json という名前の別のファイルを作成します。
 
@@ -147,6 +154,6 @@ Rsyslog データは既定で常に収集されます。
 (シナリオ 2 および 3 の説明に従って) fileCfg または perfCfg を有効にした場合は、Visual Studio サーバー エクスプローラーと Azure ストレージ エクスプローラーを使用して、既定以外のデータを表示することができます。
 
 ## 既知の問題
-- Linux 診断拡張機能のバージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
+- Linux 診断拡張機能の最新バージョン (2.3) の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

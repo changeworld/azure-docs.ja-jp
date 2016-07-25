@@ -14,13 +14,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="04/12/2016"
+   ms.date="07/12/2016"
    ms.author="mandia"/>
 
 
 # チュートリアル: カスタム AAD で保護された PowerApps および Logic Flows 用 ARM API を作成する 
 
 このチュートリアルでは、[ARM API][6] を記述する Swagger ファイルを登録し、PowerApps でカスタム API に接続するために必要な手順について説明します。
+
+>[AZURE.IMPORTANT] このトピックは、powerapps.microsoft.com の[カスタム AAD で保護された PowerApps および Flows 用 ARM API の作成に関するチュートリアル](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/)のページに移動しました。最新版については PowerApps をご覧ください。この Azure のリンクはアーカイブされます。
+
 
 ## はじめにやるべきこと
 
@@ -31,13 +34,13 @@
 
 まず、ARM API エンドポイントの呼び出し時に認証を実行する、Azure Active Directory (AAD) アプリケーションを作成する必要があります。
 
-1. AAD アプリケーションを作成するには、[Azure サブスクリプション][7]にサインインし、**[Active Directory]** に移動します。![](./media/powerapps-azure-resource-manager-tutorial/azureaad.png "Azure AAD")  
+1. AAD アプリケーションを作成するには、[Azure サブスクリプション][7]にサインインし、**[Active Directory]** に移動します。![](./media/powerapps-azure-resource-manager-tutorial/azureaad.png "Azure AAD")
 
 2. このページでは、AAD アプリケーションを作成するディレクトリを選択します。ディレクトリを選択し、**[アプリケーション]** タブに移動して、**[追加]** をクリックします。![](./media/powerapps-azure-resource-manager-tutorial/azureapplication.png "Azure アプリケーション")
 
 3. アプリケーションの名前を入力し、**[Web アプリケーションや Web API]** を選択して、**[次へ]** ボタンをクリックします。![](./media/powerapps-azure-resource-manager-tutorial/newapplication.png "新しいアプリケーション")
 
-4. **[サインオン URL]** に「**http://login.windows.net*」と入力します。**[アプリケーション ID/URI]** に一意の URI を入力します。次に、**[完了]** ボタンをクリックします。![](./media/powerapps-azure-resource-manager-tutorial/newapplication2.png "2 つ目の新しいアプリケーション")
+4. **[サインオン URL]** に「*http://login.windows.net*」と入力します。*[アプリケーション ID/URI] に一意の URI を入力します。次に、[完了] ボタンをクリックします。![](./media/powerapps-azure-resource-manager-tutorial/newapplication2.png "2 つ目の新しいアプリケーション")
 
 5. AAD アプリケーションが作成されたら、**[構成]** タブに移動します。このタブで、アプリケーションに対するアクセス許可を構成します。
 
@@ -49,13 +52,13 @@
 
 8. **[シングル サインオン]** で、__[応答 URL]__ に「https://msmanaged-na.consent.azure-apim.net/redirect」と入力します。![](./media/powerapps-azure-resource-manager-tutorial/redirecturl.png "リダイレクト URL")
 
-9. 変更を**保存**します。**キーをコピーして安全な場所に保存します。**
+9. 変更を**保存**します。**キーをコピーして安全な場所に保存します**。
 
 ## PowerApps または Logic Flows で接続を追加する
 
 これで、AAD アプリケーションが構成されました。次に、カスタム API を追加しましょう。
 
-1. [PowerApps Web ポータル][1]を開き、**[Connections]** タブに移動して、右上隅にある __[Add a connection]__ をクリックします。![](./media/powerapps-azure-resource-manager-tutorial/createnewconnection.png "カスタム API の作成")  
+1. [PowerApps Web ポータル][1]を開き、**[Connections]** タブに移動して、右上隅にある __[Add a connection]__ をクリックします。![](./media/powerapps-azure-resource-manager-tutorial/createnewconnection.png "カスタム API の作成")
 
 2. __[Connect to custom API]__ をクリックします。![](./media/powerapps-azure-resource-manager-tutorial/connecttocustomapi.png "カスタム API の作成")
 
@@ -87,4 +90,4 @@ PowerApps と Logic Flows の作成方法の詳細については、以下をご
 [7]: https://manage.windowsazure.com
 [8]: http://pwrappssamples.blob.core.windows.net/samples/AzureResourceManager.json
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0713_2016-->

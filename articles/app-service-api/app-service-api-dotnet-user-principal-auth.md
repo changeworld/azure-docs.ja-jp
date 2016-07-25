@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="06/30/2016"
-	ms.author="tdykstra"/>
+	ms.author="rachelap"/>
 
 # Azure App Service の API Apps でのユーザー認証
 
@@ -336,4 +336,4 @@ Web API 2 バックエンドで AngularJS 単一ページ アプリケーショ�
 
 このチュートリアルでは、API アプリで App Service 認証を使用する方法、および ADAL JS ライブラリを使用して API アプリを呼び出す方法を説明しました。次のチュートリアルでは、[サービス間シナリオで API アプリへのアクセスをセキュリティで保護する](app-service-api-dotnet-service-principal-auth.md)方法を学習します。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

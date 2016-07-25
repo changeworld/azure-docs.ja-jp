@@ -1,5 +1,5 @@
 <properties
-   pageTitle="他のユーザーの成果物をコピーしてデータ サイエンスを実行する: 初心者向けデータ サイエンス | Microsoft Azure"
+   pageTitle="他のユーザーの成果物をコピーしてデータ サイエンスを実行する - 実験例 | Microsoft Azure"
    description="データ サイエンスの企業秘密: 自分のために他のユーザーに作業してもらいます。Cortana Analytics のギャラリーの例で、クラスタリング アルゴリズムの例などをご覧ください。"
    keywords="データ サイエンスの例,アルゴリズムの例,実験の例,機械学習の例,クラスタリング アルゴリズム"
    services="machine-learning"
@@ -94,4 +94,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0713_2016-->

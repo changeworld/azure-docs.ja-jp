@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/26/2016" 
+    ms.date="07/08/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Mozy Enterprise の統合
@@ -37,7 +37,7 @@
 
 ###Mozy Enterprise のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-mozy-enterprise-tutorial/IC700993.png "Active Directory")
 
@@ -68,7 +68,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[Mozy Enterprise]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **[Mozy Enterprise]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-mozy-enterprise-tutorial/IC771709.png "Configure single sign-on")
 
@@ -78,11 +78,11 @@
 
 3.  **[アプリ URL の構成]** ページで、**[Mozy Enterpris サインイン URL]** ボックスに、"*https://\<tenant-name>.Mozyenterprise.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure app URL](./media/active-directory-saas-mozy-enterprise-tutorial/IC777312.png "Configure app URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-mozy-enterprise-tutorial/IC777312.png "アプリケーション URL の構成")
 
 4.  **[Mozy Enterprise でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
 
-    ![Configure single sign-on](./media/active-directory-saas-mozy-enterprise-tutorial/IC777313.png "Configure single sign-on")
+    ![Configure single sign-on](./media/active-directory-saas-mozy-enterprise-tutorial/IC777313.png "シングル サインオンの構成")
 
 5.  別の Web ブラウザーのウィンドウで、Mozy Enterprise の企業サイトに管理者としてログインします。
 
@@ -97,9 +97,9 @@
     1.  **[プロバイダー]** に **[ディレクトリ サービス]** を選択します。
     2.  **[Use LDAP Push (LDAP プッシュを使用)]** を選択します。
     3.  **[SAML 認証]** タブをクリックします。
-    4.  Azure ポータルの **[Mozy Enterprise でのシングル サインオンの構成]** ダイアログ ページで **[認証要求 URL]** の値をコピーし、それを **[認証要求 URL]** テキストボックスに貼り付けます。
-    5.  Azure ポータルの **[Mozy Enterprise でのシングル サインオンの構成]** ダイアログ ページで **[ID プロバイダー ID]** の値をコピーし、それを **[SAML エンドポイント]** テキストボックスに貼り付けます。
-    6.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
+    4.  Azure クラシック ポータルの **[Mozy Enterprise でのシングル サインオンの構成]** ダイアログ ページで **[認証要求 URL]** の値をコピーし、それを **[認証要求 URL]** テキストボックスに貼り付けます。
+    5.  Azure クラシック ポータルの **[Mozy Enterprise でのシングル サインオンの構成]** ダイアログ ページで **[ID プロバイダー ID]** の値をコピーし、それを **[SAML エンドポイント]** テキストボックスに貼り付けます。
+    6.  ダウンロードした証明書から **Base-64 でエンコードされた**ファイルを作成します。
 
         >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
@@ -107,9 +107,9 @@
     8.  **[Enable SSO for Admins to log in with their network credentials 管理者のネットワーク資格情報を使用した SSO を許可する]** を選択します。
     9.  **[変更を保存]** をクリックします。
 
-8.  Azure ポータルの **[Sugar CRMMozy Enterprise でのシングル サインオンの構成]** ダイアログ ページで、シングル サインオンの構成確認を選択し、**[完了]** をクリックします。
+8.  Azure クラシック ポータルの **[Sugar CRMMozy Enterprise でのシングル サインオンの構成]** ダイアログ ページで、シングル サインオンの構成確認を選択し、**[完了]** をクリックします。
 
-    ![Configure single sign-on](./media/active-directory-saas-mozy-enterprise-tutorial/IC777316.png "Configure single sign-on")
+    ![シングル サインオンの構成](./media/active-directory-saas-mozy-enterprise-tutorial/IC777316.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
   
 Azure AD ユーザーが Mozy Enterprise にログインできるようにするには、ユーザーを Mozy Enterprise にプロビジョニングする必要があります。Mozy Enterprise の場合、プロビジョニングは手動で行います。
@@ -145,9 +145,9 @@ Azure AD ユーザーが Mozy Enterprise にログインできるようにする
 
 ###ユーザーを Mozy Enterprise に割り当てるには、次の手順に従います。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  **Mozy Enterprise ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Mozy Enterprise** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-mozy-enterprise-tutorial/IC777319.png "ユーザーの割り当て")
 
@@ -157,4 +157,4 @@ Azure AD ユーザーが Mozy Enterprise にログインできるようにする
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0713_2016-->

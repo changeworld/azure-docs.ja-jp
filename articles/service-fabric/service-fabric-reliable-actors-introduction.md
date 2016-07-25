@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # Service Fabric Reliable Actors の概要
@@ -105,7 +105,7 @@ await myActor.DoWorkAsync();
 
 Reliable Actors ランタイムは、アクター メソッドにアクセスするためのターンに基づくアクセス モデルを提供します。これは、アクター オブジェクトのコード内で、ある時点でアクティブにできるスレッドが 1 つだけであることを意味します。ターンに基づくアクセスは、データ アクセスの同期メカニズムを必要としないので、同時実行システムを大幅に簡略化できます。また、システムの設計で、各アクター インスタンスのシングル スレッド アクセスの性質に特別な配慮が必要であることも意味しています。
 
- - 1 つのアクター インスタンスは、一度に複数の要求を処理することはできません。アクター インスタンスが同時要求の処理を期待される場合は、アクター インスタンスがスループット ボトルネックになる可能性があります。 
+ - 1 つのアクター インスタンスは、一度に複数の要求を処理することはできません。アクター インスタンスが同時要求の処理を期待される場合は、アクター インスタンスがスループット ボトルネックになる可能性があります。
  - 2 つのアクターの一方に外部要求が同時に行われるときに、2 つのアクター間に循環要求があると、互いにデッドロックすることがあります。アクター ランタイムは、デッドロック状態を中断するために、自動的にアクター呼び出しをタイムアウトし、呼び出し元に例外をスローします。
 
 ![Reliable Actors communication][3]
@@ -158,4 +158,4 @@ Reliable Actors ランタイムは、アクター メソッドにアクセスす
 [2]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 [3]: ./media/service-fabric-reliable-actors-introduction/actor-communication.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

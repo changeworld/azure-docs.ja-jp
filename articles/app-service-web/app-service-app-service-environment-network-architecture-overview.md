@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/17/2016" 
+	ms.date="07/13/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境のネットワーク アーキテクチャの概要
@@ -23,9 +23,11 @@ App Service 環境は、常に[仮想ネットワーク][virtualnetwork]のサ�
 
 ## 一般的なネットワーク フロー ##
  
-App Service 環境は、常にパブリック仮想 IP アドレス (VIP) を持っています。すべての着信トラフィックは、そのパブリック VIP に到着します。トラフィックには、アプリの HTTP トラフィック、HTTPS トラフィック、その他の FTP のトラフィック、リモート デバッグ機能、および Azure 管理操作が含まれます。パブリック VIP で使用できるポート (必須およびオプションの両方) の完全な一覧については、[着信トラフィックの制御][controllinginboundtraffic]に関する記事の App Service 環境を参照してください。
+App Service 環境 (ASE) でパブリック仮想 IP アドレス (VIP) をアプリに使用している場合、着信トラフィックはすべてそのパブリック VIP に到着します。これには、アプリの HTTP/HTTPS トラフィックだけでなく、FTP のその他のトラフィック、リモート デバッグ機能、および Azure の管理操作も含まれます。パブリック VIP で使用できるポート (必須およびオプションの両方) の完全な一覧については、[着信トラフィックの制御][controllinginboundtraffic]に関する記事の App Service 環境を参照してください。
 
-次の図は、さまざまな着信および発信ネットワーク フローの概要を示しています。
+App Service 環境では、仮想ネットワークの内部アドレスだけにバインドされている実行中のアプリもサポートされます。この内部アドレスは ILB (内部ロード バランサー) アドレスとも呼ばれます。ILB が有効になっている ASE では、アプリの HTTP/HTTPS トラフィックとリモート デバッグの呼び出しは ILB アドレスに到着します。最も一般的な ILB ASE 構成の場合、FTP/FTPS トラフィックも ILB アドレスに到着します。ただし、Azure の管理操作は、ILB が有効になっている ASE でも引き続きパブリック VIP のポート 454/455 に流れます。
+
+次の図は、アプリがパブリック仮想 IP アドレスにバインドされている App Service 環境におけるさまざまな着信および発信ネットワーク フローの概要を示しています。
 
 ![一般的なネットワーク フロー][GeneralNetworkFlows]
 
@@ -46,7 +48,7 @@ App Service 環境で発信呼び出しを行うと、IP アドレスが常に�
  
 ![発信 IP アドレス][OutboundIPAddress]
 
-このアドレスは、App Service 環境でアプリを作成した後、アプリのアドレスに対して *nslookup* を実行することでも判別できます。結果の IP アドレスは、パブリック VIP であり、App Service 環境の発信 NAT アドレスでもあります。
+このアドレスは、パブリック VIP だけを持つ ASE の場合、App Service 環境でアプリを作成した後、アプリのアドレスに対して *nslookup* を実行することでも判別できます。結果の IP アドレスは、パブリック VIP であり、App Service 環境の発信 NAT アドレスでもあります。
 
 呼び出し先のエンドポイントが仮想ネットワーク トポロジの**内部**にある場合、呼び出し元のアプリの発信アドレスは、アプリを実行している個々のコンピューティング リソースの内部 IP アドレスになります。ただし、仮想ネットワークの内部 IP アドレスとアプリのマッピングは固定されていません。アプリは複数のコンピューティング リソースの間を移動でき、App Service 環境内で使用できるコンピューティング リソースのプールは、スケーリング操作によって変更される可能性があります。
 
@@ -73,6 +75,8 @@ App Service 環境で発信呼び出しを行うと、IP アドレスが常に�
 異なる App Service 環境間での呼び出しは "インターネット" 呼び出しとして扱われるものの、両方の App Service 環境が同じ Azure リージョンに位置している場合は、ネットワーク トラフィックは同じリージョンの Azure ネットワークにとどまり、物理的にパブリック インターネット上に流出することはありません。その結果、2 つ目の App Service 環境のサブネット上でネットワーク セキュリティ グループを使用して、1 つ目の App Service 環境 (発信 IP アドレスが 192.23.1.2) からの受信呼び出しのみを許可することができるため、App Service 環境間での安全な通信が確保されます。
 
 ## その他のリンクおよび情報 ##
+App Service 環境に関するすべての記事と作業方法は [Application Service 環境の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
+
 App Service 環境で使用される着信ポートと、ネットワーク セキュリティ グループを使用した着信トラフィック制御の詳細については、[ここ][controllinginboundtraffic]を参照してください。
 
 App Service 環境への発信インターネット アクセスを許可するためにユーザーが定義したルートの使用の詳細については、この[記事][ExpressRoute]を参照してください。
@@ -89,4 +93,4 @@ App Service 環境への発信インターネット アクセスを許可する�
 [OutboundNetworkAddresses]: ./media/app-service-app-service-environment-network-architecture-overview/OutboundNetworkAddresses-1.png
 [CallsBetweenAppServiceEnvironments]: ./media/app-service-app-service-environment-network-architecture-overview/CallsBetweenEnvironments-1.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

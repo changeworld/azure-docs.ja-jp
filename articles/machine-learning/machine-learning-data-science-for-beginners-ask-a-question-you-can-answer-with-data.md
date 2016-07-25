@@ -1,5 +1,5 @@
 <properties
-   pageTitle="データで回答できる質問をする: 初心者向けデータ サイエンス | Microsoft Azure"
+   pageTitle="データで回答できる質問をする - 質問の考案 | Microsoft Azure"
    description="初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの質問を考案する方法について説明します。分類の質問と回帰の質問の比較も含まれます。"
    keywords="質問の選択,データ サイエンスの質問,質問の考案,質問の考案,回帰の質問,分類の質問,シャープな質問"
    services="machine-learning"
@@ -21,13 +21,13 @@
 
 初心者向けデータ サイエンス ビデオ 3 では、データ サイエンスの質問を考案する方法について説明します。このビデオには、分類アルゴリズムと回帰アルゴリズムの質問の比較が含まれます。
 
-このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
+このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
 
 <div class="wa-video-container" data-control="video-container" data-slug="data-science-for-beginners-ask-a-question-you-can-answer-with-data"> <a title="Data science for beginners: Ask a question you can answer with data" class="wa-video-thumbnail" href="/en-us/documentation/videos/data-science-for-beginners-ask-a-question-you-can-answer-with-data/" data-control="video" data-event="videopage-clicked-videothumbnail" data-event-property="data-science-for-beginners-ask-a-question-you-can-answer-with-data" data-caption="" data-ch9="//channel9.msdn.com/Blogs/Windows-Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player/" data-expanding="false"> <img class="thumbnail" alt="Data science for beginners: Ask a question you can answer with data" src="https://sec.ch9.ms/ch9/fde7/9f858f2c-1472-4345-a8e2-be99535cfde7/DataScienceForBeginnersAskQuestionYouCanAnswerWit_960.jpg"> <img class="play-icon" src="/cdn/cvt-a29a0e789afe7f47464f393c011b53f210c511ee5fed2c4c9c0633442f30d6ec/images/icon/VideoPlay.svg"> <span class="metadata"> <span class="date"> <span>06-28-2016</span> <span>04 min, 17 sec</span> </span> </span> </a> </div>
 
-## トランスクリプト:データで回答できる質問をする
+## トランスクリプト: データで回答できる質問をする
 
-初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。
+"初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。
 
 このビデオでは、データで回答できる質問を考えるためのヒントが得られます。
 
@@ -99,4 +99,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016--->
+<!---HONumber=AcomDC_0713_2016-->

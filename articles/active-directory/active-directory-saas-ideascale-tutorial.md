@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="07/09/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と IdeaScale の統合
@@ -37,7 +37,7 @@
 
 ###IdeaScale のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-ideascale-tutorial/IC700993.png "Active Directory")
 
@@ -66,9 +66,9 @@
   
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで IdeaScale に対する認証を行うことができるようにする方法を説明します。IdeaScale のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure AD ポータルの **[IdeaScale]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **[IdeaScale]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-ideascale-tutorial/IC790843.png "Configure Single Sign-On")
 
@@ -76,9 +76,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-ideascale-tutorial/IC790844.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[IdeaScale のサインオン URL]** テキストボックスに、ユーザーが IdeaScale アプリケーションにサインオンするときに使用する URL (例: **https://company.IdeaScale.com*")) を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[IdeaScale のサインオン URL]** テキストボックスに、ユーザーが IdeaScale アプリケーションにサインオンするときに使用する URL (例: "*https://company.IdeaScale.com*") を入力し、**[次へ]** をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-ideascale-tutorial/IC790845.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-ideascale-tutorial/IC790845.png "アプリケーション URL の構成")
 
 4.  **[IdeaScale でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックし、コンピューターでメタデータ ファイルをローカルに保存します。
 
@@ -102,12 +102,12 @@
 
     ![シングル サインオンの設定](./media/active-directory-saas-ideascale-tutorial/IC790850.png "シングル サインオンの設定")
 
-    1.  Azure ポータルで、**[IdeaScale でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[SAML IdP エンティティ ID]** テキストボックスに貼り付けます。
+    1.  Azure クラシック ポータルで、**[IdeaScale でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[SAML IdP エンティティ ID]** テキストボックスに貼り付けます。
     2.  ダウンロードしたメタデータ ファイルの内容をコピーし、**[SAML IdP メタデータ]** テキストボックスに貼り付けます。
-    3.  Azure ポータルで、**[IdeaScale でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[ログアウト成功 URL]** テキストボックスに貼り付けます。
+    3.  Azure クラシック ポータルで、**[IdeaScale でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[ログアウト成功 URL]** テキストボックスに貼り付けます。
     4.  **[変更を保存]** をクリックします。
 
-10. Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-ideascale-tutorial/IC790851.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
@@ -135,9 +135,9 @@ Azure AD ユーザーが IdeaScale にログインできるようにするには
     1.  **[電子メール アドレス]** テキストボックスに、プロビジョニングする有効な AAD アカウントの電子メール アドレスを入力します。
     2.  **[変更を保存]** をクリックします。
 
-    >[AZURE.NOTE]Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
+    >[AZURE.NOTE] Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
 
->[AZURE.NOTE]IdeaScale から提供されている他の IdeaScale ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] IdeaScale から提供されている他の IdeaScale ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   
@@ -145,9 +145,9 @@ Azure AD ユーザーが IdeaScale にログインできるようにするには
 
 ###ユーザーを IdeaScale に割り当てるには、次の手順を実行します。
 
-1.  Azure AD ポータルで、テスト アカウントを作成します。
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  **IdeaScale ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **IdeaScale** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-ideascale-tutorial/IC790854.png "ユーザーの割り当て")
 
@@ -157,4 +157,4 @@ Azure AD ユーザーが IdeaScale にログインできるようにするには
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0713_2016-->

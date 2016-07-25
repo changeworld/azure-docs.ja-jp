@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="06/21/2016"
+  ms.date="07/06/2016"
   ms.author="andrl"/>
 
 # コミュニティ ポータル
@@ -21,7 +21,6 @@
 ## コミュニティ スポットライト
 
 お客様のプロジェクトを宣伝します! お客様が DocumentDB を使って取り組んでいるすばらしいプロジェクトをご紹介ください。天才的なアイデアを世界中と共有するためにお手伝いします。プロジェクトを紹介するには、[askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) に電子メールを送信してください。
-
 
 ### documentdb-lumenize
 
@@ -31,7 +30,6 @@ DocumentDB 内のストアド プロシージャとしての集計 (グループ
 
 [Github](https://github.com/lmaccherone/documentdb-lumenize) および [npm](https://www.npmjs.com/package/lumenize) でご覧ください。
 
-
 ### DocumentDB Studio
 
 *作者: Ming Liu*
@@ -39,7 +37,6 @@ DocumentDB 内のストアド プロシージャとしての集計 (グループ
 Microsoft Azure DocumentDB サービス用のクライアント管理ビューアーとエクスプローラー。
 
 [Github](https://github.com/mingaliu/DocumentDBStudio) でご覧ください。
-
 
 ### DoQmentDB
 
@@ -49,7 +46,6 @@ DoQmentDB は Node.js promise ベースのクライアントであり、Document
 
 [Github](https://github.com/a8m/doqmentdb) および [npm](https://www.npmjs.com/package/doqmentdb) でご覧ください。
 
-
 ### DocumentDB 用 Swagger REST API
 
 *作者: Howard Edidin*
@@ -57,7 +53,6 @@ DoQmentDB は Node.js promise ベースのクライアントであり、Document
 API アプリとして簡単にデプロイできる DocumentDB REST API Swagger ファイル。
 
 [Github](https://github.com/HEDIDIN/DocumentDB-REST/tree/master/DocumentDBRestApi) でご覧ください。
-
 
 ### fluent-plugin-documentdb
 
@@ -75,47 +70,47 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 **コミュニティへの投稿:**
 
-* [**Going Social with DocumentDB (DocumentDB によるソーシャル化)**](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/03/15/going-social-with-documentdb/) - *作成者: Matias Quarantaas*
+- [**Going Social with DocumentDB (DocumentDB によるソーシャル化)**](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/03/15/going-social-with-documentdb/) - *作成者: Matias Quarantaas*
 
-* [**UWP, Azure App Services, and DocumentDB Soup: A photo-sharing app (UWP、Azure App Services、および DocumentDB Soup: 写真共有アプリ)**](https://blogs.windows.com/buildingapps/2016/03/17/uwp-azure-app-services-and-documentdb-soup-a-photo-sharing-app/) - *作成者: Eric Langland*
+- [**UWP, Azure App Services, and DocumentDB Soup: A photo-sharing app (UWP、Azure App Services、および DocumentDB Soup: 写真共有アプリ)**](https://blogs.windows.com/buildingapps/2016/03/17/uwp-azure-app-services-and-documentdb-soup-a-photo-sharing-app/) - *作成者: Eric Langland*
 
-* [**Logic Apps を使用した DocumentDB リソースの新規作成や変更の通知**](documentdb-change-notification.md) - *作成者: Howard Edidin*
+- [**Logic Apps を使用した DocumentDB リソースの新規作成や変更の通知**](documentdb-change-notification.md) - *作成者: Howard Edidin*
 
-* [**Collecting logs into Azure DocumentDB using fluent-plugin-documentdb (fluent-plugin-documentdb を使用した Azure DocumentDB へのログの収集)**](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/) - *作成者: Yoichi Kawasaki*
+- [**Collecting logs into Azure DocumentDB using fluent-plugin-documentdb (fluent-plugin-documentdb を使用した Azure DocumentDB へのログの収集)**](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/) - *作成者: Yoichi Kawasaki*
 
-* [**DocumentDB revisited Part 1/2 – The theory (DocumentDB 再訪: パート 1/2 – 理論)**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/) - *作成者: Peter Mannerhult*
+- [**DocumentDB revisited Part 1/2 – The theory (DocumentDB 再訪: パート 1/2 – 理論)**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/) - *作成者: Peter Mannerhult*
 
-* [**What to love and hate about Azure’s DocumentDB (Azure DocumentDB の好きな点と嫌いな点)**](http://blog.falafel.com/4-what-to-love-and-hate-about-azures-documentdb/) - *作成者: George Saadeh*
+- [**What to love and hate about Azure’s DocumentDB (Azure DocumentDB の好きな点と嫌いな点)**](http://blog.falafel.com/4-what-to-love-and-hate-about-azures-documentdb/) - *作成者: George Saadeh*
 
-* [**Azure DocumentDB Server-Side Scripting (Azure DocumentDB のサーバー側スクリプティング)**](https://www.simple-talk.com/cloud/cloud-data/azure-documentdb-server-side-scripting/) - *作成者: Robert Sheldon*
+- [**Azure DocumentDB Server-Side Scripting (Azure DocumentDB のサーバー側スクリプティング)**](https://www.simple-talk.com/cloud/cloud-data/azure-documentdb-server-side-scripting/) - *作成者: Robert Sheldon*
 
-* [**Azure Stream Analytics 用のデータ シンクとしてのDocumentDB**](http://janatdevelopment.com/2015/12/11/documentdb-as-a-data-sink-for-azure-stream-analytics/?utm_source=twitterfeed&utm_medium=twitter) - *作成者: Jan Hentschel*
+- [**Azure Stream Analytics 用のデータ シンクとしてのDocumentDB**](http://janatdevelopment.com/2015/12/11/documentdb-as-a-data-sink-for-azure-stream-analytics/?utm_source=twitterfeed&utm_medium=twitter) - *作成者: Jan Hentschel*
 
-* [**稼働中の Azure DocumentDB!**](http://blog.nexapp.ca/2015/11/30/azure-documentdb-in-production/) - *作成者: Alexandre Walsh および Marc-Olivier Duval*
+- [**稼働中の Azure DocumentDB!**](http://blog.nexapp.ca/2015/11/30/azure-documentdb-in-production/) - *作成者: Alexandre Walsh および Marc-Olivier Duval*
 
-* [**Azure Search インデックサー – DocumentDB クエリ (スペイン語)**](http://www.ealsur.com.ar/wp/index.php/2015/11/19/azure-search-indexers-documentdb-queries/) - *作成者: Matthias Quaranta*
+- [**Azure Search インデックサー – DocumentDB クエリ (スペイン語)**](http://www.ealsur.com.ar/wp/index.php/2015/11/19/azure-search-indexers-documentdb-queries/) - *作成者: Matthias Quaranta*
 
-* [**Azure DocumentDB の SQL クエリ基礎**](http://beachside.hatenablog.com/entry/2015/12/06/000045) - *作成者: Atsushi Yokohama*
+- [**Azure DocumentDB SQL クエリ基礎 (日本語)**](http://beachside.hatenablog.com/entry/2015/12/06/000045) - *作成者: Atsushi Yokohama*
 
-* [**データ ポイント - Aurelia と DocumentDB の出会い: 仲人の旅**](https://msdn.microsoft.com/magazine/mt620011.aspx) - *作者: Julie Lerman*
+- [**データ ポイント - Aurelia と DocumentDB の出会い: 仲人の旅**](https://msdn.microsoft.com/magazine/mt620011.aspx) - *作者: Julie Lerman*
 
-* [**コードとしてのインフラストラクチャと Node.js + Azure DocumentDB ソリューションの連続的デプロイメント**](http://www.talmeida.net/blog/2015/10/26/infrastructure-as-code-and-continuous-deployment-of-a-nodejs-azure-documentdb-solution) - *作者: Thiago Almedia*
+- [**コードとしてのインフラストラクチャと Node.js + Azure DocumentDB ソリューションの連続的デプロイメント**](http://www.talmeida.net/blog/2015/10/26/infrastructure-as-code-and-continuous-deployment-of-a-nodejs-azure-documentdb-solution) - *作者: Thiago Almedia*
 
-* [**ビジネス上、DocumentDb が一部のプロジェクトで合理的な理由**](http://www.iquestllc.com/blogs/read/405/why-documentdb-makes-good-business-sense-for-some-projects) - *作者: Samuel Uresin*
+- [**ビジネス上、DocumentDb が一部のプロジェクトで合理的な理由**](http://www.iquestllc.com/blogs/read/405/why-documentdb-makes-good-business-sense-for-some-projects) - *作者: Samuel Uresin*
 
-* [**Azure DocumentDB の開発ことはじめ - Client クラスの開発（1/2）**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *作成者: Atsushi Yokohama*
+- [**Azure DocumentDB の開発ことはじめ - Client クラスの開発 (1/2) (日本語)**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *作成者: Atsushi Yokohama*
 
-* [**Azure DocumentDB を使うときに知っておきたいいくつかのこと**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *作者: Atsushi Yokohama*
+- [**Azure DocumentDB を使うときに知っておきたいいくつかのこと (日本語)**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *作成者: Atsushi Yokohama*
 
-* [**Azure DocumentDB における RequestRateTooLarge エラーの処理とパフォーマンスのテスト**](http://blogs.msdn.com/b/bigdatasupport/archive/2015/09/02/dealing-with-requestratetoolarge-errors-in-azure-documentdb-and-testing-documentdb-performance.aspx) - *投稿者: Azim Uddin*
+- [**Azure DocumentDB における RequestRateTooLarge エラーの処理とパフォーマンスのテスト**](http://blogs.msdn.com/b/bigdatasupport/archive/2015/09/02/dealing-with-requestratetoolarge-errors-in-azure-documentdb-and-testing-documentdb-performance.aspx) - *投稿者: Azim Uddin*
 
-* [**データ ポイント - Microsoft Azure DocumentDB の概要**](https://msdn.microsoft.com/magazine/mt147238.aspx) - *投稿者: Julie Lerman*
+- [**データ ポイント - Microsoft Azure DocumentDB の概要**](https://msdn.microsoft.com/magazine/mt147238.aspx) - *投稿者: Julie Lerman*
 
-* [**F# と DocumentDB の併用**](https://jamessdixon.wordpress.com/2014/12/30/using-documentdb-with-f/) - *投稿者: Jamie Dixon*
+- [**F# と DocumentDB の併用**](https://jamessdixon.wordpress.com/2014/12/30/using-documentdb-with-f/) - *投稿者: Jamie Dixon*
 
-* [**DocumentDB を使用したアプリケーション ログの分析**](http://vincentlauzon.com/2015/09/06/analysing-application-logs-with-documentdb/) - *投稿者: Vincent-Philippe Lauzon*
+- [**DocumentDB を使用したアプリケーション ログの分析**](http://vincentlauzon.com/2015/09/06/analysing-application-logs-with-documentdb/) - *投稿者: Vincent-Philippe Lauzon*
 
-* [**Azure DocumentDB – ポイント イン タイム バックアップ**](http://softwarejuancarlos.com/2015/09/06/azure-documentdb-point-in-time-backups/) - *投稿者: Juan Carlos Sanchez*
+- [**Azure DocumentDB – ポイント イン タイム バックアップ**](http://softwarejuancarlos.com/2015/09/06/azure-documentdb-point-in-time-backups/) - *投稿者: Juan Carlos Sanchez*
 
 *共有するブログの投稿、コード サンプル、ケース スタディをお持ちですか? ぜひ[お知らせください](mailto:askdocdb@microsoft.com)!*
 
@@ -125,7 +120,7 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | イベント名 | 講演者 | 場所 | 日付 | ハッシュタグ |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------------------------ | ------- |
-| [Integration and IoT (統合と IoT)](http://www.btug.be/events) | Eldert Grootenboer | コンティフ (ベルギー) | 2016 年 6 月 30 日 | 該当なし |
+| [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb) | Andrew Liu、Tara Jana | アトランタ (ジョージア州) | 2016 年 9 月 26 ～ 30 日 | [#MSIgnite](https://twitter.com/MS_Ignite) |
 
 
 *イベントで講演を行ったり、イベントを主催していますか。 お手伝いできることがあれば[お知らせください](mailto:askdocdb@microsoft.com)。*
@@ -134,7 +129,10 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | イベント名 | 講演者 | 場所 | 日付 | 記録 |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ---------------------- | --------- |
-| [Do Logic Apps support error handling? (Logic Apps によるエラー処理のサポート)](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/?event_date=2016-06-20) | Howard S. Edidin | Web キャスト | 2016 年 6 月 20 日 | 該当なし |
+| [DevTeach](http://devteach.com/) | Ken Cenerelli | モントリオール (カナダ) | 2016 年 7 月 4 ～ 8 日 | [NoSQL, No Problem, Using Azure DocumentDB (Azure DocumentDB を使用すれば NoSQL は問題なし)](http://www.slideshare.net/KenCenerelli) |
+| [Integration and IoT (統合と IoT)](http://www.btug.be/events) | Eldert Grootenboer | コンティフ (ベルギー) | 2016 年 6 月 30 日 | 該当なし |
+| [MongoDB World 2016](https://www.mongodb.com/world16) | Kirill Gavrylyuk | ニューヨーク (ニューヨーク州) | 2016 年 6 月 28 ～ 29 日 | 該当なし |
+| [Integration User Group](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/) | Howard S. Edidin | Web キャスト | 2016 年 6 月 20 日 | [Do Logic Apps support error handling? (Logic Apps によるエラー処理のサポート)](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/) |
 | [Meetup: UK Azure User Group](http://www.meetup.com/UKAzureUserGroup/events/229673468/)| Andrew Liu | ロンドン (英国) | 2016 年 5 月 12 日 | 該当なし
 |[Meetup: ONETUG - Orlando .NET User Group ](http://www.meetup.com/ONETUG/events/230797164/)| Santosh Hari| オーランド (フロリダ州)| 2016 年 5 月 12 日| 該当なし 
 | [SQLBits XV](https://sqlbits.com/) | Andrew Liu、Aravind Ramachandran | リバプール (英国) | 2016 年 5 月 4 ～ 7日 | 該当なし| [Meetup: NYC .NET Developers Group](http://www.meetup.com/NYC-NET-Developers/events/230396260/) | Leonard Lobel | ニューヨーク州ニューヨーク市 | 2016 年 4 月 21 日 | 該当なし |
@@ -169,7 +167,7 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 | [Meetup: London SQL Server User Group](http://www.meetup.com/London-SQL-Server-User-Group/events/221525058/) | Allan Mitchell | ロンドン (英国) | 2015 年 5 月 19 日 | 該当なし |
 | [DevIntersection](https://devintersection.com/) | Andrew Liu | アリゾナ州スコッツデール | 2015 年 5 月 18 ～ 21 日 | 該当なし |
 | [Meetup: Seattle Web App Developers Group](http://www.meetup.com/Seattle-Web-App-Developers-Group/events/220591071/) | Andrew Liu | ワシントン州シアトル | 2015 年 5 月 14 日 | 該当なし |
-| [Ignite](http://ignite.microsoft.com/) | Andrew Hoh、John Macintyre | イリノイ州シカゴ | 2015 年 5 月 4 日～ 8 日 | [ビデオ: SELECT Latest FROM Microsoft Azure DocumentDB (Microsoft Azure DocumentDB の最新情報)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/) [ビデオ: DocumentDB and Azure HDInsight: Better Together (DocumentDB と Azure HDInsight: その相乗効果)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
+| [Ignite](http://ignite.microsoft.com/) | Andrew Hoh、John Macintyre | イリノイ州シカゴ | 2015 年 5 月 4 日～ 8 日 | [ビデオ: SELECT Latest FROM Microsoft Azure DocumentDB (Microsoft Azure DocumentDB の最新情報)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/) [ビデオ: Microsoft Azure DocumentDB and Azure HDInsight: Better Together (DocumentDB と Azure HDInsight: その相乗効果)](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
 | [Build 2015](http://www.buildwindows.com/) | Ryan Crawcour | カリフォルニア州サンフランシスコ | 2015 年 4 月 29 日～ 5 月 1 日 | [Azure の NoSQL サービスの次なる目玉: DocumentDB](https://channel9.msdn.com/Events/Build/2015/2-729) |
 | [Global Azure Bootcamp 2015 - Spain](http://azurebootcamp.es/) | Luis Ruiz Pavon、Roberto Gonzalez | マドリード (スペイン) | 2015 年 4 月 25 日 | [#DEAN DocumentDB + Express + AngularJS + NodeJS running on Azure (Azure で実行される #DEAN DocumentDB、Express、AngularJS、NodeJS)](https://channel9.msdn.com/events/Developers-Spain-Events/Global-Azure-Bootcamp-2015/DEAN-DocumentDB--Express--AngularJS--NodeJS-running-on-Azure) |
 | [Meetup: Azure Usergroup Denmark](http://www.meetup.com/Azure-Usergroup-Denmark/events/221026670/) | Christian Holm Diget | コペンハーゲン (デンマーク) | 2015 年 4 月 16 日 | 該当なし |
@@ -256,8 +254,8 @@ Twitter で [@DocumentDB](https://twitter.com/DocumentDB) をフォローし、[
 ## DocumentDB ウィザード
 
 DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できるように他者を献身的に支援した模範的コミュニティ リーダーです。並外れた情熱、実世界の知識、技術的専門知識をコミュニティや DocumentDB チームと共有します。
-      
-                                                                                                                                                                                                                                                                                                           Wizard | Picture 
+
+ウィザード | 写真 
  --- | --- 
  [Allan Mitchell](https://twitter.com/allansqlis) | [![Allan Mitchell](./media/documentdb-community/wizard-allan-mitchell.jpg)](https://twitter.com/allansqlis) 
  [Jen Stirrup](https://twitter.com/jenstirrup) | [![Jen Stirrup](./media/documentdb-community/wizard-jen-stirrup.jpg)](https://twitter.com/jenstirrup)            
@@ -268,4 +266,4 @@ DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できる�
 
 DocumentDB ウィザードになりたいですか。 DocumentDB ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度が評価されます。[電子メールを送信](mailto:askdocdb@microsoft.com)することで、自薦または他薦できます。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0713_2016-->

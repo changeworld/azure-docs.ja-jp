@@ -1,10 +1,10 @@
 <properties
    pageTitle="Azure Security Center で Web アプリケーション ファイアウォールを追加する | Microsoft Azure"
-   description="このドキュメントでは、**Web アプリケーション ファイアウォールの追加**という Azure Security Center の推奨事項を実装する方法について説明します。"
+   description="このドキュメントでは、Azure Security Center の推奨事項である ";**Web アプリケーション ファイアウォールの追加**"; と ";**アプリケーション保護を完了する**"; を実装する方法について説明します。"
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
-   manager="StevenPo"
+   manager="MBalwin"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/27/2016"
+   ms.date="07/11/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center で Web アプリケーション ファイアウォールを追加する
@@ -24,25 +24,27 @@ Azure Security Center では、Web アプリケーションを保護するため
 
 ## 推奨事項の実装
 
-1. **[推奨事項]** ブレードで、**[Web アプリケーション ファイアウォールを使用した安全な Web アプリケーション]** を選択します。![][1]
+1. **[推奨事項]** ブレードで、**[Secure web application using web application firewall (Web アプリケーション ファイアウォールを使用して、Web アプリケーションをセキュリティで保護する)]** を選択します。![Secure web Application][1]
 
-2. **[Web アプリケーション ファイアウォールを使用した安全な Web アプリケーション]** ブレードで、Web アプリケーションを選択します。**[Web アプリケーション ファイアウォールの追加]** ブレードが開きます。![][2]
+2. **[Web アプリケーション ファイアウォールを使用した安全な Web アプリケーション]** ブレードで、Web アプリケーションを選択します。**[Web アプリケーション ファイアウォールの追加]** ブレードが開きます。![Web アプリケーション ファイアウォールの追加][2]
 3. 利用可能な場合は、既存の Web アプリケーション ファイアウォールを使用することを選択するか、または新しい WAF を作成することができます。この例では、利用可能な既存の WAF がないため、新しい WAF を作成します。
 
 4. 新しい WAF を作成するには、統合されたパートナーの一覧からソリューションを選択します。この例では、**[Barracuda Web アプリケーション ファイアウォール]** を選択します。
-5. パートナー ソリューションに関する情報を提供する **[Barracuda Web アプリケーション ファイアウォール]** ブレードが開きます。情報ブレードで **[作成]** クリックします。![][3]
+5. パートナー ソリューションに関する情報を提供する **[Barracuda Web アプリケーション ファイアウォール]** ブレードが開きます。情報ブレードで **[作成]** クリックします。![Firewall information blade][3]
 
 6. **[新しい Web アプリケーション ファイアウォール]** ブレードが開きます。ここで **VM 構成**手順を実行して、**WAF 情報**を提供できます。**[VM 構成]** を選択します。
 
-7. **[VM 構成]** ブレードで、WAF を実行する仮想マシンの起動に必要な情報を入力します。 ![][4]
+7. **[VM 構成]** ブレードで、WAF を実行する仮想マシンの起動に必要な情報を入力します。 ![VM configuration][4]
 8. **[新しい Web アプリケーション ファイアウォール]** ブレードに戻り、**[WAF 情報]** を選択します。**[WAF 情報]** ブレードで WAF そのものを構成します。手順 7 では、WAF が実行される仮想マシンを構成できます。手順 8 では、WAF そのものをプロビジョニングできます。
 
-9. **[推奨事項]** ブレードに戻ります。WAF の作成後に、新しいエントリ **[Web アプリケーション ファイアウォールのセットアップの完了]** が生成されました。このエントリによって、Azure Virtual Network でアプリケーションを保護できるようにするには、そのネットワーク内で実際に WAF に接続するプロセスを完了する必要があることがわかります。![][5]
+## アプリケーション保護を完了する
 
-10. **[Web アプリケーション ファイアウォールのセットアップの完了]** を選択します。新しいブレードが開きます。トラフィックを再ルーティングする必要がある Web アプリケーションがあることが確認できます。
-11. 対象の Web アプリケーションを選択します。Web アプリケーション ファイアウォールのセットアップを完了するための手順が表示されたブレードが開きます。手順を完了した後、**[トラフィックを制限]** を選択します。セキュリティ センターによって WAF が接続されます。![][6]
+1. **[推奨事項]** ブレードに戻ります。WAF を作成した後は、**[Finalize application protection (アプリケーション保護を完了する)]** という新しいエントリが生成されています。このエントリは、WAF によるアプリケーションの保護を有効にするには、Azure Virtual Network 内で実際に WAF を接続するプロセスを完了する必要があることを示しています。![Finalize application protection][5]
 
-> [AZURE.NOTE] セキュリティ センターで複数の Web アプリケーションを保護するには、対象のアプリケーションを既存の WAF デプロイに追加します。(リソース マネージャー デプロイ モデルを使用して作成した) WAF アプライアンスは、別の仮想ネットワークにデプロイする必要があります。(クラシック デプロイ モデルを使用して作成した) WAF アプライアンスは、ネットワーク セキュリティ グループの使用に限定されています。今後、このサポートは、全面的にカスタマイズされた WAF アプライアンスのデプロイ (クラシック) へと拡大される予定です。Azure リソースの詳細については、「[クラシック デプロイ モデルとリソース マネージャーのデプロイ モデル](../azure-classic-rm.md)」を参照してください。
+2. **[Finalize application protection (アプリケーション保護を完了する)]** を選択します。新しいブレードが開きます。トラフィックを再ルーティングする必要がある Web アプリケーションがあることが確認できます。
+3. 対象の Web アプリケーションを選択します。Web アプリケーション ファイアウォールのセットアップを完了するための手順が表示されたブレードが開きます。手順を最後まで実行し、**[トラフィックを制限する]** を選択します。セキュリティ センターによって WAF が接続されます。![Restrict traffic][6]
+
+> [AZURE.NOTE] セキュリティ センターで複数の Web アプリケーションを保護するには、対象のアプリケーションを既存の WAF デプロイに追加します。(リソース マネージャー デプロイ モデルを使用して作成した) WAF アプライアンスは、別の仮想ネットワークにデプロイする必要があります。(クラシック デプロイ モデルを使用して作成した) WAF アプライアンスは、ネットワーク セキュリティ グループの使用に限定されています。今後、このサポートは、全面的にカスタマイズされた WAF アプライアンスのデプロイ (クラシック) へと拡大される予定です。Azure リソースの詳細については、[クラシック デプロイメント モデルと Resource Manager デプロイメント モデル](../azure-classic-rm.md)に関するページを参照してください。
 
 その WAF からのログは完全に統合されます。セキュリティ センターは、重要なセキュリティ アラートを表示できるように、ログの収集と分析を自動的に開始できます。
 
@@ -54,12 +56,12 @@ Azure Security Center では、Web アプリケーションを保護するため
 
 セキュリティ センターの詳細については、次を参照してください。
 
-- 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 -- Azure サブスクリプションとリソース グループに対するセキュリティ ポリシーの構成方法について説明しています。
-- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 – Azure リソースのヘルスを監視する方法について説明します。
-- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 - セキュリティの警告の管理および応答の方法について説明します。
-- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 -- 推奨事項に従って Azure リソースを保護する方法について説明します。
-- 「[Azure Security Center に関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問を見つけます。
-- 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事を見つけます。
+- 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
+- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティの警告の管理と対応の方法について説明しています。
+- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
+- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
 [1]: ./media/security-center-add-web-application-firewall/secure-web-application.png
@@ -69,4 +71,4 @@ Azure Security Center では、Web アプリケーションを保護するため
 [5]: ./media/security-center-add-web-application-firewall/finalize-waf.png
 [6]: ./media/security-center-add-web-application-firewall/restrict-traffic.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

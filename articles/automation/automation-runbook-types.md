@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/31/2016"
+   ms.date="07/06/2016"
    ms.author="bwren" />
 
 # Azure Automation の Runbook の種類
@@ -52,7 +52,7 @@ PowerShell Runbook は、Windows PowerShell に基づきます。Azure ポータ
 
 ### 長所
 
-- すべての複雑なロジックを PowerShell コードで実装でき、PowerShell ワークフローに関する複雑さが加わることはありません。 
+- すべての複雑なロジックを PowerShell コードで実装でき、PowerShell ワークフローに関する複雑さが加わることはありません。
 - 実行前にコンパイルする必要がないため、グラフィカル Runbook または PowerShell ワークフロー Runbook より開始に時間がかかりません。
 
 ### 制限事項
@@ -67,7 +67,7 @@ PowerShell Runbook に関する現在の既知の問題は次のとおりです�
 
 - PowerShell Runbook では、null 値を含む暗号化されていない[変数資産](automation-variables.md)は取得できません。
 - PowerShell Runbook では、名前に *~* が含まれる[変数資産](automation-variables.md)は取得できません。
-- PowerShell Runbook のループ内の Get-Process が、約 80 回反復した後でクラッシュする可能性があります。 
+- PowerShell Runbook のループ内の Get-Process が、約 80 回反復した後でクラッシュする可能性があります。
 - PowerShell Runbook は、非常に大量のデータを一度に出力ストリームに書き込もうとした場合、失敗する可能性があります。通常は、大きいオブジェクトを使用する場合、必要な情報だけを出力することによってこの問題を回避できます。たとえば、*Get-Process* などを出力するのではなく、*Get-Process | Select ProcessName, CPU* で必要なフィールドだけを出力できます。
 
 ## PowerShell ワークフロー Runbook
@@ -104,4 +104,4 @@ PowerShell ワークフロー Runbook は、[Windows PowerShell ワークフロ�
 - Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、「[Windows PowerShell ワークフローについて](automation-powershell-workflow.md)」を参照してください。
 - Runbook を作成またはインポートする方法については、「[Runbook の作成またはインポート](automation-creating-importing-runbook.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

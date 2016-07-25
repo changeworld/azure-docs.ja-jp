@@ -280,4 +280,20 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 この記事は、**C 用 Azure IoT デバイス SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。[次の記事](iot-hub-device-sdk-c-serializer.md)では、**serializer** ライブラリについて同様に詳細を紹介します。
 
-<!---HONumber=AcomDC_0629_2016-->
+IoT Hub の開発に関する詳細については、[IoT Hub SDK][lnk-sdks] を参照してください
+
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
+
+[lnk-sdks]: iot-hub-sdks-summary.md
+
+[lnk-design]: iot-hub-guidance.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

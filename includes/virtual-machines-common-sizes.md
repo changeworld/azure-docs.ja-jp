@@ -36,7 +36,7 @@ Azure VM の一般的な制限事項については、「[Azure サブスクリ�
 
 * F シリーズ VM は、より高速の CPU を必要としつつも、CPU コアあたりのメモリや ローカル SSD についてはそれほど多くを要求しないワークロードに最適です。F シリーズのもたらす価値は、分析、ゲーム サーバー、Web サーバー、およびバッチ処理などのワークロードに恩恵を与えます。
 
-*   Azure データ センターの物理ホストの一部では、A5 ～ A11 などの大きな仮想マシンのサイズをサポートしていない場合があります。その結果、既存の仮想マシンのサイズを新しいサイズに変更した場合、2013 年 4 月 16 日よりも前に作成された仮想ネットワーク内に新しい仮想マシンを作成した場合、または既存のクラウド サービスに新しい仮想マシンを追加した場合に、"**仮想マシン <machine name> を構成できませんでした**" または "**仮想マシン <machine name> を作成できませんでした**" というエラー メッセージが表示されることがあります。各デプロイ シナリオの回避策については、サポート フォーラムで、[エラー: "仮想マシンを構成できませんでした"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) というトピックを参照してください。
+*   Azure データ センターの物理ホストの一部では、A5 ～ A11 などの大きな仮想マシンのサイズをサポートしていない場合があります。その結果、既存の仮想マシンのサイズを新しいサイズに変更した場合、2013 年 4 月 16 日よりも前に作成された仮想ネットワーク内に新しい仮想マシンを作成した場合、または既存のクラウド サービスに新しい仮想マシンを追加した場合に、"**仮想マシン <マシン名> を構成できませんでした**" または "**仮想マシン <マシン名> を作成できませんでした**" というエラー メッセージが表示されることがあります。各デプロイ シナリオの回避策については、サポート フォーラムで、[エラー: "仮想マシンを構成できませんでした"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) というトピックを参照してください。
 
 
 ## パフォーマンスに関する考慮事項
@@ -122,12 +122,12 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_D2\_v2 |2|7 GB|2|一時的 (SSD) = 100 GB |4|4 x 500| 高 |
 |Standard\_D3\_v2 |4|14 GB|4|一時的 (SSD) = 200 GB |8|8 x 500| 高 |
 |Standard\_D4\_v2 |8|28 GB|8|一時的 (SSD) = 400 GB |16|16 x 500| 高 |
-|Standard\_D5\_v2 |16|56 GB|8|一時的 (SSD) = 800 GB |32|32 x 500| 非常に高 |
+|Standard\_D5\_v2 |16|56 GB|8|一時的 (SSD) = 800 GB |32|32 x 500| 極めて高 |
 |Standard\_D11\_v2 |2|14 GB|2|一時的 (SSD) = 100 GB |4|4 x 500| 高 |
 |Standard\_D12\_v2 |4|28 GB|4|一時的 (SSD) = 200 GB |8|8 x 500| 高 |
 |Standard\_D13\_v2 |8|56 GB|8|一時的 (SSD) = 400 GB |16|16 x 500| 高 |
-|Standard\_D14\_v2 |16|112 GB|8|一時的 (SSD) = 800 GB |32|32 x 500| 非常に高 |
-|Standard\_D15\_v2 |20|140 GB|10|一時的 (SSD) = 1 TB |40|40 x 500| 非常に高 |
+|Standard\_D14\_v2 |16|112 GB|8|一時的 (SSD) = 800 GB |32|32 x 500| 極めて高 |
+|Standard\_D15\_v2 |20|140 GB|10|一時的 (SSD) = 1 TB |40|40 x 500| 極めて高 |
 
 
 ## DS シリーズ*
@@ -143,7 +143,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_DS13 |8|56|8|ローカル SSD ディスク = 112 GB |16|288| 25,600 256 MB/秒 | 高 |
 |Standard\_DS14 |16|112|8|ローカル SSD ディスク = 224 GB |32|576| 毎秒 51,200 512 MB | 非常に高 |
 
-**DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
+*DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
 
 
 ## DSv2 シリーズ*
@@ -154,15 +154,15 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_DS2\_v2 |2|7|2|ローカル SSD ディスク = 14 GB |4|86| 毎秒 6,400 96 MB | 高 |
 |Standard\_DS3\_v2 |4|14|4|ローカル SSD ディスク = 28 GB |8|172| 毎秒 12,800 192 MB | 高 |
 |Standard\_DS4\_v2 |8|28|8|ローカル SSD ディスク = 56 GB |16|344| 毎秒 25,600 384 MB | 高 |
-|Standard\_DS5\_v2 |16|56|8|ローカル SSD ディスク = 112 GB |32|688| 毎秒 51,200 768 MB | 高 |
+|Standard\_DS5\_v2 |16|56|8|ローカル SSD ディスク = 112 GB |32|688| 毎秒 51,200 768 MB | 極めて高 |
 |Standard\_DS11\_v2 |2|14|2|ローカル SSD ディスク = 28 GB |4|72| 毎秒 6,400 96 MB | 高 |
 |Standard\_DS12\_v2 |4|28|4|ローカル SSD ディスク = 56 GB |8|144| 毎秒 12,800 192 MB | 高 |
 |Standard\_DS13\_v2 |8|56|8|ローカル SSD ディスク = 112 GB |16|288| 毎秒 25,600 384 MB | 高 |
-|Standard\_DS14\_v2 |16|112|8|ローカル SSD ディスク = 224 GB |32|576| 毎秒 51,200 768 MB | 非常に高 |
-|Standard\_DS15\_v2 |20|140 GB|10|ローカル SSD ディスク = 280 GB |40| 720|毎秒 64,000 960 MB | 非常に高 |
+|Standard\_DS14\_v2 |16|112|8|ローカル SSD ディスク = 224 GB |32|576| 毎秒 51,200 768 MB | 極めて高 |
+|Standard\_DS15\_v2 |20|140 GB|10|ローカル SSD ディスク = 280 GB |40| 720|毎秒 64,000 960 MB | 極めて高 |
 
 
-**DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
+*DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
 
 
 ## F シリーズ
@@ -174,7 +174,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | Standard\_F2 | 2 | 4 GB | 2 | 一時的 (SSD) = 32 GB | 4 | 4 x 500 | 高 |
 | Standard\_F4 | 4 | 8 GB | 4 | 一時的 (SSD) = 64 GB | 8 | 8 x 500 | 高 |
 | Standard\_F8 | 8 | 16 GB | 8 | 一時的 (SSD) = 128 GB | 16 | 16 x 500 | 高 |
-| Standard\_F16 | 16 | 32 GB | 8 | 一時的 (SSD) = 256 GB | 32 | 32 x 500 | 非常に高 |
+| Standard\_F16 | 16 | 32 GB | 8 | 一時的 (SSD) = 256 GB | 32 | 32 x 500 | 極めて高 |
 
 
 
@@ -186,11 +186,11 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | Standard\_F2s | 2 | 4 | 2 | ローカル SSD ディスク = 8 GB | 4 | 24 | 毎秒 6,400 96 MB | 高 |
 | Standard\_F4s | 4 | 8 | 4 | ローカル SSD ディスク = 16 GB | 8 | 48 | 毎秒 12,800 192 MB | 高 |
 | Standard\_F8s | 8 | 16 | 8 | ローカル SSD ディスク = 32 GB | 16 | 96 | 毎秒 25,600 384 MB | 高 |
-| Standard\_F16s | 16 | 32 | 8 | ローカル SSD ディスク = 64 GB | 32 | 192 | 毎秒 51,200 768 MB | 非常に高 |
+| Standard\_F16s | 16 | 32 | 8 | ローカル SSD ディスク = 64 GB | 32 | 192 | 毎秒 51,200 768 MB | 極めて高 |
 
 
 
-**Fs シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
+*Fs シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
 
 
 
@@ -227,7 +227,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 
 クラシック デプロイ モデルでは、一部の VM サイズが CLI と Powershell で若干異なります。
 
-* Standard\_A0: ExtraSmall 
+* Standard\_A0: ExtraSmall
 * Standard\_A1: Small
 * Standard\_A2: Medium
 * Standard\_A3: Large
@@ -237,6 +237,6 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 ## 次のステップ
 
 - [Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md)について学習してください。
-- 高性能 コンピューティング (HPC) などのワークロードに対する [A8、A9、A10、A11 コンピューティング集中型インスタンス](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)について学習してください。
+- 高性能コンピューティング (HPC) などのワークロードに対する [A8、A9、A10、A11 コンピューティング集中型インスタンス](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)について学習してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,23 +1,24 @@
 <properties
-	pageTitle="リモート デスクトップの詳細なトラブルシューティング |Microsoft Azure"
-	description="Windows を実行する Azure 仮想マシンへの RDP 接続に関する詳細なトラブルシューティングの手順について説明します。"
+	pageTitle="詳細なトラブルシューティング: VM のリモート デスクトップに接続できない| Microsoft Azure"
+	description="Azure の Windows 仮想マシンにリモート デスクトップで接続できないエラーをトラブルシューティングします。"
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="iainfoulds"
 	manager="timlt"
 	editor=""
-	tags="top-support-issue,azure-service-management,azure-resource-manager"/>
+	tags="top-support-issue,azure-service-management,azure-resource-manager"
+	keywords="リモート デスクトップに接続できない, リモート デスクトップのトラブルシューティング, リモート デスクトップで接続できない, リモート デスクトップ エラー, リモート デスクトップのトラブルシューティング, リモート デスクトップの問題"/>
 
 <tags
 	ms.service="virtual-machines-windows"
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
-	ms.topic="support-article"
-	ms.date="06/07/2016"
+	ms.topic="article"
+	ms.date="07/06/2016"
 	ms.author="iainfou"/>
 
-# Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関する詳細なトラブルシューティング
+# Azure の Windows VM に接続できないリモート デスクトップの問題を詳しくトラブルシューティングする
 
 この記事では、Windows ベースの Azure 仮想マシンの複雑なリモート デスクトップのエラーを診断して修正するための詳細なトラブルシューティング手順を説明します。
 
@@ -113,7 +114,15 @@
 
 ### <a id="nsgs"></a>ソース 4: ネットワーク セキュリティ グループ
 
-ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。ネットワークのセキュリティ グループのルールによって、インターネットからのリモート デスクトップ トラフィックが許可されていることを確認してください。
+ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。インターネットからのリモート デスクトップ トラフィックが、ネットワーク セキュリティ グループの規則で許可されていることを確認してください。
+
+- Azure ポータルで VM を選択します。
+- **[すべての設定]**、**[ネットワーク インターフェイス]** の順にクリックし、該当するネットワーク インターフェイスを選択します。
+- **[すべての設定]**、**[ネットワーク セキュリティ グループ]** の順にクリックし、該当するネットワーク セキュリティ グループを選択します。
+- **[すべての設定]**、**[受信セキュリティ規則]** の順にクリックし、TCP ポート 3389 の RDP を許可する規則が存在することを確認します。
+	- 規則が存在しない場合は、**[追加]** をクリックして新しい規則を作成します。プロトコルに「**TCP**」と入力し、宛先ポート範囲に「**3389**」と入力します。
+	- アクションが **[許可]** に設定されていることを確認し、[OK] をクリックして新しい受信規則を保存します。
+
 
 詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)」を参照してください。
 
@@ -139,7 +148,7 @@
 
 次に、Azure PowerShell のコマンド プロンプトを開き、現在のフォルダーを、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルのある場所に変更します。Azure PowerShell スクリプトを実行するには、適切な実行ポリシーを設定する必要があります。**Get-executionpolicy** コマンドを実行して、現在のポリシー レベルを決定します。適切なレベルの設定方法の詳細については、「[Set-executionpolicy](https://technet.microsoft.com/library/hh849812.aspx)」 を参照してください。
 
-次に、Azure のサブスクリプション名、クラウド サービス名、および仮想マシン名を入力してから (< and > 文字を削除する)、これらのコマンドを実行します。
+次に、Azure のサブスクリプション名、クラウド サービス名、および仮想マシン名を入力してから (< および > 文字を削除する)、これらのコマンドを実行します。
 
 	$subscr="<Name of your Azure subscription>"
 	$serviceName="<Name of the cloud service that contains the target virtual machine>"
@@ -195,4 +204,4 @@ Azure VM のリモート デスクトップのエンドポイントでも、内�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0713_2016-->

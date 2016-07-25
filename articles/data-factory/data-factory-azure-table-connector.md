@@ -403,7 +403,7 @@ azureTableDefaultPartitionKeyValue | シンクで使用できる既定のパー�
 azureTablePartitionKeyName | ユーザーが指定した列名です。列の値がパーティション キーとして使用されます。指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 | 列の名前。 | いいえ |
 azureTableRowKeyName | ユーザーが指定した列名です。列の値が行キーとして使用されます。指定しない場合、各行に GUID を使用します。 | 列の名前。 | いいえ  
 azureTableInsertType | Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行が、値を置換またはマージさせるかどうかを制御します。<br/><br/>これらの設定 (マージと置換) のしくみについては、「[エンティティの挿入または統合](https://msdn.microsoft.com/library/azure/hh452241.aspx)」と「[エンティティの挿入または置換](https://msdn.microsoft.com/library/azure/hh452242.aspx)」を参照してください。<br/><br> この設定は、テーブル レベルではなく、行レベルで適用されることに注意してください。どちらのオプションも、出力テーブル内の、入力内に存在しない行を削除しません。 | merge (既定)<br/>replace | いいえ 
-writeBatchSize | writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 | Integer | いいえ (既定値: 10000) 
+writeBatchSize | writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 | 整数 (行数)| いいえ (既定値: 10000) 
 writeBatchTimeout | writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 | timespan<br/><br/>例: "00:20:00" (20 分) | No (既定値はストレージ クライアントの既定のタイムアウト値の 90 秒)
 
 ### azureTablePartitionKeyName
@@ -529,4 +529,4 @@ lastlogindate | Edm.DateTime
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

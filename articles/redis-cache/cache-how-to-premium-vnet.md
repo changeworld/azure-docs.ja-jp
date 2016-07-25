@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/01/2016" 
+	ms.date="07/12/2016" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
@@ -74,6 +74,7 @@ VNet の使用時に Azure Redis Cache インスタンスに接続するには�
 -	[Azure Redis Cache と VNet の誤った構成に関してよく見られる問題を教えてください](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
 -	[Standard キャッシュまたは Basic キャッシュで VNet を使用できますか](#can-i-use-vnets-with-a-standard-or-basic-cache)
 -	[Redis Cache の作成が失敗するサブネットと成功するサブネットがあるのはなぜですか](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
+-	[VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 
 
 ## Azure Redis Cache と VNet の誤った構成に関してよく見られる問題を教えてください
@@ -96,7 +97,7 @@ Azure Redis Cache が VNet でホストされている場合は、次の表に�
 
 Azure Redis Cache のネットワーク接続要件には、仮想ネットワークで最初に満たされていないものがある可能性があります。仮想ネットワーク内で使用したときに正常に動作させるためには、Azure Redis Cache に次のものすべてが必要になります。
 
--  世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続これには、Azure Redis Cache インスタンスと同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。 
+-  世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続これには、Azure Redis Cache インスタンスと同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。
 -  *ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl.microsoft.com* に対する発信ネットワーク接続。これは、SSL 機能をサポートするために必要です。
 -  仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。これらの DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。
 
@@ -111,6 +112,13 @@ VNet は Premium キャッシュでのみ使用できます。
 Azure Redis Cache を ARM VNet にデプロイする場合、キャッシュは、他の種類のリソースが含まれない専用サブネット内に存在する必要があります。他のリソースが含まれる ARM VNet サブネットに Azure Redis Cache をデプロイしようとすると、そのデプロイは失敗します。新しい Redis Cache を作成する前に、サブネット内の既存のリソースを削除する必要があります。
 
 使用可能な IP アドレスが十分にあれば、複数の種類のリソースをクラシック VNet にデプロイできます。
+
+### VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか
+
+キャッシュが VNET の一部である場合、キャッシュにアクセスできるのは VNET 内のクライアントだけであるため、この場合、次のキャッシュ管理機能は動作しません。
+
+-	Redis コンソール - Redis コンソールでは VNET に含まれていない VM でホストされている redis-cli.exe クライアントを使用するため、キャッシュには接続できません。
+
 
 ## Azure Redis Cache と ExpressRoute の使用
 
@@ -133,11 +141,11 @@ ExpressRoute を使用したオンプレミス アプリケーションから Az
 
 **重要:** ExpressRoute 構成でアドバタイズされたルートよりも優先するには、UDR に定義されているルートを詳細にする**必要があります**。以下の例では、0.0.0.0/0 の広域なアドレス範囲を使用しているので、より詳細なアドレス範囲を使用するルート アドバタイズで誤って上書きされる可能性があります。
 
-**非常に重要:** Azure Redis Cache は、**パブリック ピアリング パスからプライベート ピアリング パスに誤ってルートをクロスアドバタイズした** ExpressRoute 構成ではサポートされません。パブリック ピアリングが構成された ExpressRoute 構成は、大規模な Microsoft Azure の IP アドレス範囲について Microsoft からルート アドバタイズを受信します。これらのアドレス範囲がプライベート ピアリング パスで誤ってクロスアドバタイズされている場合、Azure Redis Cache インスタンスのサブネットからのすべての発信ネットワーク パケットは、誤って顧客のオンプレミス ネットワーク インフラストラクチャに強制的にトンネリングされます。このネットワーク フローでは、Azure Redis Cache が機能しません。この問題を解決するには、パブリック ピアリング パスからプライベート ピアリング パスへのルートのクロスアドバタイズを停止します。
+**非常に重要:** Azure Redis Cache は、**パブリック ピアリング パスからプライベート ピアリング パスにルートを正しくクロスアドバタイズしていない** ExpressRoute 構成ではサポートされません。パブリック ピアリングが構成された ExpressRoute 構成は、大規模な Microsoft Azure の IP アドレス範囲について Microsoft からルート アドバタイズを受信します。これらのアドレス範囲がプライベート ピアリング パスで誤ってクロスアドバタイズされている場合、Azure Redis Cache インスタンスのサブネットからのすべての発信ネットワーク パケットは、誤って顧客のオンプレミス ネットワーク インフラストラクチャに強制的にトンネリングされます。このネットワーク フローでは、Azure Redis Cache が機能しません。この問題を解決するには、パブリック ピアリング パスからプライベート ピアリング パスへのルートのクロスアドバタイズを停止します。
 
 ユーザー定義ルートの背景情報については、この[概要](../virtual-network/virtual-networks-udr-overview.md)を参照してください。
 
-ExpressRoute の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
+ExpressRoute の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」をご覧ください。
 
 ## 次のステップ
 Premium キャッシュ機能をさらに使用する方法を学習します。
@@ -159,4 +167,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0713_2016-->

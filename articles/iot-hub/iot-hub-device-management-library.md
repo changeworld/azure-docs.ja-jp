@@ -183,7 +183,7 @@ LWM2M データ モデルには、オブジェクトとリソースの概念が�
 | パッケージ | 書き込み | 非透過的 | | バイナリ形式のファームウェア パッケージ。<br/>マップ先のサービス API:<br/>**SystemPropertyNames.FirmwarePackage** |
 | PackageURI | 書き込み | String | 0 ～ 255 バイト | デバイスがファームウェア パッケージをダウンロードできる URI。<br/>マップ先のサービス API: **SystemPropertyNames.FirmwarePackageUri** |
 | 更新 | Execute | | | パッケージに格納されているファームウェア パッケージを使用するか、パッケージ URI からダウンロードされたファームウェアを使用して、ファームウェアを更新します。<br/>マップ先のサービス API:<br/>**ScheduleFirmwareUpdateAsync** |
-| 状態 | 読み取り | Integer | 1 ～ 3 | ファームウェア更新処理の状態:<br/>**1**: アイドル状態。ファームウェア パッケージをダウンロードする前か、ファームウェア パッケージを適用した後にこの状態である場合があります。<br/>**2**: ファームウェア パッケージのダウンロード中。<br/>**3**: ファームウェア パッケージがダウンロードされました。<br/> マップ先のサービス API: **SystemPropertyNames.FirmwareUpdateState** |
+| State | 読み取り | Integer | 1 ～ 3 | ファームウェア更新処理の状態:<br/>**1**: アイドル状態。ファームウェア パッケージをダウンロードする前か、ファームウェア パッケージを適用した後にこの状態である場合があります。<br/>**2**: ファームウェア パッケージのダウンロード中。<br/>**3**: ファームウェア パッケージがダウンロードされました。<br/> マップ先のサービス API: **SystemPropertyNames.FirmwareUpdateState** |
 | UpdateResult | 読み取り | Integer | 0 ～ 6 | ファームウェアのダウンロードまたは更新の結果<br/>**0**: 既定値。<br/>**1**: ファームウェアの更新に成功しました。<br/>**2**: 新しいファームウェア パッケージ用に十分な記憶域がありません。<br/>**3**: ファームウェア パッケージのダウンロード中にメモリ不足が発生しました。<br/>**4**: ファームウェア パッケージのダウンロード中に接続が切断されました。<br/>**5**: 新しくダウンロードされたパッケージの CRC チェックが失敗しました。<br/>**6**: ファームウェア パッケージの種類がサポートされていません。<br/>**7**: URI が無効です。マップ先のサービス API: **SystemPropertyNames.FirmwareUpdateResult** |
 | PkgName | 読み取り | String | 0 ～ 255 バイト | **Package** リソースによって参照されるファームウェア パッケージのわかりやすい名前。<br/>マップ先のサービス API:<br/>**SystemPropertyNames.FirmwarePackageName** |
 | PackageVersion | 読み取り | String | 0 ～ 255 バイト | **Package** リソースによって参照されるファームウェア パッケージのバージョン。<br/>マップ先のサービス API:<br/>**SystemPropertyNames.FirmwarePackageVersion** |
@@ -204,6 +204,15 @@ LWM2M データ モデルには、オブジェクトとリソースの概念が�
 | 値 | 読み取り/書き込み | String | | 読み取りまたは更新を行う構成値を一意に識別します。 |
 | 適用 | Execute | | | デバイスに構成の変更を適用します。 |
 
+## 次のステップ
+
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
+
 [img-library-overview]: media/iot-hub-device-management-library/library.png
 [lnk-dm-overview]: iot-hub-device-management-overview.md
 [lnk-get-started]: iot-hub-device-management-get-started.md
@@ -216,10 +225,14 @@ LWM2M データ モデルには、オブジェクトとリソースの概念が�
 [Wakaama]: https://github.com/eclipse/wakaama
 [OMA LWM2M Object and resource registry]: http://technical.openmobilealliance.org/Technical/technical-information/omna/lightweight-m2m-lwm2m-object-registry
 
-[lnk-run-linux]: http://TODO
 [lnk-Wakaama]: https://github.com/eclipse/wakaama
 [lnk-github1]: https://github.com/Azure/azure-iot-sdks/tree/dmpreview/c/iotdm_client/lwm2m_objects
 [lnk-github2]: https://github.com/Azure/azure-iot-sdks/tree/dmpreview/c/iotdm_client/lwm2m_objects
 [lnk-oma]: http://technical.openmobilealliance.org/Technical/technical-information/omna/lightweight-m2m-lwm2m-object-registry
 
-<!---HONumber=AcomDC_0608_2016-->
+[lnk-design]: iot-hub-guidance.md
+[lnk-devguide]: iot-hub-devguide.md
+[lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
+
+<!---HONumber=AcomDC_0713_2016-->

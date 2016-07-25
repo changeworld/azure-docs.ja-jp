@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 # Reliable Actors の状態管理
@@ -62,7 +62,7 @@ class MyActor : Actor, IMyActor
 
 ### 既定値と生成される設定
 
-`StatePersistence` 属性を使用する場合、状態プロバイダーは実行時にアクター サービスが開始されるときに自動的に選択されます。ただし、レプリカ数は、コンパイル時に Visual Studio アクター ビルド ツールによって設定されます。ビルド ツールは自動的にアクター サービスの*既定のサービス*を ApplicationManifest.xml 内に生成します。**最小レプリカ セット サイズ**と**ターゲット レプリカ セット サイズ**のために、パラメーターが作成されます。もちろん、これらのパラメーターは手動で変更できます。ただし、`StatePersistence` 属性が変更されるたびに、パラメーターは選択された `StatePersistence` 属性の既定のレプリカ セット サイズ値に設定され、前の値は上書きされます。
+`StatePersistence` 属性を使用する場合、状態プロバイダーは実行時にアクター サービスが開始されるときに自動的に選択されます。ただし、レプリカ数は、コンパイル時に Visual Studio アクター ビルド ツールによって設定されます。ビルド ツールは自動的にアクター サービスの*既定のサービス*を ApplicationManifest.xml 内に生成します。**最小レプリカ セット サイズ**と**ターゲット レプリカ セット サイズ**のために、パラメーターが作成されます。もちろん、これらのパラメーターは手動で変更できます。ただし、`StatePersistence` 属性が変更されるたびに、パラメーターは選択された `StatePersistence` 属性の既定のレプリカ セット サイズ値に設定され、前の値は上書きされます。つまり、`StatePersistence` 属性の値を変更すると、ServiceManifest.xml に設定した値**のみ**がビルド時にオーバーライドされます。
 
 ```xml
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -98,9 +98,9 @@ class MyActor : Actor, IMyActor
 
  - アクター メソッドが、状態マネージャーからオブジェクトを取得した後に、未処理の例外をスローする。
  - アクターが、非アクティブ化の後、またはエラーのために、再アクティブ化される。
- - 状態プロバイダーが、状態をディスクにページングする場合。この動作は、状態プロバイダーの実装に依存します。`Persisted` 設定用の既定の状態プロバイダーは、この動作を行います。 
+ - 状態プロバイダーが、状態をディスクにページングする場合。この動作は、状態プロバイダーの実装に依存します。`Persisted` 設定用の既定の状態プロバイダーは、この動作を行います。
 
-状態は、次のように標準の *Get* 操作を使用して取得できます。指定されたキーにエントリが存在しない場合は、`KeyNotFoundException` がスローされます。
+状態は、次のように標準の *Get* 操作を使用して取得できます。指定されたキーのエントリが存在しない場合は、`KeyNotFoundException` がスローされます。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -113,7 +113,7 @@ class MyActor : Actor, IMyActor
 }
 ```
 
-状態は、次のように *TryGet* メソッドを使用して取得することもできます。指定されたキーにエントリが存在しない場合も、例外はスローされません。
+状態は、次のように *TryGet* メソッドを使用して取得することもできます。指定されたキーのエントリが存在しない場合も、例外はスローされません。
 
 ```csharp
 class MyActor : Actor, IMyActor
@@ -232,4 +232,4 @@ class MyActor : Actor, IMyActor
  - [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
  - [コード サンプル](https://github.com/Azure/servicefabric-samples)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0713_2016-->

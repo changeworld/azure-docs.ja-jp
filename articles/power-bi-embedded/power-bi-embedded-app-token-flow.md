@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Power BI Embedded のアプリケーション トークン フローについて"
-   description="Power BI Embedded の認証と承認のためのアプリケーション トークンについて"
+   pageTitle="Power BI Embedded での認証と承認"
+   description="Power BI Embedded での認証と承認"
    services="power-bi-embedded"
    documentationCenter=""
    authors="minewiskan"
@@ -13,14 +13,52 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="06/28/2016"
+   ms.date="07/01/2016"
    ms.author="owend"/>
 
-# Power BI Embedded のアプリケーション トークン フローについて
+# Power BI Embedded での認証と承認
 
-**Power BI Embedded** サービスでは、明示的なエンドユーザー認証ではなく、**アプリケーション トークン**を使用して認証と承認を行います。**アプリケーション トークン** モデルでは、アプリケーションがエンドユーザーの認証と承認を管理します。アプリケーションは、必要に応じて**アプリケーション トークン**を作成して送信し、要求されたレポートをレンダリングするようサービスに伝えます。この設計では、アプリケーションでユーザーの認証と承認に **Azure Active Directory** を使用する必要はありません (ただし、Azure Active Directory を使用することもできます)。
+Power BI Embedded サービスでは、明示的なエンドユーザー認証ではなく、**キー**と**アプリケーション トークン**を使用して認証と承認を行います。このモデルでは、アプリケーションがエンドユーザーの認証と承認を管理します。アプリケーションは、必要に応じてアプリケーション トークンを作成して送信し、要求されたレポートをレンダリングするようサービスに伝えます。この設計では、アプリケーションでユーザーの認証と承認に Azure Active Directory を使用する必要はありません (ただし、Azure Active Directory を使用することもできます)。
 
-**アプリケーション トークン キーのフロー**は次のとおりです。
+## 2 つの認証方法
+
+**キー** - キーは、すべての Power BI Embedded REST API 呼び出しに使用できます。キーを取得するには、**Azure ポータル**で **[すべての設定]**、**[アクセス キー]** の順にクリックします。キーは常にパスワードと同様に扱います。これらのキーは、特定のワークスペース コレクションで REST API 呼び出しを行うアクセス許可を持ちます。
+
+REST 呼び出しでキーを使用するには、次の Authorization ヘッダーを追加します。
+
+    Authorization: AppKey {your key}
+
+**アプリケーション トークン** - アプリケーション トークンは、すべての組み込み要求に使用されます。アプリケーション トークンはクライアント側で実行されるように設計されているため、1 つのレポートに制限されます。アプリケーション トークンには有効期限を設定するのがベスト プラクティスです。
+
+アプリケーション トークンは、いずれかのキーで署名された JWT (JSON Web トークン) です。
+
+アプリケーション トークンには、次の要求を含めることができます。
+
+| 要求 | 説明 |
+|--------------|------------|
+| **ver** | アプリケーション トークンのバージョン。現在のバージョンは 1.0.0 です。 |
+| **aud** | トークンの対象となる受信者。Power BI Embedded では、"https://analysis.windows.net/powerbi/api" を使用します。 |
+| **iss** | トークンを発行したアプリケーションを示す文字列。 |
+| **type** | 作成されるアプリケーション トークンの種類。現在サポートされている種類は **embed** だけです。 |
+| **wcn** | トークンの発行対象であるワークスペース コレクション名。 |
+| **wid** | トークンの発行対象であるワークスペース ID。 |
+| **rid** | トークンの発行対象であるレポート ID。 |
+| **username** (省略可能) | RLS で使用されます。これは、RLS のルールを適用するときにユーザーを特定するのに役立つ文字列です。 |
+| **roles** (省略可能) | 行レベルのセキュリティのルールを適用するときに選択したロールを含む文字列。複数のロールを渡す場合は、文字列配列として渡す必要があります。 |
+| **exp** (省略可能) | トークンの有効期限を示します。これらは Unix タイムスタンプとして渡す必要があります。 |
+| **nbf** (省略可能) | トークンの有効期間の開始時刻を示します。これらは Unix タイムスタンプとして渡す必要があります。 |
+
+サンプル アプリケーション トークンは次のようになります。
+
+![](media\power-bi-embedded-app-token-flow\power-bi-embedded-app-token-flow-sample-coded.png)
+
+
+これをデコードすると次のようになります。
+
+![](media\power-bi-embedded-app-token-flow\power-bi-embedded-app-token-flow-sample-decoded.png)
+
+
+## フローのしくみ
 
 1. アプリケーションに API キーをコピーします。このキーは **Azure ポータル**で取得できます。
 
@@ -52,8 +90,7 @@
 
 ## 関連項目
 - [Get started with Microsoft Power BI Embedded sample (Microsoft Power BI Embedded のサンプルを使ってみる)](power-bi-embedded-get-started-sample.md)
-- [What is Microsoft Power BI Embedded (Microsoft Power BI Embedded とは)](power-bi-embedded-what-is-power-bi-embedded.md)
-- [Microsoft Power BI Embedded の一般的なシナリオ](power-bi-embedded-scenarios.md)
-- [Get started with Microsoft Power BI Embedded Preview (Microsoft Power BI Embedded プレビューを使ってみる)](power-bi-embedded-get-started.md)
+- [Common Microsoft Power BI Embedded scenarios (Microsoft Power BI Embedded の一般的なシナリオ)](power-bi-embedded-scenarios.md)
+- [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0713_2016-->

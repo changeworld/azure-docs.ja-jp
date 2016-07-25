@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"  
+ 	ms.date="07/12/2016"  
 	ms.author="juliako"/>
 
 #.NET を使用した Media Services 開発
@@ -75,7 +75,12 @@
 **アカウント名**と**アカウント キー**情報を取得するには、**Azure クラシック管理ポータル**を開いて Media Services のアカウントを選択し、**[キーの管理]** をクリックします。
 
 
-<configuration> ... <appSettings> <add key="MediaServicesAccountName" value="Media-Services-Account-Name" /> <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" /> </appSettings>
+	<configuration>
+	...
+	  <appSettings>
+	    <add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
+	    <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
+	  </appSettings>
 	  
 	</configuration>
 
@@ -103,4 +108,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0713_2016-->
