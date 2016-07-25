@@ -16,7 +16,8 @@
 
 #チュートリアル: Azure Active Directory と Kudos の統合
   
-このチュートリアルの目的は、Azure と Kudos の統合を紹介することです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルの目的は、Azure と Kudos の統合を紹介することです。
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Kudos テナント
@@ -64,7 +65,9 @@
     ![Kudos](./media/active-directory-saas-kudos-tutorial/IC787801.png "Kudos")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Kudos に対する認証を行えるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Kudos に対する認証を行えるようにする方法を説明します。  
+この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
+この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
@@ -76,7 +79,7 @@
 
     ![Configure single sign-on](./media/active-directory-saas-kudos-tutorial/IC787803.png "Configure single sign-on")
 
-3.  **[アプリ URL の構成]** ページの **[Kudos サインオン URL]** テキストボックスに、"*https://company.kudosnow.com*" というパターンの URL を入力して、**[次へ]* をクリックします。
+3.  **[アプリ URL の構成]** ページの **[Kudos サインオン URL]** テキストボックスに、"*https://company.kudosnow.com*" というパターンの URL を入力して、**[次へ]** をクリックします。
 
     ![Configure App URL](./media/active-directory-saas-kudos-tutorial/IC787804.png "アプリケーション URL の構成")
 

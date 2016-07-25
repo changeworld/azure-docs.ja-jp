@@ -16,7 +16,8 @@
 
 #チュートリアル: Azure Active Directory と Jobscience の統合
   
-このチュートリアルの目的は、Azure と Jobscience の統合を示すことです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルの目的は、Azure と Jobscience の統合を示すことです。
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Jobscience でのシングル サインオンが有効なサブスクリプション
@@ -64,7 +65,9 @@
     ![Jobscience](./media/active-directory-saas-jobscience-tutorial/IC784357.png "Jobscience")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Jobscience に対する認証を行えるようにする方法を説明します。Jobscience のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Jobscience に対する認証を行えるようにする方法を説明します。  
+Jobscience のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。  
+この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
@@ -145,10 +148,12 @@ SP によって開始されるシングル サインオンのログイン URL �
 
 ![セキュリティ コントロール](./media/active-directory-saas-jobscience-tutorial/IC784368.png "セキュリティ コントロール")
   
-前の手順で作成した SSO プロファイルをクリックします。このページに、会社のシングル サインオン URL が表示されます (例: *https://companyname.my.salesforce.com?so=companyid*)。
+前の手順で作成した SSO プロファイルをクリックします。
+このページに、会社のシングル サインオン URL が表示されます (例: *https://companyname.my.salesforce.com?so=companyid*)。
 ##ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが Jobscience にログインできるようにするには、そのユーザーを Jobscience にプロビジョニングする必要があります。Jobscience の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが Jobscience にログインできるようにするには、そのユーザーを Jobscience にプロビジョニングする必要があります。
+Jobscience の場合、プロビジョニングは手動で行います。
 
 ###ユーザー プロビジョニングを構成するには、次の手順に従います。
 

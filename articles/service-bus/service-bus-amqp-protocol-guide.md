@@ -206,7 +206,11 @@ API レベルでの "receive" 要求は、*flow* パフォーマティブに変�
 
 | フィールド名 | 使用法 | API 名 |
 |----------------	|-------------------------------	|---------------	|
-| durable | - | - | | priority | - | - | | ttl | このメッセージの 有効期限 (Time to Live)| [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) | | first-acquirer | - | - | | delivery-count | - | [DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) |
+| durable | - | - |
+| priority | - | - |
+| ttl | このメッセージの 有効期限 (Time to Live)| [TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) |
+| first-acquirer | - | - |
+| delivery-count | - | [DeliveryCount](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.deliverycount.aspx) |
 
 #### properties
 

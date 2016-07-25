@@ -16,7 +16,8 @@
 
 #チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合
 
-このチュートリアルでは、Azure と Brightspace by Desire2Learn の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と Brightspace by Desire2Learn の統合について説明します。
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Brightspace by Desire2Learn でのシングル サインオンが有効なサブスクリプション
@@ -89,7 +90,8 @@
 
 5.  ダウンロードしたメタデータ ファイルを Brightspace by Desire2Learn サポート チームに送信します。
 
-    >[AZURE.NOTE] Brightspace by Desire2Learn サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
+    >[AZURE.NOTE] Brightspace by Desire2Learn サポート チームが、実際に SSO を構成する必要があります。
+    ご使用のサブスクリプションで SSO が有効になると通知されます。
 
 6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
