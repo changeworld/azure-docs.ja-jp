@@ -1,5 +1,5 @@
 <properties
-	pageTitle="";502 無効なゲートウェイ"; エラーと ";503 サービス利用不可"; エラーの解決 | Microsoft Azure"
+	pageTitle=";502 無効なゲートウェイ"; エラーと ";503 サービス利用不可"; エラーの解決 | Microsoft Azure"
 	description="Azure App Service でホストされている Web アプリで発生するエラー ";502 無効なゲートウェイ"; と ";503 サービス利用不可"; のトラブルシューティングを行います。"
 	services="app-service\web"
 	documentationCenter=""
@@ -139,4 +139,4 @@ AutoHeal は、選択された設定 (構成の変更、要求、メモリに基
 
 Web アプリの管理には、Azure PowerShell を使用することもできます。詳細については、[リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!----HONumber=AcomDC_0713_2016-->
