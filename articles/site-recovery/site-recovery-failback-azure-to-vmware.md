@@ -128,7 +128,7 @@ Azure の VM がデータをオンプレミスのマスター ターゲット �
 	
 	5. サブネットとサブネットに接続するネットワーク インターフェイスを選択します。注: 独自の[ネットワーク インターフェイス](../virtual-network/virtual-networks-multiple-nics.md) (NIC) を作成し、デプロイ時に選択する必要があります。
 	
-		![](./media/site-recovery-failback-azure-to-vmware-new/psinputsadd.PNG)
+		![](./media/site-recovery-failback-azure-to-vmware-new/PSinputsadd.PNG)
 	
 	6. [OK] をクリックします。これにより、プロセス サーバーのセットアップで、デプロイメントの種類が Resource Manager の仮想マシンを作成するジョブがトリガーされます。VM 内でセットアップを実行して、サーバーを構成サーバーに登録する必要があります。これは、[こちらの手順](./site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)に従って行います。
 
@@ -252,4 +252,4 @@ VPN 接続または Azure ExpressRoute を使用してフェールバックで�
 - ExpressRoute が、ソース マシンがフェールオーバーする、フェールオーバーの発生後に Azure VM が配置される Azure VM 仮想ネットワーク上に設定されている必要があります。
 - データは、パブリック エンドポイントの Azure ストレージ アカウントに複製されます。ExpressRoute を使用するには、Site Recovery のレプリケーション用のターゲット データ センターを使用して ExpressRoute でパブリック ピアリングを設定する必要があります。
 
-<!----HONumber=AcomDC_0713_2016--->
+<!-----HONumber=AcomDC_0713_2016--->
