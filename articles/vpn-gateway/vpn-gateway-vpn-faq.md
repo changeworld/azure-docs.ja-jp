@@ -88,13 +88,17 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 次のクライアント オペレーティング システムがサポートされています。
 
-- Windows 7 (64 ビット バージョンのみ)
+- Windows 7 (32 ビットと 64 ビット)
 
-- Windows Server 2008 R2
+- Windows Server 2008 R2 (64 ビットのみ)
 
-- Windows 8 (64 ビット バージョンのみ)
+- Windows 8 (32 ビットと 64 ビット)
 
-- Windows Server 2012
+- Windows 8.1 (32 ビットと 64 ビット)
+
+- Windows Server 2012 (64 ビットのみ)
+
+- Windows Server 2012 R2 (64 ビットのみ)
 
 - Windows 10
 
@@ -279,4 +283,4 @@ Azure VPN Gateway 経由でトラフィックを通過させることは可能�
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

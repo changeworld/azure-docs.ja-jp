@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/16/2016" 
+	ms.date="07/13/2016"
 	ms.author="MarkVi"/>
 
 # サインイン ページとアクセス パネル ページに対する会社のブランドの追加
@@ -42,7 +42,7 @@
 
 ブランドに合わせてカスタマイズしたサインイン ページが表示されるのは、テナント固有の URL (https://outlook.com/**contoso**.com、https://mail.**contoso**.com など) でサービスにアクセスしたときだけです。
 
-テナント固有ではない URL (例: https://mail.office365.com)) でサービスにアクセスした場合、ブランド表示のないサインイン ページが表示されます。この場合ブランドは、自分のユーザー ID を入力した後、またはユーザー タイルを選択した後に表示されます。
+テナント固有ではない URL (例: https://mail.office365.com) でサービスにアクセスした場合、ブランド表示のないサインイン ページが表示されます。この場合ブランドは、自分のユーザー ID を入力した後、またはユーザー タイルを選択した後に表示されます。
 
 > [AZURE.NOTE]
 >
@@ -120,8 +120,8 @@ Azure クラシック ポータルでは、ディレクトリごとに、カス�
 
 次のような構成を考えてみます。
 
-- 既定のバナー ロゴとサインイン ページのテキスト (英語) 
-- 言語固有のサインイン ページ テキスト (ドイツ語) 
+- 既定のバナー ロゴとサインイン ページのテキスト (英語)
+- 言語固有のサインイン ページ テキスト (ドイツ語)
 
 言語の優先順位がドイツ語である場合、既定のバナー ロゴは適用されますが、ドイツ語のテキストは適用されません。
 
@@ -177,8 +177,8 @@ Azure クラシック ポータルでは、ディレクトリごとに、カス�
 
 **ブランドが適用されているかどうかを確認するには、次の手順に従います。**
 
-1. プライベート モードまたはシークレット モードでブラウザーを起動します。 
-2. https://outlook.com/contoso.com にアクセスします。contoso.com の部分は、カスタマイズしたドメインに置き換えてください。 
+1. プライベート モードまたはシークレット モードでブラウザーを起動します。
+2. https://outlook.com/contoso.com にアクセスします。contoso.com の部分は、カスタマイズしたドメインに置き換えてください。
 
 この方法は、contoso.onmicrosoft.com のようなドメインでも利用できます。
 
@@ -219,4 +219,4 @@ Azure AD でカスタマイズ可能な要素には、複数のユース ケー�
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

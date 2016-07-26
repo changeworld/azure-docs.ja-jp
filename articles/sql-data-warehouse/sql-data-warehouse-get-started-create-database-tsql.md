@@ -67,7 +67,7 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-load-sample-databases.md
 [Azure ポータルを使用した Azure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
 [PowerShell を使用した Azure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
-[リソース グループ]: ../azure-portal/resource-group-portal.md
+[リソース グループ]: ../resource-group-template-deploy-portal.md
 [Visual Studio と SSDT のインストール]: ./sql-data-warehouse-install-visual-studio.md
 
 
@@ -80,4 +80,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [Azure 無料試用版]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure クレジット]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

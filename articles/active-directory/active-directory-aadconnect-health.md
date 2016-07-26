@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/21/2016"
+	ms.date="07/14/2016"
 	ms.author="vakarand"/>
 
 # クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視
@@ -47,6 +47,7 @@ Azure AD Connect Health for AD FS では、Windows Server 2008 R2 の AD FS 2.0 
 >[AZURE.VIDEO azure-ad-connect-health--monitor-you-identity-bridge]
 
 ## [Azure AD Connect Health for Sync](active-directory-aadconnect-health-sync.md)
+
 Azure AD Connect Health for Sync は、オンプレミスの Active Directory と Azure Active Directory の間で実行された同期を監視し、情報を提供します。Azure AD Connect Health for Sync の主な機能は次のとおりです。
 
 - Azure AD Connect サーバー (同期エンジン) が正常に動作していない場合に通知されるアラートを使用して監視する
@@ -58,6 +59,17 @@ Azure AD Connect Health for Sync は、オンプレミスの Active Directory �
 
 >[AZURE.VIDEO azure-active-directory-connect-health-monitoring-the-sync-engine]
 
+## [Azure AD Connect Health for AD DS (プレビュー)](active-directory-aadconnect-health-adds.md)
+Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 にインストールされているドメイン コントローラーは、Azure AD Connect Health for AD DS で監視することができます。手軽で経済的な正常性エージェントをインストールすることによって、オンプレミスの AD DS 環境をクラウドから直接監視することができます。Azure AD Connect Health for AD DS の主な機能は次のとおりです。
+
+- ドメイン コントローラーの異常を検出する監視アラートと重大なアラートを知らせる電子メール通知。
+- [ドメイン コントローラー] ダッシュボード。ドメイン コントローラーの正常性と運用状態を把握できるクイック ビューアーが用意されています。
+- [レプリケーションの状態] ダッシュボード。レプリケーションに関する直近の情報のほか、エラーが検出された場合はトラブルシューティング ガイドへのリンクが表示されます。
+- トラブルシューティングや監視用途で、使用頻度の高いパフォーマンス カウンターのパフォーマンス データ グラフにすばやくアクセス可能。
+
+次のビデオでは、Azure AD Connect Health for AD DS の概要について説明します。
+
+>[AZURE.VIDEO azure-ad-connect-health-monitors-on-premises-ad-domain-services]
 
 ## Azure AD Connect Health の使用開始
 Azure AD Connect Health は簡単に使用を開始できます。次の手順に従ってください。
@@ -78,17 +90,20 @@ Azure AD Connect Health は簡単に使用を開始できます。次の手順�
 
 - Azure AD Connect Health for Sync の使用を開始するには、[Azure AD Connect の最新バージョン](http://go.microsoft.com/fwlink/?linkid=615771)をダウンロードしてインストールします。Health エージェントは、Azure AD Connect のインストールの一環としてインストールされます (バージョン 1.0.9125.0 以降)。Azure AD Connect では、以前のバージョンからのインプレース アップグレードがサポートされています。
 
+- Azure AD Connect Health for AD DS の使用を開始するには、こちら ([Azure AD Connect Health for AD DS エージェントのダウンロード](http://go.microsoft.com/fwlink/?LinkID=820540)[](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)) から最新バージョンのエージェントをダウンロードします。
 
 ## Azure AD Connect Health Portal
 Azure AD Connect Health ポータルを使用すると、アラート、パフォーマンスの監視、使用状況の分析を表示できます。https://aka.ms/aadconnecthealth から Azure AD Connect Health のメイン ブレードに移動できます。ブレードは、ウィンドウと考えることができます。メイン ブレードでは、[クイック スタート]、Azure AD Connect Health で提供されるサービス、その他の構成オプションが表示されます。スクリーン ショットの下に、それぞれの簡単な説明を示します。エージェントのデプロイ後、Azure AD Connect Health で監視されているサービスが、Health サービスによって自動的に識別されます。
 
-![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/portal2.png)
+![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/portal4.png)
 
 - **[クイック スタート]** – これを選択すると [クイック スタート] ブレードが開きます。ここで、[ツールの取得] を選択して Azure AD Connect Health エージェントをダウンロードしたり、ドキュメントにアクセスしたり、フィードバックを提供したりできます。
 
 - **[Active Directory フェデレーション サービス]** – Azure AD Connect Health が現在監視しているすべての AD FS サービスを表します。いずれかのインスタンスを選択すると、ブレードが開き、そのサービス インスタンスに関する情報が表示されます。この情報には、概要、プロパティ、アラート、監視、使用状況の分析などが含まれます。機能の詳細については[こちら](active-directory-aadconnect-health-adfs.md)を参照してください。
 
 - **Azure Active Directory Connect (Sync)** – Azure AD Connect Health が現在監視している Azure AD Connect サーバーを表します。エントリを選択すると、ブレードが開き、Azure AD Connect サーバーに関する情報が表示されます。機能の詳細については[こちら](active-directory-aadconnect-health-sync.md)を参照してください。
+ 
+- **[Active Directory ドメイン サービス]** – Azure AD Connect Health が現在監視しているすべての AD DS フォレストを表します。いずれかのフォレストを選択すると、ブレードが開き、そのフォレストに関する情報が表示されます。この情報には、重要度のきわめて高い情報や、ドメイン コントローラーのダッシュボード、レプリケーションの状態のダッシュボード、アラート、監視の概要が含まれます。機能の詳細については[こちら](active-directory-aadconnect-health-adds.md)を参照してください。
 
 - **[構成]** – 以下の機能のオン/オフを切り替えることができます。
 
@@ -103,7 +118,8 @@ Azure AD Connect Health ポータルを使用すると、アラート、パフ�
 * [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
 * [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
+* [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/08/2016"
+	ms.date="07/18/2016"
 	ms.author="curtand;jeffsta"/>
 
 # Azure Active Directory へのカスタム ドメイン名の追加
@@ -75,4 +75,4 @@ DNS エントリを追加すると、Azure AD でドメイン名を検証する�
 -   [ユーザーがサインインしたときに会社のブランドを表示する](active-directory-add-company-branding.md)
 -   [PowerShell を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -238,6 +238,6 @@ ASP.NET Web アプリが Azure App Service で動作するようになったら�
 
 * Web アプリを含むリソース グループと、関連するすべての Azure リソースは、作業が完了したら削除します。
 
-	Azure ポータルでリソース グループを操作する方法については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](../resource-group-portal.md)」を参照してください。
+	Azure ポータルでリソース グループを操作する方法については、「[Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](../resource-group-template-deploy-portal.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

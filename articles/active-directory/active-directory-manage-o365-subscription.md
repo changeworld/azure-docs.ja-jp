@@ -18,15 +18,7 @@
 
 # Azure での Office 365 サブスクリプションのディレクトリの管理
 
-この記事では、Office 365 サブスクリプションに対して作成されたディレクトリを Azure クラシック ポータルを使用して管理する方法について説明します。Azure クラシック ポータルにサインインするには、Azure サブスクリプションのサービス管理者または共同管理者であることが必要です。Azure サブスクリプションをお持ちでない場合は、
-
-1. Office 365 へのサインインに使用している職場または学校アカウントを使用してサインアップできます。
-
-![Email address entry box](./media/active-directory-manage-o365-subscription/AAD_O365_01.png)
-
-対応する Azure サブスクリプションが見つからなかったことを示すメッセージが表示されます。**[Microsoft Azure にサインアップ]** をクリックすると、Office 365 アカウントからの関連情報がサインアップ フォームにあらかじめ入力されています。同じアカウントがサービス管理者ロールに既定で割り当てられます。
-
-![Link to sign up for an Azure subscription](./media/active-directory-manage-o365-subscription/AAD_O365_02.png)
+この記事では、Office 365 サブスクリプションに対して作成されたディレクトリを Azure クラシック ポータルを使用して管理する方法について説明します。Azure クラシック ポータルにサインインするには、Azure サブスクリプションのサービス管理者または共同管理者であることが必要です。Azure サブスクリプションをお持ちでない場合、[30 日間無料試用版](https://azure.microsoft.com/trial/get-started-active-directory/)に今すぐサインアップすると、このリンクを使用して、初めてのクラウド ソリューションを 5 分程度でデプロイできます。Office 365 へのサインインに使用している職場または学校アカウントを使用してください。
 
 Azure サブスクリプションの手続きが完了したら、Azure クラシック ポータルにサインインして、Azure のサービスにアクセスできます。Office 365 ユーザーを認証するディレクトリと同じディレクトリを管理するには、Active Directory 拡張機能をクリックします。
 
@@ -69,4 +61,4 @@ Michael Smith が msmith@hotmail.com で Azure にサインインしていると
 ## 次のステップ
 サブスクリプションとディレクトリの関係の詳細については、[サブスクリプションをディレクトリに関連付ける方法](active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。
 
-<!-----HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

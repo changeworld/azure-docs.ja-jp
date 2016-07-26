@@ -65,7 +65,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 
 5. **リソース グループ**を選択するか、新しく作成します。
 
-	リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
+	リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
 
 5. **App Service プラン/場所**を選択するか、新しく作成します。
 
@@ -128,4 +128,4 @@ App Service Web Apps の使用方法の詳細については、ページの左�
 [7]: ./media/web-sites-php-web-site-gallery/search-web-app.png
 [browse]: ./media/web-sites-php-web-site-gallery/browse-web.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

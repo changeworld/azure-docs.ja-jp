@@ -13,7 +13,7 @@
 	ms.workload="search"
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
-	ms.date="03/08/2016"
+	ms.date="07/14/2016"
 	ms.author="evboyle"/>
 
 # NodeJS での Azure Search の使用
@@ -54,12 +54,11 @@
 
 次のいずれかの方法を使用してサンプルをダウンロードします。
 
-1. [AzureSearchNodeJSIndexerDemo](http://go.microsoft.com/fwlink/p/?LinkId=530198) に移動します。
+1. [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo) に移動します。
 2. **[Download ZIP]** をクリックして .zip ファイルを保存した後、すべてのファイルをコンテナーに抽出します。
 
 以降のすべてのファイル変更および実行ステートメントは、このフォルダー内のファイルに対して行われます。
 
-または、パス ステートメントに GIT がある場合は、PowerShell ウィンドウを開いて「`git clone https://github.com/EvanBoyle/AzureSearchNodeJSIndexerDemo.git`」と入力してもかまいません。
 
 ## Search サービスの URL と API キーでの config.js の更新
 
@@ -121,4 +120,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [5]: ./media/search-get-started-nodejs/AzSearch-NodeJS-configjs.png
 [9]: ./media/search-get-started-nodejs/rogerwilliamsschool.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0720_2016-->
