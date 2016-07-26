@@ -23,7 +23,7 @@
 - [.NET](documentdb-get-started.md)
 - [Node.JS](documentdb-nodejs-get-started.md)
 
-DocumentDB .NET SDK の NoSQL チュートリアルへようこそ。 このチュートリアルに従うことで、DocumentDB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
+Azure DocumentDB .NET SDK の NoSQL チュートリアルへようこそ。 このチュートリアルに従うことで、DocumentDB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
 
 ここで説明する操作は以下のとおりです。
 
@@ -612,4 +612,4 @@ Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリ
 [documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,19 +13,16 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/08/2016"
+   ms.date="07/20/2016"
    ms.author="yurid"/>
 
 # Azure Security Center トラブルシューティング ガイド
-このガイドは、所属組織が Azure Security Center を使用している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
+このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
 
 > [AZURE.NOTE] このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。
 
-## Azure セキュリティ センターとは
-Azure セキュリティ センターは、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。これにより、サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
-
 ## トラブルシューティング ガイド
-このガイドでは、Azure Security Center に関連する問題のトラブルシューティングの方法について説明します。Azure Security Center で行われるトラブルシューティングのほとんどは、問題の生じたコンポーネントの[監査ログ](https://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/) レコードを確認することから始まります。監査ログを使用すると、次の内容を判断することができます。
+このガイドでは、Security Center に関連する問題のトラブルシューティングの方法について説明します。Security Center で行われるトラブルシューティングのほとんどは、問題の生じたコンポーネントの[監査ログ](https://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/) レコードを確認することから始まります。監査ログを使用すると、次の内容を判断することができます。
 
 - 実行された操作
 - 操作を開始したユーザー
@@ -51,7 +48,7 @@ Azure セキュリティ監視拡張機能では、さまざまなセキュリ�
 
 *%systemdrive%\\windowsazure\\logs* (C:\\WindowsAzure\\Logs など) にあるエージェント ログを確認して、インストール プロセスに関する詳しい情報を入手することもできます。
 
-[AZURE.NOTE] Azure Security Center エージェントが正常に動作していない場合、ターゲット VM を再起動する必要があります。これは、エージェントの停止と開始のコマンドがないためです。
+> [AZURE.NOTE] Azure Security Center エージェントが正常に動作していない場合、ターゲット VM を再起動する必要があります。これは、エージェントの停止と開始のコマンドがないためです。
 
 ## Linux における監視エージェントのインストールのトラブルシューティング
 Linux システムでの VM エージェントのインストールをトラブルシューティングする場合、必ず /var/lib/waagent/ に拡張機能をダウンロードしておく必要があります。次のコマンドを実行すると、拡張機能がインストールされているかどうかを確認できます。
@@ -69,20 +66,20 @@ Linux システムでの VM エージェントのインストールをトラブ�
 
 ## Microsoft サポートへの問い合わせ
 
-一部の問題は、この記事で提供されているガイドラインを基に特定できます。その他の問題も Security Center パブリック [フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)で確認できます。ただし、トラブルシューティングがさらに必要な場合は、次に示すように Azure ポータルを使用して新しいサポート要求を開くことができます。
+一部の問題は、この記事で提供されているガイドラインを基に特定できます。その他の問題についてのドキュメントも Security Center パブリック [フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureSecurityCenter)で確認できます。ただし、トラブルシューティングがさらに必要な場合は、次に示すように Azure ポータルを使用して新しいサポート要求を開くことができます。
 
 ![Microsoft Support](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
 
-## 次のステップ
+## 関連項目
 
 このドキュメントでは、Azure セキュリティ センターでのセキュリティ ポリシーの構成方法について説明しました。Azure セキュリティ センターの詳細については、次を参照してください。
 
-- 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 - Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法についての説明
+- 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 - Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法について説明します。
 - 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」 – Azure リソースのヘルスを監視する方法についての説明
 - 「[Azure セキュリティ センターでのセキュリティのアラートの管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および対応について
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法についての説明
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

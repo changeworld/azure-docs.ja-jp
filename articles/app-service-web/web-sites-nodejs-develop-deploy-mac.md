@@ -44,7 +44,7 @@
 >
 > Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-##Web アプリの作成と Git 発行の有効化
+## Web アプリの作成と Git 発行の有効化
 
 Azure App Service で Web アプリを作成して、Git 発行を有効にするには、次の手順に従います。
 
@@ -66,7 +66,7 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
 
 6. **リソース グループ**を選択するか、新しく作成します。
 
-	リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースの管理](../resource-group-portal.md)」を参照してください。
+	リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
 
 7. **App Service プラン/場所**を選択するか、新しく作成します。
 
@@ -183,7 +183,7 @@ Azure App Service で Web アプリを作成して、Git 発行を有効にす�
 
 ##アプリケーションへの変更の発行
 
-1. テキスト エディターで **server.js** ファイルを開き、'Hello World\\n' を 'Hello Azure\\n' に変更します。 
+1. テキスト エディターで **server.js** ファイルを開き、'Hello World\\n' を 'Hello Azure\\n' に変更します。
 
 2. ファイルを保存します。
 
@@ -225,4 +225,4 @@ Azure で Node.js アプリケーションを開発する方法の詳細につ�
 [deployment-credentials]: ./media/web-sites-nodejs-develop-deploy-mac/deployment-credentials.png
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

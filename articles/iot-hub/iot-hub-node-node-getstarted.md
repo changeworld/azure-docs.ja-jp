@@ -201,10 +201,10 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
     var Message = require('azure-iot-device').Message;
     ```
 
-5. **connectionString** 変数を追加し、それを使用してデバイス クライアントを作成します。**{youriothubname}** を IoT Hub 名に、**{yourdevicekey}** を「*デバイス ID の作成*」セクションで生成したデバイス キーの値に置き換えます。
+5. **connectionString** 変数を追加し、それを使用してデバイス クライアントを作成します。**{youriothostname}** は、「*IoT Hub の作成*」セクションで作成した IoT Hub の名前に置き換えます。**{yourdevicekey}** は、「*デバイス ID の作成*」セクションで生成したデバイス キーの値に置き換えます。
 
     ```
-    var connectionString = 'HostName={youriothubname}.azure-devices.net;DeviceId=myFirstNodeDevice;SharedAccessKey={yourdevicekey}';
+    var connectionString = 'HostName={youriothostname};DeviceId=myFirstNodeDevice;SharedAccessKey={yourdevicekey}';
     
     var client = clientFromConnectionString(connectionString);
     ```
@@ -312,4 +312,4 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -1,8 +1,6 @@
-## リモート監視の事前構成済みソリューションのプロビジョニング
+## ソリューションのプロビジョニング
 
 1.  Azure アカウント資格情報を使用して [azureiotsuite.com][lnk-azureiotsuite] にログオンし、**[+]** をクリックして新しいソリューションを作成します。
-
-    > [AZURE.NOTE] ソリューションのプロビジョニングに必要なアクセス許可でお困りの場合は、詳細について「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」を参照してください。
 
 2.  **[リモート監視]** タイルで **[選択]** タイルを選択します。
 
@@ -26,10 +24,9 @@
 
 ソリューションの一覧に予測どおりに表示されない詳細がありますか? [ユーザーの声](https://feedback.azure.com/forums/321918-azure-iot)のページで機能に関する提案をお寄せください。
 
-[lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
 [lnk-permissions]: ../articles/iot-suite/iot-suite-permissions.md
 [lnk-portal]: http://portal.azure.com/
 [lnk-faq]: ../articles/iot-suite/iot-suite-faq.md
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

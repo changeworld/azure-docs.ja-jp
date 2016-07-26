@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/08/2016"
+   ms.date="07/19/2016"
    ms.author="yurid"/>
 
 # Power BI で Azure Security Center のデータから洞察を得る
@@ -107,7 +107,7 @@ Power BI で [Power BI のコンテンツ パック サービス](https://msit.p
 
 	![Policy Management dashboard](./media/security-center-powerbi/security-center-powerbi-fig1-new9.png)
 
-## 次のステップ
+## 関連項目
 このドキュメントでは、Azure Security Center での Power BI の使用方法について説明しました。Azure セキュリティ センターの詳細については、次を参照してください。
 
 - 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 - Azure Security Center の導入を計画する方法について説明します。
@@ -116,4 +116,4 @@ Power BI で [Power BI のコンテンツ パック サービス](https://msit.p
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

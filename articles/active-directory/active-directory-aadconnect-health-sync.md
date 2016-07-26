@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/12/2016"
+	ms.date="07/14/2016"
 	ms.author="billmath"/>
 
 # Azure AD Connect Health for Sync の使用
-次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect 同期の監視について記述しています。Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「[AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)」を参照してください。
+次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「[AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)」を参照してください。また、Azure AD Connect Health での Active Directory ドメイン サービスの監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
 
 ![Azure AD Connect Health for Sync](./media/active-directory-aadconnect-health-sync/sync.png)
 
@@ -64,7 +64,8 @@ Azure AD Connect で既定の構成が使用されていない場合 (たとえ�
 * [Azure AD Connect Health エージェントのインストール](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
 * [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
+* [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!-----HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

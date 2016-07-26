@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/18/2016"
+   ms.date="07/19/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute NAT の要件
@@ -52,7 +52,7 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 
 #### Microsoft からあなたのネットワークに送信されるトラフィック
 
-- 一部のシナリオでは、あなたのネットワーク内でホストされているサービス エンドポイントへの接続を Microsoft が開始する必要があります。そのようなシナリオの典型的な例は、Office 365 からあなたのネットワークでホストされている ADFS サービスに接続する場合です。そのような場合は、ネットワークから Microsoft ピアリングに適切なプレフィックスをリークする必要があります。 
+- 一部のシナリオでは、あなたのネットワーク内でホストされているサービス エンドポイントへの接続を Microsoft が開始する必要があります。そのようなシナリオの典型的な例は、Office 365 からあなたのネットワークでホストされている ADFS サービスに接続する場合です。そのような場合は、ネットワークから Microsoft ピアリングに適切なプレフィックスをリークする必要があります。
 
 - Microsoft からあなたのネットワーク内にある IP アドレスに送信されるトラフィックを SNAT 変換する必要があります。
 
@@ -66,4 +66,4 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->

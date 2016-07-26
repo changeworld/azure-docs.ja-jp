@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/30/2016"
+   ms.date="07/18/2016"
    ms.author="cherylmc"/>
 
 # クラシック ポータルを使用する VNet へのポイント対サイト VPN 接続の構成
@@ -209,4 +209,4 @@ X.509 証明書を作成する方法の 1 つは、証明書作成ツール (mak
 
 Virtual Network の詳細については、[Virtual Network のドキュメント](https://azure.microsoft.com/documentation/services/virtual-network/)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0720_2016-->

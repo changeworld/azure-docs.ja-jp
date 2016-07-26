@@ -8,12 +8,12 @@
 	editor="" />
 
  <tags
-	ms.service="visual-studio-online"
+	ms.service="storage"
 	ms.devlang="multiple"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="07/06/2016"
+	ms.date="07/14/2016"
 	ms.author="tarcher" />
 
 # ストレージ エクスプローラー (プレビュー) の概要
@@ -166,7 +166,7 @@ Azure サブスクリプションの管理者は、[SAS (Shared Access Signature
 
 ## SAS を使ってサービスをアタッチする
 
-セクション「[SAS を使ってアカウントをアタッチする](#attach-account-using-sas)」では、Azure サブスクリプションの管理者がストレージ アカウントの SAS を生成 (および共有) してストレージ アカウントへの一時的なアクセスを許可する方法が示されています。同様に、SAS は、ストレージ アカウント内の特定のサービス (BLOB コンテナー、キュー、またはテーブル) に対して生成できます。
+セクション「[SAS を使ってストレージ アカウントをアタッチする](#attach-storage-account-using-sas)」では、Azure サブスクリプションの管理者がストレージ アカウントの SAS を生成 (および共有) してストレージ アカウントへの一時的なアクセスを許可する方法が示されています。同様に、SAS は、ストレージ アカウント内の特定のサービス (BLOB コンテナー、キュー、またはテーブル) に対して生成できます。
 
 ### 共有するサービスの SAS を生成する
 
@@ -226,4 +226,4 @@ Azure サブスクリプションの管理者は、[SAS (Shared Access Signature
 [23]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-icon.png
 [24]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-next.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->
