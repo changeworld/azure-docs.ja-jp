@@ -11,7 +11,7 @@
 <tags
   ms.service="iot-suite"
   ms.devlang="na"
-  ms.topic="article"
+  ms.topic="get-started-article"
   ms.tgt_pltfrm="na"
   ms.workload="na"
   ms.date="05/16/2016"
@@ -129,6 +129,8 @@ Azure 共同管理者、サービス管理者、アカウント管理者のロ�
 
 ![][img-flowchart]
 
+> [AZURE.NOTE] 自分が AAD テナントの全体管理者になっていることとサブスクリプションの共同管理者になっていることを確認した後もエラーが表示される場合は、ユーザーを削除してから必要なアクセス許可を再度割り当てるよう、アカウント管理者に依頼してください。その場合はまず、ユーザーを全体管理者として追加したうえで、Azure サブスクリプションの共同管理者としてそのユーザーを追加することになります。問題が解決しない場合は、[ヘルプとサポート][lnk-help-support]にお問い合わせください。
+
 **Azure サブスクリプションがあるのに次のエラーが表示されるのはなぜですか。** *「構成済みソリューションを作成するには Azure サブスクリプションが必要です。数分で無料試用版のアカウントを作成することができます。」*
 
 Azure サブスクリプションが確かにある場合は、サブスクリプションのテナント マッピングを調べ、ドロップダウンで正しいテナントが選択されていることを確認してください。目的のテナントが正しいことを確認できた場合は、上の図に従って、サブスクリプションとこの AAD テナントのマッピングを確認してください。
@@ -144,5 +146,6 @@ Azure サブスクリプションが確かにある場合は、サブスクリ�
 [lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin/
 [lnk-admin-roles]: https://azure.microsoft.com/documentation/articles/billing-add-change-azure-subscription-administrator/
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs
+[lnk-help-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

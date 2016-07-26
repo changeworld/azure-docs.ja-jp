@@ -203,7 +203,7 @@ Swagger のメタデータは、ASP.NET Web API プロジェクトで [Swashbuck
 
 Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できます。Swagger メタデータ生成を既存のプロジェクトに追加する場合、Swashbuckle パッケージをインストールします。
 
-**注: **Swagger のメタデータには、各 API 操作の一意の ID が含まれます。既定では、Web API コントローラー メソッドに対して重複する Swagger 操作 ID が Swashbuckle によって生成される場合があります。この現象は、コントローラーに HTTP メソッドのオーバーロード (`Get()` と `Get(id)` など) が存在すると発生します。オーバーロードの扱い方については、「[Swashbuckle が生成する API 定義をカスタマイズする](app-service-api-dotnet-swashbuckle-customize.md)」を参照してください。Visual Studio から Azure API アプリ テンプレートを使って Web API プロジェクトを作成した場合、一意の操作 ID を生成するコードが *SwaggerConfig.cs* ファイルに自動的に追加されます。
+**注: ** Swagger のメタデータには、各 API 操作の一意の ID が含まれます。既定では、Web API コントローラー メソッドに対して重複する Swagger 操作 ID が Swashbuckle によって生成される場合があります。この現象は、コントローラーに HTTP メソッドのオーバーロード (`Get()` と `Get(id)` など) が存在すると発生します。オーバーロードの扱い方については、「[Swashbuckle が生成する API 定義をカスタマイズする](app-service-api-dotnet-swashbuckle-customize.md)」を参照してください。Visual Studio から Azure API アプリ テンプレートを使って Web API プロジェクトを作成した場合、一意の操作 ID を生成するコードが *SwaggerConfig.cs* ファイルに自動的に追加されます。
 
 ## <a id="createapiapp"></a> Azure で API アプリを作成し、そのアプリにコードをデプロイする
 
@@ -239,7 +239,7 @@ Swashbuckle はあらゆる ASP.NET Web API プロジェクトで利用できま
 
 	リソース グループは、API アプリ、データベース、VM など、一連の Azure リソースをひとまとめにしたものです。このチュートリアルでは、新しいリソース グループを作成すると便利です。チュートリアルのために作成したすべての Azure リソースを 1 回の手順で簡単に削除できるからです。
 
-	このボックスでは既存の[リソース グループ](../azure-portal/resource-group-portal.md)を選択するか、サブスクリプションの既存のリソース グループとは異なる名前を入力し、新しいリソース グループを作成できます。
+	このボックスでは既存の[リソース グループ](../resource-group-overview.md)を選択するか、サブスクリプションの既存のリソース グループとは異なる名前を入力し、新しいリソース グループを作成できます。
 
 4. **[App Service プラン]** ドロップダウンの隣にある **[新規]** ボタンをクリックします。
 
@@ -491,4 +491,4 @@ ASP.NET API アプリが Azure App Service で動作するようになったら�
 
 **[Azure API App]** プロジェクト テンプレートは、**[Empty]** ASP.NET 4.5.2 テンプレートを選択し、Web API サポートを追加するためのチェック ボックスをオンにして、Swashbuckle NuGet パッケージをインストールしたものに相当します。加えて、Swagger の操作 ID が重複して作成されるのを防ぐための Swashbuckle 構成コードが追加されます。API アプリ プロジェクトを作成したら、それをこのチュートリアルで説明した手順と同じ方法で API アプリにデプロイすることができます。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

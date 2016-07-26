@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="07/05/2016"
+   ms.date="07/19/2016"
    ms.author="owend"/>
 
 # IFrame を使用した Power BI レポートの埋め込み
@@ -28,23 +28,23 @@
 - 手順 1. [ワークスペースでレポートを取得する](#GetReport)。この手順では、アクセス トークンを取得して [Get Reports](https://msdn.microsoft.com/library/mt711510.aspx) REST 操作を呼び出すために、アプリ トークン フローを使用します。**Get Reports** リストからレポートを取得したら、**IFrame** 要素を使用してレポートをアプリに埋め込みます。
 - 手順 2. [レポートをアプリに埋め込む](#EmbedReport)。この手順では、レポートの埋め込みトークン、いくつかの JavaScript、および IFrame を使用して、レポートを Web アプリに統合します (つまり、埋め込みます)。
 
-サンプルを実行してレポートの統合方法を確認する場合は、GitHub で [IFrame を使用したレポートの統合](https://github.com/Azure-Samples/power-bi-embedded-iframe)サンプルをダウンロードし、次の 3 つの Web.Config 設定を構成します。
+サンプルを実行する場合は、GitHub で [IFrame を使用したレポートの統合](https://github.com/Azure-Samples/power-bi-embedded-iframe)サンプルをダウンロードし、次の 3 つの Web.Config 設定を構成します。
 
-- **AccessKey**: **AccessKey** は、レポートの取得と埋め込みに使用される JSON Web トークン (JWT) を生成するために使用します。**AccessKey** を取得する方法については、「[Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)」を参照してください。
-- **WorkspaceName**: **WorkspaceName** を取得する方法については、「[Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)」を参照してください。
-- **WorkspaceId**: **WorkspaceId** を取得する方法については、「[Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)」を参照してください。
+- **AccessKey**: **AccessKey** は、レポートの取得と埋め込みに使用される JSON Web トークン (JWT) を生成するために使用します。
+- **ワークスペース コレクション名**: ワークスペースを識別します。
+- **ワークスペース ID**: ワークスペースの一意の ID です。
 
-次のセクションでは、レポートの統合に必要なコードについて説明します。
+アクセス キー、ワークスペース コレクション名、ワークスペース ID を Azure ポータルから取得する方法については、「[Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)」を参照してください。
 
 <a name="GetReport"/>
 ## ワークスペースでレポートを取得する
 
-レポートをアプリに統合するには、レポートの **ID** と **embedUrl** が必要です。レポートの **ID** と **embedUrl** を取得するには、[Get Reports](https://msdn.microsoft.com/library/mt711510.aspx) REST 操作を呼び出し、JSON リストからレポートを選択します。「[レポートをアプリに埋め込む](#EmbedReport)」では、レポートの **ID** と **embedUrl** を使用して、レポートをアプリに埋め込みます。
+レポートをアプリに統合するには、レポートの **ID** と **embedUrl** が必要です。これらを取得するには、[Get Reports](https://msdn.microsoft.com/library/mt711510.aspx) REST 操作を呼び出し、JSON リストからレポートを選択します。
 
 ### レポートの JSON 応答を取得する
 ```
 {
-  "@odata.context":"https://api.powerbi.com/beta/collections/{WorkspaceName}/workspaces/{WorkspaceId}/$metadata#reports","value":[
+  "@odata.context":"https://api.powerbi.com/v1.0/collections/{WorkspaceName}/workspaces/{WorkspaceId}/$metadata#reports","value":[
     {
       "id":"804d3664-…-e71882055dba","name":"Import report sample","webUrl":"https://embedded.powerbi.com/reports/804d3664-...-e71882055dba","embedUrl":"https://embedded.powerbi.com/appTokenReportEmbed?reportId=804d3664-...-e71882055dba"
     },{
@@ -55,25 +55,13 @@
 
 ```
 
-[Get Reports](https://msdn.microsoft.com/library/mt711510.aspx) REST 操作を呼び出すには、アプリ トークンを使用します。アプリ トークン フローの詳細については、「[Power BI Embedded のアプリケーション トークン フローについて](power-bi-embedded-app-token-flow.md)」を参照してください。次のコードは、レポートの JSON リストを取得する方法を表しています。レポートを埋め込むには、「[レポートをアプリに埋め込む](#EmbedReport)」を参照してください。
+[Get Reports](https://msdn.microsoft.com/library/mt711510.aspx) REST 操作を呼び出すには、アプリ トークンを使用します。アプリ トークン フローの詳細については、「[Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)」をご覧ください。次のコードは、レポートの JSON リストを取得する方法を表しています。
 
 ```
 protected void getReportsButton_Click(object sender, EventArgs e)
 {
-    //Get an app token to generate a JSON Web Token (JWT). An app token flow is a claims-based design pattern.
-    //To learn how you can code an app token flow to generate a JWT, see the PowerBIToken class.
-    var appToken = PowerBIToken.CreateDevToken(workspaceName, workspaceId);
-
-    //After you get a PowerBIToken which has Claims including your WorkspaceName and WorkspaceID,
-    //you generate JSON Web Token (JWT) . The Generate() method uses classes from System.IdentityModel.Tokens: SigningCredentials,
-    //JwtSecurityToken, and JwtSecurityTokenHandler.
-    string jwt = appToken.Generate(accessKey);
-
-    //Set app token textbox to JWT string to show that the JWT was generated
-    appTokenTextbox.Text = jwt;
-
     //Construct reports uri resource string
-    var uri = String.Format("https://api.powerbi.com/beta/collections/{0}/workspaces/{1}/reports", workspaceName, workspaceId);
+    var uri = String.Format("https://api.powerbi.com/v1.0/collections/{0}/workspaces/{1}/reports", workspaceName, workspaceId);
 
     //Configure reports request
     System.Net.WebRequest request = System.Net.WebRequest.Create(uri) as System.Net.HttpWebRequest;
@@ -82,7 +70,7 @@ protected void getReportsButton_Click(object sender, EventArgs e)
 
     //Set the WebRequest header to AppToken, and jwt
     //Note the use of AppToken instead of Bearer
-    request.Headers.Add("Authorization", String.Format("AppToken {0}", jwt));
+    request.Headers.Add("Authorization", String.Format("AppKey {0}", accessKey));
 
     //Get reports response from request.GetResponse()
     using (var response = request.GetResponse() as System.Net.HttpWebResponse)
@@ -104,12 +92,13 @@ protected void getReportsButton_Click(object sender, EventArgs e)
         }
     }
 }
+
 ```
 
 <a name="EmbedReport"/>
 ## レポートをアプリに埋め込む
 
-レポートをアプリに埋め込むには、レポートの埋め込みトークンが必要です。このトークンは、**Power BI Embedded** REST 操作の呼び出しに使用されるアプリ トークンに似たものですが、REST リソースではなくレポート リソースに対して生成されます。レポートのアプリ トークンを取得するコードを次に示します。レポートのアプリ トークンを使用するには、「[レポートをアプリに埋め込む](#EmbedReportJS)」を参照してください。
+レポートをアプリに埋め込むには、レポートの埋め込みトークンが必要です。このトークンは、Power BI Embedded REST 操作の呼び出しに使用されるアプリ トークンに似たものですが、REST リソースではなくレポート リソースに対して生成されます。レポートのアプリ トークンを取得するコードを次に示します。
 
 <a name="EmbedReportToken"/>
 ### レポートのアプリ トークンを取得する
@@ -223,4 +212,4 @@ $filter=Store/Chain%20eq%20'Lindseys'
 - [System.IdentityModel.Tokens.JwtSecurityToken](https://msdn.microsoft.com/library/system.identitymodel.tokens.jwtsecuritytoken.aspx)
 - [System.IdentityModel.Tokens.JwtSecurityTokenHandler](https://msdn.microsoft.com/library/system.identitymodel.tokens.signingcredentials.aspx)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

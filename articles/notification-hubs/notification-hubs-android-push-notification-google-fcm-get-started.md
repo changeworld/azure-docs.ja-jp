@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="hero-article"
-	ms.date="07/05/2016"
+	ms.date="07/14/2016"
 	ms.author="wesmc"/>
 
 # Azure Notification Hubs から Android へのプッシュ通知の送信
@@ -35,7 +35,7 @@
 
 ##前提条件
 
-> [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started)を参照してください。
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started)を参照してください。
 
 - このチュートリアルでは、上記のアクティブな Azure アカウント以外に、最新版の [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797) が必要です。
 - Android 2.3 以上 (Firebase Cloud Messaging 用)。
@@ -158,7 +158,7 @@
 		public class NotificationSettings {
 		    public static String SenderId = "<Your project number>";
 		    public static String HubName = "<Your HubName>";
-		    public static String HubListenConnectionString = "<Your default listen connection string>";
+		    public static String HubListenConnectionString = "<Enter your DefaultListenSharedAccessSignature connection string>";
 		}
 
 2. 上記の手順で `MyInstanceIDService` という名前の別の新しいクラスを追加します。これはインスタンス ID リスナー サービスの実装になります。
@@ -230,7 +230,7 @@
 		                regID = hub.register(FCM_token).getRegistrationId();
 		
 		                // If you want to use tags...
-		                // Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-routing-tag-expressions/
+		                // Refer to : https://azure.microsoft.com/ja-JP/documentation/articles/notification-hubs-routing-tag-expressions/
 		                // regID = hub.register(token, "tag1,tag2").getRegistrationId();
 		
 		                resultString = "New NH Registration Successfully - RegId : " + regID;
@@ -249,7 +249,7 @@
 		                regID = hub.register(FCM_token).getRegistrationId();
 		
 		                // If you want to use tags...
-		                // Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-routing-tag-expressions/
+		                // Refer to : https://azure.microsoft.com/ja-JP/documentation/articles/notification-hubs-routing-tag-expressions/
 		                // regID = hub.register(token, "tag1,tag2").getRegistrationId();
 		
 		                resultString = "New NH Registration Successfully - RegId : " + regID;
@@ -462,9 +462,11 @@
 
 ## (省略可能) アプリから直接プッシュ通知を送信する
 
+>[AZURE.IMPORTANT] この例では、クライアント アプリからの通知の送信方法を学習目的でのみ紹介しています。クライアント アプリには `DefaultFullSharedAccessSignature` が存在している必要があります。この点がご利用の通知ハブにとってリスクとなります。ユーザーによって不正な通知がクライアントに送信される可能性があります。
+
 通常は、バックエンド サーバーを使用して通知を送信します。場合によっては、クライアント アプリケーションから直接プッシュ通知を送信できることが必要になります。このセクションでは、[Azure Notification Hubs REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx) を使用してクライアントから通知を送信する方法を説明します。
 
-1. Android Studio の [プロジェクト] ビューで **[アプリ]**、**[src]**、**[main]**、**[res]**、**[layout]** の順に展開します。`activity_main.xml` レイアウト ファイルを開き、**[Text (テキスト)]** タブをクリックしてファイルのテキストの内容を更新します。次のコードで更新します。これにより、通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールが追加されます。このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
+1. Android Studio の [プロジェクト] ビューで **[アプリ]**、**[src]**、**[main]**、**[res]**、**[layout]** の順に展開します。`activity_main.xml` レイアウト ファイルを開き、**[テキスト]** タブをクリックしてファイルのテキストの内容を更新します。次のコードで更新します。これにより、通知ハブにプッシュ通知メッセージを送信するための新しい `Button` コントロールと `EditText` コントロールが追加されます。このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
 
 	    <Button
         android:layout_width="wrap_content"
@@ -494,7 +496,7 @@
 
 	`HubFullAccess` をハブの **DefaultFullSharedAccessSignature** 接続文字列で更新します。この接続文字列は [Azure ポータル]からコピーできます。これには、通知ハブの **[設定]** ブレードで **[アクセス ポリシー]** をクリックします。
 
-		public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
+		public static String HubFullAccess = "<Enter Your DefaultFullSharedAccessSignature Connection string>";
 
 4. `MainActivity.java` ファイルで、`MainActivity` クラスの上に次の `import` ステートメントを追加します。
 
@@ -646,7 +648,7 @@
 	
 	                        // Include any tags
 	                        // Example below targets 3 specific tags
-	                        // Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-routing-tag-expressions/
+	                        // Refer to : https://azure.microsoft.com/ja-JP/documentation/articles/notification-hubs-routing-tag-expressions/
 	                        // urlConnection.setRequestProperty("ServiceBusNotification-Tags", 
 							//		"tag1 || tag2 || tag3");
 	
@@ -725,9 +727,9 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
 [Azure Classic Portal]: https://manage.windowsazure.com/
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs の概要]: notification-hubs-push-notification-overview.md
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-android-notify-users.md
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

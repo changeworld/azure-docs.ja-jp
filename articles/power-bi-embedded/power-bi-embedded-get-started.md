@@ -54,7 +54,7 @@
 <a name="view-access-keys"/>
 ## Power BI API のアクセス キーの表示
 
-Power BI REST API を呼び出すために必要な最も重要な情報の 1 つが**アクセス キー**です。アクセス キーは、API 要求の認証に使用される**アプリ トークン**を生成するために使用します。**アクセス キー**を表示するには、**[設定] ブレード**の **[アクセス キー]** をクリックします。**アプリ トークン**の詳細については、[アプリ トークンのフローの動作](power-bi-embedded-app-token-flow.md)に関するページを参照してください。
+Power BI REST API を呼び出すために必要な最も重要な情報の 1 つが**アクセス キー**です。アクセス キーは、API 要求の認証に使用される**アプリ トークン**を生成するために使用します。**アクセス キー**を表示するには、**[設定] ブレード**の **[アクセス キー]** をクリックします。**app tokens** の詳細については、「[Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)」をご覧ください。
 
    ![](media\power-bi-embedded-get-started\access-keys.png)
 
@@ -70,7 +70,7 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 
 ## アプリに埋め込む Power BI データセットとレポートの作成
 
-アプリケーション用の Power BI のインスタンスと**アクセス キー**が準備できたら、埋め込む Power BI データセットとレポートを作成する必要があります。データセットとレポートは、**Power BI Desktop** を使用して作成できます。[Power BI Desktop は無料で](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)ダウンロードできます。または、[Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をダウンロードしてすぐに開始できます。**Power BI Desktop** の使用方法については、「[Getting Started with Power BI Desktop (Power BI Desktop の概要)](https://powerbi.microsoft.com/en-us/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop)」を参照してください。
+アプリケーション用の Power BI のインスタンスと**アクセス キー**が準備できたら、埋め込む Power BI データセットとレポートを作成する必要があります。データセットとレポートは、**Power BI Desktop** を使用して作成できます。[Power BI Desktop は無料で](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)ダウンロードできます。または、[Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をダウンロードしてすぐに開始できます。**Power BI Desktop** の使用方法については、「[Getting Started with Power BI Desktop (Power BI Desktop の概要)](https://powerbi.microsoft.com/ja-JP/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop)」を参照してください。
 
 **Power BI Desktop** でデータ ソースに接続するには、データのコピーを **Power BI Desktop** にインポートする方法と、**DirectQuery** を使ってデータ ソースに直接接続する方法があります。
 
@@ -98,9 +98,7 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 
 ## 関連項目
 - [Get started with Microsoft Power BI Embedded sample (Microsoft Power BI Embedded のサンプルの使用)](power-bi-embedded-get-started-sample.md)
-- [What is Microsoft Power BI Embedded (Microsoft Power BI Embedded について)](power-bi-embedded-what-is-power-bi-embedded.md)
-- [Power BI Desktop の概要](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started)
+- [Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
-- [Power BI Embedded の価格](http://go.microsoft.com/fwlink/?LinkID=760527)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

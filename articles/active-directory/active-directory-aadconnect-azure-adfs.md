@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/26/2016"
+	ms.date="07/13/2016"
 	ms.author="anandy;billmath"/>
 
-# Azure における AD FS 
+# Azure への AD FS のデプロイ 
 
 AD FS は、単純かつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。Azure AD または O365 とのフェデレーションによって、ユーザーはオンプレミスの資格情報を認証に使用し、クラウド内のあらゆるリソースにアクセスすることができます。そのため、オンプレミスとクラウドの両方のリソースに確実にアクセスできるよう、AD FS インフラストラクチャには、高い可用性を確保することが重要となります。AD FS を Azure にデプロイすると、必要な高可用性を最小限の手間で確保できます。AD FS を Azure にデプロイする利点はいくつかありますが、その一部を以下に示します。
 
@@ -145,7 +145,7 @@ Azure にドメイン コントローラー (DC) をデプロイするために�
 
 **6.1.ILB を作成する**
 
-ILB をデプロイするには、Azure ポータルで [ロード バランサー] を選択し、[追加] \(+) をクリックします。
+ILB をデプロイするには、Azure ポータルで [ロード バランサー] を選択し、[追加] (+) をクリックします。
 >[AZURE.NOTE] メニューに **[ロード バランサー]** が表示されない場合は、ポータルの左下にある **[参照]** をクリックし、**[ロード バランサー]** が表示されるまでスクロールします。その後、黄色の星印をクリックするとメニューに追加されます。この新しいロード バランサー アイコンを選択してパネルを開き、ロード バランサーの構成を開始してください。
 
 ![Browse load balancer](./media/active-directory-aadconnect-azure-adfs/browseloadbalancer.png)
@@ -259,11 +259,9 @@ ILB と同じ手順に従って、TCP 443 の負荷分散規則を構成しま�
 |:----|:----|:------:|
 |AllowHTTPSFromDMZ|	DMZ への HTTPS 通信を許可します。 | 受信 |
 |DenyAllFromDMZ| この規則は、DMZ から内部サブネットへのすべてのトラフィックをブロックするものです。HTTPS 通信については既に AllowHTTPSFromDMZ 規則によって通過が許可されているため、それ以外の通信がこの規則によってブロックされます。 | 受信 |
-|AllowHTTPSToDMZ| この規則は、DMZ への HTTPS 通信を許可します。 | 送信 |
-|DenyDMZAll| DMZ へのその他すべてのトラフィック (HTTPS を除く) は、この規則によってブロックされます。 | 送信 |
 |DenyInternetOutbound| インターネットへのアクセスを禁止します。 | 送信 |
 
-![INT access rules (inbound)](./media/active-directory-aadconnect-azure-adfs/nsgintinbound.png) ![INT access rules (outbound)](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png)
+[comment]: <> (![INT access rules (inbound)](./media/active-directory-aadconnect-azure-adfs/nsgintinbound.png)) [comment]: <> (![INT access rules (outbound)](./media/active-directory-aadconnect-azure-adfs/nsgintoutbound.png))
  
 **9.2.DMZ サブネットを保護する**
 
@@ -271,18 +269,17 @@ ILB と同じ手順に従って、TCP 443 の負荷分散規則を構成しま�
 |:----|:----|:------:|
 |AllowHttpsFromVirtualNetwork| 仮想ネットワークからの HTTPS を許可します。 | 受信 |
 |AllowHTTPSInternet| インターネットから DMZ への HTTPS を許可します。 | 受信|
-|DenyingressexceptHTTPS|	インターネットからの通信は、HTTPS を除きすべてブロックします。 | 受信 |
-|AllowOutToADFS| 内部サブネットへの HTTPS を許可します。 | 送信 |
-|AllowHTTPSToInternet| インターネットへの HTTPS を許可します。 | 送信 |
+|DenyingressexceptHTTPS| インターネットからの通信は、HTTPS を除きすべてブロックします。 | 受信 |
 |DenyOutToInternet|	インターネットへの通信は HTTPS を除きすべてブロックします。 | 送信 |
 
-![EXT access rules (inbound)](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png) ![EXT access rules (outbound)](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png)
+[comment]: <> (![EXT access rules (inbound)](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png)) [comment]: <> (![EXT access rules (outbound)](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png))
 
+>[AZURE.NOTE] クライアント ユーザー証明書認証 (X509 ユーザー証明書を使用した clientTLS 認証) が必要である場合、AD FS の要件として、受信アクセス用に TCP ポート 49443 を有効にする必要があります。
 
 ###10\.AD FS サインインをテストする
 
 AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行うのが最も簡単です。そのためには、AD FS のプロパティで IdpInitiatedSignOn を有効にする必要があります。以下の手順に従って AD FS の設定を確認してください。
-1.	AD FS サーバーで PowerShell から Set-AdfsProperties -EnableIdPInitiatedSignonPage $true というコマンドレットを実行し、このプロパティを有効にします。
+1.	AD FS サーバーで PowerShell から以下のコマンドレットを実行し、このプロパティを有効にします。Set-AdfsProperties -EnableIdPInitiatedSignonPage $true
 2.	外部にある任意のコンピューターから https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx にアクセスします。
 3.	以下の AD FS ページが表示されたら成功です。
 
@@ -306,4 +303,4 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 * [Azure AD Connect を使用した AD FS の構成と管理](active-directory-aadconnectfed-whatis.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

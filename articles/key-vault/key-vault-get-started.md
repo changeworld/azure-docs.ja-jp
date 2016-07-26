@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/06/2016"
+	ms.date="07/15/2016"
 	ms.author="cabailey"/>
 
 # Azure Key Vault の概要 #
@@ -35,7 +35,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 このチュートリアルを完了するには、以下が必要です。
 
 - Microsoft Azure サブスクリプション。サブスクリプションがない場合でも、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-- Azure PowerShell **1.1.0 以降のバージョン**。Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「`(Get-Module azure -ListAvailable).Version`」と入力します。Azure PowerShell バージョン 0.9.1 ～ 0.9.8 がインストールされている場合は、少し変更を加えるだけで、引き続きこのチュートリアルを利用できます。たとえば、`Switch-AzureMode AzureResourceManager` コマンドを使用する必要があったり、Azure Key Vault のコマンドの一部が変更されていたりします。バージョン 0.9.1 ～ 0.9.8 の Key Vault コマンドレットの一覧については、[Azure Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052(v=azure.98).aspx)に関するページを参照してください。 
+- Azure PowerShell **1.1.0 以降のバージョン**。Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「`(Get-Module azure -ListAvailable).Version`」と入力します。Azure PowerShell バージョン 0.9.1 ～ 0.9.8 がインストールされている場合は、少し変更を加えるだけで、引き続きこのチュートリアルを利用できます。たとえば、`Switch-AzureMode AzureResourceManager` コマンドを使用する必要があったり、Azure Key Vault のコマンドの一部が変更されていたりします。バージョン 0.9.1 ～ 0.9.8 の Key Vault コマンドレットの一覧については、[Azure Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052(v=azure.98).aspx)に関するページを参照してください。
 - このチュートリアルで作成したキーやパスワードを使用して構成されるアプリケーション。サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/ja-JP/download/details.aspx?id=45343)から入手できます。手順については、付属の Readme ファイルをご覧ください。
 
 
@@ -245,4 +245,4 @@ Azure Key Vault の Azure PowerShell コマンドレットの最新の一覧に�
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

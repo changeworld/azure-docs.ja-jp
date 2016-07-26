@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="get-started-article"
-   ms.date="07/08/2016"
+   ms.date="07/14/2016"
    ms.author="magoedte" />
 
 # Azure Automation 統合モジュール
@@ -201,4 +201,4 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
 - PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
 - PowerShell モジュールの作成の詳細については、「[Writing a Windows PowerShell Module (Windows PowerShell モジュールの作成)](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

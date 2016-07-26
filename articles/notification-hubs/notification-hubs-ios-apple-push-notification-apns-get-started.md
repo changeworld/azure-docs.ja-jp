@@ -23,7 +23,7 @@
 
 ##概要
 
-> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started)を参照してください。
+> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started)を参照してください。
 
 このチュートリアルでは、Azure Notification Hubs を使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。[Apple Push Notification サービス (APNs)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html) を使用してプッシュ通知を受信する空の iOS アプリケーションを作成します。
 
@@ -82,7 +82,7 @@
 
 3. **[Target]** でプロジェクト名をクリックし、**[Build Settings]** タブをクリックして **[Code Signing Identity]** を展開し、**[Debug]** でコード署名 ID を選択します。**[Levels]** を **[Basic]** から **[All]** に切り替え、**[Provisioning Profile]** に、以前作成したプロビジョニング プロファイルを設定します。
 
-	Xcode で作成した新しいプロビジョニング プロファイルが表示されない場合は、署名 ID のプロファイルを更新してみてください。メニュー バーの **\[XCode]** をクリックし、**[Preference]**、**[Account]** タブ、**[View Details]** ボタンの順にクリックします。次に、署名 ID をクリックし、右下隅にある更新ボタンをクリックします。
+	Xcode で作成した新しいプロビジョニング プロファイルが表示されない場合は、署名 ID のプロファイルを更新してみてください。メニュー バーの **[XCode]** をクリックし、**[Preference]**、**[Account]** タブ、**[View Details]** ボタンの順にクリックします。次に、署名 ID をクリックし、右下隅にある更新ボタンをクリックします。
 
    	![Xcode - provisioning profile][9]
 
@@ -167,6 +167,8 @@
 
 
 ## (省略可能) アプリからプッシュ通知を送信する
+
+>[AZURE.IMPORTANT] この例では、クライアント アプリからの通知の送信方法を学習目的でのみ紹介しています。クライアント アプリには `DefaultFullSharedAccessSignature` が存在している必要があります。この点がご利用の通知ハブにとってリスクとなります。ユーザーによって不正な通知がクライアントに送信される可能性があります。
 
 このセクションでは、REST インターフェイスを使用して、アプリ内からプッシュ通知を送信する方法の例を示します。
 
@@ -323,7 +325,7 @@
 		}
 
 
-8. Ctrl キーを押しながら **[Send Notification]** ボタンを `ViewController.m` にドラッグし、**ouch Down** イベントに対するアクション **SendNotificationMessage** を追加します。REST API を使用して通知を送信するように次のコードでメソッドを更新します。
+8. Ctrl キーを押しながら **[Send Notification]** ボタンを `ViewController.m` にドラッグし、**Touch Down** イベントに対するアクション **SendNotificationMessage** を追加します。REST API を使用して通知を送信するように次のコードでメソッドを更新します。
 
 		- (IBAction)SendNotificationMessage:(id)sender
 		{
@@ -435,7 +437,7 @@
 11. プロジェクトをビルドし、エラーがないことを確認します。
 
 
-> [AZURE.NOTE] Xcode7 でビットコード サポートに関するビルド エラーが発生した場合は、**[ビルド設定]** の **[ビットコードの有効化]** (ENABLE\_BITCODE) を **[いいえ]** に変更する必要があります。Notification Hubs SDK は、現在ビットコードをサポートしていません。
+> [AZURE.NOTE] Xcode7 でビットコード サポートに関するビルド エラーが発生した場合は、**[Build Settings (ビルド設定)]** の **[ビットコードの有効化 (Enable Bitcode)]** (ENABLE\_BITCODE) を **[NO (いいえ)]** に変更する必要があります。Notification Hubs SDK は、現在ビットコードをサポートしていません。
 
 Apple の「[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]」に、使用できるすべての通知ペイロードが記載されています。
 
@@ -505,4 +507,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->
