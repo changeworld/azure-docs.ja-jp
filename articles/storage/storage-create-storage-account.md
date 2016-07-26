@@ -79,7 +79,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 7. 新しいストレージ アカウントを作成するサブスクリプションを選択します。
 
-8. 新しいリソース グループを指定するか、既定のリソース グループを選択します。リソース グループの詳細については、[Azure ポータルを使用した Azure リソースの管理](../azure-portal/resource-group-portal.md)に関するページを参照してください。
+8. 新しいリソース グループを指定するか、既定のリソース グループを選択します。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
 
 9. ストレージ アカウントの地理的な場所を選択します。どのリージョンでどのサービスを使用できるかについては、「[Azure のリージョン](https://azure.microsoft.com/regions/#services)」を参照してください。
 
@@ -157,4 +157,4 @@ Azure 仮想マシンに関連付けられているストレージ アカウン�
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

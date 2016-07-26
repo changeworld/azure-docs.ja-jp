@@ -40,15 +40,15 @@
 
     ![データベースを作成する](./media/sql-data-warehouse-get-started-provision/create-database.png)
 
-	- **[サーバー]**: まず、サーバーを選択することをお勧めします。既存のサーバーを選択するか、[新しく作成](./sql-data-warehouse-get-started-new-server.md)することができます。 
+	- **[サーバー]**: まず、サーバーを選択することをお勧めします。既存のサーバーを選択するか、[新しく作成](./sql-data-warehouse-get-started-new-server.md)することができます。
 
 	- **[データベース名]**: SQL Data Warehouse の参照に使用される名前です。サーバーに対して一意にする必要があります。
 	
-    - **[パフォーマンス]**: 最初は 400 DWU にすることをお勧めします。スライダーを左または右に移動して、データ ウェアハウスのパフォーマンスを調整したり、作成後にスケールアップまたはスケールダウンしたりすることができます。DWU の詳細については、[スケーリング](./sql-data-warehouse-manage-compute-overview.md)に関するドキュメントまたは[料金のページ](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)を参照してください。
+    - **[パフォーマンス]**: 最初は 400 DWU にすることをお勧めします。スライダーを左または右に移動して、データ ウェアハウスのパフォーマンスを調整したり、作成後にスケールアップまたはスケールダウンしたりすることができます。DWU の詳細については、[スケーリング](./sql-data-warehouse-manage-compute-overview.md)に関するドキュメントまたは[料金のページ](https://azure.microsoft.com/ja-JP/pricing/details/sql-data-warehouse/)を参照してください。
 
     - **[サブスクリプション]**: この SQL Data Warehouse の課金先のサブスクリプションを選択します。
 
-    - **[リソース グループ]**: リソース グループは、Azure リソースのコレクション管理のサポートを目的としたコンテナーです。[リソース グループ](../azure-portal/resource-group-portal.md)に関する詳細情報を参照してください。
+    - **[リソース グループ]**: リソース グループは、Azure リソースのコレクション管理のサポートを目的としたコンテナーです。[リソース グループ](../resource-group-overview.md)に関する詳細情報を参照してください。
 
     - **[ソースの選択]**: **[ソースの選択]**、**[サンプル]** の順にクリックします。この時点で使用できるサンプル データベースは 1 つだけなので、[サンプル] を選択すると、**[サンプルの選択]** に AdventureWorksDW が自動的に設定されます。
 
@@ -68,4 +68,4 @@ SQL Data Warehouse へのデータの読み込みについては、[読み込み
 
 既存のデータベースを SQL Data Warehouse に移行する場合、[移行の概要](./sql-data-warehouse-overview-migrate.md)に関するページを参照するか、[移行ユーティリティ](./sql-data-warehouse-migrate-migration-utility.md)を使用してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

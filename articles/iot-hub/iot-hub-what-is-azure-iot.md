@@ -13,14 +13,14 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/29/2016"
+ ms.date="07/19/2016"
  ms.author="dobett"/>
 
 [AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## 次のステップ
 
-Azure IoT Hub は、アプリケーション バックエンドと何百万ものデバイスとの間に信頼性のある保護された双方向通信を確立できるサービスです。これにより、アプリケーションのバックエンドは、デバイスからテレメトリを大規模に受信し、そのデータをストリーム イベント プロセッサにルーティングすることができるほか、C2D コマンドを特定のデバイスに送信することができます。IoT Hub を使用して、独自のソリューション バックエンドを実装できます。さらに、IoT Hub には、デバイスと、デバイスのセキュリティ資格情報と、デバイスがハブに接続するための権限とをプロビジョニングするために使用するデバイス ID レジストリが含まれています。IoT Hub の詳細については、「[Azure IoT Hub とは][lnk-iot-hub]」を参照してください。
+Azure IoT Hub は、アプリケーション バックエンドと何百万ものデバイスとの間に信頼性のある保護された双方向通信を確立できるサービスです。これにより、アプリケーションのバックエンドは、デバイスからテレメトリを大規模に受信し、そのデータをストリーム イベント プロセッサにルーティングすることができるほか、デバイスからファイル アップロードを受信したり、C2D コマンドを特定のデバイスに送信したりすることができます。IoT Hub を使用して、独自のソリューション バックエンドを実装できます。さらに、IoT Hub には、デバイスと、デバイスのセキュリティ資格情報と、デバイスがハブに接続するための権限とをプロビジョニングするために使用するデバイス ID レジストリが含まれています。IoT Hub の詳細については、「[Azure IoT Hub とは][lnk-iot-hub]」を参照してください。
 
 Azure IoT Hub では、標準ベースの IoT デバイス管理が可能となっており、リモートからデバイスを管理、構成、更新することができます。詳細については、「[Azure IoT Hub デバイス管理の概要][lnk-device-management]」を参照してください。
 
@@ -37,4 +37,4 @@ Azure IoT Hub では、標準ベースの IoT デバイス管理が可能とな�
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/
 [lnk-device-management]: iot-hub-device-management-overview.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

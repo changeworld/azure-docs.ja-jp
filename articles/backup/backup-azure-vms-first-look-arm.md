@@ -72,7 +72,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 5. **[サブスクリプション]** をクリックして、使用可能なサブスクリプションの一覧を表示します。どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
 
-6. **[リソース グループ]** をクリックして、使用可能なリソース グループを表示するか、**[新規]** をクリックして、新しいリソース グループを作成します。リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](../azure-portal/resource-group-portal.md)」を参照してください。
+6. **[リソース グループ]** をクリックして、使用可能なリソース グループを表示するか、**[新規]** をクリックして、新しいリソース グループを作成します。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
 
 7. **[場所]** をクリックして、コンテナーの地理的リージョンを選択します。コンテナーは、保護する仮想マシンと同じリージョンにある**必要があります**。
 
@@ -124,13 +124,13 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Discover VMs](./media/backup-azure-vms-first-look-arm/discovering-new-vms.png)
 
-3. [Backup] ブレードで、**[Backup goal]** (バックアップの目標) をクリックして、[Backup Goal] \(バックアップの目標) ブレードを開きます。
+3. [Backup] ブレードで、**[Backup goal]** (バックアップの目標) をクリックして、[Backup Goal] (バックアップの目標) ブレードを開きます。
 
     ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
 
-4. [Backup Goal] \(バックアップの目標) ブレードで、**[Where is your workload running]** (ワークロードの実行場所) を [Azure] に、**[What do you want to backup]** (バックアップ対象) を [仮想マシン] に設定し、**[OK]** をクリックします。
+4. [Backup Goal] (バックアップの目標) ブレードで、**[Where is your workload running]** (ワークロードの実行場所) を [Azure] に、**[What do you want to backup]** (バックアップ対象) を [仮想マシン] に設定し、**[OK]** をクリックします。
 
-    [Backup Goal] \(バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
+    [Backup Goal] (バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
 
     ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-two.png)
 
@@ -219,4 +219,4 @@ VM エージェントが仮想マシンにインストールされると、Azure
 ## 疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

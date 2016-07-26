@@ -47,11 +47,11 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Check Point | セキュリティ ゲートウェイ | R75.40、R75.40VS | [構成の手順](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) | [構成の手順](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco | ASA | 8\.3 | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) | 互換性なし |
 | Cisco | ASR | IOS 15.1 (ポリシー ベース)、IOS 15.2 (ルート ベース) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco | ISR | IOS 15.0 (ポリシー ベース)、IOS 15.1 (ルート ベース) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) | [Cisco のサンプル*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco | ISR | IOS 15.0 (ポリシー ベース)、IOS 15.1 (ルート ベース*) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) | [Cisco のサンプル*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix | CloudBridge MPX アプライアンス、または VPX 仮想アプライアンス | 該当なし | [統合の手順](https://www.citrix.com/welcome.html?resource=%2Fdownloads%2Fcloudbridge%2Fbetas-and-tech-previews%2Fcloudbridge-azure-integration) | 互換性なし |
 | Dell SonicWALL | TZ シリーズ、NSA シリーズ、SuperMassive シリーズ、E-class NSA シリーズ | SonicOS 5.8.x、[SonicOS 5.9.x](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=850)、[SonicOS 6.x](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=646) | [指示 - SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [指示 - SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) | [指示 - SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [指示 - SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | F5 | BIG-IP シリーズ | 該当なし | [構成の手順](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) | 互換性なし |
-| Fortinet | FortiGate | FortiOS 5.0.7 | [構成の手順](http://docs.fortinet.com/fortigate/admin-guides) | [構成の手順](http://docs.fortinet.com/fortigate/admin-guides) |
+| Fortinet | FortiGate | FortiOS 5.0.7 | [構成の手順](http://docs.fortinet.com/d/fortigate-configuring-ipsec-vpn-between-a-fortigate-and-microsoft-azure) | [構成の手順](http://docs.fortinet.com/d/fortigate-configuring-ipsec-vpn-between-a-fortigate-and-microsoft-azure) |
 | Internet Initiative Japan (IIJ) | SEIL シリーズ | SEIL/x 4.60、SEIL/B1 4.60、SEIL/x86 3.20 | [構成の手順](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) | 互換性なし |
 | Juniper | SRX | JunOS 10.2 (ポリシー ベース)、JunOS 11.4 (ルート ベース) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |
 | Juniper | J シリーズ | JunOS 10.4r9 (ポリシー ベース)、JunOS 11.4 (ルート ベース) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) | [Juniper のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |
@@ -97,7 +97,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 ## IPsec パラメーター
 
->[AZURE.NOTE] 以下の値は Azure VPN Gateway でサポートされていますが、現在、Azure VPN Gateway から特定の組み合わせを指定または選択する方法はありません。すべての制約は、オンプレミスの VPN デバイスから指定する必要があります。
+>[AZURE.NOTE] 以下の値は Azure VPN Gateway でサポートされていますが、現在、Azure VPN Gateway から特定の組み合わせを指定または選択する方法はありません。すべての制約は、オンプレミスの VPN デバイスから指定する必要があります。また、MSS は 1350 で固定する必要があります。
 
 ### IKE フェーズ 1 セットアップ
 
@@ -153,4 +153,4 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 - インターネット経由のクロスプレミス接続では、重要な通信のセキュリティを確保するため、上記の表にある暗号化およびハッシュ アルゴリズムによる既定の Azure VPN Gateway 設定を使用してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

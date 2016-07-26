@@ -142,6 +142,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |---|---|---|
 |**Alaska Communications**|Equinix|シアトル|
 |**[XO Communications](http://www.xo.com/)**|Equinix|シリコン バレー|
+|**[1CLOUDSTAR](http://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)**|Equinix|シンガポール|
 
 ## ExpressRoute システム インテグレーター
 
@@ -151,7 +152,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |---|---|
 |**[Avanade Inc.](http://www.avanade.com/)**| アジア、ヨーロッパ、米国 |
 |**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**| ヨーロッパ |
-|**[Equinix Professional Services](http://www.equinix.com/services/consulting/)**|米国||
+|**[Equinix Professional Services](http://www.equinix.com/services/consulting/)**|米国|
 |**[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** | アジア |
 |**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 米国 |
 |**[Project Leadership](http://www.projectleadership.net/azure)** | 米国 |
@@ -164,4 +165,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Location map"
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

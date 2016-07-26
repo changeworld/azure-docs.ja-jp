@@ -75,7 +75,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 
 1. **リソース グループ**を選択するか、新しく作成します。
 
-	リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースの管理][ResourceGroups]」を参照してください。
+	リソース グループの詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。
 
 	![Configure the resource group for the web app][ConfigResourceGroup]
 
@@ -153,7 +153,7 @@ Azure での WordPress Web アプリの開発の詳細については、「[Azur
 [activate]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
 [free trial]: https://azure.microsoft.com/pricing/free-trial/
 [Azure App Service アプリケーションの作成]: http://go.microsoft.com/fwlink/?LinkId=523751
-[ResourceGroups]: ../azure-portal/resource-group-portal.md
+[ResourceGroups]: ../resource-group-overview.md
 [AzureAppServicePlans]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
 [ApplicationInsights]: https://azure.microsoft.com/services/application-insights/
 [Azure ポータル]: https://portal.azure.com/
@@ -180,4 +180,4 @@ Azure での WordPress Web アプリの開発の詳細については、「[Azur
 [WordPressDashboard2]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png
 [WordPressConfigure]: ./media/app-service-web-create-web-app-from-marketplace/wpconfigure.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

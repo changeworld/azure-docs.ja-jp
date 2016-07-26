@@ -13,7 +13,7 @@
 	ms.workload="search"
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
-	ms.date="03/08/2016"
+	ms.date="07/14/2016"
 	ms.author="evboyle"/>
 
 # Java での Azure Search の使用
@@ -69,7 +69,7 @@ Azure Search へのすべての REST API 呼び出しで、サービスの URL �
 
 ## サンプル ファイルのダウンロード
 
-1. Github で [AzureSearchJavaDemo](http://go.microsoft.com/fwlink/p/?LinkId=530197) に移動します。
+1. Github で [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) に移動します。
 
 2. **[Download ZIP]** をクリックして .zip ファイルをディスクに保存した後、すべてのファイルをコンテナーに抽出します。後でプロジェクトを探しやすいように、Java ワークスペースにファイルを抽出してください。
 
@@ -203,4 +203,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [11]: ./media/search-get-started-java/rogerwilliamsschool1.PNG
 [12]: ./media/search-get-started-java/AzSearch-Java-SelectProject.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0720_2016-->

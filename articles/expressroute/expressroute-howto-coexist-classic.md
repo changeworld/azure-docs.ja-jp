@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/06/2016"
+   ms.date="07/19/2016"
    ms.author="charwen"/>
 
 # クラシック デプロイ モデルにおいて共存する ExpressRoute 接続とサイト間接続を構成する
@@ -35,7 +35,7 @@
 
 - **トランジット ルーティングはサポートされていません:** サイト間 VPN 経由で接続されたローカル ネットワークと ExpressRoute 経由で接続されたローカル ネットワーク間で (Azure 経由で) ルーティングすることはできません。
 - **ポイント対サイトはサポートされていません:** ExpressRoute に接続されているのと同じ VNet に対しては、ポイント対サイト VPN 接続を有効にできません。ポイント対サイト VPN と ExpressRoute を同じ VNet に共存させることはできません。
-- **サイト間 VPN ゲートウェイで強制トンネリングを有効にできません:** インターネットへのすべてのトラフィックを、ExpressRoute 経由でオンプレミス ネットワークに "強制的に" 戻すことのみ可能です。 
+- **サイト間 VPN ゲートウェイで強制トンネリングを有効にできません:** インターネットへのすべてのトラフィックを、ExpressRoute 経由でオンプレミス ネットワークに "強制的に" 戻すことのみ可能です。
 - **標準または高性能ゲートウェイのみ:** ExpressRoute ゲートウェイとサイト間 VPN ゲートウェイの両方で標準または高性能ゲートウェイを使用する必要があります。ゲートウェイの SKU については、[ゲートウェイの SKU](../vpn-gateway/vpn-gateway-about-vpngateways.md) に関するページをご覧ください。
 - **ルート ベースの VPN Gateway のみ:** ルート ベースの VPN Gateway を使用する必要があります。ルート ベースの VPN Gateway については、「[VPN Gateway について](../vpn-gateway/vpn-gateway-about-vpngateways.md)」を参照してください。
 - **静的ルートの要件:** ローカル ネットワークが ExpressRoute とサイト間 VPN の両方に接続されている場合は、ローカル ネットワーク内で静的ルートを構成して、パブリック インターネットへのサイト間 VPN 接続をルーティングする必要があります。
@@ -78,7 +78,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 この手順では、VNet を作成し、共存するサイト間接続と ExpressRoute 接続を作成します。
 
-1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。必ず、これらの手順で指定されているコマンドレットを使用してください。 
+1. Azure PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。必ず、これらの手順で指定されているコマンドレットを使用してください。
 
 2. 仮想ネットワークのスキーマを作成します。構成スキーマの詳細については、「[Azure Virtual Network の構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」を参照してください。
 
@@ -192,7 +192,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 >[AZURE.NOTE] この既存のゲートウェイを削除すると、この構成で作業している間、ローカル環境から仮想ネットワークに接続できなくなります。
 
-1. Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。必ず、これらの手順で指定されているコマンドレットを使用してください。 
+1. Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があることにご注意ください。必ず、これらの手順で指定されているコマンドレットを使用してください。
 
 2. 既存の ExpressRoute またはサイト間 VPN ゲートウェイを削除します。次のコマンドレットを使用して、自身の値に置き換えます。
 
@@ -225,4 +225,4 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 ExpressRoute の詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

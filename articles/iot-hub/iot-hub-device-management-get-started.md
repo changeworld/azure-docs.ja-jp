@@ -10,7 +10,7 @@
 <tags
  ms.service="iot-hub"
  ms.devlang="dotnet"
- ms.topic="hero-article"
+ ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="04/29/2016"
@@ -100,7 +100,7 @@ Azure IoT Hub デバイス管理を利用するには、Azure IoT Hub を作成�
 
 このスクリプトでは、次の処理が実行されます。
 
-1.  **cmake** を実行し、シミュレートされたデバイス用に Visual Studio 2015 ソリューションを作成します。このプロジェクト ファイルは、**azure-iot-sdks\\csharp\\service\\samples\\cmake\\iotdm\_client\\samples\\iotdm\_simple\_sample\\iotdm\_simple\_sample.vcxproj** です。ソース ファイルは **azure-iot-sdks\\c\\iotdm\_client\\samples\\iotdm\_simple\_sample** フォルダーにあることに注意してください。
+1.  **cmake** を実行し、シミュレートされたデバイス用に Visual Studio 2015 ソリューションを作成します。このプロジェクト ファイルは、**azure-iot-sdks\\csharp\\service\\samples\\cmake\\iotdm\_client\\samples\\iotdm\_simple\_sample\\iotdm\_simple\_sample.vcxproj** です。ソース ファイルは ***azure-iot-sdks\\c\\iotdm\_client\\samples\\iotdm\_simple\_sample** フォルダーにあることに注意してください。
 
 2.  シミュレートされたデバイスの **iotdm\_simple\_sample.vcxproj** プロジェクトをビルドします。
 
@@ -197,4 +197,4 @@ Azure IoT Hub デバイス管理機能について詳しくは、「[サンプ�
 [lnk-sample-ui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

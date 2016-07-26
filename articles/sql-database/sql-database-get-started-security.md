@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/03/2016"
+	ms.date="07/19/2016"
 	ms.author="carlrab"/>
 
 # SQL Database チュートリアル: Azure ポータルを使用してデータベースにアクセスして管理するための SQL Database ユーザー アカウントを作成する
@@ -30,7 +30,7 @@
 - サーバー レベルのプリンシパル ログインを使用して SQL Database にログインする
 - SQL Database ユーザー アカウントを作成する
 - SQL Database ユーザー アカウントにユーザー データベースでの dbo アクセス許可を付与する
-- サーバー レベルのプリンシパルではないユーザー アカウントを使用して SQL Database に接続する 
+- サーバー レベルのプリンシパルではないユーザー アカウントを使用して SQL Database に接続する
 
 [AZURE.INCLUDE [ログイン](../../includes/azure-getting-started-portal-login.md)]
 
@@ -50,4 +50,4 @@
 ## 次のステップ
 この SQL Database チュートリアルを完了して、ユーザー アカウントを作成し、ユーザー アカウントに dbo アクセス許可を付与した後は、[SQL Database のセキュリティ](sql-database-manage-logins.md)についてさらに詳しく学習できます。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

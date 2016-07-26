@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure Backup を使用して Azure の VM を保護する | Microsoft Azure"
+	pageTitle="最初に: Azure Backup を使用して Azure の VM を保護する | Microsoft Azure"
 	description="Azure Backup サービスを使用して Azure VM を保護します。チュートリアルでは、Azure におけるコンテナーの作成、VM の登録、ポリシーの作成、VM の保護について説明します。"
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
-	manager="jwhit"
+	manager="cfreeman"
 	editor=""/>
 
 <tags
@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="04/22/2016"
+	ms.date="07/18/2016"
 	ms.author="markgal; jimpark"/>
 
 
 # 最初に: Azure 仮想マシンのバックアップ
 
 > [AZURE.SELECTOR]
-- [ARM VM のバックアップ](backup-azure-vms-first-look-arm.md)
+- [Resource Manager VM をバックアップする](backup-azure-vms-first-look-arm.md)
 - [クラシック モード VM のバックアップ](backup-azure-vms-first-look.md)
 
-このチュートリアルでは、Azure 仮想マシン (VM) を Azure にバックアップする手順について説明します。このチュートリアルを完了するには、次の前提条件を満たしている必要があります。
+このチュートリアルでは、Azure 仮想マシン (VM) を Azure のバックアップ コンテナーにバックアップする手順について説明します。この記事では、クラシック モデルまたは Service Manager デプロイメント モデルでの VM のバックアップについて説明します。リソース グループに属する Recovery Services コンテナーへの VM のバックアップについては、もう 1 つのタブ (「Resource Manager VM をバックアップする」) を参照してください。このチュートリアルを完了するには、次の前提条件を満たしている必要があります。
 
 - Azure サブスクリプションで既に VM を作成している。
 - VM が Azure パブリック IP アドレスに接続できる。詳細については、「[ネットワーク接続](./backup-azure-vms-prepare.md#network-connectivity)」を参照してください。
@@ -213,4 +213,4 @@ VM をバックアップする手順は、主に次の 5 つです。
 ## 疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0720_2016-->

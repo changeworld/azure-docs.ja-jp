@@ -27,11 +27,7 @@ Azure BLOB ストレージは、堅牢な汎用ストレージ ソリューシ�
 
 BLOB ストレージにデータを格納した場合、計算で使用する HDInsight クラスターを削除してもユーザー データは失われません。
 
-> [AZURE.NOTE]	HDInsight バージョン 3.0 クラスターでは、**asv://* 構文はサポートされません。つまり、**asv://* 構文を明示的に使用するジョブを HDInsight バージョン 3.0 クラスターに送信すると、そのジョブは失敗します。**wasb://* 構文を代わりに使用する必要があります。また、既存のメタストアにより、asv:// 構文を使用してリソースへの明示的な参照を含むジョブを作成し、HDInsight バージョン 3.0 クラスターに送信すると、そのジョブは失敗します。これらのメタストアは、wasb:// 構文を使用してリソースをアドレス指定するように再作成する必要があります。
-
-> HDInsight では現在、ブロック blob のみがサポートされています。
-
-> ほとんどの HDFS コマンド (<b>ls</b>、<b>copyFromLocal</b>、<b>mkdir</b> など) は通常と同じように機能します。ただし、<b>fschk</b> や <b>dfsadmin</b> など、HDFS ネイティブ実装 (DFS) に固有のコマンドについては、Azure BLOB ストレージ上で実行した場合に動作が異なります。
+> [AZURE.IMPORTANT] HDInsight でサポートされるのは、ブロック BLOB のみです。ページ BLOB や追加 BLOB はサポートされません。
 
 HDInsight クラスターの作成については、[HDInsight の概要][hdinsight-get-started]または [HDInsight クラスターの作成][hdinsight-creation]に関する記述を参照してください。
 
@@ -49,6 +45,7 @@ HDInsight では、それぞれのコンピューティング ノードにロー
 
 	wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
 
+> [AZURE.NOTE] HDInsight のバージョン 3.0 未満では、`wasb://` の代わりに `asv://` が使用されていました。HDInsight クラスター 3.0 以降で `asv://` を使用するとエラーが発生するので、使用しないでください。
 
 Hadoop は、既定のファイル システムの概念をサポートしています。既定のファイル システムは、既定のスキームとオーソリティを意味します。これは相対パスの解決に使用することもできます。HDInsight の作成プロセス時に、Azure Storage アカウントと、そのアカウントに対応する特定の Azure BLOB ストレージ コンテナーが既定のファイル システムとして指定されます。
 
@@ -59,7 +56,7 @@ Hadoop は、既定のファイル システムの概念をサポートしてい
 - **クラスターに接続されていないストレージ アカウント内のパブリック コンテナーまたはパブリック BLOB:** コンテナー内の BLOB に対する読み取り専用のアクセス許可が与えられます。
 
 	> [AZURE.NOTE]
-        > パブリック コンテナーの場合、そのコンテナー内に配置されているすべての BLOB のリストとコンテナー メタデータを取得できます。パブリック BLOB の場合、正確な URL がわかっているときのみ、その BLOB にアクセスできます。詳細については、「<a href="http://msdn.microsoft.com/library/windowsazure/dd179354.aspx">コンテナーと BLOB へのアクセスの制限</a>」を参照してください。
+        > パブリック コンテナーの場合、そのコンテナー内に配置されているすべての BLOB のリストとコンテナー メタデータを取得できます。パブリック BLOB の場合、正確な URL がわかっているときのみ、その BLOB にアクセスできます。詳細については、「<a href="http://msdn.microsoft.com/library/windowsazure/dd179354.aspx">コンテナーと BLOB へのアクセスの制限</a>」をご覧ください。
 
 - **クラスターに接続されていないストレージ アカウント内のプライベート コンテナー:** WebHCat ジョブを送信するときにストレージ アカウントを定義しない限り、コンテナー内の BLOB にはアクセスできません。詳しくは、この記事の後半で説明します。
 
@@ -83,7 +80,7 @@ HDFS ではなく、Azure BLOB ストレージにデータを格納すること�
 
 MapReduce の一部のジョブやパッケージでは中間結果が生成されますが、Azure BLOB ストレージ コンテナーには保存したくない場合もあります。このような場合、中間結果データをローカルの HDFS に保存できます。実際、HDInsight では、Hive ジョブやその他のプロセスで生成される中間結果の一部が DFS に格納されます。
 
-
+> [AZURE.NOTE] ほとんどの HDFS コマンド (<b>ls</b>、<b>copyFromLocal</b>、<b>mkdir</b> など) は通常と同じように機能します。ただし、<b>fschk</b> や <b>dfsadmin</b> など、HDFS ネイティブ実装 (DFS) に固有のコマンドについては、Azure BLOB ストレージ上で実行した場合に動作が異なります。
 
 ## BLOB コンテナーの作成
 
@@ -304,4 +301,4 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 [img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
 [img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0720_2016-->
