@@ -864,7 +864,8 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
 	]
 
 
-###* 演算子 サポートされている特別な演算子 (*) によって、ドキュメントが現状のまま表されます。使用する場合は、この演算子が唯一のプロジェクションされるフィールドである必要があります。`SELECT * FROM Families f` のようなクエリは有効ですが、`SELECT VALUE * FROM Families f ` および `SELECT *, f.id FROM Families f ` は無効です。
+###* 演算子 
+サポートされている特別な演算子 (*) によって、ドキュメントが現状のまま表されます。使用する場合は、この演算子が唯一のプロジェクションされるフィールドである必要があります。`SELECT * FROM Families f` のようなクエリは有効ですが、`SELECT VALUE * FROM Families f ` および `SELECT *, f.id FROM Families f ` は無効です。
 
 **クエリ**
 
