@@ -146,4 +146,4 @@ Azure ポータルを使用した HDInsight で Hadoop クラスターを作成�
 * [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md) - プログラムを使用して HDInsight にジョブを送信する方法について説明しています。
 * [Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md)
 
-<!----HONumber=AcomDC_0713_2016-->
+<!-------HONumber=AcomDC_0713_2016-->
