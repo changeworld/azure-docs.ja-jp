@@ -77,4 +77,4 @@ Vm の保護が済んだので、VM で実行できる追加管理タスクお�
 - [仮想マシンの管理と監視](backup-azure-manage-vms.md)
 - [仮想マシンの復元](backup-azure-arm-restore-vms.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!----HONumber=AcomDC_0518_2016-->
