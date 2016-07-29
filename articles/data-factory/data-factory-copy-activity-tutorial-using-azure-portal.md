@@ -464,4 +464,4 @@
 [image-data-factory-name-not-available]: ./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-data-factory-not-available.png
  
 
-<!------HONumber=AcomDC_0720_2016-->
+<!-------HONumber=AcomDC_0720_2016-->
