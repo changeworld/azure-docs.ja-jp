@@ -303,4 +303,4 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 * [Azure AD Connect を使用した AD FS の構成と管理](active-directory-aadconnectfed-whatis.md)
 
-<!-----HONumber=AcomDC_0720_2016-->
+<!------HONumber=AcomDC_0720_2016-->
