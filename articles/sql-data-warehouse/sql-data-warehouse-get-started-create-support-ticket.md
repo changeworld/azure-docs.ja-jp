@@ -48,7 +48,7 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
 
     ![リソース](./media/sql-data-warehouse-get-started-create-support-ticket/resource.png)
 
-7. [Azure サポート プラン][] を選択します。
+7. [Azure サポート プラン][Azure support plan] を選択します。
 
     - **課金、クォータ、サブスクリプション管理**のサポートは、すべてのサポート レベルでご利用いただけます。
     - **障害対応**のサポートは、[Developer][] サポート、[Standard][] サポート、[Professional Direct][] サポート、[Premier][] サポートにより提供されます。障害対応のサポートとは、Azure のご利用に際して発生した、マイクロソフトが原因と想定される問題への対応です。
