@@ -24,7 +24,8 @@
 
 自動修正では、SQL Server を実行している Azure 仮想マシンのメンテナンス期間が設定されます。このメンテナンス期間にのみ、自動更新プログラムをインストールできます。これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。自動修正は、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル。この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動修正 (クラシック)](virtual-machines-windows-classic-sql-automated-patching.md)」を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 
+クラシック デプロイ モデル。この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動修正 (クラシック)](virtual-machines-windows-classic-sql-automated-patching.md)」を参照してください。
 
 ## 前提条件
 

@@ -83,7 +83,7 @@
     ![Configure App Settings](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Configure App Settings")
 
     1.  **[サインオン URL]** ボックスに、「**http://azure.benefitsolver.com**」と入力します。
-    2.  **[応答 URL]** ボックスに、「**https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**」と入力します。
+	2.  **[応答 URL]** ボックスに、「**https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**」と入力します。
 
 
     3.  **[次へ]** をクリックします。

@@ -28,7 +28,7 @@
 
 Azure DocumentDB のリソースで CRUD 操作などの一般的な操作を実行するサンプル ソリューションは、[azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) GitHub リポジトリに含まれています。この記事では、次の内容について説明します。
 
-- 各 Node.js サンプル プロジェクト ファイルのタスクへのリンク。
+- 各 Node.js サンプル プロジェクト ファイルのタスクへのリンク。 
 - 関連する API リファレンス コンテンツへのリンク。
 
 **前提条件**
@@ -36,7 +36,7 @@ Azure DocumentDB のリソースで CRUD 操作などの一般的な操作を実
 1. これらの Node.js サンプルを使用するには Azure アカウントが必要です。
     - [無料で Azure アカウントを開く](https://azure.microsoft.com/pricing/free-trial/)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。
    - [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)こともできます: Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
-2. [Node.js SDK](documentdb-sdk-node.md) も必要です。
+2. [Node.js SDK](documentdb-sdk-node.md) も必要です。 
 
     > [AZURE.NOTE] 各サンプルは自己完結型であり、自身をセットアップし、自身をクリーンアップします。そのため、サンプルでは [DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html) の複数の呼び出しを発行します。これが行われるたびに、作成中のコレクションのパフォーマンス階層ごとに 1 時間の使用量に対するサブスクリプションが課金されます。
 

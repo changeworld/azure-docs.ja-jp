@@ -89,7 +89,7 @@ Azure サブスクリプションがない場合は、無料試用版のアカ�
 #### Azure Batch アカウント
 [Azure ポータル](http://manage.windowsazure.com/)を使用して、Azure Batch アカウントを作成します。「[Azure Batch アカウントの作成と管理](../batch/batch-account-create-portal.md)」を参照してください。Azure Batch のアカウント名とアカウント キーをメモしておきます。また、[New-AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx) コマンドレットを使用して、Azure Batch アカウントを作成することもできます。このコマンドレットの使用に関する詳細な手順については、「[Azure Batch PowerShell コマンドレットの概要](../batch/batch-powershell-cmdlets-get-started.md)」を参照してください。
 
-サンプル ソリューションでは、(Azure Data Factory パイプラインを通じて間接的に) Azure Batch を使用して、仮想マシンの管理コレクションであるコンピューティング ノードのプールで、同じ方法でデータを処理します。
+    サンプル ソリューションでは、(Azure Data Factory パイプラインを通じて間接的に) Azure Batch を使用して、仮想マシンの管理コレクションであるコンピューティング ノードのプールで、同じ方法でデータを処理します。
 
 #### 仮想マシン (VM) の Azure Batch プール
 2 個以上のコンピューティング ノードで **Azure Batch プール** を作成します。
