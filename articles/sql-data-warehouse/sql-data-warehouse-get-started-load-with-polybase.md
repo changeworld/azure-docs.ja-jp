@@ -116,7 +116,7 @@ Azure Blob Storage にデータをコピーするには:
 Blob Storage にアップロードしたファイルを表示するには:
 
 1. BLOB サービス ブレードに戻ります。
-2. [コンテナー] の下の **[データコンテナー]** をダブルクリックします。
+2. [コンテナー] の下の **[データ コンテナー]** をダブルクリックします。
 3. データへのパスをたどるために **datedimension** フォルダーをクリックすると、アップロードした **DimDate2.txt** ファイルが表示されます。
 4. プロパティを表示するには、**DimDate2.txt** をクリックします。
 5. BLOB プロパティ ブレードでは、ファイルをダウンロードまたは削除することができます。
@@ -285,4 +285,4 @@ PolyBase を使用するソリューションを開発する際に知ってお�
 [Create Database Scoped Credential (Transact-SQL)]: https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!----HONumber=AcomDC_0706_2016-->
