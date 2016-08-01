@@ -39,7 +39,7 @@
 
 このアーキテクチャは、プロセス サーバーが Azure 上にあり、VPN または ExpressRoute 接続のいずれかがある場合に使用します。
 
-![](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
+![](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.PNG)
 
 ポートの一覧とフェールバック アーキテクチャの図については、以下の画像をご覧ください。
 
