@@ -48,7 +48,7 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
 
     ![リソース](./media/sql-data-warehouse-get-started-create-support-ticket/resource.png)
 
-7. [[Azure サポート プラン]][] を選択します。
+7. [Azure サポート プラン][Azure support plan] を選択します。
 
     - **課金、クォータ、サブスクリプション管理**のサポートは、すべてのサポート レベルでご利用いただけます。
     - **障害対応**のサポートは、[Developer][] サポート、[Standard][] サポート、[Professional Direct][] サポート、[Premier][] サポートにより提供されます。障害対応のサポートとは、Azure のご利用に際して発生した、マイクロソフトが原因と想定される問題への対応です。
@@ -93,7 +93,7 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
 <!--Other web references--> 
 [Azure ポータル]: https://portal.azure.com/
 [Azure support plan]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
-[[Azure サポート プラン]]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
+[Azure サポート プラン]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
 [Developer]: https://azure.microsoft.com/support/plans/developer/
 [Standard]: https://azure.microsoft.com/support/plans/standard/
 [Professional Direct]: https://azure.microsoft.com/support/plans/prodirect/
@@ -103,4 +103,4 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL Data Warehouse MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!--------HONumber=AcomDC_0720_2016-->

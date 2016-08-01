@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="06/27/2016" 
+	ms.date="07/07/2016" 
 	ms.author="asirveda;robmcm"/>
 
 # Eclipse で Azure の Java Web アプリをデバッグする
@@ -104,4 +104,4 @@ Azure Web Apps の作成の詳細については、「[Web Apps の概要]」を
 [05]: ./media/app-service-web-debug-java-web-app-in-eclipse/05-ready-for-remote-debugging.png
 [06]: ./media/app-service-web-debug-java-web-app-in-eclipse/06-windows-command-prompt-connection-successful-to-remote.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

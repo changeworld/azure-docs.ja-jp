@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/21/2016"
+	ms.date="07/18/2016"
 	ms.author="curtand;jeffsta"/>
 
 # Azure Active Directory でのカスタム ドメイン名の概念の概要
@@ -30,7 +30,7 @@ Azure AD のすべてのドメイン名は、初期ドメイン名またはカ�
 
 ほとんどの運用環境のディレクトリには、"contoso.com" など、少なくとも 1 つの確認済みカスタム ドメインがあり、これがエンドユーザーから参照可能なカスタム ドメインになります。カスタム ドメイン名は、"contoso.com" など、自社の Web サイトのホストなどの目的で、組織が使用し、所有するドメイン名です。このドメイン名は、企業ネットワークへのサインインや電子メールの送受信に使用するユーザー名の一部であるため、従業員にとってなじみがあります。
 
-カスタム ドメインは、Azure AD で使用する前にディレクトリに追加し、確認する必要があります。
+カスタム ドメイン名は、Azure AD で使用する前にディレクトリに追加し、確認する必要があります。
 
 ## 確認済みドメイン名および未確認ドメイン名
 
@@ -68,4 +68,4 @@ Azure Web アプリでは、独自のメカニズムを使用して、ドメイ�
 
 -   [Azure AD Graph API を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -52,8 +52,12 @@ GitHub SQL Server サンプル リポジトリの [Saas のためのエラステ
 
 このサンプルは、Survey と呼ばれるマルチテナント Web アプリケーションです。このアプリケーションでは、オンライン アンケートを作成できます。このサンプルは、サインアップ、認証、承認、アプリ ロールなど、マルチテナント アプリケーションでユーザー ID を管理するときの重要な課題をいくつか示しています。このサンプルの実行については、「[How to run the Tailspin Surveys sample application (Tailspin Survey サンプル アプリケーションを実行する方法)](https://github.com/Azure-Samples/guidance-identity-management-for-multitenant-apps/blob/master/docs/running-the-app.md)」をご覧ください。
 
+## Contoso クリニック デモ アプリケーション
+
+このサンプルでは、Azure SQL DB (V12) のセキュリティ機能を紹介します。このサンプルを実行するには、「[Contoso Clinic Demo Application (Contoso クリニック デモ アプリケーション)](https://github.com/Microsoft/azure-sql-security-sample)」をご覧ください。
+
 ## 次のステップ
 
 [Azure SQL Database チュートリアルの確認](sql-database-explore-tutorials.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/13/2016"
+	ms.date="07/15/2016"
 	ms.author="tomfitz"/>
 
 # Azure Resource Manager テンプレートを作成するためのベスト プラクティス
@@ -34,16 +34,15 @@
 
 データ アクセス エンドポイントを持つリソースの種類に対しては、一意のリソース名を付ける必要があります。一意の名前にする必要があるリソースの種類には次のようなものがあります。
 
-- Storage
-- Web アプリ
+- ストレージ アカウント
+- Web サイト
 - SQL Server
 - Key Vault
 - Redis Cache
-- Batch  
-
+- Batch アカウント
 - Traffic Manager
 - 検索サービス
-- HDInsight
+- HDInsight クラスター
 
 また、ストレージ アカウント名は、小文字で 24 文字以下にする必要があり、ハイフンを含めることはできません。
 
@@ -363,4 +362,4 @@ uniqueString のプレフィックスが付いたストレージ アカウント
 2. ストレージ アカウントのセットアップのガイダンスについては、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](./storage/storage-performance-checklist.md)」を参照してください。
 3. 仮想ネットワークについては、「[ネットワーク インフラストラクチャのガイドライン](./virtual-machines/virtual-machines-windows-infrastructure-networking-guidelines.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

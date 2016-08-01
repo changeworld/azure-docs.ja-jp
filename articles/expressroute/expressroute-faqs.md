@@ -248,7 +248,7 @@ ExpressRoute がサポートされているパートナーと地域の一覧に�
 ### 自社で ExpressRoute が構成されている場合でも、インターネット経由で Office 365 にアクセスできますか。
 はい。自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
 
-### ExpressRoute 接続経由で Dynamics AX にアクセスできますか。
+### ExpressRoute 接続経由で Dynamics AX にオンラインでアクセスできますか。
 いいえ。それはサポートされていません。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -64,11 +64,11 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
 ここでは、Azure ポータルと ARM テンプレートを使用してチュートリアルを実行するために、クラスターと SQL データベース スキーマを作成する方法を説明します。Azure PowerShell を使用する場合は、「[付録 A](#appendix-a---a-powershell-sample)」を参照してください。
 
-1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。         
+1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    ARM テンプレートはパブリック BLOB コンテナー内 (**https://hditutorialdata.blob.core.windows.net/usesqoop/create-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json*) にあります。
+    ARM テンプレートはパブリック BLOB コンテナー内 (*https://hditutorialdata.blob.core.windows.net/usesqoop/create-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json*) にあります。
     
     ARM テンプレートでは、SQL Database にテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。bacpac パッケージも、パブリック BLOB コンテナー内 (https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac) にあります。bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
     
@@ -84,10 +84,10 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
     次の値は、変数セクションにハードコードされています。
     
-    |既定のストレージ アカウント名|<CluterName>store|
+    |既定のストレージ アカウント名|<クラスター名> ストア|
     |----------------------------|-----------------|
-    |Azure SQL データベース サーバー名|<ClusterName>dbserver|
-    |Azure SQL データベース名|<ClusterName>db|
+    |Azure SQL データベース サーバー名|<クラスター名> dbserver|
+    |Azure SQL データベース名|<クラスター名> db|
     
     これらの値を書き留めておいてください。この情報は後で必要になります。
     
@@ -101,7 +101,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
 既存の Azure SQL Database または Microsoft SQL Server を使用する場合
 
-- **Azure SQL データベース**: ワークステーションから Azure SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。 
+- **Azure SQL データベース**: ワークステーションから Azure SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。
 
     > [AZURE.NOTE] 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。Azure SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][sqldatabase-create-configue]」を参照してください。
 
@@ -132,6 +132,12 @@ HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行
 | [.NET SDK for Hadoop](hdinsight-hadoop-use-sqoop-dotnet-sdk.md) | &nbsp; | ✔ | Linux または Windows | Windows (現時点) |
 | [Azure PowerShell](hdinsight-hadoop-use-sqoop-powershell.md) | &nbsp; | ✔ | Linux または Windows | Windows |
 
+##制限事項
+
+* 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
+
+* バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入処理を実行します。
+
 ##次のステップ
 
 ここでは Sqoop の使用方法を説明しました。詳細については、次を参照してください。
@@ -149,7 +155,7 @@ PowerShell のサンプルでは、次の手順を実行します。
 
 1. Azure に接続します。
 2. Azure リソース グループを作成します。詳細については、[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページを参照してください。
-3. Azure SQL Database サーバー、Azure SQL Database、および 2 つのテーブルを作成します。 
+3. Azure SQL Database サーバー、Azure SQL Database、および 2 つのテーブルを作成します。
 
 	SQL Server を使用する場合は、次のステートメントを使用してテーブルを作成します。
 	
@@ -623,4 +629,4 @@ PowerShell のサンプルでは、次の手順を実行します。
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

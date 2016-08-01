@@ -14,10 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/29/2016"
+   ms.date="07/15/2016"
    ms.author="cgronlun;brohrer;garye"/>
 
-# 初心者向けデータ サイエンス ビデオ 4: 単純なモデルで回答を予測する
+# 単純なモデルで回答を予測する
+
+## ビデオ 4: 初心者向けデータ サイエンス シリーズ
 
 初心者向けデータ サイエン ビデオ 4 では、単純なモデルを作成してダイヤモンドの価格を予測する方法について説明します。ターゲット データを使用して回帰モデルを引き出します。
 
@@ -25,11 +27,21 @@
 
 <div class="wa-video-container" data-control="video-container" data-slug="data-science-for-beginners-series-predict-an-answer-with-a-simple-model"> <a title="Data science for beginners: Predict an answer with a simple model" class="wa-video-thumbnail" href="/en-us/documentation/videos/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/" data-control="video" data-event="videopage-clicked-videothumbnail" data-event-property="data-science-for-beginners-series-predict-an-answer-with-a-simple-model" data-caption="" data-ch9="//channel9.msdn.com/Blogs/Windows-Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player/" data-expanding="false"> <img class="thumbnail" alt="Data science for beginners: Predict an answer with a simple model" src="https://sec.ch9.ms/ch9/d060/48bc9b8a-987c-4f60-94fe-fc482da2d060/DataScienceForBeginnersSeriesPredictAnAnswerWithA_960.jpg"> <img class="play-icon" src="/cdn/cvt-a29a0e789afe7f47464f393c011b53f210c511ee5fed2c4c9c0633442f30d6ec/images/icon/VideoPlay.svg"> <span class="metadata"> <span class="date"> <span>06-28-2016</span> <span>07 min, 42 sec</span> </span> </span> </a> </div>
 
+## このシリーズの他のビデオ
+
+*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
+
+  * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
+  * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
+  * ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+  * ビデオ 4: 単純なモデルで回答を予測する
+  * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
+
 ## トランスクリプト: 単純なモデルで回答を予測する
 
 "初心者向けデータ サイエンス" シリーズの 4 番目のビデオへようこそ。ここでは、単純なモデルを作成して予測を行います。
 
-"モデル" とは、データについての単純化されたストーリーです。何が言いたいかを説明します。
+*"モデル"* とは、データについての単純化されたストーリーです。何が言いたいかを説明します。
 
 ## 関連性があり、正確で、連続している、十分なデータを収集する
 
@@ -43,7 +55,7 @@
 
 実際に、これで小さなデータ セット、つまり 1 つのテーブルができたことになります。このテーブルが品質の条件を満たしていることに注目してください。
 
-* データに**関連性がある**: 重さは間違いなく価格に関連します。
+* データに**関連性がある**: 重さは間違いなく価格に関連しています。
 * **正確である**: 書き留めた価格をダブルチェックしました。
 * **連続している**: 各列にはどこにも空白がありません。
 * さらに、ご覧のとおり、質問に回答するのに**十分な**データがあります。
@@ -62,7 +74,7 @@
 
 ![重さと価格の軸](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/weight-and-price-axes.png)
 
-このデータを取得し、"散布図" に変換します。数値のデータ セットを視覚化するにはこの方法がお勧めです。
+このデータを取得し、*"散布図"* に変換します。数値のデータ セットを視覚化するにはこの方法がお勧めです。
 
 最初のデータ ポイントでは、1.01 カラットの位置で垂直軸の見当を付けてください。次に、7,366 ドルの位置で水平軸の見当を付けてください。それらが交差する場所に点を描きます。これが 1 番目のダイヤモンドを表します。
 
@@ -78,9 +90,9 @@
 
 ![線形回帰直線](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/linear-regression-line.png)
 
-直線から外れた点があってもかまいません。データ サイエンティストの説明では、この直線がモデルです。また、各点には、関連する "ノイズ" または "分散" があります。基になる理想的な関係が存在し、一方、ノイズや不確実性を含むザラザラした現実世界があります。
+直線から外れた点があってもかまいません。データ サイエンティストの説明では、この直線がモデルです。また、各点には、*"ノイズ"* または *"分散"* が付随しています。基になる理想的な関係が存在し、一方、ノイズや不確実性を含むザラザラした現実世界があります。
 
-"どの程度か" という質問に回答しようとしているため、これを "回帰" と呼びます。また、直線を使用しているため、これは "線形回帰" です。
+*"どの程度か"* という質問に回答しようとしているため、これを *"回帰"* と呼びます。また、直線を使用しているため、これは *"線形回帰"* です。
 
 ## モデルを使用して回答を見つける
 
@@ -92,7 +104,7 @@
 
 ## 信頼区間を作成する
 
-この予測がどの程度の精度なのかという疑問を抱くのは当然です。1.35 カラットのダイヤモンドが 10,000 ドルに非常に近いのか、はるかに高いのか (または安いのか) を知っておくと便利です。この答えを出すには、ほとんどの点を囲むように回帰直線の周りに枠を描画してみましょう。この枠は "信頼区間" と呼ばれます。「価格はこの枠内に収まる」ということをかなりの自信を持って言うことができます。その理由は、過去のほとんどの価格がその中に収まっているからです。1.35 カラットの直線が枠の上端および下端と交差する点から水平な直線を 2 本描画できます。
+この予測がどの程度の精度なのかという疑問を抱くのは当然です。1.35 カラットのダイヤモンドが 10,000 ドルに非常に近いのか、はるかに高いのか (または安いのか) を知っておくと便利です。この答えを出すには、ほとんどの点を囲むように回帰直線の周りに枠を描画してみましょう。この枠は *"信頼区間"* と呼ばれます。「価格はこの枠内に収まる」ということをかなりの自信を持って言うことができます。その理由は、過去のほとんどの価格がその中に収まっているからです。1.35 カラットの直線が枠の上端および下端と交差する点から水平な直線を 2 本描画できます。
 
 ![信頼区間](./media/machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
@@ -103,8 +115,8 @@
 データ サイエンティストが有料で行うことを、ここでは描画のみで実行しました。
 
 * データで回答できる質問をする
-* "線形回帰" を使用して "モデル" を構築する
-* "予測" と "信頼区間" を作成する
+* *"線形回帰"* を使用して *"モデル"* を構築する
+* *"予測"* と *"信頼区間"* を作成する
 
 数学やコンピューターを使用せずにこれを実行しました。
 
@@ -123,19 +135,10 @@
 Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" の他のビデオも必ずご覧ください。
 
 
-## このシリーズの他のビデオ
-
-"初心者向けデータ サイエンス" は、データ サイエンスを簡単に説明した 5 本の短いビデオです。
-
-  * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
-  * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
-  * ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
-  * ビデオ 4: 単純なモデルで回答を予測する
-  * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
 
 ## 次のステップ
 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

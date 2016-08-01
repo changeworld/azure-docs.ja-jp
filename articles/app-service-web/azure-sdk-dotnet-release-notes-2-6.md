@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="04/25/2016"
+   ms.date="07/18/2016"
    ms.author="juliako"/>
 
  
@@ -26,7 +26,7 @@ Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NE
 
 ##Service Bus の更新
 
-- Event Hubs: 
+- Event Hubs:
 
 	- Event Hubs の追加の発行者エンドポイントを公開することで、イベントの送信時に、対象のアクセス権を制御できるようになりました。
 	- Event Hubs の機能と安定性が強化されました。
@@ -36,7 +36,7 @@ Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NE
 
 - **IntelliSense の強化**: リモート メタデータの推奨事項
 
-	HDInsight Tools for Visual Studio で、Hive スクリプトの編集時にリモート メタデータの取得がサポートされるようになりました。たとえば、「**SELECT * FROM**」と入力すると、すべてのテーブル名が表示されます。また、テーブルを指定した後、列名も表示されます。
+	HDInsight Tools for Visual Studio で、Hive スクリプトの編集時にリモート メタデータの取得がサポートされるようになりました。たとえば、「*SELECT * FROM*」と入力すると、すべてのテーブル名が表示されます。また、テーブルを指定した後、列名も表示されます。
 
 - **HDInsight Emulator のサポート**
 
@@ -48,9 +48,9 @@ Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NE
 
 	HDInsight Tools for Visual Studio に汎用 Hadoop クラスターのサポートが追加されたため、HDInsight Tools for Visual Studio を使用して、次のことを実行できます。
 
-	- クラスターに接続 
-	- 強化された IntelliSense とオートコンプリート サポートを使用して、Hive クエリを記述 
-	- 直感的な UI で、クラスター内のすべてのジョブを表示 
+	- クラスターに接続
+	- 強化された IntelliSense とオートコンプリート サポートを使用して、Hive クエリを記述
+	- 直感的な UI で、クラスター内のすべてのジョブを表示
 
 	詳しくは、[このマニュアル](http://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409)を参照してください。
 
@@ -72,7 +72,7 @@ Azure SDK 2.6 リリースで次の項目が更新されました。
 - API Apps プロビジョニング機能により、ユーザーは API アプリの作成やプロビジョニング機能を使用できるようになります。
 - Server Explorer で、リソース グループにより Web、モバイル、API Apps をグループ化して、新しい App Service ノードが反映されるようになりました。
 - ほとんどの C# プロジェクトに追加された Azure API App Client ジェスチャが追加されました。これにより、Azure のサブスクリプションで実行する Swagger 対応 API Apps の自動生成が可能になります。
-- Server Explorer の API Apps ツールと App Service ノードがVisual Studio 2013 でのみ利用できるようになりました。 
+- Server Explorer の API Apps ツールと App Service ノードがVisual Studio 2013 でのみ利用できるようになりました。
 
 ##Azure リソース マネージャー ツールの更新
 
@@ -93,7 +93,7 @@ Azure SDK 2.6 において、Azure コンピューティング エミュレー�
  
 ##既知の問題
 
-- エミュレーターで診断ログを収集するには、64 ビットのオペレーティング システムが必要です。32 ビットのオペレーティング システムで実行した場合、診断ログは収集されません。これは、他のエミュレーター機能には影響しません。 
+- エミュレーターで診断ログを収集するには、64 ビットのオペレーティング システムが必要です。32 ビットのオペレーティング システムで実行した場合、診断ログは収集されません。これは、他のエミュレーター機能には影響しません。
 
 - 2015 年 4 月 29 日にリリースされた Azure SDK 2.6 には 2 つの問題がありました。
 
@@ -108,4 +108,4 @@ Azure SDK 2.6 において、Azure コンピューティング エミュレー�
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0720_2016-->

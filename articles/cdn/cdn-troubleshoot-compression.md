@@ -2,7 +2,7 @@
 	pageTitle="CDN - ファイルの圧縮のトラブルシューティング"
 	description="CDN ファイルの圧縮に関する問題のトラブルシューティングを行います。"
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/14/2016"
 	ms.author="casoper"/>
     
 # CDN ファイルの圧縮のトラブルシューティング
@@ -79,7 +79,7 @@
 ブラウザーの開発者ツールを使用して、応答ヘッダーを確認し、ファイルが要求されているリージョンでキャッシュされていることを確認します。
 
 - **Server** 応答ヘッダーを確認します。この応答ヘッダーの形式は、次の例に示すとおり**プラットフォーム (POP/サーバー ID)** である必要があります。
-- **X-Cache** 応答ヘッダーを確認します。ヘッダーによって **HIT** が読み取られる必要があります。  
+- **X-Cache** 応答ヘッダーを確認します。ヘッダーによって **HIT** が読み取られる必要があります。
 
 ![CDN 応答ヘッダー](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
@@ -92,4 +92,11 @@
 - 128 バイトより大きい
 - 1 MB 未満
 
-<!---HONumber=AcomDC_0518_2016-->
+### 配信元サーバーで要求の **Via** ヘッダーをチェックする
+
+**Via** HTTP ヘッダーは、その要求がプロキシ サーバーを介して送信されていることを Web サーバーに伝えます。既定では、要求に **Via** ヘッダーが含まれている場合、Microsoft IIS Web サーバーは応答を圧縮しません。この動作を上書きするには、次の作業を実行します。
+
+- **IIS 6**: [IIS のメタベース プロパティで HcNoCompressionForProxies="FALSE" に設定する](https://msdn.microsoft.com/library/ms525390.aspx)
+- **IIS 7 以降**: [**サーバーの構成で noCompressionForHttp10** と **noCompressionForProxies** をどちらも False に設定する](http://www.iis.net/configreference/system.webserver/httpcompression)
+
+<!---HONumber=AcomDC_0720_2016-->

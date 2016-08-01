@@ -46,10 +46,10 @@
 <a name="measures"/>
 ## DirectQuery とメジャー
 
-基になるデータ ソースに送信されるクエリのパフォーマンスを許容可能なものにするために、メジャーには制限が課されます。**Power BI Desktop** を使用する上級ユーザーは、**[ファイル] > [オプションと設定] > [オプション]** で、この制限を回避することもできます。**[オプション]** ダイアログで **[DirectQuery]** を選択し、**[DirectQuery モードで無制限のメジャーを許可する]** を選択します。このオプションを選択した場合、メジャーで有効な任意の DAX 式を使用できます。ただし、データをインポートしたときは快適に動作していた式であっても、**DirectQuery** モードになると、バックエンド ソースに対するクエリの速度が大幅に低下する場合があることに注意する必要があります。**Power BI Desktop** の使用方法の詳細については、「[Power BI Desktop の概要](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)」をご覧ください。
+基になるデータ ソースに送信されるクエリのパフォーマンスを許容可能なものにするために、メジャーには制限が課されます。**Power BI Desktop** を使用する上級ユーザーは、**[ファイル] > [オプションと設定] > [オプション]** で、この制限を回避することもできます。**[オプション]** ダイアログで **[DirectQuery]** を選択し、**[DirectQuery モードで無制限のメジャーを許可する]** を選択します。このオプションを選択した場合、メジャーで有効な任意の DAX 式を使用できます。ただし、データをインポートしたときは快適に動作していた式であっても、**DirectQuery** モードになると、バックエンド ソースに対するクエリの速度が大幅に低下する場合があることに注意する必要があります。
 
 ## 関連項目
 - [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

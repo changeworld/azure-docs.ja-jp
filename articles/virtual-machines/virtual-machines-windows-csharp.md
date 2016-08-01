@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="07/14/2016"
 	ms.author="davidmu"/>
 
 # C を使用した Azure リソースのデプロイ# 
@@ -75,8 +75,8 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
         {
           var cc = new ClientCredential("{client-id}", "{client-secret}");
           var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
-          var result = context.AcquireTokenAsync("https://management.azure.com/", cc);
-          if (result == null)
+          var token = context.AcquireTokenAsync("https://management.azure.com/", cc);
+          if (token == null)
           {
             throw new InvalidOperationException("Could not get the token");
           }
@@ -514,4 +514,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 - テンプレートを使用して仮想マシンを作成する方法については、「[C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ](virtual-machines-windows-csharp-template.md)」を参照してください。
 - [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-csharp-manage.md)に関する記事で、作成した仮想マシンを管理する方法を確認します。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

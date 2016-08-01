@@ -26,7 +26,7 @@
 **let と set**: [let](#let-clause) | [set](#set-clause)
 
 
-**クエリと演算子**: [count](#count-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict 句](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator)
+**クエリと演算子** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict 句](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator)
 
 **集計**: [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -174,6 +174,227 @@ requests // The request table starts this pipeline.
 ```AIQL
 requests | count
 ```
+
+### evaluate 演算子
+
+`evaluate` は、クエリに特殊なアルゴリズムを追加できるようにする拡張メカニズムです。
+
+`evaluate` は、クエリ パイプラインの最後の演算子にする必要があります (`render` は例外)。関数本体では使用できません。
+
+[evaluate autocluster](#evaluate-autocluster) | [evaluate basket](#evaluate-basket) | [evaluate diffpatterns](#evaluate-diffpatterns) | [evaluate extractcolumns](#evaluate-extractcolumns)
+
+#### evaluate autocluster
+
+     T | evaluate autocluster()
+
+AutoCluster は、データの個別の属性 (ディメンション) の一般的なパターンを見つけ出し、元のクエリの結果を (100 行であっても 100k 行であっても) 少数のパターンにまとめます。AutoCluster はエラー (例外、クラッシュなど) を分析するために開発されましたが、フィルター処理された任意のデータ セットの操作にも使用できます。
+
+**構文**
+
+    T | evaluate autocluster( arguments )
+
+**戻り値**
+
+AutoCluster は、通常はパターンの小さなセットを返します。これらのパターンは、複数の個別の属性にわたって共通する値を持つデータの一部をキャプチャします。各パターンは、結果内の行によって表されます。
+
+最初の 2 つの列は、元のクエリからパターンによってキャプチャされた行の数と割合です。残りの列は、元のクエリにあったもので、それらの値は列の具体的な値か、変数値を意味する "*" です。
+
+パターンは互いに素になっていないことに注意してください。重複する可能性があり、通常は元のすべての行が含まれてはいません。一部の行は、どのパターンにも当てはまらない場合があります。
+
+**ヒント**
+
+* 入力パイプで `where` と `project` を使用して、関心があるデータだけに絞り込みます。
+* 関心がある行が見つかったら、`where` フィルターに特定の値を追加して、より詳しく調べることができます。
+
+**引数 (すべて省略可能)**
+
+* `output=all | values | minimal`
+
+    結果の形式です。Count および Percent 列は、常に結果に表示されます。
+
+ * `all` - 入力のすべての列が出力されます。
+ * `values` - 結果で "*" だけを持つ列を除外します。
+ * `minimal` - 元のクエリとすべての行が同一である列も除外します。
+
+
+* `min_percent=`*double* (既定値: 1)
+
+    生成される行をカバーする最小の割合。
+
+    例: `T | evaluate autocluster("min_percent=5.5")`
+
+
+* `num_seeds=` *int* (既定値: 25)
+
+    シード数によって、アルゴリズムの最初のローカル検索ポイント数が決まります。データの構造によっては、シード数を増やすと検索領域が増えて、結果の数が増えたり品質が高くなったりしますが、クエリが遅くなるトレードオフがあります。num\_seeds 引数は大きすぎても小さすぎても結果が減少し、5 より小さくしてもパフォーマンスの向上はほとんど得られず、50 より大きくしても新しいパターンが生成されることはほとんどありません。
+
+    例: `T | evaluate autocluster("num_seeds=50")`
+
+
+* `size_weight=` *0<double<1*+ (既定値: 0.5)
+
+    一般性 (高カバレッジ) と情報性 (多くの共有値) とのバランスをある程度制御できるようになります。通常、size\_weight を増やすと、パターン数が減り、各パターンはより大きい割合をカバーするようになります。通常、size\_weight を減らすと、より多くの共有値を持つ、より具体的なパターンが生成され、より小さい割合がカバーされます。内部的な式は、正規化された一般スコアと情報スコアとの加重幾何平均です。size\_weight と 1-size\_weight が重みになります。
+
+    例: `T | evaluate autocluster("size_weight=0.8")`
+
+
+* `weight_column=` *column\_name*
+
+    入力の各行に、指定された重みを適用します (既定では、各行の重みは "1" です)。weight 列の一般的な使用方法は、既に各行に埋め込まれているデータのサンプリングまたはバケット/集計を考慮することです。
+
+    例: `T | evaluate autocluster("weight_column=sample_Count")`
+
+
+
+#### evaluate basket
+
+     T | evaluate basket()
+
+basket は、データの個々の属性 (ディメンション) のすべての頻出パターンを検出し、元のクエリの頻度しきい値を超えたすべての頻出パターンを返します。データのすべての頻出パターンが検出されることが保証されていますが、多項式近似の実行時間は保証されていません。クエリの実行時間は行数に比例しますが、場合によっては列 (ディメンション) 数の指数関数になることもあります。basket は、元はバスケット分析データ マイニング向けに開発された Apriori アルゴリズムに基づいています。
+
+**戻り値**
+
+指定された分数 (既定値は 0.05) よりも多いイベントに表れるすべてのパターン。
+
+**引数 (すべて省略可能)**
+
+
+* `threshold=` *0.015<double<1* (既定値: 0.05)
+
+    頻出と見なされる行の最小率を設定します (より少ない率のパターンは返されません)。
+
+    例: `T | evaluate basket("threshold=0.02")`
+
+
+* `weight_column=` *column\_name*
+
+    入力の各行に、指定された重みを適用します (既定では、各行の重みは "1" です)。weight 列の一般的な使用方法は、既に各行に埋め込まれているデータのサンプリングまたはバケット/集計を考慮することです。
+
+    例: T | evaluate basket("weight\_column=sample\_Count")
+
+
+* `max_dims=` *1<int* (既定値: 5)
+
+    バスケットごとの非相関ディメンションの最大数を設定します。既定では、クエリの実行時間を短くするために制限されています。
+
+
+* `output=minimize` | `all`
+
+    結果の形式です。Count および Percent 列は、常に結果に表示されます。
+
+ * `minimize` - 結果で "*" だけを持つ列を除外します。
+ * `all` - 入力のすべての列が出力されます。
+
+
+
+
+#### evaluate diffpatterns
+
+     requests | evaluate diffpatterns("split=success")
+
+diffpatterns は、同じ構造の 2 つのデータ セットを比較し、2 つのデータ セット間の違いを特徴付ける個々の属性 (ディメンション) のパターンを発見します。diffpatterns は、エラーの分析を支援する (たとえば、所定の期間内のエラーと非エラーを比較する) ために開発されましたが、同じ構造の 2 つの任意のデータ セット間の差異も見つけることができます。
+
+**構文**
+
+`T | evaluate diffpatterns("split=` *BinaryColumn* `" [, arguments] )`
+
+**戻り値**
+
+diffpatterns は、2 つのセット内の異なる部分のデータをキャプチャするパターン (つまり、1 つ目のデータ セットの大きな割合の行と 2 つ目のデータ セットの小さな割合の行をキャプチャするパターン) の、通常は小さいセットを返します。各パターンは、結果内の行によって表されます。
+
+最初の 4 つの列は、各セットのパターンによってキャプチャされた、元のクエリからの行の数と割合であり、5 番目の列は 2 つのセット間の差異 (絶対パーセント ポイント) です。残りの列は、元のクエリにあったもので、それらの値は列の具体的な値か、変数値を意味する * です。
+
+パターンは個別ではないことに注意してください。重複する可能性があり、通常は元のすべての行が含まれてはいません。一部の行は、どのパターンにも当てはまらない場合があります。
+
+**ヒント**
+
+* 入力パイプで where と project を使用して、関心があるデータだけに絞り込みます。
+
+* 関心がある行が見つかったら、where フィルターに特定の値を追加して、より詳しく調べることができます。
+
+**引数**
+
+* `split=` *column name* (必須)
+
+    この列は、正確に 2 つの値を持つ必要があります。必要に応じて、そのような列を作成します。
+
+    `requests | extend fault = toint(resultCode) >= 500` <br/> `| evaluate diffpatterns("split=fault")`
+
+* `target=` *string*
+
+    対象データ セットで、より割合が高いパターンだけを探すようにアルゴリズムに指示します。対象は、split 列の 2 つの値のうちのいずれかである必要があります。
+
+    `requests | evaluate diffpatterns("split=success", "target=false")`
+
+* `threshold=` *0.015<double<1* (既定値: 0.05)
+
+    2 つのセット間の最小限のパターン (割合) の差を設定します。
+
+    `requests | evaluate diffpatterns("split=success", "threshold=0.04")`
+
+* `output=minimize | all`
+
+    結果の形式です。Count および Percent 列は、常に結果に表示されます。
+
+ * `minimize` - 結果で "*" だけを持つ列を除外します。
+ * `all` - 入力のすべての列が出力されます。
+
+* `weight_column=` *column\_name*
+
+    入力の各行に、指定された重みを適用します (既定では、各行の重みは "1" です)。weight 列の一般的な使用方法は、既に各行に埋め込まれているデータのサンプリングまたはバケット/集計を考慮することです。
+
+    `requests | evaluate autocluster("weight_column=itemCount")`
+
+
+
+
+
+
+#### evaluate extractcolumns
+
+     exceptions | take 1000 | evaluate extractcolumns("details=json") 
+
+extractcolumns は、テーブルに複数の単純な列を追加するために使用されます。それらの列は、種類に基づいて、(半) 構造化された列から動的に抽出されます。現在、サポートされているのは json 列だけです。json の dynamic と string の両方のシリアル化に対応しています。
+
+
+* `max_columns=` *int* (既定値: 10)
+
+    新たに追加される列の数は動的であり、非常に多くなることもあるため (実際には、すべての json レコードの個別のキーの数)、制限する必要があります。新しい列は、頻度に基づいて降順に並べ替えられ、最大で max\_columns の数までテーブルに追加されます。
+
+    `T | evaluate extractcolumns("json_column_name=json", "max_columns=30")`
+
+
+* `min_percent=` *double* (既定値: 10.0)
+
+    新しい列を制限するもう 1 つの方法です。頻度が min\_percent より低い列を無視します。
+
+    `T | evaluate extractcolumns("json_column_name=json", "min_percent=60")`
+
+
+* `add_prefix=` *bool* (既定値: true)
+
+    true の場合、抽出された列の名前にプレフィックスとして複合列の名前が追加されます。
+
+
+* `prefix_delimiter=` *string* (既定値: "\_")
+
+    add\_prefix=true の場合、このパラメーターは新しい列の名前を連結するために使用される区切り記号を定義します。
+
+    `T | evaluate extractcolumns("json_column_name=json",` <br/> `"add_prefix=true", "prefix_delimiter=@")`
+
+
+* `keep_original=` *bool* (既定値: false)
+
+    true の場合、元の (json) 列は出力テーブル内に保持されます。
+
+
+* `output=query | table`
+
+    結果の形式です。
+
+ * `table` - 出力は、受け取ったテーブルと同じテーブルです。ただし、指定した入力列はなく、入力列から抽出された新しい列が追加されています。
+ * `query` - 出力は、結果をテーブルとして取得するために作成するクエリを表す文字列です。
+
 
 
 
@@ -742,7 +963,7 @@ Traces
 
 * *NumberOfRows:* 返される *T* の行の数。
 * *Sort\_expression:* 行の並べ替えに使用する式。通常は単なる列名です。複数の sort\_expression を指定できます。
-* `asc` または `desc` (既定値) は、実際には、選択が実際に範囲の "下限" と "上限" のどちらから行われるかを制御します。
+* `asc` または `desc` (既定値) は、実際には選択が範囲の "下限" と "上限" のどちらから行われるかを制御します。
 * `nulls first` または `nulls last` は null 値が表示される場所を制御します。`asc` の既定値は `First`、`desc` の既定値は `last` です。
 
 
@@ -1075,9 +1296,9 @@ traces
 
 *Accuracy* を指定した場合は、速度と精度のバランスが制御されます。
 
- * `0` = 精度は最も低くなりますが、計算速度は最も高くなります。
+ * `0` = 精度は最も低くなりますが、計算速度は最高になります。
  * `1` = 既定値です。精度と計算時間のバランスをとります。エラー率は約 0.8% です。
- * `2` = 精度は最も高くなりますが、計算速度は最も低くなります。エラー率は約 0.4% です。
+ * `2` = 精度は最も高くなりますが、計算速度は最低になります。エラー率は約 0.4% です。
 
 **例**
 
@@ -1351,7 +1572,7 @@ hash(datetime("2015-01-01"))    // 1380966698541616202
 
 **引数**
 
-* *predicate:* `boolean` 値で評価される式。
+* *predicate:* `boolean` 値に評価される式。
 * *ifTrue:* *predicate* が `true` と評価された場合に、評価されてその値が関数から返される式。
 * *ifFalse:* *predicate* が `false` と評価された場合に、評価されてその値が関数から返される式。
 
@@ -1462,11 +1683,11 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 || |
 |---|-------------|
 | + | [追加] のいずれかを |
-| - | 減算 |
-| * | 乗算 |
-| / | 除算 |
-| % | 剰余 |
-||
+| - | 減算 | 
+| * | 乗算 | 
+| / | 除算 | 
+| % | 剰余 | 
+|| 
 |`<` |小さい 
 |`<=`|小さいか等しい 
 |`>` |大きい 
@@ -1503,7 +1724,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 **引数**
 
-* *value:* 数値、日付、または期間。
+* *value:* 数値、日付、または期間。 
 * *roundTo:* "bin のサイズ"。*value* を分割する数値、日付、または期間です。
 
 **戻り値**
@@ -1575,7 +1796,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 **戻り値**
 
 * `sqrt(x) * sqrt(x) == x` のような正の数値。
-* 引数が負であるか、`real` 値に変換できない場合は `null`。
+* 引数が負であるか、`real` 値に変換できない場合は `null`。 
 
 
 
@@ -1882,7 +2103,7 @@ T | where ... | extend Elapsed=now() - timestamp
 
 ### 難読化された文字列リテラル
 
-難読化された文字列リテラルとは、文字列の出力時 (たとえば、トレース時) に Analytics によってわかりにくくされる文字列のことです。難読化プロセスでは、難読化されるすべての文字が開始 (`*`) 文字に置き換えられます。
+難読化された文字列リテラルとは、文字列の出力時 (たとえば、トレース時) に Analytics によってわかりにくくされる文字列のことです。難読化プロセスでは、難読化されるすべての文字がアスタリスク (`*`) 記号に置き換えられます。
 
 難読化された文字列リテラルを形成するには、前に `h` または "H" を付加します。次に例を示します。
 
@@ -1940,7 +2161,7 @@ h"hello"
 
 * *text:* 文字列。
 * *search:* *text* 内で照合するプレーン文字列または正規表現。
-* *kind:* `"normal"|"regex"`。既定では `normal`。
+* *kind:* `"normal"|"regex"`。既定では `normal`。 
 
 **戻り値**
 
@@ -2187,7 +2408,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
         line = details[0].parsedStack[0].line,
         stackdepth = arraylength(details[0].parsedStack)
 
-* ただし、`arraylength` やその他の Analytics 関数 (".length" 以外) を使用してください。
+* ただし、`arraylength` やその他の Analytics 関数を使用してください (".length" でなく)。
 
 **キャスト:** 場合によっては、オブジェクトから抽出する要素をキャストする必要があります。これは、オブジェクトの型が一様ではないためです。たとえば、`summarize...to` には次のように特定の型が必要です。
 
@@ -2500,4 +2721,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

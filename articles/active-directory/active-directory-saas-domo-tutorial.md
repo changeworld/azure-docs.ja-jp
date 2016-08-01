@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="07/15/2016"
 	ms.author="jeedes"/>
 
 
@@ -57,7 +57,7 @@ Azure AD への Domo の統合を構成するには、ギャラリーから管�
 
 **ギャラリーから Domo を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -100,19 +100,44 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
 
 このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Domo アプリケーションでシングル サインオンを構成することです。
 
+Domo アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。このアプリケーションには、次の要求を構成してください。この属性の値は、アプリケーションの **[属性]** タブから管理できます。次のスクリーンショットはその例です。
 
+![Configure Single Sign-On](./media/active-directory-saas-domo-tutorial/tutorial_domo_06.png)
 
 **Domo で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **Domo** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+
+1. Azure クラシック ポータルの **[Domo]** アプリケーション統合ページで、上部のメニューから **[属性]** をクリックします。
+
+	![Configure Single Sign-On](./media/active-directory-saas-domo-tutorial/tutorial_general_80.png)
+
+
+1. **[Saml トークン属性]** ダイアログで、以下の表の各行について、次の手順を実行します。
+
+	| 属性名 | 属性値 |
+	| --- | --- |    
+	| name | user.displayname |
+	| 電子メール | User.mail |
+
+	a.**[ユーザー属性の追加]** をクリックして **[ユーザー属性の追加]** ダイアログを開きます。
+
+	![Configure Single Sign-On](./media/active-directory-saas-domo-tutorial/tutorial_general_81.png)
+
+	b.**[属性名]** ボックスに、その行に対して表示される属性名を入力します。
+
+    c.**[属性値]** リストから、その行に対して表示される属性値を選択します。
+
+    d.**[完了]** をクリックします。
+
+2. Azure クラシック ポータルの **Domo** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
 	![Configure Single Sign-On][6]
 
-2. **[ユーザーの Domo へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+3. **[ユーザーの Domo へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
 	![Configure Single Sign-On](./media/active-directory-saas-domo-tutorial/tutorial_domo_03.png)
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
+4. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 
 	![Configure Single Sign-On](./media/active-directory-saas-domo-tutorial/tutorial_domo_04.png)
 
@@ -121,7 +146,7 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
 
     b.**[次へ]** をクリックします。
 
-4. **[Domo でのシングル サインオンの構成]** ページで、次の手順を実行します。
+5. **[Domo でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
 	![Configure Single Sign-On](./media/active-directory-saas-domo-tutorial/tutorial_domo_05.png)
 
@@ -130,14 +155,14 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
     b.**[次へ]** をクリックします。
 
 
-5. お使いのアプリケーション用に構成された SSO を取得するには、Domo サポート チーム [support@domo.com](mailto: support@domo.com) に問い合わせます。その際、ダウンロードした証明書を添付し、**発行元 URL**、**SAML SSO URL**、**サインアウト URL** を含めて提示してください。
+6. お使いのアプリケーション用に構成された SSO を取得するには、Domo サポート チーム [support@domo.com](mailto: support@domo.com) に問い合わせます。その際、ダウンロードした証明書を添付し、**発行元 URL**、**SAML SSO URL**、**サインアウト URL** を含めて提示してください。
 
 
-6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
+7. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
 	![Azure AD Single Sign-On][10]
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+8. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
 	![Azure AD Single Sign-On][11]
 
@@ -165,7 +190,7 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-domo-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-domo-tutorial/create_aaduser_05.png)
 
@@ -175,7 +200,7 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-domo-tutorial/create_aaduser_06.png)
 
@@ -220,7 +245,7 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
 
 **Domo に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+1. Azure クラシック ポータルのディレクトリ ビューで、トップ メニューにある **[アプリケーション]** をクリックしてアプリケーション ビューを開きます
 
 	![ユーザーの割り当て][201]
 
@@ -269,4 +294,4 @@ Domo で Azure AD のシングル サインオンを構成してテストする�
 [204]: ./media/active-directory-saas-domo-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-domo-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

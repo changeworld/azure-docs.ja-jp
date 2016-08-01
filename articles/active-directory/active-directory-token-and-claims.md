@@ -1,7 +1,7 @@
  <properties
-   pageTitle="サポートされているトークンとクレームの種類 | Microsoft Azure"
+   pageTitle="Azure AD のトークン リファレンス | Microsoft Azure"
    description="Azure Active Directory (AAD) によって発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) のクレームを、理解および評価するためのガイド"
-   documentationCenter="dev-center-name"
+   documentationCenter="na"
    authors="msmbaldwin"
    services="active-directory"
    manager="mbaldwin"
@@ -13,249 +13,116 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/23/2016"
+   ms.date="07/19/2016"
    ms.author="mbaldwin"/>
 
-# サポートされているトークンとクレームの種類
+# Azure AD のトークン リファレンス
 
-このトピックでは、Azure Active Directory (Azure AD) が発行する SAML 2.0 トークンおよび JSON Web Tokens (JWT) トークン内のクレームを理解し評価するのに役立つ情報を提供します。
+Azure Active Directory (Azure AD) は、各認証フローを処理する際に、複数の種類のセキュリティ トークンを出力します。このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。
 
-このトピックでは、各トークン クレームを説明してから、必要に応じて SAML トークンおよび JWT トークン内のクレームの例を示します。プレビュー状態にあるクレームは、別に一覧表示されます。最後に、コンテキスト内のクレームを確認できるように、サンプルのトークンを示します。
+## トークンの種類
 
-Azure では、トークンにクレームを追加していくことで、新しいシナリオが有効になります。通常は、これらのクレームをプレビュー状態で導入し、テスト期間終了後に完全なサポート状態に変換します。クレーム変更の準備として、新しいクレームによってアプリケーションに問題が発生しないように、Azure AD からトークンを受け入れるアプリケーションでは、不明なトークンのクレームが無視されるように設定する必要があります。プレビュー状態にあるクレームを使用するアプリケーションが、これらのクレームに影響を受けないようにするほか、クレームがトークン内に表示されなくても例外を発生しないようにする必要があります。Azure AD が発行する SAML トークンまたは JWT トークンには含まれていないクレームがアプリケーションで必要とされる場合は、このページの下部にある [コミュニティ追加機能] セクションを使用して、新しいクレームの種類を提案および検討します。
+Azure AD は [OAuth 2.0 承認プロトコル](active-directory-protocols-oauth-code.md)をサポートしており、access\_token と refresh\_token の両方を利用します。また、[OpenID Connect](active-directory-protocols-openid-connect-code.md) による認証とサインインもサポートしており、これによって 3 番目のトークンの種類 id\_token が導入されます。これらの各トークンは、「ベアラー トークン」として表されます。
 
-## トークン クレームのリファレンス
+ベアラー トークンは、保護されたリソースへの "ベアラー" アクセスを許可する簡易セキュリティ トークンです。この意味で、"ベアラー" はトークンを提示できる任意の利用者を表します。利用者がベアラー トークンを受信するには、まず Azure AD による認証が必要となりますが、転送中や保存時にトークンを保護するために必要な対策を講じていない場合、意図しない利用者によって傍受され、使用されるおそれがあります。一部のセキュリティ トークンには、許可されていない利用者がトークンを使用できないようにするための組み込みメカニズムがありますが、ベアラー トークンにはこのメカニズムがないため、トランスポート層セキュリティ (HTTPS) などのセキュリティで保護されたチャネルで転送する必要があります。ベアラー トークンが暗号化されずに転送された場合、悪意のある利用者が中間者攻撃によってトークンを取得し、保護されたリソースへの未承認のアクセスに使用する可能性があります。後で使用するためにベアラー トークンを保存またはキャッシュするときにも、同じセキュリティ原則が適用されます。アプリケーションでは、常に安全な方法でベアラー トークンを転送および保存してください。ベアラー トークンのセキュリティに関する考慮事項の詳細については、[RFC 6750 セクション 5](http://tools.ietf.org/html/rfc6750) をご覧ください。
 
-このセクションでは、Azure AD が返すトークン内のクレームを一覧表示して説明します。SAML バージョンと JWT バージョンの両方のクレームを取り上げて、クレームの内容と用途を説明します。クレームは、アルファベット順に一覧表示されています。
+Azure AD によって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。JWT は、2 つのパーティ間で情報を転送する、コンパクトで URL の安全な手段です。JWT に含まれる情報は「要求」と呼ばれ、トークンのベアラーとサブジェクトに関する情報のアサーションです。JWT の要求は、伝送用にエンコードおよびシリアル化された JSON オブジェクトです。Azure AD によって発行される JWT は署名されますが、暗号化されないため、デバッグの目的で JWT の内容を簡単に検査できます。そのためには、[jwt.calebb.net](http://jwt.calebb.net) などの複数のツールを利用できます。JWT の詳細については、[JWT の仕様](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)を参照してください。
 
-### アプリケーション ID
+## Id\_tokens
 
-アプリケーション ID クレームは、トークンを使用してリソースにアクセスするアプリケーションを識別します。アプリケーションとして識別することもできますが、アプリケーションを使用しているユーザーとして識別することもできます。アプリケーション ID は通常、アプリケーション オブジェクトを表しますが、Azure AD 内のサービス プリンシパル オブジェクトを表すこともできます。
+id\_token は、アプリが [OpenID Connect](active-directory-protocols-openid-connect-code.md) を使用して認証を実行すると受け取るサインイン セキュリティ トークンの形式です。[JWT](#types-of-tokens) として表され、ユーザーがアプリに署名するために使用できる要求が含まれます。必要に応じて id\_token で要求を使用できます。一般には、アカウント情報の表示や、アプリ内でのアクセス制御の決定に使用されます。
 
-Azure AD では、SAML トークン内でアプリケーション ID クレームはサポートされていません。
+id\_token は署名されますが、この時点では暗号化されません。アプリは、id\_token を受け取ったら、[署名を検証](#validating-tokens)してトークンの信頼性を確認し、要求を検証してトークンの有効性を確認する必要があります。アプリで検証する要求はシナリオの要件によって異なりますが、すべてのシナリオでアプリが実行する必要がある[共通の要求検証](#validating-tokens)がいくつかあります。
 
-JWT トークンでは、アプリケーション ID は appid クレームに表示されます。
+以下では、id\_token のクレームの詳細および id\_token のサンプルを示します。id\_token 内のクレームは特定の順序では返されないことに注意してください。さらに、随時、新しいクレームが id\_token に導入される可能性があります。アプリは、新しいクレームが導入されても問題ないようにする必要があります。次の一覧のクレームは、この記事の執筆時点で、アプリで解釈できることが保証されているものです。必要な場合は、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)でさらに詳細な情報を参照できます。
 
-    "appid":"15CB020F-3984-482A-864D-1D92265E8268"
+#### id\_token のサンプル
 
-### 対象ユーザー
-トークンの対象ユーザーは、トークンの受信対象者です。トークンを受信するアプリケーションは、対象ユーザーの値が正しいことを検証し、異なる対象ユーザー向けのトークンをすべて拒否する必要があります。
+```
+eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0yNzRhNzJhNzMwOWUiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83ZmU4MTQ0Ny1kYTU3LTQzODUtYmVjYi02ZGU1N2YyMTQ3N2UvIiwiaWF0IjoxMzg4NDQwODYzLCJuYmYiOjEzODg0NDA4NjMsImV4cCI6MTM4ODQ0NDc2MywidmVyIjoiMS4wIiwidGlkIjoiN2ZlODE0NDctZGE1Ny00Mzg1LWJlY2ItNmRlNTdmMjE0NzdlIiwib2lkIjoiNjgzODlhZTItNjJmYS00YjE4LTkxZmUtNTNkZDEwOWQ3NGY1IiwidXBuIjoiZnJhbmttQGNvbnRvc28uY29tIiwidW5pcXVlX25hbWUiOiJmcmFua21AY29udG9zby5jb20iLCJzdWIiOiJKV3ZZZENXUGhobHBTMVpzZjd5WVV4U2hVd3RVbTV5elBtd18talgzZkhZIiwiZmFtaWx5X25hbWUiOiJNaWxsZXIiLCJnaXZlbl9uYW1lIjoiRnJhbmsifQ.
+```
 
-対象ユーザーの値は文字列で、通常は ”https://contoso.com” などのリソースのベース アドレスです。Azure AD トークンでは、対象ユーザーはトークンを要求したアプリケーションのアプリケーション ID URI となります。アプリケーション (対象ユーザー) に 1 つ以上のアプリケーション ID URI がある場合、トークンの Audience クレーム内にあるアプリケーション ID URI は、トークン要求内のアプリケーション ID URI と照合されます。SAML トークンでは、対象ユーザー クレームは AudienceRestriction 要素の Audience 要素内で定義されます。
+> [AZURE.TIP] 実際には、[calebb.net](http://jwt.calebb.net) に貼り付けることによって、サンプル id\_token 内の要求を調べてみてください。
 
-    <AudienceRestriction>
-    <Audience>https://contoso.com</Audience>
-    </AudienceRestriction>
+#### id\_token 内の要求
 
-JWT トークンでは、対象ユーザーは aud クレームに表示されます。
+| JWT の要求 | 名前 | 説明 |
+|-----------|------|-------------|
+| `appid`| アプリケーション ID | トークンを使用してリソースにアクセスするアプリケーションを識別します。アプリケーションとして識別することもできますが、アプリケーションを使用しているユーザーとして識別することもできます。アプリケーション ID は通常、アプリケーション オブジェクトを表しますが、Azure AD 内のサービス プリンシパル オブジェクトを表すこともできます。<br><br> **JWT 値の例**: <br> `"appid":"15CB020F-3984-482A-864D-1D92265E8268"` |
+| `aud`| 対象となる読者 | トークンの対象となる受信者。トークンを受信するアプリケーションは、対象ユーザーの値が正しいことを検証し、異なる対象ユーザー向けのトークンをすべて拒否する必要があります。<br><br> **SAML 値の例**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **JWT 値の例**: <br> `"aud":"https://contoso.com"` |
+| `appidacr`| アプリケーションの認証コンテキスト クラスの参照 | クライアントが認証された方法を示します。パブリック クライアントの場合、値は 0 です。クライアント ID とクライアント シークレットが使用されている場合、値は 1 です。<br><br> **JWT 値の例**: <br> `"appidacr": "0"`|
+| `acr`| 認証コンテキスト クラスの参照 | アプリケーションの認証コンテキスト クラスの参照要求のクライアントとは異なり、サブジェクトが認証された方法を示します。値 「0」 は、エンドユーザーの認証が ISO/IEC 29115 の要件を満たしていないことを示します。<br><br> **JWT 値の例**: <br> `"acr": "0"`|
+| | 認証のインスタント | 認証が行われた日時を記録します。<br><br> **SAML 値の例**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
+| `amr`| 認証方法 | トークンのサブジェクトが認証された方法を示します。<br><br> **SAML 値の例**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **JWT 値の例**: `“amr”: ["pwd"]` |
+| `given_name`| 名 | Azure AD ユーザー オブジェクトに設定されたユーザーの名を示します。<br><br> **SAML 値の例**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”>`<br>`<AttributeValue>Frank<AttributeValue>` <br><br> **JWT 値の例**: <br> `"given_name": "Frank"` |
+| `groups`| グループ | サブジェクトのグループ メンバーシップを表すオブジェクト ID です。これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。グループ クレームに含まれるグループは、アプリケーションごとに、アプリケーション マニフェストの ”groupMembershipClaims” プロパティを介して構成されます。値が null の場合はすべてのグループが除外され、値が ”SecurityGroup” の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Office 365 配布リストの両方が含まれます。<br><br> **SAML 値の例**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` <br><br> **JWT 値の例**: <br> `“groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]` |
+| `idp` | ID プロバイダー | トークンのサブジェクトを認証した ID プロバイダーを記録します。この値は、ユーザー アカウントが発行者とは異なるテナントにある場合を除いて、発行者クレームの値と同じです。<br><br> **SAML 値の例**: <br> `<Attribute Name=” http://schemas.microsoft.com/identity/claims/identityprovider”>`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` <br><br> **JWT 値の例**: <br> `"idp":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
+| `iat` | IssuedAt | トークンが発行された時刻が格納されます。このクレームは、トークンの鮮度を測定するためによく使用されます。<br><br> **SAML 値の例**: <br> `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` <br><br> **JWT 値の例**: <br> `"iat": 1390234181` |
+| `iss` | 発行者 | トークンを構築して返す Security Token Service (STS) を識別します。Azure AD が返すトークンでは、発行者は sts.windows.net です。発行者クレーム値の GUID は、Azure AD ディレクトリのテナント ID です。テナント ID は、変更不可で信頼性の高いディレクトリの識別子です。<br><br> **SAML 値の例**: <br> `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` <br><br> **JWT 値の例**: <br> `"iss":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
+| `family_name` | 姓 | Azure AD ユーザー オブジェクトで定義されたユーザーの姓や名字を示します。<br><br> **SAML 値の例**: <br> `<Attribute Name=” http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”>`<br>`<AttributeValue>Miller<AttributeValue>` <br><br> **JWT 値の例**: <br> `"family_name": "Miller"` |
+| `unique_name`| 名前 | トークンのサブジェクトを識別する、人が判読できる値を提供します。この値は、テナント内で一意であるとは限らず、表示目的でのみ使用されます。<br><br> **SAML 値の例**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>` <br><br> **JWT 値の例**: <br> `"unique_name": "frankm@contoso.com"` |
+| `oid` | オブジェクト ID | Azure AD 内のオブジェクトの一意の識別子が含まれています。この値は変更不可で、再割り当ても再利用もできません。オブジェクト ID を使用すると、Azure AD へのクエリ内のオブジェクトを識別できます。<br><br> **SAML 値の例**: <br> `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` <br><br> **JWT 値の例**: <br> `"oid":"528b2ac2-aa9c-45e1-88d4-959b53bc7dd0"` |
+| `roles` | ロール | グループ メンバーシップを通じて直接的および間接的にサブジェクトに付与されており、ロールベースのアクセス制御を適用するために使用できるすべてのアプリケーション ロールを表します。アプリケーション ロールは、アプリケーションごとに、アプリケーション マニフェストの `appRoles` プロパティを介して定義されます。各アプリケーション ロールの `value` プロパティは、ロールの要求内に表示される値です。<br><br> **SAML 値の例**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`<br>`<AttributeValue>Admin</AttributeValue>` <br><br> **JWT 値の例**: <br> `“roles”: ["Admin", … ]` |
+| `scp` | Scope | クライアント アプリケーションに付与される偽装アクセス許可を示します。既定のアクセス許可は `user_impersonation` です。保護されたリソースの所有者は、別の値を Azure AD に登録できます。<br><br> **JWT 値の例**: <br> `"scp": "user_impersonation"`|
+| `sub` |[件名]| トークンが情報をアサートするプリンシパルを示します (アプリケーションのユーザーなど)。この値は変更不可で、再割り当ても再利用もできません。したがってこの値を使用すると、安全に承認チェックができます。サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。<br> `SubjectConfirmation` は要求ではありません。これは、トークンのサブジェクトの検証方法を示します。`Bearer` は、トークンを所有していることでサブジェクトが確認されることを示します。<br><br> **SAML 値の例**: <br> `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>` <br><br> **JWT 値の例**: <br> `"sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"`|
+| `tid` | テナント ID | トークンを発行したディレクトリ テナントを識別する、変更不可で、再利用できない識別子です。この値を使用すると、マルチ テナント アプリケーションのテナント固有のディレクトリ リソースにアクセスできます。たとえば、この値を使用すると、Graph API への呼び出しでテナントを識別できます。<br><br> **SAML 値の例**: <br> `<Attribute Name=”http://schemas.microsoft.com/identity/claims/tenantid”>`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>` <br><br> **JWT 値の例**: <br> `"tid":"cbb1a5ac-f33b-45fa-9bf5-f37db0fed422"`|
+| `nbf`、`exp`|トークンの有効期間 | トークンが有効である期間を定義します。トークンを検証するサービスは、現在の日付がトークンの有効期間内にあることを確認し、有効期限内にない場合は、トークンを拒否する必要があります。サービスでは、Azure AD とサービスの間のクロック タイムの違い (「時間のずれ」) を考慮して、トークンの有効期間の範囲を最大 5 分まで延長する場合があります。<br><br> **SAML 値の例**: <br> `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br><br> **JWT 値の例**: <br> `"nbf":1363289634, "exp":1363293234` |
+| `upn`| ユーザー プリンシパル名 | ユーザー プリンシパルのユーザー名が格納されます。<br><br> **JWT 値の例**: <br> `"upn": frankm@contoso.com`|
+| `ver`| バージョン | トークンのバージョン番号が格納されます。<br><br> **JWT 値の例**: <br> `"ver": "1.0"`|
 
-    "aud":"https://contoso.com"
+## アクセス トークン
 
-### アプリケーションの認証コンテキスト クラスの参照
+アクセス トークンは、現時点では Microsoft サービスのみが使用できます。現在サポートされているどのシナリオにおいても、アプリでアクセス トークンの検証または検査を実行する必要はありません。アクセス トークンは完全に非透過的に扱うことができます。アプリが HTTP 要求で Microsoft に渡すことができる単なる文字です。
 
-アプリケーションの認証コンテキスト クラスの参照クレームは、クライアントの認証方法を示します。パブリック クライアントの場合、値は 0 です。クライアント ID とクライアント シークレットが使用されている場合、値は 1 です。
+アクセス トークンを要求すると、Azure AD はアプリで使用できるようにアクセス トークンに関するメタデータも返します。この情報には、アクセス トークンの有効期限や有効な範囲が含まれます。これにより、アプリはアクセス トークン自体を解析しなくても、アクセス トークンのインテリジェントなキャッシュを実行できます。
 
-JWT トークンでは、認証コンテキスト クラスの参照値は、appidacr (アプリケーション固有の ACR 値) クレームに表示されます。
+## 更新トークン
 
-    "appidacr": "0"
+更新トークンは、OAuth 2.0 のフローで新しいアクセス トークンを取得するためにアプリで使用できるセキュリティ トークンです。ユーザーが介入しなくても、アプリはユーザーに代わってリソースへの長期的なアクセスを実現できます。
 
-### 認証コンテキスト クラスの参照
-認証コンテキスト クラスの参照クレームは、アプリケーションの認証コンテキスト クラスの参照クレームのクライアントとの認証法とは異なる、サブジェクトが認証された方法を示します。値 「0」 は、エンドユーザーの認証が ISO/IEC 29115 の要件を満たしていないことを示します。
+更新トークンはマルチリソースです。つまり、あるリソースに対するトークン要求の間に受け取った更新トークンを、まったく異なるリソースに対するアクセス トークンに使用できます。このために、要求内の `resource` パラメーターを対象のリソースに設定します。
 
-- JWT トークンでは、認証コンテキスト クラスの参照クレームは、acr (ユーザー固有の ACR 値) クレームに表示されます。
+更新トークンは、アプリに対して完全に非透過的です。有効期間は長いですが、アプリを作成するときに更新トークンが一定期間残っているものと期待することはできません。更新トークンは、いつでもさまざまな理由で無効になる可能性があります。アプリで更新トークンが有効かどうかを把握するための唯一の方法は、Azure AD トークン エンドポイントに対してトークン要求を行って更新トークンを利用することです。
 
-    "acr": "0"
+新しいアクセス トークンに対して更新トークンを利用すると、トークン応答で新しい更新トークンが返されます。新しく発行された更新トークンを保存し、要求で使用したものと置き換える必要があります。これにより、可能な限り長く更新トークンが有効であることが保証されます。
 
-### 認証のインスタント
+## トークンの検証
 
-認証のインスタント クレームは、認証された日時を記録します。
+現時点で、クライアント アプリで実行する必要があるトークンの検証は、id\_token の検証だけです。id\_token を検証するには、アプリは id\_token の署名と id\_token 内のクレームの両方を検証する必要があります。
 
-SAML トークンでは、認証インスタントは、AuthnStatement 要素の AuthnInstant 属性に表示されます。日時は UTC (Z) 時間で表示されます。
+トークンの検証を簡単に処理する方法を示すライブラリとコード サンプルが提供されています。以下の情報は、基になるプロセスを理解したい開発者だけを対象としたものです。JWT の検証に使用できるサード パーティ製オープン ソース ライブラリも複数あります。ほとんどすべてのプラットフォームと言語に対して少なくとも 1 つのライブラリがあります。Azure AD 認証ライブラリとコード サンプルの詳細については、「[Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md)」を参照してください。
 
-    <AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">
+#### 署名の検証
 
-Azure AD では、JWT トークン内に同等のクレームはありません。
+JWT には 3 つのセグメントがあり、`.` 文字で区切られています。1 番目のセグメントは**ヘッダー**、2 番目は**本文**、3 番目は**署名**と呼ばれます。署名セグメントを使用して id\_token の信頼性を検証し、アプリで信頼できることを確認できます。
 
-### 認証方法
+id\_token は、RSA 256 などの業界標準の非対称暗号アルゴリズムを使用して署名されます。id\_token のヘッダーには、トークンの署名に使用されたキーと暗号方法に関する情報が含まれます。
 
-認証方法クレームは、トークンのサブジェクトの認証方法を示します。この例 http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password では、ID プロバイダーはパスワードを使用してユーザーを認証しました。
+```
+{
+  "typ": "JWT",
+  "alg": "RS256",
+  "x5t": "kriMPdmBvx68skT8-mPAB3BseeA"
+}
+```
 
-SAML トークンでは、認証方法の値は AuthnContextClassRef 要素に表示されます。
+`alg` 要求はトークンへの署名に使用されたアルゴリズムを示し、`x5t` 要求はトークンへの署名に使用された特定の公開キーを示します。
 
-    <AuthnContextClassRef>http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password</AuthnContextClassRef>
+いつでも、Azure AD は公開/秘密キー ペアの特定セットのいずれかを使用して、id\_token に署名できます。Azure AD は定期的に使用可能なキー セットをローテーションするので、このキー変更を自動的に処理するようにアプリを作成する必要があります。Azure AD によって使用される公開キーの更新を確認する適切な頻度は、24 時間間隔です。
 
-JWT トークンでは、認証方法の値は amr クレームに表示されます。
+#### 要求を検証する
 
-    “amr”: ["pwd"]
+アプリは、ユーザーのサインイン時に id\_token を受け取ったら、id\_token 内の要求に対していくつかのチェックを実行する必要があります。これらには次が含まれますが、これらに限定されるものではありません。
 
-###名
+  - **受信者**要求 - id\_token がそのアプリに対するものであることを検証します。
+  - **期間の開始時刻**および**期限切れ日時**クレーム - id\_token が期限切れでないことを検証します。
+  - **発行者**クレーム - トークンが Azure AD によってそのアプリに対して発行されたことを検証します。
+  - **Nonce** - トークン リプレイ攻撃を緩和するために検証します。
+  - その他にも用途はあります。
 
-名つまり 「姓を含まない」名前クレームでは、Azure AD ユーザー オブジェクトに設定されたユーザーの名、つまり「姓を含まない名前」 を示します。
+アプリで実行する必要のある要求の検証の完全な一覧については、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation)を参照してください。
 
-SAML トークンでは、名 (姓を含まない名前) は givenname SAML Attribute 要素内のクレームに表示されます。
-
-    <Attribute Name=” http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”>
-    <AttributeValue>Frank<AttributeValue>
-
-JWT トークンでは、名は given\_name クレームに表示されます。
-
-    "given_name": "Frank"
-
-### グループ
-
-グループ クレームは、サブジェクトのグループ メンバーシップを表すオブジェクト ID です。これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。グループ クレームに含まれるグループは、アプリケーションごとに、アプリケーション マニフェストの ”groupMembershipClaims” プロパティを介して構成されます。値が null の場合はすべてのグループが除外され、値が ”SecurityGroup” の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Office 365 配布リストの両方が含まれます。どの構成でも、グループ クレームは、サブジェクトの推移的なグループ メンバーシップを表します。
-
-SAML トークンでは、グループ クレームは groups 属性に表示されます。
-
-    <Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">
-    <AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>
-
-JWT トークンでは、グループ クレームは groups クレームに表示されます。
-
-    “groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]
-
-### ID プロバイダー
-
-ID プロバイダー クレームは、トークンのサブジェクトを認証した ID プロバイダーを記録します。この値は、ユーザー アカウントが発行者とは異なるテナントにある場合を除いて、発行者クレームの値と同じです。
-
-SAML トークンでは、ID プロバイダーは identityprovider SAML Attribute 要素内のクレームに表示されます。
-
-    <Attribute Name=” http://schemas.microsoft.com/identity/claims/identityprovider”>
-    <AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>
-
-JWT トークンでは、ID プロバイダーは idp クレームに表示されます。
-
-    "idp":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”
-
-### IssuedAt
-
-IssuedAt クレームは、トークンが発行された時刻を格納します。このクレームは、トークンの鮮度を測定するためによく使用されます。SAML トークンでは、IssuedAt 値は IssueInstant アサーションに表示されます。
-
-    <Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
-
-JWT トークンでは、IssuedAt 値は iat クレームに表示されます。値は 1970-01-010:0:0Z 以降、世界協定時刻 (UTC) に基づいて秒数で表されています。
-
-    "iat": 1390234181
-
-### 発行者
-
-発行者クレームは、トークンと Azure AD ディレクトリ テナントを構築して返す Security Token Service (STS) を識別します。Azure AD が返すトークンでは、発行者は sts.windows.net です。発行者クレーム値の GUID は、Azure AD ディレクトリのテナント ID です。テナント ID は、変更不可で信頼性の高いディレクトリの識別子です。
-
-SAML トークンでは、発行者クレームは Issuer 要素に表示されます。
-
-    <Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>
-
-JWT トークンでは、発行者は iss クレームに表示されます。
-
-    "iss":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”
-
-### 姓
-
-姓クレームは、Azure AD ユーザー オブジェクトで定義されたユーザーの姓や名字、つまり家名を示します。SAML トークンでは、姓は surname SAML Attribute 要素内のクレームに表示されます。
-
-    <Attribute Name=” http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”>
-    <AttributeValue>Miller<AttributeValue>
-
-JWT トークンでは、姓は family\_name クレームに表示されます。
-
-    "family_name": "Miller"
-
-### 名前
-
-名前クレームは、トークンのサブジェクトを識別する、人が認識できる値を示します。この値は、テナント内で一意であるとは限らず、表示目的でのみ使用されます。SAML トークンでは、Name 属性に名前が表示されます。
-
-    <Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>
-    <AttributeValue>frankm@contoso.com<AttributeValue>
-
-JWT クレームでは、unique\_name クレームに名前が表示されます。
-
-    "unique_name": "frankm@contoso.com"
-
-### オブジェクト ID
-
-オブジェクト ID クレームには、Azure AD 内のオブジェクトの一意の識別子が含まれています。この値は変更不可で、再割り当ても再利用もできません。したがってこの値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。オブジェクト ID を使用すると、Azure AD へのクエリ内のオブジェクトを識別できます。SAML トークンでは、オブジェクト ID は objectidentifier 属性に表示されます。
-
-    <Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">
-    <AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>
-
-JWT トークンでは、オブジェクト ID は oid クレームに表示されます。
-
-    "oid":"528b2ac2-aa9c-45e1-88d4-959b53bc7dd0"
-
-### ロール
-
-ロール クレームは、Azure AD におけるサブジェクトのアプリケーション ロール割り当てを表す文字列です。このクレームを使用すると、ロールベースのアクセス制御ができます。アプリケーション ロールは、アプリケーションごとに、アプリケーション マニフェストの ”appRoles” プロパティを介して定義されます。各アプリケーション ロールの ”value” プロパティは、ロール クレーム内に表示される値です。ロール クレームに含まれるロールは、グループ メンバーシップを通して直接的および間接的にサブジェクトに付与されているすべてのアプリケーション ロールを表します。SAML トークンでは、ロール クレームは roles 属性に表示されます。
-
-    <Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">
-    <AttributeValue>Admin</AttributeValue>
-
-JWT トークンでは、ロール クレームは roles クレームに表示されます。
-
-    “roles”: ["Admin", … ]
-
-### スコープ
-
-トークンのスコープは、クライアント アプリケーションに権限借用が許可されていることを示します。既定のアクセス許可は user\_impersonation です。保護されたリソースの所有者は、別の値を Azure AD に登録できます。
-
-JWT トークンでは、トークンのスコープは scp クレームで指定できます。
-
-    "scp": "user_impersonation"
-
-### [件名]
-
-トークンのサブジェクトは、トークンが情報 (アプリケーションのユーザーなど) をアサートするためのプリンシパルです。この値は変更不可で、再割り当ても再利用もできません。したがってこの値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。
-
-SAML トークンでは、トークンのサブジェクトは Subject 要素の NameID 要素で指定できます。NameID はサブジェクトの再利用できない一意の識別子であり、ユーザー、アプリケーション、またはサービスに使用できます。
-
-SubjectConfirmation はクレームではありません。これは、トークンのサブジェクトの検証方法を示します。”bearer” は、トークンを所有していることでサブジェクトが確認されることを示します。
-
-    <Subject>
-    <NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>
-    <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />
-    </Subject>
-
-JWT トークンでは、サブジェクトは sub クレームに表示されます。
-
-    "sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"
-
-### テナント ID
-テナント ID は、トークンを発行したディレクトリ テナントを識別する変更不可で、再利用できない識別子です。この値を使用すると、マルチ テナント アプリケーションのテナント固有のディレクトリ リソースにアクセスできます。たとえば、この値を使用すると、Graph API への呼び出しでテナントを識別できます。
-
-SAML トークンでは、テナント ID は tenantid SAML Attribute 要素内のクレームに表示されます。
-
-    <Attribute Name=”http://schemas.microsoft.com/identity/claims/tenantid”>
-    <AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>
-
-JWT トークンでは、テナント ID は tid クレームに表示されます。
-
-    "tid":"cbb1a5ac-f33b-45fa-9bf5-f37db0fed422"
-
-### トークンの有効期間
-トークンの有効期間クレームは、トークンが有効である期間を定義します。トークンを検証するサービスは、現在の日付がトークンの有効期間内にあることを確認する必要があります。有効期間内にない場合、サービスはトークンを拒否します。サービスでは、Azure AD とサービスの間のクロック タイムの違い (「時間のずれ」) を考慮して、トークンの有効期間の範囲を最大 5 分まで延長する場合があります。
-
-SAML トークンでは、トークンの有効期間クレームは、NotBefore 属性と NotOnOrAfter 属性を使用して Conditions 要素内で定義されます。
-
-    <Conditions
-    NotBefore="2013-03-18T21:32:51.261Z"
-    NotOnOrAfter="2013-03-18T22:32:51.261Z"
-    >
-
-JWT トークンでは、トークンの有効期間は、nbf (有効期間の開始時刻) クレームと exp (有効期限の終了時刻) クレームによって定義されます。これらのクレームの値は 1970-01-010:0:0Z 以降から、世界協定時刻 (UTC) に基づいて秒数で表されています。詳細については、RFC 3339 を参照してください。
-
-    "nbf":1363289634,
-    "exp":1363293234
-
-### ユーザー プリンシパル名
-ユーザー プリンシパル名 クレームには、ユーザー プリンシパルのユーザー名が格納されます。
-
-JWT トークンでは、ユーザー プリンシパル名は upn クレームに表示されます。
-
-    "upn": frankm@contoso.com
-
-### バージョン
-バージョン クレームには、トークンのバージョン番号が格納されます。JWT トークンでは、ユーザー プリンシパル名は ver クレームに表示されます。
-
-    "ver": "1.0"
+これらの要求に対して予期される値の詳細については、前記の [id\_token セクション](#id_tokens)を参照してください。
 
 ## トークンのサンプル
 
@@ -365,7 +232,7 @@ JWT トークンでは、ユーザー プリンシパル名は upn クレーム�
 
 ### JWT トークン - ユーザーの権限借用
 
-以下に示すのは、ユーザーの権限借用の Web フローで使用される、一般的な JSON Web トークン (JWT) のサンプルです。クレームに加えて、トークンには** ver** と **appidacr **で表されるバージョン番号と認証コンテキスト クラス参照 (クライアントが認証された方法を示す) が含まれます。パブリック クライアントの場合、値は 0 です。クライアント ID またはクライアント シークレットが使用されている場合、値は 1 です。
+以下に示すのは、承認コード付与フローで使用される一般的な JSON Web トークン (JWT) のサンプルです。クレームに加えて、トークンには** ver** と **appidacr **で表されるバージョン番号と認証コンテキスト クラス参照 (クライアントが認証された方法を示す) が含まれます。パブリック クライアントの場合、値は 0 です。クライアント ID またはクライアント シークレットが使用されている場合、値は 1 です。
 
     {
      typ: "JWT",
@@ -408,8 +275,4 @@ JWT トークンでは、ユーザー プリンシパル名は upn クレーム�
      acr: "1"
     }.
 
-##関連項目
-
-[Azure Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)
-
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

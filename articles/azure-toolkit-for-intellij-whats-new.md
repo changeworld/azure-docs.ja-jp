@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/24/2016" 
-	ms.author="robmcm"/>
+	ms.date="07/07/2016" 
+	ms.author="robmcm;asirveda"/>
 
 # Azure Toolkit for IntelliJ の新機能
 
@@ -32,7 +32,7 @@ Azure Toolkit for IntelliJ - June 2016 リリースでは、次の点が強化�
 * **最新の Java JDK のサポート**。Java JDK の最新バージョンは、現在、Azure Toolkit for IntelliJ でサポートされています。
 * **Azure SDK v2.9.1 のサポート**。最新バージョンの Azure SDK が、Azure Toolkit for IntelliJ を使用するための最低限の前提条件になりました。
 * **統合サンプル**。Azure Toolkit for IntelliJ には、現在、開発者の作業開始に役立ついくつかのサンプル アプリケーションが特徴付けられています。
-* **HDInsight ツールの統合**。Azure の HDInsight ツールは、現在、Azure Toolkit for IntelliJ にバンドルされています。
+* **HDInsight ツールの統合**。Azure の HDInsight ツールは、現在、Azure Toolkit for IntelliJ にバンドルされています。詳細については、[IntelliJ 用の HDInsight Tools プラグイン]に関するページを参照してください。
 * **Java Web アプリのリモート デバッグ**。Azure Toolkit for IntelliJ には、現在、Azure App Service での Java Web アプリのリモート デバッグがサポートされています。
 
 ### 2016 年 4 月 12 日
@@ -56,7 +56,7 @@ Azure Toolkits for Java IDE の詳細については、次のリンクをご覧�
   - [IntelliJ で Azure 用の Hello World Web アプリを作成する]
   - *Azure Toolkit for IntelliJ の新機能 (この記事)*
 
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
+Java での Azure の使用方法の詳細については、「[Azure Java Developer Center]」を参照してください。
 
 <!-- URL List -->
 
@@ -69,6 +69,8 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
 [What's New in the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
-[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 
-<!---HONumber=AcomDC_0706_2016-->
+[IntelliJ 用の HDInsight Tools プラグイン]: ./hdinsight/hdinsight-apache-spark-eclipse-tool-plugin.md
+
+<!---HONumber=AcomDC_0720_2016-->

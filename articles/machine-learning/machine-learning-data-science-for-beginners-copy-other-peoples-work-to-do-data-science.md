@@ -14,16 +14,28 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/30/2016"
+   ms.date="07/15/2016"
    ms.author="cgronlun;brohrer;garye"/>
 
-# 初心者向けデータ サイエンス ビデオ 5: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
+# 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
+
+## ビデオ 5: 初心者向けデータ サイエンス シリーズ
 
 データ サイエンスの企業秘密の 1 つは、自分の代わりに他のユーザーに作業してもらうことです。自分の実験に使用するクラスタリング アルゴリズムの例を検索します。
 
 このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
 
-<div class="wa-video-container" data-control="video-container" data-slug="data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science"> <a title="Data science for beginners: Copy other people’s work to do data science" class="wa-video-thumbnail" href="/en-us/documentation/videos/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/" data-control="video" data-event="videopage-clicked-videothumbnail" data-event-property="data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science" data-expanding="false" data-ch9="//channel9.msdn.com/Blogs/Windows-Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player/" data-caption=""> <img class="thumbnail" alt="Data science for beginners: Copy other people’s work to do data science" src="https://sec.ch9.ms/ch9/c2de/f3d64d4d-e9b3-44c7-9617-4f78e1c2c2de/DataScienceForBeginnersSeriesCopyOtherPeoplesWork_960.jpg"> <img class="play-icon" src="/cdn/cvt-a29a0e789afe7f47464f393c011b53f210c511ee5fed2c4c9c0633442f30d6ec/images/icon/VideoPlay.svg"> <span class="metadata"> <span class="date"> <span>06-30-2016</span> <span>03 min, 18 sec</span> </span> </span> </a> </div>
+> [AZURE.VIDEO data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science]
+
+## このシリーズの他のビデオ
+
+*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
+
+  * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
+  * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
+  * ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+  * ビデオ 4: [単純なモデルで回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
+  * ビデオ 5: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 
 ## トランスクリプト: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 
@@ -59,7 +71,7 @@ Microsoft では、[Azure Machine Learning](https://azure.microsoft.com/services
 
 ![Clustering experiment description page](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment-description-page.png)
 
-**[Studio で開く]** と書かれたリンクに注目してください。
+**[Open in Studio (Studio で開く)]** と書かれたリンクに注目してください。
 
 ![Open in Studio button](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
@@ -79,19 +91,10 @@ Microsoft では、[Azure Machine Learning](https://azure.microsoft.com/services
 
 Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
 
-## このシリーズの他のビデオ
-
-"初心者向けデータ サイエンス" は、データ サイエンスを簡単に説明した 5 本の短いビデオです。
-
-  * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
-  * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
-  * ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
-  * ビデオ 4: [単純なモデルで回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
-  * ビデオ 5: 他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 
 ## 次のステップ
 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

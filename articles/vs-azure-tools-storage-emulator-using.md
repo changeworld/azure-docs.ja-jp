@@ -12,11 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/01/2016"
+   ms.date="07/18/2016"
    ms.author="tarcher" />
 
 # Visual Studio を使用したストレージ エミュレーターの構成と使用
 
+[AZURE.INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
+
+## 概要
 Azure SDK 開発環境には、ローカル開発コンピューター上の Azure で使用可能な BLOB サービス、キュー サービス、テーブル サービスをシミュレートするユーティリティ、ストレージ エミュレーターが付属しています。Azure ストレージ サービスを使用するクラウド サービスを構築している場合、またはストレージ サービスを呼び出す外部アプリケーションを作成している場合、ストレージ エミュレーターに対してコードをローカルでテストできます。Azure Tools for Microsoft Visual Studio によって、ストレージ エミュレーターの管理が Visual Studio に統合されます。Azure Tools は、初回使用時にストレージ エミュレーター データベースを初期化します。Visual Studio からコードが実行またはデバッグされるとストレージ エミュレーター サービスを開始し、Azure ストレージ エクスプローラーを介して、ストレージ エミュレーター データへの読み取り専用アクセスを提供します。
 
 システム要件やカスタム構成の手順など、ストレージ エミュレーターの詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](./storage/storage-use-emulator.md)」を参照してください。
@@ -43,4 +46,4 @@ Visual Studio で初めてサービスを実行またはデバッグすると、
 
 ストレージ エミュレーターをはじめとするストレージ アカウント内の BLOB とテーブルのデータについては、サーバー エクスプローラーの Azure の [ストレージ] ノードを使用してデータを表示したり設定を変更したりすることができます。詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](https://msdn.microsoft.com/library/azure/ff683677.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

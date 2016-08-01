@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/26/2016"
+   ms.date="07/14/2016"
    ms.author="dobett"/>
 
 
@@ -22,11 +22,11 @@
 
 [AZURE.INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-## mbed で C のサンプル ソリューションをビルドして実行する
+## C のサンプル ソリューションをビルドして実行する
 
 次に、[mbed 対応の Freescale FRDM-K64F][lnk-mbed-home] デバイスをリモート監視ソリューションに接続する手順を説明します。
 
-### デバイスをネットワークおよびデスクトップ コンピューターに接続する
+### mbed デバイスをネットワークおよびデスクトップ コンピューターに接続する
 
 1. イーサネット ケーブルを使用して mbed デバイスをネットワークに接続する方法を説明します。サンプル アプリケーションでは、インターネットへのアクセスが必要なため、この手順は必須です。
 
@@ -36,7 +36,7 @@
 
 ### mbed プロジェクトを作成してサンプル コードをインポートする
 
-1. Web ブラウザーで、mbed.org の[開発者向けサイト](https://developer.mbed.org/)に移動します。サインアップしていない場合は、新しいアカウントを作成するオプションが表示されます (アカウントの作成は無料です)。既にサインアップしている場合は、アカウントの資格情報を使用してログインします。次に、ページの右上隅の **[Compiler]** をクリックします。これにより、ワークスペース管理インターフェイスが表示されます。
+1. Web ブラウザーで、mbed.org の[開発者向けサイト](https://developer.mbed.org/)に移動します。サインアップしていない場合は、新しいアカウントを作成するオプションが表示されます (アカウントの作成は無料です)。既にサインアップしている場合は、アカウントの資格情報を使用してログインします。次に、ページの右上隅の **[Compiler]** をクリックします。*ワークスペース* インターフェイスが表示されます。
 
 2. 使用しているハードウェア プラットフォームがウィンドウの右上隅に表示されていることを確認するか、右上隅にあるアイコンをクリックしてハードウェア プラットフォームを選択します。
 
@@ -44,11 +44,11 @@
 
     ![][6]
 
-4. ポップアップ ウィンドウで、サンプル コード用のリンク https://developer.mbed.org/users/AzureIoTClient/code/remote_monitoring/ を入力し、**[インポート]** をクリックします。
+4. ポップアップ ウィンドウで、サンプル コード用のリンク「https://developer.mbed.org/users/AzureIoTClient/code/remote_monitoring/」を入力し、**[インポート]** をクリックします。
 
     ![][7]
 
-5. mbed コンパイラのウィンドウでは、このプロジェクトをインポートしたことでさまざまなライブラリがインポートされたことを確認できます。ライブラリには、Azure IoT チームが提供および管理するライブラリ ([azureiot\_common](https://developer.mbed.org/users/AzureIoTClient/code/azureiot_common/)、[iothub\_client](https://developer.mbed.org/users/AzureIoTClient/code/iothub_client/)、[iothub\_amqp\_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_amqp_transport/)、[azure\_uamqp](https://developer.mbed.org/users/AzureIoTClient/code/azure_uamqp/)) もあれば、mbed ライブラリ カタログで入手可能なサード パーティのライブラリもあります。
+5. mbed コンパイラのウィンドウで、このプロジェクトをインポートしたことでさまざまなライブラリもインポートされたことを確認できます。ライブラリには、Azure IoT チームが提供および管理するライブラリ ([azureiot\_common](https://developer.mbed.org/users/AzureIoTClient/code/azureiot_common/)、[iothub\_client](https://developer.mbed.org/users/AzureIoTClient/code/iothub_client/)、[iothub\_amqp\_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_amqp_transport/)、[azure\_uamqp](https://developer.mbed.org/users/AzureIoTClient/code/azure_uamqp/)) もあれば、mbed ライブラリ カタログで入手可能なサードパーティのライブラリもあります。
 
     ![][8]
 
@@ -61,7 +61,7 @@
     static const char* hubSuffix = "[IoTHub Suffix, i.e. azure-devices.net]";
     ```
 
-7. サンプル プログラムが IoT Hub に接続できるように、[Device Id] と [Device Key] をデバイスのデータに置き換えます。IoT Hub ホスト名を使用して、プレースホルダーの [IoTHub Name] と [IoTHub Suffix, i.e. azure-devices.net] を置き換えます。たとえば、IoT Hub ホスト名が contoso.azure-devices.net である場合は、contoso が **hubName**、残りの部分が **hubSuffix** になります。
+7. サンプル プログラムが IoT Hub に接続できるように、[Device Id] と [Device Key] をデバイスのデータに置き換えます。IoT Hub ホスト名を使用して、プレースホルダーの [IoTHub Name] と [IoTHub Suffix, i.e. azure-devices.net] を置き換えます。たとえば、IoT Hub ホスト名が **contoso.azure-devices.net** である場合は、**contoso** が **hubName**、残りの部分が **hubSuffix** になります。
 
     ```
     static const char* deviceId = "mydevice";
@@ -78,7 +78,7 @@
 
 #### モデルの定義
 
-このサンプルでは、[serializer][lnk-serializer] ライブラリを使用して、デバイスが IoT Hub との間で送受信できるメッセージを指定するモデルを定義します。このサンプルでは、**Contoso** 名前空間で、**Temperature**、**ExternalTemperature**、**Humidity** の各テレメトリ データと、デバイス ID、デバイスのプロパティ、デバイスが応答するコマンドなどのメタデータを指定する**サーモスタット** モデルを定義します。
+次のサンプルでは、[serializer][lnk-serializer] ライブラリを使用して、デバイスが IoT Hub との間で送受信できるメッセージを指定するモデルを定義します。このサンプルでは、**Contoso** 名前空間で、**Temperature**、**ExternalTemperature**、**Humidity** の各テレメトリ データと、デバイス ID、デバイスのプロパティ、デバイスが応答するコマンドなどのメタデータを指定する**サーモスタット** モデルを定義します。
 
 ```
 BEGIN_NAMESPACE(Contoso);
@@ -149,10 +149,10 @@ EXECUTE_COMMAND_RESULT SetHumidity(Thermostat* thermostat, int humidity)
 **remote\_monitoring\_run** 関数のメイン セクションでは、プログラムは **iotHubClientHandle** ハンドルを使用して次の操作を実行します。
 
 - Contoso サーモスタット モデルのインスタンスを作成し、2 つのコマンドのメッセージのコールバックを設定します。
-- serializer ライブラリを使用して、デバイス自体に関する情報 (デバイスがサポートするコマンドなど) を IoT Hub に送信します。ハブはこのメッセージを受信すると、ダッシュボードのデバイスの状態を**保留中**から**実行中**に変更します。
+- serializer ライブラリを使用して、デバイス自体に関する情報 (デバイスがサポートするコマンドなど) を IoT Hub に送信します。ハブはこのメッセージを受信すると、ダッシュボードのデバイスの状態を **[保留中]** から **[実行中]** に変更します。
 - 温度、外部温度、湿度の値を 1 秒おきに IoT Hub に送信する **while** ループを開始します。
 
-起動時に IoT Hub に送信される **DeviceInfo** メッセージの例:
+起動時に IoT Hub に送信される **DeviceInfo** メッセージの例を次に示します。
 
 ```
 {
@@ -171,13 +171,13 @@ EXECUTE_COMMAND_RESULT SetHumidity(Thermostat* thermostat, int humidity)
 }
 ```
 
-IoT Hub に送信される**テレメトリ** メッセージの例:
+IoT Hub に送信される**テレメトリ** メッセージの例を次に示します。
 
 ```
 {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}
 ```
 
-IoT Hub から受信する**コマンド**の例:
+IoT Hub から受信する**コマンド**の例を次に示します。
 
 ```
 {
@@ -199,7 +199,7 @@ IoT Hub から受信する**コマンド**の例:
 
     ![][11]
 
-4. PuTTY で、接続タイプとして **[シリアル]** をクリックします。通常、デバイスは 9600 ボーで接続するため、**[速度]** ボックスに「9600」と入力します。次に、**[開く]** をクリックします。
+4. PuTTY で、接続タイプとして **[シリアル]** をクリックします。通常、デバイスは 9600 ボーで接続するため、**[Speed]** ボックスに「9600」と入力します。次に、**[Open]** をクリックします。
 
 5. プログラムの実行が開始されます。接続時にプログラムが自動的に開始されない場合は、ボードのリセットが必要になることがあります (Ctrl キーを押しながら Break キーを押すか、ボードのリセット ボタンを押します)。
 
@@ -220,4 +220,4 @@ IoT Hub から受信する**コマンド**の例:
 [lnk-mbed-pcconnect]: https://developer.mbed.org/platforms/FRDM-K64F/#pc-configuration
 [lnk-serializer]: https://azure.microsoft.com/documentation/articles/iot-hub-device-sdk-c-intro/#serializer
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

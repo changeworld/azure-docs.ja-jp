@@ -37,7 +37,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
-## 強化されたデプロイ 
+## 強化されたデプロイ
 
 この記事では、クラシック Azure ポータルの強化されたデプロイメントの手順について説明します。すべての新しいデプロイにこのバージョンを使用することをお勧めします。以前のレガシ バージョンを使用してデプロイした場合は、新しいバージョンに移行することをお勧めします。移行の詳細については、[こちら](site-recovery-vmware-to-azure-classic-legacy.md##migrate-to-the-enhanced-deployment)をご覧ください。
 
@@ -59,7 +59,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 - VMware 管理者は、Azure に対して VMware 仮想マシンで実行されているビジネスのワークロードとアプリケーションのオフサイト保護を構成できます。サーバー マネージャーは、オンプレミスの Windows および Linux 物理サーバーを Azure にレプリケートできます。
 - Azure Site Recovery コンソールは、レプリケーション、フェールオーバー、および回復プロセスを簡単にセットアップおよび管理できる 1 つの場所として機能します。
 - vCenter サーバーで管理される VMware 仮想マシンをレプリケートする場合、Site Recovery はその VM を自動的に検出できます。仮想マシンが ESXi ホスト上にある場合、Site Recovery はそのホスト上の VM を検出します。
-- オンプレミス インフラストラクチャから Azure へのフェールオーバーと、Azure からオンプレミス サイトの VMware VM サーバーへのフェールオーバー (復元) を簡単に実行できます。 
+- オンプレミス インフラストラクチャから Azure へのフェールオーバーと、Azure からオンプレミス サイトの VMware VM サーバーへのフェールオーバー (復元) を簡単に実行できます。
 - 複数のマシンに階層化されているアプリケーション ワークロードをグループ化する回復計画を構成できます。また、その回復計画をフェールオーバーできます。Site Recovery には複数 VM の整合性機能があるので、同じワークロードを実行しているマシンを整合性データ ポイントにまとめて復元できます。
 
 ## シナリオのアーキテクチャ
@@ -69,15 +69,17 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 - **オンプレミス管理サーバー**: 管理サーバーは、次の Site Recovery コンポーネントを実行します。
 	- **構成サーバー**: 通信を調整し、データ レプリケーションと復旧プロセスを管理します。
 	- **プロセス サーバー**: レプリケーション ゲートウェイとして機能します。プロセス サーバーは保護されたソース マシンからデータを受信し、キャッシュ、圧縮、および暗号化を使用して最適化し、レプリケーション データを Azure Storage に送信します。また、保護されたマシンへのモビリティ サービスのプッシュ インストールを処理し、VMware VM の自動検出を実行します。
-	- **マスター ターゲット サーバー**: Azure からのフェールバック中にレプリケーション データを処理します。
-	デプロイをスケールするために、プロセス サーバーとしてのみ動作する管理サーバーをデプロイすることもできます。
+	- **マスター ターゲット サーバー**: Azure からのフェールバック中にレプリケーション データを処理します。デプロイをスケールするために、プロセス サーバーとしてのみ動作する管理サーバーをデプロイすることもできます。
 - **モビリティ サービス**: このコンポーネントは、Azure にレプリケートする各マシン (VMware VM または物理サーバー) にデプロイされます。マシン上のデータの書き込みをキャプチャし、それをプロセス サーバーに転送します。
 - **Azure**: レプリケーションとフェールオーバーを処理するために Azure VM を作成する必要はありません。Site Recovery サービスがデータ管理を処理し、データは Azure Storage に直接レプリケートされます。レプリケートされた Azure VM は、Azure へのフェールオーバーが発生した場合にのみ、自動的にスピンアップされます。ただし、Azure からオンプレミス サイトにフェールバックする場合、プロセス サーバーとして動作する Azure VM を設定する必要があります。
 
 
-次の図は、コンポーネント間のやり取りを示します。
+次の図は、これらのコンポーネント間でのやり取りを示しています。
 
-![アーキテクチャ](./media/site-recovery-vmware-to-azure-classic/architecture.png)
+![アーキテクチャ](./media/site-recovery-vmware-to-azure/v2a-architecture-henry.png)
+
+**図 1: VMware/物理マシンと Azure** (作成者: Henry Robalino)
+
 
 ## 容量計画
 
@@ -85,7 +87,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 - **ソース環境** - キャパシティ プランニングや、VMware インフラストラクチャとソース マシンの要件。
 - **管理サーバー** - Site Recovery コンポーネントを実行するオンプレミス管理サーバーの計画。
-- **ソースからターゲットまでのネットワーク帯域幅** - ソースと Azure 間のレプリケーションに必要なネットワーク帯域幅の計画。
+- **ソースからターゲットまでのネットワーク帯域幅** - ソースと Azure の間のレプリケーションに必要なネットワーク帯域幅の計画
 
 ### ソース環境の考慮事項
 
@@ -116,7 +118,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 - キャッシュ ディスクの測定には、RAID 10 で 10,000 RPM の SAS ドライブが 8 個というベンチマーク用ストレージを使用しました。
 
 ### ソースからターゲットへのネットワーク帯域幅
-[Capacity Planner ツール](site-recovery-capacity-planner.md)を使用して、初期レプリケーションと差分レプリケーションに必要な帯域幅を必ず計算します。
+[Capacity Planner ツール](site-recovery-capacity-planner.md)を使用して、初期レプリケーションと差分レプリケーションに必要な帯域幅を必ず計算します
 
 #### レプリケーションに使用される帯域幅のスロットル
 
@@ -186,7 +188,7 @@ Azure Site Recovery でレプリケーションに使用される帯域幅を増
 **前提条件** | **詳細**
 --- | ---
 **Azure アカウント**| [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)をご覧ください。
-**Azure Storage** | レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/>[Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要です。アカウントは Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Premium Storage アカウントへのレプリケーションは現在サポートされていないため、使用しないでください。<br/><br/>[新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントのリソース グループ間での移動はサポートされていません。Azure Storage については、[こちら](../storage/storage-introduction.md)をご覧ください。<br/><br/>
+**Azure Storage** | レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/>[Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要です。アカウントは Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Premium ストレージ アカウントへのレプリケーションは現在サポートされていないため、使用しないでください。<br/><br/>[新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントを、リソース グループ間で移動することはできません。Azure ストレージについては、[こちら](../storage/storage-introduction.md)をご覧ください。<br/><br/>
 **Azure ネットワーク** | フェールオーバーが発生した場合に Azure VM が接続する Azure 仮想ネットワークが必要です。Azure 仮想ネットワークは、Site Recovery コンテナーと同じリージョンに存在する必要があります。<br/><br/>Azure へのフェールオーバー後にフェールバックするには、Azure ネットワークからオンプレミス サイトへの VPN 接続 (または Azure ExpressRoute) を設定する必要があります。
 
 
@@ -194,7 +196,7 @@ Azure Site Recovery でレプリケーションに使用される帯域幅を増
 
 **前提条件** | **詳細**
 --- | ---
-**管理サーバー** | 仮想マシンまたは物理サーバーで実行されているオンプレミス Windows 2012 R2 サーバーが必要です。すべてのオンプレミス Site Recovery コンポーネントは、この管理サーバーにインストールされます。<br/><br/>このサーバーは高可用性 VMware VM としてデプロイすることをお勧めします。フェールオーバーしたのが VM か物理サーバーかに関係なく、Azure からオンプレミス サイトへのフェールバック先は常に VMware VM です。VMware VM として管理サーバーを構成していない場合、フェールバック トラフィックを受信するために、別のマスター ターゲット サーバーを VMware VM としてセットアップする必要があります。<br/><br/>サーバーはドメインサーバーであってはなりません。<br/><br/>管理サーバーには静的 IP アドレスを割り当てる必要があります。<br/><br/>サーバーのホスト名は 15 文字以下にする必要があります。<br/><br/>オペレーティング システムのロケールは、英語のみにする必要があります。<br/><br/>管理サーバーからインターネットにアクセスできる必要があります。<br/><br/>サーバーからの発信アクセスが必要です。具体的には、Site Recovery コンポーネントのセットアップ中に実行される HTTP 80 での一時アクセス (MySQL をダウンロードするため)、レプリケーション管理のための HTTPS 443 での継続的な発信アクセス、レプリケーション トラフィックのための HTTPS 9443 (このポートは変更可能) での継続的な発信アクセスです。<br/><br/>管理サーバーから次の URL にアクセスできることを確認します。<br/>- *.hypervrecoverymanager.windowsazure.com<br/>- *.accesscontrol.windows.net<br/>- *.backup.windowsazure.com<br/>- *.blob.core.windows.net<br/>- *.store.core.windows.net<br/>-https://www.msftncsi.com/ncsi.txt<br/>- [ https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi](https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi "https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi")<br/><br/>サーバーに IP アドレスベースのファイアウォール規則が設定されている場合は、その規則で Azure との通信が許可されていることを確認します。[Azure Datacenter の IP の範囲](https://www.microsoft.com/download/details.aspx?id=41653)と HTTPS (433) プロトコルを許可する必要があります。また、サブスクリプションの Azure リージョンと米国西部の IP アドレスの範囲をホワイト リストに追加する必要があります。[https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi](https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi "https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi") という URL は、MySQL のダウンロード用です。
+**管理サーバー** | 仮想マシンまたは物理サーバーで実行されているオンプレミス Windows 2012 R2 サーバーが必要です。すべてのオンプレミス Site Recovery コンポーネントは、この管理サーバーにインストールされます。<br/><br/>このサーバーは高可用性 VMware VM としてデプロイすることをお勧めします。フェールオーバーしたのが VM か物理サーバーかに関係なく、Azure からオンプレミス サイトへのフェールバック先は常に VMware VM です。VMware VM として管理サーバーを構成していない場合、フェールバック トラフィックを受信するために、別のマスター ターゲット サーバーを VMware VM としてセットアップする必要があります。<br/><br/>サーバーはドメイン コントローラーであってはなりません。<br/><br/>サーバーには静的 IP アドレスを割り当てる必要があります。<br/><br/>サーバーのホスト名は 15 文字以下にする必要があります。<br/><br/>オペレーティング システムのロケールは、英語のみにする必要があります。<br/><br/>管理サーバーからインターネットにアクセスできる必要があります。<br/><br/>サーバーからの発信アクセスが必要です。具体的には、Site Recovery コンポーネントのセットアップ中に実行される HTTP 80 での一時アクセス (MySQL をダウンロードするため)、レプリケーション管理のための HTTPS 443 での継続的な発信アクセス、レプリケーション トラフィックのための HTTPS 9443 (このポートは変更可能) での継続的な発信アクセスです。<br/><br/>管理サーバーから次の URL にアクセスできることを確認します。<br/>- *.hypervrecoverymanager.windowsazure.com<br/>- *.accesscontrol.windows.net<br/>- *.backup.windowsazure.com<br/>- *.blob.core.windows.net<br/>- *.store.core.windows.net<br/>-https://www.msftncsi.com/ncsi.txt<br/>- [ https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi](https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi "https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi")<br/><br/>サーバーに IP アドレスベースのファイアウォール規則が設定されている場合は、その規則で Azure との通信が許可されていることを確認します。[Azure Datacenter の IP の範囲](https://www.microsoft.com/download/details.aspx?id=41653)と HTTPS (433) プロトコルを許可する必要があります。また、サブスクリプションの Azure リージョンと米国西部の IP アドレスの範囲をホワイト リストに追加する必要があります。[https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi](https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi "https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi") という URL は、MySQL のダウンロード用です。
 **VMware vCenter/ESXi ホスト**: | VMware 仮想マシンを管理し、最新の更新プログラムが適用された ESX/ESXi バージョン 6.0、5.5、または 5.1 を実行する 1 つ以上の VMware vSphere ESX/ESXi ハイパーバイザーが必要です。<br/><br/> ESXi ホストを管理する VMware vCenter サーバーをデプロイすることをお勧めします。最新の更新プログラムが適用された vCenter バージョン 6.0 または 5.5 を実行している必要があります。<br/><br/>Site Recovery は、クロス vCenter vMotion、仮想ボリューム、ストレージ DRS などの vCenter および vSphere 6.0 の新しい機能をサポートしていません。Site Recovery のサポートは、バージョン 5.5 で提供されていた機能に限定されます。
 **保護されたマシン**: | **Azure**<br/><br/>保護対象のマシンは、Azure VM を作成するための [Azure の前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠している必要があります。<br><br/>フェールオーバー後に Azure VM に接続する場合、ローカル ファイアウォールでリモート デスクトップ接続を有効にする必要があります。<br/><br/>保護されたマシンの個々のディスク容量が 1,023 GB 以下である必要があります。VM は最大 64 個のディスク (従って最大 64 TB) に対応できます。1 TB を超えるディスクがある場合は、SQL Server Always On や Oracle Data Guard などのデータベース レプリケーションを使用することを検討してください。<br/><br/>共有ディスク ゲスト クラスターはサポートされていません。クラスター化されたデプロイメントがある場合は、SQL Server Always On や Oracle Data Guard などのデータベース レプリケーションを使用することを検討してください。<br/><br/>Unified Extensible Firmware Interface(UEFI)/Extensible Firmware Interface(EFI) ブートはサポートされていません。<br/><br/>マシン名は 1 ～ 63 文字 (英字、数字、ハイフン) にする必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンが保護されたら、Azure 上の名前を変更できます。<br/><br/>**VMware VM**<br/><br>管理サーバー (構成サーバー) に VMware vSphere PowerCLI 6.0 をインストールする必要があります。<br/><br/>保護対象の VMware VM では、VMware ツールがインストールされ、実行されている必要があります。<br/><br/>ソース VM に NIC チーミングがある場合、Azure へのフェールオーバー後に単一の NIC に変換されます。<br/><br/>保護された VM に iSCSI ディスクがある場合、VM が Azure にフェールオーバーしたときに、Site Recovery は保護された VM iSCSI ディスクを VHD ファイルに変換します。Azure VM から iSCSI ターゲットに到達できる場合、iSCSI ターゲットに接続すると、基本的に Azure VM 上の VHD ディスクとソース iSCSI ディスクという 2 つのディスクを確認できます。この場合、フェールオーバーした Azure VM 上の iSCSI ターゲットを切断する必要があります。<br/><br/>Site Recovery に必要な VMware ユーザーのアクセス許可の詳細については、[こちら](#vmware-permissions-for-vcenter-access)をご覧ください。<br/><br/> **Windows Server マシン (VMware VM または物理サーバー)**<br/><br/>サーバーはサポートされている 64 ビット オペレーティング システム (Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 SP1 以降) を実行している必要があります。<br/><br/>オペレーティング システムは C:\\ ドライブにインストールする必要があります。また、OS ディスクは Windows ベーシック ディスクにする必要があります (OS は Windows ダイナミック ディスクにインストールしないでください)。<br/><br/>Windows Server 2008 R2 マシンでは、.NET Framework 3.5.1 をインストールする必要があります。<br/><br/>Windows サーバーにモビリティ サービスをプッシュ インストールするために管理者アカウント (Windows マシンのローカル管理者である必要があります) を提供する必要があります。提供するアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。詳細については、[こちら](#install-the-mobility-service-with-push-installation)をご覧ください。<br/><br/>Site Recovery は RDM ディスクを使用する VM をサポートしています。フェールバック時に、1 つ目のソース VM と RDM ディスクを使用できる場合、Site Recovery は RDM ディスクを再利用します。これらを使用できない場合、フェールバック時に Site Recovery は各ディスクの新しい VMDK ファイルを作成します。<br/><br/>**Linux マシン**<br/><br/>サポートされている 64 ビット オペレーティング システム (Red Hat Enterprise Linux 6.7、Centos 6.5、6.6、6.7、Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行する Oracle Enterprise Linux 6.4、6.5、SUSE Linux Enterprise Server 11 SP3) が必要です。<br/><br/>保護されたマシンの /etc/hosts ファイルには、ローカル ホスト名を、すべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが含まれます。<br/><br/>フェールオーバー後に Secure Shell クライアント (ssh) を使用して Linux を実行している Azure 仮想マシンに接続する場合、保護されたマシンの Secure Shell サービスがシステムの起動時に自動的に開始されるように設定します。また、ファイアウォール規則で ssh 接続を許可します。<br/><br/>ファイル システム (EXT3、ETX4、ReiserFS、XFS)、マルチパス ソフトウェア デバイス マッパー (multipath)、ボリューム マネージャー (LVM2) の各ストレージを使用する Linux マシンでのみ保護を有効にすることができます。HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされていません。ReiserFS ファイルシステムは、SUSE Linux Enterprise Server 11 SP3 でのみサポートされています。<br/><br/>Site Recovery は RDM ディスクが搭載された VM をサポートします。Linux のフェールバックの場合、Site Recovery は RDM ディスクを再利用しません。代わりに、対応する各 RDM ディスク用に新しい VMDK ファイルを作成します。
 
@@ -207,8 +209,7 @@ Linux VM のみ - VMware で VM の構成パラメーターに disk.enableUUID=t
 3. **[新規作成]**、**[簡易作成]** の順にクリックします。
 4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
 5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)」で利用可能地域を参照してください。
-6. **[コンテナーの作成]** をクリックします。
-	![新しいコンテナー](./media/site-recovery-vmware-to-azure-classic/quick-start-create-vault.png)
+6. **[コンテナーの作成]** をクリックします。![新しいコンテナー](./media/site-recovery-vmware-to-azure-classic/quick-start-create-vault.png)
 
 ステータス バーを確認して、コンテナーが正常に作成されたことを確かめます。**Recovery Services** のメイン ページでは、資格情報コンテナーは **[アクティブ]** と表示されます。
 
@@ -217,9 +218,9 @@ Linux VM のみ - VMware で VM の構成パラメーターに disk.enableUUID=t
 フェールオーバー後に Azure VM がネットワークに接続され、オンプレミス サイトへのフェールバックが期待どおりに動作するように Azure ネットワークを設定します。
 
 1. Azure ポータルの **[仮想ネットワークの作成]** に、ネットワーク名、IP アドレスの範囲、サブネット名を指定します。
-2. フェールバックを実行する必要がある場合は、ネットワークに VPN/ExpressRoute を追加する必要があります。VPN/ExpressRoute は、フェールオーバー後でもネットワークに追加できます。 
+2. フェールバックを実行する必要がある場合は、ネットワークに VPN/ExpressRoute を追加する必要があります。VPN/ExpressRoute は、フェールオーバー後でもネットワークに追加できます。
 
-Azure ネットワークの詳細については、[こちら](../virtual-network/virtual-networks-overview.md)を参照してください。
+Azure ネットワークの詳細については、[こちら](../virtual-network/virtual-networks-overview.md)をご覧ください。
 
 ## 手順 3: VMware コンポーネントをインストールする
 
@@ -266,9 +267,9 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 
 5. **[インターネット設定]** で、サーバーにインストールされるプロバイダーからインターネット経由で Azure Site Recovery に接続する方法を指定します。
 
-	- プロバイダーから直接接続するようにするには、**[プロキシなしで直接接続する]** を選択します。
-	- サーバーに現在設定されているプロキシを使って接続する場合は、**[既存のプロキシ設定を使用して接続する]** を選択します。
-	- 既存のプロキシに認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、**[カスタム プロキシ設定を使用して接続する]** を選択します。
+	- プロバイダーから直接接続するようにするには、**[Connect directly without a proxy (プロキシなしで直接接続する)]** を選択します。
+	- サーバーに現在設定されているプロキシを使って接続する場合は、**[Connect with existing proxy settings (既存のプロキシ設定を使用して接続する)]** を選択します。
+	- 既存のプロキシに認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、**[Connect with custom proxy settings (カスタム プロキシ設定を使用して接続する)]** を選択します。
 	- カスタム プロキシを使用する場合、アドレス、ポート、資格情報を指定する必要があります。
 	- プロキシを使用している場合、そのプロキシ経由で次の URL にアクセスできる必要があります。
 
@@ -278,11 +279,11 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 
 	![前提条件](./media/site-recovery-vmware-to-azure-classic/combined-wiz4.png)
 
->[AZURE.WARNING] **[グローバル時間の同期]** 前提条件の確認で警告が表示される場合は、システム クロックの時刻がタイム ゾーンと同じであることを確認します。
+>[AZURE.WARNING] **グローバル時間の同期**の前提条件の確認で警告が表示される場合は、システム クロックの時刻がタイム ゾーンと同じであることを確認します。
 
 ![TimeSyncIssue](./media/site-recovery-vmware-to-azure-classic/time-sync-issue.png)
 
-8. **[MySQL の構成]** で、MySQL サーバー インスタンスにログオンするための資格情報を作成します。特殊文字 ('\_'、'!'、'@'、'$'、'\\'、'%') を指定できます。
+8. **[MySQL Configuration (MySQL の構成)]**で、MySQL サーバー インスタンスにログオンするための資格情報を作成します。特殊文字 ('\_'、'!'、'@'、'$'、'\\'、'%') を指定できます。
 
 	![MySQL](./media/site-recovery-vmware-to-azure-classic/combined-wiz5.png)
 
@@ -307,13 +308,13 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 
 	![概要](./media/site-recovery-vmware-to-azure-classic/combined-wiz10.png)
 >[AZURE.WARNING] Microsoft Azure Recovery Service Agent のプロキシをセットアップする必要があります。
->インストールが完了したら、Windows の [スタート] メニューから「Microsoft Azure Recovery Services シェル」という名前のアプリケーションを起動します。開いたコマンド ウィンドウで、次のコマンドを実行して、プロキシ サーバー設定をセットアップします。
+インストールが完了したら、Windows の [スタート] メニューから「Microsoft Azure Recovery Services シェル」という名前のアプリケーションを起動します。開いたコマンド ウィンドウで、次のコマンドを実行して、プロキシ サーバー設定をセットアップします。
 >
 	$pwd = ConvertTo-SecureString -String ProxyUserPassword
 	Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumb – ProxyUserName domain\\username -ProxyPassword $pwd 
 	net stop obengine 
 	net start obengine
-	 
+
 
 
 ### コマンド ラインからセットアップを実行する
@@ -332,7 +333,7 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 - /PSIP と /CSIP:必須。プロセス サーバーと構成サーバーの IP アドレス。
 - /PassphraseFilePath:必須。パスフレーズ ファイルの場所。
 - /ByPassProxy:省略可能。管理サーバーがプロキシを介さずに Azure に接続することを指定します。
-- /ProxySettingsFilePath:省略可能。カスタム プロキシの設定 (認証が必要なサーバー上の既定のプロキシ、またはカスタム プロキシ) を指定します。 
+- /ProxySettingsFilePath:省略可能。カスタム プロキシの設定 (認証が必要なサーバー上の既定のプロキシ、またはカスタム プロキシ) を指定します。
 
 
 
@@ -426,7 +427,7 @@ VMware VM をレプリケートする場合、vCenter サーバー (または ES
 
 	>[AZURE.NOTE] ドメイン アカウントを使用していない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。無効にするには、レジストリ エディターで HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System に値が 1 の DWORD エントリの LocalAccountTokenFilterPolicy を追加します。CLI からレジストリ エントリを追加するには、コマンドを開くか、PowerShell を使用して、「**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**」と入力します。
 
-2.  保護対象のマシンの Windows ファイアウォールで、**[ファイアウォール経由のアプリまたは機能を許可する]** を選択し、**[ファイルとプリンターの共有]** と **[Windows Management Instrumentation]** を有効にします。マシンがドメインに属している場合は、GPO を使用してファイアウォール ポリシーを構成できます。
+2.  保護対象のマシンの Windows ファイアウォールで、**[ファイアウォールを介したアプリまたは機能を許可する]** を選択し、**[ファイルとプリンターの共有]** と **[Windows Management Instrumentation]** を有効にします。マシンがドメインに属している場合は、GPO を使用してファイアウォール ポリシーを構成できます。
 
 	![ファイアウォールの設定](./media/site-recovery-vmware-to-azure-classic/mobility1.png)
 
@@ -439,7 +440,7 @@ VMware VM をレプリケートする場合、vCenter サーバー (または ES
 
 #### Linux サーバーの自動プッシュを準備する
 
-1.	「[オンプレミスの前提条件](#on-premises-prerequisites)」で説明したとおり、保護対象の Linux マシンがサポートされていることを確認します。また、保護するマシンと、プロセス サーバーを実行する管理サーバー間にネットワーク接続があることを確認します。 
+1.	「[オンプレミスの前提条件](#on-premises-prerequisites)」で説明したとおり、保護対象の Linux マシンがサポートされていることを確認します。また、保護するマシンと、プロセス サーバーを実行する管理サーバー間にネットワーク接続があることを確認します。
 
 2.	プロセス サーバーから使用できる、マシンにアクセスするためのアカウントを作成します。アカウントは、ソース Linux サーバーの root ユーザーである必要があります。これらの資格情報は、モビリティ サービスのプッシュ インストールのためにのみ使用されます。
 
@@ -449,8 +450,8 @@ VMware VM をレプリケートする場合、vCenter サーバー (または ES
 
 3.	ソース Linux サーバーの /etc/hosts ファイルに、ローカル ホスト名を、すべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが含まれることを確認します。
 4.	保護するマシンに最新の openssh、openssh-server、openssl の各パッケージをインストールします。
-5.	SSH がポート 22 で有効であり実行中であることを確認します。 
-6.	以下の手順で、sshd\_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 
+5.	SSH がポート 22 で有効であり実行中であることを確認します。
+6.	以下の手順で、sshd\_config ファイルで SFTP サブシステムとパスワード認証を有効にします。
 
 	- root としてログインします。
 	- /etc/ssh/sshd\_config ファイルで、PasswordAuthentication で始まる行を見つけます。
@@ -467,7 +468,7 @@ VMware VM をレプリケートする場合、vCenter サーバー (または ES
 ソース オペレーティング システム | モビリティ サービスのインストール ファイル
 --- | ---
 Windows Server (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0_Windows_* release.exe
-CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz 
+CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz
 SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
 Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
 
@@ -480,7 +481,7 @@ Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.
 
 	![モビリティ サービス](./media/site-recovery-vmware-to-azure-classic/mobility3.png)
 
-3. **[構成サーバーの詳細]** で、管理サーバーの IP アドレスと、管理サーバーのコンポーネントをインストールしたときに生成されたパスフレーズを指定します。パスフレーズを取得するには、管理サーバーで **<SiteRecoveryInstallationFolder>\\home\\sysystems\\bin\\genpassphrase.exe –n** を実行します。
+3. **[Configuration Server Details (構成サーバーの詳細)]** で、管理サーバーの IP アドレスと、管理サーバーのコンポーネントをインストールしたときに生成されたパスフレーズを指定します。パスフレーズを取得するには、管理サーバーで **<SiteRecoveryInstallationFolder>\\home\\sysystems\\bin\\genpassphrase.exe –n** を実行します。
 
 	![モビリティ サービス](./media/site-recovery-vmware-to-azure-classic/mobility6.png)
 
@@ -538,7 +539,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 - VMware VM は 15 分間隔で検出されます。検出後に Site Recovery ポータルに表示されるまでに 15 分以上かかることがあります。
 - 仮想マシンでの環境の変化 (VMware ツールのインストールなど) も、Site Recovery で更新されるまでに 15 分以上かかることがあります。
 - **[構成サーバー]** タブの vCenter サーバー/ESXi ホストの **[前回のアクセス]** フィールドで VMware VM の最終検出時刻を確認できます。
-- 保護グループを既に作成済みで、その後に vCenter サーバーまたは ESXi ホストを追加した場合、Azure Site Recovery ポータルが更新されて仮想マシンが **[保護グループへのマシンの追加]** ダイアログのリストに表示されるまでに 15 分以上かかることがあります。
+- 保護グループを既に作成済みで、その後に vCenter サーバーまたは ESXi ホストを追加した場合、Azure Site Recovery ポータルが更新されて仮想マシンが **[Add machines to a protection group (保護グループへのマシンの追加)]** ダイアログのリストに表示されるまでに 15 分以上かかることがあります。
 - マシンを保護グループに追加したら、定期検出を待たずにすぐに先に進みたい場合は、構成サーバーを強調表示にして (クリックしないでください)、**[更新]** ボタンをクリックします。
 
 さらに、次の点に注意してください。
@@ -549,7 +550,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 次の手順で保護グループにマシンを追加します。
 
-1. **[保護された項目]**、**[保護グループ]**、**[コンピューター]**、[コンピューターの追加] の順にクリックします。
+1. **[保護された項目]**、**[保護グループ]**、**[コンピューター]**、[コンピューターの追加] の順にクリックします
 2. **[仮想マシンの選択]** で VMware 仮想マシンを保護している場合は、仮想マシンを管理している vCenter サーバー (または仮想マシンが実行している EXSi ホスト) を選択し、マシンを選択します。
 
 	![保護を有効にする](./media/site-recovery-vmware-to-azure-classic/enable-protection2.png)
@@ -584,7 +585,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 ## 手順 11: 保護されたマシンのプロパティを設定する
 
 1. マシンの状態が **[保護されています]** になると、マシンのフェールオーバーのプロパティを構成できます。保護グループの詳細で、マシンを選択し、**[構成]** タブを開きます。
-2. Site Recovery は、自動的に Azure VM のプロパティを提案し、オンプレミス ネットワーク設定を検出します。 
+2. Site Recovery は、自動的に Azure VM のプロパティを提案し、オンプレミス ネットワーク設定を検出します。
 
 	![仮想マシンのプロパティの設定](./media/site-recovery-vmware-to-azure-classic/vm-properties1.png)
 
@@ -592,7 +593,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 	-  **Azure VM の名前**: フェールオーバー後に Azure 内のマシンに付けられる名前です。名前は Azure の要件に準拠する必要があります。
 
-	-  **Azure VM のサイズ**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。サイズとアダプターの詳細については、[こちら](../virtual-machines/virtual-machines-linux-sizes.md/#size-tables)を参照してください。以下の点に注意してください。
+	-  **Azure VM のサイズ**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。サイズとアダプターの詳細については、[こちら](../virtual-machines/virtual-machines-linux-sizes.md/#size-tables)をご覧ください。以下の点に注意してください。
 
 		- 仮想マシンのサイズを変更し、設定を保存すると、次回 **[構成]** タブを開いたときにネットワーク アダプターの数が変更されます。ターゲット仮想マシンのネットワーク アダプターの数は、ソース仮想マシン上のネットワーク アダプターの最小数と、選択した仮想マシンのサイズでサポートされているネットワーク アダプターの最大数です。
 			- ソース マシン上のネットワーク アダプターの数が、ターゲット マシンのサイズに許可されているアダプターの数以下の場合、ターゲットのアダプターの数は、ソースと同じになります。
@@ -611,7 +612,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 ### 復旧計画の作成
 
-1. **[復旧計画]** ページで、**[復旧計画の追加]** をクリックして復旧計画を追加します。計画の詳細を指定し、ターゲットに **Azure** を選択します。
+1. **[復旧計画]** ページで、**[Add Recovery Plan (復旧計画の追加)]** をクリックして復旧計画を追加します。計画の詳細を指定し、ターゲットに **Azure** を選択します。
 
 	![復旧計画の構成](./media/site-recovery-vmware-to-azure-classic/recovery-plan1.png)
 
@@ -619,7 +620,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 	![仮想マシンを追加](./media/site-recovery-vmware-to-azure-classic/recovery-plan2.png)
 
-計画をカスタマイズして、復旧計画でフェールオーバーするマシンのグループを作成し、その実行順序を指定できます。手動の操作のためのスクリプトとプロンプトを追加することもできます。スクリプトは、手動または [Azure Automation Runbook](site-recovery-runbook-automation.md) を使用して作成できます。復旧計画のカスタマイズについては、[こちら](site-recovery-create-recovery-plans.md)を参照してください。
+計画をカスタマイズして、復旧計画でフェールオーバーするマシンのグループを作成し、その実行順序を指定できます。手動の操作のためのスクリプトとプロンプトを追加することもできます。スクリプトは、手動または [Azure Automation Runbook](site-recovery-runbook-automation.md) を使用して作成できます。復旧計画のカスタマイズについては、[こちら](site-recovery-create-recovery-plans.md)をご覧ください。
 
 ## フェールオーバーの実行
 
@@ -634,14 +635,14 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 - フェールオーバー後に Azure のレプリカ仮想マシンに接続する場合、フェールオーバーの実行前にソース マシンでリモート デスクトップ接続を有効にして、ファイアウォール経由の RDP 接続を許可します。また、フェールオーバー後に、Azure 仮想マシンのパブリック エンドポイントで RDP を許可する必要があります。フェールオーバー後に RDP が動作するように、この[ベスト プラクティス](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)に従ってください。
 
->[AZURE.NOTE] Azure へのフェールオーバーを実行するときに最適なパフォーマンスを得るには、保護されたマシンに Azure エージェントをインストールしておきます。これは、ブートの速度を上げ、問題が発生した場合の診断にも役立ちます。Linux エージェントは[ここ](https://github.com/Azure/WALinuxAgent)から、Windows エージェントは[ここ](http://go.microsoft.com/fwlink/?LinkID=394789)から入手できます。
+>[AZURE.NOTE] Azure へのフェールオーバーを実行するときに最適なパフォーマンスを得るには、保護されたマシンに Azure エージェントをインストールしておきます。これは、ブートの速度を上げ、問題が発生した場合の診断にも役立ちます。Linux エージェントは[ここ](https://github.com/Azure/WALinuxAgent)から、Windows エージェントは[ここ](http://go.microsoft.com/fwlink/?LinkID=394789)から入手できます
 
 ### テスト フェールオーバーの実行
 
 運用環境に影響を与えず、レプリケーションが通常どおりに続行するように、テスト フェールオーバーを実行し、分離されたネットワークでフェールオーバーと復旧のプロセスをシミュレートします。ソースでテスト フェールオーバーを開始します。次のようにいくつかの実行方法があります。
 
 - **Azure ネットワークを指定しない**: ネットワークを指定せずにテスト フェールオーバーを実行すると、仮想マシンが開始され、Azure に正しく表示されていることがテストで確認されます。フェールオーバー後、仮想マシンは Azure ネットワークに接続しません。
-- **Azure ネットワークを指定する**: この種のフェールオーバーでは、レプリケーション環境全体が正しく動作することと、Azure 仮想マシンが指定したネットワークに接続されることを確認します。 
+- **Azure ネットワークを指定する**: この種のフェールオーバーでは、レプリケーション環境全体が正しく動作することと、Azure 仮想マシンが指定したネットワークに接続されることを確認します。
 
 
 1. **[復旧計画]** ページで計画を選択し、**[テスト フェールオーバー]** をクリックします。
@@ -693,7 +694,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 2. プライマリ マシンの Windows ファイアウォールで RDP を許可します。
 3. フェールオーバー後に、Azure 仮想マシンのパブリック エンドポイントに RDP を追加する必要があります。
 
-このセットアップの詳細については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を参照してください。
+このセットアップの詳細については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)をご覧ください。
 
 
 ## 追加のプロセス サーバーをデプロイする
@@ -715,7 +716,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 	![プロセス サーバーの追加](./media/site-recovery-vmware-to-azure-classic/add-ps1.png)
 
 3. 1 つ目の管理サーバーを[セットアップ](#step-5-install-the-management-server)したのと同じ方法でウィザードを完了します。
-4. **[構成サーバーの詳細]** で、構成サーバーをインストールした 1 つ目の管理サーバーの IP アドレスと、パスフレーズを指定します。1 つ目の管理サーバーで、**<SiteRecoveryInstallationFolder>\\home\\sysystems\\bin\\genpassphrase.exe –n** を実行してパスフレーズを取得します。
+4. **[Configuration Server Details (構成サーバーの詳細)]** で、構成サーバーをインストールした 1 つ目の管理サーバーの IP アドレスと、パスフレーズを指定します。1 つ目の管理サーバーで、**<SiteRecoveryInstallationFolder>\\home\\sysystems\\bin\\genpassphrase.exe –n** を実行してパスフレーズを取得します。
 
 	![プロセス サーバーの追加](./media/site-recovery-vmware-to-azure-classic/add-ps2.png)
 
@@ -738,7 +739,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 ## vCenter アクセスの VMware アクセス許可
 
-プロセス サーバーは vCenter サーバー上の VM を自動的に検出できます。自動検出を実行するには、vCenter レベルでロール (Azure\_Site\_Recovery) を定義し、Site Recovery が vCenter サーバーにアクセスできるようにする必要があります。VMware マシンを Azure に移行する処理のみが必要で、Azure からのフェールバックは必要ない場合、読み取り専用ロールを定義するだけで十分です。「[手順 6: vCenter サーバーの資格情報をセットアップする](#step-6-set-up-credentials-for-the-vcenter-server)」の説明に従ってアクセス許可をセットアップします。ロールのアクセス許可の概要については、次の表を参照してください。
+プロセス サーバーは vCenter サーバー上の VM を自動的に検出できます。自動検出を実行するには、vCenter レベルでロール (Azure\_Site\_Recovery) を定義し、Site Recovery が vCenter サーバーにアクセスできるようにする必要があります。VMware マシンを Azure に移行する処理のみが必要で、Azure からのフェールバックは必要ない場合、読み取り専用ロールを定義するだけで十分です。「[手順 6: vCenter サーバーの資格情報をセットアップする](#step-6-set-up-credentials-for-the-vcenter-server)」の説明に従ってアクセス許可をセットアップします。ロールのアクセス許可の概要については、次の表をご覧ください。
 
 **ロール** | **詳細** | **アクセス許可**
 --- | --- | ---
@@ -762,6 +763,6 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 ## 次のステップ
 
-Azure で実行しているフェールオーバーされたマシンをオンプレミス環境に戻す[フェールバックの詳細についてはこちら](site-recovery-failback-azure-to-vmware-classic.md)を参照してください。
+Azure で実行されているフェールオーバーされたマシンをオンプレミス環境に戻す[フェールバックの詳細を確認](site-recovery-failback-azure-to-vmware-classic.md)します。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

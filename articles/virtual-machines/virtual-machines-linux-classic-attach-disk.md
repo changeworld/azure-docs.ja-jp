@@ -160,6 +160,28 @@
 
 >[AZURE.NOTE] この後、fstab を編集せずにデータ ディスクを削除すると VM は起動できません。これが頻繁に発生する場合、大部分のディストリビューションでは `nofail` または `nobootwait` fstab オプションが提供されます。これによって、起動時にディスクのマウントが失敗してもシステムを起動することができます。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
 
+### Azure における Linux の TRIM/UNMAP サポート
+一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作をサポートします。これは主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。これによって、サイズの大きいファイルを作成して削除する場合のコストを節約できます。
+
+Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。通常と同様に、ご使用のディストリビューションで推奨される方法をお問い合わせください。
+
+- 次のように、`/etc/fstab` で `discard` マウント オプションを使用します。
+
+		UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
+
+- または、`fstrim` コマンドを手動でコマンドラインから実行するか、crontab に追加して定期的に実行することができます。
+
+	**Ubuntu**
+
+		# sudo apt-get install util-linux
+		# sudo fstrim /datadrive
+
+	**RHEL/CentOS**
+
+		# sudo yum install util-linux
+		# sudo fstrim /datadrive
+
+
 ## 次のステップ
 以下の記事で、Linux VM の使用方法について詳しい情報を得ることができます。
 
@@ -173,4 +195,4 @@
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-classic-log-on.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

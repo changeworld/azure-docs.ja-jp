@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/21/2016"
+	ms.date="07/14/2016"
 	ms.author="vakarand"/>
 
 
@@ -35,7 +35,7 @@
 
 **Q: 各サーバーに Azure AD Connect Health エージェントをインストールすると、どのような影響があるでしょうか。**
 
-CPU、メモリ消費、ネットワーク帯域幅、ストレージに関して、ADFS サーバーに Microsoft Identity Health エージェントをインストールする影響は最小限です。
+ADFS サーバーまたはドメイン コントローラーに Microsoft Identity Health エージェントをインストールすることによる、CPU、メモリ消費、ネットワーク帯域幅、ストレージへの影響は最小限です。
 
 おおよその数値を以下に示します。
 
@@ -70,6 +70,13 @@ AD FS Audit Channel for AD Health エージェントがすべてのデータを�
 いいえ。基本認証に対して任意のユーザー名/パスワードを指定するメカニズムは、現在サポートされていません。
 
 
+**Q: Azure AD Connect Health for AD DS では、どのバージョンの AD DS がサポートされていますか。**
+
+以下の OS バージョンにインストールされている場合は AD DS の監視がサポートされます。
+
+- Windows Server 2008 R2
+- Windows Server 2012
+- Windows Server 2012 R2
 
 ## 操作に関する質問
 
@@ -104,6 +111,7 @@ Azure AD Health サービス エンドポイントと通信できるようにす
 * [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
 * [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
+* [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

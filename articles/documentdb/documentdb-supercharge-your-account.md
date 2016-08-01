@@ -18,7 +18,7 @@
 
 # DocumentDB アカウントのパワーアップ
 
-次の手順に従って、DocumentDB S1 アカウントのスループットを向上させ、活用します。追加コストをほとんどかけずに、既存の S1 アカウントのスループットを 250 [RU/秒](documentdb-request-units.md)から 400 RU/秒以上に向上させることができます。
+次の手順に従って、Azure DocumentDB S1 アカウントのスループットを向上させ、活用します。追加コストをほとんどかけずに、既存の S1 アカウントのスループットを 250 [RU/秒](documentdb-request-units.md)から 400 RU/秒以上に向上させることができます。
 
 > [AZURE.VIDEO changedocumentdbcollectionperformance]
 
@@ -51,4 +51,4 @@
 
 より優れた (10,000 RU/秒を上回る) スループットまたはさらに大きな (10 GB を超える) 記憶域が必要であると判断した場合は、パーティション分割コレクションを作成できます。パーティション分割コレクションを作成するには、[コレクションの作成](documentdb-create-collection.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

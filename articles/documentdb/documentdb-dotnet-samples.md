@@ -26,9 +26,9 @@
 - [Python のサンプル](documentdb-python-samples.md)
 - [Azure のコード サンプル ギャラリー](https://azure.microsoft.com/documentation/samples/?service=documentdb)
 
-DocumentDB リソースに対する CRUD 操作などの一般的な操作を実行するサンプル ソリューションは、[azure-documentdb-net](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) GitHub リポジトリに含まれています。この記事では、次の内容について説明します。
+Azure DocumentDB リソースに対する CRUD 操作などの一般的な操作を実行するサンプル ソリューションは、[azure-documentdb-net](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) GitHub リポジトリに含まれています。この記事では、次の内容について説明します。
 
-- 各サンプル C# プロジェクト ファイルのタスクへのリンク。 
+- 各サンプル C# プロジェクト ファイルのタスクへのリンク。
 - 関連する API リファレンス コンテンツへのリンク。
 
 **前提条件**
@@ -36,7 +36,7 @@ DocumentDB リソースに対する CRUD 操作などの一般的な操作を実
 1. これらの NoSQL サンプルを使用するには Azure アカウントが必要です。
     - [無料で Azure アカウントを開く](https://azure.microsoft.com/pricing/free-trial/)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。
    - [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)こともできます: Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
-2. [Microsoft.Azure.DocumentDB NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)も必要です。 
+2. [Microsoft.Azure.DocumentDB NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)も必要です。
 
 > [AZURE.NOTE]
 各サンプルは自己完結型であり、自身をセットアップし、自身をクリーンアップします。そのため、サンプルでは、CreateDocumentCollectionAsync() への複数の呼び出しを発行します。これが行われるたびに、作成中のコレクションのパフォーマンス階層ごとに 1 時間の使用量に対するサブスクリプションが課金されます。
@@ -179,4 +179,4 @@ DatabaseManagement プロジェクトのサンプルの [RunDatabaseDemo](https:
 [コレクションまたはドキュメントのアクセス許可の設定](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L85) | [DocumentClient.CreatePermissionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createpermissionasync.aspx)
 [ユーザーのアクセス許可の一覧の取得](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L218) | [DocumentClient.ReadUserAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readuserasync.aspx)<br>[DocumentClient.ReadPermissionFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpermissionfeedasync.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->

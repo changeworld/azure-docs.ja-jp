@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/28/2016"
+   ms.date="07/13/2016"
    ms.author="masashin"/>
 
 # バックグラウンド ジョブのガイダンス
@@ -320,4 +320,4 @@ Web ロールと worker ロールが開始、実行、停止される過程に�
 - [Azure キューと Service Bus キューの比較](./service-bus/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - [クラウド サービスの診断を有効にする方法](./cloud-services/cloud-services-dotnet-diagnostics.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

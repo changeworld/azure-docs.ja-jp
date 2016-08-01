@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="markusvi"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/07/2016"
+    ms.date="07/13/2016"
     ms.author="markusvi"/>
 
 
@@ -72,7 +72,7 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
  - [実際に使ってみる](https://azure.microsoft.com/trial/get-started-active-directory/) - このリンクを使用して 30 日の無料試用版にサインアップしましょう。初めてのクラウド ソリューションも 5 分以内にデプロイできます。
  - Azure AD の概要に関するページで、Azure AD テナントをすばやく稼働させるためのヒントとテクニックをお読みください。
 -	開発者の場合:
- - 「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。 
+ - 「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
  - [試用版の開始](https://azure.microsoft.com/trial/get-started-active-directory/) – 30 日の無料試用版に今すぐサインアップして、Azure AD とアプリの統合を開始してください。
 
 
@@ -104,4 +104,4 @@ Azure AD について理解を深めていただけるよう、豊富なオン�
 
 - [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -18,7 +18,7 @@
 	ms.author="stbaro"/>
 
 #DocumentDB のデータのモデル化#
-DocumentDB のようなスキーマのないデータベースでは、データ モデルに対する変更を受け入れることはとても簡単ですが、データについて十分検討する必要があります。
+Azure DocumentDB のようなスキーマのないデータベースでは、データ モデルに対する変更を受け入れることはとても簡単ですが、データについて十分検討する必要があります。
 
 データをどのように格納するか。 アプリケーションがどのようにデータを取得してクエリを実行するか。 アプリケーションの負荷は読み取りと書き込みのどちらが高いか。
 
@@ -393,4 +393,4 @@ Azure DocumentDB でのインデックスのチューニングの詳細につい
 最後に、マルチテナント アプリケーションのデータのモデル化とシャーディングのガイダンスについては、[Azure DocumentDB でのマルチテナント アプリケーションの拡張](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx)に関するページを参照してください。
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

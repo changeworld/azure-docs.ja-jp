@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/18/2016"
+	ms.date="07/15/2016"
 	ms.author="jroth" />
 
 # Azure Virtual Machines での SQL Server の自動修正 (クラシック)
@@ -61,13 +61,16 @@
 |**パッチのカテゴリ**|重要|ダウンロードしてインストールする更新プログラムのカテゴリ。|
 
 ## ポータルでの構成
+Azure ポータルを使用して、プロビジョニング中または既存の VM 用に、自動修正を構成することができます。
 
-クラシック デプロイメント モデルで新しい SQL Server 仮想マシンを作成するときに、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkID=525040&clcid=0x409)を使用して、自動修正を構成できます。
+### 新しい VM
+クラシック デプロイメント モデルで新しい SQL Server 仮想マシンを作成するときに、Azure ポータルを使用して、自動修正を構成します。
 
 次の Azure ポータルのスクリーンショットは、**[オプションの構成]** の **[SQL 自動修正]** の各オプションを示しています。
 
 ![Azure ポータルの SQL 自動修正](./media/virtual-machines-windows-classic-sql-automated-patching/IC778484.jpg)
 
+### 既存の VM
 既存の SQL Server 2012 または 2014 仮想マシンでは、仮想マシンのプロパティの **[構成]** セクションで **[自動修正]** 設定を選択します。**[自動修正]** ウィンドウでは、この機能の有効化、メンテナンス スケジュールと開始時間の設定、メンテナンス期間の選択を行うことができます。次のスクリーンショットにこれを示します。
 
 ![Azure ポータルの自動修正構成](./media/virtual-machines-windows-classic-sql-automated-patching/IC792132.jpg)
@@ -99,8 +102,8 @@ SQL Server IaaS エージェントのインストールと構成には数分か�
 
 ## 次のステップ
 
-その他の利用可能なオートメーション タスクについては、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-classic-sql-server-agent-extension.md)に関するページをご覧ください。
+その他の利用可能な自動タスクについては、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-classic-sql-server-agent-extension.md)に関するページをご覧ください。
 
-Azure VM で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
+Azure VM で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

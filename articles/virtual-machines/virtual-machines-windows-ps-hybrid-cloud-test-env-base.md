@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="07/19/2016" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウド環境の設定
@@ -41,7 +41,7 @@
 2.	RRAS1 を構成する。
 3.	クロスプレミスの Azure 仮想ネットワークを作成する。
 4.	サイト間 VPN 接続を作成する。
-5.	DC2 を構成する。 
+5.	DC2 を構成する。
 
 Azure サブスクリプションを持っていない場合は、[Azure の試用](https://azure.microsoft.com/pricing/free-trial/)に関するページで無料アカウントにサインアップすることもできます。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
@@ -77,7 +77,7 @@ RRAS1 は、Corpnet サブネットと TestVNET 仮想ネットワークの間�
 
 次に、RRAS1 の TCP/IP プロパティを構成します。インターネット サービス プロバイダー (ISP) のアドレス、サブネット マスク (またはプレフィックス長)、既定のゲートウェイと DNS サーバーを含むパブリック IP アドレス構成が必要です。フェーズ 3 ではパブリック IP アドレスが必要になります。
 
-RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。これらのコマンドを実行する前に、変数の値を入力し、< and > の文字を削除します。**Get-NetAdapter** コマンドの表示からネットワーク アダプターの現在の名前を確認できます。
+RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。これらのコマンドを実行する前に、変数の値を入力し、< と > の文字を削除します。**Get-NetAdapter** コマンドの表示からネットワーク アダプターの現在の名前を確認できます。
 
 	$corpnetAdapterName="<Name of the adapter attached to the Corpnet subnet>"
 	$internetAdapterName="<Name of the adapter attached to the Internet>"
@@ -118,7 +118,7 @@ Azure PowerShell プロンプトを開始します。
 
 	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
 
-Azure サブスクリプションを設定します。基本構成をビルドするために使用したものと同じサブスクリプションを使用します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+Azure サブスクリプションを設定します。基本構成をビルドするために使用したものと同じサブスクリプションを使用します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
 	$subscr="<subscription name>"
 	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
@@ -185,7 +185,7 @@ Azure サブスクリプションを設定します。基本構成をビルド�
 
 	Get-AzureRMPublicIpAddress -Name $vnetGatewayIpConfigName -ResourceGroupName $rgName
 
-表示されている **IPAddress** フィールドの IP アドレスを書き留めておきます。この情報はフェーズ 4 で必要になります。
+表示されている **[IPAddress]** フィールドの IP アドレスを書き留めておきます。この情報はフェーズ 4 で必要になります。
 
 次に、ランダムな、暗号強度の高い 32 文字の事前共有キーをネットワーク管理者またはセキュリティ管理者から取得します。または、「[Create a random string for an IPsec preshared key (IPsec 事前共有キー用にランダムな文字列を作成する)](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx)」に記載されている情報を使用して事前共有キーを取得します。
 
@@ -223,7 +223,7 @@ RRAS1 と Azure VPN Gateway 間の接続が確立されるまで数分かかり�
 
 続いて、インターネット上の場所への変換されたトラフィックをサポートするように RRAS1 を構成します。RRAS1 で:
 
-1.	スタート画面で「**rras**」と入力し、**[ルーティングとリモート アクセス]** をクリックします。 
+1.	スタート画面で「**rras**」と入力し、**[ルーティングとリモート アクセス]** をクリックします。
 2.	コンソール ツリーで、サーバー名を開き、**[IPv4]** をクリックします。
 3.	**[全般]** を右クリックして、**[新しいルーティング プロトコル]** をクリックします。
 4.	**[NAT]** をクリックし、**[OK]** をクリックします。
@@ -285,7 +285,7 @@ CLIENT1 で管理者レベルの Windows PowerShell コマンド プロンプト
 	Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
 	ping dc1.corp.contoso.com
 
-ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功する必要があります。*シミュレートされたハイブリッド クラウド構成*を使用している場合、IP アドレス 10.0.0.4 からの応答が 4 回成功する必要があります。これはサイト間 VPN 接続または VNet 間接続を介したトラフィックのテストです。
+ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功する必要があります。"シミュレートされたハイブリッド クラウド構成" を使用している場合、IP アドレス 10.0.0.4 からの応答が 4 回成功する必要があります。これはサイト間 VPN 接続または VNet 間接続を介したトラフィックのテストです。
 
 次に、余っているデータ ディスクを新しいボリュームとして追加し、ドライブ文字 F: を割り当てます。
 
@@ -329,4 +329,4 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 - この環境に [SharePoint イントラネット ファーム](virtual-machines-windows-ps-hybrid-cloud-test-env-sp.md)、[Web ベース LOB アプリケーション](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md)、または [Office 365 ディレクトリ同期 (DirSync) サーバー](virtual-machines-windows-ps-hybrid-cloud-test-env-dirsync.md)をセットアップします。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

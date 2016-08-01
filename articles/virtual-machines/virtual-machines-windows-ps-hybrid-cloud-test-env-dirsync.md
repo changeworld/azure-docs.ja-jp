@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="07/19/2016" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定
@@ -80,7 +80,7 @@ ID の作成を求めるメッセージが表示されたら、初期の Office 
 
 DC2 コンピューターが起動されていない場合は、Azure ポータルから起動します。
 
-次に、ローカル コンピューターで Azure PowerShell コマンド プロンプトから次のコマンドを実行して、DS1 用に Azure 仮想マシンを作成します。これらのコマンドを実行する前に、変数の値を入力し、< and > の文字を削除します。
+次に、ローカル コンピューターで Azure PowerShell コマンド プロンプトから次のコマンドを実行して、DS1 用に Azure 仮想マシンを作成します。これらのコマンドを実行する前に、変数の値を入力し、< と > の文字を削除します。
 
 	$rgName="<your resource group name>"
 	$locName="<your Azure location, such as West US>"
@@ -130,17 +130,17 @@ ping コマンドで IP アドレス 192.168.0.4 からの応答が 4 回成功�
 4.	**"Active Directory 同期をアクティブ化しますか?"** というメッセージが表示されたら、**[アクティブ化]** をクリックします。この後に、手順 3. にメッセージ **"Active Directory 同期がアクティブ化されています。"** が表示されます。
 5.	**[Active Directory 同期のセットアップと管理]** ページを CLIENT1 で開いたままにしておきます。
 
-次に、DC1 で Windows PowerShell プロンプトから、これらのコマンドを **1 つずつ**実行して、contoso\_users と呼ばれる新しい組織単位を作成し、Marci Kaufman と Lynda Meyer 用の新しいユーザー アカウントを 2 つ追加します。
+次に、DC1 で Windows PowerShell プロンプトから、これらのコマンドを **1 つずつ**実行して、contoso\_users という名前の新しい組織単位を作成し、Marci Kaufman と Lynda Meyer 用の新しいユーザー アカウントを 2 つ追加します。
 
 	New-ADOrganizationalUnit -Name contoso_users -Path "DC=corp,DC=contoso,DC=com"
 	New-ADUser -SamAccountName marcik -AccountPassword (Read-Host "Set user password" -AsSecureString) -name "Marci Kaufman" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false -Path "OU=contoso_users,DC=corp,DC=contoso,DC=com"
 	New-ADUser -SamAccountName lyndam -AccountPassword (Read-Host "Set user password" -AsSecureString) -name "Lynda Meyer" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false -Path "OU=contoso_users,DC=corp,DC=contoso,DC=com"
 
-各 **New=ADUser** Windows PowerShell コマンドを実行すると、新しいユーザーのパスワードの入力を求められます。これらのパスワードを記録し、安全な場所に記録します。この情報は後で必要になります。
+各 **New-ADUser** Windows PowerShell コマンドを実行すると、新しいユーザーのパスワードの入力を求められます。これらのパスワードを記録し、安全な場所に記録します。この情報は後で必要になります。
 
 次に、DS1 に Azure AD Connect ツールをインストールして構成します。
 
-1.	Internet Explorer を実行し、**アドレス** バーに「**https://www.microsoft.com/download/details.aspx?id=47594**」と入力してから、Enter キーを押します。
+1.	Internet Explorer を実行し、アドレス バーに「**https://www.microsoft.com/download/details.aspx?id=47594****」と入力してから、Enter キーを押します。
 2.	Microsoft Azure AD Connect のセットアップ プログラムを実行します。
 3.	デスクトップで、**[Azure AD Connect]** をダブルクリックします。
 4.	**[ようこそ]** ページで、**[ライセンス条項とプライバシーに関する声明に同意します]** を選択し、**[続行]** をクリックします。
@@ -179,4 +179,4 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
 - [実稼働環境](http://technet.microsoft.com/library/dn635310.aspx)で、このワークロードをデプロイします。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

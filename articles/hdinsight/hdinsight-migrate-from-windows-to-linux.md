@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="05/03/2016"
+ms.date="07/19/2016"
 ms.author="larryfr"/>
 
 #Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
@@ -22,7 +22,7 @@ Windows ベースの HDInsight にはクラウドで Hadoop を使用する簡�
 
 このドキュメントでは、Windows と Linux での HDInsight の違いについて詳しく説明し、Linux ベースのクラスターに既存のワークロードを移行する方法に関するガイダンスを示します。
 
-> [AZURE.NOTE] Ubuntu 12.04.05 LTS は、Linux-ベースの HDInsight クラスターで使用される Linux ディストリビューションです。
+> [AZURE.NOTE] HDInsight クラスターは、クラスター内のノードのオペレーティング システムとして Ubuntu の長期サポート (LTS) を使用します。HDInsight 3.3 および 3.4 クラスターは Ubuntu 14.0.4 LTS を使用し、これらより前のバージョンの HDInsight は Ubuntu 12.04.05 LTS を使用します。
 
 ## 移行タスク
 
@@ -254,4 +254,4 @@ Linux クラスター ノードで直接実行されるスクリプト (Hive ま
 
 -   [Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

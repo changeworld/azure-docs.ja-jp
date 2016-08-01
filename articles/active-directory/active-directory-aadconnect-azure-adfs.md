@@ -145,7 +145,7 @@ Azure にドメイン コントローラー (DC) をデプロイするために�
 
 **6.1.ILB を作成する**
 
-ILB をデプロイするには、Azure ポータルで [ロード バランサー] を選択し、[追加] (+) をクリックします。
+ILB をデプロイするには、Azure ポータルで [ロード バランサー] を選択し、[追加] \(+) をクリックします。
 >[AZURE.NOTE] メニューに **[ロード バランサー]** が表示されない場合は、ポータルの左下にある **[参照]** をクリックし、**[ロード バランサー]** が表示されるまでスクロールします。その後、黄色の星印をクリックするとメニューに追加されます。この新しいロード バランサー アイコンを選択してパネルを開き、ロード バランサーの構成を開始してください。
 
 ![Browse load balancer](./media/active-directory-aadconnect-azure-adfs/browseloadbalancer.png)
@@ -303,4 +303,4 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 * [Azure AD Connect を使用した AD FS の構成と管理](active-directory-aadconnectfed-whatis.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!------HONumber=AcomDC_0720_2016-->

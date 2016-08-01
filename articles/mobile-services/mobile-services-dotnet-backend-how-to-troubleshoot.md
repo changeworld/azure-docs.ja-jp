@@ -4,7 +4,7 @@
 	services="mobile-services"
 	documentationCenter=""
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor="mollybos"/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/07/2016" 
+	ms.date="07/13/2016" 
 	ms.author="wesmc;ricksal"/>
 
 # Mobile Services .NET バックエンドのトラブルシューティング
@@ -36,7 +36,7 @@ Mobile Services を使用した開発は、通常は手間もかからないの�
 
 Mobile Services でアプリケーションを開発するには、通常、使用しているプラットフォーム (Windows ストア、iOS、Android など) 向けの Mobile Services クライアント SDK を活用します。ただし、HTTP レベルに下がって、ネットワーク上で直接の HTTP 呼び出しが実行された時点を観察すると役立つことがあります。この方法は、特に接続の問題とシリアル化の問題をデバッグするときに便利です。Mobile Services .NET バックエンドでは、この方法を Visual Studio のローカル デバッグおよびリモート デバッグ (詳細については、次のセクションを参照) と組み合わせて使用して、サービス コードを起動するまでに HTTP 呼び出しがたどったパスを明確に把握できます。
 
-HTTP トラフィックを送信し、調査するために、任意の HTTP デバッガーを使用できます。[Fiddler](http://www.telerik.com/fiddler) は、この目的で一般的に開発者が使用する普及しているツールです。Mobile Services では、開発者が作業しやすくなるように、Web ベースの HTTP デバッガー ("テスト クライアント" とも呼びます) がモバイル サービスに付属していて、外部のツールをできるだけ使用しないで済みます。ローカルでモバイル サービスをホストする場合は、このデバッガーは [http://localhost:59233](http://localhost:59233) のような URI で入手できます。またクラウドでは、[http://todo-list.azure-mobile.net](http://todo-list.azure-mobile.net) の形式の URI で入手できます。次の手順は、サービスがホストされている場所に関係なく、同じように機能します。
+HTTP トラフィックを送信し、調査するために、任意の HTTP デバッガーを使用できます。[Fiddler](http://www.telerik.com/fiddler) は、この目的で一般的に開発者が使用する普及しているツールです。Mobile Services では、開発者が作業しやすくなるように、Web ベースの HTTP デバッガー ("テスト クライアント" とも呼びます) がモバイル サービスに付属していて、外部のツールをできるだけ使用しないで済みます。ローカルでモバイル サービスをホストする場合は、このデバッガーは `http://localhost:59233` のような URI で入手できます。またクラウドでは、`http://todo-list.azure-mobile.net` の形式の URI で入手できます。次の手順は、サービスがホストされている場所に関係なく、同じように機能します。
 
 1. **Visual Studio 2013 Update 2** 以降で Mobile Services サーバー プロジェクトを開いて開始します。すぐにプロジェクトを用意できない場合は、**[ファイル]**、**[新規作成]**、**[プロジェクト]** を順に選択してプロジェクトを作成できます。次に、**[クラウド]** ノード、**[Microsoft Azure Mobile Services]** テンプレートを順に選択します。
 2. **F5** キーを押して、アプリケーションをビルドおよび実行します。スタート ページで、**[試してみる]** を選択します。
@@ -74,7 +74,7 @@ HTTP トラフィックを送信し、調査するために、任意の HTTP デ
 
     ![Configure symbol loading][SymbolLoading]
 
-3. 左側の **[シンボル]** ノードを選択し、URI [http://srv.symbolsource.org/pdb/Public](http://srv.symbolsource.org/pdb/Public) を使用して [SymbolSource] サーバーへの参照を追加します。Mobile Services .NET バックエンドのシンボルが、すべての新しいリリースで使用可能になります。
+3. 左側の **[シンボル]** ノードを選択し、URI `http://srv.symbolsource.org/pdb/Public` を使用して [SymbolSource] サーバーへの参照を追加します。Mobile Services .NET バックエンドのシンボルが、すべての新しいリリースで使用可能になります。
 
     ![Configure symbol server][SymbolServer]
 
@@ -162,6 +162,6 @@ SQL Database と共に Mobile Services .NET バックエンドを使用してい
 
 
 <!-- Links -->
-[SymbolSource]: http://symbolsource.org
+[SymbolSource]: http://www.symbolsource.org/Public
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0720_2016-->

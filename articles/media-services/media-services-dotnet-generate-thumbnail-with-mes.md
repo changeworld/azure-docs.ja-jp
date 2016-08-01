@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016"
+ 	ms.date="07/18/2016"
 	ms.author="juliako"/>
 
 
@@ -33,7 +33,7 @@
 
 			// Load the XML (or JSON) from the local file.
 		    string configuration = File.ReadAllText(fileName);  
-- 1 つのエンコード タスクをジョブに追加します。 
+- 1 つのエンコード タスクをジョブに追加します。
 - エンコードする入力資産を指定します。
 - エンコードされた資産が含まれる出力資産を作成します。
 - ジョブの進行状況を確認するイベント ハンドラーを追加します。
@@ -382,4 +382,4 @@
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->

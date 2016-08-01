@@ -13,50 +13,14 @@
 	ms.tgt_pltfrm="media" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/12/2016"
+	ms.date="07/14/2016"
 	ms.author="juliako"/>
-
 
 # Azure Media Services リリース ノート
 
 このリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
 
 >[AZURE.NOTE] 製品に関するご意見、ご要望をお寄せください。お客様に影響する問題の修正に尽力しています。問題の報告または質問を行うには、[Azure Media Services MSDN フォーラム]に投稿してください。
-
-- [現在の既知の問題](#issues)
-- [REST API バージョン履歴](#rest_version_history)
-- [2016 年 7 月のリリース](#july_changes16)
-- [2016 年 4 月のリリース](#apr_changes16)
-- [2016 年 2 月のリリース](#feb_changes16)
-- [2016 年 1 月のリリース](#jan_changes_16)
-- [2015 年 12 月のリリース](#dec_changes_15)
-- [2015 年 11 月のリリース](#nov_changes_15)
-- [2015 年 10 月のリリース](#oct_changes_15)
-- [2015 年 9 月のリリース](#september_changes_15)
-- [2015 年 8 月のリリース](#august_changes_15)
-- [2015 年 7 月のリリース](#july_changes_15)
-- [2015 年 6 月のリリース](#june_changes_15)
-- [2015 年 5 月のリリース](#may_changes_15)
-- [2015 年 4 月のリリース](#april_changes_15)
-- [2015 年 3 月のリリース](#march_changes_15)
-- [2015 年 2 月のリリース](#february_changes_15)
-- [2015 年 1 月のリリース](#january_changes_15)
-- [2014 年 12 月のリリース](#december_changes_14)
-- [2014 年 11 月のリリース](#november_changes_14)
-- [2014 年 10 月のリリース](#october_changes_14)
-- [2014 年 9 月のリリース](#september_changes_14)
-- [2014 年 8 月のリリース](#august_changes_14)
-- [2014 年 7 月のリリース](#july_changes_14)
-- [2014 年 5 月のリリース](#may_changes_14)
-- [2014 年 4 月のリリース](#april_changes_14)
-- [2014 年 1 月と 2 月のリリース](#jan_feb_changes_14)
-- [2013 年 12 月のリリース](#december_changes_13)
-- [2013 年 11 月のリリース](#november_changes_13)
-- [2013 年 8 月のリリース](#august_changes_13)
-- [2013 年 6 月のリリース](#june_changes_13)
-- [2012 年 12 月のリリース](#december_changes_12)
-- [2012 年 11 月のリリース](#november_changes_12)
-- [2012 年 6 月のプレビュー リリース](#june_changes_12)
 
 
 ##<a id="issues"></a>現在の既知の問題
@@ -70,13 +34,8 @@ REST API で一般的な HTTP ヘッダーがいくつか提供されていな�
 Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドが失敗する。|Media Services は、[2012-02-12](http://msdn.microsoft.com/library/azure/dn592123.aspx) バージョンに基づいて SAS URL を生成します。Azure Storage SDK を使用して、BLOB コンテナー内の BLOB を一覧する場合は、Azure Storage SDK Version 2.x に含まれる [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) メソッドを使用してください。Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドは失敗します。
 Media Services 調整メカニズムが、サービスに対して過剰な要求を作成するアプリケーションのリソース使用を制限する。サービスが「サービスを利用できません」(503) HTTP 状態コードを返すことがある。|詳細については、「[Azure Media Services エラー コード](http://msdn.microsoft.com/library/azure/dn168949.aspx)」の 503 HTTP 状態コードの説明を参照してください。
 パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 | [この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 
-スムーズ ストリーミング マニフェスト バージョンへの変更|詳細については、[こちらの](media-services-deliver-content-overview.md#known-issues)セクションを参照してください。
-
-### <a id="dotnet_issues"></a>Media Services SDK for .NET の問題
-
-問題|説明
----|---
-SDK 内の Media Services オブジェクトをシリアル化できず、その結果、Azure Cache と連携動作しない。|SDK AssetCollection オブジェクトをシリアル化して、Azure Cache に追加しようとすると、例外がスローされます。
+一部のクライアントは、スムーズ ストリーミング マニフェストで繰り返しタグに遭遇することがあります。|詳細については、[こちらの](media-services-deliver-content-overview.md#known-issues)セクションを参照してください。
+Azure Media Services .NET SDK オブジェクトをシリアル化できず、その結果、Azure Cache と連携動作しません。|SDK AssetCollection オブジェクトをシリアル化して、Azure Cache に追加しようとすると、例外がスローされます。
 
 ##<a id="rest_version_history"></a>REST API バージョン履歴
 
@@ -98,7 +57,9 @@ Media Services REST API バージョン履歴の詳細については、「[Azur
 
 詳細については、[こちら](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/)のブログをご覧ください。
 
-既知の問題を確認するには、[こちら](media-services-deliver-content-overview.md#known-issues)のセクションをご覧ください。
+### 既知の問題
+
+一部のクライアントは、スムーズ ストリーミング マニフェストで繰り返しタグに遭遇することがあります。詳細については、[こちらの](media-services-deliver-content-overview.md#known-issues)セクションを参照してください。
 
 ##<a id="apr_changes16"></a>2016 年 4 月のリリース
 
@@ -689,4 +650,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="07/14/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 # Azure における VM バックアップ インフラストラクチャの計画を立てる
@@ -79,7 +79,7 @@ Azure で VM をバックアップする場合、オンプレミスにデプロ�
 | 初回バックアップ | 160 Mbps |
 | 増分バックアップ (DR) | 640 Mbps <br><br> このスループットは、ディスクにバックアップ対象の分散したチャーンが多数ある場合に、大幅に減ります。 |
 
-### VM のバックアップの合計時間
+## VM のバックアップの合計時間
 VM のバックアップには、データの読み取りやコピーに多くのバックアップ時間が費やされますが、他にも必要な合計時間に影響を与える操作があります。
 
 - [バックアップ拡張機能のインストールまたは更新](backup-azure-vms.md#offline-vms)の所要時間。
@@ -131,4 +131,4 @@ Azure Backup を使用してバックアップされている Azure 仮想マシ
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 - [VM のバックアップに関する問題のトラブルシューティング](backup-azure-vms-troubleshoot.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

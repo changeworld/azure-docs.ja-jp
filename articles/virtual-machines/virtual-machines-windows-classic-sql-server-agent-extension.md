@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/16/2016"
+	ms.date="07/14/2016"
 	ms.author="jroth"/>
 
 # SQL Server VM 用 SQL Server Agent 拡張機能 (クラシック)
@@ -59,17 +59,19 @@ VM で SQL Server IaaS Agent 拡張機能を使用するための要件:
 
 **仮想マシン ゲスト エージェント**:
 
-- BGInfo 拡張機能は新しい Azure VM に自動的にインストールされます。
+- VM ゲスト エージェントが仮想マシンで実行されている必要があります。VM ゲスト エージェントは、新しい Azure VM に自動的にインストールされるため、通常は手動で行う必要はありません。
 
 ## インストール
 
 SQL Server IaaS Agent 拡張機能は、SQL Server 仮想マシン ギャラリー イメージのいずれかをプロビジョニングしたときに自動的にインストールされます。
 
-OS 専用の Windows Server 仮想マシンを作成する場合は、**Set-AzureVMSqlServerExtension** PowerShell コマンドレットを使用して、拡張機能を手動でインストールできます。このコマンドを使用して、エージェントのいずれかのサービス (自動修正など) を構成します。VM は、エージェントがインストールされていない場合はそれをインストールします。**Set-AzureVMSqlServerExtension** PowerShell の使用方法については、この記事の「[サポートされているサービス](#supported-services)」セクションを参照してください。
+OS 専用の Windows Server 仮想マシンを作成する場合は、**Set-AzureVMSqlServerExtension** PowerShell コマンドレットを使用して、拡張機能を手動でインストールできます。たとえば、次のコマンドは、OS 専用の Windows Server VM (クラシック) に拡張機能をインストールし、"SQLIaaSExtension" という名前を付けます。
+
+	Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension --ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
 
 最新バージョンの SQL IaaS Agent 拡張機能に更新する場合は、拡張機能の更新後、仮想マシンを再起動する必要があります。
 
->[AZURE.NOTE] SQL Server IaaS Agent 拡張機能を VM で手動でインストールする場合は、PowerShell コマンドを使用して、その機能を使用および管理する必要があります。このシナリオでは、ポータルのインターフェイスは使用できません。
+>[AZURE.NOTE] SQL Server IaaS Agent 拡張機能を Windows Server VM で手動でインストールする場合は、PowerShell コマンドを使用して、その機能を使用および管理する必要があります。ポータルのインターフェイスは、SQL Server のギャラリー イメージに対してのみ使用できます。
 
 ## 状態
 
@@ -93,8 +95,8 @@ Azure ポータルで拡張機能をアンインストールするには、仮�
 
 ## 次のステップ
 
-拡張機能によってサポートされるいずれかのサービスの使用を開始します。詳細については、この記事の「[サポートされているサービス](#supported-services)」で参照されているトピックをご覧ください。
+拡張機能によってサポートされるいずれかのサービスの使用を開始します。詳細については、この記事の「[サポートされているサービス](#supported-services)」のセクションで参照されているトピックをご覧ください。
 
 Azure Virtual Machines で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

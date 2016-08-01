@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/16/2016"
+	ms.date="07/14/2016"
 	ms.author="jroth"/>
 
 # SQL Server VM 用 SQL Server Agent 拡張機能 (Resource Manager)
@@ -25,7 +25,7 @@
 
 SQL Server IaaS Agent 拡張機能 (SQLIaaSExtension) は、管理タスクを自動化するために Azure 仮想マシン上で実行されます。このトピックでは、この拡張機能によってサポートされるサービスの概要と、インストール、状態、および削除のための手順について説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 
 クラシック デプロイ モデル。この記事のクラシック バージョンを確認するには、「[SQL Server IaaS Agent 拡張機能 (クラシック デプロイ)](virtual-machines-windows-classic-sql-server-agent-extension.md)」を参照してください。
 
 ## サポートされているサービス
@@ -67,6 +67,8 @@ OS 専用の Windows Server 仮想マシンを作成する場合は、**Set-Azur
 
 最新バージョンの SQL IaaS Agent 拡張機能に更新する場合は、拡張機能の更新後、仮想マシンを再起動する必要があります。
 
+>[AZURE.NOTE] SQL Server IaaS Agent 拡張機能を Windows Server VM で手動でインストールする場合は、PowerShell コマンドを使用して、その機能を使用および管理する必要があります。ポータルのインターフェイスは、SQL Server のギャラリー イメージに対してのみ使用できます。
+
 ## 状態
 
 拡張機能がインストールされていることを確認する 1 つの方法は、Azure ポータルにエージェントの状態を表示することです。仮想マシンのブレードで **[すべての設定]** を選択し、**[拡張機能]** をクリックします。**SQLIaaSExtension** 拡張機能が表示されます。
@@ -99,4 +101,4 @@ Azure ポータルで拡張機能をアンインストールするには、仮�
 
 Azure Virtual Machines で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016--->
+<!---HONumber=AcomDC_0720_2016-->

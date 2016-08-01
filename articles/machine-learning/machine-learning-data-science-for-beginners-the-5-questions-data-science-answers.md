@@ -19,15 +19,25 @@
 
 # 初心者向けデータ サイエンス ビデオ 1: データ サイエンスが回答する 5 つの質問
 
-"初心者向けデータ サイエンス" の 5 本の短いビデオでは、データ サイエンスの概要を簡単に説明します。このビデオ シリーズは、データ サイエンスの実行に関心を持つユーザーや、データ サイエンスを使用する人々と共に作業するユーザーが、最も基本的な概念から学び始める場合にお勧めです。
+"初心者向けデータ サイエンス" の 5 本の短いビデオでは、データ サイエンスの概要を簡単に説明します。このビデオ シリーズは、データ サイエンスの実行に関心を持つユーザーや、データ サイエンスを使用する人々と共に作業するユーザーが、基本的な概念から学び始める場合にお勧めです。
 
-このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
+この最初のビデオでは、データ サイエンスが回答できる質問の種類について説明します。データ サイエンスは、数値やカテゴリを使用して質問に対する回答を予測します。このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
 
 > [AZURE.VIDEO data-science-for-beginners-series-the-5-questions-data-science-answers]
 
+## このシリーズの他のビデオ
+
+*"初心者向けデータ サイエンス"* は、約 25 分でデータ サイエンスを簡単に説明します。他の 4 本のビデオもご覧ください。
+
+  * ビデオ 1: データ サイエンスが回答する 5 つの質問
+  * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
+  * ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+  * ビデオ 4: [単純なモデルで回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
+  * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
+
 ## トランスクリプト: データ サイエンスが回答する 5 つの質問
 
-こんにちは。 ビデオ シリーズ "初心者向けデータ サイエンス" へようこそ。
+こんにちは。 ビデオ シリーズ *"初心者向けデータ サイエンス"* へようこそ。
 
 データ サイエンスと聞いて怖じ気づく方もいるかもしれないため、ここでは数式やコンピューター プログラミングの専門用語を使用せずにその基礎を紹介します。
 
@@ -35,7 +45,7 @@
 
 データ サイエンスでは、質問に対する回答を予測するために、数値と名前 (カテゴリやラベルとも呼ばれます) を使用します。
 
-意外かもしれませんが、"データ サイエンスが回答する質問は次の 5 つのみです"。
+意外かもしれませんが、*"データ サイエンスが回答する質問は次の 5 つのみです"*。
 
   * A か B か
   * 異常か
@@ -136,19 +146,9 @@
 
 
 
-## このシリーズの他のビデオ
-
-"初心者向けデータ サイエンス" は、データ サイエンスを簡単に説明した 5 本の短いビデオです。他の 4 本のビデオもご覧ください。
-
-  * ビデオ 1: データ サイエンスが回答する 5 つの質問
-  * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md)
-  * ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
-  * ビデオ 4: [単純なモデルで回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
-  * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
-
 ## 次のステップ
 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

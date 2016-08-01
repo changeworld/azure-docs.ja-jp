@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="02/15/2016"
+	ms.date="07/12/2016"
 	ms.author="raynew" />
 
 # Site Recovery の Hyper-V Capacity Planner ツールを実行する
@@ -75,7 +75,7 @@ Azure にレプリケートする場合、この手順は必要ありません�
 
 	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image1.png)
 
-	- **netsh http show servicestate** を実行して、指定したプロトコル/ポートに対してリスナーが実行されていることを確認します。  
+	- **netsh http show servicestate** を実行して、指定したプロトコル/ポートに対してリスナーが実行されていることを確認します。
 4. ファイアウォールをセットアップします。Hyper-V のインストール時には、既定のポートでトラフィックを許可するように (443 では HTTPS、80 では Kerberos)、ファイアウォール規則が作成されます。次のように、これらのルールを有効にします。
 
 		- Certificate authentication on cluster (443): **Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"}}**
@@ -139,10 +139,10 @@ Azure にレプリケートする場合、この手順は必要ありません�
 
 容量計画を完了すると、Site Recovery のデプロイを始めることができます。
 
-- [オンプレミスの VMM サイトと Azure 間の保護の設定](site-recovery-vmm-to-azure.md)
-- [Set up protection between an on-premises Hyper-V site and Azure (オンプレミスの Hyper-V サイトと Azure 間の保護の設定)](site-recovery-hyper-v-site-to-azure.md)
-- [Set up protection between two on-premises VMM sites (2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-to-vmm.md)
-- [Set up protection between two on-premises VMM sites with SAN (SAN を使用した 2 つのオンプレミスの VMM サイト間の保護の設定)](site-recovery-vmm-san.md)
-- [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm.md)
+- [VMM クラウドの Hyper-V VM を Azure にレプリケートする](site-recovery-vmm-to-azure.md)
+- [Hyper-V VM (VMM なし) を Azure にレプリケートする](site-recovery-hyper-v-site-to-azure.md)
+- [VMM サイト間で Hyper-V VM をレプリケートする](site-recovery-vmm-to-vmm.md)
+- [VMM サイト間で SAN を使用して Hyper-V VM をレプリケートする](site-recovery-vmm-san.md)
+- [単一 VMM サーバーで Hyper-V VM をレプリケートする](site-recovery-single-vmm.md)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0720_2016-->

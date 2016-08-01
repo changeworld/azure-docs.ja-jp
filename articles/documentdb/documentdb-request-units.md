@@ -202,7 +202,7 @@ ID で食品を選択|～2.5 RU|1
 
 ##次のステップ
 
-Azure DocumentDB の予約済みスループットの詳細については、以下のリソースを参照してください。
+Azure DocumentDB データベースの予約済みスループットの詳細については、以下のリソースを参照してください。
  
 - [DocumentDB の料金](https://azure.microsoft.com/pricing/details/documentdb/)
 - [DocumentDB の容量の管理](documentdb-manage.md)
@@ -220,4 +220,4 @@ DocumentDB に関するスケールとパフォーマンスのテストを始め
 [4]: ./media/documentdb-request-units/RUEstimatorResults.png
 [5]: ./media/documentdb-request-units/RUCalculator2.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

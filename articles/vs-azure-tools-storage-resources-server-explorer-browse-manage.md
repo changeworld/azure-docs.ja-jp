@@ -12,11 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/08/2016"
+   ms.date="07/18/2016"
    ms.author="tarcher" />
 
 # サーバー エクスプローラーを使用したストレージ リソースの参照と管理
 
+[AZURE.INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
+
+## 概要
 Azure Tools for Visual Studio をインストール済みである場合、Azure のストレージ アカウントから、BLOB、キュー、テーブルのデータを表示できます。サーバー エクスプローラーの Azure の [Storage] ノードに、ローカル ストレージ エミュレーター アカウントをはじめとする Azure ストレージ アカウント内のデータが表示されます。
 
 Visual Studio でサーバー エクスプローラーを表示するには、メニュー バーで **[表示]**、**[サーバー エクスプローラー]** の順にクリックします。ストレージ ノードは、接続されている各 Azure サブスクリプション/証明書に存在するすべてのストレージ アカウントを示します。ストレージ アカウントが表示されない場合は、[このトピックの最後](#add-storage-accounts-by-using-server-explorer)に記載した手順で追加できます。
@@ -125,7 +128,7 @@ Azure SDK 2.7 以降では、新しいクラウド エクスプローラーを�
 
 - BLOB コンテナーのビューで閲覧用にコンテナーを開き、**[BLOB のアップロード]** をクリックします。
 
-    アップロード対象ファイル (複数可) を選択し、任意の種類のファイルをアップロードできます。**[Azure のアクティビティ ログ]** にアップロードの進行状況が表示されます。BLOB データを操作する方法の詳細については、「[.NET から Blob Storage を使用する方法](http://go.microsoft.com/fwlink/p/?LinkId=267911)」を参照してください。
+    アップロード対象ファイル (複数可) を選択し、任意の種類のファイルをアップロードできます。**[Azure のアクティビティ ログ]** にアップロードの進行状況が表示されます。BLOB データを操作する方法の詳細については、「[.NET から BLOB ストレージを使用する方法](http://go.microsoft.com/fwlink/p/?LinkId=267911)」を参照してください。
 
 ### BLOB に転送されたログを表示するには
 
@@ -161,7 +164,7 @@ Azure SDK 2.7 以降では、新しいクラウド エクスプローラーを�
 
 ![Viewing a Queue](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC651470.png)
 
-ストレージ サービス キューの詳細については、「[.NET から Queue Storage を使用する方法](http://go.microsoft.com/fwlink/?LinkID=264702)」を参照してください。ストレージ サービス キューの Web サービスについては、「[Queue サービスの概念](http://go.microsoft.com/fwlink/?LinkId=264788)」を参照してください。Visual Studio を使用して、ストレージ サービス キューにメッセージを送信する方法については、「[ストレージ サービスのキューにメッセージを送信する](https://msdn.microsoft.com/library/azure/jj649344.aspx)」を参照してください。
+ストレージ サービス キューの詳細については、「[.NET から Queue ストレージを使用する方法](http://go.microsoft.com/fwlink/?LinkID=264702)」を参照してください。ストレージ サービス キューの Web サービスについては、「[キュー サービスの概念](http://go.microsoft.com/fwlink/?LinkId=264788)」を参照してください。Visual Studio を使用して、ストレージ サービス キューにメッセージを送信する方法については、「[ストレージ サービスのキューにメッセージを送信する](https://msdn.microsoft.com/library/azure/jj649344.aspx)」を参照してください。
 
 >[AZURE.NOTE] ストレージ サービスのキューは、Service Bus キューとは異なります。Service Bus キューの詳細については、Service Bus のキュー、トピック、サブスクリプションに関するページを参照してください。
 
@@ -314,4 +317,4 @@ Azure Table Storage サービスは、大量の構造化データを格納しま
 
 Azure ストレージ サービスの使用方法の詳細については、「[Azure ストレージ サービスへのアクセス](https://msdn.microsoft.com/library/azure/ee405490.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

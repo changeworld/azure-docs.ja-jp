@@ -79,4 +79,4 @@ __CDN を使用しないと、どうなりますか。__ CDN を使用しない�
 ##次のステップ:
 高可用性アプリケーションを設計する方法の詳細については、「[Microsoft Azure 上に構築されたアプリケーションの高可用性](resiliency-high-availability-azure-applications.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="powershell" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/11/2016" 
+	ms.date="07/19/2016" 
 	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでの Azure PowerShell の使用
@@ -22,6 +22,7 @@
 - [ポータル](azure-portal/resource-group-portal.md)
 - [Azure CLI](xplat-cli-azure-resource-manager.md)
 - [Azure PowerShell](powershell-azure-resource-manager.md)
+- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
 - [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
 - [ノード](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
 - [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
@@ -121,7 +122,7 @@ Azure アカウントにログインするには、**Add-AzureRmAccount** コマ
 
 ## ソリューションのデプロイ
 
-このトピックでは、テンプレートの作成方法やテンプレートの構造については説明しません。詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」と「[リソース マネージャーのテンプレートのチュートリアル](resource-manager-template-walkthrough.md)」をご覧ください。[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)から事前定義済みの [Web アプリと SQL Database をプロビジョニングする](https://azure.microsoft.com/documentation/templates/201-web-app-sql-database/)テンプレートをデプロイします。
+このトピックでは、テンプレートの作成方法やテンプレートの構造については説明しません。詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」と「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」をご覧ください。[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)から事前定義済みの [Web アプリと SQL Database をプロビジョニングする](https://azure.microsoft.com/documentation/templates/201-web-app-sql-database/)テンプレートをデプロイします。
 
 リソース グループとテンプレートの作成が終わり、これでテンプレート内で定義されたインフラストラクチャをリソース グループにデプロイする準備が整いました。**New-AzureRmResourceGroupDeployment** コマンドレットを使用してリソースをデプロイします。テンプレートにより、使用されるさまざまな既定値が指定されます。それらのパラメーターの値を指定する必要がありません。基本的な構文は次のようになります。
 
@@ -140,7 +141,7 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
     (Type !? for Help.)
     administratorLoginPassword: ********
 
-テンプレートに、テンプレートをデプロイするコマンドのパラメーターのいずれかと一致する名前のパラメーターが含まれている場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞に **FromTemplate** があるパラメーター (**ResourceGroupNameFromTemplate** など) に値を指定するように求められます。一般的に、このような混乱を防ぐために、デプロイメント処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
+テンプレートに、テンプレートをデプロイするコマンドに、パラメーターのいずれかと一致する名前のパラメーターが含まれている場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞に **FromTemplate** があるパラメーター (**ResourceGroupNameFromTemplate** など) に値を指定するように求められます。一般的に、このような混乱を防ぐために、デプロイメント処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
 
 コマンドを実行してリソースが作成されると、メッセージが返されます。最終的に、デプロイの結果が表示されます。
 
@@ -386,4 +387,4 @@ PowerShell により、リソース グループの現在の状態を表すテ�
 - プロジェクトのデプロイの詳細な例については、[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)方法に関するページを参照してください。
 - 失敗したデプロイのトラブルシューティングについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](./resource-manager-troubleshoot-deployments-powershell.md)」を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

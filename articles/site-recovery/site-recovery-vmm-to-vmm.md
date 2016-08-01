@@ -145,7 +145,7 @@ VMM サーバーが 1 つしかない場合は、VMM クラウド内の Hyper-V 
 	![新しいコンテナー](./media/site-recovery-vmm-to-vmm/new-vault3.png)
 
 3. **[名前]** に、コンテナーを識別するフレンドリ名を入力します。複数のサブスクリプションがある場合は、いずれかを選択します。
-4. [新しいリソース グループを作成](../resource-group-portal.md#create-resource-group)するか、既存のリソース グループを選択し、Azure リージョンを指定します。マシンは、このリージョンにレプリケートされます。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)」で利用可能地域を参照してください。
+4. [新しいリソース グループを作成](../resource-group-template-deploy-portal.md)するか、既存のリソース グループを選択し、Azure リージョンを指定します。マシンは、このリージョンにレプリケートされます。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)」で利用可能地域を参照してください。
 4. ダッシュボードからコンテナーにすばやくアクセスするには、**[ダッシュボードにピン留めする]**、**[コンテナーの作成]** の順にクリックします。
 
 	![新しいコンテナー](./media/site-recovery-vmm-to-vmm/new-vault-settings.png)
@@ -483,4 +483,4 @@ Hyper-V レプリカを使用してレプリケートされる VMM 内に既存�
 
 デプロイをセットアップし、実行状態にできたら、フェールオーバーのさまざまな種類について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

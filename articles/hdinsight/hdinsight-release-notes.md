@@ -22,12 +22,34 @@
 
 ## HDInsight の 2016 年 7 月 7 日リリース ノート
 
+今回のリリースがデプロイされている Linux ベースの HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+|HDI |HDI クラスター バージョン |HDP |HDP ビルド |
+|----|----------------------|----|------------|
+|3\.2 |3\.2.1000.0.7864996 |2\.2 |2\.2.9.1-11 |
+|3\.3 |3\.3.1000.0.7864996 |2\.3 |2\.3.3.1-18 |
+|3\.4 |3\.4.1000.0.7861906 |2\.4 |2\.4.2.0 |
+
+今回のリリースがデプロイされている Windows ベースの HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+|HDI |HDI クラスター バージョン |HDP |HDP ビルド |
+|----|----------------------|----|--------------|
+|2\.1 |2\.1.10.977.2413853 |1\.3 |1\.3.12.0-01795|
+|3\.0 |3\.0.6.977.2413853 |2\.0 |2\.0.13.0-2117 |
+|3\.1 |3\.1.4.977.2413853 |2\.1 |2\.1.16.0-2374 |
+|3\.2 |3\.2.7.977.2413853 |2\.2 |2\.2.9.1-11 |
+|3\.3 |3\.3.0.977.2413853 |2\.3 |2\.3.3.1-21 |
+
 このリリースには、次の更新プログラムが含まれています。
 
 | タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Spark、Hadoop、HBase、Storm) | JIRA (該当する場合) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
 | [HDInsight Tools for IntelliJ (IntelliJ 用 HDInsight ツール)](hdinsight-apache-spark-intellij-tool-plugin.md) | HDInsight Spark クラスター用の IntelliJ IDEA プラグインが、IntelliJ の Azure Toolkit と統合されました。Azure SDK v2.9.1、最新の Java SDK をサポートし、IntelliJ のスタンドアロンの HDInsight プラグインのすべての機能が含まれています。| ツール | Spark| 該当なし|
 | [HDInsight Tools for Eclipse (Eclipse 用 HDInsight ツール)](hdinsight-apache-spark-eclipse-tool-plugin.md) | Azure Toolkit for Eclipse が、HDInsight Spark クラスターをサポートするようになりました。次の機能が有効になります。<ul><li>IntelliSense、オート フォーマット、エラー チェックなどの優れたサポートにより、Scala や Java で Spark アプリケーションを簡単に作成および記述する。</li><li>Spark アプリケーションのテストをローカルで実施する。</li><li>ジョブを HDInsight Spark クラスターに送信して結果を取得する。</li><li>Azure にログインして、Azure サブスクリプションに関連付けられたすべての Spark クラスターにアクセスする。</li><li>HDInsight の Spark クラスターのすべての関連するストレージ リソースに移動する。</li></ul>| ツール | Spark| 該当なし
+
+今回のリリースから、Linux ベースの HDInsight クラスターに対するゲスト OS 更新プログラムの適用ポリシーが変更されました。新しいポリシーの目的は、修正プログラム適用のための再起動の回数を大幅に削減することです。新しいポリシーでは、Linux クラスターの仮想マシン (VM) への修正プログラム適用が継続されます。修正プログラム適用は、指定されたクラスターのノード間で交互に、毎週月曜日または木曜日の午前 12 時 (UTC) に開始されます。ただし、どの VM も、ゲスト OS の修正プログラム適用のための再起動は 30 日ごとに最大で 1 回のみです。また、新しく作成したクラスターの最初の再起動は、クラスターの作成日から 30 日以内には行われません。
+
+>[AZURE.NOTE] これらの変更は、このリリース バージョン以上の新しく作成したクラスターにのみ適用されます。
 
 ## HDInsight の 2016 年 6 月 6 日リリース ノート
 
@@ -107,7 +129,7 @@
 
 | タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
-| すべての HDInsight クラスターに HDInsight 3.4 バージョンが追加され、HDP バージョンが更新されました | このリリースでは、HDInsight v3.4 (HDP 2.4 に基づく) が追加され、他の HDP バージョンも更新されました。HDP 2.4 リリース ノートについては、[こちら](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)をご覧ください。また、HDInsight バージョンの詳細については、[こちら](hdinsight-component-versioning.md)をご覧ください。| サービス | すべての Linux クラスター| 該当なし
+| すべての HDInsight クラスターに HDInsight 3.4 バージョンが追加され、HDP バージョンが更新されました | このリリースでは、HDInsight v3.4 (HDP 2.4 に基づく) が追加され、他の HDP バージョンも更新されました。HDP 2.4 リリース ノートについては、[こちら](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)を参照してください。また、HDInsight バージョンの詳細については、[こちら](hdinsight-component-versioning.md)を参照してください。| サービス | すべての Linux クラスター| 該当なし
 | HDInsight Premium | HDInsight は、Standard と Premium の 2 つのカテゴリで利用できるようになりました。HDInsight Premium は現在プレビューの段階で、Linux 上の Hadoop および Spark クラスターでのみ利用できます。詳細については、[こちら](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)をご覧ください。| サービス | Linux 上の Hadoop および Spark| 該当なし
 | Microsoft R Server | HDInsight Premium は、Linux 上の Hadoop クラスターや Spark クラスターに含めることのできる Microsoft R Server を提供します。詳しくは、[HDInsight の R Server の概要](hdinsight-hadoop-r-server-overview.md)に関するページをご覧ください。| サービス | Linux 上の Hadoop および Spark| 該当なし
 | Spark 1.6.0 | HDInsight 3.4 クラスターに Spark 1.6.0 が導入されました| サービス | Linux 上の Spark クラスター| 該当なし
@@ -1336,7 +1358,7 @@ HDInsight で使用される Hortonworks Data Platform で YARN および MapRed
 
 Azure PowerShell と HDInsight SDK のエラー メッセージ: "*クラスターが HTTP サービスのアクセス用に構成されていません*" について
 
-* このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、HDInsight SDK または Azure PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、HDInsight SDK または Azure PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。HDInsight SDK API または Azure PowerShell コマンドレット (**Use-AzureRmHDInsightCluster** または **Invoke-AzureRmHDInsightHiveJob**) を使用してジョブを送信する場合、エラー メッセージ "クラスター <クラスター名> が HTTP サービスのアクセス用に構成されていません" が表示されて、これらの操作が失敗することがあります。 または操作によっては、"*クラスターに接続できません*" などのその他のエラー メッセージが表示され、これらの操作が失敗する可能性があります。
+* このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、HDInsight SDK または Azure PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、HDInsight SDK または Azure PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。HDInsight SDK API または Azure PowerShell コマンドレット (**Use-AzureRmHDInsightCluster** または **Invoke-AzureRmHDInsightHiveJob**) を使用してジョブを送信する場合、エラー メッセージ *"クラスター <クラスター名> が HTTP サービスのアクセス用に構成されていません"* が表示されて、これらの操作が失敗することがあります。 または操作によっては、"*クラスターに接続できません*" などのその他のエラー メッセージが表示され、これらの操作が失敗する可能性があります。
 
 * これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。[](http://nuget.codeplex.com/wikipage?title=Getting%20Started) から最新の HDInsight SDK にアクセスし、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」から Azure PowerShell ツールにアクセスできます。
 
@@ -1610,4 +1632,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

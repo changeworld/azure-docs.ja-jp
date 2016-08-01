@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/06/2016"
+   ms.date="07/14/2016"
    ms.author="tomfitz"/>
 
 # Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
@@ -24,17 +24,65 @@
 
 ## 無効なテンプレートまたはリソース
 
-テンプレートまたはリソースのプロパティのいずれかが無効であることを示すエラーが発生した場合は、テンプレート内の文字が欠落している可能性があります。これはテンプレート式を使用しているときに発生しやすいエラーです。式が引用符で囲まれており、JSON 検証が引き続き行われて、エディターではエラーが検出されないことがあるためです。たとえば、ストレージ アカウントの次の名前の割り当てには、1 組の角かっこ、3 つの関数、3 組のかっこ、1 組の一重引用符、および 1 つのプロパティが含まれています。
+テンプレートをデプロイするときに、次のメッセージが表示される場合があります。
+
+    Code=InvalidTemplate 
+    Message=Deployment template validation failed
+
+テンプレートとリソースのプロパティのいずれかが無効であることを示すエラーが発生した場合は、テンプレートに構文エラーが存在する可能性があります。テンプレートの式は複雑になることもあり、このエラーが発生することは珍しくありません。たとえば、ストレージ アカウントの次の名前の割り当てには、1 組の角かっこ、3 つの関数、3 組のかっこ、1 組の一重引用符、および 1 つのプロパティが含まれています。
 
     "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 
 一致する構文全体を指定しないと、テンプレートによって、意図したものとは全然違う値が生成されます。
 
-欠落した文字がテンプレート内のどこに位置するかに応じて、テンプレートまたはリソースのいずれかが無効であることを示すエラーが発生します。また、エラーによって、デプロイ プロセスでテンプレート言語式を処理できなかったことが通知されることもあります。この種類のエラーが発生したら、式の構文を慎重に確認してください。
+この種類のエラーが発生したら、式の構文を慎重に確認してください。[Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) や [Visual Studio Code](resource-manager-vs-code.md) など、構文エラーについて指摘を受けることのできる JSON エディターの使用を検討してください。
+
+## セグメントの長さが不適切
+
+テンプレートが無効であるために発生するエラーは他にもあります。たとえばリソース名が正しい形式になっていないとエラーが発生します。
+
+    Code=InvalidTemplate
+    Message=Deployment template validation failed: 'The template resource {resource-name}' 
+    for type {resource-type} has incorrect segment lengths.
+
+ルート レベルのリソースは、名前に含まれるセグメントの数がリソース タイプのセグメントの数よりも 1 つ少なくなっている必要があります。各セグメントは、スラッシュで区別されます。次の例は、type のセグメント数が 2 つで、name のセグメント数が 1 つなので、**有効な名前**です。
+
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "name": "myHostingPlanName",
+
+しかし次の例は、name と type のセグメント数が同じであるため、**有効な名前ではありません**。
+
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "name": "appPlan/myHostingPlanName",
+
+子のリソースに関しては、type と name のセグメント数が一致している必要があります。一見矛盾しているように見えますが、そんなことはありません。子の完全な name と type には親の name と type が含まれるので、完全な name のセグメント数としては、やはり完全な type よりも 1 つ少なくなります。
+
+    "resources": [
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "name": "contosokeyvault",
+            ...
+            "resources": [
+                {
+                    "type": "secrets",
+                    "name": "appPassword",
+
+複数のリソース プロバイダーに対して適用される Resource Manager タイプでは特に、セグメントを正しく指定するために注意が必要となります。たとえば、リソース ロックを Web サイトに適用するためには、type が 4 つのセグメントで構成されている必要があります。したがって name のセグメント数は 3 つです。
+
+    {
+        "type": "Microsoft.Web/sites/providers/locks",
+        "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
 
 ## リソース名が既に存在する、または既に別のリソースによって使用されている
 
-一部のリソース (特にストレージ アカウント、データベース サーバー、Web サイト) には、Azure 全体で一意となるリソース名を指定する必要があります。一意の名前を作成するには、使用している命名規則に、[uniqueString](resource-group-template-functions.md#uniquestring) 関数の結果を連結します。
+一部のリソース (特にストレージ アカウント、データベース サーバー、Web サイト) には、Azure 全体で一意となるリソース名を指定する必要があります。一意の名前を指定しないと、次のようなエラーが発生します。
+
+    Code=StorageAccountAlreadyTaken 
+    Message=The storage account named mystorage is already taken.
+
+一意の名前を作成するには、使用している命名規則に、[uniqueString](resource-group-template-functions.md#uniquestring) 関数の結果を連結します。
 
     "name": "[concat('contosostorage', uniqueString(resourceGroup().id))]",
     "type": "Microsoft.Storage/storageAccounts",
@@ -94,7 +142,7 @@ Resource Manager は、可能であれば複数のリソースを並列して作
 
     Get-AzureRmResourceProvider -ListAvailable
 
-プロバイダーを登録するには、**Register-AzureRmResourceProvider** を使用し、登録するリソースプロバイダーの名前を指定します。
+プロバイダーを登録するには、**Register-AzureRmResourceProvider** を使用し、登録するリソース プロバイダーの名前を指定します。
 
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 
@@ -112,7 +160,7 @@ Resource Manager は、可能であれば複数のリソースを並列して作
 
     azure provider list
 
-リソースプロバイダーを登録するには、`azure provider register` コマンドを使用し、登録する*名前空間*を指定します。
+リソース プロバイダーを登録するには、`azure provider register` コマンドを使用し、登録する*名前空間*を指定します。
 
     azure provider register Microsoft.Cdn
 
@@ -168,7 +216,7 @@ Resource Manager は、可能であれば複数のリソースを並列して作
 
 リソースをデプロイしようとしたアカウントまたはサービス プリンシパルに、そのアクションを実行するアクセス権がなかった場合、デプロイ時にエラーが発生することがあります。Azure Active Directory では、どの ID がどのリソースにアクセスできるかをユーザーまたは管理者が高い精度で制御することができます。たとえば、アカウントにリーダー ロールが割り当てられている場合、そのアカウントで新しいリソースを作成することはできません。作成しようとすると、承認が失敗したというエラー メッセージが表示されます。
 
-ロールベースのアクセス制御の詳細については、[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)に関するページをご覧ください。
+ロールベースのアクセス制御の詳細については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
 
 デプロイ アクションは、ロールベースのアクセス制御だけでなく、サブスクリプションのポリシーによって制限されることがあります。管理者は、ポリシーを使用して、サブスクリプションにデプロイされるすべてのリソースに規約を課すことができます。たとえば、管理者は、あるリソースの種類について、特定のタグ値を必須にすることができます。そのポリシーの要件を満たしていないと、デプロイ時にエラーが発生します。ポリシーについては、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」をご覧ください。
 
@@ -213,4 +261,4 @@ Resource Manager は、可能であれば複数のリソースを並列して作
 - 監査アクションについては、「[リソース マネージャーの監査操作](resource-group-audit.md)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、[デプロイ操作の確認](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

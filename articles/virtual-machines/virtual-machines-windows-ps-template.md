@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/18/2016"
+	ms.date="07/14/2016"
 	ms.author="davidmu"/>
 
 # リソース マネージャー テンプレートで Windows 仮想マシンを作成する
@@ -27,9 +27,9 @@
 
 ## 手順 1: テンプレート ファイルの作成
 
-「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」にある情報を使用して、独自のテンプレートを作成できます。また、[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)から作成済みのテンプレートをデプロイすることもできます。この記事で使用されている例は、「[Deploy a simple Windows VM in West US](https://azure.microsoft.com/documentation/templates/101-vm-simple-windows/)」 (米国西部に単純な Windows VM をデプロイする) で説明されているテンプレートに似ています。
+「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」にある情報を使用して、独自のテンプレートを作成できます。また、[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)から作成済みのテンプレートをデプロイすることもできます。
 
-1. 任意のテキスト エディターを開き、この JSON 情報を、*VirtualMachineTemplate.json* と呼ばれる新しいファイルにコピーします。
+1. 任意のテキスト エディターを開き、この JSON 情報を、*VirtualMachineTemplate.json* という名前の新しいファイルにコピーします。
 
         {
           "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
@@ -195,7 +195,7 @@
           ]
         }
         
-    >[AZURE.NOTE] この記事では、Windows Server オペレーティング システムのいずれかのバージョンを実行する仮想マシンを作成します。他のイメージの選択の詳細については、「[Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](virtual-machines-linux-cli-ps-findimage.md)」を参照してください。
+    >[AZURE.NOTE] この記事では、Windows Server オペレーティング システムのいずれかのバージョンを実行する仮想マシンを作成します。他のイメージの選択の詳細については、[Windows PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](virtual-machines-linux-cli-ps-findimage.md)に関する記事をご覧ください。
     
 2. テンプレート ファイルを保存します。
 
@@ -216,7 +216,7 @@
           }
         }
 
-4. パラメーター ファイルを保存します。
+2. パラメーター ファイルを保存します。
 
 ## 手順 3: Azure PowerShell のインストール
 
@@ -224,11 +224,11 @@
 
 ## 手順 4: リソース グループの作成
 
-すべてのリソースをリソース グループにデプロイする必要があります。詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
+すべてのリソースをリソース グループにデプロイする必要があります。詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」をご覧ください。
 
 1. リソースを作成できる場所の一覧を取得します。
 
-	    Get-AzureLocation | sort Name | Select Name
+	    Get-AzureRmLocation | sort DisplayName | Select DisplayName
 
 2. **$locName** の値を一覧の場所に置き換えます (例: **米国中部**)。変数を作成します。
 
@@ -247,15 +247,15 @@
         Tags              :
         ResourceId        : /subscriptions/{subscription-id}/resourceGroups/myrg1
 
-### 手順 7: テンプレートとパラメーターでのリソースの作成
+### 手順 5: テンプレートとパラメーターを使用したリソースの作成
 
-1. **$deployName** の値をデプロイの名前に置き換えます。**$templatePath** の値をテンプレート ファイルのパスと名前に置き換えます。**$parameterFile** の値をパラメーター ファイルのパスと名前に置き換えます。変数を作成します。 
+1. **$deployName** の値をデプロイの名前に置き換えます。**$templatePath** の値をテンプレート ファイルのパスと名前に置き換えます。**$parameterFile** の値をパラメーター ファイルのパスと名前に置き換えます。変数を作成します。
 
         $deployName="deployment name"
         $templatePath = "template path"
         $parameterFile = "parameter file"
 
-4. テンプレートをデプロイします。
+2. テンプレートをデプロイします。
 
         New-AzureRmResourceGroupDeployment -ResourceGroupName "davidmurg6" -TemplateFile $templatePath -TemplateParameterFile $parameterFile
 
@@ -277,11 +277,11 @@
 
         Outputs           :
 
-    >[AZURE.NOTE] テンプレートとパラメーターを Azure ストレージ アカウントからデプロイすることもできます。詳細については、「[Azure Storage での Azure PowerShell の使用](../storage-powershell-guide-full.md)」を参照してください。
+    >[AZURE.NOTE] テンプレートとパラメーターを Azure ストレージ アカウントからデプロイすることもできます。詳細については、「[Azure Storage での Azure PowerShell の使用](../storage-powershell-guide-full.md)」をご覧ください。
 
 ## 次のステップ
 
-- デプロイに問題がある場合は、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
-- 作成した仮想マシンの管理方法については、[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関する記事を参照してください。
+- デプロイに問題がある場合は、[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)に関する記事をご覧ください。
+- [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関する記事で、作成した仮想マシンを管理する方法を確認します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

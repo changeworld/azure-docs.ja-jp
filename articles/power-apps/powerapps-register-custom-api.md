@@ -100,9 +100,12 @@ Swagger ファイルを作成すると、.json ファイルが作成されます
 
 	> [AZURE.NOTE] 現時点では、カスタム API は PowerApps Web ポータルでのみ使用できます。PowerApps クライアントでは使用できません。
 
-2. **[Connections (接続)]**、**[Add a connection (接続の追加)]** の順に選択します。![](./media/powerapps-register-custom-api/createnewconnection.png "Create Custom API")
+2. **[Connections (接続)]**、**[Add a connection (接続の追加)]** の順に選択します。  
+	![](./media/powerapps-register-custom-api/createnewconnection.png "Create Custom API")  
 
-3. **[Connect to custom API (カスタム API に接続)]** を選択します。![](./media/powerapps-register-custom-api/connecttocustomapi.png "Create Custom API") .json ファイルやアイコン ファイルなど、API のプロパティを追加します。**[Next (次へ)]** をクリックします。
+3. **[Connect to custom API (カスタム API に接続)]** を選択します。  
+	![](./media/powerapps-register-custom-api/connecttocustomapi.png "Create Custom API")  
+	json ファイルやアイコン ファイルなど、API のプロパティを追加します。**[Next (次へ)]** をクリックします。  
 
 	|プロパティ|説明|
 |---|---|
@@ -122,9 +125,9 @@ Swagger ファイルを作成すると、.json ファイルが作成されます
 
 	.json ファイルで ```securityDefintions``` オブジェクトが使用されていない場合、追加の値は必要ありません。
 
-5. **[作成]** を選択します。これで、カスタム API が **[Available Connections (利用可能な接続)]** に表示されます。
+5. **[作成]** を選択します。これで、カスタム API が **[Available Connections (利用可能な接続)]** に表示されます。  
 
-	![](./media/powerapps-register-custom-api/mycustomapi.png "Available connections")
+	![](./media/powerapps-register-custom-api/mycustomapi.png "Available connections")  
 
 
 > [AZURE.TIP] Swagger ファイルの検証に失敗した場合は、余分な文字が存在する可能性があります。たとえば、Web サイトなど、ほとんどすべてのデータは引用符で囲まれている必要があります。そのため、`https://mywebapi.mywebsite.com` を引用符で囲んでいない場合、ファイルの検証は失敗します。
@@ -140,15 +143,18 @@ Swagger ファイルを作成すると、.json ファイルが作成されます
 2. **[Make a logic flow (ロジック フローの作成)]** で **[Get started (作業の開始)]** を選択します。
 3. このウィンドウには、あらかじめ作成された、一般的なシナリオを使用するロジック フロー テンプレートがいくつかあります。これらのテンプレートのいずれかを使用し、そのテンプレートにカスタム API を追加できます。また、**[Create from blank (新規作成)]** を選択して、ロジック フローを一から作成することもできます。
 
-	カスタム API を追加する最も簡単な方法は、**[Create from blank (新規作成)]** を選択することです。これを選択すると、次のロジック フローが開きます。![](./media/powerapps-register-custom-api/createfromblank.png "Start of Logic Flow")
+	カスタム API を追加する最も簡単な方法は、**[Create from blank (新規作成)]** を選択することです。これを選択すると、次のロジック フローが開きます。  
+	![](./media/powerapps-register-custom-api/createfromblank.png "Start of Logic Flow")   
 
-4. **[Recurrence (繰り返し)]** を選択し、頻度を 1 分に設定します。![](./media/powerapps-register-custom-api/logicrecurrence.png "Select Recurrence")
+4. **[Recurrence (繰り返し)]** を選択し、頻度を 1 分に設定します。    
+	![](./media/powerapps-register-custom-api/logicrecurrence.png "Select Recurrence")  	
 
-5. プラス記号 (![](./media/powerapps-register-custom-api/flowplussign.png)) を選択し、**[Add an action (アクションの追加)]** を選択します。一覧に、カスタム API が表示されます。![](./media/powerapps-register-custom-api/logicflow.png "Your custom API")
+5. プラス記号 (![](./media/powerapps-register-custom-api/flowplussign.png)) を選択し、**[Add an action (アクションの追加)]** を選択します。一覧に、カスタム API が表示されます。  
+![](./media/powerapps-register-custom-api/logicflow.png "Your custom API") 
 
 次に続くステップは、API で実行できる処理によって決まります。おそらく、天気の例では、API は現在の気温を取得した後、Office 365 を使用して電子メールを送信します。
 
-![](./media/powerapps-register-custom-api/logicflowexample.png "Weather example")
+![](./media/powerapps-register-custom-api/logicflowexample.png "Weather example") 
 
 
 
@@ -157,10 +163,14 @@ Swagger ファイルを作成すると、.json ファイルが作成されます
 
 > [AZURE.NOTE] 現時点では、カスタム API は PowerApps Web ポータルでのみ使用できます。PowerApps クライアントでは使用できません。
 
-1. PowerApps [Web ポータル][9]で、**[New PowerApp (新しい PowerApp)]** を選択します。![](./media/powerapps-register-custom-api/newpowerapp.png "Select New PowerApp")
-2. ブラウザーで新しいタブが開きます。この新しいタブに、空の PowerApp が自動的に作成されます。**[connect to data (データに接続)]** を選択します。![](./media/powerapps-register-custom-api/blankpowerapp.png "Select connect to data")
-3. **[Content (コンテンツ)]** タブの **[Data sources (データ ソース)]** を選択します。![](./media/powerapps-register-custom-api/datasources.png "Select connect to data")
-4. 新しい画面の **[My connections (マイ接続)]** で、対象のカスタム API を選択します。![](./media/powerapps-register-custom-api/screencustomapi.png "Select your custom API")
+1. PowerApps [Web ポータル][9]で、**[New PowerApp (新しい PowerApp)]** を選択します。  
+	![](./media/powerapps-register-custom-api/newpowerapp.png "Select New PowerApp")  
+2. ブラウザーで新しいタブが開きます。この新しいタブに、空の PowerApp が自動的に作成されます。**[connect to data (データに接続)]** を選択します。  
+![](./media/powerapps-register-custom-api/blankpowerapp.png "Select connect to data")  
+3. **[Content (コンテンツ)]** タブの **[Data sources (データ ソース)]** を選択します。  
+![](./media/powerapps-register-custom-api/datasources.png "Select connect to data")  
+4. 新しい画面の **[My connections (マイ接続)]** で、対象のカスタム API を選択します。  
+![](./media/powerapps-register-custom-api/screencustomapi.png "Select your custom API")  
 5. **[Add data source (データ ソースの追加)]** を選択します。
 
 カスタム API は、追加されると、関数バー、テキスト ボックスなどで使用できます。たとえば、関数バーで、「**MySampleWebAPI**」の入力を開始すると、利用可能な関数が表示されます。[Office 365 のデータの表示][12]に関するページには、Office 365 API の使用例が示されています。
@@ -195,4 +205,4 @@ Swagger ファイルを作成すると、.json ファイルが作成されます
 [11]: https://powerapps.microsoft.com/tutorials/get-started-create-from-data/
 [12]: https://powerapps.microsoft.com/tutorials/show-office-data/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!-------HONumber=AcomDC_0713_2016-->

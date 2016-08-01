@@ -1,6 +1,6 @@
 <properties
 	pageTitle="SharePoint サーバー ファームの作成 | Microsoft Azure"
-	description="Azure ポータルの Marketplace を使用して、SharePoint Server 2013 の基本ファームまたは高可用性ファームをすばやく新規作成します。"
+	description="Azure で SharePoint 2013 または SharePoint 2016 の新しいファームを短時間で作成します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="JoeDavies-MSFT"
@@ -14,10 +14,14 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="07/19/2016"
 	ms.author="josephd"/>
 
 # SharePoint サーバー ファームの作成
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 従来のモデル。
+
+## SharePoint 2013 ファーム
 
 Microsoft Azure ポータル Marketplace では、事前に構成された SharePoint Server 2013 ファームを簡単に作成できます。これにより、開発またはテストの環境で基本または高可用性の SharePoint ファームが必要な場合や、組織のコラボレーション ソリューションとして SharePoint Server 2013 を評価する場合の所要時間を大きく節約できます。
 
@@ -53,16 +57,20 @@ Microsoft Azure ポータル Marketplace では、事前に構成された Share
 
 Azure ポータルは、インターネットに接続する Web プレゼンスを持つクラウド専用の仮想ネットワークにこれら両ファームを作成します。組織のネットワークに戻るサイト間 VPN 接続や ExpressRoute 接続はありません。
 
+## SharePoint 2016 ファーム
+
+次の SharePoint 2016 単一サーバー ファームを構築する方法については、[こちらのトピック](https://technet.microsoft.com/library/mt723354.aspx)をご覧ください。
+
+![sharepointfarm](./media/virtual-machines-windows-sharepoint-farm/SP2016Farm.png)
+
 ## SharePoint ファームの管理
 
 これらのファームのサーバーはリモート デスクトップ接続を通じて管理できます。詳細については、「[仮想マシンへのログオン](virtual-machines-windows-hero-tutorial.md#log-on-to-the-virtual-machine)」を参照してください。
 
 SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint アプリケーション、その他の機能を構成できます。詳細については、「[SharePoint 2013 を構成する](http://technet.microsoft.com/library/ee836142.aspx)」を参照してください。
 
-> [AZURE.NOTE] [SharePoint Server 2016 試用版のイメージ](https://azure.microsoft.com/blog/test-sharepoint-server-2016/)を使用して、SharePoint Server 2016 を実行する仮想マシンを作成できます。
-
 ## 次のステップ
 
 - Azure インフラストラクチャ サービスで、追加の [SharePoint 2013](https://technet.microsoft.com/library/dn635309.aspx) 構成を検出します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

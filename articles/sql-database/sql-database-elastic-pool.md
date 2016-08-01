@@ -4,15 +4,15 @@
 	keywords="エラスティック データベース、SQL データベース"
 	services="sql-database"
 	documentationCenter=""
-	authors="srinia"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/27/2016"
-	ms.author="srinia"
+	ms.date="07/12/2016"
+	ms.author="CarlRabeler"
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
@@ -53,6 +53,8 @@ SQL Database では、リソースの需要に対処するデータベースの�
 
 [AZURE.INCLUDE [エラスティック データベースの SQL DB サービス階層を示す表](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
+エラスティック プールのすべての DTU が使用されている場合は、プール内の各データベースが、同量のリソースを受け取ってクエリを処理します。SQL DB サービスは、コンピューティング時間を均等にすることで、データベース間におけるリソース共有の公平性を実現します。それ以外の場合、このリソース共有の公平性は、データベースあたりの DTU分が 0 以外の値に設定されているときに、リソース量に加えて各データベースに適用されることが保証されます。
+
 ## エラスティック データベース プールのプロパティ
 
 ### エラスティック プールに関する制限事項
@@ -79,7 +81,7 @@ SQL Database では、リソースの需要に対処するデータベースの�
 
 ## エラスティック データベース ジョブ
 
-プールでは、**[エラスティック ジョブ](sql-database-elastic-jobs-overview.md)**のスクリプトを実行して管理タスクを簡素化します。エラスティック データベース ジョブを使用すると、大量のデータベースに関連する面倒な作業のほとんどが不要になります。まず、「[Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md)」をご覧ください。
+プールでは、**[エラスティック ジョブ](sql-database-elastic-jobs-overview.md)**でスクリプトを実行することで、管理タスクが簡素化されます。エラスティック データベース ジョブを使用すると、大量のデータベースに関連する面倒な作業のほとんどが不要になります。まず、「[Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md)」をご覧ください。
 
 他のツールの詳細については、[エラスティック データベース ツールの学習マップ](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)に関する記事をご覧ください。
 
@@ -90,18 +92,18 @@ SQL Database では、リソースの需要に対処するデータベースの�
 
 ### ポイントインタイム リストア
 
-ポイントインタイム リストアは、自動データベース バックアップを使用して、プール内のデータベースを特定の時点に復元します。「[ユーザー エラーからの Azure SQL Database の復旧](sql-database-user-error-recovery.md)」をご覧ください。
+ポイントインタイム リストアは、自動データベース バックアップを使用して、プール内のデータベースを特定の時点に復元します。[ユーザー エラーからの Azure SQL Database の復旧](sql-database-user-error-recovery.md)に関するページをご覧ください
 
 ### 地理リストア
 
-Geo リストアは、データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合にも既定の復旧オプションを提供します。[Azure SQL Database の障害からの回復](sql-database-disaster-recovery.md)に関するページをご覧ください。
+Geo リストアは、データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合にも既定の復旧オプションを提供します。[障害からの Azure SQL Database の復旧](sql-database-disaster-recovery.md)に関するページをご覧ください。
 
 ### アクティブ geo レプリケーションを選択するとき
 
-Geo リストアで提供可能なものより高いリカバリ要件のあるアプリケーションでは、[Azure ポータル](sql-database-geo-replication-portal.md)、[PowerShell](sql-database-geo-replication-powershell.md)、または [Transact-SQL](sql-database-geo-replication-transact-sql.md) を使用して、アクティブ geo レプリケーションを構成します。
+geo リストアよりもアグレッシブな復旧要件があるアプリケーションについては、[Azure ポータル](sql-database-geo-replication-portal.md)、[PowerShell](sql-database-geo-replication-powershell.md)、または [Transact-SQL](sql-database-geo-replication-transact-sql.md) を使用して、アクティブ geo レプリケーションを構成します。
 
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

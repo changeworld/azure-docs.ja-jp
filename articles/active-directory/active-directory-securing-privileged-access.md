@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="stevenpo"
+	manager="femila"
 	editor="mwahl"/>
 
 <tags
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/15/2016"
+	ms.date="07/14/2016"
 	ms.author="kgremban"/>
 
 
 # Azure AD での特権アクセスのセキュリティ保護
 
-現代の組織にとって特権アクセスのセキュリティ保護は、ビジネス資産を保護するうえで重要な最初のステップです。組織内にあるほとんどすべてのビジネス資産は、IT システムを管理する特権アカウントの整合性によってセキュリティ状況が左右されます。サイバー攻撃は、組織のデータやシステムへのアクセス権を取得しようと、これらのアカウントを標的にしています。
+現代の組織にとって特権アクセスのセキュリティ保護は、ビジネス資産を保護するうえで重要な最初のステップです。特権アカウントとは、IT システムを管理するアカウントです。サイバー攻撃では、組織のデータやシステムへのアクセス手段を得るために、このようなアカウントが標的にされます。特権アクセスを保護するためには、悪意のあるユーザーにさらされる危険からアカウントとシステムを分離する必要があります。
 
-執拗な攻撃者から管理アクセスを保護するには、これらの管理アカウントとシステムをリスクから分離する必要があります。クラウド サービスを経由して特権アクセスを取得するユーザーが増えつつあります。たとえば、Office 365 のグローバル管理者、Azure サブスクリプション管理者、VM や SaaS アプリの管理アクセス権を持つユーザーなどがこれにあたります。
+クラウド サービスを経由して特権アクセスを取得するユーザーが増えつつあります。たとえば、Office 365 のグローバル管理者、Azure サブスクリプション管理者、VM や SaaS アプリの管理アクセス権を持つユーザーなどがこれにあたります。
 
 Microsoft では、[特権アクセスのセキュリティ保護](https://technet.microsoft.com/library/mt631194.aspx)に関するこちらのロードマップを採用することをお勧めしています。
 
@@ -63,11 +63,7 @@ Azure Active Directory は、条件付きアクセス制御によって、ユー
 ![MFA による条件付きアクセス規則の設定][4]
 
 
-## ロール モデル
-
-セキュリティ リスクを減らすには、クラウド サービスの管理者ロールに対応できるロールと委任のモデルを確認し、管理者の利便性を重要な方針として組み込む必要があります。このようなモデルでは、ジャストイン タイムの機能を活用することが求められます。
-
-## 次のステップ
+## 関連記事:
 
 - [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md) を有効にする
 - [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md) を有効にする
@@ -83,4 +79,4 @@ Azure Active Directory は、条件付きアクセス制御によって、ユー
 [3]: ./media/active-directory-identityprotection/29.png
 [4]: ./media/active-directory-conditional-access/conditionalaccess-saas-apps.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

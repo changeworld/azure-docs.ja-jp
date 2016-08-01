@@ -14,21 +14,33 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/27/2016"
+   ms.date="07/15/2016"
    ms.author="cgronlun;brohrer;garye"/>
 
 
-# 初心者向けデータ サイエンス ビデオ 2: データ サイエンス用のデータの準備はお済みですか?
+# データ サイエンス用のデータの準備はお済みですか?
+
+## ビデオ 2: 初心者向けデータ サイエンス シリーズ
 
 データを評価してデータ サイエンスの基本的な条件を満たしていることを確認する方法について説明します。
 
-このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
+このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
 
-<div class="wa-video-container" data-control="video-container" data-slug="data-science-for-beginners-series-is-your-data-ready-for-data-science"> <a href="/en-us/documentation/videos/data-science-for-beginners-series-is-your-data-ready-for-data-science/" data-control="video" data-expanding="false" class="wa-video-thumbnail" title="Data science for beginners: Is your data ready for data science?" data-ch9="//channel9.msdn.com/Shows/SupervisionNotRequired/9/player/" data-caption="" data-event="videopage-clicked-videothumbnail" data-event-property="data-science-for-beginners-series-is-your-data-ready-for-data-science"> <img src="https://sec.ch9.ms/ch9/8c9a/aab9492b-4167-41f0-9b9f-4eab661e8c9a/DataScienceForBeginnersIsYourDataReadyForDataScie_960.jpg" alt="Data science for beginners: Is your data ready for data science?" class="thumbnail"> <img class="play-icon" src="/cdn/cvt-a29a0e789afe7f47464f393c011b53f210c511ee5fed2c4c9c0633442f30d6ec/images/icon/VideoPlay.svg"> <span class="metadata"> <span class="date"> <span>06-27-2016</span> <span>04 min, 56 sec</span> </span> </span> </a> </div>
+> [AZURE.VIDEO data-science-for-beginners-series-is-your-data-ready-for-data-science]
+
+## このシリーズの他のビデオ
+
+*"初心者向けデータ サイエンス"* は、データ サイエンスについて簡単に説明した 5 本の短いビデオです。
+
+  * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
+  * ビデオ 2: データ サイエンス用のデータの準備はお済みですか?
+  * ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+  * ビデオ 4: [単純なモデルで回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
+  * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## トランスクリプト: データ サイエンス用のデータの準備はお済みですか?
 
-"初心者向けデータ サイエンス" シリーズの 2 番目のビデオ「データ サイエンス用のデータの準備はお済みですか?」へようこそ。
+*"初心者向けデータ サイエンス"* シリーズの 2 番目のビデオである「データ サイエンス用のデータの準備はお済みですか?」へようこそ。
 
 データ サイエンスから必要な回答を得るには、高品質の原材料を提供して操作できるようにする必要があります。ピザを作るのと同じで、最初の材料が良いほど最終的な製品も良くなります。
 
@@ -39,7 +51,7 @@
 必要なデータの条件は次のとおりです。
 
   *	関連性がある
-  *	連続している
+  *	接続中
   *	正確である
   *	操作できるだけの十分な量がある
 
@@ -97,18 +109,9 @@
 
 関連性があり、連続していて、正確で、十分な量のデータがあれば、高品質なデータ サイエンスを実行するために必要な材料がすべて揃います。
 
-Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" の他の 4 本のビデオを必ずご覧ください。
+Microsoft Azure Machine Learning の *"初心者向けデータ サイエンス"* の他の 4 本のビデオも必ずご覧ください。
 
 
-## このシリーズの他のビデオ
-
-"初心者向けデータ サイエンス" は、データ サイエンスを簡単に説明した 5 本の短いビデオです。
-
-  * ビデオ 1: [データ サイエンスが回答する 5 つの質問](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md)
-  * ビデオ 2: データ サイエンス用のデータの準備はお済みですか?
-  * ビデオ 3: [データで回答できる質問をする](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)
-  * ビデオ 4: [単純なモデルで回答を予測する](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md)
-  * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)
 
 
 ## 次のステップ
@@ -116,4 +119,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

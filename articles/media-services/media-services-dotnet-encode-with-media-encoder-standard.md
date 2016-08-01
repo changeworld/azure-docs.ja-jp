@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="05/03/2016"
+ 	ms.date="07/18/2016"
 	ms.author="juliako;anilmur"/>
 
 
@@ -41,7 +41,7 @@ Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618
 
 MES を使用して 1 つ (または複数) の入力資産をエンコードし、そのエンコード タスクが正常に終了すると、出力資産が得られます。出力資産には、使用するエンコード プリセットに基づいて、ビデオ、オーディオ、サムネイル、マニフェストなどが含まれます。
 
-この出力資産には、入力資産に関するメタデータが格納されたファイルも含まれます。メタデータ XML ファイルの名前は、<asset_id>\_metadata.xml という形式になっています (たとえば、41114ad3-eb5e-4c57-8d92-5354e2b7d4a4\_metadata.xml)。ここで、<asset_id> は入力資産の AssetId の値です。この入力メタデータ XML のスキーマについては、[こちら](http://msdn.microsoft.com/library/azure/dn783120.aspx)で説明されています。
+この出力資産には、入力資産に関するメタデータが格納されたファイルも含まれます。メタデータ XML ファイルの名前は、<asset\_id>\_metadata.xml という形式になっています (たとえば、41114ad3-eb5e-4c57-8d92-5354e2b7d4a4\_metadata.xml)。ここで、<asset\_id> は入力資産の AssetId の値です。この入力メタデータ XML のスキーマについては、[こちら](http://msdn.microsoft.com/library/azure/dn783120.aspx)で説明されています。
 
 出力資産には、出力資産に関するメタデータが格納されたファイルも含まれます。メタデータ XML ファイルの名前は、<source_file_name>\_manifest.xml という形式になっています (たとえば、BigBuckBunny\_manifest.xml)。この出力メタデータ XML のスキーマについては、[こちら](http://msdn.microsoft.com/library/azure/dn783217.aspx)で説明されています。
 
@@ -58,7 +58,7 @@ MES を使用して 1 つ (または複数) の入力資産をエンコードし
 - エンコード ジョブを作成します。
 - Media Encoder Standard エンコーダーの参照を取得します。
 - "H264 Multiple Bitrate 720p" プリセットを使用するように指定します。すべてのプリセットは、[こちら](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で確認できます。また、これらのプリセットが従う必要があるスキーマを、[こちらのトピック](https://msdn.microsoft.com/library/mt269962.aspx)で確認できます。
-- 1 つのエンコード タスクをジョブに追加します。 
+- 1 つのエンコード タスクをジョブに追加します。
 - エンコードする入力資産を指定します。
 - エンコードされた資産が含まれる出力資産を作成します。
 - ジョブの進行状況を確認するイベント ハンドラーを追加します。
@@ -150,4 +150,4 @@ MES を使用して 1 つ (または複数) の入力資産をエンコードし
 
 [Media Encoder Standard と .NET を使用してサムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md) [Media Services でのエンコーディングの概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

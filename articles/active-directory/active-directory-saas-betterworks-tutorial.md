@@ -248,7 +248,7 @@ BetterWorks アプリケーションは、特定の形式で構成された SAML
 
 このセクションでは、BetterWorks で Britta Simon というユーザーを作成します。
 
-BetterWorks サポート チーム (< mailto:support@betterworks.com> ) と連携し、 BetterWorks プラットフォームにユーザーを追加してください。
+BetterWorks サポート チーム ( <mailto:support@betterworks.com> ) と連携し、 BetterWorks プラットフォームにユーザーを追加してください。
 
 
 ### Azure AD テスト ユーザーの割り当て
@@ -311,4 +311,4 @@ BetterWorks サポート チーム (< mailto:support@betterworks.com> ) と連�
 [204]: ./media/active-directory-saas-betterworks-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-betterworks-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!----HONumber=AcomDC_0713_2016-->

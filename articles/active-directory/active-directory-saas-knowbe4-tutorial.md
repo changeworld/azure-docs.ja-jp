@@ -130,7 +130,7 @@ KnowBe4 で Azure AD のシングル サインオンを構成してテストす�
 5. お使いのアプリケーション用に構成された SSO を取得するために、[KnowBe4 のサポート チーム](mailto:support@knowbe4.com)に問い合わせます。KnowBe4 チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (エンティティ ID、SSO サインイン URL、およびサインアウト URL) をチームと共有してください。
 
 
-6. Azure クラシック ポータルで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
+6. Azure クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
 
 	![Azure AD Single Sign-On][10]
 
@@ -266,4 +266,4 @@ KnowBe4 で Azure AD のシングル サインオンを構成してテストす�
 [204]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-knowbe4-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!----HONumber=AcomDC_0713_2016-->

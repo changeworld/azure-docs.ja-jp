@@ -161,7 +161,7 @@ CodePackage 要素には、サービスのコードの場所 (およびバージ
 ```
 SetupEntrypoint 要素を使用して、サービスのコードが起動される前に実行する必要がある実行可能ファイルまたはバッチ ファイルを指定します。これはオプションの要素なので、必要な初期化/セットアップが存在しない場合は追加する必要はありません。SetupEntryPoint は、サービスを再起動するたびに実行されます。
 
-SetupEntrypoint は 1 つだけのため、アプリケーションのセットアップ/構成に複数のスクリプトが必要な場合は、セットアップ/構成スクリプトを 1 つのバッチ ファイルにバンドルする必要があります。SetupEntryPoint 要素と同様に、SetupEntrypoint はあらゆる種類のファイル (実行可能ファイル、バッチ ファイル、PowerShell コマンドレット) を実行できます。上の例では、SetupEntrypoint は code ディレクトリの `scripts` サブディレクトリにあるバッチ ファイル LaunchConfig.cmd に基づいています (WorkingFolder 要素が code に設定されている場合)。
+SetupEntrypoint は 1 つだけのため、アプリケーションのセットアップ/構成に複数のスクリプトが必要な場合は、セットアップ/構成スクリプトを 1 つのバッチ ファイルにバンドルする必要があります。SetupEntrypoint は、あらゆる種類のファイル (実行可能ファイル、バッチ ファイル、PowerShell コマンドレット) を実行できます。上の例では、SetupEntrypoint は code ディレクトリの `scripts` サブディレクトリにあるバッチ ファイル LaunchConfig.cmd に基づいています (WorkingFolder 要素が code に設定されている場合)。
 
 ### Entrypoint
 
@@ -308,4 +308,4 @@ Visual Studio には、ゲスト実行可能ファイルを Service Fabric ク�
 - [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
 - [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

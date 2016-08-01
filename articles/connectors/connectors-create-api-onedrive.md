@@ -1,315 +1,409 @@
 <properties
-pageTitle="PowerApps Enterprise とロジック アプリに OneDrive コネクタを追加する | Microsoft Azure"
-description="OneDrive コネクタと REST API パラメーターの概要"
-services=""    
-documentationCenter=""     
-authors="msftman"    
-manager="erikre"    
-editor=""
-tags="connectors"/>
+	pageTitle="ロジック アプリに OneDrive コネクタを追加する | Microsoft Azure"
+	description="OneDrive コネクタと REST API パラメーターの概要"
+	services="app-servicelogic"    
+	documentationCenter=""     
+	authors="MandiOhlinger"    
+	manager="erikre"    
+	editor=""
+	tags="connectors"/>
 
 <tags
-ms.service="multiple"
-ms.devlang="na"
-ms.topic="article"
-ms.tgt_pltfrm="na"
-ms.workload="na"
-ms.date="05/18/2016"
-ms.author="mandia"/>
+   ms.service="app-service-logic"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="integration"
+   ms.date="07/19/2016"
+   ms.author="mandia"/>
 
 # OneDrive コネクタの使用
 
-OneDrive に接続して、ファイルのアップロード、取得、削除など、ファイルを管理します。OneDrive コネクタは、次のツールから使用できます。
+OneDrive に接続して、ファイルのアップロード、取得、削除など、ファイルを管理します。OneDrive では、次の操作を実行できます。
 
-- Logic Apps 
-- PowerApps
+- OneDrive にファイルを保存してワークフローを構築するか、OneDrive 内の既存ファイルを更新できます。
+- OneDrive 内でファイルが作成または更新されたときに、トリガーを使用してワークフローを開始できます。
+- ファイルの作成、ファイルの削除などのアクションを使用できます。たとえば、添付ファイル付きの新しい Office 365 電子メールを受信したときに (トリガー)、OneDrive に新しいファイルを作成します (アクション)。
 
-> [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/connectors-create-api-onedrive.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-onedrive.md)
+このトピックでは、ロジック アプリ内で OneDrive コネクタを使用する方法を説明し、トリガーとアクションの一覧を示します。
 
-&nbsp;
+>[AZURE.NOTE] 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
+## OneDrive に接続する
 
-OneDrive では、次の操作を実行できます。
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。接続により、ロジック アプリと別のサービスとの接続が実現します。たとえば、OneDrive に接続するには、最初に OneDrive "*接続*" が必要です。接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。そのため、OneDrive の場合は、OneDrive アカウントの資格情報を入力して接続を作成します。
 
-- OneDrive から取得したデータに基づいてビジネス フローを構築できます。 
-- ファイルを作成または更新するときにトリガーを使用できます。
-- ファイルの作成、ファイルの削除などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、OneDrive で新しいファイルを作成すると、Office 365 を使用してそのファイルを電子メールで送信できます。
-- PowerApps Enterprise に OneDrive コネクタを追加できます。追加すると、ユーザーはアプリ内でコネクタを使用できるようになります。 
-
-PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
-
-ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
-
-## トリガーとアクション
-OneDrive コネクタには、次のトリガーとアクションがあります。
-
-| トリガー | アクション|
-| --- | --- |
-|<ul><li>ファイルの作成時</li><li>ファイルの変更時</li></ul> | <ul><li>ファイルを作成する</li><li>フォルダー内のファイルを一覧表示する</li><li>ファイルの作成時</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>フォルダーを抽出する</li><li>ID を使用してファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ID を使用してファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>ルート フォルダーを表示する</li><li>ファイルを更新する</li><li>ファイルの変更時</li></ul>
-
-すべてのコネクタは、JSON および XML 形式のデータに対応します。
-
-## OneDrive への接続を作成する
-
-ロジック アプリにこのコネクタを追加するとき、OneDrive に接続するロジック アプリを承認する必要があります。
-
-1. OneDrive アカウントにサインインします。
-2. ロジック アプリが OneDrive に接続して使用することを許可します。 
+### 接続の作成
 
 >[AZURE.INCLUDE [OneDrive への接続を作成する手順](../../includes/connectors-create-api-onedrive.md)]
 
->[AZURE.TIP] 他のロジック アプリでも、この同じ接続を使用できます。
+## トリガーを使用する
 
-## Swagger REST API リファレンス
-適用されるバージョン: 1.0。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらを参照してください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+
+1. ロジック アプリで「onedrive」と入力して、トリガーの一覧を取得します。
+
+	![](./media/connectors-create-api-onedrive/onedrive-1.png)
+
+2. **[When a file is modified (ファイルの変更時)]** を選択します。接続が既に存在する場合は、**[...]** (表示ピッカー) ボタンを選択してフォルダーを選択します。
+
+	![](./media/connectors-create-api-onedrive/sample-folder.png)
+
+	サインインを求められたら、サインインの詳細を入力して接続を作成します。この手順については、このトピックの「[接続の作成](connectors-create-api-onedrive.md#create-the-connection)」を参照してください。
+
+	> [AZURE.NOTE] この例では、選択したフォルダー内のファイルが更新されたときに、ロジック アプリが実行されます。このトリガーの結果を確認するには、自身に電子メールを送信する別のアクションを追加してください。たとえば、Office 365 Outlook の "*電子メールを送信する*" アクションを追加します。これにより、ファイルが更新されると電子メールが送信されます。
+
+3. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
 
 
-### ID を使用してファイルのメタデータを取得する
-ID を使用して、OneDrive のファイルのメタデータを取得します。```GET: /datasets/default/files/{id}```
+## アクションを使用する
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|id|string|○|path|なし|OneDrive 内のファイルの一意識別子|
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらを参照してください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
-### 応答
+1. プラス記号を選択します。**[Add an action (アクションの追加)]**、**[Add a condition (条件の追加)]**、**[More (その他)]** の 1 つのオプションという複数の選択肢があります。
+
+	![](./media/connectors-create-api-onedrive/add-action.png)
+
+2. **[Add an action (アクションの追加)]** を選択します。
+
+3. テキスト ボックスに「onedrive」と入力して、使用可能なすべてのアクションの一覧を取得します。
+
+	![](./media/connectors-create-api-onedrive/onedrive-actions.png)
+
+4. この例では、**[OneDrive - Create file (OneDrive - ファイルを作成する)]** を選択します。接続が既に存在する場合は、**[フォルダー パス]** で、ファイルを配置する場所を選択し、**[ファイル名]** に入力して、**[ファイルのコンテンツ]** を選択します。
+
+	![](./media/connectors-create-api-onedrive/sample-action.png)
+
+	接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-onedrive.md#create-the-connection)」を参照してください。
+
+	> [AZURE.NOTE] この例では、OneDrive フォルダーに新しいファイルを作成します。別のトリガーからの出力を使用して、OneDrive ファイルを作成できます。たとえば、Office 365 Outlook の "*When a new email arrives (新しい電子メールが着信したとき)*" トリガーを追加します。次に、OneDrive の "*Create file (ファイルの作成)*" アクションを追加します。このアクションは、ForEach 内の Attachments フィールドと Content-Type フィールドを使用して OneDrive に新しいファイルを作成します。
+	> 
+	> ![](./media/connectors-create-api-onedrive/foreach-action.png)
+
+5. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
+
+
+## 技術的な詳細
+
+## トリガー
+
+|トリガー | 説明|
+|--- | ---|
+|[ファイルの作成時](connectors-create-api-onedrive.md#when-a-file-is-created)|この操作では、フォルダーに新しいファイルが作成されたときにフローをトリガーします。|
+|[ファイルの変更時](connectors-create-api-onedrive.md#when-a-file-is-modified)|この操作では、フォルダー内のファイルが変更されたときにフローをトリガーします。|
+
+
+## アクション
+
+|アクション|説明|
+|--- | ---|
+|[ファイルのメタデータを取得する](connectors-create-api-onedrive.md#get-file-metadata)|この操作では、ファイルのメタデータを取得します。|
+|[ファイルを更新する](connectors-create-api-onedrive.md#update-file)|この操作では、ファイルを更新します。|
+|[ファイルを削除する](connectors-create-api-onedrive.md#delete-file)|この操作では、ファイルを削除します。|
+|[パスを使用してファイルのメタデータを取得する](connectors-create-api-onedrive.md#get-file-metadata-using-path)|この操作では、パスを使用してファイルのメタデータを取得します。|
+|[パスを使用してファイルの内容を取得する](connectors-create-api-onedrive.md#get-file-content-using-path)|この操作では、パスを使用してファイルの内容を取得します。|
+|[ファイルの内容を取得する](connectors-create-api-onedrive.md#get-file-content)|この操作では、ファイルの内容を取得します。|
+|[ファイルを作成する](connectors-create-api-onedrive.md#create-file)|この操作では、ファイルを作成します。|
+|[ファイルをコピーする](connectors-create-api-onedrive.md#copy-file)|この操作では、ファイルを OneDrive にコピーします。|
+|[フォルダー内のファイルを一覧表示する](connectors-create-api-onedrive.md#list-files-in-folder)|この操作では、フォルダー内のファイルとサブフォルダーの一覧を取得します。|
+|[ルート フォルダー内のファイルを一覧表示する](connectors-create-api-onedrive.md#list-files-in-root-folder)|この操作では、ルート フォルダー内のファイルとサブフォルダーの一覧を取得します。|
+|[アーカイブをフォルダーに抽出する](connectors-create-api-onedrive.md#extract-archive-to-folder)|この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。|
+
+### アクションの詳細
+
+このセクションでは、必須または任意の入力プロパティ、コネクタに関連付けられた対応する出力など、各アクションに関する具体的な詳細について説明します。
+
+
+#### ファイルのメタデータを取得する
+この操作では、ファイルのメタデータを取得します。
+
+|プロパティ名| 表示名|説明|
+| ---|---|---|
+|id*|ファイル|ファイルを選択する|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+BlobMetadata
+
+| プロパティ名 | データ型 |
+|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|string|
+
+
+#### ファイルを更新する
+この操作では、ファイルを更新します。
+
+|プロパティ名| 表示名|説明|
+| ---|---|---|
+|id*|ファイル|ファイルを選択する|
+|body*|ファイルのコンテンツ|ファイルの内容|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+BlobMetadata
+
+| プロパティ名 | データ型 |
+|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|string|
+
+
+#### ファイルを削除する
+この操作では、ファイルを削除します。
+
+|プロパティ名| 表示名|説明|
+| ---|---|---|
+|id*|ファイル|ファイルを選択する|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+ありません。
+
+#### パスを使用してファイルのメタデータを取得する
+この操作では、パスを使用してファイルのメタデータを取得します。
+
+|プロパティ名| 表示名|説明|
+| ---|---|---|
+|path*|ファイル パス|ファイルを選択する|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+BlobMetadata
+
+| プロパティ名 | データ型 |
+|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|文字列|
+
+
+#### パスを使用してファイルの内容を取得する
+この操作では、パスを使用してファイルの内容を取得します。
+
+|プロパティ名| 表示名|説明|
+| ---|---|---|
+|path*|ファイル パス|ファイルを選択する|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+ありません。
+
+
+#### ファイルの内容を取得する
+この操作では、ファイルの内容を取得します。
+
+|プロパティ名| 表示名|説明|
+| ---|---|---|
+|id*|ファイル|ファイルを選択する|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+ありません。
+
+#### ファイルを作成する
+この操作では、ファイルを作成します。
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|folderPath*|フォルダー パス|フォルダーを選択する|
+|name*|ファイル名|ファイルの名前|
+|body*|ファイルのコンテンツ|ファイルの内容|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+BlobMetadata
+
+| プロパティ名 | データ型 |
+|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|string|
+
+
+#### ファイルをコピーする
+この操作では、ファイルを OneDrive にコピーします。
+
+|プロパティ名| 表示名|説明|
+| ---|---|---|
+|source*|Source url (コピー元 URL)|ソース ファイルの URL|
+|destination*|Destination file path (コピー先ファイル パス)|対象ファイル名を含む、コピー先ファイル パス|
+|overwrite|Overwrite? (上書きを許可)|’true’ に設定すると、宛先ファイルが上書きされます|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+BlobMetadata
+
+| プロパティ名 | データ型 |
+|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|string|
+
+
+#### ファイルの作成時
+この操作では、フォルダーに新しいファイルが作成されたときにフローをトリガーします。
+
+|プロパティ名| 表示名|説明|
+| ---|---|---|
+|folderId*|フォルダー|フォルダーを選択する|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+ありません。
+
+#### ファイルの変更時
+この操作では、フォルダー内のファイルが変更されたときにフローをトリガーします。
+
+|プロパティ名| 表示名|説明|
+| ---|---|---|
+|folderId*|フォルダー|フォルダーを選択する|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+ありません。
+
+#### フォルダー内のファイルを一覧表示する
+この操作では、フォルダー内のファイルとサブフォルダーの一覧を取得します。
+
+|プロパティ名| 表示名|説明|
+| ---|---|---|
+|id*|フォルダー|フォルダーを選択する|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+BlobMetadata
+
+| プロパティ名 | データ型 |
+|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string||
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|文字列|
+
+
+#### ルート フォルダー内のファイルを一覧表示する
+この操作では、ルート フォルダー内のファイルとサブフォルダーの一覧を取得します。
+
+この呼び出しには、パラメーターはありません。
+
+
+##### 出力の詳細
+BlobMetadata
+
+| プロパティ名 | データ型 |
+|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|string|
+
+#### アーカイブをフォルダーに抽出する
+この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。
+
+|プロパティ名| 表示名|説明|
+| ---|---|---|
+|source*|Source archive file path (ソース アーカイブ ファイルのパス)|アーカイブ ファイルのパス|
+|destination*|Destination folder path (抽出先フォルダー パス)|アーカイブの内容を抽出するパス|
+|overwrite|Overwrite? (上書きを許可)|’true’ に設定すると、宛先ファイルが上書きされます|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+BlobMetadata
+
+| プロパティ名 | データ型 |
+|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|文字列|
+
+
+## HTTP 応答
+
+次の表に、アクションやトリガーへの応答とその応答の説明を示します。
+
 |名前|説明|
 |---|---|
 |200|OK|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
 |default|操作に失敗しました。|
-
-
-### ファイルを更新する
-OneDrive のファイルを更新します。```PUT: /datasets/default/files/{id}```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|id|string|○|path|なし|OneDrive 内の更新するファイルの一意識別子|
-|body| |○|body|なし|OneDrive 内の更新するファイルの内容|
-
-
-### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-### ファイルを削除する
-OneDrive からファイルを削除します。```DELETE: /datasets/default/files/{id}```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|id|string|○|path|なし|OneDrive から削除するファイルの一意識別子|
-
-
-### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-### パスを使用してファイルのメタデータを取得する
-パスを使用して、OneDrive のファイルのメタデータを取得します。```GET: /datasets/default/GetFileByPath```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|path|string|○|query|なし|OneDrive 内のファイルの一意のパス|
-
-
-### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-
-
-### パスを使用してファイルの内容を取得する
-パスを使用して、OneDrive のファイルの内容を取得します。```GET: /datasets/default/GetFileContentByPath```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|path|string|○|query|なし|OneDrive 内のファイルの一意のパス|
-
-
-### Response
-
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-
-
-### ID を使用してファイルの内容を取得する
-ID を使用して、OneDrive のファイルの内容を取得します。```GET: /datasets/default/files/{id}/content```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|id|string|○|path|なし|OneDrive 内のファイルの一意識別子|
-
-
-### Response
-
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-
-
-### ファイルを作成する
-OneDrive にファイルをアップロードします。```POST: /datasets/default/files```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|folderPath|string|○|query|なし|ファイルを OneDrive にアップロードするフォルダーのパス|
-|name|string|○|query|なし|OneDrive で作成するファイルの名前|
-|body| |○|body|なし|OneDrive にアップロードするファイルの内容|
-
-
-### Response
-
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-
-### ファイルをコピーする
-OneDrive にファイルをコピーします。```POST: /datasets/default/copyFile```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|source|string|○|query|なし|ソース ファイルの URL|
-|destination|string|○|query|なし|対象ファイル名を含む OneDrive の宛先ファイル パス|
-|overwrite|ブール値|×|query|false|’true’ に設定すると、宛先ファイルが上書きされます|
-
-
-### Response
-
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-
-### ファイルの作成時
-OneDrive フォルダーに新しいファイルが作成されたときにフローをトリガーします。```GET: /datasets/default/triggers/onnewfile```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|folderId|string|○|query|なし|OneDrive のフォルダーの一意識別子|
-
-
-### Response
-
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-
-### OneDrive フォルダー内のファイルが変更されたときにフローをトリガーする
-OneDrive フォルダー内のファイルが変更されたときにフローをトリガーします。```GET: /datasets/default/triggers/onupdatedfile```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|folderId|string|○|query|なし|OneDrive のフォルダーの一意識別子|
-
-
-### Response
-
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-
-### フォルダーを抽出する
-OneDrive にフォルダーを抽出します。```POST: /datasets/default/extractFolderV2```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|source|string|○|query|なし|アーカイブ ファイルのパス|
-|destination|string|○|query|なし|アーカイブの内容を抽出する OneDrive のパス|
-|overwrite|ブール値|×|query|false|’true’ に設定すると、宛先ファイルが上書きされます|
-
-
-### Response
-
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-
-## オブジェクト定義
-
-#### DataSetsMetadata
-
-|プロパティ名 | データ型 | 必須|
-|---|---|---|
-|tabular|未定義|×|
-|BLOB|未定義|×|
-
-
-#### TabularDataSetsMetadata
-
-|プロパティ名 | データ型 |必須|
-|---|---|---|
-|source セクション|string|×|
-|displayName|string|×|
-|urlEncoding|string|×|
-|tableDisplayName|string|×|
-|tablePluralName|string|×|
-
-
-#### BlobDataSetsMetadata
-
-|プロパティ名 | データ型 |必須|
-|---|---|---|
-|source セクション|string|×|
-|displayName|string|×|
-|urlEncoding|string|×|
-
-
-
-#### BlobMetadata
-
-|プロパティ名 | データ型 |必須|
-|---|---|---|
-|ID|string|×|
-|名前|string|×|
-|DisplayName|string|×|
-|パス|string|×|
-|LastModified|string|×|
-|サイズ|integer|×|
-|MediaType|string|×|
-|IsFolder|ブール値|×|
-|ETag|string|×|
-|FileLocator|string|×|
 
 
 ## 次のステップ
 
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。[API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
-[API リスト](apis-list.md)に戻ります。
-
-[5]: https://account.live.com/developers/applications/create
-[6]: ./media/connectors-create-api-onedrive/onedrive-new-app.png
-[7]: ./media/connectors-create-api-onedrive/onedrive-app-api-settings.png
-
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0720_2016-->

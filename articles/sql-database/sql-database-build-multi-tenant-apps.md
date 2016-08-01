@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="05/04/2016"
+   ms.date="07/19/2016"
    ms.author="carlrab"/>
 
 # Azure SQL Database による分離性と効率性を備えたマルチテナント アプリの構築
@@ -47,13 +47,13 @@ Basic、Standard、Premium プールは、さまざまなパフォーマンス�
 
 エラスティック プールだけでなく、複数のデータベースにまたがる運用アクティビティの管理に役立つ SQL Database の機能があります。
 
-** 複数のデータベースにまたがるクエリとレポートを実行する。 ** [エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用すると、エラスティック プール内の複数のデータベースに対するクエリとレポートを実行し、プールの多くのデータベースに格納されているデータに同時にリモート アクセスすることができます。
+** 複数のデータベースにまたがるクエリとレポートを実行する。** [エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用すると、エラスティック プール内の複数のデータベースに対するクエリとレポートを実行し、プールの多くのデータベースに格納されているデータに同時にリモート アクセスできます。
 
-** 複数のデータベースのトランザクションを実行する。 ** [エラスティック データベース トランザクション](sql-database-elastic-transactions-overview.md)を使用すると、SQL Database の複数のデータベースにまたがるトランザクションと操作を実行できます (たとえば、複数のデータベースで金融トランザクションを処理するとき、または 1 つのデータベースと注文で在庫を更新するとき)。
+** 複数のデータベースにまたがるトランザクションを実行する。** [エラスティック データベース トランザクション](sql-database-elastic-transactions-overview.md)を使用すると、SQL Database の複数のデータベースにまたがるトランザクションと操作を実行できます (つまり、複数のデータベースで金融トランザクションを処理するとき、または 1 つのデータベースと注文で在庫を更新するとき)。
 
-** 複数のデータベースに対して同じ操作を実行する。 ** [エラスティック データベース ジョブ](sql-database-elastic-jobs-overview.md)は、エラスティック プール内の各データベースに対してインデックスの再構築やスキーマの更新などの管理操作を実行します。
+** 複数のデータベースで同じ操作を実行する。** [エラスティック データベース ジョブ](sql-database-elastic-jobs-overview.md)は、エラスティック プール内の各データベースに対してインデックスの再構築やスキーマの更新などの管理操作を実行します。
 
-SQL Database の他の機能についてはホーム ページを参照してください。[ぜひご確認ください。](https://azure.microsoft.com/services/sql-database/)
+SQL Database の他の機能についてはホーム ページを[ぜひご確認ください。](https://azure.microsoft.com/services/sql-database/)
 
 ## 次のステップ
 
@@ -61,8 +61,8 @@ SQL Database の他の機能についてはホーム ページを参照してく
 
 ## その他のリソース
 
-[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)のすべてを確認します。
+[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)をすべて確認します。
  
 [SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -25,7 +25,7 @@
 
 ## Storage
 
-スケール セットはストレージ アカウントを利用し、セットに VM の OS ディスクを保管します。ストレージ アカウントあたり 20 以下の VM という比率が推奨されます。また、ストレージ アカウント名の始めの文字にアルファベットを使用することが推奨されます。異なる内部システムの負荷を分散するのに役立ちます。たとえば、次のテンプレートでは、uniqueString ARM テンプレート機能を利用し、ストレージ アカウント名の先頭に追加するプレフィックス ハッシュを生成します。[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat)
+スケール セットはストレージ アカウントを利用し、セットに VM の OS ディスクを保管します。ストレージ アカウントあたり 20 以下の VM という比率が推奨されます。また、ストレージ アカウント名の始めの文字にアルファベットを使用することが推奨されます。異なる内部システムの負荷を分散するのに役立ちます。たとえば、次のテンプレートでは、uniqueString ARM テンプレート関数を利用し、ストレージ アカウント名の先頭に追加するプレフィックス ハッシュを生成しています。[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat)
 
 
 ## オーバープロビジョニング
@@ -44,4 +44,4 @@
 
 VM の数が、これらの制限で許可されている数を超える場合は、複数のスケール セットをデプロイする必要があります。その方法の例については、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)のテンプレートをご覧ください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->
