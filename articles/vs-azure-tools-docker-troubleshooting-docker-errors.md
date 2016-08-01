@@ -111,7 +111,7 @@ Microsoft Edge ブラウザーを使用している場合、IP アドレスが�
 1. **[ローカル イントラネット]** ゾーンを選択します。
 1. **[サイト]** を選択します。
 1. 一覧に仮想マシンの IP (この場合は Docker ホスト) を追加します。
-1. Edge でページを更新すると、サイトが実行されていることがわかります。
+1. Microsoft Edgeでページを更新すると、サイトが実行されていることがわかります。
 1. この問題の詳細については、Scott Hanselman のブログ記事「[Microsoft Edge can't see or open VirtualBox-hosted local web sites (VirtualBox にホストされたローカル Web サイトを Microsoft Edge で表示したり開いたりできない)](http://www.hanselman.com/blog/FixedMicrosoftEdgeCantSeeOrOpenVirtualBoxhostedLocalWebSites.aspx)」を参照してください。
 
 ##0\.15 以前のバージョンのトラブルシューティング
