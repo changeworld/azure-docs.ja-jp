@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/28/2016"
+	ms.date="07/18/2016"
 	ms.author="glenga"/>
 
 # Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
@@ -97,7 +97,7 @@ OWIN スタートアップ クラスの `Configuration()` メソッドで、サ�
 	    .MapApiControllers()
 	    .ApplyTo(config);
 
-`MapApiControllers` は、`[MobileAppController]` 属性が設定されているコントローラーのみマップすることに注意してください。
+`MapApiControllers` は、`[MobileAppController]` 属性が設定されているコントローラーのみマップすることに注意してください。他のコントローラーをマップするには、[MapHttpAttributeRoutes] メソッドを使用します。
 
 機能拡張メソッドの多くは、含めることが可能な追加の NuGet パッケージから入手できます。これらについては以下のセクションで説明します。
 
@@ -134,7 +134,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 
 - [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) モバイル アプリから従来の Web ブラウザーにデータを提供するコントローラーを作成します。構成に追加するには、**MapLegacyCrossDomainController** 拡張メソッドを呼び出します。
 
-- [Microsoft.Azure.Mobile.Server.Login] では、AppServiceLoginHandler.CreateToken() メソッドを使用したカスタム認証のプレビュー サポートを提供します。これは静的メソッドであり、この構成で有効にする必要はありません。
+- [Microsoft.Azure.Mobile.Server.Login] では、AppServiceLoginHandler.CreateToken() メソッドを使用したカスタム認証のサポートを提供します。これは静的メソッドであり、この構成で有効にする必要はありません。
 
 ## <a name="publish-server-project"></a>方法: サーバー プロジェクトを発行する
 
@@ -160,7 +160,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 
 	![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
-##<a name="define-table-controller"></a> 方法: テーブル コントローラーを定義する
+##<a name="define-table-controller"></a>方法: テーブル コントローラーを定義する
 
 テーブル コントローラーは、テーブル ベースのデータ ストア (SQL Database や Azure Table Storage など) にあるエンティティ データへのアクセスを提供します。テーブル コントローラーは、次のように **TableController** ジェネリック クラスから継承します。このクラスでは、ジェネリック型はテーブル スキーマを表すモデルのエンティティです。
 
@@ -190,7 +190,7 @@ PageSize が、クライアントから要求されるサイズ以上になる�
 
 ## 方法: カスタム API コントローラーを定義する
 
-カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。[MobileAppController] 属性を使用して、モバイル固有の API コント ローラーを登録できます。この属性は、ルートを登録し、Mobile Apps JSON シリアライザーも設定します。
+カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。[MobileAppController] 属性を使用して、モバイル固有の API コント ローラーを登録できます。この属性は、ルートを登録し、Mobile Apps JSON シリアライザーを設定するほか、[クライアント バージョン チェック](app-service-mobile-client-and-server-versioning.md)をオンにします。
 
 1. Visual Studio で、Controllers フォルダーを右クリックして、**[追加]**、**[コントローラー]** の順にクリックし、**[Web API 2 コントローラー - 空]** を選択して **[追加]** をクリックします。
 
@@ -250,6 +250,8 @@ App Service Authentication/Authorization プロバイダーの中に使用した
 ユーザーをサインインするかどうかを判断するための独自のロジックを提供する必要があります。たとえば、データベース内のソルトを使用してハッシュ化されたパスワードと照合することができます。次の例では、`isValidAssertion()` メソッドがこれらの照合を実行します。このメソッドは他の場所で定義されています。
 
 カスタム認証を公開するには、ApiController を新規作成し、以下のような登録とログインのアクションを公開します。クライアントは、ユーザーから関連情報を収集し、本文にユーザー情報を含めた HTTPS POST を API に送信することでログインを試行できます。サーバーでアサーションを検証したら、`AppServiceLoginHandler.CreateToken()` メソッドを使用してトークンを発行できます。
+
+この ApiController では、`[MobileAppController]` 属性は使用**できません**ので、注意してください。クライアント ログイン要求が失敗するためです。`[MobileAppController]` 属性には要求ヘッダーの [ZUMO-API-VERSION](app-service-mobile-client-and-server-versioning.md) が必要であり、このヘッダーはログイン ルートのクライアント SDK からは送信**されません**。
 
 ログイン アクションの例は次のようになります。
 
@@ -388,7 +390,7 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 
 ##<a name="tags"></a>方法: ターゲットを絞ったプッシュを有効にするために、タグをデバイス インストールに追加する
 
-Notification Hubs では、タグを使用して、ターゲットを絞った通知を特定の登録に送信できます。1 つのタグが自動的に作成されます。そのタグは、特定のデバイス上のアプリのインスタンスに固有のインストール ID です。インストール ID を使用した登録も*インストール*と呼ばれます。インストール ID を使用して、タグの追加など、インストールの管理操作を実行できます。インストール ID には、**MobileServiceClient** の **installationId** プロパティからアクセスできます。
+Notification Hubs では、タグを使用して、ターゲットを絞った通知を特定の登録に送信できます。1 つのタグが自動的に作成されます。そのタグは、特定のデバイス上のアプリのインスタンスに固有のインストール ID です。インストール ID を使用した登録も "*インストール*" と呼ばれます。インストール ID を使用して、タグの追加など、インストールの管理操作を実行できます。インストール ID には、**MobileServiceClient** の **installationId** プロパティからアクセスできます。
 
 次の例では、Notification Hubs でインストール ID を使用して特定のインストールにタグを追加する方法を示します。
 
@@ -402,7 +404,7 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
 	    }
 	});
 
-インストールを作成するときは、プッシュ通知の登録時にクライアントから提供されたタグはすべてバックエンドでは無視されることに注意してください。クライアントがインストールにタグを追加できるようにするには、上記のパターンを使用してタグを追加する新しいカスタム API を作成する必要があります。クライアントがインストールにタグを追加できるようにするカスタム API コントローラーの例については、「App Service Mobile Apps completed quickstart sample for .NET backend (.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプル)」の「[Client-added push notification tags (クライアントが追加したプッシュ通知タグ)](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags)」をご覧ください。
+インストールを作成するときは、プッシュ通知の登録時にクライアントから提供されたタグはすべてバックエンドでは無視されることに注意してください。クライアントがインストールにタグを追加できるようにするには、上記のパターンを使用してタグを追加する新しいカスタム API を作成する必要があります。クライアントがインストールにタグを追加できるようにするカスタム API コントローラーの例については、.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプルに関するページで、「[Client-added push notification tags (クライアントが追加したプッシュ通知タグ)](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags)」をご覧ください。
 
 ##<a name="push-user"></a>方法: 認証されたユーザーにプッシュ通知を送信する
 
@@ -477,5 +479,6 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Authentication]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
+[MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

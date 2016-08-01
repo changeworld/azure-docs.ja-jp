@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/26/2016"
+   ms.date="07/19/2016"
    ms.author="seanmck"/>
 
 # 複数の環境のアプリケーション パラメーターを管理する
@@ -119,7 +119,7 @@ Visual Studio でアプリケーションを発行する場合は、使用可能
 
 ### PowerShell からのデプロイ
 
-アプリケーション プロジェクト テンプレートに含まれる `Deploy-FabricApplication.ps1` PowerShell スクリプトは、発行プロファイルをパラメーターとして受け入れます。PublishProfile にはアプリケーション パラメーター ファイルへの参照が含まれています。
+アプリケーション プロジェクト テンプレートに含まれる `Deploy-FabricApplication.ps1` PowerShell スクリプトは、発行プロファイルをパラメーターとして受け入れます。PublishProfile には、アプリケーション パラメーター ファイルへの参照が含まれています。
 
   ```PowerShell
     ./Deploy-FabricApplication -ApplicationPackagePath <app_package_path> -PublishProfileFile <publishprofile_path>
@@ -127,11 +127,11 @@ Visual Studio でアプリケーションを発行する場合は、使用可能
 
 ## 次のステップ
 
-このトピックで説明したいくつかのコア概念の詳細については、[Service Fabric の技術概要](service-fabric-technical-overview.md)に関する記事を参照してください。Visual Studio で使用可能なその他のアプリケーション管理機能の詳細については、[Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)に関する記事を参照してください。
+このトピックで説明した一部の主要概念の詳細については、[Service Fabric の技術概要](service-fabric-technical-overview.md)に関する記事をご覧ください。Visual Studio で使用可能なその他のアプリケーション管理機能については、[Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)に関する記事をご覧ください。
 
 <!-- Image references -->
 
 [publishdialog]: ./media/service-fabric-manage-multiple-environment-app-configuration/publish-dialog-choose-app-config.png
 [app-parameters-solution-explorer]: ./media/service-fabric-manage-multiple-environment-app-configuration/app-parameters-in-solution-explorer.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

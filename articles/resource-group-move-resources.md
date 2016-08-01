@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/06/2016" 
+	ms.date="07/19/2016" 
 	ms.author="tomfitz"/>
 
 # 新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -44,7 +44,7 @@
 現在、新しいリソース グループへの移動と新しいサブスクリプションへの移動の両方をサポートするサービスは、次のとおりです。
 
 - API Management
-- App Service アプリ - 「[App Service の制限事項](#app-service-limitations)」を参照してください
+- App Service アプリ (Web Apps) - 「[App Service の制限事項](#app-service-limitations)」を参照してください
 - Automation
 - Batch  
 
@@ -273,4 +273,4 @@ Web アプリがその App Service プランとは異なるリソース グル�
 - サブスクリプションを管理するためのポータル機能については、[Azure ポータルを使用したリソース管理](./azure-portal/resource-group-portal.md)に関するページを参照してください。
 - リソースを論理的に整理する方法については、[タグを使用したリソースの整理](resource-group-using-tags.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

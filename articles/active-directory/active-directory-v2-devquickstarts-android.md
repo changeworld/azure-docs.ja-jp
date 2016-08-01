@@ -48,7 +48,7 @@ git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.g
 [アプリケーション登録ポータル](https://apps.dev.microsoft.com)で新しいアプリを作成するか、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](active-directory-v2-app-registration.md)」の詳細な手順に従ってください。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をコピーしておきます。これは後で必要になります。
-- アプリ用の**モバイル** プラットフォームを追加します。
+- アプリ用の**モバイル** プラットフォームを追加します。
 - ポータルから**リダイレクト URI** をコピーしておきます。既定値の `https://login.microsoftonline.com/common/oauth2/nativeclient`を使用する必要があります。
 
 
@@ -148,12 +148,12 @@ git@github.com:kalemontes/OIDCAndroidLib.git
 	```xml
 	    <string-array name="oidc_scopes">
 	        <item>openid</item>
-	        <item>User.ReadBasic.All</item>
+	        <item>https://graph.microsoft.com/User.Read</item>
 	        <item>offline_access</item>
 	    </string-array>
 	```
 
-`oidc_scopes` の `User.ReadBasic.All` 値により 、ディレクトリ内のすべてのユーザーの基本的なプロファイルを読み取ることができます。使用可能なすべてのスコープの詳細については、「[Microsoft Graph のアクセス許可スコープ](https://graph.microsoft.io/docs/authorization/permission_scopes)」を参照してください。
+`oidc_scopes` 内の `User.Read` 値によって、サインインしているユーザーの基本プロファイルを読み取ることができます。使用可能なすべてのスコープの詳細については、「[Microsoft Graph のアクセス許可スコープ](https://graph.microsoft.io/docs/authorization/permission_scopes)」を参照してください。
 
 OpenID Connect のスコープとしての `openid` または `offline_access` について詳しい解説が必要な場合は、[2\.0 プロトコル - OAuth 2.0 承認コード フロー](active-directory-v2-protocols-oauth-code.md)に関するページを参照してください。
 
@@ -196,4 +196,4 @@ OpenID Connect のスコープとしての `openid` または `offline_access` �
 
 セキュリティの問題に関する通知を受け取ることをお勧めします。[Security TechCenter](https://technet.microsoft.com/security/dd252948) にアクセスし、セキュリティ アドバイザリ通知の受信登録を行ってください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

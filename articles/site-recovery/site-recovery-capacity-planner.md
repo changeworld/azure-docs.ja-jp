@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="07/06/2016" 
+	ms.date="07/12/2016" 
 	ms.author="raynew"/>
 
 # Azure Site Recovery で仮想マシンおよび物理サーバーを保護するための容量計画
@@ -81,7 +81,7 @@ Site Recovery Capacity Planner では、ソース環境やワークロードを�
 
 	![Getting Started (概要)](./media/site-recovery-capacity-planner/getting-started-2.png)
 
-3.	**Workload Qualification** ワークシートに、必要な情報を入力します。マークが付いているフィールドはすべて入力する必要があります。
+3.	**Workload Qualification ** ワークシートに、必要な情報を入力します。マークが付いているフィールドはすべて入力する必要があります。
 
 	- **[プロセッサ コア]** には、ソース サーバー上のコアの総数を指定します。
 	- **[メモリの割り当て (MB)]** には、ソース サーバーの RAM サイズを指定します。
@@ -133,4 +133,4 @@ AA から AE の列が出力され、各 VM の情報が示されます。
 
 	![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

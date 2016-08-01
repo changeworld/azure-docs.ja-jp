@@ -50,7 +50,7 @@ git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.g
 [アプリケーション登録ポータル](https://apps.dev.microsoft.com)で新しいアプリを作成するか、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](active-directory-v2-app-registration.md)」の詳細な手順に従ってください。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をコピーしておきます。これは後で必要になります。
-- アプリ用の**モバイル** プラットフォームを追加します。
+- アプリ用の**モバイル** プラットフォームを追加します。
 - ポータルから**リダイレクト URI** をコピーしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
 
@@ -108,7 +108,7 @@ NXOAuth2Client ライブラリでは、いくつかの値を設定する必要�
 - 認証と承認のコンテキストを設定するために、いくつかの値を `LoginViewController.m` ファイルに追加しましょう。値の詳細については、コードに従ってください。
 
 	```objc
-	NSString *scopes = @"offline_access User.ReadBasic.All";
+	NSString *scopes = @"openid offline_access User.Read";
 	NSString *authURL = @"https://login.microsoftonline.com/common/oauth2/v2.0/authorize";
 	NSString *loginURL = @"https://login.microsoftonline.com/common/login";
 	NSString *bhh = @"urn:ietf:wg:oauth:2.0:oob?code=";
@@ -124,7 +124,7 @@ NXOAuth2Client ライブラリでは、いくつかの値を設定する必要�
 
 コードの詳細を見てみましょう。
 
-最初は `scopes` の文字列です。`User.ReadBasic.All` 値により 、ディレクトリ内のすべてのユーザーの基本的なプロファイルを読み取ることができます。
+最初は `scopes` の文字列です。`User.Read` 値によって、サインインしているユーザーの基本プロファイルを読み取ることができます。
 
 使用可能なすべてのスコープの詳細については、「[Microsoft Graph のアクセス許可スコープ](https://graph.microsoft.io/docs/authorization/permission_scopes)」を参照してください。
 
@@ -588,4 +588,4 @@ NSArray *accounts = [store accountsWithAccountType:@"myGraphService"];
 
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。[Security TechCenter](https://technet.microsoft.com/security/dd252948) にアクセスし、セキュリティ アドバイザリ通知の受信登録を行ってください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

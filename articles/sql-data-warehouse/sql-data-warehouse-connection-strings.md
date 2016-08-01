@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/16/2016"
+   ms.date="07/18/2016"
    ms.author="sonyama;barbkess"/>
 
 
@@ -27,12 +27,12 @@
 
 次のアプリケーション プロトコルのいずれかを使用すると、SQL Data Warehouse に接続できます。
 
-- ADO.NET
-- ODBC
-- PHP
-- JDBC 
+- [ADO.NET][]
+- [ODBC][]
+- [PHP][]
+- [JDBC][]
 
-各プロトコルの接続文字列の例を以下に示します。接続文字列は、Azure ポータルを使用して設定することもできます。Azure ポータルでデータベースに移動します。*[要点]* で *[データベース接続文字列の表示]* をクリックします。
+各プロトコルの接続文字列の例を以下に示します。接続文字列は、Azure ポータルを使用して設定することもできます。Azure ポータルでデータベースに移動します。[要点] で [データベース接続文字列の表示] をクリックします。
 
 ## ADO.NET 接続文字列の例
 
@@ -60,15 +60,19 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## 次のステップ
 
-Visual Studio またはその他のアプリケーションを使用してデータ ウェアハウスに対するクエリを開始するには、Visual Studio を使用したクエリに関するページをご覧ください。
+Visual Studio またはその他のアプリケーションを使用してデータ ウェアハウスに対するクエリを開始するには、[Visual Studio を使用したクエリ][]に関するページをご覧ください。
 
 <!--Image references-->
 
 <!--Azure.com references-->
-
-
+ [Visual Studio を使用したクエリ]: ./sql-data-warehouse-query-visual-studio.md
+ 
 <!--MSDN references-->
+[ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
+[ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
+[PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
+[JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
 
 <!--Other references-->
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

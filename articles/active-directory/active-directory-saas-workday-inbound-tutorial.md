@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="MarkusVi"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/12/2016" 
+    ms.date="07/13/2016" 
     ms.author="markvi" />
 
 
@@ -27,7 +27,7 @@
   
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-1. Workday のアプリケーション統合の有効化 
+1. Workday のアプリケーション統合の有効化
 
 
 2. 統合システム ユーザーの作成
@@ -53,9 +53,9 @@
   
 このセクションでは、Workday のアプリケーション統合を有効にする方法について説明します。
 
-###Workday のアプリケーション統合を有効にするには、次の手順を実行します。
+### 手順:
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-workday-inbound-tutorial/IC700993.png "Active Directory")
 
@@ -84,11 +84,18 @@
 
 ## 統合システム ユーザーの作成
 
-1. **Workday Workbench** で、検索ボックスに「ユーザーの作成」と入力し、**[統合システム ユーザーの作成]** をクリックします。<br><br> ![ユーザーの作成](./media/active-directory-saas-workday-inbound-tutorial/IC750979.png "ユーザーの作成")
+### 手順:
+
+
+1. **Workday Workbench** で、検索ボックスに「ユーザーの作成」と入力し、**[Create Integration System User (統合システム ユーザーの作成)]** をクリックします。
+
+	![ユーザーの作成](./media/active-directory-saas-workday-inbound-tutorial/IC750979.png "ユーザーの作成")
 
 
 
-2. 新しい統合システム ユーザーのユーザー名とパスワードを指定して、**統合システム ユーザーを作成**する作業を完了します。このユーザーはプログラムを使用してログオンするため、[次回のサインイン時に新しいパスワードを要求する] オプションはオフのままにしておきます。<br>[セッション タイムアウト (分)] は既定値の 0 のままにしておきます。これにより、ユーザーのセッションが有効期限前にタイムアウトするのを防ぎます。<br><br> ![統合システム ユーザーの作成](./media/active-directory-saas-workday-inbound-tutorial/IC750980.png "統合システム ユーザーの作成")
+2. 新しい統合システム ユーザーのユーザー名とパスワードを指定して、**統合システム ユーザーを作成**する作業を完了します。このユーザーはプログラムを使用してログオンするため、[次回のサインイン時に新しいパスワードを要求する] オプションはオフのままにしておきます。[セッション タイムアウト (分)] は既定値の 0 のままにしておきます。これにより、ユーザーのセッションが有効期限前にタイムアウトするのを防ぎます。
+
+	![統合システム ユーザーの作成](./media/active-directory-saas-workday-inbound-tutorial/IC750980.png "統合システム ユーザーの作成")
  
 
 
@@ -98,24 +105,40 @@
 
 このチュートリアルで概説したシナリオの場合、制約のない統合システム セキュリティ グループを作成し、それにユーザーを割り当てる必要があります。
 
+### 手順:
 
-1. 検索ボックスに「セキュリティ グループの作成」と入力し、**[セキュリティ グループの作成]** をクリックします。 <br><br> ![CreateSecurity グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750981.png "CreateSecurity グループ")
+1. 検索ボックスに「セキュリティ グループの作成」と入力し、**[Create Security Group (セキュリティ グループの作成)]** をクリックします。
+
+	![CreateSecurity グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750981.png "CreateSecurity グループ")
  
 
-2. セキュリティ グループの作成タスクを完了します。[テナント セキュリティ グループの種類] ドロップダウンから [統合システム セキュリティ グループ - 制約なし] を選択し、メンバーが明示的に追加されるセキュリティ グループを作成します。<br><br> ![CreateSecurity グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750982.png "CreateSecurity グループ")
+2. セキュリティ グループの作成タスクを完了します。[テナント セキュリティ グループの種類] ドロップダウンから [統合システム セキュリティ グループ - 制約なし] を選択し、メンバーが明示的に追加されるセキュリティ グループを作成します。
+
+	![CreateSecurity グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750982.png "CreateSecurity グループ")
  
 
 
 
 ## セキュリティ グループへの統合システム ユーザーの割り当て
 
-1. 検索ボックスに「セキュリティ グループの編集」と入力し、**[セキュリティ グループの編集]** をクリックします。<br><br> ![セキュリティ グループの編集](./media/active-directory-saas-workday-inbound-tutorial/IC750983.png "セキュリティ グループの編集")
+### 手順:
+
+
+1. 検索ボックスに「セキュリティ グループの編集」と入力し、**[Edit Security Group (セキュリティ グループの編集)]** をクリックします。
+
+	![セキュリティ グループの編集](./media/active-directory-saas-workday-inbound-tutorial/IC750983.png "セキュリティ グループの編集")
  
  
 
-2. 新しい統合セキュリティ グループを名前で検索し、選択します。<br><br> ![セキュリティ グループの編集](./media/active-directory-saas-workday-inbound-tutorial/IC750984.png "セキュリティ グループの編集") セキュリティ グループの編集
+2. 新しい統合セキュリティ グループを名前で検索し、選択します。
 
-3. 新しいセキュリティ グループに新しい統合システム ユーザーを追加します。<br><br> ![システム セキュリティ グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750985.png "システム セキュリティ グループ")
+	![セキュリティ グループの編集](./media/active-directory-saas-workday-inbound-tutorial/IC750984.png "セキュリティ グループの編集")
+
+ 
+
+3. 新しいセキュリティ グループに新しい統合システム ユーザーを追加します。
+
+	![システム セキュリティ グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750985.png "システム セキュリティ グループ")
 
 
 
@@ -133,23 +156,34 @@
 - Worker Data: Current Staffing Information
 
 - Worker Data: Business Title on Worker Profile
- 
-   
-
-1. 検索ボックスにドメインのセキュリティ ポリシーを入力し、[機能領域のドメイン セキュリティ ポリシー] リンクをクリックします。<br><br> ![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750986.png "ドメイン セキュリティ ポリシー")  
- 
-
-2. システムを検索し、**システム**の機能領域を選択します。**[OK]** をクリックします。<br><br> ![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750987.png "ドメイン セキュリティ ポリシー")
-
-
-3. [システム] 機能領域のセキュリティ ポリシーの一覧で、[セキュリティ管理] を展開し、ドメイン セキュリティ ポリシーの [外部アカウントのプロビジョニング] を選択します。<br><br> ![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750988.png "ドメイン セキュリティ ポリシー")
-
-
-4. **[権限の編集]** をクリックし、**[権限の編集]** ダイアログ ページで、**Get** と **Put** の統合アクセス権限を持つセキュリティ グループの一覧に新しいセキュリティ グループを追加します。<br><br> ![アクセス許可の編集](./media/active-directory-saas-workday-inbound-tutorial/IC750989.png "アクセス許可の編集")
 
  
+### 手順:
 
-5. 上記の手順 1. を繰り返して、機能領域を選択する画面に戻ります。今回はスタッフを検索して、[スタッフ] 機能領域を選択し、**[OK]** をクリックします。<br><br> ![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750990.png "ドメイン セキュリティ ポリシー")
+1. 検索ボックスにドメインのセキュリティ ポリシーを入力し、[機能領域のドメイン セキュリティ ポリシー] リンクをクリックします。
+
+	![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750986.png "ドメイン セキュリティ ポリシー")
+ 
+
+2. システムを検索し、**システム**の機能領域を選択します。**[OK]** をクリックします。
+
+	![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750987.png "ドメイン セキュリティ ポリシー")
+
+
+3. [システム] 機能領域のセキュリティ ポリシーの一覧で、[Security Administration] を展開し、ドメイン セキュリティ ポリシーの [外部アカウントのプロビジョニング] を選択します。
+
+	![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750988.png "ドメイン セキュリティ ポリシー")
+
+
+4. **[Edit Permissions (権限の編集)]** をクリックし、**[Edit Permissions (権限の編集)]** ダイアログ ページで、**Get** と **Put** の統合アクセス権限を持つセキュリティ グループの一覧に新しいセキュリティ グループを追加します。
+
+	![アクセス許可の編集](./media/active-directory-saas-workday-inbound-tutorial/IC750989.png "アクセス許可の編集")
+
+ 
+
+5. 上記の手順 1. を繰り返して、機能領域を選択する画面に戻ります。今回はスタッフを検索して、[Staffing (スタッフ)] 機能領域を選択し、**[OK]** をクリックします。
+
+	![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750990.png "ドメイン セキュリティ ポリシー")
  
 
 6. スタッフ機能領域のセキュリティ ポリシーの一覧で、[ Worker Data: Staffing] を展開し、残りの各セキュリティ ポリシーに対して上記の手順 4. を繰り返します。
@@ -163,7 +197,7 @@
      - Worker Data: Business Title on Worker Profile
 
 
-<br><br> ![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750991.png "ドメイン セキュリティ ポリシー")
+	![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750991.png "ドメイン セキュリティ ポリシー")
 
 
 
@@ -173,14 +207,21 @@
 
 ## セキュリティ ポリシーの変更のアクティブ化
 
+### 手順:
 
-1. 検索ボックスに「アクティブ化」と入力し、[保留中のセキュリティ ポリシーの変更をアクティブ化] をクリックします。<br><br> ![アクティブ化](./media/active-directory-saas-workday-inbound-tutorial/IC750992.png "アクティブ化") 
+1. 検索ボックスに「アクティブ化」と入力し、[保留中のセキュリティ ポリシーの変更をアクティブ化] をクリックします。
+
+	![アクティブ化](./media/active-directory-saas-workday-inbound-tutorial/IC750992.png "アクティブ化")
  
 
-2. 監査用のコメントを入力し、**[OK]** をクリックして、[保留中のセキュリティ ポリシーの変更のアクティブ化] 作業を開始します。<br><br> ![保留中のセキュリティのアクティブ化](./media/active-directory-saas-workday-inbound-tutorial/IC750993.png "保留中のセキュリティのアクティブ化")
+2. 監査用のコメントを入力し、**[OK]** をクリックして、[Activate Pending Security Policy Changes (保留中のセキュリティ ポリシーの変更のアクティブ化)] 作業を開始します。
+
+	![保留中のセキュリティのアクティブ化](./media/active-directory-saas-workday-inbound-tutorial/IC750993.png "保留中のセキュリティのアクティブ化")
  
 
-3. [確認] チェックボックスをオンにして、**[OK]** をクリックし、次の画面で作業を完了します。<br><br> ![保留中のセキュリティのアクティブ化](./media/active-directory-saas-workday-inbound-tutorial/IC750994.png "保留中のセキュリティのアクティブ化")
+3. [Confirm (確認)] チェック ボックスをオンにして、**[OK]** をクリックし、次の画面で作業を完了します。
+
+	![保留中のセキュリティのアクティブ化](./media/active-directory-saas-workday-inbound-tutorial/IC750994.png "保留中のセキュリティのアクティブ化")
 
 
 
@@ -191,28 +232,36 @@
 このセクションでは、Azure AD を構成して Workday からユーザーをインポートする方法について説明します。
 
 
-### Azure AD でユーザーのインポートを構成するには、次の手順を実行します。
+### 手順:
 
 
 1. **Workday** アプリケーション統合ページで、**[ユーザー インポートの構成]** をクリックして、**[プロビジョニングの構成]** ダイアログを開きます。
 
 
-2\. **[設定と管理者資格情報]** ページで次の手順を実行し、**[次へ]** をクリックします。<br><br> ![設定と管理者の資格情報](./media/active-directory-saas-workday-inbound-tutorial/IC750995.png "設定と管理者の資格情報")
+2. **[設定と管理者資格情報]** ページで次の手順を実行し、**[次へ]** をクリックします。
+
+	![設定と管理者の資格情報](./media/active-directory-saas-workday-inbound-tutorial/IC750995.png "設定と管理者の資格情報")
  
-     2.1. In the Workday admin user name textbox, type the name of the user you have created in the Creating an integration system user section.
+	a.[WORKDAY 管理ユーザー名] テキストボックスに、「統合システム ユーザーの作成」セクションで作成したユーザーの名前を入力します。
 
-     2.2. In the Workday admin password textbox, type the password of the user you have created in the Creating an integration system user section.
+    b.[WORKDAY 管理パスワード] テキストボックスに、「統合システム ユーザーの作成」セクションで作成したユーザーのパスワードを入力します。
 
-     2.3. In the Workday tenant URL textbox, type the URL or your Workday tenant.
+    c.[WORKDAY テナント URL] テキストボックスに、URL または Workday テナントを入力します。
 
 
-3. **[接続テスト]** ページで、**[テスト開始]** をクリックして接続を確認し、**[次へ]** をクリックします。<br><br> ![接続テスト](./media/active-directory-saas-workday-inbound-tutorial/IC750996.png "接続テスト")  
+3. **[接続テスト]** ページで、**[テスト開始]** をクリックして接続を確認し、**[次へ]** をクリックします。
+
+	![接続テスト](./media/active-directory-saas-workday-inbound-tutorial/IC750996.png "接続テスト")
  
 
-4. **[プロビジョニング]** オプション ページで、**[次へ]** をクリックします。<br><br> ![プロビジョニングのオプション](./media/active-directory-saas-workday-inbound-tutorial/IC750997.png "プロビジョニングのオプション")
+4. **[プロビジョニング オプション]** ページで、**[次へ]** をクリックします。
+
+	![プロビジョニングのオプション](./media/active-directory-saas-workday-inbound-tutorial/IC750997.png "プロビジョニングのオプション")
 
 
-5. **[プロビジョニングの開始]** ダイアログで、**[完了]** をクリックします。<br><br> ![プロビジョニングの開始](./media/active-directory-saas-workday-inbound-tutorial/IC750998.png "プロビジョニングの開始")
+5. **[プロビジョニングの開始]** ダイアログで、**[完了]** をクリックします。
+
+	![プロビジョニングの開始](./media/active-directory-saas-workday-inbound-tutorial/IC750998.png "プロビジョニングの開始")
  
 
 これで、**[ユーザー]** セクションに移動して、Workday ユーザーがインポートされたかどうかを確認できます。
@@ -224,4 +273,4 @@
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-<!---HONumber=AcomDC_0114_2016-->
+<!---HONumber=AcomDC_0720_2016-->

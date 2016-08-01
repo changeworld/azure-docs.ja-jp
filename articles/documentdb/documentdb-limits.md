@@ -19,10 +19,10 @@
 
 # DocumentDB の既定のクォータ
 
-次の表では、DocumentDB リソースの既定のクォータについて説明します。
+次の表では、Azure DocumentDB データベース リソースの既定のクォータについて説明します。
 
 [AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
 
 アスタリスク (*) 付きで表示されているクォータは、[Azure サポートに問い合わせて調整できます](documentdb-increase-limits.md)。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/15/2016"
+   ms.date="07/19/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute 回線の作成と変更
@@ -153,4 +153,4 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 - [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-portal-resource-manager.md)
 - [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

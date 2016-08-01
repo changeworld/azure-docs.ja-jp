@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="07/18/2016"
 	ms.author="jodebrui"/>
 
 
@@ -58,4 +58,4 @@ Azure [ポータル](https://portal.azure.com/)で、インメモリ ストレ�
 ## 次のステップ
 その他のリソースとして「[動的管理ビューを使用した Azure SQL Database の監視](sql-database-monitoring-with-dmvs.md)」を参照する
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

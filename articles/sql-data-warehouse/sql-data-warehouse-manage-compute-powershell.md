@@ -34,7 +34,7 @@
 - コンピューティングの一時停止
 - コンピューティングの再開
 
-これについては、コンピューティングの管理の概要に関するページをご覧ください。
+これについては、[コンピューティングの管理の概要][]に関するページをご覧ください。
 
 
 ## 開始する前に
@@ -47,7 +47,7 @@
 
 作業を開始するには:
 
-1. Azure PowerShell を開きます。 
+1. Azure PowerShell を開きます。
 2. PowerShell プロンプトで、次のコマンドを実行して Azure Resource Manager にサインインし、サブスクリプションを選択します。
 
     ```PowerShell
@@ -125,6 +125,7 @@ $resultDatabase
 [Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 [管理の概要]: ./sql-data-warehouse-overview-manage.md
 [Azure PowerShell のインストールと構成の方法]: ./powershell-install-configure.md
+[コンピューティングの管理の概要]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 [Resume-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt619347.aspx
@@ -135,4 +136,4 @@ $resultDatabase
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

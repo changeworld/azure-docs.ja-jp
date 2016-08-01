@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/18/2016"
+   ms.date="07/19/2016"
    ms.author="cherylmc"/>
 
 # 回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
@@ -32,7 +32,7 @@
 
 	-  Azure プライベート ピアリングを有効にする - 仮想ネットワーク内にデプロイされている VM / クラウドに接続するには、このピアリングを有効にする必要があります。
 	-  Azure パブリック ピアリングを有効にする - パブリック IP アドレスにホストされている Azure サービスに接続する場合、Azure パブリック ピアリングを有効にする必要があります。Azure プライベート ピアリングの既定のルーティングを有効にする場合、これが Azure リソースにアクセスするための要件となります。
-	-  Microsoft ピアリングを有効にする - Office 365 と CRM Online サービスにアクセスするにはこれを有効にする必要があります。 
+	-  Microsoft ピアリングを有効にする - Office 365 と CRM Online サービスにアクセスするにはこれを有効にする必要があります。
 	
 	>[AZURE.IMPORTANT] Microsoft に接続するには、インターネットに使用しているプロキシ/エッジとは別のプロキシ/エッジを使用する必要があります。ExpressRoute とインターネットの両方に同じエッジを使用すると、ルーティングが非同期になり、ネットワークの接続が停止します。
 
@@ -120,4 +120,4 @@ BGP プロビジョニング状態からは、Microsoft エッジで BGP セッ�
 	- [ルーティングの構成](expressroute-howto-routing-arm.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0720_2016-->

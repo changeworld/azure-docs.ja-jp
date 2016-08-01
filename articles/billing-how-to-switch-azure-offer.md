@@ -1,5 +1,5 @@
 <properties
-	pageTitle="別の Azure プランへの切り替え | Microsoft Azure"
+	pageTitle="Azure サブスクリプションを別のプランに切り替える | Microsoft Azure"
 	description="Azure サブスクリプションを別の Azure プランに切り替える方法について説明します"
 	services=""
 	documentationCenter=""
@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/29/2016"
+	ms.date="07/15/2016"
 	ms.author="genli"/>
 
-# 別の Azure プランへの切り替え
+# Azure サブスクリプションを別のプランに切り替える
 
 既存のサブスクリプションをサービスのダウンタイムなしで、より有利なプランに切り替えることができます。次のような場合、プランの切り替えの検討できます。
 
@@ -75,4 +75,4 @@
 -	[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)から [12 か月分の前払プラン](https://azure.microsoft.com/offers/ms-azr-0026p/)への変更
 -	[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)から[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)のいずれかへの変更
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

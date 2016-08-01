@@ -108,6 +108,12 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
         
 4. **F5** キーを押して、プログラムを実行します。
 
+##制限事項
+
+* 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
+
+* バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入処理を実行します。
+
 ##次のステップ
 
 ここでは Sqoop の使用方法を説明しました。詳細については、次を参照してください。
@@ -116,4 +122,4 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 - [HDInsight を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md): Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
 - [HDInsight へのデータのアップロード](hdinsight-upload-data.md): HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

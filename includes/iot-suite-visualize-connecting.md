@@ -14,7 +14,7 @@
 
 ## デバイスにコマンドを送信する
 
-リモート監視ソリューションのダッシュボードでは、デバイスにコマンドを送信することを IoT Hub に要求できます。たとえば、リモート監視ソリューションでデバイスの内部温度を設定するコマンドを送信できます。
+リモート監視ソリューションのダッシュボードでは、IoT Hub を介してデバイスにコマンドを送信できます。たとえば、リモート監視ソリューションでデバイスの内部温度を設定するコマンドを送信できます。
 
 1. リモート監視ソリューションのダッシュボードで、左側のパネルの **[デバイス]** をクリックし、**[デバイスの一覧]** に移動します。
 
@@ -41,6 +41,5 @@
 [18]: ./media/iot-suite-visualize-connecting/suite10.png
 [img-telemetry]: ./media/iot-suite-visualize-connecting/telemetry.png
 [lnk-customize]: ../articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-dev-messaging]: ../articles/iot-hub/iot-hub-devguide.md#messaging
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0720_2016-->

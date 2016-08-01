@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure ストレージ エクスプローラー | Microsoft Azure"
-	description="Azure Storage のデータの表示/操作を可能にするストレージ エクスプローラーの一覧。"
+	pageTitle="Azure Storage クライアント ツール | Microsoft Azure"
+	description="Azure Storage のデータの表示/操作を可能にするツールの一覧。"
 	services="storage"
 	documentationCenter=""
 	authors="micurd"
@@ -13,22 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="07/20/2016"
 	ms.author="micurd"/>
 
-# Azure ストレージ エクスプローラー
+# Azure Storage クライアント ツール
 
-Azure Storage のユーザーは、ストレージ アカウントのデータを表示する “エクスプローラー” でのデータの表示を希望されることがよくあります。
+Azure Storage のユーザーのご要望に多いのが、Azure Storage クライアント ツールを使用したデータの表示や処理についてです。次の表に、これを実現するツールの一覧を示します。データ抽象化を列挙できる場合、またはデータ抽象化にアクセスできる場合は、各ブロックに “X” を入力しました。ツールの有料/無料も記載されています。“試用版” とは、無料試用版があることを示します。ただし、完全な製品は有料です。“Y/N” は、バージョンの有料/無料を示します。
 
-下の表に各 Azure ストレージ エクスプローラーを一覧表示し、データ抽象を列挙できる、あるいはデータ抽象にアクセスできる場合、各ブロックに “X” を入力しました。エクスプローラーの有料/無料も記載されています。“試用版” とは、無料試用版があることを示します。ただし、完全な製品は有料です。“Y/N” は、バージョンの有料/無料を示します。
+利用できる Azure Storage クライアント ツールのスナップショットのみを提供しました。これらのツールは開発が続いており、機能が追加されることがあります。修正や更新がございましたら、コメントを投稿してお知らせください。ここに記載するべきツールがある場合もお知らせください。
 
-利用できる Azure ストレージ エクスプローラーのスナップショットのみを提供しました。これらのツールは開発が続いており、機能が追加されることがあります。修正や更新がございましたら、コメントを投稿してお知らせください。ここに記載するべきツールがある場合もお知らせください。
-
-**Microsoft Azure ストレージ エクスプローラー**
+**Microsoft Azure Storage クライアント ツール**
 
 <table>
   <tr>
-    <th rowspan="2">Azure ストレージ エクスプローラー</th>
+    <th rowspan="2">Azure Storage クライアント ツール</th>
     <th rowspan="2">ブロック BLOB</th>
     <th rowspan="2">ページ BLOB</th>
     <th rowspan="2">Append Blob</th>
@@ -65,7 +63,7 @@ Azure Storage のユーザーは、ストレージ アカウントのデータ�
     <td>○</td>
     <td>○</td>
     <td>○</td>
-    <td></td>
+    <td>○</td>
     <td>Y</td>
     <td></td>
     <td>○</td>
@@ -88,13 +86,13 @@ Azure Storage のユーザーは、ストレージ アカウントのデータ�
   </tr>
 </table>
 
-**サードパーティ製 Azure ストレージ エクスプローラー**
+**サードパーティ製 Azure Storage クライアント ツール**
 
-マイクロソフトは次のサードパーティ製エクスプローラーが主張する機能と品質を検証していません。このリストはマイクロソフトの推薦を暗に示すものではありません。
+Microsoft では次のサードパーティ製ツールが主張する機能と品質を検証していません。このリストは Microsoft の推薦を暗に示すものではありません。
 
 <table>
   <tr>
-    <th rowspan="2">Azure Storage エクスプローラー</th>
+    <th rowspan="2">Azure Storage クライアント ツール</th>
     <th rowspan="2">ブロック BLOB</th>
     <th rowspan="2">ページ BLOB</th>
     <th rowspan="2">Append Blob</th>
@@ -252,4 +250,4 @@ Azure Storage のユーザーは、ストレージ アカウントのデータ�
   </tr>
 </table>
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0720_2016-->

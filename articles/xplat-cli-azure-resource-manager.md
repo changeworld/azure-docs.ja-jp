@@ -23,6 +23,7 @@
 - [ポータル](azure-portal/resource-group-portal.md)
 - [Azure CLI](xplat-cli-azure-resource-manager.md)
 - [Azure PowerShell](powershell-azure-resource-manager.md)
+- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
 - [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
 - [ノード](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
 - [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
@@ -37,7 +38,7 @@
 
 Azure リソース マネージャーを使用すると、複数の_リソース_ (仮想マシン、データベース サーバー、データベース、Web サイトなどのユーザー管理のエンティティ) を_リソース グループ_と呼ばれる 1 つの論理単位にまとめて作成し、管理できます。
 
-Azure Resource Manager の長所の 1 つは、JSON *テンプレート*にリソースのデプロイ可能なグループの構造とリレーションシップを記述するという_宣言型_の方法で Azure のリソースを作成できることです。テンプレートはパラメーターを特定します。そのパラメーターに値をコマンドの実行時にインラインで入力するか、別の JavaScript Object Notation (JSON) パラメーター ファイルに保存できます。これにより、同じテンプレートに異なるパラメーターを設定して、新しいリソースを簡単に作成できます。たとえば、Web サイトを作成するテンプレートには、サイト名や Web サイトを配置するリージョンなどの共通的な設定を用意できます。
+Azure Resource Manager の長所の 1 つは、JSON "*テンプレート*" にリソースのデプロイ可能なグループの構造とリレーションシップを記述するという "_宣言型_" の方法で Azure のリソースを作成できることです。テンプレートはパラメーターを特定します。そのパラメーターに値をコマンドの実行時にインラインで入力するか、別の JavaScript Object Notation (JSON) パラメーター ファイルに保存できます。これにより、同じテンプレートに異なるパラメーターを設定して、新しいリソースを簡単に作成できます。たとえば、Web サイトを作成するテンプレートには、サイト名や Web サイトを配置するリージョンなどの共通的な設定を用意できます。
 
 テンプレートを使用してグループを変更または作成すると、_デプロイ_が作成されてグループに適用されます。Azure リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」をご覧ください。
 
@@ -80,9 +81,9 @@ CLI は既定では Resource Manager モードになっていないため、次�
 
 ### リソース グループ テンプレートの検索と構成
 
-テンプレートを使用する場合は、[独自のテンプレートを作成する](resource-group-authoring-templates.md)か、コミュニティに投稿された[クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)のいずれかを使用できます。クイックスタート テンプレートは [GitHub](https://github.com/Azure/azure-quickstart-templates) でも取得できます。
+テンプレートを使用する場合は、[独自のテンプレートを作成する](resource-group-authoring-templates.md)か、コミュニティに投稿された[クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)のいずれかを使用できます。クイック スタート テンプレートは [GitHub](https://github.com/Azure/azure-quickstart-templates) でも取得できます。
 
-新しいテンプレートの作成はこの記事では扱いません。そのため、出発点として、[クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/101-vm-simple-linux/)で入手できる _101-simple-vm-from-image_ テンプレートを利用しましょう。既定では、これにより、サブネットが 1 つ設定された新しい仮想ネットワークに Ubuntu 14.04.2-LTS 仮想マシンが 1 つ作成されます。リソース グループと、次のパラメーターを指定するだけで、このテンプレートを使用できます。
+新しいテンプレートの作成はこの記事では扱いません。そのため、出発点として、[クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/101-vm-simple-linux/)で入手できる _101-simple-vm-from-image_ テンプレートを利用しましょう。既定では、これにより、サブネットが 1 つ設定された新しい仮想ネットワークに Ubuntu 14.04.2-LTS 仮想マシンが 1 つ作成されます。リソース グループと、次のパラメーターを指定するだけで、このテンプレートを使用できます。
 
 * VM の管理者ユーザー名 = `adminUsername`
 * パスワード = `adminPassword`
@@ -238,4 +239,4 @@ Azure CLI を使用して、リソース グループの現在の状態を表す
 * Azure リソース マネージャーで Azure PowerShell を使用する方法の詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。
 * Azure ポータルから Azure Resource Manager を使用する方法の詳細については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](./azure-portal/resource-group-portal.md)」を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="DocumentDB アカウント制限の引き上げ要求 | Microsoft Azure"
-	description="使用できるコレクション数、ストアド プロシージャ数、クエリ句数など、DocumentDB 制限の調整を要求する方法について説明します。"
+	pageTitle="DocumentDB アカウント クォータの引き上げ要求 | Microsoft Azure"
+	description="コレクションあたりのドキュメント ストレージやスループットなどの、DocumentDB データベース のクォータの調整を要求する方法について説明します。"
 	services="documentdb"
 	authors="AndrewHoh"
 	manager="jhubbard"
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/28/2016"
+	ms.date="07/14/2016"
 	ms.author="anhoh"/>
 
 # DocumentDB アカウント制限の引き上げを要求する
 
-[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) には既定で、複数の制限とクォータの適用が設定されています。一部のクォータは、Azure サポートに問い合わせて調整できます。この記事では、アカウント制限の引き上げを要求する方法について説明します。
+[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) には、Azure サポートに問い合わせて調整できる既定のクォータのセットがあります。この記事では、クォータの引き上げを要求する方法について説明します。
 
 この記事を読むと、次の質問に回答できるようになります。
 
--	Azure サポートに問い合わせて調整できるのは、どの DocumentDB アカウント クォータか。
+-	Azure サポートに問い合わせて調整できるのは、どの DocumentDB データベース クォータか。
 -	DocumentDB アカウント クォータの調整を要求するにはどうすればよいか。
 
 ##<a id="Quotas"></a> DocumentDB アカウント クォータ
@@ -63,4 +63,4 @@
 ##<a name="NextSteps"></a>次のステップ
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

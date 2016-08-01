@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/01/2016"
+   ms.date="07/14/2016"
    ms.author="masashin"/>
 
 
@@ -151,8 +151,7 @@ HTTP 接続経由でデータを提供する Web アプリケーションを作�
 
 この方法の場合、共有キャッシュと比較してローカル キャッシュが古くなりすぎないように、慎重に構成する必要があります。ただし、共有キャッシュにアクセスできない場合、ローカル キャッシュはバッファーとして機能します。図 3 に、この構造を示します。
 
-![共有キャッシュとローカルなプライベート キャッシュの併用](media/best-practices-caching/Caching3.png) 
-_図 3: 共有キャッシュとローカルなプライベート キャッシュの併用_
+![共有キャッシュとローカルなプライベート キャッシュの併用](media/best-practices-caching/Caching3.png) _図 3: 共有キャッシュとローカルなプライベート キャッシュの併用_
 
 一部のキャッシュ サービスでは、有効期間が比較的長いデータを保持する大規模なキャッシュをサポートするために、キャッシュが使用できなくなった場合に自動フェールオーバーを実装する、高可用性オプションを使用できます。通常、この方法では、プライマリ キャッシュ サーバーに格納されているキャッシュされたデータをセカンダリ キャッシュ サーバーにレプリケートして、プライマリ サーバーで障害が発生するか接続が失われた場合にセカンダリ サーバーに切り替えます。
 
@@ -935,4 +934,4 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 - StackExchange.Redis リポジトリの「[Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) (Redis のトランザクション)」のページ
 - Microsoft Web サイトの「[Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx) (データのパーティション分割のガイダンス)」
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

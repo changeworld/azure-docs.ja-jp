@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/26/2016"
+   ms.date="07/14/2016"
    ms.author="dobett"/>
 
 
@@ -24,7 +24,7 @@
 
 ## Linux で C のサンプル クライアントをビルドして実行する
 
-次の手順では、Ubuntu Linux デバイスでビルドおよび実行されている C プログラムを使用して、リモート監視が事前構成されたソリューションと通信する単純なクライアント アプリケーションを作成する方法を示します。次の手順を完了するには、Ubuntu バージョン 15.04 または 15.10 が実行されているデバイスが必要です。次に進む前に、次のコマンドを使用して、前提条件となるパッケージを Ubuntu デバイスにインストールします。
+次の手順では、リモート監視が事前構成されたソリューションと通信する単純なクライアント アプリケーションを C で記述し、Ubuntu Linux でビルドし実行する方法を示します。次の手順を完了するには、Ubuntu バージョン 15.04 または 15.10 が実行されているデバイスが必要です。次に進む前に、次のコマンドを使用して、前提条件となるパッケージを Ubuntu デバイスにインストールします。
 
 ```
 sudo apt-get install cmake gcc g++
@@ -32,7 +32,7 @@ sudo apt-get install cmake gcc g++
 
 ## デバイスにクライアント ライブラリをインストールする
 
-Azure の IoT Hub クライアント ライブラリは、**apt-get** コマンドを使用してパッケージとして Ubuntu デバイスにインストールし、使用できます。ライブラリとヘッダー ファイルが含むまれるパッケージを Ubuntu コンピューターにインストールするには、次の手順を実行します。
+Azure の IoT Hub クライアント ライブラリは、**apt-get** コマンドを使用してパッケージとして Ubuntu デバイスにインストールし、使用できます。IoT Hub クライアント ライブラリとヘッダー ファイルが含むまれるパッケージを Ubuntu コンピューターにインストールするには、次の手順を実行します。
 
 1. AzureIoT リポジトリをコンピューターに追加します。
 
@@ -49,7 +49,7 @@ Azure の IoT Hub クライアント ライブラリは、**apt-get** コマン�
 
 ## デバイスの動作を指定するコードを追加する
 
-Ubuntu コンピューターで、**remote\_monitoring** という名前のフォルダーを作成します。**remote\_monitoring** フォルダーに、4 つのファイル、**main.c**、**remote\_monitoring.c**、**remote\_monitoring.h**、および **CMakeLists.txt** を作成します。
+Ubuntu コンピューターで、**remote\_monitoring** という名前のフォルダーを作成します。**remote\_monitoring** フォルダーに、**main.c**、**remote\_monitoring.c**、**remote\_monitoring.h**、および **CMakeLists.txt** の 4 ファイルを作成します。
 
 IoT Hub シリアライザー クライアント ライブラリでは、モデルを使用して、デバイスが IoT Hub に送信するメッセージの形式と、デバイスが応答する IoT Hub からのコマンドを指定します。
 
@@ -65,7 +65,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
     #include "azure_c_shared_utility/platform.h"
     ```
 
-2. `#include` ステートメントの後に次の変数宣言を追加します。リモート監視ソリューション ダッシュボードから、プレースホルダ [Device Id] と [Device Key] の値をデバイス用の値に置き換えます。ダッシュボードの IoT Hub ホスト名を使用して、[IoTHub Name] を置き換えます。たとえば、IoT Hub ホスト名が **contoso.azure-devices.net** である場合は、[IoTHub Name] を contoso に置き換えます。
+2. `#include` ステートメントの後に次の変数宣言を追加します。リモート監視ソリューション ダッシュボードから、プレースホルダ [Device Id] と [Device Key] の値をデバイス用の値に置き換えます。ダッシュボードの IoT Hub ホスト名を使用して、[IoTHub Name] を置き換えます。たとえば、IoT Hub ホスト名が **contoso.azure-devices.net** である場合は、[IoTHub Name] を **contoso** に置き換えます。
 
     ```
     static const char* deviceId = "[Device Id]";
@@ -117,7 +117,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
 
 デバイスがハブからコマンドを受信したときに実行する関数と、シミュレートされたテレメトリをハブに送信するためのコードを追加します。
 
-1. モデルに定義された **SetTemperature** コマンドと **SetHumidity** コマンドをデバイスが受信したときに実行する関数を追加します。
+1. モデルに定義された **SetTemperature** コマンドと **SetHumidity** コマンドをデバイスが受信したときに実行される次の関数を追加します。
 
     ```
     EXECUTE_COMMAND_RESULT SetTemperature(Thermostat* thermostat, int temperature)
@@ -326,7 +326,7 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
     }
     ```
     
-    起動時に IoT Hub に送信される **DeviceInfo** メッセージの例:
+    起動時に IoT Hub に送信される **DeviceInfo** メッセージの例を次に示します。
 
     ```
     {
@@ -345,13 +345,13 @@ IoT Hub シリアライザー クライアント ライブラリでは、モデ�
     }
     ```
     
-    IoT Hub に送信される**テレメトリ** メッセージの例:
+    IoT Hub に送信される**テレメトリ** メッセージの例を次に示します。
 
     ```
     {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}
     ```
     
-    IoT Hub から受信する**コマンド**の例:
+    IoT Hub から受信する**コマンド**の例を次に示します。
     
     ```
     {
@@ -385,7 +385,7 @@ int main(void)
 
 ## クライアント アプリケーションをビルドする CMake を使用する
 
-次の手順では、CMake を使用して、クライアント アプリケーションをビルドする方法について説明します。
+次の手順では、*CMake* を使用してクライアント アプリケーションをビルドする方法について説明します。
 
 1. テキスト エディターで、**remote\_monitoring** フォルダーの **CMakeLists.txt** ファイルを開きます。
 
@@ -439,6 +439,4 @@ int main(void)
 
 [AZURE.INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 
-[lnk-setup-linux]: https://github.com/azure/azure-iot-sdks/blob/develop/c/doc/devbox_setup.md#linux
-
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

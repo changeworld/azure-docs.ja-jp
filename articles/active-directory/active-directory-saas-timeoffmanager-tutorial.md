@@ -4,20 +4,19 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="05/03/2016" 
+    ms.date="07/19/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と TimeOffManager の統合
   
-このチュートリアルでは、Azure と TimeOffManager の統合について説明します。このチュートリアルで
-説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と TimeOffManager の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   TimeOffManager でのシングル サインオンが有効なサブスクリプション
@@ -67,11 +66,13 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで TimeOffManager に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書を TimeOffManager テナントにアップロードする必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで TimeOffManager に対する認証を行うことができるようにする方法を説明します。  
+この手順の途中で、base-64 でエンコードされた証明書を TimeOffManager テナントにアップロードする必要があります。  
+この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure クラシック ポータルの **[TimeOffManager]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **TimeOffManager** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-timeoffmanager-tutorial/IC795912.png "Configure Single Sign-On")
 
@@ -79,7 +80,7 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-timeoffmanager-tutorial/IC795913.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[TimeOffManager 応答 URL]** ボックスに、TimeOffManager の AssertionConsumerService URL (例: *Example: https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company\_id=IC34216*") を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[TimeOffManager 応答 URL]** ボックスに、TimeOffManager の AssertionConsumerService URL (例: "*Example: https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company\_id=IC34216*"*) を入力し、[次へ]* をクリックします。
 
     ![Configure App URL](./media/active-directory-saas-timeoffmanager-tutorial/IC795914.png "アプリケーション URL の構成")
 
@@ -107,16 +108,16 @@
 
     b.base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
     
-    c.Azure クラシック ポータルの **[TimeOffManager でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、それを **[Idp Issuer]** ボックスに貼り付けます。
+    c.Azure クラシック ポータルの **[TimeOffManager でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、それを **[Idp Issuer (Idp 発行者)]** ボックスに貼り付けます。
     
-    d.Azure クラシック ポータルで、**[TimeOffManager でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[IdP Endpoint URL]** ボックスに貼り付けます。
+    d.Azure クラシック ポータルで、**[TimeOffManager でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[IdP Endpoint URL (IdP エンドポイント URL)]** ボックスに貼り付けます。
     
     e.**SAML の強制**に関するオプションで、**[いいえ]** を選択します。
     
 
     f.**ユーザーを自動作成**するかどうかについて、**[はい]** をクリックします。
     
-    g.Azure クラシック ポータルで、**[TimeOffManager でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[Logout URL]** ボックスに貼り付けます。
+    g.Azure クラシック ポータルで、**[TimeOffManager でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[Logout URL (ログアウト URL)]** ボックスに貼り付けます。
     
     h.**[変更を保存]** をクリックします。
 
@@ -150,7 +151,9 @@
 
 ##ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが TimeOffManager にログインできるようにするには、そのユーザーを TimeOffManager にプロビジョニングする必要があります。TimeOffManager は、ジャストインタイム ユーザー プロビジョニングをサポートしています。ユーザー側で必要な操作はありません。シングル サインオンを使用して初めてログインするときに、ユーザーが自動的に追加されます。
+Azure AD ユーザーが TimeOffManager にログインできるようにするには、そのユーザーを TimeOffManager にプロビジョニングする必要があります。  
+TimeOffManager は、ジャストインタイム ユーザー プロビジョニングをサポートしています。ユーザー側で必要な操作はありません。  
+シングル サインオンを使用して初めてログインするときに、ユーザーが自動的に追加されます。
 
 >[AZURE.NOTE] TimeOffManager から提供されている他の TimeOffManager ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -172,4 +175,4 @@ Azure AD ユーザーが TimeOffManager にログインできるようにする�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

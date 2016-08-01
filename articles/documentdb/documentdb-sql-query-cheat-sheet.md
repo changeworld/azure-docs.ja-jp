@@ -19,7 +19,7 @@
 
 # DocumentDB SQL チート シート PDF
 
-**DocumentDB SQL クエリのチート シート**は印刷が簡単な PDF リファレンス シートで共通のクエリ、キーワード、組み込み関数、演算子を表示します。これを利用すれば、DocumentDB データのクエリを簡単に記述できます。
+**DocumentDB SQL クエリのチート シート**は印刷が簡単な PDF リファレンス シートで共通のデータベース クエリ、キーワード、組み込み関数、演算子を表示します。これを利用すれば、DocumentDB データのクエリを簡単に記述できます。
 
 DocumentDB は [SQL](documentdb-sql-query.md) を利用した JSON ドキュメントのリレーショナル クエリ、階層クエリ、空間クエリにサポートしています。標準 ANSI-SQL のキーワードと演算子に加え、DocumentDB は JavaScript のユーザー定義関数 (UDF)、JavaScript 演算子、さまざまな組み込み関数に対応しています。
 
@@ -39,4 +39,4 @@ SQL クエリ チート シートをダウンロードし、それをクイッ�
 - DocumentDB で利用できるクエリ オプションのチュートリアルについては、「[DocumentDB のクエリ](documentdb-sql-query.md)」を参照してください。
 - 関連リファレンス ドキュメントについては、「[DocumentDB SQL クエリ言語](https://msdn.microsoft.com/library/azure/dn782250.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

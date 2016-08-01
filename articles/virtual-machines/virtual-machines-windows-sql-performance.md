@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/22/2016"
+	ms.date="07/15/2016"
 	ms.author="jroth" />
 
 # Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス
@@ -148,4 +148,4 @@ SQL Server と Premium Storage についてさらに詳しく調べたい場合�
 
 SQL Server 仮想マシンに関する他のトピックについては、[Azure 仮想マシンにおける SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/25/2016"
+	ms.date="07/19/2016"
 	ms.author="josephd"/>
 
 # 基本構成テスト環境
 
-この記事では、リソース マネージャーで作成された仮想マシンコンピューターを使用し、Microsoft Azure Virtual Network 内に基本構成テスト環境を作成する手順について説明します。
+この記事では、リソース マネージャーで作成された仮想マシンコンピューターを使用し、Microsoft Azure の仮想ネットワーク 内に基本構成テスト環境を作成する手順について説明します。
 
 完成したテスト環境は、次の用途に使うことができます。
 
@@ -66,7 +66,7 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 
 	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
 
-Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+Azure サブスクリプションを設定します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
 	$subscr="<subscription name>"
 	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
@@ -75,7 +75,7 @@ Azure サブスクリプションを設定します。引用符内のすべて�
 
 	Get-AzureRMResourceGroup | Sort ResourceGroupName | Select ResourceGroupName
 
-これらのコマンドを使用して、新しいリソース グループを作成します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+これらのコマンドを使用して、新しいリソース グループを作成します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
 	$rgName="<resource group name>"
 	$locName="<location name, such as West US>"
@@ -92,7 +92,7 @@ Azure サブスクリプションを設定します。引用符内のすべて�
 	$saName="<storage account name>"
 	New-AzureRMStorageAccount -Name $saName -ResourceGroupName $rgName –Type Standard_LRS -Location $locName
 
-次に、基本構成の Corpnet サブネットをホストすることになる TestLab という Azure Virtual Network を作成し、ネットワーク セキュリティ グループで保護します。
+次に、基本構成の Corpnet サブネットをホストすることになる TestLab という仮想ネットワークを作成し、ネットワーク セキュリティ グループで保護します。
 
 	$rgName="<name of your new resource group>"
 	$locName="<Azure location name, such as West US>"
@@ -135,7 +135,7 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 
 続けて、DC1 仮想マシンに接続します。
 
-1.	Azure ポータルで、**[仮想マシン]**、**DC1** 仮想マシンの順にクリックします。  
+1.	Azure ポータルで、**[仮想マシン]**、**DC1** 仮想マシンの順にクリックします。
 2.	**[DC1]** ウィンドウで、**[接続]** をクリックします。
 3.	メッセージが表示されたら、DC1.rdp ダウンロード ファイルを開きます。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -179,7 +179,7 @@ DC1 を再起動した後、DC1 の仮想マシンに再接続します。
 
 	New-ADUser -SamAccountName User1 -AccountPassword (read-host "Set user password" -assecurestring) -name "User1" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false
 
-このコマンドでは、User1 アカウントのパスワードの入力を求められます。このアカウントは、CORP ドメインに属しているすべてのメンバー コンピューターのリモート デスクトップ接続に使用されるため、*強力なパスワードを選択*してください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。User1 アカウントのパスワードをメモし、安全な場所に保管してください。
+このコマンドでは、User1 アカウントのパスワードの入力を求められます。このアカウントは、CORP ドメインに属しているすべてのメンバー コンピューターのリモート デスクトップ接続に使用されるため、"強力なパスワードを選択" してください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。User1 アカウントのパスワードをメモし、安全な場所に保管してください。
 
 次に、新しい User1 アカウントをエンタープライズ管理者として構成します。管理者レベルの Windows PowerShell コマンド プロンプトで次のコマンドを実行します。
 
@@ -333,4 +333,4 @@ Azure PowerShell で仮想マシンを順番に起動するには、リソース
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,12 +13,12 @@ ms.devlang="rest-api"
 ms.workload="search" 
 ms.topic="article"  
 ms.tgt_pltfrm="na" 
-ms.date="02/18/2016" 
+ms.date="07/14/2016" 
 ms.author="eugenesh" />
 
 #インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview)#
 
-> [AZURE.NOTE] この記事では、[2015-02-28-Preview](./search-api-2015-02-28-preview) のインデクサーについて説明します。この API バージョンにより、ドキュメント抽出機能を備えた Azure BLOB ストレージ インデクサーが追加されます。また、その他の面でも改善されています。
+> [AZURE.NOTE] この記事では、[2015-02-28-Preview REST API](search-api-2015-02-28-preview.md) のインデクサーについて説明します。この API バージョンにより、ドキュメント抽出機能を備えた Azure BLOB ストレージ インデクサーと Azure Table Storage インデクサーのプレビュー バージョンが追加されます。また、その他の面でも改善されています。この API は、一般公開 (GA) インデクサーもサポートします。これには、Azure SQL Database、Azure VM の SQL Server、および Azure DocumentDB のインデクサーが含まれます。
 
 ## 概要 ##
 
@@ -28,7 +28,7 @@ Azure Search は一部の共通データ ソースと直接統合できます。
 
 - 1 回限りのデータのコピーを実行して、インデックスを作成する。
 - スケジュールに従ってデータ ソースの変更とインデックスを同期する。スケジュールは、インデクサーの定義の一部です。
-- 必要に応じて呼び出し、インデックスを更新する。 
+- 必要に応じて呼び出し、インデックスを更新する。
 
 **インデクサー** はインデックスを定期的に更新する場合に便利です。インデクサー定義の一部としてインラインスケジュールを設定するか、[インデクサー実行](#RunIndexer)を利用してオンデマンドで実行できます。
 
@@ -36,8 +36,8 @@ Azure Search は一部の共通データ ソースと直接統合できます。
 
 現在、次のデータ ソースがサポートされています。
 
-- **Azure SQL Database** と **Azure VM の SQL Server**該当するチュートリアルについては、[この記事](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28/)をご覧ください。 
-- **Azure DocumentDB**。該当するチュートリアルについては、[この記事](../documentdb/documentdb-search-indexer)をご覧ください。 
+- **Azure SQL Database** と **Azure VM の SQL Server**該当するチュートリアルについては、[この記事](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)をご覧ください。
+- **Azure DocumentDB**。該当するチュートリアルについては、[この記事](../documentdb/documentdb-search-indexer.md)をご覧ください。
 - 次のドキュメント形式を含む **Azure BLOB Storage**: PDF、Microsoft Office (DOCX/DOC、XSLX/XLS、PPTX/PPT、MSG)、HTML、XML、ZIP、プレーン テキスト ファイル (JSON など)。該当するチュートリアルについては、[この記事](search-howto-indexing-azure-blob-storage.md)をご覧ください。
 	 
 将来的にサポートするデータ ソースを増やす予定です。決定項目に優先順位を付けるために、[Azure Search フィードバックフォーラム](http://feedback.azure.com/forums/263029-azure-search)でフィードバックをご提供ください。
@@ -85,21 +85,20 @@ HTTPS はすべてのサービス要求に必要です。**データ ソース�
 
 データ ソースの名前は小文字にします。文字または数字で始めます。スラッシュとドットは使用できません。文字数の制限は 128 文字です。データ ソースの名前は文字または数字で始め、残りの部分には文字、数字、ダッシュを使用できます。ダッシュは連続することができません。詳細については、「[名前付け規則](https://msdn.microsoft.com/library/azure/dn857353.aspx)」を参照してください。
 
-`api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
+`api-version` は必須です。現行バージョンは `2015-02-28` です。
 
 **要求ヘッダー**
 
 次の一覧は、必須と任意の要求ヘッダーについてまとめたものです。
 
 - `Content-Type`: 必須。これを `application/json` に設定します
-- `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**データ ソースの作成**要求には (クエリ キーではなく) 管理者キーに設定された `api-key` ヘッダーを含めます。 
+- `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**データ ソースの作成**要求には (クエリ キーではなく) 管理者キーに設定された `api-key` ヘッダーを含めます。
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` の両方を [Azure 管理ポータル](https://portal.azure.com/)のサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、[Azure ポータル](https://portal.azure.com/)のサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 <a name="CreateDataSourceRequestSyntax"></a> **要求本文の構文**
 
 要求本文にはデータ ソースの定義が含まれます。この定義には、データ ソースの種類、データを読むための資格情報、定期的にスケジュールされたインデクサーで使用するときに、データ ソースで変更または削除されたデータを効率的に識別するための任意のデータ変更検出/データ削除検出ポリシーが含まれます。
-
 
 要求ペイロードを構築するための構文は次のとおりです。サンプルの要求はこのトピックをさらに進むと登場します。
 
@@ -116,24 +115,24 @@ HTTPS はすべてのサービス要求に必要です。**データ ソース�
 要求には次のプロパティが含まれます。
 
 - `name`: 必須。データ ソースの名前。データ ソース名には小文字、数字、ダッシュのみを使用できます。最初と最後の文字をダッシュにすることはできません。文字数の制限は 128 文字です。
-- `description`: 任意の説明。 
+- `description`: 任意の説明。
 - `type`: 必須。サポートされているデータ ソースの種類のいずれかを指定する必要があります。
 	- `azuresql` - Azure SQL Database または Azure VM の SQL Server
 	- `documentdb` - Azure DocumentDB
 	- `azureblob` - Azure BLOB ストレージ
 - `credentials`:
-	- 必須の `connectionString` プロパティはデータ ソースの接続文字列を指定します。接続文字列の形式はデータ ソースの種類によって異なります。 
+	- 必須の `connectionString` プロパティはデータ ソースの接続文字列を指定します。接続文字列の形式はデータ ソースの種類によって異なります。
 		- Azure SQL の場合、通常の SQL Server 接続文字列です。Azure ポータルを利用して接続文字列を取得する場合、`ADO.NET connection string` オプションを使用します。
-		- DocumentDB の場合、接続文字列は `"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"` の形式にする必要があります。すべての値が必須です。値は [Azure ポータル](https://portal.azure.com/)にあります。  
-		- Azure BLOB ストレージの場合、これはストレージ アカウント接続文字列です。形式の説明は[こちら](https://azure.microsoft.com/documentation/articles/storage-configure-connection-string/)にあります。HTTPS エンドポイント プロトコルが必要です。  
+		- DocumentDB の場合、接続文字列は `"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"` の形式にする必要があります。すべての値が必須です。値は [Azure ポータル](https://portal.azure.com/)にあります。
+		- Azure BLOB ストレージの場合、これはストレージ アカウント接続文字列です。形式の説明は[こちら](https://azure.microsoft.com/documentation/articles/storage-configure-connection-string/)にあります。HTTPS エンドポイント プロトコルが必要です。
 		
 - `container`、必須: `name` プロパティと `query` プロパティを利用してインデックスを作成するデータを指定:
 	- `name`、必須:
 		- Azure SQL: テーブルまたはビューを指定します。`[dbo].[mytable]` のようなスキーマ修飾名を使用できます。
-		- DocumentDB: コレクションを指定します。 
-		- Azure BLOB ストレージ: ストレージ コンテナーを指定します。 
+		- DocumentDB: コレクションを指定します。
+		- Azure BLOB ストレージ: ストレージ コンテナーを指定します。
 	- `query`、省略可能:
-		- DocumentDB: Azure Search がインデックスを作成できるフラット スキーマに任意の JSON ドキュメント レイアウトをフラット化するクエリを指定できます。  
+		- DocumentDB: Azure Search がインデックスを作成できるフラット スキーマに任意の JSON ドキュメント レイアウトをフラット化するクエリを指定できます。
 		- Azure BLOB ストレージ: BLOB コンテナー内の仮想フォルダーを指定できます。たとえば、BLOB パス `mycontainer/documents/blob.pdf` の場合、`documents` を仮想フォルダーとして利用できます。
 		- Azure SQL: クエリはサポートされていません。この機能が必要な場合、[この提案](https://feedback.azure.com/forums/263029-azure-search/suggestions/9893490-support-user-provided-query-in-sql-indexer)に投票してください。
    
@@ -147,8 +146,8 @@ HTTPS はすべてのサービス要求に必要です。**データ ソース�
 
 このポリシーは、データ ソースに含まれる列またはプロパティが次の条件を満たす場合に使用します。
  
-- すべての挿入は列の値を指定します。 
-- 項目を更新すると、列の値も変更されます。 
+- すべての挿入は列の値を指定します。
+- 項目を更新すると、列の値も変更されます。
 - この列の値は変更のたびに増加します。
 - 次の `WHERE [High Water Mark Column] > [Current High Water Mark Value]` と同じようなフィルター句を使用するクエリを効率的に実行できます。
 
@@ -169,7 +168,9 @@ HTTPS はすべてのサービス要求に必要です。**データ ソース�
 
 SQL データベースが[変更追跡](https://msdn.microsoft.com/library/bb933875.aspx)をサポートする場合、SQL 統合変更追跡ポリシーの使用が推奨されます。このポリシーは最も効率的な変更追跡を可能にし、スキーマに明示的な「ソフト削除」列がなくても、Azure Search で削除済み行を識別できます。
 
-統合変更追跡は、Azure VM で SQL Server を使用している場合は SQL Server 2008 R2 より、Azure SQL Database を使用している場合は Azure SQL Database V12 よりサポートされます。
+統合変更追跡は、次の SQL Server データベース バージョン以降でサポートされます。
+- Azure VM で SQL Server を使用している場合は、SQL Server 2008 R2。
+- Azure SQL Database を使用している場合は、Azure SQL Database V12。
 
 SQL 統合変更追跡ポリシーを使用するときは、個別のデータ削除検出ポリシーを指定しないでください。個別のデータ削除ポリシーには、削除された行を識別するためのサポートが組み込まれています。
 
@@ -256,7 +257,7 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
     GET https://[service name].search.windows.net/datasources?api-version=[api-version]
     api-key: [admin key]
 
-`api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
+`api-version` は必須です。現行バージョンは `2015-02-28` です。
 
 `api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
@@ -295,7 +296,7 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
     GET https://[service name].search.windows.net/datasources/[datasource name]?api-version=[api-version]
     api-key: [admin key]
 
-`api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
+`api-version` は必須です。現行バージョンは `2015-02-28` です。
 
 `api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
@@ -332,7 +333,7 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
 
 > [AZURE.NOTE] 削除しようとしているデータ ソースをインデクサーが参照する場合でも、削除操作は続行されます。ただし、そのインデクサーの状態が次の実行でエラーに変わります。
 
-`api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
+`api-version` は必須です。現行バージョンは `2015-02-28` です。
 
 `api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
@@ -355,7 +356,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
 > [AZURE.NOTE] 許可されるインデクサーの最大数は価格レベルによって異なります。無料サービスの場合、最大 3 つのインデクサーが許可されます。Standard サービスの場合、50 のインデクサーが許可されます。詳細については、「[サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
 
-`api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
+`api-version` は必須です。現行バージョンは `2015-02-28` です。
 
 `api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
@@ -382,7 +383,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
 インデクサーには、必要に応じてスケジュールを指定できます。スケジュールが存在する場合、インデクサーはスケジュールに従って定期的に実行されます。スケジュールには次の属性があります。
 
-- `interval`: 必須。インデクサーが実行される間隔または期間を指定する時間の値。許可される最短の間隔は 5 分です。最長は 1 日です。XSD "dayTimeDuration" 値 ([ISO 8601 期間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。使用されるパターンは、`"P[nD][T[nH][nM]]"` です。たとえば、15 分ごとの場合は `PT15M`、2 時間ごとの場合は `PT2H` です。 
+- `interval`: 必須。インデクサーが実行される間隔または期間を指定する時間の値。許可される最短の間隔は 5 分です。最長は 1 日です。XSD "dayTimeDuration" 値 ([ISO 8601 期間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。使用されるパターンは、`"P[nD][T[nH][nM]]"` です。たとえば、15 分ごとの場合は `PT15M`、2 時間ごとの場合は `PT2H` です。
 
 - `startTime`: 必須。インデクサーの実行を開始する UTC 日時。
 
@@ -390,7 +391,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
 インデクサーには任意でパラメーターを指定し、インデクサーの動作を変えることができます。パラメーターはすべて任意です。
 
-- `maxFailedItems`: インデックス作成失敗がこの項目数に到達すると、そのインデクサー実行は失敗であるとみなされます。既定値は 0 です。失敗した項目に関する情報は[インデクサー状態の取得](#GetIndexerStatus)操作で返されます。 
+- `maxFailedItems`: インデックス作成失敗がこの項目数に到達すると、そのインデクサー実行は失敗であるとみなされます。既定値は 0 です。失敗した項目に関する情報は[インデクサー状態の取得](#GetIndexerStatus)操作で返されます。
 
 - `maxFailedItemsPerBatch`: バッチごとのインデックス作成失敗がこの項目数に到達すると、そのインデクサー実行は失敗であるとみなされます。既定値は 0 です。
 
@@ -453,7 +454,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
     Content-Type: application/json
     api-key: [admin key]
 
-`api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
+`api-version` は必須です。現行バージョンは `2015-02-28` です。
 
 `api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
@@ -517,7 +518,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
     GET https://[service name].search.windows.net/indexers/[indexer name]?api-version=[api-version]
     api-key: [admin key]
 
-`api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
+`api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。
 
 `api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
@@ -547,7 +548,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 インデクサーが削除されるとき、その時点で進行中のインデクサー実行は完了しますが、後続の実行はスケジュールされません。存在しないインデクサーを使用しようとすると、HTTP 状態コードの「404 見つかりません」が表示されます。
  
-`api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
+`api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。
 
 `api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
@@ -563,7 +564,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 	POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=[api-version]
     api-key: [admin key]
 
-`api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
+`api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。
 
 `api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
@@ -580,7 +581,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
     api-key: [admin key]
 
 
-`api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
+`api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。
 
 `api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
@@ -622,7 +623,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 インデクサーの状態には次の値のいずれかが設定されます。
 
-- `running` は、インデクサーが通常どおり実行されていることを示します。一部のインデクサー実行が失敗している可能性があります。`lastResult` プロパティも確認しておけば安心です。 
+- `running` は、インデクサーが通常どおり実行されていることを示します。一部のインデクサー実行が失敗している可能性があります。`lastResult` プロパティも確認しておけば安心です。
 
 - `error` は、ユーザーの介入なしでは修正できないエラーがインデクサーに発生したことを示します。たとえば、データ ソースの資格情報の有効期限が切れている、データ ソースまたはターゲット インデックスのスキーマに大幅に変更された、などです。
 
@@ -632,7 +633,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 インデクサー実行の結果には次のプロパティが含まれます。
 
-- `status`: 実行の状態。詳細については、下の「[インデクサー実行の状態](#IndexerExecutionStatus)」を参照してください。 
+- `status`: 実行の状態。詳細については、下の「[インデクサー実行の状態](#IndexerExecutionStatus)」を参照してください。
 
 - `errorMessage`: 失敗した実行のエラー メッセージ。
 
@@ -672,7 +673,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 	POST https://[service name].search.windows.net/indexers/[indexer name]/reset?api-version=[api-version]
     api-key: [admin key]
 
-`api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
+`api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。
 
 `api-key` は (クエリ キーではなく) 管理者キーにする必要があります。キーに関する詳細については、「[Search サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)」の認証セクションを参照してください。「[ポータルで Search サービスを作成する](search-create-service-portal.md)」には、要求で使用されるサービスの URL とキーのプロパティを取得する方があります。
 
@@ -797,4 +798,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0720_2016-->

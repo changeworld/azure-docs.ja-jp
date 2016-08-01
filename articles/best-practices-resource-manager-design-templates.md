@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Resource Manager テンプレートのベスト プラクティス | Microsoft Azure"
+	pageTitle="Resource Manager テンプレートのパターン | Microsoft Azure"
 	description="Azure リソース マネージャー テンプレートの設計パターンについて説明します。"
 	services="azure-resource-manager"
 	documentationCenter=""
@@ -16,7 +16,7 @@
 	ms.date="06/13/2016"
 	ms.author="tomfitz"/>
 
-# Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス
+# Azure Resource Manager テンプレートの設計パターン
 
 大企業やシステム インテグレーター (SI)、クラウド サービス ベンダー (CSV)、オープン ソース ソフトウェア (OSS) のプロジェクト チームと連携する中で、環境やワークロード、スケール ユニットを短時間でデプロイしなければならないケースは少なくありません。そのデプロイ作業は、実績のある手法と決められた方針に沿って行うことが大切です。サポートも必要となります。Azure リソース マネージャー テンプレートに基づく柔軟性の高いアプローチを用いることで、複雑なトポロジをすばやく、かつ一貫性を保ちながらデプロイすることができます。また、主な機能が刷新されたり、例外的な状況や顧客から生じる変動要因に対応したりする目的で、それらのデプロイを簡単に調整することができます。
 
@@ -382,4 +382,4 @@ T シャツ サイズ テンプレートは、指定されたサイズ (*large*)
 - Azure リソース マネージャーのセキュリティ上の推奨事項については、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 - テンプレート内やテンプレート間での状態の共有方法については、「[Azure リソース マネージャーのテンプレートでの状態の共有](best-practices-resource-manager-state.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

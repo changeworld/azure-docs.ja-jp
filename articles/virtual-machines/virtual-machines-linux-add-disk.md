@@ -218,10 +218,33 @@ boot  dev        home  lib         lost+found  mnt    proc  run   srv   tmp  var
 
 > [AZURE.NOTE] 識別用の SSH キーを使用して Linux 仮想マシンに接続することもできます。詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-ssh-from-linux.md)」を参照してください。
 
+
+### Azure における Linux の TRIM/UNMAP サポート
+一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作をサポートします。これは主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。これによって、サイズの大きいファイルを作成して削除する場合のコストを節約できます。
+
+Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。通常と同様に、ご使用のディストリビューションで推奨される方法をお問い合わせください。
+
+- 次のように、`/etc/fstab` で `discard` マウント オプションを使用します。
+
+		UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
+
+- または、コマンドラインから手動で `fstrim` コマンドを実行するか、crontab に追加して定期的に実行することができます。
+
+	**Ubuntu**
+
+		# sudo apt-get install util-linux
+		# sudo fstrim /datadrive
+
+	**RHEL/CentOS**
+
+		# sudo yum install util-linux
+		# sudo fstrim /datadrive
+
+
 ## 次のステップ
 
 - 通常、新しいディスクは、[fstab](http://en.wikipedia.org/wiki/Fstab) ファイルにその情報を書き込まない限り、再起動しても VM で使用できないことに注意してください。
-- 「[Azure での Linux VM の最適化](virtual-machines-linux-optimization.md)」の推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
+- [Linux マシンのパフォーマンスの最適化](virtual-machines-linux-optimization.md)に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
 - ディスクを追加してストレージ容量を拡張し、[RAID を構成](virtual-machines-linux-configure-raid.md)してパフォーマンスを強化します。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

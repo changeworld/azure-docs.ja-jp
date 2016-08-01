@@ -14,12 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/11/2016"
+   ms.date="07/14/2016"
    ms.author="amitsriva" />
 
 #Application Gateway の診断ログ
 
-Azure の各種ログを使用して、Application Gateway の管理とトラブルシューティングを行うことができます。これらのログの一部はポータルからアクセスできます。また、すべてのログは、Azure BLOB ストレージから抽出して Excel や PowerBI などのさまざまなツールで表示することができます。各種ログの詳細については、以下の一覧を参照してください。
+Azure の各種ログを使用して、Application Gateway の管理とトラブルシューティングを行うことができます。これらのログの一部にはポータルからアクセスできます。また、どのログも、Azure Blob Storage から抽出して、[Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)、Excel、PowerBI などのさまざまなツールで表示することができます。各種ログの詳細については、以下の一覧を参照してください。
 
 - **監査ログ:** [Azure 監査ログ](../azure-portal/insights-debugging-with-events.md) (以前の操作ログ) を使用すると、Azure サブスクリプションに送信されているすべての操作とその操作の状態を表示できます。監査ログは既定で有効になっており、Azure プレビュー ポータルで表示できます。
 - **アクセス ログ:** このログを使用すると、Application Gateway のアクセス パターンを確認し、重要な情報 (呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイト数など) を分析できます。アクセス ログは 300 秒ごとに収集されます。このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。Application Gateway のインスタンスは、"instanceId" プロパティで識別できます。
@@ -30,9 +30,9 @@ Azure の各種ログを使用して、Application Gateway の管理とトラブ
 ##ログの有効化
 監査ログは、リソース マネージャーのすべてのリソースで常に自動的に有効になります。アクセス ログとパフォーマンス ログで使用可能なデータの収集を開始するには、これらのログを有効にする必要があります。ログを有効にするには、次の手順に従います。
 
-1. ログ データを保存するストレージ アカウントのリソース ID をメモしておきます。これは、/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> の形式になります。サブスクリプション内の任意のストレージ アカウントを使用できます。この情報は、プレビュー ポータルで確認できます。![プレビュー ポータル - Application Gateway の診断](./media/application-gateway-diagnostics/diagnostics1.png)
+1. ログ データを保存するストレージ アカウントのリソース ID をメモしておきます。これは、/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> のような形式です。サブスクリプション内の任意のストレージ アカウントを使用できます。この情報は、プレビュー ポータルで確認できます。![プレビュー ポータル - Application Gateway の診断](./media/application-gateway-diagnostics/diagnostics1.png)
  
-2. ログを有効にする Application Gateway のリソース ID をメモしておきます。これは、/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> の形式になります。この情報は、プレビュー ポータルで確認できます。![プレビュー ポータル - Application Gateway の診断](./media/application-gateway-diagnostics/diagnostics2.png)
+2. ログを有効にする Application Gateway のリソース ID をメモしておきます。これは、/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> のような形式です。この情報は、プレビュー ポータルで確認できます。![プレビュー ポータル - Application Gateway の診断](./media/application-gateway-diagnostics/diagnostics2.png)
 
 3. 次の PowerShell コマンドレットを使用して、診断ログを有効にします。
 
@@ -96,14 +96,17 @@ Azure の各種ログを使用して、Application Gateway の管理とトラブ
 - **Azure Tools:** Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、Azure REST API、または Azure プレビュー ポータルを使用して、監査ログから情報を取得します。それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../resource-group-audit.md)」を参照してください。
 - **Power BI:** [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。[Power BI 用 Azure 監査ログ コンテンツ パック](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-azure-audit-logs/)を使用すると、事前に構成されたダッシュボードでデータを分析できます。ダッシュボードは、そのまま使用することも、カスタマイズすることもできます。
 
-## カウンター ログとイベント ログの表示と分析 
-イベント ログとカウンター ログの場合は、自身のストレージ アカウントに接続して JSON ログ エントリを取得する必要があります。JSON ファイルをダウンロードした後、そのファイルを CSV に変換し、Excel、Power BI などのデータ視覚化ツールで表示できます。
+## アクセスおよびパフォーマンス ログの表示と分析 
+Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) は、Blob Storage アカウントからカウンターとイベントのログ ファイルを収集でき、ログを分析するための視覚化と強力な検索機能が含まれています。
+
+自身のストレージ アカウントに接続して、アクセス ログとパフォーマンス ログの JSON ログ エントリを取得することもできます。JSON ファイルをダウンロードした後、そのファイルを CSV に変換し、Excel、Power BI などのデータ視覚化ツールで表示できます。
 
 >[AZURE.TIP] Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、Github から入手できる[ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter)を使用できます。
 
 ## 次のステップ
 
+- [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) で、カウンター ログとイベント ログを視覚化します。
 - [Power BI を使用した Azure 監査ログの視覚化](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ記事
 - [Power BI などにおける Azure 監査ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関するブログ記事
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0720_2016-->

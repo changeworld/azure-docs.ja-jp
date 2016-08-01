@@ -6,7 +6,7 @@
 	authors="genlin"
 	manager="msmbaldwin"
 	editor="meerak"
-	tags="top-support-issue"
+	tags="billing,top-support-issue"
 	/>
 
 <tags
@@ -90,4 +90,4 @@ Azure イン オープン プランのクレジットをリセラーから購入
 
 3. プロダクト キーを入力し、契約オプションを確認します。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

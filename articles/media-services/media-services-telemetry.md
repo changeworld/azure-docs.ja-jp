@@ -54,8 +54,8 @@ Media Services テレメトリ/監視により、Media Services の顧客が、�
 - **ResultCode** は、結果コードを取得します。
 - **RequestCount** は、要求数を取得します。
 - **BytesSent** は、送信バイト数を取得します。
-- **BytesSent** は、サーバーの待機時間を取得します。
-- **BytesSent** は、エンド ツー エンドの要求時間を取得します。
+- **ServerLatency** は、サーバーの待機時間を取得します。
+- **EndToEndLatency** は、エンド ツー エンドの要求時間を取得します。
 
 ###ストリーミング エンドポイントのクエリ結果の例
 
@@ -235,4 +235,4 @@ Azure Media Services のラーニング パスをご覧ください。AMS で提
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

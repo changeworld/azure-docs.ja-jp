@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="index-page"
-	ms.date="04/01/2016"
+	ms.date="07/19/2016"
 	ms.author="josephd"/>
 
 # Azure ハイブリッド クラウド テスト環境
@@ -50,4 +50,4 @@
 
 - Azure インフラストラクチャ サービスでカスタムの開発/テスト デプロイメントまたは運用環境デプロイメントを設計するための[実装ガイドライン](virtual-machines-linux-infrastructure-service-guidelines.md)を確認します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

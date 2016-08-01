@@ -18,7 +18,7 @@
 
 # プレビュー開発ガイドライン (MongoDB のプロトコル対応の DocumentDB アカウント)
 
-DocumentDB との通信は、オープン ソースで公開されている任意の MongoDB クライアント [ドライバー](https://docs.mongodb.org/ecosystem/drivers/)を使って行うことができます。MongoDB のプロトコル対応は、MongoDB クライアント ドライバーの通信対象が MongoDB 2.6 以降のサーバー エンドポイントであることを前提としています。DocumentDB による同プロトコル対応は、MongoDB [Wire Protocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol/) Version 2.6 に準拠することで実現されています。Wire Protocol Version 3.2 もほぼ完全にサポートされていますが、特定のクライアントの操作 (バージョン 3.2 MongoDB のシェル セッションなど) で "レガシ" モードに退化する事象が確認されています。
+Azure DocumentDB との通信は、オープン ソースで公開されている任意の MongoDB クライアント [ドライバー](https://docs.mongodb.org/ecosystem/drivers/)を使って行うことができます。MongoDB のプロトコル対応は、MongoDB クライアント ドライバーの通信対象が MongoDB 2.6 以降のサーバー エンドポイントであることを前提としています。DocumentDB による同プロトコル対応は、MongoDB [Wire Protocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol/) Version 2.6 に準拠することで実現されています。Wire Protocol Version 3.2 もほぼ完全にサポートされていますが、特定のクライアントの操作 (バージョン 3.2 MongoDB のシェル セッションなど) で "レガシ" モードに退化する事象が確認されています。
 
 DocumentDB は、データの CRUD (Create、Read、Update、Delete) やデータベースの照会など、MongoDB の主要な API 関数に対応しています。実装対象の機能は、一般的なプラットフォーム、フレームワーク、ツール、アプリケーション パターンの要件に基づく優先度に従って決められました。
 
@@ -100,4 +100,4 @@ GeoSpatial| |すべて|
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

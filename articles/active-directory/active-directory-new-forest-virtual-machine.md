@@ -2,10 +2,10 @@
 	pageTitle="Azure Virtual Network での Active Directory フォレストのインストール | Microsoft Azure"
 	description="Azure Virtual Network 上の仮想マシン (VM) に新しい Active Directory フォレストを作成する手順について説明したチュートリアルです。"
 	services="active-directory, virtual-network"
-    keywords="Active Directory 仮想マシン, Active Directory フォレストのインストール, Azure Active Directory ビデオ"
+    keywords="Active Directory 仮想マシン, Active Directory フォレストのインストール, Azure Active Directory ビデオ "
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	tags=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-	ms.date="04/07/2016"
+	ms.date="07/13/2016"
 	ms.author="markusvi"/>
 
 
@@ -136,4 +136,4 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 <!--Image references-->
 [1]: ./media/active-directory-new-forest-virtual-machine/AD_Forest.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

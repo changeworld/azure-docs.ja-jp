@@ -29,6 +29,10 @@
 
 [Apache Solr](http://lucene.apache.org/solr/features.html) は、データに対して強力なフルテキスト検索ができるエンタープライズ検索プラットフォームです。Hadoop が大量のデータの保存と管理を可能にするのに対し、Apache Solr は迅速にデータを取得するための検索機能を提供します。このトピックでは、HDInsight クラスターをカスタマイズして Solr をインストールする方法を説明します。
 
+> [AZURE.WARNING] HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
+>
+> Solr といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+
 ## スクリプトの機能
 
 このスクリプトは、HDInsight クラスターに次のような変更を加えます。
@@ -46,7 +50,7 @@ HDInsight クラスターに Solr をインストールするサンプル スク
 
 このセクションでは、Azure ポータルを使用して新しいクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE] スクリプト アクションは、Azure PowerShell、Azure CLI、HDInsight .NET SDK、または Azure Resource Manager のテンプレートを使用して適用することもできます。既に実行しているクラスターにスクリプト アクションを適用することもできます。詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+> [AZURE.NOTE] スクリプト アクションは、Azure PowerShell、Azure CLI、HDInsight .NET SDK、または Azure Resource Manager のテンプレートを使用して適用することもできます。既に実行しているクラスターにスクリプト アクションを適用することもできます。詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関する記事を参照してください。
 
 1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
 
@@ -170,7 +174,7 @@ SSH トンネルを確立したら、Solr ダッシュボードを使用する�
     
     3. 「__hn0__」で始まるエントリを選択します。ページが開くと、一番上にホスト名が表示されます。ホスト名の形式は「__hn0-PARTOFCLUSTERNAME.randomcharacters.cx.internal.cloudapp.net__」です。これは Solr ダッシュボードに接続するときに使用するホスト名です。
     
-1. ブラウザーで、\_\___http://HOSTNAME:8983/solr/#/__ に接続します。__HOSTNAME__ は前の手順で決定した名前です。
+1. ブラウザーで、__http://HOSTNAME:8983/solr/#/____ に接続します。HOSTNAME は前の手順で決定した名前です。
 
     この要求は、SSH トンネルを介して HDInsight クラスターのヘッド ノードにルーティングする必要があります。次のようなページが表示されます。
 
@@ -307,4 +311,4 @@ Solr のバックアップと復元の操作の詳細については、[SolrCore
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

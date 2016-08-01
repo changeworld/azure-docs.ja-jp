@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="04/28/2016"
+   ms.date="07/19/2016"
    ms.author="sstein"/>
 
 # SQL Database Performance Insight
@@ -68,4 +68,4 @@ Azure SQL Database では、インテリジェントなチューニング操作�
 - [データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)
 - [エラスティック データベース プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

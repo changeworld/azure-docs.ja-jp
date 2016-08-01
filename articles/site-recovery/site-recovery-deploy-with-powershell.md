@@ -3,8 +3,8 @@
 	description="Azure Site Recovery と PowerShell を使用して VMM クラウドの Hyper-V 仮想マシンのレプリケートを自動化する方法を説明します。"
 	services="site-recovery"
 	documentationCenter=""
-	authors="csilauraa"
-	manager="jwhit"
+	authors="bsiva"
+	manager="abhiag"
 	editor="tysonn"/>
 
 <tags
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/14/2015"
-	ms.author="lauraa"/>
+	ms.date="07/12/2016"
+	ms.author="bsiva"/>
 
 # PowerShell を使用して VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする - クラシック
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](site-recovery-vmm-to-azure.md)
-- [PowerShell - ARM](site-recovery-vmm-to-azure-powershell-resource-manager.md)
+- [PowerShell - Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 - [クラシック ポータル](site-recovery-vmm-to-azure-classic.md)
 - [PowerShell - クラシック](site-recovery-deploy-with-powershell.md)
 
@@ -46,7 +46,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 ### Azure の前提条件
 
-- [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
+- [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。
 - レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。[Azure ストレージについてはこちらを参照してください。](../storage/storage-introduction.md)
 - 保護する仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-best-practices.md#virtual-machines)に準拠していることを確認する必要があります。
 
@@ -60,7 +60,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 ### Hyper-V の前提条件
 
 - ホスト Hyper-V サーバーは、少なくとも Hyper-V ロールを持つ Windows Server 2012 を実行しており、最新の更新プログラムがインストールされている必要があります。
-- クラスターで Hyper-V を実行している場合に、静的 IP アドレス ベースのクラスターが存在すると、クラスター ブローカーが自動的に作成されません。クラスター ブローカーを手動で構成する必要があります。これを行うには、Server Manager でフェイルオーバー クラスター マネージャーを選択します。クラスターに接続し、**[ロールの構成]** をクリックし、高可用性ウィザードの **[ロールの選択]** 画面で **[Hyper-V レプリカ ブローカー]** を選択します。 
+- クラスターで Hyper-V を実行している場合に、静的 IP アドレス ベースのクラスターが存在すると、クラスター ブローカーが自動的に作成されません。クラスター ブローカーを手動で構成する必要があります。これを行うには、Server Manager でフェイルオーバー クラスター マネージャーを選択します。クラスターに接続し、**[ロールの構成]** をクリックし、高可用性ウィザードの **[ロールの選択]** 画面で **[Hyper-V レプリカ ブローカー]** を選択します。
 - 保護を管理するすべての Hyper-V ホスト サーバーまたはクラスターが VMM クラウドに属している必要があります。
 
 ### ネットワーク マッピングの前提条件
@@ -449,4 +449,4 @@ marsagentinstaller.exe /q /nu
 
 Azure Site Recovery PowerShell コマンドレットの詳細を[確認します](https://msdn.microsoft.com/library/dn850420.aspx)</a>。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

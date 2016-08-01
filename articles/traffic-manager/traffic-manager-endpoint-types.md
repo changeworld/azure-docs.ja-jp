@@ -98,11 +98,13 @@ Traffic Manager でエンドポイントを無効にすると、メンテナン�
 ## FAQ
 
 ### 複数のサブスクリプションのエンドポイントで Traffic Manager を使用できますか。
-はい。この方法は、Traffic Manager に対して、Service Management API を使用しているか Resource Manager API を使用しているかによって異なります。[Azure ポータル](https://portal.azure.com)では Resource Manager を使用し、["従来の" ポータル](https://manage.windowsazure.com)では サービス管理を使用します。
+Azure Web Apps の場合は使用できません。これは、Web Apps の要件により、Web Apps で使用するカスタム ドメイン名を使用できるのは 1 つのサブスクリプション内のみであるためです。複数のサブスクリプション内で同一のドメイン名を持つ Web Apps を使用することはできません。そのため、複数の Web Apps は Traffic Manager で使用できません。
 
-Resource Manager では、すべてのサブスクリプションのエンドポイントを Traffic Manager に追加できますが、それには、Traffic Manager プロファイルを構成しているユーザーに、エンドポイントへの読み取りアクセス権が付与されている必要があります。こうしたアクセス許可を付与するには、[Azure Resource Manager とのロール ベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) を使用します。
+他の種類のエンドポイントの場合は、複数のサブスクリプションのエンドポイントで Traffic Manager を使用できます。この方法は、Traffic Manager に対して、Service Management API を使用しているか Resource Manager API を使用しているかによって異なります。[Azure ポータル](https://portal.azure.com)では Resource Manager を使用し、["クラシック" ポータル](https://manage.windowsazure.com)では Service Management を使用します。
 
-サービス管理では、Azure エンドポイントとして構成されたすべてのクラウド サービスや Web アプリが、Traffic Manager プロファイルと同じサブスクリプションに存在していることが、Traffic Manager によって求められます。その他のサブスクリプションにあるクラウド サービスのエンドポイントは、"外部" エンドポイントとして Traffic Manager に追加できます (引き続き "内部" エンドポイントの料金で課金されます)。その他のサブスクリプションの Web アプリは使用できません。
+Resource Manager では、すべてのサブスクリプションのエンドポイントを Traffic Manager に追加できますが、それには、Traffic Manager プロファイルを構成しているユーザーに、エンドポイントへの読み取りアクセス権が付与されている必要があります。こうしたアクセス許可を付与するには、[Azure Resource Manager のロール ベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) を使用します。
+
+サービス管理では、Azure エンドポイントとして構成されたすべてのクラウド サービスや Web アプリが、Traffic Manager プロファイルと同じサブスクリプションに存在していることが、Traffic Manager によって求められます。その他のサブスクリプションにあるクラウド サービスのエンドポイントは、"外部" エンドポイントとして Traffic Manager に追加できます (引き続き "内部" エンドポイントの料金で課金されます)。
 
 ### クラウド サービス "Staging" スロットで Traffic Manager を使用できますか。
 はい。クラウド サービス "Staging" スロットは、Traffic Manager で外部エンドポイントとして構成できます。
@@ -142,4 +144,4 @@ Web アプリの場合、Traffic Manager Azure エンドポイントでは、同
 
 - Traffic Manager の[トラフィック ルーティング方法](traffic-manager-routing-methods.md)を確認します。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

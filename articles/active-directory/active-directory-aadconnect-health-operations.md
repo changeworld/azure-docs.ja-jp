@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/21/2016"
+	ms.date="07/14/2016"
 	ms.author="vakarand"/>
 
 # Azure AD Connect Health の操作
@@ -52,11 +52,20 @@ ID インフラストラクチャの状態に問題があることを示すア�
 
 #### Azure AD Connect Health サービスからサーバーを削除するには
 
+Azure AD Connect Health for AD FS と Azure AD Connect (Sync):
+
 1. [サーバーの一覧] ブレードから、削除するサーバー名を選択して [サーバー] ブレードを開きます。
 2. [サーバー] ブレードで、操作バーから [削除] ボタンをクリックします。
 3. 確認ボックスにサーバー名を入力して削除操作を確認します。
 4. [削除] ボタンをクリックします。
 
+Azure AD Connect Health for AD DS:
+
+1. [ドメイン コントローラー] ダッシュボードを開きます。
+2. 削除するドメイン コントローラーを選択します。
+3. アクション バーの [Delete Selected (選択項目の削除)] をクリックします。
+4. サーバーの削除アクションを確定します。
+5. [削除] ボタンをクリックします。
 
 ### Azure AD Connect Health サービスからのサービス インスタンスの削除
 
@@ -145,7 +154,8 @@ Azure AD Connect Health Role の [ロール ベースの Access Control] 部分�
 * [Azure AD Connect Health エージェントのインストール](active-directory-aadconnect-health-agent-install.md)
 * [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
+* [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

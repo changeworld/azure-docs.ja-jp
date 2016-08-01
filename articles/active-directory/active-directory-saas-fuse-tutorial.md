@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="07/19/2016"
 	ms.author="jeedes"/>
 
 
@@ -60,7 +60,7 @@ Azure AD への Fuse の統合を構成するには、ギャラリーから管�
 
 **ギャラリーから Fuse を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -137,7 +137,7 @@ Fuse で Azure AD のシングル サインオンを構成してテストする�
     b.**[発行元 URL]**、**[シングル サインオン サービス URL]**、**[シングル サインアウト サービス URL]** をコピーします。
 
    
-5. アプリケーションに合わせて SSO を構成する方法については、Fuse サポート チーム (****support@fusion-universal.com**) にお問い合わせください。その際、ダウンロードした証明書ファイルを添付し、**[発行元 URL]**、**[シングル サインオン サービス URL]**、**[シングル サインアウト サービス URL]** を含めてください。
+5. アプリケーションに合わせて SSO を構成する方法については、Fuse サポート チーム (**support@fusion-universal.com**) にお問い合わせください。その際、ダウンロードした証明書ファイルを添付し、**[発行元 URL]**、**[シングル サインオン サービス URL]**、**[シングル サインアウト サービス URL]** を含めてください。
 
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
@@ -184,7 +184,7 @@ Fuse で Azure AD のシングル サインオンを構成してテストする�
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-fuse-tutorial/create_aaduser_06.png)
 
@@ -202,7 +202,7 @@ Fuse で Azure AD のシングル サインオンを構成してテストする�
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-fuse-tutorial/create_aaduser_07.png)
 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順を実行します。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-fuse-tutorial/create_aaduser_08.png)
 
@@ -278,4 +278,4 @@ Fuse で Azure AD のシングル サインオンを構成してテストする�
 [204]: ./media/active-directory-saas-fuse-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-fuse-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="07/19/2016"
 	ms.author="jeedes"/>
 
 
@@ -61,7 +61,7 @@ Azure AD への Pluralsight の統合を構成するには、ギャラリーか�
 
 **ギャラリーから Pluralsight を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory][1]
 
@@ -331,4 +331,4 @@ Pluralsight アプリケーションは、特定の形式の SAML アサーシ�
 [204]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

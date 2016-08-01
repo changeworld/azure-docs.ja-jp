@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="07/14/2016" 
 	ms.author="billmath"/>
 
 # Azure AD Connect Health: バージョンのリリース履歴
@@ -21,6 +21,13 @@
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。
 
 この記事は、リリースされたバージョンを追跡できるように設計されています。
+
+
+## 2016 年 7 月
+
+**新しいプレビュー機能:**
+
+- [Azure AD Connect Health for AD DS](active-directory-aadconnect-health-adds.md)。
 
 
 ## 2016 年 1 月
@@ -41,7 +48,7 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 
 **新機能:**
 
-- [ロール ベースのアクセス制御](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control)のサポート
+- [ロールベースのアクセス制御](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control)のサポート
 
 
 **新しいプレビュー機能:**
@@ -50,22 +57,22 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 
 **修正された問題:**
 
-- エージェントの登録中に検出されたエラーのバグの修正。 
+- エージェントの登録中に検出されたエラーのバグの修正。
 
 ## 2015 年 9 月
 
 **新機能:**
 
-- AD FS の不正なユーザー名パスワード レポート 
-- 非認証 HTTP プロキシの構成のサポート 
+- AD FS の不正なユーザー名パスワード レポート
+- 非認証 HTTP プロキシの構成のサポート
 - Server コア上のエージェントの構成のサポート
-- AD FS のアラートの改善 
-- Azure AD Connect Health エージェント for AD FS の接続とデータ アップロードの改善。 
+- AD FS のアラートの改善
+- Azure AD Connect Health エージェント for AD FS の接続とデータ アップロードの改善。
 
 
 **修正された問題:**
 
-- AD FS のエラーの種類に対する利用状況インサイトのバグ修正。 
+- AD FS のエラーの種類に対する利用状況インサイトのバグ修正。
 
 
 ## 2015 年 6 月
@@ -74,11 +81,11 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 
 **新機能:**
 
-- 電子メール通知による AD FS および AD FS プロキシ サーバーの監視のアラート。 
-- AD FS パフォーマンス カウンターでの AD FS トポロジおよびパターンへの簡単なアクセス。 
-- アプリケーション、認証方法、要求ネットワークの場所などによってグループ化された AD FS サーバーへの成功したトークン要求の傾向。 
+- 電子メール通知による AD FS および AD FS プロキシ サーバーの監視のアラート。
+- AD FS パフォーマンス カウンターでの AD FS トポロジおよびパターンへの簡単なアクセス。
+- アプリケーション、認証方法、要求ネットワークの場所などによってグループ化された AD FS サーバーへの成功したトークン要求の傾向。
 - アプリケーション、エラーの種類などによってグループ化された AD FS サーバーへの失敗した要求の傾向。
-- Azure AD グローバル管理者の資格情報を使用した簡単なエージェントのデプロイメント。  
+- Azure AD グローバル管理者の資格情報を使用した簡単なエージェントのデプロイメント。
 
 
 
@@ -86,4 +93,4 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 ## 次のステップ
 「[クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](active-directory-aadconnect-health.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

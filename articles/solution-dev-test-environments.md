@@ -42,9 +42,9 @@ Azure リソース マネージャーの概念に習熟していない場合は�
 Azure リソース マネージャー テンプレートでは、アプリケーションが使用する Azure リソースをすべて定義します。複数のテンプレートがあらかじめ用意されており、Azure ポータルに直接デプロイすることも、ダウンロードして変更を加え、アプリケーション コードと共にソース管理システムに保存することもできます。以下の手順を完了して、既存のテンプレートをダウンロードします。
 
 1. [Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/) GitHub リポジトリで既存のテンプレートを参照します。リポジトリの一覧に、[201-web-app-sql-database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) フォルダーがあります。カスタム アプリケーションには多くの場合 Web アプリケーションと SQL データベースが含まれるため、本記事ではこれ以降、テンプレートの使い方を理解しやすいように、このテンプレートを例として使用します。このテンプレートで作成し、構成するすべての要素を詳しく説明することは、この記事の範囲を超えていますが、このテンプレートを使用して組織に実環境を構築したい場合は、「[Web アプリと SQL Database をプロビジョニングする](app-service-web/app-service-web-arm-with-sql-database-provision.md)」を参照して、十分に理解することをお勧めします。
-2. 201-web-app-sql-database フォルダー内の [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json) ファイルをクリックして、その内容を表示します。これが Azure リソース マネージャーのテンプレート ファイルです。 
-3. 表示モードで、[[Raw]](https://github.com/Azure/azure-quickstart-templates/raw/master/201-web-app-sql-database/azuredeploy.json) ボタンをクリックします。 
-4. マウスで、このファイルの内容を選択し、"TestApp1-Template.json" という名前のファイルとしてコンピューターに保存します。 
+2. 201-web-app-sql-database フォルダー内の [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json) ファイルをクリックして、その内容を表示します。これが Azure リソース マネージャーのテンプレート ファイルです。
+3. 表示モードで、[[Raw]](https://github.com/Azure/azure-quickstart-templates/raw/master/201-web-app-sql-database/azuredeploy.json) ボタンをクリックします。
+4. マウスで、このファイルの内容を選択し、"TestApp1-Template.json" という名前のファイルとしてコンピューターに保存します。
 5. テンプレートの内容を確認し、次のことを確認します。
  - **リソース** セクション: このセクションでは、このテンプレートで作成された Azure リソースの種類を定義します。リソースの種類はさまざまありますが、このテンプレートでは、[Azure Web アプリ](app-service-web/app-service-web-overview.md)と [Azure SQL Database](sql-database/sql-database-technical-overview.md) のリソースを作成します。仮想マシンで Web サーバーと SQL Server を実行および管理する場合は、"[iis-2vm-sql-1vm](https://github.com/Azure/azure-quickstart-templates/tree/master/iis-2vm-sql-1vm)" または "[lamp-app](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app)" テンプレートを使用できますが、この記事の手順は [201-web-app-sql-database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) テンプレートに基づいています。
  - **パラメーター** セクション: このセクションでは、各リソースを構成できるパラメーターを定義します。テンプレートで指定するパラメーターの中には、"defaultValue" プロパティを持つものとそうでないものがあります。テンプレートを使用して Azure リソースをデプロイする場合、テンプレートで指定する defaultValue プロパティを持たないパラメーターにはすべて値を指定する必要があります。defaultValue プロパティを持つパラメーターは、値が指定されないと、テンプレート内で defaultValue パラメーターに指定した値が使用されます。
@@ -55,14 +55,14 @@ Azure リソース マネージャー テンプレートでは、アプリケー
 
 各環境に*同じ* Azure リソースを作成する必要がありますが、リソースの構成は環境ごとに*変える*場合があります。このときに役立つのがパラメーター ファイルです。次の手順を完了して、各環境に一意の値を持つパラメーター ファイルを作成します。
 
-1. 201-web-app-sql-database フォルダー内の [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json) ファイルの内容を表示します。これは、前の手順で保存したテンプレート ファイルのパラメーター ファイルです。 
-2. 表示モードで、[[Raw]](https://github.com/Azure/azure-quickstart-templates/raw/master/201-web-app-sql-database/azuredeploy.parameters.json) ボタンをクリックします。 
+1. 201-web-app-sql-database フォルダー内の [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json) ファイルの内容を表示します。これは、前の手順で保存したテンプレート ファイルのパラメーター ファイルです。
+2. 表示モードで、[[Raw]](https://github.com/Azure/azure-quickstart-templates/raw/master/201-web-app-sql-database/azuredeploy.parameters.json) ボタンをクリックします。
 3. マウスで、このファイルの内容を選択し、コンピューター上に 3 つのファイルとして保存して、それぞれ次のように名前を設定します。
  - TestApp1-Parameters-Development.json
  - TestApp1-Parameters-Test.json
  - TestApp1-Parameters-Pre-Production.json
 
-3. 任意のテキスト エディターまたは JSON エディターを使用して、ファイル内のパラメーター値の右側に一覧されている値を、以下の**パラメーター**の右側に一覧された*値*に置き換え、手順 3 で作成した開発環境のパラメーター ファイルを編集します。 
+3. 任意のテキスト エディターまたは JSON エディターを使用して、ファイル内のパラメーター値の右側に一覧されている値を、以下の**パラメーター**の右側に一覧された*値*に置き換え、手順 3 で作成した開発環境のパラメーター ファイルを編集します。
  - **siteName**: *TestApp1DevApp*
  - **hostingPlanName**: *TestApp1DevPlan*
  - **siteLocation**: *Central US*
@@ -79,7 +79,7 @@ Azure リソース マネージャー テンプレートでは、アプリケー
  - **serverName**: *testapp1testsrv*
  - **serverLocation**: *Central US*
  - **administratorLogin**: *testapp1Admin*
- - **administratorLoginPassword**: *パスワードに置き換えます*
+ - **administratorLoginPassword**: "*パスワードに置き換えます*"
  - **databaseName**: *testapp1testdb*
 
 5. テキスト エディターまたは JSON エディターを使用して、手順 3 で作成した運用前のパラメーター ファイルを編集します。ファイルの内容全体を次の内容に置き換えます。
@@ -133,7 +133,7 @@ Azure リソース マネージャー テンプレートでは、アプリケー
 | **requestedServiceObjectiveName** | S0 | S1 |
 
 ## 環境を作成する
-Azure リソースはすべて、[Azure リソース グループ](./azure-portal/resource-group-portal.md)内に作成する必要があります。リソース グループを使用すると、Azure リソースをグループ化し、まとめて管理できます。組織内の特定のユーザーがリソース グループの作成、変更、削除、またはリソース グループ内のリソースの表示を実行できるように、[アクセス許可](./active-directory/role-based-access-built-in-roles.md)をリソース グループに割り当てることができます。リソース グループ内のリソースのアラートと請求情報は、[Azure ポータル](https://portal.azure.com)に表示できます。また、リソース グループは Azure [リージョン](https://azure.microsoft.com/regions/)で作成されます。この記事では、すべてのリソースが米国中部リージョンで作成されます。実環境の作成を開始するときには、自社の要件に最も合ったリージョンを選択してください。
+Azure リソースはすべて、[Azure リソース グループ](resource-group-overview.md)内に作成する必要があります。リソース グループを使用すると、Azure リソースをグループ化し、まとめて管理できます。組織内の特定のユーザーがリソース グループの作成、変更、削除、またはリソース グループ内のリソースの表示を実行できるように、[アクセス許可](./active-directory/role-based-access-built-in-roles.md)をリソース グループに割り当てることができます。リソース グループ内のリソースのアラートと請求情報は、[Azure ポータル](https://portal.azure.com)に表示できます。また、リソース グループは Azure [リージョン](https://azure.microsoft.com/regions/)で作成されます。この記事では、すべてのリソースが米国中部リージョンで作成されます。実環境の作成を開始するときには、自社の要件に最も合ったリージョンを選択してください。
 
 次の方法のいずれかを使用して、各環境のリソース グループを作成します。すべての方法で、同じ結果を達成できます。
 
@@ -191,7 +191,7 @@ Azure PowerShell 1.01 以降が Windows コンピューター上にインスト�
 
 1. [Azure ポータル](https://portal.azure.com)に [Azure AD](./active-directory/active-directory-how-subscriptions-associated-directory.md) (会社または学校とも呼ばれる) アカウントでサインインします。[新規]、[管理]、[リソース グループ] の順にクリックして、以下の図に示すように、[リソース グループ名] ボックスに「TestApp1-Development」と入力し、[リソース グループの場所] ボックスで "米国中部" を選択します。![ポータル](./media/solution-dev-test-environments/rgcreate.png)
 2. [作成] ボタンをクリックして、リソース グループを作成します。
-3. 以下に示すように、[参照] をクリックして、[リソース グループ] の一覧を下までスクロールし、[リソース グループ] をクリックします。![ポータル](./media/solution-dev-test-environments/rgbrowse.png) 
+3. 以下に示すように、[参照] をクリックして、[リソース グループ] の一覧を下までスクロールし、[リソース グループ] をクリックします。![ポータル](./media/solution-dev-test-environments/rgbrowse.png)
 4. [リソース グループ] をクリックすると、新しいリソース グループでリソース グループ ブレードが表示されます。![ポータル](./media/solution-dev-test-environments/rgview.png)
 5. 上記の TestApp1-Development リソース グループを作成したのと同じ方法で、TestApp1-Test と TestApp1-Pre-Production のリソース グループを作成します。
 
@@ -296,14 +296,14 @@ Azure PowerShell (バージョン 1.01 以降) のコマンド プロンプト�
 ## 環境を管理する
 各環境の Azure リソースの構成は、開発を進める間に、意図的に、または誤って、一貫性のない変更が加えられる場合があります。これにより、アプリケーションの開発サイクル中に、不要なトラブルシューティングや問題解決が生じることがあります。
 
-1. [Azure ポータル](https://portal.azure.com)を開いて、環境を変更します。 
-2. 上記の手順を完了するために使用したのと同じアカウントを使用してサインインします。 
+1. [Azure ポータル](https://portal.azure.com)を開いて、環境を変更します。
+2. 上記の手順を完了するために使用したのと同じアカウントを使用してサインインします。
 3. 次の図に示すように、[参照]、[リソース グループ] の順にクリックします (リソース グループを表示するために、下へスクロールする必要がある場合があります)。![ポータル](./media/solution-dev-test-environments/rgbrowse.png)
 4. 上記の図のリソース グループをクリックすると、以下の図に示すように、前の手順で作成したリソース グループ ブレードと 3つのリソース グループが表示されます。TestApp1-Development リソース グループをクリックすると、ブレードが表示され、前の手順で実施した TestApp1-Development リソース グループのデプロイメントにおいて、テンプレートで作成されたリソースが一覧表示されます。TestApp1-Development リソース グループ ブレードで TestApp1DevApp をクリックして、TestApp1DevApp Web アプリ ブレードで [削除] をクリックし、TestApp1DevApp Web アプリ リソースを削除します。![ポータル](./media/solution-dev-test-environments/portal2.png)
 5. リソースを削除してよいかどうかを確認するメッセージがポータルに表示されたら、[はい] をクリックします。TestApp1-Development リソース グループ ブレードを閉じて、もう一度開くと、削除した Web アプリを除いて表示されます。リソース グループの内容は、本来あるべき内容と異なるものになりました。複数のリソース グループから複数のリソースを削除したり、リソースの一部の構成設定を変更したりなど、いろいろ試してみてください。リソース グループからリソースを削除するときに、Azure ポータルを使用する代わりに、PowerShell の [Remove-AzureResource](https://msdn.microsoft.com/library/azure/dn757676.aspx) コマンドか CLI の "azure resource delete" コマンドを使用して、同じタスクを実行できます。
 6. 必要な状態に戻すリソース グループにあるリソースと構成をすべて取得するには、「[環境へのリソースのデプロイ](#deploy-resources-to-environments)」セクションで使用したのと同じコマンドを使用して、環境をリソース グループにもう一度デプロイしますが、"Deployment1" を "Deployment2" に置き換えます。
 7.  手順 4 に示した図中の TestApp1-Development ブレードの [サマリー] セクションに示すように、前の手順でポータルで削除した Web アプリが、削除するように選択した可能性のあるその他のリソースも同様に、再度存在していることを確認します。任意のリソースの構成を変更した場合、パラメーター ファイルの値も元に戻したことを確認することもできます。Azure リソース マネージャーのテンプレートを使用して環境をデプロイする利点の 1 つは、いつでも簡単に環境を既知の状態に再デプロイできる点です。
-8. 以下の図中の "前回のデプロイメント" の下にあるテキストをクリックすると、ブレードにリソース グループのデプロイメント履歴が表示されます。最初のデプロイでは "Deployment1"、2 回目のデプロイでは "Deployment2" という名前を使用したため、2 つのエントリが表示されています。いずれかのデプロイメントをクリックすると、ブレードに各デプロイメントの結果が表示されます。![ポータル](./media/solution-dev-test-environments/portal3.png)
+8. 以下の図中の "前回のデプロイメント" の下にあるテキストをクリックすると、ブレードにリソース グループのデプロイメント履歴が表示されます。最初のデプロイでは "Deployment1"、2 回目のデプロイでは "Deployment2" という名前を使用したため、2 つのエントリが表示されています。いずれかのデプロイをクリックすると、ブレードに各デプロイの結果が表示されます。![ポータル](./media/solution-dev-test-environments/portal3.png)
 
 
 
@@ -342,7 +342,7 @@ Azure PowerShell (バージョン 1.01 以降) のコマンド プロンプト�
 
 ### Azure ポータル
 
-1. Azure ポータルで、前の手順で行ったように、リソース グループを参照します。 
+1. Azure ポータルで、前の手順で行ったように、リソース グループを参照します。
 2. TestApp1-Development リソース グループを選択し、TestApp1-Development リソース グループ ブレードで [削除] をクリックします。新しいブレードが表示されます。リソース グループ名を入力し、[削除] ボタンをクリックします。![ポータル](./media/solution-dev-test-environments/rgdelete.png)
 3. TestApp1-Development リソース グループを削除したのと同じ方法で、TestApp1-Test と TestApp1-Pre-Production のリソース グループを削除します。
 
@@ -361,4 +361,4 @@ Azure PowerShell (バージョン 1.01 以降) のコマンド プロンプト�
 - 各環境のリソース グループや個々のリソースに[タグを割り当てる](resource-group-using-tags.md)。"環境" タグをリソース グループに追加し、その値を環境名に対応するように設定できます。タグは、課金または管理の目的でリソースを整理する必要がある場合に特に役立ちます。
 - [Azure ポータル](https://portal.azure.com)でリソース グループのリソースのアラートと課金情報を監視する。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0720_2016-->

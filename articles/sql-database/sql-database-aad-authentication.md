@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="05/05/2016"
+   ms.date="07/18/2016"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する
@@ -83,11 +83,11 @@ Microsoft アカウント (outlook.com、hotmail.com、live.com など) また�
 - 接続のタイムアウトを 30 秒に設定することをお勧めします。
 - SQL Server 2016 Management Studio と SQL Server Data Tools for Visual Studio 2015 (バージョン 14.0.60311.1April 2016 以降) では、Azure Active Directory 認証がサポートされています (Azure Active Directory 認証は **.NET Framework Data Provider for SqlServer** (.NET Framework 4.6 以降のバージョン) でサポートされています)。そのため、これらのツールとデータ層アプリケーション (DAC および .bacpac) の最新のバージョンでは Azure Active Directory 認証を使用できますが、ODBC プロバイダーを使用する **sqlcmd.exe** と **bcp.exe** は接続できません。
 - SQL Server Data Tools for Visual Studio 2015 には、April 2016 バージョン以降の Data Tools (バージョン 14.0.60311.1) が必要です。現在、Azure Active Directory ユーザーは SSDT のオブジェクト エクスプローラーに表示されません。代替策として、ユーザーは [sys.database\_principals](https://msdn.microsoft.com/library/ms187328.aspx) で見てください。
-- [Microsoft JDBC Driver 6.0 for SQL Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/04/04/preview-the-microsoft-jdbc-driver-6-0-for-sql-server/) は、Azure Active Directory 認証をサポートします。
+- [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/ja-JP/download/details.aspx?id=11774) は、Azure Active Directory 認証をサポートします。また、「[接続プロパティの設定](https://msdn.microsoft.com/library/ms378988.aspx)」も参照してください。
 - PolyBase では Azure Active Directory 認証を使用した認証は行えません。
 - SQL Server Management Studio は SQL Data Warehouse ではサポートされていません。SQL Server Data Tools を使用してください。
 - BI や Excel など、一部のツールはサポートされていません。
-- 2 要素認証や他の形式の対話型認証はサポートされていません。
+- 多要素認証 (MFA/2FA) や他の形式の対話型認証はサポートされていません。
 - SQL Database の Azure Active Directory 認証は、Azure ポータルの**インポート データベース**と**エクスポート データベース**のブレードでサポートされています。Azure Active Directory 認証を使用するインポートとエクスポートは、PowerShell コマンドからもサポートされます。
 
 
@@ -98,7 +98,7 @@ Azure Active Directory を作成し、ユーザーとグループを設定しま
 - 初期ドメインとして Azure AD の管理対象ドメインを作成します。
 - オンプレミスの Active Directory ドメイン サービスを Azure Active Directory とフェデレーションします。
 
-詳細については、「[オンプレミス ID と Azure Active Directory の統合](../active-directory/active-directory-aadconnect.md)」、[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-add-domain.md)に関するページ、「[Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure による Windows Server Active Directory とのフェデレーションのサポートの実現)](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」、「[Azure AD ディレクトリの管理](https://msdn.microsoft.com/library/azure/hh967611.aspx)」、[Windows PowerShell による Azure AD の管理](https://msdn.microsoft.com/library/azure/jj151815.aspx)に関するページを参照してください。
+詳細については、「[オンプレミス ID と Azure Active Directory の統合](../active-directory/active-directory-aadconnect.md)」、[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-add-domain.md)に関するページ、「[Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure による Windows Server Active Directory とのフェデレーションのサポートの実現)](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」、「[Azure AD ディレクトリの管理](https://msdn.microsoft.com/library/azure/hh967611.aspx)」、[Windows PowerShell による Azure AD の管理](https://msdn.microsoft.com/library/azure/jj151815.aspx)に関するページをご覧ください。
 
 ## 2\.SQL Database が Azure SQL Database V12 であることを確認する
 
@@ -119,7 +119,7 @@ Azure Active Directory 認証は、最新の SQL Database V12 でサポートさ
 次の手順では、特定のサブスクリプションの関連付けられたディレクトリを変更する方法について詳しく説明します。
 
 1. Azure サブスクリプションの管理者を使用して [Azure クラシック ポータル](https://manage.windowsazure.com/)に接続します。
-2. 左側のバナーで **[設定]** を選択します。
+2. 左側のバナーで **[設定]** を選択します。 
 3. [設定] 画面にサブスクリプションが表示されます。目的のサブスクリプションが表示されない場合は、上部にある **[サブスクリプション]** をクリックし、**[ディレクトリでフィルター]** ボックスの一覧で、サブスクリプションを含むディレクトリを選択して、**[適用]** をクリックします。
 
 	![サブスクリプションを選択する][4]
@@ -217,7 +217,7 @@ Get-AzureRmSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23"
 Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" –ServerName "demo_server"
 ```
 
-Azure Active Directory 管理者は、REST API を使用してプロビジョニングすることもできます。詳細については、[Service Management REST API のリファレンスと Azure SQL データベースの操作](https://msdn.microsoft.com/library/azure/dn505719.aspx)に関するページを参照してください。
+Azure Active Directory 管理者は、REST API を使用してプロビジョニングすることもできます。詳細については、[Service Management REST API のリファレンスと Azure SQL データベースの操作](https://msdn.microsoft.com/library/azure/dn505719.aspx)に関するページをご覧ください
 
 ## 5\.クライアント コンピューターを構成する
 
@@ -340,7 +340,7 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 3. アプリケーションを実行するクライアント コンピューター上で証明書を作成します。
 4. アプリケーションのキーとして、証明書を追加します。
 
-詳細については、[SQL Server のセキュリティに関するブログ](https://blogs.msdn.microsoft.com/sqlsecurity/2016/02/09/token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/)を参照してください。
+詳細については、「[SQL Server Security Blog (SQL Server のセキュリティに関するブログ)](https://blogs.msdn.microsoft.com/sqlsecurity/2016/02/09/token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/)」をご覧ください。
 
 ## 関連項目
 
@@ -366,4 +366,4 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [11]: ./media/sql-database-aad-authentication/11connect-using-int-auth.png
 [12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

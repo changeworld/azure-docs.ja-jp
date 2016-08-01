@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management"
-    ms.date="04/27/2016"
+    ms.date="07/19/2016"
     ms.author="carlrab"/>
 
 # Transact-SQL を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始
@@ -102,4 +102,4 @@
 - [SQL Database のドキュメント](https://azure.microsoft.com/services/sql-database/)
 - [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

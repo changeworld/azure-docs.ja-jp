@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2016"
+   ms.date="07/19/2016"
    ms.author="tomfitz"/>
 
 # Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
@@ -40,7 +40,7 @@ Resource Manager で作成したリソースには次の特性があります。
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        Compute、Storage、ネットワークのリソースについては、リソース マネージャーと従来のデプロイのどちらかを使用できます。 **[リソース マネージャー]** を選択します。
+        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -87,7 +87,7 @@ Azure サービス管理では、仮想マシンをホストするためのコ�
 
         ![Classic portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        または、プレビュー ポータルを使い、**クラシック** デプロイを指定 (Compute、Storage、ネットワーク).
+        Or, the Azure portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
@@ -175,4 +175,4 @@ Compute、Storage、Networking のリソースの移行に関する詳細につ�
 - Resource Manager のテンプレートの構造について詳しくは、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/24/2016"
+	ms.date="07/20/2016"
 	ms.author="larryfr"/>
 
 #HDInsight の Hadoop での Sqoop の使用 (SSH)
@@ -108,7 +108,7 @@ Linux ベースの HDInsight クラスターと Azure SQL Database または SQL
 
         sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --export-dir 'wasb:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
 
-    これにより、SQL Database と **sqooptest** データベースに接続して **wasb:///hive/warehouse/hivesampletable** (*hivesampletable* の物理ファイル) から **mobiledata** テーブルにデータをエクスポートするよう Sqoop に指示します。
+    これにより、SQL Database と **sqooptest** データベースに接続して **wasb:///hive/warehouse/hivesampletable** (*hivesampletable* の物理ファイル) から** mobiledata テーブルにデータをエクスポートするよう Sqoop に指示します。
 
 5. コマンドが完了したら、次を使用して、TSQL によってデータベースに接続します。
 
@@ -172,6 +172,12 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
         sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
 
+##制限事項
+
+* 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
+
+* バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入処理を実行します。
+
 ##次のステップ
 
 ここでは Sqoop の使用方法を説明しました。詳細については、次を参照してください。
@@ -200,4 +206,4 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0720_2016-->

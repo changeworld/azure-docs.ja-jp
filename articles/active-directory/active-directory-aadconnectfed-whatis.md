@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="07/14/2016"
 	ms.author="anandy"/>
 
 
@@ -46,5 +46,6 @@ Azure AD Connect により、オンプレミスの AD FS と Azure AD でフェ�
 ## その他のリソース
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+* [Azure への AD FS のデプロイ](active-directory-aadconnect-azure-adfs.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -19,7 +19,7 @@
 
 # Logic Apps を使用した DocumentDB リソースの新規作成や変更の通知
 
-この記事は、DocumentDB コミュニティ フォーラムの 1 つに投稿されていた質問を基にして作成しました。その質問とは "**DocumentDB はリソースの変更に関する通知をサポートしていますか**" というものでした。
+この記事は、Azure DocumentDB コミュニティ フォーラムの 1 つに投稿されていた質問を基にして作成しました。その質問とは "**DocumentDB はリソースの変更に関する通知をサポートしていますか**" というものでした。
 
 私は長年 BizTalk Server に携わっているのですが、変更通知は [WCF LOB アダプター](https://msdn.microsoft.com/library/bb798128.aspx)を使用している場合にはごく一般的なシナリオです。そこで私は、この機能を DocumentDB の新規作成または変更されたドキュメントに対しても実装できるかどうかを調べることにしました。
 
@@ -1156,4 +1156,4 @@ Patient BLOB ファイル情報が次のように表示されます。
 
 DocumentDB をさらに詳しく知りたい場合は、こちらの[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)をご覧ください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

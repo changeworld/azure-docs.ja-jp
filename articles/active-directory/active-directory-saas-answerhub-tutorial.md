@@ -11,17 +11,17 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/11/2016" 
+    ms.date="07/19/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と AnswerHub の統合
 
-このチュートリアルでは、Azure と AnswerHub の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と [AnswerHub](http://www.dzonesoftware.com/products/answerhub-question-answer-software) の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
--   有効なサブスクリプションでの AnswerHub のシングル サインオン
+-   [AnswerHub](http://www.dzonesoftware.com/products/answerhub-question-answer-software) のシングル サインオンに対応したサブスクリプション
 
-このチュートリアルを完了すると、AnswerHub に割り当てた Azure AD ユーザーは、AnswerHub 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+このチュートリアルを完了すると、AnswerHub に割り当てられた Azure AD ユーザーは、AnswerHub 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
@@ -31,6 +31,7 @@
 4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-answerhub-tutorial/IC785165.png "シナリオ")
+
 ##AnswerHub のアプリケーション統合の有効化
 
 このセクションでは、AnswerHub のアプリケーション統合を有効にする方法を説明します。
@@ -62,6 +63,7 @@
 7.  結果ウィンドウで [**AnswerHub**] を選択し、[**完了**] をクリックしてアプリケーションを追加します。
 
     ![AnswerHub](./media/active-directory-saas-answerhub-tutorial/IC785167.png "AnswerHub")
+
 ##シングル サインオンの構成
 
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで AnswerHub に対する認証を行えるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
@@ -76,7 +78,7 @@
 
     ![Configure single sign-on](./media/active-directory-saas-answerhub-tutorial/IC785169.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページの **[AnswerHub サインイン URL]** テキスト ボックスに、"*https://company.answerhub.com*" というパターンの URL を入力し、**[次へ]* をクリックします*。
+3.  **[アプリケーション URL の構成]** ページの **[AnswerHub サインイン URL]** ボックスに、""*https://company.answerhub.com*" というパターンの URL を入力し*"、*[次へ]* をクリックします*。
 
     ![Configure App URL](./media/active-directory-saas-answerhub-tutorial/IC785170.png "アプリケーション URL の構成")
 
@@ -85,6 +87,14 @@
     ![Configure single sign-on](./media/active-directory-saas-answerhub-tutorial/IC785171.png "Configure single sign-on")
 
 5.  別の Web ブラウザーのウィンドウで、管理者として AnswerHub 企業サイトにログインします。
+    >[AZURE.NOTE] AnswerHub の構成について不明点がある場合は、[AnswerHub サポート チーム](mailto:success@answerhub.com.)に問い合わせてください。
+
+
+
+
+
+
+
 
 6.  [**Administration**] に移動します。
 
@@ -98,9 +108,9 @@
 
     ![SAML Setup](./media/active-directory-saas-answerhub-tutorial/IC785172.png "SAML Setup")
 
-    1.  Azure クラシック ポータルの **[AnswerHub でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** 値をコピーして、**[IDP Login URL]** テキスト ボックスに貼り付けます。
-    2.  Azure クラシック ポータルの **[AnswerHub でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** 値をコピーして、**[IDP ログアウト URL]** テキスト ボックスに貼り付けます。
-    3.  Azure クラシック ポータルの **[Gigya でのシングル サインオンの構成]** ダイアログ ページで、**[名前識別子形式]** の値をコピーし、**[IDP Name Identifier Format]** テキスト ボックスに貼り付けます。
+    1.  Azure クラシック ポータルの **[AnswerHub でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーし、**[IDP Login URL (IDP ログイン URL)]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルの **[AnswerHub でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーし、**[IDP Logout URL (IDP ログアウト URL)]** ボックスに貼り付けます。
+    3.  Azure クラシック ポータルの **[AnswerHub でのシングル サインオンの構成]** ダイアログ ページで、**[名前識別子形式]** の値をコピーし、**[IDP Name Identifier Format (IDP 名前識別子形式)]** ボックスに貼り付けます。
     4.  [**Keys and Certificates**] をクリックします。
 
 11. [Keys and Certificates] タブでは、次の手順を実行します。
@@ -119,6 +129,7 @@
 13. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure single sign-on](./media/active-directory-saas-answerhub-tutorial/IC785174.png "Configure single sign-on")
+
 ##ユーザー プロビジョニングの構成
 
 Azure AD ユーザーが AnswerHub にログインできるようにするには、そのユーザーを AnswerHub にプロビジョニングする必要があります。AnswerHub の場合、プロビジョニングは手動で行います。
@@ -157,4 +168,4 @@ Azure AD ユーザーが AnswerHub にログインできるようにするには
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

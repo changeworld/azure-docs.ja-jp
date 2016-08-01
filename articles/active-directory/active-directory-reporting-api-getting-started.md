@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/28/2016"
+   ms.date="07/18/2016"
    ms.author="dhanyahk"/>
 
 # Azure Active Directory Reporting API の概要
@@ -108,7 +108,7 @@ Azure AD アプリケーションの登録作業を行うには、Azure AD テ�
     if ($oauth.access_token -ne $null) {   
         $i=0
         $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-        $url = 'https://graph.windows.net/$tenantdomain/reports/auditEvents?api-version=beta&$filter=eventTime gt ' + $7daysago
+        $url = 'https://graph.windows.net/' + $tenantdomain + '/reports/auditEvents?api-version=beta&`$filter=eventTime gt ' + $7daysago
 
         # loop through each query page (1 through n)
         Do{
@@ -219,4 +219,4 @@ Azure AD アプリケーションの登録作業を行うには、Azure AD テ�
 - 監査レポートの詳細については、「[Azure Active Directory 監査レポートのイベント](active-directory-reporting-audit-events.md)」を参照してください
 - Azure AD Graph API REST サービスの詳細については、「[Azure AD Reports and Events (Preview) (Azure AD のレポートとイベント (プレビュー))](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview)」を参照してください
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

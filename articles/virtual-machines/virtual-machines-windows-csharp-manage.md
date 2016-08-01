@@ -69,12 +69,12 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 	    {
           var cc = new ClientCredential("{client-id}", "{client-secret}");
           var context = new AuthenticationContext("https://login.windows.net/{tenant-id}");
-          var result = context.AcquireTokenAsync("https://management.azure.com/", cc);
+          var result = await context.AcquireTokenAsync("https://management.azure.com/", cc);
           if (result == null)
           {
             throw new InvalidOperationException("Could not get the token");
           }
-          return token;
+          return result;
         }
 	
     {client-id} を Azure Active Directory アプリケーションの ID に、{client-secret} を AD アプリケーションのアクセス キーに、および {tenant-id} をサブスクリプションのテナントID に置き換えます。テナント ID は Get-AzureRmSubscription を実行して確認できます。アクセス キーは、Azure ポータルで確認できます。
@@ -432,4 +432,4 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 
 デプロイに問題がある場合は、[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

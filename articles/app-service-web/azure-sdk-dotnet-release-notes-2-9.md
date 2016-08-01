@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="04/25/2016"
+   ms.date="07/18/2016"
    ms.author="juliako"/>
 
 # Azure SDK for .NET 2.9 リリース ノート
@@ -33,13 +33,13 @@
 
 新機能:
 
-- App Service のプロビジョニング ダイアログの [サービス] タブで、セカンダリ App Services がサポートされるようになりました。 
+- App Service のプロビジョニング ダイアログの [サービス] タブで、セカンダリ App Services がサポートされるようになりました。
 
 ##Azure Data Lake Tools for Visual Studio 2015 Update 2
  
 アップデートの内容:
 
-- **Azure Data Lake Tools** for Visual Studio が Azure SDK for .NET リリースに統合されました。Azure SDK をインストールすると、Azure Data Lake Tools が自動的にインストールされます。 
+- **Azure Data Lake Tools** for Visual Studio が Azure SDK for .NET リリースに統合されました。Azure SDK をインストールすると、Azure Data Lake Tools が自動的にインストールされます。
 
 	このツールは頻繁に更新されます。最新版は[こちら](http://aka.ms/datalaketool)から取得してください。
 
@@ -59,4 +59,4 @@
 
 [Azure SDK 2.9 の発表に関するブログ記事](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

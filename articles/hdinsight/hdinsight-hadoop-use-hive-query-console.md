@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/03/2016"
+   ms.date="07/19/2016"
    ms.author="larryfr"/>
 
 # クエリ コンソールを使用して Hive クエリを実行
@@ -36,7 +36,7 @@
 
 ##<a id="run"></a>クエリ コンソールを使用して Hive クエリを実行
 
-1. Web ブラウザーを開き、\_\___https://CLUSTERNAME.azurehdinsight.net__ に移動します。__CLUSTERNAME__ は、HDInsight クラスターの名前です。プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
+1. Web ブラウザーを開き、__https://CLUSTERNAME.azurehdinsight.net____ に移動します。CLUSTERNAME\_\_ は、HDInsight クラスターの名前です。プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
 
 
 2. ページ上部のリンクから、**[Hive エディター]** を選択します。HDInsight クラスターで実行する HiveQL ステートメントの入力に使用できるフォームが表示されます。
@@ -128,4 +128,4 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

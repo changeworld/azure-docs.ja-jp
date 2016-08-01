@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/26/2016"
+   ms.date="07/14/2016"
    ms.author="alkohli"/>
 
 # StorSimple Virtual Array をデプロイする - Hyper-V で Virtual Array をプロビジョニングする
@@ -131,11 +131,11 @@
 
 	![](./media/storsimple-ova-deploy2-provision-hyperv/image8m.png)
 
-1.  **[概要]** を確認し、**[完了]** をクリックして仮想マシンを作成します。
+1.  **[概要]** を確認し、**[完了]** をクリックして仮想マシンを作成します。ただし、まだ先に進まないでください。CPU コアをいくつかと 2 番目のドライブを追加する必要があります。
 
 	![](./media/storsimple-ova-deploy2-provision-hyperv/image9.png)
 
-1.  最小要件を満たすには、4 コアが必要です。4 つの仮想プロセッサを追加するには、**[Hyper-V マネージャー]** ウィンドウでホスト システムを選択し、右側のウィンドウの **[仮想マシン]** の一覧で作成した仮想マシンを見つけます。マシン名を選択して右クリックし、**[設定]** を選択します。
+1.  最小要件を満たすには、4 コアが必要です。仮想プロセッサを追加するには、**[Hyper-V マネージャー]** ウィンドウでホスト システムを選択し、右側のウィンドウの **[仮想マシン]** の一覧で作成した仮想マシンを見つけます。マシン名を選択して右クリックし、**[設定]** を選択します。
 
 	![](./media/storsimple-ova-deploy2-provision-hyperv/image10.png)
 
@@ -156,7 +156,7 @@
 
 1.  仮想ハード ディスクの新規作成ウィザードの **[開始する前に]** ページで、**[次へ]** をクリックします。
 
-1.  **[ディスク フォーマットの選択]** ページで、既定のオプションの **[VHDX]** 形式をそのまま使用します。**[次へ]** をクリックします。Windows Server 2008 R2 を実行している場合、この画面は表示されません。
+1.  **[ディスク フォーマットの選択]** ページで、既定のオプションの **[VHDX]** 形式をそのまま使用します。**[次へ]** をクリックします。Windows Server 2012 R2 または Windows Server 2008 R2 を実行している場合、この画面は表示されません。
 
 	![](./media/storsimple-ova-deploy2-provision-hyperv/image15.png)
 
@@ -267,4 +267,4 @@ Hyper-V で StorSimple Virtual Array をプロビジョニングする方法を�
 
 -   [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-ova-deploy3-iscsi-setup.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

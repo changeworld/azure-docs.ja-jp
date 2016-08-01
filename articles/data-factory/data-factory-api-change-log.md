@@ -19,6 +19,34 @@
 # Azure Data Factory - .NET API の変更ログ 
 この記事では、特定のバージョンの Azure Data Factory SDK の変更に関する情報を提供します。Azure Data Factory の最新の Nuget パッケージについては、[こちら](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)をご覧ください。
 
+## バージョン 4.9.1
+_リリース日: 2016 年 7 月 5 日_
+
+### バグの修正
+
+- [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx)のWeb APIベースの認証が非推奨になりました。
+
+## バージョン 4.9.0
+_リリース日: 2016 年 6 月 10 日_
+
+### 機能の追加
+
+- [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) プロパティ と [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) プロパティを CopyActivity に追加しました。機能の詳細については、 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) を参照してください。
+
+
+### バグの修正
+
+- [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) インスタンスを受け取る [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) メソッドのオーバーロードを導入しました。
+- CopySink で[WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) と [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) が、省略可能としてマークされました。
+
+## バージョン 4.8.0
+_リリース日: 2016 年 5 月 25 日_
+
+### 機能の追加
+- 次の省略可能なプロパティがコピー アクティビティの種類に追加され、コピー パフォーマンスの調整が有効になりました。
+	- [ParallelCopies](https://msdn.microsoft.com/library/mt767910.aspx)
+	- [CloudDataMovementUnits](https://msdn.microsoft.com/library/mt767912.aspx)
+
 ## Version 4.7.0
 リリース日: 2016-05-20
 
@@ -66,7 +94,7 @@
 ### 機能の追加
 
 - 次のリンクされたサービスの種類が、コピー アクティビティのデータ ソースおよびシンクとして追加されています。
-	- [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx)。概念情報と例については、「[Azure Storage SAS Linked Service (Azure Storage SAS のリンクされたサービス)](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service)」を参照してください。
+	- [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx)。概念情報と例については、[Azure Storage SAS のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service)に関するセクションを参照してください。
 
 ## バージョン 4.3.0
 リリース日: 2015 年 11 月 25 日
@@ -74,8 +102,8 @@
 ### 機能の追加
 
 - 次のリンクされたサービスの種類が、コピー アクティビティのデータ ソースとして追加されています。
-	- [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx)。概念情報と例については、「[Move data from HDFS using Data Factory (Data Factory を使用して HDFS からデータを移動する)](data-factory-hdfs-connector.md)」を参照してください。
-	- [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx)。概念情報と例については、「[Move data From ODBC data stores using Azure Data Factory (Azure Data Factory を使用して ODBC データ ストアからデータを移動する)](data-factory-odbc-connector.md)」を参照してください。
+	- [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx)。概念情報と例については、[Data Factory を使用した HDFS からのデータの移動](data-factory-hdfs-connector.md)に関する記事を参照してください。
+	- [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx)。概念情報と例については、「[Azure Data Factory を使用して ODBC データ ストアからデータを移動する](data-factory-odbc-connector.md)」を参照してください。
 
 ## バージョン 4.2.0
 リリース日: 2015 年 11 月 10 日
@@ -164,4 +192,4 @@ SqlServerDataset | [SqlServerTableDataset](https://msdn.microsoft.com/library/mi
 
 - コピー アクティビティの一環として、Azure SQL Database ソースと Azure SQL Data Warehouse ソースに対するストアド プロシージャの実行がサポートされるようになりました。[SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) クラスと [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) クラスには、これをサポートするプロパティとして、**SqlReaderStoredProcedureName** と **StoredProcedureParameters** があります。これらのプロパティの詳細については、Azure.com の [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) と [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

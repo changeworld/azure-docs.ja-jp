@@ -35,9 +35,9 @@ Apple でアプリケーション用の新しいの明示的なアプリケー�
 2. 新しいアプリの次の 3 つのフィールドを更新し、**[Continue]** をクリックします。
 
 	* **[Name]**: **[App ID Description]** セクションの **[Name]** フィールドに、アプリのわかりやすい名前を入力します。
-	
-	* **[Bundle Identifier]**: **[Explicit App ID]** セクションに、[アプリ ディストリビューション ガイド](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)で説明したように `<Organization Identifier>.<Product Name>` の形式で**バンドル ID** を入力します。これは、アプリ用の XCode または Xamarin プロジェクトで使用されているものとも一致する必要があります。
-	 
+
+	* **[Bundle Identifier]**: **[Explicit App ID]** セクションに、[アプリ ディストリビューション ガイド](https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW8)で説明したように `<Organization Identifier>.<Product Name>` の形式で**バンドル ID** を入力します。これは、アプリの XCode、Xamarin、または Cordova プロジェクトで使用されているものとも一致する必要があります。
+
 	* **[Push Notifications]**: **[App Services]** セクションの **[Push Notifications]** オプションをオンにします。
 
 	![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
@@ -54,7 +54,7 @@ Apple でアプリケーション用の新しいの明示的なアプリケー�
 
    	これで、"Add iOS Certificate" アシスタントが表示されます。
 
-    > [AZURE.NOTE]このチュートリアルでは開発証明書を使用します。運用証明書の場合も同じ処理を行います。通知の送信と同じ証明書の種類を使用するようにします。
+    > [AZURE.NOTE] このチュートリアルでは開発証明書を使用します。運用証明書の場合も同じ処理を行います。通知の送信と同じ証明書の種類を使用するようにします。
 
 7. **[Choose File]** をクリックして、プッシュ証明書用に CSR を保存した場所に移動します。次いで、**[Generate]** をクリックします。
 
@@ -68,13 +68,13 @@ Apple でアプリケーション用の新しいの明示的なアプリケー�
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
-    > [AZURE.NOTE]既定では、ダウンロードした開発証明書ファイルの名前は **aps\_development.cer** になっています。
+    > [AZURE.NOTE] 既定では、ダウンロードした開発証明書ファイルの名前は **aps\_development.cer** になっています。
 
 9. ダウンロードしたプッシュ証明書 **aps\_development.cer** をダブルクリックします。下図のように、新しい証明書が Keychain にインストールされます。
 
    	![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
-    > [AZURE.NOTE]証明書の名前は異なることがありますが、名前の前に **Apple Development iOS Push Services:** が付けられます。
+    > [AZURE.NOTE] 証明書の名前は異なることがありますが、名前の前に **Apple Development iOS Push Services:** が付けられます。
 
 10. キーチェーン アクセスの **[証明書]** カテゴリで、作成したばかりの新しいプッシュ証明書を右クリックします。**[書き出す]** をクリックし、ファイルに名前を付けて、**.p12** 形式を選択します。次に、**[保存]** をクリックします。
 
@@ -110,4 +110,4 @@ Apple でアプリケーション用の新しいの明示的なアプリケー�
 
    	![](./media/notification-hubs-xamarin-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0720_2016-->

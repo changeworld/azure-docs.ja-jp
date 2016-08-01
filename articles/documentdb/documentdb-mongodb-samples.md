@@ -20,7 +20,7 @@
 # DocumentDB における MongoDB のプロトコル対応の例
 以降の例を使用するには、次の作業が必要となります。
 
-- MongoDB のプロトコル対応の DocumentDB アカウントを[作成](documentdb-create-mongodb-account.md)する
+- MongoDB のプロトコル対応の Azure DocumentDB アカウントを[作成](documentdb-create-mongodb-account.md)する
 - MongoDB のプロトコル対応の DocumentDB アカウントに使用する[接続文字列](documentdb-connect-mongodb-account.md)情報を取得する
 
 ## サンプル ASP.NET MVC タスク リスト アプリケーションの概要
@@ -175,4 +175,4 @@
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/18/2016"
+	ms.date="07/14/2016"
 	ms.author="jroth" />
 
 # Azure Virtual Machines での SQL Server の自動バックアップ (クラシック)
@@ -40,8 +40,6 @@
 
 - SQL Server 2014 Standard
 - SQL Server 2014 Enterprise
-- SQL Server 2016 Standard
-- SQL Server 2016 Enterprise
 
 **データベースの構成**:
 
@@ -66,13 +64,16 @@
 |**パスワード**|パスワード テキスト (なし)|暗号化キーのパスワード。暗号化を有効にした場合にのみ必須となります。暗号化されたバックアップを復元するには、バックアップの作成時に使用した正しいパスワードおよび関連する証明書が必要です。|
 
 ## ポータルでの構成
+Azure ポータルを使用して、プロビジョニング中または既存の VM 用に、自動バックアップを構成することができます。
 
-クラシック デプロイメント モデルで新しい SQL Server 2014 仮想マシンを作成するときに、Azure ポータルを使用して、自動バックアップを構成できます。
+### 新しい VM
+クラシック デプロイメント モデルで新しい SQL Server 2014 仮想マシンを作成するときに、Azure ポータルを使用して、自動バックアップを構成します。
 
 次の Azure ポータルのスクリーンショットは、**[オプションの構成]** の **[SQL 自動バックアップ]** の各オプションを示しています。
 
 ![Azure ポータルの SQL 自動バックアップ構成](./media/virtual-machines-windows-classic-sql-automated-backup/IC778483.jpg)
 
+### 既存の VM
 既存の SQL Server 2014 仮想マシンでは、仮想マシンのプロパティの **[構成]** セクションで **[自動バックアップ]** 設定を選択します。**[自動化されたバックアップ]** ウィンドウでは、機能の有効化、保有期間の設定、ストレージ アカウントの選択、暗号化の設定を行うことができます。次のスクリーンショットにこれを示します。
 
 ![Azure ポータルの自動バックアップ構成](./media/virtual-machines-windows-classic-sql-automated-backup/IC792133.jpg)
@@ -113,8 +114,8 @@ SQL Server IaaS エージェントのインストールと構成には数分か�
 
 Azure VM の SQL Server のバックアップと復元に関するその他のガイダンスについては、「[Azure の仮想マシンにおける SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」をご覧ください。
 
-その他の利用可能なオートメーション タスクについては、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-classic-sql-server-agent-extension.md)に関するページをご覧ください。
+その他の利用可能な自動タスクについては、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-classic-sql-server-agent-extension.md)に関するページをご覧ください。
 
-Azure VM で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
+Azure VM で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

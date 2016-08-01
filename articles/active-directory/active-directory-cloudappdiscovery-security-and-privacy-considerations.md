@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="msStevenPo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/30/2016"
+	ms.date="07/19/2016"
 	ms.author="markusvi"/>
 
 # Cloud App Discovery のセキュリティとプライバシーの考慮事項
@@ -139,7 +139,7 @@ TLS が提供するエンド ツー エンドのセキュリティで保護さ�
 ### 既知の問題と欠点
 TLS によるインターセプションが、エンド ユーザー エクスペリエンスに次のような影響を与える場合があります。
 
-- Extended Validation (EV) 証明書が使用された場合、Web ブラウザーのアドレス バーが緑色で表示されます。これは、信頼済みの Web サイトを訪問していることを視覚的に示すためのものです。TLS の検査では、クライアントに対して発行される証明書で EV を複製することはできないため、EV 証明書を使用する Web サイトが正常に動作する場合でも、アドレス バーは緑色で表示されません。  
+- Extended Validation (EV) 証明書が使用された場合、Web ブラウザーのアドレス バーが緑色で表示されます。これは、信頼済みの Web サイトを訪問していることを視覚的に示すためのものです。TLS の検査では、クライアントに対して発行される証明書で EV を複製することはできないため、EV 証明書を使用する Web サイトが正常に動作する場合でも、アドレス バーは緑色で表示されません。
 
 - 公開キーのピン留め (証明書のピン留めとも呼ばれます) は、man-in-the-middle 攻撃や偽の証明書機関からユーザーを保護することを意図しています。ピン留めされたサイトのルート証明書が既知の適切な CA のいずれかと一致しない場合、ブラウザーは接続を拒否してエラーを返します。TLS のインターセプトは実際には仲介者 (man-in-the-middle) であるため、これらの接続は失敗します。
 
@@ -180,4 +180,4 @@ TLS によるインターセプションが、エンド ユーザー エクス�
 * [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

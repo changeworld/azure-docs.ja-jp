@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="07/13/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する
@@ -40,11 +40,11 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
  
 このサンプルでは、次の Data Factory のエンティティがあります。
 
-1.	[OnPremisesFileServer](data-factory-onprem-file-system-connector.md#onpremisesfileserver-linked-service-properties) 型のリンクされたサービス。
-2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス
-3.	[FileShare](data-factory-onprem-file-system-connector.md#on-premises-file-system-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-4.	[FileSystemSource](data-factory-onprem-file-system-connector.md#file-share-copy-activity-type-properties) および [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
+- [OnPremisesFileServer](data-factory-onprem-file-system-connector.md#onpremisesfileserver-linked-service-properties) 型のリンクされたサービス。
+- [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス
+- [FileShare](data-factory-onprem-file-system-connector.md#on-premises-file-system-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+- [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+- [FileSystemSource](data-factory-onprem-file-system-connector.md#file-share-copy-activity-type-properties) および [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 次のサンプルは、時系列に属するデータを 1 時間ごとにオンプレミスのファイル システムから Azure BLOB にコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -253,11 +253,11 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 
 下のサンプルで確認できる要素:
 
-1.	AzureSqlDatabase 型のリンクされたサービス。
-2.	OnPremisesFileServer 型のリンクされたサービス。
-3.	AzureSqlTable 型の入力データセット。
-3.	FileShare 型の出力データセット。
-4.	SqlSource と FileSystemSink を使用するコピー アクティビティを含むパイプライン。
+- AzureSqlDatabase 型のリンクされたサービス。
+- OnPremisesFileServer 型のリンクされたサービス。
+- AzureSqlTable 型の入力データセット。
+- FileShare 型の出力データセット。
+- SqlSource と FileSystemSink を使用するコピー アクティビティを含むパイプライン。
 
 このサンプルはある時系列に属するデータを 1 時間おきに Azure SQL Database のテーブルからオンプレミスのファイル システムにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -436,13 +436,24 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 type | type プロパティは、**OnPremisesFileServer** に設定されます。 | はい 
-host | サーバーのホスト名。次の例のように "\" をエスケープ文字として使用します。共有が \\servername である場合、\\\servername を指定します。<br/><br/>ファイル システムがゲートウェイ コンピューターに対してローカルである場合は、Local または localhost を使用します。ファイル システムがゲートウェイ コンピューターとは異なるサーバー上にある場合は、\\\servername を使用します。 | あり
+host | コピーするフォルダーのルート パス。文字列内の特殊文字にはエスケープ文字 "\" を使用します。例については「[サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions)」を参照してください。  
+ | はい
 userid | サーバーにアクセスするユーザーの ID を指定します | No (encryptedCredential を選択する場合)
 パスワード | ユーザー (userid) のパスワードを指定します | いいえ (encryptedCredential を選択する場合) 
 encryptedCredential | New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します。<br/><br/>**注:** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureRmDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります。 | いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合)
 gatewayName | Data Factory サービスが、オンプレミスのファイル サーバーへの接続に使用するゲートウェイの名前 | はい
 
 オンプレミスのファイル システム データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
+
+### サンプルのリンクされたサービスとデータセットの定義 
+シナリオ | リンクされたサービス定義のホスト | データセット定義の folderPath
+-------- | --------------------------------- | --------------------- |
+Data Management Gateway のコンピューター上のローカル フォルダー: <br/><br/>例: D:\\* または D:\\folder\\subfolder\\* | D:\\\ (バージョン 2.0 以降のゲートウェイ) <br/><br/> localhost (バージョン 2.0 未満のゲートウェイ) | .\\\ または folder\\\subfolder (バージョン 2.0 以降のゲートウェイ) <br/><br/>D:\\\ または D:\\\folder\\\subfolder (バージョン 2.0 未満のゲートウェイ)
+リモート共有フォルダー: <br/><br/>例：\\\myserver\\share\\* または \\\myserver\\share\\folder\\subfolder\\* | \\\\\\myserver\\\share | .\\\ または folder\\\subfolder
+
+インストールされたゲートウェイの **バージョン**を確認するには、コンピューターの[Data Management Gateway 構成マネージャー](data-factory-data-management-gateway.md#data-management-gateway-configuration-manager)を起動し、**[ヘルプ]** タブに切り替えます。
+
+> [AZURE.NOTE] ローカル フォルダーのシナリオでは、"ホスト" プロパティを "localhost" として指定することで、ゲートウェイのいずれのバージョンでもコピー アクティビティを実行できますが、コピー ウィザードを使用したコピーの設定はできません。[ゲートウェイをバージョン 2.0 以降にアップグレードする](data-factory-data-management-gateway.md#update-data-management-gateway)ことをお勧めします。そうすれば、新しい構成を使用して、JSON とコピー ウィザードの両方を通じてシナリオがうまくいくようにすることができます。
 
 **例: プレーン テキストでのユーザー名とパスワードの使用**
 	
@@ -481,7 +492,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-folderPath | フォルダーへのパス。例: myfolder<br/><br/>文字列内の特殊文字にはエスケープ文字 "\" を使用します。例: folder\\subfolder の場合は folder\\\subfolder を指定し、d:\\samplefolder の場合は d:\\\samplefolder を指定します。<br/><br/>これを **partitionBy** と組み合わせて、スライスの開始または終了日時に基づいたフォルダーのパスを設定することができます。 | あり
+folderPath | フォルダーへのサブ パス。文字列内の特殊文字にはエスケープ文字 "\" を使用します。例については、「[サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions)」を参照してください。 <br/><br/>これを**partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを持つことができます。 | はい
 fileName | テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。このプロパティの値を指定しない場合、テーブルはフォルダー内のすべてのファイルを指定します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイル名は次の形式になります: <br/><br/>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) | いいえ
 partitionedBy | partitionedBy を利用して時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 | いいえ
 形式 | **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat** の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定する必要があります。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」を参照してください。ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。 | いいえ
@@ -546,7 +557,7 @@ true | preserveHierarchy | ソース フォルダー Folder1 が次のような�
 true | flattenHierarchy | ソース フォルダー Folder1 が次のような構造の場合: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>ターゲットの Folder1 の構造は次のようになります。<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 の自動生成された名前
 true | mergeFiles | ソース フォルダー Folder1 が次のような構造の場合: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>ターゲットの Folder1 の構造は次のようになります。<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1、File2、File3、File4、File5 の内容は、自動生成されたファイル名を持つ 1 つのファイルにマージされます。
 false | preserveHierarchy | ソース フォルダー Folder1 が次のような構造の場合: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>ターゲット フォルダー Folder1 の構造は次のようになります。<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Subfolder1 と File3、File4、File5 は取得されません。
-false | flattenHierarchy | ソース フォルダー Folder1 が次のような構造の場合: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>ターゲット フォルダー Folder1 の構造は次のようになります。<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 の自動生成された名前<br/><br/>Subfolder1 と File3、File4、File5 は取得されません。
+false | flattenHierarchy | ソース フォルダー Folder1 が次のような構造の場合:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>ターゲット フォルダー Folder1 の構造は次のようになります。<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 の自動生成された名前<br/><br/>Subfolder1 と File3、File4、File5 は取得されません。
 false | mergeFiles | ソース フォルダー Folder1 が次のような構造の場合: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>ターゲット フォルダー Folder1 の構造は次のようになります。<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 と File2 の内容は、自動生成されたファイル名 (File1 の自動生成された名前) を持つ 1 つのファイルにマージされます。<br/><br/>Subfolder1 と File3、File4、File5 は取得されません。
 
 
@@ -564,4 +575,4 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

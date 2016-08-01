@@ -36,7 +36,7 @@ Azure リージョンに IoT Hub を作成すると、そのハブはハブの�
 
 ## IoT Hub とセキュリティ
 
-IoT Hub に登録されているデバイスのみが、その IoT Hub と通信できます。登録されたデバイスには *DeviceConnect* アクセス許可を付与する必要があります。デバイスは、作成する各要求にデバイス固有の ID をカプセル化するトークンを含めることにより、デバイスが識別されるようにします。ハブはトークンの有効性と、デバイスがブラックリストに入れられていないか (*DeviceConnect* アクセス許可が取り消されていないか) を確認します。
+IoT Hub に登録されているデバイスのみが、その IoT Hub と通信できます。登録されたデバイスには *DeviceConnect* アクセス許可を付与する必要があります。デバイスは、作成する各要求にデバイス固有の ID をカプセル化するトークンを含めることにより、デバイスが識別されるようにします。ハブはトークンの有効性と、デバイスがブラックリストに入れられていないか (*DeviceConnect* アクセス許可が取り消されていないか) を確認します。IoT Hub でサポートされるトークンの詳細については、「[IoT Hub セキュリティ トークンと X.509 証明書を使用する][lnk-tokens]」を参照してください。
 
 IoT Hub のその他の管理エンドポイントへのアクセスも、*iothubowner*、*service*、*registryRead*、および *registryReadWrite* という一連のアクセス許可で制御されます。IoT Hub に接続しているすべてのクライアント管理のアプリケーションには、適切なアクセス許可を持つトークンが含まれている必要があります。
 
@@ -51,13 +51,12 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 - [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
 - [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 
-[lnk-iothub]: iot-hub-what-is-iot-hub.md
 [lnk-devguide]: iot-hub-devguide.md#security
-[lnk-manage-portal]: iot-hub-manage-through-portal.md
 
 [lnk-design]: iot-hub-guidance.md
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-tokens]: iot-hub-sas-tokens.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

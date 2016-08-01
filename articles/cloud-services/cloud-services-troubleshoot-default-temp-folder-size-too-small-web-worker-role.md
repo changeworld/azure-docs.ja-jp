@@ -13,14 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="06/03/2016"
+   ms.date="07/19/2016"
    ms.author="v-six" />
 
 # クラウド サービスの Web/worker ロールに対する既定の一時フォルダーのサイズが小さすぎる
 
 クラウド サービスの worker または Web ロールの既定の一時ディレクトリの最大サイズは 100 MB ですが、ある時点でいっぱいになる可能性があります。この記事では、一時ディレクトリの領域不足を回避する方法について説明します。
-
->[AZURE.NOTE] これは Azure SDK 1.0 ～ SDK 1.4 で Web/worker ロールを使用する場合にのみ適用されます。
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -79,4 +77,4 @@ namespace WorkerRole1
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

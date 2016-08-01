@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="04/20/2016"
+	ms.date="07/15/2016"
 	ms.author="jroth"/>
 
 # Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (Resource Manager)
@@ -310,4 +310,4 @@ Azure ポータルでこのマシンを表示すると、[対応するパブリ�
 ## 次のステップ
 仮想マシンを作成したら、RDP を使用してその仮想マシンに接続し、接続のセットアップを行うことができます。詳細については、「[Azure での SQL Server 仮想マシンへの接続 (リソース マネージャー)](virtual-machines-windows-sql-connect.md)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

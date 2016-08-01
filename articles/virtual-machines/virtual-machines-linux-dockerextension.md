@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="05/04/2016"
+   ms.date="07/20/2016"
    ms.author="iainfou"/>
 
 # Docker VM 拡張機能を使用した環境のデプロイ
@@ -22,7 +22,7 @@ Docker は一般的なコンテナー管理およびイメージング プラッ
 
 - アプリのプロトタイプを迅速に作成する場合、または Docker マシンの知識があり、既に使用している場合は、[Docker マシンと Azure ドライバーを使用](./virtual-machines-linux-docker-machine.md)して、Azure 内で Docker ホストをデプロイできます。
 - テンプレート ベースのデプロイでは、Azure 仮想マシンの Docker VM 拡張機能を使用できます。この方法では、Azure Resource Manager テンプレートのデプロイと統合することができ、ロール ベースのアクセス、診断、デプロイ後の構成など、関連するあらゆるメリットが得られます。
-- Docker VM 拡張機能は Docker Compose もサポートしています。Docker Compose は、宣言型 YAML ファイルを使用して、開発者が構築したアプリケーションを環境全体で有効にして、一貫性のあるデプロイを生成します。  
+- Docker VM 拡張機能は Docker Compose もサポートしています。Docker Compose は、宣言型 YAML ファイルを使用して、開発者が構築したアプリケーションを環境全体で有効にして、一貫性のあるデプロイを生成します。
 - Swarm が提供する追加のスケジュール設定および管理ツールを活用する実稼働レベルのスケーラブルなデプロイを実行するために、[Azure コンテナー サービスに完全な Docker Swarm クラスターをデプロイ](../container-service/container-service-deployment.md)することもできます。
 
 この記事では、Resource Manager テンプレートを使用して、実稼働レベルの定義されたカスタム環境で Docker VM 拡張機能をデプロイする方法を説明します。
@@ -74,7 +74,7 @@ info:    group create command OK
 デプロイが完了したら、デプロイ時に指定した DNS 名を使用して、SSH で新しい Docker ホストに接続します。Docker ツールが既にインストールされているので、nginx コンテナーを実行してみましょう。
 
 ```
-docker run -d -p 80:80 nginx
+sudo docker run -d -p 80:80 nginx
 ```
 
 次のような出力が表示されます。
@@ -91,11 +91,11 @@ Status: Downloaded newer image for nginx:latest
 b6ed109fb743a762ff21a4606dd38d3e5d35aff43fa7f12e8d4ed1d920b0cd74
 ```
 
-`docker ps` を使用してホストで実行されるコンテナーを確認します。
+`sudo docker ps` を使用してホストで実行されるコンテナーを確認します。
 
 ```
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                         NAMES
-b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 443/tcp   nostalgic_murdock
+b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 443/tcp   adoring_payne
 ```
 
 Web ブラウザーを開き、デプロイ時に指定した DNS 名を入力してコンテナーの動作を確認します。
@@ -134,9 +134,9 @@ Resource Manager テンプレートの使用方法の詳細については、「
 
 さまざまなデプロイのオプションの詳細な手順をご確認ください。
 
-1. [Docker マシンと Azure ドライバーを使用する](./virtual-machines-linux-docker-machine.md)  
-2. [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](./virtual-machines-linux-classic-cli-use-docker.md)  
+1. [Docker マシンと Azure ドライバーを使用する](./virtual-machines-linux-docker-machine.md)
+2. [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](./virtual-machines-linux-classic-cli-use-docker.md)
 3. [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する](virtual-machines-linux-docker-compose-quickstart.md)
 3. [Azure コンテナー サービス クラスターのデプロイ](../container-service/container-service-deployment.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

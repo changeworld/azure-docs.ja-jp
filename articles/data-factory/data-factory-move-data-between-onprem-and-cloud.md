@@ -76,7 +76,7 @@
 	>  
 	> Firefox についても、同じ操作を実行する必要があります (アドインをインストール)。ツール バーの **[メニューを開く]** ボタン (右上隅にある **3 本の横線**) をクリックし、**[アドオン]** をクリックします。"ClickOnce" キーワードで検索し、ClickOnce 拡張機能のいずれかを選択してインストールします。
 
-	![ゲートウェイ - 構成 ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
+	![[ゲートウェイ - 構成 ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
 	これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。**Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。実行可能ファイル **ConfigManager.exe** は **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared** フォルダーにあります。
 
@@ -107,15 +107,15 @@
 
 	**[診断]** タブでは、次の操作を行うこともできます。
 	
-		- Use *Test Connection** section to an on-premises data source using the gateway.
-		- Click **View Logs** to see the Data Management Gateway log in a Event Viewer window. 
-		- Click **Send Logs** to upload a zip file with logs of last 7 days to Microsoft to facilitate troubleshooting of your issues. 
+	- ゲートウェイを使用して、オンプレミスのデータ ソースに**[接続のテスト]** セクションを使用します。
+	- **[ログの表示]** をクリックして、[イベント ビューアー] ウィンドウの Data Management Gateway のログを確認します。
+	- **[ログを送信]** をクリックして過去 7 日間のログのzip ファイルを Microsoft にアップロードして、 問題のトラブルシューティングを容易にします。
 10. Azure ポータルの **[構成]** ブレードと **[新しいデータ ゲートウェイ]** ブレードで **[OK]** をクリックします。
 6. 左側のツリービューの **[データ ゲートウェイ]** に **[adftutorialgateway]** と表示されます。クリックすると、関連する JSON が表示されます。
 	
 
 ## リンクされたサービスの作成 
-この手順では、**AzureStorageLinkedService** と **SqlServerLinkedService** の 2 つのリンクされたサービスを作成します。**SqlServerLinkedService** はオンプレミスの SQL Server Database をリンクし、**AzureStorageLinkedService** は Azure BLOB ストアをデータ ファクトリにリンクします。このチュートリアルの後半で、オンプレミスの SQL Server Database から Azure BLOB ストアにデータをコピーするパイプラインを作成します。
+この手順では、**AzureStorageLinkedService** と **SqlServerLinkedService** の 2 つのリンクされたサービスを作成します。**SqlServerLinkedService** はオンプレミスの SQL Server Database をリンクし、**AzureStorageLinkedService** リンク サービスは Azure BLOB ストアを Data Factory にリンクします。このチュートリアルの後半で、オンプレミスの SQL Server Database から Azure BLOB ストアにデータをコピーするパイプラインを作成します。
 
 #### オンプレミスの SQL Server Database にリンクされたサービスを追加する
 1.	**Data Factory エディター**のツール バーにある **[新しいデータ ストア]** クリックし、**[SQL Server]** を選択します。
@@ -147,7 +147,7 @@
 	           		"gatewayName": "<Name of the gateway that the Data Factory service should use to connect to the on-premises SQL Server database>"
     		    }
 	
-		資格情報は、Data Factory サービスが所有する証明書を使用して**暗号化**されます。Data Management Gateway に関連付けられている証明書を使用する場合は、[資格情報とセキュリティの設定](#set-credentials-and-security)に関するセクションをご覧ください。
+		資格情報は、Data Factory サービスが所有する証明書を使用して**暗号化**されます。Data Management Gateway に関連付けられている証明書を使用する場合は、「[Set credentials securely (資格情報を安全に設定する)](#set-credentials-and-security)」を参照してください。
     
 2.	コマンド バーの **[デプロイ]** をクリックして、SQL Server リンク サービスをデプロイします。
 
@@ -419,4 +419,4 @@
 - Data Management Gateway の詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」をご覧ください。
 - コピー アクティビティを使用して、ソース データ ストアからシンク データ ストアにデータを移動する一般的な方法については、[Azure BLOB から Azure SQL へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

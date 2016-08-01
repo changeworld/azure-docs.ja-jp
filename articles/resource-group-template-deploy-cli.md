@@ -23,6 +23,7 @@
 - [Azure CLI](resource-group-template-deploy-cli.md)
 - [ポータル](resource-group-template-deploy-portal.md)
 - [REST API](resource-group-template-deploy-rest.md)
+- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
 - [Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
 - [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
 - [ノード](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
@@ -175,4 +176,4 @@ SAS トークンを使用したデプロイの際に、テンプレートをス�
 - ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments.md)」を参照してください。
 - セキュリティで保護された値を渡す KeyVault 参照を使用する方法については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

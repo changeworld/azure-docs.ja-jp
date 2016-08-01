@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/28/2016" 
+	ms.date="07/20/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -21,8 +21,13 @@
 Azure Redis Cache についてよく寄せられる質問の回答、パターンとベスト プラクティスについて説明します。
 
 
+## ここに質問の答えがない場合はどうすればいいですか。
 
+質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
 
+-	この FAQ の最後に掲載されている[Disqus スレッド](#comments)に質問を投稿し、Azure Cache チームや他のコミュニティ メンバーと この記事についてやり取りすることができます。
+-	[Azure Cache MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) に質問を投稿し、Azure Cache チームや他のコミュニティ メンバーメンバーとやり取りすることができます。
+-	[Azure Cache 外部フィードバック](mailto:azurecache@microsoft.com)にメールをお送りください。
 
 ## 計画に関する FAQ
 
@@ -261,7 +266,7 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 
 -	ASP.NET で、web.config の `<processModel>` 構成要素の下にある ["minIoThreads" 構成設定][]を使用します。Azure WebSites の内部で実行している場合、この設定は構成オプションを介して公開されません。ただし、これは global.asax.cs の Application\_Start メソッドからプログラムで設定できるはずです (下記を参照)。
 
-> **重要な注意事項:** この構成要素で指定される値は、"コアごとの" 設定です。たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、`<processModel minIoThreads="50"/>` を使用します。
+> **重要な注意事項:** この構成要素で指定される値は、*コアごとの*設定となります。たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、`<processModel minIoThreads="50"/>` を使用します。
 
 -	ASP.NET の外部では、[ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API を使用します。
 
@@ -304,7 +309,7 @@ Redis Cache の **[設定]** ブレードの **[サポート + トラブルシ�
 
 ### キャッシュ診断ストレージ アカウントの設定を変更した場合
 
-同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ設定を共有するため、構成が変更される (診断が有効/無効に設定される、またはストレージ アカウントが変更される) と、その変更がそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。キャッシュの診断設定が変更された場合は、同じサブスクリプションおよびリージョンの、別のキャッシュの診断設定が変更されたかどうかを確認します。確認する 1 つの方法として、`Write DiagnosticSettings` イベントのキャッシュの監査ログを表示します。監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」と「[リソース マネージャーの監査操作](../resource-group-audit.md)」をご覧ください。Azure Redis Cache イベントの監視の詳細については、「[処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」をご覧ください。
+同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ設定を共有するため、構成が変更される (診断が有効/無効に設定される、またはストレージ アカウントが変更される) と、その変更がそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。キャッシュの診断設定が変更された場合は、同じサブスクリプションおよびリージョンの、別のキャッシュの診断設定が変更されたかどうかを確認します。確認する 1 つの方法として、`Write DiagnosticSettings` イベントのキャッシュの監査ログを表示します。監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../resource-group-audit.md)」をご覧ください。Azure Redis Cache イベントの監視の詳細については、「[処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」をご覧ください。
 
 ### 新しいキャッシュの診断を有効にして、それ以外は有効にしない理由
 
@@ -315,6 +320,8 @@ Redis Cache の **[設定]** ブレードの **[サポート + トラブルシ�
 ### タイムアウトが発生する理由
 
 タイムアウトは、Redis との対話に使用されているクライアントで発生します。ほとんどの場合、Redis サーバーでタイムアウトが発生することはありません。Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。タイムアウトに関する問題のトラブルシューティングの詳細については、「[クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#client-side-troubleshooting)」と [StackExchange.Redis のタイムアウトの例外] (クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions) をご覧ください。
+
+'<-- Loc コメント: リンク切れ: [StackExchange.Redis のタイムアウトの例外](クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions)。 "(クライアント側のトラブルシューティング]" を削除してください。 -->'
 
 <a name="cache-disconnect"></a>
 ### クライアントがキャッシュから切断される理由
@@ -369,4 +376,4 @@ Azure Redis Cache の使用方法については、「[Azure Redis Cache の使�
 
 ["minIoThreads" 構成設定]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

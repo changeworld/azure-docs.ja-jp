@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/02/2016" 
+	ms.date="07/18/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して Web テーブル ソースからデータを移動する
@@ -287,4 +287,4 @@ Excel 2013 を使用している場合、[Microsoft Power Query for Excel](https
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

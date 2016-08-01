@@ -390,4 +390,4 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 	hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

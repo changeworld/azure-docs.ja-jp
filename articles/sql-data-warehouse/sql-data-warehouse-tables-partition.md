@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/29/2016"
+   ms.date="07/18/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのテーブルのパーティション分割
@@ -146,6 +146,8 @@ AND     rp.[name]    = 'SloDWPool'
 
 ## パーティションの切り替え
 
+SQL Data Warehouse では、パーティションの分割、結合、および切り替えをサポートします。これらの各機能は、[ALTER TABLE][] ステートメントを使用して実行されます。
+
 2 つのテーブル間でパーティションを切り替えるには、それぞれの境界に合わせてパーティションが配置されていることと、テーブル定義が一致していることを確認する必要があります。テーブルで値の範囲を適用する際に CHECK 制約は使用できないため、ソース テーブルにターゲットテーブルと同じパーティション境界が含まれている必要があります。そうでない場合、パーティションのメタデータが同期されないため、パーティションの切り替えは失敗します。
 
 ### データが含まれたパーティションを分割する方法
@@ -187,7 +189,7 @@ CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSal
 
 > [AZURE.NOTE] 統計オブジェクトを作成することによって、テーブルのメタデータをより正確なものにすることができます。統計の作成を省略した場合は、SQL Data Warehouse では既定値が使用されます。統計の詳細については､[統計][]に関するページをご覧ください。
 
-次に、`sys.partitions` カタログ ビューを利用して行数を照会できます。
+次に、`sys.partitions` カタログ ビューを使用して行数を照会できます。
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -372,6 +374,7 @@ DROP TABLE #partitions;
 
 <!-- MSDN Articles -->
 [パーティション テーブルとパーティション インデックス]: https://msdn.microsoft.com/library/ms190787.aspx
+[ALTER TABLE]: https://msdn.microsoft.com/ja-JP/library/ms190273.aspx
 [CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
 [パーティション関数]: https://msdn.microsoft.com/library/ms187802.aspx
 [パーティション構成]: https://msdn.microsoft.com/library/ms179854.aspx
@@ -379,4 +382,4 @@ DROP TABLE #partitions;
 
 <!-- Other web references -->
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

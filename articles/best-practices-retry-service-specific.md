@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/01/2016"
+   ms.date="07/13/2016"
    ms.author="masashin"/>
 
 # 再試行サービス固有のガイダンス
@@ -39,7 +39,7 @@
 | **[DocumentDB](#documentdb-pre-release-retry-guidelines)** | サービスでネイティブ | 構成不可 | グローバル | TraceSource |
 | **[Search](#search-retry-guidelines)** | Topaz* (カスタム検出戦略を実装) | 宣言型およびプログラムによる | コードのブロック | カスタム |
 | **[Active Directory](#azure-active-directory-retry-guidelines)** | Topaz* (カスタム検出戦略を実装) | 宣言型およびプログラムによる | コードのブロック | カスタム |
-**Topaz: <a href="http://msdn.microsoft.com/library/dn440719.aspx">エンタープライズ ライブラリ 6.0</a> に含まれる一時的エラー処理アプリケーション ブロックの表示名。このガイダンスで説明されているとおり、ほとんどの種類のサービスに対して、カスタム検出戦略を Topaz と一緒に使用できます。Topaz の既定の戦略は、このガイダンスの末尾にある「[一時的エラー処理アプリケーション ブロック (Topaz) の戦略](#transient-fault-handling-application-block-topaz-strategies)」のセクションに示しています。このブロック (Topaz) は、現在のところオープン ソース フレームワークであり、Microsoft により直接サポートされていないことに注意してください。
+*Topaz: <a href="http://msdn.microsoft.com/library/dn440719.aspx">エンタープライズ ライブラリ 6.0</a> に含まれる一時的エラー処理アプリケーション ブロックの表示名。このガイダンスで説明されているとおり、ほとんどの種類のサービスに対して、カスタム検出戦略を Topaz と一緒に使用できます。Topaz の既定の戦略は、このガイダンスの末尾にある「[一時的エラー処理アプリケーション ブロック (Topaz) の戦略](#transient-fault-handling-application-block-topaz-strategies)」のセクションに示しています。このブロック (Topaz) は、現在のところオープン ソース フレームワークであり、Microsoft により直接サポートされていないことに注意してください。
 
 > [AZURE.NOTE] Azure の組み込み再試行メカニズムのほとんどには、再試行ポリシーに組み込まれている機能以外に、さまざまな種類のエラーや例外に対して異なる再試行ポリシーを適用する方法は現在のところありません。したがって、この記事の執筆時点で選択できる最良のガイダンスは、最適な平均的パフォーマンスと可用性を提供するポリシーを構成することです。ポリシーを微調整する 1 つの方法は、ログ ファイルを分析して、発生する一時的エラーの種類を判別することです。たとえば、エラーの多くがネットワーク接続問題に関連している場合、最初の再試行を長時間待つのではなく、すぐに再試行することができます。
 
@@ -1107,4 +1107,4 @@ Azure またはサード パーティ提供のサービスにアクセスする�
 | **Linear (固定間隔)** | retryCount<br />retryInterval<br />fastFirstRetry<br /> | 10<br />1 秒<br />true | 再試行の回数。<br />再試行間の遅延。<br />最初の再試行をすぐに行うかどうかを示します。 |
 一時的エラー処理アプリケーション ブロックの使用例については、このガイダンスで前述されている、ADO.NET と Azure Active Directory を使用する Azure SQL Database についての「例」のセクションを参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

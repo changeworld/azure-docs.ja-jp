@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="04/18/2016" 
+ 	ms.date="07/18/2016" 
 	ms.author="juliako"/>
 
 
@@ -28,7 +28,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 
 資産を作成する際には、次の暗号化オプションを指定できます。
 
-- **None**: 暗号化は使用されません。これが既定値です。このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。 
+- **None**: 暗号化は使用されません。これが既定値です。このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。
 - **CommonEncryption**: 既に Common Encryption や PlayReady DRM で暗号化されて保護されているコンテンツ (PlayReady DRM で保護されたスムーズ ストリーミングなど) をアップロードする場合は、このオプションを使用します。
 - **EnvelopeEncrypted**: AES で暗号化された HLS をアップロードする場合はこのオプションを使用します。この場合ファイルは、Transform Manager によってあらかじめエンコードされて暗号化されている必要があります。
 - **StorageEncrypted**: ローカルで AES-256 ビット暗号化を使用し、平文のコンテンツを暗号化したうえで、それを Azure Storage にアップロードします。アップロードされたデータは、暗号化された状態で保存されます。StorageEncrypted で保護された資産は、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに配置されます。その後、必要に応じて再度暗号化を適用して、新しい出力資産として再びアップロードできます。StorageEncrypted の主な目的は、高品質の入力メディア ファイルを強力な暗号化によって保護したうえでディスクに保存するというニーズに応えることです。
@@ -54,7 +54,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 - 資産に関連付ける AssetFile インスタンスを作成します。
 - 資産へのアクセス許可とアクセス期間を定義する AccessPolicy インスタンスを作成します。
 - 資産へのアクセスを提供する Locator インスタンスを作成します。
-- 単一のメディア ファイルを Media Services にアップロードします。 
+- 単一のメディア ファイルを Media Services にアップロードします。
 
 		
 		static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
@@ -315,4 +315,4 @@ IngestManifestAsset は、資産を、一括取り込みのための一括 Inges
 [メディア プロセッサの取得]: media-services-get-media-processor.md
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->
