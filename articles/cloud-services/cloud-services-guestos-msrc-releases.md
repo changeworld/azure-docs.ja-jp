@@ -13,12 +13,29 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="06/21/2016"
+   ms.date="07/19/2016"
    ms.author="yuemlu"/>
 
 # Azure ゲスト OS 
 
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## 7 月のゲスト OS 
+
+| セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
+| MS16-084 | [3169991] | Internet Explorer 用の累積的なセキュリティ更新プログラム | 4\.34、3.41、2.53 | 2016 年 7 月 12 日 |
+| MS16-087 | [3170005] | Microsoft Print Spooler 用のセキュリティ更新プログラム | 4\.34、3.41、2.53 | 2016 年 7 月 12 日 |
+| MS16-090 | [3171481] | カーネル モード ドライバー用のセキュリティ更新プログラム | 4\.34、3.41、2.53 | 2016 年 7 月 12 日 |
+| MS16-091 | [3170048] | .NET Framework 用のセキュリティ更新プログラム | 4\.34、3.41、2.53 | 2016 年 7 月 12 日 |
+| MS16-092 | [3171910] | Windows カーネル用のセキュリティ更新プログラム | 4\.34、3.41 | 2016 年 7 月 12 日 |
+| MS16-094 | [3177404] | セキュア ブート用のセキュリティ更新プログラム | 4\.34、3.41 | 2016 年 7 月 12 日 |
+| | [3162835] | 2016 年 6 月 DST およびタイム ゾーンの Windows 用更新プログラム | 4\.34、3.41、2.53 | 2016 年 7 月 12 日 |
+| | [3156417] | Windows 7 SP1 および Windows Server 2008 R2 SP1 用の 2016 年 5 月付更新プログラムのロールアップ | 2\.53 | 2016 年 7 月 12 日 |
+| | [3161608] | Windows 7 SP1 および Windows Server 2008 R2 SP1 用の 2016 年 6 月付更新プログラムのロールアップ | 2\.53 | 2016 年 7 月 12 日 |
+| | [3161609] | Windows Server 2012 用の 2016年 6 月の更新プログラム ロールアップ | 3\.41 | 2016 年 7 月 12 日 |
+| | [3161606] | Windows RT 8.1、Windows 8.1、および Windows Server 2012 R2 用の 2016 年 6 月の更新プログラム ロールアップ | 4\.34 | 2016 年 7 月 12 日 |
+| | [3139923] | Windows の HTTP 共有に MSI パッケージがインストールされていると Windows インストーラー (MSI) の修復が正しく機能しない | 4\.34 | 2016 年 7 月 12 日 |
 
 ## June ゲスト OS 
 
@@ -318,6 +335,21 @@
 | 該当なし | [2896881][2896881] | Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い | 4\.15、3.22、2.34 | 2015 年 1 月 13 日 |
 
 
+[3169991]: http://support.microsoft.com/kb/3169991
+[3170005]: http://support.microsoft.com/kb/3170005
+[3170050]: http://support.microsoft.com/kb/3170050
+[3171481]: http://support.microsoft.com/kb/3171481
+[3170048]: http://support.microsoft.com/kb/3170048
+[3171910]: http://support.microsoft.com/kb/3171910
+[3177404]: http://support.microsoft.com/kb/3177404
+[3162835]: http://support.microsoft.com/kb/3162835
+[3156417]: http://support.microsoft.com/kb/3156417
+[3161608]: http://support.microsoft.com/kb/3161608
+[3161609]: http://support.microsoft.com/kb/3161609
+[3161606]: http://support.microsoft.com/kb/3161606
+[3139923]: http://support.microsoft.com/kb/3139923
+
+
 [3141780]: http://support.microsoft.com/kb/3141780
 [3155527]: http://support.microsoft.com/kb/3155527
 [3163649]: http://support.microsoft.com/kb/3163649
@@ -544,4 +576,4 @@
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

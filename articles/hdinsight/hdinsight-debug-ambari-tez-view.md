@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="05/03/2016"
+ms.date="07/19/2016"
 ms.author="larryfr"/>
 
 # HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする
@@ -129,7 +129,7 @@ Tez を使用して実行される Hive クエリを実行するには、次の�
 
     > [AZURE.NOTE] 前のメニューと同様に、[Tasks]、[Task Attempts]、[Sources & Sinks\_\_] が表示されるように列をスクロールすると、各項目の詳細情報へのリンクを表示できます。
 
-10. __[Tasks]__ を選択した後、__00\_000000__ という名前の項目をクリックします。このタスクの __[Task Details]__ が表示されます。この画面から、__[Task Counters]__ と __[Task Attempts]__ を表示できます。
+10. __[Tasks]__ を選択した後、__00_000000_\_ という名前の項目をクリックします。このタスクの __[Task Details]__ が表示されます。この画面から、__[Task Counters]__ と __[Task Attempts] を表示できます。
 
     ![タスクの詳細](./media/hdinsight-debug-ambari-tez-view/taskdetails.png)
 
@@ -141,4 +141,4 @@ Tez に関する技術的な情報の詳細については、[Hortonworks の Te
 
 HDInsight での Ambari の使用の詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

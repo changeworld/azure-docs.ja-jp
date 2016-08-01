@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/24/2016" 
-	ms.author="robmcm"/>
+	ms.date="07/07/2016" 
+	ms.author="robmcm;asirveda"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694270.aspx -->
 
@@ -34,7 +34,7 @@ Azure Toolkit for Eclipse - June 2016 リリースでは、次の点が強化さ
 * **最新の Java JDK のサポート**。Java JDK の最新バージョンは、現在、Azure Toolkit for Eclipse でサポートされています。
 * **Azure SDK v2.9.1 のサポート**。最新バージョンの Azure SDK が、Azure Toolkit for Eclipse を使用するための最低限の前提条件になりました。
 * **統合サンプル**。Azure Toolkit for Eclipse には、現在、開発者の作業開始に役立ついくつかのサンプル アプリケーションが特徴付けられています。
-* **HDInsight ツールの統合**。Azure の HDInsight ツールは、現在、Azure Toolkit for Eclipse にバンドルされています。
+* **HDInsight ツールの統合**。Azure の HDInsight ツールは、現在、Azure Toolkit for Eclipse にバンドルされています。詳細については、[Eclipse 用の HDInsight Tools プラグイン]に関するページを参照してください。
 * **Java Web アプリのリモート デバッグ**。Azure Toolkit for Eclipse には、現在、Azure App Service での Java Web アプリのリモート デバッグがサポートされています。
 * **Eclipse Luna リリースのサポート。** 今後、Eclipse IDE バージョンは Luna 以上が必須となります。
 
@@ -346,6 +346,7 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [大規模な環境のデプロイ]: http://go.microsoft.com/fwlink/?LinkID=699536
 [エンドポイントのプロパティ]: http://go.microsoft.com/fwlink/?LinkID=699525#endpoints_properties
 [環境変数のプロパティ]: http://go.microsoft.com/fwlink/?LinkID=699525#environment_variables_properties
+[Eclipse 用の HDInsight Tools プラグイン]: ./hdinsight/hdinsight-apache-spark-eclipse-tool-plugin.md
 [Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法]: http://go.microsoft.com/fwlink/?LinkID=264703
 [SSL オフロードの使用方法]: http://go.microsoft.com/fwlink/?LinkID=699545
 [Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
@@ -369,4 +370,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [ic710882]: ./media/azure-toolkit-for-eclipse-whats-new/ic710882.png
 [ic710883]: ./media/azure-toolkit-for-eclipse-whats-new/ic710883.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

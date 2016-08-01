@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="07/19/2016"
 	ms.author="jeedes"/>
 
 
@@ -23,7 +23,7 @@
 
 Halogen Software と Azure AD の統合には、次の利点があります。
 
-- Halogen Software にアクセスする Azure AD ユーザーを制御できます。 
+- Halogen Software にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に Halogen Software にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
@@ -43,7 +43,7 @@ Halogen Software と Azure AD の統合を構成するには、次のものが�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
 ## シナリオの説明
@@ -51,7 +51,7 @@ Halogen Software と Azure AD の統合を構成するには、次のものが�
 
 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Halogen Software の追加 
+1. ギャラリーからの Halogen Software の追加
 2. Azure AD シングル サインオンの構成とテスト
 
 
@@ -60,7 +60,7 @@ Azure AD への Halogen Software の統合を構成するには、ギャラリ�
 
 **ギャラリーから Halogen Software を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -118,7 +118,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。![Configure App Settings][10]
  
-     a. **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Halogen Software アプリケーションへのサインオンに使用する URL を入力します: **https://global.hgncloud.com/fabrikam/welcome.jsp*。
+     a. **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Halogen Software アプリケーションへのサインオンに使用する URL を入力します: *https://global.hgncloud.com/fabrikam/welcome.jsp*。
 
      b.**[次へ]** をクリックします。
  
@@ -321,4 +321,4 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 [300]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_300.png
 [301]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_301.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

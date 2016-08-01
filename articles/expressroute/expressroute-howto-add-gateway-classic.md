@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/06/2016"
+   ms.date="07/19/2016"
    ms.author="charwen"/>
 
 # クラシック デプロイ モデルと PowerShell を使用して ExpressRoute 用の仮想ネットワーク ゲートウェイを構成する
@@ -40,4 +40,4 @@
 
 VNet ゲートウェイを作成したので、ExpressRoute 回線に VNet をリンクできるようになりました。「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-classic.md)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0720_2016-->

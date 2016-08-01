@@ -14,10 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="07/06/2016"
 	ms.author="garye;raymondl"/>
 
 # Web アプリケーション テンプレートによる Azure Machine Learning Web サービスの使用
+
+>[AZURE.NOTE] このトピックでは、従来の Web サービスに適用できる手法について説明します。
 
 予測モデルを開発し、Machine Learning Studio を使用するか、R または Python などのツールを使用してそれを Azure Web サービスとしてデプロイしたら、REST API を使用して運用可能モデルにアクセスできます。
 
@@ -58,7 +60,7 @@ Web サービスをデプロイした後は、次の図のように、以下の�
 
 3. [Azure ポータル](https://portal.azure.com)に移動して**ログイン**し、**[新規]** をクリックします。**[Azure ML Request-Response Service Web App]** を探して選択し、**[作成]** をクリックします。
 
-	- Web アプリケーションに一意の名前を付けます。Web アプリケーションの URL は、この名前の後に `.azurewebsites.net.` を付けたものです。たとえば、`http://carprediction.azurewebsites.net.` のようになります。
+	- Web アプリケーションに一意の名前を付けます。Web アプリの URL は、この名前の後に `.azurewebsites.net.` を付けたものです。たとえば、`http://carprediction.azurewebsites.net.` のようになります。
 
 	- 実行している Web サービスの Azure サブスクリプションとサービスを選択します。
 
@@ -66,9 +68,9 @@ Web サービスをデプロイした後は、次の図のように、以下の�
 
 	![Web アプリの作成][image5]
 
-4. Azure による Web アプリケーションのデプロイが完了したら、Azure で Web アプリケーション設定ページの **[URL]** をクリックするか、Web ブラウザーで URL を入力します。たとえば、`http://carprediction.azurewebsites.net.` のように指定します。
+4. Azure による Web アプリのデプロイが完了したら、Azure で Web アプリ設定ページの **[URL]** をクリックするか、Web ブラウザーで URL を入力します。たとえば、`http://carprediction.azurewebsites.net.` のように指定します。
 
-5. 初めて Web アプリケーションを実行すると、**API ポスト URL** と **API キー**を指定するように求められます。前に保存しておいた値を入力します。
+5. 初めて Web アプリを実行すると、**API ポスト URL** と **API キー**を指定するように求められます。前に保存しておいた値を入力します。
 	- **API ポスト URL** には、API ヘルプ ページの**要求 URI**
 	- **API キー**には Web サービス ダッシュボードの **API キー**
 
@@ -76,7 +78,7 @@ Web サービスをデプロイした後は、次の図のように、以下の�
 
 	![ポスト URI と API キーの入力][image6]
 
-6. **Web アプリケーションの構成**ページに、現在の Web サービス設定が表示されます。ここで、Web アプリで使用される設定を変更できます。
+6. **Web アプリの構成**ページに、現在の Web サービス設定が表示されます。ここで、Web アプリで使用される設定を変更できます。
 
 	> [AZURE.NOTE] ここでの設定の変更は、この Web アプリだけに適用されます。Web サービスの既定の設定は変更されません。たとえば、ここで**説明**を変更した場合、Machine Learning Studio の Web サービス ダッシュボードに表示される説明は変更されません。
 
@@ -125,4 +127,4 @@ BES Web アプリ テンプレートは、RRS テンプレートと同じよう�
 [image6]: media\machine-learning-consume-web-service-with-web-app-template\web-service-info.png
 [image7]: media\machine-learning-consume-web-service-with-web-app-template\storage.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

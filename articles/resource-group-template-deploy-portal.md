@@ -23,6 +23,7 @@
 - [Azure CLI](resource-group-template-deploy-cli.md)
 - [ポータル](resource-group-template-deploy-portal.md)
 - [REST API](resource-group-template-deploy-rest.md)
+- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
 - [Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
 - [ノード](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
 - [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
@@ -35,7 +36,7 @@
 
 ## Create resource group
 
-1. 空のリソース グループを作成するには、**[新規]** > **[管理]** > **[リソース グループ]** の順に選択します。
+1. 空のリソース グループを作成するには、**[新規]**、**[管理]**、**[リソース グループ]** の順に選択します。
 
     ![空のリソース グループの作成](./media/resource-group-template-deploy-portal/create-empty-group.png)
 
@@ -87,7 +88,7 @@
 
     ![テンプレートの作成](./media/resource-group-template-deploy-portal/show-custom-template.png)
 
-    エディターで、デプロイするリソースを定義する JSON 構文を追加します。完了したら、**[保存]** を選択します 。JSON 構文の作成に関するガイダンスについては、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」をご覧ください。
+    エディターで、デプロイするリソースを定義する JSON 構文を追加します。完了したら、**[保存]** を選択します。JSON 構文の作成に関するガイダンスについては、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」をご覧ください。
 
     ![テンプレートの編集](./media/resource-group-template-deploy-portal/edit-template.png)
 
@@ -105,7 +106,7 @@
 
 ポータルでは、Azure アカウントにテンプレートを保存し、後で再デプロイを行うことができます。保存したテンプレートの操作の詳細については、「[Azure ポータルでプライベート テンプレートを使ってみる](./marketplace-consumer/mytemplates-getstarted.md)」を参照してください。
 
-1. 保存したテンプレートを検索するには、 **[参照]** > **[テンプレート]** の順に選択します。
+1. 保存したテンプレートを検索するには、**[参照]**、**[テンプレート]** の順に選択します。
 
     ![テンプレートの参照](./media/resource-group-template-deploy-portal/browse-templates.png)
 
@@ -123,4 +124,4 @@
 - デプロイ エラーのトラブルシューティングの詳細については、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
 - デプロイまたはリソース グループからテンプレートを取得するには、「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

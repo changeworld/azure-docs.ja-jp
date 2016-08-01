@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/13/2016" 
+    ms.date="07/15/2016" 
     ms.author="markvi" />
 
 
@@ -96,7 +96,8 @@ Azure Active Directory は、ADFS トークン (またはその他の SAML ト�
 ### Exchange ActiveSync クライアントのサポート 
 
 
-iOS 9 以降の特定の Exchange ActiveSync アプリケーションがサポートされています。電子メール アプリケーションがこの機能をサポートするかどうかを確認するには、アプリケーション開発者にお問い合わせください。このシナリオでは、クライアント証明書でのフェデレーション認証はサポートされていません。
+iOS 9 以降の特定の Exchange ActiveSync アプリケーションがサポートされています。電子メール アプリケーションがこの機能をサポートするかどうかを確認するには、アプリケーション開発者にお問い合わせください。
+
 
 
 ## 使用の開始 
@@ -270,4 +271,4 @@ iOS 9 以降のネイティブ メール アプリケーションで証明書認
 
 設定する日付は、現在より後の日付にする必要があります。日付を現在より後の日付にしない場合、**StsRefreshTokensValidFrom** プロパティは設定されません。日付を現在より後の日付にする場合、**StsRefreshTokensValidFrom** は、現在の時刻に設定されます (Set-MsolUser コマンドで指定した日付ではありません)。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

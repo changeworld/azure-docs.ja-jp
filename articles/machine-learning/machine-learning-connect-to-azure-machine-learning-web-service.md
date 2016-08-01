@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016" 
+	ms.date="07/06/2016" 
 	ms.author="garye" />
 
 
@@ -40,10 +40,17 @@ Azure Machine Learning には、2 種類のサービスがあります。
 Machine Learning Web サービスの詳細については、「[Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
 
 ## Azure Machine Learning の承認キーを取得する ##
-Web サービスの API キーは、Machine Learning Web サービスから取得します。Machine Learning Studio または Azure ポータルから取得できます。
+
+実験をデプロイすると、Web サービスの API キーが生成されます。キーの取得元は、実験を新しい Web サービスとしてデプロイしたか、従来の Web サービスとしてデプロイしたかによって決まります。
+
+## 従来の Web サービス ##
+
+ Machine Learning Studio または Azure ポータルからキーを取得できます。
+
 ### Machine Learning Studio ###
+
 1. Machine Learning Studio で、左側の **[Web サービス]** をクリックします。
-2. Web サービスをクリックします。**[ダッシュボード]** タブに [API キー] があります。
+2. Web サービスをクリックします。**[ダッシュボード]** タブに **[API キー]** があります。
 
 ### Azure ポータル ###
 
@@ -53,24 +60,36 @@ Web サービスの API キーは、Machine Learning Web サービスから取�
 4. Web サービスをクリックします。
 5. エンドポイントをクリックします。[API キー] が右下にあります。
 
+
+## 新しい Web サービス 
+
+新しい Machine Learning Web サービスの API キーを取得するには、[Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルにログインする必要があります。
+
+1. Azure Machine Learning Web サービス ポータルで、上部メニューの **[WEB サービス]** をクリックします。
+2. キーを取得する Web サービスをクリックします。
+3. 上部のメニューで **[Consume(使用)]** をクリックします。
+4. **主キー**をコピーして保存します。
+
 ## <a id="connect"></a>Machine Learning Web サービスに接続する
 
 HTTP 要求と応答をサポートする任意のプログラミング言語を使用して、Machine Learning Web サービスに接続することができます。Machine Learning Web サービス ヘルプ ページから、C#、Python、および R の例を表示できます。
 
-### Machine Learning Web サービス API のヘルプ ページを表示するには ###
-Machine Learning API ヘルプ ページは、Web サービスをデプロイするときに作成されます。「[Azure Machine Learning チュートリアル - Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)」を参照してください。
+**Machine Learning API ヘルプ** Machine Learning API ヘルプは、Web サービスをデプロイするときに作成されます。「[Azure Machine Learning チュートリアル - Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)」を参照してください。Machine Learning API ヘルプには、予測 Web サービスの詳細が含まれます。
 
+**従来の Web サービスの Machine Learning API ヘルプを表示するには** Machine Learning Studio の場合:
 
-**Machine Learning API のヘルプ ページを表示するには** Machine Learning Studio の場合:
+1. **[Web サービス]** をクリックします。
+2. Web サービスをクリックします。
+3. **[API ヘルプ ページ]** - **[要求/応答]** または **[バッチの実行]** をクリックします。
 
-1. **[Web サービス]** を選択します。
-2. Web サービスを選択します。
-3. **[API ヘルプ ページ]** - **[要求/応答]** または **[バッチの実行]** を選択します。
+**新しい Web サービスの Machine Learning API ヘルプを表示するには** Azure Machine Learning Web サービス ポータルの場合:
 
+1. 上部のメニューで **[Web サービス]** をクリックします。
+2. キーを取得する Web サービスをクリックします。
 
-**Machine Learning API のヘルプ ページ** Machine Learning API のヘルプ ページには、予測 Web サービスの詳細が含まれます。
+**[Consume (使用)]** をクリックして、[要求/応答] および [バッチの実行] サービスの URI と、C#、R、および Python のサンプル コードを取得します。
 
-
+**Swagger API** をクリックして、指定した URI から呼び出される API の Swagger ベースのドキュメントを取得します。
 
 ### C# のサンプル ###
 
@@ -98,8 +117,8 @@ Machine Learning Web サービスに接続するには、ScoreData を渡す **u
 
 **サンプル コードを実行するには**
 
-1. Machine Learning サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験を発行します。
+1. Machine Learning サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験をデプロイします。
 2. Web サービスからのキーを持つ apiKey を割り当てます。前述の「**Azure Machine Learning の承認キーを取得する**」をご覧ください。
-3. 要求の URI を含む serviceUri を割り当てます。要求の URI を取得する方法を参照してください。
+3. 要求の URI を含む serviceUri を割り当てます。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -96,8 +96,7 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利
 
 バックエンド テーブルのデータにアクセスする、またはデータを変更するすべてのコードは、`MobileServiceTable` オブジェクトに対して関数を呼び出します。次のように、`MobileServiceClient` のインスタンスで [GetTable] メソッドを呼び出して、テーブルへの参照を取得します。
 
-    IMobileServiceTable<TodoItem> todoTable =
-    	client.GetTable<TodoItem>();
+    IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
 
 これは、型指定されたシリアル化モデルです。型指定されていないシリアル化モデルもサポートされます。次のコードは、[型指定されていないテーブルへの参照を作成します]。
 
@@ -141,8 +140,7 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で利
 
 	// This query filters out completed TodoItems where Text isn't null
 	List<TodoItem> items = await todoTable
-	   .Where(todoItem => todoItem.Complete == false 
-	   	&& todoItem.Text != null)
+	   .Where(todoItem => todoItem.Complete == false && todoItem.Text != null)
 	   .ToListAsync();
 
 Server SDK によって次のように SQL クエリに変換されます。
@@ -319,7 +317,7 @@ Mobile Apps は、テーブルの **ID** 列で一意のカスタム文字列値
 
 複数のクライアントが同じ項目に対して同時に変更を書き込む場合があります。競合を検知しない場合、それを意図していなくても、最後に行われた書き込みによってそれ以前の更新がすべて上書きされます。*オプティミスティック同時実行制御*では、それぞれのトランザクションがコミットでき、そのためリソース ロックが一切使用されないことを前提としています。オプティミスティック同時実行制御ではトランザクションをコミットする前に、他のトランザクションがそのデータを変更していないことを確認します。データが変更されている場合、トランザクションのコミットはロール バックされます。
 
-Mobile Apps はオプティミスティック同時実行制御をサポートしており、モバイル アプリ バックエンドで各テーブルに定義されている `version` システム プロパティ列を使用して各項目の変更を追跡します。レコードが更新されるたびに、Mobile Apps はそのレコードの `version` プロパティを新しい値に設定します。各更新要求の際に、要求に含まれているレコードの `\version` プロパティが、サーバー上のレコードの同じプロパティと比較されます。要求で渡されたバージョンがバックエンドと一致しない場合、クライアント ライブラリは `MobileServicePreconditionFailedException<T>` 例外を生成します。例外に含まれている型は、レコードのサーバー側のバージョンを含んでいるバックエンドのレコードです。アプリケーションはこの情報を使用して、バックエンドからの正しい `version` 値で更新要求をもう一度実行して変更をコミットするかどうかを判断できます。
+Mobile Apps はオプティミスティック同時実行制御をサポートしており、モバイル アプリ バックエンドで各テーブルに定義されている `version` システム プロパティ列を使用して各項目の変更を追跡します。レコードが更新されるたびに、Mobile Apps はそのレコードの `version` プロパティを新しい値に設定します。各更新要求の際に、要求に含まれているレコードの `version` プロパティが、サーバー上のレコードの同じプロパティと比較されます。要求で渡されたバージョンがバックエンドと一致しない場合、クライアント ライブラリは `MobileServicePreconditionFailedException<T>` 例外を生成します。例外に含まれている型は、レコードのサーバー側のバージョンを含んでいるバックエンドのレコードです。アプリケーションはこの情報を使用して、バックエンドからの正しい `version` 値で更新要求をもう一度実行して変更をコミットするかどうかを判断できます。
 
 オプティミスティック同時実行制御を有効にするには、たとえば次のように、テーブル クラスに `version` システム プロパティ用の列を定義します。
 
@@ -333,9 +331,9 @@ Mobile Apps はオプティミスティック同時実行制御をサポート�
         [JsonProperty(PropertyName = "complete")]
         public bool Complete { get; set; }
 
-		// *** Enable Optimistic Concurrency *** //
+        // *** Enable Optimistic Concurrency *** //
         [JsonProperty(PropertyName = "version")]
-        public byte[] Version { set; get; }
+        public string Version { set; get; }
     }
 
 
@@ -499,7 +497,7 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
 	
 	* **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
 	
-	* **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用してサイトの _/.auth/login/done_ エンドポイントに置き換えます。この値は、_https://contoso.azurewebsites.net/.auth/login/done_ と同様です。
+	* **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用してサイトの _/.auth/login/done_ エンドポイントに置き換えます。この値は、https://contoso.azurewebsites.net/.auth/login/done_ と同様です。
 	
 	各プラットフォームに必要なコードは次のとおりです。
 	
@@ -969,4 +967,4 @@ Xamarin アプリではいくつかの追加コードが必要になります。
 [SymbolSource]: http://www.symbolsource.org/
 [SymbolSource の説明]: http://www.symbolsource.org/Public/Wiki/Using
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

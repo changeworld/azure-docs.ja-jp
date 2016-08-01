@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="07/18/2016"
 	ms.author="tarcher"/>
 
 # Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 (クラウド サービス プロジェクト)
+
+[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ## 概要
 
@@ -26,8 +28,8 @@ Azure BLOB ストレージは、大量の非構造化データを格納して HT
 
 ファイルがフォルダーに格納されるのと同様に、ストレージ BLOB はコンテナーに格納されます。ストレージを作成した後、その内部に 1 つまたは複数のコンテナーを作成します。たとえば、"Scrapbook" という名前のストレージに、写真を格納するための "images" という名前のコンテナーと、音声ファイルを格納するための "audio" という名前のコンテナーを作成できます。コンテナーを作成すると、個々の BLOB ファイルをコンテナーにアップロードできるようになります。
 
-- プログラムを使用して BLOB を操作する方法の詳細については、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」を参照してください。
-- Azure Storage の全般的な情報については、「[Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)」を参照してください。
+- プログラムを使用して BLOB を操作する方法の詳細については、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」をご覧ください。
+- Azure Storage の全般的な情報については、「[Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)」をご覧ください。
 - Azure Cloud Services の全般的な情報については、「[Cloud Services のドキュメント](https://azure.microsoft.com/documentation/services/cloud-services/)」を参照してください。
 - ASP.NET アプリケーションのプログラミングの詳細については、[ASP.NET](http://www.asp.net) の Web サイトを参照してください。
 
@@ -161,7 +163,7 @@ Azure Storage では、ブロック BLOB とページ BLOB がサポートされ
 	Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/2011/photo7.jpg
 	Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
-詳細については、「[CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx)」を参照してください。
+詳細については、「[CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx)」をご覧ください。
 
 ## BLOB をダウンロードする
 
@@ -240,4 +242,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次に **Dele
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

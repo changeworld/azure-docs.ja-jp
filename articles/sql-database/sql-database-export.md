@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="04/06/2016"
+	ms.date="07/19/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -33,7 +33,7 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 - Azure Blob Storage にアーカイブされた BACPAC ファイルの最大サイズは 200 GB です。[SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) コマンド プロンプト ユーティリティを使用して、より大きな BACPAC ファイルをローカル ストレージにアーカイブします。このユーティリティは、Visual Studio と SQL Server の両方に含まれます。SQL Server Data Tools の最新版を[ダウンロード](https://msdn.microsoft.com/library/mt204009.aspx)し、このユーティリティを入手することもできます。
 - BACPAC ファイルを使用する Azure Premium Storage へのアーカイブはサポートされていません。
 - エクスポート操作が 20 時間以上を超える場合は取り消されることがあります。エクスポート中にパフォーマンスを向上させるには、次の操作を実行します。
- - サービス レベルを一時的に向上させる 
+ - サービス レベルを一時的に向上させる
  - エクスポート中のすべての読み取りと書き込みアクティビティを中止する
  - すべての大きなテーブルにクラスター化インデックスを使用する。クラスター化インデックスがないと、エクスポートが 6 ～ 12 時間よりも時間が長くかかる場合には失敗することがあります。これは、エクスポート サービスがテーブル スキャンを実行してテーブル全体をエクスポートしようとする必要があることが原因です。
 
@@ -42,7 +42,7 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 この記事を完了するには、以下が必要です。
 
 - Azure サブスクリプション。
-- Azure SQL Database。 
+- Azure SQL Database。
 - [Azure Standard Storage アカウント](../storage/storage-create-storage-account.md) (標準的なストレージに BACPAC を格納する BLOB コンテナーを含む)。
 
 ## データベースのエクスポート
@@ -104,4 +104,4 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 [4]: ./media/sql-database-export/export-history.png
 [5]: ./media/sql-database-export/bacpac-archive.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0720_2016-->

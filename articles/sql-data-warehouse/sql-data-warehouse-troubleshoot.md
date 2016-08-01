@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/01/2016"
+   ms.date="07/18/2016"
    ms.author="sonyama;barbkess"/>
 
 # Azure SQL Data Warehouse のトラブルシューティング
@@ -50,14 +50,15 @@
 
 | 問題 | 解決策 |
 | :----------------------------------| :---------------------------------------------- |
-| 領域使用率の調査 | システムの領域使用率の詳細については、[テーブルのサイズ][]に関するトピックを参照してください。|
-| テーブルの管理に関するヘルプ | テーブルの管理に関するヘルプについては、[テーブルの概要][Overview]に関する記事を参照してください。この記事では、[テーブルのデータ型][Data types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][Statistics]、[一時テーブル][Temporary]などのより詳細なトピックへのリンクも紹介しています。|
+| メッセージ 40847: サーバーが許容データベース スループット単位クォータ 45000 を超えることになるため、操作を実行できませんでした。 | 作成するデータベースの [DWU][] を減らすか、[クォータの引き上げを要求][]してください。|
+| 領域使用率の調査 | システムの領域使用率の詳細については、[テーブルのサイズ][]に関するトピックをご覧ください。|
+| テーブルの管理に関するヘルプ | テーブルの管理に関するヘルプについては、[テーブルの概要][Overview]に関する記事をご覧ください。この記事では、[テーブルのデータ型][Data types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][Statistics]、[一時テーブル][Temporary]などのより詳細なトピックへのリンクも紹介しています。|
 
 ## PolyBase
 
 | 問題 | 解決策 |
 | :----------------------------------| :---------------------------------------------- |
-| UTF-8 エラー | 現在、PolyBase では、UTF-8 でエンコードされたデータ ファイルの読み込みのみをサポートしています。この制限を回避する方法については、「[PolyBase UTF-8 要件に対処する][]」を参照してください。|
+| UTF-8 エラー | 現在、PolyBase では、UTF-8 でエンコードされたデータ ファイルの読み込みのみをサポートしています。この制限を回避する方法については、「[PolyBase UTF-8 要件に対処する][]」をご覧ください。|
 | サイズの大きい行を原因とする読み込みの失敗 | サイズの大きい行は、現在 PolyBase でサポートされていません。つまり、テーブルに VARCHAR(MAX)、NVARCHAR(MAX)、または VARBINARY(MAX) が含まれる場合は、データの読み込みに外部テーブルを使用できません。サイズの大きい行の読み込みは現在、Azure Data Factory (BCP を使用)、Azure Stream Analytics、SSIS、BCP、.NET の SQLBulkCopy クラスのみでサポートされています。PolyBase でのサイズの大きい行のサポートは、将来のリリースで追加されます。|
 | MAX データ型を持つテーブルの bcp 読み込みの失敗 | VARCHAR(MAX)、NVARCHAR(MAX)、または VARBINARY(MAX) は、既知の問題により、一部のシナリオでテーブルの最後に配置する必要があります。データ型が MAX の列をテーブルの末尾に移動してみてください。|
 
@@ -65,12 +66,13 @@
 
 | 問題 | 解決策 |
 | :----------------------------------| :---------------------------------------------- |
-| サポートされていない SQL Database の機能 | 「[サポートされていないテーブルの機能][]」を参照してください。|
-| サポートされていない SQL Database のデータ型 | 「[サポートされていないデータ型][]」を参照してください。|
-| DELETE と UPDATE の制限事項 | [UPDATE の回避策][]、[DELETE の回避策][]、[サポートされていない UPDATE と DELETE の構文を回避するための CTAS の使用][]に関する各トピックを参照してください。 |
-| MERGE ステートメントがサポートされていない | [MERGE の対処方法][]に関するページを参照してください。|
-| ストアド プロシージャの制限事項 | ストアド プロシージャの制限の一部を理解するには、[ストアド プロシージャの制限事項][]に関するページを参照してください。|
-| UDF が SELECT ステートメントをサポートしていない | これは、UDF の現在の制限です。サポートされている構文については、[CREATE FUNCTION][] に関するページを参照してください。 |
+| サポートされていない SQL Database の機能 | 「[サポートされていないテーブルの機能][]」をご覧ください。|
+| サポートされていない SQL Database のデータ型 | 「[サポートされていないデータ型][]」をご覧ください。|
+| DELETE と UPDATE の制限事項 | [UPDATE の回避策][]、[DELETE の回避策][]、[サポートされていない UPDATE と DELETE の構文を回避するための CTAS の使用][]に関する各トピックをご覧ください。 |
+| MERGE ステートメントがサポートされていない | [MERGE の対処方法][]に関するページをご覧ください。|
+| ストアド プロシージャの制限事項 | ストアド プロシージャの制限事項のいくつかを理解するには、[ストアド プロシージャの制限事項][]に関するページをご覧ください。|
+| UDF が SELECT ステートメントをサポートしていない | これは、UDF の現在の制限です。サポートされている構文については、[CREATE FUNCTION][] に関するページをご覧ください。 |
+'<-- ローカル コメント: ページが見つかりません「ストアド プロシージャの制限事項」が壊れています。記事の参照のリンクの修正を試みました -->'
 
 ## 次のステップ
 
@@ -91,6 +93,8 @@
 [セキュリティの概要]: ./sql-data-warehouse-overview-manage-security.md
 [サポート チケットを作成する]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [SQL Data Warehouse をスケーリング]: ./sql-data-warehouse-manage-compute-overview.md
+[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[クォータの引き上げを要求]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
 [クエリを監視する方法]: ./sql-data-warehouse-manage-monitor.md
 [プロビジョニング手順]: ./sql-data-warehouse-get-started-provision.md
 [クライアント IP 用のサーバー ファイアウォール アクセスの構成]: ./sql-data-warehouse-get-started-provision.md#create-a-new-azure-sql-server-level-firewall
@@ -113,7 +117,7 @@
 [UPDATE の回避策]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
 [DELETE の回避策]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
 [MERGE の対処方法]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
-[ストアド プロシージャの制限事項]: /sql-data-warehouse-develop-stored-procedures/#limitations
+[ストアド プロシージャの制限事項]: /sql-data-warehouse-develop-stored-procedures.md#limitations
 [Azure SQL Data Warehouse への認証]: ./sql-data-warehouse-authentication.md
 [PolyBase UTF-8 要件に対処する]: ./sql-data-warehouse-load-polybase-guide.md#working-around-the-polybase-utf-8-requirement
 
@@ -131,4 +135,4 @@
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

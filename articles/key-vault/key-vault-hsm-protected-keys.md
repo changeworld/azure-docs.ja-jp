@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="07/15/2016"
 	ms.author="cabailey"/>
 #Azure Key Vault の HSM 保護キーを生成し、転送する方法
 
@@ -190,7 +190,7 @@ KeyVault-BYOK-Tools-India.zip
 
 - Key Exchange Key (KEK) パッケージ。この名前は「**BYOK-KEK-pkg-**」から始まります。
 - セキュリティ ワールド パッケージ。この名前は「**BYOK-SecurityWorld-pkg-**」から始まります。
-- 「verifykeypackage.py」という名前の Python スクリプト。
+- 「**verifykeypackage.py**」という名前の Python スクリプト。
 - 「**KeyTransferRemote.exe**」という名前のコマンドライン実行可能ファイルと関連 DLL。
 - 「**vcredist\_x64.exe**」という名前の Visual C++ 再配布可能パッケージ。
 
@@ -266,7 +266,7 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 	- オーストラリア:
 
 			python verifykeypackage.py -k BYOK-KEK-pkg-AUS-1 -w BYOK-SecurityWorld-pkg-AUS-1
-	- [Azure Government](https://azure.microsoft.com/features/gov/) の場合は、Azure の米国政府インスタンスを使用します。
+	- Azure の米国政府インスタンスを使用する [Azure Government](https://azure.microsoft.com/features/gov/) の場合:
 
 			python verifykeypackage.py -k BYOK-KEK-pkg-USGOV-1 -w BYOK-SecurityWorld-pkg-USGOV-1
 	- カナダの場合:
@@ -336,7 +336,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 - オーストラリア:
 
 		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1
-- [Azure Government](https://azure.microsoft.com/features/gov/) の場合は、Azure の米国政府インスタンスを使用します。
+- Azure の米国政府インスタンスを使用する [Azure Government](https://azure.microsoft.com/features/gov/) の場合:
 
 		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1
 - カナダの場合:
@@ -354,7 +354,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 セキュリティ ワールドの管理者カードを差し込むように求められます。
 
-コマンドが完了すると、**Result: SUCCESS** と表示され、アクセス権が制限されたキーのコピーが "key\_xferacId\_<contosokey>" という名前のファイルに表示されます。
+コマンドが完了すると、「**Result: SUCCESS**」と表示され、アクセス権が制限されたキーのコピーが "key\_xferacId\_<contosokey>" という名前のファイルに表示されます。
 
 ###手順 4.2: キーの新しいコピーを検査する
 
@@ -431,4 +431,4 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 これでこの HSM 保護キーを Key Vault で使用できます。詳細については、[Azure Key Vault の概要](key-vault-get-started.md)のチュートリアルの「**ハードウェア セキュリティ モジュール (HSM) を使用する場合**」セクションを参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -222,10 +222,10 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 
 
 
-## 注意: 標準 A0 ～ A4 は CLI および Powershell を使用します 
+## 注意: Standard A0 ～ A4 は CLI および PowerShell を使用します 
 
 
-クラシック デプロイ モデルでは、一部の VM サイズが CLI と Powershell で若干異なります。
+クラシック デプロイ モデルでは、一部の VM サイズが CLI と PowerShell で若干異なります。
 
 * Standard\_A0: ExtraSmall
 * Standard\_A1: Small
@@ -239,4 +239,4 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 - [Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md)について学習してください。
 - 高性能コンピューティング (HPC) などのワークロードに対する [A8、A9、A10、A11 コンピューティング集中型インスタンス](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)について学習してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

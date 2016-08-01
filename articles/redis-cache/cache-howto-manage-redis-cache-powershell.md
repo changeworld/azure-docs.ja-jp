@@ -24,7 +24,7 @@
 
 このトピックでは、Azure Redis Cache インスタンスの作成、更新、スケールなどの一般的なタスクを実行する方法、アクセス キーを再生成する方法、キャッシュに関する情報を表示する方法について説明します。Azure Redis Cache 用の PowerShell コマンドレットの詳細な一覧については、[Azure Redis Cache コマンドレット](https://msdn.microsoft.com/library/azure/mt634513.aspx)に関するページをご覧ください。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](#classic)については、この記事の後半で説明します。
 
 ## 前提条件
 
@@ -812,9 +812,9 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 
 - [MSDN 上の Azure Redis Cache コマンドレットのドキュメント](https://msdn.microsoft.com/library/azure/mt634513.aspx)
 - [Azure リソース マネージャー コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765): AzureResourceManager モジュールのコマンドレットを使用する方法について説明します。
-- [リソース グループを使用した Azure リソースの管理](../azure-portal/resource-group-portal.md): Azure ポータルでリソース グループを作成して管理する方法について説明します。
+- [リソース グループを使用した Azure リソースの管理](../resource-group-template-deploy-portal.md): Azure ポータルでリソース グループを作成して管理する方法について説明します。
 - [Azure blog (Azure のブログ)](http://blogs.msdn.com/windowsazure): Azure の新機能について説明します。
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 
-<!--------HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

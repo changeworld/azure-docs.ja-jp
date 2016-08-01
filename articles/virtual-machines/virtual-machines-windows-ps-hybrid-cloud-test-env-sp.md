@@ -14,12 +14,14 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="07/19/2016" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定
 
-このトピックでは、Microsoft Azure でホストされる SharePoint イントラネット ファームをテストするためにハイブリッド クラウド環境を作成する手順について説明します。完成すると次のような構成になります。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル。
+
+このトピックでは、Microsoft Azure でホストされる SharePoint 2013 または SharePoint 2016 のイントラネット ファームをテストするためにハイブリッド クラウド環境を作成する手順について説明します。完成すると次のような構成になります。
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sp/virtual-machines-windows-ps-hybrid-cloud-test-env-sp-ph3.png)
  
@@ -39,9 +41,9 @@
 
 1.	テスト用のハイブリッド クラウド環境を設定する。
 2.	SQL Server コンピューター (SQL1) を構成する。
-3.	SharePoint サーバー (SP1) を構成する。
+3.	SharePoint 2013 または SharePoint 2016 のいずれかを実行している SharePoint サーバー (SP1) を構成する。
 
-このワークロードには、Azure サブスクリプションが必要です。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+このワークロードには、Azure サブスクリプションが必要です。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」をご覧ください。
 
 ## フェーズ 1: ハイブリッド クラウド環境を設定する
 
@@ -65,7 +67,7 @@ Azure ポータルから、CORP\\User1 の資格情報を使用して DC2 に接
 
 SPFarmAdmin アカウント パスワードを指定するよう求められたら、強力なパスワードを入力し、そのメモを安全な場所に保管します。
 
-続いて、ローカル コンピューターで Azure PowerShell コマンド プロンプトから次のコマンドを実行して、SQL1 用に Azure 仮想マシンを作成します。これらのコマンドを実行する前に、変数の値を入力し、< and > の文字を削除します。
+続いて、ローカル コンピューターで Azure PowerShell コマンド プロンプトから次のコマンドを実行して、SQL1 用に Azure 仮想マシンを作成します。これらのコマンドを実行する前に、変数の値を入力し、< と > の文字を削除します。
 
 	$rgName="<your resource group name>"
 	$locName="<the Azure location of your resource group>"
@@ -75,7 +77,7 @@ SPFarmAdmin アカウント パスワードを指定するよう求められた�
 	$subnet=Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name "TestSubnet"
 	$pip=New-AzureRMPublicIpAddress -Name SQL1-NIC -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
 	$nic=New-AzureRMNetworkInterface -Name SQL1-NIC -ResourceGroupName $rgName -Location $locName -Subnet $subnet -PublicIpAddress $pip
-	$vm=New-AzureRMVMConfig -VMName SQL1 -VMSize Standard_A4
+	$vm=New-AzureRMVMConfig -VMName SQL1 -VMSize Standard_D4
 	$storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
 	$vhdURI=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/SQL1-SQLDataDisk.vhd"
 	Add-AzureRMVMDataDisk -VM $vm -Name "Data" -DiskSizeInGB 100 -VhdUri $vhdURI  -CreateOption empty
@@ -125,7 +127,7 @@ SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンド
 
 **Add-Computer** コマンドでドメイン アカウントの資格情報を入力するよう求められたら、CORP\\User1 アカウントを使用します。
 
-再起動したら、Azure ポータルで*ローカル管理者アカウント*を使用して SQL1 に接続します。
+再起動したら、Azure ポータルで "ローカル管理者アカウント" を使用して SQL1 に接続します。
 
 次に、新しいデータベースとユーザー アカウント アクセス許可に F: ドライブを使用するように SQL Server 2014 を構成します。
 
@@ -133,7 +135,7 @@ SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンド
 2.	**[サーバーに接続]** で、**[接続]** をクリックします。
 3.	[オブジェクト エクスプローラー] ツリー ウィンドウで、**[SQL1]** を右クリックし、**[プロパティ]** をクリックします。
 4.	**[サーバーのプロパティ]** ウィンドウで、**[データベースの設定]** をクリックします。
-5.	**[データベースの既定の場所]** で、次の値を設定します。 
+5.	**[データベースの既定の場所]** で、次の値を設定します。
 	- **[データ]** に、パス「**f:\\Data**」を入力します。
 	- **[ログ]** に、パス「**f:\\Log**」を入力します。
 	- **[バックアップ]** に、パス「**f:\\Backup**」を入力します。
@@ -152,7 +154,9 @@ SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンド
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sp/virtual-machines-windows-ps-hybrid-cloud-test-env-sp-ph2.png)
 
-## フェーズ 3: SharePoint サーバー (SP1) を構成する
+SharePoint 2013 または SharePoint 2016 サーバーの構成に該当するフェーズ 3 に進みます。
+
+## フェーズ 3: SharePoint 2013 サーバー (SP1) を構成する
 
 まず、ローカル コンピューターの Azure PowerShell コマンド プロンプトで次のコマンドを使用して、SP1 用に Azure 仮想マシンを作成します。
 
@@ -164,7 +168,7 @@ SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンド
 	$subnet=Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name "TestSubnet"
 	$pip=New-AzureRMPublicIpAddress -Name SP1-NIC -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
 	$nic=New-AzureRMNetworkInterface -Name SP1-NIC -ResourceGroupName $rgName -Location $locName -Subnet $subnet -PublicIpAddress $pip
-	$vm=New-AzureRMVMConfig -VMName SP1 -VMSize Standard_A3
+	$vm=New-AzureRMVMConfig -VMName SP1 -VMSize Standard_D3_V2
 	$cred=Get-Credential -Message "Type the name and password of the local administrator account for the SharePoint 2013 server." 
 	$vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName SP1 -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
 	$vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftSharePoint -Offer MicrosoftSharePointServer -Skus 2013 -Version "latest"
@@ -192,10 +196,10 @@ ping コマンドで IP アドレス 192.168.0.4 からの応答が 4 回成功�
 
 再起動したら、Azure ポータルで CORP\\User1 アカウントとパスワードを使って SP1 に接続します。
 
-次に、新しい SharePoint ファームと既定のチーム サイト向けに SP1 を構成します。
+次に、新しい SharePoint 2013 ファームと既定のチーム サイト向けに SP1 を構成します。
 
 1.	スタート画面で、「**SharePoint 2013 製品**」と入力し、**[SharePoint 2013 製品構成ウィザード]** をクリックします。プログラムがコンピューターに変更を加えることを許可するよう求められたら、**[はい]** をクリックします。
-2.	[SharePoint 製品へようこそ] ページで **[次へ]** をクリックします。 
+2.	[SharePoint 製品へようこそ] ページで **[次へ]** をクリックします。
 3.	一部のサービスでは構成中に再起動が必要になる場合があることを伝えるダイアログ ボックスが表示されたら、**[はい]** をクリックします。
 4.	[サーバー ファームへの接続] ページで、**[新しいサーバー ファームの作成]**、**[次へ]** を順にクリックします。
 5.	[構成データベースの設定] ページで、**[データベース サーバー]** に「**sql1.corp.contoso.com**」、**[ユーザー名]** に「**CORP\\SPFarmAdmin**」、**[パスワード]** に SPFarmAdmin アカウントのパスワードをそれぞれ入力し、**[次へ]** をクリックします。
@@ -207,7 +211,7 @@ ping コマンドで IP アドレス 192.168.0.4 からの応答が 4 回成功�
 11.	**[SharePoint ファームの構成方法を指定してください。]** で **[ウィザードの開始]** をクリックします。
 12.	[SharePoint ファームの構成] ページの **[サービス アカウント]** で、**[既存の管理アカウントを使用する]** をクリックします。
 13.	**[サービス]** で、**[State Service]** の横にあるチェック ボックス以外のすべてのチェック ボックスをオフにし、**[次へ]** をクリックします。完了するまで、[ただいま処理中です] ページがしばらく表示されることがあります。
-14.	[サイト コレクションの作成] ページの **[タイトルと説明]** で、**[タイトル]** に「**Contoso Corporation**」と入力し、URL "**http://sp1**/" を指定して、**[OK]** をクリックします。完了するまで、[ただいま処理中です] ページがしばらく表示されることがあります。これにより、URL http://sp1 にチーム サイトが作成されます。
+14.	[サイト コレクションの作成] ページの **[タイトルと説明]** で、**[タイトル]** に「**Contoso Corporation**」と入力し、URL "**http://sp1**/**" を指定して、[OK] をクリックします。完了するまで、[ただいま処理中です] ページがしばらく表示されることがあります。これにより、URL http://sp1 にチーム サイトが作成されます。
 15.	[これでファーム構成ウィザードは完了です。] ページで、**[完了]** をクリックします。Internet Explorer のタブに SharePoint 2013 サーバーの全体管理サイトが表示されます。
 16.	CORP\\User1 アカウントの資格情報を使用して CLIENT1 コンピューターにログオンし、Internet Explorer を起動します。
 17.	アドレス バーに「**http://sp1/**」と入力し、Enter キーを押します。Contoso Corporation の SharePoint チーム サイトが表示されます。サイトが表示されるまで時間がかかることがあります。
@@ -216,10 +220,83 @@ ping コマンドで IP アドレス 192.168.0.4 からの応答が 4 回成功�
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sp/virtual-machines-windows-ps-hybrid-cloud-test-env-sp-ph3.png)
  
-これで、ハイブリッド クラウド環境の SharePoint イントラネット ファームをテストする準備が整いました。
+これで、ハイブリッド クラウド環境の SharePoint 2013 イントラネット ファームをテストする準備が整いました。
+
+
+## フェーズ 3: SharePoint 2016 サーバー (SP1) を構成する
+
+まず、ローカル コンピューターの Azure PowerShell コマンド プロンプトで次のコマンドを使用して、SP1 用に Azure 仮想マシンを作成します。
+
+	$rgName="<your resource group name>"
+	$locName="<the Azure location of your resource group>"
+	$saName="<your storage account name>"
+	
+	$vnet=Get-AzureRMVirtualNetwork -Name "TestVNET" -ResourceGroupName $rgName
+	$subnet=Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name "TestSubnet"
+	$pip=New-AzureRMPublicIpAddress -Name SP1-NIC -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
+	$nic=New-AzureRMNetworkInterface -Name SP1-NIC -ResourceGroupName $rgName -Location $locName -Subnet $subnet -PublicIpAddress $pip
+	$vm=New-AzureRMVMConfig -VMName SP1 -VMSize Standard_D3_V2
+	$cred=Get-Credential -Message "Type the name and password of the local administrator account for the SharePoint 2016 server." 
+	$vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName SP1 -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+	$vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftSharePoint -Offer MicrosoftSharePointServer -Skus 2016 -Version "latest"
+	$vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
+	$storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
+	$osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/SP1-OSDisk.vhd"
+	$vm=Set-AzureRMVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
+	New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
+
+次に、Azure ポータルでローカル管理者アカウントの資格情報を使用して SP1 仮想マシンに接続します。
+
+続いて、基本的な接続テストを行うためのトラフィックを許可するよう Windows ファイアウォール規則を構成します。SP1 の Windows PowerShell コマンド プロンプトで、次のコマンドを実行します。
+
+	Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
+	ping dc2.corp.contoso.com
+
+ping コマンドで IP アドレス 192.168.0.4 からの応答が 4 回成功する必要があります。
+
+次に、Windows PowerShell プロンプトでこれらのコマンドを使用して、CORP Active Directory ドメインに SP1 を参加させます。
+
+	Add-Computer -DomainName corp.contoso.com
+	Restart-Computer
+
+**Add-Computer** コマンドでドメイン アカウントの資格情報を入力するよう求められたら、CORP\\User1 アカウントを使用します。
+
+再起動したら、Azure ポータルで CORP\\User1 アカウントとパスワードを使って SP1 に接続します。
+
+次に、新しい SharePoint 2016 単一サーバー ファームと既定のチーム サイト向けに SP1 を構成します。
+
+1. スタート画面で、「**SharePoint **」と入力し、**[SharePoint 2016 製品構成ウィザード]** をクリックします。
+2. [SharePoint 製品へようこそ] ページで **[次へ]** をクリックします。
+3. サービス (IIS など) が再起動またはリセットされることを警告する **[SharePoint 製品構成ウィザード]** ダイアログが表示されます。**[はい]** をクリックします。
+4. [サーバー ファームへの接続] ページで、**[新しいサーバー ファームの作成]** をクリックし、**[次へ]** をクリックします。
+5. [構成データベースの設定] ページで、次の操作を行います。
+	- **[データベース サーバー]** に「**SQL1**」と入力します。
+	- **[ユーザー名]** に「**CORP\\SPFarmAdmin**」と入力します。
+	- **[パスワード]** に SPFarmAdmin アカウントのパスワードを入力します。
+6. **[次へ]** をクリックします。
+7. [ファームのセキュリティ設定の指定] ページで、「**P@ssphrase**」を 2 回入力し、**[次へ]** をクリックします。
+8. 	[Specify Server Role (サーバー ロールの指定)] ページの **[Single-Server Farm (単一サーバー ファーム)]** で、**[Single-Server Farm (単一サーバー ファーム)]** をクリックしてから、**[次へ]** をクリックします。
+9. [SharePoint サーバーの全体管理 Web アプリケーションの構成] ページで、**[次へ]** をクリックします。
+10. [SharePoint 製品構成ウィザードの終了] ページが表示されます。**[次へ]** をクリックします。
+11. [SharePoint 製品の構成中] ページが表示されます。構成プロセスが完了するまで待ちます。
+12. [構成成功] ページで **[完了]** をクリックします。 新しい管理 Web サイトが開始されます。
+13. [SharePoint の品質向上にご協力ください] ページで、対象の選択肢をクリックしてカスタマー エクスペリエンス向上プログラムに参加し、**[OK]** をクリックします。
+14. [ようこそ] ページで **[ウィザードの開始]** をクリックします。
+15. [Service Applications and Services (サービス アプリケーションとサービス)] ページの **[サービス アカウント]** で、**[既存の管理アカウントを使用する]** をクリックしてから、**[次へ]** をクリックします。次のページが表示されるまで数分かかることがあります。
+16. [サイト コレクションの作成] ページで、**[タイトル]** に「**Contoso**」と入力し、**[OK]** をクリックします。
+17. [これでファーム構成ウィザードは完了です。] ページで、**[完了]** をクリックします。SharePoint サーバーの全体管理 Web ページが表示されます。
+18. CORP\\User1 アカウントの資格情報を使用して CLIENT1 コンピューターにログオンし、Internet Explorer を起動します。
+19.	アドレス バーに「**http://sp1/**」と入力し、Enter キーを押します。Contoso Corporation の SharePoint チーム サイトが表示されます。サイトが表示されるまで時間がかかることがあります。
+
+現在の構成は次のようになります。
+
+![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sp/virtual-machines-windows-ps-hybrid-cloud-test-env-sp-ph3.png)
+ 
+これで、ハイブリッド クラウド環境の単一サーバーの SharePoint 2016 イントラネット ファームをテストする準備が整いました。
+
 
 ## 次のステップ
 
-- SharePoint ファームを[構成](https://technet.microsoft.com/library/ee836142.aspx)します。
+- SharePoint 2013 ファームを[構成](https://technet.microsoft.com/library/ee836142.aspx)します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

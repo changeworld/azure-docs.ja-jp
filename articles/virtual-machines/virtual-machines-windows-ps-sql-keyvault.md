@@ -4,7 +4,7 @@
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="rothja"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""
 	tags="azure-service-management"/>
 
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/24/2016"
+	ms.date="07/14/2016"
 	ms.author="jroth"/>
 
 # Azure VM で SQL Server 用に Azure Key Vault 統合を構成する (リソース マネージャー)
@@ -32,15 +32,29 @@ SQL Server をオンプレミス コンピューターで実行している場�
 
 [AZURE.INCLUDE [AKV 統合の準備](../../includes/virtual-machines-sql-server-akv-prepare.md)]
 
-## AKV 統合の有効化
+## AKV 統合の有効化と構成
+AKV 統合はプロビジョニング時に有効にできます。または、既存の VM 用に構成できます。
+
+### 新しい VM
 リソース マネージャーで新しい SQL Server 仮想マシンをプロビジョニングしている場合は、Azure のポータルで Azure Key Vault 統合を有効にする手順を提供します。
 
-![SQL ARM の Azure Key Vault 統合](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
+![SQL Azure Key Vault Integration](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 
-プロビジョニングの詳細なチュートリアルについては、「[Azure ポータルでの SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
+プロビジョニングの詳細なチュートリアルについては、「[Azure ポータルでの SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」をご覧ください。
 
-既存の VM での AKV 統合を有効にする必要がある場合、テンプレートを使用することができます。詳細については、[Azure Key Vault 統合用の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update)に関するページをご覧ください。
+### 既存の VM
+既存の SQL Server 仮想マシンの場合は、ご使用の SQL Server 仮想マシンを選択します。**[設定]** ブレードの **[SQL Server の構成]** セクションを選択します。
+
+![既存の VM 用の SQL AKV 統合](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
+
+**[SQL Server の構成]** ブレードの [Automated Key Vault integration (Key Vault の自動統合)] セクションで **[編集]** ボタンをクリックします。
+
+![既存の VM 用の SQL AKV 統合を構成する](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-configuration.png)
+
+終了したら、**[SQL Server の構成]** ブレードの下部にある **[OK]** ボタンをクリックして変更を保存します。
+
+>[AZURE.NOTE] テンプレートを使用して AKV 統合を構成することもできます。詳細については、[Azure Key Vault 統合用の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update)に関するページをご覧ください。
 
 [AZURE.INCLUDE [AKV 統合の次のステップ](../../includes/virtual-machines-sql-server-akv-next-steps.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

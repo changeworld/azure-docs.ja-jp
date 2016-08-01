@@ -18,7 +18,7 @@
 	ms.author="annemill"/>
 
 # SQL Database の開発: 概要
-この記事では、開発者が Azure SQL Database に接続するためのコードを記述するときに検討する必要がある基本的な考慮事項について説明します。
+この記事では、Azure SQL Database に接続するコードを記述するときの基本的な考慮事項について説明します。
 
 ## 言語とプラットフォーム
 さまざまなプログラミング言語とプラットフォームで利用できるコード サンプルがあります。コード サンプルについては、次のリンクをご覧ください。
@@ -59,13 +59,12 @@ SQL Database への接続中に一時エラーが発生した場合は、コー�
 ## Elastic Scale によるデータ シャーディング
 Elastic Scale は、スケール アウト (およびスケール イン) のプロセスを簡略化します。
 
-[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン]
-* (./sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
 * [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 
 ## 次のステップ
 
-[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべての確認。
+[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

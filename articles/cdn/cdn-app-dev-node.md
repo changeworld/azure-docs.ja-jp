@@ -2,7 +2,7 @@
 	pageTitle="Azure CDN SDK for Node.js の概要 | Microsoft Azure"
 	description="Azure CDN を管理するための Node.js アプリケーションを記述する方法について説明します。"
 	services="cdn"
-	documentationCenter=".net"
+	documentationCenter="nodejs"
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/01/2016"
+	ms.date="07/19/2016"
 	ms.author="casoper"/>
 
 # Azure CDN 開発の概要
@@ -49,7 +49,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 
 パッケージのインストールが完了した後の *package.json* ファイルは次のようになります (バージョン番号は異なる場合があります)。
 
-```
+``` json
 {
   "name": "cdn_node",
   "version": "1.0.0",
@@ -75,14 +75,14 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 
 1. まず NPM パッケージの "require" を次のように追加します。
 
-	```
+	``` javascript
 	var msRestAzure = require('ms-rest-azure');
 	var cdnManagementClient = require('azure-arm-cdn');
 	```
 
 2. 次に、メソッドで使用するいくつかの定数を定義します。以降の内容を追加してください。**&lt;山かっこ&gt;** などのプレースホルダーは、必要に応じて自分の環境に合わせて置き換えます。
 
-	```
+	``` javascript
 	//Tenant app constants
 	const clientId = "<YOUR CLIENT ID>";
 	const clientSecret = "<YOUR CLIENT AUTHENTICATION KEY>"; //Only for service principals
@@ -96,7 +96,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 
 3. 次に、CDN 管理クライアントをインスタンス化し、必要な資格情報を割り当てます。
 
-	```
+	``` javascript
 	var credentials = new msRestAzure.ApplicationTokenCredentials(clientId, tenantId, clientSecret);
 	var cdnClient = new cdnManagementClient(credentials, subscriptionId);
 	```
@@ -105,7 +105,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 
 	>[AZURE.IMPORTANT] このコード サンプルは、サービス プリンシパルの代わりに個別ユーザー認証を行う場合にのみ使用してください。個々のユーザーの資格情報は厳重に保護し、第三者に知られないようにしてください。
 
-	```
+	``` javascript
 	var credentials = new msRestAzure.UserTokenCredentials(clientId, 
 		tenantId, '<username>', '<password>', '<redirect URI>');
 	var cdnClient = new cdnManagementClient(credentials, subscriptionId);
@@ -116,7 +116,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 
 4.  Node.js コンソール アプリケーションには、いくつかのコマンド ライン パラメーターがあります。少なくとも 1 つのパラメーターが渡されたことを検証しましょう。
 
-	```
+	```javascript
 	//Collect command line parameters
 	var parms = process.argv.slice(2);
 
@@ -131,7 +131,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 
 5. ここからがプログラムの核となる部分です。渡されたパラメーターに応じて、他の関数に分岐します。
 
-	```
+	```javascript
 	switch(parms[0].toLowerCase())
 	{
 		case "list":
@@ -158,7 +158,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 
 6.  プログラム内のいくつかの場所で、適切な数のパラメーターが渡されたことを確認しなければなりません。正しくないようであれば何らかのヒントを表示する必要があります。そのための関数を作成しましょう。
 
-	```
+	```javascript
 	function requireParms(parmCount) {
 		if(parms.length < parmCount) {
 			usageHelp(parms[0].toLowerCase());
@@ -197,7 +197,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 
 7. CDN 管理クライアントで使用する関数は非同期的に実行されるので、その完了時にコールバックするメソッドが必要となります。CDN 管理クライアントからの出力 (ある場合) を表示し、プログラムを適切に終了できるようにしましょう。
 
-	```
+	```javascript
 	function callback(err, result, request, response) {
 		if (err) {
 			console.log(err);
@@ -215,7 +215,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 
 最初に、既存のプロファイルとエンドポイントをリストするコードを作成します。パラメーターの流れが把握しやすいようコード コメントに正しい構文を示します。
 
-```
+```javascript
 // list profiles
 // list endpoints <profile name>
 function cdnList(){
@@ -244,7 +244,7 @@ function cdnList(){
 
 次に、プロファイルとエンドポイントを作成するための関数を作成します。
 
-```
+```javascript
 function cdnCreate() {
     requireParms(2);
     switch(parms[1].toLowerCase())
@@ -297,7 +297,7 @@ function cdnCreateEndpoint() {
 
 エンドポイントが作成されたと仮定して、プログラムで実行する一般的なタスクの 1 つに、エンドポイントの内容を消去することがあります。
 
-```
+```javascript
 // purge <profile name> <endpoint name> <path>
 function cdnPurge() {
     requireParms(4);
@@ -311,7 +311,7 @@ function cdnPurge() {
 
 最後に、エンドポイントとプロファイルを削除する関数を追加します。
 
-```
+```javascript
 function cdnDelete() {
     requireParms(2);
     switch(parms[1].toLowerCase())
@@ -367,4 +367,4 @@ Azure CDN SDK for Node.js のリファレンスは、[こちら](http://azure.gi
 
 Azure SDK for Node.js に関するその他のドキュメントについては、[詳しいリファレンス](http://azure.github.io/azure-sdk-for-node/)を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

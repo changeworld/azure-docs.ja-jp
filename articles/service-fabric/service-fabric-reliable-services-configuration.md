@@ -85,7 +85,7 @@ ReplicatorConfig
 ### 構成名
 |名前|単位|既定値|解説|
 |----|----|-------------|-------|
-|BatchAcknowledgementInterval|秒|0\.05|操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。|
+|BatchAcknowledgementInterval|秒|0\.015|操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。|
 |ReplicatorEndpoint|該当なし|既定値なし - 必須パラメーター|プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。サービス マニフェストでのエンドポイント リソース定義の詳細については、[サービス マニフェストのリソース](service-fabric-service-manifest-resources.md)に関する記事を参照してください。 |
 |MaxPrimaryReplicationQueueSize|操作数|8192|プライマリ キューの操作の最大数です。操作は、プライマリ レプリケーターがすべてのセカンダリ レプリケーターから受信確認を受信した後に解放されます。この値は 64 より大きく、2 のべき乗である必要があります。|
 |MaxSecondaryReplicationQueueSize|操作数|16384|セカンダリ キューの操作の最大数です。操作は、永続性によってその状態の高可用性が実現されてから解放されます。この値は 64 より大きく、2 のべき乗である必要があります。|
@@ -162,4 +162,4 @@ SharedLogId と SharedLogPath の設定は常に一緒に使用して、サー�
  - [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
  - [Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

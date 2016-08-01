@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="04/29/2016"
+ ms.date="07/19/2016"
  ms.author="dobett"/>
 
 # IoT Hub の MQTT サポート
@@ -38,6 +38,7 @@ MQTT プロトコルをサポートする[デバイス クライアント SDK][l
 | [Java][lnk-sample-java] | IotHubClientProtocol.MQTT |
 | [C][lnk-sample-c] | MQTT\_Protocol |
 | [C#][lnk-sample-csharp] | TransportType.Mqtt |
+| [Python][lnk-sample-python] | IoTHubTransportProvider.MQTT |
 
 ## MQTT プロトコルの直接使用
 
@@ -52,22 +53,22 @@ MQTT プロトコルをサポートする[デバイス クライアント SDK][l
 
     SAS トークンの生成方法の詳細については、「[IoT Hub セキュリティ トークンの使用][lnk-sas-tokens]」のデバイス セクションをご覧ください。
     
-    テストするときは、[デバイス エクスプローラー][lnk-device-explorer] ツールを使用して SAS トークンをすばやく生成し、それをコピーして独自のコードに貼り付けることもできます。
+    テストをするときは、[デバイス エクスプローラー][lnk-device-explorer] ツールを使用して SAS トークンを簡単に生成し、それをコピーして独自のコードに貼り付けることもできます。
     
     1. デバイス エクスプローラーで **[管理]** タブに移動します。
     2. **[SAS トークン]** (右上) をクリックします。
     3. **[SASTokenForm]** の **[DeviceID]** ドロップダウンでデバイスを選択します。**[TTL]** を設定します。
     4. **[生成]** をクリックしてトークンを作成します。
     
-    次のような SAS トークンが生成されます。`HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fMyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
+    次のような SAS トークンが生成されます: `HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fMyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
 
-    MQTT を使用して接続するために、この SAS トークンの一部を **Password** フィールドとして使用します。`SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`
+    MQTT を使用して接続するために、この SAS トークンの一部を **Password** フィールドとして使用できます: `SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`
 
-MQTT の接続パケットと切断パケットの場合、IoT Hub は**操作の監視**チャネルでイベントを発行します。
+MQTT の接続パケットおよび切断パケットの場合、IoT Hub は**操作の監視**チャネルでイベントを発行します。
 
 ### IoT Hub へのメッセージの送信
 
-接続に成功したら、デバイスは `devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を**トピック名**として使用して IoT Hub にメッセージを送信できます。`{property_bag}` 要素を使用すると、デバイスは追加のプロパティを持つメッセージを URL エンコード形式で送信できるようになります。次に例を示します。
+接続に成功したら、デバイスは `devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を**トピック名**として使用して IoT Hub にメッセージを送信できます。`{property_bag}` 要素を使用すると、デバイスは追加のプロパティ付きのメッセージを URL エンコード形式で送信できるようになります。次に例を示します。
 
 ```
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -79,13 +80,13 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 ### メッセージの受信
 
-IoT Hub からメッセージを受信するには、デバイスが `devices/{device_id}/messages/devicebound/#”` を**トピック フィルター**として使用してサブスクライブする必要があります。IoT Hub はメッセージを**トピック名** `devices/{device_id}/messages/devicebound/` または `devices/{device_id}/messages/devicebound/{property_bag}` (メッセージ プロパティがある場合) で送信します。`{property_bag}` には、メッセージ プロパティの URL エンコードされたキーと値のペアが含まれます。プロパティ バッグに含まれるのは、アプリケーション プロパティとユーザーが設定可能なシステム プロパティ (**messageId** や **correlationId** など) だけです。システム プロパティ名にはプレフィックス **$** が付きます。アプリケーション プロパティでは、プレフィックスのない元のプロパティ名が使用されます。
+IoT Hub からメッセージを受信するには、デバイスが `devices/{device_id}/messages/devicebound/#”` を**トピック フィルター**として使用してサブスクライブする必要があります。IoT Hub はメッセージを**トピック名** `devices/{device_id}/messages/devicebound/` または `devices/{device_id}/messages/devicebound/{property_bag}` (メッセージ プロパティがある場合) で送信します。`{property_bag}` には、メッセージ プロパティの URL エンコードされたキーと値のペアが含まれます。プロパティ バッグに含められるのは、アプリケーション プロパティとユーザーが設定可能なシステム プロパティ (**messageId**、**correlationId** など) のみです。システム プロパティの名前にはプレフィックス **$** が付きます。アプリケーション プロパティでは、プレフィックスのない元々のプロパティ名が使用されます。
 
 ## 次のステップ
 
 IoT デバイス SDK を使用した MQTT サポートの詳細については、「Azure IoT Hub 開発者ガイド」の「[MQTT サポートに関する留意事項][lnk-mqtt-devguide]」をご覧ください。
 
-MQTT プロトコルの詳細については、[MQTT のドキュメント][lnk-mqtt-docs]をご覧ください。
+MQTT プロトコルの詳細については、[MQTT のドキュメント][lnk-mqtt-docs]を参照してください。
 
 IoT Hub のデプロイの計画に関する詳細については、以下をご覧ください。
 
@@ -108,6 +109,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-sample-java]: https://github.com/Azure/azure-iot-sdks/blob/develop/java/device/samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/iothub/SendReceive.java
 [lnk-sample-c]: https://github.com/Azure/azure-iot-sdks/tree/master/c/iothub_client/samples/iothub_client_sample_mqtt
 [lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device/samples
+[lnk-sample-python]: https://github.com/Azure/azure-iot-sdks/tree/master/python/device/samples
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/readme.md
 [lnk-sas-tokens]: iot-hub-sas-tokens.md#using-sas-tokens-as-a-device
 [lnk-mqtt-devguide]: iot-hub-devguide.md#mqtt-support
@@ -121,4 +123,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

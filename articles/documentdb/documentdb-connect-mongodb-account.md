@@ -19,7 +19,7 @@
 
 # MongoDB のプロトコル対応の DocumentDB アカウントに接続する方法
 
-MongoDB の標準的な接続文字列の URI 形式を使用して、MongoDB のプロトコル対応の DocumentDB アカウントに接続する方法について説明します。
+MongoDB の標準的な接続文字列の URI 形式を使用して、MongoDB のプロトコル対応の Azure DocumentDB アカウントに接続する方法について説明します。
 
 ## アカウントの接続文字列情報を取得する
 
@@ -84,4 +84,4 @@ DocumentDB は、MongoDB の標準的な接続文字列の URI 形式をサポ�
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

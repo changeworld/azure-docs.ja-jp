@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="06/22/2016"
+   ms.date="07/18/2016"
    ms.author="nitinme"/>
 
 # Azure Data Lake Store のセキュリティ
@@ -43,7 +43,10 @@
 
 ## 承認とアクセス制御
 
-Azure Data Lake Store にアクセスするために、ユーザーが AAD によって認証されたら、承認によって Data Lake Store のアクセス許可が制御されます。Data Lake Store では、アカウント管理とデータ管理を分離することで、アカウント関連のアクティビティとデータ関連のアクティビティの承認を分離しています。アカウント管理には、Azure で提供される[ロールベースのアクセス制御](../active-directory/role-based access control-what-is.md) (RBAC) が使用され、ストア内のデータへのアクセスについては POSIX ACL がサポートされています。
+Azure Data Lake Store にアクセスするために、ユーザーが AAD によって認証されたら、承認によって Data Lake Store のアクセス許可が制御されます。Data Lake Store では、アカウント関連アクティビティとデータ関連アクティビティの承認は、次のように区別されます。
+
+* アカウント管理に Azure が提供する[ロールベースのアクセス制御 ](../active-directory/role-based-access-control-what-is.md) (RBAC)
+* ストア内のデータにアクセスするための POSIX ACL。
 
 ### RBAC を使用したアカウント管理
 
@@ -61,7 +64,7 @@ Azure Data Lake Store にアクセスするために、ユーザーが AAD に�
 | 共同作成者 | ロールの追加と削除を除くすべて | ACL によって管理 | 共同作業者は、警告の作成/管理やデプロイメントなど、アカウントの他の側面を管理できます。共同作業者は、ロールを追加または削除することはできません。 |
 | ユーザーアクセスの管理者 | ロールの追加と削除 | ACL によって管理 | ユーザー アクセス管理者は、アカウントへのユーザー アクセスを管理できます。 |
 
-手順については、「[Assign users or security groups to Azure Data Lake Store accounts (ユーザーまたはセキュリティ グループを Azure Data Lake Store アカウントに割り当てる)](data-lake-store-secure-data.md#assign-users-or-security-groups-to-azure-data-lake-store-accounts)」をご覧ください。
+手順については、「[ユーザーまたはセキュリティ グループを Azure Data Lake Store アカウントに割り当てる](data-lake-store-secure-data.md#assign-users-or-security-groups-to-azure-data-lake-store-accounts)」をご覧ください。
 
 ### ACL を使用したファイル システムでの操作
 
@@ -118,4 +121,4 @@ Data Lake Store の新機能を確認する場合は、[UserVoice フォーラ�
 - [Data Lake Store の使用](data-lake-store-get-started-portal.md)
 - [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

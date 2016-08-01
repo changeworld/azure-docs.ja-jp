@@ -19,7 +19,7 @@
 
 # DocumentDB アカウントの管理方法
 
-グローバルでのデータの可用性を確保するために、グローバルな一貫性を設定し、複数のリージョンを管理する方法について説明します。また、キーの使用方法と、Azure ポータルでアカウントを削除する方法についても説明します。
+Azure DocumentDB でのグローバルなデータの可用性を確保するために、グローバルな一貫性を設定し、複数のリージョンを管理する方法について説明します。また、キーの使用方法と、Azure ポータルでアカウントを削除する方法についても説明します。
 
 ## <a id="consistency"></a>DocumentDB 整合性の設定を管理する
 
@@ -86,10 +86,9 @@ DocumentDB アカウントを作成すると、2 つのマスター アクセス
 
 ### Azure ポータルでアクセス キーを表示およびコピーする
 
-1. [Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
+1. [Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
 2. **[DocumentDB アカウント]** ブレードの **[要点]** バーで、**[キー]** をクリックします。
-3. **[キー]** ブレードで、コピー対象のキーの右側にある **[コピー]** ボタンをクリックします。
-	![Azure ポータルの [キー] ブレードでアクセス キーを表示およびコピーする](./media/documentdb-manage-account/copykeys.png)
+3. **[キー]** ブレードで、コピー対象のキーの右側にある **[コピー]** ボタンをクリックします。![Azure ポータルの [キー] ブレードでアクセス キーを表示およびコピーする](./media/documentdb-manage-account/copykeys.png)
 
 ### アクセス キーを再生成する
 
@@ -146,4 +145,4 @@ DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink
 [azureregions]: https://azure.microsoft.com/ja-JP/regions/#services
 [offers]: https://azure.microsoft.com/ja-JP/pricing/details/documentdb/
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

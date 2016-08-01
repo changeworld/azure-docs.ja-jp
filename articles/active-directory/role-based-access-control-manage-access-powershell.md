@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="07/12/2016"
+	ms.date="07/14/2016"
 	ms.author="kgremban"/>
 
 # Azure PowerShell を使用したロールベースのアクセス制御の管理
@@ -117,7 +117,9 @@ Azure AD サービス プリンシパル、つまりアプリケーションの�
 ## カスタム ロールの作成
 カスタム ロールを作成するには、`New-AzureRmRoleDefinition` コマンドを使用します。
 
-次の例では、「*Virtual Machine Operator*」という名前のカスタム ロールが作成されます。このロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。カスタム ロールは 2 つのサブスクリプションで使用できます。
+PowerShell でカスタム ロールを作成するときは、いずれかの[組み込みロール](role-based-access-built-in-roles.md)を土台とする必要があります。その属性を編集し、必要に応じて Actions、notActions、スコープを追加して、変更内容を新しいロールとして保存します。
+
+以下の例では、*Virtual Machine Contributor* ロールを土台として、*Virtual Machine Operator* というカスタム ロールを作成しています。この新しいロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。カスタム ロールは 2 つのサブスクリプションで使用できます。
 
 ![RBAC PowerShell - Get-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/2-new-azurermroledefinition.png)
 
@@ -154,4 +156,4 @@ Azure AD サービス プリンシパル、つまりアプリケーションの�
 ## 関連項目
 - [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md) [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

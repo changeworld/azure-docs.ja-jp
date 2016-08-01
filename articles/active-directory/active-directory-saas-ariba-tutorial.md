@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="07/19/2016"
 	ms.author="jeedes"/>
 
 
@@ -60,7 +60,7 @@ Azure AD への Ariba の統合を構成するには、ギャラリーから管�
 
 **ギャラリーから Ariba を追加するには、次の手順を実行します。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -122,7 +122,7 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
 	![Configure Single Sign-On](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_04.png)
 
 
-    a.[サインオン URL] ボックスに、ユーザーが Ariba アプリケーションへのサインオンに使用する URL を入力します。その際、"**https://<companyname>.sourcing.ariba.com**" または "**https://<CompanyName>.supplier.ariba.com**" のパターンを使用します。
+    a.[サインオン URL] ボックスに、ユーザーが Ariba アプリケーションへのサインオンに使用する URL を入力します。その際、**"https://<companyname>.sourcing.ariba.com"** または **"https://<CompanyName>.supplier.ariba.com"** のパターンを使用します。
 
     b.**[次へ]** をクリックします。
 
@@ -135,7 +135,7 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
     b.**[次へ]** をクリックします。
 
 
-5. お使いのアプリケーション用に構成された SSO を取得するために、Ariba のサポート チーム (**1-866-218-2155**) に問い合わせます。
+5. お使いのアプリケーション用に構成された SSO を入手するには、Ariba サポート チーム (**1-866-218-2155**) に問い合わせてください。
 
 
 > [AZURE.NOTE] Ariba システムのユーザー名が Azure AD のそれと一致する必要があります。一致しない場合、統合は機能しません。
@@ -173,7 +173,7 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ariba-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ariba-tutorial/create_aaduser_05.png)
 
@@ -278,4 +278,4 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
 [204]: ./media/active-directory-saas-ariba-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-ariba-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

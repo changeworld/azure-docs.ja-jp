@@ -19,9 +19,9 @@
 
 # PowerShell を使用した内部ロード バランサーの作成の開始
 
-[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]<BR>[AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
+[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)] <BR> [AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [クラシック デプロイ モデル](load-balancer-get-started-ilb-classic-ps.md)
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](load-balancer-get-started-ilb-classic-ps.md)
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -38,7 +38,7 @@
 
 内部ロード バランサーを作成する前に、次の項目を構成する必要があります。
 
-- フロントエンド IP 構成 - 受信ネットワーク トラフィックのプライベート IP アドレスを構成します。 
+- フロントエンド IP 構成 - 受信ネットワーク トラフィックのプライベート IP アドレスを構成します。
 
 - バックエンド アドレス プール: フロントエンド IP プールからの負荷分散されたトラフィックを受信するネットワーク インターフェイスを構成します。
 
@@ -62,7 +62,7 @@ PowerShell 用 Azure モジュールが最新の製品版であり、Azure サ�
 
 ### 手順 1
 
-		PS C:\> Login-AzureRmAccount
+		Login-AzureRmAccount
 
 
 
@@ -70,7 +70,7 @@ PowerShell 用 Azure モジュールが最新の製品版であり、Azure サ�
 
 アカウントのサブスクリプションを確認する
 
-		PS C:\> get-AzureRmSubscription 
+		Get-AzureRmSubscription 
 
 資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
 
@@ -79,7 +79,7 @@ PowerShell 用 Azure モジュールが最新の製品版であり、Azure サ�
 使用する Azure サブスクリプションを選択します。<BR>
 
 
-		PS C:\> Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+		Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
 ### ロード バランサーのリソース グループの作成
 
@@ -87,7 +87,7 @@ PowerShell 用 Azure モジュールが最新の製品版であり、Azure サ�
 
 新しいリソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
 
-    	PS C:\> New-AzureRmResourceGroup -Name NRP-RG -location "West US"
+    	New-AzureRmResourceGroup -Name NRP-RG -location "West US"
 
 Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。ロード バランサーを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
 
@@ -189,7 +189,7 @@ LB-Nic2-BE という名前の 2 番目のネットワーク インターフェ�
 最終的に、結果として次の情報が表示されます。
 
 
-	PS C:\> $backendnic1
+	$backendnic1
 
 予想される出力:
 
@@ -267,13 +267,13 @@ LB-Nic2-BE という名前の 2 番目のネットワーク インターフェ�
 
 ネットワーク インターフェイス上のバックエンド構成を変更します。
 
-	PS C:\> $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
+	$nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 
 #### 手順 5. 
 
 ネットワーク インターフェイス オブジェクトを保存します。
 
-	PS C:\> Set-AzureRmNetworkInterface -NetworkInterface $nic
+	Set-AzureRmNetworkInterface -NetworkInterface $nic
 
 ネットワーク インターフェイスがロード バランサーのバックエンド プールに追加されると、そのロード バランサー リソースの負荷分散規則に基づいてネットワーク トラフィックの受信を開始します。
 
@@ -316,4 +316,4 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0720_2016-->

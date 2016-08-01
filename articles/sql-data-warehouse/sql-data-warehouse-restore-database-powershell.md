@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/28/2016"
+   ms.date="07/18/2016"
    ms.author="sonyama;barbkess"/>
 
 # Azure SQL Data Warehouse の復元 (PowerShell)
@@ -28,9 +28,7 @@
 
 ## 開始する前に
 
-### SQL Database の DTU 容量を確認する 
-
-各 SQL Data Warehouse は SQL サーバーの論理サーバーでホストされます。この論理サーバーには容量制限があり、DTU 単位で測定されます。SQL Data Warehouse を復元する前に、データベースをホストしている SQL サーバーの論理サーバーに、データベースを復元するために十分な DTU 容量があるか確認する必要があります。詳細については、[DTU クォータを表示および増量する方法][]に関するブログ投稿記事をご覧ください。
+**DTU 容量を確認します。** 各 SQL Data Warehouse は、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。SQL Data Warehouse を復元する前に、データベースの復元に必要な量の DTU クォータがSQL server に残っていることを確認してください。必要な DTU を計算する方法と DTU を要求する方法については、[DTU クォータの変更の要求][]に関するトピックをご覧ください。
 
 ### PowerShell をインストールする
 
@@ -157,6 +155,7 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 
 <!--Article references-->
 [Azure SQL Database のビジネス継続性の概要]: sql-database-business-continuity.md
+[DTU クォータの変更の要求]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
 [Finalize a recovered database]: sql-database-recovered-finalize.md
 [Azure PowerShell のインストールおよび構成方法]: powershell-install-configure.md
 [概要]: ./sql-data-warehouse-restore-database-overview.md
@@ -168,11 +167,8 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 <!--MSDN references-->
 [Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
 
-<!--Blog references-->
-[DTU クォータを表示および増量する方法]: https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/
-
 <!--Other Web references-->
 [Azure Portal]: https://portal.azure.com/
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

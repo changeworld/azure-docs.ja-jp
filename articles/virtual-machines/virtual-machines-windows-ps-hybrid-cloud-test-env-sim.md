@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/01/2016" 
+	ms.date="07/19/2016" 
 	ms.author="josephd"/>
 
 # テスト用のシミュレートされたハイブリッド クラウド環境の設定
@@ -40,7 +40,7 @@
 1.	TestLab 仮想ネットワークを構成する。
 2.	クロスプレミス仮想ネットワークを作成する。
 3.	VNet 間 VPN 接続を作成する。
-4.	DC2 を構成する。 
+4.	DC2 を構成する。
 
 Azure サブスクリプションをまだ取得していない場合は、[Azure の無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
@@ -62,7 +62,7 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 
 	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
 
-Azure サブスクリプションを設定します。基本構成をビルドするために使用したものと同じサブスクリプションを使用します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+Azure サブスクリプションを設定します。基本構成をビルドするために使用したものと同じサブスクリプションを使用します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
 	$subscr="<subscription name>"
 	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
@@ -213,4 +213,4 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 - この環境に [SharePoint イントラネット ファーム](virtual-machines-windows-ps-hybrid-cloud-test-env-sp.md)、[Web ベース LOB アプリケーション](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md)、または [Office 365 ディレクトリ同期 (DirSync) サーバー](virtual-machines-windows-ps-hybrid-cloud-test-env-dirsync.md)をセットアップします。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

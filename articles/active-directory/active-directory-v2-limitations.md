@@ -56,24 +56,47 @@ v2.0 エンドポイントによって保護された Web API から、同じよ
 
 現在、新しいアプリケーション登録ポータルで登録されるアプリは、ごく限られた redirect\_uri 値に限定されています。Web アプリと Web サービスの redirect\_uri はスキーム (`https`) で始める必要があります。それ以外のすべてのプラットフォームの redirect\_uri は、`urn:ietf:oauth:2.0:oob` という値をハードコーディングする必要があります。
 
+## リダイレクト URI に関する制限事項
+Web アプリでは、すべての redirect\_uri 値で 1 つの DNS ドメインを共有する必要があります。たとえば、以下の redirect\_uri を持つ Web アプリを登録することはできません。
+
+`https://login-east.contoso.com` `https://login-west.contoso.com`
+
+登録システムによって、既存の redirect\_uri の DNS 名全体と、追加する redirect\_uri の DNS 名が比較されます。新しい redirect\_uri の DNS 名全体が既存の redirect\_uri の DNS 名と完全に一致せず、既存の redirect\_uri のサブドメインでもない場合、追加要求は失敗します。たとえば、現在アプリには次の redirect\_uri が含まれているとします。
+
+`https://login.contoso.com`
+
+この場合、DNS 名が完全に一致する
+
+`https://login.contoso.com/new`
+
+または、login.contoso.com の DNS サブドメインである
+
+`https://new.login.contoso.com`
+
+の追加は可能です。redirect\_uri として login-east.contoso.com と login-west.contoso.com を持つアプリが必要な場合は、以下の redirect\_uri を上から順番に追加する必要があります。
+
+`https://contoso.com` `https://login-east.contoso.com` `https://login-west.contoso.com`
+
+後の 2 つの redirect\_uri を追加できるのは、それらが 1 つ目の contoso.com のサブドメインであるためです。この制限は、今後のリリースで解消される予定です。
+
 新しいアプリケーション登録ポータルでアプリを登録する方法については、[こちらの記事](active-directory-v2-app-registration.md)を参照してください。
 
 ## サービスと API に関する制限事項
-v2.0 エンドポイントは現在、[サポートされる認証フロー](active-directory-v2-flows.md)に該当していれば、新しいアプリケーション登録ポータルで登録されたアプリのサインインをサポートしています。ただしこれらのアプリで取得できるのは、ごく限られたリソースの OAuth 2.0 アクセス トークンだけです。v2.0 エンドポイントから発行される access\_tokens の対象は次のいずれかに限定されます。
+v2.0 エンドポイントは現在、[サポートされる認証フロー](active-directory-v2-flows.md)のリストに該当することを条件に、新しいアプリケーション登録ポータルで登録されたアプリのサインインをサポートしています。ただしこれらのアプリで取得できるのは、ごく限られたリソースの OAuth 2.0 アクセス トークンだけです。v2.0 エンドポイントから発行される access\_tokens の対象は次のいずれかに限定されます。
 
 - トークンを要求したアプリ。論理的に複数の異なるコンポーネントまたは階層で構成されている場合にアプリが取得できるのはそれ自身の access\_token となります。その実際のシナリオについては、[こちら](active-directory-appmodel-v2-overview.md#getting-started)のチュートリアルを参照してください。
 - Outlook メール、カレンダー、連絡先の REST API (いずれも https://outlook.office.com に存在)。これらの API にアクセスするアプリの作成方法については、[Office](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) に関するチュートリアルを参照してください。
-- Microsoft Graph API。Microsoft Graph の詳細と使用可能なすべてのデータについては、[https://graph.microsoft.io](https://graph.microsoft.io) を参照してください。
+- Microsoft Graph API。Microsoft Graph と使用可能なすべてのデータの詳細については、[https://graph.microsoft.io](https://graph.microsoft.io) を参照してください。
 
 現時点では、上記以外のサービスはサポートされていません。その他の Microsoft オンライン サービスと、独自のカスタム ビルド Web API やサービスについても、将来サポートが追加される予定です。
 
 ## ライブラリと SDK に関する制限事項
-さまざまな方法を試すことができるように、v2.0 エンドポイントと互換性のある Active Directory 認証ライブラリ (ADAL) の試験版が用意されています。ただし、このバージョンの ADAL はプレビュー段階のためサポート対象外で、今後数か月の間に大幅に変更される予定です。v2.0 エンドポイントを使用して実行されるアプリがすぐに必要な場合は、.NET、iOS、Android、および Javascript 向けの ADAL を使用したコード サンプルが[こちら](active-directory-appmodel-v2-overview.md#getting-started)のセクションに掲載されています。
+さまざまな方法を試すことができるように、v2.0 エンドポイントと互換性のある Active Directory 認証ライブラリ (ADAL) の試験版が用意されています。ただし、このバージョンの ADAL はプレビュー段階のためサポート対象外で、今後数か月の間に大幅に変更される予定です。v2.0 エンドポイントで動作するアプリがすぐに必要な場合は、.NET、iOS、Android、および Javascript 向けの ADAL を使用したコード サンプルが「[Getting Started (概要)](active-directory-appmodel-v2-overview.md#getting-started)」セクションに掲載されています。
 
 運用環境のアプリケーションで v2.0 エンドポイントを使用する場合、次のような選択肢があります。
 
-- Web アプリケーションを構築する場合は、マイクロソフトが一般提供しているサーバー側のミドルウェアを使用して、サインインとトークンの検証を安全に実行できます。このようなミドルウェアには、OWIN の ASP.NET 用 OpenID Connect ミドルウェアやマイクロソフトの NodeJS 用 Passport プラグインなどがあります。これらのミドルウェアを使用したコード サンプルについては、[こちら](active-directory-appmodel-v2-overview.md#getting-started)のセクションを参照してください。
-- 他のプラットフォームやネイティブ アプリケーションとモバイル アプリケーションでは、アプリケーション コードで直接プロトコル メッセージを送受信することで v2.0 エンドポイントと統合することもできます。v2.0 の OpenID Connect プロトコルと OAuth プロトコルについては、このような統合の実行に役立つように、[明示的に文書化](active-directory-v2-protocols.md)されています。
+- Web アプリケーションを構築する場合は、マイクロソフトが一般提供しているサーバー側のミドルウェアを使用して、サインインとトークンの検証を安全に実行できます。このようなミドルウェアには、OWIN の ASP.NET 用 OpenID Connect ミドルウェアやマイクロソフトの NodeJS 用 Passport プラグインなどがあります。これらのミドルウェアを使用したコード サンプルについては、「[Getting Started (概要)](active-directory-appmodel-v2-overview.md#getting-started)」セクションを参照してください。
+- 他のプラットフォームやネイティブ アプリケーションとモバイル アプリケーションでは、アプリケーション コードで直接プロトコル メッセージを送受信することで v2.0 エンドポイントと統合することもできます。v2.0 の OpenID Connect プロトコルと OAuth プロトコルについては、このような統合の実行に役立つように、[明確に文書化](active-directory-v2-protocols.md)されています。
 - オープン ソースの Open ID Connect および OAuth のライブラリを使用して、v2.0 エンドポイントと統合できます。v2.0 のプロトコルは通常、大幅な変更を加えなくても、多数のオープン ソース プロトコル ライブラリと互換性があります。このようなライブラリを使用できるかどうかは、言語やプラットフォームごとに異なります。[Open ID Connect](http://openid.net/connect/) および [OAuth 2.0](http://oauth.net/2/) の Web サイトに、一般的な実装のリストが掲載されています。以下に、v2.0 エンドポイントでテスト済みのオープン ソース クライアント ライブラリとサンプルを示します。
 
   - [Java WSO2 ID サーバー](https://docs.wso2.com/display/IS500/Introducing+the+Identity+Server)
@@ -90,7 +113,7 @@ v2.0 エンドポイントは、Open ID Connect と OAuth 2.0 のみをサポー
 - OpenID Connect `end_sesssion_endpoint`
 - OAuth 2.0 クライアント資格情報付与
 
-v2.0 エンドポイントでサポートされているプロトコル機能の範囲についての詳細な情報については、[OpenID Connect と OAuth 2.0 のプロトコル リファレンス](active-directory-v2-protocols.md)を参照してください。
+v2.0 エンドポイントでサポートされているプロトコル機能の範囲について詳しく理解するには、[OpenID Connect および OAuth 2.0 プロトコルに関するリファレンス](active-directory-v2-protocols.md)を参照してください。
 
 ## Azure AD 開発者向けの高度な機能
 Azure Active Directory サービスで利用できる開発者向け機能の中には、まだ v2.0 エンドポイントではサポートされていないものがあります。具体的には、次のような機能です。
@@ -98,4 +121,4 @@ Azure Active Directory サービスで利用できる開発者向け機能の中
 - Azure AD ユーザーのグループ要求
 - アプリケーション ロールとロール要求
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0720_2016-->

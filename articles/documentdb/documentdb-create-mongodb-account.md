@@ -18,7 +18,7 @@
 
 # Azure ポータルを使用して MongoDB のプロトコル対応の DocumentDB アカウントを作成する方法
 
-MongoDB のプロトコル対応の DocumentDB アカウントを作成するには、次の要件を満たす必要があります。
+MongoDB のプロトコル対応の Azure DocumentDB アカウントを作成するには、次の要件を満たす必要があります。
 
 - Azure アカウントを入手する。まだ持っていない場合は、[無料 Azure アカウント](https://azure.microsoft.com/free/)を取得できます。
 
@@ -78,4 +78,4 @@ MongoDB のプロトコル対応の DocumentDB アカウントを作成するに
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0720_2016-->

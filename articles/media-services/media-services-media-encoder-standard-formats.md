@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016"
+	ms.date="07/17/2016"
 	ms.author="juliako;anilmur"/>
 
 #Media Encoder Standard の形式とコーデック
@@ -87,8 +87,8 @@ MPEG Layer 2|あり
 MP3 (MPEG-1 Audio Layer 3)|あり 
 Windows Media オーディオ|あり 
 WAV/PCM|あり 
-[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|あり 
-[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |あり 
+[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|はい 
+[Opus](http://go.microsoft.com/fwlink/?LinkId=822667) |はい 
 [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|あり 
 AMR (アダプティブ マルチ レート)|あり
 AES (SMPTE 331M および 302M、AES3-2003) |いいえ 
@@ -123,4 +123,4 @@ MPEG2-TS |H.264 (High、Main、Baseline Profile)|AAC-LC、HE-AAC v1、HE-AAC v2
 
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

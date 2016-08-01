@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="07/01/2016"
+	ms.date="07/19/2016"
 	ms.author="cephalin"/>
 
 # Sails.js Web アプリを Azure App Service にデプロイする
@@ -22,11 +22,11 @@
 
 ## 前提条件
 
-- Node.js。インストール用のバイナリは[こちら](https://nodejs.org/)にあります。
-- Sails.js。インストールの手順は[こちら](http://sailsjs.org/get-started)にあります。
+- [Node.JS](https://nodejs.org/)。
+- [Sails.js](http://sailsjs.org/get-started)。
 - Sails.js の実用的な知識。このチュートリアルは、一般的な Sail.js の実行に関する問題解決を支援するものではありません。
-- Gitインストール用のバイナリは[こちら](http://www.git-scm.com/downloads)にあります。
-- Azure CLI。インストールの手順は[こちら](../xplat-cli-install.md)にあります。
+- [Git](http://www.git-scm.com/downloads)
+- [Azure CLI](../xplat-cli-install.md)。
 - Microsoft Azure アカウント。アカウントを持っていない場合は、[無料試用版にサインアップする](/pricing/free-trial/?WT.mc_id=A261C142F)か、または [Visual Studio サブスクライバー特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)ことができます。
 
 >[AZURE.NOTE] Azure App Service が動作するところを見てから Azure アカウントにサインアップするには、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)をご覧ください。有効期間が短いスターター アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードや契約は必要ありません。
@@ -99,36 +99,21 @@
 
     これらの構成設定のドキュメントは [Sails.js ドキュメント](http://sailsjs.org/documentation/reference/configuration/sails-config)にあります。
 
-    次に、[Grunt](https://www.npmjs.com/package/grunt) に Azure のネットワーク ドライブとの互換性があることを確認する必要があります。この記事が書かれた時点では、ネットワーク ドライブをサポートしない古い [glob](https://www.npmjs.com/package/glob) パッケージ (v3.1.21) が Grunt で使用されているため、Grunt で ["ENOTSUP: operation not supported on socket" エラー](https://github.com/isaacs/node-glob/issues/205)が発生する可能性があります。以下は Grunt で [glob v5.0.14 以上](https://github.com/isaacs/node-glob/commit/bf3381e90e283624fbd652835e1aefa55d45e2c7)が使用されるように設定する手順です。
+    次に、[Grunt](https://www.npmjs.com/package/grunt) に Azure のネットワーク ドライブとの互換性があることを確認する必要があります。バージョン 1.0.0 未満の Grunt は、使用されている [glob](https://www.npmjs.com/package/glob) パッケージが古く (5.0.14 未満)、ネットワーク ドライブをサポートしていません。
 
-3. アプリの作成時に `npm install` はすでに実行されていることから、プロジェクトのルートに npm-shrinkwrap.json を生成します。
+3. package.json を開いて、`grunt` のバージョンを `1.0.0` に変更し、すべての `grunt-*` パッケージを削除します。変更後の `dependencies` プロパティは次のようになります。
 
-        npm shrinkwrap
-
-4. npm-shrinkwrap.json を開いて、`"grunt":` の json を探して、必要な glob バージョンの依存関係を追加します。完成した json は次のようになります。
-
-        "grunt": {
-            "version": "0.4.5",
-            "from": "grunt@0.4.5",
-            "resolved": "https://registry.npmjs.org/grunt/-/grunt-0.4.5.tgz",
-            "dependencies": {
-                "glob": {
-                    "version": "5.0.14",
-                    "from": "glob@5.0.14",
-                    "resolved": "https://registry.npmjs.org/glob/-/glob-5.0.14.tgz"
-                }
-            }
+        "dependencies": {
+            "ejs": "<leave-as-is>",
+            "grunt": "1.0.0",
+            "include-all": "<leave-as-is>",
+            "rc": "<leave-as-is>",
+            "sails": "<leave-as-is>",
+            "sails-disk": "<leave-as-is>",
+            "sails-sqlserver": "<leave-as-is>"
         },
 
-5. `"glob":` を検索して、glob へのすべての参照を探します。参照が v3.1.21 以下である場合は、json を次のように変更します。
-
-        "glob": {
-            "version": "5.0.14",
-            "from": "glob@5.0.14",
-            "resolved": "https://registry.npmjs.org/glob/-/glob-5.0.14.tgz"
-        }
-
-6. 変更内容を保存して、アプリがまだローカルで実行されるかどうかを確認するために変更をテストします。
+6. 変更内容を保存して、アプリがまだローカルで実行されるかどうかを確認するために変更をテストします。そのためには、`node_modules` フォルダーを削除して次のコマンドを実行します。
 
         npm install
         sails lift
@@ -154,7 +139,7 @@ App Service で何らかの理由により Sails.js アプリケーションの�
                 .-..-.
 
     Sails              <|    .-..-.
-    v0.12.1             |\
+    v0.12.3             |\
                         /|.\
                         / || \
                     ,'  |'  \
@@ -167,27 +152,19 @@ App Service で何らかの理由により Sails.js アプリケーションの�
     To see your app, visit http://localhost:\\.\pipe\a76e8111-663e-449d-956e-5c5deff2d304
     To shut down Sails, press <CTRL> + C at any time.
 
+stdout ログの粒度は [config/log.js](http://sailsjs.org/#!/documentation/concepts/Logging) ファイルで制御することができます。
+
 ## Azure のデータベースへの接続
 
 データベース Azure に接続するには、Azure SQL Database、MySQL、MongoDB、Azure (Redis) のキャッシュなど、Azure で任意のデータベースを作成して、対応する[データストア アダプター](https://github.com/balderdashy/sails#compatibility)を使用してそのデータベースに接続します。このセクションの手順は、Azure SQL Database に接続する方法を説明しています。
 
-1. [ここ](../sql-database/sql-database-get-started.md)のチュートリアルに従って、新しい SQL Server に空の Azure SQL Database を作成します。既定のファイアウォール設定では、Azure サービス (たとえば App Service) に接続できます。
+1. [こちら](../sql-database/sql-database-get-started.md)のチュートリアルに従って、新しい SQL Server に空の Azure SQL Database を作成します。既定のファイアウォール設定では、Azure サービス (たとえば App Service) に接続できます。
 
 2. コマンド ライン ターミナルから、SQL Server のアダプターをインストールします。
 
         npm install sails-sqlserver --save
 
-    package.json を変更したので、npm-shrinkwrap.json を再生成する必要があります。これを次に実行します。
-    
-3. node\_modules/ ディレクトリを削除します。
-
-4. `npm shrinkwrap` を実行します。
-
-5. npm-shrinkwrap.json をもう一度開いて、前のセクションで行ったように `glob` パッケージのバージョンを更新します。
-
-    ここで、主なタスクに戻ります。
-        
-3. config/connections.js を開いて、次の json をアダプターの一覧に追加します。
+3. config/connections.js を開いて次の接続オブジェクトをリストに追加します。
 
         sqlserver: {
             adapter: 'sails-sqlserver',
@@ -207,35 +184,68 @@ App Service で何らかの理由により Sails.js アプリケーションの�
         azure site appsetting add sqlserver="<database server name>.database.windows.net"
         azure site appsetting add dbname="<database name>"
         
-4. config/env/production.js を開いて運用環境を構成して、`models` JSON オブジェクトに `connection` と `migrate` を設定します。
+    必要な設定を Azure のアプリケーション設定に置くことで、ソース管理 (Git) の対象から機密データを除外することができます。次に、同じ接続情報を使用するように開発環境を構成します。
+
+4. config/local.js を開き、次の接続オブジェクトを追加します。
+
+        connections: {
+            sqlserver: {
+                user: "<database server administrator>",
+                password: "<database server password>",
+                host: "<database server name>.database.windows.net", 
+                database: "<database name>",
+            },
+        },
+    
+    ローカル環境の config/connections.js ファイルに含まれている設定は、この構成によって上書きされます。このファイルは、プロジェクトの既定の .gitignore によって除外され、Git には保管されません。これで、Azure Web アプリとローカル開発環境のどちらからでも、Azure SQL Database に接続できるようになりました。
+
+4. config/env/production.js を開いて運用環境を構成し、次の `models` オブジェクトを追加します。
+
+        models: {
+            connection: 'sqlserver',
+            migrate: 'safe'
+        },
+
+4. config/env/development.js を開いて開発環境を構成し、次の `models` オブジェクトを追加します。
 
         models: {
             connection: 'sqlserver',
             migrate: 'alter'
         },
 
-4. ターミナルから通常と同じように Sails.js [ブループリント API](http://sailsjs.org/documentation/concepts/blueprints)を[生成](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate)します。次に例を示します。
+    `migrate: 'alter'` を指定すると、データベース移行機能を使って簡単に、Azure SQL Database のデータベース テーブルを作成したり更新したりすることができます。ただし、Azure (運用) 環境で使用されるのは `migrate: 'safe'` です。Sails.js では、運用環境で `migrate: 'alter'` を使用することが認められていません ([Sails.js のドキュメント](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings)を参照)。
+
+4. ターミナルから、普段と同じように Sails.js の [blueprint API](http://sailsjs.org/documentation/concepts/blueprints) を[生成](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate)し、`sails lift` を実行して、データベースを作成すると共に Sails.js データベースを移行します。次に例を示します。
 
          sails generate api mywidget
-     
-5. すべての変更内容を保存してから Azure にプッシュします。アプリに移動して、アプリがまだ動作しているかどうかを確認します。
+         sails lift
+
+    このコマンドによって生成される `mywidget` モデルは空ですが、このモデルを使用することで、データベース接続の存在を証明できます。`sails lift` を実行すると、アプリで使用されているモデルに足りないテーブルが作成されます。
+
+6. 今作成した blueprint API にブラウザーでアクセスします。次に例を示します。
+
+        http://localhost:1337/mywidget/create
+    
+    この API からは、作成されたエントリがブラウザー ウィンドウに返されます。つまり、これをもって、データベースが正常に作成されたと考えることができます。
+
+        {"id":1,"createdAt":"2016-03-28T23:08:01.000Z","updatedAt":"2016-03-28T23:08:01.000Z"}
+
+5. 変更内容を Azure にプッシュし、アプリに移動して、アプリがまだ動作しているかどうかを確認します。
 
         git add .
         git commit -m "<your commit message>"
         git push azure master
         azure site browse
 
-6. ブラウザーに作成したばかりのブループリント API にアクセスします。次に例を示します。
+6. Azure Web アプリの blueprint API にアクセスします。次に例を示します。
 
-        http://<appname>.azurewebsites.net/widget/create
-    
-    この API は、作成されたエントリをブラウザー ウィンドウに返します。
-    
-        {"id":1,"createdAt":"2016-03-28T23:08:01.000Z","updatedAt":"2016-03-28T23:08:01.000Z"}
+        http://<appname>.azurewebsites.net/mywidget/create
+
+    API から別の新しいエントリが返されれば、Azure Web アプリが Azure SQL Database と対話しているということです。
 
 ## その他のリソース
 
 - [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](app-service-web-nodejs-get-started.md)
 - [Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

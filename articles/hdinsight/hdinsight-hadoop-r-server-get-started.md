@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="07/07/2016"
+   ms.date="07/19/2016"
    ms.author="jeffstok"
 />
 
@@ -80,25 +80,25 @@ HDInsight の Premium レベル サービスには、HDInsight (プレビュー)
 
 	公開キーと秘密キーのペアを作成して使用するには、[公開キー] を選択して次の手順に従います。次の手順では、Cygwin と、ssh-keygen または同等のものがインストールされていることを前提としています。
 
-	- ラップトップ コンピューターのコマンド プロンプトから、公開キーと秘密キーのペアを生成します。
+	-    ラップトップ コンピューターのコマンド プロンプトから、公開キーと秘密キーのペアを生成します。
 	  
-			````ssh-keygen -t rsa -b 2048 –f <private-key-filename>````
+		    ssh-keygen -t rsa -b 2048 –f <private-key-filename>
+      
+    -    これにより、秘密キー ファイルと、<秘密キーのファイル名>.pub という名前の公開キー ファイルが作成されます (davec と davec.pub など)。HDI クラスターの資格情報を割り当てるときに、公開キー ファイル (*.pub) を指定します。
+      
+		![[資格情報] ブレード](./media/hdinsight-getting-started-with-r/publickeyfile.png)
+      
+	-    ノート パソコンでの秘密キー ファイルのアクセス許可の変更
+      
+			chmod 600 <private-key-filename>
+      
+	-    リモート ログインの場合、次のように秘密キー ファイルと SSH を使用します。
+	  
+			ssh –i <private-key-filename> remoteuser@<hostname public ip>
+      
+	  または、クライアントの R Server の Hadoop Spark コンピューティング コンテキストの定義の一部として使用します (オンラインの [RevoScaleR Hadoop Spark ファースト ステップ ガイド](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)の「[Creating a Compute Context for Spark (Spark 用のコンピューティング コンテキストの作成)](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started#creating-a-compute-context-for-spark)」セクションで、「Using Microsoft R Server as a Hadoop Client (Hadoop クライアントとして Microsoft R Server を使用する)」を参照してください)。
 
-    - これにより、秘密キー ファイルと、<秘密キーのファイル名>.pub という名前の公開キー ファイルが作成されます (davec と davec.pub など)。HDI クラスターの資格情報を割り当てるときに、公開キー ファイル (*.pub) を指定します。
-    
-	![[資格情報] ブレード](./media/hdinsight-getting-started-with-r/publickeyfile.png)
-
-	- ノート パソコンでの秘密キー ファイルのアクセス許可の変更
-    
-			````chmod 600 <private-key-filename>````
-
-	- リモート ログインの場合、次のように秘密キー ファイルと SSH を使用します。
-	
-			````ssh –i <private-key-filename> remoteuser@<hostname public ip>````
-
-	  または、クライアントの R Server の Hadoop Spark コンピューティング コンテキストの定義の一部として使用します (オンラインの RevoScaleR Hadoop Spark ファースト ステップ ガイドの「Creating a Compute Context for Spark (Spark 用のコンピューティング コンテキストの作成)」セクションで、「Using Microsoft R Server as a Hadoop Client (Hadoop クライアントとして Microsoft R Server を使用する)」を参照してください)。
-
-7. **[データソース]** を選択し、クラスターのデータ ソースを選択します。__[ストレージ アカウントの選択]__ を選択し、アカウントを選択して既存のストレージ アカウントを選択するか、__[ストレージ アカウントの選択]__ セクションで __[新規]__ リンクを使用して新しいアカウントを作成します。
+7. **[データ ソース]** を選択し、クラスターのデータ ソースを選択します。__[ストレージ アカウントの選択]__ を選択し、アカウントを選択して既存のストレージ アカウントを選択するか、__[ストレージ アカウントの選択]__ セクションで __[新規]__ リンクを使用して新しいアカウントを作成します。
 
     __[新規]__ を選択した場合、新しいストレージ アカウントの名前を入力する必要があります。名前を使用できる場合は、緑色のチェック マークが表示されます。
 
@@ -117,9 +117,12 @@ HDInsight の Premium レベル サービスには、HDInsight (プレビュー)
 	> [AZURE.NOTE] 必要に応じて、後でポータルから ([クラスター]、[設定]、[クラスターのスケール設定]) クラスターのサイズを変更して、worker ノードの数を変更できます。これは、使用しないクラスターをアイドル状態にする場合や、大規模なタスクのニーズに合わせて容量を追加する場合に役立ちます。
 
 	クラスター、データ ノード、エッジ ノードのサイズを変更するときに、次の点に留意します。
-
-	• データが大きいとき、Spark での分散の R Server 分析のパフォーマンスは、worker ノードの数に比例します。• R Server 分析のパフォーマンスは、分析対象のデータのサイズ内で線形になります。• 小さいデータや中程度のサイズのデータの場合、エッジ ノードのローカル コンピューティング コンテキストで分析されると、パフォーマンスは最適になります。ローカルおよび Spark コンピューティング コンテキストが最適に機能するシナリオの詳細については、HDInsight で R Server のコンピューティング コンテキストのオプションをご覧ください。• エッジ ノードにログインし、R スクリプトを実行すると、ScaleR rx 関数以外のすべてがエッジ ノードで**ローカル**で実行され、エッジ ノードのメモリとコアの数が、それに応じてサイズ変更されます。ノート パソコンからリモート コンピューティング コンテキストとして HDI の RServer を使用する場合、同じことがあてはまります。
-
+   
+    - データが大きいとき、Spark での分散 R Server 分析のパフォーマンスは、worker ノードの数に比例します。
+    - R Server 分析のパフォーマンスは、分析されているデータのサイズに比例します。次に例を示します。
+        - データのサイズが中程度までの場合は、エッジ ノードのローカルのコンピューティング コンテキストで分析するときにパフォーマンスが最高になります。ローカルと Spark コンピューティング コンテキストのパフォーマンスが最高になるシナリオの詳細については、HDInsight での R Server のコンピューティング コンテキスト オプションを参照してください。<br>
+        - エッジ ノードにログインして R スクリプトを実行し、ScaleR rx 関数以外のすべてをエッジ ノードで<strong>ローカル</strong>に実行した場合、エッジ ノードのメモリとコアの数が適宜調整されます。ノート パソコンからリモート コンピューティング コンテキストとして HDI の RServer を使用する場合、同じことがあてはまります。
+    
     ![[ノード価格レベル] ブレード](./media/hdinsight-getting-started-with-r/pricingtier.png)
 
     **[選択]** ボタンを使用し、ノードの価格構成を保存します。
@@ -197,27 +200,31 @@ Linux ベースの HDInsight での SSH の使用方法の詳細については�
 
 ## Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI の R Server を使用する
 
-クラスターにアクセスするための公開キーと秘密キーのペアの使用について説明する前のセクションに従って、デスクトップまたはラップトップで実行されている Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI Hadoop Spark コンピューティング コンテキストへのアクセスを設定することができます (オンラインの RevoScaleR Hadoop Spark ファースト ステップ ガイドの「Creating a Compute Context for Spark (Spark 用のコンピューティング コンテキストの作成)」セクションで、「Using Microsoft R Server as a Hadoop Client (Hadoop クライアントとして Microsoft R Server を使用する)」を参照してください)。 そのためには、ラップトップで RxSpark コンピューティング コンテキストを定義するときに、オプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、sshProfileScript) を指定する必要があります。次に例を示します。
+クラスターにアクセスするための公開キーと秘密キーのペアの使用について説明する前のセクションに従って、デスクトップまたはラップトップで実行されている Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI Hadoop Spark コンピューティング コンテキストへのアクセスを設定することができます (オンラインの [RevoScaleR Hadoop Spark ファースト ステップ ガイド](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)の「[Creating a Compute Context for Spark (Spark 用のコンピューティング コンテキストの作成)](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started#creating-a-compute-context-for-spark)」セクションで、「Using Microsoft R Server as a Hadoop Client (Hadoop クライアントとして Microsoft R Server を使用する)」を参照してください)。そのためには、ラップトップで RxSpark コンピューティング コンテキストを定義するときに、オプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、sshProfileScript) を指定する必要があります。次に例を示します。
 
     
-        mySshHostname  <- 'rkrrehdi1-ssh.azurehdinsight.net'  # HDI secure shell hostname
-        mySshUsername  <- 'remoteuser'# HDI SSH username
-        mySshSwitches  <- '-i /cygdrive/c/Data/R/davec'   # HDI SSH private key
-    
-        myhdfsShareDir <- paste("/user/RevoShare", mySshUsername, sep="/")
-        myShareDir <- paste("/var/RevoShare" , mySshUsername, sep="/")
-    
-        mySparkCluster <- RxSpark(
-          hdfsShareDir = myhdfsShareDir,
-          shareDir = myShareDir,
-          sshUsername  = mySshUsername,
-          sshHostname  = mySshHostname,
-          sshSwitches  = mySshSwitches,
-          sshProfileScript = '/etc/profile',
-          nameNode = myNameNode,
-          port = myPort,
-          consoleOutput= TRUE
-        )
+    myNameNode <- "default"
+    myPort <- 0 
+ 
+    mySshHostname  <- 'rkrrehdi1-ssh.azurehdinsight.net'  # HDI secure shell hostname
+    mySshUsername  <- 'remoteuser'# HDI SSH username
+    mySshSwitches  <- '-i /cygdrive/c/Data/R/davec'   # HDI SSH private key
+ 
+    myhdfsShareDir <- paste("/user/RevoShare", mySshUsername, sep="/")
+    myShareDir <- paste("/var/RevoShare" , mySshUsername, sep="/")
+ 
+    mySparkCluster <- RxSpark(
+      hdfsShareDir = myhdfsShareDir,
+      shareDir     = myShareDir,
+      sshUsername  = mySshUsername,
+      sshHostname  = mySshHostname,
+      sshSwitches  = mySshSwitches,
+      sshProfileScript = '/etc/profile',
+      nameNode     = myNameNode,
+      port         = myPort,
+      consoleOutput= TRUE
+    )
+
     
  
 ## コンピューティング コンテキストを使用する
@@ -361,7 +368,7 @@ Spark や MapReduce のコンテキストを使用している場合は、コー
 
 1. [Azure ポータル](https://portal.azure.com)で、HDInsight クラスター上の R Server を選択します。
 
-2. クラスター ブレードで、__[すべての設定]__、__[スクリプト アクション]__の順に選択します。__[スクリプト アクション]__ ブレードで、__[新規で送信]__ を選択し、新しいスクリプト アクションを送信します。
+2. クラスター ブレードで、__[すべての設定]__、__[スクリプト アクション]__ の順に選択します。__[スクリプト アクション]__ ブレードで、__[新規で送信]__ を選択し、新しいスクリプト アクションを送信します。
 
     ![[スクリプト アクション] ブレードの画像](./media/hdinsight-getting-started-with-r/newscriptaction.png)
 
@@ -370,10 +377,10 @@ Spark や MapReduce のコンテキストを使用している場合は、コー
     * __名前__: このスクリプトを識別するための表示名
     * __Bash スクリプト URI__: http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh
     * __ヘッド__: __オフ__に設定します
-    * __worker__: __オン__に設定します
+    * __ワーカー__: __オン__に設定します
     * __Zookeeper__: __オフ__に設定します
     * __パラメーター__: インストールする R パッケージ。たとえば、`bitops stringr arules` のように指定します。
-    * __Persist this script... (このスクリプト操作は保持…)__: __オン__に設定します
+    * __このスクリプト操作は保持され…__: __オン__に設定します
     
     > [AZURE.IMPORTANT] インストールする R パッケージでシステム ライブラリを追加する必要がある場合、ここで使用する基本スクリプトをダウンロードし、システム ライブラリをインストールする手順を追加します。その後、変更後のスクリプトを Azure ストレージ内のパブリック BLOB コンテナーにアップロードし、変更後のスクリプトを使用してパッケージをインストールする必要があります。
     >
@@ -402,6 +409,6 @@ Azure Resource Manager テンプレートを使用して HDInsight で R Server 
 
 どちらのテンプレートも、新しい HDInsight クラスターおよび関連付けられたストレージ アカウントを作成し、Azure CLI、Azure PowerShell、または Azure ポータルから使用することができます。
 
-ARM テンプレートの使用方法の一般的な情報については、「[ARM テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」をご覧ください。
+Azure Resource Manager テンプレートの使用に関する全般的な情報については、「[ARM テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

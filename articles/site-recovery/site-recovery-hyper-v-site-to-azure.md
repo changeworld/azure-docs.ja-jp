@@ -36,7 +36,7 @@ Azure ポータルの Azure Site Recovery には、次のような数多くの�
 - Azure ポータルでは、Azure Backup サービスと Azure Site Recovery サービスが統合されて 1 つの Recovery Services コンテナーになっているため、ビジネス継続性と障害復旧 (BCDR) を 1 つの場所から設定して管理できます。統合されたダッシュボードで、オンプレミス サイトと Azure パブリック クラウドの両方に対する監視と管理の操作が可能です。
 - Azure サブスクリプションがクラウド ソリューション プロバイダー (CSP) プログラムを使用してプロビジョニングされたユーザーは、Azure ポータルで Site Recovery 操作を管理できるようになりました。
 - Azure ポータルの Site Recovery では、マシンを ARM ストレージ アカウントにレプリケートできます。フェールオーバー時には、Azure に ARM ベースの VM が作成されます。
-- Site Recovery では、従来のストレージ アカウントへのレプリケーションと、クラシック モデルを使用した VM へのフェールオーバーが引き続きサポートされます。 
+- Site Recovery では、従来のストレージ アカウントへのレプリケーションと、クラシック モデルを使用した VM へのフェールオーバーが引き続きサポートされます。
 
 
 この記事に関するコメントがありましたら、下部にある DISQUS コメント欄に投稿してください。技術的な質問については、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
@@ -53,10 +53,10 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 ## ビジネス上の利点
 
-- Hyper-V 仮想マシンで実行されているビジネス ワークロードやアプリケーションのオフサイト (Azure) フェールオーバーを実行できます。 
+- Hyper-V 仮想マシンで実行されているビジネス ワークロードやアプリケーションのオフサイト (Azure) フェールオーバーを実行できます。
 - VMM サーバーを必要とせずに、Azure Site Recovery を使用して Hyper-V VM をレプリケートできます。
 - 単一の Recovery Services コンソールを使用して、レプリケーション、フェールオーバー、復旧プロセスを簡単に設定および管理できます。
-- オンプレミス インフラストラクチャから Azure へのフェールオーバーと、Azure からオンプレミス サイトへのフェールバック (復元) を簡単に実行できます。 
+- オンプレミス インフラストラクチャから Azure へのフェールオーバーと、Azure からオンプレミス サイトへのフェールバック (復元) を簡単に実行できます。
 - 複数のマシンを使用した復旧計画を構成し、階層化されたアプリケーション ワークロードをまとめてフェールオーバーできます。
 
 ## シナリオのアーキテクチャ
@@ -95,14 +95,14 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 **前提条件** | **詳細**
 --- | ---
-**保護対象の VM** | VM をフェールオーバーする前に、Azure VM に割り当てられる名前が [Azure の前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠していることを確認する必要があります。名前は、VM のレプリケーションを有効にした後で変更できます。<br/><br/> 保護対象のマシン上の個々のディスク容量が 1023 GB 以下である必要があります。VM は最大 64 個のディスク (最大 64 TB) に対応できます。<br/><br/> 共有ディスク ゲスト クラスターはサポートされていません。<br/><br/> ソース VM に NIC チーミングがある場合、Azure へのフェールオーバー後に単一の NIC に変換されます。<br/><br/>静的 IP アドレスを持ち、Linux を実行している VM の保護はサポートされていません。
+**保護対象の VM** | VM をフェールオーバーする前に、Azure VM に割り当てられる名前が [Azure の前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠していることを確認する必要があります。名前は、VM のレプリケーションを有効にした後で変更できます。<br/><br/> 保護対象のマシン上の個々のディスク容量が 1023 GB 以下である必要があります。VM は最大 64 個のディスク (したがって、最大 64 TB) に対応できます。<br/><br/> 共有ディスク ゲスト クラスターはサポートされていません。<br/><br/> ソース VM に NIC チーミングがある場合、Azure へのフェールオーバー後に単一の NIC に変換されます。<br/><br/>静的 IP アドレスを持ち、Linux を実行している VM の保護はサポートされていません。
 
 ## デプロイの準備をする
 
 デプロイを準備するには、次の手順に従います。
 
-1. フェールオーバー後に作成された Azure VM が配置される [Azure ネットワークをセットアップ](#set-up-an-azure-network)します。 
-2. レプリケートされたデータ用に、[Azure Storage アカウントを設定](#set-up-an-azure-storage-account)します。
+1. フェールオーバー後に作成された Azure VM が配置される [Azure ネットワークをセットアップ](#set-up-an-azure-network)します。
+2. レプリケートされたデータ用に、[Azure ストレージ アカウントを設定](#set-up-an-azure-storage-account)します。
 3. 必要な URL に確実にアクセスできるように [Hyper-V ホストを準備](#prepare-the-hyper-v-hosts)します。
 
 ### Azure ネットワークをセットアップする
@@ -127,12 +127,12 @@ Azure ネットワークをセットアップします。これは、フェー�
 ### Recovery Services コンテナーを作成する
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. **[新規]**、**[管理]**、**[Backup and Site Recovery (OMS)]** (バックアップと Site Recovery (OMS)) の順にクリックします。または、**[参照]**、**[Recovery Services コンテナー]**、**[追加]** の順にクリックします。
+2. **[新規]**、**[管理]**、**[Backup and Site Recovery (OMS) (バックアップと Site Recovery (OMS))]** の順にクリックします。または、**[参照]**、**[Recovery Services コンテナー]**、**[追加]** の順にクリックします。
 
 	![新しいコンテナー](./media/site-recovery-hyper-v-site-to-azure/new-vault3.png)
 
 3. **[名前]** に、コンテナーを識別するフレンドリ名を入力します。複数のサブスクリプションがある場合は、いずれかを選択します。
-4. [新しいリソース グループを作成](../resource-group-portal.md#create-resource-group)するか、既存のリソース グループを選択し、Azure リージョンを指定します。マシンは、このリージョンにレプリケートされます。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)」で利用可能地域を参照してください。
+4. [新しいリソース グループを作成](../resource-group-template-deploy-portal.md)するか、既存のリソース グループを選択し、Azure リージョンを指定します。マシンは、このリージョンにレプリケートされます。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)」で利用可能地域を参照してください。
 4. ダッシュボードからコンテナーにすばやくアクセスするには、**[ダッシュボードにピン留めする]** をクリックし、**[コンテナーの作成]** をクリックします。
 
 	![新しいコンテナー](./media/site-recovery-hyper-v-site-to-azure/new-vault-settings.png)
@@ -154,11 +154,11 @@ Site Recovery に用意されている [使用の開始] エクスペリエン�
 レプリケートの対象とレプリケート先を選択します。
 
 1. **[Recovery Services コンテナー]** ブレードでコンテナーを選択し、**[設定]** をクリックします。
-2. **[設定]** の **[作業の開始]** で、**[Site Recovery]**、**[Step 1: Prepare Infrastructure]** (ステップ 1: インフラストラクチャを準備する)、**[Protection goal]** (保護の目標) の順にクリックします。
+2. **[設定]** の **[作業の開始]** で、**[Site Recovery]**、**[手順 1: インフラストラクチャを準備する]**、**[保護の目標]** の順にクリックします。
 
 	![Choose goals](./media/site-recovery-hyper-v-site-to-azure/choose-goals.png)
 
-3. **[Protection goal]** (保護の目標) で、**[To Azure]** (Azure へ) を選択し、**[Yes, with Hyper-V]** (はい、Hyper-V 使用する) を選択します。VMM を使用していないことを確認するために、**[いいえ]** を選択します。次に、 **[OK]** をクリックします
+3. **[保護の目標]** で、**[To Azure (Azure へ)]** を選択し、**[Yes, with Hyper-V (はい、Hyper-V を使用する)]** を選択します。VMM を使用していないことを確認するために、**[いいえ]** を選択します。次に、 **[OK]** をクリックします
 
 	![Choose goals](./media/site-recovery-hyper-v-site-to-azure/choose-goals2.png)
 
@@ -168,7 +168,7 @@ Site Recovery に用意されている [使用の開始] エクスペリエン�
 Hyper-V サイトをセットアップし、Azure Site Recovery Provider と Azure Recovery Services エージェントを Hyper-V ホストにインストールして、ホストをコンテナーに登録します。
 
 
-1. **[Step 2: Prepare Infrastructure]** (ステップ 2: インフラストラクチャを準備する)、**[ソース]** の順にクリックします。Hyper-V ホストまたはクラスターのコンテナーとして、新しい Hyper-V サイトを追加するには、**[+ Hyper-V サイト]** をクリックします。 
+1. **[Step 2: Prepare Infrastructure (手順 2: インフラストラクチャを準備する)]**、**[ソース]** の順にクリックします。Hyper-V ホストまたはクラスターのコンテナーとして、新しい Hyper-V サイトを追加するには、**[+ Hyper-V サイト]** をクリックします。
 
 	![Set up source](./media/site-recovery-hyper-v-site-to-azure/set-source1.png)
 
@@ -177,7 +177,7 @@ Hyper-V サイトをセットアップし、Azure Site Recovery Provider と Azu
 	![Set up source](./media/site-recovery-hyper-v-site-to-azure/set-source2.png)
 
 3. **[+ Hyper-V Server]** をクリックして、サーバーをサイトに追加します。
-4. **[サーバーの追加]** の **[サーバーの種類]** で、**[Hyper-V server]** (Hyper-V サーバー) が表示されていることを確認します。追加する Hyper-V サーバーが[前提条件](#on-premises-prerequisites)に準拠しており、指定された URL にアクセスできることを確認します。
+4. **[サーバーの追加]** の **[サーバーの種類]** で、**[Hyper-V server (Hyper-V サーバー)]** が表示されていることを確認します。追加する Hyper-V サーバーが[前提条件](#on-premises-prerequisites)に準拠しており、指定された URL にアクセスできることを確認します。
 4. Azure Site Recovery プロバイダーのインストール ファイルをダウンロードします。このファイルを実行して、各 Hyper-V ホストにプロバイダーと Recovery Services エージェントの両方をインストールします。
 5. 登録キーをダウンロードします。セットアップを実行する際に、これが必要になります。キーは生成後 5 日間有効です。
 
@@ -196,9 +196,9 @@ Hyper-V サイトをセットアップし、Azure Site Recovery Provider と Azu
 
 4. **[プロキシの設定]** で、サーバーにインストールされるプロバイダーからインターネット経由で Azure Site Recovery に接続する方法を指定します。
 
-	- プロバイダーが直接接続する場合は、**[Connect directly without a proxy]** (プロキシなしで直接接続する) を選択します。
-	- サーバーで現在セットアップされているプロキシを使用して接続する場合は、**[Connect with existing proxy settings]** (既存のプロキシ設定を使用して接続する) を選択します。
-	- 既存のプロキシに認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、**[Connect with custom proxy settings]** (カスタム プロキシ設定を使用して接続する) を選択します。
+	- プロバイダーから直接接続するようにするには、**[Connect directly without a proxy (プロキシなしで直接接続する)]** を選択します。
+	- サーバーに現在設定されているプロキシを使って接続する場合は、**[Connect with existing proxy settings (既存のプロキシ設定を使用して接続する)]** を選択します。
+	- 既存のプロキシに認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、**[Connect with custom proxy settings (カスタム プロキシ設定を使用して接続する)]** を選択します。
 	- カスタム プロキシを使用する場合、アドレス、ポート、資格情報を指定する必要があります。
 	- プロキシを使用する場合、[前提条件](#on-premises-prerequisites)に示されている URL が許可されていることを確認します。
 
@@ -208,7 +208,7 @@ Hyper-V サイトをセットアップし、Azure Site Recovery Provider と Azu
 
 	![サーバー登録](./media/site-recovery-hyper-v-site-to-azure/provider3.png)
 
-6. 登録が完了すると、Azure Site Recovery によって Hyper-V サーバーからメタデータが取得され、**[設定]** > **[Site Recovery Infrastructure]** (Site Recovery インフラストラクチャ) > **[Hyper-V Hosts]** (Hyper-V ホスト) ブレードにサーバーが表示されます。
+6. 登録が完了すると、Azure Site Recovery によって Hyper-V サーバーからメタデータが取得され、**[設定]** > **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]** > **[Hyper-V Hosts (Hyper-V ホスト)]** ブレードにサーバーが表示されます。
 
 
 ### コマンド ラインを使用したインストール
@@ -224,9 +224,9 @@ Azure Site Recovery Provider とエージェントは、次のコマンド ラ�
 
 			C:\ASR> setupdr.exe /i
 
-4. 次のコマンドを実行して、サーバーをコンテナーに登録します。CD C:\\Program Files\\Microsoft Azure Site Recovery Provider\\ C:\\Program Files\\Microsoft Azure Site Recovery Provider> DRConfigurator.exe /r /Friendlyname <friendly name of the server> /Credentials <path of the credentials file>
+4. 次のコマンドを実行して、サーバーをコンテナーに登録します: CD C:\\Program Files\\Microsoft Azure Site Recovery Provider\\ C:\\Program Files\\Microsoft Azure Site Recovery Provider> DRConfigurator.exe /r /Friendlyname <サーバーのフレンドリ名> /Credentials <資格情報ファイルのパス> ここで、
 
-- **/Credentials**: 登録キー ファイルが配置されている場所を指定する必須パラメーターです。  
+- **/Credentials**: 登録キー ファイルが配置されている場所を指定する必須パラメーターです。
 - **/Friendlyname**: Azure Site Recovery ポータルに表示される、Hyper-V ホスト サーバーの名前を表す必須パラメーターです。
 - **/proxyAddress**: 省略可能。プロキシ サーバーのアドレスを指定します。
 - **/proxyport**: 省略可能。プロキシ サーバーのポートを指定します。
@@ -314,9 +314,9 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 #### ネットワーク帯域幅に影響を与える
 
 1. レジストリで、**HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows Azure Backup\\Replication** に移動します。
-	- レプリケートするディスクで帯域幅のトラフィックに影響を与えるには、**UploadThreadsPerVM** 値を変更するか、このキーが存在しない場合は作成します。 
-	- Azure からのフェールバックのトラフィックの帯域幅に影響を与えるには、**DownloadThreadsPerVM** 値を変更します。 
-2. 既定値は 4 ですが、"プロビジョニング超過" 状態のネットワークの場合、このレジストリ キーを既定値から変更する必要があります。最大値は 32 です。トラフィックを監視して値を最適化できます。 
+	- レプリケートするディスクで帯域幅のトラフィックに影響を与えるには、**UploadThreadsPerVM** 値を変更するか、このキーが存在しない場合は作成します。
+	- Azure からのフェールバックのトラフィックの帯域幅に影響を与えるには、**DownloadThreadsPerVM** 値を変更します。
+2. 既定値は 4 ですが、"プロビジョニング超過" 状態のネットワークの場合、このレジストリ キーを既定値から変更する必要があります。最大値は 32 です。トラフィックを監視して値を最適化できます。
 
 ## ステップ 6: レプリケーションを有効にする
 
@@ -366,7 +366,7 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 
 		- ソース マシン上のネットワーク アダプターの数が、ターゲット マシンのサイズに許可されているアダプターの数以下の場合、ターゲットのアダプターの数は、ソースと同じになります。
 		- ソース仮想マシン用のアダプターの数が、ターゲットのサイズに許可されている数を超える場合は、ターゲットの最大サイズが使用されます。
-		- たとえば、ソース マシンに 2 つのネットワーク アダプターがあり、ターゲット マシンのサイズが 4 つをサポートしている場合は、ターゲット マシンのアダプターの数は、2 つになります。ソース マシンに 2 つのアダプターがあるが、サポートされているターゲット サイズで 1 つしかサポートしていない場合、ターゲット マシンのアダプターの数は 1 つだけになります。 	
+		- たとえば、ソース マシンに 2 つのネットワーク アダプターがあり、ターゲット マシンのサイズが 4 つをサポートしている場合は、ターゲット マシンのアダプターの数は、2 つになります。ソース マシンに 2 つのアダプターがあるが、サポートされているターゲット サイズで 1 つしかサポートしていない場合、ターゲット マシンのアダプターの数は 1 つだけになります。
 		- VM に複数のネットワーク アダプターがある場合は、すべて同じネットワークに接続されます。
 
 	![Enable replication](./media/site-recovery-hyper-v-site-to-azure/test-failover4.png)
@@ -382,11 +382,11 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 ### テスト フェールオーバーを準備する
 
 - テスト フェールオーバーを実行する場合は、Azure 実稼働用ネットワークから分離された Azure ネットワークを新たに作成する必要があります (これは Azure で新しいネットワークを作成する場合の既定の動作です)。テスト フェールオーバーの実行の詳細については、[こちら](site-recovery-failover.md#run-a-test-failover)をご覧ください。
-- Azure へのフェールオーバーを実行するときに最適なパフォーマンスを得るには、保護されたマシンに Azure エージェントをインストールします。エージェントをインストールすると、起動時間が短縮され、トラブルシューティングにも役立ちます。[Linux](https://github.com/Azure/WALinuxAgent) エージェントまたは [Windows](http://go.microsoft.com/fwlink/?LinkID=394789) エージェントをインストールします。 
+- Azure へのフェールオーバーを実行するときに最適なパフォーマンスを得るには、保護されたマシンに Azure エージェントをインストールします。エージェントをインストールすると、起動時間が短縮され、トラブルシューティングにも役立ちます。[Linux](https://github.com/Azure/WALinuxAgent) エージェントまたは [Windows](http://go.microsoft.com/fwlink/?LinkID=394789) エージェントをインストールします。
 - デプロイメントを完全にテストするには、レプリケートされたマシンが正常に動作するインフラストラクチャが必要です。Active Directory と DNS をテストする場合は、ドメイン コントローラー兼 DNS として仮想マシンを作成し、これを Azure Site Recovery を使用して Azure にレプリケートします。Active Directory のテスト フェールオーバーの考慮事項については、[こちら](site-recovery-active-directory.md#considerations-for-test-failover)をご覧ください。
 - テスト フェールオーバーではなく計画されていないフェールオーバーを実行する場合は、次の点に注意してください。
 
-	- 可能であれば、プライマリ マシンをシャットダウンしてから、計画されていないフェールオーバーを実行します。こうすることで、ソース マシンとレプリカ マシンが同時に実行されないように確保できます。 
+	- 可能であれば、プライマリ マシンをシャットダウンしてから、計画されていないフェールオーバーを実行します。こうすることで、ソース マシンとレプリカ マシンが同時に実行されないように確保できます。
 	- 計画されていないフェールオーバーを実行すると、プライマリ マシンのデータ レプリケーションが停止され、計画されていないフェールオーバーの開始後に、データの差分は転送されなくなります。また、復旧計画で計画されていないフェールオーバーを実行する場合は、エラーが発生した場合でも、復旧計画は最後まで実行されます。
 	
 ### フェールオーバー後に Azure VM に接続するための準備をする
@@ -468,4 +468,4 @@ Site Recovery デプロイメントの構成設定、状態、および正常性
 
 デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの[詳細を確認](site-recovery-failover.md)します。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0720_2016-->

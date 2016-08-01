@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/01/2016"
+   ms.date="07/13/2016"
    ms.author="masashin"/>
 
 # API 設計ガイダンス
@@ -355,7 +355,7 @@ Accept: application/json
 ...
 ```
 
-応答メッセージの本文には、リレーションシップの性質を指定する `links` アレイ (コード例で強調表示されている) (_Customer_)、顧客の URI (\__http://adventure-works.com/customers/3_)、この顧客の詳細を取得する方法 (_GET_)、この情報を取得するのに Web サーバーがサポートする MIME の種類 (_text/xml_ と _application/json_) が含まれます。クライアント アプリケーションが顧客の詳細を取得するのに必要な情報はこれですべてです。さらに Links アレイには、PUT (Web サーバーがクライアントに提供を期待する形式とともに顧客を変更する) や DELETE など、実行可能な他の操作のリンクも含まれます。
+応答メッセージの本文には、リレーションシップの性質を指定する `links` アレイ (コード例で強調表示されている) (_Customer_)、顧客の URI (\_http://adventure-works.com/customers/3_)、この顧客の詳細を取得する方法 (_GET_)、この情報を取得するのに Web サーバーがサポートする MIME の種類 (_text/xml_ と _application/json_) が含まれます。クライアント アプリケーションが顧客の詳細を取得するのに必要な情報はこれですべてです。さらに Links アレイには、PUT (Web サーバーがクライアントに提供を期待する形式とともに顧客を変更する) や DELETE など、実行可能な他の操作のリンクも含まれます。
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -391,7 +391,7 @@ Content-Length: ...
 
 これは最も単純な方法で、一部の内部 API で許容されます。大きな変更は新しいリソースまたは新しいリンクとして示されます。既存のリソースにコンテンツを追加しても、このコンテンツの表示を想定していないクライアント アプリケーションはそれを無視するだけであるため、重大な変更はありません。
 
-たとえば、URI \__http://adventure-works.com/customers/3_ への要求により、次のクライアント アプリケーションにより期待される `id`、`name`、および `address` フィールドを含む単一の顧客に関する詳細が返されます。
+たとえば、URI \_http://adventure-works.com/customers/3_ への要求により、次のクライアント アプリケーションにより期待される `id`、`name`、および `address` フィールドを含む単一の顧客に関する詳細が返されます。
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -436,7 +436,7 @@ Content-Length: ...
 
 ### クエリ文字列のバージョン管理
 
-複数の URI を提供するのではなく、\__http://adventure-works.com/customers/3?version=2_ など、HTTP 要求に追加されたクエリ文字列内のパラメーターを使用してリソースのバージョンを指定できます。バージョン パラメーターがより古いクライアント アプリケーションで省略される場合、1 などの有効な値を既定にします。
+複数の URI を提供するのではなく、\_http://adventure-works.com/customers/3?version=2_ など、HTTP 要求に追加されたクエリ文字列内のパラメーターを使用してリソースのバージョンを指定できます。バージョン パラメーターがより古いクライアント アプリケーションで省略される場合、1 などの有効な値を既定にします。
 
 この方法には同じリソースからは常に同じ URI が取得されるというセマンティックな利点がありますが、クエリ文字列を解析し、適切な HTTP 応答を返送する要求を処理するコードにより異なります。この方法は、URI のバージョン管理メカニズムとして HATEOAS を実装する同様の複雑さによっても影響されます。
 
@@ -519,4 +519,4 @@ Accept ヘッダーにより既知のメディアの種類が指定されない�
 - [RESTful Cookbook](http://restcookbook.com/) では、RESTful API の構築に関する概要が説明されています。
 - Web [API Checklist](https://mathieu.fenniak.net/the-api-checklist/) には、Web API を設計および実装するときに検討する、役立つ項目の一覧が含まれています。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

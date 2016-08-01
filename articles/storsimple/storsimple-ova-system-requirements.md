@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/13/2016"
+   ms.date="07/14/2016"
    ms.author="alkohli"/>
 
 # StorSimple Virtual Array のシステム要件
@@ -69,14 +69,22 @@
 | Internet Explorer | 最新バージョン | Internet Explorer 11 でテスト済み |
 | Google Chrome | 最新バージョン | Chrome 46 でテスト済み |
 
-### サポートされている SMB のバージョン
+### サポートされているストレージ クライアント 
 
-| **バージョン** |
+次のソフトウェア要件は、StorSimple Virtual Array (iSCSI サーバーとして構成されている) にアクセスする iSCSI イニシエーターに適用されます。
+
+| **サポートされているオペレーティング システム** | **必須のバージョン** | **その他の要件/注意事項** |
+| --------------------------- | ---------------- | ------------- |
+| Windows Server | 2008R2 SP1、2012、2012R2 |StorSimple は、シン プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームを作成できます。部分的にプロビジョニングされたボリュームは作成できません。StorSimple iSCSI ボリュームをサポートしているのは次のもののみです。<ul><li>Windows ベーシック ディスク上のシンプル ボリューム。</li><li>ボリュームをフォーマットするための Windows NTFS。</li>|
+
+次のソフトウェア要件は、StorSimple Virtual Array (ファイル サーバーとして構成されている) にアクセスする SMB クライアントに適用されます。
+
+| **SMB バージョン** |
 |-------------|
 | SMB 2.x |
 | SMB 3.0 |
 | SMB 3.02 |
-
+ 
 ## ネットワーク要件 
 
 iSCSI、SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。この表では、*イン*または*受信*はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。*アウト*または*送信*は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します
@@ -87,7 +95,7 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 | TCP 443 (HTTPS) | アウト | WAN | あり | 送信ポートは、クラウドのデータへのアクセスに使用します。<br></br>送信 Web プロキシは、ユーザーが構成できます。 |
 | UDP 53 (DNS) | アウト | WAN | 場合によっては、メモを参照してください。 | このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。<br></br> **メモ**: ファイル サーバーをデプロイする場合は、ローカル DNS サーバーを使用することをお勧めします。|
 | UDP 123 (NTP) | アウト | WAN | 場合によっては、メモを参照してください。 | このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。<br></br> **メモ**: ファイル サーバーをデプロイする場合は、Active Directory ドメイン コントローラーと時刻を同期することをお勧めします。 |
-| TCP 80 (HTTP) | イン | LAN | あり | これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。<br></br>**注**: HTTP 経由でのローカル UI へのアクセスは、自動的に HTTPS にリダイレクトされます。|
+| TCP 80 (HTTP) | イン | LAN | あり | これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。<br></br>**メモ**: HTTP 経由でのローカル UI へのアクセスは、自動的に HTTPS にリダイレクトされます。|
 | TCP 443 (HTTPS) | イン | LAN | あり | これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。|
 | TCP 3260 (iSCSI) | イン | LAN | いいえ | このポートは、iSCSI を介してデータにアクセスするために使用されます。|
 
@@ -117,10 +125,10 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 | `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update サーバー<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` | サポート パッケージ |
-| `http://*.data.microsoft.com ` | Windows の Telemetry Service (「[Update for customer experience and diagnostic telemetry (カスタマー エクスペリエンスおよび診断テレメトリの更新プログラム)](https://support.microsoft.com/ja-JP/kb/3068708)」を参照) |
+| `http://*.data.microsoft.com ` | Windows の Telemetry Service (「[顧客満足度及び診断テレメトリのための更新プログラム](https://support.microsoft.com/ja-JP/kb/3068708)」を参照) |
 
 ## 次のステップ
 
 -   [StorSimple Virtual Array をデプロイするためにポータルを準備します。](storsimple-ova-deploy1-portal-prep.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -13,22 +13,24 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="07/18/2016"
 	ms.author="tarcher"/>
 
 # Azure Storage の使用 (Azure Web ジョブ プロジェクト)
+
+[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ## 概要
 
 この記事では、Azure テーブル ストレージ サービスを使用して Azure Web ジョブ SDK バージョン 1.x を操作する方法について説明します。コード サンプルでは [Web ジョブ SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。
 
-Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。詳細については、「[.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md#create-a-table)」を参照してください。
+Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。詳細については、「[.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md#create-a-table)」をご覧ください。
 
 一部のコード スニペットは、手動で呼び出される関数で使用される **Table** 属性を表示します。つまり、トリガー属性を使用して呼び出すのではありません。
 
 ## エンティティをテーブルに追加する方法
 
-テーブルにエンティティを追加するには、**Table** 属性を **ICollector<T>** または **IAsyncCollector<T>** パラメーター (**T** は、追加するエンティティのスキーマ) に指定します。この属性のコンストラクターは、テーブルの名前を指定する文字列パラメーターを受け取ります。
+テーブルにエンティティを追加するには、**Table** 属性を **ICollector<T>** または **IAsyncCollector<T>** パラメーターに指定します (**T** は、追加するエンティティのスキーマです)。この属性のコンストラクターは、テーブルの名前を指定する文字列パラメーターを受け取ります。
 
 次のコード サンプルでは、*Ingress* という名前のテーブルに **Person** エンティティを追加しています。
 
@@ -79,7 +81,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 
 ## テーブルから複数のエンティティを読み取る方法
 
-テーブルの読み取りを行うには、**Table** 属性を **IQueryable<T>** パラメーター ( **T** は、**TableEntity** を継承する型か、 **ITableEntity** を実装する型) に指定します。
+テーブルの読み取りを行うには、**Table** 属性を **IQueryable<T>** パラメーター (**T** は、**TableEntity** を継承する型か、**ITableEntity** を実装する型) に指定します。
 
 次のコード サンプルは、**Ingress** テーブルからすべての行を読み取り、ログに記録します。
 
@@ -97,7 +99,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 
 ### テーブルから 1 つのエンティティを読み取る方法
 
-1 つのテーブル エンティティにバインドするときに、パーティション キーと行キーを指定できる追加の 2 つのパラメーターを持つ **Table** 属性コンストラクターがあります。
+1 つのテーブル エンティティにバインドする際に、パーティション キーと行キーを指定できる追加の 2 つのパラメーターを持つ **Table** 属性コンストラクターがあります。
 
 次のコード サンプルは、キュー メッセージで受信したパーティション キー値と行キー値に基づいた **Person** エンティティのテーブル行を読み取ります。
 
@@ -123,7 +125,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 
 ## .NET ストレージ API を直接使用して、テーブルを操作する方法
 
-テーブルを操作するときに、**CloudTable** オブジェクトを使用して、より柔軟に **Table** 属性を使用することもできます。
+テーブルを操作する際に、**CloudTable** オブジェクトを使用して、より柔軟に **Table** 属性を使用することもできます。
 
 次のコード サンプルは、**CloudTable** オブジェクトを使用して、1 つのエンティティを *Ingress* テーブルに追加します。
 
@@ -141,16 +143,16 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 		    tableBinding.Execute(insertOperation);
 		}
 
-**CloudTable** オブジェクトの使用方法の詳細については、「[.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)」を参照してください。
+**CloudTable** オブジェクトの使用方法の詳細については、「[.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)」をご覧ください。
 
 ## キューのハウツー記事で紹介されている関連トピック
 
-キュー メッセージによってトリガーされるテーブルの処理方法、テーブル処理に固有ではない Web ジョブ SDK のシナリオの詳細については、「[Azure Queue Storage と Visual Studio 接続済みサービス (Web ジョブ プロジェクト) を使用する](vs-storage-webjobs-getting-started-queues.md)」を参照してください。
+キュー メッセージによってトリガーされるテーブルの処理方法、テーブル処理に固有ではない WebJobs SDK のシナリオの詳細については、「[Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)](vs-storage-webjobs-getting-started-queues.md)」をご覧ください。
 
 
 
 ## 次のステップ
 
-この記事では、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブおよび Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブのドキュメント リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
+この記事では、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure WebJobs および WebJobs SDK の使用方法の詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?linkid=390226)」をご覧ください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

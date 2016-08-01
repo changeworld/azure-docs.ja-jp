@@ -13,11 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="07/06/2016"
 	ms.author="garye"/>
 
 
 # Azure Machine Learning ワークスペースの管理
+
+>[AZURE.NOTE] この記事の手順は、Azure Machine Learning の従来の Web サービスに関連しています。新しい Web サービスの管理方法の詳細については、「[新しい Machine Learning Web サービスの管理](machine-learning-manage-new-webservice.md)」を参照してください。
+
 Azure クラシック ポータルを使用すると、Machine Learning ワークスペースで次の操作を管理できます。
 
 - ワークスペースの使用方法を監視する
@@ -51,7 +54,7 @@ Azure クラシック ポータルを使用すると、Machine Learning ワー�
 ダッシュボードには、ワークスペースの全体的な使用状況と、ワークスペース情報の概要が表示されます。
 
 - **[コンピューティング]** グラフは、ワークスペースで使用されているコンピューティング リソースを表示します。ビューを変更して相対値または絶対値を表示したり、グラフに表示される期間を変更したりできます。
-- **[使用状況の概要]** は、ワークスペースで使用されている Azure Storage を表示します。
+- **[使用状況の概要]** は、ワークスペースで使用されている Azure ストレージを表示します。
 - **[概要]** は、ワークスペース情報や役に立つリンクを提供します。
 
 > [AZURE.NOTE] **[ML Studio にサインイン]** リンクは、現在サインイン中の Microsoft アカウントを使用して Machine Learning Studio を開きます。Azure クラシック ポータルへのサインインに使用する Microsoft アカウントでワークスペースを作成する場合は、ワークスペースを開く権限が自動的には付与されません。ワークスペースを開くには、ワークスペースの所有者として定義された Microsoft アカウントにサインインするか、所有者からワークスペースへの参加の招待を受け取る必要があります。
@@ -94,4 +97,4 @@ Web サービス エンドポイントの名前をクリックして開きます
 [consume]: machine-learning-consume-web-services.md
 [marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

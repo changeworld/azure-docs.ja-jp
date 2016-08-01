@@ -38,6 +38,7 @@
 * [iOS: オフライン同期を有効にする]
 * [Xamarin iOS: オフライン同期を有効にする]
 * [Xamarin Android: オフライン同期を有効にする]
+* [Xamarin.Forms: オフライン同期を有効にする](app-service-mobile-xamarin-forms-get-started-offline-data.md)
 * [Windows 8.1: オフライン同期を有効にする]
 
 ## 同期テーブルについて
@@ -104,4 +105,4 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 [Xamarin Android: オフライン同期を有効にする]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Windows 8.1: オフライン同期を有効にする]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

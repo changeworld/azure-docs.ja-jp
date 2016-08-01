@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/12/2016"
+   ms.date="07/18/2016"
    ms.author="magoedte;paulomarquesc" />
 
 # Azure Automation シナリオ - JSON 形式のタグを使用して Azure VM の起動とシャットダウンのスケジュールを作成する
@@ -29,6 +29,7 @@ Schedule タグをリソース グループに適用すると、タグはその�
 
 このシナリオでは主に、指定された形式の JSON 文字列を受け取り、それを Schedule というタグの値として追加します。Runbook ですべてのリソース グループと仮想マシンをリストし、上に示したシナリオに基づいて各 VM のスケジュールを識別します。その後、スケジュールがアタッチされた VM をループ処理し、どのアクション (停止、シャットダウン、または無視) を実行するか評価します。
 
+これらの Runbook は、[Azure 実行アカウント](../automation/automation-sec-configure-azure-runas-account.md)を使用して認証します。
 
 ## シナリオの取得
 
@@ -46,7 +47,7 @@ Remove-ResourceSchedule | VM またはリソース グループから Schedule �
 
 ### Runbook をインストールして発行する
 
-Runbook をダウンロードしたら、[Runbook のインポートの手順](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-Azure-Automation)にある手順を使用してインポートすることができます。Runbook が Automation アカウントに正常にインポートされたら、各 Runbook を発行します。
+Runbook をダウンロードしたら、[Runbook のインポートの手順](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-Azure-Automation)を使用してインポートすることができます。Runbook が Automation アカウントに正常にインポートされたら、各 Runbook を発行します。
 
 
 ### Test-ResourceSchedule にスケジュールを追加する
@@ -90,7 +91,7 @@ Runbook をダウンロードしたら、[Runbook のインポートの手順](a
 
 1. この JSON の構造体の形式は、Azure での 1 つのタグ値の文字数制限 256 文字に合わせて最適化されています。
 
-2. *TzId* は、仮想マシンのタイム ゾーンを表します。この ID は、PowerShell セッションで .NET クラス TimeZoneInfo を使用して取得できます。**[System.TimeZoneInfo]::GetSystemTimeZones()** <br>
+2. *TzId* は、仮想マシンのタイム ゾーンを表します。この ID は、PowerShell セッションで .NET クラス TimeZoneInfo を使用し、**[System.TimeZoneInfo]::GetSystemTimeZones()** で取得できます。<br>
 
     ![PowerShell での GetSystemTimeZones](./media/automation-scenario-start-stop-vm-wjson-tags/automation-get-timzone-powershell.png)
 
@@ -205,5 +206,6 @@ Azure ポータルで Runbook の [ジョブ] タイルを選択すると、**Te
 -  Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 -  PowerShell スクリプトのサポート機能の詳細については、[Azure Automation でのネイティブ PowerShell スクリプトのサポート](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)に関するブログを参照してください。
 -  Runbook のログ記録と出力の詳細については、「[Azure Automation での Runbook の出力およびメッセージ](automation-runbook-output-and-messages.md)」を参照してください。
+-  Azure 実行アカウントの詳細と、それを使用して Runbook を認証する方法については、「[Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -362,6 +362,9 @@ Premium Storage、DS シリーズの VM、DSv2 シリーズの VM および GS �
 - [Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)
 - [Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)
 
+## バックアップ
+Premium Storage を使用した仮想マシンは、Azure Backup を使用してバックアップできます。[詳細についてはこちらをご覧ください](../backup/backup-azure-vms-first-look-arm.md)。
+
 ## クイック スタート
 
 ## 仮想マシンのデータ ディスク用に Premium Storage アカウントを作成する
@@ -396,7 +399,7 @@ Premium Storage、DS シリーズの VM、DSv2 シリーズの VM および GS �
 
 7. 新しいストレージ アカウントを作成するサブスクリプションを選択します。
 
-8. 新しいリソース グループを指定するか、既定のリソース グループを選択します。リソース グループの詳細については、「[Azure ポータルを使用した Azure リソースのデプロイと管理](../azure-portal/resource-group-portal.md)」を参照してください。
+8. 新しいリソース グループを指定するか、既定のリソース グループを選択します。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」をご覧ください。
 
 9. ストレージ アカウントの地理的な場所を選択します。「[リージョン別のサービス](https://azure.microsoft.com/regions/#services)」を参照して、選択した場所で Premium Storage を使用できるかどうかを確認できます。
 
@@ -404,17 +407,17 @@ Premium Storage、DS シリーズの VM、DSv2 シリーズの VM および GS �
 
 #### II.Azure ポータルで Azure 仮想マシンを作成する
 
-Premium Storage を使用するには、DS、DSv2 または GS シリーズ VM を作成する必要があります。最初に、「[Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」の手順に従って、DS、DSv2、または GS 仮想マシンを新しく作成します。
+Premium Storage を使用するには、DS、DSv2 または GS シリーズ VM を作成する必要があります。最初に、[Azure ポータルでの Windows 仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページの手順に従って、DS、DSv2、または GS 仮想マシンを新しく作成します。
 
 #### III.Azure ポータルで Premium Storage データ ディスクを接続する
 
 1. Azure ポータルで新規または既存の DS、DSv2 または GS VM を探します。
 2. VM の **[すべての設定]** で、**[ディスク]** に移動し、**[新しいディスクの接続]** をクリックします。
-3. データ ディスクの名前を入力し、**種類**として **[Premium]** を選択します。**[サイズ]** と **[ホスト キャッシュ]** で目的の設定を選択します。
+3. データ ディスクの名前を入力し、**[種類]** として **[Premium]** を選択します。**[サイズ]** と **[ホスト キャッシュ]** で目的の設定を選択します。
 
 	![Premium ディスク][Image1]
 
-詳細な手順については、「[Azure ポータルでデータ ディスクを接続する方法](../virtual-machines/virtual-machines-windows-attach-disk-portal.md)」を参照してください。
+詳細な手順については、[Azure ポータルでデータ ディスクを接続する方法](../virtual-machines/virtual-machines-windows-attach-disk-portal.md)に関するページをご覧ください。
 
 #### IV.Azure ポータルでディスク キャッシュ ポリシーを変更する
 
@@ -520,7 +523,7 @@ Azure CLI を使用して、いずれかのディスクのキャッシュ ポリ
 
 4. **Premium Storage の使用ではトランザクションのコストは発生しますか?**
 
-	これは、特定の数の IOPS およびスループットでプロビジョニングされる各ディスク サイズに固定のコストが設けられています。それ以外にかかるコストは、送信帯域幅とスナップショットの容量のみです (該当する場合)。詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
+	これは、特定の数の IOPS およびスループットでプロビジョニングされる各ディスク サイズに固定のコストが設けられています。それ以外にかかるコストは、送信帯域幅とスナップショットの容量のみです (該当する場合)。詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
 
 5. **DS、DSv2 または GS シリーズ VM のブート診断はどこに保存できますか?**
 
@@ -562,4 +565,4 @@ Azure Premium Storage の詳細については、以下の記事を参照して�
 
 [Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -19,7 +19,7 @@
 
 # MongoDB のプロトコル対応の DocumentDB アカウントで MongoChef を使用する
 
-MongoChef を使用して MongoDB のプロトコル対応の DocumentDB アカウントに接続するには、次の要件を満たす必要があります。
+MongoChef を使用して MongoDB のプロトコル対応の Azure DocumentDB アカウントに接続するには、次の要件を満たす必要があります。
 
 - [MongoChef](http://3t.io/mongochef) をダウンロードしてインストールする
 - MongoDB のプロトコル対応の DocumentDB アカウントに使用する[接続文字列](documentdb-connect-mongodb-account.md)情報を取得する
@@ -132,4 +132,4 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

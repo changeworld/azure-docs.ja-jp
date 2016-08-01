@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="07/15/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境のドキュメント
@@ -35,7 +35,8 @@ App Service 環境は、単一の顧客のアプリケーションだけを実�
 * [App Service 環境とは](../app-service-web/app-service-app-service-environment-intro.md)
 * [App Service 環境の作成](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)
 * [App Service 環境でのアプリの作成](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md)
-* [App Service 環境の構成](../app-service-web/app-service-web-configure-an-app-service-environment.md) 
+* [App Service Environment での内部ロード バランサーの作成と使用](../app-service-web/app-service-environment-with-internal-load-balancer.md)
+* [App Service 環境の構成](../app-service-web/app-service-web-configure-an-app-service-environment.md)
 * [App Service 環境でのアプリのスケーリング](../app-service-web/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 * [ネットワークのセキュリティとアーキテクチャ](../app-service-web/app-service-app-service-environment-network-architecture-overview.md)
 
@@ -59,4 +60,4 @@ App Service 環境は、単一の顧客のアプリケーションだけを実�
 [SiteToSite]: https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

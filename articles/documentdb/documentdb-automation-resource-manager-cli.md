@@ -24,7 +24,7 @@
 - [Azure ポータル](documentdb-create-account.md)
 - [Azure CLI と ARM](documentdb-automation-resource-manager-cli.md)
 
-この記事では、Azure リソース マネージャーのテンプレートと Azure CLI (コマンドライン インターフェイス) を利用し、DocumentDB データベース アカウントを自動作成する方法について説明します。Azure ポータルを使用して DocumentDB アカウントを作成する方法については、「[DocumentDB データベース アカウントの作成](documentdb-create-account.md)」を参照してください。
+この記事では、Azure Resource Manager のテンプレートと Azure CLI (コマンド ライン インターフェイス) を利用し、Azure DocumentDB データベース アカウントを自動作成する方法について説明します。Azure ポータルを使用して DocumentDB アカウントを作成する方法については、「[DocumentDB データベース アカウントの作成](documentdb-create-account.md)」を参照してください。
 
 - [CLI を利用して DocumentDB アカウントを作成する](#quick-create-documentdb-account)
 - [ARM テンプレートを利用して DocumentDB アカウントを作成する](#deploy-documentdb-from-a-template)
@@ -111,7 +111,7 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
 	azure group create <resourcegroupname> <resourcegrouplocation>
 
- - `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。 
+ - `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。
  - `<resourcegrouplocation>` には、DocumentDB が一般公開されているリージョンのいずれかを指定します。最新のリージョン一覧については、[Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
 入力例:
@@ -142,7 +142,7 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
     azure resource create -g <resourcegroupname> -n <databaseaccountname> -r "Microsoft.DocumentDB/databaseAccounts" -o "2015-04-08" -l <databaseaccountlocation> -p "{"databaseAccountOfferType":"Standard"}" 
 
- - `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。 
+ - `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。
  - `<databaseaccountname>` に使用できる文字は、英小文字、数字、「-」のみです。文字数は 3 ～ 50 文字にする必要があります。
  - `<databaseaccountlocation>` には、DocumentDB が一般公開されているリージョンのいずれかを指定します。最新のリージョン一覧については、[Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
@@ -239,7 +239,7 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
 	azure group create <resourcegroupname> <databaseaccountlocation>
 
- - `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。 
+ - `<resourcegroupname>` に使用できる文字は、英数字、ピリオド、アンダースコア、「-」、かっこのみです。末尾にピリオドを指定することはできません。
  - `<databaseaccountlocation>` には、DocumentDB が一般公開されているリージョンのいずれかを指定します。最新のリージョン一覧については、[Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
 入力例:
@@ -272,7 +272,7 @@ DocumentDB アカウントを作成するには、最初にリソース グル�
 
  - `<PathToTemplate>` は、手順 1 で作成した azuredeploy.json ファイルのパスです。パス名にスペースが含まれる場合は、二重引用符でこのパラメーターを囲みます。
  - `<PathToParameterFile>` は、手順 1 で作成した azuredeploy.parameters.json ファイルのパスです。パス名にスペースが含まれる場合は、二重引用符でこのパラメーターを囲みます。
- - `<resourcegroupname>` は、DocumentDB データベース アカウントを追加する既存のリソース グループ名です。 
+ - `<resourcegroupname>` は、DocumentDB データベース アカウントを追加する既存のリソース グループ名です。
  - `<deploymentname>` は、デプロイメント名 (省略可能) です。
 
 入力例:
@@ -346,7 +346,7 @@ DocumentDB アカウントを作成できたら、次の手順として Document
 
 - Azure ポータル。[Azure ポータルを使用した DocumentDB データベースの作成に関するページ](documentdb-create-database.md)の説明を参照してください。
 - GitHub の [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples) リポジトリの [DatabaseManagement](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/DatabaseManagement) プロジェクトにある C# .NET のサンプル。
-- [DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)。DocumentDB には、.NET、Java、Python、Node.js、および JavaScript API の SDK があります。 
+- [DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)。DocumentDB には、.NET、Java、Python、Node.js、および JavaScript API の SDK があります。
 
 データベースを作成した後に、データベースに [1 つまたは複数のコレクションを追加](documentdb-create-collection.md)し、それらのコレクションに[ドキュメントを追加する](documentdb-view-json-document-explorer.md)必要があります。
 
@@ -359,4 +359,4 @@ DocumentDB の詳細については、以下の資料を参照してください
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

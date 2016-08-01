@@ -12,8 +12,8 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="NA"
-   ms.workload="sqldb-bcdr"
-    ms.date="06/14/2016"
+    ms.workload="sqldb-bcdr"
+    ms.date="07/18/2016"
     ms.author="carlrab"/>
 
 # Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する
@@ -95,7 +95,7 @@ Transact-SQL を使用してアクティブ geo レプリケーションを構�
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer3> WITH (ALLOW_CONNECTIONS = NO
-           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1);
+           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1));
 
 4. **[実行]** をクリックしてクエリを実行します。
 
@@ -112,7 +112,7 @@ Transact-SQL を使用してアクティブ geo レプリケーションを構�
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer4> WITH (ALLOW_CONNECTIONS = ALL
-           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool2);
+           , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool2));
 
 4. **[実行]** をクリックしてクエリを実行します。
 
@@ -163,11 +163,28 @@ geo レプリケーション パートナーシップを監視するには、次
 
 9. **[実行]** をクリックしてクエリを実行します。
 
+## 読み取り可能なセカンダリへの読み取り不能なセカンダリのアップグレード
+
+2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。読み取り不能なセカンダリを使用している場合、読み取り可能なセカンダリにアップグレードするには、各セカンダリで次の簡単な手順を実行します。
+
+> [AZURE.IMPORTANT] 読み取り不能なセカンダリを読み取り可能なセカンダリにアップグレードする、インプレース アップグレードのセルフ サービスは用意されていません。セカンダリだけを削除した場合、新しいセカンダリが完全に同期されるまで、プライマリ データベースは保護されていない状態で残ります。アプリケーションの SLA によりプライマリを常に保護することが求められている場合は、上記のアップグレード手順を適用する前に、別のサーバーで並列セカンダリを作成することを検討してください。各プライマリで使用できるセカンダリ データベースの数は最大 4 つです。
+
+
+1. 最初に、"セカンダリ" サーバーに接続し、読み取り不能なセカンダリ データベースを削除します。
+        
+        DROP DATABASE <MyNonReadableSecondaryDB>;
+
+2. これで、"プライマリ" サーバーに接続して、新しい読み取り可能なセカンダリを追加できます
+
+        ALTER DATABASE <MyDB>
+            ADD SECONDARY ON SERVER <MySecondaryServer> WITH (ALLOW_CONNECTIONS = ALL);
+
+
 
 
 ## 次のステップ
 
 - アクティブ geo レプリケーションの詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事をご覧ください
-- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
+- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

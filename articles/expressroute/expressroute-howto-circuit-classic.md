@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/15/2016"
+   ms.date="07/19/2016"
    ms.author="ganesr"/>
 
 # ExpressRoute 回線の作成と変更
@@ -313,4 +313,4 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 - [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-classic.md)
 - [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="04/26/2016" 
+    ms.date="07/19/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Benefitsolver の統合
@@ -68,7 +68,7 @@
 
 ![属性](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "属性")
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
 1.  Azure クラシック ポータルの **Benefitsolver** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
@@ -83,7 +83,8 @@
     ![Configure App Settings](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "Configure App Settings")
 
     1.  **[サインオン URL]** ボックスに、「**http://azure.benefitsolver.com**」と入力します。
-	2.  **[応答 URL]** ボックスに、「**https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**」と入力します。
+    2.  **[応答 URL]** ボックスに、「**https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**」と入力します。
+
 
     3.  **[次へ]** をクリックします。
 
@@ -145,4 +146,4 @@ Azure AD ユーザーが Benefitsolver にログインできるようにする�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0720_2016-->

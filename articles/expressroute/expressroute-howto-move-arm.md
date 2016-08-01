@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/05/2016"
+   ms.date="07/19/2016"
    ms.author="ganesr"/>
 
 
@@ -126,4 +126,4 @@ ExpressRoute 回線の詳細を取得するには、次のコマンドを実行�
 - [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-arm.md)
 - [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

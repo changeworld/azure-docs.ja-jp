@@ -25,12 +25,12 @@ Service Fabric では、クラスター作成時に証明書のセキュリテ�
 ## セカンダリ証明書を追加する
 セカンダリ証明書として別の証明書を追加するには、Azure Key Vault にその証明書をアップロードしてから、クラスター内の VM にデプロイします。詳細については、「[Deploy certificates to VMs from a customer-managed key vault」](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx)(ユーザーが管理する Key Vault から VM に証明書をデプロイする) を参照してください。
 
-1. [Key Vault に X.509 証明書をアップロードする](service-fabric-cluster-azure-secure-with-certs.md#step-2-upload-the-x509-certificate-to-the-key-vault)
+1. [Key Vault に X.509 証明書をアップロードする](service-fabric-secure-azure-cluster-with-certs.md#step-2-upload-the-x509-certificate-to-the-key-vault)
 2. [Azure ポータル](https://portal.azure.com/) にサインインし、この証明書を追加するクラスター リソースを参照します。
 3. **[設定]** で、証明書の設定をクリックし、セカンダリ証明書の拇印を入力します。
 4. **[保存]** をクリックします。デプロイが開始され、正常に完了すると、クラスターに対する管理操作にプライマリ証明書かセカンダリ証明書を使用できるようになります。
 
-![Azure ポータルの証明書拇印のスクリーン ショット][SecurityConfigurations_02]
+![Azure ポータルの証明書拇印のスクリーン ショット][SecurityConfigurations\_02]
 
 ## 証明書を削除する
 古い証明書を削除してクラスターで使用されないようにするには、次の手順を実行します。
@@ -49,4 +49,4 @@ Service Fabric では、クラスター作成時に証明書のセキュリテ�
 <!--Image references-->
 [SecurityConfigurations_02]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_02.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

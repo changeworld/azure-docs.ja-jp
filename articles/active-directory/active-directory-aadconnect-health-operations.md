@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/21/2016"
+	ms.date="07/14/2016"
 	ms.author="vakarand"/>
 
 # Azure AD Connect Health の操作
@@ -52,11 +52,20 @@ ID インフラストラクチャの状態に問題があることを示すア�
 
 #### Azure AD Connect Health サービスからサーバーを削除するには
 
+Azure AD Connect Health for AD FS と Azure AD Connect (Sync):
+
 1. [サーバーの一覧] ブレードから、削除するサーバー名を選択して [サーバー] ブレードを開きます。
 2. [サーバー] ブレードで、操作バーから [削除] ボタンをクリックします。
 3. 確認ボックスにサーバー名を入力して削除操作を確認します。
 4. [削除] ボタンをクリックします。
 
+Azure AD Connect Health for AD DS:
+
+1. [ドメイン コントローラー] ダッシュボードを開きます。
+2. 削除するドメイン コントローラーを選択します。
+3. アクション バーの [Delete Selected (選択項目の削除)] をクリックします。
+4. サーバーの削除アクションを確定します。
+5. [削除] ボタンをクリックします。
 
 ### Azure AD Connect Health サービスからのサービス インスタンスの削除
 
@@ -109,16 +118,13 @@ Azure AD Connect では、2 つのレベルのアクセス管理をサポート�
 #### 手順 1: 適切なアクセス スコープを選択する
 Azure AD Connect Health 内で*すべてのサービス インスタンス* レベルのユーザーにアクセスを許可するには、Azure AD Connect Health でメイン ブレードを開きます。<br>
 #### 手順 2: ユーザー/グループを追加し、ロールを割り当てる
-1. [構成] セクションから [ユーザー] 部分をクリックします。<br>
-![Azure AD Connect Health RBAC のメイン ブレード](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
+1. [構成] セクションから [ユーザー] 部分をクリックします。<br>![Azure AD Connect Health RBAC のメイン ブレード](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
 2. [追加] を選択します。
-3. [所有者] などの [ロール] を選択します。<br> 
-![Azure AD Connect Health RBAC のユーザーの追加](./media/active-directory-aadconnect-health/RBAC_add.png)
+3. [所有者] などの [ロール] を選択します。<br> ![Azure AD Connect Health RBAC のユーザーの追加](./media/active-directory-aadconnect-health/RBAC_add.png)
 4. 対象となるユーザー/グループの名前または識別子を入力します。1 つまたは複数のユーザー/グループを同時に選択できます。[選択] をクリックします。![Azure AD Connect Health RBAC のユーザーの選択](./media/active-directory-aadconnect-health/RBAC_select_users.png)
 5. [OK] を選択します。<br>
 
-6. ロールの割り当てが完了すると、ユーザー/グループが一覧に表示されます。<br>
-![Azure AD Connect Health RBAC のユーザー一覧](./media/active-directory-aadconnect-health/RBAC_user_list.png)
+6. ロールの割り当てが完了すると、ユーザー/グループが一覧に表示されます。<br>![Azure AD Connect Health RBAC のユーザー一覧](./media/active-directory-aadconnect-health/RBAC_user_list.png)
 
 これらの手順によって、一覧に表示されているユーザーとグループは、割り当てられたロールに従ってアクセスを許可されます。
 >[AZURE.NOTE]
@@ -127,15 +133,13 @@ Azure AD Connect Health 内で*すべてのサービス インスタンス* レ�
 
 #### 手順 3: ブレードの場所をユーザーまたはグループと共有する
 1. アクセス許可を割り当てた後、ユーザーは [http://aka.ms/aadconnecthealth](http://aka.ms/aadconnecthealth) に移動することで Azure AD Connect Health にアクセスできます。
-2. ブレードで [ダッシュボードにピン留め] をクリックするだけで、ブレードまたは別のパートをダッシュボードにピン留めできます。<br> 
-![Azure AD Connect Health RBAC のピン ブレード](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
+2. ブレードで [ダッシュボードにピン留め] をクリックするだけで、ブレードまたは別のパートをダッシュボードにピン留めできます。<br> ![Azure AD Connect Health RBAC のピン ブレード](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
 
 
 >[AZURE.NOTE] "閲覧者" ロールを割り当てられたユーザーは、Azure Marketplace から Azure AD Connect Health の拡張機能を取得する "作成" 操作を実行することはできません。ただし、このユーザーは、上記のリンクに移動してブレードにアクセスできます。引き続き使用するために、ブレードをダッシュボードにピン留めできます。
 
 ### ユーザー/グループを削除する
-Azure AD Connect Health Role の [ロール ベースの Access Control] 部分に追加したユーザーまたはグループは、右クリックして [削除] を選択することで削除できます。<br> 
-![Azure AD Connect Health RBAC のユーザーの削除](./media/active-directory-aadconnect-health/RBAC_remove.png)
+Azure AD Connect Health Role の [ロール ベースの Access Control] 部分に追加したユーザーまたはグループは、右クリックして [削除] を選択することで削除できます。<br> ![Azure AD Connect Health RBAC のユーザーの削除](./media/active-directory-aadconnect-health/RBAC_remove.png)
 
 [//]: # "RBAC セクションの終了"
 
@@ -145,7 +149,8 @@ Azure AD Connect Health Role の [ロール ベースの Access Control] 部分�
 * [Azure AD Connect Health エージェントのインストール](active-directory-aadconnect-health-agent-install.md)
 * [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
 * [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)
+* [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0720_2016-->

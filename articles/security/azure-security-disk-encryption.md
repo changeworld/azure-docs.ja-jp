@@ -34,9 +34,9 @@ Azure Disk Encryption は、Windows および Linux IaaS 仮想マシン ディ�
 Azure Disk Encryption ソリューションでは、次の顧客シナリオがサポートされています。
 
 - 事前に暗号化した VHD と暗号化キーから作成された新しい IaaS VM での暗号化を有効にする
-- Azure ギャラリー イメージから作成された新しい IaaS VM での暗号化を有効にする 
-- Azure で既に実行されている既存の IaaS VM での暗号化を有効にする 
-- Windows IaaS VM での暗号化を無効にする  
+- Azure ギャラリー イメージから作成された新しい IaaS VM での暗号化を有効にする
+- Azure で既に実行されている既存の IaaS VM での暗号化を有効にする
+- Windows IaaS VM での暗号化を無効にする
 
 このソリューションでは、Microsoft Azure で有効になっている場合、IaaS VM で以下がサポートされます。
 
@@ -77,7 +77,7 @@ Azure IaaS VM の Azure Disk Encryption を有効にしてデプロイすると�
 
 - 顧客ストレージに保存中のブート ボリュームを保護するための OS ボリュームの暗号化
 
-	- Azure で既に実行されている Linuｘ IaaS VM での OS ボリュームの暗号化は、現在サポートされていません。Linux IaaS VM の OS ボリュームの暗号化は、事前暗号化済みの VHD シナリオについてのみサポートされています。
+	- Azure で既に実行されている Linux IaaS VM での OS ボリュームの暗号化は、現在サポートされていません。Linux IaaS VM の OS ボリュームの暗号化は、事前暗号化済みの VHD シナリオについてのみサポートされています。
 	
 - 顧客ストレージに保存中のデータ ボリュームを保護するためのデータ ボリュームの暗号化
 
@@ -169,21 +169,21 @@ Azure Disk Encryption は、Windows クライアント SKU (Windows 8 クライ�
 
 	- 有効なシークレット URL の例:
 
-		**https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		*https://contosovault.vault.azure.net/secrets/BitLockerEncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 	- 有効な KRK KEK の例:
 
-		**https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		*https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 - Azure Disk Encryption では、ポート番号を Key Vault シークレットおよび KEK URL の一部として指定することはサポートされません。サポートされる Key Vault URL については、以下の例をご覧ください。
 
  	- 受け入れられない Key Vault URL:
 
-		**https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		*https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 	- 受け入れられる Key Vault URL:
 
-		**https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+		*https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 - Azure Disk Encryption 機能を有効にするには、IaaS VM が次のネットワーク エンドポイントの構成要件を満たす必要があります。
 
@@ -281,7 +281,7 @@ Azure AD のクライアント ID とシークレットも、https://manage.wind
 ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig7.JPG)
 
 
-**注:** 上のこのフローはポータルではサポートされません。
+**注:** 上記のフローはポータルではサポートされません。
 
 ##### 既存のアプリの使用
 
@@ -458,10 +458,10 @@ Azure AD アプリケーションには、Vault 内のキーまたはシーク�
 CLI コマンドを使用するこのシナリオでは、次の手順に従ってディスク暗号化を有効にします。
 
 1. 以下のように、Key Vault でアクセス ポリシーを設定します。
-	- 'EnabledForDiskEncryption' フラグを設定する場合: “azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
-	- Key Vault へのシークレットの書き込み権限を Azure AD アプリに設定する場合: “azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
-2. 既存/実行中の VM で暗号化を有効にするには、次のように入力します。*azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
-3. 暗号化状態を取得するには、次のように入力します。*“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”*
+	- "EnabledForDiskEncryption" フラグを設定します: “azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
+	- KeyVault へのシークレットの書き込み権限を Azure AD アプリに設定します: “azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
+2. 既存/実行中の VM で暗号化を有効にするために、次のように入力します: *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
+3. 暗号化状態を取得します: *“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”*
 4. 顧客が暗号化した VHD からの新しい VM での暗号化を有効にするには、“azure vm create” コマンドで以下のパラメーターを使用します。
 	- disk-encryption-key-vault-id <disk-encryption-key-vault-id>
 	- disk-encryption-key-url <disk-encryption-key-url>
@@ -501,10 +501,10 @@ PS コマンドレットによる Azure ディスク暗号化を使用して暗�
 CLI コマンドを使用して、Azure で既存/実行中の IaaS Windows VM での暗号化を有効にするには、次の手順に従います。
 
 1. 以下のように、Key Vault でアクセス ポリシーを設定します。
-	- 'EnabledForDiskEncryption' フラグを設定する場合: “azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
-	- Key Vault へのシークレットの書き込み権限を Azure AD アプリに設定する場合: “azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
-2. 既存/実行中の VM で暗号化を有効にするには、次のように入力します。*azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
-3. 暗号化状態を取得するには、次のように入力します。*“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”*
+	- "EnabledForDiskEncryption" フラグを設定します: “azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
+	- KeyVault へのシークレットの書き込み権限を Azure AD アプリに設定します: “azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
+2. 既存/実行中の VM で暗号化を有効にするために、次のように入力します: *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
+3. 暗号化状態を取得します: *“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”*
 4. 顧客が暗号化した VHD からの新しい VM での暗号化を有効にするには、“azure vm create” コマンドで以下のパラメーターを使用します。
 	- disk-encryption-key-vault-id <disk-encryption-key-vault-id>
 	- disk-encryption-key-url <disk-encryption-key-url>
@@ -536,10 +536,10 @@ CLI コマンドを使用して、Azure で既存/実行中の IaaS Windows VM �
 [ここ](../xplat-cli-install.md)からインストールした CLI コマンドを使用して、顧客が暗号化した VHD でディスク暗号化を有効にすることができます。CLI コマンドを使用して、Azure で既存/実行中の IaaS Linux VM での暗号化を有効にするには、次の手順に従います。
 
 1. 以下のように、Key Vault でアクセス ポリシーを設定します。
-	- 'EnabledForDiskEncryption' フラグを設定する場合: “azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
-	- Key Vault へのシークレットの書き込み権限を Azure AD アプリに設定する場合: “azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
-2. 既存/実行中の VM で暗号化を有効にするには、次のように入力します。*azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
-3. 暗号化状態を取得するには、次のように入力します。“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”
+	- "EnabledForDiskEncryption" フラグを設定します: “azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
+	- KeyVault へのシークレットの書き込み権限を Azure AD アプリに設定します: “azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
+2. 既存/実行中の VM で暗号化を有効にするために、次のように入力します: *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
+3. 暗号化状態を取得します: “azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”
 4. 顧客が暗号化した VHD からの新しい VM での暗号化を有効にするには、“azure vm create” コマンドで以下のパラメーターを使用します。
 	- *disk-encryption-key-vault-id <disk-encryption-key-vault-id>*
 	- *disk-encryption-key-url <disk-encryption-key-url>*
@@ -552,7 +552,7 @@ CLI コマンドを使用して、Azure で既存/実行中の IaaS Windows VM �
 
 #### 暗号化された IaaS VM の暗号化状態を Azure 管理ポータルを使用して取得する
 
-Azure 管理ポータルから IaaS VM の暗号化状態を取得できます。https://portal.azure.com/ で Azure ポータルにログオンし、左側のメニューにある仮想マシン リンクをクリックして、サブスクリプションの仮想マシンの概要ビューを表示します。仮想マシン ビューは、サブスクリプション ドロップダウン リストからサブスクリプション名を選択してフィルター処理できます。仮想マシン ページのメニューの最上部にある列をクリックします。選択列ブレードからディスク暗号化の列を選択し、[更新] をクリックします。次の図に示すように、各 VM の [有効] または [無効] の暗号化状態を表示するディスク暗号化列が表示されます。
+Azure 管理ポータルから IaaS VM の暗号化状態を取得できます。Azure ポータル (https://portal.azure.com/) にログオンし、左側のメニューにある仮想マシン リンクをクリックして、サブスクリプションの仮想マシンの概要ビューを表示します。仮想マシン ビューは、サブスクリプション ドロップダウン リストからサブスクリプション名を選択してフィルター処理できます。仮想マシン ページのメニューの最上部にある列をクリックします。選択列ブレードからディスク暗号化の列を選択し、[更新] をクリックします。次の図に示すように、各 VM の [有効] または [無効] の暗号化状態を表示するディスク暗号化列が表示されます。
 
 ![Azure での Microsoft マルウェア対策](./media/azure-security-disk-encryption/disk-encryption-fig2.JPG)
 
@@ -598,7 +598,7 @@ Azure Disk Encryption ARM テンプレートまたは PS コマンドレット�
 
 ##### PS コマンドレットを使用して Azure で既存/実行中の IaaS Windows での暗号化を無効にする
 
-PS コマンドレットを使用して無効化する場合、[Disable-AzureRmVMDiskEncryption](https://msdn.microsoft.com/library/azure/mt715776.aspx) コマンドレットによって、サービスとしてのインフラストラクチャ (IaaS) 仮想マシンの暗号化が無効になります。このコマンドレットは Windows 仮想マシンでのみサポートされ、Linux 仮想マシンではサポートされません。このコマンドレットにより、暗号化を無効にする拡張機能が仮想マシンにインストールされます。Name パラメーターが指定されていない場合、拡張機能は既定の名前 "AzureDiskEncryption for Windows VMs" で作成されます。
+PS コマンドレットを使用して無効化する場合、[Disable-AzureRmVMDiskEncryption](https://msdn.microsoft.com/library/azure/mt715776.aspx) コマンドレットで、サービスとしてのインフラストラクチャ (IaaS) 仮想マシンの暗号化を無効にします。このコマンドレットは Windows 仮想マシンでのみサポートされ、Linux 仮想マシンではサポートされません。このコマンドレットにより、暗号化を無効にする拡張機能が仮想マシンにインストールされます。Name パラメーターが指定されていない場合、拡張機能は既定の名前 "AzureDiskEncryption for Windows VMs" で作成されます。
 
 **注**: このコマンドレットにより、仮想マシンが再起動されます。
 
@@ -679,13 +679,14 @@ OS のパーティションを圧縮して、BitLocker のコンピューター�
     echo "Trying to get the key from disks ..." >&2
     mkdir -p $MountPoint
     modprobe vfat >/dev/null 2>&1
+    modprobe ntfs >/dev/null 2>&1
     sleep 2
     OPENED=0
-    for SFS in /sys/block/sd*; do
-        DEV=`basename $SFS`
-        F=$SFS/${DEV}1/dev
+    cd /sys/block
+    for DEV in sd*; do
         echo "> Trying device: $DEV ..." >&2
-        mount /dev/${DEV}1 $MountPoint -t vfat -r >/dev/null
+        mount -t vfat -r /dev/${DEV}1 $MountPoint >/dev/null||
+        mount -t ntfs -r /dev/${DEV}1 $MountPoint >/dev/null
         if [ -f $MountPoint/$KeyFileName ]; then
                 cat $MountPoint/$KeyFileName
                 umount $MountPoint 2>/dev/null
@@ -709,11 +710,19 @@ OS のパーティションを圧縮して、BitLocker のコンピューター�
 
     Sda5_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
 
-3\. Windows で *azure\_crypt\_key.sh* を編集し、Linux にコピーする場合は、必ず、*dos2unix /usr/local/sbin/azure\_crypt\_key.sh* を実行してください。4. *update-initramfs -u -k all* を実行し、initramfs を更新して keyscript を有効にします。
+3\. Windows で *azure\_crypt\_key.sh* を編集し、Linux にコピーする場合は、必ず、*dos2unix /usr/local/sbin/azure\_crypt\_key.sh* を実行してください。4. */etc/initramfs-tools/modules* を編集し、次の行を追加します。
+
+    vfat
+    ntfs
+    nls_cp437
+    nls_utf8
+    nls_iso8859-1
+
+5\. 「*update-initramfs -u -k all*」を実行し、initramfs を更新して keyscript を有効にします。
 
 ##### openSUSE 13.2
 
-1\. /etc/dracut.conf add\_drivers+="vfat nls\_cp437 nls\_iso8859-1" を編集します。
+1\. /etc/dracut.conf を編集し、「add\_drivers+="vfat ntfs nls\_cp437 nls\_iso8859-1"」を追加します。
 
 2\. ファイル “/usr/lib/dracut/modules.d/90crypt/module-setup.sh” の末尾付近にある以下の行をコメント アウトします。
 
@@ -737,9 +746,11 @@ OS のパーティションを圧縮して、BitLocker のコンピューター�
     echo "Trying to get the key from disks ..." >&2
     mkdir -p $MountPoint >&2
     modprobe vfat >/dev/null >&2
+    modprobe ntfs >/dev/null >&2
     for SFS in /dev/sd*; do
        echo "> Trying device:$SFS..." >&2
-       mount ${SFS}1 $MountPoint -t vfat -r >&2
+       mount ${SFS}1 $MountPoint -t vfat -r >&2 ||
+       mount ${SFS}1 $MountPoint -t ntfs -r >&2
        if [ -f $MountPoint/$KeyFileName ]; then
           echo "> keyfile got..." >&2
           luksfile=$MountPoint/$KeyFileName
@@ -750,7 +761,7 @@ OS のパーティションを圧縮して、BitLocker のコンピューター�
 5\. “dracut –f -v” を実行して initrd を更新します。
 
 ##### CentOS 7
-1\. /etc/dracut.conf add\_drivers+=" vfat nls\_cp437 nls\_iso8859-1" を編集します。
+1\. /etc/dracut.conf を編集し、「add\_drivers+="vfat ntfs nls\_cp437 nls\_iso8859-1"」を追加します。
 
 2\. ファイル “/usr/lib/dracut/modules.d/90crypt/module-setup.sh” の末尾付近にある以下の行をコメント アウトします。
 
@@ -775,9 +786,11 @@ OS のパーティションを圧縮して、BitLocker のコンピューター�
     echo "Trying to get the key from disks ..." >&2
     mkdir -p $MountPoint >&2
     modprobe vfat >/dev/null >&2
+    modprobe ntfs >/dev/null >&2
     for SFS in /dev/sd*; do
     echo "> Trying device:$SFS..." >&2
-    mount ${SFS}1 $MountPoint -t vfat -r >&2
+    mount ${SFS}1 $MountPoint -t vfat -r >&2 ||
+    mount ${SFS}1 $MountPoint -t ntfs -r >&2
     if [ -f $MountPoint/$KeyFileName ]; then
         echo "> keyfile got..." >&2
         luksfile=$MountPoint/$KeyFileName
@@ -841,8 +854,8 @@ BitLocker 暗号化または DM-Crypt 暗号化を有効にしたら、ローカ
 
 
 ## BLOB の詳細
-[Azure PowerShell を使用する Azure ディスク暗号化の探索](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0)
+[Azure PowerShell を使用する Azure Disk Encryption の探索](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0)
 
-[Azure PowerShell を使用する Azure ディスク暗号化の探索 - パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
+[Azure PowerShell を使用する Azure Disk Encryption の探索 - パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0720_2016-->

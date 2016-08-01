@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/18/2016"
+   ms.date="07/19/2016"
    ms.author="tomfitz"/>
 
 # リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
@@ -24,12 +24,9 @@
 - [ポータル](resource-group-create-service-principal-portal.md)
 
 
-自動化されたプロセスやアプリケーションでリソースにアクセスしたり変更を加えたりするには、Active Directory アプリケーションをセットアップして、そこに必要な権限を割り当てる必要があります。このトピックでは、それらの手順をポータルで行う方法について説明します。現時点では、クラシック ポータルを使用して新しい Active Directory アプリケーションを作成したうえで、Azure ポータルに切り替え、アプリケーションにロールを割り当てる必要があります。
+アプリケーションでリソースにアクセスしたり変更を加えたりするには、Active Directory (AD) アプリケーションをセットアップして、そこに必要な権限を割り当てる必要があります。このトピックでは、それらの手順をポータルで行う方法について説明します。現時点では、クラシック ポータルを使用して新しい Active Directory アプリケーションを作成したうえで、Azure ポータルに切り替え、アプリケーションにロールを割り当てる必要があります。
 
-Active Directory アプリケーションに使用する認証方法は、次の 2 つの中から選ぶことができます。
-
-1. アプリケーションの ID と認証キーを作成し、アプリケーションの実行時にそれらの資格情報を付与する。ユーザーの介入なしで実行される自動化されたプロセスにはこの方法を使用します。
-2. アプリケーションを介してユーザーが Azure にログインし、アプリケーションがそれらの資格情報を使用して、ユーザーの代わりにリソースにアクセスできるようにする。ユーザーによって実行されるアプリケーションには、この方法を使用します。
+> [AZURE.NOTE] 特に証明書を認証に使用する場合に言えることですが、AD アプリケーションとサービス プリンシパルは、[PowerShell](resource-group-authenticate-service-principal.md) または [Azure CLI](resource-group-authenticate-service-principal-cli.md) の方が簡単に設定できる場合があります。このトピックでは、証明書の使用方法については説明していません。
 
 Active Directory の概念については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](./active-directory/active-directory-application-objects.md)」を参照してください。Active Directory 認証の詳細については、「[Azure AD の認証シナリオ](./active-directory/active-directory-authentication-scenarios.md)」をご覧ください。
 
@@ -141,6 +138,8 @@ Active Directory の概念については、「[アプリケーション オブ�
 
 アプリケーションがその独自の資格情報で動作している場合は、アプリケーションをロールに割り当てる必要があります。アプリケーションにとって適切なアクセス許可を表すのはどのロールであるかを判断する必要があります。利用可能なロールについては、「[RBAC: 組み込みのロール](./active-directory/role-based-access-built-in-roles.md)」を参照してください。
 
+ロールを割り当てるには、[所有者](./active-directory/role-based-access-built-in-roles.md#owner)ロールまたは[ユーザー アクセス管理者](./active-directory/role-based-access-built-in-roles.md#user-access-administrator)ロールを通じて付与される `Microsoft.Authorization/*/Write` アクセス権が必要です。
+
 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。アクセス許可は、スコープの下位レベルに継承されます (たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます)。
 
 1. アプリケーションをロールに割り当てるには、クラシック ポータルから [Azure ポータル](https://portal.azure.com)に切り替えます。
@@ -171,22 +170,39 @@ Active Directory の概念については、「[アプリケーション オブ�
 
 ポータルを使用してユーザーやアプリケーションをロールに割り当てる方法の詳細については、「[Azure 管理ポータルを使用したアクセス権の管理](role-based-access-control-configure.md#manage-access-using-the-azure-management-portal)」を参照してください。
 
-## アクセス トークンをコードで取得する
+## サンプル アプリケーション
 
-Active Directory アプリケーションからリソースにアクセスするための構成は以上で完了です。アプリケーションで資格情報を入力すると、アクセス トークンが与えられます。リソースにアクセスする要求には、このアクセス トークンを使用します。
+サービス プリンシパルとしてログインする方法については、以下のサンプル アプリケーションで紹介されています。
 
-プログラムでアプリケーションにログインすることができます。
+**.NET**
 
-- .NET の例については、「[Azure Resource Manager SDK for .NET](resource-manager-net-sdk.md)」を参照してください。
-- Java の例については、「[Azure Resource Manager SDK for Java](resource-manager-java-sdk.md)」を参照してください。
-- Python の例については、「[Resource Management Authentication for Python (Python 向けリソース管理認証)](https://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementauthentication.html)」を参照してください。
-- REST の例については、「[Resource Manager REST API](resource-manager-rest-api.md)」を参照してください。
+- [.NET からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
+- [Azure のリソースとリソース グループを .NET で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
 
-アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「[Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
+**Java**
+
+- [リソースの概要 - Java で Azure Resource Manager テンプレートをデプロイする](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
+- [リソースの概要 - Java でリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group//)
+
+**Python**
+
+- [Python からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
+- [Azure のリソースとリソース グループを Python で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
+
+**Node.JS**
+
+- [Node.js からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
+- [Azure のリソースとリソース グループを Node.js で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
+
+**Ruby**
+
+- [Ruby からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
+- [Azure のリソースとリソース グループを Ruby で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
+
 
 ## 次のステップ
 
 - セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
 - これらの手順のビデオ デモについては、[Azure Active Directory を使用した Azure リソースのプログラムによる管理の有効化](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory)に関するビデオを参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0720_2016-->

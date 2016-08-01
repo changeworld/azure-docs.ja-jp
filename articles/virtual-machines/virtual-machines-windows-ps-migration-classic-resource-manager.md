@@ -32,7 +32,7 @@
 
 インストールには、[PowerShell ギャラリー](https://www.powershellgallery.com/profiles/azure-sdk/)と [Web Platform Installer (WebPI)](http://aka.ms/webpi-azps) という 2 つの大きなオプションがあります。WebPI は月次の更新プログラムを受け取ります。PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。
 
-詳細については、「[Azure PowerShell 1.0](https://azure.microsoft.com//blog/azps-1-0/)」を参照してください。
+詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 ## 手順 3: サブスクリプションを設定し、移行にサインアップする
 
@@ -94,16 +94,31 @@ Resource Manager モデルの自分のアカウントにサインインします
 
 移行に合わせてクラウド サービスの仮想マシンを準備します。2 つのオプションから選択できます。
 
-プラットフォームで作成した仮想ネットワークに VM を移行する場合は、次のコマンドを使用します。
+1. プラットフォームで作成した仮想ネットワークに VM を移行する場合
 
-	Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
+	最初の手順では、次のコマンドを使用して、クラウド サービスを移行できるかどうかを検証します。
 
-Resource Manager デプロイメント モデルの既存の仮想ネットワークに移行する場合は、次のコマンドを使用します。
+		$validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
+		$validate.ValidationMessages
 
-	$existingVnetRGName = "<Existing VNET's Resource Group Name>"
-	$vnetName = "<Virtual Network Name>"
-	$subnetName = "<Subnet name>"
-	Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -UseExistingVirtualNetwork -VirtualNetworkResourceGroupName $existingVnetRGName 		-VirtualNetworkName $vnetName -SubnetName $subnetName
+	前のコマンドから、移行をブロックするすべての警告とエラーが表示されます。検証が成功した場合は、次の準備の手順に進むことができます。
+
+		Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
+
+2. Resource Manager デプロイ モデルの既存の仮想ネットワークに移行する場合
+
+		$existingVnetRGName = "<Existing VNET's Resource Group Name>"
+		$vnetName = "<Virtual Network Name>"
+		$subnetName = "<Subnet name>"
+
+	最初の手順では、次のコマンドを使用して、クラウド サービスを移行できるかどうかを検証します。
+
+		$validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -UseExistingVirtualNetwork -VirtualNetworkResourceGroupName $existingVnetRGName -VirtualNetworkName $vnetName -SubnetName $subnetName
+		$validate.ValidationMessages
+
+	前のコマンドから、移行をブロックするすべての警告とエラーが表示されます。検証が成功した場合は、次の準備の手順に進むことができます。
+
+		Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -UseExistingVirtualNetwork -VirtualNetworkResourceGroupName $existingVnetRGName -VirtualNetworkName $vnetName -SubnetName $subnetName
 
 準備操作が成功したら、VM の移行状態を問い合わせて、VM が `Prepared` 状態であることを確認します。
 
@@ -117,15 +132,22 @@ PowerShell または Azure ポータルを使用して、準備したリソー�
 
 準備した構成が正しい場合は、次に進み、次のコマンドを使用してリソースをコミットできます。
 
-	Move-AzureService -Commit -ServiceName docmigtest1 -DeploymentName docmigtest1
+	Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 
 ### 仮想ネットワークの仮想マシンを移行する
 
-移行する仮想ネットワークを選択します。仮想ネットワークに Web/worker ロールが含まれる場合、またはサポートされない構成の VM が含まれる場合は、検証エラー メッセージが返されます。
-
-次のコマンドを使用して、移行対象の仮想ネットワークを準備します。
+移行する仮想ネットワークを選択します。
 
 	$vnetName = "VNET-Name"
+
+>[AZURE.NOTE] 仮想ネットワークに Web/worker ロールが含まれる場合、またはサポートされない構成の VM が含まれる場合は、検証エラー メッセージが返されます。
+
+最初の手順では、次のコマンドを使用して、仮想ネットワークを移行できるかどうかを検証します。
+
+	Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
+
+前のコマンドから、移行をブロックするすべての警告とエラーが表示されます。検証が成功した場合は、次の準備の手順に進むことができます。
+	
 	Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
 
 PowerShell または Azure ポータルを使用して、準備した仮想マシンの構成を確認します。移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
@@ -159,4 +181,4 @@ PowerShell または Azure ポータルを使用して、準備したストレ�
 - [プラットフォームでサポートされているクラシックから Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 - [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0720_2016-->

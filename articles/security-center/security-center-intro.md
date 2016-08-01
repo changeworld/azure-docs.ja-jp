@@ -4,16 +4,16 @@
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor=""/>
 
 <tags
    ms.service="security-center"
    ms.devlang="na"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/22/2016"
+   ms.date="07/19/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center 入門
@@ -71,16 +71,16 @@ Azure サブスクリプションとリソース グループのポリシーは�
 
 > [AZURE.NOTE] データの収集とリージョンごとのストレージ アカウントの選択は、サブスクリプション レベルで構成されます。
 
-**[推奨事項の表示項目]** (上図参照) では、サブスクリプション内のリソースに対してどのようなセキュリティが必要かに基づいて、どのセキュリティ制御項目について監視と推奨事項の提示を行うかを選択できます。
+**[防止ポリシー]** を選択して (上図参照)、**[防止ポリシー]** ブレードを開きます。**[推奨事項を表示]** では、サブスクリプション内のリソースのセキュリティのニーズに基づいて、監視と推奨事項の提示を必要とするセキュリティ制御項目を選択できます。
 
 次に、どのリソース グループのポリシー詳細を表示するかを選択します。
 
 ![[セキュリティ ポリシー] ブレードのリソース グループ][4]
 
-**[継承]** \(上図参照) では、リソース グループを次のどちらにするかを定義できます。
+**[継承]** (上図参照) では、リソース グループを次のどちらにするかを定義できます。
 
-- [継承] \(既定値) を選択すると、このリソース グループに対するセキュリティ ポリシーはすべて、サブスクリプション レベルから継承されます。
-- [一意] を選択すると、このリソース グループは独自のセキュリティ ポリシーを持つことになります。**[推奨事項の表示]** の下で変更を行う必要があります。
+- [継承] (既定値) を選択すると、このリソース グループに対するセキュリティ ポリシーはすべて、サブスクリプション レベルから継承されます。
+- [一意] を選択すると、このリソース グループは独自のセキュリティ ポリシーを持つことになります。**[推奨事項を表示]** で変更を加える必要があります。
 
 > [AZURE.NOTE] サブスクリプション レベルのポリシーとリソース グループ レベルのポリシーとの間に競合がある場合は、リソース グループ レベルのポリシーが優先されます。
 
@@ -100,9 +100,9 @@ Azure サブスクリプションとリソース グループのポリシーは�
 
 ### リソース ヘルス
 
-**[リソース セキュリティ ヘルス]** タイルには、環境の全体的なセキュリティの状態がリソースの種類 (仮想マシン、Web アプリケーション、その他のリソース) ごとに表示されます。
+**[リソース セキュリティの正常性]** タイルには、リソースの種類 (仮想マシン、Web アプリケーション、その他のリソース) ごとに環境の全体的なセキュリティの状態が表示されます。
 
-**[リソース セキュリティ ヘルス]** タイルでリソースの種類の 1 つを選択すると、詳しい情報が表示されます。潜在的なセキュリティ脆弱性が特定済みの場合は、ここに一覧表示されます (次の例では **[仮想マシン]** が選択されています)。
+**[リソース セキュリティの正常性]** タイルでリソースの種類を選択すると、特定済みの潜在的なセキュリティ脆弱性の一覧など、詳しい情報が表示されます (次の例では **[仮想マシン]** が選択されています)。
 
 ![Resources health tile][6]
 
@@ -125,7 +125,7 @@ Azure サブスクリプションとリソース グループのポリシーは�
 
 ### パートナー ソリューション
 
-**[パートナー ソリューション]** タイルでは、Azure サブスクリプションに統合されたパートナー ソリューションの正常性状態をひと目で監視できます。セキュリティ センターには、ソリューションに由来する警告が表示されます。
+**[パートナー ソリューション]** タイルでは、Azure サブスクリプションと統合されたパートナー ソリューションの正常性状態をひとめで監視できます。セキュリティ センターには、ソリューションに由来する警告が表示されます。
 
 **[パートナー ソリューション]** タイルを選択します。接続されているパートナー ソリューションの一覧を示すブレードが開きます。
 
@@ -134,19 +134,19 @@ Azure サブスクリプションとリソース グループのポリシーは�
 ## 作業開始
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。セキュリティ センターは、Azure サブスクリプションがある場合に有効です。サブスクリプションがない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
- セキュリティ センターには [Azure ポータル](https://azure.microsoft.com/features/azure-portal/)からアクセスします。詳細については、[ポータルのドキュメント](https://azure.microsoft.com/documentation/services/azure-portal/)を参照してください。
+ Security Center には [Azure ポータル](https://azure.microsoft.com/features/azure-portal/)からアクセスします。詳細については、[ポータルに関するドキュメント](https://azure.microsoft.com/documentation/services/azure-portal/)をご覧ください。
 
-「[Azure セキュリティ センターの概要](security-center-get-started.md)」では、セキュリティ センターのセキュリティ監視とポリシー管理のコンポーネントについて簡単に説明します。
+[Azure Security Center の概要](security-center-get-started.md)に関する記事では、Security Center のセキュリティ監視とポリシー管理のコンポーネントについて簡単に説明しています。
 
-## 次のステップ
+## 関連項目
 このドキュメントでは、セキュリティ センターの概略のほか、その主な機能と使用を開始する方法を紹介しました。詳細については、次の記事を参照してください。
 
-- 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループに対するセキュリティ ポリシーの構成方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
-- 「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティの警告の管理および対応について説明しています。
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- 「[Azure セキュリティ センターのよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
+- 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
+- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
+- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティ警告の管理と対応の方法について説明しています。
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
@@ -160,4 +160,4 @@ Azure サブスクリプションとリソース グループのポリシーは�
 [8]: ./media/security-center-intro/security-alert-detail.png
 [9]: ./media/security-center-intro/partner-solutions.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0720_2016-->

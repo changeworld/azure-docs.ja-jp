@@ -1,16 +1,27 @@
 ### 前提条件
 
-- [Azure BLOB ストレージ](https://azure.microsoft.com/documentation/services/storage/) アカウント  
+- Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
+- [Azure BLOB ストレージ アカウント](../articles/storage/storage-create-storage-account.md)。ストレージ アカウント名とアクセス キーが含まれます。この情報は、Azure ポータルでストレージ アカウントのプロパティに表示されます。
 
+Azure Storage の詳細については、[こちら](../articles/storage/storage-introduction.md)をご覧ください。
 
-ロジック アプリで Azure BLOB ストレージ アカウントを使用するには、Azure BLOB ストレージ アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure ポータルのロジック アプリ内から簡単に実行できます。
+<!--Archived
+Before you use your Azure Blob Storage account in a logic app, authorize the logic app to connect to your Azure Blob Storage account. Fortunately, you can do this easily from within your logic app on the Azure  portal.  
 
-Azure BLOB ストレージ アカウントに接続するロジック アプリを承認する手順を次に示します。
-1. Azure BLOB ストレージへの接続を作成するには、ロジック アプリ デザイナーのドロップダウン リストから **[Show Microsoft managed APIs (Microsoft Managed API を表示)]** を選択し、検索ボックスに「*Azure Blob Storage*」と入力します。使用するトリガーまたはアクションを選択します。  
-![Azure BLOB ストレージの接続の作成手順](./media/connectors-create-api-azureblobstorage/azureblobstorage-1.png)  
-2. これまでに Azure BLOB ストレージへの接続を作成したことがない場合は、Azure BLOB ストレージの資格情報の入力を求められます。この資格情報を使用して、接続するロジック アプリの承認と、Azure BLOB ストレージ アカウントのデータへのアクセスが行われます。  
-![Azure BLOB ストレージの接続の作成手順](./media/connectors-create-api-azureblobstorage/azureblobstorage-2.png)  
-3. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
-![Azure BLOB ストレージの接続の作成手順](./media/connectors-create-api-azureblobstorage/azureblobstorage-3.png)  
+Here are the steps to authorize your logic app to connect to your Azure Blob Storage account:  
 
-<!---HONumber=AcomDC_0525_2016-->
+1. To create a connection to Azure Blob Storage, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Azure Blob Storage* in the search box. Select the trigger or action you'll like to use:  
+
+	![Azure Blob Storage connection creation step](./media/connectors-create-api-azureblobstorage/azureblobstorage-1.png)  
+
+2. If you haven't created any connections to Azure Blob Storage before, you'll get prompted to provide your Azure Blob Storage credentials. These credentials will be used to authorize your Logic app to connect to, and access your Azure Blob Storage account's data:  
+
+	![Azure Blob Storage connection creation step](./media/connectors-create-api-azureblobstorage/azureblobstorage-2.png)  
+
+3. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
+
+	![Azure Blob Storage connection creation step](./media/connectors-create-api-azureblobstorage/azureblobstorage-3.png)  
+
+-->
+
+<!---HONumber=AcomDC_0720_2016-->

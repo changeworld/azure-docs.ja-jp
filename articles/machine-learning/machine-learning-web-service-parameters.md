@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="07/06/2016" 
 	ms.author="raymondl;garye"/>
 
 #Azure Machine Learning Web サービスのパラメーターの使用
 
 Azure Machine Learning Web サービスは、変更可能なパラメーターを持つモジュールを含む実験を発行すると作成されます。状況によっては、Web サービスの実行中にモジュールの動作変更が必要になる場合がありますが、*Web サービスのパラメーター*を使えば変更できます。
 
-一般的な例として、発行された Web サービスのユーザーが、Web サービスにアクセスしたときに別のデータ ソースを指定できるように[データのインポート][import-data] モジュールを設定する場合があります。または、別の宛先を指定できるように[データのインポート][export-data] モジュールを構成します。その他の例としては、[特徴ハッシュ][feature-hashing] モジュールのビット数の変更や、[フィルターに基づく特徴の選択][filter-based-feature-selection]モジュールにおける目的の特徴の数の変更があります。
+一般的な例として、発行された Web サービスのユーザーが、Web サービスにアクセスしたときに別のデータ ソースを指定できるように[データのインポート][reader] モジュールを設定する場合があります。または、別の宛先を指定できるように[データのインポート][writer] モジュールを構成します。その他の例としては、[特徴ハッシュ][feature-hashing] モジュールのビット数の変更や、[フィルターに基づく特徴の選択][filter-based-feature-selection]モジュールにおける目的の特徴の数の変更があります。
 
 Web サービスのパラメーターを設定し、実験の 1 つまたは複数のモジュール パラメーターに関連付けて、必須か任意かを指定することができます。Web サービスのユーザーは、Web サービスの呼び出し時にこれらのパラメーターの値を指定できます。
 
@@ -35,20 +35,22 @@ Web サービスのパラメーターを 1 回定義すれば、その実験の�
 
 Web サービスのパラメーターの既定値を指定するかどうかを設定できます。指定した場合、Web サービスのユーザー向けのパラメーターはオプションとなります。既定値を指定しない場合、ユーザーは Web サービスにアクセスしたときに値の入力を求められます。
 
-Web サービスのドキュメント (Machine Learning Studio の Web サービス **ダッシュボード**にある **API ヘルプ ページ** リンクから入手可能) には、Web サービス アクセス時にプログラムで Web サービスのパラメーターを指定する方法に関する Web サービス ユーザー向けの情報が含まれます。
+Web サービスの API ドキュメントには、Web サービス アクセス時にプログラムで Web サービスのパラメーターを指定する方法に関する Web サービス ユーザー向けの情報が含まれます。
+
+>[AZURE.NOTE] 従来の Web サービスの API ドキュメントは、Machine Learning Studio の Web サービス **ダッシュボード**にある **API ヘルプ ページ** リンクから入手できます。新しい Web サービスの API ドキュメントは、Web サービスの **[Consume (使用)]** ページと **[Swagger API]** ページにある [Azure Machine Learning Web サービス](https://services.azureml.net/Quickstart) ポータルから入手できます。
 
 
 ##例
 
-たとえば、Azure BLOB ストレージに情報を送信する[データのエクスポート][export-data] モジュールの実験があるとします。Web サービスのユーザーがサービスにアクセスしたときに BLOB ストレージへのパスを変更できるようにする "Blob path" という名前の Web サービスのパラメーターを定義しましょう。
+たとえば、Azure BLOB ストレージに情報を送信する[データのエクスポート][writer] モジュールの実験があるとします。Web サービスのユーザーがサービスにアクセスしたときに BLOB ストレージへのパスを変更できるようにする "Blob path" という名前の Web サービスのパラメーターを定義しましょう。
 
-1.	Machine Learning Studio で[データのエクスポート][export-data] モジュールをクリックして選択します。実験キャンバスの右側の [プロパティ] ウィンドウにプロパティが表示されます。
+1.	Machine Learning Studio で[データのエクスポート][writer] モジュールをクリックして選択します。実験キャンバスの右側の [プロパティ] ウィンドウにプロパティが表示されます。
 
 2.	ストレージの種類を指定します。
 
     - **[Please specify data destination]** で [Azure Blob Storage] を選択します。
     - **[Please specify authentication type]** の下の [アカウント] を選択します。
-    - Azure BLOB ストレージのアカウント情報を入力します。 
+    - Azure BLOB ストレージのアカウント情報を入力します。
     <p />
 
 3.	**[Path to blob beginning with container parameter]** の右にあるアイコンをクリックします。次のように表示されています。
@@ -57,7 +59,7 @@ Web サービスのドキュメント (Machine Learning Studio の Web サービ
 
     [Set as web service parameter] を選択します。
 
-    [プロパティ] ウィンドウの下部にある **[Web Service Parameters]** の下に [Path to blob beginning with container] という名前のエントリが追加されます。これは、この[データのエクスポート][export-data] モジュール パラメーターに現在関連付けられている Web サービスのパラメーターです。
+    [プロパティ] ウィンドウの下部にある **[Web Service Parameters]** の下に [Path to blob beginning with container] という名前のエントリが追加されます。これは、この[データのエクスポート][writer] モジュール パラメーターに現在関連付けられている Web サービスのパラメーターです。
 
 4.	Web サービスのパラメーターの名前を変更するには、名前をクリックし、「Blob path」と入力して **Enter** キーを押します。
  
@@ -67,9 +69,9 @@ Web サービスのドキュメント (Machine Learning Studio の Web サービ
 
 6.	**[実行]** をクリックします。
 
-7.	**[PUBLISH WEB SERVICE]** をクリックして Web サービスを発行します。
+7.	**[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic](Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New](Web サービスのデプロイ [新規])]** を選択して、Web サービスをデプロイします。
 
-これで Web サービスのユーザーが Web サービス アクセス時に[データのエクスポート][export-data] モジュールの新しい宛先を指定できるようになります。
+これで Web サービスのユーザーが Web サービス アクセス時に[データのエクスポート][writer] モジュールの新しい宛先を指定できるようになります。
 
 ##詳細情報
 
@@ -87,8 +89,8 @@ Machine Learning Web サービスへのアクセスの詳細については、[�
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
 [filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-[export-data]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
+[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[writer]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0720_2016-->

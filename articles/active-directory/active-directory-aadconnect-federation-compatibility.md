@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="07/14/2016"
 	ms.author="billmath"/>
 
 # Azure AD のフェデレーション互換性リスト
@@ -36,6 +36,7 @@ Microsoft 以外のフェデレーション ソリューションに投資して
 - [Optimal IDM Virtual Identity Server Federation Services](#optimal-idm-virtual-identity-server-federation-services)
 - [PingFederate 6.11](#pingfederate-611)
 - [PingFederate 7.2](#pingfederate-72)
+- [PingFederate 8.x](#pingfederate-8.x)
 - [Centrify](#centrify)
 - [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622)
 - [SecureAuth IdP 7.2.0](#secureauth-idp-720)
@@ -44,7 +45,7 @@ Microsoft 以外のフェデレーション ソリューションに投資して
 - [Okta](#okta)
 - [OneLogin](#onelogin)
 - [NetIQ Access Manager 4.0.1](#netiq-access-manager-401)
-- [BIG-IP と BIG-IP Access Policy Manager Version11.3x ～ 11.6x](#big-ip-with-access-policy-manager-big-ip-ver-113x-116x)
+- [BIG-IP と BIG-IP Access Policy Manager Version 11.3x ～ 11.6x](#big-ip-with-access-policy-manager-big-ip-ver-113x-116x)
 - [VMware Workspace Portal Version 2.1](#vmware-workspace-portal-version-21)
 - [Sign&go 5.3](#signampgo-53)
 - [IceWall Federation Version 3.0](#icewall-federation-version-30)
@@ -69,9 +70,9 @@ Azure Active Directory は、オンプレミスの Active Directory とのフェ
 | Outlook や ActiveSync などの電子メール リッチ クライアント | サポートされています |なし|
 |Office 2016 などの ADAL を使用した最新のアプリケーション| サポートされています|なし|
 
-AD FS を使用した Azure Active Directory の使用の詳細については、[Active Directory フェデレーション サービス (ADFS)](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs) に関するページを参照してください。
+AD FS による Azure Active Directory の使用方法の詳細については、[Active Directory フェデレーション サービス (ADFS)](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs) に関するページを参照してください。
 
-パスワード同期を使用した Azure Active Directory の使用の詳細については、[Azure AD Connect](active-directory-aadconnect.md) に関するページを参照してください。
+パスワード同期による Azure Active Directory の使用方法の詳細については、[Azure AD Connect](active-directory-aadconnect.md) に関するページを参照してください。
 
 
 ## Optimal IDM Virtual Identity Server Federation Services 
@@ -116,6 +117,20 @@ PingFederate 7.2 は、広く使用されている WS-Federation/WS-Trust ID 標
 | Outlook や ActiveSync などの電子メール リッチ クライアント | サポートされています |なし|
 
 Active Directory ユーザーにシングル サインオン エクスペリエンスを提供するように PingFederate でこの STS を構成する手順については、[こちら](http://documentation.pingidentity.com/display/PF72/PingFederate+7.2)を参照してください。
+
+## PingFederate 8.x 
+PingFederate 8.x は、広く使用されている WS-Federation/WS-Trust ID 標準を実装して、シングル サインオンと属性交換フレームワークを提供しています。
+
+このシングル サインオン エクスペリエンスのシナリオにおけるサポート状況を次に示します。
+
+
+| クライアント |サポート |例外|
+| --------- | --------- |--------- |
+| Exchange Web Access や SharePoint Online などの Web ベースのクライアント | サポートされています |なし|
+| Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション | サポートされています |なし|
+| Outlook や ActiveSync などの電子メール リッチ クライアント | サポートされています |なし|
+
+Active Directory ユーザーにシングル サインオン エクスペリエンスを提供するように PingFederate でこの STS を構成する手順については、[こちら](http://documentation.pingidentity.com/display/PFS/SSO+to+Office+365+Introduction)を参照してください。
 
 ## Centrify 
 Centrify では、オンプレミスのフェデレーション サーバーをホストする必要なく Office 365 のフェデレーション シングル サインオン エクスペリエンスを提供します。
@@ -323,4 +338,4 @@ AuthAnvil Single Sign On 4.5 は、広く使用されている WS-Federation/WS-
 
 詳細については、[AuthAnvil のシングル サインオン](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

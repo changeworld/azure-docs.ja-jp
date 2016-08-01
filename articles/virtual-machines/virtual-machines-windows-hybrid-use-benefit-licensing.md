@@ -49,8 +49,7 @@ Add-AzureRmVhd -ResourceGroupName MyResourceGroup -Destination "https://mystorag
 Windows Server VM を PowerShell を使用してデプロイするときに、追加パラメーター `-LicenseType` を指定できます。VHD を Azure にアップロードした後、新しい VM を `New-AzureRmVM` を使用して作成し、ライセンスの種類を次のように指定します。
 
 ```
-New-AzureRmVM -ResourceGroupName MyResourceGroup -Location "West US" -VM $vm
-    -LicenseType Windows_Server
+New-AzureRmVM -ResourceGroupName MyResourceGroup -Location "West US" -VM $vm -LicenseType Windows_Server
 ```
 
 この後の [PowerShell を使用した VM の Azure への詳細なデプロイ手順](./virtual-machines-windows-hybrid-use-benefit-licensing.md#deploy-windows-server-vm-via-powershell-detailed-walkthrough)を参照するか、[Resource Manager と PowerShell を使用して Windows VM を作成する](./virtual-machines-windows-ps-create.md)ための別の手順に関する詳細なガイドを参照できます。
@@ -151,7 +150,7 @@ $storageAcc = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -A
 $osDiskName = "licensing.vhd"
 $osDiskUri = '{0}vhds/{1}{2}.vhd' -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
 $urlOfUploadedImageVhd = "https://testlicensing.blob.core.windows.net/vhd/licensing.vhd"
-$vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri $urlOfUploadedImageVhd -Windows
+$vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption FromImage -SourceImageUri $urlOfUploadedImageVhd -Windows
 ```
 
 最後に、VM を作成し、Azure Hybrid Use Benefit を利用するライセンスの種類を定義します。
@@ -166,4 +165,4 @@ New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm 
 
 [Resource Manager テンプレートの使用方法](../resource-group-overview.md)の詳細を参照します。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

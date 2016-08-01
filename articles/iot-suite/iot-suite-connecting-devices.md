@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/09/2016"
+   ms.date="07/14/2016"
    ms.author="dobett"/>
 
 
@@ -24,7 +24,7 @@
 
 ## Windows で C のサンプル ソリューションを作成する
 
-次の手順では、Visual Studio で C プログラムを使用して、リモート監視が事前構成されたソリューションと通信する単純なクライアント アプリケーションを作成する方法を示します。
+次の手順では、Visual Studio を使用して、リモート監視が事前構成されたソリューションと通信する単純な C で記述したクライアント アプリケーションを作成する方法を示します。
 
 Visual Studio 2015 にスタート プロジェクトを作成し、IoT Hub デバイス クライアントの NuGet パッケージを追加します。
 
@@ -42,7 +42,13 @@ Visual Studio 2015 にスタート プロジェクトを作成し、IoT Hub デ�
     - Microsoft.Azure.IoTHub.IoTHubClient
     - Microsoft.Azure.IoTHub.HttpTransport
 
-## シンプルな IoT Hub デバイスの動作を指定するコードを追加する
+6. **ソリューション エクスプローラー**で、**RMDevice** プロジェクトを右クリックして **[プロパティ]** をクリックし、プロジェクトの **[プロパティ ページ]** ダイアログ ボックスを開きます。詳細については、[Visual C++ プロジェクトのプロパティの設定][lnk-c-project-properties]に関するページをご覧ください。
+
+7. **[リンカー]** フォルダーをクリックして、**[入力]** プロパティ ページをクリックします。
+
+8. **crypt32.lib** を、**[追加の依存ファイル]** プロパティに追加します。**[OK]** をクリックし、もう一度 **[OK]** をクリックして、プロジェクトのプロパティ値を保存します。
+
+## IoT Hub デバイスの動作を指定する
 
 IoT Hub クライアント ライブラリでは、モデルを使用して、デバイスが IoT Hub に送信するメッセージの形式と、デバイスが応答する IoT Hub からのコマンドを指定します。
 
@@ -54,9 +60,11 @@ IoT Hub クライアント ライブラリでは、モデルを使用して、�
     #include "iothub_client.h"
     #include "serializer.h"
     #include "schemaserializer.h"
+    #include "azure_c_shared_utility/threadapi.h"
+    #include "azure_c_shared_utility/platform.h"
     ```
 
-2. `#include` ステートメントの後に次の変数宣言を追加します。リモート監視ソリューション ダッシュボードから、プレースホルダ [Device Id] と [Device Key] の値をデバイス用の値に置き換えます。ダッシュボードの IoT Hub ホスト名を使用して、[IoTHub Name] を置き換えます。たとえば、IoT Hub ホスト名が **contoso.azure-devices.net** である場合は、[IoTHub Name] を contoso に置き換えます。
+2. `#include` ステートメントの後に次の変数宣言を追加します。リモート監視ソリューション ダッシュボードから、プレースホルダ [Device Id] と [Device Key] の値をデバイス用の値に置き換えます。ダッシュボードの IoT Hub ホスト名を使用して、[IoTHub Name] を置き換えます。たとえば、IoT Hub ホスト名が **contoso.azure-devices.net** である場合は、[IoTHub Name] を **contoso** に置き換えます。
 
     ```
     static const char* deviceId = "[Device Id]";
@@ -104,11 +112,11 @@ IoT Hub クライアント ライブラリでは、モデルを使用して、�
     END_NAMESPACE(Contoso);
     ```
 
-## デバイスの動作を実装するコードを追加する
+## デバイスの動作を実装する
 
-ここで、モデルに定義された動作を実装するコードを追加する必要があります。デバイスがハブからコマンドを受信したときに実行する関数と、シミュレートされたテレメトリをハブに送信するためのコードを追加します。
+ここで、モデルに定義された動作を実装するコードを追加する必要があります。
 
-1. デバイスがモデルに定義された **SetTemperature** コマンドと **SetHumidity** コマンドを受信したときに実行する関数を追加します。
+1. IoT Hub から **SetTemperature** コマンドと **SetHumidity** コマンドをデバイスが受信したときに実行する関数を追加します。
 
     ```
     EXECUTE_COMMAND_RESULT SetTemperature(Thermostat* thermostat, int temperature)
@@ -310,7 +318,7 @@ IoT Hub クライアント ライブラリでは、モデルを使用して、�
     }
     ```
     
-    起動時に IoT Hub に送信される **DeviceInfo** メッセージの例:
+    起動時に IoT Hub に送信される **DeviceInfo** メッセージの例を次に示します。
 
     ```
     {
@@ -329,13 +337,13 @@ IoT Hub クライアント ライブラリでは、モデルを使用して、�
     }
     ```
     
-    IoT Hub に送信される**テレメトリ** メッセージの例:
+    IoT Hub に送信される**テレメトリ** メッセージの例を次に示します。
 
     ```
     {"DeviceId":"mydevice01", "Temperature":50, "Humidity":50, "ExternalTemperature":55}
     ```
     
-    IoT Hub から受信する**コマンド**の例:
+    IoT Hub から受信する**コマンド**の例を次に示します。
     
     ```
     {
@@ -358,10 +366,11 @@ IoT Hub クライアント ライブラリでは、モデルを使用して、�
 
 6. **[ビルド]**、**[ソリューションのビルド]** の順にクリックして、デバイス アプリケーションをビルドします。
 
-7. **ソリューション エクスプローラー**で、**RMDevice** プロジェクトを右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順にクリックして、サンプルをビルドして実行します。アプリケーションがサンプル テレメトリを IoT Hub に 送信すると、コンソールにメッセージが表示されます。
+7. **ソリューション エクスプローラー**で、**RMDevice** プロジェクトを右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順にクリックして、サンプルを実行します。アプリケーションがサンプル テレメトリを IoT Hub に 送信しコマンドを受信すると、コンソールにメッセージが表示されます。
 
 [AZURE.INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 
-[lnk-setup-windows]: https://github.com/azure/azure-iot-sdks/blob/develop/c/doc/devbox_setup.md#windows
 
-<!---HONumber=AcomDC_0622_2016-->
+[lnk-c-project-properties]: https://msdn.microsoft.com/library/669zx6zc.aspx
+
+<!---HONumber=AcomDC_0720_2016-->

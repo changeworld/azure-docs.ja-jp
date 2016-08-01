@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="07/11/2016"
+   ms.date="07/19/2016"
    ms.author="nitinme"/>
 
 # Azure Data Lake Store の診断ログへのアクセス
@@ -50,6 +50,13 @@ Data Lake Store アカウントの診断ログを有効にする方法と、ア�
 
 ## Data Lake Store アカウントの診断ログを表示する
 
+Data Lake Store アカウントのログ データを確認する方法は 2 つあります。
+
+* Data Lake Store アカウントの [設定] ビューから
+* データが格納されている Azure Storage アカウントから
+
+### Data Lake Store [設定] ビューの使用
+
 1. Data Lake Store アカウントの **[設定]** ブレードで、**[診断ログ]** をクリックします。
 
 	![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "診断ログの表示")
@@ -60,13 +67,30 @@ Data Lake Store アカウントの診断ログを有効にする方法と、ア�
 
 3. 各ログ エントリに対する **[ダウンロード]** リンクをクリックして、ログをダウンロードします。
 
+### ログ データを含む Azure Storage アカウントから
+
+1. Data Lake Store とログが関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。**[BLOB サービス]** ブレードに 2 つのコンテナーが一覧表示されます。
+
+	![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログの表示")
+
+	* コンテナー **insights-logs-audit** には、監査ログが含まれます。
+	* コンテナー **insights-logs-requests** には、要求ログが含まれます。
+
+2. これらのコンテナー内で、ログは次の構造の下に格納されます。
+
+	![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "診断ログの表示")
+
+	たとえば、監査ログへの完全パスは `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+
+	同様に、要求ログへの完全パスは `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+
 ## ログ データの構造について
 
 監査ログと要求ログは JSON 形式で作成されます。このセクションでは、要求ログと監査ログの JSON 構造を確認します。
 
 ### 要求ログ
 
-JSON 形式の要求ログのエントリの例を次に示します。各 BLOB には、ログ オブジェクトの配列を含む、**records** と呼ばれるルート オブジェクトが 1 つあります。
+JSON 形式の要求ログのエントリの例を次に示します。各 BLOB には、ログ オブジェクトの配列を含む、**レコード** と呼ばれるルート オブジェクトが 1 つあります。
 
 	{
 	"records": 
@@ -157,9 +181,15 @@ JSON 形式の監査ログのエントリの例を次に示します。各 BLOB 
 |------------|--------|------------------------------------------|
 | StreamName | String | 操作が実行されたパス |
 
+
+## ログ データ処理のサンプル
+
+Azure Data Lake Store では、ログ データの処理と分析方法のサンプルを提供しています。サンプルについては [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)をご覧ください。
+
+
 ## 関連項目
 
 - [Azure Data Lake Store の概要](data-lake-store-overview.md)
 - [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->

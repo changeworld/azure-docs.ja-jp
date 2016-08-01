@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/06/2016" 
+	ms.date="07/18/2016" 
 	ms.author="arramac"/>
 
 # Azure DocumentDB のパフォーマンスとスケールのテスト
@@ -30,29 +30,31 @@ DocumentDB のワークロードに対するパフォーマンス テストを�
 
 最初に、[DocumentDB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードしてコードを入手してください。
 
+> [AZURE.NOTE] このアプリケーションの目的は、クライアント マシンの数が少ない場合に DocumentDB のパフォーマンスを高めるためのベスト プラクティスを示すことです。サービスのピーク時容量を示すためのものではありません。ピーク キャパシティについては、無制限に拡張することが可能です。
+
 ## クライアントの重要な構成オプション
 DocumentDB は、高速で柔軟性に優れた分散データベースです。シームレスな拡張性を備えると共に、必要なレイテンシとスループットを確実に満たすことができます。DocumentDB によってデータベース層を拡張するうえで、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。スケールアップとスケールダウンは、API や SDK のメソッドを 1 回呼び出すだけで行うことができます。ただし大規模にテストを行うときは、DocumentDB をネットワーク越しに呼び出すことになるので注意が必要です。DocumentDB のパフォーマンス テスト用にスタンドアロンのクライアント アプリケーションを作成する場合は、パフォーマンスの測定値から適宜ネットワーク待ち時間を差し引くように構成する必要があります。
 
 DocumentDB から最高のパフォーマンスをエンド ツー エンドで引き出すためには、次のクライアント構成オプションを検討してください。
 
-- **スレッド/タスクの数を増やす**: DocumentDB の呼び出しはネットワーク越しに行われるため、クライアント アプリケーションにおける要求間の待ち時間をできるだけ小さくするために、要求の並列処理の次数を変える必要がある場合があります。たとえば .NET の[タスク並列ライブラリ](https://msdn.microsoft.com//library/dd460717.aspx)を使用している場合、DocumentDB との間で行う読み取りタスクまたは書き込みタスクを 100 件単位で作成します。
-- **同じ Azure リージョン内のテスト**: 可能であればテストは、同じ Azure リージョンにデプロイされている仮想マシンまたは App Service から行います。大ざっぱな比較ですが、DocumentDB の呼び出しは、同じリージョン内であれば 1 ～ 2 ミリ秒以内で完了するのに対し、米国西部と米国東部との間では待ち時間が 50 ミリ秒を超えます。
-- **ホストあたりの System.Net MaxConnections を増やす**: DocumentDB の要求は、特に指定しない限り HTTPS/REST を介して行われ、ホスト名または IP アドレスごとの既定の接続数の上限がボトルネックになります。場合によっては、DocumentDB に対する複数の同時接続をクライアント ライブラリが活かすためには、この値を 100 ～ 1000 に増やす必要があります。.NET の場合、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) がこの設定に該当します。
+- **スレッド/タスクの数を増やす**: DocumentDB の呼び出しはネットワーク越しに行われるため、クライアント アプリケーションにおける要求間の待ち時間をできるだけ小さくするために、要求の並列処理の次数を変える必要がある場合があります。たとえば .NET の[タスク並列ライブラリ](https://msdn.microsoft.com//library/dd460717.aspx)を使用している場合、DocumentDB との間で行う読み取りタスクまたは書き込みタスクを 100 件単位で作成してください。
+- **同じ Azure リージョン内でテストする**: 可能であればテストは、同じ Azure リージョンにデプロイされている仮想マシンまたは App Service から行います。大ざっぱな比較ですが、DocumentDB の呼び出しは、同じリージョン内であれば 1 ～ 2 ミリ秒以内で完了するのに対し、米国西部と米国東部との間では待ち時間が 50 ミリ秒を超えます。
+- **ホストあたりの System.Net MaxConnections を増やす**: DocumentDB の要求は、特に指定しない限り HTTPS/REST を介して行われるため、ホスト名または IP アドレスごとの既定の接続数の上限がボトルネックになります。場合によっては、DocumentDB に対する複数の同時接続をクライアント ライブラリが活かすためには、この値を 100 ～ 1000 に増やす必要があります。.NET の場合、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) がこの設定に該当します。
 - **サーバー側 GC を有効にする**: 状況によってはガベージ コレクションの頻度を減らした方がよい場合もあります。.NET の場合、[gcServer](https://msdn.microsoft.com/library/ms229357.aspx) を true に設定してください。
 - **直接接続を使用する**: パフォーマンスを最適化するために[直接接続](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionmode.aspx)を使用します。
 - **RetryAfter 間隔にバックオフを適用する**: パフォーマンス テストでは、調整される要求の割合がわずかになるまで負荷を上げる必要があります。スロットル状態になった場合、クライアント アプリケーション側でバックオフ値を適用し、サーバー側によって指定された再試行間隔のスロットル時間を後退させるようにしてください。これにより、再試行までの待ち時間を最小限に抑えることができます。[RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx) に関するページをご覧ください。
-- **クライアント ワークロードをスケールアウトする**: 高スループット レベル (毎秒要求ユニット数 50,000 件超) でテストを行っている場合、コンピューターの CPU 使用率またはネットワーク使用率が上限に達してクライアント アプリケーションがボトルネックになる可能性があります。この状態に達しても、クライアント アプリケーションを複数のサーバーにスケールアウトすることで引き続き同じ DocumentDB アカウントで対応できます。
+- **クライアントワークロードをスケールアウトする**: 高スループット レベル (毎秒要求ユニット数 50,000 件超) でテストを行っている場合、コンピューターの CPU 使用率またはネットワーク使用率が上限に達してクライアント アプリケーションがボトルネックになる可能性があります。この状態に達しても、クライアント アプリケーションを複数のサーバーにスケールアウトすることで引き続き同じ DocumentDB アカウントで対応できます。
 
 ## 作業開始
 まずは以下の手順に従って、.NET サンプルをコンパイルして実行してみましょう。ソース コードに目を通して、同様の構成を独自のクライアント アプリケーションに実装することもできます。
 
-**手順 1.** [DocumentDB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードするか、Github リポジトリをフォークします。
+**手順 1:** [DocumentDB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードするか、Github リポジトリをフォークします。
 
-**手順 2.** App.config で EndpointUrl、AuthorizationKey、CollectionThroughput、DocumentTemplate (任意) の設定を変更します。
+**手順 2:** App.config で EndpointUrl、AuthorizationKey、CollectionThroughput、DocumentTemplate (任意) の設定を変更します。
 
-> [AZURE.NOTE] 高スループットでコレクションをプロビジョニングすることになるので、事前に[料金ページ](https://azure.microsoft.com/pricing/details/documentdb/)でコレクションあたりのコストを見積もってください。DocumentDB では、記憶域とスループットが別々に時間単位で課金されます。そのためテスト後に DocumentDB コレクションのスループットを下げるかコレクションを削除することでコストを節約できます。
+> [AZURE.NOTE] 高スループットでコレクションをプロビジョニングすることになるので、事前に[料金に関するページ](https://azure.microsoft.com/pricing/details/documentdb/)でコレクションあたりのコストを見積もってください。DocumentDB では、記憶域とスループットが別々に時間単位で課金されます。そのためテスト後に DocumentDB コレクションのスループットを下げるかコレクションを削除することでコストを節約できます。
 
-**手順 3.** コマンド ラインからコンソール アプリをコンパイルして実行します。次のような出力結果が表示されます。
+**手順 3:** コマンド ラインからコンソール アプリをコンパイルして実行します。次のような出力結果が表示されます。
 
 	Summary:
 	---------------------------------------------------------------------
@@ -98,7 +100,7 @@ DocumentDB から最高のパフォーマンスをエンド ツー エンドで�
 	DocumentDBBenchmark completed successfully.
 
 
-**手順 4 (必要に応じて実行).** このツールからレポートされるスループット (RU/s) は、プロビジョニングするコレクションのスループットと同じか、それより高くなります。そのようになっていない場合は、DegreeOfParallelism を少しずつ増やすと、その境界値に到達しやすくなります。クライアント アプリのスループットが横ばいになった場合は、その複数のインスタンスを同じマシンまたは異なるマシンで起動すれば、それら複数のインスタンスで、プロビジョニングするスループットに到達させることができます。この手順について不明な点がある場合は、[Ask DocumentDB](askdocdb@microsoft.com) でご質問いただくか、サポート チケットを申請してください。
+**手順 4 (必要に応じて実行):** ツールからレポートされるスループット (RU/s) は、プロビジョニングするコレクションのスループット以上である必要があります。そのようになっていない場合は、DegreeOfParallelism を少しずつ増やすと、その境界値に到達しやすくなります。クライアント アプリのスループットが横ばいになった場合は、その複数のインスタンスを同じマシンまたは異なるマシンで起動すれば、それら複数のインスタンスで、プロビジョニングするスループットに到達させることができます。この手順について不明な点がある場合は、[Ask DocumentDB](askdocdb@microsoft.com) でご質問いただくか、サポート チケットを申請してください。
 
 アプリの稼働後は、さまざまな[インデックス作成ポリシー](documentdb-indexing-policies.md)と[一貫性レベル](documentdb-consistency-levels.md)を試しながら、スループットや待機時間への影響を把握することができます。ソース コードに目を通して、同様の構成を独自のテスト スイートや実稼働アプリケーションに実装することもできます。
 
@@ -112,4 +114,4 @@ DocumentDB から最高のパフォーマンスをエンド ツー エンドで�
 * [DocumentDB .NET のサンプル](https://github.com/Azure/azure-documentdb-net)
 * [パフォーマンスに関するヒントについての DocumentDB ブログ](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0720_2016-->
