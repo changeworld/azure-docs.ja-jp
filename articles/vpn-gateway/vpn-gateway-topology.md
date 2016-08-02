@@ -22,7 +22,7 @@
 
 各トポロジには、そのトポロジを使用できるデプロイ モデルと、各トポロジの構成に使用できるデプロイ ツールが列挙された表が含まれています。また、利用できる記事がある場合は、リンクを設定してあります。新しい記事とデプロイ ツールが利用可能になったら、表をこまめに更新します。
 
-VPN ゲートウェイの作成に使用する手順は、仮想ネットワークの作成に使用したデプロイ モデルによって異なります。たとえば、クラシック デプロイ モデルを使用して VNet を作成した場合は、クラシック デプロイ モデルに対応したガイドラインと手順を使用して VPN ゲートウェイを作成し、構成します。クラシック デプロイ モデルの仮想ネットワークに Resource Manager の VPN ゲートウェイを作成することはできません。デプロイ モデルの詳細については、「[Resource Manager とクラシック デプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。
+作成する接続を決定した後の VPN ゲートウェイの作成に使用する手順は、仮想ネットワークの作成に使用したデプロイ モデルによって異なります。たとえば、クラシック デプロイ モデルを使用して VNet を作成した場合は、クラシック デプロイ モデルに対応したガイドラインと手順を使用して VPN ゲートウェイを作成し、構成します。クラシック デプロイ モデルの仮想ネットワークに Resource Manager の VPN ゲートウェイを作成することはできません。デプロイ モデルの詳細については、「[Resource Manager とクラシック デプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。
 
 ## サイト間とマルチサイト
 
@@ -62,6 +62,28 @@ Azure には現在、Azure サービス管理 (クラシックと呼ばれます
 [AZURE.INCLUDE [vpn-gateway-table-vnet-to-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
 
+## ポイント対サイト
+
+ポイント対サイト構成では、クライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を個別に作成することができます。VPN 接続を確立するには、クライアント コンピューターからの接続を開始します。これは、自宅や会議室など、リモートの場所から VNet に接続する場合や、仮想ネットワークに接続する必要があるクライアントの数が少ない場合などに便利です。
+
+ポイント対サイト接続は、SSTP (Secure Socket トンネリング プロトコル) を介した VPN 接続です。ポイント対サイト接続を機能させるために、VPN デバイスや公開 IP アドレスは必要ありません。
+
+**P2S の図**
+
+![Point-to-site connection](./media/vpn-gateway-topology/point2site.png "point-to-site")
+
+**使用可能なデプロイ モデルとデプロイ方法**
+
+[AZURE.INCLUDE [vpn-gateway-table-point-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)]
+
+
+##ExpressRoute
+
+[AZURE.INCLUDE [expressroute-intro](../../includes/expressroute-intro-include.md)]
+
+ExpressRoute の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
+
+
 
 ## サイト間と ExpressRoute の共存接続
 
@@ -78,23 +100,11 @@ ExpressRoute は、パブリックなインターネットを経由せず、WAN 
 [AZURE.INCLUDE [vpn-gateway-table-coexist](../../includes/vpn-gateway-table-coexist-include.md)]
 
 
-## ポイント対サイト
 
-ポイント対サイト構成では、クライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を個別に作成することができます。VPN 接続を確立するには、クライアント コンピューターからの接続を開始します。これは、自宅や会議室など、リモートの場所から VNet に接続する場合や、仮想ネットワークに接続する必要があるクライアントの数が少ない場合などに便利です。
-
-ポイント対サイト接続は、SSTP (Secure Socket トンネリング プロトコル) を介した VPN 接続です。ポイント対サイト接続を機能させるために、VPN デバイスや公開 IP アドレスは必要ありません。
-
-**P2S の図**
-
-![Point-to-site connection](./media/vpn-gateway-topology/point2site.png "point-to-site")
-
-**使用可能なデプロイ モデルとデプロイ方法**
-
-[AZURE.INCLUDE [vpn-gateway-table-point-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)]
 
 ## 次のステップ
 
-「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md)」と「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)」の項目を参照し、VPN ゲートウェイについての理解を深めてから、接続の計画と設計に進むことをお勧めします。
+「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md)」と「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)」の項目を参照し、VPN ゲートウェイの設定について理解することをお勧めします。
 
 
 
@@ -102,4 +112,4 @@ ExpressRoute は、パブリックなインターネットを経由せず、WAN 
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

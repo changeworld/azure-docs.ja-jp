@@ -51,7 +51,7 @@
 
 ## 前提条件
 
-このチュートリアルは、[Web ロール](cloud-services-choose-me.md)、 *worker ロール* などの用語を含む * Azure Cloud Services の基本概念* を理解している方を対象にしています。また、Visual Studio で [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) または [Web フォーム](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) プロジェクトを操作する方法を理解していることも前提としています。サンプル アプリケーションでは MVC を使用しますが、チュートリアルのほとんどは Web フォームにも当てはまります。
+このチュートリアルは、[Web ロール](cloud-services-choose-me.md)、*worker ロール*などの用語を含む *Azure Cloud Services の基本概念*を理解している方を対象にしています。また、Visual Studio で [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) または [Web フォーム](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) プロジェクトを操作する方法を理解していることも前提としています。サンプル アプリケーションでは MVC を使用しますが、チュートリアルのほとんどは Web フォームにも当てはまります。
 
 Azure サブスクリプションがなくてもアプリケーションをローカルに実行できますが、アプリケーションをクラウドにデプロイするには Azure サブスクリプションが必要になります。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668)か、[無料試用版にサインアップ](/pricing/free-trial/?WT.mc_id=A55E3C668)してください。
 
@@ -66,7 +66,8 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 このアプリでは、広告を SQL データベースに格納します。その際、テーブルを作成してデータにアクセスするために Entity Framework Code First を使用します。それぞれの広告に対し、フルサイズ画像用と縮小表示画像用の 2 つの URL がデータベースに格納されます。
 
-![広告表](./media/cloud-services-dotnet-get-started/adtable.png)
+![広告表  
+](./media/cloud-services-dotnet-get-started/adtable.png)
 
 ユーザーが画像をアップロードすると、Web ロールで実行されているフロントエンドによってその画像が [Azure BLOB](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) に格納され、広告情報がその BLOB を示す URL と共にデータベースに格納されます。同時に、メッセージが Azure キューに書き込まれます。worker ロールで実行されているバックエンド プロセスは、定期的にキューをポーリングして新しいメッセージの有無を確認します。新しいメッセージが出現すると、worker ロールはその画像の縮小表示を作成し、その広告の縮小表示 URL データベース フィールドを更新します。次の図に、アプリケーションの各パーツのやり取りを示します。
 
@@ -92,7 +93,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 
-	クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure *コンピューティング エミュレーター *と Azure * ストレージ エミュレーター*が自動的に起動されます。コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。ストレージ エミュレーターは、[SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) を使用して、Azure クラウド ストレージをシミュレートします。
+	クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure *コンピューティング エミュレーター*と Azure *ストレージ エミュレーター*が自動的に起動されます。コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。ストレージ エミュレーターは、[SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) を使用して、Azure クラウド ストレージをシミュレートします。
 
 	クラウド サービス プロジェクトを初めて実行するときは、エミュレーターが起動されるまで 1 分程度かかります。エミュレーターの起動が完了すると、既定のブラウザーが開き、アプリケーションのホーム ページが表示されます。
 
@@ -157,7 +158,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 
 1. [Azure クラシック ポータル](http://manage.windowsazure.com)で、**[新規]、[Data Services]、[SQL Database]、[簡易作成]** の順にクリックします。
 
-1. **[データベース名]** ボックスに「 *contosoads* 」と入力します。
+1. **[データベース名]** ボックスに「*contosoads*」と入力します。
 
 1. **[サーバー]** ボックスの一覧の **[新しい SQL データベース サーバー]** を選択します。
 
@@ -229,7 +230,7 @@ Web ロールと worker ロールのクラウド サービス環境設定には�
         providerName="System.Data.SqlClient" xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
     </connectionStrings>
     ```
-    
+
 	ファイルは編集できるように開いたままにしておきます。
 
 2. [Azure クラシック ポータル](http://manage.windowsazure.com)で、左側のウィンドウの **[SQL Database]** をクリックし、このチュートリアル用に作成したデータベースをクリックします。次に、**[ダッシュボード]** タブをクリックし、**[接続文字列の表示]** をクリックします。
@@ -314,10 +315,10 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
         <Setting name="StorageConnectionString" value="{yourconnectionstring}" />
         <Setting name="ContosoAdsDbConnectionString" value="{yourconnectionstring}" />
         <!-- other settings not shown -->
-    
+
     </ConfigurationSettings>
     <!-- other settings not shown -->
-    
+
 </Role>
 ```
 
@@ -443,7 +444,7 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
         <add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
     </connectionStrings>
     ```
-    
+
 	Visual Studio 2015 を使用している場合は、"v11.0" を "MSSQLLocalDB" に置き換えます。
 
 2. 変更を保存します。
@@ -483,10 +484,10 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 3. ContosoAdsCommon プロジェクトで、*Class1.cs* ファイルを削除します。その場所に、ダウンロードしたプロジェクトから *Ad.cs* ファイルと *ContosoAdscontext.cs* ファイルを追加します。
 
 3. ContosoAdsWeb プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
-	- *Global.asax.cs* 。  
+	- *Global.asax.cs*。
 	- *Views\\Shared* フォルダー: *\_Layout.cshtml*。
-	- *Views\\Home* フォルダー: *Index.cshtml* 。
-	- *Controllers* フォルダー: *AdController.cs* 。
+	- *Views\\Home* フォルダー: *Index.cshtml*。
+	- *Controllers* フォルダー: *AdController.cs*。
 	- *Views\\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル。
 
 3. ContosoAdsWorker プロジェクトで、ダウンロードしたプロジェクトから *WorkerRole.cs* を追加します。
@@ -789,7 +790,7 @@ public override void Run()
 
 ループの各イテレーションの後でキュー メッセージが見つからなかった場合、プログラムは 1 秒間スリープ状態になります。これにより、worker ロールによって過剰な CPU 時間およびストレージ トランザクション コストが発生しないようにしています。Microsoft Customer Advisory Team では、ある開発者に関する話を紹介しています。この開発者は、この処理を組み込むのを忘れて運用環境にデプロイし、休暇に出かけてしまったのです。開発者が休暇から戻ると、その不注意によって休暇分を超える損失が生じていました。
 
-ときには、キュー メッセージの内容が原因で処理エラーが生じることがあります。このようなメッセージは *有害メッセージ* と呼ばれ、エラーをログに記録してループを再開するだけでは、このメッセージを処理する試みが際限なく繰り返されることになります。そこで、catch ブロックに if ステートメントを含めて、アプリが現在のメッセージを処理しようと試みた回数を調べ、その回数が 5 回を超えた場合はメッセージをキューから削除するようにしています。
+ときには、キュー メッセージの内容が原因で処理エラーが生じることがあります。このようなメッセージは*有害メッセージ*と呼ばれ、エラーをログに記録してループを再開するだけでは、このメッセージを処理する試みが際限なく繰り返されることになります。そこで、catch ブロックに if ステートメントを含めて、アプリが現在のメッセージを処理しようと試みた回数を調べ、その回数が 5 回を超えた場合はメッセージをキューから削除するようにしています。
 
 `ProcessQueueMessage` は、キュー メッセージが見つかったときに呼び出されます。
 
@@ -869,5 +870,6 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 * [Azure Cloud Services パート 1: 概要](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Cloud Services の管理方法](cloud-services-how-to-manage.md)
 * [Azure Storage](/documentation/services/storage/)
+* [クラウド サービス プロバイダーの選び方](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

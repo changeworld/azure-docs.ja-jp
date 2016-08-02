@@ -111,7 +111,12 @@ RUL が (デモンストレーション用に選択した任意のしきい値�
 
 TechNet のブログ投稿「[IoT Suite - Under The Hood - Predictive Maintenance (IoT スイート - 内部のしくみ - 予測的なメンテナンス)](http://social.technet.microsoft.com/wiki/contents/articles/33527.iot-suite-under-the-hood-predictive-maintenance.aspx)」では、予測的なメンテナンスの構成済みソリューションについて詳しく説明されています。
 
-  
+IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
+
+- [IoT スイートに関してよく寄せられる質問][lnk-faq]
+- [IoT の徹底的なセキュリティ][lnk-security-groundup]
+
+
 [img-architecture]: media/iot-suite-predictive-walkthrough/architecture.png
 [img-resource-group]: media/iot-suite-predictive-walkthrough/resource-group.png
 [img-machine-learning]: media/iot-suite-predictive-walkthrough/machine-learning.png
@@ -125,5 +130,7 @@ TechNet のブログ投稿「[IoT Suite - Under The Hood - Predictive Maintenanc
 [lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
+[lnk-faq]: iot-suite-faq.md
+[lnk-security-groundup]: securing-iot-ground-up.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

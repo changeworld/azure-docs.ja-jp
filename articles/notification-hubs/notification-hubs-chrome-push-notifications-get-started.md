@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-chrome"
 	ms.devlang="JavaScript"
 	ms.topic="hero-article"
-	ms.date="06/29/2016"
+	ms.date="07/22/2016"
 	ms.author="wesmc"/>
 
 # Azure Notification Hubs から Chrome アプリケーションへのプッシュ通知の送信
@@ -23,7 +23,7 @@
 
 このトピックでは、Azure Notification Hubs を使用して Chrome アプリケーションにプッシュ通知を送信し、Google Chrome ブラウザーのコンテキスト内で表示する方法を紹介します。このチュートリアルでは、[Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/) を使用してプッシュ通知を受信する Chrome アプリケーションを作成します。
 
->[AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F)を参照してください。
+>[AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F)を参照してください。
 
 このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
@@ -462,10 +462,10 @@ Notification Hubs の詳細については、「[Notification Hubs の概要]」
 [21]: ./media/notification-hubs-chrome-get-started/FinalFolderView.png
 
 <!-- URLs. -->
-[Chrome アプリケーションの Notification Hub サンプル]: http://google.com
+[Chrome アプリケーションの Notification Hub サンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToChromeApps
 [Google Cloud Console]: http://cloud.google.com/console
 [Azure Classic Portal]: https://manage.windowsazure.com/
-[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs の概要]: notification-hubs-push-notification-overview.md
 [Chrome Apps Overview (Chrome アプリケーションの概要)]: https://developer.chrome.com/apps/about_apps
 [Chrome アプリケーションの GCM サンプル]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
@@ -477,4 +477,4 @@ Notification Hubs の詳細については、「[Notification Hubs の概要]」
 [Azure Notification Hubs と .NET バックエンドによるユーザーへの通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
 [Azure Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

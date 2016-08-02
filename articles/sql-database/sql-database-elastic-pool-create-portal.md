@@ -11,7 +11,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/06/2016"
+	ms.date="07/20/2016"
 	ms.author="ninarn"
 	ms.workload="data-management"
 	ms.topic="get-started-article"
@@ -33,9 +33,11 @@
 
 ## 手順 1. 新しいプールを作成する
 
-サーバーに新しいプールを追加することで、エラスティック データベース プールを作成します。サーバーに複数のプールを追加することはできますが、同じプールに異なるサーバーからデータベースを追加することはできません。
+この記事では、ポータルの既存の **[サーバー]** ブレードから新しいプールを作成する方法について説明します。これは、既存のデータベースをプールに移動する最も簡単な方法です。
 
-1. [Azure ポータル](http://portal.azure.com/)で、**[SQL Server]** をクリックし、プールに追加するデータベースが含まれているサーバーをクリックします。
+> [AZURE.NOTE] 既にサーバーを所有しているかどうかにかかわらず、**[SQL 可変プール]** ブレードから新しいプールを作成することもできます (ポータルの左側の一覧の下で、**[参照]****、****[SQL 可変プール]** の順にクリックします)。**[SQL 可変プール]** ブレードで **[+ 追加]** をクリックすると、プールのプロビジョニングのワークフロー中に、新しいサーバーを作成する手順が示されます。
+
+1. [Azure ポータル](http://portal.azure.com/)の左側の一覧の下で、**[参照]****、****[SQL サーバー]** の順にクリックし、プールに追加するデータベースが含まれているサーバーをクリックします。
 2. **[新しいプール]** をクリックします。
 
     ![サーバーへのプールの追加](./media/sql-database-elastic-pool-create-portal/new-pool.png)
@@ -71,9 +73,9 @@
 
     ![データベースの追加](./media/sql-database-elastic-pool-create-portal/add-databases.png)
 
-    使用するデータベースに十分な過去の使用状況テレメトリがある場合、構成の決定に役立つ **[推定される eDTU と GB の使用状況]** グラフと **[実際の eDTU 使用量]** 横棒グラフが更新されます。また、プールの適切なサイズ設定に役立つ推奨事項に関するメッセージが表示される場合もあります。詳細については、「[動的な推奨事項](#dynamic-recommendations)」を参照してください。
+    使用するデータベースに十分な過去の使用状況テレメトリがある場合、構成の決定に役立つ **[Estimated eDTU and GB usage (推定される eDTU と GB の使用状況)]** グラフと **[Actual eDTU usage (実際の eDTU 使用量)]** 横棒グラフが更新されます。また、プールの適切なサイズ設定に役立つ推奨事項に関するメッセージが表示される場合もあります。詳細については、「[動的な推奨事項](#dynamic-recommendations)」を参照してください。
 
-3. **[プールの構成]** ページにあるコントロールを使用して設定を確認し、プールを構成します。各サービス プランの上限の詳細については、[エラスティック プールの上限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)に関する記事を参照してください。プールの適切なサイズ設定に関する詳細なガイダンスについては、[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)に関する記事を参照してください。プールの設定の詳細については、「[エラスティック データベース プールのプロパティ](sql-database-elastic-pool.md#elastic-database-pool-properties)」を参照してください。
+3. **[プールの構成]** ページにあるコントロールを使用して設定を確認し、プールを構成します。各サービス レベルの上限の詳細については、[エラスティック プールの上限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)に関するトピックを参照してください。プールの適切なサイズ設定に関する詳細なガイダンスについては、[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)についての記事を参照してください。プールの設定の詳細については、「[エラスティック データベース プールのプロパティ](sql-database-elastic-pool.md#elastic-database-pool-properties)」を参照してください。
 
 	![エラスティック プールの構成](./media/sql-database-elastic-pool-create-portal/configure-performance.png)
 
@@ -109,6 +111,6 @@ SQL Database サービスでは使用状況の履歴を評価し、単一のデ�
 - [Azure ポータルを使用したエラスティック データベース プールの監視、管理、サイズ設定](sql-database-elastic-pool-manage-portal.md)
 - [エラスティック データベース プールの監視と管理 (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
 - [C# で SQL Database を作成し、管理する](sql-database-elastic-pool-manage-csharp.md)
-- [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md) 
+- [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

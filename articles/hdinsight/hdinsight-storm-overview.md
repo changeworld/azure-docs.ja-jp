@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/06/2016"
+   ms.date="07/27/2016"
    ms.author="larryfr"/>
 
 #HDInsight での Apache Storm の概要: Hadoop のリアルタイム分析
@@ -207,6 +207,12 @@ Trident を使用している場合、これはタプルのバッチ処理を基
 
 この詳細については、「[RollingTopWords](https://github.com/nathanmarz/storm-starter/blob/master/src/jvm/storm/starter/RollingTopWords.java)」の例を参照してください。
 
+##Storm で使用されるログの種類
+
+Storm では、Apache Log4j を使用して情報をログに記録します。既定では大量のデータがログに記録されるため、情報を調べるのが困難になる可能性があります。Storm トポロジの一部にログの構成ファイルを含めることにより、ログ記録の動作を制御することができます。
+
+ログ記録を構成する方法を示すトポロジの例については、HDInsight で Storm を使用した [Java ベースの WordCount](hdinsight-storm-develop-java-topology.md) の例を参照してください。
+
 ##次のステップ
 
 HDInsight で Apache Storm を使用したリアルタイム分析ソリューションの詳細について学習します。
@@ -220,4 +226,4 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 [apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
 [gettingstarted]: hdinsight-apache-storm-tutorial-get-started-linux.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

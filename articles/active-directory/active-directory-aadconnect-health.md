@@ -44,7 +44,7 @@ Azure AD Connect Health for AD FS では、Windows Server 2008 R2 の AD FS 2.0 
 
 次のビデオでは、Azure AD Connect Health for AD FS の概要について説明します。
 
-> [AZURE.VIDEO azure-ad-connect-health--monitor-you-identity-bridge]
+>[AZURE.VIDEO azure-ad-connect-health--monitor-you-identity-bridge]
 
 ## [Azure AD Connect Health for Sync](active-directory-aadconnect-health-sync.md)
 
@@ -60,6 +60,7 @@ Azure AD Connect Health for Sync は、オンプレミスの Active Directory �
 >[AZURE.VIDEO azure-active-directory-connect-health-monitoring-the-sync-engine]
 
 ## [Azure AD Connect Health for AD DS (プレビュー)](active-directory-aadconnect-health-adds.md)
+
 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 にインストールされているドメイン コントローラーは、Azure AD Connect Health for AD DS で監視することができます。手軽で経済的な正常性エージェントをインストールすることによって、オンプレミスの AD DS 環境をクラウドから直接監視することができます。Azure AD Connect Health for AD DS の主な機能は次のとおりです。
 
 - ドメイン コントローラーの異常を検出する監視アラートと重大なアラートを知らせる電子メール通知。
@@ -122,4 +123,4 @@ Azure AD Connect Health ポータルを使用すると、アラート、パフ�
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!------HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

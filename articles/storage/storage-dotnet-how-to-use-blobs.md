@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="06/09/2016"
+	ms.date="07/22/2016"
 	ms.author="tamram"/>
 
 
 # .NET を使用して Azure Blob Storage を使用する
 
-[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## 概要
 
@@ -33,7 +33,7 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 
 **前提条件:**
 
-- [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
+- [Microsoft Visual Studio](https://www.visualstudio.com/ja-JP/visual-studio-homepage-vs.aspx)
 - [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
 - [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 - [Azure ストレージ アカウント](storage-create-storage-account.md#create-a-storage-account)
@@ -365,18 +365,21 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
 既定では、ストレージ アカウント内の BLOB データには、ストレージ アカウント所有者だけがアクセスできます。Blob Storage に対する認証要求には、既定ではアカウント アクセス キーが必要です。ただし、特定の BLOB データは他のユーザーが使用できるようにしたい場合があります。2 つのオプションがあります。
 
 - **匿名アクセス:** コンテナーまたはその BLOB を匿名アクセスに対して公開することができます。詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
-- **Shared Access Signature:** Shared Access Signature (SAS) をクライアントに提供することができます。この署名は、ストレージ アカウント内のリソースへの委任アクセスと指定されたアクセス許可を、指定された期間にわたって提供します。詳細については、「[Shared Access Signature、第 1 部: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+- **Shared Access Signature:** Shared Access Signature (SAS) をクライアントに提供することができます。この署名は、ストレージ アカウント内のリソースへの委任アクセスと指定されたアクセス許可を、指定された期間にわたって提供します。詳細については、「[Shared Access Signature: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 ### BLOB データの暗号化
 
 Azure Storage では、クライアント側とサーバー側の両方で、BLOB データの暗号化をサポートしています。
 
-- **クライアント側の暗号化**: .NET 用 ストレージ クライアント ライブラリは、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは Azure Key Vault との統合にも役立ち、ストレージ アカウント キー管理に利用することができます。詳細については、[.NET による Microsoft Azure Storage のクライアント側の暗号化](storage-client-side-encryption.md)についてのページを参照してください。また、「[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](storage-encrypt-decrypt-blobs-key-vault.md)」も参照してください。
+- **クライアント側の暗号化**: .NET 用ストレージ クライアント ライブラリは、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは Azure Key Vault との統合にも役立ち、ストレージ アカウント キー管理に利用することができます。詳細については、[.NET による Microsoft Azure Storage のクライアント側の暗号化](storage-client-side-encryption.md)についてのページを参照してください。また、「[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](storage-encrypt-decrypt-blobs-key-vault.md)」も参照してください。
 - **サーバー側の暗号化**: Azure Storage は現在、サーバー側の暗号化をサポートしています。「[Azure Storage Service Encryption for Data at Rest (プレビュー)](storage-service-encryption.md)」を参照してください。
 
 ## 次のステップ
 
 これで、Blob Storage の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
+
+### Microsoft Azure ストレージ エクスプローラー
+- [Microsoft Azure ストレージ エクスプローラー (MASE)](../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、OS X、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
 ### Blob Storage のサンプル
 
@@ -404,4 +407,4 @@ Azure Storage では、クライアント側とサーバー側の両方で、BLO
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

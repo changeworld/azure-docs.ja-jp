@@ -8,7 +8,7 @@
 	editor=""/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -50,4 +50,4 @@ Azure App Service では、さまざまなサービス レベルを提供して�
 Standard コネクタ、BizTalk EAI、Premium コネクタなどの各カテゴリに含まれるコネクタと API Apps の完全な一覧については、[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)を参照してください。
  
 
-<!------HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

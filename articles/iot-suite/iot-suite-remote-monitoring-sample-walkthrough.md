@@ -34,7 +34,7 @@ IoT Suite リモート監視の[事前構成済みソリューション][lnk-pre
 
 ## シミュレートされたデバイス
 
-事前構成済みソリューションにおいて、シミュレートされたデバイスは冷却装置 (建物のエアコンや施設の空気処理ユニットなど) を表します。事前構成済みのソリューションをデプロイすると、[Azure WebJob][lnk-webjobs] で動作する 4 つのシミュレーション デバイスが自動的にプロビジョニングされます。シミュレーション デバイスを使用することで、ソリューションの動作を簡単に調査することができます。物理デバイスをデプロイする必要はありません。実際の物理デバイスをデプロイするには、チュートリアル「[デバイスをリモート監視構成済みソリューションに接続する][lnk-connectyourdevice]」を参照してください。
+事前構成済みソリューションにおいて、シミュレートされたデバイスは冷却装置 (建物のエアコンや施設の空気処理ユニットなど) を表します。事前構成済みのソリューションをデプロイすると、[Azure WebJob][lnk-webjobs] で動作する 4 つのシミュレーション デバイスが自動的にプロビジョニングされます。シミュレーション デバイスを使用することで、ソリューションの動作を簡単に調査することができます。物理デバイスをデプロイする必要はありません。実際の物理デバイスをデプロイするには、チュートリアル「[デバイスをリモート監視構成済みソリューションに接続する][lnk-connect-rm]」を参照してください。
 
 シミュレーション デバイスはそれぞれ、次の種類のメッセージを IoT Hub に送信することができます。
 
@@ -218,12 +218,17 @@ Web アプリでは、デバイスから送信されたテレメトリ データ
 - [IoT Suite - Under The Hood - Remote Monitoring (IoT スイート - 内部のしくみ - リモート監視)](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx)
 - [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices (IoT スイート - リモート監視 - ライブおよびシミュレートされたデバイスの追加)](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx)
 
+引き続き IoT Suite の概要について学習するには、次の記事を参照してください。
+
+- [デバイスをリモート監視の事前構成済みソリューションに接続する][lnk-connect-rm]
+- [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
 
 [lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-connectyourdevice]: iot-suite-connecting-devices.md
 [lnk-iothub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [lnk-webjobs]: https://azure.microsoft.com/documentation/articles/websites-webjobs-resources/
+[lnk-connect-rm]: iot-suite-connecting-devices.md
+[lnk-permissions]: iot-suite-permissions.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

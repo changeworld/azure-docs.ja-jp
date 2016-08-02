@@ -193,7 +193,9 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 -	[キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を[監視](cache-how-to-monitor.md)できるようにします。Azure ポータルでメトリックを表示できますが、お好みのツールを使用して、メトリックを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
 -	[StackExchange.Redis キャッシュ クライアントのドキュメント][]を参照してください。
 	-	Azure Redis Cache は、さまざまな Redis クライアントや開発言語からアクセスできます。詳細については、[http://redis.io/clients][] を参照してください。
-	-	Azure Redis Cache は、Redsmin などのサービスと共に使用することもできます。詳細については、「[Azure Redis 接続文字列を取得し、Redsmin と共に使用する方法][]」を参照してください。
+-	Azure Redis Cache は、Redsmin や Redis Desktop Manager などのサードパーティのサービスやツールと共に使用することもできます。
+	-	詳細については、[Azure Redis 接続文字列を取得し、Redsmin と共に使用する方法][]に関するページを参照してください。
+	-	[Redis Desktop Manager](https://github.com/uglide/RedisDesktopManager) を使用して GUI で Azure Redis Cache 内のデータにアクセスし、データを確認します。
 -	[redis][] のドキュメント、[redis のデータ型に関するページ][]、[redis のデータ型の概念に関するページ][]を参照してください。
 
 
@@ -284,4 +286,4 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 
 [How Application Strings and Connection Strings Work (アプリケーション文字列と接続文字列の動作)]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 
-<!-------HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -3,7 +3,7 @@
     description="多数のデータベースでリソースを共有できるように、C# データベース開発手法を使用して、Azure SQL Database にスケーラブルなエラスティック データベース プールを作成します。"
     services="sql-database"
     documentationCenter=""
-    authors="srinia"
+    authors="stevestein"
     manager="jhubbard"
     editor=""/>
 
@@ -13,8 +13,8 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="csharp"
     ms.workload="data-management"
-    ms.date="07/05/2016"
-    ms.author="srinia"/>
+    ms.date="07/22/2016"
+    ms.author="sstein"/>
 
 # C&#x23; による新しい Elastic Database プールの作成
 
@@ -24,13 +24,13 @@
 - [C#](sql-database-elastic-pool-create-csharp.md)
 
 
-C&#x23; を使った[エラスティック データベース プール](sql-database-elastic-pool.md)の作成方法について説明します。
+C# を使った[エラスティック データベース プール](sql-database-elastic-pool.md)の作成方法について説明します。
 
 一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」を参照してください。
 
 ここで示す例では [SQL Database Library for .NET](https://msdn.microsoft.com/library/azure/mt349017.aspx) を使用します。このライブラリをまだインストールしていない場合は、作業を続行する前にインストールする必要があります。このライブラリをインストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行します。
 
-    PM> Install-Package Microsoft.Azure.Management.Sql –Pre
+    Install-Package Microsoft.Azure.Management.Sql –Pre
 
 ## 新しいプールの作成
 
@@ -74,7 +74,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 
 既存のデータベースをプールに移動する方法については、「[エラスティック プールへのデータベースの移動](sql-database-elastic-pool-manage-csharp.md#Move-a-database-into-an-elastic-pool)」を参照してください。
 
-## 例: C&#x23 を使用したプールの作成
+## 例: C&#x23; を使用したプールの作成
 
 この例では、新しい Azure リソース グループ、新しい Azure SQL Server インスタンス、新しいエラスティック プールを作成します。
  
@@ -82,7 +82,7 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行します。
 
     Install-Package Microsoft.Azure.Management.Sql –Pre
-    Install-Package Microsoft.Azure.Management.Resources –Pre
+    Install-Package Microsoft.Azure.Management.ResourceManager –Pre -Version 1.1.1-preview
     Install-Package Microsoft.Azure.Common.Authentication –Pre
 
 コンソール アプリを作成し、Program.cs の内容を次の内容に置き換えます。必要なクライアント ID と関連する値を取得するには、[アプリの登録と、アプリを SQL Database に接続するために必要なクライアント値の取得](sql-database-client-id-keys.md)に関するページをご覧ください。[Get-AzureRmSubscription](https://msdn.microsoft.com/library/mt619284.aspx) コマンドレットを使用して subscriptionId の値を取得します。
@@ -249,4 +249,4 @@ C&#x23; を使った[エラスティック データベース プール](sql-dat
 - [SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 - [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

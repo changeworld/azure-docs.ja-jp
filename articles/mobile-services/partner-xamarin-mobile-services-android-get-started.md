@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="02/10/2016"
+	ms.date="07/21/2016"
 	ms.author="donnam"/>
 
 # <a name="getting-started"></a>Mobile Services の使用
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)] &nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
 > このトピックの Mobile Apps バージョンについては、「[Xamarin.Android アプリの作成](../app-service-mobile/app-service-mobile-xamarin-android-get-started.md)」を参照してください。
@@ -54,7 +54,7 @@
 
 1.  [Azure クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
-2. [クイック スタート] タブの **[プラットフォームの選択]** で **\[Xamarin.Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
+2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Xamarin.Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
 
 	![][6]
 
@@ -141,4 +141,4 @@
 [Azure]: http://azure.microsoft.com/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->
