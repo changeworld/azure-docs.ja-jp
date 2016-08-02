@@ -1,23 +1,23 @@
 <properties
-			pageTitle="Windows で Azure File Storage を使用する | Microsoft Azure"
-    		description="Azure File Storage を使用してクラウドにファイル データを格納し、Azure 仮想マシン (VM) から、または Windows を実行しているオンプレミスのアプリケーションからクラウド ファイル共有をマウントします。"
-            services="storage"
-            documentationCenter=".net"
-            authors="mine-msft"
-            manager="aungoo"
-            editor="tysonn" />
+	pageTitle="Windows で Azure File Storage を使用する | Microsoft Azure"
+	description="Azure File Storage を使用してクラウドにファイル データを格納し、Azure 仮想マシン (VM) から、または Windows を実行しているオンプレミスのアプリケーションからクラウド ファイル共有をマウントします。"
+	services="storage"
+	documentationCenter=".net"
+	authors="mine-msft"
+	manager="aungoo"
+	editor="tysonn" />
 
 <tags ms.service="storage"
-      ms.workload="storage"
-      ms.tgt_pltfrm="na"
-      ms.devlang="dotnet"
-      ms.topic="hero-article"
-	ms.date="06/09/2016"
-      ms.author="minet" />
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
+	ms.date="07/26/2016"
+	ms.author="minet" />
 
 # Windows で Azure File Storage を使用する
 
-[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
+[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
 
 ## 概要
 
@@ -55,7 +55,7 @@ File Storage のスケーラビリティおよびパフォーマンスのター�
 	- ファイルを、同じストレージ アカウント内の BLOB にコピーする
 - トラブルシューティングに Azure Storage メトリックを使用します。
 
-File Storage は、すべてのストレージ アカウントでサポートされているため、既存のストレージ アカウントを使用することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントの作成については、「[ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+File Storage は、すべてのストレージ アカウントでサポートされているため、既存のストレージ アカウントを使用することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントの作成については、[ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)に関するセクションを参照してください。
 
 ## ファイル共有を管理するための Azure ポータルの使用
 
@@ -65,7 +65,7 @@ File Storage は、すべてのストレージ アカウントでサポートさ
 - ファイル共有からのファイルのアップロードおよびダウンロード
 - 各ファイル共有の実際の使用状況の監視
 - 共有のサイズ クォータの調整
-- Windows クライアントからファイル共有をマウントするために使用する `net use` コマンドの取得 
+- Windows クライアントからファイル共有をマウントするために使用する `net use` コマンドの取得
 
 ### ファイル共有の作成
 
@@ -107,7 +107,7 @@ File Storage は、すべてのストレージ アカウントでサポートさ
 
 ### ファイル共有の管理
 
-1. **[クォータ]** をクリックして、ファイル共有のサイズを変更します (最大 5120 GB)。
+1. **[クォータ]** をクリックして、ファイル共有のサイズを変更します (最大 5,120 GB)。
 
 	![Screenshot that shows how to configure the quota of the file share](./media/storage-dotnet-how-to-use-files/files-manage-1.png)
 
@@ -195,7 +195,7 @@ SMB 3.0 のサポートにより、File Storage では、SMB 3.0 クライアン
 
 - 同じリージョン内の Azure の仮想マシン (SMB 2.1 でもサポート)
 - 別のリージョンの Azure の仮想マシン (SMB 3.0 のみ)
-- オンプレミスのクライアント アプリケーション (SMB 3.0 のみ) 
+- オンプレミスのクライアント アプリケーション (SMB 3.0 のみ)
 
 クライアントが File Storage にアクセスするときに使用する SMB バージョンは、オペレーティング システムでサポートされている SMB バージョンによって異なります。次の表に、Windows クライアントでのサポートの概要を示します。SMB バージョンの詳細については、[こちらのブログ](http://blogs.technet.com/b/josebda/archive/2013/10/02/windows-server-2012-r2-which-version-of-the-smb-protocol-smb-1-0-smb-2-0-smb-2-1-smb-3-0-or-smb-3-02-you-are-using.aspx)を参照してください。
 
@@ -213,7 +213,7 @@ SMB 3.0 のサポートにより、File Storage では、SMB 3.0 クライアン
 Azure のファイル共有をマウントする方法を示すために、ここでは Windows を実行する Azure の仮想マシンを作成します。このマシンにリモート接続して、共有をマウントします。
 
 
-1. 最初に、「[Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)」の説明に従って、Azure の仮想マシンを新規作成します。
+1. 最初に、[Azure ポータルでの Windows 仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページの説明に従って、Azure の仮想マシンを新規作成します。
 2. 次に、「[Azure ポータルを使用して Windows 仮想マシンにログオンする](../virtual-machines/virtual-machines-windows-connect-logon.md)」の説明に従って仮想マシンにリモート接続します。
 3. 仮想マシンで PowerShell ウィンドウを開きます。
 
@@ -251,8 +251,8 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 オンプレミスのクライアントからファイル共有をマウントするには、まず次の手順を実行する必要があります。
 
-- SMB 3.0 をサポートする Windows バージョンをインストールします。Windows では、オンプレミスのクライアントと、クラウドの Azure のファイル共有間でデータを安全に転送するために SMB 3.0 の暗号化を利用しています。 
-- インターネット アクセス用に SMB プロトコルで必要とされるポート 445 (TCP 送信) をローカル ネットワークで開きます。 
+- SMB 3.0 をサポートする Windows バージョンをインストールします。Windows では、オンプレミスのクライアントと、クラウドの Azure のファイル共有間でデータを安全に転送するために SMB 3.0 の暗号化を利用しています。
+- インターネット アクセス用に SMB プロトコルで必要とされるポート 445 (TCP 送信) をローカル ネットワークで開きます。
 
 > [AZURE.NOTE] 一部のインターネット サービス プロバイダーは、ポート 445 をブロックしている場合があるため、サービス プロバイダーに確認する必要がある場合があります。
 
@@ -422,7 +422,7 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降、
         Console.WriteLine(fileSas.DownloadText());
     }
 
-Shared Access Signature の作成および使用の詳細については、「[Shared Access Signature: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」と「[Blob Storage による SAS の作成および使用](storage-dotnet-shared-access-signature-part-2.md)」を参照してください。
+Shared Access Signature の作成および使用の詳細については、「[Shared Access Signature: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」と「[Blob Storage での SAS の作成と使用](storage-dotnet-shared-access-signature-part-2.md)」を参照してください。
 
 ### ファイルのコピー
 
@@ -582,7 +582,7 @@ Blob Storage、Table Storage、Queue Storage は `Microsoft.WindowsAzure.Storage
 
 ## File Storage のよく寄せられる質問
 
-1. **File Storage では、Active Directory ベースの認証はサポートされていますか。** 
+1. **File Storage では、Active Directory ベースの認証はサポートされていますか。**
 
 	現在、AD ベースの認証や、ACL はサポートしていませんが、今後サポートする可能性はあります。現時点では、ファイル共有の認証には、Azure Storage のアカウント キーを使用しています。REST API またはクライアント ライブラリを使用した Shared Access Signature (SAS) での回避策を提供しています。SAS を使用すると、指定した時間間隔の間に有効な特定のアクセス許可を持つトークンを生成できます。たとえば、特定のファイルへの読み取り専用のアクセス許可を持つトークンを生成できます。トークンを所有するすべてのユーザーは、そのファイルへの読み取り専用アクセスをその有効期間の間持ちます。
 
@@ -638,7 +638,7 @@ Blob Storage、Table Storage、Queue Storage は `Microsoft.WindowsAzure.Storage
 
 14. **IBM MQ での Azure File Storage の使用**
 
-	IBM は、IBM MQ ユーザーが IBM のサービスで Azure File Storage を構成する際にガイドとなるドキュメントを公開しました。詳細については、「[How to setup IBM MQ Multi instance queue manager with Microsoft Azure File Service (IBM MQ マルチ インスタンス キュー マネージャーを Microsoft Azure File Service でセットアップする方法)](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)」を参照してください。
+	IBM は、IBM MQ ユーザーが IBM のサービスで Azure File Storage を構成する際にガイドとなるドキュメントを公開しました。詳細については、「[How to setup IBM MQ Multi instance queue manager with Microsoft Azure File Service (IBM MQ マルチ インスタンス キュー マネージャーを Microsoft Azure File サービスでセットアップする方法)](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)」を参照してください。
 
 ## 次のステップ
 
@@ -663,8 +663,8 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 ### ブログ記事
 
 - [Azure File Storage の一般提供開始](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-- [Inside Azure File Storage (Azure File Storage の内部)](https://azure.microsoft.com/blog/inside-azure-file-storage/) 
+- [Inside Azure File Storage (Azure File Storage の内部)](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

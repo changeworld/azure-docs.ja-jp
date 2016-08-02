@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/16/2016"
+   ms.date="07/23/2016"
    ms.author="lodipalm;barbkess;mausher;jrj;sonyama;kevin"/>
 
 
@@ -146,7 +146,7 @@ Polybase では、使い慣れている T-SQL コマンドを使用してさま�
 
 ## 次のステップ
 
-SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][]し、[サンプル データを読み込む][]方法について学習してください。または、次の SQL Data Warehouse リソースも確認できます。
+SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][]し、[サンプル データを読み込む][]方法について学習してください。Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][]が役立ちます。または、次の SQL Data Warehouse リソースも確認できます。
 
 - [ブログ]
 - [機能に関する要求]
@@ -169,6 +169,7 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 [SQL Data Warehouse ソリューション パートナー]: sql-data-warehouse-partner-business-intelligence.md
 [統合されているツールの概要]: sql-data-warehouse-overview-integrate.md
 [バックアップと復元の概要]: sql-data-warehouse-restore-database-overview.md
+[Azure 用語集]: ../azure-glossary-cloud-terminology.md
 
 <!--MSDN references-->
 
@@ -181,4 +182,4 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

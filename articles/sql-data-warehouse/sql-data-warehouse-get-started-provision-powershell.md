@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Powershell を使用して SQL Data Warehouse を作成する |Microsoft Azure"
-   description="Powershell を使用して SQL Data Warehouse を作成します"
+   pageTitle="PowerShell を使用して SQL Data Warehouse を作成する | Microsoft Azure"
+   description="PowerShell を使用して SQL Data Warehouse を作成します。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="lodipalm"
@@ -13,27 +13,31 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/11/2016"
+   ms.date="07/20/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
-# Powershell を使用して SQL Data Warehouse を作成する
+# PowerShell を使用して SQL Data Warehouse を作成する
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-data-warehouse-get-started-provision.md)
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
-## 前提条件
-開始する前に、以下の前提条件を満たしていることを確認します。
+この記事では、PowerShell を使用して SQL Data Warehouse を作成する方法を示します。
 
-- **Azure アカウント**: アカウントを作成するには、[Azure 無料試用版][]に関するページまたは [MSDN Azure クレジット][]に関するページを参照してください。
-- **V12 Azure SQL Server**: [Azure ポータルを使用した Azure SQL Database 論理サーバーの作成][]に関する記事または [PowerShell を使用した Azure SQL Database 論理サーバーの作成][]に関する記事を参照してください。
-- **リソース グループ名**: V12 Azure SQL Server と同じリソース グループを使用します。新しいリソース グループを作成する場合は、[リソース グループ][]に関する記事を参照してください。
+## 前提条件
+
+開始するには、以下のものが必要です。
+
+- **Azure アカウント**: アカウントを作成するには、[Azure 無料試用版][]に関するページまたは [MSDN Azure クレジット][]に関するページにアクセスしてください。
+- **Azure SQL サーバー**: 詳細については、[Azure ポータルでの Azure SQL Database 論理サーバーの作成][]に関するセクションか、[PowerShell を使用したAzure SQL Database 論理サーバーの作成][]に関するセクションを参照してください。
+- **リソース グループ**: 使用している Azure SQL Server と同じリソース グループを使用するか、[リソース グループの作成方法][]に関するセクションを参照してください。
 - **PowerShell バージョン 1.0.3 以降**: **Get-Module -ListAvailable -Name Azure** を実行することで、バージョンを確認できます。最新バージョンは、[Microsoft Web Platform Installer][] からインストールできます。最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」を参照してください。
 
 > [AZURE.NOTE] 新しい SQL Data Warehouse を作成すると、新しい課金対象サービスを使用することになる場合があります。料金の詳細については、「[SQL Data Warehouse の価格][]」を参照してください。
 
 ## SQL Data Warehouse の作成
+
 1. Windows PowerShell を開きます。
 2. このコマンドレットを実行して、Azure リソース マネージャーにログインします。
 
@@ -82,9 +86,9 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 
 [Azure PowerShell のインストールおよび構成方法]: ../powershell/powershell-install-configure.md
 [how to create a SQL Data Warehouse from the Azure Portal]: ./sql-data-warehouse-get-started-provision.md
-[Azure ポータルを使用した Azure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
-[PowerShell を使用した Azure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
-[リソース グループ]: ../resource-group-template-deploy-portal.md
+[Azure ポータルでの Azure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
+[PowerShell を使用したAzure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
+[リソース グループの作成方法]: ../resource-group-template-deploy-portal.md#create-resource-group
 
 <!--MSDN references--> 
 [MSDN]: https://msdn.microsoft.com/library/azure/dn546722.aspx
@@ -97,4 +101,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [Azure 無料試用版]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure クレジット]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

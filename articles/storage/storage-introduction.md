@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/08/2016"
+	ms.date="07/21/2016"
 	ms.author="tamram"/>
 
 # Microsoft Azure Storage の概要
@@ -138,7 +138,7 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 
 ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択する必要があります。
 
-- **ローカル冗長ストレージ (LRS)。** ローカル冗長ストレージでは、データのコピーが 3 つ保持されます。LRS は、1 つのリージョンの 1 つの施設内で 3 回複製されます。LRS では、データは通常のハードウェア障害から保護されますが、1 つの施設の障害からは保護されません。  
+- **ローカル冗長ストレージ (LRS)。** ローカル冗長ストレージでは、データのコピーが 3 つ保持されます。LRS は、1 つのリージョンの 1 つの施設内で 3 回複製されます。LRS では、データは通常のハードウェア障害から保護されますが、1 つの施設の障害からは保護されません。
   
 	LRS は割引料金で提供されます。持続性を最大限に高めるために、以下で説明する geo 冗長ストレージを使用することをお勧めします。
 
@@ -208,7 +208,9 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 
 ### ツールとユーティリティ
 
-- [Azure SDK とツール](https://azure.microsoft.com/downloads/)
+- [Azure Storage Explorer](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+- [Azure Storage クライアント ツール](storage-explorers.md)
+- [Azure SDK とツール](https://azure.microsoft.com/tools/)
 - [Azure ストレージ エミュレーター](http://www.microsoft.com/download/details.aspx?id=43709)
 - [Azure PowerShell](../powershell-install-configure.md)
 - [AzCopy コマンド ライン ユーティリティ](http://aka.ms/downloadazcopy)
@@ -265,4 +267,4 @@ Azure Storage についてさらに学習するには、次のリソースを参
 - [Python から Queue ストレージを使用する方法](storage-python-how-to-use-queue-storage.md)
 - [Python からファイル ストレージを使用する方法](storage-python-how-to-use-file-storage.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

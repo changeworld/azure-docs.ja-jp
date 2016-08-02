@@ -29,15 +29,14 @@ Microsoft Azure IoT Suite は、[リモート監視][lnk-preconfigured-solutions
 
 ## 次のステップ
 
-Azure の IoT の詳細については、以下のリソースを参照してください。
+IoT Suite と構成済みのソリューションについて引き続き学習するには、次のリソースを参照してください。
 
-- [Azure IoT Suite の概要][lnk-suite-overview]。
-- [IoT 事前構成済みソリューションの使用][lnk-preconfigured-solutions]。
-- [IoT Suite リモート監視ソリューションにデバイスを接続する][lnk-connecting]。
-- [Azure IoT Hub]
+- [Azure IoT Suite とは][lnk-whatissuite]
+- [Azure IoT Suite の構成済みソリューションとは][lnk-whatarepreconfigured]
 
-[lnk-suite-overview]: iot-suite-overview.md
-[lnk-connecting]: iot-suite-connecting-devices.md
+[lnk-whatissuite]: iot-suite-overview.md
+[lnk-whatarepreconfigured]: iot-suite-what-are-preconfigured-solutions.md
+
 [lnk-preconfigured-solutions]: iot-suite-getstarted-preconfigured-solutions.md
 [Azure IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [Azure Event Hubs]: https://azure.microsoft.com/documentation/services/event-hubs/
@@ -46,4 +45,4 @@ Azure の IoT の詳細については、以下のリソースを参照してく
 [Azure storage]: https://azure.microsoft.com/documentation/services/storage/
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

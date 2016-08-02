@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="06/09/2016"
+	ms.date="07/26/2016"
 	ms.author="gusapost"/>
 
 # .NET を使用して Azure Queue Storage を使用する
 
-[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
+[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## 概要
 
@@ -265,7 +265,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 - Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
     - 構造化データを格納するには、「[.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)」を参照してください。
     - 非構造化データを格納するには、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」を参照してください。
-    - リレーショナル データを格納するには、「[.NET アプリケーションで Azure SQL Database を使用する方法](sql-database-dotnet-how-to-use.md)」を参照してください。
+    - リレーショナル データを格納するには、[.NET アプリケーションで Azure SQL Database を使用する方法](sql-database-dotnet-how-to-use.md)についてのページを参照してください。
 
   [Download and install the Azure SDK for .NET]: /develop/net/
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
@@ -275,4 +275,4 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

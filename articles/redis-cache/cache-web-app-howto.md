@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
-	ms.date="06/30/2016" 
+	ms.date="07/22/2016" 
 	ms.author="sdanie"/>
 
 # Redis Cache で Web アプリを作成する方法
@@ -802,6 +802,8 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 ## 次のステップ
 
 -	[ASP.NET](http://asp.net/) サイトで [ASP.NET MVC 5 の基本](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)について学習します。
+-	App Service で ASP.NET Web アプリを作成するその他の例については、[HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect の[デモ](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)の「[Create and deploy an ASP.NET web app in Azure App Service (Azure App Service で ASP.NET Web アプリを作成およびデプロイする)](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service)」を参照してください。
+	-	HealthClinic.biz のデモに関連する他のクイック スタートについては、「[Azure Developer Tools Quickstarts (Azure 開発者ツールのクイック スタート)](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)」を参照してください。
 -	このチュートリアルで使用されている Entity Framework の Code First 手法について、「[新しいデータベースの Code First](https://msdn.microsoft.com/data/jj193542)」を参照して学習します。
 -	[Azure App Service の Web アプリ](../app-service-web/app-service-web-overview.md)について学習します。
 -	Azure ポータルでキャッシュを[監視](cache-how-to-monitor.md)する方法について学習します。
@@ -811,6 +813,7 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 	-	[How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)
 	-	[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)
 	-	Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Redis Cache の FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
+
 
 
 <!-- IMAGES -->
@@ -846,4 +849,4 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 [cache-delete-resource-group]: ./media/cache-web-app-howto/cache-delete-resource-group.png
 [cache-delete-confirm]: ./media/cache-web-app-howto/cache-delete-confirm.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

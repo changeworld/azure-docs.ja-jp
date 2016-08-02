@@ -53,14 +53,7 @@ IoT Suite には構成済みソリューションが含まれており、その�
 
 ## 次のステップ
 
-これで、IoT Suite で実行できる内容の概要と、主要なコンポーネントを把握しましたので、以下に進むことができます。
-
-- IoT Suite の構成済みソリューションの詳細については、「[Azure IoT の構成済みソリューションとは][lnk-what-are-preconfig]」を参照してください。
-
-- 構成済みソリューションのいずれかを初めて使用する方法については、「[チュートリアル: IoT 事前構成済みソリューションの使用][lnk-preconfig-start]」を参照してください。
-
-- Azure IoT Hub サービスについては、「[IoT Hub のドキュメント][lnk-iot-hub]」を参照してください。
-
+これで、IoT Suite で実行できる内容の概要と、主要なコンポーネントを把握できました。次は、[Azure IoT Suite の構成済みソリューションの概要][lnk-what-are-preconfig]に関するページを参照して、IoT Suite の構成済みソリューションの詳細について学習しましょう。
 
 [lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
@@ -71,7 +64,5 @@ IoT Suite には構成済みソリューションが含まれており、その�
 [lnk-web-apps]: https://azure.microsoft.com/documentation/services/app-service/web/
 [iot-suite-what-is-azure-iot]: iot-suite-what-is-azure-iot.md
 [lnk-what-are-preconfig]: iot-suite-what-are-preconfigured-solutions.md
-[lnk-preconfig-start]: iot-suite-getstarted-preconfigured-solutions.md
-[lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->
