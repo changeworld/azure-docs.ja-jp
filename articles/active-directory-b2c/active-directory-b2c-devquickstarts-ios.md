@@ -14,7 +14,7 @@
 
 # Azure AD B2C: サード パーティ ライブラリを使用して iOS アプリケーションから Web API を呼び出す
 
-<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
+<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)] -->
 
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。そのため開発者は、好きなライブラリを活用して Microsoft のサービスと連携させることができます。Microsoft では、そのプラットフォームを他のライブラリから使用する開発者のために、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を紹介するチュートリアルを作成しています。この記事もそうしたチュートリアルの一つです。Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
 

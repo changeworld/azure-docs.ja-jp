@@ -18,7 +18,7 @@
 
 # Azure Active Directory B2C: .NET Web API を構築する
 
-<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
+<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)] -->
 
 Azure Active Directory (Azure AD) B2C では、OAuth 2.0 アクセス トークンを使用して Web API をセキュリティ保護できます。これらのトークンにより、Azure AD B2C を使用するクライアント アプリは API の認証を行うことができます。この記事では、ユーザーによる CRUD タスクを可能にする .NET Model-View-Controller (MVC) の "To-Do List" API を作成する方法について説明します。この Web API は Azure AD B2C を使用してセキュリティで保護されるため、認証済みのユーザーのみが To-Do List を管理できます。
 
@@ -211,9 +211,9 @@ Azure AD B2C を使用して API をセキュリティ保護した後は、ア�
 
 <!--
 
-## Next steps
+## 次のステップ
 
-You can now move onto more advanced B2C topics. You may try:
+さらに高度な B2C のトピックに進むことができます。 次のチュートリアルを試してみてください。
 
 [Call a web API from a web app]()
 
