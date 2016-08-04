@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/10/2016"
+	ms.date="07/21/2016"
 	ms.author="jimpark; trinadhk"/>
 
 # Azure Backup とは
@@ -45,8 +45,8 @@ Backup はハイブリッド バックアップ ソリューションなので�
 | コンポーネント | Azure にデプロイできる? | オンプレミスにデプロイできる? | サポートされているターゲット ストレージ|
 | --- | --- | --- | --- |
 | Azure Backup エージェント | <p>**はい**</p> <p>Azure Backup エージェントは、Azure で実行されている任意の Windows Server VM にデプロイできます。</p> | <p>**はい**</p> <p>Backup エージェントは、任意の Windows Server VM または物理マシンにデプロイできます。</p> | <p>Azure Backup コンテナー</p> |
-| System Center Data Protection Manager (DPM) | <p>**はい**</p> <p>詳細については、[System Center DPM を使用して Azure のワークロードを保護する方法](http://blogs.technet.com/b/dpm/archive/2014/09/02/azure-iaas-workload-protection-using-data-protection-manager.aspx)を確認してください。</p> | <p>**はい**</p> <p>詳細については、[自社のデータセンターのワークロードと VM を保護する方法](https://technet.microsoft.com/library/hh758173.aspx)を確認してください。</p> | <p>ローカルに接続されているディスク、</p><p>Azure Backup コンテナー、</p><p>テープ (オンプレミスのみ)</p> |
-| Azure Backup Server | <p>**はい**</p> <p>詳細については、[Azure Backup Server を使用して Azure のワークロードを保護する方法](backup-azure-microsoft-azure-backup.md)を確認してください。</p> | <p>**はい**</p> <p>詳細については、[Azure Backup Server を使用して Azure のワークロードを保護する方法](backup-azure-microsoft-azure-backup.md)を確認してください。</p> | <p>ローカルに接続されているディスク、</p><p>Azure Backup コンテナー、</p> |
+| System Center Data Protection Manager (DPM) | <p>**はい**</p><p>詳細については、[System Center DPM を使用して Azure のワークロードを保護する方法](http://blogs.technet.com/b/dpm/archive/2014/09/02/azure-iaas-workload-protection-using-data-protection-manager.aspx)を確認してください。</p> | <p>**はい**</p> <p>詳細については、[自社のデータセンターのワークロードと VM を保護する方法](https://technet.microsoft.com/library/hh758173.aspx)を確認してください。</p> | <p>ローカルに接続されているディスク、</p><p>Azure Backup コンテナー、</p><p>テープ (オンプレミスのみ)</p> |
+| Azure Backup Server | <p>**はい**</p><p>詳細については、[Azure Backup Server を使用して Azure のワークロードを保護する方法](backup-azure-microsoft-azure-backup.md)を確認してください。</p> | <p>**はい**</p> <p>詳細については、[Azure Backup Server を使用して Azure のワークロードを保護する方法](backup-azure-microsoft-azure-backup.md)を確認してください。</p> | <p>ローカルに接続されているディスク、</p><p>Azure Backup コンテナー</p> |
 | Azure Backup (VM 拡張機能) | <p>**はい**</p><p>Azure のファブリックの一部</p><p>[Azure のサービスとしてのインフラストラクチャ (IaaS) 仮想マシンのバックアップ](backup-azure-vms-introduction.md)に特化しています。</p> | <p>**いいえ**</p> <p>System Center DPM を使用して、データセンターの仮想マシンをバックアップします。</p> | <p>Azure Backup コンテナー</p> |
 
 ### 各コンポーネントのメリットと制限事項
@@ -69,7 +69,7 @@ Backup はハイブリッド バックアップ ソリューションなので�
 | Microsoft SQL Server | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Microsoft SharePoint | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Microsoft Exchange | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
-| Azure IaaS VM (Windows) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
+| Azure IaaS VM (Windows) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) | 
 | Azure IaaS VM (Linux) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
 
 ## ARM と Linux のサポート
@@ -79,7 +79,7 @@ Backup はハイブリッド バックアップ ソリューションなので�
 | Azure Backup (MARS) エージェント | あり | なし (Windows ベースのエージェントのみ) |
 | System Center Data Protection Manager | あり (ゲスト内のエージェント) | Hyper-V のみ (Azure VM は不可) ファイル整合性のバックアップのみが可能 |
 | Azure Backup Server (MABS) | あり (ゲスト内のエージェント) | Hyper-V のみ (Azure VM は不可) ファイル整合性のバックアップのみが可能 (DPM と同じ) |
-| Azure IaaS VM のバックアップ | パブリック プレビュー中 | パブリック プレビュー中 - Resource Manager デプロイ モデルでの Linux VM <br>(ファイル システム レベルの整合性)<br><br>あり - クラシック デプロイ モデルでの Linux VM |
+| Azure IaaS VM のバックアップ | はい | はい |
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
@@ -98,7 +98,7 @@ Premium Storage VM をバックアップすると、Backup サービスによっ
 
 ### Premium Storage VM の復元
 
-Premium Storage VM の復旧ポイントを Premium Storage に復元する方法が、復元の一般的なプロセスです。ただし、Premium Storage VM の復旧ポイント Standard Storage に復元する方がコスト効率が良い場合があります。このような復元は、VM の一部のファイルのみが必要な場合に利用できます。
+Premium Storage VM は、Premium Storage と通常のストレージのどちらかに復元することができます。Premium Storage VM の復旧ポイントを Premium Storage に復元する方法が、復元の一般的なプロセスです。ただし、Premium Storage VM の復旧ポイント Standard Storage に復元する方がコスト効率が良い場合があります。このような復元は、VM の一部のファイルのみが必要な場合に利用できます。
 
 ## 機能
 以下の 5 つの表では、各コンポーネントにおける Backup の機能の処理方法をまとめます。
@@ -142,7 +142,7 @@ System Center DPM と Backup Server では、[Hyper-V 仮想マシンにデプ�
 
 >[AZURE.WARNING] バックアップ データの暗号化に使用されるキーは、ユーザーの手元にだけ存在します。マイクロソフトは Azure にコピーを保持していませんし、キーにもアクセスできません。ユーザーがキーを紛失した場合、マイクロソフトはバックアップ データを復旧できません。
 
-Azure VM のバックアップの場合は、仮想マシン*内*で暗号化を設定する必要があります。Windows 仮想マシンでは BitLocker を使用し、Linux 仮想マシンでは **dm-crypt** を使用します。Azure Backup では、この経路で受け取るバックアップ データは自動的に暗号化されません。
+Azure VM のバックアップの場合は、仮想マシン "*内*" で暗号化を設定する必要があります。Windows 仮想マシンでは BitLocker を使用し、Linux 仮想マシンでは **dm-crypt** を使用します。Azure Backup では、この経路で受け取るバックアップ データは自動的に暗号化されません。
 
 ### サポートされるワークロード
 
@@ -199,7 +199,7 @@ Azure Backup エージェントには、データ転送時のネットワーク�
 ## Azure Backup と Azure Site Recovery はどのように違いますか
 バックアップの復元と障害復旧はよく間違われます。どちらもデータをキャプチャして復元セマンティクスを提供しますが、中核となる価値提案は異なります。
 
-Azure Backup は、オンプレミスのデータまたはクラウド内のデータをバックアップします。Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、フェールバックを調整します。障害復旧ソリューションでは、データの安全性と復元可能性を維持し (Backup)、*さらに*、障害が発生したときにワークロードの可用性を維持する (Site Recovery) 必要があるため、どちらのサービスも重要です。
+Azure Backup は、オンプレミスのデータまたはクラウド内のデータをバックアップします。Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、フェールバックを調整します。障害復旧ソリューションでは、データの安全性と復元可能性を維持し (Backup)、"*さらに*"、障害が発生したときにワークロードの可用性を維持する (Site Recovery) 必要があるため、どちらのサービスも重要です。
 
 バックアップと障害復旧に関する意思決定を行うにあたっては、次の概念が役立ちます。
 
@@ -228,4 +228,4 @@ Azure Backup は、オンプレミスのデータまたはクラウド内のデ�
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

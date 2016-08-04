@@ -162,6 +162,7 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
 * インストルメンテーション キーは、テレメトリのすべての項目と共に送信されます。インストルメンテーション キーを受け取った Application Insights は、リソース内にこのキーを表示します。
 * HTTP 要求コンポーネントはオプションです。このコンポーネントは、要求と応答時間に関するテレメトリをポータルに自動的に送信します。
 * イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。これにより、[診断検索][diagnostic]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
+* Application Insights キーは Azure ポータルからシステム プロパティ (-DAPPLICATION\_INSIGHTS\_IKEY=your\_ikey) として動的に渡されることがあります。定義されたプロパティがない場合、Azure Appsetting で環境変数 (APPLICATION\_INSIGHTS\_IKEY) がチェックされます。プロパティが両方とも定義されていない場合、ApplicationInsights.xml の既定の InstrumentationKey が使用されます。これは、異なる環境のさまざまな InstrumentationKey を動的に管理するのに役立ちます。
 
 ### インストルメンテーション キーの他の設定方法
 
@@ -171,7 +172,7 @@ Application Insights SDK は、次の順序でキーを探します。
 2. 環境変数: APPLICATION\_INSIGHTS\_IKEY
 3. 構成ファイル: ApplicationInsights.xml
 
-[これはコードで設定することもできます](app-insights-api-custom-events-metrics.md#ikey):
+これは[コードで設定する](app-insights-api-custom-events-metrics.md#ikey)こともできます。
 
     telemetryClient.InstrumentationKey = "...";
 
@@ -256,7 +257,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 
 ### Analytics: 強力なクエリ言語
 
-より多くのデータが蓄積されると、データを集計するためのクエリと、個々のインスタンスを検索するためのクエリの両方を実行できます。[Analytics]() は、パフォーマンスと使用状況を把握したり診断を行ったりするための強力なツールです。
+より多くのデータが蓄積されると、データを集計するためのクエリと、個々のインスタンスを検索するためのクエリの両方を実行できます。[Analytics]() は、パフォーマンスと使用状況を把握したり、診断を行ったりするための強力なツールです。
 
 ![Example of Analytics](./media/app-insights-java-get-started/025.png)
 
@@ -412,4 +413,4 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

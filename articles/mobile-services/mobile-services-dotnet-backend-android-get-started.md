@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="get-started-article"
-	ms.date="03/05/2016"
+	ms.date="07/21/2016"
 	ms.author="ricksal"/>
 
 
@@ -129,4 +129,4 @@
 
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!-----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

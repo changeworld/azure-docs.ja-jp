@@ -23,4 +23,4 @@
 
 仮想ネットワーク VPN の最新の FAQ については、[VPN ゲートウェイ FAQ](../vpn-gateway/vpn-gateway-vpn-faq.md) を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!----HONumber=AcomDC_0323_2016-->

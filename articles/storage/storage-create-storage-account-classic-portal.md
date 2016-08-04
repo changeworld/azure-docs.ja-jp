@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/09/2016"
+	ms.date="07/26/2016"
 	ms.author="robinsh"/>
 
 
 # Azure ストレージ アカウントについて
 
-[AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)]
+[AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ## 概要
 
@@ -37,9 +37,9 @@ Azure Storage は、ストレージ アカウントに基づいた使用量に�
 - ストレージ容量とは、データの保存に使用するためにストレージ アカウントに割り当てられた容量を指します。単純にデータを保存する場合の料金は、保存するデータ量とレプリケーション方法によって決まります。
 - レプリケーションによって、1 回に保持するデータのコピー数や、データの場所が決定されます。
 - トランザクションには、Azure Storage に対するすべての読み取り操作と書き込み操作が含まれます。
-- 送信データ転送とは、Azure リージョンから転送されたデータを意味します。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合、そのアプリケーションがクラウド サービスか、その他の種類のアプリケーションかに関係なく、送信データ転送として課金されます(Azure サービスでは、同じデータ センター内のデータとサービスをグループ化して、送信データ転送処理とそれに伴う料金を削減または不要にする手順が用意されています)。  
+- 送信データ転送とは、Azure リージョンから転送されたデータを意味します。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合、そのアプリケーションがクラウド サービスか、その他の種類のアプリケーションかに関係なく、送信データ転送として課金されます(Azure サービスでは、同じデータ センター内のデータとサービスをグループ化して、送信データ転送処理とそれに伴う料金を削減または不要にする手順が用意されています)。
 
-ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage)」ページをご覧ください。送信データ転送の料金の詳細については、[データ転送の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページをご覧ください。
+ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage)」ページをご覧ください。送信データ転送の料金の詳細については、「[Data Transfers (データ転送) の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)」をご覧ください。
 
 ストレージ アカウントの容量とパフォーマンスのターゲットの詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」をご覧ください。
 
@@ -85,7 +85,7 @@ Azure Storage は、ストレージ アカウントに基づいた使用量に�
 
 Azure Storage に格納するすべてのオブジェクトには一意の URL アドレスが設定されています。ストレージ アカウント名は、そのアドレスのサブドメインになります。サブドメインとドメイン名の組み合わせは、各サービスに固有であり、ストレージ アカウントの *エンドポイント* になります。
 
-たとえば、ストレージ アカウントの名前が "mystorageaccount" の場合、ストレージ アカウントの既定のエンドポイントは次のようになります。
+たとえば、ストレージ アカウントの名前が *mystorageaccount* の場合、ストレージ アカウントの既定のエンドポイントは次のようになります。
 
 - BLOB サービス: http://*mystorageaccount*.blob.core.windows.net
 
@@ -97,7 +97,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 ストレージ アカウントが作成されると、そのアカウントのエンドポイントが [Azure クラシック ポータル](https://manage.windowsazure.com)のストレージ ダッシュボードに表示されます。
 
-ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になります。http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
+ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になります。http://*mystorageaccount*.blob.core.windows.net/ *mycontainer* / *myblob*
 
 また、カスタム ドメイン名もストレージ アカウントを使用するように構成することができます。詳細については、「[Blob Storage エンドポイントのカスタム ドメイン名の構成](storage-custom-domain-name.md)」を参照してください。
 
@@ -175,4 +175,4 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

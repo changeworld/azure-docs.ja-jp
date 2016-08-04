@@ -42,7 +42,7 @@ IoT Suite サービスを通じて収集されたデバイスのテレメトリ�
 
 Azure IoT の予測的なメンテナンスの構成済みのソリューションでは、このテンプレートから作成された回帰モデルを使用しています。このモデルは、Azure サブスクリプションにデプロイされ、自動生成された API を介して公開されます。ソリューションには、トレーニング済みのモデルから正確な結果を提供する、4 つのエンジン (合計 100) および 4 つのセンサー (合計 21) のデータ ストリームを示すテスト データのサブセットが含まれます。
 
-*[1] A. Saxena と K. Goebel (2008 年)。「Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)」、 NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)、NASA Ames Research Center、カリフォルニア州 モフェット フィールド*
+*[1] A. Saxena と K. Goebel (2008 年)。「Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)」、NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)、NASA Ames Research Center、カリフォルニア州モフェット フィールド*
 
 ## 次のステップ
 
@@ -58,4 +58,12 @@ Azure IoT が予測的なメンテナンスのシナリオを実現する方法�
 [lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
 [lnk_capture_value]: http://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF
 
-<!---HONumber=AcomDC_0525_2016-->
+IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
+
+- [IoT スイートに関してよく寄せられる質問][lnk-faq]
+- [IoT の徹底的なセキュリティ][lnk-security-groundup]
+
+[lnk-faq]: iot-suite-faq.md
+[lnk-security-groundup]: securing-iot-ground-up.md
+
+<!---HONumber=AcomDC_0727_2016-->

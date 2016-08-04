@@ -40,7 +40,7 @@ Resource Manager で作成したリソースには次の特性があります。
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
+        Compute、Storage、Networking のリソースについては、Resource Manager と従来のデプロイのどちらかを使用できます。 **[リソース マネージャー]** を選択します。
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 

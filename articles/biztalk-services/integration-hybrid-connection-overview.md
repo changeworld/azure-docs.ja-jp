@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/10/2016"
+	ms.date="07/26/2016"
 	ms.author="mandia"/>
 
 
@@ -85,7 +85,7 @@
 --- | ---
 9350 ～ 9354 | これらのポートはデータ転送に使用されます。Service Bus Relay マネージャーはポート 9350 を調べて、TCP 接続を利用できるかどうかを決定します。利用できる場合は、ポート 9352 も利用可能であるとみなされます。データ トラフィックはポート 9352 を経由します。<br/><br/>これらのポートへの発信接続を許可します。
 5671 | ポート 9352 がデータ トラフィックに使用される場合、ポート 5671 は制御チャンネルとして使用されます。<br/><br/>これらのポートへの発信接続を許可します。
-80、443 | これらのポートは Azure へのデータ要求に使用されます。また、ポート 9352 とポート 5671 を使用できない場合は、ポート 80 とポート 443 がデータ転送とコントロール チャネルに使用される代替ポートになります。<br/><br/>これらのポートへの発信接続を許可します。<br/><br/>**注** これらを他の TCP ポートの代替ポートとして使用することはお勧めしません。HTTP/WebSocket はデータ チャンネルのネイティブ TCP ではなくプロトコルとして使用されます。パフォーマンスの低下を招く可能性があります。
+80、443 | これらのポートは Azure へのデータ要求に使用されます。また、ポート 9352 とポート 5671 を使用できない場合、ポート 80 とポート 443 がデータ転送と制御チャネルに使用される代替ポートになります。<br/><br/>。これらのポートへの発信接続を許可します。<br/><br/>**注** これらを他の TCP ポートの代替ポートとして使用することはお勧めしません。HTTP/WebSocket はデータ チャンネルのネイティブ TCP ではなくプロトコルとして使用されます。パフォーマンスの低下を招く可能性があります。
 
 
 
@@ -103,4 +103,4 @@
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

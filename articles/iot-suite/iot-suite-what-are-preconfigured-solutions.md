@@ -28,13 +28,13 @@ Azure IoT Suite の構成済みソリューションとは、サブスクリプ�
 
 Azure にソリューションをデプロイして実行するだけでなく、完全なソース コードをダウンロードして、特定の IoT 要件を満たすようにソリューションをカスタマイズして拡張することができます。
 
-> [AZURE.NOTE] 構成済みソリューションのいずれかをデプロイするには、[Microsoft Azure IoT Suite][lnk-azureiotsuite] にアクセスしてください。[IoT 事前構成済みソリューションの使用][lnk-preconf-get-started]に関する記事では、ソリューションのいずれかをデプロイして実行する方法について詳しく説明しています。
+> [AZURE.NOTE] 構成済みソリューションのいずれかをデプロイするには、[Microsoft Azure IoT Suite][lnk-azureiotsuite] にアクセスしてください。[IoT 事前構成済みソリューションの使用][lnk-getstarted-preconfigured]に関する記事では、ソリューションのいずれかをデプロイして実行する方法について詳しく説明しています。
 
 次の表は、ソリューションが特定の IoT 機能にどのようにマップされるかを示しています。
 
 | 解決策 | データの取り込み | デバイス ID | コマンドと制御 | ルールとアクション | 予測分析 |
 |------------------------|-----|-----|-----|-----|-----|
-| [リモート監視][lnk-preconf-get-started] | あり | あり | あり | あり | - | 
+| [リモート監視][lnk-getstarted-preconfigured] | あり | あり | あり | あり | - | 
 | [予測的なメンテナンス][lnk-predictive-maintenance] | あり | あり | あり | あり | あり |
 
 - *データの取り込み*: クラウドへの大規模なデータの取り込み。
@@ -76,10 +76,10 @@ IoT Hub は、受信したテレメトリをサービス側のテレメトリ読
 
 ## Azure Stream Analytics
 
-構成済みソリューションでは、次の 3 つの [Azure Stream Analytics][lnk-asa] \(ASA) ジョブを使用して、デバイスのテレメトリ ストリームをフィルターします。
+構成済みソリューションでは、次の 3 つの [Azure Stream Analytics][lnk-asa] (ASA) ジョブを使用して、デバイスのテレメトリ ストリームをフィルターします。
 
 
-- *DeviceInfo ジョブ* - デバイスが最初に接続するときに、または**デバイス状態の変更**コマンドに応答して送信されたデバイス登録固有のメッセージをソリューションのデバイス レジストリ (DocumentDB データベース) にルーティングするイベント ハブにデータを出力します。 
+- *DeviceInfo ジョブ* - デバイスが最初に接続するときに、または**デバイス状態の変更**コマンドに応答して送信されたデバイス登録固有のメッセージをソリューションのデバイス レジストリ (DocumentDB データベース) にルーティングするイベント ハブにデータを出力します。
 - *Telemetry ジョブ* - Azure Blob Storage にコールド ストレージの未加工のテレメトリをすべて送信し、ソリューションのダッシュボードに表示されるテレメトリの集計を行います。
 - *Rules ジョブ* - テレメトリ ストリームをフィルターして、いずれかのルールのしきい値を超える値を絞り込み、そのデータをイベント ハブに出力します。ルールが実行されると、ソリューション ポータルのダッシュボード ビューにこのイベントがアラーム履歴テーブルの新しい行として表示され、ソリューション ポータルのルールとアクション ビューで定義した設定に基づいてアクションがトリガーされます。
 
@@ -117,10 +117,7 @@ IoT Hub は、受信したテレメトリをサービス側のテレメトリ読
 
 IoT ソリューション アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT 参照アーキテクチャ)][lnk-refarch]」を参照してください。
 
-IoT の構成済みソリューションの詳細については、次のリソースをご覧ください。
-
-- [IoT 事前構成済みソリューションの使用][lnk-preconf-get-started]
-- [予測的なメンテナンスの構成済みソリューションの概要][lnk-predictive-maintenance]
+構成済みソリューションについて理解した後は、[構成済みソリューションの使用][lnk-getstarted-preconfigured]に関するチュートリアルを参照して、"*リモート監視*" の構成済みソリューションをデプロイしましょう。
 
 [img-remote-monitoring-arch]: ./media/iot-suite-what-are-preconfigured-solutions/remote-monitoring-arch1.png
 [img-dashboard]: ./media/iot-suite-what-are-preconfigured-solutions/dashboard.png
@@ -128,12 +125,10 @@ IoT の構成済みソリューションの詳細については、次のリソ�
 [lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [lnk-event-processor]: ../event-hubs/event-hubs-programming-guide.md#event-processor-host
 [lnk-web-job]: ../app-service-web/web-sites-create-web-jobs.md
-[lnk-document-db]: https://azure.microsoft.com/documentation/services/documentdb/
 [lnk-identity-registry]: ../iot-hub/iot-hub-devguide.md#device-identity-registry
-[lnk-suite-overview]: iot-suite-overview.md
-[lnk-preconf-get-started]: iot-suite-getstarted-preconfigured-solutions.md
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
+[lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

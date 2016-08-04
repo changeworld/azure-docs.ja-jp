@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
 	ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
@@ -53,7 +53,7 @@ BizTalk API Apps には、次のようなものがあります。Azure ポータ
 
 
 ## BizTalk X12
-- 関連する TPM API アプリ インスタンスで定義された X12 契約を実行します。 
+- 関連する TPM API アプリ インスタンスで定義された X12 契約を実行します。
 - トラブルシューティングのために、X12 の処理情報および追跡情報を表示します。
 - 関連の TPM API アプリ インスタンスで X12 契約で定義されたバッチの状態管理 (開始、停止) を行います。
 
@@ -79,4 +79,4 @@ BizTalk API Apps には、次のようなものがあります。Azure ポータ
 [3]: ./media/app-service-logic-create-a-trading-partner-agreement/X12AgreementCreation.png
  
 
-<!------HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

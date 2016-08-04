@@ -9,46 +9,47 @@
     tags="connectors"/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/07/2016"
+	ms.date="07/15/2016"
 	ms.author="deonhe"/>
 
 # コネクタの一覧
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。2014-12-01-preview スキーマ バージョンについては、[コネクタの一覧](../app-service-logic/app-service-logic-connectors-list.md)をご覧ください。
-
-料金情報および各サービス レベルに含まれる新機能の一覧については、「[Azure App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」を参照してください。
-
-> [AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps を体験することもできます。「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」にアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+アイコンをクリックすると、これらのコネクタを活用して、対象のサービスを呼び出すワークフローを簡単に構築する方法について確認できます。
 
 ## Standard コネクタ
 
-アイコンをクリックすると、これらのコネクタを活用して、対象のサービスを呼び出すアプリを簡単に構築する方法について確認できます。各コネクタは、ロジック アプリ、PowerApps、フローを構築するために使用できます。
-
 |コネクタ||||
 |-----------|-----------|-----------|-----------|
-|[![API アイコン][blobicon]<br/>**Azure BLOB**][azureblobdoc]|[![API アイコン][boxicon]<br/>**Box**][boxDoc]|[![API アイコン][crmonlineicon]<br/>**CRM Online**][crmonlinedoc]|[![API アイコン][dropboxicon]<br/>**Dropbox**][dropboxdoc]|
-|[![API アイコン][facebookicon]<br/>**Facebook**][facebookdoc]|[![API アイコン][ftpicon]<br/>**FTP**][ftpdoc]|[![API アイコン][githubicon]<br/>**GitHub**][githubdoc]|[![API アイコン][googledriveicon]<br/>**Google ドライブ**][googledrivedoc]|
-|[![API アイコン][mailchimpicon]<br/>**MailChimp**][mailchimpdoc]|[![API アイコン][microsofttranslatoricon]<br/>**Translator**][microsofttranslatordoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**Outlook**][office365outlookdoc]|[![API アイコン][office365icon]<br/>**Office 365**<br/>**Users**][office365usersdoc]|
-|[![API アイコン][office365icon]<br/>**Office 365**<br/>**Video**][office365videodoc]|[![API アイコン][onedriveicon]<br/>**OneDrive**][onedrivedoc]|[![API アイコン][onedriveicon]<br/>**OneDrive<br/>for Business**][onedriveforbusinessdoc]|[![API アイコン][outlookicon]<br/>**Outlook**][outlookdoc]|
-|[![API アイコン][projectonlineicon]<br/>**Project<br/>Online**][projectonlinedoc]|[![API アイコン][rssicon]<br/>**RSS**][rssdoc]|[![API アイコン][salesforceicon]<br/>**Salesforce**][salesforcedoc]|[![API アイコン][sendgridicon]<br/>**SendGrid**][sendgriddoc]|
-|[![API アイコン][servicebusicon]<br/>**Service Bus**][servicebusdoc]|[![API アイコン][sftpicon]<br/>**SFTP**][sftpdoc]|[![API アイコン][sharepointicon]<br/>**SharePoint**<br/>**Online**][sharepointdoc]|[![API アイコン][slackicon]<br/>**Slack**<br/>][slackdoc]|
-|[![API アイコン][smtpicon]<br/>**SMTP**][smtpdoc]|[![API アイコン][sqlicon]<br/>**SQL Azure**][sqldoc]|[![API アイコン][trelloicon]<br/>**Trello**][trellodoc]|[![API アイコン][twilioicon]<br/>**Twilio**][twiliodoc]|
-|[![API アイコン][twittericon]<br/>**Twitter**][twitterdoc]|[![API アイコン][wunderlisticon]<br/>**Wunderlist**][wunderlistdoc]|[![API アイコン][yammericon]<br/>**Yammer**][yammerdoc] | |
+|[![API アイコン][API/Web-Appicon]<br/>**API/Web アプリ**][API/Web-Appdoc]|[![API アイコン][Azure-Blobicon]<br/>**Azure BLOB**][Azure-Blobdoc]|[![API アイコン][Azure~Functionsicon]<br/>**Azure<br/>Functions**][Azure~Functionsdoc]|[![API アイコン][Boxicon]<br/>**Box**][Boxdoc]|
+|[![API アイコン][CRM-Onlineicon]<br/>**CRM Online**][CRM-Onlinedoc]|[![API アイコン][Delayicon]<br/>**遅延**][Delaydoc]|[![API アイコン][Dropboxicon]<br/>**Dropbox**][Dropboxdoc]|[![API アイコン][Facebookicon]<br/>**Facebook**][Facebookdoc]|
+|[![API アイコン][FTPicon]<br/>**FTP**][FTPdoc]|[![API アイコン][GitHubicon]<br/>**GitHub**][GitHubdoc]|[![API アイコン][Google-Driveicon]<br/>**Google ドライブ**][Google-Drivedoc]|![API アイコン][Google-Sheetsicon]<br/>**Google スプレッドシート**|
+|![API アイコン][Google-Tasksicon]<br/>**Google ToDo リスト**|![API アイコン][Google~Calendaricon]<br/>**Google<br/>カレンダー**|[![API アイコン][HTTPicon]<br/>**HTTP**][HTTPdoc]|[![API アイコン][HTTP-Swaggericon]<br/>**HTTP Swagger**][HTTP-Swaggerdoc]|
+|[![API アイコン][HTTP~Requesticon]<br/>**HTTP<br/>要求**][HTTP~Requestdoc]|[![API アイコン][HTTP~Responseicon]<br/>**HTTP<br/>応答**][HTTP~Responsedoc]|![API アイコン][Instagramicon]<br/>**Instagram**|[![API アイコン][MailChimpicon]<br/>**MailChimp**][MailChimpdoc]|
+|![API アイコン][Mandrillicon]<br/>**Mandrill**|[![API アイコン][Nested~Logic-Appicon]<br/>**入れ子になった<br/>ロジック アプリ**][Nested~Logic-Appdoc]|[![API アイコン][Office-365~Outlookicon]<br/>**Office 365<br/>Outlook**][Office-365~Outlookdoc]|[![API アイコン][Office-365~Usersicon]<br/>**Office 365<br/>ユーザー**][Office-365~Usersdoc]|
+|[![API アイコン][Office-365~Videoicon]<br/>**Office 365<br/>ビデオ**][Office-365~Videodoc]|[![API アイコン][OneDriveicon]<br/>**OneDrive**][OneDrivedoc]|[![API アイコン][OneDrive-for~Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for~Businessdoc]|[![API アイコン][Outlookicon]<br/>**Outlook**][Outlookdoc]|
+|[![API アイコン][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc]|[![API アイコン][Queryicon]<br/>**クエリ**][Querydoc]|[![API アイコン][Recurrenceicon]<br/>**繰り返し**][Recurrencedoc]|[![API アイコン][RSSicon]<br/>**RSS**][RSSdoc]|
+|[![API アイコン][Salesforceicon]<br/>**Salesforce**][Salesforcedoc]|[![API アイコン][SendGridicon]<br/>**SendGrid**][SendGriddoc]|[![API アイコン][Service-Busicon]<br/>**Service Bus**][Service-Busdoc]|[![API アイコン][SFTPicon]<br/>**SFTP**][SFTPdoc]|
+|[![API アイコン][SharePointicon]<br/>**SharePoint**][SharePointdoc]|[![API アイコン][Slackicon]<br/>**Slack**][Slackdoc]|[![API アイコン][SMTPicon]<br/>**SMTP**][SMTPdoc]|![API アイコン][SparkPosticon]<br/>**SparkPost**|
+|[![API アイコン][SQLicon]<br/>**SQL**][SQLdoc]|[![API アイコン][Translatoricon]<br/>**Translator**][Translatordoc]|[![API アイコン][Trelloicon]<br/>**Trello**][Trellodoc]|[![API アイコン][Twilioicon]<br/>**Twilio**][Twiliodoc]|
+|[![API アイコン][Twittericon]<br/>**Twitter**][Twitterdoc]|[![API アイコン][Webhookicon]<br/>**webhook**][Webhookdoc]|[![API アイコン][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc]|[![API アイコン][Yammericon]<br/>**Yammer**][Yammerdoc]|
+|![API アイコン][YouTubeicon]<br/>**YouTube**||||
+
+> [AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps を体験することもできます。[Logic App の試用](https://tryappservice.azure.com/?appservice=logic)に関するページにアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## Enterprise Integration Pack (EIP) コネクタ
 EAI および EDI を含む B2B シナリオ用のロジック アプリを作成するには、EIP コネクタを使用します。
  
 |EIP コネクタ ||||
 |-----------|-----------|-----------|-----------|
-|[![API アイコン][as2icon]<br/>**AS2</br>エンコード/デコード**][as2doc]|[![API アイコン][x12icon]<br/>**X12</br>エンコード/デコード**][x12Doc]|[![API アイコン][xmlvalidateicon]<br/>**XML <br/>検証**][xmlvalidatedoc]|[![API アイコン][xmltransformicon]<br/>**XML<br/> 変換**][xmltransformdoc]|
-|[![API アイコン][flatfileicon]<br/>**フラット ファイル</br> エンコード**][flatfiledoc]|[![API アイコン][flatfiledecodeicon]<br/>**フラット ファイル</br>デコード**][flatfiledecodedoc]|||
+|[![API アイコン][as2icon]<br/>**AS2</br>エンコード/デコード**][as2doc]|[![API アイコン][x12icon]<br/>**X12</br>エンコード/デコード**][x12Doc]|[![API アイコン][xmlvalidateicon]<br/>**XML<br/>検証**][xmlvalidatedoc]|[![API アイコン][xmltransformicon]<br/>**XML<br/>変換**][xmltransformdoc]|
+|[![API アイコン][flatfileicon]<br/>**フラット ファイル</br>エンコード**][flatfiledoc]|[![API アイコン][flatfiledecodeicon]<br/>**フラット ファイル</br>デコード**][flatfiledecodedoc]|||
 
-
+<!-- TODO: Add Functions, App Service, and Nested Workflow Icons -->
 ### トリガーとして使用できるコネクタ
 一部のコネクタは、特定のイベントが発生したときにアプリに通知できるトリガーを備えています。たとえば、FTP コネクタには OnUpdatedFile トリガーがあります。このトリガーをリッスンし、トリガーが起動されるたびにアクションを実行するロジック アプリ、PowerApp、またはフローを構築できます。
 
@@ -57,39 +58,35 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 * ポーリング トリガー: このトリガーは、指定された頻度でサービスをポーリングして、新しいデータをチェックします。新しいデータを利用できる場合、そのデータを入力値としてアプリの新しいインスタンスが実行されます。同じデータが複数回使用されることを防ぐために、アプリで読み取られて渡されるデータのクリーンアップをトリガーで実行される場合があります。
 * プッシュ トリガー: このトリガーは、エンドポイント上のデータまたは発生するイベントをリッスンします。その後、アプリの新しいインスタンスをトリガーします。一例として Twitter コネクタが挙げられます。
 
-
 ### アクションとして使用できるコネクタ
 コネクタは、アプリ内でアクションとして使用することもできます。アクションは、アプリの実行時に使用できるデータの検索に役立ちます。たとえば、注文を処理するときに、SQL データベースから顧客データを検索することが必要になる場合があります。または、変換先テーブルでデータの書き込み、更新、または削除が必要になる場合があります。これらを実行するために、コネクタによって提供されるアクションを使用できます。アクションは、Swagger メタデータで定義された操作にマップされます。
 
+## 次のステップ
 
-[新機能](../app-service-logic/app-service-logic-schema-2015-08-01.md)  
-[今すぐロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)  
-[今すぐ PowerApps を使い始める](../power-apps/powerapps-get-started-azure-portal.md)  
-[既存のロジック アプリを最新のスキーマ バージョンに移行する](connectors-schema-migration.md)
+- [ロジック アプリを今すぐ作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)
+- [カスタム コネクタを作成する](../app-service-logic/app-service-logic-create-api-app.md)
+- [ロジック アプリを監視する](../app-service-logic/app-service-logic-monitor-your-logic-apps.md)
 
 <!--Connectors Documentation-->
-[azureblobdoc]: ./connectors-create-api-azureblobstorage.md "Azure BLOB に接続して、BLOB コンテナーのファイルを管理します。"
-[bingsearchDoc]: ./connectors-create-api-bingsearch.md "Web、イメージ、ニュース、ビデオを対象に Bing 検索します。"
+[azure-blobdoc]: ./connectors-create-api-azureblobstorage.md "Azure BLOB に接続して、BLOB コンテナーのファイルを管理します。"
 [boxDoc]: ./connectors-create-api-box.md "Box に接続して、ファイルのアップロード、取得、削除、一覧の取得や、その他のファイル タスクを実行できます。"
-[crmonlinedoc]: ./connectors-create-api-crmonline.md "Dynamics CRM Online に接続し、CRM Online データでより多くのことを実行できます。"
+[crm-onlinedoc]: ./connectors-create-api-crmonline.md "Dynamics CRM Online に接続し、CRM Online データでより多くのことを実行できます。"
 [dropboxdoc]: ./connectors-create-api-dropbox.md "Dropbox に接続して、ファイルの取得、削除、一覧の取得や、その他のファイル タスクを実行できます。"
-[exceldoc]: ./connectors-create-api-excel.md "Excel に接続します。"
 [facebookdoc]: ./connectors-create-api-facebook.md "Facebook に接続することで、タイムラインへの投稿、ページ フィードの取得などを行います。"
 [ftpdoc]: ./connectors-create-api-ftp.md "FTP/FTPS サーバーに接続して、ファイルのアップロード、取得、削除などのさまざまな FTP タスクを実行できます。"
-[googledrivedoc]: ./connectors-create-api-googledrive.md "GoogleDrive に接続し、自分のデータを操作します。"
-[microsofttranslatordoc]: ./connectors-create-api-microsofttranslator.md
-[office365outlookdoc]: ./connectors-create-api-office365-outlook.md "Office 365 コネクタを使用すると、電子メールの送受信、予定表の管理などの操作を実行できます。さらに、Office 365 アカウントを使用して連絡先を管理することができます。"
-[officeunifieddoc]: ./connectors-create-api-bingsearch.md
-[office365usersdoc]: ./connectors-create-api-office365-users.md
-[office365videodoc]: ./connectors-create-api-office365-video.md
+[google-drivedoc]: ./connectors-create-api-googledrive.md "GoogleDrive に接続し、自分のデータを操作します。"
+[translatordoc]: ./connectors-create-api-microsofttranslator.md
+[office-365~outlookdoc]: ./connectors-create-api-office365-outlook.md "Office 365 コネクタを使用すると、電子メールの送受信、予定表の管理などの操作を実行できます。さらに、Office 365 アカウントを使用して連絡先を管理することができます。"
+[office-365~usersdoc]: ./connectors-create-api-office365-users.md
+[office-365~videodoc]: ./connectors-create-api-office365-video.md
 [onedrivedoc]: ./connectors-create-api-onedrive.md "個人用の Microsoft OneDrive に接続して、ファイルのアップロード、削除、一覧の取得などの操作を実行できます。"
-[onedriveforbusinessdoc]: ./connectors-create-api-onedriveforbusiness.md "ビジネス用の Microsoft OneDrive に接続し、ファイルのアップロード、削除、一覧表示などの操作を実行します。"
+[onedrive-for~businessdoc]: ./connectors-create-api-onedriveforbusiness.md "ビジネス用の Microsoft OneDrive に接続し、ファイルのアップロード、削除、一覧表示などの操作を実行します。"
 [outlookdoc]: ./connectors-create-api-outlook.md "Outlook メールボックスに接続し、電子メールへのアクセスなどを行います。"
-[projectonlinedoc]: ./connectors-create-api-projectonline.md "Microsoft Project Online に接続します。"
+[project-onlinedoc]: ./connectors-create-api-projectonline.md "Microsoft Project Online に接続します。"
 [rssdoc]: ./connectors-create-api-rss.md "RSS コネクタを使用して、フィード アイテムを発行および取得できます。また、新しいアイテムがフィードに発行されたときに操作をトリガーすることもできます。"
 [salesforcedoc]: ./connectors-create-api-salesforce.md "Salesforce アカウントに接続し、アカウント、潜在顧客、営業案件などを管理します。"
 [sendgriddoc]: ./connectors-create-api-sendgrid.md "Microsoft Project Online に接続します。"
-[servicebusdoc]: ./connectors-create-api-servicebus.md "Service Bus キューとトピックからメッセージを送信したり、Service Bus キューとサブスクリプションからメッセージを受信したりできます。"
+[service-busdoc]: ./connectors-create-api-servicebus.md "Service Bus キューとトピックからメッセージを送信したり、Service Bus キューとサブスクリプションからメッセージを受信したりできます。"
 [sharepointdoc]: ./connectors-create-api-sharepointonline.md "SharePoint Online に接続して、ドキュメントやリスト項目を管理します。"
 [slackdoc]: ./connectors-create-api-slack.md "Slack に接続し、Slack チャネルにメッセージを投稿します。"
 [sftpdoc]: ./connectors-create-api-sftp.md "SFTP に接続して、ファイルのアップロード、取得、削除などの操作を実行できます。"
@@ -108,39 +105,77 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md/#how-to-create-the-flat-file-decoding-connector "エンタープライズ統合フラット ファイルについて説明します。"
 [xmlvalidatedoc]: ../app-service-logic/app-service-logic-enterprise-integration-xml.md "エンタープライズ統合 XML 検証について説明します。"
 [xmltransformdoc]: ../app-service-logic/app-service-logic-enterprise-integration-transform.md "エンタープライズ統合変換について説明します。"
+[httpdoc]: ./connectors-native-http.md "HTTP 呼び出しを実行する HTTP コネクタです。"
+[http~requestdoc]: ./connectors-native-reqres.md "要求アクションと応答アクションです。"
+[http~responsedoc]: ./connectors-native-reqres.md "要求アクションと応答アクションです。"
+[delaydoc]: ./connectors-native-delay.md "遅延アクションについて説明します。"
+[http-swaggerdoc]: ./connectors-native-http-swagger.md "HTTP 呼び出しを実行する HTTP + Swagger コネクタです。"
+[querydoc]: ./connectors-native-query.md "配列の選択とフィルター処理を行うクエリ アクションです。"
+[webhookdoc]: ./connectors-native-webhook.md "ロジック アプリを対象とした webhook アクションおよびトリガーです。"
+[azure~functionsdoc]: ../app-service-logic/app-service-logic-azure-functions.md "Azure Functions を使用してロジック アプリを統合します。"
+[api/web-appdoc]: ../app-service-logic/app-service-logic-custom-hosted-api.md "App Service API Apps を使用してロジック アプリを統合します。"
+[nested~logic-appdoc]: ../app-service-logic/app-service-logic-http-endpoint.md "入れ子になったワークフローを使用してロジック アプリを統合します。"
+[recurrencedoc]: ./connectors-native-recurrence.md "ロジック アプリを対象とした繰り返しトリガーです。"
+[google-sheetsdoc]: ./connectors-create-api-googlesheet.md "Google スプレッドシートに接続してシートに変更を加えることができます。"
+[google-tasksdoc]: ./connectors-create-api-googletasks.md "Google ToDo リストに接続してタスクを管理できます。"
+[google~calendardoc]: ./connectors-create-api-googlecalendar.md "Google カレンダーに接続してカレンダーを管理できます。"
+[instagramdoc]: ./connectors-create-api-instagram.md "Instagram に接続して、イベントをトリガーするか、イベントに対するアクションを実行できます。"
+[mandrilldoc]: ./connectors-create-api-mandrill.md "Mandrill に接続して通信を行えます。"
+[youtubedoc]: ./connectors-create-api-youtube.md "YouTube に接続して、ビデオおよびチャネルを操作できます。"
+[sparkpostdoc]: ./connectors-create-api-sparkpost.md "SparkPost に接続して通信を行えます。"
 
 <!--Icon references-->
-[blobicon]: ./media/apis-list/blobicon.png
-[bingsearchicon]: ./media/apis-list/bingsearchicon.png
-[boxicon]: ./media/apis-list/boxicon.png
-[ftpicon]: ./media/apis-list/ftpicon.png
-[githubicon]: ./media/apis-list/githubicon.png
-[crmonlineicon]: ./media/apis-list/dynamicscrmicon.png
-[dropboxicon]: ./media/apis-list/dropboxicon.png
-[excelicon]: ./media/apis-list/excelicon.png
-[facebookicon]: ./media/apis-list/facebookicon.png
-[googledriveicon]: ./media/apis-list/googledriveicon.png
-[mailchimpicon]: ./media/apis-list/mailchimpicon.png
-[microsofttranslatoricon]: ./media/apis-list/translatoricon.png
-[office365icon]: ./media/apis-list/office365icon.png
-[onedriveicon]: ./media/apis-list/onedriveicon.png
-[onedriveforbusinessicon]: ./media/apis-list/onedriveforbusinessicon.png
-[outlookicon]: ./media/apis-list/outlookicon.png
-[projectonlineicon]: ./media/apis-list/projectonlineicon.png
-[rssicon]: ./media/apis-list/rssicon.png
-[salesforceicon]: ./media/apis-list/salesforceicon.png
-[sendgridicon]: ./media/apis-list/sendgridicon.png
-[servicebusicon]: ./media/apis-list/servicebusicon.png
-[sftpicon]: ./media/apis-list/sftpicon.png
-[sharepointicon]: ./media/apis-list/sharepointicon.png
-[slackicon]: ./media/apis-list/slackicon.png
-[smtpicon]: ./media/apis-list/smtpicon.png
-[sqlicon]: ./media/apis-list/sqlicon.png
-[trelloicon]: ./media/apis-list/trelloicon.png
-[twilioicon]: ./media/apis-list/twilioicon.png
-[twittericon]: ./media/apis-list/twittericon.png
-[wunderlisticon]: ./media/apis-list/wunderlisticon.png
-[yammericon]: ./media/apis-list/yammericon.png
+[Azure-Blobicon]: ./media/apis-list/azureblob.png
+[Boxicon]: ./media/apis-list/box.png
+[FTPicon]: ./media/apis-list/ftp.png
+[GitHubicon]: ./media/apis-list/github.png
+[CRM-Onlineicon]: ./media/apis-list/dynamicscrmonline.png
+[Dropboxicon]: ./media/apis-list/dropbox.png
+[Facebookicon]: ./media/apis-list/facebook.png
+[Google-Driveicon]: ./media/apis-list/googledrive.png
+[MailChimpicon]: ./media/apis-list/mailchimp.png
+[Translatoricon]: ./media/apis-list/microsofttranslator.png
+[Office-365~Outlookicon]: ./media/apis-list/office365.png
+[Office-365~Usersicon]: ./media/apis-list/office365.png
+[Office-365~Videoicon]: ./media/apis-list/sharepointonline.png
+[OneDriveicon]: ./media/apis-list/onedrive.png
+[OneDrive-for~Businessicon]: ./media/apis-list/onedriveforbusiness.png
+[Outlookicon]: ./media/apis-list/outlook.png
+[Project-Onlineicon]: ./media/apis-list/projectonline.png
+[RSSicon]: ./media/apis-list/rss.png
+[Salesforceicon]: ./media/apis-list/salesforce.png
+[SendGridicon]: ./media/apis-list/sendgrid.png
+[Service-Busicon]: ./media/apis-list/servicebus.png
+[SFTPicon]: ./media/apis-list/sftp.png
+[SharePointicon]: ./media/apis-list/sharepointonline.png
+[Slackicon]: ./media/apis-list/slack.png
+[SMTPicon]: ./media/apis-list/smtp.png
+[SQLicon]: ./media/apis-list/sql.png
+[Trelloicon]: ./media/apis-list/trello.png
+[Twilioicon]: ./media/apis-list/twilio.png
+[Twittericon]: ./media/apis-list/twitter.png
+[Wunderlisticon]: ./media/apis-list/wunderlist.png
+[Yammericon]: ./media/apis-list/yammer.png
+[Google~Calendaricon]: ./media/apis-list/googlecalendar.png
+[Google-Tasksicon]: ./media/apis-list/googletasks.png
+[Google-Sheetsicon]: ./media/apis-list/googlesheet.png
+[Mandrillicon]: ./media/apis-list/mandrill.png
+[SparkPosticon]: ./media/apis-list/sparkpost.png
+[Instagramicon]: ./media/apis-list/instagram.png
+[YouTubeicon]: ./media/apis-list/youtube.png
+[HTTPicon]: ./media/apis-list/http.png
+[HTTP~Requesticon]: ./media/apis-list/request.png
+[HTTP~Responseicon]: ./media/apis-list/response.png
+[Delayicon]: ./media/apis-list/delay.png
+[HTTP-Swaggericon]: ./media/apis-list/http_swagger.png
+[Queryicon]: ./media/apis-list/query.png
+[Webhookicon]: ./media/apis-list/webhook.png
+[Azure~Functionsicon]: ./media/apis-list/function.png
+[API/Web-Appicon]: ./media/apis-list/api.png
+[Nested~Logic-Appicon]: ./media/apis-list/workflow.png
+[Recurrenceicon]: ./media/apis-list/recurrence.png
+
+<!-- EIP Icons -->
 [as2icon]: ./media/apis-list/as2new.png
 [x12icon]: ./media/apis-list/x12new.png
 [flatfileicon]: ./media/apis-list/flatfileencoding.png
@@ -148,4 +183,4 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

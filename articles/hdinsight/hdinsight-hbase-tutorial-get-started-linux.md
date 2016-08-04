@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/27/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 
@@ -118,7 +118,7 @@ BigTable の実装である HBase では、同じデータが次のように表�
 HBase では、いくつかの方法でテーブルにデータを読み込ことができます。詳細については、[一括読み込み](http://hbase.apache.org/book.html#arch.bulk.load)に関するページを参照してください。
 
 
-サンプルのデータ ファイルがパブリック BLOB コンテナー *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt* にアップロードされています。このデータ ファイルの内容は次のとおりです。
+サンプルのデータ ファイルがパブリック BLOB コンテナー *wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt* にアップロードされています。このデータ ファイルの内容は次のとおりです。
 
 	8396	Calvin Raji		230-555-0191	230-555-0191	5415 San Gabriel Dr.
 	16600	Karen Wu		646-555-0113	230-555-0192	9265 La Paz
@@ -137,7 +137,7 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 1. SSH から次のコマンドを実行して、データ ファイルを StoreFile に変換し、Dimporttsv.bulk.output で指定された相対パスに格納します。HBase シェル内にいる場合は、exit コマンドを使用して終了します。
 
-		hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
+		hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
 
 4. 次のコマンドを実行して、/example/data/storeDataFileOutput から HBase テーブルにデータをアップロードします。
 
@@ -185,8 +185,8 @@ Hive を使用して HBase テーブルのデータを照会できます。こ�
 
 	このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-	* **-u**: 要求の認証に使用するユーザー名とパスワード
-	* **-G**: GET 要求であることを示します。
+    * **-u**: 要求の認証に使用するユーザー名とパスワード
+    * **-G**: GET 要求であることを示します。
 
 2. 次のコマンドを使用して、既存の HBase テーブルを一覧表示します。
 
@@ -238,7 +238,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 
 **SSH トンネリング セッションを確立するには**
 
-1. **PuTTY** を開きます。  
+1. **PuTTY** を開きます。
 2. 作成プロセスでユーザー アカウントの作成時に SSH キーを指定した場合は、次の手順に従って、クラスターへの認証時に使用する秘密キーを選択する必要があります。
 
 	**[カテゴリ]** で **[接続]**、**[SSH]** の順に展開し、**[認証]** を選択します。最後に、**[参照]** をクリックし、プライベート キーが含まれた .ppk ファイルを選択します。
@@ -247,7 +247,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 4. PuTTY セッション画面の基本オプションで、次の値を入力します。
 
 	- **ホスト名**: [ホスト名 (または IP アドレス)] フィールドの HDInsight サーバーの SSH アドレス。SSH アドレスは、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (*mycluster-ssh.azurehdinsight.net* など)。
-	- **ポート**: 22。ヘッド ノード 0 の SSH ポートは 22 です。  
+	- **ポート**: 22。ヘッド ノード 0 の SSH ポートは 22 です。
 5. ダイアログの左にある **[カテゴリ]** セクションで、**[接続]**、**[SSH]** の順に展開し、**[トンネル]** をクリックします。
 6. [SSH ポートの転送を管理するオプション] フォームに次の情報を入力します。
 
@@ -325,4 +325,4 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

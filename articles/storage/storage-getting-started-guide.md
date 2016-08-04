@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="get-started-article" 
-	ms.date="05/23/2016"
+	ms.date="07/21/2016"
 	ms.author="tamram"/>
 
 # Azure Storage を 5 分で使い始める 
@@ -28,7 +28,7 @@ Azure Storage を使用した開発は簡単です。このチュートリアル
 
 開始する前に、次の前提条件を満たす必要があります。
 
-1. アプリケーションをコンパイルし、ビルドするには、コンピューターに [Visual Studio](https://www.visualstudio.com/) をインストールしておく必要があります。 
+1. アプリケーションをコンパイルし、ビルドするには、コンピューターに [Visual Studio](https://www.visualstudio.com/) をインストールしておく必要があります。
 
 2. 最新バージョンの [Azure SDK for .NET](https://azure.microsoft.com/downloads/) をインストールします。SDK には、Azure QuickStart サンプル プロジェクト、Azure ストレージ エミュレーター、および [Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx) が含まれます。
 
@@ -90,14 +90,15 @@ Azure Storage を使用した開発は簡単です。このチュートリアル
 次に、Azure ストレージ エミュレーターでサンプル アプリケーションを実行します。
 
 1.	**[スタート]** ボタンを押すか Windows キーを押し、*Microsoft Azure ストレージ エミュレーター*を検索してアプリケーションを起動します。エミュレーターを開始すると、Windows タスク ビューの領域にアイコンと通知が表示されます。
-2.	Visual Studio で、[**ビルド**] メニューにある [**ソリューションのビルド**] をクリックします。 
-3.	[**デバッグ**] メニューで、**F11** キーを押してソリューションを段階的に実行するか、**F5** キーを押してソリューションを開始から終了まで実行します。
+2.	Visual Studio で、[**ビルド**] メニューにある [**ソリューションのビルド**] をクリックします。
+3.	**[デバッグ]** メニューで、**F11** キーを押してソリューションを段階的に実行するか、**F5** キーを押してソリューションを開始から終了まで実行します。
 
 ## 次のステップ
 
 Azure Storage の詳細については、次のリソースをご覧ください。
 
 * [Microsoft Azure Storage の概要](storage-introduction.md)
+* [Azure ストレージ エクスプローラーの概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)
 * [.NET を使用して Azure Table Storage を使用する](storage-dotnet-how-to-use-tables.md)
 * [.NET を使用して Azure Queue Storage を使用する](storage-dotnet-how-to-use-queues.md)
@@ -110,4 +111,4 @@ Azure Storage の詳細については、次のリソースをご覧ください
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-sencha"
 	ms.devlang="multiple"
 	ms.topic="get-started-article"
-	ms.date="02/10/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # <a name="getting-started"></a>Mobile Services と Sencha Touch の使用
@@ -23,7 +23,7 @@
 &nbsp;
 
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)] &nbsp;
 
 [AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
 
@@ -675,7 +675,7 @@ Sencha Touch ストアでは、さまざまな方法でレコードを表示す�
 
     ![Sencha Web スタート](./media/partner-sencha-mobile-services-get-started/sencha-web-start.png)
 
-  3. アプリケーションを開始するために、ターミナルに示された URL を Web ブラウザーで開きます (たとえば http://localhost:1841)http://localhost:1841)。
+  3. アプリケーションを開始するために、ターミナルに示された URL を Web ブラウザーで開きます (たとえば http://localhost:1841)。
 
   4. アプリケーションで、意味のあるテキスト (たとえば、"チュートリアルの完了") を入力し、**[Add]** をクリックします。
 
@@ -724,4 +724,4 @@ Sencha Touch のさらなる概要については、全[ガイド](http://docs.s
 
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0727_2016-->
