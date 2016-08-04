@@ -154,6 +154,7 @@ PowerShell でカスタム ロールを作成するときは、いずれかの[�
 ![RBAC PowerShell - Get-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/5-get-azurermroledefinition2.png)
 
 ## 関連項目
-- [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md) [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+- [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
+[AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
 <!---HONumber=AcomDC_0720_2016-->

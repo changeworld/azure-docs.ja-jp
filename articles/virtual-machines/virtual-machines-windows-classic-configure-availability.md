@@ -19,7 +19,7 @@
 
 # クラシック デプロイメント モデルに Windows 仮想マシンの可用性セットを構成する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)].Resource Manager デプロイで[可用性セットを構成](virtual-machines-windows-create-availability-set.md)することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]. Resource Manager デプロイで[可用性セットを構成](virtual-machines-windows-create-availability-set.md)することもできます。
 
 [AZURE.INCLUDE [virtual-machines-common-classic-configure-availability](../../includes/virtual-machines-common-classic-configure-availability.md)]
 
@@ -27,4 +27,4 @@
 
 クラシック デプロイに関するその他の記事については、「[クラシック デプロイメント モデルにおける Windows VM に関する技術解説記事](virtual-machines-windows-index.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!----HONumber=AcomDC_0713_2016-->
