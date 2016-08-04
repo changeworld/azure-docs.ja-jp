@@ -13,15 +13,11 @@
    ms.devlang="na"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/19/2016"
+   ms.date="07/21/2016"
    ms.author="yurid"/>
 
 # Azure Security Center 計画および運用ガイド
 このガイドは、所属組織が Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、およびクラウド管理者を対象としています。
-
-> [AZURE.NOTE] このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。
-
-「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」に、設計と計画のフェーズにも役立つ一般的な質問の一覧が記載されています。
 
 ## 計画ガイド
 このガイドでは、組織のセキュリティ要件とクラウド管理モデルに応じて Security Center の利用を最適化できる、一連の手順とタスクについて説明します。Security Center を最大限に活用するには、安全な開発と運用、監視、ガバナンス、インシデント対応のニーズを満たすために、組織内のさまざまな個人やチームはこのサービスをどのように使用するのかを把握することが重要です。Security Center の使用を計画するうえで考慮が必要となる主な領域は次のとおりです。
@@ -33,6 +29,9 @@
 - インシデント対応
 
 次のセクションでは、これらの領域のそれぞれについて計画し、自社の要件に合わせて推奨事項を適用する方法について説明します。
+
+> [AZURE.NOTE] 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」に、設計と計画のフェーズにも役立つ一般的な質問の一覧が記載されています。
+
 
 ## セキュリティ ロールとアクセス制御
 組織の規模と構造によっては、複数の個人やチームが Security Center を使用して、セキュリティ関連のさまざまなタスクを実行する場合があります。ここでは、下記のような架空の人物と、それぞれのロールおよびセキュリティ責任を例に考えてみましょう。
@@ -102,7 +101,7 @@ Security Center の RBAC を使用してアクセス制御を計画する際は�
 
 次の図に示すように、サブスクリプション レベルで有効になっているポリシーは、サブスクリプション内のすべてのリソース グループに自動的に反映されます。
 
-![Security Policies](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig2.png)
+![Security Policies](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig2-ga.png)
 
 上の図のとおり、リソース グループのセキュリティ ポリシーはサブスクリプション レベルから継承できます。
 
@@ -118,7 +117,7 @@ Security Center の RBAC を使用してアクセス制御を計画する際は�
 
 セキュリティ ポリシーを構成する前に、[セキュリティに関する推奨事項](security-center-recommendations.md)をそれぞれ確認し、お使いのサブスクリプションやリソース グループに対して適切かどうかを判断する必要があります。また、セキュリティに関する推奨事項への対応として必要なアクションを理解することも重要です。
 
-**エンドポイントの保護**: 仮想マシンでエンドポイント保護ソリューションが有効になっていない場合、エンドポイント保護ソリューションをインストールするよう Security Center から提案されます。オンプレミスで既に採用している使い慣れたエンドポイント保護ソリューションがある場合は、Azure VM に同じマルウェア対策を使用するかどうかを決定する必要があります。Azure Security Center にも、エンドポイント保護オプションがいくつか用意されています。無料の Microsoft マルウェア対策を使用したり、統合パートナーが提供するエンドポイント保護ソリューションの一覧から選択したりすることができます。Azure Security Center を使用してマルウェア対策をデプロイする方法の詳細については、「[Install Endpoint Protection in Azure Security Center (Azure Security Center で Endpoint Protection をインストールする)](security-center-install-endpoint-protection.md)」を参照してください。
+**エンドポイントの保護**: 仮想マシンでエンドポイント保護ソリューションが有効になっていない場合、エンドポイント保護ソリューションをインストールするよう Security Center から提案されます。オンプレミスで既に採用している使い慣れたエンドポイント保護ソリューションがある場合は、Azure VM に同じマルウェア対策を使用するかどうかを決定する必要があります。Azure Security Center にも、エンドポイント保護オプションがいくつか用意されています。無料の Microsoft マルウェア対策を使用したり、統合パートナーが提供するエンドポイント保護ソリューションの一覧から選択したりすることができます。Azure Security Center を使用してマルウェア対策をデプロイする方法の詳細については、「[Azure Security Center で Endpoint Protection をインストールする](security-center-install-endpoint-protection.md)」を参照してください。
 
 **システムの更新**: Azure Security Center は、IaaS と Cloud Services (PaaS) のセキュリティ更新プログラムや重要なオペレーティング システム更新プログラムが適用されていない仮想マシンを識別します。必要に応じて、更新プログラムの適用を担当するユーザーと適用方法を検討してください。多くの組織では、WSUS や Windows Update などのツールが使用されています。
 
@@ -140,7 +139,7 @@ Security Center の RBAC を使用してアクセス制御を計画する際は�
 
 **仮想ネットワーク**: Azure Security Center は、[Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) のインフラストラクチャと構成を評価し、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)が適用され、かつ着信トラフィック規則を使用して正しく構成されているかどうかを確認します。トラフィック規則での定義が必要な項目を検討し、関連するセキュリティ推奨事項を適用する個人に通知する必要があります。
 
-Security Center では、Azure サブスクリプションに対してセキュリティ連絡先の詳細を指定するよう推奨されます。この情報は、Microsoft セキュリティ レスポンス センター (MSRC) で、不正なユーザーまたは権限のないユーザーによる顧客データへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。この推奨事項を有効にする方法の詳細については、「[Provide security contact details in Azure Security Center (Azure Security Center でセキュリティ連絡先の詳細情報を指定する)](security-center-provide-security-contact-details.md)」を参照してください。
+Security Center では、Azure サブスクリプションに対してセキュリティ連絡先の詳細を指定するよう推奨されます。この情報は、Microsoft セキュリティ レスポンス センター (MSRC) で、不正なユーザーまたは権限のないユーザーによる顧客データへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。この推奨事項を有効にする方法の詳細については、「[Azure Security Center でセキュリティ連絡先の詳細情報を指定する](security-center-provide-security-contact-details.md)」を参照してください。
 
 ## データの収集と保存
 
@@ -191,7 +190,7 @@ Azure Security Center で現在の Azure 環境に対してデータ収集を初
 
 Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security Center によって自動的にこれらのリソースが検出され、セキュリティの監視が開始されます。これには、PaaS の Web ロールと worker ロールも含まれます。データ収集が[セキュリティ ポリシー](security-center-policies.md)で有効になっている場合は、仮想マシンに対して追加の監視機能が自動的に有効になります。
 
-![Key areas](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3.png)
+![Key areas](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-ga.png)
 
 1.	仮想マシンについて、**[リソース セキュリティの正常性]** タイルにアクセスし、**[Virtual Machines]** をクリックします。データ収集または関連する推奨事項の有効化に問題があれば、**[監視の推奨事項]** セクションに表示されます。
 2.	**[推奨事項]** を表示し、新しいリソースに関してセキュリティ上のリスクが特定されているかどうか、あればどのようなリスクかを確認します。
@@ -226,7 +225,7 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 次の例は、疑わしい RDP アクティビティの発生を示しています。
 
-![Suspicious activity](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5.png)
+![Suspicious activity](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
 上の図のように、このブレードには、攻撃が発生した時間、ソース ホスト名、標的となった VM に関する詳細情報と、推奨される手順が表示されます。状況によっては、攻撃元の情報が空白になっていることもあります。このような動作の詳細については、「[Missing Source Information in Azure Security Center Alerts (Azure Security Center アラートに表示されないソース情報)](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/)」を参照してください。
 
@@ -240,4 +239,4 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 - 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

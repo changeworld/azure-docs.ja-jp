@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/13/2016"
+	ms.date="07/22/2016"
 	ms.author="jroth"/>
 
 # Azure 仮想マシンで SQL Server を使用する
@@ -31,7 +31,7 @@
 
 企業アプリケーションなど、他のワークロードを Azure に移動する場合は、パフォーマンスを向上させるために、依存する SQL Server データベースも Azure に移動することが理にかなっています。しかし、Azure VM で SQL Server をホストすると、その他にも利点があります。たとえば、グローバルな展開と障害復旧のために、自動的に複数のデータ センターにアクセスできるようになります。シナリオと利点の詳しい一覧については、[Azure VM 上の SQL Server の製品ページ](https://azure.microsoft.com/services/virtual-machines/sql-server/)を参照してください。
 
-> [AZURE.NOTE] Azure VM 上の SQL Server を評価する際に、Azure の他のストレージや SQL オプションも確認してください。たとえば、[SQL Database](../sql-database/sql-database-technical-overview.md)、[SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)、[SQL Server Stretch Databsae](../sql-server-stretch-database/sql-server-stretch-database-overview.md) などです。1 つの詳細な比較として、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。
+> [AZURE.NOTE] Azure VM 上の SQL Server を評価する際に、Azure の他のストレージや SQL オプションも確認してください。たとえば、[SQL Database](../sql-database/sql-database-technical-overview.md)、[SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)、[SQL Server Stretch Databsae](../sql-server-stretch-database/sql-server-stretch-database-overview.md) などです。1 つの詳細な比較として、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/sql-database-paas-vs-sql-server-iaas.md)」を参照してください。
 
 Azure VM で SQL Server を実行することを決めたら、まず、SQL Server ライセンス費用が含まれている VM イメージを使用するかどうかを決定します。ライセンス持ち込み (BYOL) により VM 自体の料金のみを支払う方法もあります。次の 2 つのセクションでは、これらのオプションについて説明します。
 
@@ -78,7 +78,7 @@ SQL Server VM をプロビジョニングした後、オプションの管理タ
 その他の高可用性構成については、「[Azure の仮想マシン内の SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
 
 ### データのバックアップ
-Azure VM では[自動バックアップ](virtual-machines-windows-sql-automated-backup.md)を活用できます。これにより、データベースのバックアップが BLOB ストレージに定期的に作成されます。また、この手法は手動で使用できます。詳細については、「[Azure Storage を使用した SQL Server のバックアップと復元](../sql-database/storage-use-storage-sql-server-backup-restore.md)」を参照してください。すべてのバックアップと復元のオプションの概要については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」をご覧ください。
+Azure VM では[自動バックアップ](virtual-machines-windows-sql-automated-backup.md)を活用できます。これにより、データベースのバックアップが BLOB ストレージに定期的に作成されます。また、この手法は手動で使用できます。詳細については、「[Use Azure Storage for SQL Server Backup and Restore (Azure Storage を使用した SQL Server のバックアップと復元)](virtual-machines-windows-use-storage-sql-server-backup-restore.md)」を参照してください。すべてのバックアップと復元のオプションの概要については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」をご覧ください。
 
 ### 更新の自動化
 Azure VM では、[自動修正](virtual-machines-windows-sql-automated-patching.md)を使用して、Windows と SQL Server の重要な更新プログラムを自動的にインストールするメンテナンス期間をスケジュール設定できます。
@@ -91,4 +91,4 @@ Azure 仮想マシン上の SQL Server の[ラーニング パスを調べます
 
 質問がある場合は、 まず、「[Azure Virtual Machines における SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)」をご確認ください。SQL VM に関するトピックのいずれかで、下部のセクションに質問またはコメントを追加して、Microsoft やコミュニティとやり取りすることもできます。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

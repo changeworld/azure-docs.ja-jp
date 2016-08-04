@@ -39,7 +39,7 @@ AAD での管理者ロールの詳細については、「[Azure AD での管理
 
 **グローバル管理者:** AAD テナントごとに多数のグローバル管理者がいてもかまいません。AAD テナントを作成したユーザーは、既定でそのテナントのグローバル管理者になります。グローバル管理者は、構成済みソリューションをプロビジョニングでき、AAD テナントの内部にあるアプリケーションに対する **ADMINISTRATOR** ロールを割り当てられます。ただし、同じ AAD テナントの別のユーザーがアプリケーションを作成した場合は、グローバル管理者に付与される既定のロールは **IMPLICIT READ ONLY** です。グローバル管理者は、[Azure クラシック ポータル][lnk-classic-portal]を使用してアプリケーションに対するロールを割り当てることができます。
 
-**ドメイン ユーザー/メンバー:** AAD テナントごとに多数のドメイン ユーザー/メンバーがいてもかまいません。ドメイン ユーザーは [azureiotsuite.com][lnk-azureiotsuite] サイトを使用して構成済みソリューションをプロビジョニングできます。プロビジョニングするアプリケーションに対して付与される既定のロールは **ADMINISTRATOR** です。[azure-iot-solution][lnk-github-repo] リポジトリの build.cmd スクリプトを使用してアプリケーションを作成できますが、ロールを割り当てるアクセス許可はないので、既定で付与されるロールは **IMPLICIT READONLY** です。AAD テナントの別のユーザーが作成したアプリケーションに対して既定で割り当てられるロールは **IMPLICIT READONLY** です。アプリケーションのロールを割り当てることはできません。そのため、自分でプロビジョニングしたアプリケーションであっても、ユーザーまたはユーザーのロールを追加することはできません。
+**ドメイン ユーザー/メンバー:** AAD テナントごとに多数のドメイン ユーザー/メンバーがいてもかまいません。ドメイン ユーザーは [azureiotsuite.com][lnk-azureiotsuite] サイトを使用して構成済みソリューションをプロビジョニングできます。プロビジョニングするアプリケーションに対して付与される既定のロールは **ADMINISTRATOR** です。[azure-iot-remote-monitoring][lnk-rm-github-repo] または [azure-iot-predictive-maintenance][lnk-pm-github-repo] リポジトリの build.cmd スクリプトを使用してアプリケーションを作成できますが、ロールを割り当てるアクセス許可はないので、既定で付与されるロールは **IMPLICIT READONLY** です。AAD テナントの別のユーザーが作成したアプリケーションに対して既定で割り当てられるロールは **IMPLICIT READONLY** です。アプリケーションのロールを割り当てることはできません。そのため、自分でプロビジョニングしたアプリケーションであっても、ユーザーまたはユーザーのロールを追加することはできません。
 
 **ゲスト ユーザー/ゲスト:** AAD テナントごとに多数のゲスト ユーザー/ゲストがいてもかまいません。ゲスト ユーザーの AAD テナントでの権限セットは制限されています。したがって、ゲスト ユーザーは AAD テナントで構成済みソリューションをプロビジョニングできません。
 
@@ -135,10 +135,15 @@ Azure 共同管理者、サービス管理者、アカウント管理者のロ�
 
 Azure サブスクリプションが確かにある場合は、サブスクリプションのテナント マッピングを調べ、ドロップダウンで正しいテナントが選択されていることを確認してください。目的のテナントが正しいことを確認できた場合は、上の図に従って、サブスクリプションとこの AAD テナントのマッピングを確認してください。
 
+## 次のステップ
+
+IoT Suite について引き続き学習するには、[構成済みソリューションをカスタマイズする][lnk-customize]方法に関するページを参照してください。
+
 [img-flowchart]: media/iot-suite-permissions/flowchart.png
 
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
-[lnk-github-repo]: https://github.com/Azure/azure-iot-solution
+[lnk-rm-github-repo]: https://github.com/Azure/azure-iot-remote-monitoring
+[lnk-pm-github-repo]: https://github.com/Azure/azure-iot-predictive-maintenance
 [lnk-aad-admin]: https://azure.microsoft.com/documentation/articles/active-directory-assign-admin-roles/
 [lnk-classic-portal]: https://manage.windowsazure.com/
 [lnk-create-edit-users]: https://azure.microsoft.com/documentation/articles/active-directory-create-users/
@@ -147,5 +152,6 @@ Azure サブスクリプションが確かにある場合は、サブスクリ�
 [lnk-admin-roles]: https://azure.microsoft.com/documentation/articles/billing-add-change-azure-subscription-administrator/
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs
 [lnk-help-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
+[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

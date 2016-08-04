@@ -399,9 +399,9 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 ##アプリケーションに通知を送信する
 
 
-以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、Azure クラシック ポータルで通知を送信し、アプリケーションで通知の受信テストを行うことができます。
+以下の画面に示すように、通知ハブの **[テスト送信]** ボタンを使用して、[Azure ポータル](https://portal.azure.com/)で通知を送信し、アプリケーションで通知の受信テストをすばやく行うことができます。
 
-![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-debug.png)
+![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
 
 プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Services などのバックエンド サービスや ASP.NET に送信されます。ライブラリがバックエンドで利用できない場合、REST API を直接使用して通知メッセージを送信できます。
 
@@ -413,7 +413,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
 * **Node.js** : [Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-push-notification-tutorial.md)。
 
-* **Azure Mobile Services**: Notification Hubs に統合されている Azure Mobile Services バックエンドから通知を送信する方法の例については、「[Add push notifications to your Mobile Services app (Mobile Services アプリにプッシュ通知を追加する)](../mobile-services/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md)」を参照してください。
+* **Azure Mobile Services**: Notification Hubs に統合されている Azure Mobile Services バックエンドから通知を送信する方法の例については、「[Mobile Services アプリへのプッシュ通知の追加](../mobile-services/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md)」を参照してください。
 
 * **Java / PHP**: REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)) を参照してください。
 
@@ -503,4 +503,4 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Baidu ポータル]: http://www.baidu.com/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

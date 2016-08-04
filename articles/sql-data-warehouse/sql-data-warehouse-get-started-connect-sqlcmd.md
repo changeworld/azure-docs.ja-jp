@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/16/2016"
+   ms.date="07/22/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse に対するクエリ (sqlcmd)
@@ -22,7 +22,7 @@
 - [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 - [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 - [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 
 このチュートリアルでは、sqlcmd コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に対してクエリを実行します。
 
@@ -30,7 +30,7 @@
 
 このチュートリアルを進めるには、次が必要です。
 
--  [sqlcmd.exe][]。これをダウンロードするには、[Microsoft Command Line Utilities 11 for SQL Server][] のページを参照してください。
+-  [sqlcmd.exe][]。ダウンロードするには、[Microsoft Command Line Utilities 11 for SQL Server][] に関するページを参照してください。[Microsoft ODBC Driver 11 for SQL Server Windows][] も必要になることがあります。
 
 ## 1\.接続
 
@@ -64,26 +64,27 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 以下の例は、-Q オプションを使用する方法または SQL を sqlcmd にパイプ処理で渡す方法を使用して、バッチ モードでクエリを実行する方法を示しています。
 
 ```sql
-C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
+sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
 ```
 
 ```sql
-C:\>"SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
+"SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
 ```
 
 ## 次のステップ
 
-sqlcmd オプションの完全な一覧については、[sqlcmd のドキュメント][sqlcmd.exe]を参照してください。
-
-<!--Articles-->
-[connecting with PowerBI]: sql-data-warehouse-integrate-power-bi.md
-
-
-<!--Other-->
-[sqlcmd.exe]: https://msdn.microsoft.com/library/ms162773.aspx
-[Microsoft Command Line Utilities 11 for SQL Server]: http://go.microsoft.com/fwlink/?LinkId=321501
-[Azure portal]: https://portal.azure.com
+sqlcmd で使用可能なオプションの詳細については、[sqlcmd に関するドキュメント][sqlcmd.exe]を参照してください。
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0622_2016-->
+<!--Article references-->
+
+<!--MSDN references--> 
+[sqlcmd.exe]: https://msdn.microsoft.com/library/ms162773.aspx
+[Microsoft ODBC Driver 11 for SQL Server Windows]: https://www.microsoft.com/download/details.aspx?id=36434
+[Microsoft Command Line Utilities 11 for SQL Server]: http://go.microsoft.com/fwlink/?LinkId=321501
+[Azure portal]: https://portal.azure.com
+
+<!--Other Web references-->
+
+<!---HONumber=AcomDC_0727_2016-->

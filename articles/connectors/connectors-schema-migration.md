@@ -9,7 +9,7 @@
     tags="connectors"/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -20,7 +20,7 @@
 # ロジック アプリをスキーマ バージョン 2015-08-01-preview に移行する方法
 
 既存のロジック アプリを新しいスキーマに移行するには、次の手順に従います。
-1. Azure ポータルでロジック アプリを開きます。  
+1. Azure ポータルでロジック アプリを開きます。
 2. [スキーマの更新] をクリックします。
 
  ![API アイコン][step1] [スキーマの更新] ページが開き、新しいスキーマの改良点について詳しく書かれたドキュメントへのリンクが表示されます。 ![API アイコン][step2]
@@ -42,4 +42,4 @@
 [step1]: ./media/connectors-schema-migration/migrateschema1.png
 [step2]: ./media/connectors-schema-migration/migrateschema2.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0727_2016-->

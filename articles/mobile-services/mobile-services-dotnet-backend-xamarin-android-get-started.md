@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="01/14/2016"
+	ms.date="07/21/2016"
 	ms.author="donnam"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)] &nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
 > このトピックの Mobile Apps バージョンについては、「[Xamarin.Android アプリの作成](../app-service-mobile/app-service-mobile-xamarin-android-get-started.md)」を参照してください。
@@ -45,7 +45,7 @@
 
 ここでは、モバイル サービス用の新しい Xamarin Android アプリケーションとサービス プロジェクトをダウンロードします。
 
-1. まだ実行していない場合は、Visual Studio with Xamarin をインストールします。手順については、「[Visual Studio と Xamarin の設定とインストール](https://msdn.microsoft.com/library/mt613162.aspx)」を参照してください。Mac OS X コンピューターで Xamarin Studio を使用して、「[Mac ユーザー向けのセットアップ、インストール、および検証](https://msdn.microsoft.com/library/mt488770.aspx)」を参照することもできます。  
+1. まだ実行していない場合は、Visual Studio with Xamarin をインストールします。手順については、「[Visual Studio と Xamarin の設定とインストール](https://msdn.microsoft.com/library/mt613162.aspx)」を参照してください。Mac OS X コンピューターで Xamarin Studio を使用して、「[Mac ユーザー向けのセットアップ、インストール、および検証](https://msdn.microsoft.com/library/mt488770.aspx)」を参照することもできます。
 
 2. [クラシック ポータル]で、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
@@ -130,4 +130,4 @@
 [JavaScript バックエンド バージョン]: mobile-services-android-get-started.md
 [Mobile Services .NET バックエンドのトラブルシューティング]: mobile-services-dotnet-backend-how-to-troubleshoot.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="04/22/2016"
+	ms.date="07/22/2016"
 	ms.author="rachelap"/>
 
 # Visual Studio を使用した Azure App Service への ASP.NET Web アプリのデプロイ
@@ -240,4 +240,6 @@ ASP.NET Web アプリが Azure App Service で動作するようになったら�
 
 	Azure ポータルでリソース グループを操作する方法については、「[Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](../resource-group-template-deploy-portal.md)」を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+*	App Service で ASP.NET Web アプリを作成するその他の例については、[HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect の[デモ](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)の「[Create and deploy an ASP.NET web app in Azure App Service (Azure App Service で ASP.NET Web アプリを作成およびデプロイする)](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service)」を参照してください。HealthClinic.biz のデモに関連する他のクイック スタートについては、「[Azure Developer Tools Quickstarts (Azure 開発者ツールのクイック スタート)](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)」を参照してください。
+
+<!---HONumber=AcomDC_0727_2016-->
