@@ -386,4 +386,4 @@ Litmos で Azure AD のシングル サインオンを構成してテストす�
 [401]: ./media/active-directory-saas-litmos-tutorial/tutorial_litmos_401.png
 [402]: ./media/active-directory-saas-litmos-tutorial/tutorial_litmos_402.png
 
-<!----HONumber=AcomDC_0713_2016-->
+<!-----HONumber=AcomDC_0713_2016-->

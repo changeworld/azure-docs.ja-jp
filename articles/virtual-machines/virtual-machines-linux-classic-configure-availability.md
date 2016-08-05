@@ -28,4 +28,4 @@
 
 クラシック デプロイに関するその他の記事については、「[Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource-links.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!----HONumber=AcomDC_0713_2016-->
