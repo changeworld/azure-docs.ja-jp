@@ -1,4 +1,4 @@
-ñ<properties
+<properties
 	pageTitle="Microsoft HPC Pack を使用したハイブリッド HPC クラスターのセットアップ | Microsoft Azure"
 	description="Microsoft HPC Pack と Azure を使用して、小規模なハイブリッド ハイパフォーマンス コンピューティング (HPC) クラスターをセットアップする方法について説明します。"
 	services="cloud-services"
