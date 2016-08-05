@@ -3,7 +3,7 @@
    description="仮想マシンの管理タスクを自動化するのに使用できるコマンドについて説明します。"
    services="virtual-machines-windows"
    documentationCenter="windows"
-   authors="singhkay"
+   authors="rothja"
    manager="timlt"
    editor=""
    tags="azure-service-management"/>
