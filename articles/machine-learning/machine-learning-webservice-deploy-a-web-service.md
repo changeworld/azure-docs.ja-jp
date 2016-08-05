@@ -18,7 +18,7 @@
 
 # 新しい Web サービスのデプロイ
 
-Microsoft Azure Machine Learning で、新しい課金プラン オプションが可能で Web サービスを複数のリージョンにデプロイできる [Azure Resource Manager](../azure-portal/resource-group-overview.md) に基づく Web サービスが提供されるようになりました。
+Microsoft Azure Machine Learning で、新しい課金プラン オプションが可能で Web サービスを複数のリージョンにデプロイできる [Azure Resource Manager]( ../azure-portal/resource-group-overview.md) に基づく Web サービスが提供されるようになりました。
 
 Microsoft Azure Machine Learning Web サービスを使用して Web サービスをデプロイする一般的なワークフローは次のとおりです。
 
