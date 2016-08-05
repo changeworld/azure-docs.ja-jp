@@ -39,7 +39,7 @@ Microsoft Azure Machine Learning Web サービスを使用して Web サービ�
 
 **注**: 従来の Web サービスとして実験を既にデプロイしている場合は、新しい Web サービスとしてデプロイすることはできません。
  
-実験キャンバスの下部にある **[実行]** をクリックし、**[Web サービスのデプロイ]** と **[Deploy Web Service [New](Web サービスのデプロイ [新規])]** をクリックします。Machine Learning Web サービス マネージャの [デプロイ] ページが開きます。
+実験キャンバスの下部にある **[実行]** をクリックし、**[Web サービスのデプロイ]** と **[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** をクリックします。Machine Learning Web サービス マネージャの [デプロイ] ページが開きます。
 
 ## Machine Learning Web サービス マネージャの [Deploy Experiment (実験のデプロイ)] ページ
 [Deploy Experiment (実験のデプロイ]) ページで、Web サービスの名前を入力します。料金プランを選択します。既存の料金プランがある場合はそのプランを選択できます。ない場合は、サービス用に新しい料金プランを作成する必要があります。
