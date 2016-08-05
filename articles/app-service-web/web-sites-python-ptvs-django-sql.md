@@ -205,4 +205,4 @@ Python Tools for Visual Studio、Django および SQL Database の詳細につ�
 [Django のドキュメント]: https://www.djangoproject.com/
 [SQL Database]: /documentation/services/sql-database/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!----HONumber=AcomDC_0713_2016-->

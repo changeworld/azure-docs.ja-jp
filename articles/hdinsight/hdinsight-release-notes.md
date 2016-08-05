@@ -1632,4 +1632,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!----HONumber=AcomDC_0720_2016-->

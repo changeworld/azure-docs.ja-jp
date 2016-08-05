@@ -27,4 +27,4 @@
 
 クラシック デプロイに関するその他の記事については、「[クラシック デプロイメント モデルにおける Windows VM に関する技術解説記事](virtual-machines-windows-index.md)」を参照してください。
 
-<!----HONumber=AcomDC_0713_2016-->
+<!-----HONumber=AcomDC_0713_2016-->

@@ -157,4 +157,4 @@ PowerShell でカスタム ロールを作成するときは、いずれかの[�
 - [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!----HONumber=AcomDC_0720_2016-->
+<!-----HONumber=AcomDC_0720_2016-->
