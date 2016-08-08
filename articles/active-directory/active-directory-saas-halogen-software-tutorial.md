@@ -117,8 +117,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 	![Azure AD Single Sign-On][9]
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
-
-![Configure App Settings][10]
+	![Configure App Settings][10]
  
      a. **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Halogen Software アプリケーションへのサインオンに使用する URL を入力します: *https://global.hgncloud.com/fabrikam/welcome.jsp*。
 
@@ -140,8 +139,8 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 	![What is Azure AD Connect][13]
 
 8. **[SAML Configuration]** ページで、次の手順を実行します。
-
 	![What is Azure AD Connect][14]
+
     a.**[Unique Identifier]** として **[NameID]** を選択します。
 
     b.**[Unique Identifier Maps To]** として **[Username]** を選択します。
@@ -217,9 +216,10 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
-	![What is Azure AD Connect][106]
+	![What is Azure AD Connect][106]   
 
-    a.**[新しいパスワード]** の値を書き留めます。b.**[完了]** をクリックします。
+    a.**[新しいパスワード]** の値を書き留めます。
+    b.**[完了]** をクリックします。
   
  
 ### Halogen Software のテスト ユーザーの作成
