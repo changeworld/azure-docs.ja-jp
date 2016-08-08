@@ -56,7 +56,7 @@ HDInsight の Hive を使用して JSON ファイルを処理および分析す�
 	    ]
 	}
 
-ファイルは、wasb://processjson@hditutorialdata.blob.core.windows.net/ で参照できます。HDInsight での Azure BLOB ストレージの使用については、「[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」をご覧ください。必要に応じて、クラスターの既定のコンテナーにファイルをコピーできます。
+ファイルは、wasbs://processjson@hditutorialdata.blob.core.windows.net/ で参照できます。HDInsight での Azure BLOB ストレージの使用については、「[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」をご覧ください。必要に応じて、クラスターの既定のコンテナーにファイルをコピーできます。
 
 このチュートリアルでは、Hive コンソールを使用します。Hive コンソールを開く手順については、「[リモート デスクトップによる HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-remote-desktop.md)」をご覧ください。
 
@@ -81,7 +81,7 @@ HDInsight の Hive を使用して JSON ファイルを処理および分析す�
 
 	SELECT * FROM StudentsOneLine
 
-未加工の JSON ファイルは **wasb://processjson@hditutorialdata.blob.core.windows.net/** にあります。*StudentsRaw* Hive テーブルは、未加工の平坦化されていない JSON ドキュメントを指しています。
+未加工の JSON ファイルは wasbs://processjson@hditutorialdata.blob.core.windows.net/** にあります。*StudentsRaw* Hive テーブルは、未加工の平坦化されていない JSON ドキュメントを指しています。
 
 *StudentsOneLine* Hive テーブルは、*/json/students/* パスの下にある HDInsight の規定のファイル システムにデータを保存します。
 
@@ -153,7 +153,7 @@ SerDe は、入れ子になった JSON ドキュメントを解析するのに�
 	インストールが完了したら、新しいユーザーの環境変数を追加します。
 
 	1. Windows 画面から **[システムの詳細設定の表示]** を開きます。
-	2. **[環境変数]** をクリックします。  
+	2. **[環境変数]** をクリックします。
 	3. 新しい **JAVA\_HOME** 環境変数を追加します。これは、**C:\\Program Files\\Java\\jdk1.7.0\_55** または JDK がインストールされている場所を指します。
 
 	![JDK の適切な構成値の設定][image-hdi-hivejson-jdk]
@@ -260,4 +260,4 @@ Hive コンソールの出力を次に示します。
 [image-hdi-hivejson-serde_query3]: ./media/hdinsight-using-json-in-hive/serde_query3.png
 [image-hdi-hivejson-serde_result]: ./media/hdinsight-using-json-in-hive/serde_result.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

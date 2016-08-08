@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="07/14/2016"
+	ms.date="07/22/2016"
 	ms.author="kgremban"/>
 
 # Azure PowerShell を使用したロールベースのアクセス制御の管理
@@ -35,35 +35,45 @@ PowerShell を使って RBAC を管理するには、以下を用意しておく
 ## ロールの一覧表示
 
 ### 使用可能なすべてのロールの表示
-割り当てることができる RBAC のロールを表示したり、アクセス権が付与されている操作を調べたりするには、次のコマンドを使用します。
+割り当てることができる RBAC のロールを表示したり、アクセス権が付与されている操作を調べたりするには、`Get-AzureRmRoleDefinition` を使用します。
 
-		Get-AzureRmRoleDefinition
+```
+Get-AzureRmRoleDefinition | FT Name, Description
+```
 
 ![RBAC PowerShell - Get-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/1-get-azure-rm-role-definition1.png)
 
 ### ロールのアクションの表示
-特定のロールのアクションを表示するには、次のコマンドを使用します。
+特定のロールのアクションを表示するには、`Get-AzureRmRoleDefinition <role name>` を使用します。
 
-    Get-AzureRmRoleDefinition <role name>
+```
+Get-AzureRmRoleDefinition Contributor | FL Actions, NotActions
+
+(Get-AzureRmRoleDefinition "Virtual Machine Contributor").Actions
+```
 
 ![RBAC PowerShell - 特定のロールの Get-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/1-get-azure-rm-role-definition2.png)
 
 ## アクセスできるユーザーの確認
-RBAC のアクセス権の割り当てを表示するには、次のコマンドを使用します。
-
-    Get-AzureRmRoleAssignment
+RBAC のアクセス権の割り当てを表示するには、`Get-AzureRmRoleAssignment` を使用します。
 
 ###	特定のスコープでのロールの割り当ての表示
-指定したサブスクリプション、リソース グループ、またはリソースに対するすべてのアクセス権の割り当てを表示できます。たとえば、リソース グループのすべてのアクティブな割り当てを表示するには、次のコマンドを使用します。
+指定したサブスクリプション、リソース グループ、またはリソースに対するすべてのアクセス権の割り当てを表示できます。たとえば、リソース グループのすべてのアクティブな割り当てを表示するには、`Get-AzureRmRoleAssignment -ResourceGroupName <resource group name>` を使用します。
 
-    Get-AzureRmRoleAssignment -ResourceGroupName <resource group name>
+```
+Get-AzureRmRoleAssignment -ResourceGroupName Pharma-Sales-ProjectForcast | FL DisplayName, RoleDefinitionName, Scope
+```
 
 ![RBAC PowerShell - リソース グループの Get-AzureRmRoleAssignment - スクリーンショット](./media/role-based-access-control-manage-access-powershell/4-get-azure-rm-role-assignment1.png)
 
 ### ユーザーに割り当てられたロールの表示
-指定したユーザーに割り当てられたすべてのロール (そのユーザーのグループに割り当てられたロールを含む) を表示するには、次のコマンドを使用します。
+指定したユーザーに割り当てられたすべてのロール (そのユーザーのグループに割り当てられたロールを含む) を表示するには、`Get-AzureRmRoleAssignment -SignInName <User email> -ExpandPrincipalGroups` を使用します。
 
-    Get-AzureRmRoleAssignment -SignInName <User email> -ExpandPrincipalGroups
+```
+Get-AzureRmRoleAssignment -SignInName sameert@aaddemo.com | FL DisplayName, RoleDefinitionName, Scope
+
+Get-AzureRmRoleAssignment -SignInName sameert@aaddemo.com -ExpandPrincipalGroups | FL DisplayName, RoleDefinitionName, Scope
+```
 
 ![RBAC PowerShell - ユーザーの Get-AzureRmRoleAssignment - スクリーンショット](./media/role-based-access-control-manage-access-powershell/4-get-azure-rm-role-assignment2.png)
 
@@ -89,7 +99,7 @@ Azure AD サービス プリンシパル、つまりアプリケーションの�
 ### サブスクリプションのスコープでのアプリケーションへのロールの割り当て
 サブスクリプションのスコープでアプリケーションにアクセス権を付与するには、次のコマンドを使用します。
 
-    New-AzureRmRoleAssignment -ObjectId <application id> -RoleDefinitionName <role name in quotes> -Scope <subscription id>
+    New-AzureRmRoleAssignment -ObjectId <application id> -RoleDefinitionName <role name> -Scope <subscription id>
 
 ![RBAC PowerShell - New-AzureRmRoleAssignment - スクリーンショット](./media/role-based-access-control-manage-access-powershell/2-new-azure-rm-role-assignment2.png)
 
@@ -121,6 +131,27 @@ PowerShell でカスタム ロールを作成するときは、いずれかの[�
 
 以下の例では、*Virtual Machine Contributor* ロールを土台として、*Virtual Machine Operator* というカスタム ロールを作成しています。この新しいロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。カスタム ロールは 2 つのサブスクリプションで使用できます。
 
+```
+$role = Get-AzureRmRoleDefinition "Virtual Machine Contributor"
+$role.Id = $null
+$role.Name = "Virtual Machine Operator"
+$role.Description = "Can monitor and restart virtual machines."
+$role.Actions.Clear()
+$role.Actions.Add("Microsoft.Storage/*/read")
+$role.Actions.Add("Microsoft.Network/*/read")
+$role.Actions.Add("Microsoft.Compute/*/read")
+$role.Actions.Add("Microsoft.Compute/virtualMachines/start/action")
+$role.Actions.Add("Microsoft.Compute/virtualMachines/restart/action")
+$role.Actions.Add("Microsoft.Authorization/*/read")
+$role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
+$role.Actions.Add("Microsoft.Insights/alertRules/*")
+$role.Actions.Add("Microsoft.Support/*")
+$role.AssignableScopes.Clear()
+$role.AssignableScopes.Add("/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e")
+$role.AssignableScopes.Add("/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624")
+New-AzureRmRoleDefinition -Role $role
+```
+
 ![RBAC PowerShell - Get-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/2-new-azurermroledefinition.png)
 
 ## カスタム ロールの修正
@@ -128,9 +159,23 @@ PowerShell でカスタム ロールを作成するときは、いずれかの[�
 
 次の例では、`Microsoft.Insights/diagnosticSettings/*` 操作が *Virtual Machine Operator* カスタム ロールに追加されます。
 
+```
+$role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
+$role.Actions.Add("Microsoft.Insights/diagnosticSettings/*")
+Set-AzureRmRoleDefinition -Role $role
+```
+
 ![RBAC PowerShell - Set-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-1.png)
 
 次の例では、Azure サブスクリプションが Virtual Machine Operator カスタム ロールの割り当て可能なスコープに追加されます。
+
+```
+Get-AzureRmSubscription - SubscriptionName Production3
+
+$role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
+$role.AssignableScopes.Add("/subscriptions/34370e90-ac4a-4bf9-821f-85eeedead1a2"
+Set-AzureRmRoleDefinition -Role $role)
+```
 
 ![RBAC PowerShell - Set-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/3-set-azurermroledefinition-2.png)
 
@@ -140,12 +185,22 @@ PowerShell でカスタム ロールを作成するときは、いずれかの[�
 
 次の例では、*Virtual Machine Operator* カスタム ロールが削除されます。
 
+```
+Get-AzureRmRoleDefinition "Virtual Machine Operator"
+
+Get-AzureRmRoleDefinition "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
+```
+
 ![RBAC PowerShell - Remove-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/4-remove-azurermroledefinition.png)
 
 ## カスタム ロールの一覧表示
 特定のスコープで割り当て可能なロールを一覧表示するには、`Get-AzureRmRoleDefinition` コマンドを使用します。
 
 次の例では、選択したサブスクリプションで割り当て可能なすべてのロールが一覧表示されます。
+
+```
+Get-AzureRmRoleDefinition | FT Name, IsCustom
+```
 
 ![RBAC PowerShell - Get-AzureRmRoleDefinition - スクリーンショット](./media/role-based-access-control-manage-access-powershell/5-get-azurermroledefinition-1.png)
 
@@ -157,4 +212,4 @@ PowerShell でカスタム ロールを作成するときは、いずれかの[�
 - [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!-----HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

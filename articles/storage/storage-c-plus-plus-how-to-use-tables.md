@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-	ms.date="04/29/2016"
+	ms.date="07/26/2016"
     ms.author="dineshm"/>
 
 # C++ から Table ストレージを使用する方法
@@ -34,8 +34,8 @@
 
 C++ 用 Azure ストレージ クライアント ライブラリをインストールする場合、次の方法を使用できます。
 
--	**Linux:** [C++ 用 Azure ストレージ クライアント ライブラリの README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) ページに記載されている手順に従います。  
--	**Windows:** Visual Studio で、**[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。[NuGet パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)に次のコマンドを入力し、Enter キーを押します。  
+-	**Linux:** [C++ 用 Azure ストレージ クライアント ライブラリの README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) ページに記載されている手順に従います。
+-	**Windows:** Visual Studio で、**[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。[NuGet パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)に次のコマンドを入力し、Enter キーを押します。
 
 		Install-Package wastorage
 
@@ -167,10 +167,10 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 
 バッチ操作に関しては、次の事項にも留意してください。
 
--	最大 100 個の挿入、削除、マージ、置換、挿入/マージ、挿入/置換の操作を任意の組み合わせで 1 つのバッチで実行できます。  
--	取得をバッチ操作として実行することもできますが、バッチ内の唯一の操作であることが必要です。  
--	1 つのバッチ操作に含まれるすべてのエンティティのパーティション キーが同じである必要があります。  
--	バッチ操作のデータ ペイロードは 4 MB に制限されています。  
+-	最大 100 個の挿入、削除、マージ、置換、挿入/マージ、挿入/置換の操作を任意の組み合わせで 1 つのバッチで実行できます。
+-	取得をバッチ操作として実行することもできますが、バッチ内の唯一の操作であることが必要です。
+-	1 つのバッチ操作に含まれるすべてのエンティティのパーティション キーが同じである必要があります。
+-	バッチ操作のデータ ペイロードは 4 MB に制限されています。
 
 ## パーティション内のすべてのエンティティを取得する
 テーブルに対してパーティション内のすべてのエンティティを照会する場合は、**table\_query** オブジェクトを使用します。次のコード例は、'Smith' がパーティション キーであるエンティティに対してフィルターを指定します。この例は、クエリ結果の各エンティティのフィールドをコンソールに出力します。
@@ -414,4 +414,4 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 -	[C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
 -	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

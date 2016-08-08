@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -30,7 +30,7 @@
 
 ### アクション
 - 右側のウィンドウの [待機コネクタ] をクリックします。![アクションの一覧][1]
-- 待機コネクタは、2 つのアクションをサポートします。 
+- 待機コネクタは、2 つのアクションをサポートします。
 	- 遅延
 	- この時間まで遅延
 	 
@@ -56,4 +56,4 @@
 [2]: ./media/app-service-logic-wait/DelayInput.PNG
 [3]: ./media/app-service-logic-wait/ActionConfigured.PNG
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

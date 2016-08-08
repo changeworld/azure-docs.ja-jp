@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/05/2016" 
+	ms.date="07/25/2016" 
 	ms.author="larryfr"/>
 
 #HDInsight での Hive を使用したフライト遅延データの分析
@@ -236,9 +236,9 @@ SQL Database がまだない場合は、「[SQL Database チュートリアル: 
 
 3. 次のコマンドを使用して、hivesampletable から mobiledata テーブルにデータをエクスポートします。
 
-		sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir 'wasb:///tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
+		sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir 'wasbs:///tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
 
-	このコマンドは、Sqoop に対して、SQL Database と delays テーブルが含まれているデータベースに接続して wasb:///tutorials/flightdelays/output (Hive クエリの出力を保存しておいた場所) から delays テーブルにデータをエクスポートするよう指示します。
+	このコマンドは、Sqoop に対して、SQL Database (delays テーブルが含まれているデータベース) に接続して wasbs:///tutorials/flightdelays/output (Hive クエリの出力を保存しておいた場所) から delays テーブルにデータをエクスポートするよう指示します。
 
 4. コマンドが完了したら、次を使用して、TSQL によってデータベースに接続します。
 
@@ -291,4 +291,4 @@ SQL Database がまだない場合は、「[SQL Database チュートリアル: 
 
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

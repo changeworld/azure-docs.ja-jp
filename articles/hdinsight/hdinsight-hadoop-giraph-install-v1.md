@@ -47,7 +47,7 @@
    
 ## ポータルを使用して Giraph をインストールする
 
-1. 「[カスタム オプションを使用して HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md#portal)」の説明に基づき、**CUSTOM CREATE** オプションを使用してクラスターの作成を開始します。 
+1. 「[カスタム オプションを使用して HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md#portal)」の説明に基づき、**CUSTOM CREATE** オプションを使用してクラスターの作成を開始します。
 2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
 	![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-giraph-install-v1/hdi-script-action-giraph.png "スクリプト アクションを使ってクラスターをカスタマイズする")
@@ -94,14 +94,14 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
 		$clusterName = "clustername"
 		# Giraph examples jar
-		$jarFile = "wasb:///example/jars/giraph-examples.jar"
+		$jarFile = "wasbs:///example/jars/giraph-examples.jar"
 		# Arguments for this job
 		$jobArguments = "org.apache.giraph.examples.SimpleShortestPathsComputation",
 		                "-ca", "mapred.job.tracker=headnodehost:9010",
 		                "-vif", "org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat",
-		                "-vip", "wasb:///example/data/tiny_graph.txt",
+		                "-vip", "wasbs:///example/data/tiny_graph.txt",
 		                "-vof", "org.apache.giraph.io.formats.IdWithValueTextOutputFormat",
-		                "-op",  "wasb:///example/output/shortestpaths",
+		                "-op",  "wasbs:///example/output/shortestpaths",
 		                "-w", "2"
 		# Create the definition
 		$jobDefinition = New-AzureHDInsightMapReduceJobDefinition
@@ -120,7 +120,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
 	この例では、**clustername** を、Giraph をインストールした HDInsight クラスターの名前で置き換えます。
 
-5. 結果を表示します。ジョブが完了すると、結果が \_\___wasb:///example/out/shotestpaths__ フォルダーの 2 つの出力ファイルに格納されます。この 2 つのファイルは __part-m-00001__ と __part-m-00002__ という名前です。出力をダウンロードして表示するには、次の手順を実行します。
+5. 結果を表示します。ジョブが完了すると、結果が __wasbs:///example/out/shotestpaths__ フォルダーの 2 つの出力ファイルに格納されます。この 2 つのファイルは __part-m-00001 と __part-m-00002__ という名前です。出力をダウンロードして表示するには、次の手順を実行します。
 
 		$subscriptionName = "<SubscriptionName>"       # Azure subscription name
 		$storageAccountName = "<StorageAccountName>"   # Azure Storage account name
@@ -194,4 +194,4 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

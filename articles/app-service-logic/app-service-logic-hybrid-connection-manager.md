@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -46,12 +46,12 @@ Azure ポータルで、Service Bus のルート SAS 接続文字列をコピー
 
 ## Hybrid Connection Manager をインストールする
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で、作成したコネクタを選択します。開くには、**[参照]**、**[API Apps]** の順に選択した後、コネクタまたは API App を選択します。<br/><br/>**[ハイブリッド接続]** の設定は **［未完了］** になっています。<br/> ![][2] 
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で、作成したコネクタを選択します。開くには、**[参照]**、**[API Apps]** の順に選択した後、コネクタまたは API App を選択します。<br/><br/>**[ハイブリッド接続]** の設定は **［未完了］** になっています。<br/> ![][2]
 
 2. **[ハイブリッド接続]** を選択します。前に入力した Service Bus 接続文字列が表示されます。
 3. **プライマリ構成文字列**をコピーします。<br/>![][PrimaryConfigString]
 
-4. **[オンプレミスの Hybrid Connection Manager]** で、Hybrid Connection Manger をポータルから直接ダウンロードまたはインストールできます。<br/><br/> ポータルから直接インストール場合は、オンプレミスの IIS サーバーに移動し、ポータルを参照し、**[ダウンロードして構成]** をクリックします。<br/><br/> Hybrid Connection Manager をダウンロードする場合は、オンプレミスの IIS サーバーに移動し、 **[ClickOnce アプリケーション]** (http://hybridclickonce.azurewebsites.net/install/Microsoft.Azure.BizTalk.Hybrid.ClickOnce.application) にアクセスします。アプリケーションを実行できるように、インストールが自動的に開始されます。
+4. **[オンプレミスの Hybrid Connection Manager]** で、Hybrid Connection Manger をポータルから直接ダウンロードまたはインストールできます。<br/><br/> ポータルから直接インストール場合は、オンプレミスの IIS サーバーに移動し、ポータルを参照し、**[ダウンロードして構成]** をクリックします。<br/><br/> Hybrid Connection Manager をダウンロードする場合は、オンプレミスの IIS サーバーに移動し、**[ClickOnce アプリケーション]** (http://hybridclickonce.azurewebsites.net/install/Microsoft.Azure.BizTalk.Hybrid.ClickOnce.application) にアクセスします。アプリケーションを実行できるように、インストールが自動的に開始されます。
 
 5. **[リスナーのセットアップ**] ウィンドウで、手順 3 でコピーした**プライマリ構成文字列**を入力し、**[インストール]** をクリックします。
 
@@ -84,19 +84,19 @@ TCP ポート | 理由
 
 1. IIS サーバーで、IIS Web ロールがインストールされ、すべての IIS サービスが開始されていることを確認します。
 2. IIS サーバーで、Hybrid Connection Manager がインストールされ、実行されていることを確認します。
- - IIS Manager (inetmgr) に、MicrosoftAzureBizTalkHybridListener Web サイトが表示され、実行中である必要があります。 
+ - IIS Manager (inetmgr) に、MicrosoftAzureBizTalkHybridListener Web サイトが表示され、実行中である必要があります。
  - この Web サイトは、NetworkService ローカル組み込みユーザー アカウントとして実行される HybridListenerAppPool を使用します。この AppPool も開始されている必要があります。
-3. IIS サーバーで、コネクタがインストールされ、実行されていることを確認します。 
- - App Service コネクタ用の Web サイトが作成されます。たとえば、SQL コネクタを作成した場合は、MicrosoftSqlConnector\_nnn Web サイトが存在します。IIS マネージャー (inetmgr) で、この web サイトが表示され、開始されていることを確認します。 
- - この Web サイトは、HybridAppPoolnnn という名前の専用の IIS アプリケーション プールを使用します。この AppPool は、NetworkService ローカル組み込みユーザー アカウントとして実行されます。この Web サイトと AppPool の両方が開始されている必要があります。 
+3. IIS サーバーで、コネクタがインストールされ、実行されていることを確認します。
+ - App Service コネクタ用の Web サイトが作成されます。たとえば、SQL コネクタを作成した場合は、MicrosoftSqlConnector\_nnn Web サイトが存在します。IIS マネージャー (inetmgr) で、この web サイトが表示され、開始されていることを確認します。
+ - この Web サイトは、HybridAppPoolnnn という名前の専用の IIS アプリケーション プールを使用します。この AppPool は、NetworkService ローカル組み込みユーザー アカウントとして実行されます。この Web サイトと AppPool の両方が開始されている必要があります。
  - ローカル コネクタを参照します。たとえば、コネクタ Web サイトがポート 6569 を使用する場合は、http://localhost:6569を参照します。既定のドキュメントが構成されていないため、`HTTP Error 403.14 - Forbidden error` が予期されます。
 4. ファイアウォールで、このトピックに示されている TCP ポートが開いていることを確認します。
 5. 送信元または送信先のシステムを調べます。
  - 一部のオンプレミス システムでは、追加の依存関係ファイルが必要です。たとえば、オンプレミスの SAP に接続する場合は、追加の SAP ファイルをいくつか IIS サーバーにインストールする必要があります。
  - ログイン アカウントを使用してシステムへの接続を確認します。たとえば、システムによって使用される TCP ポート (SQL Server 用のポート 1433 など) が開いている必要があります。Azure ポータルで入力したログイン アカウントによってシステムにアクセスできる必要があります。
-6. IIS サーバーのイベント ログで、エラーがないことを確認します。 
-7. クリーンアップを行い、Hybrid Connection Manager を再インストールします。 
- - IIS で、コネクタ Web サイトとそのアプリケーション プールを手動で削除します。 
+6. IIS サーバーのイベント ログで、エラーがないことを確認します。
+7. クリーンアップを行い、Hybrid Connection Manager を再インストールします。
+ - IIS で、コネクタ Web サイトとそのアプリケーション プールを手動で削除します。
  - Hybrid Connection Manager を再実行し、コネクタ用の正しい**プライマリ構成文字列**を入力していることを確認します。
 
 
@@ -140,4 +140,4 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

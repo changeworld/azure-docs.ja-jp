@@ -95,4 +95,4 @@ Linux の数値は、Ubuntu 上で [CoreMark](http://www.eembc.org/coremark/faq.
 
 * Linux VM 上で CoreMark スクリプトを実行するには、[CoreMark スクリプト パック](http://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip)をダウンロードします。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

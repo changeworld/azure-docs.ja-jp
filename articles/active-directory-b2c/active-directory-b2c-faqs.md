@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory B2C プレビュー: FAQ | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C: FAQ | Microsoft Azure"
 	description="Azure Active Directory B2C についてよく寄せられる質問"
 	services="active-directory-b2c"
 	documentationCenter=""
@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="07/22/2016"
 	ms.author="swkrish"/>
 
-# Azure Active Directory B2C プレビュー: FAQ
+# Azure Active Directory B2C: FAQ
 
-このページには、Azure Active Directory (Azure AD) B2C プレビューに関してよく寄せられる質問への回答が記載されています。常に最新情報をチェックしてください。
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
+このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。常に最新情報をチェックしてください。
 
 ### 既存の従業員ベースの Azure AD テナントで Azure AD B2C 機能を使用できますか。
 
@@ -56,7 +54,7 @@ Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意�
 
 ### 複数の Azure AD B2C テナントがあります。Azure ポータルでこれらのテナントを管理するにはどうすればよいですか。
 
-Azure ポータルには、Azure AD B2C テナントごとに独自の B2C 機能ブレードがあります。Azure ポータルで特定のテナントの B2C 機能ブレードに移動する方法については、「[Azure Active Directory B2C プレビュー: アプリケーションを登録する方法](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)」を参照してください。ほとんどのブラウザーでは、Azure ポータルで Azure AD B2C ディレクトリを切り替えると、B2C 機能ブレードは開いたままにはなりません。
+Azure ポータルには、Azure AD B2C テナントごとに独自の B2C 機能ブレードがあります。Azure ポータルで特定のテナントの B2C 機能ブレードに移動する方法については、「[Azure Active Directory B2C: アプリケーションを登録する](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)」を参照してください。ほとんどのブラウザーでは、Azure ポータルで Azure AD B2C ディレクトリを切り替えると、B2C 機能ブレードは開いたままにはなりません。
 
 ### Azure AD B2C によって送信される検証電子メールをカスタマイズするにはどうすればいいですか (コンテンツおよび "From:" フィールド)。
 
@@ -64,11 +62,11 @@ Azure ポータルには、Azure AD B2C テナントごとに独自の B2C 機�
 
 ### 既存のユーザー名、パスワード、およびプロファイルを自分のデータベースから Azure AD B2C に移行するにはどのようにすればいいですか。
 
-Azure AD Graph API を使用して、移行ツールを作成できます。詳細については、[Graph API サンプル](active-directory-b2c-devquickstarts-graph-dotnet.md)を参照してください。将来、さまざまな移行オプションとツールをすぐに使用できる状態で提供する予定です。
+Azure AD Graph API を使用して、移行ツールを作成できます。詳細については、[Graph API サンプル](active-directory-b2c-devquickstarts-graph-dotnet.md)に関するページを参照してください。将来、さまざまな移行オプションとツールをすぐに使用できる状態で提供する予定です。
 
 ### Azure AD B2C のローカル アカウントに使用されるパスワード ポリシーはどのようなものですか。
 
-Azure AD B2C のローカル アカウントのパスワード ポリシーは Azure AD のポリシーに基づいています。Azure AD B2C では、「強力な」パスワードを使用し、すべてのパスワードを無期限にします。詳細については、「[Azure AD でのパスワード ポリシー](https://msdn.microsoft.com/library/azure/jj943764.aspx)」を参照してください。
+Azure AD B2C のローカル アカウントのパスワード ポリシーは Azure AD のポリシーに基づいています。Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ポリシーでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。詳細については、[Azure AD のパスワード ポリシー](https://msdn.microsoft.com/library/azure/jj943764.aspx)に関するページを参照してください。
 
 ### Azure AD Connect を使用して、自分のオンプレミス Active Directory に保存されているお客様の ID を Azure AD B2C に移行できますか。
 
@@ -80,11 +78,11 @@ Azure AD B2C のローカル アカウントのパスワード ポリシーは A
 
 ### Azure AD B2C はオンプレミスの SharePoint 2016 以前と連携しますか。
 
-現時点では変更できません。Azure AD B2C では、ポータルおよび E コマース アプリケーションがオンプレミスの SharePoint のニーズに基づいて構築した SAML 1.1 トークンはサポートされません。Azure AD B2C は、シナリオを共有する SharePoint の外部パートナー向けではありません。「[Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx)」を参照してください。
+現時点では変更できません。Azure AD B2C では、ポータルおよび E コマース アプリケーションがオンプレミスの SharePoint のニーズに基づいて構築した SAML 1.1 トークンはサポートされません。Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには適していません。この記事ではなく、[Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) に関する記事を参照してください。
 
 ### 外部 ID を管理するために Azure AD B2C または B2B を使用する必要がありますか。
 
-外部 ID のシナリオに適切な機能を使用する方法の詳細については、[外部 ID](../active-directory/active-directory-b2b-compare-external-identities.md) に関するこの記事を参照してください。
+外部 ID のシナリオに適した機能を使用する方法の詳細については、[外部 ID](../active-directory/active-directory-b2b-compare-external-identities.md) に関するこの記事を参照してください。
 
 ### Azure AD B2C ではどのようなレポート機能と監査機能が提供されますか。 それは Azure AD Premium の機能と同じですか。
 
@@ -96,7 +94,7 @@ Azure AD B2C のローカル アカウントのパスワード ポリシーは A
 
 ### Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を login.microsoftonline.com から login.contoso.com に変更できますか。
 
-現時点では変更できません。この機能は検討中です。また、Azure クラシック ポータルでテナントの **[ドメイン]** タブのドメインを確認しても変更は行われません。
+現時点では変更できません。この機能は検討中です。また、Azure クラシック ポータルからテナントの **[ドメイン]** タブでドメインを検証しても、変更は行われません。
 
 ### Azure AD B2C テナントを削除する方法はありますか。
 
@@ -107,7 +105,7 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 - 次に、サブスクリプション管理者として [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします (これは、Azure へのサインアップに使用したものと同じ職場/学校アカウント、または同じ Microsoft アカウントです)。
 - 左側の Active Directory 拡張機能に移動し、B2C テナントをクリックします。
 - **[Users]** タブをクリックします。
-- 各ユーザーを順に選択します。ただし、現在サインインに使用しているユーザー (つまりサブスクリプション管理者) は除きます。ページ下部の **[削除]** をクリックし、確認プロンプトで **[はい]** をクリックします。
+- 各ユーザーを順に選択します。ただし、現在サインインに使用しているユーザー (つまりサブスクリプション管理者) は除きます。ページ下部の **[削除]** をクリックし、確認プロンプトに **[はい]** をクリックします。
 - **[アプリケーション]** タブをクリックします。
 - **[表示]** ドロップダウン フィールドで **[自分の会社が所有するアプリケーション]** を選択し、チェック マークをクリックします。
 - 以下に示すように **b2c-extensions-app** というアプリケーションが表示されます。ページ下部の **[削除]** をクリックし、確認プロンプトで **[はい]** をクリックします。
@@ -120,14 +118,10 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 
 ### Azure AD B2C に関する問題を報告するにはどのようにすればいいですか。
 
-「[Azure Active Directory B2C のサポート要求を提出する方法](active-directory-b2c-support.md)」を参照してください。
-
-### Azure AD B2C が一般に使用できるようになるのはいつですか。
-
-現時点では、一般に使用可能になる日付に関する情報を提供することはできません。
+[Azure Active Directory B2C のサポート要求の提出](active-directory-b2c-support.md)に関するページを参照してください。
 
 ## 詳細情報
 
-現在の[プレビューの制限事項および制約事項](active-directory-b2c-limitations.md)を確認することもできます。
+現在の[サービスの制限事項および制約事項](active-directory-b2c-limitations.md)を確認することもできます。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

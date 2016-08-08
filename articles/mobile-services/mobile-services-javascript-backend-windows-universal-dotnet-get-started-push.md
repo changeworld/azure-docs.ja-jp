@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/05/2016" 
+	ms.date="07/21/2016" 
 	ms.author="glenga"/>
 
 
@@ -105,4 +105,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [MobileServiceClient]: http://go.microsoft.com/fwlink/p/?LinkId=302030
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="NA" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="02/25/2016" 
+	ms.date="07/21/2016" 
 	ms.author="glenga"/>
 
 # 認証で Microsoft アカウントを使用するためのアプリケーションの登録
@@ -97,4 +97,4 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 
 [Microsoft Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0727_2016-->

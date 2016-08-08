@@ -207,22 +207,24 @@ Edison ボードのカスタム イメージを作成するには、Linux 環境
 
 3. **iotdm-edison-sample.bb** ファイルを **~/azure-iot-sdks/c/iotdm\_client/samples/iotdm\_edison\_sample/bitbake/** フォルダーから **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-support/iotdm-edison-sample** フォルダーにコピーします。
 
-4. **iotdm\_edison\_sample.service** ファイルを **~/azure-iot-sdks/c/iotdm\_client/samples/iotdm\_edison\_sample/bitbake/** フォルダーから **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-support/iotdm-edison-sample/files** フォルダーにコピーします。
+4. **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-support/iotdm-edison-sample/iotdm-edison-sample.bb** ファイルを編集して、`-Duse_http:BOOL=OFF` を `-Duse_http:BOOL=ON` に置き換えます。
 
-5. **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-core/images/edison-image.bb** ファイルを編集して、新しいレシピのエントリを追加します。ファイルの末尾に次の行を追加します。
+5. **iotdm\_edison\_sample.service** ファイルを **~/azure-iot-sdks/c/iotdm\_client/samples/iotdm\_edison\_sample/bitbake/** フォルダーから **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-support/iotdm-edison-sample/files** フォルダーにコピーします。
+
+6. **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-core/images/edison-image.bb** ファイルを編集して、新しいレシピのエントリを追加します。ファイルの末尾に次の行を追加します。
     
     ```
     IMAGE_INSTALL += "iotdm-edison-sample"
     ```
 
-6. Gateway SDK とデバイス管理クライアントはいくつかのライブラリを共有しているため、**~/edison-src/out/linux64/poky/meta/classes/sstate.bbclass** ファイルを編集する必要があります。このファイルの末尾に次の行を追加します。必ず `<your user>` を現在のユーザー名に置き換えます。
+7. Gateway SDK とデバイス管理クライアントはいくつかのライブラリを共有しているため、**~/edison-src/out/linux64/poky/meta/classes/sstate.bbclass** ファイルを編集する必要があります。このファイルの末尾に次の行を追加します。必ず `<your user>` を現在のユーザー名に置き換えます。
     
     ```
     SSTATE_DUPWHITELIST += "/home/<your user>/edison-src/out/linux64/build/tmp/sysroots/edison/usr/lib/libaziotsharedutil.a"
     SSTATE_DUPWHITELIST += "/home/<your user>/edison-src/out/linux64/build/tmp/sysroots/edison/usr/include/azureiot"
     ```
 
-7. **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-connectivity/wpa\_supplicant/wpa-supplicant/wpa\_supplicant.conf-sane** ファイルを編集し、ファイルの末尾に次の行を追加して、Edison ボードで WiFi が自動的に起動するように構成します。必ず `<your wifi ssid>` と `<your wifi password>` を WiFi ネットワークの適切な値に置き換えます。
+8. **~/edison-src/meta-intel-edison/meta-intel-edison-distro/recipes-connectivity/wpa\_supplicant/wpa-supplicant/wpa\_supplicant.conf-sane** ファイルを編集し、ファイルの末尾に次の行を追加して、Edison ボードで WiFi が自動的に起動するように構成します。必ず `<your wifi ssid>` と `<your wifi password>` を WiFi ネットワークの適切な値に置き換えます。
     
     ```
     network={
@@ -235,7 +237,7 @@ Edison ボードのカスタム イメージを作成するには、Linux 環境
     }
     ```
 
-8. これで、Gateway SDK とデバイス管理クライアントを含む Edison ボードのイメージをビルドできるようになりました。新しいレシピをビルドし、イメージに追加するだけなので、**bitbake** コマンドは前よりも格段に短時間で実行されます。
+9. これで、Gateway SDK とデバイス管理クライアントを含む Edison ボードのイメージをビルドできるようになりました。新しいレシピをビルドし、イメージに追加するだけなので、**bitbake** コマンドは前よりも格段に短時間で実行されます。
     
     ```
     cd ~/edison-src/out/linux64/
@@ -243,14 +245,14 @@ Edison ボードのカスタム イメージを作成するには、Linux 環境
     bitbake edison-image
     ```
 
-9. 次のコマンドを実行して、ビルドの最終処理を実行します。
+10. 次のコマンドを実行して、ビルドの最終処理を実行します。
   
     ```
     cd ~/edison-src/
     ./meta-intel-edison/utils/flash/postBuild.sh ./out/linux64/build/
     ```
 
-これで、Edison ボードをフラッシュするために必要なファイルが **~/edison-src/out/linux64/build/toFlash/** フォルダーに作成されました。
+これで、Edison ボードをフラッシュするために必要なファイルが **~/edison-src/out/linux64/build/toFlash/** フォルダーに配置されました。
 
 ### カスタム イメージで Intel Edison をフラッシュする
 
@@ -264,9 +266,9 @@ Windows コンピューターを使用して、USB ケーブルで Edison ボー
 
 ### サンプルの実行
 
-**GW-device** デバイスとして IoT Hub に接続するように、Edison ボード上のデバイス管理クライアントを構成する必要があります。テキスト エディター (**vi** や **nano** など) を使用して、Edison の /home/root フォルダーに **.cs** という名前のファイルを作成します。このファイルには、**GW-device** の接続文字列のみを含める必要があります。前にこの接続文字列をメモしていない場合は、[Device Explorer または iothub-explorer][lnk-explorer-tools] ツールを使用して、IoT Hub デバイスのレジストリからこのデバイスの接続文字列を取得できます。
+**GW-device** デバイスとして IoT Hub に接続するように、Edison ボード上のデバイス管理クライアントを構成する必要があります。テキスト エディター (**vi** や **nano** など) を使用して、Edison の /home/root フォルダーに **.cs** という名前のファイルを作成します。このファイルには、**GW-device** の接続文字列のみを含める必要があります。前にこの接続文字列をメモしていない場合は、[デバイス エクスプローラーまたは iothub-explorer][lnk-explorer-tools] ツールを使用して、IoT Hub デバイスのレジストリからこのデバイスの接続文字列を取得できます。
 
-**.cs** ファイルを作成したら、次のコマンドを使用して、Edison ボードを再起動します。
+**.cs** ファイルを作成したら、次のコマンドを使用して Edison ボードを再起動します。
 
 ```
 reboot -h now
@@ -299,7 +301,7 @@ systemctl status iotdm_edison_sample.service
 
 ### ファームウェア更新ジョブを開始する
 
-通常、IoT デバイス管理サービスによって要求された Edison のファームウェア更新では、URL からファームウェアを含む zip ファイルをダウンロードします。このチュートリアルを簡略化するために、zip ファイルを Edison ボードに手動でコピーし、更新の要求時に、http://** URL の**代わりに、file://** URL** を使用します。
+通常、IoT デバイス管理サービスによって要求された Edison のファームウェア更新では、URL からファームウェアを含む zip ファイルをダウンロードします。このチュートリアルを簡略化するために、zip ファイルを Edison ボードに手動でコピーし、更新の要求時に、http://** URL の代わりに、**file://** URL** を使用します。
 
 ここでも、このチュートリアルを簡略化するために、まったく新しいイメージを使用する代わりに、同じファームウェア イメージを再適用します。このイメージが Edison ボードに適用されていることを確認できます。
 
@@ -329,7 +331,7 @@ systemctl status iotdm_edison_sample.service
     npm run build
     ```
 
-6. テキスト エディターで、複製したフォルダーのルートにある user-config.json ファイルを開きます。テキスト "&lt;YOUR CONNECTION STRING HERE&gt;" を IoT Hub の接続文字列に置き換えます。Azure [ポータル][lnk-azure-portal]を使用して、この接続文字列を検索することができます。
+6. テキスト エディターで、複製したフォルダーのルートにある user-config.json ファイルを開きます。テキスト "&lt;YOUR CONNECTION STRING HERE&gt;" を IoT Hub の接続文字列に置き換えます。Azure [ポータル][lnk-azure-portal]で、この接続文字列を検索することができます。
 
 7. コマンド プロンプトで次のコマンドを実行して、デバイス管理 UX アプリを起動します。
 
@@ -341,9 +343,9 @@ systemctl status iotdm_edison_sample.service
 
     ![Device management UI][img-dm-ui]
 
-9. **GW-device** デバイスを選択し、**[Device Jobs (デバイス ジョブ)]** ボックスの一覧の **[Firmware Update (ファームウェアの更新)]** を選択して、**[Start (開始)]** をクリックします。
+9. **GW-device** デバイスを選択し、**[Device Jobs (デバイス ジョブ)]** ボックスの一覧の **[ファームウェア更新]** を選択して、**[開始]** をクリックします。
 
-10. Edison ボードに以前にコピーしたイメージ ファイルを使用するために、**[Package URI (パッケージ URI)]** フィールドに「**file:///home/root/edison.zip**」と入力します。**[Submit (送信)]**、**[Yes (はい)]**、**[Job History (ジョブ履歴)]** リンクの順にクリックして、新しい親ジョブと子ジョブが実行されていることを確認します。
+10. Edison ボードに以前にコピーしたイメージ ファイルを使用するために、**[Package URI (パッケージ URI)]** フィールドに「file:///home/root/edison.zip**」と入力します。**[送信]**、**[はい]、[ジョブ履歴]** リンクの順にクリックして、新しい親ジョブと子ジョブが実行されていることを確認します。
 
     ![Job history link][img-history-link]
 
@@ -365,7 +367,7 @@ systemctl status iotdm_edison_sample.service
     ...
     ```
 
-12. Edison の再起動が完了したら、デバイス管理サンプル UI のページを最新の情報に更新して、2 つのファームウェア更新ジョブの状態が **[completed (完了済み)]** になっていることを確認します。
+12. Edison の再起動が完了したら、デバイス管理サンプル UI のページを最新の情報に更新して、2 つのファームウェア更新ジョブの状態が **[完了]** になっていることを確認します。
 
     ![Job status complete][img-job-status]
 
@@ -377,9 +379,9 @@ systemctl status iotdm_edison_sample.service
 
 ## 次のステップ
 
-IoT Hub とサンプル UI を使用したデバイス管理の詳細については、「[Azure IoT Hub デバイス管理の概要][lnk-device-management]」を参照してください。
+IoT Hub とサンプル UI を使用したデバイス管理の詳細については、「[Azure IoT Hub デバイス管理の概要][lnk-device-management]」をご覧ください。
 
-Gateway SDK に関する理解をさらに深め、実際にコード例に触れてみたいという場合は、[Azure IoT Gateway SDK][lnk-gateway-sdk] をご覧ください。
+Gateway SDK に関する理解をさらに深め、実際にコード例に触れてみたいという場合は、[Azure IoT Gateway SDK][lnk-gateway-sdk] を参照してください。
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
@@ -423,4 +425,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

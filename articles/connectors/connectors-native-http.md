@@ -9,7 +9,7 @@
 	tags="connectors"/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -108,11 +108,11 @@ HTTP トリガーのパラメーターの詳細については、[MSDN を参照
 |---|---|
 |HTTP|HTTP 呼び出しを実行し、応答コンテンツを返します|
 
-### アクションの詳細
+## HTTP の詳細
 
 HTTP コネクタには、使用可能なアクションが 1 つ用意されています。各アクションの情報、必須および任意の入力フィールド、アクションの使用に関連した対応する出力の詳細を次に示します。
 
-#### HTTP 要求
+### HTTP 要求
 HTTP 送信要求を実行します。* は必須フィールドを意味します。
 
 |表示名|プロパティ名|説明|
@@ -121,6 +121,7 @@ HTTP 送信要求を実行します。* は必須フィールドを意味しま�
 |URI*|uri|HTTP 要求の URI|
 |ヘッダー|headers|含める HTTP ヘッダーの JSON オブジェクト|
 |本文|body|HTTP 要求の本文|
+|認証|authentication|[詳細についてはこちらを参照](#authentication)|
 <br>
 
 **出力の詳細**
@@ -133,20 +134,83 @@ HTTP 応答
 |本文|オブジェクト|応答オブジェクト|
 |状態コード|int|HTTP 状態コード|
 
-### HTTP 応答
+## 認証
 
-さまざまなアクションを呼び出すと、特定の応答を受け取る場合があります。次の表に、対応する応答と説明を示します。
+Logic Apps では、HTTP エンドポイントに対してさまざまな種類の認証を使用できます。この認証は、HTTP、[HTTP + Swagger](./connectors-native-http-swagger.md)、[HTTP Webhook](./connectors-native-webhook.md) の各コネクタで使用できます。次の種類の認証を構成できます。
 
-|名前|説明|
-|---|---|
-|200|OK|
-|202|承認済み|
-|400|正しくない要求|
-|401|権限がありません|
-|403|許可されていません|
-|404|見つかりません|
-|500|内部サーバー エラー。不明なエラーが発生しました|
-|default|操作に失敗しました。|
+* [基本認証](#basic-authentication)
+* [ClientCertificate 認証](#client-certificate-authentication)
+* [ActiveDirectoryOAuth 認証](#azure-active-directory-oauth-authentication)
+
+#### 基本認証
+
+基本認証には、次の認証オブジェクトが必要です。* は必須フィールドを示しています。
+
+|プロパティ名|データ型|説明|
+|---|---|---|
+|Type*|type|認証の種類。基本認証の場合、値として `Basic` を指定する必要があります。|
+|Username*|username|認証するユーザー名。|
+|Password*|パスワード|認証するパスワード。|
+
+>[AZURE.TIP] 定義から取得できないパスワードを使用する場合は、`securestring` パラメーターと `@parameters()` [ワークフロー定義関数](http://aka.ms/logicappdocs)を使用します。
+
+認証フィールドで次のようなオブジェクトを作成します。
+
+```javascript
+{
+	"type": "Basic",
+	"username": "user",
+	"password": "test"
+}
+```
+
+#### クライアント証明書認証
+
+クライアント証明書認証には、次の認証オブジェクトが必要です。* は必須フィールドを示しています。
+
+|プロパティ名|データ型|説明|
+|---|---|---|
+|Type*|type|認証の種類。SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。|
+|PFX*|pfx|Base64 でエンコードされた PFX ファイルのコンテンツ。|
+|Password*|パスワード|PFX ファイルにアクセスするためのパスワード。|
+
+>[AZURE.TIP] 保存後に定義内で読み取ることができなくなるパラメーターを使用するには、`securestring` パラメーターと `@parameters()` [ワークフロー定義関数](http://aka.ms/logicappdocs)を使用します。
+
+次に例を示します。
+
+```javascript
+{
+	"type": "ClientCertificate",
+	"pfx": "aGVsbG8g...d29ybGQ=",
+	"password": "@parameters('myPassword')"
+}
+```
+
+#### Azure Active Directory OAuth 認証
+
+Azure Active Directory OAuth 認証には、次の認証オブジェクトが必要です。* は必須フィールドを示しています。
+
+|プロパティ名|データ型|説明|
+|---|---|---|
+|Type*|type|認証の種類。ActiveDirectoryOAuth 認証の場合、値として `ActiveDirectoryOAuth` を指定する必要があります。|
+|Tenant*|テナント|Azure AD テナントのテナント識別子。|
+|Audience*|対象となる読者|`https://management.core.windows.net/` に設定します。|
+|Client ID*|clientId|Azure AD アプリケーションのクライアント識別子を指定します。|
+|Secret*|secret|トークンを要求しているクライアントのシークレット。|
+
+>[AZURE.TIP] 保存後に定義内で読み取ることができなくなるパラメーターを使用するには、`securestring` パラメーターと `@parameters()` [ワークフロー定義関数](http://aka.ms/logicappdocs)を使用します。
+
+次に例を示します。
+
+```javascript
+{
+	"type": "ActiveDirectoryOAuth",
+	"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+	"audience": "https://management.core.windows.net/",
+	"clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
+	"secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
+}
+```
 
 ---
 
@@ -156,6 +220,6 @@ HTTP 応答
 
 ## ロジック アプリを作成します
 
-ここで、プラットフォームと、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)を試してみましょう。[API の一覧](apis-list.md)を参照すると、ロジック アプリで使用可能な他のコネクタが見つかります。
+プラットフォームを試用し、[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)してください。[API リスト](apis-list.md)を参照すると、ロジック アプリで使用可能な他のコネクタについて確認できます。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

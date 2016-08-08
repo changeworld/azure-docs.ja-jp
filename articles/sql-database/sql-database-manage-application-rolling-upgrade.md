@@ -12,14 +12,14 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="sqldb-bcdr"
-   ms.date="06/16/2016"
+   ms.workload="NA"
+   ms.date="07/16/2016"
    ms.author="sashan"/>
 
 # SQL Database アクティブ geo レプリケーションを使用したクラウド アプリケーションのローリング アップグレードの管理
 
 
-> [AZURE.NOTE] [Active Geo-Replication](sql-database-geo-replication-overview.md) すべてのレベルのすべてのデータベースで を使用できるようになりました。
+> [AZURE.NOTE] [Active Geo-Replication]すべてのレベルのすべてのデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
 
 
 SQL Database で [geo レプリケーション](sql-database-geo-replication-overview.md)を使用してクラウド アプリケーションのローリング アップグレードを有効にする方法について説明します。アップグレードは中断を伴う作業であるため、ビジネス継続性の計画と設計の一部として組み込む必要があります。この記事では、アップグレード処理を編成する 2 種類の方法を確認し、方法ごとにメリットとトレードオフを説明します。この記事では、データ層として単一のデータベースに接続されている Web サイトで構成される単純なアプリケーションを使用します。ここでの目的は、エンド ユーザー エクスペリエンスに大幅な影響を及ぼさずにアプリケーションをバージョン 1 からバージョン 2 にアップグレードすることです。
@@ -123,9 +123,9 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 
 ## 次のステップ
 
-- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
-- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
-- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
+- ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
+- 自動バックアップを使用して復旧する方法については、[自動化されたバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 - より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
 - 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
@@ -141,4 +141,4 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 - [データベースのコピー](https://msdn.microsoft.com/library/azure/mt603644.aspx)
 - [読み取り専用モードまたは読み取り/書き込みモードへのデータベースの設定](https://msdn.microsoft.com/library/bb522682.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

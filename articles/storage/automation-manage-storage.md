@@ -50,4 +50,4 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 Azure Automation チュートリアル「[Azure Automation での Runbook の作成またはインポート](../automation/automation-creating-importing-runbook.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/07/2016"
+	ms.date="07/21/2016"
 	ms.author="christopheranderson"/>
 
 # 障害発生時のモバイル サービスの復旧
@@ -115,4 +115,4 @@ Azure Mobile Services を使用して、アプリケーションをデプロイ�
 [Azure サービス ダッシュボード]: http://www.windowsazure.com/support/service-dashboard/
 [Azure CLI を使用したモバイル サービスの自動化]: http://www.windowsazure.com/develop/mobile/tutorials/command-line-administration/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0727_2016-->

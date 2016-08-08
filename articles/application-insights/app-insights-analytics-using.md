@@ -21,12 +21,12 @@
 
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
+* **[紹介ビデオを見る](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
+* **[シミュレーション データで Analytics を試す](https://analytics.applicationinsights.io/demo)** (ご使用のアプリからまだ Application Insights にデータが送信されていない場合)。
 
 ## Analytics を開く
 
-Application Insights のアプリのホーム リソースで、[Analytics] をクリックします。
-
-![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-insights-analytics-using/001.png)
+Application Insights のアプリのホーム リソースで、[分析] をクリックします。![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-insights-analytics-using/001.png)
 
 インラインのチュートリアルでは、実行可能な操作が説明されています。
 
@@ -121,6 +121,8 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 既定では、結果は最初にテーブルとして表示されるので、ダイアグラムを手動で選択します。ただし、クエリの末尾に[レンダー ディレクティブ](app-insights-analytics-reference.md#render-directive)を使用して、ダイアグラムを選択できます。
 
+ピン アイコンをクリックするだけで、いずれかの[共有ダッシュボード](app-insights-dashboards.md)にダイアグラムを固定することができます (有料価格レベルのアプリでのみ利用可能)。
+
 ## Excel へのエクスポート
 
 クエリを実行したら、.csv ファイルをダウンロードできます。**[Excel にエクスポート]** をクリックします。
@@ -148,4 +150,4 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

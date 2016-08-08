@@ -236,10 +236,9 @@
 
 ## 次のステップ
 
-これで、機能する事前構成済みソリューションを構築しましたので、次のチュートリアルに進むことができます。
+動的なテレメトリを使用する方法を確認したので、構成済みのソリューションでデバイス情報を使用する方法について「[リモート監視構成済みソリューションのデバイス情報メタデータ][lnk-devinfo]」からさらに学ぶことができます。
 
--   [事前構成済みソリューションのカスタマイズに関するガイダンス][lnk-customize]
--   [予測的なメンテナンスの構成済みソリューションの概要][lnk-predictive]
+[lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 
 [image1]: media/iot-suite-dynamic-telemetry/image1.png
 [image2]: media/iot-suite-dynamic-telemetry/image2.png
@@ -248,10 +247,8 @@
 [image5]: media/iot-suite-dynamic-telemetry/image5.png
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-predictive]: iot-suite-predictive-overview.md
 [lnk-node]: http://nodejs.org
 [node-linux]: https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager
 [lnk-github-repo]: https://github.com/Azure/azure-iot-sdks
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

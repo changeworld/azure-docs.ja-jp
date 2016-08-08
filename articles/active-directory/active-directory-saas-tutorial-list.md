@@ -13,16 +13,17 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="07/19/2016"
+    ms.date="07/22/2016"
     ms.author="markvi"/>
 
 #SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧
 
-すべてのクラウド (SaaS) アプリケーションを Azure Active Directory と統合できるように、必要な構成手順を個別に示す一連のチュートリアルを作成しました。
+すべてのクラウド [(SaaS)](https://azure.microsoft.com/overview/what-is-saas/) アプリケーションを Azure Active Directory と統合できるように、必要な構成手順を個別に示す一連のチュートリアルを作成しました。
 
 Azure AD に事前に統合されている SaaS アプリの包括的な一覧については、[Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/) のページを参照してください。
 
 ##チュートリアルの一覧
+
 
 | ロゴ| アプリケーション名 |
 | --- | --- |
@@ -110,6 +111,7 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Halogen_Software.png)| [Halogen Software](https://go.microsoft.com/fwLink/?LinkID=530241&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Heroku.png)| [Heroku](https://go.microsoft.com/fwLink/?LinkID=733446&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_HighTail.png)| [Hightail](http://go.microsoft.com/fwlink/?LinkId=733463&clcid=0x409)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_HireVue.png)| [HireVue](https://go.microsoft.com/fwLink/?LinkID=807990&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_HPESaaS.png)| [HPE SaaS](https://go.microsoft.com/fwLink/?LinkID=708663&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_HR2day.png)| [HR2day by Merces](https://go.microsoft.com/fwLink/?LinkID=708684&clcid=0x409)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Huddle.png)| [Huddle](https://go.microsoft.com/fwLink/?LinkID=403227&clcid=0x409)|
@@ -251,11 +253,9 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 
 
 
-
-
 ##関連記事
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

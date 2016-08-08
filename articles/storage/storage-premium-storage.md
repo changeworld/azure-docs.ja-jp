@@ -3,7 +3,7 @@
 	description="Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Azure DS シリーズ、DSv2 シリーズおよび GS シリーズの VM は、Premium Storage をサポートしています。"
 	services="storage"
 	documentationCenter=""
-	authors="ms-prkhad"
+	authors="aungoo-msft"
 	manager=""
 	editor="tysonn"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
-	ms.author="prkhad"/>
+	ms.date="07/24/2016"
+	ms.author="aungoo-msft"/>
 
 
 # Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ
@@ -565,4 +565,4 @@ Azure Premium Storage の詳細については、以下の記事を参照して�
 
 [Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

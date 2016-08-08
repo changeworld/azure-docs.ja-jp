@@ -55,28 +55,28 @@ Data Factory には、ソース データ ストアからコピー先のデー�
 
 このダイアグラムでは、1) Data Factory がデータの移動と処理を調整する方法、および 2) Azure Batch が並列的にデータを処理する方法を示します。簡単に参照できるように、図をダウンロードして印刷 (11 x 17 インチまたは A3 サイズ): [Azure Batch と Data Factory を使用した HPC とデータのオーケストレーション](http://go.microsoft.com/fwlink/?LinkId=717686)
 
-![サービスとしての HPC 図](./media/data-factory-data-processing-using-batch/image1.png)
+[![大規模なデータ処理のダイアグラム](./media/data-factory-data-processing-using-batch/image1.png)](http://go.microsoft.com/fwlink/?LinkId=717686)
 
 処理の基本的な手順を次に示します。ソリューションには、エンド ツー エンド ソリューションをビルドするためのコードと説明が含まれています。
 
-1.  コンピューティング ノード (VM) のプールで Azure Batch を構成します。各ノードのノード数とサイズを指定することができます。
+1.  **コンピューティング ノード (VM) のプールで Azure Batch を構成**します。各ノードのノード数とサイズを指定することができます。
 
-2.  Azure Blob Storage、Azure Batch のコンピューティング サービス、入出力データ、およびデータを移動および変換するアクティビティを持つワークフローまたはパイプラインを表すエンティティで構成される、Azure Data Factory のインスタンスを作成します。
+2.  Azure BLOB ストレージ、Azure Batch コンピューティング サービス、入出力データ、データを移動および変換するアクティビティを含むワークフローまたはパイプラインを表す各エンティティで構成された、**Azure Data Factory インスタンスを作成**します。
 
-3.  Data Factory のパイプラインには、ノードの Azure Batch プール上で実行するように構成されるカスタム .NET アクティビティがあります。
+3.   Data Factory パイプラインに**カスタム .NET アクティビティを作成**します。このアクティビティは、Azure Batch プールで実行されるユーザー コードです。
 
-4.  Azure ストレージに BLOB として大量の入力データを格納します。データは、論理スライス (通常は時間) に分割されます。
+4.  **Azure ストレージに大量の入力データを BLOB として格納**します。データは、論理スライス (通常は時間) に分割されます。
 
-5.  Data Factory は、データをコピーします。このデータは、2 次拠点と並行して処理されます。
+5.  2 次拠点と**並行して処理されるデータを Data Factory がコピー**します。
 
-6.  Data Factory は、Batch によって割り当てられるプールを使用して、カスタム アクティビティを実行します。Data Factory は、アクティビティを同時に実行できます。各アクティビティは、データのスライスを処理します。結果は Azure Storage に格納されます。
+6.  **Data Factory は、Batch によって割り当てられたプールを使用してカスタム アクティビティを実行**します。Data Factory は、アクティビティを同時に実行できます。各アクティビティは、データのスライスを処理します。結果は Azure Storage に格納されます。
 
-7.  すべての結果を取得した後、Data Factory は、アプリを介した配布、または他のツールによる追加の処理のために、3 次拠点にその結果を移動させます。
+7.  アプリによる配布、または他のツールによる追加処理のために、**Data Factory は最終的な結果を 3 次拠点に移動**させます。
 
 ## サンプル ソリューションの実装
 ここではサンプル ソリューションを意図的にシンプルにして、データセットの処理に Data Factory と Batch を一緒に使用する方法を示しています。ソリューションでは、タイム シリーズで編成された入力ファイルで、検索語句 ("Microsoft") の出現数をカウントします。出力ファイルにその数を出力します。
 
-**時間**: Azure、Data Factory、および Batch の基本を理解し、以下の前提条件を完了した場合、このソリューションを完了するために、1 ～ 2 時間かかると推定しています。
+**時間**: Azure、Data Factory、および Batch の基礎を熟知しており、下記の前提条件をすべて満たしている場合、このソリューションを完了するための推定所要時間は 1 ～ 2 時間です。
 
 ### 前提条件
 
@@ -89,20 +89,20 @@ Azure サブスクリプションがない場合は、無料試用版のアカ�
 #### Azure Batch アカウント
 [Azure ポータル](http://manage.windowsazure.com/)を使用して、Azure Batch アカウントを作成します。「[Azure Batch アカウントの作成と管理](../batch/batch-account-create-portal.md)」を参照してください。Azure Batch のアカウント名とアカウント キーをメモしておきます。また、[New-AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx) コマンドレットを使用して、Azure Batch アカウントを作成することもできます。このコマンドレットの使用に関する詳細な手順については、「[Azure Batch PowerShell コマンドレットの概要](../batch/batch-powershell-cmdlets-get-started.md)」を参照してください。
 
-    サンプル ソリューションでは、(Azure Data Factory パイプラインを通じて間接的に) Azure Batch を使用して、仮想マシンの管理コレクションであるコンピューティング ノードのプールで、同じ方法でデータを処理します。
+サンプル ソリューションでは、(Azure Data Factory パイプラインを通じて間接的に) Azure Batch を使用して、仮想マシンの管理コレクションであるコンピューティング ノードのプールで、同じ方法でデータを処理します。
 
 #### 仮想マシン (VM) の Azure Batch プール
 2 個以上のコンピューティング ノードで **Azure Batch プール** を作成します。
 
-1.  [Azure ポータル](https://portal.azure.com)で、左側のメニューの **[参照]** をクリックしてから、**[Batch アカウント]** をクリックします。
+1.  [Azure ポータル](https://portal.azure.com)で、左側のメニューの **[参照]** をクリックし、**[Batch アカウント]** をクリックします。
 2. Azure Batch アカウントを選択して、**[Batch アカウント]** ブレードを開きます。
 3. **[プール]** タイルをクリックします。
 4. **[プール]** ブレードで、ツールバーの [追加] ボタンをクリックしてプールを追加します。
 	1. プールの ID を入力します (**プール ID**)。**プールの ID** は、Data Factory ソリューションを作成するときに必要になります。
 	2. オペレーティング システム ファミリ設定には、**Windows Server 2012 R2** を指定します。
 	3. **ノード価格レベル**を選択します。
-	4. **ターゲットの専用数**の設定値として、「**2**」と入力します。
-	5. **ノードごとの最大タスク**の設定値として、「**2**」と入力します。
+	4. **[ターゲットの専用数]** の値として、「**2**」と入力します。
+	5. **[ノードごとの最大タスク数]** の値として、「**2**」と入力します。
 	6. **[OK]** をクリックすると、プールが作成されます。
  	
 #### Azure Storage エクスプローラー   
@@ -385,7 +385,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
 	![](./media/data-factory-data-processing-using-batch/image5.png)
 
-13.  **MyDotNetActivity.zip** を BLOB として **customactivitycontainer** にアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内の **StorageLinkedService** のリンクされたサービスが使用する Azure Blob Storage 内にあります。BLOB コンテナー **customactivitycontainer** が既に存在していなければ、作成します。
+13.  **MyDotNetActivity.zip** を Azure BLOB ストレージ内の **customactivitycontainer** に BLOB としてアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内のリンクされたサービス **StorageLinkedService** が使用します。BLOB コンテナー **customactivitycontainer** が既に存在していなければ、作成します。
 
 #### Execute メソッド
 
@@ -548,7 +548,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
     4.  **batchUri** JSON プロパティにバッチ URI を入力します。
     
-		> [AZURE.IMPORTANT] **[Azure Batch アカウント] ブレード**の **URL** は、次の形式です: <accountname>.<region>.batch.azure.com。JSON の **batchUri** プロパティでは、URL から **"accountname." を削除**する必要があります。例: "batchUri": "https://eastus.batch.azure.com"。
+		> [AZURE.IMPORTANT] **[Azure Batch アカウント] ブレード**の **URL** は、次の形式です: \<accountname\>.\<region\>.batch.azure.com。JSON の **batchUri** プロパティでは、URL から **"accountname." を削除**する必要があります。例: "batchUri": "https://eastus.batch.azure.com"。
 
         ![](./media/data-factory-data-processing-using-batch/image9.png)
 
@@ -802,7 +802,7 @@ Azure Data Factory パイプラインで使用できる .NET カスタム アク
 
     ![](./media/data-factory-data-processing-using-batch/image13.png)
 
-6.  Azure ポータルを使用して、**スライス**に関連付けられている**タスク**を表示し、各スライスが実行された VM を表示します。詳細については、「[Data Factory と Batch の統合](#data-factory-and-batch-integration)」を参照してください。
+6.  Azure ポータルを使用して、**スライス**に関連付けられている**タスク**を表示し、各スライスが実行された VM を確認します。詳細については、「[Data Factory と Batch の統合](#data-factory-and-batch-integration)」をご覧ください。
 
 7.  Azure Blob Storage の **mycontainer** の **outputfolder** に、出力ファイルが表示されます。
 
@@ -842,9 +842,9 @@ Data Factory サービスによって、Azure Batch に **adf-poolname:job-xxx**
 
 スライスのアクティビティの実行ごとに、1 つのタスクがジョブに作成されます。10 個のスライスを処理する準備ができたとき、ジョブには 10 個のタスクが作成されています。プール内に複数のコンピューティング ノードがある場合、複数のスライスを並列して実行することができます。コンピューティング ノードごとの最大タスクが 1 より大きな値に設定されている場合、同じコンピューティング ノードで複数のスライスを実行することもできます。
 
-この例では、スライスが 5 個あるため、Azure Batch には 5 個のタスクがあります。Azure Data Factory のパイプラインの JSON の **concurrency** を **5** に、VM を **2** 個持つ Azure Batch プールの **[Maximum tasks per VM (VM ごとの最大タスク)]** を **2** に設定すると、タスクは高速で実行されます (タスクの開始時刻と終了時刻を確認)。
+この例では、スライスが 5 個あるため、Azure Batch には 5 個のタスクがあります。Azure Data Factory のパイプライン JSON の **concurrency** を **5** に設定し、**2** つの VM が含まれた Azure Batch プールの **[Maximum tasks per VM (VM ごとの最大タスク数)]** を **2** に設定すると、タスクが非常に高速で実行されるようになります (タスクの開始時刻と終了時刻を確認してください)。
 
-ポータルを使用して、**スライス**に関連付けられている Batch ジョブとそのタスクを表示し、各スライスが実行された VM を表示します。
+ポータルを使用して、**スライス**に関連付けられている Batch ジョブとそのタスクを表示し、各スライスが実行された VM を確認します。
 
 ![Azure Data Factory - Batch ジョブのタスク](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
 
@@ -891,9 +891,9 @@ Data Factory サービスによって、Azure Batch に **adf-poolname:job-xxx**
     ![](./media/data-factory-data-processing-using-batch/image21.png)
 
     **注:** **adfjobs** という名前の Azure Blob Storage に、**コンテナー**が表示されます。このコンテナーは自動的に削除されませんが、ソリューションのテストを完了した後に、安全に削除することができます。同様に、Data Factory ソリューションでは、**adf-<pool ID/name>:job-0000000001** という名前の Azure Batch **ジョブ**を作成します。必要な場合は、ソリューションのテストを実行した後、このジョブを削除することができます。
-7. このカスタム アクティビティでは、パッケージ内の **app.config** ファイルは使用されません。そのためこの構成ファイルから接続文字列を読み取るようにコードを記述した場合、実行時に正しく機能しません。Azure Batch を使用するときは、すべてのシークレットを **Azure KeyVault** に格納し、証明書ベースのサービス プリンシパルを使用してその Key Vault を保護したうえで、Azure Batch プールに証明書を配布することをお勧めします。こうすることで .NET カスタム アクティビティが実行時に KeyVault 内のシークレットにアクセスすることができます。これは一般的な手法であり、接続文字列に限らず、あらゆる種類のシークレットに応用できます。
+7. このカスタム アクティビティでは、パッケージ内の **app.config** ファイルは使用されません。そのため、この構成ファイルから接続文字列を読み取るようにコードを記述した場合、実行時にそのコードは機能しません。Azure Batch を使用するときは、すべてのシークレットを **Azure KeyVault** に保持し、証明書ベースのサービス プリンシパルを使用してその KeyVault を保護したうえで、Azure Batch プールに証明書を配布するのがベスト プラクティスです。こうすることで .NET カスタム アクティビティが実行時に KeyVault 内のシークレットにアクセスすることができます。これは一般的な手法であり、接続文字列に限らず、あらゆる種類のシークレットに応用できます。
 
-	最善の方法ではありませんが、同じことをもっと簡単に行うこともできます。**Azure SQL のリンクされたサービス**を接続文字列の設定で新しく作成し、そのリンクされたサービスを使用するデータセットを作成して、カスタム .NET アクティビティにダミーの入力データセットとしてチェーンする方法です。リンクされたサービスの接続文字列にカスタム アクティビティのコード内からアクセスすれば、実行時に適切に機能します。
+	最善の方法ではありませんが、同じことをもっと簡単に行うこともできます。接続文字列設定を使用して **Azure SQL のリンクされたサービス**を新しく作成し、そのリンクされたサービスを使用するデータセットを作成して、カスタム .NET アクティビティにダミーの入力データセットとして連結します。リンクされたサービスの接続文字列にカスタム アクティビティのコード内からアクセスすれば、実行時に適切に機能します。
 
 #### サンプルの拡張
 
@@ -917,9 +917,9 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 		pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
 		$TargetDedicated = (max(pendingTaskSampleVector)>0)?1:0;
 
-	詳細については、「[Azure Batch プール内のコンピューティング ノードの自動スケール](../batch/batch-automatic-scaling.md)」を参照してください。
+	詳細については、「[Azure Batch プール内のコンピューティング ノードの自動スケール](../batch/batch-automatic-scaling.md)」をご覧ください。
 
-	プールが既定の [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx) を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。プールが異なる 　autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
+	プールで既定の [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx) を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。プールが異なる 　autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
 	 
 5. サンプル ソリューションで、**Execute** メソッドは、出力データ スライスを生成するために入力データ スライスを処理する、**Calculate** メソッドを呼び出します。入力データを処理し、Execute メソッドで呼び出される Calculate メソッドを、メソッドの呼び出しに置換する独自のメソッドを記述することができます。
 
@@ -962,4 +962,4 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

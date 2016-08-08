@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/20/2016" 
+	ms.date="07/20/2016" 
 	ms.author="awills"/>
 
 
@@ -22,7 +22,11 @@
 
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
- 
+
+* **[紹介ビデオを見る](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
+* **[シミュレーション データで Analytics を試す](https://analytics.applicationinsights.io/demo)** (ご使用のアプリからまだ Application Insights にデータが送信されていない場合)。
+
+
 作業を開始するための基本的なクエリをいくつか見てみましょう。
 
 ## Application Insights のデータに接続する
@@ -470,6 +474,9 @@ Application Insights 監視をアプリの[クライアント](app-insights-java
 > ヒント: Analytics クライアントでは、このように空白行を入れないでください。必ず、すべて間を空けずに実行してください。
 
 
+* **[シミュレーション データで Analytics を試す](https://analytics.applicationinsights.io/demo)** (ご使用のアプリからまだ Application Insights にデータが送信されていない場合)。
+
+
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

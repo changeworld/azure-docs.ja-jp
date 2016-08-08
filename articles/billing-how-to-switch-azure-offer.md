@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure サブスクリプションを別のプランに切り替える | Microsoft Azure"
-	description="Azure サブスクリプションを別の Azure プランに切り替える方法について説明します"
+	description="サブスクリプション管理ポータルから Azure サブスクリプションを変更し、別の Azure プランに切り替える方法について説明します。"
 	services=""
 	documentationCenter=""
 	authors="genlin"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/15/2016"
+	ms.date="07/21/2016"
 	ms.author="genli"/>
 
 # Azure サブスクリプションを別のプランに切り替える
@@ -24,12 +24,12 @@
 -	Azure に対する支出が非常に高いことに気づいた場合に、年額コミットメント プランに切り替えて料金の割引を受ける資格がある。Microsoft Azure リソースの消費を把握する方法の詳細については、[こちら](billing-usage-rate-card-overview.md)をクリックしてください。
 -	従量課金制サブスクリプションへのサインアップが終了した後で、MSDN や BizSpark などのメンバーシップ特典を利用できるようになりたい。
 
-## サブスクリプションを別のプランに切り替える方法
+## サブスクリプションを別のプランに切り替えるためのガイド
 
 > [AZURE.VIDEO switch-to-a-different-azure-offer]
 
 1.	[Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
-2.	譲渡するサブスクリプションを選択します。
+2.	変更するサブスクリプションを選択します。
 3.	**[別のプランに切り替える]** をクリックします。
 
 	![siwtchbutton](.\media\billing-how-to-switch-azure-offer\switchbutton.png)
@@ -48,7 +48,7 @@
 
 **どのようなプラン変更がサポートされていますか?**
 
-「[切り替え可能なプランの選択肢](#available-offers-you-can-switch-to)」を参照してください。
+「[切り替え可能なプランの選択肢](#available-offers-you-can-switch-to)」の箇条書きを参照してください。
 
 **プランを切り替えることで、サービスに何か影響がありますか?**
 
@@ -70,9 +70,11 @@
 
 ## 切り替え可能なプランの選択肢
 
-現在、[アカウント センター](https://account.windowsazure.com/Subscriptions)でサポートしているパスを以下に示します。この記事は、オプションを追加した場合、更新されます。その他のプランの変更については、[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?LinkID=619338)ください。
+現在、[アカウント センター](https://account.windowsazure.com/Subscriptions)でサポートしているパスを以下に示します。この記事は、オプションを追加した場合、更新されます。
 
--	[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)から [12 か月分の前払プラン](https://azure.microsoft.com/offers/ms-azr-0026p/)への変更
--	[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)から[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)のいずれかへの変更
+-	[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)から [12 か月分の前払いプラン](https://azure.microsoft.com/offers/ms-azr-0026p/)への変更
+-	[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)から [Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)のいずれかへの変更
 
-<!---HONumber=AcomDC_0720_2016-->
+その他のプランの変更については、[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?LinkID=619338)ください。
+
+<!---HONumber=AcomDC_0727_2016-->

@@ -131,7 +131,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 	これらのパラメーターと Giraph サンプルで使用されるその他のパラメーターの詳細については、[Giraph のクイックスタート](http://giraph.apache.org/quick_start.html)のページを参照してください。
 
-5. ジョブが完了すると、結果が __wasb:///example/out/shotestpaths__ ディレクトリに格納されます。作成されたファイルの名前の先頭は "__part-m-\_\_"、末尾はファイルの順番を示す数字です。次のコマンドを使用して、出力を表示します。
+5. ジョブが完了すると、結果が __wasbs:///example/out/shotestpaths__ ディレクトリに格納されます。作成されたファイルの名前の先頭は "__part-m-\_\_"、末尾はファイルの順番を示す数字です。次のコマンドを使用して、出力を表示します。
 
 		hadoop fs -text /example/output/shortestpaths/*
 
@@ -158,4 +158,4 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 - [HDInsight クラスターでの Solr のインストール](hdinsight-hadoop-solr-install-linux.md):クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。Solr は、格納されたデータに対して強力な検索操作を実行することができます。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

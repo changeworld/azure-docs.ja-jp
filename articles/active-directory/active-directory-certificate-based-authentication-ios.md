@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/15/2016" 
+    ms.date="07/22/2016" 
     ms.author="markvi" />
 
 
@@ -44,7 +44,7 @@ CBA では、Exchange online アカウントを次に接続する場合、Azure 
 
 - 証明機関にアクセスし、クライアント証明書を発行します。
 
-- 証明機関は、Azure Active Directory で構成する必要があります。「使用の開始」セクションで構成を完了する方法の詳細な手順を確認できます。
+- 証明機関は、Azure Active Directory で構成する必要があります。「[使用の開始](#getting-started)」セクションで構成を完了する方法の詳細な手順を確認できます。
 
 - ルート証明機関および中間証明機関は、Azure Active Directory で構成する必要があります。
 
@@ -61,9 +61,11 @@ CBA では、Exchange online アカウントを次に接続する場合、Azure 
 
 | アプリケーション | サポート |
 | ---                       | ---          |
-| OneDrive | はい |
+| Word/Excel/PowerPoint | ![○][1] |
+| OneNote | ![○][1] |
+| OneDrive | ![○][1] |
 | Outlook | 近日対応予定 |
-| Word/Excel/PowerPoint | はい |
+| Yammer | ![○][1] |
 | Skype for Business | 近日対応予定 |
 
 
@@ -71,7 +73,7 @@ CBA では、Exchange online アカウントを次に接続する場合、Azure 
 
 デバイスの OS バージョンは、iOS 9 以上である必要があります。
 
-フェデレーション サーバーは、Office モバイル アプリケーションで CBA を実行するように構成する必要があります。
+フェデレーション サーバーを構成する必要があります。
 
 Azure Authenticator は、iOS の Office アプリケーションに必要です。
 
@@ -145,7 +147,7 @@ iOS 9 以降の特定の Exchange ActiveSync アプリケーションがサポ�
 
 2. Azure AD モジュールをインストールします。バージョン [1\.1.143.0](http://www.powershellgallery.com/packages/AzureADPreview/1.1.143.0) 以降をインストールする必要があります。
 
-        Install-Module -Name AzureAD –RequiredVersion 1.1.143.0 
+        Install-Module -Name AzureADPreview –RequiredVersion 1.1.143.0 
 
 3. ターゲット テナントに接続します。
 
@@ -245,13 +247,13 @@ iOS 9 以降のネイティブ メール アプリケーションで証明書認
 
 ## 無効化
 
-クライアント証明書を失効させるために、Azure Active Directory は、証明機関の情報の一部としてアップロードされた URL から証明書失効リスト (CRL) をフェッチし、キャッシュします。CRL の最後の公開タイムスタンプ (**発効日**プロパティ) を使用し、CRL がまだ有効であることを確認します。CRL は定期的に参照されて、リストに含まれる証明書へのアクセスは無効になります。
+クライアント証明書を失効させるために、Azure Active Directory は、証明機関の情報の一部としてアップロードされた URL から証明書失効リスト (CRL) をフェッチし、キャッシュします。CRL の最後の発行タイムスタンプ (**発効日**プロパティ) を使用し、CRL がまだ有効であることを確認します。CRL は定期的に参照されて、リストに含まれる証明書へのアクセスは無効になります。
 
 即時の失効が必要な場合 (たとえば、ユーザーがデバイスを紛失した場合) は、ユーザーの認証トークンを無効にできます。認証トークンを無効にするには、Windows PowerShell を使用してこの特定のユーザーの **StsRefreshTokenValidFrom** フィールドを設定します。アクセスを無効にする各ユーザーの **StsRefreshTokenValidFrom** フィールドを更新する必要があります。
  
-失効が引き続き発生していることを確認するには、CRL の**発効日**を **StsRefreshTokenValidFrom** で設定した値より後の日付に設定し、対象の証明書が CRL にあることを確認する必要があります。
+失効状態が継続していることを確認するには、CRL の**発効日**を **StsRefreshTokenValidFrom** で設定した値より後の日付に設定し、対象の証明書が CRL にあることを確認する必要があります。
  
-次の手順は、**StsRefreshTokenValidFrom** フィールドを設定して、認証トークンを更新し、無効にするためのプロセスの概要を示します。
+次の手順は、**StsRefreshTokenValidFrom** フィールドを設定することで認証トークンを更新し、無効にするプロセスを簡単に示したものです。
 
 1. 管理者の資格情報で MSOL サービスに接続します。
 
@@ -269,6 +271,11 @@ iOS 9 以降のネイティブ メール アプリケーションで証明書認
 		Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 
 
-設定する日付は、現在より後の日付にする必要があります。日付を現在より後の日付にしない場合、**StsRefreshTokensValidFrom** プロパティは設定されません。日付を現在より後の日付にする場合、**StsRefreshTokensValidFrom** は、現在の時刻に設定されます (Set-MsolUser コマンドで指定した日付ではありません)。
+設定する日付は、現在より後の日付にする必要があります。日付を現在より後の日付にしないと、**StsRefreshTokensValidFrom** プロパティは設定されません。日付を現在より後の日付にすると、**StsRefreshTokensValidFrom** は、現在の時刻に設定されます (Set-MsolUser コマンドで指定した日付ではありません)。
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--Image references-->
+[1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png
+
+<!---HONumber=AcomDC_0727_2016-->

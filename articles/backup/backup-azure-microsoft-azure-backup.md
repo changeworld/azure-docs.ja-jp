@@ -14,8 +14,8 @@
   ms.tgt_pltfrm="na"
   ms.devlang="na"
   ms.topic="article"
-  ms.date="05/10/2016"
-  ms.author="jimpark;trinadhk;pullabhk"/>
+  ms.date="07/20/2016"
+  ms.author="jimpark;trinadhk;pullabhk;markgal"/>
 
 # Azure Backup Server を使用してワークロードをバックアップするための準備
 
@@ -25,24 +25,37 @@
 - [Azure Backup Server (クラシック)](backup-azure-microsoft-azure-backup-classic.md)
 - [SCDPM (クラシック)](backup-azure-dpm-introduction-classic.md)
 
-この記事では、Azure Backup Server を使用してワークロードをバックアップする環境の準備方法について説明します。
+この記事では、Azure Backup Server を使用してワークロードをバックアップする環境の準備方法について説明します。Azure Backup Server を使用すると、単一のコンソールから Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange、Windows クライアントなどのアプリケーションのワークロードを保護することができます。Information as a Server (IaaS) ワークロード (Azure の VM など) を保護することもできます。
 
 > [AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
 
-Azure Backup Server を使用すると、単一のコンソールから Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange、Windows クライアントなどのアプリケーションのワークロードを保護することができます。
+Azure Backup Server には、Data Protection Manager (DPM) のワークロード バックアップ機能の大半が継承されています。この記事は、DPM ドキュメントと連動し、いくつかの共通の機能について説明しています。Azure Backup Server には DPM と同じ機能が多数存在しますが、Azure Backup Server は、テープへのバックアップ機能は持たず、System Center とも連携しません。
 
->[AZURE.WARNING] Azure Backup Server は、Data Protection Manager (DPM) のワークロード バックアップの機能を継承しています。これらの機能の一部については、DPM ドキュメントへのポインターがあります。ただし、Azure Backup Server は、テープ上の保護や System Center との統合の機能は提供していません。
+## 1\.インストール プラットフォームを選択する
 
-## 1\.Windows Server マシン
+Azure Backup Server を準備して実行するための最初の手順は、Windows Server のセットアップです。サーバーの設置場所は Azure でもオンプレミスでもかまいません。
 
-Azure Backup Server を準備して実行するための最初の手順は、Windows Server マシンを用意することです。
+### Azure に設置されたサーバーを使用する場合
 
-| Location (場所) | 最小要件 | 追加説明 |
-| -------- | -------------------- | ----------------------- |
-| Azure | Azure IaaS 仮想マシン<br><br>A2 Standard: 2 コア、3.5 GB RAM | 手始めに、Windows Server 2012 R2 Datacenter の単純なギャラリー イメージを使用することができます。[Azure Backup Server (DPM) を使用した IaaS ワークロードの保護](https://technet.microsoft.com/library/jj852163.aspx)には、数多くの注意点があります。マシンのデプロイ前に、必ずこの記事によく目を通してください。 |
-| オンプレミスの | Hyper-V、<br> VMWare VM、<br>または物理ホスト<br><br>2 コア、4 GB RAM | Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。Hyper-V VM にデプロイするときは、[DPM と重複除去](https://technet.microsoft.com/library/dn891438.aspx)が連携するしくみの詳細を確認してください。 |
+Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2012 R2 Datacenter のギャラリー イメージにアクセスすることをお勧めします。Azure で推奨される仮想マシンの作成方法については、「[Azure ポータルで初めての Windows 仮想マシンを作成する](..\virtual-machines\virtual-machines-windows-hero-tutorial.md)」の記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。サーバー仮想マシン (VM) に推奨される最小要件は A2 Standard (2 コア、3.5 GB RAM) です。
 
-> [AZURE.NOTE] Azure Backup Server は、Windows Server 2012 R2 Datacenter を設定済みのマシンにインストールすることをお勧めします。前提条件の多くは、最新バージョンの Windows オペレーティング システムを使用すると自動的に満たされます。
+Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。これらの注意点については、「[Azure Virtual Machine として DPM をインストールする](https://technet.microsoft.com/library/jj852163.aspx)」の記事で説明されています。マシンのデプロイ前に、この記事によく目を通してください。
+
+### オンプレミスに設置されたサーバーを使用する場合
+
+基本サーバーを Azure で実行したくない場合は、Hyper-V VM や VMware VM、物理ホストでサーバーを実行することができます。サーバー ハードウェアに推奨される最小要件は 2 コア、4 GB RAM です。サポートされるオペレーティング システムを以下の表に示します。
+
+| オペレーティング システム | プラットフォーム | SKU |
+| :------------- |-------------| :-----|
+|Windows Server 2012 R2 と最新 SP|	64 ビット|	Standard、Datacenter、Foundation|
+|Windows Server 2012 と最新 SP|	64 ビット|	Datacenter、Foundation、Standard|
+|Windows Storage Server 2012 R2 と最新 SP |64 ビット|	Standard、Workgroup|
+|Windows Storage Server 2012 と最新 SP |64 ビット |Standard、Workgroup|
+
+
+Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。Hyper-V VM にデプロイするときは、[DPM と重複除去](https://technet.microsoft.com/library/dn891438.aspx)が連携するしくみの詳細を確認してください。
+
+> [AZURE.NOTE]  ドメイン コントローラーとして実行されているコンピューターに Azure Backup Server をインストールすることはできません。
 
 このサーバーをドメインに参加させる予定がある場合は、Azure Backup Server をインストールする前にドメインへの参加作業を完了することをお勧めします。デプロイ後の、新しいドメインへの既存の Azure Backup Server マシンの移動は*サポートされていません*。
 
@@ -105,7 +118,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
     ![Create Recovery Services Vault step 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
     Recovery Services コンテナーの一覧が表示されます。
-    
+
     - Recovery Services コンテナーの一覧で、コンテナーを選択します。
 
     選択したコンテナーのダッシュボードが開きます。
@@ -116,7 +129,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
     ![Open vault blade](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
 
-4. **[作業の開始]** の **[バックアップ]** をクリックして、[作業の開始] ウィザードを開きます。
+4. **[作業の開始]** の **[バックアップ]** をクリックして、作業の開始ウィザードを開きます。
 
     ![バックアップ作業の開始](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
@@ -133,8 +146,8 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
     これにより、オンプレミスから Azure にワークロードを保護するためのインフラストラクチャを準備する [作業の開始] ウィザードの内容が変わります。
 
     ![作業の開始ウィザードの変更](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
-  
-7. 開いた **[インフラストラクチャの準備]** ブレードで、**[Azure Backup Server のダウンロード]** と、Recovery Services コンテナーに Azure Backup Server を登録するときに使用するコンテナーの資格情報をクリックします。ソフトウェア パッケージをダウンロード可能なダウンロード センターのページが表示されます。
+
+7. 表示された **[インフラストラクチャの準備]** ブレードで、[Microsoft Azure Backup Server のインストール] と [コンテナー資格情報のダウンロード] の各 **[ダウンロード]** リンクをクリックします。Azure Backup Server を Recovery Services コンテナーに登録する間は、これらのコンテナー資格情報を使用します。これらのリンクをクリックすると、ソフトウェア パッケージを入手できるダウンロード センターが表示されます。
 
     ![Azure Backup Server 用のインフラストラクチャの準備](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
@@ -211,7 +224,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 一次バックアップ コピーは、Azure Backup Server マシンに接続されているストレージに保持されます。ディスクを追加する方法の詳細については、「[記憶域プールおよびディスク記憶域の構成](https://technet.microsoft.com/library/hh758075.aspx)」を参照してください。
 
-> [AZURE.NOTE] Azure にデータを送信する場合でも、Backup ストレージを追加する必要があります。Azure Backup Server の現在のアーキテクチャでは、Azure Backup コンテナーにはデータの *2 番目の*コピーが保持され、最初の (必須の) バックアップ コピーはローカル ストレージに保持されます。
+> [AZURE.NOTE] Azure にデータを送信する場合でも、Backup ストレージを追加する必要があります。Azure Backup Server の現在のアーキテクチャでは、Azure Backup コンテナーにはデータの "*2 番目の*" コピーが保持され、最初の (必須の) バックアップ コピーはローカル ストレージに保持されます。
 
 ## 4\.ネットワーク接続
 
@@ -243,10 +256,10 @@ Azure Backup Server マシンが Azure に接続できるようになると、�
 
 ### サブスクリプションの状態の処理
 
-Azure サブスクリプションの状態が*有効期限切れ*または*プロビジョニング解除済み*である場合、*アクティブ*状態にすることができます。ただし、状態が*アクティブ*でない間は、製品の動作に次のような影響があります。
+Azure サブスクリプションの状態が "*有効期限切れ*" または "*プロビジョニング解除済み*" である場合、"*アクティブ*" 状態にすることができます。ただし、状態が "*アクティブ*" でない間は、製品の動作に次のような影響があります。
 
-- サブスクリプションが*プロビジョニング解除済み*の場合、プロビジョニングが解除されている期間は機能を使用できません。*アクティブ*になると、製品のバックアップ/復元機能を使用できるようになります。ローカル ディスクのバックアップ データが十分に長い間保持されている場合は、それらのデータも回復できます。ただし、Azure に保持されるバックアップ データは、サブスクリプションが*プロビジョニング解除済み*状態になると失われ、回復できなくなります。
-- サブスクリプションが*有効期限切れ*になった場合は、再び*アクティブ*になるまで機能を使用できなくなるだけです。サブスクリプションが*有効期限切れ*になった期間に予定されていたバックアップは実行されません。
+- サブスクリプションが "*プロビジョニング解除済み*" の場合、プロビジョニングが解除されている期間は機能を使用できません。"*アクティブ*" になると、製品のバックアップ/復元機能を使用できるようになります。ローカル ディスクのバックアップ データが十分に長い間保持されている場合は、それらのデータも回復できます。ただし、Azure に保持されるバックアップ データは、サブスクリプションが "*プロビジョニング解除済み*" 状態になると失われ、回復できなくなります。
+- サブスクリプションが "*有効期限切れ*" になった場合は、再び "*アクティブ*" になるまで機能を使用できなくなるだけです。サブスクリプションが "*有効期限切れ*" になった期間に予定されていたバックアップは実行されません。
 
 
 ## トラブルシューティング
@@ -256,7 +269,7 @@ Microsoft Azure Backup サーバーがセットアップ段階 (またはバッ�
 
 ## 次のステップ
 
-Microsoft TechNet サイトの「[System Center 2012 R2 Data Protection Manager (DPM) 用の環境の準備](https://technet.microsoft.com/library/hh758176.aspx)」で詳細を確認します。このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。
+[DPM 用の環境の準備](https://technet.microsoft.com/library/hh758176.aspx)について、Microsoft TechNet サイトのページで詳細を確認してください。このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。
 
 以下の記事により、Microsoft Azure Backup Server を使用したワークロードの保護について理解を深めてください。
 
@@ -264,4 +277,4 @@ Microsoft TechNet サイトの「[System Center 2012 R2 Data Protection Manager 
 - [SharePoint サーバーのバックアップ](backup-azure-backup-sharepoint.md)
 - [代替サーバーのバックアップ](backup-azure-alternate-dpm-server.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

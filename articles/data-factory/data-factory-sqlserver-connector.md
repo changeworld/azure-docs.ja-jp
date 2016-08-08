@@ -123,7 +123,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%M"
+	            "format": "MM"
 	          }
 	        },
 	        {
@@ -131,7 +131,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%d"
+	            "format": "dd"
 	          }
 	        },
 	        {
@@ -139,7 +139,7 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%H"
+	            "format": "HH"
 	          }
 	        }
 	      ],
@@ -278,7 +278,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%M"
+	            "format": "MM"
 	          }
 	        },
 	        {
@@ -286,7 +286,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%d"
+	            "format": "dd"
 	          }
 	        },
 	        {
@@ -294,7 +294,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%H"
+	            "format": "HH"
 	          }
 	        }
 	      ],
@@ -646,4 +646,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

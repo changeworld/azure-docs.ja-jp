@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="07/25/2016"
 	ms.author="larryfr"/>
 
 #HDInsight で Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する
@@ -108,7 +108,7 @@ user-ratings.txt に含まれているデータは、`userID`、`movieID`、`use
 	# set $jarFile to the jar file you
 	# uploaded.
 	# For example,
-	# $jarFile = "wasb:///example/jars/mahout-core-0.9-job.jar"
+	# $jarFile = "wasbs:///example/jars/mahout-core-0.9-job.jar"
 
 	# The arguments for this job
 	# * input - the path to the data uploaded to HDInsight
@@ -116,9 +116,9 @@ user-ratings.txt に含まれているデータは、`userID`、`movieID`、`use
 	# * tempDir - the directory for temp files
 	$jobArguments = "--similarityClassname", "recommenditembased", `
                     "-s", "SIMILARITY_COOCCURRENCE", `
-	                "--input", "wasb:///HdiSamples/MahoutMovieData/user-ratings.txt",
-	                "--output", "wasb:///example/out",
-	                "--tempDir", "wasb:///example/temp"
+	                "--input", "wasbs:///HdiSamples/MahoutMovieData/user-ratings.txt",
+	                "--output", "wasbs:///example/out",
+	                "--tempDir", "wasbs:///example/temp"
 
 	# Create the job definition
 	$jobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -366,19 +366,19 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 
 3. 次のコマンドを使用し、Mahout を使用するファイル記述子 (__KDDTrain+.info__) を生成します。
 
-		hadoop jar "c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar" org.apache.mahout.classifier.df.tools.Describe -p "wasb:///example/data/KDDTrain+.arff" -f "wasb:///example/data/KDDTrain+.info" -d N 3 C 2 N C 4 N C 8 N 2 C 19 N L
+		hadoop jar "c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar" org.apache.mahout.classifier.df.tools.Describe -p "wasbs:///example/data/KDDTrain+.arff" -f "wasbs:///example/data/KDDTrain+.info" -d N 3 C 2 N C 4 N C 8 N 2 C 19 N L
 
 	`N 3 C 2 N C 4 N C 8 N 2 C 19 N L` は、ファイル内のデータの属性を示します。たとえば、L はラベルを示します。
 
 4. 次のコマンドを使用してデシジョン ツリーのフォレストをビルドします。
 
-		hadoop jar c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar org.apache.mahout.classifier.df.mapreduce.BuildForest -Dmapred.max.split.size=1874231 -d wasb:///example/data/KDDTrain+.arff -ds wasb:///example/data/KDDTrain+.info -sl 5 -p -t 100 -o nsl-forest
+		hadoop jar c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar org.apache.mahout.classifier.df.mapreduce.BuildForest -Dmapred.max.split.size=1874231 -d wasbs:///example/data/KDDTrain+.arff -ds wasbs:///example/data/KDDTrain+.info -sl 5 -p -t 100 -o nsl-forest
 
-    この操作の出力は、HDInsight クラスターのストレージにある __nsl-forest__ ディレクトリに格納されます (\_\___wasb://user/&lt;username>/nsl-forest/nsl-forest.seq)。&lt;username> は、リモート デスクトップ セッションに使用されるユーザー名です。これは、人間が判読できないファイルです。
+    この操作の出力は、HDInsight クラスターのストレージにある __nsl-forest__ ディレクトリに格納されます (\_\_wasbs://user/&lt;username>/nsl-forest/nsl-forest.seq)。&lt;username> は、リモート デスクトップ セッションに使用されるユーザー名です。これは、人間が判読できないファイルです。
 
 5. __KDDTest+.arff__ データセットを分類してフォレストをテストします。次のコマンドを使用します。
 
-    	hadoop jar c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar org.apache.mahout.classifier.df.mapreduce.TestForest -i wasb:///example/data/KDDTest+.arff -ds wasb:///example/data/KDDTrain+.info -m nsl-forest -a -mr -o wasb:///example/data/predictions
+    	hadoop jar c:/apps/dist/mahout-0.9.0.2.2.9.1-8/examples/target/mahout-examples-0.9.0.2.2.9.1-8-job.jar org.apache.mahout.classifier.df.mapreduce.TestForest -i wasbs:///example/data/KDDTest+.arff -ds wasbs:///example/data/KDDTrain+.info -m nsl-forest -a -mr -o wasbs:///example/data/predictions
 
     このコマンドは、次のような分類プロセスの概要情報を返します。
 
@@ -406,7 +406,7 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 	    Reliability                                53.4921%
 	    Reliability (standard deviation)            0.4933
 
-  このジョブでも、\_\___wasb:///example/data/predictions/KDDTest+.arff.out__ にファイルが生成されますが、これは、人間が判読できないファイルです。
+  このジョブでも、\_\_wasbs:///example/data/predictions/KDDTest+.arff.out__ にファイルが生成されますが、これは、人間が判読できないファイルです。
 
 > [AZURE.NOTE] Mahout ジョブはファイルを上書きしません。これらのジョブをもう一度実行する場合は、前のジョブで作成したファイルを削除する必要があります。
 
@@ -472,7 +472,7 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
             -Name $storageAccountName `
         -ResourceGroupName $resourceGroup)[0].Value
     Invoke-AzureRmHDInsightHiveJob `
-            -StatusFolder "wasb:///example/statusout" `
+            -StatusFolder "wasbs:///example/statusout" `
             -DefaultContainer $container `
             -DefaultStorageAccountName $storageAccountName `
             -DefaultStorageAccountKey $storageAccountKey `
@@ -524,4 +524,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/28/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 # Windows ベースの HDInsight での YARN アプリケーション ログへのアクセス
@@ -56,7 +56,7 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 
 アプリケーションのログ (および関連するコンテナーのログ) は、問題のある Hadoop アプリケーションのデバッグに重要です。YARN は、[ログの集計][log-aggregation]機能により、アプリケーションのログを収集、集計、格納するための便利なフレームワークを提供します。ログの集計機能により、アプリケーションのログへのアクセスはより確実になります。この機能は、ワーカー ノード上のすべてのコンテナーでログを集計し、アプリケーションが終了した後でワーカー ノードごとに 1 つの集計されたログ ファイルとして既定のファイル システムに保存します。アプリケーションは数百または数千のコンテナーを使用することがありますが、1 つのワーカー ノードで実行されるすべてのコンテナーのログは常に 1 つのファイルに集計されます。つまりアプリケーションで使用するワーカー ノードごとに 1 つのログ ファイルが生成されます。ログの集計は、HDInsight クラスターでは既定で有効になっており (バージョン 3.0 以上)、集計されたログは、クラスターの既定のコンテナーの次の場所にあります。
 
-	wasb:///app-logs/<user>/logs/<applicationId>
+	wasbs:///app-logs/<user>/logs/<applicationId>
 
 ここで、*user* はアプリケーションを開始したユーザーの名前であり、*applicationId* は YARN リソース マネージャーにより割り当てられたアプリケーションの一意の識別子です。
 
@@ -70,7 +70,7 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 
 YARN ResourceManager UI は、クラスターのヘッドノード上で実行され、Azure ポータル ダッシュボードからアクセスできます。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。 
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. 左側のメニューで、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックし、YARN アプリケーション ログにアクセスする Windows ベースのクラスターをクリックします。
 3. 上部のメニューで **[ダッシュボード]** をクリックします。**[HDInsight クエリ コンソール]** という名前の新しいブラウザー タブにページが開かれます。
 4. **[HDInsight クエリ コンソール]** で、**[Yarn UI]** をクリックします。
@@ -84,4 +84,4 @@ YARN ResourceManager UI は、クラスターのヘッドノード上で実行�
 [binary-format]: https://issues.apache.org/jira/browse/HADOOP-3315
 [YARN-concepts]: http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

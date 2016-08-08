@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="07/11/2016" 
+	ms.date="07/21/2016" 
 	ms.author="awills"/>
 
 # カスタムのイベントとメトリックのための Application Insights API 
@@ -240,7 +240,7 @@ Web サービス モジュールが実行されていない状況で要求をシ
     // ... process the request ...
 
     stopwatch.Stop();
-    telemetryClient.TrackRequest(requestName, DateTime.Now,
+    telemetry.TrackRequest(requestName, DateTime.Now,
        stopwatch.Elapsed, 
        "200", true);  // Response code, success
 
@@ -300,7 +300,21 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
 
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
 
-`message`のサイズ制限はプロパティの制限よりも高くなっています。メッセージ コンテンツで検索できますが、(プロパティ値とは異なり) フィルター処理はできません。
+
+メッセージ コンテンツで検索できますが、(プロパティ値とは異なり) フィルター処理はできません。
+
+`message`のサイズ制限はプロパティの制限よりも高くなっています。TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。たとえば、その中に POST データをエンコードできます。
+
+
+加えて、メッセージに重大度レベルを追加することができます。また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタで抽出したり検索したりすることができます。次に例を示します。
+
+
+    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+    telemetry.TrackTrace("Slow database response",
+                   SeverityLevel.Warning,
+                   new Dictionary<string,string> { {"database", db.ID} });
+
+特定のデータベースに関連した特定の重大度レベルに該当するすべてのメッセージを [[検索]][diagnostic] で簡単に抽出することができます。
 
 ## 依存関係の追跡
 
@@ -690,7 +704,7 @@ Web ページで、スクリプトに一語一語コーディングするので�
 
 TelemetryClient には、すべてのテレメトリ データとともに送信される値の数が含まれるコンテキスト プロパティがあります。通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。次に例を示します。
 
-    telemetryClient.Context.Operation.Name = "MyOperationName";
+    telemetry.Context.Operation.Name = "MyOperationName";
 
 いずれかの値を自分で設定した場合は、その値と標準の値が混同されないように、[ApplicationInsights.config][config] から関連する行を削除することを検討します。
 
@@ -778,4 +792,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

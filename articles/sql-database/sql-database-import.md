@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="05/09/2016"
+	ms.date="07/09/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -38,7 +38,7 @@ BACPAC は、データベース スキーマとデータを含む .bacpac ファ
 
 .bacpac から SQL Database をインポートするには、以下が必要です。
 
-- Azure サブスクリプション。 
+- Azure サブスクリプション。
 - Azure SQL Database V12 サーバー。V12 サーバーがない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
 - [Azure Storage アカウント (標準)](../storage/storage-create-storage-account.md) の BLOB コンテナーにインポートするデータベースの .bacpac ファイル。
 
@@ -65,7 +65,7 @@ BACPAC は、データベース スキーマとデータを含む .bacpac ファ
     ![価格レベルの選択][3]
 
 1.  **[データベース名]** に BACPAC ファイルから作成するデータベースの名前を入力します。
-2.  認証の種類を選択し、サーバーの認証情報を指定します。 
+2.  認証の種類を選択し、サーバーの認証情報を指定します。
 3.  **[作成]** をクリックして、BACPAC からデータベースを作成します。
 
     ![データベースの作成][4]
@@ -92,13 +92,7 @@ BACPAC は、データベース スキーマとデータを含む .bacpac ファ
 
 ## 次のステップ
 
-- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
-
-
-
-## その他のリソース
-
-- [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
+- インポートされた SQL データベースへの接続とクエリの実行については、「[SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)」を参照してください。
 
 
 <!--Image references-->
@@ -109,4 +103,4 @@ BACPAC は、データベース スキーマとデータを含む .bacpac ファ
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

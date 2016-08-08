@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/07/2016" 
+	ms.date="07/21/2016" 
 	ms.author="awills"/>
  
 # Application Insights からのテレメトリのエクスポート
@@ -24,7 +24,7 @@
 
 連続エクスポートをセットアップする前に、次の代替手段を検討してください。
 
-* メトリック ブレードや検索ブレードの上部にある [[エクスポート] ボタン](app-insights-metrics-explorer.md#export-to-excel)を使用すると、テーブルやグラフを Excel のスプレッドシートに転送できます。 
+* メトリック ブレードや検索ブレードの上部にある [[エクスポート] ボタン](app-insights-metrics-explorer.md#export-to-excel)を使用すると、テーブルやグラフを Excel のスプレッドシートに転送できます。
 * [Analytics](app-insights-analytics.md) にはテレメトリ用の強力なクエリ言語があり、結果をエクスポートすることもできます。
 * [Power BI でデータを探索](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)する場合は、連続エクスポートを使用せずに実行できます。
 
@@ -111,7 +111,7 @@ Where
 
 ## <a name="format"></a> データ形式
 
-* それぞれの Blob は、"\\n" で区切られた複数の行を含むテキスト ファイルです。
+* それぞれの Blob は、"\\n" で区切られた複数の行を含むテキスト ファイルです。約 30 秒の間に処理されたテレメトリが含まれています。
 * 各行は、要求やページ表示などのテレメトリ データ ポイントを表します。
 * それぞれの行は、書式設定されていない JSON ドキュメントです。詳細を確認する場合は、Visual Studio でファイルを開き、[編集]、[詳細]、[フォーマット ファイル] の順に選択します。
 
@@ -178,7 +178,7 @@ Where
 
 ## Q & A
 
-* *グラフを 1 回だけダウンロードしたいのですが。*  
+* *グラフを 1 回だけダウンロードしたいのですが。*
  
     はい、できます。ブレードの上部にある、[[データのエクスポート]](app-insights-metrics-explorer.md#export-to-excel) をクリックします。
 
@@ -229,4 +229,4 @@ Where
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

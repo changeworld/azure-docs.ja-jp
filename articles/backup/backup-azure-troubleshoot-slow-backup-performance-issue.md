@@ -4,7 +4,7 @@
    services="backup"
    documentationCenter=""
    authors="genlin"
-   manager="markgal"
+   manager="jimpark"
    editor=""/>
 
 <tags
@@ -30,6 +30,8 @@
 トラブルシューティングを開始する前に、[最新の Azure Backup エージェント](http://aka.ms/azurebackup_agent)をダウンロードしてインストールするようお勧めします。Backup エージェントは、さまざまな問題の解決、機能の追加、パフォーマンスの改善を目的として絶えず更新されています。
 
 また、一般的な構成の問題ではないことを確認するために、「[Azure Backup サービス - FAQ](backup-azure-backup-faq.md)」に目を通すよう強くお勧めします。
+
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## トラブルシューティングの手順
 <a id="cause1"></a>
@@ -93,4 +95,4 @@ a.**転送済みデータ量の進行状況が UI に表示されている** - �
 
 b.**進行状況が UI に表示されていない** - この場合は、"C:\\Microsoft Azure Recovery Services Agent\\Temp" に格納されているログを開き、"FileProvider::EndData" というログ エントリが記録されているかどうかを確認します。このエントリは、データ転送が完了し、カタログ処理が進行中であることを表します。バックアップ ジョブをキャンセルせずに、カタログ化の処理が完了するまで、もうしばらくお待ちください。問題が解決しない場合は、[Azure サポート](https://portal.azure.com/#create/Microsoft.Support)にお問い合わせください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

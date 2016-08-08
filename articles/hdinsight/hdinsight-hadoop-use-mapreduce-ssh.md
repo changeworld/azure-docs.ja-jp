@@ -57,9 +57,9 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 1. HDInsight クラスターに接続されたら、以下に従って **Hadoop** コマンドを使用して MapReduce ジョブを起動します。
 
-		hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
+		hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount wasbs:///example/data/gutenberg/davinci.txt wasbs:///example/data/WordCountOutput
 
-	これは、**hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasb://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は **wasb:///example/data/WordCountOutput** に格納されます。
+	これは、**hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasbs://example/data/gutenberg/davinci.txt**** ドキュメントを使用し、出力は wasbs:///example/data/WordCountOutput** に格納されます。
 
 	> [AZURE.NOTE] この MapReduce ジョブとサンプル データの詳細については、「[HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」をご覧ください。
 
@@ -70,9 +70,9 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 		File Output Format Counters
         Bytes Written=337623
 
-3. ジョブが完了したら、次のコマンドを使用して **wasb://example/data/WordCountOutput** に格納されている出力ファイルを一覧表示します。
+3. ジョブが完了したら、次のコマンドを使用して **wasbs://example/data/WordCountOutput** に格納されている出力ファイルを一覧表示します。
 
-		hdfs dfs -ls wasb:///example/data/WordCountOutput
+		hdfs dfs -ls wasbs:///example/data/WordCountOutput
 
 	ここでは、**\_SUCCESS** と **part-r-00000** の 2 つのファイルが表示されます。**part-r-00000** ファイルには、このジョブの出力が含まれています。
 
@@ -80,9 +80,9 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 4. 出力を表示するには、次のコマンドを使用します。
 
-		hdfs dfs -cat wasb:///example/data/WordCountOutput/part-r-00000
+		hdfs dfs -cat wasbs:///example/data/WordCountOutput/part-r-00000
 
-	ここでは、**wasb://example/data/gutenberg/davinci.txt** ファイルに含まれる単語の一覧と、各単語が発生した回数が表示されます。ファイルに含まれるデータの例を次に示します。
+	ここでは、**wasbs://example/data/gutenberg/davinci.txt** ファイルに含まれる単語の一覧と、各単語が発生した回数が表示されます。ファイルに含まれるデータの例を次に示します。
 
 		wreathed        3
 		wreathing       1
@@ -108,4 +108,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -45,7 +45,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 + アクティブな Azure アカウント。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、[Azure の無料試用版][lnk-free-trial]サイトを参照してください。
 
-## シミュレーション済みデバイスでのメッセージの受信
+## シミュレーション済みデバイスでメッセージを受信する
 
 このセクションでは、[IoT Hub の概要]に関するページで作成したシミュレートされたデバイス アプリケーションを、クラウドからデバイスへのメッセージを IoT Hub から受信するように変更します。
 
@@ -77,7 +77,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
     > [AZURE.NOTE] トランスポートとして AMQP の代わりに HTTP/1 を使用した場合、**DeviceClient** インスタンスが IoT Hub からのメッセージをチェックする頻度は低くなります (25 分に 1 回未満)。AMQP と HTTP/1 のサポートの相違点と、IoT Hub スロットルの詳細については、「[Azure IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」を参照してください。
 
-## クラウドからデバイスへのメッセージをアプリケーションのバックエンドから送信する
+## C2D メッセージを送信する
 
 このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する Node.js コンソール アプリを作成します。[IoT Hub の概要]に関するページのチュートリアルで追加したデバイスのデバイス ID と、[Azure ポータル]で確認できる IoT Hub の接続文字列が必要です。
 
@@ -165,7 +165,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     node SimulatedDevice.js 
     ```
 
-    ![][img-simulated-device]
+    ![シミュレーション済みデバイス アプリを実行する][img-simulated-device]
 
 2. **sendcloudtodevicemessage** フォルダーからコマンド プロンプトで次のコマンドを実行し、クラウドからデバイスへのメッセージを送信して、配信確認のフィードバックを待機します。
 
@@ -173,7 +173,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     node SendCloudToDeviceMessage.js 
     ```
 
-    ![][img-send-command]
+    ![C2D コマンドを送信するアプリを実行する][img-send-command]
 
     > [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。運用環境のコードでは、MSDN の記事「[Transient Fault Handling (一時的な障害の処理)]」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
@@ -193,12 +193,7 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 
 [IoT Hub の概要]: iot-hub-node-node-getstarted.md
 [IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
-[Process Device-to-Cloud messages]: iot-hub-csharp-csharp-process-d2c.md
-[Uploading files from devices]: iot-hub-csharp-csharp-file-upload.md
-[IoT Hub Overview]: iot-hub-what-is-iot-hub.md
-[IoT Hub Guidance]: iot-hub-guidance.md
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
-[Supported device platforms and languages]: iot-hub-supported-devices.md
 [Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
@@ -206,4 +201,4 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [Azure ポータル]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

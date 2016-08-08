@@ -13,12 +13,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="04/21/2016"
+	ms.date="07/25/2016"
 	ms.author="marsma" />
 
 # 同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする
 
-Azure Batch プール内の各計算ノードで同時に複数のタスクを実行する方法について説明します。プールのコンピューティング ノードでの同時実行タスクの実行を有効にすると、プール内のより少ないノードでリソース使用率を最大化できます。ワークロードによっては、ジョブの時間が短縮され、コストを削減できます。
+Azure Batch プールでは、各コンピューティング ノードで複数のタスクを同時に実行することによって、リソースの使用率を最大限に高めつつ、プールに必要なノード数を減らすことができます。ワークロードによっては、ジョブの時間が短縮され、コストを削減できます。
 
 単一のタスクにすべてのノードのリソースを割り当てることでメリットがあるシナリオもありますが、複数のタスクでリソースを共有することにメリットがある状況もあります。
 
@@ -32,13 +32,13 @@ Azure Batch プール内の各計算ノードで同時に複数のタスクを�
 
 ## サンプル シナリオ
 
-ここで並列タスク実行による利点を示す例を紹介します。たとえば、タスク アプリケーションの CPU とメモリの要件が、[Standard\_D1](../cloud-services/cloud-services-sizes-specs.md#general-purpose-d) のノード サイズが適しているような値だったとします。ただし、必要な時間内にジョブを実行するには、そのようなサイズのノードが 1,000 個必要です。
+並列タスク実行の利点を示す例として、タスク アプリケーションの CPU とメモリの要件を満たすノードのサイズが [Standard\_D1](../cloud-services/cloud-services-sizes-specs.md#general-purpose-d) である場合について考えてみます。ただし、必要な時間内にジョブを終えるには、そのようなサイズのノードが 1,000 個必要です。
 
-1 個の CPU コアを持つ Standard\_D1 ノードを使用する代わりに、それぞれが 16 個のコアを持つ [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md#memory-intensive-d) を使用して、並列タスクの実行を有効にすることもできます。この場合、*ノードの数は 16 分の 1* で済むため、必要なのは 1000 ノードではなく 63 ノードのみになります。各ノードで大きなアプリケーション ファイルまたは参照データが必要な場合は、これでジョブの実行時間と効率を大幅に向上できます。
+1 個の CPU コアを持つ Standard\_D1 ノードを使用する代わりに、それぞれが 16 個のコアを持つ [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md#memory-intensive-d) ノードを使用して、並列タスクの実行を有効にすることもできます。この場合、"*ノードの数は 16 分の 1*" で済むため、必要なのは 1,000 ノードではなく 63 ノードのみになります。加えて、大きなアプリケーション ファイルまたは参照データが各ノードに必要である場合、データのコピー先がわずか 16 ノードで済むため、ジョブの実行時間と効率の面でも改善が期待できます。
 
 ## 並列タスク実行を有効にする
 
-並列タスク実行のための Batch ソリューション内のコンピューティング ノードの構成は、プール レベルで行います。Batch .NET ライブラリを使用する場合は、プールを作成するときに [CloudPool.MaxTasksPerComputeNode][maxtasks_net] プロパティを設定します。Batch REST API を使用する場合は、プール作成時の要求本文に [maxTasksPerNode][rest_addpool] 要素を設定します。
+並列タスク実行のためのコンピューティング ノードの構成は、プール レベルで行います。Batch .NET ライブラリを使用する場合は、プールを作成するときに [CloudPool.MaxTasksPerComputeNode][maxtasks_net] プロパティを設定します。Batch REST API を使用する場合は、プール作成時の要求本文に [maxTasksPerNode][rest_addpool] 要素を設定します。
 
 Azure Batch では、ノードあたりの最大タスク数を、ノード コアの数の最大 4 倍まで設定できます。たとえば、プールをノード サイズ "Large" (4 コア) で構成した場合、`maxTasksPerNode` は 16 に設定できます。各ノード サイズのコア数の詳細については、「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。サービスの制限の詳細については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
@@ -46,7 +46,7 @@ Azure Batch では、ノードあたりの最大タスク数を、ノード コ�
 
 ## タスクの分散
 
-プール内のコンピューティング ノードがタスクを同時に実行できる場合、プール内の各ノードへのタスクの分散方法を指定することが重要です。
+プール内のコンピューティング ノードが複数のタスクを同時に実行できる場合、プール内の各ノードへのタスクの分散方法を指定することが重要です。
 
 [CloudPool.TaskSchedulingPolicy][task_schedule] プロパティを使用することで、プール内のすべてのノードに対して均等にタスクを割り当てるように指定できます ("分散")。または、1 つのノードにできる限り多くのタスクを割り当ててから、プール内の別のノードにタスクを割り当てるように指定することもできます ("圧縮")。
 
@@ -90,9 +90,9 @@ pool.Commit();
 
 > [AZURE.NOTE] `maxTasksPerNode` 要素および [MaxTasksPerComputeNode][maxtasks_net] プロパティは、プール作成時にのみ設定できます。これらは、プール作成後に変更することはできません。
 
-## サンプル プロジェクトの例
+## サンプル コード
 
-GitHub にある [ParallelNodeTasks][parallel_tasks_sample] プロジェクトを参照してください。このプロジェクトは、[CloudPool.MaxTasksPerComputeNode][maxtasks_net] の使用方法を示すコード サンプルで、実際に動作します。
+[CloudPool.MaxTasksPerComputeNode][maxtasks_net] プロパティの使用方法は、GitHub の [ParallelNodeTasks][parallel_tasks_sample] プロジェクトで紹介されています。
 
 この C# コンソール アプリケーションでは、[Batch .NET][api_net] ライブラリを使用して、1 つ以上のコンピューティング ノードを含むプールを作成します。さらに、これらのノードで構成可能な数のタスクを実行して、可変負荷をシミュレートします。アプリケーションの出力には、各タスクを実行したノードが示されます。また、ジョブのパラメーターと実行時間の概要も出力されます。サンプル アプリケーションの 2 つの異なる実行からの出力の概要部分を以下に示します。
 
@@ -118,9 +118,11 @@ Duration: 00:08:48.2423500
 
 > [AZURE.NOTE] 上記のジョブ期間には、プールの作成時間は含まれません。上記の各ジョブは事前に作成されたプールに送信されており、そのプールのコンピューティング ノードは送信の時点で*アイドル*状態でした。
 
-## Batch Explorer のヒート マップ
+## 次のステップ
 
-Azure Batch の[サンプル アプリケーション][github_samples]の 1 つである [Azure Batch Explorer][batch_explorer] には、タスクの実行を視覚化する*ヒート マップ*機能が含まれます。[ParallelTasks][parallel_tasks_sample] サンプル アプリケーションを実行すると、ヒート マップ機能を使用し、各ノードでの並列タスクの実行を簡単に視覚化できます。
+### Batch Explorer のヒート マップ
+
+Azure Batch の[サンプル アプリケーション][github_samples]の 1 つである [Azure Batch Explorer][batch_explorer] には、タスクの実行を視覚化する "*ヒート マップ*" 機能が含まれます。[ParallelTasks][parallel_tasks_sample] サンプル アプリケーションを実行すると、ヒート マップ機能を使用し、各ノードでの並列タスクの実行を簡単に視覚化できます。
 
 ![Batch Explorer のヒート マップ][1]
 
@@ -141,4 +143,4 @@ Azure Batch の[サンプル アプリケーション][github_samples]の 1 つ�
 
 [1]: ./media/batch-parallel-node-tasks\heat_map.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

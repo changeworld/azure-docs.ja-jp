@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="新しいスキーマ バージョン 2016-04-01-preview | Microsoft Azure" 
+	pageTitle="新しいスキーマ バージョン 2016-06-01 | Microsoft Azure" 
 	description="最新バージョンのロジック アプリの JSON 定義を記述する方法について説明します。" 
 	authors="jeffhollan" 
 	manager="dwrede" 
@@ -8,15 +8,15 @@
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016"
+	ms.date="07/25/2016"
 	ms.author="jehollan"/>
 	
-# 新しいスキーマ バージョン 2016-04-01-preview
+# 新しいスキーマ バージョン 2016-06-01
 
 ロジック アプリの新しいバージョンのスキーマと API には、ロジック アプリの信頼性と使いやすさを向上させる複数の機能強化が行われています。主な相違点は次の 3 つです。
 
@@ -24,7 +24,7 @@
 1. 条件とループがアクションに昇格。
 1. 実行の順序を `runAfter` プロパティ (`dependsOn` の後継) でより柔軟に定義可能。
 
-2015-08-01-preview スキーマから 2016-04-01-preview スキーマへのロジック アプリのアップグレードについては、[以降のアップグレード セクションを参照](#upgrading-to-2016-04-01-preview-schema)してください。
+2015-08-01-preview スキーマから 2016-06-01 スキーマへのロジック アプリのアップグレードについては、[以降のアップグレード セクションを参照](#upgrading-to-2016-06-01-schema)してください。
 
 
 ## 1\.スコープ
@@ -94,9 +94,9 @@
 }
 ```
 
-## 2016-04-01-preview スキーマへのアップグレード
+## 2016-06-01 スキーマへのアップグレード
 
-新しい 2016-04-01-preview スキーマへのアップグレードは、ほんのわずかなステップで実行できます。スキーマの変更点について詳しくは、[こちらの記事](app-service-logic-schema-2016-04-01.md)をご覧ください。アップグレード プロセスでは、アップグレード スクリプトの実行と新しいロジック アプリの保存に加え、必要に応じて以前のロジック アプリの上書きを行います。
+新しい 2016-06-01 スキーマへのアップグレードは、ほんのわずかなステップで実行できます。スキーマの変更点について詳しくは、[こちらの記事](app-service-logic-schema-2016-04-01.md)をご覧ください。アップグレード プロセスでは、アップグレード スクリプトの実行と新しいロジック アプリの保存に加え、必要に応じて以前のロジック アプリの上書きを行います。
 
 1. 現在のロジック アプリを開きます。
 1. ツール バーにある **[スキーマの更新]** ボタンをクリックします。
@@ -169,4 +169,4 @@ foreach と until ループは、1 つのアクションに制限されます。
 <!-- Image references -->
 [1]: ./media/app-service-logic-schema-2016-04-01/upgradeButton.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

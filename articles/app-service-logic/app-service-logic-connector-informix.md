@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -75,7 +75,7 @@ PollToAlterData | いいえ | ロジック アプリのトリガーで使用す�
 4. [トリガーとアクション] ブレードで、[ロジック アプリのテンプレート] 内の **[最初から作成する]** を選択します。
 5. [API Apps] パネルで、**[繰り返し]** を選択し、頻度と間隔を設定して、**チェックマーク**を選択します。
 6. [API Apps] パネルで、**[Informix コネクタ]** を選択し、操作の一覧を展開して **[NEWORDER に挿入する]** を選択します。
-7. パラメーターの一覧を展開して、次の値を入力します。  
+7. パラメーターの一覧を展開して、次の値を入力します。
 
 	名前 | 値
 --- | --- 
@@ -88,8 +88,8 @@ SHIPREG | WA
 SHIPZIP | 99362 
 
 8. **チェックマーク**を選択してアクションの設定を保存し、**[保存]** を選択します。
-9. 設定は次のようになります。![][3]  
-10. **[操作]** の下の **[すべての実行]** の一覧で、先頭の項目 (最新の実行) を選択します。 
+9. 設定は次のようになります。![][3]
+10. **[操作]** の下の **[すべての実行]** の一覧で、先頭の項目 (最新の実行) を選択します。
 11. **[ロジック アプリの実行]** ブレードで、**[アクション]** の項目 **[informixconnectorneworders]** を選択します。
 12. **[ロジック アプリのアクション]** ブレードで、**[入力リンク]** を選択します。Informix コネクタは、入力値を使用して、パラメーター化された INSERT ステートメントを処理します。
 13. **[ロジック アプリのアクション]** ブレードで、**[出力リンク]** を選択します。入力は次のようになります。![][4]
@@ -98,8 +98,8 @@ SHIPZIP | 99362
 
 - ロジック アプリのアクション名が形成される際、Informix テーブル名は切り詰められます。たとえば、操作 "**NEWORDERS に挿入する**" は、"**NEWORDER に挿入する**" に切り詰められます。
 - ロジック アプリの **[トリガーとアクション]** を保存すると、ロジック アプリによって操作が処理されます。ロジック アプリが操作を処理するまでに数秒 (たとえば、3 ～ 5 秒) の遅延が発生する場合があります。必要に応じて、**[今すぐ実行]** をクリックして操作を処理することができます。
-- Informix コネクタは、属性を使用して EntitySet メンバーを定義します。これには、メンバーが、既定の列と生成される列 (ID など) のどちらで Informix 列に対応しているかなどが含まれます。ロジック アプリでは、値が必要な Informix 列を示すために、EntitySet メンバー ID 名の横に赤いアスタリスクが表示されます。ORDID メンバーの値は入力しないでください。これは、Informix ID 列に対応しています。入力できるのは、その他のオプションのメンバー (ITEMS、ORDDATE、REQDATE、SHIPID、FREIGHT、SHIPCTRY) の値です。これらは、既定値が設定された Informix 列に対応しています。 
-- Informix コネクタは、EntitySet への投稿に対する応答をロジック アプリに返します。これには、準備された SQL INSERT ステートメントの DRDA SQLDARD (SQL Data Area Reply Data) から派生した ID 列の値が含まれます。Informix サーバーは、既定値が設定された列に対して、挿入された値を返しません。  
+- Informix コネクタは、属性を使用して EntitySet メンバーを定義します。これには、メンバーが、既定の列と生成される列 (ID など) のどちらで Informix 列に対応しているかなどが含まれます。ロジック アプリでは、値が必要な Informix 列を示すために、EntitySet メンバー ID 名の横に赤いアスタリスクが表示されます。ORDID メンバーの値は入力しないでください。これは、Informix ID 列に対応しています。入力できるのは、その他のオプションのメンバー (ITEMS、ORDDATE、REQDATE、SHIPID、FREIGHT、SHIPCTRY) の値です。これらは、既定値が設定された Informix 列に対応しています。
+- Informix コネクタは、EntitySet への投稿に対する応答をロジック アプリに返します。これには、準備された SQL INSERT ステートメントの DRDA SQLDARD (SQL Data Area Reply Data) から派生した ID 列の値が含まれます。Informix サーバーは、既定値が設定された列に対して、挿入された値を返しません。
 
 
 ## バルク データを追加する Informix コネクタ アクションを使用したロジック アプリ ##
@@ -111,7 +111,7 @@ API の一括挿入操作を使用して Informix テーブルにデータを追
 4. [トリガーとアクション] ブレードで、[ロジック アプリのテンプレート] 内の **[最初から作成する]** を選択します。
 5. [API Apps] パネルで、**[繰り返し]** を選択し、頻度と間隔を設定して、**チェックマーク**を選択します。
 6. [API Apps] パネルで、**[Informix コネクタ]** を選択し、操作の一覧を展開して **[NEW に一括挿入する]** を選択します。
-7. **[行]** の値を配列として入力します。たとえば、次の内容をコピーして貼り付けます。  
+7. **[行]** の値を配列として入力します。たとえば、次の内容をコピーして貼り付けます。
 
 	```
     [{"custid":10081,"shipid":10000,"shipname":"Trail's Head Gourmet Provisioners","shipaddr":"722 DaVinci Blvd.","shipcity":"Kirkland","shipreg":"WA","shipzip":"98034"},{"custid":10088,"shipid":10000,"shipname":"White Clover Markets","shipaddr":"305 14th Ave. S. Suite 3B","shipcity":"Seattle","shipreg":"WA","shipzip":"98128","shipctry":"USA"}]
@@ -129,7 +129,7 @@ API の一括挿入操作を使用して Informix テーブルにデータを追
 - ロジック アプリのアクション名が形成される際、Informix テーブル名は切り詰められます。たとえば、操作 "**NEWORDERS に一括挿入する**" は、"**NEW に一括挿入する**" に切り詰められます。
 - Informix データベースでは、テーブル名と列名の大文字と小文字が区別される場合があります。たとえば、一括挿入操作の配列の列名は、大文字 ("CUSTID") ではなく小文字 ("custid") で指定することが必要な場合があります。
 - ID 列 (例: ORDID)、null 許容列 (例: SHIPDATE)、および既定値が設定された列 (例: ORDDATE、REQDATE、SHIPID、FREIGHT、SHIPCTRY) を省略すると、Informix データベースで値が生成されます。
-- "today" と "tomorrow" を指定すると、Informix コネクタにより、"CURRENT DATE" 関数と "CURRENT DATE + 1 DAY" 関数 (REQDATE など) が生成されます。 
+- "today" と "tomorrow" を指定すると、Informix コネクタにより、"CURRENT DATE" 関数と "CURRENT DATE + 1 DAY" 関数 (REQDATE など) が生成されます。
 
 
 ## データの読み取り、変更、削除を行う Informix コネクタ トリガーを使用したロジック アプリ ##
@@ -139,7 +139,7 @@ API のデータのポーリング複合操作を使用して Informix テーブ
 --- | --- | ---
 PollToCheckData | SELECT COUNT(*) FROM NEWORDERS WHERE SHIPDATE IS NULL
 PollToReadData | SELECT * FROM NEWORDERS WHERE SHIPDATE IS NULL FOR UPDATE
-PollToAlterData | <no value specified>
+PollToAlterData | <値の指定なし>
 
 
 また、API のデータのポーリング複合操作を使用して Informix テーブルのデータのポーリング、読み取り、変更を行うようにロジック アプリのトリガーを定義することもできます。たとえば、1 つ以上の新しい顧客注文レコードを読み取り、行の値を更新して、(更新前に) 選択されたレコードをロジック アプリに返すことができます。Informix 接続のパッケージ/アプリの設定は次のようになります。
@@ -180,7 +180,7 @@ PollToAlterData | DELETE NEWORDERS WHERE CURRENT OF &lt;CURSOR&gt;
 ## Informix コネクタを使用してデータを削除するロジック アプリの作成 ##
 Azure Marketplace 内から新しいロジック アプリを作成した後、顧客注文を削除するアクションとして Informix コネクタを使用できます。たとえば、Informix コネクタの条件付き削除操作を使用して SQL の DELETE ステートメントを処理することができます (DELETE FROM NEWORDERS WHERE ORDID >= 10000)。
 
-1. Azure の**スタート**画面のハブ メニューで、**[+]** (プラス記号)、**[Web + モバイル]**、**[ロジック アプリ]** の順にクリックします。 
+1. Azure の**スタート**画面のハブ メニューで、**[+]** (プラス記号)、**[Web + モバイル]**、**[ロジック アプリ]** の順にクリックします。
 2. **[ロジック アプリの作成]** ブレードで、**名前**を入力します (たとえば、「**RemoveOrdersInformix**」)。
 3. 他の設定 (サービス プラン、リソース グループなど) の値を選択または定義します。
 4. 設定は次のようになります。**[作成]** をクリックします。![][12]
@@ -274,4 +274,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [13]: ./media/app-service-logic-connector-informix/LogicApp_RemoveOrdersInformix_TriggersActions.png
 [14]: ./media/app-service-logic-connector-informix/LogicApp_RemoveOrdersInformix_Outputs.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

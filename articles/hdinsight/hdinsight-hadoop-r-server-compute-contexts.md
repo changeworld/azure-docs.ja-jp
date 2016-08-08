@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="07/07/2016"
+   ms.date="07/21/2016"
    ms.author="jeffstok"
 />
 
@@ -26,12 +26,14 @@ Premium クラスターのエッジ ノードは、クラスターへの接続�
 
 ## エッジ ノードに対するコンピューティング コンテキスト
 
-一般に、エッジ ノードの R Server で実行される R スクリプトは、そのノードの R インタープリター内で実行されます。ScaleR 関数を呼び出すステップは例外です。ScaleR 呼び出しは、ScaleR コンピューティング コンテキストの設定方法によって決定されるコンピューティング環境で実行されます。エッジ ノードから R スクリプトを実行する際に設定可能なコンピューティング コンテキストの値は、次に示す local sequential ("local")、local parallel ("localpar")、Map Reduce、および Spark です。
+一般に、エッジ ノードの R Server で実行される R スクリプトは、そのノードの R インタープリター内で実行されます。ScaleR 関数を呼び出すステップは例外です。ScaleR 呼び出しは、ScaleR コンピューティング コンテキストの設定方法によって決定されるコンピューティング環境で実行されます。エッジ ノードから R スクリプトを実行する際に設定可能なコンピューティング コンテキストの値は、local sequential ("local")、local parallel ("localpar")、Map Reduce、および Spark です。
+
+オプション "local" と "localpar" の違いは、rxExec 呼び出しを実行する方法のみです。ScaleR の numCoresToUse オプションの使用を通じて別途指定されている (rxOptions(numCoresToUse=6) など) 場合を除き、どちらも、他の rx 関数呼び出しは使用可能なすべてのコアで並列に実行します。さまざまなコンピューティング コンテキスト オプションを以下にまとめました。
 
 | コンピューティング コンテキスト | 設定方法 | 実行コンテキスト |
 |------------------|---------------------------------|---------------------------------------------------------------------------------------|
-| Local sequential | rxSetComputeContext(‘local’) | エッジ ノード サーバーでのシーケンシャル (非並列化) 実行 |
-| Local parallel | rxSetComputeContext(‘localpar’) | エッジ ノード サーバーのコアの並列化 |
+| Local sequential | rxSetComputeContext(‘local’) | エッジ ノード サーバーのコアの実行の並列化 (順次実行される rxExec 呼び出しを除く) |
+| Local parallel | rxSetComputeContext(‘localpar’) | エッジ ノード サーバーのコアの実行の並列化 |
 | Spark | RxSpark() | HDI クラスターのノード間での、Spark を介した分散実行の並列化 |
 | Map Reduce | RxHadoopMR() | HDI クラスターのノード間での Map Reduce を介した分散実行の並列化 |
 
@@ -50,10 +52,10 @@ Premium クラスターのエッジ ノードは、クラスターへの接続�
 
 これらの原則を考慮した上で、コンピューティング コンテキストを選択するための次のような一般的な経験則があります。
 
-### Local parallel
+### ローカル
 
-- 分析するデータが少量で、繰り返し分析が必要ない場合は、データを分析ルーチンに直接ストリーミングして、"localpar" を使用します。
-- 分析するデータが少量または中規模の量で、繰り返し分析が必要である場合は、データをローカル ファイル システムにコピーして XDF にインポートし、"localpar" を使用して分析します。
+- 分析するデータが少量で、繰り返し分析が必要ない場合は、データを分析ルーチンに直接ストリーミングして、"local" または "localpar" を使用します。
+- 分析するデータが少量または中規模の量で、繰り返し分析が必要である場合は、データをローカル ファイル システムにコピーして XDF にインポートし、"local" または "localpar" を使用して分析します。
 
 ### Hadoop Spark
 
@@ -81,4 +83,4 @@ ScaleR コンピューティング コンテキストの詳細と例について
 - [HDInsight Premium への RStudio Server の追加に関する記事](hdinsight-hadoop-r-server-install-r-studio.md)
 - [Azure Storage options for R Server on HDInsight Premium (HDInsight Premium での R Server の Azure Storage オプション)](hdinsight-hadoop-r-server-storage.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

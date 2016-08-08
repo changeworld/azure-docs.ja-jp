@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="07/19/2016"
 	ms.author="kgremban"/>
 
 
@@ -97,7 +97,7 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 3. **[プロパティ]** の下で、**[内部認証方法]** を **[統合 Windows 認証]** に設定します。![高度なアプリケーションの構成](./media/active-directory-application-proxy-sso-using-kcd/cwap_auth2.png)
 4. アプリケーション サーバーの**[内部アプリケーション SPN]** を入力します。この例では、公開されたアプリケーションの SPN は、http/lob.contoso.com です。
 
->[AZURE.IMPORTANT] Azure Active Directory での UPN は、オンプレミスの Active Directory での UPN と同一であることが必要です。同一でない場合は事前認証ができなくなります。Azure AD がオンプレミスの AD と同期していることを確認してください。
+>[AZURE.IMPORTANT] オンプレミスの UPN と Azure Active Directory の UPN が同一でない場合は、事前認証が機能するように[委任されたログイン ID](#delegated-login-identity) を構成する必要があります。
 
 | | |
 | --- | --- |
@@ -110,14 +110,17 @@ Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がク�
 
 ![Windows 以外の SSO の図](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_nonwindows_diagram.png)
 
-### 部分的に委任された ID
-Windows 以外のアプリケーションでは、ユーザー ID は、電子メール アドレス (username@domain) ではなく、ユーザー名またはソフトウェア アセット管理アカウント名の形式で取得するのが一般的です。これは、より包括的でドメインの重複がないことを保証する UPN を使用するほとんどの Windows ベースのシステムとは異なります。
+### 委任されたログイン ID
+委任されたログイン ID を使用すると、2 つの異なるログイン シナリオに対応できるようになります。
 
-このため、アプリケーション プロキシでは、Kerberos チケットに表示される ID をアプリケーションごとに選択できます。これらのオプションの一部は、電子メール アドレスの形式を受け入れないシステムに適しています。
+- ユーザー ID を電子メール アドレス (username@domain) ではなく、ユーザー名または SAM アカウント名の形式で通常取得する Windows 以外のアプリケーション。
+- Azure AD の UPN とオンプレミスの Active Directory の UPN が異なる代替ログイン構成。
+
+アプリケーション プロキシを使用すると、Kerberos チケットの取得に使用する ID を選択できます。この設定は、アプリケーションごとに行います。これらのオプションの中には、電子メール アドレスの形式を受け入れないシステムに適したものもあれば、代替ログイン用に設計されたものもあります。
 
 ![委任されたログイン ID パラメーターのスクリーンショット](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_upn.png)
 
-部分 ID を使用する場合に、その ID が組織のすべてのドメインまたはフォレストで一意でない場合は、これらのアプリケーションを 2 つの異なるコネクタ グループを使用して 2 度発行できます。これは各アプリケーションのユーザーが異なり、そのコネクタを異なるドメインに参加させることができるためです。
+委任されたログイン ID が使用されている場合、その値は組織内のすべてのドメインまたはフォレストで一意でないことがあります。異なる 2 つのコネクタ グループを使用してこれらのアプリケーションを 2 回発行することで、この問題を回避できます。これは各アプリケーションのユーザーが異なり、そのコネクタを異なるドメインに参加させることができるためです。
 
 
 ## オンプレミス ID とクラウド ID が同一でない場合の SSO の操作
@@ -166,4 +169,4 @@ SSO プロセスにエラーがある場合は、「[トラブルシューティ
 [1]: ./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png
 [2]: ./media/active-directory-application-proxy-sso-using-kcd/Properties.jpg
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

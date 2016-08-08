@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -74,4 +74,4 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas) を�
 - [マップについての詳細情報](./app-service-logic-enterprise-integration-maps.md "Enterprise Integration のマップについての詳細情報")
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

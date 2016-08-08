@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="04/20/2016"
+	ms.date="07/22/2016"
 	ms.author="rasquill"/>
 
 # Docker マシンと Azure ドライバーを使用する
@@ -130,4 +130,6 @@ d5b78f27b335        nginx               "nginx -g 'daemon off"   5 minutes ago  
 
 興味があれば、Azure [Docker VM Extension](virtual-machines-linux-dockerextension.md) で同じ操作を試してください。Azure CLI または Azure リソース マネージャーのテンプレートを使用します。
 
-<!---HONumber=AcomDC_0427_2016-->
+Docker を使用した作業の例については、[HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect の[デモ](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)の「[Working with Docker (Docker を使用した作業)](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker)」を参照してください。HealthClinic.biz のデモに関連する他のクイック スタートについては、「[Azure Developer Tools Quickstarts (Azure 開発者ツールのクイック スタート)](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)」を参照してください。
+
+<!---HONumber=AcomDC_0727_2016-->

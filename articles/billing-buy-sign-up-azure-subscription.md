@@ -42,52 +42,81 @@ Azure には、お客様のビジネス ニーズに合った、Azure を使い�
 
 Azure 無料試用版のサブスクリプションにサインアップするには、電話番号、クレジット カード、および Microsoft アカウントを指定する必要があります。Microsoft アカウントとは、Windows Live プログラムまたはサービス (Outlook、Hotmail、OneDrive など) にサインインするために使用する電子メール アドレスとパスワードのことです。Microsoft アカウントを設定するには、会社の電子メールなど、所有する任意の電子メール アドレスを使用します。詳細については、「[Microsoft アカウントのよくある質問](https://www.microsoft.com/account/faq.aspx)」を参照してください。
 
+何か問題が発生した場合は、「[Azure サインアップに関する問題のトラブルシューティング](billing-troubleshoot-azure-sign-up-issues.md)」を参照してください。
+
 >[AZURE.NOTE] 電話番号とクレジット カードの詳細は、ID を確認する目的のみで使用されます。クレジット カードには課金されませんが、カードが有効であることを確認するために最小限の金額が信用照会として請求されます。これは、金融機関のポリシーに基づいて 3 ～ 5 日内に取り消されます。
 
-1. [Azure 無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)を開き、**[今すぐ試す]** を選択します。
-2. Microsoft アカウントまたは学校か職場のアカウントでサインインします。
-3. **[自分の情報]** セクションに個人情報を入力します。![個人情報のスクリーンショット](./media/billing-buy-sign-up-azure-subscription/AboutYou.png)
+1. [Azure 無料試用版のページ](https://azure.microsoft.com/pricing/free-trial/)を開き、**[今すぐ開始]** を選択します。
 
- **注**: Azure サブスクリプションにサインアップするときに指定した電子メール アドレスと国についての情報は、常にサブスクリプションと関連付けられており、後で変更することはできません。</br>
+2. Microsoft アカウントまたは組織アカウントを使ってサインインします。
+
+3. **[自分の情報]** セクションに個人情報を入力します。こちらの[詳しい情報](billing-troubleshoot-azure-sign-up-issues.md#i-am-getting-an-error-when-entering-my-information-to-sign-up)を参考にして個人情報を正確に入力してください。
+
+    ![Enter your personal infromation here](./media/billing-buy-sign-up-azure-subscription/AboutYou.png)
+
+    >[AZURE.NOTE] Azure サブスクリプションにサインアップするときに指定した電子メール アドレスと国についての情報は、常にサブスクリプションと関連付けられており、後で変更することはできません。
+
 4. **[電話で確認]** セクションでは、検証プロセスを完了するために提供する確認コードを受け取る電話番号を指定する必要があります。
 
- 確認コードは、テキスト メッセージまたは音声通話のどちらかで受け取ることができます。**[テキスト メッセージを受信]** または **[電話で確認コードを受け取る]** を選択します。最初のボックスでお住まいの国の国際ダイヤル コードを選択し、2 番目のボックスに電話番号を入力します。確認コードを受け取ったら、3 番目のボックスにそれを入力し、**[コードの確認]** ボタンを選択します。
+    確認コードは、テキスト メッセージまたは音声通話のどちらかで受け取ることができます。**[テキスト メッセージを受信]** または **[電話で確認コードを受け取る]** を選択します。最初のボックスでお住まいの国の国際ダイヤル コードを選択し、2 番目のボックスに電話番号を入力します。確認コードを受け取ったら、3 番目のボックスにそれを入力し、**[コードの確認]** ボタンを選択します。詳細については、[こちら](billing-troubleshoot-azure-sign-up-issues.md#i-am-not-getting-text-messages-or-calls-during-account-verification-when-i-try-to-sign-up)を参照してください。
 
- **注**: 電話確認処理に VOIP 電話番号を使用することはできません。</br> ![the screenshot about phone verification](./media/billing-buy-sign-up-azure-subscription/PhoneVerify.png)</br>テキスト メッセージや電話が来ない場合は、別の電話番号を使用するか、[Azure サポート](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)にお問い合わせください。</br>
+    >[AZURE.NOTE] 電話確認処理に VOIP 電話番号を使用することはできません。
+ 
+    ![Enter a valid phone number to verify your phone](./media/billing-buy-sign-up-azure-subscription/PhoneVerify.png)
+    
+    テキスト メッセージや電話が来ない場合は、別の電話番号を使用するか、[Azure サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
+
 5. **[カードによる確認]** セクションに、有効なクレジット カードの詳細を入力します。この情報は、ユーザーの身元を確認するためだけに収集されます。
 
- **注**: クレジット カードには課金されませんが、カードが有効であることを確認するために最小限の金額が信用照会として請求されます。これは、金融機関のポリシーに基づいて 3 ～ 5 日内に取り消されます。
+    クレジット カード情報の送信後にエラー メッセージが表示される場合は、記事「[Azure にサインアップしようとしたところ、クレジット カードが承認されません](billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。
 
- クレジット カード情報の送信後にエラー メッセージが表示される場合は、記事「[Azure にサインアップしようとしたところ、クレジット カードが承認されません](billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。
+    ![You could also verify by card](./media/billing-buy-sign-up-azure-subscription/VardVerify.png)
 
- ![cardverify](./media/billing-buy-sign-up-azure-subscription/VardVerify.png)</br>
-6. **[契約]** セクションで、サブスクリプション契約、プランの詳細、プライバシーに関する声明に同意する場合は、チェック ボックスをオンにします。その後、**[サインアップ]** を選択します。サンプルのスクリーンショットは英語版の契約です。契約フォームは、国によって異なる場合があります。
+6. **[契約]** セクションで、サブスクリプション契約、プランの詳細、プライバシーに関する声明に同意する場合は、チェック ボックスをオンにします。その後、**[サインアップ]** を選択します。契約フォームは、国によって異なる場合があります。
 
- ![サインアップ](./media/billing-buy-sign-up-azure-subscription/Signup.png)</br></br>サブスクリプションの設定に数分かかることがあります。サブスクリプションの設定が 15 分で完了しない場合は、[Azure サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。</br>エラー メッセージが表示された場合は、メッセージ内の手順に従って問題を解決してください。一般的なエラー メッセージは次のとおりです。
+    ![The English version of the agreement.契約フォームは、国によって異なる場合があります。](./media/billing-buy-sign-up-azure-subscription/Signup.png)
+ 
+    サブスクリプションの設定に数分かかることがあります。サブスクリプションの設定が 15 分で完了しない場合は、[Azure サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
+ 
+    > [AZURE.NOTE] エラー メッセージが表示された場合は、メッセージ内の手順に従って問題を解決してください。一般的なエラー メッセージは次のとおりです。
 
- **申し訳ありません。操作を完了できませんでした。後で再度試すか、Web ページを読み込み直してください。** </br>
+    > **申し訳ありません。操作を完了できませんでした。後で再度試すか、Web ページを読み込み直してください。**
 
- この場合は、別のブラウザーを使用してサインアップ プロセスを完了してください。問題が引き続き発生する場合は、[Azure サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。</br>
-7. サブスクリプションの準備が完了したら、**[サービスの管理を開始する]** を選択して開始します。</br> ![startservice](./media/billing-buy-sign-up-azure-subscription/startservice.png)
+    > この場合は、別のブラウザーを使用してサインアップ プロセスを完了してください。問題が引き続き発生する場合は、[Azure サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
+
+7. サブスクリプションの準備が完了したら、**[サービスの管理を開始する]** を選択して開始します。
+ 
+    ![Welcome to your Azure subscription](./media/billing-buy-sign-up-azure-subscription/startservice.png)
+
+### その他のリソース
+
+- [Azure 無料試用版をアクティブ化できません](billing-troubleshoot-azure-sign-up-issues.md#i-cant-activate-an-azure-free-trial)
+- [Azure 無料試用版の FAQ](https://azure.microsoft.com/pricing/free-trial-faq/)
 
 <a name="UpgradeFreeToPYG"></a>
 ## Azure 無料試用版を従量課金制にアップグレード
 
-1. 無料評価版にサインアップするために使用した Microsoft アカウントまたは学校や職場のアカウントを使用して、[Azure アカウント ポータル](https://account.windowsazure.com/subscriptions)にログオンします。
-2. サブスクリプションを選択し、**[アップグレード]** を選択します。</br>![billpage](./media/billing-buy-sign-up-azure-subscription/billpage.png)
-3. **[はい]** を選択し、**[今すぐアップグレード]** をクリックします。</br>![upgrade](./media/billing-buy-sign-up-azure-subscription/Upgrade.png)
+1. 無料試用版にサインアップするために使用した Microsoft アカウントまたはお持ちの組織アカウントを使用して、[Azure アカウント ポータル](https://account.windowsazure.com/subscriptions)にログオンします。
 
-無料試用版サブスクリプションから従量課金制サブスクリプションにアップグレードするとき、Azure サービスで使用する 30 日間の制限や 200 ドルのクレジットなど無料試用版から引き継がれるメリットは、いずれかがなくなるまで継続されます。サブスクリプション アップグレードは、その後でのみ行われます。
+2. サブスクリプションを選択し、**[アップグレード]** を選択します。
+
+    ![Notice to upgrade from Free Trial to Pay-As-You-Go](./media/billing-buy-sign-up-azure-subscription/billpage.png)
+
+3. **[はい]** を選択し、**[今すぐアップグレード]** をクリックします。
+
+    ![Confirmation for upgrading your subscription](./media/billing-buy-sign-up-azure-subscription/Upgrade.png)
+
+無料試用版サブスクリプションから従量課金制サブスクリプションにアップグレードするとき、Azure サービスで使用する 30 日間の制限や 200 ドルのクレジットなどの無料試用版から引き継がれるメリットは、いずれかがなくなるまで継続されます。サブスクリプション アップグレードは、その後でのみ行われます。
 
 <a name="activateKey"></a>
 ## オンライン サービスのライセンス認証キーを使用したアクティブ化
 
-Azure イン オープン プランのクレジットをリセラーから購入した場合は、ライセンス認証キー (5x5 のキー) を入手して、次の手順に従ってサブスクリプションをアクティブ化します。
+**Azure イン オープン プラン**のクレジットをリセラーから購入した場合は、ライセンス認証キー (5x5 のキー) を入手して、次の手順に従ってサブスクリプションをアクティブ化します。
 
-1. azure.com の[サブスクリプションの概要ページ](https://account.windowsazure.com/subscriptions)に移動します。
+1. [サブスクリプションの概要ページ](https://account.windowsazure.com/subscriptions)に移動します。
 
 2. **[Azure イン オープン プラン]** を選択します。[[Azure イン オープン プラン ライセンス キー]](https://azure.microsoft.com/offers/ms-azr-0111p/) ページで、**新しいサブスクリプションまたは既存のサブスクリプションのアクティブ化**を選択します。
 
 3. プロダクト キーを入力し、契約オプションを確認します。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

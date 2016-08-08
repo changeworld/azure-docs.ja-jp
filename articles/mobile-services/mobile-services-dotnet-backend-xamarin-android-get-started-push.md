@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
@@ -71,4 +71,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/27/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 
@@ -123,7 +123,7 @@ BigTable の実装である HBase では、同じデータが次のように表�
 HBase では、いくつかの方法でテーブルにデータを読み込ことができます。詳細については、[一括読み込み](http://hbase.apache.org/book.html#arch.bulk.load)に関するページを参照してください。
 
 
-サンプルのデータ ファイルがパブリック BLOB コンテナー wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt にアップロードされています。このデータ ファイルの内容は次のとおりです。
+サンプルのデータ ファイルがパブリック BLOB コンテナー wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt にアップロードされています。このデータ ファイルの内容は次のとおりです。
 
 	8396	Calvin Raji		230-555-0191	230-555-0191	5415 San Gabriel Dr.
 	16600	Karen Wu		646-555-0113	230-555-0192	9265 La Paz
@@ -147,7 +147,7 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 3. 次のコマンドを実行して、データ ファイルをストア ファイルに変換し、Dimporttsv.bulk.output で指定された相対パスに格納します。
 
-		hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
+		hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
 
 4. 次のコマンドを実行して、/example/data/storeDataFileOutput から HBase テーブルにデータをアップロードします。
 
@@ -334,4 +334,4 @@ Web UI を開くには、RDP を使用してクラスターに接続した後、
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="06/27/2016" 
+	ms.date="07/25/2016" 
 	ms.author="larryfr"/>
 
 #HDInsight における Python と Hive および Pig の使用
@@ -41,7 +41,7 @@ Python は、HiveQL の **TRANSFORM** ステートメントを通じて Hive か
 
 **Linux ベースの HDInsight**
 
-	add file wasb:///streaming.py;
+	add file wasbs:///streaming.py;
 
 	SELECT TRANSFORM (clientid, devicemake, devicemodel)
 	  USING 'python streaming.py' AS
@@ -51,7 +51,7 @@ Python は、HiveQL の **TRANSFORM** ステートメントを通じて Hive か
 
 **Windows ベースの HDInsight**
 
-	add file wasb:///streaming.py;
+	add file wasbs:///streaming.py;
 
 	SELECT TRANSFORM (clientid, devicemake, devicemodel)
 	  USING 'D:\Python27\python.exe streaming.py' AS
@@ -107,8 +107,8 @@ HDInsight クラスターでこの例を実行する方法については「[例
 
 Python スクリプトは、**GENERATE** ステートメントを通じて Pig から UDF として使用できます。たとえば、次の例では **jython.py** ファイルに格納されている Python スクリプトを使用します。
 
-	Register 'wasb:///jython.py' using jython as myfuncs;
-    LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
+	Register 'wasbs:///jython.py' using jython as myfuncs;
+    LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
     LOG = FILTER LOGS by LINE is not null;
     DETAILS = FOREACH LOG GENERATE myfuncs.create_structure(LINE);
     DUMP DETAILS;
@@ -185,7 +185,7 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
 
 2. `hive>` プロンプトで、以下を入力します。
 
-		add file wasb:///streaming.py;
+		add file wasbs:///streaming.py;
 		SELECT TRANSFORM (clientid, devicemake, devicemodel)
 		  USING 'python streaming.py' AS
 		  (clientid string, phoneLabel string, phoneHash string)
@@ -206,8 +206,8 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
 
 2. `grunt>` プロンプトで、以下のステートメントを入力します。
 
-		Register wasb:///jython.py using jython as myfuncs;
-	    LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
+		Register wasbs:///jython.py using jython as myfuncs;
+	    LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
 	    LOG = FILTER LOGS by LINE is not null;
 	    DETAILS = foreach LOG generate myfuncs.create_structure(LINE);
 	    DUMP DETAILS;
@@ -285,7 +285,7 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
         -StorageAccountName $storageAccountName `
         -StorageAccountKey $storageAccountKey
             
-	$HiveQuery = "add file wasb:///streaming.py;" +
+	$HiveQuery = "add file wasbs:///streaming.py;" +
 	             "SELECT TRANSFORM (clientid, devicemake, devicemodel) " +
 	               "USING 'D:\Python27\python.exe streaming.py' AS " +
 	               "(clientid string, phoneLabel string, phoneHash string) " +
@@ -352,8 +352,8 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
         -StorageAccountName $storageAccountName `
         -StorageAccountKey $storageAccountKey
             
-	$PigQuery = "Register wasb:///jython.py using jython as myfuncs;" +
-	            "LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);" +
+	$PigQuery = "Register wasbs:///jython.py using jython as myfuncs;" +
+	            "LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);" +
 	            "LOG = FILTER LOGS by LINE is not null;" +
 	            "DETAILS = foreach LOG generate myfuncs.create_structure(LINE);" +
 	            "DUMP DETAILS;"
@@ -444,4 +444,4 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

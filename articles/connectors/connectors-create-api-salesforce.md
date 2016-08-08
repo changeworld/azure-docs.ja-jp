@@ -1,268 +1,284 @@
 <properties
-pageTitle="PowerApps Enterprise とロジック アプリに Salesforce コネクタを追加する | Microsoft Azure"
-description="Salesforce コネクタと REST API パラメーターの概要"
-services=""    
-documentationCenter=""     
-authors="msftman"    
-manager="erikre"    
+pageTitle="Logic Apps での Salesforce コネクタの使用方法 | Microsoft Azure"
+description="Azure App Service を使用してロジック アプリを作成します。Salesforce コネクタは、Salesforce オブジェクトを操作するための API を提供します。"
+services="app-servicelogic"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
-tags="connectors"/>
+tags="connectors" />
 
 <tags
-ms.service="multiple"
-ms.devlang="na"
+ms.service="logic-apps"
+ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
-ms.workload="na"
-ms.date="05/19/2016"
+ms.workload="integration"
+ms.date="07/22/2016"
 ms.author="deonhe"/>
 
-# Salesforce コネクタの使用 
-Salesforce に接続し、オブジェクトの作成、オブジェクトの取得などを行います。Salesforce コネクタは、次のツールから使用できます。
+# Salesforce コネクタの使用
 
-- Logic Apps 
-- PowerApps
+Salesforce コネクタは、Salesforce オブジェクトを操作するための API を提供します。
 
-> [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/connectors-create-api-salesforce.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-salesforce.md)
+[任意のコネクタ](./apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。ロジック アプリの作成方法については、[こちら](../app-service-logic/app-service-logic-create-a-logic-app.md)をご覧ください。
 
-&nbsp;
+## Salesforce コネクタに接続する
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成する必要があります。[接続](./connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。
 
-Salesforce では、次の操作を実行できます。
+### Salesforce コネクタへの接続を作成する
 
-- Salesforce から取得したデータに基づいてビジネス フローを構築できます。 
-- オブジェクトを作成または更新するときにトリガーを使用できます。
-- Azure Blob の作成、オブジェクトの削除などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Salesforce で新しいオブジェクトを作成するときに、Office 365 を使用して電子メールを送信できます。
-- PowerApps Enterprise に Salesforce コネクタを追加します。追加すると、ユーザーはアプリ内でコネクタを使用できるようになります。 
+>[AZURE.INCLUDE [Salesforce コネクタへの接続を作成する手順](../../includes/connectors-create-api-salesforce.md)]
 
-PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
+## Salesforce コネクタ トリガーを使用する
 
-ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
-## トリガーとアクション
-Salesforce API には、次のトリガーとアクションがあります。
+>[AZURE.INCLUDE [Salesforce トリガーを作成する手順](../../includes/connectors-create-api-salesforce-trigger.md)]
 
-| トリガー | アクション|
-| --- | --- |
-|<ul><li>オブジェクトの作成時</li><li>オブジェクトの変更時</li></ul> | <ul><li>オブジェクトを作成する</li><li>オブジェクトを取得する</li><li>オブジェクトの作成時</li><li>オブジェクトの変更時</li><li>オブジェクトを削除する</li><li>オブジェクトを取得する</li><li>オブジェクトの種類 (SObjects) を取得する</li><li>オブジェクトを更新する</li></ul>
+## Add a condition 
+>[AZURE.INCLUDE [Salesforce 条件を作成する手順](../../includes/connectors-create-api-salesforce-condition.md)]
 
-すべてのコネクタは、JSON および XML 形式のデータに対応します。
+## Salesforce コネクタ アクションを使用する
 
-## Salesforce への接続を作成する 
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
-ロジック アプリにこのコネクタを追加するとき、Salesforce に接続するロジック アプリを承認する必要があります。
+>[AZURE.INCLUDE [Salesforce アクションを作成する手順](../../includes/connectors-create-api-salesforce-action.md)]
 
->[AZURE.INCLUDE [Salesforce への接続を作成する手順](../../includes/connectors-create-api-salesforce.md)]
+## 技術的な詳細
 
-接続を作成したら、テーブル名など、Salesforce のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
+ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
 
->[AZURE.TIP] 他のロジック アプリでも、この同じ接続を使用できます。
+## Salesforce コネクタ トリガー
 
-## Swagger REST API リファレンス
-適用されるバージョン: 1.0。
+Salesforce コネクタには、次のトリガーがあります。
+
+|トリガー | 説明|
+|--- | ---|
+|[オブジェクトの作成時](connectors-create-api-salesforceconnector.md#when-an-object-is-created)|この操作では、オブジェクトが作成されたときにフローをトリガーします。|
+|[オブジェクトの変更時](connectors-create-api-salesforceconnector.md#when-an-object-is-modified)|この操作では、オブジェクトが変更されたときにフローをトリガーします。|
+
+
+## Salesforce コネクタ アクション
+
+Salesforce コネクタには、次のアクションがあります。
+
+
+|アクション|説明|
+|--- | ---|
+|[複数のオブジェクトを取得する](connectors-create-api-salesforceconnector.md#get-objects)|この操作では、"潜在顧客" のような特定の種類のオブジェクトを取得します。|
+|[オブジェクトを作成する](connectors-create-api-salesforceconnector.md#create-object)|この操作では、オブジェクトを作成します。|
+|[オブジェクトを取得する](connectors-create-api-salesforceconnector.md#get-object)|この操作では、オブジェクトを取得します。|
+|[オブジェクトを削除する](connectors-create-api-salesforceconnector.md#delete-object)|この操作では、オブジェクトを削除します。|
+|[オブジェクトを更新する](connectors-create-api-salesforceconnector.md#update-object)|この操作では、オブジェクトを更新します。|
+|[オブジェクトの種類を取得する](connectors-create-api-salesforceconnector.md#get-object-types)|この操作では、使用可能なオブジェクトの種類を一覧表示します。|
+### アクションの詳細
+
+ここでは、このコネクタのアクションとトリガー、および応答について詳しく説明します。
+
+
+
+### 複数のオブジェクトを取得する
+この操作では、"潜在顧客" のような特定の種類のオブジェクトを取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|table*|オブジェクトの種類|Salesforce オブジェクトの種類 (例: "潜在顧客")|
+|$filter|Filter Query (フィルター クエリ)|エントリ数を制限する ODATA filter クエリ|
+|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
+|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定値 = 256)|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+ItemsList
+
+
+| プロパティ名 | データ型 |
+|---|---|
+|値|array|
+
+
 
 
 ### オブジェクトを作成する
-Salesforce オブジェクトを作成します。```POST: /datasets/default/tables/{table}/items```
+この操作では、オブジェクトを作成します。
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|テーブル|string|○|path|なし|Salesforce SObject の種類 (例: 'Lead')|
-|item| |○|body|なし|作成する Salesforce オブジェクト|
 
-### Response
-|名前|説明|
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|table*|オブジェクトの種類|オブジェクトの種類 (例: "潜在顧客")|
+|item*|オブジェクト|作成するオブジェクト|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+項目
+
+
+| プロパティ名 | データ型 |
 |---|---|
-|200|OK|
-|default|操作に失敗しました。|
+|ItemInternalId|string|
+
 
 
 
 ### オブジェクトを取得する
-Salesforce オブジェクトを取得します。```GET: /datasets/default/tables/{table}/items/{id}```
+この操作では、オブジェクトを取得します。
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|テーブル|string|○|path|なし|Salesforce SObject の種類 (例: 'Lead')|
-|id|string|○|path|なし|取得する Salesforce オブジェクトの一意識別子|
 
-### Response
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|table*|オブジェクトの種類|Salesforce オブジェクトの種類 (例: "潜在顧客")|
+|id*|オブジェクト ID|取得するオブジェクトの識別子|
 
-|名前|説明|
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+項目
+
+
+| プロパティ名 | データ型 |
 |---|---|
-|200|OK|
-|default|操作に失敗しました。|
+|ItemInternalId|string|
+
 
 
 
 ### オブジェクトを削除する
-Salesforce オブジェクトを削除します。```DELETE: /datasets/default/tables/{table}/items/{id}```
+この操作では、オブジェクトを削除します。
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|テーブル|string|○|path|なし|Salesforce SObject の種類 (例: 'Lead')|
-|id|string|○|path|なし|削除する Salesforce オブジェクトの一意識別子|
 
-### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|table*|オブジェクトの種類|オブジェクトの種類 (例: "潜在顧客")|
+|id*|オブジェクト ID|削除するオブジェクトの識別子|
+
+* は、必須のプロパティを示します。
+
 
 
 
 ### オブジェクトを更新する
-Salesforce オブジェクトを更新します。```PATCH: /datasets/default/tables/{table}/items/{id}```
+この操作では、オブジェクトを更新します。
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|テーブル|string|○|path|なし|Salesforce SObject の種類 (例: 'Lead')|
-|id|string|○|path|なし|更新する Salesforce オブジェクトの一意識別子|
-|item| |○|body|なし|変更されたプロパティがある Salesforce オブジェクト|
 
-### Response
-|名前|説明|
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|table*|オブジェクトの種類|オブジェクトの種類 (例: "潜在顧客")|
+|id*|オブジェクト ID|更新するオブジェクトの識別子|
+|item*|オブジェクト|変更されたプロパティがあるオブジェクト|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+項目
+
+
+| プロパティ名 | データ型 |
 |---|---|
-|200|OK|
-|default|操作に失敗しました。|
+|ItemInternalId|string|
+
 
 
 
 ### オブジェクトの作成時
-Salesforce のオブジェクトが作成されたときにフローをトリガーします。```GET: /datasets/default/tables/{table}/onnewitems```
+この操作では、オブジェクトが作成されたときにフローをトリガーします。
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|テーブル|string|○|path|なし|Salesforce SObject の種類 (例: 'Lead')|
-|$skip|integer|×|query|なし|スキップするエントリの数 (既定値 = 0)|
-|$top|integer|×|query|なし|取得するエントリの最大数 (既定値 = 256)|
-|$filter|string|×|query|なし|エントリ数を制限する ODATA filter クエリ|
-|$orderby|string|×|query|なし|エントリの順序を指定する ODATA orderBy クエリ|
 
-### Response
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|table*|オブジェクトの種類|オブジェクトの種類 (例: "潜在顧客")|
+|$filter|Filter Query (フィルター クエリ)|エントリ数を制限する ODATA filter クエリ|
+|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
+|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定値 = 256)|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+ItemsList
+
+
+| プロパティ名 | データ型 |
+|---|---|
+|値|array|
+
+
+
+
+### オブジェクトの変更時
+この操作では、オブジェクトが変更されたときにフローをトリガーします。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|table*|オブジェクトの種類|オブジェクトの種類 (例: "潜在顧客")|
+|$filter|Filter Query (フィルター クエリ)|エントリ数を制限する ODATA filter クエリ|
+|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
+|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定値 = 256)|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+ItemsList
+
+
+| プロパティ名 | データ型 |
+|---|---|
+|値|array|
+
+
+
+
+### オブジェクトの種類を取得する
+この操作では、使用可能なオブジェクトの種類を一覧表示します。
+
+
+この呼び出しには、パラメーターはありません
+
+#### 出力の詳細
+
+TablesList
+
+
+| プロパティ名 | データ型 | 
+|---|---|
+|値|array|
+
+
+
+## HTTP 応答
+
+上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
+
 |名前|説明|
 |---|---|
 |200|OK|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました。|
 |default|操作に失敗しました。|
 
 
 
-### オブジェクトの変更時 
-Salesforce のオブジェクトが変更されたときにフローをトリガーします。```GET: /datasets/default/tables/{table}/onupdateditems```
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|テーブル|string|○|path|なし|Salesforce SObject の種類 (例: 'Lead')|
-|$skip|integer|×|query|なし|スキップするエントリの数 (既定値 = 0)|
-|$top|integer|×|query|なし|取得するエントリの最大数 (既定値 = 256)|
-|$filter|string|×|query|なし|エントリ数を制限する ODATA filter クエリ|
-|$orderby|string|×|query|なし|エントリの順序を指定する ODATA orderBy クエリ|
-
-### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-
-## オブジェクト定義 
-
-#### DataSetsMetadata
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|tabular|未定義|×|
-|BLOB|未定義|×|
-
-
-#### TabularDataSetsMetadata
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|source セクション|string|×|
-|displayName|string|×|
-|urlEncoding|string|×|
-|tableDisplayName|string|×|
-|tablePluralName|string|×|
-
-
-#### BlobDataSetsMetadata
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|source セクション|string|×|
-|displayName|string|×|
-|urlEncoding|string|×|
-
-
-#### TableMetadata
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|name|string|×|
-|title|string|×|
-|x-ms-permission|string|×|
-|schema|未定義|×|
-
-
-#### DataSetsList
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|値|array|×|
-
-
-#### DataSet
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|名前|string|
-|DisplayName|string|×|
-
-
-#### テーブル
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|名前|string|×|
-|DisplayName|string|×|
-
-
-#### 項目
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|ItemInternalId|string|×|
-
-
-#### ItemsList
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|値|array|×|
-
-
-#### TablesList
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|値|array|×|
 
 
 ## 次のステップ
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
-
-[API リスト](apis-list.md)に戻ります。
-
-
-[5]: https://developer.salesforce.com
-[6]: ./media/connectors-create-api-salesforce/salesforce-developer-homepage.png
-[7]: ./media/connectors-create-api-salesforce/salesforce-create-app.png
-[8]: ./media/connectors-create-api-salesforce/salesforce-new-app.png
-
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

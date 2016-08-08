@@ -1,6 +1,6 @@
 <properties
 pageTitle="Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成"
-description="Azure Search を使用して JSON BLOB のインデックスを作成する方法について説明します"
+description="Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成"
 services="search"
 documentationCenter=""
 authors="chaosrealm"
@@ -12,10 +12,14 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="04/20/2016"
+ms.date="07/26/2016"
 ms.author="eugenesh" />
 
 # Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成 
+
+この記事では、JSON を格納している BLOB から構造化コンテンツを抽出するために Azure Search BLOB インデクサーを構成する方法を説明します。
+
+## シナリオ
 
 [Azure Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md)は、既定では JSON BLOB を 1 つのテキスト チャンクとして解析します。多くの場合、JSON ドキュメントの構造はそのままに維持する必要があります。たとえば、次のような JSON ドキュメントについて考えてみましょう。
 
@@ -27,29 +31,37 @@ ms.author="eugenesh" />
 	    }
 	}
 
-この場合は、JSON ドキュメントを解析して検索インデックスの "text"、"datePublished"、"tags" の各フィールドにする必要があります。
+この場合は、JSON ドキュメントを "text"、"datePublished"、"tags" の各フィールドを持つ Azure Search ドキュメントに解析できます。
 
-この記事では、Azure Search BLOB インデクサーを JSON 解析用に構成する方法を示します。インデックス作成にご活用ください。
+また、BLOB に **JSON オブジェクトの配列**が含まれる場合は、配列の各要素を個別の Azure Search ドキュメントにすることができます。たとえば、次の JSON を含む BLOB を考えてみます。
+
+	[
+		{ "id" : "1", "text" : "example 1" },
+		{ "id" : "2", "text" : "example 2" },
+		{ "id" : "3", "text" : "example 3" }
+	]
+
+それぞれ "id" と "text" のフィールドを持つ 3 つの独立したドキュメントを Azure Search インデックスに設定できます。
 
 > [AZURE.IMPORTANT] 現在この機能はプレビュー版です。バージョン **2015-02-28-Preview** を使用した REST API でのみ利用できます。プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
 
 ## JSON インデックス作成の設定
 
-JSON BLOB のインデックスを作成するには、BLOB インデクサーを "JSON 解析" モードで使用します。インデクサー定義の `parameters` プロパティで `useJsonParser` 構成設定を有効にします。
+JSON BLOB のインデックスを作成するには、`parsingMode` 構成パラメーターを `json` (1 つのドキュメントとして各 BLOB にインデックスを作成する場合) または `jsonArray` (BLOB に JSON 配列が含まれる場合) に設定します。
 
 	{
 	  "name" : "my-json-indexer",
 	  ... other indexer properties
-	  "parameters" : { "configuration" : { "useJsonParser" : true } }
+	  "parameters" : { "configuration" : { "parsingMode" : "json" | "jsonArray" } }
 	}
 
 必要に応じて**フィールド マッピング**を使用し、ターゲットの検索インデックスへの設定に使用するソース JSON ドキュメントのプロパティを選択します。これについては、以下で詳しく説明します。
 
-> [AZURE.IMPORTANT] JSON 解析モードを使用すると、Azure Search ではデータ ソース内のすべての BLOB が JSON になると見なされます。JSON BLOB と JSON 以外の BLOB が混在するデータ ソースをサポートする必要がある場合は、[UserVoice のサイト](https://feedback.azure.com/forums/263029-azure-search)でお知らせください。
+> [AZURE.IMPORTANT] `json` または `jsonArray` 解析モードを使用すると、Azure Search ではデータ ソース内のすべての BLOB が JSON になると見なされます。JSON BLOB と JSON 以外の BLOB が混在するデータ ソースをサポートする必要がある場合は、[UserVoice のサイト](https://feedback.azure.com/forums/263029-azure-search)でお知らせください。
 
 ## フィールド マッピングを使用して検索ドキュメントを作成する 
 
-現在、Azure Search ではプリミティブ データ型、文字列配列、GeoJSON ポイントのみをサポートしているため、任意の JSON ドキュメントに対して直接インデックス作成を行うことはできません。ただし、**フィールド マッピング**を使用すると、JSON ドキュメントの一部を選択して、それを検索ドキュメントの最上位レベルのフィールドに "引き上げる" ことができます。フィールド マッピングの基本については、「[データ ソースと検索インデックスの橋渡し役としての Azure Search インデクサー フィールド マッピング](search-indexer-field-mappings.md)」を参照してください。
+現在、Azure Search ではプリミティブ データ型、文字列配列、GeoJSON ポイントのみをサポートしているため、任意の JSON ドキュメントに対して直接インデックス作成を行うことはできません。ただし、**フィールド マッピング**を使用すると、JSON ドキュメントの一部を選択して、それを検索ドキュメントの最上位レベルのフィールドに "引き上げる" ことができます。フィールド マッピングの基本については、「[データ ソースと検索インデックスの橋渡し役としての Azure Search インデクサー フィールド マッピング](search-indexer-field-mappings.md)」をご覧ください。
 
 JSON ドキュメントの例に戻りましょう。
 
@@ -85,7 +97,28 @@ JSON ドキュメントに単純な最上位レベルのプロパティのみが
        "tags" : [ "search", "storage", "howto" ]    
  	}
 
-> [AZURE.NOTE] 現在の Azure Search では、1 つの JSON BLOB から 1 つの検索ドキュメントへの解析のみをサポートしています。BLOB に JSON 配列が含まれ、それを複数の検索ドキュメントに解析する必要がある場合は、機能改善が優先的に行われるように、[この UserVoice の提案](https://feedback.azure.com/forums/263029-azure-search/suggestions/13431384-parse-blob-containing-a-json-array-into-multiple-d)に投票してください。
+## 入れ子になった JSON 配列のインデックス作成
+
+JSON オブジェクトの配列にインデックスを作成するときに、そのドキュメント内のどこかで配列が入れ子になっていたらどうすればよいでしょうか。 `documentRoot` 構成プロパティを使用して、入れ子になった配列が格納されているプロパティを選択できます。たとえば、次のような BLOB があるとします。
+
+	{ 
+		"level1" : {
+			"level2" : [
+				{ "id" : "1", "text" : "Use the documentRoot property" }, 
+				{ "id" : "2", "text" : "to pluck the array you want to index" },
+				{ "id" : "3", "text" : "even if it's nested inside the document" }  
+			]
+		}
+	} 
+
+次の構成を使用して、"level2" プロパティに格納されている配列のインデックスを作成します。
+
+	{
+		"name" : "my-json-array-indexer",
+		... other indexer properties
+		"parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
+	}
+
 
 ## 要求例
 
@@ -127,4 +160,4 @@ JSON ドキュメントに単純な最上位レベルのプロパティのみが
 
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

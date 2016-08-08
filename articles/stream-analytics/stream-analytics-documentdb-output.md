@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="07/27/2016"
 	ms.author="jeffstok"/>
 
 # Stream Analytics から Azure DocumentDB for JSON 出力をターゲットにする
@@ -54,12 +54,12 @@ Stream Analytics で DocumentDB を出力として作成すると、以下に示
 
 ![documentdb stream analytics 出力画面](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output.png)
 
--   **出力のエイリアス** – ASA クエリ内でこの出力を意味するエイリアス。  
--   **アカウント名** – DocumentDB アカウントの名前またはエンドポイント URI。  
--   **アカウント キー** – DocumentDB アカウントの共有アクセス キー。  
--   **データベース** – DocumentDB データベース名。  
--   **コレクション名のパターン** – 使用するコレクションのコレクション名のパターン。コレクション名の形式は、オプションの {partition} トークンを使用して構成できます。この場合、パーティションは 0 から開始します。有効な入力値のサンプルを次に示します。1) MyCollection – "MyCollection" という名前のコレクションが 1 つ必要です。2) MyCollection{partition} – "MyCollection0"、"MyCollection1"、"MyCollection2" などのコレクションが必要です。  
--   **パーティション キー** – コレクション間で出力をパーティション分割するためのキーの指定に使用される、出力イベント内のフィールドの名前。コレクションの出力が 1 つの場合は、PartitionId など、任意の出力列を使用できます。  
--   **Document ID** – 省略可能です。挿入操作または更新操作の基準となるプライマリ キーを指定するために使用される、出力イベント内のフィールドの名前。  
+-   **出力のエイリアス** – ASA クエリ内でこの出力を意味するエイリアス。
+-   **アカウント名** – DocumentDB アカウントの名前またはエンドポイント URI。
+-   **アカウント キー** – DocumentDB アカウントの共有アクセス キー。
+-   **データベース** – DocumentDB データベース名。
+-   **コレクション名のパターン** – 使用するコレクションのコレクション名のパターン。コレクション名の形式は、オプションの {partition} トークンを使用して構成できます。この場合、パーティションは 0 から開始します。有効な入力値のサンプルを次に示します。1) MyCollection – "MyCollection" という名前のコレクションが 1 つ必要です。2) MyCollection{partition} – "MyCollection0"、"MyCollection1"、"MyCollection2" などのコレクションが必要です。
+-   **パーティション キー** – コレクション間で出力をパーティション分割するためのキーの指定に使用される、出力イベント内のフィールドの名前。コレクションの出力が 1 つの場合は、PartitionId など、任意の出力列を使用できます。
+-   **Document ID** – 省略可能です。挿入操作または更新操作の基準となるプライマリ キーを指定するために使用される、出力イベント内のフィールドの名前。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

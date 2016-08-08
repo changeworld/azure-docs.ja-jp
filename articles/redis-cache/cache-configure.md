@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="07/07/2016"
+	ms.date="07/25/2016"
 	ms.author="sdanie" />
 
 # Azure Redis Cache の構成方法
@@ -372,10 +372,11 @@ Redis コマンドの詳細については、[http://redis.io/commands](http://r
 
 **Redis コンソール**を使用して Azure Redis Cache インスタンスにコマンドを安全に発行できます。このコンソールは Standard キャッシュと Premium キャッシュに対して使用できます。
 
->[AZURE.IMPORTANT] Redis コンソールは、VNET またはクラスタリングとは動作しません。
+>[AZURE.IMPORTANT] Redis コンソールは、VNET、クラスタリング、0 以外のデータベースでは機能しません。
 >
 >-	[VNET](cache-how-to-premium-vnet.md): キャッシュが VNET の一部である場合は、VNET のクライアントだけがキャッシュにアクセスできます。Redis コンソールは、VNET の一部ではない VM でホストされている redis-cli.exe クライアントを使用するため、キャッシュに接続できません。
 >-	[クラスタリング](cache-how-to-premium-clustering.md): Redis コンソールは、現時点ではクラスタリングをサポートしていない redis-cli.exe クライアントを使用します。GitHub で Redis リポジトリの[不安定な](http://redis.io/download)ブランチにある redis-cli ユーティリティは、`-c` スイッチ付きで起動した場合、基本的なサポートを実装しています。詳細については、[http://redis.io](http://redis.io) の [Redis クラスター チュートリアル](http://redis.io/topics/cluster-tutorial)で「[クラスターの使用](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」を参照してください。
+>-	Redis コンソールは、コマンドを送信するたびに、データベース 0 への新しい接続を作成します。データベースは各コマンドで 0 にリセットされるため、`SELECT` コマンドを使用して別のデータベースを選択することはできません。別のデータベースへの変更など、Redis コマンドの実行については、「[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)」をご覧ください。
 
 Redis コンソールにアクセスするには、**[Redis Cache]** ブレードの **[コンソール]** をクリックします。
 
@@ -398,4 +399,4 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

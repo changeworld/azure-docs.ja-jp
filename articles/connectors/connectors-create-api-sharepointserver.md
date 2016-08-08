@@ -14,7 +14,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="05/18/2016"
+ms.date="07/18/2016"
 ms.author="deonhe"/>
 
 # SharePoint Online コネクタの使用 
@@ -26,7 +26,7 @@ SharePoint コネクタを使用すると、SharePoint リストを操作でき�
 SharePoint では、次の操作を実行できます。
 
 * ロジック アプリを構築できます
-* PowerApps を構築できます  
+* PowerApps を構築できます
 
 ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
@@ -76,13 +76,13 @@ SharePoint コネクタを使用するには、最初に**接続**を作成し�
 
 ロジック アプリのデザイナーで、次の手順に従って SharePoint にサインインし、ロジック アプリで使用する**接続**を作成します。
 
-1. 検索ボックスに「SharePoint」と入力し、名前に SharePoint が含まれたすべてのエントリが返されるまで待ちます。![SharePoint の構成][1]  
-2. **[SharePoint Online - ファイルの作成時]** を選択します。   
-3. **[SharePoint Online にサインイン]** をクリックします。![SharePoint の構成][2]    
-4. SharePoint で認証するために、SharePoint 資格情報を入力してサインインします。![SharePoint の構成][3]     
-5. 認証が完了すると、ロジック アプリにリダイレクトされます。SharePoint の **[ファイルの作成時]** ダイアログを構成して、ロジック アプリを完成させます。![SharePoint の構成][4]  
-6. ロジック アプリを完成させるために必要な他のトリガーやアクションを追加できます。   
-7. 上部のメニュー バーの **[保存]** をクリックして、作業内容を保存します。  
+1. 検索ボックスに「SharePoint」と入力し、名前に SharePoint が含まれたすべてのエントリが返されるまで待ちます。![SharePoint の構成][1]
+2. **[SharePoint Online - ファイルの作成時]** を選択します。
+3. **[SharePoint Online にサインイン]** をクリックします。![SharePoint の構成][2]
+4. SharePoint で認証するために、SharePoint 資格情報を入力してサインインします。![SharePoint の構成][3]
+5. 認証が完了すると、ロジック アプリにリダイレクトされます。SharePoint の **[ファイルの作成時]** ダイアログを構成して、ロジック アプリを完成させます。![SharePoint の構成][4]
+6. ロジック アプリを完成させるために必要な他のトリガーやアクションを追加できます。
+7. 上部のメニュー バーの **[保存]** をクリックして、作業内容を保存します。
 
 >[AZURE.TIP] 他のロジック アプリまたは PowerApps、あるいはその両方でこの接続を使用できます。
 
@@ -695,10 +695,10 @@ TablesList の必須プロパティ:
 ## 次のステップ
 [ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md) [PowerApps の作成](../power-apps/powerapps-get-started-azure-portal.md)
 
-[1]: ./media/connectors-create-api-sharepointonline/connectionconfig1.png
-[2]: ./media/connectors-create-api-sharepointonline/connectionconfig2.png
-[3]: ./media/connectors-create-api-sharepointonline/connectionconfig3.png
-[4]: ./media/connectors-create-api-sharepointonline/connectionconfig4.png
-[5]: ./media/connectors-create-api-sharepointonline/connectionconfig5.png
+[1]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig1.png
+[2]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig2.png
+[3]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig3.png
+[4]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig4.png
+[5]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig5.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

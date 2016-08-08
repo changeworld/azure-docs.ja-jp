@@ -8,7 +8,7 @@
 	editor=""/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -52,10 +52,10 @@ B2B API Apps を作成するには、必要なリソースがいくつかあり�
 
 要件 | 説明
 --- | ---
-Azure SQL Database | パートナー、スキーマ、証明書、契約などの B2B 項目を格納します。B2B API Apps ごとに専用の Azure SQL Database が必要です。<br/><br/>**注**: 接続文字列をこのデータベースにコピーしてください。<br/><br/>[Azure SQL Database を作成する方法](../sql-database/sql-database-get-started.md)
-Azure BLOB Storage コンテナー | AS2 アーカイブが有効な場合に、メッセージのプロパティを格納します。AS2 メッセージをアーカイブする必要がない場合は、Storage コンテナーは必要ありません。<br/><br/>**注**: アーカイブを有効にする場合は、接続文字列をこの Blob Storage にコピーしてください。<br/><br/>[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)
-Service Bus 名前空間とそのキー値 | X12 および EDIFACT のバッチ処理データを格納します。バッチ処理が不要な場合は、Service Bus 名前空間は必要ありません。<br/><br/>**注**: バッチ処理を有効にする場合は、これらの値をコピーしてください。<br/><br/>[Service Bus 名前空間を作成する方法](http://msdn.microsoft.com/library/azure/hh690931.aspx)
-TPM インスタンス | BizTalk 取引先管理 (TPM) インスタンスは、AS2 コネクタ、X12 API アプリ、または EDIFACT API アプリを作成するために必要です。TPM API アプリを作成すると、TPM インスタンスが作成されます。<br/><br/>**注**: TPM API アプリの名前を確認してください。 
+Azure SQL Database | パートナー、スキーマ、証明書、契約などの B2B 項目を格納します。B2B API Apps ごとに専用の Azure SQL Database が必要です。<br/><br/>**注:** このデータベースへの接続文字列をコピーしてください。<br/><br/>[Azure SQL Database の作成](../sql-database/sql-database-get-started.md)
+Azure BLOB Storage コンテナー | AS2 アーカイブが有効な場合に、メッセージのプロパティを格納します。AS2 メッセージをアーカイブする必要がない場合は、Storage コンテナーは必要ありません。<br/><br/>**注:** アーカイブを有効にしている場合は、この BLOB Storage への接続文字列をコピーしてください。<br/><br/>[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)
+Service Bus 名前空間とそのキー値 | X12 および EDIFACT のバッチ処理データを格納します。バッチ処理が不要な場合は、Service Bus 名前空間は必要ありません。<br/><br/>**注:** バッチ処理を有効にする場合は、これらの値をコピーしてください。<br/><br/>[Service Bus 名前空間を作成する方法](http://msdn.microsoft.com/library/azure/hh690931.aspx)
+TPM インスタンス | BizTalk 取引先管理 (TPM) インスタンスは、AS2 コネクタ、X12 API アプリ、または EDIFACT API アプリを作成するために必要です。TPM API アプリを作成すると、TPM インスタンスが作成されます。<br/><br/>**注:** 使用する TPM API アプリの名前を把握しておいてください。 
 
 
 ## API Apps の作成
@@ -79,8 +79,8 @@ Azure ポータルでは、Logic Apps、Web Apps、または Mobile Apps を作�
 TPM インスタンスを作成する手順は以下のとおりです。
 
 1. Azure ポータルのスタート画面 (ホーム ページ) で、**[Marketplace]** を選択します。**[API Apps]** に、既存のすべての API Apps とコネクタが一覧表示されます。**[検索]** で特定の B2B API Apps を見つけることもできます。
-2. **[BizTalk 取引先管理]** を選択します。新しいブレードで **[作成]** を選択します。 
-3. 次のプロパティを入力します。 
+2. **[BizTalk 取引先管理]** を選択します。新しいブレードで **[作成]** を選択します。
+3. 次のプロパティを入力します。
 
 	プロパティ | 説明
 --- | ---
@@ -101,8 +101,8 @@ TPM API アプリ (TPM インスタンス) が作成されたら、AS2 コネク
 #### AS2 コネクタの作成
 
 1. Azure ポータルのスタート画面 (ホーム ページ) で、**[Marketplace]** を選択します。**[API Apps]** に、既存のすべての API Apps とコネクタが一覧表示されます。**[検索]** で特定の B2B API Apps を見つけることもできます。
-2. **[AS2 コネクタ]** を選択します。新しいブレードで **[作成]** を選択します。 
-3. 次のプロパティを入力します。 
+2. **[AS2 コネクタ]** を選択します。新しいブレードで **[作成]** を選択します。
+3. 次のプロパティを入力します。
 
 	プロパティ | 説明
 --- | ---
@@ -130,8 +130,8 @@ TPM インスタンス名 | 前に作成した **BizTalk 取引先管理** API �
 #### X12 API アプリまたは EDIFACT API Apps の作成
 
 1. Azure ポータルのスタート画面 (ホーム ページ) で、**[Marketplace]** を選択します。**[API Apps]** に、既存のすべての API Apps とコネクタが一覧表示されます。**[検索]** で特定の B2B API Apps を見つけることもできます。
-2. **[BizTalk X12]** または **[BizTalk EDIFACT]** を選択します。新しいブレードで **[作成]** を選択します。 
-3. 次のプロパティを入力します。 
+2. **[BizTalk X12]** または **[BizTalk EDIFACT]** を選択します。新しいブレードで **[作成]** を選択します。
+3. 次のプロパティを入力します。
 
 	プロパティ | 説明
 --- | ---
@@ -182,7 +182,7 @@ Microsoft Azure App Service では、これらの B2B API Apps を使用でき�
 
 次の手順で、B2B API Apps を Logic Apps、Mobile Apps、または Web Apps に追加します。
 
-1. Azure ポータルのスタート画面 (ホーム ページ) で、**Marketplace** に移動し、Logic Apps、Mobile Apps、または Web Apps を検索します。 
+1. Azure ポータルのスタート画面 (ホーム ページ) で、**Marketplace** に移動し、Logic Apps、Mobile Apps、または Web Apps を検索します。
 
 	新しいアプリを作成する場合は、Logic Apps、Mobile Apps、または Web Apps を検索します。アプリを選択し、新しいブレードで **[作成]** を選択します。[ロジック アプリの作成](app-service-logic-create-a-logic-app.md)に関するページに、この手順が記載されています。
 
@@ -209,4 +209,4 @@ Microsoft Azure App Service では、これらの B2B API Apps を使用でき�
 
 [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

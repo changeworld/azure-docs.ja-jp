@@ -5,7 +5,7 @@
 	  keywords="Azure AD と SaaS アプリの統合"
     documentationCenter=""
     authors="curtand"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="04/26/2016"
+    ms.date="07/20/2016"
     ms.author="curtand"/>
 
 # SaaS アプリと Azure Active Directory シングル サインオンを統合する  
@@ -31,7 +31,7 @@ HTML フォーム ベースのサインインのみをサポートするアプ�
 
 ## 承認
 
-プロビジョニングされたアカウントを使用すると、ユーザーがシングル サインオンを介して認証された後にアプリケーションの使用を許可できます。ユーザーのプロビジョニングは手動で実行できます。また、Azure Active Directory で行われた変更に基づいて、SaaS アプリケーションに対してユーザー情報の追加や削除を実行できる場合もあります。既存の Azure AD コネクタを使用して自動プロビジョニングを実現する方法の詳細については、「[SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)」を参照してください。
+プロビジョニングされたアカウントを使用すると、ユーザーがシングル サインオンを介して認証された後にアプリケーションの使用を許可できます。ユーザーのプロビジョニングは手動で実行できます。また、Azure Active Directory で行われた変更に基づいて、SaaS アプリケーションに対してユーザー情報の追加や削除を実行できる場合もあります。既存の Azure AD コネクタを使用して自動プロビジョニングを実現する方法の詳細については、[SaaS アプリケーションへのユーザーのプロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)に関するページを参照してください。
 
 それ以外の場合は、アプリにユーザー情報を手動で追加するか、市販されている他のプロビジョニング ソリューションを使用できます。
 
@@ -72,4 +72,4 @@ Azure.com ライブラリには、「[Azure Active Directory のアプリケー�
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

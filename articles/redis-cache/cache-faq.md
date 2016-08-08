@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/20/2016" 
+	ms.date="07/21/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -26,8 +26,8 @@ Azure Redis Cache についてよく寄せられる質問の回答、パター�
 質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
 
 -	この FAQ の最後に掲載されている[Disqus スレッド](#comments)に質問を投稿し、Azure Cache チームや他のコミュニティ メンバーと この記事についてやり取りすることができます。
--	[Azure Cache MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) に質問を投稿し、Azure Cache チームや他のコミュニティ メンバーメンバーとやり取りすることができます。
--	[Azure Cache 外部フィードバック](mailto:azurecache@microsoft.com)にメールをお送りください。
+-	さらに多くの人と情報交換する場合は、[Azure Cache MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache)に質問を投稿すれば、Azure Cache チームや他のコミュニティ メンバーとやり取りすることができます。
+-	また、[Azure Cache 外部フィードバック](mailto:azurecache@microsoft.com)にメールをお送りいただくこともできます。
 
 ## 計画に関する FAQ
 
@@ -376,4 +376,4 @@ Azure Redis Cache の使用方法については、「[Azure Redis Cache の使�
 
 ["minIoThreads" 構成設定]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

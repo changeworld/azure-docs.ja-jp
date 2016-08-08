@@ -215,12 +215,15 @@ RelationalSource でサポートされるプロパティの一覧については
 | -------- | ----------- | -------------- | -------- |
 | query | カスタム クエリを使用してデータを読み取ります。 | SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL) ](https://developer.salesforce.com/docs/atlas.ja-JP.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリ。例: select * from MyTable\_\_c | いいえ (**dataset**の **tableName** が指定されている場合) |
 
-> [AZURE.IMPORTANT]  カスタム オブジェクトには、API 名の "\_\_c" の部分が必要となります。<br> 日付/時刻列の句を含むクエリの指定には SOQL を使用します。 例：$$Text.Format('SELECT Id, Type, Name, BillingCity, BillingCountry FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)
+> [AZURE.IMPORTANT]  カスタム オブジェクトには、API 名の "\_\_c" の部分が必要となります。<br><br> datetime 列の where 句が含まれたクエリを指定するときは、SOQL クエリを使用します (例: $$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd), or SQL query e.g. $$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts'{0:yyyy-MM-dd HH:mm:ss}'}} AND LastModifiedDate < {{ts'{1:yyyy-MM-dd HH:mm:ss}'}}', WindowStart, WindowEnd))。
 
 ![Data Factory - Salesforce の接続 - API 名](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
+## Salesforce レポートからのデータの取得
+{call "<レポート名>"} というクエリ (例: {call "TestReport"}) を指定することで、Salesforce レポートからデータを取得できます。
+
 ## Salesforce の要求の制限
-Salesforce では、API 要求数の合計と、API の同時要求数に上限が設けられています。詳細については、[Salesforce API 要求の制限](http://resources.docs.salesforce.com/200/20/ja-JP/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「**API Request Limits (API 要求の制限)**」セクションを参照してください。
+Salesforce では、API 要求数の合計と、API の同時要求数に上限が設けられています。詳細については、[Salesforce API 要求の制限](http://resources.docs.salesforce.com/200/20/ja-JP/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「**API Request Limits (API 要求の制限)**」をご覧ください。
  
 同時要求数が上限を超えると調整が発生し、ランダムにエラーが表示されます。要求数の合計が上限を超えると、Salesforce アカウントが 24 時間ブロックされます。また、どちらの場合も、 "REQUEST\_LIMIT\_EXCEEDED" エラーが表示されることがあります。
  
@@ -254,6 +257,6 @@ URL | String
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

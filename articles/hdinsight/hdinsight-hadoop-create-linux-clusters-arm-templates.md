@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/26/2016"
+   ms.date="07/25/2016"
    ms.author="jgao"/>
 
 # ARM テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成
@@ -36,7 +36,7 @@ Azure リソース マネージャー (ARM) テンプレートを使用して HD
 
 ## ARM テンプレート
 
-ARM テンプレートでは、アプリケーションの HDInsight クラスター、その依存リソース (既定のストレージ アカウントなど)、および他のリソース (Apache Sqoop を使用する Azure SQL Database など) の作成が 1 回の連携した操作で容易になります。テンプレートでは、アプリケーションのために必要なリソースを定義してさまざまな環境の値を入力するデプロイのパラメーターを指定します。テンプレートは、JSON、およびデプロイの値を構築する際の式で構成されます。
+ARM テンプレートでは、アプリケーションの HDInsight クラスター、その依存リソース (既定のストレージ アカウントなど)、および他のリソース (Apache Sqoop を使用する Azure SQL Database など) の作成が 1 回の連携した操作で容易になります。テンプレートでは、アプリケーションのために必要なリソースを定義してさまざまな環境の値を入力するデプロイのパラメーターを指定します。テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
 
 HDInsight クラスターと依存 Azure Storage アカウントを作成するための ARM テンプレートについては、「[付録 A](#appx-a-arm-template)」を参照してください。クロスプラットフォームの [VSCode](https://code.visualstudio.com/#alt-downloads) と [ARM の拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)またはテキスト エディターを併用して、テンプレートをワークステーションのファイルに保存してください。テンプレートを呼び出すさまざまな方法について説明します。
 
@@ -313,4 +313,4 @@ Visual Studio とリソース グループの使用の概要については、�
     }
     }
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

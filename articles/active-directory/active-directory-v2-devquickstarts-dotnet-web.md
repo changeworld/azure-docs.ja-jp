@@ -54,7 +54,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 -	"OWIN Startup クラス" を `Startup.cs` という名前のプロジェクトに追加します。プロジェクトを右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックして、"OWIN" を検索します。アプリが起動すると、OWIN ミドルウェアは `Configuration(...)` メソッドを呼び出します。
--	クラス宣言を `public partial class Startup` に変更します。このクラスの一部は別ファイルで実装済みです。`Configuration(...)` メソッドで、ConfigureAuth(...) を呼び出して、Web アプリ用の認証をセットアップします。  
+-	クラス宣言を `public partial class Startup` に変更します。このクラスの一部は別ファイルで実装済みです。`Configuration(...)` メソッドで、ConfigureAuth(...) を呼び出して、Web アプリ用の認証をセットアップします。
 
 ```C#
 [assembly: OwinStartup(typeof(Startup))]
@@ -68,7 +68,8 @@ namespace TodoList_WebApp
 			ConfigureAuth(app);
 		}
 	}
-}```
+}
+```
 
 -	ファイル `App_Start\Startup.Auth.cs` を開いて、`ConfigureAuth(...)` メソッドを実装します。`OpenIdConnectAuthenticationOptions` で提供されたパラメーターは、アプリが Azure AD と通信するための調整役として機能します。OpenID Connect ミドルウェアは、ユーザーに意識されない Cookie を使用するため、Cookie 認証もセットアップする必要があります。
 
@@ -211,4 +212,4 @@ public ActionResult About()
 
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

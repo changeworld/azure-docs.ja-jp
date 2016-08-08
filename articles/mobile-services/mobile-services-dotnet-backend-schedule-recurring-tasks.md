@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/07/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # Mobile Services での繰り返し発生するジョブのスケジュール
@@ -24,8 +24,8 @@
 
 
 > [AZURE.SELECTOR]
-- [.NET backend](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
-- [Javascript backend](mobile-services-schedule-recurring-tasks.md)
+- [.NET バックエンド](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
+- [JavaScript バックエンド](mobile-services-schedule-recurring-tasks.md)
 
 このトピックでは、Azure クラシック ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
 
@@ -218,7 +218,7 @@
 		    }
 		}
 
-	上記のコードで、文字列 _todolistService_ と _todolistContext_ を、ダウンロードしたプロジェクトの名前空間と DbContext (それぞれ *mobile&#95;service&#95;name*Service と *mobile&#95;service&#95;name*Context) に置き換える必要があります。
+	上記のコードで文字列 _todolistService_ と _todolistContext_ をダウンロードしたプロジェクトの名前空間と DbContext (それぞれ *mobile&#95;service&#95;name*Service と *mobile&#95;service&#95;name*Context) と置き換える必要があります。
 
 	上記のコードで、**ExecuteAsync** オーバーライド メソッドは保存された資格情報を使用して Twitter のクエリ API を呼び出し、`#mobileservices` というハッシュタグを含む最近のツイートを要求します。テーブルに格納される前に、重複しているツイートやリプライが結果から削除されます。
 
@@ -305,4 +305,4 @@
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 [LINQ to Twitter の CodePlex プロジェクトに関するページ]: http://linqtotwitter.codeplex.com/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0727_2016-->

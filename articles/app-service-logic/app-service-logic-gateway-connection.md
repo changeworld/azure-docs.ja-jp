@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -24,8 +24,11 @@
 
 * オンプレミス データ ゲートウェイをアカウント (Azure Active Directory ベースのアカウント) に関連付けるために、職場または学校の電子メール アドレスを使用している必要があります。
     * Microsoft アカウント (@outlook.com、@live.com など) を使用している場合は、[こちらの手順に従って](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)、Azure アカウントを使用して職場または学校の電子メール アドレスを作成できます。
+
+> [AZURE.WARNING] Power BI に登録済みのアカウントを使用したときにしかオンプレミス ゲートウェイのインストールが完了しないという制限が現時点では存在します。当面、インストールを正常完了するために、任意のアカウントを "Power BI Free" に登録してください。
+
 * オンプレミス データ ゲートウェイが[ローカル コンピューターにインストールされている](app-service-logic-gateway-install.md)必要があります。
-* ゲートウェイが別の Azure オンプレミス データ ゲートウェイによって要求されていないことが必要です ([要求は、以下の手順 2 での作成時に行われます](#2-create-an-azure-on-premises-data-gateway-resource))。1 つのインストールは 1 つのゲートウェイのみに関連付けることができます。
+* ゲートウェイが別の Azure オンプレミス データ ゲートウェイによって要求されていないことが必要です ([要求は、以下の手順 2. での作成時に行われます](#2-create-an-azure-on-premises-data-gateway-resource))。1 つのインストールは 1 つのゲートウェイ リソースのみに関連付けることができます。
 
 ## 接続のインストールと構成
 
@@ -50,7 +53,7 @@
 Azure サブスクリプションをオンプレミス データ ゲートウェイのインスタンスと関連付けたので、次はロジック アプリ内からゲートウェイへの接続を作成できます。
 
 1. ロジック アプリを開き、オンプレミス接続をサポートするコネクタを選択します (この記事の執筆時点では SQL Server)。
-1. **[Connect via on-premises data gateway (オンプレミス データ ゲートウェイ経由で接続する)]** チェックボックスをオンにします。
+1. **[Connect via on-premises data gateway (オンプレミス データ ゲートウェイ経由で接続する)]** チェック ボックスをオンにします。
 
     ![ロジック アプリ デザイナー ゲートウェイの作成][2]
 1. 接続する **[ゲートウェイ]** を選択し、必要なその他の接続情報を指定します。
@@ -67,4 +70,4 @@ Azure サブスクリプションをオンプレミス データ ゲートウェ
 [2]: ./media/app-service-logic-gateway-connection/blankconnection.PNG
 [3]: ./media/app-service-logic-gateway-connection/checkbox.PNG
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->
