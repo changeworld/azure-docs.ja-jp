@@ -34,7 +34,7 @@
 
 1. [Twitter Developers](http://go.microsoft.com/fwlink/p/?LinkId=268300) の Web サイトに移動し、Twitter アカウント資格情報でサインインして、**[Create New App]** をクリックします。
 
-2. **[Name]**、**[Description]**、**[Website]** にアプリの値を入力し、次のいずれかの URL 形式を **[Callback URL]** に入力します。
+2. **[Name]**、\**[Description]**、\**[Website]** にアプリの値を入力し、次のいずれかの URL 形式を **[Callback URL]** に入力します。
 
 	+ **.NET バックエンド**: `https://<mobile_service>.azure-mobile.net/signin-twitter`
 	+ **JavaScript バックエンド**: `https://<mobile_service>.azure-mobile.net/login/twitter`
@@ -47,13 +47,13 @@
 
    	これでアプリケーションが登録され、アプリケーションの詳細が表示されます。
 
-6. アプリケーションのダッシュ ボードで **[Keys and Access Tokens] ** タブをクリックし、**[Consumer key]** と **[Consumer secret]** の値をメモします。
+6. アプリケーションのダッシュ ボードで **[キーとアクセス トークン] ** タブをクリックし、**[Cコンシューマー キー]** と **[コンシューマー シークレット]** の値をメモします。
 
     > [AZURE.NOTE] コンシューマー シークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。
 
-7. **[Settings]** タブをクリックして下方向へスクロールし、**[Allow this application to be used to sign in with Twitter]** チェック ボックスをオンにして、**[Update Settings]** をクリックします。
+7. **[設定]** タブをクリックして下方向へスクロールし、**[このアプリケーションを使用して Twitter でログインする許可します]** チェック ボックスをオンにして、**[更新設定]** をクリックします。
 
-これで、コンシューマー キーとコンシューマー シークレットの値を Mobile Services に渡すことにより、アプリケーションで Twitter ログインを認証に使用する準備ができました。
+これで、コンシューマー キーとコンシューマー シークレットの値をモバイル サービスに渡すことにより、アプリケーションで Twitter ログインを認証に使用する準備ができました。
 
 <!-- Anchors. -->
 

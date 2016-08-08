@@ -150,7 +150,7 @@ Azure サブスクリプションとリソース グループのポリシーは�
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
-[1]: ./media/security-center-intro/security-tile.png
+[1]: ./media/security-center-intro/security-tile.PNG
 [2]: ./media/security-center-intro/security-center.png
 [3]: ./media/security-center-intro/security-policy.png
 [4]: ./media/security-center-intro/security-policy-blade.png

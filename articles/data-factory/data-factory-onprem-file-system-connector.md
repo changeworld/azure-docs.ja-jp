@@ -438,7 +438,7 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 type | type プロパティは、**OnPremisesFileServer** に設定されます。 | はい 
 host | コピーするフォルダーのルート パス。文字列内の特殊文字にはエスケープ文字 "\" を使用します。例については「[サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions)」を参照してください。  
  | はい
-userid | サーバーにアクセスするユーザーの ID を指定します | No (encryptedCredential を選択する場合)
+userid | サーバーにアクセスするユーザーの ID を指定します | いいえ (encryptedCredential を選択する場合)
 パスワード | ユーザー (userid) のパスワードを指定します | いいえ (encryptedCredential を選択する場合) 
 encryptedCredential | New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します。<br/><br/>**注:** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureRmDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります。 | いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合)
 gatewayName | Data Factory サービスが、オンプレミスのファイル サーバーへの接続に使用するゲートウェイの名前 | はい

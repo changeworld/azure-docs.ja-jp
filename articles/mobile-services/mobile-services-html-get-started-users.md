@@ -101,7 +101,7 @@
 			$("#logged-in button").click(logOut);
 		});
 
-    これで、認証プロセスを処理する関数のセットが作成されます。ユーザーは、Facebook ログインを使用して認証されます。Facebook 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、*microsoftaccount*、*facebook*、*twitter*、*google*、*aad* のいずれかに変更します。
+    これで、認証プロセスを処理する関数のセットが作成されます。ユーザーは、Facebook ログインを使用して認証されます。Facebook 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡す値を、 *microsoftaccount* 、 *facebook* 、 *twitter* 、 *google* 、 *aad* のいずれかに変更します。
 
 	>[AZURE.IMPORTANT]PhoneGap アプリでは、次のプラグインもプロジェクトに追加する必要があります。
 	><ul><li><code>phonegap プラグインの追加 https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git</code></li>

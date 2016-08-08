@@ -200,7 +200,14 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
 | timeinterval *<演算子>* timeinterval | +, - | timeinterval |
 | timeinterval *<演算子>* timestamp | + | timestamp |
 | timestamp *<演算子>* timeinterval | + | timestamp |
-| timestamp *<演算子>* timestamp | - | timeinterval | | *<演算子>*double | -、! | double | | *<演算子>*timeinterval | - | timeinterval | | double *<演算子>* double | <、<=、==、>=、>、!= | double | | string *<演算子>* string | <、<=、==、>=、>、!= | double | | timestamp *<演算子>* timestamp | <、<=、==、>=、>、!= | double | | timeinterval *<演算子>* timeinterval | <、<=、==、>=、>、!= | double | | double *<演算子>* double | &&、|| | double |
+| timestamp *<演算子>* timestamp | - | timeinterval |
+| *<演算子>*double | -、! | double |
+| *<演算子>*timeinterval | - | timeinterval |
+| double *<演算子>* double | <、<=、==、>=、>、!= | double |
+| string *<演算子>* string | <、<=、==、>=、>、!= | double |
+| timestamp *<演算子>* timestamp | <、<=、==、>=、>、!= | double |
+| timeinterval *<演算子>* timeinterval | <、<=、==、>=、>、!= | double |
+| double *<演算子>* double | &&、|| | double |
 
 3 項演算子で double 型の値をテストするときに (`double ? statement1 : statement2`)、0 以外の値は **true**、0 は **false** となります。
 

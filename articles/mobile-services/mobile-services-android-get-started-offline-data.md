@@ -200,7 +200,7 @@ One thing which is important to point out: if there are pending changes in the l
 
 * [Cloud Cover: Azure Mobile Services でのオフライン同期]
 
-* [Azure Friday: Azure Mobile Services のオフライン対応アプリケーション] (注: デモは Windows 向けですが、機能の説明はすべてのプラットフォームに適用されます)
+* [Azure Friday: Azure Mobile Services のオフライン対応アプリケーション] \(注: デモは Windows 向けですが、機能の説明はすべてのプラットフォームに適用されます)
 
 
 <!-- URLs. -->

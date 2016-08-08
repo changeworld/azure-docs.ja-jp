@@ -615,7 +615,9 @@ Azure にアップロードする前にデータベースの圧縮を実行す�
 SQL Server 2014 では、Azure Blob ストアの周囲に VHD の「ラッパー」を用意しなくても、Azure Blob ストアに直接データベース ファイルを格納することができます。特に、Standard Azure Storage またはそれより小さい VM タイプを使用すると、小さい VM タイプでマウントできる VHD の数の制限が適用されることで IOPS が制限されるという問題を解消できます。これは、ユーザー データベースに対するもので、SQL Server のシステム データベースに対しては機能しません。また、SQL Server のデータ ファイルとログ ファイルに対しても機能します。VHD に「ラッピング」するのではなく、このような方法で SAP SQL Server データベースをデプロイする場合は次の点に留意してください。
 
 * 使用するストレージ アカウントは、SQL Server が実行されている VM をデプロイするために使用したストレージ アカウントと同じ Azure リージョン内にある必要があります。
-* 前述の、別の Azure ストレージ アカウントに VHD を分散させることについての考慮事項がこのデプロイメントの場合も適用されます。Azure ストレージ アカウントの制限に対する I/O 操作数を意味します。[コメント]: <> (MSSedusch TODO、ただしこれはネットワーク帯域幅を使うものでストレージ帯域幅ではないと思いませんか)。
+* 前述の、別の Azure ストレージ アカウントに VHD を分散させることについての考慮事項がこのデプロイメントの場合も適用されます。Azure ストレージ アカウントの制限に対する I/O 操作数を意味します。
+
+[コメント]: <> (MSSedusch TODO、ただしこれはネットワーク帯域幅を使うものでストレージ帯域幅ではないと思いませんか)。
 
 このタイプのデプロイメントに関する詳細は、こちら (<https://msdn.microsoft.com/library/dn385720.aspx>) に記載されています。
  
@@ -761,9 +763,19 @@ AlwaysOn は SAP オンプレミスでサポートされており (SAP Note [177
 * Azure で、可用性グループのプライマリ レプリカとセカンダリ レプリカを実行している VM に割り当てられている TCP/IP エンドポイントを使って可用性グループ リスナーを作成しようとしています。
 * これらのエンドポイントと ACL をセキュリティで保護する必要があります。
 
-[コメント]: <> (TODO 古いブログ) [コメント]: <> (詳細な手順と Azure で AlwaysOn 構成をインストールするのに必要なものが最も発生利用可能なチュートリアルを進めるに [ここ][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]) [コメント]: <> (Azure のギャラリーを使用して AlwaysOn の構成済みの設定 <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>) [コメント]: <> (最もについては、可用性グループ リスナーの作成 [この][virtual-machines-windows-classic-ps-sql-int-listener] チュートリアル) [コメント]: <> (ACL を使用してセキュリティを強化するネットワーク エンドポイントがここで説明した最適な:)[コメント]: <> (* <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>) [コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx> ) [コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>) [コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>)
+[コメント]: <> (TODO 古いブログ)
+ [コメント]: <> (詳細な手順と Azure で AlwaysOn 構成をインストールするのに必要なものが最も発生利用可能なチュートリアルを進めるに [ここ][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]) 
+ [コメント]: <> (Azure のギャラリーを使用して AlwaysOn の構成済みの設定 <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>) 
+ [コメント]: <> (最もについては、可用性グループ リスナーの作成 [この][virtual-machines-windows-classic-ps-sql-int-listener] チュートリアル) 
+ [コメント]: <> (ACL を使用してセキュリティを強化するネットワーク エンドポイントがここで説明した最適な:)
+ [コメント]: <> (* <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>) 
+ [コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx> ) 
+ [コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>) 
+ [コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>)
 
-異なる Azure リージョンにも、SQL Server AlwaysOn 可用性グループをデプロイすることができます。この機能は Azure Vnet の接続を利用して ([詳細][virtual-networks-configure-vnet-to-vnet-connection])。[コメント]: <> (TODO 古いブログ) [コメント]: <> (このようなシナリオでは、SQL Server AlwaysOn 可用性グループのセットアップは次に示します: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.)
+異なる Azure リージョンにも、SQL Server AlwaysOn 可用性グループをデプロイすることができます。この機能は Azure Vnet の接続を利用して ([詳細][virtual-networks-configure-vnet-to-vnet-connection])。
+[コメント]: <> (TODO 古いブログ) 
+[コメント]: <> (このようなシナリオでは、SQL Server AlwaysOn 可用性グループのセットアップは次に示します: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.)
 
 #### Azure での SQL Server 高可用性の概要
 Azure ストレージがコンテンツを保護しているという事実を考えると、ホット スタンバイ イメージを要求する理由はあまりありません。これは、高可用性シナリオは、次のケースに対してのみ保護する必要があることを意味します。
